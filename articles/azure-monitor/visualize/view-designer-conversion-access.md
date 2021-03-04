@@ -3,15 +3,14 @@ title: Çalışma kitabı dönüştürme özeti ve erişim için Azure Izleyici 
 description: Azure Izleyici 'de görünümlerden geçiş yaparken çalışma kitaplarına erişmek için gereken izinler.
 author: austonli
 ms.author: aul
-ms.subservice: ''
 ms.topic: conceptual
 ms.date: 02/07/2020
-ms.openlocfilehash: c5b3096c4eb8cf71ff1d13476fa09cc65ef413a7
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 42cb8db0f67d3a01b2e8443e6cb7c47f0fc44c4b
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100621269"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102043399"
 ---
 # <a name="view-designer-to-workbooks-conversion-summary-and-access"></a>Çalışma kitabı dönüştürme özeti ve erişim için tasarımcıyı görüntüleyin
 [Görünüm Tasarımcısı](view-designer.md) , Log Analytics çalışma alanınızdaki verileri grafiklerle, listelerle ve zaman çizelgeleriyle görselleştirmenize yardımcı olmak üzere özel görünümler oluşturmanıza olanak sağlayan bir Azure izleyici özelliğidir. Bunlar kullanıma alınır ve başka işlevler sağlayan çalışma kitapları ile değiştirilmiştir. Bu makalede, çalışma kitaplarına erişmek için gereken bir genel bakış Özeti ve izinleri nasıl oluşturabileceğiniz açıklanır.

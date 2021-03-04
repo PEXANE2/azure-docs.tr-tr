@@ -1,17 +1,16 @@
 ---
 title: Günlük sorgusu uyarıları için Kaynak Yöneticisi şablonu örnekleri
 description: Azure Izleyici günlük sorgusu uyarılarını dağıtmaya yönelik örnek Azure Resource Manager şablonları.
-ms.subservice: logs
 ms.topic: sample
 author: bwren
 ms.author: bwren
 ms.date: 09/22/2020
-ms.openlocfilehash: 8dac947aea95dc79118032eb0996b6ba14f16363
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 19bbeba3db7e3df5ea5120d3562f24b447848f7f
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101714123"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102044043"
 ---
 # <a name="resource-manager-template-samples-for-log-alert-rules-in-azure-monitor"></a>Azure Izleyici 'de günlük uyarısı kuralları için şablon örnekleri Kaynak Yöneticisi
 Bu makale, Azure Izleyici 'de günlük sorgusu uyarıları oluşturmak ve yapılandırmak için [Azure Resource Manager şablonlarının](../../azure-resource-manager/templates/template-syntax.md) örneklerini içerir. Her örnek, şablona sağlanacak örnek değerleri içeren bir şablon dosyası ve bir parametre dosyası içerir.

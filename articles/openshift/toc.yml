@@ -28,6 +28,8 @@
           href: dns-forwarding.md
     - name: Depolama
       items:
+        - name: PVC 'leri müşteri tarafından yönetilen anahtarla şifreleyin (Önizleme)
+          href: howto-encrypt-data-disks.md
         - name: Azure Dosyalar Storageclass oluşturma
           href: howto-create-a-storageclass.md
         - name: Yerleşik kapsayıcı kayıt defterini kullanma

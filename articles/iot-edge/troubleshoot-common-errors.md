@@ -4,19 +4,19 @@ description: IoT Edge çözümü dağıtımında karşılaşılan yaygın sorunl
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 11/10/2020
+ms.date: 03/01/2021
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: e1605f45dc8a7a1c03b5481ea17478064414df59
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: a3e646f44978e8897c22d579639efcef0fcd2205
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100382217"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102045981"
 ---
 # <a name="common-issues-and-resolutions-for-azure-iot-edge"></a>Azure IoT Edge için genel sorunlar ve çözümler
 
@@ -75,7 +75,7 @@ Varsayılan olarak, IoT Edge kendi yalıtılmış kapsayıcı ağında modüller
 
 **Seçenek 1: kapsayıcı altyapısı ayarlarındaki DNS sunucusunu ayarlama**
 
-Kapsayıcı altyapısı ayarlarında ortamınız için DNS sunucusunu belirtin; Bu, altyapı tarafından başlatılan tüm kapsayıcı modülleri için geçerlidir. `daemon.json`Kullanılacak DNS sunucusunu belirten adlı bir dosya oluşturun. Örneğin:
+Kapsayıcı altyapısı ayarlarında ortamınız için DNS sunucusunu belirtin; Bu, altyapı tarafından başlatılan tüm kapsayıcı modülleri için geçerlidir. `daemon.json`Kullanılacak DNS sunucusunu belirten adlı bir dosya oluşturun. Örnek:
 
 ```json
 {
@@ -103,7 +103,7 @@ Güncelleştirmelerin etkili olabilmesi için kapsayıcı altyapısını yeniden
 
 **Seçenek 2: modül başına IoT Edge dağıtımında DNS sunucusunu ayarlama**
 
-Her modülün *createOptions* için DNS sunucusunu IoT Edge dağıtımında ayarlayabilirsiniz. Örneğin:
+Her modülün *createOptions* için DNS sunucusunu IoT Edge dağıtımında ayarlayabilirsiniz. Örnek:
 
 ```json
 "createOptions": {
@@ -216,6 +216,9 @@ IoT Edge çalışma zamanı yalnızca 64 karakterden kısa olan ana bilgisayar a
 
 Bu hatayı gördüğünüzde, sanal makinenizin DNS adını yapılandırarak ve sonra DNS adını Kurulum komutunda ana bilgisayar adı olarak ayarlayarak bu sorunu çözebilirsiniz.
 
+<!-- 1.1 -->
+:::moniker range="iotedge-2018-06"
+
 1. Azure portal, sanal makinenizin genel bakış sayfasına gidin.
 2. DNS adı altında **Yapılandır** ' ı seçin. Sanal makinenizin yapılandırılmış bir DNS adı zaten varsa, yeni bir tane yapılandırmanız gerekmez.
 
@@ -236,6 +239,39 @@ Bu hatayı gördüğünüzde, sanal makinenizin DNS adını yapılandırarak ve 
       ```cmd
       notepad C:\ProgramData\iotedge\config.yaml
       ```
+
+:::moniker-end
+<!-- end 1.1 -->
+
+<!-- 1.2 -->
+:::moniker range=">=iotedge-2020-11"
+
+1. Azure portal, sanal makinenizin genel bakış sayfasına gidin.
+
+2. DNS adı altında **Yapılandır** ' ı seçin. Sanal makinenizin yapılandırılmış bir DNS adı zaten varsa, yeni bir tane yapılandırmanız gerekmez.
+
+   ![Sanal makinenin DNS adını yapılandırın](./media/troubleshoot/configure-dns.png)
+
+3. **DNS ad etiketi** için bir değer girin ve **Kaydet**' i seçin.
+
+4. Yeni DNS adını, biçiminde olmalıdır **\<DNSnamelabel\> . \<vmlocation\> cloudapp.azure.com**.
+
+5. IoT Edge cihazda, yapılandırma dosyasını açın.
+
+   ```bash
+   sudo nano /etc/aziot/config.toml
+   ```
+
+6. Değerini `hostname` DNS adınızla değiştirin.
+
+7. Dosyayı kaydedip kapatın ve sonra IoT Edge değişiklikleri uygulayın.
+
+   ```bash
+   sudo iotedge config apply
+   ```
+
+:::moniker-end
+<!-- end 1.2 -->
 
 ## <a name="cant-get-the-iot-edge-daemon-logs-on-windows"></a>Windows 'da IoT Edge Daemon günlükleri alınamıyor
 
@@ -343,7 +379,7 @@ IoT Edge Daemon geçerli bir yapılandırma dosyası ile etkin, ancak edgeAgent 
 
 **Kök nedeni:**
 
-Bir ağ geçidinin arkasındaki cihazların IoT Edge, `parent_hostname` config. YAML dosyasının alanında belirtilen üst IoT Edge cihazdan modül görüntülerini alın. `Could not perform HTTP request`Hata, alt CIHAZıN http aracılığıyla üst cihazına erişemeyeceği anlamına gelir.
+Bir ağ geçidinin arkasındaki cihazların IoT Edge, yapılandırma dosyasının alanında belirtilen üst IoT Edge cihazdan modül görüntülerini alır `parent_hostname` . `Could not perform HTTP request`Hata, alt CIHAZıN http aracılığıyla üst cihazına erişemeyeceği anlamına gelir.
 
 **Çözünürlüğüne**
 

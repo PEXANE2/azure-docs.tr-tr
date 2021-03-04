@@ -1,17 +1,16 @@
 ---
 title: Veri toplama kuralları için Kaynak Yöneticisi şablonu örnekleri
 description: Azure Izleyici 'de veri toplama kuralları ve sanal makineler arasında ilişkiler oluşturmak için örnek Azure Resource Manager şablonları.
-ms.subservice: logs
 ms.topic: sample
 author: bwren
 ms.author: bwren
 ms.date: 11/17/2020
-ms.openlocfilehash: 60de25231f5fad3e7b1ddec21048d048e31f3416
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 5ceaaa7ed9288299019f3e87d8c214e53013f5ec
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101737333"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102045760"
 ---
 # <a name="resource-manager-template-samples-for-data-collection-rules-in-azure-monitor"></a>Azure Izleyici 'de veri toplama kuralları için Kaynak Yöneticisi şablonu örnekleri
 Bu makalede, Azure Izleyici 'de sanal makineler için [Log Analytics aracısını](./log-analytics-agent.md) ve [Tanılama uzantısını](./diagnostics-extension-overview.md) dağıtmak ve yapılandırmak üzere örnek [Azure Resource Manager şablonlar](../../azure-resource-manager/templates/template-syntax.md) bulunur. Her örnek, şablona sağlanacak örnek değerleri içeren bir şablon dosyası ve bir parametre dosyası içerir.

@@ -197,6 +197,9 @@
           href: supported-languages.md
         - name: C# (sınıf kitaplığı)
           href: functions-dotnet-class-library.md
+        - name: C# (Yalıtılmış işlem)
+          displayName: '.NET isolated, .NET 5'
+          href: dotnet-isolated-process-guide.md
         - name: C# betiği (.csx)
           href: functions-reference-csharp.md
         - name: F#

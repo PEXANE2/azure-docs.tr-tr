@@ -1,95 +1,99 @@
 ---
 title: Azure geçişi sunucu değerlendirmesi ' nde aracısız bağımlılık analizini ayarlama
 description: Azure geçişi sunucu değerlendirmesi ' nde aracısız bağımlılık analizini ayarlayın.
-author: rashi-ms
-ms.author: rajosh
+author: vikram1988
+ms.author: vibansa
 ms.manager: abhemraj
 ms.topic: how-to
 ms.date: 6/08/2020
-ms.openlocfilehash: d84c85326c6f5d87189a2c24a3b13654f157cb05
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: c3aa2aea764af8469152b007e60427724fea398a
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96754292"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102045862"
 ---
-# <a name="analyze-machine-dependencies-agentless"></a>Makine bağımlılıklarını analiz etme (aracısız)
+# <a name="analyze-server-dependencies-agentless"></a>Sunucu bağımlılıklarını çözümleme (aracısız)
 
-Bu makalede, Azure geçişi: Sunucu değerlendirmesi ' nde aracısız bağımlılık analizinin nasıl ayarlanacağı açıklanır. [Bağımlılık Analizi](concepts-dependency-visualization.md) , değerlendirme ve Azure 'a geçiş için makineler genelinde bağımlılıkları belirlemenize ve anlamanıza yardımcı olur.
-
+Bu makalede, Azure geçişi: Sunucu değerlendirmesi kullanılarak aracısız bağımlılık analizinin nasıl ayarlanacağı açıklanır. [Bağımlılık Analizi](concepts-dependency-visualization.md) , Azure 'a değerlendirme ve geçiş için sunucular genelinde bağımlılıkları belirlemenize ve anlamanıza yardımcı olur.
 
 > [!IMPORTANT]
-> Aracısız bağımlılık görselleştirmesi Şu anda Azure geçişi: Sunucu değerlendirmesi aracında bulunan VMware VM 'Leri için önizleme aşamasındadır.
-> Özellikler sınırlı veya tamamlanmamış olabilir.
+> Aracısız bağımlılık analizi, Azure geçişi: Sunucu değerlendirmesi aracı ile keşfedilen, VMware ortamınızda çalışan sunucular için şu anda önizlemededir.
 > Bu önizleme müşteri desteği kapsamında ele alınmıştır ve üretim iş yükleri için kullanılabilir.
 > Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="current-limitations"></a>Geçerli sınırlamalar
 
-- Bağımlılık analizi görünümünde, şu anda bir gruptan bir sunucu ekleyemez veya kaldırabilirsiniz.
+- Bağımlılık analizi görünümünde, şu anda bir gruba bir sunucu ekleyemez veya gruptan sunucu kaldıramazsınız.
 - Bir sunucu grubu için bağımlılık eşlemesi Şu anda kullanılamıyor.
-- Bir Azure geçişi projesinde, bağımlılık verileri koleksiyonu 1000 sunucuları için aynı anda ayarlanabilir. 1000 toplu işler halinde sıralama yaparak daha yüksek sayıda sunucu çözümleyebilirsiniz.
+- Bir Azure geçişi projesinde, bağımlılık verileri koleksiyonu 1000 sunucuları için eşzamanlı olarak etkinleştirilebilir. 1000 sunucu toplu işleri halinde sıralama yaparak daha yüksek sayıda sunucu çözümleyebilirsiniz.
 
 ## <a name="before-you-start"></a>Başlamadan önce
 
-- Desteklenen işletim sistemlerini ve gerekli izinleri [gözden geçirin](migrate-support-matrix-vmware.md#dependency-analysis-requirements-agentless) .
-- Şunları yaptığınızdan emin olun:
-    - Bir Azure geçişi projesi vardır. Bunu yapmazsanız, şimdi bir tane [oluşturun](./create-manage-projects.md) .
-    - Projeye Azure geçişi: Sunucu değerlendirmesi aracını [eklemişseniz](how-to-assess.md) ' i kontrol edin.
-    - Şirket içi makineleri keşfetmeye yönelik bir [Azure geçiş](migrate-appliance.md) gereci ayarlayın. VMware VM 'Leri için [bir gereç ayarlayın](how-to-set-up-appliance-vmware.md) . Gereç, şirket içi makineleri bulur ve Azure geçişi: Sunucu değerlendirmesi ' ne meta veri ve performans verileri gönderir.
-- Çözümlemek istediğiniz her VM 'de VMware araçlarının (10,2 ' den sonraki bir sürüm) yüklü olduğundan emin olun.
+- Azure geçişi: Sunucu değerlendirmesi aracı eklenmiş [bir Azure geçişi projesi oluşturduğunuzdan](./create-manage-projects.md) emin olun.
+- Bağımlılık analizi gerçekleştirmek için [VMware gereksinimlerini](migrate-support-matrix-vmware.md#vmware-requirements) gözden geçirin.
+- Gereci ayarlamadan önce [gereç gereksinimlerini](migrate-support-matrix-vmware.md#azure-migrate-appliance-requirements) gözden geçirin.
+- Sunucularda bağımlılık analizini etkinleştirmeden önce [bağımlılık Analizi gereksinimlerini gözden geçirin](migrate-support-matrix-vmware.md#dependency-analysis-requirements-agentless) .
 
+## <a name="deploy-and-configure-the-azure-migrate-appliance"></a>Azure geçişi gereci dağıtma ve yapılandırma
 
-## <a name="create-a-user-account-for-discovery"></a>Bulma için bir kullanıcı hesabı oluşturma
+1. Azure geçişi gerecini dağıtmaya yönelik gereksinimleri [gözden geçirin](migrate-appliance.md#appliance---vmware) .
+2. Gereçlerin [ortak](migrate-appliance.md#public-cloud-urls) ve [kamu bulutlarında](migrate-appliance.md#government-cloud-urls)erişmesi gereken Azure URL 'lerini gözden geçirin.
+3. Bulma ve değerlendirme sırasında gereç tarafından toplanan [verileri gözden geçirin](migrate-appliance.md#collected-data---vmware) .
+4. Gereç [için bağlantı noktası](migrate-support-matrix-vmware.md#port-access-requirements) erişim gereksinimleri.
+5. Bulmayı başlatmak için [Azure geçişi gereci dağıtın](how-to-set-up-appliance-vmware.md) . Gereci dağıtmak için, bir OVA şablonunu indirip vCenter Server çalıştıran bir sunucu oluşturmak için VMware 'ye içeri aktarabilirsiniz. Gereci dağıttıktan sonra Azure geçişi projesi ile kaydetmeniz ve bulmayı başlatmak için yapılandırmanız gerekir.
+6. Gereci yapılandırırken, Gereç Yapılandırma Yöneticisi 'nde aşağıdakileri belirtmeniz gerekir:
+    - Bağlanmak istediğiniz vCenter Server ayrıntıları.
+    - VMware ortamınızdaki sunucuları bulmaya yönelik kapsamlı kimlik bilgileri vCenter Server.
+    - Etki alanı/Windows (etki alanı olmayan)/Linux (etki alanı olmayan) kimlik bilgileri olabilen sunucu kimlik bilgileri. Kimlik bilgilerini ve bunları nasıl işleyeceğinizi [öğrenmek hakkında daha fazla bilgi edinin](add-server-credentials.md) .
 
-Sunucu değerlendirmesinin bağımlılıkları saptamak için VM 'ye erişebilmeleri için bir kullanıcı hesabı ayarlayın. Windows ve Linux VM 'Leri için hesap gereksinimleri hakkında [bilgi edinin](migrate-support-matrix-vmware.md#dependency-analysis-requirements-agentless) .
+## <a name="verify-permissions"></a>İzinleri doğrulama
 
+- Bulma ve değerlendirme için [vCenter Server salt okunurdur bir hesap oluşturmanız](./tutorial-discover-vmware.md#prepare-vmware) gerekir. Bir salt okuma hesabının   >  , bağımlılık verilerini toplamak üzere sunucularla etkileşime geçmesini sağlamak için sanal makineler **Konuk işlemleri** için etkinleştirilmiş ayrıcalıklara ihtiyacı vardır.
+- Sunucu değerlendirmesi, bağımlılık verilerini toplamak üzere sunucuya erişebilmeleri için bir kullanıcı hesabına ihtiyacınız vardır. Windows ve Linux sunucuları için hesap gereksinimleri hakkında [bilgi edinin](migrate-support-matrix-vmware.md#dependency-analysis-requirements-agentless) .
 
-## <a name="add-the-user-account-to-the-appliance"></a>Kullanıcı hesabını gereç 'e ekleme
+### <a name="add-credentials-and-initiate-discovery"></a>Kimlik bilgileri ekleme ve bulmayı başlatma
 
-Kullanıcı hesabını gereç öğesine ekleyin.
+1. Gereç yapılandırma yöneticisini açın, gerecin önkoşul denetimlerini ve kaydını doldurun.
+2. **Kimlik bilgilerini ve bulma kaynaklarını yönetme** paneline gidin.
+1.  **1. Adım: vCenter Server kimlik bilgilerini belirtin** bölümünde, gerecin vCenter Server çalıştıran sunucuları keşfetmesi için kullanacağı vCenter Server hesabı için kimlik bilgilerini sağlamak üzere **kimlik bilgileri ekle** ' ye tıklayın.
+1. **2. Adım: vCenter Server ayrıntıları belirtin** bölümünde, açılan listeden kimlik bilgileri için kolay ad seçmek üzere **bulma kaynağı Ekle** ' ye tıklayın, :::image type="content" source="./media/tutorial-discover-vmware/appliance-manage-sources.png" alt-text="vCenter Server Ayrıntılar için gereç Yapılandırma Yöneticisi"::: ' nde vCenter Server örneği panel 3 ' ün **IP adresini/FQDN** 'sini belirtin
+1. **3. Adım: yazılım envanterini gerçekleştirmek için sunucu kimlik bilgilerini sağlama, aracısız bağımlılık Analizi ve SQL Server örnekleri ve veritabanlarının bulunması**, yazılım envanterini başlatmak için birden çok sunucu kimlik bilgisi sağlamak üzere **kimlik bilgileri ekle** ' ye tıklayın.
+1. VCenter Server bulmayı **başlatmak için bulmayı Başlat**' a tıklayın.
 
-1. Gereç Yönetimi uygulamasını açın. 
-2. **VCenter ayrıntıları sağla** paneline gidin.
-3. **VM 'lerde uygulama ve bağımlılıkları keşfet** bölümünde **kimlik bilgileri ekle** ' ye tıklayın.
-3. **İşletim sistemini** seçin, hesap için bir kolay ad ve **Kullanıcı adı** / **parolasını** girin
-6. **Kaydet**’e tıklayın.
-7. **Kaydet ve bulmayı Başlat**' a tıklayın.
-
-    ![VM Kullanıcı hesabı ekle](./media/how-to-create-group-machine-dependencies-agentless/add-vm-credential.png)
+ VCenter Server bulma işlemi tamamlandıktan sonra, Gereç yüklü uygulamalar, roller ve Özellikler (yazılım envanteri) bulmayı başlatır. Yazılım envanteri sırasında, eklenen sunucu kimlik bilgileri sunuculara göre tekrarlanacaktır ve aracısız bağımlılık analizi için onaylanır. Sunucular için aracısız bağımlılık analizini portaldan etkinleştirebilirsiniz. Aracısız bağımlılık analizini etkinleştirmek için yalnızca doğrulamanın başarılı olduğu sunucular seçilebilir.
 
 ## <a name="start-dependency-discovery"></a>Bağımlılık bulmayı Başlat
 
-Üzerinde bağımlılık bulmayı etkinleştirmek istediğiniz makineleri seçin. 
+Bağımlılık bulmayı etkinleştirmek istediğiniz sunucuları seçin.
 
 1. **Azure geçişi: Sunucu değerlendirmesi**' nde, **bulunan sunucular**' a tıklayın.
-2. **Bağımlılık Analizi** simgesine tıklayın.
-3. **Sunucu Ekle**' ye tıklayın.
-4. **Sunucu Ekle** sayfasında, ilgili makineleri bulan gereci seçin.
-5. Makine listesinden makineleri seçin.
-6. **Sunucu Ekle**' ye tıklayın.
+2. Bulmayı gözden geçirmek istediğiniz **gereç adını** seçin.
+1. **Bağımlılıklar (aracısız)** sütununda sunucuların doğrulama durumunu görebilirsiniz.
+1. **Bağımlılık Analizi** açılır düğmesine tıklayın.
+1. **Sunucu Ekle**' ye tıklayın.
+1. **Sunucu Ekle** sayfasında, bağımlılık analizini etkinleştirmek istediğiniz sunucuları seçin. Bağımlılık eşlemesini yalnızca doğrulamanın başarılı olduğu sunucularda etkinleştirebilirsiniz. Sonraki doğrulama döngüsünün son doğrulama zaman damgasından sonra 24 saat çalışır.
+1. Sunucuları seçtikten sonra **Sunucu Ekle**' ye tıklayın.
 
-    ![Bağımlılık bulmayı Başlat](./media/how-to-create-group-machine-dependencies-agentless/start-dependency-discovery.png)
+:::image type="content" source="./media/how-to-create-group-machine-dependencies-agentless/start-dependency-discovery.png" alt-text="Bağımlılık analizini Başlat":::
 
-Bağımlılık bulmayı başlattıktan sonra altı saat etrafında bağımlılıkları görselleştirebilirsiniz. Çeşitli makineleri etkinleştirmek istiyorsanız, [PowerShell](#start-or-stop-dependency-discovery-using-powershell) 'i kullanarak bunu yapabilirsiniz.
+Sunucularda bağımlılık analizini etkinleştirdikten sonra, altı saat etrafında bağımlılıkları görselleştirebilirsiniz. Bağımlılık analizi için aynı anda birden çok sunucuyu etkinleştirmek istiyorsanız, [PowerShell](#start-or-stop-dependency-analysis-using-powershell) 'i kullanarak bunu yapabilirsiniz.
 
 ## <a name="visualize-dependencies"></a>Bağımlılıkları görselleştirin
 
 1. **Azure geçişi: Sunucu değerlendirmesi**' nde, **bulunan sunucular**' a tıklayın.
-2. Görüntülemek istediğiniz makineyi arayın.
-3. **Bağımlılıklar** sütununda, **bağımlılıkları görüntüle** ' ye tıklayın.
-4. **Zaman süresi** açılan listesini kullanarak Haritayı görüntülemek istediğiniz zaman aralığını değiştirin.
-5. Seçilen makineye bağımlılığı olan makineleri listelemek için **istemci** grubunu genişletin.
-6. Seçili makineden bağımlılığı olan makineleri listelemek için **bağlantı noktası** grubunu genişletin.
-7. Bağımlı makinelerin herhangi birinin harita görünümüne gitmek için, makine adına tıklayın > **sunucu haritasını yükle**
+1. Bulmayı gözden geçirmek istediğiniz **gereç adını** seçin.
+1. Bağımlılıklarını görmek istediğiniz sunucu için arama yapın.
+1. **Bağımlılıklar (aracısız)** sütununun altında, **bağımlılıkları görüntüle** ' ye tıklayın.
+1. **Zaman süresi** açılan listesini kullanarak Haritayı görüntülemek istediğiniz zaman aralığını değiştirin.
+1. Seçili sunucuya bağımlılığı olan sunucuları listelemek için **istemci** grubunu genişletin.
+1. Seçili sunucudan bağımlılığı olan sunucuları listelemek için **bağlantı noktası** grubunu genişletin.
+1. Bağımlı sunuculardan herhangi birinin harita görünümüne gitmek için sunucu adına tıklayın > sunucu **haritasını yükle** 
+ :::image type="content" source="./media/how-to-create-group-machine-dependencies-agentless/load-server-map.png" alt-text="sunucu bağlantı noktası grubu ' nu genişletin ve sunucu haritasını yükleyin":::
+:::image type="content" source="./media/how-to-create-group-machine-dependencies-agentless/expand-client-group.png" alt-text="İstemci grubunu Genişlet":::
 
-    ![Sunucu bağlantı noktası grubunu ve yükleme sunucusu haritasını Genişlet](./media/how-to-create-group-machine-dependencies-agentless/load-server-map.png)
-
-    ![İstemci grubunu Genişlet ](./media/how-to-create-group-machine-dependencies-agentless/expand-client-group.png)
-
-8. Her bağımlılığın işlem düzeyi ayrıntılarını görüntülemek için seçili makineyi genişletin.
-
-    ![İşlem göstermek için sunucuyu genişlet](./media/how-to-create-group-machine-dependencies-agentless/expand-server-processes.png)
+8. Her bağımlılığın işlem düzeyi ayrıntılarını görüntülemek için seçili sunucuyu genişletin.
+:::image type="content" source="./media/how-to-create-group-machine-dependencies-agentless/expand-server-processes.png" alt-text="İşlem göstermek için sunucuyu genişlet":::
 
 > [!NOTE]
 > Bağımlılık için işlem bilgileri her zaman kullanılabilir değildir. Kullanılabilir değilse, bağımlılık "Bilinmeyen işlem" olarak işaretlenen işlemle birlikte gösterilmiştir.
@@ -97,53 +101,49 @@ Bağımlılık bulmayı başlattıktan sonra altı saat etrafında bağımlılı
 ## <a name="export-dependency-data"></a>Bağımlılık verilerini dışarı aktar
 
 1. **Azure geçişi: Sunucu değerlendirmesi**' nde, **bulunan sunucular**' a tıklayın.
-2. **Bağımlılık Analizi** simgesine tıklayın.
+2. **Bağımlılık Analizi** açılır düğmesine tıklayın.
 3. **Uygulama bağımlılıklarını dışarı aktar**' a tıklayın.
-4. **Uygulama bağımlılıklarını dışarı aktar** sayfasında, ilgili makineleri bulan gereci seçin.
+4. **Uygulama bağımlılıklarını dışarı aktar** sayfasında, istenen sunucuları bulan gereç adını seçin.
 5. Başlangıç saatini ve bitiş saatini seçin. Verileri yalnızca son 30 güne indirebileceğinizi unutmayın.
 6. **Bağımlılığı dışarı aktar** öğesine tıklayın.
 
-Bağımlılık verileri bir CSV biçiminde verilir ve indirilir. İndirilen dosya, bağımlılık analizi için etkinleştirilen tüm makinelerde bağımlılık verilerini içerir. 
-
-![Bağımlılıkları dışarı aktar](./media/how-to-create-group-machine-dependencies-agentless/export.png)
+Bağımlılık verileri bir CSV biçiminde verilir ve indirilir. İndirilen dosya, bağımlılık analizi için etkinleştirilen tüm sunuculardaki bağımlılık verilerini içerir. 
+:::image type="content" source="./media/how-to-create-group-machine-dependencies-agentless/export.png" alt-text="Bağımlılıkları dışarı aktar":::
 
 ### <a name="dependency-information"></a>Bağımlılık bilgileri
 
-İçe aktarılmış CSV içindeki her satır, belirtilen zaman yuvasında gözlemlenen bir bağımlılığa karşılık gelir. 
+İçe aktarılmış CSV içindeki her satır, belirtilen zaman yuvasında gözlemlenen bir bağımlılığa karşılık gelir.
 
 Aşağıdaki tablo, dışarıya aktarılmış CSV içindeki alanları özetler. Sunucu adı, uygulama ve işlem alanlarının yalnızca aracısız bağımlılık Analizi etkin olan sunucular için doldurulduğunu unutmayın.
 
 **Alan adı** | **Ayrıntılar**
 --- | --- 
 Timeslot | Bağımlılığın gözlemlendiği zaman lotu. <br/> Bağımlılık verileri, şu anda 6 saatlik yuva üzerinden yakalanır.
-Kaynak sunucu adı | Kaynak makinenin adı 
-Kaynak uygulama | Kaynak makinedeki uygulamanın adı 
-Kaynak işlem | Kaynak makinedeki işlemin adı 
-Hedef sunucu adı | Hedef makinenin adı
-Hedef IP | Hedef makinenin IP adresi
-Hedef uygulama | Hedef makinedeki uygulamanın adı
-Hedef işlem | Hedef makinedeki işlemin adı 
-Hedef bağlantı noktası | Hedef makinedeki bağlantı noktası numarası
-
+Kaynak sunucu adı | Kaynak sunucunun adı 
+Kaynak uygulama | Kaynak sunucudaki uygulamanın adı  
+Kaynak işlem | Kaynak sunucudaki işlemin adı  
+Hedef sunucu adı | Hedef sunucunun adı
+Hedef IP | Hedef sunucunun IP adresi
+Hedef uygulama | Hedef sunucudaki uygulamanın adı
+Hedef işlem | Hedef sunucudaki işlemin adı  
+Hedef bağlantı noktası | Hedef sunucudaki bağlantı noktası numarası
 
 ## <a name="stop-dependency-discovery"></a>Bağımlılık bulmayı durdur
 
-Üzerinde bağımlılık bulmayı durdurmak istediğiniz makineleri seçin. 
+Bağımlılık bulmayı durdurmak istediğiniz sunucuları seçin.
 
 1. **Azure geçişi: Sunucu değerlendirmesi**' nde, **bulunan sunucular**' a tıklayın.
-2. **Bağımlılık Analizi** simgesine tıklayın.
-3. **Sunucuları kaldır**' a tıklayın.
-3. **Sunucuları kaldır** sayfasında, bağımlılık bulmayı durdurmayı planladığınız VM 'leri bulmak **için gereken gereci** seçin.
-4. Makine listesinden makineleri seçin.
-5. **Sunucuları kaldır**' a tıklayın.
+1. Bulmayı gözden geçirmek istediğiniz **gereç adını** seçin.
+1. **Bağımlılık Analizi** açılır düğmesine tıklayın.
+1. **Sunucuları kaldır**' a tıklayın.
+1. **Sunucuları kaldır** sayfasında, bağımlılık analizi için durdurmak istediğiniz sunucuyu seçin.
+1. Sunucuları seçtikten sonra **sunucuları kaldır**' a tıklayın.
 
-Birden çok makinede bağımlılığı durdurmak istiyorsanız, [PowerShell](#start-or-stop-dependency-discovery-using-powershell) 'i kullanarak bunu yapabilirsiniz.
+Aynı anda birden çok sunucuda bağımlılığı durdurmak istiyorsanız, [PowerShell](#start-or-stop-dependency-analysis-using-powershell) 'i kullanarak bunu yapabilirsiniz.
 
-
-## <a name="start-or-stop-dependency-discovery-using-powershell"></a>PowerShell kullanarak bağımlılık bulmayı başlatma veya durdurma
+## <a name="start-or-stop-dependency-analysis-using-powershell"></a>PowerShell kullanarak bağımlılık analizini başlatma veya durdurma
 
 GitHub 'daki [Azure PowerShell örnekleri](https://github.com/Azure/azure-docs-powershell-samples/tree/master/azure-migrate/dependencies-at-scale) deposundan PowerShell modülünü indirin.
-
 
 ### <a name="log-in-to-azure"></a>Azure'da oturum açma
 
@@ -171,23 +171,23 @@ GitHub 'daki [Azure PowerShell örnekleri](https://github.com/Azure/azure-docs-p
 
 ### <a name="enable-or-disable-dependency-data-collection"></a>Bağımlılık veri toplamayı etkinleştir veya devre dışı bırak
 
-1. Aşağıdaki komutları kullanarak, Azure geçişi projenizde bulunan VMware VM 'lerinin listesini alın. Aşağıdaki örnekte, proje adı FabrikamDemoProject ve ait olduğu kaynak grubu FabrikamDemoRG. Makinelerin listesi FabrikamDemo_VMs.csv ' de kaydedilecek
+1. Aşağıdaki komutları kullanarak, Azure geçişi projenizde bulunan sunucuların listesini alın. Aşağıdaki örnekte, proje adı FabrikamDemoProject ve ait olduğu kaynak grubu FabrikamDemoRG. Sunucu listesi FabrikamDemo_VMs.csv ' de kaydedilecek
 
     ```PowerShell
     Get-AzMigDiscoveredVMwareVMs -ResourceGroupName "FabrikamDemoRG" -ProjectName "FabrikamDemoProject" -OutputCsvFile "FabrikamDemo_VMs.csv"
     ```
 
-    Dosyasında, VM görünen adını, bağımlılık koleksiyonunun geçerli durumunu ve bulunan tüm VM 'lerin ARM KIMLIĞINI görebilirsiniz. 
+    Dosyasında, sunucu görünen adını, bağımlılık koleksiyonunun geçerli durumunu ve bulunan tüm sunucuların ARM KIMLIĞINI görebilirsiniz. 
 
-2. Bağımlılıkları etkinleştirmek veya devre dışı bırakmak için bir giriş CSV dosyası oluşturun. Dosyanın "ARM KIMLIĞI" üst bilgisine sahip bir sütunu olması gerekir. CSV dosyasındaki ek üstbilgiler yok sayılır. Önceki adımda oluşturulan dosyayı kullanarak CSV oluşturabilirsiniz. Bağımlılıkları etkinleştirmek veya devre dışı bırakmak istediğiniz VM 'Leri koruyarak dosyanın bir kopyasını oluşturun. 
+2. Bağımlılıkları etkinleştirmek veya devre dışı bırakmak için bir giriş CSV dosyası oluşturun. Dosyanın "ARM KIMLIĞI" üst bilgisine sahip bir sütunu olması gerekir. CSV dosyasındaki ek üstbilgiler yok sayılır. Önceki adımda oluşturulan dosyayı kullanarak CSV oluşturabilirsiniz. Bağımlılıkları etkinleştirmek veya devre dışı bırakmak istediğiniz sunucuları koruyarak dosyanın bir kopyasını oluşturun. 
 
-    Aşağıdaki örnekte, FabrikamDemo_VMs_Enable.csv giriş dosyasındaki VM 'Ler listesinde bağımlılık Analizi etkinleştiriliyor.
+    Aşağıdaki örnekte, FabrikamDemo_VMs_Enable.csv giriş dosyasındaki sunucu listesinde bağımlılık Analizi etkinleştiriliyor.
 
     ```PowerShell
     Set-AzMigDependencyMappingAgentless -InputCsvFile .\FabrikamDemo_VMs_Enable.csv -Enable
     ```
 
-    Aşağıdaki örnekte, FabrikamDemo_VMs_Disable.csv giriş dosyasındaki VM 'Ler listesinde bağımlılık Analizi devre dışı bırakılıyor.
+    Aşağıdaki örnekte, FabrikamDemo_VMs_Disable.csv giriş dosyasındaki sunucu listesinde bağımlılık Analizi devre dışı bırakılıyor.
 
     ```PowerShell
     Set-AzMigDependencyMappingAgentless -InputCsvFile .\FabrikamDemo_VMs_Disable.csv -Disable
@@ -200,23 +200,23 @@ Azure geçişi, aynı anda birçok sunucunun ağ bağlantılarını görselleşt
 1. GitHub 'daki [Azure PowerShell örnekleri](https://github.com/Azure/azure-docs-powershell-samples/tree/master/azure-migrate/dependencies-at-scale) deposundan PowerShell modülünü ve Power BI şablonunu indirin.
 
 2. Aşağıdaki yönergeleri kullanarak Azure 'da oturum açın: 
-- Connect-AzAccount cmdlet 'ini kullanarak Azure aboneliğinizde oturum açın.
+    - Connect-AzAccount cmdlet 'ini kullanarak Azure aboneliğinizde oturum açın.
 
-    ```PowerShell
-    Connect-AzAccount
-    ```
+        ```PowerShell
+        Connect-AzAccount
+        ```
 
-- Azure Kamu kullanıyorsanız, aşağıdaki komutu kullanın.
+    - Azure Kamu kullanıyorsanız, aşağıdaki komutu kullanın.
 
-    ```PowerShell
-    Connect-AzAccount -EnvironmentName AzureUSGovernment
-    ```
+        ```PowerShell
+        Connect-AzAccount -EnvironmentName AzureUSGovernment
+        ```
 
-- Azure geçişi projesini oluşturduğunuz aboneliği seçin 
+    - Azure geçişi projesini oluşturduğunuz aboneliği seçin
 
-    ```PowerShell
-    select-azsubscription -subscription "Fabrikam Demo Subscription"
-    ```
+        ```PowerShell
+        select-azsubscription -subscription "Fabrikam Demo Subscription"
+        ```
 
 3. İndirilen AzMig_Dependencies PowerShell modülünü içeri aktarma
 
@@ -224,7 +224,7 @@ Azure geçişi, aynı anda birçok sunucunun ağ bağlantılarını görselleşt
     Import-Module .\AzMig_Dependencies.psm1
     ```
 
-4. Aşağıdaki komutu çalıştırın. Bu komut, bir CSV 'deki bağımlılıklar verilerini indirir ve Power BI görselleştirme için kullanılabilecek benzersiz bağımlılıkların bir listesini oluşturmak üzere işler. Aşağıdaki örnekte, proje adı FabrikamDemoProject ve ait olduğu kaynak grubu FabrikamDemoRG. Bağımlılıklar, FabrikamAppliance tarafından bulunan makineler için indirilir. Benzersiz bağımlılıklar FabrikamDemo_Dependencies.csv kaydedilir
+4. Aşağıdaki komutu çalıştırın. Bu komut, bir CSV 'deki bağımlılıklar verilerini indirir ve Power BI görselleştirme için kullanılabilecek benzersiz bağımlılıkların bir listesini oluşturmak üzere işler. Aşağıdaki örnekte, proje adı FabrikamDemoProject ve ait olduğu kaynak grubu FabrikamDemoRG. Bağımlılıklar, FabrikamAppliance tarafından bulunan sunucular için indirilir. Benzersiz bağımlılıklar FabrikamDemo_Dependencies.csv kaydedilir
 
     ```PowerShell
     Get-AzMigDependenciesAgentless -ResourceGroup FabrikamDemoRG -Appliance FabrikamAppliance -ProjectName FabrikamDemoProject -OutputCsvFile "FabrikamDemo_Dependencies.csv"
@@ -245,7 +245,6 @@ Azure geçişi, aynı anda birçok sunucunun ağ bağlantılarını görselleşt
 
 7. Sunucu ve işlemlere göre filtreleme ağ bağlantılarının haritasını görselleştirin. Dosyanızı kaydedin.
 
-
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Makineleri](how-to-create-a-group.md) değerlendirme için gruplandırın.
+Değerlendirme için [sunucuları gruplandırın](how-to-create-a-group.md) .

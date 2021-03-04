@@ -8,12 +8,12 @@ ms.date: 11/12/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: c5f28e2c2d370329dbee0fb76284a4b76b2b945e
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: d46ad8238faa42ca657b18b3997407d91a224537
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100376521"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102045930"
 ---
 # <a name="troubleshoot-your-iot-edge-device"></a>IoT Edge cihazınızda sorun giderme
 
@@ -42,7 +42,7 @@ iotedge check
 
 Sorun giderme aracı, bu üç kategoride sıralanan birçok denetimi çalıştırır:
 
-* *Yapılandırma denetimleri* , *config. YAML* ve kapsayıcı altyapısı ile ilgili sorunlar da dahil olmak üzere IoT Edge cihazların buluta bağlanmasını engelleyebilecek ayrıntıları inceler.
+* *Yapılandırma denetimleri* , yapılandırma dosyası ve kapsayıcı altyapısı ile ilgili sorunlar da dahil olmak üzere IoT Edge cihazların buluta bağlanmasını engelleyebilecek ayrıntıları inceler.
 * *Bağlantı denetimleri* , IoT Edge çalışma zamanının konak cihazdaki bağlantı noktalarına erişebileceğini ve tüm IoT Edge bileşenlerinin IoT Hub bağlanabildiğini doğrular. IoT Edge cihaz bir proxy 'nin arkasındaysa bu denetim kümesi hataları döndürür.
 * *Üretime hazırlık denetimleri* , cihaz sertifika YETKILISI (CA) sertifikalarının durumu ve modül günlük dosyası yapılandırması gibi önerilen üretim en iyi uygulamalarına bakar.
 
@@ -102,6 +102,9 @@ Bu komut, bildirilen tüm edgeAgent [özelliklerini](./module-edgeagent-edgehub.
 
 Linux 'ta:
 
+<!-- 1.1 -->
+:::moniker range="iotedge-2018-06"
+
 * IoT Edge Security Manager 'ın durumunu görüntüleyin:
 
    ```bash
@@ -110,32 +113,68 @@ Linux 'ta:
 
 * IoT Edge Güvenlik Yöneticisi 'nin günlüklerini görüntüleyin:
 
-    ```bash
-    sudo journalctl -u iotedge -f
-    ```
+   ```bash
+   sudo journalctl -u iotedge -f
+   ```
 
 * IoT Edge Security Manager 'ın daha ayrıntılı günlüklerini görüntüleyin:
 
-  * IoT Edge Daemon ayarlarını düzenleyin:
+  1. IoT Edge Daemon ayarlarını düzenleyin:
 
-      ```bash
-      sudo systemctl edit iotedge.service
-      ```
+     ```bash
+     sudo systemctl edit iotedge.service
+     ```
 
-  * Aşağıdaki satırları güncelleştirin:
+  2. Aşağıdaki satırları güncelleştirin:
 
-      ```bash
-      [Service]
-      Environment=IOTEDGE_LOG=edgelet=debug
-      ```
+     ```bash
+     [Service]
+     Environment=IOTEDGE_LOG=edgelet=debug
+     ```
 
-  * IoT Edge güvenlik cini 'nı yeniden başlatın:
+  3. IoT Edge güvenlik cini 'nı yeniden başlatın:
 
-      ```bash
-      sudo systemctl cat iotedge.service
-      sudo systemctl daemon-reload
-      sudo systemctl restart iotedge
-      ```
+     ```bash
+     sudo systemctl cat iotedge.service
+     sudo systemctl daemon-reload
+     sudo systemctl restart iotedge
+     ```
+<!--end 1.1 -->
+:::moniker-end
+
+<!-- 1.2 -->
+:::moniker range=">=iotedge-2020-11"
+
+* IoT Edge sistem hizmetlerinin durumunu görüntüleyin:
+
+   ```bash
+   sudo iotedge system status
+   ```
+
+* IoT Edge sistem hizmetlerinin günlüklerini görüntüleyin:
+
+   ```bash
+   sudo iotedge system logs -- -f
+   ```
+
+* IoT Edge sistem hizmetlerinin daha ayrıntılı günlüklerini görüntülemek için hata ayıklama düzeyi günlüklerini etkinleştirin:
+
+  1. Hata ayıklama düzeyi günlüklerini etkinleştirin.
+
+     ```bash
+     sudo iotedge system set-log-level debug
+     sudo iotedge system restart
+     ```
+
+  1. Hata ayıkladıktan sonra varsayılan bilgi düzeyi günlüklerine geri dönün.
+
+     ```bash
+     sudo iotedge system set-log-level info
+     sudo iotedge system restart
+     ```
+
+<!-- end 1.2 -->
+:::moniker-end
 
 Windows'da:
 
@@ -159,52 +198,17 @@ Windows'da:
 
 * IoT Edge Security Manager 'ın daha ayrıntılı günlüklerini görüntüleyin:
 
-  * Sistem düzeyi ortam değişkeni ekleyin:
+  1. Sistem düzeyi ortam değişkeni ekleyin:
 
-      ```powershell
-      [Environment]::SetEnvironmentVariable("IOTEDGE_LOG", "debug", [EnvironmentVariableTarget]::Machine)
-      ```
+     ```powershell
+     [Environment]::SetEnvironmentVariable("IOTEDGE_LOG", "debug", [EnvironmentVariableTarget]::Machine)
+     ```
 
-  * IoT Edge güvenlik cini 'nı yeniden başlatın:
+  2. IoT Edge güvenlik cini 'nı yeniden başlatın:
 
-      ```powershell
-      Restart-Service iotedge
-      ```
-
-### <a name="if-the-iot-edge-security-manager-is-not-running-verify-your-yaml-configuration-file"></a>IoT Edge Güvenlik Yöneticisi çalışmıyorsa, YAML yapılandırma dosyanızı doğrulayın
-
-> [!WARNING]
-> YAML dosyaları girintileme olarak sekme içeremez. Bunun yerine 2 boşluk kullanın. Üst düzey öğelerin başında boşluk olmaması gerekir.
-
-Linux 'ta:
-
-   ```bash
-   sudo nano /etc/iotedge/config.yaml
-   ```
-
-Windows'da:
-
-   ```cmd
-   notepad C:\ProgramData\iotedge\config.yaml
-   ```
-
-### <a name="restart-the-iot-edge-security-manager"></a>IoT Edge Güvenlik Yöneticisi 'ni yeniden başlatın
-
-Sorun hala sürdürülürken, IoT Edge Güvenlik Yöneticisi 'ni yeniden başlatmayı deneyebilirsiniz.
-
-Linux 'ta:
-
-   ```cmd
-   sudo systemctl restart iotedge
-   ```
-
-Windows'da:
-
-   ```powershell
-   Stop-Service iotedge -NoWait
-   sleep 5
-   Start-Service iotedge
-   ```
+     ```powershell
+     Restart-Service iotedge
+     ```
 
 ## <a name="check-container-logs-for-issues"></a>Sorunlar için kapsayıcı günlüklerine bakın
 
@@ -217,6 +221,9 @@ iotedge logs <container name>
 Ayrıca, Bu modülün günlüklerini Azure Blob depolama alanına yüklemek için cihazınızdaki bir modüle [doğrudan yöntem](how-to-retrieve-iot-edge-logs.md#upload-module-logs) çağrısı kullanabilirsiniz.
 
 ## <a name="view-the-messages-going-through-the-iot-edge-hub"></a>IoT Edge hub 'ından giden iletileri görüntüleme
+
+<!--1.1 -->
+:::moniker range="iotedge-2018-06"
 
 IoT Edge hub 'ından gelen iletileri görüntüleyebilir ve çalışma zamanı kapsayıcılarından ayrıntılı günlüklerden Öngörüler toplayabilirsiniz. Bu kapsayıcılarda ayrıntılı günlükleri açmak için, `RuntimeLogLevel` YAML yapılandırma dosyanızda öğesini ayarlayın. Dosyayı açmak için:
 
@@ -256,7 +263,29 @@ Değiştir `env: {}` :
 
 Dosyayı kaydedin ve IoT Edge Güvenlik Yöneticisi ' ni yeniden başlatın.
 
-IoT Hub ile IoT Edge cihazları arasında gönderilmekte olan iletileri de denetleyebilirsiniz. [Visual Studio Code Için Azure IoT Hub uzantısını](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit)kullanarak bu iletileri görüntüleyin. Daha fazla bilgi için bkz. [Azure IoT ile geliştirme yaparken kullanışlı araç](https://blogs.msdn.microsoft.com/iotdev/2017/09/01/handy-tool-when-you-develop-with-azure-iot/).
+<!-- end 1.1 -->
+:::moniker-end
+
+<!-- 1.2 -->
+:::moniker range=">=iotedge-2020-11"
+
+IoT Edge hub 'ı aracılığıyla giden iletileri görüntüleyebilir ve çalışma zamanı kapsayıcılarından ayrıntılı günlüklerden Öngörüler toplayabilirsiniz. Bu kapsayıcılarda ayrıntılı günlükleri açmak için `RuntimeLogLevel` dağıtım bildiriminde ortam değişkenini ayarlayın.
+
+IoT Edge hub 'ından giden iletileri görüntülemek için, `RuntimeLogLevel` ortam değişkenini `debug` edgeHub modülü için olarak ayarlayın.
+
+Hem edgeHub hem de edgeAgent modülleri bu çalışma zamanı günlüğü ortam değişkenine sahiptir ve varsayılan değer olarak ayarlanır `info` . Bu ortam değişkeni aşağıdaki değerleri alabilir:
+
+* hataya
+* error
+* warning
+* bilgiler
+* hata ayıklama
+* ayrıntılı
+
+<!-- end 1.2 -->
+:::moniker-end
+
+Ayrıca, IoT Hub ile IoT cihazları arasında gönderilen iletileri de denetleyebilirsiniz. [Visual Studio Code Için Azure IoT Hub uzantısını](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit)kullanarak bu iletileri görüntüleyin. Daha fazla bilgi için bkz. [Azure IoT ile geliştirme yaparken kullanışlı araç](https://blogs.msdn.microsoft.com/iotdev/2017/09/01/handy-tool-when-you-develop-with-azure-iot/).
 
 ## <a name="restart-containers"></a>Kapsayıcıları yeniden Başlat
 

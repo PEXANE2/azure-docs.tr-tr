@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 01/07/2021
 ms.author: trbye
 ms.custom: references_regions
-ms.openlocfilehash: 4e626cb5cac29a0e5133eb77cbaff3f4131b8456
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: ebdb6a44a1f20ce0835fc5d7358d99c8224d3d77
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101722356"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102044944"
 ---
 # <a name="language-and-voice-support-for-the-speech-service"></a>Konuşma hizmeti için dil ve ses desteği
 
@@ -94,6 +94,7 @@ https://cris.ai -> Click on Adaptation Data -> scroll down to section "Pronuncia
 | Korece (Kore)                     | `ko-KR` | Ses (20201015)<br>Metin                 |      Yes                     |
 | Letonca (Letonya)                   | `lv-LV` | Metin                                   |                           |
 | Litvanca (Litvanya)             | `lt-LT` | Metin                                   |                           |
+| Malay dili (Malezya)                    | `ms-MY` | Metin                                   |                           |
 | Malta dili (Malta)                     | `mt-MT` | Metin                                   |                           |
 | Marathi dili (Hindistan)                    | `mr-IN` | Metin                                   |                           |
 | Norveççe (Bokmål, Norveç)         | `nb-NO` | Metin                                   |     Yes                      |

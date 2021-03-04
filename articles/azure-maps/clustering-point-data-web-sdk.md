@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: codepen, devx-track-js
-ms.openlocfilehash: e80465cf8d43918e6ed6da8ebb3b96f3f197e887
-ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
+ms.openlocfilehash: 0af327f624d0fed648012ce1d12bacabca688cec
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97679961"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102044196"
 ---
 # <a name="clustering-point-data"></a>Kümeleme noktası verileri
 
@@ -26,17 +26,17 @@ Haritada çok sayıda veri noktasını görselleştirirken, veri noktaları birb
 
 ## <a name="enabling-clustering-on-a-data-source"></a>Veri kaynağında kümeleme etkinleştiriliyor
 
-`DataSource`Seçeneğini true olarak ayarlayarak sınıfta kümelendirmeyi etkinleştirin `cluster` . `ClusterRadius`Yakın noktaları seçecek şekilde ayarlayın ve bunları bir kümede birleştirir. Değeri `ClusterRadius` piksel cinsinden olur. `clusterMaxZoom`Kümeleme mantığının devre dışı bırakılacağı yakınlaştırma düzeyini belirtmek için kullanın. Veri kaynağında kümelemenin nasıl etkinleştirileceği hakkında bir örnek aşağıda verilmiştir.
+`DataSource`Seçeneğini true olarak ayarlayarak sınıfta kümelendirmeyi etkinleştirin `cluster` . `clusterRadius`Yakın noktaları seçmek ve bunları bir kümeyle birleştirmek için ayarlayın. Değeri `clusterRadius` piksel cinsinden olur. `clusterMaxZoom`Kümeleme mantığının devre dışı bırakılacağı yakınlaştırma düzeyini belirtmek için kullanın. Veri kaynağında kümelemenin nasıl etkinleştirileceği hakkında bir örnek aşağıda verilmiştir.
 
 ```javascript
 //Create a data source and enable clustering.
 var datasource = new atlas.source.DataSource(null, {
     //Tell the data source to cluster point data.
     cluster: true,
-
+    
     //The radius in pixels to cluster points together.
     clusterRadius: 45,
-
+    
     //The maximum zoom level in which clustering occurs.
     //If you zoom in more than this, all points are rendered as symbols.
     clusterMaxZoom: 15
@@ -46,7 +46,7 @@ var datasource = new atlas.source.DataSource(null, {
 > [!TIP]
 > İki veri noktası arka planda yakınsa, kullanıcının ne kadar yakın yakınlaştırılmadığına bakılmaksızın kümenin hiçbir şekilde hiçbir şekilde kesintiye uğramaması mümkündür. Bunu çözmek için, `clusterMaxZoom` kümeleme mantığını devre dışı bırakma ve her şeyi görüntüleme seçeneğini belirleyebilirsiniz.
 
-`DataSource`Sınıfın kümeleme için sağladığı ek yöntemler şunlardır:
+`DataSource`Sınıfı, kümeleme ile ilgili aşağıdaki yöntemleri de sağlar.
 
 | Yöntem | Dönüş türü | Açıklama |
 |--------|-------------|-------------|

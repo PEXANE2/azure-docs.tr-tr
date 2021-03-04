@@ -3,17 +3,17 @@ title: Power BI uygulamasıyla Azure maliyetlerini analiz etme
 description: Bu makalede Azure Maliyet Yönetimi Power BI uygulamasını yükleme ve kullanma adımları gösterilmektedir.
 author: bandersmsft
 ms.author: banders
-ms.date: 1/29/2021
+ms.date: 02/19/2021
 ms.topic: how-to
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: benshy
-ms.openlocfilehash: d3439f5a86c445898d95191a32496b5f0c86be0b
-ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
+ms.openlocfilehash: b08ff57f964ef7bc3712c930c222a10ed0f89ef4
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99070166"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102045143"
 ---
 # <a name="analyze-cost-with-the-azure-cost-management-power-bi-app-for-enterprise-agreements-ea"></a>Kurumsal Anlaşmalar (EA) için Azure Maliyet Yönetimi Power BI uygulamasıyla maliyet analizi
 
@@ -36,24 +36,23 @@ Uygulama özelleştirme sınırlandırır. Gereksinimlerinize göre özelleştir
 Uygulamayı yüklemek için:
 
 1. [Azure Maliyet Yönetimi Power BI uygulamasını](https://aka.ms/costmgmt/ACMApp) açın.
-2. Power BI AppSource sayfasında **Şimdi edinin**'i seçin.
-3. Kullanım koşullarını ve gizlilik ilkesini kabul etmek için **Devam**'ı seçin.
-4. **Bu Power BI uygulamasını yükle** kutusunda **Yükle**'yi seçin.
-5. Gerekirse bir çalışma alanı oluşturun ve **Devam**'ı seçin.
-6. Yükleme tamamlandıktan sonra yeni uygulamanızın hazır olduğunu belirten bildirim görüntülenir.
-7. **Uygulamaya gidin**'i seçin.
-8. **Yeni uygulamanızı kullanmaya başlayın** sayfasının **Verilerinizi bağlayın** bölümünde **Bağlan**'ı seçin.  
-  ![Yeni uygulamanızı kullanmaya başlayın - Bağlan](./media/analyze-cost-data-azure-cost-management-power-bi-template-app/connect-data2.png)
-9. Açılan iletişim kutusunda **BillingProfileIdOrEnrollmentNumber** yerine EA kayıt numaranızı girin. Kaç aylık verileri almak istediğinizi belirtin. **Kapsam** için varsayılan **Kayıt Numarası** değerini bırakın ve **İleri**'yi seçin.  
-  ![EA kayıt bilgilerini girme](./media/analyze-cost-data-azure-cost-management-power-bi-template-app/ea-number.png)  
-10. Bir sonraki iletişim kutusu Azure'a bağlanır ve ayrılmış örnek önerileri için gereken verileri alır. *Varsayılan değerleri değiştirmeden bırakın* ve **Oturum aç**’ı seçin.  
-  ![Ekran görüntüsü varsayılan değerlerle Azure Maliyet Yönetimi Uygulamasına Bağlan iletişim kutusunu gösterir.](./media/analyze-cost-data-azure-cost-management-power-bi-template-app/autofit.png)  
-11. Son yükleme adımında EA kaydınızla bağlantı kurulur ve bunun için bir [Kuruluş Yöneticisi](../manage/understand-ea-roles.md) hesabı gerekir. EA kaydı kimliğinizi doğrulamak için **Oturum aç**'ı seçin. Bu adım ayrıca Power BI'da veri yenileme eylemi de başlatır.  
-  ![EA kaydına bağlanma](./media/analyze-cost-data-azure-cost-management-power-bi-template-app/ea-auth.png)  
+1. Power BI AppSource sayfasında **Şimdi edinin**'i seçin.
+1. Kullanım koşullarını ve gizlilik ilkesini kabul etmek için **Devam**'ı seçin.
+1. **Bu Power BI uygulamasını yükle** kutusunda **Yükle**'yi seçin.
+1. Gerekirse bir çalışma alanı oluşturun ve **Devam**'ı seçin.
+1. Yükleme tamamlandıktan sonra yeni uygulamanızın hazır olduğunu belirten bildirim görüntülenir.
+1. Yüklediğiniz uygulamayı seçin.
+1. Başlarken sayfasında, **verilerinizi bağla**' yı seçin.
+    :::image type="content" source="./media/analyze-cost-data-azure-cost-management-power-bi-template-app/connect-your-data.png" alt-text="Veri bağlantısını bağlamayı vurgulayan ekran görüntüsü." lightbox="./media/analyze-cost-data-azure-cost-management-power-bi-template-app/connect-your-data.png" :::
+1. Açılan iletişim kutusunda **BillingProfileIdOrEnrollmentNumber** yerine EA kayıt numaranızı girin. Kaç aylık verileri almak istediğinizi belirtin. **Kapsam** için varsayılan **Kayıt Numarası** değerini bırakın ve **İleri**'yi seçin.  
+    :::image type="content" source="./media/analyze-cost-data-azure-cost-management-power-bi-template-app/ea-number.png" alt-text="E-kayıt bilgilerini nereye girileceğini gösteren ekran görüntüsü." lightbox="./media/analyze-cost-data-azure-cost-management-power-bi-template-app/ea-number.png" :::
+1. Sonraki iletişim kutusu Azure 'a bağlanır ve verileri alır. *Varsayılan değerleri yapılandırılmış olarak bırakın* ve **oturum aç ' ı seçin ve devam edin**.  
+    :::image type="content" source="./media/analyze-cost-data-azure-cost-management-power-bi-template-app/autofit.png" alt-text="Varsayılan değerlerle Azure maliyet yönetimi uygulamasına Bağlan iletişim kutusunu gösteren ekran görüntüsü." lightbox="./media/analyze-cost-data-azure-cost-management-power-bi-template-app/autofit.png" :::
+1. Son yükleme adımında EA kaydınızla bağlantı kurulur ve bunun için bir [Kuruluş Yöneticisi](../manage/understand-ea-roles.md) hesabı gerekir. Tüm varsayılan değerleri bırakın. **Oturum aç ve Bağlan ' ı** seçin.  
+    :::image type="content" source="./media/analyze-cost-data-azure-cost-management-power-bi-template-app/ea-auth.png" alt-text="Azure maliyet yönetimi uygulamasına Bağlan iletişim kutusunu ile bağlanmak için varsayılan değerlerle gösteren ekran görüntüsü." lightbox="./media/analyze-cost-data-azure-cost-management-power-bi-template-app/ea-auth.png" :::
+1. EA kaydınıza kimlik doğrulamanız istenir. Power BI kimlik doğrulaması yapın. Kimlik doğrulamasından geçtikten sonra bir Power BI veri yenilemesi başlar.
     > [!NOTE]
     > Veri yenileme işleminin tamamlanması biraz zaman alabilir. Süre, belirtilen ay sayısına ve eşitlenmesi gereken veri miktarına göre değişir.
-12. Veri yenileme durumunu denetlemek için çalışma alanında **Veri kümeleri** sekmesini seçin. Yenilendi zaman damgasının yanına bakın. Güncelleştirme devam ediyorsa, yenilemenin devam ettiğini gösteren bir gösterge görürsünüz.  
-  ![Verileri yenile](./media/analyze-cost-data-azure-cost-management-power-bi-template-app/data-refresh2.png)
 
 Veri yenileme işlemi tamamlandıktan sonra, önceden oluşturulmuş raporları görüntülemek için Azure Maliyet Yönetimi uygulamasını seçin.
 
@@ -78,11 +77,11 @@ Uygulamada aşağıdaki raporlar mevcuttur.
 
 **Windows Server AHB Kullanımı**: Bu rapor, Azure Hibrit Avantajı'nın etkinleştirilmiş olduğu sanal makine sayısını gösterir. Ayrıca sanal makineler tarafından kullanılan çekirdek/vCPU sayısını da gösterir.
 
-![Azure Hibrit Avantajları tam raporu](./media/analyze-cost-data-azure-cost-management-power-bi-template-app/ahb-report-full.png)
+:::image type="content" source="./media/analyze-cost-data-azure-cost-management-power-bi-template-app/ahb-report-full.png" alt-text="Tam Azure hibrit avantajları raporunun gösterildiği ekran görüntüsü." lightbox="./media/analyze-cost-data-azure-cost-management-power-bi-template-app/ahb-report-full.png" :::
 
 Bu rapor ayrıca Hibrit Avantajı'nın **etkin** durumda olduğu ancak vCPU sayısının 8'den _az_ olduğu Windows VM'lerini de tanımlar. Hibrit Avantajı'nın **etkin değil** durumunda olduğu ve vCPU sayısı 8 veya _daha fazla_ olduğu VM'leri de gösterir. Bu bilgiler, Hibrit Avantajınızı tam kapasiteyle kullanmanıza yardımcı olur. Olası tasarruf miktarınızı en üst düzeye çıkarmak için avantajı en pahalı sanal makinelerinize uygulayın.
 
-![Azure Hibrit Avantajları - 8'den az vCPU ve vCPU'lar etkin değil](./media/analyze-cost-data-azure-cost-management-power-bi-template-app/ahb-report.png)
+:::image type="content" source="./media/analyze-cost-data-azure-cost-management-power-bi-template-app/ahb-report.png" alt-text="Azure hibrit avantajlar raporunun 8 ' den az vCPU ve vCPU 'Ları etkin değil alanından gösteren ekran görüntüsü." lightbox="./media/analyze-cost-data-azure-cost-management-power-bi-template-app/ahb-report.png" :::
 
 **RI Ücreti Yansıtma**: Bu rapor bölge, abonelik, kaynak grubu veya kaynak düzeyinde ayrılmış örnek (RI) avantajının ne kadar ve nerede uygulandığını öğrenmenize yardımcı olur. Bu rapor, görünümü oluşturmak için amorti edilmiş kullanım verilerini kullanır.
 
@@ -105,7 +104,7 @@ Verileri geliştirmek için amorti edilmiş kullanım verilerini kullanabilirsin
 
 Raporu kullanmak için detaya gitme filtresini seçin.
 
-![VM RI kapsam raporu - detaya gitme filtresini seçme](./media/analyze-cost-data-azure-cost-management-power-bi-template-app/ri-drill-down2.png)
+:::image type="content" source="./media/analyze-cost-data-azure-cost-management-power-bi-template-app/ri-drill-down2.png" alt-text="VM RI kapsam raporundaki detaya gitme seçimini Seç seçeneğini gösteren ekran görüntüsü." lightbox="./media/analyze-cost-data-azure-cost-management-power-bi-template-app/ri-drill-down2.png" :::
 
 Analiz etmek istediğiniz bölgeyi seçin. Ardından örnek boyutu esnekliği grubunu seçin ve bu şekilde devam edin.
 
@@ -118,7 +117,7 @@ Her detaya gitme düzeyi için rapora aşağıdaki filtreler uygulanır:
 
 _Normalleştirilmiş Boyut_ ve _Normalleştirilmiş Önerilen Miktar_ değerleri, satın almayı örnek boyutu esnekliği grubu için en küçük boyut olarak normalleştirmenize yardımcı olur. Bu bilgiler, örnek boyutu esnekliği grubundaki tüm boyutlar için yalnızca bir ayırma satın almayı planladığınız durumlar için faydalıdır.
 
-![RI önerileri](./media/analyze-cost-data-azure-cost-management-power-bi-template-app/ri-recomendations.png)
+:::image type="content" source="./media/analyze-cost-data-azure-cost-management-power-bi-template-app/ri-recommendations.png" alt-text="RI önerileri raporunu gösteren ekran görüntüsü." lightbox="./media/analyze-cost-data-azure-cost-management-power-bi-template-app/ri-recommendations.png" :::
 
 **VM RI Kapsamı (tek öneri)** : Bu rapor, seçilen zaman dilimine ait isteğe bağlı VM kullanımını ve RI VM kullanımını gösterir. Abonelik kapsamında VM RI satın alma işlemlerine yönelik öneriler sunar.
 
@@ -151,7 +150,7 @@ Maliyet Yönetimi bağlantısında `Enrollment Number` için varsayılan **Kapsa
 
 Maliyet Yönetimi'ne yeniden bağlanın ve **Kapsam** değerini `Enrollment Number` olarak ayarlayın. Kuruluşunuzun kayıt numarasını girmeyin, onun yerine tam olarak aşağıdaki resimde gösterildiği gibi `Enrollment Number` yazın.
 
-![EA kayıt bilgilerini girme](./media/analyze-cost-data-azure-cost-management-power-bi-template-app/ea-number.png)  
+:::image type="content" source="./media/analyze-cost-data-azure-cost-management-power-bi-template-app/ea-number-troubleshoot.png" alt-text="Kayıt numarası varsayılan metninin değişmediğini gösteren ekran görüntüsü." lightbox="./media/analyze-cost-data-azure-cost-management-power-bi-template-app/ea-number-troubleshoot.png" :::
 
 ### <a name="budgetamount-error"></a>BudgetAmount hatası
 
@@ -166,12 +165,11 @@ Data source error: The 'budgetAmount' column does not exist in the rowset. Table
 
 #### <a name="cause"></a>Nedeni
 
-Bu hata, temel alınan meta verilerle ilgili bir hata nedeniyle oluşur. Bu sorun, Azure portalda **Maliyet Yönetimi > Bütçe** bölümünde kullanılabilir bütçe olmadığından meydana gelir. Hata düzeltmesi, Power BI Desktop ve Power BI hizmeti için dağıtım sürecindedir. 
+Bu hata, temel alınan meta verilerle ilgili bir hata nedeniyle oluşur. Bu sorun, Azure portalda **Maliyet Yönetimi > Bütçe** bölümünde kullanılabilir bütçe olmadığından meydana gelir. Hata düzeltmesi, Power BI Desktop ve Power BI hizmeti için dağıtım sürecindedir.
 
 #### <a name="solution"></a>Çözüm
 
 - Hata düzeltilene kadar, Azure portalında faturalandırma hesabı/EA kaydı düzeyinde bir test bütçesi ekleyerek sorunu geçici olarak çözebilirsiniz. Test bütçesi, Power BI bağlantısının engelini kaldırır. Bütçe oluşturma hakkında daha fazla bilgi için bkz. [Öğretici: Azure bütçesi oluşturma ve yönetme](tutorial-acm-create-budgets.md).
-
 
 ### <a name="invalid-credentials-for-azureblob-error"></a>AzureBlob için geçersiz kimlik bilgileri hatası
 
@@ -183,15 +181,14 @@ Failed to update data source credentials: The credentials provided for the Azure
 
 #### <a name="cause"></a>Nedeni
 
-Bu hata, AutoFitComboMeter blob bağlantısı için kimlik doğrulama yöntemini değiştirirseniz oluşur.
+Veri kaynağı bağlantınızın kimlik doğrulama yöntemini değiştirirseniz bu hata oluşur.
 
 #### <a name="solution"></a>Çözüm
 
 1. Verilerinize bağlanın.
 1. EA kaydınızı ve ay sayısını girdikten sonra, Kimlik doğrulama yöntemi için **Anonim** varsayılan değerini değiştirmeden bıraktığınızdan ve Gizlilik düzeyi ayarı için **Yok** seçeneğini belirlediğinizden emin olun.  
-  ![Ekran görüntüsü Anonim ve Yok değerlerinin girildiği Azure Maliyet Yönetimi Uygulamasına Bağlan iletişim kutusunu gösterir.](./media/analyze-cost-data-azure-cost-management-power-bi-template-app/autofit-troubleshoot.png)  
+  :::image type="content" source="./media/analyze-cost-data-azure-cost-management-power-bi-template-app/autofit-troubleshoot.png" alt-text="Ekran görüntüsü Anonim ve Yok değerlerinin girildiği Azure Maliyet Yönetimi Uygulamasına Bağlan iletişim kutusunu gösterir." lightbox="./media/analyze-cost-data-azure-cost-management-power-bi-template-app/autofit-troubleshoot.png" :::
 1. Bir sonraki sayfada, Kimlik doğrulama yöntemi için **OAuth2** seçeneğini ayarlayın ve Gizlilik düzeyi için **Yok** seçeneğini belirleyin. Ardından, kaydınızla kimliğinizi doğrulamak için oturum açın. Bu adım ayrıca Power BI’da veri yenilemeyi de başlatır.
-
 
 ## <a name="data-reference"></a>Veri başvurusu
 

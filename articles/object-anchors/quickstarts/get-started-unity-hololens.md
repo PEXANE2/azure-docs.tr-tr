@@ -4,15 +4,15 @@ description: Bu hızlı başlangıçta, nesne bağlayıcılarını kullanarak bi
 author: craigktreasure
 manager: virivera
 ms.author: crtreasu
-ms.date: 02/02/2021
+ms.date: 03/02/2021
 ms.topic: quickstart
 ms.service: azure-object-anchors
-ms.openlocfilehash: caf64883635d7fa1746d12caf24333a22ba2fa98
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 4f85a258042430d58690ef578db6d21a6c831d50
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101748843"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102044825"
 ---
 # <a name="quickstart-create-a-hololens-app-with-azure-object-anchors-in-unity"></a>Hızlı başlangıç: Unity 'de Azure nesne bağlayıcıları ile bir HoloLens uygulaması oluşturma
 
@@ -38,8 +38,6 @@ Bu hızlı başlangıçta, [Azure nesne tutturucularını](../overview.md)kullan
 Unity 'de `quickstarts/apps/unity/basic` projeyi açın.
 
 [!INCLUDE [Import Unity Package](../../../includes/object-anchors-quickstart-unity-import-package.md)]
-
-[!INCLUDE [Unity build and run](../../../includes/object-anchors-quickstart-unity-build-run.md)]
 
 [!INCLUDE [Unity build sample scene 1](../../../includes/object-anchors-quickstart-unity-build-sample-scene-1.md)]
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 12/11/2020
 ms.author: mohitku
 ms.reviewer: tyao
-ms.openlocfilehash: 4c710792dd7966fad76b33954fdf7c2253cf18f0
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 8752886bc5304de420083212d29ccd3e1cb14084
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96488247"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102043703"
 ---
 # <a name="tuning-web-application-firewall-waf-for-azure-front-door"></a>Azure ön kapısının Web uygulaması güvenlik duvarını (WAF) ayarlama
  
@@ -23,7 +23,7 @@ Azure tarafından yönetilen varsayılan kural kümesi, [OWASP Core kural kümes
  
 ## <a name="understanding-waf-logs"></a>WAF günlüklerini anlama
  
-WAF günlüklerinin amacı, WAF tarafından eşlenen veya engellenen her isteği göstermek için kullanılır. Bu, eşleşen veya engellenen tüm değerlendirilen isteklerin bir koleksiyonudur. WAF 'nin olmayan bir isteği (yanlış pozitif bir değer) engellediğini fark ederseniz, birkaç şey yapabilirsiniz. Birincisi, daraltın ve belirli isteği bulun. İsterseniz, [configure a custom response message](./waf-front-door-configure-custom-response-code.md) `trackingReference` olayı kolayca tanımlamak ve bu belirli değerde bir günlük sorgusu gerçekleştirmek için alanı dahil etmek üzere özel bir yanıt iletisi yapılandırabilirsiniz. Belirli URI, zaman damgası veya isteğin istemci IP 'sini bulmak için günlüklere bakın. İlgili günlük girdilerini bulduğunuzda, yanlış pozitif sonuçlar üzerinde işlem yapmaya başlayabilirsiniz. 
+WAF günlüklerinin amacı, WAF tarafından eşlenen veya engellenen her isteği göstermek için kullanılır. Bu, eşleşen veya engellenen tüm değerlendirilen isteklerin bir koleksiyonudur. WAF 'nin olmayan bir isteği (yanlış pozitif bir değer) engellediğini fark ederseniz, birkaç şey yapabilirsiniz. Birincisi, daraltın ve belirli isteği bulun. İsterseniz, [](./waf-front-door-configure-custom-response-code.md) `trackingReference` olayı kolayca tanımlamak ve bu belirli değerde bir günlük sorgusu gerçekleştirmek için alanı dahil etmek üzere özel bir yanıt iletisi yapılandırabilirsiniz. Belirli URI, zaman damgası veya isteğin istemci IP 'sini bulmak için günlüklere bakın. İlgili günlük girdilerini bulduğunuzda, yanlış pozitif sonuçlar üzerinde işlem yapmaya başlayabilirsiniz. 
  
 Örneğin, `1=1` WAF 'niz üzerinden geçirmek istediğiniz dizeyi içeren meşru bir trafiğinizin olduğunu varsayalım. İstek şöyle görünür:
 
@@ -38,9 +38,17 @@ UserId=20&captchaId=7&captchaId=15&comment="1=1"&rating=3
 
 İsteği denerseniz, WAF herhangi bir parametre veya alanda *1 = 1* dizenizi içeren trafiği engeller. Bu bir SQL ekleme saldırısından genellikle ilişkili bir dizedir. Günlüklere bakabilir ve isteğin zaman damgasını ve engellenen/eşleştirilen kuralları görebilirsiniz.
  
-Aşağıdaki örnekte, bir `FrontdoorWebApplicationFirewallLog` kural eşleşmesi nedeniyle oluşturulan bir günlüğün araştırıyoruz.
+Aşağıdaki örnekte, bir `FrontdoorWebApplicationFirewallLog` kural eşleşmesi nedeniyle oluşturulan bir günlüğün araştırıyoruz. Son 24 saat içinde engellenmiş istekleri bulmak için aşağıdaki Log Analytics sorgusu kullanılabilir:
+
+```kusto
+AzureDiagnostics
+| where Category == 'FrontdoorWebApplicationFirewallLog'
+| where TimeGenerated > ago(1d)
+| where action_s == 'Block'
+
+```
  
-"RequestUri" alanında, isteğin özellikle yapıldığını görebilirsiniz `/api/Feedbacks/` . Daha fazla bilgi için, `942110` "ruleName" alanında kural kimliğini bulduk. Kural KIMLIĞINI bilmenin yanı sıra, [OWASP ModSecurity çekirdek kuralı resmi deposu](https://github.com/coreruleset/coreruleset) ' na gidebilir ve kodu gözden geçirmek ve bu kuralın ne eşleştiğini tam olarak anlamak için bu [kural kimliğine](https://github.com/coreruleset/coreruleset/blob/v3.1/dev/rules/REQUEST-942-APPLICATION-ATTACK-SQLI.conf) göre arama yapabilirsiniz. 
+Bu `requestUri` alanda, isteğin özellikle yapıldığını görebilirsiniz `/api/Feedbacks/` . Daha fazla bilgi için, alan içinde kural KIMLIĞINI bulduk `942110` `ruleName` . Kural KIMLIĞINI bilmenin yanı sıra, [OWASP ModSecurity çekirdek kuralı resmi deposu](https://github.com/coreruleset/coreruleset) ' na gidebilir ve kodu gözden geçirmek ve bu kuralın ne eşleştiğini tam olarak anlamak için bu [kural kimliğine](https://github.com/coreruleset/coreruleset/blob/v3.1/dev/rules/REQUEST-942-APPLICATION-ATTACK-SQLI.conf) göre arama yapabilirsiniz. 
  
 Ardından, `action` alanı denetleyerek, bu kuralın eşleştirildiğinde istekleri engelleyecek şekilde ayarlandığını ve isteğin aslında olarak ayarlandığı için WAF tarafından engellendiğini doğrulamamız gerektiğini biliyoruz `policyMode` `prevention` . 
  
@@ -125,7 +133,7 @@ Bu bilgilerle ve 942110 kuralı, örneğimizde dize ile eşleşen bir bilgi oldu
   * Bir istek bir kuralla eşleştiğinde gerçekleştirilecek eylemler hakkında daha fazla bilgi için bkz. [WAF eylemleri](afds-overview.md#waf-actions) .
 * Özel kuralları kullanma
   * Özel kurallar hakkında daha fazla bilgi için bkz. [Azure ön kapısına sahip Web uygulaması güvenlik duvarı Için özel kurallar](waf-front-door-custom-rules.md) .
-* Kuralları devre dışı bırak 
+* Kuralları devre dışı bırakma 
 
 > [!TIP]
 > WAF aracılığıyla meşru isteklere izin vermek için bir yaklaşım seçerken bunu, olabildiğince dar olarak yapmayı deneyin. Örneğin, bir kuralı tamamen devre dışı bırakarak dışlama listesini kullanmak daha iyidir.
@@ -197,6 +205,9 @@ Yönetilen bir kuralı devre dışı bırakmak için Azure PowerShell kullanmak 
 
 ![WAF kuralları](../media/waf-front-door-tuning/waf-rules.png)
 
+> [!TIP]
+> WAF ilkenizde yaptığınız değişiklikleri belgelemek iyi bir fikirdir. Yanlış pozitif algılamayı göstermek için örnek istekleri ekleyin ve özel bir kural eklediğinizi, bir kuralı veya RuleSet 'i devre dışı bırakıldığını veya bir özel durum eklendiğini açıkça açıklayın. Uygulamanızı gelecekte yeniden tasarlayabilmeniz ve değişikliklerinizin hala geçerli olduğunu doğrulamanız gerekiyorsa bu belgeler yararlı olabilir. Ayrıca, herhangi bir zamanda denetleyeceğiniz ya da WAF ilkesini varsayılan ayarlarından neden yeniden yapılandırmanızın gerektiği konusunda da yardımcı olabilir.
+
 ## <a name="finding-request-fields"></a>İstek alanlarını bulma
 
 [Fiddler](https://www.telerik.com/fiddler)gibi bir tarayıcı proxy 'si kullanarak, bireysel istekleri inceleyebilir ve bir Web sayfası için hangi alanların çağrıldığını belirleyebilirsiniz. Bu, bazı alanları WAF 'deki dışlama listelerini kullanarak incelemeden dışlamaya ihtiyaç duyduğumuz zaman yararlıdır.
@@ -256,7 +267,7 @@ Fiddler, istek üst bilgisi adlarını bulmak için bir kez yararlı bir araçt�
 
 ![Üst bilgi gösteren Fiddler isteği](../media/waf-front-door-tuning/fiddler-request-header-name.png)
 
-İstek ve yanıt üst bilgilerini görüntülemenin bir başka yolu da tarayıcınızın Edge veya Chrome gibi Geliştirici araçlarının içine bakmamız. F12 tuşuna basarak veya sağ tıklama > **Inspect**  ->  **Geliştirici Araçları** İnceleme ' ye basabilir ve **ağ** sekmesini seçebilirsiniz. bir Web sayfası yükleyin ve incelemek istediğiniz isteğe tıklayın.
+İstek ve yanıt üst bilgilerini görüntülemenin bir başka yolu da tarayıcınızın Edge veya Chrome gibi Geliştirici araçlarının içine bakmamız. F12 tuşuna basarak veya sağ tıklama >   ->  **Geliştirici Araçları** İnceleme ' ye basabilir ve **ağ** sekmesini seçebilirsiniz. bir Web sayfası yükleyin ve incelemek istediğiniz isteğe tıklayın.
 
 ![Ağ denetçisi isteği](../media/waf-front-door-tuning/network-inspector-request.png)
 

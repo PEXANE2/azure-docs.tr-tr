@@ -2,14 +2,13 @@
 title: Azure Izleyici 'de etkinlik günlüğü uyarıları oluşturma, görüntüleme ve yönetme
 description: Azure portal, bir Azure Resource Manager şablonu ve Azure PowerShell kullanarak etkinlik günlüğü uyarıları oluşturun.
 ms.topic: conceptual
-ms.subservice: alerts
 ms.date: 06/25/2019
-ms.openlocfilehash: bb4c1410d046389ae9e82986c6b0ed3d133fcf2a
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 26ca755f6675fa19c3b122c3528e05d1e8d76845
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101704472"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102045539"
 ---
 # <a name="create-view-and-manage-activity-log-alerts-by-using-azure-monitor"></a>Azure Izleyici 'yi kullanarak etkinlik günlüğü uyarıları oluşturma, görüntüleme ve yönetme  
 

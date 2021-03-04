@@ -9,12 +9,12 @@ ms.subservice: extensions
 ms.date: 02/12/2021
 ms.reviewer: jushiman
 ms.custom: mimckitt
-ms.openlocfilehash: 1a276915f8132f2941bfb4425011c2d34454093b
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 3350ff7aa05232173e5fd3b21451a76a0a40683d
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101693892"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102043720"
 ---
 # <a name="preview-orchestration-modes-for-virtual-machine-scale-sets-in-azure"></a>Önizleme: Azure 'da sanal makine ölçek kümeleri için düzenleme modları 
 
@@ -73,7 +73,7 @@ Tercih edilen yöntem, bir sanal makine ölçek kümesindeki tüm VM 'Leri sorgu
 | order by resourceGroup desc, name desc 
 ```
 
-Kaynakları [Azure Kaynak Graph](../governance/resource-graph/overview) ile sorgulamak, Azure kaynaklarını sorgulamak ve kaynak SAĞLAYıCıSıNA yönelik API çağrılarını en aza indirecek kullanışlı ve verimli bir yoldur. Azure Kaynak Grafiği, yeni veya güncelleştirilmiş kaynakların 60 saniyeye kadar yansıtılmamış, sonuçta tutarlı bir önbellektir. Seçenekleriniz şunlardır:
+Kaynakları [Azure Kaynak Graph](../governance/resource-graph/overview.md) ile sorgulamak, Azure kaynaklarını sorgulamak ve kaynak SAĞLAYıCıSıNA yönelik API çağrılarını en aza indirecek kullanışlı ve verimli bir yoldur. Azure Kaynak Grafiği, yeni veya güncelleştirilmiş kaynakların 60 saniyeye kadar yansıtılmamış, sonuçta tutarlı bir önbellektir. Seçenekleriniz şunlardır:
 - Bir kaynak grubundaki veya abonelikteki VM 'Leri listeleyin.
 - Aboneliğinizdeki tüm sanal makinelerin örnek görünümünü (hata etki alanı ataması, güç ve sağlama durumları) almak için Genişlet seçeneğini kullanın.
 - Tek bir örnek için model ve örnek görünümü almak için VM al API 'SI ve komutlarını kullanın.

@@ -12,12 +12,12 @@ ms.custom:
 - amqp
 - mqtt
 - devx-track-js
-ms.openlocfilehash: 35bb17a5cdfcc6aff4a513a594a08283ab1f1305
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.openlocfilehash: 44fe128658b90d2327f17f22b2a33aaa1d4da1fc
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96437040"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102046134"
 ---
 # <a name="connect-a-downstream-device-to-an-azure-iot-edge-gateway"></a>Aşağı akış cihazını Azure IoT Edge ağ geçidine bağlama
 
@@ -214,7 +214,7 @@ Bu komutun çıktısı, zincirdeki tüm sertifikalarla ilgili bilgiler de dahil 
 
 Yaprak cihazınızın ağ geçidi cihazına aralıklı olarak bağlantısı varsa, çözüm için aşağıdaki adımları deneyin.
 
-1. Bağlantı dizesindeki ağ geçidi ana bilgisayar adı, ağ geçidi cihazındaki IoT Edge config. YAML dosyasında ana bilgisayar adı ile aynı.
+1. Bağlantı dizesindeki ağ geçidi ana bilgisayar adı, ağ geçidi cihazındaki IoT Edge yapılandırma dosyasında ana bilgisayar adı değeriyle aynı mı?
 2. Ağ geçidi ana bilgisayar adı bir IP adresi olarak çözülebilir mi? Aralıklı bağlantıları DNS kullanarak ya da yaprak cihaza bir konak dosyası girişi ekleyerek çözebilirsiniz.
 3. İletişim bağlantı noktaları güvenlik duvarınızdan açık mı? Kullanılan protokolü temel alan iletişim (MQTTS: 8883/AMQPS: 5671/HTTPS: 433), aşağı akış cihazı ile saydam IoT Edge arasında olmalıdır.
 

@@ -8,20 +8,22 @@ ms.date: 02/11/2021
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 9a9361df817db46028259d8792d9a1431df4ce67
-ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
+ms.openlocfilehash: 75beb214682536b996cf4896588ea32d568579f1
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100516334"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102045998"
 ---
 # <a name="azure-iot-edge-supported-systems"></a>Desteklenen sistemleri Azure IoT Edge
 
 Bu makalede, resmi olarak veya önizlemeye bakılmaksızın IoT Edge tarafından desteklenen sistemler ve bileşenler hakkında ayrıntılı bilgi sağlanır.
 
+## <a name="get-support"></a>Destek alın
+
 Azure IoT Edge hizmetini kullanırken sorunlarla karşılaşırsanız, destek almak için çeşitli yollar vardır. Destek için aşağıdaki kanallardan birini deneyin:
 
-**Raporlama hataları** – Azure IoT Edge ürüne giden geliştirmenin büyük bölümü IoT Edge açık kaynaklı projede gerçekleşir. Hatalar, projenin [sorunlar sayfasında](https://github.com/azure/iotedge/issues) bildirilebilir. Düzeltmeler, ' deki projeden ürün güncelleştirmelerinde hızlı bir şekilde yapılır.
+**Hataları raporla** – Azure IoT Edge ürüne giden geliştirmenin büyük bölümü IoT Edge açık kaynaklı projede gerçekleşir. Hatalar, projenin [sorunlar sayfasında](https://github.com/azure/iotedge/issues) bildirilebilir. Düzeltmeler, ' deki projeden ürün güncelleştirmelerinde hızlı bir şekilde yapılır.
 
 **Microsoft müşteri destek ekibi** – [Destek planına](https://azure.microsoft.com/support/plans/) sahip olan kullanıcılar, doğrudan [Azure Portal](https://ms.portal.azure.com/signin/index/?feature.settingsportalinstance=mpac)bir destek bileti oluşturarak Microsoft müşteri destek ekibine geçebilir.
 

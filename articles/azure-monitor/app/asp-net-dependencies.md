@@ -4,12 +4,12 @@ description: Şirket içi veya Microsoft Azure Web uygulamanızdan gelen bağım
 ms.topic: conceptual
 ms.date: 08/26/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 05b6c29b121cbf42cf0ebe12b2879e50735db7ea
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.openlocfilehash: 124b8d3de59d1645379d50360e69a5fdbd5587e5
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "100652012"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102045301"
 ---
 # <a name="dependency-tracking-in-azure-application-insights"></a>Azure Application Insights 'de bağımlılık Izleme 
 
@@ -88,6 +88,9 @@ Standart bağımlılık izleme modülünü devre dışı bırakmak istiyorsanız
 Web sayfaları için Application Insights JavaScript SDK 'Sı otomatik olarak AJAX çağrılarını bağımlılık olarak toplar.
 
 ## <a name="advanced-sql-tracking-to-get-full-sql-query"></a>Tam SQL sorgusu almak için gelişmiş SQL izleme
+
+> [!NOTE]
+> Azure Işlevleri için SQL metin toplamayı etkinleştirmek üzere ayrı ayarlar gerekir. daha fazla bilgi için bkz. [Azure işlevleri için izlemeyi yapılandırma](../../azure-functions/configure-monitoring.md) .
 
 SQL çağrıları için sunucu ve veritabanının adı her zaman toplanır ve toplanan adı olarak depolanır `DependencyTelemetry` . Tam SQL sorgu metnini içerebilen ' Data ' adlı ek bir alan var.
 

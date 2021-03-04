@@ -1,17 +1,16 @@
 ---
 title: Azure İzleyici’yi dağıtma
 description: Azure aboneliğinizdeki tüm kaynakları izlemek üzere Azure Izleyici 'nin tamamen uygulanması için gereken farklı adımları açıklar.
-ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/27/2020
-ms.openlocfilehash: f5855d7ab1f7ba8e11334f1373fb10166f47003a
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 7656efeb26a8a8b3c752ea996c8e644c68a48626
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101708263"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102044009"
 ---
 # <a name="deploy-azure-monitor"></a>Azure İzleyici’yi dağıtma
 Azure izleyici 'nin tüm Azure kaynaklarınızın izlenmesini sağlamak için Azure izleyici bileşenleri yapılandırma ve Azure Izleyici 'nin toplanacak izleme verilerini oluşturmak için Azure kaynaklarını yapılandırma bir birleşimidir. Bu makalede, Azure aboneliğinizdeki tüm kaynakları izlemek için ortak bir yapılandırma kullanarak Azure Izleyici 'nin tamamen uygulanması için gereken farklı adımlar açıklanmaktadır. Her adımın temel açıklamaları, ayrıntılı yapılandırma gereksinimleri için diğer belgelerin bağlantılarıyla birlikte sağlanır.

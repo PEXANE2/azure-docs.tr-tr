@@ -7,14 +7,14 @@ ms.reviewer: veyalla
 ms.service: iot-edge
 services: iot-edge
 ms.topic: conceptual
-ms.date: 01/20/2021
+ms.date: 03/01/2021
 ms.author: kgremban
-ms.openlocfilehash: efbae71162bdd0c126287191f7ad35cf903db138
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 3a2d048bfd3b47cd5a3cb93763aa27fac1b89649
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100378086"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102044927"
 ---
 # <a name="install-or-uninstall-azure-iot-edge-for-linux"></a>Linux için Azure IoT Edge yükleme veya kaldırma
 
@@ -96,11 +96,14 @@ Moby kapsayıcı altyapısını yüklerken hata alırsanız, Moby uyumluluğu i�
 
 Komut dosyasının çıktısında, ve altındaki tüm öğelerin etkin olduğunu kontrol edin `Generally Necessary` `Network Drivers` . Özellikler eksik ise, çekirdeğini kaynaktan yeniden oluşturarak ve uygun çekirdek. config dosyasına eklenmek üzere ilişkili modülleri seçerek etkinleştirin. Benzer şekilde, veya gibi bir çekirdek yapılandırma Oluşturucu kullanıyorsanız `defconfig` `menuconfig` ilgili özellikleri bulup etkinleştirin ve çekirdeğini uygun şekilde yeniden oluşturun. Yeni değiştirilen çekirdeğini dağıttıktan sonra, gerekli tüm özelliklerin başarıyla etkinleştirildiğini doğrulamak için Check-config betiğini yeniden çalıştırın.
 
-## <a name="install-the-iot-edge-security-daemon"></a>IoT Edge güvenlik cini 'nı yükler
+## <a name="install-iot-edge"></a>IoT Edge yüklensin
+
+<!-- 1.1 -->
+::: moniker range="iotedge-2018-06"
 
 IoT Edge güvenlik arka plan programı, IoT Edge cihazında güvenlik standartları sağlar ve korur. Arka plan programı her önyüklemede başlar ve IoT Edge çalışma zamanının geri kalanını başlatarak cihazı önyükleme.
 
-Bu bölümdeki adımlarda, internet bağlantısı olan bir cihaza en son sürümü yüklemek için tipik bir işlem temsil etmektedir. Yayın öncesi sürüm gibi belirli bir sürümü yüklemeniz ya da çevrimdışıyken yüklemeniz gerekiyorsa, sonraki bölümde [çevrimdışı veya belirli sürüm yükleme](#offline-or-specific-version-installation-optional) adımlarını izleyin.
+Bu bölümdeki adımlarda, internet bağlantısı olan bir cihaza en son sürümü yüklemek için tipik bir işlem temsil etmektedir. Yayın öncesi sürüm gibi belirli bir sürümü yüklemeniz ya da çevrimdışıyken yüklemeniz gerekiyorsa, bu makalenin ilerleyen kısımlarında yer alarak [çevrimdışı veya belirli sürüm yükleme](#offline-or-specific-version-installation-optional) adımlarını izleyin.
 
 Cihazınızdaki paket listelerini güncelleştirin.
 
@@ -128,6 +131,54 @@ Ya da güvenlik arka plan programının belirli bir sürümünü yüklemek istiy
 
 Yüklemek istediğiniz sürüm listelenmemişse, bu makalenin ilerleyen kısımlarında yer alan [çevrimdışı veya belirli sürüm yükleme](#offline-or-specific-version-installation-optional) adımlarını izleyin. Bu bölümde, IoT Edge güvenlik arka plan programının veya sürüm adayı sürümlerinin önceki bir sürümünün nasıl hedeflenecek gösterilmektedir.
 
+<!-- end 1.1 -->
+::: moniker-end
+
+<!-- 1.2 -->
+::: moniker range=">=iotedge-2020-11"
+
+IoT Edge hizmeti IoT Edge cihazında güvenlik standartları sağlar ve korur. Hizmet her önyüklemede başlatılır ve IoT Edge çalışma zamanının geri kalanını başlatarak cihazı önyükleme.
+
+IoT kimlik hizmeti, IoT Edge sürüm 1,2 ile birlikte sunulmuştur. Bu hizmet, IoT Edge için kimlik sağlamayı ve yönetimi ve IoT Hub iletişim kurması gereken diğer cihaz bileşenlerini işler.
+
+Bu bölümdeki adımlarda, internet bağlantısı olan bir cihaza en son sürümü yüklemek için tipik bir işlem temsil etmektedir. Yayın öncesi sürüm gibi belirli bir sürümü yüklemeniz ya da çevrimdışıyken yüklemeniz gerekiyorsa, bu makalenin ilerleyen kısımlarında yer alarak [çevrimdışı veya belirli sürüm yükleme](#offline-or-specific-version-installation-optional) adımlarını izleyin.
+
+>[!NOTE]
+>Bu bölümdeki adımlarda, şu anda genel önizlemede olan IoT Edge sürüm 1,2 ' nin nasıl yükleneceği gösterilmektedir. IoT Edge en son genel kullanıma sunulan sürümünü yüklemeye yönelik adımları arıyorsanız, bu makalenin [1,1 (LTS)](?view=iotedge-2018-06&preserve-view=true) sürümünü görüntüleyin.
+>
+>Daha eski bir sürümü çalıştıran bir IoT Edge cihazınız zaten varsa ve 1,2 sürümüne yükseltmek istiyorsanız, [IoT Edge güvenlik cini ve çalışma zamanını güncelleştirme](how-to-update-iot-edge.md)bölümündeki adımları kullanın. Sürüm 1,2, yükseltmek için belirli adımların gerekli olduğu IoT Edge önceki sürümlerinden yeterince farklıdır.
+
+Cihazınızdaki paket listelerini güncelleştirin.
+
+   ```bash
+   sudo apt-get update
+   ```
+
+Hangi IoT Edge sürümlerinin kullanılabilir olduğunu görmek için denetleyin.
+
+   ```bash
+   apt list -a aziot-edge
+   ```
+
+En son IoT Edge sürümünü yüklemek istiyorsanız, kimlik hizmeti paketinin en son sürümünü de yükleyen aşağıdaki komutu kullanın:
+
+   ```bash
+   sudo apt-get install aziot-edge
+   ```
+
+<!-- commenting out for public preview. reintroduce at GA
+
+Or, if you want to install a specific version of IoT Edge and the identity service, specify the versions from the apt list output. Specify the same versions for both services.. For example, the following command installs the most recent version of the 1.2 release:
+
+   ```bash
+   sudo apt-get install aziot-edge=1.2* aziot-identity-service=1.2*
+   ```
+
+-->
+
+<!-- end 1.2 -->
+::: moniker-end
+
 ## <a name="provision-the-device-with-its-cloud-identity"></a>Cihazı bulut kimliğiyle sağlama
 
 Artık kapsayıcı altyapısı ve IoT Edge çalışma zamanı cihazınızda yüklü olduğuna göre, bir sonraki adım için hazır olursunuz. Bu, cihazı bulut kimliği ve kimlik doğrulama bilgileriyle ayarlamaya yöneliktir.
@@ -143,20 +194,22 @@ Bu noktada, IoT Edge çalışma zamanı Linux cihazınıza yüklenir ve cihazı 
 
 Bu bölümde, simetrik anahtar kimlik doğrulaması ile cihaz sağlama adımları gösterilmektedir. Cihazınızı IoT Hub kaydolmalı ve cihaz bilgileri 'nden bağlantı dizesini almıştır. Aksi takdirde, [IoT Hub IoT Edge cihazı kaydetme](how-to-register-device.md)bölümündeki adımları izleyin.
 
+<!-- 1.1 -->
+::: moniker range="iotedge-2018-06"
+
 IoT Edge cihazda yapılandırma dosyasını açın.
 
    ```bash
    sudo nano /etc/iotedge/config.yaml
    ```
 
-Dosyanın sağlama yapılandırmalarını bulun ve **bir bağlantı dizesi kullanarak el ile sağlama yapılandırmasının** açıklamasını kaldırın.
+Dosyanın sağlama yapılandırmalarını bulun ve önceden açıklama oluşturulmamış **bir bağlantı dizesi bölümü kullanarak el ile sağlama yapılandırmasının** açıklamasını kaldırın.
 
    ```yml
    # Manual provisioning configuration using a connection string
    provisioning:
      source: "manual"
      device_connection_string: "<ADD DEVICE CONNECTION STRING HERE>"
-     dynamic_reprovisioning: false
    ```
 
 **Device_connection_string** değerini IoT Edge cihazınızdan bağlantı dizesiyle güncelleştirin. Diğer tüm sağlama bölümlerinin açıklama olarak belirlendiğinden emin olun. **Sağlama:** satırının önünde boşluk olmadığından ve iç içe yerleştirilmiş öğelerin iki boşlukla girintilendiğinden emin olun.
@@ -173,11 +226,58 @@ Yapılandırma dosyasına sağlama bilgilerini girdikten sonra, arka plan progra
    sudo systemctl restart iotedge
    ```
 
+<!-- end 1.1 -->
+::: moniker-end
+
+<!-- 1.2 -->
+::: moniker range=">=iotedge-2020-11"
+
+Cihazınızın yapılandırma dosyasını, IoT Edge yüklemesinin bir parçası olarak sağlanmış bir şablon dosyasına göre oluşturun.
+
+   ```bash
+   sudo cp /etc/aziot/config.toml.edge.template /etc/aziot/config.toml
+   ```
+
+IoT Edge cihazda yapılandırma dosyasını açın.
+
+   ```bash
+   sudo nano /etc/aziot/config.toml
+   ```
+
+Dosyanın **sağlama** bölümünü bulun ve bağlantı dizesi satırlarıyla el ile sağlamanın açıklamasını kaldırın.
+
+   ```toml
+   # Manual provisioning with connection string
+   [provisioning]
+   source = "manual"
+   connection_string = "<ADD DEVICE CONNECTION STRING HERE>"
+   ```
+
+**Connection_string** değerini IoT Edge cihazınızdan bağlantı dizesiyle güncelleştirin.
+
+Pano içeriğini nano `Shift+Right Click` veya Press 'e yapıştırmak için `Shift+Insert` .
+
+Dosyayı kaydedin ve kapatın.
+
+   `CTRL + X`, `Y`, `Enter`
+
+Yapılandırma dosyasına sağlama bilgilerini girdikten sonra, değişikliklerinizi uygulayın:
+
+   ```bash
+   sudo iotedge config apply
+   ```
+
+<!-- end 1.2 -->
+::: moniker-end
+
 ### <a name="option-2-authenticate-with-x509-certificates"></a>Seçenek 2: X. 509.440 sertifikalarıyla kimlik doğrulama
 
 Bu noktada, IoT Edge çalışma zamanı Linux cihazınıza yüklenir ve cihazı bulut kimliği ve kimlik doğrulama bilgileriyle sağlamanız gerekir.
 
 Bu bölümde, X. 509.440 sertifika kimlik doğrulamasıyla bir cihaz sağlama adımları gösterilmektedir. Cihazınızı, IoT Edge cihazınızda bulunan sertifikayla ve özel anahtarla eşleşen parmak izleri sağlayan IoT Hub 'ye kaydettiniz. Aksi takdirde, [IoT Hub IoT Edge cihazı kaydetme](how-to-register-device.md)bölümündeki adımları izleyin.
+
+<!-- 1.1 -->
+::: moniker range="iotedge-2018-06"
 
 IoT Edge cihazda yapılandırma dosyasını açın.
 
@@ -188,7 +288,7 @@ IoT Edge cihazda yapılandırma dosyasını açın.
 Dosyanın sağlama yapılandırmaları bölümünü bulun ve **bir X. 509.440 kimlik sertifikası kullanarak el ile sağlama yapılandırmasının** açıklamasını kaldırın. Diğer tüm sağlama bölümlerinin açıklama olarak belirlendiğinden emin olun. **Sağlama:** satırının önünde boşluk olmadığından ve iç içe yerleştirilmiş öğelerin iki boşlukla girintilendiğinden emin olun.
 
    ```yml
-   # Manual provisioning configuration using a connection string
+   # Manual provisioning configuration using an x.509 identity certificate
    provisioning:
      source: "manual"
      authentication:
@@ -197,7 +297,6 @@ Dosyanın sağlama yapılandırmaları bölümünü bulun ve **bir X. 509.440 ki
        device_id: "<REQUIRED DEVICE ID PROVISIONED IN IOTHUB>"
        identity_cert: "<REQUIRED URI TO DEVICE IDENTITY CERTIFICATE>"
        identity_pk: "<REQUIRED URI TO DEVICE IDENTITY PRIVATE KEY>"
-     dynamic_reprovisioning: false
    ```
 
 Aşağıdaki alanları güncelleştirin:
@@ -217,35 +316,118 @@ Yapılandırma dosyasına sağlama bilgilerini girdikten sonra, arka plan progra
    sudo systemctl restart iotedge
    ```
 
+<!-- end 1.1 -->
+::: moniker-end
+
+<!-- 1.2 -->
+::: moniker range=">=iotedge-2020-11"
+
+Cihazınızın yapılandırma dosyasını, IoT Edge yüklemesinin bir parçası olarak sağlanmış bir şablon dosyasına göre oluşturun.
+
+   ```bash
+   sudo cp /etc/aziot/config.toml.edge.template /etc/aziot/config.toml
+   ```
+
+IoT Edge cihazda yapılandırma dosyasını açın.
+
+   ```bash
+   sudo nano /etc/aziot/config.toml
+   ```
+
+Dosyanın **sağlama** bölümünü bulun ve X. 509.440 kimlik sertifikasıyla el ile sağlama için satırların açıklamasını kaldırın. Diğer tüm sağlama bölümlerinin açıklama olarak belirlendiğinden emin olun.
+
+   ```toml
+   # Manual provisioning with x.509 certificates
+   [provisioning]
+   source = "manual"
+   iothub_hostname = "<REQUIRED IOTHUB HOSTNAME>"
+   device_id = "<REQUIRED DEVICE ID PROVISIONED IN IOTHUB>"
+
+   [provisioning.authentication]
+   method = "x509"
+
+   identity_cert = "<REQUIRED URI OR POINTER TO DEVICE IDENTITY CERTIFICATE>"
+
+   identity_pk = "<REQUIRED URI TO DEVICE IDENTITY PRIVATE KEY>"
+   ```
+
+Aşağıdaki alanları güncelleştirin:
+
+* **iothub_hostname**: cihazın bağlanacağı IoT Hub 'ının ana bilgisayar adı. Örneğin, `{IoT hub name}.azure-devices.net`.
+* **device_id**: cihazı kaydettirdiğiniz sırada verdiğiniz kimlik.
+* **identity_cert**: cihazdaki bir kimlik sertifikasının URI 'si, örneğin: `file:///path/identity_certificate.pem` . Veya, sertifikayı EST veya yerel bir sertifika yetkilisi kullanarak dinamik olarak verme.
+* **identity_pk**: belirtilen kimlik sertifikası için özel anahtar dosyasının URI 'si, örneğin: `file:///path/identity_key.pem` . Ya da bir PKCS # 11 URI 'SI girip yapılandırma bilgilerinizi daha sonra yapılandırma dosyasında **PKCS # 11** bölümünde belirtin.
+
+Dosyayı kaydedin ve kapatın.
+
+   `CTRL + X`, `Y`, `Enter`
+
+Yapılandırma dosyasına sağlama bilgilerini girdikten sonra, değişikliklerinizi uygulayın:
+
+   ```bash
+   sudo iotedge config apply
+   ```
+
+<!-- end 1.2 -->
+::: moniker-end
+
 ## <a name="verify-successful-configuration"></a>Başarılı yapılandırmayı doğrula
 
 Çalışma zamanının IoT Edge cihazınıza başarıyla yüklenip yapılandırıldığını doğrulayın.
 
-1. IoT Edge güvenlik arka plan programının sistem hizmeti olarak çalışıp çalışmadığını denetleyin.
+>[!TIP]
+>`iotedge` komutlarını çalıştırmak için yükseltilmiş ayrıcalıklara ihtiyacınız olacaktır. Makinenizdeki oturumu kapattıktan sonra IoT Edge çalışma zamanını yükleyip oturum açtığınızda izinleriniz otomatik olarak güncelleştirilir. Bundan sonra `sudo` komutların önünde kullanın.
+
+IoT Edge sistem hizmetinin çalışıp çalışmadığını denetleyin.
+
+<!-- 1.1 -->
+::: moniker range="iotedge-2018-06"
 
    ```bash
    sudo systemctl status iotedge
    ```
 
-   >[!TIP]
-   >`iotedge` komutlarını çalıştırmak için yükseltilmiş ayrıcalıklara ihtiyacınız olacaktır. Makinenizdeki oturumu kapattıktan sonra IoT Edge çalışma zamanını yükleyip oturum açtığınızda izinleriniz otomatik olarak güncelleştirilir. Bundan sonra `sudo` komutların önünde kullanın.
+::: moniker-end
 
-2. Hizmetle ilgili sorunları gidermeniz gerekirse hizmet günlüklerini alın.
+<!-- 1.2 -->
+::: moniker range=">=iotedge-2020-11"
+
+   ```bash
+   sudo iotedge system status
+   ```
+
+::: moniker-end
+
+Hizmetle ilgili sorunları gidermeniz gerekirse hizmet günlüklerini alın.
+
+<!-- 1.1 -->
+::: moniker range="iotedge-2018-06"
 
    ```bash
    journalctl -u iotedge
    ```
 
-3. `check`Aygıtın yapılandırma ve bağlantı durumunu doğrulamak için aracını kullanın.
+::: moniker-end
+
+<!-- 1.2 -->
+::: moniker range=">=iotedge-2020-11"
+
+   ```bash
+   sudo iotedge system logs
+   ```
+
+::: moniker-end
+
+`check`Aygıtın yapılandırma ve bağlantı durumunu doğrulamak için aracını kullanın.
 
    ```bash
    sudo iotedge check
    ```
 
-   >[!TIP]
-   >`sudo`İzinleriniz güncelleştirildikten sonra bile denetim aracını çalıştırmak için her zaman kullanın. Aracının yapılandırma durumunu doğrulamak üzere **config. YAML** dosyasına erişmesi için yükseltilmiş ayrıcalıklara ihtiyacı vardır.
+>[!TIP]
+>`sudo`İzinleriniz güncelleştirildikten sonra bile denetim aracını çalıştırmak için her zaman kullanın. Aracın yapılandırma durumunu doğrulamak için yapılandırma dosyasına erişmesi için yükseltilmiş ayrıcalıklara ihtiyacı vardır.
 
-4. IoT Edge cihazınızda çalışan tüm modülleri görüntüleyin. Hizmet ilk kez başladığında yalnızca **Edgeagent** modülünü çalışır duruma gelmelidir. EdgeAgent modülü varsayılan olarak çalışır ve cihazınıza dağıttığınız ek modüllerin yüklenmesini ve başlamasını sağlar.
+IoT Edge cihazınızda çalışan tüm modülleri görüntüleyin. Hizmet ilk kez başladığında yalnızca **Edgeagent** modülünü çalışır duruma gelmelidir. EdgeAgent modülü varsayılan olarak çalışır ve cihazınıza dağıttığınız ek modüllerin yüklenmesini ve başlamasını sağlar.
 
    ```bash
    sudo iotedge list
@@ -262,11 +444,14 @@ Tarafından kullanılamayan Azure IoT Edge çalışma zamanının belirli bir s�
 
 Kıvrımlı komutlarını kullanarak bileşen dosyalarını doğrudan IoT Edge GitHub deposundan hedefleyebilirsiniz.
 
+<!-- 1.1 -->
+::: moniker range="iotedge-2018-06"
+
 1. [Azure IoT Edge yayınlarına](https://github.com/Azure/azure-iotedge/releases)gidin ve hedeflemek istediğiniz yayın sürümünü bulun.
 
 2. Bu sürümün **varlıklar** bölümünü genişletin.
 
-3. Her yayında IoT Edge güvenlik Daemon ve hsmlib için yeni dosyalar olmalıdır. Bu bileşenleri güncelleştirmek için aşağıdaki komutları kullanın.
+3. Her yayında IoT Edge güvenlik Daemon ve hsmlib için yeni dosyalar olmalıdır. Çevrimdışı bir cihaza IoT Edge yükleyecekseniz bu dosyaları daha önce indirin. Aksi takdirde, bu bileşenleri güncelleştirmek için aşağıdaki komutları kullanın.
 
    1. IoT Edge cihazınızın mimarisiyle eşleşen **libiothsm-STD** dosyasını bulun. Dosya bağlantısına sağ tıklayıp bağlantı adresini kopyalayın.
 
@@ -284,6 +469,40 @@ Kıvrımlı komutlarını kullanarak bileşen dosyalarını doğrudan IoT Edge G
       curl -L <iotedge link> -o iotedge.deb && sudo dpkg -i ./iotedge.deb
       ```
 
+<!-- end 1.1 -->
+::: moniker-end
+
+<!-- 1.2 -->
+::: moniker range=">=iotedge-2020-11"
+
+>[!NOTE]
+>Cihazınız şu anda IoT Edge sürüm 1,1 veya daha eski sürümlerde çalışıyorsa, bu bölümdeki adımları izleyerek önce **ıotedge** ve **libiothsm-STD** paketlerini kaldırın. Daha fazla bilgi için bkz. [güncelleştirme 1,0 veya 1,1 ile 1,2](how-to-update-iot-edge.md#special-case-update-from-10-or-11-to-12).
+
+1. [Azure IoT Edge yayınlarına](https://github.com/Azure/azure-iotedge/releases)gidin ve hedeflemek istediğiniz yayın sürümünü bulun.
+
+2. Bu sürümün **varlıklar** bölümünü genişletin.
+
+3. Her sürüm IoT Edge ve kimlik hizmeti için yeni dosyalara sahip olmalıdır. Çevrimdışı bir cihaza IoT Edge yükleyecekseniz bu dosyaları daha önce indirin. Aksi takdirde, bu bileşenleri güncelleştirmek için aşağıdaki komutları kullanın.
+
+   1. IoT Edge cihazınızın mimarisiyle eşleşen **azıot-Identity-Service** dosyasını bulun. Dosya bağlantısına sağ tıklayıp bağlantı adresini kopyalayın.
+
+   2. Kimlik hizmetinin bu sürümünü yüklemek için aşağıdaki komutta bulunan kopyalanmış bağlantıyı kullanın:
+
+      ```bash
+      curl -L <identity service link> -o aziot-identity-service.deb && sudo dpkg -i ./aziot-identity-service.deb
+      ```
+
+   3. IoT Edge cihazınızın mimarisiyle eşleşen **azıot Edge** dosyasını bulun. Dosya bağlantısına sağ tıklayıp bağlantı adresini kopyalayın.
+
+   4. Bu IoT Edge sürümünü yüklemek için aşağıdaki komutta bulunan kopyalanmış bağlantıyı kullanın.
+
+      ```bash
+      curl -L <iotedge link> -o aziot-edge.deb && sudo dpkg -i ./aziot-edge.deb
+      ```
+
+<!-- end 1.2 -->
+::: moniker-end
+
 Artık kapsayıcı altyapısı ve IoT Edge çalışma zamanı cihazınızda yüklü olduğuna göre, [cihazı bulut kimliğiyle sağlamak](#provision-the-device-with-its-cloud-identity)için bir sonraki adıma hazırsınız demektir.
 
 ## <a name="uninstall-iot-edge"></a>IoT Edge kaldır
@@ -292,9 +511,25 @@ IoT Edge yüklemesini cihazınızdan kaldırmak istiyorsanız aşağıdaki komut
 
 IoT Edge çalışma zamanını kaldırın.
 
+<!-- 1.1 -->
+::: moniker range="iotedge-2018-06"
+
 ```bash
-sudo apt-get remove --purge iotedge
+sudo apt-get remove iotedge
 ```
+
+::: moniker-end
+
+<!-- 1.2 -->
+::: moniker range=">=iotedge-2020-11"
+
+```bash
+sudo apt-get remove aziot-edge
+```
+
+::: moniker-end
+
+`--purge`Yapılandırma dosyalarınız dahil olmak üzere IoT Edge ile ilişkili tüm dosyaları silmek istiyorsanız bayrağını kullanın. IoT Edge yeniden yüklemek ve gelecekte aynı yapılandırma bilgilerini kullanmak istiyorsanız bu bayrağı bırakın.
 
 IoT Edge çalışma zamanı kaldırıldığında, oluşturduğu kapsayıcılar durdurulur ancak cihazınızda hala bulunur. Hangi olanların kaldığını görmek için tüm kapsayıcıları görüntüleyin.
 

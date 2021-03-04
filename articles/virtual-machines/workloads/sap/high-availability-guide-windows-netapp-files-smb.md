@@ -13,14 +13,14 @@ ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 08/12/2020
+ms.date: 02/18/2021
 ms.author: radeltch
-ms.openlocfilehash: e8d58a74f9ce8489465934398014dd4af3309a9e
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: a4c4631a0a1263e5a5398c44a8570f92571102e8
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101669823"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102045845"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms-on-windows-with-azure-netapp-filessmb-for-sap-applications"></a>SAP uygulamaları için Azure NetApp Files (SMB) ile Windows üzerinde Azure VM 'lerinde SAP NetWeaver için yüksek kullanılabilirlik
 
@@ -82,6 +82,9 @@ Veritabanı katmanı Bu makalede ayrıntılı olarak ele alınmıyor. Azure [san
 * [Bir yük devretme kümesine (A) SCS örneği yükleme](https://www.sap.com/documents/2017/07/f453332f-c97c-0010-82c7-eda71af511fa.html)
 * [Azure NetApp Files için SMB birimi oluşturma](../../../azure-netapp-files/create-active-directory-connections.md#requirements-for-active-directory-connections)
 * [Microsoft Azure Azure NetApp Files kullanarak NetApp SAP uygulamaları][anf-sap-applications-azure]
+
+> [!IMPORTANT]
+> DIKKAT: [Azure NetApp Files][anf-azure-doc] SMB BIRIMINDE barındırılan SMB paylaşımında swpm ile SAP sistemi yüklemesinin, "warningizin tanımlanmadı" gibi yetersiz izinler için yükleme hatasıyla başarısız olabileceğini unutmayın. Hatayı önlemek için, SWPM 'nin çalıştırıldığı kullanıcının, SAP sisteminin yüklenmesi sırasında yükseltilmiş ayrıcalığa "etki alanı yöneticisi" olması gerekir.  
 
 ## <a name="overview"></a>Genel Bakış
 

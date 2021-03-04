@@ -5,17 +5,17 @@ author: kgremban
 manager: philmea
 ms.author: kgremban
 ms.reviewer: kevindaw
-ms.date: 04/09/2020
+ms.date: 03/01/2021
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: ee51b31246760e4619eef1e16e800b16ea886de0
-ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
+ms.openlocfilehash: f4b33b0156f1a5e27f71509cad637684a0332413
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99430722"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102046168"
 ---
 # <a name="create-and-provision-an-iot-edge-device-using-x509-certificates"></a>X. 509.440 sertifikalarını kullanarak bir IoT Edge cihazı oluşturma ve sağlama
 
@@ -52,10 +52,14 @@ X. 509.952 ile otomatik sağlamayı ayarlamak için aşağıdaki dosyalara ihtiy
 * En azından cihaz kimliği ve ara sertifikaları olması gereken tam bir zincir sertifikası. Tam zincir sertifikası IoT Edge çalışma zamanına geçirilir.
 * Sertifika güven zincirindeki bir ara veya kök CA sertifikası. Bu sertifika, bir grup kaydı oluşturursanız, DPS 'e yüklenir.
 
+<!-- 1.1 -->
+:::moniker range="iotedge-2018-06"
 > [!NOTE]
 > Şu anda libiothsm içindeki bir sınırlama 1 Ocak 2038 tarihinde veya sonrasında sona ermekte olan sertifikaların kullanılmasını engelliyor.
 
-### <a name="use-test-certificates"></a>Test sertifikalarını kullanma
+:::moniker-end
+
+### <a name="use-test-certificates-optional"></a>Test sertifikalarını kullan (isteğe bağlı)
 
 Yeni kimlik sertifikaları oluşturmak için kullanabileceğiniz bir sertifika yetkiliniz yoksa ve bu senaryoyu denemek istiyorsanız, Azure IoT Edge git deposu, test sertifikaları oluşturmak için kullanabileceğiniz betikleri içerir. Bu sertifikalar yalnızca geliştirme testi için tasarlanmıştır ve üretimde kullanılmamalıdır.
 
@@ -104,7 +108,7 @@ Cihaz sağlama hizmetindeki kayıtlar hakkında daha fazla bilgi için bkz. ciha
 
    * **Bu cihazın atanabileceği IoT Hub 'Larını seçin**: Cihazınızı bağlamak Istediğiniz bağlantılı IoT Hub 'ını seçin. Birden çok hub seçebilirsiniz ve bu cihaz, seçilen ayırma ilkesine göre bu cihazdan birine atanır.
 
-   * **Ilk cihaz Ikizi durumu**: isterseniz, cihaza ikizi eklenecek bir etiket değeri ekleyin. Otomatik dağıtım için cihaz gruplarını hedeflemek üzere etiketleri kullanabilirsiniz. Örneğin:
+   * **Ilk cihaz Ikizi durumu**: isterseniz, cihaza ikizi eklenecek bir etiket değeri ekleyin. Otomatik dağıtım için cihaz gruplarını hedeflemek üzere etiketleri kullanabilirsiniz. Örnek:
 
       ```json
       {
@@ -189,7 +193,7 @@ Cihaz sağlama hizmetindeki kayıtlar hakkında daha fazla bilgi için bkz. ciha
 
    * **Bu cihazın atanabileceği IoT Hub 'Larını seçin**: Cihazınızı bağlamak Istediğiniz bağlantılı IoT Hub 'ını seçin. Birden çok hub seçebilirsiniz ve bu cihaz, seçilen ayırma ilkesine göre bu cihazdan birine atanır.
 
-   * **Ilk cihaz Ikizi durumu**: isterseniz, cihaza ikizi eklenecek bir etiket değeri ekleyin. Otomatik dağıtım için cihaz gruplarını hedeflemek üzere etiketleri kullanabilirsiniz. Örneğin:
+   * **Ilk cihaz Ikizi durumu**: isterseniz, cihaza ikizi eklenecek bir etiket değeri ekleyin. Otomatik dağıtım için cihaz gruplarını hedeflemek üzere etiketleri kullanabilirsiniz. Örnek:
 
       ```json
       {
@@ -227,18 +231,21 @@ Aşağıdaki bilgileri hazırlayın:
 
 ### <a name="linux-device"></a>Linux cihazı
 
+<!-- 1.1 -->
+:::moniker range="iotedge-2018-06"
+
 1. IoT Edge cihazında yapılandırma dosyasını açın.
 
    ```bash
    sudo nano /etc/iotedge/config.yaml
    ```
 
-1. Dosyanın sağlama yapılandırması bölümünü bulun. DPS simetrik anahtar sağlama satırlarının açıklamalarını kaldırın ve diğer sağlama satırlarının açıklama olarak belirlendiğinden emin olun.
+1. Dosyanın sağlama yapılandırması bölümünü bulun. DPS X. 509.952 sertifika sağlaması için satırların açıklamasını kaldırın ve diğer sağlama satırlarının açıklama olarak belirlendiğinden emin olun.
 
    `provisioning:`Satırda önünde boşluk olmaması ve iç içe geçmiş öğelerin iki boşluk olması gerekir.
 
    ```yml
-   # DPS TPM provisioning configuration
+   # DPS X.509 provisioning configuration
    provisioning:
      source: "dps"
      global_endpoint: "https://global.azure-devices-provisioning.net"
@@ -252,22 +259,81 @@ Aşağıdaki bilgileri hazırlayın:
    #  dynamic_reprovisioning: false
    ```
 
-   İsteğe bağlı olarak, `always_reprovision_on_startup` `dynamic_reprovisioning` cihazınızın yeniden sağlama davranışını yapılandırmak için veya satırını kullanın. Bir cihaz başlangıçta yeniden sağlamak üzere ayarlandıysa, her zaman önce DPS ile sağlamayı dener ve ardından bu başarısız olursa sağlama yedeklemesine geri dönecektir. Bir cihaz kendisini dinamik olarak yeniden sağlamak üzere ayarlandıysa, yeniden sağlama olayı algılandığında IoT Edge yeniden başlatılır ve yeniden hazırlar. Daha fazla bilgi için bkz. [cihaz yeniden sağlama kavramlarını IoT Hub](../iot-dps/concepts-device-reprovision.md).
-
 1. , Ve değerlerini, `scope_id` `identity_cert` `identity_pk` DPS ve cihaz bilgileriniz ile güncelleştirin.
 
-   X. 509.952 sertifikasını ve anahtar bilgilerini config. YAML dosyasına eklediğinizde, yolların dosya URI 'Leri olarak sağlanması gerekir. Örneğin:
+   X. 509.952 sertifikasını ve anahtar bilgilerini config. YAML dosyasına eklediğinizde, yolların dosya URI 'Leri olarak sağlanması gerekir. Örnek:
 
    `file:///<path>/identity_certificate_chain.pem`
    `file:///<path>/identity_key.pem`
 
-1. `registration_id`İsterseniz cihaz için bir belirtin veya bu satırı, kimlik SERTIFIKASıNıN CN adı ile kaydetmek için bu satırı açıklama olarak bırakın.
+1. İsteğe bağlı olarak, `registration_id` cihaz için bir sağlar. Aksi takdirde, cihazı kimlik sertifikasının CN adı ile kaydetmek için bu satırı açıklama olarak bırakın.
+
+1. İsteğe bağlı olarak, `always_reprovision_on_startup` `dynamic_reprovisioning` cihazınızın yeniden sağlama davranışını yapılandırmak için veya satırını kullanın. Bir cihaz başlangıçta yeniden sağlamak üzere ayarlandıysa, her zaman önce DPS ile sağlamayı dener ve ardından bu başarısız olursa sağlama yedeklemesine geri dönecektir. Bir cihaz kendisini dinamik olarak yeniden sağlamak üzere ayarlandıysa, yeniden sağlama olayı algılandığında IoT Edge yeniden başlatılır ve yeniden hazırlar. Daha fazla bilgi için bkz. [cihaz yeniden sağlama kavramlarını IoT Hub](../iot-dps/concepts-device-reprovision.md).
+
+1. Config. YAML dosyasını kaydedin ve kapatın.
 
 1. Cihazda yaptığınız tüm yapılandırma değişikliklerini alması için IoT Edge çalışma zamanını yeniden başlatın.
 
    ```bash
    sudo systemctl restart iotedge
    ```
+
+:::moniker-end
+<!-- end 1.1. -->
+
+<!-- 1.2 -->
+:::moniker range=">=iotedge-2020-11"
+
+1. IoT Edge yüklemesinin bir parçası olarak sağlanmış bir şablon dosyasını temel alan cihazınız için bir yapılandırma dosyası oluşturun.
+
+   ```bash
+   sudo cp /etc/aziot/config.toml.edge.template /etc/aziot/config.toml
+   ```
+
+1. IoT Edge cihazında yapılandırma dosyasını açın.
+
+   ```bash
+   sudo nano /etc/aziot/config.toml
+   ```
+
+1. Dosyanın **sağlama** bölümünü bulun. X. 509.440 sertifikasıyla DPS sağlama satırlarının açıklamalarını kaldırın ve diğer sağlama satırlarının açıklama olarak belirlendiğinden emin olun.
+
+   ```toml
+   # DPS provisioning with X.509 certificate
+   [provisioning]
+   source = "dps"
+   global_endpoint = "https://global.azure-devices-provisioning.net"
+   id_scope = "<SCOPE_ID>"
+   
+   [provisioning.attestation]
+   method = "x509"
+   # registration_id = "<OPTIONAL REGISTRATION ID. LEAVE COMMENTED OUT TO REGISTER WITH CN OF identity_cert>"
+
+   identity_cert = "<REQUIRED URI TO DEVICE IDENTITY CERTIFICATE>"
+
+   identity_pk = "<REQUIRED URI TO DEVICE IDENTITY PRIVATE KEY>"
+   ```
+
+1. , Ve değerlerini, `id_scope` `identity_cert` `identity_pk` DPS ve cihaz bilgileriniz ile güncelleştirin.
+
+   Kimlik sertifikası değeri bir dosya URI 'SI olarak verilebilir veya EST veya yerel bir sertifika yetkilisi kullanılarak dinamik olarak verilebilir. Kullanmayı seçtiğiniz biçime göre yalnızca bir satırın açıklamasını kaldırın.
+
+   Kimlik özel anahtar değeri bir dosya URI 'SI veya PKCS # 11 URI 'SI olarak belirtilebilir. Kullanmayı seçtiğiniz biçime göre yalnızca bir satırın açıklamasını kaldırın.
+
+   Herhangi bir PKCS # 11 URI kullanırsanız, yapılandırma dosyasında **PKCS # 11** bölümünü bulun ve PKCS # 11 yapılandırmanız hakkında bilgi sağlayın.
+
+1. İsteğe bağlı olarak, `registration_id` cihaz için bir sağlar. Aksi takdirde, kimlik sertifikasının ortak adı ile cihazı kaydetmek için bu satırı açıklama olarak bırakın.
+
+1. Dosyayı kaydedin ve kapatın.
+
+1. IoT Edge yaptığınız yapılandırma değişikliklerini uygulayın.
+
+   ```bash
+   sudo iotedge config apply
+   ```
+
+:::moniker-end
+<!-- end 1.2 -->
 
 ### <a name="windows-device"></a>Windows cihazı
 
@@ -287,7 +353,7 @@ Aşağıdaki bilgileri hazırlayın:
    ```
 
    >[!TIP]
-   >Config. YAML dosyası, sertifikanızı ve anahtar bilgilerinizi dosya URI 'Leri olarak depolar. Ancak, Initialize-IoTEdge komutu bu biçimlendirme adımını sizin için işler, böylece cihazınızdaki sertifikaya ve anahtar dosyalarına mutlak yol sağlayabilirsiniz.
+   >Yapılandırma dosyası, sertifikanızı ve anahtar bilgilerinizi dosya URI 'Leri olarak depolar. Ancak, Initialize-IoTEdge komutu bu biçimlendirme adımını sizin için işler, böylece cihazınızdaki sertifikaya ve anahtar dosyalarına mutlak yol sağlayabilirsiniz.
 
 ## <a name="verify-successful-installation"></a>Yüklemenin başarılı olduğunu doğrulama
 
@@ -298,6 +364,9 @@ Cihaz sağlama hizmeti 'nde oluşturduğunuz bireysel kaydın kullanıldığın�
 Çalışma zamanının başarıyla yüklendiğini ve başlatıldığını doğrulamak için cihazınızda aşağıdaki komutları kullanın.
 
 ### <a name="linux-device"></a>Linux cihazı
+
+<!-- 1.1 -->
+:::moniker range="iotedge-2018-06"
 
 IoT Edge hizmetinin durumunu kontrol edin.
 
@@ -316,6 +385,29 @@ journalctl -u iotedge --no-pager --no-full
 ```cmd/sh
 iotedge list
 ```
+:::moniker-end
+
+<!-- 1.2 -->
+:::moniker range=">=iotedge-2020-11"
+
+IoT Edge hizmetinin durumunu kontrol edin.
+
+```cmd/sh
+sudo iotedge system status
+```
+
+Hizmet günlüklerini inceleyin.
+
+```cmd/sh
+sudo iotedge system logs
+```
+
+Çalışan modülleri listeleyin.
+
+```cmd/sh
+sudo iotedge list
+```
+:::moniker-end
 
 ### <a name="windows-device"></a>Windows cihazı
 

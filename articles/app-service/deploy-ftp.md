@@ -3,15 +3,15 @@ title: FTP/S kullanarak içerik dağıtma
 description: Uygulamanızı FTP veya FTPS kullanarak Azure App Service dağıtma hakkında bilgi edinin. Şifrelenmemiş FTP 'yi devre dışı bırakarak Web sitesi güvenliğini geliştirebilirsiniz.
 ms.assetid: ae78b410-1bc0-4d72-8fc4-ac69801247ae
 ms.topic: article
-ms.date: 09/18/2019
+ms.date: 02/26/2021
 ms.reviewer: dariac
 ms.custom: seodec18
-ms.openlocfilehash: cfec5ec5f14afc8c4eba5c21c5904687c9b187cc
-ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
+ms.openlocfilehash: c7427a1f8f528fdf405b22c4e91941ea7a915ffa
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98209262"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102045811"
 ---
 # <a name="deploy-your-app-to-azure-app-service-using-ftps"></a>Uygulamanızı FTP/S kullanarak Azure App Service dağıtma
 
@@ -19,35 +19,49 @@ Bu makalede, [Azure App Service](./overview.md)için Web uygulamanızı, mobil u
 
 Uygulamanızın FTP/S uç noktası zaten etkin. FTP/S dağıtımını etkinleştirmek için yapılandırma gerekmez.
 
-## <a name="open-ftp-dashboard"></a>FTP panosunu aç
-
-1. [Azure Portal](https://portal.azure.com), **uygulama hizmetleri**' ni arayıp seçin.
-
-    ![Uygulama Hizmetleri için arama yapın.](media/app-service-continuous-deployment/search-for-app-services.png)
-
-2. Dağıtmak istediğiniz Web uygulamasını seçin.
-
-    ![Uygulamanızı seçin.](media/app-service-continuous-deployment/select-your-app.png)
-
-3. **Dağıtım Merkezi**  >  **FTP**  >  **panosu**' nu seçin.
-
-    ![FTP panosunu aç](./media/app-service-deploy-ftp/open-dashboard.png)
-
-## <a name="get-ftp-connection-information"></a>FTP bağlantı bilgilerini al
-
-FTP panosunda, FTPS uç noktası ve uygulama kimlik bilgilerini kopyalamak için **Kopyala** ' yı seçin.
-
-![FTP bilgilerini Kopyala](./media/app-service-deploy-ftp/ftp-dashboard.png)
-
-Uygulama **kimlik bilgilerini** , her bir uygulama için benzersiz olduğundan uygulamanıza dağıtmak için kullanmanız önerilir. Ancak, **Kullanıcı kimlik bilgileri**' ne tıklarsanız, aboneliğinizdeki tüm App SERVICE uygulamalarda FTP/S oturumu için kullanabileceğiniz Kullanıcı düzeyi kimlik bilgilerini ayarlayabilirsiniz.
-
 > [!NOTE]
-> Kullanıcı düzeyi kimlik bilgilerini kullanan bir FTP/FTPS uç noktasında kimlik doğrulaması yapmak için aşağıdaki biçimde bir Kullanıcı adı gerekir: 
->
->`<app-name>\<user-name>`
->
-> Kullanıcı düzeyi kimlik bilgileri, belirli bir kaynak değil kullanıcıya bağlı olduğundan, oturum açma işlemini doğru uygulama uç noktasına yönlendirmek için Kullanıcı adının bu biçimde olması gerekir.
->
+> Eski dağıtım deneyimi olan Azure portal **Geliştirme Merkezi (klasik)** sayfası mart, 2021 ' de kullanım dışı olacaktır. Bu değişiklik uygulamanızdaki mevcut dağıtım ayarlarını etkilemez ve **Dağıtım Merkezi** sayfasında uygulama dağıtımını yönetmeye devam edebilirsiniz.
+
+## <a name="get-deployment-credentials"></a>Dağıtım kimlik bilgilerini al
+
+1. Uygulama kapsamı kimlik bilgilerini kopyalamak veya kullanıcı kapsamı kimlik bilgilerini ayarlamak için [Azure App Service dağıtım kimlik bilgilerini yapılandırma](deploy-configure-credentials.md) bölümündeki yönergeleri izleyin. Kimlik bilgilerini kullanarak uygulamanızın FTP/S uç noktasına bağlanabilirsiniz.
+
+1. Aşağıdaki biçimde, kimlik bilgisi kapsamı seçiminize bağlı olarak FTP Kullanıcı adını aşağıdaki biçimde oluşturur:
+
+    | Uygulama kapsamı | Kullanıcı kapsamı |
+    | - | - |
+    |`<app-name>\$<app-name>`|`<app-name>\<deployment-user>`|
+
+    ---
+
+    App Service, FTP/S uç noktası uygulamalar arasında paylaşılır. Kullanıcı kapsamı kimlik bilgileri belirli bir kaynakla bağlantılı olmadığından, yukarıda gösterildiği gibi, kullanıcı kapsamı kullanıcı adını uygulama adıyla sonuna eklemeniz gerekir.
+
+## <a name="get-ftps-endpoint"></a>FTP/S uç noktası al
+    
+# <a name="azure-portal"></a>[Azure portalı](#tab/portal)
+
+Uygulamanızın dağıtım kimlik bilgilerini (**Dağıtım Merkezi**  >  **FTP kimlik bilgileri**) kopyaladığınız Yönetim sayfasında, **FTPS uç noktası**' nı kopyalayın.
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/cli)
+
+[Az WebApp Deployment List-Publishing-Profiles](/cli/azure/webapp/deployment#az_webapp_deployment_list_publishing_profiles) komutunu çalıştırın. Aşağıdaki örnek, çıktısından FTP/S uç noktalarını ayıklamak için bir [Jmes yolu](https://jmespath.org/) kullanır.
+
+```azurecli-interactive
+az webapp deployment list-publishing-profiles --name <app-name> --resource-group <group-name> --query "[?ends_with(profileName, 'FTP')].{profileName: profileName, publishUrl: publishUrl}"
+```
+
+Her uygulamanın iki FTP/S uç noktası vardır, diğeri salt okunurdur ( `profileName` içerir `ReadOnly` ) ve veri kurtarma senaryolarında olur. FTP ile dosya dağıtmak için okuma-yazma uç noktasının URL 'sini kopyalayın.
+
+# <a name="azure-powershell"></a>[Azure PowerShell](#tab/powershell)
+
+[Get-AzWebAppPublishingProfile](/powershell/module/az.websites/get-azwebapppublishingprofile) komutunu çalıştırın. Aşağıdaki örnek, XML çıktısından FTP/S uç noktasını ayıklar.
+
+```azurepowershell-interactive
+$xml = [xml](Get-AzWebAppPublishingProfile -Name <app-name> -ResourceGroupName <group-name> -OutputFile null)
+$xml.SelectNodes("//publishProfile[@publishMethod=`"FTP`"]/@publishUrl").value
+```
+
+-----
 
 ## <a name="deploy-files-to-azure"></a>Azure 'a dosya dağıtma
 
@@ -56,7 +70,7 @@ Uygulama **kimlik bilgilerini** , her bir uygulama için benzersiz olduğundan u
 3. Uygulamanın düzgün çalıştığını doğrulamak için uygulamanızın URL 'sine gidin. 
 
 > [!NOTE] 
-> [Git tabanlı dağıtımlardan](deploy-local-git.md)farklı olarak, FTP dağıtımı aşağıdaki dağıtım önerilerini desteklemez: 
+> [Git tabanlı dağıtımların](deploy-local-git.md) ve [ZIP dağıtımının](deploy-zip.md)aksine, FTP dağıtımı derleme Otomasyonu 'nu desteklemez, örneğin: 
 >
 > - bağımlılık geri yüklemeleri (NuGet, NPM, PI ve besteci tahminleri gibi)
 > - .NET ikili dosyalarının derlenmesi
@@ -69,36 +83,45 @@ Uygulama **kimlik bilgilerini** , her bir uygulama için benzersiz olduğundan u
 
 Gelişmiş güvenlik için yalnızca TLS/SSL üzerinden FTP 'ye izin vermeniz gerekir. FTP dağıtımını kullanmıyorsanız hem FTP hem de FTPS 'yi devre dışı bırakabilirsiniz.
 
-Uygulamanızın kaynak sayfasında, [Azure Portal](https://portal.azure.com)' de,   >  sol gezinmede yapılandırma **genel ayarları** ' nı seçin.
+# <a name="azure-portal"></a>[Azure portalı](#tab/portal)
 
-Şifrelenmemiş FTP 'yi devre dışı bırakmak için, **FTPS** ' yi yalnızca **FTP durumunda** seçin. Hem FTP hem de FTPS 'yi tamamen devre dışı bırakmak için **devre dışı** seçeneğini belirleyin İşlemi tamamladıktan sonra **Kaydet**’e tıklayın. **Yalnızca FTPS** kullanıyorsanız, Web uygulamanızın **TLS/SSL ayarları** dikey penceresine giderek TLS 1,2 veya üstünü zorlayabilmeniz gerekir. TLS 1,0 ve 1,1 **yalnızca FTPS** ile desteklenmez.
+1. Uygulamanızın kaynak sayfasında, [Azure Portal](https://portal.azure.com)' de,   >  sol gezinmede yapılandırma **genel ayarları** ' nı seçin.
 
-![FTP/S 'yi devre dışı bırak](./media/app-service-deploy-ftp/disable-ftp.png)
+2. Şifrelenmemiş FTP 'yi devre dışı bırakmak için, **FTPS** ' yi yalnızca **FTP durumunda** seçin. Hem FTP hem de FTPS 'yi tamamen devre dışı bırakmak için **devre dışı** seçeneğini belirleyin İşlemi tamamladıktan sonra **Kaydet**’e tıklayın. **Yalnızca FTPS** kullanıyorsanız, Web uygulamanızın **TLS/SSL ayarları** dikey penceresine giderek TLS 1,2 veya üstünü zorlayabilmeniz gerekir. TLS 1,0 ve 1,1 **yalnızca FTPS** ile desteklenmez.
 
-## <a name="automate-with-scripts"></a>Betiklerle otomatikleştirme
+    ![FTP/S 'yi devre dışı bırak](./media/app-service-deploy-ftp/disable-ftp.png)
 
-[Azure CLI](/cli/azure)kullanarak FTP dağıtımı için bkz. [Web UYGULAMASı oluşturma ve FTP ile dosya DAĞıTMA (Azure CLI)](./scripts/cli-deploy-ftp.md).
+# <a name="azure-cli"></a>[Azure CLI](#tab/cli)
 
-[Azure PowerShell](/cli/azure)kullanarak FTP dağıtımı için bkz. [FTP (PowerShell) kullanarak bir Web uygulamasına dosya yükleme](./scripts/powershell-deploy-ftp.md).
+Bu bağımsız değişkenle [az WebApp config Set](/cli/azure/webapp/deployment#az_webapp_deployment_list_publishing_profiles) komutunu çalıştırın `--ftps-state` .
+
+```azurecli-interactive
+az webapp config set --name <app-name> --resource-group <group-name> --ftps-state FtpsOnly
+```
+
+İçin olası değerler `--ftps-state` `AllAllowed` (FTP ve FTPS etkin), `Disabled` (FTP ve FTPS devre dışı) ve `FtpsOnly` (yalnızca FTPS).
+
+# <a name="azure-powershell"></a>[Azure PowerShell](#tab/powershell)
+
+Parametresiyle [set-AzWebApp](/powershell/module/az.websites/set-azwebapp) komutunu çalıştırın `-FtpsState` .
+
+```azurepowershell-interactive
+Set-AzWebApp -Name <app-name> -ResourceGroupName <group-name> -FtpsState FtpsOnly
+```
+
+İçin olası değerler `--ftps-state` `AllAllowed` (FTP ve FTPS etkin), `Disabled` (FTP ve FTPS devre dışı) ve `FtpsOnly` (yalnızca FTPS).
+
+-----
 
 [!INCLUDE [What happens to my app during deployment?](../../includes/app-service-deploy-atomicity.md)]
 
 ## <a name="troubleshoot-ftp-deployment"></a>FTP dağıtımı sorunlarını giderme
 
-- [Uygulamanızı FTP/S kullanarak Azure App Service dağıtma](#deploy-your-app-to-azure-app-service-using-ftps)
-  - [FTP panosunu aç](#open-ftp-dashboard)
-  - [FTP bağlantı bilgilerini al](#get-ftp-connection-information)
-  - [Azure 'a dosya dağıtma](#deploy-files-to-azure)
-  - [FTPS 'yi zorla](#enforce-ftps)
-  - [Betiklerle otomatikleştirme](#automate-with-scripts)
-  - [FTP dağıtımı sorunlarını giderme](#troubleshoot-ftp-deployment)
-    - [FTP dağıtımı ile ilgili sorunları nasıl giderebilirim?](#how-can-i-troubleshoot-ftp-deployment)
-    - [Kodumu FTP ve yayınlayamıyorum. Sorunu nasıl çözebilirim?](#im-not-able-to-ftp-and-publish-my-code-how-can-i-resolve-the-issue)
-    - [Pasif mod aracılığıyla Azure App Service FTP 'ye nasıl bağlanabilirim?](#how-can-i-connect-to-ftp-in-azure-app-service-via-passive-mode)
-  - [Sonraki adımlar](#next-steps)
-  - [Diğer kaynaklar](#more-resources)
+- [FTP dağıtımı ile ilgili sorunları nasıl giderebilirim?](#how-can-i-troubleshoot-ftp-deployment)
+- [Kodumu FTP ve yayınlayamıyorum. Sorunu nasıl çözebilirim?](#im-not-able-to-ftp-and-publish-my-code-how-can-i-resolve-the-issue)
+- [Pasif mod aracılığıyla Azure App Service FTP 'ye nasıl bağlanabilirim?](#how-can-i-connect-to-ftp-in-azure-app-service-via-passive-mode)
 
-### <a name="how-can-i-troubleshoot-ftp-deployment"></a>FTP dağıtımı ile ilgili sorunları nasıl giderebilirim?
+#### <a name="how-can-i-troubleshoot-ftp-deployment"></a>FTP dağıtımı ile ilgili sorunları nasıl giderebilirim?
 
 FTP dağıtımında sorun gidermeye yönelik ilk adım, bir çalışma zamanı uygulama sorunundan bir dağıtım sorununu yalıtmaya yöneliktir.
 
@@ -108,19 +131,18 @@ Dağıtım sorunu genellikle uygulamanıza hiçbir dosya veya yanlış dosya da�
 
 Bir dağıtımı veya çalışma zamanı sorununu anlamak için bkz. [dağıtım ve çalışma zamanı sorunları](https://github.com/projectkudu/kudu/wiki/Deployment-vs-runtime-issues).
 
-### <a name="im-not-able-to-ftp-and-publish-my-code-how-can-i-resolve-the-issue"></a>FTP kullanamıyorum ve kodumu yayımlayamıyorum. Sorunu nasıl çözebilirim?
-Doğru ana bilgisayar adını ve [kimlik bilgilerini](#open-ftp-dashboard)girdiğinizden emin olun. Ayrıca, makinenizde bulunan aşağıdaki FTP bağlantı noktalarının bir güvenlik duvarı tarafından engellenmediğinden emin olun:
+#### <a name="im-not-able-to-ftp-and-publish-my-code-how-can-i-resolve-the-issue"></a>FTP kullanamıyorum ve kodumu yayımlayamıyorum. Sorunu nasıl çözebilirim?
+Doğru [ana bilgisayar adını](#get-ftps-endpoint) ve [kimlik bilgilerini](#get-deployment-credentials)girdiğinizden emin olun. Ayrıca, makinenizde bulunan aşağıdaki FTP bağlantı noktalarının bir güvenlik duvarı tarafından engellenmediğinden emin olun:
 
 - FTP denetim bağlantı noktası: 21, 990
 - FTP veri bağlantısı bağlantı noktası: 989, 10001-10300
  
-### <a name="how-can-i-connect-to-ftp-in-azure-app-service-via-passive-mode"></a>Pasif mod aracılığıyla Azure App Service FTP 'ye nasıl bağlanabilirim?
+#### <a name="how-can-i-connect-to-ftp-in-azure-app-service-via-passive-mode"></a>Pasif mod aracılığıyla Azure App Service FTP 'ye nasıl bağlanabilirim?
 Azure App Service hem etkin hem de Pasif mod aracılığıyla bağlanmayı destekler. Dağıtım makineleriniz genellikle bir güvenlik duvarının arkasında (işletim sisteminde veya bir ev veya iş ağının parçası olarak) olduğundan Pasif mod tercih edilir. [WinSCP belgelerinden bir örnek](https://winscp.net/docs/ui_login_connection)görüntüleyin. 
-
-## <a name="next-steps"></a>Sonraki adımlar
-
-Daha gelişmiş dağıtım senaryoları için [Git Ile Azure 'a](deploy-local-git.md)dağıtım yapmayı deneyin. Azure 'a git tabanlı dağıtım, sürüm denetimi, paket geri yükleme, MSBuild ve daha fazlasını sağlar.
 
 ## <a name="more-resources"></a>Diğer kaynaklar
 
+* [Azure App Service için yerel git dağıtımı](deploy-local-git.md)
 * [Azure App Service dağıtım kimlik bilgileri](deploy-configure-credentials.md)
+* [Örnek: bir Web uygulaması oluşturun ve FTP (Azure CLI) ile dosyaları dağıtın](./scripts/cli-deploy-ftp.md).
+* [Örnek: FTP (PowerShell) kullanarak bir Web uygulamasına dosya yükleme](./scripts/powershell-deploy-ftp.md).

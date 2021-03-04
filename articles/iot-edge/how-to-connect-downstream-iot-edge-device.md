@@ -4,7 +4,7 @@ description: IoT Edge cihazı, Azure IoT Edge ağ geçidi cihazlarına bağlanac
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 11/10/2020
+ms.date: 03/01/2021
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
@@ -12,12 +12,12 @@ ms.custom:
 - amqp
 - mqtt
 monikerRange: '>=iotedge-2020-11'
-ms.openlocfilehash: 1258fd4b5c69b399b70d1f2db1be63765771e631
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.openlocfilehash: 709b986cc06aada45a0f541142b89fc3537f8ba8
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98629412"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102046100"
 ---
 # <a name="connect-a-downstream-iot-edge-device-to-an-azure-iot-edge-gateway-preview"></a>Bir aşağı akış IoT Edge cihazını bir Azure IoT Edge ağ geçidine bağlama (Önizleme)
 
@@ -25,6 +25,8 @@ Bu makalede, bir IoT Edge Ağ Geçidi ile bir aşağı akış IoT Edge cihazı a
 
 >[!NOTE]
 >Bu özellik, Linux kapsayıcıları çalıştıran, genel önizlemede olan IoT Edge sürüm 1,2 gerektirir.
+>
+>Bu makalede IoT Edge sürüm 1,2 ' in en son önizleme sürümü yansıtılmıştır. Cihazınızın sürüm [1.2.0-RC4](https://github.com/Azure/azure-iotedge/releases/tag/1.2.0-rc4) veya daha yeni bir sürümünü çalıştırdığından emin olun. Cihazınızda en son önizleme sürümünü edinme adımları için bkz. [Linux için Azure IoT Edge (sürüm 1,2)](how-to-install-iot-edge.md) veya [güncelleştirme IoT Edge 1,2 sürümüne](how-to-update-iot-edge.md#special-case-update-from-10-or-11-to-12).
 
 Bir ağ geçidi senaryosunda, IoT Edge bir cihaz hem ağ geçidi hem de bir aşağı akış cihaz olabilir. Bir cihaz hiyerarşisi oluşturmak için birden çok IoT Edge ağ geçidi katmanlanmış olabilir. Aşağı akış (veya alt) cihazlar, ağ geçidi (veya üst) cihazından ileti doğrulayabilir ve iletileri gönderebilir veya alabilir.
 
@@ -103,9 +105,6 @@ Aşağıdaki sertifikaları oluşturun:
 * Kök sertifika zincirine dahil etmek istediğiniz tüm **Ara sertifikalar** .
 * Kök ve ara sertifikalar tarafından oluşturulan bir **CIHAZ CA sertifikası** ve **özel anahtarı**. Ağ Geçidi hiyerarşisindeki her bir IoT Edge cihaz için benzersiz bir cihaz CA sertifikasına ihtiyacınız vardır.
 
->[!NOTE]
->Şu anda libiothsm içindeki bir sınırlama 1 Ocak 2038 tarihinde veya sonrasında sona ermekte olan sertifikaların kullanılmasını engelliyor.
-
 Kendinden imzalı bir sertifika yetkilisini kullanabilir veya Baltimore, Verisign, DigiCert veya GlobalSign gibi güvenilir bir ticari sertifika yetkilisinden satın alabilirsiniz.
 
 Kullanmak üzere kendi sertifikanız yoksa, [IoT Edge cihaz özelliklerini test etmek için tanıtım sertifikaları oluşturabilirsiniz](how-to-create-test-certificates.md). Tek bir kök ve ara sertifika kümesi oluşturmak ve ardından cihazlarınızın her biri için IoT Edge cihaz CA sertifikaları oluşturmak için bu makaledeki adımları izleyin.
@@ -124,7 +123,7 @@ Bu bölümdeki adımlarda, bu makalede daha önce açıklanan **kök CA sertifik
 
 Cihazınızda IoT Edge yapılandırmak için aşağıdaki adımları kullanın.
 
-Linux 'ta, kullanıcının **ıotedge** 'in sertifikaları ve anahtarları tutan dizin için okuma izinlerine sahip olduğundan emin olun.
+Kullanıcının **ıotedge** 'ın sertifikaları ve anahtarları tutan dizin için okuma izinlerine sahip olduğundan emin olun.
 
 1. **Kök CA sertifikasını** bu IoT Edge cihaza yükler.
 
@@ -140,19 +139,16 @@ Linux 'ta, kullanıcının **ıotedge** 'in sertifikaları ve anahtarları tutan
 
    Bu komut,/etc/SSL/certsone öğesine bir sertifikanın eklendiği çıkış olmalıdır.
 
-1. IoT Edge güvenliği Daemon yapılandırma dosyasını açın.
+1. IoT Edge yapılandırma dosyasını açın.
 
    ```bash
-   sudo nano /etc/iotedge/config.yaml
+   sudo nano /etc/aziot/config.toml
    ```
 
-1. Config. YAML dosyasındaki **Sertifikalar** bölümünü bulun. Sertifikalarınızı işaret etmek için üç sertifika alanını güncelleştirin. Dosya URI 'SI yollarını sağlayın, bu biçimi alır `file:///<path>/<filename>` .
+   >[!TIP]
+   >Yapılandırma dosyası cihazınızda yoksa, `/etc/aziot/config.toml.edge.template` bir şablon olarak kullanarak bir tane oluşturun.
 
-   * **device_ca_cert**: Bu cihaza özel cihaz CA SERTIFIKASıNıN dosya URI yolu.
-   * **device_ca_pk**: Bu cihaza benzersiz olan cihaz CA özel ANAHTARıNıN dosya URI yolu.
-   * **trusted_ca_certs**: ağ geçidi hiyerarşisindeki tüm cihazlar tarafından PAYLAŞıLAN kök CA SERTIFIKASıNıN dosya URI yolu.
-
-1. Config. YAML dosyasında **hostname** parametresini bulun. Ana bilgisayar adını tam etki alanı adı (FQDN) veya IoT Edge cihazının IP adresi olacak şekilde güncelleştirin.
+1. Yapılandırma dosyasında **hostname** bölümünü bulun. Parametresini içeren satırın açıklamasını kaldırın `hostname` ve değeri tam etki alanı adı (FQDN) veya IoT Edge CIHAZıNıN IP adresi olacak şekilde güncelleştirin.
 
    Bu parametrenin değeri, bu ağ geçidine bağlanmak için hangi aşağı akış cihazlarının kullanılacağını kullanır. Ana bilgisayar adı varsayılan olarak makine adını alır, ancak aşağı akış cihazlarını bağlamak için FQDN veya IP adresi gereklidir.
 
@@ -160,33 +156,38 @@ Linux 'ta, kullanıcının **ıotedge** 'in sertifikaları ve anahtarları tutan
 
    Bir ağ geçidi hiyerarşisinde konak adı düzeniyle tutarlı olun. FQDN 'leri veya IP adreslerini kullanın, ancak ikisini birden kullanmayın.
 
-1. **Bu cihaz bir alt cihaz ise** **parent_hostname** parametresini bulun. Üst cihazın FQDN veya IP adresi olacak şekilde **parent_hostname** alanını, ana bilgisayarın config. YAML dosyasında ana bilgisayar adı olarak belirtilen şekilde güncelleştirin.
+1. *Bu cihaz bir alt cihaz ise*, **ana konak adı** bölümünü bulun. Üst cihazın `parent_hostname` yapılandırma dosyasında ana bilgisayar adı olarak belirtilen şeyle eşleşen üst CIHAZıN FQDN veya IP adresi olacak şekilde parametreyi kaldırın ve güncelleştirin.
+
+1. **Güven paketi sertifikası** bölümünü bulun. `trust_bundle_cert`Dosya URI 'si olan parametreyi, cihazınızdaki kök CA sertifikasına göre açıklama ve güncelleştirme.
 
 1. Bu özellik genel önizlemede olduğundan, IoT Edge cihazınızı, başlatıldığında IoT Edge aracısının genel önizleme sürümünü kullanacak şekilde yapılandırmanız gerekir.
 
-   **Aracı** YAML bölümünü bulun ve görüntü değerini genel önizleme görüntüsüne güncelleştirin:
+   **Varsayılan Edge Aracısı** bölümünü bulun ve görüntü değerini genel önizleme görüntüsüne güncelleştirin:
 
-   ```yml
-   agent:
-     name: "edgeAgent"
-     type: "docker"
-     env: {}
-     config:
-       image: "mcr.microsoft.com/azureiotedge-agent:1.2.0-rc2"
-       auth: {}
+   ```toml
+   [agent.config]
+   image: "mcr.microsoft.com/azureiotedge-agent:1.2.0-rc4"
    ```
 
-1. `Ctrl+O` `Ctrl+X` Config. YAML dosyasını kaydedin () ve kapatın.
+1. Yapılandırma dosyasında **Edge CA sertifikası** bölümünü bulun. Bu bölümdeki satırların açıklamasını kaldırın ve IoT Edge cihazında sertifika ve anahtar dosyaları için dosya URI 'SI yollarını sağlayın.
+
+   ```toml
+   [edge_ca]
+   cert = "file:///<path>/<device CA cert>"
+   pk = "file:///<path>/<device CA key>"
+   ```
+
+1. `Ctrl+O`Yapılandırma dosyasını kaydedin () ve `Ctrl+X` kapatın.
 
 1. Daha önce IoT Edge için başka sertifikalar kullandıysanız, yeni sertifikalarınızın uygulandığından emin olmak için aşağıdaki iki dizindeki dosyaları silin:
 
-   * `/var/lib/iotedge/hsm/certs`
-   * `/var/lib/iotedge/hsm/cert_keys`
+   * `/var/lib/aziot/certd/certs`
+   * `/var/lib/aziot/keyd/keys`
 
-1. Değişikliklerinizi uygulamak için IoT Edge hizmetini yeniden başlatın.
+1. Yaptığınız değişiklikleri uygulayın.
 
    ```bash
-   sudo systemctl restart iotedge
+   sudo iotedge config apply
    ```
 
 1. Yapılandırmadaki hataları denetleyin.
@@ -202,7 +203,7 @@ Linux 'ta, kullanıcının **ıotedge** 'in sertifikaları ve anahtarları tutan
 
 Bu özellik genel önizlemede olduğundan, IoT Edge cihazınızı, IoT Edge çalışma zamanı modüllerinin genel önizleme sürümlerini kullanacak şekilde yapılandırmanız gerekir. Önceki bölümde, edgeAgent 'ı başlangıçta yapılandırma adımları sağlanmaktadır. Ayrıca, cihazınız için dağıtımlarda çalışma zamanı modüllerini yapılandırmanız gerekir.
 
-1. EdgeHub modülünü genel önizleme görüntüsünü kullanacak şekilde yapılandırın: `mcr.microsoft.com/azureiotedge-hub:1.2.0-rc2` .
+1. EdgeHub modülünü genel önizleme görüntüsünü kullanacak şekilde yapılandırın: `mcr.microsoft.com/azureiotedge-hub:1.2.0-rc4` .
 
 1. EdgeHub modülü için aşağıdaki ortam değişkenlerini yapılandırın:
 
@@ -211,7 +212,7 @@ Bu özellik genel önizlemede olduğundan, IoT Edge cihazınızı, IoT Edge çal
    | `experimentalFeatures__enabled` | `true` |
    | `experimentalFeatures__nestedEdgeEnabled` | `true` |
 
-1. EdgeAgent modülünü genel önizleme görüntüsünü kullanacak şekilde yapılandırın: `mcr.microsoft.com/azureiotedge-hub:1.2.0-rc2` .
+1. EdgeAgent modülünü genel önizleme görüntüsünü kullanacak şekilde yapılandırın: `mcr.microsoft.com/azureiotedge-hub:1.2.0-rc4` .
 
 ## <a name="network-isolate-downstream-devices"></a>Ağ yukarı akış cihazlarını yalıtma
 
@@ -356,21 +357,20 @@ Düşük katman cihazların bir ağ geçidi hiyerarşisi aracılığıyla modül
 
 IoT Edge Aracısı, herhangi bir IoT Edge cihazında başlatılacak ilk çalışma zamanı bileşenidir. Tüm aşağı akış IoT Edge cihazların, başlatıldığında edgeAgent modül görüntüsüne erişebilecekleri ve ardından dağıtımlara erişip modül görüntülerinin geri kalanını başladıklarından emin olmanız gerekir.
 
-Kimlik doğrulama bilgilerini, sertifikaları ve ana ana bilgisayar adını sağlamak için bir IoT Edge cihazında config. YAML dosyasına gittiğinizde, edgeAgent kapsayıcı görüntüsünü de güncelleştirin.
+Kimlik doğrulama bilgilerini, sertifikaları ve ana ana bilgisayar adını sağlamak için bir IoT Edge cihazında yapılandırma dosyasına gittiğinizde, edgeAgent kapsayıcı görüntüsünü de güncelleştirin.
 
 Üst düzey ağ geçidi cihazı kapsayıcı görüntüsü isteklerini işleyecek şekilde yapılandırıldıysa, `mcr.microsoft.com` üst konak adı ve API proxy dinleme bağlantı noktasıyla değiştirin. Dağıtım bildiriminde, `$upstream` bir kısayol olarak kullanabilirsiniz, ancak bu, edgeHub modülünün yönlendirmeyi işlemesini ve bu modülün bu noktada başlatılmadığını gerektirir. Örnek:
 
-```yml
-agent:
-  name: "edgeAgent"
-  type: "docker"
-  env: {}
-  config:
-    image: "{Parent FQDN or IP}:443/azureiotedge-agent:1.2.0-rc2"
-    auth: {}
+```toml
+[agent]
+name = "edgeAgent"
+type = "docker"
+
+[agent.config]
+image: "{Parent FQDN or IP}:443/azureiotedge-agent:1.2.0-rc4"
 ```
 
-Yerel bir kapsayıcı kayıt defteri kullanıyorsanız veya cihazda kapsayıcı görüntülerini el ile sağlıyorsanız, config. YAML dosyasını uygun şekilde güncelleştirin.
+Yerel bir kapsayıcı kayıt defteri kullanıyorsanız veya cihazda kapsayıcı görüntülerini el ile sağlıyorsanız, yapılandırma dosyasını uygun şekilde güncelleştirin.
 
 #### <a name="configure-runtime-and-deploy-proxy-module"></a>Çalışma zamanını yapılandırma ve proxy modülünü dağıtma
 

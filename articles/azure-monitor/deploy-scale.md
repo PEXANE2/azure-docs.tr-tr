@@ -1,17 +1,16 @@
 ---
 title: Azure Ilkesi 'ni kullanarak Azure Izleyici 'yi ölçekli olarak dağıtma
 description: Azure Izleyici özelliklerini Azure Ilkesi kullanarak ölçekli olarak dağıtın.
-ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/08/2020
-ms.openlocfilehash: bcd56e464419312e74aec01cf22ae56f797991ad
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: cc55cd17a547b9c63f2c26479d5797fae016d8d7
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101731774"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102044077"
 ---
 # <a name="deploy-azure-monitor-at-scale-using-azure-policy"></a>Azure Ilkesi 'ni kullanarak Azure Izleyici 'yi ölçekli olarak dağıtma
 Bazı Azure Izleyici özellikleri bir kez veya sınırlı sayıda yapılandırıldığında, izlemek istediğiniz her kaynak için diğerlerinin tekrarlanması gerekir. Bu makalede, izlemenin tüm Azure kaynaklarınız için tutarlı ve doğru şekilde yapılandırıldığından emin olmak üzere Azure Izleyici 'yi ölçekli olarak uygulamak için Azure Ilkesi kullanma yöntemleri açıklanmaktadır.

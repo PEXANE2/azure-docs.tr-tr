@@ -337,6 +337,8 @@
               href: migration-guides/database/sql-server-to-sql-database-overview.md
             - name: Geçiş
               href: migration-guides/database/sql-server-to-sql-database-guide.md
+            - name: Değerlendirme kuralları
+              href: migration-guides/database/sql-server-to-sql-database-assessment-rules.md
     - name: Kavramlar
       items:
         - name: Bağlantı mimarisi
@@ -757,6 +759,8 @@
               href: migration-guides/managed-instance/sql-server-to-managed-instance-guide.md
             - name: Performans temeli
               href: migration-guides/managed-instance/sql-server-to-managed-instance-performance-baseline.md
+            - name: Değerlendirme kuralları
+              href: migration-guides/managed-instance/sql-server-to-sql-managed-instance-assessment-rules.md
     - name: Kavramlar
       items:
         - name: Kaynak sınırları

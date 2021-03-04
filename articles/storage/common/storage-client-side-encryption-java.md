@@ -6,17 +6,17 @@ author: tamram
 ms.service: storage
 ms.devlang: java
 ms.topic: article
-ms.date: 05/11/2017
+ms.date: 02/18/2021
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
 ms.custom: devx-track-java
-ms.openlocfilehash: fafce52f9d760fac0d5c3f0ea1be2480547c5d4d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 78baaa3f794bed870b40fb3975f6b80ff37e90f0
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91817519"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102043737"
 ---
 # <a name="client-side-encryption-and-azure-key-vault-with-java-for-microsoft-azure-storage"></a>Microsoft Azure Depolama için Client-Side şifreleme ve Azure Key Vault Java
 [!INCLUDE [storage-selector-client-side-encryption-include](../../../includes/storage-selector-client-side-encryption-include.md)]
@@ -48,7 +48,7 @@ Zarf tekniği aracılığıyla şifre çözme aşağıdaki şekilde çalışmakt
 Depolama istemci kitaplığı, Kullanıcı verilerini şifrelemek için [AES](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard) kullanır. Özellikle, AES ile [Şifre blok zincirleme (CBC)](https://en.wikipedia.org/wiki/Block_cipher_mode_of_operation#Cipher-block_chaining_.28CBC.29) modu. Her bir hizmet biraz farklı çalışır, bu nedenle bunlardan her birini burada ele alınacaktır.
 
 ### <a name="blobs"></a>Bloblar
-İstemci kitaplığı şu anda yalnızca tüm Blobların şifrelenmesini destekliyor. Özellikle, kullanıcılar **yükleme*** yöntemlerini veya **openoutputstream** yöntemini kullanırken şifreleme desteklenir. İndirmeler için hem tamamlanma hem de Aralık İndirmeleri desteklenir.  
+İstemci kitaplığı şu anda yalnızca tüm Blobların şifrelenmesini destekliyor. Özellikle, kullanıcılar **upload** _ yöntemlerini veya _ *openoutputstream** metodunu kullanırken şifreleme desteklenir. İndirmeler için hem tamamlanma hem de Aralık İndirmeleri desteklenir.  
 
 Şifreleme sırasında, istemci kitaplığı, 16 baytlık rastgele bir başlatma vektörü (IV), 32 baytlık bir rastgele içerik şifreleme anahtarı (CEK) ile birlikte oluşturulur ve bu bilgileri kullanarak blob verilerinin zarf şifrelemesini gerçekleştirir. Sarmalanan CEK ve bazı ek şifreleme meta verileri, hizmet üzerindeki şifreli blob ile birlikte blob meta verileri olarak depolanır.
 
@@ -122,7 +122,7 @@ Depolama istemci kitaplığı, anahtarları yönetmek için Azure genelinde orta
 3. Şifreleme ilkesi oluştururken bir giriş olarak önbelleğe alma Çözümleyicisi 'ni kullanın.
    Key Vault kullanımı ile ilgili daha fazla bilgiyi şifreleme kodu örneklerinde bulabilirsiniz.
 
-## <a name="best-practices"></a>Önerilen uygulamalar
+## <a name="best-practices"></a>En iyi uygulamalar
 Şifreleme desteği yalnızca Java için depolama istemci kitaplığı 'nda kullanılabilir.
 
 > [!IMPORTANT]
@@ -152,7 +152,13 @@ Kullanıcılar isteğe bağlı olarak, tüm karşıya yüklemeler ve indirmeleri
 Örneğin, bu istemci nesnesi aracılığıyla gerçekleştirilen tüm blob işlemleri için şifrelemeyi zorunlu kılmak üzere **Cloudblobclient. getDefaultRequestOptions (). setRequireEncryption (true)** kullanın.
 
 ### <a name="blob-service-encryption"></a>Blob hizmeti şifrelemesi
-**Blobencryptionpolicy** nesnesi oluşturun ve bunu istek SEÇENEKLERINDE (API başına veya **defaultrequestoptions**kullanarak istemci düzeyinde) ayarlayın. Diğer her şey, dahili olarak istemci kitaplığı tarafından işlenir.
+**Blobencryptionpolicy** nesnesi oluşturun ve bunu istek SEÇENEKLERINDE (API başına veya **defaultrequestoptions** kullanarak istemci düzeyinde) ayarlayın. Diğer her şey, dahili olarak istemci kitaplığı tarafından işlenir.
+
+# <a name="java-v12"></a>[Java V12](#tab/java)
+
+Şu anda Azure Storage istemci kitaplıklarının 12. x sürümünü yansıtan kod parçacıkları oluşturmak için çalışıyoruz. Daha fazla bilgi için bkz. [Azure Storage V12 Istemci kitaplıklarını duyurusu](https://techcommunity.microsoft.com/t5/azure-storage/announcing-the-azure-storage-v12-client-libraries/ba-p/1482394).
+
+# <a name="java-v8"></a>[Java V8](#tab/java8)
 
 ```java
 // Create the IKey used for encryption.
@@ -172,9 +178,16 @@ blob.upload(stream, size, null, options, null);
 ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
 blob.download(outputStream, null, options, null);
 ```
+---
 
 ### <a name="queue-service-encryption"></a>Kuyruk hizmeti şifreleme
-Bir **Queueencryptionpolicy** nesnesi oluşturun ve bunu istek SEÇENEKLERINDE (API başına veya **defaultrequestoptions**kullanarak istemci düzeyinde) ayarlayın. Diğer her şey, dahili olarak istemci kitaplığı tarafından işlenir.
+Bir **Queueencryptionpolicy** nesnesi oluşturun ve bunu istek SEÇENEKLERINDE (API başına veya **defaultrequestoptions** kullanarak istemci düzeyinde) ayarlayın. Diğer her şey, dahili olarak istemci kitaplığı tarafından işlenir.
+
+# <a name="java-v12"></a>[Java V12](#tab/java)
+
+Şu anda Azure Storage istemci kitaplıklarının 12. x sürümünü yansıtan kod parçacıkları oluşturmak için çalışıyoruz. Daha fazla bilgi için bkz. [Azure Storage V12 Istemci kitaplıklarını duyurusu](https://techcommunity.microsoft.com/t5/azure-storage/announcing-the-azure-storage-v12-client-libraries/ba-p/1482394).
+
+# <a name="java-v8"></a>[Java V8](#tab/java8)
 
 ```java
 // Create the IKey used for encryption.
@@ -192,11 +205,18 @@ queue.addMessage(message, 0, 0, options, null);
 // Retrieve message
 CloudQueueMessage retrMessage = queue.retrieveMessage(30, options, null);
 ```
+---
 
 ### <a name="table-service-encryption"></a>Tablo hizmeti şifrelemesi
-Bir şifreleme ilkesi oluşturup istek seçeneklerinde ayarlamaya ek olarak, **Tablerequestoptions**Içinde bir **encryptionresolver** belirtmeniz veya varlığın alıcısı ve ayarlayıcısı üzerinde [Encrypt] özniteliğini ayarlamanız gerekir.
+Bir şifreleme ilkesi oluşturup istek seçeneklerinde ayarlamaya ek olarak, **Tablerequestoptions** Içinde bir **encryptionresolver** belirtmeniz veya varlığın alıcısı ve ayarlayıcısı üzerinde [Encrypt] özniteliğini ayarlamanız gerekir.
 
 ### <a name="using-the-resolver"></a>Çözümleyici 'yi kullanma
+
+# <a name="java-v12"></a>[Java V12](#tab/java)
+
+Şu anda Azure Storage istemci kitaplıklarının 12. x sürümünü yansıtan kod parçacıkları oluşturmak için çalışıyoruz. Daha fazla bilgi için bkz. [Azure Storage V12 Istemci kitaplıklarını duyurusu](https://techcommunity.microsoft.com/t5/azure-storage/announcing-the-azure-storage-v12-client-libraries/ba-p/1482394).
+
+# <a name="java-v8"></a>[Java V8](#tab/java8)
 
 ```java
 // Create the IKey used for encryption.
@@ -228,9 +248,16 @@ retrieveOptions.setEncryptionPolicy(policy);
 TableOperation operation = TableOperation.retrieve(ent.PartitionKey, ent.RowKey, DynamicTableEntity.class);
 TableResult result = currentTable.execute(operation, retrieveOptions, null);
 ```
+---
 
 ### <a name="using-attributes"></a>Öznitelikleri kullanma
 Yukarıda belirtildiği gibi, varlık TableEntity uyguluyorsa, Özellikler alıcı ve ayarlayıcı, **Encryptionresolver**'ı belirtmek yerine [Encrypt] özniteliğiyle birlikte kullanılabilir.
+
+# <a name="java-v12"></a>[Java V12](#tab/java)
+
+Şu anda Azure Storage istemci kitaplıklarının 12. x sürümünü yansıtan kod parçacıkları oluşturmak için çalışıyoruz. Daha fazla bilgi için bkz. [Azure Storage V12 Istemci kitaplıklarını duyurusu](https://techcommunity.microsoft.com/t5/azure-storage/announcing-the-azure-storage-v12-client-libraries/ba-p/1482394).
+
+# <a name="java-v8"></a>[Java V8](#tab/java8)
 
 ```java
 private string encryptedProperty1;
@@ -245,6 +272,7 @@ public void setEncryptedProperty1(final String encryptedProperty1) {
     this.encryptedProperty1 = encryptedProperty1;
 }
 ```
+---
 
 ## <a name="encryption-and-performance"></a>Şifreleme ve performans
 

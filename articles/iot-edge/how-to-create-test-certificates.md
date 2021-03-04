@@ -8,12 +8,12 @@ ms.date: 06/02/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: c5af77da0ed2c579a478c8ebaaa924882d9a15c6
-ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
+ms.openlocfilehash: d82f1cac6e437663fa0b1c3e21c65036f3c1d4eb
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92927711"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102046049"
 ---
 # <a name="create-demo-certificates-to-test-iot-edge-device-features"></a>IoT Edge cihaz özelliklerini test etmek için tanıtım sertifikaları oluşturma
 
@@ -32,7 +32,7 @@ IoT Edge senaryonuzu test etmek için tanıtım sertifikaları oluşturmak için
 1. Cihazınızda sertifika oluşturma için [betikleri ayarlayın](#set-up-scripts) .
 2. Senaryonuza yönelik diğer tüm sertifikaları imzalamak için kullandığınız [kök CA sertifikasını oluşturun](#create-root-ca-certificate) .
 3. Sınamak istediğiniz senaryo için gereken sertifikaları oluşturun:
-   * IoT Hub cihaz sağlama hizmeti ile otomatik sağlama için [IoT Edge cihaz kimlik sertifikaları oluşturun](#create-iot-edge-device-identity-certificates) .
+   * El ile veya IoT Hub cihaz sağlama hizmeti ile cihazları X. 509.440 sertifika kimlik doğrulamasıyla sağlamak için [IoT Edge cihaz kimlik sertifikaları oluşturun](#create-iot-edge-device-identity-certificates) .
    * Ağ Geçidi senaryolarında IoT Edge cihazları için [IoT Edge CIHAZ CA sertifikaları oluşturun](#create-iot-edge-device-ca-certificates) .
    * Bir ağ geçidi senaryosunda aşağı akış cihazlarının kimlik doğrulaması için [aşağı akış cihaz sertifikaları oluşturun](#create-downstream-device-certificates) .
 
@@ -183,9 +183,9 @@ Bu bölümdeki adımlara geçmeden önce, tanıtım sertifikası oluşturma beti
 
 ## <a name="create-iot-edge-device-identity-certificates"></a>IoT Edge cihaz kimlik sertifikaları oluşturma
 
-Cihaz kimlik sertifikaları, Azure IoT Hub cihaz sağlama hizmeti (DPS) aracılığıyla IoT Edge cihazları sağlamak için kullanılır.
+X. 509.440 sertifika kimlik doğrulamasını kullanmayı seçerseniz, cihaz kimlik sertifikaları IoT Edge cihazları sağlamak için kullanılır. Bu sertifikalar, Azure IoT Hub cihaz sağlama hizmeti (DPS) aracılığıyla el ile sağlama veya otomatik sağlama kullanmanıza bakılmaksızın çalışır.
 
-Cihaz kimlik sertifikaları, IoT Edge cihazında config. YAML dosyasının **sağlama** bölümüne gider.
+Cihaz kimlik sertifikaları, IoT Edge cihazında yapılandırma dosyasının **sağlama** bölümüne gider.
 
 Bu bölümdeki adımlara geçmeden önce, [betikleri ayarlama](#set-up-scripts) ve [kök CA sertifikası oluşturma](#create-root-ca-certificate) bölümlerindeki adımları izleyin.
 
@@ -223,11 +223,19 @@ Betik, DPS içinde bireysel bir kayıt oluştururken ve IoT Edge çalışma zama
 
 ## <a name="create-iot-edge-device-ca-certificates"></a>IoT Edge cihaz CA sertifikaları oluşturma
 
-Üretime giden her IoT Edge cihaz, config. YAML dosyasından başvurulan bir cihaz CA sertifikasına ihtiyaç duyuyor.
+Üretime giden her IoT Edge cihaz, yapılandırma dosyasından başvurulan bir cihaz CA sertifikasına ihtiyaç duyuyor.
 Cihaz CA sertifikası, cihazda çalışan modüller için sertifika oluşturmaktan sorumludur.
 Ayrıca, cihaz CA sertifikası IoT Edge cihazının kimliğini aşağı akış cihazlarına doğrulama biçimi olduğundan, Ağ Geçidi senaryoları için de gereklidir.
 
+<!-- 1.1 -->
+:::moniker range="iotedge-2018-06"
 Cihaz CA sertifikaları, IoT Edge cihazında config. YAML dosyasının **sertifika** bölümüne gider.
+:::moniker-end
+
+<!-- 1.2 -->
+:::moniker range=">=iotedge-2020-11"
+Cihaz CA sertifikaları, IoT Edge cihazında config. TOML dosyasının **Edge CA** bölümüne gider.
+:::moniker-end
 
 Bu bölümdeki adımlara geçmeden önce, [betikleri ayarlama](#set-up-scripts) ve [kök CA sertifikası oluşturma](#create-root-ca-certificate) bölümlerindeki adımları izleyin.
 
@@ -241,12 +249,12 @@ Bu bölümdeki adımlara geçmeden önce, [betikleri ayarlama](#set-up-scripts) 
    New-CACertsEdgeDevice "<CA cert name>"
    ```
 
-   Bu komut birkaç sertifika ve anahtar dosyası oluşturur. Aşağıdaki sertifika ve anahtar çiftinin IoT Edge bir cihaza kopyalanması ve config. YAML dosyasında başvurulması gerekir:
+   Bu komut birkaç sertifika ve anahtar dosyası oluşturur. Aşağıdaki sertifika ve anahtar çiftinin IoT Edge bir cihaza kopyalanması ve yapılandırma dosyasında başvurulması gerekir:
 
    * `<WRKDIR>\certs\iot-edge-device-<CA cert name>-full-chain.cert.pem`
    * `<WRKDIR>\private\iot-edge-device-<CA cert name>.key.pem`
 
-**New-CACertsEdgeDevice** komutuna geçirilen ad, config. YAML içindeki HostName parametresiyle aynı olmamalıdır veya IoT Hub cihaz kimliği ile aynı olmamalıdır.
+**New-CACertsEdgeDevice** komutuna geçirilen ad, yapılandırma dosyasındaki ana bilgisayar adı parametresiyle aynı olmamalıdır veya IoT Hub cihaz kimliği.
 
 ### <a name="linux"></a>Linux
 
@@ -258,12 +266,12 @@ Bu bölümdeki adımlara geçmeden önce, [betikleri ayarlama](#set-up-scripts) 
    ./certGen.sh create_edge_device_ca_certificate "<CA cert name>"
    ```
 
-   Bu betik komutu birkaç sertifika ve anahtar dosyası oluşturur. Aşağıdaki sertifika ve anahtar çiftinin IoT Edge bir cihaza kopyalanması ve config. YAML dosyasında başvurulması gerekir:
+   Bu betik komutu birkaç sertifika ve anahtar dosyası oluşturur. Aşağıdaki sertifika ve anahtar çiftinin IoT Edge bir cihaza kopyalanması ve yapılandırma dosyasında başvurulması gerekir:
 
    * `<WRKDIR>/certs/iot-edge-device-<CA cert name>-full-chain.cert.pem`
    * `<WRKDIR>/private/iot-edge-device-<CA cert name>.key.pem`
 
-**Create_edge_device_ca_certificate** komutuna geçirilen ad, config. YAML içindeki HostName parametresiyle aynı olamaz veya IoT Hub cihaz kimliği ile aynı olmamalıdır.
+**Create_edge_device_ca_certificate** komutuna geçirilen ad, yapılandırma dosyasındaki ana bilgisayar adı parametresiyle veya IoT Hub IÇINDEKI cihazın kimliğiyle aynı olmamalıdır.
 
 ## <a name="create-downstream-device-certificates"></a>Aşağı akış cihaz sertifikaları oluşturma
 
@@ -289,7 +297,7 @@ IoT cihazınız, IoT Hub kimlik doğrulaması yapabilmesi için cihaz sertifikal
 
 1. Sertifika oluşturma betikleri ve kök CA sertifikası olan çalışma dizinine gidin.
 
-2. Aşağı akış cihazı için iki sertifika (birincil ve ikincil) oluşturun. Kullanımı kolay bir adlandırma kuralı, IoT cihazının adı ve ardından birincil veya ikincil etiket ile sertifikalar oluşturmaktır. Örneğin:
+2. Aşağı akış cihazı için iki sertifika (birincil ve ikincil) oluşturun. Kullanımı kolay bir adlandırma kuralı, IoT cihazının adı ve ardından birincil veya ikincil etiket ile sertifikalar oluşturmaktır. Örnek:
 
    ```PowerShell
    New-CACertsDevice "<device name>-primary"
@@ -319,7 +327,7 @@ IoT cihazınız, IoT Hub kimlik doğrulaması yapabilmesi için cihaz sertifikal
 
 1. Sertifika oluşturma betikleri ve kök CA sertifikası olan çalışma dizinine gidin.
 
-2. Aşağı akış cihazı için iki sertifika (birincil ve ikincil) oluşturun. Kullanımı kolay bir adlandırma kuralı, IoT cihazının adı ve ardından birincil veya ikincil etiket ile sertifikalar oluşturmaktır. Örneğin:
+2. Aşağı akış cihazı için iki sertifika (birincil ve ikincil) oluşturun. Kullanımı kolay bir adlandırma kuralı, IoT cihazının adı ve ardından birincil veya ikincil etiket ile sertifikalar oluşturmaktır. Örnek:
 
    ```bash
    ./certGen.sh create_device_certificate "<device name>-primary"

@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: virtual-machines
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: 6cafbff86a55ad0bed7da17fcef1aea2b0a53d1b
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: f0f3baf1bf56f958408f789961812c0555f289f1
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101680209"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102043652"
 ---
 # <a name="redundancy-options-for-managed-disks"></a>Yönetilen diskler için artıklık seçenekleri
 
@@ -34,7 +34,7 @@ Doğal felaketler veya donanım sorunları nedeniyle ortaya çıkabilecek tüm b
 
 Bölgesel olarak yedekli depolama (ZRS), Azure yönetilen diskinizi, seçili bölgedeki üç Azure kullanılabilirlik alanı üzerinden eşzamanlı olarak çoğaltır. Her kullanılabilirlik alanı bağımsız enerji, soğutma ve ağ altyapısına sahip olan ayrı bir fiziksel konumu ifade eder. 
 
-ZRS diskleri, kullanılabilirlik bölgelerindeki hatalardan kurtarmanızı sağlar. Bir bölgenin tamamı kapalıysa, farklı bir bölgedeki bir sanal makineye ZRS diski eklenebilir. Ayrıca, SQL FCı, SAP ASCS/SCS veya GFS2 gibi kümelenmiş veya dağıtılmış uygulamalar için daha iyi kullanılabilirlik sağlamak üzere, ZRS disklerini paylaşılan disklerle birlikte kullanabilirsiniz. Hem ZRS hem de [kullanılabilirlik alanları](../availability-zones/az-overview.md)avantajlarından yararlanmak için, farklı bölgelerdeki birincil ve ikincil VM 'lere paylaşılan bir ZRS diski iliştirebilirsiniz. Birincil bölgeniz başarısız olursa, [SCSI kalıcı ayırmasını](disks-shared-enable.md#supported-scsi-pr-commands)kullanarak ikincil VM 'ye hızlı bir şekilde yük devreolursunuz.
+ZRS diskleri, kullanılabilirlik bölgelerindeki hatalardan kurtarmanızı sağlar. Bir bölgenin tamamı kapalıysa, farklı bir bölgedeki bir sanal makineye ZRS diski eklenebilir. Ayrıca, SQL FCı, SAP ASCS/SCS veya GFS2 gibi kümelenmiş veya dağıtılmış uygulamalar için daha iyi kullanılabilirlik sağlamak üzere ZRS disklerini paylaşılan bir disk olarak da kullanabilirsiniz. Hem ZRS hem de [kullanılabilirlik alanları](../availability-zones/az-overview.md)avantajlarından yararlanmak için, farklı bölgelerdeki birincil ve ikincil VM 'lere paylaşılan bir ZRS diski iliştirebilirsiniz. Birincil bölgeniz başarısız olursa, [SCSI kalıcı ayırmasını](disks-shared-enable.md#supported-scsi-pr-commands)kullanarak ikincil VM 'ye hızlı bir şekilde yük devreolursunuz.
 
 ### <a name="limitations"></a>Sınırlamalar
 
@@ -56,7 +56,7 @@ Daha fazla yazma gecikmesi haricinde ZRS kullanan diskler LRS kullanan disklerle
 
 ### <a name="create-zrs-managed-disks"></a>ZRS yönetilen diskler oluşturma
 
-`2020-12-01`BIR ZRS diski oluşturmak için API 'yi Azure Resource Manager şablonunuz ile kullanmanız gerekir.
+`2020-12-01`BIR ZRS diski oluşturmak için Azure Resource Manager şablonunuz ile API 'yi kullanın.
 
 #### <a name="create-a-vm-with-zrs-disks"></a>ZRS diskleriyle VM oluşturma
 
@@ -120,3 +120,7 @@ New-AzResourceGroupDeployment -ResourceGroupName zrstesting `
 -osDiskType "StandardSSD_LRS" `
 -dataDiskType "Premium_ZRS" `
 ```
+
+## <a name="next-steps"></a>Sonraki adımlar
+
+- [ZRS diskleriyle BIR VM oluşturmak için bu örnek Azure Resource Manager şablonlarını](https://github.com/Azure-Samples/managed-disks-powershell-getting-started/tree/master/ZRSDisks)kullanın.

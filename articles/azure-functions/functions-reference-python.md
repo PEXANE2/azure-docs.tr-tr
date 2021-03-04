@@ -4,12 +4,12 @@ description: Python ile işlev geliştirmeyi anlama
 ms.topic: article
 ms.date: 11/4/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 78965a1a09272663c52469b8ccd91988f30b53cc
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 0829ef9a6b63866c2527e521ed7edf48a3249392
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101708705"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102044264"
 ---
 # <a name="azure-functions-python-developer-guide"></a>Azure Işlevleri Python Geliştirici Kılavuzu
 
@@ -22,7 +22,7 @@ Python geliştiricisi olarak, aşağıdaki makalelerden biriyle de ilgileniyor o
 | <ul><li>[Visual Studio Code kullanarak Python işlevi](./create-first-function-vs-code-csharp.md?pivots=programming-language-python)</li><li>[Terminal/komut istemiyle Python işlevi](./create-first-function-cli-csharp.md?pivots=programming-language-python)</li></ul> | <ul><li>[Geliştirici kılavuzu](functions-reference.md)</li><li>[Barındırma seçenekleri](functions-scale.md)</li><li>[Performans &nbsp; konuları](functions-best-practices.md)</li></ul> | <ul><li>[PyTorch ile görüntü sınıflandırması](machine-learning-pytorch.md)</li><li>[Azure Otomasyonu örneği](/samples/azure-samples/azure-functions-python-list-resource-groups/azure-functions-python-sample-list-resource-groups/)</li><li>[TensorFlow ile Machine Learning](functions-machine-learning-tensorflow.md)</li><li>[Python örneklerine gözatamıyorum](/samples/browse/?products=azure-functions&languages=python)</li></ul> |
 
 > [!NOTE]
-> [Python tabanlı Azure Işlevlerinizi Windows üzerinde yerel olarak geliştirebileceğiniz](./azure-functions/create-first-function-vs-code-python#run-the-function-locally)gibi, Python yalnızca Azure 'Da çalışırken Linux tabanlı bir barındırma planı üzerinde desteklenir. Desteklenen [işletim sistemi/çalışma zamanı](./azure-functions/functions-scale#operating-systemruntime) birleşimleri listesine bakın.
+> [Python tabanlı Azure Işlevlerinizi Windows üzerinde yerel olarak geliştirebileceğiniz](create-first-function-vs-code-python.md#run-the-function-locally)gibi, Python yalnızca Azure 'Da çalışırken Linux tabanlı bir barındırma planı üzerinde desteklenir. Desteklenen [işletim sistemi/çalışma zamanı](functions-scale.md#operating-systemruntime) birleşimleri listesine bakın.
 
 ## <a name="programming-model"></a>Programlama modeli
 

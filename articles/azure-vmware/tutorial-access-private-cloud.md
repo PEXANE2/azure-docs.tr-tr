@@ -3,12 +3,12 @@ title: Öğretici-özel buluta erişin
 description: Azure VMware çözümüne özel buluta erişmeyi öğrenin
 ms.topic: tutorial
 ms.date: 02/22/2021
-ms.openlocfilehash: 81296223ab941633a4b0f1316e359a0eb2ff73ce
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 456767a9edd78a70a0aba45c7b44a2150a2217a1
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101738489"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102045012"
 ---
 # <a name="tutorial-access-an-azure-vmware-solution-private-cloud"></a>Öğretici: Azure VMware çözümüne özel buluta erişme
 
@@ -37,7 +37,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
    >[!TIP]
    >Yeni vCenter ve NSX-T parolaları oluşturmak için **Yeni bir parola oluştur** ' u seçin.
 
-   :::image type="content" source="media/tutorial-access-private-cloud/ss4-display-identity.png" alt-text="Özel bulut vCenter ve NSX Yöneticisi URL 'Leri ve kimlik bilgilerini görüntüleyin." border="true":::
+   :::image type="content" source="media/tutorial-access-private-cloud/ss4-display-identity.png" alt-text="Özel bulut vCenter ve NSX Yöneticisi URL 'Leri ve kimlik bilgilerini görüntüleyin." border="true" lightbox="media/tutorial-access-private-cloud/ss4-display-identity.png":::
 
 1. Önceki adımda oluşturduğunuz VM 'ye gidin ve sanal makineye bağlanın. 
 
