@@ -7,12 +7,12 @@ ms.service: azure-percept
 ms.topic: how-to
 ms.date: 02/03/2021
 ms.custom: template-how-to
-ms.openlocfilehash: 8d150228be2cf6deff3bc2fd0a0599cca70d24ac
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 8dda18271de9b7d65246f0882ee7a68191031c05
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101663857"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102096624"
 ---
 # <a name="connect-to-your-azure-percept-dk-over-ssh"></a>SSH üzerinden Azure Percept DK 'ye bağlanma
 
@@ -25,6 +25,7 @@ ms.locfileid: "101663857"
     - Ana bilgisayarınız Windows çalıştırıyorsa, [Putty](https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html) ETKIN bir SSH istemcudur ve bu kılavuz boyunca kullanılacaktır.
     - Ana bilgisayarınız Linux veya OS X çalıştırıyorsa, SSH Hizmetleri bu işletim sistemlerine dahil edilir ve ayrı bir istemci uygulaması olmadan çalıştırılabilir. SSH hizmetlerinin nasıl çalıştırılacağı hakkında daha fazla bilgi için işletim sistemi ürün belgelerinize bakın.
 - Azure Percept DK
+- [Azure PERCEPT dk taslak deneyimi](./quickstart-percept-dk-set-up.md) sırasında SSH oturum açma hesabı ayarlama
 
 ## <a name="initiate-the-ssh-connection"></a>SSH bağlantısını başlatma
 
@@ -48,15 +49,8 @@ ms.locfileid: "101663857"
 
     :::image type="content" source="./media/how-to-ssh-into-percept-dk/ssh-putty.png" alt-text="Görüntüyle.":::
 
-1. PuTTY terminalinde oturum açın. OOBE sırasında bir SSH Kullanıcı adı ve parola ayarlarsanız, istendiğinde bu oturum açma kimlik bilgilerini girin. Aksi takdirde, aşağıdakileri girin:  
-
-    1. farklı oturum aç: kök
-    1. Parola: p@ssw0rd
-
-    :::image type="content" source="./media/how-to-ssh-into-percept-dk/putty-terminal.png" alt-text="PuTTY Terminal penceresi.":::  
+1. Sıra oluşturma deneyiminde oluşturulan SSH Kullanıcı adı ve parolasıyla PuTTY terminalinde oturum açın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 SSH üzerinden Azure Percept DK 'e başarıyla bağlandıktan sonra, sorun giderme, USB güncelleştirmeleri ve DiagTool veya SoftAP aracını çalıştırma gibi çeşitli görevleri gerçekleştirebilirsiniz.
-
-

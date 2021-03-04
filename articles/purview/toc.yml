@@ -166,6 +166,10 @@ items:
             href: sensitivity-insights.md
           - name: Dosya uzantısı içgörülerini görüntüleme
             href: file-extension-insights.md
+      - name: Güvenlik & ağı
+        items:
+          - name: Özel uç noktaları yönetme
+            href: catalog-private-link.md
   - name: Başvuru
     items:
       - name: Desteklenen sınıflandırmalar

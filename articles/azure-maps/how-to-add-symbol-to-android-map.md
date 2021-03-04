@@ -3,17 +3,18 @@ title: Android Maps 'e sembol katmanı ekleme | Microsoft Azure haritaları
 description: Haritaya işaret eklemeyi öğrenin. Bir veri kaynağından gelen nokta tabanlı verileri içeren bir sembol katmanı eklemek için Azure Maps Android SDK kullanan bir örneğe bakın.
 author: rbrundritt
 ms.author: richbrun
-ms.date: 12/08/2020
+ms.date: 2/26/2021
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
-ms.openlocfilehash: 1706b60a61bd3b507d9fbcf555e478b388f51168
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+zone_pivot_groups: azure-maps-android
+ms.openlocfilehash: edb758469a06dcb7914025ea449b9d952e939533
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 03/04/2021
-ms.locfileid: "102047579"
+ms.locfileid: "102097219"
 ---
 # <a name="add-a-symbol-layer-android-sdk"></a>Sembol katmanı ekleme (Android SDK)
 
@@ -32,6 +33,8 @@ Haritaya bir sembol katmanı ekleyebilmeniz için önce birkaç adım gerçekle�
 
 Aşağıdaki kod, yüklendikten sonra haritaya ne ekleneceğini gösterir. Bu örnek, bir sembol katmanını kullanarak haritada tek bir nokta oluşturur.
 
+::: zone pivot="programming-language-java-android"
+
 ```java
 //Create a data source and add it to the map.
 DataSource source = new DataSource();
@@ -47,6 +50,27 @@ SymbolLayer layer = new SymbolLayer(source);
 map.layers.add(layer);
 ```
 
+::: zone-end
+
+::: zone pivot="programming-language-kotlin"
+
+```kotlin
+//Create a data source and add it to the map.
+val source = DataSource()
+map.sources.add(source)
+
+//Create a point and add it to the data source.
+source.add(Point.fromLngLat(0, 0))
+
+//Create a symbol layer to render icons and/or text at points on the map.
+val layer = SymbolLayer(source)
+
+//Add the layer to the map.
+map.layers.add(layer)
+```
+
+::: zone-end
+
 Haritaya eklenebilecek üç farklı tür Point verisi vardır:
 
 - GeoJSON nokta geometrisi-bu nesne yalnızca bir noktanın koordinatını içerir ve başka hiçbir şey yapmaz. `Point.fromLngLat`Statik yöntem bu nesneleri kolayca oluşturmak için kullanılabilir.
@@ -56,6 +80,8 @@ Haritaya eklenebilecek üç farklı tür Point verisi vardır:
 Daha fazla bilgi için bkz. veri oluşturma ve haritaya veri ekleme hakkında [veri kaynağı belgesi oluşturma](create-data-source-android-sdk.md) .
 
 Aşağıdaki kod örneği bir GeoJSON noktası geometrisi oluşturur ve bunu GeoJSON özelliğine geçirir ve `title` özelliklerine eklenmiş bir değer içerir. `title`Özelliği, haritada sembol simgesinin üstünde metin olarak görüntülenir.
+
+::: zone pivot="programming-language-java-android"
 
 ```java
 //Create a data source and add it to the map.
@@ -81,6 +107,36 @@ SymbolLayer layer = new SymbolLayer(source,
 map.layers.add(layer);
 ```
 
+::: zone-end
+
+::: zone pivot="programming-language-kotlin"
+
+```kotlin
+//Create a data source and add it to the map.
+val source = DataSource()
+map.sources.add(source)
+
+//Create a point feature.
+val feature = Feature.fromGeometry(Point.fromLngLat(0, 0))
+
+//Add a property to the feature.
+feature.addStringProperty("title", "Hello World!")
+
+//Add the feature to the data source.
+source.add(feature)
+
+//Create a symbol layer to render icons and/or text at points on the map.
+val layer = SymbolLayer(
+    source,  //Get the title property of the feature and display it on the map.
+    textField(get("title"))
+)
+
+//Add the layer to the map.
+map.layers.add(layer)
+```
+
+::: zone-end
+
 Aşağıdaki ekran görüntüsünde, simge katmanını içeren bir simge ve metin etiketi kullanan Yukarıdaki kod bir nokta özelliğini gösterir.
 
 ![Nokta özelliği için bir simge ve metin etiketi görüntüleyen bir sembol katmanı kullanılarak işlenen nokta ile eşleme](media/how-to-add-symbol-to-android-map/android-map-pin.png)
@@ -91,6 +147,8 @@ Aşağıdaki ekran görüntüsünde, simge katmanını içeren bir simge ve meti
 ## <a name="add-a-custom-icon-to-a-symbol-layer"></a>Sembol katmanına özel simge ekleme
 
 Sembol katmanları WebGL kullanılarak işlenir. Bu nedenle, simge görüntüleri gibi tüm kaynakların WebGL bağlamına yüklenmesi gerekir. Bu örnek, harita kaynaklarına nasıl özel bir simge ekleneceğini gösterir. Bu simge daha sonra haritada özel bir sembol ile nokta verilerini işlemek için kullanılır. `textField`Sembol katmanının özelliği bir ifadenin belirtilmesini gerektirir. Bu durumda, sıcaklık özelliğini işlemek istiyoruz. Sıcaklık bir sayı olduğundan, bir dizeye dönüştürülmesi gerekir. Ayrıca buna "°F" eklemek istiyoruz. Bu birleştirme yapmak için bir ifade kullanılabilir; `concat(Expression.toString(get("temperature")), literal("°F"))`.
+
+::: zone pivot="programming-language-java-android"
 
 ```java
 //Load a custom icon image into the image sprite of the map.
@@ -120,6 +178,39 @@ SymbolLayer layer = new SymbolLayer(source,
 );
 ```
 
+::: zone-end
+
+::: zone pivot="programming-language-kotlin"
+
+```kotlin
+//Load a custom icon image into the image sprite of the map.
+map.images.add("my-custom-icon", R.drawable.showers)
+
+//Create a data source and add it to the map.
+val source = DataSource()
+map.sources.add(source)
+
+//Create a point feature.
+val feature = Feature.fromGeometry(Point.fromLngLat(-73.985708, 40.75773))
+
+//Add a property to the feature.
+feature.addNumberProperty("temperature", 64)
+
+//Add the feature to the data source.
+source.add(feature)
+
+//Create a symbol layer to render icons and/or text at points on the map.
+val layer = SymbolLayer(
+    source,
+    iconImage("my-custom-icon"),
+    iconSize(0.5f),  //Get the title property of the feature and display it on the map.
+    textField(concat(Expression.toString(get("temperature")), literal("°F"))),
+    textOffset(arrayOf(0f, -1.5f))
+)
+```
+
+::: zone-end
+
 Bu örnekte, aşağıdaki görüntü uygulamanın çizilebilir klasörüne yüklenmiştir.
 
 | ![Hava durumu simgesi yağmur göster](media/how-to-add-symbol-to-android-map/showers.png)|
@@ -135,13 +226,27 @@ Aşağıdaki ekran görüntüsünde, bir simge katmanıyla birlikte özel bir si
 
 ## <a name="modify-symbol-colors"></a>Sembol renklerini değiştir
 
-Azure Haritalar Android SDK, varsayılan işaretleyici simgenin önceden tanımlanmış renk çeşitlemeleri kümesiyle birlikte gelir. Örneğin, `marker-red` `iconImage` Bu katmanda işaret simgesinin kırmızı bir sürümünü işlemek için bir sembol katmanının seçeneğine geçirilebilir. 
+Azure Haritalar Android SDK, varsayılan işaretleyici simgenin önceden tanımlanmış renk çeşitlemeleri kümesiyle birlikte gelir. Örneğin, `marker-red` `iconImage` Bu katmanda işaret simgesinin kırmızı bir sürümünü işlemek için bir sembol katmanının seçeneğine geçirilebilir.
+
+::: zone pivot="programming-language-java-android"
 
 ```java
 SymbolLayer layer = new SymbolLayer(source,
     iconImage("marker-red")
 );
 ```
+
+::: zone-end
+
+::: zone pivot="programming-language-kotlin"
+
+```kotlin
+val layer = SymbolLayer(source,
+    iconImage("marker-red")
+)
+```
+
+::: zone-end
 
 Aşağıdaki tabloda, kullanılabilir tüm yerleşik simge görüntüsü adları listelenmiştir. Bu işaretçilerin hepsi, renkleri geçersiz kılabileceğiniz renk kaynaklarından çeker. Bu işaretin ana Fill rengini geçersiz kılmanın yanı sıra. Ancak, bu işaretçilerin birinin rengini geçersiz kılma söz konusu simge görüntüsünü kullanan tüm katmanlara uygulanacağını unutmayın.
 

@@ -3,14 +3,14 @@ title: Uygun maliyetli düşük öncelikli VM 'Lerde iş yüklerini çalıştır
 description: Azure Batch iş yüklerinin maliyetini azaltmak için düşük öncelikli VM 'Ler sağlamayı öğrenin.
 author: mscurrell
 ms.topic: how-to
-ms.date: 02/02/2021
+ms.date: 03/03/2021
 ms.custom: seodec18
-ms.openlocfilehash: 9214ef83ec9b8bef4fb7bc7489aa0ab388f67c0d
-ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
+ms.openlocfilehash: cafc7216e8112640f823ecee1aea055ab78b3fc6
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99507291"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102098477"
 ---
 # <a name="use-low-priority-vms-with-batch"></a>Batch ile düşük öncelikli VM’ler kullanma
 
@@ -25,9 +25,9 @@ Düşük öncelikli VM 'Ler, ayrılmış VM 'lerle karşılaştırıldığında 
 > [!NOTE]
 > Artık [tek örnekli VM 'ler](../virtual-machines/spot-vms.md) ve [VM Ölçek Kümeleri](../virtual-machine-scale-sets/use-spot.md)için [spot VM 'ler](https://azure.microsoft.com/pricing/spot/) kullanılabilir. Spot VM 'ler düşük öncelikli VM 'lerin bir gelişmesidir, ancak bu fiyatlandırmayla farklılık gösterebilir ve spot VM 'Ler ayrılırken isteğe bağlı bir en yüksek fiyat ayarlanabilir.
 >
-> Azure Batch havuzları, [toplu API 'lerin ve araçların](./batch-apis-tools.md)yeni sürümleriyle birlikte genel kullanıma sunulmakta olan birkaç ay Içinde spot VM 'leri desteklemeye başlar. Spot VM desteği kullanılabilir olduğunda, düşük öncelikli VM 'Ler kullanım dışı olacaktır, ancak sanal makinelere geçiş için yeterli zamana izin vermek üzere en az 12 ay boyunca geçerli API 'Ler ve araç sürümleri kullanılarak desteklenmeye devam edecektir.
+>Azure Batch havuzları, [toplu API 'lerin ve araçların](./batch-apis-tools.md)yeni sürümleriyle gelecekte spot VM 'leri desteklemeye başlar. Spot VM desteği kullanılabilir olduktan sonra düşük öncelikli VM 'Ler kullanım dışı olacaktır; Bu işlem, sanal API 'Ler ve araç sürümleri en az 12 ay boyunca desteklenmeye devam edecektir ve bu da geçiş için VM 'Leri kullanmak için yeterli zaman sağlar.
 >
-> [Bulut hizmeti yapılandırma](/rest/api/batchservice/pool/add#cloudserviceconfiguration) havuzları Için Spot VM 'ler desteklenmez. Spot VM 'Leri kullanmak için, bulut hizmeti havuzlarının [sanal makine yapılandırma](/rest/api/batchservice/pool/add#virtualmachineconfiguration) havuzlarına geçirilmesi gerekir.
+> Spot VM 'Ler yalnızca sanal makine yapılandırma havuzları için desteklenecektir. Spot VM 'Leri kullanmak için, tüm bulut hizmeti yapılandırma havuzlarının [sanal makine yapılandırma havuzlarına geçirilmesi](batch-pool-cloud-service-to-virtual-machine-configuration.md)gerekir.
 
 ## <a name="batch-support-for-low-priority-vms"></a>Düşük öncelikli VM 'Ler için Batch desteği
 

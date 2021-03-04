@@ -7,12 +7,12 @@ ms.service: azure-percept
 ms.topic: tutorial
 ms.date: 02/10/2021
 ms.custom: template-tutorial
-ms.openlocfilehash: 54d4f1fe983cf20b734351754bb8eba191894dbc
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 6de86cbc065b5352b3b643708dd55c6856b37dd7
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101665192"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102097916"
 ---
 # <a name="create-a-no-code-vision-solution-in-azure-percept-studio"></a>Azure Percept Studio 'da kod içermeyen bir Vision çözümü oluşturma
 
@@ -23,6 +23,7 @@ Azure Percept Studio, kodlama gerekmeden özel görüntü işleme çözümleri o
 - Eğitim görüntülerinizi [özel görüntü işleme](https://www.customvision.ai/) etiketleme
 - Özel nesne algılama veya sınıflandırma modelinizi eğitme
 - Modelinizi devkit 'e dağıtın
+- Yeniden eğitim ayarlayarak modelinizi geliştirme
 
 Bu öğretici, çok az sayıda AI deneyimi ve Azure Percept kullanmaya başlarken geliştiriciler için uygundur.
 
@@ -30,15 +31,13 @@ Bu öğretici, çok az sayıda AI deneyimi ve Azure Percept kullanmaya başlarke
 
 - Azure Percept DK (devkit)
 - [Azure aboneliği](https://azure.microsoft.com/free/)
-- Kullanıma hazır deneyim (OOBE): devkit 'i bir Wi-Fi ağa bağladınız, bir IoT Hub oluşturdunuz ve devkit 'e IoT Hub
+- Azure Percept DK kurulum deneyimi: devkit 'i bir Wi-Fi ağına bağladınız, bir IoT Hub oluşturdunuz ve devkit 'e IoT Hub
 
 ## <a name="create-a-vision-prototype"></a>Bir Vision prototipi oluşturma
 
 1. Tarayıcınızı başlatın ve [Azure Percept Studio](https://go.microsoft.com/fwlink/?linkid=2135819)'ya gidin.
 
-1. Genel Bakış sayfasında **tanıtımlar & öğreticiler** sekmesine tıklayın.
-
-    :::image type="content" source="./media/tutorial-nocode-vision/percept-studio-overview-inline.png" alt-text="Azure Percept Studio 'ya genel bakış ekranı." lightbox="./media/tutorial-nocode-vision/percept-studio-overview.png":::
+1. Genel Bakış sayfasında **tanıtımlar & öğreticiler** sekmesine tıklayın.  :::image type="content" source="./media/tutorial-nocode-vision/percept-studio-overview-inline.png" alt-text="Azure Percept Studio 'ya genel bakış ekranı." lightbox="./media/tutorial-nocode-vision/percept-studio-overview.png":::
 
 1. **Vision öğreticileri ve tanıtımları** altında, **bir görüntü oluşturma prototipi oluştur ' a** tıklayın.
 
@@ -142,11 +141,23 @@ Bu pencereyi kapattıktan sonra, Azure Percept Studio giriş sayfasındaki **AI 
 
 :::image type="content" source="./media/tutorial-nocode-vision/vision-project-inline.png" alt-text="Vizyon Projesi sayfası." lightbox="./media/tutorial-nocode-vision/vision-project.png":::
 
+## <a name="improve-your-model-by-setting-up-retraining"></a>Yeniden eğitim ayarlayarak modelinizi geliştirme
+
+Modelinizi eğitip cihaza dağıttıktan sonra, daha fazla eğitim verisi yakalamak için yeniden eğitim parametreleri ayarlayarak model performansını artırabilirsiniz. Bu özellik, bir olasılık aralığına göre görüntüleri yakalama olanağı sunarak eğitilen bir modelin performansını geliştirmek için kullanılır. Örneğin, Cihazınızı yalnızca olasılık düşük olduğunda eğitim görüntülerini yakalamaya ayarlayabilirsiniz. Daha fazla görüntü ekleme ve eğitim verileri dengeleme hakkında bazı [ek yönergeler](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/getting-started-improving-your-classifier) aşağıda verilmiştir.
+
+1. Yeniden eğitimi ayarlamak için **projenize** dönün ve ardından **Proje Özeti** ' ne gidin
+1. **Görüntü yakalama** sekmesinde **Otomatik görüntü yakalama** ve **yeniden eğitim ayarla**' yı seçin.
+1. Otomatik görüntü yakalama kutusunu denetleyerek, tek seferde büyük miktarda görüntü toplamak için **Otomatik** görüntü yakalamayı ayarlayın.
+1. **Yakalama hızı** altında tercih ettiğiniz görüntüleme hızını ve **hedef** altında toplamak istediğiniz toplam görüntü sayısını seçin.
+1. **Yeniden eğitimi ayarla** bölümünde, için daha fazla eğitim verisi yakalamak istediğiniz yinelemeyi seçin ve ardından olasılık aralığını seçin. Yalnızca olasılık oranını karşılayan görüntüler projenize yüklenir.
+
+    :::image type="content" source="./media/tutorial-nocode-vision/vision-image-capture.png" alt-text="görüntü yakalama.":::
+
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
 Bu öğretici için yeni bir Azure kaynağı oluşturduysanız ve artık görme çözümünüzü geliştirmek veya kullanmak istemiyorsanız, kaynağı silmek için aşağıdaki adımları gerçekleştirin:
 
-1. [Azure Portal](https://ms.portal.azure.com/#home) gidin.
+1. [Azure Portal](https://ms.portal.azure.com/) gidin.
 1. **Tüm kaynaklar**' a tıklayın.
 1. Bu öğretici sırasında oluşturulan kaynağın yanındaki onay kutusuna tıklayın. Kaynak türü bilişsel **Hizmetler** olarak listelenecektir.
 1. Ekranın üst kısmındaki **Sil** simgesine tıklayın.

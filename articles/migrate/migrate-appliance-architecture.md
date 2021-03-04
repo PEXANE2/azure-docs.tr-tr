@@ -6,12 +6,12 @@ ms.author: vibansa
 ms.manager: abhemraj
 ms.topic: conceptual
 ms.date: 06/09/2020
-ms.openlocfilehash: 9a7a3a603944970a5e78a24ca4042f97b1c43fcc
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: d695758849fd4f7e6f595820221f6b8606fe7cf1
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 03/04/2021
-ms.locfileid: "102047868"
+ms.locfileid: "102096199"
 ---
 # <a name="azure-migrate-appliance-architecture"></a>Azure Geçişi aleti mimarisi
 
@@ -62,7 +62,7 @@ Gereç, aşağıdaki işlemi kullanarak bulma kaynaklarıyla iletişim kurar.
 
 **İşleme** | **VMware gereci** | **Hyper-V gereci** | **Fiziksel Gereç**
 ---|---|---|---
-**Bulmayı Başlat**| Gereç, varsayılan olarak TCP bağlantı noktası 443 üzerindeki vCenter Server ile iletişim kurar. VCenter sunucusu farklı bir bağlantı noktasını dinliyorsa, bunu gereç Yapılandırma Yöneticisi 'nde yapılandırabilirsiniz. | Gereç, WinRM bağlantı noktası 5985 (HTTP) üzerindeki Hyper-V konaklarıyla iletişim kurar. | Gereç, 22 (TCP) bağlantı noktası üzerinden Linux sunucularıyla WinRM bağlantı noktası 5985 (HTTP) üzerinden Windows sunucularıyla iletişim kurar.
+**Bulmayı Başlat** | Gereç, varsayılan olarak TCP bağlantı noktası 443 üzerindeki vCenter Server ile iletişim kurar. VCenter sunucusu farklı bir bağlantı noktasını dinliyorsa, bunu gereç Yapılandırma Yöneticisi 'nde yapılandırabilirsiniz. | Gereç, WinRM bağlantı noktası 5985 (HTTP) üzerindeki Hyper-V konaklarıyla iletişim kurar. | Gereç, 22 (TCP) bağlantı noktası üzerinden Linux sunucularıyla WinRM bağlantı noktası 5985 (HTTP) üzerinden Windows sunucularıyla iletişim kurar.
 **Yapılandırma ve performans meta verilerini toplayın** | Gereç, bağlantı noktası 443 (varsayılan bağlantı noktası) veya başka herhangi bir bağlantı noktası üzerinden vCenter Server, vSphere API 'Leri kullanarak, vCenter Server üzerinde çalışan sunucuların meta verilerini toplar. | Gereç, 5985 numaralı bağlantı noktasında konaklarla Genel Bilgi Modeli (CıM) oturumu kullanarak Hyper-V konaklarında çalışan sunucuların meta verilerini toplar.| Gereç, 5985 numaralı bağlantı noktasında ve numaralı bağlantı noktasında SSH bağlantısı kullanan Linux sunucularından Genel Bilgi Modeli (CıM) oturumu kullanarak Windows sunucularından meta verileri toplar.
 **Bulgu verileri gönder** | Gereç, toplanan verileri Azure geçişi 'ne gönderir: Sunucu değerlendirmesi ve Azure geçişi: SSL bağlantı noktası 443 üzerinden sunucu geçişi.<br/><br/> Gereç, internet üzerinden veya ExpressRoute aracılığıyla Azure 'a bağlanabilir (Microsoft eşlemesi gerektirir). | Gereç, toplanan verileri Azure geçişi 'ne gönderir: SSL bağlantı noktası 443 üzerinden sunucu değerlendirmesi.<br/><br/> Gereç, internet üzerinden veya ExpressRoute aracılığıyla Azure 'a bağlanabilir (Microsoft eşlemesi gerektirir).| Gereç, toplanan verileri Azure geçişi 'ne gönderir: SSL bağlantı noktası 443 üzerinden sunucu değerlendirmesi.<br/><br/> Gereç, internet üzerinden veya ExpressRoute aracılığıyla Azure 'a bağlanabilir (Microsoft eşlemesi gerektirir).
 **Veri toplama sıklığı** | Yapılandırma meta verileri, her 30 dakikada bir toplanır ve gönderilir. <br/><br/> Performans meta verileri 20 saniyede bir toplanır ve her 10 dakikada bir veri noktasını Azure 'a göndermek için toplanır. <br/><br/> Yazılım envanteri verileri her 12 saatte bir Azure 'a gönderilir. <br/><br/> Aracısız bağımlılık verileri 5 dakikada bir toplanır ve her 6 saatte bir Azure 'a gönderilir. <br/><br/> SQL Server yapılandırma verileri her 24 saatte bir güncelleştirilir ve performans verileri her 30 saniyede yakalanır.| Yapılandırma meta verileri, her 30 dakikada bir toplanır ve gönderilir. <br/><br/> Performans meta verileri 30 saniyede bir toplanır ve Azure 'a her 10 dakikada bir veri noktası göndermek için toplanır.|  Yapılandırma meta verileri, her 30 dakikada bir toplanır ve gönderilir. <br/><br/> Performans meta verileri 5 dakikada bir toplanır ve her 10 dakikada bir veri noktasını Azure 'a göndermek için toplanır.

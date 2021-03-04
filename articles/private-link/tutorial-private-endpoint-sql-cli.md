@@ -7,18 +7,19 @@ ms.service: private-link
 ms.topic: tutorial
 ms.date: 11/03/2020
 ms.author: allensu
-ms.openlocfilehash: 8cfe44b9433ee1daac028253aa45c97804c88ae5
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.custom: fasttrack-edit
+ms.openlocfilehash: ab530817e912495049ad3fe8b36f9a5fad47eb2c
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95544114"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102096590"
 ---
 # <a name="tutorial---connect-to-an-azure-sql-server-using-an-azure-private-endpoint---azure-cli"></a>Öğretici-Azure özel uç noktası kullanarak Azure SQL Server 'a bağlanma-Azure CLı
 
 Azure özel uç noktası, Azure 'da özel bağlantı için temel yapı taşdır. Sanal makineler (VM) gibi Azure kaynaklarının özel olarak özel bağlantı kaynaklarıyla iletişim kurmasını sağlar.
 
-Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
+Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * Bir sanal ağ ve savunma ana bilgisayarı oluşturun.
@@ -326,6 +327,8 @@ Bu öğreticide şunu oluşturdunuz:
 * Özel uç nokta ile Azure SQL Server.
 
 Sanal makineyi, Özel uç nokta genelinde SQL Server ile güvenli bir şekilde test etmek için kullandınız.
+
+Bir sonraki adım olarak, Web uygulamasını, sanal ağın dışında bir Web uygulamasını bir veritabanının özel uç noktasına bağlayan [Azure SQL veritabanı mimarisi senaryosuna özel bağlantı ile](https://docs.microsoft.com/azure/architecture/example-scenario/private-web-app/private-web-app) de ilgileniyor olabilirsiniz.
 
 Özel bağlantı hizmeti oluşturmayı öğrenin:
 > [!div class="nextstepaction"]

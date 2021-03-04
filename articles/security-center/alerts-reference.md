@@ -1,23 +1,20 @@
 ---
 title: Azure Güvenlik Merkezi 'ndeki tüm güvenlik uyarıları için başvuru tablosu
-description: Bu makalede, Azure Güvenlik Merkezi 'nin Azure Defender panosunda görünen güvenlik uyarıları listelenmektedir.
+description: Bu makalede, Azure Güvenlik Merkezi 'nin Azure Defender panosunda görünen güvenlik uyarıları listelenir
 services: security-center
 documentationcenter: na
 author: memildin
 manager: rkarlin
 ms.service: security-center
-ms.devlang: na
 ms.topic: reference
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 02/21/2021
+ms.date: 03/03/2021
 ms.author: memildin
-ms.openlocfilehash: a9ba66580d6b98cfde0abe934f53f05d27edc57f
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: e8ebf47420150c82c8e94299291e9ea6bd7d4d88
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101735854"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102096964"
 ---
 # <a name="security-alerts---a-reference-guide"></a>Güvenlik uyarıları - başvuru kılavuzu
 
@@ -278,6 +275,9 @@ Bu sayfanın en altında, [Mitre ATT&CK matrisinin](https://attack.mitre.org/ver
 
 ## <a name="alerts-for-containers---host-level"></a><a name="alerts-containerhost"></a>Kapsayıcılar için uyarılar-konak düzeyi
 
+Kapsayıcı konakları için Azure Defender uyarıları, aşağıdaki uyarılarla sınırlı değildir. [Azure ağ katmanı uyarıları](#alerts-azurenetlayer), [Windows makineler Için uyarılar](#alerts-windows)ve [Linux makineleri](#alerts-linux) için uyarılar tablolarında listelenen uyarıların birçoğu kapsayıcı konaklarınızda da tetiklenebilir. Microsoft 'un küresel tehdit bilgileri ekibi, algılama işlemini iyileştirmek ve hatalı pozitif sonuçları azaltmak için Kubernetes kümelerine göre birçok uyarı türünü sürekli olarak ölçer ve ayarlar.
+
+
 [Daha fazla ayrıntı ve Not](defender-for-kubernetes-introduction.md)
 
 | Uyarı                                                                          | Açıklama                                                                                                                                                                                                                                                                                                | MITRE tactika<br>([Daha fazla bilgi](#intentions)) | Önem derecesi |
@@ -294,9 +294,7 @@ Bu sayfanın en altında, [Mitre ATT&CK matrisinin](https://attack.mitre.org/ver
 
 ## <a name="alerts-for-sql-database-and-azure-synapse-analytics"></a><a name="alerts-sql-db-and-warehouse"></a>SQL veritabanı ve Azure SYNAPSE Analytics Uyarıları
 
-[Daha fazla ayrıntı ve Not](defender-for-sql-introduction.md)
-
-| Uyarı                                                    | Açıklama                                                                                                                                                                                                                                                                                                                                                                                                                               | MITRE tactika<br>([Daha fazla bilgi](#intentions)) | Önem derecesi |
+[Daha fazla ayrıntı ve Not](defender-for-sql-introduction.md)| Uyarı                                                    | Açıklama                                                                                                                                                                                                                                                                                                                                                                                                                               | MITRE tactika<br>([Daha fazla bilgi](#intentions)) | Önem derecesi |
 |----------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:--------------------------------------------:|----------|
 | **SQL ekleme için olası bir güvenlik açığı**            | Bir uygulama veritabanında hatalı bir SQL açıklaması oluşturdu. Bu, SQL ekleme saldırılarına karşı olası bir güvenlik açığını gösterebilir. Hatalı bir bildirimin iki olası nedeni vardır. Uygulama kodundaki bir hata, hatalı SQL ifadesini oluşturulmuş olabilir. Ya da, uygulama kodu veya saklı yordamlar, SQL ekleme için yararlanılabilen hatalı SQL ifadesini oluştururken Kullanıcı girişini temizlemeyen. | -                                            | Orta   |
 | **Zararlı olabilecek bir uygulama tarafından oturum açılmaya çalışıldı** | Zararlı olabilecek bir uygulama ' {name} ' SQL Server 'a erişmeye çalıştı.                                                                                                                                                                                                                                                                                                                                                               | Ön kimlik Ttack                                    | Yüksek     |
@@ -477,8 +475,7 @@ Bu sayfanın en altında, [Mitre ATT&CK matrisinin](https://attack.mitre.org/ver
 
 ## <a name="security-incident-alerts"></a><a name="alerts-fusion"></a>Güvenlik olayı uyarıları
 
-[Daha fazla ayrıntı ve Not](security-center-alerts-cloud-smart.md)
-
+[Daha fazla ayrıntı ve Not](security-center-alerts-overview.md#cloud-smart-alert-correlation-in-azure-security-center-incidents)
 
 | Uyarı                                   | Açıklama                                                          | MITRE tactika<br>([Daha fazla bilgi](#intentions)) | Önem derecesi |
 |-----------------------------------------|----------------------------------------------------------------------|:----------------------------------:|----------|

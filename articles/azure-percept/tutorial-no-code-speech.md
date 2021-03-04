@@ -7,12 +7,12 @@ ms.service: azure-percept
 ms.topic: tutorial
 ms.date: 02/17/2021
 ms.custom: template-how-to
-ms.openlocfilehash: de85c4f8cdcd9781345ee1488549aab23e38ec5c
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 3c5e6fd62e4f4db9ccc1306d32d09b8338cbf963
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101665219"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102098035"
 ---
 # <a name="create-a-voice-assistant-with-azure-percept-dk-and-azure-percept-audio"></a>Azure Percept DK ve Azure Percept Audio ile bir ses Yardımcısı oluşturma
 
@@ -24,30 +24,11 @@ Bu kılavuz, cihazlarınızı ayarlama, bir ses Yardımcısı ve gerekli [konuş
 
 - Azure Percept DK (devkit)
 - Azure Percept sesi
-- Konuşmacı veya kulaklık (isteğe bağlı)
+- 3,5 mm ses jakına bağlanabilecek konuşmacı veya kulaklıklar (isteğe bağlı)
 - [Azure aboneliği](https://azure.microsoft.com/free/)
 - [Azure PERCEPT dk kurulum deneyimi](./quickstart-percept-dk-set-up.md): devkit 'i bir Wi-Fi ağına bağladınız, bir IoT Hub oluşturdunuz ve devkit 'e IoT Hub
+- [Azure Percept ses kurulumu](./quickstart-percept-audio-setup.md)
 
-## <a name="device-setup"></a>Cihaz kurulumu
-
-1. (İsteğe bağlı olarak) konuşmacıyı veya kulaklığınızdan "hat Out" etiketli kulaklık jakına kadar seslerinizi bağlayın. Bu, sesli yardımcınızın ses yanıtlarını duymanıza imkan tanır. Konuşmacı veya kulaklıklar bağlantısını yapmazsanız, yanıtları demo penceresinde metin olarak görebilirsiniz.
-
-1. Ses SoM 'u, dahil edilen USB-A ile mikro B kablosu olan devkit 'in taşıyıcı panosuna bağlayın.
-
-1. Devkit üzerinde güç.
-
-    - Ses SoM üzerinde LED L01, cihazın açık olduğunu göstermek için düz yeşil olarak değişir.
-    - LED L02, ses SoM 'un kimlik doğrulaması olduğunu göstermek için yanıp sönen yeşil olarak değişir.
-
-1. Kimlik doğrulama işleminin tamamlanmasını bekleyin--bu, 3 dakikaya kadar sürebilir.
-
-1. Aşağıdakilerden birini gördüğünüzde sonraki bölüme ilerleyin:
-
-    - LED L01 kapanır ve L02 dönüşler beyaz. Bu, kimlik doğrulamasının tamamlandığını ve devkit 'in henüz bir anahtar sözcükle yapılandırılmadığını gösterir.
-    - Üç LED 'in hepsi mavi. Bu, kimlik doğrulamanın tamamlandığını ve devkit 'in bir anahtar sözcükle yapılandırıldığını gösterir.
-
-    > [!NOTE]
-    > Devkit 'in kimlik doğrulaması yapamadığından desteğe ulaşın.
 
 ## <a name="create-a-voice-assistant-using-an-available-template"></a>Kullanılabilir bir şablon kullanarak bir ses Yardımcısı oluşturma
 
@@ -119,6 +100,7 @@ Oto ve ile etkileşime girebilen bir sanal bilgisayar Warmer, Defroster ve termo
 * "Sıcaklığın X derece olarak ayarlanması." (X, istenen sıcaklığa sahiptir, örn. 75.)
 * "Sıcaklığın Y derecesini artırma/azaltma."
 
+
 :::image type="content" source="./media/tutorial-no-code-speech/auto-demo.png" alt-text="Oto için tanıtım penceresinin ekran görüntüsü.":::
 
 ### <a name="inventory-demo-commands"></a>Envanter tanıtım komutları
@@ -131,19 +113,30 @@ Inventory demo, sanal bir envanter uygulamasıyla birlikte etkileşimde bulunmak
 * "Y kutularını say." (Y, örneğin sarı.) kutularının rengidir.
 * "Her şeyi stoğa gönder."
 
+
 :::image type="content" source="./media/tutorial-no-code-speech/inventory-demo.png" alt-text="Envanter tanıtım penceresinin ekran görüntüsü.":::
 
 ## <a name="configure-your-keyword"></a>Anahtar keliinizi yapılandırın
 
-Anahtar keliinizi değiştirmek için tanıtım penceresinde **özel anahtar sözcük** ' ın yanındaki **Değiştir** ' e tıklayın. Kullanılabilir anahtar sözcüklerden birini seçin ve **Kaydet**' e tıklayın. Önceden oluşturulmuş bir anahtar sözcük ve oluşturduğunuz özel anahtar sözcüklerin arasından seçim yapabilirsiniz.
+Sesli yardım uygulamanız için anahtar sözcüğünü özelleştirebilirsiniz.
 
-:::image type="content" source="./media/tutorial-no-code-speech/change-keyword.png" alt-text="Kullanılabilir anahtar sözcüklerin seçiminin ekran görüntüsü.":::
+1. Demo penceresinde **özel anahtar sözcük** ' ın yanındaki **Değiştir** ' e tıklayın.
+
+1. Kullanılabilir anahtar sözcüklerden birini seçin. Örnek anahtar sözcüklerin bir seçimi ve oluşturduğunuz özel anahtar sözcüklerden birini seçebileceksiniz.
+
+1. **Kaydet**’e tıklayın.
 
 ### <a name="create-a-custom-keyword"></a>Özel anahtar sözcük oluşturma
 
-Özel bir anahtar sözcük oluşturmak için tanıtım penceresinin üst kısmındaki **+ özel anahtar sözcük oluştur** ' a tıklayın. Tek bir sözcük veya kısa tümcecik olabilecek istediğiniz anahtar sözcüğü girin, **konuşma** kaynağınızı seçin (demo penceresinde **özel komut** ' nin yanında listelenir ve uygulama ön ekini içerir) ve **Kaydet**' e tıklayın. Özel anahtar kelimeniz için eğitim yalnızca birkaç saniye içinde tamamlanabilir.
+Ses uygulamanız için kendi anahtar keliinizi oluşturabilirsiniz. Özel anahtar kelimeniz için eğitim yalnızca birkaç dakika içinde tamamlanabilir.
 
-:::image type="content" source="./media/tutorial-no-code-speech/custom-keyword.png" alt-text="Özel anahtar sözcük oluşturma penceresinin ekran görüntüsü.":::
+1. Tanıtım penceresinin üst kısmındaki **+ özel anahtar sözcük oluştur** ' a tıklayın. 
+
+1. İstediğiniz anahtar sözcüğünü girin, bu tek bir sözcük veya kısa bir ifade olabilir.
+
+1. **Konuşma** kaynağınızı seçin (Bu, demo penceresinde **özel komut** ' nin yanında listelenir ve uygulama ön ekini içerir).
+
+1. **Kaydet**’e tıklayın. 
 
 ## <a name="create-a-custom-command"></a>Özel komut oluşturma
 
@@ -185,13 +178,13 @@ Tanıtım penceresi içinden yeni bir özel komut oluşturmak için, sayfanın �
 
 ### <a name="voice-assistant-was-created-but-does-not-respond-to-commands"></a>Ses Yardımcısı oluşturuldu ancak komutlara yanıt vermiyor
 
-Ses SoM üzerinde LED ışıkları kontrol edin:
+Interposer panosundaki LED ışıklarını kontrol edin:
 
 * Üç adet düz mavi ışık, Ses Yardımcısı 'nın hazırlandığını ve anahtar sözcüğü beklediğini gösterir.
 * Orta LED (L02) ise, devkit 'in başlatmayı tamamladığı ve bir anahtar sözcükle yapılandırılması gerekir.
-* Yeşil ışıklarının herhangi bir birleşimi, ses SoM 'un henüz başlatmayı tamamlamadığını gösterir. Başlatmanın tamamlanması birkaç dakika sürebilir.
+* Orta ışığı (L02) yanıp sönüyorsa, ses SoM 'u henüz başlatmayı tamamlamamıştır. Başlatmanın tamamlanması birkaç dakika sürebilir.
 
-Ses SoM 'un göstergeleri hakkında daha fazla bilgi için lütfen bkz. LED makalesi.
+LED göstergeleri hakkında daha fazla bilgi için lütfen [LED makalesine](./audio-button-led-behavior.md)bakın.
 
 ### <a name="voice-assistant-does-not-respond-to-a-custom-keyword-created-in-speech-studio"></a>Ses Yardımcısı, konuşma Studio 'da oluşturulan özel bir anahtar sözcüğe yanıt vermiyor
 
@@ -207,22 +200,20 @@ Konuşma modülünün güncel olmadığı durumlarda bu durum oluşabilir. Konu�
 
 1. Konuşma modülü sürümünü denetleyin. Bir güncelleştirme varsa, sürüm numarasının yanında bir **Güncelleştir** düğmesi görürsünüz.
 
-    :::image type="content" source="./media/tutorial-no-code-speech/devkit.png" alt-text="Devkit konuşma ayarları penceresinin ekran görüntüsü.":::
-
 1. Konuşma Modülü güncelleştirmesini dağıtmak için **Güncelleştir** ' e tıklayın. Güncelleştirme işleminin tamamlanabilmesi için genellikle 2-3 dakika sürer.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
 Ses Yardımcısı uygulamanızla çalışmayı tamamladıktan sonra, bu öğretici sırasında dağıttığınız konuşma kaynaklarını temizlemek için aşağıdaki adımları izleyin:
 
-1. [Azure Portal](https://ms.portal.azure.com/#home), sol menü panelinden **kaynak grupları** ' nı seçin veya arama çubuğuna yazın.
+1. [Azure Portal](https://portal.azure.com), sol menü panelinden **kaynak grupları** ' nı seçin veya arama çubuğuna yazın.
 
     :::image type="content" source="./media/tutorial-no-code-speech/azure-portal.png" alt-text="Sol menü paneli ve kaynak gruplarını gösteren Azure portal giriş sayfasının ekran görüntüsü.":::
 
 1. Kaynak grubunuzu seçin.
 
 1. Uygulamanızın ön ekini içeren altı kaynak seçin ve üstteki menü panelinde **Sil** simgesine tıklayın.
-
+\
     :::image type="content" source="./media/tutorial-no-code-speech/select-resources.png" alt-text="Silinmek üzere seçilen konuşma kaynaklarının ekran görüntüsü.":::
 
 1. Silmeyi onaylamak için, onay kutusuna **Evet** yazın, doğru kaynakları seçtiğinizden emin olun ve **Sil**' e tıklayın.

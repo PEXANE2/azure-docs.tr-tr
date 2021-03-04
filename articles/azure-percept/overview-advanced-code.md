@@ -7,24 +7,26 @@ ms.service: azure-percept
 ms.topic: conceptual
 ms.date: 02/18/2021
 ms.custom: template-concept
-ms.openlocfilehash: bd366c05be1b9d5b2a1bff238cfbaaa9dd290508
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: f40d9a1285f1eb625a9e33387f2cc9fafcbc3322
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101663926"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102098409"
 ---
 # <a name="advanced-development-with-azure-percept"></a>Azure Percept ile gelişmiş geliştirme
 Azure Percept ile yazılım geliştiricileri ve veri bilimcileri, AI yaşam döngüsü yönetimi için gelişmiş kod iş akışlarını kullanabiliyor. Büyümekte olan bir açık kaynak kitaplığı aracılığıyla, kendi AI geliştirme yolculuğuna başlamak ve üretime yönelik kullanıma yönelik çözümleri oluşturmak için örnekleri kullanabilirler.
 
 ## <a name="get-started-with-the-advanced-development-tutorials"></a>Gelişmiş geliştirme öğreticileri ile çalışmaya başlama
 
-Bu [Jupyter Not defteri](https://github.com/microsoft/Project-Santa-Cruz-Private-Preview/blob/main/Sample-Scripts-and-Notebooks/Official/Machine%20Learning%20Notebooks/Transferlearningusing_SSDLiteV2%20Model.ipynb) , Bowls 'yi algılamak için özel bir veri kümesiyle Python 'da AzureML 'da önceden eğitilen bir ön eğitim akışı modeli (MobileNetSSDV2Lite) kullanarak Aktarım öğrenimi gerçekleştirir. Taşınabilir Yolculuz devkit 'e e-postayla eğitim ve dağıtım yapmak için not defteriyle çalışırken size rehberlik eden iki öğretici seçeneği vardır:
+Tüm kullanılabilir [Azure PERCEPT AI modelleri](./overview-ai-models.md)hakkında bilgi edinin.
 
-- [Bulut geliştirme](./advanced-development-cloud.md): Bu öğreticide, not defterini [Azure Machine Learning portalında](https://ml.azure.com) uzak bir işlem örneğiyle çalıştıracaksınız.
+Lütfen güncel rehberlik, öğreticiler ve örnekler için bkz. [Azure PERCEPT dk gelişmiş geliştirme GitHub](https://github.com/microsoft/azure-percept-advanced-development) , şunun gibi şeyler:
 
-- [Yerel geliştirme](./advanced-development-local.md): Bu öğreticide, Not defterini uzak bir işlem örneğiyle vs Code içinde yerel olarak çalıştıracaksınız.
+* Cihaza özel bir AI modeli getiriliyor
+* Aktarım öğrenimi ile zaten desteklediğimiz bir modeli güncelleştirme
+* Ve daha fazlası
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Tüm kullanılabilir [Azure PERCEPT AI modelleri](./overview-ai-models.md)hakkında bilgi edinin.
+Tüm kullanılabilir [Azure PERCEPT AI modelleri](./overview-ai-models.md)hakkında bilgi edinin. Bu modellerden hiçbiri ihtiyaçlarınıza uygun değilse, kendi modelinizi veya görüntü işleme işlem hattınızı Percept DK 'ye getirmek için gelişmiş kod yolculuğunu kullanın ve başkalarının yardımcı olacağını düşünüyorsanız, bir çekme isteği de açabilirsiniz!

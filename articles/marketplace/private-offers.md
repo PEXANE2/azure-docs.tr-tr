@@ -6,13 +6,13 @@ ms.service: marketplace
 ms.topic: article
 author: vikrambmsft
 ms.author: vikramb
-ms.date: 01/28/2021
-ms.openlocfilehash: 786ecbf553ace6a90515347e8138eeb6e022589b
-ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
+ms.date: 02/22/2021
+ms.openlocfilehash: 7c02c41379cfb886fd7e6f84486d815d3cdbfb5b
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99063105"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102097185"
 ---
 # <a name="private-offers-in-the-microsoft-commercial-marketplace"></a>Microsoft ticari Market 'teki özel teklifler
 
@@ -22,11 +22,11 @@ ms.locfileid: "99063105"
 
 Yayımcılar, özel teklifler oluşturarak hedeflenen müşterilere kuruluşların ihtiyaç duyduğu yeteneklere özel olarak özelleştirilmiş çözümler sunabilir:
 
-- _Anlaşmalı fiyatlandırma_ , yayımcıların genel kullanıma sunulan tekliflerden indirimleri ve liste fiyatlarını genişletmesini sağlar.
-- _Özel hüküm ve koşullar,_ yayımcıların hüküm ve koşulları belirli bir müşteriye uyarlayabilmenizi sağlar.
-- _Özelleştirilmiş konfigürasyonlar_ , yayımcıların sanal makinelerini, Azure uygulamalarını ve hizmet olarak yazılım (SaaS), bireysel bir müşterinin ihtiyaçlarına uyarmasına olanak tanır. Bu seçenek, yayımcıların yeni ürün özelliklerine, tüm müşterilere başlatılmadan önce önizleme erişimi sağlamasına de olanak sağlar.
+- *Anlaşmalı fiyatlandırma* , yayımcıların genel kullanıma sunulan tekliflerden indirimleri ve liste fiyatlarını genişletmesini sağlar.
+- *Özel hüküm ve koşullar,* yayımcıların hüküm ve koşulları belirli bir müşteriye uyarlayabilmenizi sağlar.
+- *Özelleştirilmiş konfigürasyonlar* , yayımcıların sanal makinelerini, Azure uygulamalarını ve hizmet olarak yazılım (SaaS), bireysel bir müşterinin ihtiyaçlarına uyarmasına olanak tanır. Bu seçenek, yayımcıların yeni ürün özelliklerine, tüm müşterilere başlatılmadan önce önizleme erişimi sağlamasına de olanak sağlar.
 
-Özel teklifler, yayımcıların özel anlaşmalar ve Konfigürasyonlar sunmak ve teslim etmek için gereken esneklik ve denetim ile genel bir market 'in ölçeklendirilmesi ve küresel kullanılabilirliğinden faydalanmasını sağlar. Kuruluşlar artık bekledikleri yollarla satın alabilir ve satılarlar 
+Özel teklifler, yayımcıların özel anlaşmalar ve Konfigürasyonlar sunmak ve teslim etmek için gereken esneklik ve denetim ile genel bir market 'in ölçeklendirilmesi ve küresel kullanılabilirliğinden faydalanmasını sağlar. Kuruluşlar artık bekledikleri yollarla satın alabilir ve satılarlar.
 
 ## <a name="create-private-offers-using-plans"></a>Planlar kullanarak özel teklifler oluşturma
 
@@ -41,7 +41,7 @@ Yayımcılar, özel teklifler oluşturarak hedeflenen müşterilere kuruluşlar�
 - Yönetilen hizmet
 - SaaS teklifleri
 
-Özel planlar bir teklifin bileşenleridir ve hedeflenen müşteriler tarafından yalnızca görünür ve satın alınabilir alınırken. Özel planlar yalnızca hedeflenen müşteriler tarafından görülebilir ve satın alınabilir alınırken.  Özel planlar, Azure genel ve Azure Kamu 'daki müşterilerin kullanımına sunulabilir.
+Özel planlar bir teklifin bileşenleridir ve hedeflenen müşteriler tarafından yalnızca görünür ve satın alınabilir alınırken. Özel planlar yalnızca hedeflenen müşteriler tarafından görülebilir ve satın alınabilir alınırken. Özel planlar, Azure genel ve Azure Kamu 'daki müşterilerin kullanımına sunulabilir.
 
 Özel planlar, temel görüntüleri yeniden kullanabilir ve/veya zaten ortak bir plan için yayımlanmış meta verileri sunabilir. Bu seçenek, yayımcıların aynı temel görüntünün birden çok sürümünü yayınlamak ve meta verileri sunmak zorunda kalmadan ortak bir teklifin birden çok özel çeşitlemelerini oluşturmalarına olanak tanır. Yalnızca Azure sanal makinesi ve Azure uygulaması için özel bir plan ortak bir plana sahip bir temel görüntüyü paylaşıyorsa, teklifin temel görüntüsündeki tüm değişiklikler, bu temel görüntüyü kullanarak tüm genel ve özel planlara yayılır.
 
@@ -70,13 +70,12 @@ Azure portal oturum açtıktan sonra müşteriler özel tekliflerinizi seçmek i
 
 Özel teklifler de arama sonuçlarında görünür ve diğer tüm teklifler gibi komut satırı ve Azure Resource Manager şablonları aracılığıyla dağıtılabilir.
 
-![[Özel teklifler]](./media/marketplace-publishers-guide/private-offer.png)
+[![[Arama sonuçlarında görünen özel teklifler.]](media/marketplace-publishers-guide/private-offer.png)](media/marketplace-publishers-guide/private-offer.png#lightbox)
 
 Özel teklifler, arama sonuçlarında da görünür. Yalnızca **özel** rozet 'yi arayın.
 
 >[!Note]
 >Özel teklifler, bulut çözümü sağlayıcısı (CSP) programının satıcısı aracılığıyla oluşturulan aboneliklerle desteklenmez.
-
 
 <!---
 ## Next steps

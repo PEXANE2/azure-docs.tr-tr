@@ -6,18 +6,23 @@ author: matjazl
 ms.service: healthcare-apis
 ms.subservice: fhir
 ms.topic: reference
-ms.date: 10/12/2020
-ms.author: matjazl
-ms.openlocfilehash: cdb41f12e8f050e3c74fccddb392d7a816c15b2f
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.date: 03/03/2021
+ms.author: zxue
+ms.openlocfilehash: 5e24c7666fd2ece7d284b7705bc481866d7604de
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98621887"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102097049"
 ---
 # <a name="configure-private-link"></a>Özel bağlantıyı Yapılandır
 
 Özel bağlantı, sanal ağınızdan özel bir IP adresi kullanarak özel ve güvenli bir şekilde bağlanan bir ağ arabirimi olan özel bir uç nokta üzerinden FHıR için Azure API 'sine erişmenizi sağlar. Özel bağlantıyla, herkese ortak bir DNS aracılığıyla bir ilk taraf hizmeti olarak güvenli bir şekilde erişim sağlayabilirsiniz. Bu makalede, FHıR için Azure API için özel uç noktanızı oluşturma, test etme ve yönetme işlemi adım adım açıklanmaktadır.
+
+>[!Note]
+>Bir özel bağlantı etkinleştirildikten sonra, özel bağlantı veya FHıR için Azure API 'SI, bir kaynak grubundan veya abonelikten diğerine taşınabilir. Taşımak için, önce özel bağlantıyı silin, ardından taşıma işlemi tamamlandıktan sonra FHıR için Azure API 'yi taşıyın ve yeni bir özel bağlantı oluşturun. Özel bağlantıyı silmeden önce olası güvenlik kollerini değerlendirin.
+>
+>Denetim günlüklerini dışarı aktarma ve/ölçümler, FHıR için Azure API 'SI için etkinleştirilmişse, portaldan Tanılama ayarları aracılığıyla dışarı aktarma ayarını güncelleştirin.
 
 ## <a name="prerequisites"></a>Önkoşullar
 

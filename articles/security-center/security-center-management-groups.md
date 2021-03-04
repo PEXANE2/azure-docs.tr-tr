@@ -1,26 +1,22 @@
 ---
-title: Azure Güvenlik Merkezi için kiracı genelinde görünürlük elde edin | Microsoft Docs
-description: Bu makalede, Azure Active Directory kiracınızla bağlantılı tüm aboneliklere ilke uygulayarak güvenlik duruşunuzu ölçekte nasıl yöneteceğiniz açıklanmaktadır.
+title: Azure Güvenlik Merkezi için abonelikleri yönetim gruplarında düzenleyin ve kullanıcılara roller atayın
+description: Azure Güvenlik Merkezi 'nde Azure aboneliklerinizi yönetim gruplarında düzenleme ve kuruluşunuzdaki kullanıcılara roller atama hakkında bilgi edinin
 services: security-center
 documentationcenter: na
 author: memildin
 manager: rkarlin
-ms.assetid: b85c0e93-9982-48ad-b23f-53b367f22b10
 ms.service: security-center
-ms.devlang: na
 ms.topic: how-to
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 02/04/2021
+ms.date: 03/04/2021
 ms.author: memildin
-ms.openlocfilehash: 13cbc2e9451221fef951eb6fac4c6b2772275122
-ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
+ms.openlocfilehash: 3508d508a19d6ce7fba4f3ef3a4fa545a58a167d
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99556432"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102099395"
 ---
-# <a name="organize-management-groups-subscriptions-and-tenant-wide-visibility"></a>Yönetim gruplarını, abonelikleri ve kiracı genelinde görünürlüğü düzenleme
+# <a name="organize-subscriptions-into-management-groups-and-assign-roles-to-users"></a>Abonelikleri yönetim gruplarında düzenleyin ve kullanıcılara roller atayın
 
 Bu makalede, Azure Active Directory kiracınızla bağlantılı tüm Azure aboneliklerine güvenlik ilkeleri uygulayarak kuruluşunuzun güvenlik duruşunu nasıl yöneteceğiniz açıklanmaktadır.
 
@@ -79,65 +75,6 @@ Oluşturduğunuz yönetim grubuna abonelikler ekleyebilirsiniz.
    > Yönetim gruplarında hem abonelikler hem de alt yönetim grupları bulunabilir. Bir kullanıcıyı bir Azure rolünü üst yönetim grubuna atadığınızda, erişim alt yönetim grubunun abonelikleri tarafından devralınır. Üst yönetim grubunda ayarlanan ilkeler alt öğeler tarafından da devralınır. 
 
 
-## <a name="grant-tenant-wide-permissions-to-yourself"></a>Kendi kendinize kiracı genelinde izinler verin
-
-**Genel yöneticinin** Azure ACTIVE DIRECTORY (ad) rolüne sahip bir kullanıcının kiracı genelinde sorumlulukları olabilir, ancak Azure Güvenlik Merkezi 'nde kuruluş genelinde bu bilgileri görüntülemek için Azure izinlerinin olmaması gerekir. Azure AD rol atamaları Azure kaynaklarına erişim vermediği için izin yükseltme gereklidir. 
-
-> [!TIP]
-> [Tüm Azure aboneliklerini ve Yönetim gruplarını yönetmek için erişimi Yükselt](../role-based-access-control/elevate-access-global-admin.md)' de genel yönetici rolü için izin yükseltme hakkında daha fazla bilgi edinin.
-
-Kendi kiracı düzeyi izinlerini atamak için:
-
-1. Kuruluşunuz [Azure AD Privileged Identity Management (PIM)](../active-directory/privileged-identity-management/pim-configure.md)veya başka bir PIM aracıyla kaynak erişimini yönetirse, aşağıdaki yordamı izleyerek Kullanıcı için genel yönetici rolü etkin olmalıdır.
-
-1. Kiracının kök yönetim grubu üzerinde atama olmadan genel yönetici kullanıcı olarak, güvenlik merkezi 'nin **genel bakış** sayfasını açın ve başlıktaki **kiracı genelinde görünürlük** bağlantısını seçin. 
-
-    :::image type="content" source="media/security-center-management-groups/enable-tenant-level-permissions-banner.png" alt-text="Azure Güvenlik Merkezi 'nde kiracı düzeyindeki izinleri etkinleştirme":::
-
-1. Atanacak yeni Azure rolünü seçin. 
-
-    :::image type="content" source="media/security-center-management-groups/enable-tenant-level-permissions-form.png" alt-text="Kullanıcıya atanacak kiracı düzeyi izinleri tanımlamak için form":::
-
-    > [!TIP]
-    > Genellikle güvenlik yöneticisi rolü kök düzeyinde uygulamak için gereklidir, ancak güvenlik okuyucusu kiracı düzeyinde görünürlük sağlamak için yeterli olacaktır. Bu rollerin verdiği izinler hakkında daha fazla bilgi için bkz. [Güvenlik Yöneticisi yerleşik rol açıklaması](../role-based-access-control/built-in-roles.md#security-admin) veya [güvenlik okuyucusu yerleşik rol açıklaması](../role-based-access-control/built-in-roles.md#security-reader).
-    >
-    > Güvenlik Merkezi 'ne özgü bu roller arasındaki farklar için, [rollerdeki tabloya ve izin verilen eylemlere](security-center-permissions.md#roles-and-allowed-actions)bakın.
-
-    Kuruluş genelinde görünüm, kiracının kök yönetim grubu düzeyine roller verilerek elde edilir.  
-
-1. Azure portal oturumunuzu kapatıp yeniden oturum açın.
-
-1. Erişimi yükselttikten sonra Azure AD kiracınız kapsamındaki tüm aboneliklerde görünürlük olduğunu doğrulamak için Azure Güvenlik Merkezi 'ni açın veya yenileyin. 
-
-
-## <a name="request-tenant-wide-permissions-when-yours-are-insufficient"></a>Sizinki yetersizse kiracı genelinde izinler isteyin
-
-Güvenlik Merkezi 'Nde oturum açarsanız ve görünümlerinizin sınırlı olduğunu söyleyen bir başlık görürseniz, kuruluşunuzun genel yöneticisine bir istek göndermek için öğesine tıklayabilirsiniz. İstekte, atanmasını istediğiniz rolü dahil edebilir ve genel yönetici hangi rolün verilmesi gerektiğini bir karar verir. 
-
-Bu istekleri kabul etmek veya reddetmek için genel yönetici karardır. 
-
-> [!IMPORTANT]
-> Her yedi günde bir istek gönderebilirsiniz.
-
-Genel yöneticinizden yükseltilmiş izinler istemek için:
-
-1. Azure portal Azure Güvenlik Merkezi ' ni açın.
-
-1. "Sınırlı bilgileri görüyorsunuz" başlığını görürseniz. Bunu seçin.
-
-    :::image type="content" source="media/security-center-management-groups/request-tenant-permissions.png" alt-text="Kullanıcıya kiracı genelinde izinler isteyebilecekleri bir başlık bildiren başlık.":::
-
-1. Ayrıntılı istek formunda, istenen rolü ve neden bu izinlere ihtiyacınız olduğunu doğrulama ' yı seçin.
-
-    :::image type="content" source="media/security-center-management-groups/request-tenant-permissions-details.png" alt-text="Azure genel yöneticinizden kiracı genelinde izin istemek için Ayrıntılar sayfası":::
-
-1. **Erişim iste**' yi seçin.
-
-    Genel yöneticiye bir e-posta gönderilir. E-posta, isteği onaylayabilecekleri veya reddedebilecekleri Güvenlik Merkezi 'ne bir bağlantı içerir.
-
-    :::image type="content" source="media/security-center-management-groups/request-tenant-permissions-email.png" alt-text="Yeni izinler için genel yöneticiye e-posta gönder":::
-
-    Genel yönetici, **Isteği gözden geçir** ' i seçtikten sonra işlemi tamamladıktan sonra, karar istekte bulunan kullanıcıya e-posta ile gönderilir. 
 
 ## <a name="assign-azure-roles-to-other-users"></a>Diğer kullanıcılara Azure rolleri atama
 
@@ -195,6 +132,6 @@ Kullanıcılara Azure rolleri atandıktan sonra, kiracı yöneticisinin kendisin
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Bu makalede, Azure Güvenlik Merkezi için kiracı genelinde görünürlük elde etme hakkında öğrendiniz. İlgili bilgiler için bkz.:
+Bu makalede, abonelikleri yönetim gruplarında nasıl düzenleyecağınızı ve kullanıcılara roller atamayı öğrendiniz. İlgili bilgiler için bkz.:
 
 - [Azure Güvenlik Merkezi'nde İzinler](security-center-permissions.md)

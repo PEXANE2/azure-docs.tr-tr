@@ -1,30 +1,23 @@
 ---
-title: Azure Güvenlik Merkezi fiyatlandırması
-description: Azure Güvenlik Merkezi, Azure Defender ile ve olmayan iki modda sunulur.
-services: security-center
-documentationcenter: na
+title: Azure Güvenlik Merkezi Ücretsiz vs Azure Defender etkin
+description: Azure Güvenlik Merkezi 'nde bulut iş yükü koruması için Azure Defender 'ı etkinleştirmenin avantajları hakkında bilgi edinin
 author: memildin
-manager: rkarlin
-ms.assetid: 4d1364cd-7847-425a-bb3a-722cb0779f78
-ms.service: security-center
-ms.devlang: na
-ms.topic: overview
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 02/14/2021
 ms.author: memildin
-ms.openlocfilehash: 8d8ef4236a9dd993faaaa2aacfd40a7592e9017f
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+manager: rkarlin
+ms.service: security-center
+ms.topic: overview
+ms.date: 02/14/2021
+ms.openlocfilehash: 7ca8a89cc93cc36d790eca7b19665e5bfed9695c
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101698680"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102099112"
 ---
-# <a name="pricing-of-azure-security-center"></a>Azure Güvenlik Merkezi fiyatlandırması
-Azure Güvenlik Merkezi, Azure’da, şirket içinde ve diğer bulutlarda çalışan iş yükleri için birleşik güvenlik yönetimi ve gelişmiş tehdit koruması sağlar. Karma bulut iş yükleri, tehditlere maruz kalma olasılığını azaltan etkin savunmaları ve hızlı gelişen siber risklerle hızlanmanıza yardımcı olacak akıllı algılama üzerinde görünürlük ve denetim sağlar.
+# <a name="azure-security-center-free-vs-azure-defender-enabled"></a>Azure Güvenlik Merkezi Ücretsiz vs Azure Defender etkin
+Azure Defender, ilk 30 gün boyunca ücretsizdir. 30 günün sonunda hizmeti kullanmaya devam etmeyi seçmeniz gerekir, kullanım için otomatik olarak ücretlendirmeye başlayacağız.
 
-
-## <a name="security-center-free-vs-azure-defender-enabled"></a>Güvenlik Merkezi Ücretsiz vs Azure Defender etkin
+## <a name="what-are-the-benefits-of-enabling-azure-defender"></a>Azure Defender 'ı etkinleştirmenin avantajları nelerdir?
 
 Güvenlik Merkezi iki modda sunulur:
 
@@ -41,43 +34,22 @@ Güvenlik Merkezi iki modda sunulur:
     - **Azure ortamına bağlı kaynaklar için kapsamlı tehdit koruması** -Azure Defender, tüm kaynaklarınız için ortak olan Azure hizmetleri için Azure-Native ve tehdit koruması içerir: Azure Resource Manager, Azure DNS, Azure ağ katmanı ve Azure Key Vault. Azure Defender, Azure Yönetim katmanı ve Azure DNS katmanının benzersiz görünürlüğüne sahiptir ve bu nedenle, bu katmanlara bağlı bulut kaynaklarını koruyabilir.
 
 
-## <a name="try-azure-defender-free-for-30-days"></a>Azure Defender’ı 30 gün boyunca ücretsiz deneme
-Azure Defender, ilk 30 gün boyunca ücretsizdir. 30 günün sonunda hizmeti kullanmaya devam etmeyi seçmeniz gerekir, kullanım için otomatik olarak ücretlendirmeye başlayacağız.
-
-## <a name="enable-azure-defender"></a>Azure Defender’ı etkinleştirme
-Azure Defender ile tüm Azure aboneliğini koruyabilirsiniz ve korumalar, aboneliğin içindeki tüm kaynaklar tarafından devralınır.
-
-Azure Defender 'ı etkinleştirmek için:
-
-1. Güvenlik Merkezi 'nin ana menüsünde, **fiyatlandırma & ayarları**' nı seçin.
-1. Yükseltmek istediğiniz aboneliği seçin.
-1. Yükseltmek için **Azure Defender '** ı seçin.
-1. **Kaydet**’i seçin.
-
-Örnek abonelik için fiyatlandırma sayfası aşağıda verilmiştir. Azure Defender 'daki her planın ayrı olarak fiyatlandırıldığını ve tek tek açık veya kapalı olduğunu fark edeceksiniz.
-
-:::image type="content" source="./media/security-center-pricing/pricing-tier-page.png" alt-text="Portalda Güvenlik Merkezi 'nin fiyatlandırma sayfası":::
-
-> [!NOTE]
-> Tehdit koruması özellikleri dahil tüm güvenlik merkezi özelliklerini etkinleştirmek için, ilgili iş yüklerini içeren abonelikte Azure Defender 'ı etkinleştirmeniz gerekir. Çalışma alanı düzeyinde etkinleştirmek, Azure kaynakları için tam zamanında VM erişimi, uyarlamalı uygulama denetimleri ve ağ algılamalarını etkinleştirmez. Ayrıca, çalışma alanı düzeyinde kullanılabilen tek Azure Defender planları, sunucular için Azure Defender ve makinelerde SQL Server 'lar için Azure Defender ' dir.
->
-> **Azure Defender 'ı depolama hesapları için** abonelik düzeyinde ya da kaynak düzeyinde etkinleştirebilirsiniz.
-> **SQL Için Azure Defender 'ı** abonelik düzeyinde ya da kaynak düzeyinde etkinleştirebilirsiniz.
-> **MariaDB/MySQL/PostgreSQL Için Azure veritabanı** için tehdit korumasını yalnızca kaynak düzeyinde etkinleştirebilirsiniz.
-
-
 ## <a name="faq---pricing-and-billing"></a>SSS-fiyatlandırma ve faturalandırma 
 
-- [Kuruluşumun Azure Güvenlik Merkezi 'ndeki Azure Defender değişikliklerini etkinleştirdiğim kişileri nasıl izleyebilirim?](#how-can-i-track-who-in-my-organization-enabled-azure-defender-changes-in-security-center)
-- [Güvenlik Merkezi tarafından sunulan planlar nelerdir?](#what-are-the-plans-offered-by-security-center)
-- [Aboneliğim için Azure Defender'ı nasıl etkinleştirebilirim?](#how-do-i-enable-azure-defender-for-my-subscription)
-- [Azure Defender'ı aboneliğimdeki sunucuların bir alt kümesinde yer alan sunucular için etkinleştirebilir miyim?](#can-i-enable-azure-defender-for-servers-on-a-subset-of-servers-in-my-subscription)
-- [Uç nokta için bir Microsoft Defender lisansınız zaten varsa Azure Defender için bir indirim alabilir miyim?](#if-i-already-have-a-license-for-microsoft-defender-for-endpoint-can-i-get-a-discount-for-azure-defender)
-- [Aboneliğimin etkinleştirilmiş sunucular için Azure Defender 'ı var, çalışan olmayan sunucular için ücret ödersiniz mi?](#my-subscription-has-azure-defender-for-servers-enabled-do-i-pay-for-not-running-servers)
-- [Log Analytics Aracısı yüklenmeden makineler için ücretlendirilmem gerekir mi?](#will-i-be-charged-for-machines-without-the-log-analytics-agent-installed)
-- [Bir Log Analytics Aracısı birden çok çalışma alanına rapor veriyor, iki kez ücretlendirilecektir.](#if-a-log-analytics-agent-reports-to-multiple-workspaces-will-i-be-charged-twice)
-- [Bir Log Analytics Aracısı birden fazla çalışma alanına bildirirse, tüm bunlar üzerinde 500 MB boş veri alma işlemi kullanılabilir mi?](#if-a-log-analytics-agent-reports-to-multiple-workspaces-is-the-500-mb-free-data-ingestion-available-on-all-of-them)
-- [Tüm çalışma alanı veya tamamen makine başına 500 MB boş veri alımı mi hesaplansın?](#is-the-500-mb-free-data-ingestion-calculated-for-an-entire-workspace-or-strictly-per-machine)
+- [Azure Güvenlik Merkezi Ücretsiz vs Azure Defender etkin](#azure-security-center-free-vs-azure-defender-enabled)
+  - [Azure Defender 'ı etkinleştirmenin avantajları nelerdir?](#what-are-the-benefits-of-enabling-azure-defender)
+  - [SSS-fiyatlandırma ve faturalandırma](#faq---pricing-and-billing)
+    - [Kuruluşumun, güvenlik merkezi 'ndeki Azure Defender değişikliklerini etkinleştirdiğim kişileri nasıl izleyebilirim?](#how-can-i-track-who-in-my-organization-enabled-azure-defender-changes-in-security-center)
+    - [Güvenlik Merkezi tarafından sunulan planlar nelerdir?](#what-are-the-plans-offered-by-security-center)
+    - [Aboneliğim için Azure Defender'ı nasıl etkinleştirebilirim?](#how-do-i-enable-azure-defender-for-my-subscription)
+    - [Azure Defender'ı aboneliğimdeki sunucuların bir alt kümesinde yer alan sunucular için etkinleştirebilir miyim?](#can-i-enable-azure-defender-for-servers-on-a-subset-of-servers-in-my-subscription)
+    - [Uç nokta için bir Microsoft Defender lisansınız zaten varsa Azure Defender için bir indirim alabilir miyim?](#if-i-already-have-a-license-for-microsoft-defender-for-endpoint-can-i-get-a-discount-for-azure-defender)
+    - [Aboneliğimin etkinleştirilmiş sunucular için Azure Defender 'ı var, çalışan olmayan sunucular için ücret ödersiniz mi?](#my-subscription-has-azure-defender-for-servers-enabled-do-i-pay-for-not-running-servers)
+    - [Log Analytics Aracısı yüklenmeden makineler için ücretlendirilmem gerekir mi?](#will-i-be-charged-for-machines-without-the-log-analytics-agent-installed)
+    - [Bir Log Analytics Aracısı birden çok çalışma alanına rapor veriyor, iki kez ücretlendirilecektir.](#if-a-log-analytics-agent-reports-to-multiple-workspaces-will-i-be-charged-twice)
+    - [Bir Log Analytics Aracısı birden fazla çalışma alanına bildirirse, tüm bunlar üzerinde 500 MB boş veri alma işlemi kullanılabilir mi?](#if-a-log-analytics-agent-reports-to-multiple-workspaces-is-the-500-mb-free-data-ingestion-available-on-all-of-them)
+    - [Tüm çalışma alanı veya tamamen makine başına 500 MB boş veri alımı mi hesaplansın?](#is-the-500-mb-free-data-ingestion-calculated-for-an-entire-workspace-or-strictly-per-machine)
+  - [Sonraki adımlar](#next-steps)
 
 ### <a name="how-can-i-track-who-in-my-organization-enabled-azure-defender-changes-in-security-center"></a>Kuruluşumun, güvenlik merkezi 'ndeki Azure Defender değişikliklerini etkinleştirdiğim kişileri nasıl izleyebilirim?
 Azure aboneliklerinde fiyatlandırma ayarlarını değiştirme izinlerine sahip birden çok yönetici olabilir. Hangi kullanıcının bir değişiklik yaptığını öğrenmek için Azure etkinlik günlüğünü kullanın.
@@ -100,7 +72,7 @@ Aboneliğiniz için Azure Defender 'ı etkinleştirmek üzere aşağıdaki yolla
 
 |Yöntem  |Yönergeler  |
 |---------|---------|
-|Azure portal Azure Güvenlik Merkezi sayfaları|[Azure Defender’ı etkinleştirme](#enable-azure-defender)|
+|Azure portal Azure Güvenlik Merkezi sayfaları|[Azure Defender’ı etkinleştirme](enable-azure-defender.md)|
 |REST API|[Prmerler API 'SI](/rest/api/securitycenter/pricings)|
 |Azure CLI|[az Security fiyatlandırması](/cli/azure/security/pricing)|
 |PowerShell|[Set-Azsecurityprsosu](/powershell/module/az.security/set-azsecuritypricing)|

@@ -7,12 +7,12 @@ ms.service: azure-percept
 ms.topic: how-to
 ms.date: 02/15/2021
 ms.custom: template-how-to
-ms.openlocfilehash: 593d2ccadf814cb5af27a4bb738f28132f39ab7d
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 5e41dea3b47c608b9e82ac57fa1cfe5247ea6cc2
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101663869"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102099021"
 ---
 # <a name="managing-your-voice-assistant"></a>Ses yardımcınızı yönetme
 
@@ -28,7 +28,7 @@ Anahtar sözcüğü, bir sesli yardımcıyı etkinleştirmek için kullanılan b
 
 1. Demo sayfasında **özel anahtar sözcük** ' ın yanındaki **Değiştir** ' e tıklayın.
 
-    :::image type="content" source="./media/manage-voice-assistant/hospitality-demo.png" alt-text="Görüntüyle.":::
+    :::image type="content" source="./media/manage-voice-assistant/hospitality-demo.png" alt-text="Hastanlik tanıtım penceresinin ekran görüntüsü.":::
 
     Demo sayfası açık değilse, cihaz sayfasına gidin (aşağıya bakın) ve tanıtım 'e erişmek için, **Eylemler** bölümünde **Ses yardımcınızı test et** ' e tıklayın.
 
@@ -40,17 +40,17 @@ Anahtar sözcüğü, bir sesli yardımcıyı etkinleştirmek için kullanılan b
 
 1. [Azure Percept Studio](https://go.microsoft.com/fwlink/?linkid=2135819)'nun Genel Bakış sayfasında sol menü bölmesinde **cihazlar** ' a tıklayın.
 
-    :::image type="content" source="./media/manage-voice-assistant/portal-overview-devices.png" alt-text="Görüntüyle.":::
+    :::image type="content" source="./media/manage-voice-assistant/portal-overview-devices.png" alt-text="Cihazların vurgulandığı Azure Percept Studio 'ya Genel Bakış sayfasının ekran görüntüsü.":::
 
 1. Ses Yardımcısı uygulamanızın dağıtıldığı aygıtı seçin.
 
 1. **Konuşma** sekmesini açın.
 
-    :::image type="content" source="./media/manage-voice-assistant/device-page.png" alt-text="Görüntüyle.":::
+    :::image type="content" source="./media/manage-voice-assistant/device-page.png" alt-text="Konuşma sekmesi vurgulanmış şekilde Edge cihazı sayfasının ekran görüntüsü.":::
 
 1. **Anahtar sözcüğünün** yanındaki **Değiştir** ' e tıklayın.
 
-    :::image type="content" source="./media/manage-voice-assistant/change-keyword-device.png" alt-text="Görüntüyle.":::
+    :::image type="content" source="./media/manage-voice-assistant/change-keyword-device.png" alt-text="Kullanılabilir konuşma çözümü eylemlerinin ekran görüntüsü.":::
 
 1. Kullanılabilir anahtar sözcüklerden birini seçin ve değişiklikleri uygulamak için **Kaydet** ' e tıklayın.
 

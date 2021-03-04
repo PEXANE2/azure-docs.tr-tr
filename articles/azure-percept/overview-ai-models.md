@@ -7,12 +7,12 @@ ms.service: azure-percept
 ms.topic: conceptual
 ms.date: 02/16/2021
 ms.custom: template-concept
-ms.openlocfilehash: 28a8de231f179cf69342da81e6a2ae1989d2a5d6
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 8a9ed564012e8b530436152d931f5a5f6470ff98
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 03/04/2021
-ms.locfileid: "102041595"
+ms.locfileid: "102098375"
 ---
 # <a name="azure-percept-ai-models"></a>Azure Percept AI modelleri
 
@@ -52,6 +52,8 @@ Azure Percept Studio sayesinde, hiçbir kodlama [gerekmeden özel görüntü](./
 
 ## <a name="advanced-development"></a>Gelişmiş geliştirme
 
-Gelişmiş geliştiriciler için, kullanılabilir [Jupyter Not defteri](https://github.com/microsoft/Project-Santa-Cruz-Preview/blob/main/Sample-Scripts-and-Notebooks/Official/Machine%20Learning%20Notebooks/Transferlearningusing_SSDLiteV2%20Model.ipynb) , nesne algılaması için özel bir veri kümesiyle Python 'da önceden eğitilen bir TensorFlow modeli (MobileNetSSDV2Lite) kullanarak Aktarım öğrenimini gerçekleştirir. Not defteri, [Azure Machine Learning](https://azure.microsoft.com/services/machine-learning/#product-overview) aracılığıyla uzak işlem örneklerini kullanır ve bu bulutta, AzureML veya [Visual Studio Code](https://code.visualstudio.com/)yerel olarak yerel olarak çalıştırılabilir.
+Lütfen güncel rehberlik, öğreticiler ve örnekler için bkz. [Azure PERCEPT dk gelişmiş geliştirme GitHub](https://github.com/microsoft/azure-percept-advanced-development) , şunun gibi şeyler:
 
-Ayrıca, gelişmiş bir AI çözümü geliştirmek için gereken tüm araçları yükleyip yapılandıran veri kümelerini ve [geliştirme araçları paketi yükleyicisini](https://github.com/microsoft/Project-Santa-Cruz-Preview/blob/main/Sample-Scripts-and-Notebooks/Official/Machine%20Learning%20Notebooks/dev-tools-installer.md)yönetmeye yönelik bazı faydalı Python [betikleri](https://github.com/microsoft/Project-Santa-Cruz-Preview/tree/main/Sample-Scripts-and-Notebooks/Official/Scripts) de mevcuttur.
+* Cihaza özel bir AI modeli getiriliyor
+* Aktarım öğrenimi ile zaten desteklediğimiz bir modeli güncelleştirme
+* Ve daha fazlası

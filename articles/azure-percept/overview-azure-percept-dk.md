@@ -7,26 +7,27 @@ ms.service: azure-percept
 ms.topic: conceptual
 ms.date: 02/18/2021
 ms.custom: template-concept
-ms.openlocfilehash: 4fd0a7cb575a109d1393527b48de3fa4e3446167
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 4c2ace609d67cc48d1b73bdb044e7048ebda21e7
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101664021"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102098341"
 ---
 # <a name="azure-percept-dk-overview"></a>Azure Percept DK genel bakış
 
-Azure Percept DK, Vision AI kanıtı kavramlarının geliştirilmesi için tasarlanan bir Edge AI geliştirme setidir. [Azure Percept Studio](./overview-azure-percept-studio.md)ile birleştirildiğinde, çok ÇEŞITLI Vision AI uygulamaları IÇIN Edge AI çözümleri oluşturmaya yönelik güçlü, kullanımı kolay bir platform haline gelir. [Microsoft Online Store](https://go.microsoft.com/fwlink/p/?LinkId=2155270)'da satın alınabilir.
+Azure Percept DK, kavram ve ses AI kanıtı kavramlarının geliştirilmesi için tasarlanan bir Edge AI ve IoT geliştirme setidir. [Azure Percept Studio](./overview-azure-percept-studio.md) ve [Azure Percept sesiyle](./overview-azure-percept-audio.md)birleştirildiğinde, çok ÇEŞITLI Vision veya Audio AI uygulamaları için Edge AI çözümleri oluşturmaya yönelik güçlü, kullanımı kolay bir platform haline gelir. [Microsoft Online Store](https://go.microsoft.com/fwlink/p/?LinkId=2155270)'da satın alınabilir.
 
-:::image type="content" source="./media/overview-azure-percept-dk/dk-image.png" alt-text="Görüntüyle.":::
+:::image type="content" source="./media/overview-azure-percept-dk/dk-image.png" alt-text="Azure Percept DK cihazı.":::
 
 ## <a name="key-features"></a>Temel Özellikler
 
 - **Kenarda AI çalıştırma özelliği**. Yerleşik donanım hızlandırma sayesinde, bulut bağlantısı olmadan Vision AI modellerini çalıştırabilir.
 - **Yerleşik güven güvenliği donanım kökü**. Daha fazla bilgi için bkz. [Azure Percept Security](./overview-percept-security.md) 'ye genel bakış.
 - **[Azure Percept Studio](./overview-azure-percept-studio.md)** ve diğer Azure hizmetleriyle sorunsuz tümleştirme. Azure IoT Hub, Azure bilişsel hizmetler ve [canlı video analizi](https://docs.microsoft.com/azure/media-services/live-video-analytics-edge/overview) gibi
+- **İsteğe bağlı [Azure Percept Audio](./overview-azure-percept-audio.md) ile sorunsuz tümleştirme**
 - **En üst AI platformları Için destek**. ONNX ve TensorFlow gibi.
-- **80/20 kenle sistemiyle tümleştirme**. Üretim ortamlarında Prototiplerde derleme yapmayı kolaylaştırın. [8/20 tümleştirmesi](./overview-8020-integration.md)hakkında daha fazla bilgi edinin.
+- **80/20 kenle sistemiyle tümleştirme**. Üretim ortamlarında Prototiplerde derleme yapmayı kolaylaştırın. [80/20 tümleştirmesi](./overview-8020-integration.md)hakkında daha fazla bilgi edinin.
 
 ## <a name="hardware-components"></a>Donanım bileşenleri
 

@@ -13,18 +13,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/17/2021
 ms.author: memildin
-ms.openlocfilehash: a47ece762f2df3fa18cf2b79d338c28d4069c4ad
-ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
+ms.openlocfilehash: 490f94c71611e07e765f5882cb4e3eec13033a6a
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100633489"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102099344"
 ---
 # <a name="manage-and-respond-to-security-alerts-in-azure-security-center"></a>Azure Güvenlik Merkezi 'nde güvenlik uyarılarını yönetme ve yanıtlama
 
 Bu konu başlığı altında, güvenlik merkezi 'nin uyarılarını görüntüleme ve işleme ve kaynaklarınızı koruma işlemlerinin nasıl yapılacağı gösterilmektedir.
 
-Güvenlik uyarılarını tetikleyen gelişmiş algılamalar yalnızca Azure Defender ile kullanılabilir. Ücretsiz deneme sürümü mevcuttur. Yükseltmek için bkz. [Azure Defender 'ı etkinleştirme](security-center-pricing.md#enable-azure-defender).
+Güvenlik uyarılarını tetikleyen gelişmiş algılamalar yalnızca Azure Defender ile kullanılabilir. Ücretsiz deneme sürümü mevcuttur. Yükseltmek için bkz. [Azure Defender 'ı etkinleştirme](enable-azure-defender.md).
 
 ## <a name="what-are-security-alerts"></a>Güvenlik uyarıları nedir?
 Güvenlik Merkezi, gerçek tehditleri algılamak ve hatalı pozitif sonuçları azaltmak için Azure kaynaklarınızdan, ağınızdan ve güvenlik duvarı ve uç nokta koruma çözümleri gibi bağlı iş ortağı çözümlerinden günlük verilerini otomatik olarak toplar, çözümler ve tümleştirir. Öncelikli güvenlik uyarıları listesi, sorunu hızlıca araştırmanız gereken bilgiler ve saldırıyı düzeltme hakkındaki önerilerle birlikte Güvenlik Merkezi'nde gösterilir.

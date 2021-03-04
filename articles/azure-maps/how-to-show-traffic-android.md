@@ -3,23 +3,24 @@ title: Android haritalar üzerinde trafik verilerini göster | Microsoft Azure h
 description: Bu makalede, Microsoft Azure haritaları Android SDK kullanarak bir Haritada trafik verileri görüntüleme hakkında bilgi edineceksiniz.
 author: rbrundritt
 ms.author: richbrun
-ms.date: 12/04/2020
+ms.date: 2/26/2021
 ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
-ms.openlocfilehash: 113f39ac2976b870c9e07851cdd0919e2578940f
-ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
+zone_pivot_groups: azure-maps-android
+ms.openlocfilehash: 36b3666f12b48468467e76f4c281d58d8018478c
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97680466"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102098545"
 ---
 # <a name="show-traffic-data-on-the-map-android-sdk"></a>Haritadaki trafik verilerini göster (Android SDK)
 
 Akış verileri ve olay verileri, haritada görüntülenebilen iki trafik verisi türüdür. Bu kılavuzda her iki trafik verisi türünün nasıl görüntüleneceği gösterilmektedir. Olaylar verileri, kurulumlarını, yol kapanışları ve kazalardan dolayı gibi şeyler için nokta ve hat tabanlı verilerden oluşur. Akış verileri, yolda trafik akışı hakkında ölçümleri gösterir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 [Hızlı başlangıç: Android uygulama belgesi oluşturma](quick-android-map.md) ' daki adımları tamamladığınızdan emin olun. Bu makaledeki kod blokları haritalar `onReady` olay işleyicisine eklenebilir.
 
@@ -39,6 +40,8 @@ Azure haritalar 'da kullanılabilen iki tür trafik verisi vardır:
 
 Aşağıdaki kod, Haritada trafik verilerinin nasıl görüntüleneceğini gösterir.
 
+::: zone pivot="programming-language-java-android"
+
 ```java
 //Show traffic on the map using the traffic options.
 map.setTraffic(
@@ -47,6 +50,19 @@ map.setTraffic(
 );
 ```
 
+::: zone-end
+
+::: zone pivot="programming-language-kotlin"
+
+```kotlin
+map.setTraffic(
+    incidents(true),
+    flow(TrafficFlow.RELATIVE)
+)
+```
+
+::: zone-end
+
 Aşağıdaki ekran görüntüsünde, haritada gerçek zamanlı trafik bilgilerinin bulunduğu Yukarıdaki kod gösterilmektedir.
 
 ![Gerçek zamanlı trafik bilgilerini gösteren harita](media/how-to-show-traffic-android/android-show-traffic.png)
@@ -54,6 +70,8 @@ Aşağıdaki ekran görüntüsünde, haritada gerçek zamanlı trafik bilgilerin
 ## <a name="get-traffic-incident-details"></a>Trafik olay ayrıntılarını al
 
 Bir trafik olayıyla ilgili ayrıntılar, haritada olayı göstermek için kullanılan özelliğin özellikleri içinde mevcuttur. Trafik olayları, Azure Maps Trafik olayı vektör kutucuk hizmeti kullanılarak haritaya eklenir. [Burada belgelendiği](https://developer.tomtom.com/traffic-api/traffic-api-documentation-traffic-incidents/vector-incident-tiles)durumlarda bu vektör kutucuklarında verilerin biçimi. Aşağıdaki kod, haritaya bir tıklama olayı ekler ve tıklanan trafik olayı özelliğini alır ve bazı ayrıntıların bulunduğu bir bildirim iletisi görüntüler.
+
+::: zone pivot="programming-language-java-android"
 
 ```java
 //Show traffic information on the map.
@@ -107,6 +125,59 @@ map.events.add((OnFeatureClick) (features) -> {
     }
 });
 ```
+
+::: zone-end
+
+::: zone pivot="programming-language-kotlin"
+
+```kotlin
+//Show traffic information on the map.
+map.setTraffic(
+    incidents(true),
+    flow(TrafficFlow.RELATIVE)
+)
+
+//Add a click event to the map.
+map.events.add(OnFeatureClick { features: List<Feature>? ->
+    if (features != null && features.size > 0) {
+        val incident = features[0]
+
+        //Ensure that the clicked feature is an traffic incident feature.
+        if (incident.properties() != null && incident.hasProperty("incidentType")) {
+            val sb = StringBuilder()
+            val incidentType = incident.getStringProperty("incidentType")
+
+            if (incidentType != null) {
+                sb.append(incidentType)
+            }
+
+            if (sb.length > 0) {
+                sb.append("\n")
+            }
+
+            //If the road is closed, find out where it is closed from.
+            if ("Road Closed" == incidentType) {
+                val from = incident.getStringProperty("from")
+                if (from != null) {
+                    sb.append(from)
+                }
+            } else { //Get the description of the traffic incident.
+                val description = incident.getStringProperty("description")
+                if (description != null) {
+                    sb.append(description)
+                }
+            }
+
+            val message = sb.toString()
+            if (message.length > 0) {
+                Toast.makeText(this, message, Toast.LENGTH_LONG).show()
+            }
+        }
+    }
+})
+```
+
+::: zone-end
 
 Aşağıdaki ekran görüntüsünde, olay ayrıntılarını görüntüleyen bir bildirim iletisi ile haritada gerçek zamanlı trafik bilgilerinin bulunduğu Yukarıdaki kod gösterilmektedir.
 

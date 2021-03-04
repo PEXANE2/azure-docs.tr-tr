@@ -2,23 +2,18 @@
 title: Azure Güvenlik Merkezi'ndeki tümleşik güvenlik çözümleri | Microsoft Docs
 description: Azure Güvenlik Merkezi'nin, Azure kaynaklarınızın genel güvenliğini geliştirmek amacıyla iş ortaklarıyla nasıl tümleştirildiğini öğrenin.
 services: security-center
-documentationcenter: na
 author: memildin
 manager: rkarlin
-ms.assetid: 6af354da-f27a-467a-8b7e-6cbcf70fdbcb
 ms.service: security-center
 ms.topic: conceptual
-ms.devlang: na
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 12/10/2020
 ms.author: memildin
-ms.openlocfilehash: ecfb4bdbd523dd1514333a2185186eab0a7e4aaa
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: ff23a1fa4b631fc10163f22d94ccdbd8cbe657c2
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97032686"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102099259"
 ---
 # <a name="integrate-security-solutions-in-azure-security-center"></a>Azure Güvenlik Merkezi'ndeki tümleşik güvenlik çözümleri
 Bu belge Azure Güvenlik Merkezi'ne bağlanmış olan güvenlik çözümlerini yönetmenize ve yenilerini eklemenize yardımcı olur.
@@ -39,7 +34,7 @@ Azure Defender müşterilerinin kullanabildiği yerleşik bir tarayıcı dahil o
 
 Güvenlik Merkezi, için güvenlik açığı analizini de sunmaktadır:
 
-* SQL veritabanları-bkz [. güvenlik açığı değerlendirme panosundaki güvenlik açığı değerlendirmesi raporlarını inceleyin](defender-for-sql-usage.md#explore-vulnerability-assessment-reports)
+* SQL veritabanları-bkz [. güvenlik açığı değerlendirme panosundaki güvenlik açığı değerlendirmesi raporlarını inceleyin](defender-for-sql-on-machines-vulnerability-assessment.md#explore-vulnerability-assessment-reports)
 * Görüntüleri Azure Container Registry-bkz. [Azure Defender 'ı kapsayıcı kayıt defterleri Için kullanma güvenlik açıkları için görüntülerinizi tarayın](defender-for-container-registries-usage.md)
 
 ## <a name="how-security-solutions-are-integrated"></a>Güvenlik çözümlerinin tümleştirilme şekli
@@ -88,8 +83,7 @@ Ek bilgi ve seçenekler için **Görünüm** ' ü seçin:
 Güvenlik Merkezi, Azure 'da çalışan ancak güvenlik merkezi 'ne bağlı olmayan güvenlik çözümlerini otomatik olarak bulur ve **bulunan çözümler** bölümünde çözümleri görüntüler. Bu çözümler [Azure AD kimlik koruması](../active-directory/identity-protection/overview-identity-protection.md)ve iş ortağı çözümleri gibi Azure çözümlerini içerir.
 
 > [!NOTE]
-> Bulunan çözümler özelliği için abonelik düzeyinde **Azure Defender 'ı** etkinleştirin. Fiyatlandırma katmanları hakkında daha fazla bilgi için bkz. [fiyatlandırma](security-center-pricing.md) .
->
+> Bulunan çözümler özelliği için abonelik düzeyinde **Azure Defender 'ı** etkinleştirin. Hızlı Başlangıç bölümünde daha fazla bilgi edinin [: Azure Defender 'ı etkinleştirin](enable-azure-defender.md).
 
 Güvenlik Merkezi ile tümleştirilecek ve güvenlik uyarıları hakkında bildirim almak için bir çözüm altında **Bağlan** ' ı seçin.
 
@@ -103,7 +97,4 @@ Güvenlik Merkezi ile tümleştirilecek ve güvenlik uyarıları hakkında bildi
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu makalede, Güvenlik Merkezi'nde iş ortağı çözümlerinin nasıl tümleştirileceğini öğrendiniz. İlgili bilgiler için aşağıdaki makalelere bakın:
-
-* [Güvenlik Merkezi verilerini sürekli dışa aktarın](continuous-export.md). Azure Sentinel veya başka bir SıEM ile tümleştirme ayarlamayı öğrenin.
-* [Güvenlik Merkezi'nde güvenlik durumunu izleme](security-center-monitoring.md). Azure kaynaklarınızı durumunu izleme hakkında bilgi edinin.
+Bu makalede, Güvenlik Merkezi'nde iş ortağı çözümlerinin nasıl tümleştirileceğini öğrendiniz. Azure Sentinel veya başka bir SıEM ile tümleştirme ayarlamayı öğrenmek için bkz. [Güvenlik Merkezi verilerini sürekli dışa aktarma](continuous-export.md).

@@ -7,12 +7,12 @@ ms.service: azure-percept
 ms.topic: how-to
 ms.date: 02/18/2021
 ms.custom: template-how-to
-ms.openlocfilehash: 02292d4559697bc38d47811fe392dc86427515b4
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: d684311ef959ac13f3be8bac7ffbbb06a741962a
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101663825"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102097712"
 ---
 # <a name="dev-tools-pack-installer-overview"></a>Geliştirme araçları paketi yükleyicisine genel bakış
 
@@ -84,6 +84,8 @@ Geliştirme araçları paketi yükleyicisi, akıllı bir uç çözümü gelişti
 
         > [!NOTE]
         > Docker, macOS 'un en son sürümlerinde Docker Desktop 'ı destekler. Yani, macOS 'un geçerli sürümü ve önceki iki sürüm. MacOS 'un yeni ana sürümleri genel kullanıma sunulduğunda, Docker en eski sürümü desteklemeyi durduruyor ve macOS 'ın en yeni sürümünü (önceki iki sürüme ek olarak) destekler. Docker Desktop Şu anda macOS Mojave, macOS Catalina ve macOS Big Sur 'i desteklemektedir.
+        > 
+        - Yükleyici, Apple M1 üzerinde desteklenmez.
 
 ## <a name="instructions"></a>Yönergeler
 
@@ -99,7 +101,7 @@ Geliştirme araçları paketi yükleyicisi, akıllı bir uç çözümü gelişti
     
         1. İndirdikten sonra, Dev-Tools-Pack-Installer. app dosyasını uygulamalar klasörüne taşıyın.
         
-        1. Yükleme Sihirbazı 'nı açmak için "Dev-Tools-Pack-Installer. app" düğmesine tıklayın.
+        1. Yükleme sihirbazını açmak için **dev-Tools-Pack-Installer. app** ' e tıklayın.
         
         1. "Tanımlanamayan bir geliştirici" güvenlik iletişim kutusu alırsanız:
         
@@ -123,7 +125,7 @@ Geliştirme araçları paketi yükleyicisi, akıllı bir uç çözümü gelişti
                 
             1. Appımage çalıştırılabilir dosyasını açmak için terminale aşağıdakini yazın
             
-                1. chmod + x geliştirme-Araçlar-paketi-yükleyici. Appımage
+                1. chmod + x **geliştirme-Araçlar-paketi-yükleyici. Appımage**
                 
             1. Yükleyiciyi çalıştırmak için terminalde şunları yazın
             
@@ -141,11 +143,11 @@ Geliştirme araçları paketi yükleyicisi, akıllı bir uç çözümü gelişti
 
 1. **Geliştirme araçları paketi yükleyicisini yükleme** sayfasında, yükleyicide bulunan her yazılım paketinin lisans sözleşmelerini görüntülemek Için **lisansı görüntüle** ' ye tıklayın. Lisans sözleşmeleri içindeki koşulları kabul ediyorsanız, kutuyu işaretleyin ve **İleri**' ye tıklayın.
 
-    ![Yükleyicideki lisans sözleşmesi ekranı.](https://github.com/microsoft/Project-Santa-Cruz-Private-Preview/blob/main/user-guides/prototyping/article_images/dev_tools_license_agreements.png)
+    :::image type="content" source="./media/dev-tools-installer/dev-tools-license-agreements.png" alt-text="Yükleyicideki lisans sözleşmesi ekranı.":::
 
 1. Microsoft gizlilik bildirimi ' ni gözden geçirmek için **Gizlilik bildirimi** ' ne tıklayın. Gizlilik bildirimi koşullarını kabul ediyorsanız ve Microsoft 'a Tanılama verileri göndermek istiyorsanız **Evet** ' i seçin ve **İleri**' ye tıklayın. Aksi takdirde **Hayır** ' ı seçin ve **İleri**' ye tıklayın.
 
-    ![Yükleyicideki gizlilik bildirimi sözleşmesi ekranı.](https://github.com/microsoft/Project-Santa-Cruz-Private-Preview/blob/main/user-guides/prototyping/article_images/dev_tools_privacy_statement.png)
+    :::image type="content" source="./media/dev-tools-installer/dev-tools-privacy-statement.png" alt-text="Yükleyicideki gizlilik bildirimi sözleşmesi ekranı.":::
 
 1. **Bileşenleri Yapılandır** sayfasında, yüklemek istediğiniz isteğe bağlı araçları seçin (varsayılan olarak, zorunlu araçlar yüklenir).
 
@@ -153,11 +155,11 @@ Geliştirme araçları paketi yükleyicisi, akıllı bir uç çözümü gelişti
 
     1. Yüklemeye devam etmek için **yükleme** ' ye tıklayın.
 
-    ![Kullanılabilir yazılım paketlerini gösteren Yükleyici ekranı.](https://github.com/microsoft/Project-Santa-Cruz-Private-Preview/blob/main/user-guides/prototyping/article_images/dev_tools_configure_components.png)
+    :::image type="content" source="./media/dev-tools-installer/dev-tools-configure-components.png" alt-text="Kullanılabilir yazılım paketlerini gösteren Yükleyici ekranı.":::
 
 1. Seçilen tüm bileşenlerin başarılı bir şekilde yüklenmesinden sonra sihirbaz, **Kurulum Sihirbazı 'Nı tamamlama** sayfasına ilerler. Yükleyiciden çıkmak için **son** ' a tıklayın.
 
-    ![Yükleyici tamamlama ekranı.](https://github.com/microsoft/Project-Santa-Cruz-Private-Preview/blob/main/user-guides/prototyping/article_images/dev_tools_finish.png)
+    :::image type="content" source="./media/dev-tools-installer/dev-tools-finish.png" alt-text="Yükleyici tamamlama ekranı.":::
 
 ## <a name="docker-status-check"></a>Docker durum denetimi
 
@@ -168,12 +170,12 @@ Yükleyici, Docker Desktop 'ın iyi çalışan bir durumda olduğunu doğrulamak
       1. Sistem tepsisindeki gizli simgeleri Genişlet:
       
          1. Gizliyse sistem tepsisindeki gizli simgeler ' i Genişlet:
-         
-            * ![Sistem tepsisi](https://github.com/microsoft/Project-Santa-Cruz-Preview/blob/main/Sample-Scripts-and-Notebooks/Official/Machine%20Learning%20Notebooks/article_images/SystemTray.png)
+
+            :::image type="content" source="./media/dev-tools-installer/system-tray.png" alt-text="Sistem tepsisi.":::
          
          1. Docker masaüstü simgesinin ' Docker Desktop çalışıyor ' olduğunu doğrulayın:
-         
-            * ![Docker durumu](https://github.com/microsoft/Project-Santa-Cruz-Preview/blob/main/Sample-Scripts-and-Notebooks/Official/Machine%20Learning%20Notebooks/article_images/DockerStatusRunning.png)
+
+            :::image type="content" source="./media/dev-tools-installer/docker-status-running.png" alt-text="Docker durumu.":::
          
          1. Sistem tepsisinde yukarıdaki simgeyi görmüyorsanız, Başlat menüsünden Docker Desktop ' ı başlatın.
          
@@ -181,4 +183,4 @@ Yükleyici, Docker Desktop 'ın iyi çalışan bir durumda olduğunu doğrulamak
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Gelişmiş [geliştirme öğreticisine (yerel)](./advanced-development-local.md)göz atın ve Azure Percept dk için gelişmiş geliştirme ile çalışmaya başlayın.
+Azure Percept DK için gelişmiş geliştirmeyi kullanmaya başlamak üzere [Azure Percept gelişmiş geliştirme deposuna](https://github.com/microsoft/azure-percept-advanced-development) göz atın.

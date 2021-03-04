@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 12/09/2020
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: fe427150b15c6bccb97172ae751235d388c95c7b
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: dbeb3cd4fccf80f434e6c7ac08c658632f64b135
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98675035"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102096862"
 ---
 # <a name="tutorial-configure-zscaler-private-access-with-azure-active-directory-b2c"></a>Öğretici: Azure Active Directory B2C ile Zscaler özel erişimini yapılandırma
 
@@ -100,11 +100,11 @@ Azure AD B2C kiracınızda özel ilkeleri yapılandırmak için, bkz. [Azure Act
 
 ### <a name="step-3-register-zpa-as-a-saml-application-in-azure-ad-b2c"></a>3. Adım: ZPA 'yi bir SAML uygulaması olarak kaydetme Azure AD B2C
 
-Azure AD B2C bir SAML uygulaması yapılandırmak için, bkz. [Azure AD B2C BIR SAML uygulaması kaydetme](./connect-with-saml-service-providers.md). 
+Azure AD B2C bir SAML uygulaması yapılandırmak için, bkz. [Azure AD B2C BIR SAML uygulaması kaydetme](./saml-service-provider.md). 
 
-["3,2 ilke meta verilerini karşıya yükleme ve test etme"](./connect-with-saml-service-providers.md#32-upload-and-test-your-policy-metadata)adımında, Azure AD B2C tarafından kullanılan ıDP SAML meta veri URL 'sini kopyalayın veya unutmayın. Buna daha sonra ihtiyacınız olacak.
+["Ilkenizi karşıya yükleme"](./saml-service-provider.md#upload-your-policy)adımında, Azure AD B2C tarafından kullanılan ıDP SAML meta veri URL 'sini kopyalayın veya unutmayın. Buna daha sonra ihtiyacınız olacak.
 
-["4,2 uygulama bildirimini güncelleştirme"](./connect-with-saml-service-providers.md#42-update-the-app-manifest)adımındaki yönergeleri izleyin. Adım 4,2 ' de, uygulama bildirimi özelliklerini aşağıdaki şekilde güncelleştirin:
+["Uygulamanızı Azure AD B2C 'de yapılandırma"](./saml-service-provider.md#configure-your-application-in-azure-ad-b2c)adımındaki yönergeleri izleyin. Adım 4,2 ' de, uygulama bildirimi özelliklerini aşağıdaki şekilde güncelleştirin:
 
 - **Identifieruris** için: daha önce "Adım 1.6. b" içinde kopyaladığınız veya not ettiğiniz hizmet sağlayıcısı varlık kimliğini kullanın.  
 - **Samlmetadataurl** IÇIN: ZPA bir SAML meta veri URL 'si barındırmadığından bu özelliği atlayın.  
@@ -150,6 +150,6 @@ Bir ZPA Kullanıcı portalına veya tarayıcı erişimi uygulamasına gidin ve k
 Daha fazla bilgi için aşağıdaki makaleleri gözden geçirin:
 
 - [Azure AD B2C özel ilkeleri kullanmaya başlama](./custom-policy-get-started.md)
-- [Azure AD B2C bir SAML uygulaması kaydetme](./connect-with-saml-service-providers.md)
+- [Azure AD B2C bir SAML uygulaması kaydetme](./saml-service-provider.md)
 - [ZPA için adım adım yapılandırma kılavuzu](https://help.zscaler.com/zpa/step-step-configuration-guide-zpa)
 - [Bir IDP 'yi çoklu oturum açma için yapılandırma](https://help.zscaler.com/zpa/configuring-idp-single-sign)

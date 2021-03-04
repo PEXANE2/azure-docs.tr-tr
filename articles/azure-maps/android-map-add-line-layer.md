@@ -3,17 +3,18 @@ title: Android Maps 'e çizgi katmanı ekleme | Microsoft Azure haritaları
 description: Haritalara satır eklemeyi öğrenin. Haritalara çizgi katmanları eklemek ve semboller ve renk degradeleriyle satırları özelleştirmek için Azure Haritalar Android SDK kullanan örneklere bakın.
 author: rbrundritt
 ms.author: richbrun
-ms.date: 12/08/2020
+ms.date: 2/26/2021
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
-ms.openlocfilehash: 62002b776262e97dd34db1d9ecd3b7b0e09f46f3
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+zone_pivot_groups: azure-maps-android
+ms.openlocfilehash: ff071d03e00a0380d1ab6642828b0940931d3302
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 03/04/2021
-ms.locfileid: "102044246"
+ms.locfileid: "102097457"
 ---
 # <a name="add-a-line-layer-to-the-map-android-sdk"></a>Haritaya çizgi katmanı ekleme (Android SDK)
 
@@ -30,6 +31,8 @@ Bir çizgi katmanı `LineString` `MultiLineString` , haritada yollar veya rotala
 
 Aşağıdaki kod, bir satırın nasıl oluşturulacağını gösterir. Satırı bir veri kaynağına ekleyin, ardından sınıfı kullanarak bir çizgi katmanı ile işlenir `LineLayer` .
 
+::: zone pivot="programming-language-java-android"
+
 ```java
 //Create a data source and add it to the map.
 DataSource source = new DataSource();
@@ -37,8 +40,8 @@ map.sources.add(source);
 
 //Create a list of points.
 List<Point> points = Arrays.asList(
-    Point.fromLngLat(-73.972340, 40.743270),
-    Point.fromLngLat(-74.004420, 40.756800));
+    Point.fromLngLat(-73.97234, 40.74327),
+    Point.fromLngLat(-74.00442, 40.75680));
 
 //Create a LineString geometry and add it to the data source.
 source.add(LineString.fromLngLats(points));
@@ -52,13 +55,45 @@ LineLayer layer = new LineLayer(source,
 map.layers.add(layer);
 ```
 
+::: zone-end
+
+::: zone pivot="programming-language-kotlin"
+
+```kotlin
+//Create a data source and add it to the map.
+val source = DataSource()
+map.sources.add(source)
+
+//Create a list of points.
+val points = asList(
+    Point.fromLngLat(-73.97234, 40.74327),
+    Point.fromLngLat(-74.00442, 40.75680)
+)
+
+//Create a LineString geometry and add it to the data source.
+source.add(LineString.fromLngLats(points))
+
+//Create a line layer and add it to the map.
+val layer = LineLayer(
+    source,
+    strokeColor("blue"),
+    strokeWidth(5f)
+)
+
+map.layers.add(layer)
+```
+
+::: zone-end
+
 Aşağıdaki ekran görüntüsünde, bir çizgi katmanında bir satırı işleyen Yukarıdaki kod gösterilmektedir.
 
 ![Çizgi katmanı kullanılarak işlenen bir satırla eşleme](media/android-map-add-line-layer/android-line-layer.png)
 
-## <a name="data-drive-line-style"></a>Veri sürücüsü çizgi stili
+## <a name="data-driven-line-style"></a>Veri tabanlı çizgi stili
 
 Aşağıdaki kod iki satırlık Özellikler oluşturur ve her satıra bir özellik olarak bir hız sınırı değeri ekler. Çizgi katmanı, hız sınırı değerine göre satırları renkli bir veri sürücüsü stili ifade kullanır. Veri yolunda satır verilerinde yer paylaşımı olduğundan, aşağıdaki kod etiket katmanının altına çizgi katmanını ekler, böylece yol etiketleri de açıkça okunabilir.
+
+::: zone pivot="programming-language-java-android"
 
 ```java
 //Create a data source and add it to the map.
@@ -106,6 +141,67 @@ LineLayer layer = new LineLayer(source,
 map.layers.add(layer, "labels");
 ```
 
+::: zone-end
+
+::: zone pivot="programming-language-kotlin"
+
+```kotlin
+//Create a data source and add it to the map.
+val source = DataSource()
+map.sources.add(source)
+
+//Create a line feature.
+val feature = Feature.fromGeometry(
+    LineString.fromLngLats(
+        Arrays.asList(
+            Point.fromLngLat(-122.131821, 47.704033),
+            Point.fromLngLat(-122.099919, 47.703678)
+        )
+    )
+)
+
+//Add a property to the feature.
+feature.addNumberProperty("speedLimitMph", 35)
+
+//Add the feature to the data source.
+source.add(feature)
+
+//Create a second line feature.
+val feature2 = Feature.fromGeometry(
+    LineString.fromLngLats(
+        Arrays.asList(
+            Point.fromLngLat(-122.126662, 47.708265),
+            Point.fromLngLat(-122.126877, 47.703980)
+        )
+    )
+)
+
+//Add a property to the second feature.
+feature2.addNumberProperty("speedLimitMph", 15)
+
+//Add the second feature to the data source.
+source.add(feature2)
+
+//Create a line layer and add it to the map.
+val layer = LineLayer(
+    source,
+    strokeColor(
+        interpolate(
+            linear(),
+            get("speedLimitMph"),
+            stop(0, color(Color.GREEN)),
+            stop(30, color(Color.YELLOW)),
+            stop(60, color(Color.RED))
+        )
+    ),
+    strokeWidth(5f)
+)
+
+map.layers.add(layer, "labels")
+```
+
+::: zone-end
+
 Aşağıdaki ekran görüntüsünde, çizgi özelliklerinde bir özelliği temel alan bir veri temelli stil ifadesinden alınan renklerle birlikte bir çizgi katmanındaki iki satırı işleyen Yukarıdaki kod gösterilmektedir.
 
 ![Bir çizgi katmanında işlenen veri sürücüsü biçimlendirilmiş satırlar ile eşleme](media/android-map-add-line-layer/android-line-layer-data-drive-style.png)
@@ -114,9 +210,11 @@ Aşağıdaki ekran görüntüsünde, çizgi özelliklerinde bir özelliği temel
 
 Bir çizgiye tek bir kontur rengi uygulayabilirsiniz. Ayrıca, bir çizgi segmentinden sonraki satır segmentine geçişi göstermek için bir renkler degradeyle bir çizgi doldurabilirsiniz. Örneğin, çizgi degradeleri zaman ve mesafe üzerinde yapılan değişiklikleri veya bağlı bir nesne satırındaki farklı sıcaklıkları temsil etmek için kullanılabilir. Bu özelliği bir satıra uygulamak için veri kaynağında `lineMetrics` seçeneğinin olarak ayarlanmış olması gerekir `true` ve ardından çizgi seçeneğine bir renk gradyanı ifadesi geçirilebilir `strokeColor` . Vuruş gradyanı ifadesi, `lineProgress` hesaplanan satır ölçümlerini ifade eden veri ifadesine başvurmalıdır.
 
+::: zone pivot="programming-language-java-android"
+
 ```java
 //Create a data source and add it to the map.
-source = new DataSource(
+DataSource source = new DataSource(
     //Enable line metrics on the data source. This is needed to enable support for strokeGradient.
     withLineMetrics(true)
 );
@@ -164,6 +262,67 @@ map.layers.add(new LineLayer(source,
 ));
 ```
 
+::: zone-end
+
+::: zone pivot="programming-language-kotlin"
+
+```kotlin
+//Create a data source and add it to the map.
+val source = DataSource(
+    //Enable line metrics on the data source. This is needed to enable support for strokeGradient.
+    withLineMetrics(true)
+)
+map.sources.add(source)
+
+//Create a line and add it to the data source.
+source.add(
+    LineString.fromLngLats(
+        Arrays.asList(
+            Point.fromLngLat(-122.18822, 47.63208),
+            Point.fromLngLat(-122.18204, 47.63196),
+            Point.fromLngLat(-122.17243, 47.62976),
+            Point.fromLngLat(-122.16419, 47.63023),
+            Point.fromLngLat(-122.15852, 47.62942),
+            Point.fromLngLat(-122.15183, 47.62988),
+            Point.fromLngLat(-122.14256, 47.63451),
+            Point.fromLngLat(-122.13483, 47.64041),
+            Point.fromLngLat(-122.13466, 47.64422),
+            Point.fromLngLat(-122.13844, 47.65440),
+            Point.fromLngLat(-122.13277, 47.66515),
+            Point.fromLngLat(-122.12779, 47.66712),
+            Point.fromLngLat(-122.11595, 47.66712),
+            Point.fromLngLat(-122.11063, 47.66735),
+            Point.fromLngLat(-122.10668, 47.67035),
+            Point.fromLngLat(-122.10565, 47.67498)
+        )
+    )
+)
+
+//Create a line layer and pass in a gradient expression for the strokeGradient property.
+map.layers.add(
+    LineLayer(
+        source,
+        strokeWidth(6f),  
+
+        //Pass an interpolate or step expression that represents a gradient.
+        strokeGradient(
+            interpolate(
+                linear(),
+                lineProgress(),
+                stop(0, color(Color.BLUE)),
+                stop(0.1, color(Color.argb(255, 65, 105, 225))),  //Royal Blue
+                stop(0.3, color(Color.CYAN)),
+                stop(0.5, color(Color.argb(255, 0, 255, 0))),  //Lime
+                stop(0.7, color(Color.YELLOW)),
+                stop(1, color(Color.RED))
+            )
+        )
+    )
+)
+```
+
+::: zone-end
+
 Aşağıdaki ekran görüntüsünde, bir gradyan vuruş rengi kullanılarak oluşturulan bir satırı görüntüleyen Yukarıdaki kod gösterilmektedir.
 
 ![Çizgi katmanında gradyan yolu olarak işlenen bir satırla eşleme](media/android-map-add-line-layer/android-line-layer-gradient.jpg)
@@ -172,13 +331,15 @@ Aşağıdaki ekran görüntüsünde, bir gradyan vuruş rengi kullanılarak olu�
 
 Bu örnek, haritada bir çizgi üzerinde ok simgelerinin nasıl ekleneceğini gösterir. Bir sembol katmanını kullanırken `symbolPlacement` seçeneğini olarak ayarlayın `SymbolPlacement.LINE` . Bu seçenek, simgeleri satır üzerinde işler ve simgeleri döndürür (0 derece = sağ).
 
+::: zone pivot="programming-language-java-android"
+
 ```java
 //Create a data source and add it to the map.
 DataSource source = new DataSource();
 map.sources.add(source);
 
 //Load a image of an arrow into the map image sprite and call it "arrow-icon".
-map.images.add("arrow-icon", R.drawable.purple-arrow-right);
+map.images.add("arrow-icon", R.drawable.purple_arrow_right);
 
 //Create and add a line to the data source.
 source.add(LineString.fromLngLats(Arrays.asList(
@@ -228,11 +389,73 @@ map.layers.add(new SymbolLayer(source,
 ));
 ```
 
+::: zone-end
+
+::: zone pivot="programming-language-kotlin"
+
+```kotlin
+//Create a data source and add it to the map.
+val source = DataSource()
+map.sources.add(source)
+
+//Load a image of an arrow into the map image sprite and call it "arrow-icon".
+map.images.add("arrow-icon", R.drawable.purple_arrow_right)
+
+//Create and add a line to the data source.
+//Create and add a line to the data source.
+source.add(
+    LineString.fromLngLats(
+        Arrays.asList(
+            Point.fromLngLat(-122.18822, 47.63208),
+            Point.fromLngLat(-122.18204, 47.63196),
+            Point.fromLngLat(-122.17243, 47.62976),
+            Point.fromLngLat(-122.16419, 47.63023),
+            Point.fromLngLat(-122.15852, 47.62942),
+            Point.fromLngLat(-122.15183, 47.62988),
+            Point.fromLngLat(-122.14256, 47.63451),
+            Point.fromLngLat(-122.13483, 47.64041),
+            Point.fromLngLat(-122.13466, 47.64422),
+            Point.fromLngLat(-122.13844, 47.65440),
+            Point.fromLngLat(-122.13277, 47.66515),
+            Point.fromLngLat(-122.12779, 47.66712),
+            Point.fromLngLat(-122.11595, 47.66712),
+            Point.fromLngLat(-122.11063, 47.66735),
+            Point.fromLngLat(-122.10668, 47.67035),
+            Point.fromLngLat(-122.10565, 47.67498)
+        )
+    )
+)
+
+//Create a line layer and add it to the map.
+map.layers.add(
+    LineLayer(
+        source,
+        strokeColor("DarkOrchid"),
+        strokeWidth(5f)
+    )
+)
+
+//Create a symbol layer and add it to the map.
+map.layers.add(
+    SymbolLayer(
+        source,  //Space symbols out along line.
+        symbolPlacement(SymbolPlacement.LINE),  //Spread the symbols out 100 pixels apart.
+        symbolSpacing(100f),  //Use the arrow icon as the symbol.
+        iconImage("arrow-icon"),  //Allow icons to overlap so that they aren't hidden if they collide with other map elements.
+        iconAllowOverlap(true),  //Center the symbol icon.
+        iconAnchor(AnchorType.CENTER),  //Scale the icon size.
+        iconSize(0.8f)
+    )
+)
+```
+
+::: zone-end
+
 Bu örnekte, aşağıdaki görüntü uygulamanın çizilebilir klasörüne yüklenmiştir.
 
 | ![Mor ok simgesi resmi](media/android-map-add-line-layer/purple-arrow-right.png)|
 |:-----------------------------------------------------------------------:|
-|                                                  |
+|                           `purple_arrow_right.png`                       |
 
 Aşağıdaki ekran görüntüsünde, üzerinde ok simgeleri görüntülenen bir satırı görüntüleyen Yukarıdaki kod gösterilmektedir.
 

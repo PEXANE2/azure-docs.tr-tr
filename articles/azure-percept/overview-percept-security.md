@@ -7,25 +7,25 @@ ms.service: azure-percept
 ms.topic: conceptual
 ms.date: 02/18/2021
 ms.custom: template-concept
-ms.openlocfilehash: b5a345139114842c83cb1f11792076efb1461870
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: a08876cde9fac64c3a361b469049b4e33678a86f
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101664102"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102098154"
 ---
 # <a name="azure-percept-security-overview"></a>Azure Percept güvenliğine genel bakış
 
-Azure Percept DK cihazları, her cihazda yerleşik güvenlik olmak üzere, bir güven donanım köküyle tasarlanmıştır. Kameralar ve mikrofonlar, çıkarım verileri gibi gizlilik açısından duyarlı algılayıcıları korumanıza yardımcı olur ve Azure Percept Studio Hizmetleri için cihaz kimlik doğrulaması ve yetkilendirmesini sağlar.
+Azure Percept DK cihazları, bir güven donanım köküyle tasarlanmıştır: her cihazda ek yerleşik güvenlik. Kameralar ve mikrofonlar, çıkarım verileri gibi gizlilik açısından duyarlı algılayıcıları korumanıza yardımcı olur ve Azure Percept Studio Hizmetleri için cihaz kimlik doğrulaması ve yetkilendirmesini sağlar.
 
 > [!NOTE]
-> Azure Percept DK, geliştirme ve test ortamlarında ve kavram kanıtı senaryolarında kullanılmak üzere tasarlanmıştır.
+> Azure Percept DK yalnızca geliştirme ve test ortamlarında kullanılmak üzere lisanslanır.
 
 ## <a name="devices"></a>Cihazlar
 
 ### <a name="azure-percept-dk"></a>Azure Percept DK
 
-Azure Percept DK, cihazı Azure cihaz sağlama hizmetleri 'ne güvenli bir şekilde bağlamak için kullanılabilecek Güvenilir Platform Modülü (TPM) 2,0 sürümünü içerir. TPM, Trusted Computing Group bir sektör genelinde, ISO standardıdır ve TPM hakkında daha fazla bilgi edinmek için [tam tpm 2,0 belirtiminde](https://trustedcomputinggroup.org/resource/tpm-library-specification/) veya ISO/IEC 11889 belirtiminde daha fazla bilgi edinebilirsiniz. DPS cihazları güvenli bir şekilde nasıl sağlayabildiği hakkında daha fazla bilgi için bkz. [Azure IoT Hub cihaz sağlama hizmeti-TPM kanıtlama](https://docs.microsoft.com/azure/iot-dps/concepts-tpm-attestation).
+Azure Percept DK, cihazı Azure cihaz sağlama hizmetlerine ek güvenlikle bağlamak için kullanılabilecek Güvenilir Platform Modülü (TPM) 2,0 sürümünü içerir. TPM, Trusted Computing Group bir sektör genelinde, ISO standardıdır ve TPM hakkında daha fazla bilgi edinmek için [tam tpm 2,0 belirtiminde](https://trustedcomputinggroup.org/resource/tpm-library-specification/) veya ISO/IEC 11889 belirtiminde daha fazla bilgi edinebilirsiniz. DPS cihazları güvenli bir şekilde nasıl sağlayabildiği hakkında daha fazla bilgi için bkz. [Azure IoT Hub cihaz sağlama hizmeti-TPM kanıtlama](https://docs.microsoft.com/azure/iot-dps/concepts-tpm-attestation).
 
 ### <a name="azure-percept-system-on-module-som"></a>Modül üzerinde Azure Percept System (SOM)
 
@@ -37,11 +37,11 @@ Azure Percept cihazları, bellenimi güvenli hale getirmek için donanım kök g
 
 ### <a name="iot-edge"></a>IoT Edge
 
-Azure Percept DK, Azure Percept Studio 'ya ve Aktarım Katmanı Güvenliği (TLS) protokolü kullanan diğer Azure hizmetlerine güvenli bir şekilde bağlanır. Azure Percept DK, Azure IoT Edge özellikli bir cihazdır. IoT Edge Runtime, bir cihazı IoT Edge cihazına veren bir programlar koleksiyonudur. Toplu olarak, IoT Edge çalışma zamanı bileşenleri, IoT Edge cihazların kenarda çalışacak kodu almasını ve sonuçları iletmelerini sağlar. Azure Percept DK, ana bilgisayar işletim sistemi ve kenar özellikli uygulamalardan IoT Edge iş yüklerini yalıtmak için Docker kapsayıcılarını kullanır. Azure IoT Edge güvenlik çerçevesi hakkında daha fazla bilgi için [IoT Edge Güvenlik Yöneticisi](https://docs.microsoft.com/azure/iot-edge/iot-edge-security-manager?view=iotedge-2018-06)hakkında makalesini okuyun.
+Azure Percept DK, Aktarım Katmanı Güvenliği (TLS) protokolü kullanan ek güvenlik ve diğer Azure hizmetleriyle Azure Percept Studio 'ya bağlanır. Azure Percept DK, Azure IoT Edge özellikli bir cihazdır. IoT Edge Runtime, bir cihazı IoT Edge cihazına veren bir programlar koleksiyonudur. Toplu olarak, IoT Edge çalışma zamanı bileşenleri, IoT Edge cihazların kenarda çalışacak kodu almasını ve sonuçları iletmelerini sağlar. Azure Percept DK, ana bilgisayar işletim sistemi ve kenar özellikli uygulamalardan IoT Edge iş yüklerini yalıtmak için Docker kapsayıcılarını kullanır. Azure IoT Edge güvenlik çerçevesi hakkında daha fazla bilgi için [IoT Edge Güvenlik Yöneticisi](https://docs.microsoft.com/azure/iot-edge/iot-edge-security-manager?view=iotedge-2018-06)hakkında makalesini okuyun.
 
 ### <a name="device-update-for-iot-hub"></a>IoT Hub için cihaz güncelleştirmesi
 
-IoT Hub için cihaz güncelleştirmesi, Azure Percept cihazlarına yenilenebilir güvenlik sağlayan güvenli, ölçeklenebilir ve güvenilir, kablosuz bir güncelleştirme sağlar. Öngörüler aracılığıyla zengin yönetim denetimleri ve güncelleştirme uyumluluğu sağlar. Azure Percept DK, üretici yazılımından işletim sistemi katmanlarına dayanıklı güncelleştirme (A/B) sağlayan önceden tümleştirilmiş bir cihaz güncelleştirme çözümü içerir.
+IoT Hub cihaz güncelleştirmesi, Azure Percept cihazlarına yenilenebilir güvenlik sağlayan, daha güvenli, ölçeklenebilir ve güvenilir, kablosuz bir güncelleştirme sağlar. Öngörüler aracılığıyla zengin yönetim denetimleri ve güncelleştirme uyumluluğu sağlar. Azure Percept DK, üretici yazılımından işletim sistemi katmanlarına dayanıklı güncelleştirme (A/B) sağlayan önceden tümleştirilmiş bir cihaz güncelleştirme çözümü içerir.
 
 <!---I think the below topics need to be somewhere else, (i.e. not on the main page)
 --->
@@ -59,14 +59,17 @@ Bu denetim listesi, güvenlik duvarı kuralları için bir başlangıç noktası
 
 Ayrıca, [Azure IoT Edge tarafından kullanılan bağlantıların](https://docs.microsoft.com/azure/iot-edge/production-checklist?view=iotedge-2018-06#allow-connections-from-iot-edge-devices)listesini gözden geçirin.
 
-## <a name="additional-recommendations-for-deployment-to-production"></a>Üretime dağıtım için ek öneriler
+<!---
+## Additional Recommendations for Deployment to Production
 
-Azure Percept DK, kutudan çıkan çok çeşitli güvenlik özellikleri sunar. Microsoft, geçerli sürüme dahil edilen güçlü güvenlik özelliklerine ek olarak, üretim dağıtımlarını değerlendirirken aşağıdaki yönergeleri de önerir:
+Azure Percept DK offers a great variety of security capabilities out of the box. In addition to those powerful security features included in the current release, Microsoft also suggests the following guidelines when considering production deployments:
 
-- Cihazın kendisinin güçlü fiziksel koruması
-- Rest şifrelemede verilerin etkinleştirildiğinden emin olma
-- Cihaz duruşunu sürekli olarak izleme ve uyarılara hızlı bir şekilde yanıt verme
-- Cihaza erişimi olan yönetici sayısını sınırlandırma
+- Strong physical protection of the device itself
+- Ensuring data at rest encryption is enabled
+- Continuously monitoring the device posture and quickly responding to alerts
+- Limiting the number of administrators who have access to the device
+--->
+
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
