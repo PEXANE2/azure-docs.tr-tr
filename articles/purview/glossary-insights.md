@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 11/20/2020
-ms.openlocfilehash: f61d99a61cb50886d70489b586d948bfa751e196
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: eb1d59ae41b04be60dec90aaee4b2305b6d39ca6
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96576783"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102095859"
 ---
 # <a name="glossary-insights-on-your-data-in-azure-purview"></a>Azure purview 'daki verilerinize ilişkin sözlük öngörüleri
 
@@ -48,25 +48,33 @@ Azure purview ' de, Sözlük terimleri oluşturabilir ve bunları varlıklara ek
 
    :::image type="content" source="./media/glossary-insights/portal-access.png" alt-text="Azure portal Takiview 'ı başlatın":::
 
-1. Takip görünümü **giriş** sayfasında, Öngörüler alanına erişmek için **öngörüleri görüntüle** kutucuğunu seçin **Insights** :::image type="icon" source="media/glossary-insights/ico-insights.png" border="false"::: .
+1. Takip görünümü **giriş** sayfasında, Öngörüler alanına erişmek için **öngörüleri görüntüle** kutucuğunu seçin  :::image type="icon" source="media/glossary-insights/ico-insights.png" border="false"::: .
 
    :::image type="content" source="./media/glossary-insights/view-insights.png" alt-text="Azure portal öngörülerinizi görüntüleyin":::
 
 1. **Öngörüler** :::image type="icon" source="media/glossary-insights/ico-insights.png" border="false"::: alanında **terimler** ' i seçerek purview **Sözlük öngörüleri** raporunu görüntüleyin.
 
-**Sözlük öngörüleri** sayfasında aşağıdaki bölgeler görüntülenir:
-1. Sözlük koşullarını ve Katalog kullanıcılarını göstermek için **üst düzey KPI** 'ler
+**Sözlük öngörüleri** , kuruluşunuz için iyi tanımlanmış bir sözlük sağlamak üzere iş kullanıcısı ve değerli bilgiler sağlar.
 
-2. **En üst Sözlük terimleri ve varlık sayısı** , bunlara eklenen varlıklar ile birlikte 5 sözlük koşullarını gösterir. Diğer tüm varlıklar, grafikteki "diğer" kategorisinde hesaba katılmaz.
+1. Rapor, ***purview hesabınızdaki* _. *._varlıklar olmadan onaylanan_ toplam koşulları, _ *ve _*_kullanım dışı koşulları olan varlıkları_** gösteren **üst düzey KPI** 'ler ile başlar. Bu değerlerin her biri, Sözlüğlerinizin sistem durumunu belirlemenize yardımcı olur.
 
-3. **Terim koşullarına göre** terimler sözlüğü, sözlük koşullarının "taslak", "onaylanan", "uyarı" ve "süresi dolma" gibi durum dağılımını gösterir. 
+   :::image type="content" source="./media/glossary-insights/glossary-kpi.png" alt-text="Sözlük öngörülerini görüntüle KPI"::: 
 
-1. Bir durum ile grafiğin dilimine gelin veya tıklayın ve bu duruma sahip koşulların sayısını unutmayın.
 
-1. **Rollerin kullanıcı sayısına göre dağıtılması** , rollerdeki rol başına kullanıcı sayısına göre rollerin dağılımını gösterir.
+2. **Koşullar bölümünün anlık görüntüsü** (yukarıda görüntülenir), varlıklar ve varlık olmayan hüküm ve koşullarla ilgili şartlar için **_taslak_*_, _*_Onaylandı_*_, _*_Alert_*_ ve _*_süresi dolduğunda_ ,** dönem durumunu gösterir.
 
-   :::image type="content" source="./media/glossary-insights/glossary-insights1.png" alt-text="Sözlük öngörülerini görüntüle":::
+3. Çeşitli durum ve **_Steki_*_ ve _*_uzmanlar_** hakkında daha fazla ayrıntı içeren terim adlarını görmek için **daha fazla görüntüle** ' ye tıklayın. 
+
+   :::image type="content" source="./media/glossary-insights/glossary-view-more.png" alt-text="Varlıklar ile ve olmayan terimlerin anlık görüntüsü":::  
+
+4. "Daha fazla bilgi" ' ye tıkladığınızda, "**varlıklar Ile onaylanan koşullar**" için "daha fazla bilgi" ye tıkladığınızda, içgörüler, ekli koşullara sahip varlıklar listesine daha fazla gidebileceğiniz _ *Sözlük** terim ayrıntısı sayfasına gitmenizi sağlar. 
+
+   :::image type="content" source="./media/glossary-insights/navigate-to-glossary-detail.png" alt-text="Sözlükte Öngörüler"::: 
+
+4. Sözlük öngörüleri sayfasında, eksik **koşulların** bir dağıtımını eksik bilgi türüne göre görüntüleyin. Grafik, eksik **_tanım_*_, _*_eksik uzman_*_, _* eksik _Steward_*_ ve _* içinde _birden fazla alanı eksik_** olan terimlerin sayısını gösterir.
+
+1. Eksik bilgileri olan terimleri görüntülemek için, ***View more** _ from _ * eksik terimler * * öğesine tıklayın. Eksik bilgileri girmek ve sözlük teriminin tamamlandığından emin olmak için, sözlük terimi ayrıntı sayfasına gidebilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Varlık öngörüleri](./asset-insights.md) aracılığıyla Azure purview Insight Reports hakkında daha fazla bilgi edinin
+[Sözlük aracılığıyla sözlük](./how-to-create-import-export-glossary.md) terimi oluşturma hakkında daha fazla bilgi edinin

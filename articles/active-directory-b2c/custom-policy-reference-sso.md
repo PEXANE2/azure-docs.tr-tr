@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 12/07/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 453042766c427b05ec1ee1090a0702f64065542d
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: f690f4a416e86b02de0d35fc673849c1293df577
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97508059"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102095774"
 ---
 # <a name="single-sign-on-session-management-in-azure-active-directory-b2c"></a>Azure Active Directory B2C 'da çoklu oturum açma oturumu yönetimi
 
@@ -28,7 +28,7 @@ Azure AD B2C, kullanılabilecek birkaç SSO oturum sağlayıcısı tanımladı:
 
 |Oturum sağlayıcısı  |Kapsam  |
 |---------|---------|
-|[NoopSSOSessionProvider](#noopssosessionprovider)     |  Hiçbiri       |       
+|[NoopSSOSessionProvider](#noopssosessionprovider)     |  Yok       |       
 |[DefaultSSOSessionProvider](#defaultssosessionprovider)    | Azure AD B2C iç oturum Yöneticisi.      |       
 |[ExternalLoginSSOSessionProvider](#externalloginssosessionprovider)     | Azure AD B2C ile OAuth1, OAuth2 veya OpenID Connect kimlik sağlayıcısı arasında.        |         |
 |[OAuthSSOSessionProvider](#oauthssosessionprovider)     | Bir OAuth2 veya OpenID Connect bağlı olan taraf uygulaması ve Azure AD B2C.        |        
@@ -116,7 +116,7 @@ Bu sağlayıcı, "kimlik sağlayıcısı Seç" ekranını bastırmak ve bir Fede
 </TechnicalProfile>
 ```
 
-#### <a name="metadata"></a>Meta Veriler
+#### <a name="metadata"></a>Meta veri
 
 | Öznitelik | Gerekli | Açıklama|
 | --- | --- | --- |
@@ -135,7 +135,7 @@ Bu sağlayıcı, OAuth2 veya OpenID Connect bağlı olan taraf ve Azure AD B2C a
 
 ### <a name="samlssosessionprovider"></a>SamlSSOSessionProvider
 
-Bu sağlayıcı, bağlı olan taraf uygulaması veya Federe SAML kimlik sağlayıcısı arasında Azure AD B2C SAML oturumlarını yönetmek için kullanılır. SAML kimlik sağlayıcısı oturumunu depolamak için SSO sağlayıcısını kullanırken, `RegisterServiceProviders` olarak ayarlanması gerekir `false` . Aşağıdaki `SM-Saml-idp` Teknik profil [SAML kimlik sağlayıcısı teknik profili](saml-identity-provider-technical-profile.md)tarafından kullanılır.
+Bu sağlayıcı, bağlı olan taraf uygulaması veya Federe SAML kimlik sağlayıcısı arasında Azure AD B2C SAML oturumlarını yönetmek için kullanılır. SAML kimlik sağlayıcısı oturumunu depolamak için SSO sağlayıcısını kullanırken, `RegisterServiceProviders` olarak ayarlanması gerekir `false` . Aşağıdaki `SM-Saml-idp` Teknik profil [SAML kimlik sağlayıcısı](identity-provider-generic-saml.md)tarafından kullanılır.
 
 ```xml
 <TechnicalProfile Id="SM-Saml-idp">
@@ -149,7 +149,7 @@ Bu sağlayıcı, bağlı olan taraf uygulaması veya Federe SAML kimlik sağlay�
 
 B2C SAML oturumunu depolamak için sağlayıcıyı kullanırken, `RegisterServiceProviders` olarak ayarlanmalıdır `true` . SAML oturumu kapatma için `SessionIndex` ve `NameID` işleminin tamamlanmasını gerekir.
 
-Aşağıdaki `SM-Saml-issuer` Teknik profil, [SAML verenin teknik profili](saml-issuer-technical-profile.md) tarafından kullanılır
+Aşağıdaki `SM-Saml-issuer` Teknik profil, [SAML verenin teknik profili](saml-service-provider.md) tarafından kullanılır
 
 ```xml
 <TechnicalProfile Id="SM-Saml-issuer">
@@ -158,7 +158,7 @@ Aşağıdaki `SM-Saml-issuer` Teknik profil, [SAML verenin teknik profili](saml-
 </TechnicalProfile>
 ```
 
-#### <a name="metadata"></a>Meta Veriler
+#### <a name="metadata"></a>Meta veri
 
 | Öznitelik | Gerekli | Açıklama|
 | --- | --- | --- |

@@ -12,12 +12,12 @@ ms.date: 05/19/2020
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 18a3216855516156792524dc577ecef725d3119d
-ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
+ms.openlocfilehash: 76dcb9aec935dd4ea4f57a1362953d9741d8eaf0
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/31/2021
-ms.locfileid: "99218783"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102095808"
 ---
 # <a name="developer-notes-for-custom-policies-in-azure-active-directory-b2c"></a>Azure Active Directory B2C özel ilkeler için geliştirici notları
 
@@ -63,31 +63,31 @@ El ile ilke yapılandırması, Azure AD B2C temel alınan platforma alt düzey e
 
 ### <a name="protocols-and-authorization-flows"></a>Protokoller ve yetkilendirme akışları
 
-| Öne çıkan özelliği | Geliştirme | Önizleme | GA | Notlar |
+| Özellik | Geliştirme | Önizleme | GA | Notlar |
 |-------- | :-----------: | :-------: | :--: | ----- |
 | [OAuth2 yetkilendirme kodu](authorization-code-flow.md) |  |  | X |  |
 | OAuth2 yetkilendirme kodu, PKI CE |  |  | X | [Ortak istemciler ve tek sayfalı uygulamalar](authorization-code-flow.md)  |
 | [OAuth2 örtük akış](implicit-flow-single-page-application.md) |  |  | X |  |
 | [OAuth2 kaynak sahibi parolası kimlik bilgileri](ropc-custom.md) |  | X |  |  |
 | [OıDC Connect](openid-connect.md) |  |  | X |  |
-| [SAML2](connect-with-saml-service-providers.md)  |  |  |X  | Bağlamaları GÖNDERIN ve yeniden yönlendirin. |
+| [SAML2](saml-service-provider.md)  |  |  |X  | Bağlamaları GÖNDERIN ve yeniden yönlendirin. |
 | OAuth1 |  |  |  | Desteklenmez. |
 | Wsbes | X |  |  |  |
 
 ### <a name="identify-providers-federation"></a>Sağlayıcıları federasyonunu tanımla 
 
-| Öne çıkan özelliği | Geliştirme | Önizleme | GA | Notlar |
+| Özellik | Geliştirme | Önizleme | GA | Notlar |
 |-------- | :-----------: | :-------: | :--: | ----- |
 | [OpenID Connect](openid-connect-technical-profile.md) |  |  | X | Örneğin, Google +.  |
 | [OAuth2](oauth2-technical-profile.md) |  |  | X | Örneğin, Facebook.  |
 | [OAuth1](oauth1-technical-profile.md) |  | X |  | Örneğin, Twitter. |
-| [SAML2](saml-identity-provider-technical-profile.md) |  |   | X | Örneğin, Salesforce, ADFS. |
+| [SAML2](identity-provider-generic-saml.md) |  |   | X | Örneğin, Salesforce, ADFS. |
 | Wsbes| X |  |  |  |
 
 
 ### <a name="rest-api-integration"></a>REST API tümleştirme
 
-| Öne çıkan özelliği | Geliştirme | Önizleme | GA | Notlar |
+| Özellik | Geliştirme | Önizleme | GA | Notlar |
 |-------- | :-----------: | :-------: | :--: | ----- |
 | [Temel kimlik doğrulaması ile REST API](secure-rest-api.md#http-basic-authentication) |  |  | X |  |
 | [İstemci sertifikası kimlik doğrulaması ile REST API](secure-rest-api.md#https-client-certificate-authentication) |  |  | X |  |
@@ -95,7 +95,7 @@ El ile ilke yapılandırması, Azure AD B2C temel alınan platforma alt düzey e
 
 ### <a name="component-support"></a>Bileşen desteği
 
-| Öne çıkan özelliği | Geliştirme | Önizleme | GA | Notlar |
+| Özellik | Geliştirme | Önizleme | GA | Notlar |
 | ------- | :-----------: | :-------: | :--: | ----- |
 | [Telefon faktörü kimlik doğrulaması](phone-factor-technical-profile.md) |  |  | X |  |
 | [Azure AD MFA kimlik doğrulaması](multi-factor-auth-technical-profile.md) |  | X |  |  |
@@ -110,7 +110,7 @@ El ile ilke yapılandırması, Azure AD B2C temel alınan platforma alt düzey e
 
 ### <a name="app-ief-integration"></a>App-ıEF tümleştirmesi
 
-| Öne çıkan özelliği | Geliştirme | Önizleme | GA | Notlar |
+| Özellik | Geliştirme | Önizleme | GA | Notlar |
 | ------- | :-----------: | :-------: | :--: | ----- |
 | Sorgu dizesi parametresi `domain_hint` |  |  | X | Talep olarak kullanılabilir, ıDP 'ye geçirilebilir. |
 | Sorgu dizesi parametresi `login_hint` |  |  | X | Talep olarak kullanılabilir, ıDP 'ye geçirilebilir. |
@@ -121,7 +121,7 @@ El ile ilke yapılandırması, Azure AD B2C temel alınan platforma alt düzey e
 
 ### <a name="session-management"></a>Oturum yönetimi
 
-| Öne çıkan özelliği | Geliştirme | Önizleme | GA | Notlar |
+| Özellik | Geliştirme | Önizleme | GA | Notlar |
 | ------- | :-----------: | :-------: | :--: | ----- |
 | [Varsayılan SSO oturum sağlayıcısı](custom-policy-reference-sso.md#defaultssosessionprovider) |  |  | X |  |
 | [Dış oturum açma oturumu sağlayıcısı](custom-policy-reference-sso.md#externalloginssosessionprovider) |  |  | X |  |
@@ -131,7 +131,7 @@ El ile ilke yapılandırması, Azure AD B2C temel alınan platforma alt düzey e
 
 ### <a name="security"></a>Güvenlik
 
-| Öne çıkan özelliği | Geliştirme | Önizleme | GA | Notlar |
+| Özellik | Geliştirme | Önizleme | GA | Notlar |
 |-------- | :-----------: | :-------: | :--: | ----- |
 | İlke anahtarları-oluştur, El Ile, karşıya yükle |  |  | X |  |
 | İlke anahtarları-RSA/CERT, gizlilikler |  |  | X |  |
@@ -139,7 +139,7 @@ El ile ilke yapılandırması, Azure AD B2C temel alınan platforma alt düzey e
 
 ### <a name="developer-interface"></a>Geliştirici arabirimi
 
-| Öne çıkan özelliği | Geliştirme | Önizleme | GA | Notlar |
+| Özellik | Geliştirme | Önizleme | GA | Notlar |
 | ------- | :-----------: | :-------: | :--: | ----- |
 | Azure portalı-ıEF UX |  |  | X |  |
 | İlke karşıya yükleme |  |  | X |  |

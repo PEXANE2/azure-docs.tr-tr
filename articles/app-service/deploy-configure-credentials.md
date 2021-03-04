@@ -5,17 +5,20 @@ ms.topic: article
 ms.date: 02/11/2021
 ms.reviewer: byvinyal
 ms.custom: seodec18
-ms.openlocfilehash: 2a53ecb1b3411561da50f7dbf3be79f9d70b42bc
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
+ms.openlocfilehash: c7d3c7c8b5da40a4e9ccd9085af5a850b9ebc3dd
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100560428"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102052356"
 ---
 # <a name="configure-deployment-credentials-for-azure-app-service"></a>Azure App Service için dağıtım kimlik bilgilerini yapılandırma
 Yerel bir bilgisayardan uygulama dağıtımını güvenli hale getirmek için [Azure App Service](./overview.md) , [Yerel git dağıtımı](deploy-local-git.md) ve [FTP/S dağıtımı](deploy-ftp.md)için iki tür kimlik bilgilerini destekler. Bu kimlik bilgileri, Azure aboneliğiniz kimlik bilgilerinizle aynı değildir.
 
 [!INCLUDE [app-service-deploy-credentials](../../includes/app-service-deploy-credentials.md)]
+
+> [!NOTE]
+> Eski dağıtım deneyimi olan Azure portal **Geliştirme Merkezi (klasik)** sayfası mart, 2021 ' de kullanım dışı olacaktır. Bu değişiklik uygulamanızdaki mevcut dağıtım ayarlarını etkilemez ve **Dağıtım Merkezi** sayfasında uygulama dağıtımını yönetmeye devam edebilirsiniz.
 
 ## <a name="configure-user-scope-credentials"></a><a name="userscope"></a>Kullanıcı kapsamı kimlik bilgilerini yapılandırma
 
@@ -71,13 +74,13 @@ Kullanıcı kapsamı kimlik bilgileri, belirli bir kaynak değil kullanıcıya b
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/cli)
 
-[Az WebApp Deployment List-Publishing-Profiles](/cli/azure/webapp/deployment#az_webapp_deployment_list_publishing_profiles) komutunu kullanarak uygulama kapsamı kimlik bilgilerini alın. Örneğin:
+[Az WebApp Deployment List-Publishing-Profiles](/cli/azure/webapp/deployment#az_webapp_deployment_list_publishing_profiles) komutunu kullanarak uygulama kapsamı kimlik bilgilerini alın. Örnek:
 
 ```azurecli-interactive
 az webapp deployment list-publishing-profiles --resource-group <group-name> --name <app-name>
 ```
 
-[Yerel git dağıtımı](deploy-local-git.md)için, uygulamanız Için bir GIT uzak URI 'sini zaten katıştırılmış uygulama kapsamı kimlik bilgileri ile almak için [az WebApp Deployment List-Publishing-Credentials](/cli/azure/webapp/deployment#az_webapp_deployment_list_publishing_credentials) komutunu da kullanabilirsiniz. Örneğin:
+[Yerel git dağıtımı](deploy-local-git.md)için, uygulamanız Için bir GIT uzak URI 'sini zaten katıştırılmış uygulama kapsamı kimlik bilgileri ile almak için [az WebApp Deployment List-Publishing-Credentials](/cli/azure/webapp/deployment#az_webapp_deployment_list_publishing_credentials) komutunu da kullanabilirsiniz. Örnek:
 
 ```azurecli-interactive
 az webapp deployment list-publishing-credentials --resource-group <group-name> --name <app-name> --query scmUri
@@ -85,7 +88,7 @@ az webapp deployment list-publishing-credentials --resource-group <group-name> -
 
 # <a name="azure-powershell"></a>[Azure PowerShell](#tab/powershell)
 
-[Get-AzWebAppPublishingProfile](/powershell/module/az.websites/get-azwebapppublishingprofile) komutunu kullanarak uygulama kapsamı kimlik bilgilerini alın. Örneğin:
+[Get-AzWebAppPublishingProfile](/powershell/module/az.websites/get-azwebapppublishingprofile) komutunu kullanarak uygulama kapsamı kimlik bilgilerini alın. Örnek:
 
 ```azurepowershell-interactive
 Get-AzWebAppPublishingProfile -ResourceGroupName <group-name> -Name <app-name>

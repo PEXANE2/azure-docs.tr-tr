@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 10/28/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 682b83d7016a89b27b5c936853abda1438f59c28
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: e4e90d91b8e6ae017f00e37304c4da56cd618732
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97508025"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102095315"
 ---
 # <a name="about-claim-resolvers-in-azure-active-directory-b2c-custom-policies"></a>Azure Active Directory B2C özel ilkelerde talep çözücüler hakkında
 
@@ -87,6 +87,7 @@ Aşağıdaki bölümlerde, kullanılabilir talep çözücüler listelenmektedir.
 | {Context: CorrelationId} | Bağıntı KIMLIĞI.  | 00000000-0000-0000-0000-000000000000 |
 | {Context: Datetimeınutc} |UTC olarak tarih saat.  | 10/10/2018 12:00:00 PM |
 | {Context: DeploymentMode} |İlke dağıtım modu.  | Üretim |
+| {Context: HostName} | Geçerli istek için ana bilgisayar adı.  | contoso.b2clogin.com |
 | {Context: IPAddress} | Kullanıcı IP adresi. | 11.111.111.11 |
 | {Context: KMSI} | Oturumumu [açık tut](session-behavior.md?pivots=b2c-custom-policy#enable-keep-me-signed-in-kmsi) onay kutusunun seçili olup olmadığını gösterir. |  true |
 
@@ -141,7 +142,7 @@ Talep çözümleyicilerine aşağıdaki öğelerle birlikte kullanabilirsiniz:
 |[OpenID Connect](openid-connect-technical-profile.md) teknik profili| `InputClaim`, `OutputClaim`| 1, 2|
 |[Talep dönüştürme](claims-transformation-technical-profile.md) teknik profili| `InputClaim`, `OutputClaim`| 1, 2|
 |[Restsize sağlayıcı](restful-technical-profile.md) teknik profili| `InputClaim`| 1, 2|
-|[SAML kimlik sağlayıcısı](saml-identity-provider-technical-profile.md)  teknik profili| `OutputClaim`| 1, 2|
+|[SAML kimlik sağlayıcısı](identity-provider-generic-saml.md)  teknik profili| `OutputClaim`| 1, 2|
 |[Kendi kendine onaylanan](self-asserted-technical-profile.md) teknik profil| `InputClaim`, `OutputClaim`| 1, 2|
 |[ContentDefinition](contentdefinitions.md)| `LoadUri`| |
 |[ContentDefinitionParameters](relyingparty.md#contentdefinitionparameters)| `Parameter` | |

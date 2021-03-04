@@ -12,12 +12,12 @@ ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 85d00b393ad169764a2f26e324295308ef49d3ba
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: e0516c25a69f22f5e66dd3ed083805cd4a9f1a61
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101646590"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102096148"
 ---
 # <a name="configure-session-behavior-in-azure-active-directory-b2c"></a>Azure Active Directory B2C'de oturum davranışını yapılandırma
 
@@ -251,7 +251,7 @@ Bir oturum kapatma isteği sonrasında Azure AD B2C:
 3. Federal Kimlik sağlayıcılarından oturum açmaya çalışır:
    - OpenID Connect-kimlik sağlayıcısı iyi bilinen yapılandırma uç noktası bir `end_session_endpoint` konum belirtiyorsa.
    - OAuth2- [kimlik sağlayıcısı meta verileri](oauth2-technical-profile.md#metadata) `end_session_endpoint` konumu içeriyorsa.
-   - SAML- [kimlik sağlayıcısı meta verileri](saml-identity-provider-technical-profile.md#metadata) `SingleLogoutService` konumu içeriyorsa.
+   - SAML- [kimlik sağlayıcısı meta verileri](identity-provider-generic-saml.md) `SingleLogoutService` konumu içeriyorsa.
 4. İsteğe bağlı olarak, diğer uygulamalardan oturum kapatır. Daha fazla bilgi için bkz. [Çoklu oturum kapatma](#single-sign-out) bölümü.
 
 > [!NOTE]

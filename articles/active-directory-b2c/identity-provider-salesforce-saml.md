@@ -13,12 +13,12 @@ ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 9dce61817bdd6b42223028a624cd6e237be28bfe
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.openlocfilehash: cfdd96ffa9e7758fc594f7e7ae53c84495b8b2e8
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98953827"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102095417"
 ---
 # <a name="set-up-sign-in-with-a-salesforce-saml-provider-by-using-saml-protocol-in-azure-active-directory-b2c"></a>Azure Active Directory B2C 'de SAML protokolünü kullanarak bir Salesforce SAML sağlayıcısı ile oturum açma ayarlama
 
@@ -33,7 +33,7 @@ ms.locfileid: "98953827"
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Bu makalede, Azure Active Directory B2C (Azure AD B2C) ' de [özel ilkeler](custom-policy-overview.md) kullanılarak Salesforce kuruluştan kullanıcıların oturum açma özelliğini nasıl etkinleştireceğinizi gösterilmektedir. Bir [SAML kimlik sağlayıcısı teknik profilini](saml-identity-provider-technical-profile.md) özel ilkeye ekleyerek oturum açmayı etkinleştirebilirsiniz.
+Bu makalede, Azure Active Directory B2C (Azure AD B2C) ' de [özel ilkeler](custom-policy-overview.md) kullanılarak Salesforce kuruluştan kullanıcıların oturum açma özelliğini nasıl etkinleştireceğinizi gösterilmektedir. Özel ilkeye bir [SAML kimlik sağlayıcısı](identity-provider-generic-saml.md) ekleyerek oturum açmayı etkinleştirebilirsiniz.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -100,7 +100,7 @@ Azure AD B2C kiracınızda oluşturduğunuz sertifikayı depolamanız gerekir.
 
 Kullanıcıların bir Salesforce hesabı kullanarak oturum açmasını istiyorsanız, hesabı Azure AD B2C bir uç nokta aracılığıyla iletişim kurabildiği bir talep sağlayıcı olarak tanımlamanız gerekir. Uç noktası, belirli bir kullanıcının kimliği doğrulandığını doğrulamak için Azure AD B2C tarafından kullanılan bir talep kümesi sağlar.
 
-Bir Salesforce hesabını, ilkenizin uzantı dosyasındaki **Claimsproviders** öğesine ekleyerek bir talep sağlayıcı olarak tanımlayabilirsiniz. Daha fazla bilgi için bkz. [SAML kimlik sağlayıcısı teknik profili tanımlama](saml-identity-provider-technical-profile.md).
+Bir Salesforce hesabını, ilkenizin uzantı dosyasındaki **Claimsproviders** öğesine ekleyerek bir talep sağlayıcı olarak tanımlayabilirsiniz. Daha fazla bilgi için bkz. [SAML kimlik sağlayıcısı tanımlama](identity-provider-generic-saml.md).
 
 1. *TrustFrameworkExtensions.xml* açın.
 1. **Claimsproviders** öğesini bulun. Yoksa, kök öğenin altına ekleyin.

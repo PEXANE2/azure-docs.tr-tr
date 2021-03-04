@@ -1,22 +1,22 @@
 ---
 title: Azure Percept DK 'nin RTSP video akışını görüntüleyin
-description: Azure Percept DK 'nin Vision SoM 'dan RTSP video akışını görüntülemeyi öğrenin
+description: Azure Percept DK 'den RTSP video akışını görüntülemeyi öğrenin
 author: elqu20
 ms.author: v-elqu
 ms.service: azure-percept
 ms.topic: how-to
 ms.date: 02/12/2021
 ms.custom: template-how-to
-ms.openlocfilehash: 20fb8495e17d4294351a50c3bc97436de9f03450
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 5f77e99dc5c34867fef2b0ac47c709824fa4477d
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101663845"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102096012"
 ---
 # <a name="view-your-azure-percept-dks-rtsp-video-stream"></a>Azure Percept DK 'nin RTSP video akışını görüntüleyin
 
-Azure Percept Studio içindeki Azure Percept DK 'nin Vision SoM 'dan alınan RTSP video akışını görüntülemek için bu kılavuzu izleyin. Cihazınıza dağıtılan Vision AI modellerinden ınırm, webstream 'de görüntülenebilir.
+Azure Percept Studio içindeki Azure Percept DK 'den RTSP video akışını görüntülemek için bu kılavuzu izleyin. Cihazınıza dağıtılan Vision AI modellerinden ikinci dereceden, Web akışında görünecektir.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -36,15 +36,15 @@ Azure Percept Studio içindeki Azure Percept DK 'nin Vision SoM 'dan alınan RTS
 
 1. Listeden devkit ' i seçin.
 
-    :::image type="content" source="./media/how-to-view-video-stream/select-device.png" alt-text="Azure Percept Studio 'ya genel bakış ekranı.":::
+    :::image type="content" source="./media/how-to-view-video-stream/select-device.png" alt-text="Azure Percept Studio 'daki kullanılabilir cihazların ekran görüntüsü.":::
 
 1. **Cihaz akışınızı görüntüle**' ye tıklayın.
 
-    :::image type="content" source="./media/how-to-view-video-stream/view-device-stream.png" alt-text="Azure Percept Studio 'ya genel bakış ekranı.":::
+    :::image type="content" source="./media/how-to-view-video-stream/view-device-stream.png" alt-text="Kullanılabilir Vizyon Projesi eylemlerini gösteren cihaz sayfasının ekran görüntüsü.":::
 
-    Bu, Azure Percept DK 'nin Vision SoM 'ınızdan Canlı Web akışını gösteren ayrı bir sekme açar.
+    Bu, Azure Percept DK 'nizden Canlı Web akışını gösteren ayrı bir sekme açar.
 
-    :::image type="content" source="./media/how-to-view-video-stream/webstream.png" alt-text="Azure Percept Studio 'ya genel bakış ekranı.":::
+    :::image type="content" source="./media/how-to-view-video-stream/webstream.png" alt-text="Cihaz Web akışının ekran görüntüsü.":::
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

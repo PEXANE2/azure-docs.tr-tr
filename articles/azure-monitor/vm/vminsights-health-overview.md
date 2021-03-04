@@ -1,17 +1,16 @@
 ---
 title: VM öngörüleri Konuk durumu (Önizleme)
 description: Sanal makinelerinizin durumunu nasıl görüntüleyekullanabileceğinizi ve bir sanal makine sağlıksız hale geldiğinde uyarılar alabilmeniz dahil olmak üzere VM öngörülerinin sistem durumu özelliğine genel bakış.
-ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/27/2020
-ms.openlocfilehash: 3db6c2f4da28bba2d12aacc90b2fa8e420aa6fbf
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 2922ca4068531c45e6acad0ce54aa96624c6238e
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101707464"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102052135"
 ---
 # <a name="vm-insights-guest-health-preview"></a>VM öngörüleri Konuk durumu (Önizleme)
 VM öngörüleri Konuk durumu, Konuk işletim sisteminden düzenli aralıklarla örneklendiği performans ölçümlerinin bir kümesini temel alarak sanal makinelerin sistem durumunu görüntülemenizi sağlar. Bir abonelik veya kaynak grubundaki tüm sanal makinelerin sistem durumunu hızlı bir şekilde denetleyebilir, belirli bir sanal makinenin ayrıntılı durumunu ayrıntılandırıp bir sanal makine sağlıksız hale geldiğinde önceden bildirimde bulunabilir. 

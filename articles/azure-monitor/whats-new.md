@@ -1,17 +1,16 @@
 ---
 title: Azure Izleyici belgelerindeki yenilikler
 description: Her ay Azure Izleyici belgelerinin önemli güncelleştirmeleri güncelleştirildi.
-ms.subservice: ''
 ms.topic: overview
 author: bwren
 ms.author: bwren
 ms.date: 02/10/2021
-ms.openlocfilehash: b21e5ea8e25844e3e025915b0b9f15162c642f25
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: dd6c44587ce3f4e2b5de940ef831a20a4079c4ef
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101713448"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102051931"
 ---
 # <a name="whats-new-in-azure-monitor-documentation"></a>Azure Izleyici belgelerindeki yenilikler nelerdir?
 
@@ -48,7 +47,7 @@ Bu makalede, yeni veya önemli ölçüde güncelleştirilmiş Azure Izleyici mak
 
 ### <a name="logs"></a>Günlükler    
 - [Azure izleyici müşteri tarafından yönetilen anahtar](./logs/customer-managed-keys.md) -Kullanıcı tarafından atanan yönetilen kimliği tanıtın.
-- [Azure izleyici, ayrılmış kümeleri günlüğe kaydeder](./logs/logs-dedicated-clusters.md) -yanıt kodu güncelleştirildi.
+- [Azure izleyici, ayrılmış kümeleri günlüğe kaydeder](./logs/logs-dedicated-clusters.md) -güncelleştirilmiş yanıt kodu.
 - [Çapraz hizmet sorgusu-Azure izleyici ve azure Veri Gezgini (Önizleme)](/azure/azure-monitor/platform/azure-data-explorer-monitor-cross-service-query) -yeni makale.
 
 ### <a name="metrics"></a>Ölçümler
@@ -721,7 +720,7 @@ Tanılama uzantısı içeriğinin yeniden yazma parçası olarak birden çok gü
 
 - Her bir aracının benzersiz özelliklerini daha iyi netleştirmek için [Azure izleme aracıları](agents/agents-overview.md) -yeniden yapılandırılmış tablolara genel bakış.
 - [Azure tanılama uzantıya genel bakış](agents/diagnostics-extension-overview.md) -yeniden yazmayı doldurun.
-- [Azure izleyici 'de olaylar IÇIN IIS ve tablo depolaması için BLOB depolama kullanın](essentials/diagnostics-extension-logs.md) -güncelleştirme ve açıklık için genel yeniden yazma.
+- [Azure izleyici 'de olaylar IÇIN IIS ve tablo depolaması için BLOB depolama kullanın](agents/diagnostics-extension-logs.md) -güncelleştirme ve açıklık için genel yeniden yazma.
 - [Windows Azure tanılama uzantısı 'nı (WAD) yükleyip yapılandırın](agents/diagnostics-extension-windows-install.md) -yeni makale. 
 - [Windows Tanılama uzantısı şeması](agents/diagnostics-extension-schema-windows.md) -yeniden düzenlendi.
 - [Windows Azure tanılama uzantısı 'Ndan azure Event Hubs 'a veri gönderin](agents/diagnostics-extension-stream-event-hubs.md) -tamamen yeniden yazıldı ve güncelleştirilir.

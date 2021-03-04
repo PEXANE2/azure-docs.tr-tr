@@ -9,12 +9,12 @@ ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 11/09/2020
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 18b70d60ade7cd40f7ed51aa7c219c8c046abfc3
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
+ms.openlocfilehash: 1c2b608107beff2a4f34325f8a6e5be3a0551053
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99584753"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102051914"
 ---
 # <a name="get-an-answer-with-the-generateanswer-api-and-metadata"></a>GenerateAnswer API ve meta verileri ile bir yanıt alın
 
@@ -272,6 +272,44 @@ Varsayılan olarak, Soru-Cevap Oluşturma sorular ve yanıtlar arasında arama y
   "RankerType":"QuestionOnly"
 }
 ```
+
+## <a name="return-precise-answers"></a>Kesin yanıtlar döndürün
+
+### <a name="generate-answer-api"></a>Yanıt API 'SI oluştur 
+
+Kullanıcı Soru-Cevap Oluşturma yönetilen kaynağı kullanırken [kesin yanıtları](../reference-precise-answering.md) etkinleştirebilir. AnswerSpanRequest parametresi aynı şekilde güncellenmelidir.
+
+```json
+{
+    "question": "How long it takes to charge surface pro 4?",
+    "top": 3,
+    "answerSpanRequest": {
+        "enable": true,
+        "topAnswersWithSpan": 1
+    }
+}
+```
+
+Benzer şekilde, kullanıcılar answerSpanRequest parametresini ayarlamayana kesin yanıtları devre dışı bırakmayı tercih edebilir.
+
+```json
+{
+    "question": "How long it takes to charge surface pro 4?",
+    "top": 3
+}
+```
+### <a name="bot-settings"></a>Bot ayarları
+
+Bot hizmetiniz için kesin yanıt ayarlarını yapılandırmak istiyorsanız, bot için App Service kaynağına gidin. Ardından, aşağıdaki ayarı ekleyerek konfigürasyonları güncelleştirmeniz gerekir.
+
+- Enableıiseanswer
+- DisplayPreciseAnswerOnly
+
+|Ekran yapılandırması|Enableıiseanswer|DisplayPreciseAnswerOnly|
+|:--|--|--|
+|Yalnızca kesin yanıtlar|true|true|
+|Yalnızca uzun yanıtlar|yanlış|yanlış|
+|Hem uzun hem de kesin yanıtlar|true|yanlış|
 
 ## <a name="common-http-errors"></a>Ortak HTTP hataları
 

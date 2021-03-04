@@ -101,9 +101,14 @@
           href: tutorial-register-applications.md
         - name: Tek sayfalı uygulama (SPA) kaydetme
           href: tutorial-register-spa.md
-        - name: SAML hizmet sağlayıcısını kaydetme
-          href: connect-with-saml-service-providers.md
-          displayName: 'SP, RP, service provider, connect'
+        - name: SAML uygulaması
+          items:
+            - name: SAML uygulaması yapılandırma
+              href: saml-service-provider.md
+              displayName: 'SP, service provider'
+            - name: SAML uygulama seçeneklerini yapılandırma
+              href: saml-service-provider-options.md
+              displayName: 'SP, service provider'
         - name: Microsoft Graph uygulaması kaydetme
           href: microsoft-graph-get-started.md
           displayName: 'migrate, migration, microsoft graph'
@@ -160,8 +165,14 @@
           href: identity-provider-azure-ad-b2c.md
         - name: Facebook
           href: identity-provider-facebook.md
-        - name: Genel kimlik sağlayıcısı
+        - name: Genel OpenID Connect
           href: identity-provider-generic-openid-connect.md
+        - name: Genel SAML kimlik sağlayıcısı
+          items:
+            - name: SAML kimlik sağlayıcısı yapılandırma
+              href: identity-provider-generic-saml.md
+            - name: SAML kimlik sağlayıcısı seçeneklerini yapılandırma
+              href: identity-provider-generic-saml-options.md
         - name: GitHub
           href: identity-provider-github.md
         - name: Google

@@ -7,12 +7,12 @@ ms.service: azure-percept
 ms.topic: how-to
 ms.date: 02/17/2021
 ms.custom: template-how-to
-ms.openlocfilehash: b03cd8bc71f87e3ce7984a55d330bc116614f928
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 07abbc5f5e85c75b73774d11b6b81dd2085735b7
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101663933"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102095332"
 ---
 # <a name="view-your-azure-percept-dks-model-inference-telemetry"></a>Azure Percept DK 'nin model çıkarım telemetrinizi görüntüleme
 
@@ -35,7 +35,7 @@ Azure [IoT Explorer](https://github.com/Azure/azure-iot-explorer/releases)'Da Az
 
 1. IoT Hub Azure IoT Gezgini 'ne bağlayın:
 
-    1. [Azure Portal](https://portal.azure.com/?feature.canmodifystamps=true&Microsoft_Azure_Iothub=aduprod&microsoft_azure_marketplace_ItemHideKey=Microsoft_Azure_ADUHidden#home) gidin.
+    1. [Azure Portal](https://portal.azure.com) gidin.
 
     1. **Tüm kaynaklar**’ı seçin.
 
@@ -70,5 +70,4 @@ Azure [IoT Explorer](https://github.com/Azure/azure-iot-explorer/releases)'Da Az
     1. Cihazdan telemetri olaylarını görüntülemek için **Başlat** ' a tıklayın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-
-[Azure PERCEPT dk video](how-to-view-video-stream.md)akışınızı görüntülemeyi öğrenin.
+[Azure PERCEPT dk video](./how-to-view-video-stream.md)akışınızı görüntülemeyi öğrenin.

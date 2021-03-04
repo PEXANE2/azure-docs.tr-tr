@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 12/14/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 0f0f3b6ffcb7ee12a692470b922cf23a3f0f40f0
-ms.sourcegitcommit: 89c0482c16bfec316a79caa3667c256ee40b163f
+ms.openlocfilehash: ea23be06939d58b08516a00bbe8aba97c6ccc87d
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97858443"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102095281"
 ---
 # <a name="relyingparty"></a>RelyingParty
 
@@ -209,7 +209,7 @@ Daha fazla bilgi için bkz [. özel ilkeler kullanarak dinamik içerikle Kullan�
 | DisplayName | 1:1 | Teknik profilin adını içeren dize. |
 | Açıklama | 0:1 | Teknik profilin açıklamasını içeren dize. |
 | Protokol | 1:1 | Federasyon için kullanılan protokol. |
-| Meta Veriler | 0:1 | Bağlı olan taraf ve diğer topluluk katılımcıları arasında etkileşimi yapılandırmak üzere bir işlem sırasında uç noktayla iletişim için kullanılan anahtar/değer çiftlerinin *öğe* koleksiyonu. |
+| Meta veri | 0:1 | Bağlı olan taraf ve diğer topluluk katılımcıları arasında etkileşimi yapılandırmak üzere bir işlem sırasında uç noktayla iletişim için kullanılan anahtar/değer çiftlerinin *öğe* koleksiyonu. |
 | Outputclaim | 1:1 | Teknik profilde çıkış olarak gerçekleştirilen talep türlerinin listesi. Bu öğelerin her biri, **Claimsschema** bölümünde veya bu ilke dosyasının devraldığı bir ilkede zaten tanımlanmış olan bir **ClaimType** başvurusu içerir. |
 | Subjectnamingınfo | 1:1 | Belirteçlerde kullanılan konu adı. |
 
@@ -218,20 +218,6 @@ Daha fazla bilgi için bkz [. özel ilkeler kullanarak dinamik içerikle Kullan�
 | Öznitelik | Gerekli | Açıklama |
 | --------- | -------- | ----------- |
 | Ad | Yes | Teknik profilin bir parçası olarak kullanılan Azure AD B2C tarafından desteklenen geçerli bir protokol adı. Olası değerler: `OpenIdConnect` veya `SAML2` . `OpenIdConnect`Değer, OpenID Foundation belirtimine göre OpenID Connect 1,0 Protokol standardını temsil eder. , `SAML2` Oassıs belirtimine göre SAML 2,0 Protokol standardını temsil eder. |
-
-### <a name="metadata"></a>Meta Veriler
-
-Protokol olduğunda `SAML` , meta veri öğesi aşağıdaki öğeleri içerir.
-
-| Öznitelik | Gerekli | Açıklama |
-| --------- | -------- | ----------- |
-| Idpınitisenabled Profiletkin | Hayır | IDP tarafından başlatılan akışın desteklenip desteklenmediğini belirtir. Olası değerler: `true` veya `false` (varsayılan). | 
-| XmlSignatureAlgorithm | Hayır | Azure AD B2C SAML Yanıtını imzalamak için kullandığı yöntem. Olası değerler: `Sha256` , `Sha384` , `Sha512` veya `Sha1` . Aynı değere sahip her iki tarafta de imza algoritmasını yapılandırdığınızdan emin olun. Yalnızca sertifikanızın desteklediği algoritmayı kullanın. SAML onaylama 'yı yapılandırmak için bkz. [SAML verenin teknik profil meta verileri](saml-issuer-technical-profile.md#metadata). |
-| DataEncryptionMethod | Hayır | Azure AD B2C, Gelişmiş Şifreleme Standardı (AES) algoritmasını kullanarak verileri şifrelemek için kullandığı yöntemi gösterir. Meta veri, `<EncryptedData>` SAML yanıtında öğesinin değerini denetler. Olası değerler: `Aes256` (varsayılan), `Aes192` , `Sha512` , veya ` Aes128` . |
-| KeyEncryptionMethod| Hayır | Azure AD B2C, verileri şifrelemek için kullanılan anahtarın kopyasını şifrelemek için kullandığı yöntemi gösterir. Meta veri,  `<EncryptedKey>` SAML yanıtında öğesinin değerini denetler. Olası değerler: ` Rsa15` (varsayılan)-RSA ortak anahtar şifreleme standardı (PKCS) sürüm 1,5 algoritması, ` RsaOaep` -RSA En Iyi asimetrik şifreleme doldurma (OAEP) şifreleme algoritması. |
-| UseDetachedKeys | Hayır |  Olası değerler: `true` , veya `false` (varsayılan). Değer olarak ayarlandığında `true` Azure AD B2C şifrelenmiş onayların biçimini değiştirir. Ayrılmış anahtarların kullanılması, şifreli onaylama listesini Encryptedrytedassertion 'nin bir alt öğesi olarak, EncryptedData yerine ekler. |
-| Wantssignedyanıtları| Hayır | SAML yanıtının bölümünü Azure AD B2C işaretetmeyeceğini belirtir `Response` . Olası değerler: `true` (varsayılan) veya `false` .  |
-| Removemilimetre Secondsfromdatetime| Hayır | Millisconds 'nin SAML yanıtı içindeki tarih saat değerlerinden kaldırılıp kaldırılamayacağını belirtir (Bu, IssueInstant, NotBefore, NotOnOrAfter ve Authnınstant). Olası değerler: `false` (varsayılan) veya `true` .  |
 
 ### <a name="outputclaims"></a>Outputclaim
 

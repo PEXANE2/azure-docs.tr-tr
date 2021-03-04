@@ -1,17 +1,16 @@
 ---
 title: Veri toplama kurallarını kullanarak VM öngörüleri Konuk durumunda izlemeyi yapılandırma (Önizleme)
 description: Kaynak Yöneticisi şablonları kullanarak, sanal makine öngörüleri Konuk sistem durumu ölçeğinde varsayılan izlemenin nasıl değiştirileceğini açıklar.
-ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/15/2020
-ms.openlocfilehash: 907aea16b018fb5dd3846db546787d132f8f5a9f
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 0db6ed7566c53429f8b9798ac8cdafe76ca7bd5a
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101731230"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102052152"
 ---
 # <a name="configure-monitoring-in-vm-insights-guest-health-using-data-collection-rules-preview"></a>Veri toplama kurallarını kullanarak VM öngörüleri Konuk durumunda izlemeyi yapılandırma (Önizleme)
 [VM öngörüleri Konuk durumu](vminsights-health-overview.md) , bir sanal makinenin durumunu, düzenli aralıklarla örneklendiği bir dizi performans ölçümlerine göre tanımlanan şekilde görüntülemenize olanak sağlar. Bu makalede, veri toplama kurallarını kullanarak birden çok sanal makine genelinde varsayılan izlemenin nasıl değiştirileceği açıklanır.

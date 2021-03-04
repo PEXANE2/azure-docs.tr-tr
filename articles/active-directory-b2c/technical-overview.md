@@ -10,12 +10,12 @@ ms.topic: overview
 ms.date: 05/28/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 3a044faf5546a22c997b8358d8809e240d563ac9
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
+ms.openlocfilehash: 77dab865b2b023f59e6776349b4045107bdb3a29
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100556813"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102095502"
 ---
 # <a name="technical-and-feature-overview-of-azure-active-directory-b2c"></a>Azure Active Directory B2C teknik ve özelliklere genel bakış
 
@@ -115,7 +115,7 @@ Mobil, Web ve tek sayfalı uygulamaların çoğunluğu için en yaygın kimlik s
 
 Özel ilkeler, kimlik deneyimi çerçevesi (ıEF) düzenleme altyapısının tam gücüne erişimi kaldırır. Özel ilkeler sayesinde, Imagine 'yi kullanarak neredeyse tüm kimlik doğrulaması, Kullanıcı kaydı ve profil düzenlemesi deneyimi oluşturabilirsiniz.
 
-Kimlik deneyimi çerçevesi, herhangi bir adım birleşimiyle Kullanıcı yolculukları oluşturma olanağı sağlar. Örneğin:
+Kimlik deneyimi çerçevesi, herhangi bir adım birleşimiyle Kullanıcı yolculukları oluşturma olanağı sağlar. Örnek:
 
 * Diğer kimlik sağlayıcılarıyla federasyona ekleme
 * Birinci ve üçüncü taraf Multi-Factor Authentication (MFA) sorunları
@@ -134,7 +134,7 @@ Her Kullanıcı yolculuğu bir ilke tarafından tanımlanır ve kuruluşunuz iç
 
 ## <a name="protocols-and-tokens"></a>Protokoller ve belirteçler
 
-- Uygulamalar için Azure AD B2C, Kullanıcı yolculukları için [OAuth 2,0](protocols-overview.md), [OpenID Connect](openid-connect.md)ve [SAML protokollerini](connect-with-saml-service-providers.md) destekler. Uygulamanız Azure AD B2C için kimlik doğrulama istekleri vererek Kullanıcı yolculuğu başlatır. Azure AD B2C bir isteğin sonucu, [kimlik belirteci, erişim belirteci](tokens-overview.md)veya SAML belirteci gibi bir güvenlik belirtecidir. Bu güvenlik belirteci, kullanıcının uygulama içindeki kimliğini tanımlar.
+- Uygulamalar için Azure AD B2C, Kullanıcı yolculukları için [OAuth 2,0](protocols-overview.md), [OpenID Connect](openid-connect.md)ve [SAML protokollerini](saml-service-provider.md) destekler. Uygulamanız Azure AD B2C için kimlik doğrulama istekleri vererek Kullanıcı yolculuğu başlatır. Azure AD B2C bir isteğin sonucu, [kimlik belirteci, erişim belirteci](tokens-overview.md)veya SAML belirteci gibi bir güvenlik belirtecidir. Bu güvenlik belirteci, kullanıcının uygulama içindeki kimliğini tanımlar.
 
 - Dış kimlikler için Azure AD B2C, herhangi bir OAuth 1,0, OAuth 2,0, OpenID Connect ve SAML Identity sağlayıcılarıyla Federasyonu destekler.
 

@@ -7,12 +7,12 @@ ms.date: 02/04/2021
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: eb1635cec2b0bcf7f2c13101b2aeab25a869dc66
-ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
+ms.openlocfilehash: 42aa07ccf8d886dc7eb7109bc405c730331b2c3b
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99558548"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102095638"
 ---
 # <a name="introduction-to-azure-defender-for-storage"></a>Depolama için Azure Defender'a giriş
 
@@ -25,9 +25,9 @@ Etkinlikte anomali oluştuğunda güvenlik uyarıları tetiklenir. Bu uyarılar 
 |Görünüş|Ayrıntılar|
 |----|:----|
 |Yayın durumu:|Genel kullanılabilirlik (GA)|
-|Fiyat|**Depolama Için Azure Defender** , [fiyatlandırma sayfasında](security-center-pricing.md) gösterildiği gibi faturalandırılır|
+|Fiyat|**Depolama Için Azure Defender** , [Güvenlik Merkezi fiyatlandırması](https://azure.microsoft.com/pricing/details/security-center/) 'nda gösterildiği gibi faturalandırılır|
 |Korumalı Depolama türleri:|[Blob Depolama](https://azure.microsoft.com/services/storage/blobs/)<br>[Azure Dosyaları](../storage/files/storage-files-introduction.md)<br>[Azure Data Lake Storage 2. Nesil](../storage/blobs/data-lake-storage-introduction.md)|
-|Larının|![Yes](./media/icons/yes-icon.png) Ticari bulutlar<br>![Yes](./media/icons/yes-icon.png) US Gov<br>![No](./media/icons/no-icon.png) Çin gov, diğer gov|
+|Larının|![Yes](./media/icons/yes-icon.png) Ticari bulutlar<br>![Yes](./media/icons/yes-icon.png) US Gov<br>![Hayır](./media/icons/no-icon.png) Çin gov, diğer gov|
 |||
 
 

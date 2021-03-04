@@ -352,13 +352,13 @@
     - name: Güncelleştirmeleri dağıt
       items:
         - name: Cihaz güncelleştirme hesabı oluştur
-          href: /iot-hub-device-update/create-device-update-account.md
+          href: ../iot-hub-device-update/create-device-update-account.md
         - name: Bir güncelleştirmeyi içeri aktar
-          href: /iot-hub-device-update/import-update.md
+          href: ../iot-hub-device-update/import-update.md
         - name: Güncelleştirme grubu oluşturma
-          href: /iot-hub-device-update/create-update-group.md
+          href: ../iot-hub-device-update/create-update-group.md
         - name: Güncelleştirme dağıtma
-          href: /iot-hub-device-update/deploy-update.md
+          href: ../iot-hub-device-update/deploy-update.md
     - name: Gerçek cihaz kullanma
       items:
         - name: Çevrimiçi simülatör kullanma

@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e36acb5a6a0984b003e4e8deb597bddfc43b064a
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 97517ad3ff260806108dc22686d49b43b0fc6609
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101647566"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102096029"
 ---
 # <a name="passwordless-authentication-options-for-azure-active-directory"></a>Azure Active Directory için passwordless kimlik doğrulama seçenekleri
 
@@ -89,6 +89,8 @@ FIDO2 güvenlik anahtarları, herhangi bir form faktöründe yer alan unphishabl
 Kullanıcılar, kimlik doğrulama yöntemi olarak oturum açma arabiriminde bir FIDO2 güvenlik anahtarı kaydedebilir ve seçebilir. Bu FIDO2 güvenlik anahtarları genellikle USB cihazlarıdır, ancak Bluetooth veya NFC de kullanabilir. Kimlik doğrulamasını işleyen bir donanım aygıtıyla, açığa çıkarılan veya tahmin edilecek bir parola olmadığından hesabın güvenliği artar.
 
 FIDO2 güvenlik anahtarları, Azure AD 'de veya hibrit Azure AD 'ye katılmış Windows 10 cihazlarında oturum açmak ve bulutta ve şirket içi kaynaklarda çoklu oturum açma sağlamak için kullanılabilir. Kullanıcılar, desteklenen tarayıcılarda da oturum açabilirler. FIDO2 güvenlik anahtarları, çok güvenliğe duyarlı olan veya telefon numarası ikinci bir faktör olarak kullanabilecek senaryolar veya çalışanlar olan kuruluşlar için harika bir seçenektir.
+
+[Tarayıcıların Azure AD Ile FIDO2 kimlik doğrulamasını desteklediği](fido2-compatibility.md), [GELIŞTIRDIKLERI uygulamalarda FIDO2 kimlik doğrulamasını desteklemek](../develop/support-fido2-authentication.md)isteyen geliştiriciler için en iyi yöntemleri içeren bir başvuru belgesidir.
 
 ![Bir güvenlik anahtarıyla Microsoft Edge 'de oturum açın](./media/concept-authentication-passwordless/concept-web-sign-in-security-key.png)
 

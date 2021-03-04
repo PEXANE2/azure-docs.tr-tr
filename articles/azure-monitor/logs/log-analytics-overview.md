@@ -1,17 +1,16 @@
 ---
 title: Azure Izleyici 'de Log Analytics genel bakış
 description: Azure Izleyici günlüklerinde verileri çözümlemek için günlük sorgularını düzenlemek ve çalıştırmak için kullanılan Azure portal bir araç olan Log Analytics açıklar.
-ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/04/2020
-ms.openlocfilehash: ef8be3d1fd815362971d5ae2beb27edf47766c94
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: d83cc4045f09ed0f704a0d61c6b303406835eb44
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101723172"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102052305"
 ---
 # <a name="overview-of-log-analytics-in-azure-monitor"></a>Azure Izleyici 'de Log Analytics genel bakış
 Log Analytics, Azure Izleyici günlüklerinde verilerle günlük sorgularını düzenlemek ve çalıştırmak için kullanılan Azure portal bir araçtır. Kayıt kümesi döndüren basit bir sorgu yazabilir ve ardından bunları sıralamak, filtrelemek ve analiz etmek için Log Analytics özellikleri kullanabilirsiniz. Ya da istatistiksel analizler gerçekleştirmek için daha gelişmiş bir sorgu yazabilir ve belirli bir eğilimi tanımlamak için bir grafikteki sonuçları görselleştirebilirsiniz. Sorgularınızın sonuçlarıyla etkileşimli olarak çalışıp çalışmadığınızı veya bunları günlük sorgu uyarıları veya çalışma kitapları gibi diğer Azure Izleyici özellikleriyle birlikte kullanmaya devam etmeksizin Log Analytics, bunları yazmak ve test etmek için kullandığınız araçtır. 

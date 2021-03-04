@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/17/2021
+ms.date: 03/04/2021
 ms.author: memildin
-ms.openlocfilehash: 375e8a748e8833e9483d92353ed04add287e90fb
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 6bec9f0a1c22691d818566cec3f59c1ec0f3d3bb
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101705101"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102051625"
 ---
 # <a name="important-upcoming-changes-to-azure-security-center"></a>Azure Güvenlik Merkezi 'Nde yapılan önemli değişiklikler
 
@@ -31,10 +31,28 @@ En son sürüm notlarını arıyorsanız, bunları [Azure Güvenlik Merkezi 'nde
 
 ## <a name="planned-changes"></a>Planlanan değişiklikler
 
+- [AWS 'nin önerileri genel kullanıma sunulacaktır (GA)](#recommendations-from-aws-will-be-released-for-general-availability-ga)
 - [İki eski öneri artık doğrudan Azure etkinlik günlüğüne veri yazmayacaktır](#two-legacy-recommendations-will-no-longer-write-data-directly-to-azure-activity-log)
 - ["Sistem güncelleştirmelerini Uygula" güvenlik denetiminin kullanım dışı olmasının iki önerisi](#two-recommendations-from-apply-system-updates-security-control-being-deprecated)
 - [SQL veri sınıflandırması önerisine yönelik geliştirmeler](#enhancements-to-sql-data-classification-recommendation)
 - [11 Azure Defender uyarılarının kullanımdan kaldırılması](#deprecation-of-11-azure-defender-alerts)
+
+
+### <a name="recommendations-from-aws-will-be-released-for-general-availability-ga"></a>AWS 'nin önerileri genel kullanıma sunulacaktır (GA)
+
+**Değişikliğin tahmini tarihi:** 2021 Nisan
+
+Azure Güvenlik Merkezi, Azure, Amazon Web Services (AWS) ve Google Cloud Platform (GCP) iş yüklerini korur.
+
+AWS güvenlik hub 'ından gelen öneriler, bulut bağlayıcıları tanıtıldığından önizleme aşamasındadır. **Önizleme** olarak işaretlenen öneriler, güvenli puanınızın hesaplamalarına dahil değildir, ancak yine de düzeltilmelidir, böylece önizleme dönemi sona erdiğinde puanınızın altına katkıda bulunur.
+
+Bu değişiklik ile, AWS önerilerinden oluşan iki küme GA 'ye taşınır:
+
+- [Güvenlik Merkezi 'nin PCI DSS denetimleri](https://docs.aws.amazon.com/securityhub/latest/userguide/securityhub-pci-controls.html)
+- [Güvenlik Merkezi 'nin CIS AWS temelleri kıyaslama denetimleri](https://docs.aws.amazon.com/securityhub/latest/userguide/securityhub-cis-controls.html)
+
+Bunlar GA ve değerlendirmeler AWS kaynaklarınız üzerinde çalıştırıldığında, sonuçlar tüm çok ve karma bulut kaynaklarınız için Birleşik güvenli puanınızı etkiler. 
+
 
 
 ### <a name="two-legacy-recommendations-will-no-longer-write-data-directly-to-azure-activity-log"></a>İki eski öneri artık doğrudan Azure etkinlik günlüğüne veri yazmayacaktır 
@@ -53,7 +71,7 @@ Bu iki öneriye yönelik bilgilere, Etkinlik günlüğünün "TaskDiscovery tür
 
 ### <a name="two-recommendations-from-apply-system-updates-security-control-being-deprecated"></a>"Sistem güncelleştirmelerini Uygula" güvenlik denetiminin kullanım dışı olmasının iki önerisi 
 
-**Değişikliğin tahmini tarihi:** Şubat 2021
+**Değişikliğin tahmini tarihi:** Mart 2021
 
 Aşağıdaki iki öneri Şubat 2021 ' de kullanımdan kalkmak üzere zamanlandı:
 
@@ -69,7 +87,7 @@ Bu önerilerin bunlara dahil edilip edilmeyeceğini görmek için sürekli dış
 
 **Değişikliğin tahmini tarihi:** S2 2021
 
-**SQL veritabanlarınızdaki önerinin önemli verileri** , **veri sınıflandırması Uygula** güvenlik denetiminde sınıflandırılmalıdır ve Microsoft 'un veri sınıflandırması stratejisiyle daha iyi hizalanmış yeni bir sürümle değiştirilmelidir. Sonuç olarak, önerinin KIMLIĞI de değişecektir (Şu anda b0df6f56-862D-4730-8597-38c0fd4ebd59).
+**SQL veritabanlarınızdaki önerinin önemli verileri** , **veri sınıflandırması Uygula** güvenlik denetiminde sınıflandırılmalıdır ve Microsoft 'un veri sınıflandırması stratejisiyle daha iyi hizalanmış yeni bir sürümle değiştirilmelidir. Sonuç olarak, önerinin KIMLIĞI de değişecektir (Şu anda, b0df6f56-862D-4730-8597-38c0fd4ebd59).
 
 
 ### <a name="deprecation-of-11-azure-defender-alerts"></a>11 Azure Defender uyarılarının kullanımdan kaldırılması

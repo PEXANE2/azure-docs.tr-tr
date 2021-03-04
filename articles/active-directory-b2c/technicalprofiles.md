@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 12/11/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 5eff20ecb1366114ead80877b684ef512742803b
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.openlocfilehash: bbb0c5617696347b566ba09a481afae4f52379aa
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99805403"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102096046"
 ---
 # <a name="technicalprofiles"></a>TechnicalProfiles
 
@@ -40,8 +40,8 @@ Teknik bir profil, bu tür senaryolara izin vermez:
 - [OpenID Connect](openid-connect-technical-profile.md) -any OpenID Connect protokol kimliği sağlayıcısıyla Federasyon.
 - [Telefon faktörü](phone-factor-technical-profile.md) -telefon numaralarını kaydetme ve doğrulama desteği.
 - [Reişsiz sağlayıcı](restful-technical-profile.md) -Kullanıcı girişini doğrulama, Kullanıcı verilerini zenginleştirme veya iş kolu uygulamalarıyla tümleştirme gibi REST API hizmetleri için çağrı.
-- [SAML Identity Provider](saml-identity-provider-technical-profile.md) -HERHANGI bir saml protokol kimliği sağlayıcısıyla Federasyon.
-- [SAML belirteci veren](saml-issuer-technical-profile.md) -bağlı olan taraf uygulamasına geri döndürülen bir SAML belirteci yayar.
+- [SAML Identity Provider](identity-provider-generic-saml.md) -HERHANGI bir saml protokol kimliği sağlayıcısıyla Federasyon.
+- [SAML belirteci veren](saml-service-provider.md) -bağlı olan taraf uygulamasına geri döndürülen bir SAML belirteci yayar.
 - [Kendi kendine onaylanan](self-asserted-technical-profile.md) -kullanıcıyla etkileşime geçin. Örneğin, oturum açmak için kullanıcının kimlik bilgisini toplayın, kaydolma sayfasını veya parola sıfırlamayı izleyin.
 - [Oturum yönetimi](custom-policy-reference-sso.md) -farklı oturum türlerini işleyin.
 
@@ -54,7 +54,7 @@ Tüm teknik profil türleri aynı kavramı paylaşır. Giriş taleplerini okuyar
 1. **Çoklu oturum açma (SSO) oturum yönetimi** - [SSO oturumu yönetimi](custom-policy-reference-sso.md)kullanarak teknik profilin oturum durumunu geri yükler.
 1. **Giriş talepleri dönüştürmesi** -teknik profil başlatılmadan önce, Azure AD B2C giriş [talep dönüşümünü](claimstransformations.md)çalıştırır.
 1. **Giriş talepleri** -talepler, teknik profil için kullanılan talep çantasından alınır.
-1. **Teknik profil yürütme** -teknik profil, talepleri, yapılandırılan tarafla birlikte değiş tokuş eder. Örneğin:
+1. **Teknik profil yürütme** -teknik profil, talepleri, yapılandırılan tarafla birlikte değiş tokuş eder. Örnek:
     - Oturum açma işleminin tamamlanabilmesi için kullanıcıyı kimlik sağlayıcısına yönlendirin. Başarılı oturum açma işleminden sonra Kullanıcı geri döner ve teknik profil yürütme devam eder.
     - Parametreleri ınputtalepler olarak gönderirken ve Outputclaim olarak geri bilgi alırken bir REST API çağırın.
     - Kullanıcı hesabı oluşturun veya güncelleştirin.
@@ -90,11 +90,11 @@ Bir **teknisyen** öğesi, talep sağlayıcısı tarafından desteklenen bir tek
 
 **Teknisyen** aşağıdaki öğeleri içerir:
 
-| Öğe | Öğeleri | Description |
+| Öğe | Öğeleri | Açıklama |
 | ------- | ----------- | ----------- |
 | Etki alanı | 0:1 | Teknik profilin etki alanı adı. Örneğin, teknik profiliniz Facebook kimlik sağlayıcısını belirtiyorsa, etki alanı adı Facebook.com olur. |
 | DisplayName | 1:1 | Teknik profilin görünen adı. |
-| Description | 0:1 | Teknik profilin açıklaması. |
+| Açıklama | 0:1 | Teknik profilin açıklaması. |
 | Protokol | 1:1 | Diğer tarafla iletişim için kullanılan protokol. |
 | Meta veri | 0:1 | Teknik profilin davranışını denetleyen anahtar/değer koleksiyonu. |
 | Inputtokenformat | 0:1 | Giriş belirtecinin biçimi. Olası değerler: `JSON` , `JWT` , `SAML11` veya `SAML2` . `JWT`Değer, IETF belirtimine göre JSON Web Token temsil eder. `SAML11`Değer, OASSıS belirtimine göre SAML 1,1 güvenlik belirtecini temsil eder.  `SAML2`Değer, OASSıS belirtimine göre SAML 2,0 güvenlik belirtecini temsil eder. |
@@ -121,13 +121,13 @@ Bir **teknisyen** öğesi, talep sağlayıcısı tarafından desteklenen bir tek
 | Öznitelik | Gerekli | Açıklama |
 | --------- | -------- | ----------- |
 | Ad | Yes | Teknik profilin bir parçası olarak kullanılan Azure AD B2C tarafından desteklenen geçerli bir protokol adı. Olası değerler: `OAuth1` , `OAuth2` , `SAML2` , `OpenIdConnect` , `Proprietary` veya `None` . |
-| İşleyici | No | Protokol adı olarak ayarlandığında `Proprietary` , protokol işleyicisini belirlemek için Azure AD B2C tarafından kullanılan derlemenin adını belirtin. |
+| İşleyici | Hayır | Protokol adı olarak ayarlandığında `Proprietary` , protokol işleyicisini belirlemek için Azure AD B2C tarafından kullanılan derlemenin adını belirtin. |
 
 ## <a name="metadata"></a>Meta veri
 
 **Meta veri** öğesi, belirli bir protokole ilişkin ilgili yapılandırma seçeneklerini içerir. Desteklenen meta verilerin listesi ilgili [Teknik profil](#type-of-technical-profiles) belirtiminde belgelenmiştir. **Meta veri** öğesi aşağıdaki öğeyi içerir:
 
-| Öğe | Öğeleri | Description |
+| Öğe | Öğeleri | Açıklama |
 | ------- | ----------- | ----------- |
 | Öğe | 0: n | Teknik profille ilgili meta veriler. Her bir teknik profil türünün farklı bir meta veri öğesi kümesi vardır. Daha fazla bilgi için bkz. Teknik profil türleri bölümü.  |
 
@@ -175,13 +175,13 @@ Aşağıdaki örnek, [REST API teknik profille](restful-technical-profile.md#met
 
 Tümleştirildiği hizmetlerle güven sağlamak için, Azure AD B2C gizli dizileri ve sertifikaları [ilke anahtarları](policy-keys-overview.md)biçiminde depolar. Teknik profil yürütülürken, Azure AD B2C Azure AD B2C ilkesi anahtarlarından şifreleme anahtarlarını alır. Ardından, güven oluşturma, bir belirteci şifreleme veya imzalama anahtarlarını kullanır. Bu güvenler aşağıdakilerden oluşur:
 
-- [OAuth1](oauth1-technical-profile.md#cryptographic-keys), [OAuth2](oauth2-technical-profile.md#cryptographic-keys)ve [SAML](saml-identity-provider-technical-profile.md#cryptographic-keys) kimlik sağlayıcıları ile Federasyon
+- [OAuth1](oauth1-technical-profile.md#cryptographic-keys), [OAuth2](oauth2-technical-profile.md#cryptographic-keys)ve [SAML](identity-provider-generic-saml.md) kimlik sağlayıcıları ile Federasyon
 - [REST API hizmetleriyle](secure-rest-api.md) bağlantı kurarak güvenli hale getirin
-- [JWT](jwt-issuer-technical-profile.md#cryptographic-keys) ve [SAML](saml-issuer-technical-profile.md#cryptographic-keys) belirteçlerini imzalama ve şifreleme
+- [JWT](jwt-issuer-technical-profile.md#cryptographic-keys) ve [SAML](saml-service-provider.md) belirteçlerini imzalama ve şifreleme
 
 **Cryptographickeys** öğesi aşağıdaki öğeyi içerir:
 
-| Öğe | Öğeleri | Description |
+| Öğe | Öğeleri | Açıklama |
 | ------- | ----------- | ----------- |
 | Anahtar | 1: n | Bu teknik profilde kullanılan bir şifreleme anahtarı. |
 
@@ -191,7 +191,7 @@ Tümleştirildiği hizmetlerle güven sağlamak için, Azure AD B2C gizli dizile
 
 | Öznitelik | Gerekli | Açıklama |
 | --------- | -------- | ----------- |
-| Id | No | İlke dosyasındaki diğer öğelerden başvurulan belirli bir anahtar çiftinin benzersiz tanıtıcısı. |
+| Id | Hayır | İlke dosyasındaki diğer öğelerden başvurulan belirli bir anahtar çiftinin benzersiz tanıtıcısı. |
 | Storagereferenceıd değerine | Yes | İlke dosyasındaki diğer öğelerden başvurulan bir depolama anahtarı kapsayıcısının tanımlayıcı değeri. |
 
 ## <a name="input-claims-transformations"></a>Giriş talep dönüştürmeleri
@@ -202,7 +202,7 @@ Talep dönüştürme koleksiyonundaki önceki talep dönüştürmesinin çıkı�
 
 **Inputclaimstransformations** öğesi aşağıdaki öğeyi içerir:
 
-| Öğe | Öğeleri | Description |
+| Öğe | Öğeleri | Açıklama |
 | ------- | ----------- | ----------- |
 | Inputclaimstranssize | 1: n | Talep sağlayıcısına veya bağlı olan tarafa herhangi bir talep gönderilmeden önce yürütülmesi gereken bir talep dönüştürmesi tanımlayıcısı. Bir talep dönüştürmesi, var olan ClaimsSchema taleplerini değiştirmek veya yenilerini oluşturmak için kullanılabilir. |
 
@@ -241,7 +241,7 @@ Aşağıdaki teknik profiller **Createothermailsfromemail** talep dönüşümün
 
 **Inputclaim** öğesi aşağıdaki öğeyi içerir:
 
-| Öğe | Öğeleri | Description |
+| Öğe | Öğeleri | Açıklama |
 | ------- | ----------- | ----------- |
 | Inputclaim | 1: n | Beklenen giriş talep türü. |
 
@@ -252,8 +252,8 @@ Aşağıdaki teknik profiller **Createothermailsfromemail** talep dönüşümün
 | Öznitelik | Gerekli | Açıklama |
 | --------- | -------- | ----------- |
 | ClaimTypeReferenceId | Yes | Bir talep türünün tanımlayıcısı. Talep, ilke dosyası veya üst ilke dosyasındaki talep şeması bölümünde zaten tanımlanmış. |
-| Değerinin | No | ClaimTypeReferenceId tarafından belirtilen talep yoksa, sonuçta elde edilen talebin teknik profille bir ınputclaim olarak kullanılabilmesi için bir talep oluşturmak için kullanılacak varsayılan değer. |
-| PartnerClaimType | No | Belirtilen ilke talep türünün eşlendiği dış iş ortağının talep türünün tanımlayıcısı. PartnerClaimType özniteliği belirtilmemişse, belirtilen ilke talep türü aynı ada sahip iş ortağı talep türüne eşlenir. Talep türü adınız diğer taraftan farklıysa bu özelliği kullanın. Örneğin, ilk talep adı ' bir ' ise, iş ortağı ' first_name ' adlı bir talep kullanır. |
+| Değerinin | Hayır | ClaimTypeReferenceId tarafından belirtilen talep yoksa, sonuçta elde edilen talebin teknik profille bir ınputclaim olarak kullanılabilmesi için bir talep oluşturmak için kullanılacak varsayılan değer. |
+| PartnerClaimType | Hayır | Belirtilen ilke talep türünün eşlendiği dış iş ortağının talep türünün tanımlayıcısı. PartnerClaimType özniteliği belirtilmemişse, belirtilen ilke talep türü aynı ada sahip iş ortağı talep türüne eşlenir. Talep türü adınız diğer taraftan farklıysa bu özelliği kullanın. Örneğin, ilk talep adı ' bir ' ise, iş ortağı ' first_name ' adlı bir talep kullanır. |
 
 ## <a name="display-claims"></a>Talepleri görüntüle
 
@@ -269,7 +269,7 @@ Aşağıdaki teknik profiller **Createothermailsfromemail** talep dönüşümün
 
 **DisplayClaim** öğesi aşağıdaki öğeyi içerir:
 
-| Öğe | Öğeleri | Description |
+| Öğe | Öğeleri | Açıklama |
 | ------- | ----------- | ----------- |
 | DisplayClaim | 1: n | Beklenen giriş talep türü. |
 
@@ -279,9 +279,9 @@ Aşağıdaki teknik profiller **Createothermailsfromemail** talep dönüşümün
 
 | Öznitelik | Gerekli | Açıklama |
 | --------- | -------- | ----------- |
-| ClaimTypeReferenceId | No | İlke dosyası veya üst ilke dosyasında ClaimsSchema bölümünde zaten tanımlanmış olan bir talep türünün tanımlayıcısı. |
-| Displaycontrolreferenceıd | No | İlke dosyası veya üst ilke dosyasında ClaimsSchema bölümünde zaten tanımlanmış olan bir [görüntüleme denetiminin](display-controls.md) tanımlayıcısı. |
-| Gerekli | No | Görüntüleme talebinin gerekli olup olmadığını belirtir. |
+| ClaimTypeReferenceId | Hayır | İlke dosyası veya üst ilke dosyasında ClaimsSchema bölümünde zaten tanımlanmış olan bir talep türünün tanımlayıcısı. |
+| Displaycontrolreferenceıd | Hayır | İlke dosyası veya üst ilke dosyasında ClaimsSchema bölümünde zaten tanımlanmış olan bir [görüntüleme denetiminin](display-controls.md) tanımlayıcısı. |
+| Gerekli | Hayır | Görüntüleme talebinin gerekli olup olmadığını belirtir. |
 
 Aşağıdaki örnek, kendi kendini onaylanan bir teknik profilde görüntüleme taleplerinin ve görüntüleme denetimlerinin kullanımını gösterir.
 
@@ -315,7 +315,7 @@ Azure AD öznitelik adını içeren **Partnerclaimtype** özniteliği belirtilme
 
 **PersistedClaims** öğesi aşağıdaki öğeleri içerir:
 
-| Öğe | Öğeleri | Description |
+| Öğe | Öğeleri | Açıklama |
 | ------- | ----------- | ----------- |
 | PersistedClaim | 1: n | Kalıcı yapılacak talep türü. |
 
@@ -326,8 +326,8 @@ Azure AD öznitelik adını içeren **Partnerclaimtype** özniteliği belirtilme
 | Öznitelik | Gerekli | Açıklama |
 | --------- | -------- | ----------- |
 | ClaimTypeReferenceId | Yes | İlke dosyası veya üst ilke dosyasında ClaimsSchema bölümünde zaten tanımlanmış olan bir talep türünün tanımlayıcısı. |
-| Değerinin | No | Talep yoksa bir talep oluşturmak için kullanılacak varsayılan değer. |
-| PartnerClaimType | No | Belirtilen ilke talep türünün eşlendiği dış iş ortağının talep türünün tanımlayıcısı. PartnerClaimType özniteliği belirtilmemişse, belirtilen ilke talep türü aynı ada sahip iş ortağı talep türüne eşlenir. Talep türü adınız diğer taraftan farklıysa bu özelliği kullanın. Örneğin, ilk talep adı ' bir ' ise, iş ortağı ' first_name ' adlı bir talep kullanır. |
+| Değerinin | Hayır | Talep yoksa bir talep oluşturmak için kullanılacak varsayılan değer. |
+| PartnerClaimType | Hayır | Belirtilen ilke talep türünün eşlendiği dış iş ortağının talep türünün tanımlayıcısı. PartnerClaimType özniteliği belirtilmemişse, belirtilen ilke talep türü aynı ada sahip iş ortağı talep türüne eşlenir. Talep türü adınız diğer taraftan farklıysa bu özelliği kullanın. Örneğin, ilk talep adı ' bir ' ise, iş ortağı ' first_name ' adlı bir talep kullanır. |
 
 Aşağıdaki örnekte, yeni yerel hesap oluşturan **AAD-UserWriteUsingLogonEmail** Technical profile veya [Starter Pack](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/SocialAndLocalAccounts), aşağıdaki talepler devam ettirir:
 
@@ -346,7 +346,7 @@ Aşağıdaki örnekte, yeni yerel hesap oluşturan **AAD-UserWriteUsingLogonEmai
 
 **Outputclaim** , teknik profil tamamlandıktan sonra talep çantasına geri döndürülen talepler koleksiyonudur. Bu talepleri sonraki düzenlemeler adımında veya çıkış talepleri dönüşümlerine göre kullanabilirsiniz. **Outputclaim** öğesi aşağıdaki öğeyi içerir:
 
-| Öğe | Öğeleri | Description |
+| Öğe | Öğeleri | Açıklama |
 | ------- | ----------- | ----------- |
 | OutputClaim | 1: n | Beklenen çıkış talep türü. |
 
@@ -357,9 +357,9 @@ Aşağıdaki örnekte, yeni yerel hesap oluşturan **AAD-UserWriteUsingLogonEmai
 | Öznitelik | Gerekli | Açıklama |
 | --------- | -------- | ----------- |
 | ClaimTypeReferenceId | Yes | İlke dosyası veya üst ilke dosyasında ClaimsSchema bölümünde zaten tanımlanmış olan bir talep türünün tanımlayıcısı. |
-| Değerinin | No | Talep yoksa bir talep oluşturmak için kullanılacak varsayılan değer. |
-|AlwaysUseDefaultValue |No |Varsayılan değerin kullanımını zorunlu kılın.  |
-| PartnerClaimType | No | Belirtilen ilke talep türünün eşlendiği dış iş ortağının talep türünün tanımlayıcısı. İş ortağı talep türü özniteliği belirtilmemişse, belirtilen ilke talep türü aynı ada sahip iş ortağı talep türüne eşlenir. Talep türü adınız diğer taraftan farklıysa bu özelliği kullanın. Örneğin, ilk talep adı ' bir ' ise, iş ortağı ' first_name ' adlı bir talep kullanır. |
+| Değerinin | Hayır | Talep yoksa bir talep oluşturmak için kullanılacak varsayılan değer. |
+|AlwaysUseDefaultValue |Hayır |Varsayılan değerin kullanımını zorunlu kılın.  |
+| PartnerClaimType | Hayır | Belirtilen ilke talep türünün eşlendiği dış iş ortağının talep türünün tanımlayıcısı. İş ortağı talep türü özniteliği belirtilmemişse, belirtilen ilke talep türü aynı ada sahip iş ortağı talep türüne eşlenir. Talep türü adınız diğer taraftan farklıysa bu özelliği kullanın. Örneğin, ilk talep adı ' bir ' ise, iş ortağı ' first_name ' adlı bir talep kullanır. |
 
 ## <a name="output-claims-transformations"></a>Çıkış talepleri dönüşümleri
 
@@ -369,7 +369,7 @@ Talep dönüştürme koleksiyonundaki önceki talep dönüştürmesinin çıkı�
 
 **Outputclaimstransformations** öğesi aşağıdaki öğeyi içerir:
 
-| Öğe | Öğeleri | Description |
+| Öğe | Öğeleri | Açıklama |
 | ------- | ----------- | ----------- |
 | Outputclaimstranssize | 1: n | Talepler, talep sağlayıcısına veya bağlı olan tarafa gönderilmeden önce yürütülmesi gereken talep dönüştürmelerinin tanımlayıcıları. Bir talep dönüştürmesi, var olan ClaimsSchema taleplerini değiştirmek veya yenilerini oluşturmak için kullanılabilir. |
 
@@ -412,7 +412,7 @@ Aşağıdaki diyagramda, Azure AD B2C kullanıcının kimlik bilgilerini doğrul
 
 **Validation, Alprofiles** öğesi aşağıdaki öğeyi içerir:
 
-| Öğe | Öğeleri | Description |
+| Öğe | Öğeleri | Açıklama |
 | ------- | ----------- | ----------- |
 | Validationteknisyen Alprofıle | 1: n | Kullanılan teknik profillerin tanımlayıcıları, başvuru yapan teknik profilin bazı veya tüm çıktı taleplerini doğrular. Başvurulan teknik profilin tüm giriş talepleri, başvuru yapan teknik profilin çıkış taleplerinden gelmelidir. |
 
