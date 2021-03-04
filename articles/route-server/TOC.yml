@@ -6,6 +6,8 @@
       href: overview.md
 - name: Hızlı Başlangıçlar
   items:
+    - name: Rota sunucusu yapılandırma-Portal
+      href: quickstart-configure-route-server-portal.md
     - name: Rota sunucusu yapılandırma-PowerShell
       href: quickstart-configure-route-server-powershell.md
     - name: Rota sunucusu yapılandırma-CLı

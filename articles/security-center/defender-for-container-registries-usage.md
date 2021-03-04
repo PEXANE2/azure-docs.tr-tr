@@ -7,12 +7,12 @@ ms.date: 10/21/2020
 ms.topic: how-to
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: a5d66e43485ec66b6297ef11ed382e8fb82b7cb3
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: ee4992e41e792b570d8937edfe31efb4c651d742
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "96014591"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102100738"
 ---
 # <a name="use-azure-defender-for-container-registries-to-scan-your-images-for-vulnerabilities"></a>Güvenlik açıkları için görüntülerinizi taramak üzere kapsayıcı kayıt defterleri için Azure Defender kullanma
 
@@ -21,8 +21,6 @@ Bu sayfada, yerleşik güvenlik açığı tarayıcısının Azure Resource Manag
 **Kapsayıcı kayıt defterleri için Azure Defender** etkinleştirildiğinde, kayıt defterinize gönderdiğiniz her görüntü anında taranır. Ayrıca, son 30 gün içinde çekilen tüm görüntü de taranır. 
 
 Tarayıcı güvenlik merkezi 'ne güvenlik açıkları bildirdiğinde Güvenlik Merkezi, bulguları ve ilgili bilgileri öneriler olarak sunar. Ayrıca, bulgular düzeltme adımları, ilgili cileri, CVSS puanları ve daha fazlası gibi ilgili bilgileri içerir. Bir veya daha fazla abonelik veya belirli bir kayıt defteri için tanımlanan güvenlik açıklarını görüntüleyebilirsiniz.
-
-[!INCLUDE [Defender for container registries availability info](../../includes/security-center-availability-defender-for-container-registries.md)]
 
 
 ## <a name="identify-vulnerabilities-in-images-in-azure-container-registries"></a>Azure Container Registry 'deki görüntülerde güvenlik açıklarını tanımla 

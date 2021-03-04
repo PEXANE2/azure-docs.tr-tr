@@ -1,15 +1,16 @@
 ---
 title: Azure Kubernetes hizmetinde hiper muhasebe doku Consortium dağıtma
 description: Azure Kubernetes hizmetinde bir hiper muhasebe doku Consortium ağını dağıtma ve yapılandırma
-ms.date: 01/08/2021
+ms.date: 03/01/2021
 ms.topic: how-to
 ms.reviewer: ravastra
-ms.openlocfilehash: c0e7f3e7ab83f64cebd990de57d48c97891edb7f
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.custom: contperf-fy21q3
+ms.openlocfilehash: 42d16adbc5e6396c8d5d38176ac7681c712f4555
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98897267"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102101112"
 ---
 # <a name="deploy-hyperledger-fabric-consortium-on-azure-kubernetes-service"></a>Azure Kubernetes hizmetinde hiper muhasebe doku Consortium dağıtma
 
@@ -31,34 +32,6 @@ Seçenek | Hizmet modeli | Yaygın kullanım durumu
 Çözüm şablonları | IaaS | Çözüm şablonları, tam olarak yapılandırılmış bir blok zinciri ağ topolojisi sağlamak için kullanabileceğiniz Azure Resource Manager şablonlardır. Şablonlar, blok zinciri ağ türü için Microsoft Azure işlem, ağ ve depolama hizmetleri dağıtır ve yapılandırır. Çözüm şablonları, hizmet düzeyi anlaşmadan sağlanır. Destek için [Microsoft Q&A sayfasını](/answers/topics/azure-blockchain-workbench.html) kullanın.
 [Azure Blok Zinciri Hizmeti](../service/overview.md) | PaaS | Azure blok zinciri hizmeti önizlemesi, konsorsiyum blok zinciri ağlarının yönetimini, yönetimini ve yönetimini basitleştirir. PaaS, konsorsiyum yönetimi veya sözleşme ve işlem gizliliği gerektiren çözümler için Azure blok zinciri hizmetini kullanın.
 [Azure Blockchain Workbench](../workbench/overview.md) | IaaS ve PaaS | Azure blok zinciri çalışma ekranı önizlemesi, iş süreçlerini ve verileri diğer kuruluşlarla paylaşmak üzere blok zinciri uygulamaları oluşturmanıza ve dağıtmanıza yardımcı olan bir Azure hizmetleri ve özellikleri koleksiyonudur. Blok zinciri çözümü için prototip yazmak üzere Azure blok zinciri ve blok zinciri uygulaması için bir kavram kanıtı kullanın. Azure blok zinciri çalışma ekranı, hizmet düzeyi anlaşmadan sağlanır. Destek için [Microsoft Q&A sayfasını](/answers/topics/azure-blockchain-workbench.html) kullanın.
-
-## <a name="hyperledger-fabric-consortium-architecture"></a>Hiper muhasebe Fabric Consortium mimarisi
-
-Azure 'da bir hiper muhasebe doku ağı oluşturmak için, Eş düğümleri olan bir sıralama hizmeti ve kuruluş dağıtmanız gerekir. Azure Kubernetes hizmet çözümü şablonunda hiper muhasebe dokusunu kullanarak, sipariş düğümleri veya eş düğümleri oluşturabilirsiniz. Oluşturmak istediğiniz her düğüm için şablonu dağıtmanız gerekir.
-
-Şablon dağıtımının bir parçası olarak oluşturulan temel bileşenler şunlardır:
-
-- **Orderer düğümleri**: muhasebedeki işlem sıralamaktan sorumlu bir düğüm. Diğer düğümlerle birlikte, sıralı düğümler hiper muhasebe doku ağının sıralama hizmetini oluşturur.
-
-- **Eş düğümleri**: birincil olarak, ağın temel öğeleri olan ilgili defterleri ve akıllı sözleşmeleri barındıran bir düğüm.
-
-- **Fabrıc CA**: hiper muhasebe dokusu için sertifika YETKILISI (CA). Doku CA 'sı, sertifika yetkilisini barındıran bir sunucu işlemini başlatıp başlatmanıza olanak tanır. Kimlikleri ve sertifikaları yönetmenizi sağlar. Şablonun bir parçası olarak dağıtılan her bir AKS kümesi, varsayılan olarak bir doku CA Pod 'ı olacaktır.
-
-- **Couşdb veya leveldb**: Eş düğümleri için World durumu veritabanları. LevelDB, eş düğümüne katıştırılmış olan varsayılan durum veritabanıdır. Chaincode verilerini basit anahtar/değer çiftleri olarak depolar ve yalnızca anahtar, anahtar aralığı ve bileşik anahtar sorgularını destekler. Couşdb, chaincode veri değerleri JSON olarak modellendiği zaman zengin sorguları destekleyen, isteğe bağlı alternatif bir durum veritabanıdır.
-
-Dağıtım üzerindeki şablon, aboneliğinizdeki çeşitli Azure kaynaklarını alır. Dağıtılan Azure kaynakları şunlardır:
-
-- **Aks kümesi**: müşteri tarafından sunulan giriş parametrelerine göre yapılandırılmış Azure Kubernetes hizmet kümesi. AKS kümesinde, hiper muhasebe doku ağı bileşenlerini çalıştırmak için yapılandırılmış çeşitli yığınlar vardır. Oluşturulan Pod 'ler şunlardır:
-
-  - **Yapı Araçları**: hiper muhasebe doku bileşenlerini yapılandırmaktan sorumlu araçlar.
-  - **Orderer/peer Pod**: hiper muhasebe doku ağının düğümleri.
-  - **Proxy**: istemci uygulamalarının aks kümesiyle iletişim kurabildiği BIR NGNX proxy Pod 'si.
-  - **Fabrıc CA**: doku CA 'sını çalıştıran Pod.
-- **PostgreSQL**: yapı CA kimliklerini tutan veritabanı örneği.
-
-- **Anahtar Kasası**: doku CA kimlik bilgilerini ve müşteri tarafından sunulan kök sertifikaları kaydetmek için dağıtılan Azure Key Vault hizmetinin örneği. Kasa, şablonun sayısını işlemek için şablon dağıtımı yeniden denemesi durumunda kullanılır.
-- **Yönetilen disk**: Azure yönetilen diskler hizmetinin, genel muhasebe ve eş düğümün dünya durumu veritabanı için kalıcı bir mağaza sağlayan örneği.
-- **Genel IP**: kümeyle iletişim kurmak için dağıtılan aks kümesinin uç noktası.
 
 ## <a name="deploy-the-orderer-and-peer-organization"></a>Sipariş ve eş kuruluşu dağıtma
 
@@ -85,10 +58,10 @@ Hiper muhasebe doku ağ bileşenlerinin dağıtımına başlamak için [Azure Po
     - **Kuruluş adı**: çeşitli veri düzlemi işlemleri Için gereken hiper muhasebe doku kuruluşunun adını girin. Kuruluş adının dağıtım başına benzersiz olması gerekir.
     - **Fabric ağ bileşeni**: ayarlamak istediğiniz blok zinciri ağ bileşenine göre hizmet veya **Eş düğümleri** **sıralama** seçeneğini belirleyin.
     - **Düğüm sayısı**: aşağıdaki iki düğüm türüdür:
-        - **Hizmet sıralaması**: ağa hata toleransı sağlamak için düğüm sayısını seçin. Desteklenen sıra düğüm sayısı 3, 5 ve 7 ' dir.
-        - **Eş düğümleri**: gereksiniminize göre 1 ila 10 düğüm seçebilirsiniz.
-    - **Eş düğüm dünya durumu veritabanı**: leveldb ve couşdb arasında seçim yapın. Bu alan, **doku ağ bileşeni** açılır listesinde **eş düğümler** ' i seçtiğinizde görüntülenir.
-    - **Fabrıc CA Kullanıcı adı**: doku CA kimlik doğrulaması için kullanılan Kullanıcı adını girin.
+        - **Sipariş hizmeti**: genel muhasebedeki işlem sıramasından sorumlu düğümler. Ağa hata toleransı sağlamak için düğüm sayısını seçin. Desteklenen sıra düğüm sayısı 3, 5 ve 7 ' dir.
+        - **Eş düğümler**: bağış cihazları ve akıllı sözleşmeleri barındıran düğümler. Gereksiniminize göre 1 ila 10 düğüm seçebilirsiniz.
+    - **Eş düğüm dünya durumu veritabanı**: Eş düğümleri için dünya durumu veritabanları. LevelDB, eş düğümüne katıştırılmış olan varsayılan durum veritabanıdır. Chaincode verilerini basit anahtar/değer çiftleri olarak depolar ve yalnızca anahtar, anahtar aralığı ve bileşik anahtar sorgularını destekler. Couşdb, chaincode veri değerleri JSON olarak modellendiği zaman zengin sorguları destekleyen, isteğe bağlı alternatif bir durum veritabanıdır. Bu alan, **doku ağ bileşeni** açılır listesinde **eş düğümler** ' i seçtiğinizde görüntülenir.
+    - **Fabrıc CA Kullanıcı adı**: doku sertifika yetkilisi, sertifika yetkilisini barındıran bir sunucu işlemini başlatıp başlatmanıza olanak tanır. Kimlikleri ve sertifikaları yönetmenizi sağlar. Şablonun bir parçası olarak dağıtılan her bir AKS kümesi, varsayılan olarak bir doku CA Pod 'ı olacaktır. Doku CA kimlik doğrulaması için kullanılan Kullanıcı adını girin.
     - **Fabrıc CA parolası**: doku CA kimlik doğrulaması için parolayı girin.
     - **Parolayı onaylayın**: doku CA parolasını onaylayın.
     - **Sertifikalar**: doku CA 'sını başlatmak için kendi kök sertifikalarınızı kullanmak Istiyorsanız, **doku CA 'sı Için kök sertifikayı karşıya yükle** seçeneğini belirleyin. Aksi halde, doku CA varsayılan olarak otomatik olarak imzalanan sertifikalar oluşturur.
@@ -96,11 +69,21 @@ Hiper muhasebe doku ağ bileşenlerinin dağıtımına başlamak için [Azure Po
     - **Kök sertifika özel anahtarı**: kök sertifikanın özel anahtarını karşıya yükleyin. Birleşik ortak ve özel anahtara sahip bir. pek sertifikanız varsa, bu sertifikaya de buradan yükleyin.
 
 
-6. Hiper muhasebe doku ağ bileşenlerinin ayarlanacağı temeldeki altyapı olan Azure Kubernetes hizmet kümesi yapılandırmasını tanımlamak için **aks kümesi ayarları** sekmesini seçin.
+6. Azure Kubernetes hizmet kümesi yapılandırmasını tanımlamak için **aks kümesi ayarları** sekmesini seçin. AKS kümesinde, hiper muhasebe doku ağı bileşenlerini çalıştırmak için yapılandırılmış çeşitli yığınlar vardır. Dağıtılan Azure kaynakları şunlardır:
+
+    - **Yapı Araçları**: hiper muhasebe doku bileşenlerini yapılandırmaktan sorumlu araçlar.
+    - **Orderer/peer Pod**: hiper muhasebe doku ağının düğümleri.
+    - **Proxy**: istemci uygulamalarının aks kümesiyle iletişim kurabildiği BIR NGNX proxy Pod 'si.
+    - **Fabrıc CA**: doku CA 'sını çalıştıran Pod.
+    - **PostgreSQL**: yapı CA kimliklerini tutan veritabanı örneği.
+    - **Anahtar Kasası**: doku CA kimlik bilgilerini ve müşteri tarafından sunulan kök sertifikaları kaydetmek için dağıtılan Azure Key Vault hizmetinin örneği. Kasa, şablonun sayısını işlemek için şablon dağıtımı yeniden denemesi durumunda kullanılır.
+    - **Yönetilen disk**: Azure yönetilen diskler hizmetinin, genel muhasebe ve eş düğümün dünya durumu veritabanı için kalıcı bir mağaza sağlayan örneği.
+    - **Genel IP**: kümeyle iletişim kurmak için dağıtılan aks kümesinin uç noktası.
+
+    Şu ayrıntıları girin: 
 
     ![Bir K S küme ayarları sekmesini gösteren ekran görüntüsü.](./media/hyperledger-fabric-consortium-azure-kubernetes-service/create-for-hyperledger-fabric-aks-cluster-settings-1.png)
 
-7. Şu ayrıntıları girin:
     - **Kubernetes küme adı**: gerekirse aks kümesinin adını değiştirin. Bu alan, sağlanmış kaynak ön ekine göre önceden doldurulur.
     - **Kubernetes sürümü**: kümede dağıtılacak Kubernetes sürümünü seçin. **Temel bilgiler** sekmesinde seçtiğiniz bölgeye bağlı olarak, kullanılabilir desteklenen sürümler değişebilir.
     - **DNS ön eki**: aks kümesi Için bir etki alanı adı SISTEMI (DNS) ad öneki girin. Kümeyi oluşturduktan sonra kapsayıcıları yönetirken Kubernetes API 'sine bağlanmak için DNS kullanırsınız.
@@ -294,7 +277,7 @@ Eş kuruluşun istemcisinden, belirtilen kanaldaki eş kuruluşa ait bağlantı 
 ./azhlf channel setAnchorPeers -c $CHANNEL_NAME -p <anchorPeersList> -o $PEER_ORG_NAME -u $PEER_ADMIN_IDENTITY --ordererOrg $ORDERER_ORG_NAME
 ```
 
-`<anchorPeersList>` , bir çapa eşi olarak ayarlanacak eş düğümlerinin boşlukla ayrılmış bir listesidir. Örneğin:
+`<anchorPeersList>` , bir çapa eşi olarak ayarlanacak eş düğümlerinin boşlukla ayrılmış bir listesidir. Örnek:
 
   - `<anchorPeersList>` `"peer1"` Yalnızca peer1 düğümünü bir bağlantı eşi olarak ayarlamak istiyor musunuz?
   - `<anchorPeersList>` `"peer1" "peer3"` Hem peer1 hem de peer3 düğümlerini bağlayıcı eşleri olarak ayarlamak istiyorsanız olarak ayarlayın.
@@ -334,7 +317,7 @@ Eş kuruluşa chaincode 'u yüklemek için aşağıdaki komutu çalıştırın.
 ```
 Komut, ortam değişkeninde ayarlanan eşdüzey kuruluşun tüm eşdüzey düğümlerine chaincode yükler `ORGNAME` . Kanalınıza iki veya daha fazla eş kurum varsa ve bunların tümüne chaincode yüklemek istiyorsanız, her eş kuruluş için bu komutu ayrı olarak çalıştırın.  
 
-Şu adımları uygulayın:  
+Şu adımları izleyin:  
 
 1.  `ORGNAME`' İ ayarlayın ve `USER_IDENTITY` `peerOrg1` komutuna göre `./azhlf chaincode install` komutunu çalıştırın.  
 2.  `ORGNAME`' İ ayarlayın ve `USER_IDENTITY` `peerOrg2` komutuna göre `./azhlf chaincode install` komutunu çalıştırın.  
@@ -351,7 +334,7 @@ Eş istemci uygulamasından, kanaldaki chaincode 'u başlatmak için aşağıdak
 
 Ayrıca, bayrağını kullanarak koleksiyonun yapılandırma JSON dosyasını da geçirebilirsiniz `--collections-config` . Ya da, `-t` özel işlemler için kullanılan chaincode örneklarken bayrağı kullanarak geçici bağımsız değişkenleri ayarlayın.
 
-Örneğin:
+Örnek:
 
 ```bash
 ./azhlf chaincode instantiate -c $CHANNEL_NAME -n $CC_NAME -v $CC_VERSION -o $ORGNAME -u $USER_IDENTITY --collections-config <collectionsConfigJSONFilePath>

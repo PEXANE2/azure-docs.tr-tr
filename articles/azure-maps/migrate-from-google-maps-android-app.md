@@ -3,18 +3,18 @@ title: Öğretici-Android uygulamasını geçirme | Microsoft Azure haritaları
 description: Android uygulamasını Google Maps 'tan Microsoft Azure Maps 'a geçirme öğreticisi
 author: rbrundritt
 ms.author: richbrun
-ms.date: 08/19/2020
+ms.date: 02/26/2021
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
-ms.custom: ''
-ms.openlocfilehash: 7f3d32a782c653b3be8b3d6f6714bc9065a73518
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+zone_pivot_groups: azure-maps-android
+ms.openlocfilehash: 3d160649008199233fa0b676d938470569a27853
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 03/04/2021
-ms.locfileid: "102042904"
+ms.locfileid: "102101503"
 ---
 # <a name="tutorial-migrate-an-android-app-from-google-maps"></a>Öğretici: Google Maps 'tan Android uygulaması geçirme
 
@@ -26,8 +26,6 @@ Azure Haritalar Android SDK, Web SDK 'sına benzer bir API arabirimine sahiptir.
 > * İşaretleyiciler, polylines ve çokgenler ekleyin.
 > * Döşeme katmanını kaplama
 > * Trafik verilerini gösterme
-
-Azure Maps Android SDK, API 21 ' in en düşük Android sürümünü destekler: Android 5.0.0 (Lollipop).
 
 Tüm örnekler Java 'da verilmiştir; Ancak, Azure Maps Android SDK Kotlin kullanabilirsiniz.
 
@@ -79,6 +77,8 @@ Android için Google Maps SDK 'sını kullanarak bir Haritayı göstermek için 
             android:layout_width="match_parent"
             android:layout_height="match_parent"/>
     ```
+
+::: zone pivot="programming-language-java-android"
 
 5. **MainActivity. Java** dosyasında Google Maps SDK 'sını içeri aktarmanız gerekir. Harita görünümünü içeren etkinlikten tüm yaşam döngüsü yöntemlerini Map sınıfındaki ilgili olanlarla iletin. `MapView`Yöntemini kullanarak harita parçasındaki bir örnek alın `getMapAsync(OnMapReadyCallback)` . , `MapView` Haritalar sistemini ve görünümünü otomatik olarak başlatır. **MainActivity. Java** dosyasını aşağıdaki gibi düzenleyin:
 
@@ -155,6 +155,77 @@ Android için Google Maps SDK 'sını kullanarak bir Haritayı göstermek için 
     }
     ```
 
+::: zone-end
+
+::: zone pivot="programming-language-kotlin"
+
+5. **MainActivity. kt** dosyasında Google Maps SDK 'sını içeri aktarmanız gerekir. Harita görünümünü içeren etkinlikten tüm yaşam döngüsü yöntemlerini Map sınıfındaki ilgili olanlarla iletin. `MapView`Yöntemini kullanarak harita parçasındaki bir örnek alın `getMapAsync(OnMapReadyCallback)` . , `MapView` Haritalar sistemini ve görünümünü otomatik olarak başlatır. **MainActivity. kt** dosyasını aşağıdaki gibi düzenleyin:
+
+    ```kotlin
+    import com.google.android.gms.maps.GoogleMap;
+    import com.google.android.gms.maps.MapView;
+    import com.google.android.gms.maps.OnMapReadyCallback;
+ 
+    import androidx.appcompat.app.AppCompatActivity
+    import android.os.Bundle
+
+    class MainActivity : AppCompatActivity() implements OnMapReadyCallback {
+    
+        var mapView: MapView? = null
+    
+        override fun onCreate(savedInstanceState: Bundle?) {
+            super.onCreate(savedInstanceState)
+            setContentView(R.layout.activity_main)
+    
+            mapView = findViewById(R.id.myMap)
+    
+            mapView?.onCreate(savedInstanceState)
+            mapView?.getMapAsync(this)
+        }
+
+        public fun onMapReady(GoogleMap map) {
+            //Add your post map load code here.
+        }
+    
+        public override fun onStart() {
+            super.onStart()
+            mapView?.onStart()
+        }
+    
+        public override fun onResume() {
+            super.onResume()
+            mapView?.onResume()
+        }
+    
+        public override fun onPause() {
+            mapView?.onPause()
+            super.onPause()
+        }
+    
+        public override fun onStop() {
+            mapView?.onStop()
+            super.onStop()
+        }
+    
+        override fun onLowMemory() {
+            mapView?.onLowMemory()
+            super.onLowMemory()
+        }
+    
+        override fun onDestroy() {
+            mapView?.onDestroy()
+            super.onDestroy()
+        }
+    
+        override fun onSaveInstanceState(outState: Bundle) {
+            super.onSaveInstanceState(outState)
+            mapView?.onSaveInstanceState(outState)
+        }
+    }
+    ```
+
+::: zone-end
+
 Bir uygulamayı çalıştırdığınızda, eşleme denetimi aşağıdaki görüntüde olduğu gibi yüklenir.
 
 ![Basit Google haritaları](media/migrate-google-maps-android-app/simple-google-maps.png)
@@ -165,7 +236,7 @@ Android için Azure Maps SDK 'sını kullanarak bir Haritayı göstermek için a
 
 1. En üst düzey **Build. Gradle** dosyasını açın ve aşağıdaki kodu **tüm projeler** engelleme bölümüne ekleyin:
 
-    ```java
+    ```gradel
     maven {
         url "https://atlas.microsoft.com/sdk/android"
     }
@@ -177,7 +248,7 @@ Android için Azure Maps SDK 'sını kullanarak bir Haritayı göstermek için a
 
     2. Aşağıdaki kodu Android bölümüne ekleyin:
 
-        ```java
+        ```gradel
         compileOptions {
             sourceCompatibility JavaVersion.VERSION_1_8
             targetCompatibility JavaVersion.VERSION_1_8
@@ -186,7 +257,7 @@ Android için Azure Maps SDK 'sını kullanarak bir Haritayı göstermek için a
 
     3. Bağımlılıklar bloğunu güncelleştirin. En son Azure Maps Android SDK için yeni bir uygulama bağımlılığı satırı ekleyin:
 
-        ```Java
+        ```gradel
         implementation "com.microsoft.azure.maps:mapcontrol:0.7"
         ```
 
@@ -214,6 +285,8 @@ Android için Azure Maps SDK 'sını kullanarak bir Haritayı göstermek için a
     </FrameLayout>
     ```
 
+::: zone pivot="programming-language-java-android"
+
 4. **MainActivity. Java** dosyasında şunları yapmanız gerekir:
 
     * Azure Haritalar SDK 'sını içeri aktarır
@@ -235,10 +308,9 @@ Android için Azure Maps SDK 'sını kullanarak bir Haritayı göstermek için a
 
     **MainActivity. Java** dosyasını aşağıdaki gibi düzenleyin:
 
-    ```Java
+    ```java
     package com.example.myapplication;
     
-    //For older versions use: import android.support.v7.app.AppCompatActivity; 
     import androidx.appcompat.app.AppCompatActivity;
     import com.microsoft.azure.maps.mapcontrol.AzureMaps;
     import com.microsoft.azure.maps.mapcontrol.MapControl;
@@ -316,6 +388,105 @@ Android için Azure Maps SDK 'sını kullanarak bir Haritayı göstermek için a
     }}
     ```
 
+::: zone-end
+
+::: zone pivot="programming-language-kotlin"
+
+4. **MainActivity. kt** dosyasında şunları yapmanız gerekir:
+
+    * Azure Haritalar SDK 'sını içeri aktarır
+    * Azure haritalar kimlik doğrulama bilgilerinizi ayarlama
+    * **OnCreate** yönteminde Map denetim örneğini al
+
+     `AzureMaps`Veya yöntemlerini kullanarak sınıfındaki kimlik doğrulama bilgilerini ayarlayın `setSubscriptionKey` `setAadProperties` . Bu genel güncelleştirme, kimlik doğrulama bilgilerinizi her görünüme eklemediğinizden emin olun.
+
+    Harita denetimi, Android 'ın OpenGL yaşam döngüsünü yönetmeye yönelik kendi yaşam döngüsü yöntemlerini içerir. Bu yöntemlerin doğrudan içerilen etkinlikten çağrılması gerekir. Harita denetiminin yaşam döngüsü yöntemlerini doğru şekilde çağırmak için, eşleme denetimini içeren etkinliğin aşağıdaki yaşam döngüsü yöntemlerini geçersiz kılmanız gerekir. İlgili harita denetim yöntemini çağırın.
+
+    * `onCreate(Bundle)`
+    * `onStart()`
+    * `onResume()`
+    * `onPause()`
+    * `onStop()`
+    * `onDestroy()`
+    * `onSaveInstanceState(Bundle)`
+    * `onLowMemory()`
+
+    **MainActivity. kt** dosyasını aşağıdaki gibi düzenleyin:
+
+    ```kotlin
+    package com.example.myapplication;
+
+    import androidx.appcompat.app.AppCompatActivity
+    import android.os.Bundle
+    import com.microsoft.azure.maps.mapcontrol.AzureMap
+    import com.microsoft.azure.maps.mapcontrol.AzureMaps
+    import com.microsoft.azure.maps.mapcontrol.MapControl
+    import com.microsoft.azure.maps.mapcontrol.events.OnReady
+    
+    class MainActivity : AppCompatActivity() {
+    
+        companion object {
+            init {
+                AzureMaps.setSubscriptionKey("<Your Azure Maps subscription key>");
+    
+                //Alternatively use Azure Active Directory authenticate.
+                //AzureMaps.setAadProperties("<Your aad clientId>", "<Your aad AppId>", "<Your aad Tenant>");
+            }
+        }
+    
+        var mapControl: MapControl? = null
+    
+        override fun onCreate(savedInstanceState: Bundle?) {
+            super.onCreate(savedInstanceState)
+            setContentView(R.layout.activity_main)
+    
+            mapControl = findViewById(R.id.mapcontrol)
+    
+            mapControl?.onCreate(savedInstanceState)
+    
+            //Wait until the map resources are ready.
+            mapControl?.onReady(OnReady { map: AzureMap -> })
+        }
+    
+        public override fun onStart() {
+            super.onStart()
+            mapControl?.onStart()
+        }
+    
+        public override fun onResume() {
+            super.onResume()
+            mapControl?.onResume()
+        }
+    
+        public override fun onPause() {
+            mapControl?.onPause()
+            super.onPause()
+        }
+    
+        public override fun onStop() {
+            mapControl?.onStop()
+            super.onStop()
+        }
+    
+        override fun onLowMemory() {
+            mapControl?.onLowMemory()
+            super.onLowMemory()
+        }
+    
+        override fun onDestroy() {
+            mapControl?.onDestroy()
+            super.onDestroy()
+        }
+    
+        override fun onSaveInstanceState(outState: Bundle) {
+            super.onSaveInstanceState(outState)
+            mapControl?.onSaveInstanceState(outState)
+        }
+    }
+    ```
+
+::: zone-end
+
 Uygulamanızı çalıştırırsanız, eşleme denetimi aşağıdaki görüntüde olduğu gibi yüklenir.
 
 ![Basit Azure haritaları](media/migrate-google-maps-android-app/simple-azure-maps.png)
@@ -333,15 +504,39 @@ Hedef kitleniz birden fazla ülkeye/bölgeye yayıldığında veya farklı dille
 
 `onCreate`Eşleme dilini ayarlamak için yöntemine aşağıdaki kodu ekleyin. Haritanın bağlam görünümü ayarlamadan önce kodun eklenmesi gerekir. "Fr" dil kodu, dili Fransızca olarak sınırlandırır.
 
+::: zone pivot="programming-language-java-android"
+
 ```java
 String languageToLoad = "fr";
 Locale locale = new Locale(languageToLoad);
 Locale.setDefault(locale);
+
 Configuration config = new Configuration();
 config.locale = locale;
+
 getBaseContext().getResources().updateConfiguration(config,
         getBaseContext().getResources().getDisplayMetrics());
 ```
+
+::: zone-end
+
+::: zone pivot="programming-language-kotlin"
+
+```kotlin
+val languageToLoad = "fr"
+val locale = Locale(languageToLoad)
+Locale.setDefault(locale)
+
+val config = Configuration()
+config.locale = locale
+
+baseContext.resources.updateConfiguration(
+    config,
+    baseContext.resources.displayMetrics
+)
+```
+
+::: zone-end
 
 Dilde "fr" olarak ayarlanan Google Maps örneğine bir örnek aşağıda verilmiştir.
 
@@ -350,6 +545,8 @@ Dilde "fr" olarak ayarlanan Google Maps örneğine bir örnek aşağıda verilmi
 ### <a name="after-azure-maps"></a>Sonrasında: Azure Maps
 
 Azure haritalar, eşlemenin dilini ve bölgesel görünümünü ayarlamak için üç farklı yol sunar. İlk seçenek, dil ve bölgesel görünüm bilgilerini sınıfa geçirmektir `AzureMaps` . Bu seçenek, `setLanguage` `setView` genel olarak statik ve yöntemleri kullanır. Anlamı, varsayılan dil ve bölgesel görünüm, uygulamanızda yüklü olan tüm Azure haritalar denetimleri arasında ayarlanır. Bu örnek, "fr-FR" dil kodunu kullanarak Fransızca ayarlar.
+
+::: zone pivot="programming-language-java-android"
 
 ```java
 static {
@@ -363,6 +560,27 @@ static {
     AzureMaps.setView("Auto");
 }
 ```
+
+::: zone-end
+
+::: zone pivot="programming-language-kotlin"
+
+```kotlin
+companion object {
+    init {
+            //Set your Azure Maps Key.
+        AzureMaps.setSubscriptionKey("<Your Azure Maps Key>");
+    
+        //Set the language to be used by Azure Maps.
+        AzureMaps.setLanguage("fr-FR");
+    
+        //Set the regional view to be used by Azure Maps.
+        AzureMaps.setView("Auto");
+    }
+}
+```
+
+::: zone-end
 
 İkinci seçenek, dili geçirmektir ve harita denetimi XML koduna bilgileri görüntüler.
 
@@ -378,6 +596,8 @@ static {
 
 Üçüncü seçenek, eşleme yöntemi kullanılarak dili ve bölgesel harita görünümünü programlayadilleridir `setStyle` . Bu seçenek, dil ve bölgesel görünümü kod her yürütüldüğünde güncelleştirir.
 
+::: zone pivot="programming-language-java-android"
+
 ```java
 mapControl.onReady(map -> {
     map.setStyle(
@@ -386,6 +606,21 @@ mapControl.onReady(map -> {
     );
 });
 ```
+
+::: zone-end
+
+::: zone pivot="programming-language-kotlin"
+
+```kotlin
+mapControl!!.onReady { map: AzureMap ->
+    map.setStyle(
+        language("fr-FR"),
+        view("Auto")
+    )
+}
+```
+
+::: zone-end
 
 Bu dilin "fr-FR" olarak ayarlandığı Azure Maps örneği aşağıda verilmiştir.
 
@@ -401,6 +636,8 @@ Azure haritalar ve Google Maps içindeki dinamik haritalar, uygun yöntemleri ç
 
 Google Maps harita denetimi Kamerası, yöntemi kullanılarak programlı bir şekilde taşınabilir `moveCamera` . `moveCamera`Yöntemi, haritanın merkezini ve yakınlaştırma düzeyini belirtmenize olanak tanır. `setMapType`Yöntemi, harita türünü görüntülenecek şekilde değiştirir.
 
+::: zone pivot="programming-language-java-android"
+
 ```java
 @Override
 public void onMapReady(GoogleMap googleMap) {
@@ -410,6 +647,21 @@ public void onMapReady(GoogleMap googleMap) {
     mapView.setMapType(GoogleMap.MAP_TYPE_SATELLITE);
 }
 ```
+
+::: zone-end
+
+::: zone pivot="programming-language-kotlin"
+
+```kotlin
+public override fun onMapReady(googleMap: GoogleMap) {
+    mapView = googleMap
+
+    mapView.moveCamera(CameraUpdateFactory.newLatLngZoom(LatLng(35.0272, -111.0225), 15))
+    mapView.setMapType(GoogleMap.MAP_TYPE_SATELLITE)
+}
+```
+
+::: zone-end
 
 ![Google Maps kümesi görünümü](media/migrate-google-maps-android-app/google-maps-set-view.png)
 
@@ -436,6 +688,8 @@ Daha önce belirtildiği gibi, Azure Maps 'ta aynı görüntülenebilir alan eld
 
 Harita görünümü haritalar `setCamera` ve yöntemler kullanılarak programlanabilir `setStyle` .
 
+::: zone pivot="programming-language-java-android"
+
 ```java
 mapControl.onReady(map -> {
     //Set the camera of the map.
@@ -445,6 +699,22 @@ mapControl.onReady(map -> {
     map.setStyle(style(MapStyle.SATELLITE));
 });
 ```
+
+::: zone-end
+
+::: zone pivot="programming-language-kotlin"
+
+```kotlin
+mapControl!!.onReady { map: AzureMap ->
+    //Set the camera of the map.
+    map.setCamera(center(Point.fromLngLat(-111.0225, 35.0272)), zoom(14))
+
+    //Set the style of the map.
+    map.setStyle(style(MapStyle.SATELLITE))
+}
+```
+
+::: zone-end
 
 ![Azure haritalar kümesi görünümü](media/migrate-google-maps-android-app/azure-maps-set-view.png)
 
@@ -460,6 +730,8 @@ Nokta verileri genellikle haritadaki bir görüntü kullanılarak işlenir. Bu g
 
 Google Maps ile işaretçiler, Maps yöntemi kullanılarak eklenir `addMarker` .
 
+::: zone pivot="programming-language-java-android"
+
 ```java
 @Override
 public void onMapReady(GoogleMap googleMap) {
@@ -469,25 +741,61 @@ public void onMapReady(GoogleMap googleMap) {
 }
 ```
 
+::: zone-end
+
+::: zone pivot="programming-language-kotlin"
+
+```kotlin
+public override fun onMapReady(googleMap: GoogleMap) {
+    mapView = googleMap
+
+    mapView.addMarker(MarkerOptions().position(LatLng(47.64, -122.33)))
+}
+```
+
+::: zone-end
+
 ![Google Haritalar işaretçisi](media/migrate-google-maps-android-app/google-maps-marker.png)
 
 ### <a name="after-azure-maps"></a>Sonrasında: Azure Maps
 
 Azure haritalar 'da, önce verileri bir veri kaynağına ekleyerek haritada nokta verileri işleme. Ardından, bu veri kaynağını bir sembol katmanına bağlama. Veri kaynağı, harita denetimindeki uzamsal verilerin yönetimini iyileştirir. Sembol katmanı, nokta verilerinin görüntü veya metin olarak kullanılarak nasıl işleneceğini belirtir.
 
+::: zone pivot="programming-language-java-android"
+
 ```java
 mapControl.onReady(map -> {
     //Create a data source and add it to the map.
-    DataSource dataSource = new DataSource();
-    map.sources.add(dataSource);
+    DataSource source = new DataSource();
+    map.sources.add(source);
 
     //Create a point feature and add it to the data source.
-    dataSource.add(Feature.fromGeometry(Point.fromLngLat(-122.33, 47.64)));
+    source.add(Feature.fromGeometry(Point.fromLngLat(-122.33, 47.64)));
 
     //Create a symbol layer and add it to the map.
-    map.layers.add(new SymbolLayer(dataSource));
+    map.layers.add(new SymbolLayer(source));
 });
 ```
+
+::: zone-end
+
+::: zone pivot="programming-language-kotlin"
+
+```kotlin
+mapControl!!.onReady { map: AzureMap ->
+    //Create a data source and add it to the map.
+    val source = new DataSource()
+    map.sources.add(source)
+
+    //Create a point feature and add it to the data source.
+    source.add(Feature.fromGeometry(Point.fromLngLat(-122.33, 47.64)))
+
+    //Create a symbol layer and add it to the map.
+    map.layers.add(SymbolLayer(source))
+}
+```
+
+::: zone-end
 
 ![Azure haritalar işaretleyicisi](media/migrate-google-maps-android-app/azure-maps-marker.png)
 
@@ -504,6 +812,8 @@ Her iki örnekte de yukarıdaki görüntü, uygulamalar kaynaklarının çizileb
 
 Google Maps ile, işaretçiler için özel görüntüler kullanılabilir. İşaretleyici seçeneğini kullanarak özel görüntüleri yükleyin `icon` . Görüntünün noktasını koordinatya hizalamak için `anchor` seçeneğini kullanın. Tutturucu, görüntünün boyutlarına göredir. Bu durumda, bağlayıcı 0,2 birim genişliğinde ve 1 birim yüksekliğinde olur.
 
+::: zone pivot="programming-language-java-android"
+
 ```java
 @Override
 public void onMapReady(GoogleMap googleMap) {
@@ -515,31 +825,75 @@ public void onMapReady(GoogleMap googleMap) {
 }
 ```
 
+::: zone-end
+
+::: zone pivot="programming-language-kotlin"
+
+```kotlin
+public override fun onMapReady(googleMap: GoogleMap) {
+    mapView = googleMap;
+
+    mapView.addMarker(MarkerOptions().position(LatLng(47.64, -122.33))
+    .icon(BitmapDescriptorFactory.fromResource(R.drawable.yellow-pushpin))
+    .anchor(0.2f, 1f))
+}
+```
+
+::: zone-end
+
 ![Google Maps özel işaretçisi](media/migrate-google-maps-android-app/google-maps-custom-marker.png)
 
 ### <a name="after-azure-maps"></a>Sonrasında: Azure Maps
 
 Azure haritalar 'daki sembol katmanları özel görüntüleri destekler, ancak önce görüntünün harita kaynaklarına yüklenmesi ve benzersiz bir KIMLIK atanması gerekir. Ardından, sembol katmanının bu KIMLIĞE başvurması gerekir. Seçeneği kullanarak görüntüdeki doğru noktaya hizalamak için simgeyi kaydırın `iconOffset` . Simge boşluğu piksel cinsinden olur. Varsayılan olarak, fark görüntünün alt merkezine göredir, ancak bu fark değeri seçeneği kullanılarak ayarlanabilir `iconAnchor` . Bu örnek `iconAnchor` seçeneğini olarak ayarlar `"center"` . Bir simge sapmasını kullanarak, raptiye görüntüsünün noktasıyla hizalamak için görüntüyü beş piksel sağa ve 15 piksele taşıyın.
 
+::: zone pivot="programming-language-java-android"
+
 ```java
 mapControl.onReady(map -> {
     //Create a data source and add it to the map.
-    DataSource dataSource = new DataSource();
-    map.sources.add(dataSource);
+    DataSource source = new DataSource();
+    map.sources.add(source);
 
     //Create a point feature and add it to the data source.
-    dataSource.add(Feature.fromGeometry(Point.fromLngLat(-122.33, 47.64)));
+    source.add(Feature.fromGeometry(Point.fromLngLat(-122.33, 47.64)));
 
     //Load the custom image icon into the map resources.
     map.images.add("my-yellow-pin", R.drawable.yellow_pushpin);
 
     //Create a symbol that uses the custom image icon and add it to the map.
-    map.layers.add(new SymbolLayer(dataSource,
+    map.layers.add(new SymbolLayer(source,
         iconImage("my-yellow-pin"),
-        iconAnchor(AnchorType.CENTER
+        iconAnchor(AnchorType.CENTER),
         iconOffset(new Float[]{5f, -15f})));
 });
 ```
+
+::: zone-end
+
+::: zone pivot="programming-language-kotlin"
+
+```kotlin
+mapControl!!.onReady { map: AzureMap ->
+    //Create a data source and add it to the map.
+    val source = DataSource()
+    map.sources.add(source)
+
+    //Create a point feature and add it to the data source.
+    source.add(Feature.fromGeometry(Point.fromLngLat(-122.33, 47.64)))
+
+    //Load the custom image icon into the map resources.
+    map.images.add("my-yellow-pin", R.drawable.yellow_pushpin)
+
+    //Create a symbol that uses the custom image icon and add it to the map.
+    map.layers.add(SymbolLayer(source,
+        iconImage("my-yellow-pin"),
+        iconAnchor(AnchorType.CENTER),
+        iconOffset(arrayOf(0f, -1.5f))))
+}
+```
+
+::: zone-end
 
 ![Azure haritalar özel işaretçisi](media/migrate-google-maps-android-app/azure-maps-custom-marker.png)
 
@@ -551,6 +905,8 @@ Polylines, haritada bir çizgiyi veya yolu göstermek için kullanılır. Aşağ
 
 Google Maps ile sınıfını kullanarak bir çoklu çizgi işleme koyun `PolylineOptions` . Yöntemini kullanarak, çoklu çizgiyi haritaya ekleyin `addPolyline` . Seçeneğini kullanarak kontur rengini ayarlayın `color` . Seçeneğini kullanarak kontur genişliğini ayarlayın `width` . Seçeneğini kullanarak bir vuruş tire dizisi ekleyin `pattern` .
 
+::: zone pivot="programming-language-java-android"
+
 ```java
 @Override
 public void onMapReady(GoogleMap googleMap) {
@@ -558,18 +914,43 @@ public void onMapReady(GoogleMap googleMap) {
 
     //Create the options for the polyline.
     PolylineOptions lineOptions = new PolylineOptions()
-            .add(new LatLng(46, -123))
-            .add(new LatLng(49, -122))
-            .add(new LatLng(46, -121))
-            .color(Color.RED)
-            .width(10f)
-            .pattern(Arrays.<PatternItem>asList(
-                    new Dash(30f), new Gap(30f)));
+        .add(new LatLng(46, -123))
+        .add(new LatLng(49, -122))
+        .add(new LatLng(46, -121))
+        .color(Color.RED)
+        .width(10f)
+        .pattern(Arrays.<PatternItem>asList(
+                new Dash(30f), new Gap(30f)));
 
     //Add the polyline to the map.
     Polyline polyline = mapView.addPolyline(lineOptions);
 }
 ```
+
+::: zone-end
+
+::: zone pivot="programming-language-kotlin"
+
+```kotlin
+public override fun onMapReady(googleMap: GoogleMap) {
+    mapView = googleMap
+
+    //Create the options for the polyline.
+    val lineOptions = new PolylineOptions()
+        .add(new LatLng(46, -123))
+        .add(new LatLng(49, -122))
+        .add(new LatLng(46, -121))
+        .color(Color.RED)
+        .width(10f)
+        .pattern(Arrays.<PatternItem>asList(
+                new Dash(30f), new Gap(30f)))
+
+    //Add the polyline to the map.
+    val polyline = mapView.addPolyline(lineOptions)
+}
+```
+
+::: zone-end
 
 ![Google Haritalar çoklu çizgi](media/migrate-google-maps-android-app/google-maps-polyline.png)
 
@@ -579,11 +960,13 @@ Azure haritalar 'da çoklu çizgilerin çizgisini, `LineString` veya nesneleri o
 
 Azure Haritalar Web SDK 'sindeki kontur genişliği ve Dash dizisi "piksel" birimleri Google Maps hizmetindeki ile aynıdır. Aynı sonuçları oluşturmak için her iki aynı değeri de kabul edin.
 
+::: zone pivot="programming-language-java-android"
+
 ```java
 mapControl.onReady(map -> {
     //Create a data source and add it to the map.
-    DataSource dataSource = new DataSource();
-    map.sources.add(dataSource);
+    DataSource source = new DataSource();
+    map.sources.add(source);
 
     //Create an array of points.
     List<Point> points = Arrays.asList(
@@ -592,15 +975,44 @@ mapControl.onReady(map -> {
         Point.fromLngLat(-121, 46));
 
     //Create a LineString feature and add it to the data source.
-    dataSource.add(Feature.fromGeometry(LineString.fromLngLats(points)));
+    source.add(Feature.fromGeometry(LineString.fromLngLats(points)));
 
     //Create a line layer and add it to the map.
-    map.layers.add(new LineLayer(dataSource,
+    map.layers.add(new LineLayer(source,
         strokeColor("red"),
         strokeWidth(4f),
         strokeDashArray(new Float[]{3f, 3f})));
 });
 ```
+
+::: zone-end
+
+::: zone pivot="programming-language-kotlin"
+
+```kotlin
+mapControl!!.onReady { map: AzureMap ->
+    //Create a data source and add it to the map.
+    val source = DataSource()
+    map.sources.add(source)
+
+    //Create an array of points.
+    val points = Arrays.asList(
+        Point.fromLngLat(-123, 46),
+        Point.fromLngLat(-122, 49),
+        Point.fromLngLat(-121, 46))
+
+    //Create a LineString feature and add it to the data source.
+    source.add(Feature.fromGeometry(LineString.fromLngLats(points)))
+
+    //Create a line layer and add it to the map.
+    map.layers.add(LineLayer(source,
+        strokeColor("red"),
+        strokeWidth(4f),
+        strokeDashArray(new Float[]{3f, 3f})))
+}
+```
+
+::: zone-end
 
 ![Azure haritalar çoklu çizgi](media/migrate-google-maps-android-app/azure-maps-polyline.png)
 
@@ -611,6 +1023,8 @@ mapControl.onReady(map -> {
 ### <a name="before-google-maps"></a>Önce: Google Maps
 
 Google Maps ile sınıfı kullanarak bir çokgen işleme `PolygonOptions` . Yöntemini kullanarak çokgeni haritaya ekleyin `addPolygon` . Sırasıyla ve seçeneklerini kullanarak Fill ve Stroke renklerini `fillColor` ayarlayın `strokeColor` . Seçeneğini kullanarak kontur genişliğini ayarlayın `strokeWidth` .
+
+::: zone pivot="programming-language-java-android"
 
 ```java
 @Override
@@ -632,6 +1046,31 @@ public void onMapReady(GoogleMap googleMap) {
 }
 ```
 
+::: zone-end
+
+::: zone pivot="programming-language-kotlin"
+
+```kotlin
+public override fun onMapReady(googleMap: GoogleMap) {
+    mapView = googleMap;
+
+    //Create the options for the polygon.
+    val polygonOptions = PolygonOptions()
+        .add(new LatLng(46, -123))
+        .add(new LatLng(49, -122))
+        .add(new LatLng(46, -121))
+        .add(new LatLng(46, -123))  //Close the polygon.
+        .fillColor(Color.argb(128, 0, 128, 0))
+        .strokeColor(Color.RED)
+        .strokeWidth(5f)
+
+    //valAdd the polygon to the map.
+    Polygon polygon = mapView.addPolygon(polygonOptions)
+}
+```
+
+::: zone-end
+
 ![Google Haritalar Çokgen](media/migrate-google-maps-android-app/google-maps-polygon.png)
 
 ### <a name="after-azure-maps"></a>Sonrasında: Azure Maps
@@ -640,11 +1079,13 @@ Azure Maps ' de `Polygon` `MultiPolygon` bir veri kaynağına nesneler ekleyin v
 
 Azure Haritalar Web SDK 'sindeki kontur genişliği ve kesik çizgi dizisi "piksel" birimleri Google Maps 'taki ilgili birimlerle hizalanır. Her ikisi de aynı değerleri kabul edin ve aynı sonuçları üretir.
 
+::: zone pivot="programming-language-java-android"
+
 ```java
 mapControl.onReady(map -> {
     //Create a data source and add it to the map.
-    DataSource dataSource = new DataSource();
-    map.sources.add(dataSource);
+    DataSource source = new DataSource();
+    map.sources.add(source);
 
     //Create an array of point arrays to create polygon rings.
     List<List<Point>> rings = Arrays.asList(Arrays.asList(
@@ -654,19 +1095,53 @@ mapControl.onReady(map -> {
         Point.fromLngLat(-123, 46)));
 
     //Create a Polygon feature and add it to the data source.
-    dataSource.add(Feature.fromGeometry(Polygon.fromLngLats(rings)));
+    source.add(Feature.fromGeometry(Polygon.fromLngLats(rings)));
 
     //Add a polygon layer for rendering the polygon area.
-    map.layers.add(new PolygonLayer(dataSource,
+    map.layers.add(new PolygonLayer(source,
         fillColor("green"),
         fillOpacity(0.5f)));
 
     //Add a line layer for rendering the polygon outline.
-    map.layers.add(new LineLayer(dataSource,
+    map.layers.add(new LineLayer(source,
         strokeColor("red"),
         strokeWidth(2f)));
 });
 ```
+
+::: zone-end
+
+::: zone pivot="programming-language-kotlin"
+
+```kotlin
+mapControl!!.onReady { map: AzureMap ->
+    //Create a data source and add it to the map.
+    val source = DataSource()
+    map.sources.add(source)
+
+    //Create an array of point arrays to create polygon rings.
+    val rings = Arrays.asList(Arrays.asList(
+        Point.fromLngLat(-123, 46),
+        Point.fromLngLat(-122, 49),
+        Point.fromLngLat(-121, 46),
+        Point.fromLngLat(-123, 46)))
+
+    //Create a Polygon feature and add it to the data source.
+    source.add(Feature.fromGeometry(Polygon.fromLngLats(rings)))
+
+    //Add a polygon layer for rendering the polygon area.
+    map.layers.add(PolygonLayer(source,
+        fillColor("green"),
+        fillOpacity(0.5f)))
+
+    //Add a line layer for rendering the polygon outline.
+    map.layers.add(LineLayer(source,
+        strokeColor("red"),
+        strokeWidth(2f)))
+}
+```
+
+::: zone-end
 
 ![Azure haritalar Çokgen](media/migrate-google-maps-android-app/azure-maps-polygon.png)
 
@@ -678,7 +1153,9 @@ Aşağıdaki örnekler, Iowa çevresel Mesonet of Iowa çevre bir hava durumu ra
 
 ### <a name="before-google-maps"></a>Önce: Google Maps
 
-Google Maps ile, bir döşeme katmanı haritanın üstünde yer alabilir. Sınıfını kullanın `TileOverlayOptions` . Yöntemi kullanarak haritaya kutucuk katmanını ekleyin `addTileLauer` . Kutucukları yarı saydam hale getirmek için, `transparency` seçenek 0,2 olarak veya %20 saydam olarak ayarlanır.
+Google Maps ile, bir döşeme katmanı haritanın üstünde yer alabilir. Sınıfını kullanın `TileOverlayOptions` . Yöntemi kullanarak haritaya kutucuk katmanını ekleyin `addTileLayer` . Kutucukları yarı saydam hale getirmek için, `transparency` seçenek 0,2 olarak veya %20 saydam olarak ayarlanır.
+
+::: zone pivot="programming-language-java-android"
 
 ```java
 @Override
@@ -705,6 +1182,38 @@ public void onMapReady(GoogleMap googleMap) {
 }
 ```
 
+::: zone-end
+
+::: zone pivot="programming-language-kotlin"
+
+```kotlin
+public override fun onMapReady(googleMap: GoogleMap) {
+    mapView = googleMap
+    //Create the options for the tile layer.
+    val tileLayer: TileOverlayOptions = TileOverlayOptions()
+        .tileProvider(object : UrlTileProvider(256, 256) {
+            fun getTileUrl(x: Int, y: Int, zoom: Int): URL? {
+                return try { //Define the URL pattern for the tile images.
+                    URL(
+                        String.format(
+                            "https://mesonet.agron.iastate.edu/cache/tile.py/1.0.0/nexrad-n0q-900913/%d/%d/%d.png",
+                            zoom,
+                            x,
+                            y
+                        )
+                    )
+                } catch (e: MalformedURLException) {
+                    throw AssertionError(e)
+                }
+            }
+        }).transparency(0.2f)
+    //Add the tile layer to the map.
+    mapView.addTileOverlay(tileLayer)
+}
+```
+
+::: zone-end
+
 ![Google Maps kutucuk katmanı](media/migrate-google-maps-android-app/google-maps-tile-layer.png)
 
 ### <a name="after-azure-maps"></a>Sonrasında: Azure Maps
@@ -713,6 +1222,8 @@ Bir kutucuk katmanı, diğer herhangi bir katmanda benzer bir şekilde haritaya 
 
 > [!TIP]
 > Azure haritalar 'da, temel harita katmanları dahil olmak üzere diğer katmanların altında katmanları işlemek kullanışlı olur. Ayrıca, daha kolay okunabilmeleri için harita etiketlerinin altında döşeme katmanlarını işlemek tercih edilir. `map.layers.add`Yöntemi, aşağıdaki yeni katmanın ekleneceği katmanın kimliği olan ikinci bir parametreyi alır. Harita etiketlerinin altına bir kutucuk katmanı eklemek için aşağıdaki kod kullanılabilir: `map.layers.add(myTileLayer, "labels");`
+
+::: zone pivot="programming-language-java-android"
 
 ```java
 mapControl.onReady(map -> {
@@ -725,6 +1236,23 @@ mapControl.onReady(map -> {
 });
 ```
 
+::: zone-end
+
+::: zone pivot="programming-language-kotlin"
+
+```kotlin
+mapControl!!.onReady { map: AzureMap ->
+    //Add a tile layer to the map, below the map labels.
+    map.layers.add(TileLayer(
+        tileUrl("https://mesonet.agron.iastate.edu/cache/tile.py/1.0.0/nexrad-n0q-900913/{z}/{x}/{y}.png"),
+        opacity(0.8f),
+        tileSize(256)
+    ), "labels")
+}
+```
+
+::: zone-end
+
 ![Azure haritalar kutucuk katmanı](media/migrate-google-maps-android-app/azure-maps-tile-layer.png)
 
 ## <a name="show-traffic"></a>Trafiği gösterme
@@ -735,6 +1263,8 @@ Hem Azure Maps hem de Google Maps, trafik verilerinin yer paylaşımı için se�
 
 Google Maps ile trafik akışı verileri haritanın en üstünde, eşlemenin yöntemine doğru geçirerek kaplama bulunabilir `setTrafficEnabled` .
 
+::: zone pivot="programming-language-java-android"
+
 ```java
 @Override
 public void onMapReady(GoogleMap googleMap) {
@@ -744,11 +1274,27 @@ public void onMapReady(GoogleMap googleMap) {
 }
 ```
 
+::: zone-end
+
+::: zone pivot="programming-language-kotlin"
+
+```kotlin
+public override fun onMapReady(googleMap: GoogleMap) {
+    mapView = googleMap
+
+    mapView.setTrafficEnabled(true)
+}
+```
+
+::: zone-end
+
 ![Google Haritalar trafiği](media/migrate-google-maps-android-app/google-maps-traffic.png)
 
 ### <a name="after-azure-maps"></a>Sonrasında: Azure Maps
 
 Azure haritalar, trafiği görüntülemek için çeşitli farklı seçenekler sağlar. Yol kapanışları ve kazalardan dolayı gibi trafik olayları haritada simgeler olarak görüntülenebilir. Trafik akışı ve renk kodlu yollar haritada yer alabilir. Renkler, normal beklenen gecikmeye veya mutlak gecikmeye göre, postalanan hız sınırına göre görüntülenecek şekilde değiştirilebilir. Azure haritalar 'daki olay verileri dakikada bir güncelleştirilir ve akış verileri her iki dakikada bir güncelleştirilir.
+
+::: zone pivot="programming-language-java-android"
 
 ```java
 mapControl.onReady(map -> {
@@ -757,6 +1303,20 @@ mapControl.onReady(map -> {
         flow(TrafficFlow.RELATIVE));
 });
 ```
+
+::: zone-end
+
+::: zone pivot="programming-language-kotlin"
+
+```kotlin
+mapControl!!.onReady { map: AzureMap ->
+    map.setTraffic(
+        incidents(true),
+        flow(TrafficFlow.RELATIVE))
+}
+```
+
+::: zone-end
 
 ![Azure haritalar trafiği](media/migrate-google-maps-android-app/azure-maps-traffic.png)
 

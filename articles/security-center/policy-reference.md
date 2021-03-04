@@ -7,12 +7,12 @@ author: memildin
 ms.author: memildin
 ms.service: security-center
 ms.custom: subject-policy-reference
-ms.openlocfilehash: 3b5860cc4ada88e2e7c7813e3441db3ec89f31af
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: b80ceffe22c797d46b82ec33a47c726d68bf4cdb
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101729933"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102099837"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-security-center"></a>Azure Güvenlik Merkezi için Azure İlkesi yerleşik tanımları
 
@@ -44,13 +44,4 @@ Güvenlik Merkezi tarafından izlenen yerleşik ilkeler hakkında bilgi edinmek 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu makalede, güvenlik merkezi 'nde Azure Ilkesi güvenlik ilkesi tanımları hakkında bilgi edindiniz. Daha fazla bilgi için aşağıdaki makalelere bakın.
-
-- Yerleşik ilkeleri görmek için [Azure İlkesi GitHub deposuna](https://github.com/Azure/azure-policy) gidin.
-- [Azure İlkesi tanımı yapısını](../governance/policy/concepts/definition-structure.md) gözden geçirin.
-- [İlkenin etkilerini anlama](../governance/policy/concepts/effects.md) konusunu gözden geçirin.
-- [Azure Güvenlik Merkezi planlama ve işlemler Kılavuzu](./security-center-planning-and-operations-guide.md): Azure Güvenlik Merkezi 'nde tasarım konularını planlama ve anlama hakkında bilgi edinin.
-- [Azure Güvenlik Merkezi'nde güvenlik durumunu izleme](./security-center-monitoring.md): Azure kaynaklarınızın sistem durumunu nasıl izleyeceğiniz hakkında bilgi edinin.
-- [Azure Güvenlik Merkezi'nde güvenlik uyarılarını yönetme ve ele alma](./security-center-managing-and-responding-alerts.md): Güvenlik uyarılarını yönetme ve ele alma hakkında bilgi edinin.
-- [Azure Güvenlik Merkezi ile iş ortağı çözümlerini izleme](./security-center-partner-integration.md): İş ortağı çözümlerinizin sistem durumunu nasıl izleyeceğiniz hakkında bilgi edinin.
-- [Azure ilkesi](../governance/policy/overview.md): Azure kaynaklarınızı denetleme ve yönetme hakkında bilgi edinin.
+Bu makalede, güvenlik merkezi 'nde Azure Ilkesi güvenlik ilkesi tanımları hakkında bilgi edindiniz. Girişimler, ilkeler ve Güvenlik Merkezi 'nin önerilerini nasıl birbirleriyle ilgili daha fazla bilgi edinmek için bkz. [güvenlik ilkeleri, girişimler ve öneriler nelerdir?](security-policy-concept.md).

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/07/2021
 ms.author: memildin
-ms.openlocfilehash: b18b498f250e9ff62180ba21c3bcbda562b13b8c
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: be37f2d361b6bb164a3e01b9ac6f115294137dd0
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101735871"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102099548"
 ---
 # <a name="use-adaptive-application-controls-to-reduce-your-machines-attack-surfaces"></a>Makinelerinizin saldırı yüzeylerini azaltmak için uyarlamalı uygulama denetimleri kullanma
 
@@ -193,6 +193,12 @@ Sorunları düzeltmek için:
 
 1. Daha fazla ayrıntı ve etkilenen makinelerin listesi için bir uyarı seçin.
 
+    Uyarılar sayfası uyarıların daha ayrıntılı ayrıntılarını gösterir ve tehdidi hafifletmek için öneriler içeren bir **eylem al** bağlantısı sağlar.
+
+    :::image type="content" source="media/security-center-adaptive-application/adaptive-application-alerts-start-time.png" alt-text="Uyarlamalı uygulama denetimleri uyarılarının başlangıç saati ":::
+
+    > [!NOTE]
+    > Uyarlamalı uygulama denetimleri her on iki saatte bir olay hesaplar. Uyarılar sayfasında gösterilen "etkinlik başlangıç saati", uyarlamalı uygulama denetimlerinin şüpheli işlemin etkin olduğu zamandan **değil** , uyarı oluşturduğu süredir.
 
 
 ## <a name="move-a-machine-from-one-group-to-another"></a>Bir makineyi bir gruptan diğerine taşıma

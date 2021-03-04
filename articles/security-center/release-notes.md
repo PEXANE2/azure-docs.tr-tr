@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/18/2021
 ms.author: memildin
-ms.openlocfilehash: e34d5520e13d45d15079a5f11775d2ef930fc62a
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 327103df21dd34347439a833d7ac4b8a21dc66b4
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101727099"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102099854"
 ---
 # <a name="whats-new-in-azure-security-center"></a>Azure Güvenlik Merkezi 'ndeki yenilikler nelerdir?
 
@@ -277,7 +277,7 @@ Bir kullanıcının güvenlik merkezi verilerini görme izni yoksa, kuruluşunuz
 
 :::image type="content" source="media/security-center-management-groups/request-tenant-permissions.png" alt-text="Kullanıcıya kiracı genelinde izinler isteyebilecekleri bir başlık bildiren başlık.":::
 
-[Sizinki yetersiz olduğunda kiracı genelinde Izin iste](security-center-management-groups.md#request-tenant-wide-permissions-when-yours-are-insufficient) hakkında daha fazla bilgi edinin.
+[Sizinki yetersiz olduğunda kiracı genelinde Izin iste](tenant-wide-permissions-management.md#request-tenant-wide-permissions-when-yours-are-insufficient)hakkında daha fazla bilgi edinin.
 
 
 ### <a name="35-preview-recommendations-added-to-increase-coverage-of-azure-security-benchmark"></a>Azure Güvenlik kıyaslamasının kapsamını artırmak için 35 önizleme önerisi eklendi
@@ -339,7 +339,7 @@ Sürekli dışarı aktarma tanımladığınızda dışa aktarma sıklığını a
 - **Akış** – bir kaynağın sistem durumu güncelleştirildiğinde değerlendirmeler gerçek zamanlı olarak gönderilir (hiçbir güncelleştirme gerçekleşmezse, hiçbir veri gönderilmez).
 - **Anlık görüntüler** : tüm yasal uyumluluk değerlendirmelerinin geçerli durumunun bir anlık görüntüsü her hafta gönderilir (Bu, güvenli puanlar ve mevzuat uyumluluk verilerinin haftalık anlık görüntüleri için bir önizleme özelliğidir).
 
-[Güvenlik Merkezi verilerini sürekli dışa aktarma](continuous-export.md) bölümünde bu özelliğin tüm özellikleri hakkında daha fazla bilgi edinin
+[Güvenlik Merkezi verilerini sürekli dışa aktarma](continuous-export.md)bölümünde bu özelliğin tam özellikleri hakkında daha fazla bilgi edinin.
 
 ## <a name="december-2020"></a>Aralık 2020
 
@@ -393,7 +393,7 @@ SQL için Azure Defender 'ın Azure SYNAPSE Analytics SQL havuzları desteği, A
 
 **Genel yönetici** Azure Active Directory rolüne sahip bir kullanıcının kiracı genelinde sorumlulukları olabilir, ancak Azure Güvenlik Merkezi 'nde kuruluş genelinde bilgileri görüntülemek için Azure izinlerinin olmaması gerekir. 
 
-Kendi kiracı düzeyi izinlerini atamak için, [kiracı genelindeki izinleri kendinize verme](security-center-management-groups.md#grant-tenant-wide-permissions-to-yourself)bölümündeki yönergeleri izleyin.
+Kendi kiracı düzeyi izinlerini atamak için, [kiracı genelindeki izinleri kendinize verme](tenant-wide-permissions-management.md#grant-tenant-wide-permissions-to-yourself)bölümündeki yönergeleri izleyin.
 
 
 ### <a name="two-new-azure-defender-plans-azure-defender-for-dns-and-azure-defender-for-resource-manager-in-preview"></a>İki yeni Azure Defender planı: DNS için Azure Defender ve Kaynak Yöneticisi için Azure Defender (önizlemede)

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/08/2020
 ms.author: memildin
-ms.openlocfilehash: dabd7e9e2c3c74225efc4611c7ad3523a6c76ba5
-ms.sourcegitcommit: 02ed9acd4390b86c8432cad29075e2204f6b1bc3
+ms.openlocfilehash: 6222491d35317e549a3d21f29395b9c25813ea9f
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/29/2020
-ms.locfileid: "97807999"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102100364"
 ---
 # <a name="remediate-recommendations-in-azure-security-center"></a>Azure Güvenlik Merkezi'nde düzeltme önerileri
 
@@ -81,5 +81,5 @@ Düzeltme işlemi, kaynak üzerinde yapılandırmayı uygulamak için bir şablo
 
 Bu belgede, güvenlik merkezi 'nde önerilerin nasıl düzeltileceği gösterildi. Güvenlik Merkezi hakkında daha fazla bilgi edinmek için aşağıdaki sayfalara bakın:
 
-* [Azure Güvenlik Merkezi 'nde güvenlik Ilkelerini ayarlama](tutorial-security-policy.md) -Azure abonelikleriniz ve kaynak gruplarınız için güvenlik ilkelerini yapılandırma hakkında bilgi edinin.
-* [Azure Güvenlik Merkezi 'Nde güvenlik durumu izleme](security-center-monitoring.md) -Azure kaynaklarınızın sistem durumunu izlemeyi öğrenin.
+* [Azure Güvenlik Merkezi 'nde güvenlik Ilkelerini ayarlama](tutorial-security-policy.md) -Azure abonelikleriniz ve kaynak gruplarınız için güvenlik ilkelerini yapılandırma hakkında bilgi edinin
+* [Güvenlik ilkeleri, girişimler ve öneriler nelerdir?](security-policy-concept.md)

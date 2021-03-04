@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/10/2020
 ms.author: memildin
-ms.openlocfilehash: 31472b0a0eedee03d5cfcb6ff47a97033a8c78e0
-ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
+ms.openlocfilehash: 9db276425d510316c41126f8e942a1e2a362ea35
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98796075"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102101299"
 ---
 # <a name="enable-security-center-on-all-subscriptions-in-a-management-group"></a>Yönetim grubundaki tüm aboneliklerde güvenlik merkezini etkinleştir
 
@@ -60,7 +60,7 @@ Azure Ilke tanımını değiştirmek için seçebileceğiniz çeşitli yollar va
     Sağlanan tanım, aşağıdaki ' fiyatlandırma ' *ayarlarından birini uyumlu olarak tanımlar.* ' Standard ' veya ' Free ' olarak ayarlanan bir aboneliğin uyumlu olduğu anlamına gelir.
 
     > [!TIP]
-    > Bir Azure Defender planı etkinleştirildiğinde, ' standart ' ayarında olduğu gibi tanımlanır. Devre dışı bırakıldığında, ' ücretsiz ' olur. [Azure Defender planları hakkında daha fazla bilgi edinin](security-center-pricing.md).
+    > Bir Azure Defender planı etkinleştirildiğinde, bu, ' standart ' ayarında olduğu gibi bir ilke tanımında açıklanmaktadır. Devre dışı bırakıldığında, ' ücretsiz ' olur. Bu planlar arasındaki farklar hakkında bilgi edinmek için bkz. [Security Center Ücretsiz vs Azure Defender etkin](security-center-pricing.md). 
 
     ```
     "existenceCondition": {
@@ -98,4 +98,4 @@ Azure Ilke tanımını değiştirmek için seçebileceğiniz çeşitli yollar va
 Artık bir yönetim grubunun tamamını eklendi, Azure Defender 'ın gelişmiş korumalarını etkinleştirin. 
 
 > [!div class="nextstepaction"]
-> [Azure Defender’ı etkinleştirme](security-center-pricing.md#enable-azure-defender)
+> [Azure Defender’ı etkinleştirme](enable-azure-defender.md)

@@ -7,12 +7,12 @@ ms.date: 12/07/2020
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 922189909da21aac65d1e2e898df58598868b929
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 903853f9f37921a68c918d09a94087548b5c562c
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100590469"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102100670"
 ---
 # <a name="introduction-to-azure-defender-for-resource-manager"></a>Kaynak Yöneticisi için Azure Defender 'a giriş
 
@@ -20,15 +20,15 @@ ms.locfileid: "100590469"
 
 Bulut yönetimi katmanı, tüm bulut kaynaklarınıza bağlı olan önemli bir hizmettir. Bu nedenle, saldırganlar için de potansiyel bir hedeftir. Sonuç olarak, güvenlik işlemleri ekiplerinin kaynak yönetimi katmanını yakından izlemesini öneririz. 
 
-Kaynak Yöneticisi için Azure Defender, kuruluşunuzdaki kaynak yönetimi işlemlerini otomatik olarak izleyerek Azure portal, Azure REST API 'Leri, Azure CLı veya diğer Azure programlı istemcileri aracılığıyla gerçekleştirilirler. Azure Defender, tehditleri tespit etmek ve şüpheli etkinliklerle ilgili sizi uyarmak için gelişmiş güvenlik analizlerini çalıştırır.
+Kaynak Yöneticisi için Azure Defender, kuruluşunuzdaki kaynak yönetimi işlemlerini otomatik olarak izleyerek Azure portal, Azure REST API 'Leri, Azure CLı veya diğer Azure programlı istemcileri aracılığıyla gerçekleştirilirler. Azure Defender, tehditleri tespit etmek ve şüpheli etkinliklerle ilgili uyarı almak için gelişmiş güvenlik analizlerini çalıştırır.
 
 ## <a name="availability"></a>Kullanılabilirlik
 
 |Görünüş|Ayrıntılar|
 |----|:----|
 |Yayın durumu:|Önizleme<br>[!INCLUDE [Legalese](../../includes/security-center-preview-legal-text.md)] |
-|Fiyat|**Kaynak Yöneticisi Için Azure Defender** , [fiyatlandırma sayfasında](security-center-pricing.md) gösterildiği gibi faturalandırılır|
-|Larının|![Yes](./media/icons/yes-icon.png) Ticari bulutlar<br>![No](./media/icons/no-icon.png) Ulusal/Sogeign (US Gov, Çin gov, diğer gov)|
+|Fiyat|**Kaynak Yöneticisi Için Azure Defender** , [Güvenlik Merkezi fiyatlandırması](https://azure.microsoft.com/pricing/details/security-center/) 'nda gösterildiği gibi faturalandırılır|
+|Larının|![Yes](./media/icons/yes-icon.png) Ticari bulutlar<br>![Hayır](./media/icons/no-icon.png) Ulusal/Sogeign (US Gov, Çin gov, diğer gov)|
 |||
 
 ## <a name="what-are-the-benefits-of-azure-defender-for-resource-manager"></a>Kaynak Yöneticisi için Azure Defender 'ın avantajları nelerdir?
@@ -75,4 +75,4 @@ Bu makalede, Kaynak Yöneticisi için Azure Defender hakkında bilgi edindiniz. 
 - Güvenlik uyarıları Güvenlik Merkezi tarafından üretilebilir veya Güvenlik Merkezi tarafından farklı güvenlik ürünlerinden alınabilir. Bu uyarıların tümünü Azure Sentinel 'e, herhangi bir üçüncü taraf SıEM 'e veya herhangi bir harici araca aktarmak için [uyarıları BIR SıEM 'ye aktarma](continuous-export.md)konusundaki yönergeleri izleyin.
 
 - > [!div class="nextstepaction"]
-    > [Azure Defender’ı etkinleştirme](security-center-pricing.md#enable-azure-defender)
+    > [Azure Defender’ı etkinleştirme](enable-azure-defender.md)

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/11/2019
 ms.author: memildin
-ms.openlocfilehash: d76ecc55c2e156199b2db789721946fd1f36de27
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: 493a06e85ad6c8260c342cf8167386394835b1c6
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96922910"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102099497"
 ---
 # <a name="cross-tenant-management-in-security-center"></a>Güvenlik Merkezi 'nde çapraz Kiracı Yönetimi
 
@@ -51,8 +51,4 @@ Görünümler ve eylemler temelde aynıdır. İşte bazı örnekler:
 - **Gelişmiş bulut savunma özelliklerini ve daha fazlasını yönetin**: [tam zamanında (JIT) VM erişimi](security-center-just-in-time.md), [Uyarlamalı ağ sağlamlaştırma](security-center-adaptive-network-hardening.md), [Uyarlamalı uygulama denetimleri](security-center-adaptive-application.md)ve daha fazlası gibi çeşitli tehdit koruması hizmetlerini yönetin.
  
 ## <a name="next-steps"></a>Sonraki adımlar
-Bu makalede, çapraz kiracı yönetiminin güvenlik merkezi 'nde nasıl çalıştığı açıklanmaktadır. Güvenlik Merkezi hakkında daha fazla bilgi edinmek için şunlara bakın:
-
-* [Azure Güvenlik Merkezi ile güvenlik duruşunuzu güçlendirin](security-center-monitoring.md) -Azure kaynaklarınızın sistem durumunu nasıl izleyeceğinizi öğrenin.
-* [Azure Güvenlik Merkezi hakkında SSS](faq-general.md) -hizmeti kullanma hakkında sık sorulan soruları bulun.
-* [Kurumsal senaryolarda Azure ışıklı kullanımı hakkında bilgi edinin](../lighthouse/concepts/enterprise.md) -Azure açık thouse 'ın birden çok Azure AD kiracısının kullanıldığı bir kuruluşta çapraz kiracı yönetimini nasıl basitleştireceğinizi öğrenin.
+Bu makalede, çapraz kiracı yönetiminin güvenlik merkezi 'nde nasıl çalıştığı açıklanmaktadır. Azure 'un nasıl kullanılacağına ilişkin birden çok Azure AD kiracısı kullanan bir kuruluşta çapraz kiracı yönetimini nasıl basitleştirebileceğini öğrenmek için bkz. [Kurumsal senaryolarda Azure açık thouse](../lighthouse/concepts/enterprise.md).

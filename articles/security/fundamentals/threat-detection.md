@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/03/2021
 ms.author: terrylan
-ms.openlocfilehash: 79262b85e9591ae4b41e8467abdcbccb3804d4ec
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 81b2227ac519de4d03bb63907d14c23b9c34dc64
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100590353"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102101044"
 ---
 # <a name="azure-threat-protection"></a>Azure tehdit koruması
 
@@ -368,6 +368,6 @@ Azure Marketi 'nde bulunan Web uygulaması güvenlik duvarları örnekleri için
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Bugünün tehditlerine yanıt verme](../../security-center/security-center-alerts-overview.md#respond-threats): Azure kaynaklarınızı hedefleyen etkin tehditleri belirlemenize yardımcı olur ve hızla yanıt vermek için gereken öngörüleri sağlar.
+- [Bugünün tehditlerine yanıt verme](../../security-center/security-center-managing-and-responding-alerts.md): Azure kaynaklarınızı hedefleyen etkin tehditleri belirlemenize yardımcı olur ve hızla yanıt vermek için gereken öngörüleri sağlar.
 
 - [Azure SQL veritabanı tehdit algılama](https://azure.microsoft.com/blog/azure-sql-database-threat-detection-your-built-in-security-expert/): veritabanlarınıza yönelik olası tehditler hakkındaki kaygılarınızı ele almanıza yardımcı olur.

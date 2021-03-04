@@ -6,22 +6,25 @@ author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: how-to
-ms.date: 12/03/2020
+ms.date: 02/25/2021
 ms.author: memildin
-ms.openlocfilehash: 8d2b43ab57ea7a3b1dc1d13bcdea9932ccecb9dc
-ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
+zone_pivot_groups: manage-asc-initiatives
+ms.openlocfilehash: a39b79c6c209c0fc66edac846d5458475ec75810
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96559040"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102100874"
 ---
-# <a name="using-custom-security-policies"></a>Özel güvenlik ilkelerini kullanma
+# <a name="create-custom-security-initiatives-and-policies"></a>Özel güvenlik girişimleri ve ilkeleri oluşturma
 
 Azure Güvenlik Merkezi, sistem ve ortamınızın güvenliğini sağlamaya yardımcı olmak için güvenlik önerileri oluşturur. Bu öneriler, tüm müşterilere sağlanan genel, varsayılan güvenlik ilkesine dahil olan sektör en iyi uygulamalarına dayalıdır. Ayrıca, güvenlik merkezi 'nin sektör ve mevzuat standartları hakkında bilgi edinmeleri de gelebilir.
 
 Bu özellikle kendi *özel* girişimlerinizi ekleyebilirsiniz. Daha sonra ortamınız oluşturduğunuz ilkeleri izmazsa öneriler alacaksınız. Oluşturmakta olduğunuz özel girişimler, mevzuata uygunluk panosundaki yerleşik girişimlerle birlikte görünür ve bu da [yasal uyumluluğun geliştirilmesi](security-center-compliance-dashboard.md)öğreticide açıklanmıştır.
 
 [Azure ilkesi belgelerinde](../governance/policy/concepts/definition-structure.md#definition-location)açıklandığı gibi, özel girişimleriniz için bir konum belirttiğinizde, bir yönetim grubu veya abonelik olması gerekir. 
+
+::: zone pivot="azure-portal"
 
 ## <a name="to-add-a-custom-initiative-to-your-subscription"></a>Aboneliğinize özel bir girişim eklemek için 
 
@@ -68,6 +71,113 @@ Bu özellikle kendi *özel* girişimlerinizi ekleyebilirsiniz. Daha sonra ortam�
 1. İlkenize yönelik sonuç önerilerini görmek için kenar çubuğundan **öneriler** ' e tıklayarak öneriler sayfasını açın. Öneriler "özel" bir etiketle görüntülenir ve yaklaşık bir saat içinde kullanılabilir.
 
     [![Özel öneriler](media/custom-security-policies/custom-policy-recommendations.png)](media/custom-security-policies/custom-policy-recommendations-in-context.png#lightbox)
+
+::: zone-end
+
+::: zone pivot="rest-api"
+
+## <a name="configure-a-security-policy-in-azure-policy-using-the-rest-api"></a>Azure Ilkesinde REST API kullanarak bir güvenlik ilkesi yapılandırma
+
+Azure Güvenlik Merkezi, Azure Ilkesi ile yerel tümleştirmenin bir parçası olarak, ilke atamaları oluşturmak için Azure Ilkesinin REST API avantajlarından yararlanmanızı sağlar. Aşağıdaki yönergelerde, ilke atamalarının oluşturulması ve var olan atamaların özelleştirilmesi adım adım açıklanmaktadır. 
+
+Azure Ilkesinde önemli kavramlar: 
+
+- **İlke tanımı** bir kuraldır 
+
+- **Girişim** , ilke tanımlarının koleksiyonudur (kurallar) 
+
+- **Atama** , bir girişim veya ilkenin belirli bir kapsama (Yönetim grubu, abonelik vb.) bir uygulamasıdır. 
+
+Güvenlik Merkezi 'nin tüm güvenlik ilkelerini içeren yerleşik bir girişimi olan Azure Güvenlik kıyaslaması vardır. Güvenlik Merkezi 'nin Azure kaynaklarınızın ilkelerini değerlendirmek için, yönetim grubunda veya değerlendirmek istediğiniz abonelikte bir atama oluşturmanız gerekir.
+
+Yerleşik girişim, tüm güvenlik merkezi ilkelerinin varsayılan olarak etkinleştirilmiş olduğunu içerir. Yerleşik girişimden belirli ilkeleri devre dışı bırakmayı seçebilirsiniz. Örneğin, **Web uygulaması güvenlik duvarı** hariç tüm güvenlik merkezi ilkelerini uygulamak için, ilkenin efekt parametresinin değerini **devre dışı** olarak değiştirin.
+
+## <a name="api-examples"></a>API örnekleri
+
+Aşağıdaki örneklerde şu değişkenleri değiştirin:
+
+- **{scope}** ilkeyi uyguladığınız yönetim grubunun veya aboneliğin adını girin
+- **{Policyassignmentname}** ilgili ilke atamasının adını girin
+- **{Name}** adınızı veya ilke değişikliğini onaylayan yöneticinin adını girin
+
+Bu örnekte, yerleşik güvenlik merkezi girişiminin bir abonelikte veya yönetim grubunda nasıl atanacağı gösterilmektedir
+ 
+ ```
+    PUT  
+    https://management.azure.com/{scope}/providers/Microsoft.Authorization/policyAssignments/{policyAssignmentName}?api-version=2018-05-01 
+
+    Request Body (JSON) 
+
+    { 
+
+      "properties":{ 
+
+    "displayName":"Enable Monitoring in Azure Security Center", 
+
+    "metadata":{ 
+
+    "assignedBy":"{Name}" 
+
+    }, 
+
+    "policyDefinitionId":"/providers/Microsoft.Authorization/policySetDefinitions/1f3afdf9-d0c9-4c3d-847f-89da613e70a8", 
+
+    "parameters":{}, 
+
+    } 
+
+    } 
+ ```
+
+Bu örnekte, aşağıdaki ilkeler devre dışı bırakıldığında yerleşik güvenlik merkezi girişiminin bir abonelikte nasıl atanacağı gösterilmektedir: 
+
+- Sistem güncelleştirmeleri ("systemUpdatesMonitoringEffect") 
+
+- Güvenlik Yapılandırması ("systemConfigurationsMonitoringEffect") 
+
+- Endpoint Protection ("endpointProtectionMonitoringEffect") 
+
+ ```
+    PUT https://management.azure.com/{scope}/providers/Microsoft.Authorization/policyAssignments/{policyAssignmentName}?api-version=2018-05-01 
+    
+    Request Body (JSON) 
+    
+    { 
+    
+      "properties":{ 
+    
+    "displayName":"Enable Monitoring in Azure Security Center", 
+    
+    "metadata":{ 
+    
+    "assignedBy":"{Name}" 
+    
+    }, 
+    
+    "policyDefinitionId":"/providers/Microsoft.Authorization/policySetDefinitions/1f3afdf9-d0c9-4c3d-847f-89da613e70a8", 
+    
+    "parameters":{ 
+    
+    "systemUpdatesMonitoringEffect":{"value":"Disabled"}, 
+    
+    "systemConfigurationsMonitoringEffect":{"value":"Disabled"}, 
+    
+    "endpointProtectionMonitoringEffect":{"value":"Disabled"}, 
+    
+    }, 
+    
+     } 
+    
+    } 
+ ```
+Bu örnek, bir atamanın nasıl kaldırılacağını gösterir:
+ ```
+    DELETE   
+    https://management.azure.com/{scope}/providers/Microsoft.Authorization/policyAssignments/{policyAssignmentName}?api-version=2018-05-01 
+ ```
+
+::: zone-end
+
 
 ## <a name="enhance-your-custom-recommendations-with-detailed-information"></a>Ayrıntılı bilgilerle özel önerilerinizi geliştirin
 

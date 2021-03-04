@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 09/22/2020
 ms.author: allensu
 ms.custom: references_regions
-ms.openlocfilehash: 64432e2717057c1ff6bb09e0158ddb779d5b5373
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 272fb0a27cf57483af6c07373e35a30f7f6e1c4b
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101742611"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102101384"
 ---
 # <a name="cross-region-load-balancer-preview"></a>Bölgeler arası yük dengeleyici (Önizleme)
 
@@ -143,7 +143,7 @@ Bölgeler arası yük dengeleyici, trafiği uygun bölgesel yük dengeleyiciye y
 
 * Bir sistem durumu araştırması Şu anda yapılandırılamaz. Varsayılan bir sistem durumu araştırması, bölgesel yük dengeleyici ile ilgili kullanılabilirlik bilgilerini her 20 saniyede bir otomatik olarak toplar. 
 
-* Azure Kubernetes hizmeti (AKS) ile tümleştirme Şu anda kullanılamıyor. AKS ortak yük dengeleyicisiyle bir çapraz bölge yük dengeleyici dağıtıldığında bağlantı kaybı oluşur.
+* Azure Kubernetes hizmeti (AKS) ile tümleştirme Şu anda kullanılamıyor. Arka uçta AKS kümesi dağıtılan standart yük dengeleyiciye bir çapraz bölge yük dengeleyici dağıtırken bağlantı kaybı oluşur.
 
 ## <a name="pricing-and-sla"></a>Fiyatlandırma ve SLA
 Bölgeler arası yük dengeleyici, standart yük dengeleyicinin [SLA 'sını](https://azure.microsoft.com/support/legal/sla/load-balancer/v1_0/ ) paylaşır.

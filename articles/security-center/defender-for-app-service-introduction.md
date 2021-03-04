@@ -7,31 +7,43 @@ ms.date: 01/25/2021
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 2a3253d1ed8b0814fc20b3256a0f98d3aa0949f6
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: ec4ac5d355266a46b33d89fd25c2665493773f5d
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100393318"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102100823"
 ---
-# <a name="introduction-to-azure-defender-for-app-service"></a>App Service için Azure Defender 'a giriş
+# <a name="protect-your-web-apps-and-apis"></a>Web uygulamalarınızı ve API 'lerinizi koruma
+
+## <a name="prerequisites"></a>Önkoşullar
+
+Güvenlik Merkezi, App Service ile yerel olarak tümleşiktir ve dağıtım ve ekleme gereksinimini ortadan kaldırır; tümleştirme saydamdır.
+
+Azure App Service planınızı App Service Azure Defender ile korumak için şunları yapmanız gerekir:
+
+- Adanmış makinelerle ilişkili desteklenen bir App Service planı. Desteklenen planlar [kullanılabilirlik](#availability)bölümünde listelenmiştir.
+
+- Azure Defender, [hızlı başlangıç: Azure Defender 'ı etkinleştirme](enable-azure-defender.md)bölümünde açıklandığı gibi aboneliğinizde etkinleştirilmiştir.
+
+    > [!TIP]
+    > İsteğe bağlı olarak Azure Defender 'da (App Service için Azure Defender gibi) tek tek planları etkinleştirebilirsiniz.
+
+## <a name="availability"></a>Kullanılabilirlik
+
+| Görünüş                       | Ayrıntılar                                                                                                                                                                                        |
+|------------------------------|:-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Yayın durumu:               | Genel kullanılabilirlik (GA)                                                                                                                                                                      |
+| Fiyat                     | [App Service Için Azure Defender](azure-defender.md) , [Güvenlik Merkezi fiyatlandırması](https://azure.microsoft.com/pricing/details/security-center/) 'nda gösterildiği gibi faturalandırılır<br>Faturalandırma, tüm planlardaki toplam işlem örneklerine göre belirlenir       |
+| Desteklenen App Service planları: | [Tüm App Service planları](https://azure.microsoft.com/pricing/details/app-service/plans/) [, tüketim planındaki Azure işlevleri](../azure-functions/functions-scale.md)dışında desteklenir. |
+| Larının                      | ![Yes](./media/icons/yes-icon.png) Ticari bulutlar<br>![Hayır](./media/icons/no-icon.png) Ulusal/Sogeign (US Gov, Çin gov, diğer gov)                                                     |
+|                              |                                                                                                                                                                                                |
+
+## <a name="what-are-the-benefits-of-azure-defender-for-app-service"></a>App Service için Azure Defender 'ın avantajları nelerdir?
 
 Azure App Service, Web uygulamalarınızı ve API 'lerinizi oluşturmak ve barındırmak için tam olarak yönetilen bir platformdur. Platform tam olarak yönetildiğinden altyapı konusunda endişelenmenize gerek kalmaz. Kurumsal düzeyde performans, güvenlik ve uyumluluk gereksinimlerini karşılamak için yönetim, izleme ve operasyonel içgörüler sağlar. Daha fazla bilgi için bkz. [Azure App Service](https://azure.microsoft.com/services/app-service/).
 
 **App Service Için Azure Defender** , App Service üzerinde çalışan uygulamaları hedefleyen saldırıları belirlemek için bulutun ölçeğini kullanır. Saldırganlar, zayıf yanları bulmak ve yararlanmak için Web uygulamalarını araştırma. Belirli ortamlara yönlendirilmeden önce, Azure 'da çalışan uygulamalara yönelik istekler, incelendikleri ve günlüğe kaydedildiği çeşitli ağ geçitleri aracılığıyla yapılır. Bu veriler daha sonra kötüye kullanım ve saldırganlar tanımlamak ve daha sonra kullanılacak yeni desenler öğrenmek için kullanılır.
-
-
-## <a name="availability"></a>Kullanılabilirlik
-
-| Görünüş                       | Ayrıntılar                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
-|------------------------------|:---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Yayın durumu:               | Genel kullanılabilirlik (GA)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
-| Fiyat                     | [App Service Için Azure Defender](azure-defender.md) , [fiyatlandırma sayfasında](security-center-pricing.md) gösterildiği gibi faturalandırılır<br>Faturalandırma, tüm planlardaki toplam işlem örneklerine göre belirlenir|
-| Desteklenen App Service planları: | Tüm App Service planları desteklenir (bir özel durum ile aşağıya bakın). [App Service planları hakkında daha fazla bilgi edinin](https://azure.microsoft.com/pricing/details/app-service/plans/).<br>Tüketim planındaki Azure Işlevleri desteklenmez. [Azure işlevleri barındırma seçenekleri hakkında daha fazla bilgi edinin](../azure-functions/functions-scale.md).                                                                                                                                                                                                                                                                   |
-| Larının                      | ![Yes](./media/icons/yes-icon.png) Ticari bulutlar<br>![No](./media/icons/no-icon.png) Ulusal/Sogeign (US Gov, Çin gov, diğer gov)                                                                                                                                                                                                                                                                                                                                                                                 |
-|                              |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
-
-## <a name="what-are-the-benefits-of-azure-defender-for-app-service"></a>App Service için Azure Defender 'ın avantajları nelerdir?
 
 App Service için Azure Defender 'ı etkinleştirdiğinizde, bu Azure Defender planı tarafından sunulan aşağıdaki hizmetlerden hemen yararlanabilirsiniz:
 
@@ -77,19 +89,6 @@ Azure App Service uyarılarının tam listesi için bkz. [uyarıların başvuru 
 > [!NOTE]
 > Özel etki alanınız doğrudan bir App Service kaynağına işaret edemediğinde veya Defender, saldırgan DNS koruması etkinleştirildiğinden (özel etki alanını tanımlamak için Günlükler olmadığı için), Defender, sitelin DNS uyarılarını tetiklemeyebilir.
 
-## <a name="how-to-protect-your-azure-app-service-web-apps-and-apis"></a>Azure App Service Web uygulamalarınızı ve API 'lerinizi koruma
-
-Azure App Service planınızı App Service Azure Defender ile korumak için:
-
-1. Adanmış makinelerle ilişkili desteklenen bir App Service planına sahip olduğunuzdan emin olun. Desteklenen planlar, yukarıdaki [kullanılabilirlik](#availability)bölümünde listelenmiştir.
-
-2. Azure [Güvenlik Merkezi fiyatlandırması](security-center-pricing.md)bölümünde açıklandığı gibi aboneliğinizde **Azure Defender 'ı** etkinleştirin.
-
-    İsteğe bağlı olarak Azure Defender 'da (App Service için Azure Defender gibi) tek tek planları etkinleştirebilirsiniz.
-
-    Güvenlik Merkezi, App Service ile yerel olarak tümleşiktir ve dağıtım ve ekleme gereksinimini ortadan kaldırır; tümleştirme saydamdır.
-
-
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Bu makalede, App Service için Azure Defender hakkında bilgi edindiniz. 
@@ -100,4 +99,4 @@ Bu makalede, App Service için Azure Defender hakkında bilgi edindiniz.
 - Azure Defender App Service uyarıları listesi için, [Uyarı tablosuna](alerts-reference.md#alerts-azureappserv)bakın.
 - App Service planları hakkında daha fazla bilgi için bkz. [App Service planları](https://azure.microsoft.com/pricing/details/app-service/plans/).
 > [!div class="nextstepaction"]
-> [Azure Defender’ı etkinleştirme](security-center-pricing.md#enable-azure-defender)
+> [Azure Defender’ı etkinleştirme](enable-azure-defender.md)

@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 09/10/2019
 ms.author: memildin
-ms.openlocfilehash: 20241ad316da1c5d713617f3f371d02e2a4e6cc9
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: e49d8bcc55036b21f53720aab17be02edb114d4b
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100570833"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102100262"
 ---
 # <a name="azure-security-center-troubleshooting-guide"></a>Azure Güvenlik Merkezi Sorun Giderme Kılavuzu
 
@@ -81,7 +81,7 @@ Log Analytics aracısını bilgisayarınıza yüklerken farklı sonuçlar ürete
 
 **İzleme durumu**, Güvenlik Merkezi’nin otomatik sağlama için başlatılmış VM’leri ve bilgisayarları neden başarıyla izleyemediğini tanımlar. Aşağıdaki tabloda **İzleme durumu** değerleri, açıklamaları ve çözüm adımları gösterilmektedir.
 
-| İzleme durumu | Description | Çözüm adımları |
+| İzleme durumu | Açıklama | Çözüm adımları |
 |---|---|---|
 | Bekleyen aracı yüklemesi | Log Analytics Aracısı yüklemesi hala çalışıyor.  Yükleme birkaç saat sürebilir. | Otomatik yükleme işlemi tamamlanana kadar bekleyin. |
 | Güç durumu kapalı | VM durduruldu.  Log Analytics Aracısı yalnızca çalıştıran bir VM 'ye yüklenebilir. | VM’yi yeniden başlatın. |
@@ -141,7 +141,6 @@ Bu makalede sunulan yönergeler kullanılarak bazı sorunlar belirlenebilir, di�
 Bu belgede, Azure Güvenlik Merkezi'nde güvenlik ilkelerinin nasıl yapılandırılacağını öğrendiniz. Azure Güvenlik Merkezi hakkında daha fazla bilgi edinmek için şunlara bakın:
 
 * [Azure Güvenlik Merkezi Planlama ve İşlemler Kılavuzu](security-center-planning-and-operations-guide.md) - Azure Güvenlik Merkezi'ni benimsemek için tasarım ile ilgili dikkat edilmesi gerekenleri planlama ve anlama hakkında bilgi edinin.
-* [Azure Güvenlik Merkezi'nde güvenlik durumunu izleme](security-center-monitoring.md) - Azure kaynaklarınızın sistem durumunu nasıl izleyeceğiniz hakkında bilgi edinin
 * [Azure Güvenlik Merkezi'nde güvenlik uyarılarını yönetme ve yanıtlama](security-center-managing-and-responding-alerts.md) - Güvenlik uyarılarını yönetme ve yanıtlama hakkında bilgi edinin
 * [Azure Güvenlik Merkezi'ndeki güvenlik uyarılarını anlama](./security-center-alerts-overview.md)
 * [Öğretici: Güvenlik olaylarına yanıt verme](tutorial-security-incident.md)

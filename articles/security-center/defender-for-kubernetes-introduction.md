@@ -7,12 +7,12 @@ ms.date: 02/07/2021
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 0878686e203960a0b7f33c19cc64e82319997684
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 83d0215ebca9d60d61937cb20bb82c7ccb30aac1
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100590448"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102100636"
 ---
 # <a name="introduction-to-azure-defender-for-kubernetes"></a>Kubernetes için Azure Defender 'a giriş
 
@@ -29,7 +29,7 @@ Linux AKS düğümleriniz için ana bilgisayar düzeyinde tehdit algılama, sunu
 |Görünüş|Ayrıntılar|
 |----|:----|
 |Yayın durumu:|Genel kullanılabilirlik (GA)|
-|Fiyat|**Kubernetes Için Azure Defender** , [fiyatlandırma sayfasında](security-center-pricing.md) gösterildiği gibi faturalandırılır|
+|Fiyat|**Kubernetes Için Azure Defender** , [Güvenlik Merkezi fiyatlandırması](https://azure.microsoft.com/pricing/details/security-center/) 'nda gösterildiği gibi faturalandırılır|
 |Gerekli roller ve izinler:|**Güvenlik Yöneticisi** , uyarıları kapatabilir.<br>**Güvenlik okuyucusu** bulguları görüntüleyebilir.|
 |Larının|![Yes](./media/icons/yes-icon.png) Ticari bulutlar<br>![Yes](./media/icons/yes-icon.png) Ulusal/Sogeign (US Gov, Çin gov, diğer gov)|
 |||
@@ -79,7 +79,7 @@ Kümeleriniz zaten kapsayıcı Aracısı için Azure Izleyicisini çalıştırı
 Bu makalede, Kubernetes için Azure Defender dahil güvenlik merkezi 'nin Kubernetes koruması hakkında bilgi edindiniz. 
 
 > [!div class="nextstepaction"]
-> [Azure Defender’ı etkinleştirme](security-center-pricing.md#enable-azure-defender)
+> [Azure Defender’ı etkinleştirme](enable-azure-defender.md)
 
 İlgili malzemeler için aşağıdaki makalelere bakın: 
 

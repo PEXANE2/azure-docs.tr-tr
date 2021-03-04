@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/07/2021
 ms.author: memildin
-ms.openlocfilehash: eb70a31d0fa5f231bd0db8ca27517ce43fe1db28
-ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
+ms.openlocfilehash: 3b5204f1d390388c2dc9a10ac2ca0234f6b0499b
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "100007827"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102101350"
 ---
 # <a name="container-security-in-security-center"></a>Güvenlik Merkezi’nde kapsayıcı güvenliği
 
@@ -42,7 +42,7 @@ Güvenlik Merkezi 'nin kapsayıcı güvenliğinin bu temel yönlerini nasıl yar
 
 Aşağıdaki ekran görüntüsünde, varlık Envanteri sayfası ve Güvenlik Merkezi tarafından korunan çeşitli kapsayıcı kaynak türleri gösterilmektedir.
 
-:::image type="content" source="./media/container-security/container-security-tab.png" alt-text="Güvenlik Merkezi 'nin varlık envanteri sayfasında kapsayıcı ile ilgili kaynaklar" lightbox="./media/container-security/container-security-tab.png":::
+:::image type="content" source="./media/container-security/inventory-container-resources.png" alt-text="Güvenlik Merkezi 'nin varlık envanteri sayfasında kapsayıcı ile ilgili kaynaklar" lightbox="./media/container-security/inventory-container-resources.png":::
 
 ## <a name="vulnerability-management---scanning-container-images"></a>Güvenlik açığı yönetimi-kapsayıcı görüntülerini tarama
 
@@ -92,7 +92,7 @@ Bu özellik için görünebilen ilgili güvenlik merkezi önerilerinin ayrıntı
 
 ###  <a name="workload-protection-best-practices-using-kubernetes-admission-control"></a>İş yükü koruma en iyi-Kubernetes giriş denetimi kullanan uygulamalar
 
-Kubernetes kapsayıcılarınızın iş yüklerini korumaya yönelik bir dizi öneri için,  **Kubernetes Için Azure İlkesi eklentisi**' ni yükler. Ayrıca, [uzantıların otomatik sağlamasını etkinleştir](security-center-enable-data-collection.md#enable-auto-provisioning-of-extensions)bölümünde açıklandığı gibi bu eklentiyi otomatik olarak dağıtabilirsiniz. Eklenti için otomatik sağlama "açık" olarak ayarlandığında, uzantı tüm mevcut ve gelecekteki kümelerde (eklenti yükleme gereksinimlerini karşılayan) varsayılan olarak etkinleştirilir.
+Kubernetes kapsayıcılarınızın iş yüklerini korumaya yönelik bir dizi öneri için,  **Kubernetes Için Azure İlkesi eklentisi**' ni yükler. Ayrıca, bu eklentiyi otomatik olarak [Log Analytics Aracısı ve uzantılarının otomatik sağlamayı etkinleştir](security-center-enable-data-collection.md#auto-provision-mma)bölümünde açıklandığı gibi dağıtabilirsiniz. Eklenti için otomatik sağlama "açık" olarak ayarlandığında, uzantı tüm mevcut ve gelecekteki kümelerde (eklenti yükleme gereksinimlerini karşılayan) varsayılan olarak etkinleştirilir.
 
 [Bu Azure Ilkesinde Kubernetes sayfasında](../governance/policy/concepts/policy-for-kubernetes.md)açıklandığı gibi, eklenti açık kaynak [Gatekeeper v3](https://github.com/open-policy-agent/gatekeeper)   giriş denetleyicisi Web kancasını [Açık ilke aracısına](https://www.openpolicyagent.org/)genişletir. Kubernetes giriş denetleyicileri, kümelerinizin nasıl kullanıldığını zorlayan eklentilerdir. Eklenti, Kubernetes giriş denetimine bir Web kancası olarak kaydedilir ve kümelerinizde yerleşik olarak öngörülebilir ve korumalar üzerinde merkezi ve tutarlı bir şekilde uygulanmasını sağlar. 
 

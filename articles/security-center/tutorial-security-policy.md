@@ -1,44 +1,32 @@
 ---
 title: Güvenlik ilkeleriyle çalışma | Microsoft Docs
 description: Bu makalede, Azure Güvenlik Merkezi 'nde güvenlik ilkeleriyle nasıl çalışılacağı açıklanır.
-services: security-center
-documentationcenter: na
 author: memildin
 manager: rkarlin
-ms.assetid: 2d248817-ae97-4c10-8f5d-5c207a8019ea
 ms.service: security-center
 ms.devlang: na
 ms.topic: conceptual
-ms.custom: mvc
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 01/24/2021
 ms.author: memildin
-ms.openlocfilehash: 19128f0372f9a5bda0d16155167a507eccaf436a
-ms.sourcegitcommit: 04297f0706b200af15d6d97bc6fc47788785950f
+ms.openlocfilehash: 6ecedc20cf6924a82b6b4640d3caa75bc5958de0
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98986638"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102101333"
 ---
 # <a name="manage-security-policies"></a>Güvenlik ilkelerini yönetin
 
 Bu makalede güvenlik ilkelerinin nasıl yapılandırıldığı ve Güvenlik Merkezi 'nde nasıl görüntüleneceği açıklanmaktadır. 
 
-## <a name="introduction-to-security-policies"></a>Güvenlik ilkelerine giriş
+## <a name="who-can-edit-security-policies"></a>Güvenlik ilkelerini kimler düzenleyebilir?
 
-Güvenlik ilkesi, iş yüklerinizin istenen yapılandırmasını tanımlar ve şirketinizin veya düzenleyicilerinin güvenlik gereksinimleriyle uyumlu olmanıza yardımcı olur.
+Azure Ilke portalından, REST API aracılığıyla veya Windows PowerShell kullanarak güvenlik ilkelerini düzenleyebilirsiniz.
 
-Azure Güvenlik Merkezi, seçtiğiniz ilkelere göre güvenlik önerilerini sağlar. Güvenlik Merkezi ilkeleri, Azure Ilkesinde oluşturulan ilke girişimlerini temel alır. İlkelerinizi yönetmek ve ilkeleri yönetim grupları ve birden çok abonelik arasında ayarlamak için [Azure ilkesi](../governance/policy/overview.md) 'ni kullanabilirsiniz.
+Güvenlik Merkezi, Azure kullanıcılarına, gruplarına ve hizmetlerine atayabileceğiniz yerleşik roller sağlayan Azure rol tabanlı erişim denetimi 'ni (Azure RBAC) kullanır. Kullanıcılar Güvenlik Merkezi 'ni açtıklarında yalnızca erişebildikleri kaynaklarla ilgili bilgileri görürler. Kullanıcılara, kaynağın aboneliğine *sahip*, *katkıda bulunan* veya *okuyucu* rolünün atandığı anlamına gelir. Ayrıca iki özel güvenlik merkezi rolü de vardır:
 
-Güvenlik Merkezi güvenlik ilkeleriyle çalışma için aşağıdaki seçenekleri sunar:
-
-* **Yerleşik varsayılan Ilkeyi görüntüleme ve düzenleme** -Güvenlik Merkezi 'ni etkinleştirdiğinizde, ' Azure Güvenlik kıyaslaması ' adlı girişim, tüm güvenlik merkezi kayıtlı aboneliklerine otomatik olarak atanır. Bu girişimi özelleştirmek için, içindeki ilkeleri tek tek etkinleştirebilir veya devre dışı bırakabilirsiniz. Kullanıma hazır seçenekleri anlamak için [yerleşik güvenlik ilkeleri](./policy-reference.md) listesine bakın.
-
-* **Kendi özel Ilkelerinizi ekleyin** -aboneliğinize uygulanan güvenlik girişimlerini özelleştirmek istiyorsanız, bunu Güvenlik Merkezi içinde yapabilirsiniz. Daha sonra, makineleriniz oluşturduğunuz ilkeleri izleyememesi durumunda öneriler alacaksınız. Özel ilkeler oluşturma ve atama hakkında yönergeler için bkz. [özel güvenlik Ilkeleri kullanma](custom-security-policies.md).
-
-* **Mevzuat uyumluluk Ilkeleri ekleme** -Güvenlik Merkezi 'nin mevzuat uyumluluk panosu, ortamınızdaki tüm değerlendirmelerin durumunu belirli bir standart veya Yönetmeliği (Azure CIS, nıst SP 800-53 R4, SWIFT CSP cscf-V2020) bağlamında gösterir. Daha fazla bilgi için bkz. [mevzuata uyumluluğunu geliştirme](security-center-compliance-dashboard.md).
-
+- **Güvenlik okuyucusu**: öneriler, uyarılar, ilke ve sistem durumu gibi güvenlik merkezi öğelerini görüntüleme haklarına sahiptir. Değişiklik yapılamıyor.
+- **Güvenlik Yöneticisi**: *güvenlik okuyucusu* ile aynı görünüm haklarına sahiptir. Ayrıca güvenlik ilkesini güncelleştirebilir ve uyarıları kapatabilir.
 
 ## <a name="manage-your-security-policies"></a>Güvenlik ilkelerinizi yönetme
 
@@ -59,14 +47,13 @@ Güvenlik Merkezi'nde güvenlik ilkelerinizi görüntüleme:
     > [!NOTE]
     > Varsayılan ilkenize göre "MG devralınmış" etiketi varsa, ilke bir yönetim grubuna atandı ve görüntülemekte olduğunuz aboneliğin Devralındığı anlamına gelir.
 
-
 1. Bu sayfadaki kullanılabilir seçenekler arasından seçim yapın:
 
-    1. Sektör ilkeleriyle çalışmak için **daha fazla standartlar Ekle**' yi seçin. Daha fazla bilgi için bkz. [dinamik uyumluluk paketlerine güncelleştirme](update-regulatory-compliance-packages.md).
+    1. Endüstri standartları ile çalışmak için **daha fazla standartlar ekleyin**' i seçin. Daha fazla bilgi için bkz. [mevzuat uyumluluk panonuzdaki standartlar kümesini özelleştirme](update-regulatory-compliance-packages.md).
 
-    1. Özel girişimler atamak ve yönetmek için **özel girişimler Ekle**' yi seçin. Daha fazla bilgi için bkz. [özel güvenlik Ilkeleri kullanma](custom-security-policies.md).
+    1. Özel girişimler atamak ve yönetmek için **özel girişimler Ekle**' yi seçin. Daha fazla bilgi için bkz. [özel güvenlik girişimlerini ve Ilkelerini kullanma](custom-security-policies.md).
 
-    1. Varsayılan ilkeyi görüntülemek ve düzenlemek için, **geçerli Ilkeyi görüntüle** ' yi seçin ve aşağıda açıklandığı gibi devam edin. 
+    1. Varsayılan girişimi görüntülemek ve düzenlemek için, **geçerli Ilkeyi görüntüle** ' yi seçin ve aşağıda açıklandığı gibi devam edin. 
 
         :::image type="content" source="./media/security-center-policies/policy-screen.png" alt-text="Etkin ilke ekranı":::
 
@@ -80,16 +67,6 @@ Güvenlik Merkezi'nde güvenlik ilkelerinizi görüntüleme:
 
        > [!NOTE]
        > Atanan ilkeleri görüntülediğinizde, birden çok atamayı görebilir ve her atamanın kendi kendine nasıl yapılandırıldığını görebilirsiniz.
-
-
-## <a name="who-can-edit-security-policies"></a>Güvenlik ilkelerini kimler düzenleyebilir?
-
-Azure Ilke portalından, REST API aracılığıyla veya Windows PowerShell kullanarak güvenlik ilkelerini düzenleyebilirsiniz.
-
-Güvenlik Merkezi, Azure kullanıcılarına, gruplarına ve hizmetlerine atayabileceğiniz yerleşik roller sağlayan Azure rol tabanlı erişim denetimi 'ni (Azure RBAC) kullanır. Kullanıcılar Güvenlik Merkezi 'ni açtıklarında yalnızca erişebildikleri kaynaklarla ilgili bilgileri görürler. Kullanıcılara, kaynağın aboneliğine *sahip*, *katkıda bulunan* veya *okuyucu* rolünün atandığı anlamına gelir. Ayrıca iki özel güvenlik merkezi rolü de vardır:
-
-- **Güvenlik okuyucusu**: öneriler, uyarılar, ilke ve sistem durumu gibi güvenlik merkezi öğelerini görüntüleme haklarına sahiptir. Değişiklik yapılamıyor.
-- **Güvenlik Yöneticisi**: *güvenlik okuyucusu* ile aynı görünüm haklarına sahiptir. Ayrıca güvenlik ilkesini güncelleştirebilir ve uyarıları kapatabilir.
 
 
 ## <a name="disable-security-policies-and-disable-recommendations"></a>Güvenlik ilkelerini devre dışı bırakma ve önerileri devre dışı bırakma
@@ -129,7 +106,7 @@ Devre dışı bırakmak istediğiniz öneri, güvenlik merkezi 'nin mevzuat uyum
 ## <a name="next-steps"></a>Sonraki adımlar
 Bu sayfa güvenlik ilkeleri açıklanmıştı. İlgili bilgiler için, aşağıdaki sayfalara bakın:
 
-- [PowerShell kullanarak ilkeleri ayarlamayı öğrenin](../governance/policy/assign-policy-powershell.md) - 
-- [Azure Ilkesinde bir güvenlik ilkesini nasıl düzenleyeceğinizi öğrenin](../governance/policy/tutorials/create-and-manage.md) - 
-- [Azure ilkesi kullanarak abonelikler arasında veya yönetim gruplarında ilke ayarlamayı öğrenin](../governance/policy/overview.md).
+- [PowerShell kullanarak ilkeleri ayarlamayı öğrenin](../governance/policy/assign-policy-powershell.md)
+- [Azure Ilkesinde bir güvenlik ilkesini nasıl düzenleyeceğinizi öğrenin](../governance/policy/tutorials/create-and-manage.md)
+- [Azure Ilkesi kullanarak abonelikler arasında veya yönetim gruplarında ilke ayarlamayı öğrenin](../governance/policy/overview.md)
 - [Yönetim grubundaki tüm aboneliklerde Güvenlik Merkezi 'ni nasıl etkinleştirebileceğinizi öğrenin](onboard-management-group.md)

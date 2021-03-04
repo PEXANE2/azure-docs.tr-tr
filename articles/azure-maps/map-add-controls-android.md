@@ -3,17 +3,18 @@ title: Android haritasına denetim ekleme | Microsoft Azure haritaları
 description: Microsoft Azure Maps Android SDK bir haritaya yakınlaştırma denetimi, sıklık denetimi, döndürme denetimi ve stil Seçici ekleme.
 author: rbrundritt
 ms.author: richbrun
-ms.date: 02/19/2021
+ms.date: 02/26/2021
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
-ms.openlocfilehash: 8224192ed0d13af2ff6ac60aac5aa928589ff01a
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+zone_pivot_groups: azure-maps-android
+ms.openlocfilehash: 90d037fc02bdc1c4d6fe682386790561c890c1e6
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 03/04/2021
-ms.locfileid: "102055101"
+ms.locfileid: "102100228"
 ---
 # <a name="add-controls-to-a-map-android-sdk"></a>Haritaya denetim ekleme (Android SDK)
 
@@ -23,9 +24,23 @@ Bu makalede, haritaya UI denetimleri ekleme gösterilmektedir.
 
 Bir yakınlaştırma denetimi, haritada ve dışarı yakınlaştırmak için düğmeler ekler. Aşağıdaki kod örneği, sınıfının bir örneğini oluşturur `ZoomControl` ve bir haritaya ekler.
 
+::: zone pivot="programming-language-java-android"
+
 ```java
+//Construct a zoom control and add it to the map.
 map.controls.add(new ZoomControl());
 ```
+
+::: zone-end
+
+::: zone pivot="programming-language-kotlin"
+
+```kotlin
+//Construct a zoom control and add it to the map.
+map.controls.add(ZoomControl())
+```
+
+::: zone-end
 
 Aşağıdaki ekran görüntüsünde bir haritada yüklü yakınlaştırma denetimi yer alır.
 
@@ -35,10 +50,23 @@ Aşağıdaki ekran görüntüsünde bir haritada yüklü yakınlaştırma deneti
 
 Bir aralıklı denetim, aralığı ufuk ile eşlemek için sıklık için düğmeler ekler. Aşağıdaki kod örneği, sınıfının bir örneğini oluşturur `PitchControl` ve bir haritaya ekler.
 
+::: zone pivot="programming-language-java-android"
+
 ```java
 //Construct a pitch control and add it to the map.
 map.controls.add(new PitchControl());
 ```
+
+::: zone-end
+
+::: zone pivot="programming-language-kotlin"
+
+```kotlin
+//Construct a pitch control and add it to the map.
+map.controls.add(PitchControl())
+```
+
+::: zone-end
 
 Aşağıdaki ekran görüntüsünde, bir haritaya yüklenen bir aralıklı denetim bulunur.
 
@@ -48,10 +76,23 @@ Aşağıdaki ekran görüntüsünde, bir haritaya yüklenen bir aralıklı denet
 
 Pusula denetimi eşlemeyi döndürmek için bir düğme ekler. Aşağıdaki kod örneği, sınıfının bir örneğini oluşturur `CompassControl` ve bir haritaya ekler.
 
+::: zone pivot="programming-language-java-android"
+
 ```java
 //Construct a compass control and add it to the map.
 map.controls.add(new CompassControl());
 ```
+
+::: zone-end
+
+::: zone pivot="programming-language-kotlin"
+
+```kotlin
+//Construct a compass control and add it to the map.
+map.controls.add(CompassControl())
+```
+
+::: zone-end
 
 Aşağıdaki ekran görüntüsü, haritaya yüklenen bir pusula denetimidir.
 
@@ -61,10 +102,23 @@ Aşağıdaki ekran görüntüsü, haritaya yüklenen bir pusula denetimidir.
 
 Trafik denetimi, haritadaki trafik verilerinin görünürlüğünü değiştirmeye yönelik bir düğme ekler. Aşağıdaki kod örneği, sınıfının bir örneğini oluşturur `TrafficControl` ve bir haritaya ekler.
 
+::: zone pivot="programming-language-java-android"
+
 ```java
 //Construct a traffic control and add it to the map.
 map.controls.add(new TrafficControl());
 ```
+
+::: zone-end
+
+::: zone pivot="programming-language-kotlin"
+
+```kotlin
+//Construct a traffic control and add it to the map.
+map.controls.add(TrafficControl())
+```
+
+::: zone-end
 
 Aşağıdaki ekran görüntüsünde bir haritaya yüklenen trafik denetimi yer alır.
 
@@ -73,6 +127,8 @@ Aşağıdaki ekran görüntüsünde bir haritaya yüklenen trafik denetimi yer a
 ## <a name="a-map-with-all-controls"></a>Tüm denetimlerle bir eşleme
 
 Birden çok denetim bir diziye yerleştirilebilir ve tek seferde haritaya eklenebilir ve geliştirmeyi basitleştirmek için haritanın aynı alanında konumlandırılmış olabilir. Aşağıdaki yaklaşım, bu yaklaşımı kullanarak haritaya standart gezinti denetimleri ekler.
+
+::: zone pivot="programming-language-java-android"
 
 ```java
 map.controls.add(
@@ -84,6 +140,23 @@ map.controls.add(
     }
 );
 ```
+
+::: zone-end
+
+::: zone pivot="programming-language-kotlin"
+
+```kotlin
+map.controls.add(
+    arrayOf<Control>(
+        ZoomControl(),
+        CompassControl(),
+        PitchControl(),
+        TrafficControl()
+    )
+)
+```
+
+::: zone-end
 
 Aşağıdaki ekran görüntüsünde, bir haritada yüklü olan tüm denetimler gösterilmektedir. Haritaya eklendikleri sıranın görüneceği sıra olduğunu unutmayın.
 

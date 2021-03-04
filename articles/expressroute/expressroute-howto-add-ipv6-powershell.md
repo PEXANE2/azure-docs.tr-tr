@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: how-to
 ms.date: 03/02/2021
 ms.author: duau
-ms.openlocfilehash: 20b8e354d0c8e2e04cf22d1b8014f5b8e33a860c
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: c0d153ff8125a6ef16a69aec72a27dd4b234eab5
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 03/04/2021
-ms.locfileid: "102038875"
+ms.locfileid: "102100058"
 ---
 # <a name="add-ipv6-support-for-private-peering-using-azure-powershell-preview"></a>Azure PowerShell kullanarak özel eşleme için IPv6 desteği ekleme (Önizleme)
 
@@ -175,7 +175,7 @@ IPv6 desteği, Kullanılabilirlik Alanları bölgelerdeki dağıtımlara bağlan
 * AZ ExpressRoute ağ geçidi SKU 'SU aracılığıyla Azure 'daki dağıtımlara bağlantılar
 * AZ olmayan bölgelerde dağıtımlara bağlantılar
 * ExpressRoute devreleri arasında bağlantı Global Reach
-* VWAN ile ExpressRoute kullanımı
+* Sanal WAN ile ExpressRoute kullanımı
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

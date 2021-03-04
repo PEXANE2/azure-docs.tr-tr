@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: how-to
 ms.date: 12/14/2020
 ms.author: duau
-ms.openlocfilehash: 964af92006aad7b5ce8bdf25a332cbcf9c7ef144
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: f54c22a0c2f7bf89d790dbd33f748446a871d224
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98014527"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102099956"
 ---
 # <a name="how-to-configure-expressroute-direct"></a>ExpressRoute Direct 'i yapılandırma
 
@@ -20,12 +20,21 @@ ExpressRoute Direct, dünya genelinde stratejik olarak dağıtılan eşleme konu
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 
-ExpressRoute Direct kullanmadan önce aboneliğinizi kaydetmeniz gerekir. Kaydolmak için aşağıdaki ayrıntılar dahil olmak üzere abonelik KIMLIĞINIZLE bir e-posta gönderin <ExpressRouteDirect@microsoft.com> :
+ExpressRoute Direct kullanmadan önce aboneliğinizi kaydetmeniz gerekir. ExpressRoute Direct kullanmadan önce aboneliğinizi kaydetmeniz gerekir. Kaydolmak için lütfen Azure PowerShell aracılığıyla şunları yapın:
+1.  Azure 'da oturum açın ve kaydetmek istediğiniz aboneliği seçin.
 
-* **ExpressRoute Direct** ile başarmak için kullandığınız senaryolar
-* Konum tercihleri-tüm konumların tam listesi için [Iş ortakları ve eşleme konumları](expressroute-locations-providers.md) bölümüne bakın
-* Uygulama için zaman çizelgesi
-* Diğer sorular
+    ```azurepowershell-interactive
+    Connect-AzAccount 
+
+    Select-AzSubscription -Subscription "<SubscriptionID or SubscriptionName>"
+    ```
+
+2. Aşağıdaki komutu kullanarak aboneliğinizi genel önizleme için kaydedin:
+    ```azurepowershell-interactive
+    Register-AzProviderFeature -FeatureName AllowExpressRoutePorts -ProviderNamespace Microsoft.Network
+    ```
+
+Kaydolduktan sonra, **Microsoft. Network** kaynak sağlayıcısının aboneliğinize kayıtlı olduğunu doğrulayın. Kaynak sağlayıcısı kaydı, aboneliğinizi kaynak sağlayıcısıyla çalışacak şekilde yapılandırır.
 
 ## <a name="create-the-resource"></a><a name="resources"></a>Kaynağı oluşturma
 

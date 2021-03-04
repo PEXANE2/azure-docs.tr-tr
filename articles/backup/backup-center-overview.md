@@ -3,12 +3,12 @@ title: Yedekleme merkezine genel bakış
 description: Bu makalede, Azure için yedekleme merkezi 'ne genel bakış sunulmaktadır.
 ms.topic: conceptual
 ms.date: 09/30/2020
-ms.openlocfilehash: 0acf3a17e41b89b462a7fb07c5d3ebd55d4052af
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: fee7bf41d0c72238231d9c4aba52a26cac9fb960
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101725382"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102100007"
 ---
 # <a name="overview-of-backup-center"></a>Yedekleme merkezine genel bakış
 
@@ -27,7 +27,7 @@ Yedekleme merkezi 'nin önemli avantajlarından bazıları şunlardır:
 
 ## <a name="get-started"></a>başlarken
 
-Yedekleme merkezi 'ni kullanmaya başlamak için Azure portal **yedekleme merkezi** araması yapın ve **yedekleme merkezi (Önizleme)** panosuna gidin.
+Yedekleme merkezi 'ni kullanmaya başlamak için Azure portal **yedekleme merkezi** araması yapın ve **yedekleme merkezi** panosuna gidin.
 
 ![Yedekleme merkezi arama](./media/backup-center-overview/backup-center-search.png)
 
@@ -37,7 +37,7 @@ Gördüğünüz ilk ekran **genel bakıştır**. İki kutucuk vardır: **işler*
 
 **İşler** kutucuğunda, son 24 saat içinde yedeklemeleriniz genelinde tetiklenen tüm yedekleme ve geri yükleme işlerinin bir Özet görünümünü alırsınız. Tamamlanan, başarısız ve sürmekte olan işlerin sayısı hakkında bilgi görüntüleyebilirsiniz. Bu kutucuktaki sayıların seçilmesi, belirli bir veri kaynağı türü, işlem türü ve durum için iş hakkında daha fazla bilgi görüntülemenizi sağlar.
 
-**Yedekleme örnekleri** kutucuğunda, yedeklemeinizdeki tüm yedekleme örneklerinin özetlenmiş bir görünümünü alırsınız. Örneğin, hala koruma için yapılandırılmış örnek sayısıyla karşılaştırıldığında, geçici olarak silinen durumda olan yedekleme örneklerinin sayısını görebilirsiniz. Bu kutucuktaki sayıların seçilmesi, belirli bir veri kaynağı türü ve koruma durumu için yedekleme örnekleri hakkında daha fazla bilgi görüntülemenizi sağlar.
+**Yedekleme örnekleri** kutucuğunda, yedeklemeinizdeki tüm yedekleme örneklerinin özetlenmiş bir görünümünü alırsınız. Örneğin, hala koruma için yapılandırılmış örnek sayısıyla karşılaştırıldığında, geçici olarak silinen durumda olan yedekleme örneklerinin sayısını görebilirsiniz. Bu kutucuktaki sayıların seçilmesi, belirli bir veri kaynağı türü ve koruma durumu için yedekleme örnekleri hakkında daha fazla bilgi görüntülemenizi sağlar. Ayrıca, temel alınan veri kaynağı bulunamamış tüm yedekleme örneklerini görüntüleyebilirsiniz (veri kaynağı silinmiş olabilir veya veri kaynağına erişiminiz olmayabilir).
 
 Yedekleme merkezi 'nin yeteneklerini anlamak için aşağıdaki videoyu izleyin:
 

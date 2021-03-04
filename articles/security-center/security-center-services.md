@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/16/2021
 ms.author: memildin
-ms.openlocfilehash: 0e1f669b6955d5c5b70f2f29ff39ba5aef0a9a56
-ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
+ms.openlocfilehash: 1ba030ea42d3e865021aa52c651cd72eead9f1a1
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/16/2021
-ms.locfileid: "100544825"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102100279"
 ---
 # <a name="feature-coverage-for-machines"></a>Makineler için özellik kapsamı
 
@@ -117,7 +117,7 @@ Bu korumaların her biri için önerilerin ne zaman oluşturulduğu hakkında bi
 |[Uç nokta Için Microsoft Defender](harden-docker-hosts.md) (1)|✔|-|
 |[AWS hesabına Bağlan](quickstart-onboard-aws.md) (1)|-|-|
 |[GCP hesabını bağlama](quickstart-onboard-gcp.md) (1)|-|-|
-|[Sürekli dışarı aktarma](continuous-export.md)|✔|✔ (2)|
+|[Sürekli dışarı aktarma](continuous-export.md)|✔|✔|
 |[İş akışı Otomasyonu](workflow-automation.md)|✔|✔|
 |[Öneri muafiyet kuralları](exempt-resource.md)|-|-|
 |[Uyarı engelleme kuralları](alerts-suppression-rules.md)|✔|✔|

@@ -1,57 +1,22 @@
 ---
 title: Azure Güvenlik Merkezi'nde güvenlik önerileri
 description: Bu belge, Azure Güvenlik Merkezi 'ndeki önerilerin Azure kaynaklarınızı korumanıza ve güvenlik ilkeleriyle uyumlu kalmanıza nasıl yardımcı olduğunu gösterir.
-services: security-center
-documentationcenter: na
 author: memildin
 manager: rkarlin
-ms.assetid: 86c50c9f-eb6b-4d97-acb3-6d599c06133e
 ms.service: security-center
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 01/24/2021
 ms.author: memildin
-ms.openlocfilehash: 3b2f111f83dbd731b69671e58d4bf9dc648a596f
-ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
+ms.openlocfilehash: 57760443746e111750e74ef55fc18729f6ba32c4
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99526533"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102100347"
 ---
-# <a name="security-recommendations-in-azure-security-center"></a>Azure Güvenlik Merkezi'nde güvenlik önerileri 
+# <a name="review-your-security-recommendations"></a>Güvenlik önerilerinizi gözden geçirin
 
 Bu konu başlığı altında, Azure Güvenlik Merkezi 'nde Azure kaynaklarınızı korumanıza yardımcı olan önerilerin nasıl görüntüleneceği ve anlayabileceği açıklanmaktadır.
-
-
-## <a name="what-are-security-recommendations"></a>Güvenlik önerileri nelerdir?
-
-Güvenlik Merkezi, olası güvenlik açıklarını belirlemek için Azure kaynaklarınızın güvenlik durumunu düzenli olarak analiz eder. Daha sonra bu güvenlik açıklarını nasıl düzeltebileceğiniz konusunda öneriler sağlar.
-
-Önerilerin kaynakları güvenli ve zarar vermek için uygulamanız gereken eylemlerdir. 
-
-Her öneri şunları sağlar:
-
-- Sorunun kısa bir açıklaması
-- Öneriyi uygulamak için gerçekleştirilecek düzeltme adımları
-- Etkilenen kaynaklar
-
-## <a name="how-does-microsoft-decide-what-needs-securing-and-hardening"></a>Microsoft 'un neyi güvenli hale getirme ve sağlamlaştırma hakkında nasıl karar veriyor?
-
-Güvenlik Merkezi 'nin önerileri, Azure Güvenlik kıyaslaması temel alınarak hesaplanır. Neredeyse her öneri, kıyaslama gereksiniminden türetilen temel bir ilkeye sahiptir.
-
-Azure Güvenlik kıyaslaması, yaygın uyumluluk çerçevelerine göre güvenlik ve uyum en iyi uygulamaları için Microsoft tarafından yazılan, Azure 'a özgü bir dizi kılavuzlardır. Bu, yaygın olarak kullanılan kıyaslama, [Internet güvenliği (CIS) Için merkezden](https://www.cisecurity.org/benchmark/azure/) ve [ulusal standartlar ve teknolojı Enstitüsü (NIST)](https://www.nist.gov/) ile bulut merkezli güvenliğe odaklanarak yapılar oluşturur. [Azure Güvenlik Karşılaştırması](../security/benchmarks/introduction.md) hakkında daha fazla bilgi edinin.
-
-Bir önerinin ayrıntılarını gözden geçirirken genellikle temel alınan ilkeyi görmeniz yararlı olur. Bir ilke tarafından desteklenen her öneri için, öneri ayrıntıları sayfasındaki **ilke tanımını görüntüle** bağlantısını kullanarak doğrudan Ilgili Ilkenin Azure ilke girişine gidebilirsiniz:
-
-:::image type="content" source="media/release-notes/view-policy-definition.png" alt-text="Öneriyi destekleyen belirli bir ilke için Azure Ilke sayfasına bağlantı":::
-
-İlke tanımını görüntülemek ve değerlendirme mantığını gözden geçirmek için bu bağlantıyı kullanın. 
-
-[Güvenlik önerileri başvuru kılavuzumuzdaki](recommendations-reference.md)önerilerin listesini gözden geçiriyorsunuz, ayrıca ilke tanımı sayfalarına bağlantılar da görürsünüz:
-
-:::image type="content" source="media/release-notes/view-policy-definition-from-documentation.png" alt-text="Belirli bir ilke için Azure Ilke sayfasına doğrudan Azure Güvenlik Merkezi öneriler başvuru sayfasından erişme":::
 
 ## <a name="monitor-recommendations"></a>İzleme önerileri <a name="monitor-recommendations"></a>
 

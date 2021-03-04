@@ -9,13 +9,13 @@ author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: sstein
 ms.custom: references_regions
-ms.date: 03/02/2021
-ms.openlocfilehash: 9dc4d17ea95362dd915bd1dfdfd82f4cdec611b8
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.date: 03/04/2021
+ms.openlocfilehash: 0a9a4b2de03c62640bb1c643d3ff3da4139d42a4
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101692819"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102101214"
 ---
 # <a name="maintenance-window-preview"></a>Bakım penceresi (Önizleme)
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -32,29 +32,31 @@ Bakım penceresi, planlı bakım olaylarının sonucunda ortaya çıkan, aralık
 
 Bakım penceresi Azure portal, PowerShell, CLı veya Azure API 'SI kullanılarak yapılandırılabilir. Bu, oluşturma sırasında veya mevcut SQL veritabanları ve SQL yönetilen örnekleri için yapılandırılabilir.
 
+> [!Important]
+> Bakım penceresini yapılandırmak, Azure SQL kaynağının hizmet katmanını değiştirmeye benzer şekilde, uzun süren bir zaman uyumsuz işlemdir. İşlem sırasında, işlemin sonunda gerçekleşen kısa bir yük devretme haricinde ve genellikle uzun süreli işlem durumunda bile 8 saniyeye kadar süren kaynak kullanılabilir. Yük devretmenin etkisini en aza indirmek için işlemi yoğun saatlerin dışında gerçekleştirmeniz gerekir.
+
 ### <a name="gain-more-predictability-with-maintenance-window"></a>Bakım penceresiyle daha öngörülebilirlik kazanın
 
 Varsayılan olarak, tüm Azure SQL veritabanları ve yönetilen örnek veritabanları, en yüksek iş saatleri kesintilerini önlemek için günlük olarak yalnızca 5 PM ile 8:00:00 yerel kez güncelleştirilir. Yerel saat, kaynağı barındıran [Azure bölgesi](https://azure.microsoft.com/global-infrastructure/geographies/) tarafından belirlenir. İki ek bakım penceresi yuvası arasından seçim yaparak, bakım güncelleştirmelerini veritabanınıza uygun bir zamana ayarlayabilirsiniz:
-
-* **Varsayılan** pencere, 5 pm-8:00:00 yerel saat Pazartesi-Pazar 
+ 
 * Hafta içi pencere, 10PM-6:00:00 yerel saat Pazartesi – Perşembe
 * Hafta sonu penceresi, 10:00-00 yerel saat Cuma-Pazar
 
-Bakım penceresi seçimi yapıldıktan sonra, tüm planlı bakım güncelleştirmeleri yalnızca sizin tercih ettiğiniz pencerede gerçekleşmeyecektir.   
+Bakım penceresi seçimi yapıldıktan ve hizmet yapılandırması tamamlandıktan sonra, tüm planlı bakım güncelleştirmeleri yalnızca sizin tercih ettiğiniz pencerede gerçekleşmeyecektir.   
 
 > [!Note]
 > Planlı bakım güncelleştirmelerine ek olarak, nadir koşullarda planlanmamış bakım olayları kullanılamaz duruma neden olabilir. 
 
 ### <a name="cost-and-eligibility"></a>Maliyet ve uygunluk
 
-Bir bakım penceresinin seçilmesi şu abonelik [teklifi türleri](https://azure.microsoft.com/support/legal/offer-details/)için ücretsizdir: Kullandıkça öde, bulut çözümü sağlayıcısı (CSP), Microsoft Enterprise veya Microsoft Müşteri Sözleşmesi.
+Bakım penceresini yapılandırmak ve kullanmak uygun olan tüm [teklif türleri](https://azure.microsoft.com/support/legal/offer-details/)için ücretsizdir: Kullandıkça öde, bulut çözümü sağlayıcısı (CSP), Microsoft Enterprise veya Microsoft Müşteri Sözleşmesi.
 
 > [!Note]
 > Azure teklifi, sahip olduğunuz Azure aboneliğinin türüdür. Örneğin, [Kullandıkça Öde tarifesine](https://azure.microsoft.com/offers/ms-azr-0003p/)sahip bir abonelik, [Open ile Azure](https://azure.microsoft.com/en-us/offers/ms-azr-0111p/)ve [Visual Studio Enterprise](https://azure.microsoft.com/en-us/offers/ms-azr-0063p/) tüm Azure tekliflerdir. Her teklif veya planın farklı hüküm ve avantajları vardır. Teklifiniz veya planınız, aboneliğin Genel Bakış sayfasında gösterilir. Aboneliğinizi farklı bir teklifle değiştirme hakkında daha fazla bilgi için bkz. [Azure aboneliğinizi farklı bir teklifle değiştirme](/azure/cost-management-billing/manage/switch-azure-offer).
 
 ## <a name="advance-notifications"></a>Bildirimleri ilerlet
 
-Bakım bildirimleri, Yaklaşan planlı bakım olaylarına ilişkin müşterileri, bakım sırasında ve bakım penceresi tamamlandığında, gelecek şekilde 24 saat önce uyaracak şekilde yapılandırılabilir. Daha fazla bilgi için bkz. [ön bildirimler](advance-notifications.md).
+Bakım bildirimleri, bakım sırasında ve bakım penceresi tamamlandığında, Azure SQL veritabanı için gelecek planlı bakım olayları hakkında sizi uyarı verecek şekilde yapılandırılabilir. Daha fazla bilgi için bkz. [ön bildirimler](advance-notifications.md).
 
 ## <a name="availability"></a>Kullanılabilirlik
 
@@ -62,6 +64,7 @@ Bakım bildirimleri, Yaklaşan planlı bakım olaylarına ilişkin müşterileri
 
 Varsayılan dışında bir bakım penceresi seçmek, **aşağıdakiler hariç** tüm SLOS üzerinde kullanılabilir:
 * Hiper Ölçek 
+* Örnek havuzları
 * Eski 4. nesil sanal çekirdek
 * Temel, S0 ve S1 
 * DC, Fsv2, d serisi
@@ -93,7 +96,7 @@ Bakım pencerelerinin en büyük avantajlarından yararlanabilmek için, istemci
 
 * Azure SQL veritabanı 'nda, proxy bağlantı ilkesini kullanan tüm bağlantılar, seçilen bakım penceresi ve bir ağ geçidi düğümü bakım penceresinden etkilenebilir. Ancak, önerilen yeniden yönlendirme bağlantı ilkesini kullanan istemci bağlantıları, bir ağ geçidi düğümü Bakımı yük devretmesinin etkilenmemiştir. 
 
-* Azure SQL yönetilen örneği 'nde, ağ geçidi düğümleri [sanal kümede](../../azure-sql/managed-instance/connectivity-architecture-overview.md#virtual-cluster-connectivity-architecture) yer alan ve yönetilen örnekle aynı bakım penceresine sahip olduğundan, proxy bağlantı ilkesinin kullanılması ek bir bakım penceresine bağlantı sunmayabilir.
+* Azure SQL yönetilen örneği 'nde, ağ geçidi düğümleri [sanal küme içinde](../../azure-sql/managed-instance/connectivity-architecture-overview.md#virtual-cluster-connectivity-architecture) barındırılır ve yönetilen örnekle aynı bakım penceresine sahiptir, ancak bakım olayı sırasında kesintiler sayısını en aza indirmek için yeniden yönlendirme bağlantı ilkesinin kullanılması yine de önerilir.
 
 Azure SQL veritabanı 'nda istemci bağlantı ilkesi hakkında daha fazla bilgi için bkz. [Azure SQL veritabanı bağlantı ilkesi](../database/connectivity-architecture.md#connection-policy). 
 

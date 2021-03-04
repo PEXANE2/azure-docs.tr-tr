@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/03/2018
 ms.author: memildin
-ms.openlocfilehash: fcaf427c2e0ab275a5a6e08306dda785bca690d6
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: e4f905b7a08564eadb20d65d651c137ef3741376
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92784176"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102100330"
 ---
 # <a name="azure-security-center-readiness-roadmap"></a>Azure Güvenlik Merkezi hazırlığı yol haritası
 Bu belge, Azure Güvenlik Merkezi ile çalışmaya başlamanıza yardımcı olacak bir hazırlık yol haritası sağlar.
@@ -59,7 +59,6 @@ Güvenlik Merkezi, gerçek tehditleri algılamak ve hatalı pozitif sonuçları 
 Güvenlik uyarılarını yönetmenize ve kaynaklarınızı korumanıza yardımcı olması için aşağıdaki kaynakları kullanın.
 
 Makaleler    
-- [Azure Güvenlik Merkezi 'nde güvenlik durumu izleme](./security-center-monitoring.md)
 - [Azure Güvenlik Merkezi'nde ağınızı koruma](./security-center-network-recommendations.md)
 - [Azure Güvenlik Merkezi'nde Azure SQL hizmetini ve verilerini koruma](./security-center-remediate-recommendations.md)
 

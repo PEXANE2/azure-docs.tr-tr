@@ -5,12 +5,12 @@ author: noakup
 ms.author: noakuper
 ms.topic: conceptual
 ms.date: 10/05/2020
-ms.openlocfilehash: bf9ffe3640c704fb1da51f6f9c2fe42ca5d46851
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 65af5810152034fd7b6014041edd07835eebd194
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 03/04/2021
-ms.locfileid: "102047562"
+ms.locfileid: "102101486"
 ---
 # <a name="use-azure-private-link-to-securely-connect-networks-to-azure-monitor"></a>Ağları Azure İzleyici'ye güvenle bağlamak için Azure Özel Bağlantı'yı kullanma
 
@@ -172,7 +172,8 @@ Oluşturduğunuz özel uç noktasının artık dört DNS bölgesi yapılandırı
 * Privatelink-ODS-OpInsights-Azure-com
 * Privatelink-Agentsvc-Azure-Automation-net
 
-Bu bölgelerin her biri, belirli Azure Izleyici uç noktalarını özel uç noktanın sanal ağ havuzundan özel IP 'lere eşler.
+> [!NOTE]
+> Bu bölgelerin her biri belirli Azure Izleyici uç noktalarını VNet 'in IP havuzundan özel IP 'lere eşler. Aşağıdaki görüntülerde showns IP adresleri yalnızca örnektir. Bunun yerine kendi ağınızdan özel IP 'Ler gösterilmesi gerekir.
 
 #### <a name="privatelink-monitor-azure-com"></a>Privatelink-izleme-Azure-com
 Bu bölge, Azure Izleyici tarafından kullanılan küresel uç noktaları kapsadığından, bu uç noktaların belirli bir kaynağı değil tüm kaynakları dikkate alır. Bu bölgede, için eşlenmiş uç noktalar olmalıdır:
@@ -218,7 +219,7 @@ Bu sayfanın alt kısmındaki ayarlar, genel ağlardan erişimi denetler, yani y
 
 ### <a name="exceptions"></a>Özel durumlar
 Yukarıda açıklandığı gibi erişimin sınırlandırılması Azure Resource Manager uygulanmaz ve bu nedenle aşağıdaki sınırlamalara sahiptir:
-* Verilere erişim-ortak ağlardan gelen sorguların çoğu Log Analytics deneyim için geçerli olduğundan, bazı deneyimler verileri Azure Resource Manager aracılığıyla sorgular ve bu nedenle özel bağlantı ayarları Kaynak Yöneticisi de (yakında kullanıma sunulacak özellik) uygulanmamışsa verileri sorgulayamaz. Bu, örneğin Azure Izleyici çözümlerini, çalışma kitaplarını ve öngörülerini ve LogicApp bağlayıcısını içerir.
+* Verilere erişim-ortak ağlardan gelen sorguların çoğu Log Analytics deneyim için geçerli olduğundan, bazı deneyimler verileri Azure Resource Manager aracılığıyla sorgular ve bu nedenle özel bağlantı ayarları Kaynak Yöneticisi de (yakında kullanıma sunulacak özellik) uygulanmamışsa verileri sorgulayamaz. Azure Izleyici çözümleri, çalışma kitapları ve Öngörüler ve LogicApp Connector örnekleri verilmiştir.
 * Çalışma alanı yönetimi-çalışma alanı ayarı ve yapılandırma değişiklikleri (Bu erişim ayarlarını açma veya kapatma dahil) Azure Resource Manager tarafından yönetilir. Uygun rolleri, izinleri, ağ denetimlerini ve denetimi kullanarak çalışma alanı yönetimine erişimi kısıtlayın. Daha fazla bilgi için bkz. [Azure Izleyici rolleri, izinleri ve güvenliği](../roles-permissions-security.md).
 
 > [!NOTE]
@@ -248,17 +249,17 @@ Azure portala gidin. Azure Izleyici Application Insights bileşen kaynağında, 
 > [!NOTE]
 > Portal dışı tüketim deneyimleri, izlenen iş yüklerini içeren özel bağlantılı VNET üzerinde de çalışmalıdır.
 
-İzlenen iş yüklerini barındıran kaynakları özel bağlantıya eklemeniz gerekir. Bu, uygulama [Hizmetleri için bunu](../../app-service/networking/private-endpoint.md) nasıl yapaöğreneceksiniz.
+İzlenen iş yüklerini barındıran kaynakları özel bağlantıya eklemeniz gerekir. Örneğin, bkz. [Azure Web uygulaması Için özel uç noktaları kullanma](../../app-service/networking/private-endpoint.md).
 
 Erişimin bu şekilde kısıtlanması yalnızca Application Insights kaynaktaki veriler için geçerlidir. Ancak, bu erişim ayarlarını açma veya kapatma dahil olmak üzere yapılandırma değişiklikleri Azure Resource Manager tarafından yönetilir. Bu nedenle, uygun rolleri, izinleri, ağ denetimlerini ve denetimi kullanarak Kaynak Yöneticisi erişimini kısıtlamalısınız. Daha fazla bilgi için bkz. [Azure Izleyici rolleri, izinleri ve güvenliği](../roles-permissions-security.md).
 
 > [!NOTE]
 > Çalışma alanı tabanlı Application Insights tamamen güvenli hale getirmek için, Application Insights kaynağa erişimin yanı sıra temel Log Analytics çalışma alanını da kapatmanız gerekir.
 >
-> Kod düzeyinde Tanılamalar (Profiler/Debugger), özel bağlantıyı desteklemek için kendi depolama hesabınızı sağlamanızı gerektirir. Bunun nasıl yapılacağını gösteren [Belgeler](../app/profiler-bring-your-own-storage.md) aşağıda verilmiştir.
+> Kod düzeyinde Tanılamalar (Profiler/Debugger), özel bağlantıyı desteklemek için [kendi depolama hesabınızı sağlamanızı](../app/profiler-bring-your-own-storage.md) gerektirir.
 
 ### <a name="handling-the-all-or-nothing-nature-of-private-links"></a>Özel bağlantıların tümünü veya herhangi bir şeyi işleme
-[Özel bağlantı kurulumunuzu planlama](#planning-your-private-link-setup)bölümünde açıklandığı gibi, tek bir kaynak Için bile özel bir bağlantı kurmak, bu ağlardaki tüm Azure izleyici kaynaklarını ve aynı DNS 'yi paylaşan diğer ağları etkiler. Bu, ekleme sürecinizi zorlu hale getirir. Aşağıdaki seçenekleri göz önünde bulundurun:
+[Özel bağlantı kurulumunuzu planlama](#planning-your-private-link-setup)bölümünde açıklandığı gibi, tek bir kaynak Için bile özel bir bağlantı kurmak, bu ağlardaki tüm Azure izleyici kaynaklarını ve aynı DNS 'yi paylaşan diğer ağları etkiler. Bu davranış, ekleme sürecinizi zorlu hale getirir. Aşağıdaki seçenekleri göz önünde bulundurun:
 
 * Tüm en basit ve en güvenli yaklaşım, tüm Application Insights bileşenlerinizi AMPLS 'a eklemektir. Diğer ağlardan hala erişmeye devam etmek istediğiniz bileşenler için "alma/sorgu için genel internet erişimine Izin ver" bayrakları Evet (varsayılan) olarak ayarlayın.
 * Ağları ayır-bağlı olan VNET 'leri kullanarak (veya ile hizaladıysanız), [Azure 'Da Merkez-uç ağ topolojisi](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke)içindeki yönergeleri izleyin. Ardından, ilgili bağlı olan sanal ağlarda ayrı özel bağlantı ayarları kurun. DNS bölgelerini diğer bağlı ağlar ile paylaşmak [DNS geçersiz kılmalara](#the-issue-of-dns-overrides)neden OLACAĞı için DNS bölgelerini de ayırdığınızdan emin olun.

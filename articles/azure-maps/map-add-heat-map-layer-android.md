@@ -3,17 +3,18 @@ title: Android Maps 'a bir ısı haritası katmanı ekleme | Microsoft Azure har
 description: Isı haritası oluşturmayı öğrenin. Haritaya bir ısı haritası katmanı eklemek için bkz. Azure Mapsandroıd SDK 'sını kullanma. Isı haritası katmanlarını özelleştirmeyi öğrenin.
 author: rbrundritt
 ms.author: richbrun
-ms.date: 12/01/2020
+ms.date: 02/26/2021
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
-ms.openlocfilehash: 4de59bd0b2a9dc9b11acf55a59b82724d2c7b862
-ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
+zone_pivot_groups: azure-maps-android
+ms.openlocfilehash: fce2c2d007f92c43e763826f9345f773324e885e
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97681783"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102100194"
 ---
 # <a name="add-a-heat-map-layer-android-sdk"></a>Isı haritası katmanı ekleme (Android SDK)
 
@@ -43,6 +44,8 @@ Isı haritalarını birçok farklı senaryoda kullanabilirsiniz; örneğin:
 Bir veri kaynağını bir ısı haritası olarak işlemek için, veri kaynağınızı sınıfın bir örneğine geçirin `HeatMapLayer` ve haritaya ekleyin.
 
 Aşağıdaki kod örneği, deprem 'in bir coğrafi JSON akışını son haftadan yükler ve bunları bir ısı haritası olarak işler. Her veri noktası, tüm yakınlaştırma düzeylerinde 10 piksellik bir yarıçap ile işlenir. Daha iyi bir kullanıcı deneyimi sağlamak için, ısı Haritası etiket katmanının altında olduğundan etiketlerin net bir şekilde görünür kalmasını sağlar. Bu örnekteki veriler, [USGS deprem Hazarlar programından](https://earthquake.usgs.gov/)yapılır. Bu örnek, [veri kaynağı oluşturma](create-data-source-android-sdk.md) belgesinde sunulan veri içeri aktarma yardımcı programı kod bloğunu kullanarak Web 'Den geojson verilerini yükler.
+
+::: zone pivot="programming-language-java-android"
 
 ```java
 //Create a data source and add it to the map.
@@ -80,6 +83,49 @@ Utils.importData("https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_
     });
 ```
 
+::: zone-end
+
+::: zone pivot="programming-language-kotlin"
+
+```kotlin
+//Create a data source and add it to the map.
+val source = DataSource()
+map.sources.add(source)
+
+//Create a heat map layer.
+val layer = HeatMapLayer(
+    source,
+    heatmapRadius(10f),
+    heatmapOpacity(0.8f)
+)
+
+//Add the layer to the map, below the labels.
+map.layers.add(layer, "labels")
+
+//Import the geojson data and add it to the data source.
+Utils.importData("https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geojson",
+    this
+) { result: String? ->
+    //Parse the data as a GeoJSON Feature Collection.
+    val fc = FeatureCollection.fromJson(result!!)
+
+    //Add the feature collection to the data source.
+    source.add(fc)
+
+    //Optionally, update the maps camera to focus in on the data.
+    //Calculate the bounding box of all the data in the Feature Collection.
+    val bbox = MapMath.fromData(fc)
+
+    //Update the maps camera so it is focused on the data.
+    map.setCamera(
+        bounds(bbox),
+        padding(20)
+    )
+}
+```
+
+::: zone-end
+
 Aşağıdaki ekran görüntüsünde, yukarıdaki kodu kullanarak bir ısı haritası yükleyen bir harita gösterilmektedir.
 
 ![Son Deprem ısı haritası katmanıyla eşle](media/map-add-heat-map-layer-android/android-heat-map-layer.png)
@@ -110,6 +156,8 @@ Aşağıdaki ekran görüntüsünde, yukarıdaki kodu kullanarak bir ısı harit
 - `visible`: Katmanı gizler veya gösterir.
 
 Aşağıda, yumuşak bir renk gradyanı oluşturmak için bir Oluşturucu ilişkilendirme ifadesinin kullanıldığı bir ısı haritası örneği verilmiştir. `mag`Verilerde tanımlanan özellik, her bir veri noktasının ağırlığını veya uygunluğunu ayarlamak için bir üstel ilişkilendirme ile birlikte kullanılır.
+
+::: zone pivot="programming-language-java-android"
 
 ```java
 HeatMapLayer layer = new HeatMapLayer(source,
@@ -143,6 +191,44 @@ HeatMapLayer layer = new HeatMapLayer(source,
 );
 ```
 
+::: zone-end
+
+::: zone pivot="programming-language-kotlin"
+
+```kotlin
+val layer = HeatMapLayer(source,
+    heatmapRadius(10f),
+
+    //A linear interpolation is used to create a smooth color gradient based on the heat map density.
+    heatmapColor(
+        interpolate(
+            linear(),
+            heatmapDensity(),
+            stop(0, color(Color.TRANSPARENT)),
+            stop(0.01, color(Color.BLACK)),
+            stop(0.25, color(Color.MAGENTA)),
+            stop(0.5, color(Color.RED)),
+            stop(0.75, color(Color.YELLOW)),
+            stop(1, color(Color.WHITE))
+        )
+    ),
+
+    //Using an exponential interpolation since earthquake magnitudes are on an exponential scale.
+    heatmapWeight(
+       interpolate(
+            exponential(2),
+            get("mag"),
+            stop(0,0),
+
+            //Any earthquake above a magnitude of 6 will have a weight of 1
+            stop(6, 1)
+       )
+    )
+)
+```
+
+::: zone-end
+
 Aşağıdaki ekran görüntüsünde, önceki ısı haritası örneğinde aynı verileri kullanan Yukarıdaki özel ısı haritası katmanı gösterilmektedir.
 
 ![Son Deprem özel ısı haritası katmanıyla eşle](media/map-add-heat-map-layer-android/android-custom-heat-map-layer.png)
@@ -156,6 +242,8 @@ Varsayılan olarak, ısı haritası katmanında işlenen veri noktalarının yar
 Her bir `zoom` yakınlaştırma düzeyi için yarıçapı ölçeklendirmek üzere bir ifade kullanın, örneğin her bir veri noktası haritanın aynı fiziksel alanını içerir. Bu ifade, ısı haritası katmanının daha statik ve tutarlı görünmesini sağlar. Haritanın her yakınlaştırma düzeyinin, önceki yakınlaştırma düzeyiyle dikey ve yatay olarak iki piksel daha vardır.
 
 Her yakınlaştırma düzeyiyle çift olacak şekilde yarıçap ölçekleme, tüm yakınlaştırma düzeylerinde tutarlı görünen bir ısı haritası oluşturur. Bu ölçeklendirmeyi uygulamak için, `zoom` `exponential interpolation` En düşük yakınlaştırma düzeyi için piksel yarıçapı ve aşağıdaki örnekte gösterildiği gibi hesaplanan en yüksek yakınlaştırma düzeyi için ölçeklendirilmiş bir yarıçap ile birlikte bir taban 2 ifadesiyle kullanın `2 * Math.pow(2, minZoom - maxZoom)` . Isı haritasının yakınlaştırma düzeyiyle nasıl ölçeklendirçalıştığını görmek için haritayı yakınlaştırın.
+
+::: zone pivot="programming-language-java-android"
 
 ```java
 HeatMapLayer layer = new HeatMapLayer(source,
@@ -174,6 +262,30 @@ HeatMapLayer layer = new HeatMapLayer(source,
   heatmapOpacity(0.75f)
 );
 ```
+
+::: zone-end
+
+::: zone pivot="programming-language-kotlin"
+
+```kotlin
+val layer = HeatMapLayer(source,
+  heatmapRadius(
+    interpolate(
+      exponential(2),
+      zoom(),
+
+      //For zoom level 1 set the radius to 2 pixels.
+      stop(1, 2f),
+
+      //Between zoom level 1 and 19, exponentially scale the radius from 2 pixels to 2 * (maxZoom - minZoom)^2 pixels.
+      stop(19, Math.pow(2.0, 19 - 1.0) * 2f)
+    )
+  ),
+  heatmapOpacity(0.75f)
+)
+```
+
+::: zone-end
 
 Aşağıdaki videoda, harita yakınlaştırma düzeylerinde tutarlı bir ısı haritası oluşturma işlemi oluşturmak için Haritayı yakınlaştırırken, yukarıdaki kodu çalıştıran bir harita gösterilmektedir.
 

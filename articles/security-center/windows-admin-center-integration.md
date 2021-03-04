@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: memildin
-ms.openlocfilehash: ca3dd410474af0a42a3cd5b4217c3bba90b8ff1a
-ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
+ms.openlocfilehash: fc4207547a1f34fca1ef302626f1365572a236b9
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96511993"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102101316"
 ---
 # <a name="protect-windows-admin-center-resources-with-security-center"></a>Güvenlik Merkezi ile Windows Yönetim Merkezi kaynaklarını koruma
 
@@ -21,7 +21,7 @@ Windows Yönetim Merkezi, Windows sunucularınız için bir yönetim aracıdır.
 
 > [!NOTE]
 > Windows Yönetim Merkezi tümleştirmesini etkinleştirmek için Azure aboneliğiniz ve ilişkili Log Analytics çalışma alanının her ikisi de Azure Defender 'ın etkinleştirilmiş olması gerekir.
-> Daha önce bunu abonelikte ve çalışma alanında kullanmadıysanız, Azure Defender ilk 30 gün boyunca ücretsizdir. Daha fazla bilgi için bkz. [fiyatlandırma bilgileri sayfası](security-center-pricing.md).
+> Daha önce bunu abonelikte ve çalışma alanında kullanmadıysanız, Azure Defender ilk 30 gün boyunca ücretsizdir. Seçtiğiniz para birimindeki ve bölgenize göre fiyatlandırma ayrıntıları için bkz. [Güvenlik Merkezi fiyatlandırması](https://azure.microsoft.com/pricing/details/security-center/).
 >
 
 Windows Yönetim Merkezi 'nden Azure Güvenlik Merkezi 'ne bir sunucu başarıyla eklendi, şunları yapabilirsiniz:

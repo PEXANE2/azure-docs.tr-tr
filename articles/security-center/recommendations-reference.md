@@ -7,12 +7,12 @@ ms.topic: reference
 ms.date: 02/16/2021
 ms.author: memildin
 ms.custom: generated
-ms.openlocfilehash: ecc9279b66f7dca431cc8c33a47b07a6349d8ed6
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: d484802b35ffec26d1248e51b365ac9041fc7934
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100574509"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102100415"
 ---
 # <a name="security-recommendations---a-reference-guide"></a>Güvenlik önerileri - başvuru kılavuzu
 
@@ -49,7 +49,7 @@ Güvenli puanınız, tamamladığınız Güvenlik Merkezi önerilerinin sayısı
 |Öneri|Açıklama & ilgili ilke|Önem derecesi|Hızlı düzelme etkin mi? ([Daha fazla bilgi](security-center-remediate-recommendations.md#quick-fix-remediation))|Kaynak türü|
 |----|----|----|----|----|
 |**Uygulama Hizmetleri 'ne erişim kısıtlı olmalıdır**|Ağ yapılandırmasını değiştirerek, çok geniş aralıklardan gelen trafiği reddedecek şekilde uygulama hizmetlerinize erişimi kısıtlayın.<br>(İlgili ilke: [Önizleme]: uygulama hizmetlerine erişim kısıtlı olmalıdır)|Yüksek|H|App service|
-|**IaaS NSG 'lerdeki Web uygulamalarına yönelik kurallar sağlamlaştırılmış olmalıdır**|Web uygulamaları çalıştıran sanal makinelerinizin ağ güvenlik grubu (NSG), Web uygulaması bağlantı noktalarıyla ilgili aşırı izin veren NSG kuralları ile Harden.<br>(İlgili ilke: IaaS üzerinde Web uygulamalarına yönelik NSG kuralları sağlamlaştırılmış olmalıdır)|Yüksek|H|Sanal makine|
+|**IaaS NSG 'lerdeki Web uygulamalarına yönelik kurallar sağlamlaştırılmış olmalıdır**|Web uygulamaları çalıştıran sanal makinelerinizin ağ güvenlik grubu (NSG), Web uygulaması bağlantı noktalarıyla ilgili aşırı izin veren NSG kuralları ile.<br>(İlgili ilke: IaaS üzerinde Web uygulamalarına yönelik NSG kuralları sağlamlaştırılmış olmalıdır)|Yüksek|H|Sanal makine|
 |**Gereksiz uygulama ayrıcalıklarını kaldırarak saldırı vektörünü azaltmak için pod güvenlik Ilkeleri tanımlanmalıdır (Önizleme)**|Gereksiz uygulama ayrıcalıklarını kaldırarak saldırı vektörünü azaltmak için pod güvenlik Ilkeleri tanımlayın. Yalnızca erişim izni verilen kaynaklara erişebilmeleri için pod güvenlik ilkelerinin yapılandırılması önerilir.<br>(İlgili ilke: [Önizleme]: Pod güvenlik Ilkeleri Kubernetes hizmetlerinde tanımlanmalıdır)|Orta|N|İşlem kaynakları (kapsayıcılar)|
 |**IoT cihazlarınıza daha fazla görünürlük sağlamak için IoT güvenlik modülü için Azure Güvenlik Merkezi 'ni yükler**|IoT cihazlarınıza daha fazla görünürlük sağlamak için IoT güvenlik modülü için Azure Güvenlik Merkezi 'ni yükler.|Düşük|N|IoT cihazı|
 
@@ -57,5 +57,5 @@ Güvenli puanınız, tamamladığınız Güvenlik Merkezi önerilerinin sayısı
 
 Öneriler hakkında daha fazla bilgi edinmek için aşağıdakilere bakın:
 
-- [Azure Güvenlik Merkezi'nde güvenlik önerileri](security-center-recommendations.md)
-- [Azure Güvenlik Merkezi'nde ağınızı koruma](security-center-network-recommendations.md)
+- [Güvenlik ilkeleri, girişimler ve öneriler nelerdir?](security-policy-concept.md)
+- [Güvenlik önerilerinizi gözden geçirin](security-center-recommendations.md)

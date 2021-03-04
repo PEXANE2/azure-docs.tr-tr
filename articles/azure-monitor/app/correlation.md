@@ -7,12 +7,12 @@ ms.author: lagayhar
 ms.date: 06/07/2019
 ms.reviewer: sergkanz
 ms.custom: devx-track-python, devx-track-csharp
-ms.openlocfilehash: 50b858d0bf05aa46ea20a6cf9e088376be2996e3
-ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
+ms.openlocfilehash: beaeb0131a2c9b326d663f6fcbb8273a9b52b412
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98693435"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102100976"
 ---
 # <a name="telemetry-correlation-in-application-insights"></a>Application Insights telemetri bağıntısı
 
@@ -48,7 +48,7 @@ Sonuçlarda, tüm telemetri öğelerinin kökü paylaştığından emin olmanız
 
 | ItemType   | name                      | ID           | operation_ParentId | operation_Id |
 |------------|---------------------------|--------------|--------------------|--------------|
-| Sayfa görüntülemesi   | Hisse senedi sayfası                |              | Stilz               | Stilz         |
+| Sayfa görüntülemesi   | Hisse senedi sayfası                | Stilz         |                    | Stilz         |
 | bağımlılık | /Home/Stock al           | qJSXU        | Stilz               | Stilz         |
 | istek    | Giriş/stok al            | KqKwlrSt9PA = | qJSXU              | Stilz         |
 | bağımlılık | /Api/Stock/Value al      | bBrf2L7mm2g = | KqKwlrSt9PA =       | Stilz         |

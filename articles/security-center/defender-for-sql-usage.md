@@ -1,6 +1,6 @@
 ---
-title: SQL için Azure Defender 'ı kullanma
-description: Azure Güvenlik Merkezi 'nin SQL planı için isteğe bağlı Azure Defender 'ı nasıl kullanacağınızı öğrenin
+title: SQL için Azure Defender 'ı ayarlama
+description: Azure Güvenlik Merkezi 'nin SQL planı için isteğe bağlı Azure Defender 'ı nasıl etkinleştirebileceğinizi öğrenin
 services: security-center
 documentationcenter: na
 author: memildin
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/11/2021
 ms.author: memildin
-ms.openlocfilehash: 96af34b5b68fca5ab8061c8c99f03bee094dc175
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: b82f0ca0624fcbd64f1c23f87f8f21f96d8e4d4c
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100590389"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102100585"
 ---
-# <a name="azure-defender-for-sql-servers-on-machines"></a>Makinelerdeki SQL sunucuları için Azure Defender 
+# <a name="enable-azure-defender-for-sql-servers-on-machines"></a>Makinelerde SQL Server 'lar için Azure Defender 'ı etkinleştirme 
 
 Bu Azure Defender planı, veritabanlarına erişmek veya veritabanına yararlanmak için olağan dışı ve zararlı olabilecek girişimleri gösteren anormal etkinlikleri algılar.
 
@@ -31,20 +31,19 @@ Bu Azure Defender planı, veritabanlarına erişmek veya veritabanına yararlanm
 |Görünüş|Ayrıntılar|
 |----|:----|
 |Yayın durumu:|Genel kullanılabilirlik (GA)|
-|Fiyat|**MAKINELERDEKI SQL Server 'lar Için Azure Defender** , [fiyatlandırma sayfasında](security-center-pricing.md) gösterildiği gibi faturalandırılır|
+|Fiyat|**MAKINELERDEKI SQL Server 'lar Için Azure Defender** , [Güvenlik Merkezi fiyatlandırması](https://azure.microsoft.com/pricing/details/security-center/) 'nda gösterildiği gibi faturalandırılır|
 |Korumalı SQL sürümleri:|Azure SQL Server (Microsoft desteği kapsamında tüm sürümler)|
-|Larının|![Yes](./media/icons/yes-icon.png) Ticari bulutlar<br>![Yes](./media/icons/yes-icon.png) US Gov<br>![No](./media/icons/no-icon.png) Çin gov, diğer gov|
+|Larının|![Yes](./media/icons/yes-icon.png) Ticari bulutlar<br>![Yes](./media/icons/yes-icon.png) US Gov<br>![Hayır](./media/icons/no-icon.png) Çin gov, diğer gov|
 |||
 
 ## <a name="set-up-azure-defender-for-sql-servers-on-machines"></a>Makinelerde SQL Server 'lar için Azure Defender 'ı ayarlama
 
 Bu planı etkinleştirmek için:
 
-* SQL sunucunuzun ana bilgisayarında Log Analytics aracısını sağlayın. Bu, Azure bağlantısı sağlar.
+[1. adım. SQL sunucunuzun ana bilgisayarında Log Analytics aracısını sağlayın:](#step-1-provision-the-log-analytics-agent-on-your-sql-servers-host)
 
-* Güvenlik Merkezi 'nin fiyatlandırma ve Ayarlar sayfasında isteğe bağlı planı etkinleştirin.
+[2. adım. Güvenlik Merkezi 'nin fiyatlandırma ve Ayarlar sayfasında isteğe bağlı planı etkinleştirin:](#step-2-enable-the-optional-plan-in-security-centers-pricing-and-settings-page)
 
-Bunların her ikisi de aşağıda açıklanmıştır.
 
 ### <a name="step-1-provision-the-log-analytics-agent-on-your-sql-servers-host"></a>Adım 1. SQL sunucunuzun ana bilgisayarında Log Analytics aracısını sağlayın:
 
@@ -81,31 +80,6 @@ Bunların her ikisi de aşağıda açıklanmıştır.
 1. İsteğe bağlı olarak, güvenlik uyarıları için e-posta bildirimini yapılandırın. 
     Güvenlik Merkezi uyarıları oluşturulduğunda, bir e-posta bildirimi almak için alıcıların listesini ayarlayabilirsiniz. E-posta, Azure Güvenlik Merkezi 'ndeki tüm ilgili ayrıntıların bulunduğu uyarıya doğrudan bir bağlantı içerir. Daha fazla bilgi için bkz. [güvenlik uyarıları için e-posta bildirimleri ayarlama](security-center-provide-security-contact-details.md).
 
-
-
-## <a name="explore-vulnerability-assessment-reports"></a>Güvenlik açığı değerlendirme raporlarını keşfet
-
-Güvenlik açığı değerlendirme hizmeti, veritabanlarınızı haftada bir kez tarar. Taramalar, hizmeti etkinleştirdiğiniz haftanın aynı gününde çalışır.
-
-Güvenlik açığı değerlendirme panosu, tüm veritabanlarınızda, sağlıklı ve sağlıksız veritabanlarının bir özeti ve risk dağıtımına göre başarısız olan denetimlerin genel bir özeti hakkında genel bir bakış sağlar.
-
-Güvenlik açığı değerlendirme sonuçlarını doğrudan güvenlik merkezi 'nden görüntüleyebilirsiniz.
-
-1. Güvenlik Merkezi 'nin kenar çubuğundan **öneriler** sayfasını açın ve **makinelerde SQL Server 'Larınızdaki öneri güvenlik açıklarını seçin (Önizleme)**. Daha fazla bilgi için bkz. [Güvenlik Merkezi önerileri](security-center-recommendations.md). 
-
-    :::image type="content" source="./media/security-center-advanced-iaas-data/data-and-storage-sqldb-vulns-on-vm.png" alt-text="Makinelerdeki SQL sunucularınızda bulunan güvenlik açığı değerlendirmesi (Önizleme) düzeltilmelidir.":::
-
-    Bu öneriye ilişkin ayrıntılı görünüm görüntülenir.
-
-    :::image type="content" source="./media/security-center-advanced-iaas-data/all-servers-view.png" alt-text="Öneri için ayrıntılı görünüm":::
-
-1. Daha fazla ayrıntı için ayrıntıya gidin:
-
-    * Taranan kaynaklara (veritabanlarına) ve test edilen güvenlik denetimlerinin listesine genel bakış için ilgilendiğiniz sunucuyu seçin.
-
-    * Belirli bir SQL veritabanı tarafından gruplanmış güvenlik açıklarına genel bir bakış için, ilgilendiğiniz veritabanını seçin.
-
-    Her görünümde güvenlik denetimleri **önem derecesine** göre sıralanır. Bir **Açıklama** içeren ayrıntı bölmesini, bunu nasıl **düzeltebileceğiniz** ve **etki** veya **kıyaslama** gibi diğer ilgili bilgileri görmek için belirli bir güvenlik denetimine tıklayın.
 
 ## <a name="azure-defender-for-sql-alerts"></a>SQL için Azure Defender uyarıları
 Uyarılar, SQL makinelerine erişmek veya bu makinelere yararlanmak için olağandışı ve olası zararlı saldırılara göre oluşturulur. Bu olaylar, [Uyarılar başvurusu sayfasında](alerts-reference.md#alerts-sql-db-and-warehouse)gösterilen uyarıları tetikleyebilirsiniz.

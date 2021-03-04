@@ -1,5 +1,5 @@
 ---
-title: Kitaplık Yönetimi
+title: Paket yönetimi
 description: Azure SYNAPSE Analytics 'te Apache Spark tarafından kullanılan kitaplıkları ekleme ve yönetme hakkında bilgi edinin.
 services: synapse-analytics
 author: midesa
@@ -9,12 +9,12 @@ ms.date: 03/01/2020
 ms.author: midesa
 ms.reviewer: jrasnick
 ms.subservice: spark
-ms.openlocfilehash: 955d7f8c2d2ce5ea126d4cce67b0e4e55152ac72
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 76d3bdc8a6eb133daa2d241bdf4c3b73271f0173
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101695099"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102100211"
 ---
 # <a name="manage-libraries-for-apache-spark-in-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'te Apache Spark için kitaplıkları yönetme
 Kitaplıklar, programlarınıza veya projelerinize dahil etmek isteyebileceğiniz yeniden kullanılabilir kod sağlar. 
@@ -38,17 +38,17 @@ Bir Spark örneği başlatıldığında, bu kitaplıklar otomatik olarak dahil e
 SYNAPSE içinde, çalışma alanı paketleri özel veya özel bir tekerlek veya JAR dosyaları olabilir. Bu paketleri çalışma alanınıza yükleyebilir ve daha sonra belirli bir Spark havuzuna atayabilirsiniz. Bu çalışma alanı paketleri atandıktan sonra, tüm Spark havuzu oturumlarına otomatik olarak yüklenir.
 
 Çalışma alanı kitaplıklarını yönetme hakkında daha fazla bilgi edinmek için aşağıdaki nasıl yapılır kılavuzlarını ziyaret edin:
-- [Python çalışma alanı paketleri: ](./apache-spark-manage-python-packages.md#Install-wheel-files) Python tekerlek dosyalarını bir çalışma alanı paketi olarak karşıya yükleyin ve daha sonra bu paketleri belirli sunucusuz Apache Spark havuzlarına ekleyin.
-- [Scala/Java çalışma alanı paketleri (Önizleme): ](./apache-spark-manage-scala-packages.md#Workspace-packages) Scala ve Java jar dosyalarını bir çalışma alanı paketi olarak karşıya yükleyin ve daha sonra bu paketleri belirli sunucusuz Apache Spark havuzlarına ekleyin.
+- [Python çalışma alanı paketleri (Önizleme): ](./apache-spark-manage-python-packages.md#install-wheel-files) Python tekerlek dosyalarını bir çalışma alanı paketi olarak karşıya yükleyin ve daha sonra bu paketleri belirli sunucusuz Apache Spark havuzlarına ekleyin.
+- [Scala/Java çalışma alanı paketleri (Önizleme): ](./apache-spark-manage-scala-packages.md#workspace-packages) Scala ve Java jar dosyalarını bir çalışma alanı paketi olarak karşıya yükleyin ve daha sonra bu paketleri belirli sunucusuz Apache Spark havuzlarına ekleyin.
 
-## <a name="pool-management"></a>Havuz yönetimi
+## <a name="pool-packages"></a>Havuz paketleri
 Bazı durumlarda, belirli bir Apache Spark havuzunda kullanılan paket kümesini standartlaştırmak isteyebilirsiniz. Aynı paketler, takımınızda birden çok kişi tarafından yaygın olarak yüklenirse bu standartlaştırma yararlı olabilir. 
 
 Azure SYNAPSE Analytics havuz yönetimi yeteneklerini kullanarak, belirli bir sunucusuz Apache Spark havuzunda yüklenmesini istediğiniz varsayılan kitaplık kümesini yapılandırabilirsiniz. Bu kitaplıklar [temel çalışma zamanının](./apache-spark-version-support.md)üzerine yüklenir. 
 
 Şu anda havuz yönetimi yalnızca Python için desteklenir. Python için SYNAPSE Spark havuzları, Python paket bağımlılıklarını yüklemek ve yönetmek için Conda kullanır. Havuz düzeyi kitaplıklarınızı belirtirken artık bir requirements.txt veya Environment. yıml sağlayabilirsiniz. Bu ortam yapılandırma dosyası, bu Spark havuzundan her bir Spark örneği oluşturulduğunda kullanılır. 
 
-Bu yetenekler hakkında daha fazla bilgi edinmek için [Python havuz yönetimi](./apache-spark-manage-python-packages.md#Pool-libraries)ile ilgili belgeleri ziyaret edin.
+Bu yetenekler hakkında daha fazla bilgi edinmek için [Python havuz yönetimi](./apache-spark-manage-python-packages.md#pool-libraries)ile ilgili belgeleri ziyaret edin.
 
 > [!IMPORTANT]
 > - Yüklemekte olduğunuz Paket büyükse veya yüklemesi uzun sürüyorsa, bu, Spark örneği başlangıç süresini etkiler.
@@ -61,8 +61,8 @@ Genellikle etkileşimli veri analizi veya makine öğrenimi yaparken, daha yeni 
 Oturum kapsamlı paketler, kullanıcıların oturumunun başlangıcında paket bağımlılıklarını tanımlamasına olanak tanır. Oturum kapsamlı bir paket yüklediğinizde, yalnızca geçerli oturumun belirtilen paketlere erişimi vardır. Sonuç olarak, bu oturum kapsamlı paketler aynı Apache Spark havuzunu kullanan diğer oturumları veya işleri etkilemez. Ayrıca, bu kitaplıklar temel çalışma zamanı ve havuz düzeyi paketlerinin üzerine yüklenir. 
 
 Oturum kapsamlı paketlerin nasıl yönetileceği hakkında daha fazla bilgi edinmek için aşağıdaki nasıl yapılır kılavuzlarını ziyaret edin:
-- [Python oturum paketleri (Önizleme):](./apache-spark-manage-python-packages.md#Session-scoped-libraries-(preview)) Bir oturumun başlangıcında, popüler depolardan ek Python paketleri yüklemek için Conda *Environment. yıml* sağlayın. 
-- [Scala/Java oturum paketleri: ](./apache-spark-manage-scala-packages.md#Workspace-packages) Oturumunuzun başlangıcında, kullanarak yüklenecek jar dosyalarının bir listesini sağlayın ```%%configure``` .
+- [Python oturum paketleri (Önizleme):](./apache-spark-manage-python-packages.md) Bir oturumun başlangıcında, popüler depolardan ek Python paketleri yüklemek için Conda *Environment. yıml* sağlayın. 
+- [Scala/Java oturum paketleri: ](./apache-spark-manage-scala-packages.md) Oturumunuzun başlangıcında, kullanarak yüklenecek jar dosyalarının bir listesini sağlayın ```%%configure``` .
 
 ## <a name="next-steps"></a>Sonraki adımlar
 - Varsayılan kitaplıkları görüntüleme: [Apache Spark sürüm desteği](apache-spark-version-support.md)

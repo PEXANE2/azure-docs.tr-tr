@@ -8,13 +8,13 @@ ms.topic: how-to
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
-ms.date: 03/02/2021
-ms.openlocfilehash: e8f7e5451b48066f52a4c1038e58b1efa99951e6
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.date: 03/04/2021
+ms.openlocfilehash: f5692f2bcaaadfc56084ec8db745eae48112ecf3
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 03/04/2021
-ms.locfileid: "102048632"
+ms.locfileid: "102101248"
 ---
 # <a name="configure-maintenance-window-preview"></a>Bakım penceresini yapılandırma (Önizleme)
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -26,6 +26,8 @@ Kaynak oluşturma sırasında veya bir kaynak oluşturulduktan sonra herhangi bi
 
 Farklı bir bakım penceresine geçiş özelliği, her hizmet düzeyi veya her bölge için kullanılamaz. Kullanılabilirlik hakkında daha fazla bilgi için bkz. [bakım penceresi kullanılabilirliği](maintenance-window.md#availability).
 
+> [!Important]
+> Bakım penceresini yapılandırmak, Azure SQL kaynağının hizmet katmanını değiştirmeye benzer şekilde, uzun süren bir zaman uyumsuz işlemdir. İşlem sırasında, işlemin sonunda gerçekleşen kısa bir yük devretme haricinde ve genellikle uzun süreli işlem durumunda bile 8 saniyeye kadar süren kaynak kullanılabilir. Yük devretmenin etkisini en aza indirmek için işlemi yoğun saatlerin dışında gerçekleştirmeniz gerekir.
 
 ## <a name="configure-maintenance-window-during-database-creation"></a>Veritabanı oluşturma sırasında bakım penceresini yapılandırma 
 

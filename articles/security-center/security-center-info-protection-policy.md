@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/04/2020
 ms.author: memildin
-ms.openlocfilehash: ca3a1083b512709ad5ef070b6f5bd0e363baf80b
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 432729417a65376533d9ecc201f2f6f52376cc58
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101720758"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102099412"
 ---
 # <a name="sql-information-protection-policy-in-azure-security-center"></a>Azure Güvenlik Merkezi 'nde SQL Information Protection ilkesi
  
@@ -32,7 +32,7 @@ Sınıflandırma mekanizması aşağıdaki iki öğeyi temel alır:
 Güvenlik Merkezi 'ndeki Information Protection ilkesi seçenekleri, Sınıflandırma Altyapısı için varsayılanlar olarak işlev gösteren önceden tanımlanmış bir Etiketler ve bilgi türleri kümesi sağlar. İlkeyi, kuruluşunuzun ihtiyaçlarına göre, aşağıda açıklandığı gibi özelleştirebilirsiniz.
 
 > [!IMPORTANT]
-> Azure kiracınız için Information Protection ilkesini özelleştirmek üzere kiracının kök yönetim grubunda yönetici ayrıcalıklarına sahip olmanız gerekir. [Azure Güvenlik Merkezi için kiracı genelinde görünürlük elde](security-center-management-groups.md)edin hakkında daha fazla bilgi edinin.
+> Azure kiracınız için Information Protection ilkesini özelleştirmek üzere kiracının kök yönetim grubunda yönetici ayrıcalıklarına sahip olmanız gerekir. Verme bölümünde daha fazla bilgi edinin [ve kiracı genelinde görünürlük isteyin](tenant-wide-permissions-management.md).
 
 :::image type="content" source="./media/security-center-info-protection-policy/sql-information-protection-policy-page.png" alt-text="SQL Information Protection ilkenizi gösteren sayfa":::
  
@@ -58,7 +58,7 @@ Bunların her biri aşağıdaki ilgili sekmede gösterilmiştir.
 Güvenlik Merkezi 'nin **fiyatlandırma ve ayarlar** sayfasından **SQL Information Protection**' ı seçin.
 
 > [!NOTE]
-> Bu seçenek yalnızca kiracı düzeyinde izinlere sahip kullanıcılar için görüntülenir. [Kendinize kiracı genelinde Izinler verin](./security-center-management-groups.md#grant-tenant-wide-permissions-to-yourself).
+> Bu seçenek yalnızca kiracı düzeyinde izinlere sahip kullanıcılar için görüntülenir. [Kendinize kiracı genelinde Izinler verin](tenant-wide-permissions-management.md#grant-tenant-wide-permissions-to-yourself).
 
 :::image type="content" source="./media/security-center-info-protection-policy/pricing-settings-link-to-information-protection.png" alt-text="Azure Güvenlik Merkezi 'nin fiyatlandırma ve Ayarlar sayfasından SQL Information Protection ilkesine erişme":::
 

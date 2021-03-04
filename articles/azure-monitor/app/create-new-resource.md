@@ -3,19 +3,19 @@ title: Yeni bir Azure Application Insights kaynağı oluşturma | Microsoft Docs
 description: Yeni bir canlı uygulama için Application Insights izlemeyi el ile ayarlayın.
 ms.topic: conceptual
 ms.date: 02/10/2021
-ms.openlocfilehash: 1ec5e929f591c0b7ada36f345d86c6de591892c8
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 459f61d9e13a2098403f3e78c7a529e49bf65e59
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100575624"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102100942"
 ---
 # <a name="create-an-application-insights-resource"></a>Application Insights kaynağı oluşturma
 
 Azure Application Insights, uygulamanız hakkındaki verileri bir Microsoft Azure *kaynağında* görüntüler. Bu nedenle yeni bir kaynak oluşturmak, [Yeni bir uygulamayı izlemek için Application Insights ayarlamanın][start]bir parçasıdır. Yeni kaynağınızı oluşturduktan sonra, izleme anahtarını alabilir ve Application Insights SDK 'sını yapılandırmak için kullanabilirsiniz. İzleme anahtarı, telemetrinizi kaynağa bağlar.
 
 > [!IMPORTANT]
-> Klasik Application Insights kullanım dışı bırakıldı. Lütfen [çalışma alanı tabanlı Application Insights yükseltme](convert-classic-resource.md)hakkında daha fazla bilgi için bu yönergeleri izleyin.
+> [Klasik Application Insights kullanım dışı bırakıldı](https://azure.microsoft.com/updates/we-re-retiring-classic-application-insights-on-29-february-2024/). Lütfen [çalışma alanı tabanlı Application Insights yükseltme](convert-classic-resource.md)hakkında daha fazla bilgi için bu yönergeleri izleyin.
 
 ## <a name="sign-in-to-microsoft-azure"></a>Microsoft Azure oturum açın
 
