@@ -5,6 +5,14 @@
   items:
     - name: Azure Güvenlik Merkezi nedir?
       href: security-center-introduction.md
+    - name: Azure Defender nedir?
+      href: azure-defender.md
+    - name: Yenilikler
+      displayName: 'changelog, news, release notes'
+      href: release-notes.md
+    - name: Yaklaşan önemli değişiklikler
+      displayName: 'release notes, changelog, news'
+      href: upcoming-changes.md
     - name: Kullanılabilirlik
       items:
         - name: Desteklenen platformlar
@@ -14,71 +22,22 @@
           href: security-center-services.md
         - name: Azure PaaS kaynakları için özellik kapsamı
           href: features-paas.md
-    - name: Yenilikler
-      items:
-        - name: Sürüm notları
-          displayName: 'changelog, news'
-          href: release-notes.md
-        - name: Yaklaşan önemli değişiklikler
-          displayName: 'release notes, changelog, news'
-          href: upcoming-changes.md
-        - name: Arşivlenmiş sürüm notları (altı aydan daha eski)
-          displayName: 'changelog, news'
-          href: release-notes-archive.md
-    - name: Güvenlik Merkezi temelleri
-      items:
-        - name: Güvenlik Merkezi’ne genel bakış
-          href: overview-page.md
-        - name: Güvenlik önerileri
-          href: recommendations-reference.md
-        - name: Güvenlik uyarıları ve amaç sonlandırma zinciri
-          href: alerts-reference.md
-        - name: Microsoft müşteri verilerinin güvenliğini nasıl sağlar?
-          href: security-center-data-security.md
-        - name: İzinler
+        - name: Kullanıcı rolleri ve izinleri
+          displayName: RBAC
           href: security-center-permissions.md
-    - name: Azure Defender’ın gelişmiş güvenliği
-      items:
-        - name: Azure Defender’a genel bakış
-          href: azure-defender.md
-        - name: Sunucular için Azure Defender
-          displayName: VM
-          href: defender-for-servers-introduction.md
-        - name: App Service için Azure Defender
-          href: defender-for-app-service-introduction.md
-        - name: Depolama için Azure Defender
-          displayName: 'blob, adls, files'
-          href: defender-for-storage-introduction.md
-        - name: SQL için Azure Defender
-          displayName: database
-          href: defender-for-sql-introduction.md
-        - name: Key Vault için Azure Defender
-          displayName: 'KV, akv'
-          href: defender-for-key-vault-introduction.md
-        - name: Resource Manager için Azure Defender
-          displayName: ARM
-          href: defender-for-resource-manager-introduction.md
-        - name: DNS için Azure Defender
-          displayName: domain
-          href: defender-for-dns-introduction.md
-        - name: Kubernetes için Azure Defender
-          displayName: 'clusters, k8s, aks'
-          href: defender-for-kubernetes-introduction.md
-        - name: Kapsayıcı kayıt defterleri için Azure Defender
-          displayName: 'ACR, registry, images'
-          href: defender-for-container-registries-introduction.md
-        - name: Ek tehdit korumaları
-          href: other-threat-protections.md
-    - name: Güvenlik Merkezi’nin kapsayıcı güvenliği özellikleri
-      displayName: 'kubernetes, aks, acr, registries, k8s'
-      href: container-security.md
-    - name: Fiyatlandırma
-      href: security-center-pricing.md
+        - name: Güvenlik Merkezi Ücretsiz vs Azure Defender etkin
+          href: security-center-pricing.md
 - name: Hızlı Başlangıçlar
   items:
-    - name: Kullanmaya başlayın
+    - name: 1. Aboneliklerinizde güvenlik merkezini etkinleştirin
       href: security-center-get-started.md
-    - name: Hibrit ortamınızı ayarlama
+    - name: 2. Azure Defender’ı etkinleştirme
+      href: enable-azure-defender.md
+    - name: 3. Otomatik sağlamayı yapılandırma
+      href: security-center-enable-data-collection.md
+    - name: 4. E-posta bildirimlerini ayarlama
+      href: security-center-provide-security-contact-details.md
+    - name: 5. Karma ve çoklu bulut makinelerinizi bağlama
       items:
         - name: Azure olmayan makineleri bağlama
           displayName: 'azure stack, ash, windows, linux, hybrid, arc'
@@ -89,17 +48,12 @@
         - name: GCP hesaplarını bağlama
           displayName: 'hybrid, multicloud, google'
           href: quickstart-onboard-gcp.md
-    - name: PowerShell kullanarak eklemeyi otomatikleştirme
-      href: security-center-powershell-onboarding.md
-    - name: Yönetim grubu için Güvenlik Merkezi'ni etkinleştirme
-      href: onboard-management-group.md
-    - name: Otomatik sağlamayı yapılandırma
-      href: security-center-enable-data-collection.md
-    - name: E-posta bildirimlerini ayarlama
-      href: security-center-provide-security-contact-details.md
-    - name: ARM şablonuyla uyarıya otomatik yanıt oluşturma
-      displayName: Resource Manager
+    - name: 6. Uyarılara otomatik yanıtlar oluşturma
+      displayName: 'Resource Manager, ARM'
       href: quickstart-automation-alert.md
+    - name: 7. Uyumluluk panonuz için standartları seçme
+      displayName: 'regulatory, regulation, CIS, PCI DSS, ISO, SOC, ASB, Benchmark, Azure Security Benchmark, HIPAA'
+      href: update-regulatory-compliance-packages.md
 - name: Öğreticiler
   items:
     - name: Planlama ve işlemler kılavuzu
@@ -114,74 +68,59 @@
       href: tutorial-security-policy.md
 - name: Kavramlar
   items:
-    - name: Bulut Güvenlik Duruşu Yönetimi
+    - name: Bulut güvenliği yükleme sonrası yönetimi kavramları
       items:
-        - name: Varlık envanteriyle kaynaklarınızı yönetme
-          href: asset-inventory.md
-        - name: Güvenlik puanı
+        - name: 'İlkeler, girişimler ve öneriler'
+          href: security-policy-concept.md
+        - name: Güvenli puan ve güvenlik denetimleri
           href: secure-score-security-controls.md
-        - name: Güvenlik önerilerine genel bakış
-          href: security-center-recommendations.md
-        - name: Güvenliği artırmak için önerileri kullanın
-          href: security-center-using-recommendations.md
-        - name: Güvenlik temeli
-          href: security-baseline.md
-        - name: Kiracılar arası yönetim
-          href: security-center-cross-tenant-management.md
-        - name: Windows Admin Center sunucularınızı koruma
-          href: windows-admin-center-integration.md
-        - name: Güvenlik çözümlerini ve veri kaynaklarını tümleştirme
-          href: security-center-partner-integration.md
+        - name: Öneriler için başvuru listesi
+          href: recommendations-reference.md
+    - name: Bulut Iş yükü koruması kavramları
+      items:
+        - name: Güvenlik uyarıları ve olaylar
+          href: security-center-alerts-overview.md
+        - name: Uyarıların başvuru listesi
+          href: alerts-reference.md
+- name: Nasıl yapılır kılavuzları
+  items:
+    - name: Genel Bakış panosunu kullanma
+      displayName: 'overview, compliance, inventory'
+      href: overview-page.md
+    - name: Azure Defender panosunu kullanma
+      href: azure-defender-dashboard.md
+    - name: Güvenli puanınızı erişin ve izleyin
+      href: secure-score-access-and-track.md
+    - name: Varlık envanteriyle kaynaklarınızı yönetme
+      href: asset-inventory.md
+    - name: Etkileşimli Güvenlik Merkezi verileri raporları oluşturun
+      displayName: 'workbooks, Secure Score Over Time, Vulnerability Assessment Findings'
+      href: custom-dashboards-azure-workbooks.md
     - name: Güvenliği geliştirmek için güvenlik önerilerini kullanma
       items:
+        - name: Güvenlik önerilerinizi gözden geçirin
+          href: security-center-recommendations.md
         - name: Önerileri düzeltme
           href: security-center-remediate-recommendations.md
         - name: Zorla/Reddet ile yanlış yapılandırmaları önleme
           displayName: recommendations
           href: prevent-misconfigurations.md
-        - name: Güvenlik duruşunu güçlendirme
-          href: security-center-monitoring.md
-        - name: Öneriler için başvuru listesi
-          href: recommendations-reference.md
-        - name: Güvenlik önerilerini yönetme
-          items:
-            - name: Önerilere verilen yanıtları otomatikleştirme
-              displayName: workflow
-              href: workflow-automation.md
-            - name: Kaynağı öneriden muaf tutma
-              href: exempt-resource.md
-        - name: Ağ kaynaklarını koruma
-          href: security-center-network-recommendations.md
-        - name: Kimliği ve erişimi koruma
-          href: security-center-identity-access.md
-    - name: Güvenlik uyarıları hakkında bilgi edinme
-      items:
-        - name: Güvenlik uyarılarına genel bakış
-          href: security-center-alerts-overview.md
-        - name: Uyarıların başvuru listesi
-          href: alerts-reference.md
-        - name: Uyarı şemaları
-          href: alerts-schemas.md
-        - name: Güvenlik olaylarına genel bakış
-          href: security-center-alerts-cloud-smart.md
-- name: Nasıl yapılır kılavuzları
-  items:
-    - name: Azure Defender panosunu kullanma
-      href: azure-defender-dashboard.md
-    - name: Güvenlik ilkelerini ve uyumluluk standartlarını yapılandırma
-      items:
-        - name: Özel güvenlik ilkeleri oluşturma
+        - name: Önerilere verilen yanıtları otomatikleştirme
+          displayName: workflow
+          href: workflow-automation.md
+        - name: Kaynağı öneriden muaf tutma
+          href: exempt-resource.md
+        - name: Özel güvenlik girişimleri ve ilkeleri oluşturma
           href: custom-security-policies.md
-        - name: Azure İlkesi REST API'siyle ilkeleri yönetme
-          href: configure-security-policy-azure-policy.md
-        - name: Uyumluluk panonuz için standartları seçme
-          displayName: 'regulatory, regulation, CIS, PCI DSS, ISO, SOC, Benchmark, Azure Security Benchmark, HIPAA'
-          href: update-regulatory-compliance-packages.md
-    - name: Sunucular için Azure Defender’ı kullanma
+    - name: Sunucular için Azure Defender ile makinelerinizi koruyun
+      displayName: 'hybrid, arc, Azure Defender for machines'
       items:
+        - name: Sunucular için Azure Defender 'a genel bakış
+          displayName: VM
+          href: defender-for-servers-introduction.md
         - name: Güvenlik açığı taraması
           items:
-            - name: Makineler için tümleşik VA tarayıcısı
+            - name: Tümleşik VA tarayıcısıyla makinelerinizi tarayın
               displayName: 'qualys, vulnerability, arc, hybrid'
               href: deploy-vulnerability-assessment-vm.md
             - name: VM’lerinizi KLG VA çözümüyle tarama
@@ -204,58 +143,131 @@
         - name: Tümleşik Uç Nokta için Microsoft Defender lisansını kullanma
           displayName: 'ATP, mdatp, wdatp'
           href: security-center-wdatp.md
-        - name: Uyarlamalı uygulama denetimlerini yönetme
-          displayName: 'aac, whitelist, allowlist, reviewgroup'
+        - name: Makineleriniz için güvenli uygulamaların listesini tanımlama
+          displayName: 'aac, whitelist, allowlist, reviewgroup, adaptive application controls'
           href: security-center-adaptive-application.md
-        - name: Dosya bütünlüğünü izlemeyi kullanma
+        - name: Dosya bütünlüğü izleme ile dosya ve kayıt defterlerine yapılan değişiklikleri izleme
           items:
             - name: Dosya bütünlüğünü izlemeye genel bakış
               displayName: 'fim, change'
               href: security-center-file-integrity-monitoring.md
-            - name: Dosya Bütünlüğünü İzleme kullanarak ana hatları karşılaştırma
+            - name: Dosya bütünlüğü izlemeyi kullanarak temelleri karşılaştırın
               displayName: 'fim, change'
               href: security-center-file-integrity-monitoring-baselines.md
-        - name: Uyarlamalı ağ sağlamlaştırmayı yönetme
+        - name: Uyarlamalı ağ sağlamlaştırma ile ağ güvenlik durunuzu geliştirme
           displayName: anh
           href: security-center-adaptive-network-hardening.md
         - name: Docker konaklarınızı sağlamlaştırma
           displayName: containers
           href: harden-docker-hosts.md
-    - name: SQL için Azure Defender’ı kullanma
-      href: defender-for-sql-usage.md
-      displayName: 'hybrid, arc'
-    - name: Kapsayıcı kayıt defterleri için Azure Defender’ı kullanma
+    - name: SQL kaynaklarınızı koruyun
       items:
+        - name: SQL için Azure Defender 'a genel bakış
+          displayName: database
+          href: defender-for-sql-introduction.md
+        - name: Makinelerdeki SQL Server 'lar için Defender 'ı etkinleştirin
+          href: defender-for-sql-usage.md
+          displayName: 'hybrid, arc, Azure Defender'
+        - name: SQL kaynaklarınızı güvenlik açıklarına karşı tarayın
+          href: defender-for-sql-on-machines-vulnerability-assessment.md
+          displayName: 'hybrid, arc, Azure Defender'
+        - name: SQL Server 'lar üzerinde bulma güvenlik açığını devre dışı bırakma
+          displayName: 'VA, registry, vulnerabilities'
+          href: defender-for-sql-on-machines-vulnerability-assessment.md#disable-specific-findings-preview
+        - name: SQL Information Protection ilkesini özelleştirme
+          displayName: 'sql, database, data discovery'
+          href: security-center-info-protection-policy.md
+    - name: Kapsayıcılı ortamlarınızı koruyun
+      displayName: Azure Defender
+      items:
+        - name: Güvenlik Merkezi’nin kapsayıcı güvenliği özellikleri
+          displayName: 'kubernetes, aks, acr, registries, k8s'
+          href: container-security.md
+        - name: Kubernetes için Defender 'a genel bakış
+          displayName: 'clusters, k8s, aks'
+          href: defender-for-kubernetes-introduction.md
+        - name: Kapsayıcı kayıt defterleri için Defender 'a genel bakış
+          displayName: 'ACR, registry, images'
+          href: defender-for-container-registries-introduction.md
         - name: Kayıt defteri görüntülerinizi güvenlik açıkları için tarama
           displayName: 'ACR, registry, images, qualys'
           href: defender-for-container-registries-usage.md
         - name: Görüntülerde belirli güvenlik açığı bulgularını devre dışı bırakma
           displayName: 'ACR, registry, images, qualys'
           href: defender-for-container-registries-usage.md#disable-specific-findings-preview
-    - name: Uyarıları ve önerileri dışarı aktarma
+        - name: Kubernetes iş yüklerinizi koruma
+          displayName: 'k8s, containers, aks'
+          href: kubernetes-workload-protections.md
+    - name: Azure App Service web uygulamalarınızı ve API'lerinizi koruma
+      displayName: 'Azure Defender for App Service, defender for app'
+      href: defender-for-app-service-introduction.md
+    - name: Azure depolama hesaplarınızı koruyun
+      displayName: 'blob, adls, files, Azure Defender for Storage, Defender for Storage'
+      href: defender-for-storage-introduction.md
+    - name: Key Vault Anahtarlarınızı ve sırlarınızı koruyun
       items:
-        - name: 'SIEM, SOAR veya ITSM''ye aktarma'
-          displayName: 'continuous, SIEM, SOAR, Splunk, QRadar, ServiceNow, ArcSight, Monitor, Graph, Sentinel,'
-          href: export-to-siem.md
-        - name: Log Analytics çalışma alanına veya Azure Olay Hub'ına aktarma
-          displayName: continuous
-          href: continuous-export.md
-        - name: Tüm uyarıları içeren CSV raporunu indirme
-          href: continuous-export.md#manual-one-time-export-of-alerts-and-recommendations
-    - name: Güvenlik uyarılarını işleme
-      items:
-        - name: Güvenlik uyarılarını yönetme
-          href: security-center-managing-and-responding-alerts.md
-        - name: Uyarı engelleme kurallarını oluşturma ve yönetme
-          href: alerts-suppression-rules.md
+        - name: Key Vault için Azure Defender 'a genel bakış
+          displayName: 'KV, akv'
+          href: defender-for-key-vault-introduction.md
         - name: Key Vault için Azure Defender uyarılarına yanıt verme
           displayName: 'akv, kv'
           href: defender-for-key-vault-usage.md
-        - name: DNS için Azure Defender uyarılarına yanıt verme
-          href: defender-for-dns-usage.md
+    - name: Kaynak yönetimi işlemlerinizi izleme
+      items:
+        - name: Kaynak Yöneticisi için Azure Defender 'a genel bakış
+          displayName: ARM
+          href: defender-for-resource-manager-introduction.md
         - name: Resource Manager için Azure Defender uyarılarına yanıt verme
           displayName: arm
           href: defender-for-resource-manager-usage.md
+    - name: Azure kaynaklarınızdaki DNS sorgularını izleyin
+      items:
+        - name: DNS için Azure Defender 'a genel bakış
+          displayName: 'domain, Defender for DNS'
+          href: defender-for-dns-introduction.md
+        - name: DNS için Azure Defender uyarılarına yanıt verme
+          href: defender-for-dns-usage.md
+    - name: Windows Admin Center sunucularınızı koruma
+      href: windows-admin-center-integration.md
+    - name: Güvenlik çözümlerini ve veri kaynaklarını tümleştirme
+      href: security-center-partner-integration.md
+    - name: Ağ kaynaklarını koruma
+      href: security-center-network-recommendations.md
+    - name: Kimliği ve erişimi koruma
+      href: security-center-identity-access.md
+    - name: Güvenlik Merkezi 'nin ek tehdit korumalarını kullanın
+      href: other-threat-protections.md
+    - name: 'Abonelikleri, kullanıcıları ve izinleri yönetme'
+      items:
+        - name: Yönetim gruplarını ve abonelikleri Düzenle
+          href: security-center-management-groups.md
+        - name: Kiracı genelinde izinleri verme ve isteme
+          displayName: 'global admin, Azure Active Directory (AD), AAD'
+          href: tenant-wide-permissions-management.md
+        - name: Yönetim grubu için Güvenlik Merkezi'ni etkinleştirme
+          href: onboard-management-group.md
+        - name: Kiracılar arası yönetim ayarlama
+          href: security-center-cross-tenant-management.md
+        - name: PowerShell kullanarak eklemeyi otomatikleştirme
+          href: security-center-powershell-onboarding.md
+    - name: 'Uyarıları, olayları ve tehdit raporlarını yönetme'
+      items:
+        - name: Güvenlik uyarılarını yanıtlama
+          href: security-center-managing-and-responding-alerts.md
+        - name: Uyarı engelleme kurallarını oluşturma ve yönetme
+          href: alerts-suppression-rules.md
+        - name: Uyarıları ve önerileri dışarı aktarma
+          items:
+            - name: 'SIEM, SOAR veya ITSM''ye aktarma'
+              displayName: 'continuous, SIEM, SOAR, Splunk, QRadar, ServiceNow, ArcSight, Monitor, Graph, Sentinel,'
+              href: export-to-siem.md
+            - name: Log Analytics çalışma alanına veya Azure Olay Hub'ına aktarma
+              displayName: continuous
+              href: continuous-export.md
+            - name: Tüm uyarıları içeren CSV raporunu indirme
+              href: continuous-export.md#manual-one-time-export-of-alerts-and-recommendations
+            - name: Uyarı şemaları
+              href: alerts-schemas.md
         - name: Güvenlik olaylarını yönetme
           href: security-center-incident.md
         - name: Tehdit analizi raporları oluşturma
@@ -266,18 +278,17 @@
         - name: Uyarıların yanıtlarını otomatikleştirme
           displayName: workflow
           href: workflow-automation.md
-    - name: Kubernetes iş yüklerinizi koruma
-      displayName: 'k8s, containers, aks'
-      href: kubernetes-workload-protections.md
-    - name: Kiracı genelinde görünürlük elde etme
-      href: security-center-management-groups.md
-    - name: SQL bilgilerinizi koruma ilkesini özelleştirme
-      displayName: 'sql, database, data discovery'
-      href: security-center-info-protection-policy.md
 - name: Başvuru
   items:
-    - name: REST API'leri
+    - name: Arşivlenmiş sürüm notları (altı aydan daha eski)
+      displayName: 'changelog, news'
+      href: release-notes-archive.md
+    - name: Microsoft müşteri verilerinin güvenliğini nasıl sağlar?
+      href: security-center-data-security.md
+    - name: REST API 'Leri belgeleri
       href: /rest/api/securitycenter/
+    - name: Güvenlik temeli
+      href: security-baseline.md
     - name: Azure Güvenlik Merkezi hakkında SSS
       items:
         - name: Genel sorular

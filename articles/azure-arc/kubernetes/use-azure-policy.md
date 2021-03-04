@@ -2,22 +2,20 @@
 title: Ölçek yapılandırmasında küme yapılandırması uygulamak için Azure Ilkesini kullanma
 services: azure-arc
 ms.service: azure-arc
-ms.date: 03/02/2021
+ms.date: 03/03/2021
 ms.topic: article
 author: mlearned
 ms.author: mlearned
 description: Ölçek yapılandırmasında küme yapılandırması uygulamak için Azure Ilkesini kullanma
 keywords: Kubernetes, yay, Azure, K8s, kapsayıcılar
-ms.openlocfilehash: 7f85050666c383ba49730bd88ce1f26d55607e7a
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 05a6665a985ef8b229ee58082dc9b2c10cdcece3
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101652156"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102121465"
 ---
 # <a name="use-azure-policy-to-apply-cluster-configurations-at-scale"></a>Ölçek yapılandırmasında küme yapılandırması uygulamak için Azure Ilkesini kullanma
-
-## <a name="overview"></a>Genel Bakış
 
 Azure `Microsoft.KubernetesConfiguration/sourceControlConfigurations` yay etkinleştirilmiş Kubernetes kümeleri () üzerinde ölçekli yapılandırma (kaynak türü) uygulamak Için Azure ilkesini kullanabilirsiniz `Microsoft.Kubernetes/connectedclusters` .
 
@@ -69,4 +67,4 @@ Mevcut kümeler için bir düzeltme görevini el ile çalıştırmanız gerekir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Arc etkin Kubernetes kümelerine sahip kapsayıcılar için Azure Izleyici 'yi ayarlama](../../azure-monitor/containers/container-insights-enable-arc-enabled-clusters.md)
+[Azure Arc etkinleştirilmiş Kubernetes kümeleriyle kapsayıcılar Için Azure izleyici 'Yi ayarlayın](../../azure-monitor/containers/container-insights-enable-arc-enabled-clusters.md).

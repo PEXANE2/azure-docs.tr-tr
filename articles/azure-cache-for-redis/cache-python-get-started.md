@@ -11,16 +11,20 @@ ms.custom:
 - seo-python-october2019
 - devx-track-python
 ms.date: 11/05/2019
-ms.openlocfilehash: 79add54478e9cd52ffd3041d5f85bf588929b44f
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 048c31bedb56bdb66dc3b80d12c3014652e34625
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96008880"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102121159"
 ---
 # <a name="quickstart-use-azure-cache-for-redis-in-python"></a>Hızlı başlangıç: Python 'da Redsıs için Azure önbelleğini kullanma
 
 Bu makalede, Azure 'daki herhangi bir uygulamadan erişilebilen güvenli, ayrılmış bir önbelleğe erişim sağlamak için Redsıs için Azure önbelleğini bir Python uygulamasına katabilirsiniz.
+
+## <a name="skip-to-the-code-on-github"></a>GitHub 'daki koda atlayın
+
+Koda doğrudan atlamak istiyorsanız GitHub 'da [Python hızlı başlangıç](https://github.com/Azure-Samples/azure-cache-redis-samples/tree/main/quickstart/python) bölümüne bakın.
 
 ## <a name="prerequisites"></a>Önkoşullar
 

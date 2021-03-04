@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 03/02/2021
+ms.date: 03/04/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: dcd0ccdc42a820f1e264b739cb0063516a0cb53e
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: db2715f0827203dac505fa4dc15c22bdab953010
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101688561"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102120224"
 ---
 # <a name="user-profile-attributes"></a>Kullanıcı profili öznitelikleri
 
@@ -101,9 +101,9 @@ Bir tüketici, iş ortağı veya vatandaşlık olabilecek bir müşteri hesabı 
 - **Yerel** kimlik-Kullanıcı adı ve parola Azure AD B2C dizininde yerel olarak depolanır. Genellikle bu kimliklere "yerel hesaplar" olarak başvurduk.
 - **Federasyon** kimliği- *sosyal* veya *Kurumsal* hesaplar olarak da bilinen kullanıcı KIMLIĞI, Facebook, Microsoft, ADFS veya Salesforce gibi bir federal kimlik sağlayıcısı tarafından yönetilir.
 
-Müşteri hesabı olan bir Kullanıcı birden çok kimlik ile oturum açabilir. Örneğin, Kullanıcı adı, e-posta, çalışan KIMLIĞI, kamu KIMLIĞI ve diğerleri. Tek bir hesabın aynı parolayla hem yerel hem de sosyal birden çok kimliği olabilir.
+Müşteri hesabı olan bir Kullanıcı birden çok kimlik ile oturum açabilir. Örneğin, Kullanıcı adı, e-posta, çalışan KIMLIĞI, kamu KIMLIĞI ve diğerleri. Tek bir hesabın aynı parolayla hem yerel hem de sosyal birden çok kimliği olabilir. 
 
-Microsoft Graph API 'sinde, hem yerel hem de Federasyon kimlikleri, `identities` [Objectıdentity] [Graph-Objectıdentity] türündeki Kullanıcı özniteliğinde depolanır. `identities`Koleksiyon, bir kullanıcı hesabında oturum açmak için kullanılan bir kimlik kümesini temsil eder. Bu koleksiyon, kullanıcının Kullanıcı hesabında ilişkili kimliklerinden herhangi biriyle oturum açmasını sağlar.
+Microsoft Graph API 'sinde, hem yerel hem de Federasyon kimlikleri, `identities` [Objectıdentity](/graph/api/resources/objectidentity)türünde olan User özniteliğinde depolanır. `identities`Koleksiyon, bir kullanıcı hesabında oturum açmak için kullanılan bir kimlik kümesini temsil eder. Bu koleksiyon, kullanıcının Kullanıcı hesabında ilişkili kimliklerinden herhangi biriyle oturum açmasını sağlar. Kimlikler özniteliği en fazla on [Objectıdentity](/graph/api/resources/objectidentity) nesnesi içerebilir. Her nesne aşağıdaki özellikleri içerir:
 
 | Ad   | Tür |Açıklama|
 |:---------------|:--------|:----------|

@@ -2,20 +2,20 @@
   href: index.yml
 - name: Genel Bakış
   items:
-    - name: Arc özellikli Kubernetes
+    - name: Azure Arc özellikli Kubernetes hakkında
       href: overview.md
     - name: Azure Arc doğrulama programı
       href: validation-program.md
+- name: Hızlı Başlangıçlar
+  items:
+    - name: Bir kümeyi Azure yaya bağlama
+      href: quickstart-connect-cluster.md
 - name: Öğreticiler
   items:
     - name: GitOps kullanarak yapılandırmaları dağıtma
       href: tutorial-use-gitops-connected-cluster.md
     - name: Gilar ile CI/CD 'yi uygulama
       href: tutorial-gitops-ci-cd.md
-- name: Hızlı Başlangıçlar
-  items:
-    - name: Bir kümeyi Azure yaya bağlama
-      href: quickstart-connect-cluster.md
 - name: Kavramlar
   items:
     - name: Aracı Mimarisi

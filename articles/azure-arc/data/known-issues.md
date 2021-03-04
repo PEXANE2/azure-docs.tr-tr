@@ -9,12 +9,12 @@ ms.service: azure-arc
 ms.subservice: azure-arc-data
 ms.date: 03/02/2021
 ms.topic: conceptual
-ms.openlocfilehash: d4667e8fa3a5624dddc3cb0dd792fc73ea812332
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 8100d9e12f107e0c4598876c46453b46c6ee4d0e
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101693230"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102122009"
 ---
 # <a name="known-issues---azure-arc-enabled-data-services-preview"></a>Bilinen sorunlar-Azure Arc etkin veri Hizmetleri (Önizleme)
 
@@ -22,10 +22,7 @@ ms.locfileid: "101693230"
 
 ## <a name="february-2021"></a>Şubat 2021
 
-
 - Bağlı küme modu devre dışı
-- Azure Arc etkin PostgreSQL hiper ölçek, belirttiğiniz zaman göreli noktaya geri yükleme yaparken yanlış bir hata iletisi döndürüyor. Örneğin, geri yükleme için yedeklemelerinizin sahip olduğu sürümden daha eski bir nokta belirttiyseniz, geri yükleme şu şekilde bir hata iletisiyle başarısız olur: `ERROR: (404). Reason: Not found. HTTP response body: {"code":404, "internalStatus":"NOT_FOUND", "reason":"Failed to restore backup for server...}` . Bu durumda, yedeklemeleriniz olan tarih aralığı içinde bir zaman noktası olduğunu belirterek komutu yeniden başlatın. Bu aralığı öğrenmek için, yedeklemelerinizi listeleyin ve alındığı tarihlere bakın.
-- Tam geri yükleme yapılırken bir yedekleme kimliği gereklidir. Varsayılan olarak, bir yedekleme kimliği belirtmezseniz, en son yedekleme kullanılacaktır. Bu sürümde çalışmaz.
 
 ## <a name="introduced-prior-to-february-2021"></a>Şubat 2021 ' den önce sunulmuştur
 

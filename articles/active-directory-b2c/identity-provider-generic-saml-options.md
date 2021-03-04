@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/03/2021
+ms.date: 03/04/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 44a084266a083b2cc7c0609e4bfedb10a018585d
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.openlocfilehash: 075b04414c752ce87365d03212fcdabab6eaa7dd
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 03/04/2021
-ms.locfileid: "102107812"
+ms.locfileid: "102119833"
 ---
 # <a name="configure-saml-identity-provider-options-with-azure-active-directory-b2c"></a>SAML kimlik sağlayıcısı seçeneklerini Azure Active Directory B2C ile yapılandırma
 
@@ -43,8 +43,8 @@ Azure Active Directory B2C (Azure AD B2C) SAML 2,0 kimlik sağlayıcılarıyla F
 Çıkış talebi öğesi aşağıdaki öznitelikleri içerir:
 
 - **ClaimTypeReferenceId** , bir talep türüne başvurudur. 
-- **Partnerclaimtype** , Azure Insights 'ta görünen özelliğin adıdır. Sözdizimini kullanın `{property:NAME}` , burada `NAME` özellik olaya eklenir.
-- **DefaultValue** , olay adı gibi, kaydedilecek önceden tanımlanmış bir değerdir. Kimlik sağlayıcısı adı gibi Kullanıcı yolculuğunda kullanılan bir talep. Talep boşsa, varsayılan değer kullanılacaktır. Örneğin, `identityProvider` talep Facebook gibi Federasyon teknik profilleri tarafından ayarlanır. Talep boşsa, kullanıcının bir yerel hesapla oturum açmasını gösterir. Bu nedenle, varsayılan değer *Yerel* olarak ayarlanır. Ayrıca, uygulama KIMLIĞI veya Kullanıcı IP adresi gibi bağlamsal bir değere sahip bir [talep çözümleyicilerine](claim-resolver-overview.md) de kaydedebilirsiniz.
+- **Partnerclaimtype** , SAML onaylama görünen özelliğin adıdır. 
+- **DefaultValue** önceden tanımlanmış bir varsayılan değerdir. Talep boşsa, varsayılan değer kullanılacaktır. İlişki KIMLIĞI veya Kullanıcı IP adresi gibi bağlamsal bir değere sahip bir [talep çözümleyicilerine](claim-resolver-overview.md) de kullanabilirsiniz.
 
 ### <a name="subject-name"></a>Konu adı
 

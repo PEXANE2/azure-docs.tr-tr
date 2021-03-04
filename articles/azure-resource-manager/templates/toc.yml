@@ -328,6 +328,8 @@
       items:
         - name: JSON ile Bıcep karşılaştırması
           href: compare-template-syntax.md
+    - name: Veri türleri
+      href: data-types.md
     - name: Sık sorulan sorular
       href: frequently-asked-questions.md
     - name: Bulut tutarlılığına yönelik şablonlar

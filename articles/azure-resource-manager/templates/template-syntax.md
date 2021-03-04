@@ -2,13 +2,13 @@
 title: Şablon yapısı ve sözdizimi
 description: Bildirim temelli JSON sözdizimini kullanarak Azure Resource Manager şablonlarının yapısını ve özelliklerini açıklar (ARM şablonları).
 ms.topic: conceptual
-ms.date: 12/17/2020
-ms.openlocfilehash: 31576c72fb845677f132fd9cd6ee776db922d436
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.date: 03/03/2021
+ms.openlocfilehash: da64eb8abeaf45f58933dfbddaf954cad8e66f4a
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101722713"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102120428"
 ---
 # <a name="understand-the-structure-and-syntax-of-arm-templates"></a>ARM şablonlarının yapısını ve söz dizimini anlama
 
@@ -46,62 +46,6 @@ En basit yapısında, bir şablon aşağıdaki öğelere sahiptir:
 
 Her öğenin ayarlayabileceğiniz özellikleri vardır. Bu makalede, şablonun bölümleri daha ayrıntılı olarak açıklanmaktadır.
 
-## <a name="data-types"></a>Veri türleri
-
-ARM şablonu içinde şu veri türlerini kullanabilirsiniz:
-
-* string
-* SecureString
-* int
-* bool
-* object
-* secureObject
-* array
-
-Aşağıdaki şablonda veri türleri için biçim gösterilmektedir. Her türün doğru biçimde varsayılan bir değeri vardır.
-
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "stringParameter": {
-      "type": "string",
-      "defaultValue": "option 1"
-    },
-    "intParameter": {
-      "type": "int",
-      "defaultValue": 1
-    },
-    "boolParameter": {
-      "type": "bool",
-      "defaultValue": true
-    },
-    "objectParameter": {
-      "type": "object",
-      "defaultValue": {
-        "one": "a",
-        "two": "b"
-      }
-    },
-    "arrayParameter": {
-      "type": "array",
-      "defaultValue": [ 1, 2, 3 ]
-    }
-  },
-  "resources": [],
-  "outputs": {}
-}
-```
-
-Güvenli dize, dize ile aynı biçimi kullanır ve güvenli nesne nesneyle aynı biçimi kullanır. Bir parametreyi güvenli bir dizeye veya güvenli bir nesneye ayarladığınızda, parametrenin değeri dağıtım geçmişine kaydedilmez ve günlüğe kaydedilmez. Ancak, bu güvenli değeri güvenli bir değer beklemeyen bir özellik olarak ayarlarsanız değer korunmaz. Örneğin, bir etikete güvenli bir dize ayarlarsanız, bu değer düz metin olarak depolanır. Parolalar ve gizlilikler için güvenli dizeler kullanın.
-
-Satır içi parametre olarak geçirilen tamsayılar için, değer aralığı, dağıtım için kullandığınız SDK veya komut satırı aracıyla sınırlı olabilir. Örneğin, bir şablonu dağıtmak için PowerShell kullanılırken, tamsayı türleri-2147483648 ile 2147483647 arasında değişebilir. Bu sınırlamayı önlemek için bir [parametre dosyasında](parameter-files.md)büyük tamsayı değerlerini belirtin. Kaynak türleri, tamsayı özellikleri için kendi sınırlarını uygular.
-
-Şablonunuzda Boole ve tamsayı değerlerini belirtirken değeri tırnak işaretleriyle çevreleyin. Dize değerlerini çift tırnak işareti () ile başlatın `"string value"` .
-
-Nesneler sol küme ayracı () ile başlar `{` ve sağ küme ayracı () ile biter `}` . Diziler sol köşeli ayraç () ile başlar `[` ve sağ köşeli ayraç () ile biter `]` .
-
 ## <a name="parameters"></a>Parametreler
 
 `parameters`Şablonun bölümünde, kaynakları dağıttığınızda hangi değerleri gir, istediğinizi belirtirsiniz. Bir şablonda 256 parametreyle sınırlı olursunuz. Birden çok özellik içeren nesneleri kullanarak parametre sayısını azaltabilirsiniz.
@@ -128,7 +72,7 @@ Bir parametre için kullanılabilir özellikler şunlardır:
 | Öğe adı | Gerekli | Açıklama |
 |:--- |:--- |:--- |
 | parametre-adı |Yes |Parametrenin adı. Geçerli bir JavaScript tanımlayıcısı olmalıdır. |
-| tür |Yes |Parametre değerinin türü. İzin verilen türler ve değerler **dize**, **SecureString**, **int**, **bool**, **nesne**, **secureobject** ve **dizidir**. Bkz. [veri türleri](#data-types). |
+| tür |Yes |Parametre değerinin türü. İzin verilen türler ve değerler **dize**, **SecureString**, **int**, **bool**, **nesne**, **secureobject** ve **dizidir**. [ARM şablonlarındaki veri türlerine](data-types.md)bakın. |
 | Değerinin |Hayır |Parametresi için değer sağlanmazsa, parametre için varsayılan değer. |
 | allowedValues |Hayır |Doğru değerin sağlandığından emin olmak için parametresi için izin verilen değerler dizisi. |
 | minValue |Hayır |İnt tür parametrelerinin minimum değeri, bu değer dahil değildir. |
@@ -141,7 +85,7 @@ Parametrelerin nasıl kullanılacağına ilişkin örnekler için bkz. [ARM şab
 
 ## <a name="variables"></a>Değişkenler
 
-`variables`Bölümünde, şablonunuzun tamamında kullanılabilecek değerler oluşturursunuz. Değişken tanımlamanız gerekmez, ancak genellikle karmaşık ifadeleri azaltarak şablonunuzu basitleştirir. Her değişkenin biçimi, [veri türlerinden](#data-types)biriyle eşleşir.
+`variables`Bölümünde, şablonunuzun tamamında kullanılabilecek değerler oluşturursunuz. Değişken tanımlamanız gerekmez, ancak genellikle karmaşık ifadeleri azaltarak şablonunuzu basitleştirir. Her değişkenin biçimi, [veri türlerinden](data-types.md)biriyle eşleşir.
 
 Aşağıdaki örnek, bir değişken tanımlamaya yönelik kullanılabilir seçenekleri gösterir:
 

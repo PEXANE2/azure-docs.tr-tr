@@ -11,12 +11,12 @@ author: jaszymas
 ms.author: jaszymas
 ms.reviwer: vanto
 ms.date: 01/15/2021
-ms.openlocfilehash: d9c2bec575f2c7a948f3eb6e65be6a735a3c03e8
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 809ac72977b670faff984ad39effb1c70767e141
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98733826"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102120955"
 ---
 # <a name="tutorial-getting-started-with-always-encrypted-with-secure-enclaves-in-azure-sql-database"></a>Öğretici: Azure SQL veritabanında güvenli şifreleme ile Always Encrypted kullanmaya başlama
 
@@ -31,7 +31,7 @@ Bu öğreticide, Azure SQL veritabanı 'nda [güvenli şifreli Always Encrypted]
 > - Güvenli şifreleme ile Always Encrypted test etmek ve değerlendirmek için bir ortam oluşturma.
 > - Verileri yerinde şifreleme ve SQL Server Management Studio (SSMS) kullanarak şifrelenmiş sütunlarda zengin gizli sorgular verme.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğretici Azure PowerShell ve [SSMS](/sql/ssms/download-sql-server-management-studio-ssms)gerektirir.
 
@@ -71,40 +71,45 @@ SSMS 'nin nasıl indirileceği hakkında bilgi için bkz. [Download SQL Server M
 SSMS 'nin gerekli en düşük sürümü 18,8 ' dir.
 
 
-## <a name="step-1-create-a-server-and-a-dc-series-database"></a>1. Adım: sunucu ve DC Serisi veritabanı oluşturma
+## <a name="step-1-create-and-configure-a-server-and-a-dc-series-database"></a>1. Adım: sunucu ve DC Serisi veritabanı oluşturma ve yapılandırma
 
- Bu adımda, DC Serisi donanım yapılandırmasını kullanarak yeni bir Azure SQL veritabanı mantıksal sunucusu ve yeni bir veritabanı oluşturacaksınız. Azure SQL veritabanı 'nda güvenli şifrelerle Always Encrypted, DC Serisi donanım yapılandırmasında desteklenen Intel SGX enclaven kullanır. Daha fazla bilgi için bkz. [DC-Series](service-tiers-vcore.md#dc-series).
+Bu adımda, yeni bir Azure SQL veritabanı mantıksal sunucusu ve DC Serisi donanım oluşturma kullanarak güvenli şifreleme ile Always Encrypted için gereken yeni bir veritabanı oluşturacaksınız. Daha fazla bilgi için bkz. [DC-Series](service-tiers-vcore.md#dc-series).
 
-1. Bir PowerShell konsolu açın ve Azure 'da oturum açın. Gerekirse, bu öğretici için kullandığınız [aboneliğe geçin](/powershell/azure/manage-subscriptions-azureps) .
+1. Bir PowerShell konsolu açın ve az önce gerekli sürümünü içeri aktarın.
+
+  ```PowerShell
+  Import-Module "Az" -MinimumVersion "4.5.0"
+  ```
+  
+2. Azure 'da oturum açın. Gerekirse, bu öğretici için kullandığınız [aboneliğe geçin](/powershell/azure/manage-subscriptions-azureps) .
 
   ```PowerShell
   Connect-AzAccount
-  $subscriptionId = <your subscription ID>
-  Set-AzContext -Subscription $serverSubscriptionId
+  $subscriptionId = "<your subscription ID>"
+  Set-AzContext -Subscription $subscriptionId
   ```
 
-2. Veritabanı sunucunuzu içerecek bir kaynak grubu oluşturun. 
-
-  ```powershell
-  $serverResourceGroupName = "<server resource group name>"
-  $serverLocation = "<Azure region that supports DC-series in SQL Database>"
-  New-AzResourceGroup -Name $serverResourceGroupName -Location $serverLocation 
-  ```
+3. Yeni bir kaynak grubu oluşturma. 
 
   > [!IMPORTANT]
-  > Kaynak grubunuzu DC Serisi donanım yapılandırmasını destekleyen bir bölgede oluşturmanız gerekir. Şu anda desteklenen bölgelerin listesi için bkz. [DC Serisi kullanılabilirliği](service-tiers-vcore.md#dc-series-1).
-
-3. Veritabanı sunucusu oluşturun. İstendiğinde, Sunucu Yöneticisi adını ve parolasını girin.
+  > Kaynak grubunuzu hem DC Serisi donanım oluşturma hem de Microsoft Azure kanıtlama destekleyen bir bölgede (konum) oluşturmanız gerekir. DC serisini destekleyen bölgelerin listesi için bkz. [DC Serisi kullanılabilirliği](service-tiers-vcore.md#dc-series-1). Microsoft Azure kanıtlama 'nın bölgesel kullanılabilirliği [aşağıda](https://azure.microsoft.com/global-infrastructure/services/?products=azure-attestation) verilmiştir.
 
   ```powershell
-  $serverName = "<server name>" 
-  New-AzSqlServer -ServerName $serverName -ResourceGroupName $serverResourceGroupName -Location $serverLocation
+  $resourceGroupName = "<your new resource group name>"
+  $location = "<Azure region supporting DC-series and Microsoft Azure Attestation>"
+  New-AzResourceGroup -Name $resourceGroupName -Location $location
   ```
 
-4. Belirtilen IP aralığından erişime izin veren bir sunucu güvenlik duvarı kuralı oluşturma
+4. Azure SQL mantıksal sunucusu oluşturun. İstendiğinde, Sunucu Yöneticisi adını ve parolasını girin. Yönetici adını ve parolayı hatırlamanız gerekir. sunucuya bağlanmak için daha sonra ihtiyacınız olacak.
+
+  ```powershell
+  $serverName = "<your server name>" 
+  New-AzSqlServer -ServerName $serverName -ResourceGroupName $resourceGroupName -Location $location 
+  ```
+
+5. Belirtilen IP aralığından erişime izin veren bir sunucu güvenlik duvarı kuralı oluşturun.
   
   ```powershell
-  # The ip address range that you want to allow to access your server
   $startIp = "<start of IP range>"
   $endIp = "<end of IP range>"
   $serverFirewallRule = New-AzSqlServerFirewallRule -ResourceGroupName $resourceGroupName `
@@ -112,21 +117,11 @@ SSMS 'nin gerekli en düşük sürümü 18,8 ' dir.
     -FirewallRuleName "AllowedIPs" -StartIpAddress $startIp -EndIpAddress $endIp
   ```
 
-5. Sunucunuza yönetilen bir sistem kimliği atayın. Daha sonra sunucunuza Microsoft Azure kanıtlama için erişim izni vermeniz gerekir.
-
-  ```powershell
-  Set-AzSqlServer -ServerName $serverName -ResourceGroupName $serverResourceGroupName -AssignIdentity 
-  ```
-
-6. Sunucunuza atanan kimliğin nesne KIMLIĞINI alın. Elde edilen nesne KIMLIĞINI kaydedin. KIMLIğIN sonraki bir bölümünde olması gerekir.
-
-  > [!NOTE]
-  > Yeni atanan yönetilen sistem kimliğinin Azure Active Directory içinde yayılması birkaç saniye sürebilir. Aşağıdaki betik boş bir sonuç döndürtikten sonra yeniden deneyin.
+6. Sunucunuza yönetilen bir sistem kimliği atayın. 
 
   ```PowerShell
-  $server = Get-AzSqlServer -ServerName $serverName -ResourceGroupName $serverResourceGroupName 
+  $server = Set-AzSqlServer -ServerName $serverName -ResourceGroupName $resourceGroupName -AssignIdentity
   $serverObjectId = $server.Identity.PrincipalId
-  $serverObjectId
   ```
 
 7. DC Serisi veritabanı oluşturma.
@@ -136,12 +131,26 @@ SSMS 'nin gerekli en düşük sürümü 18,8 ' dir.
   $edition = "GeneralPurpose"
   $vCore = 2
   $generation = "DC"
-  New-AzSqlDatabase -ResourceGroupName $serverResourceGroupName -ServerName $serverName -DatabaseName $databaseName -Edition $edition -Vcore $vCore -ComputeGeneration $generation
+  New-AzSqlDatabase -ResourceGroupName $resourceGroupName `
+    -ServerName $serverName `
+    -DatabaseName $databaseName `
+    -Edition $edition `
+    -Vcore $vCore `
+    -ComputeGeneration $generation
   ```
 
-## <a name="step-2-configure-an-attestation-provider"></a>2. Adım: bir kanıtlama sağlayıcısı yapılandırma
+8. Sunucunuz ve veritabanı hakkındaki bilgileri alın ve kaydedin. Bu bilgilerin yanı sıra, bu bölümün sonraki bölümlerinde bulunan 4. adımdaki yönetici adı ve parola gerekir.
 
-Bu adımda Microsoft Azure kanıtlama için bir kanıtlama sağlayıcısı oluşturacaksınız ve yapılandıracaksınız. Bu, veritabanı sunucunuzdaki güvenli kuşve güvenliğini test etmek için gereklidir.
+  ```powershell
+  Write-Host 
+  Write-Host "Fully qualified server name: $($server.FullyQualifiedDomainName)" 
+  Write-Host "Server Object Id: $serverObjectId"
+  Write-Host "Database name: $databaseName"
+  ```
+  
+## <a name="step-2-configure-an-attestation-provider"></a>2. Adım: bir kanıtlama sağlayıcısı yapılandırma 
+
+Bu adımda Microsoft Azure kanıtlama için bir kanıtlama sağlayıcısı oluşturacaksınız ve yapılandıracaksınız. Bu, veritabanınızın kullandığı güvenli kuşve güvenliğini denemek için gereklidir.
 
 1. Aşağıdaki kanıtlama ilkesini kopyalayın ve ilkeyi bir metin dosyasına (txt) kaydedin. Aşağıdaki ilke hakkında daha fazla bilgi için bkz. [kanıtlama sağlayıcısı oluşturma ve yapılandırma](always-encrypted-enclaves-configure-attestation.md#create-and-configure-an-attestation-provider).
 
@@ -157,60 +166,60 @@ Bu adımda Microsoft Azure kanıtlama için bir kanıtlama sağlayıcısı oluş
   };
   ```
 
-2. Ve için gerekli sürümlerini içeri `Az.Accounts` aktarın `Az.Attestation` .  
+2. Gerekli sürümünü içeri aktarın `Az.Attestation` .  
 
   ```powershell
-  Import-Module "Az.Accounts" -MinimumVersion "1.9.2"
   Import-Module "Az.Attestation" -MinimumVersion "0.1.8"
   ```
-
-3. Kanıtlama sağlayıcısı için bir kaynak grubu oluşturun.
-
-  ```powershell
-  $attestationLocation = $serverLocation
-  $attestationResourceGroupName = "<attestation provider resource group name>"
-  New-AzResourceGroup -Name $attestationResourceGroupName -Location $location  
-  ```
-
-4. Bir kanıtlama sağlayıcısı oluşturun. 
+  
+3. Bir kanıtlama sağlayıcısı oluşturun. 
 
   ```powershell
-  $attestationProviderName = "<attestation provider name>" 
-  New-AzAttestation -Name $attestationProviderName -ResourceGroupName $attestationResourceGroupName -Location $attestationLocation
+  $attestationProviderName = "<your attestation provider name>" 
+  New-AzAttestation -Name $attestationProviderName -ResourceGroupName $resourceGroupName -Location $location
   ```
 
-5. Kanıtlama ilkenizi yapılandırın.
+4. Kanıtlama ilkenizi yapılandırın.
   
   ```powershell
-  $policyFile = "<the pathname of the file from step 1 in this section"
+  $policyFile = "<the pathname of the file from step 1 in this section>"
   $teeType = "SgxEnclave"
   $policyFormat = "Text"
   $policy=Get-Content -path $policyFile -Raw
-  Set-AzAttestationPolicy -Name $attestationProviderName -ResourceGroupName $attestationResourceGroupName -Tee $teeType -Policy $policy -PolicyFormat  $policyFormat
+  Set-AzAttestationPolicy -Name $attestationProviderName `
+    -ResourceGroupName $resourceGroupName `
+    -Tee $teeType `
+    -Policy $policy `
+    -PolicyFormat  $policyFormat
   ```
 
-6. Azure SQL mantıksal sunucunuza kanıtlama sağlayıcınıza erişim izni verin. Bu adımda, daha önce sunucunuza atadığınız yönetilen hizmet kimliğinin nesne KIMLIĞINI kullandık.
+5. Azure SQL mantıksal sunucunuza kanıtlama sağlayıcınıza erişim izni verin. Bu adımda, daha önce sunucunuza atadığınız yönetilen hizmet kimliğinin nesne KIMLIĞINI kullanıyorsunuz.
 
   ```powershell
-  New-AzRoleAssignment -ObjectId $serverObjectId -RoleDefinitionName "Attestation Reader" -ResourceGroupName $attestationResourceGroupName  
+  New-AzRoleAssignment -ObjectId $serverObjectId `
+    -RoleDefinitionName "Attestation Reader" `
+    -ResourceName $attestationProviderName `
+    -ResourceType "Microsoft.Attestation/attestationProviders" `
+    -ResourceGroupName $resourceGroupName  
   ```
 
-7. Kanıtlama URL 'sini alın.
+6. SGX Enclave için yapılandırdığınız bir kanıtlama ilkesini işaret eden kanıtlama URL 'sini alın. Daha sonra ihtiyacınız olacağı için URL 'YI kaydedin.
 
   ```powershell
-  $attestationProvider = Get-AzAttestation -Name $attestationProviderName -ResourceGroupName $attestationResourceGroupName 
+  $attestationProvider = Get-AzAttestation -Name $attestationProviderName -ResourceGroupName $resourceGroupName 
   $attestationUrl = $attestationProvider.AttestUri + “/attest/SgxEnclave”
-  Write-Host "Your attestation URL is: " $attestationUrl 
+  Write-Host
+  Write-Host "Your attestation URL is: $attestationUrl"
   ```
-
-8.  Sonuç olarak, SGX şifreleme için yapılandırdığınız bir kanıtlama ilkesini işaret eden kanıtlama URL 'sini kaydedin. Buna daha sonra ihtiyacınız olacak. Kanıtlama URL 'SI şöyle görünmelidir: `https://contososqlattestation.uks.attest.azure.net/attest/SgxEnclave`
+  
+  Kanıtlama URL 'SI şöyle görünmelidir: `https://contososqlattestation.uks.attest.azure.net/attest/SgxEnclave`
 
 ## <a name="step-3-populate-your-database"></a>3. Adım: veritabanınızı doldurma
 
 Bu adımda, bir tablo oluşturacak ve daha sonra şifreleyip Sorgulayabileceğiniz bazı verilerle dolduracaksınız.
 
 1. SSMS 'yi açın ve veritabanı bağlantısında Always Encrypted etkin **olmadan** oluşturduğunuz Azure SQL mantıksal sunucusu 'nda **ContosoHR** veritabanına bağlanın.
-    1. **Sunucuya Bağlan** iletişim kutusunda sunucunuzun adını (örneğin, *myserver123.Database.Windows.net*) belirtin ve daha önce yapılandırdığınız Kullanıcı adını ve parolayı girin.
+    1. **Sunucuya Bağlan** iletişim kutusunda sunucunuzun tam adını (örneğin, *myserver123.Database.Windows.net*) belirtin ve yönetici kullanıcı adını ve sunucuyu oluştururken belirttiğiniz parolayı girin.
     2. **Seçenekler >>** tıklayın ve **bağlantı özellikleri** sekmesini seçin. **ContosoHR** veritabanını seçtiğinizden emin olun (varsayılan, ana veritabanı değil). 
     3. **Always Encrypted** sekmesini seçin.
     4. **Always Encrypted etkinleştir (sütun şifreleme)** onay **kutusunun seçili olmadığından** emin olun.
@@ -292,7 +301,7 @@ Bu adımda, sunucu tarafı şifrelemesi içindeki **SSK** ve **maaş** sütunlar
 
 1. Yeni bir SSMS örneği açın ve veritabanı bağlantısı için Always Encrypted etkinleştirilmiş **olan** veritabanınıza bağlanın.
     1. Yeni bir SSMS örneği başlatın.
-    2. **Sunucuya Bağlan** iletişim kutusunda, sunucu adınızı belirtin, bir kimlik doğrulama yöntemi seçin ve kimlik bilgilerinizi belirtin.
+    2. **Sunucuya Bağlan** iletişim kutusunda sunucunuzun tam adını (örneğin, *myserver123.Database.Windows.net*) belirtin ve yönetici kullanıcı adını ve sunucuyu oluştururken belirttiğiniz parolayı girin.
     3. **Seçenekler >>** tıklayın ve **bağlantı özellikleri** sekmesini seçin. **ContosoHR** veritabanını seçtiğinizden emin olun (varsayılan, ana veritabanı değil). 
     4. **Always Encrypted** sekmesini seçin.
     5. **Always Encrypted etkinleştir (sütun şifreleme)** onay kutusunun seçili olduğundan emin olun.

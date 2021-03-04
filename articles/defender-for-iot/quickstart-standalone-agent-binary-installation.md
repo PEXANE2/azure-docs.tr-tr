@@ -1,5 +1,5 @@
 ---
-title: IoT mikro Aracısı (Önizleme) için Defender 'ı yükler
+title: IoT mikro Aracısı için Defender 'ı yükler
 titleSuffix: Azure Defender for IoT
 description: Defender Micro Agent 'ı yüklemeyi ve kimlik doğrulamasını öğrenin.
 author: shhazam-ms
@@ -8,20 +8,20 @@ ms.author: shhazam
 ms.date: 3/3/2021
 ms.topic: quickstart
 ms.service: azure
-ms.openlocfilehash: 4125fc3c2f03104eeca108a73d83f2fad44bebc1
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: ccf28c47e2e1438a141e2497da70d32c1832ddb9
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 03/04/2021
-ms.locfileid: "102051761"
+ms.locfileid: "102120445"
 ---
-# <a name="install-defender-for-iot-micro-agent-preview"></a>IoT mikro Aracısı (Önizleme) için Defender 'ı yükler
+# <a name="install-defender-for-iot-micro-agent"></a>IoT mikro Aracısı için Defender 'ı yükler 
 
 Bu makalede, Defender mikro aracısının nasıl yükleneceğine ve kimlik doğrulamasının nasıl yapılacağı hakkında bir açıklama sağlanmaktadır.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-IoT modülü için Defender 'ı yüklemeden önce IoT Hub bir modül kimliği oluşturmanız gerekir. Modül kimliği oluşturma hakkında daha fazla bilgi için bkz. [Defender IoT mikro aracı modülü oluşturma ikizi (Önizleme)](quickstart-create-micro-agent-module-twin.md).
+IoT modülü için Defender 'ı yüklemeden önce IoT Hub bir modül kimliği oluşturmanız gerekir. Modül kimliği oluşturma hakkında daha fazla bilgi için bkz. [Defender IoT mikro aracı modülü oluşturma ikizi ](quickstart-create-micro-agent-module-twin.md).
 
 ## <a name="install-the-package"></a>Paketi yükler
 

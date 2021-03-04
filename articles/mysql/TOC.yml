@@ -553,6 +553,9 @@
     - name: mysqldump veya phpmyadmin ile verileri geçirme
       href: concepts-migrate-dump-restore.md
       displayName: 'migrate, mysqldump'
+    - name: MySQL için dbForge Studio ile veri geçirme
+      href: concepts-migrate-dbforge-studio-for-mysql.md
+      displayName: 'migrate, dbforge'
     - name: MySQL Workbench ile verileri geçirme
       href: concepts-migrate-import-export.md
       displayName: 'import , migrate, export'

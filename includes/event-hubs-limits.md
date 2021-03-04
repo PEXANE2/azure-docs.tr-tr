@@ -1,20 +1,8 @@
 ---
-title: include dosyası
-description: include dosyası
-services: event-hubs
-author: spelluru
-ms.service: event-hubs
-ms.topic: include
-ms.date: 02/01/2021
-ms.author: spelluru
-ms.custom: include file
-ms.openlocfilehash: 45cc5120072f2a8c7742f79cfb79161042345505
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
-ms.translationtype: MT
-ms.contentlocale: tr-TR
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99427364"
+Başlık: içerme dosya açıklaması: içerme dosya hizmetleri: Olay-Hub yazarı: spelluru MS. Service: Event-hub MS. Topic: MS. Date: 02/01/2021 MS. Author: spelluru MS. Custom: "içerme dosyası", "FastTrack-Edit", "IoT", "Event-Hub"
+
 ---
+
 Aşağıdaki tablolarda [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/)'a özgü kotalar ve sınırlamalar sağlanmaktadır. Event Hubs fiyatlandırması hakkında daha fazla bilgi için bkz. [Event Hubs fiyatlandırması](https://azure.microsoft.com/pricing/details/event-hubs/).
 
 ### <a name="common-limits-for-all-tiers"></a>Tüm katmanlar için ortak sınırlar
@@ -24,7 +12,6 @@ Aşağıdaki sınırlar tüm katmanlarda ortaktır.
 | --- |  --- | --- |
 | Abonelik başına Event Hubs ad alanı sayısı |- |100 |
 | Ad alanı başına Olay Hub 'ları sayısı | Yeni bir olay hub 'ı oluşturmaya yönelik sonraki istekler reddedilir. |10 |
-| Olay Hub 'ı başına bölüm sayısı |- |32 |
 | Bir olay hub 'ı adının boyutu |- | 256 karakter |
 | Tüketici grubu adının boyutu |- | 256 karakter |
 | Tüketici grubu başına dönem olmayan alıcıların sayısı |- |5 |
@@ -39,18 +26,24 @@ Aşağıdaki tabloda, temel ve Standart katmanlar için farklı olabilecek sın�
 
 | Sınır | Notlar | Temel | Standart |
 |---|---|--|---|
-| Event Hubs olayının en büyük boyutu| &nbsp; | 256 KB | 1 MB |
+| Event Hubs yayınının en büyük boyutu| &nbsp; | 256 KB | 1 MB |
 | Olay Hub 'ı başına Tüketici grubu sayısı | &nbsp; |1 |20 |
 | Ad alanı başına AMQP bağlantısı sayısı | Daha sonraki ek bağlantı istekleri reddedilir ve çağıran kod tarafından bir özel durum alınır. |100 |5.000|
 | Olay verilerinin maksimum bekletme süresi | &nbsp; |1 gün |1-7 gün |
 | En fazla üretilen iş birimi |Bu sınırın aşılması verilerinizin kısıtlanmasına neden olur ve [sunucu meşgul özel durumu](/dotnet/api/microsoft.servicebus.messaging.serverbusyexception)oluşturur. Standart katman için daha fazla sayıda üretilen iş birimi istemek üzere bir [destek isteği](../articles/azure-portal/supportability/how-to-create-azure-support-request.md)dosyası. [Ek üretilen iş birimleri](../articles/event-hubs/event-hubs-auto-inflate.md) , taahhüt edilen satın alma esasına göre 20 blok halinde kullanılabilir. |20 | 20 | 
+| Olay Hub 'ı başına bölüm sayısı | |32 | 32 | 
+
+> [!NOTE]
+>
+> Olayları ayrı ayrı veya toplu şekilde yayımlayabilirsiniz. 
+> Yayın sınırı (SKU 'ya göre), tek bir olay veya toplu iş olmasından bağımsız olarak geçerlidir. En büyük eşikten daha büyük yayımlama olayları reddedilir.
 
 ### <a name="dedicated-tier-vs-standard-tier"></a>Adanmış katman ve Standart katman karşılaştırması
 Event Hubs Ayrılmış teklif, en az 4 saatlik kullanım ile sabit bir aylık fiyatla faturalandırılır. Adanmış katman, standart planın tüm özelliklerini sunar, ancak yoğun iş yükleri olan müşterilere yönelik kurumsal ölçekli kapasite ve sınırlara sahiptir. 
 
 Azure portal kullanarak adanmış Event Hubs kümesi oluşturma hakkında bu [belgeye](../articles/event-hubs/event-hubs-dedicated-cluster-create-portal.md) başvurun.
 
-| Öne çıkan özelliği | Standart | Ayrılmış |
+| Özellik | Standart | Ayrılmış |
 | --- |:---|:---|
 | Bant genişliği | 20 s (40 'e kadar) | 20 cu düzeyinde kapsanır |
 | Ad alanları |  1 | CU başına 50 |

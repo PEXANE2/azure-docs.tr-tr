@@ -3,26 +3,26 @@ title: Azure Otomasyonu 'nda Python 3 paketlerini yönetme
 description: Bu makalede, Azure Otomasyonu 'nda Python 3 paketlerinin (Önizleme) nasıl yönetileceği açıklanır.
 services: automation
 ms.subservice: process-automation
-ms.date: 12/22/2020
+ms.date: 02/19/2021
 ms.topic: conceptual
-ms.openlocfilehash: 3f39f49ff47b935da7ffc777ee45bd219f5740b5
-ms.sourcegitcommit: f7084d3d80c4bc8e69b9eb05dfd30e8e195994d8
+ms.openlocfilehash: fd4d8ee92b670bc2544619a0dce16a26d9342c13
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97734310"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102122043"
 ---
 # <a name="manage-python-3-packages-preview-in-azure-automation"></a>Azure Otomasyonu 'nda Python 3 paketlerini yönetme (Önizleme)
 
-Azure Otomasyonu, Azure 'da ve Linux karma runbook çalışanları üzerinde Python 3 runbook 'ları (Önizleme) çalıştırmanıza olanak tanır. Runbook 'ların basitleştirmesi konusunda yardımcı olmak için, gereksinim duyduğunuz modülleri içeri aktarmak üzere Python paketlerini kullanabilirsiniz. Bu makalede, Azure Otomasyonu 'nda Python 3 paketlerinin (Önizleme) nasıl yönetileceği ve kullanılacağı açıklanmaktadır.
+Azure Otomasyonu, Azure 'da ve Linux karma runbook çalışanları üzerinde Python 3 runbook 'ları (Önizleme) çalıştırmanıza olanak tanır. Runbook 'ların basitleştirmesi konusunda yardımcı olmak için, gereksinim duyduğunuz modülleri içeri aktarmak üzere Python paketlerini kullanabilirsiniz. Tek bir paketi içeri aktarmak için bkz. [paketi Içeri aktarma](#import-a-package). Birden çok pakete sahip bir paketi içeri aktarmak için bkz. [bir paketi bağımlılıklarla Içeri aktarma](#import-a-package-with-dependencies). Bu makalede, Azure Otomasyonu 'nda Python 3 paketlerinin (Önizleme) nasıl yönetileceği ve kullanılacağı açıklanmaktadır.
 
-## <a name="import-packages"></a>Paketleri içeri aktarma
+## <a name="import-a-package"></a>Bir paketi içeri aktar
 
 Otomasyon hesabınızda, **paylaşılan kaynaklar** altında **Python paketleri** ' ni seçin. **+ bir Python paketi Ekle**' yi seçin.
 
 :::image type="content" source="media/python-3-packages/add-python-3-package.png" alt-text="Python 3 paketleri sayfasının ekran görüntüsü Sol menüdeki Python 3 paketlerini gösterir ve bir Python 2 paketi vurgulanmış olarak ekler.":::
 
-**Python paketi Ekle** sayfasında **Sürüm** için Python 3 ' ü seçin ve karşıya yüklenecek yerel bir paket seçin. Paket bir **. WHL** veya **. tar. gz** dosyası olabilir. Paket seçildiğinde, karşıya yüklemek için **Tamam** ' ı seçin.
+**Python paketi Ekle** sayfasında **Sürüm** için **Python 3** ' ü seçin ve karşıya yüklenecek yerel bir paket seçin. Paket bir **. WHL** veya **. tar. gz** dosyası olabilir. Paket seçildiğinde, karşıya yüklemek için **Tamam** ' ı seçin.
 
 :::image type="content" source="media/python-3-packages/upload-package.png" alt-text="Ekran görüntüsü, karşıya yüklenen bir tar. gz dosyası seçiliyken Python 3 paketi Ekle sayfasını gösterir.":::
 
@@ -30,19 +30,35 @@ Paket içeri aktarıldıktan sonra, **Python 3 paketleri (Önizleme)** sekmesind
 
 :::image type="content" source="media/python-3-packages/python-3-packages-list.png" alt-text="Ekran görüntüsü, bir paket içe aktarıldıktan sonra Python 3 paketleri sayfasını gösterir.":::
 
-## <a name="import-packages-with-dependencies"></a>Bağımlılıkları olan paketleri içeri aktarma
+### <a name="import-a-package-with-dependencies"></a>Bağımlılıkları olan bir paketi içeri aktarma
 
-Azure Otomasyonu, içeri aktarma işlemi sırasında Python paketlerinin bağımlılıklarını çözmez. Ancak, tüm bağımlılıklarıyla bir paketi içeri aktarmanın bir yolu vardır.
-
-### <a name="manually-download"></a>El ile indir
-
-[Python 3,8](https://www.python.org/downloads/release/python-380/) ve [PIP](https://pip.pypa.io/en/stable/) yüklü bir Windows 64-bit makinesinde, bir paketi ve tüm bağımlılıklarını indirmek için aşağıdaki komutu çalıştırın:
+Aşağıdaki Python betiğini bir Python 3 runbook 'una aktararak ve sonra çalıştırarak bir Python 3 paketini ve bağımlılıklarını içeri aktarabilirsiniz.
 
 ```cmd
-C:\Python38\Scripts\pip3.8.exe download -d <output dir> <package name>
+https://github.com/azureautomation/runbooks/blob/master/Utility/Python/import_py3package_from_pypi.py
 ```
 
-Paketler indirildikten sonra Otomasyon hesabınıza içeri aktarabilirsiniz.
+#### <a name="importing-the-script-into-a-runbook"></a>Betiği runbook 'a aktarma
+Runbook 'u içeri aktarma hakkında bilgi için bkz. [Azure Portal runbook 'U Içeri aktarma](manage-runbooks.md#import-a-runbook-from-the-azure-portal). Dosyayı GitHub 'dan, içeri aktarmayı çalıştırmadan önce portalın erişebileceği depolama alanına kopyalayın.
+
+**Runbook 'U Içeri aktarma** sayfası, runbook adını betiğin adıyla eşleşecek şekilde varsayılan olarak ayarlar. Alana erişiminiz varsa, adı değiştirebilirsiniz. **Runbook türü** varsayılan olarak **Python 2**' dir. Varsa, **Python 3**' e değiştirdiğinizden emin olun.
+
+:::image type="content" source="media/python-3-packages/import-python-3-package.png" alt-text="Ekran görüntüsü Python 3 runbook içeri aktarma sayfasını gösterir.":::
+
+#### <a name="executing-the-runbook-to-import-the-package-and-dependencies"></a>Paketi ve bağımlılıkları içeri aktarmak için Runbook yürütülüyor
+
+Runbook 'u oluşturup yayımladıktan sonra, paketi içeri aktarmak için çalıştırın. Runbook 'u çalıştırma hakkında ayrıntılı bilgi için bkz. [Azure Otomasyonu 'nda runbook başlatma](start-runbooks.md) .
+
+Betik ( `import_py3package_from_pypi.py` ) aşağıdaki parametreleri gerektirir.
+
+| Parametre | Açıklama |
+|---------------|-----------------|
+|subscription_id | Otomasyon hesabının abonelik KIMLIĞI |
+| resource_group | Otomasyon hesabının tanımlandığı kaynak grubunun adı |
+| automation_account | Otomasyon hesabı adı |
+| module_name | İçeri aktarılacak modülün adı `pypi.org` |
+
+Runbook 'larla parametreleri kullanma hakkında daha fazla bilgi için bkz. [work with runbook Parameters](start-runbooks.md#work-with-runbook-parameters).
 
 ## <a name="use-a-package-in-a-runbook"></a>Runbook 'ta paket kullanma
 

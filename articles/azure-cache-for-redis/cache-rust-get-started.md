@@ -7,16 +7,20 @@ ms.service: cache
 ms.devlang: rust
 ms.topic: quickstart
 ms.date: 01/08/2021
-ms.openlocfilehash: b55a706aa25b21620226690c172c996fe10a84fa
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 17f38d79b75179d7a54ca5ed1d20dff18d0a0363
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98203514"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102121108"
 ---
 # <a name="quickstart-use-azure-cache-for-redis-with-rust"></a>Hızlı başlangıç: Rust ile Reda için Azure önbelleğini kullanma
 
 Bu makalede, [Redu Için Azure önbelleğiyle](./cache-overview.md)etkileşim kurmak üzere [Rust programlama dilini](https://www.rust-lang.org/) nasıl kullanacağınızı öğreneceksiniz. [Dize](https://redis.io/topics/data-types-intro#redis-strings), [karma](https://redis.io/topics/data-types-intro#redis-hashes), [liste](https://redis.io/topics/data-types-intro#redis-lists) vb. gibi yaygın olarak kullanılan redin veri yapıları örnekleri gösterilir. Redsıs için [redsıs-RS](https://github.com/mitsuhiko/redis-rs) kitaplığı kullanılıyor. Bu istemci hem yüksek hem de düşük düzey API 'Leri kullanıma sunar ve bu makalede sunulan örnek kodun yardımıyla bu stillerin her ikisini de çalışır durumda görürsünüz.
+
+## <a name="skip-to-the-code-on-github"></a>GitHub 'daki koda atlayın
+
+Koda doğrudan atlamak istiyorsanız GitHub 'daki [Rust hızlı başlangıç](https://github.com/Azure-Samples/azure-redis-cache-rust-quickstart/) bölümüne bakın.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -268,7 +272,7 @@ Uygulama, ortam değişkenleri biçiminde bağlantı ve kimlik bilgilerini kabul
     set REDIS_PASSWORD=<Primary Access Key>
     ```
 
-1. Terminal penceresinde, doğru klasöre geçin. Örneğin:
+1. Terminal penceresinde, doğru klasöre geçin. Örnek:
 
     ```shell
     cd "C:\git-samples\azure-redis-cache-rust-quickstart"

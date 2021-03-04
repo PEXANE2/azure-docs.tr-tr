@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 12/11/2020
+ms.date: 03/04/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: bbb0c5617696347b566ba09a481afae4f52379aa
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.openlocfilehash: a70b8be6c034f002f0e387b5d3b4ba5deafa1a5e
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 03/04/2021
-ms.locfileid: "102096046"
+ms.locfileid: "102120513"
 ---
 # <a name="technicalprofiles"></a>TechnicalProfiles
 
@@ -555,7 +555,7 @@ Hem **AAD-Userreadusingalternativesecurityıd-NoError** ve **AAD-Userreadusingal
 
 ## <a name="enabled-for-user-journeys"></a>Kullanıcı yolculukları için etkinleştirildi
 
-Kullanıcı yolculuğunda bulunan [Claimsproviderselection](userjourneys.md#claimsproviderselection) , talep sağlayıcı seçim seçeneklerinin listesini ve bunların sıralarını tanımlar. Kullanıcı tarafından kullanılabilir olan **Enabledforuser, neys** öğesiyle filtrelemeniz gerekir. **Enabledforuser, neys** öğesi aşağıdaki değerlerden birini içerir:
+Kullanıcı yolculuğunda bulunan [Claimsproviderselection](userjourneys.md#identity-provider-selection) , talep sağlayıcı seçim seçeneklerinin listesini ve bunların sıralarını tanımlar. Kullanıcı tarafından kullanılabilir olan **Enabledforuser, neys** öğesiyle filtrelemeniz gerekir. **Enabledforuser, neys** öğesi aşağıdaki değerlerden birini içerir:
 
 - **Her zaman** teknik profili yürütün.
 - **Hiçbir** şekilde teknik profili atlayın.

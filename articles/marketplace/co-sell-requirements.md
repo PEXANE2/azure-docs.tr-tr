@@ -7,12 +7,12 @@ ms.topic: how-to
 author: vamahtan
 ms.author: vamahtan
 ms.date: 2/24/2021
-ms.openlocfilehash: 5d978410cae2b2de1a2f6711de82ae71a1da168c
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 9fb86b3d4a46a70d71aa0c3fe9fd1b4a1ea6f298
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101746300"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102120139"
 ---
 # <a name="co-sell-requirements"></a>Ortak satış gereksinimleri
 
@@ -24,7 +24,7 @@ Bu tabloda tüm olası ortak satış durumları gösterilmektedir:
 | ------------ | ------------- |
 | Ortak satış için hazırlanma | [Ortak satış için hazırlık durumunun minimum gereksinimleri](#requirements-for-co-sell-ready-status) karşılanmamış. |
 | Ortak satış hazırlanıyor | [Ortak satış için hazırlık durumunun tüm gereksinimleri](#requirements-for-co-sell-ready-status) karşılandı. |
-| Azure IP ortak satışı incentivized | Ortak satış için hazırlık gereksinimleri, [Bu ek gereksinimlerin](#requirements-for-IP-Co-sell-incentivized-status)yanı sıra karşılandı. |
+| Azure IP ortak satışı incentivized | Ortak satış için hazırlık gereksinimleri, [Bu ek gereksinimlerin](#requirements-for-ip-co-sell-incentivized-status)yanı sıra karşılandı. |
 | Biz uygulama ISV Connect Premium özenileri  | Bu durum Dynamics 365 ve Power Apps teklifleri için geçerlidir ve [Bu durum için tüm gereksinimlerin](#requirements-for-biz-apps-isv-connect-premium-incentive-status) karşılandığını gösterir. |
 |||
 

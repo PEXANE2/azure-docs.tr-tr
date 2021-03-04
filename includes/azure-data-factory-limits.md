@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 11/16/2020
 ms.author: chez
 ms.custom: include file
-ms.openlocfilehash: 1e8d13e7cf302c486bab291ef6482216122b62a3
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 10aa9b06af439fe701c53ef736ec691167560f95
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94680908"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102109312"
 ---
 Azure Data Factory, müşteri aboneliklerinin diğer iş yüklerinden korunduğundan emin olmak için aşağıdaki varsayılan sınırlara sahip çok kiracılı bir hizmettir. Sınırlandırmaları aboneliğinizin en büyük sınırına yükseltmek için desteğe başvurun.
 
@@ -56,9 +56,9 @@ Azure Data Factory, müşteri aboneliklerinin diğer iş yüklerinden korunduğu
 
 | Bölge grubu | Bölgeler |
 | -------- | ------ |
-| Bölge grubu 1 | Orta ABD, Doğu ABD, Doğu ABD2, Kuzey Avrupa, Batı Avrupa, Batı ABD, Batı ABD 2 |
-| Bölge grubu 2 | Avustralya Doğu, Avustralya Güneydoğu, Brezilya Güney, Orta Hindistan, Japonya Doğu, Kuzey Orta ABD, Güneydoğu Asya, Güneydoğu Asya, Orta Batı ABD |
-| Bölge grubu 3 | Kanada Orta, Doğu Asya, Fransa Orta, Kore Orta, UK Güney |
+| Bölge grubu 1 | Orta ABD, Doğu ABD, Doğu ABD 2, Kuzey Avrupa, Batı Avrupa, Batı ABD, Batı ABD 2 |
+| Bölge grubu 2 | Avustralya Doğu, Avustralya Güneydoğu, Brezilya Güney, Orta Hindistan, Japonya Doğu, Orta Kuzey ABD, Orta Güney ABD, Güneydoğu Asya, Orta Batı ABD |
+| Bölge grubu 3 | Diğer bölgeler |
 
 <sup>3</sup> işlem hattı, veri kümesi ve bağlı hizmet nesneleri, iş yükünüzün mantıksal bir gruplandırmasını temsil eder. Bu nesnelere yönelik sınırlar, Azure Data Factory taşıyacağınız ve işleyebilmeniz için veri miktarıyla ilişkili değildir. Data Factory, verilerin petabaytlarca işlemek için ölçeklendirilecek şekilde tasarlanmıştır.
 

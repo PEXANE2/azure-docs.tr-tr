@@ -2,18 +2,18 @@
 title: Azure Arc etkin Kubernetes aracı mimarisi
 services: azure-arc
 ms.service: azure-arc
-ms.date: 02/19/2021
+ms.date: 03/03/2021
 ms.topic: conceptual
 author: shashankbarsin
 ms.author: shasb
 description: Bu makalede, Azure Arc etkin Kubernetes aracılarına yönelik mimari bir genel bakış sunulmaktadır
 keywords: Kubernetes, yay, Azure, kapsayıcılar
-ms.openlocfilehash: b4fb836cc7782f4026a28f4af0ca372c76486a31
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 5e53e99c492f08deab8dea89ec95190782661012
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101650541"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102121907"
 ---
 # <a name="azure-arc-enabled-kubernetes-agent-architecture"></a>Azure Arc etkin Kubernetes aracı mimarisi
 
@@ -93,5 +93,5 @@ ms.locfileid: "101650541"
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Bir kümeyi Azure yaya bağlama](./quickstart-connect-cluster.md)
-* [Yapılandırmalara kavramsal genel bakış](./conceptual-configurations.md)
+* [Bir Kubernetes kümesini Azure yaya bağlamak](./connect-cluster.md)için hızlı başlangıç deneyimimizi gözden geçir.
+* [Azure Arc etkinleştirilmiş Kubernetes ile bir yapılandırma kaynağı](./conceptual-configurations.md)olarak kümeniz ve git deposu arasında bağlantı oluşturma hakkında daha fazla bilgi edinin.

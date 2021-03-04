@@ -4,17 +4,17 @@ ms.author: erhopf
 ms.service: cognitive-services
 ms.topic: include
 ms.date: 05/11/2020
-ms.openlocfilehash: 1085daca153431a28fdcc2583d0e31308214bf91
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: fcb4113a4dab1e3de17eb022b1ad386cbc6a9583
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95554708"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102109338"
 ---
 ## <a name="authenticate-with-azure-active-directory"></a>Azure Active Directory ile kimlik doğrulaması
 
 > [!IMPORTANT]
-> 1. Şu anda **yalnızca** Görüntü İşleme API'si, Yüz Tanıma API'si, metin Analizi API'si, modern okuyucu, form tanıyıcı, anomali algılayıcısı ve Bing Özel Arama, Azure ACTIVE DIRECTORY (AAD) kullanarak kimlik doğrulaması desteği hariç tüm Bing hizmetleri.
+> 1. Şu anda **yalnızca** Görüntü İşleme API'si, Yüz Tanıma API'si, metin Analizi API'si, derinlikli okuyucu, form tanıyıcı, anomali algılayıcısı, soru-cevap oluşturma ve BING özel arama (AAD) kullanarak kimlik doğrulaması desteği hariç tüm Bing hizmetleri.
 > 2. AAD kimlik doğrulamasının her zaman Azure kaynağınızın özel alt etki alanı adıyla birlikte kullanılması gerekir. [Bölgesel uç noktalar](../articles/cognitive-services/cognitive-services-custom-subdomains.md#is-there-a-list-of-regional-endpoints) AAD kimlik doğrulamasını desteklemez.
 
 Önceki bölümlerde, tek hizmet veya çok sunuculu bir abonelik anahtarı kullanarak Azure bilişsel hizmetler 'de nasıl kimlik doğrulaması yapılacağını gösterdik. Bu anahtarlar geliştirmeye başlamak için hızlı ve kolay bir yol sağlarken, Azure rol tabanlı erişim denetimi (Azure RBAC) gerektiren daha karmaşık senaryolara kısa süreli olarak düşmektedir. Azure Active Directory (AAD) kullanarak kimlik doğrulaması yapmak için gereklere göz atalım.

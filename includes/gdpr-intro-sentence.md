@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/24/2018
 ms.author: lizross
 ms.custom: include file
-ms.openlocfilehash: b049b3651f12b1a73a3511d030bbdbbfaceb2480
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
-ms.translationtype: HT
+ms.openlocfilehash: 1f451db9ab06ff376e1a6ca4d503d21b48d19789
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95972578"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102109317"
 ---
->[!Note] 
-> Bu makale, cihazdan veya hizmetten kişisel verileri silme adımlarını sağlar ve GDPR kapsamındaki yükümlülüklerinizi desteklemek için kullanılabilir. GDPR hakkında genel bilgiler arıyorsanız, [Hizmet Güveni portalının GDPR bölümüne](https://servicetrust.microsoft.com/ViewPage/GDPRGetStarted) bakın.
+> [!NOTE]
+> Bu makale, cihaz veya hizmetten kişisel verileri silme hakkında adımlar sağlar ve GDPR kapsamındaki yükümlülüklerinizi desteklemek için kullanılabilir. GDPR hakkında genel bilgi için, [Microsoft Güven Merkezi 'Nin GDPR bölümüne](https://www.microsoft.com/trust-center/privacy/gdpr-overview) ve [hizmet güven portalının GDPR bölümüne](https://servicetrust.microsoft.com/ViewPage/GDPRGetStarted)bakın.

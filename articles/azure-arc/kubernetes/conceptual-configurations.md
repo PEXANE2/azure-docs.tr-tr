@@ -8,12 +8,12 @@ author: shashankbarsin
 ms.author: shasb
 description: Bu makalede, Azure Arc etkin Kubernetes 'in Gilar ve yapılandırma özelliklerine kavramsal bir genel bakış sunulmaktadır.
 keywords: Kubernetes, yay, Azure, kapsayıcılar, yapılandırma, Gilar
-ms.openlocfilehash: d016e2bae9fcef21642f00cf6f25a8b595d54710
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 88a30876b25730e4cb0b4b1e19fac94b9e556adc
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101650382"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102121805"
 ---
 # <a name="configurations-and-gitops-with-azure-arc-enabled-kubernetes"></a>Azure Arc etkin Kubernetes ile yapılandırma ve Gilar
 
@@ -50,6 +50,6 @@ Bu ölçekli uygulama, ortak bir temel yapılandırma (ClusterRoleBindings, Role
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Bir kümeyi Azure yaya bağlama](./quickstart-connect-cluster.md)
-* [Arc etkin Kubernetes kümesinde yapılandırma oluşturma](./use-gitops-connected-cluster.md)
-* [Uygun ölçekte yapılandırma uygulamak için Azure Ilkesini kullanma](./use-azure-policy.md)
+* [Bir Kubernetes kümesini Azure yaya bağlamak](./connect-cluster.md)için hızlı başlangıç deneyimimizi gözden geçir.
+* Zaten bir Kubernetes kümesine bağlı Azure yayı zaten var mı? [Arc etkin Kubernetes kümesinde yapılandırma oluşturma](./use-gitops-connected-cluster.md).
+* Uygun [ölçekte yapılandırma uygulamak Için Azure ilkesi](./use-azure-policy.md)'ni nasıl kullanacağınızı öğrenin.

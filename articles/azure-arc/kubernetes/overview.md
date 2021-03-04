@@ -2,19 +2,19 @@
 title: Azure Arc etkin Kubernetes 'e genel bakış
 services: azure-arc
 ms.service: azure-arc
-ms.date: 02/19/2021
+ms.date: 03/03/2021
 ms.topic: overview
 author: mlearned
 ms.author: mlearned
 description: Bu makalede, Azure Arc etkin Kubernetes 'e genel bakış sunulmaktadır.
 keywords: Kubernetes, yay, Azure, kapsayıcılar
 ms.custom: references_regions
-ms.openlocfilehash: 42a04bb349b2acbd68c7088bc0348deda1ee09e1
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: b3296aa1c1d5d463cc7f4cb932b44ad76632e19e
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101652277"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102121601"
 ---
 # <a name="what-is-azure-arc-enabled-kubernetes"></a>Azure Arc özellikli Kubernetes nedir?
 
@@ -66,4 +66,6 @@ Azure Arc etkin Kubernetes aşağıdaki senaryoları destekler:
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Bir kümeyi Azure yaya bağlama](./quickstart-connect-cluster.md)
+Bir kümeyi Azure yaya bağlamayı öğrenin.
+> [!div class="nextstepaction"]
+> [Bir kümeyi Azure yaya bağlama](./quickstart-connect-cluster.md)

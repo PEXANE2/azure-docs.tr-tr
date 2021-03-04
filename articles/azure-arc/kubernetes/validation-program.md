@@ -2,18 +2,18 @@
 title: Azure Arc etkin Kubernetes doğrulama programı
 services: azure-arc
 ms.service: azure-arc
-ms.date: 03/02/2021
+ms.date: 03/03/2021
 ms.topic: article
 author: shashankbarsin
 ms.author: shasb
 description: Kubernetes dağıtımları için Arc doğrulama programını açıklar
 keywords: Kubernetes, yay, Azure, K8s, doğrulama
-ms.openlocfilehash: 0d7756f407a3a176c8913d99bdb45a5026300569
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 819df906add6275997e01fab310fe8dd57a87b51
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101689224"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102121380"
 ---
 # <a name="azure-arc-validation-program"></a>Azure Arc doğrulama programı
 
@@ -61,6 +61,6 @@ Uyumluluk sınamaları, Azure Arc etkin Kubernetes doğrulamasının bir parças
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Bir kümeyi Azure yaya bağlama](./connect-cluster.md)
-* [Arc etkin Kubernetes kümesinde yapılandırma oluşturma](./use-gitops-connected-cluster.md)
-* [Uygun ölçekte yapılandırma uygulamak için Azure Ilkesini kullanma](./use-azure-policy.md)
+Bir kümeyi Azure yaya bağlamayı öğrenin.
+> [!div class="nextstepaction"]
+> [Bir kümeyi Azure yaya bağlama](./quickstart-connect-cluster.md)

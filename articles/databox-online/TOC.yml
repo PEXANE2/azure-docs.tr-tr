@@ -102,7 +102,7 @@
     - name: Genel Bakış
       items:
         - name: Azure Stack Edge Mini R nedir?
-          href: azure-stack-edge-k-series-overview.md
+          href: azure-stack-edge-mini-r-overview.md
     - name: Kavramlar
       items:
         - name: Hazır güvenlik

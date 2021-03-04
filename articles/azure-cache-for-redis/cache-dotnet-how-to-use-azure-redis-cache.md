@@ -8,16 +8,20 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.custom: devx-track-csharp, mvc
 ms.date: 06/18/2020
-ms.openlocfilehash: 762fdf0aab0077cfbf8beceeb432dc85695e4176
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: ffc5c8ea647d4cadd2d151eb880c794ac5f4ebd4
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96002485"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102121448"
 ---
 # <a name="quickstart-use-azure-cache-for-redis-in-net-framework"></a>Hızlı başlangıç: .NET Framework Redsıs için Azure önbelleğini kullanma
 
 Bu hızlı başlangıçta, Azure 'daki herhangi bir uygulamadan erişilebilen güvenli, ayrılmış bir önbelleğe erişim sağlamak için Redsıs için Azure önbelleğini bir .NET Framework uygulamasına katabilirsiniz. .NET konsol uygulamasında C# kodu ile [StackExchange. Redo](https://github.com/StackExchange/StackExchange.Redis) istemcisini özellikle kullanırsınız.
+
+## <a name="skip-to-the-code-on-github"></a>GitHub 'daki koda atlayın
+
+Koda doğrudan atlamak istiyorsanız GitHub 'da [.NET Framework hızlı başlangıç](https://github.com/Azure-Samples/azure-cache-redis-samples/tree/main/quickstart/dotnet) bölümüne bakın.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -57,7 +61,7 @@ Uygulamanızı yapılandırmak için **konsol uygulaması (.NET Framework)** ve 
 
 Bu bölümde, .NET için [StackExchange.Redis](https://github.com/StackExchange/StackExchange.Redis) istemcisini kullanmak üzere konsol uygulamasını yapılandıracaksınız.
 
-Visual Studio 'da **Araçlar**  >  **NuGet Paket Yöneticisi** Paket Yöneticisi Konsolu ' na tıklayın  >  **Package Manager Console** ve Paket Yöneticisi konsolu penceresinde aşağıdaki komutu çalıştırın.
+Visual Studio 'da **Araçlar**  >  **NuGet Paket Yöneticisi** Paket Yöneticisi Konsolu ' na tıklayın  >  ve Paket Yöneticisi konsolu penceresinde aşağıdaki komutu çalıştırın.
 
 ```powershell
 Install-Package StackExchange.Redis
@@ -186,7 +190,7 @@ Redsıs için Azure Cache hem .NET nesnelerini hem de ilkel veri türlerini önb
 
 Nesneleri seri hale getirmenin basit bir yolu, [Newtonsoft.Json](https://www.nuget.org/packages/Newtonsoft.Json/)’da `JsonConvert` seri hale getirme yöntemlerini kullanmak ve JSON’a ve JSON’dan seri hale getirmektir. Bu bölümde, önbelleğe bir .NET nesnesi ekleyeceksiniz.
 
-Visual Studio 'da **Araçlar**  >  **NuGet Paket Yöneticisi** Paket Yöneticisi Konsolu ' na tıklayın  >  **Package Manager Console** ve Paket Yöneticisi konsolu penceresinde aşağıdaki komutu çalıştırın.
+Visual Studio 'da **Araçlar**  >  **NuGet Paket Yöneticisi** Paket Yöneticisi Konsolu ' na tıklayın  >  ve Paket Yöneticisi konsolu penceresinde aşağıdaki komutu çalıştırın.
 
 ```powershell
 Install-Package Newtonsoft.Json

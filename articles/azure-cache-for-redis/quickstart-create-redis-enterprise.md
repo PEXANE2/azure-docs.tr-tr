@@ -7,12 +7,12 @@ ms.service: cache
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 02/08/2021
-ms.openlocfilehash: 37496b9358ec72c79f8d26e32a92485f001e0e9d
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 8dbde1f74c700e772823d61b3e35a464f9bbc17e
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 03/04/2021
-ms.locfileid: "102031676"
+ms.locfileid: "102120972"
 ---
 # <a name="quickstart-create-a-redis-enterprise-cache-preview"></a>Hızlı başlangıç: Redsıs kurumsal önbelleği oluşturma (Önizleme)
 
@@ -49,13 +49,7 @@ Başlamadan önce bir Azure aboneliğine sahip olmanız gerekir. Hesabınız yok
 
 1. **İleri ' yi seçin: ağ oluşturma** ve atlama.
 
-   > [!NOTE] 
-   > Özel bağlantı seçeneği kullanıma alındı ve bölgenizde hemen kullanılamıyor olabilir.
-   >
-
-1. **İleri: Gelişmiş** ' i seçin ve **kümeleme ilkesini** **Kurumsal** olarak ayarlayın.
-   
-   Varsayılan ayarları koruyabilir veya uygun şekilde değiştirebilirsiniz. **Yalnızca TLS aracılığıyla erişime Izin ver** seçeneği açıldığında, uygulamanızdaki yeni önbelleğe erışmek için TLS kullanmanız gerekir.
+1. **İleri: Gelişmiş** ' i seçin ve **kümeleme ilkesini** **Kurumsal** olarak ayarlayın. Yalnızca TLS kullanmadan yeni önbelleğe bağlanmayı planlıyorsanız, **TLS olmayan erişimi** etkinleştirin. Ancak bu önerilmez.
 
    :::image type="content" source="media/cache-create/enterprise-tier-advanced.png" alt-text="Kurumsal katman Gelişmiş sekmesi":::
 

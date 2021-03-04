@@ -5,14 +5,14 @@ author: tcare
 ms.author: tcare
 ms.service: azure-arc
 ms.topic: tutorial
-ms.date: 3/2/2021
+ms.date: 03/03/2021
 ms.custom: template-tutorial
-ms.openlocfilehash: ac67c2b0baf923421e8699de587e0e6dbbb97e24
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 72caca47cde960eb7298ec2cf0c6994755cb3159
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 03/04/2021
-ms.locfileid: "102055644"
+ms.locfileid: "102121618"
 ---
 # <a name="tutorial-implement-cicd-with-gitops-using-azure-arc-enabled-kubernetes-clusters"></a>Öğretici: Azure Arc özellikli Kubernetes kümelerini kullanarak Gile ile CI/CD uygulama
 
@@ -316,7 +316,7 @@ Dağıtımınız artık tamamlanmış. Bu, CI/CD iş akışını sonlandırır.
 
 Bu uygulamayı kullanmaya devam etmeyecekecekseniz, aşağıdaki adımlarla tüm kaynakları silin:
 
-1. Yay Gite bağlantısı
+1. Azure yay Gilar yapılandırma bağlantısını silme:
    ```azurecli
    az k8sconfiguration delete \
    --name cluster-config \
@@ -324,9 +324,11 @@ Bu uygulamayı kullanmaya devam etmeyecekecekseniz, aşağıdaki adımlarla tüm
    --resource-group myResourceGroup \
    --cluster-type connectedClusters
    ```
-2. `dev` uzayına
+
+2. `dev`Ad alanını kaldır:
    * `kubectl delete namespace dev`
-3. `stage` uzayına
+
+3. `stage`Ad alanını kaldır:
    * `kubectl delete namespace stage`
 
 ## <a name="next-steps"></a>Sonraki adımlar

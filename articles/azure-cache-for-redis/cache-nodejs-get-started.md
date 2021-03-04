@@ -8,16 +8,20 @@ ms.topic: quickstart
 ms.date: 05/21/2018
 ms.author: yegu
 ms.custom: mvc, seo-javascript-september2019, seo-javascript-october2019, devx-track-js
-ms.openlocfilehash: aa22cffc1fc38e055c6c2bb504c311c012f31ac2
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: e4c58d67668a67eee38a73d46a2a40ca29c1dfd8
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96012910"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102121261"
 ---
 # <a name="quickstart-use-azure-cache-for-redis-in-nodejs"></a>Hızlı başlangıç: Node.js Redsıs için Azure önbelleğini kullanma
 
 Bu hızlı başlangıçta, Azure 'daki herhangi bir uygulamadan erişilebilen güvenli, ayrılmış bir önbelleğe erişim sağlamak için Redsıs için Azure önbelleğini bir Node.js uygulamasına katabilirsiniz.
+
+## <a name="skip-to-the-code-on-github"></a>GitHub 'daki koda atlayın
+
+Koda doğrudan atlamak istiyorsanız GitHub 'da [Node.js hızlı başlangıç](https://github.com/Azure-Samples/azure-cache-redis-samples/tree/main/quickstart/nodejs) bölümüne bakın.
 
 ## <a name="prerequisites"></a>Önkoşullar
 

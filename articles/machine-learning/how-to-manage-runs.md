@@ -9,15 +9,15 @@ ms.author: roastala
 author: rastala
 manager: cgronlun
 ms.reviewer: nibaccam
-ms.date: 12/04/2020
+ms.date: 03/04/2021
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, devx-track-azurecli
-ms.openlocfilehash: 3eaab31d3948e41a216eaa402c2a11e470a6545d
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: fb877b208e6c9599347e2b45e140545e5815e695
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101691510"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102120819"
 ---
 # <a name="start-monitor-and-cancel-training-runs-in-python"></a>Python 'da eğitim çalıştırmalarını başlatın, izleyin ve iptal edin
 
@@ -113,6 +113,10 @@ Aşağıdaki öğeler gerekir:
     
         Daha fazla bilgi için bkz. [az ml Run gönderme-betiği](/cli/azure/ext/azure-cli-ml/ml/run?preserve-view=true&view=azure-cli-latest#ext-azure-cli-ml-az-ml-run-submit-script).
 
+    # <a name="studio"></a>[Studio](#tab/azure-studio)
+
+    Azure Machine Learning tasarımcısında bir modeli eğitmek için bir örnek için bkz. [öğretici: tasarımcı ile otomobil fiyatlarını tahmin](tutorial-designer-automobile-price-train-score.md)etme.
+
     ---
 
 * Bir çalıştırmanın durumunu izleme
@@ -195,8 +199,7 @@ Aşağıdaki öğeler gerekir:
 
 Çalıştırmanıza ilişkin **ayrıntıları Çalıştır** sayfasına gidin ve çalıştırmanıza yönelik açıklamaları eklemek, düzenlemek veya silmek için Düzenle veya kurşun kalem simgesini seçin. Çalışma listesindeki değişiklikleri kalıcı hale getirmek için, değişiklikleri var olan özel görünüminizdeki veya yeni bir özel görünümdeki kaydedin. Aşağıda gösterildiği gibi görüntülerin gömülmesini ve derin bağlamayı sağlayan çalışma açıklamaları için markas biçimi desteklenir.
 
-:::image type="content" source="media/how-to-manage-runs/rundescription.gif" alt-text="Ekran görüntüsü: çalıştırma açıklaması oluşturma"::: 
-    
+:::image type="content" source="media/how-to-manage-runs/run-description.gif" alt-text="Ekran görüntüsü: çalıştırma açıklaması oluşturma"::: 
 
 ## <a name="tag-and-find-runs"></a>Etiket ve bulma çalıştırmaları
 

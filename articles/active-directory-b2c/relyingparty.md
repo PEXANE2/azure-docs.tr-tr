@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 12/14/2020
+ms.date: 03/04/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: ea23be06939d58b08516a00bbe8aba97c6ccc87d
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.openlocfilehash: 488065b0a1865484e96ea574b3031f2bf61869dd
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 03/04/2021
-ms.locfileid: "102095281"
+ms.locfileid: "102120598"
 ---
 # <a name="relyingparty"></a>RelyingParty
 
@@ -153,7 +153,7 @@ Aşağıdaki örnekte, [UserInfo uç noktası](userinfo-endpoint.md)ile bağlı 
 | Öznitelik | Gerekli | Açıklama |
 | --------- | -------- | ----------- |
 | Kapsam | Yes | Çoklu oturum açma davranışının kapsamı. Olası değerler: `Suppressed` , `Tenant` , `Application` veya `Policy` . `Suppressed`Değer, davranışın bastırıldığını ve kullanıcıdan her zaman bir kimlik sağlayıcı seçimi istendiğini gösterir.  `Tenant`Değer, davranışın Kiracıdaki tüm ilkelere uygulanacağını gösterir. Örneğin, bir kiracı için iki ilke ile gezinmekte olan bir kullanıcıya bir kimlik sağlayıcısı seçimi istenmez. `Application`Değer, davranışın istek yapan uygulamanın tüm ilkelerine uygulanacağını gösterir. Örneğin, bir uygulama için iki ilke ile gezinmekte olan bir kullanıcıya bir kimlik sağlayıcısı seçimi istenmez. `Policy`Değer, davranışın yalnızca bir ilke için geçerli olduğunu gösterir. Örneğin, bir güven çerçevesi için iki ilke ile gezinerek bir Kullanıcı, ilkeler arasında geçiş yaparken bir kimlik sağlayıcısı seçimine sorulur. |
-| Keepaliveındays | Yes | Kullanıcının ne kadar süreyle oturum açdığına ilişkin denetim. Değerin 0 olarak ayarlanması, KMSI işlevini devre dışı bırakır. Daha fazla bilgi için bkz. Oturumumu [açık tut](session-behavior.md?pivots=b2c-custom-policy#enable-keep-me-signed-in-kmsi). |
+| Keepaliveındays | Hayır | Kullanıcının ne kadar süreyle oturum açdığına ilişkin denetim. Değerin 0 olarak ayarlanması, KMSI işlevini devre dışı bırakır. Daha fazla bilgi için bkz. Oturumumu [açık tut](session-behavior.md?pivots=b2c-custom-policy#enable-keep-me-signed-in-kmsi). |
 |Enforceıdtokenhintonlogout| Hayır|  Daha önce verilen bir KIMLIK belirtecini, son kullanıcının istemci ile geçerli kimlik doğrulamalı oturum hakkında bir ipucu olarak oturum kapatma uç noktasına geçirmeye zorlayın. Olası değerler: `false` (varsayılan) veya `true` . Daha fazla bilgi için bkz. [OpenID Connect Ile web oturumu açma](openid-connect.md).  |
 
 

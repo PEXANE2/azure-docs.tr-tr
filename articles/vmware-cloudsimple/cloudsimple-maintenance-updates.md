@@ -4,17 +4,17 @@ titleSuffix: Azure VMware Solution by CloudSimple
 description: Zamanlanmış bakım ve güncelleştirmeler için CloudSimple hizmeti işlemini açıklar
 author: sharaths-cs
 ms.author: dikamath
-ms.date: 08/20/2019
+ms.date: 03/04/2021
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 826fae1123b355a4143118b53ba649f0939acaf7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 814a901fba065e36ea3ba9e3a6fe1175365de6c5
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "77025036"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102120717"
 ---
 # <a name="cloudsimple-maintenance-and-updates"></a>CloudSimple bakım ve güncelleştirmeleri
 
@@ -49,7 +49,7 @@ CloudSimple yedekler, bu VMware öğelerini özel bulutlarda tutar ve güncelle�
 
 * ESXi
 * vCenter platform hizmetleri
-* Kumandasını
+* Denetleyici
 * vSAN
 * NSX
 
@@ -100,7 +100,7 @@ Yazılım güncelleştirmeleri şunları içerir:
 * **Güncelleştirmeler**. VMware Stack bileşeninin küçük sürüm değişikliği.
 * **Yükseltmeleri**. VMware Stack bileşeninin ana sürüm değişikliği.
 
-CloudSimple, VMware 'den kullanılabilir hale geldiğinde kritik bir güvenlik düzeltme ekini test eder. SLA 'Sı başına, CloudSimple, güvenlik düzeltme ekini bir hafta içinde özel bulut ortamlarına kaydeder.
+CloudSimple, VMware 'den kullanılabilir hale geldiğinde kritik bir güvenlik düzeltme ekini test eder. 
 
 CloudSimple, VMware yazılım bileşenlerine üç aylık bakım güncelleştirmeleri sağlar. VMware yazılımının yeni bir ana sürümü kullanılabilir olduğunda, CloudSimple, yükseltme için uygun bir bakım penceresini koordine etmek üzere müşterilerle birlikte çalışmaktadır.
 
