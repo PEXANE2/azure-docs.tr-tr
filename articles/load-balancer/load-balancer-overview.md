@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 1/25/2021
 ms.author: allensu
-ms.openlocfilehash: 14e6990579f61b28c091f18b45a06d1ddcc00e89
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.openlocfilehash: 51ceb72d53f78264edcadd2255e20c8fbdac2cae
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102097542"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102181219"
 ---
 # <a name="what-is-azure-load-balancer"></a>Azure Load Balancer nedir?
 
@@ -42,8 +42,8 @@ Ayrı yük dengeleyici bileşenleri hakkında daha fazla bilgi için bkz. [Azure
 >[!NOTE]
 > Azure, senaryolarınız için tam olarak yönetilen yük dengeleme çözümleri sunar. 
 > * DNS tabanlı küresel yönlendirme yapmak istiyorsanız ve Aktarım Katmanı Güvenliği (TLS) protokolü sonlandırma ("SSL yük boşaltma"), HTTP/HTTPS isteği veya uygulama katmanı işleme gereksinimlerine sahip **değilseniz** [Traffic Manager](../traffic-manager/traffic-manager-overview.md)gözden geçirin. 
-> * Uygulama katmanındaki bir bölgedeki sunucularınız arasında yük dengelemesi yapmak istiyorsanız, [Application Gateway](../application-gateway/overview.md) gözden geçirin
-> * Web trafiğinizi küresel yönlendirmeyi iyileştirmeniz ve hızlı genel yük devretme ile en üst katman Son Kullanıcı performansını ve güvenilirliğini iyileştirmek için bkz. [ön kapı](../frontdoor/front-door-overview.md)
+> * Uygulama katmanındaki bir bölgedeki sunucularınız arasında yük dengelemesi yapmak istiyorsanız [Application Gateway](../application-gateway/overview.md)gözden geçirin.
+> * Web trafiğinizi küresel yönlendirmeyi iyileştirmeniz ve hızlı genel yük devretme ile en üst katman Son Kullanıcı performansını ve güvenilirliğini iyileştirmek için bkz. [ön kapı](../frontdoor/front-door-overview.md).
 > 
 > Uçtan uca senaryolarınız, bu çözümlerin gerektiğinde birleştirilmesinin avantajlarından yararlanabilir.
 > Azure yük dengeleme seçenekleri karşılaştırması için bkz. [Azure 'da Yük Dengeleme seçeneklerine genel bakış](/azure/architecture/guide/technology-choices/load-balancing-overview).

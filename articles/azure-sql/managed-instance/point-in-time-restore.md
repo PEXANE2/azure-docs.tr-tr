@@ -12,12 +12,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, mathoma
 ms.date: 08/25/2019
-ms.openlocfilehash: d3414cb31192211c1663a84e1541f56b63674660
-ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
+ms.openlocfilehash: 0a56cfc147d4fb5cbdccf13363ad28bc602d8216
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99525407"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102182766"
 ---
 # <a name="restore-a-database-in-azure-sql-managed-instance-to-a-previous-point-in-time"></a>Azure SQL yönetilen örneğindeki bir veritabanını önceki bir zaman noktasına geri yükleme
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -110,7 +110,7 @@ Ayrıntılar için bkz. [restore-Azsqlınstancedatabase](/powershell/module/az.s
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Azure CLı yüklü değilse, bkz. [Azure CLI 'Yı yükleme](/cli/azure/install-azure-cli?view=azure-cli-latest).
+Azure CLı yüklü değilse, bkz. [Azure CLI 'Yı yükleme](/cli/azure/install-azure-cli).
 
 Azure CLı kullanarak veritabanını geri yüklemek için aşağıdaki komutta parametre değerlerini belirtin. Ardından şu komutu çalıştırın:
 
@@ -128,7 +128,7 @@ az sql midb restore -g mygroupname --mi myinstancename -n mymanageddbname |
        --dest-mi mytargetinstancename
 ```
 
-Kullanılabilir parametrelerin ayrıntılı bir açıklaması için bkz. [SQL yönetilen örneği 'nde bir veritabanını geri yüklemek Için CLI belgeleri](/cli/azure/sql/midb?view=azure-cli-latest#az-sql-midb-restore).
+Kullanılabilir parametrelerin ayrıntılı bir açıklaması için bkz. [SQL yönetilen örneği 'nde bir veritabanını geri yüklemek Için CLI belgeleri](/cli/azure/sql/midb#az-sql-midb-restore).
 
 ---
 

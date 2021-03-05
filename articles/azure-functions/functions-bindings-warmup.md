@@ -10,12 +10,12 @@ ms.topic: reference
 ms.custom: devx-track-csharp
 ms.date: 11/08/2019
 ms.author: cshoe
-ms.openlocfilehash: 7cefe75eefb746c150b051a7bd1f4513c103d205
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: ea418576ab8fe06964a61e48f16393e1a0566ce8
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97655867"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102182256"
 ---
 # <a name="azure-functions-warm-up-trigger"></a>Azure Işlevleri ısınma tetikleyicisi
 
@@ -28,7 +28,7 @@ Bu makalede, Azure işlevlerinde ısınma tetikleyicisiyle nasıl çalışılaca
 
 ## <a name="packages---functions-2x-and-higher"></a>Paketler-Işlevler 2. x ve üzeri
 
-[Microsoft. Azure. WebJobs. Extensions](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions) NuGet paketi, sürüm **3.0.5 veya üzeri** gereklidir. Paketin kaynak kodu, [Azure-WebJobs-SDK-Extensions](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.Http/) GitHub deposunda bulunur. 
+[Microsoft. Azure. WebJobs. Extensions](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions) NuGet paketi, sürüm **3.0.5 veya üzeri** gereklidir. Paketin kaynak kodu, [Azure-WebJobs-SDK-Extensions](https://github.com/Azure/azure-webjobs-sdk-extensions/tree/main/src/WebJobs.Extensions/Extensions/Warmup) GitHub deposunda bulunur. 
 
 [!INCLUDE [functions-package](../../includes/functions-package-auto.md)]
 
@@ -228,7 +228,7 @@ Isınma tetikleyicisi, Java 'da bir öznitelik olarak desteklenmez.
 
 Aşağıdaki tabloda, dosyasında ve özniteliğinde *function.js* ayarladığınız bağlama yapılandırma özellikleri açıklanmaktadır `WarmupTrigger` .
 
-|function.jsözelliği | Öznitelik özelliği |Description|
+|function.jsözelliği | Öznitelik özelliği |Açıklama|
 |---------|---------|----------------------|
 | **türüyle** | yok| Gerekli-olarak ayarlanmalıdır `warmupTrigger` . |
 | **Görünüm** | yok| Gerekli-olarak ayarlanmalıdır `in` . |

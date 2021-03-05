@@ -11,12 +11,12 @@ adobe-target: true
 adobe-target-activity: DocsExp–386541–A/B–Enhanced-Readability-Quickstarts–2.19.2021
 adobe-target-experience: Experience B
 adobe-target-content: ./app-service-web-tutorial-custom-domain-uiex
-ms.openlocfilehash: b3ff1b344852d57f0effbd978c06aa617682ea4f
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 79599ce04b93409c67342be73cf88d5e20621c1d
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101720328"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102182596"
 ---
 # <a name="tutorial-map-an-existing-custom-dns-name-to-azure-app-service"></a>Öğretici: mevcut bir özel DNS adını Azure App Service eşleme
 
@@ -308,10 +308,7 @@ Daha önce yapılandırdığınız DNS adlarına gidin (örneğin,,, `contoso.co
 
 ## <a name="resolve-404-not-found"></a>Çözümle 404 "bulunamadı"
 
-Özel etki alanınızı URL 'sine gözattığınızda bir HTTP 404 (bulunamadı) hatası alırsanız, <a href="https://www.whatsmydns.net/" target="_blank">WhatsmyDNS.net</a>kullanarak etki ALANıNıZı uygulamanızın IP adresine çözümlediğinizi doğrulayın. Aksi takdirde, nedeni aşağıdakilerden biri olabilir:
-
-- Yapılandırılmış özel etki alanında bir kayıt veya CNAME kaydı eksik.
-- Tarayıcı istemcisi etki alanınızın eski IP adresini önbelleğe almıştır. Önbelleği temizleyin ve DNS çözümlemesini yeniden test edin. Windows makinesinde önbelleği `ipconfig /flushdns` ile temizlersiniz.
+Özel etki alanınızı URL 'sine gözattığınızda bir HTTP 404 (bulunamadı) hatası alırsanız, <a href="https://www.nslookup.io/" target="_blank">Nslookup.io</a>kullanarak etki ALANıNıZı uygulamanızın IP adresine çözümlediğinizi doğrulayın. Aksi takdirde, A ve CNAME kayıtlarının aynı site kullanılarak doğru şekilde yapılandırıldığını doğrulayın. IP 'yi doğru şekilde çözümlerse ancak yine de 404 alıyorsanız, tarayıcınız etki alanının eski IP adresini önbelleğe alabilir. Önbelleği temizleyin ve DNS çözümlemesini yeniden test edin. Windows makinesinde önbelleği `ipconfig /flushdns` ile temizlersiniz.
 
 ## <a name="migrate-an-active-domain"></a>Etkin bir etki alanını geçirme
 

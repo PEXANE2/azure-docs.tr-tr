@@ -3,14 +3,14 @@ title: Azure Otomasyonu 'nda Linux karma runbook çalışanı dağıtma
 description: Bu makalede, yerel veri merkezinizdeki veya bulut ortamınızdaki Linux tabanlı makinelerde runbook 'ları çalıştırmak için bir Azure Otomasyonu karma Runbook Worker nasıl yükleneceği açıklanır.
 services: automation
 ms.subservice: process-automation
-ms.date: 02/18/2021
+ms.date: 02/26/2021
 ms.topic: conceptual
-ms.openlocfilehash: 543ae640871699c7e1fffda46463752483ff6a4e
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: d4d9bcd16e36e76808f19f7fbd43dd0d3e7550c3
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101708926"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102182341"
 ---
 # <a name="deploy-a-linux-hybrid-runbook-worker"></a>Linux karma runbook çalışanı dağıtma
 
@@ -48,7 +48,7 @@ Karma Runbook Worker özelliği aşağıdaki dağıtımları destekler. Tüm iş
 * Red Hat Enterprise Linux Server 5, 6, 7 ve 8
 * Borçlu GNU/Linux 6, 7 ve 8
 * Ubuntu 12,04 LTS, 14,04 LTS, 16,04 LTS ve 18,04 LTS
-* SUSE Linux Enterprise Server 12 ve 15
+* 12 ve 15 SUSE Linux Enterprise Server (SUSE Not 13 veya 14 numaralı sürüm sürümü değil)
 
 > [!IMPORTANT]
 > Sistem karma Runbook Worker rolüne bağlı olan Güncelleştirme Yönetimi özelliğini etkinleştirmeden önce [, desteklediği dağıtımları](update-management/overview.md#supported-operating-systems)doğrulayın.
@@ -66,7 +66,7 @@ Bir Linux sistemi ve Kullanıcı karma Runbook Worker için en düşük gereksin
 |GLIBC |GNU C Kitaplığı| 2.5-12 |
 |Openssl| OpenSSL kitaplıkları | 1,0 (TLS 1,1 ve TLS 1,2 desteklenir)|
 |Curl | Web istemcisini kıvır | 7.15.5|
-|Python-ctypes | Python 2. x gereklidir |
+|Python-ctypes | Python 2. x veya Python 3. x gereklidir |
 |PAM | Eklenebilir Kimlik Doğrulaması Modülleri|
 | **İsteğe bağlı paket** | **Açıklama** | **En düşük sürüm**|
 | PowerShell Core | PowerShell runbook 'larını çalıştırmak için PowerShell Core 'un yüklenmesi gerekir. Yükleme hakkında bilgi edinmek için bkz. [Linux üzerinde PowerShell Core yükleme](/powershell/scripting/install/installing-powershell-core-on-linux) . | 6.0.0 |
@@ -90,13 +90,16 @@ Linux hibrit runbook çalışanları, Azure Otomasyonu 'nda sınırlı sayıda r
 
 |Runbook türü | Desteklenir |
 |-------------|-----------|
-|Python 2 |Yes |
-|PowerShell |Evet<sup>1</sup> |
+|Python 3 (Önizleme)|Evet, yalnızca bu kaldırmalar için gereklidir: SUSE LES 15, RHEL 8 ve CentOS 8|
+|Python 2 |Evet, Python 3<sup>1</sup> gerektirmeyen herhangi bir ayırıcı için |
+|PowerShell |Evet<sup>2</sup> |
 |PowerShell İş Akışı |Hayır |
 |Grafik |Hayır |
 |Grafik PowerShell Iş akışı |Hayır |
 
-<sup>1</sup> PowerShell runbook 'ları, Linux makinesinde PowerShell Core 'un yüklü olmasını gerektirir. Yükleme hakkında bilgi edinmek için bkz. [Linux üzerinde PowerShell Core yükleme](/powershell/scripting/install/installing-powershell-core-on-linux) .
+<sup>1</sup> Bkz. [desteklenen Linux işletim sistemleri](#supported-linux-operating-systems).
+
+<sup>2</sup> PowerShell runbook 'ları, Linux makinesinde PowerShell Core 'un yüklü olmasını gerektirir. Yükleme hakkında bilgi edinmek için bkz. [Linux üzerinde PowerShell Core yükleme](/powershell/scripting/install/installing-powershell-core-on-linux) .
 
 ### <a name="network-configuration"></a>Ağ yapılandırması
 

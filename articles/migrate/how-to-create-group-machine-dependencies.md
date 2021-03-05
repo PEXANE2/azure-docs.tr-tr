@@ -6,12 +6,12 @@ ms.author: rajosh
 ms.manager: abhemraj
 ms.topic: how-to
 ms.date: 11/25/2020
-ms.openlocfilehash: 1a3f2ae4829c7f4ae41d31e2a2fc35d79adf3d4c
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 772602a11878276da3b81b84e7f4016997375077
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100596702"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102183072"
 ---
 # <a name="set-up-dependency-visualization"></a>Bağımlılık görselleştirmesini ayarlama
 
@@ -22,14 +22,14 @@ Bu makalede, Azure geçişi: Sunucu değerlendirmesi ' nde aracı tabanlı bağ�
 - İçin aracı tabanlı bağımlılık analizine yönelik destek ve dağıtım gereksinimlerini gözden geçirin:
     - [VMware Sanal Makineleri](migrate-support-matrix-vmware.md#dependency-analysis-requirements-agent-based)
     - [Fiziksel sunucular](migrate-support-matrix-physical.md#agent-based-dependency-analysis-requirements)
-    - [Hyper-V VM 'leri](migrate-support-matrix-hyper-v.md#agent-based-dependency-analysis-requirements).
+    - [Hyper-V Sanal Makineleri](migrate-support-matrix-hyper-v.md#agent-based-dependency-analysis-requirements)
 - Şunları yaptığınızdan emin olun:
     - Bir Azure geçişi projesi vardır. Bunu yapmazsanız, şimdi bir tane [oluşturun](./create-manage-projects.md) .
     - Projeye Azure geçişi: Sunucu değerlendirmesi aracını [eklemişseniz](how-to-assess.md) ' i kontrol edin.
     - Şirket içi makineleri keşfetmeye yönelik bir [Azure geçiş](migrate-appliance.md) gereci ayarlayın. Gereç, şirket içi makineleri bulur ve Azure geçişi: Sunucu değerlendirmesi ' ne meta veri ve performans verileri gönderir. İçin bir gereç ayarlayın:
-        - [VMware](how-to-set-up-appliance-vmware.md) VM 'ler.
-        - [Hyper-V](how-to-set-up-appliance-hyper-v.md) VM 'ler.
-        - [Fiziksel sunucular](how-to-set-up-appliance-physical.md).
+        - [VMware](how-to-set-up-appliance-vmware.md) VM 'ler
+        - [Hyper-V](how-to-set-up-appliance-hyper-v.md) VM 'ler
+        - [Fiziksel sunucular](how-to-set-up-appliance-physical.md)
 - Bağımlılık görselleştirmesini kullanmak için bir [Log Analytics çalışma alanını](../azure-monitor/logs/manage-access.md) Azure geçişi projesiyle ilişkilendirirsiniz:
     - Bir çalışma alanını yalnızca Azure geçiş gereci ayarladıktan sonra ve Azure geçişi projesindeki makineleri keşfetmek için ekleyebilirsiniz.
     - Abonelikte Azure geçişi projesini içeren bir çalışma alanı olduğundan emin olun.

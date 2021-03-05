@@ -5,12 +5,12 @@ services: container-service
 ms.service: container-service
 ms.topic: article
 ms.date: 10/19/2020
-ms.openlocfilehash: 5fd97560c3a6e41b49beb957c7b8d79369799c21
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 7f838b2a78f1c6993aa247f2944d4f2a9b1e9556
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93078960"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102181134"
 ---
 # <a name="add-a-spot-node-pool-to-an-azure-kubernetes-service-aks-cluster"></a>Azure Kubernetes Service (AKS) kümesine spot düğüm havuzu ekleme
 
@@ -64,7 +64,7 @@ az aks nodepool add \
     --no-wait
 ```
 
-Varsayılan olarak, çok düğümlü havuzlarla bir küme oluşturduğunuzda AKS kümenizde *düzenli* *önceliğe* sahip bir düğüm havuzu oluşturursunuz. Yukarıdaki komut, var olan bir AKS kümesine bir *nokta* *önceliği* olan bir yardımcı düğüm havuzu ekler. Noktanın *önceliği* , *Spot* düğüm havuzunun bir spot düğüm havuzu olmasını sağlar. *Çıkarma-ilke* parametresi, yukarıdaki örnekte varsayılan değer olan, *silinmek* üzere ayarlanır. [Çıkarma Ilkesini][eviction-policy] *silinmek* üzere ayarladığınızda, düğüm havuzunun temeldeki ölçek kümesindeki düğümler çıkarıldıklarında silinir. Çıkarma ilkesini *serbest bırakma* olarak da ayarlayabilirsiniz. Çıkarma ilkesini *serbest bırakma* olarak ayarladığınızda, temel alınan ölçek kümesindeki düğümler, çıkarma sırasında durdurulmuş, serbest bırakılmış duruma ayarlanır. İşlem kotasından dolayı durdurulmuş serbest bırakılmış durum sayısı içindeki düğümler, küme ölçeklendirme veya yükseltme ile ilgili sorunlara neden olabilir. *Öncelik* ve *çıkarma ilkesi* değerleri yalnızca düğüm havuzu oluşturma sırasında ayarlanabilir. Bu değerler daha sonra güncellenemiyor.
+Varsayılan olarak, çok düğümlü havuzlarla bir küme oluşturduğunuzda AKS kümenizde *düzenli* *önceliğe* sahip bir düğüm havuzu oluşturursunuz. Yukarıdaki komut, var olan bir AKS kümesine bir *nokta* *önceliği* olan bir yardımcı düğüm havuzu ekler. Noktanın *önceliği* ,  düğüm havuzunun bir spot düğüm havuzu olmasını sağlar. *Çıkarma-ilke* parametresi, yukarıdaki örnekte varsayılan değer olan, *silinmek* üzere ayarlanır. [Çıkarma Ilkesini][eviction-policy] *silinmek* üzere ayarladığınızda, düğüm havuzunun temeldeki ölçek kümesindeki düğümler çıkarıldıklarında silinir. Çıkarma ilkesini *serbest bırakma* olarak da ayarlayabilirsiniz. Çıkarma ilkesini *serbest bırakma* olarak ayarladığınızda, temel alınan ölçek kümesindeki düğümler, çıkarma sırasında durdurulmuş, serbest bırakılmış duruma ayarlanır. İşlem kotasından dolayı durdurulmuş serbest bırakılmış durum sayısı içindeki düğümler, küme ölçeklendirme veya yükseltme ile ilgili sorunlara neden olabilir. *Öncelik* ve *çıkarma ilkesi* değerleri yalnızca düğüm havuzu oluşturma sırasında ayarlanabilir. Bu değerler daha sonra güncellenemiyor.
 
 Komut Ayrıca, küme düğüm havuzlarıyla kullanılması önerilen [küme otomatik Scaler][cluster-autoscaler]öğesini de sağlar. Kümenizde çalışan iş yüklerine bağlı olarak, otomatik ölçeklendirme kümesi, düğüm havuzundaki düğüm sayısını ölçeklendirir ve ölçeklendirir. Spot düğüm havuzları için, ek düğümlere ihtiyaç duyulduktan sonra, küme otomatik olarak bir çıkarma sonrasında düğüm sayısını ölçeklendirecektir. Düğüm havuzunun sahip olduğu en fazla düğüm sayısını değiştirirseniz, `maxCount` küme otomatik Scaler ile ilişkili değeri de ayarlamanız gerekir. Bir küme otomatik yüklemesi kullanmazsanız, çıkarma sonrasında, nokta havuzu sonunda sıfır olarak azalır ve ek spot düğümleri almak için el ile bir işlem gerekir.
 
@@ -113,7 +113,7 @@ Bu makalede bir AKS kümesine spot düğüm havuzu eklemeyi öğrendiniz. Düğ�
 [aks-support-policies]: support-policies.md
 [aks-faq]: faq.md
 [azure-cli-install]: /cli/azure/install-azure-cli
-[az-aks-nodepool-add]: /cli/azure/aks/nodepool?view=azure-cli-latest#az-aks-nodepool-add
+[az-aks-nodepool-add]: /cli/azure/aks/nodepool#az-aks-nodepool-add
 [cluster-autoscaler]: cluster-autoscaler.md
 [eviction-policy]: ../virtual-machine-scale-sets/use-spot.md#eviction-policy
 [kubernetes-concepts]: concepts-clusters-workloads.md

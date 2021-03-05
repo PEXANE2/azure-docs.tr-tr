@@ -5,19 +5,19 @@ services: container-service
 ms.topic: article
 ms.date: 08/27/2020
 author: palma21
-ms.openlocfilehash: 2af4f9e2ea1dc0fcb8e5f40e0024297124292b49
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: fa40ab22f0c1ebf47bb490a50f782a848d1441e1
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92074830"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102182120"
 ---
 # <a name="enable-container-storage-interface-csi-drivers-for-azure-disks-and-azure-files-on-azure-kubernetes-service-aks-preview"></a>Azure Kubernetes Service (AKS) üzerinde Azure diskleri ve Azure dosyaları için kapsayıcı depolama arabirimi (CSı) sürücülerini etkinleştirme (Önizleme)
 
 Kapsayıcı depolama arabirimi (CSı), Kubernetes üzerindeki Kapsayıcılı iş yüklerine rastgele blok ve dosya depolama sistemleri sunmak için bir standarttır. Azure Kubernetes hizmeti (AKS), CSı 'yi benimsemek ve kullanarak, temel Kubernetes koduna dokunarak ve kendi yayın döngüsünü beklemek zorunda kalmadan Kubernetes 'te var olan depolama sistemlerini ortaya çıkarmak için eklentileri yazabilir, dağıtabilir ve yineleyebilir.
 
 AKS üzerinde CSı depolama sürücüsü desteği yerel olarak kullanmanıza olanak tanır:
-- Bir Kubernetes *veri diski* kaynağı oluşturmak Için kullanılabilen [*Azure diskleri*](azure-disk-csi.md). Diskler, yüksek performanslı SSD 'Ler veya Azure Standart depolama tarafından desteklenen, normal HDD 'Ler veya standart SSD 'Ler tarafından desteklenen Azure Premium depolama kullanabilir. Çoğu üretim ve geliştirme iş yükleri için Premium depolama kullanın. Azure diskleri *Readwriteonce*olarak bağlanır, bu nedenle yalnızca tek bir pod için kullanılabilir. Aynı anda birden çok dizin tarafından erişilebilen depolama birimlerinde Azure dosyalarını kullanın.
+- Bir Kubernetes *veri diski* kaynağı oluşturmak Için kullanılabilen [*Azure diskleri*](azure-disk-csi.md). Diskler, yüksek performanslı SSD 'Ler veya Azure Standart depolama tarafından desteklenen, normal HDD 'Ler veya standart SSD 'Ler tarafından desteklenen Azure Premium depolama kullanabilir. Çoğu üretim ve geliştirme iş yükleri için Premium depolama kullanın. Azure diskleri *Readwriteonce* olarak bağlanır, bu nedenle yalnızca tek bir pod için kullanılabilir. Aynı anda birden çok dizin tarafından erişilebilen depolama birimlerinde Azure dosyalarını kullanın.
 - Azure depolama hesabı tarafından desteklenen bir SMB 3,0 paylaşımının pods 'ye bağlanması için kullanılabilen [*Azure dosyaları*](azure-files-csi.md). Azure dosyaları ile birden çok düğümde ve düğüm genelinde veri paylaşabilirsiniz. Azure dosyaları, yüksek performanslı SSD 'Ler tarafından desteklenen normal HDD 'Ler veya Azure Premium Depolama tarafından desteklenen Azure Standart depolama kullanabilir.
 
 > [!IMPORTANT]
@@ -44,7 +44,7 @@ Azure diskleri ve Azure dosyaları için CSı sürücülerini kullanılabilecek 
 az feature register --namespace "Microsoft.ContainerService" --name "EnableAzureDiskFileCSIDriver"
 ```
 
-Durumun *kayıtlı*gösterilmesi birkaç dakika sürer. [Az Feature List][az-feature-list] komutunu kullanarak kayıt durumunu doğrulayın:
+Durumun *kayıtlı* gösterilmesi birkaç dakika sürer. [Az Feature List][az-feature-list] komutunu kullanarak kayıt durumunu doğrulayın:
 
 ```azurecli-interactive
 az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/EnableAzureDiskFileCSIDriver')].{Name:name,State:properties.state}"
@@ -132,8 +132,8 @@ $ echo $(kubectl get CSINode <NODE NAME> -o jsonpath="{.spec.drivers[1].allocata
 [operator-best-practices-storage]: operator-best-practices-storage.md
 [concepts-storage]: concepts-storage.md
 [storage-class-concepts]: concepts-storage.md#storage-classes
-[az-extension-add]: /cli/azure/extension?view=azure-cli-latest#az-extension-add&preserve-view=true
-[az-extension-update]: /cli/azure/extension?view=azure-cli-latest#az-extension-update&preserve-view=true
-[az-feature-register]: /cli/azure/feature?view=azure-cli-latest#az-feature-register&preserve-view=true
-[az-feature-list]: /cli/azure/feature?view=azure-cli-latest#az-feature-list&preserve-view=true
-[az-provider-register]: /cli/azure/provider?view=azure-cli-latest#az-provider-register&preserve-view=true
+[az-extension-add]: /cli/azure/extension#az-extension-add
+[az-extension-update]: /cli/azure/extension#az-extension-update
+[az-feature-register]: /cli/azure/feature#az-feature-register
+[az-feature-list]: /cli/azure/feature#az-feature-list
+[az-provider-register]: /cli/azure/provider#az-provider-register

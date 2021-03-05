@@ -5,15 +5,15 @@ author: alkohli
 services: storage
 ms.service: storage
 ms.topic: conceptual
-ms.date: 01/14/2021
+ms.date: 03/04/2021
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: 6dd2c7fcef6860cb5a2eaf88d141f8567955ed25
-ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
+ms.openlocfilehash: b1f1560fc1a00577e1e4b30d922fc7d4cae0ab92
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98706728"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102181855"
 ---
 # <a name="what-is-azure-importexport-service"></a>Azure Içeri/dışarı aktarma hizmeti nedir?
 
@@ -79,7 +79,7 @@ Yüksek düzeyde, bir içeri aktarma işi aşağıdaki adımları içerir:
 >
 > Kuruluşunun (veri merkezi ülke/bölge dışında) sevkiyatları için lütfen bir uluslararası taşıyıcı hesabı paylaşabilirsiniz.
 
- ![Şekil 1: iş akışını Içeri aktarma](./media/storage-import-export-service/importjob.png)
+ ![Şekil 1: iş akışını Içeri aktarma](./media/storage-import-export-service/import-job.png)
 
 Veri içeri aktarma hakkında adım adım yönergeler için şuraya gidin:
 
@@ -108,7 +108,7 @@ Yüksek düzeyde, bir dışarı aktarma işi aşağıdaki adımları içerir:
 >
 > Kuruluşunun (veri merkezi ülke/bölge dışında) sevkiyatları için lütfen bir uluslararası taşıyıcı hesabı paylaşabilirsiniz.
   
- ![Şekil 2: iş akışını dışarı aktarma](./media/storage-import-export-service/exportjob.png)
+ ![Şekil 2: iş akışını dışarı aktarma](./media/storage-import-export-service/export-job.png)
 
 Veri dışa aktarma hakkında adım adım yönergeler için [Azure Bloblarından verileri dışarı aktarma](storage-import-export-data-from-blobs.md)bölümüne gidin.
 

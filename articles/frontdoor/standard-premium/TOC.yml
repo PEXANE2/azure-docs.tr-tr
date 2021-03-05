@@ -57,8 +57,12 @@
       href: how-to-cache-purge.md
     - name: Sıkıştırma
       href: how-to-compression.md
-    - name: Web uygulamasına özel bağlantıyı etkinleştir
-      href: how-to-enable-private-link-web-app.md
+    - name: Özel bağlantıyı etkinleştir
+      items:
+        - name: Bir depolama hesabına bağlanma
+          href: how-to-enable-private-link-storage-account.md
+        - name: Web uygulamasına bağlanma
+          href: how-to-enable-private-link-web-app.md
     - name: Günlüğe Kaydetme
       href: how-to-logs.md
     - name: İzleme ve uyarılar

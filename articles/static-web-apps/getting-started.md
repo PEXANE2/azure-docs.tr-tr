@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: quickstart
 ms.date: 08/13/2020
 ms.author: cshoe
-ms.openlocfilehash: eb2356451c349f894c9ca74b1359f6a02d0e002a
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: 2d7a2dcbbd0b6e9a10ca8af93798bfddbee94ee3
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97562523"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102182664"
 ---
 # <a name="quickstart-building-your-first-static-site-with-azure-static-web-apps"></a>Hızlı başlangıç: Azure statik Web Apps ilk statik sitenizi oluşturma
 
@@ -25,7 +25,8 @@ Azure aboneliğiniz yoksa [ücretsiz bir deneme hesabı oluşturun](https://azur
 - [GitHub](https://github.com) hesabı
 - [Azure](https://portal.azure.com) hesabı
 - [Visual Studio Code](https://code.visualstudio.com)
-- [Visual Studio Code için Azure statik Web Apps uzantısı](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurestaticwebapps)
+- [Visual Studio Code için Azure Static Web Apps uzantısı](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurestaticwebapps)
+- [Git'i yükleyin](https://www.git-scm.com/downloads)
 
 [!INCLUDE [create repository from template](../../includes/static-web-apps-get-started-create-repo.md)]
 

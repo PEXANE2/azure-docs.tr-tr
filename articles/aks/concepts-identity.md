@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 07/07/2020
 author: palma21
 ms.author: jpalma
-ms.openlocfilehash: dc1e54106e2f31c7390d784cba6f92cf775e963c
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 98044f6ff6311241717cb66a6e26a72702d749e6
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100572692"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102181457"
 ---
 # <a name="access-and-identity-options-for-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) için erişim ve kimlik seçenekleri
 
@@ -42,6 +42,7 @@ Aşağıdaki izinler, küme oluşturulduğunda ve AKS kümesiyle ilişkili olan 
 
 | İzin | Nedeni |
 |---|---|
+| Microsoft. ContainerService/Managedkümeler/*  <br/> | Kullanıcı oluşturmak ve kümeyi çalıştırmak için gereklidir
 | Microsoft. Network/loadBalancers/Delete <br/> Microsoft. Network/loadBalancers/Read <br/> Microsoft. Network/loadBalancers/Write | Bir LoadBalancer hizmeti için yük dengeleyiciyi yapılandırmak için gereklidir. |
 | Microsoft. Network/publicIPAddresses/Delete <br/> Microsoft. Network/publicIPAddresses/Read <br/> Microsoft. Network/Publicıpaddresses/Write | Bir LoadBalancer hizmeti için genel IP 'Leri bulmak ve yapılandırmak için gereklidir. |
 | Microsoft. Network/publicIPAddresses/JOIN/Action | Bir LoadBalancer hizmeti için genel IP 'Leri yapılandırmak için gereklidir. |
@@ -198,7 +199,7 @@ Bu tabloda, Azure AD tümleştirmesi etkinleştirildiğinde, kullanıcıların K
 
 İkinci sütunda başvurulan rol verme, Azure portal **Access Control** sekmesinde GÖSTERILEN Azure RBAC rolü verlüdür. Küme Yöneticisi Azure AD grubu, portaldaki **yapılandırma** sekmesinde (veya `--aad-admin-group-object-ids` Azure CLI 'de parametre adı ile) gösterilir.
 
-| Description        | Rol verme gerekli| Küme Yöneticisi Azure AD grupları | Kullanılması gereken durumlar |
+| Açıklama        | Rol verme gerekli| Küme Yöneticisi Azure AD grupları | Kullanılması gereken durumlar |
 | -------------------|------------|----------------------------|-------------|
 | İstemci sertifikası kullanarak eski yönetici oturumu açma| **Azure Kubernetes yönetici rolü**. Bu rol, `az aks get-credentials` `--admin` [eski (Azure dışı ad) küme yönetici sertifikasını](control-kubeconfig-access.md) kullanıcının kullanıcısına indiren bayrağıyla birlikte kullanılmasına izin verir `.kube/config` . Bu, "Azure Kubernetes yönetici rolü" nin tek amacı değildir.|yok|Kalıcı olarak engellendiyse, kümenize erişimi olan geçerli bir Azure AD grubuna erişemez.| 
 | El ile (küme) RoleBindings ile Azure AD| **Azure Kubernetes Kullanıcı rolü**. "Kullanıcı" rolü `az aks get-credentials` bayrak olmadan kullanılmasına izin verir `--admin` . (Bu, "Azure Kubernetes Kullanıcı rolü" öğesinin tek amacı olur.) Sonuç olarak, Azure AD özellikli bir kümede [boş bir girdinin](control-kubeconfig-access.md) indirilmesi, bu, `.kube/config` tarafından ilk kez kullanıldığında tarayıcı tabanlı kimlik doğrulamasını tetikler `kubectl` .| Kullanıcı bu grupların hiçbirinde değil. Kullanıcı herhangi bir Küme Yöneticisi grubunda olmadığından, hakları tamamen küme yöneticileri tarafından ayarlanan herhangi bir RoleBindings veya ClusterRoleBindings tarafından denetlenir. (Küme) RoleBindings, [Azure AD kullanıcılarını veya Azure AD gruplarını](azure-ad-rbac.md) oldukları gibi aday olarak belirler `subjects` . Böyle bir bağlama ayarlanmamışsa, Kullanıcı herhangi bir `kubectl` komutu kullanamaz.|Ayrıntılı erişim denetimi istiyorsanız ve Kubernetes yetkilendirmesi için Azure RBAC kullanmıyorsanız. Bağlamaları ayarlayan kullanıcının bu tabloda listelenen diğer yöntemlerden biriyle oturum açması gerektiğini unutmayın.|

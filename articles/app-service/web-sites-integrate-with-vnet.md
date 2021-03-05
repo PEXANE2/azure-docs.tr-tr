@@ -7,14 +7,14 @@ ms.topic: article
 ms.date: 08/05/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 077d200dcaf957f636acecebb441ff99a68eb96f
-ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
+ms.openlocfilehash: 4666f03e529c568177ff56a2db84e226bc906132
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97963596"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102182919"
 ---
-# <a name="integrate-your-app-with-an-azure-virtual-network"></a>Uygulamanızı bir Azure sanal ağı ile tümleştirme
+# <a name="integrate-your-app-with-an-azure-virtual-network"></a>Uygulamanızı bir Azure sanal ağıyla tümleştirin
 
 Bu makalede Azure App Service VNet tümleştirme özelliği ve [Azure App Service](./overview.md)uygulamalarla nasıl ayarlanacağı açıklanır. [Azure sanal ağ][VNETOverview] (VNet) Ile, Azure kaynaklarınızın çoğunu internet 'e yönlendirilemeyen bir ağa yerleştirebilirsiniz. VNet tümleştirme özelliği, uygulamalarınızın bir sanal ağ içindeki veya VNet aracılığıyla kaynaklara erişmesine olanak sağlar. VNet tümleştirmesi, uygulamalarınıza özel olarak erişilmesine izin vermez.
 
@@ -243,5 +243,5 @@ Ağ Geçidi için gerekli VNet tümleştirmesi için, PowerShell kullanarak App 
 [creategateway]: ../vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md#creategw
 [setp2saddresses]: ../vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md#addresspool
 [VNETRouteTables]: ../virtual-network/manage-route-table.md
-[installCLI]: /cli/azure/install-azure-cli?view=azure-cli-latest%2f
+[installCLI]: /cli/azure/install-azure-cli
 [privateendpoints]: networking/private-endpoint.md

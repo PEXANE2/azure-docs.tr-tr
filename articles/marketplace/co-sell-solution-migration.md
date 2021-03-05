@@ -6,13 +6,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 author: vamahtan
 ms.author: vamahtan
-ms.date: 12/07/2020
-ms.openlocfilehash: 445810d5873bb935ded180a969e4612542bde5ed
-ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
+ms.date: 3/04/2021
+ms.openlocfilehash: 92702f38b6143c5dac2111c57fadeba7d9142992
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102120190"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102181066"
 ---
 # <a name="migration-of-co-sell-solutions-from-ocp-gtm-to-the-commercial-marketplace"></a>OCP GTM 'den ticari Market 'e ortak satış çözümlerini geçirme
 
@@ -136,7 +136,7 @@ Teklifinizin yayımlanabilmesi için sağlamanız gereken bilgiler hakkında ayr
 
     :::image type="content" source="media/co-sell-migrate/offer-setup.png" alt-text="Iş Ortağı Merkezi 'nde teklif genel bakış kurulum sekmeleri.":::
 
-3. Microsoft satıcı ile uyumlu bazı ayrıntılar, OCP GTM çözümünden karşıya kopyalandı. Teklif ortak satışı sağlamak için **Microsoft Ile ortak satış** bölümünde kalan gerekli bilgileri doldurun. Tamamlandığında, **gözden geçir ve Yayımla**' yı seçin. Daha fazla bilgi için bkz. [iş ortağı merkezi 'nde ortak satış malzemeleri gönderme](marketplace-co-sell.md).
+3. Microsoft satıcı ile uyumlu bazı ayrıntılar, OCP GTM çözümünden karşıya kopyalandı. Teklif ortak satışı sağlamak için **Microsoft Ile ortak satış** bölümünde kalan gerekli bilgileri doldurun. Tamamlandığında, **gözden geçir ve Yayımla**' yı seçin. Daha fazla bilgi için bkz. [ticari Market teklifi için ortak satışı yapılandırma](commercial-marketplace-co-sell.md).
 
     :::image type="content" source="media/co-sell-migrate/co-sell-page.png" alt-text="Iş Ortağı Merkezi 'nde ortak satış sunma sekmesi.":::
 
@@ -154,5 +154,5 @@ Teklifinizin yayımlanabilmesi için sağlamanız gereken bilgiler hakkında ayr
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [CSP İş Ortakları aracılığıyla perakende satış](cloud-solution-providers.md)
-- [Ortak Satım malzemeleri iş ortağı merkezi 'ne nasıl gönderilir](marketplace-co-sell.md)
+- [Ticari Market teklifi için ortak satışı yapılandırma](commercial-marketplace-co-sell.md)
 - Bu [SSS](https://partner.microsoft.com/resources/detail/co-sell-requirements-publish-commercial-marketplace-faq-pdf) 'yi görüntüle (PDF)

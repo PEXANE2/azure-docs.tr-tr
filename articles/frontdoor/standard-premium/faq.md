@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 02/18/2021
 ms.author: duau
-ms.openlocfilehash: a42601b696f292e9d2a9da90070fea3662acae87
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+ms.openlocfilehash: 6f6d71dec9726f009ab9a56e0a49ba21f5d218fd
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "101100462"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102181032"
 ---
 # <a name="frequently-asked-questions-for-azure-front-door-standardpremium-preview"></a>Azure ön kapısı Standart/Premium (Önizleme) için sık sorulan sorular
 
@@ -85,7 +85,11 @@ Evet. Aslında Azure ön kapısı, ana bilgisayar, yol, sorgu dizesi yeniden yö
 
 ### <a name="how-do-i-lock-down-the-access-to-my-backend-to-only-azure-front-door"></a>Nasıl yaparım? arka ucuma erişimi yalnızca Azure ön kapısına kilitler mi?
 
-Uygulamanızı yalnızca belirli ön kapıdan gelen trafiği kabul edecek şekilde kilitlemek için, arka ucunuz için IP ACL 'Lerini ayarlamanız gerekir. Ardından arka ucunuzun trafiğini ön kapıdan gönderilen ' X-Azure-FDıD ' üstbilgisinin belirli bir değeriyle sınırlayın. Bu adımlar aşağıdaki şekilde ayrıntılı olarak verilmiştir:
+Uygulamanızı yalnızca belirli ön kapı örneğinden gelen trafiği kabul etmek için kilitlemek için en iyi yol, uygulamanızı özel uç nokta aracılığıyla yayımlamaktır. Ön kapı ve uygulama arasındaki ağ trafiği, VNet üzerinden ve Microsoft omurga ağı üzerinde bir özel bağlantıdan geçer ve bu da genel İnternet 'ten etkilenme olasılığını ortadan kaldırır.
+
+[Özel bağlantıyla ön kapıda güvenli başlangıç kaynağı](concept-private-link.md)hakkında daha fazla bilgi edinin.  
+
+Uygulamanızı yalnızca belirli ön kapıdan gelen trafiği kabul etmek için kilitlemek için alternatif yol, arka ucunuz için IP ACL 'Lerini ayarlamanız gerekir. Ardından arka ucunuzun trafiğini ön kapıdan gönderilen ' X-Azure-FDıD ' üstbilgisinin belirli bir değeriyle sınırlayın. Bu adımlar aşağıdaki şekilde ayrıntılı olarak verilmiştir:
 
 * Arka uçlarınızın IP adresini, Azure ön kapısından gelen trafiği ve yalnızca Azure 'un altyapı hizmetlerini kabul edecek şekilde yapılandırın. Arka ucunuzu hızlandırma için aşağıdaki IP ayrıntılarına bakın:
  

@@ -4,13 +4,13 @@ description: Bu makalede, iş ortaklarından algılayıcı verilerinin nasıl al
 author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
-ms.author: v-umha
-ms.openlocfilehash: 57baa00f7f9b64212d0aee8b0a2efeca814abeb3
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.author: v-ummehabiba
+ms.openlocfilehash: 474b6f8356724546105d902a15427f483f656317
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92168537"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102182783"
 ---
 # <a name="get-sensor-data-from-sensor-partners"></a>Algılayıcı iş ortaklarından algılayıcı verileri al
 
@@ -50,13 +50,13 @@ Yukarıdaki bilgileri oluşturmak için aşağıdaki adımları izleyin:
 
       b. Farmtts dağıtımınızın bir parçası olarak oluşturulan **uygulama kaydını** seçin. Bu, Farmtts veri hub 'ınızla aynı ada sahip olacaktır.
 
-      c. Bir **API 'Yi kullanıma** sunma ' yı seçin > **istemci uygulaması Ekle** ' yi seçin ve **04b07795-8ddb-461A-bbee-02f9e1bf7b46** girin ve **Yetkilendirme kapsamını**denetleyin. Bu, aşağıdaki adımları gerçekleştirmek için Azure CLı 'ye (Cloud Shell) erişim sağlar:
+      c. Bir **API 'Yi kullanıma** sunma ' yı seçin > **istemci uygulaması Ekle** ' yi seçin ve **04b07795-8ddb-461A-bbee-02f9e1bf7b46** girin ve **Yetkilendirme kapsamını** denetleyin. Bu, aşağıdaki adımları gerçekleştirmek için Azure CLı 'ye (Cloud Shell) erişim sağlar:
 
 3. Cloud Shell'i açın. Bu seçenek, Azure portal sağ üst köşesindeki araç çubuğunda bulunur.
 
     ![Azure portal araç çubuğu](./media/get-drone-imagery-from-drone-partner/navigation-bar-1.png)
 
-4. Ortamın **PowerShell**olarak ayarlandığından emin olun. Varsayılan olarak, Bash olarak ayarlanır.
+4. Ortamın **PowerShell** olarak ayarlandığından emin olun. Varsayılan olarak, Bash olarak ayarlanır.
 
     ![PowerShell araç çubuğu ayarı](./media/get-sensor-data-from-sensor-partner/power-shell-new-1.png)
 
@@ -92,7 +92,7 @@ Yukarıdaki bilgileri oluşturmak için aşağıdaki adımları izleyin:
 > 1. Datahub API uç noktası adının küçük olması gerekir.
 > 2. Datahub API uç noktası için farmtts Web sitesi adı URL 'sini kopyalıyorsanız, sonunda eğik çizgi (/) olmadığından emin olun.
 
-9. **API uç noktası**, **kiracı KIMLIĞI**, **Istemci kimliği**, **istemci gizli anahtarı**ve **EventHub bağlantı dizesi**için değerleri yakalamak üzere ekran yönergelerini izleyin.
+9. **API uç noktası**, **kiracı KIMLIĞI**, **Istemci kimliği**, **istemci gizli anahtarı** ve **EventHub bağlantı dizesi** için değerleri yakalamak üzere ekran yönergelerini izleyin.
 
 ### <a name="integrate-device-data-by-using-the-generated-credentials"></a>Oluşturulan kimlik bilgilerini kullanarak cihaz verilerini tümleştirme
 
@@ -127,7 +127,7 @@ Grubunuza yönelik cihazları ve algılayıcıları görüntülemek için aşağ
 Şu adımları izleyin:
 
 1. Giriş sayfasında, menüden **cihazlar** ' ı seçin.
-  **Cihazlar** sayfası cihaz türünü, modeli, durumu, yerleştirildiği grubu ve meta verilerin son güncelleştirilme tarihini görüntüler. Varsayılan olarak, Grup sütunu *null*olarak ayarlanır. Bir gruba bir cihaz atamayı seçebilirsiniz. Daha fazla bilgi için bkz. [cihaz atama](#assign-devices).
+  **Cihazlar** sayfası cihaz türünü, modeli, durumu, yerleştirildiği grubu ve meta verilerin son güncelleştirilme tarihini görüntüler. Varsayılan olarak, Grup sütunu *null* olarak ayarlanır. Bir gruba bir cihaz atamayı seçebilirsiniz. Daha fazla bilgi için bkz. [cihaz atama](#assign-devices).
 2. Cihaza bağlı cihaz özelliklerini, telemetri ve alt cihazları görüntülemek için cihazı seçin.
 
     ![Cihazlar sayfası](./media/get-sensor-data-from-sensor-partner/view-devices-1.png)

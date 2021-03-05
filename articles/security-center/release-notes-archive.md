@@ -1,23 +1,18 @@
 ---
 title: Azure Güvenlik Merkezi 'ndeki yenilikleri Arşivle
 description: Azure Güvenlik Merkezi 'nde altı aydan önce ve önceki sürümlerde nelerin yeni ve değiştirilmiş olduğuna ilişkin bir açıklama.
-services: security-center
-documentationcenter: na
 author: memildin
 manager: rkarlin
 ms.service: security-center
-ms.devlang: na
 ms.topic: reference
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 02/02/2020
+ms.date: 03/04/2021
 ms.author: memildin
-ms.openlocfilehash: f24785336642570ae3f21d96462317890526a4c9
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 3766f29f26a6b2ffeb385cffc971b1ac7a1556cb
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100578953"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102182585"
 ---
 # <a name="archive-for-whats-new-in-azure-security-center"></a>Azure Güvenlik Merkezi 'ndeki yenilikler için Arşiv mi var?
 
@@ -28,6 +23,225 @@ Bu sayfa hakkında bilgi sağlar:
 - Yeni özellikler
 - Hata düzeltmeleri
 - Kullanım dışı işlevsellik
+
+
+
+## <a name="september-2020"></a>Eylül 2020
+
+Eylül ayında güncelleştirmeler şunları içerir:
+- [Güvenlik Merkezi yeni bir görünüm alır!](#security-center-gets-a-new-look)
+- [Azure Defender yayımlandı](#azure-defender-released)
+- [Key Vault için Azure Defender genel kullanıma sunuldu](#azure-defender-for-key-vault-is-generally-available)
+- [Dosyalar ve ADLS 2. için depolama koruması için Azure Defender, genel kullanıma sunuldu](#azure-defender-for-storage-protection-for-files-and-adls-gen2-is-generally-available)
+- [Varlık Envanteri araçları genel kullanıma sunuldu](#asset-inventory-tools-are-now-generally-available)
+- [Kapsayıcı kayıt defterlerinin ve sanal makinelerin taranmasını bulma için belirli bir güvenlik açığını devre dışı bırakma](#disable-a-specific-vulnerability-finding-for-scans-of-container-registries-and-virtual-machines)
+- [Kaynağı öneriden muaf tutma](#exempt-a-resource-from-a-recommendation)
+- [Güvenlik Merkezi 'ndeki AWS ve GCP bağlayıcıları, çok bulut deneyimi getirir](#aws-and-gcp-connectors-in-security-center-bring-a-multi-cloud-experience)
+- [Kubernetes iş yükü koruma önerisi paketi](#kubernetes-workload-protection-recommendation-bundle)
+- [Güvenlik açığı değerlendirmesi bulguları artık sürekli dışarı aktarma için kullanılabilir](#vulnerability-assessment-findings-are-now-available-in-continuous-export)
+- [Yeni kaynaklar oluştururken öneriler zorlanarak güvenlik yapılandırması yapılandırmalarını engelleyin](#prevent-security-misconfigurations-by-enforcing-recommendations-when-creating-new-resources)
+- [Ağ güvenlik grubu önerileri geliştirildi](#network-security-group-recommendations-improved)
+- [Kullanım dışı önizleme AKS önerisi "Pod güvenlik Ilkeleri Kubernetes hizmetlerinde tanımlanmalıdır"](#deprecated-preview-aks-recommendation-pod-security-policies-should-be-defined-on-kubernetes-services)
+- [Azure Güvenlik Merkezi 'ndeki e-posta bildirimleri geliştirildi](#email-notifications-from-azure-security-center-improved)
+- [Güvenli puan önizleme önerilerini içermez](#secure-score-doesnt-include-preview-recommendations)
+- [Öneriler artık önem göstergesi ve yenilik aralığı içeriyor](#recommendations-now-include-a-severity-indicator-and-the-freshness-interval)
+
+
+### <a name="security-center-gets-a-new-look"></a>Güvenlik Merkezi yeni bir görünüm alır!
+
+Güvenlik Merkezi 'nin portal sayfaları için yenilenmiş bir kullanıcı arabirimi yayımladık. Yeni sayfalar, güvenli puan, varlık envanteri ve Azure Defender için yeni bir genel bakış sayfası ve panolar içerir.
+
+Yeniden tasarlanan genel bakış sayfasında artık güvenli puan, varlık envanteri ve Azure Defender panolarına erişim için bir kutucuk vardır. Ayrıca, mevzuat uyumluluk panosuna bağlanan bir kutucuk vardır.
+
+[Genel bakış sayfası](overview-page.md)hakkında daha fazla bilgi edinin.
+
+
+### <a name="azure-defender-released"></a>Azure Defender yayımlandı
+
+**Azure Defender** , Azure ve hibrit iş yüklerinizin gelişmiş, akıllı ve koruma Için Güvenlik Merkezi kapsamında tümleşik olan bulut iş yükü koruma platformudur (cwpp). Güvenlik Merkezi 'nin standart fiyatlandırma katmanı seçeneğini değiştirir. 
+
+Azure Defender 'ı Azure Güvenlik Merkezi 'nin **fiyatlandırma ve ayarlar** alanından etkinleştirdiğinizde, aşağıdaki Defender planlarının hepsi aynı anda etkinleştirilmiştir ve ortamınızın işlem, veri ve hizmet katmanları için kapsamlı savunma sağlar:
+
+- [Sunucular için Azure Defender](defender-for-servers-introduction.md)
+- [App Service için Azure Defender](defender-for-app-service-introduction.md)
+- [Depolama için Azure Defender](defender-for-storage-introduction.md)
+- [SQL için Azure Defender](defender-for-sql-introduction.md)
+- [Key Vault için Azure Defender](defender-for-key-vault-introduction.md)
+- [Kubernetes için Azure Defender](defender-for-kubernetes-introduction.md)
+- [Kapsayıcı kayıt defterleri için Azure Defender](defender-for-container-registries-introduction.md)
+
+Bu planların her biri, güvenlik merkezi belgelerinde ayrı olarak açıklanmıştır.
+
+Adanmış panosu sayesinde Azure Defender, sanal makineler, SQL veritabanları, kapsayıcılar, Web uygulamaları, ağınız ve daha fazlası için güvenlik uyarıları ve Gelişmiş tehdit koruması sağlar.
+
+[Azure Defender hakkında daha fazla bilgi](azure-defender.md)
+
+### <a name="azure-defender-for-key-vault-is-generally-available"></a>Key Vault için Azure Defender genel kullanıma sunuldu
+
+Azure Key Vault, şifreleme anahtarlarını ve sertifikalar, bağlantı dizeleri ve parolalar gibi gizli dizileri koruyan bir bulut hizmetidir. 
+
+**Key Vault Için Azure Defender** , ek bir güvenlik zekası katmanı sunarak Azure Key Vault için Azure yerel ve Gelişmiş tehdit koruması sağlar. Uzantıya göre Key Vault için Azure Defender, bu nedenle Key Vault hesaplarınıza bağlı kaynakların çoğunu koruyor.
+
+İsteğe bağlı plan artık GA 'dir. Bu özellik, "Azure Key Vault için Gelişmiş tehdit koruması" olarak önizlemededir.
+
+Ayrıca, Azure portal Key Vault sayfalarında artık **Güvenlik Merkezi** önerileri ve uyarıları için ayrılmış bir **güvenlik** sayfası vardır.
+
+[Key Vault Için Azure Defender](defender-for-key-vault-introduction.md)'da daha fazla bilgi edinin.
+
+
+### <a name="azure-defender-for-storage-protection-for-files-and-adls-gen2-is-generally-available"></a>Dosyalar ve ADLS 2. için depolama koruması için Azure Defender, genel kullanıma sunuldu 
+
+**Depolama Için Azure Defender** , Azure depolama hesaplarınızdaki zararlı olabilecek etkinlikleri algılar. Verileriniz, blob kapsayıcıları, dosya paylaşımları veya veri Lakes olarak depolanıp saklanmadığı için korunabilir.
+
+[Azure dosyaları](../storage/files/storage-files-introduction.md) ve [Azure Data Lake Storage 2.](../storage/blobs/data-lake-storage-introduction.md) için destek genel kullanıma sunulmuştur.
+
+1 Ekim 2020 ' den bu hizmetlerde kaynakları koruma ücretlendirmeye başlayacağız.
+
+[Depolama Için Azure Defender](defender-for-storage-introduction.md)'da daha fazla bilgi edinin.
+
+
+### <a name="asset-inventory-tools-are-now-generally-available"></a>Varlık Envanteri araçları genel kullanıma sunuldu
+
+Azure Güvenlik Merkezi 'nin varlık Envanteri sayfası, güvenlik merkezi 'ne bağladığınız kaynakların güvenlik duruşunu görüntülemek için tek bir sayfa sağlar.
+
+Güvenlik Merkezi, olası güvenlik açıklarını belirlemek için Azure kaynaklarınızın güvenlik durumunu düzenli olarak analiz eder. Daha sonra bu güvenlik açıklarını nasıl düzeltebileceğiniz konusunda öneriler sağlar.
+
+Herhangi bir kaynakta bekleyen öneriler olduğunda, bu değişiklikler envanterde görüntülenir.
+
+[Varlık envanteriyle kaynaklarınızı araştırıp yönetme](asset-inventory.md)hakkında daha fazla bilgi edinin.
+
+
+
+### <a name="disable-a-specific-vulnerability-finding-for-scans-of-container-registries-and-virtual-machines"></a>Kapsayıcı kayıt defterlerinin ve sanal makinelerin taranmasını bulma için belirli bir güvenlik açığını devre dışı bırakma
+
+Azure Defender, Azure Container Registry ve sanal makinelerinizdeki görüntüleri taramak için güvenlik açığı tarayıcıları içerir.
+
+Bir bulmayı yok saymanız gereken bir kuruluş varsa, bunu düzeltmek yerine isteğe bağlı olarak devre dışı bırakabilirsiniz. Devre dışı bulgular, güvenli puanınızı etkilemez veya istenmeyen gürültü oluşturmaz.
+
+Bir bulma, devre dışı bırakma kurallarında tanımladığınız ölçütlerle eşleştiğinde, bu, bulguları listesinde görünmez.
+
+Bu seçenek, için öneriler ayrıntıları sayfalarından kullanılabilir:
+
+- **Azure Container Registry görüntülerdeki güvenlik açıkları düzeltilmelidir**
+- **Sanal makinelerinizdeki güvenlik açıkları düzeltilmelidir**
+
+[Kapsayıcı görüntüleriniz için belirli bulguları devre dışı bırakma konusunda](defender-for-container-registries-usage.md#disable-specific-findings-preview) daha fazla bilgi edinin ve [sanal makineleriniz için belirli bulguları devre dışı bırakın](remediate-vulnerability-findings-vm.md#disable-specific-findings-preview)
+
+
+### <a name="exempt-a-resource-from-a-recommendation"></a>Kaynağı öneriden muaf tutma
+
+Bazen bir kaynak belirli bir öneriyle ilgili sağlıksız olarak listelenecektir (ve bu nedenle, güvenli puanınızı düşürürken). Güvenlik Merkezi tarafından izlenmeyen bir işlem tarafından düzeltilebilir olabilir. Ya da kuruluşunuz söz konusu kaynak için riski kabul etmeye karar verdi. 
+
+Bu gibi durumlarda, bir istisna kuralı oluşturabilir ve ileride kaynağın sağlıksız kaynaklar arasında listelenmemesini sağlayabilirsiniz. Bu kurallar, aşağıda açıklandığı gibi belgelenmiş gerekçeler içerebilir.
+
+[Bir kaynağı önerilerden ve güvenli puanın dışında bırakma](exempt-resource.md)hakkında daha fazla bilgi edinin.
+
+
+### <a name="aws-and-gcp-connectors-in-security-center-bring-a-multi-cloud-experience"></a>Güvenlik Merkezi 'ndeki AWS ve GCP bağlayıcıları, çok bulut deneyimi getirir
+
+Bulut güvenlik hizmetleri genellikle birden çok bulut platformunu kapsayan bulut iş yükleri ile aynı olmalıdır.
+
+Azure Güvenlik Merkezi artık Azure, Amazon Web Services (AWS) ve Google Cloud Platform (GCP) iş yüklerini korur.
+
+AWS ve GCP hesaplarınızı Güvenlik Merkezi 'ne ekleme, AWS güvenlik hub, GCP güvenlik komutu ve Azure Güvenlik Merkezi ' ni tümleştirir. 
+
+[AWS hesaplarınızı Azure Güvenlik Merkezi 'Ne bağlama](quickstart-onboard-aws.md) ve [GCP hesaplarınızı Azure Güvenlik Merkezi 'ne bağlama](quickstart-onboard-gcp.md)konusunda daha fazla bilgi edinin.
+
+
+### <a name="kubernetes-workload-protection-recommendation-bundle"></a>Kubernetes iş yükü koruma önerisi paketi
+
+Kubernetes iş yüklerinin güvenli olduğundan emin olmak için, Güvenlik Merkezi, Kubernetes giriş denetimi ile zorlama seçenekleri dahil olmak üzere Kubernetes düzeyi sağlamlaştırma önerilerini ekliyor.
+
+AKS kümenizdeki Kubernetes için Azure Ilkesi eklentisini yüklediğinizde, Kubernetes API sunucusuna gönderilen her istek, kümede kalıcı hale gelmeden önce önceden tanımlanmış en iyi uygulamalar kümesine göre izlenir. Daha sonra, en iyi uygulamaları zorlamak ve gelecekteki iş yükleri için bunları zorunlu kılmak üzere yapılandırabilirsiniz.
+
+Örneğin, ayrıcalıklı kapsayıcıların oluşturulmaması ve ileride yapılacak istekleri engellenemeyeceksiniz.
+
+[Kubernetes giriş denetimini kullanan Iş yükü koruma en iyi uygulamaları](container-security.md#workload-protection-best-practices-using-kubernetes-admission-control)hakkında daha fazla bilgi edinin.
+
+
+### <a name="vulnerability-assessment-findings-are-now-available-in-continuous-export"></a>Güvenlik açığı değerlendirmesi bulguları artık sürekli dışarı aktarma için kullanılabilir
+
+Azure Event Hubs, Log Analytics çalışma alanları veya Azure Izleyici ile uyarı ve önerilerinizi gerçek zamanlı olarak akışa almak için sürekli dışarı aktarmayı kullanın. Buradan, bu verileri Sıems ile tümleştirebilirsiniz (Azure Sentinel, Power BI, Azure Veri Gezgini ve daha fazlasını yapabilirsiniz.
+
+Güvenlik Merkezi 'nin tümleşik güvenlik açığı değerlendirme araçları, "ana" önerilerinde "sanal makinelerinizdeki güvenlik açıkları düzeltilmelidir" gibi eyleme dönüştürülebilir öneriler olarak kaynaklarınızın bulgularını döndürür. 
+
+Öneriler ' i seçip **güvenlik bulgularını dahil et** seçeneğini etkinleştirdiğinizde, güvenlik bulguları sürekli dışarı aktarma aracılığıyla dışarı aktarmaya hazırdır.
+
+:::image type="content" source="./media/continuous-export/include-security-findings-toggle.png" alt-text="Sürekli dışa aktarma yapılandırmasında güvenlik bulgularını dahil et" :::
+
+İlgili sayfalar:
+
+- [Azure sanal makineleri için Güvenlik Merkezi 'nin tümleşik güvenlik açığı değerlendirme çözümü](deploy-vulnerability-assessment-vm.md)
+- [Azure Container Registry görüntüleri için Güvenlik Merkezi 'nin tümleşik güvenlik açığı değerlendirme çözümü](defender-for-container-registries-usage.md)
+- [Sürekli dışarı aktarma](continuous-export.md)
+
+### <a name="prevent-security-misconfigurations-by-enforcing-recommendations-when-creating-new-resources"></a>Yeni kaynaklar oluştururken öneriler zorlanarak güvenlik yapılandırması yapılandırmalarını engelleyin
+
+Güvenlik yapılandırması hataları, güvenlik olaylarının önemli bir nedendir. Güvenlik Merkezi artık, belirli önerilere göre yeni kaynakların yanlış yapılandırmalarını *önlemeye* yardımcı olur. 
+
+Bu özellik, iş yüklerinizi güvende tutmaya ve güvenli puanınızı sabitetmenize yardımcı olabilir.
+
+Belirli bir öneriye göre güvenli bir yapılandırma uygulamak, iki modda sunulur:
+
+- Azure Ilkesinin **reddetme** efektini kullanarak, sağlıksız kaynakların oluşturulmasını durdurabilirsiniz
+
+- **Uygula** seçeneğini kullanarak Azure Ilkesinin **Deployifnotexist** efektinin avantajlarından yararlanabilir ve oluşturma sırasında uyumlu olmayan kaynakları otomatik olarak düzeltebilirsiniz
+ 
+Bu, seçilen güvenlik önerileri için kullanılabilir ve kaynak Ayrıntıları sayfasının en üstünde bulunabilir.
+
+[Zorla/reddetme önerilerini kullanarak yanlış yapılandırma önleme konusunda](prevent-misconfigurations.md)daha fazla bilgi edinin.
+
+###  <a name="network-security-group-recommendations-improved"></a>Ağ güvenlik grubu önerileri geliştirildi
+
+Ağ güvenlik gruplarıyla ilgili aşağıdaki güvenlik önerileri, bazı hatalı pozitif sonuç örneklerini azaltmak için geliştirilmiştir.
+
+- Tüm ağ bağlantı noktaları, VM 'niz ile ilişkili NSG 'de sınırlandırılmalıdır
+- Yönetim bağlantı noktaları sanal makinelerinizde kapatılmalıdır
+- Internet 'e yönelik sanal makineler ağ güvenlik gruplarıyla korunmalıdır
+- Alt ağlar bir ağ güvenlik grubuyla ilişkilendirilmelidir
+
+
+### <a name="deprecated-preview-aks-recommendation-pod-security-policies-should-be-defined-on-kubernetes-services"></a>Kullanım dışı önizleme AKS önerisi "Pod güvenlik Ilkeleri Kubernetes hizmetlerinde tanımlanmalıdır"
+
+Önizleme önerisi "Pod güvenlik Ilkeleri, Kubernetes hizmetlerinde tanımlanmalıdır", [Azure Kubernetes hizmeti](../aks/use-pod-security-policies.md) belgelerinde açıklandığı şekilde kullanımdan kaldırılmıştır.
+
+Pod güvenlik ilkesi (Önizleme) özelliği kullanımdan kalkmaya yönelik olarak ayarlanmıştır ve, AKS için Azure Ilkesi için, 15 Ekim 2020 ' den sonra kullanılabilir olmayacaktır.
+
+Pod güvenlik ilkesi (Önizleme) kullanım dışı olduktan sonra, gelecekteki küme yükseltmelerini gerçekleştirmek ve Azure desteği içinde kalmak için kullanımdan kaldırılan özelliği kullanarak mevcut kümelerin özelliğini devre dışı bırakmanız gerekir.
+
+
+### <a name="email-notifications-from-azure-security-center-improved"></a>Azure Güvenlik Merkezi 'ndeki e-posta bildirimleri geliştirildi
+
+Güvenlik uyarıları ile ilgili e-postaların aşağıdaki bölgeleri geliştirilmiştir: 
+
+- Tüm önem düzeyleri için uyarılar hakkında e-posta bildirimleri gönderme özelliği eklendi
+- Abonelikte farklı Azure rolleriyle kullanıcılara bildirim verme özelliği eklendi
+- En yüksek öneme sahip uyarılarda (orijinal ihlal etmeme olasılığı yüksek olan), abonelik sahiplerini varsayılan olarak önceden bilgilendiriyoruz
+- E-posta bildirimleri yapılandırma sayfasından telefon numarası alanını kaldırdık
+
+[Güvenlik uyarıları için e-posta bildirimlerini ayarlama](security-center-provide-security-contact-details.md)bölümünde daha fazla bilgi edinin.
+
+
+### <a name="secure-score-doesnt-include-preview-recommendations"></a>Güvenli puan önizleme önerilerini içermez 
+
+Güvenlik Merkezi, güvenlik sorunları için kaynaklarınızı, aboneliklerinizi ve kuruluşunuzu sürekli olarak değerlendirir. Daha sonra her türlü bulguları tek bir puanın içinde toplar, böylece bir bakışta geçerli güvenlik durumunuza göre daha yüksek puan, belirtilen risk düzeyini azaltır.
+
+Yeni tehditler bulunduğundan yeni güvenlik önerileri yeni öneriler aracılığıyla güvenlik merkezi 'nde kullanılabilir hale getirilir. Güvenli puanınızın beklenmedik şekilde değişiklik yaşamamasını önlemek ve yeni önerilerin puanlarını etkilemeden önce keşfedebileceğiniz bir yetkisiz kullanım süresi sağlamak için, **Önizleme** olarak işaretlenen öneriler artık güvenli puanınızın hesaplamalarına dahil değildir. Önizleme dönemi sona erdiğinde puanınızın altına katkıda bulunduklarında, bunlar mümkün olduğunda yine de düzeltilmelidir.
+
+Ayrıca, **Önizleme** önerileri bir kaynağı "sağlıksız" olarak işlemez.
+
+Önizleme önerisi örneği:
+
+:::image type="content" source="./media/secure-score-security-controls/example-of-preview-recommendation.png" alt-text="Önizleme bayrağıyla ilgili öneri":::
+
+[Güvenli skor hakkında daha fazla bilgi edinin](secure-score-security-controls.md).
+
+
+### <a name="recommendations-now-include-a-severity-indicator-and-the-freshness-interval"></a>Öneriler artık önem göstergesi ve yenilik aralığı içeriyor
+
+Önerilerin ayrıntılar sayfasında artık bir yeniliği aralığı göstergesi (her ne zaman geçerlidir) ve önerinin önem derecesine ilişkin net bir ekran görüntülenir.
+
+:::image type="content" source="./media/release-notes/recommendations-severity-freshness-indicators.png" alt-text="Yeniliği ve önem derecesini gösteren öneri sayfası":::
 
 
 ## <a name="august-2020"></a>Ağustos 2020
@@ -259,6 +473,7 @@ SQL makinelerinde gelişmiş veri güvenliği ile ilgili altı ilke kullanım d�
 ## <a name="june-2020"></a>Haziran 2020
 
 Haziran 'daki güncelleştirmeler şunlardır:
+
 - [Güvenli puan API 'SI (Önizleme)](#secure-score-api-preview)
 - [SQL makineler için gelişmiş veri güvenliği (Azure, diğer bulutlar ve şirket içi) (Önizleme)](#advanced-data-security-for-sql-machines-azure-other-clouds-and-on-premises-preview)
 - [Log Analytics aracısını Azure Arc makinelerine dağıtmaya yönelik iki yeni öneri (Önizleme)](#two-new-recommendations-to-deploy-the-log-analytics-agent-to-azure-arc-machines-preview)

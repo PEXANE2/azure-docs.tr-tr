@@ -3,12 +3,12 @@ title: Azure VMware çözümünde dağıtım ufku
 description: Azure VMware çözümünde VMware ufuk dağıtımı hakkında bilgi edinin.
 ms.topic: how-to
 ms.date: 09/29/2020
-ms.openlocfilehash: 2cf6fc5cb7662188650365cb019774d6c778d405
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: c34d0ac7806f8284e893cf3ad4f3c82dd404ff41
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98684884"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102181406"
 ---
 # <a name="deploy-horizon-on-azure-vmware-solution"></a>Azure VMware çözümünde dağıtım ufku 
 
@@ -212,6 +212,10 @@ Gereksinimlerinize göre ufku lisanslama maliyetini öğrenmek için VMware EUC 
 ### <a name="azure-instance-types"></a>Azure örnek türleri
 
 Ufuk altyapısı için gerekli olacak Azure sanal makine boyutlarını anlamak için, lütfen [burada](https://techzone.vmware.com/resource/horizon-on-azure-vmware-solution-configuration#horizon-installation-on-azure-vmware-solution)bulunan VMware yönergelerine başvurun.
+
+## <a name="references"></a>Başvurular
+[Linux için Ufın Aracısı sistem gereksinimleri](https://docs.vmware.com/en/VMware-Horizon/2012/linux-desktops-setup/GUID-E268BDBF-1D89-492B-8563-88936FD6607A.html)
+
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Azure VMware çözümünde VMware ufku hakkında daha fazla bilgi edinmek için, [VMWare ufku SSS](https://www.vmware.com/content/dam/digitalmarketing/vmware/en/pdf/products/horizon/vmw-horizon-on-microsoft-azure-vmware-solution-faq.pdf)makalesini okuyun.

@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/20/2020
 ms.author: duau
-ms.openlocfilehash: 06ad8bf169e2b4b44f4f6a8ec5155aa6722a038c
-ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
+ms.openlocfilehash: ba859a0ad8edacfa2e51486b150f94b3dea37a16
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102124066"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102182902"
 ---
 # <a name="frequently-asked-questions-for-azure-front-door"></a>Azure ön kapısı hakkında sık sorulan sorular
 
@@ -86,6 +86,8 @@ Evet. Azure ön kapısının yanı sıra ana bilgisayar, yol ve sorgu dizesi yen
 Ön kapılarınızın rotaları sıralı değildir ve en iyi eşleşme temelinde belirli bir rota seçilir. [Ön kapısının bir yönlendirme kuralına yönelik Istekleri nasıl eşleştirtiği](front-door-route-matching.md)hakkında daha fazla bilgi edinin.
 
 ### <a name="how-do-i-lock-down-the-access-to-my-backend-to-only-azure-front-door"></a>Nasıl yaparım? arka ucuma erişimi yalnızca Azure ön kapısına kilitler mi?
+
+> [! Uyarı] yeni SKU ön kapısı Premium, uygulamanızı özel uç nokta aracılığıyla kilitlemek için daha önerilen bir yol sağlar. [Özel uç nokta hakkında daha fazla bilgi](./standard-premium/concept-private-link.md)
 
 Uygulamanızı yalnızca belirli ön kapıdan gelen trafiği kabul edecek şekilde kilitlemek için, arka ucunuz için IP ACL 'Lerini ayarlamanız ve ardından arka ucunuzdaki trafiği ön kapıya göre gönderilen ' X-Azure-FDıD ' üstbilgisinin belirli bir değeriyle kısıtlamanız gerekir. Bu adımlar aşağıdaki şekilde ayrıntılı olarak verilmiştir:
 

@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/19/2021
 ms.author: duau
-ms.openlocfilehash: 09b82eed5ad6a9ad121ca56d197eb9c003d027f5
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: 8c8897218b153c8584c89abab98934268ccd555d
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98624918"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102182171"
 ---
 # <a name="what-is-traffic-manager"></a>Traffic Manager nedir?
 Azure Traffic Manager, DNS tabanlı bir trafik yük dengeleyicidir. Bu hizmet, genel Azure bölgelerinde genel kullanıma açık uygulamalarınıza giden trafiği dağıtmanıza olanak tanır. Traffic Manager ayrıca, yüksek kullanılabilirlik ve hızlı yanıt verme ile genel uç noktalarınız sağlar.
@@ -24,8 +24,12 @@ Azure Traffic Manager, DNS tabanlı bir trafik yük dengeleyicidir. Bu hizmet, g
 Traffic Manager, istemci isteklerini bir trafik yönlendirme yöntemine göre uygun hizmet uç noktasına yönlendirmek için DNS kullanır. Traffic Manager ayrıca her uç nokta için sistem durumu izleme sağlar. Uç nokta, Azure 'un içinde veya dışında barındırılan Internet 'e yönelik herhangi bir hizmet olabilir. Traffic Manager, farklı uygulama ihtiyaçlarına ve otomatik yük devretme modellerine uyan farklı [trafik yönlendirme yöntemleri](traffic-manager-routing-methods.md) ve [uç nokta izleme seçenekleri](traffic-manager-monitoring.md) sunar. Traffic Manager, bir Azure bölgesinin tamamının devre dışı kalması dahil olmak üzere hatalara dayanıklıdır.
 
 >[!NOTE]
-> Azure, senaryolarınız için tam olarak yönetilen yük dengeleme çözümleri sunar. Aktarım Katmanı Güvenliği (TLS) protokolü sonlandırma ("SSL yük boşaltma") veya HTTP/HTTPS isteği başına uygulama katmanı işleme özellikleri istiyorsanız [Application Gateway](../application-gateway/overview.md)'i inceleyin. Bölgesel yük dengelemeyi arıyorsanız [Load Balancer](../load-balancer/load-balancer-overview.md)gözden geçirin. Uçtan uca senaryolarınızda bu çözümleri bir arada da kullanabilirsiniz.
->
+> Azure, senaryolarınız için tam olarak yönetilen yük dengeleme çözümleri sunar. 
+> * Uygulama katmanındaki bir bölgedeki sunucularınız arasında yük dengelemesi yapmak istiyorsanız [Application Gateway](../application-gateway/overview.md)gözden geçirin.
+> * Web trafiğinizi küresel yönlendirmeyi iyileştirmeniz ve hızlı genel yük devretme ile en üst katman Son Kullanıcı performansını ve güvenilirliğini iyileştirmek için bkz. [ön kapı](../frontdoor/front-door-overview.md).
+> * Ağ katmanı yük dengelemesi yapmak için [Load Balancer](../load-balancer/load-balancer-overview.md)gözden geçirin. 
+> 
+> Uçtan uca senaryolarınız, bu çözümlerin gerektiğinde birleştirilmesinin avantajlarından yararlanabilir.
 > Azure yük dengeleme seçenekleri karşılaştırması için bkz. [Azure 'da Yük Dengeleme seçeneklerine genel bakış](/azure/architecture/guide/technology-choices/load-balancing-overview).
 
 Traffic Manager aşağıdaki özellikleri sunar:

@@ -8,12 +8,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 02/18/2021
 ms.author: amsriva
-ms.openlocfilehash: 0f5ecef1716a503b7d27d0f5cdde15a4560c0e61
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+ms.openlocfilehash: 1753f2bb649e73d7a5fe6c1cc32361a418ea7f63
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "101100587"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102181814"
 ---
 # <a name="overview-of-azure-front-door-standardpremium-sku-preview"></a>Azure ön kapısı Standart/Premium SKU 'ya genel bakış (Önizleme)
 
@@ -59,10 +59,10 @@ Azure ön kapısının 3 farklı SKU 'Lar, [Azure ön kapısı](../front-door-ov
 | URL yeniden yazma | Yes | Yes |
 | Kural Altyapısı | Yes | Yes |
 | Özel kaynak (özel bağlantı) | Hayır | Yes |
-| WAF | Hayır | Yes |
+| WAF | Yalnızca özel kurallar | Yes |
 | Bot koruması | Hayır | Yes |
 | Gelişmiş ölçümler ve Tanılamalar | Yes | Yes |
-| Trafik raporları | Yes | Yes |
+| Trafik raporu | Yes | Yes |
 | Güvenlik raporu | Hayır | Evet | 
 
 ## <a name="next-steps"></a>Sonraki adımlar

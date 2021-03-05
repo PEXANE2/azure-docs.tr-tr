@@ -4,13 +4,13 @@ description: Farmtempts 'de kuralların nasıl yapılandırılacağını ve uyar
 author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
-ms.author: v-umha
-ms.openlocfilehash: 5e6a5d414c341f482c3fddf95a2f8bb8e55a3ca2
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.author: v-ummehabiba
+ms.openlocfilehash: a04f973cbfa3a68016065f50e9e2ff4f7566da94
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92168554"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102182936"
 ---
 # <a name="configure-rules-and-manage-alerts"></a>Kuralları yapılandırma ve uyarıları yönetme
 
@@ -28,22 +28,22 @@ Azure Farmtempler, grubunuzda dağıtılan sensörlerden ve cihazlardan akan alg
 
     ![Koşullar bölümünü vurgulayan ekran görüntüsü.](./media/configure-rules-and-alerts-in-azure-farmbeats/new-rule-condition-1.png)
 
-5. **Koşullar**' da, **Ölçü**, **işleç** ve **değer**değerlerini girin.
+5. **Koşullar**' da, **Ölçü**, **işleç** ve **değer** değerlerini girin.
 6. Ölçü adı ' nı **Ölçü** açılan menüsünde yazın.
 7. Kurala daha fazla koşul eklemek için **+ Koşul Ekle** ' yi seçin.
-8. **Önem derecesini**seçin.
+8. **Önem derecesini** seçin.
 9. **Eylem**' de e-posta uyarılarını etkinleştirmek Için **e-posta etkin** geçiş düğmesi ' ne geçin.
 
     ![E-posta etkin seçeneğini gösteren ekran görüntüsü.](./media/configure-rules-and-alerts-in-azure-farmbeats/new-rule-email-1.png)
 
-10. E-posta ile **ilgili** uyarı göndermek istediğiniz e-posta **adreslerini** ve **ek notları**girin.  
+10. E-posta ile **ilgili** uyarı göndermek istediğiniz e-posta **adreslerini** ve **ek notları** girin.  
 11. Kural **durumu**' nda, kuralı etkinleştirmek veya devre dışı bırakmak için **etkin** geçiş düğmesi ' ne geçin.
     Kuraldan etkilenecek cihaz sayısını görüntüleyebilirsiniz.
 12. Kuralı oluşturmak için **Uygula** ' yı seçin.
 
 ## <a name="view-rule"></a>Kuralı görüntüle
 
-**Grup** sayfası kullanılabilir kuralların listesini görüntüler. Bir **kural adı**seçin. Bir pencerede seçili kural için geçerli olan aşağıdaki ayrıntılar görüntülenir:
+**Grup** sayfası kullanılabilir kuralların listesini görüntüler. Bir **kural adı** seçin. Bir pencerede seçili kural için geçerli olan aşağıdaki ayrıntılar görüntülenir:
  - Kural adı
  - Kuralın ilişkilendirildiği gruba bağlantı
  - Oluşturulma tarihi
@@ -69,17 +69,17 @@ Bir kuralı düzenlemek için aşağıdaki adımları izleyin:
 
     ![Kural düzenleme ekranını gösteren ekran görüntüsü.](./media/configure-rules-and-alerts-in-azure-farmbeats/edit-rule-one-1.png)
 
-4. **Kural adını**ve **Kural açıklamasını** değiştirip **Grup Seç** açılan menüsünden bir grup seçin.
+4. **Kural adını** ve **Kural açıklamasını** değiştirip **Grup Seç** açılan menüsünden bir grup seçin.
 5. Grubu seçmek için Grup adınızı yazın ve **Koşulları** aynı pencerede görüntülenir.  
-6. **Koşullarda**, **ölçüyü**, **işleci** ve **değeri**düzenleyin.
+6. **Koşullarda**, **ölçüyü**, **işleci** ve **değeri** düzenleyin.
 7. Ölçü adı ' nı **Ölçü** açılan menüsünde yazın.
 8. Kurallara koşul eklemek/kuralları düzenlemek için **+ Koşul Ekle** ' yi seçin.
 
     ![Koşul Ekle düğmesini vurgulayan ekran görüntüsü.](./media/configure-rules-and-alerts-in-azure-farmbeats/edit-rule-two-1.png)
 
-9.  **Önem derecesini**seçin.  
+9.  **Önem derecesini** seçin.  
 10. **Eylem**' de e-posta uyarılarını etkinleştirmek Için **e-posta etkin** geçiş düğmesi ' ne geçin.
-11. E-posta uyarısını, e-posta **konusunu** ve **ek notları**göndermek istediğiniz **e-posta adreslerini** düzenleyin.  
+11. E-posta uyarısını, e-posta **konusunu** ve **ek notları** göndermek istediğiniz **e-posta adreslerini** düzenleyin.  
 12. Kural **durumu**' nda, kuralı etkinleştirmek veya devre dışı bırakmak için **etkin** geçiş düğmesi ' ne geçin.
 Bu kuraldan etkilenecek cihaz sayısını görüntüleyebilirsiniz.
 13. Kuralı düzenlemek için **Uygula** ' yı seçin.

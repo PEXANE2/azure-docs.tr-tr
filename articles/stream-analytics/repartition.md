@@ -4,15 +4,15 @@ description: Bu makalede, paralelleştirilmedi Azure Stream Analytics işleri iy
 ms.service: stream-analytics
 author: sidramadoss
 ms.author: sidram
-ms.date: 09/19/2019
+ms.date: 03/04/2021
 ms.topic: conceptual
 ms.custom: mvc
-ms.openlocfilehash: 72f81a0eac81acdca71c8ed81695789c417898ca
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 95749f2acea6b605cfdba5a4f3d4f5526e751c5a
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98014204"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102182545"
 ---
 # <a name="use-repartitioning-to-optimize-processing-with-azure-stream-analytics"></a>Azure Stream Analytics ile işlemeyi iyileştirmek için yeniden bölümleme kullanın
 
@@ -23,25 +23,47 @@ Bu makalede, tam olarak [Paralelleştirilmesi](stream-analytics-scale-jobs.md)ge
 * Giriş akışınız için bölüm anahtarını denetlememeniz gerekir.
 * Kaynak "sprtikleriniz", daha sonra birleştirilmek zorunda olan birden çok bölüm genelinde giriş.
 
-Event Hubs için **PartitionID** gibi bir doğal giriş şemasına göre parçalı olmayan bir akışta verileri işleçalıştığınızda yeniden bölümlendirip veya reshuffling gereklidir. Yeniden bölümlerseniz, her parça bağımsız olarak işlenebilir ve bu da akış işlem hattınızı daha erken ölçeklendirmenize olanak tanır.
+Event Hubs için **PartitionID** gibi bir doğal giriş şemasına göre parçalı olmayan bir akışta verileri işleçalıştığınızda yeniden bölümlendirip veya reshuffling gereklidir. Yeniden bölümlerseniz, her parça bağımsız olarak işlenebilir ve bu da akış işlem hattınızı daha erken ölçeklendirmenize olanak tanır. 
 
 ## <a name="how-to-repartition"></a>Yeniden bölümleme
+Girişinizi 2 şekilde yeniden bölümlendirebilirsiniz:
+1. Yeniden bölümleme işlemini yapan ayrı bir Stream Analytics iş kullanın
+2. Tek bir iş kullanın ancak özel analiz mantığınızı önce yeniden bölümlendirip yapın
 
-Yeniden bölümlemek için, sorginizdeki bir **bölüm by** ifadesinden **sonra anahtar sözcüğünü** kullanın. Aşağıdaki örnek, verileri **DeviceID** 'yi 10 bölüm sayısına göre bölümlendirir. **DeviceID** 'nin karması, hangi bölümün hangi alt akışı kabul edeceğini tespit etmek için kullanılır. Veriler bölümlenmiş her akış için bağımsız olarak temizlenir ve çıktının bölümlenmiş yazmaları desteklediği kabul edilir ve 10 bölüm vardır.
-
+### <a name="creating-a-separate-stream-analytics-job-to-repartition-input"></a>Girişi yeniden bölümlemek için ayrı bir Stream Analytics işi oluşturma
+Bir bölüm anahtarı kullanarak, bir olay hub 'ına giriş ve yazma okuyan bir iş oluşturabilirsiniz. Bu olay hub 'ı daha sonra analiz mantığınızı uyguladığınız başka bir Stream Analytics iş için giriş olarak görev yapabilir. Bu olay hub 'ı İşinizdeki Bu çıktıyı yapılandırırken, Stream Analytics verilerinizi yeniden bölümleyeceğinize olan bölüm anahtarını belirtmeniz gerekir. 
 ```sql
+-- For compat level 1.2 or higher
 SELECT * 
 INTO output
 FROM input
-PARTITION BY DeviceID 
-INTO 10
+
+--For compat level 1.1 or lower
+SELECT *
+INTO output
+FROM input PARTITION BY PartitionId
+```
+
+### <a name="repartition-input-within-a-single-stream-analytics-job"></a>Girişi tek bir Stream Analytics işi içinde yeniden bölümleme
+Sorgumanızda, önce girişi yeniden bölümleyerek bir adım da oluşturabilirsiniz ve bu, daha sonra Sorgunuzdaki diğer adımlar tarafından kullanılabilir. Örneğin, bir girişi **DeviceID**'ye göre yeniden bölümlemek istiyorsanız sorgunuz şöyle olacaktır:
+```sql
+WITH RepartitionedInput AS 
+( 
+SELECT * 
+FROM input PARTITION BY DeviceID
+)
+
+SELECT DeviceID, AVG(Reading) as AvgNormalReading  
+INTO output
+FROM RepartitionedInput  
+GROUP BY DeviceId, TumblingWindow(minute, 1)  
 ```
 
 Aşağıdaki örnek sorgu, yeniden bölümlenmiş verilerin iki akışını birleştirir. Yeniden bölümlenmiş verilerin iki akışı birleştirilirken akışlar aynı bölüm anahtarına ve sayıya sahip olmalıdır. Sonuç, aynı bölüm düzenine sahip bir akıştır.
 
 ```sql
-WITH step1 AS (SELECT * FROM input1 PARTITION BY DeviceID INTO 10),
-step2 AS (SELECT * FROM input2 PARTITION BY DeviceID INTO 10)
+WITH step1 AS (SELECT * FROM input1 PARTITION BY DeviceID),
+step2 AS (SELECT * FROM input2 PARTITION BY DeviceID)
 
 SELECT * INTO output FROM step1 PARTITION BY DeviceID UNION step2 PARTITION BY DeviceID
 ```

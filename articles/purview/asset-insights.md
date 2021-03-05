@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 11/20/2020
-ms.openlocfilehash: ac93d835b8dbdd5a12d031825dcb879160df5e95
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: b9a207ffa14a18a5f4421fd21cebed28290b5ea6
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96575355"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102183089"
 ---
 # <a name="asset-insights-on-your-data-in-azure-purview"></a>Azure purview 'daki verilerinize ilişkin varlık öngörüleri
 
@@ -40,7 +40,7 @@ Daha fazla bilgi için bkz. [Azure purview 'ta veri kaynaklarını yönetme (Ön
 Azure purview ' de kaynak türlerini kaydedebilir ve tarayabilirsiniz. Tarama tamamlandıktan sonra varlık öngörüleri ' nde varlık dağıtımını görüntüleyerek, sınıflandırma ve kaynak kümelerine göre verilerinizin durumunu söylemiş olursunuz. Veri boyutunda herhangi bir değişiklik olup olmadığını da bildirir.
 
 > [!NOTE]
-> Kaynak türlerinizi taradıktan sonra, yeni varlıkları yansıtmak için varlık öngörülerini bir saate kadar verin.
+> Kaynak türlerinizi taradıktan sonra, yeni varlıkları yansıtmak için varlık öngörüleri 3-8 saatlere izin verin. Gecikme, dağıtım bölgesindeki veya iş yükünüzün boyutundaki yüksek trafikle kaynaklanıyor olabilir. Daha fazla bilgi için lütfen alan desteği ekibine başvurun.
 
 1. Azure portal Azure purview kaynağına gidin.
 
@@ -48,7 +48,7 @@ Azure purview ' de kaynak türlerini kaydedebilir ve tarayabilirsiniz. Tarama ta
 
    :::image type="content" source="./media/asset-insights/portal-access.png" alt-text="Azure portal Takiview 'ı başlatın":::
 
-1. Takip görünümü **giriş** sayfasında, Öngörüler alanına erişmek için **öngörüleri görüntüle** kutucuğunu seçin **Insights** :::image type="icon" source="media/asset-insights/ico-insights.png" border="false"::: .
+1. Takip görünümü **giriş** sayfasında, Öngörüler alanına erişmek için **öngörüleri görüntüle** kutucuğunu seçin  :::image type="icon" source="media/asset-insights/ico-insights.png" border="false"::: .
 
    :::image type="content" source="./media/asset-insights/view-insights.png" alt-text="Azure portal öngörülerinizi görüntüleyin":::
 
@@ -94,7 +94,7 @@ Varlık öngörülerine ait sonraki birkaç grafik dosya tabanlı kaynak türler
 
 1. Varlık listesini görmek için yolu seçin.
 
-Dosya tabanlı kaynak türlerindeki ikinci grafik, **_kaynak kümesi ile Ilişkilendirilmemiş dosyalardır_**. Tüm dosyaların bir kaynak kümesine toplaması beklendiğinde, bu grafik hangi varlıkların toplanmayacağını anlamanıza yardımcı olabilir. Eksik varlıklar, klasördeki yanlış dosya deseninin bir göstergesi olabilir. Dosyalar hakkında daha fazla bilgi görüntülemek için diğer grafiklerle aynı adımları izleyin.
+Dosya tabanlı kaynak türlerindeki ikinci grafik, ***kaynak kümesi ile Ilişkilendirilmemiş dosyalardır***. Tüm dosyaların bir kaynak kümesine toplaması beklendiğinde, bu grafik hangi varlıkların toplanmayacağını anlamanıza yardımcı olabilir. Eksik varlıklar, klasördeki yanlış dosya deseninin bir göstergesi olabilir. Dosyalar hakkında daha fazla bilgi görüntülemek için diğer grafiklerle aynı adımları izleyin.
 
    :::image type="content" source="./media/asset-insights/file-based-assets.png" alt-text="Dosya tabanlı varlıkları görüntüle":::  
 

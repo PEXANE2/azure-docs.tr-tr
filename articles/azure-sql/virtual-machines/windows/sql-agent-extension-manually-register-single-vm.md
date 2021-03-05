@@ -15,12 +15,12 @@ ms.date: 11/07/2020
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: devx-track-azurecli, devx-track-azurepowershell, contperf-fy21q2
-ms.openlocfilehash: 393d0c69201f87ad7c96bd2f9a1f9f57df512e31
-ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
+ms.openlocfilehash: 983cdab0c5f5b856537c661c7427a83099f30ed4
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97964533"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102181440"
 ---
 # <a name="register-sql-server-vm-with-sql-iaas-agent-extension"></a>SQL IaaS Aracısı Uzantısı ile SQL Server VM kaydetme
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -41,7 +41,7 @@ SQL IaaS Aracısı uzantısını kullanmak için öncelikle [aboneliğinizi **Mi
 > [!IMPORTANT]
 > SQL IaaS Aracısı uzantısı, Azure sanal makineler 'de SQL Server kullanırken müşterilere isteğe bağlı avantajlar vermek için veri toplar. Microsoft, bu verileri müşterinin öncelikli onayı olmadan lisanslama denetimleri için kullanmaz. Daha fazla bilgi için [SQL Server Gizlilik Eki](/sql/sql-server/sql-server-privacy#non-personal-data) ' ne bakın.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 SQL Server VM uzantıya kaydetmek için şunlar gerekir: 
 
@@ -54,7 +54,7 @@ SQL Server VM uzantıya kaydetmek için şunlar gerekir:
 
 SQL Server VM SQL IaaS Aracısı Uzantısı ile kaydetmek için öncelikle aboneliğinizi **Microsoft. SqlVirtualMachine** sağlayıcısıyla kaydetmeniz gerekir. Bu, SQL IaaS Aracısı uzantısının aboneliğinizdeki kaynakları oluşturma yeteneğini sağlar.  Azure portal, Azure CLı veya Azure PowerShell kullanarak bunu yapabilirsiniz.
 
-### <a name="azure-portal"></a>Azure portal
+### <a name="azure-portal"></a>Azure portalı
 
 1. Azure portal açın ve **tüm hizmetlere** gidin. 
 1. **Abonelikler** ' e gidin ve ilgilendiğiniz aboneliği seçin.  
@@ -193,11 +193,11 @@ Uzantıyı *hafif* modda kaydetmiş SQL Server VM 'ler, Azure Portal, Azure clı
 > SQL IaaS uzantısının yönetim modunu tam olarak yükselttiğinizde, SQL Server hizmeti başlatılır. Bazı durumlarda, yeniden başlatma SQL Server hizmetiyle ilişkili hizmet asıl adlarının (SPN 'Ler) yanlış Kullanıcı hesabına değişmesine neden olabilir. Yönetim modunu tam olarak yükselttikten sonra bağlantı sorunlarınız varsa, [SPN 'leri silin ve yeniden kaydettirin](/sql/database-engine/configure-windows/register-a-service-principal-name-for-kerberos-connections).
 
 
-### <a name="azure-portal"></a>Azure portal
+### <a name="azure-portal"></a>Azure portalı
 
 Azure portal kullanarak uzantıyı tam moda yükseltmek için aşağıdaki adımları izleyin: 
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 1. [SQL sanal makineler](manage-sql-vm-portal.md#access-the-sql-virtual-machines-resource) kaynağına gidin. 
 1. SQL Server VM seçin ve **genel bakış**' ı seçin. 
 1. NoAgent veya Lightweight IaaS modundaki sanal makineler SQL Server için, **SQL IaaS uzantı Iletisiyle tek lisans türünü seçin ve sürüm güncelleştirmelerini** seçin.
@@ -236,11 +236,11 @@ Uzantıyı tam moda yükseltmek için aşağıdaki Azure PowerShell kod parçac�
 ## <a name="verify-registration-status"></a>Kayıt durumunu doğrula
 SQL Server VM, Azure portal, Azure CLı veya Azure PowerShell kullanarak SQL IaaS Aracısı Uzantısı ile zaten kaydedilmiş olduğunu doğrulayabilirsiniz. 
 
-### <a name="azure-portal"></a>Azure portal 
+### <a name="azure-portal"></a>Azure portalı 
 
 Azure portal kullanarak kayıt durumunu doğrulamak için aşağıdaki adımları izleyin: 
 
-1. [Azure Portal](https://portal.azure.com) oturum açın. 
+1. [Azure portalında](https://portal.azure.com) oturum açın. 
 1. [SQL Server sanal](manage-sql-vm-portal.md)makinelerinize gidin.
 1. Listeden SQL Server VM seçin. SQL Server VM burada listelenmiyorsa, büyük olasılıkla SQL IaaS Aracısı uzantısına kayıtlı değildir. 
 1. **Durum** altındaki değeri görüntüleyin. **Durum** **başarılı** olursa SQL Server VM SQL IaaS Aracısı uzantısı başarıyla kaydedildi. 
@@ -278,7 +278,7 @@ SQL IaaS Aracısı Uzantısı ile SQL Server VM kaydını silmek için, Azure po
 
 Yönetim modunun tam olarak indirgenmesini sağlamak için SQL sanal makinesinin SQL IaaS Aracısı Uzantısı ile kaydının kaydı gereklidir. 
 
-### <a name="azure-portal"></a>Azure portal
+### <a name="azure-portal"></a>Azure portalı
 
 Azure portal kullanarak SQL Server VM uzantıdan kaydını silmek için şu adımları izleyin:
 
@@ -304,7 +304,7 @@ Azure portal kullanarak SQL Server VM uzantıdan kaydını silmek için şu adı
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Uzantınızın Azure CLı ile SQL Server VM kaydını silmek için [az SQL VM Delete](/cli/azure/sql/vm?view=azure-cli-latest&preserve-view=true#az-sql-vm-delete) komutunu kullanın. Bu işlem SQL Server VM *kaynağını* kaldırır ancak sanal makineyi silmez. 
+Uzantınızın Azure CLı ile SQL Server VM kaydını silmek için [az SQL VM Delete](/cli/azure/sql/vm#az-sql-vm-delete) komutunu kullanın. Bu işlem SQL Server VM *kaynağını* kaldırır ancak sanal makineyi silmez. 
 
 
 ```azurecli-interactive
