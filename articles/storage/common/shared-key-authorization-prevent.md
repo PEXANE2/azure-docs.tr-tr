@@ -6,15 +6,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 01/21/2021
+ms.date: 03/05/2021
 ms.author: tamram
 ms.reviewer: fryu
-ms.openlocfilehash: 944e233fafc4cf5c8c90041e18f94d0e53b7bb46
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 2ed6c0c20869e31c0ef664d15305c5aa85ca4c6c
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100591544"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102215587"
 ---
 # <a name="prevent-shared-key-authorization-for-an-azure-storage-account-preview"></a>Azure depolama hesabı (Önizleme) için paylaşılan anahtar yetkilendirmesini engelleyin
 
@@ -22,12 +22,8 @@ Azure depolama hesabına yönelik her güvenli isteği yetkilendirmelidir. Varsa
 
 Bir depolama hesabı için paylaşılan anahtar yetkilendirmesinin yetkisini kaldırdığınızda, Azure depolama, hesap erişim anahtarlarıyla yetkilendirilmiş olan bu hesaba yapılan tüm sonraki istekleri reddeder. Yalnızca Azure AD ile yetkilendirilmiş güvenli istekler başarılı olur. Azure AD kullanma hakkında daha fazla bilgi için bkz. [Azure Active Directory kullanarak bloblara ve kuyruklara erişim yetkisi verme](storage-auth-aad.md).
 
-> [!WARNING]
-> Azure depolama, yalnızca blob ve kuyruk depolaması istekleri için Azure AD yetkilendirmesini destekler. Bir depolama hesabı için paylaşılan anahtar ile yetkilendirmeye izin verirseniz, Azure dosyaları veya paylaşılan anahtar yetkilendirmesi kullanan tablo depolaması istekleri başarısız olur. Azure portal dosya ve tablo verilerine erişmek için her zaman paylaşılan anahtar yetkilendirmesi kullandığından, depolama hesabının paylaşılan anahtarıyla yetkilendirmenize izin verirseniz, Azure portal dosya veya tablo verilerine erişemezsiniz.
->
-> Microsoft, paylaşılan anahtar aracılığıyla hesaba erişime izin vermeden önce tüm Azure dosyalarını veya tablo depolama verilerini ayrı bir depolama hesabına geçirmenize veya bu ayarı Azure dosyalarını ya da tablo depolama iş yüklerini destekleyen depolama hesaplarına uygulamamanızı önerir.
->
-> Bir depolama hesabı için paylaşılan anahtar erişiminin izni vermemek, Azure dosyalarına SMB bağlantılarını etkilemez.
+> [!IMPORTANT]
+> Paylaşılan anahtar yetkilendirmesi Şu anda **Önizleme** aşamasındadır. Beta, önizleme veya henüz genel kullanıma sunulmayan Azure özelliklerine uygulanan yasal koşullara yönelik [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) 'na bakın.
 
 Bu makalede, paylaşılan anahtar yetkilendirmesi ile gönderilen isteklerin nasıl algılanacağı ve depolama hesabınız için paylaşılan anahtar yetkilendirmesinin nasıl düzeltileceği açıklanır. Önizlemeye nasıl kaydolacağınızı öğrenmek için [Önizleme hakkında](#about-the-preview)bölümüne bakın.
 
@@ -133,11 +129,23 @@ Azure portal bir depolama hesabı için paylaşılan anahtar yetkilendirmesi eng
 
     :::image type="content" source="media/shared-key-authorization-prevent/shared-key-access-portal.png" alt-text="Hesap için paylaşılan anahtar erişiminin nasıl engelileceğini gösteren ekran görüntüsü":::
 
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+
+PowerShell ile bir depolama hesabı için paylaşılan anahtar yetkilendirmesine izin vermemek için, [az. Storage PowerShell modülünü](https://www.powershellgallery.com/packages/Az.Storage), sürüm 3.4.0 veya üstünü yüklersiniz. Ardından, **Allowsharedkeyaccess** özelliğini yeni veya mevcut bir depolama hesabı için yapılandırın.
+
+Aşağıdaki örnek, PowerShell ile var olan bir depolama hesabı için paylaşılan anahtarla erişime nasıl izin vermemeyi gösterir. Köşeli ayraçlar içindeki yer tutucu değerlerini kendi değerlerinizle değiştirmeyi unutmayın:
+
+```powershell
+Set-AzStorageAccount -ResourceGroupName <resource-group> `
+    -AccountName <storage-account> `
+    -AllowSharedKeyAccess $false
+```
+
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 Azure CLı ile bir depolama hesabı için paylaşılan anahtar yetkilendirmesine izin vermemek için Azure CLı sürüm 2.9.1 veya sonraki bir sürümünü yüklemelisiniz. Daha fazla bilgi için bkz. [Azure CLI 'Yı yüklerken](/cli/azure/install-azure-cli). Ardından, **Allowsharedkeyaccess** özelliğini yeni veya mevcut bir depolama hesabı için yapılandırın.
 
-Aşağıdaki örnekte, **Allowsharedkeyaccess** ÖZELLIĞININ Azure CLI ile nasıl ayarlanacağı gösterilmektedir. Köşeli ayraçlar içindeki yer tutucu değerlerini kendi değerlerinizle değiştirmeyi unutmayın:
+Aşağıdaki örnek, Azure CLı ile var olan bir depolama hesabı için paylaşılan anahtarla erişime nasıl izin vermemeyi gösterir. Köşeli ayraçlar içindeki yer tutucu değerlerini kendi değerlerinizle değiştirmeyi unutmayın:
 
 ```azurecli-interactive
 $storage_account_id=$(az resource show \
@@ -232,16 +240,21 @@ Bazı Azure Araçları, Azure depolama 'ya erişmek için Azure AD yetkilendirme
 | AzCopy | BLOB depolama için desteklenir. AzCopy işlemlerini yetkilendirme hakkında daha fazla bilgi için bkz. AzCopy belgelerinde [Yetkilendirme kimlik bilgilerini nasıl sağlayacaksınız](storage-use-azcopy-v10.md#choose-how-youll-provide-authorization-credentials) . |
 | Azure Depolama Gezgini | Yalnızca BLOB depolama ve Azure Data Lake Storage 2. için desteklenir. Kuyruk depolamaya Azure AD erişimi desteklenmiyor. Doğru Azure AD kiracısını seçtiğinizden emin olun. Daha fazla bilgi için bkz. [Depolama Gezgini kullanmaya başlama](../../vs-azure-tools-storage-manage-with-storage-explorer.md?tabs=windows#sign-in-to-azure) |
 | Azure PowerShell | Destekleniyor. Azure AD ile blob veya kuyruk işlemleri için PowerShell komutlarının nasıl yetkilendirdiği hakkında daha fazla bilgi için bkz. blob verilerine erişmek için Azure [ad kimlik bilgileriyle PowerShell komutlarını çalıştırma](../blobs/authorize-data-operations-powershell.md) veya [kuyruk verilerine ERIŞIM için Azure AD kimlik bilgileriyle PowerShell komutlarını çalıştırma](../queues/authorize-data-operations-powershell.md). |
-| Azure CLI’si | Destekleniyor. Blob ve kuyruk verilerine erişim için Azure AD ile Azure CLı komutlarına yetki verme hakkında bilgi için bkz. [BLOB veya kuyruk verilerine erişmek için Azure AD kimlik bilgileriyle Azure CLI komutlarını çalıştırma](../blobs/authorize-data-operations-cli.md). |
+| Azure CLI | Destekleniyor. Blob ve kuyruk verilerine erişim için Azure AD ile Azure CLı komutlarına yetki verme hakkında bilgi için bkz. [BLOB veya kuyruk verilerine erişmek için Azure AD kimlik bilgileriyle Azure CLI komutlarını çalıştırma](../blobs/authorize-data-operations-cli.md). |
 | Azure IoT Hub | Destekleniyor. Daha fazla bilgi için bkz. [sanal ağlar için IoT Hub desteği](../../iot-hub/virtual-network-support.md). |
 | Azure Cloud Shell | Azure Cloud Shell, Azure portal tümleşik bir kabuktur. Azure Cloud Shell, depolama hesabındaki bir Azure dosya paylaşımında Kalıcılık için dosya barındırır. Bu depolama hesabı için paylaşılan anahtar yetkilendirmesi devre dışı bırakılırsa, bu dosyalar erişilemez duruma getirilir. Daha fazla bilgi için bkz. [Microsoft Azure dosyaları depolama alanınızı bağlama](../../cloud-shell/overview.md#connect-your-microsoft-azure-files-storage). <br /><br /> Paylaşılan anahtar erişimine izin verilmeyen depolama hesaplarını yönetmek için Azure Cloud Shell komutları çalıştırmak için, önce Azure RBAC aracılığıyla bu hesaplara gerekli izinleri vermiş olduğunuzdan emin olun. Daha fazla bilgi için bkz. [Azure rol tabanlı erişim denetimi (Azure RBAC) nedir?](../../role-based-access-control/overview.md). |
+
+## <a name="transition-azure-files-and-table-storage-workloads"></a>Azure dosyalarını ve tablo depolama iş yüklerini geçirme
+
+Azure depolama, yalnızca blob ve kuyruk depolaması istekleri için Azure AD yetkilendirmesini destekler. Bir depolama hesabı için paylaşılan anahtar ile yetkilendirmeye izin verirseniz, Azure dosyaları veya paylaşılan anahtar yetkilendirmesi kullanan tablo depolaması istekleri başarısız olur. Azure portal dosya ve tablo verilerine erişmek için her zaman paylaşılan anahtar yetkilendirmesi kullandığından, depolama hesabının paylaşılan anahtarıyla yetkilendirmenize izin verirseniz, Azure portal dosya veya tablo verilerine erişemezsiniz.
+
+Microsoft, paylaşılan anahtar aracılığıyla hesaba erişime izin vermeden önce tüm Azure dosyalarını veya tablo depolama verilerini ayrı bir depolama hesabına geçirmenize veya bu ayarı Azure dosyalarını ya da tablo depolama iş yüklerini destekleyen depolama hesaplarına uygulamamanızı önerir.
+
+Bir depolama hesabı için paylaşılan anahtar erişiminin izni vermemek, Azure dosyalarına SMB bağlantılarını etkilemez.
 
 ## <a name="about-the-preview"></a>Önizleme hakkında
 
 Paylaşılan anahtar yetkilendirmesinin önlenmesi için Önizleme, Azure genel bulutu 'nda bulunabilir. Yalnızca Azure Resource Manager dağıtım modelini kullanan depolama hesapları için desteklenir. Hangi depolama hesaplarının Azure Resource Manager dağıtım modelini kullanması hakkında daha fazla bilgi için bkz. [depolama hesabı türleri](storage-account-overview.md#types-of-storage-accounts).
-
-> [!IMPORTANT]
-> Bu Önizleme yalnızca üretim dışı kullanım için tasarlanmıştır.
 
 Önizleme, aşağıdaki bölümlerde açıklanan sınırlamaları içerir.
 

@@ -10,12 +10,12 @@ ms.devlang: java
 ms.topic: conceptual
 ms.date: 08/16/2019
 ms.custom: mqtt, devx-track-java
-ms.openlocfilehash: 36092e0bb7d0249837d2eaa7898e9231ecb5f5a9
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 3e98cfc2d8c7fb8d40c8565a1c620f123ce171ff
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92146991"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102217848"
 ---
 # <a name="schedule-and-broadcast-jobs-java"></a>İşleri zamanlama ve yayınlama (Java)
 
@@ -39,7 +39,7 @@ Bu yeteneklerin her biri hakkında daha fazla bilgi edinmek için bkz.:
 
 Bu öğretici şunların nasıl yapıldığını gösterir:
 
-* **Lockkapısı**adlı doğrudan bir yöntemi uygulayan bir cihaz uygulaması oluşturun. Ayrıca, cihaz uygulaması, arka uç uygulamasından istenen özellik değişikliklerini de alır.
+* **Lockkapısı** adlı doğrudan bir yöntemi uygulayan bir cihaz uygulaması oluşturun. Ayrıca, cihaz uygulaması, arka uç uygulamasından istenen özellik değişikliklerini de alır.
 
 * Birden çok cihazda **Lockkapısı** doğrudan yöntemini çağırmak için bir iş oluşturan bir arka uç uygulaması oluşturun. Başka bir iş, istenen özellik güncelleştirmelerini birden çok cihaza gönderir.
 
@@ -54,7 +54,7 @@ IoT Hub 'ınıza bağlanan, **Lockkapısı** doğrudan yöntemini uygulayan ve i
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-* [Java SE Development Kit 8](/java/azure/jdk/?view=azure-java-stable). JDK 8 için karşıdan yüklemeye ulaşmak üzere **uzun süreli destek** altında **Java 8** ' i seçtiğinizden emin olun.
+* [Java SE Development Kit 8](/java/azure/jdk/). JDK 8 için karşıdan yüklemeye ulaşmak üzere **uzun süreli destek** altında **Java 8** ' i seçtiğinizden emin olun.
 
 * [Maven 3](https://maven.apache.org/download.cgi)
 
@@ -88,7 +88,7 @@ Bu bölümde, aşağıdakileri yapmak için işleri kullanan bir Java konsol uyg
 
 Uygulamayı oluşturmak için:
 
-1. Geliştirme makinenizde **IoT-Java-Schedule-Jobs**adlı boş bir klasör oluşturun.
+1. Geliştirme makinenizde **IoT-Java-Schedule-Jobs** adlı boş bir klasör oluşturun.
 
 2. **IoT-Java-Schedule-Jobs** klasöründe, komut istemindeki aşağıdaki komutu kullanarak **Schedule-Jobs** adlı bir Maven projesi oluşturun. Bunun tek ve uzun bir komut olduğunu unutmayın:
 

@@ -10,18 +10,20 @@ ms.topic: conceptual
 ms.date: 01/20/2021
 ms.author: kgremban
 monikerRange: =iotedge-2018-06
-ms.openlocfilehash: ebe0ac1151f3a1f43072f2832e2f433182ccc82d
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.openlocfilehash: 9d6bb9da67f66f46e5c72d5d64b8b6c111c98e08
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98634368"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102215366"
 ---
-# <a name="what-is-azure-iot-edge-for-linux-on-windows-preview"></a>Windows 'da Linux için Azure IoT Edge nedir (Önizleme)
+# <a name="what-is-azure-iot-edge-for-linux-on-windows-preview"></a>Windows üzerinde Linux için Azure IoT Edge nedir (Önizleme)?
 
 Windows üzerinde Linux için Azure IoT Edge, Windows IoT dağıtımlarında Windows uygulamaları ile Kapsayıcılı Linux iş yüklerini çalıştırmanıza olanak sağlar. Windows IoT 'yi kullanan işletmeler, Edge cihazlarını güçlendirin ve Linux 'ta yerleşik olarak bulunan bulut Yerel analizler çözümlerinden faydalanabilir.
 
 Windows üzerinde Linux için IoT Edge, bir Windows cihazında Linux sanal makinesi çalıştırarak çalışır. Linux sanal makinesi, IoT Edge çalışma zamanına göre önceden yüklenmiş olarak gelir. Cihaza dağıtılan tüm IoT Edge modülleri sanal makine içinde çalışır. Bu arada, Windows konak cihazında çalışan Windows uygulamaları Linux sanal makinesinde çalışan modüllerle iletişim kurabilir.
+
+Önizlemeyi bugün [kullanmaya](how-to-install-iot-edge-on-windows.md) başlayın.
 
 >[!NOTE]
 >Lütfen IoT Edge arka planınızı ve hedeflerinize bağlı olarak Windows 'da Linux için Azure IoT Edge geliştirmemize yardımcı olmak üzere [ürün anketimizi](https://aka.ms/AzEFLOW-Registration) göz önünde bulundurun. Bu anketi Ayrıca, Windows bildirilerinde Linux için gelecekteki Azure IoT Edge kaydolmak üzere de kullanabilirsiniz.

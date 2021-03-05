@@ -6,15 +6,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 08/10/2020
+ms.date: 03/05/2021
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 4b25458cc934097b5477c174ae7ecc47762e2929
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2097c1743e07b5563bc75d3d1cce48aa11b98e5f
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91280309"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102216352"
 ---
 # <a name="enable-and-manage-soft-delete-for-containers-preview"></a>Kapsayıcılar için geçici silmeyi etkinleştirme ve yönetme (Önizleme)
 
@@ -23,6 +23,10 @@ Kapsayıcı geçici silme (Önizleme), verilerinizin yanlışlıkla veya yanlı�
 Verilerinizin yanlışlıkla bir uygulama veya başka bir depolama hesabı kullanıcısı tarafından değiştirilmesi veya silinmesi olasılığı varsa, Microsoft kapsayıcı geçici silme özelliğini etkinleştirmeyi önerir. Bu makalede, kapsayıcılar için geçici silmenin nasıl etkinleştirileceği gösterilmektedir. Önizlemeye kaydolma dahil olmak üzere kapsayıcı geçici silme hakkında daha fazla bilgi için bkz. [kapsayıcılar Için geçici silme (Önizleme)](soft-delete-container-overview.md).
 
 Microsoft, uçtan uca veri koruması için, Bloblar ve BLOB sürümü oluşturma için geçici silme özelliğini de etkinleştirmenizi önerir. Blob 'lar için geçici silme özelliğini etkinleştirmeyi öğrenmek için bkz. [Bloblar için geçici silmeyi etkinleştirme ve yönetme](soft-delete-blob-enable.md). Blob sürüm oluşturmayı nasıl etkinleştireceğinizi öğrenmek için bkz. [BLOB sürümü oluşturma](versioning-overview.md).
+
+> [!IMPORTANT]
+>
+> Kapsayıcı geçici silme Şu anda **Önizleme** aşamasındadır. Beta, önizleme veya henüz genel kullanıma sunulmayan Azure özelliklerine uygulanan yasal koşullara yönelik [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) 'na bakın.
 
 ## <a name="enable-container-soft-delete"></a>Kapsayıcı geçici silmeyi etkinleştir
 
@@ -33,21 +37,21 @@ Azure portal veya Azure Resource Manager şablonunu kullanarak istediğiniz zama
 Azure portal kullanarak depolama hesabınızda kapsayıcı geçici silme özelliğini etkinleştirmek için şu adımları izleyin:
 
 1. [Azure portalında](https://portal.azure.com/) depolama hesabınıza gidin.
-1. **BLOB hizmeti**altında **veri koruma** ayarlarını bulun.
-1. **Kapsayıcı geçici silme** özelliğini *etkin*olarak ayarlayın.
-1. **Bekletme ilkeleri**altında, geçici olarak silinen kapsayıcıların Azure depolama tarafından ne kadar süreyle korunacağını belirtin.
+1. **BLOB hizmeti** altında **veri koruma** ayarlarını bulun.
+1. **Kapsayıcı geçici silme** özelliğini *etkin* olarak ayarlayın.
+1. **Bekletme ilkeleri** altında, geçici olarak silinen kapsayıcıların Azure depolama tarafından ne kadar süreyle korunacağını belirtin.
 1. Yaptığınız değişiklikleri kaydedin.
 
 :::image type="content" source="media/soft-delete-container-enable/soft-delete-container-portal-configure.png" alt-text="Azure portal kapsayıcıda geçici silme özelliğini etkinleştirmeyi gösteren ekran görüntüsü":::
 
 # <a name="template"></a>[Şablon](#tab/template)
 
-Azure Resource Manager şablonuyla kapsayıcı geçici silmeyi etkinleştirmek için, **Containerdeleteretentionpolicy** özelliğini ayarlayan bir şablon oluşturun. Aşağıdaki adımlar Azure portal bir şablonun nasıl oluşturulacağını açıklamaktadır.
+Azure Resource Manager şablonuyla kapsayıcı geçici silmeyi etkinleştirmek için, **Containerdeleteretentionpolicy** özelliğini ayarlayan bir şablon oluşturun. Aşağıdaki adımlar Azure portal bir şablonun nasıl oluşturulacağını açıklamaktadır.
 
-1. Azure portal **kaynak oluştur**' u seçin.
-1.  **Market 'Te ara**' te, **şablon dağıtımı**yazın ve ardından **ENTER**tuşuna basın.
-1.  **Şablon dağıtımı**öğesini seçin, **Oluştur**' u seçin ve ardından **düzenleyicide kendi şablonunuzu oluştur**' u seçin.
-1. Şablon Düzenleyicisi 'nde aşağıdaki JSON öğesine yapıştırın.  `<account-name>`   Yer tutucusunu depolama hesabınızın adıyla değiştirin.
+1. Azure portal **kaynak oluştur**' u seçin.
+1. **Market 'Te ara**' te, **şablon dağıtımı** yazın ve ardından **ENTER** tuşuna basın.
+1. **Şablon dağıtımı** öğesini seçin, **Oluştur**' u seçin ve ardından **düzenleyicide kendi şablonunuzu oluştur**' u seçin.
+1. Şablon Düzenleyicisi 'nde aşağıdaki JSON öğesine yapıştırın. `<account-name>`Yer tutucusunu depolama hesabınızın adıyla değiştirin.
 
     ```json
     {
@@ -75,7 +79,7 @@ Azure Resource Manager şablonuyla kapsayıcı geçici silmeyi etkinleştirmek i
 
 1. Saklama süresini belirtin. Varsayılan değer 7 ' dir.
 1. Şablonu kaydedin.
-1. Hesabın kaynak grubunu belirtin ve ardından **Review + create**   şablonu dağıtmak ve kapsayıcı geçici silme özelliğini etkinleştirmek için gözden geçir + Oluştur düğmesini seçin.
+1. Hesabın kaynak grubunu belirtin ve ardından şablonu dağıtmak ve kapsayıcı geçici silme özelliğini etkinleştirmek için **gözden geçir + oluştur** düğmesini seçin.
 
 ## <a name="view-soft-deleted-containers"></a>Geçici olarak silinen kapsayıcıları görüntüleme
 
@@ -86,7 +90,7 @@ Azure portal geçici olarak silinen kapsayıcıları görüntülemek için aşa�
 1. Azure portal depolama hesabınıza gidin ve kapsayıcılarınızın listesini görüntüleyin.
 1. Silinen kapsayıcıları göster anahtarını listede silinen kapsayıcıları içerecek şekilde değiştirin.
 
-    :::image type="content" source="media/soft-delete-container-enable/soft-delete-container-portal-list.png" alt-text="Azure portal kapsayıcıda geçici silme özelliğini etkinleştirmeyi gösteren ekran görüntüsü":::
+    :::image type="content" source="media/soft-delete-container-enable/soft-delete-container-portal-list.png" alt-text="Azure portal geçici olarak silinen kapsayıcıları görüntülemeyi gösteren ekran görüntüsü":::
 
 ## <a name="restore-a-soft-deleted-container"></a>Geçici olarak silinen kapsayıcıyı geri yükleme
 
@@ -95,7 +99,7 @@ Geçici olarak silinen bir kapsayıcıyı ve içeriğini saklama dönemi içinde
 1. Azure portal depolama hesabınıza gidin ve kapsayıcılarınızın listesini görüntüleyin.
 1. Geri yüklemek istediğiniz kapsayıcının bağlam menüsünü görüntüleyin ve menüden **silmeyi geri al** ' ı seçin.
 
-    :::image type="content" source="media/soft-delete-container-enable/soft-delete-container-portal-restore.png" alt-text="Azure portal kapsayıcıda geçici silme özelliğini etkinleştirmeyi gösteren ekran görüntüsü":::
+    :::image type="content" source="media/soft-delete-container-enable/soft-delete-container-portal-restore.png" alt-text="Azure portal ' de geçici olarak silinen kapsayıcının nasıl geri yükleneceğini gösteren ekran görüntüsü":::
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 11/09/2020
 author: sayantanroy83
 ms.author: sroy
-ms.openlocfilehash: 9f798751065d4889569f4b798ac864342f3e54ef
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: d898efb44bb92151a5d044a6699a4efb70fa9390
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98934405"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102215740"
 ---
 # <a name="usage-dashboard-in-commercial-marketplace-analytics"></a>Ticari market analizinde Kullanım panosu
 
@@ -154,9 +154,9 @@ _**Tablo 1: veri koşullarının sözlüğü**_
 | NormalizedUsage | Normalleştirilmiş kullanım | Müşteri tarafından dağıtılan varlık tarafından tüketilen toplam normalleştirilmiş kullanım birimi.<br>Normalleştirilmiş kullanım saatleri, sanal makine çekirdekleri ([VM çekirdeği sayısı] x [saat ham kullanım]) için hesaba normalleştirilmiş kullanım saatleri olarak tanımlanır. "SHAREDCORE" olarak belirlenen VM 'Ler [VM çekirdeklerinin sayısı] çarpanı olarak 1/6 (veya 0,1666) kullanır. |
 | MeteredUsage | Tarifeli kullanım | Müşteri tarafından dağıtılan teklifle yapılandırılmış olan ölçümler tarafından tüketilen toplam kullanım birimleri. |
 | RawUsage | Ham kullanım | Müşteri tarafından dağıtılan varlık tarafından tüketilen toplam ham kullanım birimleri.<br>Ham kullanım saatleri, sanal makinelerin kullanım birimi açısından çalıştırıldığı zaman miktarı olarak tanımlanır. |
-| Tahmini genişletilmiş ücret (CC) | Müşteri para birimi cinsinden tahmini genişletilmiş ücret | Kullanımla ilişkili ücretleri belirtir. Sütun, Fiyat (CC) ve kullanım miktarının ürünüdür. |
-| Tahmini genişletilmiş ücret (PC) | Ödeme para birimi cinsinden tahmini genişletilmiş ücret | Kullanımla ilişkili ücretleri belirtir. Sütun, tahmini fiyat (PC) ve kullanım miktarının ürünüdür. |
-||||
+| Tahmini genişletilmiş ücret (CC) | Müşteri para birimi cinsinden tahmini genişletilmiş ücret | Kullanımla ilişkili ücretleri belirtir. Bu sütun fiyat (CC) ve ham kullanım ürünüdür. |
+| Tahmini genişletilmiş ücret (PC) | Ödeme para birimi cinsinden tahmini genişletilmiş ücret | Kullanımla ilişkili ücretleri belirtir. Sütun, tahmini fiyat (PC) ve ham kullanım ürünüdür. |
+|
 
 ### <a name="usage-page-filters"></a>Kullanım sayfası filtreleri
 

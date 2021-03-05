@@ -5,12 +5,12 @@ author: jakrams
 ms.author: jakras
 ms.date: 02/04/2020
 ms.topic: how-to
-ms.openlocfilehash: cfc10658463888e43ea1a24dfefd3f8939ec8ef7
-ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
+ms.openlocfilehash: 889c25fd1402c4438ff648afce64905de112c8db
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98762773"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102215553"
 ---
 # <a name="use-azure-blob-storage-for-model-conversion"></a>Model dönüştürmesi için Azure Blob depolamayı kullanma
 
@@ -28,7 +28,7 @@ ms.locfileid: "98762773"
 Depolama hesabı ve BLOB kapsayıcıları oluşturma, aşağıdaki araçlardan biriyle yapılabilir:
 
 - [Azure portalı](https://portal.azure.com)
-- [az komut satırı](/cli/azure/install-azure-cli?view=azure-cli-latest)
+- [az komut satırı](/cli/azure/install-azure-cli)
 - [Azure Depolama Gezgini](https://azure.microsoft.com/features/storage-explorer/)
 - SDK 'lar (C#, Python...)
 
@@ -52,7 +52,7 @@ Bir SAS URI 'SI aşağıdakilerden biri kullanılarak oluşturulabilir:
 
 - az PowerShell modülü
   - [örnek PowerShell betiklerine](../../samples/powershell-example-scripts.md) bakın
-- [az komut satırı](/cli/azure/install-azure-cli?view=azure-cli-latest)
+- [az komut satırı](/cli/azure/install-azure-cli)
 - [Azure Depolama Gezgini](https://azure.microsoft.com/features/storage-explorer/)
   - "paylaşılan erişim Imzasını al" kapsayıcısına sağ tıklama (okuma, giriş kapsayıcısı için erişimi listeleme, çıkış kapsayıcısı için yazma erişimi)
 - SDK 'lar (C#, Python...)

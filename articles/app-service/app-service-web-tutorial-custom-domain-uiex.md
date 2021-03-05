@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 08/25/2020
 ms.custom: mvc, seodec18
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 476a88e41382842d91859d319a571784bd6e9b49
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: ca1308c969227336bfb4970f7c5c77b9f2e0cc22
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101748287"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102216539"
 ---
 # <a name="tutorial-map-an-existing-custom-dns-name-to-azure-app-service"></a>Öğretici: mevcut bir özel DNS adını Azure App Service eşleme
 
@@ -27,6 +27,8 @@ Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 > * CNAME kaydı kullanarak joker bir etki alanı eşleyin.
 > * Varsayılan URL 'YI özel bir dizine yönlendirin.
 
+<hr/> 
+
 ## <a name="1-prepare-your-environment"></a>1. ortamınızı hazırlayın
 
 * [Bir App Service uygulaması oluşturun](./index.yml) veya başka bir öğretici için oluşturduğunuz bir uygulamayı kullanın.
@@ -34,18 +36,20 @@ Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 
     <details>
         <summary>DNS kayıtlarını düzenleyemem gerekir mi?</summary>
-        , GoDaddy gibi etki alanı sağlayıcınız için DNS kayıt defterine erişim gerektirir. Örneğin, contoso.com ve www.contoso.com için DNS girişleri eklemek için, contoso.com kök etki alanının DNS ayarlarını yapılandırabilmelisiniz.
+        , GoDaddy gibi etki alanı sağlayıcınız için DNS kayıt defterine erişim gerektirir. Örneğin, <code>contoso.com</code> ve <code>www.contoso.com</code> için DNS girdileri eklemek üzere <code>contoso.com</code> kök etki alanının DNS ayarlarını yapılandırabilmeniz gerekir.
     </details>
+
+<hr/> 
 
 ## <a name="2-prepare-the-app"></a>2. uygulamayı hazırlama
 
 Özel bir DNS adını bir uygulamayla eşlemek için, uygulamanın <abbr title="Uygulamanızı barındıran Web sunucusu grubunun konumunu, boyutunu ve özelliklerini belirtir.">App Service planı</abbr> ücretli bir katman olmalıdır (değil <abbr title="Uygulamanızın diğer uygulamalar dahil diğer uygulamalarla aynı VM 'lerde çalıştığı bir Azure App Service katmanı. Bu katman geliştirme ve test amaçlıdır.">**Ücretsiz (F1)**</abbr>). Daha fazla bilgi için bkz. [Azure App Service planına genel bakış](overview-hosting-plans.md).
 
-### <a name="sign-in-to-azure"></a>Azure'da oturum açma
+#### <a name="sign-in-to-azure"></a>Azure'da oturum açma
 
 [Azure Portal](https://portal.azure.com)açın ve Azure hesabınızla oturum açın.
 
-### <a name="select-the-app-in-the-azure-portal"></a>Azure portal uygulamayı seçin
+#### <a name="select-the-app-in-the-azure-portal"></a>Azure portal uygulamayı seçin
 
 1. **Uygulama hizmetleri**' ni arayıp seçin.
 
@@ -59,7 +63,7 @@ Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 
 <a name="checkpricing" aria-hidden="true"></a>
 
-### <a name="check-the-pricing-tier"></a>Fiyatlandırma katmanını denetleme
+#### <a name="check-the-pricing-tier"></a>Fiyatlandırma katmanını denetleme
 
 1. Uygulama sayfasının sol bölmesinde **Ayarlar** bölümüne gidin ve **ölçeği büyütme (App Service planı)** seçeneğini belirleyin.
 
@@ -73,7 +77,7 @@ Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 
 <a name="scaleup" aria-hidden="true"></a>
 
-### <a name="scale-up-the-app-service-plan"></a>App Service planının ölçeğini artırma
+#### <a name="scale-up-the-app-service-plan"></a>App Service planının ölçeğini artırma
 
 1. Ücretsiz olmayan katmanlardan birini seçin (**D1**, **B1**, **B2**, **B3** veya **Üretim** kategorisindeki herhangi bir katmanı). Ek seçenekler için **ek seçenekleri göster**' i seçin.
 
@@ -84,6 +88,8 @@ Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
    Aşağıdaki bildirimi gördüğünüzde, ölçeklendirme işlemi tamamlanmıştır.
 
    ![Ölçek işlemi onayını gösteren ekran görüntüsü.](./media/app-service-web-tutorial-custom-domain/scale-notification.png)
+
+<hr/> 
 
 <a name="cname" aria-hidden="true"></a>
 
@@ -98,14 +104,16 @@ Uygulamanıza özel bir etki alanı eklemek için etki alanı sağlayıcınızla
 
     <details>
         <summary>Buna neden ihtiyacım var?</summary>
-        Özel etki alanına etki alanı doğrulama kimlikleri eklemek, DNS girdilerinin tehlikellerini önleyebilir ve alt etki alanı devrallarından kaçınmanıza yardımcı olur. Daha önce bu doğrulama KIMLIĞI olmadan yapılandırdığınız özel etki alanları için, doğrulama KIMLIĞINI DNS kaydınızdan ekleyerek aynı riskten korumanız gerekir. Bu genel yüksek öneme sahip tehdit hakkında daha fazla bilgi için bkz. alt [etki alanı](../security/fundamentals/subdomain-takeover.md).
+        Özel etki alanına etki alanı doğrulama kimlikleri eklemek, DNS girdilerinin tehlikellerini önleyebilir ve alt etki alanı devrallarından kaçınmanıza yardımcı olur. Daha önce bu doğrulama KIMLIĞI olmadan yapılandırdığınız özel etki alanları için, doğrulama KIMLIĞINI DNS kaydınızdan ekleyerek aynı riskten korumanız gerekir. Bu genel yüksek öneme sahip tehdit hakkında daha fazla bilgi için bkz. alt <a href="/azure/security/fundamentals/subdomain-takeover">etki alanı</a>.
     </details>
     
 <a name="info"></a>
 
-3. * * (Yalnızca bir kayıt) * * <abbr title="DNS 'deki bir adres kaydı, ana bilgisayar adını bir IP adresiyle eşleştirir.">A kaydı</abbr>, uygulamanın dış IP adresine sahip olmanız gerekir. **Özel etki alanları** sayfasında, **IP adresi** değerini kopyalayın.
+3. **(Yalnızca bir kayıt)** Eşlemek için <abbr title="DNS 'deki bir adres kaydı, ana bilgisayar adını bir IP adresiyle eşleştirir.">A kaydı</abbr>, uygulamanın dış IP adresine sahip olmanız gerekir. **Özel etki alanları** sayfasında, **IP adresi** değerini kopyalayın.
 
    ![Bir Azure uygulamasına Portal gezintisi gösteren ekran görüntüsü.](./media/app-service-web-tutorial-custom-domain/mapping-information.png)
+
+<hr/> 
 
 ## <a name="4-create-the-dns-records"></a>4. DNS kayıtlarını oluşturma
 
@@ -148,52 +156,71 @@ Uygulamanıza özel bir etki alanı eklemek için etki alanı sağlayıcınızla
 
 İçindeki gibi bir alt etki alanı için `www` `www.contoso.com` aşağıdaki tabloya göre iki kayıt oluşturun:
 
-    | Kayıt türü | Ana bilgisayar | Değer | Yorumlar |
-    | - | - | - |
-    | CNAME | `<subdomain>` (örneğin, `www` ) | `<app-name>.azurewebsites.net` | Etki alanı eşlemesi. |
-    | TXT | `asuid.<subdomain>` (örneğin, `asuid.www` ) | [Daha önce aldığınız doğrulama KIMLIĞI](#3-get-a-domain-verification-id) | App Service, `asuid.<subdomain>` özel etki alanının sahipliğini doğrulamak için txt kaydına erişir. |
-    
-    ![Screenshot that shows the portal navigation to an Azure app.](./media/app-service-web-tutorial-custom-domain/cname-record.png)
+| Kayıt türü | Ana bilgisayar | Değer | Yorumlar |
+| - | - | - |
+| CNAME | `<subdomain>` (örneğin, `www` ) | `<app-name>.azurewebsites.net` | Etki alanı eşlemesi. |
+| TXT | `asuid.<subdomain>` (örneğin, `asuid.www` ) | [Daha önce aldığınız doğrulama KIMLIĞI](#3-get-a-domain-verification-id) | App Service, `asuid.<subdomain>` özel etki alanının sahipliğini doğrulamak için txt kaydına erişir. |
+
+![Bir Azure uygulamasına Portal gezintisi gösteren ekran görüntüsü.](./media/app-service-web-tutorial-custom-domain/cname-record.png)
     
 # <a name="a"></a>[A](#tab/a)
 
 Gibi bir kök etki alanı için `contoso.com` aşağıdaki tabloya göre iki kayıt oluşturun:
 
-    | Kayıt türü | Ana bilgisayar | Değer | Yorumlar |
-    | - | - | - |
-    | A | `@` | [Uygulamanın IP adresini kopyalama](#3-get-a-domain-verification-id) bölümünden IP adresi | Etki alanı eşlemesi ( `@` genellikle kök etki alanını temsil eder). |
-    | TXT | `asuid` | [Daha önce aldığınız doğrulama KIMLIĞI](#3-get-a-domain-verification-id) | App Service, `asuid.<subdomain>` özel etki alanının sahipliğini doğrulamak için txt kaydına erişir. Kök etki alanı için kullanın `asuid` . |
-    
-    ![Screenshot that shows a DNS records page.](./media/app-service-web-tutorial-custom-domain/a-record.png)
+| Kayıt türü | Ana bilgisayar | Değer | Yorumlar |
+| - | - | - |
+| A | `@` | [Uygulamanın IP adresini kopyalama](#3-get-a-domain-verification-id) bölümünden IP adresi | Etki alanı eşlemesi ( `@` genellikle kök etki alanını temsil eder). |
+| TXT | `asuid` | [Daha önce aldığınız doğrulama KIMLIĞI](#3-get-a-domain-verification-id) | App Service, `asuid.<subdomain>` özel etki alanının sahipliğini doğrulamak için txt kaydına erişir. Kök etki alanı için kullanın `asuid` . |
 
-    <details>
-    <summary>What if I want to map a subdomain with an A record?</summary>
-    To map a subdomain like `www.contoso.com` with an A record instead of a recommended CNAME record, your A record and TXT record should look like the following table instead:
+![DNS kayıtları sayfasını gösteren ekran görüntüsü.](./media/app-service-web-tutorial-custom-domain/a-record.png)
 
-    | Kayıt türü | Ana bilgisayar | Değer |
-    | - | - | - |
-    | A | `<subdomain>` (örneğin, `www` ) | [Uygulamanın IP adresini kopyalama](#info) bölümünden IP adresi |
-    | TXT | `asuid.<subdomain>` (örneğin, `asuid.www` ) | [Daha önce aldığınız doğrulama KIMLIĞI](#3-get-a-domain-verification-id) |
-    </details>
-    
+<details>
+<summary>Bir alt etki alanını A kaydıyla eşlemek istersem ne yapmalıyım?</summary>
+Bir alt etki alanını `www.contoso.com` ÖNERILEN CNAME kaydı yerine a kaydıyla eşlemek için, bir kaydınız ve txt kaydınız bunun yerine aşağıdaki tablo gibi görünmelidir:
+
+<div class="table-scroll-wrapper"><table class="table"><caption class="visually-hidden">Tablo 3</caption>
+<thead>
+<tr>
+<th>Kayıt türü</th>
+<th>Ana bilgisayar</th>
+<th>Değer</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A</td>
+<td><code>&lt;subdomain&gt;</code> (örneğin, <code>www</code> )</td>
+<td><a href="#info" data-linktype="self-bookmark">Uygulamanın IP adresini kopyalama</a> bölümünden IP adresi</td>
+</tr>
+<tr>
+<td>TXT</td>
+<td><code>asuid.&lt;subdomain&gt;</code> (örneğin, <code>asuid.www</code> )</td>
+<td><a href="#3-get-a-domain-verification-id" data-linktype="self-bookmark">Daha önce aldığınız doğrulama KIMLIĞI</a></td>
+</tr>
+</tbody>
+</table></div>
+</details>
+
 # <a name="wildcard-cname"></a>[Joker karakter (CNAME)](#tab/wildcard)
 
 İçindeki gibi bir joker karakter adı için `*` `*.contoso.com` aşağıdaki tabloya göre iki kayıt oluşturun:
 
-    | Kayıt türü | Ana bilgisayar | Değer | Yorumlar |
-    | - | - | - |
-    | CNAME | `*` | `<app-name>.azurewebsites.net` | Etki alanı eşlemesi. |
-    | TXT | `asuid` | [Daha önce aldığınız doğrulama KIMLIĞI](#3-get-a-domain-verification-id) | App Service, `asuid` özel etki alanının sahipliğini doğrulamak için txt kaydına erişir. |
-    
-    ![Screenshot that shows the navigation to an Azure app.](./media/app-service-web-tutorial-custom-domain/cname-record-wildcard.png)
-    
----
+| Kayıt türü | Ana bilgisayar | Değer | Yorumlar |
+| - | - | - |
+| CNAME | `*` | `<app-name>.azurewebsites.net` | Etki alanı eşlemesi. |
+| TXT | `asuid` | [Daha önce aldığınız doğrulama KIMLIĞI](#3-get-a-domain-verification-id) | App Service, `asuid` özel etki alanının sahipliğini doğrulamak için txt kaydına erişir. |
 
-    <details>
-        <summary>My changes are erased after I leave the page.</summary>
-        For certain providers, such as GoDaddy, changes to DNS records don't become effective until you select a separate **Save Changes** link.
-    </details>
+![Bir Azure uygulamasına gezinmeyi gösteren ekran görüntüsü.](./media/app-service-web-tutorial-custom-domain/cname-record-wildcard.png)
     
+-----
+
+<details>
+<summary>Sayfadan ayrıldıktan sonra değişikliklerimi silinir.</summary>
+<p>GoDaddy gibi bazı sağlayıcılarda, DNS kayıtlarında yapılan değişiklikler ayrı bir <strong>Değişiklikleri Kaydet</strong> bağlantısı seçilene kadar geçerlilik kazanmaz.</p>
+</details>
+
+<hr/>
+
 ## <a name="5-enable-the-mapping-in-your-app"></a>5. uygulamanızda eşlemeyi etkinleştirin
 
 1. Azure portal uygulama sayfasının sol bölmesinde **özel etki alanları**' nı seçin.
@@ -273,8 +300,10 @@ Gibi bir kök etki alanı için `contoso.com` aşağıdaki tabloya göre iki kay
         Özel etki alanınız için bir uyarı etiketi henüz bir TLS/SSL sertifikasına bağlanmamış demektir. Bir tarayıcıdan özel etki alanınızı HTTPS istekleri, tarayıcıya bağlı olarak bir hata veya uyarı alır. TLS bağlama eklemek için, bkz. <a href="https://docs.microsoft.com/azure/app-service/configure-ssl-bindings">Azure App Service BIR TLS/SSL bağlaması ile özel BIR DNS adını güvenli hale getirme</a>.
     </details>
 
----
-    
+-----
+
+<hr/> 
+
 ## <a name="6-test-in-a-browser"></a>6. bir tarayıcıda test etme
 
 Daha önce yapılandırdığınız DNS adlarına gidin.
@@ -290,9 +319,13 @@ Daha önce yapılandırdığınız DNS adlarına gidin.
 </ul>
 </details>
 
+<hr/> 
+
 ## <a name="migrate-an-active-domain"></a>Etkin bir etki alanını geçirme
 
 Canlı siteyi ve onun DNS etki alanı adını hiçbir kesinti olmadan App Service'e geçirmek için, bkz. [Etkin DNS adını Azure App Service'e geçirme](manage-custom-dns-migrate-domain.md).
+
+<hr/> 
 
 <a name="virtualdir" aria-hidden="true"></a>
 
@@ -313,11 +346,13 @@ Bu, yaygın bir senaryo olsa da aslında özel etki alanı eşlemesi içermez, a
 
 1. İşlem bittikten sonra, tarayıcıda uygulamanızın kök yoluna (örneğin, veya) giderek emin olun `http://contoso.com` `http://<app-name>.azurewebsites.net` .
 
+<hr/> 
+
 ## <a name="automate-with-scripts"></a>Betiklerle otomatikleştirme
 
 [Azure CLI](/cli/azure/install-azure-cli) veya [Azure PowerShell](/powershell/azure/)kullanarak betiklerle özel etki alanlarının yönetimini otomatik hale getirebilirsiniz.
 
-### <a name="azure-cli"></a>Azure CLI
+#### <a name="azure-cli"></a>Azure CLI
 
 Aşağıdaki komut, App Service uygulamasına özel bir DNS adı yapılandırır.
 
@@ -330,7 +365,7 @@ az webapp config hostname add \
 
 Daha fazla bilgi için bkz. [Özel bir etki alanını web uygulamasıyla eşleme](scripts/cli-configure-custom-domain.md).
 
-### <a name="azure-powershell"></a>Azure PowerShell
+#### <a name="azure-powershell"></a>Azure PowerShell
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -344,6 +379,8 @@ Set-AzWebApp `
 ```
 
 Daha fazla bilgi için bkz. [Özel bir etki alanını web uygulamasına atama](scripts/powershell-configure-custom-domain.md).
+
+<hr/> 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

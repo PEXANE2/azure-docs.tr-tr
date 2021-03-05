@@ -7,25 +7,25 @@ ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.custom: mvc, devx-track-azurecli
 ms.date: 07/30/2020
-ms.openlocfilehash: e66edb1325d1c603e89f877f1d34f60c136eb1db
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: a4553ceee482fb232e9ab56deca650be93f9dc6b
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92740725"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102218052"
 ---
 # <a name="azure-cli-script-sample---create-a-logic-app"></a>Azure CLı betik örneği-mantıksal uygulama oluşturma
 
-Bu betik, () [Azure clı Logic Apps uzantısı](/cli/azure/ext/logic/logic?view=azure-cli-latest)aracılığıyla bir örnek mantıksal uygulama oluşturur `az logic` . Azure CLı aracılığıyla mantıksal uygulamalar oluşturmaya ve yönetmeye yönelik ayrıntılı bir kılavuz için bkz. [Azure CLI için Logic Apps hızlı](quickstart-logic-apps-azure-cli.md)başlangıcı.
+Bu betik, () [Azure clı Logic Apps uzantısı](/cli/azure/ext/logic/logic)aracılığıyla bir örnek mantıksal uygulama oluşturur `az logic` . Azure CLı aracılığıyla mantıksal uygulamalar oluşturmaya ve yönetmeye yönelik ayrıntılı bir kılavuz için bkz. [Azure CLI için Logic Apps hızlı](quickstart-logic-apps-azure-cli.md)başlangıcı.
 
 > [!WARNING]
-> Azure CLı Logic Apps uzantısı Şu anda *deneysel* ve *müşteri desteği kapsamında değil* . Özellikle uzantıyı üretim ortamlarında kullanmayı seçerseniz, bu CLı uzantısını dikkatle kullanın.
+> Azure CLı Logic Apps uzantısı Şu anda *deneysel* ve *müşteri desteği kapsamında değil*. Özellikle uzantıyı üretim ortamlarında kullanmayı seçerseniz, bu CLı uzantısını dikkatle kullanın.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Etkin aboneliği olan bir Azure hesabı. Azure aboneliğiniz yoksa [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-* Yerel bilgisayarınızda yüklü olan [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) .
-* Bilgisayarınızda yüklü [Logic Apps Azure CLI uzantısı](/cli/azure/azure-cli-extensions-list?view=azure-cli-latest) . Bu uzantıyı yüklemek için şu komutu kullanın: `az extension add --name logic`
+* Yerel bilgisayarınızda yüklü olan [Azure CLI](/cli/azure/install-azure-cli) .
+* Bilgisayarınızda yüklü [Logic Apps Azure CLI uzantısı](/cli/azure/azure-cli-extensions-list) . Bu uzantıyı yüklemek için şu komutu kullanın: `az extension add --name logic`
 * Mantıksal uygulamanız için bir [iş akışı tanımı](quickstart-logic-apps-azure-cli.md#workflow-definition) . Bu JSON dosyası [Iş akışı Tanım Dili şemasına](logic-apps-workflow-definition-language.md)uymalıdır.
 * Mantıksal uygulamanızla aynı kaynak grubundaki desteklenen bir [Logic Apps Bağlayıcısı](../connectors/apis-list.md) aracılığıyla bir e-posta HESABıNA yönelik API bağlantısı. Bu örnek [Office 365 Outlook](../connectors/connectors-create-api-office365-outlook.md) bağlayıcısını kullanır, ancak [Outlook.com](../connectors/connectors-create-api-outlook.md)gibi diğer bağlayıcıları de kullanabilirsiniz.
 
@@ -35,9 +35,9 @@ Başlamadan önce ortamınızı doğrulayın:
 
 * Azure portal oturum açın ve ' i çalıştırarak aboneliğinizin etkin olduğunu denetleyin `az login` .
 
-* Çalıştıran bir Terminal veya komut penceresinde Azure CLı sürümünüzü denetleyin `az --version` . En son sürüm için bkz. [en son sürüm notları](/cli/azure/release-notes-azure-cli?tabs=azure-cli&view=azure-cli-latest).
+* Çalıştıran bir Terminal veya komut penceresinde Azure CLı sürümünüzü denetleyin `az --version` . En son sürüm için bkz. [en son sürüm notları](/cli/azure/release-notes-azure-cli).
 
-  * En son sürüme sahip değilseniz, [işletim sisteminiz veya platformunuzun yükleme kılavuzunu](/cli/azure/install-azure-cli?view=azure-cli-latest)izleyerek yüklemenizi güncelleştirin.
+  * En son sürüme sahip değilseniz, [işletim sisteminiz veya platformunuzun yükleme kılavuzunu](/cli/azure/install-azure-cli)izleyerek yüklemenizi güncelleştirin.
 
 ### <a name="sample-workflow-explanation"></a>Örnek iş akışı açıklaması
 
@@ -197,12 +197,12 @@ Bu örnek betik, yeni bir kaynak grubu ve mantıksal uygulama oluşturmak için 
 
 | Komut | Notlar |
 | ------- | ----- |
-| [`az group create`](/cli/azure/group?view=azure-cli-latest#az-group-create) | Mantıksal uygulamanızın kaynaklarından depolandığı bir kaynak grubu oluşturur. |
-| [`az logic workflow create`](/cli/azure/ext/logic/logic/workflow?view=azure-cli-latest#ext-logic-az-logic-workflow-create) | Parametresinde tanımlanan iş akışını temel alan bir mantıksal uygulama oluşturur `--definition` . |
-| [`az group delete`](/cli/azure/vm/extension?view=azure-cli-latest) | Bir kaynak grubunu ve tüm iç içe geçmiş kaynaklarını siler. |
+| [`az group create`](/cli/azure/group#az-group-create) | Mantıksal uygulamanızın kaynaklarından depolandığı bir kaynak grubu oluşturur. |
+| [`az logic workflow create`](/cli/azure/ext/logic/logic/workflow#ext-logic-az-logic-workflow-create) | Parametresinde tanımlanan iş akışını temel alan bir mantıksal uygulama oluşturur `--definition` . |
+| [`az group delete`](/cli/azure/vm/extension) | Bir kaynak grubunu ve tüm iç içe geçmiş kaynaklarını siler. |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure CLı hakkında daha fazla bilgi için bkz. [Azure CLI belgeleri](/cli/azure/?view=azure-cli-latest).
+Azure CLı hakkında daha fazla bilgi için bkz. [Azure CLI belgeleri](/cli/azure/).
 
 [Microsoft 'un kod örnekleri tarayıcısında](/samples/browse/?products=azure-logic-apps)daha fazla Logic Apps CLI betik örneği bulabilirsiniz.

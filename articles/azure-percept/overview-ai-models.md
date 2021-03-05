@@ -7,12 +7,12 @@ ms.service: azure-percept
 ms.topic: conceptual
 ms.date: 02/16/2021
 ms.custom: template-concept
-ms.openlocfilehash: 8a9ed564012e8b530436152d931f5a5f6470ff98
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.openlocfilehash: d0cdabb3b22d642a7903810181106b09c549e1a2
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102098375"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102218171"
 ---
 # <a name="azure-percept-ai-models"></a>Azure Percept AI modelleri
 
@@ -29,9 +29,9 @@ Azure Percept Studio, aşağıdaki uygulamalar için örnek modeller içerir:
 
 Önceden eğitilen modeller sayesinde, kodlama veya eğitim veri koleksiyonu gerekmez. İstediğiniz modeli portalda Azure Percept DK 'ye dağıtmanız yeterlidir ve devkit 'in video akışını açarak model ınkıt 'in işlem içinde olduğunu görürsünüz. Model ınmetriyle sınırlama telemetrisine [Azure IoT gezgin](https://github.com/Azure/azure-iot-explorer/releases) aracı üzerinden de erişilebilir.
 
-## <a name="pre-built-solutions"></a>Önceden oluşturulmuş çözümler
+## <a name="reference-solutions"></a>Başvuru çözümleri
 
-[Herkes için önceden oluşturulmuş bir uzamsal analiz çözümü](https://github.com/george-moore/Santa-Cruz-AI-App) de mevcuttur. Önceden oluşturulmuş çözüm, Kullanıcı tanımlı bölge giriş/çıkış olayları ile, Edge tabanlı kişiler sağlayan açık kaynaklı bir AI uygulamasıdır. Şirket içi sınır cihazından alınan video ve AI çıkışı, Azure Web sitesi olarak çalışan kullanıcı arabirimiyle [Azure Data Lake](https://azure.microsoft.com/solutions/data-lake/). AI ınsıya özellikleri, insanlar algılaması için açık kaynaklı bir AI modeliyle sağlanır.
+Bir [kişi sayma başvuru çözümü](https://github.com/microsoft/Azure-Percept-Reference-Solutions/tree/main/people-detection-app) de mevcuttur. Bu başvuru çözümü, Kullanıcı tanımlı bölge giriş/çıkış olayları ile, Edge tabanlı kişiler sağlayan açık kaynaklı bir AI uygulamasıdır. Şirket içi sınır cihazından alınan video ve AI çıkışı, Azure Web sitesi olarak çalışan kullanıcı arabirimiyle [Azure Data Lake](https://azure.microsoft.com/solutions/data-lake/). AI ınsıya özellikleri, insanlar algılaması için açık kaynaklı bir AI modeliyle sağlanır.
 
 :::image type="content" source="./media/overview-ai-models/people-detector.gif" alt-text="Uzamsal analiz önceden oluşturulmuş çözüm GIF 'i.":::
 

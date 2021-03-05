@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: troubleshooting
 ms.date: 07/08/2020
-ms.openlocfilehash: d51de526205e8ef663dcfd682ec5858e4bc2f645
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: 719dcecf3091e03fbcbe6a82d4c618f54243c4e1
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 03/05/2021
-ms.locfileid: "102183990"
+ms.locfileid: "102215349"
 ---
 # <a name="status-of-migration-scenarios-supported-by-azure-database-migration-service"></a>Azure veritabanı geçiş hizmeti tarafından desteklenen geçiş senaryolarının durumu
 
@@ -83,9 +83,12 @@ Aşağıdaki tabloda, çevrimiçi geçişler için Azure veritabanı geçiş hiz
 | **PostgreSQL için Azure DB-tek sunucu** | PostgreSQL | ✔ | GA |
 |   | PostgreSQL için Azure DB-tek sunucu | ✔ | GA |
 |   | RDS PostgreSQL | ✔ | GA |
-|   | Oracle | ✔ | Genel Önizleme |
+|   | Oracle | ✔ | Genel Önizleme (1 Mayıs 2021 ' den sonra kullanım dışı olacak şekilde) |
 | **PostgreSQL için Azure DB-Hyperscale (Citus)** | PostgreSQL | ✔ | GA |
 |   | RDS PostgreSQL | ✔ | GA |
+
+> [!IMPORTANT]
+> "PostgreSQL için Oracle 'dan Azure veritabanı" geçiş senaryosu (Şu anda önizleme aşamasındadır) 1 Mayıs 2021 ' den sonra kullanılamayacak. Alternatif araç (örneğin, Ora2pg) aracılığıyla destek sağlamaya devam edeceğiz ve Oracle to PostgreSQL geçişleri için en iyi geçiş deneyimini sağlar. En iyi geçiş yöntemleri için bkz. [PostgreSQL için Oracle 'a Azure veritabanı geçiş Kılavuzu] ( https://aka.ms/OracletoPGguide) .
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

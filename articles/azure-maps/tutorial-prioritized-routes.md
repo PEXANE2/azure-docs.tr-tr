@@ -9,16 +9,16 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc, devx-track-js
-ms.openlocfilehash: dbf2331dc6bcd3187175554b61d347e8bb2c04a4
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: 5e7f38e4bbc95e04bf54f8f7a2dd80e21891e8df
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98625007"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102215502"
 ---
 # <a name="tutorial-find-and-display-routes-for-different-modes-of-travel-using-azure-maps"></a>Öğretici: Azure Maps kullanarak farklı seyahat modları için yolları bulma ve görüntüleme
 
-Bu öğreticide, kargo türü ile hem özel araçlar hem de ticari araçlar (structuralks) için yol yönlerini göstermek üzere Azure Maps [route hizmeti](/rest/api/maps/route) ve [harita denetimi](./how-to-use-map-control.md) 'nin nasıl kullanılacağı gösterilmektedir `USHazmatClass2` . Ayrıca, bir haritadaki gerçek zamanlı trafik verilerini görselleştirirken size kılavuzluk ederiz. Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
+Bu öğreticide, kargo türü ile hem özel araçlar hem de ticari araçlar (structuralks) için yol yönlerini göstermek üzere Azure Maps [route hizmeti](/rest/api/maps/route) ve [harita denetimi](./how-to-use-map-control.md) 'nin nasıl kullanılacağı gösterilmektedir `USHazmatClass2` . Ayrıca, bir haritadaki gerçek zamanlı trafik verilerini görselleştirirken size kılavuzluk ederiz. Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * Harita denetimini bir Web sayfasında oluşturma ve görüntüleme
@@ -117,7 +117,7 @@ Aşağıdaki adımlarda, harita denetiminin bir Web sayfasında nasıl oluşturu
     });
     ```
 
-    Map `ready` olay işleyicisinde, haritadaki trafik akışı ayarı `relative` , boş akışa göre yolun hızı olan olarak ayarlanır. Daha fazla trafik seçeneği için bkz. [TrafficOptions Interface](/javascript/api/azure-maps-control/atlas.trafficoptions?preserve-view=false&view=azure-maps-typescript-latest).
+    Map `ready` olay işleyicisinde, haritadaki trafik akışı ayarı `relative` , boş akışa göre yolun hızı olan olarak ayarlanır. Daha fazla trafik seçeneği için bkz. [TrafficOptions Interface](/javascript/api/azure-maps-control/atlas.trafficoptions).
 
 2. **MapTruckRoute.html** dosyasını kaydedin ve tarayıcınızın sayfasını yenileyin. Los Angeles gibi herhangi bir şehirde yakınlaştırırsanız, Streets 'in geçerli trafik akışı verileriyle birlikte göründüğünü görürsünüz.
 
@@ -193,7 +193,7 @@ Bu öğreticide iki rota hesaplanacak ve haritada işlenecektir. İlk yol özel 
 
     Bu kod, daha sonra veri kaynağına eklenen başlangıç ve bitiş noktalarını temsil eden iki [coğrafi JSON noktası nesnesi](https://en.wikipedia.org/wiki/GeoJSON) oluşturur.
 
-    Son kod bloğu, başlangıç ve bitiş noktalarının Enlem ve boylasını kullanarak kamera görünümünü ayarlar. Başlangıç ve bitiş noktaları veri kaynağına eklenir. Başlangıç ve bitiş noktaları için sınırlayıcı kutu, `atlas.data.BoundingBox.fromData` işlevi kullanılarak hesaplanır. Bu sınırlama kutusu, işlevi kullanarak tüm yol üzerinde harita kameralarının görünümünü ayarlamak için kullanılır `map.setCamera` . Sembol simgelerinin piksel boyutlarını dengelemek için doldurma eklenir. Harita denetiminin setCamera özelliği hakkında daha fazla bilgi için bkz. [setcamera (CameraOptions | CameraBoundsOptions & AnimationOptions)](/javascript/api/azure-maps-control/atlas.map?view=azure-maps-typescript-latest#setcamera-cameraoptions---cameraboundsoptions---animationoptions-&preserve-view=false) özelliği.
+    Son kod bloğu, başlangıç ve bitiş noktalarının Enlem ve boylasını kullanarak kamera görünümünü ayarlar. Başlangıç ve bitiş noktaları veri kaynağına eklenir. Başlangıç ve bitiş noktaları için sınırlayıcı kutu, `atlas.data.BoundingBox.fromData` işlevi kullanılarak hesaplanır. Bu sınırlama kutusu, işlevi kullanarak tüm yol üzerinde harita kameralarının görünümünü ayarlamak için kullanılır `map.setCamera` . Sembol simgelerinin piksel boyutlarını dengelemek için doldurma eklenir. Harita denetiminin setCamera özelliği hakkında daha fazla bilgi için bkz. [setcamera (CameraOptions | CameraBoundsOptions & AnimationOptions)](/javascript/api/azure-maps-control/atlas.map#setcamera-cameraoptions---cameraboundsoptions---animationoptions-) özelliği.
 
 3. **TruckRoute.html** 'yi kaydedin ve tarayıcınızı yenileyin. Eşleme artık Seattle üzerinden ortalanır. Teardrop mavi pin başlangıç noktasını işaretler. Yuvarlak mavi pin bitiş noktasını işaretler.
 

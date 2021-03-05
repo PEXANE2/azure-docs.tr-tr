@@ -10,12 +10,12 @@ ms.devlang: java
 ms.topic: conceptual
 ms.date: 08/26/2019
 ms.custom: mqtt, devx-track-java
-ms.openlocfilehash: 68908b7d62b8211c202262112831d5d2b523f594
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 53a82ba545fa1709d1b79f3ff6b18f1817736bb7
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92146969"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102217865"
 ---
 # <a name="get-started-with-device-twins-java"></a>Cihaz ikizlerini kullanmaya başlama (Java)
 
@@ -31,7 +31,7 @@ Bu öğreticide, iki Java konsol uygulaması oluşturursunuz:
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-* [Java SE Development Kit 8](/java/azure/jdk/?view=azure-java-stable). JDK 8 için karşıdan yüklemeye ulaşmak üzere **uzun süreli destek** altında **Java 8** ' i seçtiğinizden emin olun.
+* [Java SE Development Kit 8](/java/azure/jdk/). JDK 8 için karşıdan yüklemeye ulaşmak üzere **uzun süreli destek** altında **Java 8** ' i seçtiğinizden emin olun.
 
 * [Maven 3](https://maven.apache.org/download.cgi)
 
@@ -55,9 +55,9 @@ Bu öğreticide, iki Java konsol uygulaması oluşturursunuz:
 
 ## <a name="create-the-service-app"></a>Hizmet uygulaması oluşturma
 
-Bu bölümde, konum meta verilerini **Mydeviceıd**ile ilişkili IoT Hub cihaz ikizi bir etiket olarak ekleyen bir Java uygulaması oluşturacaksınız. Uygulama ilk olarak ABD 'de bulunan cihazlar için IoT Hub 'ı sorgular ve ardından hücresel ağ bağlantısı veren cihazlar için.
+Bu bölümde, konum meta verilerini **Mydeviceıd** ile ilişkili IoT Hub cihaz ikizi bir etiket olarak ekleyen bir Java uygulaması oluşturacaksınız. Uygulama ilk olarak ABD 'de bulunan cihazlar için IoT Hub 'ı sorgular ve ardından hücresel ağ bağlantısı veren cihazlar için.
 
-1. Geliştirme makinenizde **IoT-Java-ikizi-getstarted**adlı boş bir klasör oluşturun.
+1. Geliştirme makinenizde **IoT-Java-ikizi-getstarted** adlı boş bir klasör oluşturun.
 
 2. **IoT-Java-ikizi-getstarted** klasöründe, komut istemindeki aşağıdaki komutu kullanarak **Add-Tags-Query** adlı bir Maven projesi oluşturun:
 

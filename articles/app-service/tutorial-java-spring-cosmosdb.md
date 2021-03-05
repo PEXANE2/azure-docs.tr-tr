@@ -7,12 +7,12 @@ ms.devlang: java
 ms.topic: tutorial
 ms.date: 12/10/2018
 ms.custom: mvc, seodec18, seo-java-july2019, seo-java-august2019, seo-java-september2019, devx-track-java
-ms.openlocfilehash: 2c4fbefc1bb801ab4a9387054ac91e5fca14ec18
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.openlocfilehash: 5a481e7ef37e36578b7f71a7afe70dcad737de89
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98185606"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102217474"
 ---
 # <a name="tutorial-build-a-java-spring-boot-web-app-with-azure-app-service-on-linux-and-azure-cosmos-db"></a>Öğretici: Linux ve Azure Cosmos DB üzerinde Azure App Service bir Java Spring Boot Web uygulaması oluşturun
 
@@ -20,7 +20,7 @@ Bu öğretici, Azure 'da Java Web uygulamaları oluşturma, yapılandırma, dağ
 
 ![Yay önyükleme uygulaması Azure Cosmos DB verileri depolama](./media/tutorial-java-spring-cosmosdb/spring-todo-app-running-locally.jpg)
 
-Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
+Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * Cosmos DB veritabanı oluşturun.
@@ -31,7 +31,7 @@ Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Kendi bilgisayarınızda yüklü olan [Azure CLI](/cli/azure/overview). 
 * [Git](https://git-scm.com/)
@@ -310,7 +310,7 @@ az group delete --name <your-azure-group-name>
 ## <a name="next-steps"></a>Sonraki adımlar
 
 [Java geliştiricileri](/java/azure/) 
- için Azure [Spring Boot](https://spring.io/projects/spring-boot), Cosmos DB, [Azure Cosmos DB](../cosmos-db/introduction.md) ve [App Service Linux](overview.md) [için yay verileri](/java/azure/spring-framework/configure-spring-boot-starter-java-app-with-cosmos-db?view=azure-java-stable).
+ için Azure [Spring Boot](https://spring.io/projects/spring-boot), Cosmos DB, [Azure Cosmos DB](../cosmos-db/introduction.md) ve [App Service Linux](overview.md) [için yay verileri](/azure/developer/java/spring-framework/configure-spring-boot-starter-java-app-with-cosmos-db).
 
 Java uygulamalarını, Linux üzerinde App Service geliştirici kılavuzunda çalıştırma hakkında daha fazla bilgi edinin.
 

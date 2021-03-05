@@ -3,12 +3,12 @@ title: İstemci kimlik doğrulaması için Azure Active Directory ayarlama
 description: Service Fabric kümeler için istemcilerin kimliğini doğrulamak üzere Azure Active Directory (Azure AD) ayarlamayı öğrenin.
 ms.topic: conceptual
 ms.date: 6/28/2019
-ms.openlocfilehash: 537a81a090828d3fcc9dde6032f1d4eb2df9b4e4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a1f89e144f9cef12c5bff87befb00a88bad8d7d9
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86258769"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102215978"
 ---
 # <a name="set-up-azure-active-directory-for-client-authentication"></a>İstemci kimlik doğrulaması için Azure Active Directory ayarlama
 
@@ -38,7 +38,7 @@ Azure AD 'yi Service Fabric bir kümeyle yapılandırma ile ilgili bazı adımla
 
 Kümeye erişimi denetlemek için iki Azure AD uygulaması oluşturmak üzere betikleri kullanacağız: bir Web uygulaması ve bir yerel uygulama. Kümenizi temsil etmek üzere uygulamalar oluşturduktan sonra, [Service Fabric tarafından desteklenen roller](service-fabric-cluster-security-roles.md)için Kullanıcı oluşturacaksınız: salt okunurdur ve yönetici.
 
-`SetupApplications.ps1`Öğesini çalıştırın ve KIRACı kimliği, küme adı ve Web uygulaması yanıt URL 'sini parametre olarak sağlayın.  Ayrıca, kullanıcılar için Kullanıcı adları ve parolalar da belirtin. Örneğin:
+`SetupApplications.ps1`Öğesini çalıştırın ve KIRACı kimliği, küme adı ve Web uygulaması yanıt URL 'sini parametre olarak sağlayın.  Ayrıca, kullanıcılar için Kullanıcı adları ve parolalar da belirtin. Örnek:
 
 ```powershell
 $Configobj = .\SetupApplications.ps1 -TenantId '0e3d2646-78b3-4711-b8be-74a381d9890c' -ClusterName 'mysftestcluster' -WebApplicationReplyUrl 'https://mysftestcluster.eastus.cloudapp.azure.com:19080/Explorer/index.html' -AddResourceAccess
@@ -81,7 +81,7 @@ Service Fabric Explorer ' de Azure AD 'de başarıyla oturum açtıktan sonra, t
 
 ![SFX sertifikası iletişim kutusu][sfx-select-certificate-dialog]
 
-#### <a name="reason"></a>Neden
+#### <a name="reason"></a>Nedeni
 Kullanıcıya Azure AD küme uygulamasında bir rol atanmaz. Bu nedenle, Service Fabric kümesinde Azure AD kimlik doğrulaması başarısız olur. Service Fabric Explorer sertifika kimlik doğrulamasına geri döner.
 
 #### <a name="solution"></a>Çözüm
@@ -100,7 +100,7 @@ Service Fabric Explorer ' de Azure AD 'de oturum açmaya çalıştığınızda, 
 
 ![SFX yanıt adresi eşleşmiyor][sfx-reply-address-not-match]
 
-#### <a name="reason"></a>Neden
+#### <a name="reason"></a>Nedeni
 Service Fabric Explorer temsil eden küme (Web) uygulaması Azure AD 'de kimlik doğrulaması yapmayı dener ve isteğin bir parçası olarak yeniden yönlendirme dönüş URL 'si sağlar. Ancak URL, Azure AD uygulama **yanıt URL 'si** listesinde listelenmez.
 
 #### <a name="solution"></a>Çözüm
@@ -112,7 +112,7 @@ Kümenizin Azure AD uygulama kaydı sayfasında **kimlik doğrulaması**' nı se
 #### <a name="problem"></a>Sorun
 PowerShell aracılığıyla Azure AD kullanarak bir Service Fabric kümesine bağlanmaya çalıştığınızda, oturum açma sayfası bir hata döndürür: "AADSTS50011: istekte belirtilen yanıt URL 'si, uygulama için yapılandırılan yanıt URL 'leriyle eşleşmiyor: &lt; GUID &gt; ."
 
-#### <a name="reason"></a>Neden
+#### <a name="reason"></a>Nedeni
 Yukarıdaki soruna benzer şekilde, PowerShell, Azure AD uygulama **yanıt URL 'leri** listesinde listelenmeyen bir yeniden yönlendirme URL 'Si sağlayan Azure AD 'de kimlik doğrulamaya çalışır.  
 
 #### <a name="solution"></a>Çözüm
@@ -138,7 +138,7 @@ Azure Active Directory uygulamalar ayarlayıp, kullanıcılar için rolleri ayar
 
 
 <!-- Links -->
-[azure-CLI]:https://docs.microsoft.com/cli/azure/get-started-with-azure-cli?view=azure-cli-latest
+[azure-CLI]:https://docs.microsoft.com/cli/azure/get-started-with-azure-cli
 [azure-portal]: https://portal.azure.com/
 [service-fabric-cluster-security]: service-fabric-cluster-security.md
 [active-directory-howto-tenant]:../active-directory/develop/quickstart-create-new-tenant.md

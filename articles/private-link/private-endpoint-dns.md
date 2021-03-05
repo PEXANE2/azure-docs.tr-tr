@@ -2,17 +2,17 @@
 title: Azure Özel Uç Nokta DNS yapılandırması
 description: Azure özel uç nokta DNS yapılandırmasını öğrenin
 services: private-link
-author: allensu
+author: asudbring
 ms.service: private-link
 ms.topic: conceptual
 ms.date: 01/14/2021
 ms.author: allensu
-ms.openlocfilehash: 3cb5dd88572fda7a939aa529a5372d72575ffdbb
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
+ms.openlocfilehash: 42c5b315c9c3560c400c685448a11dc61bf64eb6
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 03/05/2021
-ms.locfileid: "102203292"
+ms.locfileid: "102215621"
 ---
 # <a name="azure-private-endpoint-dns-configuration"></a>Azure Özel Uç Nokta DNS yapılandırması
 
@@ -79,7 +79,7 @@ Azure hizmetleri için aşağıdaki tabloda açıklandığı gibi önerilen böl
 | Bilişsel hizmetler (Microsoft. Bilitivehizmetleri/hesapları)/hesabı | privatelink.cognitiveservices.azure.com  | cognitiveservices.azure.com  |
 | Azure Dosya Eşitleme (Microsoft. Storagessync/storageSyncServices)/AFS |  privatelink.afs.azure.net  |  afs.azure.net  |
 | Azure Data Factory (Microsoft. DataFactory/Factory)/dataFactory |  privatelink.datafactory.azure.net  |  datafactory.azure.net  |
-| Azure Data Factory (Microsoft. DataFactory/Factory)/Portal |  privatelink.azure.com  |  azure.com  |
+| Azure Data Factory (Microsoft. DataFactory/Factory)/Portal |  privatelink.adf.azure.com  |  adf.azure.com  |
 | Redin (Microsoft. Cache/Redsıs)/redisCache için Azure önbelleği | privatelink.redis.cache.windows.net | redis.cache.windows.net |
 
 <sup>1</sup> IoT Hub yerleşik Olay Hub 'ı ile uyumlu uç nokta ile kullanmak için. Daha fazla bilgi edinmek için bkz. [IoT Hub yerleşik uç noktası için özel bağlantı desteği](../iot-hub/virtual-network-support.md#built-in-event-hub-compatible-endpoint)
@@ -97,7 +97,6 @@ Azure hizmetleri için aşağıdaki tabloda açıklandığı gibi önerilen böl
 | PostgreSQL için Azure veritabanı-tek sunucu (Microsoft. DBforPostgreSQL/Servers)/Postgrescollection sunucusu | privatelink.postgres.database.chinacloudapi.cn | postgres.database.chinacloudapi.cn |
 | MySQL için Azure veritabanı (Microsoft. Dbformyısql/sunucular)/mysqlServer | privatelink.mysql.database.chinacloudapi.cn  | mysql.database.chinacloudapi.cn  |
 | MariaDB için Azure veritabanı (Microsoft. Dbformarıdb/sunucular)/mariadbServer | privatelink.mariadb.database.chinacloudapi.cn | mariadb.database.chinacloudapi.cn |
-
 
 ## <a name="dns-configuration-scenarios"></a>DNS yapılandırma senaryoları
 
