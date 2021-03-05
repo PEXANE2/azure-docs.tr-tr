@@ -2,14 +2,14 @@
 title: Azure Service Bus içinde işlem işlemeye genel bakış
 description: Bu makale, işlem işleme ve Azure Service Bus aracılığıyla gönderme özelliği için bir genel bakış sunar.
 ms.topic: article
-ms.date: 10/28/2020
+ms.date: 03/03/2021
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 9a95a200b57d348109884a319b5433f0ffd5dde1
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: e2848f41d5557584b0f1a197b548a00a4aef1564
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98684800"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102183752"
 ---
 # <a name="overview-of-service-bus-transaction-processing"></a>Service Bus işlem işlemeye genel bakış
 
@@ -42,6 +42,8 @@ Uygulamanın [ReceiveMode. PeekLock](/dotnet/api/microsoft.azure.servicebus.rece
 Bir kuyruktan veya konudan bir işlemciye işlem devreden Multipath ve daha sonra başka bir kuyruğa veya konuya yönelik işlemsel bir veri sağlamak için, Service Bus *aktarımları* destekler. Bir aktarım işleminde, bir gönderen öncelikle bir *Aktarım kuyruğuna veya konuya* bir ileti gönderir ve Aktarım kuyruğu veya konu başlığı, yeniden yönlendirme yeteneğinin bağımlı olduğu aynı güçlü aktarım uygulamasını kullanarak iletiyi amaçlanan hedef kuyruğuna veya konuya doğrudan taşımalıdır. İleti, Aktarım kuyruğu veya konunun tüketicileri için görünür hale gelmesi için aktarım kuyruğuna veya konunun günlüğüne hiçbir şekilde yürütülmedi.
 
 Aktarım sırasının veya konusunun kendisi gönderenin giriş iletilerinin kaynağı olduğunda bu işlem yeteneğinin gücü görünür hale gelir. Diğer bir deyişle, Service Bus ileti, Aktarım kuyruğu veya konu başlığı altında ", bir atomik bir işlemde, giriş iletisinde tam (veya ertelenme ya da atılacak) işlemi gerçekleştirirken" iletiyi hedef sıraya veya konuya aktarabilir. 
+
+Bir konu aboneliğinden almanız ve sonra aynı işlemde bir kuyruğa veya konuya göndermeniz gerekiyorsa, aktarım varlığı bir konu olmalıdır. Bu senaryoda, konuda işlem kapsamını başlatın, işlem kapsamındaki abonelikten alın ve bir kuyruğa veya konu hedefine aktarma konusu ile gönderin. 
 
 ### <a name="see-it-in-code"></a>Kodda gör
 

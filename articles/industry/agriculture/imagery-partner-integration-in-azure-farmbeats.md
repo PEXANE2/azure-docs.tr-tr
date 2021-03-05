@@ -4,14 +4,14 @@ description: Bu makalede Imagery iş ortağı tümleştirmesi açıklanmaktadır
 author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
-ms.author: v-umha
+ms.author: v-ummehabiba
 ms.custom: has-adal-ref
-ms.openlocfilehash: 40e17a9f73d98f24c6c7fbb55ef38cc2bc088861
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 1bc723892e29ccc24a7612cfbe50d4b274cdacdf
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92675946"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102183803"
 ---
 # <a name="imagery-partner-integration"></a>Görüntüleme iş ortağı tümleştirmesi
 
@@ -138,10 +138,10 @@ JSON, rastgele veri yapılarının basit bir metin gösterimini sağlayan, dilde
 
 1.  Karşıya yüklenecek olan Imagery türüne uygun olarak, aşağıdaki alanlar için yeni bir genişletilmiş tür oluşturun:
 
-    - **Sahne kaynağı** : örneğin, drone_partner_name
-    - **Sahne türü** : Örneğin, drone
-    - **Sahne dosyası türü** : Örneğin, Chlorophyll dizini
-    - **Sahne dosyası Içerik türü** : Örneğin, görüntü/TIFF
+    - **Sahne kaynağı**: örneğin, drone_partner_name
+    - **Sahne türü**: Örneğin, drone
+    - **Sahne dosyası türü**: Örneğin, Chlorophyll dizini
+    - **Sahne dosyası Içerik türü**: Örneğin, görüntü/TIFF
 
 2.  Azure Farmtts sistemi içinden grupların listesini almak için/gruplar API 'sini çağırın.
 3.  Müşteriyi, gruplar listesinden tek bir grup seçebilme olanağı sağlar.

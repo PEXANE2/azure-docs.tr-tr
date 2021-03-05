@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: conceptual
 ms.date: 11/12/2020
-ms.openlocfilehash: d8e6c4b2addf9745b2ddabe8f6fdad9d82dce59f
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+ms.openlocfilehash: ca25bbb72ff853f819f3e8ce4e0092ddb762b156
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97503959"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102183820"
 ---
 # <a name="use-purview-studio"></a>Purview Studio'yu kullanma
 
@@ -38,7 +38,7 @@ Bu makale, Azure purview 'ın bazı ana özelliklerine genel bir bakış sunar.
 
 Aşağıdaki liste, ana **sayfanın** ana özelliklerini özetler. Listedeki her bir sayı, önceki ekran görüntüsünde vurgulanan bir sayıya karşılık gelir.
 
-1. Kataloğun kolay adı. **Yönetim merkezi** > **hesap bilgileri*' nde Katalog adı ' nı ayarlayabilirsiniz.
+1. Kataloğun kolay adı. **Yönetim Merkezi**  >  **Hesap bilgilerinde** Katalog adı ayarlayabilirsiniz.
 
 2. Katalog Analizi şu sayıyı gösterir:
     - Kullanıcılar, gruplar ve uygulamalar

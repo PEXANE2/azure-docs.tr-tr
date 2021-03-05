@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: overview
 ms.date: 04/17/2020
 ms.author: mbaldwin
-ms.openlocfilehash: e0a45bde32fed651c4b38d203b3c75a6d928e7c5
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+ms.openlocfilehash: f2a33b4011b0bb89ca17010fc787aebe8c17fc92
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96327092"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102183939"
 ---
 # <a name="azure-key-vault-keys-secrets-and-certificates-overview"></a>Azure Key Vault anahtarlar, gizlilikler ve sertifikalara genel bakış
 
@@ -44,7 +44,7 @@ Yazılım korumalı anahtarlar|/Keys|Desteklenir|Desteklenmez
 **Diğer nesne türleri**||
 Gizli Diziler|/gizlilikler|Desteklenir|Desteklenmez
 Sertifikalar|/Certificates|Desteklenir|Desteklenmez
-Depolama hesabı anahtarları|/storageaccount|Desteklenir|Desteklenmez
+Depolama hesabı anahtarları|/Storage|Desteklenir|Desteklenmez
 |||
 - **Şifreleme anahtarları**: birden çok anahtar türünü ve algoritmaları destekler ve yazılım KORUMALı ve HSM korumalı anahtarların kullanımını sunar. Daha fazla bilgi için bkz. [anahtarlar hakkında](../keys/about-keys.md).
 - **Gizlilikler**: parolalar ve veritabanı bağlantı dizeleri gibi güvenli parolaların depolanmasını sağlar. Daha fazla bilgi için bkz. [gizlilikler hakkında](../secrets/about-secrets.md).

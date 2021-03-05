@@ -6,12 +6,12 @@ ms.author: elhorton
 ms.service: iot-develop
 ms.topic: overview
 ms.date: 02/11/2021
-ms.openlocfilehash: 4d9546c8a912176117e42f2a6bbef3058331383b
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: e85cc9cdbb14c419e4bddb5ee659aa657b49a8c1
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101702683"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102183548"
 ---
 # <a name="overview-of-azure-iot-device-sdks"></a>Azure IoT cihaz SDK 'larına genel bakış
 
@@ -60,7 +60,7 @@ Kullanmaya başlamak için seçenekleriniz, sahip olduğunuz cihaz türüne bağ
 Bu SDK 'lar, sınırlı işlem veya bellek kaynakları olan cihazlarda çalışmak üzere özelleştirilmiştir. Ortak cihaz türleri hakkında daha fazla bilgi edinmek için bkz. [Azure IoT cihaz türlerine genel bakış](concepts-iot-device-types.md).
 
 #### <a name="embedded-c-sdk"></a>Gömülü C SDK 'Sı
-* [GitHub deposu](https://github.com/Azure/azure-sdk-for-c/tree/1.0.0/sdk/docs/iot)
+* [GitHub deposu](https://github.com/Azure/azure-sdk-for-c/tree/master/sdk/docs/iot)
 * [Örnekler](https://github.com/Azure/azure-sdk-for-c/blob/master/sdk/samples/iot/README.md)
 * [Başvuru Belgeleri](https://azure.github.io/azure-sdk-for-c/)
 * [Katıştırılmış C SDK 'sını oluşturma](https://github.com/Azure/azure-sdk-for-c/tree/master/sdk/docs/iot#build)
@@ -68,7 +68,7 @@ Bu SDK 'lar, sınırlı işlem veya bellek kaynakları olan cihazlarda çalışm
 
 #### <a name="azure-rtos-middleware"></a>Azure RTOS ara yazılımı
 
-* [GitHub deposu](https://github.com/azure-rtos/threadx)
+* [GitHub deposu](https://github.com/azure-rtos/netxduo/tree/master/addons/azure_iot)
 * [Başlangıç kılavuzlarından](https://github.com/azure-rtos/getting-started) ve [daha fazla örnek](https://github.com/azure-rtos/samples)
 * [Başvuru Belgeleri](/azure/rtos/threadx/)
 

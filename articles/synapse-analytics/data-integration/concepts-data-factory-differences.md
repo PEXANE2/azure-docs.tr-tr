@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 12/10/2020
 ms.author: makromer
 ms.reviewer: jrasnick
-ms.openlocfilehash: 8818d4db489cef8203ae515c18c61e215d577033
-ms.sourcegitcommit: ea17e3a6219f0f01330cf7610e54f033a394b459
+ms.openlocfilehash: 9cd3fc9353c684ec6617761616b958477ca83ee3
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97387624"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102183650"
 ---
 # <a name="data-integration-in-azure-synapse-analytics-versus-azure-data-factory"></a>Azure SYNAPSE Analytics 'te veri tümleştirmesi ve Azure Data Factory karşılaştırması
 
@@ -36,6 +36,7 @@ Azure SYNAPSE Analytics 'te, SYNAPSE işlem hatları ve veri akışları gibi ve
 | **GIT deposu tümleştirmesi** | GIT tümleştirmesi | ✓ | ✓ |
 | **İzleme**           | Veri akışı için Spark Işlerinin izlenmesi | ✗ | ✓<br><small>*SYNAPSE Spark havuzlarından yararlanın* |
 |                          | Azure Izleyici ile tümleştirme | ✓ | ✗ |
+| **Köken** | İşlem hattı kökenini verilerinin Takiview 'a yayımlanmasını destekler  | ✓ | ✗ |  
 
 > [!Note]
 > **Yaşam süresi** , Spark kümesinin bir veri akışı yürütmeden sonra bir süre için *normal kalmasını* sağlayan bir Azure Integration Runtime ayarıdır.

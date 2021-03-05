@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 01/14/2021
 ms.author: b-juche
-ms.openlocfilehash: 78cc68d2be600cec78c433ae3eae1de09d31ac94
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.openlocfilehash: 7b5bbad1f0691f76c12f161d1dd1f9d6ddc43270
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98251820"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102184330"
 ---
 # <a name="dynamically-change-the-service-level-of-a-volume"></a>Birimin hizmet düzeyini dinamik olarak değiştirme
 
@@ -56,7 +56,7 @@ Bir birimi başka bir kapasite havuzuna taşıma özelliği şu anda önizleme a
     ```azurepowershell-interactive
     Get-AzProviderFeature -ProviderNamespace Microsoft.NetApp -FeatureName ANFTierChange
     ```
-Ayrıca, [Azure CLI komutlarını](/cli/azure/feature?preserve-view=true&view=azure-cli-latest) kullanarak `az feature register` `az feature show` özelliği kaydedebilir ve kayıt durumunu görüntüleyebilirsiniz. 
+Ayrıca, [Azure CLI komutlarını](/cli/azure/feature) kullanarak `az feature register` `az feature show` özelliği kaydedebilir ve kayıt durumunu görüntüleyebilirsiniz. 
  
 ## <a name="move-a-volume-to-another-capacity-pool"></a>Bir birimi başka bir kapasite havuzuna taşıma
 

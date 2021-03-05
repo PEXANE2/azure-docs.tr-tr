@@ -1,25 +1,25 @@
 ---
 title: Machine Learning ardışık düzeninde Apache Spark kullanma (Önizleme)
 titleSuffix: Azure Machine Learning
-description: Veri işleme için Spark 'ı kullanmak üzere SYNAPSE çalışma alanınızı Azure Machine Learning işlem hattınıza bağlayın.
+description: Veri işleme Apache Spark kullanmak için Azure SYNAPSE Analytics çalışma alanınızı Azure Machine Learning işlem hattınızla ilişkilendirin.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.author: laobri
 author: lobrien
-ms.date: 02/25/2021
+ms.date: 03/04/2021
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: a912bc5abcdadf3f8eca46f805c433d3a1058c68
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: f52686f991e3d14a8cde82c602b182874305f27d
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101663993"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102184109"
 ---
-# <a name="how-to-use-apache-spark-in-your-machine-learning-pipeline-with-azure-synapse-preview"></a>Azure SYNAPSE ile Machine Learning işlem hattınızda Apache Spark kullanma (Önizleme)
+# <a name="how-to-use-apache-spark-powered-by-azure-synapse-analytics-in-your-machine-learning-pipeline-preview"></a>Machine Learning işlem hattınızda Apache Spark (Azure SYNAPSE Analytics tarafından desteklenir) kullanma (Önizleme)
 
-Bu makalede, bir Azure Machine Learning işlem hattında veri hazırlama adımının işlem hedefi olarak SYNAPSE tarafından desteklenen Apache Spark havuzlarını nasıl kullanacağınızı öğreneceksiniz. Tek bir işlem hattının, veri hazırlama veya eğitim gibi belirli bir adıma uygun işlem kaynaklarını nasıl kullanabileceğinizi öğreneceksiniz. Spark adımında verilerin nasıl hazırlandığını ve bir sonraki adıma nasıl geçtiğini görürsünüz. 
+Bu makalede, bir Azure Machine Learning ardışık düzeninde veri hazırlama adımının işlem hedefi olarak Azure SYNAPSE Analytics tarafından desteklenen Apache Spark havuzlarını nasıl kullanacağınızı öğreneceksiniz. Tek bir işlem hattının, veri hazırlama veya eğitim gibi belirli bir adıma uygun işlem kaynaklarını nasıl kullanabileceğinizi öğreneceksiniz. Spark adımında verilerin nasıl hazırlandığını ve bir sonraki adıma nasıl geçtiğini görürsünüz. 
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -27,27 +27,27 @@ Bu makalede, bir Azure Machine Learning işlem hattında veri hazırlama adımı
 
 * Azure Machine Learning SDK 'yı yüklemek için [geliştirme ortamınızı yapılandırın](how-to-configure-environment.md) veya SDK 'nın zaten yüklü olduğu bir [Azure Machine Learning işlem örneği](concept-compute-instance.md) kullanın.
 
-* Bir Synapse çalışma alanı ve Apache Spark havuzu oluşturun (bkz. [hızlı başlangıç: SYNAPSE Studio kullanarak sunucusuz Apache Spark havuzu oluşturma](../synapse-analytics/quickstart-create-apache-spark-pool-studio.md)). 
+* Azure SYNAPSE Analytics çalışma alanı ve Apache Spark havuzu oluşturun (bkz. [hızlı başlangıç: SYNAPSE Studio kullanarak sunucusuz Apache Spark havuzu oluşturma](../synapse-analytics/quickstart-create-apache-spark-pool-studio.md)). 
 
-## <a name="link-your-machine-learning-workspace-and-synapse-workspace"></a>Machine Learning çalışma alanınızı ve SYNAPSE çalışma alanınızı bağlama 
+## <a name="link-your-azure-machine-learning-workspace-and-azure-synapse-analytics-workspace"></a>Azure Machine Learning çalışma alanınızı ve Azure SYNAPSE Analytics çalışma alanınızı bağlama 
 
-Apache Spark havuzlarınızı bir Synapse çalışma alanında oluşturup yönetebilirsiniz. Bir Spark havuzunu Azure Machine Learning çalışma alanıyla bütünleştirmek için SYNAPSE çalışma alanına bağlamanız gerekir. 
+Apache Spark havuzlarınızı bir Azure SYNAPSE Analytics çalışma alanında oluşturup yönetebilirsiniz. Bir Apache Spark havuzunu Azure Machine Learning çalışma alanıyla bütünleştirmek için Azure SYNAPSE Analytics çalışma alanına bağlamanız gerekir. 
 
-**Bağlı hizmetler** sayfasını kullanarak, Azure Machine Learning Studio Kullanıcı arabirimi aracılığıyla bir Synapse Spark havuzu iliştirebilirsiniz. İşlem **Ekle** seçeneği ile **işlem** sayfası aracılığıyla da yapabilirsiniz.
+**Bağlı hizmetler** sayfasını kullanarak Azure Machine Learning Studio Kullanıcı arabirimi aracılığıyla bir Apache Spark havuzu ekleyebilirsiniz. İşlem **Ekle** seçeneği ile **işlem** sayfası aracılığıyla da yapabilirsiniz.
 
-Ayrıca SDK (aşağıda ayrıntılı olarak) veya bir ARM şablonu aracılığıyla bir Synapse Spark havuzu iliştirebilirsiniz (Bu [örnek ARM şablonuna](https://github.com/Azure/azure-quickstart-templates/blob/master/101-machine-learning-linkedservice-create/azuredeploy.json)bakın). 
+Ayrıca, SDK aracılığıyla veya bir ARM şablonu aracılığıyla bir Apache Spark havuzu iliştirebilirsiniz (Bu [örnek ARM şablonuna](https://github.com/Azure/azure-quickstart-templates/blob/master/101-machine-learning-linkedservice-create/azuredeploy.json)bakın). 
 
-ARM şablonunu izlemek, bağlı hizmeti eklemek ve SYNAPSE havuzunu aşağıdaki kodla eklemek için komut satırını kullanabilirsiniz:
+ARM şablonunu izlemek, bağlı hizmeti eklemek ve Apache Spark havuzunu aşağıdaki kodla eklemek için komut satırını kullanabilirsiniz:
 
 ```bash
 az deployment group create --name --resource-group <rg_name> --template-file "azuredeploy.json" --parameters @"azuredeploy.parameters.json"
 ```
 
 > [!Important]
-> SYNAPSE çalışma alanına başarıyla bağlantı sağlamak için SYNAPSE çalışma alanı kaynağında sahip rolüne sahip olmanız gerekir. Azure portal erişiminizi denetleyin.
+> Azure SYNAPSE Analytics çalışma alanına başarıyla bağlantı sağlamak için Azure SYNAPSE Analytics çalışma alanı kaynağında sahip rolüne sahip olmanız gerekir. Azure portal erişiminizi denetleyin.
 > Bağlı hizmet, bir sistem tarafından atanmış kimliği (SAı) oluşturduğunuzda alır. Spark işini gönderebilmesi için, bu bağlantı hizmetini SYNAPSE Studio 'dan "SYNAPSE Apache Spark Administrator" rolü olarak atamanız gerekir (bkz. [SYNAPSE Studio 'Da SYNAPSE RBAC rol atamalarını yönetme](../synapse-analytics/security/how-to-manage-synapse-rbac-role-assignments.md)). Ayrıca, Azure Machine Learning çalışma alanının kullanıcısına kaynak yönetimi Azure portal "katkıda bulunan" rolü sağlamanız gerekir.
 
-## <a name="create-or-retrieve-the-link-between-your-synapse-workspace-and-your-azure-machine-learning-workspace"></a>SYNAPSE çalışma alanınız ile Azure Machine Learning çalışma alanınız arasında bağlantı oluşturun veya alın
+## <a name="create-or-retrieve-the-link-between-your-azure-synapse-analytics-workspace-and-your-azure-machine-learning-workspace"></a>Azure SYNAPSE Analytics çalışma alanınız ile Azure Machine Learning çalışma alanınız arasında bağlantı oluşturun veya alın
 
 Çalışma alanınızdaki bağlı hizmetleri, şu gibi kodla alabilirsiniz:
 
@@ -65,9 +65,9 @@ linked_service = LinkedService.get(ws, 'synapselink1')
 
 İlk olarak, `Workspace.from_config()` ' deki yapılandırmayı kullanarak Azure Machine Learning çalışma alanınıza erişir `config.json` (bkz. [öğretici: geliştirme ortamınızda Azure Machine Learning kullanmaya başlama](tutorial-1st-experiment-sdk-setup-local.md)). Daha sonra kod, çalışma alanındaki tüm bağlı hizmetleri yazdırır. Son olarak, `LinkedService.get()` adlı bağlı bir hizmeti alır `'synapselink1'` . 
 
-## <a name="attach-your-synapse-spark-pool-as-a-compute-target-for-azure-machine-learning"></a>Azure Machine Learning için SYNAPSE Spark havuzunuzu bir işlem hedefi olarak iliştirin
+## <a name="attach-your-apache-spark-pool-as-a-compute-target-for-azure-machine-learning"></a>Azure Machine Learning için Apache Spark havuzunuzu bir işlem hedefi olarak iliştirme
 
-Machine Learning işlem hattınızdaki bir adımı desteklemek üzere SYNAPSE Spark havuzunuzu kullanmak için, `ComputeTarget` aşağıdaki kodda gösterildiği gibi işlem hattı adımı için bir olarak eklemeniz gerekir.
+Machine Learning işlem hattınızdaki bir adımı desteklemek üzere Apache Spark havuzunuzu kullanmak için, `ComputeTarget` aşağıdaki kodda gösterildiği gibi işlem hattı adımı için bir olarak eklemeniz gerekir.
 
 ```python
 from azureml.core.compute import SynapseCompute, ComputeTarget
@@ -85,13 +85,13 @@ synapse_compute=ComputeTarget.attach(
 synapse_compute.wait_for_completion()
 ```
 
-İlk adım, ' i yapılandırmaktır `SynapseCompute` . `linked_service`Bağımsız değişkeni, `LinkedService` önceki adımda oluşturduğunuz veya aldığınız nesnedir. `type`Bağımsız değişken olmalıdır `SynapseSpark` . `pool_name`İçindeki bağımsız değişken, `SynapseCompute.attach_configuration()` SYNAPSE çalışma alanınızdaki var olan bir havuzla aynı olmalıdır. SYNAPSE çalışma alanında Apache Spark havuzu oluşturma hakkında daha fazla bilgi için bkz. [hızlı başlangıç: SYNAPSE Studio kullanarak sunucusuz Apache Spark havuzu oluşturma](../synapse-analytics/quickstart-create-apache-spark-pool-studio.md). Türü `attach_config` `ComputeTargetAttachConfiguration` .
+İlk adım, ' i yapılandırmaktır `SynapseCompute` . `linked_service`Bağımsız değişkeni, `LinkedService` önceki adımda oluşturduğunuz veya aldığınız nesnedir. `type`Bağımsız değişken olmalıdır `SynapseSpark` . `pool_name`İçindeki bağımsız değişken, `SynapseCompute.attach_configuration()` Azure SYNAPSE Analytics çalışma alanınızdaki mevcut bir havuzla aynı olmalıdır. Azure SYNAPSE Analytics çalışma alanında Apache Spark havuzu oluşturma hakkında daha fazla bilgi için bkz. [hızlı başlangıç: SYNAPSE Studio kullanarak sunucusuz Apache Spark havuzu oluşturma](../synapse-analytics/quickstart-create-apache-spark-pool-studio.md). Türü `attach_config` `ComputeTargetAttachConfiguration` .
 
 Yapılandırma oluşturulduktan sonra,,, `ComputeTarget` `Workspace` `ComputeTargetAttachConfiguration` ve Machine Learning çalışma alanındaki işlem için başvurmak istediğiniz adı geçirerek bir makine öğrenimi oluşturursunuz. ' A çağrı `ComputeTarget.attach()` zaman uyumsuzdur, bu nedenle çağrı tamamlanana kadar örnek bloklar olur.
 
 ## <a name="create-a-synapsesparkstep-that-uses-the-linked-apache-spark-pool"></a>`SynapseSparkStep`Bağlı Apache Spark havuzunu kullanan bir oluşturma
 
-[SYNAPSE Spark havuzundaki](https://github.com/azure/machinelearningnotebooks) örnek Not defteri Spark işi bir basit makine öğrenimi ardışık düzeni tanımlar. İlk olarak, Not defteri, önceki adımda tanımlanan tarafından desteklenen bir veri hazırlama adımını tanımlar `synapse_compute` . Daha sonra, Not defteri bir işlem hedefi tarafından desteklenen bir eğitim adımını eğitim için daha uygun bir şekilde tanımlar. Örnek Not defteri, veri girişini ve çıktıyı göstermek için Titanic acil durum veritabanını kullanır; Aslında verileri temizetmez veya tahmine dayalı bir model yapmaz. Bu örnekte gerçek eğitim olmadığından, eğitim adımında pahalı, CPU tabanlı bir işlem kaynağı kullanılmaktadır.
+[Apache Spark havuzundaki](https://github.com/azure/machinelearningnotebooks) örnek Not defteri Spark işi basit bir makine öğrenimi ardışık düzeni tanımlar. İlk olarak, Not defteri, önceki adımda tanımlanan tarafından desteklenen bir veri hazırlama adımını tanımlar `synapse_compute` . Daha sonra, Not defteri bir işlem hedefi tarafından desteklenen bir eğitim adımını eğitim için daha uygun bir şekilde tanımlar. Örnek Not defteri, veri girişini ve çıktıyı göstermek için Titanic acil durum veritabanını kullanır; Aslında verileri temizetmez veya tahmine dayalı bir model yapmaz. Bu örnekte gerçek eğitim olmadığından, eğitim adımında pahalı, CPU tabanlı bir işlem kaynağı kullanılmaktadır.
 
 Veriler `DatasetConsumptionConfig` , tablo verilerini veya dosya kümelerini içerebilen nesneler aracılığıyla makine öğrenimi ardışık düzenine akar. Veriler genellikle bir çalışma alanının veri deposundaki blob depolamadaki dosyalardan gelir. Aşağıdaki kod, bir makine öğrenimi ardışık düzeni için giriş oluşturmak üzere bazı tipik kodları göstermektedir:
 
@@ -123,7 +123,7 @@ step1_output = HDFSOutputDatasetConfig(destination=(datastore,"test")).register_
 
 Bu durumda, verileri `datastore` adlı bir dosyada depolanır `test` ve makine öğrenimi çalışma alanında `Dataset` adı ile birlikte kullanılabilir `registered_dataset` .
 
-Verilerin yanı sıra bir işlem hattı adımında adım adım Python bağımlılıkları olabilir. Ayrı `SynapseSparkStep` nesneler, kendi kesin SYNAPSE yapılandırmalarını da belirtebilir. Bu, `azureml-core` paket sürümünün en az olması gerektiğini belirten aşağıdaki kodda gösterilmiştir `1.20.0` . (Daha önce belirtildiği gibi, için bu gereksinimin `azureml-core` bir `FileDataset` giriş olarak kullanılması gerekir.)
+Verilerin yanı sıra bir işlem hattı adımında adım adım Python bağımlılıkları olabilir. Ayrı `SynapseSparkStep` nesneler, kendi tam Azure Synapse Apache Spark yapılandırmalarını da belirtebilir. Bu, `azureml-core` paket sürümünün en az olması gerektiğini belirten aşağıdaki kodda gösterilmiştir `1.20.0` . (Daha önce belirtildiği gibi, için bu gereksinimin `azureml-core` bir `FileDataset` giriş olarak kullanılması gerekir.)
 
 ```python
 from azureml.core.environment import Environment
@@ -153,7 +153,7 @@ Yukarıdaki kod, Azure Machine Learning işlem hattının tek bir adımını bel
 
 , `SynapseSparkStep` Zip olur ve yerel bilgisayardan alt dizinden karşıya yüklenir `./code` . Bu dizin işlem sunucusunda yeniden oluşturulacaktır ve adım dosyayı `dataprep.py` bu dizinden çalıştırır. `inputs` `outputs` Bu adımın ve `step1_input1` `step1_input2` `step1_output` daha önce tartışılan nesneler, ve ' dir. Betikteki bu değerlere erişmenin en kolay yolu, `dataprep.py` bunları adıyla ilişkilendirmekte `arguments` .
 
-Oluşturucu denetim Apache Spark için bir sonraki bağımsız değişkenler kümesi `SynapseSparkStep` . , `compute_target` `'link1-spark01'` Daha önce bir işlem hedefi olarak iliştirildiğimiz bir. Diğer parametreler, kullanmak istediğimiz belleği ve çekirdekleri belirler.
+Oluşturucu denetim Apache Spark sonraki bağımsız değişkenler kümesi `SynapseSparkStep` . , `compute_target` `'link1-spark01'` Daha önce bir işlem hedefi olarak iliştirildiğimiz bir. Diğer parametreler, kullanmak istediğimiz belleği ve çekirdekleri belirler.
 
 Örnek Not defteri, için aşağıdaki kodu kullanır `dataprep.py` :
 
@@ -191,7 +191,7 @@ sdf.coalesce(1).write\
 .csv(args.output_dir)
 ```
 
-Bu "veri hazırlama" betiği gerçek bir veri dönüştürmesi yapmaz, ancak verilerin nasıl alınacağını, bir Spark veri çerçevesine nasıl dönüştürültiğine ve bazı temel Spark işlemesini nasıl yapacağının gösterir. Azure Machine Learning Studio çıktıyı, alt çalıştırmayı açıp **çıktılar + Günlükler** sekmesini seçerek ve `logs/azureml/driver/stdout` dosyayı açarak aşağıdaki şekilde gösterildiği gibi bulabilirsiniz.
+Bu "veri hazırlama" betiği gerçek bir veri dönüştürmesi yapmaz, ancak verilerin nasıl alınacağını, bir Spark veri çerçevesine nasıl dönüştürüleceğini ve bazı temel Apache Spark işleme nasıl yapılacağını gösterir. Azure Machine Learning Studio çıktıyı, alt çalıştırmayı açıp **çıktılar + Günlükler** sekmesini seçerek ve `logs/azureml/driver/stdout` dosyayı açarak aşağıdaki şekilde gösterildiği gibi bulabilirsiniz.
 
 :::image type="content" source="media/how-to-use-synapsesparkstep/synapsesparkstep-stdout.png" alt-text="Alt çalıştırmanın stdout sekmesini gösteren Studio ekran görüntüsü":::
 
@@ -235,7 +235,7 @@ pipeline = Pipeline(workspace=ws, steps=[step_1, step_2])
 pipeline_run = pipeline.submit('synapse-pipeline', regenerate_outputs=True)
 ```
 
-Yukarıdaki kod, Synapse () tarafından desteklenen veri hazırlama adımını `step_1` ve eğitim adımını () içeren bir işlem hattı oluşturur `step_2` . Azure, adımlar arasındaki veri bağımlılıklarını inceleyerek yürütme grafiğini hesaplar. Bu durumda, yalnızca gerekli olması gereken basit bir bağımlılık vardır `step2_input` `step1_output` .
+Yukarıdaki kod, Azure SYNAPSE Analytics ( `step_1` ) ve eğitim adımı () tarafından desteklenen Apache Spark havuzlarındaki veri hazırlama adımından oluşan bir işlem hattı oluşturur `step_2` . Azure, adımlar arasındaki veri bağımlılıklarını inceleyerek yürütme grafiğini hesaplar. Bu durumda, yalnızca gerekli olması gereken basit bir bağımlılık vardır `step2_input` `step1_output` .
 
 İçin yapılan çağrı, `pipeline.submit` gerekirse, `synapse-pipeline` zaman uyumsuz olarak çağrılan ve zaman uyumsuz olarak çalıştırılan bir deneme başlatır. İşlem hattının içindeki tek adımlar, bu ana çalıştırmanın alt çalıştırmaları olarak çalıştırılır ve Studio 'nun denemeleri sayfasında izlenebilir ve incelenebilir.
 

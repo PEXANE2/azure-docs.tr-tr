@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 02/16/2021
 ms.author: b-juche
-ms.openlocfilehash: 756bf1cd7a7e9435130a3ad2d3b530b7f2e5b1b4
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 44959b2f60f9aafd7d9430c9c19baea72344293f
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100621248"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102183888"
 ---
 # <a name="create-and-manage-active-directory-connections-for-azure-netapp-files"></a>Azure NetApp Files için Active Directory bağlantıları oluşturma ve yönetme
 
@@ -183,7 +183,7 @@ Bu ayar, **NetApp hesabı** altındaki **Active Directory bağlantılarında** y
         Get-AzProviderFeature -ProviderNamespace Microsoft.NetApp -FeatureName ANFAesEncryption
         ```
         
-        Ayrıca, [Azure CLI komutlarını](/cli/azure/feature?preserve-view=true&view=azure-cli-latest) kullanarak `az feature register` `az feature show` özelliği kaydedebilir ve kayıt durumunu görüntüleyebilirsiniz. 
+        Ayrıca, [Azure CLI komutlarını](/cli/azure/feature) kullanarak `az feature register` `az feature show` özelliği kaydedebilir ve kayıt durumunu görüntüleyebilirsiniz. 
 
     * **LDAP Imzalama**   
         LDAP imzalamayı etkinleştirmek için bu onay kutusunu seçin. Bu işlev, Azure NetApp Files hizmeti ve Kullanıcı tarafından belirtilen [Active Directory Domain Services etki alanı denetleyicileri](/windows/win32/ad/active-directory-domain-services)arasında güvenli LDAP aramaları sunar. Daha fazla bilgi için bkz. [ADV190023 | LDAP kanalı bağlamayı ve LDAP IMZALAMAYı etkinleştirmek için Microsoft Kılavuzu](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/ADV190023).  
@@ -205,7 +205,7 @@ Bu ayar, **NetApp hesabı** altındaki **Active Directory bağlantılarında** y
         Get-AzProviderFeature -ProviderNamespace Microsoft.NetApp -FeatureName ANFLdapSigning
         ```
         
-        Ayrıca, [Azure CLI komutlarını](/cli/azure/feature?preserve-view=true&view=azure-cli-latest) kullanarak `az feature register` `az feature show` özelliği kaydedebilir ve kayıt durumunu görüntüleyebilirsiniz. 
+        Ayrıca, [Azure CLI komutlarını](/cli/azure/feature) kullanarak `az feature register` `az feature show` özelliği kaydedebilir ve kayıt durumunu görüntüleyebilirsiniz. 
 
      * **Yedekleme ilkesi kullanıcıları**  
         Azure NetApp Files ile kullanım için oluşturulan bilgisayar hesabına yükseltilmiş ayrıcalıklar gerektiren ek hesaplar ekleyebilirsiniz. Belirtilen hesapların dosya veya klasör düzeyinde NTFS izinlerini değiştirmesine izin verilir. Örneğin, Azure NetApp Files bir SMB dosya paylaşımında veri geçirmek için kullanılan ayrıcalıklı olmayan bir hizmet hesabı belirtebilirsiniz.  
@@ -227,7 +227,7 @@ Bu ayar, **NetApp hesabı** altındaki **Active Directory bağlantılarında** y
         Get-AzProviderFeature -ProviderNamespace Microsoft.NetApp -FeatureName ANFBackupOperator
         ```
         
-        Ayrıca, [Azure CLI komutlarını](/cli/azure/feature?preserve-view=true&view=azure-cli-latest) kullanarak `az feature register` `az feature show` özelliği kaydedebilir ve kayıt durumunu görüntüleyebilirsiniz. 
+        Ayrıca, [Azure CLI komutlarını](/cli/azure/feature) kullanarak `az feature register` `az feature show` özelliği kaydedebilir ve kayıt durumunu görüntüleyebilirsiniz. 
 
     * **Kullanıcı adınız** ve **Parolanız** dahil kimlik bilgileri
 

@@ -4,12 +4,12 @@ description: Bu hızlı başlangıçta, bir Batch hesabı, bir işlem düğümle
 ms.topic: quickstart
 ms.date: 08/17/2020
 ms.custom: mvc
-ms.openlocfilehash: d8584ecea8ddd5934771dbe5945a6172a28c801c
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: 1234a932a732cdb6fda1c412a423ae0b1ea089e9
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97106487"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102184024"
 ---
 # <a name="quickstart-run-your-first-batch-job-in-the-azure-portal"></a>Hızlı başlangıç: Azure portalında ilk Batch işinizi çalıştırma
 
@@ -67,7 +67,7 @@ Batch, havuzu hemen oluşturur ancak işlem düğümlerinin ayrılması ve başl
 
 Birkaç dakika sonra, ayırma durumu **sabit** olarak değişir ve düğümler başlar. Düğümlerin durumunu denetlemek için havuzu seçin ve ardından **düğümler**' i seçin. Bir düğümün durumu **Boşta** olduğunda görevleri çalıştırmaya hazırdır.
 
-## <a name="create-a-job"></a>İş oluşturma
+## <a name="create-a-job"></a>Bir iş oluşturma
 
 Bir havuza sahip olduktan sonra üzerinde çalıştıracak bir iş oluşturun. Batch işi bir veya daha fazla görevin mantıksal grubudur. Bir iş, öncelik gibi görevler arasında ortak olan ayarları ve görevlerin çalıştırılacağı havuzu içerir. Başlangıçta iş hiçbir görev içermez.
 
@@ -83,7 +83,7 @@ Batch kullandığınızda komut satırı, uygulamanızı veya betiğinizi belirt
 
 İlk görevi oluşturmak için:
 
-1. **Ekle**’yi seçin.
+1. **Add (Ekle)** seçeneğini belirleyin.
 
 1. *mytask* adlı bir **Görev Kimliği** girin.
 

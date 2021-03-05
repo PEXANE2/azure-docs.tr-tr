@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/27/2020
 ms.author: duau
-ms.openlocfilehash: ef7870363940a0db4ff09ae9ebd82eedb0e60495
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: e9d719a29bc9a4b3e0428913e5bc1a91bec16623
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92282273"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102183174"
 ---
 # <a name="what-is-azure-front-door"></a>Azure Front Door nedir?
 
@@ -32,7 +32,7 @@ Azure ön kapı, hızlı, güvenli ve yaygın olarak ölçeklenebilir Web uygula
 >[!NOTE]
 > Azure, senaryolarınız için tam olarak yönetilen yük dengeleme çözümleri sunar. 
 > * DNS tabanlı küresel yönlendirme yapmak istiyorsanız ve Aktarım Katmanı Güvenliği (TLS) protokolü sonlandırma ("SSL yük boşaltma"), HTTP/HTTPS isteği veya uygulama katmanı işleme gereksinimlerine sahip **değilseniz** [Traffic Manager](../traffic-manager/traffic-manager-overview.md)gözden geçirin. 
-> * Uygulama katmanındaki bir bölgedeki sunucularınız arasında yük dengelemesi yapmak istiyorsanız, [Application Gateway](../application-gateway/overview.md) gözden geçirin
+> * Uygulama katmanındaki bir bölgedeki sunucularınız arasında yük dengelemesi yapmak istiyorsanız [Application Gateway](../application-gateway/overview.md)gözden geçirin.
 > * Ağ katmanı yük dengelemesi yapmak için [Load Balancer](../load-balancer/load-balancer-overview.md)gözden geçirin. 
 > 
 > Uçtan uca senaryolarınız, bu çözümlerin gerektiğinde birleştirilmesinin avantajlarından yararlanabilir.

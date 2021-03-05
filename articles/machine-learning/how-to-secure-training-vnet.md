@@ -11,12 +11,12 @@ ms.author: peterlu
 author: peterclu
 ms.date: 07/16/2020
 ms.custom: contperf-fy20q4, tracking-python, contperf-fy21q1
-ms.openlocfilehash: 6a89d225b747f116ed75bbe2e6928ec2a74f9c5e
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: cb034c42ceee870ed7be72eb5ff7d29c42b72f36
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101655964"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102183599"
 ---
 # <a name="secure-an-azure-machine-learning-training-environment-with-virtual-networks"></a>Sanal ağlarla Azure Machine Learning eğitim ortamının güvenliğini sağlama
 
@@ -321,7 +321,7 @@ Azure Machine Learning çalışma alanınıza VM veya HDInsight kümesini ekleyi
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu makale, dört bölümlü bir sanal ağ serisinde üç bölümden oluşan bir parçasıdır. Bir sanal ağın güvenliğini nasıl sağlayacağınızı öğrenmek için makalelerin geri kalanına bakın:
+Bu makale, beş bölümlü bir sanal ağ serisinin üçüncü bölümüdür. Bir sanal ağın güvenliğini nasıl sağlayacağınızı öğrenmek için makalelerin geri kalanına bakın:
 
 * [1. kısım: sanal ağa genel bakış](how-to-network-security-overview.md)
 * [2. Bölüm: çalışma alanı kaynaklarını güvenli hale getirme](how-to-secure-workspace-vnet.md)

@@ -6,12 +6,12 @@ author: nabhishek
 ms.author: abnarain
 ms.topic: conceptual
 ms.date: 03/15/2018
-ms.openlocfilehash: 486dc2ab3a14917e8c7bdddf8b5b9c6f9da1a1dc
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: fea572c2e75f62b5e7e7b4634e37da348bdcdaf1
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100374006"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102183497"
 ---
 # <a name="transform-data-by-running-a-databricks-notebook"></a>Databricks Not defteri çalıştırarak verileri dönüştürme
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -55,12 +55,12 @@ Aşağıdaki tabloda JSON tanımında kullanılan JSON özellikleri açıklanmak
 |Özellik|Açıklama|Gerekli|
 |---|---|---|
 |name|İşlem hattındaki etkinliğin adı.|Yes|
-|açıklama|Etkinliğin ne yaptığını açıklayan metin.|No|
+|açıklama|Etkinliğin ne yaptığını açıklayan metin.|Hayır|
 |tür|Databricks Not defteri etkinliği için etkinlik türü Databricksnot Defterinizdir.|Yes|
 |linkedServiceName|Databricks Not defterinin çalıştığı Databricks bağlı hizmetinin adı. Bu bağlı hizmet hakkında bilgi edinmek için bkz. [işlem bağlı hizmetleri](compute-linked-services.md) makalesi.|Yes|
 |Not Defteriyolu|Databricks çalışma alanında çalıştırılacak olan Not defterinin mutlak yolu. Bu yol bir eğik çizgiyle başlamalıdır.|Yes|
-|baseParameters|Key-Value çiftleri dizisi. Temel parametreler her etkinlik çalıştırması için kullanılabilir. Not defteri belirtilmemiş bir parametre alırsa, not defterindeki varsayılan değer kullanılacaktır. [Databricks not defterlerinde](https://docs.databricks.com/api/latest/jobs.html#jobsparampair)parametreler hakkında daha fazla bilgi bulabilirsiniz.|No|
-|kitaplıklar|İşi yürütecek olan kümeye yüklenecek kitaplıkların listesi. Bir dizisi olabilir \<string, object> .|No|
+|baseParameters|Key-Value çiftleri dizisi. Temel parametreler her etkinlik çalıştırması için kullanılabilir. Not defteri belirtilmemiş bir parametre alırsa, not defterindeki varsayılan değer kullanılacaktır. [Databricks not defterlerinde](https://docs.databricks.com/api/latest/jobs.html#jobsparampair)parametreler hakkında daha fazla bilgi bulabilirsiniz.|Hayır|
+|kitaplıklar|İşi yürütecek olan kümeye yüklenecek kitaplıkların listesi. Bir dizisi olabilir \<string, object> .|Hayır|
 
 ## <a name="supported-libraries-for-databricks-activities"></a>Databricks etkinlikleri için desteklenen kitaplıklar
 
@@ -114,10 +114,10 @@ Belirli durumlarda, veri fabrikasında denetim akışı (koşullu denetimler) i�
 
 1. Not defterinizde [dbutils. Not defteri. Exit ("ReturnValue")](/azure/databricks/notebooks/notebook-workflows#notebook-workflows-exit) ve karşılık gelen "ReturnValue" de Data Factory 'ye döndürülür.
 
-2. Veri fabrikasında, gibi bir ifade kullanarak çıktıyı kullanabilirsiniz `'@activity('databricks notebook activity name').output.runOutput'` .
+2. Veri fabrikasında, gibi bir ifade kullanarak çıktıyı kullanabilirsiniz `@{activity('databricks notebook activity name').output.runOutput}` . 
 
    > [!IMPORTANT]
-   > JSON nesnesi geçirçalışıyorsanız, özellik adlarını ekleyerek değerleri alabilirsiniz. Örnek: `'@activity('databricks notebook activity name').output.runOutput.PropertyName'`
+   > JSON nesnesi geçirçalışıyorsanız, özellik adlarını ekleyerek değerleri alabilirsiniz. Örnek: `@{activity('databricks notebook activity name').output.runOutput.PropertyName}`
 
 ## <a name="how-to-upload-a-library-in-databricks"></a>Databricks 'te bir kitaplığı karşıya yükleme
 

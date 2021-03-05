@@ -2,25 +2,41 @@
 author: areddish
 ms.author: areddish
 ms.service: cognitive-services
-ms.date: 09/15/2020
-ms.openlocfilehash: 49b920ede2b0af306af00875a3368cffd853f89b
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.date: 02/25/2021
+ms.openlocfilehash: c2333b019d716b70ed995846f58b021e49371ae0
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98948003"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102184282"
 ---
 Bu kılavuz, bir görüntü sınıflandırma modeli oluşturmak üzere Go için Özel Görüntü İşleme istemci kitaplığı 'nı kullanmaya başlamanıza yardımcı olacak yönergeler ve örnek kod sağlar. Bir proje oluşturacak, Etiketler ekleyecek, projeyi eğtireceksiniz ve projenin tahmin uç nokta URL 'sini programlı bir şekilde test etmek üzere kullanacaksınız. Bu örneği kendi görüntü tanıma uygulamanızı oluşturmak için bir şablon olarak kullanın.
 
 > [!NOTE]
 > Kod _yazmadan bir sınıflandırma modeli derlemek_ ve eğitemak istiyorsanız, bunun yerine [tarayıcı tabanlı kılavuza](../../getting-started-build-a-classifier.md) bakın.
 
+Git için Özel Görüntü İşleme istemci kitaplığını kullanın:
+
+* Yeni bir Özel Görüntü İşleme projesi oluşturma
+* Projeye Etiketler ekleyin
+* Görüntüleri karşıya yükleme ve etiketleme
+* Projeyi eğitme
+* Geçerli yinelemeyi Yayımla
+* Tahmin uç noktasını test etme
+
+Başvuru belgeleri [(eğitim)](https://pkg.go.dev/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/customvision/training) [(tahmin)](https://pkg.go.dev/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.1/customvision/prediction)| Kitaplık kaynak kodu [(eğitim)](https://github.com/Azure/azure-sdk-for-go/tree/master/services/cognitiveservices/v2.1/customvision/training) [(tahmin)](https://github.com/Azure/azure-sdk-for-go/tree/master/services/cognitiveservices/v1.1/customvision/prediction) 
+
 ## <a name="prerequisites"></a>Önkoşullar
 
-- [Go 1.8 +](https://golang.org/doc/install)
-- [!INCLUDE [create-resources](../../includes/create-resources.md)]
+* Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/cognitive-services/)
+* [Go 1.8 +](https://golang.org/doc/install)
+* Azure aboneliğiniz olduktan sonra bir Özel Görüntü İşleme kaynak oluşturun ve bir <a href="https://portal.azure.com/?microsoft_azure_marketplace_ItemHideKey=microsoft_azure_cognitiveservices_customvision#create/Microsoft.CognitiveServicesCustomVision"  title=" "  target="_blank"> <span class="docon docon-navigate-external x-hidden-focus"></span> </a> eğitim ve tahmin kaynağı oluşturmak ve anahtarlarınızı ve uç noktanızı almak için Azure Portal özel görüntü işleme bir kaynak oluşturun. Dağıtım için bekleyin ve **Kaynağa Git** düğmesine tıklayın.
+    * Uygulamanızı Özel Görüntü İşleme bağlamak için oluşturduğunuz kaynaklarda anahtar ve uç nokta gerekir. Anahtarınızı ve uç noktanızı daha sonra hızlı başlangıçta aşağıdaki koda yapıştırabilirsiniz.
+    * `F0`Hizmeti denemek ve daha sonra üretime yönelik ücretli bir katmana yükseltmek için ücretsiz fiyatlandırma katmanını () kullanabilirsiniz.
 
-## <a name="install-the-custom-vision-client-library"></a>Özel Görüntü İşleme istemci kitaplığını yükler
+## <a name="setting-up"></a>Ayarlanıyor
+
+### <a name="install-the-custom-vision-client-library"></a>Özel Görüntü İşleme istemci kitaplığını yükler
 
 Go için Özel Görüntü İşleme bir görüntü analizi uygulaması yazmak için Özel Görüntü İşleme hizmeti istemci kitaplığı gerekir. PowerShell'de aşağıdaki komutu çalıştırın:
 
@@ -33,15 +49,13 @@ veya kullanıyorsanız `dep` , deponuzda çalıştırın:
 dep ensure -add github.com/Azure/azure-sdk-for-go
 ```
 
-[!INCLUDE [get-keys](../../includes/get-keys.md)]
 
 [!INCLUDE [python-get-images](../../includes/python-get-images.md)]
 
-## <a name="add-the-code"></a>Kod ekleme
-
-Tercih ettiğiniz proje dizinine *örnek. go* adlı yeni bir dosya oluşturun.
 
 ## <a name="create-the-custom-vision-project"></a>Özel Görüntü İşleme projesi oluşturma
+
+Örnek adlı yeni bir dosya oluşturun. tercih ettiğiniz proje dizinine *gidin* ve tercih ettiğiniz kod düzenleyicisinde açın.
 
 Yeni bir Özel Görüntü İşleme hizmeti projesi oluşturmak için betiğinize aşağıdaki kodu ekleyin. Abonelik anahtarlarınızı uygun tanımlara ekleyin. Ayrıca, Özel Görüntü İşleme Web sitesinin ayarlar sayfasından uç nokta URL 'nizi alın.
 

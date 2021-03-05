@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: troubleshooting
 ms.date: 07/08/2020
-ms.openlocfilehash: cc3323a3ae2d604557d7e09b38252d63f17c5470
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: d51de526205e8ef663dcfd682ec5858e4bc2f645
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92319919"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102183990"
 ---
 # <a name="status-of-migration-scenarios-supported-by-azure-database-migration-service"></a>Azure veritabanı geçiş hizmeti tarafından desteklenen geçiş senaryolarının durumu
 
@@ -29,7 +29,7 @@ Azure veritabanı geçiş hizmeti ile çevrimdışı veya çevrimiçi geçiş ya
 
 ## <a name="migration-scenario-status"></a>Geçiş senaryosu durumu
 
-Azure veritabanı geçiş hizmeti tarafından desteklenen geçiş senaryolarının durumu zamana göre değişir. Genellikle senaryolar ilk olarak **özel önizlemede**yayımlanır. Özel önizlemeye katılmak için müşterilerin [DMS önizleme sitesi](https://aka.ms/dms-preview)aracılığıyla bir aday göndermesi gerekir. Özel Önizleme sonrasında, senaryo durumu **genel önizlemeye**göre değişir. Azure veritabanı geçiş hizmeti kullanıcıları doğrudan kullanıcı arabiriminden genel önizlemede geçiş senaryolarını deneyebilir. Kaydolma gerekmez.  Bununla birlikte, genel önizlemede geçiş senaryoları, tüm bölgelerde kullanılamayabilir ve son sürümden önce ek değişikliklere karşı devam edebilir. Genel Önizleme sonrasında, senaryo durumu **genel kullanıma**açık olarak değişir. Genel kullanılabilirlik (GA) son sürüm durumudur ve işlevler tümüyle tüm kullanıcılar tarafından erişilebilir olur.
+Azure veritabanı geçiş hizmeti tarafından desteklenen geçiş senaryolarının durumu zamana göre değişir. Genellikle senaryolar ilk olarak **özel önizlemede** yayımlanır. Özel önizlemeye katılmak için müşterilerin [DMS önizleme sitesi](https://aka.ms/dms-preview)aracılığıyla bir aday göndermesi gerekir. Özel Önizleme sonrasında, senaryo durumu **genel önizlemeye** göre değişir. Azure veritabanı geçiş hizmeti kullanıcıları doğrudan kullanıcı arabiriminden genel önizlemede geçiş senaryolarını deneyebilir. Kaydolma gerekmez.  Bununla birlikte, genel önizlemede geçiş senaryoları, tüm bölgelerde kullanılamayabilir ve son sürümden önce ek değişikliklere karşı devam edebilir. Genel Önizleme sonrasında, senaryo durumu **genel kullanıma** açık olarak değişir. Genel kullanılabilirlik (GA) son sürüm durumudur ve işlevler tümüyle tüm kullanıcılar tarafından erişilebilir olur.
 
 ## <a name="migration-scenario-support"></a>Geçiş senaryosu desteği
 
@@ -69,11 +69,11 @@ Aşağıdaki tabloda, çevrimiçi geçişler için Azure veritabanı geçiş hiz
 
 | Hedef  | Kaynak | Destek | Durum |
 | ------------- | ------------- |:-------------:|:-------------:|
-| **Azure SQL DB** | SQL Server | ✔ | GA |
-|   | RDS SQL | ✔ | GA |
+| **Azure SQL DB** | SQL Server | X | GA |
+|   | RDS SQL | X | GA |
 |   | Oracle | X |  |
 | **Azure SQL DB MI** | SQL Server | ✔ | GA |
-|   | RDS SQL | ✔ | GA |
+|   | RDS SQL | X | GA |
 |   | Oracle | X |  |
 | **Azure SQL VM** | SQL Server | X |   |
 |   | Oracle  | X |  |

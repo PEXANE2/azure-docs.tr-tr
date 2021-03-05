@@ -3,12 +3,12 @@ title: Azure Batch düğümler ve havuzlar
 description: İşlem düğümleri ve havuzlar hakkında bilgi edinin ve bunların bir geliştirme açısından Azure Batch iş akışında nasıl kullanıldığını öğrenin.
 ms.topic: conceptual
 ms.date: 11/20/2020
-ms.openlocfilehash: e55be57968eae2a371a21b214dbd15921641e31f
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.openlocfilehash: be38d4f91afcaa1ac31e9b9bbc6d2547da2ee99e
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98741783"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102183667"
 ---
 # <a name="nodes-and-pools-in-azure-batch"></a>Azure Batch düğümler ve havuzlar
 
@@ -74,6 +74,9 @@ Toplu Işte kullanılabilen iki tür havuz yapılandırması vardır.
 [Batch düğüm Aracısı](https://github.com/Azure/Batch/blob/master/changelogs/nodeagent/CHANGELOG.md) , havuzdaki her düğüm üzerinde çalışan ve düğüm ile Batch hizmeti arasında komut ve denetim arabirimini sağlayan bir programdır. Farklı işletim sistemleri için SKU olarak bilinen düğüm aracısının farklı uygulamaları vardır. Sanal Makine Yapılandırmasını temel alan bir havuz oluşturduğunuzda, yalnızca düğümlerin boyutunu ve onları oluşturmak için kullanılan görüntülerin kaynağını değil, aynı zamanda **sanal makine görüntü başvurusunu** ve düğümlere yüklenecek Batch **düğümü aracı SKU'sunu** da belirtmeniz gerekir. Bu havuz özelliklerini belirtme hakkında daha fazla bilgi için bkz. [Azure Batch havuzlarında Linux işlem düğümlerini hazırlama](batch-linux-nodes.md). İsteğe bağlı olarak Market görüntülerinden oluşturulmuş havuz VM'lerine bir veya daha fazla boş veri diski ekleyebilir veya VM'leri oluşturmak için kullanılan özel görüntülere veri diskleri dahil edebilirsiniz. Veri disklerini dahil etmek için, diskleri kullanmak üzere bir VM içinden bağlamanız ve biçimlendirmeniz gerekir.
 
 ### <a name="cloud-services-configuration"></a>Cloud Services yapılandırması
+
+> [!WARNING]
+> Bulut hizmeti yapılandırma havuzları kullanım dışıdır. Lütfen bunun yerine sanal makine yapılandırma havuzlarını kullanın.
 
 **Cloud Services yapılandırması** , havuzun Azure Cloud Services düğümlerinden oluştuğunu belirtir. Cloud Services yalnızca Windows işlem düğümleri sağlar.
 

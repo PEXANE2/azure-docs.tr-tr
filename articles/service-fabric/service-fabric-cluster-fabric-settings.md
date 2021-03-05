@@ -3,12 +3,12 @@ title: Azure Service Fabric küme ayarlarını değiştirme
 description: Bu makalede, özelleştirebileceğiniz doku ayarları ve doku yükseltme ilkeleri açıklanmaktadır.
 ms.topic: reference
 ms.date: 08/30/2019
-ms.openlocfilehash: 34a63a86bc10a787ef077b9067c3fba5a9e4da25
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.openlocfilehash: fed66c1a1908977fbe9769c1aec77945bc38c3dc
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98919791"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102183412"
 ---
 # <a name="customize-service-fabric-cluster-settings"></a>Service Fabric kümesi ayarlarını özelleştirme
 Bu makalede, Service Fabric kümeniz için özelleştirebileceğiniz çeşitli yapı ayarları açıklanmaktadır. Azure 'da barındırılan kümeler için [Azure Portal](https://portal.azure.com) veya Azure Resource Manager şablonu kullanarak ayarları özelleştirebilirsiniz. Daha fazla bilgi için bkz. [Azure kümesinin yapılandırmasını yükseltme](service-fabric-cluster-config-upgrade-azure.md). Tek başına kümeler için, dosyadaki *ClusterConfig.js* güncelleyerek ve kümenizde bir yapılandırma yükseltmesi gerçekleştirerek ayarları özelleştirirsiniz. Daha fazla bilgi için bkz. [tek başına kümenin yapılandırmasını yükseltme](service-fabric-cluster-config-upgrade-windows-server.md).
@@ -130,7 +130,7 @@ Aşağıda, bölümüne göre organize ettiğiniz doku ayarlarının bir listesi
 |EnableTelemetry |Bool, varsayılan değer doğru | Dinamik |Bu, Telemetriyi etkinleştirir veya devre dışı bırakır. |
 |Failuıresonlyhttptelemetri | Bool, varsayılan değer false | Dinamik | HTTP telemetri yakalaması etkinse; yalnızca başarısız istekleri yakala. Bu, telemetri için oluşturulan olayların sayısını kesmeye yardımcı olur. |
 |HttpTelemetryCapturePercentage | int, varsayılan değer 50 ' dir | Dinamik | HTTP telemetri yakalaması etkinse; isteklerin yalnızca rastgele yüzdesini yakala. Bu, telemetri için oluşturulan olayların sayısını kesmeye yardımcı olur. |
-|Maxdiskquocontainer MB |Int, varsayılan değer 65536 ' dir | Dinamik |Windows Fabric günlük dosyaları için disk kotası (MB). |
+|Maxdiskquocontainer MB |Int, varsayılan değer 65536 ' dir | Dinamik |Windows ve Linux Fabric günlük dosyaları için MB cinsinden disk kotası. |
 |ProducerInstances |Dize | Dinamik |DCA üreticisi örneklerinin listesi. |
 
 ## <a name="dnsservice"></a>DnsService
@@ -321,7 +321,7 @@ Aşağıda, bölümüne göre organize ettiğiniz doku ayarlarının bir listesi
 |Maxpercentdeltaunhealthyınodes|int, varsayılan değer 10 ' dur|Statik|Küme yükseltme sistem durumu değerlendirme ilkesi: kümenin sağlıklı olması için izin verilen Delta düğümlerinin en yüksek yüzdesi |
 |MaxPercentUpgradeDomainDeltaUnhealthyNodes|int, varsayılan değer 15 ' tir|Statik|Küme yükseltme sistem durumu değerlendirme ilkesi: bir yükseltme etki alanında, kümenin sağlıklı olması için izin verilen en fazla sağlıksız düğüm Delta yüzdesi |
 
-## <a name="hosting"></a>Hosting
+## <a name="hosting"></a>Barındırma
 
 | **Parametre** | **İzin Verilen Değerler** | **Yükseltme Ilkesi** | **Kılavuz veya kısa açıklama** |
 | --- | --- | --- | --- |
