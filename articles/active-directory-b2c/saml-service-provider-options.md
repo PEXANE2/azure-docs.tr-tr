@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/03/2021
+ms.date: 03/04/2021
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: b9a491b639cd1b960ffe3b7164a0940770792148
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.openlocfilehash: adfe5318949ffa624ebe3548944b558bd0dda9e1
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102107780"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102198481"
 ---
 # <a name="options-for-registering-a-saml-application-in-azure-ad-b2c"></a>Azure AD B2C SAML uygulaması kaydetme seçenekleri
 
@@ -36,7 +36,7 @@ Bu makalede, SAML uygulamanızla Azure Active Directory (Azure AD B2C) bağlanı
 
 ## <a name="encrypted-saml-assertions"></a>Şifrelenmiş SAML onayları
 
-Uygulamanız SAML onayları 'nin şifreli bir biçimde olmasını bekliyorsa, Azure AD B2C ilkesinde şifrelemenin etkinleştirildiğinden emin olun.
+Uygulamanız SAML onayları 'nin şifreli bir biçimde olmasını beklediği zaman, Azure AD B2C ilkesinde şifrelemenin etkinleştirildiğinden emin olmanız gerekir.
 
 Azure AD B2C, SAML onaylama işlemi şifrelemek için hizmet sağlayıcısının ortak anahtar sertifikasını kullanır. Ortak anahtar, aşağıdaki örnekte gösterildiği gibi, ' Use ' anahtar tanımlayıcısı ' Encryption ' olarak ayarlanmış olan SAML uygulamasının meta veri uç noktasında bulunmalıdır:
 
@@ -60,6 +60,54 @@ Azure AD B2C şifreli onaylar göndermek üzere etkinleştirmek için, **WantsEn
     <Protocol Name="SAML2"/>
     <Metadata>
       <Item Key="WantsEncryptedAssertions">true</Item>
+    </Metadata>
+   ..
+  </TechnicalProfile>
+</RelyingParty>
+```
+
+### <a name="encryption-method"></a>Şifreleme yöntemi
+
+SAML onaylama verilerini şifrelemek için kullanılan şifreleme yöntemini yapılandırmak için, `DataEncryptionMethod` bağlı olan taraf içindeki meta veri anahtarını ayarlayın. Olası değerler şunlardır `Aes256` (varsayılan), `Aes192` , `Sha512` , veya `Aes128` . Meta veri, `<EncryptedData>` SAML yanıtında öğesinin değerini denetler.
+
+SAML onaylama verilerini şifrelemek için kullanılan anahtarın kopyasını şifrelemek için kullanılan şifreleme yöntemini yapılandırmak için, `KeyEncryptionMethod` bağlı olan taraf içindeki meta veri anahtarını ayarlayın. Olası değerler `Rsa15` (varsayılan)-RSA ortak anahtar şifreleme standardı (PKCS) sürüm 1,5 algoritması ve `RsaOaep` -RSA En Iyi asimetrik şifreleme doldurma (OAEP) şifreleme algoritması.  Meta veri,  `<EncryptedKey>` SAML yanıtında öğesinin değerini denetler.
+
+Aşağıdaki örnek, `EncryptedAssertion` BIR SAML onay bölümünün bölümünü gösterir. Şifrelenmiş veri yöntemi, `Aes128` ve şifreli anahtar yöntemidir `Rsa15` .
+
+```xml
+<saml:EncryptedAssertion>
+  <xenc:EncryptedData xmlns:xenc="http://www.w3.org/2001/04/xmlenc#"
+    xmlns:dsig="http://www.w3.org/2000/09/xmldsig#" Type="http://www.w3.org/2001/04/xmlenc#Element">
+    <xenc:EncryptionMethod Algorithm="http://www.w3.org/2001/04/xmlenc#aes128-cbc" />
+    <dsig:KeyInfo>
+      <xenc:EncryptedKey>
+        <xenc:EncryptionMethod Algorithm="http://www.w3.org/2001/04/xmlenc#rsa-1_5" />
+        <xenc:CipherData>
+          <xenc:CipherValue>...</xenc:CipherValue>
+        </xenc:CipherData>
+      </xenc:EncryptedKey>
+    </dsig:KeyInfo>
+    <xenc:CipherData>
+      <xenc:CipherValue>...</xenc:CipherValue>
+    </xenc:CipherData>
+  </xenc:EncryptedData>
+</saml:EncryptedAssertion>
+```
+
+Şifrelenmiş onayların biçimini değiştirebilirsiniz. Şifreleme biçimini yapılandırmak için, `UseDetachedKeys` bağlı olan taraf içindeki meta veri anahtarını ayarlayın. Olası değerler: `true` , veya `false` (varsayılan). Değer olarak ayarlandığında `true` , ayrılmış anahtarlar şifreli onaylama 'yı öğesinin bir alt öğesi olarak `EncrytedAssertion` öğesine ekler `EncryptedData` .
+
+Şifreleme yöntemini ve biçimini yapılandırın, [bağlı olan taraf teknik profili](relyingparty.md#technicalprofile)içindeki meta veri anahtarlarını kullanın:
+
+```xml
+<RelyingParty>
+  <DefaultUserJourney ReferenceId="SignUpOrSignIn" />
+  <TechnicalProfile Id="PolicyProfile">
+    <DisplayName>PolicyProfile</DisplayName>
+    <Protocol Name="SAML2"/>
+    <Metadata>
+      <Item Key="DataEncryptionMethod">Aes128</Item>
+      <Item Key="KeyEncryptionMethod">Rsa15</Item>
+      <Item Key="UseDetachedKeys">false</Item>
     </Metadata>
    ..
   </TechnicalProfile>
@@ -114,7 +162,7 @@ SAML test uygulaması ile test etmek için kullanabileceğiniz, örnek bir ilke 
 
 SAML onaylama işlemi imzalamak için kullanılan imza algoritmasını yapılandırabilirsiniz. Olası değerler şunlardır,, `Sha256` `Sha384` `Sha512` veya `Sha1` . Teknik profilin ve uygulamanın aynı imza algoritmasını kullanmasından emin olun. Yalnızca sertifikanızın desteklediği algoritmayı kullanın.
 
-`XmlSignatureAlgorithm`RelyingParty Metadata düğümündeki Metadata anahtarını kullanarak imza algoritmasını yapılandırın.
+`XmlSignatureAlgorithm`Bağlı olan taraf meta veri öğesi içindeki meta veri anahtarını kullanarak imza algoritmasını yapılandırın.
 
 ```xml
 <RelyingParty>
@@ -132,7 +180,7 @@ SAML onaylama işlemi imzalamak için kullanılan imza algoritmasını yapıland
 
 ## <a name="saml-response-lifetime"></a>SAML yanıtı ömrü
 
-SAML yanıtının geçerli kaldığı sürenin uzunluğunu yapılandırabilirsiniz. `TokenLifeTimeInSeconds`SAML belirteci verenin teknik profili içindeki meta veri öğesini kullanarak yaşam süresini ayarlayın. Bu değer, `NotBefore` belirteç verme sırasında hesaplanan zaman damgasından geçebilecek saniye sayısıdır. Otomatik olarak, bu için çekilen zaman geçerli zaman. Varsayılan yaşam süresi 300 saniyedir (5 dakika).
+SAML yanıtının geçerli kaldığı sürenin uzunluğunu yapılandırabilirsiniz. `TokenLifeTimeInSeconds`SAML belirteci verenin teknik profili içindeki meta veri öğesini kullanarak yaşam süresini ayarlayın. Bu değer, `NotBefore` belirteç verme sırasında hesaplanan zaman damgasından geçebilecek saniye sayısıdır. Varsayılan yaşam süresi 300 saniyedir (5 dakika).
 
 ```xml
 <ClaimsProvider>
@@ -170,6 +218,26 @@ SAML yanıt zaman damgasına uygulanan zaman çarpıklığı yapılandırabilirs
       <OutputTokenFormat>SAML2</OutputTokenFormat>
       <Metadata>
         <Item Key="TokenNotBeforeSkewInSeconds">120</Item>
+      </Metadata>
+      ...
+    </TechnicalProfile>
+```
+
+## <a name="remove-milliseconds-from-date-and-time"></a>Tarihi ve saati geçen süreyi kaldır
+
+Bu sürenin SAML yanıtı içindeki tarih saat değerlerinden (IssueInstant, NotBefore, NotOnOrAfter ve Authnınstant), milliseconds 'in kaldırılıp kaldırılmayacağını belirtebilirsiniz. Milisaniyeyi kaldırmak için, `RemoveMillisecondsFromDateTime
+` bağlı olan taraf içindeki meta veri anahtarını ayarlayın. Olası değerler: `false` (varsayılan) veya `true` .
+
+```xml
+<ClaimsProvider>
+  <DisplayName>Token Issuer</DisplayName>
+  <TechnicalProfiles>
+    <TechnicalProfile Id="Saml2AssertionIssuer">
+      <DisplayName>Token Issuer</DisplayName>
+      <Protocol Name="SAML2"/>
+      <OutputTokenFormat>SAML2</OutputTokenFormat>
+      <Metadata>
+        <Item Key="RemoveMillisecondsFromDateTime">true</Item>
       </Metadata>
       ...
     </TechnicalProfile>

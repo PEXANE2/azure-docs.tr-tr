@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/02/2020
 ms.author: mathoma
-ms.openlocfilehash: 5a2540aeb36cfcb2048ec994bbb486badc8a68d1
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: 4ab4e40e1dd4bbaf9ae73ab545285f5ae6261e27
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97358818"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102201779"
 ---
 # <a name="cluster-configuration-best-practices-sql-server-on-azure-vms"></a>Küme yapılandırması en iyi yöntemleri (Azure VM'leri üzerinde SQL Server)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -47,9 +47,9 @@ Teknik olarak, üç düğümlü bir küme, çekirdek kaynağı olmadan tek bir d
 Aşağıdaki tabloda, bir Azure VM ile kullanılması önerilen sırada kullanılabilir olan çekirdek seçenekleri, disk tanığı tercih edilen seçim olarak listelenmektedir: 
 
 
-||[Disk tanığı](/windows-server/failover-clustering/manage-cluster-quorum#configure-the-cluster-quorum)  |[Bulut tanığı](/windows-server/failover-clustering/deploy-cloud-witness)  |[Dosya paylaşımı tanığı](/windows-server/failover-clustering/manage-cluster-quorum#configure-the-cluster-quorum)  |
+||[Disk tanığı](/windows-server/failover-clustering/manage-cluster-quorum#configure-the-cluster-quorum)  |[Bulut tanığı](/windows-server/failover-clustering/deploy-cloud-witness)  |[Dosya paylaşma tanığı](/windows-server/failover-clustering/manage-cluster-quorum#configure-the-cluster-quorum)  |
 |---------|---------|---------|---------|
-|**Desteklenen işletim sistemi**| Tümü |Windows Server 2016 +| Tümü|
+|**Desteklenen İşletim Sistemi**| Tümü |Windows Server 2016 +| Tümü|
 
 
 ### <a name="disk-witness"></a>Disk tanığı
@@ -76,9 +76,7 @@ Başlamak için bkz. [bulut tanığını yapılandırma](/windows-server/failove
 
 ### <a name="file-share-witness"></a>Dosya paylaşımı tanığı
 
-Dosya paylaşma tanığı, genellikle Windows Server çalıştıran bir dosya sunucusunda yapılandırılan bir SMB dosya paylaşımıdır. Kümeleme bilgilerini bir tanık. log dosyasında tutar, ancak küme veritabanının bir kopyasını depolamaz. Azure 'da, dosya paylaşma tanığı olarak kullanmak üzere bir [Azure dosya paylaşımının](../../../storage/files/storage-how-to-create-file-share.md) yapılandırılması veya ayrı bir sanal makinede bir dosya paylaşımının kullanılması olabilir.
-
-Azure dosya paylaşımından kullanacaksanız, [Premium dosya paylaşımının bağlanması](failover-cluster-instance-premium-file-share-manually-configure.md#mount-premium-file-share)için kullanılan aynı işlemle bağlayabilirsiniz. 
+Dosya paylaşma tanığı, genellikle Windows Server çalıştıran bir dosya sunucusunda yapılandırılan bir SMB dosya paylaşımıdır. Kümeleme bilgilerini bir tanık. log dosyasında tutar, ancak küme veritabanının bir kopyasını depolamaz. Azure 'da, ayrı bir sanal makinede bir dosya paylaşımından yapılandırma yapabilirsiniz.
 
 Başlamak için bkz. [dosya paylaşma tanığını yapılandırma](/windows-server/failover-clustering/manage-cluster-quorum#configure-the-cluster-quorum).
 

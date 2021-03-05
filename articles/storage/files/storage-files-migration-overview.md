@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 3/18/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: 995ae176a8eec58f8dc9522e6fac6fd78170014d
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.openlocfilehash: 4a874e6f1e026a1888b9039799be71c95f040ac6
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94628926"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102202357"
 ---
 # <a name="migrate-to-azure-file-shares"></a>Azure dosya paylaşımlarına geçirme
 
@@ -34,8 +34,8 @@ Herhangi bir geçişte anahtar, dosyalarınızı geçerli depolama konumlarında
 
 Bir dosyanın iki temel bileşeni aşağıda verilmiştir:
 
-- **Veri akışı** : dosya içeriğini depolayan bir dosyanın veri akışı.
-- **Dosya meta verileri** : dosya meta verileri aşağıdaki alt bileşenlere sahiptir:
+- **Veri akışı**: dosya içeriğini depolayan bir dosyanın veri akışı.
+- **Dosya meta verileri**: dosya meta verileri aşağıdaki alt bileşenlere sahiptir:
    * Salt okuma gibi dosya öznitelikleri
    * *NTFS izinleri* veya *dosya ve klasör ACL 'leri* olarak başvurulabilen dosya izinleri
    * Zaman damgaları, en önemlisi oluşturma ve son değiştirilme zaman damgaları
@@ -111,7 +111,7 @@ Microsoft ve diğerleri tarafından kullanılabilen birkaç dosya kopyalama arac
 
     Aracı ilk kez çalıştırdığınızda verilerin toplu bölümünü kopyalar. Bu ilk çalıştırma en son bir kez sürebilir. Bu, genellikle veri kaynağını iş işlemleriniz için çevrimdışı duruma almak istediğinizden daha uzun sürer.
 
-    Kaynağı bir hedefe yansıtarak ( **Robocopy/MIR** 'de olduğu gibi), aracı aynı kaynak ve hedefte bir kez daha çalıştırabilirsiniz. Yalnızca önceki çalıştırdıktan sonra gerçekleşen kaynak değişikliklerini taşıması gerektiğinden, çalıştırma çok daha hızlıdır. Kopyalama aracını bu şekilde yeniden çalıştırmak, kapalı kalma süresini önemli ölçüde azaltabilir.
+    Kaynağı bir hedefe yansıtarak ( **Robocopy/MIR**'de olduğu gibi), aracı aynı kaynak ve hedefte bir kez daha çalıştırabilirsiniz. Yalnızca önceki çalıştırdıktan sonra gerçekleşen kaynak değişikliklerini taşıması gerektiğinden, çalıştırma çok daha hızlıdır. Kopyalama aracını bu şekilde yeniden çalıştırmak, kapalı kalma süresini önemli ölçüde azaltabilir.
 
 Aşağıdaki tabloda, Microsoft araçları ve Azure dosya paylaşımları için geçerli uygunluğu sınıflandırmaktadır:
 
@@ -153,4 +153,4 @@ Bu makalede bahsedilen Azure dosyaları teknolojileri hakkında daha fazla bilgi
 
 * [Azure dosya paylaşımında genel bakış](storage-files-introduction.md)
 * [Azure Dosya Eşitleme dağıtımı planlama](storage-sync-files-planning.md)
-* [Azure Dosya Eşitleme: bulut katmanlaması](storage-sync-cloud-tiering.md)
+* [Azure Dosya Eşitleme: bulut katmanlaması](storage-sync-cloud-tiering-overview.md)

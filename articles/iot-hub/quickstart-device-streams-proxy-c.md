@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.custom: references_regions
 ms.date: 03/14/2019
 ms.author: robinsh
-ms.openlocfilehash: 2305a87b91160b5de90f4cbfbc9418adc50bb92a
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: a6e3407d9ddb799ab0ee5846acc149048f593563
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98624414"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102202017"
 ---
 # <a name="quickstart-enable-ssh-and-rdp-over-an-iot-hub-device-stream-by-using-a-c-proxy-application-preview"></a>Hızlı başlangıç: C proxy uygulaması (Önizleme) kullanarak IoT Hub cihaz akışı üzerinden SSH ve RDP 'yi etkinleştirme
 
@@ -120,7 +120,7 @@ Bu hızlı başlangıç için, [C Için Azure IoT cihaz SDK 'sını](iot-hub-dev
 
 ## <a name="register-a-device"></a>Cihaz kaydetme
 
-Bir cihazın bağlanabilmesi için IoT hub’ınıza kaydedilmesi gerekir. Bu bölümde, sanal bir cihazı kaydetmek için [IoT uzantısıyla](/cli/azure/ext/azure-iot/iot?view=azure-cli-latest&preserve-view=true) birlikte Azure Cloud Shell kullanırsınız.
+Bir cihazın bağlanabilmesi için IoT hub’ınıza kaydedilmesi gerekir. Bu bölümde, sanal bir cihazı kaydetmek için [IoT uzantısıyla](/cli/azure/ext/azure-iot/iot) birlikte Azure Cloud Shell kullanırsınız.
 
 1. Cihaz kimliğini oluşturmak için Cloud Shell ' de aşağıdaki komutu çalıştırın:
 

@@ -3,12 +3,12 @@ title: Azure Event Grid içindeki olay etki alanları
 description: Bu makalede, çeşitli iş kuruluşlarınız, müşterileriniz veya uygulamalarınız için özel olayların akışını yönetmek üzere olay etki alanlarının nasıl kullanılacağı açıklanır.
 ms.topic: conceptual
 ms.date: 07/07/2020
-ms.openlocfilehash: 9b313784cd006087f3c2f1354053540cc9224782
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: 46a50a8ecc50bd1b80efcba41228564df1c36c9f
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92328836"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102198685"
 ---
 # <a name="understand-event-domains-for-managing-event-grid-topics"></a>Event Grid yönetmek için olay etki alanlarını anlama
 
@@ -25,15 +25,8 @@ Olay etki alanı, aynı uygulamayla ilgili çok sayıda Event Grid konu başlı�
 
 Olay etki alanları, olaylarını yayımlamak için Azure Hizmetleri (depolama ve IoT Hub gibi) tarafından kullanılan mimaride kullanılabilir hale getirir. Bunlar binlerce konuya etkinlik yayımlamanıza izin verir. Etki alanları, Kiracılarınızı bölümleyerek her konu için yetkilendirme ve kimlik doğrulama denetimi de sağlar.
 
-### <a name="example-use-case"></a>Örnek kullanım örneği
-
-Olay etki alanları bir örnek kullanılarak kolayca açıklanmıştır. Tractors, dijitalde ekipman ve diğer ağır makineleri ürettiğiniz contoso oluşturma makinemizin olduğunu varsayalım. İşletmeyi çalıştırmanın bir parçası olarak, donanım bakımı, sistem durumu ve sözleşme güncelleştirmeleri hakkındaki müşterilere gerçek zamanlı bilgiler gönderirsiniz. Bu bilgilerin tümü, uygulamanız, müşteri uç noktaları ve müşterilerin ayarladığı diğer altyapıda dahil olmak üzere çeşitli uç noktalara gider.
-
-Olay etki alanları, contoso oluşturma makineleri tek bir olay varlığı olarak modelleyebilir. Müşterilerinizin her biri etki alanı içinde bir konu olarak temsil edilir. Kimlik doğrulama ve yetkilendirme Azure Active Directory kullanılarak işlenir. Müşterilerinizin her biri konuya abone olabilir ve olaylarını kendilerine teslim edebilir. Olay etki alanı üzerinden yönetilen erişim, yalnızca kendi konularına erişebilmelerini sağlar.
-
-Ayrıca, size tüm müşteri olaylarınızı yayımlayabilmeniz için tek bir uç nokta sağlar. Event Grid her konunun yalnızca kiracının kapsamına alınmış olayların farkında olduğundan emin olunacaktır.
-
-![Contoso yapımı örneği](./media/event-domains/contoso-construction-example.png)
+## <a name="example-use-case"></a>Örnek kullanım örneği
+[!INCLUDE [event-grid-domain-example-use-case.md](../../includes/event-grid-domain-example-use-case.md)]
 
 ## <a name="access-management"></a>Erişim yönetimi
 
@@ -107,6 +100,8 @@ Bu limitlere uygun değilse, bir destek bileti açarak veya uygulamasına bir e-
 Olay etki alanları, Event Grid ' deki diğer tüm özelliklerin kullandığı aynı [işlem fiyatlandırmasını](https://azure.microsoft.com/pricing/details/event-grid/) kullanır.
 
 İşlemler, olay etki alanlarında özel konularda olduğu gibi çalışır. Bir olayın olay etki alanına her giriş işlemi bir işlemdir ve bir olaya yönelik her bir teslim girişimi bir işlemdir.
+
+
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/20/2020
 ms.author: mbaldwin
-ms.openlocfilehash: b6f4610887092b1dac5cdc85622739318d5921d7
-ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
+ms.openlocfilehash: 1ca8bc5c82540b0dc02959d26b452554ef294368
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96852243"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102200538"
 ---
 # <a name="tutorial-deploying-hsms-into-an-existing-virtual-network-using-the-azure-cli"></a>Öğretici: Azure CLı kullanarak mevcut bir sanal ağa HSMs dağıtma
 
@@ -38,7 +38,7 @@ Bu öğretici, var olan bir sanal ağla tümleştirildiği bir dizi HSM 'ye ve g
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-Azure ayrılmış HSM Şu anda Azure portal kullanılamıyor. Hizmetle tüm etkileşim, komut satırı aracılığıyla veya PowerShell kullanılarak yapılır. Bu öğretici Azure Cloud Shell komut satırı (CLı) arabirimini kullanacaktır. Azure CLı 'yi yeni kullanmaya başladıysanız, başlangıç yönergelerini buradan izleyin: [Azure clı 2,0 kullanmaya](/cli/azure/get-started-with-azure-cli?view=azure-cli-latest&preserve-view=true)başlayın.
+Azure ayrılmış HSM Şu anda Azure portal kullanılamıyor. Hizmetle tüm etkileşim, komut satırı aracılığıyla veya PowerShell kullanılarak yapılır. Bu öğretici Azure Cloud Shell komut satırı (CLı) arabirimini kullanacaktır. Azure CLı 'yi yeni kullanmaya başladıysanız, başlangıç yönergelerini buradan izleyin: [Azure clı 2,0 kullanmaya](/cli/azure/get-started-with-azure-cli)başlayın.
 
 Varsayımlar:
 
@@ -256,7 +256,7 @@ az group delete \
 Öğreticideki adımları tamamladıktan sonra, özel HSM kaynakları sağlanır ve HSM ile iletişimi etkinleştirmek için gerekli HSM 'ler ve daha fazla ağ bileşeni içeren bir sanal ağınız vardır.  Artık bu dağıtımı tercih ettiğiniz dağıtım mimariniz için gereken diğer kaynaklarla karmaşıklama eden bir pozisyonda olursunuz. Dağıtımınızı planlamaya yardımcı olma hakkında daha fazla bilgi için bkz. kavramlar belgeleri.
 Birincil bölgedeki iki HSM 'yi raf düzeyinde adresleyen ve bir ikincil bölgedeki iki HSM 'nin bölgesel kullanılabilirliği ele aldığı bir tasarımın olması önerilir. 
 
-* [Yüksek Kullanılabilirlik](high-availability.md)
+* [Yüksek kullanılabilirlik](high-availability.md)
 * [Fiziksel Güvenlik](physical-security.md)
 * [Ağ](networking.md)
 * [Desteklenebilirlik](supportability.md)

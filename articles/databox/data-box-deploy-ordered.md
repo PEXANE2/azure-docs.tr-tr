@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: tutorial
 ms.date: 01/13/2021
 ms.author: alkohli
-ms.openlocfilehash: 26e8f08d4b901a9ea57da826d9441d23508c4a4c
-ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
+ms.openlocfilehash: f2bad214045710fe861040514beb3c536664d684
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98797611"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102201898"
 ---
 # <a name="tutorial-order-azure-data-box"></a>Öğretici: Azure Data Box sipariş etme
 
@@ -413,7 +413,7 @@ Bir cihaz sıralamak için Azure CLı kullanarak aşağıdaki adımları uygulay
 
 1. Data Box siparişiniz için ayarlarınızı yazın. Bu ayarlar kişisel/iş bilgilerinizi, abonelik adınızı, cihaz bilgilerini ve gönderi bilgilerini içerir. Data Box sırasını oluşturmak için CLı komutunu çalıştırırken bu ayarları parametre olarak kullanmanız gerekir. Aşağıdaki tabloda, için kullanılan parametre ayarları gösterilmektedir `az databox job create` :
 
-   | Ayar (parametre) | Description |  Örnek değer |
+   | Ayar (parametre) | Açıklama |  Örnek değer |
    |---|---|---|
    |resource-group| Var olan bir taneyi kullanın veya yenisini oluşturun. Kaynak grubu, birlikte yönetilebilen ve ya dağıtılabilen kaynaklardan oluşan mantıksal kapsayıcıdır. | myresourcegroup|
    |name| Oluşturmakta olduğunuz siparişin adı. | "mydataboxorder"|
@@ -437,7 +437,7 @@ Bir cihaz sıralamak için Azure CLı kullanarak aşağıdaki adımları uygulay
    |sorgu| JMESPath sorgu dizesi. Daha fazla bilgi için bkz. [Jmespath](http://jmespath.org/). | --sorgu <string>|
    |ayrıntılı| Ayrıntılı günlük kaydı ekleyin. | --ayrıntılı |
 
-2. Komut istemindeki veya terminalinizde, Azure Data Box siparişinizi oluşturmak için [az Data Box Job Create](/cli/azure/ext/databox/databox/job?view=azure-cli-latest#ext-databox-az-databox-job-create&preserve-view=true) komutunu çalıştırın.
+2. Komut istemindeki veya terminalinizde, Azure Data Box siparişinizi oluşturmak için [az Data Box Job Create](/cli/azure/ext/databox/databox/job#ext-databox-az-databox-job-create) komutunu çalıştırın.
 
    ```azurecli
    az databox job create --resource-group <resource-group> --name <order-name> --location <azure-location> --sku <databox-device-type> --contact-name <contact-name> --phone <phone-number> --email-list <email-list> --street-address1 <street-address-1> --street-address2 <street-address-2> --city "contact-city" --state-or-province <state-province> --country <country> --postal-code <postal-code> --company-name <company-name> --storage-account "storage-account"
@@ -532,7 +532,7 @@ Bir cihazı sıralamak için Azure PowerShell kullanarak aşağıdaki adımları
 
 2. Data Box siparişiniz için ayarlarınızı yazın. Bu ayarlar kişisel/iş bilgilerinizi, abonelik adınızı, cihaz bilgilerini ve gönderi bilgilerini içerir. Data Box sırasını oluşturmak için PowerShell komutunu çalıştırırken bu ayarları parametre olarak kullanmanız gerekir. Aşağıdaki tabloda [New-AzDataBoxJob](/powershell/module/az.databox/New-AzDataBoxJob)için kullanılan parametre ayarları gösterilmektedir.
 
-    | Ayar (parametre) | Description |  Örnek değer |
+    | Ayar (parametre) | Açıklama |  Örnek değer |
     |---|---|---|
     |ResourceGroupName [gerekli]| Mevcut bir kaynak grubunu kullanın. Kaynak grubu, birlikte yönetilebilen ve ya dağıtılabilen kaynaklardan oluşan mantıksal kapsayıcıdır. | myresourcegroup|
     |Ad [gerekli]| Oluşturmakta olduğunuz siparişin adı. | "mydataboxorder"|
@@ -605,7 +605,7 @@ Microsoft ardından cihazınızı hazırlar ve bölgeye uygun gönderim şirketi
 
 ### <a name="track-a-single-order"></a>Tek bir siparişi izleyin
 
-Tek, var olan bir Azure Data Box sıra hakkında izleme bilgileri almak için, öğesini çalıştırın [`az databox job show`](/cli/azure/ext/databox/databox/job?view=azure-cli-latest#ext-databox-az-databox-job-show&preserve-view=true) . Bu komut, şu sıralama hakkında bilgiler görüntüler: ad, kaynak grubu, izleme bilgileri, abonelik KIMLIĞI, iletişim bilgileri, sevkiyat türü ve cihaz SKU 'su.
+Tek, var olan bir Azure Data Box sıra hakkında izleme bilgileri almak için, öğesini çalıştırın [`az databox job show`](/cli/azure/ext/databox/databox/job#ext-databox-az-databox-job-show) . Bu komut, şu sıralama hakkında bilgiler görüntüler: ad, kaynak grubu, izleme bilgileri, abonelik KIMLIĞI, iletişim bilgileri, sevkiyat türü ve cihaz SKU 'su.
 
    ```azurecli
    az databox job show --resource-group <resource-group> --name <order-name>
@@ -646,7 +646,7 @@ Tek, var olan bir Azure Data Box sıra hakkında izleme bilgileri almak için, �
 
 ### <a name="list-all-orders"></a>Tüm siparişleri Listele
 
-Birden çok cihaz siparişi aldıysanız, [`az databox job list`](/cli/azure/ext/databox/databox/job?view=azure-cli-latest#ext-databox-az-databox-job-list&preserve-view=true) tüm Azure Data Box siparişlerinizi görüntülemek için çalıştırabilirsiniz. Komut, belirli bir kaynak grubuna ait olan tüm siparişleri listeler. Çıktıda da gösterildiği gibi: sipariş adı, Sevkiyat durumu, Azure bölgesi, teslim türü, sipariş durumu. İptal edilen siparişler listeye de dahildir.
+Birden çok cihaz siparişi aldıysanız, [`az databox job list`](/cli/azure/ext/databox/databox/job#ext-databox-az-databox-job-list) tüm Azure Data Box siparişlerinizi görüntülemek için çalıştırabilirsiniz. Komut, belirli bir kaynak grubuna ait olan tüm siparişleri listeler. Çıktıda da gösterildiği gibi: sipariş adı, Sevkiyat durumu, Azure bölgesi, teslim türü, sipariş durumu. İptal edilen siparişler listeye de dahildir.
 Komut ayrıca her bir siparişin zaman damgalarını görüntüler.
 
 ```azurecli
@@ -765,7 +765,7 @@ Sipariş verdikten sonra, sipariş durumu işlendi olmadan önce herhangi bir no
 
 ### <a name="cancel-an-order"></a>Siparişi iptal etme
 
-Azure Data Box sırayı iptal etmek için, öğesini çalıştırın [`az databox job cancel`](/cli/azure/ext/databox/databox/job?view=azure-cli-latest#ext-databox-az-databox-job-cancel&preserve-view=true) . Siparişi iptal etme nedeninizi belirtmeniz gerekir.
+Azure Data Box sırayı iptal etmek için, öğesini çalıştırın [`az databox job cancel`](/cli/azure/ext/databox/databox/job#ext-databox-az-databox-job-cancel) . Siparişi iptal etme nedeninizi belirtmeniz gerekir.
 
    ```azurecli
    az databox job cancel --resource-group <resource-group> --name <order-name> --reason <cancel-description>
@@ -802,7 +802,7 @@ Azure Data Box sırayı iptal etmek için, öğesini çalıştırın [`az databo
 
 ### <a name="delete-an-order"></a>Bir siparişi silme
 
-Azure Data Box sırayı iptal etmiş olmanız durumunda [`az databox job delete`](/cli/azure/ext/databox/databox/job?view=azure-cli-latest#ext-databox-az-databox-job-delete&preserve-view=true) siparişi silebilirsiniz.
+Azure Data Box sırayı iptal etmiş olmanız durumunda [`az databox job delete`](/cli/azure/ext/databox/databox/job#ext-databox-az-databox-job-delete) siparişi silebilirsiniz.
 
    ```azurecli
    az databox job delete --name [-n] <order-name> --resource-group <resource-group> [--yes] [--verbose]

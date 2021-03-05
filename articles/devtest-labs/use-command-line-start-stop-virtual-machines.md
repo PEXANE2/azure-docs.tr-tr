@@ -3,12 +3,12 @@ title: VM 'Leri başlatmak ve durdurmak için komut satırı araçlarını kulla
 description: Azure DevTest Labs ' de sanal makineleri başlatmak ve durdurmak için komut satırı araçlarını kullanmayı öğrenin.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: e5a42658f2b83f101271f158c9af70833601b56d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2b9be3d09c488fdae211d81daf88e8807bc7b4dc
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85476425"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102201201"
 ---
 # <a name="use-command-line-tools-to-start-and-stop-azure-devtest-labs-virtual-machines"></a>Azure DevTest Labs sanal makineleri başlatmak ve durdurmak için komut satırı araçlarını kullanma
 Bu makalede, Azure DevTest Labs bir laboratuvardaki sanal makineleri başlatmak veya durdurmak için Azure PowerShell veya Azure CLı kullanarak nasıl kullanılacağı gösterilmektedir. Bu işlemleri otomatikleştirmek için PowerShell/CLı betikleri oluşturabilirsiniz. 
@@ -66,7 +66,7 @@ else {
 
 
 ## <a name="azure-cli"></a>Azure CLI
-[Azure CLI](/cli/azure/get-started-with-azure-cli?view=azure-cli-latest) , DevTest Labs VM 'lerinin başlatılmasına ve durdurulmasına otomatik hale getirmenin bir başka yoludur. Azure CLı, farklı işletim sistemlerine [yüklenebilir](/cli/azure/install-azure-cli?view=azure-cli-latest) . Aşağıdaki betik, laboratuvara bir sanal makineyi başlatma ve durdurma komutları sağlar. 
+[Azure CLI](/cli/azure/get-started-with-azure-cli) , DevTest Labs VM 'lerinin başlatılmasına ve durdurulmasına otomatik hale getirmenin bir başka yoludur. Azure CLı, farklı işletim sistemlerine [yüklenebilir](/cli/azure/install-azure-cli) . Aşağıdaki betik, laboratuvara bir sanal makineyi başlatma ve durdurma komutları sağlar. 
 
 ```azurecli
 # Sign in to Azure

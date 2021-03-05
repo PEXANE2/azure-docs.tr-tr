@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 4/15/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: d46a20079919f052ed343c9702ba02ce7f109b5c
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 3395dc3010f7ae3aabadda8105c1765a9c300988
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "102036188"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102201269"
 ---
 # <a name="tutorial-build-out-an-end-to-end-solution"></a>Öğretici: uçtan uca bir çözüm oluşturma
 
@@ -408,9 +408,9 @@ Bu Öğreticiyi tamamladıktan sonra, ne yapmak istediğinize bağlı olarak kal
 
 [!INCLUDE [digital-twins-cleanup-basic.md](../../includes/digital-twins-cleanup-basic.md)]
 
-* **Bu makalede ayarladığınız Azure dijital TWINS örneğini kullanmaya devam etmek, ancak modellerinin, TWINS ve ilişkilerinin bazılarını veya tümünü temizlemek** için, kaldırmak istediğiniz öğeleri silmek üzere bir [Azure Cloud Shell](https://shell.azure.com) penceresinde [az DT](/cli/azure/ext/azure-iot/dt?view=azure-cli-latest&preserve-view=true) CLI komutlarını kullanabilirsiniz.
+* **Bu makalede ayarladığınız Azure dijital TWINS örneğini kullanmaya devam etmek, ancak modellerinin, TWINS ve ilişkilerinin bazılarını veya tümünü temizlemek** için, kaldırmak istediğiniz öğeleri silmek üzere bir [Azure Cloud Shell](https://shell.azure.com) penceresinde [az DT](/cli/azure/ext/azure-iot/dt) CLI komutlarını kullanabilirsiniz.
 
-    Bu seçenek, bu öğreticide (IoT Hub, Azure Işlevleri uygulaması vb.) oluşturulan diğer Azure kaynaklarından hiçbirini kaldırmayacak. Her kaynak türü için uygun olan [dt komutlarını](/cli/azure/reference-index?view=azure-cli-latest&preserve-view=true) kullanarak bunları tek tek silebilirsiniz.
+    Bu seçenek, bu öğreticide (IoT Hub, Azure Işlevleri uygulaması vb.) oluşturulan diğer Azure kaynaklarından hiçbirini kaldırmayacak. Her kaynak türü için uygun olan [dt komutlarını](/cli/azure/reference-index) kullanarak bunları tek tek silebilirsiniz.
 
 Yerel makinenizden proje klasörünü de silmek isteyebilirsiniz.
 

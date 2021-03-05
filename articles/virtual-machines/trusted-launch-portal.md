@@ -7,14 +7,14 @@ ms.reviewer: cynthn
 ms.service: virtual-machines
 ms.subservice: security
 ms.topic: how-to
-ms.date: 03/02/2021
+ms.date: 03/03/2021
 ms.custom: template-how-to
-ms.openlocfilehash: f8a6758cdf0a6da709a564c1e17c56a2fe5625b0
-ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
+ms.openlocfilehash: fca11ce1cfa09fb680c2b288e40fa5f51337bdb8
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102124661"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102200793"
 ---
 # <a name="deploy-a-vm-with-trusted-launch-enabled-preview"></a>Güvenilir başlatma etkin bir VM dağıtma (Önizleme)
 
@@ -37,7 +37,7 @@ Güvenilir başlatma etkin olan bir sanal makine oluşturun.
 1. **Sanal makineler** sayfasında, **Ekle**' yi ve ardından **sanal makine**' yi seçin.
 1. **Proje ayrıntıları**' nın altında, doğru aboneliğin seçildiğinden emin olun.
 1. **Kaynak grubu** altında **Yeni oluştur** ' u seçin ve kaynak grubunuz için bir ad yazın veya açılan listeden var olan bir kaynak grubunu seçin.
-1. **Örnek ayrıntıları**' nın altında, sanal makine adı için bir ad yazın ve güvenilen başlatmayı destekleyen bir bölge seçin.
+1. **Örnek ayrıntıları**' nın altında, sanal makine adı için bir ad yazın ve [Güvenilen başlatmayı](trusted-launch.md#public-preview-limitations)destekleyen bir bölge seçin.
 1. **Görüntü** altında, [güvenilir başlatmayı destekleyen bir görüntü](trusted-launch.md#public-preview-limitations)seçin. Yalnızca görüntünün Gen 1 sürümünü görebilirsiniz, bu işlem bir sonraki adıma geçer.
 1. Sayfanın üst kısmında seçerek **Gelişmiş** sekmesine geçin.
 1. **VM oluşturma** bölümüne gidin ve sonra **Gen 2**' yi seçin.
@@ -140,7 +140,7 @@ Güvenilen başlatma VM 'Leri için vTPM ve güvenli önyükleme önerilerini al
 
 Bazı durumlarda, UEFı güvenli önyükleme için işlemleri imzalamanız gerekebilir.  Örneğin, Ubuntu için [Güvenli önyükleme için Işlemleri nasıl imzalayabileceğinize](https://ubuntu.com/blog/how-to-sign-things-for-secure-boot) gitmeniz gerekebilir. Bu gibi durumlarda, sanal makinenizin MOK yardımcı program kaydetme anahtarlarını girmeniz gerekir. Bunu yapmak için, MOK yardımcı programına erişmek üzere Azure seri konsolu 'nu kullanmanız gerekir.
 
-1. Linux için Azure seri konsolunu etkinleştirin.
+1. Linux için Azure seri konsolunu etkinleştirin. Daha fazla bilgi için bkz. [Linux Için seri konsol](https://docs.microsoft.com/troubleshoot/azure/virtual-machines/serial-console-linux).
 1. [Azure Portal](https://portal.azure.com)oturum açın.
 1. **Sanal makineleri** arayın ve listeden VM 'nizi seçin.
 1. Sol taraftaki menüde, **destek + sorun giderme** altında **seri konsol**' yi seçin. Seri konsol ile sağ tarafta bir sayfa açılır.

@@ -8,12 +8,12 @@ ms.date: 1/19/2021
 ms.topic: how-to
 ms.service: digital-twins
 ms.reviewer: baanders
-ms.openlocfilehash: 6a654f74ff6a32ad37646021d504359c84942c12
-ms.sourcegitcommit: 65cef6e5d7c2827cf1194451c8f26a3458bc310a
+ms.openlocfilehash: 990a0ee73bd91ccb748c948b5fcf0e6124d84a03
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98573046"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102201439"
 ---
 # <a name="use-azure-digital-twins-to-update-an-azure-maps-indoor-map"></a>Azure haritalar ınkapısının haritasını güncelleştirmek için Azure dijital TWINS kullanma
 
@@ -25,7 +25,7 @@ Bu şekilde nasıl ele alınacaktır:
 2. Azure haritalar ınkapısı haritaları Özellik stateset 'i güncelleştirmek için bir işlev oluşturma.
 3. Haritalar KIMLIĞINIZI ve özellik stateset KIMLIĞINIZI Azure dijital TWINS grafiğinde depolama.
 
-### <a name="prerequisites"></a>Ön koşullar
+### <a name="prerequisites"></a>Önkoşullar
 
 * Azure dijital TWINS [*öğreticisini izleyin: uçtan uca çözümü bağlama*](./tutorial-end-to-end.md).
     * Bu ikizi ek bir uç nokta ve rotayla genişletiyorsunuz. Ayrıca, bu öğreticiden işlev uygulamanıza başka bir işlev da eklersiniz. 
@@ -64,7 +64,7 @@ Bu kalıp, IoT cihazı yerine doğrudan ikizi 'dan, eşleme mantığınızı gü
     >[!NOTE]
     >Şu anda Cloud Shell'de şu komut gruplarını etkileyen **bilinen bir sorun** vardır: `az dt route`, `az dt model`, `az dt twin`.
     >
-    >Çözüm için bu komutları çalıştırmadan önce Cloud Shell'de `az login` komutunu çalıştırın veya Cloud Shell yerine [local CLI](/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true) ortamını kullanın. Bunun hakkında daha fazla bilgi için bkz. [*sorun giderme: Azure dijital TWINS 'de bilinen sorunlar*](troubleshoot-known-issues.md#400-client-error-bad-request-in-cloud-shell).
+    >Çözüm için bu komutları çalıştırmadan önce Cloud Shell'de `az login` komutunu çalıştırın veya Cloud Shell yerine [local CLI](/cli/azure/install-azure-cli) ortamını kullanın. Bunun hakkında daha fazla bilgi için bkz. [*sorun giderme: Azure dijital TWINS 'de bilinen sorunlar*](troubleshoot-known-issues.md#400-client-error-bad-request-in-cloud-shell).
 
     ```azurecli-interactive
     az dt route create -n <your-Azure-Digital-Twins-instance-name> --endpoint-name <Event-Grid-endpoint-name> --route-name <my_route> --filter "type = 'Microsoft.DigitalTwins.Twin.Update'"

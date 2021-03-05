@@ -3,12 +3,12 @@ title: Azure Event Grid abonelik şeması
 description: Bu makalede, Azure Event Grid bir olaya abone olmak için özellikler açıklanmaktadır. Event Grid abonelik şeması.
 ms.topic: reference
 ms.date: 07/07/2020
-ms.openlocfilehash: 21016627e545cc4935b4ac213df675e894c12d95
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f6e33171cbba65cfeaca49ab6a8954be8bb89acb
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86119081"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102199960"
 ---
 # <a name="event-grid-subscription-schema"></a>Event Grid abonelik şeması
 
@@ -25,7 +25,7 @@ PUT /subscriptions/{subscription-id}/resourceGroups/examplegroup/providers/Micro
 ``` 
 
 Olay abonelik adı 3-64 karakter uzunluğunda olmalıdır ve yalnızca a-z, A-Z, 0-9 ve "-" karakterlerini içerebilir. Makalede, isteğin gövdesi için özellikler ve şema açıklanmaktadır.
- 
+ 
 ## <a name="event-subscription-properties"></a>Olay aboneliği özellikleri
 
 | Özellik | Tür | Açıklama |
@@ -48,6 +48,7 @@ Olay abonelik adı 3-64 karakter uzunluğunda olmalıdır ve yalnızca a-z, A-Z,
 | subjectBeginsWith | string | Olay iletisindeki Konu alanı için bir önek eşleşmesi filtresi. Varsayılan veya boş dize tümü ile eşleşir. | 
 | subjectEndsWith | string | Olay iletisindeki Konu alanına bir sonek eşleşmesi filtresi. Varsayılan veya boş dize tümü ile eşleşir. |
 | isSubjectCaseSensitive | string | Filtreler için büyük/küçük harfe duyarlı eşleştirmeyi denetler. |
+| enableAdvancedFilteringOnArrays | boolean | Gelişmiş filtrelemede anahtarlar için diziler kullanılmasına izin vermez. Daha fazla bilgi için bkz. [Gelişmiş filtreleme](event-filtering.md#advanced-filtering). |
 
 
 ## <a name="example-subscription-schema"></a>Örnek abonelik şeması

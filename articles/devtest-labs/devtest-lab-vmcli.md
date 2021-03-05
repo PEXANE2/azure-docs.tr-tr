@@ -3,12 +3,12 @@ title: Azure CLı ile DevTest Labs 'de sanal makineler oluşturma ve yönetme
 description: Azure CLı ile sanal makineler oluşturmak ve yönetmek için Azure DevTest Labs kullanmayı öğrenin
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 57510a722ab6a34b9d498e74a140d6f350c8fc02
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 22ee6bf607fe1b66cece0e7ddb25a2da2830258b
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85482845"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102201473"
 ---
 # <a name="create-and-manage-virtual-machines-with-devtest-labs-using-the-azure-cli"></a>Azure CLı kullanarak DevTest Labs ile sanal makineler oluşturma ve yönetme
 Bu hızlı başlangıç, laboratuvarınızda bir geliştirme makinesi oluşturma, başlatma, bağlama, güncelleştirme ve Temizleme sürecinde size kılavuzluk eder. 
@@ -40,7 +40,7 @@ Aşağıdaki komut, laboratuvarda kullanılabilen özel bir görüntüye dayalı
 az lab vm create --resource-group DtlResourceGroup --lab-name MyLab --name 'MyTestVm' --image "My Custom Image" --image-type custom --size 'Standard_D2s_v3' --admin-username 'AdminUser' --admin-password 'Password1!'
 ```
 
-**Image-Type** bağımsız değişkeni **Galeriden** **özel**olarak değiştirildi. Azure portal sanal makineyi oluştururken, görüntünün adı, gördüklerinize göre eşleşir.
+**Image-Type** bağımsız değişkeni **Galeriden** **özel** olarak değiştirildi. Azure portal sanal makineyi oluştururken, görüntünün adı, gördüklerinize göre eşleşir.
 
 Aşağıdaki komut, bir market görüntüsünden SSH kimlik doğrulaması ile bir VM oluşturur:
 
@@ -48,7 +48,7 @@ Aşağıdaki komut, bir market görüntüsünden SSH kimlik doğrulaması ile bi
 az lab vm create --lab-name sampleLabName --resource-group sampleLabResourceGroup --name sampleVMName --image "Ubuntu Server 16.04 LTS" --image-type gallery --size Standard_DS1_v2 --authentication-type  ssh --generate-ssh-keys --ip-configuration public 
 ```
 
-Ayrıca, **resim türü** parametresini **Formül**olarak ayarlayarak, formülleri temel alan sanal makineler de oluşturabilirsiniz. Sanal makineniz için belirli bir sanal ağ seçmeniz gerekiyorsa, **VNET-adı** ve **alt ağ** parametrelerini kullanın. Daha fazla bilgi için bkz. [az Lab VM Create](/cli/azure/lab/vm#az-lab-vm-create).
+Ayrıca, **resim türü** parametresini **Formül** olarak ayarlayarak, formülleri temel alan sanal makineler de oluşturabilirsiniz. Sanal makineniz için belirli bir sanal ağ seçmeniz gerekiyorsa, **VNET-adı** ve **alt ağ** parametrelerini kullanın. Daha fazla bilgi için bkz. [az Lab VM Create](/cli/azure/lab/vm#az-lab-vm-create).
 
 ## <a name="verify-that-the-vm-is-available"></a>VM 'nin kullanılabilir olduğunu doğrulayın.
 Başlamadan `az lab vm show` önce VM 'nin kullanılabilir olduğunu doğrulamak için komutunu kullanın. 
@@ -147,10 +147,10 @@ Aşağıdaki örnek komut bir VM 'yi sonlandırır.
 az lab vm stop --lab-name sampleLabName --name sampleVMName --resource-group sampleResourceGroup
 ```
 
-VM 'yi silme.
+Bir sanal makineyi silme.
 ```azurecli
 az lab vm delete --lab-name sampleLabName --name sampleVMName --resource-group sampleResourceGroup
 ```
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Aşağıdaki içeriğe bakın: [Azure DevTest Labs Için Azure CLI belgeleri](/cli/azure/lab?view=azure-cli-latest). 
+Aşağıdaki içeriğe bakın: [Azure DevTest Labs Için Azure CLI belgeleri](/cli/azure/lab). 

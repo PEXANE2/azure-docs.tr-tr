@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/01/2020
 ms.author: duau
-ms.openlocfilehash: a5d51a77b1da0ae44c76d0187113105c4e53c9b4
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: f894fd5ca7bb98c48b106c13b8fe6130b2c76c6e
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92279226"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102201065"
 ---
 # <a name="tutorial-quickly-scale-and-protect-a-web-application-by-using-azure-front-door-and-azure-web-application-firewall-waf"></a>Öğretici: Azure ön kapısı ve Azure Web uygulaması güvenlik duvarı (WAF) kullanarak bir Web uygulamasını hızla ölçeklendirme ve koruma
 
@@ -34,9 +34,9 @@ Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
-- Bu öğreticideki yönergeler, Azure CLı 'yi kullanır. Azure CLı 'yı kullanmaya başlamak için [Bu Kılavuzu görüntüleyin](/cli/azure/get-started-with-azure-cli?preserve-view=true&view=azure-cli-latest) .
+- Bu öğreticideki yönergeler, Azure CLı 'yi kullanır. Azure CLı 'yı kullanmaya başlamak için [Bu Kılavuzu görüntüleyin](/cli/azure/get-started-with-azure-cli) .
 
   > [!TIP] 
   > Azure CLı 'yı kullanmaya başlamak için kolay ve hızlı bir yol [Azure Cloud Shell](../cloud-shell/quickstart.md).
@@ -48,7 +48,7 @@ Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
    ```
 
 > [!NOTE] 
-> Bu öğreticide kullanılan komutlar hakkında daha fazla bilgi için bkz. [ön kapı Için Azure CLI başvurusu](/cli/azure/ext/front-door/?preserve-view=true&view=azure-cli-latest).
+> Bu öğreticide kullanılan komutlar hakkında daha fazla bilgi için bkz. [ön kapı Için Azure CLI başvurusu](/cli/azure/ext/front-door).
 
 ## <a name="create-an-azure-front-door-resource"></a>Azure ön kapı kaynağı oluşturma
 
@@ -144,7 +144,7 @@ Yalnızca Azure ön kapısının Web uygulamanızla iletişim kurabildiğinden e
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Bu öğreticide kullanılan kaynaklara artık ihtiyacınız kalmadığında, [az Group Delete](/cli/azure/group?view=azure-cli-latest#az-group-delete&preserve-view=true) komutunu kullanarak kaynak grubunu, ön kapıyı ve WAF ilkesini kaldırın:
+Bu öğreticide kullanılan kaynaklara artık ihtiyacınız kalmadığında, [az Group Delete](/cli/azure/group#az-group-delete) komutunu kullanarak kaynak grubunu, ön kapıyı ve WAF ilkesini kaldırın:
 
 ```azurecli-interactive
   az group delete \

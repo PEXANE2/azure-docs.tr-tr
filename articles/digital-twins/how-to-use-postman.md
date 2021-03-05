@@ -8,12 +8,12 @@ ms.service: digital-twins
 services: digital-twins
 ms.topic: how-to
 ms.date: 11/10/2020
-ms.openlocfilehash: d99ec80308152ce9e4870da809acaa25c663d98d
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: c6b9cfab4256c72118a65f7fb0c8e672e2082ffe
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101715709"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102199671"
 ---
 # <a name="how-to-use-postman-to-send-requests-to-the-azure-digital-twins-apis"></a>Azure dijital TWINS API 'Lerine istek göndermek için Postman kullanma
 
@@ -21,7 +21,7 @@ ms.locfileid: "101715709"
 
 Bu makalede, [Postman Rest Istemcisinin](https://www.getpostman.com/) Azure dijital TWINS API 'leri ile etkileşime geçmek için aşağıdaki adımlarla nasıl yapılandırılacağı açıklanmaktadır:
 
-1. Postman 'da API istekleri yapmak için kullanacağınız bir taşıyıcı belirteci almak için [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true) 'yi kullanın.
+1. Postman 'da API istekleri yapmak için kullanacağınız bir taşıyıcı belirteci almak için [Azure CLI](/cli/azure/install-azure-cli) 'yi kullanın.
 1. Bir Postman koleksiyonu kurun ve Postman REST istemcisini, kimlik doğrulaması için taşıyıcı belirtecinizi kullanacak şekilde yapılandırın.
 1. Azure dijital TWINS API 'Lerine bir istek oluşturmak ve göndermek için yapılandırılmış Postman 'ı kullanın.
 
@@ -41,9 +41,9 @@ Ardından, Postman istemcisinin Masaüstü sürümünü indirin. [*Www.getpostma
 
 Postman 'ı ve Azure dijital TWINS örneğinizi ayarlamış olduğunuza göre, Postman isteklerinin Azure dijital TWINS API 'Lerinde yetkilendirmek için kullanabileceği bir taşıyıcı belirteç almanız gerekir.
 
-Bu belirteci almanın birkaç olası yolu vardır. Bu makalede, Azure hesabınızda oturum açmak ve bu şekilde bir belirteç almak için [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true) kullanılmaktadır.
+Bu belirteci almanın birkaç olası yolu vardır. Bu makalede, Azure hesabınızda oturum açmak ve bu şekilde bir belirteç almak için [Azure CLI](/cli/azure/install-azure-cli) kullanılmaktadır.
 
-[Yerel olarak yüklü](/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true)BIR Azure CLI 'niz varsa, aşağıdaki komutları çalıştırmak için makinenizde bir komut istemi başlatabilirsiniz.
+[Yerel olarak yüklü](/cli/azure/install-azure-cli)BIR Azure CLI 'niz varsa, aşağıdaki komutları çalıştırmak için makinenizde bir komut istemi başlatabilirsiniz.
 Aksi takdirde, tarayıcınızda bir [Azure Cloud Shell](https://shell.azure.com) penceresi açabilir ve komutları burada çalıştırabilirsiniz.
 
 1. İlk olarak, şu komutu çalıştırarak Azure 'da uygun kimlik bilgileriyle oturum açtığınızdan emin olun:
@@ -52,7 +52,7 @@ Aksi takdirde, tarayıcınızda bir [Azure Cloud Shell](https://shell.azure.com)
     az login
     ```
 
-1. Daha sonra, Azure dijital TWINS hizmetine erişimi olan bir taşıyıcı belirteci almak için [az Account Get-Access-Token](/cli/azure/account?preserve-view=true&view=azure-cli-latest#az_account_get_access_token) komutunu kullanın.
+1. Daha sonra, Azure dijital TWINS hizmetine erişimi olan bir taşıyıcı belirteci almak için [az Account Get-Access-Token](/cli/azure/account#az_account_get_access_token) komutunu kullanın.
 
     ```azurecli-interactive
     az account get-access-token --resource 0b07f429-9f4b-4714-9392-cc5e8e80c8b0

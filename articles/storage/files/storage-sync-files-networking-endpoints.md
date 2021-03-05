@@ -8,12 +8,12 @@ ms.date: 5/11/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: 64d66e1b9eab225b38ee21306fea6f9534a708f3
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: f307380114acd4f98d68b580333c4dccc2a7340b
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98673864"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102201609"
 ---
 # <a name="configuring-azure-file-sync-network-endpoints"></a>Azure Dosya Eşitleme ağının uç noktalarını yapılandırma
 Azure dosyaları ve Azure Dosya Eşitleme, Azure dosya paylaşımlarına erişmek için iki ana uç nokta türü sağlar: 
@@ -125,7 +125,7 @@ Address: 192.168.0.5
 
 ---
 
-### <a name="create-the-storage-sync-private-endpoint"></a>Depolama eşitleme özel uç noktasını oluşturma
+### <a name="create-the-storage-sync-service-private-endpoint"></a>Depolama eşitleme hizmeti özel uç noktasını oluşturma
 > [!Important]  
 > Depolama eşitleme hizmeti kaynağında özel uç noktaları kullanmak için, Azure Dosya Eşitleme Aracısı sürüm 10,1 veya üstünü kullanmanız gerekir. 10,1 ' dan önceki Aracı sürümleri, depolama eşitleme hizmeti 'ndeki özel uç noktaları desteklemez. Tüm önceki Aracı sürümleri, depolama hesabı kaynağında özel uç noktaları destekler.
 
@@ -597,19 +597,44 @@ Depolama eşitleme hizmeti 'nin Genel uç noktasına erişimi devre dışı bır
 $storageSyncServiceResourceGroupName = "<storage-sync-service-resource-group>"
 $storageSyncServiceName = "<storage-sync-service>"
 
-$storageSyncService = Get-AzResource `
-        -ResourceGroupName $storageSyncServiceResourceGroupName `
-        -ResourceName $storageSyncServiceName `
-        -ResourceType "Microsoft.StorageSync/storageSyncServices"
-
-$storageSyncService.Properties.incomingTrafficPolicy = "AllowVirtualNetworksOnly"
-$storageSyncService = $storageSyncService | Set-AzResource -Confirm:$false -Force -UsePatchSemantics
+Set-AzStorageSyncService `
+    -ResourceGroupName $storageSyncServiceResourceGroupName `
+    -Name $storageSyncServiceName `
+    -IncomingTrafficPolicy AllowVirtualNetworksOnly
 ```
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 Azure CLı, `incomingTrafficPolicy` depolama eşitleme hizmeti 'nde özelliğinin ayarlanmasını desteklemez. Depolama eşitleme hizmeti genel uç noktasını devre dışı bırakma hakkında yönergeler almak için lütfen Azure PowerShell sekmesini seçin.
 
 ---
+
+## <a name="azure-policy"></a>Azure İlkesi
+Azure Ilkesi, kuruluş standartlarına zorlamaya ve bu standartlara göre uyumluluğu değerlendirmenize yardımcı olur. Azure dosyaları ve Azure Dosya Eşitleme dağıtımınızı izlemenize ve otomatikleştirmenize yardımcı olan birkaç kullanışlı denetim ve düzeltme ağı ilkesi sunar.
+
+İlkeler, ortamınızı denetler ve depolama hesaplarınız veya depolama eşitleme hizmetleriniz tanımlanan davranıştan farklıytıysa sizi uyarır. Örneğin, ilkeniz genel bitiş noktaları devre dışı olarak ayarlandığında ortak bir uç nokta etkinleştirilirse. İlkeleri Değiştir/dağıt işlemleri bir adım daha ayrıntılı bir şekilde (depolama eşitleme hizmeti gibi) veya kaynakları (Özel uç noktaları gibi) dağıtır ve ilkelerle hizalanır.
+
+Aşağıdaki önceden tanımlanmış ilkeler Azure dosyaları ve Azure Dosya Eşitleme için kullanılabilir:
+
+| Eylem | Hizmet | Koşul | İlke adı |
+|-|-|-|-|
+| Denetim | Azure Dosyaları | Depolama hesabının genel uç noktası etkinleştirildi. Daha fazla bilgi için bkz. [depolama hesabı genel uç noktasına erişimi devre dışı bırakma](#disable-access-to-the-storage-account-public-endpoint) . | Depolama hesapları, ağ erişimini kısıtlıyor olmalıdır |
+| Denetim | Azure Dosya Eşitleme | Depolama eşitleme hizmeti 'nin Genel uç noktası etkinleştirildi. Daha fazla bilgi için bkz. [depolama eşitleme hizmeti genel uç noktasına erişimi devre dışı bırakma](#disable-access-to-the-storage-sync-service-public-endpoint) . | Azure Dosya Eşitleme için genel ağ erişimi devre dışı bırakılmalıdır |
+| Denetim | Azure Dosyaları | Depolama hesabının en az bir özel uç noktası olması gerekir. Daha fazla bilgi için bkz. [depolama hesabı özel uç noktası oluşturma](#create-the-storage-account-private-endpoint) . | Depolama hesabı özel bağlantı bağlantısı kullanmalıdır |
+| Denetim | Azure Dosya Eşitleme | Depolama eşitleme hizmeti en az bir özel uç nokta gerektirir. Daha fazla bilgi için bkz. [depolama eşitleme hizmeti özel uç noktası oluşturma](#create-the-storage-sync-service-private-endpoint) . | Azure Dosya Eşitleme özel bağlantı kullanmalıdır |
+| Değiştir | Azure Dosya Eşitleme | Depolama eşitleme hizmeti 'nin Genel uç noktasını devre dışı bırakın. | Değiştir-ortak ağ erişimini devre dışı bırakmak için Azure Dosya Eşitleme yapılandırın |
+| Dağıtma | Azure Dosya Eşitleme | Depolama eşitleme hizmeti için özel bir uç nokta dağıtın. | Özel uç noktalarla Azure Dosya Eşitleme yapılandırma |
+| Dağıtma | Azure Dosya Eşitleme | Privatelink.afs.azure.net DNS bölgesine bir kayıt dağıtın. | Azure Dosya Eşitleme özel DNS bölgelerini kullanacak şekilde yapılandırma |
+
+### <a name="set-up-a-private-endpoint-deployment-policy"></a>Özel uç nokta dağıtım ilkesi ayarlama
+Özel bir uç nokta dağıtım ilkesi ayarlamak için [Azure Portal](https://portal.azure.com/)gidin ve **ilke** için arama yapın. Azure Ilke merkezi bir en iyi sonuç olmalıdır.   >  İlke merkezi 'nin içindekiler tablosunda yazma **tanımlarına** gidin. Elde edilen **tanımlar** bölmesi, tüm Azure hizmetlerinde önceden tanımlanmış ilkeleri içerir. Belirli ilkeyi bulmak için kategori filtresinde **depolama** kategorisini seçin veya **özel uç noktalarla Azure dosya eşitleme Yapılandır**' ı arayın. Tanımdan yeni bir ilke oluşturmak için **...** ve **ata** ' yı seçin.
+
+**Ilke atama** sihirbazının **temel bilgiler** dikey penceresi, bir kapsam, kaynak veya kaynak grubu dışlama listesi ayarlamanıza ve ilkenizi ayırt etmenize yardımcı olmak için kolay bir ad sağlamanıza olanak sağlar. İlkenin çalışması için bunları değiştirmeniz gerekmez, ancak değişiklik yapmak istiyorsanız bunu yapabilirsiniz. **Parametreler** sayfasına Ilerlemek için **İleri ' yi** seçin. 
+
+**Parametreler** dikey penceresinde, **Privateendpointsubnetıd** açılan listesinin yanındaki **..** . ' u seçerek depolama eşitleme hizmeti kaynaklarınızın özel uç noktalarının dağıtılması gereken sanal ağı ve alt ağı seçin. Oluşturulan sihirbazın aboneliğinizdeki kullanılabilir sanal ağları yüklemesi birkaç saniye sürebilir. Ortamınız için uygun sanal ağı/alt ağı seçin ve **Seç**' e tıklayın. **Düzeltme** dikey penceresine Ilerlemek için **İleri ' yi** seçin.
+
+Özel uç nokta olmadan bir depolama eşitleme hizmeti tanımlandığında özel uç noktanın dağıtılması için **Düzeltme** sayfasında **bir düzeltme oluştur görevi** seçmelisiniz. Son olarak, ilke atamasını gözden geçirmek için **gözden geçir + oluştur** ' u seçin ve oluşturmak için **oluşturun** .
+
+Elde edilen ilke ataması düzenli aralıklarla yürütülür ve oluşturulduktan hemen sonra çalışmayabilir.
 
 ## <a name="see-also"></a>Ayrıca bkz.
 - [Azure Dosya Eşitleme dağıtımı planlama](storage-sync-files-planning.md)

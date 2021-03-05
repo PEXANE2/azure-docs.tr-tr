@@ -12,12 +12,12 @@ ms.date: 03/02/2021
 ms.author: aahi
 ms.custom: cog-serv-seo-aug-2020
 keywords: Şirket içi, Docker, kapsayıcı
-ms.openlocfilehash: 4970b33d51ed7ef54727c1c15e2482ff10d70506
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 1eb8e6d990b0b3e6212736036466be9f11d05b01
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102032945"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102201133"
 ---
 # <a name="install-and-run-docker-containers-for-the-speech-service-apis"></a>Konuşma hizmeti API 'Leri için Docker Kapsayıcıları yükleyip çalıştırın 
 
@@ -41,12 +41,12 @@ Konuşma kapsayıcıları, müşterilerin hem sağlam bulut özellikleri hem de 
 
 | Kapsayıcı | Özellikler | En son |
 |--|--|--|
-| Konuşmayı metne dönüştürme | , Yaklaşım ve sürekli gerçek zamanlı konuşma veya toplu ses kayıtlarını ara sonuçlarla analiz eder.  | 2.9.0 |
-| Özel Konuşma Tanıma metin | [Özel konuşma tanıma portalından](https://speech.microsoft.com/customspeech)özel bir model kullanarak, sürekli gerçek zamanlı konuşmayı veya toplu ses kayıtlarını, ara sonuçlarla birlikte metne ekleyin. | 2.9.0 |
-| Metin okuma | Düz metin girişi veya konuşma birleştirme biçimlendirme dili (SSML) ile metni doğal-sounkonuşmaya dönüştürür. | 1.11.0 |
-| Özel metin okuma | [Özel ses portalından](https://aka.ms/custom-voice-portal)özel bir model kullanarak, düz metin girişi veya konuşma birleştirme biçimlendirme DILI (SSML) ile metni doğal-sounkonuşmaya dönüştürür. | 1.11.0 |
+| Konuşmayı metne dönüştürme | , Yaklaşım ve sürekli gerçek zamanlı konuşma veya toplu ses kayıtlarını ara sonuçlarla analiz eder.  | 2.10.0 |
+| Özel Konuşma Tanıma metin | [Özel konuşma tanıma portalından](https://speech.microsoft.com/customspeech)özel bir model kullanarak, sürekli gerçek zamanlı konuşmayı veya toplu ses kayıtlarını, ara sonuçlarla birlikte metne ekleyin. | 2.10.0 |
+| Metin okuma | Düz metin girişi veya konuşma birleştirme biçimlendirme dili (SSML) ile metni doğal-sounkonuşmaya dönüştürür. | 1.12.0 |
+| Özel metin okuma | [Özel ses portalından](https://aka.ms/custom-voice-portal)özel bir model kullanarak, düz metin girişi veya konuşma birleştirme biçimlendirme DILI (SSML) ile metni doğal-sounkonuşmaya dönüştürür. | 1.12.0 |
 | Konuşma Dil Algılama | Ses dosyalarında konuşulan dili algılayın. | 1.0 |
-| Sinir metin okuma | Derin sinir ağ teknolojisini kullanarak metni doğal-sounding konuşmaya dönüştürür. Bu, doğal olarak birleştirilmiş konuşmaya olanak sağlar. | 1.3.0 |
+| Sinir metin okuma | Derin sinir ağ teknolojisini kullanarak metni doğal-sounding konuşmaya dönüştürür. Bu, doğal olarak birleştirilmiş konuşmaya olanak sağlar. | 1.4.0 |
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/cognitive-services/) oluşturun.
 
@@ -386,7 +386,12 @@ Bir tümcecik listesi yapılandırmak için, çağrıyı yaparken kendi tümceci
         audio_config=audio_config)
     phrase_list_grammer = speechsdk.PhraseListGrammar.from_recognizer(recognizer)
     phrase_list_grammer.addPhrase(phrase)
-
+    
+    dict_speech_config.set_service_property(
+        name='setflight',
+        value='xonlineinterp',
+        channel=speechsdk.ServicePropertyChannel.UriQueryParameter
+    )
 ```
 
 Eklenecek birden çok tümceciği varsa, `.addPhrase()` tümcecik listesine eklemek için her bir tümceciği çağırın. 

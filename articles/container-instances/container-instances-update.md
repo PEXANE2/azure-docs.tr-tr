@@ -3,12 +3,12 @@ title: Kapsayıcı grubunu Güncelleştir
 description: Azure Container Instances kapsayıcı gruplarınızdaki çalışan kapsayıcıları güncelleştirme hakkında bilgi edinin.
 ms.topic: article
 ms.date: 04/17/2020
-ms.openlocfilehash: cfc27de8caae98dd1c3065b5ed06433c4baaa5d2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fb31eeda83532c408a303e879439006bcd7d4e45
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "82928729"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102200657"
 ---
 # <a name="update-containers-in-azure-container-instances"></a>Azure Container Instances’taki kapsayıcıları güncelleştirme
 
@@ -34,7 +34,7 @@ Var olan bir kapsayıcı grubunu güncelleştirmek için:
 
 Aşağıdaki Azure CLı örneği, bir kapsayıcı grubunu yeni bir DNS ad etiketi ile güncelleştirir. Grubun DNS ad etiketi özelliği güncelleştirilabilecek bir tane olduğundan, kapsayıcı grubu yeniden dağıtılır ve kapsayıcıları yeniden başlatılır.
 
-DNS ad etiketi *MyApplication-hazırlama*ile ilk dağıtım:
+DNS ad etiketi *MyApplication-hazırlama* ile ilk dağıtım:
 
 ```azurecli-interactive
 # Create container group
@@ -42,7 +42,7 @@ az container create --resource-group myResourceGroup --name mycontainer \
     --image nginx:alpine --dns-name-label myapplication-staging
 ```
 
-Kapsayıcı grubunu yeni bir DNS adı etiketiyle güncelleştirin, *MyApplication*ve kalan özellikleri daha önce kullanılan değerlerle ayarlayın:
+Kapsayıcı grubunu yeni bir DNS adı etiketiyle güncelleştirin, *MyApplication* ve kalan özellikleri daha önce kullanılan değerlerle ayarlayın:
 
 ```azurecli-interactive
 # Update DNS name label (restarts container), leave other properties unchanged
@@ -89,6 +89,6 @@ Bu makalede birkaç kez bahsedildiği **kapsayıcı grubu**. Azure Container Ins
 <!-- LINKS - External -->
 
 <!-- LINKS - Internal -->
-[az-container-create]: /cli/azure/container?view=azure-cli-latest#az-container-create
+[az-container-create]: /cli/azure/container#az-container-create
 [azure-cli-install]: /cli/azure/install-azure-cli
 [az-container-export]: /cli/azure/container#az-container-export

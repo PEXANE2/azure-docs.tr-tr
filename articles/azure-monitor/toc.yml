@@ -1078,7 +1078,7 @@
           href: insights/container-insights-reports.md
         - name: Canlı verileri görüntüleme
           items:
-            - name: Canlı Verilere (önizleme) genel bakış
+            - name: Canlı verilere genel bakış
               href: containers/container-insights-livedata-overview.md
             - name: Kurulum
               href: containers/container-insights-livedata-setup.md

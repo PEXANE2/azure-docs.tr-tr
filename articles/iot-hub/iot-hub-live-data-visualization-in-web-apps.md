@@ -12,12 +12,12 @@ ms.custom:
 - 'Role: Cloud Development'
 - 'Role: Data Analytics'
 - devx-track-azurecli
-ms.openlocfilehash: 7753c6c118d763163e6bc8f69f5b4eee13fe2393
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 53b5add7526b0c20487e8fe3adb0b8ebe207a2ce
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97588803"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102200029"
 ---
 # <a name="visualize-real-time-sensor-data-from-your-azure-iot-hub-in-a-web-application"></a>Azure IoT Hub 'ınızdaki gerçek zamanlı algılayıcı verilerini bir Web uygulamasında görselleştirin
 
@@ -153,7 +153,7 @@ Ayrıca, konsolunda Web uygulamanızın tarayıcı istemcisine yayınlamasını 
 
 [Azure App Service Web Apps özelliği](../app-service/overview.md) , Web uygulamalarını barındırmak için hizmet olarak platform (PaaS) sağlar. Azure App Service barındırılan Web uygulamaları, ek güvenlik, yük dengeleme ve ölçeklenebilirlik gibi güçlü Azure özelliklerinden ve sürekli dağıtım, paket yönetimi gibi Azure ve iş ortağı DevOps çözümlerinin avantajlarından yararlanabilir. Azure App Service birçok popüler dilde geliştirilen ve Windows veya Linux altyapısına dağıtılan Web uygulamalarını destekler.
 
-Bu bölümde, Azure CLı komutlarını kullanarak App Service bir Web uygulaması hazırlarsınız ve kodunuzu buna dağıtırsınız. [Az WebApp](/cli/azure/webapp?view=azure-cli-latest) belgelerinde kullanılan komutların ayrıntılarını bulabilirsiniz. Başlamadan önce, [IoT Hub 'ınıza bir kaynak grubu eklemek](#add-a-consumer-group-to-your-iot-hub), [IoT Hub 'ınız için bir hizmet bağlantı dizesi almak](#get-a-service-connection-string-for-your-iot-hub)ve [Web uygulamasını GitHub 'dan indirmek](#download-the-web-app-from-github)için adımları tamamladığınızdan emin olun.
+Bu bölümde, Azure CLı komutlarını kullanarak App Service bir Web uygulaması hazırlarsınız ve kodunuzu buna dağıtırsınız. [Az WebApp](/cli/azure/webapp) belgelerinde kullanılan komutların ayrıntılarını bulabilirsiniz. Başlamadan önce, [IoT Hub 'ınıza bir kaynak grubu eklemek](#add-a-consumer-group-to-your-iot-hub), [IoT Hub 'ınız için bir hizmet bağlantı dizesi almak](#get-a-service-connection-string-for-your-iot-hub)ve [Web uygulamasını GitHub 'dan indirmek](#download-the-web-app-from-github)için adımları tamamladığınızdan emin olun.
 
 1. [App Service planı](../app-service/overview-hosting-plans.md) , App Service çalıştırılmak üzere barındırılan bir uygulama için bir işlem kaynakları kümesi tanımlar. Bu öğreticide, Web uygulamasını barındırmak için geliştirici/ücretsiz katmanını kullanırız. Ücretsiz katman sayesinde, Web uygulamanız diğer müşterilerin uygulamaları dahil olmak üzere diğer App Service uygulamalarla paylaşılan Windows kaynakları üzerinde çalışır. Azure Ayrıca, Linux işlem kaynaklarında Web Apps dağıtmak için App Service planlar sunmaktadır. Kullanmak istediğiniz bir App Service planınız zaten varsa, bu adımı atlayabilirsiniz.
 

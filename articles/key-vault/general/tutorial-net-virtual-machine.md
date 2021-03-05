@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 07/20/2020
 ms.author: mbaldwin
 ms.custom: mvc, devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: e69e5d9b94a47bf7db21ef3732a4ddcba7c2cf5c
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: 5d78299c4583251180b3fb9a902561406b849b4a
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 03/05/2021
-ms.locfileid: "102181559"
+ms.locfileid: "102201184"
 ---
 # <a name="tutorial-use-azure-key-vault-with-a-virtual-machine-in-net"></a>Öğretici: .NET 'teki bir sanal makine ile Azure Key Vault kullanma
 
@@ -42,7 +42,7 @@ Azure aboneliğiniz yoksa [ücretsiz bir hesap](https://azure.microsoft.com/free
 Windows, Mac ve Linux için:
   * [Git](https://git-scm.com/downloads)
   * [.NET Core 3,1 SDK veya üzeri](https://dotnet.microsoft.com/download/dotnet-core/3.1).
-  * [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest).
+  * [Azure CLI](/cli/azure/install-azure-cli).
 
 ## <a name="create-resources-and-assign-permissions"></a>Kaynak oluşturma ve izin atama
 
@@ -74,7 +74,7 @@ Aşağıdaki yöntemlerden birini kullanarak bir Windows veya Linux sanal makine
 | [Azure portalı](../../virtual-machines/windows/quick-create-portal.md) | [Azure portalı](../../virtual-machines/linux/quick-create-portal.md) |
 
 ## <a name="assign-an-identity-to-the-vm"></a>VM 'ye bir kimlik atama
-[Az VM Identity Assign](/cli/azure/vm/identity?view=azure-cli-latest#az-vm-identity-assign) komutuyla sanal makine için sistem tarafından atanan bir kimlik oluşturun:
+[Az VM Identity Assign](/cli/azure/vm/identity#az-vm-identity-assign) komutuyla sanal makine için sistem tarafından atanan bir kimlik oluşturun:
 
 ```azurecli
 az vm identity assign --name <NameOfYourVirtualMachine> --resource-group <YourResourceGroupName>
@@ -90,7 +90,7 @@ Aşağıdaki kodda görüntülenen sistem tarafından atanan kimliği unutmayın
 ```
 
 ## <a name="assign-permissions-to-the-vm-identity"></a>VM kimliğine izin atama
-[Az keykasası Set-Policy](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-set-policy) komutuyla anahtar kasanıza önceden oluşturulmuş kimlik izinlerini atayın:
+[Az keykasası Set-Policy](/cli/azure/keyvault#az-keyvault-set-policy) komutuyla anahtar kasanıza önceden oluşturulmuş kimlik izinlerini atayın:
 
 ```azurecli
 az keyvault set-policy --name '<your-unique-key-vault-name>' --object-id <VMSystemAssignedIdentity> --secret-permissions get list

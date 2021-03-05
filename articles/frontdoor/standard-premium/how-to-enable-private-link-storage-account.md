@@ -8,12 +8,12 @@ ms.service: frontdoor
 ms.topic: how-to
 ms.date: 03/04/2021
 ms.author: tyao
-ms.openlocfilehash: 885582481e3783bdd4fbad40a24499f42a40ce24
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: 885b4d132208ab6f8b470d147438e26a5fd4bab7
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 03/05/2021
-ms.locfileid: "102193515"
+ms.locfileid: "102201677"
 ---
 # <a name="connect-azure-front-door-premium-to-a-storage-account-origin-with-private-link"></a>Azure ön kapısı Premium 'u özel bağlantıyla bir depolama hesabı kaynağına bağlama
 
@@ -23,7 +23,7 @@ Bu makalede, Azure ön kapısının Azure özel bağlantı hizmeti kullanarak de
 
 [Azure portalında](https://portal.azure.com) oturum açın.
 
-## <a name="enable-private-link-to-a-storage-account-in-azure-front-door-premium"></a>Azure ön kapısı Premium 'da bir depolama hesabına özel bağlantıyı etkinleştir
+## <a name="enable-private-link-to-a-storage-account"></a>Bir depolama hesabına özel bağlantıyı etkinleştir
  
 Bu bölümde, özel bağlantı hizmetini Azure ön kapısının özel ağında oluşturulan özel bir uç nokta ile eşlersiniz. 
 
@@ -47,7 +47,7 @@ Bu bölümde, özel bağlantı hizmetini Azure ön kapısının özel ağında o
 
 1. Ardından, yapılandırmanızı kaydetmek için **Ekle** ' yi seçin.
 
-## <a name="approve-azure-front-door-premium-private-endpoint-connection-from-the-storage-account"></a>Depolama hesabından Azure ön kapı Premium özel uç nokta bağlantısını onaylama
+## <a name="approve-private-endpoint-connection-from-the-storage-account"></a>Depolama hesabından özel uç nokta bağlantısını onayla
 
 1. Son bölümde özel bağlantısını yapılandırdığınız depolama hesabına gidin. **Ayarlar** altında **ağ** ' ı seçin.
 

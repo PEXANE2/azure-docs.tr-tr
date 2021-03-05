@@ -14,12 +14,12 @@ ms.custom:
 - devx-track-azurecli
 ms.date: 04/10/2019
 ms.author: wesmc
-ms.openlocfilehash: 89b872557275db8651f3b55502d340ff55b7e626
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: aad28c704ba8c46f4c2d0111e545dc4d2381250d
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98624295"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102201949"
 ---
 # <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-and-read-it-with-a-back-end-application-c"></a>Hızlı başlangıç: bir cihazdan IoT Hub 'ına telemetri gönderme ve arka uç uygulamasıyla okuma (C)
 
@@ -114,7 +114,7 @@ Bununla birlikte, bu hızlı başlangıçta GitHub 'dan [Azure IoT C SDK 'sını
 
 ## <a name="register-a-device"></a>Cihaz kaydetme
 
-Bir cihazın bağlanabilmesi için IoT hub’ınıza kaydedilmesi gerekir. Bu bölümde, sanal bir cihazı kaydetmek için [IoT uzantısıyla](/cli/azure/ext/azure-iot/iot?view=azure-cli-latest&preserve-view=true) birlikte Azure Cloud Shell kullanacaksınız.
+Bir cihazın bağlanabilmesi için IoT hub’ınıza kaydedilmesi gerekir. Bu bölümde, sanal bir cihazı kaydetmek için [IoT uzantısıyla](/cli/azure/ext/azure-iot/iot) birlikte Azure Cloud Shell kullanacaksınız.
 
 1. Cihaz kimliğini oluşturmak için Azure Cloud Shell aşağıdaki komutu çalıştırın.
 
@@ -183,7 +183,7 @@ Simülasyon cihazı uygulaması, IoT hub’ınız üzerindeki cihaza özgü bir 
 
 ## <a name="read-the-telemetry-from-your-hub"></a>Hub’ınızdan telemetri okuma
 
-Bu bölümde, sanal cihaz tarafından gönderilen cihaz iletilerini izlemek için [IoT uzantısıyla](/cli/azure/ext/azure-iot/iot?view=azure-cli-latest&preserve-view=true) birlikte Azure Cloud Shell kullanacaksınız.
+Bu bölümde, sanal cihaz tarafından gönderilen cihaz iletilerini izlemek için [IoT uzantısıyla](/cli/azure/ext/azure-iot/iot) birlikte Azure Cloud Shell kullanacaksınız.
 
 1. Azure Cloud Shell'i kullanarak, IoT hub’ınızdan gelen iletilere bağlanmak ve bu iletileri okumak için aşağıdaki komutu çalıştırın:
 

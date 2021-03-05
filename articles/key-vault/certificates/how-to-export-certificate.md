@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.custom: mvc
 ms.date: 08/11/2020
 ms.author: sebansal
-ms.openlocfilehash: b3c917c9652954783fcddd92b9a7370c358ab3cc
-ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
+ms.openlocfilehash: b5cf7f2e5957ef57009c1b461ae81863d6d8ab9b
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98233653"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102199977"
 ---
 # <a name="export-certificates-from-azure-key-vault"></a>Sertifikaları Azure Key Vault dışarı aktarma
 
@@ -61,7 +61,7 @@ az keyvault certificate download --file
                                  [--version]
 ```
 
-Daha fazla bilgi için [örnekleri ve parametre tanımlarını](/cli/azure/keyvault/certificate?view=azure-cli-latest#az-keyvault-certificate-download) görüntüleyin.
+Daha fazla bilgi için [örnekleri ve parametre tanımlarını](/cli/azure/keyvault/certificate#az-keyvault-certificate-download) görüntüleyin.
 
 Sertifika olarak indirme, genel bölümü elde etmek anlamına gelir. Hem özel anahtar hem de genel meta verileri isterseniz, parolayı gizli olarak indirebilirsiniz.
 
@@ -75,7 +75,7 @@ az keyvault secret download -–file {nameofcert.pfx}
                             [--version]
 ```
 
-Daha fazla bilgi için bkz. [parametre tanımları](/cli/azure/keyvault/secret?view=azure-cli-latest#az-keyvault-secret-download).
+Daha fazla bilgi için bkz. [parametre tanımları](/cli/azure/keyvault/secret#az-keyvault-secret-download).
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 

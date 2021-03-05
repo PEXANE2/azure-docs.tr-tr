@@ -3,21 +3,25 @@ title: Azure CLı kullanarak Azure Image Builder hizmet izinlerini yapılandırm
 description: Azure CLı kullanarak izinler ve ayrıcalıklar dahil olmak üzere Azure VM Image Builder hizmeti gereksinimlerini yapılandırın
 author: cynthn
 ms.author: danis
-ms.date: 03/02/2021
+ms.date: 04/02/2021
 ms.topic: article
 ms.service: virtual-machines
 ms.subservice: image-builder
 ms.collection: linux
-ms.openlocfilehash: f9b60af2c9fe16f834ce3098266c03afe2b99667
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 4b6154a18cf4e08bf59dad91350160a1f83c49ed
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101695439"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102201490"
 ---
 # <a name="configure-azure-image-builder-service-permissions-using-azure-cli"></a>Azure CLı kullanarak Azure Image Builder hizmet izinlerini yapılandırma
 
-Azure Image Builder hizmeti, bir görüntü oluşturmadan önce izinlerin ve ayrıcalıkların yapılandırılmasını gerektirir. Aşağıdaki bölümlerde, Azure CLı kullanarak olası senaryoların nasıl yapılandırılacağı anlatılmaktadır.
+(AıB) için kaydolmanız durumunda bu, AıB hizmetine bir hazırlama kaynak grubu (IT_ *) oluşturma, yönetme ve silme izni verir ve bu, görüntü derlemesi için gerekli olan kaynak ekleme haklarına sahip olur. Bu işlem, başarılı bir kayıt sırasında aboneliğinizde kullanılabilir hale getirilen bir AıB hizmet sorumlusu adı (SPN) tarafından yapılır.
+
+Azure VM Image Builder 'ın görüntüleri yönetilen görüntülere veya paylaşılan bir görüntü galerisine dağıtmasını sağlamak için, görüntüleri okuma ve yazma izinlerine sahip Azure Kullanıcı tarafından atanan bir kimlik oluşturmanız gerekir. Azure depolama 'ya erişiyorsanız, bu durumda özel veya ortak kapsayıcıları okumak için izinler gerekir.
+
+Bir görüntü oluşturmadan önce izinleri ve ayrıcalıkları ayarlamalısınız. Aşağıdaki bölümlerde, Azure CLı kullanarak olası senaryoların nasıl yapılandırılacağı anlatılmaktadır.
 
 > [!IMPORTANT]
 > Azure görüntü Oluşturucu Şu anda genel önizleme aşamasındadır.

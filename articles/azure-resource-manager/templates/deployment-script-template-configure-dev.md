@@ -7,18 +7,18 @@ ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 12/14/2020
 ms.author: jgao
-ms.openlocfilehash: f731236b235883f019c74ef0b32f5066ca5b7514
-ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
+ms.openlocfilehash: b2e1ffb3cbd513766945864e33589c46284bf942
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98179376"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102200946"
 ---
 # <a name="configure-development-environment-for-deployment-scripts-in-arm-templates"></a>ARM şablonlarındaki dağıtım betikleri için geliştirme ortamını yapılandırma
 
 Bir dağıtım betiği görüntüsüyle ARM şablonu dağıtım betikleri geliştirmek ve test etmek için bir geliştirme ortamı oluşturmayı öğrenin. Bir [Azure Container Instance](../../container-instances/container-instances-overview.md) oluşturabilir ya da [Docker](https://docs.docker.com/get-docker/)kullanabilirsiniz. Her iki seçenek de bu makalede ele alınmıştır.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 ### <a name="azure-powershell-container"></a>Azure PowerShell kapsayıcı
 
@@ -357,7 +357,7 @@ Bağlama yolu için varsayılan değer `/mnt/azscripts/azscriptinput` . Bu, dosy
 Şablonda belirtilen varsayılan kapsayıcı görüntüsü **MCR.Microsoft.com/Azure-cli:2.9.1**. [Desteklenen Azure CLI sürümlerinin](https://mcr.microsoft.com/v2/azure-cli/tags/list)listesini görüntüleyin.
 
 > [!IMPORTANT]
-> Dağıtım betiği, Microsoft Container Registry (MCR) ' deki kullanılabilir CLı görüntülerini kullanır. Bir bir ayda, bir dağıtım betiği için CLı görüntüsünü onaylamak için bir ay sürer. 30 gün içinde Yayınlanan CLı sürümlerini kullanmayın. Görüntülerin yayın tarihlerini bulmak için bkz. [Azure CLI sürüm notları](/cli/azure/release-notes-azure-cli?view=azure-cli-latest&preserve-view=true). Desteklenmeyen bir sürüm kullanıyorsanız, hata iletisinde desteklenen sürümler listelenir.
+> Dağıtım betiği, Microsoft Container Registry (MCR) ' deki kullanılabilir CLı görüntülerini kullanır. Bir bir ayda, bir dağıtım betiği için CLı görüntüsünü onaylamak için bir ay sürer. 30 gün içinde Yayınlanan CLı sürümlerini kullanmayın. Görüntülerin yayın tarihlerini bulmak için bkz. [Azure CLI sürüm notları](/cli/azure/release-notes-azure-cli). Desteklenmeyen bir sürüm kullanıyorsanız, hata iletisinde desteklenen sürümler listelenir.
 
 Şablon, 1.800 saniye sonra kapsayıcı örneğini askıya alır. Kapsayıcı örneği bir Terminal durumuna geçmeden önce 30 dakika, oturum sona erer.
 

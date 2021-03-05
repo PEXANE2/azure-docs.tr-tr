@@ -6,12 +6,12 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 07/28/2020
-ms.openlocfilehash: 4970cacb0995678bdad87f14ba971b8fb88ffa09
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 44554434eee51c11e7f89007c532f1a142fc998c
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100593641"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102199348"
 ---
 # <a name="react-plugin-for-application-insights-javascript-sdk"></a>JavaScript SDK 'Sı için Application Insights eklentisi
 
@@ -77,7 +77,7 @@ export default withAITracking(reactPlugin, MyComponent);
 
 ## <a name="configuration"></a>Yapılandırma
 
-| Name    | Varsayılan | Description                                                                                                    |
+| Name    | Varsayılan | Açıklama                                                                                                    |
 |---------|---------|----------------------------------------------------------------------------------------------------------------|
 | geçmiş | null    | Yönlendirici geçmişini tepki verin. Daha fazla bilgi için bkz. [tepki verme yönlendiricisi paketi belgeleri](https://reactrouter.com/web/api/history). Geçmiş nesnesine bileşenler dışında nasıl erişebileceğinizi öğrenmek için bkz. [tepki verme yönlendiricisi hakkında SSS](https://github.com/ReactTraining/react-router/blob/master/FAQ.md#how-do-i-access-the-history-object-outside-of-components)    |
 
@@ -161,7 +161,11 @@ Daha yüksek sıralı bileşen gibi çalışır, ancak bir bileşen yaşam döng
 
 ### `useTrackEvent`
 
-Kanca, bir `useTrackEvent` uygulamanın izlenmesi gerekebilecek, düğme tıklama veya DIĞER API çağrısı gibi özel olayları izlemek için kullanılır. İki bağımsız değişken alır, ilki Application Insights örneğidir (kanca içinden elde edilebilir `useAppInsightsContext` ) ve olay için bir ad.
+Kanca, bir `useTrackEvent` uygulamanın izlenmesi gerekebilecek, düğme tıklama veya DIĞER API çağrısı gibi özel olayları izlemek için kullanılır. Dört bağımsız değişken alır:
+-   Application Insights örneği (üstünden elde edilebilir `useAppInsightsContext` ).
+-   Olayın adı.
+-   İzlenmesi gereken değişiklikleri kapsülleyen olay veri nesnesi.
+-   başlatma sırasında çağrıyı çağırmayı atlamak için skipFirstRun (isteğe bağlı) bayrağı `trackEvent` . Varsayılan değer `true` olarak ayarlanmıştır.
 
 ```javascript
 import React, { useState, useEffect } from "react";
