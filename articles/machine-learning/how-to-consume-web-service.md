@@ -11,14 +11,14 @@ ms.reviewer: larryfr
 ms.date: 10/12/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, devx-track-csharp
-ms.openlocfilehash: dddecb3dba6d707e16241731a25df3b3749be103
-ms.sourcegitcommit: e7179fa4708c3af01f9246b5c99ab87a6f0df11c
+ms.openlocfilehash: d23d6cb5a43de4ccf0d10287b8cf8f597797b893
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97825414"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102214992"
 ---
-# <a name="consume-an-azure-machine-learning-model-deployed-as-a-web-service"></a>Web hizmeti olarak dağıtılan bir Azure Machine Learning modeli kullanma
+# <a name="consume-an-azure-machine-learning-model-deployed-as-a-web-service"></a>Web hizmeti olarak dağıtılan bir Azure Machine Learning modelini kullanma
 
 
 Web hizmeti olarak Azure Machine Learning modeli dağıtma işlemi bir REST API uç noktası oluşturur. Bu uç noktaya veri gönderebilir ve model tarafından döndürülen tahmini alabilirsiniz. Bu belgede, C#, Go, Java ve Python kullanarak Web hizmeti için istemci oluşturma hakkında bilgi edinin.
@@ -77,7 +77,7 @@ Dağıtılan Web Hizmetleri için bu bilgileri almanın birkaç yolu vardır:
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Dağıtılan hizmetin adını biliyorsanız [az ml Service Show](/cli/azure/ext/azure-cli-ml/ml/service?view=azure-cli-latest#ext_azure_cli_ml_az_ml_service_show) komutunu kullanın:
+Dağıtılan hizmetin adını biliyorsanız [az ml Service Show](/cli/azure/ext/azure-cli-ml/ml/service#ext_azure_cli_ml_az_ml_service_show) komutunu kullanın:
 
 ```azurecli
 az ml service show -n <service-name>
@@ -677,7 +677,7 @@ Power BI, Power BI verileri tahmine dayalı olarak zenginleştirmek için Azure 
 
 Power BI, tüketim için desteklenen bir Web hizmeti oluşturmak için, şemanın Power BI gereken biçimi desteklemesi gerekir. [Power BI tarafından desteklenen bir şema oluşturmayı öğrenin](./how-to-deploy-advanced-entry-script.md#power-bi-compatible-endpoint).
 
-Web hizmeti dağıtıldıktan sonra Power BI iş akışlarından kullanılabilir. [Power BI bir Azure Machine Learning Web hizmeti kullanmayı öğrenin](/power-bi/service-machine-learning-integration).
+Web hizmeti dağıtıldıktan sonra Power BI iş akışlarından kullanılabilir. [Azure Machine Learning web hizmetini Power BI'dan kullanmayı öğrenin](/power-bi/service-machine-learning-integration).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -9,12 +9,12 @@ ms.subservice: cosmosdb-cassandra
 ms.topic: tutorial
 ms.date: 12/06/2018
 ms.custom: seodec18, devx-track-java
-ms.openlocfilehash: fe452f61d17f0b2014957e3b458ef1ad1b3c539d
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: ca1fdbd9aa2c98358489d91fe0839c98adec293b
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97357645"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102212714"
 ---
 # <a name="tutorial-create-a-cassandra-api-account-in-azure-cosmos-db-by-using-a-java-application-to-store-keyvalue-data"></a>Öğretici: anahtar/değer verilerini depolamak için bir Java uygulaması kullanarak Azure Cosmos DB Cassandra API hesabı oluşturma
 [!INCLUDE[appliesto-cassandra-api](includes/appliesto-cassandra-api.md)]
@@ -34,7 +34,7 @@ Bu öğretici aşağıdaki görevleri kapsar:
 
 * Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) oluşturun. 
 
-* [Java Development Kit 'in (JDK)](/java/azure/jdk/?view=azure-java-stable&preserve-view=true)en son sürümünü alın. 
+* [Java Development Kit 'in (JDK)](/java/azure/jdk/)en son sürümünü alın. 
 
 * [Maven](https://maven.apache.org/) Ikili arşivini [indirin](https://maven.apache.org/download.cgi) ve [yükleyin](https://maven.apache.org/install.html) . 
   - Ubuntu’da Maven’i yüklemek için `apt-get install maven` komutunu çalıştırabilirsiniz. 

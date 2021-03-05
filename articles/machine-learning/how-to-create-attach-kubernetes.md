@@ -11,12 +11,12 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 10/02/2020
-ms.openlocfilehash: 97042479419cbc9d634a06e2dcbcccf9c8fde62b
-ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
+ms.openlocfilehash: a4536f0dd40e1d0ee3a5ca75db9b111dcfa0ad6f
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99560468"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102214907"
 ---
 # <a name="create-and-attach-an-azure-kubernetes-service-cluster"></a>Azure Kubernetes hizmet kümesi oluşturma ve iliştirme
 
@@ -93,7 +93,7 @@ Mevcut bir AKS kümesini **eklerken** , şu anda desteklenen tüm aks sürümler
 
 ### <a name="available-and-default-versions"></a>Kullanılabilir ve varsayılan sürümler
 
-Kullanılabilir ve varsayılan AKS sürümlerini bulmak için [az aks get-versions](/cli/azure/aks?view=azure-cli-latest&preserve-view=true#az_aks_get_versions) [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true) komutunu kullanın. Örneğin, aşağıdaki komut Batı ABD bölgesinde bulunan sürümleri döndürür:
+Kullanılabilir ve varsayılan AKS sürümlerini bulmak için [az aks get-versions](/cli/azure/aks#az_aks_get_versions) [Azure CLI](/cli/azure/install-azure-cli) komutunu kullanın. Örneğin, aşağıdaki komut Batı ABD bölgesinde bulunan sürümleri döndürür:
 
 ```azurecli-interactive
 az aks get-versions -l westus -o table
@@ -198,7 +198,7 @@ Bu örnekte kullanılan sınıflar, Yöntemler ve parametreler hakkında daha fa
 az ml computetarget create aks -n myaks
 ```
 
-Daha fazla bilgi için, [az ml computetarget Create aks](/cli/azure/ext/azure-cli-ml/ml/computetarget/create?preserve-view=true&view=azure-cli-latest#ext-azure-cli-ml-az-ml-computetarget-create-aks) Reference bölümüne bakın.
+Daha fazla bilgi için, [az ml computetarget Create aks](/cli/azure/ext/azure-cli-ml/ml/computetarget/create#ext-azure-cli-ml-az-ml-computetarget-create-aks) Reference bölümüne bakın.
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
@@ -223,8 +223,8 @@ Azure aboneliğinizde zaten AKS kümeniz varsa, çalışma alanınız ile kullan
 
 Azure CLı veya portalını kullanarak bir AKS kümesi oluşturma hakkında daha fazla bilgi için aşağıdaki makalelere bakın:
 
-* [AKS kümesi oluşturma (CLI)](/cli/azure/aks?bc=%2fazure%2fbread%2ftoc.json&preserve-view=true&toc=%2fazure%2faks%2fTOC.json&view=azure-cli-latest#az-aks-create)
-* [AKS kümesi oluşturma (portal)](../aks/kubernetes-walkthrough-portal.md?preserve-view=true&view=azure-cli-latest)
+* [AKS kümesi oluşturma (CLI)](/cli/azure/aks?bc=%2fazure%2fbread%2ftoc.json&toc=%2fazure%2faks%2fTOC.json#az-aks-create)
+* [AKS kümesi oluşturma (portal)](../aks/kubernetes-walkthrough-portal.md)
 * [AKS kümesi oluşturma (Azure hızlı başlangıç şablonlarında ARM şablonu)](https://github.com/Azure/azure-quickstart-templates/tree/master/101-aks-azml-targetcompute)
 
 Aşağıdaki örnek, var olan bir AKS kümesinin çalışma alanınıza nasıl ekleneceğini göstermektedir:
@@ -275,7 +275,7 @@ Mevcut kümeyi çalışma alanınıza eklemek için aşağıdaki komutu kullanı
 az ml computetarget attach aks -n myaks -i aksresourceid -g myresourcegroup -w myworkspace
 ```
 
-Daha fazla bilgi için, [az ml computetarget Attach aks](/cli/azure/ext/azure-cli-ml/ml/computetarget/attach?preserve-view=true&view=azure-cli-latest#ext-azure-cli-ml-az-ml-computetarget-attach-aks) başvurusuna bakın.
+Daha fazla bilgi için, [az ml computetarget Attach aks](/cli/azure/ext/azure-cli-ml/ml/computetarget/attach#ext-azure-cli-ml-az-ml-computetarget-attach-aks) başvurusuna bakın.
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 

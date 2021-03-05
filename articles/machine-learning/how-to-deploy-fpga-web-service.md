@@ -11,12 +11,12 @@ author: jpe316
 ms.date: 09/24/2020
 ms.topic: conceptual
 ms.custom: how-to, contperf-fy21q2, devx-track-python, deploy
-ms.openlocfilehash: 9e43291325510f92f2e5fd6c07cdb9257fdede9d
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 39c7d980bf9a90e5f72dfc9366d0ec44204b1ed2
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97033077"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102212799"
 ---
 # <a name="deploy-ml-models-to-field-programmable-gate-arrays-fpgas-with-azure-machine-learning"></a>Azure Machine Learning ile ML modellerini alan programlanabilir kapı dizileri (FPGAs) ile dağıtma 
 
@@ -31,7 +31,7 @@ Farklı makine öğrenimi modelleri türleri için FPGAs 'yi yeniden yapılandı
 
 ![Azure Machine Learning FPGA karşılaştırması diyagramı](./media/how-to-deploy-fpga-web-service/azure-machine-learning-fpga-comparison.png)
 
-|İşlemci| Kısaltma |Description|
+|İşlemci| Kısaltma |Açıklama|
 |---|:-------:|------|
 |Uygulamaya özgü tümleşik devreler|ASICS|Google 'ın Tensor Işlemci birimleri (TPU) gibi özel devreler en yüksek verimliliği sağlar. Gereksinimleriniz değiştikçe bu değişiklikler yeniden yapılandırılamaz.|
 |Alan-programlanabilir kapı dizileri|FPGA'lar|Azure 'da kullanılabilir olanlar gibi FPGAs 'ler, ASICs performansına yakın performans sağlar. Ayrıca, yeni mantık uygulamak için zaman içinde esnek ve yeniden yapılandırılabilir.|
@@ -68,7 +68,7 @@ Bu örnekte, giriş görüntüsünü önceden işlemek için bir TensorFlow graf
  
 - Donanım hızlandırmalı modeller paketi:  `pip install --upgrade azureml-accel-models[cpu]`    
     
-- [Azure CLI](/cli/azure/install-azure-cli?preserve-view=true&view=azure-cli-latest)
+- [Azure CLI](/cli/azure/install-azure-cli)
 
 - FPGA kotası. Kota [isteği](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR2nac9-PZhBDnNSV2ITz0LNUN0U5S0hXRkNITk85QURTWk9ZUUFUWkkyTC4u)gönder veya kotayı denetlemek IÇIN bu CLI komutunu çalıştırın: 
 

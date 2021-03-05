@@ -9,14 +9,14 @@ ms.topic: reference
 author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, bonova, danil
-ms.date: 1/12/2021
+ms.date: 3/5/2021
 ms.custom: seoapril2019, sqldbrb=1
-ms.openlocfilehash: a182ca3ba70b9faa1ba67fdb6c91a4eaf8e766ef
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 014140b9b9832bab3de4f71c0b5f164b564b3fe5
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101691204"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102212731"
 ---
 # <a name="t-sql-differences-between-sql-server--azure-sql-managed-instance"></a>SQL Server & Azure SQL yönetilen örneği arasındaki T-SQL farklılıkları
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -252,7 +252,7 @@ Bazı dosya özellikleri ayarlanamaz veya değiştirilemez:
 Aşağıdaki seçenekler varsayılan olarak ayarlanır ve değiştirilemez:
 
 - `MULTI_USER`
-- `ENABLE_BROKER ON`
+- `ENABLE_BROKER`
 - `AUTO_CLOSE OFF`
 
 Aşağıdaki seçenekler değiştirilemez:
@@ -471,6 +471,10 @@ Restore deyimleri hakkında daha fazla bilgi için bkz. [restore deyimleri](/sql
 - `sys.routes`: Bir önkoşul olarak sys. Routes adresini seçmeniz gerekir. Adresin her rotada yerel olması gerekir. Bkz. [sys. Routes](/sql/relational-databases/system-catalog-views/sys-routes-transact-sql).
 - `CREATE ROUTE`: `CREATE ROUTE` İle kullanamazsınız `ADDRESS` `LOCAL` . Bkz. [yol oluşturma](/sql/t-sql/statements/create-route-transact-sql).
 - `ALTER ROUTE`: `ALTER ROUTE` İle kullanamazsınız `ADDRESS` `LOCAL` . Bkz. [yol değiştirme](/sql/t-sql/statements/alter-route-transact-sql). 
+
+Hizmet Aracısı varsayılan olarak etkindir ve devre dışı bırakılamaz. Aşağıdaki ALTER DATABI seçenekleri desteklenmez:
+- `ENABLE_BROKER`
+- `DISABLE_BROKER`
 
 ### <a name="stored-procedures-functions-and-triggers"></a>Saklı yordamlar, işlevler ve Tetikleyiciler
 

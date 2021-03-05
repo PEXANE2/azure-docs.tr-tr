@@ -8,12 +8,12 @@ author: troy0820
 ms.author: b-trconn
 keywords: Aro, OpenShift, az Aro, Red hat, CLI
 ms.custom: mvc
-ms.openlocfilehash: 6a4c226527f94a9fca4c8106df3827c9222657a1
-ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
+ms.openlocfilehash: 8a9bb191390056caf7d5ba3b42c278205177d5a2
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100633232"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102213024"
 ---
 # <a name="create-an-azure-red-hat-openshift-4-cluster-application-restore"></a>Azure Red Hat OpenShift 4 küme uygulaması geri yükleme oluşturma
 
@@ -23,7 +23,7 @@ Bu makalede, ortamınızı bir Azure Red Hat OpenShift 4 küme uygulaması geri 
 > * Önkoşulları kurun ve gerekli araçları kurun
 > * Azure Red Hat OpenShift 4 uygulaması geri yükleme oluşturma
 
-CLı 'yi yerel olarak yükleyip kullanmayı tercih ederseniz bu öğreticide, Azure CLı sürüm 2.6.0 veya üstünü çalıştırıyor olmanız gerekir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse, bkz. [Azure CLI yükleme](/cli/azure/install-azure-cli?view=azure-cli-latest).
+CLı 'yi yerel olarak yükleyip kullanmayı tercih ederseniz bu öğreticide, Azure CLı sürüm 2.6.0 veya üstünü çalıştırıyor olmanız gerekir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse, bkz. [Azure CLI yükleme](/cli/azure/install-azure-cli).
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 

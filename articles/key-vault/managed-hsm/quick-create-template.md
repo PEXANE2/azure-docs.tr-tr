@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.custom: mvc, devx-track-azurecli
 ms.date: 09/15/2020
 ms.author: mbaldwin
-ms.openlocfilehash: d47935f76347b2d5272b386942a85643a732e643
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: d9fb9e0221ad6a5749899c89bbd9dc5631e7a91c
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94831761"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102213275"
 ---
 # <a name="quickstart-create-an-key-vault-managed-hsm-using-an-azure-resource-manager-template"></a>Hızlı başlangıç: Azure Resource Manager şablonu kullanarak Key Vault yönetilen HSM oluşturma
 
@@ -43,7 +43,7 @@ CLı kullanarak Azure 'da oturum açmak için şunu yazabilirsiniz:
 az login
 ```
 
-CLı aracılığıyla oturum açma seçenekleri hakkında daha fazla bilgi için bkz. [Azure CLI ile oturum açma](/cli/azure/authenticate-azure-cli?view=azure-cli-latest&preserve-view=true)
+CLı aracılığıyla oturum açma seçenekleri hakkında daha fazla bilgi için bkz. [Azure CLI ile oturum açma](/cli/azure/authenticate-azure-cli)
 
 ## <a name="create-a-manage-hsm"></a>Bir yönetim HSM oluşturma
 
@@ -55,13 +55,13 @@ Bu hızlı başlangıçta kullanılan şablon [Azure Hızlı Başlangıç şablo
 
 Daha fazla Azure Key Vault şablon örneği [burada](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Keyvault)bulunabilir.
 
-Şablon, hesabınızla ilişkili nesne KIMLIĞINI gerektiriyor. Bunu bulmak için, e-posta adresinizi parametreye geçirerek Azure CLı [az ad User Show](/cli/azure/ad/user?view=azure-cli-latest&preserve-view=true#az_ad_user_show) komutunu kullanın `--id` . Yalnızca parametresiyle ilgili çıktıyı nesne KIMLIĞIYLE sınırlayabilirsiniz `--query` .
+Şablon, hesabınızla ilişkili nesne KIMLIĞINI gerektiriyor. Bunu bulmak için, e-posta adresinizi parametreye geçirerek Azure CLı [az ad User Show](/cli/azure/ad/user#az_ad_user_show) komutunu kullanın `--id` . Yalnızca parametresiyle ilgili çıktıyı nesne KIMLIĞIYLE sınırlayabilirsiniz `--query` .
 
 ```azurecli-interactive
 az ad user show --id <your-email-address> --query "objectId"
 ```
 
-Kiracı KIMLIĞINIZ da gerekebilir. Bunu bulmak için, Azure CLı [az ad User Show](/cli/azure/account?view=azure-cli-latest&preserve-view=true#az_account_show) komutunu kullanın. Çıktıyı yalnızca parametresiyle birlikte kiracı KIMLIĞIYLE sınırlayabilirsiniz `--query` .
+Kiracı KIMLIĞINIZ da gerekebilir. Bunu bulmak için, Azure CLı [az ad User Show](/cli/azure/account#az_account_show) komutunu kullanın. Çıktıyı yalnızca parametresiyle birlikte kiracı KIMLIĞIYLE sınırlayabilirsiniz `--query` .
 
  ```azurecli-interactive
  az account show --query "tenantId"

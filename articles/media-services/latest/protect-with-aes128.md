@@ -10,7 +10,7 @@ MS. Service: Media-Services MS. Workload: Media ms.tgt_pltfrm: na MS. devlang: n
 [!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 > [!NOTE]
-> Öğretici [.NET SDK](/dotnet/api/microsoft.azure.management.media.models.liveevent?view=azure-dotnet) örnekleri kullanıyor olsa da, genel adımlar [REST API](/rest/api/media/liveevents), [CLI](/cli/azure/ams/live-event?view=azure-cli-latest)veya desteklenen diğer [SDK](media-services-apis-overview.md#sdks)'lar için aynıdır.
+> Öğretici [.NET SDK](/dotnet/api/microsoft.azure.management.media.models.liveevent?view=azure-dotnet) örnekleri kullanıyor olsa da, genel adımlar [REST API](/rest/api/media/liveevents), [CLI](/cli/azure/ams/live-event)veya desteklenen diğer [SDK](media-services-apis-overview.md#sdks)'lar için aynıdır.
 
 Media Services, HTTP Canlı Akışı (HLS), MPEG-DASH ve Kesintisiz Akış 128 bit şifreleme anahtarlarını kullanarak AES ile şifreli olarak dağıtmak için kullanabilirsiniz. Media Services, yetkili kullanıcılara şifreleme anahtarları sunan anahtar teslim hizmetini de sağlar. Videonuzu dinamik olarak şifrelemek için Media Services istiyorsanız, şifreleme anahtarını bir akış bulucu ile ilişkilendirir ve ayrıca içerik anahtarı ilkesini de yapılandırırsınız. Player tarafından bir akış istendiğinde, Media Services, içeriğinizi AES-128 ile dinamik olarak şifrelemek için belirtilen anahtarı kullanır. Oynatıcı, akışın şifresini çözmek için anahtar teslim hizmetinden anahtarı ister. Hizmet, kullanıcının anahtarı alma yetkisine sahip olup olmadığını belirlemek için anahtar için belirlediğiniz içerik anahtarı ilkesini değerlendirir.
 

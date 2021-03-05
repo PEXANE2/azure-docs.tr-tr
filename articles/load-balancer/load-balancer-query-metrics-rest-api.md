@@ -10,12 +10,12 @@ ms.custom: REST, seodec18
 ms.topic: how-to
 ms.date: 11/19/2019
 ms.author: allensu
-ms.openlocfilehash: fbf21ba359ae7914acd2d812ec9e12f9f3ee557a
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: 391be596d890e05e6a8fdaf35d2cade371e468d6
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97511952"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102213192"
 ---
 # <a name="get-load-balancer-usage-metrics-using-the-rest-api"></a>REST API kullanarak Load Balancer kullanım ölçümleri alın
 
@@ -44,7 +44,7 @@ Aşağıdaki üstbilgiler gereklidir:
 
 | Ad | Açıklama |
 | :--- | :---------- |
-| subscriptionId | Bir Azure aboneliğini tanımlayan abonelik KIMLIĞI. Birden çok aboneliğiniz varsa bkz. [birden çok abonelikle çalışma](/cli/azure/manage-azure-subscriptions-azure-cli?view=azure-cli-latest). |
+| subscriptionId | Bir Azure aboneliğini tanımlayan abonelik KIMLIĞI. Birden çok aboneliğiniz varsa bkz. [birden çok abonelikle çalışma](/cli/azure/manage-azure-subscriptions-azure-cli). |
 | resourceGroupName | Kaynağı içeren kaynak grubunun adı. Bu değeri Azure Resource Manager API, CLı veya portaldan elde edebilirsiniz. |
 | loadBalancerName | Azure Load Balancer adı. |
 | ölçüm adları | Geçerli  [Load Balancer ölçümlerinin](./load-balancer-standard-diagnostics.md)virgülle ayrılmış listesi. |

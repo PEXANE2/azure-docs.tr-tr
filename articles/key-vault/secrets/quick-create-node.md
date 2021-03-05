@@ -8,12 +8,12 @@ ms.service: key-vault
 ms.subservice: secrets
 ms.topic: quickstart
 ms.custom: devx-track-js
-ms.openlocfilehash: 70416daced2cbdebb70fb8e1defbcbcb599710f1
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 769a63819925caa50ff364869b8d9a14c3258a2e
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101705492"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102214550"
 ---
 # <a name="quickstart-azure-key-vault-secret-client-library-for-javascript-version-4"></a>Hızlı başlangıç: JavaScript için Azure Key Vault gizli istemci kitaplığı (sürüm 4)
 
@@ -168,7 +168,7 @@ const client = new SecretClient(KVUri, credential);
 
 ### <a name="save-a-secret"></a>Gizli dizi Kaydet
 
-Uygulamanızın kimliği doğrulandığına göre, [setsecret metodunu](/javascript/api/@azure/keyvault-secrets/secretclient?view=azure-node-latest#setSecret_string__string__SetSecretOptions_) kullanarak keykasanıza gizli anahtar koyabilirsiniz. Bu örnekte, gizli anahtar için bir ad gerekir. Bu örnekteki "MySecret" kullandık.  
+Uygulamanızın kimliği doğrulandığına göre, [setsecret metodunu](/javascript/api/@azure/keyvault-secrets/secretclient#setSecret_string__string__SetSecretOptions_) kullanarak keykasanıza gizli anahtar koyabilirsiniz. Bu örnekte, gizli anahtar için bir ad gerekir. Bu örnekteki "MySecret" kullandık.  
 
 ```javascript
 await client.setSecret(secretName, secretValue);
@@ -176,7 +176,7 @@ await client.setSecret(secretName, secretValue);
 
 ### <a name="retrieve-a-secret"></a>Gizli dizi alma
 
-Artık [Getsecret yöntemiyle](/javascript/api/@azure/keyvault-secrets/secretclient?view=azure-node-latest#getSecret_string__GetSecretOptions_)önceden ayarlanan değeri alabilirsiniz.
+Artık [Getsecret yöntemiyle](/javascript/api/@azure/keyvault-secrets/secretclient#getSecret_string__GetSecretOptions_)önceden ayarlanan değeri alabilirsiniz.
 
 ```javascript
 const retrievedSecret = await client.getSecret(secretName);

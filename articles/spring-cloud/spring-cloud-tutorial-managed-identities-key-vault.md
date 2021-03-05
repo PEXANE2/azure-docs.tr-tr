@@ -7,12 +7,12 @@ ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 07/08/2020
 ms.custom: devx-track-java, devx-track-azurecli
-ms.openlocfilehash: 8d10562c1499b9e6e8f287029173e1728abb75a0
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 7e02bfb295460797edf46eac57afa628cd1544be
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102034107"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102212942"
 ---
 # <a name="tutorial-use-a-managed-identity-to-connect-key-vault-to-an-azure-spring-cloud-app"></a>Öğretici: Azure Spring Cloud uygulamasına Key Vault bağlamak için yönetilen bir kimlik kullanın
 
@@ -25,18 +25,18 @@ Azure Key Vault, uygulamanızın belirteçleri, parolaları, sertifikaları, API
 ## <a name="prerequisites"></a>Önkoşullar
 
 * [Azure aboneliğine kaydolma](https://azure.microsoft.com/free/)
-* [Azure CLı sürüm 2.0.67 veya üstünü yükler](/cli/azure/install-azure-cli?preserve-view=true&view=azure-cli-latest)
+* [Azure CLı sürüm 2.0.67 veya üstünü yükler](/cli/azure/install-azure-cli)
 * [Maven 3,0 veya üstünü yükler](https://maven.apache.org/download.cgi)
 
 ## <a name="create-a-resource-group"></a>Kaynak grubu oluşturma
-Kaynak grubu, Azure kaynaklarının dağıtıldığı ve yönetildiği bir mantıksal kapsayıcıdır. [Az Group Create](/cli/azure/group?view=azure-cli-latest&preserve-view=true#az-group-create)komutunu kullanarak hem Key Vault hem de yay bulutunu içerecek bir kaynak grubu oluşturun:
+Kaynak grubu, Azure kaynaklarının dağıtıldığı ve yönetildiği bir mantıksal kapsayıcıdır. [Az Group Create](/cli/azure/group#az-group-create)komutunu kullanarak hem Key Vault hem de yay bulutunu içerecek bir kaynak grubu oluşturun:
 
 ```azurecli-interactive
 az group create --name "myResourceGroup" -l "EastUS"
 ```
 
 ## <a name="set-up-your-key-vault"></a>Key Vault ayarlama
-Key Vault oluşturmak için [az keykasacreate](/cli/azure/keyvault?view=azure-cli-latest&preserve-view=true#az-keyvault-create)komutunu kullanın.
+Key Vault oluşturmak için [az keykasacreate](/cli/azure/keyvault#az-keyvault-create)komutunu kullanın.
 
 > [!Important]
 > Her Key Vault benzersiz bir adı olmalıdır. Aşağıdaki örneklerde <-keykasasının adı> Key Vault adıyla değiştirin.
@@ -47,7 +47,7 @@ az keyvault create --name "<your-keyvault-name>" -g "myResourceGroup"
 
 Döndürülen `vaultUri` "https://<-keykasa-adı>. Vault.Azure.net" biçiminde olacak döndürülen bir örneği yapın. Bu işlem, aşağıdaki adımda kullanılacaktır.
 
-Artık, [az keykasasecret set](/cli/azure/keyvault/secret?view=azure-cli-latest&preserve-view=true#az-keyvault-secret-set)komutuyla Key Vault bir gizli dizi yerleştirebilirsiniz:
+Artık, [az keykasasecret set](/cli/azure/keyvault/secret#az-keyvault-secret-set)komutuyla Key Vault bir gizli dizi yerleştirebilirsiniz:
 
 ```azurecli-interactive
 az keyvault secret set --vault-name "<your-keyvault-name>" \
@@ -169,7 +169,7 @@ Bu uygulamanın Azure Key Vault parolaları almak için erişimi olacak. Başlan
 
 ## <a name="build-sample-spring-boot-app-with-java-sdk"></a>Java SDK ile örnek Spring Boot uygulaması oluşturma
 
-Bu örnek Azure Key Vault parolaları ayarlayıp alabilir. [Java için Azure Key Vault gizli istemci kitaplığı](/java/api/overview/azure/security-keyvault-secrets-readme?preserve-view=true&view=azure-java-stablelibrary) , Azure SDK 'sı genelinde Azure Active Directory belirteç kimlik doğrulama desteği sağlar. AAD belirteci kimlik doğrulamasını desteklemek üzere Azure SDK istemcileri oluşturmak için kullanılabilecek bir **TokenCredential** uygulamaları kümesi sağlar.
+Bu örnek Azure Key Vault parolaları ayarlayıp alabilir. [Java için Azure Key Vault gizli istemci kitaplığı](/java/api/overview/azure/security-keyvault-secrets-readme) , Azure SDK 'sı genelinde Azure Active Directory belirteç kimlik doğrulama desteği sağlar. AAD belirteci kimlik doğrulamasını desteklemek üzere Azure SDK istemcileri oluşturmak için kullanılabilecek bir **TokenCredential** uygulamaları kümesi sağlar.
 
 Azure Key Vault gizli istemci kitaplığı, belirteçlere, parolalara, API anahtarlarına ve diğer gizli anahtarlara erişimi güvenli bir şekilde depolamanıza ve denetlemenize olanak tanır. Kitaplık, gizli dizileri ve sürümlerini oluşturma, alma, güncelleştirme, silme, Temizleme, yedekleme, geri yükleme ve listeme işlemleri sunar.
 
@@ -193,7 +193,7 @@ Azure Key Vault gizli istemci kitaplığı, belirteçlere, parolalara, API anaht
     azure.keyvault.uri=https://<your-keyvault-name>.vault.azure.net
     ```
 
-3. Kodunuzda Key Vault gizli dizileri ayarlamak veya almak için Azure Active Directory ve [Secretclientbuilder](/java/api/com.azure.security.keyvault.secrets.secretclientbuilder?preserve-view=true&view=azure-java-stable) 'dan belirteç almak üzere [Managedıdentitycredentialbuilder](/java/api/com.azure.identity.managedidentitycredentialbuilder?preserve-view=true&view=azure-java-stable) 'ı ekleyin.
+3. Kodunuzda Key Vault gizli dizileri ayarlamak veya almak için Azure Active Directory ve [Secretclientbuilder](/java/api/com.azure.security.keyvault.secrets.secretclientbuilder) 'dan belirteç almak üzere [Managedıdentitycredentialbuilder](/java/api/com.azure.identity.managedidentitycredentialbuilder) 'ı ekleyin.
 
     Kopyalanan örnek projenin [Maincontroller. Java](https://github.com/Azure-Samples/Azure-Spring-Cloud-Samples/blob/master/managed-identity-keyvault/src/main/java/com/microsoft/azure/MainController.java#L28) dosyasından örneği alın.
 

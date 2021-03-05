@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/31/2019
 ms.author: brendm
 ms.custom: devx-track-java, devx-track-azurecli
-ms.openlocfilehash: 479daa9a94247ada30c54a9c5df3471035765087
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 46d79de612a17c7b21e7cc51dcf4904209e1625d
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90908278"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102212952"
 ---
 # <a name="start-stop-and-delete-your-azure-spring-cloud-application"></a>Azure Spring Cloud uygulamanızı başlatma, durdurma ve silme
 
@@ -27,12 +27,12 @@ Bir uygulamayı dağıttıktan sonra, Azure portal kullanarak başlatabilir, dur
 1. Azure portal Azure Spring Cloud Service örneğine gidin.
 1. **Uygulama panosu** sekmesini seçin.
 1. Durumunu değiştirmek istediğiniz uygulamayı seçin.
-1. Bu uygulamanın **genel bakış** sayfasında **Başlat/Durdur**, **Yeniden Başlat**veya **Sil**' i seçin.
+1. Bu uygulamanın **genel bakış** sayfasında **Başlat/Durdur**, **Yeniden Başlat** veya **Sil**' i seçin.
 
 ## <a name="using-the-azure-cli"></a>Azure CLI'yı kullanma
 
 > [!NOTE]
-> İsteğe bağlı parametreleri kullanabilir ve Varsayılanları Azure CLı ile yapılandırabilirsiniz. [Başvuru belgelerimizi](/cli/azure/ext/spring-cloud/spring-cloud?view=azure-cli-latest&preserve-view=true)okuyarak Azure CLI hakkında daha fazla bilgi edinin.  
+> İsteğe bağlı parametreleri kullanabilir ve Varsayılanları Azure CLı ile yapılandırabilirsiniz. [Başvuru belgelerimizi](/cli/azure/ext/spring-cloud/spring-cloud)okuyarak Azure CLI hakkında daha fazla bilgi edinin.  
 
 İlk olarak, Azure CLı için Azure yay bulutu uzantısını aşağıdaki şekilde yüklemeniz gerekir:
 

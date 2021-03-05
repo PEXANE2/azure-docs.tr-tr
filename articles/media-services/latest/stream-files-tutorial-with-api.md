@@ -10,7 +10,7 @@ MS. Service: Media-Services MS. Workload: MS. Topic: öğretici ms. Custom: MVC 
 [!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 > [!NOTE]
-> Bu öğretici [.NET SDK](/dotnet/api/microsoft.azure.management.media.models.liveevent?view=azure-dotnet) örnekleri kullanıyor olsa da, genel adımlar [REST API](/rest/api/media/liveevents), [CLI](/cli/azure/ams/live-event?view=azure-cli-latest)veya desteklenen diğer [SDK](media-services-apis-overview.md#sdks)'lar için aynıdır.
+> Bu öğretici [.NET SDK](/dotnet/api/microsoft.azure.management.media.models.liveevent?view=azure-dotnet) örnekleri kullanıyor olsa da, genel adımlar [REST API](/rest/api/media/liveevents), [CLI](/cli/azure/ams/live-event)veya desteklenen diğer [SDK](media-services-apis-overview.md#sdks)'lar için aynıdır.
 
 Azure Media Services, medya dosyalarınızı çok çeşitli tarayıcılarda ve cihazlarda oynatacak biçimlere kodlamanızı sağlar. Örneğin, içeriğinizi Apple'ın HLS veya MPEG DASH biçimlerinde akışla göndermek isteyebilirsiniz. Akışla göndermeden önce yüksek kaliteli dijital medya dosyanızı kodlamanız gerekir. Kodlama konusunda yardım için bkz. [kodlama kavramı](encoding-concept.md). Bu öğretici yerel video dosyasını karşıya yükler ve karşıya yüklenen dosyayı kodlar. Ayrıca, bir HTTPS URL 'SI aracılığıyla erişilebilir hale gelen içeriği de kodlayabilirsiniz. Daha fazla bilgi için bkz. [HTTP(s) URL'sinde iş girişi oluşturma](job-input-from-http-how-to.md).
 

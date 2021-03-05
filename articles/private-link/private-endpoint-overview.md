@@ -1,5 +1,5 @@
 ---
-title: Azure özel uç noktası nedir?
+title: Azure Özel Uç Nokta nedir?
 description: Azure özel uç noktası hakkında bilgi edinin
 services: private-link
 author: malopMSFT
@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: allensu
-ms.openlocfilehash: 88d44f4f8cedbad604eb59cde91f4eed79918c0f
-ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
+ms.openlocfilehash: 62a5a5307e704b22a2c9ead197dae3360d5d03b1
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98806663"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102214805"
 ---
 # <a name="what-is-azure-private-endpoint"></a>Azure Özel Uç Nokta nedir?
 
@@ -110,7 +110,7 @@ Aşağıdaki bağlantı onay yöntemlerini kullanarak bir özel bağlantı kayna
 > Yalnızca onaylanan bir durumdaki özel uç nokta, belirli bir özel bağlantı kaynağına trafik gönderebilir. 
 
 ### <a name="connecting-using-alias"></a>Takma ad kullanarak bağlanma
-Diğer ad, hizmet sahibi bir standart yük dengeleyicinin arkasında özel bağlantı hizmeti oluşturduğunda oluşturulan benzersiz bir addır. Hizmet sahibi, bu diğer adı tüketicileriyle çevrimdışı olarak paylaşabilir. Tüketiciler, kaynak URI 'sini veya diğer adı kullanarak özel bağlantı hizmetine bağlantı isteğinde bulunabilir. Diğer adı kullanarak bağlanmak istiyorsanız, el ile bağlantı onay yöntemi kullanarak özel uç nokta oluşturmanız gerekir. El ile bağlantı onay yöntemi kullanmak için, Özel uç nokta oluşturma akışı sırasında el ile istek parametresini true olarak ayarlayın. Ayrıntılar için [New-AzPrivateEndpoint](/powershell/module/az.network/new-azprivateendpoint?view=azps-2.6.0) ve [az Network Private-Endpoint Create](/cli/azure/network/private-endpoint?view=azure-cli-latest#az-network-private-endpoint-create) bölümüne bakın. 
+Diğer ad, hizmet sahibi bir standart yük dengeleyicinin arkasında özel bağlantı hizmeti oluşturduğunda oluşturulan benzersiz bir addır. Hizmet sahibi, bu diğer adı tüketicileriyle çevrimdışı olarak paylaşabilir. Tüketiciler, kaynak URI 'sini veya diğer adı kullanarak özel bağlantı hizmetine bağlantı isteğinde bulunabilir. Diğer adı kullanarak bağlanmak istiyorsanız, el ile bağlantı onay yöntemi kullanarak özel uç nokta oluşturmanız gerekir. El ile bağlantı onay yöntemi kullanmak için, Özel uç nokta oluşturma akışı sırasında el ile istek parametresini true olarak ayarlayın. Ayrıntılar için [New-AzPrivateEndpoint](/powershell/module/az.network/new-azprivateendpoint?view=azps-2.6.0) ve [az Network Private-Endpoint Create](/cli/azure/network/private-endpoint#az-network-private-endpoint-create) bölümüne bakın. 
 
 ## <a name="dns-configuration"></a>DNS yapılandırması 
 Bağlantı dizesinin bir parçası olarak tam etki alanı adı (FQDN) kullanarak bir özel bağlantı kaynağına bağlanırken, DNS ayarlarınızı ayrılmış özel IP adresine çözümlemek üzere doğru şekilde yapılandırmak önemlidir. Mevcut Azure hizmetlerinde ortak bir uç nokta üzerinden bağlanılırken kullanılacak bir DNS yapılandırması zaten olabilir. Özel uç noktanız kullanılarak bağlanmak için bunun geçersiz kılınması gerekir. 

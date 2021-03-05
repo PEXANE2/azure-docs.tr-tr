@@ -10,18 +10,18 @@ ms.author: justinha
 author: justinha
 manager: daveba
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7fafeae02bce001d473b0ed916624046a559a795
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 8e33c87d53580d96363ba15bccbc889370f2479d
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101648807"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102212918"
 ---
 # <a name="authentication-methods-in-azure-active-directory---microsoft-authenticator-app"></a>Azure Active Directory Microsoft Authenticator uygulamasındaki kimlik doğrulama yöntemleri
 
 Microsoft Authenticator uygulaması, Azure AD iş veya okul hesabınız veya Microsoft hesabı için ek bir güvenlik düzeyi sağlar ve [Android](https://go.microsoft.com/fwlink/?linkid=866594) ve [iOS](https://go.microsoft.com/fwlink/?linkid=866594)için kullanılabilir. Microsoft Authenticator uygulamayla, kullanıcılar oturum açma sırasında daha az bir şekilde veya self servis parola sıfırlama (SSPR) veya Azure AD Multi-Factor Authentication olayları sırasında ek bir doğrulama seçeneği olarak kimlik doğrulaması yapabilir.
 
-Kullanıcılar, bir oturum açma arabirimine girilebilecek bir OATH doğrulama kodu oluşturmak için Mobil uygulamayla ilgili bir bildirim alabilir veya bu uygulamayı kullanabilir. Hem bildirim hem de doğrulama kodunu etkinleştirirseniz, Authenticator uygulamasını kaydeden kullanıcılar kimliklerini doğrulamak için her iki yöntemi de kullanabilir.
+Kullanıcılar, bir oturum açma arabirimine girilebilecek bir OAUTH doğrulama kodu oluşturmak için mobil uygulama aracılığıyla kendileri için bir bildirim alabilir veya bu uygulamayı kullanabilir. Hem bildirim hem de doğrulama kodunu etkinleştirirseniz, Authenticator uygulamasını kaydeden kullanıcılar kimliklerini doğrulamak için her iki yöntemi de kullanabilir.
 
 Kimlik doğrulayıcı uygulamasını Kullanıcı adı ve parola birleşimi yerine bir oturum açma isteminde kullanmak için bkz. [Microsoft Authenticator App ile passwordless oturum açmayı etkinleştirme](howto-authentication-passwordless-phone.md).
 

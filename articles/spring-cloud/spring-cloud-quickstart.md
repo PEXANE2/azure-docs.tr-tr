@@ -8,12 +8,12 @@ ms.date: 10/23/2020
 ms.author: brendm
 ms.custom: devx-track-java, devx-track-azurecli
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: 123be57566a31d9831bfd0172373d571be2bf294
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: c2121f429b928d58a2df7b4e4663341cf600da3e
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102035178"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102214482"
 ---
 # <a name="quickstart-deploy-your-first-azure-spring-cloud-application"></a>Hızlı başlangıç: ilk Azure Spring Cloud uygulamanızı dağıtın
 
@@ -37,7 +37,7 @@ Bu hızlı başlangıçta kullanılan uygulama kodu, .NET Core Web API 'SI proje
 
 * Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * [.NET Core 3,1 SDK](https://dotnet.microsoft.com/download/dotnet-core/3.1). Azure yay bulut hizmeti, .NET Core 3,1 ve sonraki sürümlerini destekler.
-* [Azure CLI sürüm 2.0.67 veya üzeri](/cli/azure/install-azure-cli?preserve-view=true&view=azure-cli-latest).
+* [Azure CLI sürüm 2.0.67 veya üzeri](/cli/azure/install-azure-cli).
 * [Git](https://git-scm.com/).
 
 ## <a name="install-azure-cli-extension"></a>Azure CLI uzantısını yükleme
@@ -338,9 +338,9 @@ Bu hızlı başlangıçta nasıl yapılacağı açıklanmaktadır:
 
 Bu hızlı başlangıcı tamamlamak için:
 
-* [JDK 8 ' i yükler](/java/azure/jdk/?preserve-view=true&view=azure-java-stable)
+* [JDK 8 ' i yükler](/java/azure/jdk/)
 * [Azure aboneliğine kaydolma](https://azure.microsoft.com/free/)
-* Seçim [Azure CLI sürüm 2.0.67 veya üstünü](/cli/azure/install-azure-cli?preserve-view=true&view=azure-cli-latest) ve Azure yay bulutu uzantısını şu komutla birlikte yüklersiniz: `az extension add --name spring-cloud`
+* Seçim [Azure CLI sürüm 2.0.67 veya üstünü](/cli/azure/install-azure-cli) ve Azure yay bulutu uzantısını şu komutla birlikte yüklersiniz: `az extension add --name spring-cloud`
 * Seçim [Azure Toolkit for IntelliJ](https://plugins.jetbrains.com/plugin/8053-azure-toolkit-for-intellij/) ve [oturum açmayı](/azure/developer/java/toolkit-for-intellij/create-hello-world-web-app#installation-and-sign-in) yükleyip
 
 ## <a name="generate-a-spring-cloud-project"></a>Yay bulutu projesi oluşturma

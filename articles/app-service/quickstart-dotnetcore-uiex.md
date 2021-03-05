@@ -7,12 +7,12 @@ ms.date: 11/23/2020
 ms.custom: devx-track-csharp, mvc, devcenter, vs-azure, seodec18, contperf-fy21q1
 zone_pivot_groups: app-service-platform-windows-linux
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 4e2e34d73bc3048c587d7c0505f4978dd638370a
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: 2a789b4ca1261c79e8e6eb93a4ed44e7e8e9272e
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 03/05/2021
-ms.locfileid: "102180284"
+ms.locfileid: "102214244"
 ---
 # <a name="quickstart-create-an-aspnet-core-web-app-in-azure"></a>Hızlı başlangıç: Azure 'da ASP.NET Core Web uygulaması oluşturma
 
@@ -31,10 +31,12 @@ Bu hızlı başlangıçta, ilk ASP.NET Core Web uygulamanızı oluşturma ve da�
 
 <details>
 <summary>Visual Studio 2019 zaten var mı?</summary>
-  Visual Studio 2019 zaten yüklüyse:
+Visual Studio 2019 zaten yüklüyse:
 
-  - Güncelleştirmeler için **Yardım** denetimi ' ni seçerek **en son güncelleştirmeleri** Visual Studio 'ya yükler  >  . En son güncelleştirmeler .NET 5,0 SDK 'sını içerir.
-  - **Araçlar** al araçlar ve Özellikler ' **i seçerek iş yükünü ekleyin**  >  .
+<ul>
+<li>Güncelleştirmeler için <strong>Yardım</strong> denetimi ' ni seçerek <strong>en son güncelleştirmeleri</strong> Visual Studio 'ya yükler &gt; <strong></strong>. En son güncelleştirmeler .NET 5,0 SDK 'sını içerir.</li>
+<li><strong>Araçlar</strong> al araçlar ve Özellikler ' <strong>i seçerek iş yükünü ekleyin</strong> &gt; <strong></strong>.</li>
+</ul>
 </details>
 
 <hr/> 
@@ -314,19 +316,19 @@ http://<app_name>.azurewebsites.net
 
 1. **Çalıştır** `az webapp up` yeniden dağıtmak için:
 
-```azurecli
-az webapp up --os-type linux
-```
-
-<details>
-<summary><code>az webapp up</code>Bu süre ne yapıyor?</summary>
-Komutu ilk kez çalıştırdığınızda, uygulama adı, kaynak grubu ve App Service planını proje kökünden <i>. Azure/config</i> dosyasında kaydettiniz. Projeyi proje kökünden yeniden çalıştırdığınızda, <i>. Azure/config</i>' de kaydedilen değerleri kullanır, App Service kaynakların zaten var olduğunu algılar ve ZIP dağıtımını yeniden gerçekleştirir.
-</details>
-
+    ```azurecli
+    az webapp up --os-type linux
+    ```
+    
+    <details>
+    <summary><code>az webapp up</code>Bu süre ne yapıyor?</summary>
+    Komutu ilk kez çalıştırdığınızda, uygulama adı, kaynak grubu ve App Service planını proje kökünden <i>. Azure/config</i> dosyasında kaydettiniz. Projeyi proje kökünden yeniden çalıştırdığınızda, <i>. Azure/config</i>' de kaydedilen değerleri kullanır, App Service kaynakların zaten var olduğunu algılar ve ZIP dağıtımını yeniden gerçekleştirir.
+    </details>
+    
 1. Dağıtım tamamlandıktan sonra, daha önce açılan tarayıcı penceresinde Yenile ' ye **basın** .
 
-![Azure'da çalışan güncelleştirilmiş örnek uygulama](media/quickstart-dotnetcore/dotnet-browse-azure-updated.png)
-
+    ![Azure'da çalışan güncelleştirilmiş örnek uygulama](media/quickstart-dotnetcore/dotnet-browse-azure-updated.png)
+    
 [Sorun mu yaşıyorsunuz? Bize bilgi verin.](https://aka.ms/DotNetAppServiceLinuxQuickStart)
 
 <hr/> 
@@ -341,8 +343,8 @@ Komutu ilk kez çalıştırdığınızda, uygulama adı, kaynak grubu ve App Ser
 
 1. Genel Bakış sayfası, göz at, durdur, Başlat, yeniden Başlat ve Sil gibi temel yönetim görevlerini gerçekleştirebileceğiniz yerdir. Soldaki menü, uygulamanızı yapılandırmak için farklı sayfalar sağlar. 
 
-![Azure portalında App Service sayfası](media/quickstart-dotnetcore/portal-app-overview-up.png)
-
+    ![Azure portalında App Service sayfası](media/quickstart-dotnetcore/portal-app-overview-up.png)
+    
 <hr/> 
 
 ## <a name="9-clean-up-resources"></a>9. Kaynakları Temizleme

@@ -8,12 +8,12 @@ ms.date: 01/22/2021
 ms.author: rogarana
 ms.subservice: files
 ms.custom: references_regions, devx-track-azurecli
-ms.openlocfilehash: dc23dec8a8d59a7762e93cdfaa2a39d824506e7b
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 2ff669d0ff3bde791de9bc7773e13d880762f898
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100382132"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102214431"
 ---
 # <a name="how-to-create-an-nfs-share"></a>NFS paylaşma oluşturma
 Azure dosya paylaşımları, bulutta yaşayan tamamen yönetilen dosya paylaşımlardır. Bu makalede NFS protokolünü kullanan bir dosya paylaşımının oluşturulması ele alınmaktadır. Her iki protokol hakkında daha fazla bilgi için bkz. [Azure dosya paylaşma protokolleri](storage-files-compare-protocols.md).
@@ -31,7 +31,7 @@ Azure dosya paylaşımları, bulutta yaşayan tamamen yönetilen dosya paylaşı
     - [Azure dosyaları ile kullanmak Için siteden sıteye VPN yapılandırın](storage-files-configure-s2s-vpn.md).
     - [ExpressRoute](../../expressroute/expressroute-introduction.md)'ı yapılandırın.
 
-- Azure CLı 'yı kullanmayı planlıyorsanız [en son sürümü yükleyebilirsiniz](/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true).
+- Azure CLı 'yı kullanmayı planlıyorsanız [en son sürümü yükleyebilirsiniz](/cli/azure/install-azure-cli).
 
 ## <a name="register-the-nfs-41-protocol"></a>NFS 4,1 protokolünü kaydetme
 Azure PowerShell modülünü veya Azure CLı kullanıyorsanız, aşağıdaki komutları kullanarak özelliğinizi kaydedin:

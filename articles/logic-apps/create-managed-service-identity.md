@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: estfan, logicappspm, azla
 ms.topic: article
 ms.date: 02/12/2021
-ms.openlocfilehash: 9a3a511a287f093b4fc317213afedd5fdc3c21be
-ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
+ms.openlocfilehash: 055df9d2290ee445e2a7201acd374508a86e839f
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100520672"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102213327"
 ---
 # <a name="authenticate-access-to-azure-resources-by-using-managed-identities-in-azure-logic-apps"></a>Azure Logic Apps içindeki yönetilen kimlikleri kullanarak Azure kaynaklarına erişimi kimlik doğrulaması
 
@@ -157,7 +157,7 @@ Mantıksal uygulamanız için Kullanıcı tarafından atanan bir yönetilen kiml
 * Azure PowerShell
   * [Kullanıcı tarafından atanan kimlik oluşturma](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-powershell.md)
   * [Rol ataması ekle](../active-directory/managed-identities-azure-resources/howto-assign-access-powershell.md)
-* Azure CLI’si
+* Azure CLI
   * [Kullanıcı tarafından atanan kimlik oluşturma](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-cli.md)
   * [Rol ataması ekle](../active-directory/managed-identities-azure-resources/howto-assign-access-cli.md)
 * Azure REST API
@@ -307,7 +307,7 @@ Kimlik doğrulaması için mantıksal uygulamanızın yönetilen kimliğini kull
 * [Azure portalı](#azure-portal-assign-access)
 * [Azure Resource Manager şablonu](../role-based-access-control/role-assignments-template.md)
 * Azure PowerShell ([New-Azroleatama](/powershell/module/az.resources/new-azroleassignment))-daha fazla bilgi için bkz. [Azure RBAC ve Azure PowerShell kullanarak rol ataması ekleme](../role-based-access-control/role-assignments-powershell.md).
-* Azure CLı ([az rol atama oluşturma](/cli/azure/role/assignment?view=azure-cli-latest&preserve-view=true#az-role-assignment-create))-daha fazla bilgi için bkz. [Azure RBAC ve Azure CLI kullanarak rol ataması ekleme](../role-based-access-control/role-assignments-cli.md).
+* Azure CLı ([az rol atama oluşturma](/cli/azure/role/assignment#az-role-assignment-create))-daha fazla bilgi için bkz. [Azure RBAC ve Azure CLI kullanarak rol ataması ekleme](../role-based-access-control/role-assignments-cli.md).
 * [Azure REST API](../role-based-access-control/role-assignments-rest.md)
 
 <a name="azure-portal-assign-access"></a>
@@ -460,8 +460,8 @@ HTTP tetikleyicisi veya eylemi, mantıksal uygulamanız için etkinleştirdiğin
 |----------|----------|-------------|
 | **Yöntem** | Yes | Çalıştırmak istediğiniz işlem tarafından kullanılan HTTP yöntemi |
 | **URI** | Yes | Hedef Azure kaynağına veya varlığına erişmek için uç nokta URL 'SI. URI sözdizimi genellikle Azure kaynağı veya hizmeti için [kaynak kimliğini](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication) içerir. |
-| **Üst Bilgiler** | No | İçerik türü gibi giden isteğe dahil etmek veya istediğiniz tüm üst bilgi değerleri |
-| **Sorgular** | No | Belirli bir işlemin parametresi ya da çalıştırmak istediğiniz işlem için API sürümü gibi isteğe dahil etmek istediğiniz veya isteğe dahil etmek istediğiniz sorgu parametreleri |
+| **Üst Bilgiler** | Hayır | İçerik türü gibi giden isteğe dahil etmek veya istediğiniz tüm üst bilgi değerleri |
+| **Sorgular** | Hayır | Belirli bir işlemin parametresi ya da çalıştırmak istediğiniz işlem için API sürümü gibi isteğe dahil etmek istediğiniz veya isteğe dahil etmek istediğiniz sorgu parametreleri |
 | **Kimlik Doğrulaması** | Yes | Hedef kaynağa veya varlığa erişimi doğrulamak için kullanılacak kimlik doğrulaması türü |
 ||||
 
@@ -472,7 +472,7 @@ Belirli bir örnek olarak, [anlık görüntü blobu işlemini](/rest/api/storage
 
 [Anlık görüntü blobu işlemini](/rest/api/storageservices/snapshot-blob)ÇALıŞTıRMAK için http eylemi şu özellikleri belirtir:
 
-| Özellik | Gerekli | Örnek değer | Description |
+| Özellik | Gerekli | Örnek değer | Açıklama |
 |----------|----------|---------------|-------------|
 | **Yöntem** | Yes | `PUT`| Anlık görüntü blobu işleminin kullandığı HTTP yöntemi |
 | **URI** | Yes | `https://{storage-account-name}.blob.core.windows.net/{blob-container-name}/{folder-name-if-any}/{blob-file-name-with-extension}` | Bu söz dizimini kullanan Azure genel (genel) ortamındaki bir Azure Blob depolama dosyasının kaynak KIMLIĞI |
@@ -560,7 +560,7 @@ Mantıksal uygulamanız için yönetilen bir kimlik kullanmayı durdurmak için 
 * Azure PowerShell
   * [Rol atamasını Kaldır](../role-based-access-control/role-assignments-powershell.md)
   * [Kullanıcı tarafından atanan kimliği Sil](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-powershell.md)
-* Azure CLI’si
+* Azure CLI
   * [Rol atamasını Kaldır](../role-based-access-control/role-assignments-cli.md)
   * [Kullanıcı tarafından atanan kimliği Sil](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-cli.md)
 * Azure REST API

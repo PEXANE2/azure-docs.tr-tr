@@ -16,12 +16,12 @@ ms.date: 10/30/2014
 ms.author: erikre
 ms.reviewer: vibhork;dominic.may@sendgrid.com;elmer.thomas@sendgrid.com
 ms.custom: devx-track-java
-ms.openlocfilehash: 57daf9170a7f97c6c141532dafe759cde9d1c77b
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 7a857b887b53ccb2288507742ca52d72d90ff548
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95519073"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102214363"
 ---
 # <a name="how-to-send-email-using-sendgrid-from-java-in-an-azure-deployment"></a>Azure dağıtımında Java 'dan SendGrid kullanarak e-posta gönderme
 Aşağıdaki örnek, Azure 'da barındırılan bir Web sayfasından e-posta göndermek için SendGrid 'i nasıl kullanabileceğinizi gösterir. Ortaya çıkan uygulama, aşağıdaki ekran görüntüsünde gösterildiği gibi kullanıcıdan e-posta değerlerini ister.
@@ -40,7 +40,7 @@ Bu konudaki kodu kullanmak için aşağıdakileri yapmanız gerekir:
 
 E-postayı gönderebilmeniz için kendi SendGrid Kullanıcı adınız ve parolanız de olmalıdır. SendGrid 'i kullanmaya başlamak için bkz. [Java 'Dan SendGrid kullanarak e-posta gönderme](store-sendgrid-java-how-to-send-email.md).
 
-Ayrıca, [Azure için Merhaba Dünya uygulama oluşturma](/java/azure/eclipse/azure-toolkit-for-eclipse-create-hello-world-web-app?view=azure-java-stable)konusunda bilgi sahibi olan veya Azure 'da Azure 'da Java uygulamalarının barındırılmasına yönelik diğer tekniklerin yanı sıra, çakışan küreler kullanılması önerilir.
+Ayrıca, [Azure için Merhaba Dünya uygulama oluşturma](/azure/developer/java/toolkit-for-eclipse/create-hello-world-web-app)konusunda bilgi sahibi olan veya Azure 'da Azure 'da Java uygulamalarının barındırılmasına yönelik diğer tekniklerin yanı sıra, çakışan küreler kullanılması önerilir.
 
 ## <a name="create-a-web-form-for-sending-email"></a>E-posta göndermek için bir Web formu oluşturun
 Aşağıdaki kod, e-posta göndermek için Kullanıcı verilerini almak üzere bir Web formu oluşturmayı gösterir. Bu içeriğin amaçları doğrultusunda, JSP dosyası **emailform.jsp** olarak adlandırılır.

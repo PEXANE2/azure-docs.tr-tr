@@ -7,12 +7,12 @@ ms.service: azure-redhat-openshift
 ms.topic: conceptual
 ms.date: 10/30/2020
 keywords: Java, jakartaee, JavaEE, mikro profil, açık-Liberty, WebSphere-Liberty, Aro, OpenShift, Red Hat
-ms.openlocfilehash: acb448a9662daa58b5d2ff42861e238e23586b33
-ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
+ms.openlocfilehash: 08fd3ab112498a983b438d5ba1f1f100816cbf5d
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100633895"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102213003"
 ---
 # <a name="deploy-a-java-application-with-open-libertywebsphere-liberty-on-an-azure-red-hat-openshift-4-cluster"></a>Azure Red Hat OpenShift 4 kümesinde açık Liberty/WebSphere özgürlük ile Java uygulaması dağıtma
 
@@ -31,7 +31,7 @@ Bu kılavuzda başarıyla gezinmek için aşağıdaki önkoşulları doldurun.
 1. Bir Java CE uygulamasını (örneğin, [Benimsetopenjdk OpenJDK 8 LTS/OpenJ9](https://adoptopenjdk.net/?variant=openjdk8&jvmVariant=openj9)) yükler.
 1. [Maven](https://maven.apache.org/download.cgi) 3.5.0 veya üstünü yükler.
 1. IŞLETIM sisteminize [Docker](https://docs.docker.com/get-docker/) 'yi yüklemeyin.
-1. [Azure CLI](/cli/azure/install-azure-cli?preserve-view=true&view=azure-cli-latest) 2.0.75 veya üstünü yükler.
+1. [Azure CLI](/cli/azure/install-azure-cli) 2.0.75 veya üstünü yükler.
 1. [`envsubst`](https://command-not-found.com/envsubst)İşletim sisteminizde önceden yüklenmemişse denetleyin ve yükleme yapın.
 1. Bu örnek için kodu yerel sisteminizde kopyalayın. Örnek [GitHub](https://github.com/Azure-Samples/open-liberty-on-aro)' dır.
 1. [Azure Red Hat OpenShift 4 kümesi oluşturma](./tutorial-create-cluster.md)bölümündeki yönergeleri izleyin.
@@ -40,7 +40,7 @@ Bu kılavuzda başarıyla gezinmek için aşağıdaki önkoşulları doldurun.
 
    Kümede yoğun bellek gerektiren uygulamalar çalıştırmayı planlıyorsanız, parametresini kullanarak çalışan düğümlerinin doğru sanal makine boyutunu belirtin `--worker-vm-size` . Örneğin, `Standard_E4s_v3` bir kümeye Elaun Search işlecini yüklemek için en düşük sanal makine boyutudur. Daha fazla bilgi için bkz.
 
-   * [Küme oluşturmak için Azure CLı](/cli/azure/aro?preserve-view=true&view=azure-cli-latest#az-aro-create)
+   * [Küme oluşturmak için Azure CLı](/cli/azure/aro#az-aro-create)
    * [Bellek için iyileştirilmiş desteklenen sanal makine boyutları](./support-policies-v4.md#memory-optimized)
    * [Elaun Search Işlecini yükleme önkoşulları](https://docs.openshift.com/container-platform/4.3/logging/cluster-logging-deploying.html#cluster-logging-deploy-eo-cli_cluster-logging-deploying)
 

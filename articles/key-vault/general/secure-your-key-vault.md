@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: conceptual
 ms.date: 10/07/2020
 ms.author: sudbalas
-ms.openlocfilehash: 552aad3e3b41bcfd55d1b57a53d8dff2080a6210
-ms.sourcegitcommit: b513b0becf878eb9a1554c26da53aa48d580bb22
+ms.openlocfilehash: 94034edfa1a5c6ffccd022b4cbf7bae42cc0bae3
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/16/2021
-ms.locfileid: "100534711"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102212476"
 ---
 # <a name="secure-access-to-a-key-vault"></a>Anahtar kasasına erişimin güvenliğini sağlama
 
@@ -36,7 +36,7 @@ Güvenlik sorumlusu, Azure kaynaklarına erişim isteyen bir Kullanıcı, Grup, 
 
 * Bir **Grup** güvenlik sorumlusu Azure Active Directory içinde oluşturulan bir kullanıcı kümesini tanımlar. Gruba atanan tüm roller veya izinler, Grup içindeki tüm kullanıcılara verilir.
 
-* **Hizmet sorumlusu** , bir uygulama veya hizmet için bir kullanıcı veya Grup yerine bir kod parçası olan bir güvenlik sorumlusu türüdür. Hizmet sorumlusunun nesne KIMLIĞI, **ISTEMCI kimliği** olarak bilinir ve Kullanıcı adı gibi davranır. Hizmet sorumlusunun **istemci gizli** dizisi veya **sertifikası** , parolası gibi davranır. Birçok Azure hizmeti, [yönetilen kimliğin](../../active-directory/managed-identities-azure-resources/overview.md) **istemci kimliği** ve **sertifika** otomatik yönetimiyle atanmasını destekler. Yönetilen kimlik, Azure 'da kimlik doğrulaması için en güvenli ve önerilen seçenektir.
+* **Hizmet sorumlusu** , bir kullanıcı veya Grup yerine bir kod parçası olan bir uygulamayı veya hizmeti tanımlayan bir güvenlik sorumlusu türüdür. Hizmet sorumlusunun nesne KIMLIĞI, **ISTEMCI kimliği** olarak bilinir ve Kullanıcı adı gibi davranır. Hizmet sorumlusunun **istemci gizli** dizisi veya **sertifikası** , parolası gibi davranır. Birçok Azure hizmeti, [yönetilen kimliğin](../../active-directory/managed-identities-azure-resources/overview.md) **istemci kimliği** ve **sertifika** otomatik yönetimiyle atanmasını destekler. Yönetilen kimlik, Azure 'da kimlik doğrulaması için en güvenli ve önerilen seçenektir.
 
 Key Vault kimlik doğrulaması hakkında daha fazla bilgi için bkz. [Azure Key Vault kimlik](authentication.md) doğrulama
 

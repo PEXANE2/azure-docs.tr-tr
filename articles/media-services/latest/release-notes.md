@@ -11,12 +11,12 @@ ms.workload: na
 ms.topic: article
 ms.date: 10/21/2020
 ms.author: inhenkel
-ms.openlocfilehash: 14bc7b6f45b04f230252e85cd10b7246529cb751
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+ms.openlocfilehash: f14328567fdc9840b0a3d07aa23fe2496fd537ca
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "101095163"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102213105"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>Azure Media Services v3 sürüm notları
 
@@ -294,21 +294,21 @@ V3 API 'sinin GA sürümündeki güncelleştirmeler şunlardır:
 
 ## <a name="november-2018"></a>Kasım 2018
 
-CLı 2,0 modülü artık [Azure Media Services v3 GA](/cli/azure/ams?view=azure-cli-latest&preserve-view=true) – v 2.0.50 için kullanılabilir.
+CLı 2,0 modülü artık [Azure Media Services v3 GA](/cli/azure/ams) – v 2.0.50 için kullanılabilir.
 
 ### <a name="new-commands"></a>Yeni komutlar
 
-- [az AMS hesabı](/cli/azure/ams/account?view=azure-cli-latest&preserve-view=true)
-- [az AMS Account-Filter](/cli/azure/ams/account-filter?view=azure-cli-latest&preserve-view=true)
-- [az AMS varlık](/cli/azure/ams/asset?view=azure-cli-latest&preserve-view=true)
-- [az AMS varlık-filtre](/cli/azure/ams/asset-filter?view=azure-cli-latest&preserve-view=true)
-- [az AMS Content-Key-Policy](/cli/azure/ams/content-key-policy?view=azure-cli-latest&preserve-view=true)
-- [az AMS Job](/cli/azure/ams/job?view=azure-cli-latest&preserve-view=true)
-- [az AMS canlı-olay](/cli/azure/ams/live-event?view=azure-cli-latest&preserve-view=true)
-- [az AMS Live-Output](/cli/azure/ams/live-output?view=azure-cli-latest&preserve-view=true)
-- [az AMS streaming-Endpoint](/cli/azure/ams/streaming-endpoint?view=azure-cli-latest&preserve-view=true)
-- [az AMS streaming-Locator](/cli/azure/ams/streaming-locator?view=azure-cli-latest&preserve-view=true)
-- [az AMS Account MRU](/cli/azure/ams/account/mru?view=azure-cli-latest&preserve-view=true) -medya ayrılmış birimlerini yönetmenizi sağlar. Daha fazla bilgi için bkz. [Ölçek medya ayrılmış birimleri](media-reserved-units-cli-how-to.md).
+- [az AMS hesabı](/cli/azure/ams/account)
+- [az AMS Account-Filter](/cli/azure/ams/account-filter)
+- [az AMS varlık](/cli/azure/ams/asset)
+- [az AMS varlık-filtre](/cli/azure/ams/asset-filter)
+- [az AMS Content-Key-Policy](/cli/azure/ams/content-key-policy)
+- [az AMS Job](/cli/azure/ams/job)
+- [az AMS canlı-olay](/cli/azure/ams/live-event)
+- [az AMS Live-Output](/cli/azure/ams/live-output)
+- [az AMS streaming-Endpoint](/cli/azure/ams/streaming-endpoint)
+- [az AMS streaming-Locator](/cli/azure/ams/streaming-locator)
+- [az AMS Account MRU](/cli/azure/ams/account/mru) -medya ayrılmış birimlerini yönetmenizi sağlar. Daha fazla bilgi için bkz. [Ölçek medya ayrılmış birimleri](media-reserved-units-cli-how-to.md).
 
 ### <a name="new-features-and-breaking-changes"></a>Yeni özellikler ve son değişiklikler
 

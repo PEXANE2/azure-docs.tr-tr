@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.date: 07/17/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, deploy
-ms.openlocfilehash: 46b8f153e65f436fa1062a0606e0fb0136d972a5
-ms.sourcegitcommit: e7179fa4708c3af01f9246b5c99ab87a6f0df11c
+ms.openlocfilehash: 0a536781f3218807c36f6eefe738b9a375de8d4b
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97824606"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102213139"
 ---
 # <a name="deploy-your-existing-model-with-azure-machine-learning"></a>Mevcut modelinize Azure Machine Learning dağıtın
 
@@ -34,7 +34,7 @@ Bu makaledeki kavramlar ve terimler hakkında daha fazla bilgi için bkz. [Machi
 
 * [Python SDK Azure Machine Learning](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py).  
 
-* [Azure CLI](/cli/azure/install-azure-cli?preserve-view=true&view=azure-cli-latest) ve [Machine Learning CLI uzantısı](reference-azure-machine-learning-cli.md).
+* [Azure CLI](/cli/azure/install-azure-cli) ve [Machine Learning CLI uzantısı](reference-azure-machine-learning-cli.md).
 
 * Eğitilen bir model. Model, geliştirme ortamınızda bir veya daha fazla dosyada kalıcı olmalıdır. <br><br>Eğitilen bir modelin kaydedilmesini göstermek için bu makaledeki örnek kod, [Paolo Ripamonti 'ın Twitter yaklaşım Analizi projesinden](https://www.kaggle.com/paoloripamonti/twitter-sentiment-analysis)modelleri kullanır.
 
@@ -61,7 +61,7 @@ az ml model register -p ./models -n sentiment -w myworkspace -g myresourcegroup
 > [!TIP]
 > Ayrıca, `tags` kayıtlı modele ekleme ve `properties` sözlük nesneleri de ayarlayabilirsiniz. Bu değerler, daha sonra belirli bir modeli belirlemesine yardımcı olmak için kullanılabilir. Örneğin, kullanılan çerçeve, eğitim parametreleri vb.
 
-Daha fazla bilgi için, [az ml model kayıt](/cli/azure/ext/azure-cli-ml/ml/model?preserve-view=true&view=azure-cli-latest#ext-azure-cli-ml-az-ml-model-register) başvurusuna bakın.
+Daha fazla bilgi için, [az ml model kayıt](/cli/azure/ext/azure-cli-ml/ml/model#ext-azure-cli-ml-az-ml-model-register) başvurusuna bakın.
 
 
 Model kaydı hakkında genel bilgi için bkz. [Machine Learning modellerini yönetme, dağıtma ve izleme](concept-model-management-and-deployment.md).
@@ -268,7 +268,7 @@ Modeli CLı 'dan dağıtmak için aşağıdaki komutu kullanın. Bu komut `senti
 az ml model deploy -n myservice -m sentiment:1 --ic inferenceConfig.json --dc deploymentConfig.json
 ```
 
-Daha fazla bilgi için, [az ml model dağıtım](/cli/azure/ext/azure-cli-ml/ml/model?preserve-view=true&view=azure-cli-latest#ext-azure-cli-ml-az-ml-model-deploy) başvurusuna bakın.
+Daha fazla bilgi için, [az ml model dağıtım](/cli/azure/ext/azure-cli-ml/ml/model#ext-azure-cli-ml-az-ml-model-deploy) başvurusuna bakın.
 
 Dağıtım hakkında daha fazla bilgi için bkz. [modellerin nasıl ve ne şekilde dağıtılacağı](how-to-deploy-and-where.md).
 

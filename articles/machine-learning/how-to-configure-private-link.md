@@ -11,12 +11,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 02/09/2021
-ms.openlocfilehash: 7a6213528f204ac31fbcf8a29625787fc73d5153
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 34b37fde83ca957e7c90302561589e2568beb59b
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101656814"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102215060"
 ---
 # <a name="configure-azure-private-link-for-an-azure-machine-learning-workspace"></a>Azure Machine Learning çalışma alanı için Azure özel bağlantısını yapılandırma
 
@@ -66,7 +66,7 @@ ws = Workspace.create(name='myworkspace',
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-[Machine Learning Için Azure CLI uzantısı](reference-azure-machine-learning-cli.md) [az ml çalışma alanı oluştur](/cli/azure/ext/azure-cli-ml/ml/workspace?view=azure-cli-latest#ext_azure_cli_ml_az_ml_workspace_create) komutunu sağlar. Bu komut için aşağıdaki parametreler, özel bir ağla çalışma alanı oluşturmak için kullanılabilir, ancak var olan bir sanal ağ gerektirir:
+[Machine Learning Için Azure CLI uzantısı](reference-azure-machine-learning-cli.md) [az ml çalışma alanı oluştur](/cli/azure/ext/azure-cli-ml/ml/workspace#ext_azure_cli_ml_az_ml_workspace_create) komutunu sağlar. Bu komut için aşağıdaki parametreler, özel bir ağla çalışma alanı oluşturmak için kullanılabilir, ancak var olan bir sanal ağ gerektirir:
 
 * `--pe-name`: Oluşturulan özel uç noktanın adı.
 * `--pe-auto-approval`: Çalışma alanına özel uç nokta bağlantılarının otomatik olarak onaylanıp onaylanmayacağı.
@@ -116,7 +116,7 @@ Bu örnekte kullanılan sınıflar ve yöntemler hakkında daha fazla bilgi içi
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-[Machine Learning Için Azure CLI uzantısı](reference-azure-machine-learning-cli.md) [az ml Workspace Private-Endpoint Add](/cli/azure/ext/azure-cli-ml/ml/workspace/private-endpoint?view=azure-cli-latest#ext_azure_cli_ml_az_ml_workspace_private_endpoint_add) komutunu sağlar.
+[Machine Learning Için Azure CLI uzantısı](reference-azure-machine-learning-cli.md) [az ml Workspace Private-Endpoint Add](/cli/azure/ext/azure-cli-ml/ml/workspace/private-endpoint#ext_azure_cli_ml_az_ml_workspace_private_endpoint_add) komutunu sağlar.
 
 ```azurecli
 az ml workspace private-endpoint add -w myworkspace  --pe-name myprivateendpoint --pe-auto-approval true --pe-vnet-name myvnet
@@ -153,7 +153,7 @@ ws.delete_private_endpoint_connection(private_endpoint_connection_name=connectio
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-[Machine Learning Için Azure CLI uzantısı](reference-azure-machine-learning-cli.md) [az ml Workspace Private-Endpoint Delete](/cli/azure/ext/azure-cli-ml/ml/workspace/private-endpoint?view=azure-cli-latest#ext_azure_cli_ml_az_ml_workspace_private_endpoint_delete) komutunu sağlar.
+[Machine Learning Için Azure CLI uzantısı](reference-azure-machine-learning-cli.md) [az ml Workspace Private-Endpoint Delete](/cli/azure/ext/azure-cli-ml/ml/workspace/private-endpoint#ext_azure_cli_ml_az_ml_workspace_private_endpoint_delete) komutunu sağlar.
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
@@ -192,7 +192,7 @@ ws.update(allow_public_access_when_behind_vnet=True)
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-[Machine Learning Için Azure CLI uzantısı](reference-azure-machine-learning-cli.md) [az ml Workspace Update](/cli/azure/ext/azure-cli-ml/ml/workspace?view=azure-cli-latest#ext_azure_cli_ml_az_ml_workspace_update) komutunu sağlar. Çalışma alanına genel erişimi etkinleştirmek için parametresini ekleyin `--allow-public-access true` .
+[Machine Learning Için Azure CLI uzantısı](reference-azure-machine-learning-cli.md) [az ml Workspace Update](/cli/azure/ext/azure-cli-ml/ml/workspace#ext_azure_cli_ml_az_ml_workspace_update) komutunu sağlar. Çalışma alanına genel erişimi etkinleştirmek için parametresini ekleyin `--allow-public-access true` .
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 

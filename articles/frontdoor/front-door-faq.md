@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/20/2020
 ms.author: duau
-ms.openlocfilehash: ba859a0ad8edacfa2e51486b150f94b3dea37a16
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: 6fdcedd19c02251035a838d34ba51e786595134b
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 03/05/2021
-ms.locfileid: "102182902"
+ms.locfileid: "102212459"
 ---
 # <a name="frequently-asked-questions-for-azure-front-door"></a>Azure ön kapısı hakkında sık sorulan sorular
 
@@ -87,7 +87,8 @@ Evet. Azure ön kapısının yanı sıra ana bilgisayar, yol ve sorgu dizesi yen
 
 ### <a name="how-do-i-lock-down-the-access-to-my-backend-to-only-azure-front-door"></a>Nasıl yaparım? arka ucuma erişimi yalnızca Azure ön kapısına kilitler mi?
 
-> [! Uyarı] yeni SKU ön kapısı Premium, uygulamanızı özel uç nokta aracılığıyla kilitlemek için daha önerilen bir yol sağlar. [Özel uç nokta hakkında daha fazla bilgi](./standard-premium/concept-private-link.md)
+> [!NOTE]
+> Yeni SKU ön kapısı Premium, uygulamanızı özel uç nokta aracılığıyla kilitlemek için daha önerilen bir yol sağlar. [Özel uç nokta hakkında daha fazla bilgi](./standard-premium/concept-private-link.md)
 
 Uygulamanızı yalnızca belirli ön kapıdan gelen trafiği kabul edecek şekilde kilitlemek için, arka ucunuz için IP ACL 'Lerini ayarlamanız ve ardından arka ucunuzdaki trafiği ön kapıya göre gönderilen ' X-Azure-FDıD ' üstbilgisinin belirli bir değeriyle kısıtlamanız gerekir. Bu adımlar aşağıdaki şekilde ayrıntılı olarak verilmiştir:
 

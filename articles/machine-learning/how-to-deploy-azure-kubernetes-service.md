@@ -11,12 +11,12 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 09/01/2020
-ms.openlocfilehash: 7ba01139e365b2f0023ef0784b6ed83e7bde609a
-ms.sourcegitcommit: beacda0b2b4b3a415b16ac2f58ddfb03dd1a04cf
+ms.openlocfilehash: 342ae2f590f4bf4ce88f64d6d545defff358ad72
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97831745"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102215230"
 ---
 # <a name="deploy-a-model-to-an-azure-kubernetes-service-cluster"></a>Azure Kubernetes hizmet kümesine model dağıtma
 
@@ -92,7 +92,7 @@ Azureml-Fe, daha fazla çekirdekler kullanmak için hem yukarı (dikey) hem de (
 
 Ölçeği, ve içinde ölçeklendirirken CPU kullanımı kullanılır. CPU kullanım eşiği karşılanıyorsa ön uç öncelikle aşağı ölçeklendirilir. CPU kullanımı, ölçek genişletme eşiğine düşerse, bir ölçeklendirme işlemi gerçekleşir. Ölçeği artırma ve genişletme yalnızca yeterli kullanılabilir küme kaynağı varsa oluşur.
 
-## <a name="understand-connectivity-requirements-for-aks-inferencing-cluster"></a>AKS ınele sınırlama kümesi için bağlantı gereksinimlerini anlayın
+## <a name="understand-connectivity-requirements-for-aks-inferencing-cluster"></a>AKS çıkarım kümesi için bağlantı gereksinimlerini anlama
 
 Azure Machine Learning bir AKS kümesi oluşturduğunda veya iliştirince, AKS kümesi aşağıdaki iki ağ modelinden biriyle dağıtılır:
 * Kubenet Networking-ağ kaynakları genellikle AKS kümesi dağıtıldığında oluşturulur ve yapılandırılır.
@@ -184,7 +184,7 @@ az ml model deploy -ct myaks -m mymodel:1 -n myservice -ic inferenceconfig.json 
 
 [!INCLUDE [deploymentconfig](../../includes/machine-learning-service-aks-deploy-config.md)]
 
-Daha fazla bilgi için, [az ml model dağıtım](/cli/azure/ext/azure-cli-ml/ml/model?preserve-view=true&view=azure-cli-latest#ext-azure-cli-ml-az-ml-model-deploy) başvurusuna bakın.
+Daha fazla bilgi için, [az ml model dağıtım](/cli/azure/ext/azure-cli-ml/ml/model#ext-azure-cli-ml-az-ml-model-deploy) başvurusuna bakın.
 
 # <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
@@ -372,7 +372,7 @@ print(token)
 >
 > Microsoft, Azure Machine Learning çalışma alanınızı Azure Kubernetes hizmet kümeniz ile aynı bölgede oluşturmanızı kesinlikle önerir. Bir belirteçle kimlik doğrulaması yapmak için Web hizmeti, Azure Machine Learning çalışma alanınızın oluşturulduğu bölgeye bir çağrı yapar. Çalışma alanınızın bölgesi kullanılamıyorsa, kümeniz çalışma alanınızdan farklı bir bölgedeyse, Web hizmetiniz için de bir belirteç getirimeyeceksiniz. Bu, çalışma alanınızın bölgesi yeniden kullanılabilir olana kadar belirteç tabanlı kimlik doğrulamanın kullanılamamasına neden olur. Ayrıca, kümenizin bölgesi ve çalışma alanınızın bölgesi arasındaki mesafe ne kadar fazlaysa bir belirteci getirmek için bu daha uzun sürer.
 >
-> Bir belirteci almak için Azure Machine Learning SDK veya [az ml Service Get-Access-Token](/cli/azure/ext/azure-cli-ml/ml/service?preserve-view=true&view=azure-cli-latest#ext-azure-cli-ml-az-ml-service-get-access-token) komutunu kullanmanız gerekir.
+> Bir belirteci almak için Azure Machine Learning SDK veya [az ml Service Get-Access-Token](/cli/azure/ext/azure-cli-ml/ml/service#ext-azure-cli-ml-az-ml-service-get-access-token) komutunu kullanmanız gerekir.
 
 
 ### <a name="vulnerability-scanning"></a>Güvenlik açığı taraması

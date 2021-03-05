@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 11/09/2020
-ms.openlocfilehash: bf5582016f74e67926c38111a3d8d2f468f3ac79
-ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
+ms.openlocfilehash: e20679c3999f7ece1f6d3ed47a241cfd9dab9236
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99987989"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102214754"
 ---
 # <a name="plan-your-qna-maker-app"></a>Soru-Cevap Oluşturma Uygulamanızı planlayın
 
@@ -177,7 +177,7 @@ Puan, çeşitli faktörlere göre değişebilir:
 
 # <a name="qna-maker-ga-stable-release"></a>[Soru-Cevap Oluşturma GA (kararlı sürüm)](#tab/v1)
 
-Hizmet güncelleştirmelerini otomatik olarak yönetmek için [en son çalışma zamanı güncelleştirmelerini](../how-to/set-up-qnamaker-service-azure.md#get-the-latest-runtime-updates) uygulayın.
+Hizmet güncelleştirmelerini otomatik olarak yönetmek için [en son çalışma zamanı güncelleştirmelerini](../how-to/configure-QnA-Maker-resources.md#get-the-latest-runtime-updates) uygulayın.
 
 # <a name="qna-maker-managed-preview-release"></a>[Soru-Cevap Oluşturma Managed (Önizleme sürümü)](#tab/v2)
 
@@ -187,7 +187,7 @@ Soru-Cevap Oluşturma yönetilen (Önizleme) içinde, çalışma zamanı Soru-Ce
 
 ### <a name="scaling-throughput-and-resiliency"></a>Ölçeklendirme, verimlilik ve dayanıklılık
 
-Ölçeklendirme, verimlilik ve dayanıklılık, [Azure kaynakları](../how-to/set-up-qnamaker-service-azure.md), fiyatlandırma katmanları ve [Traffic Manager](../how-to/set-up-qnamaker-service-azure.md#business-continuity-with-traffic-manager)gibi herhangi bir çevreleyen mimari tarafından belirlenir.
+Ölçeklendirme, verimlilik ve dayanıklılık, [Azure kaynakları](../how-to/set-up-qnamaker-service-azure.md), fiyatlandırma katmanları ve [Traffic Manager](../how-to/configure-QnA-Maker-resources.md#business-continuity-with-traffic-manager)gibi herhangi bir çevreleyen mimari tarafından belirlenir.
 
 ### <a name="analytics-with-application-insights"></a>Application Insights ile analiz
 

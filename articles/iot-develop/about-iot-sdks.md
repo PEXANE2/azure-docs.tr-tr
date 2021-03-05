@@ -6,12 +6,12 @@ ms.author: elhorton
 ms.service: iot-develop
 ms.topic: overview
 ms.date: 02/11/2021
-ms.openlocfilehash: e85cc9cdbb14c419e4bddb5ee659aa657b49a8c1
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: fc30515f4b5ca0a763bf9f40de6a03356b88e500
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 03/05/2021
-ms.locfileid: "102183548"
+ms.locfileid: "102214618"
 ---
 # <a name="overview-of-azure-iot-device-sdks"></a>Azure IoT cihaz SDK 'larına genel bakış
 
@@ -100,7 +100,7 @@ Bu SDK 'lar, daha yüksek sıralı bir dil çalışma zamanını destekleyebilen
 * [Örnekler](https://github.com/Azure/azure-iot-sdk-java/tree/master/device/iot-device-samples)
 * [Paket](https://github.com/Azure/azure-iot-sdk-java/blob/master/doc/java-devbox-setup.md#for-the-device-sdk)
 * [Başvuru Belgeleri](/java/api/com.microsoft.azure.sdk.iot.device)
-* [Edge modülü başvuru belgeleri](/java/api/com.microsoft.azure.sdk.iot.device.moduleclient?view=azure-java-stable&preserve-view=true)
+* [Edge modülü başvuru belgeleri](/java/api/com.microsoft.azure.sdk.iot.device.moduleclient)
 
 #### <a name="nodejs-device-sdk"></a>Node.js cihaz SDK 'Sı
 
@@ -108,7 +108,7 @@ Bu SDK 'lar, daha yüksek sıralı bir dil çalışma zamanını destekleyebilen
 * [Örnekler](https://github.com/Azure/azure-iot-sdk-node/tree/master/device/samples)
 * [Paket](https://www.npmjs.com/package/azure-iot-device)
 * [Başvuru Belgeleri](/javascript/api/azure-iot-device/?view=azure-iot-typescript-latest&preserve-view=true)
-* [Edge modülü başvuru belgeleri](/javascript/api/azure-iot-device/moduleclient?view=azure-node-latest&preserve-view=true)
+* [Edge modülü başvuru belgeleri](/javascript/api/azure-iot-device/moduleclient)
 
 #### <a name="python-device-sdk"></a>Python cihaz SDK 'Sı
 
@@ -143,9 +143,9 @@ Azure dijital TWINS, tüm ortamların dijital modellerini temel alan bilgi grafi
 
 **C# ADT hizmeti SDK 'sı**: [GitHub depo](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core)  |  [paketi](https://www.nuget.org/packages/Azure.DigitalTwins.Core)  |  [örnekleri](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core/samples)  |  [başvuru belgeleri](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true)
 
-**Java ADT hizmeti SDK 'sı**: [GitHub depo](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/digitaltwins/azure-digitaltwins-core)  |  [paketi](https://search.maven.org/artifact/com.azure/azure-digitaltwins-core/1.0.0/jar)  |  [örnekleri](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/digitaltwins/azure-digitaltwins-core/src/samples)  |  [başvuru belgeleri](/java/api/overview/azure/digitaltwins/client?preserve-view=true&view=azure-java-stable)
+**Java ADT hizmeti SDK 'sı**: [GitHub depo](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/digitaltwins/azure-digitaltwins-core)  |  [paketi](https://search.maven.org/artifact/com.azure/azure-digitaltwins-core/1.0.0/jar)  |  [örnekleri](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/digitaltwins/azure-digitaltwins-core/src/samples)  |  [başvuru belgeleri](/java/api/overview/azure/digitaltwins/client)
 
-**Node.js ADT Service SDK**: [GitHub depo](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/digitaltwins/digital-twins-core)  |  [paketi](https://www.npmjs.com/package/@azure/digital-twins-core)  |  [örnekleri](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/digitaltwins/digital-twins-core/samples)  |  [başvuru belgeleri](/javascript/api/@azure/digital-twins-core/?branch=master&view=azure-node-latest&preserve-view=true)
+**Node.js ADT Service SDK**: [GitHub depo](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/digitaltwins/digital-twins-core)  |  [paketi](https://www.npmjs.com/package/@azure/digital-twins-core)  |  [örnekleri](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/digitaltwins/digital-twins-core/samples)  |  [başvuru belgeleri](/javascript/api/@azure/digital-twins-core/)
 
 **Python ADT hizmeti SDK 'sı**: [GitHub depo](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/digitaltwins/azure-digitaltwins-core)  |  [paketi](https://pypi.org/project/azure-digitaltwins-core/)  |  [örnekleri](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/digitaltwins/azure-digitaltwins-core/samples)  |  [başvuru belgeleri](/python/api/azure-digitaltwins-core/azure.digitaltwins.core?view=azure-python&preserve-view=true)
 
@@ -157,7 +157,7 @@ IoT Hub cihaz sağlama hizmeti (DPS), doğru IoT Hub 'a, Kullanıcı müdahalesi
 
 **C# cihaz sağlama hizmeti SDK 'sı**: [GitHub depo](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/provisioning/service)  |  [paketi](https://www.nuget.org/packages/Microsoft.Azure.Devices.Provisioning.Service/)  |  [örnekleri](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/provisioning/service/samples)  |  [başvuru belgeleri](/dotnet/api/microsoft.azure.devices.provisioning.service?view=azure-dotnet&preserve-view=true)
 
-**Java cihaz sağlama hizmeti SDK 'sı**: [GitHub depo](https://github.com/Azure/azure-iot-sdk-java/tree/master/provisioning/provisioning-service-client/src)  |  [paketi](https://mvnrepository.com/artifact/com.microsoft.azure.sdk.iot.provisioning/provisioning-service-client)  |  [örnekleri](https://github.com/Azure/azure-iot-sdk-java/tree/master/provisioning/provisioning-samples#provisioning-service-client)  |  [başvuru belgeleri](/java/api/com.microsoft.azure.sdk.iot.provisioning.service?view=azure-java-stable&preserve-view=true)
+**Java cihaz sağlama hizmeti SDK 'sı**: [GitHub depo](https://github.com/Azure/azure-iot-sdk-java/tree/master/provisioning/provisioning-service-client/src)  |  [paketi](https://mvnrepository.com/artifact/com.microsoft.azure.sdk.iot.provisioning/provisioning-service-client)  |  [örnekleri](https://github.com/Azure/azure-iot-sdk-java/tree/master/provisioning/provisioning-samples#provisioning-service-client)  |  [başvuru belgeleri](/java/api/com.microsoft.azure.sdk.iot.provisioning.service)
 
 **Cihaz sağlama hizmeti SDK 'sıNode.js**: [GitHub depo](https://github.com/Azure/azure-iot-sdk-node/tree/master/provisioning/service)  |  [paketi](https://www.npmjs.com/package/azure-iot-provisioning-service)  |  [örnekleri](https://github.com/Azure/azure-iot-sdk-node/tree/master/provisioning/service/samples)  |  [başvuru belgeleri](/javascript/api/azure-iot-provisioning-service)
 

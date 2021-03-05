@@ -9,12 +9,12 @@ ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 01/27/2020
 ms.custom: seodec18
-ms.openlocfilehash: 489592fcbc779685728b120f18e5e923ee34d655
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: fcfc70f7bfb9e2bb1b1a0edbffdc1282056e5fa7
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96346384"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102214057"
 ---
 # <a name="the-confidence-score-of-an-answer"></a>Bir yanıtın Güvenirlik puanı
 Bir Kullanıcı sorgusu bir Bilgi Bankası ile eşleştiğinde, Soru-Cevap Oluşturma ilgili yanıtları, Güvenirlik puanı ile birlikte döndürür. Bu puan, yanıtın verilen kullanıcı sorgusuyla doğru eşleşme olduğunu belirtir.
@@ -53,7 +53,7 @@ Eşikinizi seçerken doğruluk ve kapsam arasındaki dengeyi göz önünde bulun
 - **Kapsam** (veya geri çekme) daha önemliyse ve kullanıcının sorusuna yalnızca kısmi bir ilişki olsa bıle eşiği düşürmek için mümkün olduğunca fazla soru yanıtlamak istiyorsanız. Bu, yanıtın kullanıcının gerçek sorgusuna yanıt içermediği ancak biraz ilgili başka bir yanıt verdiği durumlarda daha fazla durum olabileceği anlamına gelir. *Örneğin:* **30** EŞIĞINI yaparsanız, "KB 'umu düzenleyebilirim?" gibi sorgular için yanıt verebilirsiniz.
 
 > [!NOTE]
-> Soru-Cevap Oluşturma yeni sürümleri, Puanlama mantığına yönelik iyileştirmeler içerir ve eşikinizi etkileyebilir. Hizmeti her güncelleştirdiğinizde, gerekirse eşiğin test ve ince ayar olduğundan emin olun. [Burada](https://www.qnamaker.ai/UserSettings)QNA hizmeti sürümünüzü denetleyebilir ve en son güncelleştirmeleri [buradan](../How-To/set-up-qnamaker-service-azure.md#get-the-latest-runtime-updates)nasıl alacağınız hakkında bilgi edinebilirsiniz.
+> Soru-Cevap Oluşturma yeni sürümleri, Puanlama mantığına yönelik iyileştirmeler içerir ve eşikinizi etkileyebilir. Hizmeti her güncelleştirdiğinizde, gerekirse eşiğin test ve ince ayar olduğundan emin olun. [Burada](https://www.qnamaker.ai/UserSettings)QNA hizmeti sürümünüzü denetleyebilir ve en son güncelleştirmeleri [buradan](../How-To/configure-QnA-Maker-resources.md#get-the-latest-runtime-updates)nasıl alacağınız hakkında bilgi edinebilirsiniz.
 
 ## <a name="set-threshold"></a>Eşik ayarlama
 

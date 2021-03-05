@@ -5,12 +5,12 @@ author: cachai2
 ms.topic: conceptual
 ms.date: 1/21/2021
 ms.author: cachai
-ms.openlocfilehash: ceef827f7406f8915d205349372a43626c917e4b
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: f826c947b1e47c1c996a8e9102492e85adafa326
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101729241"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102215162"
 ---
 # <a name="azure-functions-networking-options"></a>Azure İşlevleri ağ seçenekleri
 
@@ -87,7 +87,7 @@ Daha fazla bilgi için bkz. [sanal ağ hizmeti uç noktaları](../virtual-networ
 
 ## <a name="restrict-your-storage-account-to-a-virtual-network"></a>Depolama hesabınızı bir sanal ağla sınırlayın 
 
-Bir işlev uygulaması oluşturduğunuzda, blob, kuyruk ve tablo depolamayı destekleyen genel amaçlı bir Azure depolama hesabı oluşturmanız veya bağlamanız gerekir.  Bu depolama hesabını hizmet uç noktaları veya özel uç nokta ile güvenli bir şekilde değiştirebilirsiniz.  Bu özellik şu anda yalnızca, VNET 'in yalnızca Premium SKU için kullanılabildiği esnek damgalar haricinde standart ve Premium içeren tüm VNET desteklenen SKU 'lar için geçerlidir. Özel bir ağla sınırlı bir depolama hesabı ile bir işlev ayarlamak için:
+Bir işlev uygulaması oluşturduğunuzda, blob, kuyruk ve tablo depolamayı destekleyen genel amaçlı bir Azure depolama hesabı oluşturmanız veya bağlamanız gerekir. Bu depolama hesabını hizmet uç noktaları veya özel uç nokta ile güvenli bir şekilde değiştirebilirsiniz. Bu özellik şu anda, sanal ağların yalnızca Premium SKU için kullanılabildiği esnek damgalar haricinde standart ve Premium içeren tüm sanal ağ desteklenen SKU 'lar için geçerlidir. Özel bir ağla sınırlı bir depolama hesabı ile bir işlev ayarlamak için:
 
 1. Hizmet uç noktaları etkin olmayan bir depolama hesabıyla bir işlev oluşturun.
 1. İşlevini sanal ağınıza bağlanacak şekilde yapılandırın.
@@ -96,7 +96,7 @@ Bir işlev uygulaması oluşturduğunuzda, blob, kuyruk ve tablo depolamayı des
 1. Depolama hesabı için hizmet uç noktalarını veya özel uç noktayı etkinleştirin.  
     * Özel uç nokta bağlantıları kullanıyorsanız, depolama hesabının `file` ve alt kaynaklar için özel bir uç noktası olması gerekir `blob` .  Dayanıklı İşlevler gibi belirli yetenekler kullanılıyorsa, Ayrıca, `queue` `table` özel bir uç nokta bağlantısı aracılığıyla da ihtiyacınız ve erişilebilir olur.
     * Hizmet uç noktaları kullanılıyorsa, depolama hesapları için işlev uygulamalarınıza adanmış alt ağı etkinleştirin.
-1. Seçim Dosya ve BLOB içeriğini işlev uygulama depolama hesabından güvenli depolama hesabına ve dosya paylaşımıyla kopyalayın.
+1. Dosya ve BLOB içeriğini işlev uygulama depolama hesabından güvenli depolama hesabına ve dosya paylaşımıyla kopyalayın.
 1. Bu depolama hesabı için bağlantı dizesini kopyalayın.
 1. İşlev uygulaması **yapılandırması** altındaki **uygulama ayarlarını** aşağıdakilere göre güncelleştirin:
     - `AzureWebJobsStorage` güvenli depolama hesabı için bağlantı dizesine.

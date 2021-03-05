@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 10/7/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 5a7cfec6acb4cd8735c039f5eab30bac4ccf55b0
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
+ms.openlocfilehash: 6a0676418e951b84c9b973bd93c2750e410392d1
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100556136"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102212833"
 ---
 # <a name="write-client-app-authentication-code"></a>İstemci uygulaması kimlik doğrulama kodunu yaz
 
@@ -33,8 +33,8 @@ Devam etmek için, kodunuzu yazdığınız bir istemci uygulaması projesine iht
 `Azure.Identity` , bir taşıyıcı belirteç almak ve SDK 'inizle kimlik doğrulamak için kullanabileceğiniz çeşitli kimlik bilgileri alma yöntemleri sağlayan bir istemci kitaplığıdır. Bu makale C# dilinde örnekler sağlasa da `Azure.Identity` dahil olmak üzere çeşitli diller için görüntüleyebilirsiniz...
 
 * [.NET (C#)](/dotnet/api/azure.identity?preserve-view=true&view=azure-dotnet)
-* [Java](/java/api/overview/azure/identity-readme?preserve-view=true&view=azure-java-stable)
-* [JavaScript](/javascript/api/overview/azure/identity-readme?preserve-view=true&view=azure-node-latest)
+* [Java](/java/api/overview/azure/identity-readme)
+* [JavaScript](/javascript/api/overview/azure/identity-readme)
 * [Python](/python/api/overview/azure/identity-readme?preserve-view=true&view=azure-python)
 
 Üç ortak kimlik bilgisi-içindeki yöntemleri alma `Azure.Identity` :

@@ -5,12 +5,12 @@ author: cgillum
 ms.topic: conceptual
 ms.date: 11/02/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 2121ad4f908d28ab30f15be261b3f155ab6dd983
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 5521b1785bb38e6985e4619e1eec22cb19da151d
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102039708"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102214788"
 ---
 # <a name="manage-instances-in-durable-functions-in-azure"></a>Azure 'da Dayanıklı İşlevler örnekleri yönetme
 
@@ -283,7 +283,7 @@ func durable get-history --id 0ab8c55a66644d68a3a8b220b12d209c
 
 Tek seferde düzenleme yaptığınız bir örneği sorgulamak yerine, bunların tümünü aynı anda sorgulamak daha verimli olabilir.
 
-Tüm düzenleme örneklerinin durumlarını sorgulamak için [Listınstancesasync](/dotnet/api/microsoft.azure.webjobs.extensions.durabletask.idurableorchestrationclient.listinstancesasync?view=azure-dotnet#Microsoft_Azure_WebJobs_Extensions_DurableTask_IDurableOrchestrationClient_ListInstancesAsync_Microsoft_Azure_WebJobs_Extensions_DurableTask_OrchestrationStatusQueryCondition_System_Threading_CancellationToken_) (.net), [getstatusall](/javascript/api/durable-functions/durableorchestrationclient?view=azure-node-latest#getstatusall--) (JavaScript) veya `get_status_all` (Python) yöntemini kullanabilirsiniz. .NET ' te, bir `CancellationToken` nesneyi iptal etmek istediğiniz durumda geçirebilirsiniz. Yöntemi, sorgu parametreleriyle eşleşen düzenleme örneklerini temsil eden nesnelerin bir listesini döndürür.
+Tüm düzenleme örneklerinin durumlarını sorgulamak için [Listınstancesasync](/dotnet/api/microsoft.azure.webjobs.extensions.durabletask.idurableorchestrationclient.listinstancesasync?view=azure-dotnet#Microsoft_Azure_WebJobs_Extensions_DurableTask_IDurableOrchestrationClient_ListInstancesAsync_Microsoft_Azure_WebJobs_Extensions_DurableTask_OrchestrationStatusQueryCondition_System_Threading_CancellationToken_) (.net), [getstatusall](/javascript/api/durable-functions/durableorchestrationclient#getstatusall--) (JavaScript) veya `get_status_all` (Python) yöntemini kullanabilirsiniz. .NET ' te, bir `CancellationToken` nesneyi iptal etmek istediğiniz durumda geçirebilirsiniz. Yöntemi, sorgu parametreleriyle eşleşen düzenleme örneklerini temsil eden nesnelerin bir listesini döndürür.
 
 # <a name="c"></a>[C#](#tab/csharp)
 
@@ -366,7 +366,7 @@ func durable get-instances
 
 Standart örnek sorgusunun sağlayabilecekleri tüm bilgilere gerçekten ihtiyaç duymuyorsanız ne yapabilirsiniz? Örneğin, düzenleme oluşturma zamanını veya Orchestration çalışma zamanı durumunu yalnızca siz arıyorsanız ne olacak? Filtre uygulayarak sorgunuzu daraltabilirsiniz.
 
-Önceden tanımlanmış bir filtre kümesiyle eşleşen düzenleme örneklerinin bir listesini almak için [Listınstancesasync](/dotnet/api/microsoft.azure.webjobs.extensions.durabletask.idurableorchestrationclient.listinstancesasync?view=azure-dotnet#Microsoft_Azure_WebJobs_Extensions_DurableTask_IDurableOrchestrationClient_ListInstancesAsync_Microsoft_Azure_WebJobs_Extensions_DurableTask_OrchestrationStatusQueryCondition_System_Threading_CancellationToken_) (.net) veya [getstatusby](/javascript/api/durable-functions/durableorchestrationclient?view=azure-node-latest#getstatusby-date---undefined--date---undefined--orchestrationruntimestatus---) (JavaScript) metodunu kullanın.
+Önceden tanımlanmış bir filtre kümesiyle eşleşen düzenleme örneklerinin bir listesini almak için [Listınstancesasync](/dotnet/api/microsoft.azure.webjobs.extensions.durabletask.idurableorchestrationclient.listinstancesasync?view=azure-dotnet#Microsoft_Azure_WebJobs_Extensions_DurableTask_IDurableOrchestrationClient_ListInstancesAsync_Microsoft_Azure_WebJobs_Extensions_DurableTask_OrchestrationStatusQueryCondition_System_Threading_CancellationToken_) (.net) veya [getstatusby](/javascript/api/durable-functions/durableorchestrationclient#getstatusby-date---undefined--date---undefined--orchestrationruntimestatus---) (JavaScript) metodunu kullanın.
 
 # <a name="c"></a>[C#](#tab/csharp)
 

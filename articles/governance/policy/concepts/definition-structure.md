@@ -3,12 +3,12 @@ title: İlke tanımı yapısının ayrıntıları
 description: Kuruluşunuzda Azure kaynakları için kural oluşturmak üzere ilke tanımlarının nasıl kullanıldığını açıklar.
 ms.date: 02/17/2021
 ms.topic: conceptual
-ms.openlocfilehash: 741cfce56554e05d0c5f5a9242a33502b8a6fbe6
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: cebba214671cfab75a3f44720578b51febacdfcd
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101699428"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102215077"
 ---
 # <a name="azure-policy-definition-structure"></a>Azure İlkesi tanım yapısı
 
@@ -150,7 +150,7 @@ Bir parametre, ilke tanımında kullanılan aşağıdaki özelliklere sahiptir:
   - `assignPermissions`: (İsteğe bağlı) ilke ataması sırasında rol atamaları oluşturmak Azure portal için _true_ olarak ayarlayın. Bu özellik, izinleri atama kapsamının dışına atamak istemeniz durumunda faydalıdır. İlkede rol tanımı başına bir rol ataması vardır (veya girişim içindeki tüm ilkelerde rol tanımına göre). Parametre değeri geçerli bir kaynak veya kapsam olmalıdır.
 - `defaultValue`: (İsteğe bağlı) değer verilmezse bir atamadaki parametresinin değerini ayarlar.
   Atanan mevcut bir ilke tanımı güncelleştirilirken gereklidir.
-- `allowedValues`: (İsteğe bağlı), atama sırasında parametrenin kabul ettiği bir değer dizisi sağlar.
+- `allowedValues`: (İsteğe bağlı), atama sırasında parametrenin kabul ettiği bir değer dizisi sağlar. İzin verilen değer karşılaştırmaları büyük/küçük harfe duyarlıdır. 
 
 Örnek olarak, kaynakların dağıtılabileceği konumları sınırlandırmak için bir ilke tanımı tanımlayabilirsiniz. Bu ilke tanımı için bir parametre **Allowedlocations** olabilir. Bu parametre, kabul edilen değerleri sınırlamak için her ilke tanımının ataması tarafından kullanılır. **Strongtype** kullanımı, Portal üzerinden atama tamamlanırken gelişmiş bir deneyim sağlar:
 
