@@ -12,12 +12,12 @@ ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 2d64e85576b35caa2262ad1d635fc72fc7e2d2b8
-ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
+ms.openlocfilehash: c19f6f8c59ac38bf46999372497205e0c33ebac4
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102120632"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102175116"
 ---
 # <a name="configure-session-behavior-in-azure-active-directory-b2c"></a>Azure Active Directory B2C'de oturum davranışını yapılandırma
 
@@ -194,7 +194,7 @@ Kayıt ve oturum açma sayfasına KMSI onay kutusunu eklemek için `setting.enab
 
 ### <a name="configure-a-relying-party-file"></a>Bağlı olan taraf dosyası yapılandırma
 
-Oluşturduğunuz Kullanıcı yolculuğunu başlatan bağlı olan taraf (RP) dosyasını güncelleştirin.
+Oluşturduğunuz Kullanıcı yolculuğunu başlatan bağlı olan taraf (RP) dosyasını güncelleştirin. Keepaliveındays parametresi, Oturumumu Açık ol (KMSı) oturum tanımlama bilgisinin ne kadar süreyle devam etmesi gerektiğini yapılandırmanıza olanak tanır. Örneğin, değeri 30 olarak ayarlarsanız, KMSı oturum tanımlama bilgisi 30 gün boyunca devam eder. Değerin aralığı 1 ile 90 gün arasındadır.
 
 1. Özel ilke dosyanızı açın. Örneğin, *SignUpOrSignin.xml*.
 1. Zaten mevcut değilse, `<UserJourneyBehaviors>` düğüme bir alt düğüm ekleyin `<RelyingParty>` . Hemen sonra yerleştirilmelidir `<DefaultUserJourney ReferenceId="User journey Id" />` , örneğin: `<DefaultUserJourney ReferenceId="SignUpOrSignIn" />` .

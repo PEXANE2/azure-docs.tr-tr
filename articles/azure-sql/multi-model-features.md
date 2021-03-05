@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: ''
 ms.date: 12/17/2018
-ms.openlocfilehash: d5a067272caf9b072117ba57b7b16f8d78a8b456
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: b16a2fc9f107a8420fb7d05667807a869fa3e00a
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92791656"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102172766"
 ---
 # <a name="multi-model-capabilities-of-azure-sql-database--sql-managed-instance"></a>Azure SQL veritabanı & SQL yönetilen örneği 'nin çok modelli özellikleri
 [!INCLUDE[appliesto-sqldb-sqlmi](includes/appliesto-sqldb-sqlmi.md)]
@@ -87,7 +87,7 @@ Daha fazla bilgi için bkz. [JSON verileriyle çalışma](database/json-features
 
 Belge modelleri, bazı belirli senaryolarda ilişkisel modeller yerine kullanılabilir:
 
-- Tek seferde tüm nesne alanlarına erişirken veya nesnelerin normalleştirilmiş kısımlarını hiçbir zaman güncelleştirmeyeceğinden şemanın yüksek düzeyde normalleştirilmesi önemli avantajlar getirmez. Ancak, verileri almak için katılmanız gereken çok sayıda tablo olması nedeniyle, normalleştirilmiş model, sorgularınızın karmaşıklığını artırır.
+- Tek seferde nesnelerin tüm alanlarına erişirken veya nesnelerin normalleştirilmiş kısımlarını hiçbir zaman güncelleştirmeyeceğinden şemanın yüksek düzeyde normalleştirilmesi önemli avantajlar getirmez. Ancak, verileri almak için katılmanız gereken çok sayıda tablo olması nedeniyle, normalleştirilmiş model, sorgularınızın karmaşıklığını artırır.
 - JSON belgelerini yerel olarak kullanan uygulamalarla çalışıyorsunuz iletişim veya veri modelleridir ve ilişkisel verileri JSON ve tam tersi dönüştüren ek katmanlar tanıtmak istemezsiniz.
 - Alt tabloları veya varlık-nesne-değer düzenlerini yeniden normalleştirerek veri modelinizi basitleştirmeniz gerekir.
 - Verileri çözümleyen ek bir araç olmadan JSON biçiminde depolanan verileri yüklemeniz veya dışarı aktarmanız gerekir.
@@ -124,7 +124,7 @@ SQL Server veritabanı altyapısı, yarı yapılandırılmış veri yönetimi i�
 
 Belge modelleri, bazı belirli senaryolarda ilişkisel modeller yerine kullanılabilir:
 
-- Tek seferde tüm nesne alanlarına erişirken veya nesnelerin normalleştirilmiş kısımlarını hiçbir zaman güncelleştirmeyeceğinden şemanın yüksek düzeyde normalleştirilmesi önemli avantajlar getirmez. Ancak, verileri almak için katılmanız gereken çok sayıda tablo olması nedeniyle, normalleştirilmiş model, sorgularınızın karmaşıklığını artırır.
+- Tek seferde nesnelerin tüm alanlarına erişirken veya nesnelerin normalleştirilmiş kısımlarını hiçbir zaman güncelleştirmeyeceğinden şemanın yüksek düzeyde normalleştirilmesi önemli avantajlar getirmez. Ancak, verileri almak için katılmanız gereken çok sayıda tablo olması nedeniyle, normalleştirilmiş model, sorgularınızın karmaşıklığını artırır.
 - XML belgelerinin yerel olarak kullanıldığı uygulamalarla çalışıyorsunuz iletişim veya veri modelleridir ve ilişkisel verileri XML ve tam tersi dönüştüren ek katmanlar tanıtmak istemezsiniz.
 - Alt tabloları veya varlık-nesne-değer düzenlerini yeniden normalleştirerek veri modelinizi basitleştirmeniz gerekir.
 - Verileri çözümleyen ek bir araç olmadan XML biçiminde depolanan verileri yüklemeniz veya dışarı aktarmanız gerekir.

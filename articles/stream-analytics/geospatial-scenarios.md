@@ -1,17 +1,17 @@
 ---
 title: Azure Stream Analytics ile bölge sınırlama ve jeo uzamsal toplama
 description: Bu makalede, bölge sınırlaması ve jeo-uzamsal toplama için Azure Stream Analytics nasıl kullanılacağı açıklanır.
-author: krishna0815
-ms.author: krishmam
 ms.service: stream-analytics
+author: jasonwhowell
+ms.author: jasonh
 ms.topic: how-to
 ms.date: 04/02/2019
-ms.openlocfilehash: 7f83fe3a8443ac1b9339a0ddb91ee95414eef437
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: fc9442b01685deb710c49adf6be84af740a11805
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98016312"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102174997"
 ---
 # <a name="geofencing-and-geospatial-aggregation-scenarios-with-azure-stream-analytics"></a>Azure Stream Analytics ile bölge sınırlama ve jeo uzamsal toplama senaryoları
 

@@ -12,16 +12,16 @@ ms.custom:
 - mvc
 - mqtt
 - devx-track-java
-ms.openlocfilehash: 51b7f6e814a9fad286a934466daeb1ffced225c1
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: cbe4942b63389faab00861438a0149b68c0e89c0
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94968069"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102177317"
 ---
 # <a name="tutorial-develop-a-java-iot-edge-module-for-linux-devices"></a>Öğretici: Linux cihazları için Java IoT Edge modülü geliştirme
 
-İş mantığınızı uygulayan kodu doğrudan IoT Edge cihazlarınıza dağıtmak için Azure IoT Edge modüllerini kullanabilirsiniz. Bu öğreticide, algılayıcı verilerini filtreleyen bir IoT Edge modülü oluşturma ve dağıtma işlemlerinin adımları açıklanmaktadır. [Linux](quickstart-linux.md) hızlı başlangıcı ' nda sanal bir cihazda dağıtım Azure IoT Edge oluşturduğunuz sanal IoT Edge cihazını kullanacaksınız. Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
+İş mantığınızı uygulayan kodu doğrudan IoT Edge cihazlarınıza dağıtmak için Azure IoT Edge modüllerini kullanabilirsiniz. Bu öğreticide, algılayıcı verilerini filtreleyen bir IoT Edge modülü oluşturma ve dağıtma işlemlerinin adımları açıklanmaktadır. [Linux](quickstart-linux.md) hızlı başlangıcı ' nda sanal bir cihazda dağıtım Azure IoT Edge oluşturduğunuz sanal IoT Edge cihazını kullanacaksınız. Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
 >
@@ -34,7 +34,7 @@ Bu öğreticide oluşturacağınız IoT Edge modülü, cihazınız tarafından o
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticide, **Visual Studio Code** kullanarak **Java** 'da bir modülün nasıl geliştirileceği ve bir **Linux cihazına** nasıl dağıtılacağı gösterilmektedir. IoT Edge, Windows cihazları için Java modüllerini desteklemez.
 
@@ -56,7 +56,7 @@ Bu öğreticiye başlamadan önce, Linux kapsayıcı geliştirmesi için gelişt
 Java 'da bir IoT Edge modülü geliştirmek için aşağıdaki ek önkoşulları geliştirme makinenize yüklersiniz: 
 
 * Visual Studio Code için [Java Uzantı Paketi](https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-pack).
-* [Java SE Development Kit 10](/azure/developer/java/fundamentals/java-jdk-long-term-support) ve [`JAVA_HOME` ortam değişkenini](https://docs.oracle.com/cd/E19182-01/820-7851/inst_cli_jdk_javahome_t/) JDK yüklemenize göre ayarlama.
+* [11 Java SE Development Kit](/azure/developer/java/fundamentals/java-jdk-long-term-support)ve [ `JAVA_HOME` ortam değişkenini](https://docs.oracle.com/cd/E19182-01/820-7851/inst_cli_jdk_javahome_t/) JDK yüklemenize işaret etmek üzere ayarlayın.
 * [Maven](https://maven.apache.org/)
 
    >[!TIP]
@@ -66,11 +66,11 @@ Java 'da bir IoT Edge modülü geliştirmek için aşağıdaki ek önkoşulları
 
 Aşağıdaki adımlar, Azure IoT Edge Maven şablon paketini ve Azure IoT Java cihaz SDK 'sını temel alan IoT Edge bir modül projesi oluşturur. Projeyi Visual Studio Code ve Azure IoT araçlarını kullanarak oluşturursunuz.
 
-### <a name="create-a-new-project"></a>Yeni bir proje oluşturma
+### <a name="create-a-new-project"></a>Yeni proje oluşturma
 
 Kendi yazacağınız kodla özelleştirebileceğiniz bir Java çözüm şablonu oluşturun.
 
-1. Visual Studio Code, **View**  >  vs Code komut paletini açmak için **komut paletini** görüntüle ' yi seçin.
+1. Visual Studio Code,   >  vs Code komut paletini açmak için **komut paletini** görüntüle ' yi seçin.
 
 2. Komut paletinde **Azure IoT Edge: New IoT Edge solution** komutunu girin ve çalıştırın. Çözümünüzü oluşturmak için komut paletindeki yönergeleri izleyin.
 
@@ -115,7 +115,7 @@ IoT Edge uzantısı, Azure 'dan kapsayıcı kayıt defteri kimlik bilgilerinizi 
 
 ### <a name="update-the-module-with-custom-code"></a>Modülü özel kodla güncelleştirme
 
-1. VS Code Gezgininde modüller ' i açın **modules**  >  **javamodule**  >  **src**  >  **Main**  >  **Java**  >  **com**  >  **edgemodule**  >  **app. Java**.
+1. VS Code Gezgininde modüller ' i açın   >  **javamodule**  >  **src**  >  **Main**  >  **Java**  >  **com**  >  **edgemodule**  >  **app. Java**.
 
 2. Yeni başvurulan sınıfları içeri aktarmak için aşağıdaki kodu dosyanın en üstüne ekleyin.
 
@@ -238,7 +238,7 @@ IoT Edge uzantısı, Azure 'dan kapsayıcı kayıt defteri kimlik bilgilerinizi 
 
 Önceki bölümde, bildirilen makine sıcaklığının kabul edilebilir sınırın altında olduğu iletileri filtrelemek için bir IoT Edge çözümü oluşturdunuz ve **Javamodule** 'e kod eklediniz. Şimdi, çözümü bir kapsayıcı görüntüsü olarak derleyin ve kapsayıcı Kayıt defterinize gönderin.
 
-1. **Görünüm** terminali ' i seçerek vs Code tümleşik Terminal ' i açın  >  **Terminal**.
+1. **Görünüm** terminali ' i seçerek vs Code tümleşik Terminal ' i açın  >  .
 
 2. Terminalde aşağıdaki komutu girerek Docker 'da oturum açın. Azure Container Registry 'nizden Kullanıcı adı, parola ve oturum açma sunucusu ile oturum açın. Azure portal kayıt defterinizin **erişim tuşları** bölümünden bu değerleri alabilirsiniz.
 

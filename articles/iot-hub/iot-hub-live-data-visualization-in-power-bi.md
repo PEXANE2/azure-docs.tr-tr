@@ -1,5 +1,5 @@
 ---
-title: Verilerin gerçek zamanlı veri görselleştirmesi frm Azure IoT Hub – Power BI
+title: 'Azure IoT Hub verilerin gerçek zamanlı veri görselleştirmesi: Power BI'
 description: Sensörden toplanan ve Azure IoT Hub 'ınıza gönderilen sıcaklık ve nem verilerini görselleştirmek için Power BI kullanın.
 author: robinsh
 keywords: gerçek zamanlı veri görselleştirme, canlı veri görselleştirme, algılayıcı veri görselleştirme
@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 6/08/2020
 ms.author: robinsh
-ms.openlocfilehash: 6d10d0202e9e4c813cffe6373acfb5200ebb3266
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 82caf13618fe8483ab8d3a622c6c0d51ab05a206
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92146775"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102177343"
 ---
 # <a name="visualize-real-time-sensor-data-from-azure-iot-hub-using-power-bi"></a>Azure IoT Hub Power BI kullanarak gerçek zamanlı algılayıcı verilerini görselleştirin
 
@@ -134,7 +134,7 @@ Stream Analytics işi oluşturarak başlayalım. İşi oluşturduktan sonra, ver
 
 ### <a name="run-the-stream-analytics-job"></a>Stream Analytics işini çalıştırma
 
-Stream Analytics işinde **genel bakış**' ı seçin ve şimdi Başlat **' ı seçin**  >  **Now**  >  **Start**. İş düzgün bir şekilde başlatıldıktan sonra, **Durduruldu** olan iş durumu **Çalışıyor** olarak değiştirilir.
+Stream Analytics işinde **genel bakış**' ı seçin ve şimdi Başlat **' ı seçin**  >    >  . İş düzgün bir şekilde başlatıldıktan sonra, **Durduruldu** olan iş durumu **Çalışıyor** olarak değiştirilir.
 
 ![Azure 'da bir Stream Analytics işi çalıştırma](./media/iot-hub-live-data-visualization-in-power-bi/run-stream-analytics-job.png)
 
@@ -148,7 +148,7 @@ Aşağıdaki adımlarda Power BI hizmeti kullanarak rapor oluşturma ve yayımla
 
 3. Kullandığınız çalışma alanını, **çalışma alanım**' ı seçin.
 
-4. **Veri kümelerini**seçin.
+4. **Veri kümelerini** seçin.
 
    Stream Analytics işi için çıktıyı oluştururken belirttiğiniz veri kümesini görmeniz gerekir.
 
@@ -178,7 +178,7 @@ Aşağıdaki adımlarda Power BI hizmeti kullanarak rapor oluşturma ve yayımla
 
 9. Sol bölmedeki **raporlar** ' ı seçin ve ardından yeni oluşturduğunuz raporu seçin.
 
-10. **File**  >  **Web 'de yayımlama**dosya ' yı seçin.
+10.   >  **Web 'de yayımlama** dosya ' yı seçin.
 
     ![Microsoft Power BI raporu için Web 'de Yayımla ' yı seçin](./media/iot-hub-live-data-visualization-in-power-bi/power-bi-select-publish-to-web.png)
 

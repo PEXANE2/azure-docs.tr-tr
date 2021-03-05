@@ -8,12 +8,12 @@ ms.topic: overview
 ms.custom: mvc
 ms.date: 08/26/2020
 ms.author: victorh
-ms.openlocfilehash: 52bc2a20be0d7113583b7f23cc569dbb9503d364
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.openlocfilehash: 4344cd38d9a58eec27c6202e81b8ef678a510681
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93397255"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102176017"
 ---
 # <a name="what-is-azure-application-gateway"></a>Azure Application Gateway nedir?
 
@@ -26,9 +26,14 @@ Application Gateway, bir HTTP isteğinin ek özniteliklerine (örneğin, URI yol
 Bu yönlendirme türü, uygulama katmanı (OSI katman 7) yük dengelemesi olarak bilinir. Azure Application Gateway, URL tabanlı yönlendirmeyi ve daha fazlasını yapabilir.
 
 >[!NOTE]
-> Azure, senaryolarınız için tam olarak yönetilen yük dengeleme çözümleri sunar. Yüksek performanslı, düşük gecikmeli, katman 4 yük dengelemeye ihtiyacınız varsa bkz. [Azure Load Balancer nedir?](../load-balancer/load-balancer-overview.md) Küresel DNS yük dengeleyiciyi arıyorsanız bkz. [ne Traffic Manager?](../traffic-manager/traffic-manager-overview.md) Uçtan uca senaryolarınız, bu çözümleri birleştirmenin avantajlarından yararlanabilir.
->
+> Azure, senaryolarınız için tam olarak yönetilen yük dengeleme çözümleri sunar. 
+> * DNS tabanlı küresel yönlendirme yapmak istiyorsanız ve Aktarım Katmanı Güvenliği (TLS) protokolü sonlandırma ("SSL yük boşaltma"), HTTP/HTTPS isteği veya uygulama katmanı işleme gereksinimlerine sahip **değilseniz** [Traffic Manager](../traffic-manager/traffic-manager-overview.md)gözden geçirin. 
+> * Web trafiğinizi küresel yönlendirmeyi iyileştirmeniz ve hızlı genel yük devretme ile en üst katman Son Kullanıcı performansını ve güvenilirliğini iyileştirmek için bkz. [ön kapı](../frontdoor/front-door-overview.md).
+> * Ağ katmanı yük dengelemesi yapmak için [Load Balancer](../load-balancer/load-balancer-overview.md)gözden geçirin. 
+> 
+> Uçtan uca senaryolarınız, bu çözümlerin gerektiğinde birleştirilmesinin avantajlarından yararlanabilir.
 > Azure yük dengeleme seçenekleri karşılaştırması için bkz. [Azure 'da Yük Dengeleme seçeneklerine genel bakış](/azure/architecture/guide/technology-choices/load-balancing-overview).
+
 
 ## <a name="features"></a>Özellikler
 

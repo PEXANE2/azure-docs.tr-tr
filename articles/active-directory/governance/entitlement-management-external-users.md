@@ -16,12 +16,12 @@ ms.date: 12/23/2020
 ms.author: barclayn
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b356d5dff453b598eeb773af1a56fc50193e9e16
-ms.sourcegitcommit: 6e2d37afd50ec5ee148f98f2325943bafb2f4993
+ms.openlocfilehash: c7c78dcbc34deca769739f82964df41ebfc596ea
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97746669"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102176799"
 ---
 # <a name="govern-access-for-external-users-in-azure-ad-entitlement-management"></a>Azure AD yetkilendirme yönetiminde dış kullanıcılara erişimi yönetir
 
@@ -84,7 +84,7 @@ Kuruluşunuzun dışındaki kişilerin erişim paketleri isteyebildiğini ve bu 
 - Konuklarınızın dizininize diğer konukları davet etmesini sağlamak, Konuk davetlerini yetkilendirme yönetiminin dışında gerçekleşebileceği anlamına gelir. Konukların yalnızca doğru şekilde yönetilen davetlere izin vermek için **Hayır** 'a **davet edebilmeleri** önerilir.
 - B2B izin verilenler listesini kullanıyorsanız, Yetkilendirme Yönetimi 'ni kullanarak ortak hale getirmek istediğiniz etki alanının listeye eklendiğinden emin olmanız gerekir. Alternatif olarak, B2B reddetme listesini kullanıyorsanız, ortak hale getirmek istediğiniz herhangi bir etki alanının listeye eklenmemiş olduğundan emin olmanız gerekir.
 - **Tüm kullanıcılar** (tüm bağlı kuruluşlar + tüm yeni dış kullanıcılar) için bir yetkilendirme yönetimi ilkesi oluşturursanız ve bir Kullanıcı, dizininizde bağlı bir kuruluşa ait değilse, paket istediklerinde bu kişiler için bağlı bir kuruluş otomatik olarak oluşturulur. Sahip olduğunuz tüm B2B izin verme veya reddetme listesi ayarları öncelikli olur. Bu nedenle, bir tane kullanıyorsanız, bu ilkeye dahil etmek istediğiniz etki alanlarını izin verilenler listenize dahil ettiğinizden emin olun ve reddetme listesi kullanıyorsanız bunları reddetme listenizden dışlayabilirsiniz.
-- **Tüm kullanıcıları** (tüm bağlı kuruluşlar + tüm yeni dış kullanıcılar) içeren bir yetkilendirme yönetimi ilkesi oluşturmak istiyorsanız, öncelikle dizininiz için bir kerelik geçiş kodu kimlik doğrulamasını etkinleştirmeniz gerekir. Daha fazla bilgi için bkz. [e-posta bir kerelik geçiş kodu doğrulaması (Önizleme)](../external-identities/one-time-passcode.md).
+- **Tüm kullanıcıları** (tüm bağlı kuruluşlar + tüm yeni dış kullanıcılar) içeren bir yetkilendirme yönetimi ilkesi oluşturmak istiyorsanız, öncelikle dizininiz için bir kerelik geçiş kodu kimlik doğrulamasını etkinleştirmeniz gerekir. Daha fazla bilgi için bkz. [e-posta bir kerelik geçiş kodu kimlik doğrulaması](../external-identities/one-time-passcode.md).
 - Azure AD B2B dış işbirliği ayarları hakkında daha fazla bilgi için bkz. [B2B dış Işbirliğini etkinleştirme ve konukları kimlerin davet edebileceğini yönetme](../external-identities/delegate-invitations.md).
 
     ![Azure AD dış işbirliği ayarları](./media/entitlement-management-external-users/collaboration-settings.png)

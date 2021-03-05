@@ -11,17 +11,17 @@ ms.service: active-directory
 ms.subservice: fundamentals
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 1/29/2021
+ms.date: 3/4/2021
 ms.author: ajburnle
 ms.reviewer: dhanyahk
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2e0315eda72681f650172117038ff5ede9f602cc
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 9abed17f5a3d23f811c7cec0d4fd31e4433f651d
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102032441"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102177034"
 ---
 # <a name="whats-new-in-azure-active-directory"></a>Azure Active Directory yenilikler nelerdir?
 
@@ -38,6 +38,224 @@ Azure AD, iyileştirmeleri sürekli olarak alır. En son gelişmelerden haberdar
 Bu sayfa aylık olarak güncelleştirildiğinden düzenli olarak yeniden ziyaret edin. Altı aydan eski olan öğeleri arıyorsanız, [Azure Active Directory yenilikleri Için arşiv](whats-new-archive.md)halinde bulabilirsiniz.
 
 ---
+## <a name="february-2021"></a>Şubat 2021
+
+### <a name="email-one-time-passcode-authentication-on-by-default-starting-october-2021"></a>Varsayılan olarak bir kerelik geçiş kodu kimlik doğrulamasını e-posta 2021 tarihinde başlayarak
+
+**Şunu yazın:** Değişiklik planı  
+**Hizmet kategorisi:** EAı  
+**Ürün yeteneği:** B2B/B2C
+ 
+
+31 Ekim 2021 ' den itibaren Microsoft Azure Active Directory [e-posta bir kerelik geçiş kodu kimlik doğrulaması](../external-identities/one-time-passcode.md) , B2B işbirliği senaryolarına yönelik hesapları ve kiracılar için davet etme varsayılan yöntemi olur. Bu sırada, Microsoft yönetilmeyen Azure Active Directory hesapları kullanılarak davetlerin kullanımına izin vermez. 
+
+---
+
+### <a name="unrequested-but-consented-permissions-will-no-longer-be-added-to-tokens-if-they-would-trigger-conditional-access"></a>İstekte bulunulmamış ancak onaylanan izinler, koşullu erişimi tetikleytiklerinde belirteçlere artık eklenmeyecektir
+
+**Şunu yazın:** Değişiklik planı  
+**Hizmet kategorisi:** Kimlik doğrulamaları (oturum açma)  
+**Ürün yeteneği:** Platformunun
+ 
+Şu anda, [dinamik izinleri](../develop/v2-permissions-and-consent.md#requesting-individual-user-consent) kullanan uygulamalara erişim izni verilen tüm izinler verilir. Bu, istekte bulunulmamış ve koşullu erişimi tetiklerse bile uygulamaları içerir. Örneğin, bu, yalnızca onayı bulunan bir uygulamanın `user.read` `files.read` , Izin atanmış koşullu erişimi geçirmeye zorlanmasına neden olabilir `files.read` . 
+
+Gereksiz koşullu erişim istemlerinin sayısını azaltmak için, Azure AD, istenmeyen kapsamların uygulamalara sağlandığı yöntemi değiştiriyor. Uygulamalar, yalnızca açıkça istediği izin için koşullu erişimi tetikler. Daha fazla bilgi için, [kimlik doğrulamadaki yenilikleri](../develop/reference-breaking-changes.md#conditional-access-will-only-trigger-for-explicitly-requested-scopes)okuyun.
+ 
+---
+ 
+### <a name="public-preview---use-a-temporary-access-pass-to-register-passwordless-credentials"></a>Genel Önizleme-passwordless kimlik bilgilerini kaydetmek için geçici bir erişim geçişi kullanın
+
+**Şunu yazın:** Yeni Özellik  
+**Hizmet kategorisi:** MFA  
+**Ürün yeteneği:** Kimlik güvenliği & koruması
+
+Geçici erişim geçişi, güçlü kimlik bilgileri görevi gören ve bir kullanıcı güçlü kimlik doğrulama faktörünü (örneğin, FIDO2 güvenlik anahtarı veya Microsoft Authenticator) kaybettiği veya unuttuğunda ve yeni güçlü kimlik doğrulama yöntemlerini kaydetmek için oturum açması gerektiğinde, daha az kimlik bilgileri ve kurtarmaya izin veren zaman sınırlı bir geçiş kodu olur. [Daha fazla bilgi edinin](../authentication/howto-authentication-temporary-access-pass.md).
+
+---
+
+### <a name="public-preview---keep-me-signed-in-kmsi-in-next-generation-of-user-flows"></a>Genel Önizleme-yeni nesil Kullanıcı akışlarındaki Oturumumu Açık bırak (KMSı)
+
+**Şunu yazın:** Yeni Özellik  
+**Hizmet kategorisi:** B2C-tüketici kimlik yönetimi  
+**Ürün yeteneği:** B2B/B2C
+
+Yeni nesil B2C Kullanıcı akışları, müşterilerin kalıcı bir tanımlama bilgisi kullanarak Web ve yerel uygulamalarının kullanıcıları için oturum ömrünü genişletmelerine olanak sağlayan Oturumumu [açık tut (KMSı)](https://docs.microsoft.com/azure/active-directory-b2c/session-behavior?pivots=b2c-custom-policy#enable-keep-me-signed-in-kmsi) işlevini desteklemektedir.  özelliği, kullanıcı tarayıcıyı kapatıp yeniden açtığında bile oturumu etkin tutar ve Kullanıcı oturumunu kapattığında iptal edilir.
+
+---
+
+### <a name="public-preview---external-identities-self-service-sign-up-in-aad-using-msa-accounts"></a>Genel Önizleme-dış kimlikler Self-Service MSA hesaplarını kullanarak AAD 'de kaydolma
+
+**Şunu yazın:** Yeni Özellik  
+**Hizmet kategorisi:** EAı  
+**Ürün yeteneği:** B2B/B2C
+ 
+Dış kullanıcılar artık Azure AD birinci taraf ve LOB uygulamalarında oturum açmak için Microsoft hesaplarını kullanabilir. [Daha fazla bilgi edinin](../external-identities/self-service-sign-up-overview.md).
+
+---
+
+### <a name="public-preview---reset-redemption-status-for-a-guest-user"></a>Genel Önizleme-Konuk Kullanıcı için kullanım durumunu sıfırlama
+
+**Şunu yazın:** Yeni Özellik  
+**Hizmet kategorisi:** EAı  
+**Ürün yeteneği:** B2B/B2C
+ 
+Müşteriler artık mevcut dış Konuk kullanıcıları, kullanım durumlarını sıfırlamak için yeniden davet edebilir ve bu da Konuk Kullanıcı hesabının herhangi bir erişimi kaybetmeden kalmasına izin verir. [Daha fazla bilgi edinin](../external-identities/reset-redemption-status.md).
+ 
+---
+
+### <a name="public-preview---synchronization-provisioning-apis-now-support-application-permissions"></a>Genel Önizleme-/Synchronization (sağlama) API 'Leri artık uygulama izinlerini destekliyor
+
+**Şunu yazın:** Yeni Özellik  
+**Hizmet kategorisi:** Uygulama sağlama  
+**Ürün yeteneği:** Kimlik yaşam döngüsü yönetimi
+ 
+Müşteriler artık, eşitleme API 'Lerini çağırmak için uygulama izni olarak Application. ReadWrite. ownedcan kullanabilir. Bu, yalnızca Azure AD 'den üçüncü taraf uygulamalara (örneğin, AWS, veri blokları, vb.) sağlanması için desteklenir. Bu, şu anda HR sağlama (Workday/başarılı faktörleri) veya bulut eşitleme (AD ile Azure AD) için desteklenmiyor. [Daha fazla bilgi edinin](https://docs.microsoft.com/graph/api/resources/provisioningobjectsummary?view=graph-rest-beta).
+ 
+---
+
+### <a name="general-availability---authentication-policy-administrator-built-in-role"></a>Genel kullanılabilirlik-kimlik doğrulama Ilkesi yönetici yerleşik rolü
+
+**Şunu yazın:** Yeni Özellik  
+**Hizmet kategorisi:** RAPORDAKI  
+**Ürün yeteneği:** Access Control
+ 
+Bu role sahip kullanıcılar, kimlik doğrulama yöntemleri ilkesini, kiracı genelinde MFA ayarlarını ve parola koruma ilkesini yapılandırabilir. Bu rol, parola koruma ayarlarını yönetme izni verir: akıllı kilitleme yapılandırması ve özel yasaklanmış parolalar listesi güncelleştiriliyor. [Daha fazla bilgi edinin](../roles/permissions-reference.md#authentication-policy-administrator).
+
+---
+
+### <a name="general-availability---user-collections-on-my-apps-are-available-now"></a>Genel kullanılabilirlik-uygulamalarımın üzerindeki Kullanıcı koleksiyonları artık kullanılabilir!
+
+**Şunu yazın:** Yeni Özellik  
+**Hizmet kategorisi:** Uygulamalarım  
+**Ürün yeteneği:** Son Kullanıcı deneyimleri
+ 
+Kullanıcılar artık uygulamalarım uygulama başlatıcısı üzerinde kendi uygulama gruplandırmaları oluşturabilir. Ayrıca, yöneticileri tarafından kendileriyle paylaşılan koleksiyonları yeniden sıralayabilir ve saklayabilir. [Daha fazla bilgi edinin](../user-help/my-apps-portal-user-collections.md).
+
+---
+
+### <a name="general-availability---autofill-in-authenticator"></a>Genel kullanılabilirlik-Authenticator içinde otomatik doldurma
+
+**Şunu yazın:** Yeni Özellik  
+**Hizmet kategorisi:** Microsoft Authenticator uygulaması  
+**Ürün yeteneği:** Kimlik güvenliği & koruması
+ 
+Microsoft Authenticator, çok faktörlü kimlik doğrulaması (MFA) ve hesap yönetimi özellikleri sağlar ve artık, sitelerde ve uygulamalarda kullanıcıların mobil (iOS ve Android) üzerinde ziyaret ettiği parolaları otomatik olarak alır. 
+
+Kullanıcı doğrulayıcısı üzerinde otomatik doldurma kullanmak için, kullanıcıların kendi kişisel Microsoft hesabı kimlik doğrulayıcısına eklemesi ve parolalarını eşitlemesini sağlamak için kullanması gerekir. Şu anda parolaları eşitlemek için iş veya okul hesapları kullanılamaz. [Daha fazla bilgi edinin](../user-help/user-help-auth-app-faq.md#autofill-for-it-admins).
+
+---
+
+### <a name="general-availability---invite-internal-users-to-b2b-collaboration"></a>Genel kullanılabilirlik-dahili kullanıcıları B2B işbirliğine davet etme
+
+**Şunu yazın:** Yeni Özellik  
+**Hizmet kategorisi:** EAı  
+**Ürün yeteneği:** B2B/B2C
+ 
+Müşteriler artık iç konukları, mevcut bir iç hesaba davetiye göndermek yerine B2B işbirliği kullanacak şekilde davet edebilir. Bu, müşterilerin bu kullanıcının nesne KIMLIĞI, UPN, grup üyelikleri ve uygulama atamalarını tutmasını sağlar. [Daha fazla bilgi edinin](../external-identities/invite-internal-users.md).
+
+---
+
+### <a name="general-availability---domain-name-administrator-built-in-role"></a>Genel kullanılabilirlik-etki alanı adı yöneticisi yerleşik rolü
+
+**Şunu yazın:** Yeni Özellik  
+**Hizmet kategorisi:** RAPORDAKI  
+**Ürün yeteneği:** Access Control
+ 
+Bu role sahip kullanıcılar, etki alanı adlarını yönetebilir (okuyabilir, ekleyebilir, doğrulayamaz, güncelleştirebilir ve silebilir). Kullanıcılar, gruplar ve uygulamalar hakkında, bu nesnelerin etki alanı bağımlılıkları olduğu için dizin bilgilerini de okuyabilir. 
+
+Şirket içi ortamlarda, bu role sahip olan kullanıcılar, ilgili kullanıcıların her zaman şirket içinde kimlik doğrulamasından geçirilmeleri için, Federasyon etki alanı adlarını yapılandırabilir. Bu kullanıcılar daha sonra Azure AD tabanlı hizmetlerde çoklu oturum açma yoluyla şirket içi parolalarla oturum açabilirler. Federasyon ayarlarının Azure AD Connect aracılığıyla eşitlenmesi gerekir, böylece kullanıcıların Azure AD Connect yönetme izinleri de vardır. [Daha fazla bilgi edinin](../roles/permissions-reference.md#domain-name-administrator).
+ 
+---
+
+### <a name="new-federated-apps-available-in-azure-ad-application-gallery---february-2021"></a>Azure AD uygulama galerisinde yeni Federasyon uygulamaları kullanılabilir-Şubat 2021
+
+**Şunu yazın:** Yeni Özellik  
+**Hizmet kategorisi:** Kurumsal uygulamalar  
+**Ürün yeteneği:** üçüncü taraf tümleştirmesi
+ 
+Şubat 2021 ' de, federasyon desteğiyle App Gallery 'de aşağıdaki 37 yeni uygulamaları ekledik:
+
+[Messenger uzantısı](https://loopworks.com/loop-flow-messenger/), [Silverfort Azure AD bağdaştırıcısı](http://www.silverfort.com/), [Karşılıklı öğrenme](https://skilledtrades.interplaylearning.com/#login), [Nura Space](https://dashboard.nuraspace.com/login), [Yoml AB](https://eu1.getyooz.com/?kc_idp_hint=microsoft), [UXPRESYA](https://uxpressia.com/users/sign-in), Pose [ön ve ekleme platformu, pobotd](http://app.introdus.dk/login), [hanaksıd](https://app.leaksid.com/) [,](https://login.microsoftonline.com/organizations/oauth2/v2.0/authorize?client_id=34353e1e-dfe5-4d2f-bb09-2a5e376270c8&response_type=code&redirect_uri=https://api.happyteams.io/microsoft/integrate&response_mode=query&scope=offline_access%20User.Read%20User.Read.All) [kaydırıcı](http://www.shiftwizard.com/), [pingflow SSO](https://app.pingview.io/), [swiftlane](https://admin.swiftlane.com/login), [quasydoc SSO](https://www.quasydoc.eu/login), [Fenwick altın hesap](https://businesscentral.dynamics.com/), [SeamlessDesk](https://www.seamlessdesk.com/login), [öğrennsoft LMS & TMS](http://www.learnsoft.com/), [P-TH +](https://p-th.jp/), [myviewboard](https://api.myviewboard.com/auth/microsoft/), [Tartabıt IoT Köprüsü](https://bridge-us.tartabit.com/), [AKASHI](../saas-apps/akashi-tutorial.md), [rewatch](../saas-apps/rewatch-tutorial.md), [Zuddl](../saas-apps/zuddl-tutorial.md), [Parkalot-otomobıl park yönetimi](../saas-apps/parkalot-car-park-management-tutorial.md), [HSB düşünme noktası](../saas-apps/hsb-thoughtspot-tutorial.md), [ibmid](../saas-apps/ibmid-tutorial.md), [sharingcloud](../saas-apps/sharingcloud-tutorial.md), [poolparti anlam paketi](../saas-apps/poolparty-semantic-suite-tutorial.md), [GlobeSmart](../saas-apps/globesmart-tutorial.md), [Samsung KNOX ve iş hizmetleri](../saas-apps/samsung-knox-and-business-services-tutorial.md), [Penji](../saas-apps/penji-tutorial.md), [Kendis-ölçeklendirme çevik platform](../saas-apps/kendis-scaling-agile-platform-tutorial.md), [maptician](../saas-apps/maptician-tutorial.md), [olfeo SaaS](../saas-apps/olfeo-saas-tutorial.md), [Sigma Computing](../saas-apps/sigma-computing-tutorial.md), [cloudknox izinleri yönetim platformu](../saas-apps/cloudknox-permissions-management-platform-tutorial.md), [Klaxoon SAML](../saas-apps/klaxoon-saml-tutorial.md), [enablon](../saas-apps/enablon-tutorial.md)
+
+Ayrıca, tüm uygulamaların belgelerini buradan bulabilirsiniz: https://aka.ms/AppsTutorial
+
+Uygulamanızı Azure AD uygulama galerisinde listelemek için buradaki ayrıntıları okuyun: https://aka.ms/AzureADAppRequest
+
+--- 
+
+### <a name="new-provisioning-connectors-in-the-azure-ad-application-gallery---february-2021"></a>Azure AD uygulama galerisinde yeni sağlama bağlayıcıları-Şubat 2021
+
+**Şunu yazın:** Yeni Özellik  
+**Hizmet kategorisi:** Uygulama sağlama  
+**Ürün yeteneği:** üçüncü taraf tümleştirmesi
+ 
+
+Artık yeni tümleştirilmiş uygulamalar için Kullanıcı hesapları oluşturmayı, güncellemeyi ve silmeyi otomatik hale getirebilirsiniz:
+
+- [Atea](../saas-apps/atea-provisioning-tutorial.md)
+- [Getabstract](../saas-apps/getabstract-provisioning-tutorial.md)
+- [Merhaba kimliği](../saas-apps/helloid-provisioning-tutorial.md)
+- [Hoxhunt](../saas-apps/hoxhunt-provisioning-tutorial.md)
+- [Iris Intranet](../saas-apps/iris-intranet-provisioning-tutorial.md)
+- [Preciate](../saas-apps/preciate-provisioning-tutorial.md)
+
+Daha fazla bilgi için [Azure AD Ile SaaS uygulamalarına Kullanıcı sağlamayı otomatik hale](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning)getirmeyi okuyun.
+
+---
+
+### <a name="general-availability---10-azure-active-directory-roles-now-renamed"></a>Genel kullanılabilirlik-10 Azure Active Directory roller artık yeniden adlandırıldı
+
+**Şunu yazın:** Değiştirilen özellik  
+**Hizmet kategorisi:** RAPORDAKI  
+**Ürün yeteneği:** Access Control
+ 
+10 Azure AD yerleşik rolleri, [Microsoft 365 Yönetim Merkezi](https://docs.microsoft.com/microsoft-365/admin/microsoft-365-admin-center-preview), [Azure AD portalı](https://portal.azure.com/)ve [Microsoft Graph](https://developer.microsoft.com/graph/)hizalanabilmesi için yeniden adlandırıldı. Yeni roller hakkında daha fazla bilgi edinmek için [Azure Active Directory Içindeki yönetici rolü izinleri](../roles/permissions-reference.md#all-roles)bölümüne bakın.
+
+![Yeni rol adları tablosu](media/whats-new/roles-table-rbac.png)
+
+---
+
+### <a name="new-company-branding-in-mfasspr-combined-registration"></a>MFA/SSPR Birleşik kaydında yeni şirket markası
+
+**Şunu yazın:** Değiştirilen özellik  
+**Hizmet kategorisi:** Kullanıcı deneyimi ve yönetimi  
+**Ürün yeteneği:** Son Kullanıcı deneyimleri
+ 
+Geçmişte, şirket logoları Azure Active Directory oturum açma sayfalarında kullanılmadı. Şirket markası, artık MFA/SSPR Birleşik kaydının sol üst kısmında bulunur. Şirket markası, Sign-Ins ve güvenlik bilgisi sayfasına da dahildir. [Daha fazla bilgi edinin](../fundamentals/customize-branding.md).
+
+---
+
+### <a name="general-availability---second-level-manager-can-be-set-as-alternate-approver"></a>Genel kullanılabilirlik-Ikinci düzey yönetici, alternatif onaylayan olarak ayarlanabilir
+
+**Şunu yazın:** Değiştirilen özellik  
+**Hizmet kategorisi:** Kullanıcı erişim yönetimi  
+**Ürün yeteneği:** Yetkilendirme Yönetimi
+ 
+Onaylayanlar ' i seçtiğinizde, artık yetkilendirme yönetiminde ek bir seçenek mevcuttur. Ilk onaylayanın "onaylayan olarak yönetici" seçeneğini belirlerseniz, alternatif onaylayan alanında seçebileceğiniz başka bir "Ikinci düzey yönetici, alternatif onaylayan olarak" seçeneğine sahip olursunuz. Bu seçeneği belirlerseniz, sistemin ikinci düzey yöneticiyi bulamadığı durumlarda isteği iletmek için bir geri dönüş onaylayan eklemeniz gerekir. [Daha fazla bilgi edinin](../governance/entitlement-management-access-package-approval-policy.md#alternate-approvers).
+ 
+---
+
+### <a name="authentication-methods-activity-dashboard"></a>Kimlik doğrulama yöntemleri etkinlik panosu
+
+**Şunu yazın:** Değiştirilen özellik  
+**Hizmet kategorisi:** Rapor  
+**Ürün yeteneği:** & raporlamayı izleme
+ 
+
+Yenilenen kimlik doğrulama yöntemleri etkinlik panosu, yöneticilere kiracısındaki kimlik doğrulama yöntemi kaydı ve kullanım etkinliğine ilişkin bir genel bakış sağlar. Rapor, her bir yöntem için kayıtlı kullanıcı sayısını ve oturum açma ve parola sıfırlama sırasında hangi yöntemlerin kullanılacağını özetler. [Daha fazla bilgi edinin](../authentication/howto-authentication-methods-activity.md).
+ 
+---
+
+### <a name="refresh-and-session-token-lifetimes-configurability-in-configurable-token-lifetime-ctl-are-retired"></a>Yenileme ve oturum belirteci yaşam süreleri yapılandırılabilir belirteç ömrü (CTL) ile kullanım dışı bırakıldı
+
+**Şunu yazın:** Kullanım dışı  
+**Hizmet kategorisi:** Farklı  
+**Ürün yeteneği:** Kullanıcı kimlik doğrulaması
+ 
+Yenileme ve oturum belirteci yaşam süresi yapılandırması, CTL 'nin kullanım dışı bırakıldı. Azure Active Directory var olan ilkelerde artık yenileme ve oturum belirteci yapılandırması yok. [Daha fazla bilgi edinin](../develop/active-directory-configurable-token-lifetimes.md#token-lifetime-policies-for-refresh-tokens-and-session-tokens).
+ 
+---
+ 
 ## <a name="january-2021"></a>Ocak 2021
 
 ### <a name="secret-token-will-be-a-mandatory-field-when-configuring-provisioning"></a>Sağlama yapılandırılırken gizli belirteç zorunlu bir alan olacaktır
@@ -185,7 +403,7 @@ Ocak 2021 ' de, federasyon desteğiyle uygulama galerimize aşağıdaki 29 yeni 
 
 Ayrıca, tüm uygulamaların belgelerini buradan bulabilirsiniz. https://aka.ms/AppsTutorial
 
-Uygulamanızı Azure AD uygulama galerisinde listelemek için lütfen buradaki ayrıntıları okuyun https://aka.ms/AzureADAppRequest 
+Uygulamanızı Azure AD uygulama galerisinde listelemek için buradaki ayrıntıları okuyun https://aka.ms/AzureADAppRequest 
 
 ---
 
@@ -325,7 +543,7 @@ Erişim Portalı 'nı kullanma hakkında daha fazla bilgi edinmek için bkz. [Az
 **Hizmet kategorisi:** Kullanıcı erişim yönetimi  
 **Ürün yeteneği:** Yetkilendirme Yönetimi
 
-Artık yetkilendirme yönetiminde onay sürecinde fazladan bir seçenek mevcuttur. Ilk onaylayan için yöneticiyi onaylayan olarak seçerseniz, alternatif onaylayan alanında tercih ettiğiniz Ikinci düzey yönetici olan alternatif onaylayan olarak diğer bir seçeneğe sahip olursunuz. Bu seçeneği belirlediğinizde, sistemin ikinci düzey yöneticiyi bulamadığı durumlarda isteği iletmek için bir geri dönüş onaylayan eklemeniz gerekir.
+Artık yetkilendirme yönetiminde onay sürecinde fazladan bir seçenek mevcuttur. Ilk onaylayan için yöneticiyi onaylayan olarak seçerseniz, alternatif onaylayan alanında tercih ettiğiniz Ikinci düzey yönetici olan alternatif onaylayan olarak başka bir seçeneğe sahip olursunuz. Bu seçeneği belirlediğinizde, sistemin ikinci düzey yöneticiyi bulamadığı durumlarda isteği iletmek için bir geri dönüş onaylayan eklemeniz gerekir.
 
 Daha fazla bilgi için [Azure AD yetkilendirme yönetiminde bir erişim paketinin onay ayarlarını değiştirin](../governance/entitlement-management-access-package-approval-policy.md#alternate-approvers)bölümüne gidin.
 
@@ -598,7 +816,7 @@ Bu özellik, yönetim birimi kapsamındaki bir yönetici rolüne uygulama (SPN) 
  
 Kuruluşların gruplar ve uygulamalarda dış konukları daha iyi yönetmesine yardımcı olmak için Azure AD erişim Incelemelerinde devre dışı bırak ve Sil gelişmiş bir denetimdir. Bir erişim incelemesinin konukları engellenirse, **devre dışı bırak ve Sil** , bu otomatik olarak 30 gün boyunca oturum açmalarını engeller. 30 gün sonra kiracıdan tamamen kaldırılır.
 
-Bu özellik hakkında daha fazla bilgi için bkz. [Azure AD erişim gözden geçirmeleri (Önizleme) ile dış kimlikleri devre dışı bırakma ve silme](../governance/access-reviews-external-users.md#disable-and-delete-external-identities-with-azure-ad-access-reviews-preview).
+Bu özellik hakkında daha fazla bilgi için bkz. [Azure AD erişim gözden geçirmeleri ile dış kimlikleri devre dışı bırakma ve silme](../governance/access-reviews-external-users.md#disable-and-delete-external-identities-with-azure-ad-access-reviews).
  
 ---
 
@@ -679,7 +897,7 @@ API bağlayıcıları artık Azure Active Directory B2C kullanılabilir. API ba�
 **Hizmet kategorisi:** Dizin Yönetimi **ürün yeteneği:** Yetkilendirme Yönetimi
  
 
- Tüm bağlı kuruluşların artık "State" adlı ek bir özelliği olacaktır. Durum, bağlı kuruluşun "tüm yapılandırılmış bağlı kuruluşlara" başvuran ilkelerde nasıl kullanılacağını kontrol eder. Değer "yapılandırıldı" (kuruluşun "All" yan tümcesini kullanan ilkelerin kapsamında olduğu anlamına gelir) veya "Proposed" (kuruluşun kapsamda olmadığı anlamına gelir) olacaktır.  
+ Tüm bağlı kuruluşların artık "State" adlı ek bir özelliği olacaktır. Durum, bağlı kuruluşun "tüm yapılandırılmış bağlı kuruluşlara" başvuran ilkelerde nasıl kullanılacağını kontrol eder. Değer "yapılandırılmış" olacaktır (kuruluşun "All" yan tümcesini kullanan ilkelerin kapsamında olduğu ve kuruluşun kapsamda olmadığı anlamına gelir).  
 
 El ile oluşturulan bağlı kuruluşların varsayılan ayarı "yapılandırılmış" olacaktır. Bu arada otomatik olarak oluşturulan (internet 'ten herhangi bir kullanıcının erişim istemesine izin veren ilkeler aracılığıyla oluşturulur) varsayılan olarak "önerilir" olarak yapılır.  9 2020 Eylül 'tan önce oluşturulan bağlı kuruluşlar "yapılandırıldı" olarak ayarlanır. Yöneticiler, gerektiğinde bu özelliği güncelleştirebilir. [Daha fazla bilgi edinin](../governance/entitlement-management-organization.md#managing-a-connected-organization-programmatically).
  
@@ -954,188 +1172,4 @@ Erişim paketi oluşturma akışında, kaynak rolleri sekmesinde, seçim bölmes
 
 Bu deneyim, kullanıcıların katalogdan kolayca kaynak seçebilmek için varsayılan olarak katalogda zaten eklenen kaynakları görüntüleyecek şekilde değiştirilecektir. Güncelleştirme, erişim paketlerine eklenecek kaynakların keşfediliğine yardımcı olur ve kataloğun parçası olmayan kullanıcıya ait kaynakları yanlışlıkla ekleme riskini azaltır. Daha fazla bilgi edinmek için bkz. [Azure AD yetkilendirme yönetiminde yeni bir erişim paketi oluşturma](../governance/entitlement-management-access-package-create.md#resource-roles).
  
----
-
-## <a name="august-2020"></a>Ağustos 2020 
- 
-### <a name="updates-to-azure-multi-factor-authentication-server-firewall-requirements"></a>Azure Multi-Factor Authentication Sunucusu Güvenlik Duvarı gereksinimlerine yönelik güncelleştirmeler
-
-**Şunu yazın:** Değişiklik planı  
-**Hizmet kategorisi:** MFA  
-**Ürün yeteneği:** Kimlik güvenliği & koruması
- 
-1 Ekim 2020 ' den itibaren Azure MFA sunucusu güvenlik duvarı gereksinimleri ek IP aralıkları gerektirecektir.
-
-Kuruluşunuzda giden güvenlik duvarı kurallarınız varsa, MFA sunucularınızın tüm gerekli IP aralıklarıyla iletişim kurabilmesi için kuralları güncelleştirin. IP aralıkları [Azure Multi-Factor Authentication sunucusu güvenlik duvarı gereksinimleriyle](../authentication/howto-mfaserver-deploy.md#azure-multi-factor-authentication-server-firewall-requirements)belgelenmiştir.
-
----
-
-### <a name="upcoming-changes-to-user-experience-in-identity-secure-score"></a>Kimlik güvenli puanı 'nda Kullanıcı deneyimine yaklaşan değişiklikler
-
-**Şunu yazın:** Değişiklik planı  
-**Hizmet kategorisi:** Kimlik koruması **ürün yeteneği:** kimlik güvenliği & koruması
-
-Microsoft güvenli puanınızın [yeni sürümünde](/microsoft-365/security/mtp/microsoft-secure-score-whats-new)tanıtılan değişikliklerle uyum sağlamak Için kimlik güvenli puan portalı 'nı güncelleştiriyoruz. 
-
-Değişikliklerle birlikte önizleme sürümü, Eylül ayının başlangıcında kullanılabilir olacaktır. Önizleme sürümündeki değişiklikler şunları içerir:
-- Microsoft güvenli puanı ile marka hizalaması için "kimlik güvenli puanı", "kimlik için güvenli skor" olarak yeniden adlandırıldı
-- Standart ölçeğe normalleştirilmiş ve işaret yerine yüzde cinsinden bildirilen noktaları
-
-Bu önizlemede, müşteriler mevcut deneyim ve yeni deneyim arasında geçiş yapabilir. Bu önizleme, Kasım 2020 sonuna kadar son olacak. Önizleme sonrasında, müşteriler otomatik olarak yeni UX deneyimine yönlendirilir.
-
----
-
-### <a name="new-restricted-guest-access-permissions-in-azure-ad---public-preview"></a>Azure AD 'de yeni kısıtlı Konuk erişim Izinleri-genel önizleme
-
-**Şunu yazın:** Yeni Özellik  
-**Hizmet kategorisi:** Access Control   
-**Ürün yeteneği:** Kullanıcı Yönetimi
-
-Konuk kullanıcılar için dizin düzeyindeki izinleri güncelleştirdik. Bu izinler, yöneticilerin dış Konuk Kullanıcı erişimi üzerinde ek kısıtlamalar ve denetimler gerektirmesini sağlar. Yöneticiler artık dış konukların Kullanıcı ve grupların profiline ve üyelik bilgilerine erişimi için ek kısıtlamalar ekleyebilir. Bu genel önizleme özelliğiyle, müşteriler, konuk kullanıcıların içinde bulundukları grup üyeliklerini görmesini kısıtlama dahil olmak üzere grup üyeliklerini kararlayarak, dış Kullanıcı erişimini ölçekte yönetebilir.
-
-Daha fazla bilgi için bkz. [kısıtlı Konuk erişim izinleri](../enterprise-users/users-restrict-guest-permissions.md) ve [Kullanıcıların varsayılan izinleri](./users-default-permissions.md).
- 
----
-
-### <a name="general-availability-of-delta-queries-for-service-principals"></a>Hizmet sorumluları için Delta sorgularının genel kullanılabilirliği
-
-**Şunu yazın:** Yeni Özellik  
-**Hizmet kategorisi:** MS grafiği  
-**Ürün yeteneği:** Geliştirici deneyimi
- 
-Microsoft Graph Delta sorgusu artık v 1.0 'da kaynak türünü destekliyor:
-- Hizmet Sorumlusu
-
-Artık istemciler bu kaynaklardaki değişiklikleri etkili bir şekilde izleyebilir ve değişiklikleri yerel bir veri deposuyla eşitlemeye yönelik en iyi çözümü sağlar. Bu kaynakları bir sorguda nasıl yapılandıracağınızı öğrenmek için bkz. [Microsoft Graph verilerdeki değişiklikleri izlemek için Delta sorgu kullanma](/graph/delta-query-overview).
- 
----
-
-### <a name="general-availability-of-delta-queries-for-oauth2permissiongrant"></a>OAuth2PermissionGrant için Delta sorgularının genel kullanılabilirliği
-
-**Şunu yazın:** Yeni Özellik  
-**Hizmet kategorisi:** MS grafiği  
-**Ürün yeteneği:** Geliştirici deneyimi
-
-Microsoft Graph Delta sorgusu artık v 1.0 'da kaynak türünü destekliyor:
-- OAuth2PermissionGrant
-
-İstemciler artık bu kaynaklardaki değişiklikleri etkili bir şekilde izleyebilir ve değişiklikleri yerel bir veri deposuyla eşitlemeye yönelik en iyi çözümü sağlar. Bu kaynakları bir sorguda nasıl yapılandıracağınızı öğrenmek için bkz. [Microsoft Graph verilerdeki değişiklikleri izlemek için Delta sorgu kullanma](/graph/delta-query-overview).
-
----
-
-### <a name="new-federated-apps-available-in-azure-ad-application-gallery---august-2020"></a>Azure AD uygulama galerisinde yeni Federasyon uygulamaları kullanılabilir-Ağustos 2020
-
-**Şunu yazın:** Yeni Özellik  
-**Hizmet kategorisi:** Kurumsal uygulamalar  
-**Ürün yeteneği:** üçüncü taraf tümleştirmesi
-
-Ağustos 2020 ' de, federasyon desteğiyle App Gallery 'de aşağıdaki 25 yeni uygulamayı ekledik:
-
-[Backup365](https://portal.backup365.io/login), [Soapbox](https://app.soapboxhq.com/create?step=auth&provider=azure-ad2-oauth2), [alma SIS](https://almau.getalma.com/), [enlyft Dynamics 365 Bağlayıcısı](http://enlyft.com/), [serseview Space kullanımı yazılım çözümleri](../saas-apps/serraview-space-utilization-software-solutions-tutorial.md), [Uniq](https://web.uniq.app/), [Visi,](../saas-apps/visibly-tutorial.md) [Zylo](../saas-apps/zylo-tutorial.md), [edmentum-Courseware değerlendirmesi tam yolu](https://auth.edmentum.com/elf/login), [Sivlab](https://cyberlab.evolvesecurity.com/#/welcome), [Altamıra HRM](../saas-apps/altamira-hrm-tutorial.md), [kablotekler](../saas-apps/wirewheel-tutorial.md), [ZX uyumluluk ve yakalama](https://sminstall.zixcorp.com/teams/teams.php?install_request=true&tenant_id=common), Doğa, cıklü [kurumsal iş denetimleri platformu](../saas-apps/greenlight-enterprise-business-controls-platform-tutorial.md), [Genetec payını](https://www.clearance.network/), [ISAMs](../saas-apps/isams-tutorial.md), [verasmart](../saas-apps/verasmart-tutorial.md), [AMIKO](https://amiko.web.rivero.app/), [twingate](https://auth.twingate.com/signup), [huni Kiralama](https://nestiolistings.com/sso/oidc/azure/authorize/), [scalefyayılması](https://scalefusion.com/users/sign_in/), [bpanda](https://goto.bpanda.com/login), [vivun takvim bağlantısı](https://app.vivun.com/dashboard/calendar/connect), [Fortigate SSL VPN](../saas-apps/fortigate-ssl-vpn-tutorial.md), [wandera Son Kullanıcı](https://www.wandera.com/)
-
-Ayrıca, tüm uygulamaların belgelerini buradan bulabilirsiniz. https://aka.ms/AppsTutorial
-
-Uygulamanızı Azure AD uygulama galerisinde listelemek için buradaki ayrıntıları okuyun https://aka.ms/AzureADAppRequest
-
----
-
-### <a name="resource-forests-now-available-for-azure-ad-ds"></a>Kaynak ormanları artık Azure AD DS için kullanılabilir 
-
-**Şunu yazın:** Yeni özellik **hizmeti kategorisi:** Azure AD Domain Services   
-**Ürün yeteneği:** Azure AD Domain Services
- 
-Azure AD Domain Services içindeki kaynak ormanların özelliği artık genel kullanıma sunulmuştur. Artık, akıllı kart yetkilendirmesi de dahil olmak üzere Azure AD Domain Services kullanmak için Parola karması eşitlemesi olmadan yetkilendirmeyi etkinleştirebilirsiniz. Daha fazla bilgi edinmek için bkz. [Azure Active Directory Domain Services (Önizleme) Için çoğaltma kümesi kavramları ve özellikleri](../../active-directory-domain-services/concepts-replica-sets.md).
- 
----
-
-### <a name="regional-replica-support-for-azure-ad-ds-managed-domains-now-available"></a>Azure AD DS yönetilen etki alanları için bölgesel çoğaltma desteği artık kullanılabilir
-
-**Şunu yazın:** Yeni Özellik   
-**Hizmet kategorisi:** Azure AD Domain Services  
-**Ürün yeteneği:** Azure AD Domain Services
- 
-Yönetilen bir etki alanını, Azure AD kiracısı başına birden fazla çoğaltma kümesine sahip olacak şekilde genişletebilirsiniz. Çoğaltma kümeleri, Azure AD Domain Services destekleyen herhangi bir Azure bölgesindeki eşlenen herhangi bir sanal ağa eklenebilir. Farklı Azure bölgelerindeki ek çoğaltma kümeleri, bir Azure bölgesi çevrimdışı kalırsa eski uygulamalar için coğrafi olağanüstü durum kurtarma sağlar. Daha fazla bilgi edinmek için bkz. [Azure Active Directory Domain Services (Önizleme) Için çoğaltma kümesi kavramları ve özellikleri](../../active-directory-domain-services/concepts-replica-sets.md).
-
----
-
-### <a name="general-availability-of-azure-ad-my-sign-ins"></a>Azure AD My Sign-Ins genel kullanılabilirliği
-
-**Şunu yazın:** Yeni Özellik  
-**Hizmet kategorisi:** Kimlik doğrulamaları (oturum açma)  
-**Ürün yeteneği:** Son Kullanıcı deneyimleri
- 
-Azure AD My Sign-Ins, kurumsal kullanıcıların olağan dışı etkinlikleri denetlemek için oturum açma geçmişini gözden geçirmesine olanak sağlayan yeni bir özelliktir. Ayrıca, bu özellik, son kullanıcıların şüpheli etkinlikler üzerinde "Bu ben değilme" veya "Bu was Me" olarak raporistemelerine izin verir. Bu özelliği kullanma hakkında daha fazla bilgi edinmek için bkz. [My Sign-Ins sayfasından en son oturum açma etkinliğinizi görüntüleme ve arama](../user-help/my-account-portal-sign-ins-page.md#confirm-unusual-activity).
- 
----
-
-### <a name="sap-successfactors-hr-driven-user-provisioning-to-azure-ad-is-now-generally-available"></a>Azure AD 'de SAP başarılı bir şekilde yönetilen Kullanıcı hazırlama, genel kullanıma sunuldu
-
-**Şunu yazın:** Yeni Özellik  
-**Hizmet kategorisi:** Uygulama sağlama  
-**Ürün yeteneği:** Kimlik yaşam döngüsü yönetimi
- 
-Artık Azure AD ile SAP başarılı çarpanlarını yetkili kimlik kaynağı olarak tümleştirebilir ve Azure AD 'de hesapların sağlanması ve ön sağlamasını yapmak için yeni işe alımlar ve sonlandırmalar gibi HR olaylarını kullanarak uçtan uca kimlik yaşam döngüsünü otomatik hale getirebilirsiniz. 
-
-SAP başarılı bir şekilde Azure AD 'nin sağlamasını yapılandırma hakkında daha fazla bilgi edinmek için bkz. [SAP başarılı faktörleri Active Directory için Kullanıcı sağlamayı yapılandırma](../saas-apps/sap-successfactors-inbound-provisioning-tutorial.md).
- 
----
-
-### <a name="custom-open-id-connect-ms-graph-api-support-for-azure-ad-b2c"></a>Özel açık KIMLIK Azure AD B2C için MS Graph API desteğini bağlama
-
-**Şunu yazın:** Yeni Özellik  
-**Hizmet kategorisi:** B2C-tüketici kimlik yönetimi  
-**Ürün yeteneği:** B2B/B2C
- 
-Daha önce özel açık KIMLIK bağlama sağlayıcıları yalnızca Azure portal aracılığıyla eklenebilir veya yönetilebilir. Azure AD B2C müşteriler artık Microsoft Graph API beta sürümü aracılığıyla bunları ekleyebilir ve yönetebilir. Bu kaynağı API 'lerle yapılandırma hakkında bilgi edinmek için bkz. [IdentityProvider kaynak türü](/graph/api/resources/identityprovider?view=graph-rest-beta).
- 
----
-
-### <a name="assign-azure-ad-built-in-roles-to-cloud-groups"></a>Azure AD yerleşik rollerini bulut gruplarına atama
-
-**Şunu yazın:** Yeni Özellik  
-**Hizmet kategorisi:** Azure AD rolleri  
-**Ürün yeteneği:** Access Control
-
-Artık bu yeni özelliği kullanarak, Azure AD yerleşik rollerini bulut gruplarına atayabilirsiniz. Örneğin, SharePoint Yöneticisi rolünü Contoso_SharePoint_Admins grubuna atayabilirsiniz. Ayrıca, bir gruba bir rolün uygun bir üyesini sağlamak için PıM 'yi kullanarak, bekleyen erişim izni verebilirsiniz. Bu özelliği nasıl yapılandıracağınızı öğrenmek için bkz. [Azure Active Directory (Önizleme) içinde rol atamalarını yönetmek için bulut gruplarını kullanma](../roles/groups-concept.md).
- 
----
-
-### <a name="insights-business-leader-built-in-role-now-available"></a>Öngörüler Iş lideri yerleşik rolü artık kullanılabilir
-
-**Şunu yazın:** Yeni Özellik  
-**Hizmet kategorisi:** Azure AD rolleri  
-**Ürün yeteneği:** Access Control
- 
-Öngörüler Iş lideri rolündeki kullanıcılar, [M365 Insights uygulaması](https://www.microsoft.com/microsoft-365/partners/workplaceanalytics)aracılığıyla bir panolar ve Öngörüler kümesine erişebilir. Bu, tüm panolara ve sunulan Öngörüler ve veri araştırma işlevlerine tam erişim içerir. Ancak, bu roldeki kullanıcılar, Öngörüler Yöneticisi rolünün sorumluluğu olan ürün yapılandırma ayarlarına erişemez. Bu rol hakkında daha fazla bilgi için, bkz. [Azure Active Directory yönetici rolü izinleri](../roles/permissions-reference.md#insights-business-leader)
- 
----
-
-### <a name="insights-administrator-built-in-role-now-available"></a>Öngörüler Yöneticisi yerleşik rolü artık kullanılabilir
-
-**Şunu yazın:** Yeni Özellik  
-**Hizmet kategorisi:** Azure AD rolleri  
-**Ürün yeteneği:** Access Control
- 
-Öngörüler yönetici rolündeki kullanıcılar, [M365 Insights uygulamasındaki](https://www.microsoft.com/microsoft-365/partners/workplaceanalytics)tüm yönetim özelliklerine erişebilir. Bu roldeki bir Kullanıcı dizin bilgilerini okuyabilir, hizmet durumunu izleyebilir, dosya destek biletlerini izleyebilir ve Öngörüler yönetici ayarları yönlerini erişebilir. Bu rol hakkında daha fazla bilgi için, bkz. [Azure Active Directory yönetici rolü izinleri](../roles/permissions-reference.md#insights-administrator)
- 
---- 
-
-### <a name="application-admin-and-cloud-application-admin-can-manage-extension-properties-of-applications"></a>Uygulama Yöneticisi ve bulut uygulaması Yöneticisi, uygulamaların uzantı özelliklerini yönetebilir
-
-**Şunu yazın:** Değiştirilen özellik  
-**Hizmet kategorisi:** Azure AD rolleri  
-**Ürün yeteneği:** Access Control
- 
-Daha önce, [uzantı özelliğini](/graph/api/application-post-extensionproperty?view=graph-rest-beta&tabs=http)yalnızca genel yönetici yönetebilir. Artık uygulama Yöneticisi ve bulut uygulaması Yöneticisi için de bu özelliği etkinleştiriyoruz.
- 
----
-
-### <a name="mim-2016-sp2-hotfix-462630-and-connectors-1113010"></a>MıM 2016 SP2 düzeltme 4.6.263.0 ve bağlayıcılar 1.1.1301.0
-
-**Şunu yazın:** Değiştirilen özellik  
-**Hizmet kategorisi:** Microsoft Identity Manager  
-**Ürün yeteneği:** Kimlik yaşam döngüsü yönetimi
-
-Microsoft Identity Manager (MıM) 2016 Service Pack 2 (SP2) için bir [düzeltme paketi paketi (Build 4.6.263.0)](https://support.microsoft.com/help/4576473/hotfix-rollup-package-build-4-6-263-0-is-available-for-microsoft-ident) kullanılabilir. Bu toplu paket MIM CM, MıM Eşitleme Yöneticisi ve PAM bileşenleri için güncelleştirmeleri içerir. Ayrıca, MıM genel bağlayıcıları derleme 1.1.1301.0, Graph Bağlayıcısı için güncelleştirmeleri içerir.
-
 ---

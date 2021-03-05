@@ -8,12 +8,12 @@ ms.service: synapse-analytics
 ms.topic: tutorial
 ms.subservice: spark
 ms.date: 10/16/2020
-ms.openlocfilehash: 3f1e3fd360197310a89a67d43053649d904aeb18
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: d125bca5ed67476897eec7cd32a586776d8b1ea8
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101677624"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102176629"
 ---
 # <a name="tutorial-create-apache-spark-job-definition-in-synapse-studio"></a>Öğretici: SYNAPSE Studio 'da Apache Spark iş tanımı oluşturma
 
@@ -34,7 +34,7 @@ Bu öğreticiye başlamadan önce aşağıdaki gereksinimlerin karşılandığı
 
 * Azure SYNAPSE Analytics çalışma alanı. Yönergeler için bkz. [Azure SYNAPSE Analytics çalışma alanı oluşturma](../../machine-learning/how-to-manage-workspace.md).
 * Sunucusuz Apache Spark Havuzu.
-* ADLS 2. depolama hesabı. Birlikte çalışmak istediğiniz ADLS 2. FileSystem 'ın **Depolama Blobu veri sahibi** olmanız gerekir. Aksi takdirde, izni el ile eklemeniz gerekir.
+* ADLS 2. depolama hesabı. Birlikte çalışmak istediğiniz ADLS 2. FileSystem 'ın **Depolama Blobu veri katılımcısı** olması gerekir. Aksi takdirde, izni el ile eklemeniz gerekir.
 * Çalışma alanı varsayılan depolama alanını kullanmak istemiyorsanız, SYNAPSE Studio 'daki gerekli ADLS 2. Depolama hesabını bağlayın. 
 
 ## <a name="create-an-apache-spark-job-definition-for-pyspark-python"></a>PySpark (Python) için Apache Spark iş tanımı oluşturma
@@ -162,7 +162,7 @@ Bu bölümde, .NET Spark (C#/F #) için Apache Spark iş tanımı oluşturursunu
 
 ## <a name="submit-an-apache-spark-job-definition-as-a-batch-job"></a>Apache Spark iş tanımını toplu iş olarak gönderme
 
-Apache Spark iş tanımı oluşturduktan sonra, bir Apache Spark havuzuna gönderebilirsiniz. Birlikte çalışmak istediğiniz ADLS 2. FileSystem 'ın **Depolama Blobu veri sahibi** olduğunuzdan emin olun. Aksi takdirde, izni el ile eklemeniz gerekir.
+Apache Spark iş tanımı oluşturduktan sonra, bir Apache Spark havuzuna gönderebilirsiniz. Birlikte çalışmak istediğiniz ADLS 2. FileSystem 'ın **Depolama Blobu veri katılımcısı** olduğunuzdan emin olun. Aksi takdirde, izni el ile eklemeniz gerekir.
 
 ### <a name="scenario-1-submit-apache-spark-job-definition"></a>Senaryo 1: Apache Spark iş tanımı gönder
  1. Bir Apache Spark iş tanımı penceresini seçerek açın.

@@ -11,17 +11,16 @@ author: peterclu
 ms.date: 10/06/2020
 ms.topic: conceptual
 ms.custom: how-to, contperf-fy20q4, tracking-python, contperf-fy21q1
-ms.openlocfilehash: 07b8c130a2a22554e4cd5b33996d5a5ee967d47f
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 083d750db0db050265c93cc658d4f3b6556b850d
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97029541"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102176221"
 ---
 # <a name="secure-an-azure-machine-learning-workspace-with-virtual-networks"></a>Sanal ağlarla Azure Machine Learning çalışma alanının güvenliğini sağlama
 
 Bu makalede, bir sanal ağda Azure Machine Learning çalışma alanının ve ilişkili kaynakların güvenliğini nasıl sağlayacağınızı öğreneceksiniz.
-
 
 Bu makale, bir Azure Machine Learning iş akışını güvenli hale getirmek için size kılavuzluk eden beş bölümlü bir serinin ikinci bölümüdür. İlk olarak birinci mimariyi anlamak için [tek bir bölüm (VNet genel bakış](how-to-network-security-overview.md) ) okumanız önemle tavsiye ederiz. 
 
@@ -202,7 +201,7 @@ Bu gereksinimler karşılandıktan sonra, Azure Container Registry etkinleştirm
 
 1. Aşağıdaki yöntemlerden birini kullanarak, çalışma alanınızın Azure Container Registry adını bulun:
 
-    __Azure Portal__
+    __Azure portalı__
 
     Çalışma alanınızın genel bakış bölümünden __kayıt defteri__ değeri Azure Container Registry bağlanır.
 
@@ -296,7 +295,7 @@ Bu gereksinimler karşılandıktan sonra, Azure Container Registry etkinleştirm
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu makale, dört bölümlü bir sanal ağ serisinin bir parçasıdır. Bir sanal ağın güvenliğini nasıl sağlayacağınızı öğrenmek için makalelerin geri kalanına bakın:
+Bu makale, beş bölümlü bir sanal ağ serisinin ikinci bölümüdür. Bir sanal ağın güvenliğini nasıl sağlayacağınızı öğrenmek için makalelerin geri kalanına bakın:
 
 * [1. kısım: sanal ağa genel bakış](how-to-network-security-overview.md)
 * [3. kısım: eğitim ortamının güvenliğini sağlama](how-to-secure-training-vnet.md)

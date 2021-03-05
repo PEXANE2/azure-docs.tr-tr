@@ -7,12 +7,12 @@ ms.reviewer: susabat
 ms.service: data-factory
 ms.topic: troubleshooting
 ms.date: 12/03/2020
-ms.openlocfilehash: 5c33ef9559d9ce67eea62ee7f78425d18010c1cb
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: d96c467807af868c07be12f52d913f881b82f732
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101727966"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102175881"
 ---
 # <a name="troubleshoot-ci-cd-azure-devops-and-github-issues-in-adf"></a>ADF 'de CI-CD, Azure DevOps ve GitHub sorunlarını giderme 
 
@@ -168,7 +168,7 @@ CI/CD işlemi geliştirilmiştir. **Otomatik yayımlama** ÖZELLIĞI, ADF UX 'de
 
 #### <a name="issue"></a>Sorun
 
-4 MB 'lık toplam şablon boyutu sınırına Azure Resource Manager ulaşırsanız, dağıtım yapabilirsiniz. Sınırı geçtikten sonra dağıtım için bir çözüme ihtiyacınız vardır. 
+4mb toplam şablon boyutu Azure Resource Manager sınırına ulaşırsanız dağıtamazsınız. Sınırı geçtikten sonra dağıtım için bir çözüme ihtiyacınız vardır. 
 
 #### <a name="cause"></a>Nedeni
 
@@ -190,7 +190,7 @@ ADF için OAuth yapılandırmadı. URL 'niz yanlış yapılandırılmış.
 
 ##### <a name="resolution"></a>Çözüm
 
-İlk olarak ADF 'ye OAuth erişimi verirsiniz. Ardından, GIT Enterprise 'a bağlanmak için doğru URL 'yi kullanmanız gerekir. ADF hizmeti ilk olarak yeniden deneyeceğinden, yapılandırma müşteri kuruluşuna ayarlanmalıdır... https://hostname/api/v3/search/repositories?q=user%3 <customer credential> ve başarısız olur. Ardından, çalışır https://hostname/api/v3/orgs/ <vaorg> / <repo> ve başarılı olur. 
+İlk olarak ADF 'ye OAuth erişimi verirsiniz. Ardından, GIT Enterprise 'a bağlanmak için doğru URL 'yi kullanmanız gerekir. Yapılandırma, müşteri organizasyonları olarak ayarlanmalıdır. Örneğin, ADF önce *https://hostname/api/v3/search/repositories?q=user%3 <customer credential> ..* .. ve başarısız olur. Sonra, *https://hostname/api/v3/orgs/ <org> / <repo> ...* ve başarılı olur. 
  
 ### <a name="recover-from-a-deleted-data-factory"></a>Silinen bir veri fabrikasından kurtar
 
@@ -203,7 +203,8 @@ Data Factory yalnızca müşterinin yapılandırılmış kaynak denetimi varsa (
 
 Kaynak denetimi yoksa, hizmet silinen komutu aldığından, örnek silindiğinden ve hiçbir yedekleme depolanmadığı için arka uçta silinen Data Factory kurtarma mümkün değildir.
 
-#### <a name="resoloution"></a>Resoloution
+#### <a name="resolution"></a>Çözüm
+
 Kaynak denetimine sahip Silinen Data Factory kurtarmak için aşağıdaki adımları izleyin:
 
  * Yeni bir Azure Data Factory oluşturun.

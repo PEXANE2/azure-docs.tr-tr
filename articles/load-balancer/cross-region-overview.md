@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 09/22/2020
 ms.author: allensu
 ms.custom: references_regions
-ms.openlocfilehash: 272fb0a27cf57483af6c07373e35a30f7f6e1c4b
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.openlocfilehash: b0e51d11797bc5767f19b25a92a2d29a66ea1bb2
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102101384"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102176731"
 ---
 # <a name="cross-region-load-balancer-preview"></a>Bölgeler arası yük dengeleyici (Önizleme)
 
@@ -28,7 +28,7 @@ Azure Standart Load Balancer, coğrafi olarak yedekli HA senaryolarına olanak s
 
 * Birden çok bölgeden kaynaklanan gelen trafik.
 * Bir sonraki en iyi bölgesel dağıtıma [hızlı genel yük devretme](#regional-redundancy) .
-* Son [derece gecikme süresi](#ultra-low-latency)ile bölgeler arasında dağıtımı en yakın Azure bölgesine yükleyin.
+* Son [derece düşük gecikme süresine](#ultra-low-latency)sahip bölgeler arasında dağıtımı en yakın Azure bölgesine yükleyin.
 * Tek bir uç noktanın arkasında [ölçeği artırma/azaltma](#ability-to-scale-updown-behind-a-single-endpoint) yeteneği.
 * [Statik IP](#static-ip)
 * [İstemci IP koruması](#client-ip-preservation)

@@ -3,7 +3,7 @@ title: Artık kaynak erişimi olmayan dış kullanıcıları gözden geçirmek v
 description: İş ortağı kuruluşların üyelerinden erişimi kaldır erişimini genişletmek için erişim Incelemelerini kullanın
 services: active-directory
 documentationcenter: ''
-author: barclayn
+author: ajburnle
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
 ms.date: 09/06/2020
-ms.author: barclayn
-ms.openlocfilehash: 19f88da6a678221cde66bf61668d16ba9ab998a4
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.author: ajburnle
+ms.openlocfilehash: fe68ec498d17ec20778c8f34fc6ffa1f0964c44e
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92677322"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102176969"
 ---
 # <a name="use-azure-active-directory-azure-ad-identity-governance-to-review-and-remove-external-users-who-no-longer-have-resource-access"></a>Artık kaynak erişimi olmayan dış kullanıcıları gözden geçirmek ve kaldırmak için Azure Active Directory (Azure AD) Identity Idare kullanın
 
@@ -65,14 +65,15 @@ Kiracınızdaki herhangi bir kaynağa erişimi olmayan kullanıcılar artık kur
 
 Gözden geçirme tamamlandığında, **sonuçlar** sayfası her dış kimlik tarafından verilen yanıta genel bir bakış gösterir. Sonuçları otomatik olarak uygulamayı ve erişim Incelemelerinin devre dışı bırakıp silmesine izin vermek için bu seçeneği belirleyebilirsiniz. Alternatif olarak, verilen yanıtlara bakabilir ve bir kullanıcının erişimini kaldırmak ya da bir kararı vermeden önce daha fazla bilgi almak isteyip istemediğinize karar verebilirsiniz. Henüz gözden geçirmemiş olduğunuz kaynaklara hala bazı kullanıcılar erişebilseniz, bulma işlemini bulmanın bir parçası olarak kullanabilir ve bir sonraki İnceleme ve kanıtlama döngünüzü zenginleştirebilirsiniz.
 
-## <a name="disable-and-delete-external-identities-with-azure-ad-access-reviews-preview"></a>Azure AD erişim gözden geçirmeleri ile dış kimlikleri devre dışı bırakma ve silme (Önizleme)
+## <a name="disable-and-delete-external-identities-with-azure-ad-access-reviews"></a>Azure AD erişim gözden geçirmeleri ile dış kimlikleri devre dışı bırakma ve silme
 
 Azure AD erişim gözden geçirmeleri, gruplar veya uygulamalar gibi kaynaklardan gelen istenmeyen dış kimlikleri kaldırma seçeneğine ek olarak, dış kimliklerin kiracınızda oturum açmasını engelleyebilir ve 30 gün sonra kiracınızdaki dış kimlikleri silebilir. **30 gün boyunca Kullanıcı oturumu açmayı engelle seçeneğini belirledikten sonra kullanıcıyı kiracının içinden kaldırmanız** durumunda, gözden geçirme 30 gün boyunca "uygulanıyor" durumunda kalır. Bu süre boyunca, geçerli gözden geçirme altındaki ayarlar, sonuçlar, gözden geçirenler veya denetim günlükleri görüntülenebilir veya yapılandırılabilir olmayacaktır. 
 
 ![tamamlama ayarlarından sonra](media/access-reviews-external-users/upon-completion-settings.png)
 
-Yeni erişim gözden geçirmesi oluştururken, "Tamamlama Ayarları" bölümünde, **Reddedilen kullanıcılara uygulanacak eylem** için, **Kullanıcıların 30 gün boyunca oturum açmasını tanımlayabilir ve ardından kullanıcıyı kiracıya çıkarabilirsiniz** .
-Şu anda önizleme aşamasında olan bu ayar, Azure AD kiracınızdan dış kimlikleri tanımlamanızı, engellemeyi ve silmenizi sağlar. Gözden geçiren tarafından devam eden ve reddedilen dış kimlikler, sahip oldukları kaynak erişimi veya grup üyeliğinden bağımsız olarak engellenir ve silinir. Bu ayar en iyi şekilde, gözden geçirme içindeki dış kullanıcıların artık kaynak erişimi taşımadığını ve kiracınızdan güvenli bir şekilde kaldırılaabileceğini doğruladıktan sonra ya da bulundukları erişimleri ne olursa olsun, kaldırıldıklarından emin olmak istiyorsanız son bir adım olarak kullanılır. "Devre dışı bırak ve Sil" özelliği, ilk olarak dış kullanıcıyı engeller, kiracınızda oturum açma ve kaynaklara erişme imkanlarını ele alırlar. Bu aşamada kaynak erişimi iptal edilmez ve dış Kullanıcı örneğini yeniden başlatmak istediğinizde, oturum açma özelliği yeniden yapılandırılabilir. Başka bir işlem yapmadan, engellenen bir dış kimlik 30 gün sonra dizinden silinir, ayrıca hesap kaldırılır ve erişimleri kaldırılır.
+Yeni erişim gözden geçirmesi oluştururken, "Tamamlama Ayarları" bölümünde, **Reddedilen kullanıcılara uygulanacak eylem** için, **Kullanıcıların 30 gün boyunca oturum açmasını tanımlayabilir ve ardından kullanıcıyı kiracıya çıkarabilirsiniz**.
+
+Bu ayar, Azure AD kiracınızdan dış kimlikleri tanımlamanızı, engellemeyi ve silmenizi sağlar. Gözden geçiren tarafından devam eden ve reddedilen dış kimlikler, sahip oldukları kaynak erişimi veya grup üyeliğinden bağımsız olarak engellenir ve silinir. Bu ayar en iyi şekilde, gözden geçirme içindeki dış kullanıcıların artık kaynak erişimi taşımadığını ve kiracınızdan güvenli bir şekilde kaldırılaabileceğini doğruladıktan sonra ya da bulundukları erişimleri ne olursa olsun, kaldırıldıklarından emin olmak istiyorsanız son bir adım olarak kullanılır. "Devre dışı bırak ve Sil" özelliği, ilk olarak dış kullanıcıyı engeller, kiracınızda oturum açma ve kaynaklara erişme imkanlarını ele alırlar. Bu aşamada kaynak erişimi iptal edilmez ve dış Kullanıcı örneğini yeniden başlatmak istediğinizde, oturum açma özelliği yeniden yapılandırılabilir. Başka bir işlem yapmadan, engellenen bir dış kimlik 30 gün sonra dizinden silinir, ayrıca hesap kaldırılır ve erişimleri kaldırılır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

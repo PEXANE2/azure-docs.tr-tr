@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: estfan, logicappspm, azla, rarayudu
 ms.topic: conceptual
-ms.date: 02/18/2021
-ms.openlocfilehash: 642fa044b3272e311769ddbcc5462cb396563652
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.date: 02/22/2021
+ms.openlocfilehash: 21edde3eba76b565332acb9c67225f3bbb0fe803
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101702564"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102177292"
 ---
 # <a name="secure-access-and-data-in-azure-logic-apps"></a>Azure Logic Apps 'da güvenli erişim ve veriler
 
@@ -203,20 +203,24 @@ Azure portal veya Azure Resource Manager şablonunuz için şu adımları izleyi
    | Özellik | Gerekli | Açıklama |
    |----------|----------|-------------|
    | **İlke adı** | Yes | Yetkilendirme ilkesi için kullanmak istediğiniz ad |
-   | **Talepler** | Yes | Mantıksal uygulamanızın gelen çağrılardan kabul ettiği talep türleri ve değerleri. Talep değeri, [en fazla karakter sayısıyla](logic-apps-limits-and-config.md#authentication-limits)sınırlıdır. Kullanılabilir talep türleri şunlardır: <p><p>- **Enden** <br>- **Grubu** <br>- **Konu** <br>- **JWT kimliği** (JSON Web Token kimliği) <p><p>**Talep** listesi, en azından,  `https://sts.windows.net/` `https://login.microsoftonline.com/` Azure AD veren kimliği ile başlayan bir değere sahip veren talebini içermelidir. Bu talep türleri hakkında daha fazla bilgi için bkz. [Azure AD güvenlik belirteçlerinde talepler](../active-directory/azuread-dev/v1-authentication-scenarios.md#claims-in-azure-ad-security-tokens). Kendi talep türünü ve değerini de belirtebilirsiniz. |
+   | **Talepler** | Yes | Mantıksal uygulamanızın gelen çağrılardan kabul ettiği talep türleri ve değerleri. Talep değeri, [en fazla karakter sayısıyla](logic-apps-limits-and-config.md#authentication-limits)sınırlıdır. Kullanılabilir talep türleri şunlardır: <p><p>- **Enden** <br>- **Grubu** <br>- **Konu** <br>- **JWT kimliği** (JSON Web Token tanımlayıcı) <p><p>**Talep** listesi, en azından,  `https://sts.windows.net/` `https://login.microsoftonline.com/` Azure AD veren kimliği ile başlayan bir değere sahip veren talebini içermelidir. Bu talep türleri hakkında daha fazla bilgi için bkz. [Azure AD güvenlik belirteçlerinde talepler](../active-directory/azuread-dev/v1-authentication-scenarios.md#claims-in-azure-ad-security-tokens). Kendi talep türünü ve değerini de belirtebilirsiniz. |
    |||
 
 1. Başka bir talep eklemek için şu seçeneklerden birini seçin:
 
    * Başka bir talep türü eklemek için **Standart talep Ekle**' yi seçin, talep türünü seçin ve talep değerini belirtin.
 
-   * Kendi taleplerinizi eklemek için **özel talep Ekle**' yi seçin ve özel talep değerini belirtin.
+   * Kendi taleplerinizi eklemek için **özel talep Ekle**' yi seçin. Daha fazla bilgi için bkz. [uygulamanıza isteğe bağlı talepler sağlama](../active-directory/develop/active-directory-optional-claims.md). Özel talep daha sonra JWT KIMLIĞINIZIN bir parçası olarak depolanır; Örneğin, `"tid": "72f988bf-86f1-41af-91ab-2d7cd011db47"` . 
 
 1. Başka bir yetkilendirme ilkesi eklemek için **Ilke Ekle**' yi seçin. İlkeyi ayarlamak için önceki adımları tekrarlayın.
 
 1. İşiniz bittiğinde **Kaydet**'i seçin.
 
 1. `Authorization`İstek tabanlı tetikleyici çıktılarında erişim belirtecinden üstbilgiyi eklemek için, bkz. [istek tetikleme çıktılarına ' Authorization ' üst bilgisini ekleme](#include-auth-header).
+
+
+İlkeler gibi iş akışı özellikleri, Azure portal mantıksal uygulamanızın kod görünümünde görünmez. İlkelerinize programlı bir şekilde erişmek için Azure Resource Manager (ARM) aracılığıyla aşağıdaki API 'yi çağırın: `https://management.azure.com/subscriptions/{Azure-subscription-ID}/resourceGroups/{Azure-resource-group-name}/providers/Microsoft.Logic/workflows/{your-workflow-name}?api-version=2016-10-01&_=1612212851820` . Azure abonelik KIMLIĞINIZ, kaynak grubu adı ve iş akışı adı için yer tutucu değerlerini değiştirdiğinizden emin olun.
+
 
 <a name="define-authorization-policy-template"></a>
 

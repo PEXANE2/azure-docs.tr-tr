@@ -10,12 +10,12 @@ ms.date: 06/03/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c9e0a645bc580ab3a0794ca6ded1e60159df7d92
-ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
+ms.openlocfilehash: 2038587aebe8fe98bd1adcccef6b895ec7370656
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100090607"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102176867"
 ---
 # <a name="migrate-to-cloud-authentication-using-staged-rollout-preview"></a>Hazırlanan piyasaya çıkma kullanarak bulut kimlik doğrulamasına geçiş (Önizleme)
 
@@ -184,7 +184,7 @@ Aşağıdaki seçeneklerden birini kullanabilirsiniz:
 
    >[!NOTE]
    >Bir gruptaki üyeler, hazırlanan dağıtım için otomatik olarak etkinleştirilir. İç içe ve dinamik gruplar, hazırlanan dağıtım için desteklenmez.
-   >Yeni bir grup eklenirken, gruptaki kullanıcılar (yeni bir grup için en çok 200 kullanıcıya kadar) yönetilen kimlik doğrulama imsedily kullanacak şekilde güncelleştirilir. Bir grubu (Kullanıcı ekleme veya kaldırma) düzenlemeyle, değişikliklerin etkili olması 24 saate kadar sürebilir.
+   >Yeni bir grup eklenirken, gruptaki kullanıcılar (yeni bir grup için 200 kullanıcıya kadar), hemen yönetilen kimlik doğrulaması kullanacak şekilde güncelleştirilir. Bir grubu (Kullanıcı ekleme veya kaldırma) düzenlemeyle, değişikliklerin etkili olması 24 saate kadar sürebilir.
    >Sorunsuz SSO yalnızca, kullanıcılar sorunsuz SSO grubsunlar ve ayrıca bir PTA veya PHS grubunda ise geçerlidir.
 
 ## <a name="auditing"></a>Denetim

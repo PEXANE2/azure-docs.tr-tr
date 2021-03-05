@@ -1,5 +1,5 @@
 ---
-title: Az Search Module kullanan Azure CLı betikleri
+title: Az Search modülünü kullanarak Azure CLı betikleri
 titleSuffix: Azure Cognitive Search
 description: Azure CLı ile bir Azure Bilişsel Arama hizmeti oluşturun ve yapılandırın. Bir hizmeti yukarı veya aşağı ölçeklendirebilir, yönetici ve sorgu api anahtarlarını yönetebilir ve sistem bilgileri için sorgu yapabilirsiniz.
 manager: luisca
@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.devlang: azurecli
 ms.topic: conceptual
 ms.date: 02/17/2021
-ms.openlocfilehash: 6287215233ae9baa220df37c6b820c1d1bec7720
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: ee6b0e1b745e86c72843af88c0f6d17f91512e15
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102032526"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102176765"
 ---
 # <a name="manage-your-azure-cognitive-search-service-with-the-azure-cli"></a>Azure CLı ile Azure Bilişsel Arama hizmetinizi yönetme
 > [!div class="op_single_selector"]
@@ -41,48 +41,7 @@ Bazen, yukarıdaki listede *olmayan* görevlerle ilgili soruların sorulması is
 
 Bir hizmette, içerik oluşturma ve Yönetim [Arama Hizmeti REST API](/rest/api/searchservice/) veya [.NET SDK](/dotnet/api/overview/azure/search.documents-readme)'lardır. İçerik için adanmış bir PowerShell komutu bulunmadığından, dizin oluşturmak ve yüklemek için REST veya .NET API 'Leri çağıran betikler yazabilirsiniz.
 
-<a name="check-versions-and-load"></a>
-
-## <a name="check-versions-and-upgrade"></a>Sürümleri denetle ve Yükselt
-
-Bu makaledeki örnekler etkileşimlidir ve yükseltilmiş izinler gerektirir. Azure CLı 'nın yüklü olması gerekir. Daha fazla bilgi için bkz. [Azure CLI 'Yı yüklerken](/cli/azure/install-azure-cli).
-
-Artık Azure CLı 'yı `az` Windows komut istemi, PowerShell veya [Azure Cloud Shell](../cloud-shell/overview.md)komutuyla çalıştırabilirsiniz. PowerShell, Windows Komut İstemi’nde kullanılamayan bazı sekme tamamlama özellikleri sunar. 
-
-### <a name="check-the-azure-cli-version"></a>Azure CLı sürümünü denetleyin
-
-Azure CLı 'nın yüklü olup olmadığından emin değilseniz, doğrulama adımı olarak aşağıdaki komutu çalıştırın. 
-
-```azurecli-interactive
-az --version
-```
-Bu komut çalışmazsa Azure CLı 'yı yüklemek için bkz. [Azure CLI 'Yi yükleme](/cli/azure/install-azure-cli) .
-
-Sürüm 2.11.0 veya daha yeni bir sürüme sahipseniz, `az upgrade` CLI 'yı en son sürüme güncelleştirmek için komutunu çalıştırabilirsiniz.
-
-```azurecli-interactive
-az upgrade
-```
-
-### <a name="connect-to-azure-with-a-browser-sign-in-token"></a>Tarayıcı oturum açma belirteciyle Azure 'a bağlanma
-
-Azure CLı 'deki bir aboneliğe bağlanmak için Portal oturum açma kimlik bilgilerinizi kullanabilirsiniz. Alternatif olarak, [hizmet sorumlusu ile etkileşimli olmayan kimlik doğrulaması](/cli/azure/authenticate-azure-cli#sign-in-with-a-service-principal)yapabilirsiniz.
-
-```azurecli-interactive
-az login
-```
-
-Birden çok Azure aboneliği tutarsanız, Azure aboneliğinizi ayarlayın. Geçerli aboneliklerinizin listesini görmek için bu komutu çalıştırın.
-
-```azurecli-interactive
-az account list --output table
-```
-
-Aboneliği belirtmek için aşağıdaki komutu çalıştırın. Aşağıdaki örnekte, abonelik adı `ContosoSubscription` .
-
-```azurecli-interactive
-az account set --subscription "ContosoSubscription"
-```
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
 <a name="list-search-services"></a>
 
@@ -262,7 +221,7 @@ az network vnet subnet update \
 id=$(az search service show \
     --resource-group <resource-group-name> \
     --name <service-name> \
-    --query [id]' \
+    --query [id] \
     --output tsv)
 
 # Create the private endpoint

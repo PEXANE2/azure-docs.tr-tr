@@ -5,16 +5,16 @@ author: alkohli
 services: storage
 ms.service: storage
 ms.topic: how-to
-ms.date: 02/16/2021
+ms.date: 03/03/2021
 ms.author: alkohli
 ms.subservice: common
-ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: 8ccc7b641e2bfcb4ea8733b9d4f793229c430bc0
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.custom: devx-track-azurepowershell, devx-track-azurecli, contperf-fy21q3
+ms.openlocfilehash: e878be5351362923e163c0a6f617b96ab72a36d8
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "100652922"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102177587"
 ---
 # <a name="use-the-azure-importexport-service-to-export-data-from-azure-blob-storage"></a>Azure Blob depolamadan verileri dışarı aktarmak için Azure İçeri/Dışarı Aktarma hizmetini kullanma
 
@@ -53,38 +53,56 @@ Azure portal bir dışarı aktarma işi oluşturmak için aşağıdaki adımlar�
 
 4. **Temel bilgiler**:
 
-    - **Azure 'Dan dışarı aktar**' ı seçin.
-    - Dışarı aktarma işi için açıklayıcı bir ad girin. İşlerinizin ilerlemesini izlemek için seçtiğiniz adı kullanın.
-        - Ad yalnızca küçük harf, sayı, kısa çizgi ve alt çizgi içerebilir.
-        - Ad bir harfle başlamalı ve boşluk içermemelidir.
-    - Bir abonelik seçin.
-    - Bir kaynak grubu girin veya seçin.
+   1. Bir abonelik seçin.
+   1. Bir kaynak grubu seçin veya **Yeni oluştur** ' u seçip yeni bir tane oluşturun.
+   1. İçeri aktarma işi için açıklayıcı bir ad girin. İşlerinizin ilerlemesini izlemek için adı kullanın.
+       * Ad yalnızca küçük harf, sayı ve kısa çizgi içerebilir.
+       * Ad bir harfle başlamalı ve boşluk içermemelidir.
 
-        ![Temel bilgiler](./media/storage-import-export-data-from-blobs/export-from-blob-3.png)
+   1. **Azure 'Dan dışarı aktar**' ı seçin.
+
+    ![Dışarı aktarma siparişi için temel bilgiler seçenekleri](./media/storage-import-export-data-from-blobs/export-from-blob-3.png)
+
+    Ileri ' yi seçin: devam etmek için **iş ayrıntıları >** .
 
 5. **İş için Ayrıntılar**:
 
-    - Aktarılacağı verilerin bulunduğu depolama hesabını seçin. Bir depolama hesabını, bulunduğu yere yakın bir şekilde kullanın.
-    - Açılan konum, seçilen depolama hesabı bölgesine göre otomatik olarak doldurulur.
-    - Depolama hesabınızdan, boş sürücünüze veya sürücülere dışarı aktarmak istediğiniz blob verilerini belirtin.
-    - Depolama hesabındaki **tüm blob verilerini dışa aktarmayı** seçin.
+   1. Verilerinizin Şu anda bulunduğu Azure bölgesini seçin.
+   1. Verileri dışarı aktarmak istediğiniz depolama hesabını seçin. Konumunuza yakın bir depolama hesabı kullanın.
 
-         ![Tümünü dışarı aktar](./media/storage-import-export-data-from-blobs/export-from-blob-4.png)
+      Bırakma konumu, seçilen depolama hesabı bölgesine göre otomatik olarak doldurulur.
 
-    - Hangi kapsayıcıları ve Blobların dışarı aktarılacağını belirtebilirsiniz.
-        - **Dışarı aktarılacak bir blob belirtmek için**: **eşittir** seçiciyi kullanın. Kapsayıcının adından başlayarak, Blobun göreli yolunu belirtin. Kök kapsayıcıyı belirtmek için *$root* kullanın.
-        - **Önekle başlayan tüm Blobları belirtmek için**: **ile başlar** seçiciyi kullanın. '/' Eğik çizgiyle başlayan öneki belirtin. Ön ek, kapsayıcı adının ön eki, tüm kapsayıcı adı ya da tüm kapsayıcı adı ve ardından blob adının öneki olabilir. İşlem sırasında hataları önlemek için, bu ekran görüntüsünde gösterildiği gibi BLOB yollarını geçerli biçimde sağlamanız gerekir. Daha fazla bilgi için bkz. [geçerli blob yolları örnekleri](#examples-of-valid-blob-paths).
+   1. Depolama hesabınızdan boş sürücünüze veya sürücülere aktarılacak blob verilerini belirtin. Aşağıdaki üç yöntemden birini seçin.
 
-           ![Seçili kapsayıcıları ve Blobları dışarı aktar](./media/storage-import-export-data-from-blobs/export-from-blob-5.png)
+      - Depolama hesabındaki **tüm blob verilerini dışa aktarmayı** seçin.
 
-    - Blob listesi dosyasından dışa aktarabilirsiniz.
+        ![Tümünü dışarı aktar](./media/storage-import-export-data-from-blobs/export-from-blob-4.png)
 
-        ![Blob listesi dosyasından dışarı aktar](./media/storage-import-export-data-from-blobs/export-from-blob-6.png)
+      - **Seçili kapsayıcılar ve Bloblar**' ı seçin ve dışarı aktarılacak kapsayıcıları ve Blobları belirtin. Seçim yöntemlerinden birden fazlasını kullanabilirsiniz. Bir **Ekle** seçeneği belirlendiğinde sağ tarafta seçim dizelerinizi ekleyebileceğiniz bir panel açılır.
+
+        |Seçenek|Açıklama|
+        |------|-----------|      
+        |**Kapsayıcı Ekle**|Bir kapsayıcıdaki tüm Blobları dışarı aktarın.<br>Kapsayıcı **Ekle**' yi seçin ve her kapsayıcı adını girin.|
+        |**Blob ekleme**|Dışarı aktarılacak tek blob 'ları belirtin.<br>**BLOB Ekle**' yi seçin. Ardından, kapsayıcının adından başlayarak, Blobun göreli yolunu belirtin. Kök kapsayıcıyı belirtmek için *$root* kullanın.<br>İşlem sırasında hataları önlemek için, bu ekran görüntüsünde gösterildiği gibi BLOB yollarını geçerli biçimde sağlamanız gerekir. Daha fazla bilgi için bkz. [geçerli blob yolları örnekleri](#examples-of-valid-blob-paths).|
+        |**Ön ekler Ekle**|Bir kapsayıcıda benzer adlı kapsayıcı veya benzer şekilde adlandırılmış Bloblar kümesi seçmek için bir ön ek kullanın. Ön ek, kapsayıcı adının ön eki, tüm kapsayıcı adı ya da bir bütün kapsayıcı adı ve ardından blob adının öneki olabilir. |
+
+        ![Seçili kapsayıcıları ve Blobları dışarı aktar](./media/storage-import-export-data-from-blobs/export-from-blob-5.png)
+
+    - **BLOB listesi dosyasından dışarı aktar ' ı (XML biçimi)** seçin ve depolama hesabından dışarı aktarılacak Blobların bir yol ve önek listesini IÇEREN bir XML dosyası seçin. XML dosyasını oluşturmanız ve depolama hesabı için bir kapsayıcıda depolamanız gerekir. Dosya boş olamaz.
+
+      > [!IMPORTANT]
+      > Dışarı aktarılacak Blobları seçmek için bir XML dosyası kullanırsanız, XML 'nin geçerli yollar ve/veya ön ekler içerdiğinden emin olun. Dosya geçersizse veya belirtilen yollarla eşleşen hiçbir veri yoksa, sıra kısmi verilerle sonlanır veya hiçbir veri dışarı aktarılmaz.
+
+       Bir kapsayıcıya XML dosyası ekleme hakkında bilgi için bkz. [XML dosyası kullanarak sırayı dışarı aktarma](../databox/data-box-deploy-export-ordered.md#export-order-using-xml-file).
+
+      ![Blob listesi dosyasından dışarı aktar](./media/storage-import-export-data-from-blobs/export-from-blob-6.png)
 
    > [!NOTE]
-   > Dışarı aktarılacak blob veri kopyalama sırasında kullanılıyorsa, Azure Içeri/dışarı aktarma hizmeti Blobun anlık görüntüsünü alır ve anlık görüntüyü kopyalar.
+   > Dışarı aktarılacak bir blob veri kopyalama sırasında kullanılıyorsa, Azure Içeri/dışarı aktarma hizmeti Blobun anlık görüntüsünü alır ve anlık görüntüyü kopyalar.
 
-6. **İade gönderimi bilgileri**:
+   Ileri ' yi seçin: devam etmek için **sevkıyat >** .
+
+6. **Gönderim** aşamasında:
 
     - Açılan listeden taşıyıcısı seçin. FedEx/DHL dışında bir taşıyıcı kullanmak istiyorsanız, açılan listeden varolan bir seçeneği belirleyin. `adbops@microsoft.com`Kullanmayı planladığınız taşıyıcı ile ilgili bilgilerle birlikte Azure Data Box işlemler ekibine başvurun.
     - Bu taşıyıcı ile oluşturduğunuz geçerli bir taşıyıcı hesap numarası girin. Microsoft bu hesabı, dışa aktarma işiniz tamamlandıktan sonra sürücüleri size geri göndermek için kullanır.
@@ -93,15 +111,76 @@ Azure portal bir dışarı aktarma işi oluşturmak için aşağıdaki adımlar�
         > [!TIP]
         > Tek bir kullanıcı için bir e-posta adresi belirtmek yerine, bir grup e-postası sağlayın. Bu, bir yönetici ayrılsa bile bildirimleri almanızı sağlar.
 
-7. **Özet**:
+    Devam etmek için **gözden geçir + oluştur** ' u seçin.
 
-    - İşin ayrıntılarını gözden geçirin.
-    - Azure 'a disklerin gönderimi için iş adını ve Azure veri merkezi teslimat adresini bir yere göz önünde yapın.
+7. **İnceleme ve oluşturma** bölümünde:
+
+   1. İşin ayrıntılarını gözden geçirin.
+   1. Azure 'a disklerin gönderimi için iş adını ve Azure veri merkezi teslimat adresini bir yere göz önünde yapın.
+
+      > [!NOTE]
+      > Diskleri Azure portal belirtilen veri merkezine her zaman gönderin. Diskler yanlış veri merkezine sevk edildiğinde iş işlenmez.
+
+   1. Gizlilik ve kaynak verilerini silme siparişinizin **şartlarını** gözden geçirin. Koşulları kabul ediyorsanız, koşulların altındaki onay kutusunu seçin. Siparişin doğrulanması başladı.
+
+   ![Dışarı aktarma siparişinizi gözden geçirin ve oluşturun](./media/storage-import-export-data-from-blobs/export-from-blob-6-a.png)
+
+ 1. Doğrulama geçtikten sonra **Oluştur**' u seçin.
+
+<!--Replaced text: Steps 4 - end of "Create an export job." Wizard design changes required both screen and text updates.
+
+4. In **Basics**:
+
+    - Select **Export from Azure**.
+    - Enter a descriptive name for the export job. Use the name you choose to track the progress of your jobs.
+        - The name may contain only lowercase letters, numbers, hyphens, and underscores.
+        - The name must start with a letter, and may not contain spaces.
+    - Select a subscription.
+    - Enter or select a resource group.
+
+        ![Basics](./media/storage-import-export-data-from-blobs/export-from-blob-3.png)
+
+5. In **Job details**:
+
+    - Select the storage account where the data to be exported resides. Use a storage account close to where you are located.
+    - The dropoff location is automatically populated based on the region of the storage account selected.
+    - Specify the blob data you wish to export from your storage account to your blank drive or drives.
+    - Choose to **Export all** blob data in the storage account.
+
+         ![Export all](./media/storage-import-export-data-from-blobs/export-from-blob-4.png)
+
+    - You can specify which containers and blobs to export.
+        - **To specify a blob to export**: Use the **Equal To** selector. Specify the relative path to the blob, beginning with the container name. Use *$root* to specify the root container.
+        - **To specify all blobs starting with a prefix**: Use the **Starts With** selector. Specify the prefix, beginning with a forward slash '/'. The prefix may be the prefix of the container name, the complete container name, or the complete container name followed by the prefix of the blob name. You must provide the blob paths in valid format to avoid errors during processing, as shown in this screenshot. For more information, see [Examples of valid blob paths](#examples-of-valid-blob-paths).
+
+           ![Export selected containers and blobs](./media/storage-import-export-data-from-blobs/export-from-blob-5.png)
+
+    - You can export from  the blob list file.
+
+        ![Export from blob list file](./media/storage-import-export-data-from-blobs/export-from-blob-6.png)
+
+   > [!NOTE]
+   > If the blob to be exported is in use during data copy, Azure Import/Export service takes a snapshot of the blob and copies the snapshot.
+
+6. In **Return shipping info**:
+
+    - Select the carrier from the dropdown list. If you want to use a carrier other than FedEx/DHL, choose an existing option from the dropdown. Contact Azure Data Box Operations team at `adbops@microsoft.com`  with the information regarding the carrier you plan to use.
+    - Enter a valid carrier account number that you have created with that carrier. Microsoft uses this account to ship the drives back to you once your export job is complete.
+    - Provide a complete and valid contact name, phone, email, street address, city, zip, state/province, and country/region.
+
+        > [!TIP]
+        > Instead of specifying an email address for a single user, provide a group email. This ensures that you receive notifications even if an admin leaves.
+
+7. In **Summary**:
+
+    - Review the details of the job.
+    - Make a note of the job name and provided Azure datacenter shipping address for shipping disks to Azure.
 
         > [!NOTE]
-        > Diskleri Azure portal belirtilen veri merkezine her zaman gönderin. Diskler yanlış veri merkezine sevk edildiğinde iş işlenmez.
+        > Always send the disks to the datacenter noted in the Azure portal. If the disks are shipped to the wrong datacenter, the job will not be processed.
 
-    - Dışarı aktarma işi oluşturmayı gerçekleştirmek için **Tamam** ' ı tıklatın.
+    - Click **OK** to complete export job creation.
+-->
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -320,14 +399,14 @@ Bu *isteğe bağlı* adım, dışa aktarma işi için gereken sürücü sayısı
 
     Parametreler aşağıdaki tabloda açıklanmıştır:
 
-    |Komut satırı parametresi|Description|
+    |Komut satırı parametresi|Açıklama|
     |--------------------------|-----------------|
     |**/logdir:**|İsteğe bağlı. Günlük dizini. Ayrıntılı günlük dosyaları bu dizine yazılır. Belirtilmemişse, geçerli dizin günlük dizini olarak kullanılır.|
     |**sn**|Gereklidir. Dışarı aktarma işi için depolama hesabının adı.|
     |**sor**|Yalnızca bir kapsayıcı SAS belirtilmemişse gereklidir. Dışarı aktarma işi için depolama hesabının hesap anahtarı.|
     |**/csas:**|Yalnızca bir depolama hesabı anahtarı belirtilmemişse gereklidir. Dışarı aktarma işine verilecek Blobları listelemek için kapsayıcı SAS.|
     |**/ExportBlobListFile:**|Gereklidir. Dışarı aktarılacak Bloblar için blob yollarının listesini veya blob yolu öneklerini içeren XML dosyasının yolu. `BlobListBlobPath`İçeri/dışarı aktarma hizmetinin REST API [İş yerleştirme](/rest/api/storageimportexport/jobs) işlemindeki öğesinde kullanılan dosya biçimi.|
-    |**/DriveSize:**|Gereklidir. Bir dışa aktarma işi için kullanılacak sürücülerin boyutu, *örn.* 500 GB, 1,5 TB.|
+    |**/DriveSize:**|Gereklidir. Bir dışarı aktarma işi için kullanılacak sürücülerin boyutu; *Örneğin*, 500 GB, 1,5 TB.|
 
     [Önizleme dışa aktarma komutuna bir örnek](#example-of-previewexport-command)görüntüleyin.
 
@@ -374,7 +453,7 @@ Number of drives needed:        3
 
 Aşağıdaki tabloda geçerli blob yollarının örnekleri gösterilmektedir:
 
-   | Seçici | Blob yolu | Description |
+   | Seçici | Blob yolu | Açıklama |
    | --- | --- | --- |
    | Ile başlar |/ |Depolama hesabındaki tüm Blobları dışa aktarır |
    | Ile başlar |/$root/ |Kök kapsayıcıdaki tüm Blobları dışa aktarır |

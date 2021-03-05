@@ -5,25 +5,36 @@ author: alkohli
 services: storage
 ms.service: storage
 ms.topic: how-to
-ms.date: 01/14/2021
+ms.date: 03/04/2021
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: 8333745b802f41b5a1b3dc07663870299800e3f6
-ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
+ms.custom: contperf-fy21q3
+ms.openlocfilehash: 8ef18ea663f3a77589d61ed89c50df38f5cf0d0e
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98706682"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102176198"
 ---
 # <a name="view-the-status-of-azure-importexport-jobs"></a>Azure İçeri/Dışarı Aktarma işlerinin durumunu görüntüleme
 
 Bu makalede, Azure Içeri/dışarı aktarma işlerinin sürücü ve iş durumunun nasıl görüntüleneceği hakkında bilgi verilmektedir. Azure Içeri/dışarı aktarma hizmeti, büyük miktarlarda verileri Azure Blob 'larına ve Azure dosyalarına güvenli bir şekilde aktarmak için kullanılır. Hizmet, verileri Azure Blob depolamadan dışarı aktarmak için de kullanılır.  
 
 ## <a name="view-job-and-drive-status"></a>İşi ve sürücü durumunu görüntüleme
-İçeri **/dışarı** aktarma sekmesini seçerek içeri aktarma veya dışarı aktarma işlerinizin durumunu Azure Portal izleyebilirsiniz. İşlerin bir listesi sayfada görüntülenir.
+İçeri aktarma veya dışarı aktarma işlerinizin durumunu Azure portal **içeri/dışarı** aktarma sekmesinde izleyebilirsiniz.
+1. Oturum açın https://portal.azure.com/ .
+2. **İçeri/dışarı aktarma işleri** için arama yapın.
 
-![Iş durumunu görüntüle](./media/storage-import-export-service/jobstate.png)
+    ![İçeri/dışarı aktarma işlerinde ara](./media/storage-import-export-view-drive-status/open-import-export-tab.png)
 
+ 3. Sayfada Içeri/dışarı aktarma işlerinizin bir listesi görüntülenir.
+
+    ![Iş durumunu görüntüle](./media/storage-import-export-view-drive-status/job-state.png)
+
+4. İş ayrıntılarını görüntülemek için bir işi seçin ve tıklayın.
+
+   ![Ayrıntılı iş durumunu görüntüle](./media/storage-import-export-view-drive-status/job-detail.png)
+  
 ## <a name="view-job-status"></a>İş durumunu görüntüleme
 
 Sürücünüzün işlemde bulunduğu yere bağlı olarak aşağıdaki iş durumlardan birini görürsünüz.
@@ -56,13 +67,13 @@ Aşağıdaki tabloda, bir işteki her bir sürücünün geçeme durumu açıklan
 
 Azure portal bu görüntüde örnek bir işin sürücü durumu görüntülenir:
 
-![Sürücü durumunu görüntüle](./media/storage-import-export-service/drivestate.png)
+![Sürücü durumunu görüntüle](./media/storage-import-export-view-drive-status/drive-state.png)
 
 Aşağıdaki tabloda, her durum için sürücü hatası durumları ve gerçekleştirilen eylemler açıklanmaktadır.
 
 | Sürücü durumu | Olay | Çözüm/sonraki adım |
 |:--- |:--- |:--- |
-| NeverReceived | **Neverreceived** olarak işaretlenen bir sürücü (iş sevkiyatının bir parçası olarak alınamadığı için) başka bir sevkiyata ulaştı. | İşlemler ekibi, sürücüyü **alındı** olarak kaydırır. |
+| Hiç alınmadı | **Neverreceived** olarak işaretlenen bir sürücü (iş sevkiyatının bir parçası olarak alınamadığı için) başka bir sevkiyata ulaştı. | İşlemler ekibi, sürücüyü **alındı** olarak kaydırır. |
 | Yok | Başka bir işin parçası olarak veri merkezinde herhangi bir işin parçası olmayan bir sürücü ulaşır. | Sürücü ek sürücü olarak işaretlendi. Özgün paketle ilişkili iş tamamlandığında size döndürülür. |
 
 ## <a name="time-to-process-job"></a>İşi işleme süresi

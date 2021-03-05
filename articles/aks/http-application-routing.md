@@ -6,12 +6,12 @@ author: lachie83
 ms.topic: article
 ms.date: 07/20/2020
 ms.author: laevenso
-ms.openlocfilehash: bbedb20d9e5c75fd49c08950bbf5d459130206ce
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 25fc021a48e8936f242df35f7485fc59a93bba13
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93125878"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102172809"
 ---
 # <a name="http-application-routing"></a>HTTP uygulaması yönlendirme
 
@@ -26,8 +26,8 @@ Eklenti etkinleştirildiğinde, aboneliğinizde bir DNS bölgesi oluşturur. DNS
 
 Eklenti iki bileşeni dağıtır: bir [Kubernetes giriş denetleyicisi][ingress] ve BIR [dış DNS][external-dns] denetleyicisi.
 
-- Giriş **denetleyicisi** : giriş denetleyicisi, yük dengeleyici türünde bir Kubernetes hizmeti kullanılarak internet 'e açıktır. Giriş denetleyicisi, uygulama uç noktalarına yollar oluşturan [Kubernetes giriş kaynaklarını][ingress-resource]izler ve uygular.
-- **Dış-DNS denetleyicisi** : Kubernetes giriş kaynaklarını izler ve KÜMEYE özgü DNS bölgesinde DNS A kayıtları oluşturur.
+- Giriş **denetleyicisi**: giriş denetleyicisi, yük dengeleyici türünde bir Kubernetes hizmeti kullanılarak internet 'e açıktır. Giriş denetleyicisi, uygulama uç noktalarına yollar oluşturan [Kubernetes giriş kaynaklarını][ingress-resource]izler ve uygular.
+- **Dış-DNS denetleyicisi**: Kubernetes giriş kaynaklarını izler ve KÜMEYE özgü DNS bölgesinde DNS A kayıtları oluşturur.
 
 ## <a name="deploy-http-routing-cli"></a>HTTP yönlendirmeyi dağıtma: CLı
 
@@ -280,8 +280,8 @@ ingress "aks-helloworld" deleted
 AKS 'de HTTPS güvenli giriş denetleyicisi 'nin nasıl yükleneceği hakkında bilgi için bkz. [Azure Kubernetes Service (aks) üzerinde https][ingress-https]girişi.
 
 <!-- LINKS - internal -->
-[az-aks-create]: /cli/azure/aks?view=azure-cli-latest#az-aks-create
-[az-aks-show]: /cli/azure/aks?view=azure-cli-latest#az-aks-show
+[az-aks-create]: /cli/azure/aks#az-aks-create
+[az-aks-show]: /cli/azure/aks#az-aks-show
 [ingress-https]: ./ingress-tls.md
 [az-aks-enable-addons]: /cli/azure/aks#az-aks-enable-addons
 [az aks install-cli]: /cli/azure/aks#az-aks-install-cli

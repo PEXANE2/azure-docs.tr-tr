@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: conceptual
 ms.date: 05/08/2020
 ms.author: yolasors
-ms.openlocfilehash: 78d2f3b399e26ca0c6036fd74fa1fba49d1f21f4
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 1cb5f2f9ac941001efb18301f4a54bd0092920ba
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102042785"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102172749"
 ---
 # <a name="review-pull-requests-in-pre-production-environments-in-azure-static-web-apps-preview"></a>Azure Static Web Apps Önizlemesinde üretim öncesi ortamlarında çekme isteklerini gözden geçirme
 
@@ -109,7 +109,7 @@ GitHub deponuz özel olsa bile, uygulamanızın hazırlanan sürümlerinin URL '
 > [!WARNING]
 > Üretim öncesi ortamlara erişim sınırlı olmadığından, hazırlanan sürümlere hassas içerik yayımlarken dikkatli olun.
 
-Statik Web Apps dağıtılan her bir uygulama için kullanılabilir olan üretim öncesi ortamların sayısı, kullanmakta olduğunuz SKU katmanına bağlıdır. Örneğin, ücretsiz katmanla birlikte üretim ortamına ek olarak 1 üretim öncesi ortamınız olabilir.
+Statik Web Apps dağıtılan her bir uygulama için kullanılabilir olan üretim öncesi ortamların sayısı, kullanmakta olduğunuz SKU katmanına bağlıdır. Örneğin, ücretsiz katmanla birlikte üretim ortamına ek olarak 3 üretim öncesi ortamınız olabilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

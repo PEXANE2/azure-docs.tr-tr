@@ -1,23 +1,18 @@
 ---
 title: Azure Güvenlik Merkezi 'ne dahil edilen Endpoint License için Microsoft Defender 'ı kullanma
 description: Uç nokta için Microsoft Defender ve Azure Güvenlik Merkezi 'nden dağıtma hakkında bilgi edinin.
-services: security-center
-documentationcenter: na
 author: memildin
 manager: rkarlin
 ms.service: security-center
-ms.devlang: na
 ms.topic: how-to
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 02/15/2021
 ms.author: memildin
-ms.openlocfilehash: a659ea897f013e504668789a7d5671420ff70a9f
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.openlocfilehash: 475c7671636d3aac036e3da1392fc2da9b0a001f
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102099089"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102176476"
 ---
 # <a name="protect-your-endpoints-with-security-centers-integrated-edr-solution-microsoft-defender-for-endpoint"></a>Güvenlik Merkezi 'nin tümleşik EDR çözümü ile uç noktalarınızı koruyun: uç nokta için Microsoft Defender
 
@@ -43,10 +38,10 @@ Uç nokta için Microsoft Defender, bütünsel, bulut tarafından sunulan bir u�
 | Yayın durumu:                  | Genel olarak kullanılabilir (GA)                                                                                                                                                                                                                                                                                      |
 | Fiyat                        | [Sunucular Için Azure Defender](defender-for-servers-introduction.md) gerekir                                                                                                                                                                                                                                             |
 | Desteklenen platformlar:            |  • Windows çalıştıran Azure makineleri<br> • Windows çalıştıran Azure Arc makineleri|
-| Desteklenen Windows sürümleri:  |   • **Genel kullanılabilirlik (GA)-** Windows Server 2016, 2012 r2 ve 2008 R2 SP1 'de algılama<br> • Windows Server 2019, [Windows sanal masaüstü (WVD)](../virtual-desktop/overview.md)ve [Windows 10 Enterprise multi-session](../virtual-desktop/windows-10-multisession-faq.md) (eski adıyla sanal masaüstleri) üzerinde **Önizleme-** algılama<br>Bu tümleştirmeler kullanılarak sunucu uç noktası izleme Office 365 GCC müşterileri için devre dışı bırakıldı|
+| Desteklenen Windows sürümleri:  |  • **Genel kullanılabilirlik (GA)-** Windows Server 2016, 2012 r2 ve 2008 R2 SP1 'de algılama<br> • Windows Server 2019, [Windows sanal masaüstü (WVD)](../virtual-desktop/overview.md)ve [Windows 10 Enterprise multi-session](../virtual-desktop/windows-10-multisession-faq.md) (eski adıyla sanal masaüstleri) üzerinde **Önizleme-** algılama<br>Bu tümleştirmeler kullanılarak sunucu uç noktası izleme Office 365 GCC müşterileri için devre dışı bırakıldı|
 | Desteklenmeyen işletim sistemleri:  |  • Windows 10 (EVD veya WVD dışında)<br> • Linux|
 | Gerekli roller ve izinler: | Tümleştirmeyi etkinleştirmek/devre dışı bırakmak için: **Güvenlik Yöneticisi** veya **sahibi**<br>Güvenlik Merkezi 'nde MDADTP uyarılarını görüntülemek için: **güvenlik okuyucu**, **okuyucu**, **kaynak grubu katılımcısı**, **kaynak grubu sahibi**, **Güvenlik Yöneticisi**, **abonelik sahibi** veya **abonelik katılımcısı**|
-| Larının                         | ![Yes](./media/icons/yes-icon.png) Ticari bulutlar<br>![Yes](./media/icons/yes-icon.png) US Gov<br>![Hayır](./media/icons/no-icon.png) Çin gov, diğer gov<br>![Hayır](./media/icons/no-icon.png) Küresel Azure bulutlarında iş yüklerini çalıştıran GCC müşterileri                                                        |
+| Larının                         | ![Yes](./media/icons/yes-icon.png) Ticari bulutlar<br>![Yes](./media/icons/yes-icon.png) US Gov<br>![Hayır](./media/icons/no-icon.png) Çin gov, diğer gov                                                        |
 |                                 |                                                                                                                                                                                                                                                                                                               |
 
 ## <a name="microsoft-defender-for-endpoint-features-in-security-center"></a>Güvenlik Merkezi 'nde uç nokta özellikleri için Microsoft Defender

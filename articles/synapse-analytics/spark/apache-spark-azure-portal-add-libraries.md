@@ -9,12 +9,12 @@ ms.date: 03/01/2020
 ms.author: midesa
 ms.reviewer: jrasnick
 ms.subservice: spark
-ms.openlocfilehash: 38826451bbb8ec9303f61db53544cfe8ca2fcd41
-ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
+ms.openlocfilehash: c6d720c3feec29eb32b1cfa9c31ea45839c98ec7
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102123097"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102176425"
 ---
 # <a name="manage-libraries-for-apache-spark-in-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'te Apache Spark için kitaplıkları yönetme
 Kitaplıklar, programlarınıza veya projelerinize dahil etmek isteyebileceğiniz yeniden kullanılabilir kod sağlar. 
@@ -61,10 +61,14 @@ Genellikle etkileşimli veri analizi veya makine öğrenimi yaparken, daha yeni 
 
 Oturum kapsamlı paketler, kullanıcıların oturumunun başlangıcında paket bağımlılıklarını tanımlamasına olanak tanır. Oturum kapsamlı bir paket yüklediğinizde, yalnızca geçerli oturumun belirtilen paketlere erişimi vardır. Sonuç olarak, bu oturum kapsamlı paketler aynı Apache Spark havuzunu kullanan diğer oturumları veya işleri etkilemez. Ayrıca, bu kitaplıklar temel çalışma zamanı ve havuz düzeyi paketlerinin üzerine yüklenir. 
 
+Bu paketler, Python ortamınıza otomatik olarak eklenir. Paketlere *requirements.txt* dosyanızda bahsedilmemelidir.
+
+Bu yöntemin Şu anda yalnızca dosyaları desteklemediğini unutmayın `*.whl` . Kapsayıcıya herhangi bir `*.tar.gz` dosya eklemeyin.
+
 Oturum kapsamlı paketlerin nasıl yönetileceği hakkında daha fazla bilgi edinmek için aşağıdaki nasıl yapılır kılavuzlarını ziyaret edin:
 
 - [Python oturum paketleri (Önizleme):](./apache-spark-manage-python-packages.md) Bir oturumun başlangıcında, popüler depolardan ek Python paketleri yüklemek için Conda *Environment. yıml* sağlayın. 
-- [Scala/Java oturum paketleri: ](./apache-spark-manage-scala-packages.md) Oturumunuzun başlangıcında, kullanarak yüklenecek jar dosyalarının bir listesini sağlayın ```%%configure``` .
+- [Scala/Java oturum paketleri: ](./apache-spark-manage-scala-packages.md) Oturumunuzun başlangıcında, kullanarak yüklenecek jar dosyalarının bir listesini sağlayın `%%configure` .
 
 ## <a name="next-steps"></a>Sonraki adımlar
 - Varsayılan kitaplıkları görüntüleme: [Apache Spark sürüm desteği](apache-spark-version-support.md)

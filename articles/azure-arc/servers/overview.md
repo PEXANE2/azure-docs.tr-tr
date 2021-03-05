@@ -4,12 +4,12 @@ description: Azure 'un dışında barındırılan sunucuları Azure kaynağı gi
 keywords: Azure Otomasyonu, DSC, PowerShell, istenen durum yapılandırması, güncelleştirme yönetimi, değişiklik izleme, envanter, runbook 'lar, Python, grafik, karma
 ms.date: 02/18/2021
 ms.topic: overview
-ms.openlocfilehash: 5692dfaceb15086b04ee951b8ecdf88f73c7d122
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 92de3b1a9cf07c25b13e2d038534e93318882bb1
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101686232"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102175983"
 ---
 # <a name="what-is-azure-arc-enabled-servers"></a>Azure Arc özellikli sunucular nedir?
 
@@ -23,7 +23,7 @@ Makinenizi Azure Arc etkin sunucularına bağladığınızda, aşağıdaki yapı
 
 - Azure sanal makineleri için ilke atamayla aynı deneyimi kullanarak [Azure ilke Konuk yapılandırması](../../governance/policy/concepts/guest-configuration.md) atayın. Günümüzde, çoğu konuk yapılandırma ilkesi yapılandırmaları uygulamaz, yalnızca makinenin içindeki ayarları denetlarlar. Azure Ilke Konuk yapılandırma ilkelerini Arc etkin sunucularla kullanma maliyetini anlamak için bkz. Azure Ilkesi [fiyatlandırma Kılavuzu](https://azure.microsoft.com/pricing/details/azure-policy/).
 
-- Azure Otomasyonu [değişiklik izleme ve envanterini](../../automation/change-tracking/overview.md)kullanan izlenen sunucularda yüklü yazılımlar, Microsoft Hizmetleri, Windows kayıt defteri ve dosyalar ve Linux Daemon 'ları hakkında yapılandırma değişiklikleri hakkında rapor.
+- Azure Otomasyonu [değişiklik izleme ve envanter](../../automation/change-tracking/overview.md) ve [Azure Güvenlik Merkezi dosya bütünlüğü izlemeyi](https://docs.microsoft.com/azure/security-center/security-center-file-integrity-monitoring)kullanarak, [sunucular için Azure Defender](https://docs.microsoft.com/azure/security-center/defender-for-servers-introduction)ile etkinleştirilen sunucular için yüklü yazılımlar, Microsoft Hizmetleri, Windows kayıt defteri ve dosyalar ve Linux Daemon 'ları hakkındaki yapılandırma değişikliklerini bildirin.
 
 - Bağlı makine konuk işletim sistemi performansınızı izleyin ve uygulamanın [VM'ler için Azure izleyici](../../azure-monitor/vm/vminsights-overview.md)kullanarak iletişim kurduğu diğer kaynaklarla işlem ve bağımlılıklarını izlemek için uygulama bileşenlerini bulun.
 

@@ -8,12 +8,12 @@ ms.subservice: fhir
 ms.topic: overview
 ms.date: 11/13/2020
 ms.author: matjazl
-ms.openlocfilehash: 386003d7dae80e086f523b2cebe61aa0eee7b89e
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 3b51a07281c7d6d9307cc802dfc9f149442e88b7
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95527828"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102177496"
 ---
 # <a name="what-is-azure-api-for-fhirreg"></a>FHıR için Azure API nedir &reg; ?
 
@@ -22,7 +22,7 @@ FHıR için Azure API, bulutta bir yönetilen hizmet olarak platform (PaaS) ile 
 - Dakikalar içinde bulutta sağlanan yönetilen FHıR hizmeti 
 - Veri erişimi için Azure 'da kurumsal düzeyde, FHıR® tabanlı uç nokta ve FHıR® biçiminde depolama
 - Yüksek performans, düşük gecikme süresi
-- Uyumlu bir bulut ortamında korunan durum verilerinin (FI) güvenli yönetimi
+- Uyumlu bir bulut ortamında korunan sistem durumu bilgilerinin (FI) güvenli yönetimi
 - Mobil ve Web uygulamaları için FHıR 'de akıllı
 - Rol tabanlı erişim denetimi (RBAC) ile kendi verilerinizi ölçekli olarak denetleme
 - Her veri deposu içinde erişim, oluşturma, değiştirme ve okuma için günlük izlemeyi denetleme

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/05/2021
 ms.author: b-juche
-ms.openlocfilehash: b25d312e6710a07f523c4acdb0fd4b970ce4a2d7
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 12807e83f7841bc67999ce385d0cb82bf15f4c71
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101740095"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102176000"
 ---
 # <a name="what-changing-to-volume-hard-quota-means-for-your-azure-netapp-files-service"></a>Azure NetApp Files hizmetiniz için birim sabit kotasında ne kadar değişiklik yapılır?
 
@@ -185,8 +185,8 @@ Bazı durumlarda, barındırma kapasitesi havuzunda birimleri yeniden boyutland�
 
 Birim veya kapasite havuzu boyutunu el ile değiştirmek için Azure CLı ve Azure PowerShell dahil [Azure NetApp FILES CLI araçları](azure-netapp-files-sdk-cli.md#cli-tools)'nı kullanabilirsiniz.  Aşağıdaki iki komut Azure NetApp Files birim ve havuz kaynaklarını yönetmek için kullanılabilir:  
 
-* [`az netappfiles pool`](/cli/azure/netappfiles/pool?preserve-view=true&view=azure-cli-latest)
-* [`az netappfiles volume`](/cli/azure/netappfiles/volume?preserve-view=true&view=azure-cli-latest)
+* [`az netappfiles pool`](/cli/azure/netappfiles/pool)
+* [`az netappfiles volume`](/cli/azure/netappfiles/volume)
 
 Azure CLı kullanarak Azure NetApp Files kaynaklarını yönetmek için, Azure portal açıp menü çubuğunun üst kısmındaki Azure **Cloud Shell** bağlantısını seçebilirsiniz: 
 
@@ -196,13 +196,13 @@ Bu eylem Azure Cloud Shell açar:
 
 [![Cloud Shell penceresini gösteren ekran görüntüsü. ](../media/azure-netapp-files/hard-quota-update-cloud-shell-window.png)](../media/azure-netapp-files/hard-quota-update-cloud-shell-window.png#lightbox)
 
-Aşağıdaki örnekler, bir birimin boyutunu [göstermek](/cli/azure/netappfiles/volume?preserve-view=true&view=azure-cli-latest#az-netappfiles-volume-show) ve [güncelleştirmek](/cli/azure/netappfiles/volume?preserve-view=true&view=azure-cli-latest#az-netappfiles-volume-update) için komutları kullanır:
+Aşağıdaki örnekler, bir birimin boyutunu [göstermek](/cli/azure/netappfiles/volume#az-netappfiles-volume-show) ve [güncelleştirmek](/cli/azure/netappfiles/volume#az-netappfiles-volume-update) için komutları kullanır:
  
 [![Birim boyutunu göstermek Için PowerShell 'i kullanmayı gösteren ekran görüntüsü. ](../media/azure-netapp-files/hard-quota-update-powershell-volume-show.png)](../media/azure-netapp-files/hard-quota-update-powershell-volume-show.png#lightbox)
 
 [![Birim boyutunu güncelleştirmek Için PowerShell 'i kullanmayı gösteren ekran görüntüsü. ](../media/azure-netapp-files/hard-quota-update-powershell-volume-update.png)](../media/azure-netapp-files/hard-quota-update-powershell-volume-update.png#lightbox)
 
-Aşağıdaki örnekler, bir kapasite havuzunun boyutunu [göstermek](/cli/azure/netappfiles/pool?preserve-view=true&view=azure-cli-latest#az-netappfiles-pool-show) ve [güncelleştirmek](/cli/azure/netappfiles/pool?preserve-view=true&view=azure-cli-latest#az-netappfiles-pool-update) için komutları kullanır:
+Aşağıdaki örnekler, bir kapasite havuzunun boyutunu [göstermek](/cli/azure/netappfiles/pool#az-netappfiles-pool-show) ve [güncelleştirmek](/cli/azure/netappfiles/pool#az-netappfiles-pool-update) için komutları kullanır:
 
 [![Kapasite havuzu boyutunu göstermek Için PowerShell 'i kullanmayı gösteren ekran görüntüsü. ](../media/azure-netapp-files/hard-quota-update-powershell-pool-show.png)](../media/azure-netapp-files/hard-quota-update-powershell-pool-show.png#lightbox) 
 

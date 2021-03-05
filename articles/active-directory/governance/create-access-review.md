@@ -2,7 +2,7 @@
 title: Gruplar & uygulamalar için erişim gözden geçirmesi oluşturma-Azure AD
 description: Azure Active Directory erişim gözden geçirmeleriyle grup üyelerinin veya uygulama erişiminin erişim incelemesini oluşturmayı öğrenin.
 services: active-directory
-author: barclayn
+author: ajburnle
 manager: daveba
 editor: markwahl-msft
 ms.service: active-directory
@@ -11,16 +11,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
 ms.subservice: compliance
-ms.date: 12/07/2020
-ms.author: barclayn
+ms.date: 3/3/2021
+ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b12eb95a7840bdbb902701fc644eee30ffe9900f
-ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
+ms.openlocfilehash: 7143c3f9786d41c32ae954ab219197a9cfaa1050
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96778598"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102176884"
 ---
 # <a name="create-an-access-review-of-groups-and-applications-in-azure-ad-access-reviews"></a>Azure AD erişim gözden geçirmeleriyle gruplar ve uygulamalar için erişim gözden geçirmesi oluşturma
 
@@ -80,7 +80,7 @@ Daha fazla bilgi için bkz. [Lisans gereksinimleri](access-reviews-overview.md#l
     - **Grup sahibi** (yalnızca bir takım veya grup üzerinde inceleme gerçekleştirirken kullanılabilir)
     - **Seçili kullanıcı veya gruplar**
     - **Kullanıcılar kendi erişimini gözden geçirir**
-    - **Önizle Kullanıcı yöneticileri.**
+    - **Kullanıcı yöneticileri.**
     Kullanıcı veya **Grup sahiplerinin** **yöneticileri** ' ni seçerseniz, geri dönüş gözden geçireni belirleme seçeneğiniz de vardır. Kullanıcı, dizinde yönetici olmadığında veya grubun sahibi olmadığında, geri dönüşün gözden geçirilmesi istenir.
 
     ![Yeni erişim gözden geçirmesi](./media/create-access-review/new-access-review.png)

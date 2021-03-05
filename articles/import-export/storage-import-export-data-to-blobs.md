@@ -5,16 +5,16 @@ author: alkohli
 services: storage
 ms.service: storage
 ms.topic: how-to
-ms.date: 02/24/2021
+ms.date: 03/03/2021
 ms.author: alkohli
 ms.subservice: common
-ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: 2acc3d104786be330e3e799ad7bd96d703587581
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.custom: devx-track-azurepowershell, devx-track-azurecli, contperf-fy21q3
+ms.openlocfilehash: 77a1c02c1ec59778521104e57f3bf3de8e52fa44
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101738999"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102177428"
 ---
 # <a name="use-the-azure-importexport-service-to-import-data-to-azure-blob-storage"></a>Azure Blob depolama alanına veri aktarmak için Azure Içeri/dışarı aktarma hizmetini kullanma
 
@@ -104,46 +104,57 @@ Azure portal bir içeri aktarma işi oluşturmak için aşağıdaki adımları g
 1. Oturum açın https://portal.azure.com/ .
 2. **İçeri/dışarı aktarma işleri** için arama yapın.
 
-    ![İçeri/dışarı aktarma işlerinde ara](./media/storage-import-export-data-to-blobs/import-to-blob-1.png)
+   ![İçeri/dışarı aktarma işlerinde ara](./media/storage-import-export-data-to-blobs/import-to-blob-1.png)
 
 3. **+ Yeni** seçeneğini belirleyin.
 
-    ![Yeni ' yi seçerek yeni bir ](./media/storage-import-export-data-to-blobs/import-to-blob-2.png)
+   ![Yeni ' yi seçerek yeni bir ](./media/storage-import-export-data-to-blobs/import-to-blob-2.png)
 
 4. **Temel bilgiler**:
 
-   * **Azure 'A aktar**' ı seçin.
-   * İçeri aktarma işi için açıklayıcı bir ad girin. İşlerinizin ilerlemesini izlemek için adı kullanın.
-       * Ad yalnızca küçük harf, sayı ve kısa çizgi içerebilir.
-       * Ad bir harfle başlamalı ve boşluk içermemelidir.
-   * Bir abonelik seçin.
-   * Bir kaynak grubu girin veya seçin.
+   1. Bir abonelik seçin.
+   1. Bir kaynak grubu seçin veya **Yeni oluştur** ' u seçip yeni bir tane oluşturun.
+   1. İçeri aktarma işi için açıklayıcı bir ad girin. İşlerinizin ilerlemesini izlemek için adı kullanın.
+      * Ad yalnızca küçük harf, sayı ve kısa çizgi içerebilir.
+      * Ad bir harfle başlamalı ve boşluk içermemelidir.
 
-     ![İçeri aktarma işi oluşturma-1. adım](./media/storage-import-export-data-to-blobs/import-to-blob-3.png)
+   1. **Azure 'A aktar**' ı seçin.
+
+    ![İçeri aktarma işi oluşturma-1. adım](./media/storage-import-export-data-to-blobs/import-to-blob-3.png)
+
+    Ileri ' yi seçin: devam etmek için **iş ayrıntıları >** .
 
 5. **İş için Ayrıntılar**:
 
-   * Sürücü Hazırlama adımı sırasında elde ettiğiniz sürücü günlüğü dosyalarını karşıya yükleyin. `waimportexport.exe version1`Kullanıldıysa, hazırladığınız her sürücü için bir dosyayı karşıya yükleyin. Günlük dosyası boyutu 2 MB 'yi aşarsa, `<Journal file name>_DriveInfo_<Drive serial ID>.xml` günlük dosyası ile oluşturulan öğesini de kullanabilirsiniz.
-   * Verilerin bulunacağı hedef depolama hesabını seçin.
-   * Açılan konum, seçilen depolama hesabı bölgesine göre otomatik olarak doldurulur.
+   1. Yukarıdaki [Adım 1: sürücüleri hazırlama](#step-1-prepare-the-drives)sırasında oluşturduğunuz günlük dosyalarını karşıya yükleyin. `waimportexport.exe version1`Kullanıldıysa, hazırladığınız her sürücü için bir dosyayı karşıya yükleyin. Günlük dosyası boyutu 2 MB 'yi aşarsa, `<Journal file name>_DriveInfo_<Drive serial ID>.xml` günlük dosyası ile oluşturulan öğesini de kullanabilirsiniz.
+   1. Sipariş için hedef Azure bölgesini seçin.
+   1. İçeri aktarma için depolama hesabını seçin.
+      
+      Açılan konum, seçilen depolama hesabı bölgesine göre otomatik olarak doldurulur.
+   1. Ayrıntılı bir günlük kaydetmek istemiyorsanız, **' waımportexport ' blob kapsayıcısı seçeneğinde ayrıntılı günlüğü kaydet** ' i temizleyin.
 
-   ![İçeri aktarma işi oluşturma-2. adım](./media/storage-import-export-data-to-blobs/import-to-blob-4.png)
+   ![İçeri aktarma işi oluşturma-2. adım](./media/storage-import-export-data-to-blobs/import-to-blob-4.png).
 
-6. **İade gönderimi bilgileri**:
+   Ileri ' yi seçin: devam etmek için **sevkıyat >** .
 
-   * Açılan listeden taşıyıcısı seçin. FedEx/DHL dışında bir taşıyıcı kullanmak istiyorsanız, açılan listeden varolan bir seçeneği belirleyin. `adbops@microsoft.com`Kullanmayı planladığınız taşıyıcı ile ilgili bilgilerle birlikte Azure Data Box işlemler ekibine başvurun.
-   * Bu taşıyıcı ile oluşturduğunuz geçerli bir taşıyıcı hesap numarası girin. Microsoft, içeri aktarma işiniz tamamlandıktan sonra sürücüleri size geri göndermek için bu hesabı kullanır. Hesap numaranız yoksa bir [FedEx](https://www.fedex.com/us/oadr/) veya [DHL](https://www.dhl.com/) taşıyıcı hesabı oluşturun.
-   * Tamamen ve geçerli bir iletişim adı, telefon, e-posta, sokak adresi, şehir, posta, eyalet/il ve ülke/bölge sağlayın.
+6. **Gönderim** aşamasında:
+
+   1. Açılan listeden taşıyıcısı seçin. FedEx/DHL dışında bir taşıyıcı kullanmak istiyorsanız, açılan listeden varolan bir seçeneği belirleyin. `adbops@microsoft.com`Kullanmayı planladığınız taşıyıcı ile ilgili bilgilerle birlikte Azure Data Box işlemler ekibine başvurun.
+   1. Bu taşıyıcı ile oluşturduğunuz geçerli bir taşıyıcı hesap numarası girin. Microsoft, içeri aktarma işiniz tamamlandıktan sonra sürücüleri size geri göndermek için bu hesabı kullanır. Hesap numaranız yoksa bir [FedEx](https://www.fedex.com/us/oadr/) veya [DHL](https://www.dhl.com/) taşıyıcı hesabı oluşturun.
+   1.  Tümü ve geçerli bir iletişim adı, telefon, e-posta, sokak adresi, şehir, posta, Eyalet/bölge ve ülke/bölge sağlayın.
 
        > [!TIP]
        > Tek bir kullanıcı için bir e-posta adresi belirtmek yerine, bir grup e-postası sağlayın. Bu, bir yönetici ayrılsa bile bildirimleri almanızı sağlar.
 
-     ![İçeri aktarma işi oluşturma-3. adım](./media/storage-import-export-data-to-blobs/import-to-blob-5.png)
+   ![İçeri aktarma işi oluşturma-3. adım](./media/storage-import-export-data-to-blobs/import-to-blob-5.png)
 
-7. **Özet**:
+   Devam etmek için **gözden geçir + oluştur** ' u seçin.
 
-   * Özette belirtilen iş bilgilerini gözden geçirin. Disklerin Azure 'a geri sevk edilmesi için iş adı ve Azure veri merkezi teslimat adresini bir yere göz önünde yapın. Bu bilgiler daha sonra sevkiyat etiketinde kullanılır.
-   * İçeri aktarma işini oluşturmak için **Tamam** ' ı tıklatın.
+7. Sipariş özetinde:
+
+   1. **Koşulları** gözden geçirin ve "belirtilen tüm bilgilerin doğru olduğunu kabul ediyorum ve hüküm ve koşulları kabul ediyorum" seçeneğini belirleyin. Daha sonra doğrulama gerçekleştirilir.
+   1. Özette belirtilen iş bilgilerini gözden geçirin. Disklerin Azure 'a geri sevk edilmesi için iş adı ve Azure veri merkezi teslimat adresini bir yere göz önünde yapın. Bu bilgiler daha sonra sevkiyat etiketinde kullanılır.
+   1. **Oluştur**’u seçin.
 
      ![İçeri aktarma işi oluşturma-4. adım](./media/storage-import-export-data-to-blobs/import-to-blob-6.png)
 

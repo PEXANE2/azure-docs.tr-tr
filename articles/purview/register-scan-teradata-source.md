@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: overview
 ms.date: 2/25/2021
-ms.openlocfilehash: 0885870497ef3488d78fe899c96ee2a82a5b84fc
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 2008e014e9f160b643ed5f591fff81c0b215e24a
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101696201"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102175073"
 ---
 # <a name="register-and-scan-teradata-source-preview"></a>Teradata kaynağını kaydetme ve tarama (Önizleme)
 
@@ -94,13 +94,13 @@ Yeni bir tarama oluşturup çalıştırmak için aşağıdakileri yapın:
 
 6.  **Şema**: içeri aktarılacak, noktalı virgülle ayrılmış bir liste olarak ifade edilen şemaların alt kümesini listeleyin. ör., Schema1; schema2. Tüm Kullanıcı şemaları, bu liste boşsa içeri aktarılır. Tüm sistem şemaları (örneğin, SysAdmin) ve nesneler varsayılan olarak yok sayılır. Liste boş olduğunda, kullanılabilir tüm şemalar içeri aktarılır.
 
-        Acceptable schema name patterns using SQL LIKE expressions syntax include using %, e.g. A%; %B; %C%; D
-        - start with A or    
-        - end with B or    
-        - contain C or    
-        - equal D
+    SQL LIKE ifadeleri sözdizimi kullanan kabul edilebilir şema adı desenleri%, örneğin%; Kenarı % C%; TID
+    - veya ile başlayın    
+    - B veya ile bitir    
+    - C veya içerir    
+    - eşit D
 
-        Usage of NOT and special characters are not acceptable
+    NOT ve özel karakterlerin kullanımı kabul edilemez
 
 7.  **Sürücü konumu**: sanal makinenizde kendi kendine barındırma tümleştirmesi çalışma ZAMANıNıN çalıştığı JDBC sürücü konumunun yolunu belirtin. Bu, geçerli JAR klasörü konumunun yolu olmalıdır.
 

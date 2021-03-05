@@ -7,12 +7,12 @@ ms.date: 9/22/2020
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 3f358bebc1cc4eb17b8c50b1e3a13366717ae98c
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.openlocfilehash: ab2ad15da9b1676924197d28e734f6baf59a02ef
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102100721"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102176646"
 ---
 # <a name="introduction-to-azure-defender-for-container-registries"></a>Kapsayıcı kayıt defterleri için Azure Defender’a giriş
 
@@ -68,9 +68,9 @@ Aşağıda, güvenlik merkezi ile kayıt defterlerinden koruma bileşenlerinin v
 ## <a name="faq-for-azure-container-registry-image-scanning"></a>Azure Container Registry resim taraması hakkında SSS
 
 ### <a name="how-does-security-center-scan-an-image"></a>Güvenlik Merkezi bir görüntüyü nasıl tarar?
-Görüntü kayıt defterinden çekilir. Daha sonra, bilinen güvenlik açıklarının listesini ayıklayan Qualys tarayıcısı ile yalıtılmış bir korumalı alanda çalıştırılır.
+Güvenlik Merkezi, görüntüyü kayıt defterinden çeker ve Qualys tarayıcısı ile yalıtılmış bir korumalı alanda çalıştırır. Tarayıcı bilinen güvenlik açıklarının listesini ayıklar.
 
-Güvenlik Merkezi, tarayıcıdan bulguları filtreler ve sınıflandırır. Bir görüntü sağlıklı olduğunda, güvenlik merkezi bunu bu şekilde işaretler. Güvenlik Merkezi yalnızca çözümleme sorunları olan görüntüler için güvenlik önerileri oluşturur. Güvenlik Merkezi, yalnızca sorun olduğunda bilgilendirerek istenmeyen bilgi uyarıları için potansiyelini azaltır.
+Güvenlik Merkezi, tarayıcıdan bulguları filtreler ve sınıflandırır. Bir görüntü sağlıklı olduğunda, güvenlik merkezi bunu bu şekilde işaretler. Güvenlik Merkezi yalnızca çözümleme sorunları olan görüntüler için güvenlik önerileri oluşturur. Güvenlik Merkezi, yalnızca sorun olduğunda size bildirimde bulunmak istenmeyen bilgi uyarıları için potansiyelini azaltır.
 
 ### <a name="can-i-get-the-scan-results-via-rest-api"></a>Tarama sonuçlarını REST API aracılığıyla alabilir miyim?
 Evet. Sonuçlar [Alt Değerlendirmeler REST API’si](/rest/api/securitycenter/subassessments/list/) altında yer alır. Ayrıca, tüm kaynaklarınız için kusto benzeri API olan Azure Kaynak Grafiği 'ni (ARG) kullanabilirsiniz: bir sorgu belirli bir taramayı getirebilir.
@@ -78,7 +78,7 @@ Evet. Sonuçlar [Alt Değerlendirmeler REST API’si](/rest/api/securitycenter/s
 ### <a name="what-registry-types-are-scanned-what-types-are-billed"></a>Hangi kayıt defteri türleri taranır? Hangi türler faturalandırılır?
 Azure Defender tarafından kapsayıcı kayıt defterleri için desteklenen kapsayıcı kayıt defterleri türlerinin listesi için bkz. [kullanılabilirlik](#availability).
 
-Desteklenmeyen kayıt defterlerini Azure aboneliğinize bağladığınızda bunlar taranmaz ve bunlar için faturalandırılmaz.
+Desteklenmeyen kayıt defterlerini Azure aboneliğinize bağladığınızda, Azure Defender bunları taramayacaktır ve bunlar için faturalandırmaz.
 
 ### <a name="can-i-customize-the-findings-from-the-vulnerability-scanner"></a>Güvenlik açığı tarayıcılarından bulguları özelleştirebilir miyim?
 Evet. Bir bulmayı yok saymanız gereken bir kuruluş varsa, bunu düzeltmek yerine isteğe bağlı olarak devre dışı bırakabilirsiniz. Devre dışı bulgular, güvenli puanınızı etkilemez veya istenmeyen gürültü oluşturmaz.

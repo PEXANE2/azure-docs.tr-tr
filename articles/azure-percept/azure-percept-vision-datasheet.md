@@ -6,12 +6,12 @@ ms.author: v-elqu
 ms.service: azure-percept
 ms.topic: reference
 ms.date: 02/16/2021
-ms.openlocfilehash: 54dae3341910bf863de7e2a2cef832ae670ca09a
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.openlocfilehash: 7bbb3a88bbc3011ec5dd917cdb0c1e49f7556aab
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102097576"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102177173"
 ---
 # <a name="azure-percept-vision-datasheet"></a>Azure Percept Vision veri sayfası
 
@@ -26,7 +26,7 @@ Aşağıda listelenen belirtimler, Azure [PERCEPT dk](./azure-percept-dk-datashe
 |Desteklenen yazılımlar ve hizmetler |[Azure IoT Hub](https://azure.microsoft.com/services/iot-hub/) <br> [Azure IoT Edge](https://azure.microsoft.com/services/iot-edge/) <br> [Azure Machine Learning](https://azure.microsoft.com/services/machine-learning/) <br> [ONNX Çalışma Zamanı](https://www.onnxruntime.ai/) <br> [OpenVINO](https://docs.openvinotoolkit.org/latest/index.html) <br> Azure cihaz güncelleştirmesi |
 |AI hızlandırma                 |Intel Movidius Myriad X (MA2085) Vision Işleme birimi (VPU) Intel kamera ISS tümleşik, 0,7 La |
 |Algılayıcılar ve görsel göstergeler   |6P lens ile Sony IMX219 kamera algılayıcısı<br>Çözüm: 8MP saat 30FPS, uzaklık: 50cm-sonsuzluk<br>FoV: 120 derece köşegen, renk: geniş dinamik Aralık, sabit odak kayan perde|
-|Kamera desteği                  |RGB (Şu anda) ve IR (gelecekte) <br> 2 kamera aynı anda çalıştırılabilir |
+|Kamera desteği                  |RGB <br> 2 kamera aynı anda çalıştırılabilir |
 |Güvenlik Crypto-Controller      |ST-Micro STM32L462CE      |
 |Sürüm oluşturma/KIMLIK bileşeni       |64 KB EEPROM |
 |Bellek                          |LPDDR4 2GB     |

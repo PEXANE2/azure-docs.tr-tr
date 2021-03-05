@@ -6,13 +6,13 @@ ms.author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: conceptual
-ms.date: 02/28/2021
-ms.openlocfilehash: a5aae4013067ba37334e3e85a9e7ef882efd1dd2
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.date: 03/04/2021
+ms.openlocfilehash: 4dc29c8b52a3d0953445666672a716af013ee408
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102107932"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102176442"
 ---
 # <a name="what-are-security-policies-initiatives-and-recommendations"></a>Güvenlik ilkeleri, girişimler ve öneriler nelerdir?
 
@@ -25,6 +25,7 @@ Azure Ilkesinde oluşturulan bir Azure ilke tanımı, denetlenmesini istediğini
 
 Bu ilke tanımlarını uygulamak için (yerleşik veya özel), bunları atamanız gerekir. Bu ilkelerden herhangi birini Azure portalı, PowerShell veya Azure CLI üzerinden atayabilirsiniz.
 
+Azure Ilkesinde farklı türde ilkeler vardır. Güvenlik Merkezi, genellikle belirli koşullara ve yapılandırmalara göz atın ve ardından uyumluluğa rapor veren ' Audit ' ilkelerini kullanır. Ayrıca, güvenli ayarları uygulamak için kullanılabilecek "zorla" ilkeleri de vardır.
 
 ## <a name="what-is-a-security-initiative"></a>Güvenlik girişimi nedir?
 
@@ -38,7 +39,7 @@ Azure Güvenlik Merkezi 'ndeki her aboneliğe otomatik olarak atanan varsayılan
 
 Güvenlik Merkezi, güvenlik girişimleri ve ilkeleriyle çalışmak için aşağıdaki seçenekleri sunar:
 
-- **Yerleşik varsayılan girişimi görüntüleyin ve düzenleyin** -Güvenlik Merkezi 'ni etkinleştirdiğinizde, ' Azure Güvenlik kıyaslaması ' adlı girişim, tüm güvenlik merkezi kayıtlı aboneliklerine otomatik olarak atanır. Bu girişimi özelleştirmek için, içindeki ilkeleri tek tek etkinleştirebilir veya devre dışı bırakabilirsiniz. Kullanıma hazır seçenekleri anlamak için [yerleşik güvenlik ilkeleri](./policy-reference.md) listesine bakın.
+- **Yerleşik varsayılan girişimi görüntüleyin ve düzenleyin** -Güvenlik Merkezi 'ni etkinleştirdiğinizde, ' Azure Güvenlik kıyaslaması ' adlı girişim, tüm güvenlik merkezi kayıtlı aboneliklerine otomatik olarak atanır. Bu girişimi özelleştirmek için, bir ilkenin parametrelerini düzenleyerek, içindeki ilkeleri tek tek etkinleştirebilir veya devre dışı bırakabilirsiniz. Kullanıma hazır seçenekleri anlamak için [yerleşik güvenlik ilkeleri](./policy-reference.md) listesine bakın.
 
 - **Kendi özel girişimlerinizi ekleyin** -aboneliğinize uygulanan güvenlik girişimlerini özelleştirmek istiyorsanız, bunu Güvenlik Merkezi içinde yapabilirsiniz. Daha sonra, makineleriniz oluşturduğunuz ilkeleri izleyememesi durumunda öneriler alacaksınız. Özel ilkeler oluşturma ve atama hakkında yönergeler için bkz. [özel güvenlik girişimlerini ve Ilkelerini kullanma](custom-security-policies.md).
 
@@ -46,9 +47,9 @@ Güvenlik Merkezi, güvenlik girişimleri ve ilkeleriyle çalışmak için aşa�
 
 ## <a name="what-is-a-security-recommendation"></a>Güvenlik önerisi nedir?
 
-Azure Güvenlik Merkezi, olası güvenlik açıklarını belirlemek için Azure kaynaklarınızın güvenlik durumunu düzenli olarak analiz eder. Daha sonra bu güvenlik açıklarını nasıl düzeltebileceğiniz konusunda öneriler sağlar. Bir öneri, kaynaklarınızın ilgili ilkelere göre değerlendirmesine ve tanımlı gereksinimlerinizi karşılanmamış kaynakları tanımlamaya neden olur.
+Güvenlik Merkezi, ilkeleri kullanarak, olası güvenlik yapılandırması yapılandırmalarını ve zayıf yanları belirlemek için kaynaklarınızın uyumluluk durumunu düzenli olarak analiz eder. Daha sonra bu sorunların nasıl düzeltileceğine ilişkin öneriler sağlar. Öneriler, ilgili ilkelere karşı kaynaklarınızı değerlendirme ve tanımlı gereksinimlerinizi karşılanmamış kaynakları belirleme sonucudur.
 
-Azure Güvenlik Merkezi, seçtiğiniz girişimlerinize göre güvenlik önerilerini sağlar. 
+Güvenlik Merkezi, seçtiğiniz girişimlerinize göre güvenlik önerilerini sağlar. Girişiminizden bir ilke kaynaklarınızla karşılaştırıldığında ve uyumlu olmayan bir veya daha fazla bilgi bulduğunda, güvenlik merkezi 'nde öneri olarak sunulur.
 
 Önerileriniz, kaynaklarınızı güvenli ve güvenilir hale getirmek için yapmanız gereken eylemlerdir. Her öneri aşağıdaki bilgileri sağlar:
 

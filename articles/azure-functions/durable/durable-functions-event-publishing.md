@@ -3,12 +3,12 @@ title: Azure Event Grid yayımlama Dayanıklı İşlevler (Önizleme)
 description: Dayanıklı İşlevler için otomatik Azure Event Grid yayımlamayı yapılandırmayı öğrenin.
 ms.topic: conceptual
 ms.date: 04/25/2020
-ms.openlocfilehash: e4651dd7548ba76380bfc2d1b314e67d7abe63d9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 44df100a5c794abf918a09dea0f94d30ddf916d3
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87081755"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102175966"
 ---
 # <a name="durable-functions-publishing-to-azure-event-grid-preview"></a>Azure Event Grid yayımlama Dayanıklı İşlevler (Önizleme)
 
@@ -26,7 +26,7 @@ Bu özelliğin yararlı olduğu bazı senaryolar aşağıda verilmiştir:
 
 * Dayanıklı İşlevler projenize [Microsoft. Azure. WebJobs. Extensions. DurableTask](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.DurableTask) 'ı yükler.
 * [Azure depolama öykünücüsünü](../../storage/common/storage-use-emulator.md) (yalnızca Windows) veya mevcut bir Azure Depolama hesabını kullanın.
-* [Azure CLI](/cli/azure/?view=azure-cli-latest) 'yı yükleyip [Azure Cloud Shell](../../cloud-shell/overview.md) kullanın
+* [Azure CLI](/cli/azure/) 'yı yükleyip [Azure Cloud Shell](../../cloud-shell/overview.md) kullanın
 
 ## <a name="create-a-custom-event-grid-topic"></a>Özel bir Event Grid konusu oluşturma
 
@@ -130,13 +130,13 @@ Azure portal kullanarak, Dayanıklı İşlevler uygulamanız tarafından yayıml
 
    :::image type="content" source="./media/durable-functions-event-publishing/function-add-function.png" alt-text="Azure portal bir işlev ekleyin." border="true":::
 
-1. **Event Grid**araması yapın ve **Azure Event Grid tetikleyici** şablonunu seçin. 
+1. **Event Grid** araması yapın ve **Azure Event Grid tetikleyici** şablonunu seçin. 
 
-    :::image type="content" source="./media/durable-functions-event-publishing/function-select-event-grid-trigger.png" alt-text="Azure portal bir işlev ekleyin." border="true":::
+    :::image type="content" source="./media/durable-functions-event-publishing/function-select-event-grid-trigger.png" alt-text="Azure portal olay Kılavuzu tetikleyici şablonunu seçin." border="true":::
 
 1. Yeni tetikleyiciyi adlandırın ve ardından **Işlev oluştur**' u seçin.
 
-    :::image type="content" source="./media/durable-functions-event-publishing/function-name-event-grid-trigger.png" alt-text="Azure portal bir işlev ekleyin." border="true":::
+    :::image type="content" source="./media/durable-functions-event-publishing/function-name-event-grid-trigger.png" alt-text="Azure portal olay Kılavuzu tetikleyicisini adlandırın." border="true":::
 
 
     Aşağıdaki koda sahip bir işlev oluşturuldu:
@@ -172,11 +172,11 @@ Artık oluşturduğunuz Event Grid konu için bir Event Grid aboneliği ekleyebi
 
 1. Yeni işlevinizde **tümleştirme** ' i seçin ve ardından **Event Grid tetikleyicisi (eventgridevent)** öğesini seçin. 
 
-    :::image type="content" source="./media/durable-functions-event-publishing/eventgrid-trigger-link.png" alt-text="Azure portal bir işlev ekleyin." border="true":::
+    :::image type="content" source="./media/durable-functions-event-publishing/eventgrid-trigger-link.png" alt-text="Event Grid tetikleyici bağlantısını seçin." border="true":::
 
 1. **Event Grid açıklaması oluştur**' u seçin.
 
-    :::image type="content" source="./media/durable-functions-event-publishing/create-event-grid-subscription.png" alt-text="Azure portal bir işlev ekleyin." border="true":::
+    :::image type="content" source="./media/durable-functions-event-publishing/create-event-grid-subscription.png" alt-text="Event Grid aboneliğini oluşturun." border="true":::
 
 1. Olay aboneliğinizi adlandırın ve **Event Grid konular** konu türünü seçin. 
 
@@ -184,7 +184,7 @@ Artık oluşturduğunuz Event Grid konu için bir Event Grid aboneliği ekleyebi
 
 1. **Oluştur**’u seçin.
 
-    :::image type="content" source="./media/durable-functions-event-publishing/event-grid-subscription-details.png" alt-text="Azure portal bir işlev ekleyin." border="true":::
+    :::image type="content" source="./media/durable-functions-event-publishing/event-grid-subscription-details.png" alt-text="Event Grid aboneliği oluşturun." border="true":::
 
 Artık yaşam döngüsü olaylarını almaya hazır olursunuz.
 

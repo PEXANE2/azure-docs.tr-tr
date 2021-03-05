@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 09/29/2020
-ms.openlocfilehash: 1ff20ab19390dcdadb9a4aa79822f7ace3d31989
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: bd83ccc4f834d6b52e1c2db15000eb695be85f30
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98791181"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102177207"
 ---
 # <a name="what-are-compute-targets-in-azure-machine-learning"></a>Azure Machine Learning'deki işlem hedefleri nelerdir?
 
@@ -101,15 +101,21 @@ Desteklenen seriler ve kısıtlamalar hakkında daha fazla bilgi edinmek için a
 | **Desteklenen VM Serisi**  | **Kısıtlamalar** |
 |------------|------------|
 | D | Yok. |
+| DDSv4 | Yok. |
 | Dv2 | Yok. |  
 | Dv3 | Yok.|
 | DSv2 | Yok. | 
 | DSv3 | Yok.|
+| EAv4 | Yok. |
+| Ev3 | Yok. |
 | FSv2 | Yok. | 
+| H | Yok. |
+| HB | Onay gerektirir. |
 | HBv2 | Onay gerektirir. |  
 | HCS | Onay gerektirir. |  
 | M | Onay gerektirir. |
-| NC | Yok. |    
+| NC | Yok. |  
+| NC promosyon | Yok. |
 | NCsv2 | Onay gerektirir. |
 | NCsv3 | Onay gerektirir. |  
 | Üstündeki | Onay gerektirir. |

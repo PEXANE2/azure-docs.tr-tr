@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 12/11/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 891991fa938ad3dcfacae6d02e40efd6d6e9689e
-ms.sourcegitcommit: ea17e3a6219f0f01330cf7610e54f033a394b459
+ms.openlocfilehash: eb6d82019cccd1da327461cb0a0635aea4f3647f
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97386859"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102174980"
 ---
 # <a name="define-a-restful-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Azure Active Directory B2C özel ilkesinde, yeniden teknik bir teknik profil tanımlama
 
@@ -110,7 +110,7 @@ Teknik profil, kimlik sağlayıcısı tarafından döndürülmeyen talepler de d
 </OutputClaims>
 ```
 
-## <a name="metadata"></a>Meta Veriler
+## <a name="metadata"></a>Meta veri
 
 | Öznitelik | Gerekli | Açıklama |
 | --------- | -------- | ----------- |
@@ -225,6 +225,9 @@ Kimlik doğrulaması türü olarak ayarlandıysa `ApiKeyHeader` , **Cryptographi
 | --------- | -------- | ----------- |
 | HTTP üstbilgisinin adı, örneğin `x-functions-key` veya `x-api-key` . | Yes | Kimlik doğrulamak için kullanılan anahtar. |
 
+> [!NOTE]
+> Şu anda Azure AD B2C kimlik doğrulaması için yalnızca bir HTTP üst bilgisini destekler. Yeniden yaptığınız çağrı, istemci KIMLIĞI ve istemci parolası gibi birden çok üst bilgi gerektiriyorsa, isteği bir şekilde proxy yapmanız gerekir.
+
 ```xml
 <TechnicalProfile Id="REST-API-SignUp">
   <DisplayName>Validate user's input data and return loyaltyNumber claim</DisplayName>
@@ -290,4 +293,3 @@ Daha fazla teknik profil kullanma örnekleri için aşağıdaki makalelere bakı
 - [İzlenecek yol: Kullanıcı girişinin doğrulanması sırasında Azure AD B2C Kullanıcı yolculuğunda REST API talep alışverişlerinde tümleştirin](custom-policy-rest-api-claims-validation.md)
 - [İzlenecek yol: Azure Active Directory B2C içindeki özel ilkelere REST API talep alışverişi ekleme](custom-policy-rest-api-claims-validation.md)
 - [REST API hizmetlerinizin güvenliğini sağlama](secure-rest-api.md)
-

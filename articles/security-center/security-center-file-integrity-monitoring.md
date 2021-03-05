@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/22/2020
 ms.author: memildin
-ms.openlocfilehash: 07a36bb9b9e3baea2136c23208d268c2c196e70f
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.openlocfilehash: b858903b87dc6c4cc1f7c40338c09bf5b8204b3d
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102099463"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102176544"
 ---
 # <a name="file-integrity-monitoring-in-azure-security-center"></a>Azure Güvenlik Merkezi 'nde dosya bütünlüğü izleme
 Bu yönergeyi kullanarak Azure Güvenlik Merkezi 'nde dosya bütünlüğü izleme (FIM) yapılandırma hakkında bilgi edinin.
@@ -31,7 +31,7 @@ Bu yönergeyi kullanarak Azure Güvenlik Merkezi 'nde dosya bütünlüğü izlem
 |Yayın durumu:|Genel kullanılabilirlik (GA)|
 |Fiyat|[Sunucular Için Azure Defender](defender-for-servers-introduction.md)gerektirir.<br>FIM Log Analytics çalışma alanına veri yükler. Veri ücretleri, karşıya yüklediğiniz veri miktarına bağlı olarak uygulanır. Daha fazla bilgi için bkz. [Log Analytics fiyatlandırması](https://azure.microsoft.com/pricing/details/log-analytics/) .|
 |Gerekli roller ve izinler:|**Çalışma alanı sahıbı** FIM 'yi etkinleştirebilir/devre dışı bırakabilir (daha fazla bilgi için bkz. [Log Analytics için Azure rolleri](/services-hub/health/azure-roles#azure-roles)).<br>**Okuyucu** , sonuçları görüntüleyebilir.|
-|Larının|![Evet ](./media/icons/yes-icon.png) ticari bulutlar<br>![Evet ](./media/icons/yes-icon.png) Ulusal/Sogeign (US gov, Çin gov, diğer gov)<br>Yalnızca Azure Otomasyonu 'nun değişiklik izleme çözümünün kullanılabildiği bölgelerde desteklenir.<br>Bkz. [bağlantılı Log Analytics çalışma alanı Için desteklenen bölgeler](../automation/how-to/region-mappings.md).<br>[Değişiklik izleme hakkında daha fazla bilgi edinin](../automation/change-tracking/overview.md).|
+|Larının|![Evet ](./media/icons/yes-icon.png) ticari bulutlar<br>![Evet ](./media/icons/yes-icon.png) Ulusal/Sogeign (US gov, Çin gov, diğer gov)<br>Yalnızca Azure Otomasyonu 'nun değişiklik izleme çözümünün kullanılabildiği bölgelerde desteklenir.<br>![Evet ](./media/icons/yes-icon.png) [Azure yay](https://docs.microsoft.com/azure/azure-arc/servers/overview) etkin cihazlar.<br>Bkz. [bağlantılı Log Analytics çalışma alanı Için desteklenen bölgeler](../automation/how-to/region-mappings.md).<br>[Değişiklik izleme hakkında daha fazla bilgi edinin](../automation/change-tracking/overview.md).|
 |||
 
 ## <a name="what-is-fim-in-security-center"></a>Güvenlik Merkezi 'nde FIM nedir?

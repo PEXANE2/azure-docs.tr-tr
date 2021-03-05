@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 02/22/2021
 ms.author: longl
 ms.custom: devx-track-csharp
-ms.openlocfilehash: ea6b567d7b48e504d9b79dad568da7170ada5326
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 58e910a721bea95e74a004ae306f1bbc3ade62f2
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101706835"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102174164"
 ---
 # <a name="specify-a-face-recognition-model"></a>Yüz tanıma modeli belirtme
 
@@ -24,11 +24,11 @@ Bu kılavuzda, Azure yüz hizmetini kullanarak yüz algılama, tanımlama ve ben
 
 Yüz hizmeti, görüntülerde insan yüzeyleri üzerinde işlem gerçekleştirmek için makine öğrenimi modellerini kullanır. Müşteri geri bildirimlerine ve araştırmada ilerlemeleri temel alan modellerimizin doğruluğunu geliştirmeye devam ediyoruz ve bu geliştirmeleri model güncelleştirmeleri olarak sunduk. Geliştiriciler, yüz tanıma modeli 'nin hangi sürümünü kullanmak istediğinizi belirtme seçeneğine sahiptir; Kullanım durumlarına en uygun modeli seçebilirler.
 
-Azure yüz hizmeti 'nin kullanılabilir üç tanıma modeli vardır. Modeller _recognition_01_ (yayımlanan 2017) ve _recognition_02_ (yayımlanan 2019), bu modellerle oluşturulan çok yönlü listeler veya **persongroup**'lar kullanan müşteriler için geriye dönük uyumluluk sağlamak amacıyla sürekli olarak desteklenmektedir. Bir çok **yönlü liste** veya **kişilik grubu** her zaman ile oluşturulduğu tanınma modelini kullanır ve eklendiklerinde yeni yüzler bu modelle ilişkilendirilir. Bu, oluşturulduktan sonra değiştirilemez ve müşterilerin karşılık gelen çok **yönlü liste** veya **persongroup** ile ilgili tanıma modelini kullanması gerekir.
+Azure yüz hizmeti 'nin kullanılabilir dört tanıma modeli vardır. Modeller _recognition_01_ (yayımlanan 2017), _recognition_02_ (yayımlanan 2019) ve _recognition_03_ (yayımlanmış 2020), bu modellerle oluşturulan çok yönlü listeler veya **persongroup**'lar kullanan müşteriler için geriye dönük uyumluluk sağlamak amacıyla sürekli olarak desteklenmektedir. Bir çok **yönlü liste** veya **kişilik grubu** her zaman ile oluşturulduğu tanınma modelini kullanır ve eklendiklerinde yeni yüzler bu modelle ilişkilendirilir. Bu, oluşturulduktan sonra değiştirilemez ve müşterilerin karşılık gelen çok **yönlü liste** veya **persongroup** ile ilgili tanıma modelini kullanması gerekir.
 
 Daha sonraki tanıma modellerine daha kolay geçiş yapabilirsiniz; Ancak, tercih ettiğiniz tanıma modeliyle yeni bir çok yönlü listeler ve kişiler oluşturmanız gerekecektir.
 
-_Recognition_03_ modeli (yayımlanan 2020) Şu anda kullanılabilir en doğru modeldir. Yeni bir müşteriyseniz, bu modeli kullanmanızı öneririz. _Recognition_03_ , hem benzerlik karşılaştırmaları hem de kişi ile eşleşen karşılaştırmalar için iyileştirilmiş doğruluk sağlar. Her bir modelin diğerlerinden bağımsız olarak çalıştığını ve bir model için bir güven eşiği kümesinin diğer tanıma modelleriyle karşılaştırılmadığını unutmayın.
+_Recognition_04_ modeli (yayımlanan 2021) Şu anda kullanılabilir en doğru modeldir. Yeni bir müşteriyseniz, bu modeli kullanmanızı öneririz. _Recognition_04_ , hem benzerlik karşılaştırmaları hem de kişi ile eşleşen karşılaştırmalar için iyileştirilmiş doğruluk sağlar. _Recognition_04_ , yüz kapamaları (Surgical maskeleri, N95 maskeleri, kumaş maskeleri) takan kullanıcılar için tanımayı geliştirir. Artık, kayıtlı bir kullanıcının yüz kapağı içerip içermediğini tespit etmek ve ardından en son _recognition_04_ modeliyle nerede olduklarını tanımak için en son _detection_03_ modelini kullanan güvenli ve sorunsuz kullanıcı deneyimleri oluşturabilirsiniz. Her bir modelin diğerlerinden bağımsız olarak çalıştığını ve bir model için bir güven eşiği kümesinin diğer tanıma modelleriyle karşılaştırılmadığını unutmayın.
 
 Model çakışmalarını önleyerek, farklı yüz işlemlerinde seçili bir modeli nasıl belirteceğinizi öğrenmek için okumaya devam edin. İleri düzey bir kullanıcıysanız ve en son modele geçiş yapmanız gerekip gerekmediğini öğrenmek isterseniz, yeni modeli değerlendirmek ve sonuçları geçerli veri kümesi kullanarak karşılaştırmak için [farklı modelleri değerlendir](#evaluate-different-models) bölümüne atlayın.
 
@@ -51,6 +51,7 @@ Tanınma modeli, yüz özellikleri ayıklandığında kullanılır, bu nedenle a
 * recognition_01
 * recognition_02
 * recognition_03
+* recognition_04
 
 
 İsteğe bağlı olarak, _Recognıtionmodel_ 'in yanıt olarak döndürülüp döndürülmeyeceğini belirtmek Için _returnrecognıtionmodel_ parametresini (varsayılan **yanlış**) belirtebilirsiniz. Bu nedenle, [yüz algılama] REST API için bir istek URL 'si şöyle görünür:
@@ -91,10 +92,10 @@ Ayrıca, benzerlik arama için bir tanıma modeli de belirtebilirsiniz. `recogni
 .NET istemci kitaplığı için aşağıdaki kod örneğine bakın.
 
 ```csharp
-await faceClient.FaceList.CreateAsync(faceListId, "My face collection", recognitionModel: "recognition_03");
+await faceClient.FaceList.CreateAsync(faceListId, "My face collection", recognitionModel: "recognition_04");
 ```
 
-Bu kod `My face collection` , özellik ayıklama için _recognition_03_ modeli kullanılarak adlı bir yüz listesi oluşturur. Bu yüz listesini, benzer yüzler için yeni bir algılanan bir yüze aradığınızda, bu yüz _recognition_03_ modeli kullanılarak algılanan ([yüz Algıla]) olmalıdır. Önceki bölümde olduğu gibi, modelin tutarlı olması gerekir.
+Bu kod `My face collection` , özellik ayıklama için _recognition_04_ modeli kullanılarak adlı bir yüz listesi oluşturur. Bu yüz listesini, benzer yüzler için yeni bir algılanan bir yüze aradığınızda, bu yüz _recognition_04_ modeli kullanılarak algılanan ([yüz Algıla]) olmalıdır. Önceki bölümde olduğu gibi, modelin tutarlı olması gerekir.
 
 Yüz, benzer bir API 'yi [bulun] ; Yalnızca algılama sürümünde model sürümünü belirtirsiniz.
 
@@ -105,10 +106,10 @@ Yüz doğrulama API 'si, iki [yüzün] aynı kişiye ait olup olmadığını den
 ## <a name="evaluate-different-models"></a>Farklı modelleri değerlendirin
 
 Kendi verilerinizde farklı tanıma modellerinin performanslarını karşılaştırmak isterseniz, şunları yapmanız gerekir:
-1. Sırasıyla _recognition_01_, _recognition_02_ ve _recognition_03_ kullanarak üç kişilik grubu oluşturun.
-1. Yüzleri algılamak ve bu üç **kişilik** Bu **kişilerin içindeki kişilere** kaydetmek için görüntü verilerinizi kullanın. 
+1. Sırasıyla _recognition_01_, _recognition_02_, _Recognition_03_ ve _recognition_04_ kullanarak dört kişilik oluşturun.
+1. Yüzleri algılamak ve bu dört **kişilik** Bu **kişilerin içindeki kişilere** kaydetmek için görüntü verilerinizi kullanın. 
 1. PersonGroup-tren API 'sini kullanarak kişi gruplarınızı eğitme.
-1. Yüz ile test edin-üç kişilik tüm **gruplar** üzerinde tanımlanır ve sonuçları karşılaştırın.
+1. Yüz ile test edin ve tüm dört **Persongroup**'Lar üzerinde tanımlayarak sonuçları karşılaştırın.
 
 
 Normalde bir güvenirlik eşiği (sıfır ile arasında bir değer, modelin bir yüzü belirlemek için ne kadar güvenli olacağını belirleyen bir değer) belirtirseniz, farklı modeller için farklı eşikler kullanmanız gerekebilir. Bir modelin eşiği, diğer ile paylaşılmak üzere tasarlanmamıştır ve aynı sonuçları üretmeyecektir.
