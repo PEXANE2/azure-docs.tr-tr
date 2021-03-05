@@ -3,12 +3,12 @@ title: Kapsayıcı grubunu el ile durdurma veya başlatma
 description: Azure Container Instances bir kapsayıcı grubunu el ile durdurmayı veya başlatmayı öğrenin.
 ms.topic: article
 ms.date: 08/11/2020
-ms.openlocfilehash: f697f18459959cf40e71d3ca90cd8b42aaa74239
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1801dad463d478c754e621dad0ae9406899ae7e3
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88799086"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102198124"
 ---
 # <a name="manually-stop-or-start-containers-in-azure-container-instances"></a>Azure Container Instances’taki kapsayıcıları el ile durdurma veya başlatma
 
@@ -55,6 +55,6 @@ Aynı yapılandırmaya sahip bir kapsayıcı grubunu el ile durdurup başlatmaya
 <!-- LINKS - External -->
 
 <!-- LINKS - Internal -->
-[az-container-restart]: /cli/azure/container?view=azure-cli-latest#az-container-restart
-[az-container-start]: /cli/azure/container?view=azure-cli-latest#az-container-start
-[az-container-stop]: /cli/azure/container?view=azure-cli-latest#az-container-stop
+[az-container-restart]: /cli/azure/container#az-container-restart
+[az-container-start]: /cli/azure/container#az-container-start
+[az-container-stop]: /cli/azure/container#az-container-stop

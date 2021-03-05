@@ -5,18 +5,17 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: conceptual
-ms.date: 03/02/2021
+ms.date: 03/04/2021
 ms.author: mimart
 author: msmimart
 manager: celestedg
-ms.reviewer: elisol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 95c7ca826eaf7d72cb35985b154458f149ef4a0e
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: df867059a7d4020952f71ca8d663a644ee2428fd
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101649327"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102199637"
 ---
 # <a name="azure-active-directory-b2b-collaboration-invitation-redemption"></a>Azure Active Directory B2B işbirliği davetini sıfırlama
 
@@ -35,6 +34,7 @@ Konuk kullanıcılar artık ortak bir uç nokta (URL) aracılığıyla çok kira
 ![Ortak uç nokta oturum açma](media/redemption-experience/common-endpoint-flow-small.png)
 
 Daha sonra Kullanıcı, e-posta adresiyle oturum açabilecekleri veya yapılandırdığınız bir kimlik sağlayıcısını seçebileceğiniz kiracı uç noktanıza yönlendirilir.
+
 ## <a name="redemption-through-a-direct-link"></a>Doğrudan bir bağlantı üzerinden ödeme
 
 Davet e-postasına veya uygulamanın ortak URL 'sine alternatif olarak, bir konuğa uygulamanız veya portalınızın doğrudan bağlantısını sağlayabilirsiniz. Önce [Azure Portal](./b2b-quickstart-add-guest-users-portal.md) veya [PowerShell](./b2b-quickstart-invite-powershell.md)aracılığıyla konuk kullanıcıyı dizininize eklemeniz gerekir. Ardından doğrudan oturum açma bağlantıları dahil olmak üzere [kullanıcılara uygulama dağıtmak için özelleştirilebilen bir yol](../manage-apps/end-user-experiences.md)kullanabilirsiniz. Bir konuk davet e-postası yerine doğrudan bağlantı kullandığında, yine de ilk kez onay deneyiminde gezinir.
@@ -73,7 +73,7 @@ Bir Kullanıcı [davet e-postasında](invitation-email-elements.md) **daveti kab
 
 3. Bir yönetici [Google Federasyonu](./google-federation.md)etkinleştirmişse, Azure AD kullanıcının etki alanı sonekinin gmail.com veya googlemail.com olup olmadığını denetler ve kullanıcıyı Google 'a yönlendirir.
 
-4. Kullanım süreci, kullanıcının mevcut bir kişisel [Microsoft hesabı (MSA)](https://support.microsoft.com/help/4026324/microsoft-account-how-to-create)olup olmadığını denetler.
+4. Kullanım süreci, kullanıcının Just-In-Time (JıT) kampanyaya için mevcut bir kişisel [Microsoft hesabı (MSA)](https://support.microsoft.com/help/4026324/microsoft-account-how-to-create) olup olmadığını denetler, ancak davetiye e-posta bağlantısı satın alma için kullanılamaz. Kullanıcının zaten var olan bir MSA varsa, var olan MSA ile oturum açacaksınız.
 
 5. Kullanıcının **giriş dizini** tanımlandıktan sonra, Kullanıcı oturum açmak için ilgili kimlik sağlayıcısına gönderilir.  
 

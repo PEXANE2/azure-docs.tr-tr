@@ -8,12 +8,12 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 12/12/2017
 ms.author: dobett
-ms.openlocfilehash: e6acea560c3a02420b15aff84475ab58e642116c
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: c6a695030d399cb1609c63ef5652419a9bef1bbf
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95995973"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102198991"
 ---
 # <a name="frequently-asked-questions-for-connected-factory-solution-accelerator"></a>Bağlı fabrika çözümü Hızlandırıcısı için sık sorulan sorular
 
@@ -42,7 +42,7 @@ Microsoft, açık, özel olmayan, platformdan bağımsız, sektörde tanınan ve
 
 IP adresini eklemek için iki seçeneğiniz vardır:
 
-* Depodaki PowerShell betiğini kullanın `Simulation/Factory/Add-SimulationPublicIp.ps1` . [repository](https://github.com/Azure/azure-iot-connected-factory) Dağıtım adınızı parametre olarak geçirin. Yerel dağıtım için kullanın `<your username>ConnFactoryLocal` . Betik, sanal makinenin IP adresini yazdırır.
+* Depodaki PowerShell betiğini kullanın `Simulation/Factory/Add-SimulationPublicIp.ps1` . [](https://github.com/Azure/azure-iot-connected-factory) Dağıtım adınızı parametre olarak geçirin. Yerel dağıtım için kullanın `<your username>ConnFactoryLocal` . Betik, sanal makinenin IP adresini yazdırır.
 
 * Azure portal, dağıtımınızın kaynak grubunu bulun. Yerel dağıtım haricinde, kaynak grubunun çözüm veya dağıtım adı olarak belirttiğiniz adı vardır. Derleme betiği kullanılarak yerel bir dağıtım için, kaynak grubunun adı `<your username>ConnFactoryLocal` . Şimdi kaynak grubuna yeni bir **genel IP adresi** kaynağı ekleyin.
 
@@ -59,7 +59,7 @@ IP adresini kaldırmak için iki seçeneğiniz vardır:
 
 ### <a name="how-do-i-sign-in-to-the-simulation-vm"></a>Benzetim sanal makinesinde oturum Nasıl yaparım? mı?
 
-Simülasyon VM 'de oturum açmak yalnızca çözümünüzü depodaki PowerShell betiğini kullanarak dağıttıysanız desteklenir `build.ps1` . [repository](https://github.com/Azure/azure-iot-connected-factory)
+Simülasyon VM 'de oturum açmak yalnızca çözümünüzü depodaki PowerShell betiğini kullanarak dağıttıysanız desteklenir `build.ps1` . [](https://github.com/Azure/azure-iot-connected-factory)
 
 Çözümü www.azureiotsolutions.com adresinden dağıttıysanız, sanal makinede oturum açmanız gerekmez. Parola rastgele oluşturulduğundan ve sıfırlayamadığı için oturum açılamıyor.
 
@@ -82,7 +82,7 @@ Simülasyon VM 'de oturum açmak yalnızca çözümünüzü depodaki PowerShell 
         export IOTHUB_CONNECTIONSTRING="HostName={yourdeployment}.azure-devices.net;SharedAccessKeyName=iothubowner;SharedAccessKey={your key}"
         ```
 
-    * `./startsimulation` öğesini çalıştırın.
+    * Şu komutu çalıştırın: `./startsimulation`.
 
 ### <a name="how-do-i-update-the-simulation-in-the-vm"></a>VM 'deki benzetimi güncelleştirmek Nasıl yaparım? mı?
 
@@ -115,7 +115,7 @@ Simülasyon, aşağıdaki cihazları kaydeder:
 
 ### <a name="how-can-i-get-log-data-from-the-simulation-components"></a>Simülasyon bileşenlerinden günlük verilerini nasıl alabilirim?
 
-Simülasyon günlüğü içindeki tüm bileşenler günlük dosyalarına kaydedilir. Bu dosyalar, klasöründeki VM 'de bulunabilir `home/docker/Logs` . Günlükleri almak için depodaki PowerShell betiğini kullanabilirsiniz `Simulation/Factory/Get-SimulationLogs.ps1` . [repository](https://github.com/Azure/azure-iot-connected-factory)
+Simülasyon günlüğü içindeki tüm bileşenler günlük dosyalarına kaydedilir. Bu dosyalar, klasöründeki VM 'de bulunabilir `home/docker/Logs` . Günlükleri almak için depodaki PowerShell betiğini kullanabilirsiniz `Simulation/Factory/Get-SimulationLogs.ps1` . [](https://github.com/Azure/azure-iot-connected-factory)
 
 Bu betiğin VM 'de oturum açması gerekir. Oturum açma için kimlik bilgilerini sağlamanız gerekebilir. Kimlik bilgilerini bulmak için bkz. [BENZETIM VM 'de oturum açma nasıl yaparım?](#how-do-i-sign-in-to-the-simulation-vm) .
 
@@ -125,7 +125,7 @@ Alternatif olarak, SSH aracılığıyla VM 'de oturum açın ve çalışma zaman
 
 ### <a name="how-can-i-check-if-the-simulation-is-sending-data-to-the-cloud"></a>Simülasyonun buluta veri gönderip göndermesinin nasıl kontrol edebilirim?
 
-[Azure IoT Explorer](https://github.com/Azure/azure-iot-explorer) veya [Azure IoT CLI uzantısı izleyici-olayları](/cli/azure/ext/azure-iot/iot/hub?view=azure-cli-latest#ext-azure-iot-az-iot-hub-monitor-events) komutuyla, belirli cihazlardan IoT Hub gönderilen verileri inceleyebilirsiniz. Bu araçları kullanmak için, dağıtımınızdaki IoT Hub 'ı için bağlantı dizesini bilmeniz gerekir. [Çözümünüz tarafından kullanılan IoT Hub 'ı bağlantı dizesini öğrenmek nasıl yaparım? bakın mi?](#how-do-i-find-out-the-connection-string-of-the-iot-hub-used-by-my-solution)
+[Azure IoT Explorer](https://github.com/Azure/azure-iot-explorer) veya [Azure IoT CLI uzantısı izleyici-olayları](/cli/azure/ext/azure-iot/iot/hub#ext-azure-iot-az-iot-hub-monitor-events) komutuyla, belirli cihazlardan IoT Hub gönderilen verileri inceleyebilirsiniz. Bu araçları kullanmak için, dağıtımınızdaki IoT Hub 'ı için bağlantı dizesini bilmeniz gerekir. [Çözümünüz tarafından kullanılan IoT Hub 'ı bağlantı dizesini öğrenmek nasıl yaparım? bakın mi?](#how-do-i-find-out-the-connection-string-of-the-iot-hub-used-by-my-solution)
 
 Yayımcı cihazlarından biri tarafından gönderilen verileri inceleyin:
 
@@ -194,6 +194,5 @@ OPC UA cihazlarından bağlı fabrikaya telemetri verileri göndermek için:
 
 IoT çözüm hızlandırıcılarının diğer özellik ve yeteneklerinden bazılarını da keşfedebilirsiniz:
 
-* [Tahmine Dayalı Bakım çözüm hızlandırıcısına genel bakış](./iot-accelerators-predictive-walkthrough.md)
 * [Bağlı fabrika çözüm Hızlandırıcısını dağıtma](quickstart-connected-factory-deploy.md)
 * [Baştan sona IoT güvenliği](../iot-fundamentals/iot-security-ground-up.md)

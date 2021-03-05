@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.date: 05/08/2020
 ms.author: chez
 ms.reviewer: mariozi
-ms.openlocfilehash: 2a943b82689184353b9d350b931a069df9c35ff2
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 4e30ac2e6836b40ab0c0c2915eae48266cb4845c
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100392706"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102199225"
 ---
 # <a name="encrypt-azure-data-factory-with-customer-managed-keys"></a>Müşteri tarafından yönetilen anahtarlarla Azure Data Factory şifreleyin
 
@@ -22,14 +22,11 @@ Azure Data Factory, verileri bekleyen veri, varlık tanımları ve çalışma s�
 
 Müşteri tarafından yönetilen anahtarları depolamak için Azure Key Vault gereklidir. Kendi anahtarlarınızı oluşturabilir ve bunları bir anahtar kasasında saklayabilir veya Azure Key Vault API 'Lerini kullanarak anahtarlar oluşturabilirsiniz. Anahtar Kasası ve Data Factory aynı Azure Active Directory (Azure AD) kiracısında ve aynı bölgede olmalıdır, ancak farklı aboneliklerde olabilir. Azure Key Vault hakkında daha fazla bilgi için bkz. [Azure Key Vault nedir?](../key-vault/general/overview.md)
 
-> [!NOTE]
-> Müşteri tarafından yönetilen anahtar yalnızca boş bir veri fabrikasında yapılandırılabilir. Data Factory, bağlı hizmetler, işlem hatları ve veri akışları gibi kaynaklar içeremez. Üretici oluşturulduktan sonra müşterinin yönettiği anahtarı etkinleştirmeniz önerilir.
-
 ## <a name="about-customer-managed-keys"></a>Müşteri tarafından yönetilen anahtarlar hakkında
 
 Aşağıdaki diyagramda, Data Factory, müşteri tarafından yönetilen anahtarı kullanarak istek yapmak için Azure Active Directory ve Azure Key Vault nasıl kullandığı gösterilmektedir:
 
-  ![Müşteri tarafından yönetilen anahtarların Azure Data Factory içinde nasıl çalıştığını gösteren diyagram](media/enable-customer-managed-key/encryption-customer-managed-keys-diagram.png)
+  :::image type="content" source="media/enable-customer-managed-key/encryption-customer-managed-keys-diagram.png" alt-text="Müşteri tarafından yönetilen anahtarların Azure Data Factory içinde nasıl çalıştığını gösteren diyagram.":::
 
 Aşağıdaki listede, diyagramdaki numaralandırılmış adımlar açıklanmaktadır:
 
@@ -39,54 +36,83 @@ Aşağıdaki listede, diyagramdaki numaralandırılmış adımlar açıklanmakta
 1. Data Factory, fabrika şifreleme anahtarını Azure Key Vault müşteri anahtarıyla sarar
 1. Okuma/yazma işlemleri için Data Factory, şifreleme ve şifre çözme işlemleri gerçekleştirmek üzere hesap şifreleme anahtarını sarmalamak için Azure Key Vault istekleri gönderir
 
+Veri fabrikaları için müşteri tarafından yönetilen anahtar şifrelemesi eklemenin iki yolu vardır. Birisi Azure portal fabrika oluşturma zamanı sırasında ve diğeri fabrika sonrası oluşturma, Data Factory Kullanıcı arabiriminde.
+
 ## <a name="prerequisites---configure-azure-key-vault-and-generate-keys"></a>Önkoşullar-Azure Key Vault yapılandırma ve anahtarları oluşturma
 
 ### <a name="enable-soft-delete-and-do-not-purge-on-azure-key-vault"></a>Azure Key Vault geçici silme özelliğini etkinleştirme ve Temizleme
 
-Data Factory ile müşteri tarafından yönetilen anahtarların kullanılması Key Vault, __geçici silme__ ve __Temizleme__ için iki özellik ayarlanmasını gerektirir. Bu özellikler, yeni veya mevcut bir anahtar kasasında PowerShell veya Azure CLı kullanılarak etkinleştirilebilir. Mevcut bir anahtar kasasında bu özellikleri etkinleştirmeyi öğrenmek için aşağıdaki makalelerden birinde _geçici silme özelliğini etkinleştirme_ ve _Temizleme korumasını etkinleştirme_ başlıklı bölümlere bakın:
-
-- [PowerShell ile geçici silmeyi kullanma](../key-vault/general/key-vault-recovery.md)
-- [CLı ile geçici silmeyi kullanma](../key-vault/general/key-vault-recovery.md)
+Data Factory ile müşteri tarafından yönetilen anahtarların kullanılması Key Vault, __geçici silme__ ve __Temizleme__ için iki özellik ayarlanmasını gerektirir. Bu özellikler, yeni veya mevcut bir anahtar kasasında PowerShell veya Azure CLı kullanılarak etkinleştirilebilir. Bu özellikleri var olan bir anahtar kasasında nasıl etkinleştireceğinizi öğrenmek için bkz. [Azure Key Vault kurtarma yönetimi, geçici silme ve Temizleme koruması](../key-vault/general/key-vault-recovery.md)
 
 Azure portal aracılığıyla yeni bir Azure Key Vault oluşturuyorsanız, __geçici silme__ ve __Temizleme işlemi__ şu şekilde etkinleştirilebilir:
 
-  ![Ekran görüntüsü Key Vault oluşturulduktan sonra geçici silme ve Temizleme korumasını etkinleştirir](media/enable-customer-managed-key/01-enable-purge-protection.png)
+  :::image type="content" source="media/enable-customer-managed-key/01-enable-purge-protection.png" alt-text="Key Vault oluşturulduktan sonra geçici silme ve Temizleme korumasının nasıl etkinleştirileceğini gösteren ekran görüntüsü.":::
 
 ### <a name="grant-data-factory-access-to-azure-key-vault"></a>Azure Key Vault Data Factory erişim izni verin
 
-Azure Key Vault ve Azure Data Factory aynı Azure Active Directory (Azure AD) kiracısında ve _aynı bölgede_ bulunduğundan emin olun. Azure Key Vault Access Control 'tan, Data Factory 'nin Yönetilen Hizmet Kimliği (MSI) izinlerini şu izinlerle verin: _alma_, _sarmalama_ ve _sarmalama tuşu_. Bu izinler, Data Factory ' de müşteri tarafından yönetilen anahtarları etkinleştirmek için gereklidir.
+Azure Key Vault ve Azure Data Factory aynı Azure Active Directory (Azure AD) kiracısında ve _aynı bölgede_ bulunduğundan emin olun. Azure Key Vault Access Control 'tan, Data Factory 'yi şu izinlerle verin: _Get_, _sarmalama tuşu_ ve _sarmalama tuşu_. Bu izinler, Data Factory ' de müşteri tarafından yönetilen anahtarları etkinleştirmek için gereklidir.
 
-  ![Ekran görüntüsü Key Vault Data Factory erişimi etkinleştirir](media/enable-customer-managed-key/02-access-policy-factory-managed-identities.png)
+* [Data Factory Kullanıcı arabiriminde fabrika oluşturulduktan sonra](#post-factory-creation-in-data-factory-ui)müşteri tarafından yönetilen anahtar şifrelemesi eklemek istiyorsanız, Data Factory 'nin yönetilen hizmet KIMLIĞININ (msı) Key Vault için üç izni olduğundan emin olun
+* [Azure Portal fabrika oluşturma süresi boyunca](#during-factory-creation-in-azure-portal)müşteri tarafından yönetilen anahtar şifrelemesi eklemek istiyorsanız, Kullanıcı tarafından atanan yönetilen KIMLIğIN (UA-mı) Key Vault için üç izni olduğundan emin olun
+
+  :::image type="content" source="media/enable-customer-managed-key/02-access-policy-factory-managed-identities.png" alt-text="Key Vault Data Factory erişimin nasıl etkinleştirileceğini gösteren ekran görüntüsü.":::
 
 ### <a name="generate-or-upload-customer-managed-key-to-azure-key-vault"></a>Azure Key Vault için müşteri tarafından yönetilen anahtar oluştur veya karşıya yükle
 
-Kendi anahtarlarınızı oluşturabilir ve bunları bir anahtar kasasında saklayabilir veya Azure Key Vault API 'Lerini kullanarak anahtarlar oluşturabilirsiniz. Data Factory şifreleme ile yalnızca 2048 bitlik RSA anahtarları desteklenir. Daha fazla bilgi için bkz. [anahtarlar, gizlilikler ve sertifikalar hakkında](../key-vault/general/about-keys-secrets-certificates.md).
+Kendi anahtarlarınızı oluşturabilir ve bunları bir anahtar kasasına kaydedebilirsiniz. Veya anahtarlar oluşturmak için Azure Key Vault API 'Lerini kullanabilirsiniz. Data Factory şifreleme ile yalnızca 2048 bitlik RSA anahtarları desteklenir. Daha fazla bilgi için bkz. [anahtarlar, gizlilikler ve sertifikalar hakkında](../key-vault/general/about-keys-secrets-certificates.md).
 
-  ![Ekran görüntüsü müşteri tarafından yönetilen anahtar oluştur](media/enable-customer-managed-key/03-create-key.png)
+  :::image type="content" source="media/enable-customer-managed-key/03-create-key.png" alt-text="Customer-Managed anahtarın nasıl oluşturulacağını gösteren ekran görüntüsü.":::
 
 ## <a name="enable-customer-managed-keys"></a>Müşteri tarafından yönetilen anahtarları etkinleştir
 
+### <a name="post-factory-creation-in-data-factory-ui"></a>Data Factory Kullanıcı arabiriminde fabrika sonrası oluşturma
+
+Bu bölümde, fabrika oluşturulduktan _sonra_ Data Factory Kullanıcı arabiriminde müşteri tarafından yönetilen anahtar şifrelemesini ekleme işlemi gösterilmektedir.
+
+> [!NOTE]
+> Müşteri tarafından yönetilen anahtar yalnızca boş bir veri fabrikasında yapılandırılabilir. Data Factory, bağlı hizmetler, işlem hatları ve veri akışları gibi kaynaklar içeremez. Üretici oluşturulduktan sonra müşterinin yönettiği anahtarı etkinleştirmeniz önerilir.
+
+> [!IMPORTANT]
+> Bu yaklaşım, yönetilen sanal ağ etkin fabrikalar ile çalışmaz. Bu tür fabrikaları şifrelemek istiyorsanız lütfen [alternatif yolu](#during-factory-creation-in-azure-portal)göz önünde bulundurun.
+
+1. Data Factory 'nin Yönetilen Hizmet Kimliği (MSI), Key Vault için _Al_, _sarmalama anahtarı_ ve _sarmalama_ izinleri içerdiğinden emin olun.
+
 1. Data Factory boş olduğundan emin olun. Data Factory, bağlı hizmetler, işlem hatları ve veri akışları gibi kaynaklar içeremez. Şimdilik, müşteri tarafından yönetilen anahtarı boş olmayan bir fabrikada dağıtmak hataya neden olur.
 
-1. Azure portal anahtar URI 'sini bulmak için Azure Key Vault ' a gidin ve anahtarlar ayarını seçin. İstenen anahtarı seçin ve ardından sürümlerini görüntülemek için anahtara tıklayın. Ayarları görüntülemek için bir anahtar sürüm seçin
+1. Azure portal anahtar URI 'sini bulmak için Azure Key Vault ' a gidin ve anahtarlar ayarını seçin. İstenen anahtarı seçin ve ardından sürümlerini görüntülemek için anahtarı seçin. Ayarları görüntülemek için bir anahtar sürüm seçin
 
-1. URI sağlayan anahtar tanımlayıcı alanının değerini kopyalayın
-
-    ![Key Vault 'den anahtar URI al ekran görüntüsü](media/enable-customer-managed-key/04-get-key-identifier.png)
+1. :::image type="content" source="media/enable-customer-managed-key/04-get-key-identifier.png" alt-text="Key Vault anahtar URI 'sini alma URI ekran görüntüsünü"::: sağlayan anahtar tanımlayıcı alanının değerini kopyalayın.
 
 1. Azure Data Factory portalını başlatın ve sol taraftaki Gezinti çubuğunu kullanarak Data Factory ' e atlayın Yönetim Portalı
 
-1. __Müşterinin ana anahtar__ simgesine tıklayın
-
-    ![Ekran görüntüsü müşteri tarafından yönetilen anahtarı Data Factory etkinleştir](media/enable-customer-managed-key/05-customer-managed-key-configuration.png)
+1. __Müşterinin yönettiği anahtar__ simgesine tıklayın :::image type="content" source="media/enable-customer-managed-key/05-customer-managed-key-configuration.png" alt-text="Data Factory Kullanıcı arabiriminde müşteri tarafından yönetilen anahtarı etkinleştirme ekran görüntüsü.":::
 
 1. Daha önce kopyaladığınız müşteri tarafından yönetilen anahtar için URI girin
 
 1. __Kaydet__ ' e tıklayın, Data Factory için müşteri tarafından yönetilen anahtar şifrelemesi etkinleştirilmiştir
 
+### <a name="during-factory-creation-in-azure-portal"></a>Azure portal içinde fabrika oluşturma sırasında
+
+Bu bölümde, fabrika dağıtımı _sırasında_ Azure Portal, müşteri tarafından yönetilen anahtar şifrelemesini ekleme adımları gösterilmektedir.
+
+Fabrikası şifrelemek için, Data Factory öncelikle müşteri tarafından yönetilen anahtarı Key Vault alması gerekir. Fabrika dağıtımı hala devam ettiğinden Yönetilen Hizmet Kimliği (MSI) Key Vault kimlik doğrulaması için henüz kullanılamıyor. Bu yaklaşımı kullanmak için, müşterinin, Data Factory 'ye Kullanıcı tarafından atanan bir yönetilen kimlik (UA-mı) ataması gerekir. , UA-mı 'de tanımlanan rolleri kabul eteceğiz ve Key Vault kimlik doğrulaması yapacağız.
+
+Kullanıcı tarafından atanan yönetilen kimlik hakkında daha fazla bilgi edinmek için bkz. [yönetilen kimlik türleri](../active-directory/managed-identities-azure-resources/overview.md#managed-identity-types) ve [rol ataması Kullanıcı tarafından atanan yönetilen kimlik](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md).
+
+1. Kullanıcı tarafından atanan yönetilen kimliğin (UA-mı), Key Vault için anahtar _Al_ ve  _sarmalama_ anahtarı izinlerini içerdiğinden emin olun
+
+1. __Gelişmiş__ sekmesinde, Azure Portal 'de veri fabrikası oluşturma deneyimine yönelik gelişmiş sekmesinin _müşteri tarafından yönetilen anahtar ekran görüntüsünü kullanarak şifrelemeyi etkinleştir_ kutusunu işaretleyin 
+   :::image type="content" source="media/enable-customer-managed-key/06-uami-cmk.png" alt-text=".":::
+
+1. Key Vault URL 'sini girin
+
+1. Key Vault kimlik doğrulaması için uygun bir kullanıcı tarafından atanan yönetilen kimlik seçin
+
+1. Fabrika dağıtımına devam et
+
 ## <a name="update-key-version"></a>Anahtar sürümünü Güncelleştir
 
-Bir anahtarın yeni bir sürümünü oluşturduğunuzda, Data Factory 'yi yeni sürümü kullanacak şekilde güncelleştirin. Aşağıdakiler de dahil olmak üzere _Customer-Managed anahtarları etkinleştir_ bölümünde açıklanan benzer adımları izleyin:
+Bir anahtarın yeni bir sürümünü oluşturduğunuzda, Data Factory 'yi yeni sürümü kullanacak şekilde güncelleştirin. Aşağıdaki gibi, bölüm [Data Factory Kullanıcı arabiriminde](#post-factory-creation-in-data-factory-ui)açıklanan benzer adımları izleyin:
 
 1. Yeni anahtar sürümünün URI 'sini Azure Key Vault portalından bulun
 
@@ -98,7 +124,7 @@ Bir anahtarın yeni bir sürümünü oluşturduğunuzda, Data Factory 'yi yeni s
 
 ## <a name="use-a-different-key"></a>Farklı bir anahtar kullanın
 
-Data Factory şifreleme için kullanılan anahtarı değiştirmek için, Data Factory ayarları el ile güncelleştirmeniz gerekir. Aşağıdakiler de dahil olmak üzere _Customer-Managed anahtarları etkinleştir_ bölümünde açıklanan benzer adımları izleyin:
+Data Factory şifreleme için kullanılan anahtarı değiştirmek için, Data Factory ayarları el ile güncelleştirmeniz gerekir. Aşağıdaki gibi, bölüm [Data Factory Kullanıcı arabiriminde](#post-factory-creation-in-data-factory-ui)açıklanan benzer adımları izleyin:
 
 1. Azure Key Vault Portal aracılığıyla yeni anahtar için URI 'yi bulma
 
@@ -108,7 +134,7 @@ Data Factory şifreleme için kullanılan anahtarı değiştirmek için, Data Fa
 
 1. __Kaydet__ ' e tıklayın ve Data Factory şimdi yeni anahtarla şifreleyeceksiniz
 
-## <a name="disable-customer-managed-keys"></a>Customer-Managed anahtarlarını devre dışı bırak
+## <a name="disable-customer-managed-keys"></a>Müşteri tarafından yönetilen anahtarları devre dışı bırak
 
 Tasarıma göre, müşteri tarafından yönetilen anahtar özelliği etkinleştirildikten sonra, ek güvenlik adımını kaldıramazsınız. Fabrika ve verileri şifrelemek için her zaman bir müşteri tarafından sağlanmış anahtar beklenir.
 

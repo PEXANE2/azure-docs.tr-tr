@@ -4,12 +4,12 @@ description: Azure Izleyici için Java aracısında sorun gidermeyi öğrenin Ap
 ms.topic: conceptual
 ms.date: 11/30/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 286354ecf508dec7b9ba7633bf3b5c7ddc6bfd91
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 45f45e71546909b71c71c66303c1459edd74548f
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101737066"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102199620"
 ---
 # <a name="troubleshooting-guide-azure-monitor-application-insights-for-java"></a>Sorun giderme kılavuzu: Java için Azure Izleyici Application Insights
 
@@ -45,7 +45,7 @@ Günlüğe kaydetme işlemi, yalnızca ilk olarak günlüğe kaydetme çerçevel
 
 Belirli bir günlüğe kaydetme bildiriminin günlüğe kaydetme çerçevelerinin yapılandırılmış eşiğini karşılayıp karşılamadığını öğrenmenin en iyi yolu, normal uygulama günlüğinizde (ör. dosya veya konsol) görüntülendiğini doğrulamadır.
 
-Ayrıca, günlükçü için bir özel durum geçirilirse, günlük iletisinin (ve özel durumun) tablo yerine tablonun altında Azure portal gösterileceğini unutmayın `exceptions` `traces` .
+Ayrıca, günlükçü için bir özel durum nesnesi geçirildiğinde, günlük iletisi (ve özel durum nesnesi ayrıntıları) tablo yerine tablonun altında Azure portal gösterir `exceptions` `traces` .
 
 Daha fazla ayrıntı için [Otomatik toplanan günlük yapılandırmasına](./java-standalone-config.md#auto-collected-logging) bakın.
 

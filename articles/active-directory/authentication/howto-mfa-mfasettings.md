@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.custom: contperf-fy20q4
-ms.openlocfilehash: 9566560aaebaaa7ba3fc6d963a30637e33118077
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 8f2bd316c733f4680a266d609e1cc95a4879016d
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101651068"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102198532"
 ---
 # <a name="configure-azure-ad-multi-factor-authentication-settings"></a>Azure AD Multi-Factor Authentication ayarlarını yapılandırma
 
@@ -57,7 +57,7 @@ Hesap kilitleme ayarlarını yapılandırmak için aşağıdaki ayarları doldur
 
 ## <a name="block-and-unblock-users"></a>Kullanıcıları engelle ve engellemeyi kaldır
 
-Bir kullanıcının cihazı kaybolduysa veya çalındıysa, ilişkili hesap için Azure AD Multi-Factor Authentication girişimlerini engelleyebilirsiniz. Engellenen kullanıcılar için Azure AD Multi-Factor Authentication girişimleri otomatik olarak reddedilir. Kullanıcılar engellendikleri tarihten 90 gün sonrasına kadar engellenmiş olarak kalır.
+Bir kullanıcının cihazı kaybolduysa veya çalındıysa, ilişkili hesap için Azure AD Multi-Factor Authentication girişimlerini engelleyebilirsiniz. Engellenen kullanıcılar için Azure AD Multi-Factor Authentication girişimleri otomatik olarak reddedilir. Kullanıcılar engellendikleri tarihten 90 gün sonrasına kadar engellenmiş olarak kalır. Bunu nasıl yapılacağını göstermek için [kiracınızdaki kullanıcıları engelleme ve engellemesini kaldırma](https://www.youtube.com/watch?v=WdeE1On4S1o) hakkında bir video yayımladık.
 
 ### <a name="block-a-user"></a>Kullanıcıyı engelle
 

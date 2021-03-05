@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
 ms.custom: mvc, subject-armqs, devx-track-azurecli
-ms.openlocfilehash: cc55d1569c85dd0873d0132833acc99bd5d06136
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 505859075ce58c5db6873544123710a11135651a
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98928936"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102198634"
 ---
 # <a name="quickstart-set-up-the-iot-hub-device-provisioning-service-dps-with-an-arm-template"></a>Hızlı başlangıç: ARM şablonuyla IoT Hub cihaz sağlama hizmeti 'ni (DPS) ayarlama
 
@@ -136,13 +136,13 @@ Azure hesabınızda oturum açın ve aboneliğinizi seçin.
 
 ## <a name="review-deployed-resources"></a>Dağıtılan kaynakları gözden geçirme
 
-1. Dağıtımı doğrulamak için, [kaynakları listelemek](/cli/azure/resource?view=azure-cli-latest#az-resource-list&preserve-view=true) ve çıktıda yeni sağlama hizmeti ve IoT Hub 'ını aramak için aşağıdaki komutu çalıştırın:
+1. Dağıtımı doğrulamak için, [kaynakları listelemek](/cli/azure/resource#az-resource-list) ve çıktıda yeni sağlama hizmeti ve IoT Hub 'ını aramak için aşağıdaki komutu çalıştırın:
 
     ```azurecli
      az resource list -g "${projectName}rg"
     ```
 
-2. Hub 'ın zaten DPS kaynağına bağlı olduğunu doğrulamak için aşağıdaki [DPS uzantı göster komutunu](/cli/azure/iot/dps?view=azure-cli-latest#az_iot_dps_show&preserve-view=true)çalıştırın.
+2. Hub 'ın zaten DPS kaynağına bağlı olduğunu doğrulamak için aşağıdaki [DPS uzantı göster komutunu](/cli/azure/iot/dps#az_iot_dps_show)çalıştırın.
 
     ```azurecli
      az iot dps show --name <Your provisioningServiceName>

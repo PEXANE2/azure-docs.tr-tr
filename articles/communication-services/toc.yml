@@ -38,6 +38,8 @@
       items:
         - name: Uygulamanıza sesli arama ekleme
           href: quickstarts/voice-video-calling/getting-started-with-calling.md
+        - name: Uygulamanıza video çağrısı ekleme (JavaScript)
+          href: quickstarts/voice-video-calling/get-started-with-video-calling.md
         - name: Arama istemci kitaplığını kullanma
           href: quickstarts/voice-video-calling/calling-client-samples.md
         - name: Arama uygulamanızla bir Teams toplantısına katılma

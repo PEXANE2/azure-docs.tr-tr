@@ -8,15 +8,15 @@ ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
 ms.topic: reference
-ms.date: 02/05/2020
+ms.date: 03/04/2021
 ms.author: kenwith
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 8f5a4d3695722aae14b73bf6bba5f2e38593e08d
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.openlocfilehash: 0334f52b87071c8f363a0dfcc793170316747096
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99255806"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102198515"
 ---
 # <a name="reference-for-writing-expressions-for-attribute-mappings-in-azure-ad"></a>Azure AD 'de öznitelik eşlemeleri için ifade yazma başvurusu
 
@@ -38,7 +38,7 @@ Sağlamayı bir SaaS uygulamasına yapılandırdığınızda, belirtebileceğini
 
 ## <a name="list-of-functions"></a>Işlevlerin listesi
 
-[Sona](#append) &nbsp; &nbsp; Ekle &nbsp; &nbsp; [](#bitand) &nbsp; &nbsp; Bitand &nbsp; &nbsp; [](#cbool) &nbsp; &nbsp; CBool &nbsp; &nbsp; [](#coalesce) &nbsp; &nbsp; Birleşim &nbsp; &nbsp; [](#converttobase64) &nbsp; &nbsp; ConvertToBase64 &nbsp; &nbsp; [](#converttoutf8hex) &nbsp; &nbsp; ConvertToUTF8Hex &nbsp; &nbsp; [](#count) &nbsp; &nbsp; Sayı &nbsp; &nbsp; [](#cstr) &nbsp; &nbsp; CStr &nbsp; &nbsp; [Tarih Fromnum](#datefromnum) &nbsp; [](#formatdatetime) &nbsp; &nbsp; FormatDateTime &nbsp; &nbsp; [](#guid) &nbsp; &nbsp; GUID &nbsp; &nbsp; [](#iif) &nbsp; &nbsp; IIf &nbsp; &nbsp; [](#instr) &nbsp; &nbsp; InStr &nbsp; &nbsp; [](#isnull) &nbsp; &nbsp; IsNull &nbsp; &nbsp; [](#isnullorempty) &nbsp; &nbsp; IsNullOrEmpty &nbsp; &nbsp; [](#ispresent) &nbsp; &nbsp; İssun &nbsp; &nbsp; [](#isstring) &nbsp; &nbsp; İsstrıng &nbsp; &nbsp; [](#item) &nbsp; &nbsp; Öğe &nbsp; &nbsp; [](#join) &nbsp; &nbsp; Katılırsanız &nbsp; &nbsp; [](#left) &nbsp; &nbsp; Sol &nbsp; &nbsp; [](#mid) &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; [](#normalizediacritics) Removeyinelemelerini [desteklemeyen](#not) PARÇAAL, &nbsp; &nbsp; &nbsp; &nbsp; [](#removeduplicates) &nbsp; &nbsp; &nbsp; &nbsp; [](#replace) &nbsp; &nbsp; &nbsp; &nbsp; [selectuniquevalue](#selectuniquevalue) &nbsp; &nbsp; &nbsp; &nbsp; [singleapprotaatama](#singleapproleassignment) &nbsp; &nbsp; &nbsp; &nbsp; [split](#split) &nbsp; &nbsp; &nbsp; &nbsp; [StripSpaces](#stripspaces) &nbsp; &nbsp; &nbsp; &nbsp; [Switch](#switch) &nbsp; &nbsp; &nbsp; &nbsp; [ToLower](#tolower) &nbsp; &nbsp; &nbsp; &nbsp; [ToUpper](#toupper) &nbsp; &nbsp; &nbsp; &nbsp; [Word 'ü](#word) Değiştir
+[Sona](#append) &nbsp; &nbsp; Ekle &nbsp; &nbsp; [](#bitand) &nbsp; &nbsp; Bitand &nbsp; &nbsp; [](#cbool) &nbsp; &nbsp; CBool &nbsp; &nbsp; [](#coalesce) &nbsp; &nbsp; Birleşim &nbsp; &nbsp; [](#converttobase64) &nbsp; &nbsp; ConvertToBase64 &nbsp; &nbsp; [](#converttoutf8hex) &nbsp; &nbsp; ConvertToUTF8Hex &nbsp; &nbsp; [](#count) &nbsp; &nbsp; Sayı &nbsp; &nbsp; [](#cstr) &nbsp; &nbsp; CStr &nbsp; &nbsp; [Tarih Fromnum](#datefromnum) &nbsp; [](#formatdatetime) &nbsp; &nbsp; FormatDateTime &nbsp; &nbsp; [](#guid) &nbsp; &nbsp; GUID &nbsp; &nbsp; [](#iif) &nbsp; &nbsp; IIf &nbsp; &nbsp; [](#instr) &nbsp; &nbsp; InStr &nbsp; &nbsp; [](#isnull) &nbsp; &nbsp; IsNull &nbsp; &nbsp; [](#isnullorempty) &nbsp; &nbsp; IsNullOrEmpty &nbsp; &nbsp; [](#ispresent) &nbsp; &nbsp; İssun &nbsp; &nbsp; [](#isstring) &nbsp; &nbsp; İsstrıng &nbsp; &nbsp; [](#item) &nbsp; &nbsp; Öğe &nbsp; &nbsp; [](#join) &nbsp; &nbsp; Katılırsanız &nbsp; &nbsp; [](#left) &nbsp; &nbsp; Sol &nbsp; &nbsp; [](#mid) &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; [](#normalizediacritics) [](#not) &nbsp; &nbsp; &nbsp; &nbsp; [Numfromdate için numfromdate](#numfromdate) &nbsp; &nbsp; &nbsp; &nbsp; [removeyinelemelerini](#removeduplicates) &nbsp; &nbsp; &nbsp; &nbsp; [değiştirme](#replace) işlemi &nbsp; &nbsp; &nbsp; &nbsp; [selectuniquevalue](#selectuniquevalue) &nbsp; &nbsp; &nbsp; &nbsp; [singleapprotaatama](#singleapproleassignment) &nbsp; &nbsp; &nbsp; &nbsp; [split](#split) &nbsp; &nbsp; &nbsp; &nbsp; [StripSpaces](#stripspaces) &nbsp; &nbsp; &nbsp; &nbsp; [Switch](#switch) &nbsp; &nbsp; &nbsp; &nbsp; [ToLower](#tolower) &nbsp; &nbsp; &nbsp; &nbsp; [ToUpper](#toupper) &nbsp; &nbsp; &nbsp; &nbsp; [Word](#word)
 
 ---
 ### <a name="append"></a>Ekle
@@ -53,6 +53,19 @@ Sağlamayı bir SaaS uygulamasına yapılandırdığınızda, belirtebileceğini
 | --- | --- | --- | --- |
 | **kaynaktaki** |Gerekli |Dize |Genellikle kaynak nesneden özniteliğin adı. |
 | **önekini** |Gerekli |Dize |Kaynak değerin sonuna eklemek istediğiniz dize. |
+
+
+### <a name="append-constant-suffix-to-user-name"></a>Sabit son eki Kullanıcı adına Ekle
+Örnek: Salesforce korumalı alanı kullanıyorsanız, eşitlemeden önce tüm kullanıcı adlarınıza ek bir sonek eklemeniz gerekebilir.
+
+**İfadesini** 
+`Append([userPrincipalName], ".test")`
+
+**Örnek giriş/çıkış:** 
+
+* **Giriş**: (UserPrincipalName): " John.Doe@contoso.com "
+* **Çıkış**: " John.Doe@contoso.com.test "
+
 
 ---
 ### <a name="bitand"></a>BitAnd
@@ -107,6 +120,19 @@ Her iki öznitelik de aynı değere sahip olduğunda true döndürür.
 | --- | --- | --- | --- |
 | **source1 ... Kaynakcen** | Gerekli | Dize |Gerekli, değişken sayısı. Genellikle kaynak nesneden özniteliğin adı. |
 | **Değerinin** | İsteğe Bağlı | Dize | Tüm kaynak değerleri NULL olduğunda kullanılacak varsayılan değer. Boş dize ("") olabilir.
+
+### <a name="flow-mail-value-if-not-null-otherwise-flow-userprincipalname"></a>NULL değilse Flow posta değeri, aksi takdirde Flow userPrincipalName
+Örnek: varsa posta özniteliğini akışa almak istersiniz. Aksi takdirde, bunun yerine userPrincipalName değerini akmasını istersiniz.
+
+**İfadesini** 
+`Coalesce([mail],[userPrincipalName])`
+
+**Örnek giriş/çıkış:** 
+
+* **Giriş** (posta): null
+* **Giriş** (UserPrincipalName): " John.Doe@contoso.com "
+* **Çıkış**: " John.Doe@contoso.com "
+
 
 ---
 ### <a name="converttobase64"></a>ConvertToBase64
@@ -192,7 +218,7 @@ Her iki öznitelik de aynı değere sahip olduğunda true döndürür.
 
 ---
 ### <a name="formatdatetime"></a>FormatDateTime
-**İşlev:** FormatDateTime (kaynak, InPutFormat, outputFormat)
+**İşlev:** FormatDateTime (kaynak, dateTimeStyles, InPutFormat, outputFormat)
 
 **Açıklama:** Bir biçimden tarih dizesi alır ve onu farklı bir biçime dönüştürür.
 
@@ -201,8 +227,24 @@ Her iki öznitelik de aynı değere sahip olduğunda true döndürür.
 | Name | Gerekli/yinelenen | Tür | Notlar |
 | --- | --- | --- | --- |
 | **kaynaktaki** |Gerekli |Dize |Genellikle kaynak nesneden özniteliğin adı. |
+| **dateTimeStyles** | İsteğe Bağlı | Dize | Bir tarih ve saat ayrıştırma yöntemlerinde dize ayrıştırmayı özelleştiren biçimlendirme seçeneklerini belirtmek için bunu kullanın. Desteklenen değerler için bkz. [DateTimeStyles doc](/dotnet/api/system.globalization.datetimestyles). Boş bırakılırsa, kullanılan varsayılan değer DateTimeStyles. Roundüçlü türü, DateTimeStyles. Allowleadingbeyaz, DateTimeStyles. AllowTrailingWhite  |
 | **InPutFormat** |Gerekli |Dize |Kaynak değerinin biçimi bekleniyordu. Desteklenen biçimler için bkz. [/DotNet/Standard/Base-Types/Custom-Date-and-Time-Format-Strings](/dotnet/standard/base-types/custom-date-and-time-format-strings). |
 | **outputFormat** |Gerekli |Dize |Çıkış tarihinin biçimi. |
+
+
+
+### <a name="output-date-as-a-string-in-a-certain-format"></a>Belirli bir biçimde bir dize olarak çıkış tarihi
+Örnek: belirli bir biçimde ServiceNow gibi bir SaaS uygulamasına tarihler göndermek istersiniz. Aşağıdaki ifadeyi kullanmayı düşünebilirsiniz. 
+
+**İfadesini** 
+
+`FormatDateTime([extensionAttribute1], , "yyyyMMddHHmmss.fZ", "yyyy-MM-dd")`
+
+**Örnek giriş/çıkış:**
+
+* **Giriş** (extensionAttribute1): "20150123105347.1 z"
+* **Çıkış**: "2015-01-23"
+
 
 ---
 ### <a name="guid"></a>Guid
@@ -391,6 +433,18 @@ Dize Numchar 'lar içinde belirtilen sayıdan daha az karakter içeriyorsa, dize
 | --- | --- | --- | --- |
 | **kaynaktaki** |Gerekli |Dize | Genellikle ad veya soyadı özniteliği. |
 
+
+### <a name="remove-diacritics-from-a-string"></a>Bir dizeden aksanları kaldırma
+Örnek: vurgu işaretleri içeren karakterleri, vurgu işaretleri içermeyen denk karakterlerle değiştirmeniz gerekir.
+
+**İfade:** Normalizediacritika ([1})
+
+**Örnek giriş/çıkış:** 
+
+* **Giriş** (Zoë): ""
+* **Çıkış**: "Bure"
+
+
 ---
 ### <a name="not"></a>Not
 **İşlev:** Not (kaynak)
@@ -417,10 +471,10 @@ Dize Numchar 'lar içinde belirtilen sayıdan daha az karakter içeriyorsa, dize
 
 **Örnek:**
 * İşgünü örneği AD içindeki *2020-12-31-08:00* Ile *AccountExpires* alanında bulunan saat dilimi ' nden *sözleşmeli Tenddate* özniteliğini eşlemek istediğinizi varsayarsak, bu işlevi kullanabilir ve saat dilimi sapmasını yerel ayarınızdan eşleşecek şekilde değiştirebilirsiniz. 
-  `NumFromDate(Join("", FormatDateTime([ContractEndDate], "yyyy-MM-ddzzz", "yyyy-MM-dd"), "T23:59:59-08:00"))`
+  `NumFromDate(Join("", FormatDateTime([ContractEndDate], ,"yyyy-MM-ddzzz", "yyyy-MM-dd"), "T23:59:59-08:00"))`
 
 * AD içinde *M/d/yyyy HH: mm: ss TT* Ile *AccountExpires* alanı biçimindeki *EndDate* özniteliğini, bu işlevi nasıl kullanabileceğinizi ve saat dilimi sapmasını yerel ayarınızdan eşleşecek şekilde nasıl değiştirebildiğiniz hakkında bir örnektir.
-  `NumFromDate(Join("",FormatDateTime([endDate],"M/d/yyyy hh:mm:ss tt","yyyy-MM-dd"),"T23:59:59-08:00"))`
+  `NumFromDate(Join("",FormatDateTime([endDate], ,"M/d/yyyy hh:mm:ss tt","yyyy-MM-dd"),"T23:59:59-08:00"))`
 
 
 ---
@@ -473,6 +527,19 @@ Dize Numchar 'lar içinde belirtilen sayıdan daha az karakter içeriyorsa, dize
 | **replacementAttributeName** |İsteğe Bağlı |Dize |Değiştirme değeri için kullanılacak özniteliğin adı |
 | **şablonlarını** |İsteğe Bağlı |Dize |**Şablon** değeri sağlandığında, şablon içinde **OldValue** aranacağı ve bunu **kaynak** değerle değiştirecek. |
 
+### <a name="replace-characters-using-a-regular-expression"></a>Normal ifade kullanarak karakterleri değiştirme
+Örnek: bir normal ifade değeriyle eşleşen karakterler bulmanız ve bunları kaldırmanız gerekir.
+
+**İfadesini** 
+
+Replace ([Mailtakma ad],, "[a-zA-Z_] *",, "",,)
+
+**Örnek giriş/çıkış:**
+
+* **Giriş** (mailtakma ad: "john_doe72"
+* **Çıkış**: "72"
+
+
 ---
 ### <a name="selectuniquevalue"></a>SelectUniqueValue
 **İşlev:** SelectUniqueValue (uniqueValueRule1, uniqueValueRule2, uniqueValueRule3,...)
@@ -481,7 +548,7 @@ Dize Numchar 'lar içinde belirtilen sayıdan daha az karakter içeriyorsa, dize
 
 
  - Bu, üst düzey bir işlevdir, iç içe geçirilemez.
- - Bu işlev, eşleşen önceliği olan özniteliklere uygulanamaz.   
+ - Bu işlev, eşleşen önceliği olan özniteliklere uygulanamaz.     
  - Bu işlev yalnızca giriş oluşturmaları için kullanılmak üzere tasarlanmıştır. Bir özniteliğiyle birlikte kullanıldığında, **uygulamayı Uygula** özelliğini **yalnızca nesne oluşturma sırasında** olarak ayarlayın.
  - Bu işlev şu anda yalnızca "Kullanıcı sağlama Active Directory için Workday" ve "Kullanıcı sağlamasını Active Directory başarılı olan" için desteklenir. Diğer sağlama uygulamalarıyla birlikte kullanılamaz. 
 
@@ -491,6 +558,28 @@ Dize Numchar 'lar içinde belirtilen sayıdan daha az karakter içeriyorsa, dize
 | Name | Gerekli/yinelenen | Tür | Notlar |
 | --- | --- | --- | --- |
 | **uniqueValueRule1 ... uniqueValueRuleN** |En az 2 gerekir, üst sınır yoktur |Dize | Değerlendirilecek benzersiz değer oluşturma kurallarının listesi. |
+
+### <a name="generate-unique-value-for-userprincipalname-upn-attribute"></a>UserPrincipalName (UPN) özniteliği için benzersiz değer oluştur
+Örnek: kullanıcının adı, ikinci adı ve soyadı temelinde UPN özniteliği için bir değer oluşturmanız ve değeri UPN özniteliğine atamadan önce hedef AD dizininde benzersizliği denetlemeniz gerekir.
+
+**İfadesini** 
+
+```ad-attr-mapping-expr
+    SelectUniqueValue( 
+        Join("@", NormalizeDiacritics(StripSpaces(Join(".",  [PreferredFirstName], [PreferredLastName]))), "contoso.com"), 
+        Join("@", NormalizeDiacritics(StripSpaces(Join(".",  Mid([PreferredFirstName], 1, 1), [PreferredLastName]))), "contoso.com"),
+        Join("@", NormalizeDiacritics(StripSpaces(Join(".",  Mid([PreferredFirstName], 1, 2), [PreferredLastName]))), "contoso.com")
+    )
+```
+
+**Örnek giriş/çıkış:**
+
+* **Giriş** (preferredfirstname): "John"
+* **Giriş** (preferredlastname): "Smith"
+* **Çıkış**: " John.Smith@contoso.com " için UPN değeri John.Smith@contoso.com zaten dizinde yoksa
+* **Çıkış**: " J.Smith@contoso.com " dizininde UPN değeri John.Smith@contoso.com zaten varsa
+* **Çıkış**: Jo.Smith@contoso.com Yukarıdaki iki UPN değeri dizinde zaten mevcutsa ""
+
 
 
 ---
@@ -517,6 +606,17 @@ Dize Numchar 'lar içinde belirtilen sayıdan daha az karakter içeriyorsa, dize
 | --- | --- | --- | --- |
 | **kaynaktaki** |Gerekli |Dize |Güncelleştirilecek **kaynak** değeri. |
 | **ayırıcı** |Gerekli |Dize |Dizeyi ayırmak için kullanılacak karakteri belirtir (örneğin: ",") |
+
+### <a name="split-a-string-into-a-multi-valued-array"></a>Dizeyi çok değerli bir diziye bölme
+Örnek: virgülle ayrılmış bir dize listesi almanız ve bunları Salesforce 'ın PermissionSets özniteliği gibi bir çok değerli özniteliğe takılmış bir diziye bölmeniz gerekir. Bu örnekte, Azure AD 'de extensionAttribute5 'de izin kümelerinin bir listesi doldurulmuştur.
+
+**İfade:** Böl ([extensionAttribute5], ",")
+
+**Örnek giriş/çıkış:** 
+
+* **Giriş** (extensionAttribute5): "PermissionSetOne, Permissionsettingwo"
+* **Çıkış**: ["Permissionsetone", "Permissionsettingwo"]
+
 
 ---
 ### <a name="stripspaces"></a>StripSpaces
@@ -545,6 +645,18 @@ Dize Numchar 'lar içinde belirtilen sayıdan daha az karakter içeriyorsa, dize
 | **anahtar** |Gerekli |Dize |**Kaynak** değeri Karşılaştırılacak **anahtar** . |
 | **değer** |Gerekli |Dize |Anahtarla eşleşen **kaynak** için değiştirme değeri. |
 
+### <a name="replace-a-value-based-on-predefined-set-of-options"></a>Önceden tanımlanmış seçenek kümesine göre bir değeri değiştirin
+Örnek: Azure AD 'de depolanan durum koduna göre kullanıcının saat dilimini tanımlamanız gerekir. Durum kodu önceden tanımlanmış seçeneklerle eşleşmezse, "Avustralya/Sidney" varsayılan değerini kullanın.
+
+**İfadesini** 
+`Switch([state], "Australia/Sydney", "NSW", "Australia/Sydney","QLD", "Australia/Brisbane", "SA", "Australia/Adelaide")`
+
+**Örnek giriş/çıkış:**
+
+* **Giriş** (durum): "QLD"
+* **Çıkış**: "Avustralya/Brisbane"
+
+
 ---
 ### <a name="tolower"></a>ToLower
 **İşlev:** ToLower (kaynak, kültür)
@@ -557,6 +669,18 @@ Dize Numchar 'lar içinde belirtilen sayıdan daha az karakter içeriyorsa, dize
 | --- | --- | --- | --- |
 | **kaynaktaki** |Gerekli |Dize |Genellikle kaynak nesneden özniteliğin adı |
 | **ayarı** |İsteğe Bağlı |Dize |RFC 4646 ' i temel alan kültür adı biçimi *languagecode2-Country/regioncode2*, burada *languagecode2* iki harfli dil kodu ve *Ülke/regioncode2* ise iki harfli alt kültür kodudur. Japonca (Japonya) için ja-JP ve Ingilizce (Birleşik Devletler) için en-US sayılabilir. İki harfli dil kodunun kullanılamadığı durumlarda ISO 639-2 ' den türetilen üç harfli bir kod kullanılır.|
+
+### <a name="convert-generated-userprincipalname-upn-value-to-lower-case"></a>Oluşturulan userPrincipalName (UPN) değerini küçük harfe Dönüştür
+Örnek: PreferredFirstName ve PreferredLastName kaynak alanlarını birleştirerek ve tüm karakterleri küçük harfe dönüştürerek UPN değerini oluşturmak istersiniz. 
+
+`ToLower(Join("@", NormalizeDiacritics(StripSpaces(Join(".",  [PreferredFirstName], [PreferredLastName]))), "contoso.com"))`
+
+**Örnek giriş/çıkış:**
+
+* **Giriş** (preferredfirstname): "John"
+* **Giriş** (preferredlastname): "Smith"
+* **Çıkış**: " john.smith@contoso.com "
+
 
 ---
 ### <a name="toupper"></a>ToUpper
@@ -601,6 +725,8 @@ Dize sayı olan sözcüklerden daha az sözcük içeriyorsa veya dize sınırlay
 ---
 
 ## <a name="examples"></a>Örnekler
+Bu bölümde daha fazla ifade işlevi kullanım örnekleri sunulmaktadır. 
+
 ### <a name="strip-known-domain-name"></a>Bilinen etki alanı adını şeridi
 Kullanıcı adı almak için kullanıcının e-postalarından bilinen bir etki alanı adını çıkarmanız gerekir. Örneğin, etki alanı "contoso.com" ise aşağıdaki ifadeyi kullanabilirsiniz:
 
@@ -612,16 +738,6 @@ Kullanıcı adı almak için kullanıcının e-postalarından bilinen bir etki a
 * **Giriş** (posta): " john.doe@contoso.com "
 * **Çıkış**: "John. tikan"
 
-### <a name="append-constant-suffix-to-user-name"></a>Sabit son eki Kullanıcı adına Ekle
-Salesforce korumalı alanı kullanıyorsanız, eşitlemeden önce tüm kullanıcı adlarınıza ek bir sonek eklemeniz gerekebilir.
-
-**İfadesini** 
-`Append([userPrincipalName], ".test")`
-
-**Örnek giriş/çıkış:** 
-
-* **Giriş**: (UserPrincipalName): " John.Doe@contoso.com "
-* **Çıkış**: " John.Doe@contoso.com.test "
 
 ### <a name="generate-user-alias-by-concatenating-parts-of-first-and-last-name"></a>Birinci ve soyadı parçalarını birleştirerek kullanıcı diğer adı oluştur
 Kullanıcının ilk adının ilk 3 harfini ve Kullanıcı adının ilk 5 harfini ayırarak bir kullanıcı diğer adı oluşturmanız gerekir.
@@ -635,105 +751,6 @@ Kullanıcının ilk adının ilk 3 harfini ve Kullanıcı adının ilk 5 harfini
 * **Giriş** (soyad): "tikan"
 * **Çıkış**: "cantikan"
 
-### <a name="remove-diacritics-from-a-string"></a>Bir dizeden aksanları kaldırma
-Vurgu işaretleri içeren karakterleri, vurgu işaretleri içermeyen denk karakterlerle değiştirmeniz gerekir.
-
-**İfade:** Normalizediacritika ([1})
-
-**Örnek giriş/çıkış:** 
-
-* **Giriş** (Zoë): ""
-* **Çıkış**: "Bure"
-
-### <a name="split-a-string-into-a-multi-valued-array"></a>Dizeyi çok değerli bir diziye bölme
-Virgülle ayrılmış dizelerin bir listesini almanız ve bunları Salesforce 'ın PermissionSets özniteliği gibi bir çok değerli özniteliğe takılmış bir diziye bölmeniz gerekir. Bu örnekte, Azure AD 'de extensionAttribute5 'de izin kümelerinin bir listesi doldurulmuştur.
-
-**İfade:** Böl ([extensionAttribute5], ",")
-
-**Örnek giriş/çıkış:** 
-
-* **Giriş** (extensionAttribute5): "PermissionSetOne, Permissionsettingwo"
-* **Çıkış**: ["Permissionsetone", "Permissionsettingwo"]
-
-### <a name="output-date-as-a-string-in-a-certain-format"></a>Belirli bir biçimde bir dize olarak çıkış tarihi
-Belirli bir biçimde bir SaaS uygulamasına tarihler göndermek istiyorsunuz. Örneğin, ServiceNow için tarihleri biçimlendirmek istiyorsunuz.
-
-**İfadesini** 
-
-`FormatDateTime([extensionAttribute1], "yyyyMMddHHmmss.fZ", "yyyy-MM-dd")`
-
-**Örnek giriş/çıkış:**
-
-* **Giriş** (extensionAttribute1): "20150123105347.1 z"
-* **Çıkış**: "2015-01-23"
-
-### <a name="replace-a-value-based-on-predefined-set-of-options"></a>Önceden tanımlanmış seçenek kümesine göre bir değeri değiştirin
-
-Kullanıcının saat dilimini Azure AD 'de depolanan durum koduna göre tanımlamanız gerekir. Durum kodu önceden tanımlanmış seçeneklerle eşleşmezse, "Avustralya/Sidney" varsayılan değerini kullanın.
-
-**İfadesini** 
-`Switch([state], "Australia/Sydney", "NSW", "Australia/Sydney","QLD", "Australia/Brisbane", "SA", "Australia/Adelaide")`
-
-**Örnek giriş/çıkış:**
-
-* **Giriş** (durum): "QLD"
-* **Çıkış**: "Avustralya/Brisbane"
-
-### <a name="replace-characters-using-a-regular-expression"></a>Normal ifade kullanarak karakterleri değiştirme
-Normal ifade değeriyle eşleşen karakterler bulmanız ve bunları kaldırmanız gerekir.
-
-**İfadesini** 
-
-Replace ([Mailtakma ad],, "[a-zA-Z_] *",, "",,)
-
-**Örnek giriş/çıkış:**
-
-* **Giriş** (mailtakma ad: "john_doe72"
-* **Çıkış**: "72"
-
-### <a name="convert-generated-userprincipalname-upn-value-to-lower-case"></a>Oluşturulan userPrincipalName (UPN) değerini küçük harfe Dönüştür
-Aşağıdaki örnekte, UPN değeri PreferredFirstName ve PreferredLastName kaynak alanları birleştirerek oluşturulur ve tüm karakterleri küçük harfe dönüştürmek için ToLower işlevi oluşturulan dize üzerinde çalışır. 
-
-`ToLower(Join("@", NormalizeDiacritics(StripSpaces(Join(".",  [PreferredFirstName], [PreferredLastName]))), "contoso.com"))`
-
-**Örnek giriş/çıkış:**
-
-* **Giriş** (preferredfirstname): "John"
-* **Giriş** (preferredlastname): "Smith"
-* **Çıkış**: " john.smith@contoso.com "
-
-### <a name="generate-unique-value-for-userprincipalname-upn-attribute"></a>UserPrincipalName (UPN) özniteliği için benzersiz değer oluştur
-Kullanıcının adı, ikinci adı ve soyadı temelinde, UPN özniteliği için bir değer oluşturmanız ve değeri UPN özniteliğine atamadan önce hedef AD dizininde benzersizliği denetlemeniz gerekir.
-
-**İfadesini** 
-
-```ad-attr-mapping-expr
-    SelectUniqueValue( 
-        Join("@", NormalizeDiacritics(StripSpaces(Join(".",  [PreferredFirstName], [PreferredLastName]))), "contoso.com"), 
-        Join("@", NormalizeDiacritics(StripSpaces(Join(".",  Mid([PreferredFirstName], 1, 1), [PreferredLastName]))), "contoso.com"),
-        Join("@", NormalizeDiacritics(StripSpaces(Join(".",  Mid([PreferredFirstName], 1, 2), [PreferredLastName]))), "contoso.com")
-    )
-```
-
-**Örnek giriş/çıkış:**
-
-* **Giriş** (preferredfirstname): "John"
-* **Giriş** (preferredlastname): "Smith"
-* **Çıkış**: " John.Smith@contoso.com " için UPN değeri John.Smith@contoso.com zaten dizinde yoksa
-* **Çıkış**: " J.Smith@contoso.com " dizininde UPN değeri John.Smith@contoso.com zaten varsa
-* **Çıkış**: Jo.Smith@contoso.com Yukarıdaki iki UPN değeri dizinde zaten mevcutsa ""
-
-### <a name="flow-mail-value-if-not-null-otherwise-flow-userprincipalname"></a>NULL değilse Flow posta değeri, aksi takdirde Flow userPrincipalName
-Varsa posta özniteliğini akışa almak istiyorsunuz. Aksi takdirde, bunun yerine userPrincipalName değerini akmasını istersiniz.
-
-**İfadesini** 
-`Coalesce([mail],[userPrincipalName])`
-
-**Örnek giriş/çıkış:** 
-
-* **Giriş** (posta): null
-* **Giriş** (UserPrincipalName): " John.Doe@contoso.com "
-* **Çıkış**: " John.Doe@contoso.com "
 
 ## <a name="related-articles"></a>İlgili Makaleler
 * [SaaS uygulamalarına Kullanıcı sağlamasını/sağlamayı kaldırmayı otomatikleştirme](../app-provisioning/user-provisioning.md)

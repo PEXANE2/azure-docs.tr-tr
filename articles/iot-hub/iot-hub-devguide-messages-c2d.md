@@ -9,12 +9,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 03/15/2018
 ms.custom: mqtt, devx-track-azurecli
-ms.openlocfilehash: ba58f7897827cf7ce7f6156df1434733d89d7f42
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 5515d1084b28091cf7d20958cfca8af3f2664563
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94844463"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102199501"
 ---
 # <a name="send-cloud-to-device-messages-from-an-iot-hub"></a>IoT Hub 'ından buluttan cihaza iletileri gönderme
 
@@ -42,7 +42,7 @@ Bir cihaz ayrıca şunları yapabilir:
 
 * IoT Hub 'ının onu *ölü* duruma getirmesine neden olan iletiyi *reddedin* . Message Queuing telemetri taşıma (MQTT) protokolü üzerinden bağlanan cihazlar, buluttan cihaza iletileri reddedemez.
 
-* *Abandon* Durumu *sıraya alındı* olarak ayarlanmış şekilde, IoT Hub 'ının iletiyi sıraya geri yerleştirmesine neden olan iletiyi bırakın. MQTT protokolü üzerinden bağlanan cihazlar, buluttan cihaza iletileri iptal edemiyor.
+*  Durumu *sıraya alındı* olarak ayarlanmış şekilde, IoT Hub 'ının iletiyi sıraya geri yerleştirmesine neden olan iletiyi bırakın. MQTT protokolü üzerinden bağlanan cihazlar, buluttan cihaza iletileri iptal edemiyor.
 
 Bir iş parçacığı, IoT Hub 'ına bildirimde bulunmadan bir iletiyi işleyemeyebilir. Bu durumda, iletiler, *görünürlük* zaman aşımı (veya *kilit* zaman aşımı) sonrasında *görünmeyen* durumdan *sıraya alınan* duruma otomatik olarak geçer. Bu zaman aşımı değeri bir dakikadır ve değiştirilemez.
 
@@ -147,7 +147,7 @@ Yapılandırma seçeneklerini aşağıdaki yollarla ayarlayabilirsiniz:
 
     ![Portalda, buluttan cihaza mesajlaşma için yapılandırma seçeneklerini ayarlama](./media/iot-hub-devguide-messages-c2d/c2d-configuration-portal.png)
 
-* **Azure CLI**: [az IoT Hub Update](/cli/azure/iot/hub?view=azure-cli-latest#az-iot-hub-update) komutunu kullanın:
+* **Azure CLI**: [az IoT Hub Update](/cli/azure/iot/hub#az-iot-hub-update) komutunu kullanın:
 
     ```azurecli
     az iot hub update --name {your IoT hub name} \

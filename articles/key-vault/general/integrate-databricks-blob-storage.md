@@ -6,12 +6,12 @@ ms.author: mbaldwin
 ms.service: key-vault
 ms.topic: tutorial
 ms.date: 06/16/2020
-ms.openlocfilehash: ba80d78cbc7d34b1496daffbd489a1d0dbfed8b4
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: fc33b24aac8964d0a8390b4b38c5e1862ed639a8
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93285666"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102198923"
 ---
 # <a name="tutorial-access-azure-blob-storage-using-azure-databricks-and-azure-key-vault"></a>Öğretici: Azure Databricks ve Azure Key Vault kullanarak Azure Blob depolamaya erişin
 
@@ -29,11 +29,11 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
-Bu öğreticiye başlamadan önce [Azure CLI](/cli/azure/install-azure-cli-windows?view=azure-cli-latest)'yı yükleyebilirsiniz.
+Bu öğreticiye başlamadan önce [Azure CLI](/cli/azure/install-azure-cli-windows)'yı yükleyebilirsiniz.
 
 ## <a name="create-a-storage-account-and-blob-container-with-azure-cli"></a>Azure CLı ile bir depolama hesabı ve BLOB kapsayıcısı oluşturma
 
-Blob 'ları kullanmak için önce genel amaçlı bir depolama hesabı oluşturmanız gerekir. Bir [kaynak grubunuz](/cli/azure/group?view=azure-cli-latest#az-group-create)yoksa, komutu çalıştırmadan önce bir tane oluşturun. Aşağıdaki komut, depolama kapsayıcısının meta verilerini oluşturur ve görüntüler. **Kimliği** kopyalayın.
+Blob 'ları kullanmak için önce genel amaçlı bir depolama hesabı oluşturmanız gerekir. Bir [kaynak grubunuz](/cli/azure/group#az-group-create)yoksa, komutu çalıştırmadan önce bir tane oluşturun. Aşağıdaki komut, depolama kapsayıcısının meta verilerini oluşturur ve görüntüler. **Kimliği** kopyalayın.
 
 ```azurecli
 az storage account create --name contosoblobstorage5 --resource-group contosoResourceGroup --location eastus --sku Standard_ZRS --encryption-services blob
@@ -77,7 +77,7 @@ az storage account keys list -g contosoResourceGroup5 -n contosoblobstorage5
 
 ## <a name="create-a-key-vault-and-set-a-secret"></a>Key Vault oluşturma ve gizli anahtar ayarlama
 
-Aşağıdaki komutu kullanarak bir Key Vault oluşturacaksınız. Bu komut Key Vault meta verilerini de görüntüler. **Kimliği** ve **Vaulturi** 'yi kopyalayın.
+Aşağıdaki komutu kullanarak bir Key Vault oluşturacaksınız. Bu komut Key Vault meta verilerini de görüntüler. **Kimliği** ve **Vaulturi**'yi kopyalayın.
 
 ```azurecli
 az keyvault create --name contosoKeyVault10 --resource-group contosoResourceGroup5 --location eastus

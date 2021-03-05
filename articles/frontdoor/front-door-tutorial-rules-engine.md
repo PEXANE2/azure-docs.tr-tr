@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 09/09/2020
 ms.author: duau
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: c15b6115c2b07503320cd7b5f3c790be03aeea94
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 5d26d36c9f4ecb4aa0c7114b1ebef066e104f175
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92278130"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102198872"
 ---
 # <a name="tutorial-configure-your-rules-engine"></a>Öğretici: kurallar altyapısını yapılandırma
 
@@ -29,7 +29,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > - Portalı kullanarak kural altyapısını yapılandırın.
 > - Azure CLı kullanarak kural altyapısını yapılandırma
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Bu öğreticideki adımları tamamlayabilmeniz için öncelikle bir Front Door oluşturmanız gerekir. Daha fazla bilgi için bkz. [Hızlı başlangıç: Front Door oluşturma](quickstart-create-front-door.md).
 
@@ -51,14 +51,14 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 1. Bir veya daha fazla kural oluşturduktan sonra **Kaydet**' e basın. Bu eylem, kural altyapısı yapılandırmanızı oluşturur.
 
-1. Bir veya daha fazla yapılandırma oluşturduktan sonra, bir kural altyapısı yapılandırmasını bir yol kuralıyla ilişkilendirin. Tek bir yapılandırma birçok yol kuralına uygulanamadığından, bir yol kuralında yalnızca bir kural Altyapısı yapılandırması bulunabilir. İlişkilendirmeyi yapmak için **ön kapılı tasarımcı**  >  **yol kurallarınızın**bölümüne gidin. Kural altyapısı yapılandırmasını eklemek istediğiniz yol kuralını seçin, **yol ayrıntıları**  >  **kuralları altyapı yapılandırması**' na gidin ve ilişkilendirmek istediğiniz yapılandırmayı seçin.
+1. Bir veya daha fazla yapılandırma oluşturduktan sonra, bir kural altyapısı yapılandırmasını bir yol kuralıyla ilişkilendirin. Tek bir yapılandırma birçok yol kuralına uygulanamadığından, bir yol kuralında yalnızca bir kural Altyapısı yapılandırması bulunabilir. İlişkilendirmeyi yapmak için **ön kapılı tasarımcı**  >  **yol kurallarınızın** bölümüne gidin. Kural altyapısı yapılandırmasını eklemek istediğiniz yol kuralını seçin, **yol ayrıntıları**  >  **kuralları altyapı yapılandırması**' na gidin ve ilişkilendirmek istediğiniz yapılandırmayı seçin.
 
     ![Bir yönlendirme kuralına yapılandırma](./media/front-door-rules-engine/rules-engine-tutorial-5.png)
 
 
 ## <a name="configure-rules-engine-in-azure-cli"></a>Azure CLı 'de kural altyapısını yapılandırma
 
-1. Henüz yapmadıysanız [Azure CLI](/cli/azure/install-azure-cli?preserve-view=true&view=azure-cli-latest)'yı yükleyemezsiniz. "Ön kapı" uzantısı ekleyin:-az Extension Add--Name ön kapısı. Ardından, oturum açın ve aboneliğinize geçiş yapın az Account set--Subscription <name_or_Id>.
+1. Henüz yapmadıysanız [Azure CLI](/cli/azure/install-azure-cli)'yı yükleyemezsiniz. "Ön kapı" uzantısı ekleyin:-az Extension Add--Name ön kapısı. Ardından, oturum açın ve aboneliğinize geçiş yapın az Account set--Subscription <name_or_Id>.
 
 1. Bir kural altyapısı oluşturarak başlayın-Bu örnekte, bir üst bilgi tabanlı eyleme ve bir eşleşme koşuluna sahip bir kural gösterilmektedir. 
 
@@ -96,7 +96,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
     az network front-door routing-rule update -g {rg} -f {front_door} -n {routing_rule_name} --remove rulesEngine # case sensitive word ‘rulesEngine’
     ```
 
-Daha fazla bilgi için, [burada](/cli/azure/ext/front-door/network/front-door/rules-engine?preserve-view=true&view=azure-cli-latest)AFD kuralları altyapı komutlarının tam listesini bulabilirsiniz.   
+Daha fazla bilgi için, [burada](/cli/azure/ext/front-door/network/front-door/rules-engine)AFD kuralları altyapı komutlarının tam listesini bulabilirsiniz.   
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
@@ -108,11 +108,11 @@ Yukarıdaki adımlarda, kural altyapısı yapılandırmasını Yönlendirme kura
 
 1. Bu kural altyapısı yapılandırmasının ilişkilendirildiği tüm yönlendirme kurallarının işaretini kaldırın ve Kaydet ' e tıklayın.
 
-    :::image type="content" source="./media/front-door-rules-engine/front-door-routing-rule-association.png" alt-text="Yönlendirme kurallarını ilişkilendir":::
+    :::image type="content" source="./media/front-door-rules-engine/front-door-routing-rule-association.png" alt-text="Yönlendirme kuralı ilişkilendirmesi":::
 
 1. Artık, kural altyapısı yapılandırmasını ön kapısından silebilirsiniz.
 
-    :::image type="content" source="./media/front-door-rules-engine/front-door-delete-rule-engine-configuration.png" alt-text="Yönlendirme kurallarını ilişkilendir":::
+    :::image type="content" source="./media/front-door-rules-engine/front-door-delete-rule-engine-configuration.png" alt-text="Kural altyapısı yapılandırmasını sil":::
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

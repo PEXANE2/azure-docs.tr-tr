@@ -5,13 +5,13 @@ ms.service: data-factory
 ms.topic: conceptual
 author: dcstwh
 ms.author: weetok
-ms.date: 08/31/2020
-ms.openlocfilehash: fb9439bc37fcecf1cb5299a09916ebe21c5bc1cb
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.date: 03/04/2021
+ms.openlocfilehash: 06d04eb8679b4484f330b69a8cffb263d353bdcd
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100393828"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102197909"
 ---
 # <a name="global-parameters-in-azure-data-factory"></a>Azure Data Factory genel parametreler
 
@@ -21,7 +21,7 @@ Genel parametreler, herhangi bir ifadede bir işlem hattı tarafından tüketile
 
 ## <a name="creating-global-parameters"></a>Genel parametreler oluşturma
 
-Genel parametre oluşturmak için, *Yönet* bölümündeki *genel parametreler* sekmesine gidin. **Yeni** ' yi seçerek oluşturma yan-NAV ' ı açın.
+Genel parametre oluşturmak için, **Yönet** bölümündeki *genel parametreler* sekmesine gidin. **Yeni** ' yi seçerek oluşturma yan-NAV ' ı açın.
 
 ![Genel parametreler oluşturmak için seçtiğiniz yeni düğmeyi vurgulayan ekran görüntüsü.](media/author-global-parameters/create-global-parameter-1.png)
 
@@ -46,7 +46,10 @@ Sürekli tümleştirme ve dağıtım çözümünüzde genel parametreleri tümle
 * ARM şablonuna genel parametreleri ekleyin
 * PowerShell betiği aracılığıyla genel parametreleri dağıtma
 
-Çoğu kullanım durumu için, ARM şablonuna genel parametreleri eklemeniz önerilir. Bu, yerel olarak [CI/CD belgesi](continuous-integration-deployment.md)içinde özetlenen çözümle tümleştirilir. Genel parametreler, genellikle ortamdan ortama geçiş yaparken varsayılan olarak ARM şablon parametresi olarak eklenecektir. Yönetim hub 'ından ARM şablonunda genel parametrelerin dahil edilmesini sağlayabilirsiniz.
+Çoğu kullanım durumu için, ARM şablonuna genel parametreleri eklemeniz önerilir. Bu, yerel olarak [CI/CD belgesi](continuous-integration-deployment.md)içinde özetlenen çözümle tümleştirilir. Genel parametreler, genellikle ortamdan ortama geçiş yaparken varsayılan olarak ARM şablon parametresi olarak eklenecektir. **Yönetim** hub 'ından ARM şablonunda genel parametrelerin dahil edilmesini sağlayabilirsiniz.
+
+> [!NOTE]
+> **ARM şablonu yapılandırmasına dahil etme** yalnızca "git modunda" bulunabilir. Şu anda "canlı modda" veya "Data Factory" modunda devre dışı bırakılmıştır.
 
 ![ARM şablonuna Ekle](media/author-global-parameters/include-arm-template.png)
 

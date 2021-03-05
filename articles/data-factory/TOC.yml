@@ -13,7 +13,7 @@
   items:
     - name: Veri fabrikası oluşturma - Kullanıcı arabirimi (UI)
       href: quickstart-create-data-factory-portal.md
-    - name: Veri fabrikası oluşturma - Veri Kopyalama aracı
+    - name: Veri Fabrikası oluşturma-veri kopyalama aracı
       href: quickstart-create-data-factory-copy-data-tool.md
     - name: Veri fabrikası oluşturma - Azure PowerShell
       href: quickstart-create-data-factory-powershell.md
@@ -26,8 +26,6 @@
     - name: Veri fabrikası oluşturma - ARM şablonu
       displayName: Resource Manager
       href: quickstart-create-data-factory-resource-manager-template.md
-    - name: Güvenlik - Müşteri Tarafından Yönetilen Anahtar Şifrelemesini Etkinleştirme
-      href: enable-customer-managed-key.md
     - name: Veri akışı oluşturma
       href: data-flow-create.md
 - name: Öğreticiler
@@ -36,7 +34,7 @@
       items:
         - name: Azure Blob Depolama’dan Azure SQL Veritabanı’na
           items:
-            - name: Veri Kopyalama aracı
+            - name: Veri kopyalama aracı
               href: tutorial-copy-data-tool.md
             - name: Kullanıcı arabirimi (UI)
               href: tutorial-copy-data-portal.md
@@ -44,7 +42,7 @@
               href: tutorial-copy-data-dot-net.md
         - name: SQL Server veritabanından Azure Blob Depolama’ya
           items:
-            - name: Veri Kopyalama aracı
+            - name: Veri kopyalama aracı
               href: tutorial-hybrid-copy-data-tool.md
             - name: Kullanıcı arabirimi (UI)
               href: tutorial-hybrid-copy-portal.md
@@ -173,10 +171,6 @@
       href: concepts-pipeline-execution-triggers.md
     - name: Tümleştirme çalışma zamanı
       href: concepts-integration-runtime.md
-    - name: Güvenlik
-      items:
-        - name: Güvenlik temeli
-          href: security-baseline.md
     - name: Veri akışları
       items:
         - name: Eşleme veri akışlarıyla verileri dönüştürme
@@ -433,13 +427,13 @@
           href: connector-zoho.md
     - name: Veri taşıma
       items:
-        - name: Kopyalama Etkinliği’ni kullanarak veri kopyalama
+        - name: Kopyalama etkinliği 'ni kullanarak veri kopyalama
           href: copy-activity-overview.md
         - name: Kopyalama etkinliğini izleme
           href: copy-activity-monitoring.md
-        - name: Silme Etkinliği'ni kullanarak dosyaları silme
+        - name: Silme etkinliğini kullanarak dosyaları silme
           href: delete-activity.md
-        - name: Veri Kopyalama aracı
+        - name: Veri kopyalama aracı
           href: copy-data-tool.md
         - name: Biçimlendirme ve sıkıştırma desteği
           href: supported-file-formats-and-compression-codecs.md
@@ -466,73 +460,73 @@
     - name: Verileri dönüştürme
       href: transform-data.md
       items:
-        - name: Veri Akışı Etkinliğini Yürütme
+        - name: Veri akışı yürütme etkinliği
           href: control-flow-execute-data-flow-activity.md
         - name: Power Query etkinliğini yürütme
           href: control-flow-power-query-activity.md
-        - name: Azure İşlev Etkinliği
+        - name: Azure Işlevi etkinliği
           href: control-flow-azure-function-activity.md
-        - name: Özel Etkinlik
+        - name: Özel etkinlik
           href: transform-data-using-dotnet-custom-activity.md
-        - name: Databricks Jar Etkinliği
+        - name: Databricks jar etkinliği
           href: transform-data-databricks-jar.md
-        - name: Databricks Not Defteri Etkinliği
+        - name: Databricks Not defteri etkinliği
           href: transform-data-databricks-notebook.md
-        - name: Databricks Python Etkinliği
+        - name: Databricks Python etkinliği
           href: transform-data-databricks-python.md
-        - name: Veri Gezgini Komut Etkinliği
+        - name: Veri Gezgini komut etkinliği
           href: /azure/data-explorer/data-factory-command-activity?toc=/azure/data-factory/toc.json
-        - name: Data Lake U-SQL Etkinliği
+        - name: Data Lake U-SQL etkinliği
           href: transform-data-using-data-lake-analytics.md
-        - name: HDInsight Hive Etkinliği
+        - name: HDInsight Hive etkinliği
           href: transform-data-using-hadoop-hive.md
-        - name: HDInsight MapReduce Etkinliği
+        - name: HDInsight MapReduce etkinliği
           href: transform-data-using-hadoop-map-reduce.md
-        - name: HDInsight Pig Etkinliği
+        - name: HDInsight Pig etkinliği
           href: transform-data-using-hadoop-pig.md
-        - name: HDInsight Spark Etkinliği
+        - name: HDInsight Spark etkinliği
           href: transform-data-using-spark.md
-        - name: HDInsight Akış Etkinliği
+        - name: HDInsight akış etkinliği
           href: transform-data-using-hadoop-streaming.md
-        - name: Machine Learning İşlem Hattı Yürütme Etkinliği
+        - name: Machine Learning işlem hattı yürütme etkinliği
           href: transform-data-machine-learning-service.md
-        - name: Machine Learning Studio (klasik) Batch Yürütme Etkinliği
+        - name: Machine Learning Studio (klasik) Batch yürütme etkinliği
           href: transform-data-using-machine-learning.md
-        - name: Machine Learning Studio (klasik) Kaynak Güncelleştirme Etkinliği
+        - name: Machine Learning Studio (klasik) kaynak güncelleştirme etkinliği
           href: update-machine-learning-models.md
-        - name: Saklı Yordam Etkinliği
+        - name: Saklı yordam etkinliği
           href: transform-data-using-stored-procedure.md
         - name: İşlem bağlantılı hizmetler
           href: compute-linked-services.md
     - name: Denetim akışı
       items:
-        - name: Değişken Etkinlik Ekleme
+        - name: Değişken ekleme etkinliği
           href: control-flow-append-variable-activity.md
-        - name: İşlem Hattı Çalıştırma Etkinliği
+        - name: İşlem hattı yürütme etkinliği
           href: control-flow-execute-pipeline-activity.md
-        - name: Filtre Etkinliği
+        - name: Filtre etkinliği
           href: control-flow-filter-activity.md
-        - name: Her Bir Etkinlik için
+        - name: Her etkinlik için
           href: control-flow-for-each-activity.md
-        - name: Meta Veri Alma Etkinliği
+        - name: Meta veri Al etkinliği
           href: control-flow-get-metadata-activity.md
-        - name: If Condition Etkinliği
+        - name: Eğer koşul etkinliği
           href: control-flow-if-condition-activity.md
-        - name: Arama Etkinliği
+        - name: Arama etkinliği
           href: control-flow-lookup-activity.md
-        - name: Değişken Etkinlik Ayarlama
+        - name: Değişken etkinliğini ayarla
           href: control-flow-set-variable-activity.md
-        - name: Etkinlik değiştirme
+        - name: Değiştirme etkinliği
           href: control-flow-switch-activity.md
-        - name: Until Etkinliği
+        - name: Etkinliğe kadar
           href: control-flow-until-activity.md
-        - name: Doğrulama Etkinliği
+        - name: Doğrulama etkinliği
           href: control-flow-validation-activity.md
-        - name: Wait Etkinliği
+        - name: Bekleme etkinliği
           href: control-flow-wait-activity.md
-        - name: Web Etkinliği
+        - name: Web etkinliği
           href: control-flow-web-activity.md
-        - name: Web Kancası Etkinliği
+        - name: Web kancası etkinliği
           href: control-flow-webhook-activity.md
     - name: Veri akışı dönüşümleri
       items:
@@ -608,12 +602,14 @@
           href: encrypt-credentials-self-hosted-integration-runtime.md
         - name: Data Factory için yönetilen kimlik
           href: data-factory-service-identity.md
-        - name: Müşteri tarafından yönetilen anahtar şifrelemesi
+        - name: Müşteri tarafından yönetilen anahtarla veri fabrikasını şifreleyin
           href: enable-customer-managed-key.md
-        - name: Yönetilen Sanal Ağ
+        - name: Yönetilen sanal ağ
           href: managed-virtual-network-private-endpoint.md
-        - name: Data Factory için Azure Özel Bağlantı
+        - name: Data Factory için Azure özel bağlantısı
           href: data-factory-private-link.md
+        - name: Azure güvenlik temeli
+          href: security-baseline.md
     - name: İzleme ve yönetme
       items:
         - name: Görsel olarak izleme

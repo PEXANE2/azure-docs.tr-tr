@@ -8,15 +8,15 @@ manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 11/12/2020
+ms.date: 03/04/2021
 ms.author: juliako
 ms.custom: devx-track-csharp
-ms.openlocfilehash: a0b7330485d3152a588d43added7d9feaa5c2a14
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: 3a3c2812a4ecfa1a80539804122042bc2dc2f3a2
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "95994510"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102199195"
 ---
 # <a name="upload-and-index-your-videos"></a>Videolarınızı karşıya yükleme ve dizinleme  
 
@@ -83,18 +83,22 @@ Bu parametre, video ile ilişkilendirilecek bir kimlik belirtmenize olanak sağl
 
 #### <a name="indexingpreset"></a>indexingPreset
 
-Ham veya dış kayıtlar arka plan gürültüsü içeriyorsa bu parametreyi kullanın. Bu parametre, dizinleme işlemini yapılandırmak için kullanılır. Aşağıdaki değerleri belirtebilirsiniz:
+Ses veya video dosyanıza uygulamak istediğiniz AI grubunu tanımlamak için bu parametreyi kullanın. Bu parametre, dizinleme işlemini yapılandırmak için kullanılır. Aşağıdaki değerleri belirtebilirsiniz:
 
-- `AudioOnly`: Yalnızca ses kullanarak (videoyu yok sayarak) öngörüler ayıklayın ve bunları dizinleyin
-- `VideoOnly` -Yalnızca video kullanarak Öngörüler oluştur ve Ayıkla (ses yok sayılıyor)
-- `Default`: Ses ve videoyu kullanarak öngörüler ayıklayın ve bunları dizinleyin
-- `DefaultWithNoiseReduction`: Ses akışına gürültü azaltma algoritmaları uygulayarak ses ve videodan öngörüler ayıklayın ve bunları dizinleyin
+- `AudioOnly` – Yalnızca ses kullanarak öngörüleri dizine alın ve ayıklayın (video yok sayılıyor).
+- `VideoOnly` -Yalnızca video kullanarak öngörüleri dizine alın ve ayıklayın (ses yok sayılıyor).
+- `Default` – Hem ses hem de video kullanarak öngörüleri dizine alın ve ayıklayın.
+- `DefaultWithNoiseReduction` – Ses akışına gürültü azaltma algoritmaları uygulanırken hem ses hem de videodan öngörüleri dizine alın ve ayıklayın.
+
+    `DefaultWithNoiseReduction`Değer artık varsayılan önayar (kullanım dışı) ile eşlenir.
+- `BasicAudio` -Yalnızca temel ses özellikleri (döküm, çeviri, biçim çıkış alt yazıları ve alt yazılar) dahil olmak üzere yalnızca ses (video yok sayılıyor) kullanarak öngörüleri dizine alın ve ayıklayın.
+ - `AdvancedAudio` -Standart ses analizine ek olarak gelişmiş ses özellikleri (ses olayı algılama) dahil olmak üzere yalnızca ses kullanarak öngörüleri dizine alın ve ayıklayın.
 
 > [!NOTE]
 > Video Indexer, sesin en fazla iki parçasını içerir. Dosyada daha fazla ses parçası varsa, bunlar tek bir izleme olarak kabul edilir.<br/>
 Parçaları ayrı olarak dizinlemek istiyorsanız ilgili ses dosyasını ayıklamanız ve olarak dizinetmeniz gerekir `AudioOnly` .
 
-Fiyat, seçilen dizinleme seçeneğine bağlıdır.  
+Fiyat, seçilen dizinleme seçeneğine bağlıdır. Daha fazla bilgi için [Media Services fiyatlandırmasına](https://azure.microsoft.com/pricing/details/media-services/)bakın.
 
 #### <a name="priority"></a>Priority
 
@@ -317,7 +321,7 @@ public class AccountContractSlim
 
 Upload işlemi aşağıdaki tabloda listelenen durum kodlarını döndürebilir.
 
-|Durum kodu|ErrorType (yanıt gövdesinde)|Description|
+|Durum kodu|ErrorType (yanıt gövdesinde)|Açıklama|
 |---|---|---|
 |409|VIDEO_INDEXING_IN_PROGRESS|Bu video zaten aynı hesapta işleniyor.|
 |400|VIDEO_ALREADY_FAILED|Bu videonun işlenmesi 2 saatten daha kısa bir süre önce aynı hesapta başarısız oldu. API istemcilerin videoyu yeniden yüklemek için en az 2 saat beklemesi gerekir.|

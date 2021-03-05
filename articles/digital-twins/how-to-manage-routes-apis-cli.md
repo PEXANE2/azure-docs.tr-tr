@@ -7,12 +7,12 @@ ms.author: alkarche
 ms.date: 11/18/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: d25a429873ccf8b546c0919456c97e64445f184c
-ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
+ms.openlocfilehash: 40cf83b0ca9e4c794979f2b20ddb73360758abc5
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99071707"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102198549"
 ---
 # <a name="manage-endpoints-and-routes-in-azure-digital-twins-apis-and-cli"></a>Azure dijital TWINS 'te uç noktaları ve yolları yönetme (API 'Ler ve CLı)
 
@@ -48,7 +48,7 @@ Bu bölümde, Azure CLı kullanılarak bu uç noktaların nasıl oluşturulduğu
 
 ### <a name="create-the-endpoint"></a>Uç noktayı oluşturma
 
-Uç nokta kaynaklarını oluşturduktan sonra bunları bir Azure dijital TWINS uç noktası için kullanabilirsiniz. Aşağıdaki örneklerde, [Azure Digital TWINS CLI](how-to-use-cli.md)için [az DT Endpoint Create](/cli/azure/ext/azure-iot/dt/endpoint/create?view=azure-cli-latest&preserve-view=true) komutunu kullanarak uç noktaların nasıl oluşturulacağı gösterilmektedir. Komutlardaki yer tutucuları kendi kaynaklarınızın ayrıntıları ile değiştirin.
+Uç nokta kaynaklarını oluşturduktan sonra bunları bir Azure dijital TWINS uç noktası için kullanabilirsiniz. Aşağıdaki örneklerde, [Azure Digital TWINS CLI](how-to-use-cli.md)için [az DT Endpoint Create](/cli/azure/ext/azure-iot/dt/endpoint/create) komutunu kullanarak uç noktaların nasıl oluşturulacağı gösterilmektedir. Komutlardaki yer tutucuları kendi kaynaklarınızın ayrıntıları ile değiştirin.
 
 Event Grid uç noktası oluşturmak için:
 
@@ -119,7 +119,7 @@ Sonraki bölümde uç nokta bağlantısını ayarlamaya hazırlanmak için Azure
     
 #### <a name="create-the-dead-letter-endpoint"></a>Atılacak mektup uç noktasını oluşturma
 
-Etkin olmayan bir uç nokta oluşturmak için, [Azure Digital TWINS CLI](how-to-use-cli.md)için [az DT Endpoint Create](/cli/azure/ext/azure-iot/dt/endpoint/create?view=azure-cli-latest&preserve-view=true) komutuna aşağıdaki atılacak mektup parametresini ekleyin.
+Etkin olmayan bir uç nokta oluşturmak için, [Azure Digital TWINS CLI](how-to-use-cli.md)için [az DT Endpoint Create](/cli/azure/ext/azure-iot/dt/endpoint/create) komutuna aşağıdaki atılacak mektup parametresini ekleyin.
 
 Parametresi için değer, [önceki bölümde](#set-up-storage-resources)topladığınız depolama hesabı adı, kapsayıcı adı ve SAS belirtecinden oluşan **sahipsiz bir SAS URI 'sidir** . Bu parametre, anahtar tabanlı kimlik doğrulaması ile uç noktası oluşturur.
 
@@ -204,7 +204,7 @@ Yol adı yoksa, Azure dijital TWINS dışında hiçbir ileti yönlendirilmez. Bi
 
 Bir yol birden çok bildirimin ve olay türünün seçilebilmelidir. 
 
-Olay yolları Azure Digital TWINS [ **eventroutes** veri düzlemi API 'leri](/rest/api/digital-twins/dataplane/eventroutes) veya [ **az DT Route** CLI komutlarıyla](/cli/azure/ext/azure-iot/dt/route?view=azure-cli-latest&preserve-view=true)oluşturulabilir. Bu bölümün geri kalanında oluşturma sürecinde adım adım gösterilmektedir.
+Olay yolları Azure Digital TWINS [ **eventroutes** veri düzlemi API 'leri](/rest/api/digital-twins/dataplane/eventroutes) veya [ **az DT Route** CLI komutlarıyla](/cli/azure/ext/azure-iot/dt/route)oluşturulabilir. Bu bölümün geri kalanında oluşturma sürecinde adım adım gösterilmektedir.
 
 ### <a name="create-routes-with-the-apis-and-c-sdk"></a>API 'Ler ve C# SDK 'Sı ile rotalar oluşturma
 
@@ -225,7 +225,7 @@ Aşağıdaki örnek yöntem, C# SDK ile bir olay yolunun nasıl oluşturulduğun
 
 ### <a name="create-routes-with-the-cli"></a>CLı ile rotalar oluşturma
 
-Yollar, Azure Digital TWINS CLı için [az DT Route](/cli/azure/ext/azure-iot/dt/route?view=azure-cli-latest&preserve-view=true) komutları kullanılarak da yönetilebilir. 
+Yollar, Azure Digital TWINS CLı için [az DT Route](/cli/azure/ext/azure-iot/dt/route) komutları kullanılarak da yönetilebilir. 
 
 CLı ve kullanılabilen komutları kullanma hakkında daha fazla bilgi için bkz. [*nasıl yapılır: Azure dijital TWINS CLI 'Yi kullanma*](how-to-use-cli.md).
 

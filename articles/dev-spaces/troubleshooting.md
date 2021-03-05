@@ -5,12 +5,12 @@ ms.date: 09/25/2019
 ms.topic: troubleshooting
 description: Azure Dev Spaces etkinleştirirken ve kullanırken karşılaşılan yaygın sorunları giderme ve çözme hakkında bilgi edinin
 keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes hizmeti, kapsayıcılar, Held, hizmet ağı, hizmet kafesi yönlendirme, kubectl, k8s '
-ms.openlocfilehash: bf8c4d2040445fa3417fce02fb4b66216b21f3b5
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 14ced0c66b42b6f18c946d0c75091be1af5598f5
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96548877"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102197801"
 ---
 # <a name="azure-dev-spaces-troubleshooting"></a>Azure Dev Spaces sorunlarını giderme
 
@@ -26,7 +26,7 @@ Sorunları daha etkili bir şekilde gidermek için inceleme için daha ayrıntı
 
 Visual Studio için, `MS_VS_AZUREDEVSPACES_TOOLS_LOGGING_ENABLED` ortam değişkenini 1 olarak ayarlayın. Ortam değişkeninin etkili olması için Visual Studio 'Yu yeniden başlattığınızdan emin olun. Etkinleştirildikten sonra, ayrıntılı Günlükler `%TEMP%\Microsoft.VisualStudio.Azure.DevSpaces.Tools` dizininize yazılır.
 
-CLı içinde, komut yürütme sırasında anahtarı kullanarak daha fazla bilgi alabilirsiniz `--verbose` . Ayrıca, içinde daha ayrıntılı günlüklere de gidebilirsiniz `%TEMP%\Azure Dev Spaces` . Bir Mac üzerinde, *geçici* Dizin `echo $TMPDIR` bir terminal penceresinden çalıştırılarak bulunabilir. Bir Linux bilgisayarda, *geçici* dizin genellikle olur `/tmp` . Ayrıca, [Azure CLI yapılandırma dosyanızda](/cli/azure/azure-cli-configuration?view=azure-cli-latest#cli-configuration-values-and-environment-variables)günlüğe kaydetme özelliğinin etkinleştirildiğini doğrulayın.
+CLı içinde, komut yürütme sırasında anahtarı kullanarak daha fazla bilgi alabilirsiniz `--verbose` . Ayrıca, içinde daha ayrıntılı günlüklere de gidebilirsiniz `%TEMP%\Azure Dev Spaces` . Bir Mac üzerinde, *geçici* Dizin `echo $TMPDIR` bir terminal penceresinden çalıştırılarak bulunabilir. Bir Linux bilgisayarda, *geçici* dizin genellikle olur `/tmp` . Ayrıca, [Azure CLI yapılandırma dosyanızda](/cli/azure/azure-cli-configuration#cli-configuration-values-and-environment-variables)günlüğe kaydetme özelliğinin etkinleştirildiğini doğrulayın.
 
 Azure Dev Spaces, tek bir örneğin veya Pod hata ayıklaması yaparken en iyi şekilde de geçerlidir. `azds.yaml`Dosya, Kubernetes 'in hizmetinize çalıştığı düğüm sayısını gösteren bir, *replicacount* ayarı içerir. Uygulamanızı belirli bir hizmet için birden çok Pod çalıştıracak şekilde yapılandırmak üzere *replicacount* değerini değiştirirseniz, hata ayıklayıcı alfabetik olarak listelendiğinde ilk Pod 'a iliştirir. Özgün Pod geri dönüştürüldüğünde hata ayıklayıcı farklı bir pod 'a iliştirir, muhtemelen beklenmedik davranışa neden olur.
 
@@ -91,7 +91,7 @@ azure-cli                         2.0.60 *
 
 `az aks use-dev-spaces`2.0.63 öncesinde bir Azure CLI sürümü ile çalışırken hata iletisine rağmen yükleme başarılı olur. `azds`Herhangi bir sorun olmadan kullanmaya devam edebilirsiniz.
 
-Bu sorunu onarmak için [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) yüklemenizi 2.0.63 veya üzeri bir sürüme güncelleştirin. Bu güncelleştirme, çalışırken aldığınız hata mesajını çözmeyecektir `az aks use-dev-spaces` . Alternatif olarak, geçerli Azure CLı sürümünüzü ve Azure Dev Spaces CLı 'yi kullanmaya devam edebilirsiniz.
+Bu sorunu onarmak için [Azure CLI](/cli/azure/install-azure-cli) yüklemenizi 2.0.63 veya üzeri bir sürüme güncelleştirin. Bu güncelleştirme, çalışırken aldığınız hata mesajını çözmeyecektir `az aks use-dev-spaces` . Alternatif olarak, geçerli Azure CLı sürümünüzü ve Azure Dev Spaces CLı 'yi kullanmaya devam edebilirsiniz.
 
 ### <a name="error-unable-to-reach-kube-apiserver"></a>Hata "Kuto-apiserver 'e ulaşılamıyor"
 

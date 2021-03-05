@@ -2,13 +2,13 @@
 title: Azure Event Grid için olay filtreleme
 description: Azure Event Grid aboneliği oluştururken olayların nasıl filtreleneceğini açıklar.
 ms.topic: conceptual
-ms.date: 02/26/2021
-ms.openlocfilehash: 7253c4a38660b0041f27918309efae21675fdc8f
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.date: 03/04/2021
+ms.openlocfilehash: 94445341891149d5d02c7f33caef20bf45123e9b
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101721965"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102197784"
 ---
 # <a name="understand-event-filtering-for-event-grid-subscriptions"></a>Event Grid abonelikleri için olay filtrelemeyi anlayın
 
@@ -58,13 +58,27 @@ Veri alanlarındaki değerlere göre filtrelemek ve karşılaştırma işlecini 
 * Values-anahtarla karşılaştırılacak değer veya değerler.
 
 ## <a name="key"></a>Anahtar
-Anahtar, filtreleme için kullanmakta olduğunuz olay verilerinde yer alan alandır. Bir sayı, Boolean, dize veya dizi olabilir. **Event Grid şemasındaki** olaylar için, anahtar: `ID` ,,,, `Topic` `Subject` `EventType` `DataVersion` veya olay verileri (gibi `data.key1` ) için aşağıdaki değerleri kullanın.
+Anahtar, filtreleme için kullanmakta olduğunuz olay verilerinde yer alan alandır. Aşağıdaki türlerden biri olabilir:
+
+- Sayı
+- Boole
+- Dize
+- Dizide. `enableAdvancedFilteringOnArrays`Bu özelliği kullanmak için özelliği true olarak ayarlamanız gerekir. Şu anda Azure portal bu özelliğin etkinleştirilmesini desteklemez. 
+
+    ```json
+    "filter":
+    {
+        "subjectBeginsWith": "/blobServices/default/containers/mycontainer/log",
+        "subjectEndsWith": ".jpg",
+        "enableAdvancedFilteringOnArrays": true
+    }
+    ```
+
+**Event Grid şemasındaki** olaylar için, anahtar: `ID` ,,,, `Topic` `Subject` `EventType` `DataVersion` veya olay verileri (gibi `data.key1` ) için aşağıdaki değerleri kullanın.
 
 **Bulut olayları şemasındaki** olaylar için, anahtar: `eventid` , `source` ,, `eventtype` `eventtypeversion` veya olay verileri (gibi `data.key1` ) için aşağıdaki değerleri kullanın.
 
-**Özel giriş şeması** için, olay verileri alanlarını (gibi) kullanın `data.key1` .
-
-Veri bölümündeki alanlara erişmek için `.` (nokta) gösterimini kullanın. Örneğin, `data.sitename` ,, `data.appEventTypeDetail.action` `sitename` veya `action` Aşağıdaki örnek olaya erişmek için.
+**Özel giriş şeması** için, olay verileri alanlarını (gibi) kullanın `data.key1` . Veri bölümündeki alanlara erişmek için `.` (nokta) gösterimini kullanın. Örneğin, `data.sitename` ,, `data.appEventTypeDetail.action` `sitename` veya `action` Aşağıdaki örnek olaya erişmek için.
 
 ```json
     "data": {
@@ -80,10 +94,8 @@ Veri bölümündeki alanlara erişmek için `.` (nokta) gösterimini kullanın. 
     },
 ```
 
-
 ## <a name="values"></a>Değerler
 Değerler: sayı, dize, Boole veya dizi olabilir
-
 
 ## <a name="operators"></a>İşleçler
 

@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 03/04/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 488065b0a1865484e96ea574b3031f2bf61869dd
-ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
+ms.openlocfilehash: bcdc8c448a348bf067995bf92615ceab1ac19fb4
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102120598"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102198452"
 ---
 # <a name="relyingparty"></a>RelyingParty
 
@@ -109,7 +109,7 @@ Aşağıdaki örnekte, [UserInfo uç noktası](userinfo-endpoint.md)ile bağlı 
 
 ## <a name="defaultuserjourney"></a>Defaultuseryolculuğu
 
-`DefaultUserJourney`Öğesi, genellikle temel veya uzantılar ilkesinde tanımlanan Kullanıcı yolculuğu tanıtıcısına yönelik bir başvuru belirtir. Aşağıdaki örneklerde, **RelyingParty** öğesinde belirtilen kaydolma veya oturum açma Kullanıcı yolculuğu gösterilmektedir:
+`DefaultUserJourney`Öğesi, temel veya uzantılar ilkesinde tanımlanan Kullanıcı yolculuğunun tanımlayıcısına yönelik bir başvuru belirtir. Aşağıdaki örneklerde, **RelyingParty** öğesinde belirtilen kaydolma veya oturum açma Kullanıcı yolculuğu gösterilmektedir:
 
 *B2C_1A_signup_signin* ilkesi:
 
@@ -219,6 +219,21 @@ Daha fazla bilgi için bkz [. özel ilkeler kullanarak dinamik içerikle Kullan�
 | --------- | -------- | ----------- |
 | Ad | Yes | Teknik profilin bir parçası olarak kullanılan Azure AD B2C tarafından desteklenen geçerli bir protokol adı. Olası değerler: `OpenIdConnect` veya `SAML2` . `OpenIdConnect`Değer, OpenID Foundation belirtimine göre OpenID Connect 1,0 Protokol standardını temsil eder. , `SAML2` Oassıs belirtimine göre SAML 2,0 Protokol standardını temsil eder. |
 
+### <a name="metadata"></a>Meta veri
+
+Protokol olduğunda `SAML` , meta veri öğesi aşağıdaki öğeleri içerir. Daha fazla bilgi için bkz. [Azure AD B2C SAML uygulaması kaydetme seçenekleri](saml-service-provider-options.md).
+
+| Öznitelik | Gerekli | Açıklama |
+| --------- | -------- | ----------- |
+| Idpınitisenabled Profiletkin | Hayır | IDP tarafından başlatılan akışın desteklenip desteklenmediğini belirtir. Olası değerler: `true` veya `false` (varsayılan). | 
+| XmlSignatureAlgorithm | Hayır | Azure AD B2C SAML Yanıtını imzalamak için kullandığı yöntem. Olası değerler: `Sha256` , `Sha384` , `Sha512` veya `Sha1` . Aynı değere sahip her iki tarafta de imza algoritmasını yapılandırdığınızdan emin olun. Yalnızca sertifikanızın desteklediği algoritmayı kullanın. SAML onaylama 'yı yapılandırmak için bkz. [SAML verenin teknik profil meta verileri](saml-issuer-technical-profile.md#metadata). |
+| DataEncryptionMethod | Hayır | Azure AD B2C, Gelişmiş Şifreleme Standardı (AES) algoritmasını kullanarak verileri şifrelemek için kullandığı yöntemi gösterir. Meta veri, `<EncryptedData>` SAML yanıtında öğesinin değerini denetler. Olası değerler: `Aes256` (varsayılan), `Aes192` , `Sha512` , veya ` Aes128` . |
+| KeyEncryptionMethod| Hayır | Azure AD B2C, verileri şifrelemek için kullanılan anahtarın kopyasını şifrelemek için kullandığı yöntemi gösterir. Meta veri,  `<EncryptedKey>` SAML yanıtında öğesinin değerini denetler. Olası değerler: ` Rsa15` (varsayılan)-RSA ortak anahtar şifreleme standardı (PKCS) sürüm 1,5 algoritması, ` RsaOaep` -RSA En Iyi asimetrik şifreleme doldurma (OAEP) şifreleme algoritması. |
+| UseDetachedKeys | Hayır |  Olası değerler: `true` , veya `false` (varsayılan). Değer olarak ayarlandığında `true` Azure AD B2C şifrelenmiş onayların biçimini değiştirir. Ayrılmış anahtarların kullanılması, şifreli onaylama listesini Encryptedrytedassertion 'nin bir alt öğesi olarak, EncryptedData yerine ekler. |
+| Wantssignedyanıtları| Hayır | SAML yanıtının bölümünü Azure AD B2C işaretetmeyeceğini belirtir `Response` . Olası değerler: `true` (varsayılan) veya `false` .  |
+| Removemilimetre Secondsfromdatetime| Hayır | (Bu, IssueInstant, NotBefore, NotOnOrAfter ve Authnınstant) içindeki tarih saat değerlerinden milisaniyeye kaldırılıp kaldırılmadığını belirtir. Olası değerler: `false` (varsayılan) veya `true` .  |
+
+
 ### <a name="outputclaims"></a>Outputclaim
 
 **Outputclaim** öğesi aşağıdaki öğeyi içerir:
@@ -238,8 +253,9 @@ Daha fazla bilgi için bkz [. özel ilkeler kullanarak dinamik içerikle Kullan�
 ### <a name="subjectnaminginfo"></a>Subjectnamingınfo
 
 **Subjectnameingınfo** öğesiyle, belirteç konusunun değerini denetlersiniz:
+
 - **JWT belirteci** - `sub` talep. Bu, belirtecin, uygulamanın kullanıcısı gibi bilgileri onaylama konusunda bir sorumluyla ilgilidir. Bu değer sabittir ve yeniden atanamaz veya tekrar kullanılamaz. Bu, belirtecin bir kaynağa erişmek için ne zaman kullanıldığı gibi güvenli yetkilendirme denetimleri gerçekleştirmek için de kullanılabilir. Varsayılan olarak, konu talebi, dizindeki kullanıcının nesne KIMLIĞIYLE doldurulur. Daha fazla bilgi için bkz. [belirteç, oturum ve çoklu oturum açma yapılandırması](session-behavior.md).
-- **SAML belirteci** - `<Subject><NameID>` Konu öğesini tanımlayan öğe. NameID biçimi değiştirilebilir.
+- **SAML belirteci** - `<Subject><NameID>` Konu öğesini tanımlayan öğesi. NameID biçimi değiştirilebilir.
 
 **Subjectnamingınfo** öğesi aşağıdaki özniteliği içerir:
 
