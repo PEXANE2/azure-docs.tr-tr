@@ -8,12 +8,12 @@ ms.date: 11/04/2019
 ms.topic: conceptual
 ms.service: azure-redhat-openshift
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 9654711a1399c2708ce8c9150b79eefa73387c03
-ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
+ms.openlocfilehash: c253c6bf81305b9b336525c20980cf9599463648
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100635035"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102209875"
 ---
 # <a name="set-up-your-azure-red-hat-openshift-dev-environment"></a>Azure Red Hat OpenShift geliştirme ortamınızı ayarlama
 
@@ -43,7 +43,7 @@ az --version
 
 Çıktının ilk satırı CLı sürümüne sahip olacaktır, örneğin `azure-cli (2.0.65)` .
 
-Yeni bir yükleme veya yükseltme gerekiyorsa [Azure CLI yükleme](/cli/azure/install-azure-cli?view=azure-cli-latest) yönergeleri aşağıda verilmiştir.
+Yeni bir yükleme veya yükseltme gerekiyorsa [Azure CLI yükleme](/cli/azure/install-azure-cli) yönergeleri aşağıda verilmiştir.
 
 Alternatif olarak, [Azure Cloud Shell](../cloud-shell/overview.md)de kullanabilirsiniz. Azure Cloud Shell kullanırken, [Azure Red Hat Openshıft kümesi oluşturma ve yönetme](tutorial-create-cluster.md) öğreticisiyle birlikte Izlemeyi planlıyorsanız **Bash** ortamını seçtiğinizden emin olun.
 

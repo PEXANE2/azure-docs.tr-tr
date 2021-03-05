@@ -12,18 +12,18 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/05/2018
-ms.openlocfilehash: 5c53eb65f31e32d3edebcbf31d48d166f5464a92
-ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
+ms.openlocfilehash: 31eeb31fb78a4e9552e64121e0e85b5fd8d9b773
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98233364"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102210657"
 ---
 # <a name="check-resource-usage-against-limits"></a>Sınırlara göre kaynak kullanımını denetleme
 
 Bu makalede, aboneliğinizde dağıttığınız her bir ağ kaynağı türünün sayısını ve [abonelik limitlerinizi](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fnetworking%2ftoc.json#networking-limits) nasıl görebileceğinizi öğreneceksiniz. Sınırlara karşı kaynak kullanımını görüntüleyebilme özelliği, geçerli kullanımı izlemek ve ileride kullanılmak üzere plan yapmak için yararlıdır. Kullanımı izlemek için [Azure Portal](#azure-portal), [POWERSHELL](#powershell)veya [Azure CLI](#azure-cli) kullanabilirsiniz.
 
-## <a name="azure-portal"></a>Azure Portalı
+## <a name="azure-portal"></a>Azure Portal
 
 1. Azure [portalında](https://portal.azure.com)oturum açın.
 2. Azure portal sol üst köşesinde, **tüm hizmetler**' i seçin.
@@ -73,7 +73,7 @@ Network Watchers                   1     1
 
 Bu makaledeki görevleri gerçekleştirmek için Azure komut satırı arabirimi (CLı) komutlarını kullanıyorsanız, [Azure Cloud Shell](https://shell.azure.com/bash)komutları çalıştırın ya da bilgisayarınızdan CLI 'yı çalıştırarak. Bu makale, Azure CLı sürüm 2.0.32 veya üstünü gerektirir. Yüklü sürümü bulmak için `az --version` komutunu çalıştırın. Yükleme veya yükseltme yapmanız gerekirse bkz. [Azure CLI’yı yükleme](/cli/azure/install-azure-cli). Azure CLı 'yi yerel olarak çalıştırıyorsanız Azure 'da oturum açmak için de çalıştırmanız gerekir `az login` .
 
-[Az Network List-Usage](/cli/azure/network?view=azure-cli-latest#az-network-list-usages)komutuyla kullanımınızı sınırlara göre görüntüleyin. Aşağıdaki örnek Doğu ABD konumdaki kaynakların kullanımını alır:
+[Az Network List-Usage](/cli/azure/network#az-network-list-usages)komutuyla kullanımınızı sınırlara göre görüntüleyin. Aşağıdaki örnek Doğu ABD konumdaki kaynakların kullanımını alır:
 
 ```azurecli-interactive
 az network list-usages \

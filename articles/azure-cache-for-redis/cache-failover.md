@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 10/18/2019
-ms.openlocfilehash: 7cfa7257e64421c30c359bb34044988bbb5af1dd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cc7c70fa2e7131f09f621e992d537e0b120061ef
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87093094"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102210742"
 ---
 # <a name="failover-and-patching-for-azure-cache-for-redis"></a>Redsıs için Azure önbelleği için yük devretme ve düzeltme eki uygulama
 
@@ -72,6 +72,10 @@ Yük devretme gerçekleştiğinde, standart ve Premium önbellekler verileri bir
 Yük devretmeleri tamamen önlemenize izin vermekten, bağlantı kesme ve başarısız isteklere dayanıklılık sağlamak için istemci uygulamalarınızı yazın. Çoğu istemci kitaplığı otomatik olarak önbellek uç noktasına yeniden bağlansa da, başarısız istekleri yeniden denemeye çalışır. Uygulama senaryosuna bağlı olarak, yeniden deneme mantığını geri alma ile kullanmak mantıklı olabilir.
 
 İstemci uygulamasının esnekliğini test etmek için, bağlantı sonlarına yönelik el ile tetikleyici olarak [yeniden başlatma](cache-administration.md#reboot) kullanın. Ayrıca, güncelleştirmeleri bir önbellekte [zamanlamanızı](cache-administration.md#schedule-updates) öneririz. Yönetim hizmetine, belirtilen haftalık pencereler sırasında Redsıs çalışma zamanı düzeltme ekleri uygulamayı söyleyin. Olası olayları önlemek için, bu pencereler genellikle istemci uygulama trafiğinin düşük olduğu dönemler olur.
+
+### <a name="can-i-be-notified-in-advance-of-a-planned-maintenance"></a>Planlı bir bakımın önceden bildirilmesi gerekebilir mi?
+
+Redsıs için Azure Cache, planlanan güncelleştirmelerden önceki 30 saniye içinde [Azureredisevents](https://github.com/Azure/AzureCacheForRedis/blob/main/AzureRedisEvents.md) adlı bir yayımlama/abonelik kanalında bildirimler yayımlar. Bunlar çalışma zamanı bildirimleridir ve örneğin, planlanan güncelleştirmeler sırasında önbellek veya arabellek komutlarını atlamak için devre kesicileri kullanan uygulamalar için oluşturulmuştur. Size gün veya saat önceden bildirebilecek bir mekanizma değildir.
 
 ### <a name="client-network-configuration-changes"></a>İstemci ağı-yapılandırma değişiklikleri
 

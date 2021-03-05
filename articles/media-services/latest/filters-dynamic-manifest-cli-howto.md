@@ -14,12 +14,12 @@ ms.topic: how-to
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: f75b8055757557eadeb98a45196a116e56c5aa35
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+ms.openlocfilehash: 54e99c645b93bfcb3aee4e81cef3b2b5d6589d95
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "101093437"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102211473"
 ---
 # <a name="creating-filters-with-cli"></a>CLı ile filtre oluşturma
 
@@ -29,7 +29,7 @@ ms.locfileid: "101093437"
 
 Bu özelliğin ve kullanılan senaryoların ayrıntılı açıklaması için bkz. [dinamik bildirimler](filters-dynamic-manifest-overview.md) ve [Filtreler](filters-concept.md).
 
-Bu konuda, bir video Isteğe bağlı varlığı için bir filtrenin nasıl yapılandırılacağı ve [hesap filtreleri](/cli/azure/ams/account-filter?view=azure-cli-latest) ve [varlık filtreleri](/cli/azure/ams/asset-filter?view=azure-cli-latest)oluşturmak IÇIN Media Services v3 için CLI kullanımı gösterilmektedir.
+Bu konuda, bir video Isteğe bağlı varlığı için bir filtrenin nasıl yapılandırılacağı ve [hesap filtreleri](/cli/azure/ams/account-filter) ve [varlık filtreleri](/cli/azure/ams/asset-filter)oluşturmak IÇIN Media Services v3 için CLI kullanımı gösterilmektedir.
 
 > [!NOTE]
 > [Presentationtimerange](filters-concept.md#presentationtimerange)öğesini gözden geçirdiğinizden emin olun.
@@ -80,7 +80,7 @@ Aşağıdaki örnek, son bildirime eklenen izleme seçim koşullarını tanımla
 
 ## <a name="create-account-filters"></a>Hesap filtreleri oluşturma
 
-Aşağıdaki [az AMS Account-Filter](/cli/azure/ams/account-filter?view=azure-cli-latest) komutu, [daha önce tanımlanan](#define-a-filter)filtre izleme seçimleriyle bir hesap filtresi oluşturur.
+Aşağıdaki [az AMS Account-Filter](/cli/azure/ams/account-filter) komutu, [daha önce tanımlanan](#define-a-filter)filtre izleme seçimleriyle bir hesap filtresi oluşturur.
 
 Komutu, `--tracks` izleme seçimlerini temsil eden JSON içeren isteğe bağlı bir parametreyi geçirmenize olanak sağlar.  JSON 'ı bir dosyadan yüklemek için @ {File} kullanın. Azure CLı 'yi yerel olarak kullanıyorsanız, tüm dosya yolunu belirtin:
 
@@ -92,7 +92,7 @@ Ayrıca bkz. [Filtreler Için JSON örnekleri](/rest/api/media/accountfilters/cr
 
 ## <a name="create-asset-filters"></a>Varlık filtreleri oluşturma
 
-Aşağıdaki [az AMS varlık-Filter](/cli/azure/ams/asset-filter?view=azure-cli-latest) komutu, [daha önce tanımlanan](#define-a-filter)filtre izleme seçimleriyle bir varlık filtresi oluşturur. 
+Aşağıdaki [az AMS varlık-Filter](/cli/azure/ams/asset-filter) komutu, [daha önce tanımlanan](#define-a-filter)filtre izleme seçimleriyle bir varlık filtresi oluşturur. 
 
 ```azurecli
 az ams asset-filter create -a amsAccount -g resourceGroup -n filterName --asset-name assetName --tracks @tracks.json
@@ -132,4 +132,4 @@ Aşağıdaki tabloda, filtre içeren URL 'lerin bazı örnekleri gösterilmekted
 
 ## <a name="see-also"></a>Ayrıca bkz.
 
-[Azure CLI](/cli/azure/ams?view=azure-cli-latest)
+[Azure CLI](/cli/azure/ams)

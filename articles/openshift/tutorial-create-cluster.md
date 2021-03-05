@@ -6,12 +6,12 @@ ms.author: suvetriv
 ms.topic: tutorial
 ms.service: azure-redhat-openshift
 ms.date: 10/26/2020
-ms.openlocfilehash: b690d3b3c29d2943e28a0992730d932b35c20734
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.openlocfilehash: da76dab360e0e17afc9e2024358d4a935c6b7336
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "100653049"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102209824"
 ---
 # <a name="tutorial-create-an-azure-red-hat-openshift-4-cluster"></a>Öğretici: Azure Red Hat OpenShift 4 kümesi oluşturma
 
@@ -23,7 +23,7 @@ Bu öğreticide, üç bölümden biri olmak üzere, ortamınızı OpenShift 4 ç
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 
-CLı 'yi yerel olarak yükleyip kullanmayı tercih ederseniz bu öğretici için Azure CLı sürüm 2.6.0 veya üstünü çalıştırıyor olmanız gerekir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse, bkz. [Azure CLI yükleme](/cli/azure/install-azure-cli?view=azure-cli-latest).
+CLı 'yi yerel olarak yükleyip kullanmayı tercih ederseniz bu öğretici için Azure CLı sürüm 2.6.0 veya üstünü çalıştırıyor olmanız gerekir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse, bkz. [Azure CLI yükleme](/cli/azure/install-azure-cli).
 
 Azure Red Hat OpenShift, bir OpenShift kümesi oluşturmak ve çalıştırmak için en az 40 çekirdek gerektirir. Yeni bir Azure aboneliği için varsayılan Azure Kaynak kotası bu gereksinimi karşılamıyor. Kaynak sınırınıza bir artış istemek için bkz. [Standart kota: VM serisine göre limitleri artırma](../azure-portal/supportability/per-vm-quota-requests.md).
 
@@ -106,7 +106,7 @@ Ardından, iki boş alt ağ içeren bir sanal ağ oluşturacaksınız. Gereksini
 
 2. **Bir kaynak grubu oluşturun.**
 
-   Azure kaynak grubu, Azure kaynaklarının dağıtıldığı ve yönetildiği mantıksal bir gruptur. Bir kaynak grubu oluştururken konum belirtmeniz istenir. Bu konum, kaynak grubu meta verilerinin depolandığı ve kaynak oluşturma sırasında başka bir bölge belirtmezseniz kaynaklarınızın Azure 'da çalıştığı yerdir. [Az Group Create](/cli/azure/group?view=azure-cli-latest#az-group-create) komutunu kullanarak bir kaynak grubu oluşturun.
+   Azure kaynak grubu, Azure kaynaklarının dağıtıldığı ve yönetildiği mantıksal bir gruptur. Bir kaynak grubu oluştururken konum belirtmeniz istenir. Bu konum, kaynak grubu meta verilerinin depolandığı ve kaynak oluşturma sırasında başka bir bölge belirtmezseniz kaynaklarınızın Azure 'da çalıştığı yerdir. [Az Group Create](/cli/azure/group#az-group-create) komutunu kullanarak bir kaynak grubu oluşturun.
     
    > [!NOTE] 
    > Azure Red Hat OpenShift, bir Azure Kaynak grubunun oluşturulabildiği tüm bölgelerde kullanılamaz. Azure Red Hat OpenShift 'in desteklendiği konum hakkında bilgi için bkz. [kullanılabilir bölgeler](https://azure.microsoft.com/en-gb/global-infrastructure/services/?products=openshift) .

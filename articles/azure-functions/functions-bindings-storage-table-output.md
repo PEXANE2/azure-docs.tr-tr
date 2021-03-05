@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 09/03/2018
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
-ms.openlocfilehash: 4af29df27a109a9e1e26a720c190ab9d119fc4d1
-ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
+ms.openlocfilehash: 825a336b5ad07f50d96b19036d70c759b907bd07
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98033804"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102209688"
 ---
 # <a name="azure-table-storage-output-bindings-for-azure-functions"></a>Azure Işlevleri için Azure Tablo depolama çıkış bağlamaları
 
@@ -418,7 +418,7 @@ Alternatif olarak, `CloudTable` Azure Storage SDK kullanarak tabloya yazmak içi
 
 # <a name="java"></a>[Java](#tab/java)
 
-[Tablestorageoutput](/java/api/com.microsoft.azure.functions.annotation.tableoutput?view=azure-java-stablet&preserve-view=true) ek açıklamasını kullanarak bir işlevden tablo depolama satırını almak için iki seçenek vardır:
+[Tablestorageoutput](/java/api/com.microsoft.azure.functions.annotation.tableoutput) ek açıklamasını kullanarak bir işlevden tablo depolama satırını almak için iki seçenek vardır:
 
 - **Dönüş değeri**: ek açıklamanın işleve uygulanması için, işlevin dönüş değeri tablo depolama satırı olarak kalıcıdır.
 

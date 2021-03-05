@@ -9,12 +9,12 @@ ms.subservice: management
 ms.date: 11/12/2020
 ms.reviewer: jushiman
 ms.custom: mimckitt, devx-track-azurecli
-ms.openlocfilehash: 85e4b6a4d0ff1c3bd7e634311a36396a74408419
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: b4c705e65b5b8c4f9e34dc5ff1474e87da5bee02
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100594451"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102209806"
 ---
 # <a name="planned-maintenance-notifications-for-virtual-machine-scale-sets"></a>Sanal makine ölçek kümeleri için planlı bakım bildirimleri
 
@@ -84,7 +84,7 @@ Planlı bir bakım dalgası zamanlandığında, Azure portal kullanarak yaklaşa
 | Değer | Açıklama |
 |-------|-------------|
 | Evet | Sanal makine ölçek kümesindeki en az bir VM self servis penceresinde. Bu self servis penceresi sırasında istediğiniz zaman bakım başlatabilirsiniz. | 
-| No | Etkilenen sanal makine ölçek kümesindeki bir self servis penceresinde VM yok. | 
+| Hayır | Etkilenen sanal makine ölçek kümesindeki bir self servis penceresinde VM yok. | 
 | - | Sanal makineleriniz ölçek kümeleriniz planlı bir bakım dalgasının parçası değildir.| 
 
 ## <a name="notification-and-alerts-in-the-portal"></a>Portalda bildirim ve uyarılar
@@ -143,7 +143,7 @@ Set-AzVmss -ResourceGroupName rgName -VMScaleSetName vmssName -InstanceId id -Pe
 
 ## <a name="check-maintenance-status-by-using-the-cli"></a>CLı kullanarak bakım durumunu denetleme
 
-Planlanan bakım bilgilerini [az VMSS List-Instances](/cli/azure/vmss?view=azure-cli-latest#az-vmss-list-instances)kullanarak görüntüleyebilirsiniz.
+Planlanan bakım bilgilerini [az VMSS List-Instances](/cli/azure/vmss#az-vmss-list-instances)kullanarak görüntüleyebilirsiniz.
  
 Bakım bilgileri yalnızca bakım planlandığından döndürülür. VM örneğini etkileyen bakım zamanlanmamışsa, komut herhangi bir bakım bilgisi döndürmez. 
 

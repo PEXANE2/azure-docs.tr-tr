@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: reference
 ms.date: 11/9/2020
-ms.openlocfilehash: c35306d3e0d874218b9ea03fbfeaaff722eacf76
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: da46084c8c2616284c31ef155927e8dbcbd19e0e
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98896469"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102209368"
 ---
 # <a name="service-configuration"></a>Hizmet yapılandırması
 
@@ -52,7 +52,7 @@ Hizmetinizdeki [ortak çalışanları nasıl ekleyeceğinizi](./reference-role-b
 
 ## <a name="change-azure-cognitive-search"></a>Azure Bilişsel Arama 'yi değiştirme
 
-Soru-Cevap Oluşturma hizmetinize bağlı [bilişsel arama hizmetini nasıl değiştireceğinizi](./how-to/set-up-qnamaker-service-azure.md#configure-qna-maker-to-use-different-cognitive-search-resource) öğrenin.
+Soru-Cevap Oluşturma hizmetinize bağlı [bilişsel arama hizmetini nasıl değiştireceğinizi](./how-to/configure-QnA-Maker-resources.md#configure-qna-maker-to-use-different-cognitive-search-resource) öğrenin.
 
 ## <a name="change-default-answer"></a>Varsayılan yanıtı değiştirme
 

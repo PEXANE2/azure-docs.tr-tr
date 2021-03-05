@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 11/05/2020
 ms.topic: conceptual
 ms.custom: how-to, has-adal-ref, devx-track-js, devx-track-azurecli, contperf-fy21q2
-ms.openlocfilehash: 27c8a0b80068124613af15565f387f15ac6b8e57
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 30e4fede72df8eaf922745e7781c9e0d11f7ddb4
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97027263"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102210827"
 ---
 # <a name="set-up-authentication-for-azure-machine-learning-resources-and-workflows"></a>Azure Machine Learning kaynakları ve iş akışları için kimlik doğrulamasını ayarlama
 
@@ -54,7 +54,7 @@ Hizmet sorumlusu (SP) kullanmak için, önce SP 'yi oluşturmanız ve çalışma
 >
 > En az erişim verme nedeni, hizmet sorumlusunun kimlik doğrulaması için bir parola kullanması ve parolanın bir Otomasyon betiğinin parçası olarak depolanması olabilir. Parolanın sızmış olması halinde, belirli bir görev için gereken en düşük erişime sahip olmak, SP 'nin kötü amaçlı kullanımını en aza indirir.
 
-SP oluşturmanın en kolay yolu [Azure CLI](/cli/azure/install-azure-cli?preserve-view=true&view=azure-cli-latest)'yı kullanarak çalışma alanınıza erişim izni vermenizi sağlar. Bir hizmet sorumlusu oluşturmak ve çalışma alanınıza erişim sağlamak için aşağıdaki adımları kullanın:
+SP oluşturmanın en kolay yolu [Azure CLI](/cli/azure/install-azure-cli)'yı kullanarak çalışma alanınıza erişim izni vermenizi sağlar. Bir hizmet sorumlusu oluşturmak ve çalışma alanınıza erişim sağlamak için aşağıdaki adımları kullanın:
 
 > [!NOTE]
 > Bu adımların tümünü gerçekleştirmek için abonelikte yönetici olmanız gerekir.
@@ -67,9 +67,9 @@ SP oluşturmanın en kolay yolu [Azure CLI](/cli/azure/install-azure-cli?preserv
 
     CLI varsayılan tarayıcınızı açabiliyorsa, tarayıcıyı açar ve oturum açma sayfasını yükler. Aksi takdirde, bir tarayıcı açmanız ve komut satırındaki yönergeleri izlemeniz gerekir. Yönergeler, [https://aka.ms/devicelogin](https://aka.ms/devicelogin) bir yetkilendirme koduna göz atmaya ve girmeye yönelik bilgiler içerir.
 
-    Birden çok Azure aboneliğiniz varsa, `az account set -s <subscription name or ID>` aboneliği ayarlamak için komutunu kullanabilirsiniz. Daha fazla bilgi için bkz. [birden çok Azure aboneliği kullanma](/cli/azure/manage-azure-subscriptions-azure-cli?view=azure-cli-latest).
+    Birden çok Azure aboneliğiniz varsa, `az account set -s <subscription name or ID>` aboneliği ayarlamak için komutunu kullanabilirsiniz. Daha fazla bilgi için bkz. [birden çok Azure aboneliği kullanma](/cli/azure/manage-azure-subscriptions-azure-cli).
 
-    Diğer kimlik doğrulama yöntemleri için bkz. [Azure CLI Ile oturum açma](/cli/azure/authenticate-azure-cli?preserve-view=true&view=azure-cli-latest).
+    Diğer kimlik doğrulama yöntemleri için bkz. [Azure CLI Ile oturum açma](/cli/azure/authenticate-azure-cli).
 
 1. Azure Machine Learning uzantısını yükler:
 
@@ -236,7 +236,7 @@ ws.get_details()
 
 ### <a name="use-a-service-principal-from-the-azure-cli"></a>Azure CLı 'dan bir hizmet sorumlusu kullanma
 
-Azure CLı komutları için hizmet sorumlusu kullanabilirsiniz. Daha fazla bilgi için bkz. [hizmet sorumlusu kullanarak oturum açma](/cli/azure/create-an-azure-service-principal-azure-cli?preserve-view=true&view=azure-cli-latest#sign-in-using-a-service-principal).
+Azure CLı komutları için hizmet sorumlusu kullanabilirsiniz. Daha fazla bilgi için bkz. [hizmet sorumlusu kullanarak oturum açma](/cli/azure/create-an-azure-service-principal-azure-cli#sign-in-using-a-service-principal).
 
 ### <a name="use-a-service-principal-with-the-rest-api-preview"></a>REST API (Önizleme) ile hizmet sorumlusu kullanma
 

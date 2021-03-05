@@ -7,12 +7,12 @@ ms.service: web-application-firewall
 ms.topic: article
 ms.date: 12/22/2020
 ms.author: tyao
-ms.openlocfilehash: 60a4ef47bc30955c918983d54f613cbdb5cbed73
-ms.sourcegitcommit: 6e2d37afd50ec5ee148f98f2325943bafb2f4993
+ms.openlocfilehash: 65e378c0380804c13e4b42d855aede7781b93592
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97746771"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102211677"
 ---
 # <a name="configure-an-ip-restriction-rule-with-a-web-application-firewall-for-azure-front-door"></a>Azure ön kapısı için Web uygulaması güvenlik duvarıyla bir IP kısıtlama kuralı yapılandırma
 
@@ -58,13 +58,13 @@ Varsayılan olarak, Web uygulamanıza Internet 'ten erişilebilir. İstemcilerle
    |Öncelik    |100|
    |Eşleşme türü     |IP Adresi|
    |Match değişkeni|RemoteAddr|
-   |Çalışma|İçermez|
+   |İşlem|İçermez|
    |IP adresi veya aralığı|10.10.10.0/24|
    |Ardından|Trafiği reddetme|
 
    :::image type="content" source="../media/waf-front-door-configure-ip-restriction/custom-rule.png" alt-text="Özel kural":::
 
-   **Ekle**’yi seçin.
+   **Add (Ekle)** seçeneğini belirleyin.
 6. **İleri: ilişkilendirme** öğesini seçin.
 7. **Ön uç Konağı Ekle**' yi seçin.
 8. **Ön uç Konağı** için ön uç konağını seçin ve **Ekle**' yi seçin.
@@ -95,7 +95,7 @@ Bir IP kısıtlama ilkesini yapılandırmaya başlamadan önce, CLı ortamınız
 
 ### <a name="create-a-waf-policy"></a>WAF ilkesi oluşturma
 
-[Az Network Front-kapısı WAF-Policy Create](/cli/azure/ext/front-door/network/front-door/waf-policy?view=azure-cli-latest#ext-front-door-az-network-front-door-waf-policy-create) komutunu kullanarak bir WAF ilkesi oluşturun. Aşağıdaki örnekte, *ıpallowpolicyexampleclı* ilke adı ' nı benzersiz bir ilke adıyla değiştirin.
+[Az Network Front-kapısı WAF-Policy Create](/cli/azure/ext/front-door/network/front-door/waf-policy#ext-front-door-az-network-front-door-waf-policy-create) komutunu kullanarak bir WAF ilkesi oluşturun. Aşağıdaki örnekte, *ıpallowpolicyexampleclı* ilke adı ' nı benzersiz bir ilke adıyla değiştirin.
 
 ```azurecli-interactive 
 az network front-door waf-policy create \
@@ -105,7 +105,7 @@ az network front-door waf-policy create \
   ```
 ### <a name="add-a-custom-ip-access-control-rule"></a>Özel bir IP erişim denetimi kuralı ekleme
 
-Az [Network ön kapı WAF-Policy Custom-Rule Create](/cli/azure/ext/front-door/network/front-door/waf-policy/rule?view=azure-cli-latest#ext-front-door-az-network-front-door-waf-policy-rule-create) komutunu kullanarak az önce oluşturduğunuz WAF ilkesi için özel bir IP erişim denetimi kuralı ekleyin.
+Az [Network ön kapı WAF-Policy Custom-Rule Create](/cli/azure/ext/front-door/network/front-door/waf-policy/rule#ext-front-door-az-network-front-door-waf-policy-rule-create) komutunu kullanarak az önce oluşturduğunuz WAF ilkesi için özel bir IP erişim denetimi kuralı ekleyin.
 
 Aşağıdaki örneklerde:
 -  *Ipallowpolicyexampleclı* öğesini daha önce oluşturduğunuz benzersiz ilkenize değiştirin.
@@ -138,7 +138,7 @@ az network front-door waf-policy rule match-condition add \
   ```
                                                    
 ### <a name="find-the-id-of-a-waf-policy"></a>Bir WAF ilkesinin KIMLIĞINI bulma 
-[Az Network ön kapıwaf-Policy Show](/cli/azure/ext/front-door/network/front-door/waf-policy?view=azure-cli-latest#ext-front-door-az-network-front-door-waf-policy-show) komutunu kullanarak bir WAF ilkesinin kimliğini bulun. Aşağıdaki örnekteki *ıpallowpolicyexampleclı* değerini, daha önce oluşturduğunuz benzersiz ilkenize göre değiştirin.
+[Az Network ön kapıwaf-Policy Show](/cli/azure/ext/front-door/network/front-door/waf-policy#ext-front-door-az-network-front-door-waf-policy-show) komutunu kullanarak bir WAF ilkesinin kimliğini bulun. Aşağıdaki örnekteki *ıpallowpolicyexampleclı* değerini, daha önce oluşturduğunuz benzersiz ilkenize göre değiştirin.
 
    ```azurecli
    az network front-door  waf-policy show \
@@ -148,7 +148,7 @@ az network front-door waf-policy rule match-condition add \
 
 ### <a name="link-a-waf-policy-to-an-azure-front-door-front-end-host"></a>Bir WAF ilkesini bir Azure ön kapısının ön uç konağına bağlama
 
-[Az Network ön kapı Update](/cli/azure/ext/front-door/network/front-door?view=azure-cli-latest#ext-front-door-az-network-front-door-update) komutunu kullanarak Azure ön kapısı *Webapplicationfirewallpolicylink* kimliğini ilke kimliğine ayarlayın. *Ipallowpolicyexampleclı* öğesini daha önce oluşturduğunuz benzersiz ilkenize değiştirin.
+[Az Network ön kapı Update](/cli/azure/ext/front-door/network/front-door#ext-front-door-az-network-front-door-update) komutunu kullanarak Azure ön kapısı *Webapplicationfirewallpolicylink* kimliğini ilke kimliğine ayarlayın. *Ipallowpolicyexampleclı* öğesini daha önce oluşturduğunuz benzersiz ilkenize değiştirin.
 
    ```azurecli
    az network front-door update \

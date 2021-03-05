@@ -9,21 +9,21 @@ ms.subservice: managed-hsm
 ms.topic: tutorial
 ms.date: 09/15/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 22abd38ead1257b49eeae98acfcd74349f563811
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7420ffbe5b365c635c1eac2620cfd54ceb649ebf
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91000791"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102211813"
 ---
 # <a name="managed-hsm-logging"></a>Yönetilen HSM günlüğü 
 
 Bir veya daha fazla yönetilen HSM oluşturduktan sonra muhtemelen, HSMss 'nizin nasıl ve ne zaman erişildiğini ve kim tarafından izleneceğini izlemek isteyeceksiniz. Bu, bilgileri sağladığınız bir Azure depolama hesabına kaydeden günlüğe kaydetmeyi etkinleştirerek yapabilirsiniz. Belirtilen depolama hesabınız için **Öngörüler-logs-auditevent** adlı yeni bir kapsayıcı otomatik olarak oluşturulur. Birden çok yönetilen HSM için günlükleri toplamak üzere bu depolama hesabını kullanabilirsiniz.
 
-Günlük bilgilerinizin 10 dakikaya (en fazla), yönetilen HSM işleminden sonra erişebilirsiniz. Çoğu durumda, bundan daha hızlı olacaktır.  Depolama hesabınızdaki günlüklerinizi yönetmek size bağlıdır:
+Günlük bilgilerinizin 10 dakikaya (en fazla), yönetilen HSM işleminden sonra erişebilirsiniz. Çoğu durumda, bundan daha hızlı olacaktır.  Depolama hesabınızdaki günlükleri istediğiniz şekilde yönetebilirsiniz:
 
 * Günlüklerinize erişebilecek kişileri kısıtlayarak güvenliklerini sağlamak için standart Azure erişim denetimi yöntemlerini kullanın.
-* Artık depolama hesabınızda tutmak istemediğiniz günlükleri silin.
+* Depolama hesabınızda tutmak istemediğiniz günlükleri silebilirsiniz.
 
 Yönetilen HSM günlüğü ile çalışmaya başlamanıza yardımcı olması için bu öğreticiyi kullanın. Bir depolama hesabı oluşturacak, günlüğe kaydetmeyi etkinleştireceksiniz ve toplanan günlük bilgilerini yorumlayacak.  
 
@@ -48,7 +48,7 @@ Anahtar günlüğü ayarlamanın ilk adımı, Azure CLı 'yı günlüğe kaydetm
 az login
 ```
 
-CLı aracılığıyla oturum açma seçenekleri hakkında daha fazla bilgi için [Azure CLI ile oturum açma](/cli/azure/authenticate-azure-cli?view=azure-cli-latest&preserve-view=true) bölümüne göz atın
+CLı aracılığıyla oturum açma seçenekleri hakkında daha fazla bilgi için [Azure CLI ile oturum açma](/cli/azure/authenticate-azure-cli) bölümüne göz atın
 
 Yönetilen HSM 'nizi oluşturmak için kullandığınız aboneliği belirtmeniz gerekebilir. Hesabınıza yönelik abonelikleri görmek için aşağıdaki komutu girin:
 
@@ -65,7 +65,7 @@ Yönetilen HSM için günlüğe kaydetmeyi etkinleştirmek üzere, yeni depolama
 
 Bu çıktı, günlük kaydının yönetilen HSM 'niz için etkin olduğunu onaylar ve depolama hesabınıza bilgi kaydeder.
 
-İsteğe bağlı olarak, günlüklerinizi için eski günlüklerin otomatik olarak silineceği bir bekletme ilkesi ayarlayabilirsiniz. Örneğin, **-RetentionEnabled** bayrağını **$true**olarak ayarlayarak bekletme ilkesi ayarlayın ve 90 günden eski günlüklerin otomatik olarak silinmesi için **-retentionındays** parametresini **90** olarak ayarlayın.
+İsteğe bağlı olarak, günlüklerinizi için eski günlüklerin otomatik olarak silineceği bir bekletme ilkesi ayarlayabilirsiniz. Örneğin, **-RetentionEnabled** bayrağını **$true** olarak ayarlayarak bekletme ilkesi ayarlayın ve 90 günden eski günlüklerin otomatik olarak silinmesi için **-retentionındays** parametresini **90** olarak ayarlayın.
 
 ```azurecli-interactive
 az monitor diagnostic-settings create --name ContosoMHSM-Diagnostics --resource $hsmresource --logs '[{"category": "AuditEvent","enabled": true}]' --storage-account $storageresource

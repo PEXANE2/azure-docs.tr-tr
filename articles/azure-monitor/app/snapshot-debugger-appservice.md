@@ -6,18 +6,19 @@ author: cweining
 ms.author: cweining
 ms.date: 03/26/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 291f06bea0744c991c71640272ee341b7273472b
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 5a637a6f355be32f82878a52a30c77d020190651
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101729003"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102211626"
 ---
 # <a name="enable-snapshot-debugger-for-net-apps-in-azure-app-service"></a>Azure App Service .NET uygulamaları için Snapshot Debugger etkinleştirme
 
 Snapshot Debugger Şu anda Windows hizmet planları üzerinde Azure App Service çalışan ASP.NET ve ASP.NET Core uygulamalarını desteklemektedir.
 
 Anlık görüntü hata ayıklayıcısı kullanırken uygulamanızı temel hizmet katmanında veya daha yüksek bir sürüme çalıştırmanızı öneririz.
+
 Çoğu uygulama için, ücretsiz ve paylaşılan hizmet katmanlarında anlık görüntüleri kaydetmek için yeterli bellek veya disk alanı yoktur.
 
 ## <a name="enable-snapshot-debugger"></a><a id="installation"></a> Snapshot Debugger etkinleştir
@@ -52,6 +53,16 @@ Bir uygulamayı dağıttıktan sonra, anlık görüntü hata ayıklayıcısını
 4. Snapshot Debugger artık bir App Services uygulama ayarı kullanılarak etkinleştirildi.
 
     ![Snapshot Debugger için uygulama ayarı][snapshot-debugger-app-setting]
+
+## <a name="enable-snapshot-debugger-for-other-clouds"></a>Diğer bulutlar için Snapshot Debugger etkinleştir
+
+Şu anda yalnızca uç nokta değişiklikleri gerektiren bölgeler [Azure Kamu](https://docs.microsoft.com/azure/azure-government/compare-azure-government-global-azure#application-insights) ve [Azure Çin](https://docs.microsoft.com/azure/china/resources-developer-guide) Application Insights bağlantı dizesi aracılığıyla yapılır.
+
+|Bağlantı dizesi özelliği    | ABD kamu bulutu | Çin bulutu |   
+|---------------|---------------------|-------------|
+|Anlık görüntü Tendpoint         | `https://snapshot.monitor.azure.us`    | `https://snapshot.monitor.azure.cn` |
+
+Diğer bağlantı geçersiz kılmaları hakkında daha fazla bilgi için bkz. [Application Insights belgeleri](https://docs.microsoft.com/azure/azure-monitor/app/sdk-connection-string?tabs=net#connection-string-with-explicit-endpoint-overrides).
 
 ## <a name="disable-snapshot-debugger"></a>Snapshot Debugger devre dışı bırak
 

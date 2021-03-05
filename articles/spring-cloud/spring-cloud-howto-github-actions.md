@@ -8,19 +8,19 @@ ms.topic: how-to
 ms.date: 09/08/2020
 ms.custom: devx-track-java, devx-track-azurecli
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: 95a97d3f5104891ef5e23a03ffe1477f9b6ad036
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: 8400fcacbfa4c76aceb079b788255e3d3b83ce33
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97561622"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102210419"
 ---
 # <a name="azure-spring-cloud-cicd-with-github-actions"></a>GitHub eylemleri ile Azure yay bulut CI/CD
 
 GitHub eylemleri otomatik yazılım geliştirme yaşam döngüsü iş akışını destekler. Azure Spring Cloud için GitHub eylemleri sayesinde deponuzda oluşturmak, test etmek, paketlemek, yayınlamak ve Azure 'a dağıtmak için iş akışları oluşturabilirsiniz. 
 
 ## <a name="prerequisites"></a>Önkoşullar
-Bu örnek, [Azure CLI](/cli/azure/install-azure-cli?preserve-view=true&view=azure-cli-latest)gerektirir.
+Bu örnek, [Azure CLI](/cli/azure/install-azure-cli)gerektirir.
 
 ::: zone pivot="programming-language-csharp"
 ## <a name="set-up-github-repository-and-authenticate"></a>GitHub deposunu ayarlama ve kimlik doğrulama
@@ -340,5 +340,5 @@ Eylemleriniz hatada çalışıyorsa, örneğin, Azure kimlik bilgisini ayarlamad
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [Spring Cloud GitHub eylemleri için Key Vault](./spring-cloud-github-actions-key-vault.md)
-* [Hizmet sorumlularını Azure Active Directory](/cli/azure/ad/sp?preserve-view=true&view=azure-cli-latest#az-ad-sp-create-for-rbac)
+* [Hizmet sorumlularını Azure Active Directory](/cli/azure/ad/sp#az-ad-sp-create-for-rbac)
 * [Azure için GitHub Actions](https://github.com/Azure/actions/)

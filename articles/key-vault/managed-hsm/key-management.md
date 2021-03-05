@@ -8,17 +8,17 @@ ms.subservice: managed-hsm
 ms.topic: tutorial
 ms.date: 09/15/2020
 ms.author: ambapat
-ms.openlocfilehash: 3f054638e09061c652946c9c2db1a32db73c23d9
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 8d0cbd35b53bc8460ac8a19e5197d1f560657263
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92521042"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102212051"
 ---
 # <a name="manage-a-managed-hsm-using-the-azure-cli"></a>Azure CLı kullanarak yönetilen bir HSM 'yi yönetme
 
 > [!NOTE]
-> Key Vault iki tür kaynağı destekler: kasa ve yönetilen HSM 'ler. Bu makale, **YÖNETILEN HSM**ile ilgilidir. Kasayı yönetme hakkında bilgi edinmek istiyorsanız lütfen bkz. [Azure CLI kullanarak Key Vault yönetme](../general/manage-with-cli2.md).
+> Key Vault iki tür kaynağı destekler: kasa ve yönetilen HSM 'ler. Bu makale, **YÖNETILEN HSM** ile ilgilidir. Kasayı yönetme hakkında bilgi edinmek istiyorsanız lütfen bkz. [Azure CLI kullanarak Key Vault yönetme](../general/manage-with-cli2.md).
 
 Yönetilen HSM 'ye genel bakış için bkz. [YÖNETILEN HSM nedir?](overview.md)
 
@@ -42,7 +42,7 @@ CLı kullanarak Azure 'da oturum açmak için şunu yazabilirsiniz:
 az login
 ```
 
-CLı aracılığıyla oturum açma seçenekleri hakkında daha fazla bilgi için bkz. [Azure CLI ile oturum açma](/cli/azure/authenticate-azure-cli?view=azure-cli-latest&preserve-view=true)
+CLı aracılığıyla oturum açma seçenekleri hakkında daha fazla bilgi için bkz. [Azure CLI ile oturum açma](/cli/azure/authenticate-azure-cli)
 
 > [!NOTE]
 > Aşağıdaki tüm komutlarda iki kullanım yöntemi gösterilmektedir. Bir tane, **--HSM-Name** ve **--Name** (anahtar adı için) parametreleri ve uygun yerlerde anahtar adı dahil olmak üzere tüm URL 'yi belirtebileceğiniz **--id** parametresini kullanarak bir diğeri. İkinci yöntem, çağıran (bir kullanıcı veya uygulama) denetim düzlemi üzerinde okuma erişimine sahip olmadığında ve yalnızca veri düzleminde kısıtlı erişime sahip olduğunda yararlıdır.
@@ -69,7 +69,7 @@ az keyvault key create --id https://ContosoMHSM.managedhsm.azure.net/keys/myrsak
 
 ### <a name="create-an-ec-key"></a>EC anahtarı oluşturma
 
-Aşağıdaki örnekte, yalnızca **imzalama ve doğrulama** işlemleri için kullanılacak olan (--OPS) P-256 eğrisi Ile bir **EC** anahtarı oluşturma işlemi gösterilmektedir ve iki etiket, **kullanım** ve Kullanıcı **adı**vardır. Etiketler, izleme ve yönetme için anahtara ek meta veri eklemenize yardımcı olur.
+Aşağıdaki örnekte, yalnızca **imzalama ve doğrulama** işlemleri için kullanılacak olan (--OPS) P-256 eğrisi Ile bir **EC** anahtarı oluşturma işlemi gösterilmektedir ve iki etiket, **kullanım** ve Kullanıcı **adı** vardır. Etiketler, izleme ve yönetme için anahtara ek meta veri eklemenize yardımcı olur.
 
 ```azurecli-interactive
 az keyvault key create --hsm-name ContosoMHSM --name myec256key --ops sign verify  --tags ‘usage=signing] appname=myapp’ --kty EC-HSM --curve P-256

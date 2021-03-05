@@ -1230,6 +1230,8 @@
               href: virtual-machines/linux/rhel-high-availability-stonith-tutorial.md
             - name: Azure’daki RHEL sanal makineleri üzerinde SQL Server için kullanılabilirlik grubu dinleyicisini yapılandırma
               href: virtual-machines/linux/rhel-high-availability-listener-tutorial.md
+            - name: DH2i DxEnterprise ile Always on kullanılabilirlik grubu kurulumu
+              href: virtual-machines/linux/dh2i-high-availability-tutorial.md
         - name: Kaynaklar
           items:
             - name: SSS

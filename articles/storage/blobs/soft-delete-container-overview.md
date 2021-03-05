@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 02/08/2021
+ms.date: 03/05/2021
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: references_regions
-ms.openlocfilehash: 674a336e79f118d543590fb7514b6bebef72cf47
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: f157b44e92289d0e9c5b88108550c144344c5206
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100390190"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102211150"
 ---
 # <a name="soft-delete-for-containers-preview"></a>Kapsayıcılar için geçici silme (Önizleme)
 
@@ -27,8 +27,8 @@ Blob verilerinize yönelik uçtan uca koruma için, Microsoft aşağıdaki veri 
 - Blob 'un önceki sürümlerini otomatik olarak sürdürmek için blob sürümü oluşturma. Blob sürümü oluşturma etkinleştirildiğinde, yanlışlıkla değiştirildiyse veya silinirse verilerinizi kurtarmak için bir Blobun önceki bir sürümünü geri yükleyebilirsiniz. Blob sürümü oluşturmayı nasıl etkinleştireceğinizi öğrenmek için bkz. [BLOB sürüm oluşturmayı etkinleştirme ve yönetme](versioning-enable.md).
 - Silinen bir Blobu veya sürümü geri yüklemek için blob geçici silme. Blob geçici silme özelliğini etkinleştirmeyi öğrenmek için bkz. [Bloblar için geçici silmeyi etkinleştirme ve yönetme](soft-delete-blob-enable.md).
 
-> [!WARNING]
-> Depolama hesabını silme işlemi geri alınamaz. Kapsayıcı geçici silme, bir depolama hesabının silinmesine karşı koruma sağlamaz, ancak yalnızca söz konusu hesaptaki kapsayıcıların silinmesine karşı değildir. Bir depolama hesabını silinmeye karşı korumak için, depolama hesabı kaynağında bir kilit yapılandırın. Azure Resource Manager kaynaklarını kilitleme hakkında daha fazla bilgi için bkz. [kaynakları kilitleme, beklenmeyen değişiklikleri önleme](../../azure-resource-manager/management/lock-resources.md).
+> [!IMPORTANT]
+> Kapsayıcı geçici silme Şu anda **Önizleme** aşamasındadır. Beta, önizleme veya henüz genel kullanıma sunulmayan Azure özelliklerine uygulanan yasal koşullara yönelik [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) 'na bakın.
 
 ## <a name="how-container-soft-delete-works"></a>Kapsayıcı geçici silme nasıl kullanılır?
 
@@ -46,14 +46,14 @@ Saklama süresi dolduktan sonra kapsayıcı, Azure depolama 'dan kalıcı olarak
 
 Geçici silme kapsayıcısını devre dışı bırakmak, daha önce geçici olarak silinmiş kapsayıcıların kalıcı olarak silinmesine neden olmaz. Geçici olarak silinen kapsayıcılar, kapsayıcının silindiği sırada geçerli olan bekletme döneminin sona erdiğinde kalıcı olarak silinir.
 
+> [!IMPORTANT]
+> Kapsayıcı geçici silme, bir depolama hesabının silinmesine karşı koruma sağlamaz, ancak yalnızca söz konusu hesaptaki kapsayıcıların silinmesine karşı değildir. Bir depolama hesabını silinmeye karşı korumak için, depolama hesabı kaynağında bir kilit yapılandırın. Azure Resource Manager kaynaklarını kilitleme hakkında daha fazla bilgi için bkz. [kaynakları kilitleme, beklenmeyen değişiklikleri önleme](../../azure-resource-manager/management/lock-resources.md).
+
 ## <a name="about-the-preview"></a>Önizleme hakkında
 
 Kapsayıcı geçici silme, tüm Azure bölgelerinde önizleme olarak kullanılabilir.
 
-> [!IMPORTANT]
-> Kapsayıcı geçici silme önizlemesi yalnızca üretim dışı kullanım için tasarlanmıştır. Üretim hizmet düzeyi sözleşmeleri (SLA 'Lar) Şu anda kullanılamıyor.
-
-Azure depolama REST API sürüm 2019-12-12 ve üzeri, kapsayıcı geçici silmeyi destekler.
+Azure Storage 'ın 2019-12-12 veya üzeri sürümleri, kapsayıcı geçici silmeyi destekler REST API.
 
 ### <a name="storage-account-support"></a>Depolama hesabı desteği
 

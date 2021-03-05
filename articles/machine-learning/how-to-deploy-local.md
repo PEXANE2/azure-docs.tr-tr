@@ -10,12 +10,12 @@ author: lobrien
 ms.date: 11/20/2020
 ms.topic: conceptual
 ms.custom: how-to, deploy
-ms.openlocfilehash: 71f393897dff266f1b0922a19eefd70cffea133d
-ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
+ms.openlocfilehash: 8f22f1af04d59b4c1fb7f19a3d6815b61cac5fbd
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96600362"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102211236"
 ---
 # <a name="deploy-models-trained-with-azure-machine-learning-on-your-local-machines"></a>Yerel makinelerinizde Azure Machine Learning eğitilen modeller dağıtın 
 
@@ -185,8 +185,8 @@ Modelinizi Web hizmeti olarak dağıtmak için Docker kullanılması en yaygın 
 Modeli indirebilirsiniz:  
 
 - Portalda, **modeller** sekmesini seçin, istenen modeli seçin ve **Ayrıntılar** sayfasında **İndir**' i seçin.
-- Komut satırından kullanarak `az ml model download` . (Bkz [. model indirme.](/cli/azure/ext/azure-cli-ml/ml/model?view=azure-cli-latest#ext_azure_cli_ml_az_ml_model_download&preserve-view=false))
-- Python SDK `Model.download()` yöntemini kullanarak. (Bkz [. model sınıfı.](/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#download-target-dir------exist-ok-false--exists-ok-none-&preserve-view=false))
+- Komut satırından kullanarak `az ml model download` . (Bkz [. model indirme.](/cli/azure/ext/azure-cli-ml/ml/model#ext_azure_cli_ml_az_ml_model_download))
+- Python SDK `Model.download()` yöntemini kullanarak. (Bkz [. model sınıfı.](/python/api/azureml-core/azureml.core.model.model#download-target-dir------exist-ok-false--exists-ok-none-))
 
 Bir Azure modeli, Python Pickle dosyası (. pkl uzantısı) olarak paketlenmiş bir veya daha fazla serileştirilmiş Python nesnedir. Pickle dosyasının içeriği, modeli eğitmek için kullanılan makine öğrenimi kitaplığına veya tekniğe bağlıdır. Örneğin, öğreticiden model kullanıyorsanız, modeli şu şekilde yükleyebilirsiniz:
 

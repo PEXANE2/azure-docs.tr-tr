@@ -8,23 +8,23 @@ ms.topic: quickstart
 ms.date: 09/08/2020
 ms.custom: devx-track-java, devx-track-azurecli
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: 22abdb64a2349045923e148db57f683b4be87636
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 6f25c4172b384abd487d2084f31981d16e73ee93
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92742707"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102209892"
 ---
 # <a name="quickstart-provision-azure-spring-cloud-service"></a>Hızlı başlangıç: Azure yay bulut hizmetini sağlama
 
 ::: zone pivot="programming-language-csharp"
 Bu hızlı başlangıçta Azure yay bulut hizmeti 'nin bir örneğini sağlamak için Azure CLı 'yi kullanırsınız.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * [.NET Core 3,1 SDK](https://dotnet.microsoft.com/download/dotnet-core/3.1). Azure yay bulut hizmeti, .NET Core 3,1 ve sonraki sürümlerini destekler.
-* [Azure CLI sürüm 2.0.67 veya üzeri](/cli/azure/install-azure-cli?preserve-view=true&view=azure-cli-latest).
+* [Azure CLI sürüm 2.0.67 veya üzeri](/cli/azure/install-azure-cli).
 * [Git](https://git-scm.com/).
 
 ## <a name="install-azure-cli-extension"></a>Azure CLI uzantısını yükleme
@@ -88,11 +88,11 @@ az extension add --name spring-cloud
 
 ::: zone pivot="programming-language-java"
 Azure portal veya Azure CLı kullanarak Azure Spring Cloud örneğini oluşturabilirsiniz.  Her iki yöntem de aşağıdaki yordamlarda açıklanmıştır.
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
-* [JDK 8 ' i yükler](/java/azure/jdk/?preserve-view=true&view=azure-java-stable)
+* [JDK 8 ' i yükler](/java/azure/jdk/)
 * [Azure aboneliğine kaydolma](https://azure.microsoft.com/free/)
-* Seçim [Azure CLI sürüm 2.0.67 veya üstünü yükleyip](/cli/azure/install-azure-cli?preserve-view=true&view=azure-cli-latest) Azure Spring Cloud uzantısını şu komutla birlikte yüklersiniz: `az extension add --name spring-cloud`
+* Seçim [Azure CLI sürüm 2.0.67 veya üstünü yükleyip](/cli/azure/install-azure-cli) Azure Spring Cloud uzantısını şu komutla birlikte yüklersiniz: `az extension add --name spring-cloud`
 * Seçim [Azure Toolkit for IntelliJ](https://plugins.jetbrains.com/plugin/8053-azure-toolkit-for-intellij/) ve [oturum açmayı](/azure/developer/java/toolkit-for-intellij/create-hello-world-web-app#installation-and-sign-in) yükleyip
 
 ## <a name="provision-an-instance-of-azure-spring-cloud"></a>Azure yay bulutu örneği sağlama
@@ -103,25 +103,25 @@ Aşağıdaki yordam Azure portal kullanarak bir Azure Spring Cloud örneği olu�
 
 1. Yeni bir sekmede [Azure Portal](https://ms.portal.azure.com/)açın. 
 
-2. Üst arama kutusundan **Azure yay bulutu** ' nı arayın.
+2. Üst arama kutusundan **Azure yay bulutu**' nı arayın.
 
 3. Sonuçlardan **Azure yay bulutu** ' nı seçin.
 
     ![ASC simgesi başlangıç](media/spring-cloud-quickstart-launch-app-portal/find-spring-cloud-start.png)
 
-4. Azure yay bulutu sayfasında **+ Ekle** ' ye tıklayın.
+4. Azure yay bulutu sayfasında **+ Ekle**' ye tıklayın.
 
     ![ASC simgesi ekle](media/spring-cloud-quickstart-launch-app-portal/spring-cloud-add.png)
 
 5. Azure yay bulutu **Oluştur** sayfasında formu doldurun.  Aşağıdaki yönergeleri göz önünde bulundurun:
-    - **Abonelik** : Bu kaynak için faturalandırılması istediğiniz aboneliği seçin.
-    - **Kaynak grubu** : yeni kaynaklar için yeni kaynak grupları oluşturmak en iyi uygulamadır. Bu, sonraki adımlarda olarak kullanılacak **\<resource group name\>** .
-    - **Hizmet Ayrıntıları/adı** : öğesini belirtin **\<service instance name\>** .  Ad 4 ila 32 karakter uzunluğunda olmalı ve yalnızca küçük harf, sayı ve kısa çizgi içermelidir.  Hizmet adının ilk karakteri bir harf olmalıdır ve son karakter bir harf ya da sayı olmalıdır.
-    - **Konum** : hizmet örneğinizin konumunu seçin.
+    - **Abonelik**: Bu kaynak için faturalandırılması istediğiniz aboneliği seçin.
+    - **Kaynak grubu**: yeni kaynaklar için yeni kaynak grupları oluşturmak en iyi uygulamadır. Bu, sonraki adımlarda olarak kullanılacak **\<resource group name\>** .
+    - **Hizmet Ayrıntıları/adı**: öğesini belirtin **\<service instance name\>** .  Ad 4 ila 32 karakter uzunluğunda olmalı ve yalnızca küçük harf, sayı ve kısa çizgi içermelidir.  Hizmet adının ilk karakteri bir harf olmalıdır ve son karakter bir harf ya da sayı olmalıdır.
+    - **Konum**: hizmet örneğinizin konumunu seçin.
 
     ![ASC portalı başlangıcı](media/spring-cloud-quickstart-launch-app-portal/portal-start.png)
 
-6. **Gözden geçir ve oluştur** ’a tıklayın.
+6. **Gözden geçir ve oluştur**’a tıklayın.
 
 > [!div class="nextstepaction"]
 > [Bir sorunla karşılaştım](https://www.research.net/r/javae2e?tutorial=asc-cli-quickstart&step=public-endpoint)

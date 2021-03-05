@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 10/06/2019
 ms.author: mbaldwin
 ms.custom: include file, devx-track-azurecli
-ms.openlocfilehash: 3fe622d2ff4f6f8aff546452db0f475cfd44eb1b
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 26a9e931c42822218e7935f50c1f222ac33c34f2
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96015391"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102210110"
 ---
 ## <a name="create-a-resource-group"></a>Kaynak grubu oluşturma
 
@@ -21,9 +21,9 @@ ms.locfileid: "96015391"
 
 Kaynak grubu, Azure kaynaklarının dağıtıldığı ve yönetildiği bir mantıksal kapsayıcıdır. 
 
-[Az Group Create](/cli/azure/group?view=azure-cli-latest#az-group-create) Azure CLI komutunu, [New-azresourcegroup](/powershell/module/az.resources/new-azresourcegroup) Azure PowerShell komutunu veya [Azure Portal](https://portal.azure.com)kullanarak bir kaynak grubu oluşturun.
+[Az Group Create](/cli/azure/group#az-group-create) Azure CLI komutunu, [New-azresourcegroup](/powershell/module/az.resources/new-azresourcegroup) Azure PowerShell komutunu veya [Azure Portal](https://portal.azure.com)kullanarak bir kaynak grubu oluşturun.
 
-### <a name="azure-cli"></a>Azure CLI’si
+### <a name="azure-cli"></a>Azure CLI
 
 ```azurecli-interactive
 az group create --name "myResourceGroup" --location eastus
@@ -37,14 +37,14 @@ New-AzResourceGroup -Name "myResourceGroup" -Location "EastUS"
 
 *Zaten bir anahtar kasanız varsa, [Anahtar Kasası Gelişmiş erişim Ilkeleri ayarlamak](#set-key-vault-advanced-access-policies)için atlayabilirsiniz.*
 
-[Az keykasa Create](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-create) Azure CLI komutunu, [New-Azkeykasası](/powershell/module/az.keyvault/new-azkeyvault) azure PowerShell komutunu, [Azure Portal](https://portal.azure.com)veya bir [Kaynak Yöneticisi şablonunu](https://github.com/Azure/azure-quickstart-templates/tree/master/101-key-vault-create)kullanarak bir Anahtar Kasası oluşturun.
+[Az keykasa Create](/cli/azure/keyvault#az-keyvault-create) Azure CLI komutunu, [New-Azkeykasası](/powershell/module/az.keyvault/new-azkeyvault) azure PowerShell komutunu, [Azure Portal](https://portal.azure.com)veya bir [Kaynak Yöneticisi şablonunu](https://github.com/Azure/azure-quickstart-templates/tree/master/101-key-vault-create)kullanarak bir Anahtar Kasası oluşturun.
 
 >[!WARNING]
 > Anahtar kasanızın ve sanal makinelerinizin aynı abonelikte olması gerekir. Ayrıca, şifreleme gizli dizilerini bölge sınırları arasında olmamasını sağlamak için, Azure disk şifrelemesi Key Vault ve VM 'Lerin aynı bölgede birlikte bulunmasını gerektirir. Şifrelenecek VM 'Lerle aynı abonelikte ve bölgede bulunan bir Key Vault oluşturun ve kullanın. 
 
 Her Key Vault benzersiz bir adı olmalıdır. -Unique-keykasa-adı> <aşağıdaki örneklerde anahtar kasanızın adıyla değiştirin.
 
-### <a name="azure-cli"></a>Azure CLI’si
+### <a name="azure-cli"></a>Azure CLI
 
 Azure CLı kullanarak bir Anahtar Kasası oluştururken, "--Enabled-for-disk-Encryption" bayrağını ekleyin.
 
@@ -73,7 +73,7 @@ Azure platformunun, birimleri önyüklemek ve şifrelerini çözmek için sanal 
 
 Anahtar kasanızı, oluşturma sırasında (önceki adımda gösterildiği gibi) disk şifrelemesi, dağıtım veya şablon dağıtımı için etkinleştirmezseniz, Gelişmiş erişim ilkelerini güncelleştirmeniz gerekir.  
 
-### <a name="azure-cli"></a>Azure CLI’si
+### <a name="azure-cli"></a>Azure CLI
 
 Anahtar Kasası için disk şifrelemeyi etkinleştirmek üzere [az keykasatıon Update](/cli/azure/keyvault#az-keyvault-update) kullanın. 
 
@@ -115,7 +115,7 @@ Anahtar Kasası için disk şifrelemeyi etkinleştirmek üzere [az keykasatıon 
      Set-AzKeyVaultAccessPolicy -VaultName "<your-unique-keyvault-name>" -ResourceGroupName "MyResourceGroup" -EnabledForTemplateDeployment
      ```
 
-### <a name="azure-portal"></a>Azure portal
+### <a name="azure-portal"></a>Azure portalı
 
 1. Anahtar kasanızı seçin, **erişim ilkeleri**' ne gidin ve **Gelişmiş erişim Ilkelerini göstermek için tıklayın**.
 2. **Birim şifrelemesi Için Azure disk şifrelemesi 'ne erişimi etkinleştir** etiketli kutuyu seçin.
@@ -129,7 +129,7 @@ Anahtar Kasası için disk şifrelemeyi etkinleştirmek üzere [az keykasatıon 
 
 Şifreleme anahtarları için ek bir güvenlik katmanı için anahtar şifreleme anahtarı (KEK) kullanmak istiyorsanız, anahtar kasanıza bir KEK ekleyin. Anahtar şifreleme anahtarı belirtildiğinde Azure disk şifrelemesi, Key Vault yazmadan önce şifreleme gizli dizilerini kaydırmak için bu anahtarı kullanır.
 
-Azure CLı [az keykasa Key Create](/cli/azure/keyvault/key?view=azure-cli-latest#az-keyvault-key-create) komutunu, Azure PowerShell [Add-azkeyvaultkey](/powershell/module/az.keyvault/add-azkeyvaultkey) cmdlet 'ini veya [Azure Portal](https://portal.azure.com/)kullanarak yeni bir kek oluşturabilirsiniz. Bir RSA anahtar türü oluşturmanız gerekir; Azure disk şifrelemesi henüz eliptik eğri anahtarlarını kullanmayı desteklemiyor.
+Azure CLı [az keykasa Key Create](/cli/azure/keyvault/key#az-keyvault-key-create) komutunu, Azure PowerShell [Add-azkeyvaultkey](/powershell/module/az.keyvault/add-azkeyvaultkey) cmdlet 'ini veya [Azure Portal](https://portal.azure.com/)kullanarak yeni bir kek oluşturabilirsiniz. Bir RSA anahtar türü oluşturmanız gerekir; Azure disk şifrelemesi henüz eliptik eğri anahtarlarını kullanmayı desteklemiyor.
 
 Bunun yerine, şirket içi anahtar yönetimi HSM 'nizden bir KEK içeri aktarabilirsiniz. Daha fazla bilgi için bkz. [Key Vault belgeleri](../articles/key-vault/keys/hsm-protected-keys.md).
 
@@ -143,17 +143,17 @@ Azure disk şifrelemesi, Anahtar Kasası gizli dizileri ve KEK URL 'Lerinin bir 
   * Kabul edilebilir Anahtar Kasası URL 'SI: *https://contosovault.vault.azure.net/secrets/contososecret/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx*
   * Kabul edilmeyen Anahtar Kasası URL 'SI: *https://contosovault.vault.azure.net:443/secrets/contososecret/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx*
 
-### <a name="azure-cli"></a>Azure CLI’si
+### <a name="azure-cli"></a>Azure CLI
 
-Yeni bir KEK oluşturmak ve bunu Anahtar Kasanızda depolamak için Azure CLı [az keykasa Key Create](/cli/azure/keyvault/key?view=azure-cli-latest#az-keyvault-key-create) komutunu kullanın.
+Yeni bir KEK oluşturmak ve bunu Anahtar Kasanızda depolamak için Azure CLı [az keykasa Key Create](/cli/azure/keyvault/key#az-keyvault-key-create) komutunu kullanın.
 
 ```azurecli-interactive
 az keyvault key create --name "myKEK" --vault-name "<your-unique-keyvault-name>" --kty RSA
 ```
 
-Bunun yerine, Azure CLı [az keykasa Key Import](/cli/azure/keyvault/key?view=azure-cli-latest#az-keyvault-key-import) komutunu kullanarak bir özel anahtarı içeri aktarabilirsiniz:
+Bunun yerine, Azure CLı [az keykasa Key Import](/cli/azure/keyvault/key#az-keyvault-key-import) komutunu kullanarak bir özel anahtarı içeri aktarabilirsiniz:
 
-Her iki durumda da, KEK adını Azure CLı [az VM Encryption Enable](/cli/azure/vm/encryption?view=azure-cli-latest#az-vm-encryption-enable) --Key-encryption-key parametresi olarak sağlarsınız. 
+Her iki durumda da, KEK adını Azure CLı [az VM Encryption Enable](/cli/azure/vm/encryption#az-vm-encryption-enable) --Key-encryption-key parametresi olarak sağlarsınız. 
 
 ```azurecli-interactive
 az vm encryption enable -g "MyResourceGroup" --name "myVM" --disk-encryption-keyvault "<your-unique-keyvault-name>" --key-encryption-key "myKEK"
@@ -167,7 +167,7 @@ Yeni bir KEK oluşturmak ve bunu Anahtar Kasanızda depolamak için Azure PowerS
 Add-AzKeyVaultKey -Name "myKEK" -VaultName "<your-unique-keyvault-name>" -Destination "HSM"
 ```
 
-Bunun yerine, Azure PowerShell [az keykasa Key Import](/cli/azure/keyvault/key?view=azure-cli-latest#az-keyvault-key-import) komutunu kullanarak bir özel anahtarı içeri aktarabilirsiniz.
+Bunun yerine, Azure PowerShell [az keykasa Key Import](/cli/azure/keyvault/key#az-keyvault-key-import) komutunu kullanarak bir özel anahtarı içeri aktarabilirsiniz.
 
 Her iki durumda da, KEK anahtar kasanızın KIMLIĞINI ve KEK [set-AzVMDiskEncryptionExtension](/powershell/module/az.compute/set-azvmdiskencryptionextension?view=azps-2.5.0) -keyencryptionkeytultıd ve-KeyEncryptionKeyUrl PARAMETRELERINE Azure PowerShell URL 'sini sağlamanız gerekir. Bu örnekte, hem disk şifreleme anahtarı hem de KEK için aynı anahtar kasasını kullandığınızı varsaydığını unutmayın.
 
