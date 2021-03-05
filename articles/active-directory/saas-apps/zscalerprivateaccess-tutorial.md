@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 05/23/2019
+ms.date: 03/03/2021
 ms.author: jeedes
-ms.openlocfilehash: aaef5c01e554ac226828f601dc6144d13846198a
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 347fc931dcc7f794fe7376daaac21ce7ed9198df
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92517421"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102184794"
 ---
 # <a name="tutorial-integrate-zscaler-private-access-zpa-with-azure-active-directory"></a>Öğretici: Zscaler özel erişimini (ZPA) Azure Active Directory ile tümleştirin
 
@@ -25,8 +25,6 @@ Bu öğreticide, Zscaler özel erişimini (ZPA) Azure Active Directory (Azure AD
 * Azure AD 'de Zscaler özel erişimine (ZPA) erişimi olan denetim.
 * Kullanıcılarınızın Azure AD hesaplarıyla Zscaler özel erişimi 'ne (ZPA) otomatik olarak oturum açmalarına olanak sağlayın.
 * Hesaplarınızı tek bir merkezi konumda yönetin-Azure portal.
-
-Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -40,39 +38,41 @@ Başlamak için aşağıdaki öğeler gereklidir:
 
 ## <a name="scenario-description"></a>Senaryo açıklaması
 
-Bu öğreticide, Azure AD SSO 'yu bir test ortamında yapılandırıp test edersiniz. Zscaler özel erişimi (ZPA), **SP** tarafından başlatılan SSO 'yu destekler.
+Bu öğreticide, Azure AD SSO 'yu bir test ortamında yapılandırıp test edersiniz. 
 
-## <a name="adding-zscaler-private-access-zpa-from-the-gallery"></a>Galeriden Zscaler özel erişimi (ZPA) ekleme
+* Zscaler özel erişimi (ZPA), **SP** tarafından başlatılan SSO 'yu destekler.
+
+## <a name="add-zscaler-private-access-zpa-from-the-gallery"></a>Galeriden Zscaler özel erişimi (ZPA) ekleme
 
 Zscaler özel erişiminin (ZPA) tümleştirmesini Azure AD ile yapılandırmak için, Galeriden Zscaler özel erişimi (ZPA) ' i yönetilen SaaS uygulamaları listenize eklemeniz gerekir.
 
-1. [Azure Portal](https://portal.azure.com) iş veya okul hesabı ya da kişisel Microsoft hesabı kullanarak oturum açın.
+1. Azure portal iş veya okul hesabı ya da kişisel Microsoft hesabı kullanarak oturum açın.
 1. Sol gezinti bölmesinde **Azure Active Directory** hizmeti ' ni seçin.
 1. **Kurumsal uygulamalar** ' a gidin ve **tüm uygulamalar**' ı seçin.
 1. Yeni uygulama eklemek için **Yeni uygulama**' yı seçin.
 1. **Galeriden Ekle** bölümünde, arama kutusuna **Zscaler özel erişimi (ZPA)** yazın.
 1. Sonuçlar panelinden **Zscaler özel erişimi (ZPA)** öğesini seçin ve ardından uygulamayı ekleyin. Uygulama kiracınıza eklenirken birkaç saniye bekleyin.
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma ve test etme
+## <a name="configure-and-test-azure-ad-sso"></a>Azure AD SSO 'yu yapılandırma ve test etme
 
-**Britta Simon**adlı bir test kullanıcısı kullanarak Zscaler özel erişimi (ZPA) Ile Azure AD SSO 'yu yapılandırın ve test edin. SSO 'nun çalışması için, Zscaler özel erişimi (ZPA) içindeki bir Azure AD kullanıcısı ve ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
+**B. Simon** adlı bir test kullanıcısı kullanarak Zscaler özel erişimi (ZPA) Ile Azure AD SSO 'yu yapılandırın ve test edin. SSO 'nun çalışması için, Zscaler özel erişimi (ZPA) içindeki bir Azure AD kullanıcısı ve ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
 
-Azure AD SSO 'yu Zscaler özel erişimi (ZPA) ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
+Azure AD SSO 'yu Zscaler özel erişimi (ZPA) ile yapılandırmak ve test etmek için aşağıdaki adımları gerçekleştirin:
 
-1. Kullanıcılarınızın bu özelliği kullanmasını sağlamak için **[Azure AD SSO 'Yu yapılandırın](#configure-azure-ad-sso)** .
-2. Uygulama tarafında SSO ayarlarını yapılandırmak için **[Zscaler özel erişimini (ZPA) yapılandırın](#configure-zscaler-private-access-zpa)** .
-3. Britta Simon ile Azure AD çoklu oturum açma sınamasını test etmek için **[bir Azure AD test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** .
-4. Azure AD 'de çoklu oturum açma özelliğini kullanarak Britta Simon 'u etkinleştirmek için **[Azure AD test kullanıcısını atayın](#assign-the-azure-ad-test-user)** .
-5. **[Zscaler özel erişim (ZPA) test kullanıcısını](#create-zscaler-private-access-zpa-test-user)** , kullanıcının Azure AD gösterimine bağlı Zscaler özel erişimi (ZPA) Içinde Britta Simon 'a sahip olacak şekilde oluşturun.
-6. Yapılandırmanın çalışıp çalışmadığını doğrulamak için **[test SSO 'su](#test-sso)** .
+1. **[Azure AD SSO 'Yu yapılandırın](#configure-azure-ad-sso)** -kullanıcılarınızın bu özelliği kullanmasını sağlamak için.
+    1. Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -B. Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
+    1. Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanmak için B. Simon 'u etkinleştirmek için.
+1. Uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için **[Zscaler özel erişimi (ZPA) SSO 'Yu yapılandırın](#configure-zscaler-private-access-zpa-sso)** .
+    1. **[Zscaler özel erişim (ZPA) test kullanıcısına](#create-zscaler-private-access-zpa-test-user)** , kullanıcının Azure AD gösterimine bağlı olan Zscaler özel erişimi (ZPA) için B. Simon 'a karşılık gelen bir karşılığı olacak şekilde oluşturun.
+1. **[Test SSO](#test-sso)** -yapılandırmanın çalışıp çalışmadığını doğrulamak için.
 
-### <a name="configure-azure-ad-sso"></a>Azure AD SSO’yu yapılandırma
+## <a name="configure-azure-ad-sso"></a>Azure AD SSO’yu yapılandırma
 
 Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
-1. [Azure Portal](https://portal.azure.com/), **Zscaler özel erişim (ZPA)** uygulama tümleştirmesi sayfasında, **Yönet** bölümünü bulun ve **Çoklu oturum açma**' yı seçin.
+1. Azure portal, **Zscaler özel erişim (ZPA)** uygulama tümleştirmesi sayfasında, **Yönet** bölümünü bulun ve **Çoklu oturum açma**' yı seçin.
 1. **Çoklu oturum açma yöntemi seçin** sayfasında **SAML**' yi seçin.
-1. **SAML Ile tek Sign-On ayarlama** sayfasında, ayarları düzenlemek IÇIN **temel SAML yapılandırması** için Düzenle/kalem simgesine tıklayın.
+1. **SAML Ile tek Sign-On ayarlama** sayfasında, ayarları düzenlemek IÇIN **temel SAML yapılandırması** kalem simgesine tıklayın.
 
    ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
 
@@ -80,7 +80,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
     1. **Oturum açma URL 'si** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:`https://samlsp.private.zscaler.com/auth/login?domain=<your-domain-name>`
 
-    1. **Tanımlayıcı (VARLıK kimliği)** metin kutusuna bir URL yazın:`https://samlsp.private.zscaler.com/auth/metadata`
+    1. **Tanımlayıcı (VARLıK kimliği)** metın kutusuna URL yazın:`https://samlsp.private.zscaler.com/auth/metadata`
 
     > [!NOTE]
     > **Oturum açma URL 'si** değeri gerçek değil. Değeri, gerçek oturum açma URL 'SI ile güncelleştirin. Değeri almak için [Zscaler özel erişim (ZPA) istemci desteği ekibine](https://help.zscaler.com/zpa-submit-ticket) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
@@ -92,40 +92,6 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 1. **Zscaler özel erişimi (ZPA) ayarla** bölümünde, gereksiniminize göre uygun URL 'leri kopyalayın.
 
    ![Yapılandırma URL 'Lerini Kopyala](common/copy-configuration-urls.png)
-
-### <a name="configure-zscaler-private-access-zpa"></a>Zscaler özel erişimini yapılandırma (ZPA)
-
-1. Zscaler özel erişimi (ZPA) içindeki yapılandırmayı otomatik hale getirmek için, **uzantıyı yüklemeniz**' ne tıklayarak **uygulamalarım güvenli oturum açma tarayıcı uzantısını** yüklemeniz gerekir.
-
-    ![Uygulamalarım uzantısı](common/install-myappssecure-extension.png)
-
-2. Tarayıcıya Uzantı eklendikten sonra, bu **özel erişim (ZPA) kurulum** 'a tıkladığınızda sizi Zscaler özel erişim (ZPA) uygulamasına yönlendirirsiniz. Buradan, Zscaler özel erişimi 'nde (ZPA) oturum açmak için yönetici kimlik bilgilerini sağlayın. Tarayıcı uzantısı, uygulamayı sizin için otomatik olarak yapılandırır ve 3-6 adımlarını otomatikleştirecektir.
-
-    ![Kurulum yapılandırması](common/setup-sso.png)
-
-3. Zscaler özel erişimi 'ni (ZPA) el ile ayarlamak istiyorsanız yeni bir Web tarayıcı penceresi açın ve Zscaler özel erişim (ZPA) Şirket sitenizde yönetici olarak oturum açın ve aşağıdaki adımları gerçekleştirin:
-
-4. Menünün sol tarafında **Yönetim** ' e tıklayın ve **kimlik doğrulama** bölümüne gidin **IDP yapılandırması**' na tıklayın.
-
-    ![Zscaler özel erişim Yöneticisi yönetimi](./media/zscalerprivateaccess-tutorial/tutorial-zscaler-private-access-administration.png)
-
-5. Sağ üst köşede **IDP Yapılandırması Ekle**' ye tıklayın. 
-
-    ![Zscaler özel erişim Yöneticisi IDP](./media/zscalerprivateaccess-tutorial/tutorial-zscaler-private-access-idp.png)
-
-6. **IDP Yapılandırması Ekle** sayfasında, aşağıdaki adımları uygulayın:
- 
-    ![Zscaler özel erişim Yöneticisi seçme](./media/zscalerprivateaccess-tutorial/tutorial-zscaler-private-access-select.png)
-
-    a. **IDP meta veri dosyası yükleme** alanına Indirilen meta veri dosyasını Azure AD 'den karşıya yüklemek Için **Dosya Seç** ' e tıklayın.
-
-    b. **IDP meta verilerini** Azure AD 'den okur ve tüm alan bilgilerini aşağıda gösterildiği gibi doldurur.
-
-    ![Zscaler özel erişim Yöneticisi yapılandırması](./media/zscalerprivateaccess-tutorial/config.png)
-
-    c. Etki **alanları** alanından etki alanınızı seçin.
-    
-    d. **Kaydet**’e tıklayın.
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD test kullanıcısı oluşturma
 
@@ -141,34 +107,64 @@ Bu bölümde, Britta Simon adlı Azure portal bir test kullanıcısı oluşturac
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
-Bu bölümde, Zscaler özel erişim (ZPA) erişimi vererek Azure çoklu oturum açma özelliğini kullanmak için Britta Simon 'u etkinleştireceksiniz.
+Bu bölümde, Zscaler özel erişim (ZPA) erişimi vererek Azure çoklu oturum açma özelliğini kullanmak için B. Simon 'u etkinleştireceksiniz.
 
 1. Azure portal **Kurumsal uygulamalar**' ı seçin ve ardından **tüm uygulamalar**' ı seçin.
 1. Uygulamalar listesinde **Zscaler özel erişimi (ZPA)** öğesini seçin.
 1. Uygulamanın genel bakış sayfasında **Yönet** bölümünü bulun ve **Kullanıcılar ve gruplar**' ı seçin.
-
-   !["Kullanıcılar ve gruplar" bağlantısı](common/users-groups-blade.png)
-
 1. **Kullanıcı Ekle**' yi seçin, sonra **atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar** ' ı seçin.
-
-    ![Kullanıcı Ekle bağlantısı](common/add-assign-user.png)
-
-1. **Kullanıcılar ve gruplar** Iletişim kutusunda kullanıcılar listesinden **Britta Simon** ' ı seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
-1. SAML assertion 'da herhangi bir rol değeri bekliyorsanız, **Rol Seç** iletişim kutusunda, Kullanıcı için listeden uygun rolü seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
+1. **Kullanıcılar ve gruplar** iletişim kutusunda, kullanıcılar listesinden **B. Simon** ' ı seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
+1. Kullanıcılara bir rolün atanmasını bekliyorsanız, **Rol Seç** açılır listesinden bunu seçebilirsiniz. Bu uygulama için ayarlanmış bir rol yoksa, "varsayılan erişim" rolü seçili olduğunu görürsünüz.
 1. **Atama Ekle** Iletişim kutusunda **ata** düğmesine tıklayın.
+
+## <a name="configure-zscaler-private-access-zpa-sso"></a>Zscaler özel erişim (ZPA) SSO 'yu yapılandırma
+
+1. Zscaler özel erişimi (ZPA) içindeki yapılandırmayı otomatik hale getirmek için, **uzantıyı yüklemeniz**' ne tıklayarak **uygulamalarım güvenli oturum açma tarayıcı uzantısını** yüklemeniz gerekir.
+
+    ![Uygulamalarım uzantısı](common/install-myappssecure-extension.png)
+
+2. Tarayıcıya Uzantı eklendikten sonra, bu **özel erişim (ZPA) kurulum** 'a tıkladığınızda sizi Zscaler özel erişim (ZPA) uygulamasına yönlendirirsiniz. Buradan, Zscaler özel erişimi 'nde (ZPA) oturum açmak için yönetici kimlik bilgilerini sağlayın. Tarayıcı uzantısı, uygulamayı sizin için otomatik olarak yapılandırır ve 3-6 adımlarını otomatikleştirecektir.
+
+    ![Kurulum yapılandırması](common/setup-sso.png)
+
+3. Zscaler özel erişimi 'ni (ZPA) el ile ayarlamak istiyorsanız yeni bir Web tarayıcı penceresi açın ve Zscaler özel erişim (ZPA) Şirket sitenizde yönetici olarak oturum açın ve aşağıdaki adımları gerçekleştirin:
+
+4. Menünün sol tarafında **Yönetim** ' e tıklayın ve **kimlik doğrulama** bölümüne gidin **IDP yapılandırması**' na tıklayın.
+
+    ![Zscaler özel erişim Yöneticisi yönetimi](./media/zscalerprivateaccess-tutorial/administration.png)
+
+5. Sağ üst köşede **IDP Yapılandırması Ekle**' ye tıklayın. 
+
+    ![Zscaler özel erişim Yöneticisi IDP](./media/zscalerprivateaccess-tutorial/metadata.png)
+
+6. **IDP Yapılandırması Ekle** sayfasında, aşağıdaki adımları uygulayın:
+ 
+    ![Zscaler özel erişim Yöneticisi seçme](./media/zscalerprivateaccess-tutorial/select.png)
+
+    a. **IDP meta veri dosyası yükleme** alanına Indirilen meta veri dosyasını Azure AD 'den karşıya yüklemek Için **Dosya Seç** ' e tıklayın.
+
+    b. **IDP meta verilerini** Azure AD 'den okur ve tüm alan bilgilerini aşağıda gösterildiği gibi doldurur.
+
+    ![Zscaler özel erişim Yöneticisi yapılandırması](./media/zscalerprivateaccess-tutorial/configure.png)
+
+    c. Etki **alanları** alanından etki alanınızı seçin.
+    
+    d. **Kaydet**’e tıklayın.
 
 ### <a name="create-zscaler-private-access-zpa-test-user"></a>Zscaler özel erişim (ZPA) test kullanıcısı oluşturma
 
 Bu bölümde, Zscaler özel erişimi (ZPA) içinde Britta Simon adlı bir Kullanıcı oluşturacaksınız. Zscaler özel erişim (ZPA) platformunda kullanıcıları eklemek için lütfen [Zscaler özel erişim (ZPA) destek ekibi](https://help.zscaler.com/zpa-submit-ticket) ile çalışın.
 
-### <a name="test-sso"></a>Test SSO 'SU
+## <a name="test-sso"></a>Test SSO 'SU
 
-Erişim panelinde Zscaler özel erişim (ZPA) kutucuğunu seçtiğinizde, SSO 'yu ayarladığınız Zscaler özel erişiminin (ZPA) otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](../user-help/my-apps-portal-end-user-access.md).
+Bu bölümde, Azure AD çoklu oturum açma yapılandırmanızı aşağıdaki seçeneklerle test edersiniz. 
 
-## <a name="additional-resources"></a>Ek Kaynaklar
+* Azure portal içinde **Bu uygulamayı test et** ' e tıklayın. Bu, oturum açma akışını başlatabileceğiniz Zscaler özel erişim (ZPA) oturum açma URL 'sine yeniden yönlendirilir. 
 
-- [SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](./tutorial-list.md)
+* Zscaler özel erişim (ZPA) oturum açma URL 'sine doğrudan gidin ve oturum açma akışını buradan başlatın.
 
-- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](../manage-apps/what-is-single-sign-on.md)
+* Microsoft My Apps ' i kullanabilirsiniz. Uygulamalarım içindeki Zscaler özel erişim (ZPA) kutucuğuna tıkladığınızda bu, Zscaler özel erişim (ZPA) oturum açma URL 'sine yeniden yönlendirilir. Uygulamalarım hakkında daha fazla bilgi için bkz. [uygulamalarıma giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-- [Azure Active Directory Koşullu erişim nedir?](../conditional-access/overview.md)
+## <a name="next-steps"></a>Sonraki adımlar
+
+Zscaler özel erişimini (ZPA) yapılandırdıktan sonra, kuruluşunuzun hassas verilerinin gerçek zamanlı olarak ayıklanmasını ve zaman korumasını koruyan oturum denetimini zorunlu kılabilirsiniz. Oturum denetimi koşullu erişimden genişletiliyor. [Microsoft Cloud App Security ile oturum denetimini nasıl zorlayacağınızı öğrenin](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).

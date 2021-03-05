@@ -23,12 +23,10 @@
           href: access-api-howto.md
         - name: Azure Cloud Shell'i ayarlama
           href: ../../cloud-shell/overview.md
-        - name: REST ile geliştirme
+        - name: Media Services’e bağlanmak
           items:
-            - name: Postman ile bağlama
+            - name: REST ve Postman ile bağlanma
               href: media-rest-apis-with-postman.md
-        - name: SDK'larla geliştirme
-          items:
             - name: Java ile bağlanma
               href: configure-connect-java-howto.md
             - name: .NET ile bağlanma
@@ -51,6 +49,8 @@
       items:
         - name: ARM ile hesap oluşturma
           href: quickstart-arm-template-account.md
+    - name: Python temel kodlama hızlı başlangıç
+      href: quickstart-basic-encoding-python.md
 - name: Öğreticiler
   items:
     - name: .NET

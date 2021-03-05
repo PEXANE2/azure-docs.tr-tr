@@ -112,7 +112,7 @@
           href: exempt-resource.md
         - name: Özel güvenlik girişimleri ve ilkeleri oluşturma
           href: custom-security-policies.md
-    - name: Sunucular için Azure Defender ile makinelerinizi koruyun
+    - name: 'Makinelerinizi, sunucular için Defender ile koruyun'
       displayName: 'hybrid, arc, Azure Defender for machines'
       items:
         - name: Sunucular için Azure Defender 'a genel bakış
@@ -143,10 +143,10 @@
         - name: Tümleşik Uç Nokta için Microsoft Defender lisansını kullanma
           displayName: 'ATP, mdatp, wdatp'
           href: security-center-wdatp.md
-        - name: Makineleriniz için güvenli uygulamaların listesini tanımlama
+        - name: Makineler için güvenli uygulamaların listesini tanımlama
           displayName: 'aac, whitelist, allowlist, reviewgroup, adaptive application controls'
           href: security-center-adaptive-application.md
-        - name: Dosya bütünlüğü izleme ile dosya ve kayıt defterlerine yapılan değişiklikleri izleme
+        - name: Dosyalarda ve kayıt defterlerinde yapılan değişiklikleri izleme
           items:
             - name: Dosya bütünlüğünü izlemeye genel bakış
               displayName: 'fim, change'
@@ -154,8 +154,8 @@
             - name: Dosya bütünlüğü izlemeyi kullanarak temelleri karşılaştırın
               displayName: 'fim, change'
               href: security-center-file-integrity-monitoring-baselines.md
-        - name: Uyarlamalı ağ sağlamlaştırma ile ağ güvenlik durunuzu geliştirme
-          displayName: anh
+        - name: Ağ güvenliği sonrası durunuzu geliştirme
+          displayName: 'anh, adaptive network hardening'
           href: security-center-adaptive-network-hardening.md
         - name: Docker konaklarınızı sağlamlaştırma
           displayName: containers
@@ -209,7 +209,7 @@
         - name: Key Vault için Azure Defender 'a genel bakış
           displayName: 'KV, akv'
           href: defender-for-key-vault-introduction.md
-        - name: Key Vault için Azure Defender uyarılarına yanıt verme
+        - name: Key Vault uyarılar için bir Defender işleme
           displayName: 'akv, kv'
           href: defender-for-key-vault-usage.md
     - name: Kaynak yönetimi işlemlerinizi izleme
@@ -217,7 +217,7 @@
         - name: Kaynak Yöneticisi için Azure Defender 'a genel bakış
           displayName: ARM
           href: defender-for-resource-manager-introduction.md
-        - name: Resource Manager için Azure Defender uyarılarına yanıt verme
+        - name: Kaynak Yöneticisi uyarılar için bir Defender işleme
           displayName: arm
           href: defender-for-resource-manager-usage.md
     - name: Azure kaynaklarınızdaki DNS sorgularını izleyin

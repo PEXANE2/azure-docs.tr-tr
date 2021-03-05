@@ -6,12 +6,12 @@ ms.service: signalr
 ms.topic: conceptual
 ms.date: 03/01/2019
 ms.author: zhshang
-ms.openlocfilehash: 133edc64ac2f858a397a4a184c24497dae8af333
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1f80742d48fc46c8c5e337794100ca5901818c88
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "67565736"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102184398"
 ---
 # <a name="how-to-rotate-access-key-for-azure-signalr-service"></a>Azure SignalR Hizmeti için erişim anahtarını döndürme
 
@@ -35,7 +35,7 @@ Güvenlik nedenleriyle ve uyumluluk gereksinimlerinde, erişim anahtarlarınız�
 
    ![Anahtarları yeniden oluştur](media/signalr-howto-key-rotation/regenerate-keys.png)
 
-Ayrıca [Azure CLI](/cli/azure/signalr/key?view=azure-cli-latest#az-signalr-key-renew)kullanarak anahtarları yeniden oluşturabilirsiniz.
+Ayrıca [Azure CLI](/cli/azure/signalr/key#az-signalr-key-renew)kullanarak anahtarları yeniden oluşturabilirsiniz.
 
 ## <a name="update-configurations-with-new-connection-strings"></a>Yeni bağlantı dizeleri ile güncelleştirme yapılandırması
 
@@ -59,4 +59,4 @@ Bu kılavuzda, erişim anahtarlarını yeniden oluşturmayı öğrendiniz. OAuth
 > [ASP.NET Core kimliğiyle tümleştirin](./signalr-concept-authenticate-oauth.md)
 
 > [!div class="nextstepaction"]
-> [Kimlik doğrulama özelliklerine sahip sunucusuz gerçek zamanlı uygulama derleme](./signalr-tutorial-authenticate-azure-functions.md)
+> [Kimlik doğrulamasıyla sunucusuz gerçek zamanlı bir uygulama oluşturma](./signalr-tutorial-authenticate-azure-functions.md)

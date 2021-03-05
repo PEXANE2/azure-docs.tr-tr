@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 02/12/2021
+ms.date: 03/04/2021
 ms.author: jeedes
-ms.openlocfilehash: 9a7e02955d7784feb57d7e9ccc7e337b6a939380
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 8409a4d897ea9b20528a5b30273819e6962774cb
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101651563"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102184500"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-kendis---azure-ad-integration"></a>Öğretici: kendile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory-Azure AD tümleştirmesi
 
@@ -123,13 +123,21 @@ Bu bölümde, Azure çoklu oturum açma özelliğini kullanarak kend, Azure AD t
 
 ## <a name="configure-kendis-azure-ad-integration-sso"></a>Kendis-Azure AD tümleştirmesi SSO 'yu yapılandırma
 
-1. Farklı bir Web tarayıcısı penceresinde, kendinizdeki Azure AD tümleştirme şirket sitenizde yönetici olarak oturum açın.
+1. Azure AD tümleştirmesi içindeki yapılandırmayı otomatikleştirebilmek için, **uzantıyı yüklemeniz**' ne tıklayarak **uygulamalarımı güvenli oturum açma tarayıcı uzantısı** ' nı yüklemeniz gerekir.
 
-1. **SAML yapılandırmalarına > ayarlar**' a gidin.
+    ![Uygulamalarım uzantısı](common/install-myappssecure-extension.png)
+
+2. Tarayıcıya uzantı ekledikten sonra Kendapg 'yi ayarla ' ya tıklayın. **Azure AD tümleştirmesi** sizi kend, Azure AD tümleştirme uygulamasına yönlendirmenizi sağlar. Buradan, kendinizden oturum açmak için yönetici kimlik bilgilerini sağlayın-Azure AD tümleştirmesi. Tarayıcı uzantısı, uygulamayı sizin için otomatik olarak yapılandırır ve 3-5 adımlarını otomatikleştirecektir.
+
+    ![Kurulum yapılandırması](common/setup-sso.png)
+
+3. Kendsıs-Azure AD tümleştirmesini el ile kurmak istiyorsanız, farklı bir Web tarayıcısı penceresinde, kendinizdeki Azure AD tümleştirme şirket sitenizde yönetici olarak oturum açın.
+
+4. **SAML yapılandırmalarına > ayarlar**' a gidin.
 
     ![SAML yapılandırmalarına ayarlar](./media/kendis-scaling-agile-platform-tutorial/settings.png)
 
-1. Sayfanın alt kısmındaki **Düzenle** düğmesine tıklayın ve aşağıdaki adımları gerçekleştirin.
+5. Sayfanın alt kısmındaki **Düzenle** düğmesine tıklayın ve aşağıdaki adımları gerçekleştirin.
 
     ![SAML yapılandırması](./media/kendis-scaling-agile-platform-tutorial/saml-configuration-settings.png)
 

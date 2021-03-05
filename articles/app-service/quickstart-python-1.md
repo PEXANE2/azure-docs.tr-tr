@@ -6,12 +6,12 @@ ms.date: 09/22/2020
 ms.custom: seo-python-october2019, cli-validate, devx-track-python, devx-track-azurecli
 zone_pivot_groups: python-frameworks-01
 robots: noindex
-ms.openlocfilehash: ea320938f3e4f3b2d257947f605bb3b3f6f0886a
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: ef32b8ff9282e92511047840576ddfe6751b24e0
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98786233"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102184517"
 ---
 # <a name="quickstart-create-a-python-app-in-azure-app-service-on-linux"></a>Hızlı başlangıç: Linux üzerinde Azure App Service bir Python uygulaması oluşturma
 
@@ -243,7 +243,7 @@ Dağıtım tamamlandıktan sonra tarayıcı penceresine geri dönün `http://<ap
 
 Uygulamanın içinden oluşturulan konsol günlüklerine ve çalıştığı kapsayıcıya erişebilirsiniz. Günlükler, using deyimleri kullanılarak oluşturulan herhangi bir çıktıyı içerir `print` .
 
-Günlükleri akışa almak için [az WebApp log tail](/cli/azure/webapp/log?view=azure-cli-latest&preserve-view=true#az_webapp_log_tail) komutunu çalıştırın:
+Günlükleri akışa almak için [az WebApp log tail](/cli/azure/webapp/log#az_webapp_log_tail) komutunu çalıştırın:
 
 ```azurecli
 az webapp log tail
