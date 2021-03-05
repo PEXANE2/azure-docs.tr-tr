@@ -3,14 +3,14 @@ title: Azure Otomasyonu 'nda runbook 'ları yönetme
 description: Bu makalede, Azure Otomasyonu 'nda runbook 'ların nasıl yönetileceği açıklanır.
 services: automation
 ms.subservice: process-automation
-ms.date: 10/23/2020
+ms.date: 02/24/2021
 ms.topic: conceptual
-ms.openlocfilehash: ed5eda668f6bd52ba144aa664119ab613fdb7742
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: af767ab37e8e77195b7d13b24ea78f4fb88485fb
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96183592"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102122145"
 ---
 # <a name="manage-runbooks-in-azure-automation"></a>Azure Otomasyonu 'nda runbook 'ları yönetme
 
@@ -23,6 +23,7 @@ Azure portal veya Windows PowerShell kullanarak Azure Otomasyonu 'nda yeni bir r
 * [Azure Otomasyonu 'nda metin runbook 'unu düzenleme](automation-edit-textual-runbook.md)
 * [Otomasyon Runbook 'ları için anahtar Windows PowerShell Iş akışı kavramlarını öğrenin](automation-powershell-workflow.md)
 * [Azure Otomasyonu 'nda Python 2 paketlerini yönetme](python-packages.md)
+* [Azure Otomasyonu 'nda Python 3 paketlerini yönetme (Önizleme)](python-3-packages.md)
 
 ### <a name="create-a-runbook-in-the-azure-portal"></a>Azure portal runbook oluşturma
 
@@ -45,7 +46,7 @@ New-AzAutomationRunbook -AutomationAccountName MyAccount `
 
 ## <a name="import-a-runbook"></a>Runbook 'u içeri aktarma
 
-Kendi runbook 'unuzu oluşturmak için bir PowerShell veya PowerShell Iş akışı (**. ps1**) betiği, bir grafik runbook 'u (. graphrunbook) veya bir Python 2 betiği (**.****çıgrafı**) içeri aktarabilirsiniz. İçeri aktarma sırasında oluşturulan [runbook 'un türünü](automation-runbook-types.md) belirtmeniz gerekir ve aşağıdaki noktaları dikkate alın.
+Kendi runbook 'unuzu oluşturmak için bir PowerShell veya PowerShell Iş akışı (**. ps1**) betiğini, bir grafik runbook 'unu (. graphrunbook) veya Python 2 ya da Python 3 betiğini (**.****çıgrafı**) içeri aktarabilirsiniz. İçeri aktarma sırasında oluşturulan [runbook 'un türünü](automation-runbook-types.md) belirtmeniz gerekir ve aşağıdaki noktaları dikkate alın.
 
 * Bir [PowerShell runbook](automation-runbook-types.md#powershell-runbooks) 'Una veya [PowerShell iş akışı runbook](automation-runbook-types.md#powershell-workflow-runbooks)'unda iş akışı içermeyen bir **. ps1** dosyasını içeri aktarabilirsiniz. Bir PowerShell Iş akışı runbook 'una içeri aktarırsanız, bir iş akışına dönüştürülür. Bu durumda, yapılan değişiklikleri anlatmak için Runbook 'a açıklamalar dahildir.
 
@@ -68,7 +69,7 @@ Bir betik dosyasını Azure Otomasyonu 'na aktarmak için aşağıdaki yordamı 
 4. **Runbook dosyası** ' na tıklayın ve içeri aktarılacak dosyayı seçin.
 5. **Ad** alanı etkinleştirilirse, runbook adını değiştirme seçeneğiniz vardır. Ad bir harfle başlamalıdır ve harfler, rakamlar, alt çizgiler ve kısa çizgiler içerebilir.
 6. [Runbook türü](automation-runbook-types.md) otomatik olarak seçilir, ancak ilgili kısıtlamaları hesaba aldıktan sonra türü değiştirebilirsiniz.
-7. **Oluştur**'a tıklayın. Yeni runbook, Otomasyon hesabı için Runbook 'lar listesinde görüntülenir.
+7. **Oluştur**’a tıklayın. Yeni runbook, Otomasyon hesabı için Runbook 'lar listesinde görüntülenir.
 8. Çalıştırmak için [runbook 'u yayımlamanız](#publish-a-runbook) gerekir.
 
 > [!NOTE]

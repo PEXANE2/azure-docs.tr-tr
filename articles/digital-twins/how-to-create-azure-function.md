@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 8/27/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: b37277c660562721273ff9ae86dd677ee7ac7d55
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 2419761c195258c60561e284abf0227b915ed4f6
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 03/04/2021
-ms.locfileid: "102050010"
+ms.locfileid: "102123641"
 ---
 # <a name="connect-function-apps-in-azure-for-processing-data"></a>Verileri işlemek için Azure 'da işlev uygulamalarına bağlanma
 
@@ -86,7 +86,7 @@ Ardından, Visual Studio Çözüm Gezgini, örnek kodunuzun bulunduğu _function
 
 Artık sınıf düzeyi değişkenleri bildirecektir ve işlevin Azure dijital TWINS 'e erişmesine izin verecek kimlik doğrulama kodu eklersiniz. _Function1.cs_ dosyasına aşağıdaki işlevi ekleyin.
 
-* Bir ortam değişkeni olarak Azure Digital TWINS hizmet URL 'sini okumak için kod. Hizmet URL 'sini, işlevinde sabit kodlamak yerine, bir ortam değişkeninden okumak iyi bir uygulamadır.
+* Bir **ortam değişkeni** olarak Azure Digital TWINS hizmet URL 'sini okumak için kod. Hizmet URL 'sini, işlevinde sabit kodlamak yerine, bir ortam değişkeninden okumak iyi bir uygulamadır. Bu ortam değişkeninin değerini [daha sonra bu makalede](#set-up-security-access-for-the-function-app)ayarlayacaksınız. Ortam değişkenleri hakkında daha fazla bilgi için bkz. [*işlev uygulamanızı yönetme*](../azure-functions/functions-how-to-use-azure-function-app-settings.md?tabs=portal).
 
     :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/adtIngestFunctionSample.cs" id="ADT_service_URL":::
 
@@ -134,7 +134,7 @@ _principalId_ değerini aşağıdaki komutta kullanarak işlev uygulamasının k
 ```azurecli-interactive 
 az dt role-assignment create --dt-name <your-Azure-Digital-Twins-instance> --assignee "<principal-ID>" --role "Azure Digital Twins Data Owner"
 ```
-Son olarak, bir ortam değişkeni ayarlayarak Azure dijital TWINS örneğinizin URL 'sini işleviniz için erişilebilir hale getirebilirsiniz. Ortam değişkenlerini ayarlama hakkında daha fazla bilgi için bkz. [*ortam değişkenleri*](/sandbox/functions-recipes/environment-variables). 
+Son olarak, Azure dijital TWINS örneğinizin URL 'sini, bir **ortam değişkenini** ayarlayarak işlevinizin erişimine açık hale getirin. Ortam değişkenleri hakkında daha fazla bilgi için bkz. [*işlev uygulamanızı yönetme*](../azure-functions/functions-how-to-use-azure-function-app-settings.md?tabs=portal). 
 
 > [!TIP]
 > Azure Digital TWINS örneğinin URL 'SI, Azure Digital TWINS örneğinizin *ana bilgisayar adının* başlangıcına *https://* eklenerek yapılır. Ana bilgisayar adını görmek için, örneğinizin tüm özellikleriyle birlikte çalıştırabilirsiniz `az dt show --dt-name <your-Azure-Digital-Twins-instance>` .
@@ -183,7 +183,7 @@ Sonra, _Kaydet_ düğmesine basarak ayrıntılarınızı kaydedin.
 
 ### <a name="configure-application-settings-using-azure-portal"></a>Azure portal kullanarak uygulama ayarlarını yapılandırma
 
-Bir ortam değişkeni ayarlayarak, Azure dijital TWINS örneğinizin URL 'sini işleviniz için erişilebilir hale getirebilirsiniz. Bunun hakkında daha fazla bilgi için bkz. [*ortam değişkenleri*](/sandbox/functions-recipes/environment-variables). Uygulama ayarları, dijital TWINS örneğine erişmek için ortam değişkenleri olarak sunulur. 
+Azure dijital TWINS örneğinizin URL 'sini işlevinizin erişimine açık hale getirmek için bir **ortam değişkeni** ayarlayabilirsiniz. Ortam değişkenleri hakkında daha fazla bilgi için bkz. [*işlev uygulamanızı yönetme*](../azure-functions/functions-how-to-use-azure-function-app-settings.md?tabs=portal). Uygulama ayarları, Azure dijital TWINS örneğine erişmek için ortam değişkenleri olarak sunulur. 
 
 Bir ortam değişkenini örneğinizin URL 'siyle birlikte ayarlamak için, önce Azure Digital TWINS örneğinizin ana bilgisayar adını bularak URL 'YI alın. [Azure Portal](https://portal.azure.com) arama çubuğunda örneğiniz için arama yapın. Ardından, _ana bilgisayar adını_ görüntülemek için sol gezinti çubuğundaki _genel bakış_ ' ı seçin. Bu değeri kopyalayın.
 

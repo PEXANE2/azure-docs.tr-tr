@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 01/20/2021
 ms.author: v-tcassi
 monikerRange: =iotedge-2018-06
-ms.openlocfilehash: ba1401696092f5a16ffa21859a9b485e94c5d792
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: c12dbeb81fd2b3d67863b5b84fa30cf77e165549
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101736517"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102123199"
 ---
 # <a name="install-and-provision-azure-iot-edge-for-linux-on-a-windows-device-preview"></a>Windows cihazı üzerinde Linux için Azure IoT Edge'i yükleme ve sağlama (Önizleme)
 
@@ -174,7 +174,7 @@ Henüz yoksa, Windows üzerinde Linux için IoT Edge 'i hedef cihazınıza yükl
    ```
 
    > [!NOTE]
-   > Bu komutu parametresiz veya isteğe bağlı olarak parametrelerle özelleştirmeniz için özelleştirebilirsiniz. Anlamlarını görmek için [Windows PowerShell betik başvurusunda Linux için IoT Edge](reference-iot-edge-for-linux-on-windows-scripts.md#Deploy-Eflow) başvurabilirsiniz.
+   > Bu komutu parametresiz veya isteğe bağlı olarak parametrelerle özelleştirmeniz için özelleştirebilirsiniz. Anlamlarını görmek için [Windows PowerShell betik başvurusunda Linux için IoT Edge](reference-iot-edge-for-linux-on-windows-scripts.md#deploy-eflow) başvurabilirsiniz.
 
 1. Lisans koşullarını kabul etmek için ' Y ' girin.
 
@@ -340,8 +340,6 @@ Windows üzerinde Linux için IoT Edge IoT Edge cihazınıza başarıyla yüklen
        ```bash
        sudo iotedge check
        ```
-
----
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 

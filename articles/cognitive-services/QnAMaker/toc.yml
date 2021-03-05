@@ -50,6 +50,8 @@
     - name: Azure kaynaklarını yönetme
       href: How-To/set-up-qnamaker-service-azure.md
       displayName: 'azure, resource, key, upgrade, pricing, tier,'
+    - name: Azure kaynakları için ağ yalıtımı
+      href: How-To/network-isolation.md
     - name: Soru-Cevap Oluşturma kaynak erişimini yönetme
       href: How-To/manage-qna-maker-app.md
     - name: Bilgi bankasını yönetme

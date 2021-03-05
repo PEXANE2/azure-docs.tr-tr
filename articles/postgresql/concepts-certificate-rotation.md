@@ -6,12 +6,12 @@ ms.author: sumuth
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/02/2020
-ms.openlocfilehash: c9bc6e3822ac6c014b9ff00e9cd81bbe707628fe
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 6dc687879eb646b4abd081b40bce292d20ff3186
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101736075"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102123998"
 ---
 # <a name="understanding-the-changes-in-the-root-ca-change-for-azure-database-for-postgresql-single-server"></a>PostgreSQL için Azure veritabanı 'nın tek sunucu değişikliği için kök CA 'daki değişiklikleri anlama
 
@@ -83,7 +83,7 @@ Kullanıcılara yönelik önerilerimiz, birleştirilmiş bir sertifika oluşturm
 
 ## <a name="what-if-we-removed-the-baltimorecybertrustroot-certificate"></a>Baltimorecyıbertrustroot sertifikasını kaldırdık ne olursa?
 
-PostgreSQL için Azure veritabanı sunucusuna bağlanırken hatalarla bağlantı kurma ile başlayacaksınız. Bağlantıyı sürdürmek için [Baltimorecyıbertrustroot](https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem) SERTIFIKASı ile [SSL 'yi yapılandırmanız](howto-configure-ssl.md) gerekir.
+PostgreSQL için Azure veritabanı sunucusuna bağlanırken hatalarla bağlantı kurma ile başlayacaksınız. Bağlantıyı sürdürmek için [Baltimorecyıbertrustroot](https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem) SERTIFIKASı ile SSL 'yi yapılandırmanız gerekir.
 
 
 ## <a name="frequently-asked-questions"></a>Sık sorulan sorular

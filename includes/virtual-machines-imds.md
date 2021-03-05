@@ -8,12 +8,12 @@ ms.date: 01/04/2021
 ms.author: chhenk
 ms.reviewer: azmetadatadev
 ms.custom: references_regions
-ms.openlocfilehash: fcdccf6701afe73ab0f11a7a907072b01a9d5aa4
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: b720e98fc83fd12744c289cb99814748b469b15d
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100373325"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102123692"
 ---
 # <a name="azure-instance-metadata-service"></a>Azure Instance Metadata Service
 
@@ -42,13 +42,13 @@ Bir örnek için tüm meta verileri almak için örnek kod aşağıda verilmişt
 #### <a name="windows"></a>[Windows](#tab/windows/)
 
 ```powershell
-Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -NoProxy -Uri "http://169.254.169.254/metadata/instance?api-version=2020-09-01" | ConvertTo-Json -Depth 64
+Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -Proxy $Null -Uri "http://169.254.169.254/metadata/instance?api-version=2020-09-01" | ConvertTo-Json -Depth 64
 ```
 
 #### <a name="linux"></a>[Linux](#tab/linux/)
 
 ```bash
-curl -H Metadata:true --noproxy "*" "http://169.254.169.254/metadata/instance?api-version=2020-09-01"
+curl -H Metadata:true --noproxy "*" "http://169.254.169.254/metadata/instance?api-version=2020-09-01" | jq
 ```
 
 ---
@@ -88,7 +88,7 @@ Genel olarak, ıDS istekleri saniyede 5 istek ile sınırlıdır. Bu eşiği aş
 
 Aşağıdaki HTTP fiilleri Şu anda desteklenmektedir:
 
-| Fiil | Description |
+| Fiil | Açıklama |
 |------|-------------|
 | `GET` | İstenen kaynağı alma
 
@@ -98,7 +98,7 @@ Uç noktalar, gerekli ve/veya isteğe bağlı parametreleri destekleyebilir. Ayr
 
 ### <a name="query-parameters"></a>Sorgu parametreleri
 
-IDS uç noktaları HTTP sorgu dizesi parametrelerini destekler. Örneğin: 
+IDS uç noktaları HTTP sorgu dizesi parametrelerini destekler. Örnek: 
 
 ```
 http://169.254.169.254/metadata/instance/compute?api-version=2019-06-04&format=json
@@ -191,12 +191,12 @@ http://169.254.169.254/metadata/instance/network/interface/0?api-version=<versio
 
 Varsayılan olarak, ıDS verileri JSON biçiminde () döndürür `Content-Type: application/json` . Ancak, yanıt filtrelemeyi (bkz. [route parametreleri](#route-parameters)) destekleyen uç noktalar de biçimini destekler `text` .
 
-Varsayılan olmayan bir yanıt biçimine erişmek için istenen biçimi istekte bir sorgu dizesi parametresi olarak belirtin. Örneğin:
+Varsayılan olmayan bir yanıt biçimine erişmek için istenen biçimi istekte bir sorgu dizesi parametresi olarak belirtin. Örnek:
 
 #### <a name="windows"></a>[Windows](#tab/windows/)
 
 ```powershell
-Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -NoProxy -Uri "http://169.254.169.254/metadata/instance?api-version=2017-08-01&format=text" | ConvertTo-Json
+Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -Proxy $Null -Uri "http://169.254.169.254/metadata/instance?api-version=2017-08-01&format=text"
 ```
 
 #### <a name="linux"></a>[Linux](#tab/linux/)
@@ -248,9 +248,7 @@ Bir sürüm belirtmezseniz, en yeni Desteklenen sürümlerin listesini içeren b
 - 2020-07-15
 - 2020-09-01
 - 2020-10-01
-
-> [!NOTE]
-> Sürüm 2020-10-01 Şu anda kullanıma alındı ve her bölgede henüz kullanılamayabilir.
+- 2020-12-01
 
 ### <a name="swagger"></a>Swagger
 
@@ -268,11 +266,12 @@ Kök uç noktası `http://169.254.169.254/metadata` .
 
 IMDS API 'SI, her biri bir veya daha fazla uç nokta içeren farklı veri kaynaklarını temsil eden birden çok uç nokta kategorisi içerir. Ayrıntılar için bkz. her kategori.
 
-| Kategori kökü | Description | Sunulan sürüm |
+| Kategori kökü | Açıklama | Sunulan sürüm |
 |---------------|-------------|--------------------|
 | `/metadata/attested` | Bkz. [Atsınanan veriler](#attested-data) | 2018-10-01
 | `/metadata/identity` | Bkz. [yönetilen kimliği IMDS aracılığıyla](#managed-identity) | 2018-02-01
 | `/metadata/instance` | Bkz. [örnek meta verileri](#instance-metadata) | 2017-04-02
+| `/metadata/loadbalancer` | Bkz. [ıDS aracılığıyla Load Balancer meta verileri alma](#load-balancer-metadata) | 2020-10-01
 | `/metadata/scheduledevents` | Bkz. [ıDS aracılığıyla zamanlanan olaylar](#scheduled-events) | 2017-08-01
 | `/metadata/versions` | Bkz. [sürümler](#versions) | Yok
 
@@ -332,10 +331,11 @@ Bu uç nokta, [yol parametreleri](#route-parameters)aracılığıyla yanıt filt
 
 **İşlem**
 
-| Veriler | Description | Sunulan sürüm |
+| Veriler | Açıklama | Sunulan sürüm |
 |------|-------------|--------------------|
 | `azEnvironment` | VM 'nin çalıştığı Azure ortamı | 2018-10-01
 | `customData` | Bu özellik şu anda devre dışı. Bu belge kullanılabilir hale geldiğinde güncelleştirilecek | 2019-02-01
+| `evictionPolicy` | Bir [spot VM 'nin](../articles/virtual-machines/spot-vms.md) nasıl çıkarılacak olduğunu ayarlar. | 2020-12-01
 | `isHostCompatibilityLayerVm` | VM 'nin konak uyumluluk katmanında çalışıp çalışmadığına göre tanımlar | 2020-06-01
 | `licenseType` | [Azure hibrit avantajı](https://azure.microsoft.com/pricing/hybrid-benefit)için lisans türü. Bu yalnızca AHB özellikli VM 'Lerde mevcuttur | 2020-09-01
 | `location` | VM 'nin çalıştığı Azure bölgesi | 2017-04-02
@@ -349,6 +349,7 @@ Bu uç nokta, [yol parametreleri](#route-parameters)aracılığıyla yanıt filt
 | `plan` | Bir Azure Market görüntüsü ise VM için ad, ürün ve yayımcı içeren [plan planlayın](/rest/api/compute/virtualmachines/createorupdate#plan) | 2018-04-02
 | `platformUpdateDomain` |  VM 'nin çalıştığı [etki alanını güncelleştirme](../articles/virtual-machines/manage-availability.md) | 2017-04-02
 | `platformFaultDomain` | VM 'nin çalıştığı [hata etki alanı](../articles/virtual-machines/manage-availability.md) | 2017-04-02
+| `priority` | VM önceliği. Daha fazla bilgi için [spot VM](../articles/virtual-machines/spot-vms.md) 'lere başvurun | 2020-12-01
 | `provider` | VM sağlayıcısı | 2018-10-01
 | `publicKeys` | VM ve yollara atanan [ortak anahtarların koleksiyonu](/rest/api/compute/virtualmachines/createorupdate#sshpublickey) | 2018-04-02
 | `publisher` | VM görüntüsünün yayımcısı | 2017-04-02
@@ -373,7 +374,7 @@ Bir sanal makinenin depolama profili üç kategoriye ayrılmıştır: görüntü
 
 Görüntü başvurusu nesnesi, işletim sistemi görüntüsüyle ilgili aşağıdaki bilgileri içerir:
 
-| Veriler | Description |
+| Veriler | Açıklama |
 |------|-------------|
 | `id` | Kaynak kimliği
 | `offer` | Platform veya Market görüntüsü teklifi
@@ -383,7 +384,7 @@ Görüntü başvurusu nesnesi, işletim sistemi görüntüsüyle ilgili aşağı
 
 İşletim sistemi diski nesnesi, VM tarafından kullanılan işletim sistemi diski hakkında aşağıdaki bilgileri içerir:
 
-| Veriler | Description |
+| Veriler | Açıklama |
 |------|-------------|
 | `caching` | Önbelleğe alma gereksinimleri
 | `createOption` | VM 'nin nasıl oluşturulduğu hakkında bilgi
@@ -398,7 +399,7 @@ Görüntü başvurusu nesnesi, işletim sistemi görüntüsüyle ilgili aşağı
 
 Veri diskleri dizisi, VM 'ye bağlı veri disklerinin bir listesini içerir. Her veri diski nesnesi şu bilgileri içerir:
 
-Veriler | Description |
+Veriler | Açıklama |
 -----|-------------|
 | `caching` | Önbelleğe alma gereksinimleri
 | `createOption` | VM 'nin nasıl oluşturulduğu hakkında bilgi
@@ -414,7 +415,7 @@ Veriler | Description |
 
 **Ağ**
 
-| Veriler | Description | Sunulan sürüm |
+| Veriler | Açıklama | Sunulan sürüm |
 |------|-------------|--------------------|
 | `ipv4.privateIpAddress` | VM 'nin yerel IPv4 adresi | 2017-04-02
 | `ipv4.publicIpAddress` | VM 'nin genel IPv4 adresi | 2017-04-02
@@ -422,13 +423,6 @@ Veriler | Description |
 | `subnet.prefix` | Alt ağ ön eki, örnek 24 | 2017-04-02
 | `ipv6.ipAddress` | VM 'nin yerel IPv6 adresi | 2017-04-02
 | `macAddress` | VM MAC adresi | 2017-04-02
-
-**VM etiketleri**
-
-VM etiketleri örnek/işlem/etiket uç noktası altına örnek API 'sini içerir.
-Etiketler, bunları bir taksonomi halinde mantıksal olarak düzenlemek için Azure sanal makinenize uygulanmış olabilir. Bir VM 'ye atanan Etiketler aşağıdaki istek kullanılarak alınabilir.
-
-`tags`Alan, etiketleri noktalı virgülle ayrılmış bir dizedir. Bu çıktı, etiketlerde noktalı virgül kullanılıyorsa bir sorun olabilir. Etiketleri programlı olarak ayıklamak için bir Ayrıştırıcı yazılmışsa, alanına güvenmelisiniz `tagsList` . `tagsList`Alan, sınırlandırıcı olmayan BIR JSON dizisidir ve sonuç olarak daha kolay ayrıştırılabilir.
 
 
 #### <a name="sample-1-tracking-vm-running-on-azure"></a>Örnek 1: Azure 'da çalışan Izleme sanal makinesi
@@ -440,7 +434,7 @@ Hizmet sağlayıcı olarak, yazılımınızı çalıştıran VM 'lerin sayısın
 #### <a name="windows"></a>[Windows](#tab/windows/)
 
 ```powershell
-Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -NoProxy -Uri "http://169.254.169.254/metadata/instance/compute/vmId?api-version=2017-08-01&format=text"| ConvertTo-Json
+Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -Proxy $Null -Uri "http://169.254.169.254/metadata/instance/compute/vmId?api-version=2017-08-01&format=text"
 ```
 
 #### <a name="linux"></a>[Linux](#tab/linux/)
@@ -468,7 +462,7 @@ Bu verileri, doğrudan ıMDS aracılığıyla sorgulayabilirsiniz.
 #### <a name="windows"></a>[Windows](#tab/windows/)
 
 ```powershell
-Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -NoProxy -Uri "http://169.254.169.254/metadata/instance/compute/platformFaultDomain?api-version=2017-08-01&format=text" | ConvertTo-Json
+Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -Proxy $Null -Uri "http://169.254.169.254/metadata/instance/compute/platformFaultDomain?api-version=2017-08-01&format=text"
 ```
 
 #### <a name="linux"></a>[Linux](#tab/linux/)
@@ -485,7 +479,98 @@ curl -H Metadata:true --noproxy "*" "http://169.254.169.254/metadata/instance/co
 0
 ```
 
-#### <a name="sample-3-get-more-information-about-the-vm-during-support-case"></a>Örnek 3: destek talebi sırasında VM hakkında daha fazla bilgi alın
+#### <a name="sample-3-get-vm-tags"></a>Örnek 3: VM etiketlerini al
+
+VM etiketleri örnek/işlem/etiket uç noktası altına örnek API 'sini içerir.
+Etiketler, bunları bir taksonomi halinde mantıksal olarak düzenlemek için Azure sanal makinenize uygulanmış olabilir. Bir VM 'ye atanan Etiketler aşağıdaki istek kullanılarak alınabilir.
+
+**İstek**
+
+#### <a name="windows"></a>[Windows](#tab/windows/)
+
+```powershell
+Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -Proxy $Null -Uri "http://169.254.169.254/metadata/instance/compute/tags?api-version=2017-08-01&format=text"
+```
+
+#### <a name="linux"></a>[Linux](#tab/linux/)
+
+```bash
+curl -H Metadata:true --noproxy "*" "http://169.254.169.254/metadata/instance/compute/platformFaultDomain?api-version=2017-08-01&format=text"
+```
+
+---
+
+**Response**
+
+```
+Department:IT;ReferenceNumber:123456;TestStatus:Pending
+```
+
+`tags`Alan, etiketleri noktalı virgülle ayrılmış bir dizedir. Bu çıktı, etiketlerde noktalı virgül kullanılıyorsa bir sorun olabilir. Etiketleri programlı olarak ayıklamak için bir Ayrıştırıcı yazılmışsa, alanına güvenmelisiniz `tagsList` . `tagsList`Alan, sınırlandırıcı olmayan BIR JSON dizisidir ve sonuç olarak daha kolay ayrıştırılabilir. Bir VM 'ye atanan tagsList aşağıdaki istek kullanılarak alınabilir.
+
+**İstek**
+
+#### <a name="windows"></a>[Windows](#tab/windows/)
+
+```powershell
+Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -Proxy $Null -Uri "http://169.254.169.254/metadata/instance/compute/tagsList?api-version=2019-06-04" | ConvertTo-Json -Depth 64
+```
+
+#### <a name="linux"></a>[Linux](#tab/linux/)
+
+```bash
+curl -H Metadata:true --noproxy "*" "http://169.254.169.254/metadata/instance/compute/tagsList?api-version=2019-06-04" | jq
+```
+
+---
+
+**Response**
+
+#### <a name="windows"></a>[Windows](#tab/windows/)
+
+```json
+{
+    "value":  [
+                  {
+                      "name":  "Department",
+                      "value":  "IT"
+                  },
+                  {
+                      "name":  "ReferenceNumber",
+                      "value":  "123456"
+                  },
+                  {
+                      "name":  "TestStatus",
+                      "value":  "Pending"
+                  }
+              ],
+    "Count":  3
+}
+```
+
+#### <a name="linux"></a>[Linux](#tab/linux/)
+
+```json
+[
+  {
+    "name": "Department",
+    "value": "IT"
+  },
+  {
+    "name": "ReferenceNumber",
+    "value": "123456"
+  },
+  {
+    "name": "TestStatus",
+    "value": "Pending"
+  }
+]
+```
+
+---
+
+
+#### <a name="sample-4-get-more-information-about-the-vm-during-support-case"></a>Örnek 4: destek talebi sırasında VM hakkında daha fazla bilgi alın
 
 Hizmet sağlayıcı olarak, VM hakkında daha fazla bilgi edinmek istediğiniz bir destek çağrısı alabilirsiniz. Müşterinin işlem meta verilerinin paylaşılmasını sormak, destek uzmanı 'nın Azure 'daki sanal makine türü hakkında bilgi sahibi olmak için temel bilgiler sağlayabilir.
 
@@ -494,7 +579,7 @@ Hizmet sağlayıcı olarak, VM hakkında daha fazla bilgi edinmek istediğiniz b
 #### <a name="windows"></a>[Windows](#tab/windows/)
 
 ```powershell
-Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -NoProxy -Uri "http://169.254.169.254/metadata/instance/compute?api-version=2020-09-01" | ConvertTo-Json -Depth 64
+Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -Proxy $Null -Uri "http://169.254.169.254/metadata/instance/compute?api-version=2020-09-01" | ConvertTo-Json -Depth 64
 ```
 
 #### <a name="linux"></a>[Linux](#tab/linux/)
@@ -510,6 +595,7 @@ curl -H Metadata:true --noproxy "*" "http://169.254.169.254/metadata/instance/co
 > [!NOTE]
 > Yanıt bir JSON dizesidir. Aşağıdaki örnek yanıt, okunabilirlik için oldukça yazdırılır.
 
+#### <a name="windows"></a>[Windows](#tab/windows/)
 ```json
 {
     "azEnvironment": "AZUREPUBLICCLOUD",
@@ -517,13 +603,13 @@ curl -H Metadata:true --noproxy "*" "http://169.254.169.254/metadata/instance/co
     "licenseType":  "Windows_Client",
     "location": "westus",
     "name": "examplevmname",
-    "offer": "Windows",
+    "offer": "WindowsServer",
     "osProfile": {
         "adminUsername": "admin",
         "computerName": "examplevmname",
         "disablePasswordAuthentication": "true"
     },
-    "osType": "linux",
+    "osType": "Windows",
     "placementGroupId": "f67c14ab-e92c-408c-ae2d-da15866ec79a",
     "plan": {
         "name": "planName",
@@ -548,7 +634,108 @@ curl -H Metadata:true --noproxy "*" "http://169.254.169.254/metadata/instance/co
         "secureBootEnabled": "true",
         "virtualTpmEnabled": "false"
     },
-    "sku": "Windows-Server-2012-R2-Datacenter",
+    "sku": "2019-Datacenter",
+    "storageProfile": {
+        "dataDisks": [{
+            "caching": "None",
+            "createOption": "Empty",
+            "diskSizeGB": "1024",
+            "image": {
+                "uri": ""
+            },
+            "lun": "0",
+            "managedDisk": {
+                "id": "/subscriptions/xxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/macikgo-test-may-23/providers/Microsoft.Compute/disks/exampledatadiskname",
+                "storageAccountType": "Standard_LRS"
+            },
+            "name": "exampledatadiskname",
+            "vhd": {
+                "uri": ""
+            },
+            "writeAcceleratorEnabled": "false"
+        }],
+        "imageReference": {
+            "id": "",
+            "offer": "WindowsServer",
+            "publisher": "MicrosoftWindowsServer",
+            "sku": "2019-Datacenter",
+            "version": "latest"
+        },
+        "osDisk": {
+            "caching": "ReadWrite",
+            "createOption": "FromImage",
+            "diskSizeGB": "30",
+            "diffDiskSettings": {
+                "option": "Local"
+            },
+            "encryptionSettings": {
+                "enabled": "false"
+            },
+            "image": {
+                "uri": ""
+            },
+            "managedDisk": {
+                "id": "/subscriptions/xxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/macikgo-test-may-23/providers/Microsoft.Compute/disks/exampleosdiskname",
+                "storageAccountType": "Standard_LRS"
+            },
+            "name": "exampleosdiskname",
+            "osType": "Windows",
+            "vhd": {
+                "uri": ""
+            },
+            "writeAcceleratorEnabled": "false"
+        }
+    },
+    "subscriptionId": "xxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx",
+    "tags": "baz:bash;foo:bar",
+    "version": "15.05.22",
+    "vmId": "02aab8a4-74ef-476e-8182-f6d2ba4166a6",
+    "vmScaleSetName": "crpteste9vflji9",
+    "vmSize": "Standard_A3",
+    "zone": ""
+}
+```
+
+#### <a name="linux"></a>[Linux](#tab/linux/)
+```json
+{
+    "azEnvironment": "AZUREPUBLICCLOUD",
+    "isHostCompatibilityLayerVm": "true",
+    "licenseType":  "Windows_Client",
+    "location": "westus",
+    "name": "examplevmname",
+    "offer": "UbuntuServer",
+    "osProfile": {
+        "adminUsername": "admin",
+        "computerName": "examplevmname",
+        "disablePasswordAuthentication": "true"
+    },
+    "osType": "Linux",
+    "placementGroupId": "f67c14ab-e92c-408c-ae2d-da15866ec79a",
+    "plan": {
+        "name": "planName",
+        "product": "planProduct",
+        "publisher": "planPublisher"
+    },
+    "platformFaultDomain": "36",
+    "platformUpdateDomain": "42",
+    "publicKeys": [{
+            "keyData": "ssh-rsa 0",
+            "path": "/home/user/.ssh/authorized_keys0"
+        },
+        {
+            "keyData": "ssh-rsa 1",
+            "path": "/home/user/.ssh/authorized_keys1"
+        }
+    ],
+    "publisher": "Canonical",
+    "resourceGroupName": "macikgo-test-may-23",
+    "resourceId": "/subscriptions/xxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/macikgo-test-may-23/providers/Microsoft.Compute/virtualMachines/examplevmname",
+    "securityProfile": {
+        "secureBootEnabled": "true",
+        "virtualTpmEnabled": "false"
+    },
+    "sku": "18.04-LTS",
     "storageProfile": {
         "dataDisks": [{
             "caching": "None",
@@ -593,7 +780,7 @@ curl -H Metadata:true --noproxy "*" "http://169.254.169.254/metadata/instance/co
                 "storageAccountType": "Standard_LRS"
             },
             "name": "exampleosdiskname",
-            "osType": "Linux",
+            "osType": "linux",
             "vhd": {
                 "uri": ""
             },
@@ -610,7 +797,9 @@ curl -H Metadata:true --noproxy "*" "http://169.254.169.254/metadata/instance/co
 }
 ```
 
-#### <a name="sample-4-get-the-azure-environment-where-the-vm-is-running"></a>Örnek 4: VM 'nin çalıştığı Azure ortamını alın
+---
+
+#### <a name="sample-5-get-the-azure-environment-where-the-vm-is-running"></a>Örnek 5: VM 'nin çalıştığı Azure ortamını alın
 
 Azure 'da [Azure Kamu](https://azure.microsoft.com/overview/clouds/government/)gibi çeşitli bağımsız bulutlar vardır. Bazen bazı çalışma zamanı kararları almak için Azure ortamına ihtiyacınız vardır. Aşağıdaki örnekte, bu davranışı nasıl sağlayabileceğiniz gösterilmektedir.
 
@@ -619,7 +808,7 @@ Azure 'da [Azure Kamu](https://azure.microsoft.com/overview/clouds/government/)g
 #### <a name="windows"></a>[Windows](#tab/windows/)
 
 ```powershell
-Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -NoProxy -Uri "http://169.254.169.254/metadata/instance/compute/azEnvironment?api-version=2018-10-01&format=text" | ConvertTo-Json
+Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -Proxy $Null -Uri "http://169.254.169.254/metadata/instance/compute/azEnvironment?api-version=2018-10-01&format=text"
 ```
 
 #### <a name="linux"></a>[Linux](#tab/linux/)
@@ -646,14 +835,14 @@ Azure ortamının bulutu ve değerleri burada listelenmiştir.
 | [Azure Almanya](https://azure.microsoft.com/overview/clouds/germany/) | AzureGermanCloud
 
 
-#### <a name="sample-5-retrieve-network-information"></a>Örnek 5: ağ bilgilerini alma
+#### <a name="sample-6-retrieve-network-information"></a>Örnek 6: ağ bilgilerini alma
 
 **İstek**
 
 #### <a name="windows"></a>[Windows](#tab/windows/)
 
 ```powershell
-Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -NoProxy -Uri "http://169.254.169.254/metadata/instance/network?api-version=2017-08-01" | ConvertTo-Json  -Depth 64
+Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -Proxy $Null -Uri "http://169.254.169.254/metadata/instance/network?api-version=2017-08-01" | ConvertTo-Json  -Depth 64
 ```
 
 #### <a name="linux"></a>[Linux](#tab/linux/)
@@ -693,12 +882,12 @@ curl -H Metadata:true --noproxy "*" "http://169.254.169.254/metadata/instance/ne
 }
 ```
 
-#### <a name="sample-6-retrieve-public-ip-address"></a>Örnek 6: genel IP adresini alma
+#### <a name="sample-7-retrieve-public-ip-address"></a>Örnek 7: genel IP adresini alma
 
 #### <a name="windows"></a>[Windows](#tab/windows/)
 
 ```powershell
-Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -NoProxy -Uri "http://169.254.169.254/metadata/instance/network/interface/0/ipv4/ipAddress/0/publicIpAddress?api-version=2017-08-01&format=text" | ConvertTo-Json
+Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -Proxy $Null -Uri "http://169.254.169.254/metadata/instance/network/interface/0/ipv4/ipAddress/0/publicIpAddress?api-version=2017-08-01&format=text"
 ```
 
 #### <a name="linux"></a>[Linux](#tab/linux/)
@@ -746,7 +935,7 @@ Klasik dağıtım modeli kullanılarak oluşturulan VM 'Ler için yalnızca, `vm
 
 Kodu çözülen belge aşağıdaki alanları içerir:
 
-| Veriler | Description | Sunulan sürüm |
+| Veriler | Açıklama | Sunulan sürüm |
 |------|-------------|--------------------|
 | `licenseType` | [Azure hibrit avantajı](https://azure.microsoft.com/pricing/hybrid-benefit)için lisans türü. Bu yalnızca AHB özellikli VM 'Ler için geçerlidir. | 2020-09-01
 | `nonce` | İsteğe bağlı olarak istekle birlikte sağlanmış bir dize. Hayır `nonce` sağlanmazsa, geçerli Eşgüdümlü Evrensel Saat zaman damgası kullanılır. | 2018-10-01
@@ -792,7 +981,7 @@ Azure Marketi 'ndeki satıcılar, yazılımlarının yalnızca Azure 'da çalı�
 
 ```powershell
 # Get the signature
-$attestedDoc = Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -NoProxy -Uri http://169.254.169.254/metadata/attested/document?api-version=2020-09-01
+$attestedDoc = Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -Proxy $Null -Uri http://169.254.169.254/metadata/attested/document?api-version=2020-09-01
 # Decode the signature
 $signature = [System.Convert]::FromBase64String($attestedDoc.signature)
 ```
@@ -913,8 +1102,12 @@ Ardından, ıMDS 'den Yönetilen kimlikler için belirteçler isteyebilirsiniz. 
 
 Bu özelliği etkinleştirmeye yönelik ayrıntılı adımlar için bkz. [erişim belirteci alma](../articles/active-directory/managed-identities-azure-resources/how-to-use-vm-token.md).
 
+## <a name="load-balancer-metadata"></a>Load Balancer meta veri
+Sanal makineyi veya sanal makine kümesi örneklerini bir Azure Standart Load Balancer arkasına yerleştirdiğinizde, yük dengeleyici ve örneklerle ilgili meta verileri almak için ıMDS 'yi kullanabilirsiniz. Daha fazla bilgi için bkz. [yük dengeleyici bilgilerini alma](../articles/load-balancer/instance-metadata-service-load-balancer.md).
+
 ## <a name="scheduled-events"></a>Zamanlanmış olaylar
 Zamanlanan olayların durumunu ıMDS kullanarak elde edebilirsiniz. Ardından Kullanıcı, bu olaylar üzerinde çalıştırılacak bir eylemler kümesi belirtebilir. Daha fazla bilgi için bkz. Windows için Linux veya [Zamanlanmış olaylara](../articles/virtual-machines/windows/scheduled-events.md) [yönelik Zamanlanmış olaylar](../articles/virtual-machines/linux/scheduled-events.md) .
+
 
 ## <a name="sample-code-in-different-languages"></a>Farklı dillerdeki örnek kod
 
@@ -935,7 +1128,7 @@ Aşağıdaki tabloda, sanal makine içinde farklı diller kullanılarak ıMDS ç
 
 ## <a name="errors-and-debugging"></a>Hatalar ve hata ayıklama
 
-Veri öğesi bulunamadı veya hatalı oluşturulmuş bir istek varsa, Instance Metadata Service standart HTTP hataları döndürür. Örneğin:
+Veri öğesi bulunamadı veya hatalı oluşturulmuş bir istek varsa, Instance Metadata Service standart HTTP hataları döndürür. Örnek:
 
 | HTTP durum kodu | Nedeni |
 |------------------|--------|
@@ -983,7 +1176,7 @@ Meta veri çağrılarının, VM 'nin birincil ağ kartına atanan birincil IP ad
 
 #### <a name="windows"></a>[Windows](#tab/windows/)
 
-1. Yerel yönlendirme tablonuzu dökümünü alın ve ıMDS girişini bulun. Örneğin:
+1. Yerel yönlendirme tablonuzu dökümünü alın ve ıMDS girişini bulun. Örnek:
     ```console
     > route print
     IPv4 Route Table

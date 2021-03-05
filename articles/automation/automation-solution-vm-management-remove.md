@@ -3,14 +3,14 @@ title: Azure Otomasyonu VM'leri çalışma saatleri dışında başlat/durdur ge
 description: Bu makalede, VM'leri çalışma saatleri dışında başlat/durdur özelliğinin nasıl kaldırılacağı ve bir Otomasyon hesabının Log Analytics çalışma alanından nasıl kaldırılacağı açıklanır.
 services: automation
 ms.subservice: process-automation
-ms.date: 02/04/2021
+ms.date: 03/04/2021
 ms.topic: conceptual
-ms.openlocfilehash: a201274bf0c06382da790dd051bf5023337970b8
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 0bab5d8e82ce432e9b3834fe4c003316545eb338
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101723852"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102122094"
 ---
 # <a name="remove-startstop-vms-during-off-hours-from-automation-account"></a>Otomasyon hesabından VM'leri çalışma saatleri dışında başlat/durdur kaldır
 
@@ -24,21 +24,7 @@ Bu özelliğin silinmesi yalnızca ilişkili runbook 'ları kaldırır, dağıt�
 
 ## <a name="delete-the-dedicated-resource-group"></a>Adanmış kaynak grubunu silme
 
-1. Adresinden Azure 'da oturum açın [https://portal.azure.com](https://portal.azure.com) .
-
-2. Otomasyon hesabınıza gidin ve **ilgili kaynaklar** altında **bağlantılı çalışma alanı** ' nı seçin.
-
-3. **Çalışma alanına git**' i seçin.
-
-4. **Genel** altında **çözümler** ' e tıklayın.
-
-5. Çözümler sayfasında, **Başlat-Durdur-VM [çalışma alanı]** seçeneğini belirleyin.
-
-6. **Vmmanagementsolution [çalışma alanı]** sayfasında menüden **Sil** ' i seçin.
-
-    ![VM yönetimi özelliğini Sil](media/automation-solution-vm-management/vm-management-solution-delete.png)
-
-7. Yalnızca VM'leri çalışma saatleri dışında başlat/durdur desteklemek üzere oluşturulan kaynak grubunu silmek için, [Azure Resource Manager kaynak grubu ve kaynak silme](../azure-resource-manager/management/delete-resource-group.md) makalesinde belirtilen adımları izleyin.
+Kaynak grubunu silmek için [Azure Resource Manager kaynak grubu ve kaynak silme](../azure-resource-manager/management/delete-resource-group.md) makalesinde özetlenen adımları izleyin.
 
 ## <a name="delete-the-automation-account"></a>Otomasyon hesabını silme
 

@@ -6,12 +6,12 @@ author: mlearned
 ms.topic: conceptual
 ms.date: 07/01/2020
 ms.author: mlearned
-ms.openlocfilehash: 1adf8370f55a0f6131eb4140c58fa4618e08127b
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: 6c69e46ea3510476089cd932b1cd1bdf14254021
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94686030"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102122383"
 ---
 # <a name="security-concepts-for-applications-and-clusters-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service’teki (AKS) uygulamalar ve kümeler için güvenlik kavramları
 
@@ -40,7 +40,10 @@ Kubernetes rol tabanlı erişim denetimi (Kubernetes RBAC) ve Azure RBAC kullana
 
 ## <a name="node-security"></a>Düğüm güvenliği
 
-AKS düğümleri, yönettiğiniz ve tuttuğunuz Azure sanal makinelerdir. Linux düğümleri, Moby kapsayıcı çalışma zamanını kullanarak iyileştirilmiş bir Ubuntu dağıtımı çalıştırır. Windows Server düğümleri, iyileştirilmiş bir Windows Server 2019 sürümü çalıştırır ve ayrıca Moby kapsayıcı çalışma zamanını kullanır. Bir AKS kümesi oluşturulduğunda veya ölçeklendirildiğinde, düğümler en son işletim sistemi güvenlik güncelleştirmeleri ve yapılandırmalarına göre otomatik olarak dağıtılır.
+AKS düğümleri, yönettiğiniz ve tuttuğunuz Azure sanal makinelerdir. Linux düğümleri `containerd` veya Moby kapsayıcı çalışma zamanını kullanarak iyileştirilmiş bir Ubuntu dağıtımı çalıştırır. Windows Server düğümleri, iyileştirilmiş bir Windows Server 2019 sürümü çalıştırır ve ayrıca `containerd` ya da Moby kapsayıcı çalışma zamanını kullanır. Bir AKS kümesi oluşturulduğunda veya ölçeklendirildiğinde, düğümler en son işletim sistemi güvenlik güncelleştirmeleri ve yapılandırmalarına göre otomatik olarak dağıtılır.
+
+> [!NOTE]
+> Kubernetes sürüm 1,19 düğüm havuzlarını ve daha büyük kullanımını `containerd` kapsayıcı çalışma zamanı olarak kullanan AKS kümeleri. For node havuzları için v 1.19 öncesinde Kubernetes kullanan AKS kümeleri, kapsayıcı çalışma zamanı olarak [Moby](https://mobyproject.org/) (yukarı akış Docker) kullanır.
 
 Azure platformu, gece temelinde Linux düğümlerine işletim sistemi güvenlik düzeltme eklerini otomatik olarak uygular. Bir Linux işletim sistemi güvenlik güncelleştirmesi konağın yeniden başlatılmasını gerektiriyorsa, bu yeniden başlatma otomatik olarak gerçekleştirilmez. Linux düğümlerini el ile yeniden başlatabilirsiniz veya bir yaygın yaklaşım, Kubernetes için açık kaynaklı bir yeniden başlatma cini olan [Kured][kured]'yi kullanmaktır. Kured bir [DaemonSet][aks-daemonsets] olarak çalışır ve her düğümü, bir yeniden başlatmanın gerekli olduğunu belirten bir dosyanın varlığına izler. Yeniden başlatmalar, küme yükseltmesi olarak aynı [Cordon ve boşalt işlemini](#cordon-and-drain) kullanarak küme genelinde yönetilir.
 

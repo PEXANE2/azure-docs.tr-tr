@@ -10,12 +10,12 @@ services: iot-central
 ms.custom:
 - device-developer
 - iot-edge
-ms.openlocfilehash: 91869614aef03b819a5f7fbb355004f6e802d673
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 1a464b9e039f256fae52c32d828b1ec39a20a228
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101733026"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102123284"
 ---
 # <a name="connect-azure-iot-edge-devices-to-an-azure-iot-central-application"></a>Azure IoT Edge cihazlarını Azure IoT Central uygulamasına bağlama
 
@@ -87,6 +87,20 @@ IoT Central cihaz [şablonlarını](concepts-device-templates.md) kullanarak IoT
 * Bir cihazın yanıt verdiği komutlar, IoT Central komutları çağırmak için kullanılacak bir operatör için Kullanıcı arabirimi gösterebilir.
 
 IoT Edge cihaz telemetri gönderebilir, özellik değerlerini eşitleyebilir ve komutlara standart bir cihazla aynı şekilde yanıt verebilir. Bu nedenle, bir IoT Edge cihazının IoT Central bir cihaz şablonuna ihtiyacı vardır.
+
+### <a name="iot-edge-device-templates"></a>Cihaz şablonlarını IoT Edge
+
+Cihaz şablonları IoT Central cihazların yeteneklerini anlatmak için modeller kullanır. Aşağıdaki diyagramda bir IoT Edge cihazının modelinin yapısı gösterilmektedir:
+
+:::image type="content" source="media/concepts-iot-edge/iot-edge-model.png" alt-text="IoT Central bağlı IoT Edge cihaz modelinin yapısı" border="false":::
+
+IoT Edge bir cihazı aşağıdaki şekilde modeller IoT Central:
+
+* Her IoT Edge cihaz şablonunda bir yetenek modeli vardır.
+* Dağıtım bildiriminde listelenen her özel modül için bir modül yetenek modeli oluşturulur.
+* Her modül yetenek modeli ve bir cihaz modeli arasında bir ilişki oluşturulur.
+* Modül yetenek modeli bir veya daha fazla modül arabirimini uygular.
+* Her modül arabirimi telemetri, Özellikler ve komutlar içerir.
 
 ### <a name="iot-edge-deployment-manifests-and-iot-central-device-templates"></a>IoT Edge dağıtım bildirimleri ve IoT Central cihaz şablonları
 

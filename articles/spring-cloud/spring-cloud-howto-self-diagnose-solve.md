@@ -7,20 +7,20 @@ ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 05/29/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 9d572545f589475dc2b460db90329fe8b0a838c2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c262ba87698c04da69728f7a370040c0679ec44e
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90904299"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102122876"
 ---
 # <a name="how-to-self-diagnose-and-solve-problems-in-azure-spring-cloud"></a>Azure Spring Cloud 'da sorunları kendi kendine tanılama ve çözme
 
 **Bu makale şu şekilde geçerlidir:** ✔️ Java ✔️ C #
 
-Azure yay bulutu Tanılaması, uygulamanızın sorunlarını gidermenize yardımcı olacak etkileşimli bir deneyimdir. Yapılandırma gerekmez. Sorunları bulduğunuzda, Azure yay Bulut Tanılaması, nelerin yanlış olduğunu gösterir ve sorunu gidermeye ve sorunu çözmeye yardımcı olan bilgilere kılavuzluk eder.
+Azure yay bulutu Tanılaması, yapılandırma olmadan uygulamanızın sorunlarını gidermeye yönelik etkileşimli bir deneyimdir. Azure yay Bulut Tanılaması sorunları tanımlar ve sorun gidermeye ve sorunları çözmeye yardımcı olan bilgileri size rehberlik eder.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 Bu öğreticiyi tamamlamak için aşağıdakiler gerekir:
 
 * Azure aboneliği. Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
@@ -30,7 +30,7 @@ Bu öğreticiyi tamamlamak için aşağıdakiler gerekir:
 ## <a name="navigate-to-the-diagnostics-page"></a>Tanılama sayfasına gidin
 1. Azure Portal’da oturum açın.
 2. Azure yay bulutuna **genel bakış** sayfasına gidin.
-3. Sayfanın sol tarafındaki menüden **Tanıla ve çöz sorunlarını** açın.
+3. Sol gezinti bölmesinde **Tanıla ve sorunları çöz** ' ü seçin.
 
  ![Tanıla, Çöz iletişim kutusu](media/spring-cloud-diagnose/diagnose-solve-dialog.png)
 
@@ -39,7 +39,7 @@ Bir sorunu bulmak için, bir anahtar sözcük yazarak veya çözüm grubu ' na t
 
  ![Arama sorunları](media/spring-cloud-diagnose/search-detectors.png)
 
-Yapılandırma **sunucusu durum denetimi**, **yapılandırma sunucusu sistem**durumu veya **yapılandırma sunucusu güncelleştirme geçmişi** seçimi çeşitli sonuçlar görüntüler.
+Yapılandırma **sunucusu durum denetimi**, **yapılandırma sunucusu sistem** durumu veya **yapılandırma sunucusu güncelleştirme geçmişi** seçimi çeşitli sonuçlar görüntüler.
 
 ![Sorun seçenekleri](media/spring-cloud-diagnose/detectors-options.png)
 

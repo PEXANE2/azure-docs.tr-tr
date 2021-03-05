@@ -3,12 +3,12 @@ title: Şablonlarda değişkenler
 description: Azure Resource Manager şablonunda (ARM şablonu) ve Bıcep dosyasında değişkenlerin nasıl tanımlanacağını açıklar.
 ms.topic: conceptual
 ms.date: 02/19/2021
-ms.openlocfilehash: e00a9e8e1801725707bac2abdc67512477e2cf07
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 3ab14c9acfcc2d6c9edd23fb3bc4d876cd5ac756
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101700346"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102123386"
 ---
 # <a name="variables-in-arm-templates"></a>ARM şablonlarındaki değişkenler
 
@@ -20,7 +20,7 @@ Kaynak Yöneticisi, dağıtım işlemlerini başlatmadan önce değişkenleri ç
 
 ## <a name="define-variable"></a>Değişken tanımla
 
-Bir değişken tanımlarken, değişken için bir [veri türü](template-syntax.md#data-types) belirtmezsiniz. Bunun yerine bir değer veya şablon ifadesi sağlayın. Değişken türü çözümlenen değerden algılanır. Aşağıdaki örnek bir dize için bir değişken ayarlar.
+Bir değişken tanımlarken, değişken için bir [veri türü](data-types.md) belirtmezsiniz. Bunun yerine bir değer veya şablon ifadesi sağlayın. Değişken türü çözümlenen değerden algılanır. Aşağıdaki örnek bir dize için bir değişken ayarlar.
 
 # <a name="json"></a>[JSON](#tab/json)
 

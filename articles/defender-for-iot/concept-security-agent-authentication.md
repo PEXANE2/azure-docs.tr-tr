@@ -1,5 +1,5 @@
 ---
-title: Güvenlik Aracısı kimlik doğrulaması (Önizleme)
+title: Güvenlik aracısında kimlik doğrulaması
 titleSuffix: Azure Defender for IoT
 description: Mikro aracı kimlik doğrulamasını iki olası yöntemle gerçekleştirin.
 author: shhazam-ms
@@ -8,14 +8,14 @@ ms.author: shhazam
 ms.date: 1/20/2021
 ms.topic: conceptual
 ms.service: azure
-ms.openlocfilehash: 018da32b90c7730f82eaa5aa2cd2b5c7a64719a6
-ms.sourcegitcommit: 4784fbba18bab59b203734b6e3a4d62d1dadf031
+ms.openlocfilehash: b0304bd191626adb71041fb0561862b988ee25cd
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99809986"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102124593"
 ---
-# <a name="micro-agent-authentication-methods-preview"></a>Mikro aracı kimlik doğrulama yöntemleri (Önizleme)
+# <a name="micro-agent-authentication-methods"></a>Mikro aracı kimlik doğrulama yöntemleri 
 
 IoT mikro Aracısı için Defender ile kimlik doğrulama için iki seçenek vardır: 
 

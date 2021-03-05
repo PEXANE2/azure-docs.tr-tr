@@ -1,5 +1,5 @@
 ---
-title: Defender IoT mikro aracı sorunlarını giderme (Önizleme)
+title: Defender IoT mikro aracı sorunlarını giderme
 titleSuffix: Azure Defender for IoT
 description: Beklenmeyen veya açıklanamayan hataları nasıl işleyeceğinizi öğrenin.
 author: shhazam-ms
@@ -8,14 +8,14 @@ ms.author: shhazam
 ms.date: 1/24/2021
 ms.topic: reference
 ms.service: azure
-ms.openlocfilehash: 07198a5d0ef5d0a6c9eed97523c61826e451b7f5
-ms.sourcegitcommit: 4784fbba18bab59b203734b6e3a4d62d1dadf031
+ms.openlocfilehash: dade0d0d5dc4d690ea94f20deaf956b1e079bad7
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99809940"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102124185"
 ---
-# <a name="defender-iot-micro-agent-troubleshooting-preview"></a>Defender IoT mikro aracı sorunlarını giderme (Önizleme)
+# <a name="defender-iot-micro-agent-troubleshooting"></a>Defender IoT mikro aracı sorunlarını giderme 
 
 Beklenmedik veya açıklanamayan hatalardan oluşan olayda, sorunlarınızı çözmeye çalışmak için aşağıdaki sorun giderme yöntemlerini kullanın. Gerektiğinde yardım için IoT ürün ekibine yönelik Azure Defender 'a da ulaşabilirsiniz.   
 

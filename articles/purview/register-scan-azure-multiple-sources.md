@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 2/26/2021
-ms.openlocfilehash: c57ac9ddbebcf02cb0118705b63f97fd1880b0f2
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 098f62365971fd634001706ab99fd414a6b25056
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101696031"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102123573"
 ---
 # <a name="register-and-scan-azure-multiple-sources"></a>Azure birden çok kaynağı kaydetme ve tarama
 
@@ -95,12 +95,12 @@ Yeni bir tarama oluşturup çalıştırmak için aşağıdakileri yapın:
     1. Bir **kimlik BILGISINI** MSI olarak veya belirli bir hizmet sorumlusu tür kimlik bilgisini seçerek, abonelik veya kaynak grubu altındaki tüm kaynak türleri için kullanmayı seçebilirsiniz
     1. Ayrıca, kaynak türünü özel olarak seçebilir ve bu kaynak türü için **farklı bir kimlik bilgisi uygulayabilirsiniz**
     1. Her kimlik bilgisi, belirli bir tür altındaki tüm kaynaklar için kimlik doğrulama yöntemi olarak değerlendirilir
-    1. Yukarıdaki bu [bölümde](#Setting-up-authentication-to-scan-resources-under-a-subscription-or-resource-group) açıklandığı şekilde onları başarıyla taramak için kaynaklarda seçili kimlik bilgilerini ayarlamanız gerekir.
+    1. Yukarıdaki bu [bölümde](#setting-up-authentication-to-scan-resources-under-a-subscription-or-resource-group) açıklandığı şekilde onları başarıyla taramak için kaynaklarda seçili kimlik bilgilerini ayarlamanız gerekir.
 1. Her bir tür içinde, tüm kaynakları veya bunların bir alt kümesini ada göre taramayı seçebilirsiniz.
     1. Seçeneği **Tüm** olarak bırakırsanız, bu türden gelecek kaynaklar da gelecekteki tarama çalıştırmaları halinde taranır
     1. Belirli depolama hesapları veya SQL veritabanları ' nı seçerseniz, bu abonelik veya kaynak grubu içinde bu türden oluşturulan kaynaklar, tarama ileride açıkça düzenlenmediği takdirde, taramalar için dahil edilmez
  
-1.  Devam etmek için **devam** ' a tıklayın. Purview MSI 'yi abonelik veya kaynak grubu üzerinde bir okuyucu olarak uygulamış olup olmadığınızı denetlemek için erişimi test edeceğiz. Bir hata iletisi oluşturulursa, [buradaki](#Setting-up-authentication-for-enumerating-resources-under-a-subscription-or-resource-group) yönergeleri izleyin
+1.  Devam etmek için **devam** ' a tıklayın. Purview MSI 'yi abonelik veya kaynak grubu üzerinde bir okuyucu olarak uygulamış olup olmadığınızı denetlemek için erişimi test edeceğiz. Bir hata iletisi oluşturulursa, [buradaki](#setting-up-authentication-for-enumerating-resources-under-a-subscription-or-resource-group) yönergeleri izleyin
 
 1.  Önceki adımda seçilen her kaynak türü için **tarama kural kümelerini** seçin. Ayrıca, tarama kuralı kümelerini satır içi olarak da oluşturabilirsiniz.
   :::image type="content" source="media/register-scan-azure-multiple-sources/multiple-scan-rule-set.png" alt-text="Azure birden çok tarama kuralı kümesi seçimi":::

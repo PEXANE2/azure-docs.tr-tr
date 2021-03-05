@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 11/09/2020
-ms.openlocfilehash: 90d526a58f4223fc70be5414ce5722238ce2c735
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: b09c36f1dce3c394ff24e3e601d773279a6ac510
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101733440"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102123318"
 ---
 # <a name="best-practices-of-a-qna-maker-knowledge-base"></a>Soru-Cevap Oluşturma Bilgi Bankası 'nın en iyi yöntemleri
 
@@ -43,7 +43,7 @@ Kullanıcılarınız bir metin stili `How do I add a toner cartridge to my print
 
 En iyi yanıtlar basit yanıtlardan oluşur ancak çok basittir. Ve gibi yanıtları kullanmayın `yes` `no` . Yanıtlarınızın diğer kaynaklara bağlanması veya medya ve bağlantılarla zengin bir deneyim sağlaması gerekiyorsa, yanıtlar arasında ayrım yapmak için [meta veri etiketlemesini](../how-to/edit-knowledge-base.md#add-metadata) kullanın, ardından [](../how-to/metadata-generateanswer-usage.md#generateanswer-request-configuration) `strictFilters` doğru yanıt sürümünü almak için sorguyu özelliğindeki meta veri etiketleriyle birlikte gönderebilirsiniz.
 
-|Yanıt|Yukarı açılan istemler|
+|Yanıt|İzleme istemleri|
 |--|--|
 |Klavye üzerindeki güç düğmesiyle yüzey dizüstü bilgisayarınızı kapatın.|* Uyku, kapatma ve yeniden başlatma için anahtar birleşimleri.<br>* Bir yüzey dizüstü bilgisayarı nasıl sabit bir şekilde Önyükle<br>* Yüzey dizüstü bilgisayar için BIOS 'U değiştirme<br>* Uyku, kapatma ve yeniden başlatma arasındaki farklar|
 |Müşteri Hizmetleri, günde 24 saat boyunca telefon, Skype ve kısa mesaj yoluyla kullanılabilir.|* Sales için iletişim bilgileri.<br> * Office ve mağaza konumları ve saatleri bir kişi için ziyaret edin.<br> * Bir yüzey dizüstü bilgisayar için aksesuarlar.|

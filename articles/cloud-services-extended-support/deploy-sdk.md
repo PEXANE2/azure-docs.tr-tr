@@ -1,6 +1,6 @@
 ---
-title: Bulut hizmeti dağıtma (genişletilmiş destek)-SDK
-description: Azure SDK kullanarak bir bulut hizmeti (genişletilmiş destek) dağıtma
+title: Cloud Services Dağıtma (genişletilmiş destek)-SDK
+description: Azure SDK kullanarak Cloud Services (genişletilmiş destek) dağıtma
 ms.topic: tutorial
 ms.service: cloud-services-extended-support
 author: gachandw
@@ -8,25 +8,25 @@ ms.author: gachandw
 ms.reviewer: mimckitt
 ms.date: 10/13/2020
 ms.custom: ''
-ms.openlocfilehash: cf8d2696732c2947ce86b9509720898fd63c1e16
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: b63f42ccc0a9d8d138e38a262db528fd36ea701a
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98887384"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102123046"
 ---
-# <a name="deploy-a-cloud-services-extended-support-using-sdk"></a>SDK kullanarak Cloud Services (genişletilmiş destek) dağıtma
+# <a name="deploy-cloud-services-extended-support-by-using-the-azure-sdk"></a>Azure SDK kullanarak Cloud Services (genişletilmiş destek) dağıtma
 
-Bu makalede, birden çok rolü (WebRole ve WorkerRole) ve Uzak Masaüstü uzantısını içeren Cloud Services (genişletilmiş destek) dağıtmak için [Azure SDK](https://azure.microsoft.com/downloads/) 'nın nasıl kullanılacağı gösterilmektedir. 
+Bu makalede, birden çok rolü olan (Web rolü ve çalışan rolü) ve uzak masaüstü uzantısının bulunduğu bir Cloud Services (genişletilmiş destek) örneğini dağıtmak için [Azure SDK](https://azure.microsoft.com/downloads/) 'nın nasıl kullanılacağı gösterilmektedir. Cloud Services (genişletilmiş destek), Azure Resource Manager dayalı Azure Cloud Services dağıtım modelidir.
 
 > [!IMPORTANT]
-> Cloud Services (genişletilmiş destek) Şu anda genel önizleme aşamasındadır. Önizleme sürümü bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yüklerinde kullanılması önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Cloud Services (genişletilmiş destek) Şu anda genel önizleme aşamasındadır. Bu önizleme sürümü bir hizmet düzeyi sözleşmesi olmadan sağlanır ve bunu üretim iş yükleri için önermiyoruz. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 
 Cloud Services (genişletilmiş destek) için [dağıtım önkoşullarını](deploy-prerequisite.md) gözden geçirin ve ilişkili kaynaklar oluşturun.
 
-## <a name="deploy-a-cloud-services-extended-support"></a>Cloud Services Dağıtma (genişletilmiş destek)
+## <a name="deploy-cloud-services-extended-support"></a>Cloud Services Dağıtma (genişletilmiş destek)
 1. [Azure işlem SDK 'Sı NuGet paketini](https://www.nuget.org/packages/Microsoft.Azure.Management.Compute/43.0.0-preview) yükledikten sonra standart bir kimlik doğrulama mekanizması kullanarak istemciyi başlatın.
 
     ```csharp
@@ -73,7 +73,7 @@ Cloud Services (genişletilmiş destek) için [dağıtım önkoşullarını](dep
     resourceGroup = await resourceGroups.CreateOrUpdateAsync(resourceGroupName, resourceGroup);
     ```
 
-3. Bulut hizmeti paketi (. cspkg) ve hizmet yapılandırma (. cscfg) dosyalarını depolamak için kullanılacak bir depolama hesabı ve kapsayıcı oluşturun. [Azure Storage NuGet paketini](https://www.nuget.org/packages/Azure.Storage.Common/)yükler. Mevcut bir depolama hesabı kullanılıyorsa bu adım isteğe bağlıdır. Depolama hesabı adı benzersiz olmalıdır.
+3. Hizmet paketi (. cspkg) ve hizmet yapılandırma (. cscfg) dosyalarını depolayabileceğiniz bir depolama hesabı ve kapsayıcı oluşturun. [Azure Storage NuGet paketini](https://www.nuget.org/packages/Azure.Storage.Common/)yükler. Mevcut bir depolama hesabı kullanıyorsanız, bu adım isteğe bağlıdır. Depolama hesabı adı benzersiz olmalıdır.
 
     ```csharp
     string storageAccountName = “ContosoSAS”
@@ -109,7 +109,7 @@ Cloud Services (genişletilmiş destek) için [dağıtım önkoşullarını](dep
     sasConstraints.Permissions = SharedAccessBlobPermissions.Read | SharedAccessBlobPermissions.Write;
     ```
 
-4. Bulut hizmeti paketi (. cspkg) dosyasını depolama hesabına yükleyin. Paket URL 'SI, herhangi bir depolama hesabından paylaşılan erişim Imzası (SAS) URI 'SI olabilir.
+4. Hizmet paketi (. cspkg) dosyasını depolama hesabına yükleyin. Paket URL 'SI, herhangi bir depolama hesabından paylaşılan erişim imzası (SAS) URI 'SI olabilir.
 
     ```csharp
     CloudBlockBlob cspkgblockBlob = container.GetBlockBlobReference(“ContosoApp.cspkg”);
@@ -122,7 +122,7 @@ Cloud Services (genişletilmiş destek) için [dağıtım önkoşullarını](dep
     string cspkgSASUrl = cspkgblockBlob.Uri + cspkgsasContainerToken;
     ```
 
-5. Bulut hizmeti yapılandırmanızı (. cscfg) depolama hesabına yükleyin. Hizmet yapılandırması, dize XML veya URL biçimi olarak belirtilebilir.
+5. Hizmet yapılandırma (. cscfg) dosyanızı depolama hesabına yükleyin. Hizmet yapılandırmasını dize XML veya URL biçimi olarak belirtin.
 
     ```csharp
     CloudBlockBlob cscfgblockBlob = container.GetBlockBlobReference(“ContosoApp.cscfg”);
@@ -135,7 +135,7 @@ Cloud Services (genişletilmiş destek) için [dağıtım önkoşullarını](dep
     string cscfgSASUrl = cscfgblockBlob.Uri + sasCscfgContainerToken;
     ```
 
-6. Sanal ağı ve alt ağı oluşturun. [Azure Network NuGet paketini](https://www.nuget.org/packages/Azure.ResourceManager.Network/)yükler. Mevcut bir ağ ve alt ağ kullanılıyorsa bu adım isteğe bağlıdır.
+6. Sanal ağı ve alt ağı oluşturun. [Azure Network NuGet paketini](https://www.nuget.org/packages/Azure.ResourceManager.Network/)yükler. Mevcut bir ağ ve alt ağ kullanıyorsanız, bu adım isteğe bağlıdır.
 
     ```csharp
     VirtualNetwork vnet = new VirtualNetwork(name: vnetName) 
@@ -156,7 +156,7 @@ Cloud Services (genişletilmiş destek) için [dağıtım önkoşullarını](dep
     m_NrpClient.VirtualNetworks.CreateOrUpdate(resourceGroupName, “ContosoVNet”, vnet);
     ```
 
-7. Genel IP adresi oluşturun ve (isteğe bağlı olarak) genel IP adresinin DNS etiketi özelliğini ayarlayın. Statik IP kullanıyorsanız, hizmet yapılandırma dosyasında bir Ayrılmış IP olarak başvurulması gerekir.
+7. Genel IP adresi oluşturun ve (isteğe bağlı olarak) genel IP adresinin DNS etiketi özelliğini ayarlayın. Statik IP kullanıyorsanız, hizmet yapılandırma dosyasında ayrılmış bir IP olarak başvurulmalıdır.
 
     ```csharp
     PublicIPAddress publicIPAddressParams = new PublicIPAddress(name: “ContosIp”) 
@@ -171,7 +171,7 @@ Cloud Services (genişletilmiş destek) için [dağıtım önkoşullarını](dep
     PublicIPAddress publicIpAddress = m_NrpClient.PublicIPAddresses.CreateOrUpdate(resourceGroupName, publicIPAddressName, publicIPAddressParams);
     ```
 
-8. Ağ profili nesnesi oluşturun ve genel IP adresini platform tarafından oluşturulan yük dengeleyicinin ön ucu ile ilişkilendirin.
+8. Bir ağ profili nesnesi oluşturun ve genel IP adresini platform tarafından oluşturulan yük dengeleyicinin ön ucuna ilişkilendirin.
 
     ```csharp
     LoadBalancerFrontendIPConfiguration feipConfiguration = new LoadBalancerFrontendIPConfiguration() 
@@ -206,32 +206,32 @@ Cloud Services (genişletilmiş destek) için [dağıtım önkoşullarını](dep
     
     ```
 
-9. Anahtar Kasası oluşturun. Bu Key Vault, bulut hizmeti (genişletilmiş destek) rolleriyle ilişkili sertifikaları depolamak için kullanılacaktır. Key Vault, bulut hizmeti ile aynı bölgede ve abonelikte yer almalıdır ve benzersiz bir ada sahip olmalıdır. Daha fazla bilgi için bkz. [Azure Cloud Services sertifikaları kullanma (genişletilmiş destek)](certificates-and-key-vault.md).
+9. Anahtar kasası oluşturma. Bu Anahtar Kasası Cloud Services (genişletilmiş destek) rolleriyle ilişkili sertifikaları depolamak için kullanılacaktır. Anahtar Kasası Cloud Services (genişletilmiş destek) örneği ile aynı bölgede ve abonelikte yer almalıdır ve benzersiz bir ada sahip olmalıdır. Daha fazla bilgi için bkz. [Azure Cloud Services sertifikaları kullanma (genişletilmiş destek)](certificates-and-key-vault.md).
 
     ```powershell
     New-AzKeyVault -Name "ContosKeyVault” -ResourceGroupName “ContosoOrg” -Location “East US”
     ```
 
-10. Key Vault erişim ilkesini güncelleştirin ve Kullanıcı hesabınıza sertifika izinleri verin.
+10. Anahtar kasasının erişim ilkesini güncelleştirin ve Kullanıcı hesabınıza sertifika izinleri verin.
 
     ```powershell
     Set-AzKeyVaultAccessPolicy -VaultName 'ContosKeyVault' -ResourceGroupName 'ContosoOrg'      -UserPrincipalName 'user@domain.com' -PermissionsToCertificates create,get,list,delete
     ```
 
-    Alternatif olarak, erişim ilkesini ObjectID aracılığıyla (Get-AzADUser çalıştırılarak elde edilebilir) ayarlayın
+    Alternatif olarak, erişim ilkesini nesne KIMLIĞI (çalıştırarak alabileceğiniz) ile ayarlayın `Get-AzADUser` .
 
     ```powershell
     Set-AzKeyVaultAccessPolicy -VaultName 'ContosKeyVault' -ResourceGroupName 'ContosOrg' -     ObjectId 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx' -PermissionsToCertificates          create,get,list,delete
     ```
 
-11. Bu örnekte, bir Key Vault kendinden imzalı bir sertifika ekleyeceğiz. Sertifika parmak izinin, bulut hizmeti rollerinde dağıtım için bulut hizmeti yapılandırma (. cscfg) dosyasına eklenmesi gerekir.
+11. Bu örnekte, bir anahtar kasasına kendinden imzalı bir sertifika ekleyeceğiz. Sertifika parmak izinin, Cloud Services (genişletilmiş destek) rollerinde dağıtım için hizmet yapılandırma (. cscfg) dosyasına eklenmesi gerekir.
 
     ```powershell
     $Policy = New-AzKeyVaultCertificatePolicy -SecretContentType "application/x-pkcs12" -       SubjectName "CN=contoso.com" -IssuerName "Self" -ValidityInMonths 6 -ReuseKeyOnRenewal 
     Add-AzKeyVaultCertificate -VaultName "ContosKeyVault" -Name "ContosCert" -      CertificatePolicy $Policy
     ```
 
-12. Bir işletim sistemi profili nesnesi oluşturun. İşletim sistemi profili, bulut hizmeti rolleriyle ilişkili sertifikaları belirtir. Bu, önceki adımda oluşturulan sertifika ile aynı olacaktır.
+12. Bir işletim sistemi profili nesnesi oluşturun. İşletim sistemi profili Cloud Services (genişletilmiş destek) rolleriyle ilişkili sertifikaları belirtir. Bu, önceki adımda oluşturduğumuz aynı sertifikadır.
 
     ```csharp
     CloudServiceOsProfile cloudServiceOsProfile = 
@@ -247,7 +247,9 @@ Cloud Services (genişletilmiş destek) için [dağıtım önkoşullarını](dep
            };
     ```
 
-13. Rol profili nesnesi oluşturun. Rol profili, ad, kapasite ve katman gibi bir rol SKU 'ya özgü özellikleri tanımlar. Bu örnekte, iki rol tanımlıyoruz: frontendRole ve backendRole. Rol profili bilgileri, yapılandırma (cscfg) dosya ve hizmet tanımı (csdef) dosyasında tanımlanan rol yapılandırması ile eşleşmelidir.
+13. Rol profili nesnesi oluşturun. Rol profili, bir SKU için ad, kapasite ve katman gibi role özgü özellikleri tanımlar. 
+
+    Bu örnekte, iki rol tanımlayacağız: ContosoFrontend ve Contosoarka ucu. Rol profili bilgileri, hizmet yapılandırma (. cscfg) dosyasında ve hizmet tanımı (. csdef) dosyasında tanımlanan rol yapılandırmasıyla eşleşmelidir.
 
     ```csharp
     CloudServiceRoleProfile cloudServiceRoleProfile = new CloudServiceRoleProfile()
@@ -281,7 +283,7 @@ Cloud Services (genişletilmiş destek) için [dağıtım önkoşullarını](dep
                     }
     ```
 
-14. Seçim Bulut hizmetinize eklemek istediğiniz bir uzantı profili nesnesi oluşturun. Bu örnekte, RDP uzantısı ekleyeceğiz.
+14. Seçim Cloud Services (genişletilmiş destek) örneğine eklemek istediğiniz bir uzantı profili nesnesi oluşturun. Bu örnekte, RDP uzantısı ekleyeceğiz.
 
     ```csharp
     string rdpExtensionPublicConfig = "<PublicConfig>" +
@@ -313,7 +315,7 @@ Cloud Services (genişletilmiş destek) için [dağıtım önkoşullarını](dep
         };
     ```
 
-15. Bulut hizmeti dağıtımı oluşturun.
+15. Cloud Services (genişletilmiş destek) örneğinin dağıtımını oluşturun.
 
     ```csharp
     CloudService cloudService = new CloudService
@@ -322,7 +324,7 @@ Cloud Services (genişletilmiş destek) için [dağıtım önkoşullarını](dep
                 {
                     RoleProfile = cloudServiceRoleProfile
                     Configuration = < Add Cscfg xml content here>,
-                    // ConfigurationUrl = <Add you configuration URL here>,
+                    // ConfigurationUrl = <Add your configuration URL here>,
                     PackageUrl = <Add cspkg SAS url here>,
                     ExtensionProfile = cloudServiceExtensionProfile,
                     OsProfile= cloudServiceOsProfile,
@@ -337,5 +339,5 @@ Cloud Services (genişletilmiş destek) için [dağıtım önkoşullarını](dep
 
 ## <a name="next-steps"></a>Sonraki adımlar
 - Cloud Services için [sık sorulan soruları](faq.md) gözden geçirin (genişletilmiş destek).
-- [Azure Portal](deploy-portal.md), [PowerShell](deploy-powershell.md), [şablon](deploy-template.md) veya [Visual Studio](deploy-visual-studio.md)kullanarak bir bulut hizmeti (genişletilmiş destek) dağıtın.
-- [Cloud Services (genişletilmiş destek) örnekleri deposunu](https://github.com/Azure-Samples/cloud-services-extended-support) ziyaret edin
+- [Azure Portal](deploy-portal.md), [PowerShell](deploy-powershell.md), bir [şablon](deploy-template.md)veya [Visual Studio](deploy-visual-studio.md)kullanarak Cloud Services (genişletilmiş destek) dağıtın.
+- [Cloud Services Için örnek deposunu ziyaret edin (genişletilmiş destek)](https://github.com/Azure-Samples/cloud-services-extended-support)

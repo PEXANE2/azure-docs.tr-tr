@@ -11,12 +11,12 @@ author: jaszymas
 ms.author: jaszymas
 ms.reviwer: vanto
 ms.date: 01/15/2021
-ms.openlocfilehash: 664733f3d4c4e4bf17440db0323580c5d2c8c2ce
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
+ms.openlocfilehash: fb42a0428f0439053375027481d38977b068e356
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100555658"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102122587"
 ---
 # <a name="configure-azure-attestation-for-your-azure-sql-logical-server"></a>Azure SQL mantıksal sunucunuz için Azure kanıtlama yapılandırma
 
@@ -66,10 +66,14 @@ authorizationrules
 
 Yukarıdaki ilke şunları doğrular:
 
-- Azure SQL veritabanı 'nın içindeki kuşatma, hata ayıklamayı desteklemez (Bu, kuşmanın sağladığı koruma düzeyini azaltır).
-- Kuşın içindeki kitaplığın ürün KIMLIĞI, güvenli şifreleme (4639) ile Always Encrypted atanan ürün KIMLIĞIDIR.
-- Kitaplığın sürüm KIMLIĞI (SVN) 0 ' dan büyük.
+- Azure SQL veritabanı 'nın içindeki kuşatma, hata ayıklamayı desteklemiyor. 
+  > Şifreleme, hata ayıklama devre dışı veya etkin olarak yüklenebilir. Hata ayıklama desteği, geliştiricilerin bir kuşın içinde çalışan kodun sorunlarını gidermelerine olanak tanımak için tasarlanmıştır. Bir üretim sisteminde, hata ayıklama bir yöneticinin kuşatma içeriğini incelemesini ve bu da kuşmanın sağladığı koruma düzeyini azaltmasını sağlayabilir. Önerilen ilke, kötü amaçlı bir yöneticinin, şifreleme makinesini ayırarak hata ayıklama desteğini açmayı denediğinden emin olmak için hata ayıklamayı devre dışı bırakır, kanıtlama başarısız olur. 
+- Kuşın ürün KIMLIĞI, güvenli şifreleme ile Always Encrypted atanan ürün KIMLIĞIYLE eşleşir.
+  > Her bir kuşatma, diğer kuşeklerden enci farklılaştırır ve benzersiz bir ürün kimliğine sahiptir. Always Encrypted encine atanan ürün KIMLIĞI 4639 ' dir. 
+- Kitaplığın güvenlik sürüm numarası (SVN) 0 ' dan büyük.
+  > SVN, Microsoft 'un, şifreleme kodunda tanımlanan olası güvenlik hatalarının yanıt vermesini sağlar. Bir güvenlik sorununun daha fazla ve düzeltilme olasılığına karşı, Microsoft yeni (artan) bir SVN ile şifreleme 'nin yeni bir sürümünü dağıtacaktır. Yukarıdaki önerilen ilke, yeni SVN 'yi yansıtacak şekilde güncelleştirilecektir. İlkenizin önerilen ilkeyle eşleşecek şekilde güncelleştirilerek, kötü amaçlı bir yöneticinin daha eski ve güvenli olmayan bir şifreleme yüklemeye çalışması durumunda kanıtlama başarısız olur.
 - Kuşdaki kitaplık, Microsoft imzalama anahtarı kullanılarak imzalanmış (x-MS-SGX-mrimzalayan talebinin değeri İmzalama anahtarının karmasıdır).
+  > Kanıtlama ana amaçlarından biri, istemcileri kuşatma 'da çalışan ikilinin çalıştırılması beklenen ikili dosya olduğunu ikna etmelidir. Kanıtlama ilkeleri, bu amaçla iki mekanizma sağlar. Bunlardan biri, bir kuşatma içinde çalıştırılması beklenen ikilinin karması olan **mrenclave** Claim 'dir. **Mrenclave** ile ilgili sorun, ikili karmaın kodda küçük değişiklikler olsa da, kodlarda çalışan kodun daha kolay bir şekilde değiştirilmesini sağlar. Bu nedenle, kuşatma ikilisini imzalamak için kullanılan bir anahtarın karması olan **mrimzalayanın** kullanılmasını öneririz. Microsoft, kuşanın ne kadar süreceğine karşılık, imza anahtarı değişmediğinden **mrimzalayan** aynı kalır. Bu şekilde, güncelleştirilmiş ikililerin müşterilerin uygulamalarını bozmadan dağıtılması mümkün hale gelir. 
 
 > [!IMPORTANT]
 > Bir kanıtlama sağlayıcısı, şifreleme içinde çalışan kodu doğrulamakta olan Intel SGX enclaven için varsayılan ilkeyle oluşturulur. Microsoft, yukarıda önerilen ilkeyi ayarlamanıza ve güvenli şifreleme ile Always Encrypted için varsayılan ilkeyi kullanmamanız önerilir.

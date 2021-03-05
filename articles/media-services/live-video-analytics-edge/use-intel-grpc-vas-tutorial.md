@@ -6,12 +6,12 @@ ms.date: 02/04/2021
 ms.service: media-services
 ms.author: faneerde
 author: fvneerden
-ms.openlocfilehash: 62787bfb586f2847d984499cf966708749184ee1
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.openlocfilehash: 282ab76c34405f19e7f81b2a8069c178b17ee0c1
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 03/04/2021
-ms.locfileid: "102096352"
+ms.locfileid: "102124423"
 ---
 # <a name="tutorial-analyze-live-video-by-using-intel-openvino-dl-streamer--edge-ai-extension"></a>Öğretici: Intel OpenVINO™ DL Streamer – Edge AI uzantısı kullanarak canlı videoyu çözümleme 
 
@@ -327,7 +327,8 @@ Farklı bir model kullanmak için Dağıtım şablonunu değiştirmeniz gerekir.
 "PIPELINE_VERSION=vehicle_attributes_recognition"
 ],
 ```
-> [!TIP] Şablonu kopyalayın ve olası her bir işlem hattı için yeni bir ad altında saklayın. Bu şekilde, bu şablonlara dayalı yeni bir dağıtım oluşturarak modeller arasında geçiş yapabilirsiniz.
+> [!TIP]
+> Şablonu kopyalayın ve olası her bir işlem hattı için yeni bir ad altında saklayın. Bu şekilde, bu şablonlara dayalı yeni bir dağıtım oluşturarak modeller arasında geçiş yapabilirsiniz.
 
 Değişkenleri değiştirdikten sonra, şablonu cihaza yeniden dağıtabilirsiniz. Şimdi, örnek programı yeniden çalıştırmak için yukarıdaki adımları tekrarlayarak yeni işlem hattı ile yineleyebilirsiniz. Çıkarım sonuçları benzer olacaktır (şemada), ancak seçtiğiniz işlem hattı modeline göre daha fazla veya daha az bilgi gösterir.
 

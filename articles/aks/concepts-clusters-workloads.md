@@ -4,12 +4,12 @@ description: Kubernetes 'in temel kümesini ve iş yükü bileşenlerini ve bunl
 services: container-service
 ms.topic: conceptual
 ms.date: 12/07/2020
-ms.openlocfilehash: 7485631660395e03c558167c321e6091c6fac755
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 2a1718d906ab5f51ea71be9b304028576c9fffa0
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100373241"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102122451"
 ---
 # <a name="kubernetes-core-concepts-for-azure-kubernetes-service-aks"></a>Azure Kubernetes hizmeti (AKS) için Kubernetes temel kavramları
 
@@ -61,7 +61,7 @@ Uygulamalarınızı ve destekleyici hizmetleri çalıştırmak için bir Kuberne
 
 - , `kubelet` Denetim düzleminden düzenleme isteklerini işleyen ve istenen kapsayıcıları çalıştırmanın zamanlanması olan Kubernetes aracısıdır.
 - Sanal ağ, her düğümde *kug-proxy* tarafından işlenir. Proxy, ağ trafiğini yönlendirir ve hizmetler ve pods için IP adresini yönetir.
-- *Kapsayıcı çalışma zamanı* , Kapsayıcılı uygulamaların sanal ağ ve depolama gibi ek kaynaklarla çalışmasına ve bunlarla etkileşime geçmesini sağlayan bileşendir. AKS 'de, Moby kapsayıcı çalışma zamanı olarak kullanılır.
+- *Kapsayıcı çalışma zamanı* , Kapsayıcılı uygulamaların sanal ağ ve depolama gibi ek kaynaklarla çalışmasına ve bunlarla etkileşime geçmesini sağlayan bileşendir. Kubernetes sürüm 1,19 düğüm havuzlarını ve daha büyük kullanımını `containerd` kapsayıcı çalışma zamanı olarak kullanan AKS kümeleri. For node havuzları için v 1.19 öncesinde Kubernetes kullanan AKS kümeleri, kapsayıcı çalışma zamanı olarak [Moby](https://mobyproject.org/) (yukarı akış Docker) kullanır.
 
 ![Bir Kubernetes düğümü için Azure sanal makinesi ve destekleyici kaynaklar](media/concepts-clusters-workloads/aks-node-resource-interactions.png)
 
@@ -69,7 +69,7 @@ Düğümleriniz için Azure VM boyutu, kaç tane CPU, bellek miktarı ve kullan�
 
 AKS 'de, kümenizdeki düğümlerin VM görüntüsü şu anda Ubuntu Linux veya Windows Server 2019 ' i temel alır. Bir AKS kümesi oluşturduğunuzda veya düğüm sayısını ölçeklendirirseniz, Azure platformu istenen sayıda VM oluşturur ve bunları yapılandırır. Yapmanız için el ile yapılandırma yoktur. Aracı düğümleri standart sanal makineler olarak faturalandırılır. bu nedenle, kullanmakta olduğunuz VM boyutu ( [Azure ayırmaları][reservation-discounts]dahil) üzerinde bulunan tüm indirimler otomatik olarak uygulanır.
 
-Farklı bir konak işletim sistemi, kapsayıcı çalışma zamanı kullanmanız veya özel paketler eklemeniz gerekiyorsa, [aks-Engine][aks-engine]kullanarak kendi Kubernetes kümenizi dağıtabilirsiniz. Yukarı akış `aks-engine` sürümleri, AKS kümelerinde resmi olarak desteklenmeye başlamadan önce yapılandırma seçenekleri sunar. Örneğin, Moby dışında bir kapsayıcı çalışma zamanı kullanmak isterseniz, `aks-engine` geçerli ihtiyaçlarınızı karşılayan bir Kubernetes kümesini yapılandırmak ve dağıtmak için kullanabilirsiniz.
+Farklı bir konak işletim sistemi, kapsayıcı çalışma zamanı kullanmanız veya özel paketler eklemeniz gerekiyorsa, [aks-Engine][aks-engine]kullanarak kendi Kubernetes kümenizi dağıtabilirsiniz. Yukarı akış `aks-engine` sürümleri, AKS kümelerinde resmi olarak desteklenmeye başlamadan önce yapılandırma seçenekleri sunar. Örneğin, ya da Moby dışında bir kapsayıcı çalışma zamanı kullanmak isterseniz `containerd` , `aks-engine` geçerli ihtiyaçlarınızı karşılayan bir Kubernetes kümesini yapılandırmak ve dağıtmak için kullanabilirsiniz.
 
 ### <a name="resource-reservations"></a>Kaynak ayırmaları
 

@@ -10,15 +10,15 @@ ms.service: active-directory
 ms.topic: how-to
 ms.workload: identity
 ms.subservice: pim
-ms.date: 09/16/2020
+ms.date: 02/16/2021
 ms.author: curtand
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e0e230a975748fe2f737c4b8fe8491887351d387
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: fd4374067fe0070c379a76ef5f59bb6aef5b29fc
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96004679"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102123114"
 ---
 # <a name="assign-azure-ad-roles-in-privileged-identity-management"></a>Privileged Identity Management Azure AD rolleri atama
 
@@ -101,7 +101,7 @@ Yönetim birimleri oluşturma hakkında daha fazla bilgi için bkz. [yönetim bi
 
 ## <a name="update-or-remove-an-existing-role-assignment"></a>Var olan bir rol atamasını güncelleştirme veya kaldırma
 
-Varolan bir rol atamasını güncelleştirmek veya kaldırmak için bu adımları izleyin.
+Varolan bir rol atamasını güncelleştirmek veya kaldırmak için bu adımları izleyin. **Yalnızca Azure AD P2 lisanslı müşteriler**: bir gruba hem Azure AD hem de PRIVILEGED IDENTITY Management (PIM) aracılığıyla bir rol için etkin olarak atamayın. Ayrıntılı bir açıklama için bkz. [bilinen sorunlar](../roles/groups-concept.md#known-issues).
 
 1. **Azure AD Privileged Identity Management** açın.
 

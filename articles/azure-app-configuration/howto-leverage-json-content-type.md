@@ -10,12 +10,12 @@ ms.devlang: azurecli
 ms.topic: how-to
 ms.date: 08/03/2020
 ms.author: avgupta
-ms.openlocfilehash: ee262c0eb2431085e71d8ee0035bcdab9833d1cf
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: 19de46bc87b72ada221c63e36e87d0545304d344
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94565781"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102122162"
 ---
 # <a name="leverage-content-type-to-store-json-key-values-in-app-configuration"></a>Uygulama yapılandırmasındaki JSON anahtar değerlerini depolamak için içerik türünden yararlanın
 
@@ -25,9 +25,9 @@ Veriler, uygulama yapılandırmasında varsayılan olarak dize türü olarak kab
 ## <a name="overview"></a>Genel Bakış
 
 Uygulama Yapılandırması ' nda JSON medya türünü anahtar değerlerinizin içerik türü olarak kullanabilirsiniz; örneğin:
-- **Daha basit veri yönetimi** : diziler gibi anahtar değerlerini yönetme Azure Portal çok daha kolay olacaktır.
-- **Geliştirilmiş veri dışa aktarma** : temel türler, DIZILER ve JSON nesneleri veri dışa aktarma sırasında korunur.
-- **Uygulama yapılandırma sağlayıcısı Ile yerel destek** : JSON Content-Type ile anahtar değerleri, uygulamalarınızda uygulama yapılandırma sağlayıcısı kitaplıkları tarafından tüketildiği zaman iyi çalışacaktır.
+- **Daha basit veri yönetimi**: diziler gibi anahtar değerlerini yönetme Azure Portal çok daha kolay olacaktır.
+- **Geliştirilmiş veri dışa aktarma**: temel türler, DIZILER ve JSON nesneleri veri dışa aktarma sırasında korunur.
+- **Uygulama yapılandırma sağlayıcısı Ile yerel destek**: JSON Content-Type ile anahtar değerleri, uygulamalarınızda uygulama yapılandırma sağlayıcısı kitaplıkları tarafından tüketildiği zaman iyi çalışacaktır.
 
 #### <a name="valid-json-content-type"></a>Geçerli JSON içerik türü
 
@@ -80,7 +80,7 @@ JSON anahtar-değerleri Azure portal, Azure CLı kullanılarak veya bir JSON dos
 
 ### <a name="create-json-key-values-using-azure-portal"></a>Azure portal kullanarak JSON anahtar değerleri oluşturma
 
-Uygulama yapılandırma deponuza gidin ve **Configuration Explorer**  >  **Create**  >  aşağıdaki anahtar-değer çiftlerini eklemek için yapılandırma Gezgini **anahtar değeri** oluştur ' u seçin:
+Uygulama yapılandırma deponuza gidin ve   >    >  aşağıdaki anahtar-değer çiftlerini eklemek için yapılandırma Gezgini **anahtar değeri** oluştur ' u seçin:
 
 | Anahtar | Değer | İçerik Türü |
 |---|---|---|
@@ -92,7 +92,7 @@ Uygulama yapılandırma deponuza gidin ve **Configuration Explorer**  >  **Creat
 | Ayarlar: RolloutPercentage | [25, 50, 75100] | uygulama/json |
 | Ayarlar: günlüğe kaydetme | {"Test": {"Level": "hata ayıklama"}, "üretim": {"Level": "uyarı"}} | uygulama/json |
 
-**Etiketi** boş bırakın ve **Uygula** ' yı seçin.
+**Etiketi** boş bırakın ve **Uygula**' yı seçin.
 
 ### <a name="create-json-key-values-using-azure-cli"></a>Azure CLı kullanarak JSON anahtar değerleri oluşturma
 
@@ -175,12 +175,28 @@ az appconfig kv export -d file --format json --path "~/Export.json" --separator 
 
 ## <a name="consuming-json-key-values-in-applications"></a>JSON anahtar değerlerini kullanan uygulamalar
 
-Uygulamanızdaki JSON anahtar değerlerini kullanmanın en kolay yolu, uygulama yapılandırma sağlayıcısı kitaplıkları kullanmaktır. Sağlayıcı kitaplıkları ile uygulamanızdaki JSON anahtar değerlerini özel olarak işlemeyi uygulamanız gerekmez. Bunlar her zaman uygulamanız için diğer JSON yapılandırma sağlayıcısı kitaplıklarının yapacağından aynı şekilde seri durumdan çıkarılacağız. 
+Uygulamanızdaki JSON anahtar değerlerini kullanmanın en kolay yolu, uygulama yapılandırma sağlayıcısı kitaplıkları kullanmaktır. Sağlayıcı kitaplıkları ile uygulamanızdaki JSON anahtar değerlerini özel olarak işlemeyi uygulamanız gerekmez. Bunlar ayrıştırılacaktır ve uygulamanızın yerel yapılandırmasıyla eşleşecek şekilde dönüştürülür.
+
+Örneğin, uygulama yapılandırmasında aşağıdaki anahtar değere sahipseniz:
+
+| Anahtar | Değer | İçerik Türü |
+|---|---|---|
+| Ayarlar | {"FontSize": 24, "UseDefaultRouting": false} | uygulama/json |
+
+.NET uygulama yapılandırmanızda aşağıdaki anahtar değerleri olacaktır:
+
+| Anahtar | Değer |
+|---|---|
+| Ayarlar: FontSize | 24 |
+| Ayarlar: UseDefaultRouting | yanlış |
+
+Yeni anahtarlara doğrudan erişebilirsiniz veya [yapılandırma değerlerini .net nesnelerinin örneklerine bağlamayı](/aspnet/core/fundamentals/configuration/#bind-hierarchical-configuration-data-using-the-options-pattern)tercih edebilirsiniz.
+
 
 > [!Important]
 > JSON anahtar değerleri için yerel destek .NET yapılandırma sağlayıcısı sürüm 4.0.0 (veya üstü) içinde kullanılabilir. Daha ayrıntılı bilgi için [*sonraki adımlar*](#next-steps) bölümüne bakın.
 
-İçerik türü temelinde uygulama yapılandırmasından anahtar değerlerini okumak için SDK veya REST API kullanıyorsanız, uygulamanız herhangi bir standart JSON seri hale getirici kullanarak bir JSON anahtar-değer değerinin serisini kaldırmaktan sorumludur.
+İçerik türü temelinde uygulama yapılandırmasından anahtar değerlerini okumak için SDK veya REST API kullanıyorsanız, uygulamanız JSON anahtar değerinin değerini ayrıştırmaktan sorumludur.
 
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme

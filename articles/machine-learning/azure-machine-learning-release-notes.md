@@ -9,18 +9,36 @@ ms.topic: reference
 ms.author: larryfr
 author: BlackMist
 ms.date: 02/18/2021
-ms.openlocfilehash: b19c5e8ca1f7984f33a5cedf37a2774532c79350
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 69313b48b505bd0b53df6f15f636e2903f41ebfd
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101661112"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102124015"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Azure Machine Learning sürüm notları
 
 Bu makalede Azure Machine Learning sürümleri hakkında bilgi edinin.  Tam SDK başvuru içeriği için Azure Machine Learning [**Python başvurusu için ana SDK**](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py) sayfasına gidin.
 
 __RSS akışı__: aşağıdaki URL 'yi kopyalayıp akış okuyucunuzun içine yapıştırarak Bu sayfa güncelleştirildikten sonra bildirim alın: `https://docs.microsoft.com/api/search/rss?search=%22Azure+machine+learning+release+notes%22&locale=en-us`
+
+## <a name="2021-02-28"></a>2021-02-28
+### <a name="azure-machine-learning-studio-notebooks-experience-february-update"></a>Azure Machine Learning Studio Not defteri deneyimi (Şubat güncelleştirmesi)
++ **Yeni özellikler**
+  + [Yerel Terminal (GA)](https://docs.microsoft.com/azure/machine-learning/how-to-access-terminal). Kullanıcılar artık tümleşik Terminal aracılığıyla bir tümleşik terminale ve git işlemine erişime sahip olur.
+  + [Not defteri parçacıkları (Önizleme)](https://azure.github.io/azureml-web/docs/vs-code-snippets/snippets). Ortak Azure ML kodu alıntıları artık parmaklarınızın ucunda. Araç çubuğu aracılığıyla erişilebilen kod parçacıkları paneline gidin veya Ctrl + Space ' i kullanarak kod içi parçacıkları menüsünü etkinleştirin.  
+  + [Klavye kısayolları](https://docs.microsoft.com/azure/machine-learning/how-to-run-jupyter-notebooks#shortcut-keys). Jupyter 'da kullanılabilen klavye kısayollarıyla tam eşlik. 
+  + Hücre parametrelerini belirtin. Bir not defterinde hücresi bulunan kullanıcıları parametre hücresi gösterir ve Işlem örneği üzerinde [Papermill](https://github.com/nteract/papermill) aracılığıyla parametreli not defterlerini çalıştırabilir.
+  + Terminal ve çekirdek oturum Yöneticisi: kullanıcılar, işlem sırasında çalışan tüm kerls ve Terminal oturumlarını yönetebilecektir.
+  + Paylaşma düğmesi. Kullanıcılar artık dosyayı sağ tıklayıp paylaşma düğmesini kullanarak not defteri Dosya Gezgininde herhangi bir dosyayı paylaşabilir.
+
+
++ **Hata düzeltmeleri ve geliştirmeleri**
+  + Geliştirilmiş sayfa yükleme süreleri
+  + Geliştirilmiş performans 
+  + Gelişmiş hız ve çekirdek güvenilirliği
+  + Tüm devam eden [Işlem örneği işlemlerinin](https://docs.microsoft.com/azure/machine-learning/how-to-run-jupyter-notebooks#status-indicators)ilerlemesini göstermek için dönen tekerlek eklendi.
+  + Dosya Gezgini 'ne sağ tıklayın. Dosya işlemlerini açmak için herhangi bir dosyaya sağ tıklayın. 
 
 ## <a name="2021-02-16"></a>2021-02-16
 

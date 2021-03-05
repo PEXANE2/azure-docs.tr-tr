@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 01/14/2021
 ms.author: jamesmantu
 ms.custom: aaddev, scenarios:getting-started, languages:JavaScript, devx-track-js
-ms.openlocfilehash: 2f43d2979ad9770c63504d46666dffd78f761a73
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.openlocfilehash: fb7479f7e3b9ac631c164bbddf65ed8be3bab438
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 03/04/2021
-ms.locfileid: "102097117"
+ms.locfileid: "102122655"
 ---
 # <a name="quickstart-sign-in-and-get-an-access-token-in-an-angular-spa-using-the-auth-code-flow"></a>Hızlı başlangıç: kimlik doğrulama kod akışını kullanarak bir angular SPA 'da oturum açma ve erişim belirteci edinme
 
@@ -27,7 +27,8 @@ Bu hızlı başlangıçta, JavaScript angular tek sayfalı uygulama (SPA), kulla
 
 Bu hızlı başlangıçta yetkilendirme kodu akışıyla MSAL angular v2 kullanılır. Örtük Flow ile MSAL angular 1. x kullanan benzer bir hızlı başlangıç için bkz. [hızlı başlangıç: JavaScript tek sayfalı uygulamalarda oturum açma](./quickstart-v2-angular.md).
 
-Bu özellik [!INCLUDE [active-directory-develop-preview](../../../includes/active-directory-develop-preview.md)]
+> [!IMPORTANT]
+> MSAL angular v2 [!INCLUDE [PREVIEW BOILERPLATE](../../../includes/active-directory-develop-preview.md)]
 
 ## <a name="prerequisites"></a>Önkoşullar
 

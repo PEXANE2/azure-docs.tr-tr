@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 02/1/2021
 ms.author: miwithro
-ms.openlocfilehash: 78eed4086c04ceca677a96f03875481e56206e0c
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 070b2e3b88c1ff20b52d2c5cade7ad42c6d4d734
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101724029"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102122434"
 ---
 # <a name="aks-managed-azure-active-directory-integration"></a>AKS tarafından yönetilen Azure Active Directory tümleştirme
 
@@ -25,6 +25,7 @@ Küme yöneticileri, Kubernetes rol tabanlı erişim denetimini (Kubernetes RBAC
 ## <a name="limitations"></a>Sınırlamalar 
 
 * AKS tarafından yönetilen Azure AD tümleştirmesi devre dışı bırakılamaz
+* AKS tarafından yönetilen bir Azure AD Tümleşik kümesini eski AAD ile değiştirme desteklenmiyor
 * AKS tarafından yönetilen Azure AD tümleştirmesi için Kubernetes tabanlı olmayan kümeler desteklenmez
 * AKS tarafından yönetilen Azure AD tümleştirmesi ile ilişkili Azure AD kiracısı 'nin değiştirilmesi desteklenmiyor
 

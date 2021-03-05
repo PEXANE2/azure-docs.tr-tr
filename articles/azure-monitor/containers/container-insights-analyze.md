@@ -3,12 +3,12 @@ title: Kapsayıcı öngörüleri ile Kubernetes izleme | Microsoft Docs
 description: Bu makalede, bir Kubernetes kümesinin kapsayıcı öngörüleri ile performansını nasıl görüntüleyebileceğinizi ve analiz edeceğinizi açıklanmaktadır.
 ms.topic: conceptual
 ms.date: 03/26/2020
-ms.openlocfilehash: 432de02d22a418e92a7487001ae8c128323f3685
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 865a21e8c54d2cf569e04534fab6ec14f5519f34
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101711357"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102124321"
 ---
 # <a name="monitor-your-kubernetes-cluster-performance-with-container-insights"></a>Kubernetes küme performansınızı kapsayıcı öngörüleri ile izleyin
 
@@ -20,7 +20,7 @@ Kapsayıcı öngörülerini etkinleştirme hakkında daha fazla bilgi için bkz.
 
 Azure Izleyici, Windows Server 2019 ' i çalıştıran tüm izlenen Kubernetes kümelerinin sistem durumunu ve aboneliklerinizde kaynak grupları arasında dağıtılan Windows Server ' i gösteren bir çoklu küme görünümü sağlar. Çözüm tarafından izlenmeyen tüm ortamlarda bulunan kümeleri gösterir. Küme durumunu hemen anlayabilir ve buradan düğüm ve denetleyici performans sayfasına gidebilir veya kümenin performans grafiklerini görmek için gidebilirsiniz. Algılanan ve izlenmeyen olarak tanımlanan AKS kümelerinde, her zaman için izlemeyi etkinleştirebilirsiniz.
 
-Bir Windows Server kümesini bir Linux kümesiyle karşılaştırılan kapsayıcı öngörüleri ile izlemenin başlıca farkları [burada](container-insights-overview.md#what-does-azure-monitor-for-containers-provide) genel bakış makalesinde açıklanmıştır.
+Bir Windows Server kümesini bir Linux kümesiyle karşılaştırılan kapsayıcı öngörüleri ile izlemenin başlıca farkları [burada](container-insights-overview.md#what-does-container-insights-provide) genel bakış makalesinde açıklanmıştır.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portalında oturum açın
 

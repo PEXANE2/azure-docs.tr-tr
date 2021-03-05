@@ -147,6 +147,8 @@
       items:
         - name: Sorunları kendi kendine tanılama ve çözme
           href: spring-cloud-howto-self-diagnose-solve.md
+        - name: VNET 'te çalışan kendi kendine tanılama
+          href: spring-cloud-howto-self-diagnose-running-in-vnet.md
         - name: Sorun giderme kılavuzu
           href: spring-cloud-troubleshoot.md
     - name: Geçirme

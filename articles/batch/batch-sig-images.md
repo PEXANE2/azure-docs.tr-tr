@@ -2,14 +2,14 @@
 title: Özel görüntü havuzu oluşturmak için paylaşılan görüntü galerisini kullanma
 description: Özel görüntü havuzları, toplu iş yüklerinizi çalıştırmak için işlem düğümlerini yapılandırmanın etkili bir yoludur.
 ms.topic: conceptual
-ms.date: 11/18/2020
+ms.date: 03/04/2021
 ms.custom: devx-track-python, devx-track-azurecli
-ms.openlocfilehash: 98dbb965d77da43d937dccbc0f99abf12c195929
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 8623c47952540717ae50538fd7b0282c9c8629bb
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98731370"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102124253"
 ---
 # <a name="use-the-shared-image-gallery-to-create-a-custom-image-pool"></a>Özel görüntü havuzu oluşturmak için paylaşılan görüntü galerisini kullanma
 
@@ -33,7 +33,7 @@ Senaryonuz için yapılandırılmış paylaşılan bir görüntünün kullanılm
 - **Özel görüntü olarak yalnızca yönetilen bir görüntü kullanmaktan daha iyi performans.** Paylaşılan görüntü özel görüntü havuzu için, kararlı duruma ulaşma süresi %25 ' e kadar daha hızlı ve VM boşta kalma gecikmesi %30 ' a kadar daha kısadır.
 - **Daha kolay yönetim için görüntü sürümü oluşturma ve gruplama.** Görüntü gruplandırma tanımı, görüntünün neden oluşturulduğu, ne kadar işletim sistemi olduğu ve görüntüyü kullanma hakkında bilgi içeren bilgileri içerir. Görüntülerin gruplandırılması, daha kolay görüntü yönetimine olanak tanır. Daha fazla bilgi için bkz. [görüntü tanımları](../virtual-machines/shared-image-galleries.md#image-definitions).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 > [!NOTE]
 > Azure AD 'yi kullanarak kimlik doğrulaması yapmanız gerekir. Paylaşılan anahtar kimlik doğrulaması kullanırsanız, bir kimlik doğrulama hatası alırsınız.  
@@ -69,12 +69,15 @@ Görüntü için yeni bir VM oluşturuyorsanız, yönetilen görüntünüz için
 > [!NOTE]
 > Temel görüntünüz için ek lisans ve satın alma koşullarına sahip bir üçüncü taraf görüntüsü kullanamazsınız. Bu market görüntüleri hakkında daha fazla bilgi için bkz. [Linux](../virtual-machines/linux/cli-ps-findimage.md#deploy-an-image-with-marketplace-terms) veya [Windows](../virtual-machines/windows/cli-ps-findimage.md#deploy-an-image-with-marketplace-terms) VM 'leri Kılavuzu.
 
+VM 'Ler oluştururken şu yönergeleri izleyin:
+
 - VM 'nin yönetilen bir disk ile oluşturulduğundan emin olun. Bu, bir VM oluşturduğunuzda varsayılan depolama ayarıdır.
 - Özel Betik uzantısı gibi Azure uzantılarını VM 'ye yüklemeyin. Görüntü önceden yüklenmiş bir uzantı içeriyorsa, Azure Batch havuzunu dağıttığınızda sorunlarla karşılaşabilir.
 - Bağlı veri diskleri kullanılırken, bunları kullanmak için diskleri bir VM içinden bağlamanız ve biçimlendirmeniz gerekir.
 - Sağladığınız temel işletim sistemi görüntüsünün varsayılan geçici sürücüyü kullandığından emin olun. Batch düğüm Aracısı Şu anda varsayılan geçici sürücüyü bekliyor.
 - İşletim sistemi diskinin şifrelenmediğinden emin olun.
-- VM çalışmaya başladıktan sonra RDP (Windows için) veya SSH (Linux için) aracılığıyla buna bağlanın. Gerekli yazılımları yükler veya istenen verileri kopyalayın.  
+- VM çalışmaya başladıktan sonra RDP (Windows için) veya SSH (Linux için) aracılığıyla buna bağlanın. Gerekli yazılımları yükler veya istenen verileri kopyalayın.
+- Daha hızlı havuz sağlama için, VM 'nin işletim sistemi diski için [ReadWrite disk önbelleği ayarını](../virtual-machines/premium-storage-performance.md#disk-caching) kullanın.
 
 ### <a name="create-a-vm-snapshot"></a>VM anlık görüntüsü oluşturma
 

@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 12/11/2019
 ms.author: duau
 ms.custom: seodec18
-ms.openlocfilehash: edbd36ad3444795ade4b3f8d29d8473b21a2fda8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b20bb4df7524c179766a2b2f7f090fccbddd7f37
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91651522"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102122621"
 ---
 # <a name="configure-expressroute-and-site-to-site-coexisting-connections-using-powershell"></a>PowerShell kullanarak ExpressRoute ve siteden siteye birlikte var olan bağlantıları yapılandırma
 > [!div class="op_single_selector"]
@@ -42,6 +42,7 @@ Siteden Siteye VPN ve ExpressRoute eşzamanlı bağlantılarını yapılandırma
 * **VPN ağ geçidiniz için statik rota yapılandırılmalıdır.** Yerel ağınız hem ExpressRoute hem de Siteden Siteye VPN’e bağlıysa Siteden Siteye VPN bağlantısını genel İnternet’e yönlendirebilmeniz için yerel ağınızda statik bir rotanın yapılandırılmış olması gerekir.
 * **Belirtilmemişse, varsayılan olarak ASN 65515 VPN Gateway.** Azure VPN Gateway BGP yönlendirme protokolünü destekler. -ASN anahtarını ekleyerek bir sanal ağ için ASN (AS Number) belirtebilirsiniz. Bu parametreyi belirtmezseniz, varsayılan AS numarası 65515 ' dir. Yapılandırma için herhangi bir ASN kullanabilirsiniz, ancak 65515 dışında bir öğe seçerseniz, ayarın etkili olması için ağ geçidini sıfırlamanız gerekir.
 * **Ağ geçidi alt ağı/27 veya daha kısa bir ön ek olmalıdır**(örneğin/26,/25) veya ExpressRoute sanal ağ geçidini eklediğinizde bir hata iletisi alırsınız.
+* **Çift yığın VNET 'te birlikte bulunma desteklenmez.** ExpressRoute IPv6 desteği ve çift Stack ExpressRoute ağ geçidi kullanıyorsanız, VPN Gateway birlikte bulunma mümkün olmayacaktır.
 
 ## <a name="configuration-designs"></a>Yapılandırma tasarımları
 ### <a name="configure-a-site-to-site-vpn-as-a-failover-path-for-expressroute"></a>Siteden siteye VPN’i ExpressRoute için bir yük devretme yolu olarak yapılandırma

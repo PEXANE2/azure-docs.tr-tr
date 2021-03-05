@@ -9,22 +9,22 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 07/16/2019
+ms.date: 03/03/2021
 ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: devx-track-csharp, aaddev
-ms.openlocfilehash: 6451368baf9c047f0318eb74d53ffac075d4a184
-ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
+ms.openlocfilehash: 8a8aab447007eb574a7a4bc532d8177bd0d8b345
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98063459"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102122485"
 ---
 # <a name="considerations-for-using-universal-windows-platform-with-msalnet"></a>MSAL.NET ile Evrensel Windows Platformu kullanma konuları
 MSAL.NET ile Evrensel Windows Platformu (UWP) kullanan uygulamaların geliştiricileri, bu makalenin sunduğu kavramları göz önünde bulundurmalıdır.
 
 ## <a name="the-usecorporatenetwork-property"></a>UseCorporateNetwork özelliği
-Windows Çalışma Zamanı (WinRT) platformunda `PublicClientApplication` Boole özelliği vardır `UseCorporateNetwork` . Bu özellik Windows 8.1 uygulamalar ve UWP uygulamalarının, kullanıcı federe Azure Active Directory (Azure AD) kiracısına sahip bir hesapta oturum açmış olması durumunda tümleşik Windows kimlik doğrulamasından (ıWA) faydalanmalarını sağlar. İşletim sisteminde oturum açan kullanıcılar çoklu oturum açma (SSO) da kullanabilir. `UseCorporateNetwork`Özelliği ayarladığınızda, msal.net bir Web kimlik doğrulama Aracısı (WAB) kullanır.
+Windows Çalışma Zamanı (WinRT) platformunda `PublicClientApplication` Boole özelliği vardır `UseCorporateNetwork` . Bu özellik, kullanıcı federe Azure Active Directory (Azure AD) kiracısına sahip bir hesapta oturum açmışsa, Windows 10 uygulamalarının ve UWP uygulamalarının tümleşik Windows kimlik doğrulamasından (ıWA) faydalanmalarını sağlar. İşletim sisteminde oturum açan kullanıcılar çoklu oturum açma (SSO) da kullanabilir. `UseCorporateNetwork`Özelliği ayarladığınızda, msal.net bir Web kimlik doğrulama Aracısı (WAB) kullanır.
 
 > [!IMPORTANT]
 > `UseCorporateNetwork`Özelliği true olarak ayarlamak, uygulama geliştiricisinin uygulamada IWA 'yu etkinleştirdiğinizi varsayar. IWA 'yi etkinleştirmek için:
