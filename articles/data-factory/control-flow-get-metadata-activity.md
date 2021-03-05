@@ -6,12 +6,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/25/2021
 ms.author: jingwang
-ms.openlocfilehash: 151f4352ce7c845050c899792fd7285c97f844bc
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: bd8fc3383d6d9a0afb7733cb94643623e6879d23
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102049993"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102178550"
 ---
 # <a name="get-metadata-activity-in-azure-data-factory"></a>Azure Data Factory meta veri Al etkinliği
 
@@ -83,8 +83,14 @@ Meta veri Al etkinliği bir veri kümesini girdi olarak alır ve meta veri bilgi
 | columnCount | Dosya veya ilişkisel tablodaki sütun sayısı. |
 | bulunur| Bir dosya, klasör veya tablo bulunup yok. `exists`Meta verileri al alan listesinde belirtilmişse, dosya, klasör veya tablo mevcut olmasa bile etkinlik başarısız olmaz. Bunun yerine `exists: false` çıktıda döndürülür. |
 
->[!TIP]
->Bir dosya, klasör veya tablonun var olduğunu doğrulamak istediğinizde `exists` meta verileri al etkinlik alanı listesini belirtin. Ardından, `exists: true/false` etkinlik çıkışında sonucu kontrol edebilirsiniz. `exists`Alan listesinde belirtilmemişse, nesne bulunamazsa meta verileri Al etkinliği başarısız olur.
+> [!TIP]
+> Bir dosya, klasör veya tablonun var olduğunu doğrulamak istediğinizde `exists` meta verileri al etkinlik alanı listesini belirtin. Ardından, `exists: true/false` etkinlik çıkışında sonucu kontrol edebilirsiniz. `exists`Alan listesinde belirtilmemişse, nesne bulunamazsa meta verileri Al etkinliği başarısız olur.
+
+> [!NOTE]
+> Dosya mağazalarından meta verileri alırken ve veya yapılandırdığınızda `modifiedDatetimeStart` , `modifiedDatetimeEnd` `childItems` çıktıda yalnızca belirtilen aralıktaki son değiştirilme saati olan dosyalar bulunur. Alt klasörlerdeki öğeler dahil değildir.
+
+> [!NOTE]
+> **Yapı** alanı listesinin sınırlandırılmış metin ve Excel biçim veri kümeleri için gerçek veri yapısını sağlaması için, `First Row as Header` yalnızca bu veri kaynakları için desteklenen özelliğini etkinleştirmeniz gerekir.
 
 ## <a name="syntax"></a>Syntax
 

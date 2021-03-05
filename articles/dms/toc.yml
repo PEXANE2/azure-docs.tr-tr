@@ -43,10 +43,6 @@
           href: tutorial-sql-server-to-managed-instance.md
         - name: Azure SQL Yönetilen Örnek’e (çevrimiçi)
           href: tutorial-sql-server-managed-instance-online.md
-    - name: RDS SQL Server’ı geçirme
-      items:
-        - name: Azure SQL Veritabanı veya SQL Yönetilen Örnek’e
-          href: tutorial-rds-sql-server-azure-sql-and-managed-instance-online.md
     - name: MySQL’i geçirme
       items:
         - name: MySQL için Azure Veritabanı’na
@@ -137,8 +133,6 @@
               href: known-issues-dms-hybrid-mode.md
         - name: Bilinen geçiş sorunları
           items:
-            - name: SQL Veritabanı
-              href: known-issues-azure-sql-online.md
             - name: SQL Yönetilen Örnek
               href: known-issues-azure-sql-db-managed-instance-online.md
             - name: MySQL için Azure DB

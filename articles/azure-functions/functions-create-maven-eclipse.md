@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 07/01/2018
 ms.author: jehollan
 ms.custom: mvc, devcenter, devx-track-java
-ms.openlocfilehash: a4e240837dd3c95efc4dc83a7491f2ad9163435a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7dd881d130b9df19335ac64be501553af99d58d8
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87373326"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102179554"
 ---
 # <a name="create-your-first-function-with-java-and-eclipse"></a>Java ve tutulma ile ilk işlevinizi oluşturma 
 
@@ -38,9 +38,9 @@ Azure Işlevleri 'ni çalıştırmaya ve hata ayıklamaya yönelik yerel bir ort
 ## <a name="create-a-functions-project"></a>Işlevler projesi oluşturma
 
 1. Tutulma ' da **Dosya** menüsünü seçin ve ardından **Yeni- &gt; Maven projesi**' ni seçin. 
-1. **Yeni Maven proje** iletişim kutusunda varsayılan değerleri kabul edin ve **İleri ' yi**seçin.
+1. **Yeni Maven proje** iletişim kutusunda varsayılan değerleri kabul edin ve **İleri ' yi** seçin.
 1. [Azure-Functions-arşiv ETYPE](https://mvnrepository.com/artifact/com.microsoft.azure/azure-functions-archetype) bulun ve seçin ve **İleri**' ye tıklayın.
-1. , Ve dahil tüm alanların değerlerini doldurduğunuzdan emin olun `resourceGroup` `appName` `appRegion` (lütfen **fabrikam-Function-20170920120101928**dışında farklı bir AppName kullanın) ve sonunda **son**' u kullanın.
+1. , Ve dahil tüm alanların değerlerini doldurduğunuzdan emin olun `resourceGroup` `appName` `appRegion` (lütfen **fabrikam-Function-20170920120101928** dışında farklı bir AppName kullanın) ve sonunda **son**' u kullanın.
     ![Tutulma Maven Create2](media/functions-create-first-java-eclipse/functions-create-eclipse2.png)  
 
 Maven, _artifactId_ adlı yeni bir dosyada proje dosyalarını oluşturur. Projedeki oluşturulan kod, tetikleme HTTP isteğinin gövdesini yansıtan basit bir [http ile tetiklenen](./functions-bindings-http-webhook.md) bir işlevdir.
@@ -50,7 +50,7 @@ Maven, _artifactId_ adlı yeni bir dosyada proje dosyalarını oluşturur. Proje
 > [!NOTE]
 > Azure Functions Core Tools, yerel olarak işlevleri çalıştırmak ve hatalarını ayıklamak için [sürüm 2 '](functions-run-local.md#v2) nin yüklü olması gerekir.
 
-1. Oluşturulan projeye sağ tıklayın ve ardından **Farklı Çalıştır** ve **Maven Build**öğesini seçin.
+1. Oluşturulan projeye sağ tıklayın ve ardından **Farklı Çalıştır** ve **Maven Build** öğesini seçin.
 1. **Yapılandırma Düzenle** Iletişim kutusunda `package` **hedefler** ve **ad** alanlarını girip **Çalıştır**' ı seçin. Bu işlem işlev kodunu derleyip paketleyebilir.
 1. Oluşturma işlemi tamamlandıktan sonra, `azure-functions:run` hedef ve ad olarak kullanarak yukarıdaki gibi başka bir çalıştırma yapılandırması oluşturun. İşlevi IDE 'de çalıştırmak için **Çalıştır** ' ı seçin.
 
@@ -68,7 +68,7 @@ IDE 'yi kullanarak kesme noktaları ayarlayın ve işlevinizdeki nesneleri incel
 
 ## <a name="deploy-the-function-to-azure"></a>İşlevi Azure’a dağıtma
 
-Azure İşlevleri’ne dağıtım işlemi, Azure CLI’dan hesap kimlik bilgilerini kullanır. Bilgisayarınızın komut istemi ile devam etmeden önce [Azure CLI Ile oturum açın](/cli/azure/authenticate-azure-cli?view=azure-cli-latest) .
+Azure İşlevleri’ne dağıtım işlemi, Azure CLI’dan hesap kimlik bilgilerini kullanır. Bilgisayarınızın komut istemi ile devam etmeden önce [Azure CLI Ile oturum açın](/cli/azure/authenticate-azure-cli) .
 
 ```azurecli
 az login

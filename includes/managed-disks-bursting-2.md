@@ -5,15 +5,15 @@ services: virtual-machines
 author: albecker1
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 02/12/2021
+ms.date: 03/04/2021
 ms.author: albecker1
 ms.custom: include file
-ms.openlocfilehash: 54c29d76757916a8eea54af16babdae21b809a19
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: a2f6a3fd8d36bb54773db21e3d36dab0060bae57
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101750631"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102178394"
 ---
 ## <a name="disk-level-bursting"></a>Disk düzeyinde burdıya
 
@@ -63,15 +63,14 @@ Fiyatlandırma hakkında ayrıntılı bilgi edinmek için [yönetilen diskler fi
 
 Azure genel, kamu ve Çin bulutlarındaki tüm bölgelerde P20 ve daha küçük bir disk boyutu için kredi tabanlı burdıal sunulmaktadır. Varsayılan olarak, disk patlaması desteklenen disk boyutlarının tüm yeni ve var olan dağıtımlarında etkindir. VM düzeyinde burdıya yalnızca kredi tabanlı patlama kullanır.
 
-### <a name="virtual-machine-level-bursting"></a>Sanal makine düzeyinde patlama
-VM düzeyinde burdıya açma desteği, bu desteklenen boyutlarda genel buluttaki tüm bölgelerde etkindir: 
-- [Lsv2 serisi](../articles/virtual-machines/lsv2-series.md)
+## <a name="virtual-machine-level-bursting"></a>Sanal makine düzeyinde patlama
 
-VM düzeyi patlaması, aşağıdaki desteklenen boyutlar için Orta Batı ABD de kullanılabilir:
+VM düzeyi patlaması yalnızca iade için kredi tabanlı modeli kullanıyorsa, bunu destekleyen tüm VM 'Ler için varsayılan olarak etkindir.
+
+VM düzeyinde burdımı, desteklenen boyutlarda Azure genel bulutundaki tüm bölgelerde etkindir: 
+- [Lsv2 serisi](../articles/virtual-machines/lsv2-series.md)
 - [Dv3 ve Dsv3 serisi](../articles/virtual-machines/dv3-dsv3-series.md)
 - [Ev3 ve Esv3 serisi](../articles/virtual-machines/ev3-esv3-series.md)
-
-Varsayılan olarak, bu özelliği destekleyen sanal makineler için burdıya etkin hale gelir.
 
 ## <a name="bursting-flow"></a>Patlama akışı
 

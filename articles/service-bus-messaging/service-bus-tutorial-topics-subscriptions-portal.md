@@ -6,18 +6,18 @@ ms.author: spelluru
 ms.date: 10/15/2020
 ms.topic: tutorial
 ms.custom: devx-track-csharp
-ms.openlocfilehash: f2c8d107c6de4965472c3fb04ff626841fb1f6ea
-ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
+ms.openlocfilehash: d0a94f346f9d3cf7a05a1ca6e1b37d4d008f3e75
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95810731"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102179672"
 ---
 # <a name="tutorial-update-inventory-using-azure-portal-and-topicssubscriptions"></a>Öğretici: Azure portalı ve konuları/abonelikleri kullanarak envanter güncelleştirme
 
 Microsoft Azure Service Bus, uygulamalar ve hizmetler arasında bilgi gönderen çok kiracılı bir bulut mesajlaşma hizmetidir. Zaman uyumsuz işlemler esnek ve aracılı mesajlaşmanın yanı sıra ilk giren ilk çıkar (FIFO) yöntemiyle yapılandırılmış mesajlaşma ve yayımlama/abonelik olanakları da sunar. Bu öğretici, bir perakende stok senaryosunda, Azure portal ve .NET kullanan yayımlama/abonelik kanallarıyla Service Bus konu başlıklarını ve abonelikleri kullanmayı göstermektedir.
 
-Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
+Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > [!div class="checklist"]
 > * Azure portalı kullanarak bir Service Bus konu başlığı ve bunun için bir veya daha fazla abonelik oluşturma
 > * .NET kodu kullanarak konu filtreleri ekleme
@@ -97,7 +97,7 @@ Kodu çalıştırmak için aşağıdakileri yapın:
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Artık gerekli olmadığında, ad alanını ve kuyruğu silin. Bunu yapmak için portalda bu kaynakları seçin ve **Sil**'e tıklayın.
+Artık gerekli değilse, ad alanını ve konuyu silin. Bunu yapmak için portalda bu kaynakları seçin ve **Sil**'e tıklayın.
 
 ## <a name="understand-the-sample-code"></a>Örnek kodu anlama
 

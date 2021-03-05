@@ -6,12 +6,12 @@ ms.topic: overview
 ms.date: 11/19/2020
 ms.author: cshoe
 zone_pivot_groups: programming-languages-set-functions-lang-workers
-ms.openlocfilehash: e969cc4bee9f09f4279d137abb33b75ca0672ffc
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 77d370b895c777278d3136c7d2c511e7f9e23b36
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100364724"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102179264"
 ---
 # <a name="getting-started-with-azure-functions"></a>Azure İşlevleri’ni kullanmaya başlama
 
@@ -46,7 +46,7 @@ Başlamak için aşağıdaki kaynakları kullanın.
 ::: zone pivot="programming-language-javascript"
 | Eylem | Kaynaklar |
 | --- | --- |
-| **İlk uygulamanızı oluşturma** | Aşağıdaki araçlardan birini kullanarak:<br><br><li>[Visual Studio Code](./create-first-function-vs-code-node.md)<li>[ Terminal/komut istemiNode.js](./create-first-function-cli-java.md) |
+| **İlk uygulamanızı oluşturma** | Aşağıdaki araçlardan birini kullanarak:<br><br><li>[Visual Studio Code](./create-first-function-vs-code-node.md)<li>[ Terminal/komut istemiNode.js](./create-first-function-cli-node.md) |
 | **Çalışan bir işlev görüntüle** | <li>[Azure örnekleri tarayıcısı](/samples/browse/?expanded=azure&languages=javascript%2ctypescript&products=azure-functions)<li>[Azure Community kitaplığı](https://www.serverlesslibrary.net/?technology=Functions%202.x&language=JavaScript%2CTypeScript) |
 | **Etkileşimli öğreticiyi keşfet** | <li>[İş senaryonuz için en uygun Azure sunucusuz teknolojisini seçme](/learn/modules/serverless-fundamentals/)<li>[İyi tasarlanmış çerçeve-performans verimliliği](/learn/modules/azure-well-architected-performance-efficiency/)<li>[Azure İşlevleri ile Sunucusuz API’ler oluşturma](/learn/modules/build-api-azure-functions/)<li>[Azure İşlevleri ile sunucusuz mantık oluşturma](/learn/modules/create-serverless-logic-with-azure-functions/)<li>[Azure İşlevleri ile Node.js ve Express API’lerini Sunucusuz API’lere Yeniden Düzenleme](/learn/modules/shift-nodejs-express-apis-serverless/) <br><br>[Etkileşimli öğreticilerin tam listesi](/learn/browse/?expanded=azure&products=azure-functions)için bkz. Microsoft Learn.|
 | **En iyi uygulamaları inceleme** |<li>[Performans ve güvenilirlik](./functions-best-practices.md)<li>[Bağlantıları yönetme](./manage-connections.md)<li>[Hata işleme ve işlev yeniden denemeleri](./functions-bindings-error-pages.md?tabs=javascript)<li>[Güvenlik](./security-concepts.md)|

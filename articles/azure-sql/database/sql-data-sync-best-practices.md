@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/20/2018
-ms.openlocfilehash: 59e28e4a3d630aac0954802e8777058c00261006
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: ee15bfaa1d69e2e5047e7d24986f8e4e7d5b8b31
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92791452"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102180250"
 ---
 # <a name="best-practices-for-azure-sql-data-sync"></a>Azure SQL Data Sync için en iyi yöntemler 
 
@@ -41,16 +41,20 @@ SQL Data Sync hizmetine genel bakış için bkz. [Azure SQL Data Sync ile birden
 
 ### <a name="database-accounts-with-least-required-privileges"></a>En az gerekli ayrıcalıklara sahip veritabanı hesapları
 
--   **Eşitleme kurulumu için** . Tablo Oluştur/Değiştir; Alter database; Yordam oluşturma; Şemayı Seç/Değiştir; User-Defined türü oluşturun.
+-   **Eşitleme kurulumu için**. Tablo Oluştur/Değiştir; Alter database; Yordam oluşturma; Şemayı Seç/Değiştir; User-Defined türü oluşturun.
 
--   , **Devam eden eşitleme için** . Eşitleme için seçilen tablolarda ve eşitleme meta verileri ve izleme tablolarında seçme/ekleme/güncelleştirme/silme; Hizmet tarafından oluşturulan saklı yordamlarda yürütme izni; Kullanıcı tanımlı tablo türlerinde yürütme izni.
+-   , **Devam eden eşitleme için**. Eşitleme için seçilen tablolarda ve eşitleme meta verileri ve izleme tablolarında seçme/ekleme/güncelleştirme/silme; Hizmet tarafından oluşturulan saklı yordamlarda yürütme izni; Kullanıcı tanımlı tablo türlerinde yürütme izni.
 
--   **Sağlaması için** . Eşitleme kapsamında tablolar üzerinde Değiştir; Eşitleme meta verileri tablolarında seçin/silin; Eşitleme izleme tablolarında, saklı yordamlarda ve Kullanıcı tanımlı türlerde denetim.
+-   **Sağlaması için**. Eşitleme kapsamında tablolar üzerinde Değiştir; Eşitleme meta verileri tablolarında seçin/silin; Eşitleme izleme tablolarında, saklı yordamlarda ve Kullanıcı tanımlı türlerde denetim.
 
 Azure SQL veritabanı yalnızca tek bir kimlik bilgileri kümesini destekler. Bu kısıtlama dahilinde bu görevleri gerçekleştirmek için aşağıdaki seçenekleri göz önünde bulundurun:
 
 -   Farklı aşamalar için kimlik bilgilerini değiştirin (örneğin, *credentials1* for Setup ve *credentials2* for devam için).  
 -   Kimlik bilgilerinin iznini değiştirin (yani, eşitleme ayarlandıktan sonra izni değiştirin).
+
+### <a name="auditing"></a>Denetim
+
+Eşitleme gruplarındaki veritabanlarının düzeyinde denetimin etkinleştirilmesi önerilir. 
 
 ## <a name="setup"></a>Kurulum
 

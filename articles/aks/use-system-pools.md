@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 06/18/2020
 ms.author: mlearned
 ms.custom: fasttrack-edit, devx-track-azurecli
-ms.openlocfilehash: 9c9479fca538c36f4f5eb430c4befb76e39370e6
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+ms.openlocfilehash: 9c53cb53517c4696a1bb47c2cb72335979d58d3a
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92900018"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102178839"
 ---
 # <a name="manage-system-node-pools-in-azure-kubernetes-service-aks"></a>Azure Kubernetes hizmetindeki (AKS) sistem düğüm havuzlarını yönetme
 
@@ -197,12 +197,12 @@ Bu makalede, bir AKS kümesinde sistem düğüm havuzlarını oluşturmayı ve y
 [aks-windows]: windows-container-cli.md
 [az-aks-get-credentials]: /cli/azure/aks#az-aks-get-credentials
 [az-aks-create]: /cli/azure/aks#az-aks-create
-[az-aks-nodepool-add]: /cli/azure/aks/nodepool?view=azure-cli-latest#az-aks-nodepool-add
-[az-aks-nodepool-list]: /cli/azure/aks/nodepool?view=azure-cli-latest#az-aks-nodepool-list
-[az-aks-nodepool-update]: /cli/azure/aks/nodepool?view=azure-cli-latest#az-aks-nodepool-update
-[az-aks-nodepool-upgrade]: /cli/azure/aks/nodepool?view=azure-cli-latest#az-aks-nodepool-upgrade
-[az-aks-nodepool-scale]: /cli/azure/aks/nodepool?view=azure-cli-latest#az-aks-nodepool-scale
-[az-aks-nodepool-delete]: /cli/azure/aks/nodepool?view=azure-cli-latest#az-aks-nodepool-delete
+[az-aks-nodepool-add]: /cli/azure/aks/nodepool#az-aks-nodepool-add
+[az-aks-nodepool-list]: /cli/azure/aks/nodepool#az-aks-nodepool-list
+[az-aks-nodepool-update]: /cli/azure/aks/nodepool#az-aks-nodepool-update
+[az-aks-nodepool-upgrade]: /cli/azure/aks/nodepool#az-aks-nodepool-upgrade
+[az-aks-nodepool-scale]: /cli/azure/aks/nodepool#az-aks-nodepool-scale
+[az-aks-nodepool-delete]: /cli/azure/aks/nodepool#az-aks-nodepool-delete
 [az-extension-add]: /cli/azure/extension#az-extension-add
 [az-extension-update]: /cli/azure/extension#az-extension-update
 [az-group-create]: /cli/azure/group#az-group-create

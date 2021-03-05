@@ -7,12 +7,12 @@ ms.reviewer: maghan
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/23/2019
-ms.openlocfilehash: c59108752677fc33e28578c3c679be24108806d5
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: aeabd74117f99c7cac9bde0eda02b9627caf0804
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100385617"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102177802"
 ---
 # <a name="foreach-activity-in-azure-data-factory"></a>Azure Data Factory 'de ForEach etkinliği
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -483,12 +483,13 @@ ForEach etkinliğinin ve önerilen geçici çözümlerin bazı sınırlamaları 
 |---|---|
 | ForEach döngüsünü başka bir ForEach döngüsünün içine (veya bir Until döngüsü) iç içe geçirilemez. | Dış ForEach döngüsü ile iç işlem hattının iç içe döngülü bir iç işlem hattı üzerinde yineleme olduğu iki düzeyli bir işlem hattı tasarlayın. |
 | ForEach etkinliğinin `batchCount` paralel işleme için en fazla 50 ve en fazla 100.000 öğe vardır. | ForEach etkinliğinin dış işlem hattının bir iç işlem hattı üzerinde yineleme olduğu iki düzeyli bir işlem hattı tasarlayın. |
+| SetVariable, değişken tüm işlem hattının genel olduğu için paralel olarak çalışan bir ForEach etkinliği içinde kullanılamaz, bunlar bir ForEach veya başka bir etkinliğe Kapsamsız değildir. | Sıralı ForEach kullanmayı düşünün veya ForEach içinde yürütme işlem hattını kullanın (alt işlem hattında işlenen değişken/parametre).|
 | | |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Data Factory tarafından desteklenen diğer denetim akışı etkinliklerini görün: 
 
-- [İşlem Hattı Çalıştırma Etkinliği](control-flow-execute-pipeline-activity.md)
+- [İşlem hattı yürütme etkinliği](control-flow-execute-pipeline-activity.md)
 - [Meta Veri Alma Etkinliği](control-flow-get-metadata-activity.md)
 - [Arama Etkinliği](control-flow-lookup-activity.md)
 - [Web Etkinliği](control-flow-web-activity.md)

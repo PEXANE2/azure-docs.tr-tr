@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 01/05/2021
 author: lgayhardt
 ms.author: lagayhar
-ms.openlocfilehash: 6276527230cf889b471887fdb3da70e06a2fc8d6
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: dcfe12b30e336863c8e112d9ad675a2f57fe48f4
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100582348"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102179145"
 ---
 # <a name="azure-monitor-for-azure-data-explorer-preview"></a>Azure Veri Gezgini için Azure Izleyici (Önizleme)
 
@@ -103,10 +103,10 @@ Azure Veri Gezgini için Azure Izleyici, genel bir izleme çözümü sağlamak i
 
 **Kullanım** sekmesi, kullanıcıların kümenin komutları ve sorgularının performansını derinlemesine olarak belirlemesine olanak tanır. Bu sayfada şunları yapabilirsiniz:
  
- - Hangi kullanıcıların ve uygulamaların en çok sorguyu gönderdiğini veya en fazla CPU ve belleği tükettiğini görün (Bu sayede, kümenin işlenmesi için en yoğun sorguları hangi kullanıcıların gönderdiğini anlayabilmeniz gerekir).
- - Başarısız sorgulara göre popüler kullanıcıları ve uygulamaları belirler.
- - Kullanıcı ve uygulamaya göre geçmiş günlük ortalama (son 16 gün boyunca) ile karşılaştırıldığında, son değişiklikleri sorgu sayısında belirler.
- - Kullanıcı, uygulama ve komut türüne göre sorgu, bellek ve CPU tüketimi sayısında eğilimleri ve en üst noktaları belirler.
+ - Hangi iş yükü gruplarının, kullanıcıların ve uygulamaların en çok sorguyu gönderdiğini veya en fazla CPU ve belleği tükettiğini (Bu nedenle, kümenin işlenmesi için en yoğun sorguları hangi iş yüklerinin yaptığını anlayabilmeniz için) görün.
+ - Başarısız sorgulara göre popüler iş yükü gruplarını, kullanıcıları ve uygulamaları belirler.
+ - İş yükü grubu, Kullanıcı ve uygulama tarafından geçmiş günlük ortalama (son 16 gün boyunca) ile karşılaştırıldığında, sorgu sayısında yapılan son değişiklikleri belirler.
+ - İş yükü grubu, Kullanıcı, uygulama ve komut türüne göre sorguların, belleğin ve CPU tüketiminin sayısında eğilimleri ve en üst noktaları belirler.
 
 [![Komut ve sorgu sayısı, komut ve sorgu sayısına göre en iyi sorumlular ve komut türlerine göre en üst komutları içeren işlem görünümünün ekran görüntüsü](./media/data-explorer/usage.png)](./media/data-explorer/usage.png#lightbox)
 

@@ -4,12 +4,12 @@ description: Farklı senaryolar için App Service kimlik doğrulaması ve yetkil
 ms.topic: article
 ms.date: 07/08/2020
 ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: 4f2f43b142b290d29a4a90e504422b6c9ba2739c
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.openlocfilehash: 50587feff29e1c02a639d63d0c99156dcec4f68e
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98630336"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102180879"
 ---
 # <a name="advanced-usage-of-authentication-and-authorization-in-azure-app-service"></a>Azure App Service 'da gelişmiş kimlik doğrulama ve yetkilendirme kullanımı
 
@@ -648,7 +648,7 @@ Azure CLı kullanarak veya uygulamanızdaki yerleşik sürüm HTTP uç noktalar�
 
 ##### <a name="from-the-azure-cli"></a>Azure CLı 'dan
 
-Azure CLı 'yı kullanarak, [az WebApp auth Show](/cli/azure/webapp/auth?view=azure-cli-latest&preserve-view=true#az-webapp-auth-show) komutuyla geçerli ara yazılım sürümünü görüntüleyin.
+Azure CLı 'yı kullanarak, [az WebApp auth Show](/cli/azure/webapp/auth#az-webapp-auth-show) komutuyla geçerli ara yazılım sürümünü görüntüleyin.
 
 ```azurecli-interactive
 az webapp auth show --name <my_app_name> \
@@ -679,7 +679,7 @@ Ayrıca, uygulamanın üzerinde çalıştığı geçerli ara yazılım sürümü
 
 #### <a name="update-the-current-runtime-version"></a>Geçerli çalışma zamanı sürümünü güncelleştirme
 
-Azure CLı 'yı kullanarak, `runtimeVersion` [az WebApp auth Update](/cli/azure/webapp/auth?view=azure-cli-latest&preserve-view=true#az-webapp-auth-update) komutuyla uygulamadaki ayarı güncelleştirebilirsiniz.
+Azure CLı 'yı kullanarak, `runtimeVersion` [az WebApp auth Update](/cli/azure/webapp/auth#az-webapp-auth-update) komutuyla uygulamadaki ayarı güncelleştirebilirsiniz.
 
 ```azurecli-interactive
 az webapp auth update --name <my_app_name> \

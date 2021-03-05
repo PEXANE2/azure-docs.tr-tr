@@ -7,16 +7,16 @@ ms.service: azure-percept
 ms.topic: conceptual
 ms.date: 02/18/2021
 ms.custom: template-concept
-ms.openlocfilehash: d850b47078f504b8ccb23d8c0a43811e99dc71d8
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.openlocfilehash: 7650e80273567a693c3566fede068678b3cc5b17
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102098358"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102179417"
 ---
 # <a name="azure-percept-studio-overview"></a>Azure Percept Studio 'Ya genel bakış
 
-Azure Percept Studio, Edge AI modelleri ve çözümleri oluşturmak için tek bir başlatma noktasıdır. Azure Percept Studio, Edge AI özellikli donanımlarını ve güçlü Azure AI ve IoT bulut hizmetlerini tümleştirmeyi kolaylaştıran, kılavuzlu iş akışlarını keşfetmenize ve tamamlamanıza olanak tanır.
+[Azure Percept Studio](https://go.microsoft.com/fwlink/?linkid=2135819) , Edge AI modelleri ve çözümleri oluşturmak için tek bir başlatma noktasıdır. Azure Percept Studio, Edge AI özellikli donanımlarını ve güçlü Azure AI ve IoT bulut hizmetlerini tümleştirmeyi kolaylaştıran, kılavuzlu iş akışlarını keşfetmenize ve tamamlamanıza olanak tanır.
 
 Studio 'da, Edge AI özellikli cihazlarınızı, ilk ve devam eden eğitim verilerinin toplanması için uç noktaları olarak, ayrıca model yinelemeleri için dağıtım hedeflerini görebilirsiniz. Cihazlara ve eğitim verilerine erişim sağlamak, hem [görsel](./tutorial-nocode-vision.md) hem de [konuşma](./tutorial-no-code-speech.md) senaryosu için hızlı prototipleme ve yinelemeli Edge AI modeli geliştirmeye olanak sağlar.
 
@@ -32,8 +32,7 @@ Başlangıç veya daha gelişmiş bir AI modeli ve çözüm geliştiricisiyseniz
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-<!-- [here](https://go.microsoft.com/fwlink/?linkid=2135819). -->
-
+- Azure Percept Studio 'Ya [buradan](https://go.microsoft.com/fwlink/?linkid=2135819) göz atın
 - [Microsoft Online Mağazası](https://go.microsoft.com/fwlink/p/?LinkId=2155270) 'Nda Azure Percept dk ve Azure Percept Audio donatısı alın
 - Azure Percept DK kurulum [Hızlı Başlangıç kılavuzunu](./quickstart-percept-dk-set-up.md) doldurun
 - Kod içermeyen [Vision](./tutorial-nocode-vision.md) ve [konuşma](./tutorial-no-code-speech.md) çözümleri oluşturmaya yönelik öğreticileri deneyin

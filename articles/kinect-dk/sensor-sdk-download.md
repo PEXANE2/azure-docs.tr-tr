@@ -7,12 +7,12 @@ ms.prod: kinect-dk
 ms.date: 06/26/2019
 ms.topic: conceptual
 keywords: Azure, Kinect, SDK, indirme güncelleştirme, en son, kullanılabilir, yükleme
-ms.openlocfilehash: 2fd14781c42192c713d826729f8fab6c698d6321
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+ms.openlocfilehash: 591fcba4c887e298cf667c5d95c19184bc213ffe
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97505486"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102179638"
 ---
 # <a name="azure-kinect-sensor-sdk-download"></a>Azure Kinect algılayıcı SDK indirmesi
 
@@ -41,18 +41,23 @@ Kaynak kodunu [buradan](https://github.com/microsoft/Azure-Kinect-Sensor-SDK)bul
 
 İlk olarak, [buradaki](/windows-server/administration/linux-package-repository-for-microsoft-software)yönergeleri izleyerek [Microsoft 'un paket deposunu](https://packages.microsoft.com/)yapılandırmanız gerekecektir.
 
-Artık gerekli paketleri yükleyebilirsiniz. `k4a-tools`Paket [Azure Kinect görüntüleyicisini](azure-kinect-viewer.md), [Azure Kinect kaydedicisini](record-sensor-streams-file.md)ve [Azure Kinect üretici yazılımı aracını](azure-kinect-firmware-tool.md)içerir. Yüklemek için şunu çalıştırın
+Artık gerekli paketleri yükleyebilirsiniz. `k4a-tools`Paket [Azure Kinect görüntüleyicisini](azure-kinect-viewer.md), [Azure Kinect kaydedicisini](record-sensor-streams-file.md)ve [Azure Kinect üretici yazılımı aracını](azure-kinect-firmware-tool.md)içerir. Paketi yüklemek için şunu çalıştırın:
 
- `sudo apt install k4a-tools`
+`sudo apt install k4a-tools`
+ 
+Bu komut, araçlarının en son sürümü de dahil olmak üzere doğru çalışması için gerekli olan bağımlılık paketlerini yükleme `libk4a<major>.<minor>` . Kök kullanıcı olmadan Azure Kinect DK 'ye erişmek için uıdev kuralları eklemeniz gerekir. Yönergeler için bkz. [Linux cihaz kurulumu](https://github.com/microsoft/Azure-Kinect-Sensor-SDK/blob/develop/docs/usage.md#linux-device-setup). Alternatif olarak, cihazı kök olarak kullanan uygulamalar başlatabilirsiniz.
 
- `libk4a<major>.<minor>-dev`Paket, oluşturulacak üst bilgileri ve CMake dosyalarını içerir `libk4a` .
-Paket, bağlı `libk4a<major>.<minor>` olan yürütülebilir dosyaları çalıştırmak için gereken paylaşılan nesneleri içerir `libk4a` .
+`libk4a<major>.<minor>-dev`Paket, uygulamalarınızı/yürütülebilir dosyalarınızı derlemek için üst bilgileri ve CMake dosyalarını içerir `libk4a` .
 
- Temel öğreticiler `libk4a<major>.<minor>-dev` paketini gerektirir. Yüklemek için şunu çalıştırın
+Paket, bağlı `libk4a<major>.<minor>` olan uygulamaları/yürütülebilir dosyaları çalıştırmak için gereken paylaşılan nesneleri içerir `libk4a` .
 
- `sudo apt install libk4a1.1-dev`
+Temel öğreticiler `libk4a<major>.<minor>-dev` paketini gerektirir. Paketi yüklemek için şunu çalıştırın:
+
+`sudo apt install libk4a<major>.<minor>-dev` 
 
 Komut başarılı olursa SDK kullanıma hazırlanmaya devam edilir.
+
+İle eşleşen sürümünü yüklediğinizden emin olun `libk4a<major>.<minor>` `libk4a<major>.<minor>-dev` . Örneğin, `libk4a4.1-dev` paketini yüklerseniz, `libk4a4.1` paylaşılan nesne dosyalarının eşleşen sürümünü içeren karşılık gelen paketi yükleyebilirsiniz. Uygulamasının en son sürümü için `libk4a` sonraki bölümde yer aldığı bağlantılara bakın.
 
 ## <a name="change-log-and-older-versions"></a>Değişiklik günlüğü ve eski sürümler
 

@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 8/27/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: b37277c660562721273ff9ae86dd677ee7ac7d55
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 8ed4e550ea441d5d99a3debb6bf37eb7db2a4a20
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102050010"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102180182"
 ---
 # <a name="connect-function-apps-in-azure-for-processing-data"></a>Verileri işlemek için Azure 'da işlev uygulamalarına bağlanma
 
@@ -56,29 +56,14 @@ Visual Studio 2019 ' de _dosya > yeni > proje_ ' yi seçin ve _Azure işlevleri_
 
 İşlev uygulamanıza SDK ekleyerek bir işlev yazabilirsiniz. İşlev uygulaması, [.net Için Azure dijital TWINS SDK 'sını (C#)](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true)kullanarak Azure Digital TWINS ile etkileşime girer. 
 
-SDK 'yı kullanmak için aşağıdaki paketleri projenize eklemeniz gerekir. Paketleri Visual Studio 'nun NuGet Paket Yöneticisi 'ni kullanarak yükleyebilir veya `dotnet` bir komut satırı aracında kullanarak paketleri ekleyebilirsiniz. Tercih ettiğiniz Yöntem için aşağıdaki adımları izleyin.
+SDK 'yı kullanmak için aşağıdaki paketleri projenize eklemeniz gerekir. Paketleri Visual Studio 'nun NuGet Paket Yöneticisi 'ni kullanarak yükleyebilir veya `dotnet` bir komut satırı aracında kullanarak paketleri ekleyebilirsiniz.
 
-**1. seçenek. Visual Studio Package Manager 'ı kullanarak paket ekleme:**
-    
-Projenizi sağ seçin ve listeden _NuGet Paketlerini Yönet_ ' i seçin. Sonra, açılan pencerede, _tarayıcı_ sekmesini seçin ve aşağıdaki paketleri arayın. Paketi yüklemek için, _yüklemeyi_ seçin ve lisans sözleşmesini _kabul edin_ .
+* [Azure. DigitalTwins. Core](https://www.nuget.org/packages/Azure.DigitalTwins.Core/)
+* [Azure. Identity](https://www.nuget.org/packages/Azure.Identity/)
+* [System .net. http](https://www.nuget.org/packages/System.Net.Http/)
+* [Azure. Core](https://www.nuget.org/packages/Azure.Core/)
 
-* `Azure.DigitalTwins.Core`
-* `Azure.Identity`
-* `System.Net.Http`
-* `Azure.Core.Pipeline`
-
-**Seçenek 2. `dotnet` Komut satırı aracını kullanarak paket ekleyin:**
-
-Alternatif olarak, `dotnet add` bir komut satırı aracında aşağıdaki komutları kullanabilirsiniz:
-
-```cmd/sh
-dotnet add package Azure.DigitalTwins.Core
-dotnet add package Azure.Identity
-dotnet add package System.Net.Http
-dotnet add package Azure.Core.Pipeline
-```
-
-Ardından, Visual Studio Çözüm Gezgini, örnek kodunuzun bulunduğu _function1.cs_ dosyasını açın ve `using` işlevinizin aşağıdaki deyimlerini ekleyin. 
+Ardından, Visual Studio Çözüm Gezgini, örnek kodunuzun bulunduğu _function1.cs_ dosyasını açın ve `using` Bu paketler için aşağıdaki deyimlerini işlevlerinize ekleyin. 
 
 :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/adtIngestFunctionSample.cs" id="Function_dependencies":::
 
@@ -86,7 +71,7 @@ Ardından, Visual Studio Çözüm Gezgini, örnek kodunuzun bulunduğu _function
 
 Artık sınıf düzeyi değişkenleri bildirecektir ve işlevin Azure dijital TWINS 'e erişmesine izin verecek kimlik doğrulama kodu eklersiniz. _Function1.cs_ dosyasına aşağıdaki işlevi ekleyin.
 
-* Bir ortam değişkeni olarak Azure Digital TWINS hizmet URL 'sini okumak için kod. Hizmet URL 'sini, işlevinde sabit kodlamak yerine, bir ortam değişkeninden okumak iyi bir uygulamadır.
+* Bir **ortam değişkeni** olarak Azure Digital TWINS hizmet URL 'sini okumak için kod. Hizmet URL 'sini, işlevinde sabit kodlamak yerine, bir ortam değişkeninden okumak iyi bir uygulamadır. Bu ortam değişkeninin değerini [daha sonra bu makalede](#set-up-security-access-for-the-function-app)ayarlayacaksınız. Ortam değişkenleri hakkında daha fazla bilgi için bkz. [*işlev uygulamanızı yönetme*](../azure-functions/functions-how-to-use-azure-function-app-settings.md?tabs=portal).
 
     :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/adtIngestFunctionSample.cs" id="ADT_service_URL":::
 
@@ -116,108 +101,118 @@ Uygulamanız yazıldığına göre, sonraki bölümde yer alan adımları kullan
 
 Azure CLı veya Azure portal kullanarak işlev uygulaması için güvenlik erişimi ayarlayabilirsiniz. Aşağıdaki tercih ettiğiniz seçeneğe yönelik adımları izleyin.
 
-### <a name="option-1-set-up-security-access-for-the-function-app-using-cli"></a>Seçenek 1: CLı kullanarak işlev uygulaması için güvenlik erişimini ayarlama
+# <a name="cli"></a>[CLI](#tab/cli)
 
-Önceki örneklerden iskelet işlevi, Azure Digital TWINS ile kimlik doğrulaması yapabilmek için bir taşıyıcı belirtecinin kendisine geçirilmesini gerektirir. Bu taşıyıcı belirtecinin geçirildiğinden emin olmak için, işlev uygulaması için [yönetilen hizmet kimliği (MSI)](../active-directory/managed-identities-azure-resources/overview.md) ayarlamanız gerekir. Bu, her bir işlev uygulaması için yalnızca bir kez yapılmalıdır.
+Bu komutları, [Azure Cloud Shell](https://shell.azure.com) veya [yerel bir Azure CLI yüklemesinde](/cli/azure/install-azure-cli)çalıştırabilirsiniz.
 
-Azure dijital TWINS örneğiniz için sistem tarafından yönetilen kimlik oluşturabilir ve işlev uygulamasının kimliğini _**Azure Digital TWINS veri sahibi**_ rolüne atayabilirsiniz. Bu, veri düzlemi etkinliklerini gerçekleştirmek için örnekte işlev uygulamasına izin verir. Daha sonra, bir ortam değişkeni ayarlayarak Azure dijital TWINS örneğinin URL 'sini işlevinizle erişilebilir yapın.
+### <a name="assign-access-role"></a>Erişim rolü ata
 
-Komutları çalıştırmak için [Azure Cloud Shell](https://shell.azure.com) kullanın.
+Önceki örneklerden iskelet işlevi, Azure Digital TWINS ile kimlik doğrulaması yapabilmek için bir taşıyıcı belirtecinin kendisine geçirilmesini gerektirir. Bu taşıyıcı belirtecin geçirildiğinden emin olmak için, işlev uygulaması için Azure dijital TWINS 'e erişmek üzere [yönetilen hizmet kimliği (MSI)](../active-directory/managed-identities-azure-resources/overview.md) izinleri ayarlamanız gerekir. Bu, her bir işlev uygulaması için yalnızca bir kez yapılmalıdır.
 
-Sistem tarafından yönetilen kimliği oluşturmak için aşağıdaki komutu kullanın. Çıktıda _PrincipalId_ alanını bir yere göz atın.
+Azure dijital TWINS örneğiniz için _**Azure dijital TWINS veri sahibi**_ rolünü sağlamak üzere, uygulamanın sistem tarafından yönetilen kimliğini kullanabilirsiniz. Bu, veri düzlemi etkinliklerini gerçekleştirmek için örnekte işlev uygulamasına izin verir. Daha sonra, bir ortam değişkeni ayarlayarak Azure dijital TWINS örneğinin URL 'sini işlevinizle erişilebilir yapın.
 
-```azurecli-interactive 
-az functionapp identity assign -g <your-resource-group> -n <your-App-Service-(function-app)-name>   
-```
-_principalId_ değerini aşağıdaki komutta kullanarak işlev uygulamasının kimliğini Azure Digital Twins örneğinizin _Azure Digital Twins Veri Sahibi_ rolüne atayın.
+1. İşlev için sistem tarafından yönetilen kimliğin ayrıntılarını görmek için aşağıdaki komutu kullanın. Çıktıda _PrincipalId_ alanını bir yere göz atın.
 
-```azurecli-interactive 
-az dt role-assignment create --dt-name <your-Azure-Digital-Twins-instance> --assignee "<principal-ID>" --role "Azure Digital Twins Data Owner"
-```
-Son olarak, bir ortam değişkeni ayarlayarak Azure dijital TWINS örneğinizin URL 'sini işleviniz için erişilebilir hale getirebilirsiniz. Ortam değişkenlerini ayarlama hakkında daha fazla bilgi için bkz. [*ortam değişkenleri*](/sandbox/functions-recipes/environment-variables). 
+    ```azurecli-interactive 
+    az functionapp identity show -g <your-resource-group> -n <your-App-Service-(function-app)-name> 
+    ```
+
+    >[!NOTE]
+    > Bir kimliğin ayrıntılarını göstermek yerine sonuç boşsa, bu komutu kullanarak işlev için yeni bir sistem tarafından yönetilen kimlik oluşturun:
+    > 
+    >```azurecli-interactive    
+    >az functionapp identity assign -g <your-resource-group> -n <your-App-Service-(function-app)-name>  
+    >```
+    >
+    > Daha sonra çıktı, sonraki adım için gereken _PrincipalId_ değeri de dahil olmak üzere kimliğin ayrıntılarını görüntüler. 
+
+1. _principalId_ değerini aşağıdaki komutta kullanarak işlev uygulamasının kimliğini Azure Digital Twins örneğinizin _Azure Digital Twins Veri Sahibi_ rolüne atayın.
+
+    ```azurecli-interactive 
+    az dt role-assignment create --dt-name <your-Azure-Digital-Twins-instance> --assignee "<principal-ID>" --role "Azure Digital Twins Data Owner"
+    ```
+
+### <a name="configure-application-settings"></a>Uygulama ayarlarını yapılandırma
+
+Son olarak, Azure dijital TWINS örneğinizin URL 'sini, bir **ortam değişkenini** ayarlayarak işlevinizin erişimine açık hale getirin. Ortam değişkenleri hakkında daha fazla bilgi için bkz. [*işlev uygulamanızı yönetme*](../azure-functions/functions-how-to-use-azure-function-app-settings.md?tabs=portal). 
 
 > [!TIP]
-> Azure Digital TWINS örneğinin URL 'SI, Azure Digital TWINS örneğinizin *ana bilgisayar adının* başlangıcına *https://* eklenerek yapılır. Ana bilgisayar adını görmek için, örneğinizin tüm özellikleriyle birlikte çalıştırabilirsiniz `az dt show --dt-name <your-Azure-Digital-Twins-instance>` .
+> Azure Digital TWINS örneğinin URL 'SI, Azure Digital TWINS örneğinizin *ana bilgisayar adının* başlangıcına *https://* eklenerek yapılır. Ana bilgisayar adını, örneğinizin tüm özellikleriyle birlikte görmek için çalıştırabilirsiniz `az dt show --dt-name <your-Azure-Digital-Twins-instance>` .
 
 ```azurecli-interactive 
-az functionapp config appsettings set -g <your-resource-group> -n <your-App-Service-(function-app)-name> --settings "ADT_SERVICE_URL=https://<your-Azure-Digital-Twins-instance-hostname>"
+az functionapp config appsettings set -g <your-resource-group> -n <your-App-Service-(function-app)-name> --settings "ADT_SERVICE_URL=https://<your-Azure-Digital-Twins-instance-host-name>"
 ```
-### <a name="option-2-set-up-security-access-for-the-function-app-using-azure-portal"></a>Seçenek 2: Azure portal kullanarak işlev uygulaması için güvenlik erişimini ayarlama
 
-Bir sistem tarafından atanmış yönetilen kimlik, Azure kaynaklarının kimlik bilgilerini kodda depolamadan (örneğin, Azure Key Vault) kimlik doğrulaması yapmasına olanak sağlar. Etkinleştirildikten sonra, tüm gerekli izinler Azure rol tabanlı erişim denetimi aracılığıyla verilebilir. Bu tür yönetilen kimliğin yaşam döngüsü, bu kaynağın yaşam döngüsüne bağlıdır. Ayrıca, her kaynak (örneğin, sanal makine) yalnızca bir sistem tarafından atanmış yönetilen kimliğe sahip olabilir.
+# <a name="azure-portal"></a>[Azure portalı](#tab/portal)
 
-[Azure Portal](https://portal.azure.com/), arama çubuğunda _işlev uygulaması_ ' nı daha önce oluşturduğunuz işlev uygulaması adı ile arayın. Listeden *işlev uygulaması* seçin. 
+[Azure Portal](https://portal.azure.com/)aşağıdaki adımları izleyin.
 
-:::image type="content" source="media/how-to-create-azure-function/portal-search-for-function-app.png" alt-text="Azure portal ekran görüntüsü: işlev uygulamasının adı, Portal arama çubuğunda aranır ve arama sonucu vurgulanır.":::
+### <a name="assign-access-role"></a>Erişim rolü ata
 
-İşlev uygulaması penceresinde, yönetilen kimliği etkinleştirmek için sol taraftaki Gezinti çubuğundan _kimlik_ ' i seçin.
-_Sistem atandı_ sekmesinde _durumu_ açık olarak değiştirin ve _kaydedin_ . _Sistem tarafından atanan yönetilen kimliği etkinleştirmek_ için bir açılır pencere görürsünüz.
-_Evet_ düğmesini seçin. 
+Bir sistem tarafından atanmış yönetilen kimlik, Azure kaynaklarının kimlik bilgilerini kodda depolamadan (örneğin, Azure Key Vault) kimlik doğrulaması yapmasına olanak sağlar. Etkinleştirildikten sonra, tüm gerekli izinler Azure rol tabanlı erişim denetimi aracılığıyla verilebilir. Bu tür yönetilen kimliğin yaşam döngüsü, bu kaynağın yaşam döngüsüne bağlıdır. Ayrıca, her kaynağa yalnızca bir sistem tarafından atanmış yönetilen kimlik olabilir.
 
-:::image type="content" source="media/how-to-create-azure-function/enable-system-managed-identity.png" alt-text="Azure portal ekran görüntüsü: işlev uygulamasının kimlik sayfasında, sistem tarafından atanan yönetilen kimliği etkinleştirme seçeneği Evet olarak ayarlanmıştır. Durum seçeneği açık olarak ayarlanır.":::
+1. [Azure Portal](https://portal.azure.com/), arama çubuğuna adını yazarak işlev uygulamanızı arayın. Sonuçlardan uygulamanızı seçin. 
 
-İşlevinizin Azure Active Directory başarıyla kaydedildiğini bildirimleri doğrulayabilirsiniz.
+    :::image type="content" source="media/how-to-create-azure-function/portal-search-for-function-app.png" alt-text="Azure portal ekran görüntüsü: işlev uygulamasının adı, Portal arama çubuğunda aranır ve arama sonucu vurgulanır.":::
 
-:::image type="content" source="media/how-to-create-azure-function/notifications-enable-managed-identity.png" alt-text="Azure portal ekran görüntüsü: portalın üst çubuğunda Bell-şekillendirilmiş simgesini seçip bildirimler listesi. Kullanıcının sistem tarafından atanmış yönetilen kimliği etkinleştirmiş olduğunu belirten bir bildirim vardır.":::
+1. İşlev uygulaması sayfasında, işlevin yönetilen kimliğiyle çalışmak için sol taraftaki gezinti çubuğundaki _kimlik_ ' i seçin. _Sistem atandı_ sayfasında, _durumun_ **Açık** olarak ayarlandığını doğrulayın (değilse, şimdi ayarlayın ve değişikliği *kaydedin* ).
 
-Ayrıca, _kimlik_ sayfasında GÖSTERILEN **nesne kimliğini** bir sonraki bölümde kullanılacak şekilde aklınızda bulabilirsiniz.
+    :::image type="content" source="media/how-to-create-azure-function/verify-system-managed-identity.png" alt-text="Azure portal ekran görüntüsü: işlev uygulamasının kimlik sayfasında, durum seçeneği açık olarak ayarlanır." lightbox="media/how-to-create-azure-function/verify-system-managed-identity.png":::
 
-:::image type="content" source="media/how-to-create-azure-function/object-id.png" alt-text="Azure portal ekran görüntüsü: Azure Işlevinin kimlik sayfasından nesne KIMLIĞI alanının etrafında bir vurgu.":::
+1. Azure *rol atamaları sayfasını açmak* için _Azure rol atamaları_ düğmesini seçin.
 
-### <a name="assign-access-roles-using-azure-portal"></a>Azure portal kullanarak erişim rolleri atama
+    :::image type="content" source="media/how-to-create-azure-function/add-role-assignment-1.png" alt-text="Azure portal ekran görüntüsü: Azure Işlevinin kimlik sayfasındaki Izinler altında Azure rol atamaları düğmesinin etrafında vurgu." lightbox="media/how-to-create-azure-function/add-role-assignment-1.png":::
 
-Azure *rol atamaları sayfasını açmak* için _Azure rol atamaları_ düğmesini seçin. Ardından _+ rol ataması Ekle (Önizleme)_ seçeneğini belirleyin.
+    _+ Rol ataması Ekle (Önizleme)_ seçeneğini belirleyin.
 
-:::image type="content" source="media/how-to-create-azure-function/add-role-assignments.png" alt-text="Azure portal ekran görüntüsü: Azure Işlevinin kimlik sayfasındaki Izinler altında Azure rol atamaları düğmesinin etrafında vurgu.":::
+    :::image type="content" source="media/how-to-create-azure-function/add-role-assignment-2.png" alt-text="Azure portal ekran görüntüsü: Azure rol atamaları sayfasında, bir vurgu + rol ataması Ekle (Önizleme)." lightbox="media/how-to-create-azure-function/add-role-assignment-2.png":::
 
-Açılan _rol ataması Ekle (Önizleme)_ sayfasında şunları seçin:
+1. Açılan _rol ataması Ekle (Önizleme)_ sayfasında aşağıdaki değerleri seçin:
 
-* _Kapsam_: Kaynak grubu
-* _Abonelik_: Azure aboneliğinizi seçin
-* _Kaynak grubu_: açılan listeden kaynak grubunuzu seçin
-* _Rol_: açılan listeden _Azure dijital TWINS veri sahibini_ seçin
+    * **Kapsam**: Kaynak grubu
+    * **Abonelik**: Azure aboneliğinizi seçin
+    * **Kaynak grubu**: açılan listeden kaynak grubunuzu seçin
+    * **Rol**: açılan listeden _Azure dijital TWINS veri sahibini_ seçin
 
-Sonra, _Kaydet_ düğmesine basarak ayrıntılarınızı kaydedin.
+    Sonra, _Kaydet_ düğmesine basarak ayrıntılarınızı kaydedin.
 
-:::image type="content" source="media/how-to-create-azure-function/add-role-assignment.png" alt-text="Yeni bir rol ataması (Önizleme) eklemek için Azure portal: Iletişim kutusunun ekran görüntüsü. Kapsam, abonelik, kaynak grubu ve rol için alanlar vardır.":::
+    :::image type="content" source="media/how-to-create-azure-function/add-role-assignment-3.png" alt-text="Yeni bir rol ataması (Önizleme) eklemek için Azure portal: Iletişim kutusunun ekran görüntüsü. Kapsam, abonelik, kaynak grubu ve rol için alanlar vardır.":::
 
-### <a name="configure-application-settings-using-azure-portal"></a>Azure portal kullanarak uygulama ayarlarını yapılandırma
+### <a name="configure-application-settings"></a>Uygulama ayarlarını yapılandırma
 
-Bir ortam değişkeni ayarlayarak, Azure dijital TWINS örneğinizin URL 'sini işleviniz için erişilebilir hale getirebilirsiniz. Bunun hakkında daha fazla bilgi için bkz. [*ortam değişkenleri*](/sandbox/functions-recipes/environment-variables). Uygulama ayarları, dijital TWINS örneğine erişmek için ortam değişkenleri olarak sunulur. 
+Azure dijital TWINS örneğinizin URL 'sini işlevinizin erişimine açık hale getirmek için bir **ortam değişkeni** ayarlayabilirsiniz. Ortam değişkenleri hakkında daha fazla bilgi için bkz. [*işlev uygulamanızı yönetme*](../azure-functions/functions-how-to-use-azure-function-app-settings.md?tabs=portal). Uygulama ayarları, Azure dijital TWINS örneğine erişmek için ortam değişkenleri olarak sunulur. 
 
 Bir ortam değişkenini örneğinizin URL 'siyle birlikte ayarlamak için, önce Azure Digital TWINS örneğinizin ana bilgisayar adını bularak URL 'YI alın. [Azure Portal](https://portal.azure.com) arama çubuğunda örneğiniz için arama yapın. Ardından, _ana bilgisayar adını_ görüntülemek için sol gezinti çubuğundaki _genel bakış_ ' ı seçin. Bu değeri kopyalayın.
 
-:::image type="content" source="media/how-to-create-azure-function/adt-hostname.png" alt-text="Azure portal ekran görüntüsü: Azure dijital TWINS örneği için genel bakış sayfasından ana bilgisayar adı değeri vurgulanır.":::
+:::image type="content" source="media/how-to-create-azure-function/instance-host-name.png" alt-text="Azure portal ekran görüntüsü: Azure dijital TWINS örneği için genel bakış sayfasından ana bilgisayar adı değeri vurgulanır.":::
 
-Artık aşağıdaki adımları izleyerek bir uygulama ayarı oluşturabilirsiniz:
+Artık şu adımlarla bir uygulama ayarı oluşturabilirsiniz:
 
-1. Portal arama çubuğunda işlev uygulamanızı arayın ve sonuçlardan seçin
-1. Yeni uygulama ayarı oluşturmak için sol taraftaki Gezinti çubuğunda _yapılandırma_ ' yı seçin.
-1. _Uygulama ayarları_ sekmesinde _+ Yeni uygulama ayarı_ ' nı seçin.
+1. Portal arama çubuğunda işlev uygulamanızı arayın ve sonuçlardan seçim yapın.
 
-:::image type="content" source="media/how-to-create-azure-function/portal-search-for-function-app.png" alt-text="Azure portal ekran görüntüsü: işlev uygulamasının adı, Portal arama çubuğunda aranır ve arama sonucu vurgulanır.":::
+    :::image type="content" source="media/how-to-create-azure-function/portal-search-for-function-app.png" alt-text="Azure portal ekran görüntüsü: işlev uygulamasının adı, Portal arama çubuğunda aranır ve arama sonucu vurgulanır.":::
 
-:::image type="content" source="media/how-to-create-azure-function/application-setting.png" alt-text="Azure portal ekran görüntüsü: işlev uygulamasının yapılandırma sayfasında, yeni bir uygulama ayarı oluşturmak için düğme vurgulanır.":::
+1. Sol taraftaki Gezinti çubuğunda _yapılandırma_ ' yı seçin. _Uygulama ayarları_ sekmesinde _+ Yeni uygulama ayarı_' nı seçin.
 
-Açılan pencerede, bir uygulama ayarı oluşturmak için yukarıda kopyalanmış ana bilgisayar adı değerini kullanın.
-* **Ad**: ADT_SERVICE_URL
-* **Değer**: https://{-Azure-dijital-TWINS-ana bilgisayar-adı}
+    :::image type="content" source="media/how-to-create-azure-function/application-setting.png" alt-text="Azure portal ekran görüntüsü: işlev uygulamasının yapılandırma sayfasında, yeni bir uygulama ayarı oluşturmak için düğme vurgulanır.":::
 
-Bir uygulama ayarı oluşturmak için _Tamam ' ı_ seçin.
+1. Açılan pencerede, bir uygulama ayarı oluşturmak için yukarıda kopyalanmış ana bilgisayar adı değerini kullanın.
+    * **Ad**: ADT_SERVICE_URL
+    * **Değer**: https://{-Azure-dijital-TWINS-ana bilgisayar-adı}
+    
+    Bir uygulama ayarı oluşturmak için _Tamam ' ı_ seçin.
+    
+    :::image type="content" source="media/how-to-create-azure-function/add-application-setting.png" alt-text="Azure portal ekran görüntüsü: Tamam düğmesi, uygulama ayarı Ekle/Düzenle sayfasında ad ve değer alanları doldurulduktan sonra vurgulanır.":::
 
-:::image type="content" source="media/how-to-create-azure-function/add-application-setting.png" alt-text="Azure portal ekran görüntüsü: Tamam düğmesi, uygulama ayarı Ekle/Düzenle sayfasında ad ve değer alanları doldurulduktan sonra vurgulanır.":::
+1. Ayarı oluşturduktan sonra, _uygulama ayarları_ sekmesinde geri göründüğünü görmeniz gerekir. Listede *ADT_SERVICE_URL* göründüğünü doğrulayın ve ardından _Kaydet_ düğmesini seçerek yeni uygulama ayarını kaydedin.
 
-Uygulama ayarlarınızı _ad_ alanı altında uygulama adı ile görüntüleyebilirsiniz. Sonra, _Kaydet_ düğmesini seçerek uygulama ayarlarınızı kaydedin.
+    :::image type="content" source="media/how-to-create-azure-function/application-setting-save-details.png" alt-text="Azure portal ekran görüntüsü: yeni ADT_SERVICE_URL ayarı vurgulanmış şekilde uygulama ayarları sayfası. Kaydet düğmesi de vurgulanır.":::
 
-:::image type="content" source="media/how-to-create-azure-function/application-setting-save-details.png" alt-text="Azure portal ekran görüntüsü: yeni ADT_SERVICE_URL ayarı vurgulanmış şekilde uygulama ayarları sayfası. Kaydet düğmesi de vurgulanır.":::
+1. Uygulama ayarlarında yapılan değişikliklerin etkili olması için uygulama yeniden başlatması gerekir, bu nedenle istendiğinde uygulamanızı yeniden başlatmak için _devam_ ' ı seçin.
 
-Uygulama ayarlarında yapılan tüm değişiklikler, uygulamanın yeniden başlatılmasını gerektirir. Uygulamanızı yeniden başlatmak için _devam_ ' ı seçin.
+    :::image type="content" source="media/how-to-create-azure-function/save-application-setting.png" alt-text="Azure portal ekran görüntüsü: uygulama ayarlarında, uygulamanızı yeniden başlatma ile ilgili herhangi bir değişiklik olduğuna ilişkin bir uyarı vardır. Devam düğmesi vurgulanır.":::
 
-:::image type="content" source="media/how-to-create-azure-function/save-application-setting.png" alt-text="Azure portal ekran görüntüsü: uygulama ayarlarında, uygulamanızı yeniden başlatma ile ilgili herhangi bir değişiklik olduğuna ilişkin bir uyarı vardır. Devam düğmesi vurgulanır.":::
-
-_Bildirimler_ simgesini seçerek uygulama ayarlarının güncelleştirildiğini görebilirsiniz. Uygulama ayarınız oluşturulmadıysa, yukarıdaki işlemi izleyerek bir uygulama ayarı eklemeyi yeniden deneyebilirsiniz.
-
-:::image type="content" source="media/how-to-create-azure-function/notifications-update-web-app-settings.png" alt-text="Azure portal ekran görüntüsü: portalın üst çubuğunda Bell-şekillendirilmiş simgesini seçip bildirimler listesi. Web uygulaması ayarlarının başarıyla güncelleştirildiğini belirten bir bildirim vardır.":::
+---
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

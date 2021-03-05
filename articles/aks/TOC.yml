@@ -262,8 +262,8 @@
           href: control-kubeconfig-access.md
         - name: Ağ ilkeleri ile pod trafiğinin güvenliğini sağlama
           href: use-network-policies.md
-        - name: Azure İlkesi ile pod güvenliğini sağlama
-          href: use-pod-security-on-azure-policy.md
+        - name: Azure İlkesi kullanma
+          href: use-azure-policy.md
         - name: Pod güvenlik ilkelerini kullanma (önizleme)
           href: use-pod-security-policies.md
         - name: API sunucusu tarafından yetkilendirilen IP aralıklarını tanımlama

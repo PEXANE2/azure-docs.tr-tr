@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 01/06/2020
 ms.author: joncole
-ms.openlocfilehash: 1b62777ec647efc6d5aded573e681cadd6475b47
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: 9754a043c90c01f889be9639d2d045fb1929de17
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97654804"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102178125"
 ---
 # <a name="best-practices-for-azure-cache-for-redis"></a>Redis için Azure Cache'in en iyi yöntemleri 
 Bu en iyi yöntemleri izleyerek Redsıs örneği için Azure önbelleğinizin performansını ve düşük maliyetli kullanımını en üst düzeye çıkarmanıza yardımcı olabilirsiniz.
@@ -51,7 +51,7 @@ Göz önünde bulundurmanız isteyebileceğiniz Redsıs sunucu örneğiniz dahil
 ## <a name="client-library-specific-guidance"></a>İstemci kitaplığına özgü kılavuz
  * [StackExchange. Reddir (.NET)](https://gist.github.com/JonCole/925630df72be1351b21440625ff2671f#file-redis-bestpractices-stackexchange-redis-md)
  * [Java-hangi istemciyi kullanmalıyım?](https://gist.github.com/warrenzhu25/1beb02a09b6afd41dff2c27c53918ce7#file-azure-redis-java-best-practices-md)
- * [Lettuce (Java)](https://gist.github.com/warrenzhu25/181ccac7fa70411f7eb72aff23aa8a6a#file-azure-redis-lettuce-best-practices-md)
+ * [Lettuce (Java)](https://github.com/Azure/AzureCacheForRedis/blob/main/Lettuce%20Best%20Practices.md)
  * [Jedsıs (Java)](https://gist.github.com/JonCole/925630df72be1351b21440625ff2671f#file-redis-bestpractices-java-jedis-md)
  * [Node.js](https://gist.github.com/JonCole/925630df72be1351b21440625ff2671f#file-redis-bestpractices-node-js-md)
  * [PHP](https://gist.github.com/JonCole/925630df72be1351b21440625ff2671f#file-redis-bestpractices-php-md)
@@ -73,6 +73,8 @@ Kodunuzun hata koşulları altında nasıl çalıştığını test etmek isterse
  * Test için kullanılan istemci sanal makinesi, Redsıs Cache örneğiniz ile **aynı bölgede** olmalıdır.
  * Daha iyi donanımlar olduğundan ve en iyi sonuçları sunduklarında, istemciniz için **dv2 VM serisini kullanmanızı öneririz** .
  * Kullandığınız istemci VM 'sinin, test edilmekte olan önbelleğin *en az işlem ve bant genişliğine* sahip olduğundan emin olun. 
+ * Önbelleğinizin **Yük devretme koşulları altında test** edin. Önbelleğinizi yalnızca sabit durum koşulları altında performans testi olmamasını sağlamak önemlidir. Ayrıca yük devretme koşulları altında test edin ve bu süre boyunca önbelleğinizin CPU/sunucu yükünü ölçer. [Birincil düğümü](cache-administration.md#reboot)yeniden başlatarak bir yük devretme işlemi başlatabilirsiniz. Bu, uygulamanızın yük devretme koşulları sırasında işleme ve gecikme süresi boyunca nasıl davranacağını görmenizi sağlar (Güncelleştirmeler sırasında gerçekleşir ve planlanmamış bir olay sırasında gerçekleşebilir). İdeal olarak CPU/sunucu yükünü bir yük devretme sırasında %80 ' den fazlasına, performansı etkileyebilecek şekilde görmek istemezsiniz.
+ * **Premium P2 ve üzeri** , 4 veya daha fazla çekirdeğe sahip VM 'lerde barındırılır. Bu, genel CPU kullanımını getirmek için TLS şifreleme/şifre çözme iş yükünü birden çok çekirdeğe dağıtmak için yararlıdır.  [VM boyutları ve çekirdekleri hakkında daha fazla bilgi için buraya bakın](cache-planning-faq.md#azure-cache-for-redis-performance)
  * Windows kullanıyorsanız, istemci makinesinde **vRSS 'ı etkinleştirin** .  [Ayrıntılar için buraya bakın](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn383582(v=ws.11)).  Örnek PowerShell betiği:
      >PowerShell-ExecutionPolicy Kısıtlamasız Enable-NetAdapterRSS-adı (Get-NetAdapter). Ada 
 

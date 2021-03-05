@@ -9,16 +9,16 @@ ms.topic: conceptual
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: da1acc6316d7af87ffe35b9560919c324373591a
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: b2471ccd2a412c7cbae9d4e59412ac055697e3d7
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96484609"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102180369"
 ---
 # <a name="azure-storage-encryption-for-data-at-rest"></a>Bekleyen veri için Azure Depolama şifrelemesi
 
-Azure depolama, bulutta kalıcı olduğunda verilerinizi otomatik olarak şifreler. Azure depolama şifrelemesi, verilerinizi korur ve kuruluşunuzun güvenlik ve uyumluluk taahhütlerinizi karşılamanıza yardımcı olur.
+Azure depolama, bulutta kalıcı olduğunda verilerinizi otomatik olarak şifrelemek için sunucu tarafı şifreleme (SSE) kullanır. Azure depolama şifrelemesi, verilerinizi korur ve kuruluşunuzun güvenlik ve uyumluluk taahhütlerinizi karşılamanıza yardımcı olur.
 
 ## <a name="about-azure-storage-encryption"></a>Azure depolama şifrelemesi hakkında
 
@@ -32,7 +32,7 @@ Bir depolama hesabındaki veriler, performans katmanından (Standart veya Premiu
 
 Azure depolama şifrelemesini temel alan şifreleme modülleri hakkında daha fazla bilgi için bkz. [şifreleme API 'si: yeni nesil](/windows/desktop/seccng/cng-portal).
 
-Azure yönetilen diskler için şifreleme ve anahtar yönetimi hakkında daha fazla bilgi için bkz. Windows VM 'ler için [Azure yönetilen disklerin sunucu tarafı şifrelemesi](../../virtual-machines/disk-encryption.md) veya Linux VM 'Leri için [Azure yönetilen disklerinin sunucu tarafı şifrelemesi](../../virtual-machines/disk-encryption.md) .
+Azure yönetilen diskler için şifreleme ve anahtar yönetimi hakkında daha fazla bilgi için bkz. [Azure yönetilen disklerin sunucu tarafı şifrelemesi](../../virtual-machines/disk-encryption.md).
 
 ## <a name="about-encryption-key-management"></a>Şifreleme anahtarı yönetimi hakkında
 

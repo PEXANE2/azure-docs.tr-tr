@@ -12,12 +12,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein
 ms.date: 09/21/2020
-ms.openlocfilehash: f58811411a447eae4ff9a5c0fd2a9888b4a39a34
-ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
+ms.openlocfilehash: 9e8ef5bf9d5d8000bfdd581cd7e9ae1a1a775fc9
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99428682"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102178142"
 ---
 # <a name="azure-sql-managed-instance-frequently-asked-questions-faq"></a>Azure SQL Yönetilen Örneği hakkında sık sorulan sorular (SSS)
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -94,7 +94,7 @@ Bu, alt ağ adını Regex ^ [a-za-Z_] [^ \\ \/ \: \* \? \" \<\> \| \` \' \^ ] * 
 
 **Yönetilen örnekten nasıl ölçeklendirebilirim?**
 
-Yönetilen örneğinizi [Azure Portal](../database/service-tiers-vcore.md?tabs=azure-portal#selecting-a-hardware-generation), [POWERSHELL](/archive/blogs/sqlserverstorageengine/change-size-azure-sql-managed-instance-using-powershell), [Azure CLI](/cli/azure/sql/mi?view=azure-cli-latest#az-sql-mi-update&preserve-view=true) veya [ARM şablonlarından](/archive/blogs/sqlserverstorageengine/updating-azure-sql-managed-instance-properties-using-arm-templates)ölçeklendirebilirsiniz.
+Yönetilen örneğinizi [Azure Portal](../database/service-tiers-vcore.md?tabs=azure-portal#selecting-a-hardware-generation), [POWERSHELL](/archive/blogs/sqlserverstorageengine/change-size-azure-sql-managed-instance-using-powershell), [Azure CLI](/cli/azure/sql/mi#az-sql-mi-update) veya [ARM şablonlarından](/archive/blogs/sqlserverstorageengine/updating-azure-sql-managed-instance-properties-using-arm-templates)ölçeklendirebilirsiniz.
 
 **Yönetilen örnekten bir bölgeden diğerine taşıyabilir miyim?**
 
@@ -102,7 +102,7 @@ Evet, yazabilirsiniz. Yönergeler için bkz. [kaynakları bölgeler arasında ta
 
 **Yönetilen örnekten nasıl silebilirim?**
 
-Yönetilen örnekleri Azure portal, [PowerShell](/powershell/module/az.sql/remove-azsqlinstance?preserve-view=true&view=azps-4.3.0), [Azure CLı](/cli/azure/sql/mi?view=azure-cli-latest#az-sql-mi-delete&preserve-view=true) veya [Kaynak Yöneticisi REST API 'leri](/rest/api/sql/managedinstances/delete)aracılığıyla silebilirsiniz.
+Yönetilen örnekleri Azure portal, [PowerShell](/powershell/module/az.sql/remove-azsqlinstance?preserve-view=true&view=azps-4.3.0), [Azure CLı](/cli/azure/sql/mi#az-sql-mi-delete) veya [Kaynak Yöneticisi REST API 'leri](/rest/api/sql/managedinstances/delete)aracılığıyla silebilirsiniz.
 
 **Bir örneği oluşturmak veya güncelleştirmek ya da bir veritabanını geri yüklemek için ne kadar süre sürer?**
 

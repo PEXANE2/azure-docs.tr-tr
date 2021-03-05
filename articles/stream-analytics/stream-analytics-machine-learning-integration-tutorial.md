@@ -1,18 +1,18 @@
 ---
 title: Azure Machine Learning Studio ile tümleştirme Azure Stream Analytics (klasik)
 description: Bu makalede, Kullanıcı tanımlı bir işlev kullanarak Azure Machine Learning Studio (klasik) tümleştiren basit bir Azure Stream Analytics işinin hızlı bir şekilde nasıl ayarlanacağı açıklanır.
-author: krishna0815
-ms.author: krishmam
 ms.service: stream-analytics
+author: jasonwhowell
+ms.author: jasonh
 ms.topic: how-to
 ms.date: 08/12/2020
 ms.custom: seodec18
-ms.openlocfilehash: d7d74887b4b4e205645a45fa7e07768a1af73940
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 89b1b91270d1fe30ffcb5ae0caa5f319aa616683
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98015309"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102178533"
 ---
 # <a name="do-sentiment-analysis-with-azure-stream-analytics-and-azure-machine-learning-studio-classic"></a>Azure Stream Analytics ve Azure Machine Learning Studio (klasik) ile yaklaşım analizini yapın
 
@@ -56,7 +56,7 @@ Bu adımda, depolama kapsayıcınıza bir CSV dosyası yüklersiniz.
 
    ![depolama hesabı ayrıntılarını sağlayın](./media/stream-analytics-machine-learning-integration-tutorial/create-storage-account1.png)
 
-3. **Gözden geçir + oluştur**' u seçin. Ardından, depolama hesabınızı dağıtmak için **Oluştur** ' u seçin.
+3. **Gözden geçir + Oluştur**’u seçin. Ardından, depolama hesabınızı dağıtmak için **Oluştur** ' u seçin.
 
 4. Dağıtım tamamlandığında depolama hesabınıza gidin. **Blob hizmeti** bölümünden **Kapsayıcılar**’ı seçin. Ardından yeni bir kapsayıcı oluşturmak için **+ kapsayıcı** ' yı seçin.
 

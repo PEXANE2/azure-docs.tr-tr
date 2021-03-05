@@ -6,12 +6,12 @@ ms.topic: include
 ms.date: 03/10/2020
 ms.author: sstein
 ms.reviewer: vanto
-ms.openlocfilehash: 57f504b15c0a9c72a2cb0f17b486846f44171a25
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: c7bd942b427bdbd2d8184f712f97dd2a0a57fa90
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101682415"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102178087"
 ---
 Bu adımda, bir [MANTıKSAL SQL Server](../database/logical-servers.md) ve AdventureWorksLT örnek verisi kullanan [tek bir veritabanı](../database/single-database-overview.md) oluşturursunuz. Azure portal menüleri ve ekranları kullanarak veya Azure Cloud Shell bir Azure CLı veya PowerShell betiği kullanarak veritabanı oluşturabilirsiniz.
 
@@ -151,11 +151,11 @@ Yukarıdaki kod şu Azure CLı komutlarını kullanır:
 
 | Komut | Açıklama |
 |---|---|
-| [az Account set](/cli/azure/account?view=azure-cli-latest#az-account-set&preserve-view=true) | Aboneliği geçerli etkin abonelik olacak şekilde ayarlar. |
+| [az Account set](/cli/azure/account#az-account-set) | Aboneliği geçerli etkin abonelik olacak şekilde ayarlar. |
 | [az group create](/cli/azure/group#az-group-create) | Tüm kaynakların depolandığı bir kaynak grubu oluşturur. |
 | [az sql server create](/cli/azure/sql/server#az-sql-server-create) | Veritabanları ve elastik havuzlar barındıran bir sunucu oluşturur. |
 | [az SQL Server Firewall-Rule Create](/cli/azure/sql/server/firewall-rule##az-sql-server-firewall-rule-create) | Sunucu düzeyinde bir güvenlik duvarı kuralı oluşturur. |
-| [az sql db create](/cli/azure/sql/db#az-sql-db-create?view=azure-cli-latest&preserve-view=true) | Bir veritabanı oluşturur. |
+| [az sql db create](/cli/azure/sql/db#az-sql-db-create) | Bir veritabanı oluşturur. |
 
 Azure SQL veritabanı Azure CLı örnekleri hakkında daha fazla bilgi için bkz. [Azure CLI örnekleri](../database/az-cli-script-samples-content-guide.md).
 

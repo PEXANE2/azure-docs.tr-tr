@@ -5,18 +5,18 @@ author: neilpeterson
 ms.date: 08/09/2020
 ms.topic: quickstart
 ms.author: nepeters
-ms.openlocfilehash: d8fd44a1e4c1ddfd78b2afa3280bb05c8fde91e3
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 97f956c1b1c1ea18242dc656c533451eda29dc6d
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96350152"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102179060"
 ---
 # <a name="quickstart-create-arm-templates-with-visual-studio-code"></a>Hızlı başlangıç: Visual Studio Code ARM şablonları oluşturma
 
 Visual Studio Code için Azure Resource Manager araçları dil desteği, kaynak parçacıkları ve kaynak otomatik tamamlama sağlar. Bu araçlar Azure Resource Manager şablonları (ARM şablonları) oluşturma ve doğrulamaya yardımcı olur. Bu hızlı başlangıçta, uzantıyı sıfırdan bir ARM şablonu oluşturmak için kullanırsınız. Bunu yaparken ARM şablon parçacıkları, doğrulama, tamamlama ve parametre dosyası desteği gibi uzantı özelliklerine sahip olursunuz.
 
-Bu hızlı başlangıcı tamamlayabilmeniz için, [Azure Resource Manager araçları uzantısı](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools) yüklüyken [Visual Studio Code](https://code.visualstudio.com/)gerekir. Ayrıca, [Azure CLI](/cli/azure/?view=azure-cli-latest) veya [Azure PowerShell modülünün](/powershell/azure/new-azureps-module-az?view=azps-3.7.0) yüklü ve kimliği doğrulanmış olması gerekir.
+Bu hızlı başlangıcı tamamlayabilmeniz için, [Azure Resource Manager araçları uzantısı](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools) yüklüyken [Visual Studio Code](https://code.visualstudio.com/)gerekir. Ayrıca, [Azure CLI](/cli/azure/) veya [Azure PowerShell modülünün](/powershell/azure/new-azureps-module-az?view=azps-3.7.0) yüklü ve kimliği doğrulanmış olması gerekir.
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 

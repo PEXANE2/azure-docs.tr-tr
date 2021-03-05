@@ -9,12 +9,12 @@ ms.subservice: custom-vision
 ms.topic: how-to
 ms.date: 09/11/2020
 ms.author: pafarley
-ms.openlocfilehash: 43cd03e8f4a66d18adc33c943481002ff7b326d3
-ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
+ms.openlocfilehash: d889eab429b56a9f4e01684e03c67d394d33472b
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97813216"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102178023"
 ---
 # <a name="integrate-azure-storage-for-notifications-and-backup"></a>Bildirimler ve yedekleme için Azure Storage 'ı tümleştirme
 
@@ -29,6 +29,7 @@ Bu kılavuz, bu REST API 'Lerini kıvrımlı ile nasıl kullanacağınızı gös
 
 - Azure 'da bir Özel Görüntü İşleme kaynağı. Bir tane yoksa, Azure portal gidin ve [Yeni bir özel görüntü işleme kaynağı oluşturun](https://portal.azure.com/?microsoft_azure_marketplace_ItemHideKey=microsoft_azure_cognitiveservices_customvision#create/Microsoft.CognitiveServicesCustomVision?azure-portal=true). Bu özellik şu anda bilişsel hizmet kaynağını (hepsi bir anahtarda) desteklememektedir.
 - Blob kapsayıcısı olan bir Azure depolama hesabı. Bu adımla ilgili yardıma ihtiyacınız varsa [Azure Storage laboratuvarının 1. alıştırmaını](https://github.com/Microsoft/computerscience/blob/master/Labs/Azure%20Services/Azure%20Storage/Azure%20Storage%20and%20Cognitive%20Services%20(MVC).md#Exercise1) izleyin.
+* [PowerShell sürüm 6.0 +](https://docs.microsoft.com/powershell/scripting/install/installing-powershell-core-on-windows?view=powershell-7.1)veya benzer bir komut satırı uygulaması.
 
 ## <a name="set-up-azure-storage-integration"></a>Azure depolama tümleştirmesini ayarlama
 

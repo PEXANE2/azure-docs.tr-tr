@@ -7,12 +7,12 @@ ms.author: chez
 ms.reviewer: maghan
 ms.topic: conceptual
 ms.date: 10/18/2018
-ms.openlocfilehash: 7dde05e02421ef8d2ea46fd0d50687ede6e5d884
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: ff8c549f74b59706de5203f2d2e46867d6cb1d0a
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101727794"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102177801"
 ---
 # <a name="create-a-trigger-that-runs-a-pipeline-in-response-to-a-storage-event"></a>Bir depolama olayına yanıt olarak bir işlem hattı çalıştıran bir tetikleyici oluşturma
 
@@ -26,7 +26,6 @@ Bu özelliğin on dakikalık bir giriş ve gösterimi için aşağıdaki videoyu
 
 > [!VIDEO https://channel9.msdn.com/Shows/Azure-Friday/Event-based-data-integration-with-Azure-Data-Factory/player]
 
-
 > [!NOTE]
 > Bu makalede açıklanan tümleştirme [Azure Event Grid](https://azure.microsoft.com/services/event-grid/)bağımlıdır. Aboneliğinizin Event Grid kaynak sağlayıcısına kayıtlı olduğundan emin olun. Daha fazla bilgi için bkz. [kaynak sağlayıcıları ve türleri](../azure-resource-manager/management/resource-providers-and-types.md#azure-portal). *Microsoft. EventGrid/Eventabonelikleri/** eylemini yapabilmelisiniz. Bu eylem EventGrid EventSubscription katılımcısı yerleşik rolünün bir parçasıdır.
 
@@ -34,11 +33,11 @@ Bu özelliğin on dakikalık bir giriş ve gösterimi için aşağıdaki videoyu
 
 Bu bölümde, Azure Data Factory Kullanıcı arabirimi içinde bir depolama olay tetikleyicisi oluşturma gösterilmektedir.
 
-1. **Yazma tuvaline** git
+1. Kalem simgesiyle gösterilen **Düzenle** sekmesine geçin. 
 
-1. Sol alt köşede **Tetikleyiciler** düğmesine tıklayın
+1. Menüde **tetikleyici** ' yi seçin ve ardından **Yeni/Düzenle**' yi seçin. 
 
-1. Tetikleyici oluşturma tarafı gezintisi ' ni açacak **+ Yeni** ' ye tıklayın
+1. **Tetikleyici Ekle** sayfasında **tetikleyici seç...** öğesini seçin ve **+ Yeni**' yi seçin. 
 
 1. Tetikleyici türü **depolama olayı** seçin
 
@@ -107,4 +106,5 @@ Bu bölümde, depolama olay tetikleyicisi ayarlarının örnekleri verilmiştir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Tetikleyiciler hakkında ayrıntılı bilgi için bkz. işlem [hattı yürütme ve Tetikleyiciler](concepts-pipeline-execution-triggers.md#trigger-execution).
+* Tetikleyiciler hakkında ayrıntılı bilgi için bkz. işlem [hattı yürütme ve Tetikleyiciler](concepts-pipeline-execution-triggers.md#trigger-execution).
+* İşlem hattında tetikleyici meta verilerine nasıl başvurulacağını öğrenin, bkz. işlem [hattı çalıştırmalarıyla başvuru tetikleyici meta verileri](how-to-use-trigger-parameterization.md)

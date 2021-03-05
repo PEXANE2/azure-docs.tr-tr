@@ -4,21 +4,26 @@ description: Azure Kubernetes Service (aks) içinde Pod SecurityPolicy kullanara
 services: container-service
 ms.topic: article
 ms.date: 02/12/2021
-ms.openlocfilehash: 23c436cb3ddf970939ab9d7b936a4e03e1fbb7ff
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: cb317e5e0d1f558121e675f569bad37811768ca6
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100371235"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102180318"
 ---
 # <a name="preview---secure-your-cluster-using-pod-security-policies-in-azure-kubernetes-service-aks"></a>Önizleme-Azure Kubernetes Service (AKS) ' de Pod güvenlik ilkelerini kullanarak kümenizin güvenliğini sağlama
 
 > [!WARNING]
-> **Bu belgede açıklanan özellik, Pod güvenlik ilkesi (Önizleme) kullanımdan kaldırma için ayarlanmıştır ve bu,** [aks için Azure Ilkesi için](use-pod-security-on-azure-policy.md)30 Haziran 2021 ' den sonra kullanılabilir olmayacaktır. Kullanımdan kaldırma tarihi, 15 Ekim 2020 ' in önceki tarihinden itibaren genişletilmiştir.
+> **Bu belgede açıklanan özellik, Pod güvenlik ilkesi (Önizleme) kullanımdan kaldırma için ayarlanmıştır ve bu,** [aks için Azure Ilkesi için](use-azure-policy.md)30 Haziran 2021 ' den sonra kullanılabilir olmayacaktır. Kullanımdan kaldırma tarihi, 15 Ekim 2020 ' in önceki tarihinden itibaren genişletilmiştir.
 >
 > Pod güvenlik ilkesi (Önizleme) kullanım dışı olduktan sonra, gelecekteki küme yükseltmelerini gerçekleştirmek ve Azure desteği içinde kalmak için kullanımdan kaldırılan özelliği kullanarak mevcut kümelerin özelliğini devre dışı bırakmanız gerekir.
 >
-> Aks için Azure ilkesiyle test etme işlemini başlatmak önemle önerilir, bu da Pod güvenlik ilkeleriyle eşlenen Pod ve yerleşik girişimleri güvenli hale getirmek için yerleşik ilkeler sunar. [Pod güvenlik ilkesinden (Önizleme) Azure ilkesine geçiş](use-pod-security-on-azure-policy.md#migrate-from-kubernetes-pod-security-policy-to-azure-policy)hakkında bilgi edinmek için buraya tıklayın.
+> Aks için Azure ilkesiyle test etme işlemini başlatmak önemle önerilir, bu da Pod güvenlik ilkeleriyle eşlenen Pod ve yerleşik girişimleri güvenli hale getirmek için yerleşik ilkeler sunar. Pod güvenlik ilkesinden geçiş yapmak için, bir kümede aşağıdaki işlemleri gerçekleştirmeniz gerekir.
+> 
+> 1. Kümede [Pod güvenlik Ilkesini devre dışı bırak](#clean-up-resources)
+> 1. [Azure Ilke eklentisini][kubernetes-policy-reference] etkinleştirin
+> 1. İstenen Azure ilkelerini [kullanılabilir yerleşik ilkelerden][policy-samples] etkinleştirin
+> 1. [Pod güvenlik ilkesi Ile Azure ilkesi arasındaki davranış değişikliklerini](#behavior-changes-between-pod-security-policy-and-azure-policy) gözden geçirme
 
 AKS kümenizin güvenliğini artırmak için, hangi yığınların zamanlanabileceği ile sınırlı olabilirsiniz. İzin vermeyenleri isteyen kaynaklar AKS kümesinde çalıştırılamaz. Bu erişimi Pod güvenlik ilkelerini kullanarak tanımlarsınız. Bu makalede, AKS 'deki yığınların dağıtımını sınırlamak için pod güvenlik ilkelerinin nasıl kullanılacağı gösterilmektedir.
 
@@ -77,6 +82,26 @@ Bir AKS kümesinde Pod güvenlik ilkesini etkinleştirdiğinizde, bazı varsayı
 * Pod güvenlik ilkesi özelliğini etkinleştirme
 
 Varsayılan ilkelerin Pod dağıtımlarını nasıl sınırlayamayacağını göstermek için, bu makalede öncelikle Pod güvenlik ilkeleri özelliğini etkinleştirip özel bir ilke oluşturmanız gerekir.
+
+### <a name="behavior-changes-between-pod-security-policy-and-azure-policy"></a>Pod güvenlik ilkesi ile Azure Ilkesi arasındaki davranış değişiklikleri
+
+Pod güvenlik ilkesi ve Azure Ilkesi arasındaki davranış değişikliklerinin özeti aşağıda verilmiştir.
+
+|Senaryo| Pod güvenlik ilkesi | Azure İlkesi |
+|---|---|---|
+|Yükleme|Pod güvenlik ilkesi özelliğini etkinleştir |Azure Ilke eklentisini etkinleştir
+|İlkeleri dağıtma| Pod güvenlik ilkesi kaynağı dağıtma| Abonelik veya kaynak grubu kapsamına Azure ilkeleri atayın. Kubernetes kaynak uygulamaları için Azure Ilke eklentisi gereklidir.
+| Varsayılan ilkeler | AKS 'de Pod güvenlik ilkesi etkinleştirildiğinde, varsayılan ayrıcalıklı ve Kısıtlanmamış ilkeler uygulanır. | Azure Ilke eklentisi etkinleştirilerek hiçbir varsayılan ilke uygulanmaz. Azure Ilkesinde ilkeleri açıkça etkinleştirmeniz gerekir.
+| Kimin ilke oluşturup atayabileceği | Küme Yöneticisi bir pod güvenlik ilkesi kaynağı oluşturur | Kullanıcıların AKS kümesi kaynak grubunda en az ' Owner ' veya ' kaynak Ilkesi katılımcısı ' izinlerine sahip olması gerekir. --API, kullanıcılar AKS kümesi kaynak kapsamına ilke atayabilir. Kullanıcının AKS küme kaynağı üzerinde en az ' Owner ' veya ' kaynak Ilkesi katılımcısı ' izinlerine sahip olması gerekir. -Azure portal, ilkeler yönetim grubu/abonelik/kaynak grubu düzeyinde atanabilir.
+| İlkeleri yetkilendirme| Kullanıcılar ve hizmet hesapları, Pod güvenlik ilkelerini kullanmak için açık izinler gerektirir. | İlkeleri yetkilendirmek için ek atama gerekmez. Azure 'da ilkeler atandıktan sonra, tüm küme kullanıcıları bu ilkeleri kullanabilir.
+| İlke uygulanabilirliği | Yönetici Kullanıcı, Pod güvenlik ilkelerinin zorlanmasını atlar. | Tüm kullanıcılar (yönetici & yönetici olmayan) aynı ilkeleri görür. Kullanıcılara dayalı özel bir büyük harf yoktur. İlke uygulaması ad alanı düzeyinde dışlenebilir.
+| İlke kapsamı | Pod güvenlik ilkeleri gösterilemez değildir | Azure Ilkesi tarafından kullanılan kısıtlama şablonları gösterilemez değildir.
+| Reddetme/denetim/mutasyon eylemi | Pod güvenlik ilkeleri yalnızca reddetme eylemlerini destekler. Mutasyon, oluşturma isteklerinde varsayılan değerlerle yapılabilir. Doğrulama, güncelleştirme istekleri sırasında yapılabilir.| Azure Ilkesi, hem denetim & reddetme eylemlerini destekler. Mutasyon henüz desteklenmiyor, ancak planlandı.
+| Pod güvenlik ilkesi uyumluluğu | Pod güvenlik ilkesi etkinleştirilmeden önce var olan yığınların uyumluluğuna ilişkin bir görünürlük yoktur. Pod güvenlik ilkeleri etkinleştirildikten sonra oluşturulan uyumlu olmayan Pod 'ler reddedilir. | Azure ilkelerini uygulamadan önce var olan uyumlu olmayan bir pod, ilke ihlallerine göre görünür. İlkeler reddetme efektiyle ayarlandıysa, Azure ilkeleri etkinleştirildikten sonra oluşturulan uyumlu olmayan Pod 'ler reddedilir.
+| Kümedeki ilkeleri görüntüleme | `kubectl get psp` | `kubectl get constrainttemplate` -Tüm ilkeler döndürülür.
+| Pod güvenlik ilkesi standart-ayrıcalıklı | Özellik etkinleştirilirken ayrıcalıklı bir pod güvenlik ilkesi kaynağı varsayılan olarak oluşturulur. | Ayrıcalıklı mod hiçbir kısıtlama gerektirmez, sonuç olarak herhangi bir Azure Ilke atamasına sahip değildir.
+| [Pod güvenlik ilkesi standart-taban çizgisi/varsayılan](https://kubernetes.io/docs/concepts/security/pod-security-standards/#baseline-default) | Kullanıcı bir pod güvenlik ilkesi temel kaynağı yüklüyor. | Azure Ilkesi, taban çizgisi Pod güvenlik ilkesiyle eşleşen [yerleşik bir temel girişim](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicySetDefinitions%2Fa8640138-9b0a-4a28-b8cb-1666c838647d) sağlar.
+| [Pod güvenlik ilkesi standart-kısıtlı](https://kubernetes.io/docs/concepts/security/pod-security-standards/#restricted) | Kullanıcı, bir pod güvenlik ilkesi kısıtlanmış kaynağı yüklüyor. | Azure Ilkesi, kısıtlı Pod güvenlik ilkesiyle eşleşen [yerleşik bir kısıtlanmış girişim](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicySetDefinitions%2F42b8ef37-b724-4e24-bbc8-7a7708edfe00) sağlar.
 
 ## <a name="enable-pod-security-policy-on-an-aks-cluster"></a>AKS kümesinde Pod güvenlik ilkesini etkinleştirme
 
@@ -453,3 +478,4 @@ Pod ağ trafiğini sınırlama hakkında daha fazla bilgi için bkz. [aks 'deki 
 [aks-faq]: faq.md
 [az-extension-add]: /cli/azure/extension#az-extension-add
 [az-extension-update]: /cli/azure/extension#az-extension-update
+[policy-samples]: ./policy-reference.md#microsoftcontainerservice

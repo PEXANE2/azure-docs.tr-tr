@@ -6,23 +6,24 @@ services: container-service
 ms.topic: conceptual
 ms.date: 05/06/2019
 ms.custom: references_regions, devx-track-azurecli
-ms.openlocfilehash: a655c8c145b4f3812dae9f1a4ec1e5eebbe44809
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: af8403f80f7282207ee1bc6b2f81da0d83d264e0
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93348483"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102180947"
 ---
 # <a name="create-and-configure-an-azure-kubernetes-services-aks-cluster-to-use-virtual-nodes-using-the-azure-cli"></a>Azure CLı kullanarak sanal düğümleri kullanmak için bir Azure Kubernetes hizmeti (AKS) kümesi oluşturma ve yapılandırma
 
 Bu makalede, Azure CLı kullanarak sanal ağ kaynakları ve AKS kümesi oluşturup yapılandırma ve ardından sanal düğümleri etkinleştirme işlemlerinin nasıl yapılacağı gösterilir.
 
-> [!NOTE]
-> [Bu makale](virtual-nodes.md) , sanal düğümleri kullanan bölge kullanılabilirliğine ve sınırlamalara genel bir bakış sunar.
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 
 Sanal düğümler Azure Container Instances (aci) ve aks kümesinde çalışan Pod 'ler arasında ağ iletişimini sağlar. Bu iletişim sağlamak için bir sanal ağ alt ağı oluşturulur ve temsilci izinleri atanır. Sanal düğümler yalnızca *Gelişmiş* ağ (Azure CNI) kullanılarak oluşturulan aks kümeleriyle çalışır. Varsayılan olarak, AKS kümeleri *temel* ağ (kubenet) ile oluşturulur. Bu makalede, bir sanal ağ ve alt ağ oluşturma ve ardından Gelişmiş ağ kullanan bir AKS kümesi dağıtma işlemleri gösterilir.
+
+> [!IMPORTANT]
+> AKS ile sanal düğümleri kullanmadan önce, [AKS sanal düğümlerinin sınırlamalarını][virtual-nodes-aks] ve [acı 'nin sanal ağ sınırlamalarını][virtual-nodes-networking-aci]gözden geçirin. Bu sınırlamalar, hem AKS kümenizin hem de sanal düğümlerin konumunu, ağ yapılandırmasını ve diğer yapılandırma ayrıntılarını etkiler.
 
 Daha önce ACI kullandıysanız, hizmet sağlayıcısını aboneliğiniz ile kaydedin. Aşağıdaki örnekte gösterildiği gibi [az Provider List][az-provider-list] komutunu kullanarak aci sağlayıcı kaydının durumunu denetleyebilirsiniz:
 
@@ -48,7 +49,7 @@ az provider register --namespace Microsoft.ContainerInstance
 
 Azure Cloud Shell, bu makaledeki adımları çalıştırmak için kullanabileceğiniz ücretsiz bir etkileşimli kabuktur. Yaygın Azure araçları, kabuğa önceden yüklenmiştir ve kabuk, hesabınızla birlikte kullanılacak şekilde yapılandırılmıştır.
 
-Cloud Shell açmak için, bir kod bloğunun sağ üst köşesinden **dene** ' yi seçin. Ayrıca, ' a giderek ayrı bir tarayıcı sekmesinde Cloud Shell de başlatabilirsiniz [https://shell.azure.com/bash](https://shell.azure.com/bash) . **Kopyala** ’yı seçerek kod bloğunu kopyalayın, Cloud Shell’e yapıştırın ve Enter tuşuna basarak çalıştırın.
+Cloud Shell açmak için, bir kod bloğunun sağ üst köşesinden **dene** ' yi seçin. Ayrıca, ' a giderek ayrı bir tarayıcı sekmesinde Cloud Shell de başlatabilirsiniz [https://shell.azure.com/bash](https://shell.azure.com/bash) . **Kopyala**’yı seçerek kod bloğunu kopyalayın, Cloud Shell’e yapıştırın ve Enter tuşuna basarak çalıştırın.
 
 CLı 'yi yerel olarak yükleyip kullanmayı tercih ederseniz bu makale, Azure CLı sürüm 2.0.49 veya üstünü gerektirir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse, bkz. [Azure CLI yükleme]( /cli/azure/install-azure-cli).
 
@@ -62,7 +63,7 @@ az group create --name myResourceGroup --location westus
 
 ## <a name="create-a-virtual-network"></a>Sanal ağ oluşturma
 
-[Az Network VNET Create][az-network-vnet-create] komutunu kullanarak bir sanal ağ oluşturun. Aşağıdaki örnek, *10.0.0.0/8* adres ön *ekine sahip bir* sanal ağ adı ve *myakssubnet* adlı bir alt ağ oluşturur. Bu alt ağın adres ön eki varsayılan olarak *10.240.0.0/16* ' dır:
+[Az Network VNET Create][az-network-vnet-create] komutunu kullanarak bir sanal ağ oluşturun. Aşağıdaki örnek, *10.0.0.0/8* adres ön *ekine sahip bir* sanal ağ adı ve *myakssubnet* adlı bir alt ağ oluşturur. Bu alt ağın adres ön eki varsayılan olarak *10.240.0.0/16*' dır:
 
 ```azurecli-interactive
 az network vnet create \
@@ -352,3 +353,5 @@ Sanal düğümler genellikle AKS 'deki bir ölçeklendirme çözümünün bir bi
 [aks-basic-ingress]: ingress-basic.md
 [az-provider-list]: /cli/azure/provider#az-provider-list
 [az-provider-register]: /cli/azure/provider#az-provider-register
+[virtual-nodes-aks]: virtual-nodes.md
+[virtual-nodes-networking-aci]: ../container-instances/container-instances-virtual-network-concepts.md

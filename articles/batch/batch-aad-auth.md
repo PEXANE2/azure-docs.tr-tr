@@ -4,12 +4,12 @@ description: Batch, Batch hizmetinden kimlik doğrulaması için Azure AD 'yi de
 ms.topic: how-to
 ms.date: 10/20/2020
 ms.custom: has-adal-ref
-ms.openlocfilehash: 784e92eaa2cd672d511177066befcfd7effc7ca4
-ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
+ms.openlocfilehash: 2ceefa538c44208750da8986fcf3d161f0c0865f
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/22/2020
-ms.locfileid: "95252649"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102180029"
 ---
 # <a name="authenticate-batch-service-solutions-with-active-directory"></a>Active Directory ile Batch hizmeti çözümlerini kimlik doğrulama
 
@@ -41,7 +41,7 @@ Azure AD ile kimlik doğrulaması yapmak için bu uç noktayı kiracı KIMLIĞI 
 >
 > Tümleşik kimlik doğrulaması kullanarak kimlik doğrulaması yaptığınızda kiracıya özgü uç nokta isteğe bağlıdır, ancak önerilir. Ancak, Azure AD ortak uç noktasını da kullanabilirsiniz. Ortak uç nokta, belirli bir kiracı sağlanmadıysa genel bir kimlik bilgisi toplama arabirimi sağlar. Ortak uç nokta `https://login.microsoftonline.com/common` .
 
-Azure AD uç noktaları hakkında daha fazla bilgi için bkz. [kimlik doğrulaması ile yetkilendirme]().. /Active-Directory/develop/Authentication-vs-authorization5md).
+Azure AD uç noktaları hakkında daha fazla bilgi için bkz. [kimlik doğrulaması ve yetkilendirme](../active-directory/develop/authentication-vs-authorization.md).
 
 ### <a name="batch-resource-endpoint"></a>Batch kaynak uç noktası
 

@@ -7,16 +7,16 @@ ms.service: attestation
 ms.topic: quickstart
 ms.date: 11/20/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 4fc799c1c6dcaaa3ed4bc41c93bd6b786f51591c
-ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
+ms.openlocfilehash: ae283785b4d4dc80c6b9b6c3997aaf82c9ff0f2f
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99429254"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102178720"
 ---
 # <a name="quickstart-set-up-azure-attestation-with-azure-cli"></a>Hızlı başlangıç: Azure CLı ile Azure kanıtlama ayarlama
 
-Azure [CLI kullanarak Azure kanıtlama](/cli/azure/ext/attestation/attestation?view=azure-cli-latest)ile çalışmaya başlayın.
+Azure [CLI kullanarak Azure kanıtlama](/cli/azure/ext/attestation/attestation)ile çalışmaya başlayın.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
@@ -69,13 +69,13 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 Kanıtlama sağlayıcısı oluşturmak ve yönetmek için kullanabileceğiniz komutlar şunlardır:
 
-1. İlke imzalama gereksinimi olmadan bir kanıtlama sağlayıcısı oluşturmak için [az kanıtlama Create](/cli/azure/ext/attestation/attestation?view=azure-cli-latest#ext_attestation_az_attestation_create) komutunu çalıştırın:
+1. İlke imzalama gereksinimi olmadan bir kanıtlama sağlayıcısı oluşturmak için [az kanıtlama Create](/cli/azure/ext/attestation/attestation#ext_attestation_az_attestation_create) komutunu çalıştırın:
 
    ```azurecli
    az attestation create --name "myattestationprovider" --resource-group "MyResourceGroup" --location westus
    ```
    
-1. Status ve AttestURI gibi kanıtlama sağlayıcısı özelliklerini almak için [az kanıtlama Show](/cli/azure/ext/attestation/attestation?view=azure-cli-latest#ext_attestation_az_attestation_show) komutunu çalıştırın:
+1. Status ve AttestURI gibi kanıtlama sağlayıcısı özelliklerini almak için [az kanıtlama Show](/cli/azure/ext/attestation/attestation#ext_attestation_az_attestation_show) komutunu çalıştırın:
 
    ```azurecli
    az attestation show --name "myattestationprovider" --resource-group "MyResourceGroup"
@@ -95,7 +95,7 @@ Kanıtlama sağlayıcısı oluşturmak ve yönetmek için kullanabileceğiniz ko
    TagsTable:
    ```
 
-[Az kanıtlama Delete](/cli/azure/ext/attestation/attestation?view=azure-cli-latest#ext_attestation_az_attestation_delete) komutunu kullanarak bir kanıtlama sağlayıcısını silebilirsiniz:
+[Az kanıtlama Delete](/cli/azure/ext/attestation/attestation#ext_attestation_az_attestation_delete) komutunu kullanarak bir kanıtlama sağlayıcısını silebilirsiniz:
 
 ```azurecli
 az attestation delete --name "myattestationprovider" --resource-group "sample-resource-group"
@@ -105,7 +105,7 @@ az attestation delete --name "myattestationprovider" --resource-group "sample-re
 
 Bir kanıtlama sağlayıcısı için ilke yönetimi sağlamak için burada açıklanan komutları ve tek seferde bir kanıtlama türünü kullanın.
 
-[Az kanıtlama ilkesi Show](/cli/azure/ext/attestation/attestation/policy?view=azure-cli-latest#ext_attestation_az_attestation_policy_show) komutu, belirtilen t için geçerli ilkeyi döndürür:
+[Az kanıtlama ilkesi Show](/cli/azure/ext/attestation/attestation/policy#ext_attestation_az_attestation_policy_show) komutu, belirtilen t için geçerli ilkeyi döndürür:
 
 ```azurecli
 az attestation policy show --name "myattestationprovider" --resource-group "MyResourceGroup" --attestation-type SGX-IntelSDK
@@ -120,7 +120,7 @@ Aşağıda desteklenen t türleri verilmiştir:
 - `SGX-OpenEnclaveSDK`
 - `TPM`
 
-Belirtilen kanıtlama türü için yeni bir ilke ayarlamak için [az kanıtlama ilkesi set](/cli/azure/ext/attestation/attestation/policy?view=azure-cli-latest#ext_attestation_az_attestation_policy_set) komutunu kullanın.
+Belirtilen kanıtlama türü için yeni bir ilke ayarlamak için [az kanıtlama ilkesi set](/cli/azure/ext/attestation/attestation/policy#ext_attestation_az_attestation_policy_set) komutunu kullanın.
 
 Dosya yolunu kullanarak belirli bir kanıtlama türü türünün metin biçiminde ilke ayarlamak için:
 

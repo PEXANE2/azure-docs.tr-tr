@@ -10,12 +10,12 @@ author: cartacioS
 ms.author: sacartac
 ms.date: 10/27/2020
 ms.custom: automl
-ms.openlocfilehash: ee9267637c5e3250bfcd543ca46c39d513725819
-ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
+ms.openlocfilehash: 6ed9b316fceeb30a775e2e0d90e7bbb0a07278cd
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98072233"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102180506"
 ---
 # <a name="what-is-automated-machine-learning-automl"></a>Otomatik makine öğrenimi (Otomatikml) nedir?
 
@@ -116,7 +116,7 @@ Otomatik makine öğrenimi denemeleri için, korleştirme otomatik olarak uygula
 
 Her otomatik makine öğrenimi denemenizde, algoritmaların iyi hale getirmek için verileriniz otomatik olarak ölçeklendirilir veya normalleştirilir. Model eğitimi sırasında, her bir modele aşağıdaki ölçeklendirmeden veya normalleştirme tekniklerinden biri uygulanır. Oto ml 'nin modellerinizde [fazla sığdırma ve ıdengeli verilerin nasıl engellenmesine](concept-manage-ml-pitfalls.md) yardımcı olduğunu öğrenin.
 
-|Normalleştirme ölçeklendiriliyor &nbsp; & &nbsp;| Açıklama |
+|Ölçeklendirme &nbsp; & &nbsp; işleme| Açıklama |
 | ------------- | ------------- |
 | [StandardScaleWrapper](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.StandardScaler.html)  | Ortalama ve ölçeklendirerek birim sapması arasındaki özellikleri standartlaştırın  |
 | [MinMaxScalar](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.MinMaxScaler.html)  | Her bir özelliği sütuna en düşük ve en yüksek düzeyde ölçeklendirerek özellikleri dönüştürür  |
@@ -172,7 +172,7 @@ Yerel ve uzak kullanımını seçerken bu uzmanları ve dezavantajları göz ön
 
  Aşağıdaki tabloda gösterildiği gibi uzak işlem kullandığınızda daha fazla özellik mevcuttur. 
 
-| Öne çıkan özelliği                                                    | Uzak | Yerel | 
+| Özellik                                                    | Uzak | Yerel | 
 |------------------------------------------------------------|--------|-------|
 | Veri akışı (büyük veri desteği, 100 GB 'a kadar)          | ✓      |       | 
 | DNN-BERT tabanlı metin korleştirme ve eğitim             | ✓      |       |

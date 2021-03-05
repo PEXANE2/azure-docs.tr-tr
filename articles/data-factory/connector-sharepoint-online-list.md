@@ -6,12 +6,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: jingwang
-ms.openlocfilehash: 3f05c90ba3c7e6b47009cbb597c56dac8a01427a
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: f8074b69b97a6ef96837e73a1082d2deb67084d9
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100393437"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102177870"
 ---
 # <a name="copy-data-from-sharepoint-online-list-by-using-azure-data-factory"></a>Azure Data Factory kullanarak SharePoint Online listesinden veri kopyalama
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -81,7 +81,7 @@ Aşağıdaki özellikler bir SharePoint Online listesi bağlı hizmeti için des
 | Serviceprincipalıd  | Azure Active Directory kayıtlı uygulamanın uygulama (istemci) KIMLIĞI. | Yes          |
 | Servicesprincipalkey | Uygulamanın anahtarı. Data Factory güvenli bir şekilde depolamak için bu alanı **SecureString** olarak işaretleyin veya [Azure Key Vault depolanan bir gizli dizi başvurusu](store-credentials-in-key-vault.md)yapın. | Yes          |
 | Değerine            | Uygulamanızın bulunduğu kiracı KIMLIĞI.          | Yes          |
-| connectVia          | Veri deposuna bağlanmak için kullanılacak [Integration Runtime](concepts-integration-runtime.md) . Bu makalenin önceki kısımlarında yer alarak [önkoşulları](#prerequisites)öğrenin. Belirtilmemişse, varsayılan Azure Integration Runtime kullanılır. | No           |
+| connectVia          | Veri deposuna bağlanmak için kullanılacak [Integration Runtime](concepts-integration-runtime.md) . Bu makalenin önceki kısımlarında yer alarak [önkoşulları](#prerequisites)öğrenin. Belirtilmemişse, varsayılan Azure Integration Runtime kullanılır. | Hayır           |
 
 **Örnek:**
 
@@ -143,8 +143,8 @@ SharePoint Online listesinden veri kopyalamak için, etkinlik **kaynağını** k
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
 | tür | Kopyalama etkinliği kaynağının **Type** özelliği, **Sharepointonlinelistsource** olarak ayarlanmalıdır. | Yes |
-| sorgu | Verileri filtrelemek için özel OData sorgu seçenekleri. Örnek: `"$top=10&$select=Title,Number"`. | No |
-| httpRequestTimeout | HTTP isteğinin yanıt alması için zaman aşımı (saniye olarak). Varsayılan değer 300 ' dir (5 dakikadır). | No |
+| sorgu | Verileri filtrelemek için özel OData sorgu seçenekleri. Örnek: `"$top=10&$select=Title,Number"`. | Hayır |
+| httpRequestTimeout | HTTP isteğinin yanıt alması için zaman aşımı (saniye olarak). Varsayılan değer 300 ' dir (5 dakikadır). | Hayır |
 
 **Örnek**
 
@@ -232,6 +232,9 @@ SharePoint Online listesinden veri kopyaladığınızda, SharePoint Online liste
         - **İstek yöntemi**: Get
         - **Ek üst bilgi**: `@{concat('Authorization: Bearer ', activity('<Web-activity-name>').output.access_token)}` akış Web etkinliği tarafından Yetkilendirme üstbilgisi olarak oluşturulan taşıyıcı belirtecini kullanan aşağıdaki ifadeyi kullanın. Web etkinliği adını değiştirin.
     - Kopyalama etkinliği havuzunu her zamanki gibi yapılandırın.
+
+> [!NOTE]
+> Bir Azure AD uygulaması `FullControl` SharePoint Online üzerinde izinlere sahip olsa bile, IRM özellikli belge kitaplıklarından dosya kopyalayamazsınız.
 
 ## <a name="lookup-activity-properties"></a>Arama etkinliği özellikleri
 

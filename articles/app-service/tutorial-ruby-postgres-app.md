@@ -5,12 +5,12 @@ ms.devlang: ruby
 ms.topic: tutorial
 ms.date: 06/18/2020
 ms.custom: mvc, cli-validate, seodec18, devx-track-azurecli
-ms.openlocfilehash: f501fb6b5bca5b19e15eb03d9639d08b848ad02f
-ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
+ms.openlocfilehash: de8f0e64189014b303463dd8bd6c827990b88f9a
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97968611"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102178482"
 ---
 # <a name="build-a-ruby-and-postgres-app-in-azure-app-service-on-linux"></a>Linux üzerinde Azure App Service Ruby ve Postgres uygulaması oluşturma
 
@@ -255,7 +255,7 @@ Bu adımda, Postgres'e bağlı Rails uygulamasını Azure App Service'e dağıt�
 
 ### <a name="configure-database-settings"></a>Veritabanı ayarlarını yapılandırma
 
-App Service’te, Cloud Shell'de [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest&preserve-view=true#az-webapp-config-appsettings-set) komutunu kullanarak ortam değişkenlerini _uygulama ayarları_ olarak ayarlayabilirsiniz.
+App Service’te, Cloud Shell'de [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings#az-webapp-config-appsettings-set) komutunu kullanarak ortam değişkenlerini _uygulama ayarları_ olarak ayarlayabilirsiniz.
 
 Aşağıdaki Cloud Shell komutu `DB_HOST`, `DB_DATABASE`, `DB_USERNAME` ve `DB_PASSWORD` uygulama ayarlarını yapılandırır. _&lt; Appname>_ ve _&lt; Postgres-Server-Name>_ yer tutucularını değiştirin.
 

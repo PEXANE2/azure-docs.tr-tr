@@ -2,13 +2,13 @@
 title: Azure Service Bus-mesajlaşma birimlerini otomatik olarak güncelleştir
 description: Bu makalede bir Service Bus ad alanının mesajlaşma birimlerini otomatik olarak güncelleştirme ' nin nasıl kullanılacağı gösterilir.
 ms.topic: how-to
-ms.date: 09/15/2020
-ms.openlocfilehash: 594f9987bfa5a7a439fb862a0345d0004785b189
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.date: 03/03/2021
+ms.openlocfilehash: 7fc3aca82b8f01d70dec4fc2dac7842895417ec9
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101720605"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102177964"
 ---
 # <a name="automatically-update-messaging-units-of-an-azure-service-bus-namespace"></a>Azure Service Bus bir ad alanının mesajlaşma birimlerini otomatik olarak güncelleştir 
 Otomatik ölçeklendirme, uygulamanızdaki yükü işlemek için çalışan kaynakların doğru miktarına sahip olmasını sağlar. Yük arttıkça idare edilecek kaynakları eklemenize ve ayrıca boştaki kaynakları kaldırarak paradan tasarruf etmenize olanak tanır. Azure Izleyici 'nin otomatik ölçeklendirme özelliği hakkında daha fazla bilgi edinmek için [Microsoft Azure otomatik ölçeklendirmeyi genel bakış](../azure-monitor/autoscale/autoscale-overview.md) bölümüne bakın. 
@@ -136,8 +136,14 @@ Belirli sayıda mesajlaşma birimini kullanmak üzere ad alanını ölçeklendir
     
     :::image type="content" source="./media/automate-update-messaging-units/repeat-specific-days-2.png" alt-text="belirli mesajlaşma birimlerine ölçeklendirin-belirli günleri yineleyin":::
 
-> [!IMPORTANT]
-> Otomatik ölçeklendirme ayarlarının nasıl çalıştığı, özellikle bir profil veya koşul nasıl yaptığı ve birden çok kuralı değerlendiren hakkında daha fazla bilgi edinmek için bkz. [Otomatik ölçeklendirme ayarlarını anlama](../azure-monitor/autoscale/autoscale-understanding-settings.md).          
+    
+    Otomatik ölçeklendirme ayarlarının nasıl çalıştığı, özellikle bir profil veya koşul nasıl yaptığı ve birden çok kuralı değerlendiren hakkında daha fazla bilgi edinmek için bkz. [Otomatik ölçeklendirme ayarlarını anlama](../azure-monitor/autoscale/autoscale-understanding-settings.md).          
+
+    > [!NOTE]
+    > - Otomatik ölçeklendirmeyle ilgili kararlar almak için gözden geçirmeniz gereken ölçümler 5-10 dakika eski olabilir. Çıkmanız gerekirse iş yükleriyle ilgileniyorsanız, çıkmanız gerekirse iş yüklerini işlemek için yeterli mesajlaşma birimi olduğundan emin olmak için ölçeği azaltma ve daha uzun süre ölçeği (> 10 dakika) için daha kısa süreler kullanmanızı öneririz. 
+    > 
+    > - Kapasite eksikliği (kullanılabilir mesajlaşma birimi yok) nedeniyle oluşan hatalara sahipseniz, bizim için bir destek bileti yükseltin.  
+
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Mesajlaşma birimleri hakkında bilgi edinmek için bkz. [Premium mesajlaşma](service-bus-premium-messaging.md)

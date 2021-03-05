@@ -4,13 +4,13 @@ description: Bu makalede, veri kurtarmanın verilerinizi kaybetmekten nasıl kor
 author: uhabiba04
 ms.topic: article
 ms.date: 04/13/2020
-ms.author: v-umha
-ms.openlocfilehash: bdd59d078da1df021b7e23ec858ba7305f72cfa1
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.author: v-ummehabiba
+ms.openlocfilehash: 9ece624546cab1b8b6fab8c19f4401bd050f6267
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92164219"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102179893"
 ---
 # <a name="disaster-recovery-for-farmbeats"></a>Farmtts için olağanüstü durum kurtarma
 
@@ -26,7 +26,7 @@ Aşağıdaki bölümlerde Azure Farmtts 'de veri kurtarmayı nasıl yapılandır
 
 ## <a name="enable-data-redundancy"></a>Veri artıklığını etkinleştir
 
-Farm, verileri **Azure depolama**, **Cosmos DB** ve **Time Series Insights**olmak üzere üç Azure birinci taraf hizmeti halinde depolar. Bu hizmetler için eşleştirilmiş bir Azure bölgesine veri yedekliliği etkinleştirmek üzere aşağıdaki adımları kullanın:
+Farm, verileri **Azure depolama**, **Cosmos DB** ve **Time Series Insights** olmak üzere üç Azure birinci taraf hizmeti halinde depolar. Bu hizmetler için eşleştirilmiş bir Azure bölgesine veri yedekliliği etkinleştirmek üzere aşağıdaki adımları kullanın:
 
 1.  **Azure depolama** -bu yönergeleri Izleyerek, Farmtts dağıtımınızdaki her bir depolama hesabı için veri yedekliliği etkinleştirin.
 2.  **Azure Cosmos DB** -bu kılavuzu, Farmtts dağıtımınızın Cosmos DB hesabı için veri yedekliliği etkinleştirmek üzere izleyin.

@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 06/19/2019
-ms.openlocfilehash: 8298c673ddc707130d0873f686e1baed3677a46f
-ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
+ms.openlocfilehash: 68fa089713c3dd89b4699011ded7d667bca6f73f
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94593969"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102178088"
 ---
 # <a name="tutorial-add-an-azure-sql-database-to-an-autofailover-group"></a>Öğretici: bir Azure SQL veritabanını bir oto yük devretme grubuna ekleme
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -29,7 +29,7 @@ ms.locfileid: "94593969"
 > - İki sunucu arasında veritabanı için bir yük devretme grubu oluşturun.
 > - Yük devretme testi.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 # <a name="the-portal"></a>[Portal](#tab/azure-portal)
 
@@ -49,7 +49,7 @@ Bu öğreticiyi tamamlamak için şunlar sahip olduğunuzdan emin olun:
 Öğreticiyi tamamlayabilmeniz için aşağıdaki öğelerin bulunduğundan emin olun:
 
 - Azure aboneliği. Henüz bir [hesabınız yoksa ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/) .
-- [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true)'nın en son sürümü.
+- [Azure CLI](/cli/azure/install-azure-cli)'nın en son sürümü.
 
 ---
 
@@ -65,7 +65,7 @@ Bu adımda, var olan bir sunucu ile başka bir bölgedeki yeni bir sunucu arası
 
 Yük devretme grubunuzu oluşturun ve Azure portal kullanarak veritabanınızı veritabanına ekleyin.
 
-1. [Azure Portal](https://portal.azure.com)sol taraftaki menüden **Azure SQL** ' i seçin. **Azure SQL** listede yoksa, **tüm hizmetler** ' i seçin ve arama kutusuna Azure SQL yazın. Seçim **Azure SQL** ' in yanındaki yıldızı seçerek bunu sık kullanılanlara ekleyin ve sol gezinti bölmesinde bir öğe olarak ekleyin.
+1. [Azure Portal](https://portal.azure.com)sol taraftaki menüden **Azure SQL** ' i seçin. **Azure SQL** listede yoksa, **tüm hizmetler**' i seçin ve arama kutusuna Azure SQL yazın. Seçim **Azure SQL** ' in yanındaki yıldızı seçerek bunu sık kullanılanlara ekleyin ve sol gezinti bölmesinde bir öğe olarak ekleyin.
 1. Bölüm 1 ' de oluşturulan veritabanını (gibi) seçin `mySampleDatabase` .
 1. Yük devretme grupları sunucu düzeyinde yapılandırılabilir. Sunucu ayarlarını açmak için sunucu **adı** altında sunucunun adını seçin.
 
@@ -75,21 +75,21 @@ Yük devretme grubunuzu oluşturun ve Azure portal kullanarak veritabanınızı 
 
    ![Yeni Yük devretme grubu Ekle](./media/failover-group-add-single-database-tutorial/sqldb-add-new-failover-group.png)
 
-1. **Yük devretme grubu** sayfasında, aşağıdaki değerleri girin veya seçin ve ardından **Oluştur** ' u seçin:
+1. **Yük devretme grubu** sayfasında, aşağıdaki değerleri girin veya seçin ve ardından **Oluştur**' u seçin:
 
-   - **Yük devretme grubu adı** : gibi benzersiz bir yük devretme grubu adı yazın `failovergrouptutorial` .
-   - **İkincil sunucu** : *gerekli ayarları yapılandırma* seçeneğini belirleyin ve ardından **Yeni bir sunucu oluşturmayı** seçin. Alternatif olarak, zaten var olan bir sunucuyu ikincil sunucu olarak seçebilirsiniz. Aşağıdaki değerleri girdikten sonra **Seç** ' i seçin.
-      - **Sunucu adı** : ikincil sunucu için, gibi benzersiz bir ad yazın `mysqlsecondary` .
-      - **Sunucu Yöneticisi oturum açma** : tür `azureuser`
-      - **Parola** : parola gereksinimlerini karşılayan karmaşık bir parola yazın.
-      - **Konum** : açılan listeden, gibi bir konum seçin `East US` . Bu konum, birincil sunucunuz ile aynı konumda olamaz.
+   - **Yük devretme grubu adı**: gibi benzersiz bir yük devretme grubu adı yazın `failovergrouptutorial` .
+   - **İkincil sunucu**: *gerekli ayarları yapılandırma* seçeneğini belirleyin ve ardından **Yeni bir sunucu oluşturmayı** seçin. Alternatif olarak, zaten var olan bir sunucuyu ikincil sunucu olarak seçebilirsiniz. Aşağıdaki değerleri girdikten sonra **Seç**' i seçin.
+      - **Sunucu adı**: ikincil sunucu için, gibi benzersiz bir ad yazın `mysqlsecondary` .
+      - **Sunucu Yöneticisi oturum açma**: tür `azureuser`
+      - **Parola**: parola gereksinimlerini karşılayan karmaşık bir parola yazın.
+      - **Konum**: açılan listeden, gibi bir konum seçin `East US` . Bu konum, birincil sunucunuz ile aynı konumda olamaz.
 
      > [!NOTE]
      > Sunucu oturum açma ve güvenlik duvarı ayarları, birincil sunucunuzun bilgileriyle eşleşmelidir.
 
      ![Yük devretme grubu için ikincil sunucu oluşturma](./media/failover-group-add-single-database-tutorial/create-secondary-failover-server.png)
 
-   - **Grup Içindeki veritabanları** : ikincil bir sunucu seçildikten sonra, bu seçenek kilidi açılmış olur. **Eklenecek veritabanlarını seçmek** ve sonra Bölüm 1 ' de oluşturduğunuz veritabanını seçmek için bu seçeneği belirleyin. Veritabanını yük devretme grubuna eklemek, coğrafi çoğaltma işlemini otomatik olarak başlatır.
+   - **Grup Içindeki veritabanları**: ikincil bir sunucu seçildikten sonra, bu seçenek kilidi açılmış olur. **Eklenecek veritabanlarını seçmek** ve sonra Bölüm 1 ' de oluşturduğunuz veritabanını seçmek için bu seçeneği belirleyin. Veritabanını yük devretme grubuna eklemek, coğrafi çoğaltma işlemini otomatik olarak başlatır.
 
    ![Yük devretme grubuna SQL veritabanı Ekle](./media/failover-group-add-single-database-tutorial/add-sqldb-to-failover-group.png)
 
@@ -199,7 +199,7 @@ Yük devretme grubunuzu oluşturun ve Azure CLı kullanarak veritabanınızı ve
 |---|---|
 | [az sql server create](/cli/azure/sql/server#az-sql-server-create) | Veritabanları ve elastik havuzlar barındıran bir sunucu oluşturur. |
 | [az SQL Server Firewall-Rule Create](/cli/azure/sql/server/firewall-rule) | Sunucunun güvenlik duvarı kurallarını oluşturur. |
-| [az SQL yük devretme-Grup oluşturma](/cli/azure/sql/failover-group?view=azure-cli-latest#az-sql-failover-group-create&preserve-view=true) | Bir yük devretme grubu oluşturur. |
+| [az SQL yük devretme-Grup oluşturma](/cli/azure/sql/failover-group#az-sql-failover-group-create) | Bir yük devretme grubu oluşturur. |
 
 ---
 
@@ -211,7 +211,7 @@ Bu adımda, yük devretme grubunuzu ikincil sunucuya devreder ve sonra Azure por
 
 Azure portal kullanarak yük devretmeyi test edin.
 
-1. [Azure Portal](https://portal.azure.com)sol taraftaki menüden **Azure SQL** ' i seçin. **Azure SQL** listede yoksa, **tüm hizmetler** ' i seçin ve arama kutusuna Azure SQL yazın. Seçim **Azure SQL** ' in yanındaki yıldızı seçerek bunu sık kullanılanlara ekleyin ve sol gezinti bölmesinde bir öğe olarak ekleyin.
+1. [Azure Portal](https://portal.azure.com)sol taraftaki menüden **Azure SQL** ' i seçin. **Azure SQL** listede yoksa, **tüm hizmetler**' i seçin ve arama kutusuna Azure SQL yazın. Seçim **Azure SQL** ' in yanındaki yıldızı seçerek bunu sık kullanılanlara ekleyin ve sol gezinti bölmesinde bir öğe olarak ekleyin.
 1. 2. bölümde oluşturulan veritabanını (gibi) seçin `mySampleDatbase` .
 1. Sunucu ayarlarını açmak için sunucu **adı** altında sunucunun adını seçin.
 
@@ -322,8 +322,8 @@ Yük devretme grubunu birincil sunucuya geri çevir:
 
 | Komut | Notlar |
 |---|---|
-| [az SQL yük devretme-Grup listesi](/cli/azure/sql/failover-group?view=azure-cli-latest#az-sql-failover-group-list&preserve-view=true) | Bir sunucudaki yük devretme gruplarını listeler. |
-| [az SQL yük devretme-grup kümesi-birincil](/cli/azure/sql/failover-group?view=azure-cli-latest#az-sql-failover-group-set-primary&preserve-view=true) | Geçerli birincil sunucudaki tüm veritabanlarının yükünü devretmek için yük devretme grubunun birincil kısmını ayarlayın. |
+| [az SQL yük devretme-Grup listesi](/cli/azure/sql/failover-group#az-sql-failover-group-list) | Bir sunucudaki yük devretme gruplarını listeler. |
+| [az SQL yük devretme-grup kümesi-birincil](/cli/azure/sql/failover-group#az-sql-failover-group-set-primary) | Geçerli birincil sunucudaki tüm veritabanlarının yükünü devretmek için yük devretme grubunun birincil kısmını ayarlayın. |
 
 ---
 
@@ -409,14 +409,14 @@ Bu betik aşağıdaki komutları kullanır. Tablodaki her komut, komuta özgü b
 
 | Komut | Notlar |
 |---|---|
-| [az Account set](/cli/azure/account?view=azure-cli-latest#az-account-set&preserve-view=true) | Aboneliği geçerli etkin abonelik olacak şekilde ayarlar. |
+| [az Account set](/cli/azure/account#az-account-set) | Aboneliği geçerli etkin abonelik olacak şekilde ayarlar. |
 | [az group create](/cli/azure/group#az-group-create) | Tüm kaynakların depolandığı bir kaynak grubu oluşturur. |
 | [az sql server create](/cli/azure/sql/server#az-sql-server-create) | Azure SQL veritabanı 'nda tek veritabanlarını ve elastik havuzları barındıran bir sunucu oluşturur. |
 | [az SQL Server Firewall-Rule Create](/cli/azure/sql/server/firewall-rule) | Azure SQL veritabanı 'nda sunucu düzeyinde IP güvenlik duvarı kuralları oluşturur. |
-| [az sql db create](/cli/azure/sql/db?view=azure-cli-latest&preserve-view=true) | Azure SQL veritabanı 'nda bir veritabanı oluşturur. |
-| [az SQL yük devretme-Grup oluşturma](/cli/azure/sql/failover-group?view=azure-cli-latest#az-sql-failover-group-create&preserve-view=true) | Azure SQL veritabanı 'nda bir yük devretme grubu oluşturur. |
-| [az SQL yük devretme-Grup listesi](/cli/azure/sql/failover-group?view=azure-cli-latest#az-sql-failover-group-list&preserve-view=true) | Yük devretme gruplarını Azure SQL veritabanı 'ndaki bir sunucuda listeler. |
-| [az SQL yük devretme-grup kümesi-birincil](/cli/azure/sql/failover-group?view=azure-cli-latest#az-sql-failover-group-set-primary&preserve-view=true) | Geçerli birincil sunucudaki tüm veritabanlarının yükünü devretmek için yük devretme grubunun birincil kısmını ayarlayın. |
+| [az sql db create](/cli/azure/sql/db) | Azure SQL veritabanı 'nda bir veritabanı oluşturur. |
+| [az SQL yük devretme-Grup oluşturma](/cli/azure/sql/failover-group#az-sql-failover-group-create) | Azure SQL veritabanı 'nda bir yük devretme grubu oluşturur. |
+| [az SQL yük devretme-Grup listesi](/cli/azure/sql/failover-group#az-sql-failover-group-list) | Yük devretme gruplarını Azure SQL veritabanı 'ndaki bir sunucuda listeler. |
+| [az SQL yük devretme-grup kümesi-birincil](/cli/azure/sql/failover-group#az-sql-failover-group-set-primary) | Geçerli birincil sunucudaki tüm veritabanlarının yükünü devretmek için yük devretme grubunun birincil kısmını ayarlayın. |
 | [az group delete](/cli/azure/vm/extension#az-vm-extension-set) | Bir kaynak grubunu tüm iç içe geçmiş kaynaklar dahil siler. |
 
 # <a name="the-portal"></a>[Portal](#tab/azure-portal)

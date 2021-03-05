@@ -11,12 +11,12 @@ ms.author: peterlu
 author: peterclu
 ms.date: 10/23/2020
 ms.custom: contperf-fy20q4, tracking-python, contperf-fy21q1, devx-track-azurecli
-ms.openlocfilehash: 80abe036ef4a08f7ed6f0f19cffc2abde70a6ea9
-ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
+ms.openlocfilehash: 190f44e95c96a2aee60e1b28f8817a74d3e06e3f
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99981315"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102178669"
 ---
 # <a name="secure-an-azure-machine-learning-inferencing-environment-with-virtual-networks"></a>Sanal ağlarla Azure Machine Learning ınvenli bir ortamın güvenliğini sağlama
 
@@ -34,7 +34,6 @@ Bu makalede, bir sanal ağda aşağıdaki ınırm kaynaklarını güvenli hale g
 > - Özel AKS kümesi
 > - Özel bağlantısı olan AKS kümesi
 > - Azure Container Instances (ACI)
-
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -58,7 +57,6 @@ Bir sanal ağda AKS kümesi kullanmak için aşağıdaki ağ gereksinimlerinin k
 > [!div class="checklist"]
 > * [Azure Kubernetes hizmeti 'nde (AKS) Gelişmiş ağ yapılandırma](../aks/configure-azure-cni.md#prerequisites)' daki önkoşulları izleyin.
 > * AKS örneği ve sanal ağ aynı bölgede olmalıdır. Bir sanal ağ içinde çalışma alanı tarafından kullanılan Azure depolama hesaplarını güvenli hale getirmek istiyorsanız, AKS örneğiyle aynı sanal ağda olmaları gerekir.
-
 
 Bir sanal ağdaki AKS 'leri çalışma alanınıza eklemek için aşağıdaki adımları kullanın:
 
@@ -274,7 +272,7 @@ Varsayılan giden kurallarını kullanmak istemiyorsanız ve sanal ağınızın 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu makale, dört bölümlü bir sanal ağ serisinde üç bölümden oluşan bir parçasıdır. Bir sanal ağın güvenliğini nasıl sağlayacağınızı öğrenmek için makalelerin geri kalanına bakın:
+Bu makale, beş bölümlü bir sanal ağ serisinin dördüncü kısmıdır. Bir sanal ağın güvenliğini nasıl sağlayacağınızı öğrenmek için makalelerin geri kalanına bakın:
 
 * [1. kısım: sanal ağa genel bakış](how-to-network-security-overview.md)
 * [2. Bölüm: çalışma alanı kaynaklarını güvenli hale getirme](how-to-secure-workspace-vnet.md)

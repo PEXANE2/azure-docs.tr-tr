@@ -2,15 +2,15 @@
 author: trevorbye
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 04/15/2020
+ms.date: 03/04/2021
 ms.author: trbye
 ms.custom: devx-track-js
-ms.openlocfilehash: a27fba6e426b72d72160a9a238f68cf8cef5c73b
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: cc5e306aa9677c7370d03dbb26ef3fe69293a630
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98947633"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102180064"
 ---
 Konuşma hizmetinin temel özelliklerinden biri de insan konuşmanızı tanıyabilme ve (genellikle konuşma-metin olarak adlandırılır). Bu hızlı başlangıçta, uygulama ve ürünlerinize yönelik konuşma SDK 'sını kullanarak yüksek kaliteli bir konuşmayı metne dönüştürme işlemini nasıl gerçekleştireceğinizi öğreneceksiniz.
 
@@ -18,40 +18,23 @@ Konuşma hizmetinin temel özelliklerinden biri de insan konuşmanızı tanıyab
 
 Örnek koda doğrudan atlamak istiyorsanız GitHub 'da [JavaScript hızlı başlangıç örneklerine](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/javascript/node) bakın.
 
+Alternatif olarak, bir tarayıcı tabanlı ortamda konuşma SDK 'sını nasıl kullanacağınızı öğrenmek için [tepki verme örneğine](https://github.com/Azure-Samples/AzureSpeechReactSample) bakın.
+
 ## <a name="prerequisites"></a>Önkoşullar
 
 Bu makalede bir Azure hesabınız ve konuşma hizmeti aboneliğiniz olduğunu varsaymaktadır. Hesabınız ve aboneliğiniz yoksa [konuşma hizmetini ücretsiz deneyin](../../../overview.md#try-the-speech-service-for-free).
 
 ## <a name="install-the-speech-sdk"></a>Konuşma SDK 'sını yükler
 
-Herhangi bir şey yapabilmeniz <a href="https://www.npmjs.com/package/microsoft-cognitiveservices-speech-sdk" target="_blank">için önce JavaScript <span class="docon docon-navigate-external x-hidden-focus"></span> için konuşma SDK 'sını </a>yüklemeniz gerekir. Platformunuza bağlı olarak, aşağıdaki yönergeleri kullanın:
+Herhangi bir şey yapmadan önce, Node.js için konuşma SDK 'sını yüklemeniz gerekir. Yalnızca paket adının yüklenmesini istiyorsanız, öğesini çalıştırın `npm install microsoft-cognitiveservices-speech-sdk` . Kılavuzlu yükleme yönergeleri için [Başlarken](https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstarts/setup-platform?tabs=dotnet%2Clinux%2Cjre%2Cnodejs&pivots=programming-language-javascript) makalesine bakın.
 
-- <a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk?tabs=nodejs#get-the-speech-sdk" target="_blank">Node.js <span 
-class="docon docon-navigate-external x-hidden-focus"></span></a>
-- <a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk?tabs=browser#get-the-speech-sdk" target="_blank">Web tarayıcısı <span class="docon docon-navigate-external x-hidden-focus"></span></a>
-
-Ayrıca, hedef ortama bağlı olarak, aşağıdakilerden birini kullanın:
-
-# <a name="script"></a>[SCRIPT](#tab/script)
-
-<a href="https://aka.ms/csspeech/jsbrowserpackage" target="_blank">JavaScript <span class="docon docon-navigate-external x-hidden-focus"></span>microsoft.cognitiveservices.speech.sdk.bundle.jsdosyası için konuşma SDK 'sını</a> indirip ayıklayın ve HTML dosyanıza erişilebilen bir klasöre yerleştirin. 
-
-```html
-<script src="microsoft.cognitiveservices.speech.sdk.bundle.js"></script>;
-```
-
-> [!TIP]
-> Bir Web tarayıcısını hedefliyorsanız ve `<script>` etiketini kullanıyorsanız; `sdk` sınıflara başvurulduğunda önek gerekli değildir. `sdk`Ön ek, modülü adlandırmak için kullanılan bir diğer addır `require` .
-
-# <a name="require"></a>[gerektirir](#tab/require)
+`require`SDK 'yı içeri aktarmak için aşağıdaki ifadeyi kullanın.
 
 ```javascript
 const sdk = require("microsoft-cognitiveservices-speech-sdk");
 ```
 
-Hakkında daha fazla bilgi için `require` bkz. <a href="https://nodejs.org/en/knowledge/getting-started/what-is-require/" target="_blank">ne gerektiriyor? <span class="docon docon-navigate-external x-hidden-focus"></span> </a>.
-
----
+Hakkında daha fazla bilgi için `require` bkz. [gerekli belgeler](https://nodejs.org/en/knowledge/getting-started/what-is-require/).
 
 ## <a name="create-a-speech-configuration"></a>Konuşma yapılandırması oluşturma
 
@@ -72,52 +55,14 @@ const speechConfig = sdk.SpeechConfig.fromSubscription("<paste-your-subscription
 
 ## <a name="recognize-from-microphone-browser-only"></a>Mikrofondan tanıma (yalnızca tarayıcı)
 
-Cihaz mikrofonunuzu kullanarak konuşmayı tanımak için bir `AudioConfig` kullanarak oluşturun `fromDefaultMicrophoneInput()` . Ardından, ve ' yi geçirerek bir başlatın [`SpeechRecognizer`](/javascript/api/microsoft-cognitiveservices-speech-sdk/speechrecognizer) `speechConfig` `audioConfig` .
+Konuşmayı bir mikrofondan tanıma **Node.jsdesteklenmez** ve yalnızca tarayıcı tabanlı bir JavaScript ortamında desteklenir. [Mikrofon uygulamasının konuşmadan metne](https://github.com/Azure-Samples/AzureSpeechReactSample/blob/main/src/App.js#L29)bakmak için GitHub 'daki [tepki verme örneğine](https://github.com/Azure-Samples/AzureSpeechReactSample) bakın.
 
-```javascript
-const sdk = require("microsoft-cognitiveservices-speech-sdk");
-const speechConfig = sdk.SpeechConfig.fromSubscription("<paste-your-subscription-key>", "<paste-your-region>");
-
-function fromMic() {
-    let audioConfig = sdk.AudioConfig.fromDefaultMicrophoneInput();
-    let recognizer = new sdk.SpeechRecognizer(speechConfig, audioConfig);
-    
-    console.log('Speak into your microphone.');
-    recognizer.recognizeOnceAsync(result => {
-        console.log(`RECOGNIZED: Text=${result.text}`);
-    });
-}
-fromMic();
-```
-
-*Belirli* bir ses giriş cihazını kullanmak istiyorsanız, IÇINDE cihaz kimliği belirtmeniz gerekir `AudioConfig` . Ses giriş cihazınız için [CIHAZ kimliğini nasıl alabileceğinizi](../../../how-to-select-audio-input-devices.md) öğrenin.
+> [!NOTE]
+> *Belirli* bir ses giriş cihazını kullanmak istiyorsanız, IÇINDE cihaz kimliği belirtmeniz gerekir `AudioConfig` . Ses giriş cihazınız için [CIHAZ kimliğini nasıl alabileceğinizi](../../../how-to-select-audio-input-devices.md) öğrenin.
 
 ## <a name="recognize-from-file"></a>Dosyadan tanı 
 
-# <a name="browser"></a>[Tarayıcı](#tab/browser)
-
-Tarayıcı tabanlı bir JavaScript ortamında bir ses dosyasından konuşmayı tanımak için, `fromWavFileInput()` bir oluşturmak için işlevini kullanın [`AudioConfig`](/javascript/api/microsoft-cognitiveservices-speech-sdk/audioconfig) . İşlev bir `fromWavFileInput()` JavaScript [`File`](https://developer.mozilla.org/en-US/docs/Web/API/File/File) nesnesini parametre olarak bekliyor.
-
-```javascript
-const sdk = require("microsoft-cognitiveservices-speech-sdk");
-const speechConfig = sdk.SpeechConfig.fromSubscription("<paste-your-subscription-key>", "<paste-your-region>");
-
-function fromFile() {
-    // wavByteContent should be a byte array of the raw wav content
-    let file = new File([wavByteContent]);
-    let audioConfig = sdk.AudioConfig.fromWavFileInput(file);
-    let recognizer = new sdk.SpeechRecognizer(speechConfig, audioConfig);
-    
-    recognizer.recognizeOnceAsync(result => {
-        console.log(`RECOGNIZED: Text=${result.text}`);
-    });
-}
-fromFile();
-```
-
-# <a name="nodejs"></a>[Node.js](#tab/node)
-
-Node.js bir ses dosyasından konuşmayı tanımak için, bir gönderme akışı kullanan alternatif bir tasarım deseninin kullanılması gerekir, çünkü JavaScript [`File`](https://developer.mozilla.org/en-US/docs/Web/API/File/File) nesnesi bir Node.js çalışma zamanında kullanılamaz. Aşağıdaki kod:
+Node.js bir ses dosyasından konuşmayı tanımak için, bir gönderme akışı kullanan alternatif bir tasarım deseninin kullanılması gerekir, çünkü JavaScript `File` nesnesi bir Node.js çalışma zamanında kullanılamaz. Aşağıdaki kod:
 
 * Kullanarak bir gönderme akışı oluşturur `createPushStream()`
 * `.wav`Bir okuma akışı oluşturarak dosyayı açar ve gönderme akışına yazar
@@ -149,8 +94,6 @@ fromFile();
 
 Giriş olarak bir gönderim akışı kullanmak, ses verilerinin ham PCM olduğunu varsayar, ör. herhangi bir üst bilgi atlanıyor.
 Üst bilgi atlanmadığında, API bazı durumlarda çalışmaya devam eder, ancak en iyi sonuçlar için, `fs` *ses verilerinin başlangıcında* başlayacak şekilde üstbilgileri okumak için mantığı uygulamayı düşünün.
-
----
 
 ## <a name="error-handling"></a>Hata işleme
 
@@ -190,7 +133,7 @@ Bunun aksine, sürekli tanıma, tanımanın ne zaman durdurulacağını **denetl
 Girişi tanımlayarak ve şunu başlatarak başlayın [`SpeechRecognizer`](/javascript/api/microsoft-cognitiveservices-speech-sdk/speechrecognizer) :
 
 ```javascript
-const recognizer = new sdk.SpeechRecognizer(speechConfig);
+const recognizer = new sdk.SpeechRecognizer(speechConfig, audioConfig);
 ```
 
 Sonra, öğesinden gönderilen olaylara abone olun [`SpeechRecognizer`](/javascript/api/microsoft-cognitiveservices-speech-sdk/speechrecognizer) .
