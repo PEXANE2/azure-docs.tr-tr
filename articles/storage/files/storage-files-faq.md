@@ -7,12 +7,12 @@ ms.date: 02/23/2020
 ms.author: rogarana
 ms.subservice: files
 ms.topic: conceptual
-ms.openlocfilehash: 739e1dea23f87403a4aded50d5c9f254a55c64cc
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 2d4286cc8bc08eaf7d0b376a8b7789c8c8db183d
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101737622"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102202646"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-files"></a>Azure Dosyalar hakkında sık sorulan sorular (SSS)
 [Azure dosyaları](storage-files-introduction.md) , bulutta endüstri standardı [sunucu ILETI bloğu (SMB) protokolü](/windows/win32/fileio/microsoft-smb-protocol-and-cifs-protocol-overview) ve [ağ dosya sistemi (NFS) protokolü](https://en.wikipedia.org/wiki/Network_File_System) (Önizleme) aracılığıyla erişilebilen tam olarak yönetilen dosya paylaşımları sunar. Azure dosya paylaşımlarını bulutta veya Windows, Linux ve macOS 'ın şirket içi dağıtımlarında eşzamanlı olarak bağlayabilirsiniz. Ayrıca, verilerin kullanıldığı yere hızlı erişim için Azure Dosya Eşitleme kullanarak Windows Server makinelerinde Azure dosya paylaşımlarını önbelleğe alabilirsiniz.
@@ -119,26 +119,38 @@ Bu makalede, Azure dosyaları ile Azure Dosya Eşitleme kullanımı dahil olmak 
 
 * <a id="sizeondisk-versus-size"></a>
   **Azure Dosya Eşitleme, bir dosyanın *disk özelliği üzerindeki boyutu* neden bir dosya için *Boyut* özelliği ile eşleşmiyor?**  
-  Bkz. [bulut katmanlamayı anlama](storage-sync-cloud-tiering.md#sizeondisk-versus-size).
+  Bkz. [bulut katmanlaması Azure dosya eşitleme anlama](storage-sync-cloud-tiering-overview.md#tiered-vs-locally-cached-file-behavior).
 
 * <a id="is-my-file-tiered"></a>
   **Bir dosyanın katmanlı olup olmadığını nasıl anlayabilirim?**  
-  Bkz. [bulut katmanlamayı anlama](storage-sync-cloud-tiering.md#is-my-file-tiered).
+  Bkz. [Azure dosya eşitleme katmanlı dosyaları yönetme](storage-sync-how-to-manage-tiered-files.md#how-to-check-if-your-files-are-being-tiered).
 
 * <a id="afs-recall-file"></a>**Kullanmak istediğim bir dosya katmanlı. Dosyayı yerel olarak kullanmak için diske nasıl geri çekirim?**  
-  Bkz. [bulut katmanlamayı anlama](storage-sync-cloud-tiering.md#afs-recall-file).
+  Bkz. [Azure dosya eşitleme katmanlı dosyaları yönetme](storage-sync-how-to-manage-tiered-files.md#how-to-recall-a-tiered-file-to-disk).
 
 * <a id="afs-force-tiering"></a>
   **Nasıl yaparım? bir dosyanın veya dizinin katmanlanmasını zorlıyor musunuz?**  
-  Bkz. [bulut katmanlamayı anlama](storage-sync-cloud-tiering.md#afs-force-tiering).
+  Bkz. [Azure dosya eşitleme katmanlı dosyaları yönetme](storage-sync-how-to-manage-tiered-files.md#how-to-force-a-file-or-directory-to-be-tiered).
 
 * <a id="afs-effective-vfs"></a>
   **Bir birimde birden çok sunucu uç noktası olduğunda *birim boş alanı* nasıl yorumlanır?**  
-  Bkz. [bulut katmanlamayı anlama](storage-sync-cloud-tiering.md#afs-effective-vfs).
+  Bkz. [Azure dosya eşitleme bulut katmanlama Ilkeleri seçme](storage-sync-cloud-tiering-policy.md#multiple-server-endpoints-on-a-local-volume).
   
 * <a id="afs-tiered-files-tiering-disabled"></a>
   **Bulut katmanlama devre dışı, neden sunucu uç noktası konumunda katmanlı dosyalar var?**  
-  Bkz. [bulut katmanlamayı anlama](storage-sync-cloud-tiering.md#afs-tiering-disabled).
+    Katmanlı dosyaların sunucu uç noktası konumunda bulunabilmesinin iki nedeni vardır:
+
+    - Varolan bir eşitleme grubuna yeni bir sunucu uç noktası eklerken, ilk indirme modu için ad alanını geri çağır seçeneğini veya yalnızca ad alanını hatırla seçeneğini belirlerseniz, dosyalar yerel olarak indirilene kadar katmanlı olarak görünür. Bunu önlemek için, ilk indirme modu için katmanlı dosyaları önleyin seçeneğini belirleyin. Dosyaları el ile geri çekmek için [Invoke-StorageSyncFileRecall](storage-sync-how-to-manage-tiered-files.md#how-to-recall-a-tiered-file-to-disk) cmdlet 'ini kullanın.
+
+    - Bulut katmanlaması sunucu uç noktasında etkinleştirildiyse ve devre dışı bırakılmışsa, dosyalar erişilene kadar katmanlı olarak kalır.
+
+* <a id="afs-tiered-files-not-showing-thumbnails"></a>
+  **Katmanlı dosyalar neden Windows Gezgini 'nde küçük resimleri veya önizlemeleri gösterilmiyor?**  
+    Katmanlı dosyalar için, küçük resimler ve önizlemeler sunucu uç noktanıza görünmez. Bu davranış, Windows 'daki küçük resim önbelleği özelliği, çevrimdışı özniteliği olan dosyaların okunmasına göre atlanmasından bu yana beklenmektedir. Bulut katmanlama özelliği etkinken katmanlı dosyalar aracılığıyla okuma, bunların indirilememesine (geri çekilir) neden olur.
+
+    Bu davranış Azure Dosya Eşitleme özgü değildir, Windows Gezgini, çevrimdışı özniteliği ayarlanmış herhangi bir dosya için "gri X" görüntüler. SMB üzerinden dosyalara erişirken X simgesini görürsünüz. Bu davranışın ayrıntılı bir açıklaması için bkz. [https://blogs.msdn.microsoft.com/oldnewthing/20170503-00/?p=96105](https://blogs.msdn.microsoft.com/oldnewthing/20170503-00/?p=96105)
+
+    Katmanlı dosyaları yönetme hakkında sorularınız için lütfen bkz. [katmanlı dosyaları yönetme](storage-sync-how-to-manage-tiered-files.md).
 
 * <a id="afs-files-excluded"></a>
   **Hangi dosya veya klasörler Azure Dosya Eşitleme tarafından otomatik olarak dışlanır?**  
@@ -274,7 +286,7 @@ Bu makalede, Azure dosyaları ile Azure Dosya Eşitleme kullanımı dahil olmak 
     2.  "Active Directory etki alanları ve Güvenleri" konsolunu açın
     3.  Dosya paylaşımında erişmek istediğiniz etki alanına sağ tıklayın, ardından "güvenler" sekmesine tıklayın ve giden güvenlerden orman B etki alanı ' nı seçin. İki orman arasında güven yapılandırmadıysanız, önce güveni ayarlamanız gerekir
     4.  "Özellikler..." seçeneğine tıklayın sonra "ad soneki yönlendirmesi"
-    5.  "*. File.core.windows.net" surfdüzeltmesini göster ' i işaretleyin. Aksi takdirde, ' Yenile ' seçeneğine tıklayın
+    5.  "*. File.core.windows.net" sonekinin görünür olup olmadığını denetleyin. Aksi takdirde, ' Yenile ' seçeneğine tıklayın
     6.  "*. File.core.windows.net" öğesini seçin, ardından "etkinleştir" ve "Uygula" seçeneğine tıklayın
 
 * <a id=""></a>

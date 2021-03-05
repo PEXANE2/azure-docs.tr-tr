@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.custom: mvc, devx-track-azurecli
 ms.date: 08/20/2019
 ms.author: robinsh
-ms.openlocfilehash: 403fe82c46c90c5f8efb48ce0a394a2f63488fed
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: fd179bf17f481ae84f768d619c6ddc0b9afab280
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98624634"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102202561"
 ---
 # <a name="quickstart-communicate-to-a-device-application-in-c-via-iot-hub-device-streams-preview"></a>Hızlı başlangıç: IoT Hub cihaz akışları aracılığıyla C 'deki bir cihaz uygulamasıyla Iletişim kurma (Önizleme)
 
@@ -114,7 +114,7 @@ Bu hızlı başlangıç için, [C Için Azure IoT cihaz SDK 'sını](iot-hub-dev
 
 ## <a name="register-a-device"></a>Cihaz kaydetme
 
-Bağlanabilmesi için IoT Hub 'ınız ile bir cihaz kaydetmeniz gerekir. Bu bölümde, sanal bir cihazı kaydetmek için [IoT uzantısıyla](/cli/azure/ext/azure-iot/iot?view=azure-cli-latest&preserve-view=true) birlikte Azure Cloud Shell kullanırsınız.
+Bağlanabilmesi için IoT Hub 'ınız ile bir cihaz kaydetmeniz gerekir. Bu bölümde, sanal bir cihazı kaydetmek için [IoT uzantısıyla](/cli/azure/ext/azure-iot/iot) birlikte Azure Cloud Shell kullanırsınız.
 
 1. Cihaz kimliğini oluşturmak için Cloud Shell ' de aşağıdaki komutu çalıştırın:
 

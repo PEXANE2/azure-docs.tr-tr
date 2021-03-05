@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 03/19/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: 2d531edeeae9e0dd7e392cae66d9e4d41c68dfa2
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 73dc2520fbe970123a52133cb00909fea190610a
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98882272"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102202680"
 ---
 # <a name="migrate-from-network-attached-storage-nas-to-a-hybrid-cloud-deployment-with-azure-file-sync"></a>Ağ bağlantılı depolamadan (NAS) Azure Dosya Eşitleme ile karma bulut dağıtımına geçiş
 
@@ -45,7 +45,7 @@ Azure dosyaları [geçişine genel bakış makalesinde](storage-files-migration-
 * Bir sanal makine veya fiziksel sunucu olarak en az 2012R2 ' de bir Windows Server 2019 oluşturun. Windows Server yük devretme kümesi de desteklenir.
 * Doğrudan bağlı depolama alanı sağlayın veya ekleyin (desteklenmeyen bir şekilde, NAS ile karşılaştırıldığında).
 
-    Azure dosya eşitleme [bulut katmanlama](storage-sync-cloud-tiering.md) özelliğini kullanıyorsanız, sağladığınız depolama alanı miktarı, şu anda NAS gerecinizde kullandığınızdan daha küçük olabilir.
+    Azure dosya eşitleme [bulut katmanlama](storage-sync-cloud-tiering-overview.md) özelliğini kullanıyorsanız, sağladığınız depolama alanı miktarı, şu anda NAS gerecinizde kullandığınızdan daha küçük olabilir.
     Ancak, daha sonraki bir aşamada, daha büyük bir NAS alanından dosyalarınızı daha küçük bir Windows Server birimine kopyaladığınızda, toplu iş ' de çalışmanız gerekir:
 
     1. Diske sığan bir dosya kümesini taşıyın
@@ -105,7 +105,7 @@ Temel geçiş yaklaşımı, NAS gerecinizden Windows sunucunuza yönelik bir Rob
 
 Aşağıdaki RoboCopy komutu, dosyaları NAS depolamadan Windows Server hedef klasörünüze kopyalayacaktır. Windows Server onu Azure dosya paylaşımıyla eşitler. 
 
-Windows Server 'da dosyalarınızın NAS gerecinden daha az depolama alanı sağladıysanız, bulut katmanlaması yapılandırmış olursunuz. Yerel Windows Server birimi tam aldığından, [bulut katmanlaması](storage-sync-cloud-tiering.md) , zaten zaten eşitlenmiş olan ve katman dosyalarını açacaktır. Bulut katmanlaması, bir kopyanın NAS gerecinden devam etmesi için yeterli alan oluşturacak. Bulut katmanlaması, %99 birim boş alana ulaşmak için ne eşitlendiğini ve disk alanını boşaltmak için bir saatte bir kez kontrol eder.
+Windows Server 'da dosyalarınızın NAS gerecinden daha az depolama alanı sağladıysanız, bulut katmanlaması yapılandırmış olursunuz. Yerel Windows Server birimi tam aldığından, [bulut katmanlaması](storage-sync-cloud-tiering-overview.md) , zaten zaten eşitlenmiş olan ve katman dosyalarını açacaktır. Bulut katmanlaması, bir kopyanın NAS gerecinden devam etmesi için yeterli alan oluşturacak. Bulut katmanlaması, %99 birim boş alana ulaşmak için ne eşitlendiğini ve disk alanını boşaltmak için bir saatte bir kez kontrol eder.
 Bu, RoboCopy, buluta ve katmana yerel olarak eşitlenebilmeniz ve bu nedenle yerel disk alanı tükendiğinden dosyaları daha hızlı taşıbilirler. RoboCopy başarısız olacak. Paylaşımlar üzerinde bunu önleyen bir sırayla çalışmanız önerilir. Örneğin, aynı anda tüm paylaşımlar için RoboCopy işlerini başlatmaktan veya yalnızca Windows Server 'daki geçerli boş alan miktarına uygun olan paylaşımları birkaç kez bahsetmez.
 
 ```console
@@ -208,13 +208,13 @@ Paylaşımı/paylaşım gruplarını ortak bir köke veya birime geçirmeyi tama
 Bu kopyaların birkaçını paralel olarak çalıştırmayı deneyebilirsiniz. Tek seferde bir Azure dosya paylaşımının kapsamını işlemeyi öneririz.
 
 > [!WARNING]
-> Tüm verileri NAS 'dan Windows Server 'a taşıdınız ve geçiş işlemi tamamlandıktan sonra: Azure portal ***Tüm** _ eşitleme gruplarına dönün ve bulut katmanlama birimi boş alan yüzdesi değerini önbellek kullanımı için daha uygun bir değere ayarlayın, %20 deyin. 
+> Ortamınızdaki tüm verileri Windows Server 'a taşıdınız ve geçiş işlemi tamamlandıktan sonra: Azure portal ***Tüm***  eşitleme gruplarına geri dönün ve bulut katmanlama birimi boş alan yüzdesi değerini önbellek kullanımına daha uygun bir şekilde ayarlayın, %20 deyin. 
 
 Bulut katmanlama birimi boş alan ilkesi, büyük olasılıkla birden çok sunucu uç noktası ile eşitlenmesi olan bir birim düzeyinde çalışır. Tek bir sunucu uç noktasında boş alanı ayarlamayı unutursanız, eşitleme en kısıtlayıcı kuralı uygulamaya devam eder ve %99 boş disk alanı tutmaya çalışır ve bu da, yerel önbelleğin bekleneceği gibi yapılmadığından bu işlemi gerçekleştirmeyecektir. Amacınız yalnızca nadiren erişilen ve arşiv verileri içeren bir birimin ad alanına sahip olmadığı ve diğer bir senaryo için depolama alanının geri kalanını ayırdığınız durumlar dışında.
 
 ## <a name="troubleshoot"></a>Sorun giderme
 
-' De çalıştırabileceğiniz en olası sorun, RoboCopy komutunun Windows Server tarafında _ "Volume Full" * ile başarısız olmasına neden olur. Bulut katmanlaması, eşitlenen yerel Windows Server diskinden içerik boşaltmak için saatte bir kez davranır. Amaç, birimdeki %99 boş alana ulaşmaktır.
+' De çalıştırabileceğiniz en olası sorun, RoboCopy komutunun Windows Server tarafında *"Volume Full"* ile başarısız olmasına neden olur. Bulut katmanlaması, eşitlenen yerel Windows Server diskinden içerik boşaltmak için saatte bir kez davranır. Amaç, birimdeki %99 boş alana ulaşmaktır.
 
 Eşitleme ilerleme durumu ve bulut katmanlaması için disk alanının serbest olmasına izin verin. Bunu, Windows sunucunuzdaki dosya Gezgini ' nde gözlemleyebilirsiniz.
 

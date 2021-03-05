@@ -49,8 +49,8 @@
       href: ddos-protection-partner-onboarding.md
 - name: Başvuru
   items:
-    - name: Azure CLI’si
-      href: /cli/azure/network/ddos-protection?view=azure-cli-latest
+    - name: Azure CLI
+      href: /cli/azure/network/ddos-protection
     - name: Azure PowerShell
       href: /powershell/module/Az.Network/New-AzDdosProtectionPlan?view=azps-2.8.0
     - name: .NET

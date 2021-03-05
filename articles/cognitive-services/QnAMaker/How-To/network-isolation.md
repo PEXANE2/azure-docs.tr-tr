@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 11/09/2020
-ms.openlocfilehash: 4e9b45c72e5fb4cbd9e548727faf8946e3e5ba8f
-ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
+ms.openlocfilehash: 8fe8c07866b23e5d990b71bfc9cd556c338634d3
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102125151"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102203377"
 ---
 # <a name="recommended-settings-for-network-isolation"></a>Ağ yalıtımı için önerilen ayarlar
 
@@ -57,6 +57,8 @@ Erişimi kısıtlamak veya App Service environemnt 'yi soru-cevap oluşturma App
    1. [Tüm hizmet etiketlerinin IP aralıklarını](https://www.microsoft.com/download/details.aspx?id=56519)indirin.
    2. "Biliveservicesmanagement" öğesinin IP 'lerini seçin.
    3. App Service kaynağınızın ağ bölümüne gidin ve IP 'Leri bir allowlist öğesine eklemek için "erişim kısıtlaması Yapılandır" seçeneğini tıklayın.
+
+    ![gelen bağlantı noktası özel durumları](../media/inbound-ports.png)
 
 Ayrıca, App Service için aynı olacak otomatikleştirilmiş bir betiğimiz de vardır. GitHub 'da [bir izin yapılandırmak için PowerShell betiğini](https://github.com/pchoudhari/QnAMakerBackupRestore/blob/master/AddRestrictedIPAzureAppService.ps1) bulabilirsiniz. Abonelik kimliği, kaynak grubu ve gerçek App Service adını betik parametreleri olarak girbilmeniz gerekir. Betiği çalıştırmak, IP 'Leri App Service allowlist dosyasına otomatik olarak ekler.
 

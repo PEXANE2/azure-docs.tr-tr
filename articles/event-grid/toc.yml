@@ -212,6 +212,10 @@
           href: diagnostic-logs.md
         - name: Ölçümler
           href: metrics.md
+    - name: Uygulama alanları
+      items:
+        - name: Etki alanları için kullanım örnekleri
+          href: event-domains-use-cases.md
 - name: Nasıl yapılır kılavuzları
   items:
     - name: 'Sistem konularını oluşturma, görüntüleme ve yönetme'

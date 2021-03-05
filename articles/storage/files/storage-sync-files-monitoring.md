@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 09/28/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: d1e51552acdd869a3f304a6d48e18e9d2aa6c782
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 272a642f70849b85be00d2507109eb97935c0dde
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100576775"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102202510"
 ---
 # <a name="monitor-azure-file-sync"></a>Azure Dosya Eşitleme’yi izleme
 
@@ -42,7 +42,7 @@ Azure Dosya Eşitleme ölçümleri varsayılan olarak etkindir ve 15 dakikada bi
 
 Azure Dosya Eşitleme için aşağıdaki ölçümler Azure Izleyici 'de bulunabilir:
 
-| Ölçüm adı | Description |
+| Ölçüm adı | Açıklama |
 |-|-|
 | Eşitlenen baytlar | Aktarılan verilerin boyutu (karşıya yükleme ve indirme).<br><br>Birim: bayt<br>Toplama türü: Toplam<br>Geçerli Boyutlar: sunucu uç noktası adı, eşitleme yönü, eşitleme grubu adı |
 | Bulut katmanlama geri çağırma | Geri çekilen verilerin boyutu.<br><br>**Note**: Bu ölçüm gelecekte kaldırılacak. Geri çekilen verilerin boyutunu izlemek için bulut katmanlama geri çekme boyutu ölçümünü kullanın.<br><br>Birim: bayt<br>Toplama türü: Toplam<br>Geçerli boyut: sunucu adı |
@@ -111,14 +111,14 @@ Portalda bir **sunucu uç noktasının** durumunu görüntülemek Için, **depol
 
 - Portaldaki **sunucu uç noktası sistem durumu** ve **eşitleme etkinliği** , sunucudaki telemetri olay günlüğünde günlüğe kaydedilen eşitleme OLAYLARıNı temel alır (kimlik 9102 ve 9302). Hata iptal edildi gibi geçici bir hata nedeniyle eşitleme oturumu başarısız olursa, geçerli eşitleme oturumu ilerleme yaptığından (dosyalar uygulanır), sunucu uç noktası portalda hala **sağlıklı** olarak görünür. Olay KIMLIĞI 9302, eşitleme işlemi tamamlandıktan sonra eşitleme ilerleme olayı ve olay KIMLIĞI 9102 günlüğe kaydedilir.  Daha fazla bilgi için bkz. [eşitleme durumu](./storage-sync-files-troubleshoot.md?tabs=server%252cazure-portal#broken-sync) ve [Eşitleme ilerleme durumu](./storage-sync-files-troubleshoot.md?tabs=server%252cazure-portal#how-do-i-monitor-the-progress-of-a-current-sync-session). Sunucu uç noktası sistem durumu bir **hata** gösteriyorsa veya **etkinlik yoksa**, rehberlik için [sorun giderme belgelerine](./storage-sync-files-troubleshoot.md?tabs=portal1%252cazure-portal#common-sync-errors) bakın.
 - Portalda **Eşitleme olmayan dosyalar** , sunucusundaki telemetri olay günlüğüne kaydedilen 9121 olay kimliğini temel alır. Bu olay, eşitleme oturumu tamamlandığında her öğe için ayrı hata için günlüğe kaydedilir. Öğe başına hataları çözmek için bkz. [nasıl yaparım?, eşitlenmekte olan belirli dosya veya klasörler olup](./storage-sync-files-troubleshoot.md?tabs=server%252cazure-portal#how-do-i-see-if-there-are-specific-files-or-folders-that-are-not-syncing)olmadığını görün.
-- Portalda **bulut katmanlama verimliliğini** görüntülemek Için **sunucu uç noktası özelliklerine** gidin ve **bulut katmanlaması** bölümüne gidin. Bulut katmanlama verimliliği için girilen veriler, sunucusundaki telemetri olay günlüğünde günlüğe kaydedilen olay KIMLIĞI 9071 ' i temel alır. Daha fazla bilgi için bkz. [bulut katmanlaması genel bakış](./storage-sync-cloud-tiering.md).
+- Portalda **bulut katmanlama verimliliğini** görüntülemek Için **sunucu uç noktası özelliklerine** gidin ve **bulut katmanlaması** bölümüne gidin. Bulut katmanlama verimliliği için girilen veriler, sunucusundaki telemetri olay günlüğünde günlüğe kaydedilen olay KIMLIĞI 9071 ' i temel alır. Daha fazla bilgi için bkz. [bulut katmanlamayı izleme](./storage-sync-monitor-cloud-tiering.md).
 - Portalda **hata giderme ve geri çağırma** **dosyalarını** görüntülemek Için **sunucu uç noktası özelliklerine** gidin ve **bulut katmanlaması** bölümüne gidin. **Katmanlama olmayan dosyalar** , sunucuda telemetri olay günlüğünde günlüğe KAYDEDILEN olay kimliği 9003 ' i temel alır ve **hataları GERI çağırır** olay kimliği 9006 ' i temel alır. Katman veya geri çağırma işlemleri başarısız olan dosyaları araştırmak için bkz. [katmanın başarısız olduğu dosyaların nasıl giderileceği](./storage-sync-files-troubleshoot.md?tabs=portal1%252cazure-portal#how-to-troubleshoot-files-that-fail-to-tier) ve geri [çekilemiyor dosyaları nasıl giderebileceğiniz](./storage-sync-files-troubleshoot.md?tabs=portal1%252cazure-portal#how-to-troubleshoot-files-that-fail-to-be-recalled).
 
 ### <a name="metric-charts"></a>Ölçüm grafikleri
 
 - Aşağıdaki ölçüm grafikleri, depolama eşitleme hizmeti portalında görüntülenebilir:
 
-  | Ölçüm adı | Description | Dikey pencere adı |
+  | Ölçüm adı | Açıklama | Dikey pencere adı |
   |-|-|-|
   | Eşitlenen baytlar | Aktarılan verilerin boyutu (karşıya yükleme ve indirme) | Eşitleme grubu, sunucu uç noktası |
   | Bulut katmanlama geri çağırma | Geri çekilen verilerin boyutu | Kayıtlı sunucular |
@@ -178,7 +178,7 @@ Sunucuda Azure Dosya Eşitleme performans sayaçlarını görüntülemek için p
 
 Azure Dosya Eşitleme için aşağıdaki performans sayaçları performans Izleyicisinde kullanılabilir:
 
-| Performans Object\sayaç adı | Description |
+| Performans Object\sayaç adı | Açıklama |
 |-|-|
 | AFS bayt Transferred\indirilen bayt/sn | Saniye başına indirilen bayt sayısı. |
 | AFS bayt Transferred\karşıya yüklenen bayt/sn | Saniye başına karşıya yüklenen bayt sayısı. |

@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 2/5/2021
-ms.openlocfilehash: 3cc29e0bd806ab76c4980128df5a89761e465fe7
-ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
+ms.openlocfilehash: d1a0873552ac9043d8f584f38ecd41c5e8543489
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99988382"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102202766"
 ---
 # <a name="custom-classifications-in-azure-purview"></a>Azure purview 'da özel sınıflandırmalar 
 
@@ -91,24 +91,50 @@ Tarama sistemi daha sonra bu kuralı, çalışan KIMLIĞI deseninin bulunduğu h
 
     :::image type="content" source="media/create-a-custom-classification-and-classification-rule/newclassificationrule.png" alt-text="Yeni sınıflandırma kuralı ekle" border="true":::
 
-5. **Yeni sınıflandırma kuralı** iletişim kutusu açılır. Yeni kuralınız için yapılandırma bilgilerini girin.
+5. **Yeni sınıflandırma kuralı** iletişim kutusu açılır. Alanları doldurup bir **normal ifade kuralı** veya **Sözlük kuralı** oluşturup oluşturmayacağınıza karar verin.
 
-    :::image type="content" source="media/create-a-custom-classification-and-classification-rule/createclassificationrule.png" alt-text="Yeni sınıflandırma kuralı oluştur" border="true":::
+    |Alan     |Açıklama  |
+    |---------|---------|
+    |Ad   |    Gereklidir. Maksimum değer 100 karakterdir.    |
+    |Açıklama      |İsteğe bağlı. Maksimum değer 256 karakterdir.    |
+    |Sınıflandırma adı    | Gereklidir. Bir eşleşme bulunursa tarayıcıya uygulamayı bildirmek için açılan listeden sınıflandırmanın adını seçin.        |
+    |Durum   |  Gereklidir. Seçenekler etkin veya devre dışı. Varsayılan değer etkindir.    |
 
-|Alan     |Açıklama  |
-|---------|---------|
-|Ad   |    Gereklidir. Maksimum değer 100 karakterdir.    |
-|Description      |İsteğe bağlı. Maksimum değer 256 karakterdir.    |
-|Sınıflandırma adı    | Gereklidir. Bir eşleşme bulunursa tarayıcıya uygulamayı bildirmek için açılan listeden sınıflandırmanın adını seçin.        |
-|Durum   |  Gereklidir. Seçenekler etkin veya devre dışı. Varsayılan değer etkindir.    |
-|Veri kalıbı    |İsteğe bağlı. Veri alanında depolanan verileri temsil eden bir normal ifade. Sınır çok büyük. Önceki örnekte, veri desenleri, sözcük olan bir çalışan KIMLIĞI için test `Employee{GUID}` .  |
-|Sütun kalıbı    |İsteğe bağlı. Eşleştirmek istediğiniz sütun adlarını temsil eden bir normal ifade. Sınır çok büyük.          |
+    :::image type="content" source="media/create-a-custom-classification-and-classification-rule/create-new-classification-rule.png" alt-text="Yeni sınıflandırma kuralı oluştur" border="true":::
 
-**Veri deseninin** altında iki seçenek vardır:
+### <a name="creating-a-regular-expression-rule"></a>Normal Ifade kuralı oluşturma
 
-- **Ayrı eşleşme eşiği**: tarayıcıdan veri modelini çalıştırmadan önce bir sütunda bulunması gereken ayrı veri değerlerinin toplam sayısı. Önerilen değer 8 ' dir. Bu değer, 2 ile 32 arasında el ile ayarlanabilir. Bu değer, sütunun tarayıcıya doğru bir şekilde sınıflandırmasına yetecek kadar veri içerdiğinden emin olmak için bu değeri gerektirir. Örneğin, 1 değerini içeren birden çok satır içeren bir sütun sınıflandırılmayacaktır. Değer içeren bir satır içeren sütunlar ve satırların geri kalanı null değerleri de sınıflandırılmayacaktır. Birden çok desen belirtirseniz bu değer bunların her biri için geçerlidir.
+1. Bir normal ifade kuralı oluşturuyorsanız, aşağıdaki ekranı görürsünüz. Kuralınız için **Önerilen Regex desenleri oluşturmak** üzere, isteğe bağlı olarak kullanılacak bir dosyayı karşıya yükleyebilirsiniz.
 
-- **En düşük eşleşme eşiği**: Bu ayarı, sınıflandırmanın uygulanması için tarayıcı tarafından bulunması gereken bir sütundaki veri değeri eşleştirmelerinin minimum yüzdesini ayarlamak için kullanabilirsiniz. Önerilen değer %60 ' dir. Bu ayarla dikkatli olmanız gerekir. %60 altındaki düzeyi azaltmanız halinde kataloğunuza hatalı pozitif sınıflandırmalar ekleyebilirsiniz. Birden çok veri deseni belirtirseniz bu ayar devre dışıdır ve değer %60 ' de düzeltilir.
+    :::image type="content" source="media/create-a-custom-classification-and-classification-rule/create-new-regex-rule.png" alt-text="Yeni Regex kuralı oluştur" border="true":::
+
+1. Önerilen bir Regex desenini oluşturmaya karar verirseniz, bir dosyayı karşıya yükledikten sonra önerilen desenlerden birini seçin ve önerilen veri ve sütun düzenlerini kullanmak için **desenlere Ekle** ' ye tıklayın. Önerilen desenleri ince ayar veya bir dosyayı karşıya yüklemeden kendi desenlerinizi de yazabilirsiniz.
+
+    :::image type="content" source="media/create-a-custom-classification-and-classification-rule/suggested-regex.png" alt-text="Önerilen Regex oluştur" border="true":::
+
+    |Alan     |Açıklama  |
+    |---------|---------|
+    |Veri kalıbı    |İsteğe bağlı. Veri alanında depolanan verileri temsil eden bir normal ifade. Sınır çok büyük. Önceki örnekte, veri desenleri, sözcük olan bir çalışan KIMLIĞI için test `Employee{GUID}` .  |
+    |Sütun kalıbı    |İsteğe bağlı. Eşleştirmek istediğiniz sütun adlarını temsil eden bir normal ifade. Sınır çok büyük.          |
+
+1. **Veri deseninin** altında ayarlayabileceğiniz iki eşik vardır:
+
+    - **Ayrı eşleşme eşiği**: tarayıcıdan veri modelini çalıştırmadan önce bir sütunda bulunması gereken ayrı veri değerlerinin toplam sayısı. Önerilen değer 8 ' dir. Bu değer, 2 ile 32 arasında el ile ayarlanabilir. Bu değer, sütunun tarayıcıya doğru bir şekilde sınıflandırmasına yetecek kadar veri içerdiğinden emin olmak için bu değeri gerektirir. Örneğin, 1 değerini içeren birden çok satır içeren bir sütun sınıflandırılmayacaktır. Değer içeren bir satır içeren sütunlar ve satırların geri kalanı null değerleri de sınıflandırılmayacaktır. Birden çok desen belirtirseniz bu değer bunların her biri için geçerlidir.
+
+    - **En düşük eşleşme eşiği**: Bu ayarı, sınıflandırmanın uygulanması için tarayıcı tarafından bulunması gereken bir sütundaki farklı veri değeri eşleştirmelerinin minimum yüzdesini ayarlamak için kullanabilirsiniz. Önerilen değer %60 ' dir. Bu ayarla dikkatli olmanız gerekir. %60 altındaki düzeyi azaltmanız halinde kataloğunuza hatalı pozitif sınıflandırmalar ekleyebilirsiniz. Birden çok veri deseni belirtirseniz bu ayar devre dışıdır ve değer %60 ' de düzeltilir.
+
+1. Şimdi kuralınızı doğrulayabilmeniz ve **oluşturabilirsiniz** .
+    :::image type="content" source="media/create-a-custom-classification-and-classification-rule/verify-rule.png" alt-text="Oluşturmadan önce kuralı doğrula" border="true":::
+
+### <a name="creating-a-dictionary-rule"></a>Sözlük kuralı oluşturma
+
+1.  Sözlük kuralı oluşturuyorsanız, aşağıdaki ekranı görürsünüz. Oluşturmakta olduğunuz sınıflandırmanın tüm olası değerlerini içeren bir dosyayı tek bir sütunda karşıya yükleyin.
+
+    :::image type="content" source="media/create-a-custom-classification-and-classification-rule/dictionary-rule.png" alt-text="Sözlük kuralı oluştur" border="true":::
+
+1.  Sözlük oluşturulduktan sonra, farklı eşleştirme ve en düşük eşleşme eşiklerini ayarlayabilir ve kuralı gönderebilirsiniz.
+
+    :::image type="content" source="media/create-a-custom-classification-and-classification-rule/dictionary-generated.png" alt-text="Sözlük kuralı oluştur" border="true":::
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

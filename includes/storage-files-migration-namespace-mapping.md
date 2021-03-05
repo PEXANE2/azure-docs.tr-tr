@@ -7,16 +7,16 @@ ms.topic: conceptual
 ms.date: 2/20/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: 441632ea33195ff8bcb6da5f4fb2298c337a6c97
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.openlocfilehash: 265d14d7cca05ff510e747c8d3a3b071e44a0a68
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93043141"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102202408"
 ---
 Bu adımda, kaç tane Azure dosya paylaşımının gerekli olduğunu değerlendirirsiniz. Tek bir Windows Server örneği (veya kümesi), 30 adede kadar Azure dosya paylaşımını eşitleyebilir.
 
-Birimlerinizde, kullanıcılarınız ve uygulamalarınız için SMB paylaşımları olarak yerel olarak paylaştığınız daha fazla klasör olabilir. Bu senaryoyu görmenin en kolay yolu, 1:1 ' i bir Azure dosya paylaşımıyla eşleyen şirket içi bir paylaşım hakkında bir adım adım yol kullanmaktır. Tek bir Windows Server örneği için 30 ' a kadar az sayıda numaranız varsa, 1:1 eşlemesini öneririz.
+Birimlerinizde, kullanıcılarınız ve uygulamalarınız için SMB paylaşımları olarak yerel olarak paylaştığınız daha fazla klasör olabilir. Bu senaryoyu görmenin en kolay yolu, 1:1 ' i bir Azure dosya paylaşımıyla eşleyen şirket içi bir paylaşım hakkında bir adım adım yol kullanmaktır. Tek bir Windows Server örneği için 30 ' a kadar az sayıda numaranız varsa, 1:1 eşleştirmesi önerilir.
 
 30 ' dan fazla paylaşımınız varsa, şirket içi paylaşım 1:1 ' i bir Azure dosya paylaşımına eşleştirmek genellikle gereksizdir. Aşağıdaki seçenekleri göz önünde bulundurun.
 
@@ -26,11 +26,11 @@ Birimlerinizde, kullanıcılarınız ve uygulamalarınız için SMB paylaşımla
 
 #### <a name="volume-sync"></a>Birim eşitleme
 
-Azure Dosya Eşitleme, bir birimin kökünün bir Azure dosya paylaşımında eşitlenmesini destekler. Kök klasörünü eşitlediğiniz zaman, tüm alt klasörler ve dosyalar aynı Azure dosya paylaşımında olacak.
+Azure Dosya Eşitleme, bir birimin kökünün bir Azure dosya paylaşımında eşitlenmesini destekler. Birim kökünü eşitlediğiniz zaman, tüm alt klasörler ve dosyalar aynı Azure dosya paylaşımıyla gider.
 
 Birimin kökünün eşitlenmesi her zaman en iyi yanıt değildir. Birden çok konumu eşitlerken yarar vardır. Örneğin, bu işlem, eşitleme kapsamı başına öğe sayısını tutmaya yardımcı olur. Paylaşım başına 100.000.000 öğe (dosya ve klasör) ile Azure dosya paylaşımlarını ve Azure Dosya Eşitleme test etmemiz sırasında, en iyi uygulama, sayıyı tek bir paylaşımdaki 20.000.000 veya 30.000.000 altında tutmaya çalışır. Daha az sayıda öğe içeren Azure Dosya Eşitleme ayarlamak yalnızca dosya eşitleme için faydalıdır. Daha az sayıda öğe aşağıdaki gibi senaryolar da sağlar:
 
-* Ad alanının Azure Dosya Eşitleme etkin bir sunucuda görünbaşlayabilmesi için önce bulut içeriğinin ilk taraması daha hızlı tamamlanabilir.
+* Bulut içeriğinin ilk taraması daha hızlı tamamlanabilir, bu da ad alanının Azure Dosya Eşitleme etkinleştirilmiş bir sunucuda görünmesi için beklemeyi azaltır.
 * Azure dosya paylaşımının anlık görüntüsünden bulut tarafında geri yükleme daha hızlı olacaktır.
 * Şirket içi bir sunucunun olağanüstü durum kurtarması önemli ölçüde hızlanır.
 * Doğrudan bir Azure dosya paylaşımında (eşitleme dışında) yapılan değişiklikler algılanır ve daha hızlı eşitlenebilir.
@@ -47,24 +47,22 @@ Kaç Azure dosya paylaşımının gerekli olduğunu öğrenmek için aşağıdak
 * Azure Dosya Eşitleme aracısının yüklü olduğu bir sunucu en fazla 30 Azure dosya paylaşımı ile eşitlenebilir.
 * Bir Azure dosya paylaşımının bir depolama hesabı içinde dağıtılması. Bu, depolama hesabının ıOPS ve aktarım hızı gibi performans numaraları için ölçek hedefi olmasını sağlar.
 
-  İki standart (Premium değil) Azure dosya paylaşımları, bir depolama hesabının sunabilme performansını en yüksek düzeyde ortadan kaldırmaya yönelik olarak teorik olabilir. Yalnızca bu dosya paylaşımlarına Azure Dosya Eşitleme eklemeyi planlıyorsanız, birkaç Azure dosya paylaşımını aynı depolama hesabına gruplandırmak bir sorun oluşturmaz. Dikkate alınması gereken ölçümler hakkında daha derin Öngörüler için Azure dosya paylaşımının performans hedeflerini gözden geçirin.
+  Bir standart Azure dosya paylaşımının teorik olarak bir depolama hesabının teslim edebilen en yüksek performansı ortadan kaldırabilirsiniz. Tek bir depolama hesabında birden çok paylaşım yerleştirmek, bu paylaşımlar için paylaşılan bir ıOPS ve aktarım hızı havuzu oluşturduğunuz anlamına gelir. Yalnızca bu dosya paylaşımlarına Azure Dosya Eşitleme eklemeyi planlıyorsanız, birkaç Azure dosya paylaşımını aynı depolama hesabına gruplandırmak bir sorun oluşturmaz. Dikkate alınması gereken ölçümler hakkında daha derin Öngörüler için Azure dosya paylaşımının performans hedeflerini gözden geçirin. Bu sınırlamalar, performansın açık bir şekilde sağlandığı ve her bir paylaşımda garantide olduğu Premium Depolama için uygulanmaz.
 
-  Azure dosya paylaşımının yerel olarak kullanacağı bir uygulamayı Azure 'a kaldırma planlıyorsanız Azure dosya paylaşımınızdan daha fazla performansa sahip olabilirsiniz. Bu tür bir kullanım olasısa bile, bir Azure dosya paylaşımının kendi depolama hesabıyla eşleştirilmesi en iyisidir.
-* Tek bir Azure bölgesinde abonelik başına 250 depolama hesabı sınırlaması vardır.
+  Azure dosya paylaşımının yerel olarak kullanacağı bir uygulamayı Azure 'a kaldırma planlıyorsanız Azure dosya paylaşımınızdan daha fazla performansa sahip olabilirsiniz. Bu tür bir kullanım olasısa bile, gelecekte kendi depolama hesabında tek bir standart Azure dosya paylaşımının oluşturulması en iyisidir.
+* Azure bölgesi başına abonelik başına 250 depolama hesabı sınırı vardır.
 
 > [!TIP]
 > Bu bilgiler göz önünde bulundurularak, genellikle birimlerinizde bulunan birden çok üst düzey klasörü ortak, yeni bir kök dizine gruplamak gerekli hale gelir. Daha sonra bu yeni kök dizini ve gruplandırmış olduğunuz tüm klasörleri tek bir Azure dosya paylaşımında eşitleolursunuz. Bu teknik, sunucu başına 30 Azure dosya paylaşımının eşitlenme sınırının içinde kalmanıza olanak sağlar.
 >
-> Ortak bir kök altındaki Bu gruplandırma, verilerinize erişimi etkilemez. ACL 'larınız olduğu gibi kalır. Yalnızca ortak bir köke değiştirdiğiniz sunucu klasörlerinde olabilecek paylaşım yollarını (SMB veya NFS paylaşımları gibi) ayarlamanız gerekir. Başka hiçbir şey yok.
+> Ortak bir kök altındaki Bu gruplandırma, verilerinize erişimi etkilemez. ACL 'larınız olduğu gibi kalır. Artık ortak bir köke değiştirdiğiniz yerel sunucu klasörlerinde olabilecek paylaşım yollarını (SMB veya NFS paylaşımları gibi) ayarlamanız gerekir. Başka hiçbir şey yok.
 
 > [!IMPORTANT]
-> Azure Dosya Eşitleme için en önemli ölçekli vektör, eşitlenmesi gereken öğe (dosya ve klasör) sayısıdır.
+> Azure Dosya Eşitleme için en önemli ölçekli vektör, eşitlenmesi gereken öğe (dosya ve klasör) sayısıdır. Daha fazla ayrıntı için [Azure dosya eşitleme ölçek hedeflerini](../articles/storage/files/storage-files-scale-targets.md#azure-file-sync-scale-targets) gözden geçirin.
 
-Azure Dosya Eşitleme, en fazla 100.000.000 öğenin tek bir Azure dosya paylaşımında eşitlenmesini destekler. Bu sınır aşılıyor ve yalnızca Azure Dosya Eşitleme takım testlerin düzenli olarak ne şekilde test gösterdiğini gösterir.
+Her eşitleme kapsamı için öğe sayısını düşük tutmak en iyi uygulamadır. Bu, klasörleri Azure dosya paylaşımlarına eşleştirmenizde dikkate alınması gereken önemli bir faktördür. Azure Dosya Eşitleme, paylaşma başına 100.000.000 öğe (dosya ve klasör) ile test edilmiştir. Ancak, tek bir paylaşımda 20.000.000 veya 30.000.000 altındaki öğe sayısını korumak genellikle en iyisidir. Bu sayıları aşacak şekilde başlatırsanız, ad alanınızı birden çok paylaşımlara ayırın. Bu sayıların yaklaşık olarak altında kaladıysanız, birden çok şirket içi paylaşımı aynı Azure dosya paylaşımında gruplamak için devam edebilirsiniz. Bu uygulama, size büyümek üzere yer sağlar.
 
-Her eşitleme kapsamı için öğe sayısını düşük tutmak en iyi uygulamadır. Bu, klasörleri Azure dosya paylaşımlarına eşleştirmenizde dikkate alınması gereken önemli bir faktördür. Paylaşım başına 100.000.000 öğe (dosya ve klasör) ile Azure dosya paylaşımlarını ve Azure Dosya Eşitleme test etmemiz sırasında, en iyi uygulama, sayıyı tek bir paylaşımdaki 20.000.000 veya 30.000.000 altında tutmaya çalışır. Bu sayıları aşacak şekilde başlatırsanız, ad alanınızı birden çok paylaşımlara ayırın. Bu sayıların yaklaşık olarak altında kaladıysanız, birden çok şirket içi paylaşımı aynı Azure dosya paylaşımında gruplamak için devam edebilirsiniz. Bu uygulama, size büyümek üzere yer sağlar.
-
-Sizin durumunuzda, bir klasör kümesi aynı Azure dosya paylaşımıyla mantıksal olarak eşitlenebilir (daha önce bahsedilen yeni, ortak kök klasör yaklaşımını kullanarak). Ancak, klasörleri bir Azure dosya paylaşımının yerine iki ile eşitlenecek şekilde yeniden gruplandırmak daha iyi olabilir. Sunucu genelinde dosya paylaşımının dengeli dosya ve klasör sayısını korumak için bu yaklaşımı kullanabilirsiniz.
+Sizin durumunuzda, bir klasör kümesi aynı Azure dosya paylaşımıyla mantıksal olarak eşitlenebilir (daha önce bahsedilen yeni, ortak kök klasör yaklaşımını kullanarak). Ancak, klasörleri bir Azure dosya paylaşımının yerine iki ile eşitlenecek şekilde yeniden gruplandırmak daha iyi olabilir. Sunucu genelinde dosya paylaşımının dengeli dosya ve klasör sayısını korumak için bu yaklaşımı kullanabilirsiniz. Ayrıca, şirket içi paylaşımlarınızı bölebilir ve daha fazla şirket içi sunucu arasında eşitleme yapabilirsiniz ve ek sunucu başına 30 daha fazla Azure dosya paylaşımı ile eşitleme özelliği ekleyebilirsiniz.
 
 #### <a name="create-a-mapping-table"></a>Eşleme tablosu oluşturma
 

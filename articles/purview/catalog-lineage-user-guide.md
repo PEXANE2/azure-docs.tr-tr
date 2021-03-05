@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: conceptual
 ms.date: 11/29/2020
-ms.openlocfilehash: cd4bba1bacbdb21a6bff4fcc5d3c1f3b2166ec35
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 47c5ad18f50bd25dd3bf351090ffc9ef5d54f0b2
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102039997"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102202918"
 ---
 # <a name="azure-purview-data-catalog-lineage-user-guide"></a>Azure purview Veri Kataloğu kökenini Kullanıcı Kılavuzu
 
@@ -49,6 +49,8 @@ Azure ML gibi veri sistemleri ve rapor kökenini Azure purview 'a Power BI. Bu s
 | Power BI | [Veri kümeleri, veri akışları, raporlar & panolar](register-scan-power-bi-tenant.md)
 
 ## <a name="get-started-with-lineage"></a>Kökenini kullanmaya başlama
+
+> [!VIDEO https://www.microsoft.com/videoplayer/embed/RE1XVQS]
 
 Kökenini içinde, veri kümeleri ve süreçler bulunur. İşlem kümeleri de düğümler olarak adlandırılır, ancak işlem kenarları da denir:
 

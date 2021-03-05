@@ -39,6 +39,8 @@
           href: tutorial-cross-region-portal.md
         - name: Çapraz bölge yük dengeleyici oluşturma-PowerShell
           href: tutorial-cross-region-powershell.md
+        - name: Bölgeler arası yük dengeleyici oluşturma-Azure CLı
+          href: tutorial-cross-region-cli.md
 - name: Örnekler
   items:
     - name: Azure CLI

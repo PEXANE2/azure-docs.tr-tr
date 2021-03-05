@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 03/19/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: 0ef4faf14ec01a25419fd22ba8c73a8a033b4172
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: f95585237bbee743083b855dd78cc850c4daffe8
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98879991"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102202697"
 ---
 # <a name="migrate-from-linux-to-a-hybrid-cloud-deployment-with-azure-file-sync"></a>Azure Dosya Eşitleme ile Linux 'tan karma bulut dağıtımına geçiş
 
@@ -39,7 +39,7 @@ Linux sunucunuzda Samba çalıştırmıyorsanız ve Windows Server 'da klasörle
 * Bir sanal makine veya fiziksel sunucu olarak Windows Server 2019 örneği oluşturun. Windows Server 2012 R2 en düşük gereksinimdir. Bir Windows Server yük devretme kümesi de desteklenir.
 * Doğrudan bağlı depolama alanı (DAS) sağlayın veya ekleyin. Ağa bağlı depolama (NAS) desteklenmiyor.
 
-  Azure Dosya Eşitleme [bulut katmanlama](storage-sync-cloud-tiering.md) özelliğini kullanıyorsanız, sağladığınız depolama alanı, Linux Samba sunucunuzda kullanmakta olduğunuz miktardan daha küçük olabilir. Ancak, daha sonraki bir aşamada dosyalarınızı daha büyük Linux Samba sunucu alanından daha küçük Windows Server birimine kopyaladığınızda, toplu işlerle çalışmanız gerekir:
+  Azure Dosya Eşitleme [bulut katmanlama](storage-sync-cloud-tiering-overview.md) özelliğini kullanıyorsanız, sağladığınız depolama alanı, Linux Samba sunucunuzda kullanmakta olduğunuz miktardan daha küçük olabilir. Ancak, daha sonraki bir aşamada dosyalarınızı daha büyük Linux Samba sunucu alanından daha küçük Windows Server birimine kopyaladığınızda, toplu işlerle çalışmanız gerekir:
 
   1. Diske sığan bir dosya kümesini taşıyın.
   2. Dosya eşitlemeye ve bulut katmanlamasına izin verin.
@@ -98,7 +98,7 @@ Temel geçiş yaklaşımı, dosyaları kopyalamak ve eşitleme yapmak için Azur
 
 Aşağıdaki Robocopy komutu, Linux Samba sunucunuzun depolama alanındaki dosyaları Windows Server hedef klasörünüze kopyalayacaktır. Windows Server onu Azure dosya paylaşımlarıyla eşitler. 
 
-Windows Server Örneğiniz Linux Samba sunucusuna düşenden daha az depolama alanı sağladıysanız, bulut katmanlaması yapılandırmış olursunuz. Yerel Windows Server birimi tam aldığından, [bulut katmanlaması](storage-sync-cloud-tiering.md) başlar ve zaten eşitlenmiş olan dosyaları ve katman dosyalarını başarıyla eşitledi. Bulut katmanlaması, Linux Samba sunucusundan kopyalamaya devam etmek için yeterli alan oluşturacak. Bulut katmanlaması, bir süre sonra, bir birim için yüzde 99 boş alanın ilkesine ulaşmak üzere disk alanını nasıl eşitlediğini görmek için saatte bir kez denetler.
+Windows Server Örneğiniz Linux Samba sunucusuna düşenden daha az depolama alanı sağladıysanız, bulut katmanlaması yapılandırmış olursunuz. Yerel Windows Server birimi tam aldığından, [bulut katmanlaması](storage-sync-cloud-tiering-overview.md) başlar ve zaten eşitlenmiş olan dosyaları ve katman dosyalarını başarıyla eşitledi. Bulut katmanlaması, Linux Samba sunucusundan kopyalamaya devam etmek için yeterli alan oluşturacak. Bulut katmanlaması, bir süre sonra, bir birim için yüzde 99 boş alanın ilkesine ulaşmak üzere disk alanını nasıl eşitlediğini görmek için saatte bir kez denetler.
 
 Robocopy, bulut ve katmana yerel olarak eşitlenebilmeniz için dosyaları daha hızlı taşıdığından, yerel disk alanının tükenmesine yol açabilir. Robocopy daha sonra başarısız olur. Paylaşımlar üzerinde sorunu önleyen bir sırada çalışmanız önerilir. Örneğin, aynı zamanda tüm paylaşımlar için Robocopy işlerini başlatmayabilirsiniz. Ya da Windows Server örneğindeki geçerli boş alan miktarına uygun olan paylaşımları taşımayı düşünün. Robocopy işiniz başarısız olursa, aşağıdaki yansıtma/Temizleme seçeneğini kullandığınız sürece komutu her zaman yeniden çalıştırabilirsiniz:
 

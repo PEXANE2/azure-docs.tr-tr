@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 02/09/2021
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: cbaa83b38482203655f7de98cd5bbfec3ef7a870
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 5bd7ffda508980a9a56d86037887fc53a0fed640
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100418278"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102202952"
 ---
 # <a name="enable-private-access-with-private-link-preview-azure-cli"></a>Özel bağlantıyla özel erişimi etkinleştir (Önizleme): Azure CLı
 
@@ -41,7 +41,7 @@ Bu makalede ele alınan adımlar aşağıda verilmiştir:
 
 ### <a name="add-a-private-endpoint-to-an-existing-instance"></a>Var olan bir örneğe özel bir uç nokta ekleme
 
-Özel bir uç nokta oluşturmak ve bunu bir Azure dijital TWINS örneğine bağlamak için [**az Network Private-ENDPOINT Create**](/cli/azure/network/private-endpoint?view=azure-cli-latest&preserve-view=true#az_network_private_endpoint_create) komutunu kullanın. Parametresindeki tam KIMLIĞINI kullanarak Azure dijital TWINS örneğini belirler `--private-connection-resource-id` .
+Özel bir uç nokta oluşturmak ve bunu bir Azure dijital TWINS örneğine bağlamak için [**az Network Private-ENDPOINT Create**](/cli/azure/network/private-endpoint#az_network_private_endpoint_create) komutunu kullanın. Parametresindeki tam KIMLIĞINI kullanarak Azure dijital TWINS örneğini belirler `--private-connection-resource-id` .
 
 Yalnızca gerekli parametrelerle özel bir uç nokta oluşturmak için komutunu kullanan bir örnek aşağıda verilmiştir.
 
@@ -49,25 +49,25 @@ Yalnızca gerekli parametrelerle özel bir uç nokta oluşturmak için komutunu 
 az network private-endpoint create --connection-name {private_link_service_connection} -n {name_for_private_endpoint} -g {resource_group} --subnet {subnet_ID} --private-connection-resource-id "/subscriptions/{subscription_ID}/resourceGroups/{resource_group}/providers/Microsoft.DigitalTwins/digitalTwinsInstances/{Azure_Digital_Twins_instance_name}" 
 ```
 
-Gerekli ve isteğe bağlı parametrelerin tam listesi ve daha özel uç nokta oluşturma örnekleri için, [ **az Network Private-Endpoint Create** Reference belgelerine](/cli/azure/network/private-endpoint?view=azure-cli-latest&preserve-view=true#az_network_private_endpoint_create)bakın.
+Gerekli ve isteğe bağlı parametrelerin tam listesi ve daha özel uç nokta oluşturma örnekleri için, [ **az Network Private-Endpoint Create** Reference belgelerine](/cli/azure/network/private-endpoint#az_network_private_endpoint_create)bakın.
 
 ### <a name="manage-private-endpoint-connections-on-the-instance"></a>Örnekteki özel uç nokta bağlantılarını yönetme
 
-Azure dijital TWINS örneğiniz için özel bir uç nokta oluşturulduktan sonra, Özel uç nokta **bağlantılarını** bu örneğe göre yönetmeye devam etmek için [**az DT Network Private-Endpoint Connection**](/cli/azure/ext/azure-iot/dt/network/private-endpoint/connection?view=azure-cli-latest&preserve-view=true) komutlarını kullanabilirsiniz. İşlemler şunları içerir:
+Azure dijital TWINS örneğiniz için özel bir uç nokta oluşturulduktan sonra, Özel uç nokta **bağlantılarını** bu örneğe göre yönetmeye devam etmek için [**az DT Network Private-Endpoint Connection**](/cli/azure/ext/azure-iot/dt/network/private-endpoint/connection) komutlarını kullanabilirsiniz. İşlemler şunları içerir:
 * Özel bir uç nokta bağlantısı göster
 * Özel uç nokta bağlantısının durumunu ayarla
 * Özel uç nokta bağlantısını silme
 * Bir örnek için tüm özel uç nokta bağlantılarını listeleme
 
-Daha fazla bilgi ve örnek için bkz. [ **az DT Network Private-Endpoint** Reference belgeleri](/cli/azure/ext/azure-iot/dt/network/private-endpoint?view=azure-cli-latest&preserve-view=true).
+Daha fazla bilgi ve örnek için bkz. [ **az DT Network Private-Endpoint** Reference belgeleri](/cli/azure/ext/azure-iot/dt/network/private-endpoint).
 
 ### <a name="manage-other-private-link-information-on-an-azure-digital-twins-instance"></a>Azure dijital TWINS örneğindeki diğer özel bağlantı bilgilerini yönetme
 
-[**Az DT Network Private-link**](/cli/azure/ext/azure-iot/dt/network/private-link?view=azure-cli-latest&preserve-view=true) komutlarıyla örneğinizin özel bağlantı durumu hakkında daha fazla bilgi edinebilirsiniz. İşlemler şunları içerir:
+[**Az DT Network Private-link**](/cli/azure/ext/azure-iot/dt/network/private-link) komutlarıyla örneğinizin özel bağlantı durumu hakkında daha fazla bilgi edinebilirsiniz. İşlemler şunları içerir:
 * Bir Azure dijital TWINS örneğiyle ilişkili özel bağlantıları listeleme
 * Örnekle ilişkili özel bir bağlantı göster
 
-Daha fazla bilgi ve örnek için bkz. [ **az DT Network Private-link** Reference documentation](/cli/azure/ext/azure-iot/dt/network/private-link?view=azure-cli-latest&preserve-view=true).
+Daha fazla bilgi ve örnek için bkz. [ **az DT Network Private-link** Reference documentation](/cli/azure/ext/azure-iot/dt/network/private-link).
 
 ## <a name="disable--enable-public-network-access-flags"></a>Ortak ağ erişim bayraklarını devre dışı bırak/etkinleştir
 
@@ -79,7 +79,7 @@ Bu makalede, [Azure CLI](/cli/azure/) veya [armclient komut aracı](https://gith
 
 ### <a name="use-the-azure-cli"></a>Azure CLI kullanma
 
-Azure CLı 'da, komuta bir parametre ekleyerek ortak ağ erişimini etkinleştirebilir veya devre dışı bırakabilirsiniz `--public-network-access` `az dt create` . Bu komut yeni bir örnek oluşturmak için de kullanılabilir olsa da, mevcut bir örneğin özelliklerini düzenlemek için onu kullanabilirsiniz. (Bu komut hakkında daha fazla bilgi için, [başvuru belgelerine](/cli/azure/ext/azure-iot/dt?view=azure-cli-latest&preserve-view=true#ext_azure_iot_az_dt_create) veya [bir Azure dijital TWINS örneği ayarlamaya yönelik genel yönergelere](how-to-set-up-instance-cli.md#create-the-azure-digital-twins-instance)bakın).
+Azure CLı 'da, komuta bir parametre ekleyerek ortak ağ erişimini etkinleştirebilir veya devre dışı bırakabilirsiniz `--public-network-access` `az dt create` . Bu komut yeni bir örnek oluşturmak için de kullanılabilir olsa da, mevcut bir örneğin özelliklerini düzenlemek için onu kullanabilirsiniz. (Bu komut hakkında daha fazla bilgi için, [başvuru belgelerine](/cli/azure/ext/azure-iot/dt#ext_azure_iot_az_dt_create) veya [bir Azure dijital TWINS örneği ayarlamaya yönelik genel yönergelere](how-to-set-up-instance-cli.md#create-the-azure-digital-twins-instance)bakın).
 
 Bir Azure dijital TWINS örneği için genel ağ erişimini **devre dışı bırakmak** için aşağıdaki `--public-network-access` gibi parametreyi kullanın:
 

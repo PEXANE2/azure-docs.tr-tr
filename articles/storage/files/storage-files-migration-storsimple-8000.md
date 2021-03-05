@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 10/16/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: 502776e85eaafa46fb2b5ce45ca3bd937e303566
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: a512151dce336de42da78232ca30845dae754db3
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100366327"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102202731"
 ---
 # <a name="storsimple-8100-and-8600-migration-to-azure-file-sync"></a>StorSimple 8100 ve 8600 Azure Dosya Eşitleme 'e geçiş
 
@@ -637,6 +637,6 @@ Geçişiniz tamamlanmıştır.
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * Azure Dosya Eşitleme hakkında daha fazla bilgi edinin [: aka.MS/AFS](./storage-sync-files-planning.md).
-* [Bulut katmanlama](storage-sync-cloud-tiering.md) ilkelerinin esnekliğini anlayın.
+* [Bulut katmanlama](storage-sync-cloud-tiering-overview.md) ilkelerinin esnekliğini anlayın.
 * Anlık görüntüleri zamanlamak ve yedekleme bekletme zamanlamalarını tanımlamak için Azure dosya paylaşımlarınız üzerinde [Azure Backup etkinleştirin](../../backup/backup-afs.md#configure-backup-from-the-file-share-pane) .
 * Bazı dosyaların kalıcı olarak eşitlenmediğinden Azure portal görürseniz, bu sorunları gidermeye yönelik adımlar için [sorun giderme kılavuzunu](storage-sync-files-troubleshoot.md) gözden geçirin.

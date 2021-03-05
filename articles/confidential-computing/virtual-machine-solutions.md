@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.author: JenCook
-ms.openlocfilehash: 8d5ce3cde8c86d66bec025c778318a192ef60b73
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: de7eaf40271965d48dc0507e0335e6924bdfb73f
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94560863"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102204193"
 ---
 # <a name="solutions-on-azure-virtual-machines"></a>Azure sanal makinelerinde çözümler
 
@@ -29,7 +29,7 @@ Azure gizli bilgi işlem sanal makineleri, bulutta işlendiği sırada verilerin
 
 ### <a name="current-available-sizes-and-regions"></a>Kullanılabilir geçerli Boyutlar ve bölgeler
 
-Kullanılabilir bölgeler ve kullanılabilirlik bölgelerinde genel olarak kullanılabilen tüm gizli işlem VM boyutlarının bir listesini almak için [Azure CLI](/cli/azure/install-azure-cli-windows?view=azure-cli-latest)'de aşağıdaki komutu çalıştırın:
+Kullanılabilir bölgeler ve kullanılabilirlik bölgelerinde genel olarak kullanılabilen tüm gizli işlem VM boyutlarının bir listesini almak için [Azure CLI](/cli/azure/install-azure-cli-windows)'de aşağıdaki komutu çalıştırın:
 
 ```azurecli-interactive
 az vm list-skus `

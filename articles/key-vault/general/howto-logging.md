@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 10/01/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 0e1ce841f6da8f15bd977437bca6b835a7b0d745
-ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
+ms.openlocfilehash: 9ec1e59a5599ca2e95578eacc1484932956ebf16
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98108747"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102204023"
 ---
 # <a name="how-to-enable-key-vault-logging"></a>Key Vault günlüğü etkinleştirme
 
@@ -34,7 +34,7 @@ Bu kılavuz komutları, Bash ile [Cloud Shell](https://shell.azure.com) için bi
 
 Anahtar günlüğü ayarlamanın ilk adımı, anahtar kasanızı içeren aboneliğe bağlanıyor. Hesabınızla ilişkili birden fazla aboneliğiniz varsa bu özellikle önemlidir.
 
-Azure CLı ile, [az Account List](/cli/azure/account?view=azure-cli-latest#az_account_list) komutunu kullanarak tüm aboneliklerinizi görüntüleyebilir ve az [Hesap kümesi](/cli/azure/account?view=azure-cli-latest#az_account_set)kullanarak birine bağlanabilirsiniz:
+Azure CLı ile, [az Account List](/cli/azure/account#az_account_list) komutunu kullanarak tüm aboneliklerinizi görüntüleyebilir ve az [Hesap kümesi](/cli/azure/account#az_account_set)kullanarak birine bağlanabilirsiniz:
 
 ```azurecli-interactive
 az account list
@@ -58,7 +58,7 @@ Daha fazla yönetim kolaylığı için, anahtar kasasını içeren kaynakla ayn�
 
 Ayrıca, bir depolama hesabı adı sağlamamız gerekir. Depolama hesabı adları benzersiz olmalı, 3 ila 24 karakter uzunluğunda olmalıdır ve yalnızca sayılar ve küçük harfler kullanılmalıdır.  Son olarak, "Standard_LRS" SKU 'sunda bir depolama hesabı oluşturacağız.
 
-Azure CLı ile [az Storage Account Create](/cli/azure/storage/account?view=azure-cli-latest#az_storage_account_create) komutunu kullanın.
+Azure CLı ile [az Storage Account Create](/cli/azure/storage/account#az_storage_account_create) komutunu kullanın.
 
 ```azurecli-interactive
 az storage account create --name "<your-unique-storage-account-name>" -g "myResourceGroup" --sku "Standard_LRS"
@@ -84,9 +84,9 @@ Depolama hesabının "kimliği", "/Subscriptions/<-abonelik KIMLIĞI>/resourceGr
 
 ## <a name="obtain-your-key-vault-resource-id"></a>Anahtar Kasası kaynak KIMLIĞINIZI edinin
 
-[CLI hızlı](quick-create-cli.md) başlangıcı ve [PowerShell hızlı](quick-create-powershell.md)başlangıcı ' nda, benzersiz bir ada sahip bir anahtar oluşturdunuz.  Aşağıdaki adımlarda bu adı yeniden kullanın.  Anahtar kasanızın adını hatırlayamıyorsanız, bunları listelemek için Azure CLı [az keykasası List](/cli/azure/keyvault?view=azure-cli-latest#az_keyvault_list) komutunu veya [Get-azkeykasası](/powershell/module/az.keyvault/get-azkeyvault?view=azps-4.7.0) cmdlet 'ini Azure PowerShell kullanabilirsiniz.
+[CLI hızlı](quick-create-cli.md) başlangıcı ve [PowerShell hızlı](quick-create-powershell.md)başlangıcı ' nda, benzersiz bir ada sahip bir anahtar oluşturdunuz.  Aşağıdaki adımlarda bu adı yeniden kullanın.  Anahtar kasanızın adını hatırlayamıyorsanız, bunları listelemek için Azure CLı [az keykasası List](/cli/azure/keyvault#az_keyvault_list) komutunu veya [Get-azkeykasası](/powershell/module/az.keyvault/get-azkeyvault?view=azps-4.7.0) cmdlet 'ini Azure PowerShell kullanabilirsiniz.
 
-Kaynak KIMLIĞINI bulmak için anahtar kasanızın adını kullanın.  Azure CLı ile [az keykasa Show](/cli/azure/keyvault?view=azure-cli-latest#az_keyvault_show) komutunu kullanın.
+Kaynak KIMLIĞINI bulmak için anahtar kasanızın adını kullanın.  Azure CLı ile [az keykasa Show](/cli/azure/keyvault#az_keyvault_show) komutunu kullanın.
 
 ```azurecli-interactive
 az keyvault show --name "<your-unique-keyvault-name>"
@@ -102,7 +102,7 @@ Anahtar kasanızın kaynak KIMLIĞI "/Subscriptions/<-Subscription-ID>/resourceG
 
 ## <a name="enable-logging-using-azure-powershell"></a>Azure PowerShell kullanarak günlüğü etkinleştirme
 
-Key Vault günlük kaydını etkinleştirmek için, depolama hesabı KIMLIĞI ve Anahtar Kasası kaynak KIMLIĞIYLE birlikte Azure CLı [az Monitor Diagnostic-Settings Create](/cli/azure/monitor/diagnostic-settings?view=azure-cli-latest) komutunu veya [set-azdiagnosticsetting](/powershell/module/az.monitor/set-azdiagnosticsetting?view=azps-4.7.0) cmdlet 'ini kullanacağız.
+Key Vault günlük kaydını etkinleştirmek için, depolama hesabı KIMLIĞI ve Anahtar Kasası kaynak KIMLIĞIYLE birlikte Azure CLı [az Monitor Diagnostic-Settings Create](/cli/azure/monitor/diagnostic-settings) komutunu veya [set-azdiagnosticsetting](/powershell/module/az.monitor/set-azdiagnosticsetting?view=azps-4.7.0) cmdlet 'ini kullanacağız.
 
 ```azurecli-interactive
 az monitor diagnostic-settings create --storage-account "<storage-account-id>" --resource "<key-vault-resource-id>" --name "Key vault logs" --logs '[{"category": "AuditEvent","enabled": true}]' --metrics '[{"category": "AllMetrics","enabled": true}]'
@@ -116,7 +116,7 @@ Set-AzDiagnosticSetting -ResourceId "<key-vault-resource-id>" -StorageAccountId 
 
 İsteğe bağlı olarak, eski günlüklerin belirli bir süre geçtikten sonra otomatik olarak silinmesi için günlüklerinizi için bir bekletme ilkesi ayarlayabilirsiniz. Örneğin, 90 günden daha eski günlükleri otomatik olarak silen ayarlama bekletme ilkesi ayarlayabilirsiniz.
 
-<!-- With the Azure CLI, use the [az monitor diagnostic-settings update](/cli/azure/monitor/diagnostic-settings?view=azure-cli-latest#az_monitor_diagnostic_settings_update) command. 
+<!-- With the Azure CLI, use the [az monitor diagnostic-settings update](/cli/azure/monitor/diagnostic-settings#az_monitor_diagnostic_settings_update) command. 
 
 ```azurecli-interactive
 az monitor diagnostic-settings update 
@@ -143,7 +143,7 @@ Günlüğe kaydedilen:
 
 Key Vault Günlükler, belirttiğiniz depolama hesabındaki "Insights-logs-auditevent" kapsayıcısında depolanır. Günlükleri görüntülemek için Blobları indirmeniz gerekir.
 
-İlk olarak, kapsayıcıdaki tüm Blobları listeleyin.  Azure CLı ile [az Storage blob List](/cli/azure/storage/blob?view=azure-cli-latest#az_storage_blob_list) komutunu kullanın.
+İlk olarak, kapsayıcıdaki tüm Blobları listeleyin.  Azure CLı ile [az Storage blob List](/cli/azure/storage/blob#az_storage_blob_list) komutunu kullanın.
 
 ```azurecli-interactive
 az storage blob list --account-name "<your-unique-storage-account-name>" --container-name "insights-logs-auditevent"
@@ -159,7 +159,7 @@ Azure CLı komutunun veya Azure PowerShell cmdlet 'inin çıktısından görece�
 
 Birden çok kaynağa yönelik günlükleri toplamak için aynı depolama hesabını kullanabilmeniz için, blob adı içindeki tam kaynak KIMLIĞI, yalnızca ihtiyaç duyduğunuz bloblara erişmek veya onları indirmek için yararlıdır. Ancak bunu yapmadan önce tüm blobların nasıl indirileceğini ele alacağız.
 
-Azure CLı ile [az Storage blob Download](/cli/azure/storage/blob?view=azure-cli-latest#az_storage_blob_download) komutunu kullanın, Blobların adlarını ve sonuçları kaydetmek istediğiniz dosyanın yolunu geçirin.
+Azure CLı ile [az Storage blob Download](/cli/azure/storage/blob#az_storage_blob_download) komutunu kullanın, Blobların adlarını ve sonuçları kaydetmek istediğiniz dosyanın yolunu geçirin.
 
 ```azurecli-interactive
 az storage blob download --container-name "insights-logs-auditevent" --file <path-to-file> --name "<blob-name>" --account-name "<your-unique-storage-account-name>"
@@ -173,7 +173,7 @@ $blobs = Get-AzStorageBlob -Container "insights-logs-auditevent" -Context $sa.Co
 
 Bu ikinci cmdlet 'i PowerShell 'de çalıştırdığınızda, **/** BLOB adlarındaki sınırlayıcı hedef klasör altında tam bir klasör yapısı oluşturur. Bu yapıyı blob 'ları dosya olarak indirmek ve depolamak için kullanacaksınız.
 
-Blobları seçmeli olarak indirmek için jokerleri kullanın. Örneğin:
+Blobları seçmeli olarak indirmek için jokerleri kullanın. Örnek:
 
 * Birden çok anahtar kasanız varsa ve yalnızca CONTOSOKEYVAULT3 adlı bir anahtar kasası için günlük indirmek isterseniz:
 

@@ -7,12 +7,12 @@ ms.date: 1/20/2021
 ms.topic: how-to
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 4612e1236af5fbe47db9a3569e2f4da2378017e2
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: c89427f83600d3b8091d5293b1757fa6f1a15ef1
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98784906"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102202493"
 ---
 # <a name="build-and-deploy-the-iot-plug-and-play-bridge"></a>IoT Tak ve Kullan köprüsü oluşturma ve dağıtma
 
@@ -84,7 +84,7 @@ Köprü, bir IoT Edge çalışma zamanı üzerinde IoT Edge modülü olarak çal
 | Windows |  Yes |
 | Linux | Yes |
 
-### <a name="prerequisites"></a>Ön koşullar
+### <a name="prerequisites"></a>Önkoşullar
 
 Bu bölümü gerçekleştirmek için, yerel makinenize aşağıdaki yazılımı yüklemeniz gerekir:
 
@@ -206,7 +206,7 @@ Debug\pnpbridge_bin.exe
 | Windows |  Hayır |
 | Linux | Yes |
 
-### <a name="prerequisites"></a>Ön koşullar
+### <a name="prerequisites"></a>Önkoşullar
 
 Bu bölümü gerçekleştirmek için ücretsiz veya Standart katmanlı bir Azure IoT Hub 'ına ihtiyacınız vardır. IoT Hub oluşturma hakkında bilgi almak için bkz. [IoT Hub oluşturma](../iot-hub/iot-hub-create-through-portal.md).
 
@@ -227,7 +227,7 @@ Bu bölümdeki adımlarda, bir Windows 10 makinesinde aşağıdaki geliştirme o
   sudo apt-get install -y git cmake build-essential curl libcurl4-openssl-dev libssl-dev uuid-dev
   ```
 
-- Azure, Azure kaynaklarınızı yönetmek için WSL 2 ortamınızda yüklü olan [Azure CLI](/cli/azure/install-azure-cli-apt?view=azure-cli-latest&preserve-view=true) .
+- Azure, Azure kaynaklarınızı yönetmek için WSL 2 ortamınızda yüklü olan [Azure CLI](/cli/azure/install-azure-cli-apt) .
 
   > [!TIP]
   > Tercih ederseniz, `az` CLI 'nın önceden yüklendiği [Azure Cloud Shell](https://shell.azure.com/) komutları çalıştırabilirsiniz.

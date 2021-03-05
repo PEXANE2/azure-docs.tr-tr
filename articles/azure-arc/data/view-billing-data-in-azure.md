@@ -9,17 +9,17 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 03/02/2021
 ms.topic: how-to
-ms.openlocfilehash: 16546432c8c0a23d5c9dc471fe8c62ced5eca993
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 7ef1cd43d2efbc5ab92cc2b4cba4d237805d8921
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101687541"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102202663"
 ---
 # <a name="upload-billing-data-to-azure-and-view-it-in-the-azure-portal"></a>Faturalama verilerini Azure 'a yükleyin ve Azure portal görüntüleyin
 
 > [!IMPORTANT] 
->  Önizleme döneminde Azure Arc etkin veri hizmetlerini kullanma maliyeti yoktur. Faturalandırma sistemi uçtan uca çalışsa da faturalandırma ölçümü $0 olarak ayarlanır.  Bu senaryoyu izlerseniz, şu anda **karma veri Hizmetleri** olarak adlandırılan bir hizmet için faturanızı ve Microsoft adlı bir türdeki kaynakları görürsünüz **. AzureData/ `<resource type>`**. Oluşturduğunuz her bir veri hizmeti için bir kayıt görebileceksiniz, ancak her kayıt $0 için faturalandırılacaktır.
+>  Önizleme döneminde Azure Arc etkin veri hizmetlerini kullanma maliyeti yoktur. Faturalandırma sistemi uçtan uca çalışsa da faturalandırma ölçümü $0 olarak ayarlanır.  Bu senaryoyu izlerseniz, şu anda **karma veri Hizmetleri** olarak adlandırılan bir hizmet için faturanızı ve **`<resource type>` Microsoft. AzureArcData/** adlı bir türdeki kaynakları görürsünüz. Oluşturduğunuz her bir veri hizmeti için bir kayıt görebileceksiniz, ancak her kayıt $0 için faturalandırılacaktır.
 
 [!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
 
@@ -119,7 +119,7 @@ Azure portal faturalama verilerini görüntülemek için aşağıdaki adımları
 1. Kapsamınız, veri hizmeti kaynaklarınızın oluşturulduğu aboneliğe ayarlandığından emin olun.
 1. Görünümün üst kısmındaki kapsam seçicisinin yanındaki Görünüm açılan listesinden **kaynağa göre maliyet** ' i seçin.
 1. Tarih filtresinin **Bu aya** veya veri hizmeti kaynaklarınızı oluştururken zamanlamalı bir zaman aralığına ayarlandığından emin olun.
-1.    =  `microsoft.azuredata/<data service type>` Yalnızca bir Azure yay etkin veri hizmeti türüne filtre uygulamak istiyorsanız, kaynak türüne göre filtre eklemek için Filtre Ekle ' ye tıklayın.
+1.    =  `Microsoft.AzureArcData/<data service type>` Yalnızca bir Azure yay etkin veri hizmeti türüne filtre uygulamak istiyorsanız, kaynak türüne göre filtre eklemek için Filtre Ekle ' ye tıklayın.
 1. Şimdi oluşturulmuş ve Azure 'a yüklenen tüm kaynakların bir listesini görürsünüz. Faturalandırma ölçümü $0 olduğundan, maliyetin her zaman $0 olduğunu görürsünüz.
 
 ## <a name="download-billing-data"></a>Faturalandırma verilerini indir
@@ -159,5 +159,5 @@ Azure portal faturalandırma verileri dosyalarını doğrulayabilirsiniz.
 7. Oluşturulan klasörler ve dosyaların detayına gidin ve oluşturulan. csv dosyalarından birine tıklayın.
 8. Dosyayı yerel Indirilenler klasörünüze kaydedecek **İndir** düğmesine tıklayın.
 9. Excel gibi bir. csv dosya görüntüleyicisini kullanarak dosyayı açın.
-10. Sonuçları yalnızca **kaynak türü** olan satırları gösterecek şekilde filtreleyin  =  `Microsoft.AzureData/<data service resource type` .
+10. Sonuçları yalnızca **kaynak türü** olan satırları gösterecek şekilde filtreleyin  =  `Microsoft.AzureArcData/<data service resource type` .
 11. Örneğin, UsageQuantity sütunundaki geçerli 24 saat döneminde kullanılan saat sayısını görürsünüz.

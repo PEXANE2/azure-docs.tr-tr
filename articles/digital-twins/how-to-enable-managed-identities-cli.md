@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 02/09/2021
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 035d782321feb5d467638159fc191f65573b1042
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: c9ce87584373bd87a8f89ecb4ea692b44d3fab4d
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101716134"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102202969"
 ---
 # <a name="enable-a-managed-identity-for-routing-azure-digital-twins-events-preview-azure-cli"></a>Azure dijital TWINS olaylarını yönlendirme için yönetilen bir kimliği etkinleştirme (Önizleme): Azure CLı
 
@@ -40,7 +40,7 @@ Bu oluşturma yöntemlerinden herhangi biri, örneğiniz için aynı yapılandı
 
 Bu bölümde, şu anda oluşturulmakta olan bir Azure dijital TWINS örneğinde sistem tarafından yönetilen bir kimliğin nasıl etkinleştirileceğini öğreneceksiniz. 
 
-Bu, `--assign-identity` `az dt create` örneği oluşturmak için kullanılan komuta bir parametre eklenerek yapılır. (Bu komut hakkında daha fazla bilgi için, [başvuru belgelerine](/cli/azure/ext/azure-iot/dt?view=azure-cli-latest&preserve-view=true#ext_azure_iot_az_dt_create) veya [bir Azure dijital TWINS örneği ayarlamaya yönelik genel yönergelere](how-to-set-up-instance-cli.md#create-the-azure-digital-twins-instance)bakın).
+Bu, `--assign-identity` `az dt create` örneği oluşturmak için kullanılan komuta bir parametre eklenerek yapılır. (Bu komut hakkında daha fazla bilgi için, [başvuru belgelerine](/cli/azure/ext/azure-iot/dt#ext_azure_iot_az_dt_create) veya [bir Azure dijital TWINS örneği ayarlamaya yönelik genel yönergelere](how-to-set-up-instance-cli.md#create-the-azure-digital-twins-instance)bakın).
 
 Sistem tarafından yönetilen kimliğe sahip bir örnek oluşturmak için aşağıdaki  `--assign-identity` gibi parametreyi ekleyin:
 
@@ -97,9 +97,9 @@ Aşağıda, sistem tarafından yönetilen kimliğe sahip bir örnek oluşturan v
 az dt create -n {instance_name} -g {resource_group} --assign-identity --scopes "/subscriptions/<subscription ID>/resourceGroups/<resource_group>/providers/Microsoft.EventHub/namespaces/<Event_Hubs_namespace>/eventhubs/<event_hub_name>" --role MyCustomRole
 ```
 
-Bu komutla rol atamalarından daha fazla örnek için, bkz. daha [ **az DT Create** Reference documentation](/cli/azure/ext/azure-iot/dt?view=azure-cli-latest&preserve-view=true#ext_azure_iot_az_dt_create).
+Bu komutla rol atamalarından daha fazla örnek için, bkz. daha [ **az DT Create** Reference documentation](/cli/azure/ext/azure-iot/dt#ext_azure_iot_az_dt_create).
 
-Alternatif olarak, rolleri oluşturmak ve yönetmek için [**az role atama**](/cli/azure/role/assignment?view=azure-cli-latest&preserve-view=true) komut grubunu da kullanabilirsiniz. Bu, Create komutuyla rol atamasını gruplandırmak istemediğiniz ek senaryoları desteklemek için kullanılabilir.
+Alternatif olarak, rolleri oluşturmak ve yönetmek için [**az role atama**](/cli/azure/role/assignment) komut grubunu da kullanabilirsiniz. Bu, Create komutuyla rol atamasını gruplandırmak istemediğiniz ek senaryoları desteklemek için kullanılabilir.
 
 ## <a name="create-an-endpoint-with-identity-based-authentication"></a>Kimlik tabanlı kimlik doğrulaması ile bir uç nokta oluşturma
 
@@ -108,7 +108,7 @@ Azure dijital TWINS örneğiniz için sistem tarafından yönetilen bir kimlik a
 >[!NOTE]
 > Kimlik tabanlı kimlik doğrulamasına geçmek için anahtar tabanlı kimlikle oluşturulmuş olan bir uç noktayı düzenleyemezsiniz. Uç nokta ilk oluşturulduğunda kimlik doğrulama türünü seçmeniz gerekir.
 
-Bu, `--auth-type` `az dt endpoint create` uç noktayı oluşturmak için kullanılan komuta bir parametre eklenerek yapılır. (Bu komut hakkında daha fazla bilgi için, [başvuru belgelerine](/cli/azure/ext/azure-iot/dt/endpoint/create?view=azure-cli-latest&preserve-view=true) veya [bir Azure dijital TWINS uç noktası ayarlamaya yönelik genel yönergelere](how-to-manage-routes-apis-cli.md#create-the-endpoint)bakın).
+Bu, `--auth-type` `az dt endpoint create` uç noktayı oluşturmak için kullanılan komuta bir parametre eklenerek yapılır. (Bu komut hakkında daha fazla bilgi için, [başvuru belgelerine](/cli/azure/ext/azure-iot/dt/endpoint/create) veya [bir Azure dijital TWINS uç noktası ayarlamaya yönelik genel yönergelere](how-to-manage-routes-apis-cli.md#create-the-endpoint)bakın).
 
 Kimlik tabanlı kimlik doğrulaması kullanan bir uç nokta oluşturmak için, `IdentityBased` parametresiyle birlikte kimlik doğrulama türünü belirtin  `--auth-type` . Aşağıdaki örnekte Event Hubs uç noktası için gösterilmektedir.
 

@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 9/24/2020
 ms.topic: quickstart
 ms.service: digital-twins
-ms.openlocfilehash: cb501dd8e548ea2f6ce8b63fbffb1c4b2403c9a6
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 8c6e584a4bdb1953d7ceac4e3d612b329738f646
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102035968"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102203989"
 ---
 # <a name="quickstart---explore-a-sample-azure-digital-twins-scenario-using-azure-digital-twins-explorer"></a>Hızlı başlangıç-Azure Digital TWINS gezginini kullanarak örnek bir Azure dijital TWINS senaryosunu araştırma
 
@@ -57,13 +57,13 @@ Bu bölümün geri kalanında bu adımlarda adım adım gösterilmektedir.
 
 Azure dijital TWINS Explorer uygulaması, [](/dotnet/api/azure.identity.defaultazurecredential?preserve-view=true&view=azure-dotnet) `Azure.Identity` Yerel makinenizde çalıştırdığınızda Azure dijital TWINS örneğiyle kullanıcıların kimliğini doğrulamak için DefaultAzureCredential (kitaplığın bir parçası) kullanır. İstemci uygulamasının Azure dijital TWINS ile kimlik doğrulaması yapabilme yolları hakkında daha fazla bilgi için bkz. [uygulama kimlik doğrulama kodu yazma](how-to-authenticate-client.md).
 
-Bu tür bir kimlik doğrulamasıyla Azure dijital TWINS Gezgini, yerel ortamınızda, yerel bir [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true) veya Visual Studio veya Visual Studio Code Içindeki bir Azure oturum açma gibi kimlik bilgilerini arar. Bu nedenle, Azure Digital TWINS gezgin uygulamasının kimlik bilgilerini ayarlamak için bu mekanizmalardan biri aracılığıyla *yerel olarak Azure 'da oturum açmanız* gerekir.
+Bu tür bir kimlik doğrulamasıyla Azure dijital TWINS Gezgini, yerel ortamınızda, yerel bir [Azure CLI](/cli/azure/install-azure-cli) veya Visual Studio veya Visual Studio Code Içindeki bir Azure oturum açma gibi kimlik bilgilerini arar. Bu nedenle, Azure Digital TWINS gezgin uygulamasının kimlik bilgilerini ayarlamak için bu mekanizmalardan biri aracılığıyla *yerel olarak Azure 'da oturum açmanız* gerekir.
 
 Bu yollarla Azure 'da zaten oturum açtıysanız bir [sonraki bölüme](#run-and-configure-azure-digital-twins-explorer)atlayabilirsiniz.
 
 Aksi takdirde, yerel Azure CLı 'yi şu adımlarla yükleyebilirsiniz:
 
-1. İşletim sistemi ile eşleşen yüklemeyi tamamlamaya yönelik [Bu yükleme bağlantısındaki](/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true) işlemi izleyin.
+1. İşletim sistemi ile eşleşen yüklemeyi tamamlamaya yönelik [Bu yükleme bağlantısındaki](/cli/azure/install-azure-cli) işlemi izleyin.
 1. Makinenizde bir konsol penceresi açın.
 1. `az login`' İ çalıştırın ve Azure hesabınızda oturum açmak için kimlik doğrulama istemlerini izleyin.
 1. Olası son adım: Bu hesap altında birden çok Azure aboneliği kullanıyorsanız, kimlik doğrulama bağlamını, çalıştırarak Azure dijital TWINS örneğinizi içeren Azure aboneliğine ayarlayın `az account set --subscription "<your-subscription-name-or-ID>"` (aboneliğin adı veya kimlik değeri çalışacaktır).

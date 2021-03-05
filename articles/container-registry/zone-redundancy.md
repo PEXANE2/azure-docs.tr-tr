@@ -4,12 +4,12 @@ description: Azure Container Registry bölgede yedekliliği etkinleştirme hakk�
 ms.topic: article
 ms.date: 02/23/2021
 ms.custom: references_regions
-ms.openlocfilehash: 931adcf8258c48d7df42bd5927e8789d7cc871db
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: a190ea68f41196fb11c20259b9953f516d6f5370
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101738115"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102203870"
 ---
 # <a name="enable-zone-redundancy-in-azure-container-registry-for-resiliency-and-high-availability"></a>Dayanıklılık ve yüksek kullanılabilirlik için Azure Container Registry bölgede yedekliliği etkinleştirin
 
@@ -48,7 +48,7 @@ az group create --name <resource-group-name> --location <location>
 
 ### <a name="create-zone-enabled-registry"></a>Bölge özellikli kayıt defteri oluşturma
 
-Premium hizmet katmanında bölge yedekli bir kayıt defteri oluşturmak için [az ACR Create](/cli/azure/acr?view=azure-cli-latest#az_acr_create) komutunu çalıştırın. Azure Container Registry için [kullanılabilirlik bölgelerini destekleyen](../availability-zones/az-region.md) bir bölge seçin. Aşağıdaki örnekte, *eastus* bölgesinde bölge artıklığı etkinleştirilmiştir. `az acr create`Daha fazla kayıt defteri seçeneği için komut yardımına bakın.
+Premium hizmet katmanında bölge yedekli bir kayıt defteri oluşturmak için [az ACR Create](/cli/azure/acr#az_acr_create) komutunu çalıştırın. Azure Container Registry için [kullanılabilirlik bölgelerini destekleyen](../availability-zones/az-region.md) bir bölge seçin. Aşağıdaki örnekte, *eastus* bölgesinde bölge artıklığı etkinleştirilmiştir. `az acr create`Daha fazla kayıt defteri seçeneği için komut yardımına bakın.
 
 ```azurecli
 az acr create \
@@ -70,7 +70,7 @@ Komut çıkışında, `zoneRedundancy` kayıt defteri için özelliği aklınız
 
 ### <a name="create-zone-redundant-replication"></a>Bölge yedekli çoğaltma oluşturma
 
-*Westus2* gibi Azure Container Registry [kullanılabilirlik bölgelerini destekleyen](../availability-zones/az-region.md) bir bölgede bölgesel olarak yedekli bir kayıt defteri çoğaltması oluşturmak için [az ACR Replication Create](/cli/azure/acr/replication?view=azure-cli-latest#az_acr_replication_create) komutunu çalıştırın. 
+*Westus2* gibi Azure Container Registry [kullanılabilirlik bölgelerini destekleyen](../availability-zones/az-region.md) bir bölgede bölgesel olarak yedekli bir kayıt defteri çoğaltması oluşturmak için [az ACR Replication Create](/cli/azure/acr/replication#az_acr_replication_create) komutunu çalıştırın. 
 
 ```azurecli
 az acr replication create \
@@ -220,7 +220,7 @@ Aşağıdaki içerikleri yeni bir dosyaya kopyalayın ve gibi bir dosya adı kul
   }
 ```
 
-Önceki şablon dosyasını kullanarak kayıt defterini oluşturmak için aşağıdaki [az Deployment Group Create](/cli/azure/group/deployment?view=azure-cli-latest#az_group_deployment_create) komutunu çalıştırın. Belirtilen yerlerde şunları sağlayın:
+Önceki şablon dosyasını kullanarak kayıt defterini oluşturmak için aşağıdaki [az Deployment Group Create](/cli/azure/group/deployment#az_group_deployment_create) komutunu çalıştırın. Belirtilen yerlerde şunları sağlayın:
 
 * benzersiz bir kayıt defteri adı veya şablonu parametre olmadan dağıtın ve sizin için benzersiz bir ad oluşturur
 * çoğaltma için *westus2* gibi kullanılabilirlik bölgelerini destekleyen bir konum

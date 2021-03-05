@@ -10,12 +10,12 @@ author: lobrien
 ms.date: 03/04/2021
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: f52686f991e3d14a8cde82c602b182874305f27d
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: ea7dc30d0aed1350a8c9275d786ea22fa52c77bf
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 03/05/2021
-ms.locfileid: "102184109"
+ms.locfileid: "102203700"
 ---
 # <a name="how-to-use-apache-spark-powered-by-azure-synapse-analytics-in-your-machine-learning-pipeline-preview"></a>Machine Learning işlem hattınızda Apache Spark (Azure SYNAPSE Analytics tarafından desteklenir) kullanma (Önizleme)
 
@@ -90,8 +90,6 @@ synapse_compute.wait_for_completion()
 Yapılandırma oluşturulduktan sonra,,, `ComputeTarget` `Workspace` `ComputeTargetAttachConfiguration` ve Machine Learning çalışma alanındaki işlem için başvurmak istediğiniz adı geçirerek bir makine öğrenimi oluşturursunuz. ' A çağrı `ComputeTarget.attach()` zaman uyumsuzdur, bu nedenle çağrı tamamlanana kadar örnek bloklar olur.
 
 ## <a name="create-a-synapsesparkstep-that-uses-the-linked-apache-spark-pool"></a>`SynapseSparkStep`Bağlı Apache Spark havuzunu kullanan bir oluşturma
-
-[Apache Spark havuzundaki](https://github.com/azure/machinelearningnotebooks) örnek Not defteri Spark işi basit bir makine öğrenimi ardışık düzeni tanımlar. İlk olarak, Not defteri, önceki adımda tanımlanan tarafından desteklenen bir veri hazırlama adımını tanımlar `synapse_compute` . Daha sonra, Not defteri bir işlem hedefi tarafından desteklenen bir eğitim adımını eğitim için daha uygun bir şekilde tanımlar. Örnek Not defteri, veri girişini ve çıktıyı göstermek için Titanic acil durum veritabanını kullanır; Aslında verileri temizetmez veya tahmine dayalı bir model yapmaz. Bu örnekte gerçek eğitim olmadığından, eğitim adımında pahalı, CPU tabanlı bir işlem kaynağı kullanılmaktadır.
 
 Veriler `DatasetConsumptionConfig` , tablo verilerini veya dosya kümelerini içerebilen nesneler aracılığıyla makine öğrenimi ardışık düzenine akar. Veriler genellikle bir çalışma alanının veri deposundaki blob depolamadaki dosyalardan gelir. Aşağıdaki kod, bir makine öğrenimi ardışık düzeni için giriş oluşturmak üzere bazı tipik kodları göstermektedir:
 
@@ -228,7 +226,7 @@ Yukarıdaki kod, gerekirse yeni işlem kaynağını oluşturur. Ardından, `step
 
 Tüm adımlarınızı tanımladıktan sonra işlem hattınızı oluşturup çalıştırabilirsiniz. 
 
-```
+```python
 from azureml.pipeline.core import Pipeline
 
 pipeline = Pipeline(workspace=ws, steps=[step_1, step_2])

@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 07/20/2020
 ms.author: mbaldwin
 ms.custom: mvc, devx-track-python, devx-track-azurecli
-ms.openlocfilehash: ae62bf353f8a92c4408d4a38a91771ad60a13107
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 2fc77d0cdfb6bd8a62555951c0b6dc7e9b732f93
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93285316"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102203547"
 ---
 # <a name="tutorial-use-azure-key-vault-with-a-virtual-machine-in-python"></a>Öğretici: Python 'da bir sanal makine ile Azure Key Vault kullanma
 
@@ -64,9 +64,9 @@ Aşağıdaki yöntemlerden birini kullanarak **myvm** ADLı bir VM oluşturun:
 |--|--|
 | [Azure CLI](../../virtual-machines/linux/quick-create-cli.md) | [Azure CLI](../../virtual-machines/windows/quick-create-cli.md) |
 | [PowerShell](../../virtual-machines/linux/quick-create-powershell.md) | [PowerShell](../../virtual-machines/windows/quick-create-powershell.md) |
-| [Azure Portal](../../virtual-machines/linux/quick-create-portal.md) | [Azure portal](../../virtual-machines/windows/quick-create-portal.md) |
+| [Azure portalı](../../virtual-machines/linux/quick-create-portal.md) | [Azure portal](../../virtual-machines/windows/quick-create-portal.md) |
 
-Azure CLı kullanarak bir Linux VM oluşturmak için [az VM Create](/cli/azure/vm) komutunu kullanın.  Aşağıdaki örnek, *azureuser* adlı bir kullanıcı hesabı ekler. `--generate-ssh-keys`Parametresi, otomatik olarak BIR SSH anahtarı oluşturmak ve varsayılan anahtar konumuna ( *~/PST* ) koymak için kullanılır. 
+Azure CLı kullanarak bir Linux VM oluşturmak için [az VM Create](/cli/azure/vm) komutunu kullanın.  Aşağıdaki örnek, *azureuser* adlı bir kullanıcı hesabı ekler. `--generate-ssh-keys`Parametresi, otomatik olarak BIR SSH anahtarı oluşturmak ve varsayılan anahtar konumuna (*~/PST*) koymak için kullanılır. 
 
 ```azurecli-interactive
 az vm create \
@@ -81,7 +81,7 @@ az vm create \
 
 ## <a name="assign-an-identity-to-the-vm"></a>VM 'ye bir kimlik atama
 
-Azure CLı [az VM Identity Assign](/cli/azure/vm/identity?view=azure-cli-latest#az-vm-identity-assign) komutunu kullanarak sanal makine için sistem tarafından atanan bir kimlik oluşturun:
+Azure CLı [az VM Identity Assign](/cli/azure/vm/identity#az-vm-identity-assign) komutunu kullanarak sanal makine için sistem tarafından atanan bir kimlik oluşturun:
 
 ```azurecli
 az vm identity assign --name "myVM" --resource-group "myResourceGroup"

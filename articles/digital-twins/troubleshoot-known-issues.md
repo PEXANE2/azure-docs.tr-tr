@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.service: digital-twins
 ms.date: 07/14/2020
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 49c790ae92537ab72fb9848ed4e57e222ef11d79
-ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
+ms.openlocfilehash: d7d97ca1eb590fb96789d439243dd04d6143a960
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/16/2021
-ms.locfileid: "100545692"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102203156"
 ---
 # <a name="known-issues-in-azure-digital-twins"></a>Azure dijital TWINS 'de bilinen sorunlar
 
@@ -24,7 +24,7 @@ Bu makalede, Azure dijital TWINS ile ilişkili bilinen sorunlar hakkında bilgi 
 
 | Bu, beni etkiler mi? | Nedeni | Çözüm |
 | --- | --- | --- |
-| &nbsp;Azure &nbsp; dijital &nbsp; TWINS 'de, bu, aşağıdaki komut gruplarını etkiler:<br><br>`az dt route`<br><br>`az dt model`<br><br>`az dt twin` | Bu Cloud Shell, bilinen bir sorunun sonucudur: [*Cloud Shell Token alma işlemi, 400 Istemci hatasıyla başarısız oluyor: Hatalı istek*](https://github.com/Azure/azure-cli/issues/11749).<br><br>Bu, Azure Digital TWINS örnek kimlik doğrulama belirteçleri ve Cloud Shell varsayılan [yönetilen kimlik](../active-directory/managed-identities-azure-resources/overview.md) tabanlı kimlik doğrulaması ile ilgili bir sorun oluşturur. <br><br>Bu, veya komut gruplarından Azure dijital TWINS komutlarını `az dt` etkilemez `az dt endpoint` , çünkü bu, Cloud Shell yönetilen kimlik doğrulamasıyla ilgili bir sorun olmayan farklı bir kimlik doğrulama belirteci (Azure Resource Manager göre) kullanır. | Bunu çözmek için bir yol, `az login` Cloud Shell ' de komutu yeniden çalıştırmak ve sonraki oturum açma adımlarını tamamlıyor. Bu, oturumunuzu yönetilen kimlik kimlik doğrulamasından geçecek, bu da kök sorunu önleyen bir şekilde yapar. Bundan sonra, komutunu yeniden çalıştırmanız gerekir.<br><br>Alternatif olarak, Azure portal Cloud Shell bölmesini açabilir ve Cloud Shell işinizi buradan tamamlayabilirsiniz.<br>:::image type="content" source="media/troubleshoot-known-issues/portal-launch-icon.png" alt-text="Azure portal simge çubuğundaki Cloud Shell simgesinin görüntüsü" lightbox="media/troubleshoot-known-issues/portal-launch-icon.png":::<br><br>Son olarak, Azure CLı komutlarını yerel olarak çalıştırabilmeniz için başka bir çözüm, [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true) 'yi makinenize yüklemektir. Yerel CLı bu sorunla karşılaşmaz. |
+| &nbsp;Azure &nbsp; dijital &nbsp; TWINS 'de, bu, aşağıdaki komut gruplarını etkiler:<br><br>`az dt route`<br><br>`az dt model`<br><br>`az dt twin` | Bu Cloud Shell, bilinen bir sorunun sonucudur: [*Cloud Shell Token alma işlemi, 400 Istemci hatasıyla başarısız oluyor: Hatalı istek*](https://github.com/Azure/azure-cli/issues/11749).<br><br>Bu, Azure Digital TWINS örnek kimlik doğrulama belirteçleri ve Cloud Shell varsayılan [yönetilen kimlik](../active-directory/managed-identities-azure-resources/overview.md) tabanlı kimlik doğrulaması ile ilgili bir sorun oluşturur. <br><br>Bu, veya komut gruplarından Azure dijital TWINS komutlarını `az dt` etkilemez `az dt endpoint` , çünkü bu, Cloud Shell yönetilen kimlik doğrulamasıyla ilgili bir sorun olmayan farklı bir kimlik doğrulama belirteci (Azure Resource Manager göre) kullanır. | Bunu çözmek için bir yol, `az login` Cloud Shell ' de komutu yeniden çalıştırmak ve sonraki oturum açma adımlarını tamamlıyor. Bu, oturumunuzu yönetilen kimlik kimlik doğrulamasından geçecek, bu da kök sorunu önleyen bir şekilde yapar. Bundan sonra, komutunu yeniden çalıştırmanız gerekir.<br><br>Alternatif olarak, Azure portal Cloud Shell bölmesini açabilir ve Cloud Shell işinizi buradan tamamlayabilirsiniz.<br>:::image type="content" source="media/troubleshoot-known-issues/portal-launch-icon.png" alt-text="Azure portal simge çubuğundaki Cloud Shell simgesinin görüntüsü" lightbox="media/troubleshoot-known-issues/portal-launch-icon.png":::<br><br>Son olarak, Azure CLı komutlarını yerel olarak çalıştırabilmeniz için başka bir çözüm, [Azure CLI](/cli/azure/install-azure-cli) 'yi makinenize yüklemektir. Yerel CLı bu sorunla karşılaşmaz. |
 
 
 ## <a name="missing-role-assignment-after-scripted-setup"></a>Komut dosyası kurulumundan sonra eksik rol ataması

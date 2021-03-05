@@ -3,12 +3,12 @@ title: Azure Işlevleri 'ni kullanarak Azure DevTest Labs genişletme | Microsof
 description: Azure Işlevleri 'ni kullanarak Azure DevTest Labs genişletmeyi öğrenin.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: bcd12d77065d231198e992fa5c459f0fc210855a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7a51f0935540df18cfb8805902bbe2c4ec365291
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85476317"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102203683"
 ---
 # <a name="use-azure-functions-to-extend-devtest-labs"></a>DevTest Labs'i genişletmek için Azure İşlevleri'ni kullanma
 DevTest Labs tarafından zaten desteklenenden daha fazla senaryoyu desteklemek için Azure Işlevleri 'ni kullanabilirsiniz. Azure Işlevleri, hizmetin yerleşik işlevselliğini işletmeye özgü gereksinimlerinizi karşılayacak şekilde genişletmek için kullanılabilir. Aşağıdaki listede olası senaryolardan bazıları verilmiştir. Bu makalede, bu örnek senaryolarından birinin nasıl uygulanacağı gösterilmektedir.
@@ -44,9 +44,9 @@ Windows Update yapıtlarının son zamanlarda uygulanmadığı tüm VM 'Ler içi
 Bu bölümde, **iç destek** sayfasını güncelleştirmek Için gereken Azure kaynaklarını ayarlamaya yönelik adım adım yönergeler sağlanmaktadır. Bu izlenecek yol, DevTest Labs 'i genişletmeyi bir örnek sağlar. Bu kalıbı diğer senaryolar için kullanabilirsiniz.
 
 ### <a name="step-1-create-a-service-principal"></a>1. Adım: hizmet sorumlusu oluşturma 
-İlk adım, Laboratuvarı içeren aboneliğe izin veren bir hizmet sorumlusu almaya yönelik bir hizmettir. Hizmet sorumlusu, parola tabanlı kimlik doğrulaması kullanmalıdır. [Azure CLI](/cli/azure/create-an-azure-service-principal-azure-cli?view=azure-cli-latest), [Azure PowerShell](/powershell/azure/create-azure-service-principal-azureps?view=azps-2.5.0)veya [Azure Portal](../active-directory/develop/howto-create-service-principal-portal.md)gerçekleştirilebilir. Kullanmak üzere zaten bir hizmet sorumlunuz varsa, bu adımı atlayabilirsiniz.
+İlk adım, Laboratuvarı içeren aboneliğe izin veren bir hizmet sorumlusu almaya yönelik bir hizmettir. Hizmet sorumlusu, parola tabanlı kimlik doğrulaması kullanmalıdır. [Azure CLI](/cli/azure/create-an-azure-service-principal-azure-cli), [Azure PowerShell](/powershell/azure/create-azure-service-principal-azureps?view=azps-2.5.0)veya [Azure Portal](../active-directory/develop/howto-create-service-principal-portal.md)gerçekleştirilebilir. Kullanmak üzere zaten bir hizmet sorumlunuz varsa, bu adımı atlayabilirsiniz.
 
-Hizmet sorumlusu için **uygulama kimliği**, **anahtar**ve **Kiracı kimliği** ' ni aklınızda edin. Bu izlenecek yolda daha sonra ihtiyacınız olacak. 
+Hizmet sorumlusu için **uygulama kimliği**, **anahtar** ve **Kiracı kimliği** ' ni aklınızda edin. Bu izlenecek yolda daha sonra ihtiyacınız olacak. 
 
 ### <a name="step-2-download-the-sample-and-open-in-visual-studio-2019"></a>2. Adım: örneği Indirme ve Visual Studio 2019 'de açma
 [C# Azure işlevleri örneğinin](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/AzureFunctions/CSharp) bir kopyasını yerel olarak indirin (Depoyu kopyalayarak ya da depoyu [buradan](https://github.com/Azure/azure-devtestlab/archive/master.zip)indirerek).  
@@ -78,7 +78,7 @@ Ayrıca, uygulama KIMLIĞI, anahtar ve kiracı KIMLIĞI gibi hizmet sorumlusu ha
 
 
 ### <a name="step-5--update-application-settings"></a>5. Adım: uygulama ayarlarını güncelleştirme
-Visual Studio 'da, Azure Işlevini yayımladıktan sonra **Eylemler**altındaki **Azure App Service ayarlarını Düzenle** ' yi seçin. Aşağıdaki uygulama ayarlarını (uzak) güncelleştirin:
+Visual Studio 'da, Azure Işlevini yayımladıktan sonra **Eylemler** altındaki **Azure App Service ayarlarını Düzenle** ' yi seçin. Aşağıdaki uygulama ayarlarını (uzak) güncelleştirin:
 
 - AzureFunctionUrl_ApplyUpdates
 - AzureFunctionUrl_UpdateSupportPage

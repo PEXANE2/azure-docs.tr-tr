@@ -8,12 +8,12 @@ ms.service: dns
 ms.topic: how-to
 ms.date: 06/18/2019
 ms.author: rohink
-ms.openlocfilehash: 63bd1d01adf66f33a8ee5349f35063473429b007
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: bfc7a851442d6dd70d55c9f00e6d2f18d37e56bf
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94964788"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102203411"
 ---
 # <a name="migrating-legacy-azure-dns-private-zones-to-new-resource-model"></a>Eski Azure DNS özel bölgelerini yeni kaynak modeline geçirme
 
@@ -25,7 +25,7 @@ az account set --subscription <SubscriptionId>
 az network dns zone list --query "[?zoneType=='Private']"
 ```
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure PowerShell 'ın en son sürümünü yüklediğinizden emin olun. Azure PowerShell (az) ve nasıl yükleneceğine ilişkin daha fazla bilgi için ziyaret edin https://docs.microsoft.com/powershell/azure/new-azureps-module-az
 
@@ -108,7 +108,7 @@ Bu adım eski DNS bölgelerini silecek ve yalnızca DNS çözümünün beklenen 
 
 Şablonlar, PowerShell betikleri veya SDK kullanılarak geliştirilen özel kod dahil Otomasyon kullanıyorsanız, özel DNS bölgeleri için yeni kaynak modelini kullanmak üzere otomasyon hesabınızı güncelleştirmeniz gerekir. Aşağıda, yeni özel DNS CLı/PS/SDK belgelerinin bağlantıları verilmiştir.
 * [Özel bölgeler Azure DNS REST API](/rest/api/dns/privatedns/privatezones)
-* [Özel bölgeler CLı Azure DNS](/cli/azure/ext/privatedns/network/private-dns?view=azure-cli-latest)
+* [Özel bölgeler CLı Azure DNS](/cli/azure/ext/privatedns/network/private-dns)
 * [Özel bölgeler PowerShell Azure DNS](/powershell/module/az.privatedns/?view=azps-2.3.2)
 * [Özel bölgeler SDK Azure DNS](/dotnet/api/overview/azure/privatedns/management?view=azure-dotnet-preview)
 

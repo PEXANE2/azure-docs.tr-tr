@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 03/02/2021
 ms.custom: references_regions
-ms.openlocfilehash: eedb3dfeafbd378cfff7afb04fcc2b9aa6e791d6
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: e9cbb7daf61397064bd79f30d851d96fdf63f5a0
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101680350"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102203241"
 ---
 # <a name="semantic-search-in-azure-cognitive-search"></a>Azure Bilişsel Arama 'de anlamsal arama
 
@@ -27,7 +27,7 @@ Temel teknoloji, Bing ve Microsoft Research yatırımlarından yararlanır ve Bi
 
 Genel Önizleme özellikleri şunları içerir:
 
-+ Arama sorgu koşullarının bağlam veya anlam anlamı temelinde ilgili belgeleri alan anlam derecelendirme algoritması
++ Arama sorgu koşullarının bağlam veya anlam anlamı temelinde sonuçları puan eden anlam derecelendirme modeli
 + İlgili passges vurgulayan anlam başlıkları
 + Sorgunun anlam yanıtları, ayrıca sonuçlardan formül
 + Sorgu terimleri arama altyapısına ulaşmadan önce yazım hatalarını düzelten yazım denetimi
@@ -44,7 +44,9 @@ Açıklamalı alt yazılar ve yanıtlar oluşturmak için dil temsili modellerin
 
 ## <a name="availability-and-pricing"></a>Kullanılabilirlik ve fiyatlandırma
 
-Bir Standart katmanda (S1, S2, S3) oluşturulan ve şu bölgelerden birinde bulunan Arama hizmetlerinde (S1, S2, S3), bir [kaydolma kaydı](https://aka.ms/SemanticSearchPreviewSignup)aracılığıyla anlamsal sıralama kullanılabilir: Orta Kuzey ABD, Batı ABD, Batı ABD 2, Doğu ABD 2, Kuzey Avrupa, Batı Avrupa. Yazım denetimi aynı bölgelerde mevcuttur, ancak katman kısıtlamalarına sahip değildir. Katman ve bölge ölçütlerine uyan mevcut bir hizmetiniz varsa, yalnızca kaydolma gereklidir.
+Bir Standart katmanda (S1, S2, S3) oluşturulan ve şu bölgelerden birinde bulunan Arama hizmetlerinde (S1, S2, S3), bir [kaydolma kaydı](https://aka.ms/SemanticSearchPreviewSignup)aracılığıyla anlamsal sıralama kullanılabilir: Orta Kuzey ABD, Batı ABD, Batı ABD 2, Doğu ABD 2, Kuzey Avrupa, Batı Avrupa. Belirtilen bölgelerde S1 veya üzeri olan mevcut bir arama hizmeti önizleme için uygun değildir (yeni hizmet oluşturmaya gerek yoktur).
+
+Yazım denetimi aynı bölgelerde mevcuttur, ancak hiçbir katman kısıtlaması yoktur ve kaydolma gereksinimi yoktur. 
 
 2 Mart 'ta önizleme başlatma arasında 1 Nisan 'da, yazım düzeltme ve anlam derecelendirmesi ücretsiz olarak sunulur. 1 Nisan 'dan sonra, bu işlevi çalıştırmanın hesaplama maliyetleri faturalandırılabilir bir olay olur. Beklenen maliyet 250.000 sorguları için yaklaşık USD $500/ay olur. [Bilişsel arama fiyatlandırma sayfasında](https://azure.microsoft.com/pricing/details/search/) belgelenen ayrıntılı maliyet bilgilerini ve [tahmin etme ve maliyetleri yönetme](search-sku-manage-costs.md)' de bulabilirsiniz.
 

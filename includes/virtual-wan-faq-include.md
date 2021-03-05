@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/05/2021
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: d275f2f4cad83c8f378c471e5a3fa1313d6c0e7d
-ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
+ms.openlocfilehash: a66eff14490add8269082e4e54f077d1d9db7e02
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/06/2021
-ms.locfileid: "99624887"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102205966"
 ---
 ### <a name="is-azure-virtual-wan-in-ga"></a>Azure sanal WAN, GA 'de mi?
 
@@ -302,3 +302,8 @@ Hayır. Sanal WAN, hiçbir müşteri verisi depolamaz.
 ### <a name="are-there-any-managed-service-providers-that-can-manage-virtual-wan-for-users-as-a-service"></a>Kullanıcılar için sanal WAN 'ı bir hizmet olarak yönetebilen yönetilen hizmet sağlayıcıları var mı?
 
 Evet. Azure Marketi aracılığıyla etkinleştirilen yönetilen hizmet sağlayıcısı (MSP) çözümlerinin listesi için bkz. [Azure ağ oluşturma iş ortakları tarafından sunulan Azure Marketi teklifleri](../articles/networking/networking-partners-msp.md#msp).
+
+### <a name="how-does-virtual-wan-hub-routing-differ-from-azure-route-server-in-a-vnet"></a>Sanal WAN hub 'ı yönlendirme, VNet 'teki Azure yol sunucusundan nasıl farklıdır?
+
+Azure Route Server, bir DIY hub VNet 'teki yol sunucusundan yolları öğrenmek için NVA (ağ sanal gereci) tarafından kullanılabilecek bir Sınır Ağ Geçidi Protokolü (BGP) eşleme hizmeti sağlar. Sanal WAN yönlendirmesi, VNET-VNET geçiş yönlendirmesi, özel yönlendirme, özel yol Ilişkilendirme ve yayma ve ExpressRoute, site VPN, uzak kullanıcı/büyük ölçekli P2S VPN ve güvenli Merkez (Azure Güvenlik Duvarı) özelliklerine ait bağlantı Hizmetleri ile birlikte sıfır dokunuşla tam olarak bir hub hizmeti içeren çok sayıda özellik sağlar. NVA ve Azure yönlendirici sunucunuz arasında bir Sınır Ağ Geçidi Protokolü (BGP) eşleme oluşturduğunuzda, NVA 'ınızdan IP adreslerini sanal ağınıza tanıtabilirsiniz. Geçiş yönlendirmesi, özel yönlendirme vb. gibi tüm gelişmiş yönlendirme özellikleri için sanal WAN yönlendirmeyi kullanabilirsiniz.
+

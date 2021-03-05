@@ -3,12 +3,12 @@ title: Bir kez çalıştır görevi için yeniden başlatma ilkesi
 description: Derleme, test veya görüntü işleme işlerinde olduğu gibi, tamamlama için çalışan görevleri yürütmek üzere Azure Container Instances nasıl kullanacağınızı öğrenin.
 ms.topic: article
 ms.date: 08/11/2020
-ms.openlocfilehash: 336a31a03cdc9dfdfebe79ef47b59ef90053f523
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 49280549fa834b82574f81494f1cf44817d8be5d
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88798950"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102203836"
 ---
 # <a name="run-containerized-tasks-with-restart-policies"></a>Yeniden başlatma ilkeleriyle kapsayıcılı görevleri çalıştırma
 
@@ -56,7 +56,7 @@ az container create \
     --restart-policy OnFailure
 ```
 
-Azure Container Instances kapsayıcıyı başlatır ve kapsayıcıdaki uygulama (veya bu durumda betik) çıkış yaptığında durdurur. Azure Container Instances, yeniden başlatma ilkesi veya olan bir kapsayıcıyı `Never` durdurulduğunda `OnFailure` , kapsayıcının durumu **sonlandırıldı**olarak ayarlanır. [Az Container Show][az-container-show] komutuyla bir kapsayıcının durumunu kontrol edebilirsiniz:
+Azure Container Instances kapsayıcıyı başlatır ve kapsayıcıdaki uygulama (veya bu durumda betik) çıkış yaptığında durdurur. Azure Container Instances, yeniden başlatma ilkesi veya olan bir kapsayıcıyı `Never` durdurulduğunda `OnFailure` , kapsayıcının durumu **sonlandırıldı** olarak ayarlanır. [Az Container Show][az-container-show] komutuyla bir kapsayıcının durumunu kontrol edebilirsiniz:
 
 ```azurecli-interactive
 az container show \
@@ -104,7 +104,7 @@ Tamamlanmayı çalıştıran kapsayıcılarınızın çıkışını kalıcı hal
 [aci-wordcount-image]: https://hub.docker.com/_/microsoft-azuredocs-aci-wordcount
 
 <!-- LINKS - Internal -->
-[az-container-create]: /cli/azure/container?view=azure-cli-latest#az-container-create
-[az-container-logs]: /cli/azure/container?view=azure-cli-latest#az-container-logs
-[az-container-show]: /cli/azure/container?view=azure-cli-latest#az-container-show
+[az-container-create]: /cli/azure/container#az-container-create
+[az-container-logs]: /cli/azure/container#az-container-logs
+[az-container-show]: /cli/azure/container#az-container-show
 [azure-cli-install]: /cli/azure/install-azure-cli

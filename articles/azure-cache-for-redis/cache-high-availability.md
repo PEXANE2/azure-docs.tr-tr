@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 02/08/2021
 ms.author: yegu
-ms.openlocfilehash: 2005b24e9a5692adda8c8e3a5100a6450c67663c
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: ad6696fc4fe2af7047c25a3a9c260d3b12588ee2
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101653856"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102203309"
 ---
 # <a name="high-availability-for-azure-cache-for-redis"></a>Redsıs için Azure önbelleği için yüksek kullanılabilirlik
 
@@ -23,7 +23,7 @@ Redin için Azure Cache, bir önbellek için *düğüm* olarak adlandırılan bi
 | ------------------- | ------- | ------- | :------: | :---: | :---: |
 | [Standart çoğaltma](#standard-replication)| Otomatik yük devretme ile tek bir veri merkezinde çift düğümlü çoğaltılan yapılandırma | %99,9 |✔|✔|-|
 | [Bölge yedekliliği](#zone-redundancy) | Otomatik yük devretme ile AZs genelinde çok düğümlü çoğaltılan yapılandırma | % 99,95 (Premium katman),% 99,99 (kurumsal Katmanlar) |-|Önizleme|Önizleme|
-| [Coğrafi çoğaltma](#geo-replication) | Kullanıcı denetimli yük devretmeyle, iki bölgedeki bağlantılı önbellek örnekleri | % 99,999 (kurumsal katman) |-|✔|-|
+| [Coğrafi çoğaltma](#geo-replication) | Kullanıcı denetimli yük devretmeyle, iki bölgedeki bağlantılı önbellek örnekleri | % 99,999 (kurumsal katman) |-|✔|Önizleme|
 
 ## <a name="standard-replication"></a>Standart çoğaltma
 

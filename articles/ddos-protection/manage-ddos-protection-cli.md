@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/28/2020
 ms.author: yitoh
-ms.openlocfilehash: 6c628d93c112a770c85a10d0eff958614a7cf4cb
-ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
+ms.openlocfilehash: 59c5ca9ce9e95319b36e002da0b5d1438ef3fdd1
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97814168"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102203785"
 ---
 # <a name="quickstart-create-and-configure-azure-ddos-protection-standard-using-azure-cli"></a>Hızlı başlangıç: Azure CLı kullanarak Azure DDoS koruma standardı oluşturma ve yapılandırma
 
@@ -39,7 +39,7 @@ CLı 'yi yerel olarak yükleyip kullanmayı tercih ederseniz bu hızlı başlang
 
 Azure 'da, ilgili kaynakları bir kaynak grubuna ayırabilirsiniz. Var olan bir kaynak grubunu kullanabilir ya da yeni bir tane oluşturabilirsiniz.
 
-Bir kaynak grubu oluşturmak için [az Group Create](/cli/azure/group?preserve-view=true&view=azure-cli-latest#az-group-create)kullanın. Bu örnekte kaynak grubumuzu _Myresourcegroup_ olarak adlandırın ve _Doğu ABD_ konumunu kullanın:
+Bir kaynak grubu oluşturmak için [az Group Create](/cli/azure/group#az-group-create)kullanın. Bu örnekte kaynak grubumuzu _Myresourcegroup_ olarak adlandırın ve _Doğu ABD_ konumunu kullanın:
 
 ```azurecli-interactive
 az group create \
@@ -67,6 +67,7 @@ az network vnet create \
     --name MyVnet \
     --location eastus \
     --ddos-protection true
+    --ddos-protection-plan MyDdosProtectionPlan
 ```
 
 Sanal ağ için DDoS standardı etkinleştirildiğinde bir sanal ağı başka bir kaynak grubuna veya aboneliğe taşıyamazsınız. DDoS standart özellikli bir sanal ağı taşımanız gerekiyorsa, önce DDoS standardını devre dışı bırakın, sanal ağı taşıyın ve ardından DDoS standardını etkinleştirin. Taşıma işleminden sonra, sanal ağ içindeki tüm korumalı genel IP adresleri için otomatik olarak ayarlanan ilke eşikleri sıfırlanır.
@@ -83,7 +84,7 @@ az group create \
 az network ddos-protection create \
     --resource-group MyResourceGroup \
     --name MyDdosProtectionPlan
-    --vnet MyVnet
+    --vnets MyVnet
 ```
 
 Alternatif olarak, belirli bir sanal ağ için DDoS korumasını etkinleştirebilirsiniz:
@@ -91,8 +92,9 @@ Alternatif olarak, belirli bir sanal ağ için DDoS korumasını etkinleştirebi
 ```azurecli-interactive
 az network vnet update \
     --resource-group MyResourceGroup \
-    --vnet MyVnet \
+    --name MyVnet \
     --ddos-protection true
+    --ddos-protection-plan MyDdosProtectionPlan
 ```
 
 ## <a name="validate-and-test"></a>Doğrula ve test et
@@ -111,7 +113,7 @@ Komutun DDoS koruma planınızın doğru ayrıntılarını döndürdüğünden e
 
 Kaynaklarınızın bir sonraki öğreticide kalmasını sağlayabilirsiniz. Artık gerekmiyorsa, _Myresourcegroup_ kaynak grubunu silin. Kaynak grubunu sildiğinizde, DDoS koruma planını ve ilgili tüm kaynakları da silersiniz. 
 
-Kaynak grubunu silmek için [az Group Delete](/cli/azure/group?preserve-view=true&view=azure-cli-latest#az_group_delete)kullanın:
+Kaynak grubunu silmek için [az Group Delete](/cli/azure/group#az_group_delete)kullanın:
 
 ```azurecli-interactive
 az group delete \
@@ -123,8 +125,9 @@ DDoS korumasını devre dışı bırakmak için verilen bir sanal ağı güncell
 ```azurecli-interactive
 az network vnet update \
     --resource-group MyResourceGroup \
-    --vnet MyVnet \
+    --name MyVnet \
     --ddos-protection false
+    --ddos-protection-plan ""
 ```
 
 DDoS koruma planını silmek istiyorsanız, önce tüm sanal ağların ilişkilendirmesini kaldırmanız gerekir. 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/09/2020
 ms.author: amverma
 ms.reviewer: jushiman
-ms.openlocfilehash: b9f25627f0969d4dbcb2b639bd6f21ffbf14f3fe
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: b0dfd1156e9cc46914f1cc72ce4975ab655855cb
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101671251"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102203104"
 ---
 # <a name="hc-series"></a>HC serisi
 
@@ -27,7 +27,7 @@ HC Serisi VM 'Ler özelliği 100 GB/sn Mellanox EDR InfiniBand. Bu VM 'Ler, iyil
 [Dinamik geçiş](maintenance-and-updates.md): desteklenmiyor<br>
 [Güncelleştirmeleri koruyan bellek](maintenance-and-updates.md): desteklenmiyor<br>
 [VM oluşturma desteği](generation-2.md): 1. ve 2. nesil<br>
-[Hızlandırılmış ağ](../virtual-network/create-vm-accelerated-networking-cli.md): desteklenir<br>
+[Hızlandırılmış ağ](../virtual-network/create-vm-accelerated-networking-cli.md): desteklenir (performans ve olası sorunlar hakkında[daha fazla bilgi edinin](https://techcommunity.microsoft.com/t5/azure-compute/accelerated-networking-on-hb-hc-hbv2-and-ndv2/ba-p/2067965) ) <br>
 [Kısa ömürlü işletim sistemi diskleri](ephemeral-os-disks.md): desteklenmez <br>
 <br>
 

@@ -12,12 +12,12 @@ ms.workload: na
 ms.topic: article
 ms.date: 02/16/2021
 ms.author: juliako
-ms.openlocfilehash: 3a64bb261db39efb63b35004f1daa0452b4f0672
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 618617d3602e45ebb15314c7cc5f6898a73bb71f
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101715165"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102203734"
 ---
 # <a name="azure-media-services-video-indexer-release-notes"></a>Azure Media Services Video Indexer sürüm notları
 
@@ -29,6 +29,12 @@ En son gelişmelerden haberdar olmak için, bu makalede hakkında bilgi verilmek
 * Bilinen sorunlar
 * Hata düzeltmeleri
 * Kullanım dışı işlevsellik
+
+## <a name="march-2021"></a>Mart 2021
+
+Ses analizi artık farklı fiyat noktasındaki yeni ses özellikleri paketinde bulunabilir. Yeni **temel ses** Analizi ön ayarı yalnızca konuşma dökümünü, çeviri ve biçim çıkış başlıklarını ve alt yazıları ayıklamak için düşük maliyetli bir seçenek sağlar. **Temel ses** ön ayarı faturanızda bir satır ve başlık ve alt başlık biçimlendirmesi için ayrı bir satır dahil olmak üzere iki ayrı ölçü oluşturur. Fiyatlandırma hakkında daha fazla bilgi için [Media Services fiyatlandırma](https://azure.microsoft.com/pricing/details/media-services/) sayfasına bakın.
+
+Yeni eklenen paket,   ->  **temel ses** Önayarı ( **video + ses dizin oluşturma** açılan kutusu altında) seçeneğini belirleyerek dosyanızı dizin oluşturma veya yeniden dizin oluşturma sırasında kullanılabilir.
 
 ## <a name="february-2021"></a>Şubat 2021
 

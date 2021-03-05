@@ -7,12 +7,12 @@ ms.author: aymarqui
 ms.date: 02/12/2021
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: a39b91304c4123b216a0b508dcea0547cae5ab43
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 89bd77c30ec52a72087598b86f22e85659fa1b0e
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102041510"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102203904"
 ---
 # <a name="integrate-azure-digital-twins-with-azure-signalr-service"></a>Azure Digital TWINS 'i Azure SignalR hizmeti ile tümleştirme
 
@@ -88,7 +88,7 @@ Sonra, işlevleri Azure SignalR örneğinizle iletişim kuracak şekilde yapıla
 
     :::image type="content" source="media/how-to-integrate-azure-signalr/signalr-keys.png" alt-text="SignalR örneği için anahtarlar sayfasını gösteren Azure portal ekran görüntüsü. Birincil bağlantı DIZESININ yanındaki ' panoya kopyala ' simgesi vurgulanır." lightbox="media/how-to-integrate-azure-signalr/signalr-keys.png":::
 
-1. Son olarak, aşağıdaki Azure CLı komutunu kullanarak, işlevin uygulama ayarlarına Azure SignalR **Bağlantı dizenizi** ekleyin. Ayrıca, yer tutucuları kaynak grubunuz ve App Service/Function uygulamanızın adı ile birlikte [öğretici önkoşulu](how-to-integrate-azure-signalr.md#prerequisites)ile değiştirin. Bu komut, [makinenizde yüklü](/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true)olan Azure CLI 'niz varsa [Azure Cloud Shell](https://shell.azure.com)veya yerel olarak çalıştırılabilir:
+1. Son olarak, aşağıdaki Azure CLı komutunu kullanarak, işlevin uygulama ayarlarına Azure SignalR **Bağlantı dizenizi** ekleyin. Ayrıca, yer tutucuları kaynak grubunuz ve App Service/Function uygulamanızın adı ile birlikte [öğretici önkoşulu](how-to-integrate-azure-signalr.md#prerequisites)ile değiştirin. Bu komut, [makinenizde yüklü](/cli/azure/install-azure-cli)olan Azure CLI 'niz varsa [Azure Cloud Shell](https://shell.azure.com)veya yerel olarak çalıştırılabilir:
  
     ```azurecli-interactive
     az functionapp config appsettings set -g <your-resource-group> -n <your-App-Service-(function-app)-name> --settings "AzureSignalRConnectionString=<your-Azure-SignalR-ConnectionString>"
@@ -189,7 +189,7 @@ Bu işlem, bir görsel sıcaklık ölçer görüntüleyen örnek uygulamayı ça
 
 Bu makalede oluşturulan kaynaklara artık ihtiyacınız yoksa, bunları silmek için aşağıdaki adımları izleyin. 
 
-Azure Cloud Shell veya yerel Azure CLı kullanarak, [az Group Delete](/cli/azure/group?view=azure-cli-latest&preserve-view=true#az-group-delete) komutuyla bir kaynak grubundaki tüm Azure kaynaklarını silebilirsiniz. Kaynak grubunun kaldırılması da kaldırılır...
+Azure Cloud Shell veya yerel Azure CLı kullanarak, [az Group Delete](/cli/azure/group#az-group-delete) komutuyla bir kaynak grubundaki tüm Azure kaynaklarını silebilirsiniz. Kaynak grubunun kaldırılması da kaldırılır...
 * Azure dijital TWINS örneği (uçtan uca öğreticiden)
 * IoT Hub ve Hub cihaz kaydı (uçtan uca öğreticiden)
 * olay Kılavuzu konusu ve ilişkili abonelikler
