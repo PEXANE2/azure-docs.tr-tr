@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/31/2020
 ms.author: jeedes
-ms.openlocfilehash: c83a1050035fc40912d0242a9c5fe2498b299ebd
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 56aa7c41934506c7de0c8d5cebe84eb5a6bc2164
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92517982"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102174623"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-my-ibisworld"></a>Öğretici: Ibısdünyam ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -60,7 +60,7 @@ Ibisdünyamın tümleştirmesini Azure AD 'ye göre yapılandırmak için, Galer
 
 ## <a name="configure-and-test-azure-ad-sso-for-my-ibisworld"></a>Ibısworld My için Azure AD SSO 'yu yapılandırın ve test edin
 
-**B. Simon**adlı bir test kullanıcısı kullanarak Ibısworld My ADLı Azure AD SSO 'yu yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ve Ibısmy dünyasında ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
+**B. Simon** adlı bir test kullanıcısı kullanarak Ibısworld My ADLı Azure AD SSO 'yu yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ve Ibısmy dünyasında ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
 
 Azure AD SSO 'yu Ibısdünyası ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
 
@@ -83,26 +83,26 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
 1. **Temel SAML yapılandırması** bölümünde, uygulama zaten Azure ile önceden tümleştirildiği için kullanıcının herhangi bir adım yapması gerekmez.
 
-1. Uygulamayı **SP** tarafından başlatılan modda yapılandırmak Istiyorsanız **ek URL 'ler ayarla** ' ya tıklayın ve aşağıdaki adımı gerçekleştirin:
-
-    **Oturum açma URL** 'si metin kutusuna URL 'yi yazın:`https://my.ibisworld.com/account/login`
+   * Uygulamayı **SP** tarafından başlatılan modda yapılandırmak Için, Ibısworld ' den URL 'yi isteyin ve sonra **oturum açma URL** 'si metin kutusuna URL 'yi girin.
+   
+   * Uygulamayı **IDP** tarafından başlatılan modda yapılandırmak Için, **geçiş durumu** metin kutusunda URL 'yi girin `RPID=http://fedlogin.ibisworld.com` . **Oturum açma URL 'si** metin kutusunu boş bırakın.
 
 1. **Kaydet**’e tıklayın.
 
 1. Iısworld Uygulamam, SAML belirteci öznitelikleri yapılandırmanıza özel öznitelik eşlemeleri eklemenizi gerektiren belirli bir biçimde SAML onayları bekliyor. Aşağıdaki ekran görüntüsünde varsayılan özniteliklerin listesi gösterilmektedir.
 
-    ![image](common/default-attributes.png)
+   ![image](common/default-attributes.png)
 
 1. Yukarımın yanı sıra, Ibısworld Uygulamam aşağıda gösterilen SAML yanıtına daha fazla öznitelik geçirilmesini bekler. Bu öznitelikler de önceden doldurulur, ancak gereksinimlerinize göre bunları gözden geçirebilirsiniz.
     
-    | Adı | Kaynak özniteliği|
-    | --------------- | --------- |
-    | bölüm | User. Departmanı |
-    | language | User. PreferredLanguage |
-    | telefon | Kullanıcı. telephoneNumber |
-    | başlık | User. JobTitle |
-    | UserID | User. EmployeeID |
-    | ülke | Kullanıcı. ülke |
+   | Name | Kaynak özniteliği|
+   | --------------- | --------- |
+   | bölüm | User. Departmanı |
+   | language | User. PreferredLanguage |
+   | telefon | Kullanıcı. telephoneNumber |
+   | başlık | User. JobTitle |
+   | UserID | User. EmployeeID |
+   | ülke | Kullanıcı. ülke |
 
 1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, **uygulama Federasyon meta verileri URL 'sini** kopyalamak ve bilgisayarınıza kaydetmek için Kopyala düğmesine tıklayın.
 

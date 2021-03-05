@@ -12,12 +12,12 @@ ms.date: 06/26/2020
 ms.author: ryanwi
 ms.reviewer: tomfitz
 ms.custom: aaddev, seoapril2019, identityplatformtop40
-ms.openlocfilehash: 5dd960dde72b879515bd948c4731ead135bef4b0
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 6adc3a8af90f6f05f640de97b8fa74c8d40e0329
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102035059"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102175558"
 ---
 # <a name="how-to-use-the-portal-to-create-an-azure-ad-application-and-service-principal-that-can-access-resources"></a>Nasıl yapılır: Kaynaklara erişebilen bir Azure AD uygulaması ve hizmet sorumlusu oluşturmak için portalı kullanma
 
@@ -84,6 +84,9 @@ Abonelik izinlerinizi denetlemek için:
    ![Uygulamanız için bir ad yazın](./media/howto-create-service-principal-portal/create-app.png)
 
 Azure AD uygulamanızı ve hizmet sorumlusunu oluşturdunuz.
+
+> [!NOTE]
+> Azure AD 'de aynı ada sahip birden çok uygulamayı kaydedebilirsiniz, ancak uygulamalar farklı uygulama (istemci) kimliklerine sahip olmalıdır.
 
 ## <a name="assign-a-role-to-the-application"></a>Uygulamaya bir rol atama
 

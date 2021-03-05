@@ -9,12 +9,12 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: ecf0f54913f980d879b562eb4aa8063acf6c4772
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 6f42f712ecca77c00020304b63f5a1b0dbd77ad0
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92320248"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102172329"
 ---
 # <a name="install-client-tools-for-deploying-and-managing-azure-arc-enabled-data-services"></a>Azure Arc özellikli veri hizmetlerini dağıtmak ve yönetmek için istemci araçlarını yükleme
 
@@ -31,13 +31,13 @@ Aşağıdaki tabloda, Azure Arc etkin veri hizmetlerinin oluşturulması ve yön
 
 | Araç | Gerekli | Açıklama | Yükleme |
 |---|---|---|---|
-| [!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)] | Evet | Büyük veri kümesini yüklemek ve yönetmek için komut satırı aracı. [!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)] Ayrıca, komutları kullanarak Azure SQL ve SQL Server örneklerine ve Postgres sunucularına bağlanmak ve bunları sorgulamak için bir komut satırı yardımcı programı içerir `azdata sql query` (komut satırından tek bir sorgu çalıştırma), `azdata sql shell` (etkileşimli kabuk) `azdata postgres query` ve `azdata postgres shell` . | [Yükleme](/sql/azdata/install/deploy-install-azdata?toc=/azure/azure-arc/data/toc.json&bc=/azure/azure-arc/data/breadcrumb/toc.json) |
-| Azure Data Studio | Evet | Azure SQL, SQL Server, PostrgreSQL ve MySQL gibi çeşitli veritabanlarına bağlanmak ve sorgu sorgulamak için zengin deneyim aracı. Azure Data Studio uzantılar, Azure Arc etkin veri Hizmetleri için bir yönetim deneyimi sağlar. | [Yükleme](/sql/azure-data-studio/download-azure-data-studio) |
-| [!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)] Azure Data Studio uzantısı | Evet | Zaten yoksa yüklenecek Azure Data Studio uzantısı [!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)] .| Azure Data Studio 'de uzantılar galerisinden yüklemesi.|
-| Azure Data Studio için Azure Arc uzantısı | Evet | Azure Arc etkin veri Hizmetleri için bir yönetim deneyimi sağlayan Azure Data Studio uzantısı. [!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)]Azure Data Studio uzantısının bağımlılığı vardır. | Azure Data Studio 'de uzantılar galerisinden yüklemesi.|
+| [!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)] | Yes | Büyük veri kümesini yüklemek ve yönetmek için komut satırı aracı. [!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)] Ayrıca, komutları kullanarak Azure SQL ve SQL Server örneklerine ve Postgres sunucularına bağlanmak ve bunları sorgulamak için bir komut satırı yardımcı programı içerir `azdata sql query` (komut satırından tek bir sorgu çalıştırma), `azdata sql shell` (etkileşimli kabuk) `azdata postgres query` ve `azdata postgres shell` . | [Yükleme](/sql/azdata/install/deploy-install-azdata?toc=/azure/azure-arc/data/toc.json&bc=/azure/azure-arc/data/breadcrumb/toc.json) |
+| Azure Data Studio | Yes | Azure SQL, SQL Server, PostrgreSQL ve MySQL gibi çeşitli veritabanlarına bağlanmak ve sorgu sorgulamak için zengin deneyim aracı. Azure Data Studio uzantılar, Azure Arc etkin veri Hizmetleri için bir yönetim deneyimi sağlar. | [Yükleme](/sql/azure-data-studio/download-azure-data-studio) |
+| [!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)] Azure Data Studio uzantısı | Yes | Zaten yoksa yüklenecek Azure Data Studio uzantısı [!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)] .| Azure Data Studio 'de uzantılar galerisinden yüklemesi.|
+| Azure Data Studio için Azure Arc uzantısı | Yes | Azure Arc etkin veri Hizmetleri için bir yönetim deneyimi sağlayan Azure Data Studio uzantısı. [!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)]Azure Data Studio uzantısının bağımlılığı vardır. | Azure Data Studio 'de uzantılar galerisinden yüklemesi.|
 | Azure Data Studio PostgreSQL uzantısı | Hayır | PostgreSQL için yönetim özellikleri sağlayan Azure Data Studio için PostgreSQL uzantısı. | <!--{need link} [Install](../azure-data-studio/data-virtualization-extension.md) --> Azure Data Studio 'de uzantılar galerisinden yüklemesi.|
-| Azure CLı (az)<sup>1</sup> | Evet | Azure hizmetlerini yönetmeye yönelik modern komut satırı arabirimi. AKS dağıtımları ile birlikte kullanılır ve Azure Arc etkin veri Hizmetleri envanterini ve faturalandırma verilerini Azure 'a yükler. ([Daha fazla bilgi](/cli/azure/?view=azure-cli-latest&preserve-view=true)). | [Yükleme](/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true) |
-| Kubernetes CLı (kubectl)<sup>2</sup> | Evet | Kubernetes kümesini yönetmek için komut satırı aracı ([daha fazla bilgi](https://kubernetes.io/docs/tasks/tools/install-kubectl/)). | [Windows](https://kubernetes.io/docs/tasks/tools/install-kubectl/#install-with-powershell-from-psgallery) \| [Linux](https://kubernetes.io/docs/tasks/tools/install-kubectl/#install-using-native-package-management) |
+| Azure CLı (az)<sup>1</sup> | Yes | Azure hizmetlerini yönetmeye yönelik modern komut satırı arabirimi. AKS dağıtımları ile birlikte kullanılır ve Azure Arc etkin veri Hizmetleri envanterini ve faturalandırma verilerini Azure 'a yükler. ([Daha fazla bilgi](/cli/azure/)). | [Yükleme](/cli/azure/install-azure-cli) |
+| Kubernetes CLı (kubectl)<sup>2</sup> | Yes | Kubernetes kümesini yönetmek için komut satırı aracı ([daha fazla bilgi](https://kubernetes.io/docs/tasks/tools/install-kubectl/)). | [Windows](https://kubernetes.io/docs/tasks/tools/install-kubectl/#install-with-powershell-from-psgallery) \| [Linux](https://kubernetes.io/docs/tasks/tools/install-kubectl/#install-using-native-package-management) |
 | <sup>kıv3</sup> | Bazı örnek betikler için gereklidir. | URL 'Ler ile veri aktarmaya yönelik komut satırı aracı. | [Windows](https://curl.haxx.se/windows/) \| Linux: kıvrımlı paketi yükler |
 | OC | Red Hat OpenShift ve Azure RedHat OpenShift dağıtımları için gereklidir. |`oc` , açık kaydırma komut satırı arabirimidir (CLı). | [CLı 'yı yükleme](https://docs.openshift.com/container-platform/4.4/cli_reference/openshift_cli/getting-started-cli.html#installing-the-cli)
 

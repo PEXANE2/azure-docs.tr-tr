@@ -12,12 +12,12 @@ ms.date: 09/03/2020
 ms.author: marsma
 ms.custom: aaddev, identityplatformtop40, contperf-fy21q1, contperf-fy21q2
 ms.reviewer: aragra, lenalepa, sureshja
-ms.openlocfilehash: 027d1bf005ac052bf48e2c0aa3a4a71fc29f36f2
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: c72ae2a2e6dbd2278bdd78f26c145386be22764e
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101647447"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102175439"
 ---
 # <a name="quickstart-register-an-application-with-the-microsoft-identity-platform"></a>Hızlı başlangıç: Microsoft Identity platformu ile uygulama kaydetme
 
@@ -40,7 +40,8 @@ Uygulama kaydını oluşturmak için aşağıdaki adımları izleyin:
 1. Birden çok kiracıya erişiminiz varsa, en üstteki menüde, bir uygulamayı kaydetmek istediğiniz kiracıyı seçmek için **Dizin + abonelik** filtresini kullanın :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false"::: .
 1. **Azure Active Directory**'yi bulun ve seçin.
 1. **Yönet** altında   >  **Yeni kayıt** uygulama kayıtları ' yi seçin.
-1. Uygulamanız için bir **ad** girin. Uygulamanızın kullanıcıları bu adı görebilir. Daha sonra değiştirebilirsiniz.
+1. Uygulamanız için bir görünen **ad** girin. Uygulamanızın kullanıcıları, uygulamayı kullandıklarında, örneğin oturum açma sırasında görünen adı görebilirler.
+    Görünen adı dilediğiniz zaman değiştirebilir ve birden çok uygulama kaydı aynı adı paylaşabilir. Uygulama kaydının, görüntüleme adı değil, otomatik olarak oluşturulan uygulama (istemci) KIMLIĞI, uygulamanızı kimlik platformunda benzersiz bir şekilde tanımlar.
 1. Bazen *oturum açma kiti* olarak adlandırılan, uygulamayı ne şekilde kullanacağınızı belirtin.
 
     | Desteklenen hesap türleri | Açıklama |

@@ -1,7 +1,7 @@
 ---
-title: Spark havuzlarıyla veri hazırlığı (Önizleme)
+title: Apache Spark havuzlarıyla veri hazırlığı (Önizleme)
 titleSuffix: Azure Machine Learning
-description: Azure SYNAPSE ve Azure Machine Learning ile veri hazırlığı için Spark havuzları eklemeyi öğrenin
+description: Azure SYNAPSE Analytics ve Azure Machine Learning veri hazırlığı için Apache Spark havuzları eklemeyi öğrenin
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,29 +11,29 @@ author: nibaccam
 ms.reviewer: nibaccam
 ms.date: 03/02/2021
 ms.custom: how-to, devx-track-python, data4ml
-ms.openlocfilehash: 87e03b6aee122c5a26d4388ca8b570aa6cdf7b55
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 7eeb7b82d9c3bfe21019d5d68f82c2e6d7a2bf68
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101663806"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102171522"
 ---
-# <a name="attach-synapse-spark-pools-for-data-preparation-with-azure-synapse-preview"></a>Azure SYNAPSE ile veri hazırlığı için SYNAPSE Spark havuzları iliştirme (Önizleme)
+# <a name="attach-apache-spark-pools-powered-by-azure-synapse-analytics-for-data-preparation-preview"></a>Veri hazırlama (Önizleme) için Apache Spark havuzları (Azure SYNAPSE Analytics tarafından desteklenir) iliştirme
 
-Bu makalede, veri hazırlama için [Azure SYNAPSE](/synapse-analytics/overview-what-is.md) tarafından desteklenen bir Apache Spark havuzunu nasıl ekleyeceğinizi ve başlatacağınızı öğreneceksiniz. 
+Bu makalede, veri hazırlama için [Azure SYNAPSE Analytics](/synapse-analytics/overview-what-is.md) tarafından desteklenen bir Apache Spark havuzunu nasıl ekleyeceğinizi ve başlatacağınızı öğreneceksiniz. 
 
 >[!IMPORTANT]
-> Azure Machine Learning ve Azure SYNAPSE tümleştirmesi önizlemededir. Bu makalede sunulan yetenekler, `azureml-synapse` herhangi bir zamanda değişebilir [deneysel](/python/api/overview/azure/ml/?preserve-view=true&view=azure-ml-py#stable-vs-experimental) Önizleme özelliklerini içeren paketi de kullanabilir.
+> Azure Machine Learning ve Azure SYNAPSE Analytics tümleştirmesi önizlemededir. Bu makalede sunulan yetenekler, `azureml-synapse` herhangi bir zamanda değişebilir [deneysel](/python/api/overview/azure/ml/?preserve-view=true&view=azure-ml-py#stable-vs-experimental) Önizleme özelliklerini içeren paketi de kullanabilir.
 
-## <a name="azure-machine-learning-and-azure-synapse-integration-preview"></a>Azure Machine Learning ve Azure SYNAPSE tümleştirmesi (Önizleme)
+## <a name="azure-machine-learning-and-azure-synapse-analytics-integration-preview"></a>Azure Machine Learning ve Azure SYNAPSE Analytics tümleştirmesi (Önizleme)
 
-Azure Machine Learning (Önizleme) ile Azure SYNAPSE tümleştirmesi, etkileşimli veri araştırması ve hazırlığı için Azure SYNAPSE tarafından desteklenen bir Apache Spark havuzu eklemenize olanak tanır. Bu tümleştirmeyle, her türlü veri hazırlama için, makine öğrenimi modellerinizi eğitmek için kullandığınız Python Not defteri içinde ayrılmış bir işlem sağlayabilirsiniz.
+Azure Machine Learning (Önizleme) ile Azure SYNAPSE Analytics tümleştirmesi, etkileşimli veri araştırması ve hazırlığı için Azure SYNAPSE tarafından desteklenen bir Apache Spark havuzu eklemenize olanak tanır. Bu tümleştirmeyle, her türlü veri hazırlama için, makine öğrenimi modellerinizi eğitmek için kullandığınız Python Not defteri içinde ayrılmış bir işlem sağlayabilirsiniz.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
 * [Azure Machine Learning çalışma alanı oluşturun](how-to-manage-workspace.md?tabs=python).
 
-* [Azure Portal bir Synapse çalışma alanı oluşturun](../synapse-analytics/quickstart-create-workspace.md).
+* [Azure Portal ' de bir Azure SYNAPSE Analytics çalışma alanı oluşturun](../synapse-analytics/quickstart-create-workspace.md).
 
 * [Azure portal, Web araçları veya SYNAPSE Studio kullanarak Apache Spark havuzu oluşturma](../synapse-analytics/quickstart-create-apache-spark-pool-portal.md)
 
@@ -43,16 +43,16 @@ Azure Machine Learning (Önizleme) ile Azure SYNAPSE tümleştirmesi, etkileşim
         pip install azureml-synapse
         ```
 
-## <a name="link-machine-learning-workspace-and-synapse-assets"></a>Machine Learning çalışma alanı ve SYNAPSE varlıklarını bağlama
+## <a name="link-machine-learning-workspace-and-synapse-analytics-assets"></a>Machine Learning çalışma alanı ve SYNAPSE Analytics varlıklarını bağlama
 
-Veri hazırlığı için bir Synapse Spark havuzu iliştirebilmeniz için önce Azure Machine Learning çalışma alanınızın Azure SYNAPSE çalışma alanınız ile bağlantılı olması gerekir. 
+Veri hazırlığı için Apache SYNAPSE Spark havuzunu iliştirebilmeniz için önce Azure Machine Learning çalışma alanınızın Azure SYNAPSE Analytics çalışma alanınız ile bağlantılı olması gerekir. 
 
-[Python SDK 'sı](#link-sdk) veya [Azure MACHINE LEARNING Studio](#link-studio)aracılığıyla ml çalışma alanınızı ve SYNAPSE çalışma alanınızı bağlayabilirsiniz. 
+[Python SDK](#link-sdk) veya [Azure Machine Learning Studio](#link-studio)aracılığıyla Machine Learning çalışma alanınızı ve SYNAPSE Analytics çalışma alanınızı bağlayabilirsiniz. 
 
 > [!IMPORTANT]
-> SYNAPSE çalışma alanına başarıyla bağlantı sağlamak için SYNAPSE çalışma alanının **sahip** rolü verilmelidir. [Azure Portal](https://ms.portal.azure.com/)erişiminizi denetleyin.
+> Azure SYNAPSE Analytics çalışma alanına başarıyla bağlantı sağlamak için Azure SYNAPSE Analytics çalışma alanının **sahip** rolü verilmelidir. [Azure Portal](https://ms.portal.azure.com/)erişiminizi denetleyin.
 >
-> SYNAPSE çalışma alanının **sahibi** değilseniz ancak mevcut bir bağlı hizmeti kullanmak istiyorsanız, bkz. [var olan bağlı hizmeti edinme](#get-an-existing-linked-service).
+> Azure SYNAPSE Analytics çalışma alanının **sahibi** değilseniz, ancak mevcut bir bağlı hizmeti kullanmak istiyorsanız, bkz. [var olan bağlı hizmeti edinme](#get-an-existing-linked-service).
 
 
 <a name="link-sdk"></a>
@@ -60,8 +60,8 @@ Veri hazırlığı için bir Synapse Spark havuzu iliştirebilmeniz için önce 
 
 Aşağıdaki kod, [`LinkedService`](/python/api/azureml-core/azureml.core.linked_service.linkedservice?preserve-view=true&view=azure-ml-py) ve sınıflarını kullanır [`SynapseWorkspaceLinkedServiceConfiguration`](/python/api/azureml-core/azureml.core.linked_service.synapseworkspacelinkedserviceconfiguration?preserve-view=true&view=azure-ml-py) , 
 
-* Machine Learning çalışma alanınızı `ws` Azure SYNAPSE çalışma alanınıza bağlayın. 
-* SYNAPSE çalışma alanınızı bağlı hizmet olarak Azure Machine Learning kaydettirin.
+* Azure Machine Learning çalışma alanınızı `ws` Azure SYNAPSE Analytics çalışma alanıyla bağlayın. 
+* Azure SYNAPSE Analytics çalışma alanınızı Azure Machine Learning bağlı hizmet olarak kaydedin.
 
 ``` python
 import datetime  
@@ -82,14 +82,14 @@ linked_service = LinkedService.register(workspace = ws,
                                             linked_service_config = synapse_link_config)
 ```
 > [!IMPORTANT] 
-> `system_assigned_identity_principal_id`Her bağlantılı hizmet için yönetilen bir kimlik oluşturulur. SYNAPSE oturumuna başlamadan önce, bu yönetilen kimliğe SYNAPSE çalışma alanının **Synapse Apache Spark Yöneticisi** rolü verilmelidir. [Synapse Apache Spark Yöneticisi rolünü SYNAPSE Studio 'daki yönetilen kimliğe atayın](../synapse-analytics/security/how-to-manage-synapse-rbac-role-assignments.md).
+> `system_assigned_identity_principal_id`Her bağlantılı hizmet için yönetilen bir kimlik oluşturulur. Apache Spark oturumuna başlamadan önce bu yönetilen kimliğe Azure SYNAPSE Analytics çalışma alanının **Synapse Apache Spark yönetici** rolü verilmelidir. [Synapse Apache Spark Yöneticisi rolünü SYNAPSE Studio 'daki yönetilen kimliğe atayın](../synapse-analytics/security/how-to-manage-synapse-rbac-role-assignments.md).
 >
 > `system_assigned_identity_principal_id`Belirli bir bağlı hizmeti bulmak için kullanın `LinkedService.get('<your-mlworkspace-name>', '<linked-service-name>')` .
 
 <a name="link-studio"></a>
 ### <a name="link-workspaces-via-studio"></a>Çalışma alanlarını Studio aracılığıyla bağlama
 
-Machine Learning çalışma alanınızı ve SYNAPSE çalışma alanınızı, Azure Machine Learning Studio ile aşağıdaki adımlarla ilişkilendirin: 
+Aşağıdaki adımlarla Azure Machine Learning Studio aracılığıyla Azure Machine Learning çalışma alanınızı ve Azure SYNAPSE Analytics çalışma alanınızı bağlayın: 
 
 1. [Azure Machine Learning Studio](https://ml.azure.com/)'da oturum açın.
 1. Sol bölmedeki **Yönet** bölümünde **bağlı hizmetler** ' i seçin.
@@ -102,14 +102,14 @@ Machine Learning çalışma alanınızı ve SYNAPSE çalışma alanınızı, Azu
    |Abonelik adı | Makinenizin öğrenimi çalışma alanınız ile ilişkili aboneliğinizin adını seçin. 
    |SYNAPSE çalışma alanı | Bağlamak istediğiniz SYNAPSE çalışma alanını seçin. 
    
-1. **İleri ' yi** seçerek **Spark havuzlarını seçin (isteğe bağlı)** formunu açın. Bu formda, çalışma alanınıza iliştirilecek SYNAPSE Spark havuzunu seçersiniz
+1. **İleri ' yi** seçerek **Spark havuzlarını seçin (isteğe bağlı)** formunu açın. Bu formda, çalışma alanınıza iliştirilecek SYNAPSE Apache Spark havuzunu seçersiniz
 
 1. **İnceleme** formunu açmak ve seçimlerinizi denetlemek için **İleri ' yi** seçin. 
 1. Bağlı hizmet oluşturma işlemini gerçekleştirmek için **Oluştur** ' u seçin.
 
 ## <a name="get-an-existing-linked-service"></a>Mevcut bir bağlı hizmeti al
 
-Mevcut bir bağlı hizmeti almak ve kullanmak için SYNAPSE çalışma alanına **Kullanıcı veya katkıda bulunan** izinleri gerekir.
+Mevcut bir bağlı hizmeti almak ve kullanmak için Azure SYNAPSE Analytics çalışma alanına **Kullanıcı veya katkıda bulunan** izinleri gerekir.
 
 Bu örnek, mevcut bir bağlı hizmeti,, `synapselink1` çalışma alanından, `ws` yöntemiyle alır [`get()`](/python/api/azureml-core/azureml.core.linkedservice?preserve-view=true&view=azure-ml-py#get-workspace--name-) .
 ```python
@@ -132,39 +132,39 @@ LinkedService.list(ws)
  
 ## <a name="attach-synapse-spark-pool-as-a-compute"></a>İşlem olarak SYNAPSE Spark havuzunu iliştirme
 
-Çalışma alanlarınızın bağlantısı kurulduktan sonra, veri hazırlama görevleriniz için özel bir işlem kaynağı olarak bir Synapse Spark havuzu ekleyin. 
+Çalışma alanlarınızın bağlantısı kurulduktan sonra, veri hazırlama görevleriniz için adanmış bir işlem kaynağı olarak bir Synapse Apache Spark havuzu ekleyin. 
 
-SYNAPSE Spark havuzlarını aracılığıyla ekleyebilirsiniz
+Aracılığıyla Apache Spark havuzları ekleyebilirsiniz
 * Azure Machine Learning Studio
 * [Azure Resource Manager (ARM) şablonları](https://github.com/Azure/azure-quickstart-templates/blob/master/101-machine-learning-linkedservice-create/azuredeploy.json)
 * Python SDK 'Sı 
 
-Studio kullanarak bir Synapse Spark havuzu eklemek için bu adımları izleyin. 
+Studio kullanarak bir Apache Spark havuzu eklemek için bu adımları izleyin. 
 
 1. [Azure Machine Learning Studio](https://ml.azure.com/)'da oturum açın.
 1. Sol bölmedeki **Yönet** bölümünde **bağlı hizmetler** ' i seçin.
 1. SYNAPSE çalışma alanınızı seçin.
 1. Sol üstteki **ekli Spark havuzlarını** seçin. 
 1. **Ekle**' yi seçin. 
-1. Listeden SYNAPSE Spark havuzunuzu seçin ve bir ad girin.  
+1. Listeden Apache Spark havuzunuzu seçin ve bir ad sağlayın.  
     1. Bu liste, işlem için iliştirilebilecek kullanılabilir SYNAPSE Spark havuzlarını tanımlar. 
     1. Yeni bir Synapse Spark havuzu oluşturmak için bkz [. SYNAPSE Studio ile Apache Spark havuzu oluşturma](../synapse-analytics/quickstart-create-apache-spark-pool-portal.md)
 1. **Ekle seçili** öğesini seçin. 
 
 
-Ayrıca, bir Synapse Spark havuzu eklemek için **Python SDK 'yı** kullanabilirsiniz. 
+Apache Spark havuzunu eklemek için **Python SDK 'sını** de kullanabilirsiniz. 
 
 Takip kodu, 
 1. İle SynapseCompute yapılandırır,
 
    1. `linked_service`Önceki adımda oluşturduğunuz veya aldığınız LinkedService. 
    1. İliştirmek istediğiniz işlem hedefinin türü, `SynapseSpark`
-   1. SYNAPSE Spark havuzunun adı. Bunun, SYNAPSE çalışma alanınızdaki mevcut bir Apache Spark havuzuyla eşleşmesi gerekir.
+   1. Apache Spark havuzunun adı. Bunun, Azure SYNAPSE Analytics çalışma alanınızdaki mevcut bir Apache Spark havuzuyla eşleşmesi gerekir.
    
 1. İle geçirerek bir Machine Learning ComputeTarget oluşturur. 
    1. Kullanmak istediğiniz makine öğrenimi çalışma alanı, `ws`
-   1. Machine Learning çalışma alanı içinde işlem için başvurmak istediğiniz ad. 
-   1. SynapseCompute 'nizi yapılandırırken belirttiğiniz attach_configuration.
+   1. Azure Machine Learning çalışma alanındaki işlem için başvurmak istediğiniz ad. 
+   1. SYNAPSE Işlem bilgilerinizi yapılandırırken belirttiğiniz attach_configuration.
        1. ComputeTarget. Attach () çağrısı zaman uyumsuzdur, bu nedenle çağrı tamamlanana kadar örnek bloklar olur.
 
 ```python
@@ -182,7 +182,7 @@ synapse_compute = ComputeTarget.attach(workspace= ws,
 synapse_compute.wait_for_completion()
 ```
 
-SYNAPSE Spark havuzunun ekli olduğunu doğrulayın.
+Apache Spark havuzunun ekli olduğunu doğrulayın.
 
 ```python
 ws.compute_targets['Synapse Spark pool alias']
@@ -190,12 +190,12 @@ ws.compute_targets['Synapse Spark pool alias']
 
 ## <a name="launch-synapse-spark-pool-for-data-preparation-tasks"></a>Veri hazırlama görevleri için SYNAPSE Spark havuzunu Başlat
 
-SYNAPSE oturumunuz sırasında kullanmak üzere bir [Azure Machine Learning ortamı](concept-environments.md) belirtebilirsiniz. Yalnızca ortamda belirtilen Conda bağımlılıkları devreye girer. Docker görüntüsü desteklenmez.
+Apache Spark oturumunuz sırasında kullanmak üzere bir [Azure Machine Learning ortamı](concept-environments.md) belirleyebilirsiniz. Yalnızca ortamda belirtilen Conda bağımlılıkları devreye girer. Docker görüntüsü desteklenmez.
 
 >[!WARNING]
->  Ortam Conda bağımlılıkları 'nda belirtilen Python bağımlılıkları SYNAPSE Spark havuzlarında desteklenmiyor. Şu anda yalnızca sabit Python sürümleri desteklenir. Betiğe ekleyerek Python sürümünüzü kontrol edin  `sys.version_info` .
+>  Ortam Conda bağımlılıklarında belirtilen Python bağımlılıkları Apache Spark havuzlarda desteklenmez. Şu anda yalnızca sabit Python sürümleri desteklenir. Betiğe ekleyerek Python sürümünüzü kontrol edin  `sys.version_info` .
 
-Aşağıdaki kod, `myenv` `azureml-core` oturum başlamadan önce sürüm 1.20.0 ve sürüm 1.17.0 ' yi yükleyecek ortamı oluşturur `numpy` . Daha sonra bu ortamı SYNAPSE Session `start` deyiminize ekleyebilirsiniz.
+Aşağıdaki kod, `myenv` `azureml-core` oturum başlamadan önce sürüm 1.20.0 ve sürüm 1.17.0 ' yi yükleyecek ortamı oluşturur `numpy` . Daha sonra bu ortamı Apache Spark Session `start` deyiminize ekleyebilirsiniz.
 
 ```python
 
@@ -209,10 +209,10 @@ env.python.conda_dependencies.add_conda_package("numpy==1.17.0")
 env.register(workspace=ws)
 ```
 
-SYNAPSE Spark havuzuyla veri hazırlamaya başlamak için, SYNAPSE Spark havuz adını belirtin ve abonelik KIMLIĞINIZI, Machine Learning çalışma alanı kaynak grubunu, Machine Learning çalışma alanının adını ve SYNAPSE oturumu sırasında hangi ortamın kullanılacağını girin. 
+Apache Spark Spark havuzuyla veri hazırlamaya başlamak için, Apache Spark havuzu adını belirtin ve abonelik KIMLIĞINIZI, Machine Learning çalışma alanı kaynak grubunu, Machine Learning çalışma alanının adını ve Apache Spark oturumu sırasında hangi ortamın kullanılacağını belirtin. 
 
 > [!IMPORTANT]
-> SYNAPSE Spark havuzunu kullanmaya devam etmek için, veri hazırlama görevleriniz genelinde, `%synapse` tek kod satırları ve `%%synapse` birden çok satır için kullanılacak işlem kaynağını belirtmeniz gerekir. 
+> Apache Spark havuzunu kullanmaya devam etmek için, veri hazırlama görevleriniz genelinde, `%synapse` tek kod satırları ve `%%synapse` birden çok satır için kullanılacak işlem kaynağını belirtmeniz gerekir. 
 
 ```python
 %synapse start -c SynapseSparkPoolAlias -s AzureMLworkspaceSubscriptionID -r AzureMLworkspaceResourceGroupName -w AzureMLworkspaceName -e myenv
@@ -226,7 +226,7 @@ Oturum başladıktan sonra, oturumun meta verilerini kontrol edebilirsiniz.
 
 ## <a name="load-data-from-storage"></a>Verileri depolamadan yükle
 
-SYNAPSE Spark oturumunuz başladıktan sonra, hazırlamak istediğiniz verileri okuyun. Azure Blob depolama için veri yükleme desteklenir ve 1. ve 2. nesil Azure Data Lake Storage.
+Apache Spark oturumunuz başladıktan sonra, hazırlamak istediğiniz verileri okuyun. Azure Blob depolama için veri yükleme desteklenir ve 1. ve 2. nesil Azure Data Lake Storage.
 
 Bu depolama hizmetlerinden veri yüklemek için iki yol vardır: 
 
@@ -330,7 +330,7 @@ Aşağıdaki örnekte, hazırlanan veriler Azure Blob depolama alanına geri yaz
 df.write.format("csv").mode("overwrite").save("wasbs://demo@dprepdata.blob.core.windows.net/training_data/Titanic.csv")
 ```
 
-Veri hazırlanmasını tamamlayıp hazırlanan verilerinizi depolamaya kaydettiğinizde, SYNAPSE Spark havuzunuzu aşağıdaki komutla kullanmayı durdurun.
+Veri hazırlanmasını tamamlayıp hazırlanan verilerinizi depolamaya kaydettiğinizde, Apache Spark havuzunuzu aşağıdaki komutla kullanmayı durdurun.
 
 ```python
 %synapse stop
@@ -360,11 +360,10 @@ input1 = train_ds.as_mount()
 
 ## <a name="example-notebook"></a>Örnek not defteri
 
-Azure SYNAPSE ve Azure Machine Learning ile tek bir not defterinden veri hazırlama ve model eğitimi gerçekleştirme hakkında ayrıntılı kod örneği için bu [uçtan uca not defterine](../synapse-analytics/overview-what-is.md) bakın.
+Azure SYNAPSE Analytics ve Azure Machine Learning ile tek bir not defterinden veri hazırlama ve model eğitimi gerçekleştirme hakkında ayrıntılı kod örneği için bu [uçtan uca not defterine](../synapse-analytics/overview-what-is.md) bakın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [Bir modeli eğitme](how-to-set-up-training-targets.md).
 * [Azure Machine Learning veri kümesiyle eğitme](how-to-train-with-datasets.md)
 * [Bir Azure Machine Learning veri kümesi oluşturun](how-to-create-register-datasets.md).
-

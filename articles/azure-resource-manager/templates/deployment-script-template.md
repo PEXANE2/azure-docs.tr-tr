@@ -7,12 +7,12 @@ ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 12/28/2020
 ms.author: jgao
-ms.openlocfilehash: 574dcf50111c14f4924f009a74ed6f2ac2bb31e9
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 9d045fb75838ac016f3e9b04cd2519d8a8530a4b
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98733849"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102175660"
 ---
 # <a name="use-deployment-scripts-in-arm-templates"></a>ARM şablonlarında dağıtım betikleri kullanma
 
@@ -141,7 +141,7 @@ Aşağıdaki JSON bir örnektir. Daha fazla bilgi için bkz. en son [şablon şe
 - `azPowerShellVersion`/`azCliVersion`: Kullanılacak modül sürümünü belirtin. [Desteklenen Azure PowerShell sürümlerinin](https://mcr.microsoft.com/v2/azuredeploymentscripts-powershell/tags/list)listesini görüntüleyin. [Desteklenen Azure CLI sürümlerinin](https://mcr.microsoft.com/v2/azure-cli/tags/list)listesini görüntüleyin.
 
   >[!IMPORTANT]
-  > Dağıtım betiği, Microsoft Container Registry (MCR) ' deki kullanılabilir CLı görüntülerini kullanır. Dağıtım betiği için bir CLı görüntüsünü onaylamak üzere bir ay sürer. 30 gün içinde Yayınlanan CLı sürümlerini kullanmayın. Görüntülerin yayın tarihlerini bulmak için bkz. [Azure CLI sürüm notları](/cli/azure/release-notes-azure-cli?view=azure-cli-latest&preserve-view=true). Desteklenmeyen bir sürüm kullanılırsa, hata iletisinde desteklenen sürümler listelenir.
+  > Dağıtım betiği, Microsoft Container Registry (MCR) ' deki kullanılabilir CLı görüntülerini kullanır. Dağıtım betiği için bir CLı görüntüsünü onaylamak üzere bir ay sürer. 30 gün içinde Yayınlanan CLı sürümlerini kullanmayın. Görüntülerin yayın tarihlerini bulmak için bkz. [Azure CLI sürüm notları](/cli/azure/release-notes-azure-cli). Desteklenmeyen bir sürüm kullanılırsa, hata iletisinde desteklenen sürümler listelenir.
 
 - `arguments`: Parametre değerlerini belirtin. Değerler boşluklarla ayrılır.
 
@@ -149,7 +149,7 @@ Aşağıdaki JSON bir örnektir. Daha fazla bilgi için bkz. en son [şablon şe
 
   Bağımsız değişkenler kaçış karakterleri içeriyorsa, karakterleri çift kaçış için [Jsonescaper](https://www.jsonescaper.com/) ' ı kullanın. Özgün atlanan dizeyi araca yapıştırın ve ardından **kaçış**' ı seçin.  Araç, Çift kaçan bir dize verir. Örneğin, önceki örnek şablonunda bağımsız değişken olur `-name \"John Dole\"` . Kaçan dize `-name \\\"John Dole\\\"` .
 
-  Object türünde bir ARM şablon parametresini bir bağımsız değişken olarak geçirmek için, [String ()](./template-functions-string.md#string) işlevini kullanarak nesneyi bir dizeye dönüştürün ve sonra replace [()](./template-functions-string.md#replace) işlevini kullanarak herhangi bir öğesini değiştirin `\"` `\\\"` . Örneğin:
+  Object türünde bir ARM şablon parametresini bir bağımsız değişken olarak geçirmek için, [String ()](./template-functions-string.md#string) işlevini kullanarak nesneyi bir dizeye dönüştürün ve sonra replace [()](./template-functions-string.md#replace) işlevini kullanarak herhangi bir öğesini değiştirin `\"` `\\\"` . Örnek:
 
   ```json
   replace(string(parameters('tables')), '\"', '\\\"')
@@ -204,7 +204,7 @@ Write-Host "Press [ENTER] to continue ..."
 
 ## <a name="use-external-scripts"></a>Dış betikler kullanın
 
-Satır içi betiklerin yanı sıra dış betik dosyalarını da kullanabilirsiniz. Yalnızca _ps1_ dosya uzantısına sahip birincil PowerShell betikleri desteklenir. CLı betikleri için, betikler geçerli Bash betikleri olduğu sürece, birincil betiklerin uzantıları (veya uzantısı olmadan) olabilir. Dış betik dosyalarını kullanmak için ile değiştirin `scriptContent` `primaryScriptUri` . Örneğin:
+Satır içi betiklerin yanı sıra dış betik dosyalarını da kullanabilirsiniz. Yalnızca _ps1_ dosya uzantısına sahip birincil PowerShell betikleri desteklenir. CLı betikleri için, betikler geçerli Bash betikleri olduğu sürece, birincil betiklerin uzantıları (veya uzantısı olmadan) olabilir. Dış betik dosyalarını kullanmak için ile değiştirin `scriptContent` `primaryScriptUri` . Örnek:
 
 ```json
 "primaryScriptUri": "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/deployment-script/deploymentscript-helloworld.ps1",
@@ -290,7 +290,7 @@ Mevcut bir depolama hesabını belirtmek için aşağıdaki JSON öğesini öğe
 ```
 
 - `storageAccountName`: depolama hesabının adını belirtin.
-- `storageAccountKey`: depolama hesabı anahtarlarından birini belirtin. Anahtarı almak için [ListKeys ()](./template-functions-resource.md#listkeys) işlevini kullanabilirsiniz. Örneğin:
+- `storageAccountKey`: depolama hesabı anahtarlarından birini belirtin. Anahtarı almak için [ListKeys ()](./template-functions-resource.md#listkeys) işlevini kullanabilirsiniz. Örnek:
 
     ```json
     "storageAccountSettings": {
@@ -377,10 +377,10 @@ Timeout             : PT1H
 
 Azure CLı kullanarak, abonelik veya kaynak grubu kapsamındaki Dağıtım betiklerini yönetebilirsiniz:
 
-- [az Deployment-betikler Delete](/cli/azure/deployment-scripts?view=azure-cli-latest&preserve-view=true#az-deployment-scripts-delete): bir dağıtım betiğini silin.
-- [az Deployment-Scripts List](/cli/azure/deployment-scripts?view=azure-cli-latest&preserve-view=true#az-deployment-scripts-list): tüm Dağıtım betiklerini listeleyin.
-- [az Deployment-Scripts Show](/cli/azure/deployment-scripts?view=azure-cli-latest&preserve-view=true#az-deployment-scripts-show): dağıtım betiği alma.
-- [az Deployment-betikler Show-log](/cli/azure/deployment-scripts?view=azure-cli-lates&preserve-view=truet#az-deployment-scripts-show-log): dağıtım betiği günlüklerini göster.
+- [az Deployment-betikler Delete](/cli/azure/deployment-scripts#az-deployment-scripts-delete): bir dağıtım betiğini silin.
+- [az Deployment-Scripts List](/cli/azure/deployment-scripts#az-deployment-scripts-list): tüm Dağıtım betiklerini listeleyin.
+- [az Deployment-Scripts Show](/cli/azure/deployment-scripts#az-deployment-scripts-show): dağıtım betiği alma.
+- [az Deployment-betikler Show-log](/cli/azure/deployment-scripts#az-deployment-scripts-show-log): dağıtım betiği günlüklerini göster.
 
 Liste komut çıktısı şuna benzerdir:
 

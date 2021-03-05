@@ -11,12 +11,12 @@ author: knicholasa
 manager: martinco
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 039dd8b6fa0769b6798630e666bfbf6de48ccf14
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 7e5eb77a27a7c74ad9738a0e1784066a6a859e43
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101649249"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102175377"
 ---
 # <a name="browser-support-of-fido2-passwordless-authentication"></a>FIDO2 passwordless kimlik doğrulamasının tarayıcı desteği
 
@@ -26,12 +26,14 @@ Azure Active Directory, [FIDO2 güvenlik anahtarlarının](./concept-authenticat
 
 Bu tabloda Azure Active Directory (Azure AD) ve Microsoft hesaplarının (MSA) kimlik doğrulaması desteği gösterilmektedir. Microsoft hesapları, müşteriler tarafından Xbox, Skype veya Outlook.com gibi hizmetler için oluşturulur. Desteklenen cihaz türleri arasında **USB**, yakın alan Iletişimi (**NFC**) ve Bluetooth düşük enerji (**ble**) bulunur.
 
-|  | Chrome |  |  | Edge |  |  | Firefox |  |  |
+| İşletim Sistemi | Chrome | Chrome  | Chrome | Edge | Edge | Edge | Firefox | Firefox | Firefox |
 |:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
 | | USB | NFC | Aya | USB | NFC | Aya | USB | NFC | Aya |
 | **Windows**  | ![Chrome, AAD için Windows için USB hesaplarını destekler.][y] | ![Chrome, AAD için Windows hesaplarında NFC 'yi destekler.][y] | ![Chrome, AAD hesaplarında Windows üzerinde BLE 'ı destekler.][y] | ![Edge, AAD için Windows hesaplarında USB 'yi destekler.][y] | ![Edge, AAD için Windows hesaplarında NFC 'yi destekler.][y] | ![Edge, AAD hesaplarında Windows üzerinde BLE 'ı destekler.][y] | ![Firefox, AAD için Windows için USB hesaplarını destekler.][y] | ![Firefox, AAD için Windows hesaplarında NFC 'yi destekler.][y] | ![Firefox, AAD hesaplarında Windows üzerinde BLE 'ı destekler.][y] |
 | **macOS**  | ![Chrome, AAD hesapları için macOS 'ta USB 'yi destekler.][y] | ![Chrome, AAD hesapları için macOS 'ta NFC 'yi desteklemez.][n] | ![Chrome, AAD hesapları için macOS üzerinde BLE 'ı desteklemez.][n] | ![Edge, AAD hesapları için macOS 'ta USB 'yi destekler.][y] | ![Edge, AAD hesapları için macOS üzerinde NFC 'yi desteklemez.][n] | ![Edge, AAD hesapları için macOS üzerinde BLE 'ı desteklemiyor.][n] | ![Firefox, AAD hesapları için macOS üzerinde USB 'yi desteklemez.][n] | ![Firefox, AAD hesapları için macOS üzerinde NFC 'yi desteklemez.][n] | ![Firefox, AAD hesapları için macOS üzerinde BLE 'ı desteklemez.][n] |
 | **Linux**  | ![Chrome, AAD hesapları için Linux üzerinde USB 'yi destekler.][y] | ![Chrome, AAD hesapları için Linux üzerinde NFC 'yi desteklemez.][n] | ![Chrome, AAD hesapları için Linux üzerinde BLE 'ı desteklemez.][n] | ![Edge, AAD hesapları için Linux üzerinde USB 'yi desteklemez.][n] | ![Edge, AAD hesapları için Linux üzerinde NFC 'yi desteklemez.][n] | ![Edge, AAD hesapları için Linux üzerinde BLE 'ı desteklemez.][n] | ![Firefox, AAD hesapları için Linux üzerinde USB 'yi desteklemez.][n] | ![Firefox, AAD hesapları için Linux üzerinde NFC 'yi desteklemez.][n] | ![Firefox, AAD hesapları için Linux üzerinde BLE 'ı desteklemez.][n] |
+
+
 
 ## <a name="unsupported-browsers"></a>Desteklenmeyen tarayıcılar
 

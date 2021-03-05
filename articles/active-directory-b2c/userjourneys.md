@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 03/04/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: aac75e7876ce59b90e27f9e87c96240755d26235
-ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
+ms.openlocfilehash: 05307fe2ad9e0a59fa11c30f2dc7154ba5076603
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102120751"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102174674"
 ---
 # <a name="userjourneys"></a>UserJourneys
 
@@ -119,18 +119,23 @@ Düzenleme adımlarının sıralı listesini belirtmek için, ilkenin bir parça
 
 #### <a name="precondition"></a>Ön koşul
 
+Düzenleme adımları düzenleme adımında tanımlanan önkoşullara göre koşullu olarak çalıştırılabilir. İki tür ön koşullar vardır:
+ 
+- **Talepler var** -belirtilen talepler kullanıcının geçerli talep paketinde mevcutsa eylemlerin gerçekleştirilmesi gerektiğini belirtir.
+- **Talep eşittir** -belirtilen talep varsa ve değeri belirtilen değere eşitse eylemlerin gerçekleştirilmesi gerektiğini belirtir. Denetim, büyük/küçük harfe duyarlı bir sıra karşılaştırması gerçekleştirir. Boole talep türünü denetlerken, veya kullanın `True` `False` .
+
 **Önkoşul** öğesi aşağıdaki öznitelikleri içerir:
 
 | Öznitelik | Gerekli | Açıklama |
 | --------- | -------- | ----------- |
 | `Type` | Evet | Bu ön koşul için gerçekleştirilecek denetim veya sorgu türü. Bu değer, belirtilen talepler varsa ve bu değerin belirtilen değere eşit olması halinde, eylemlerin gerçekleştirilmesi gerektiğini belirten, eylemlerin, kullanıcının geçerli talep kümesinde bulunması veya **Claımequals** olması gerektiğini belirten **claimsexist** olabilir. |
-| `ExecuteActionsIf` | Yes | Önkoşuldaki eylemlerin gerçekleştirilip gerçekleştirilmeyeceğine karar vermek için doğru veya yanlış test kullanın. |
+| `ExecuteActionsIf` | Yes | `true` `false` Önkoşulun içindeki eylemlerin gerçekleştirilip gerçekleştirilmeyeceğine karar vermek için bir veya test kullanın. |
 
 **Önkoşul** öğeleri aşağıdaki öğeleri içerir:
 
 | Öğe | Öğeleri | Açıklama |
 | ------- | ----------- | ----------- |
-| Değer | 1: n | İçin sorgulanacak bir ClaimTypeReferenceId. Başka bir değer öğesi, denetlenecek değeri içerir.</li></ul>|
+| Değer | 1:2 | Bir talep türünün tanımlayıcısı. Talep, ilke dosyası veya üst ilke dosyasındaki talep şeması bölümünde zaten tanımlanmış. Önkoşul türü olduğunda `ClaimEquals` , ikinci `Value` öğe denetlenecek değeri içerir. |
 | Eylem | 1:1 | Bir düzenleme adımı içinde önkoşul denetimi doğru ise gerçekleştirilmesi gereken eylem. Öğesinin değeri `Action` olarak ayarlandıysa `SkipThisOrchestrationStep` , ilişkili öğesinin `OrchestrationStep` yürütülmemelidir. |
 
 #### <a name="preconditions-examples"></a>Ön koşullar örnekleri
@@ -189,7 +194,7 @@ Aşağıdaki ön koşullar kullanıcının bir sosyal hesapla oturum açmış ol
 </OrchestrationStep>
 ```
 
-## <a name="identity-provider-selection"></a>Kimlik sağlayıcı seçimi
+## <a name="claims-provider-selection"></a>Talep sağlayıcı seçimi
 
 Kimlik sağlayıcısı seçimi, kullanıcıların bir seçenek listesinden bir eylem seçmesini sağlar. Kimlik sağlayıcısı seçimi iki düzenleme adımından oluşur: 
 
@@ -215,7 +220,7 @@ Kimlik sağlayıcısı seçimi, kullanıcıların bir seçenek listesinden bir e
 | Targetclaimsexchangeıd | Hayır | Talep sağlayıcısı seçiminin sonraki düzenleme adımında yürütülen talep değişim tanıtıcısı. Bu öznitelik veya Validationclaimsexchangeıd özniteliği belirtilmelidir, ancak her ikisi birden belirtilmemelidir. |
 | Validationclaimsexchangeıd | Hayır | Talep sağlayıcı seçimini doğrulamak için geçerli düzenleme adımında yürütülen talep alışverişi tanıtıcısı. Bu öznitelik veya Targetclaimsexchangeıd özniteliği belirtilmelidir, ancak her ikisi birden belirtilmemelidir. |
 
-### <a name="claimsproviderselection-example"></a>ClaimsProviderSelection örneği
+### <a name="claims-provider-selection-example"></a>Talep sağlayıcı seçimi örneği
 
 Aşağıdaki düzenleme adımında, Kullanıcı Facebook, LinkedIn, Twitter, Google veya yerel bir hesap ile oturum açmayı tercih edebilir. Kullanıcı sosyal kimlik sağlayıcılarından birini seçerse ikinci düzenleme adımı özniteliğinde belirtilen seçili talep değiş tokuşu ile yürütülür `TargetClaimsExchangeId` . İkinci düzenleme adımı, oturum açma işlemini gerçekleştirmek için kullanıcıyı sosyal kimlik sağlayıcısına yönlendirir. Kullanıcı yerel hesapla oturum açmayı seçerse Azure AD B2C aynı düzenleme adımında kalır (aynı kayıt sayfası veya oturum açma sayfası) ve ikinci düzenleme adımını atlar.
 

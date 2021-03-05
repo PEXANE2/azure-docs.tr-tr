@@ -7,17 +7,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 12/14/2020
+ms.date: 03/04/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 5552c93c1c65f08f70ed8929d81126035aa2a357
-ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
+ms.openlocfilehash: c9453f2fc5803fb6ce09d8749cbf7fa1c7c2ec46
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98661213"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102174844"
 ---
 # <a name="define-custom-attributes-in-azure-active-directory-b2c"></a>Azure Active Directory B2C özel öznitelikleri tanımlama
 
@@ -25,7 +25,7 @@ ms.locfileid: "98661213"
 
 [Özel ilkeler kullanarak talep ekleme ve Kullanıcı girişini özelleştirme](configure-user-input.md) makalesinde yerleşik [Kullanıcı profili özniteliklerini](user-profile-attributes.md)nasıl kullanacağınızı öğreneceksiniz. Bu makalede, Azure Active Directory B2C (Azure AD B2C) dizininizde özel bir özniteliği etkinleştirirsiniz. Daha sonra, yeni özniteliğini [Kullanıcı akışlarında](user-flow-overview.md) veya [özel ilkelerde](custom-policy-get-started.md) aynı anda özel bir talep olarak kullanabilirsiniz.
 
-Azure AD B2C dizininiz [yerleşik bir öznitelikler kümesiyle](user-profile-attributes.md)birlikte gelir. Bununla birlikte, belirli senaryonuzu yönetmek için genellikle kendi öznitelerinizi oluşturmanız gerekir, örneğin:
+Azure AD B2C dizininizde [yerleşik öznitelikler](user-profile-attributes.md) bulunur. Bununla birlikte, belirli senaryonuzu yönetmek için genellikle kendi öznitelerinizi oluşturmanız gerekir, örneğin:
 
 * Müşteriye yönelik bir uygulamanın **Loyaltyıd** özniteliğini kalıcı hale getirmek gerekir.
 * Bir kimlik sağlayıcısı, kalıcı olması gereken benzersiz bir Kullanıcı tanımlayıcısına sahip olan **Uniqueuserguid** öğesine sahiptir.
@@ -97,22 +97,27 @@ Microsoft Graph API, uzantı öznitelikleri olan bir kullanıcının oluşturulm
 
 1. İlkenizin uzantıları dosyasını açın. Örneğin, <em>`SocialAndLocalAccounts/`**`TrustFrameworkExtensions.xml`**</em> .
 1. ClaimsProviders öğesini bulun. ClaimsProviders öğesine yeni bir ClaimsProvider ekleyin.
-1. `ApplicationObjectId`Daha önce kaydettiğiniz nesne kimliğiyle değiştirin. Ardından `ClientId` Aşağıdaki kod parçacığında daha önce kaydettiğiniz uygulama kimliğiyle değiştirin.
+1. Açılış ve kapanış öğeleri arasında daha önce kaydettiğiniz **uygulama kimliğini** ekleyin `<Item Key="ClientId">` `</Item>` .
+1. Açılış ve kapanış öğeleri arasında daha önce kaydettiğiniz **uygulama ObjectID** 'yi ekleyin `<Item Key="ApplicationObjectId">` `</Item>` .
 
     ```xml
-    <ClaimsProvider>
-      <DisplayName>Azure Active Directory</DisplayName>
-      <TechnicalProfiles>
-        <TechnicalProfile Id="AAD-Common">
-          <Metadata>
-            <!--Insert b2c-extensions-app application ID here, for example: 11111111-1111-1111-1111-111111111111-->  
-            <Item Key="ClientId"></Item>
-            <!--Insert b2c-extensions-app application ObjectId here, for example: 22222222-2222-2222-2222-222222222222-->
-            <Item Key="ApplicationObjectId"></Item>
-          </Metadata>
-        </TechnicalProfile>
-      </TechnicalProfiles> 
-    </ClaimsProvider>
+    <!-- 
+    <ClaimsProviders> -->
+      <ClaimsProvider>
+        <DisplayName>Azure Active Directory</DisplayName>
+        <TechnicalProfiles>
+          <TechnicalProfile Id="AAD-Common">
+            <Metadata>
+              <!--Insert b2c-extensions-app application ID here, for example: 11111111-1111-1111-1111-111111111111-->  
+              <Item Key="ClientId"></Item>
+              <!--Insert b2c-extensions-app application ObjectId here, for example: 22222222-2222-2222-2222-222222222222-->
+              <Item Key="ApplicationObjectId"></Item>
+            </Metadata>
+          </TechnicalProfile>
+        </TechnicalProfiles> 
+      </ClaimsProvider>
+    <!-- 
+    </ClaimsProviders> -->
     ```
 
 ## <a name="upload-your-custom-policy"></a>Özel ilkenizi karşıya yükleyin

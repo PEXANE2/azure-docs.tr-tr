@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
-ms.date: 02/25/2021
+ms.date: 03/04/2021
 ms.author: justinha
 author: sopand
 manager: daveba
 ms.reviewer: dawoo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fbe69967d84777091aec0bbbf1626b98f5018d0e
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: b0865fb2bda04f5a7e9ba2ef73a717946fa656a5
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101693301"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102175320"
 ---
 # <a name="authentication-methods-activity"></a>Kimlik Doğrulama Yöntemleri Etkinliği 
 
@@ -26,10 +26,17 @@ Yeni kimlik doğrulama yöntemleri etkinlik panosu, yöneticilerin kuruluş gene
 
 ## <a name="permissions-and-licenses"></a>İzinler ve lisanslar
 
-Aşağıdaki roller kullanım ve öngörülere erişebilir:
+Aşağıdaki izinlerle yerleşik ve özel roller, kimlik doğrulama yöntemleri etkinlik dikey penceresine ve API 'Lerine erişebilir:
+
+- Microsoft. Directory/auditLogs/allProperties/Read
+- Microsoft. Directory/Signınreports/allProperties/Read
+
+Aşağıdaki roller gerekli izinlere sahiptir:
 
 - Rapor okuyucu
 - Güvenlik Okuyucusu
+- Genel okuyucu
+- Güvenlik operatörü
 - Güvenlik Yöneticisi
 - Genel Yönetici
 
@@ -122,11 +129,12 @@ Kayıt ayrıntıları raporu, her kullanıcı için aşağıdaki bilgileri göst
 - Durum (başarı, hata)
 - Hatanın nedeni (Açıklama)
 
-  ![Kullanım sayfasının ekran görüntüsü](media/how-to-authentication-methods-usage-insights/registration-and-reset-logs.png)
+  ![Kayıt ve sıfırlama olaylarının ekran görüntüsü](media/how-to-authentication-methods-usage-insights/registration-and-reset-logs.png)
 
 ## <a name="limitations"></a>Sınırlamalar
 
-Geçici erişim geçişi (TAP) kayıtları, yalnızca kısa bir süre için geçerli olduklarından raporun kayıt sekmesine yansıtılmaz.
+- Rapordaki veriler gerçek zamanlı olarak güncellenmez ve birkaç saate kadar gecikme süresini yansıtabilir.
+- Geçici erişim geçiş kayıtları, yalnızca kısa bir süre için geçerli olduklarından raporun kayıt sekmesine yansıtılmaz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

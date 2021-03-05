@@ -13,12 +13,12 @@ ms.date: 05/18/2020
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: d0282e4f52db8557364cdabe197fa0da63204e42
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: bf469b79fa532978e904a54f32c80280706ee7cb
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98752638"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102174589"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-resource-owner-password-credentials"></a>Microsoft Identity platform ve OAuth 2,0 kaynak sahibi parolası kimlik bilgileri
 
@@ -34,6 +34,7 @@ Microsoft Identity platformu, bir uygulamanın kullanıcının parolasını doğ
 > * Parolası olmayan hesaplar ROPC aracılığıyla oturum açamaz. Bu senaryo için, bunun yerine uygulamanız için farklı bir akış kullanmanızı öneririz.
 > * Kullanıcıların uygulamada oturum açmak için [Multi-Factor Authentication (MFA)](../authentication/concept-mfa-howitworks.md) kullanması gerekiyorsa, bunun yerine engellenecektir.
 > * ROPC, [karma kimlik Federasyonu](../hybrid/whatis-fed.md) senaryolarında (örneğin, Azure AD ve şirket içi hesapların kimliğini doğrulamak IÇIN kullanılan ADFS) desteklenmez. Kullanıcılar, şirket içi kimlik sağlayıcılarına tam sayfa yönlendirirse, Azure AD bu kimlik sağlayıcısına karşı Kullanıcı adını ve parolayı test edemeyebilir. Öte yandan [doğrudan kimlik doğrulaması](../hybrid/how-to-connect-pta.md) , ropc ile desteklenir.
+> * Karma kimlik Federasyonu senaryosunda bir özel durum aşağıda verilmiştir: AllowCloudPasswordValidation değeri TRUE olarak ayarlanan giriş bölgesi bulma ilkesi, şirket içi parola buluta eşitlendiğinde ROPC Flow 'un Federasyon kullanıcıları için çalışmasını sağlar. Daha fazla bilgi için bkz. [eski uygulamalar için Federe kullanıcıların doğrudan ROPC kimlik doğrulamasını etkinleştirme](../manage-apps/configure-authentication-for-federated-users-portal.md#enable-direct-ropc-authentication-of-federated-users-for-legacy-applications).
 
 ## <a name="protocol-diagram"></a>Protokol diyagramı
 
@@ -110,6 +111,6 @@ Kullanıcı doğru Kullanıcı adını veya parolayı sağlamadıysa veya istemc
 | `invalid_grant` | Kimlik doğrulaması başarısız oldu | Kimlik bilgileri hatalıydı veya istemcinin istenen kapsamlar için izni yok. Kapsamlar verilmezse bir `consent_required` hata döndürülür. Bu durum oluşursa, istemci bir Web görünümü veya tarayıcı kullanarak kullanıcıyı etkileşimli bir istemde göndermelidir. |
 | `invalid_request` | İstek yanlış oluşturulmuş | İzin türü `/common` veya `/consumers` kimlik doğrulama bağlamlarında desteklenmiyor.  `/organizations`Bunun yerine veya bir KIRACı kimliği kullanın. |
 
-## <a name="learn-more"></a>Daha fazlasını öğrenin
+## <a name="learn-more"></a>Daha fazla bilgi edinin
 
 ROPC kullanma örneği için GitHub 'daki [.NET Core konsol uygulaması](https://github.com/azure-samples/active-directory-dotnetcore-console-up-v2) kod örneğine bakın.

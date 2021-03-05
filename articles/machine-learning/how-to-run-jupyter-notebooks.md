@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to
 ms.date: 01/19/2021
-ms.openlocfilehash: 82c11b913d38695c8738de88f3ce69b198ee099e
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: fe6fa5c9b05afd5479818fe9bb25e471665cb867
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101691884"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102171475"
 ---
 # <a name="run-jupyter-notebooks-in-your-workspace"></a>Çalışma alanınızda Jupyıter not defterlerini çalıştırma
 
@@ -185,6 +185,89 @@ Yüklü olan çekirdekler üzerinde değişiklik yapmak için sağdaki çekirdek
 ## <a name="find-compute-details"></a>İşlem ayrıntılarını bul
 
 [Studio](https://ml.azure.com)'daki **işlem** sayfasında işlem örneklerinizin ayrıntılarını bulun.
+
+## <a name="useful-keyboard-shortcuts"></a>Faydalı klavye kısayolları
+Jupi not defterlerine benzer şekilde, Azure Machine Learning Studio Not defterleri de kalıcı bir kullanıcı arabirimine sahiptir. Klavye, Not defteri hücresinin bulunduğu moda bağlı olarak farklı şeyler yapar. Azure Machine Learning Studio Not defterleri, belirli bir kod hücresi için aşağıdaki iki modu destekler: komut modu ve düzenleme modu.
+
+### <a name="command-mode-shortcuts"></a>Komut modu kısayolları
+
+Bir hücre, yazmanızı isteyen bir metin imleci olmadığında komut modundadır. Bir hücre komut modundayken, Not defterini tek tek hücrelere değil, bir bütün olarak düzenleyebilirsiniz. `ESC`Bir hücrenin düzenleyici alanının dışında seçim yapmak için fare tuşuna basarak veya fareyi kullanarak komut moduna girin.  Etkin hücrenin sol kenarlığı mavi ve Solid, **Çalıştır** düğmesi ise mavi.
+
+   :::image type="content" source="media/how-to-run-jupyter-notebooks/command-mode.png" alt-text="Komut modundaki Not defteri hücresi ":::
+
+| Kısayol                      | Açıklama                          |
+| ----------------------------- | ------------------------------------|
+| Enter                         | Düzenleme moduna girme             |        
+| Shift + Enter                 | Hücreyi Çalıştır, aşağıdan seçin         |     
+| Denetim/komut + ENTER       | Çalışma hücresi                            |
+| Alt + Enter                   | Hücreyi Çalıştır, aşağıya kod hücresi Ekle    |
+| Denetim/komut + alt + ENTER | Hücreyi Çalıştır, aşağı doğru markbelow hücresi Ekle|
+| Alt + R                       | Tümünü Çalıştır      |                       
+| Y                             | Hücreyi koda Dönüştür    |                         
+| M                             | Hücreyi markaşağı Dönüştür  |                       
+| Yukarı/K                          | Üstteki hücreyi seçin    |               
+| Aşağı/J                        | Aşağıdan hücre seçin    |               
+| A                             | Yukarıdaki kod hücresini Ekle  |            
+| B                             | Aşağıya kod hücresi Ekle   |           
+| Denetim/komut + Shift + A   | Yukarıya markaşağı hücresi Ekle    |      
+| Denetim/komut + SHIFT + B   | Aşağı markbelow hücresi Ekle   |       
+| X                             | Seçili hücreyi kes    |               
+| C                             | Seçili hücreyi Kopyala   |               
+| SHIFT + V                     | Seçili hücreyi yukarıya Yapıştır           |
+| V                             | Seçili hücreyi aşağı Yapıştır    |       
+| D D                           | Seçili hücreyi Sil|                
+| O                             | Çıkışı geç         |              
+| SHIFT + O                     | Çıkış kaydırmayı aç   |          
+| Ben                           | Kesme çekirdeği |                   
+| 0 0                           | Çekirdeği yeniden Başlat |                     
+| SHIFT + boşluk                 | Yukarı kaydır  |                         
+| Alan                         | Aşağı kaydır|
+| Tab                           | Odağı sonraki odaksız öğeye Değiştir (sekme tuzağı devre dışı bırakıldığında)|
+| Denetim/komut + S           | Not defterini Kaydet |                      
+| 1                             | H1 olarak değiştir|                       
+| 2                             | H2 olarak değiştir|                        
+| 3                             | H3 olarak değiştir|                        
+| 4                             | H4 olarak değiştir |                       
+| 5                             | H5 olarak değiştir |                       
+| 6                             | H6 olarak değiştir |                       
+
+### <a name="edit-mode-shortcuts"></a>Düzenleme modu kısayolları
+
+Düzenleme modu, düzenleyici alanına yazmanızı isteyen bir metin imlece belirtilir. Bir hücre düzenleme modundayken, hücreye yazabilirsiniz. `Enter`Fareyle sürükleyerek veya bir hücrenin düzenleyici alanında seçim yaparak düzenleme modunu girin. Etkin hücrenin sol kenarlığı yeşil ve taranmış ve **Çalıştır** düğmesi yeşil olur. Ayrıca, imleç isteminin hücrede düzenleme modunda görürsünüz.
+
+   :::image type="content" source="media/how-to-run-jupyter-notebooks/edit-mode.png" alt-text="Düzenleme modundaki Not defteri hücresi":::
+
+Aşağıdaki tuş vuruşu kısayollarını kullanarak, düzenleme modundayken Azure Machine Learning Not defterlerindeki kodu daha kolay bir şekilde gezinebilir ve çalıştırabilirsiniz.
+
+| Kısayol                      | Açıklama|                                     
+| ----------------------------- | ----------------------------------------------- |
+| Esc                        | Komut moduna gir|  
+| Denetim/komut + boşluk       | IntelliSense 'i etkinleştir |
+| Shift + Enter                 | Hücreyi Çalıştır, aşağıdan seçin |                         
+| Denetim/komut + ENTER       | Çalışma hücresi  |                                      
+| Alt + Enter                   | Hücreyi Çalıştır, aşağıya kod hücresi Ekle  |              
+| Denetim/komut + alt + ENTER | Hücreyi Çalıştır, aşağı doğru markbelow hücresi Ekle  |          
+| Alt + R                       | Tüm hücreleri Çalıştır     |                              
+| Yukarı                            | İmleci yukarı veya önceki hücreyi taşıyın    |             
+| Aşağı                          | İmleci aşağı veya sonraki hücreyi taşı |                  
+| Denetim/komut + S           | Not defterini Kaydet   |                                
+| Denetim/komut + yukarı          | Hücre başlangıcına git   |                             
+| Denetim/komut + aşağı        | Hücre sonuna git |                                 
+| Tab                           | Kod tamamlama veya girintileme (sekme tuzağı etkinse) |
+| Denetim/komut + d           | Sekme yakalamayı etkinleştir/devre dışı bırak  |                       
+| Denetim/komut +]           | Leyebilirsiniz |                                         
+| Denetim/komut + [           | Girintiyi geri al  |                                        
+| Control/Command + A           | Tümünü seç|                                      
+| Denetim/komut + Z           | Geri Al |                                           
+| Denetim/komut + SHIFT + Z   | Yinele |                                           
+| Denetim/komut + Y           | Yinele |                                           
+| Denetim/komut + giriş sayfası        | Hücre başlangıcına git|                                
+| Denetim/komut + End         | Hücre sonuna git   |                               
+| Denetim/komut + sol        | Bir kelimeyi sola git |                               
+| Denetim/komut + sağ       | Bir sözcüğe sağ git |                              
+| Denetim/komut + geri al   | Önceki kelimeyi Sil |                             
+| Denetim/komut + Sil      | Sonra sözcüğü Sil |                              
+| Denetim/komut +/           | Hücrede açıklama aç
 
 ## <a name="troubleshooting"></a>Sorun giderme
 

@@ -4,12 +4,12 @@ description: Azure Kubernetes hizmeti için Azure Ilkesi yerleşik ilke tanımla
 ms.date: 02/09/2021
 ms.topic: reference
 ms.custom: subject-policy-reference
-ms.openlocfilehash: 749ceb1c6388607bb854548278522092c39881e5
-ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
+ms.openlocfilehash: d7e25069c373592168e5482f79567b29665251b0
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100096047"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102175269"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-kubernetes-service"></a>Azure Policy Azure Kubernetes hizmeti için yerleşik tanımlar
 
@@ -17,11 +17,17 @@ Bu sayfa, Azure Kubernetes hizmeti için [Azure ilkesi](../governance/policy/ove
 
 Her yerleşik ilke tanımının adı Azure portal ilke tanımına bağlanır. Kaynağı [Azure Policy GitHub](https://github.com/Azure/azure-policy)deposunda görüntülemek için **Sürüm** sütunundaki bağlantıyı kullanın.
 
-## <a name="microsoftcontainerservice"></a>Microsoft. ContainerService
+## <a name="initiatives"></a>Girişimler
+
+[!INCLUDE [azure-policy-reference-policysets-kubernetes](../../includes/policy/reference/bycat/policysets-kubernetes.md)]
+
+## <a name="policy-definitions"></a>İlke tanımları
+
+### <a name="microsoftcontainerservice"></a>Microsoft. ContainerService
 
 [!INCLUDE [azure-policy-reference-rp-aks-containerservice](../../includes/policy/reference/byrp/microsoft.containerservice.md)]
 
-## <a name="aks-engine"></a>AKS Engine
+### <a name="aks-engine"></a>AKS Engine
 
 [!INCLUDE [azure-policy-reference-rp-aks-aksengine](../../includes/policy/reference/byrp/aks-engine.md)]
 

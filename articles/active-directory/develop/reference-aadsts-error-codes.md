@@ -12,12 +12,12 @@ ms.date: 02/01/2021
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 78f844295c16d15be65f345881ec92fa15a9734a
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: b82d3963ed12e0d5dc6acd75555a3a7e8f20eeb0
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101649232"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102175354"
 ---
 # <a name="azure-ad-authentication-and-authorization-error-codes"></a>Azure AD Kimlik Doğrulaması ve yetkilendirme hata kodları
 
@@ -187,6 +187,7 @@ Hata kodları ve mesajlar değiştirilebilir.  En güncel bilgiler için, [https
 | AADSTS53002 | ApplicationUsedIsNotAnApprovedApp-kullanılan uygulama, koşullu erişim için onaylanan bir uygulama değil. Kullanıcının erişim sağlamak için kullanılacak onaylanan uygulamalar listesinden uygulamalardan birini kullanması gerekir. |
 | AADSTS53003 | BlockedByConditionalAccess-erişim koşullu erişim ilkeleri tarafından engellendi. Erişim ilkesi belirteç verilmesine izin vermiyor. |
 | AADSTS53004 | Redakupblockedduetorisk-bu içeriğe erişmeden önce kullanıcının Multi-Factor Authentication kayıt işlemini tamamlaması gerekir. Kullanıcının çok faktörlü kimlik doğrulamasına kaydolması gerekir. |
+| AADSTS53011 | Kullanıcı, ana Kiracıdaki risk nedeniyle engellendi. |
 | AADSTS54000 | MinorUserBlockedLegalAgeGroupRule |
 | AADSTS65001 | Delegationsuz notexist-Kullanıcı veya yönetici, KIMLIĞI X olan uygulamayı kullanmaya Medi. bu kullanıcı ve kaynak için etkileşimli bir yetkilendirme isteği gönderin. |
 | AADSTS65004 | Userdeclinedonay-Kullanıcı uygulamaya erişim iznini reddetti. Kullanıcıdan oturum açmayı yeniden denemesini ve uygulamaya izin vermesini isteyin|

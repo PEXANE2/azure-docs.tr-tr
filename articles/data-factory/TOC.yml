@@ -704,6 +704,8 @@
           href: how-to-create-tumbling-window-trigger.md
         - name: Atlayan pencere tetikleyici bağımlılığı oluşturma
           href: tumbling-window-trigger-dependency.md
+        - name: İşlem hattındaki başvuru tetikleyicisi meta verileri
+          href: how-to-use-trigger-parameterization.md
     - name: Veri Kataloğu ve İdare
       items:
         - name: Azure Purview’a bir Data Factory bağlama

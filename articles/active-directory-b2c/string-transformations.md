@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 11/03/2020
+ms.date: 03/04/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 4e74c33a18baff3e1cb39328ce265f16975ef1b5
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 9cd5a62cd85687767497b142a30d31aa6dd00b77
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95994851"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102175099"
 ---
 # <a name="string-claims-transformations"></a>Dize talep dönüştürmeleri
 
@@ -149,6 +149,42 @@ Bir dize ClaimType değeri ayarlamak için bu talep dönüşümünü kullanın.
     - **değer**: contoso hizmet koşulları...
 - Çıkış talepleri:
     - **Createdclaim**: TOS ClaimType "contoso hizmet koşulları..." içerir deeri.
+
+## <a name="copyclaimifpredicatematch"></a>CopyClaimIfPredicateMatch
+
+Giriş talebinin değeri çıkış talebi koşulu ile eşleşiyorsa, bir talebin değerini başka bir değere kopyalayın. 
+
+| Öğe | Dönüştürme Tionclaimtype | Veri Türü | Notlar |
+| ---- | ----------------------- | --------- | ----- |
+| Inputclaim | ınputclaim | string | Kopyalanacak talep türü. |
+| OutputClaim | outputClaim | string | Bu talep dönüştürmesinin ardından üretilen talep türü çağırılır. Giriş talebinin değeri bu talep koşulunda denetlenir. |
+
+Aşağıdaki örnek, yalnızca Signınname bir telefon numarası ise, Signınname talep değerini phoneNumber talebine kopyalar. Tam örnek için bkz. [telefon numarası veya e-posta oturum açma](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/blob/master/scenarios/phone-number-passwordless/Phone_Email_Base.xml) Başlatıcı paketi ilkesi.
+
+```xml
+<ClaimsTransformation Id="SetPhoneNumberIfPredicateMatch" TransformationMethod="CopyClaimIfPredicateMatch">
+  <InputClaims>
+    <InputClaim ClaimTypeReferenceId="signInName" TransformationClaimType="inputClaim" />
+  </InputClaims>
+  <OutputClaims>
+    <OutputClaim ClaimTypeReferenceId="phoneNumber" TransformationClaimType="outputClaim" />
+  </OutputClaims>
+</ClaimsTransformation>
+```
+
+### <a name="example-1"></a>Örnek 1
+
+- Giriş talepleri:
+    - **ınputclaim**: bob@contoso.com
+- Çıkış talepleri:
+    - **outputclaim**: çıkış talebi, özgün değerinden değiştirilmez.
+
+### <a name="example-2"></a>Örnek 2
+
+- Giriş talepleri:
+    - **ınputclaim**: + 11234567890
+- Çıkış talepleri:
+    - **Outputclaim**: + 11234567890
 
 ## <a name="compareclaims"></a>CompareClaims
 
@@ -411,7 +447,7 @@ Ingilizce (varsayılan) ve Ispanyolca için yerelleştirilmiş dizeleri tanımla
 </Localization>
 ```
 
-Talep dönüştürmesi, email_subject değeri ile *ilgili* talep türü değerini ayarlar `StringId` *email_subject*.
+Talep dönüştürmesi, email_subject değeri ile *ilgili* talep türü değerini ayarlar `StringId` .
 
 ```xml
 <ClaimsTransformation Id="GetLocalizedStringsForEmail" TransformationMethod="GetLocalizedStringsTransformation">
@@ -783,7 +819,7 @@ Belirtilen bir alt dizenin giriş talebi içinde oluşup oluşmadığını belir
 | Öğe | Dönüştürme Tionclaimtype | Veri Türü | Notlar |
 | ---- | ----------------------- | --------- | ----- |
 | Inputclaim | ınputclaim | string | Arama yapılacak talep türü. |
-|InputParameter|şunu içerir|string|Aranacak değer.|
+|InputParameter|contains|string|Aranacak değer.|
 |InputParameter|ignoreCase|string|Bu karşılaştırmanın karşılaştırılan dizenin durumunu yoksayıp saymayacağını belirtir.|
 | OutputClaim | outputClaim | string | Bu Claimstransbir şekilde üretilen ClaimType çağırılır. Giriş talebi içinde alt dize gerçekleşirse Boole göstergesi. |
 

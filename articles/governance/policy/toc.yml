@@ -138,9 +138,9 @@
         - name: Kubernetes için Azure İlkesi
           displayName: 'aks, engine, k8s, rego, opa, open policy agent, gatekeeper, v3, crd, constraints, arc'
           href: ./concepts/policy-for-kubernetes.md
-        - name: Azure İlkesi ile pod güvenliğini sağlama
+        - name: Azure Ilkesiyle güvenli AKS
           displayName: 'aks, psp, rego, opa'
-          href: ../../aks/use-pod-security-on-azure-policy.md?toc=/azure/governance/policy/toc.json&bc=/azure/governance/policy/breadcrumb/toc.json
+          href: ../../aks/use-azure-policy.md?toc=/azure/governance/policy/toc.json&bc=/azure/governance/policy/breadcrumb/toc.json
     - name: Konuk Yapılandırması ile VM’leri denetleme
       displayName: 'provider, tools, definition'
       href: ./concepts/guest-configuration.md

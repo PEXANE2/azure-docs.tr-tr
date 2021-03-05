@@ -90,6 +90,8 @@
           href: vision-solution-troubleshooting.md
         - name: Azure Percept ses sorunlarını giderme
           href: troubleshoot-audio-accessory-speech-module.md
+        - name: Bilinen sorunlar
+          href: known-issues.md
 - name: Başvuru
   items:
     - name: Azure Percept cihaz veri sayfaları

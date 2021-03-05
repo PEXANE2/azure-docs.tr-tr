@@ -34,7 +34,13 @@
       href: application-proxy-add-on-premises-application.md
 - name: Örnekler
   items:
-    - name: Uygulama Ara Sunucusu için Azure PowerShell örnekleri
+    - name: Uygulama yönetimi PowerShell örnekleri
+      items:
+        - name: Uygulama yönetimi örneklerine genel bakış
+          href: app-management-powershell-samples.md
+        - name: 'Tüm uygulama kayıtlarını, gizli dizileri ve sertifikaları dışarı aktar'
+          href: ./scripts/powershell-export-all-app-registrations-secrets-and-certs.md
+    - name: Uygulama proxy 'Si PowerShell örnekleri
       href: application-proxy-powershell-samples.md
 - name: Kavramlar
   expanded: true

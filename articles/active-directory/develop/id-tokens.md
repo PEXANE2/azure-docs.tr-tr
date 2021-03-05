@@ -14,12 +14,12 @@ ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
 ms:custom: fasttrack-edit
-ms.openlocfilehash: 6a1f4a02ebf42c0f181b595aae0a5fa0bcc9b41d
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 21e0b800e06b7a5ad0351ff53d26a5e2cd2ba71c
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98755908"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102175397"
 ---
 # <a name="microsoft-identity-platform-id-tokens"></a>Microsoft Identity platform KIMLIĞI belirteçleri
 
@@ -55,7 +55,7 @@ Bu v 2.0 örnek belirtecini [JWT.MS](https://jwt.ms/#id_token=eyJ0eXAiOiJKV1QiLC
 |-----|--------|-------------|
 |`typ` | Dize-Always "JWT" | Belirtecin bir JWT belirteci olduğunu gösterir.|
 |`alg` | Dize | Belirteci imzalamak için kullanılan algoritmayı belirtir. Örnek: "RS256" |
-|`kid` | Dize | Bu belirteci imzalamak için kullanılan ortak anahtar için parmak izi. Hem v 1.0 hem de v 2.0 içinde yayınlanır `id_tokens` . |
+|`kid` | Dize | Bu belirteci doğrulamak için kullanılan ortak anahtar için parmak izi. Hem v 1.0 hem de v 2.0 içinde yayınlanır `id_tokens` . |
 |`x5t` | Dize | Aynı (kullanımda ve değerde) olarak `kid` . Bununla birlikte, bu, uyumluluk amacıyla yalnızca v 1.0 ile yayılan eski bir taleptür `id_tokens` . |
 
 ### <a name="payload-claims"></a>Yük talepleri

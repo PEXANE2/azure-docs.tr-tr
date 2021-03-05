@@ -4,13 +4,13 @@ description: Azure Farmınts 'de SOIL Moisture heatmap oluşturmayı açıklar
 author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
-ms.author: v-umha
-ms.openlocfilehash: 2887e7c5fd875942c3d19391267ddbb9b73ccfec
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.author: v-ummehabiba
+ms.openlocfilehash: dd8d688355e0f71ce77cdbc6012d788c7b16d825
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92165562"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102173792"
 ---
 # <a name="generate-soil-moisture-heatmap"></a>SOIL Moisture heatmap oluştur
 
@@ -36,7 +36,7 @@ Grup, bir SOIL nemi heatmap oluşturmak istediğiniz coğrafi bir alandır. [Gru
 
 ## <a name="deploy-sensors"></a>Sensöri dağıt
 
-Sunucu üzerinde SOIL nemi Sensörlerinizi fiziksel olarak dağıtmanız gerekir. Onaylı iş ortaklarımızdan SOIL nemi sensörlerinden ve [Teralytic](https://teralytic.com/)satın [Davis Instruments](https://www.davisinstruments.com/product/enviromonitor-gateway/) alabilirsiniz. Grubunuzda fiziksel kurulum yapmak için sensör sağlayıcınızla birlikte koordine etmeniz gerekir.
+Sunucu üzerinde SOIL nemi Sensörlerinizi fiziksel olarak dağıtmanız gerekir. Onaylı iş ortaklarımızdan SOIL nemi sensörlerinden ve [Teralytic](https://teralytic.com/)satın [](https://www.davisinstruments.com/product/enviromonitor-gateway/) alabilirsiniz. Grubunuzda fiziksel kurulum yapmak için sensör sağlayıcınızla birlikte koordine etmeniz gerekir.
 
 ## <a name="get-soil-moisture-sensor-data-from-partner"></a>İş ortağından SOIL nemi algılayıcı verilerini al
 
@@ -67,8 +67,8 @@ Bu adım, grubunuz için SOIL Moisture heatmap oluşturacak bir iş veya uzun s�
 3.  **Grup ayrıntıları** sayfasında **duyarlık eşlemesi oluştur**' u seçin.
 4.  Aşağı açılan menüden **Soil Moisture**' i seçin.
 5.  **SOIL Moisture** penceresinde **Bu hafta**' yı seçin.
-6.  **SOIL Moisture** **algılayıcısı ölçüsünü**seçin alanında, eşleme için kullanmak istediğiniz ölçüyü girin.
-    Algılayıcı ölçüsünü bulmak için **sensör**nemi algılayıcısı ' nı seçin. **Algılayıcı özellikleri**' nde **Ölçü adı** değerini kullanın.
+6.  **SOIL Moisture** **algılayıcısı ölçüsünü** seçin alanında, eşleme için kullanmak istediğiniz ölçüyü girin.
+    Algılayıcı ölçüsünü bulmak için **sensör** nemi algılayıcısı ' nı seçin. **Algılayıcı özellikleri**' nde **Ölçü adı** değerini kullanın.
 
     ![SOIL Moisture ekranını gösteren ekran görüntüsü.](./media/get-sensor-data-from-sensor-partner/soil-moisture-1.png)
 
@@ -84,7 +84,7 @@ Bu adım, grubunuz için SOIL Moisture heatmap oluşturacak bir iş veya uzun s�
 Aşağıdaki adımları kullanın:
 
 1. **İşler** sayfasında, son yordamda oluşturduğunuz Işin **iş durumunu** kontrol edin.
-2. İş durumu **başarılı**olarak gösterildiği zaman menüdeki **haritalar** ' ı seçin.
+2. İş durumu **başarılı** olarak gösterildiği zaman menüdeki **haritalar** ' ı seçin.
 3. <Soil-moisture_MyFarm_YYYY-aa-gg> biçiminde oluşturulduğu güne göre haritada arama yapın.
 4. **Ad** sütununda bir harita seçin, seçilen haritanın önizlemesine sahip bir açılır pencere görüntülenir.
 5. **İndir**'i seçin. Eşleme indirilir ve bilgisayarınızın yerel klasörüne depolanır.
@@ -93,4 +93,4 @@ Aşağıdaki adımları kullanın:
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Artık bir SOIL Moisture heatmap 'i başarıyla oluşturduğunuza göre, [algılayıcı yerleşimi oluşturma](generate-maps-in-azure-farmbeats.md#sensor-placement-map) ve [Geçmiş telemetri verilerini](ingest-historical-telemetry-data-in-azure-farmbeats.md)alma hakkında bilgi edinin. 
+Artık bir SOIL Moisture heatmap 'i başarıyla oluşturduğunuza göre, [algılayıcı yerleşimi oluşturma](generate-maps-in-azure-farmbeats.md#sensor-placement-map) ve [Geçmiş telemetri verilerini](ingest-historical-telemetry-data-in-azure-farmbeats.md)alma hakkında bilgi edinin. 

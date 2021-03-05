@@ -7,12 +7,12 @@ ms.date: 07/07/2020
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 7d33811dc056baa3d205d7d86c1bdd7bff74ae54
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: eef8179567d83e3727c3ab949eef2706ce2a9b16
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92330011"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102175813"
 ---
 # <a name="iot-plug-and-play-components-in-models"></a>Modellerdeki IoT Tak Çalıştır bileşenleri
 
@@ -56,7 +56,7 @@ Aşağıdaki örnek, bileşenleri kullanmayan basit bir modelin bir parçasını
 ...
 ```
 
-Model açıkça bir bileşen tanımlamadığı halde, tüm telemetri, özellik ve komut tanımlarıyla tek bir _varsayılan bileşen_gibi davranır.
+Model açıkça bir bileşen tanımlamadığı halde, tüm telemetri, özellik ve komut tanımlarıyla tek bir _varsayılan bileşen_ gibi davranır.
 
 Aşağıdaki ekran görüntüsünde, modelin Azure IoT gezgin aracında nasıl görüntülendiği gösterilmektedir:
 
@@ -64,7 +64,7 @@ Aşağıdaki ekran görüntüsünde, modelin Azure IoT gezgin aracında nasıl g
 
 Model KIMLIĞI, aşağıdaki ekran görüntüsünde gösterildiği gibi bir Device ikizi özelliğinde depolanır:
 
-:::image type="content" source="media/concepts-components/twin-model-id.png" alt-text="Azure IoT Gezgini 'nde varsayılan bileşen":::
+:::image type="content" source="media/concepts-components/twin-model-id.png" alt-text="Digital ikizi özelliğindeki model KIMLIĞI":::
 
 Bileşenleri olmayan bir DTDL modeli, tek bir telemetri, özellik ve komut kümesine sahip bir cihaz veya IoT Edge modülü için kullanışlı bir basitleştiripdir. Bileşenleri kullanmayan bir model, var olan bir cihazı veya modülü IoT Tak ve Kullan cihazı veya modülü olarak geçirmeyi kolaylaştırır. herhangi bir bileşen tanımlamaya gerek kalmadan gerçek cihazınızı veya modülünüzü açıklayan bir DTDL modeli oluşturursunuz.
 
@@ -75,7 +75,7 @@ Bileşenleri olmayan bir DTDL modeli, tek bir telemetri, özellik ve komut küme
 
 Bileşenler, model arabirimini diğer arabirimlerin derlemesi olarak oluşturmanıza imkan tanır.
 
-Örneğin, [termostat](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/samples/Thermostat.json) arabirimi bir model olarak tanımlanır. Bu arabirimi, [sıcaklık denetleyicisi modelini](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/samples/TemperatureController.json)tanımlarken bir veya daha fazla bileşen olarak birleştirebilirsiniz. Aşağıdaki örnekte, bu bileşenler ve olarak adlandırılır `thermostat1` `thermostat2` .
+Örneğin, [termostat](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/samples/Thermostat.json) arabirimi bir model olarak tanımlanır. [Isı denetleyicisi modelini](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/samples/TemperatureController.json)tanımlarken bu arabirimi bir veya daha fazla bileşen olarak ekleyebilirsiniz. Aşağıdaki örnekte, bu bileşenler ve olarak adlandırılır `thermostat1` `thermostat2` .
 
 Birden çok bileşeni olan bir DTDL modeli için, iki veya daha fazla bileşen bölümü vardır. Her bölüm `@type` `Component` , aşağıdaki kod parçacığında gösterildiği gibi bir şemaya ayarlanmış ve açıkça başvurur:
 

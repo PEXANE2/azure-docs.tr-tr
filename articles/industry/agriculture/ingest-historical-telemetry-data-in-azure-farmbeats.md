@@ -4,14 +4,14 @@ description: Bu makalede, geçmiş Telemetri verilerinin nasıl alınacağını 
 author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
-ms.author: v-umha
+ms.author: v-ummehabiba
 ms.custom: has-adal-ref
-ms.openlocfilehash: 603f14d2076b5b74dde0b92a732f8fe816f6dd10
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: e4182f3718422be3a0aa99c980d33026df4ce9af
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97656793"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102173758"
 ---
 # <a name="ingest-historical-telemetry-data"></a>Geçmiş telemetri verilerini alma
 
@@ -108,7 +108,7 @@ Azure Farmtts örneğiniz için iş ortağı tümleştirmesini etkinleştirmeniz
 | ProductCode | Cihaz ürün kodu veya model adı veya numarası. Örneğin, EnviroMonitor # 6800. |
 | Bağlantı noktaları | Bağlantı noktası adı ve türü, dijital veya analog. |
 | Name | Kaynağı tanımlamak için ad. Örneğin, model adı veya ürün adı. |
-| Description | Modelin anlamlı bir açıklamasını sağlayın. |
+| Açıklama | Modelin anlamlı bir açıklamasını sağlayın. |
 | Özellikler | Üreticiden ek özellikler. |
 | **Cihaz** |  |
 | Devicemodelıd | İlişkili cihaz modelinin KIMLIĞI. |
@@ -117,7 +117,7 @@ Azure Farmtts örneğiniz için iş ortağı tümleştirmesini etkinleştirmeniz
 | Konum | Cihaz Latitude (-90 ile + 90), Boylam (-180-180) ve yükseltme (ölçü cinsinden). |
 | Parentdeviceıd | Bu cihazın bağlı olduğu üst cihazın KIMLIĞI. Örneğin, bir ağ geçidine bağlı bir düğüm. Bir düğümde ağ geçidi olarak Parentdeviceıd vardır. |
 | Name | Kaynağı tanımlamak için bir ad. Cihaz iş ortakları, iş ortağı tarafında cihaz adı ile tutarlı bir ad göndermelidir. İş ortağı cihaz adı Kullanıcı tanımlı ise, aynı kullanıcı tanımlı ad, Farmtts 'ye yayılmalıdır. |
-| Description | Anlamlı bir açıklama sağlayın. |
+| Açıklama | Anlamlı bir açıklama sağlayın. |
 | Özellikler | Üreticiden ek özellikler. |
 | **SensorModel** |  |
 | Tür (analog, dijital) | Onun analog veya dijital olup olmadığı algılayıcı türü. |
@@ -129,7 +129,7 @@ Azure Farmtts örneğiniz için iş ortağı tümleştirmesini etkinleştirmeniz
 | Sensorölçüleri > birimi | Algılayıcı telemetri verileri birimi. Sistem tarafından tanımlanan birimler NoUnit, santigrat, Fahrenhayt, Kelvin, Rankine, Pascal, CIS, PSI, milimetre ölçüm, Santimeter, ölçüm, Inç, fit, mil, kilometre, MilesPerHour, MilesPerSecond, KMPerHour, KMPerSecond, MetersPerHour, MetersPerSecond, derece, WattsPerSquareMeter, KiloWattsPerSquareMeter, MilliWattsPerSquareCentiMeter, MilliJoulesPerSquareCentiMeter, VolumetricWaterContent, Percentage, Partspermilyon, MicroMol, mikro Molesperlitre, SiemensPerSquareMeterPerMole, MilliSiemensPerCentiMeter, Santibar, DeciSiemensPerMeter, KiloPascal, VolumetricIonContent, litre, MilliLiter, saniyeler, UnixTimestamp, MicroMolPerMeterSquaredPerSecond, InchesPerHour daha fazla bilgi eklemek Için/ExtendedType API 'sine bakın. |
 | Sensorölçüleri > AggregationType | Değerler None, Average, Maximum, minimum veya Standardsapması olabilir. |
 | Name | Kaynağı tanımlamak için ad. Örneğin, model adı veya ürün adı. |
-| Description | Modelin anlamlı bir açıklamasını sağlayın. |
+| Açıklama | Modelin anlamlı bir açıklamasını sağlayın. |
 | Özellikler | Üreticiden ek özellikler. |
 | **Algılayıcısı** |  |
 | Donanım kimliği | Üretici tarafından ayarlanan algılayıcı için benzersiz KIMLIK. |
@@ -138,7 +138,7 @@ Azure Farmtts örneğiniz için iş ortağı tümleştirmesini etkinleştirmeniz
 | Bağlantı noktası > adı | Algılayıcıdan cihazda bağlı olduğu bağlantı noktasının adı ve türü. Bunun, cihaz modelinde tanımlananla aynı ada sahip olması gerekir. |
 | DeviceID | Algılayıcıın bağlı olduğu cihazın KIMLIĞI. |
 | Name | Kaynağı tanımlamak için ad. Örneğin, algılayıcı adı veya ürün adı ve model numarası ya da ürün kodu. |
-| Description | Anlamlı bir açıklama sağlayın. |
+| Açıklama | Anlamlı bir açıklama sağlayın. |
 | Özellikler | Üreticiden ek özellikler. |
 
 Nesneler hakkında daha fazla bilgi için bkz. [Swagger](https://aka.ms/FarmBeatsDatahubSwagger).

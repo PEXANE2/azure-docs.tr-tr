@@ -11,12 +11,12 @@ ms.author: aashishb
 author: aashishb
 ms.date: 10/21/2020
 ms.custom: contperf-fy20q4, tracking-python
-ms.openlocfilehash: 3f128b7ee7fa8f690c2097a5d27e274ec1eb2a8a
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: ca3957563f7c7a7021ad994cc323823763c2936e
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97559548"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102171559"
 ---
 # <a name="use-azure-machine-learning-studio-in-an-azure-virtual-network"></a>Azure sanal ağında Azure Machine Learning Studio 'yu kullanma
 
@@ -38,7 +38,6 @@ Bu serideki diğer makalelere göz atın:
 
 > [!IMPORTANT]
 > Çalışma alanınız, Azure Kamu veya Azure Çin 21Vianet gibi bir bağımsız __bulutta__ ise, tümleşik Not defterleri sanal bir ağdaki depolamanın _kullanımını desteklemez._ Bunun yerine işlem örneğinde Jupyter Notebook'larını kullanabilirsiniz. Daha fazla bilgi için, [Işlem örneği Not Defteri Içindeki erişim verileri](how-to-secure-training-vnet.md#access-data-in-a-compute-instance-notebook) bölümüne bakın.
-
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -107,7 +106,6 @@ Aşağıdaki tabloda, çalışma alanı varsayılan depolama hesaplarınız içi
 >
 > Bu sorunu çözmek için, Filestore hesabını sanal ağdan kaldırın ve sonra sanal ağa geri ekleyin.
 
-
 ### <a name="grant-workspace-managed-identity-__reader__-access-to-storage-private-link"></a>Depolama özel bağlantısına çalışma alanı yönetilen kimlik __okuyucusu__ erişimi verme
 
 Azure depolama hesabınız özel bir uç nokta kullanıyorsa, çalışma alanı tarafından yönetilen kimlik **okuyucusu** özel bağlantı için erişim izni vermeniz gerekir. Daha fazla bilgi için bkz. [Reader](../role-based-access-control/built-in-roles.md#reader) yerleşik rolü. 
@@ -162,7 +160,7 @@ Ayrıca, çıkış verilerini görselleştirmek için ara depolama hesapları i�
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu makale, dört bölümlü bir sanal ağ serisinin isteğe bağlı bir parçasıdır. Bir sanal ağın güvenliğini nasıl sağlayacağınızı öğrenmek için makalelerin geri kalanına bakın:
+Bu makale, beş bölümlü bir sanal ağ serisinin beş bölümüdür. Bir sanal ağın güvenliğini nasıl sağlayacağınızı öğrenmek için makalelerin geri kalanına bakın:
 
 * [1. kısım: sanal ağa genel bakış](how-to-network-security-overview.md)
 * [2. Bölüm: çalışma alanı kaynaklarını güvenli hale getirme](how-to-secure-workspace-vnet.md)

@@ -4,12 +4,12 @@ description: Bu makalede, Azure Event Hubs en son Azure-Messaging-eventhubs pake
 ms.topic: quickstart
 ms.date: 06/23/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: f543fae8087a7dd3a18da7b44bc2896d7607f3d2
-ms.sourcegitcommit: 638f326d02d108cf7e62e996adef32f2b2896fd5
+ms.openlocfilehash: 640f6c4dcb223e55e10f7cb5d7daaa44dbd41578
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91728973"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102172032"
 ---
 # <a name="use-java-to-send-events-to-or-receive-events-from-azure-event-hubs-azure-messaging-eventhubs"></a>Azure Event Hubs (Azure-Messaging-eventhubs) olay göndermek veya olayları almak için Java 'Yı kullanma
 Bu hızlı başlangıçta, **Azure-Messaging-eventhubs** Java paketini kullanarak Olay Hub 'ından olayları gönderme ve olayları alma işlemlerinin nasıl yapılacağı gösterilir.
@@ -151,7 +151,7 @@ Azure depolama hesabı oluşturmak için bu adımları izleyin.
 2. [Blob kapsayıcısı oluşturma](../storage/blobs/storage-quickstart-blobs-portal.md#create-a-container)
 3. [Bağlantı dizesini depolama hesabına al](../storage/common/storage-configure-connection-string.md)
 
-    **Bağlantı dizesini** ve **kapsayıcı adını**aklınızda edin. Bunları alma kodunda kullanacaksınız. 
+    **Bağlantı dizesini** ve **kapsayıcı adını** aklınızda edin. Bunları alma kodunda kullanacaksınız. 
 
 ### <a name="add-event-hubs-libraries-to-your-java-project"></a>Java projenize Event Hubs kitaplıkları ekleyin
 Aşağıdaki bağımlılıkları pom.xml dosyasına ekleyin. 
@@ -169,7 +169,7 @@ Aşağıdaki bağımlılıkları pom.xml dosyasına ekleyin.
     <dependency>
         <groupId>com.azure</groupId>
         <artifactId>azure-messaging-eventhubs-checkpointstore-blob</artifactId>
-        <version>1.1.1</version>
+        <version>1.5.0</version>
     </dependency>
 </dependencies>
 ```

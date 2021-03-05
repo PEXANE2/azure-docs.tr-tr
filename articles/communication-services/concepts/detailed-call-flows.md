@@ -8,12 +8,12 @@ ms.author: nmurav
 ms.date: 12/11/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: d2df7255980ca00d405cf80a9fff69ff0511bd17
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 5ffc655cebb19b755b990171ab662576ac541793
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101659316"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102174300"
 ---
 # <a name="call-flow-topologies"></a>Çağrı akışı topolojileri
 Bu makalede, Azure Communication Services çağrı akışı topolojileri açıklanır. Bu, yönettiğiniz bir ağ içinde Iletişim hizmetlerini tümleştirerek kurumsal bir müşteri olduğunuzu gözden geçirmek için harika bir makaledir. Iletişim Hizmetleri çağrı akışlarına giriş için, [çağrı akışları kavramsal belgelerini](./call-flows.md)ziyaret edin.
@@ -152,7 +152,7 @@ Müşteri ağına VPN arasındaki sinyal, Flow 2 * ' i kullanır. Müşteri ağ�
 
 ### <a name="vpn-user-to-internal-user-direct-media"></a>VPN kullanıcısını iç kullanıcıya (doğrudan medya)
 
-:::image type="content" source="./media/call-flows/vpn-to-internal-direct-media.png" alt-text="Bir VPN ile doğrudan medya içeren bir adet çağrı akışı":::
+:::image type="content" source="./media/call-flows/vpn-to-internal-direct-media.png" alt-text="Doğrudan medya içeren bir VPN ile tek bir çağrı akışına (iç Kullanıcı)":::
 
 *Şekil 6-iç kullanıcıya VPN kullanıcısı (doğrudan medya)*
 
@@ -162,7 +162,7 @@ Bu medya iletimi çift yönlü. Flow 2 ' nin uzak mobil kullanıcıya yönü, bi
 
 ### <a name="vpn-user-to-external-user-direct-media"></a>VPN kullanıcısını dış kullanıcıya (doğrudan medya)
 
-:::image type="content" source="./media/call-flows/vpn-user-to-external-user.png" alt-text="Bir VPN ile doğrudan medya içeren bir adet çağrı akışı":::
+:::image type="content" source="./media/call-flows/vpn-user-to-external-user.png" alt-text="Doğrudan medya içeren VPN ile bir adet çağrı akışına (Dış Kullanıcı)":::
 
 *Şekil 7-dış kullanıcıya VPN kullanıcısı (doğrudan medya)*
 

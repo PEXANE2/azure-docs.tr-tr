@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 01/05/2021
 ms.author: jgao
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: db4a938d2f773ed24d4c7a48d747dd5cc22c0bd2
-ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
+ms.openlocfilehash: e28b66844eaa0b73c2654175dea2e31d3cd75f5d
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97900289"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102172105"
 ---
 # <a name="manage-azure-resource-manager-resource-groups-by-using-azure-cli"></a>Azure CLı kullanarak Azure Resource Manager kaynak gruplarını yönetme
 
@@ -125,7 +125,7 @@ Kaynak grubunuzu başarıyla ayarladıktan sonra, kaynak grubunun Kaynak Yöneti
 - Şablon tüm bütün altyapıyı içerdiğinden çözümün gelecekteki dağıtımlarını otomatikleştirin.
 - Çözümünüzü temsil eden JavaScript Nesne Gösterimi (JSON) bakarak Şablon sözdizimini öğrenin.
 
-Bir kaynak grubundaki tüm kaynakları dışarı aktarmak için [az Group Export](/cli/azure/group?view=azure-cli-latest#az_group_export&preserve-view=true) kullanın ve kaynak grubu adını sağlayın.
+Bir kaynak grubundaki tüm kaynakları dışarı aktarmak için [az Group Export](/cli/azure/group#az_group_export) kullanın ve kaynak grubu adını sağlayın.
 
 ```azurecli-interactive
 echo "Enter the Resource Group name:" &&

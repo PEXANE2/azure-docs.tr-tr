@@ -4,13 +4,13 @@ description: Bu makalede, Azure Farmtts 'de eşlemelerin nasıl oluşturulacağ�
 author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
-ms.author: v-umha
-ms.openlocfilehash: 92228c691c323bc0b9621dfc7413d86c5c2669e7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.author: v-ummehabiba
+ms.openlocfilehash: d0176fd337abd37f97a6dbe5cf7c68ccf94114d0
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84709071"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102173873"
 ---
 # <a name="generate-maps"></a>Haritalar oluşturma
 
@@ -58,18 +58,18 @@ Bu bölümde, algılayıcı yerleştirme haritaları oluşturma yordamları ayr�
 
     ![Algılayıcı yerleşimini seçin](./media/get-sensor-data-from-sensor-partner/create-maps-drop-down-1.png)
 
-3. **Algılayıcı yerleştirmesini**seçtikten sonra, **algılayıcı yerleşimi** penceresi görüntülenir.
+3. **Algılayıcı yerleştirmesini** seçtikten sonra, **algılayıcı yerleşimi** penceresi görüntülenir.
 
     ![Algılayıcı yerleştirme penceresi](./media/get-sensor-data-from-sensor-partner/sensor-placement-1.png)
 
 4. **Grup** açılan menüsünden bir grup seçin.
    Grubunuzu aramak ve seçmek için, açılan listede kaydırma yapabilir veya metin kutusuna grubun adını girebilirsiniz.
 5. Son yıl için bir harita oluşturmak için **Önerilen**' ı seçin.
-6. Özel bir tarih aralığı için bir harita oluşturmak için, **Tarih aralığını Seç**seçeneğini belirleyin. Algılayıcı yerleşimi eşlemesini oluşturmak istediğiniz başlangıç ve bitiş tarihini girin.
+6. Özel bir tarih aralığı için bir harita oluşturmak için, **Tarih aralığını Seç** seçeneğini belirleyin. Algılayıcı yerleşimi eşlemesini oluşturmak istediğiniz başlangıç ve bitiş tarihini girin.
 7. **Haritaları oluştur**' u seçin.
  İş ayrıntıları içeren bir onay iletisi görüntülenir.
 
-  İş durumu hakkında bilgi için bkz. **Işleri görüntüleme**. İş durumu *başarısız*gösteriyorsa, *başarısız* durumundaki araç ipucunda ayrıntılı bir hata iletisi görüntülenir. Bu durumda, önceki adımları yineleyin ve yeniden deneyin.
+  İş durumu hakkında bilgi için bkz. **Işleri görüntüleme**. İş durumu *başarısız* gösteriyorsa, *başarısız* durumundaki araç ipucunda ayrıntılı bir hata iletisi görüntülenir. Bu durumda, önceki adımları yineleyin ve yeniden deneyin.
 
   Sorun devam ederse, ilgili günlüklere yönelik destek için [sorun giderme](troubleshoot-azure-farmbeats.md) bölümüne bakın veya [Azure farmtempts forumuna](https://aka.ms/FarmBeatsMSDN) başvurun.
 
@@ -86,7 +86,7 @@ Bu bölümde, algılayıcı yerleştirme haritaları oluşturma yordamları ayr�
 
     ![Filtre penceresi](./media/get-sensor-data-from-sensor-partner/view-download-filter-1.png)
 
-3. Açılır menülerden **tür**, **Tarih**ve **ad** değerlerini seçin. Ardından, görüntülemek istediğiniz Haritayı aramak için **Uygula** ' yı seçin.
+3. Açılır menülerden **tür**, **Tarih** ve **ad** değerlerini seçin. Ardından, görüntülemek istediğiniz Haritayı aramak için **Uygula** ' yı seçin.
   İşin oluşturulduğu tarih type_farmname_YYYY-AA-GG biçiminde gösterilir.
 4. Sayfanın sonundaki gezinti çubuklarını kullanarak kullanılabilir haritalar listesinde gezinin.
 5. Görüntülemek istediğiniz haritayı seçin. Bir açılır pencere, seçilen haritanın önizlemesini görüntüler.
@@ -124,13 +124,13 @@ Farmpts, gruplar için NDVı, gelişmiş vegetation dizini (EVI) ve normalleşti
 4. Açılan menüden bir grup seçin.
    Grubunuzu aramak ve seçmek için, aşağı açılan listede kaydırma yapabilir veya grubun adını girebilirsiniz.   
 5. Geçen hafta için bir harita oluşturmak üzere **Bu hafta**' yı seçin.
-6. Özel bir tarih aralığı için bir harita oluşturmak için, **Tarih aralığını Seç**seçeneğini belirleyin. Uydu dizinleri eşlemesini oluşturmak istediğiniz başlangıç ve bitiş tarihini girin.
+6. Özel bir tarih aralığı için bir harita oluşturmak için, **Tarih aralığını Seç** seçeneğini belirleyin. Uydu dizinleri eşlemesini oluşturmak istediğiniz başlangıç ve bitiş tarihini girin.
 7. **Haritaları oluştur**' u seçin.
     İş ayrıntıları içeren bir onay iletisi görüntülenir.
 
     ![Uydu dizinleri eşleme onayı iletisi](./media/get-sensor-data-from-sensor-partner/successful-satellitte-indices-1.png)
 
-    İş durumu hakkında bilgi için bkz. **Işleri görüntüleme**. İş durumu *başarısız*gösteriyorsa, *başarısız* durumundaki araç ipucunda ayrıntılı bir hata iletisi görüntülenir. Bu durumda, önceki adımları yineleyin ve yeniden deneyin.
+    İş durumu hakkında bilgi için bkz. **Işleri görüntüleme**. İş durumu *başarısız* gösteriyorsa, *başarısız* durumundaki araç ipucunda ayrıntılı bir hata iletisi görüntülenir. Bu durumda, önceki adımları yineleyin ve yeniden deneyin.
 
     Sorun devam ederse, ilgili günlüklere yönelik destek için [sorun giderme](troubleshoot-azure-farmbeats.md) bölümüne bakın veya [Azure farmtempts forumuna](https://aka.ms/FarmBeatsMSDN) başvurun.
 
@@ -146,11 +146,11 @@ Farmpts, gruplar için NDVı, gelişmiş vegetation dizini (EVI) ve normalleşti
 
     ![Filtre penceresi arama ölçütlerini görüntüler](./media/get-sensor-data-from-sensor-partner/view-download-filter-1.png)
 
-3. Açılır menülerden **tür**, **Tarih**ve **ad** değerlerini seçin. Ardından, görüntülemek istediğiniz Haritayı aramak için **Uygula** ' yı seçin.
+3. Açılır menülerden **tür**, **Tarih** ve **ad** değerlerini seçin. Ardından, görüntülemek istediğiniz Haritayı aramak için **Uygula** ' yı seçin.
   İşin oluşturulduğu tarih type_farmname_YYYY-AA-GG biçiminde gösterilir.
 
 4. Sayfanın sonundaki gezinti çubuklarını kullanarak kullanılabilir haritalar listesinde gezinin.
-5. Her **Grup adı** ve **tarihin**birleşimi için aşağıdaki üç eşleme kullanılabilir:
+5. Her **Grup adı** ve **tarihin** birleşimi için aşağıdaki üç eşleme kullanılabilir:
     - NDVı
     - EVI
     - NDWI
@@ -190,14 +190,14 @@ SOIL Moisture heatmap oluşturmayı denemeden önce aşağıdaki önkoşulları 
    Grubunuzu aramak ve seçmek için, açılan listeden kaydırma yapabilir veya grup **Seç** açılan menüsünde grubun adını girebilirsiniz.
 5. **SOIL nemi algılayıcı ölçüsünü Seç** açılan menüsünde, eşlemesini oluşturmak istediğiniz SOIL nemi algılayıcı ölçüsünü (derinlik) seçin.
 Algılayıcı ölçüsünü bulmak için **sensörler**' e gidin ve herhangi bir SOIL nemi algılayıcısı seçin. Ardından, **algılayıcı özellikleri** bölümünde, **Ölçü adı**' nın değerini kullanın.
-6. **Bugün** veya **Bu hafta**için bir harita oluşturmak üzere seçeneklerden birini seçin.
-7. Özel bir tarih aralığı için bir harita oluşturmak için, **Tarih aralığını Seç**seçeneğini belirleyin. SOIL Moisture heatmap 'i oluşturmak istediğiniz başlangıç ve bitiş tarihini girin.
+6. **Bugün** veya **Bu hafta** için bir harita oluşturmak üzere seçeneklerden birini seçin.
+7. Özel bir tarih aralığı için bir harita oluşturmak için, **Tarih aralığını Seç** seçeneğini belirleyin. SOIL Moisture heatmap 'i oluşturmak istediğiniz başlangıç ve bitiş tarihini girin.
 8. **Haritaları oluştur**' u seçin.
  İş ayrıntıları içeren bir onay iletisi görüntülenir.
 
    ![SOIL Moisture eşleme onayı iletisi](./media/get-sensor-data-from-sensor-partner/successful-soil-moisture-1.png)
 
-    İş durumu hakkında bilgi için bkz. **Işleri görüntüleme**. İş durumu *başarısız*gösteriyorsa, *başarısız* durumundaki araç ipucunda ayrıntılı bir hata iletisi görüntülenir. Bu durumda, önceki adımları yineleyin ve yeniden deneyin.
+    İş durumu hakkında bilgi için bkz. **Işleri görüntüleme**. İş durumu *başarısız* gösteriyorsa, *başarısız* durumundaki araç ipucunda ayrıntılı bir hata iletisi görüntülenir. Bu durumda, önceki adımları yineleyin ve yeniden deneyin.
 
     Sorun devam ederse, ilgili günlüklere yönelik destek için [sorun giderme](troubleshoot-azure-farmbeats.md) bölümüne bakın veya [Azure farmtempts forumuna](https://aka.ms/FarmBeatsMSDN) başvurun.
 
@@ -213,8 +213,8 @@ Algılayıcı ölçüsünü bulmak için **sensörler**' e gidin ve herhangi bir
 
     ![Sol gezinmede filtre Seç](./media/get-sensor-data-from-sensor-partner/view-download-filter-1.png)
 
-3.  Açılır menülerden **tür**, **Tarih**ve **ad** değerlerini seçin. Ardından, görüntülemek istediğiniz Haritayı aramak için **Uygula** ' yı seçin. İşin oluşturulduğu tarih type_farmname_YYYY-AA-GG biçiminde gösterilir.
-4. **Grup**, tarih, **Oluşturulma** **tarihi**, **iş kimliği**ve **Iş türüne**göre sıralamak için tablo üst bilgilerinin yanındaki **sıralama** simgesini seçin.
+3.  Açılır menülerden **tür**, **Tarih** ve **ad** değerlerini seçin. Ardından, görüntülemek istediğiniz Haritayı aramak için **Uygula** ' yı seçin. İşin oluşturulduğu tarih type_farmname_YYYY-AA-GG biçiminde gösterilir.
+4. **Grup**, tarih, **Oluşturulma** **tarihi**, **iş kimliği** ve **Iş türüne** göre sıralamak için tablo üst bilgilerinin yanındaki **sıralama** simgesini seçin.
 5. Sayfanın sonundaki gezinti düğmelerini kullanarak kullanılabilir haritalar listesinde gezinin.
 6. Görüntülemek istediğiniz haritayı seçin. Bir açılır pencere, seçilen haritanın önizlemesini görüntüler.
 7. İndirme biçimini seçmek için açılan menüden **İndir** ' i seçin. Eşleme indirilip belirtilen klasöre depolanır.

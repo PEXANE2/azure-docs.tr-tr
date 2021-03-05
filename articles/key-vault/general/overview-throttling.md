@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: conceptual
 ms.date: 12/02/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 5b60f290f6d3ca184e25edd2984ad5b2d1ff2bdf
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 7bdc3ac517df6b73fba7231cfe0fdc9855803782
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93289677"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102175762"
 ---
 # <a name="azure-key-vault-throttling-guidance"></a>Azure Key Vault azaltma yönergeleri
 
@@ -24,7 +24,7 @@ Azaltma limitleri senaryoya göre farklılık gösterir. Örneğin, büyük bir 
 
 ## <a name="how-does-key-vault-handle-its-limits"></a>Key Vault sınırlarını nasıl işler?
 
-Key Vault hizmet limitleri, kaynakların kötüye kullanımını engeller ve tüm Key Vault istemcileri için hizmet kalitesini güvence altına aldığınızdan emin olun. Bir hizmet eşiği aşıldığında, bu istemciden bir süre için diğer istekleri sınırlar Key Vault, HTTP durum kodu 429 (çok fazla istek) döndürür ve istek başarısız olur. Key Vault tarafından izlenen kısıtlama sınırlarına doğru 429 sayısı döndüren başarısız istekler. 
+Key Vault hizmet limitleri, kaynakların kötüye kullanımını engeller ve tüm Key Vault istemcileri için hizmet kalitesini güvence altına aldığınızdan emin olun. Bir hizmet eşiği aşıldığında, bu istemciden bir süre için diğer istekleri sınırlar Key Vault, HTTP durum kodu 429 (çok fazla istek) döndürür ve istek başarısız olur. 429 döndüren başarısız istekler, Key Vault tarafından izlenen kısıtlama sınırlarına doğru sayılmaz. 
 
 Key Vault ilk olarak, dağıtım zamanında sırlarınızı depolamak ve almak için kullanılmak üzere tasarlanmıştır.  Dünya gelişmiştir ve gizli dizileri depolamak ve almak için çalışma zamanında kullanılıyor Key Vault ve genellikle uygulama ve hizmetler bir veritabanı gibi Key Vault kullanmak ister.  Geçerli sınırlar yüksek verimlilik hızlarını desteklemez.
 
@@ -41,14 +41,14 @@ Yukarıdakilerden hala gereksinimlerinizi karşılamadığını fark ediyorsanı
 
 | Kasa adı | Kasa bölgesi | Nesne türü (gizli, anahtar veya sertifika) | İşlemler * | Anahtar türü | Anahtar uzunluğu veya eğrisi | HSM anahtarı?| Sabit durum RPS gerekli | Gerekli en yüksek RPS |
 |--|--|--|--|--|--|--|--|--|
-| https://mykeyvault.vault.azure.net/ | | Anahtar | İşaret | EC | P-256 | No | 200 | 1000 |
+| https://mykeyvault.vault.azure.net/ | | Anahtar | İşaret | EC | P-256 | Hayır | 200 | 1000 |
 
 \* Olası değerlerin tam listesi için bkz. [Azure Key Vault işlemler](/rest/api/keyvault/key-operations).
 
 Ek kapasite onaylanırsa, kapasitenin sonucu arttıkça lütfen aşağıdakileri unutmayın:
 1. Veri tutarlılığı modeli değişiklikleri. Kasa, ek aktarım hızı kapasitesine izin vertikten sonra, Key Vault Service veri tutarlılığı garantisi (temeldeki Azure depolama hizmeti devam edemediğinden daha yüksek hacimli RPS 'yi karşılamak için gereklidir).  Bir Nutshell 'de:
-  1. **Listeye izin verme olmadan** : Key Vault hizmeti bir yazma işleminin sonuçlarını yansıtır (örn. SecretSet, CreateKey) sonraki çağrılarda hemen (ör. SecretGet, KeySign).
-  1. **İzin verilenler listesi ile** : Key Vault hizmeti bir yazma işleminin sonuçlarını yansıtır (örn. SecretSet, CreateKey) sonraki çağrılarda 60 saniye içinde (örn. SecretGet, KeySign).
+  1. **Listeye izin verme olmadan**: Key Vault hizmeti bir yazma işleminin sonuçlarını yansıtır (örn. SecretSet, CreateKey) sonraki çağrılarda hemen (ör. SecretGet, KeySign).
+  1. **İzin verilenler listesi ile**: Key Vault hizmeti bir yazma işleminin sonuçlarını yansıtır (örn. SecretSet, CreateKey) sonraki çağrılarda 60 saniye içinde (örn. SecretGet, KeySign).
 1. İstemci kodu, 429 yeniden deneme için geri dönüş ilkesini kabul etmelidir. Key Vault hizmetini çağıran istemci kodu, 429 yanıt kodu aldığında istekleri Key Vault anında yeniden denememelidir.  Burada yayımlanan Azure Key Vault daraltma Kılavuzu, 429 http yanıt kodu alınırken üstel geri alma uygulanmasını önerir.
 
 Daha yüksek kısıtlama limitleri için geçerli bir iş örneğine sahipseniz lütfen bizimle iletişime geçin.

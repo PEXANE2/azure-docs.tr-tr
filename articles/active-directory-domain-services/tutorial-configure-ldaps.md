@@ -7,14 +7,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 07/06/2020
+ms.date: 03/04/2021
 ms.author: justinha
-ms.openlocfilehash: 6da1d285440daa5d1d5a230905a77057728d4ae6
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.openlocfilehash: fd93635e7087d6f4a3590ec7bcb25482dc8382da
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99256550"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102174738"
 ---
 # <a name="tutorial-configure-secure-ldap-for-an-azure-active-directory-domain-services-managed-domain"></a>Öğretici: Azure Active Directory Domain Services yönetilen bir etki alanı için Güvenli LDAP yapılandırma
 
@@ -110,7 +110,7 @@ Güvenli LDAP kullanmak için ağ trafiği, ortak anahtar altyapısı (PKI) kull
 * Yönetilen etki alanına **özel** bir anahtar uygulanır.
     * Bu özel anahtar, Güvenli LDAP trafiğinin *şifresini çözmek* için kullanılır. Özel anahtar yalnızca yönetilen etki alanına uygulanmalıdır ve istemci bilgisayarlara yaygın olarak dağıtılmamalıdır.
     * Özel anahtarı içeren bir sertifika ' nı kullanır *. PFX* dosya biçimi.
-    * Sertifika için şifreleme algoritması, *TripleDES-SHA1* olmalıdır.
+    * Sertifika dışarı aktarılırken, *TripleDES-SHA1* şifreleme algoritmasını belirtmeniz gerekir. Bu yalnızca. pfx dosyası için geçerlidir ve sertifikanın kendisi tarafından kullanılan algoritmayı etkilemez. *TripleDES-SHA1* seçeneğinin yalnızca Windows Server 2016 ile başlayarak kullanılabilir olduğunu unutmayın.
 * İstemci bilgisayarlara **ortak** anahtar uygulanır.
     * Bu ortak anahtar, Güvenli LDAP trafiğini *şifrelemek* için kullanılır. Ortak anahtar istemci bilgisayarlara dağıtılabilir.
     * Özel anahtarı olmayan Sertifikalar ' i kullanır *. CER* dosya biçimi.
@@ -151,6 +151,11 @@ Yönetilen etki alanınız ile önceki adımda oluşturulan dijital sertifikayı
 1. Bu sertifika verilerin şifresini çözmek için kullanıldığından, erişimi dikkatle kontrol etmeniz gerekir. Sertifika kullanımını korumak için bir parola kullanılabilir. Doğru parola olmadan sertifika bir hizmete uygulanamaz.
 
     **Güvenlik** sayfasında, korumak için **parola** seçeneğini belirleyin *. PFX* sertifika dosyası. Şifreleme algoritması *TripleDES-SHA1* olmalıdır. Bir parola girin ve onaylayın, ardından **İleri**' yi seçin. Bu parola, yönetilen etki alanınız için Güvenli LDAP özelliğini etkinleştirmek üzere bir sonraki bölümde kullanılır.
+
+    [PowerShell Export-pfxsertifikası cmdlet 'ini](https://docs.microsoft.com/powershell/module/pkiclient/export-pfxcertificate?view=win10-ps)kullanarak dışa aktardığınızda, TripleDES_SHA1 kullanarak *-CryptoAlgorithmOption* bayrağını geçirmeniz gerekir.
+
+    ![Parolanın nasıl şifrelendiğinin ekran görüntüsü](./media/tutorial-configure-ldaps/encrypt.png)
+
 1. **Dışarı aktarılacak dosya** sayfasında, sertifikayı dışarı aktarmak istediğiniz dosya adını ve konumunu belirtin, örneğin *C:\Users\accountname\azure-AD-DS.pfx*. Parolasını ve konumunu bir yere göz önünde bulundurun *.* Bu bilgilerin sonraki adımlarda kullanılması IÇIN pfx dosyası.
 1. Gözden geçirme sayfasında, sertifikayı bir öğesine aktarmak için **son** ' u seçin *. PFX* sertifika dosyası. Sertifika başarıyla verildiğinde bir onay iletişim kutusu görüntülenir.
 1. Aşağıdaki bölümde MMC 'YI kullanılmak üzere açık bırakın.

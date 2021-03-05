@@ -11,12 +11,12 @@ ms.custom:
 - cli-validate
 - devx-track-python
 - devx-track-azurecli
-ms.openlocfilehash: 6112247a99c519aad8aadf7946c7707480b3b491
-ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
+ms.openlocfilehash: a9f8fe10c5ffa787a6c170a29188cba21427b602
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99558414"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102175167"
 ---
 # <a name="tutorial-deploy-a-django-web-app-with-postgresql-in-azure-app-service"></a>Öğretici: Azure App Service içindeki PostgreSQL ile Docgo Web uygulaması dağıtma
 
@@ -231,7 +231,7 @@ Docgo veritabanı geçişleri, Azure veritabanı 'ndaki PostgreSQL içindeki şe
 
     `<app-name>`Komutta daha önce kullanılan adla değiştirin `az webapp up` .
 
-    Alternatif olarak, komutuyla bir SSH oturumuna bağlanabilirsiniz [`az webapp ssh`](/cli/azure/webapp?view=azure-cli-latest&preserve-view=true#az_webapp_ssh) . Bu komut, Windows 'ta Azure CLı 2.18.0 veya üstünü gerektirir.
+    Alternatif olarak, komutuyla bir SSH oturumuna bağlanabilirsiniz [`az webapp ssh`](/cli/azure/webapp#az_webapp_ssh) . Bu komut, Windows 'ta Azure CLı 2.18.0 veya üstünü gerektirir.
 
     SSH oturumuna bağlanamıyorsanız, uygulamanın kendisi başlatılamadı. Ayrıntılar için [Tanılama günlüklerine bakın](#6-stream-diagnostic-logs) . Örneğin, önceki bölümde gerekli uygulama ayarlarını oluşturmadıysanız Günlükler gösterilir `KeyError: 'DBNAME'` .
 
