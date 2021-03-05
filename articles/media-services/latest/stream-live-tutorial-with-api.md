@@ -9,7 +9,7 @@ MS. Service: Media-Services MS. Workload: Media ms.tgt_pltfrm: na MS. devlang: n
 # <a name="tutorial-stream-live-with-media-services"></a>Öğretici: Media Services ile canlı akış
 
 > [!NOTE]
-> Öğretici [.NET SDK](/dotnet/api/microsoft.azure.management.media.models.liveevent?view=azure-dotnet) örnekleri kullanıyor olsa da, genel adımlar [REST API](/rest/api/media/liveevents), [CLI](/cli/azure/ams/live-event?view=azure-cli-latest)veya desteklenen diğer [SDK](media-services-apis-overview.md#sdks)'lar için aynıdır. 
+> Öğretici [.NET SDK](/dotnet/api/microsoft.azure.management.media.models.liveevent) örnekleri kullanıyor olsa da, genel adımlar [REST API](/rest/api/media/liveevents), [CLI](/cli/azure/ams/live-event)veya desteklenen diğer [SDK](media-services-apis-overview.md#sdks)'lar için aynıdır. 
 
 Azure Media Services, canlı [Olaylar](/rest/api/media/liveevents) canlı akış içeriğini işlemekten sorumludur. Canlı bir olay, daha sonra canlı bir kodlayıcı için sağladığınız bir giriş uç noktası (alma URL 'SI) sağlar. Canlı olay, canlı kodlayıcıdan canlı giriş akışları alır ve bir veya daha fazla [akış uç noktası](/rest/api/media/streamingendpoints)aracılığıyla akış için kullanılabilir hale getirir. Canlı olaylar ayrıca, daha fazla işlem ve teslim yapmadan önce akışınızı önizlemek ve doğrulamak için kullandığınız bir önizleme uç noktası (önizleme URL 'SI) sağlar. Bu öğretici, **geçiş** türü bir canlı olay oluşturmak için .NET Core kullanmayı göstermektedir.
 
@@ -66,7 +66,7 @@ Bu bölüm, *Liveeventwithdvr* projesinin [program.cs](https://github.com/Azure-
 
 .NET ile Media Services API’lerini kullanmaya başlamak için bir **AzureMediaServicesClient** nesnesi oluşturmanız gerekir. Nesneyi oluşturmak için, Azure AD kullanarak Azure’a bağlanmak üzere istemcinin ihtiyaç duyduğu kimlik bilgilerini sağlamanız gerekir. Makalenin başlangıcında kopyaladığınız kodda, **GetCredentialsAsync** işlevi, yerel yapılandırma dosyasında sağlanan kimlik bilgilerini temel alarak ServiceClientCredentials nesnesi oluşturur. 
 
-[!code-csharp[Main](../../../media-services-v3-dotnet/blob/main/Live/LiveEventWithDVR/Program.cs#CreateMediaServicesClient)]
+[!code-csharp[Main](../../../media-services-v3-dotnet/Live/LiveEventWithDVR/Program.cs#CreateMediaServicesClient)]
 
 ### <a name="create-a-live-event"></a>Canlı etkinlik oluşturma
 
@@ -80,13 +80,13 @@ Canlı olay oluştururken belirtmek isteyebileceğiniz bazı şeyler şunlardır
 * Olayı oluştururken, başlatmayı belirtebilirsiniz. <br/>Autostart değeri true olarak ayarlandığında, canlı olay oluşturulduktan sonra başlatılır. Bu, canlı olay çalışmaya başladığı anda faturalandırma başladığı anlamına gelir. Daha fazla faturalandırmayı durdurmak için canlı olay kaynağında durdurmayı açıkça çağırmanız gerekir. Daha fazla bilgi için bkz. [canlı olay durumları ve faturalandırma](live-event-states-billing.md).
 * Tahmine dayalı bir URL 'nin tahmin alınması için, "Vanity" modunu ayarlayın. Ayrıntılı bilgi için bkz. [canlı olay alma URL 'leri](live-events-outputs-concept.md#live-event-ingest-urls).
 
-[!code-csharp[Main](../../../media-services-v3-dotnet/blob/main/Live/LiveEventWithDVR/Program.cs#CreateLiveEvent)]
+[!code-csharp[Main](../../../media-services-v3-dotnet/Live/LiveEventWithDVR/Program.cs#CreateLiveEvent)]
 
 ### <a name="get-ingest-urls"></a>Alma URL’leri alma
 
 Canlı olay oluşturulduktan sonra, gerçek zamanlı kodlayıcıya sağlayacağınız içe alma URL 'Leri edinebilirsiniz. Kodlayıcı bu URL'leri canlı akış girişi için kullanır.
 
-[!code-csharp[Main](../../../media-services-v3-dotnet/blob/main/Live/LiveEventWithDVR/Program.cs#GetIngestURL)]
+[!code-csharp[Main](../../../media-services-v3-dotnet/Live/LiveEventWithDVR/Program.cs#GetIngestURL)]
 
 ### <a name="get-the-preview-url"></a>Önizleme URL'sini alma
 
@@ -95,7 +95,7 @@ Kodlayıcıdan gelen girişin gerçekten alındığını önizlemek ve doğrulam
 > [!IMPORTANT]
 > Devam etmeden önce videonun önizleme URL 'sine akmasını sağlayın.
 
-[!code-csharp[Main](../../../media-services-v3-dotnet/blob/main/Live/LiveEventWithDVR/Program.cs#GetPreviewURLs)]
+[!code-csharp[Main](../../../media-services-v3-dotnet/Live/LiveEventWithDVR/Program.cs#GetPreviewURLs)]
 
 ### <a name="create-and-manage-live-events-and-live-outputs"></a>Canlı etkinlikler ve canlı çıktılar oluşturma ve yönetme
 
@@ -105,13 +105,13 @@ Akışın canlı olayına akışını tamamladıktan sonra bir varlık, canlı �
 
 Canlı çıktının kullanması için bir varlık oluşturun.
 
-[!code-csharp[Main](../../../media-services-v3-dotnet/blob/main/Live/LiveEventWithDVR/Program.cs#CreateAsset)]
+[!code-csharp[Main](../../../media-services-v3-dotnet/Live/LiveEventWithDVR/Program.cs#CreateAsset)]
 
 #### <a name="create-a-live-output"></a>Canlı çıkış oluştur
 
 Canlı çıktılar oluşturma sırasında başlar ve silindiğinde durdurulur. Canlı çıktıyı sildiğinizde, ilgili varlık ve varlığın içeriğini silmezsiniz.
 
-[!code-csharp[Main](../../../media-services-v3-dotnet/blob/main/Live/LiveEventWithDVR/Program.cs#CreateLiveOutput)]
+[!code-csharp[Main](../../../media-services-v3-dotnet/Live/LiveEventWithDVR/Program.cs#CreateLiveOutput)]
 
 #### <a name="create-a-streaming-locator"></a>Akış Bulucu oluşturma
 
@@ -120,7 +120,7 @@ Canlı çıktılar oluşturma sırasında başlar ve silindiğinde durdurulur. C
 
 Canlı çıkış varlığını bir akış Bulucuyu kullanarak yayımladığınızda, canlı olay (DVR pencere uzunluğuna kadar), akış bulucunun bitiş tarihi veya silme işlemi, hangisi önce geldiği sürece görüntülenebilir olmaya devam edecektir.
 
-[!code-csharp[Main](../../../media-services-v3-dotnet/blob/main/Live/LiveEventWithDVR/Program.cs#CreateStreamingLocator)]
+[!code-csharp[Main](../../../media-services-v3-dotnet/Live/LiveEventWithDVR/Program.cs#CreateStreamingLocator)]
 
 ```csharp
 
@@ -146,9 +146,9 @@ Olayları akışa alma işlemini yaptıysanız ve daha önce sağlanan kaynaklar
 * Canlı etkinliği durdurun. Canlı etkinlik durdurulduktan sonra ücret ödemez. Tekrar başlatmanız gerektiğinde, aynı alma URL’sine sahip olacağından kodlayıcıyı yeniden yapılandırmanız gerekmez.
 * Canlı olayınızın arşivini isteğe bağlı bir akış olarak sunmaya devam etmek istemiyorsanız Akış Uç Noktanızı durdurabilirsiniz. Canlı etkinlik durdurulmuş durumdaysa, hiçbir ücret ödemez.
 
-[!code-csharp[Main](../../../media-services-v3-dotnet/blob/main/Live/LiveEventWithDVR/Program.cs#CleanupLiveEventAndOutput)]
+[!code-csharp[Main](../../../media-services-v3-dotnet/Live/LiveEventWithDVR/Program.cs#CleanupLiveEventAndOutput)]
 
-[!code-csharp[Main](../../../media-services-v3-dotnet/blob/main/Live/LiveEventWithDVR/Program.cs#CleanupLocatorAssetAndStreamingEndpoint)]
+[!code-csharp[Main](../../../media-services-v3-dotnet/Live/LiveEventWithDVR/Program.cs#CleanupLocatorAssetAndStreamingEndpoint)]
 
 ## <a name="watch-the-event"></a>Olayı izleme
 

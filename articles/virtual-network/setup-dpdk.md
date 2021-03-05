@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/12/2020
 ms.author: labattul
-ms.openlocfilehash: ba7c2a37d58f20ac4ff1f49a46a406d1b1f70106
-ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
+ms.openlocfilehash: 3b4d66525ec52ef2382dfbe97bc09278e35b31fb
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/20/2020
-ms.locfileid: "97704427"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102124678"
 ---
 # <a name="set-up-dpdk-in-a-linux-virtual-machine"></a>Bir Linux sanal makinesinde DPDK 'yi ayarlama
 
@@ -58,7 +58,7 @@ Tüm Azure bölgeleri DPDK 'yi destekler.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-Bir Linux sanal makinesinde hızlandırılmış ağ etkin olmalıdır. Sanal makine, yönetim için bir arabirim ile en az iki ağ arabirimine sahip olmalıdır. [Hızlandırılmış ağ etkin bir Linux sanal makinesi oluşturmayı](create-vm-accelerated-networking-cli.md)öğrenin.
+Bir Linux sanal makinesinde hızlandırılmış ağ etkin olmalıdır. Sanal makine, yönetim için bir arabirim ile en az iki ağ arabirimine sahip olmalıdır. Yönetim arabiriminde hızlandırılmış ağ özelliğinin etkinleştirilmesi önerilmez. [Hızlandırılmış ağ etkin bir Linux sanal makinesi oluşturmayı](create-vm-accelerated-networking-cli.md)öğrenin.
 
 ## <a name="install-dpdk-dependencies"></a>DPDK bağımlılıklarını yükler
 

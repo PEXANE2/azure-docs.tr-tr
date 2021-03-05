@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 07/23/2020
 ms.author: cynthn
 ms.subservice: disks
-ms.openlocfilehash: 62f89106538ab7f57047e211fc8715878f889af1
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 9c13a914a002f63f3c0d5bd988b0d76b951586dd
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98684568"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102124695"
 ---
 # <a name="ephemeral-os-disks-for-azure-vms"></a>Azure VM 'Leri için kısa ömürlü işletim sistemi diskleri
 
@@ -244,6 +244,11 @@ Y: kısa ömürlü diskler şunları desteklemez:
 - Azure Backup
 - Azure Site Recovery  
 - İşletim sistemi diski değiştirme 
+
+> [!NOTE]
+> 
+> Geçici diske Portal üzerinden erişilemeyecektir. Kısa ömürlü diske erişirken bir "kaynak bulunamadı" veya "404" hatası alabilirsiniz.
+> 
  
 ## <a name="next-steps"></a>Sonraki adımlar
 [Azure CLI](/cli/azure/vm#az-vm-create)kullanarak kısa ömürlü işletim sistemi diski Ile bir VM oluşturabilirsiniz.

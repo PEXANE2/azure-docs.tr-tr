@@ -9,12 +9,12 @@ ms.subservice: security
 ms.topic: how-to
 ms.date: 03/02/2021
 ms.custom: template-how-to
-ms.openlocfilehash: 4c4ad2a1350632d381cc258049ee85c87766f9b5
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: f8a6758cdf0a6da709a564c1e17c56a2fe5625b0
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101694130"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102124661"
 ---
 # <a name="deploy-a-vm-with-trusted-launch-enabled-preview"></a>Güvenilir başlatma etkin bir VM dağıtma (Önizleme)
 
@@ -140,7 +140,7 @@ Güvenilen başlatma VM 'Leri için vTPM ve güvenli önyükleme önerilerini al
 
 Bazı durumlarda, UEFı güvenli önyükleme için işlemleri imzalamanız gerekebilir.  Örneğin, Ubuntu için [Güvenli önyükleme için Işlemleri nasıl imzalayabileceğinize](https://ubuntu.com/blog/how-to-sign-things-for-secure-boot) gitmeniz gerekebilir. Bu gibi durumlarda, sanal makinenizin MOK yardımcı program kaydetme anahtarlarını girmeniz gerekir. Bunu yapmak için, MOK yardımcı programına erişmek üzere Azure seri konsolu 'nu kullanmanız gerekir.
 
-1. Linux için Azure seri konsolunu etkinleştirin. Daha fazla bilgi için bkz. [Linux Için seri konsol](serial-console-linux.md).
+1. Linux için Azure seri konsolunu etkinleştirin.
 1. [Azure Portal](https://portal.azure.com)oturum açın.
 1. **Sanal makineleri** arayın ve listeden VM 'nizi seçin.
 1. Sol taraftaki menüde, **destek + sorun giderme** altında **seri konsol**' yi seçin. Seri konsol ile sağ tarafta bir sayfa açılır.
