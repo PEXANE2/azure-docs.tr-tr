@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/25/2018
 ms.author: allensu
-ms.openlocfilehash: 75226f92995794221635ced7ee0e285ac824b6e2
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: 714fb92e8757fed6e11a09528b60cda3e945175e
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94696872"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102218902"
 ---
 # <a name="create-a-public-load-balancer-with-ipv6-using-azure-cli"></a>Azure CLı kullanarak IPv6 ile genel yük dengeleyici oluşturma
 
@@ -58,7 +58,7 @@ Yük dengeleyici dağıtmak için aşağıdaki nesneleri oluşturun ve yapıland
 
 Bu örnekte, Azure CLı araçlarını bir PowerShell komut penceresinde çalıştırırsınız. Okunabilirliği ve yeniden kullanımını geliştirmek için Azure PowerShell cmdlet 'lerini değil, PowerShell 'in betik oluşturma yeteneklerini kullanın.
 
-1. Bağlı makaledeki adımları izleyerek Azure [CLI 'Yı yükleyip yapılandırın](/cli/azure/install-azure-cli?view=azure-cli-latest) ve Azure hesabınızda oturum açın.
+1. Bağlı makaledeki adımları izleyerek Azure [CLI 'Yı yükleyip yapılandırın](/cli/azure/install-azure-cli) ve Azure hesabınızda oturum açın.
 
 2. Azure CLı komutlarıyla kullanılmak üzere PowerShell değişkenlerini ayarlayın:
 

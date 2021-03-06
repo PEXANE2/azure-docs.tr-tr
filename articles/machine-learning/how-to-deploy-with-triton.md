@@ -11,12 +11,12 @@ ms.date: 02/16/2020
 ms.topic: conceptual
 ms.reviewer: larryfr
 ms.custom: deploy
-ms.openlocfilehash: 3d2e01b645c1661d4b44520193b9c4557cbc1ea0
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.openlocfilehash: 47d2c8865109e8ef43317b3c4a19c36e692aff91
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "100652183"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102218851"
 ---
 # <a name="high-performance-serving-with-triton-inference-server-preview"></a>Triton çıkarım sunucusuyla yüksek performanslı hizmet (Önizleme) 
 
@@ -36,7 +36,7 @@ Triton, *çıkarım için iyileştirilmiş* bir çerçevedir. GPU 'ların daha i
 
 * Bir **Azure aboneliği**. Bir tane yoksa, [Azure Machine Learning ücretsiz veya ücretli sürümünü](https://aka.ms/AMLFree)deneyin.
 * Azure Machine Learning [bir modelin nasıl ve nasıl dağıtılacağı hakkında](how-to-deploy-and-where.md) benzerlik.
-* [Python için Azure MACHINE LEARNING SDK](/python/api/overview/azure/ml/?view=azure-ml-py) **veya** [Azure CLI](/cli/azure/?view=azure-cli-latest) ve [Machine Learning uzantısı](reference-azure-machine-learning-cli.md).
+* [Python için Azure MACHINE LEARNING SDK](/python/api/overview/azure/ml/?view=azure-ml-py) **veya** [Azure CLI](/cli/azure/) ve [Machine Learning uzantısı](reference-azure-machine-learning-cli.md).
 * Yerel test için çalışan bir Docker yüklemesi. Docker 'ı yükleme ve doğrulama hakkında daha fazla bilgi için bkz. Docker belgelerindeki [Yönlendirme ve kurulum](https://docs.docker.com/get-started/) .
 
 ## <a name="architectural-overview"></a>Mimariye genel bakış
@@ -331,7 +331,7 @@ print(local_service.scoring_uri)
 
 ---
 
-Dağıtım tamamlandıktan sonra Puanlama URI 'SI görüntülenir. Bu yerel dağıtım için, olacaktır `http://localhost:6789/score` . Buluta dağıtırsanız, Puanlama URI 'sini almak için [az ml Service CLI göster](/cli/azure/ext/azure-cli-ml/ml/service?view=azure-cli-latest#ext_azure_cli_ml_az_ml_service_show) komutunu kullanabilirsiniz.
+Dağıtım tamamlandıktan sonra Puanlama URI 'SI görüntülenir. Bu yerel dağıtım için, olacaktır `http://localhost:6789/score` . Buluta dağıtırsanız, Puanlama URI 'sini almak için [az ml Service CLI göster](/cli/azure/ext/azure-cli-ml/ml/service#ext_azure_cli_ml_az_ml_service_show) komutunu kullanabilirsiniz.
 
 Puanlama URI 'sine çıkarım istekleri gönderen bir istemci oluşturma hakkında daha fazla bilgi için bkz. [Web hizmeti olarak dağıtılan bir modeli](how-to-consume-web-service.md)kullanma.
 

@@ -268,11 +268,11 @@
             - name: azure-eventhubs’dan azure-messaging-eventhubs’a geçiş
               href: 'https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/eventhubs/azure-messaging-eventhubs/migration-guide.md'
             - name: azure-messaging-eventhubs (en son)
-              href: /java/api/overview/azure/messaging-eventhubs-readme?view=azure-java-stable
+              href: /java/api/overview/azure/messaging-eventhubs-readme
             - name: azure-eventhubs (eski)
               href: /java/api/overview/azure/eventhubs/client?view=azure-java-legacy
         - name: Yönetim kitaplığı
-          href: /java/api/com.microsoft.azure.management.eventhub?view=azure-java-stable
+          href: /java/api/com.microsoft.azure.management.eventhub
     - name: Python
       items:
         - name: İstemci kitaplığı
@@ -282,9 +282,9 @@
     - name: JavaScript
       items:
         - name: İstemci kitaplığı
-          href: /javascript/api/overview/azure/event-hubs-readme?view=azure-node-latest
+          href: /javascript/api/overview/azure/event-hubs-readme
         - name: Yönetim kitaplığı
-          href: /javascript/api/@azure/arm-eventhub/?view=azure-node-latest
+          href: /javascript/api/@azure/arm-eventhub/
     - name: Başlayın
       items:
         - name: İstemci kitaplığı

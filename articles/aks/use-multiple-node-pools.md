@@ -4,12 +4,12 @@ description: Azure Kubernetes Service (AKS) ' de bir küme için birden çok dü
 services: container-service
 ms.topic: article
 ms.date: 04/08/2020
-ms.openlocfilehash: 07c4628a17d2c76e8e4608c9c6d059a81a9c378f
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: 3e029695e9dce79473ada0bae3e7f0bbfd30db89
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 03/05/2021
-ms.locfileid: "102182868"
+ms.locfileid: "102218494"
 ---
 # <a name="create-and-manage-multiple-node-pools-for-a-cluster-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) ile bir küme için birden çok düğüm havuzu oluşturma ve yönetme
 
@@ -130,9 +130,11 @@ Bir iş yükü, kümenin düğümlerini mantıksal yalıtım için ayrı havuzla
 #### <a name="limitations"></a>Sınırlamalar
 
 * Nodepools öğesine atanan tüm alt ağlar aynı sanal ağa ait olmalıdır.
-* CoreDNS aracılığıyla DNS çözümlemesi gibi kritik işlevler sağlamak için sistem kimliklerinin kümedeki tüm düğümlere erişiminin olması gerekir.
-* Düğüm havuzu başına benzersiz bir alt ağ ataması, Önizleme süresince Azure CNı ile sınırlıdır.
-* Önizleme sırasında, düğüm havuzu başına benzersiz bir alt ağ ile ağ ilkelerinin kullanılması desteklenmez.
+* DNS çözümlemesi ve tünel kubectl günlükleri/exec/bağlantı noktası-iletme proxy 'si gibi kritik işlevler sağlamak için, sistem kimliklerinin kümedeki tüm düğümlere/yığınlara erişimi olmalıdır.
+* Kümeyi oluşturduktan sonra VNET 'i genişletirseniz, özgün CIDR dışında bir alt ağ eklemeden önce kümenizi güncelleştirmeniz gerekir (yönetilen clster işlemi gerçekleştirin ancak düğüm havuzu işlemleri sayılmaz). Bu durumda, ilk olarak izin verdiğimiz halde, aracı havuzunda hata dışarı çıkar. Küme dosyanızı bir destek bileti ile nasıl mutabık kılınabileceğinizi bilmiyorsanız. 
+* Calıco ağ Ilkesi desteklenmiyor. 
+* Azure ağ Ilkesi desteklenmiyor.
+* Kuin-proxy, tek bir bitişik CIDR bekler ve bunu üç optmizations için kullanır. Bu [K.E.P.](https://github.com/kubernetes/enhancements/blob/master/keps/sig-network/20191104-iptables-no-cluster-cidr.md ) bakın ve--daha fazla bilgi için [burada](https://kubernetes.io/docs/reference/command-line-tools-reference/kube-proxy/) CIDR. Azure CNI 'de, ilk düğüm havuzunuzun alt ağı Kube-proxy ' ye verilecek. 
 
 Ayrılmış bir alt ağa sahip bir düğüm havuzu oluşturmak için, düğüm havuzu oluştururken alt ağ kaynak KIMLIĞINI ek bir parametre olarak geçirin.
 

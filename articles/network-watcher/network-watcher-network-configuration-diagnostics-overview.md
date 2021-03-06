@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/15/2020
 ms.author: damendo
-ms.openlocfilehash: ad60b0be8a9a5341c71d760f98c0db84a72763c2
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: d500420893fc92e75c4d6f32f42e9f1d92c87b68
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94951528"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102218715"
 ---
 # <a name="introduction-to-network-configuration-diagnostics-in-azure-network-watcher"></a>Azure ağ Izleyicisi 'nde ağ yapılandırması tanılamalarına giriş
 
@@ -25,7 +25,7 @@ Ağ yapılandırması Tanılama Aracı, müşterilerin Azure sanal ağınızda h
 ## <a name="pre-requisites"></a>Ön koşullar
 Ağ yapılandırması tanılamayı kullanmak için, aboneliğinizde ağ Izleyicisi etkinleştirilmelidir. Etkinleştirmek için bkz. [Azure Ağ İzleyicisi örneği oluşturma](./network-watcher-create.md) .
 
-## <a name="background"></a>Arka plan
+## <a name="background"></a>Arka Plan
 
 - Azure 'daki kaynaklarınız sanal ağlar (VNet 'ler) ve alt ağlar aracılığıyla bağlanır. Bu VNET 'lerin ve alt ağların güvenliği bir ağ güvenlik grubu (NSG) kullanılarak yönetilebilir.
 - Bir NSG, bağlı olduğu kaynaklara ağ trafiğine izin veren veya reddeden güvenlik kurallarının bir listesini içerir. NSG 'Ler, VM 'lere bağlı olan alt ağlar, tek tek VM 'Ler veya tek ağ arabirimleri (NIC) ile ilişkilendirilebilir. 
@@ -41,4 +41,4 @@ Belirli bir akışta, NCD aracı akışın benzetimini çalıştırır ve akış
 Diğer arabirimler üzerinden ağ yapılandırması tanılamayı kullanma
  - [REST API](/rest/api/network-watcher/networkwatchers/getnetworkconfigurationdiagnostic)
  - [PowerShell](/powershell/module/az.network/invoke-aznetworkwatchernetworkconfigurationdiagnostic?view=azps-4.6.1)
- - [Azure CLI](/cli/azure/network/watcher?view=azure-cli-latest#az_network_watcher_run_configuration_diagnostic)
+ - [Azure CLI](/cli/azure/network/watcher#az_network_watcher_run_configuration_diagnostic)

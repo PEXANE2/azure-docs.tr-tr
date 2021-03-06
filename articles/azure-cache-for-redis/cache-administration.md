@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 07/05/2017
 ms.author: yegu
-ms.openlocfilehash: 156dfd1d9553e369357eb68225e722222a59d847
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0a79b0b5b5f21d1c75fec6b062f1ca91cfe9dd1f
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91838679"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102219208"
 ---
 # <a name="how-to-administer-azure-cache-for-redis"></a>Redsıs için Azure önbelleğini yönetme
 Bu konu, Redsıs örnekleri için Azure önbelleğiniz için güncelleştirmeleri yeniden [başlatma](#reboot) ve [zamanlama](#schedule-updates) gibi yönetim görevlerinin nasıl gerçekleştirileceğini açıklamaktadır.
@@ -57,6 +57,8 @@ Evet, önbelleği yeniden başlattıktan sonra tüm istemci bağlantıları temi
 > 
 > 
 
+
+
 ### <a name="will-i-lose-data-from-my-cache-if-i-do-a-reboot"></a>Yeniden başlatma işlemi yapmam durumunda önbelleğim verileri kaybedecek mıyım?
 Hem **ana** hem de **çoğaltma** düğümlerini yeniden başlattıktan sonra önbellekteki tüm veriler (veya kümelendirmeyi etkin bir Premium önbellek kullanıyorsanız) kaybolabilir, ancak bu garanti edilmez. [Veri kalıcılığını](cache-how-to-premium-persistence.md)yapılandırdıysanız, önbellek yeniden çevrimiçi olduğunda en son yedekleme geri yüklenir, ancak yedekleme yapıldıktan sonra gerçekleşen tüm önbellek yazmaları kaybedilir.
 
@@ -69,8 +71,9 @@ Evet, PowerShell yönergeleri için bkz. [Reda Için Azure önbelleğini yeniden
 **Güncelleştirmeleri zamanla** dikey penceresi, önbellek örneğiniz için bir bakım penceresi atamanıza olanak tanır. Bir bakım penceresi, önbelleğinizi barındıran VM 'ler için bir haftanın gün ve saatini denetlemenize olanak tanır. Redsıs için Azure önbelleği, sizin tanımladığınız belirtilen zaman penceresinde Redsıs sunucu yazılımını güncelleştirmeyi başlatmak ve gerçekleştirmek için en iyi çabayı sağlar.
 
 > [!NOTE] 
-> Bakım penceresi yalnızca Redsıs sunucu güncelleştirmeleri için geçerlidir ve önbelleği barındıran VM 'lerin işletim sisteminde herhangi bir Azure güncelleştirmesi ya da güncelleştirmesi için geçerli değildir.
+> Bakım penceresi, Redsıs sunucu güncelleştirmeleri ve önbelleği barındıran VM 'lerin Işletim sistemine yönelik güncelleştirmeler için geçerlidir. Bakım penceresi, önbellek VM 'lerini veya diğer Azure ağ bileşenlerini barındıran konaklara ana bilgisayar işletim sistemi güncelleştirmeleri için geçerlidir. Nadir durumlarda, önbellekler eski modellerde barındırılır (önbelleğin DNS adı "cloudapp.net", "chinacloudapp.cn", "usgovcloudapi.net" veya "cloudapi.de") sonekine çözümlenirse önbelleğin eski bir modelde olup olmadığını söyleyebilirsiniz, bakım penceresi Konuk işletim sistemi güncelleştirmelerine uygulanmaz.
 >
+
 
 ![Güncelleştirmeleri zamanlama](./media/cache-administration/redis-schedule-updates.png)
 

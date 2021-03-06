@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/29/2020
 ms.author: irenehua
-ms.openlocfilehash: 952889777e4236d7fa03fad5b1bdbf98499f7066
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 52f2a2ed301bf734ad605a2ee68a0ab672a97014
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101721319"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102218732"
 ---
 # <a name="update-or-delete-a-load-balancer-used-by-virtual-machine-scale-sets"></a>Sanal makine ölçek kümeleri tarafından kullanılan yük dengeleyiciyi güncelleştirme veya silme
 
@@ -30,7 +30,7 @@ Sanal Makine Ölçek Kümeleri ve bir Azure Load Balancer örneğiyle çalışı
 
 ## <a name="set-up-a-load-balancer-for-scaling-out-virtual-machine-scale-sets"></a>Sanal makine ölçek kümelerinin ölçeğini genişletmek için yük dengeleyici ayarlama
 
-Azure Load Balancer örneğinin bir [gelen NAT havuzu](/cli/azure/network/lb/inbound-nat-pool?view=azure-cli-latest) ayarlamış olduğundan ve sanal makine ölçek kümesinin yük dengeleyicinin arka uç havuzunda bulunduğundan emin olun. Load Balancer, sanal makine ölçek kümesine yeni sanal makine örnekleri eklendiğinde, gelen NAT havuzunda otomatik olarak yeni gelen NAT kuralları oluşturur.
+Azure Load Balancer örneğinin bir [gelen NAT havuzu](/cli/azure/network/lb/inbound-nat-pool) ayarlamış olduğundan ve sanal makine ölçek kümesinin yük dengeleyicinin arka uç havuzunda bulunduğundan emin olun. Load Balancer, sanal makine ölçek kümesine yeni sanal makine örnekleri eklendiğinde, gelen NAT havuzunda otomatik olarak yeni gelen NAT kuralları oluşturur.
 
 Gelen NAT havuzunun düzgün ayarlanıp ayarlanmadığını denetlemek için:
 
@@ -44,7 +44,7 @@ Tek bir gelen NAT kuralı eklenemez. Ancak, sanal makine ölçek kümesindeki t�
 
 Sanal Makine Ölçek Kümeleri için bir bütün gelen NAT kuralı kümesi eklemek için, önce yük dengeleyicide bir gelen NAT havuzu oluşturun. Ardından, sanal makine ölçek kümesinin ağ profilinden gelen NAT havuzuna başvurun. CLı kullanan tam bir örnek gösterilir.
 
-Yeni gelen NAT havuzunda, mevcut gelen NAT havuzlarıyla çakışan bir ön uç bağlantı noktası aralığı olmamalıdır. Ayarlanan mevcut gelen NAT havuzlarını görüntülemek için bu [CLI komutunu](/cli/azure/network/lb/inbound-nat-pool?view=azure-cli-latest#az_network_lb_inbound_nat_pool_list)kullanın:
+Yeni gelen NAT havuzunda, mevcut gelen NAT havuzlarıyla çakışan bir ön uç bağlantı noktası aralığı olmamalıdır. Ayarlanan mevcut gelen NAT havuzlarını görüntülemek için bu [CLI komutunu](/cli/azure/network/lb/inbound-nat-pool#az_network_lb_inbound_nat_pool_list)kullanın:
   
 ```azurecli-interactive
   az network lb inbound-nat-pool create 

@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/21/2020
 ms.author: jeedes
-ms.openlocfilehash: dc3f307a21b746981a84b1c0747c4b22c448541f
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 71f95b08584a46fccb0975cd9285150573ac02d4
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96349914"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102218528"
 ---
 # <a name="tutorial-configure-docusign-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlaması için DocuSign 'ı yapılandırma
 
@@ -97,7 +97,7 @@ Azure AD sağlama günlüklerinin nasıl okunduğu hakkında daha fazla bilgi i�
 ## <a name="troubleshooting-tips"></a>Sorun Giderme İpuçları
 * Docusign içindeki bir kullanıcı için rol veya izin profili sağlamak, [anahtar](../app-provisioning/functions-for-customizing-application-data.md#switch) ve [Tekapproleatama](../app-provisioning/functions-for-customizing-application-data.md#singleapproleassignment) işlevleri kullanılarak öznitelik eşlemelerinizde bir ifade kullanılarak gerçekleştirilebilir. Örneğin, aşağıdaki ifade, bir Kullanıcı Azure AD 'de atanan "DS Yöneticisi" rolüne sahip olduğunda "8032066" KIMLIĞINI sağlayacak. Kullanıcıya Azure AD tarafında bir rol atanmamışsa hiçbir izin profili sağlamacaktır. KIMLIK, DocuSign [portalından](https://support.docusign.com/articles/Default-settings-for-out-of-the-box-DocuSign-Permission-Profiles)alınabilir.
 
-Switch (Singleapprotaatama ([Approtaatamalar]), "", "8032066", "DS admin")
+Switch (Singleapprotaatama ([Approtaatamalar]), "", "DS Yöneticisi", "8032066")
 
 
 ## <a name="additional-resources"></a>Ek kaynaklar

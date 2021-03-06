@@ -7,13 +7,13 @@ ms.service: static-web-apps
 ms.topic: how-to
 ms.date: 05/08/2020
 ms.author: buhollan
-ms.custom: devx-track-js, devx-track-azurecli
-ms.openlocfilehash: 00502c97e3fc06972c27cedf565d77b52f558795
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.custom: devx-track-js
+ms.openlocfilehash: 2886cb6433c4f8a65eb0661eded0ddd08248e137
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94844821"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102219191"
 ---
 # <a name="configure-application-settings-for-azure-static-web-apps-preview"></a>Azure statik Web Apps önizlemesi için uygulama ayarlarını yapılandırma
 
@@ -31,10 +31,10 @@ Uygulama ayarları bazen ortam değişkenleri olarak da adlandırılır.
 >
 > Ön uç Web uygulamanızla ortam değişkenlerini kullanma hakkında daha fazla bilgi için, [JavaScript Framework](#javascript-frameworks-and-libraries) veya [statik site Oluşturucu](#static-site-generators)belgelerine bakın.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Azure statik Web Apps uygulaması
-- [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest)
+- [Azure CLI](/cli/azure/install-azure-cli)
 
 ## <a name="types-of-application-settings"></a>Uygulama ayarları türleri
 
@@ -108,7 +108,7 @@ Azure portal, uygulama ayarlarını oluşturmak, güncelleştirmek ve silmek iç
 
 1. Bir **ad** ve **değer** girin.
 
-1. **Tamam** düğmesine tıklayın.
+1. **Tamam**'a tıklayın.
 
 1. **Kaydet**’e tıklayın.
 

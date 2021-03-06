@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/29/2018
 ms.author: robinsh
 ms.custom: devx-track-csharp
-ms.openlocfilehash: dbdc1c079f7ef2a06ece553e9fec542cbc05ea54
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: cae2bcb1a3302814a426fa0cb2dfb36ba1b013fa
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92147654"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102218375"
 ---
 # <a name="iot-hub-query-language-for-device-and-module-twins-jobs-and-message-routing"></a>Cihaz ve modül ikizleri, işler ve mesaj yönlendirmesi için IoT Hub sorgu dili
 
@@ -82,7 +82,7 @@ IoT Hub, [cihaz TWINS](iot-hub-devguide-device-twins.md), [Modül TWINS](iot-hub
 
 ### <a name="device-twin-queries"></a>Cihaz ikizi sorguları
 
-IoT Hub cihaz TWINS 'i **cihazlar**adlı bir belge koleksiyonu olarak kullanıma sunar. Örneğin, aşağıdaki sorgu tüm cihaz TWINS kümesini alır:
+IoT Hub cihaz TWINS 'i **cihazlar** adlı bir belge koleksiyonu olarak kullanıma sunar. Örneğin, aşağıdaki sorgu tüm cihaz TWINS kümesini alır:
 
 ```sql
 SELECT * FROM devices
@@ -160,7 +160,7 @@ SELECT LastActivityTime FROM devices WHERE status = 'enabled'
 
 ### <a name="module-twin-queries"></a>Module ikizi sorguları
 
-Modül TWINS 'de sorgulama, cihaz ikiklikleri, farklı bir koleksiyon/ad alanı kullanılarak sorgulanmasına benzer. cihazlar yerine **cihazlar. modüller** **' de**sorgulama yapabilirsiniz:
+Modül TWINS 'de sorgulama, cihaz ikiklikleri, farklı bir koleksiyon/ad alanı kullanılarak sorgulanmasına benzer. cihazlar yerine **cihazlar. modüller** **' de** sorgulama yapabilirsiniz:
 
 ```sql
 SELECT * FROM devices.modules
@@ -234,13 +234,13 @@ Sorgu nesnesi, sorgu için gereken seri kaldırma seçeneğine bağlı olarak bi
 ### <a name="limitations"></a>Sınırlamalar
 
 > [!IMPORTANT]
-> Sorgu sonuçları, cihaz iksındaki en son değerlere göre birkaç dakikalık gecikmeye neden olabilir. Bağımsız cihaz TWINS 'i KIMLIĞE göre sorgularken [Get ikizi REST API](/java/api/com.microsoft.azure.sdk.iot.device.devicetwin?view=azure-java-stable)kullanın. Bu API her zaman en son değerleri döndürür ve daha yüksek azaltma sınırlarına sahiptir. REST API doğrudan verebilir veya [Azure IoT Hub hizmeti SDK](iot-hub-devguide-sdks.md#azure-iot-hub-service-sdks)'larından birindeki denk işlevselliği kullanabilirsiniz.
+> Sorgu sonuçları, cihaz iksındaki en son değerlere göre birkaç dakikalık gecikmeye neden olabilir. Bağımsız cihaz TWINS 'i KIMLIĞE göre sorgularken [Get ikizi REST API](/java/api/com.microsoft.azure.sdk.iot.device.devicetwin)kullanın. Bu API her zaman en son değerleri döndürür ve daha yüksek azaltma sınırlarına sahiptir. REST API doğrudan verebilir veya [Azure IoT Hub hizmeti SDK](iot-hub-devguide-sdks.md#azure-iot-hub-service-sdks)'larından birindeki denk işlevselliği kullanabilirsiniz.
 
 Şu anda, karşılaştırmalar yalnızca temel türler arasında desteklenir (nesne yok), örneğin `... WHERE properties.desired.config = properties.reported.config` yalnızca bu özelliklerde ilkel değerler varsa desteklenir.
 
 ## <a name="get-started-with-jobs-queries"></a>İşleri sorgular ile çalışmaya başlama
 
-[İşler](iot-hub-devguide-jobs.md) , cihaz kümelerinde işlemleri yürütmek için bir yol sağlar. Her cihaz ikizi, **işler**adlı bir koleksiyonda yer aldığı işlerin bilgilerini içerir.
+[İşler](iot-hub-devguide-jobs.md) , cihaz kümelerinde işlemleri yürütmek için bir yol sağlar. Her cihaz ikizi, **işler** adlı bir koleksiyonda yer aldığı işlerin bilgilerini içerir.
 
 ```json
 {
@@ -316,7 +316,7 @@ SELECT * FROM devices.jobs
 
 ## <a name="basics-of-an-iot-hub-query"></a>IoT Hub sorgusunun temelleri
 
-Her IoT Hub sorgu SELECT ve FROM yan tümcelerinden, isteğe bağlı WHERE ve GROUP BY yan tümceleriyle oluşur. Her sorgu, JSON belgelerinin bir koleksiyonunda çalıştırılır, örneğin cihaz ikikesi. FROM yan tümcesi, (**cihazlar**, **cihazlar. modüller**veya **Devices.Jobs**) üzerinde tekrarlandırılmış belge koleksiyonunu belirtir. Sonra WHERE yan tümcesindeki filtre uygulanır. Toplamalar ile, bu adımın sonuçları GROUP BY yan tümcesinde belirtilen şekilde gruplandırılır. Her grup için, SELECT yan tümcesinde belirtilen şekilde bir satır oluşturulur.
+Her IoT Hub sorgu SELECT ve FROM yan tümcelerinden, isteğe bağlı WHERE ve GROUP BY yan tümceleriyle oluşur. Her sorgu, JSON belgelerinin bir koleksiyonunda çalıştırılır, örneğin cihaz ikikesi. FROM yan tümcesi, (**cihazlar**, **cihazlar. modüller** veya **Devices.Jobs**) üzerinde tekrarlandırılmış belge koleksiyonunu belirtir. Sonra WHERE yan tümcesindeki filtre uygulanır. Toplamalar ile, bu adımın sonuçları GROUP BY yan tümcesinde belirtilen şekilde gruplandırılır. Her grup için, SELECT yan tümcesinde belirtilen şekilde bir satır oluşturulur.
 
 ```sql
 SELECT <select_list>
@@ -403,7 +403,7 @@ Yüksek düzeyde, bir *ifade*:
 * Bir JSON türü örneği (Boolean, sayı, dize, dizi veya nesne gibi) olarak değerlendirilir.
 * , Yerleşik işleçler ve işlevler kullanılarak cihaz JSON belgesinden ve sabitlerinden gelen veriler işlenerek tanımlanır.
 
-*Koşullar* bir Boole değeri değerlendiren ifadelerdir. Boolean **true** değerinden farklı olan herhangi bir sabit **yanlış**olarak değerlendirilir. Bu kural **null**, **tanımsız**, herhangi bir nesne veya dizi örneği, herhangi bir dize **ve Boole değeri**içerir.
+*Koşullar* bir Boole değeri değerlendiren ifadelerdir. Boolean **true** değerinden farklı olan herhangi bir sabit **yanlış** olarak değerlendirilir. Bu kural **null**, **tanımsız**, herhangi bir nesne veya dizi örneği, herhangi bir dize **ve Boole değeri** içerir.
 
 İfadelerin sözdizimi şöyledir:
 
