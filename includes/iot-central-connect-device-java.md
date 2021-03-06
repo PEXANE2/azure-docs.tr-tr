@@ -4,19 +4,19 @@ ms.author: dobett
 ms.service: iot-pnp
 ms.topic: include
 ms.date: 11/24/2020
-ms.openlocfilehash: ad305202daf09258bbd439e824fc07f1eed1c5af
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 75533a49c72f13bb9e1e62c160a63ef0606bee23
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97033886"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102244952"
 ---
 ## <a name="prerequisites"></a>Önkoşullar
 
 Bu makaledeki adımları tamamlayabilmeniz için şunlar gereklidir:
 
 * **Özel uygulama** şablonu kullanılarak oluşturulan bir Azure IoT Central uygulaması. Daha fazla bilgi için bkz. [Uygulama oluşturma hızlı başlangıcı](../articles/iot-central/core/quick-deploy-iot-central.md). Uygulamanın 14 Temmuz 2020 tarihinde veya sonrasında oluşturulmuş olması gerekir.
-* Java SE Development Kit 8 olan bir geliştirme makinesi. [Azure ve Azure Stack Için Java uzun süreli destek](/java/azure/jdk/?preserve-view=true&view=azure-java-stable), **uzun süreli destek** altında **Java 8**' i seçin.
+* Java SE Development Kit 8 olan bir geliştirme makinesi. [Azure ve Azure Stack Için Java uzun süreli destek](/java/azure/jdk/), **uzun süreli destek** altında **Java 8**' i seçin.
 * [Apache Maven 3](https://maven.apache.org/download.cgi).
 * Örnek kodu içeren Java GitHub deposu [için Microsoft Azure ıOT SDK](https://github.com/Azure/azure-iot-sdk-java) 'nın yerel bir kopyası. Deponun bir kopyasını indirmek için bu bağlantıyı kullanın: ZIP 'i [indirin](https://github.com/Azure/azure-iot-sdk-java/archive/master.zip). Sonra dosyayı yerel makinenizde uygun bir konuma ayıklayın.
 

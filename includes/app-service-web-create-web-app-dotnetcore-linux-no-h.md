@@ -1,6 +1,6 @@
 ---
-title: dosya dahil etme
-description: dosya dahil etme
+title: include dosyası
+description: include dosyası
 services: app-service
 author: cephalin
 ms.service: app-service
@@ -8,16 +8,16 @@ ms.topic: include
 ms.date: 04/22/2020
 ms.author: cephalin
 ms.custom: include file
-ms.openlocfilehash: d5fe447e8a1467530cd0eb4c9d2f8a20a4273876
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: efe46c9a4e229c84f38a7643b880e5c498961104
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88080890"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102244638"
 ---
 App Service planında bir [Web uygulaması](../articles/app-service/overview.md#app-service-on-linux) oluşturun `myAppServicePlan` . 
 
-Cloud Shell [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest) komutunu kullanabilirsiniz. Aşağıdaki örnekte `<app-name>` kısmını genel olarak benzersiz bir uygulama adıyla değiştirin (geçerli karakterler `a-z`, `0-9` ve `-` şeklindedir). Çalışma zamanı `DOTNETCORE|3.1` olarak ayarlanmıştır. Desteklenen tüm çalışma zamanlarını görmek için öğesini çalıştırın [`az webapp list-runtimes --linux`](/cli/azure/webapp?view=azure-cli-latest) . 
+Cloud Shell [`az webapp create`](/cli/azure/webapp) komutunu kullanabilirsiniz. Aşağıdaki örnekte `<app-name>` kısmını genel olarak benzersiz bir uygulama adıyla değiştirin (geçerli karakterler `a-z`, `0-9` ve `-` şeklindedir). Çalışma zamanı `DOTNETCORE|3.1` olarak ayarlanmıştır. Desteklenen tüm çalışma zamanlarını görmek için öğesini çalıştırın [`az webapp list-runtimes --linux`](/cli/azure/webapp) . 
 
 ```azurecli-interactive
 # Bash

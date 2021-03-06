@@ -6,12 +6,12 @@ ms.author: timlt
 ms.service: iot-develop
 ms.topic: include
 ms.date: 01/14/2021
-ms.openlocfilehash: ab17b12913630774c4fe6d99a4830080de02e541
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 10bd2c4902157b9e01b1cb0ff10b3ebdf448568c
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101712593"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102244840"
 ---
 Aşağıdaki bölümlerde bir Terminal ayarlarsınız ve bir IoT Hub 'ı oluşturmak için Azure CLı 'yi kullanırsınız. Azure CLı komutlarını çalıştıran bir Terminal yapılandırmak için tarayıcı tabanlı Azure Cloud Shell kullanabilir ya da yerel bir Terminal kullanabilirsiniz.
 * Cloud Shell kullanmak için sonraki bölüme gidin: [Cloud Shell başlatın](#launch-the-cloud-shell). 
@@ -41,7 +41,7 @@ Cloud Shell başlatmak için:
 Cloud Shell yerine yerel bir Terminal kullanmayı seçerseniz, bu bölümü doldurun.  
 
 1. Yerel bir Terminal açın.
-1. [Az Login](/cli/azure/reference-index?preserve-view=true&view=azure-cli-latest#az_login) komutunu çalıştırın:
+1. [Az Login](/cli/azure/reference-index#az_login) komutunu çalıştırın:
 
    ```azurecli
    az login
@@ -65,7 +65,7 @@ Bu bölümde, Azure CLı için Microsoft Azure IoT uzantısını CLı kabuğunuz
 > [!IMPORTANT]
 > Bu hızlı başlangıçtaki geri kalan terminal komutları Cloud Shell veya yerel terminalde aynı şekilde çalışır. Bir komut çalıştırmak için, bu hızlı başlangıçta bir kod bloğunu kopyalamak üzere **Kopyala** ' yı seçin. Daha sonra CLı kabuğunuzun içine yapıştırın ve çalıştırın.
 
-[Az Extension Add](/cli/azure/extension?preserve-view=true&view=azure-cli-latest#az-extension-add) komutunu çalıştırın. 
+[Az Extension Add](/cli/azure/extension#az-extension-add) komutunu çalıştırın. 
 
    ```azurecli
    az extension add --name azure-iot
@@ -77,7 +77,7 @@ Bu bölümde, bir IoT Hub 'ı ve bir kaynak grubu oluşturmak için Azure CLı '
 
 Bir IoT Hub 'ı ve bir kaynak grubu oluşturmak için:
 
-1. Bir kaynak grubu oluşturmak için [az Group Create](/cli/azure/group?preserve-view=true&view=azure-cli-latest#az-group-create) komutunu çalıştırın. Aşağıdaki komut *eastus* konumunda *myresourcegroup* adlı bir kaynak grubu oluşturur. 
+1. Bir kaynak grubu oluşturmak için [az Group Create](/cli/azure/group#az-group-create) komutunu çalıştırın. Aşağıdaki komut *eastus* konumunda *myresourcegroup* adlı bir kaynak grubu oluşturur. 
     >[!NOTE]
     > İsteğe bağlı olarak alternatif bir konum ayarlayabilirsiniz. Kullanılabilir konumları görmek için öğesini çalıştırın `az account list-locations` . Bu öğretici, örnek komutta gösterildiği gibi *eastus* kullanır. 
 
@@ -85,7 +85,7 @@ Bir IoT Hub 'ı ve bir kaynak grubu oluşturmak için:
     az group create --name MyResourceGroup --location eastus
     ```
 
-1. IoT Hub 'ı oluşturmak için [az IoT Hub Create](/cli/azure/iot/hub?preserve-view=true&view=azure-cli-latest#az-iot-hub-create) komutunu çalıştırın. IoT Hub 'ı oluşturmak birkaç dakika sürebilir. 
+1. IoT Hub 'ı oluşturmak için [az IoT Hub Create](/cli/azure/iot/hub#az-iot-hub-create) komutunu çalıştırın. IoT Hub 'ı oluşturmak birkaç dakika sürebilir. 
 
     *Youriothubname*. IoT Hub 'ınız için seçtiğiniz adı kullanarak aşağıdaki komutta yer tutucuyu ve çevreleyen ayraçları değiştirin. IoT Hub 'ı adı Azure 'da genel olarak benzersiz olmalıdır. Yer tutucusunu gördüğünüz her yerde, bu hızlı başlangıçta IoT Hub 'ınızın adını kullanın.
 
@@ -97,7 +97,7 @@ Bir IoT Hub 'ı ve bir kaynak grubu oluşturmak için:
 Bu bölümde, IoT Hub 'ınıza bağlı bir sanal IoT cihazı oluşturursunuz. 
 
 Sanal cihaz oluşturmak için:
-1. CLı kabuğunuzun [az IoT Hub Device-Identity Create](/cli/azure/ext/azure-iot/iot/hub/device-identity?preserve-view=true&view=azure-cli-latest#ext-azure-iot-az-iot-hub-device-identity-create) komutunu çalıştırın. Bu, sanal cihaz kimliğini oluşturur. 
+1. CLı kabuğunuzun [az IoT Hub Device-Identity Create](/cli/azure/ext/azure-iot/iot/hub/device-identity#ext-azure-iot-az-iot-hub-device-identity-create) komutunu çalıştırın. Bu, sanal cihaz kimliğini oluşturur. 
 
     *Youriothubname*. Aşağıdaki yer tutucuyu IoT Hub 'ınız için seçtiğiniz adla değiştirin. 
 
@@ -107,7 +107,7 @@ Sanal cihaz oluşturmak için:
     az iot hub device-identity create --device-id myDevice --hub-name {YourIoTHubName} 
     ```
 
-1.  [Az IoT Hub cihazı-Identity Connection-String Show](/cli/azure/ext/azure-iot/iot/hub/device-identity/connection-string?preserve-view=true&view=azure-cli-latest#ext_azure_iot_az_iot_hub_device_identity_connection_string_show) komutunu çalıştırın. 
+1.  [Az IoT Hub cihazı-Identity Connection-String Show](/cli/azure/ext/azure-iot/iot/hub/device-identity/connection-string#ext_azure_iot_az_iot_hub_device_identity_connection_string_show) komutunu çalıştırın. 
 
     ```azurecli
     az iot hub device-identity connection-string show --device-id myDevice --hub-name {YourIoTHubName}

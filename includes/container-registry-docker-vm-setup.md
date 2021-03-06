@@ -4,12 +4,12 @@ ms.service: container-registry
 ms.topic: include
 ms.date: 05/07/2020
 ms.author: danlep
-ms.openlocfilehash: be170144fddeb1a69592f1714ec745d559665832
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d699e8985a3a23b3aab87601d5298d9c8f7e34e1
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "82982468"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102244895"
 ---
 ## <a name="create-a-docker-enabled-virtual-machine"></a>Docker özellikli bir sanal makine oluşturma
 
@@ -21,7 +21,7 @@ Sanal makineniz ve kapsayıcı kayıt defteriniz için aynı kaynak grubunu kull
 az group create --name $RESOURCE_GROUP --location $REGISTRY_LOCATION
 ```
 
-Şimdi [az VM Create][az-vm-create]ile varsayılan bir Ubuntu Azure sanal makinesini dağıtın. Aşağıdaki örnek, *Mydockervm*ADLı bir VM oluşturur.
+Şimdi [az VM Create][az-vm-create]ile varsayılan bir Ubuntu Azure sanal makinesini dağıtın. Aşağıdaki örnek, *Mydockervm* ADLı bir VM oluşturur.
 
 ```azurecli
 VM_NAME=myDockerVM
@@ -67,7 +67,7 @@ This message shows that your installation appears to be working correctly.
 
 ### <a name="install-the-azure-cli"></a>Azure CLI'yi yükleme
 
-Azure CLI 'yi, Ubuntu sanal makinenize yüklemek için [apt Ile Azure CLI 'Yı kurma](/cli/azure/install-azure-cli-apt?view=azure-cli-latest) bölümündeki adımları izleyin. Örneğin:
+Azure CLI 'yi, Ubuntu sanal makinenize yüklemek için [apt Ile Azure CLI 'Yı kurma](/cli/azure/install-azure-cli-apt) bölümündeki adımları izleyin. Örnek:
 
 ```bash
 curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash

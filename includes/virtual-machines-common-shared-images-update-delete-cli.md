@@ -8,24 +8,24 @@ ms.topic: include
 ms.date: 04/25/2019
 ms.author: cynthn
 ms.custom: include file, devx-track-azurecli
-ms.openlocfilehash: fe37b0c9dbc16520a0dcb0993236db2797da6b68
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 4392e7f146f13e581f722b94f13038ad8abff0ba
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95564052"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102244806"
 ---
 ## <a name="update-resources"></a>Kaynakları güncelleştirme
 
 Nelerin güncelleştirilemeyebilir hakkında bazı sınırlamalar vardır. Aşağıdaki öğeler güncelleştirilemeyebilir: 
 
 Paylaşılan görüntü Galerisi:
-- Description
+- Açıklama
 
 Görüntü tanımı:
 - Önerilen vCPU 'Lar
 - Önerilen bellek
-- Description
+- Açıklama
 - Yaşam tarihi sonu
 
 Görüntü sürümü:
@@ -36,7 +36,7 @@ Görüntü sürümü:
 
 Çoğaltma bölgelerini eklemeyi planlıyorsanız, kaynak yönetilen görüntüyü silmeyin. Kaynak yönetilen görüntü, görüntü sürümünü ek bölgelere çoğaltmak için gereklidir. 
 
-([Az SIG Update](/cli/azure/sig?view=azure-cli-latest#az-sig-update)) kullanarak bir galerinin açıklamasını güncelleştirin. 
+([Az SIG Update](/cli/azure/sig#az-sig-update)) kullanarak bir galerinin açıklamasını güncelleştirin. 
 
 ```azurecli-interactive
 az sig update \
@@ -46,7 +46,7 @@ az sig update \
 ```
 
 
-[Az Sig Image-Definition Update](/cli/azure/sig/image-definition?view=azure-cli-latest#az-sig-image-definition-update)kullanarak bir görüntü tanımının açıklamasını güncelleştirin.
+[Az Sig Image-Definition Update](/cli/azure/sig/image-definition#az-sig-image-definition-update)kullanarak bir görüntü tanımının açıklamasını güncelleştirin.
 
 ```azurecli-interactive
 az sig image-definition update \
@@ -56,7 +56,7 @@ az sig image-definition update \
    --set description="My updated description."
 ```
 
-[Az Sig Image-Version Update](/cli/azure/sig/image-definition?view=azure-cli-latest#az-sig-image-definition-update)kullanılarak çoğaltılacak bir bölge eklemek için görüntü sürümünü güncelleştirin. Görüntü yeni bölgeye çoğaltılmasıyla bu değişiklik biraz zaman alır.
+[Az Sig Image-Version Update](/cli/azure/sig/image-definition#az-sig-image-definition-update)kullanılarak çoğaltılacak bir bölge eklemek için görüntü sürümünü güncelleştirin. Görüntü yeni bölgeye çoğaltılmasıyla bu değişiklik biraz zaman alır.
 
 ```azurecli-interactive
 az sig image-version update \
@@ -67,7 +67,7 @@ az sig image-version update \
    --add publishingProfile.targetRegions  name=eastus
 ```
 
-Bu örnek, bu görüntü sürümünün *en son* görüntü olarak kullanılmasını hariç tutmak için [az SIG Image-Version Update](/cli/azure/sig/image-definition?view=azure-cli-latest#az-sig-image-definition-update) 'in nasıl kullanılacağını gösterir.
+Bu örnek, bu görüntü sürümünün *en son* görüntü olarak kullanılmasını hariç tutmak için [az SIG Image-Version Update](/cli/azure/sig/image-definition#az-sig-image-definition-update) 'in nasıl kullanılacağını gösterir.
 
 ```azurecli-interactive
 az sig image-version update \
@@ -78,7 +78,7 @@ az sig image-version update \
    --set publishingProfile.excludeFromLatest=true
 ```
 
-Bu örnek, *en son* görüntü için göz önünde bulundurulmakta olan bu görüntü sürümünü dahil etmek için [az SIG Image-Version Update](/cli/azure/sig/image-definition?view=azure-cli-latest#az-sig-image-definition-update) 'in nasıl kullanılacağını gösterir.
+Bu örnek, *en son* görüntü için göz önünde bulundurulmakta olan bu görüntü sürümünü dahil etmek için [az SIG Image-Version Update](/cli/azure/sig/image-definition#az-sig-image-definition-update) 'in nasıl kullanılacağını gösterir.
 
 ```azurecli-interactive
 az sig image-version update \
@@ -93,7 +93,7 @@ az sig image-version update \
 
 Önce görüntü sürümünü silerek kaynakları ters sırada silmeniz gerekir. Tüm görüntü sürümlerini sildikten sonra, görüntü tanımını silebilirsiniz. Tüm görüntü tanımlarını sildikten sonra, galeriyi silebilirsiniz. 
 
-[Az Sig Image-Version Delete](/cli/azure/sig/image-version?view=azure-cli-latest#az-sig-image-version-delete)kullanarak bir görüntü sürümünü silin.
+[Az Sig Image-Version Delete](/cli/azure/sig/image-version#az-sig-image-version-delete)kullanarak bir görüntü sürümünü silin.
 
 ```azurecli-interactive
 az sig image-version delete \
@@ -103,7 +103,7 @@ az sig image-version delete \
    --gallery-image-version 1.0.0 
 ```
 
-[Az Sig Image-Definition Delete](/cli/azure/sig/image-definition?view=azure-cli-latest#az-sig-image-definition-delete)kullanarak bir görüntü tanımını silin.
+[Az Sig Image-Definition Delete](/cli/azure/sig/image-definition#az-sig-image-definition-delete)kullanarak bir görüntü tanımını silin.
 
 ```azurecli-interactive
 az sig image-definition delete \
@@ -113,7 +113,7 @@ az sig image-definition delete \
 ```
 
 
-[Az Sig Delete](/cli/azure/sig?view=azure-cli-latest#az-sig-delete)kullanarak bir görüntü Galerisi silin.
+[Az Sig Delete](/cli/azure/sig#az-sig-delete)kullanarak bir görüntü Galerisi silin.
 
 ```azurecli-interactive
 az sig delete \

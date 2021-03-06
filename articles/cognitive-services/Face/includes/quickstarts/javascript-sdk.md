@@ -9,12 +9,12 @@ ms.subservice: face-api
 ms.topic: include
 ms.date: 11/05/2020
 ms.author: v-jawe
-ms.openlocfilehash: 16797a5bdb5ef5f2b5660a33e1788b8824f1ad8f
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: b4a63f76cbcd9e98295f5edcf7ff2d06979e6556
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101722572"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102244681"
 ---
 ## <a name="quickstart-face-client-library-for-javascript"></a>Hızlı başlangıç: JavaScript için yüz istemci kitaplığı
 
@@ -27,7 +27,7 @@ JavaScript için yüz istemci kitaplığını kullanarak şunları yapın:
 * [Kişi grubu oluştur](#create-a-person-group)
 * [Yüz tanıma](#identify-a-face)
 
-[Başvuru belgeleri](/javascript/api/@azure/cognitiveservices-face/?view=azure-node-latest)  |  [Kitaplık kaynak kodu](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/cognitiveservices-face)  |  [Paket (NPM)](https://www.npmjs.com/package/@azure/cognitiveservices-face)  |  [Örnekler](/samples/browse/?products=azure&term=face&languages=javascript)
+[Başvuru belgeleri](/javascript/api/@azure/cognitiveservices-face/)  |  [Kitaplık kaynak kodu](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/cognitiveservices-face)  |  [Paket (NPM)](https://www.npmjs.com/package/@azure/cognitiveservices-face)  |  [Örnekler](/samples/browse/?products=azure&term=face&languages=javascript)
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -92,12 +92,12 @@ Aşağıdaki sınıflar ve arabirimler, yüz .NET istemci kitaplığının bazı
 
 |Ad|Açıklama|
 |---|---|
-|[FaceClient](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-face/faceclient?view=azure-node-latest) | Bu sınıf, yüz hizmetini kullanma yetkinizi temsil eder ve tüm yüz işlevleri için buna ihtiyacınız vardır. Bunu Abonelik bilgileriniz ile birlikte başlatır ve diğer sınıfların örneklerini oluşturmak için kullanırsınız. |
-|[Yüz Tanıma](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-face/face?view=azure-node-latest)|Bu sınıf, insan yüzeyleri ile gerçekleştirebileceğiniz temel algılama ve tanıma görevlerini işler. |
-|[DetectedFace](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-face/detectedface?view=azure-node-latest)|Bu sınıf, görüntüde tek bir yüz tarafından algılanan tüm verileri temsil eder. Yüz hakkında ayrıntılı bilgi almak için bu uygulamayı kullanabilirsiniz.|
-|[Çok yönlü liste](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-face/facelist?view=azure-node-latest)|Bu sınıf, bir assıralanan yüz kümesini depolayan, bulutta depolanan çok **yönlü liste** yapılarını yönetir. |
-|[PersonGroupPerson](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-face/persongroupperson?view=azure-node-latest)| Bu sınıf, tek bir kişiye ait olan bir yüzey kümesini depolayan, bulutta depolanan **kişi** yapılarını yönetir.|
-|[PersonGroup](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-face/persongroup?view=azure-node-latest)| Bu sınıf, bir dizi yönetilen **kişi** nesnesini depolayan, bulut ile depolanmış olan **persongroup** yapılarını yönetir. |
+|[FaceClient](/javascript/api/@azure/cognitiveservices-face/faceclient) | Bu sınıf, yüz hizmetini kullanma yetkinizi temsil eder ve tüm yüz işlevleri için buna ihtiyacınız vardır. Bunu Abonelik bilgileriniz ile birlikte başlatır ve diğer sınıfların örneklerini oluşturmak için kullanırsınız. |
+|[Yüz Tanıma](/javascript/api/@azure/cognitiveservices-face/face)|Bu sınıf, insan yüzeyleri ile gerçekleştirebileceğiniz temel algılama ve tanıma görevlerini işler. |
+|[DetectedFace](/javascript/api/@azure/cognitiveservices-face/detectedface)|Bu sınıf, görüntüde tek bir yüz tarafından algılanan tüm verileri temsil eder. Yüz hakkında ayrıntılı bilgi almak için bu uygulamayı kullanabilirsiniz.|
+|[Çok yönlü liste](/javascript/api/@azure/cognitiveservices-face/facelist)|Bu sınıf, bir assıralanan yüz kümesini depolayan, bulutta depolanan çok **yönlü liste** yapılarını yönetir. |
+|[PersonGroupPerson](/javascript/api/@azure/cognitiveservices-face/persongroupperson)| Bu sınıf, tek bir kişiye ait olan bir yüzey kümesini depolayan, bulutta depolanan **kişi** yapılarını yönetir.|
+|[PersonGroup](/javascript/api/@azure/cognitiveservices-face/persongroup)| Bu sınıf, bir dizi yönetilen **kişi** nesnesini depolayan, bulut ile depolanmış olan **persongroup** yapılarını yönetir. |
 
 ## <a name="code-examples"></a>Kod örnekleri
 
@@ -114,7 +114,7 @@ Aşağıdaki kod parçacıkları, .NET için yüz istemci kitaplığı ile aşa�
 
 ## <a name="authenticate-the-client"></a>İstemcinin kimliğini doğrulama
 
-Uç noktanız ve anahtarınızla bir istemci örneği oluşturun. Anahtarınızla bir **[Apikeycredentials](https://docs.microsoft.com/javascript/api/@azure/ms-rest-js/apikeycredentials?view=azure-node-latest)** nesnesi oluşturun ve bir **[faceclient](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-face/faceclient?view=azure-node-latest)** nesnesi oluşturmak için bunu uç noktanızla birlikte kullanın.
+Uç noktanız ve anahtarınızla bir istemci örneği oluşturun. Anahtarınızla bir **[Apikeycredentials](https://docs.microsoft.com/javascript/api/@azure/ms-rest-js/apikeycredentials)** nesnesi oluşturun ve bir **[faceclient](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-face/faceclient)** nesnesi oluşturmak için bunu uç noktanızla birlikte kullanın.
 
 :::code language="js" source="~/cognitive-services-quickstart-code/javascript/Face/sdk_quickstart.js" id="credentials":::
 
@@ -134,14 +134,14 @@ Aşağıdaki işlevi, PersonGroup 'un eğitiminin tamamlanmasını beklemek içi
 
 ### <a name="get-detected-face-objects"></a>Algılanan yüz nesneleri Al
 
-Yüzeyleri algılamak için yeni bir yöntem oluşturun. `DetectFaceExtract`Yöntemi, VERILEN URL 'nin üç görüntüsünü işler ve program belleğindeki **[algılayıcısı](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-face/detectedface?view=azure-node-latest)** olan nesnelerin bir listesini oluşturur. **[Faceattributetype](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-face/faceattributetype?view=azure-node-latest)** değerlerinin listesi hangi özelliklerin ayıklanacağını belirtir. 
+Yüzeyleri algılamak için yeni bir yöntem oluşturun. `DetectFaceExtract`Yöntemi, VERILEN URL 'nin üç görüntüsünü işler ve program belleğindeki **[algılayıcısı](/javascript/api/@azure/cognitiveservices-face/detectedface)** olan nesnelerin bir listesini oluşturur. **[Faceattributetype](/javascript/api/@azure/cognitiveservices-face/faceattributetype)** değerlerinin listesi hangi özelliklerin ayıklanacağını belirtir. 
 
-`DetectFaceExtract`Yöntemi ardından, algılanan her bir yüzey için öznitelik verilerini ayrıştırır ve yazdırır. Her öznitelik, özgün yüz algılama API çağrısında ( **[Faceattributetype](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-face/faceattributetype?view=azure-node-latest)** listesinde) ayrı olarak belirtilmelidir. Aşağıdaki kod her özniteliği işler, ancak büyük olasılıkla yalnızca bir veya birkaç tane kullanmanız gerekir.
+`DetectFaceExtract`Yöntemi ardından, algılanan her bir yüzey için öznitelik verilerini ayrıştırır ve yazdırır. Her öznitelik, özgün yüz algılama API çağrısında ( **[Faceattributetype](/javascript/api/@azure/cognitiveservices-face/faceattributetype)** listesinde) ayrı olarak belirtilmelidir. Aşağıdaki kod her özniteliği işler, ancak büyük olasılıkla yalnızca bir veya birkaç tane kullanmanız gerekir.
 
 :::code language="js" source="~/cognitive-services-quickstart-code/javascript/Face/sdk_quickstart.js" id="detect":::
 
 > [!TIP]
-> Ayrıca, yerel görüntüdeki yüzeyleri de algılayabilirsiniz. [Detectwithstreamasync](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-face/face?view=azure-node-latest#detectWithStream_msRest_HttpRequestBody__FaceDetectWithStreamOptionalParams__ServiceCallback_DetectedFace____)gibi [yüz](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-face/face?view=azure-node-latest) yöntemlerine bakın.
+> Ayrıca, yerel görüntüdeki yüzeyleri de algılayabilirsiniz. [Detectwithstreamasync](/javascript/api/@azure/cognitiveservices-face/face#detectWithStream_msRest_HttpRequestBody__FaceDetectWithStreamOptionalParams__ServiceCallback_DetectedFace____)gibi [yüz](/javascript/api/@azure/cognitiveservices-face/face) yöntemlerine bakın.
 
 ## <a name="find-similar-faces"></a>Benzer yüzleri bulma
 
@@ -161,11 +161,11 @@ Aşağıdaki yöntem, bir hedef görüntüler kümesindeki yüzeyleri ve tek bir
 
 ## <a name="identify-a-face"></a>Yüz tanıma
 
-[Tanımlama](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-face/face?view=azure-node-latest#identify_string____FaceIdentifyOptionalParams__ServiceCallback_IdentifyResult____) işlemi, bir kişinin (veya birden çok kişinin) bir görüntüsünü alır ve görüntüdeki her bir yüzün kimliğini bulmak için (yüz tanıma arama) arar. Algılanan her yüzü, yüz özellikleri bilinen farklı [kişi](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-face/person?view=azure-node-latest) nesnelerinin bir veritabanı olan bir [persongroup](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-face/persongroup?view=azure-node-latest)ile karşılaştırır. Bu işlemi tanımlamak için önce bir [Persongroup](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-face/persongroup?view=azure-node-latest)oluşturmanız ve eğitmeniz gerekir.
+[Tanımlama](/javascript/api/@azure/cognitiveservices-face/face#identify_string____FaceIdentifyOptionalParams__ServiceCallback_IdentifyResult____) işlemi, bir kişinin (veya birden çok kişinin) bir görüntüsünü alır ve görüntüdeki her bir yüzün kimliğini bulmak için (yüz tanıma arama) arar. Algılanan her yüzü, yüz özellikleri bilinen farklı [kişi](/javascript/api/@azure/cognitiveservices-face/person) nesnelerinin bir veritabanı olan bir [persongroup](/javascript/api/@azure/cognitiveservices-face/persongroup)ile karşılaştırır. Bu işlemi tanımlamak için önce bir [Persongroup](/javascript/api/@azure/cognitiveservices-face/persongroup)oluşturmanız ve eğitmeniz gerekir.
 
 ### <a name="add-faces-to-person-group"></a>Kişi grubuna yüz ekleme
 
-[Persongroup](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-face/persongroup?view=azure-node-latest)'a yüzler eklemek için aşağıdaki işlevi oluşturun.
+[Persongroup](/javascript/api/@azure/cognitiveservices-face/persongroup)'a yüzler eklemek için aşağıdaki işlevi oluşturun.
 
 :::code language="js" source="~/cognitive-services-quickstart-code/javascript/Face/sdk_quickstart.js" id="add_faces":::
 
@@ -178,7 +178,7 @@ Kişi grubunun eğitimi tamamlamasını beklemek için aşağıdaki yardımcı i
 ### <a name="create-a-person-group"></a>Kişi grubu oluştur
 
 Aşağıdaki kod:
-- Bir [Persongroup](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-face/persongroup?view=azure-node-latest) oluşturur
+- Bir [Persongroup](/javascript/api/@azure/cognitiveservices-face/persongroup) oluşturur
 - `AddFacesToPersonGroup`Daha önce tanımladığınız ' ı çağırarak kişi grubuna yüz ekler.
 - Kişi grubunu TRAIN.
 - Kişi grubundaki yüzleri tanımlar.
@@ -188,7 +188,7 @@ Bu **kişi** grubu ve ilişkili **kişi** nesneleri artık doğrulama, tanımla 
 :::code language="js" source="~/cognitive-services-quickstart-code/javascript/Face/sdk_quickstart.js" id="identify":::
 
 > [!TIP]
-> Yerel görüntülerden de bir **Persongroup** oluşturabilirsiniz. [Addfacefromstream](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-face/persongroupperson?view=azure-node-latest#addFaceFromStream_string__string__msRest_HttpRequestBody__Models_PersonGroupPersonAddFaceFromStreamOptionalParams_)gibi [persongroupperson](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-face/persongroupperson?view=azure-node-latest) yöntemlerine bakın.
+> Yerel görüntülerden de bir **Persongroup** oluşturabilirsiniz. [Addfacefromstream](/javascript/api/@azure/cognitiveservices-face/persongroupperson#addFaceFromStream_string__string__msRest_HttpRequestBody__Models_PersonGroupPersonAddFaceFromStreamOptionalParams_)gibi [persongroupperson](/javascript/api/@azure/cognitiveservices-face/persongroupperson) yöntemlerine bakın.
 
 ## <a name="main"></a>Ana
 

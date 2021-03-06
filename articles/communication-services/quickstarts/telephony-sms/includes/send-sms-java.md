@@ -10,12 +10,12 @@ ms.date: 08/20/2020
 ms.topic: include
 ms.custom: include file
 ms.author: chrwhit
-ms.openlocfilehash: cb8e6934125630590a337ed7bf7f4c81b2b73bb3
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.openlocfilehash: 1c4f3c47e3ac6e1e701b673574bb664237c1a9af
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94915142"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102244524"
 ---
 SMS mesajları göndermek için Iletişim Hizmetleri Java SMS istemci Kitaplığı ' nı kullanarak Azure Iletişim Hizmetleri ile çalışmaya başlayın.
 
@@ -28,7 +28,7 @@ Bu hızlı başlangıcı tamamlamak, Azure hesabınızda birkaç ABD Doları vey
 ## <a name="prerequisites"></a>Önkoşullar
 
 - Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-- [Java Development Kit (JDK)](/java/azure/jdk/?preserve-view=true&view=azure-java-stable) sürüm 8 veya üzeri.
+- [Java Development Kit (JDK)](/java/azure/jdk/) sürüm 8 veya üzeri.
 - [Apache Maven](https://maven.apache.org/download.cgi).
 - Etkin bir Iletişim Hizmetleri kaynağı ve bağlantı dizesi. [Iletişim Hizmetleri kaynağı oluşturun](../../create-communication-resource.md).
 - SMS etkin telefon numarası. [Telefon numarası alın](../get-phone-number.md).
@@ -136,7 +136,7 @@ SmsClient client = new SmsClientBuilder()
     .buildClient();
 ```
 
-İstemciyi, arabirimini uygulayan herhangi bir özel HTTP istemcisiyle başlatabilirsiniz `com.azure.core.http.HttpClient` . Yukarıdaki kod, tarafından sunulan [Azure Core Netty http istemcisinin](/java/api/overview/azure/core-http-netty-readme?preserve-view=true&view=azure-java-stable) kullanımını gösterir `azure-core` .
+İstemciyi, arabirimini uygulayan herhangi bir özel HTTP istemcisiyle başlatabilirsiniz `com.azure.core.http.HttpClient` . Yukarıdaki kod, tarafından sunulan [Azure Core Netty http istemcisinin](/java/api/overview/azure/core-http-netty-readme) kullanımını gösterir `azure-core` .
 
 Ayrıca, uç nokta ve erişim anahtarı sağlamak yerine connectionString () işlevini kullanarak tüm bağlantı dizesini de sağlayabilirsiniz. 
 ```java
