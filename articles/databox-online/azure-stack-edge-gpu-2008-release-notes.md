@@ -6,22 +6,24 @@ author: alkohli
 ms.service: databox
 ms.subservice: gateway
 ms.topic: article
-ms.date: 09/07/2020
+ms.date: 03/05/2021
 ms.author: alkohli
-ms.openlocfilehash: 25db4e7f3e4e1f7056979c4c40c6ffc61f340439
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: dd72865e35318c7ff43dc17b7c92b9cc2f3e9790
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96345380"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102436864"
 ---
 # <a name="azure-stack-edge-pro-with-gpu-preview-release-notes"></a>Azure Stack Edge Pro GPU önizlemesi sürüm notları
+
+[!INCLUDE [applies-to-Pro-GPU-sku](../../includes/azure-stack-edge-applies-to-gpu-sku.md)]
 
 Aşağıdaki sürüm notları, GPU ile Azure Stack Edge Pro cihazlarınız için kritik açık sorunları ve 2008 önizleme sürümü için çözülmüş sorunları belirler.
 
 Sürüm notları sürekli olarak güncelleştirilir ve geçici bir çözüm gerektiren kritik sorunlar keşfedildiğinde eklenirler. Azure Stack Edge Pro cihazınızı dağıtmadan önce, sürüm notlarında bulunan bilgileri dikkatle gözden geçirin.
 
-Bu makale aşağıdaki yazılım sürümü **Azure Stack Edge Pro 2008** için geçerlidir. 
+Bu makale aşağıdaki yazılım sürümü **Azure Stack Edge Pro 2008** için geçerlidir.
 
 <!--- **2.1.1328.1904**-->
 
@@ -51,7 +53,7 @@ Aşağıdaki tabloda Azure Stack Edge Pro cihazı için bilinen sorunların bir 
 |**(.**|Kubernetes |31000 numaralı bağlantı noktası Kubernetes panosu için ayrılmıştır. Benzer şekilde, varsayılan yapılandırmada, 172.28.0.1 ve 172.28.0.10 IP adresleri sırasıyla Kubernetes hizmeti ve çekirdek DNS hizmeti için ayrılmıştır.|Ayrılmış IP 'Leri kullanmayın.|
 |**üst.**|Kubernetes |Kubernetes, şu anda çok protokollü yük dengeleyici hizmetlerine izin vermiyor. Örneğin, TCP ve UDP üzerinde dinleme yapmak zorunda olacak bir DNS hizmeti. |Kubernetes 'in bu şekilde, MetalLB ile bu sınırlamaya geçici bir çözüm bulmak için, iki hizmet (TCP için bir adet, UDP için bir adet) aynı Pod seçicisi üzerinde oluşturulabilir. Bu hizmetler aynı IP adresini paylaşmak için aynı paylaşım anahtarını ve spec. Loadbalancerıp 'yi kullanır. Kullanılabilir IP adreslerinden daha fazla hizmete sahipseniz, IP 'Ler de paylaşılabilir. <br> Daha fazla bilgi için bkz. [IP adresi paylaşımı](https://metallb.universe.tf/usage/#ip-address-sharing).|
 |**+.**|Kubernetes kümesi|Mevcut Azure IoT Edge marketi modülleri, Kubernetes kümesinde Azure Stack Edge cihazında IoT Edge barındırma platformu olarak çalışmaz.|Modüllerin Azure Stack Edge cihazında dağıtılmadan önce değiştirilmesi gerekir. Daha fazla bilgi için bkz. Market 'ten Azure Stack Edge cihazında çalışacak Azure IoT Edge modülleri değiştirme.<!-- insert link-->|
-|**hatası.**|Kubernetes |Dosya tabanlı bağlama takar, Azure Stack Edge cihazında Kubernetes üzerinde Azure IoT Edge desteklenmez.|IoT Edge, `ContainerCreate` seçenekleri Kubernetes yapılarına çevirmek için bir çeviri katmanı kullanır. `Binds`Hostpath dizinine haritalar oluşturma veya oluşturma ve böylece dosya tabanlı bağlama bağlama IoT Edge kapsayıcılarındaki yollara bağlanamaz.|
+|**hatası.**|Kubernetes |Dosya tabanlı bağlama takar, Azure Stack Edge cihazında Kubernetes üzerinde Azure IoT Edge desteklenmez.|IoT Edge, `ContainerCreate` seçenekleri Kubernetes yapılarına çevirmek için bir çeviri katmanı kullanır. `Binds`Dizine haritalar oluşturma `hostpath` veya oluşturma ve böylece dosya tabanlı bağlama bağlama IoT Edge kapsayıcılarındaki yollara bağlanamaz.|
 |**May.**|Kubernetes |IoT Edge için kendi sertifikalarınızı getirip Azure Stack Edge cihazınıza eklemek istiyorsanız, Helu grafik güncelleştirmesinin bir parçası olarak yeni sertifikalar alınmaz.|Bu soruna geçici bir çözüm olarak, [cihazın PowerShell arabirimine bağlanın](azure-stack-edge-gpu-connect-powershell-interface.md). Yeniden başlatma `iotedged` ve `edgehub` pods.|
 |**aşamaz.**|Sertifikalar |Belirli örneklerde, yerel kullanıcı arabirimindeki sertifika durumunun güncelleştirilmesi birkaç saniye sürebilir. |Yerel Kullanıcı arabirimindeki aşağıdaki senaryolar etkilenebilir.<ul><li>**Sertifikalar** sayfasındaki **durum** sütunu.</li><li>**Başlarken** sayfasında **güvenlik** kutucuğu.</li><li>**Genel bakış** sayfasında **yapılandırma** kutucuğu.</li></ul>  |
 

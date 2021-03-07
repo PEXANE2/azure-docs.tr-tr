@@ -4,134 +4,122 @@ description: Bölümler kullanılarak Azure Event Hubs maksimum kullanılabilirl
 ms.topic: article
 ms.date: 01/25/2021
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 2fdb62e953230a38a26d22e136789fea52c8ee8c
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 325cc80daba2a44dedbd5e09ac4858ae2815c1cd
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98882204"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102425932"
 ---
 # <a name="availability-and-consistency-in-event-hubs"></a>Event Hubs’da kullanılabilirlik ve tutarlılık
 Bu makalede, Azure Event Hubs tarafından desteklenen kullanılabilirlik ve tutarlılık hakkında bilgi sağlanır. 
 
 ## <a name="availability"></a>Kullanılabilirlik
-Azure Event Hubs, bir veri merkezinde birden çok hata etki alanına yayılan kümeler genelinde tek tek makinelerin veya hatta tamamen oluşan tüm hatalardan oluşan ciddi arızaların riskini yayar. Hizmetin, garanti edilen hizmet düzeylerinde çalışmaya devam edebilmesi ve genellikle bu tür bir hata oluştuğunda dikkat çekici kesintiler olmadan, saydam hata algılama ve yük devretme mekanizmaları uygular. [Kullanılabilirlik alanları](../availability-zones/az-overview.md)için etkin seçeneğiyle bir Event Hubs ad alanı oluşturulduysa, kesinti riski üç fiziksel olarak ayrılmış tesislere göre daha fazla yayılır ve hizmette tüm tesis için eksiksiz ve çok zararlı kayıplarla anında kapasiteye yetecek kapasite ayırmalar vardır. Daha fazla bilgi için bkz. [Azure Event Hubs-coğrafi olağanüstü durum kurtarma](event-hubs-geo-dr.md).
+Azure Event Hubs, bir veri merkezinde birden çok hata etki alanına yayılan kümeler genelinde tek tek makinelerin veya hatta tamamen oluşan tüm hatalardan oluşan ciddi arızaların riskini yayar. Hizmetin, garanti edilen hizmet düzeylerinde çalışmaya devam edebilmesi ve genellikle bu tür bir hata oluştuğunda dikkat çekici kesintiler olmadan, saydam hata algılama ve yük devretme mekanizmaları uygular. 
 
-Bir istemci uygulaması olayları bir olay hub 'ına gönderdiğinde, olaylar Olay Hub 'ınızdaki bölümler arasında otomatik olarak dağıtılır. Bir bölüm bir nedenle kullanılamıyorsa, olaylar kalan bölümler arasında dağıtılır. Bu davranış, en fazla çalışma süresi sağlar. En uzun süre gerektiren kullanım örnekleri için, bu model belirli bir bölüme olay göndermek yerine tercih edilir. Daha fazla bilgi için bkz. [bölümler](event-hubs-scalability.md#partitions).
+[Kullanılabilirlik alanları](../availability-zones/az-overview.md) etkin olan bir Event Hubs ad alanı oluşturulduysa, kesinti riski üç fiziksel olarak ayrılmış tesislere göre daha fazla yayılır ve hizmette, tüm tesis için eksiksiz ve çok zararlı bir kayıpla hemen başa çıkabilecek kapasite ayırmalar vardır. Daha fazla bilgi için bkz. [Azure Event Hubs-coğrafi olağanüstü durum kurtarma](event-hubs-geo-dr.md).
+
+Bir istemci uygulaması, bir bölümü belirtmeden olayları bir olay hub 'ına gönderdiğinde, olaylar Olay Hub 'ınızdaki bölümler arasında otomatik olarak dağıtılır. Bir bölüm bir nedenle kullanılamıyorsa, olaylar kalan bölümler arasında dağıtılır. Bu davranış, en fazla çalışma süresi sağlar. En uzun süre gerektiren kullanım örnekleri için, bu model belirli bir bölüme olay göndermek yerine tercih edilir. 
+
+### <a name="availability-considerations-when-using-a-partition-id-or-key"></a>Bölüm KIMLIĞI veya anahtarı kullanırken kullanılabilirlik konuları
+Bölüm KIMLIĞI veya bölüm anahtarı kullanmak isteğe bağlıdır. Bir tane kullanıp kullanmayacağınızı dikkatle düşünün. Bir olayı yayımlarken bir bölüm KIMLIĞI/anahtar belirtmezseniz Event Hubs, yükü bölümler arasında dengeler. Bölüm KIMLIĞI/anahtarı kullandığınızda, bu bölümler tek bir düğümde kullanılabilirlik gerektirir ve zaman içinde kesintiler meydana gelebilir. Örneğin, işlem düğümlerinin yeniden başlatılması veya düzeltme eki uygulanması gerekebilir. Bu nedenle, bir bölüm KIMLIĞI/anahtarı ayarlarsanız ve bu bölüm bazı nedenlerle kullanılamaz hale gelirse, bu bölümdeki verilere erişme girişimi başarısız olur. Yüksek kullanılabilirlik en önemse, bölüm KIMLIĞI/anahtar belirtmeyin. Bu durumda, olaylar iç yük dengeleme algoritması kullanılarak bölümlere gönderilir. Bu senaryoda, kullanılabilirlik (bölüm KIMLIĞI/anahtar yok) ve tutarlılık (olayları belirli bir bölüme sabitleme) arasında açık bir seçim yapabilirsiniz. Bölüm KIMLIĞI/anahtar kullanımı, bir olay hub 'ının bölüm düzeyinde kullanılabilirliğini daha eski bir şekilde açar. 
+
+### <a name="availability-considerations-when-handling-delays-in-processing-events"></a>Olayları işlemede gecikme yaparken kullanılabilirlik konuları
+Diğer bir deyişle, olayları işlerken bir tüketici uygulaması ile ilgili gecikmelerden bahsede olursunuz. Bazı durumlarda, daha fazla aşağı akış işleme gecikmesine neden olabilecek şekilde, tüketici uygulamasının verileri bırakması ve işleme devam etmek yerine yeniden denemesi daha iyi olabilir. Örneğin, bir stok şeridi sayesinde, güncel verilerin tamamlanmasını beklemek daha iyidir, ancak canlı sohbet veya VOıP senaryosunda, tamamlanmamış olsa bile verilere hızlıca sahip olmanız önerilir.
+
+Bu kullanılabilirlik konuları verildiğinde, tüketici uygulaması aşağıdaki hata işleme stratejilerinden birini seçebilir:
+
+- Durdur (sorunlar düzeltilinceye kadar olay hub 'ından okumayı Durdur)
+- Bırak (iletiler önemli değildir, bunları bırakın)
+- Yeniden dene (iletileri uygun gördüğünüz şekilde yeniden deneyin)
+
 
 ## <a name="consistency"></a>Tutarlılık
 Bazı senaryolarda, olayların sıralaması önemli olabilir. Örneğin, arka uç sisteminizin silme komutundan önce bir update komutunu işlemesini isteyebilirsiniz. Bu senaryoda, bir istemci uygulaması sıralama korunabilmesi için olayları belirli bir bölüme gönderir. Bir tüketici uygulaması bölümden bu olayları tükettiği zaman sırayla okunabilir. 
 
 Bu yapılandırmayla, gönderdiğiniz belirli bir bölüm kullanılamaz durumdaysa, bir hata yanıtı alacağını aklınızda bulundurun. Karşılaştırma noktası olarak, tek bir bölüme yönelik benzeşim yoksa Event Hubs hizmeti, olaylarınızı bir sonraki kullanılabilir bölüme gönderir.
 
-Sıralamayı güvence altına almak için olası bir çözüm, aynı zamanda süreyi de en üst düzeye çıkararak olay işleme uygulamanızın bir parçası olarak olayları toplar. Bunu yapmanın en kolay yolu, olaylarınızı özel bir sıra numarası özelliğiyle damgakullanmaktır.
-
-Bu senaryoda, üretici istemcisi Olay Hub 'ınızdaki kullanılabilir bölümlerden birine olaylar gönderir ve karşılık gelen sıra numarasını uygulamanızdan ayarlar. Bu çözüm, durumun işlem uygulamanız tarafından tutulmasını gerektirir, ancak göndermenize daha büyük olabilecek bir uç nokta verir.
 
 ## <a name="appendix"></a>Ek
 
-### <a name="net-examples"></a>.NET örnekleri
+### <a name="send-events-to-a-specific-partition"></a>Olayları belirli bir bölüme gönder
+Bu bölümde, C#, Java, Python ve JavaScript kullanarak belirli bir bölüme nasıl olay göndereceğiniz gösterilmektedir. 
 
-#### <a name="send-events-to-a-specific-partition"></a>Olayları belirli bir bölüme gönder
-Olayları yalnızca belirli bir bölüme göndermek için bir olayda bölüm anahtarını ayarlayın veya bir `PartitionSender` nesne (eski Microsoft. Azure. Messaging kitaplığını kullanıyorsanız) kullanın. Bunun yapılması, bu olaylar bölümden okunduklarında, bunların sırayla okunmasını sağlar. 
+### <a name="net"></a>[.NET](#tab/dotnet)
+Bir olay hub 'ına bir olay toplu işinin nasıl gönderileceğini gösteren tam örnek kod için (bölüm KIMLIĞINI/anahtarını ayarlamadan) bkz. [azure Event Hubs (Azure. Messaging. EventHubs) ile olayları gönderme ve alma](event-hubs-dotnet-standard-getstarted-send.md).
 
-Daha yeni **Azure. Messaging. EventHubs** kitaplığını kullanıyorsanız, [bir bölüme olay yayımlamak Için bkz. partitionsender 'dan kodu EventHubProducerClient 'a geçirme](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/eventhub/Azure.Messaging.EventHubs/MigrationGuide.md#migrating-code-from-partitionsender-to-eventhubproducerclient-for-publishing-events-to-a-partition).
-
-#### <a name="azuremessagingeventhubs-500-or-later"></a>[Azure. Messaging. EventHubs (5.0.0 veya üzeri)](#tab/latest)
+Olayları belirli bir bölüme göndermek için, [](/dotnet/api/azure.messaging.eventhubs.producer.eventhubproducerclient.createbatchasync#Azure_Messaging_EventHubs_Producer_EventHubProducerClient_CreateBatchAsync_Azure_Messaging_EventHubs_Producer_CreateBatchOptions_System_Threading_CancellationToken_) `PartitionId` `PartitionKey` [createbatchoptions](//dotnet/api/azure.messaging.eventhubs.producer.createbatchoptions)içinde veya ' i belirterek EventHubProducerClient. createbatchasync metodunu kullanarak Batch oluşturun. Aşağıdaki kod, bir bölüm anahtarı belirterek belirli bir bölüme olay toplu işi gönderir. 
 
 ```csharp
-var connectionString = "<< CONNECTION STRING FOR THE EVENT HUBS NAMESPACE >>";
-var eventHubName = "<< NAME OF THE EVENT HUB >>";
-
-await using (var producerClient = new EventHubProducerClient(connectionString, eventHubName))
-{
-    var batchOptions = new CreateBatchOptions() { PartitionId = "my-partition-id" };
-    using EventDataBatch eventBatch = await producerClient.CreateBatchAsync(batchOptions);
-    eventBatch.TryAdd(new EventData(Encoding.UTF8.GetBytes("First")));
-    eventBatch.TryAdd(new EventData(Encoding.UTF8.GetBytes("Second")));
-    
-    await producerClient.SendAsync(eventBatch);
-}
+var batchOptions = new CreateBatchOptions { PartitionKey = "cities" };
+using var eventBatch = await producer.CreateBatchAsync(batchOptions);
 ```
 
-#### <a name="microsoftazureeventhubs-410-or-earlier"></a>[Microsoft. Azure. EventHubs (4.1.0 veya önceki sürümler)](#tab/old)
+Ayrıca, [SendEventOptions](/dotnet/api/azure.messaging.eventhubs.producer.sendeventoptions)içinde **PartitionID** veya **Partitionkey** belirterek [EventHubProducerClient. sendadsync](/dotnet/api/azure.messaging.eventhubs.producer.eventhubproducerclient.sendasync#Azure_Messaging_EventHubs_Producer_EventHubProducerClient_SendAsync_System_Collections_Generic_IEnumerable_Azure_Messaging_EventHubs_EventData__Azure_Messaging_EventHubs_Producer_SendEventOptions_System_Threading_CancellationToken_) yöntemini de kullanabilirsiniz.
 
 ```csharp
-var connectionString = "<< CONNECTION STRING FOR THE EVENT HUBS NAMESPACE >>";
-var eventHubName = "<< NAME OF THE EVENT HUB >>";
+var sendEventOptions  = new SendEventOptions { PartitionKey = "cities" };
+// create the events array
+producer.SendAsync(events, sendOptions)
+```
 
-var connectionStringBuilder = new EventHubsConnectionStringBuilder(connectionString){ EntityPath = eventHubName }; 
-var eventHubClient = EventHubClient.CreateFromConnectionString(connectionStringBuilder.ToString());
-PartitionSender partitionSender = eventHubClient.CreatePartitionSender("my-partition-id");
-try
-{
-    EventDataBatch eventBatch = partitionSender.CreateBatch();
-    eventBatch.TryAdd(new EventData(Encoding.UTF8.GetBytes("First")));
-    eventBatch.TryAdd(new EventData(Encoding.UTF8.GetBytes("Second")));
+### <a name="java"></a>[Java](#tab/java)
+Bir olay hub 'ına bir olay toplu işinin nasıl gönderileceğini gösteren tam örnek kod için (bölüm KIMLIĞI/anahtar ayarlamadan), bkz. [azure Event Hubs (Azure-Messaging-eventhubs) olayları göndermek veya almak Için Java kullanma](event-hubs-java-get-started-send.md).
 
-    await partitionSender.SendAsync(eventBatch);
-}
-finally
-{
-    await partitionSender.CloseAsync();
-    await eventHubClient.CloseAsync();
-}
+Olayları belirli bir bölüme göndermek için [Createbatchoptions](/java/api/com.azure.messaging.eventhubs.models.createbatchoptions)IÇINDE **bölüm kimliğini** veya **bölüm anahtarını** belirterek [CreateBatch](/java/api/com.azure.messaging.eventhubs.eventhubproducerclient.createbatch) yöntemini kullanarak Batch oluşturun. Aşağıdaki kod, bir bölüm anahtarı belirterek belirli bir bölüme olay toplu işi gönderir. 
+
+```java
+CreateBatchOptions batchOptions = new CreateBatchOptions();
+batchOptions.setPartitionKey("cities");
+```
+
+Ayrıca, [Sendoleyde](/java/api/com.azure.messaging.eventhubs.models.sendoptions) **bölüm kimliği** veya **bölüm anahtarı** belirterek [EventHubProducerClient. Send](/java/api/com.azure.messaging.eventhubs.eventhubproducerclient.send#com_azure_messaging_eventhubs_EventHubProducerClient_send_java_lang_Iterable_com_azure_messaging_eventhubs_EventData__com_azure_messaging_eventhubs_models_SendOptions_) yöntemini kullanabilirsiniz.
+
+```java
+List<EventData> events = Arrays.asList(new EventData("Melbourne"), new EventData("London"), new EventData("New York"));
+SendOptions sendOptions = new SendOptions();
+sendOptions.setPartitionKey("cities");
+producer.send(events, sendOptions);
+```
+
+### <a name="python"></a>[Python](#tab/python) 
+Bir olay hub 'ına bir olay toplu işinin nasıl gönderileceğini gösteren tam örnek kod için (bölüm KIMLIĞINI/anahtarını ayarlamadan) bkz. [Python (Azure-eventhub) kullanarak Olay Hub 'larından olayları gönderme veya olayları alma](event-hubs-python-get-started-send.md).
+
+Olayları belirli bir bölüme göndermek için yöntemini kullanarak bir Batch oluştururken, [`EventHubProducerClient.create_batch`](/python/api/azure-eventhub/azure.eventhub.eventhubproducerclient#create-batch---kwargs-) veya öğesini belirtin `partition_id` `partition_key` . Ardından, [`EventHubProducerClient.send_batch`](/python/api/azure-eventhub/azure.eventhub.aio.eventhubproducerclient#send-batch-event-data-batch--typing-union-azure-eventhub--common-eventdatabatch--typing-list-azure-eventhub-) toplu işi Olay Hub 'ının bölümüne göndermek için yöntemini kullanın. 
+
+```python
+event_data_batch = await producer.create_batch(partition_key='cities')
+```
+
+Veya parametreleri için değerler belirterek [EventHubProducerClient.send_batch](/python/api/azure-eventhub/azure.eventhub.eventhubproducerclient#send-batch-event-data-batch----kwargs-) yöntemini de kullanabilirsiniz `partition_id` `partition_key` .
+
+```python
+producer.send_batch(event_data_batch, partition_key="cities")
+```
+
+
+### <a name="javascript"></a>[JavaScript](#tab/javascript)
+Bir olay hub 'ına bir olay toplu işinin nasıl gönderileceğini gösteren tam örnek kod için (bölüm KIMLIĞINI/anahtarını ayarlamadan) bkz. [JavaScript (Azure/Event-hub) kullanarak Olay Hub 'larından olayları gönderme veya alma](event-hubs-node-get-started-send.md).
+
+Olayları belirli bir bölüme göndermek için, veya belirterek [EventHubProducerClient. CreateBatchOptions](/javascript/api/@azure/event-hubs/eventhubproducerclient#createBatch_CreateBatchOptions_) nesnesini kullanarak [bir Batch oluşturun](/javascript/api/@azure/event-hubs/eventhubproducerclient#createBatch_CreateBatchOptions_) `partitionId` `partitionKey` . Ardından, [EventHubProducerClient. sendbatch](/javascript/api/@azure/event-hubs/eventhubproducerclient#sendBatch_EventDataBatch__OperationOptions_) yöntemini kullanarak toplu işi Olay Hub 'ına gönderin. 
+
+Aşağıdaki örneğe bakın.
+
+```javascript
+const batchOptions = { partitionKey = "cities"; };
+const batch = await producer.createBatch(batchOptions);
+```
+
+Ayrıca, [Sendbatchoptions](/javascript/api/@azure/event-hubs/sendbatchoptions)IÇINDE **bölüm kimliğini** veya **bölüm anahtarını** belirterek [EventHubProducerClient. sendbatch](/javascript/api/@azure/event-hubs/eventhubproducerclient#sendBatch_EventData____SendBatchOptions_) yöntemini de kullanabilirsiniz.
+
+```javascript
+const sendBatchOptions = { partitionKey = "cities"; };
+// prepare events
+producer.sendBatch(events, sendBatchOptions);
 ```
 
 ---
 
-### <a name="set-a-sequence-number"></a>Sıra numarası ayarla
-Aşağıdaki örnek, olaylarınızı özel bir sıra numarası özelliği ile damgalar. 
-
-#### <a name="azuremessagingeventhubs-500-or-later"></a>[Azure. Messaging. EventHubs (5.0.0 veya üzeri)](#tab/latest)
-
-```csharp
-// create a producer client that you can use to send events to an event hub
-await using (var producerClient = new EventHubProducerClient(connectionString, eventHubName))
-{
-    // get the latest sequence number from your application
-    var sequenceNumber = GetNextSequenceNumber();
-
-    // create a batch of events 
-    using EventDataBatch eventBatch = await producerClient.CreateBatchAsync();
-
-    // create a new EventData object by encoding a string as a byte array
-    var data = new EventData(Encoding.UTF8.GetBytes("This is my message..."));
-
-    // set a custom sequence number property
-    data.Properties.Add("SequenceNumber", sequenceNumber);
-
-    // add events to the batch. An event is a represented by a collection of bytes and metadata. 
-    eventBatch.TryAdd(data);
-
-    // use the producer client to send the batch of events to the event hub
-    await producerClient.SendAsync(eventBatch);
-}
-```
-
-#### <a name="microsoftazureeventhubs-410-or-earlier"></a>[Microsoft. Azure. EventHubs (4.1.0 veya önceki sürümler)](#tab/old)
-```csharp
-// Create an Event Hubs client
-var client = new EventHubClient(connectionString, eventHubName);
-
-//Create a producer to produce events
-EventHubProducer producer = client.CreateProducer();
-
-// Get the latest sequence number from your application 
-var sequenceNumber = GetNextSequenceNumber();
-
-// Create a new EventData object by encoding a string as a byte array
-var data = new EventData(Encoding.UTF8.GetBytes("This is my message..."));
-
-// Set a custom sequence number property
-data.Properties.Add("SequenceNumber", sequenceNumber);
-
-// Send single message async
-await producer.SendAsync(data);
-```
----
-
-Bu örnek, olaylarınızı Olay Hub 'ınızdaki kullanılabilir bölümlerden birine gönderir ve karşılık gelen sıra numarasını uygulamanızdan ayarlar. Bu çözüm, durumun işlem uygulamanız tarafından tutulmasını gerektirir, ancak göndermenize daha büyük olabilecek bir uç nokta verir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Aşağıdaki bağlantıları inceleyerek Event Hubs hakkında daha fazla bilgi edinebilirsiniz:

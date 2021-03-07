@@ -6,18 +6,18 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 01/25/2021
+ms.date: 02/22/2021
 ms.author: alkohli
-ms.openlocfilehash: 0985779aeb14fd4f3d6a12cf152e4c63c909d613
-ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
+ms.openlocfilehash: ee0587063c0fac67068869c58471ada58354fab7
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98806674"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102437681"
 ---
 # <a name="create-custom-vm-images-for-your-azure-stack-edge-pro-device"></a>Azure Stack Edge Pro cihazınız için özel VM görüntüleri oluşturma
 
-<!--[!INCLUDE [applies-to-skus](../../includes/azure-stack-edge-applies-to-all-sku.md)]-->
+[!INCLUDE [applies-to-GPU-and-pro-r-and-mini-r-skus](../../includes/azure-stack-edge-applies-to-gpu-pro-r-mini-r-sku.md)]
 
 Azure Stack Edge Pro cihazınızda VM 'Leri dağıtmak için, VM 'Leri oluşturmak için kullanabileceğiniz özel VM görüntüleri oluşturmanız gerekir. Bu makalede, Azure Stack Edge Pro cihazınızda VM 'Leri dağıtmak için kullanabileceğiniz Linux veya Windows VM özel görüntülerini oluşturmak için gereken adımlar açıklanmaktadır.
 
@@ -71,7 +71,7 @@ Bir Linux VM görüntüsü oluşturmak için aşağıdaki adımları uygulayın.
 
 Şimdi Azure Stack Edge Pro cihazınızda bir VM oluşturup dağıtmak için bu VHD 'yi kullanın. Linux özel görüntülerini oluşturmak için aşağıdaki iki Azure Marketi görüntüsünü kullanabilirsiniz:
 
-|Öğe adı  |Description  |Publisher  |
+|Öğe adı  |Açıklama  |Publisher  |
 |---------|---------|---------|
 |[Ubuntu Server](https://azuremarketplace.microsoft.com/marketplace/apps/canonical.ubuntuserver) |Ubuntu Server, bulut ortamları için dünyanın en popüler Linux ' tur.|Canonical|
 |[Desek8 "Jese"](https://azuremarketplace.microsoft.com/marketplace/apps/credativ.debian) |GNU/Linux, en popüler Linux dağıtımlarından biridir.     |credativ|

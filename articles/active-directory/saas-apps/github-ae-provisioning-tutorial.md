@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/29/2020
 ms.author: Zhchia
-ms.openlocfilehash: c3384effc961c6c588bc2d7f4f75bc386d63076b
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 0a9615e6bcb350732ccd7b2cf27dad3b46a7e4b3
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101651595"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102427020"
 ---
 # <a name="tutorial-configure-github-ae-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlaması için GitHub AE 'yi yapılandırma
 
@@ -32,6 +32,7 @@ Bu öğretici, otomatik Kullanıcı sağlamayı yapılandırmak için GitHub AE 
 > * GitHub AE 'de Kullanıcı oluşturma
 > * GitHub AE 'deki kullanıcıları artık erişim gerektirdiklerinde kaldırın
 > * Kullanıcı özniteliklerinin Azure AD ile GitHub AE arasında eşitlenmiş olmasını sağlama
+> * GitHub AE 'de grupları ve grup üyeliklerini sağlama
 > * [GITHUB AE](./github-ae-tutorial.md) 'de çoklu oturum açma (önerilir)
 
 ## <a name="prerequisites"></a>Önkoşullar
@@ -59,7 +60,7 @@ GitHub AE 'ye sağlamayı yönetmeye başlamak için Azure AD uygulama galerisin
 
 Azure AD sağlama hizmeti, uygulamaya atamaya ve Kullanıcı ve/veya grubun özniteliklerine dayalı olarak sağlanacak olan kapsamınızı sağlar. Atamaya göre uygulamanıza sağlanacak kapsamı tercih ederseniz, uygulamayı kullanıcılara ve/veya gruplara atamak için aşağıdaki [adımları](../manage-apps/assign-user-or-group-access-portal.md) kullanabilirsiniz. Yalnızca kullanıcının ve/veya grubun özniteliklerine göre sağlanacak olan kapsamı tercih ederseniz, [burada](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)açıklandığı gibi bir kapsam filtresi kullanabilirsiniz. 
 
-* GitHub AE 'ye Kullanıcı atarken **varsayılan erişim** dışında bir rol seçmelisiniz. Varsayılan Erişim rolüne sahip kullanıcılar hazırlama kapsamından hariç tutulur ve hazırlama günlüklerinde yeterli yetkiye sahip olmadıkları belirtilir. Uygulama için kullanılabilen tek rol varsayılan erişim rolüyse [uygulama bildirimini güncelleştirerek](../develop/howto-add-app-roles-in-azure-ad-apps.md) daha fazla rol ekleyebilirsiniz. 
+* GitHub AE 'ye Kullanıcı ve grup atarken **varsayılan erişim** dışında bir rol seçmelisiniz. Varsayılan Erişim rolüne sahip kullanıcılar hazırlama kapsamından hariç tutulur ve hazırlama günlüklerinde yeterli yetkiye sahip olmadıkları belirtilir. Uygulama için kullanılabilen tek rol varsayılan erişim rolüyse [uygulama bildirimini güncelleştirerek](../develop/howto-add-app-roles-in-azure-ad-apps.md) daha fazla rol ekleyebilirsiniz. 
 
 * Başlangıçta kapsamı sınırlı tutun. Herkese alınmadan önce küçük bir Kullanıcı ve/veya grup kümesiyle test edin. Sağlama kapsamı atanan kullanıcılara ve/veya gruplara ayarlandığında, uygulamaya bir veya iki Kullanıcı ve/veya grup atayarak bunu kontrol edebilirsiniz. Kapsam tüm kullanıcılar ve gruplar olarak ayarlandığında [öznitelik tabanlı kapsam filtresi](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md) belirtebilirsiniz. 
 

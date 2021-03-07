@@ -1,18 +1,18 @@
 ---
 title: Azure sanal ağ için Azure Ilke mevzuat uyumluluk denetimleri
 description: Azure sanal ağ için kullanılabilen Azure Ilke mevzuat uyumluluk denetimlerini listeler. Bu yerleşik ilke tanımları, Azure kaynaklarınızın uyumluluğunu yönetmek için yaygın yaklaşımlar sağlar.
-ms.date: 02/09/2021
+ms.date: 03/05/2021
 ms.topic: sample
 author: KumudD
 ms.author: kumud
 ms.service: virtual-network
 ms.custom: subject-policy-compliancecontrols
-ms.openlocfilehash: a7a10c9831bf31ea3ca3e7e256737ce3f5a669d2
-ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
+ms.openlocfilehash: 2d0bae54e54998b290ac85162aafdbc7709e3434
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100091300"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102436948"
 ---
 # <a name="azure-policy-regulatory-compliance-controls-for-azure-virtual-network"></a>Azure sanal ağ için Azure Ilke mevzuat uyumluluk denetimleri
 

@@ -5,18 +5,22 @@ author: davidmrdavid
 ms.topic: conceptual
 ms.date: 12/02/2020
 ms.author: azfuncdf
-ms.openlocfilehash: 9083821fa03c09949daaf3166367489248a4d7d2
-ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
+ms.openlocfilehash: 62b3c9bb1c6fd53d9f11227a9d7e774d56859d04
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98029220"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102434772"
 ---
 # <a name="monitor-scenario-in-durable-functions---github-issue-monitoring-sample"></a>Dayanıklı İşlevler-GitHub sorun izleme örneğinde izleme senaryosu
 
 İzleyici stili, bir iş akışında esnek bir yinelenen işleme anlamına gelir. Örneğin, belirli koşullar karşılanana kadar yoklama yapar. Bu makalede, izlemeyi uygulamak için Dayanıklı İşlevler kullanan bir örnek açıklanmaktadır.
 
-[! Dayanıklı-Functions-Önkoşullar] DAHIL
+## <a name="prerequisites"></a>Önkoşullar
+
+* [Hızlı başlangıç makalesini doldurun](quickstart-python-vscode.md)
+* [Örnek projeyi GitHub 'dan kopyalayın veya indirin](https://github.com/Azure/azure-functions-durable-python/tree/main/samples/)
+
 
 ## <a name="scenario-overview"></a>Senaryoya genel bakış
 
@@ -45,7 +49,6 @@ Bu makalede örnek uygulamada aşağıdaki işlevler açıklanmaktadır:
 
 ### <a name="e3_monitor-orchestrator-function"></a>E3_Monitor Orchestrator işlevi
 
-# <a name="python"></a>[Python](#tab/python)
 
 **E3_Monitor** işlevi, Orchestrator işlevleri için *üzerinde standartfunction.js* kullanır.
 
@@ -55,7 +58,6 @@ Bu makalede örnek uygulamada aşağıdaki işlevler açıklanmaktadır:
 
 [!code-python[Main](~/samples-durable-functions-python/samples/monitor/E3_Monitor/\_\_init\_\_.py)]
 
----
 
 Bu Orchestrator işlevi aşağıdaki eylemleri gerçekleştirir:
 
@@ -73,7 +75,6 @@ Orchestrator işlevini birden çok kez çağırarak, birden fazla Orchestrator �
 
 Diğer örneklerde olduğu gibi, yardımcı etkinlik işlevleri de tetikleyici bağlamayı kullanan normal işlevlerdir `activityTrigger` . **E3_TooManyOpenIssues** işlevi, depoda Şu anda açık olan sorunların bir listesini alır ve "çok fazla" olup olmadığını belirler: örneğimize göre 3 ' ten fazla.
 
-# <a name="python"></a>[Python](#tab/python)
 
 *function.js* , aşağıdaki gibi tanımlanır:
 
@@ -83,13 +84,11 @@ Diğer örneklerde olduğu gibi, yardımcı etkinlik işlevleri de tetikleyici b
 
 [!code-python[Main](~/samples-durable-functions-python/samples/monitor/E3_TooManyOpenIssues/\_\_init\_\_.py)]
 
----
 
 ### <a name="e3_sendalert-activity-function"></a>E3_SendAlert Activity işlevi
 
 **E3_SendAlert** işlevi, son kullanıcıya bir çözümü bekleyen en az 3 açık sorun olduğunu BILDIREN bir SMS iletisi göndermek için Twilio bağlamasını kullanır.
 
-# <a name="python"></a>[Python](#tab/python)
 
 *Üzerindefunction.js* basittir:
 
@@ -99,7 +98,6 @@ SMS iletisini gönderen kod aşağıda verilmiştir:
 
 [!code-python[Main](~/samples-durable-functions-python/samples/monitor/E3_SendAlert/\_\_init\_\_.py)]
 
----
 
 ## <a name="run-the-sample"></a>Örneği çalıştırma
 

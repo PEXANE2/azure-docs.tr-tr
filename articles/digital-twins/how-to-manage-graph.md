@@ -7,18 +7,18 @@ ms.author: baanders
 ms.date: 11/03/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: a2732c3979998ea3429833f96056b88bc2dccf75
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: fde473453aa79e0078765df394acdeb54b3c7fe9
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102050945"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102433327"
 ---
 # <a name="manage-a-graph-of-digital-twins-using-relationships"></a>İlişkileri kullanarak dijital TWINS grafiğini yönetme
 
 Azure dijital TWINS 'in kalbi, tüm ortamınızı temsil eden [ikizi grafiktir](concepts-twins-graph.md) . İkizi Graph, **ilişkiler** aracılığıyla bağlı tek tek dijital TWINS 'ten oluşur. 
 
-Çalışan bir [Azure dijital TWINS örneğinden](how-to-set-up-instance-portal.md) ve istemci uygulamanızda [kimlik doğrulama](how-to-authenticate-client.md) kodu ayarladıktan sonra, Azure dijital TWINS örneğindeki dijital TWINS ve bunların ilişkilerini oluşturmak, değiştirmek ve silmek Için [**digitaltwins API 'lerini**](/rest/api/digital-twins/dataplane/twins) kullanabilirsiniz. [.Net (C#) SDK 'sını](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true)veya [Azure DIGITAL TWINS CLI](how-to-use-cli.md)'yi de kullanabilirsiniz.
+Çalışan bir [Azure dijital TWINS örneğinden](how-to-set-up-instance-portal.md) ve istemci uygulamanızda [kimlik doğrulama](how-to-authenticate-client.md) kodu ayarladıktan sonra, Azure dijital TWINS örneğindeki dijital TWINS ve bunların ilişkilerini oluşturmak, değiştirmek ve silmek Için [**digitaltwins API 'lerini**](/rest/api/digital-twins/dataplane/twins) kullanabilirsiniz. [.Net (C#) SDK 'sını](/dotnet/api/overview/azure/digitaltwins/client)veya [Azure DIGITAL TWINS CLI](how-to-use-cli.md)'yi de kullanabilirsiniz.
 
 Bu makale, ilişkilerin ve grafiğin tamamını yönetmeye odaklanır. tek tek dijital TWINS ile çalışmak için bkz. [*nasıl yapılır: dijital TWINS 'ı yönetme*](how-to-manage-twin.md).
 
@@ -97,7 +97,7 @@ Alınan ilişkileri kullanarak, grafiğinizde diğer TWINS 'ye gidebilirsiniz. B
 Azure dijital TWINS 'in Ayrıca belirli bir ikizi **gelen** tüm ilişkileri bulması için bir API 'si vardır. Bu, genellikle ters gezinmede veya bir ikizi silinirken yararlıdır.
 
 >[!NOTE]
-> `IncomingRelationship` çağrılar, ilişkinin tam gövdesini döndürmez. Sınıfı hakkında daha fazla bilgi için `IncomingRelationship` [başvuru belgelerine](/dotnet/api/azure.digitaltwins.core.incomingrelationship?view=azure-dotnet&preserve-view=true)bakın.
+> `IncomingRelationship` çağrılar, ilişkinin tam gövdesini döndürmez. Sınıfı hakkında daha fazla bilgi için `IncomingRelationship` [başvuru belgelerine](/dotnet/api/azure.digitaltwins.core.incomingrelationship)bakın.
 
 Önceki bölümde yer alan kod örneği, bir ikizi giden ilişkilerin bulunmasına odaklanılmıştır. Aşağıdaki örnek benzer şekilde yapılandırılmıştır, ancak bunun yerine ikizi *gelen* ilişkileri bulur. Bu örnek ayrıca, daha büyük bir program bağlamında görünebilen özel bir yöntemin içinde SDK çağrısını (vurgulanmış) kullanır.
 
@@ -157,7 +157,7 @@ Kod parçacığı öğreticiden model tanımlarında [*Room.js*](https://github.
 Örneği çalıştırmadan önce aşağıdakileri yapın:
 1. Model dosyalarını indirin, projenize yerleştirin ve `<path-to>` aşağıdaki koddaki yer tutucuları değiştirip programınıza onları nerede bulacağınızı söyleyin.
 2. Yer tutucusunu `<your-instance-hostname>` Azure dijital TWINS örneğinizin ana bilgisayar adı ile değiştirin.
-3. Projenize Azure dijital TWINS ile çalışmak için gerekli olacak iki bağımlılık ekleyin. Birincisi [.net Için Azure Digital TWINS SDK 'sının](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true)paketidir, Ikincisi ise Azure 'da kimlik doğrulamaya yardımcı olacak araçlar sağlar.
+3. Projenize Azure dijital TWINS ile çalışmak için gerekli olacak iki bağımlılık ekleyin. Birincisi [.net Için Azure Digital TWINS SDK 'sının](/dotnet/api/overview/azure/digitaltwins/client)paketidir, Ikincisi ise Azure 'da kimlik doğrulamaya yardımcı olacak araçlar sağlar.
 
       ```cmd/sh
       dotnet add package Azure.DigitalTwins.Core

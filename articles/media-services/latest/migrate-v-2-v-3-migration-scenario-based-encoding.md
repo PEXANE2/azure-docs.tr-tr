@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.workload: media
 ms.date: 1/14/2020
 ms.author: inhenkel
-ms.openlocfilehash: ab819239572fd99fdf5ff3bf23f81eb3cdff3b9a
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: dc75ada87db6fdbb3861c2e4e495f93147513421
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98940097"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102440573"
 ---
 # <a name="encoding-scenario-based-migration-guidance"></a>Senaryo tabanlı geçiş kılavuzunu kodlama
 
@@ -41,7 +41,7 @@ V2 ve v3 için kodlama iş akışlarının görsel bir karşılaştırması içi
 
 Daha büyük bir sürümü görmek için aşağıdaki görüntüye tıklayın.
 
-[![V2 ](./media/migration-guide/V2-pretty.svg) için iş akışını kodlama](./media/migration-guide/V2-pretty.svg#lightbox)
+[![V2 ](./media/migration-guide/V2-pretty.svg) için iş akışını kodlama ](./media/migration-guide/V2-pretty.svg#lightbox)
 
 1. Kurulum
     1. Bir varlık oluşturun veya mevcut varlığı kullanın. Yeni bir varlık kullanılıyorsa, bu varlığa içerik yükleyin. Mevcut bir varlık kullanılıyorsa, varlık içinde zaten mevcut olan dosyaları kodlamış olmanız gerekir.
@@ -58,10 +58,12 @@ Daha büyük bir sürümü görmek için aşağıdaki görüntüye tıklayın.
 
 ### <a name="v3-encoding-workflow"></a>V3 kodlama iş akışı
 
-[![V3 ](./media/migration-guide/V3-pretty.svg) için iş akışını kodlama](./media/migration-guide/V3-pretty.svg#lightbox)
+<Token>
+<object data="./media/migration-guide/v3-pretty2.svg" width="80%"></object>
+</Token>
 
 1. Kurulum
-    1. Bir varlık oluşturun veya mevcut varlığı kullanın. Yeni bir varlık kullanılıyorsa, bu varlığa içerik yükleyin. Mevcut bir varlık kullanılıyorsa, varlık içinde zaten mevcut olan dosyaları kodlamış olmanız gerekir. *Bu varlığa daha fazla içerik yüklememelisiniz.*
+    1. Bir varlık oluşturun veya mevcut bir varlığı kullanın. Yeni bir varlık kullanılıyorsa, bu varlığa içerik yükleyin. Mevcut bir varlık kullanılıyorsa, varlık içinde zaten mevcut olan dosyaları kodlamış olmanız gerekir. *Bu varlığa daha fazla içerik yüklememelisiniz.*
     1. Çıkış varlığı oluşturun.  Çıkış varlığı, kodlanmış dosyaların ve giriş ve çıkış meta verilerinin depolanacağı yerdir.
     1. Dönüştürme için değerleri Al:
         - Standart kodlayıcı önceden ayarı
@@ -84,17 +86,6 @@ Daha büyük bir sürümü görmek için aşağıdaki görüntüye tıklayın.
 V2 kodunuz özel bir ön ayarla standart kodlayıcı olarak adlandırıldıysanız, bir işi göndermeden önce özel standart kodlayıcı önceden ayarıyla yeni bir dönüşüm oluşturmanız gerekir.
 
 Özel önayarlar artık JSON ve XML tabanlı değildir. [Açık API (Swagger)](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/mediaservices/resource-manager/Microsoft.Media/stable/2020-05-01/examples/transforms-create.json) belgelerinde tanımlanan özel önceden ayarlanmış şemayı takıp eden JSON 'da önceden ayarlarınızı yeniden oluşturun.
-
-
-<!-- removed because this is covered in the tutorials
-Common custom [encoding](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/mediaservices/resource-manager/Microsoft.Media/stable/2020-05-01/Encoding.json) scenarios:
-        1. Create a custom Single Bitrate MP4 encode
-        1. Create a custom [Adaptive Bitrate Encoding Ladder](autogen-bitrate-ladder.md)
-        1. Creating Sprite Thumbnails
-        1. Creating Thumbnails (see below for your preferred method)
-        1. [Sub Clipping](subclip-video-rest-howto.md)
-        1. Cropping
--->
 
 ## <a name="input-and-output-metadata-files-from-an-encoding-job"></a>Bir kodlama işinden giriş ve çıkış meta veri dosyaları
 

@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: estfan, logicappspm, az-logic-apps-dev
 ms.topic: conceptual
-ms.date: 03/02/2021
-ms.openlocfilehash: 9d8d3cb4bf68f7da2bddabd21272d1011ce92f66
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.date: 03/05/2021
+ms.openlocfilehash: ad059931d87603c957e446e82b894731dca984dd
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101715216"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102442749"
 ---
 # <a name="overview-azure-logic-apps-preview"></a>Genel Bakış: Azure Logic Apps Önizleme
 
@@ -118,9 +118,13 @@ Bu tablo, üst ve alt öğenin durum bilgisiz, durumsuz veya karışık iş akı
 
 Azure Logic Apps önizleme birçok geçerli ve ek özellik içerir, örneğin:
 
-* Hizmet olarak yazılım (SaaS) ve hizmet olarak platform (PaaS) uygulamaları ve hizmetleri ve şirket içi sistemler için bağlayıcılar için [390 + bağlayıcılarından](/connectors/connector-reference/connector-reference-logicapps-connectors) Logic Apps ve iş akışları oluşturun.
+* Hizmet olarak yazılım (SaaS) ve hizmet olarak platform (PaaS) uygulamaları ve hizmetleri için [400 + bağlayıcılarından](/connectors/connector-reference/connector-reference-logicapps-connectors) Logic Apps ve iş akışları oluşturun ve şirket içi sistemler için bağlayıcı oluşturun.
 
-  * Azure Service Bus, Azure Event Hubs ve SQL Server gibi bazı yönetilen bağlayıcılar, Azure Logic Apps Önizleme çalışma zamanına yerel olan yerleşik Tetikleyiciler ve eylemler (örneğin, Istek tetikleyicisi ve HTTP eylemi) için benzer şekilde çalışır. Daha fazla bilgi için bkz. [her yerde yerleşik bağlayıcı genişletilebilirliği çalıştırma Azure Logic Apps](https://techcommunity.microsoft.com/t5/integrations-on-azure/azure-logic-apps-running-anywhere-built-in-connector/ba-p/1921272).
+  * Azure Service Bus, Azure Event Hubs, SQL Server ve MQ gibi bazı yönetilen bağlayıcılar, Azure Logic Apps Önizleme çalışma zamanına yerel olan yerleşik Tetikleyiciler ve eylemler (örneğin, Istek tetikleyicisi ve HTTP eylemi) için benzer şekilde çalışır.
+
+  * [Önizleme sürümünün genişletilebilirlik çerçevesini](https://techcommunity.microsoft.com/t5/integrations-on-azure/azure-logic-apps-running-anywhere-built-in-connector/ba-p/1921272)kullanarak ihtiyacınız olan herhangi bir hizmet için kendi yerleşik bağlayıcılarınızı oluşturun. Azure Service Bus ve SQL Server gibi yerleşik bağlayıcılara benzer ancak önizleme için şu anda desteklenmeyen [özel bağlayıcıların](../connectors/apis-list.md#custom-apis-and-connectors) aksine, bu bağlayıcılar daha yüksek aktarım hızı, düşük gecikme süresi, yerel bağlantı sağlar ve Önizleme çalışma zamanı ile aynı işlemde yerel olarak çalışır.
+
+    Yazma özelliği şu anda yalnızca Visual Studio Code ' de kullanılabilir, ancak varsayılan olarak etkinleştirilmemiştir. Bu bağlayıcıları oluşturmak için, [projenizi uzantı temelinde (Node.js) NuGet paket tabanlı (.net) olarak değiştirin](create-stateful-stateless-workflows-visual-studio-code.md#enable-built-in-connector-authoring). Daha fazla bilgi için bkz. [her yerde yerleşik bağlayıcı genişletilebilirliği çalıştırma Azure Logic Apps](https://techcommunity.microsoft.com/t5/integrations-on-azure/azure-logic-apps-running-anywhere-built-in-connector/ba-p/1921272).
 
   * Bir tümleştirme hesabı olmadan likit Işlemler ve XML Işlemleri için B2B eylemlerini kullanabilirsiniz. Bu eylemleri kullanmak için, Azure portal ilgili işlemler aracılığıyla karşıya yükleyebileceğiniz sıvı haritaları, XML haritaları veya XML şemaları olmalıdır veya ilgili **haritalar** ve **şemalar** klasörlerini kullanarak Visual Studio Code projenizin **yapıt** klasörüne ekleyebilirsiniz.
 
@@ -148,7 +152,7 @@ Azure Logic Apps önizleme birçok geçerli ve ek özellik içerir, örneğin:
 * **Mantıksal uygulama (Önizleme)** kaynağında bireysel iş akışları tarafından kullanılan yönetilen bağlantılar için erişim anahtarlarını yeniden oluşturun. Bu görev için, mantıksal uygulama kaynak düzeyi değil, [ **Logic Apps** kaynağı için aynı adımları izleyin](logic-apps-securing-a-logic-app.md#regenerate-access-keys).
 
 * Önizleme tasarlayıcı olmayan tasarımcı ile aynı adımları izleyerek yeni tasarımcıya paralel dallar ekleyin.
- 
+
 Daha fazla bilgi için bkz. GitHub 'daki [değişen, sınırlı, kullanılamayan ve desteklenmeyen yetenekler](#limited-unavailable-unsupported) ve [Logic Apps genel önizleme bilinen sorunlar sayfası](https://github.com/Azure/logicapps/blob/master/articles/logic-apps-public-preview-known-issues.md).
 
 <a name="pricing-model"></a>
@@ -193,8 +197,6 @@ Azure Logic Apps önizlemede, bu yetenekler değiştirilmiştir veya şu anda s�
 
     * [Şirket içi veri ağ geçidi *Tetikleyicileri*](../connectors/apis-list.md#on-premises-connectors) kullanılamaz, ancak ağ *geçidi eylemleri kullanılabilir* .
 
-    * [Özel bağlayıcılar](../connectors/apis-list.md#custom-apis-and-connectors) kullanılamıyor.
-
     * Yerleşik eylem, [Azure işlevleri-bir Azure Işlevi seçin](logic-apps-azure-functions.md) artık **Azure işlev Işlemleri-bir Azure işlevi çağırır**. Bu eylem şu anda yalnızca **http tetikleyici** şablonundan oluşturulan işlevler için geçerlidir.
 
       Azure portal, Kullanıcı deneyimi aracılığıyla bir bağlantı oluşturarak erişiminizin bulunduğu bir HTTP tetikleyici işlevi seçebilirsiniz. Kod görünümündeki veya dosyadaki **workflow.js** Işlev eyleminin JSON tanımını inceleyebilirsiniz, eylem bir başvuru kullanarak işleve başvurur `connectionName` . Bu sürüm, işlevin bilgilerini bir bağlantı olarak soyutlar, bu, bir bağlantı oluşturduktan sonra, projenizin **connections.js** dosyasında bulabilirsiniz.
@@ -217,6 +219,8 @@ Azure Logic Apps önizlemede, bu yetenekler değiştirilmiştir veya şu anda s�
     * [Tümleştirme hesapları için bazı YERLEŞIK B2B Tetikleyicileri ve eylemleri](../connectors/apis-list.md#integration-account-connectors) kullanılamaz, örneğin, **düz dosya** kodlama ve kod çözme eylemleri.
 
     * Yerleşik eylem, [Azure Logic Apps-bir mantıksal uygulama iş akışı](logic-apps-http-endpoint.md) artık **iş akışı işlemleri-bu iş akışı uygulamasında bir iş akışı çağırır**.
+
+* [Özel bağlayıcılar](../connectors/apis-list.md#custom-apis-and-connectors) Şu anda önizleme için desteklenmiyor.
 
 * **Barındırma planı kullanılabilirliği**: Azure portal veya Visual Studio Code dağıtım için yeni bir **mantıksal uygulama (Önizleme)** kaynak türü oluşturup, Azure 'da yalnızca Premium veya App Service barındırma planını kullanabilirsiniz. Tüketim barındırma planları bu kaynak türünü dağıtmak için kullanılamaz ve desteklenmez. Visual Studio Code bir Docker kapsayıcısına dağıtabilirsiniz, ancak bir [tümleştirme hizmeti ortamına (ıSE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)ekleyebilirsiniz.
 

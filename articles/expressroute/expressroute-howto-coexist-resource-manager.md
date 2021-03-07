@@ -5,15 +5,15 @@ services: expressroute
 author: duongau
 ms.service: expressroute
 ms.topic: how-to
-ms.date: 12/11/2019
+ms.date: 03/06/2021
 ms.author: duau
 ms.custom: seodec18
-ms.openlocfilehash: b20bb4df7524c179766a2b2f7f090fccbddd7f37
-ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
+ms.openlocfilehash: df88bd9a1d4901b348fbec47ea9e2946542a08e3
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102122621"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102440097"
 ---
 # <a name="configure-expressroute-and-site-to-site-coexisting-connections-using-powershell"></a>PowerShell kullanarak ExpressRoute ve siteden siteye birlikte var olan bağlantıları yapılandırma
 > [!div class="op_single_selector"]
@@ -36,17 +36,18 @@ Siteden Siteye VPN ve ExpressRoute eşzamanlı bağlantılarını yapılandırma
 >
 
 ## <a name="limits-and-limitations"></a>Sınırlar ve sınırlamalar
-* **Geçiş yönlendirmesi desteklenmez.** Siteden Siteye VPN aracılığıyla bağlanan yerel ağınız ve ExpressRoute aracılığıyla bağlanan yerel ağınız arasında (Azure aracılığıyla) yönlendirme yapamazsınız.
-* **Temel SKU ağ geçidi desteklenmez.** Hem [ExpressRoute ağ geçidi](expressroute-about-virtual-network-gateways.md) hem de [VPN ağ geçidi](../vpn-gateway/vpn-gateway-about-vpngateways.md) için Temel SKU olmayan bir ağ geçidi kullanmanız gerekir.
 * **Yalnızca rota tabanlı VPN ağ geçidi desteklenir.** Rota tabanlı bir [VPN ağ geçidi](../vpn-gateway/vpn-gateway-about-vpngateways.md)kullanmanız gerekir. Ayrıca, [birden çok ilke tabanlı VPN cihazına bağlanma](../vpn-gateway/vpn-gateway-connect-multiple-policybased-rm-ps.md)bölümünde açıklandığı gibi ' ilke tabanlı trafik seçicileri ' için YAPıLANDıRıLMıŞ bir VPN bağlantısı ile rota tabanlı bir VPN ağ geçidini de kullanabilirsiniz.
-* **VPN ağ geçidiniz için statik rota yapılandırılmalıdır.** Yerel ağınız hem ExpressRoute hem de Siteden Siteye VPN’e bağlıysa Siteden Siteye VPN bağlantısını genel İnternet’e yönlendirebilmeniz için yerel ağınızda statik bir rotanın yapılandırılmış olması gerekir.
-* **Belirtilmemişse, varsayılan olarak ASN 65515 VPN Gateway.** Azure VPN Gateway BGP yönlendirme protokolünü destekler. -ASN anahtarını ekleyerek bir sanal ağ için ASN (AS Number) belirtebilirsiniz. Bu parametreyi belirtmezseniz, varsayılan AS numarası 65515 ' dir. Yapılandırma için herhangi bir ASN kullanabilirsiniz, ancak 65515 dışında bir öğe seçerseniz, ayarın etkili olması için ağ geçidini sıfırlamanız gerekir.
+* **Azure VPN Gateway ASN 'nin 65515 olarak ayarlanması gerekir.** Azure VPN Gateway BGP yönlendirme protokolünü destekler. ExpressRoute ve Azure VPN 'nin birlikte çalışması için, Azure VPN ağ geçidiniz otonom sistem numarasını varsayılan değeri olan 65515 ' de saklamanız gerekir. Daha önce 65515 dışında bir ASN seçtiyseniz ve ayarı 65515 olarak değiştirirseniz, ayarın etkili olması için VPN Gateway 'i sıfırlamanız gerekir.
 * **Ağ geçidi alt ağı/27 veya daha kısa bir ön ek olmalıdır**(örneğin/26,/25) veya ExpressRoute sanal ağ geçidini eklediğinizde bir hata iletisi alırsınız.
 * **Çift yığın VNET 'te birlikte bulunma desteklenmez.** ExpressRoute IPv6 desteği ve çift Stack ExpressRoute ağ geçidi kullanıyorsanız, VPN Gateway birlikte bulunma mümkün olmayacaktır.
 
 ## <a name="configuration-designs"></a>Yapılandırma tasarımları
 ### <a name="configure-a-site-to-site-vpn-as-a-failover-path-for-expressroute"></a>Siteden siteye VPN’i ExpressRoute için bir yük devretme yolu olarak yapılandırma
 Siteden siteye bir VPN bağlantısını ExpressRoute için yedek olarak yapılandırabilirsiniz. Bu bağlantı yalnızca Azure özel eşleme yoluna bağlı sanal ağlar için geçerlidir. Azure Microsoft eşlemeleri aracılığıyla erişilebilen hizmetler için VPN tabanlı yük devretme çözümü yoktur. ExpressRoute bağlantı hattı her zaman birincil bağlantıdır. Veriler yalnızca ExpressRoute bağlantı hattı başarısız olursa, Siteden Siteye VPN üzerinden akar. Asimetrik yönlendirmenin önüne geçmek için yerel ağ yapılandırmanız da Siteden Siteye VPN üzerinden ExpressRoute bağlantı hattını tercih etmelidir. ExpressRoute’u alan yönlendirmeler için daha yüksek yerel tercihleri ayarlayarak ExpressRoute yolunu tercih edebilirsiniz. 
+
+>[!NOTE]
+> ExpressRoute Microsoft eşlemesi etkinse, ExpressRoute bağlantısında Azure VPN ağ geçidinizin genel IP adresini alabilirsiniz. Siteden siteye VPN bağlantınızı bir yedekleme olarak ayarlamak için, şirket içi ağınızı VPN bağlantısının Internet 'e yönlendirilmesi için yapılandırmanız gerekir.
+>
 
 > [!NOTE]
 > Her iki yol da aynı olduğunda ExpressRoute bağlantı hattı Siteden Siteye VPN’ye tercih edilse de Azure paketin hedefine yönelik yolu seçmek için en uzun ön ek eşleşmesini kullanır.
@@ -261,6 +262,9 @@ VPN ağ geçidize bir birlikte bulunma kurulumunda Noktadan siteye yapılandırm
    $p2sCertData = [System.Convert]::ToBase64String($p2sCertToUpload.RawData) 
    Add-AzVpnClientRootCertificate -VpnClientRootCertificateName $p2sCertFullName -VirtualNetworkGatewayname $azureVpn.Name -ResourceGroupName $resgrp.ResourceGroupName -PublicCertData $p2sCertData
    ```
+
+## <a name="to-enable-transit-routing-between-expressroute-and-azure-vpn"></a>ExpressRoute ile Azure VPN arasında geçiş yönlendirmeyi etkinleştirmek için
+ExpressRoute 'a bağlı yerel ağınızdan biri ile siteden siteye VPN bağlantısına bağlı olan yerel ağınızdan bir bağlantı sağlamak istiyorsanız, [Azure Route Server](../route-server/expressroute-vpn-support.md)'ı ayarlamanız gerekir.
 
 Noktadan Siteye VPN hakkında daha fazla bilgi içini bkz. [Noktadan Siteye bağlantı yapılandırma](../vpn-gateway/vpn-gateway-howto-point-to-site-rm-ps.md).
 

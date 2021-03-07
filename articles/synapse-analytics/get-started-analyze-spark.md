@@ -10,12 +10,12 @@ ms.service: synapse-analytics
 ms.subservice: spark
 ms.topic: tutorial
 ms.date: 12/31/2020
-ms.openlocfilehash: 7410fcbc890780281763a91f33525562e9de1853
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: 6b3c1ac2ea3625a768e16a3465230a5386c98ddc
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102182494"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102423722"
 ---
 # <a name="analyze-with-apache-spark"></a>Apache Spark ile Çözümle
 
@@ -38,7 +38,7 @@ Bu öğreticide, Azure SYNAPSE için Apache Spark verileri yüklemek ve analiz e
     display(df.limit(10))
     ```
 1. Not defterinde, **Ekle** menüsünde, daha önce oluşturduğumuz **Spark1** sunucusuz Spark havuzunu seçin.
-1. Hücrede **Çalıştır** 'ı seçin
+1. Hücrede **Çalıştır** ' ı seçin. SYNAPSE, gerekirse bu hücreyi çalıştırmak için yeni bir Spark oturumu başlatacak. Yeni bir Spark oturumu gerekiyorsa, oluşturulması yaklaşık iki saniye sürer. 
 1. Yalnızca veri çerçevesinin şemasını görmek istiyorsanız aşağıdaki kodla bir hücre çalıştırın:
     ```
 

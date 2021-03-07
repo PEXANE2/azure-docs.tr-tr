@@ -1,6 +1,6 @@
 ---
 title: Azure Blob depolamada ağ dosya sistemi 3,0 desteği (Önizleme) | Microsoft Docs
-description: Blob Storage artık ağ dosya sistemi (NFS) 3,0 protokolünü desteklemektedir. Bu destek, Windows ve Linux istemcilerinin bir Azure sanal makinesinden (VM) veya şirket içinde çalışan bir bilgisayardan BLOB depolama alanına bir kapsayıcı takmalarını sağlar.
+description: Blob Storage artık ağ dosya sistemi (NFS) 3,0 protokolünü desteklemektedir. Bu destek, Linux istemcilerinin bir Azure sanal makinesinden (VM) veya şirket içinde çalışan bir bilgisayardan BLOB depolama alanına bir kapsayıcı takmasına olanak sağlar.
 author: normesta
 ms.subservice: blobs
 ms.service: storage
@@ -9,16 +9,16 @@ ms.date: 02/19/2021
 ms.author: normesta
 ms.reviewer: yzheng
 ms.custom: references_regions
-ms.openlocfilehash: a49c51d2afd464e7bea910ae0abe3dd02e939dbc
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 22f4db04f37985e49065f80da6e4578ed71c5db1
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101718508"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102428448"
 ---
 # <a name="network-file-system-nfs-30-protocol-support-in-azure-blob-storage-preview"></a>Azure Blob depolamada ağ dosya sistemi (NFS) 3,0 protokol desteği (Önizleme)
 
-Blob Storage artık ağ dosya sistemi (NFS) 3,0 protokolünü desteklemektedir. Bu destek, nesne depolama ölçeğinde ve fiyatlarında Linux dosya sistemi uyumluluğu sağlar ve Windows veya Linux istemcilerinin bir Azure sanal makinesi (VM) veya şirket içi bilgisayardan BLOB depolama alanına bir kapsayıcı takmalarını sağlar. 
+Blob Storage artık ağ dosya sistemi (NFS) 3,0 protokolünü desteklemektedir. Bu destek, nesne depolama ölçeğinde ve fiyatlarında Linux dosya sistemi uyumluluğu sağlar ve Linux istemcilerinin bir Azure sanal makinesinden (VM) veya şirket içi bir bilgisayardan BLOB depolama alanına bir kapsayıcı takmalarını sağlar. 
 
 > [!NOTE]
 > Azure Blob depolamada NFS 3,0 protokol desteği genel önizlemeye sunuldu. Şu bölgelerde Standart katman performansına sahip GPV2 Storage hesaplarını destekler: Avustralya Doğu, Kore Orta ve Orta Güney ABD. Önizleme Ayrıca tüm genel bölgelerde Premium performans katmanıyla Blok Blobu destekler.
@@ -46,7 +46,7 @@ Uygulamanız NFS 3,0 protokolünü kullanarak bir istek yaptığında, bu istek 
 
 ## <a name="general-workflow-mounting-a-storage-account-container"></a>Genel iş akışı: depolama hesabı kapsayıcısı bağlama
 
-Windows veya Linux istemcileriniz, BLOB depolama alanına bir kapsayıcıyı bir Azure sanal makinesinden (VM) veya şirket içi bir bilgisayardan bağlayabilir. Bir depolama hesabı kapsayıcısını bağlamak için bu işlemleri yapmanız gerekir.
+Linux istemcileriniz, bir Azure sanal makinesinden (VM) veya şirket içi bir bilgisayardan BLOB depolama alanına bir kapsayıcı bağlayabilir. Bir depolama hesabı kapsayıcısını bağlamak için bu işlemleri yapmanız gerekir.
 
 1. Aboneliğiniz ile NFS 3,0 protokol özelliğini kaydedin.
 

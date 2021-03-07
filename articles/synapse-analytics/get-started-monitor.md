@@ -10,12 +10,12 @@ ms.service: synapse-analytics
 ms.subservice: monitoring
 ms.topic: tutorial
 ms.date: 12/31/2020
-ms.openlocfilehash: 8c0cdcad9a7803e0d8063362ca62887990045c86
-ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
+ms.openlocfilehash: 7e8525dbebb42e1f387ee8f0c192efd5e64c9453
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98209823"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102426049"
 ---
 # <a name="monitor-your-synapse-workspace"></a>SYNAPSE çalışma alanınızı izleme
 
@@ -30,7 +30,7 @@ SYNAPSE Studio 'Yu açın ve **izleyici** hub 'ına gidin. Burada, çalışma al
 
 ## <a name="integration"></a>Tümleştirme
 
-1. **Tümleştirme >** işlem hattına gidin. Bu görünümde, çalışma alanınızda bir işlem hattının her çalıştırılışında görebilirsiniz. 
+1. **Tümleştirme > Işlem hattı çalıştırmaları**' na gidin. Bu görünümde, çalışma alanınızda bir işlem hattının her çalıştırılışında görebilirsiniz. 
 1. Önceki adımda çalıştırdığınız işlem hattını bulun ve ayrıntılarını görüntülemek için **ardışık düzen adına** tıklayın.
 1. SYNAPSE Studio 'nun en üstündeki **Içerik Haritası çubuğu** ' na tıklayın, önceki görünüme dönmek için **tüm işlem hattı çalıştırmaları** ' na tıklayın.
 
@@ -45,8 +45,7 @@ SYNAPSE Studio 'Yu açın ve **izleyici** hub 'ına gidin. Burada, çalışma al
 1. **SQL istekleri > etkinliklere** gidin.
 1. Bu görünümde, SQL isteklerini görebilirsiniz.
 1. **Havuz** filtresinden Izlenecek bir **Havuz** seçin. Artık, çalışmakta olan veya çalışma alanınızda çalıştırılmış olan tüm SQL isteklerini o havuzda görebilirsiniz.
-1. Belirli bir SQL isteği bulun ve fareyi bu öğenin üzerine getirin. Üzerine geldiğinizde bir SQL komut dosyası simgesi görürsünüz.
-1. SQL isteğinin tam metnini görmek için SQL komut dosyası simgesine tıklayın.
+1. Belirli bir SQL isteği bulun ve SQL isteğinin tam metnini görmek için **daha fazla** bağlantıya tıklayın.
 
     > [!NOTE] 
     > Bir çalışma alanı etkin adanmış SQL Havuzu (eski adıyla SQL DW) ile SYNAPSE Studio aracılığıyla gönderilen SQL istekleri, Izleyici hub 'ında görüntülenebilir. Diğer tüm izleme etkinlikleri için Azure portal adanmış SQL Havuzu (eski adıyla SQL DW) izlemeye gidebilirsiniz.

@@ -3,21 +3,25 @@ title: PowerShell kullanarak Azure Image Builder hizmet izinlerini yapılandırm
 description: PowerShell kullanarak izinler ve ayrıcalıklar dahil olmak üzere Azure VM görüntü Oluşturucu hizmeti gereksinimlerini yapılandırın
 author: danielsollondon
 ms.author: danis
-ms.date: 03/02/2021
+ms.date: 03/05/2021
 ms.topic: article
 ms.service: virtual-machines
 ms.subservice: image-builder
 ms.collection: linux
-ms.openlocfilehash: 4b9cf3ffdb1fc6db9604098e8e5782317a8eb431
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 9f8793b6ea0ba454b66c525c2d53c1de2197d539
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101695405"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102440216"
 ---
 # <a name="configure-azure-image-builder-service-permissions-using-powershell"></a>PowerShell kullanarak Azure Image Builder hizmet izinlerini yapılandırma
 
-Azure Image Builder hizmeti, bir görüntü oluşturmadan önce izinlerin ve ayrıcalıkların yapılandırılmasını gerektirir. Aşağıdaki bölümlerde, PowerShell kullanarak olası senaryoların nasıl yapılandırılacağı ayrıntılı olarak anlatılmaktadır.
+(AıB) için kaydolmanız durumunda bu, AıB hizmetine bir hazırlama kaynak grubu (IT_ *) oluşturma, yönetme ve silme izni verir ve bu, görüntü derlemesi için gerekli olan kaynak ekleme haklarına sahip olur. Bu işlem, başarılı bir kayıt sırasında aboneliğinizde kullanılabilir hale getirilen bir AıB hizmet sorumlusu adı (SPN) tarafından yapılır.
+
+Azure VM Image Builder 'ın görüntüleri yönetilen görüntülere veya paylaşılan bir görüntü galerisine dağıtmasını sağlamak için, görüntüleri okuma ve yazma izinlerine sahip Azure Kullanıcı tarafından atanan bir kimlik oluşturmanız gerekir. Azure depolama 'ya erişiyorsanız, bu durumda özel veya ortak kapsayıcıları okumak için izinler gerekir.
+
+Bir görüntü oluşturmadan önce izinleri ve ayrıcalıkları ayarlamalısınız. Aşağıdaki bölümlerde, PowerShell kullanarak olası senaryoların nasıl yapılandırılacağı ayrıntılı olarak anlatılmaktadır.
 
 > [!IMPORTANT]
 > Azure görüntü Oluşturucu Şu anda genel önizleme aşamasındadır.

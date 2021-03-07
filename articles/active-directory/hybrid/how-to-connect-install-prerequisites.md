@@ -16,12 +16,12 @@ ms.date: 02/16/2021
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 000b91529b3b02f2c7d03b50ddc841c68625dada
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: e758933b80efbf36dc263b7bd7d2d3c45a59a9f8
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101644812"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102426799"
 ---
 # <a name="prerequisites-for-azure-ad-connect"></a>Azure AD Connect Önkoşulları
 Bu makalede Azure Active Directory (Azure AD) Connect için Önkoşullar ve donanım gereksinimleri açıklanmaktadır.
@@ -102,6 +102,7 @@ BT ortamınızın bu kritik bileşeninin güvenlik saldırısı yüzeyini azaltm
 
 ### <a name="connectivity"></a>Bağlantı
 * Azure AD Connect sunucusu hem intranet hem de internet için DNS çözümüne ihtiyaç duyuyor. DNS sunucusu, adları hem şirket içi Active Directory hem de Azure AD uç noktalarına çözümleyebilmelidir.
+* Azure AD Connect, yapılandırılan tüm etki alanlarına ağ bağlantısı gerektirir
 * İntranetinizde güvenlik duvarları varsa ve Azure AD Connect sunucuları ile etki alanı denetleyicileriniz arasında bağlantı noktaları açmanız gerekiyorsa, daha fazla bilgi için bkz. [Azure AD Connect bağlantı noktaları](reference-connect-ports.md) .
 * Proxy 'niz veya güvenlik duvarınız hangi URL 'Lere erişilebileceğini sınırlarıyorsa, [Office 365 URL 'lerinde ve IP adresi aralıklarında](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2) belgelenen URL 'lerin açılması gerekir. Ayrıca bkz. [güvenlik duvarınızdaki veya proxy sunucunuzdaki Azure Portal URL 'leri](../../azure-portal/azure-portal-safelist-urls.md?tabs=public-cloud).
   * Almanya veya Microsoft Azure Kamu Bulutu 'nda Microsoft bulutu kullanıyorsanız, URL 'Ler için [Azure AD Connect eşitleme hizmeti örneklerine göz](reference-connect-instances.md) atın.

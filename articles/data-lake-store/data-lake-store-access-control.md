@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: twooley
-ms.openlocfilehash: 48ff32655b107958a3e8e42dbd7de0f405a6fffa
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: aa0da5721c577957b101ac8a2d9346c0536f0a88
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97094871"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102424147"
 ---
 # <a name="access-control-in-azure-data-lake-storage-gen1"></a>Azure Data Lake Storage 1. Nesil'de erişim denetimi
 
@@ -122,7 +122,7 @@ Bir Data Lake Storage 1. hesabı için **sahip** rolünün parçası olan tüm k
 
 ### <a name="the-owning-group"></a>Sahip olan grup
 
-**Arka plan**
+**Arka Plan**
 
 POSIX ACL’lerinde her kullanıcı bir "birincil grup" ile ilişkilendirilir. Örneğin, "gamze" adlı kullanıcı "finans" grubuna ait olabilir. Gamze ayrıca birden fazla gruba ait olabilir, ancak bir grup her zaman birincil grubu olarak atanır. POSIX’te Gamze bir dosya oluşturduğunda o dosyanın sahibi olan grup birincil grubu olarak ayarlanır (bu örnekte "finans" grubudur). Aksi takdirde sahip olan grup, diğer kullanıcılar/gruplar için atanan izinlere benzer şekilde davranır.
 
@@ -286,7 +286,11 @@ Azure portalında **Azure Active Directory-> kurumsal uygulamalar** ' a gidin ve
 
 ### <a name="does-data-lake-storage-gen1-support-inheritance-of-acls"></a>Data Lake Storage 1. ACL 'Leri devralmayı destekliyor mu?
 
-Hayır, ancak üst klasör altında yeni oluşturulan alt dosyalara ve klasöre yönelik ACL’yi ayarlamak için Varsayılan ACL’ler kullanılabilir.  
+Hayır, ancak üst klasör altında yeni oluşturulan alt dosyalara ve klasöre yönelik ACL’yi ayarlamak için Varsayılan ACL’ler kullanılabilir.
+
+### <a name="what-are-the-limits-for-acl-entries-on-files-and-folders"></a>Dosya ve klasörlerdeki ACL girdilerinin sınırları nelerdir?
+
+32 ACL 'Ler dosya ve Dizin başına ayarlanabilir. Erişim ve varsayılan ACL 'Lerin her biri kendi 32 ACL girdisi sınırına sahiptir. Mümkünse ACL atamaları için güvenlik gruplarını kullanın. Grupları kullanarak, dosya veya dizin başına en fazla ACL girişi sayısını aşmanız daha az olabilir.
 
 ### <a name="where-can-i-learn-more-about-posix-access-control-model"></a>POSIX erişim denetimi modeli hakkında daha fazla bilgiyi nereden bulabilirim?
 

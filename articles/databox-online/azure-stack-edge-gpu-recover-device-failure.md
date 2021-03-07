@@ -6,16 +6,18 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 12/11/2020
+ms.date: 02/22/2021
 ms.author: alkohli
-ms.openlocfilehash: e5734591bfc48469eacc1ad39cbb89f3850bfc8c
-ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
+ms.openlocfilehash: b32757dddf745e7aaa0ea8276a3527fa464cc0d4
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/13/2020
-ms.locfileid: "97367075"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102442171"
 ---
 # <a name="recover-from-a-failed-azure-stack-edge-pro-gpu-device"></a>Başarısız Azure Stack Edge Pro GPU cihazından kurtarma 
+
+[!INCLUDE [applies-to-GPU-and-pro-r-skus](../../includes/azure-stack-edge-applies-to-gpu-pro-r-sku.md)]
 
 Bu makalede Azure Stack Edge Pro GPU cihazınızdan toleransız olmayan bir hatadan nasıl kurtarılacağı açıklanır. Azure Stack Edge Pro GPU cihazındaki toleransız bir hata, cihazın değiştirilmesini gerektirir.
 
@@ -80,7 +82,7 @@ Potansiyel bir cihaz hatasına hazırlanmak için, VM 'lerdeki verileri korumak 
 
 
 
-| Yedekleme çözümleri        | Desteklenen işletim sistemi   | Başvuru                                                                |
+| Yedekleme çözümleri        | Desteklenen İşletim Sistemi   | Başvuru                                                                |
 |-------------------------|----------------|--------------------------------------------------------------------------|
 | Azure Backup için Microsoft Azure Kurtarma Hizmetleri (MARS) Aracısı | Windows        | [MARS aracısı hakkında](../backup/backup-azure-about-mars.md)    |
 | Cohesity                | Windows, Linux | [Microsoft Azure tümleştirme, yedekleme & kurtarma çözümü kısa](https://www.cohesity.com/solution/cloud/azure) <br>Ayrıntılar için Cohesity başvurun.                          |

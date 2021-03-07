@@ -6,16 +6,18 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 01/22/2021
+ms.date: 02/22/2021
 ms.author: alkohli
-ms.openlocfilehash: 1ee0ba89ef56d819fdc7553959a8a37fdbd6f7fe
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 28988af0c1b3b5e4e5ce359abb617a66af816d69
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101730669"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102439825"
 ---
 # <a name="deploy-vms-on-your-azure-stack-edge-device-via-azure-powershell"></a>Azure PowerShell aracılığıyla Azure Stack Edge cihazınızda VM 'Leri dağıtma
+
+[!INCLUDE [applies-to-GPU-and-pro-r-and-mini-r-skus](../../includes/azure-stack-edge-applies-to-gpu-pro-r-mini-r-sku.md)]
 
 Bu makalede, Azure PowerShell kullanarak Azure Stack Edge cihazınızda bir sanal makinenin (VM) nasıl oluşturulacağı ve yönetileceği açıklanmaktadır. Bilgiler, GPU (grafik işleme birimi), Azure Stack Edge Pro R ve Azure Stack Edge Mini R cihazlarında Azure Stack Edge Pro için geçerlidir.
 

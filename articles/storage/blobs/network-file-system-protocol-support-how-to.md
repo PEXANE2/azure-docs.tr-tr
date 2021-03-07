@@ -9,16 +9,16 @@ ms.date: 08/04/2020
 ms.author: normesta
 ms.reviewer: yzheng
 ms.custom: references_regions
-ms.openlocfilehash: db946dcc0fc8571f7b6aa191909155baccf7d1a2
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 8ed63a508447104f9073c986debfae73ba7de89f
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98878587"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102428652"
 ---
 # <a name="mount-blob-storage-by-using-the-network-file-system-nfs-30-protocol-preview"></a>Ağ dosya sistemi (NFS) 3,0 protokolünü (Önizleme) kullanarak blob depolamayı bağlama
 
-BLOB depolama alanına bir kapsayıcıyı Windows veya Linux tabanlı bir Azure sanal makinesi (VM) veya NFS 3,0 protokolünü kullanarak şirket içinde çalışan bir Windows veya Linux sisteminden bağlayabilirsiniz. Bu makalede adım adım yönergeler sunulmaktadır. Blob depolamada NFS 3,0 protokol desteği hakkında daha fazla bilgi edinmek için bkz. [Azure Blob Storage 'da (Önizleme) ağ dosya sistemi (NFS) 3,0 protokol desteği](network-file-system-protocol-support.md).
+Bir kapsayıcıyı, Linux tabanlı bir Azure sanal makinesi (VM) veya şirket içinde çalışan bir Linux sisteminden NFS 3,0 protokolünü kullanarak, BLOB depolama alanına bağlayabilirsiniz. Bu makalede adım adım yönergeler sunulmaktadır. Blob depolamada NFS 3,0 protokol desteği hakkında daha fazla bilgi edinmek için bkz. [Azure Blob Storage 'da (Önizleme) ağ dosya sistemi (NFS) 3,0 protokol desteği](network-file-system-protocol-support.md).
 
 ## <a name="step-1-register-the-nfs-30-protocol-feature-with-your-subscription"></a>1. Adım: NFS 3,0 protokol özelliğini aboneliğiniz ile kaydetme
 
@@ -107,9 +107,7 @@ Tüm diğer ayarlar için varsayılan değerleri kabul edebilirsiniz.
 
 ## <a name="step-7-mount-the-container"></a>7. Adım: kapsayıcıyı bağlama
 
-Windows veya Linux sisteminizde bir dizin oluşturun ve ardından depolama hesabına bir kapsayıcı bağlayın.
-
-### <a name="linux"></a>[Linux](#tab/linux)
+Linux sisteminizde bir dizin oluşturun ve depolama hesabına bir kapsayıcı bağlayın.
 
 1. Linux sisteminde bir dizin oluşturun.
 
@@ -126,32 +124,6 @@ Windows veya Linux sisteminizde bir dizin oluşturun ve ardından depolama hesab
    - `<storage-account-name>`Bu komutta görünen yer tutucuyu depolama hesabınızın adıyla değiştirin.  
 
    - `<container-name>`Yer tutucusunu kapsayıcının adıyla değiştirin.
-
-
-### <a name="windows"></a>[Windows](#tab/windows)
-
-1. **Windows özellikleri** iletişim kutusunu açın ve ardından **NFS istemcisi** özelliğini açın. 
-
-   ![Ağ dosya sistemi için istemci özelliği](media/network-file-system-protocol-how-to/client-for-network-files-system-feature.png)
-
-2. Bir **komut istemi** penceresi açın (cmd.exe). Sonra [Mount](/windows-server/administration/windows-commands/mount) komutunu kullanarak bir kapsayıcı bağlayın.
-
-   ```
-   mount -o nolock <storage-account-name>.blob.core.windows.net:/<storage-account-name>/<container-name> *
-   ```
-
-   - `<storage-account-name>`Bu komutta görünen yer tutucuyu depolama hesabınızın adıyla değiştirin.  
-
-   - `<container-name>`Yer tutucusunu kapsayıcının adıyla değiştirin.
-
-3. Yazma izinlerine ihtiyacınız varsa, Windows 'un paylaşıma bağlanmak için kullandığı varsayılan UID ve GID 'yi değiştirmeniz gerekebilir. Bunu yapmak için aşağıdaki PowerShell komutlarını yönetici olarak çalıştırın:
-
-   ```
-   New-ItemProperty -Path HKLM:\SOFTWARE\Microsoft\ClientForNFS\CurrentVersion\Default -Name AnonymousUid -PropertyType DWord -Value 0
-   New-ItemProperty -Path HKLM:\SOFTWARE\Microsoft\ClientForNFS\CurrentVersion\Default -Name AnonymousGid -PropertyType DWord -Value 0
-   ```
-   
-   - NFS istemci hizmetini yeniden başlatın veya bu değişikliği yaptıktan sonra sunucuyu yeniden başlatın.
 
 ---
 

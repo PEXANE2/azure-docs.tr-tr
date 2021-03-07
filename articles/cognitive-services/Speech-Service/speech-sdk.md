@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 04/03/2020
 ms.author: trbye
-ms.openlocfilehash: 597a7c3954912a3a86b5db9f92ba75e8aaee63f6
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: 4c8ee3a65c26d1eb3acb7b9f4c18f11e870e4b82
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98601819"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102434594"
 ---
 # <a name="about-the-speech-sdk"></a>Konuşma SDK'sı hakkında
 
@@ -58,13 +58,14 @@ Konuşma SDK 'Sı, konuşma hizmetinden pek çok özelliği kullanıma sunar, an
 
 ### <a name="voice-assistants"></a>Ses yardımcıları
 
-Konuşma SDK 'sını kullanan [sesli yardımcılar](voice-assistants.md) , geliştiricilerin, uygulamaları ve deneyimleri için doğal ve insan benzeri konuşma arabirimleri oluşturmalarına olanak tanır. Ses Yardımcısı hizmeti, bir cihaz ve yardımcı arasında hızlı ve güvenilir bir etkileşim sağlar. Uygulama, bot çerçevesinin doğrudan hat konuşma kanalını veya görev tamamlama için tümleşik özel komutlar hizmetini kullanır. Ayrıca, sesli yardımcılar benzersiz bir ses çıkışı deneyimi eklemek için [özel ses portalında](https://aka.ms/customvoice) oluşturulan özel sesleri kullanabilir.
+Konuşma SDK 'sını kullanan [sesli yardımcılar](voice-assistants.md) , uygulamalarınız ve deneyimleriniz için doğal ve insan benzeri konuşma arabirimleri oluşturmanıza imkan tanır. Konuşma SDK 'Sı, tek bir bağlantıda konuşmadan metne, metinden konuşmaya ve konuşma verileri içeren hızlı ve güvenilir bir etkileşim sağlar. Uygulamanız, bot çerçevesinin doğrudan hat konuşma kanalını veya görev tamamlama için tümleşik özel komutlar hizmetini kullanabilir. Ayrıca, sesli yardımcılar benzersiz bir ses çıkışı deneyimi eklemek için [özel ses portalında](https://aka.ms/customvoice) oluşturulan özel sesleri kullanabilir.
 
-**Ses yardımcıları** aşağıdaki platformlarda kullanılabilir:
+**Ses Yardımcısı** desteği aşağıdaki platformlarda kullanılabilir:
 
   - C++/Windows & Linux & macOS
   - C#/Windows
   - Java/Windows & Linux & macOS & Android (konuşma cihazları SDK)
+  - Go
 
 #### <a name="keyword-spotting"></a>Anahtar sözcük biriktirme
 
@@ -113,7 +114,7 @@ Konuşma SDK 'Sı, telefon verilerinin oluşturulduğu, çağrı merkezi senaryo
 
 ### <a name="codec-compressed-audio-input"></a>Codec sıkıştırılmış ses girişi
 
-Konuşma SDK 'Sı programlama dillerinin birkaçı codec sıkıştırılmış ses giriş akışlarını destekler. Daha fazla bilgi için bkz. <a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-use-codec-compressed-audio-input-streams" target="_blank">sıkıştırılmış ses girişi biçimlerini <span class="docon docon-navigate-external x-hidden-focus"></span> kullanma </a>.
+Konuşma SDK 'Sı programlama dillerinin birkaçı codec sıkıştırılmış ses giriş akışlarını destekler. Daha fazla bilgi için bkz. <a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-use-codec-compressed-audio-input-streams" target="_blank">sıkıştırılmış ses girişi biçimlerini kullanma </a>.
 
 **Codec ile sıkıştırılmış ses girişi** aşağıdaki platformlarda kullanılabilir:
 
