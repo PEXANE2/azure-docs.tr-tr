@@ -7,12 +7,12 @@ ms.service: route-server
 ms.topic: overview
 ms.date: 03/02/2021
 ms.author: duau
-ms.openlocfilehash: 099f9b3769179076491c7c2098ec56faff9847dd
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: d868c064b96f58ab3febc1fd3b7f20b74d507cb0
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102039844"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102437170"
 ---
 # <a name="what-is-azure-route-server-preview"></a>Azure Route Server (Önizleme) nedir? 
 
@@ -37,7 +37,7 @@ Azure Route Server, sanal ağınızdaki NVA 'nın yapılandırma, yönetim ve da
 
 * NVA yeni yollar duyurur veya eskileri geri çekdiğinde artık [Kullanıcı tanımlı yolları](../virtual-network/virtual-networks-udr-overview.md) el ile güncelleştirmeniz gerekmez. 
 
-* Artık esneklik veya performans amaçlarıyla NVA 'nın önünde bir yük dengeleyici yapılandırmanız gerekmez. Azure Route Server ile NVA 'nın birden çok örneğini eşler, NVA 'inizdeki BGP özniteliklerini yapılandırabilirsiniz. Bu BGP öznitelikleri, NVA örneğinin etkin veya pasif olması gereken Azure Route sunucusuna izin verir. 
+* Azure Route sunucusu ile NVA 'nın birden çok örneğini kullanabilirsiniz. , Tasarımınıza bağlı olarak, NVA 'ınızda BGP özniteliklerini yapılandırabilir (örn. performans için etkin-etkin veya dayanıklılık için etkin-Pasif), Azure Route Server 'ın hangi NVA örneğinin etkin olduğunu veya hangisinin pasif olduğunu bilmesini sağlayabilirsiniz. 
 
 * NVA ve Azure yol sunucusu arasındaki arabirim, ortak bir standart protokolü temel alır. NVA BGP 'yi desteklediği sürece, bunu Azure Route sunucusu ile de aktarabilirsiniz. Daha fazla bilgi için bkz. [Route Server desteklenen yönlendirme protokolleri](route-server-faq.md#protocol).
 

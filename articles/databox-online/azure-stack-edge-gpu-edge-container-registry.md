@@ -6,16 +6,18 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 11/11/2020
+ms.date: 02/22/2021
 ms.author: alkohli
-ms.openlocfilehash: bccb6fa33007082737997c7282fb286c38e3bbd7
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: f19625f1d558071ccb29487efe56146756c7692c
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96467021"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102437545"
 ---
 # <a name="enable-edge-container-registry-on-your-azure-stack-edge-pro-gpu-device"></a>Azure Stack Edge Pro GPU cihazınızda kenar kapsayıcısı kayıt defterini etkinleştirme
+
+[!INCLUDE [applies-to-GPU-and-pro-r-and-mini-r-skus](../../includes/azure-stack-edge-applies-to-gpu-pro-r-mini-r-sku.md)]
 
 Bu makalede, Edge kapsayıcı kayıt defterinin nasıl etkinleştirileceği ve Azure Stack Edge Pro cihazınızda Kubernetes kümesi içinden nasıl kullanılacağı açıklanır. Makalede kullanılan örnekte, bir kaynak kayıt defterinden bir görüntüyü gönderme ayrıntıları, bu durumda Microsoft kapsayıcı kayıt defteri, Azure Stack Edge cihazında, kenar kapsayıcısı kayıt defteri.
 

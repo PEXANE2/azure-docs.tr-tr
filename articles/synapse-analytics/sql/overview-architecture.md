@@ -10,12 +10,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: bd911868028825164cdd9627bf6b5c6d56de7164
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 28940272d39a08d790fe2cd913df808b02e7f426
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98679627"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102441899"
 ---
 # <a name="azure-synapse-sql-architecture"></a>Azure Synapse SQL mimarisi 
 
@@ -35,7 +35,7 @@ SYNAPSE SQL, düğüm tabanlı bir mimari kullanır. Uygulamalar, T-SQL komutlar
 
 Azure SYNAPSE SQL denetim düğümü, paralel işleme için sorguları iyileştirmek üzere dağıtılmış bir sorgu altyapısını kullanır ve ardından çalışmalarını paralel olarak yapmak üzere işlem düğümlerine geçirir. 
 
-Sunucusuz SQL havuzu denetim düğümü, dağıtılmış sorgu Işleme (DQP) altyapısını, Işlem düğümlerinde yürütülecek daha küçük sorgulara bölerek Kullanıcı sorgusunun dağıtılmış yürütmesini iyileştirmek ve düzenlemek için kullanır. Her küçük sorgu görev olarak adlandırılır ve dağıtılmış yürütme birimini temsil eder. Depolamadan dosya (ler) i okur, diğer görevlerden alınan sonuçlara, grupların veya sipariş verilerinden oluşan sonuçları birleştirir. 
+Sunucusuz SQL havuzu denetim düğümü, dağıtılmış sorgu Işleme (DQP) altyapısını, Işlem düğümlerinde yürütülecek daha küçük sorgulara bölerek Kullanıcı sorgusunun dağıtılmış yürütmesini iyileştirmek ve düzenlemek için kullanır. Her küçük sorgu görev olarak adlandırılır ve dağıtılmış yürütme birimini temsil eder. Depolama alanından dosya (lar) ı okur, diğer görevlerden alınan sonuçları, grupları veya diğer görevlerden alınan verileri birleştirir. 
 
 İşlem düğümleri tüm kullanıcı verilerini Azure Depolama’da depolar ve paralel sorgular çalıştırır. Veri Taşıma Hizmeti (DMS), sorguları paralel olarak çalıştırmak ve doğru sonuçlar döndürmek için verileri düğümler arasında taşıyan, sistem düzeyindeki bir dahili hizmettir. 
 
@@ -49,7 +49,7 @@ Ayrılmış depolama ve işlem ile, SYNAPSE SQL 'in kullanılması, depolama iht
 
 SYNAPSE SQL, kullanıcı verilerinizi güvende tutmak için Azure Storage 'ı kullanır. Verileriniz Azure depolama tarafından depolandığından ve yönetildiğinden, depolama tüketiminize yönelik ayrı bir ücret alınır. 
 
-Sunucusuz SQL havuzu, Veri Gölü dosyaları salt okuma biçiminde sorgulamanızı sağlar, ancak SQL havuzu verileri de almanızı sağlar. Veriler adanmış SQL havuzuna eklendiğinde, sistem performansını iyileştirmek için veriler **dağıtımlarla** birleştirilir. Tabloyu tanımlarken verileri dağıtmak için hangi parçalama deseninin kullanılacağını seçebilirsiniz. Bu parçalı desenler desteklenir:
+Sunucusuz SQL havuzu, Data Lake dosyalarınızı sorgulamanızı sağlar, ancak adanmış SQL havuzu veri Gölü dosyalarından verileri sorgulamanızı ve bunları almanıza olanak sağlar. Veriler adanmış SQL havuzuna eklendiğinde, sistem performansını iyileştirmek için veriler **dağıtımlarla** birleştirilir. Tabloyu tanımlarken verileri dağıtmak için hangi parçalama deseninin kullanılacağını seçebilirsiniz. Bu parçalı desenler desteklenir:
 
 * Karma
 * Hepsini Bir Kez Deneme
@@ -107,7 +107,7 @@ Hepsini bir kez deneme dağıtılmış tablosu, verileri tabloda eşit olarak da
 ## <a name="replicated-tables"></a>Çoğaltılmış tablolar
 Çoğaltılmış bir tablo, küçük tablolar için en hızlı sorgu performansını sağlar.
 
-Çoğaltılan bir tablo, her işlem düğümündeki tablonun tam bir kopyasını önbelleğe alır. Sonuç olarak, bir tablo çoğaltıldığında bir birleştirme veya toplama öncesinde işlem düğümleri arasında verileri aktarma gereksinimi ortadan kalkar. Çoğaltılmış tablolar, küçük tablolar ile en iyi şekilde kullanılır. Ek depolama alanı gereklidir ve büyük tabloları pratik hale getirmek için veri yazarken tahakkuk eden ek yük vardır. 
+Çoğaltılan bir tablo, her işlem düğümündeki tablonun tam bir kopyasını önbelleğe alır. Bu nedenle, bir tablonun çoğaltılması, bir JOIN veya toplanmadan önce işlem düğümleri arasında veri aktarımı gereksinimini ortadan kaldırır. Çoğaltılmış tablolar, küçük tablolar ile en iyi şekilde kullanılır. Ek depolama alanı gereklidir ve büyük tabloları pratik hale getirmek için veri yazarken tahakkuk eden ek yük vardır. 
 
 Aşağıdaki diyagramda, her işlem düğümündeki ilk dağıtım üzerinde önbelleğe alınmış bir çoğaltılan tablo gösterilmektedir. 
 
@@ -115,4 +115,4 @@ Aşağıdaki diyagramda, her işlem düğümündeki ilk dağıtım üzerinde ön
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Artık SYNAPSE SQL hakkında bir bit öğrenmiş olduğunuza göre, kolayca [adanmış BIR SQL havuzu oluşturmayı](../quickstart-create-sql-pool-portal.md) ve [örnek verileri yüklemeyi](../sql-data-warehouse/sql-data-warehouse-load-from-azure-blob-storage-with-polybase.md) öğrenin (./SQL-Data-Warehouse-Load-Sample-Databases.MD). Ya da [sunucusuz SQL havuzunu kullanmaya](../quickstart-sql-on-demand.md)başlayabilirsiniz. Azure’da yeniyseniz yeni terimlerle karşılaşabileceğinizi için [Azure sözlüğünü](../../azure-glossary-cloud-terminology.md) yararlı bulabilirsiniz. 
+Artık SYNAPSE SQL hakkında bir bit öğrenmiş olduğunuza göre, kolayca [adanmış BIR SQL havuzu oluşturmayı](../quickstart-create-sql-pool-portal.md) ve [örnek verileri yüklemeyi](../sql-data-warehouse/sql-data-warehouse-load-from-azure-blob-storage-with-polybase.md) öğrenin (./SQL-Data-Warehouse-Load-Sample-Databases.MD). Ya da [sunucusuz SQL havuzunu kullanmaya](../quickstart-sql-on-demand.md)başlayın. Azure’da yeniyseniz yeni terimlerle karşılaşabileceğinizi için [Azure sözlüğünü](../../azure-glossary-cloud-terminology.md) yararlı bulabilirsiniz. 

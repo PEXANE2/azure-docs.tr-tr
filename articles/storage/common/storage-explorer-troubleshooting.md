@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: troubleshooting
 ms.date: 07/28/2020
 ms.author: delhan
-ms.openlocfilehash: 9a20db58846ca48afb4fb256adae58e1fccdff3a
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 15df9b38abe35fe3eefad2fa160e1c1f16fe7aa7
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98875745"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102439468"
 ---
 # <a name="azure-storage-explorer-troubleshooting-guide"></a>Azure Depolama Gezgini sorun giderme kılavuzu
 
@@ -58,14 +58,22 @@ Herhangi bir yönetim katmanı izni veren bir rolünüz yoksa Depolama Gezgini v
 
 ### <a name="what-if-i-cant-get-the-management-layer-permissions-i-need-from-my-administrator"></a>Yöneticimde ihtiyacım olan yönetim katmanı izinlerini alamazsanız ne yapmalıyım?
 
-Blob kapsayıcılarına veya kuyruklara erişmek istiyorsanız, Azure kimlik bilgilerinizi kullanarak bu kaynaklara iliştirebilirsiniz.
+Blob kapsayıcılarına, ADLS 2. kapsayıcılara veya dizinlere veya kuyruklara erişmek istiyorsanız, Azure kimlik bilgilerinizi kullanarak bu kaynaklara iliştirebilirsiniz.
 
 1. Bağlan iletişim kutusunu açın.
-2. "Azure Active Directory aracılığıyla Kaynak Ekle (Azure AD)" seçeneğini belirleyin. İleri’yi seçin.
-3. İliştirmekte olduğunuz kaynakla ilişkili kullanıcı hesabı ve kiracıyı seçin. İleri’yi seçin.
-4. Kaynak türünü seçin, kaynağın URL 'sini girin ve bağlantı için benzersiz bir görünen ad girin. Ileri ' yi ve ardından Bağlan ' ı seçin
+1. Bağlanmak istediğiniz kaynak türünü seçin.
+1. **Azure Active Directory (Azure AD) kullanarak oturum aç '** ı seçin. **İleri**’yi seçin.
+1. İliştirmekte olduğunuz kaynakla ilişkili kullanıcı hesabı ve kiracıyı seçin. **İleri**’yi seçin.
+1. Kaynağın URL 'sini girin ve bağlantı için benzersiz bir görünen ad girin. **İleri** ' yi ve ardından **Bağlan**' ı seçin
 
-Diğer kaynak türleri için şu anda Azure RBAC ile ilgili bir çözümünüz yoktur. Geçici bir çözüm olarak, [kaynağına eklemek](../../vs-azure-tools-storage-manage-with-storage-explorer.md?tabs=linux#use-a-shared-access-signature-uri)IÇIN BIR SAS URI 'si isteyebilirsiniz.
+Diğer kaynak türleri için şu anda Azure RBAC ile ilgili bir çözümünüz yoktur. Geçici bir çözüm olarak, aşağıdaki adımları izleyerek bir SAS URL 'SI isteyebilir ve sonra kaynağına iliştirebilirsiniz:
+
+1. Bağlan iletişim kutusunu açın.
+1. Bağlanmak istediğiniz kaynak türünü seçin.
+1. **Paylaşılan erişim imzasını (SAS)** seçin. **İleri**’yi seçin.
+1. Aldığınız SAS URL 'sini girin ve bağlantı için benzersiz bir görünen ad girin. **İleri** ' yi ve ardından **Bağlan**' ı seçin
+ 
+Kaynaklara ekleme hakkında daha fazla bilgi için bkz. [tek bir kaynağa ekleme](../../vs-azure-tools-storage-manage-with-storage-explorer.md?tabs=linux#attach-to-an-individual-resource).
 
 ### <a name="recommended-azure-built-in-roles"></a>Önerilen Azure yerleşik rolleri
 

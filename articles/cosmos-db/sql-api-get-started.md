@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 11/05/2019
 ms.author: kirankk
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 49fa928285b29eaff806b009cf327e84e17491c6
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 2ece9ed5cb6eb6ea706db1ed615a64d001f2b17c
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93098731"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102423964"
 ---
 # <a name="tutorial-build-a-net-console-app-to-manage-data-in-azure-cosmos-db-sql-api-account"></a>Öğretici: Azure Cosmos DB SQL API hesabındaki verileri yönetmek için bir .NET konsol uygulaması oluşturma
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -62,16 +62,16 @@ Bir Azure Cosmos DB hesabı oluşturalım. Kullanmak istediğiniz bir hesabını
 
 ## <a name="step-2-set-up-your-visual-studio-project"></a><a id="SetupVS"></a>2. Adım: Visual Studio projenizi ayarlama
 
-1. Visual Studio 'Yu açın ve **Yeni proje oluştur** ' u seçin.
-1. **Yeni proje oluştur** bölümünde C# için **konsol uygulaması (.NET Framework)** öğesini seçin ve ardından **İleri** ' yi seçin.
-1. Projenizin *Cosmosgettingstartedöğreticisini* adlandırın ve **Oluştur** ' u seçin.
+1. Visual Studio 'Yu açın ve **Yeni proje oluştur**' u seçin.
+1. **Yeni proje oluştur** bölümünde C# için **konsol uygulaması (.NET Framework)** öğesini seçin ve ardından **İleri**' yi seçin.
+1. Projenizin *Cosmosgettingstartedöğreticisini* adlandırın ve **Oluştur**' u seçin.
 
     :::image type="content" source="./media/sql-api-get-started/configure-cosmos-getting-started-2019.png" alt-text="Projenizi yapılandırma":::
 
-1. **Çözüm Gezgini** , Visual Studio çözümünüzün altındaki yeni konsol uygulamanıza sağ tıklayın ve **NuGet Paketlerini Yönet** ' i seçin.
-1. **NuGet Paket Yöneticisi** 'Nde, **Araştır** ' ı seçin ve *Microsoft. Azure. Cosmos* için arama yapın. **Microsoft. Azure. Cosmos** öğesini seçin ve **yüklemeyi** seçin.
+1. **Çözüm Gezgini**, Visual Studio çözümünüzün altındaki yeni konsol uygulamanıza sağ tıklayın ve **NuGet Paketlerini Yönet**' i seçin.
+1. **NuGet Paket Yöneticisi**'Nde, **Araştır** ' ı seçin ve *Microsoft. Azure. Cosmos* için arama yapın. **Microsoft. Azure. Cosmos** öğesini seçin ve **yüklemeyi** seçin.
 
-   :::image type="content" source="./media/sql-api-get-started/cosmos-getting-started-manage-nuget-2019.png" alt-text="Projenizi yapılandırma":::
+   :::image type="content" source="./media/sql-api-get-started/cosmos-getting-started-manage-nuget-2019.png" alt-text="Azure Cosmos DB Istemci SDK 'Sı için NuGet 'i yükler":::
 
    Azure Cosmos DB SQL API'si İstemci Kitaplığının paket kimliği [Microsoft Azure Cosmos DB İstemci Kitaplığı](https://www.nuget.org/packages/Microsoft.Azure.Cosmos/)’dır.
 
@@ -120,11 +120,11 @@ Harika! Kurulumu tamamladığımıza göre, biraz kod yazmaya başlayalım. Bu �
    > [!NOTE]
    > Önceki .NET SDK sürümü hakkında bilginiz varsa *, hüküm ve* *belge* hakkında bilgi sahibi olabilirsiniz. Azure Cosmos DB birden çok API modelini desteklediğinden, .NET SDK 'nın 3,0 sürümü genel terimler *kapsayıcısını* ve *öğesini* kullanır. *Kapsayıcı* bir koleksiyon, grafik veya tablo olabilir. Bir *öğe* bir belge, Kenar/köşe veya satır olabilir ve bir kapsayıcı içindeki içeriktir. Daha fazla bilgi için bkz. [Azure Cosmos DB veritabanları, kapsayıcılar ve öğelerle çalışma](account-databases-containers-items.md).
 
-1. [Azure portalını](https://portal.azure.com) açın. Azure Cosmos DB hesabınızı bulun ve ardından **anahtarlar** ' ı seçin.
+1. [Azure portalını](https://portal.azure.com) açın. Azure Cosmos DB hesabınızı bulun ve ardından **anahtarlar**' ı seçin.
 
-   :::image type="content" source="./media/sql-api-get-started/cosmos-getting-started-portal-keys.png" alt-text="Projenizi yapılandırma":::
+   :::image type="content" source="./media/sql-api-get-started/cosmos-getting-started-portal-keys.png" alt-text="Azure portal Azure Cosmos DB anahtarları al":::
 
-1. *Program.cs* ' de, `<your endpoint URL>` **URI** değeri ile değiştirin. `<your primary key>` **Birincil anahtar** değeriyle değiştirin.
+1. *Program.cs*' de, `<your endpoint URL>` **URI** değeri ile değiştirin. `<your primary key>` **Birincil anahtar** değeriyle değiştirin.
 
 1. **Main** yönteminin altında, yeni bir zaman uyumsuz görev **ekleyin, bu, yeni** bir örneği oluşturur `CosmosClient` .
 
@@ -279,7 +279,7 @@ Tebrikler! Azure Cosmos veritabanını başarıyla oluşturdunuz.
 >
 >
 
-Bir kapsayıcı, sınıfında [**Createcontainerifnotexistsasync**](/dotnet/api/microsoft.azure.cosmos.database.createcontainerifnotexistsasync?view=azure-dotnet&preserve-view=true#Microsoft_Azure_Cosmos_Database_CreateContainerIfNotExistsAsync_Microsoft_Azure_Cosmos_ContainerProperties_System_Nullable_System_Int32__Microsoft_Azure_Cosmos_RequestOptions_System_Threading_CancellationToken_) veya [**Createcontainsilinebilir Sync**](/dotnet/api/microsoft.azure.cosmos.database.createcontainerasync?view=azure-dotnet&preserve-view=true#Microsoft_Azure_Cosmos_Database_CreateContainerAsync_Microsoft_Azure_Cosmos_ContainerProperties_System_Nullable_System_Int32__Microsoft_Azure_Cosmos_RequestOptions_System_Threading_CancellationToken_) yöntemi kullanılarak oluşturulabilir `CosmosDatabase` . Bir kapsayıcı, JavaScript 'te, örneğin saklı yordamlar, Kullanıcı tanımlı işlevler ve tetikleyiciler gibi öğeler (SQL API 'SI ise JSON belgeleri) ve ilişkili sunucu tarafı uygulama mantığını içerir.
+Bir kapsayıcı, sınıfında [**Createcontainerifnotexistsasync**](/dotnet/api/microsoft.azure.cosmos.database.createcontainerifnotexistsasync#Microsoft_Azure_Cosmos_Database_CreateContainerIfNotExistsAsync_Microsoft_Azure_Cosmos_ContainerProperties_System_Nullable_System_Int32__Microsoft_Azure_Cosmos_RequestOptions_System_Threading_CancellationToken_) veya [**Createcontainsilinebilir Sync**](/dotnet/api/microsoft.azure.cosmos.database.createcontainerasync#Microsoft_Azure_Cosmos_Database_CreateContainerAsync_Microsoft_Azure_Cosmos_ContainerProperties_System_Nullable_System_Int32__Microsoft_Azure_Cosmos_RequestOptions_System_Threading_CancellationToken_) yöntemi kullanılarak oluşturulabilir `CosmosDatabase` . Bir kapsayıcı, JavaScript 'te, örneğin saklı yordamlar, Kullanıcı tanımlı işlevler ve tetikleyiciler gibi öğeler (SQL API 'SI ise JSON belgeleri) ve ilişkili sunucu tarafı uygulama mantığını içerir.
 
 1. Yöntemi kopyalayın ve `CreateContainerAsync` yönteminin altına yapıştırın `CreateDatabaseAsync` . `CreateContainerAsync``FamilyContainer` `containerId` özellik tarafından bölümlenmiş alandan belirtilen kimliği kullanarak, zaten mevcut DEĞILSE, kimlik ile yeni bir kapsayıcı oluşturur `LastName` .
 
@@ -305,20 +305,20 @@ Tebrikler! Azure Cosmos kapsayıcısını başarıyla oluşturdunuz.
 
 ## <a name="step-6-add-items-to-the-container"></a><a id="CreateDoc"></a>6. Adım: kapsayıcıya öğe ekleme
 
-Sınıfın [**Createitemasync**](/dotnet/api/microsoft.azure.cosmos.container.createitemasync?view=azure-dotnet&preserve-view=true#Microsoft_Azure_Cosmos_Container_CreateItemAsync__1___0_System_Nullable_Microsoft_Azure_Cosmos_PartitionKey__Microsoft_Azure_Cosmos_ItemRequestOptions_System_Threading_CancellationToken_) yöntemi `CosmosContainer` bir öğe oluşturabilir. SQL API 'sini kullanırken öğeler, Kullanıcı tanımlı rastgele JSON içeriği olan belgeler olarak yansıtılacaktır. Artık Azure Cosmos kapsayıcınıza bir öğe ekleyebilirsiniz.
+Sınıfın [**Createitemasync**](/dotnet/api/microsoft.azure.cosmos.container.createitemasync#Microsoft_Azure_Cosmos_Container_CreateItemAsync__1___0_System_Nullable_Microsoft_Azure_Cosmos_PartitionKey__Microsoft_Azure_Cosmos_ItemRequestOptions_System_Threading_CancellationToken_) yöntemi `CosmosContainer` bir öğe oluşturabilir. SQL API 'sini kullanırken öğeler, Kullanıcı tanımlı rastgele JSON içeriği olan belgeler olarak yansıtılacaktır. Artık Azure Cosmos kapsayıcınıza bir öğe ekleyebilirsiniz.
 
 İlk olarak, `Family` Bu örnekteki Azure Cosmos db içinde depolanan nesneleri temsil eden bir sınıf oluşturalım. Ayrıca `Parent` , `Child` `Pet` `Address` içinde kullanılan alt sınıflar `Family` da oluşturacağız. Öğe `Id` JSON içinde olarak seri hale getirilmiş bir özelliğe sahip olmalıdır `id` .
 
-1. **Yeni öğe Ekle** ' yi açmak için CTRL + SHIFT + A ' yı seçin. Projenize yeni bir sınıf ekleyin `Family.cs` .
+1. **Yeni öğe Ekle**' yi açmak için CTRL + SHIFT + A ' yı seçin. Projenize yeni bir sınıf ekleyin `Family.cs` .
 
-    :::image type="content" source="./media/sql-api-get-started/cosmos-getting-started-add-family-class-2019.png" alt-text="Projenizi yapılandırma":::
+    :::image type="content" source="./media/sql-api-get-started/cosmos-getting-started-add-family-class-2019.png" alt-text="Projeye yeni bir Family.cs sınıfı ekleme ekranının ekran görüntüsü":::
 
 1. ,,, `Family` `Parent` `Child` `Pet` Ve `Address` sınıfını kopyalayıp içine yapıştırın `Family.cs` .
 
     [!code-csharp[](~/cosmos-dotnet-getting-started/CosmosGettingStartedTutorial/Family.cs)]
 
 
-1. *Program.cs* 'e geri döndüğünüzde, yönteminizi `AddItemsToContainerAsync` uyguladıktan sonra yöntemi ekleyin `CreateContainerAsync` .
+1. *Program.cs*'e geri döndüğünüzde, yönteminizi `AddItemsToContainerAsync` uyguladıktan sonra yöntemi ekleyin `CreateContainerAsync` .
 
     [!code-csharp[](~/cosmos-dotnet-getting-started/CosmosGettingStartedTutorial/Program.cs?name=AddItemsToContainerAsync)]
 
@@ -490,7 +490,7 @@ Bu öğreticideki adımları tamamlamaya yönelik bir zaman yoksa veya yalnızca
 * Bir [Azure Cosmos DB hesabı][cosmos-db-create-account].
 * GitHub'da bulunan [GetStarted](https://github.com/Azure-Samples/cosmos-dotnet-getting-started) çözümü.
 
-Başvuruları Visual Studio 'daki Azure Cosmos DB .NET SDK 'sına geri yüklemek için, **Çözüm Gezgini** çözüme sağ tıklayın ve ardından **NuGet paketlerini geri yükle** ' yi seçin. Sonra, *App.config* dosyasında, `EndPointUri` ve `PrimaryKey` değerlerini [Adım 3: bir Azure Cosmos DB hesabına bağlanma](#Connect)bölümünde açıklandığı gibi güncelleştirin.
+Başvuruları Visual Studio 'daki Azure Cosmos DB .NET SDK 'sına geri yüklemek için, **Çözüm Gezgini** çözüme sağ tıklayın ve ardından **NuGet paketlerini geri yükle**' yi seçin. Sonra, *App.config* dosyasında, `EndPointUri` ve `PrimaryKey` değerlerini [Adım 3: bir Azure Cosmos DB hesabına bağlanma](#Connect)bölümünde açıklandığı gibi güncelleştirin.
 
 Bu, derdir ve sizin de sizin.
 

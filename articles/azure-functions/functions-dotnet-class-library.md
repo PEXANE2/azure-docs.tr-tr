@@ -4,12 +4,12 @@ description: Azure Işlevleri çalışma zamanı ile işlem içinde çalışan k
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 07/24/2020
-ms.openlocfilehash: e29b250b25bdafb2b3af26f5669f2ae5ed485457
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 748b4a2a6af1c0183e28af8da732bc90531bee29
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102041204"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102428430"
 ---
 # <a name="develop-c-functions-using-azure-functions"></a>Azure Işlevleri 'ni kullanarak C# işlevleri geliştirme
 
@@ -23,24 +23,40 @@ Bu makale, .NET sınıf kitaplıklarında C# kullanarak Azure Işlevleri gelişt
 Bir C# geliştiricisi olarak, aşağıdaki makalelerden biriyle de ilgileniyor olabilirsiniz:
 
 | Başlarken | Kavramlar| Kılavuzlu öğrenme/örnekler |
-| -- | -- | -- | 
+|--| -- |--| 
 | <ul><li>[Visual Studio’yu kullanma](functions-create-your-first-function-visual-studio.md)</li><li>[Visual Studio Code’u kullanma](create-first-function-vs-code-csharp.md)</li><li>[Komut satırı araçlarını kullanma](create-first-function-cli-csharp.md)</li></ul> | <ul><li>[Barındırma seçenekleri](functions-scale.md)</li><li>[Performans &nbsp; konuları](functions-best-practices.md)</li><li>[Visual Studio geliştirme](functions-develop-vs.md)</li><li>[Bağımlılık ekleme](functions-dotnet-dependency-injection.md)</li></ul> | <ul><li>[Sunucusuz uygulamalar oluşturma](/learn/paths/create-serverless-applications/)</li><li>[C# örnekleri](/samples/browse/?products=azure-functions&languages=csharp)</li></ul> |
 
 Azure Işlevleri C# ve C# betiği programlama dillerini destekler. [Azure Portal c# kullanma](functions-create-function-app-portal.md)hakkında rehberlik arıyorsanız bkz. [c# betiği (. CSX) geliştirici başvurusu](functions-reference-csharp.md).
 
 ## <a name="supported-versions"></a>Desteklenen sürümler
 
-Işlevler çalışma zamanının sürümleri .NET 'in belirli sürümleriyle çalışır. Aşağıdaki tabloda, projenizdeki belirli bir Işlev sürümü ile kullanılabilecek en yüksek .NET Core ve .NET Framework ve .NET Core düzeyi gösterilmektedir. 
+Işlevler çalışma zamanının sürümleri .NET 'in belirli sürümleriyle çalışır. Işlev sürümleri hakkında daha fazla bilgi edinmek için bkz. [Azure işlevleri çalışma zamanı sürümlerine genel bakış](functions-versions.md)
+
+Aşağıdaki tabloda, belirli bir Işlev sürümü ile kullanılabilecek en yüksek düzeyde .NET Core veya .NET Framework gösterilmektedir. 
 
 | İşlevler çalışma zamanı sürümü | En yüksek .NET sürümü |
 | ---- | ---- |
-| İşlevler 3. x | .NET Core 3.1<br/>.NET 5,0<sup>*</sup> |
-| İşlevler 2.x | .NET Core 2.2 |
+| İşlevler 3. x | .NET Core 3.1<br/>.NET 5,0<sup>1</sup> |
+| İşlevler 2.x | .NET Core 2,2<sup>2</sup> |
 | İşlevler 1.x |  .NET Framework 4.7 |
 
-<sup>*</sup>[İşlem dışı](dotnet-isolated-process-guide.md)çalıştırılmalıdır.
+<sup>1</sup> [işlem dışı](dotnet-isolated-process-guide.md)çalışmalıdır.  
+<sup>2</sup> Ayrıntılar için bkz. [işlevler v2. x konuları](#functions-v2x-considerations).   
 
-Daha fazla bilgi için bkz. [Azure işlevleri çalışma zamanı sürümlerine genel bakış](functions-versions.md)
+Belirli eski küçük sürümlerin kaldırılması dahil olmak üzere Azure Işlevleri ile ilgili en son haberler için [Azure App Service bildirilerini](https://github.com/Azure/app-service-announcements/issues)izleyin.
+
+### <a name="functions-v2x-considerations"></a>İşlevler v2. x konuları
+
+En son 2. x sürümünü () hedefleyen işlev uygulamaları, `~2` .NET Core 3,1 ' de çalışacak şekilde otomatik olarak yükseltilir. .NET Core sürümleri arasındaki önemli değişiklikler nedeniyle, .NET Core 2,2 ile geliştirilen ve derlenen tüm uygulamalar güvenli bir şekilde .NET Core 3,1 sürümüne yükseltilebilir. İşlev uygulamanızı öğesine sabitleyerek Bu yükseltmeyi devre dışı bırakabilirsiniz `~2.0` . İşlevler ayrıca uyumsuz API 'Leri algılar ve `~2.0` .NET Core 3,1 ' de yanlış yürütmeyi engellemek için uygulamanızı ' a sabitleyebilir. 
+
+>[!NOTE]
+>İşlev uygulamanız sabitlenir `~2.0` ve bu sürüm hedefini olarak değiştirirseniz `~2` , işlev uygulamanız kesintiye uğramayabilir. ARM şablonları kullanarak dağıtıyorsanız, şablonlarınızın sürümünü kontrol edin. Bu durumda, sürümünüzü hedefle olarak değiştirin `~2.0` ve uyumluluk sorunlarını giderin. 
+
+Hedeflenen işlev uygulamaları `~2.0` .NET Core 2,2 ' de çalıştırılmaya devam eder. .NET Core 'un bu sürümü artık güvenlik ve diğer bakım güncelleştirmelerini almaz. Daha fazla bilgi edinmek için [Bu duyuru sayfasına](https://github.com/Azure/app-service-announcements/issues/266)bakın. 
+
+İşlevlerinizi .NET Core 3,1 ile uyumlu hale getirmek için en kısa sürede çalışmanız gerekir. Bu sorunları çözdükten sonra sürümünüzü yeniden olarak değiştirin `~2` veya sürümüne yükseltin `~3` . Işlevler çalışma zamanının hedeflenen sürümlerini hakkında daha fazla bilgi edinmek için bkz. [Azure işlevleri çalışma zamanı sürümlerini](set-runtime-version.md)hedefleme.
+
+Bir Premium veya adanmış (App Service) planında Linux üzerinde çalışırken, nasıl ayarlanacağını öğrenmek için site yapılandırma ayarını olarak ayarlayarak belirli bir görüntüyü hedefleyerek sürümünüzü sabitleyerek `linuxFxVersion` `DOCKER|mcr.microsoft.com/azure-functions/dotnet:2.0.14786-appservice` `linuxFxVersion` , [Linux üzerinde el ile sürüm güncelleştirmeleri](set-runtime-version.md#manual-version-updates-on-linux)bölümüne bakın.
 
 ## <a name="functions-class-library-project"></a>İşlevler sınıf kitaplığı projesi
 
@@ -97,7 +113,7 @@ Yöntem imzası, tetikleyici özniteliğiyle kullanılandan farklı parametreler
 * `CancellationToken` [Düzgün kapanma](#cancellation-tokens)için bir parametre.
 * Tetikleyici meta verilerini almak için [ifade parametreleri bağlama](./functions-bindings-expressions-patterns.md) .
 
-İşlev imzasında parametrelerin sırası önemi yoktur. Örneğin, tetikleme parametrelerini diğer bağlamalardan önce veya sonra koyabilirsiniz ve tetikleyici veya bağlama parametrelerinden önce veya sonra günlükçü parametresini yerleştirebilirsiniz.
+İşlev imzasında parametrelerin sırası sizin için değildir. Örneğin, tetikleme parametrelerini diğer bağlamalardan önce veya sonra koyabilirsiniz ve tetikleyici veya bağlama parametrelerinden önce veya sonra günlükçü parametresini yerleştirebilirsiniz.
 
 ### <a name="output-bindings"></a>Çıkış bağlamaları
 
@@ -147,7 +163,7 @@ public static class BindingExpressionsExample
 
 Yapı işlemi, derleme klasöründeki bir işlev klasöründe bir *function.js* dosya oluşturur. Daha önce belirtildiği gibi, bu dosyanın doğrudan düzenlenmesi amaçlıyordu. Bu dosyayı düzenleyerek bağlama yapılandırmasını değiştiremez veya işlevi devre dışı bırakabilirsiniz. 
 
-Bu dosyanın amacı, [Tüketim planındaki kararları ölçeklendirirken](event-driven-scaling.md)kullanılacak ölçek denetleyicisine bilgi sağlamaktır. Bu nedenle, dosya yalnızca tetikleyici bilgisine sahiptir, giriş veya çıkış bağlamaları değildir.
+Bu dosyanın amacı, [Tüketim planındaki kararları ölçeklendirirken](event-driven-scaling.md)kullanılacak ölçek denetleyicisine bilgi sağlamaktır. Bu nedenle, dosya yalnızca tetikleyici bilgisine sahiptir, giriş/çıkış bağlamaları değildir.
 
 Dosyada oluşturulan *function.js* , `configurationSource` çalışma zamanına yapılandırma *function.js* yerine bağlama için .net öznitelikleri kullanmasını söyleyen bir özelliği içerir. Aşağıda bir örnek verilmiştir:
 
@@ -172,7 +188,7 @@ Dosyada oluşturulan *function.js* , `configurationSource` çalışma zamanına 
 
 Dosya oluşturma *function.js* , NuGet paketi [Microsoft \. net \. SDK \. işlevleri](https://www.nuget.org/packages/Microsoft.NET.Sdk.Functions)tarafından gerçekleştirilir. 
 
-Aynı paket, Işlevler çalışma zamanının hem sürüm 1. x hem de 2. x için kullanılır. Hedef Framework, bir 2. x projesinden 1. x projesini farklılaştırır. Farklı hedef çerçeveleri ve aynı paketi gösteren *. csproj* dosyalarının ilgili bölümleri aşağıda verilmiştir `Sdk` :
+Aynı paket, Işlevler çalışma zamanının hem sürüm 1. x hem de 2. x için kullanılır. Hedef Framework, bir 2. x projesinden 1. x projesini farklılaştırır. Aynı pakete sahip farklı hedef çerçeveleri gösteren *. csproj* dosyalarının ilgili bölümleri aşağıda verilmiştir `Sdk` :
 
 # <a name="v2x"></a>[v2. x +](#tab/v2)
 
@@ -625,7 +641,7 @@ public static class IBinderExample
 
 [Blobattribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.Extensions.Storage/Blobs/BlobAttribute.cs) , [Depolama Blobu](functions-bindings-storage-blob.md) girişini veya çıkış bağlamasını tanımlar ve [TextWriter](/dotnet/api/system.io.textwriter) desteklenen bir çıkış bağlama türüdür.
 
-### <a name="multiple-attribute-example"></a>Birden çok öznitelik örneği
+### <a name="multiple-attributes-example"></a>Birden çok öznitelik örneği
 
 Yukarıdaki örnek, işlev uygulamasının ana depolama hesabı bağlantı dizesi (yani) için uygulama ayarını alır `AzureWebJobsStorage` . [Storageaccountattribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/StorageAccountAttribute.cs) ' i ekleyip öznitelik dizisini Içine geçirerek depolama hesabı için kullanılacak özel bir uygulama ayarı belirtebilirsiniz `BindAsync<T>()` . `Binder`Değil parametresini kullanın `IBinder` .  Örnek:
 

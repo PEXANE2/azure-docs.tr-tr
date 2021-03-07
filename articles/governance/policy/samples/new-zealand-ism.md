@@ -1,22 +1,22 @@
 ---
 title: Yeni Zelanda ıSM için mevzuat uyumluluk ayrıntıları
-description: Yeni Zelanda ile yasal uyumluluk yerleşik girişiminin ayrıntıları. Her denetim, değerlendirmede yardımcı olan bir veya daha fazla Azure Ilke tanımına eşlenir.
-ms.date: 02/09/2021
+description: Yeni Zelanda ıSM ile kısıtlı mevzuata uyumluluğu yerleşik girişiminin ayrıntıları. Her denetim, değerlendirmede yardımcı olan bir veya daha fazla Azure Ilke tanımına eşlenir.
+ms.date: 03/05/2021
 ms.topic: sample
 ms.custom: generated
-ms.openlocfilehash: b2f4cec4f2c9abf6fb896ba9d515db1780115716
-ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
+ms.openlocfilehash: 5f346f7755cf252ed15513d8dc0a60a9bc5cce3f
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100101747"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102437255"
 ---
-# <a name="details-of-the-new-zealand-ism-regulatory-compliance-built-in-initiative"></a>Yeni Zelanda ıSM uyumluluğu yerleşik girişiminin ayrıntıları
+# <a name="details-of-the-new-zealand-ism-restricted-regulatory-compliance-built-in-initiative"></a>Yeni Zelanda ıSM ile kısıtlı mevzuata uyumluluğu yerleşik girişiminin ayrıntıları
 
-Aşağıdaki makalede, Azure Ilke mevzuatı uyumluluğu yerleşik girişim tanımının Yeni Zelanda 'daki **Uyumluluk etki alanları** ve **denetimleriyle** nasıl eşleştiği açıklanır.
-Bu uyumluluk standardı hakkında daha fazla bilgi için bkz. [Yeni Zelanda ISM](https://www.nzism.gcsb.govt.nz/). _Sahipliği_ anlamak için bkz. [Azure ilke ilkesi tanımı](../concepts/definition-structure.md#type) ve [bulutta paylaşılan sorumluluk](../../../security/fundamentals/shared-responsibility.md).
+Aşağıdaki makalede, Azure Ilke mevzuatı uyumluluğu yerleşik girişim tanımının **Uyumluluk etki alanları** ve **denetimleriyle** sınırlı Yeni Zelanda ISM ile nasıl eşleştiği açıklanır.
+Bu uyumluluk standardı hakkında daha fazla bilgi için bkz. [Yeni Zelanda ISM kısıtlanmış](https://www.nzism.gcsb.govt.nz/). _Sahipliği_ anlamak için bkz. [Azure ilke ilkesi tanımı](../concepts/definition-structure.md#type) ve [bulutta paylaşılan sorumluluk](../../../security/fundamentals/shared-responsibility.md).
 
-Aşağıdaki eşlemeler **Yeni Zelanda ISM** denetimlerine göre yapılır. Doğrudan belirli bir **Uyumluluk etki alanına** geçmek için sağ taraftaki gezintiyi kullanın. Denetimlerin birçoğu bir [Azure Policy](../overview.md) Initiative tanımıyla uygulanır. Tüm girişim tanımını gözden geçirmek için Azure portal **ilkeyi** açın ve **tanımlar** sayfasını seçin.
+Aşağıdaki eşlemeler **Yeni Zelanda ISM kısıtlanmış** denetimlerine göre yapılır. Doğrudan belirli bir **Uyumluluk etki alanına** geçmek için sağ taraftaki gezintiyi kullanın. Denetimlerin birçoğu bir [Azure Policy](../overview.md) Initiative tanımıyla uygulanır. Tüm girişim tanımını gözden geçirmek için Azure portal **ilkeyi** açın ve **tanımlar** sayfasını seçin.
 Ardından, **Yeni Zelanda bilgi güvenliği el ile** mevzuat uyumluluğu yerleşik girişim tanımını bulun ve seçin.
 
 > [!IMPORTANT]
@@ -29,7 +29,7 @@ Ardından, **Yeni Zelanda bilgi güvenliği el ile** mevzuat uyumluluğu yerleş
 
 **Kimlik**: Nzronizm güvenlik kıyaslaması-3 **sahipliği**: müşteri
 
-|Name<br /><sub>(Azure portal)</sub> |Description |Efekt (ler) |Sürüm<br /><sub>GitHub</sub> |
+|Name<br /><sub>(Azure portal)</sub> |Açıklama |Efekt (ler) |Sürüm<br /><sub>GitHub</sub> |
 |---|---|---|---|
 |[Sanal makinelerinizde bir güvenlik açığı değerlendirme çözümünün etkinleştirilmesi gerekir](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F501541f7-f7e7-4cd6-868c-4190fdad3ac9) |Sanal makineleri, desteklenen bir güvenlik açığı değerlendirme çözümü çalıştırıp çalıştırmadığını tespit etmek üzere denetler. Her bir siber risk ve güvenlik programının çekirdek bileşeni, güvenlik açıklarının tanımlama ve analizidir. Azure Güvenlik Merkezi 'nin standart fiyatlandırma katmanı, sanal makineleriniz için ek ücret olmadan güvenlik açığı taraması içerir. Ayrıca, güvenlik merkezi bu aracı sizin için otomatik olarak dağıtabilir. |Auditınotexists, devre dışı |[3.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_ServerVulnerabilityAssessment_Audit.json) |
 |[Sahip izinleri olan kullanım dışı hesaplar aboneliğinizden kaldırılmalıdır](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Febb62a0c-3560-49e1-89ed-27e074e9f8ad) |Sahip izinleri olan kullanım dışı hesaplar aboneliğinizden kaldırılmalıdır.  Kullanım dışı bırakılan hesaplar, oturum açma işleminden engellenen hesaplardır. |Auditınotexists, devre dışı |[3.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_RemoveDeprecatedAccountsWithOwnerPermissions_Audit.json) |
@@ -47,7 +47,7 @@ Ardından, **Yeni Zelanda bilgi güvenliği el ile** mevzuat uyumluluğu yerleş
 
 **Kimlik**: nzısm güvenlik KıYASLAMASı PR 'ler-5 **sahiplik**: müşteri
 
-|Name<br /><sub>(Azure portal)</sub> |Description |Efekt (ler) |Sürüm<br /><sub>GitHub</sub> |
+|Name<br /><sub>(Azure portal)</sub> |Açıklama |Efekt (ler) |Sürüm<br /><sub>GitHub</sub> |
 |---|---|---|---|
 |[Kullanım dışı bırakılan hesaplar aboneliğinizden kaldırılmalıdır](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F6b1cbf55-e8b6-442f-ba4c-7246b6381474) |Kullanım dışı bırakılan hesaplar aboneliklerinizden kaldırılmalıdır.  Kullanım dışı bırakılan hesaplar, oturum açma işleminden engellenen hesaplardır. |Auditınotexists, devre dışı |[3.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_RemoveDeprecatedAccounts_Audit.json) |
 |[Sahip izinleri olan kullanım dışı hesaplar aboneliğinizden kaldırılmalıdır](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Febb62a0c-3560-49e1-89ed-27e074e9f8ad) |Sahip izinleri olan kullanım dışı hesaplar aboneliğinizden kaldırılmalıdır.  Kullanım dışı bırakılan hesaplar, oturum açma işleminden engellenen hesaplardır. |Auditınotexists, devre dışı |[3.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_RemoveDeprecatedAccountsWithOwnerPermissions_Audit.json) |
@@ -62,7 +62,7 @@ Ardından, **Yeni Zelanda bilgi güvenliği el ile** mevzuat uyumluluğu yerleş
 
 **Kimlik**: nzısm güvenlik KıYASLAMASı SS-2 **sahipliği**: müşteri
 
-|Name<br /><sub>(Azure portal)</sub> |Description |Efekt (ler) |Sürüm<br /><sub>GitHub</sub> |
+|Name<br /><sub>(Azure portal)</sub> |Açıklama |Efekt (ler) |Sürüm<br /><sub>GitHub</sub> |
 |---|---|---|---|
 |[Windows sanal makine ölçek kümeleri için bağımlılık aracısını dağıtma](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F3be22e3b-d919-47aa-805e-8985dbeb0ad9) |VM görüntüsü (OS) tanımlanmış listede ise ve aracı yüklü değilse, Windows sanal makine ölçek kümeleri için bağımlılık aracısını dağıtın. Destek güncelleştirildiğinden, işletim sistemi görüntülerinin listesi zaman içinde güncelleştirilir. Note: ölçek kümesi upgradePolicy, manuel olarak ayarlandıysa, uzantıyı üzerinde yükseltme çağırarak küme içindeki tüm sanal makinelere uygulamanız gerekir. CLı içinde bu, az VMSS Update-Instances olacaktır. |deployIfNotExists |[1.3.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Monitoring/DependencyAgentExtension_Windows_VMSS_Deploy.json) |
 |[Uç nokta koruma çözümü, sanal makine ölçek kümelerine yüklenmelidir](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F26a828e1-e88f-464e-bbb3-c134a282b9de) |Tehdit ve güvenlik açıklarına karşı korumak için sanal makinelerinizdeki bir Endpoint Protection çözümünün varlığını ve sistem durumunu denetleyin. |Auditınotexists, devre dışı |[3.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_VmssMissingEndpointProtection_Audit.json) |
@@ -73,7 +73,7 @@ Ardından, **Yeni Zelanda bilgi güvenliği el ile** mevzuat uyumluluğu yerleş
 
 **Kimlik**: nzısm güvenlik KıYASLAMASı SS-4 **sahiplik**: müşteri
 
-|Name<br /><sub>(Azure portal)</sub> |Description |Efekt (ler) |Sürüm<br /><sub>GitHub</sub> |
+|Name<br /><sub>(Azure portal)</sub> |Açıklama |Efekt (ler) |Sürüm<br /><sub>GitHub</sub> |
 |---|---|---|---|
 |[Güvenli uygulamaları tanımlamaya yönelik Uyarlamalı uygulama denetimleri, makinelerinizde etkinleştirilmelidir](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F47a6b606-51aa-4496-8bb7-64b11cf66adc) |Makinelerinizde çalışan bilinen güvenli uygulamaların listesini tanımlamak için uygulama denetimlerini etkinleştirin ve diğer uygulamalar çalıştırıldığında sizi uyarır. Bu, makinelerinizi kötü amaçlı yazılımlara karşı korumanıza yardımcı olur. Güvenlik Merkezi, kurallarınızı yapılandırma ve sürdürme sürecini basitleştirmek için makine öğrenimini kullanarak her makinede çalışan uygulamaları analiz eder ve bilinen güvenli uygulamalar listesini önerir. |Auditınotexists, devre dışı |[3.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_AdaptiveApplicationControls_Audit.json) |
 
@@ -81,7 +81,7 @@ Ardından, **Yeni Zelanda bilgi güvenliği el ile** mevzuat uyumluluğu yerleş
 
 **Kimlik**: nzısm güvenlik KıYASLAMASı SS-8 **sahiplik**: müşteri
 
-|Name<br /><sub>(Azure portal)</sub> |Description |Efekt (ler) |Sürüm<br /><sub>GitHub</sub> |
+|Name<br /><sub>(Azure portal)</sub> |Açıklama |Efekt (ler) |Sürüm<br /><sub>GitHub</sub> |
 |---|---|---|---|
 |[API uygulaması yalnızca HTTPS üzerinden erişilebilir olmalıdır](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fb7ddfbdc-1260-477d-91fd-98bd9be789a6) |HTTPS kullanımı, sunucu/hizmet kimlik doğrulamasını sağlar ve ağ katmanı gizlice dinleme saldırılarına karşı geçiş sırasında verileri korur. |Denetim, devre dışı |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/App%20Service/AppServiceApiApp_AuditHTTP_Audit.json) |
 |[CORS, her kaynağın Web Uygulamalarınıza erişmesine izin vermemelidir](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F5744710e-cc2f-4ee8-8809-3b11e89f4bc9) |Çıkış noktaları arası kaynak paylaşımı (CORS), tüm etki alanlarının Web uygulamanıza erişmesine izin vermemelidir. Yalnızca gerekli etki alanlarının Web uygulamanızla etkileşime girmesine izin verin. |Auditınotexists, devre dışı |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/App%20Service/AppService_RestrictCORSAccess_WebApp_Audit.json) |
@@ -91,11 +91,11 @@ Ardından, **Yeni Zelanda bilgi güvenliği el ile** mevzuat uyumluluğu yerleş
 
 ## <a name="access-control-and-passwords"></a>Access Control ve parolalar
 
-### <a name="16132-system-user-identitfication"></a>16.1.32 Sistem kullanıcısı Identitfication
+### <a name="16132-system-user-identification"></a>16.1.32 sistemi kullanıcı kimliği
 
 **Kimlik**: nzısm güvenlik KıYASLAMASı AC-2 **sahipliği**: müşteri
 
-|Name<br /><sub>(Azure portal)</sub> |Description |Efekt (ler) |Sürüm<br /><sub>GitHub</sub> |
+|Name<br /><sub>(Azure portal)</sub> |Açıklama |Efekt (ler) |Sürüm<br /><sub>GitHub</sub> |
 |---|---|---|---|
 |[Aboneliğiniz için en fazla 3 sahip belirtilmelidir](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F4f11b553-d42e-4e3a-89be-32ca364cad4c) |Güvenliği aşılmış bir sahibe göre ihlal olasılığını azaltmak için 3 adede kadar abonelik sahibi belirlemeniz önerilir. |Auditınotexists, devre dışı |[3.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_DesignateLessThanXOwners_Audit.json) |
 |[Parolasız hesaplardan uzak bağlantılara izin veren Linux makinelerini denetleme](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fea53dbee-c6c9-4f0e-9f9e-de0039b78023) |Önkoşulların ilke atama kapsamına dağıtılmasını gerektirir. Ayrıntılar için, adresini ziyaret edin [https://aka.ms/gcpol](https://aka.ms/gcpol) . Linux makineleri parolasız olan hesaplardan uzak bağlantılara izin veren makineler uyumlu değil |Auditınotexists, devre dışı |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Guest%20Configuration/GuestConfiguration_LinuxPassword110_AINE.json) |
@@ -113,7 +113,7 @@ Ardından, **Yeni Zelanda bilgi güvenliği el ile** mevzuat uyumluluğu yerleş
 
 **Kimlik**: nzısm güvenlik KıYASLAMASı AC-3 **sahipliği**: müşteri
 
-|Name<br /><sub>(Azure portal)</sub> |Description |Efekt (ler) |Sürüm<br /><sub>GitHub</sub> |
+|Name<br /><sub>(Azure portal)</sub> |Açıklama |Efekt (ler) |Sürüm<br /><sub>GitHub</sub> |
 |---|---|---|---|
 |[Aboneliğinizde yazma izinleri olan hesaplarda MFA etkinleştirilmelidir](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F9297c21d-2ed6-4474-b48f-163f75654ce3) |Hesapların veya kaynakların ihlal oluşmasını engellemek için yazma ayrıcalıklarına sahip tüm abonelik hesapları için Multi-Factor Authentication (MFA) etkinleştirilmelidir. |Auditınotexists, devre dışı |[3.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_EnableMFAForWritePermissions_Audit.json) |
 |[MFA, aboneliğinizde sahip izinleri olan hesaplarda etkinleştirilmelidir](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Faa633080-8b72-40c4-a2d7-d00c03e80bed) |Multi-Factor Authentication (MFA), hesapların veya kaynakların ihlaline engel olmak için sahip izinleri olan tüm abonelik hesapları için etkinleştirilmelidir. |Auditınotexists, devre dışı |[3.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_EnableMFAForOwnerPermissions_Audit.json) |
@@ -123,7 +123,7 @@ Ardından, **Yeni Zelanda bilgi güvenliği el ile** mevzuat uyumluluğu yerleş
 
 **Kimlik**: nzısm güvenlik KıYASLAMASı AC-4 **sahiplik**: müşteri
 
-|Name<br /><sub>(Azure portal)</sub> |Description |Efekt (ler) |Sürüm<br /><sub>GitHub</sub> |
+|Name<br /><sub>(Azure portal)</sub> |Açıklama |Efekt (ler) |Sürüm<br /><sub>GitHub</sub> |
 |---|---|---|---|
 |[Windows sanal makineleri için bağımlılık aracısını dağıtma](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F1c210e94-a481-4beb-95fa-1571b434fb04) |VM görüntüsü (OS) tanımlanmış listede ise ve aracı yüklü değilse Windows sanal makineleri için bağımlılık Aracısı 'nı dağıtın. Destek güncelleştirildiğinden, işletim sistemi görüntülerinin listesi zaman içinde güncelleştirilir. |deployIfNotExists |[1.3.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Monitoring/DependencyAgentExtension_Windows_VM_Deploy.json) |
 |[Windows makineleri, ' güvenlik ayarları-hesap Ilkeleri ' gereksinimlerini karşılamalıdır](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ff2143251-70de-4e81-87a8-36cee5a2f29d) |Windows makineleri parola geçmişi, yaşı, uzunluğu, karmaşıklık ve ters çevrilebilir şifreleme kullanarak parolaları depolamak için ' güvenlik ayarları-hesap Ilkeleri ' kategorisinde belirtilen grup ilkesi ayarlara sahip olmalıdır. Bu ilke, Konuk yapılandırma ön koşullarının ilke atama kapsamına dağıtılmasını gerektirir. Ayrıntılar için, adresini ziyaret edin [https://aka.ms/gcpol](https://aka.ms/gcpol) . |Auditınotexists, devre dışı |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Guest%20Configuration/GuestConfiguration_SecuritySettingsAccountPolicies_AINE.json) |
@@ -132,7 +132,7 @@ Ardından, **Yeni Zelanda bilgi güvenliği el ile** mevzuat uyumluluğu yerleş
 
 **Kimlik**: nzısm güvenlik KıYASLAMASı AC-5 **sahiplik**: müşteri
 
-|Name<br /><sub>(Azure portal)</sub> |Description |Efekt (ler) |Sürüm<br /><sub>GitHub</sub> |
+|Name<br /><sub>(Azure portal)</sub> |Açıklama |Efekt (ler) |Sürüm<br /><sub>GitHub</sub> |
 |---|---|---|---|
 |[Windows sanal makineleri için bağımlılık aracısını dağıtma](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F1c210e94-a481-4beb-95fa-1571b434fb04) |VM görüntüsü (OS) tanımlanmış listede ise ve aracı yüklü değilse Windows sanal makineleri için bağımlılık Aracısı 'nı dağıtın. Destek güncelleştirildiğinden, işletim sistemi görüntülerinin listesi zaman içinde güncelleştirilir. |deployIfNotExists |[1.3.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Monitoring/DependencyAgentExtension_Windows_VM_Deploy.json) |
 |[Kullanım dışı bırakılan hesaplar aboneliğinizden kaldırılmalıdır](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F6b1cbf55-e8b6-442f-ba4c-7246b6381474) |Kullanım dışı bırakılan hesaplar aboneliklerinizden kaldırılmalıdır.  Kullanım dışı bırakılan hesaplar, oturum açma işleminden engellenen hesaplardır. |Auditınotexists, devre dışı |[3.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_RemoveDeprecatedAccounts_Audit.json) |
@@ -142,7 +142,7 @@ Ardından, **Yeni Zelanda bilgi güvenliği el ile** mevzuat uyumluluğu yerleş
 
 **Kimlik**: nzısm güvenlik KıYASLAMASı AC-7 **sahiplik**: müşteri
 
-|Name<br /><sub>(Azure portal)</sub> |Description |Efekt (ler) |Sürüm<br /><sub>GitHub</sub> |
+|Name<br /><sub>(Azure portal)</sub> |Açıklama |Efekt (ler) |Sürüm<br /><sub>GitHub</sub> |
 |---|---|---|---|
 |[Sanal makinelerin yönetim bağlantı noktaları, tam zamanında ağ erişim denetimiyle korunmalıdır](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fb0f33259-77d7-4c9e-aac6-3aabcfae693c) |Olası ağ tam zamanında (JıT) erişim, Azure Güvenlik Merkezi tarafından öneriler olarak izlenir |Auditınotexists, devre dışı |[3.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_JITNetworkAccess_Audit.json) |
 |[API Apps için uzaktan hata ayıklama kapatılmalıdır](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fe9c8d085-d9cc-4b17-9cdc-059f1f01f19e) |Uzaktan hata ayıklama, API uygulamalarında gelen bağlantı noktalarının açılmasını gerektirir. Uzaktan hata ayıklama kapalı olmalıdır. |Auditınotexists, devre dışı |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/App%20Service/AppService_DisableRemoteDebugging_ApiApp_Audit.json) |
@@ -153,7 +153,7 @@ Ardından, **Yeni Zelanda bilgi güvenliği el ile** mevzuat uyumluluğu yerleş
 
 **Kimlik**: nzısm güvenlik KıYASLAMASı AC-9 **sahipliği**: müşteri
 
-|Name<br /><sub>(Azure portal)</sub> |Description |Efekt (ler) |Sürüm<br /><sub>GitHub</sub> |
+|Name<br /><sub>(Azure portal)</sub> |Açıklama |Efekt (ler) |Sürüm<br /><sub>GitHub</sub> |
 |---|---|---|---|
 |[Yöneticiler grubunda belirtilen üyelerin hiçbiri eksik olan Windows makinelerini denetle](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F30f71ea1-ac77-4f26-9fc5-2d926bbd4ba7) |Önkoşulların ilke atama kapsamına dağıtılmasını gerektirir. Ayrıntılar için, adresini ziyaret edin [https://aka.ms/gcpol](https://aka.ms/gcpol) . Yerel Yöneticiler grubu, ilke parametresinde listelenen bir veya daha fazla üye içermiyorsa makineler uyumlu değildir. |Auditınotexists |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Guest%20Configuration/GuestConfiguration_AdministratorsGroupMembersToInclude_AINE.json) |
 |[Yöneticiler grubunda ek hesaplara sahip Windows makinelerini denetleme](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F3d2a3320-2a72-4c67-ac5f-caa40fbee2b2) |Önkoşulların ilke atama kapsamına dağıtılmasını gerektirir. Ayrıntılar için, adresini ziyaret edin [https://aka.ms/gcpol](https://aka.ms/gcpol) . Yerel Yöneticiler grubu, ilke parametresinde listelenmeyen üyeler içeriyorsa, makineler uyumlu değildir. |Auditınotexists |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Guest%20Configuration/GuestConfiguration_AdministratorsGroupMembers_AINE.json) |
@@ -165,7 +165,7 @@ Ardından, **Yeni Zelanda bilgi güvenliği el ile** mevzuat uyumluluğu yerleş
 
 **Kimlik**: nzısm güvenlik KıYASLAMASı AC-13 **sahiplik**: müşteri
 
-|Name<br /><sub>(Azure portal)</sub> |Description |Efekt (ler) |Sürüm<br /><sub>GitHub</sub> |
+|Name<br /><sub>(Azure portal)</sub> |Açıklama |Efekt (ler) |Sürüm<br /><sub>GitHub</sub> |
 |---|---|---|---|
 |[Azure aboneliklerinin etkinlik günlüğü için bir günlük profili olmalıdır](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F7796937f-307b-4598-941c-67d3a05ebfe7) |Bu ilke, etkinlik günlüklerini dışarı aktarmak için bir günlük profilinin etkinleştirilip etkinleştirilmediğini sağlar. Günlükleri bir depolama hesabına veya bir olay hub 'ına aktarmak için oluşturulmuş bir günlük profili olup olmadığını denetler. |Auditınotexists, devre dışı |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Monitoring/Logprofile_activityLogs_Audit.json) |
 
@@ -173,7 +173,7 @@ Ardından, **Yeni Zelanda bilgi güvenliği el ile** mevzuat uyumluluğu yerleş
 
 **Kimlik**: nzısm güvenlik KıYASLAMASı AC-14 **sahiplik**: müşteri
 
-|Name<br /><sub>(Azure portal)</sub> |Description |Efekt (ler) |Sürüm<br /><sub>GitHub</sub> |
+|Name<br /><sub>(Azure portal)</sub> |Açıklama |Efekt (ler) |Sürüm<br /><sub>GitHub</sub> |
 |---|---|---|---|
 |[\[Önizleme \] : denetim Log Analytics aracı dağıtımı-VM görüntüsü (OS) listelenmemiş](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F32133ab0-ee4b-4b44-98d6-042180979d50) |VM görüntüsü (OS) tanımlı listede değilse ve aracı yüklü değilse, VM 'Leri uyumsuz olarak bildirir. Destek güncelleştirildiğinden, işletim sistemi görüntülerinin listesi zaman içinde güncelleştirilir. |Auditınotexists |[1.0.0-Önizleme](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Monitoring/LogAnalytics_OSImage_Audit.json) |
 |[Tanılama ayarını denetle](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F7f89b1eb-583c-429a-8828-af049802c1d9) |Seçili kaynak türleri için tanılama ayarını denetle |AuditIfNotExists |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Monitoring/DiagnosticSettingsForTypes_Audit.json) |
@@ -184,7 +184,7 @@ Ardından, **Yeni Zelanda bilgi güvenliği el ile** mevzuat uyumluluğu yerleş
 
 **Kimlik**: nzısm güvenlik KıYASLAMASı AC-15 **sahiplik**: müşteri
 
-|Name<br /><sub>(Azure portal)</sub> |Description |Efekt (ler) |Sürüm<br /><sub>GitHub</sub> |
+|Name<br /><sub>(Azure portal)</sub> |Açıklama |Efekt (ler) |Sürüm<br /><sub>GitHub</sub> |
 |---|---|---|---|
 |[Etkinlik günlüğü en az bir yıl bekletilecektir](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fb02aacc0-b073-424e-8298-42b22829ee0a) |Bu ilke, bekletme 365 gün veya süresiz olarak ayarlanmamışsa etkinlik günlüğünü denetler (bekletme günleri 0 olarak ayarlanır). |Auditınotexists, devre dışı |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Monitoring/ActivityLogRetention_365orGreater.json) |
 
@@ -192,7 +192,7 @@ Ardından, **Yeni Zelanda bilgi güvenliği el ile** mevzuat uyumluluğu yerleş
 
 **Kimlik**: nzısm güvenlik KıYASLAMASı AC-17 **sahiplik**: müşteri
 
-|Name<br /><sub>(Azure portal)</sub> |Description |Efekt (ler) |Sürüm<br /><sub>GitHub</sub> |
+|Name<br /><sub>(Azure portal)</sub> |Açıklama |Efekt (ler) |Sürüm<br /><sub>GitHub</sub> |
 |---|---|---|---|
 |[Aboneliğinizde yazma izinleri olan hesaplarda MFA etkinleştirilmelidir](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F9297c21d-2ed6-4474-b48f-163f75654ce3) |Hesapların veya kaynakların ihlal oluşmasını engellemek için yazma ayrıcalıklarına sahip tüm abonelik hesapları için Multi-Factor Authentication (MFA) etkinleştirilmelidir. |Auditınotexists, devre dışı |[3.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_EnableMFAForWritePermissions_Audit.json) |
 |[MFA, aboneliğinizde sahip izinleri olan hesaplarda etkinleştirilmelidir](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Faa633080-8b72-40c4-a2d7-d00c03e80bed) |Multi-Factor Authentication (MFA), hesapların veya kaynakların ihlaline engel olmak için sahip izinleri olan tüm abonelik hesapları için etkinleştirilmelidir. |Auditınotexists, devre dışı |[3.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_EnableMFAForOwnerPermissions_Audit.json) |
@@ -204,7 +204,7 @@ Ardından, **Yeni Zelanda bilgi güvenliği el ile** mevzuat uyumluluğu yerleş
 
 **Kimlik**: nzısm güvenlik KıYASLAMASı CR-2 **sahipliği**: müşteri
 
-|Name<br /><sub>(Azure portal)</sub> |Description |Efekt (ler) |Sürüm<br /><sub>GitHub</sub> |
+|Name<br /><sub>(Azure portal)</sub> |Açıklama |Efekt (ler) |Sürüm<br /><sub>GitHub</sub> |
 |---|---|---|---|
 |[Disk şifrelemesi sanal makinelere uygulanmalıdır](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0961003e-5a0a-4549-abde-af6a37f2724d) |Etkin bir disk şifrelemesi olmayan sanal makineler, Azure Güvenlik Merkezi tarafından öneriler olarak izlenir. |Auditınotexists, devre dışı |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_UnencryptedVMDisks_Audit.json) |
 
@@ -212,7 +212,7 @@ Ardından, **Yeni Zelanda bilgi güvenliği el ile** mevzuat uyumluluğu yerleş
 
 **Kimlik**: nzısm güvenlik KıYASLAMASı Cr-6 **sahiplik**: müşteri
 
-|Name<br /><sub>(Azure portal)</sub> |Description |Efekt (ler) |Sürüm<br /><sub>GitHub</sub> |
+|Name<br /><sub>(Azure portal)</sub> |Açıklama |Efekt (ler) |Sürüm<br /><sub>GitHub</sub> |
 |---|---|---|---|
 |[Windows VM 'lerde Konuk yapılandırma atamalarını etkinleştirmek için Windows Konuk yapılandırma uzantısı 'nı dağıtma](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F385f5831-96d4-41db-9a3c-cd3af78aaae6) |Bu ilke, Windows Konuk yapılandırma uzantısını Azure 'da barındırılan ve konuk yapılandırması tarafından desteklenen Windows sanal makinelerine dağıtır. Windows Konuk yapılandırma uzantısı, tüm Windows Konuk yapılandırma atamaları için bir önkoşuldur ve herhangi bir Windows Konuk yapılandırma ilkesi tanımı kullanılmadan önce makinelere dağıtılmalıdır. Konuk yapılandırması hakkında daha fazla bilgi için, adresini ziyaret edin [https://aka.ms/gcpol](https://aka.ms/gcpol) . |deployIfNotExists |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Guest%20Configuration/GuestConfiguration_DeployExtensionWindows_Prerequisite.json) |
 |[API uygulamanızda en son TLS sürümü kullanılmalıdır](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F8cb6aa8b-9e41-4f4e-aa25-089a7ac2581e) |En son TLS sürümüne yükselt |Auditınotexists, devre dışı |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/App%20Service/AppService_RequireLatestTls_ApiApp_Audit.json) |
@@ -226,7 +226,7 @@ Ardından, **Yeni Zelanda bilgi güvenliği el ile** mevzuat uyumluluğu yerleş
 
 **Kimlik**: nzısm güvenlik KıYASLAMASı NS-2 **sahipliği**: müşteri
 
-|Name<br /><sub>(Azure portal)</sub> |Description |Efekt (ler) |Sürüm<br /><sub>GitHub</sub> |
+|Name<br /><sub>(Azure portal)</sub> |Açıklama |Efekt (ler) |Sürüm<br /><sub>GitHub</sub> |
 |---|---|---|---|
 |[Uyarlamalı ağ sağlamlaştırma önerileri internet 'e yönelik sanal makinelere uygulanmalıdır](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F08e6af2d-db70-460a-bfe9-d5bd474ba9d6) |Azure Güvenlik Merkezi, Internet 'e yönelik sanal makinelerin trafik düzenlerini analiz eder ve olası saldırı yüzeyini azaltan ağ güvenlik grubu kuralı önerileri sağlar |Auditınotexists, devre dışı |[3.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_AdaptiveNetworkHardenings_Audit.json) |
 |[Internet 'e yönelik sanal makineler ağ güvenlik gruplarıyla korunmalıdır](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ff6de0be7-9a8a-4b8a-b349-43cf02d22f7c) |Ağ güvenlik grupları (NSG) ile erişimi kısıtlayarak sanal makinelerinizi olası tehditlere karşı koruyun. NSG 'ler ile trafiği denetleme hakkında daha fazla bilgi edinin [https://aka.ms/nsg-doc](https://aka.ms/nsg-doc) |Auditınotexists, devre dışı |[3.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_NetworkSecurityGroupsOnInternetFacingVirtualMachines_Audit.json) |
@@ -237,7 +237,7 @@ Ardından, **Yeni Zelanda bilgi güvenliği el ile** mevzuat uyumluluğu yerleş
 
 **Kimlik**: nzısm güvenlik KıYASLAMASı NS-5 **sahiplik**: müşteri
 
-|Name<br /><sub>(Azure portal)</sub> |Description |Efekt (ler) |Sürüm<br /><sub>GitHub</sub> |
+|Name<br /><sub>(Azure portal)</sub> |Açıklama |Efekt (ler) |Sürüm<br /><sub>GitHub</sub> |
 |---|---|---|---|
 |[Azure DDoS koruma standardı etkinleştirilmelidir](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fa7aca53f-2ed4-4466-a25e-0b45ade68efd) |Genel bir IP ile uygulama ağ geçidinin parçası olan bir alt ağa sahip tüm sanal ağlar için DDoS koruma standardı etkinleştirilmelidir. |Auditınotexists, devre dışı |[3.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_EnableDDoSProtection_Audit.json) |
 
@@ -245,7 +245,7 @@ Ardından, **Yeni Zelanda bilgi güvenliği el ile** mevzuat uyumluluğu yerleş
 
 **Kimlik**: nzısm güvenlik KıYASLAMASı NS-7 **sahiplik**: müşteri
 
-|Name<br /><sub>(Azure portal)</sub> |Description |Efekt (ler) |Sürüm<br /><sub>GitHub</sub> |
+|Name<br /><sub>(Azure portal)</sub> |Açıklama |Efekt (ler) |Sürüm<br /><sub>GitHub</sub> |
 |---|---|---|---|
 |[Tüm Internet trafiği, dağıtılan Azure Güvenlik duvarınız aracılığıyla yönlendirilmelidir](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ffc5e4038-4584-4632-8c85-c0448d374b2c) |Azure Güvenlik Merkezi, bazı alt ağlarınızın bir sonraki nesil güvenlik duvarı ile korunmuyor olduğunu belirledi. Azure Güvenlik Duvarı veya desteklenen bir yeni nesil güvenlik duvarı ile erişimi kısıtlayarak alt ağlarınızı olası tehditlere karşı koruyun |Auditınotexists, devre dışı |[3.0.0-Önizleme](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Network/ASC_All_Internet_traffic_should_be_routed_via_Azure_Firewall.json) |
 |[Web uygulaması güvenlik duvarı (WAF) Application Gateway için etkinleştirilmelidir](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F564feb30-bf6a-4854-b4bb-0d2d2d1e6c66) |Gelen trafiğin ek incelemesi için genel kullanıma yönelik Web uygulamalarının önünde Azure Web uygulaması güvenlik duvarını (WAF) dağıtın. Web uygulaması güvenlik duvarı (WAF), Web uygulamalarınızın, SQL ınjec, siteler arası betik oluşturma, yerel ve uzak dosya yürütmeleri gibi yaygın güvenlik açıklarından ve güvenlik açıklarından merkezi bir şekilde korunmasını sağlar. Web uygulamalarınıza erişimi, özel kurallar aracılığıyla ülkeler, IP adresi aralıkları ve diğer http (s) parametreleriyle de kısıtlayabilirsiniz. |Denetim, reddetme, devre dışı |[1.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Network/WAF_AppGatewayEnabled_Audit.json) |
@@ -259,7 +259,7 @@ Ardından, **Yeni Zelanda bilgi güvenliği el ile** mevzuat uyumluluğu yerleş
 
 **Kimlik**: nzısm güvenlik KıYASLAMASı DM-4 **sahiplik**: müşteri
 
-|Name<br /><sub>(Azure portal)</sub> |Description |Efekt (ler) |Sürüm<br /><sub>GitHub</sub> |
+|Name<br /><sub>(Azure portal)</sub> |Açıklama |Efekt (ler) |Sürüm<br /><sub>GitHub</sub> |
 |---|---|---|---|
 |[Windows sanal makine ölçek kümeleri için bağımlılık aracısını dağıtma](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F3be22e3b-d919-47aa-805e-8985dbeb0ad9) |VM görüntüsü (OS) tanımlanmış listede ise ve aracı yüklü değilse, Windows sanal makine ölçek kümeleri için bağımlılık aracısını dağıtın. Destek güncelleştirildiğinden, işletim sistemi görüntülerinin listesi zaman içinde güncelleştirilir. Note: ölçek kümesi upgradePolicy, manuel olarak ayarlandıysa, uzantıyı üzerinde yükseltme çağırarak küme içindeki tüm sanal makinelere uygulamanız gerekir. CLı içinde bu, az VMSS Update-Instances olacaktır. |deployIfNotExists |[1.3.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Monitoring/DependencyAgentExtension_Windows_VMSS_Deploy.json) |
 |[Uç nokta koruma çözümü, sanal makine ölçek kümelerine yüklenmelidir](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F26a828e1-e88f-464e-bbb3-c134a282b9de) |Tehdit ve güvenlik açıklarına karşı korumak için sanal makinelerinizdeki bir Endpoint Protection çözümünün varlığını ve sistem durumunu denetleyin. |Auditınotexists, devre dışı |[3.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_VmssMissingEndpointProtection_Audit.json) |
@@ -270,7 +270,7 @@ Ardından, **Yeni Zelanda bilgi güvenliği el ile** mevzuat uyumluluğu yerleş
 
 **Kimlik**: nzısm güvenlik KıYASLAMASı DM-6 **sahiplik**: müşteri
 
-|Name<br /><sub>(Azure portal)</sub> |Description |Efekt (ler) |Sürüm<br /><sub>GitHub</sub> |
+|Name<br /><sub>(Azure portal)</sub> |Açıklama |Efekt (ler) |Sürüm<br /><sub>GitHub</sub> |
 |---|---|---|---|
 |[Gelişmiş veri güvenliği SQL yönetilen örneği üzerinde etkinleştirilmelidir](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fabfb7388-5bf4-4ad7-ba99-2cd2f41cebb9) |Gelişmiş veri güvenliği olmadan her SQL yönetilen örneğini denetleyin. |Auditınotexists, devre dışı |[1.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/SQL/SqlManagedInstance_AdvancedDataSecurity_Audit.json) |
 |[Gelişmiş veri güvenliği SQL sunucularınızda etkinleştirilmelidir](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fabfb4388-5bf4-4ad7-ba82-2cd2f41ceae9) |Gelişmiş veri güvenliği olmadan SQL sunucularını denetleme |Auditınotexists, devre dışı |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/SQL/SqlServer_AdvancedDataSecurity_Audit.json) |
@@ -288,7 +288,7 @@ Ardından, **Yeni Zelanda bilgi güvenliği el ile** mevzuat uyumluluğu yerleş
 
 **Kimlik**: nzısm güvenlik KıYASLAMASı ESS-2 **sahipliği**: müşteri
 
-|Name<br /><sub>(Azure portal)</sub> |Description |Efekt (ler) |Sürüm<br /><sub>GitHub</sub> |
+|Name<br /><sub>(Azure portal)</sub> |Açıklama |Efekt (ler) |Sürüm<br /><sub>GitHub</sub> |
 |---|---|---|---|
 |[İzin verilen tanımlar](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fe56962a6-4747-49cd-b67b-bf8b01975c4c) |Bu ilke, kuruluşunuzun kaynakları dağıtırken belirleyebileceği konumları kısıtlamanıza olanak verir. Coğrafi uyumluluk gereksinimlerinizi zorunlu kılmak için kullanabilirsiniz. Kaynak gruplarını, Microsoft. AzureActiveDirectory/b2cDirectories ve ' Global ' bölgesini kullanan kaynakları dışlar. |reddedebilir |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/General/AllowedLocations_Deny.json) |
 |[Kaynak grupları için izin verilen konumlar](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fe765b5de-1225-4ba3-bd56-1ac6695af988) |Bu ilke, kuruluşunuzun içinde kaynak grupları oluşturabileceğiniz konumları kısıtlamanıza olanak sağlar. Coğrafi uyumluluk gereksinimlerinizi zorunlu kılmak için kullanabilirsiniz. |reddedebilir |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/General/ResourceGroupAllowedLocations_Deny.json) |
@@ -297,7 +297,7 @@ Ardından, **Yeni Zelanda bilgi güvenliği el ile** mevzuat uyumluluğu yerleş
 
 **Kimlik**: nzısm güvenlik KıYASLAMASı ESS-3 **sahipliği**: müşteri
 
-|Name<br /><sub>(Azure portal)</sub> |Description |Efekt (ler) |Sürüm<br /><sub>GitHub</sub> |
+|Name<br /><sub>(Azure portal)</sub> |Açıklama |Efekt (ler) |Sürüm<br /><sub>GitHub</sub> |
 |---|---|---|---|
 |[Olağanüstü durum kurtarma yapılandırması olmadan sanal makineleri denetleme](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0015ea4d-51ff-4ce3-8d8c-f3f8f0179a56) |Olağanüstü durum kurtarma yapılandırması olmayan sanal makineleri denetleyin. Olağanüstü durum kurtarma hakkında daha fazla bilgi edinmek için adresini ziyaret edin [https://aka.ms/asr-doc](https://aka.ms/asr-doc) . |Auditınotexists |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Compute/RecoveryServices_DisasterRecovery_Audit.json) |
 

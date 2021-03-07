@@ -12,12 +12,12 @@ ms.date: 11/04/2020
 ms.author: marsma
 ms.reviewer: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: b839df7abe6552506456ed6d0485405f43ea4639
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
+ms.openlocfilehash: d61ddee1ac510b6d3528a2221a52fd266a2dd5ad
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102198362"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102436507"
 ---
 # <a name="microsoft-identity-platform-code-samples-v20-endpoint"></a>Microsoft Identity platform kodu örnekleri (v 2.0 uç noktası)
 
@@ -61,13 +61,24 @@ Aşağıdaki örneklerde, kullanıcıların oturum açmasını sağlayan Web uyg
 | ![Bu görüntüde ASP.NET Core logosu gösterilmektedir](media/sample-v2-code/logo_NETcore.png)</p>ASP.NET Core | [ASP.NET Core WebApp oturum açan kullanıcılar öğreticisi](https://aka.ms/aspnetcore-webapp-sign-in) | [ASP.NET Core Web uygulaması çağrılarındaki](https://aka.ms/aspnetcore-webapp-call-msgraph) aynı örnek Microsoft Graph aşaması</p>[Arka plan uygulamaları, API 'ler ve hizmetlerden gelen, oturum açmış kullanıcının belirteç önbelleğine erişen](https://github.com/Azure-Samples/ms-identity-dotnet-advanced-token-cache) gelişmiş örnek |
 | ![Bu görüntüde ASP.NET Framework logosu gösterilmektedir](media/sample-v2-code/logo_NETframework.png)</p>ASP.NET Core | Geliştiricilerin Active Directory Federasyon Hizmetleri (AD FS) (AD FS) ile tümleştirilmiş uygulamalarınızı Azure Active Directory (Azure AD) ile güvenli ve güvenli bir şekilde nasıl geçirebileceğinizi öğrenmek için [Azure AD uygulama geçişi PlayBook 'a AD FS](https://github.com/Azure-Samples/ms-identity-dotnet-adfs-to-aad) | |
 | ![Bu görüntüde ASP.NET Framework logosu gösterilmektedir](media/sample-v2-code/logo_NETframework.png)</p> ASP.NET | [ASP.NET hızlı başlangıç](https://github.com/AzureAdQuickstarts/AppModelv2-WebApp-OpenIDConnect-DotNet) </p> [DotNet-WebApp-openıdconnect-v2](https://github.com/azure-samples/active-directory-dotnet-webapp-openidconnect-v2)  |  [DotNet-Yönetici-kısıtlı-kapsamlar-v2](https://github.com/azure-samples/active-directory-dotnet-admin-restricted-scopes-v2) </p> |[MSGraph-eğitim-aspnetmvcapp](https://github.com/microsoftgraph/msgraph-training-aspnetmvcapp)
-| ![Bu görüntüde Java logosu gösterilir](media/sample-v2-code/logo_java.png)  |[Java Servlet Web uygulaması bölüm temelinde öğretici-Bölüm 1](https://github.com/Azure-Samples/ms-identity-java-servlet-webapp-authentication)| [Java Servlet Web uygulaması bölüm temelinde öğretici-Bölüm 2](https://github.com/Azure-Samples/ms-identity-java-servlet-webapp-authentication) |
-| ![Bu görüntüde Java logosu gösterilir](media/sample-v2-code/logo_java.png)  |                   | [MS-Identity-Java-WebApp](https://github.com/Azure-Samples/ms-identity-java-webapp) |
+| ![Bu görüntüde Java logosu gösterilir](media/sample-v2-code/logo_java.png)  |[Java Servlet öğreticisi-bölüm 1,1](https://github.com/Azure-Samples/ms-identity-java-servlet-webapp-authentication/blob/main/README.md) AAD ile oturum açma| |
+| ![Bu görüntüde Java logosu gösterilir](media/sample-v2-code/logo_java.png)  |[Java Servlet öğreticisi-bölüm 1,2](https://github.com/Azure-Samples/ms-identity-java-servlet-webapp-authentication/blob/main/README.md) B2C ile oturum açın |
+| ![Bu görüntüde Java logosu gösterilir](media/sample-v2-code/logo_java.png)  | | [Java Servlet öğreticisi-bölüm 2,1](https://github.com/Azure-Samples/ms-identity-java-servlet-webapp-authentication/blob/main/README.md) AAD ile oturum açma ve çağrı grafı|
+| ![Bu görüntüde Java logosu gösterilir](media/sample-v2-code/logo_java.png)  |[Java Servlet öğreticisi-bölüm 3,1](https://github.com/Azure-Samples/ms-identity-java-servlet-webapp-authentication/blob/main/README.md) AAD ile oturum açma ve rol talebine erişimi denetleme| |
+| ![Bu görüntüde Java logosu gösterilir](media/sample-v2-code/logo_java.png)  | | [Java Servlet öğreticisi-bölüm 3,2](https://github.com/Azure-Samples/ms-identity-java-servlet-webapp-authentication/blob/main/README.md) AAD ile oturum açma ve grup talebine erişimi denetleme|
+| ![Bu görüntüde Java logosu gösterilir](media/sample-v2-code/logo_java.png) | |[Java Servlet öğreticisi-bölüm 4,1](https://github.com/Azure-Samples/ms-identity-java-servlet-webapp-authentication/blob/main/README.md) Azure App Service dağıtma|
+| ![Bu görüntüde Java logosu gösterilir](media/sample-v2-code/logo_java.png)  | | [MS-Identity-Java-WebApp](https://github.com/Azure-Samples/ms-identity-java-webapp) |
 | ![Bu görüntüde Java logosu gösterilir](media/sample-v2-code/logo_java.png)  | [MS-Identity-B2C-Java-Servlet-WebApp-Authentication](https://github.com/Azure-Samples/ms-identity-b2c-java-servlet-webapp-authentication)|  |
 | ![Bu görüntüde Node.js logosu gösterilmektedir](media/sample-v2-code/logo_nodejs.png)</p>Node.js (MSAL node) | [Express web uygulaması oturum açan kullanıcılar öğreticisi](https://github.com/Azure-Samples/ms-identity-node) | |
-| ![Bu görüntüde Python logosu gösterilmektedir](media/sample-v2-code/logo_python.png)  | [MS-Identity-Python-Flask-WebApp-kimlik doğrulaması](https://github.com/Azure-Samples/ms-identity-python-flask-webapp-authentication) | [MS-Identity-Python-WebApp](https://github.com/Azure-Samples/ms-identity-python-webapp) |
-| ![Bu görüntüde Python logosu gösterilmektedir](media/sample-v2-code/logo_python.png)  | [Python Flask Web uygulaması](https://github.com/Azure-Samples/ms-identity-python-flask-tutorial/blob/main/README.md) oturum açan kullanıcılar öğreticisi                   | [Python Flask Web uygulaması](https://github.com/Azure-Samples/ms-identity-python-flask-tutorial/blob/main/README.md) oturum açan kullanıcılar ve çağrılar Graph öğreticisi |
-| ![Bu görüntüde Python logosu gösterilmektedir](media/sample-v2-code/logo_python.png)  | B2C ile [Python Flask Web uygulaması](https://github.com/Azure-Samples/ms-identity-b2c-python-flask-webapp-authentication/blob/main/README.md) oturum açlar                    |  |
+| ![Bu görüntüde Python logosu gösterilmektedir](media/sample-v2-code/logo_python.png)  | [Python Flask öğreticisi-bölüm 1,1](https://github.com/Azure-Samples/ms-identity-python-flask-tutorial/blob/main/README.md) AAD ile oturum açma  |  |
+| ![Bu görüntüde Python logosu gösterilmektedir](media/sample-v2-code/logo_python.png)  | [Python Flask öğreticisi-bölüm 1,2](https://github.com/Azure-Samples/ms-identity-python-flask-tutorial/blob/main/README.md) B2C ile oturum açın                    |  |
+| ![Bu görüntüde Python logosu gösterilmektedir](media/sample-v2-code/logo_python.png)  | | [Python Flask öğreticisi-bölüm 2,1](https://github.com/Azure-Samples/ms-identity-python-flask-tutorial/blob/main/README.md) AAD ile oturum açma ve çağrı grafı |
+| ![Bu görüntüde Python logosu gösterilmektedir](media/sample-v2-code/logo_python.png)  | |[Python Flask öğreticisi-bölüm 3,1](https://github.com/Azure-Samples/ms-identity-python-flask-tutorial/blob/main/README.md) Azure App Service dağıtma  |
+| ![Bu görüntüde Python logosu gösterilmektedir](media/sample-v2-code/logo_python.png)  | [Python Docgo öğreticisi-bölüm 1,1](https://github.com/Azure-Samples/ms-identity-python-django-tutorial/blob/main/README.md)   AAD ile oturum açma  | |
+| ![Bu görüntüde Python logosu gösterilmektedir](media/sample-v2-code/logo_python.png)  | [Python Docgo öğreticisi-bölüm 1,2](https://github.com/Azure-Samples/ms-identity-python-django-tutorial/blob/main/README.md) B2C ile oturum açın                    |  |
+| ![Bu görüntüde Python logosu gösterilmektedir](media/sample-v2-code/logo_python.png)  | | [Python Docgo öğreticisi-bölüm 2,1](https://github.com/Azure-Samples/ms-identity-python-django-tutorial/blob/main/README.md)  AAD ile oturum açma ve çağrı grafı|
+| ![Bu görüntüde Python logosu gösterilmektedir](media/sample-v2-code/logo_python.png)  | | [Python Docgo öğreticisi-bölüm 3,1](https://github.com/Azure-Samples/ms-identity-python-django-tutorial/blob/main/README.md) Azure App Service dağıtma                    |
+| ![Bu görüntüde Python logosu gösterilmektedir](media/sample-v2-code/logo_python.png)  | | [Python Flask web uygulaması](https://github.com/Azure-Samples/ms-identity-python-webapp) |
 | ![Bu görüntüde Ruby logosu gösterilmektedir](media/sample-v2-code/logo_ruby.png) |                   | [MSGraph-eğitim-rubyrailsapp](https://github.com/microsoftgraph/msgraph-training-rubyrailsapp) |
 | ![Bu görüntüde Blazor logosu gösterilmektedir](media/sample-v2-code/logo-blazor.png)</p>Blazor Server | [Blazor sunucusu uygulama oturum açması-kullanıcılar öğreticisi](https://github.com/Azure-Samples/ms-identity-blazor-server/tree/main/WebApp-OIDC) | [Blazor sunucusu uygulama çağrıları Microsoft Graph](https://github.com/Azure-Samples/ms-identity-blazor-server/tree/main/WebApp-graph-user/Call-MSGraph)</p>Bölümterwise öğreticisi: [Azure Active Directory kullanıcılara oturum açmak ve API 'leri çağırmak Için Blazor Server uygulaması](https://github.com/Azure-Samples/ms-identity-blazor-server) |
 

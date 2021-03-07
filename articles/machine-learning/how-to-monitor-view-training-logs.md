@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 07/30/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 8b2a61a92a25e1c0da9f85439438e75969fcfbf0
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: e86ea0d90ea267b1c9ceecc8fed6c3d7e5102eaf
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101661027"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102443582"
 ---
 # <a name="monitor-and-view-ml-run-logs-and-metrics"></a>ML çalıştırma günlüklerini ve ölçümlerini izleme ve görüntüleme
 
@@ -78,20 +78,23 @@ RunDetails(run).show()
 
 <a id="queryrunmetrics"></a>
 
-### <a name="logging-run-metrics"></a>Günlük çalıştırma ölçümleri 
+## <a name="view-run-metrics"></a>Çalıştırma ölçümlerini görüntüle
 
-Ölçüm görselleştirmelerini etkilemek için günlüğe kaydetme API 'Lerinde aşağıdaki yöntemleri kullanın. Günlüğe kaydedilen bu ölçümler için [hizmet sınırlarını](https://docs.microsoft.com/azure/machine-learning/resource-limits-quotas-capacity#metrics) göz önünde edin. 
+## <a name="via-the-sdk"></a>SDK aracılığıyla
+İle eğitilen bir modelin ölçümlerini görüntüleyebilirsiniz ```run.get_metrics()``` . Aşağıdaki örneğe bakın. 
 
-|Günlüğe kaydedilen değer|Örnek kod| Portalda biçim|
-|----|----|----|
-|Sayısal değerlerden oluşan diziyi günlüğe kaydet| `run.log_list(name='Fibonacci', value=[0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89])`|Tek değişkenli çizgi grafik|
-|Aynı ölçüm adı ile birlikte sürekli kullanılan tek bir sayısal değeri günlüğe kaydet (for döngüsü içinde olduğu gibi)| `for i in tqdm(range(-10, 10)):    run.log(name='Sigmoid', value=1 / (1 + np.exp(-i))) angle = i / 2.0`| Tek değişkenli çizgi grafik|
-|2 sayısal sütundan oluşan bir satırı sürekli olarak günlüğe kaydet|`run.log_row(name='Cosine Wave', angle=angle, cos=np.cos(angle))   sines['angle'].append(angle)      sines['sine'].append(np.sin(angle))`|İki değişkenli çizgi grafik|
-|2 sayısal sütun içeren günlük tablosu|`run.log_table(name='Sine Wave', value=sines)`|İki değişkenli çizgi grafik|
+```python
+from azureml.core import Run
+run = Run.get_context()
+run.log('metric-name', metric_value)
 
-## <a name="query-run-metrics"></a>Sorgu çalıştırma ölçümleri
+metrics = run.get_metrics()
+# metrics is of type Dict[str, List[float]] mapping mertic names
+# to a list of the values for that metric in the given run.
 
-İle eğitilen bir modelin ölçümlerini görüntüleyebilirsiniz ```run.get_metrics()``` . Örneğin, en düşük ortalama kare hatası (MSE) değerine sahip modeli arayarak en iyi modeli belirleyebilmek için bunu Yukarıdaki örnekle birlikte kullanabilirsiniz.
+metrics.get('metric-name')
+# list of metrics in the order they were recorded
+```
 
 <a name="view-the-experiment-in-the-web-portal"></a>
 

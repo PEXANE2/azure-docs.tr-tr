@@ -8,12 +8,12 @@ ms.date: 01/29/2021
 ms.author: rogarana
 ms.subservice: files
 ms.custom: references_regions
-ms.openlocfilehash: 197bd1ab63093a18bd7838349acb3aed11a98e16
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
+ms.openlocfilehash: 171e858ef06228f2bf5ef5dea662de00143a0567
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102202391"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102441950"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>Azure Dosya Eşitleme dağıtımı planlama
 
@@ -242,6 +242,16 @@ Bulut katmanlaması bir sunucu uç noktasında etkinleştirilmişse, katmanlı d
 
 ### <a name="other-hierarchical-storage-management-hsm-solutions"></a>Diğer hiyerarşik depolama yönetimi (HSM) çözümleri
 Azure Dosya Eşitleme ile başka bir HSM çözümü kullanılmamalıdır.
+
+## <a name="performance-and-scalability"></a>Performans ve Ölçeklenebilirlik
+
+Azure Dosya Eşitleme Aracısı Azure dosya paylaşımlarına bağlanan bir Windows Server makinesinde çalıştığından, etkin eşitleme performansı altyapınızdaki bir dizi etkene bağlıdır: Windows Server ve temel disk yapılandırması, sunucu ile Azure depolama arasındaki ağ bant genişliği, dosya boyutu, toplam veri kümesi boyutu ve veri kümesindeki etkinlik. Azure Dosya Eşitleme dosya düzeyinde çalıştığından Azure Dosya Eşitleme tabanlı bir çözümün performans özellikleri, saniye başına işlenen nesne (dosya ve dizin) sayısında daha fazla ölçülür.
+
+Azure portal veya SMB kullanarak Azure dosya paylaşımında yapılan değişiklikler anında algılanır ve sunucu uç noktasındaki değişiklikler gibi çoğaltılmaz. Azure dosyalarında değişiklik bildirimleri veya günlük kaydı yoktur, bu nedenle dosyalar değiştirildiğinde bir eşitleme oturumu otomatik olarak başlatmak için bir yol yoktur. Windows Server 'da, Azure Dosya Eşitleme dosyalar değiştiğinde eşitleme oturumunu otomatik olarak başlatmak için [WINDOWS USN günlük kaydı](https://docs.microsoft.com/windows/win32/fileio/change-journals) kullanır
+
+Azure dosya paylaşımında yapılan değişiklikleri algılamak için Azure Dosya Eşitleme, değişiklik algılama işi adlı Zamanlanmış bir iş vardır. Değişiklik algılama işi dosya paylaşımındaki her dosyayı numaralandırır ve ardından bu dosyanın eşitleme sürümüyle karşılaştırır. Değişiklik algılama işi dosyaların değiştiğini belirlediğinde Azure Dosya Eşitleme bir eşitleme oturumu başlatır. Değişiklik algılama işi her 24 saatte bir başlatılır. Değişiklik algılama işi Azure dosya paylaşımındaki her dosyayı numaralandırarak çalıştığından, değişiklik algılama daha büyük ad uzaylarında daha küçük ad uzaylarından daha uzun sürer. Büyük ad alanları için, hangi dosyaların değiştirildiğini belirleyebilmek her 24 saatte bir daha uzun sürebilir.
+
+Daha fazla bilgi için bkz. [Azure dosya eşitleme performans ölçümleri](storage-files-scale-targets.md#azure-file-sync-performance-metrics) ve [Azure dosya eşitleme ölçek hedefleri](storage-files-scale-targets.md#azure-file-sync-scale-targets)
 
 ## <a name="identity"></a>Kimlik
 Azure Dosya Eşitleme, eşitleme ayarlamanın ötesinde özel bir kurulum olmadan standart AD tabanlı Kimliğiniz ile çalışır. Azure Dosya Eşitleme kullanırken genel beklentisi, en fazla erişimin Azure dosya paylaşımının yerine Azure Dosya Eşitleme önbelleğe alma sunucuları üzerinden gittiğine göre yapılır. Sunucu uç noktaları Windows Server 'da bulunduğundan ve Windows Server, AD ve Windows-stili ACL 'Leri uzun bir süredir desteklediğinden, depolama eşitleme hizmeti 'ne kayıtlı Windows dosya sunucularının etki alanına katılmış olmasını sağlamaya gerek olmadan hiçbir şey gerekmez. Azure Dosya Eşitleme, ACL 'Leri Azure dosya paylaşımındaki dosyalarda depolayacak ve tüm sunucu uç noktalarına çoğaltacaktır.

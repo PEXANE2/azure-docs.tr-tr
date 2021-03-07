@@ -6,12 +6,12 @@ ms.author: thvankra
 ms.service: managed-instance-apache-cassandra
 ms.topic: quickstart
 ms.date: 03/02/2021
-ms.openlocfilehash: 510fcf48091266af255c15aced80651619133aab
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 86fa7e2e45dacb86b6601b699dca46b1b909fd08
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101748940"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102424708"
 ---
 # <a name="quickstart-create-an-azure-managed-instance-for-apache-cassandra-cluster-using-azure-cli-preview"></a>Hızlı başlangıç: Azure CLı kullanarak Apache Cassandra kümesi için Azure yönetilen örneği oluşturma (Önizleme)
 
@@ -30,9 +30,8 @@ Bu hızlı başlangıçta Apache Cassandra için Azure yönetilen örneği ile b
 
 * Şirket içinde barındırılan veya şirket içi ortamınıza bağlantısı olan [Azure sanal ağı](../virtual-network/virtual-networks-overview.md) . Şirket içi ortamları Azure 'a bağlama hakkında daha fazla bilgi için bkz. Şirket [içi ağı Azure 'A bağlama](https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/) makalesi.
 
-## <a name="prerequisites"></a>Ön koşullar
+* Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
 ## <a name="create-a-managed-instance-cluster"></a><a id="create-cluster"></a>Yönetilen örnek kümesi oluşturma
 
@@ -50,16 +49,10 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
    az network vnet create -n <VNet_Name> -l eastus2 -g <Resource_Group_Name> --subnet-name <Subnet Name>
    ```
 
-1. Yönetilen örnek için gerekli olan sanal ağa ve alt ağa bazı özel izinler uygulayın. Bunu yapmak için, var olan sanal ağınızın kaynak KIMLIĞINI almanız gerekir. Aşağıdaki komutu çalıştırın ve parametresinin değerini kopyalayın `Resource ID` :
+1. Yönetilen örnek için gerekli olan sanal ağa ve alt ağa bazı özel izinler uygulayın. Komutunu kullanın,,, `az role assignment create` `<subscription ID>` `<resource group name>` `<VNet name>` ve `<subnet name>` değerlerini uygun değerlerle değiştirin:
 
    ```azurecli-interactive
-   # get the resource ID of the Virtual Network
-   az network vnet show -n <VNet_name> -g <Resource_Group_Name> --query "id" --output tsv
-
-1. Now apply the special permissions by using the `az role assignment create` command. Use the `Resource ID` parameter from the output of previous command to the `scope` parameter:
-
-   ```azurecli-interactive
-   az role assignment create --assignee e5007d2c-4b13-4a74-9b6a-605d99f03501 --role 4d97b98b-1d4f-4787-a291-c67834d212e7 --scope <Resource ID>
+   az role assignment create --assignee e5007d2c-4b13-4a74-9b6a-605d99f03501 --role 4d97b98b-1d4f-4787-a291-c67834d212e7 --scope /subscriptions/<subscription ID>/resourceGroups/<resource group name>/providers/Microsoft.Network/virtualNetworks/<VNet name>/subnets/<subnet name>
    ```
 
    > [!NOTE]

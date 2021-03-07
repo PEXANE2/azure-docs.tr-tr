@@ -3,12 +3,12 @@ title: İlke örnekleri dizini
 description: Azure İlkesi için yerleşik ilkeler dizini. Kategori Etiketleri, Mevzuat Uyumluluğu, Key Vault, Kubernetes, Konuk Yapılandırması ve daha fazlası.
 ms.date: 01/29/2021
 ms.topic: sample
-ms.openlocfilehash: ae016e42af582847b871624844773ed971ef583d
-ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
+ms.openlocfilehash: 5e235d5a1a2c548c9c5b2779e7042a45c4218625
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100095605"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102435095"
 ---
 # <a name="azure-policy-samples"></a>Azure İlkesi Örnekleri
 
@@ -39,6 +39,7 @@ Aşağıda, Azure İlkesi’nde dil ve işleçler kullanılarak elde edilen fark
 
 - [Azure Güvenlik kıyaslaması v2](./azure-security-benchmark.md)
 - [Azure Güvenlik kıyaslaması v1](./azure-security-benchmarkv1.md)
+- [CIS Microsoft Azure temel geçişleri kıyaslama v 1.3.0](./cis-azure-1-3-0.md)
 - [CIS Microsoft Azure Yönetim Temelleri Kıyaslama v1.1.0](./cis-azure-1-1-0.md)
 - [CMMC düzey 3](./cmmc-l3.md)
 - [HIPAA HITRUST 9.2](./hipaa-hitrust-9-2.md)

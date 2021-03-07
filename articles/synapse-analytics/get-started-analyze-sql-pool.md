@@ -10,12 +10,12 @@ ms.service: synapse-analytics
 ms.subservice: sql
 ms.topic: tutorial
 ms.date: 12/31/2020
-ms.openlocfilehash: 683da659dcfa07c0a105382f4cc93d1f4dfb21b5
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 54b650d598cf19e061465b3a4fa18d50808e7f29
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98219547"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102426170"
 ---
 # <a name="analyze-data-with-dedicated-sql-pools"></a>Adanmış SQL havuzları ile verileri analiz etme
 
@@ -77,11 +77,12 @@ Azure SYNAPSE Analytics, özel bir SQL havuzu ile verileri analiz etme yeteneği
 ## <a name="explore-the-nyc-taxi-data-in-the-dedicated-sql-pool"></a>Özel SQL havuzundaki NYC TAXI verilerini keşfet
 
 1. SYNAPSE Studio 'da **veri** merkezine gidin.
+1. **SQLPOOL1** adlı bir veritabanı görmeniz gerekir. Bunu görmüyorsanız **Yenile**' ye tıklayın.
 1. **SQLPOOL1**  >  **Tables** bölümüne gidin. 
-1. Dbo öğesine sağ tıklayın **. Seyahat** tablosu ve **Yeni SQL betiği** Seç  >  **ilk 100 satır seçin**.
-1. Yeni bir SQL betiği oluşturulup çalışırken bekleyin.
-1. SQL **komut dosyasının en üstünde,** **SQLPOOL1** adlı SQL havuzuna otomatik olarak ayarlandığını unutmayın.
-1. SQL komut dosyasının metnini bu kodla değiştirin ve çalıştırın.
+3. Dbo öğesine sağ tıklayın **. Seyahat** tablosu ve **Yeni SQL betiği** Seç  >  **ilk 100 satır seçin**.
+4. Yeni bir SQL betiği oluşturulup çalışırken bekleyin.
+5. SQL **komut dosyasının en üstünde,** **SQLPOOL1** adlı SQL havuzuna otomatik olarak ayarlandığını unutmayın.
+6. SQL komut dosyasının metnini bu kodla değiştirin ve çalıştırın.
 
     ```sql
     SELECT PassengerCount,

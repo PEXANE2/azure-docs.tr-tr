@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 02/25/2020
 ms.author: trbye
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 9ee7116efe931d101a1505bc2d9d866d8ea5b92a
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: d91bfee228b946ff564f6d080976f9ce5c12caa4
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98943431"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102426272"
 ---
 # <a name="tutorial-voice-enable-your-bot-using-the-speech-sdk"></a>Öğretici: konuşma SDK 'sını kullanarak bot uygulamanızı etkinleştirin
 
@@ -69,7 +69,7 @@ Bu öğreticiyi tamamlayabilmeniz için gerekenler aşağıda verilmiştir:
 
 Bu öğreticide oluşturacağınız istemci uygulaması, el ile Azure hizmetlerini kullanır. Botunuzun yanıtlarının gidiş dönüş süresini azaltmak için, bu hizmetlerin aynı Azure bölgesinde bulunduğundan emin olmak isteyeceksiniz. Bu bölümde, **Batı ABD** bölgesinde bir kaynak grubu oluşturacaksınız. Bu kaynak grubu, bot Framework, doğrudan hat konuşma kanalı ve konuşma hizmeti için ayrı kaynaklar oluştururken kullanılacaktır.
 
-1. <a href="https://ms.portal.azure.com/#create/Microsoft.ResourceGroup" target="_blank">Kaynak grubu oluşturma <span class="docon docon-navigate-external x-hidden-focus"></span></a>
+1. <a href="https://ms.portal.azure.com/#create/Microsoft.ResourceGroup" target="_blank">Kaynak grubu oluşturma </a>
 1. Sizden bazı bilgiler sağlamanız istenecektir:
    * **Aboneliği** **ücretsiz denemeye** ayarlayın (mevcut bir aboneliği de kullanabilirsiniz).
    * **Kaynak grubunuz** için bir ad girin. **SpeechEchoBotTutorial-ResourceGroup** önerilir.
@@ -95,7 +95,7 @@ Artık desteklenen bir bölgede bir kaynak grubunuz olduğuna göre, bir sonraki
 
 Bir konuşma kaynağı oluşturmak için aşağıdaki yönergeleri izleyin:
 
-1. <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesSpeechServices" target="_blank">Konuşma hizmeti kaynağı oluşturma <span class="docon docon-navigate-external x-hidden-focus"></span></a>
+1. <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesSpeechServices" target="_blank">Konuşma hizmeti kaynağı oluşturma </a>
 4. Sizden bazı bilgiler sağlamanız istenecektir:
    * Kaynağınız için bir **ad** verin. **SpeechEchoBotTutorial-Speech** önerilir
    * **Abonelik** Için **ücretsiz deneme sürümünün** seçili olduğundan emin olun.
@@ -115,7 +115,7 @@ Bu noktada, kaynak grubunuzun (**SpeechEchoBotTutorial-ResourceGroup**) bir konu
 
 Sonraki adım App Service bir plan oluşturmaktır. App Service planı, bir web uygulamasının birlikte çalıştırılacağı işlem kaynakları kümesini tanımlar.
 
-1. <a href="https://ms.portal.azure.com/#create/Microsoft.AppServicePlanCreate" target="_blank">Azure App Service planı oluşturma <span class="docon docon-navigate-external x-hidden-focus"></span></a>
+1. <a href="https://ms.portal.azure.com/#create/Microsoft.AppServicePlanCreate" target="_blank">Azure App Service planı oluşturma </a>
 4. Sizden bazı bilgiler sağlamanız istenecektir:
    * **Aboneliği** **ücretsiz denemeye** ayarlayın (mevcut bir aboneliği de kullanabilirsiniz).
    * **Kaynak grubu** için **SpeechEchoBotTutorial-ResourceGroup** öğesini seçin.
@@ -167,7 +167,7 @@ Bazı kaynaklar oluşturduğunuza göre artık bir bot oluşturalım. Adın gös
 1. [Bot Framework öykünücü](https://github.com/Microsoft/BotFramework-Emulator/releases/latest) sürümü 4.3.0 veya üstünü yükler
 2. Bot Framework öykünücüsünü başlatın ve botunuzu açın:
    * **Dosya**  ->  **Bot 'ı açın**.
-3. Bot 'unuzun URL 'sini girin. Örneğin:
+3. Bot 'unuzun URL 'sini girin. Örnek:
 
    ```
    http://localhost:3978/api/messages
@@ -236,7 +236,7 @@ Botunuzun Web yuvalarını kullanarak doğrudan hat konuşma kanalıyla iletişi
 
 Botunuzu barındırmak için bir Azure App Service oluşturduğunuza göre, sonraki adım bir **bot kanalları kaydı** oluşturmaktır. Kanal kaydı oluşturma, botunuzu doğrudan hat konuşma kanalı dahil, bot Framework kanallarıyla kaydetmeye yönelik bir önkoşuldur. Botların kanalları kullanma hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [kanallara bir bot bağlama](/azure/bot-service/bot-service-manage-channels).
 
-1. <a href="https://ms.portal.azure.com/#create/Microsoft.BotServiceConnectivityGalleryPackage" target="_blank">Azure bot kanalları kaydı oluşturma <span class="docon docon-navigate-external x-hidden-focus"></span></a>
+1. <a href="https://ms.portal.azure.com/#create/Microsoft.BotServiceConnectivityGalleryPackage" target="_blank">Azure bot kanalları kaydı oluşturma </a>
 2. Sizden bazı bilgiler sağlamanız istenecektir:
    * **Bot tutamacı** Için, **SpeechEchoBotTutorial-botregistration-# # # #** girin ve ile değiştirin, **####** sizin tercih ettiğiniz bir sayıdır. Bot tanıtıcısının genel olarak benzersiz olması gerektiğini unutmayın. Bir bot tanıtıcısı girer, ancak şu hata iletisini alırsanız, _istenen bot kimliği kullanılabilir değil_, farklı bir sayı seçin. Aşağıdaki örneklerde 8726 kullandık
    * **Abonelik** Için **ücretsiz deneme**' yı seçin.

@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 02/24/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
-ms.openlocfilehash: aca6981e2214b9dbd03e6808e77c26fcd67c13cd
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 21ca30b24c4824a2d303d02f3df712328885e199
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101711578"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102435214"
 ---
 # <a name="azure-cosmos-db-input-binding-for-azure-functions-2x-and-higher"></a>Azure Işlevleri 2. x ve üzeri için giriş bağlamasını Azure Cosmos DB
 
@@ -300,7 +300,7 @@ namespace CosmosDBSamplesV2
 Aşağıdaki örnek, belge listesini alan bir [C# işlevini](functions-dotnet-class-library.md) gösterir. İşlev bir HTTP isteği tarafından tetiklenir. Kod, `DocumentClient` bir belge listesini okumak için Azure Cosmos DB bağlama tarafından sunulan bir örneği kullanır. `DocumentClient`Örnek, yazma işlemleri için de kullanılabilir.
 
 > [!NOTE]
-> Testi kolaylaştırmak için [ıdocumentclient](/dotnet/api/microsoft.azure.documents.idocumentclient?view=azure-dotnet&preserve-view=true) arabirimini de kullanabilirsiniz.
+> Testi kolaylaştırmak için [ıdocumentclient](/dotnet/api/microsoft.azure.documents.idocumentclient) arabirimini de kullanabilirsiniz.
 
 ```cs
 using Microsoft.AspNetCore.Http;

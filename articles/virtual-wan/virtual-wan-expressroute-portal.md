@@ -8,18 +8,18 @@ ms.topic: tutorial
 ms.date: 10/07/2020
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to connect my corporate on-premises network(s) to my VNets using Virtual WAN and ExpressRoute.
-ms.openlocfilehash: 07053c096ce001b322e5f05556bd041519ca9d2e
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 080136b8fc25b08a6b96464f0a61115a4bb2f3f8
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92102485"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102426625"
 ---
 # <a name="tutorial-create-an-expressroute-association-using-azure-virtual-wan"></a>Öğretici: Azure sanal WAN kullanarak bir ExpressRoute ilişkilendirmesi oluşturma
 
 Bu öğreticide, Azure 'daki kaynaklarınıza bir ExpressRoute bağlantı hattı üzerinden bağlanmak için sanal WAN 'ın nasıl kullanılacağı gösterilmektedir. Sanal WAN ve sanal WAN kaynakları hakkında daha fazla bilgi için bkz. [sanal WAN 'A genel bakış](virtual-wan-about.md).
 
-Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
+Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * Sanal WAN oluşturma
@@ -30,7 +30,7 @@ Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 > * Ağ Geçidi boyutunu değiştirme
 > * Varsayılan bir yol tanıtma
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Yapılandırmanıza başlamadan önce aşağıdaki ölçütleri karşıladığınızı doğrulayın:
 
@@ -79,7 +79,7 @@ Yeni bir sanal hub oluşturun. Bir hub oluşturulduktan sonra herhangi bir site 
 Ayrıca, var olan bir hub 'da düzenleyerek bir ağ geçidi oluşturabilirsiniz.
 
 1. Düzenlemek istediğiniz sanal hub 'a gidin ve seçin.
-2. **Sanal hub 'ı Düzenle** sayfasında **ExpressRoute ağ geçidini dahil et**onay kutusunu işaretleyin.
+2. **Sanal hub 'ı Düzenle** sayfasında **ExpressRoute ağ geçidini dahil et** onay kutusunu işaretleyin.
 3. Değişikliklerinizi onaylamak için **Onayla** ' yı seçin. Hub ve hub kaynaklarının tam olarak oluşturulması yaklaşık 30 dakika sürer.
 
    ![Mevcut hub](./media/virtual-wan-expressroute-portal/edithub.png "Hub 'ı düzenleme")
@@ -112,7 +112,7 @@ Ağ Geçidi oluşturulduktan sonra, bir [ExpressRoute devresini](../expressroute
 Portalda **sanal hub-> bağlantısı-> ExpressRoute** sayfasına gidin. Aboneliğinizde bir ExpressRoute devresine erişiminiz varsa, devre listesinde kullanmak istediğiniz devreyi görürsünüz. Herhangi bir bağlantı görmüyorsanız, ancak bir yetkilendirme anahtarı ve eş devre URI 'SI ile sağlanmışsa, bir bağlantı hattı kullanabilir ve bağlayabilirsiniz. [Yetkilendirme anahtarını benimsemek için](#authkey)bkz. bağlanma.
 
 1. Devresini seçin.
-2. **Bağlantı devresini**seçin.
+2. **Bağlantı devresini** seçin.
 
    ![bağlantı devreleri](./media/virtual-wan-expressroute-portal/cktconnect.png "bağlantı devreleri")
 
@@ -155,11 +155,9 @@ Azure sanal hub 'ının varsayılan yolu olan 0.0.0.0/0 yolunu ExpressRoute biti
 
 ## <a name="clean-up-resources"></a><a name="cleanup"></a>Kaynakları temizleme
 
-Bu kaynaklar artık gerekli değilse, [Remove-AzureRmResourceGroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup) komutunu kullanarak kaynak grubunu ve içerdiği tüm kaynakları kaldırabilirsiniz. "myResourceGroup" yerine kaynak grubunuzun adını yazın ve aşağıdaki PowerShell komutunu çalıştırın:
+Oluşturduğunuz kaynaklara artık ihtiyacınız kalmadığında, bunları silin. Bağımlılıklar nedeniyle sanal WAN kaynaklarından bazılarının belirli bir sırada silinmesi gerekir. Silme işleminin tamamlanması yaklaşık 30 dakika sürebilir.
 
-```azurepowershell-interactive
-Remove-AzResourceGroup -Name myResourceGroup -Force
-```
+[!INCLUDE [Delete resources](../../includes/virtual-wan-resource-cleanup.md)]
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

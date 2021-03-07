@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 07/30/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 9e5f64d9ef61a272da488ad70e690db4c07ddccc
-ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
+ms.openlocfilehash: 0130af66152d4f70db47191ae2f271630a59e179
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/06/2021
-ms.locfileid: "99625086"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102441083"
 ---
 # <a name="enable-logging-in-ml-training-runs"></a>ML eğitim çalıştırmaları 'nda günlüğü etkinleştir
 
@@ -38,6 +38,37 @@ Günlükler; hataları ve uyarıları tanılamanıza veya parametreler ve model 
 ## <a name="data-types"></a>Veri türleri
 
 Skaler değerler, listeler, tablolar, görüntüler ve dizinler gibi birçok farklı veri türünü günlüğe kaydedebilirsiniz. Farklı veri türleri hakkında daha fazla bilgi edinmek ve Python kodu örneklerini görmek için bkz. [Çalıştırma sınıfı başvuru sayfası](/python/api/azureml-core/azureml.core.run%28class%29?preserve-view=true&view=azure-ml-py).
+
+### <a name="logging-run-metrics"></a>Günlük çalıştırma ölçümleri 
+
+Ölçüm görselleştirmelerini etkilemek için günlüğe kaydetme API 'Lerinde aşağıdaki yöntemleri kullanın. Günlüğe kaydedilen bu ölçümler için [hizmet sınırlarını](https://docs.microsoft.com/azure/machine-learning/resource-limits-quotas-capacity#metrics) göz önünde edin. 
+
+|Günlüğe kaydedilen değer|Örnek kod| Portalda biçim|
+|----|----|----|
+|Sayısal değerlerden oluşan diziyi günlüğe kaydet| `run.log_list(name='Fibonacci', value=[0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89])`|Tek değişkenli çizgi grafik|
+|Aynı ölçüm adı ile birlikte sürekli kullanılan tek bir sayısal değeri günlüğe kaydet (for döngüsü içinde olduğu gibi)| `for i in tqdm(range(-10, 10)):    run.log(name='Sigmoid', value=1 / (1 + np.exp(-i))) angle = i / 2.0`| Tek değişkenli çizgi grafik|
+|2 sayısal sütundan oluşan bir satırı sürekli olarak günlüğe kaydet|`run.log_row(name='Cosine Wave', angle=angle, cos=np.cos(angle))   sines['angle'].append(angle)      sines['sine'].append(np.sin(angle))`|İki değişkenli çizgi grafik|
+|2 sayısal sütun içeren günlük tablosu|`run.log_table(name='Sine Wave', value=sines)`|İki değişkenli çizgi grafik|
+|Günlük resmi|`run.log_image(name='food', path='./breadpudding.jpg', plot=None, description='desert')`|Çalışma için bir görüntü dosyası veya Matplotlib çizimi günlüğe kaydetmek için bu yöntemi kullanın. Bu görüntüler, çalıştırma kaydında görünür ve karşılaştırılabilir olacaktır|
+
+### <a name="logging-with-mlflow"></a>MLflow ile günlüğe kaydetme
+Ölçümleri günlüğe kaydetmek için Mlflowgünlükçüsü kullanın.
+
+```python
+from azureml.core import Run
+# connect to the workspace from within your running code
+run = Run.get_context()
+ws = run.experiment.workspace
+
+# workspace has associated ml-flow-tracking-uri
+mlflow_url = ws.get_mlflow_tracking_uri()
+
+#Example: PyTorch Lightning
+from pytorch_lightning.loggers import MLFlowLogger
+
+mlf_logger = MLFlowLogger(experiment_name=run.experiment.name, tracking_uri=mlflow_url)
+mlf_logger._run_id = run.id
+```
 
 ## <a name="interactive-logging-session"></a>Etkileşimli günlüğe kaydetme oturumu
 

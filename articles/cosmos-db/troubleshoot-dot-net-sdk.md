@@ -3,18 +3,18 @@ title: Azure Cosmos DB .NET SDK'sını kullanırken karşılaşılan sorunları 
 description: .NET SDK kullanırken Azure Cosmos DB sorunları tanımlamak, tanılamak ve sorunlarını gidermek için istemci tarafı günlüğe kaydetme gibi özellikleri ve diğer üçüncü taraf araçları kullanın.
 author: anfeldma-ms
 ms.service: cosmos-db
-ms.date: 02/05/2021
+ms.date: 03/05/2021
 ms.author: anfeldma
 ms.subservice: cosmosdb-sql
 ms.topic: troubleshooting
 ms.reviewer: sngun
 ms.custom: devx-track-dotnet
-ms.openlocfilehash: dce309b955882f6236f285ee6bd20a79201e43fb
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: 1f7548b355353eb77419f4d1760b40ba02eeddda
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 03/07/2021
-ms.locfileid: "102429944"
+ms.locfileid: "102442205"
 ---
 # <a name="diagnose-and-troubleshoot-issues-when-using-azure-cosmos-db-net-sdk"></a>Azure Cosmos DB .NET SDK'sını kullanırken karşılaşılan sorunları tanılama ve giderme
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -93,12 +93,47 @@ Uygulamanız [Azure sanal makinelerinde genel IP adresi olmadan](../load-balance
 ### <a name="high-network-latency"></a><a name="high-network-latency"></a>Yüksek ağ gecikmesi
 Yüksek ağ gecikmesi, v2 SDK 'sindeki [Tanılama dizesi](/dotnet/api/microsoft.azure.documents.client.resourceresponsebase.requestdiagnosticsstring) veya v3 SDK 'daki [Tanılamalar](/dotnet/api/microsoft.azure.cosmos.responsemessage.diagnostics#Microsoft_Azure_Cosmos_ResponseMessage_Diagnostics) kullanılarak belirlenebilir.
 
-Bir [zaman aşımı](troubleshoot-dot-net-sdk-request-timeout.md) yoksa ve tanılama, yüksek gecikme süresinin ve arasındaki farka göre `ResponseTime` `RequestStartTime` (Bu örnekte >300 milisaniyelik) açık olduğu tek istekleri gösterir.
+[Zaman aşımları](troubleshoot-dot-net-sdk-request-timeout.md) yoksa ve Tanılamalar yüksek gecikme süresinin öngösterilmesi halinde tek istekleri gösterir.
+
+# <a name="v3-sdk"></a>[V3 SDK](#tab/diagnostics-v3)
+
+Tanılama, herhangi bir,, `ResponseMessage` `ItemResponse` `FeedResponse` , veya `CosmosException` `Diagnostics` özelliği tarafından elde edilebilir:
+
+```csharp
+ItemResponse<MyItem> response = await container.CreateItemAsync<MyItem>(item);
+Console.WriteLine(response.Diagnostics.ToString());
+```
+
+Tanılamadaki ağ etkileşimleri, örneğin:
+
+```json
+{
+    "name": "Microsoft.Azure.Documents.ServerStoreModel Transport Request",
+    "id": "0e026cca-15d3-4cf6-bb07-48be02e1e82e",
+    "component": "Transport",
+    "start time": "12: 58: 20: 032",
+    "duration in milliseconds": 1638.5957
+}
+```
+
+Nerede `duration in milliseconds` gecikme süresini gösterir.
+
+# <a name="v2-sdk"></a>[V2 SDK](#tab/diagnostics-v2)
+
+Tanılama, istemci [doğrudan modda](sql-sdk-connection-modes.md)yapılandırıldığında özelliği aracılığıyla kullanılabilir `RequestDiagnosticsString` :
+
+```csharp
+ResourceResponse<Document> response = await client.ReadDocumentAsync(documentLink, new RequestOptions() { PartitionKey = new PartitionKey(partitionKey) });
+Console.WriteLine(response.RequestDiagnosticsString);
+```
+
+Gecikme süresi ve arasındaki fark şu şekilde olur `ResponseTime` `RequestStartTime` :
 
 ```bash
 RequestStartTime: 2020-03-09T22:44:49.5373624Z, RequestEndTime: 2020-03-09T22:44:49.9279906Z,  Number of regions attempted:1
 ResponseTime: 2020-03-09T22:44:49.9279906Z, StoreResult: StorePhysicalAddress: rntbd://..., ...
 ```
+--- 
 
 Bu gecikme süresinin birden çok nedeni olabilir:
 

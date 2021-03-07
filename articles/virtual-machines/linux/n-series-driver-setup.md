@@ -6,14 +6,14 @@ author: vikancha-MSFT
 ms.service: virtual-machines-linux
 ms.topic: how-to
 ms.workload: infrastructure-services
-ms.date: 01/09/2019
+ms.date: 11/11/2019
 ms.author: vikancha
-ms.openlocfilehash: 553a0fb1f7eb578bcd5c89c1aec45c38a1d2305e
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 766f6cb0515f45fa11ee26ba23e79ae51fff5ce3
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101672526"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102436099"
 ---
 # <a name="install-nvidia-gpu-drivers-on-n-series-vms-running-linux"></a>Linux çalıştıran N serisi VM 'Lere NVıDıA GPU sürücülerini yükler
 
@@ -29,7 +29,6 @@ N serisi VM özellikleri, depolama kapasiteleri ve disk ayrıntıları için bkz
 
 Burada, N serisi VM 'lerde NVıDıA CUDA araç setinden CUDA sürücülerini yüklemek için gereken adımlar verilmiştir. 
 
-
 C ve C++ geliştiricileri, GPU hızlandırmalı uygulamalar oluşturmak için isteğe bağlı olarak tam araç setini yükleyebilir. Daha fazla bilgi için bkz. [CUDA Yükleme Kılavuzu](https://docs.nvidia.com/cuda/cuda-installation-guide-linux/index.html).
 
 CUDA sürücülerini yüklemek için her VM 'ye bir SSH bağlantısı oluşturun. Sistemde CUDA özellikli bir GPU olduğunu doğrulamak için şu komutu çalıştırın:
@@ -41,6 +40,7 @@ Aşağıdaki örneğe benzer bir çıktı görürsünüz (NVıDıA Tesla K80 kar
 
 ![lspcı komut çıktısı](./media/n-series-driver-setup/lspci.png)
 
+lspcı, varsa InfiniBand NIC ve GPU 'Lar dahil olmak üzere VM 'deki PCIe cihazlarını listeler. Lspcı başarıyla dönmezse, LIS 'yi CentOS/RHEL üzerine yüklemeniz gerekebilir (aşağıdaki yönergeler).
 Ardından, dağıtıma özgü yükleme komutlarını çalıştırın.
 
 ### <a name="ubuntu"></a>Ubuntu 
@@ -48,19 +48,14 @@ Ardından, dağıtıma özgü yükleme komutlarını çalıştırın.
 1. NVıDıA Web sitesinden CUDA Sürücülerini İndirin ve yükleyin. Örneğin, Ubuntu 16,04 LTS için:
    ```bash
    CUDA_REPO_PKG=cuda-repo-ubuntu1604_10.0.130-1_amd64.deb
-
    wget -O /tmp/${CUDA_REPO_PKG} https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1604/x86_64/${CUDA_REPO_PKG} 
 
    sudo dpkg -i /tmp/${CUDA_REPO_PKG}
-
    sudo apt-key adv --fetch-keys https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1604/x86_64/7fa2af80.pub 
-
    rm -f /tmp/${CUDA_REPO_PKG}
 
    sudo apt-get update
-
    sudo apt-get install cuda-drivers
-
    ```
 
    Yükleme birkaç dakika sürebilir.
@@ -79,11 +74,8 @@ Dağıtımdan sonra CUDA sürücülerini düzenli olarak güncelleştirmenizi ö
 
 ```bash
 sudo apt-get update
-
 sudo apt-get upgrade -y
-
 sudo apt-get dist-upgrade -y
-
 sudo apt-get install cuda-drivers
 
 sudo reboot
@@ -95,42 +87,33 @@ sudo reboot
 
    ```
    sudo yum install kernel kernel-tools kernel-headers kernel-devel
-  
-   sudo reboot
-
-2. Install the latest [Linux Integration Services for Hyper-V and Azure](https://www.microsoft.com/download/details.aspx?id=55106). Check if LIS is required by verifying the results of lspci. If all GPU devices are listed as expected, installing LIS is not required.
-
-Skip this step if you plan to use CentOS 7.8(or higher) as LIS is no longer required for these versions.
-
-Please note that LIS is applicable to Red Hat Enterprise Linux, CentOS, and the Oracle Linux Red Hat Compatible Kernel 5.2-5.11, 6.0-6.10, and 7.0-7.7. Please refer to the [Linux Integration Services documentation] (https://www.microsoft.com/en-us/download/details.aspx?id=55106) for more details. 
-
-Skip this step if you are not using the Kernel versions listed above.
-
-   ```bash
-   wget https://aka.ms/lis
- 
-   tar xvzf lis
- 
-   cd LISISO
- 
-   sudo ./install.sh
- 
    sudo reboot
    ```
- 
+
+2. [Hyper-V ve Azure için en son Linux Tümleştirme Hizmetleri](https://www.microsoft.com/download/details.aspx?id=55106)'ni yükler. Lspcı sonuçlarının doğrulanması için LIS 'nin gerekli olup olmadığını denetleyin. Tüm GPU cihazları beklenen (ve yukarıda belgelenmiş) olarak listeleniyorsa, LIS 'nin yüklenmesi gerekli değildir.
+
+   LIS 'nin Red Hat Enterprise Linux, CentOS ve Oracle Linux Red Hat uyumlu çekirdek 5.2-5.11, 6.0-6.10 ve 7.0-7.7 için geçerli olduğunu lütfen unutmayın. Daha fazla ayrıntı için lütfen [Linux Tümleştirme Hizmetleri belgeleri] bölümüne bakın https://www.microsoft.com/en-us/download/details.aspx?id=55106) . 
+   Bu sürümler için LIS 'nin artık gerekli olmadığı için CentOS/RHEL 7,8 (veya üzeri sürümler) kullanmayı planlıyorsanız bu adımı atlayın.
+
+      ```bash
+      wget https://aka.ms/lis
+      tar xvzf lis
+      cd LISISO
+
+      sudo ./install.sh
+      sudo reboot
+      ```
+
 3. SANAL makineye yeniden bağlanın ve aşağıdaki komutlarla yüklemeye devam edin:
 
    ```bash
    sudo rpm -Uvh https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
-
    sudo yum install dkms
-
+   
    CUDA_REPO_PKG=cuda-repo-rhel7-10.0.130-1.x86_64.rpm
-
    wget https://developer.download.nvidia.com/compute/cuda/repos/rhel7/x86_64/${CUDA_REPO_PKG} -O /tmp/${CUDA_REPO_PKG}
 
    sudo rpm -ivh /tmp/${CUDA_REPO_PKG}
-
    rm -f /tmp/${CUDA_REPO_PKG}
 
    sudo yum install cuda-drivers
@@ -200,20 +183,15 @@ NV veya NVv3 serisi VM 'Lere NVıDıA GRID sürücüleri yüklemek için, her VM
 
    ```bash
    sudo apt-get update
-
    sudo apt-get upgrade -y
-
    sudo apt-get dist-upgrade -y
-
    sudo apt-get install build-essential ubuntu-desktop -y
-   
    sudo apt-get install linux-azure -y
    ```
 3. NVıDıA sürücüsüyle uyumsuz olan Nouveau Çekirdek sürücüsünü devre dışı bırakın. (Yalnızca NV veya NVv2 VM 'lerinde NVıDıA sürücüsünü kullanın.) Bunu yapmak için, `/etc/modprobe.d` aşağıdaki içeriklerle adlandırılmış bir dosya oluşturun `nouveau.conf` :
 
    ```
    blacklist nouveau
-
    blacklist lbm-nouveau
    ```
 
@@ -228,9 +206,7 @@ NV veya NVv3 serisi VM 'Lere NVıDıA GRID sürücüleri yüklemek için, her VM
 
    ```bash
    wget -O NVIDIA-Linux-x86_64-grid.run https://go.microsoft.com/fwlink/?linkid=874272  
-
    chmod +x NVIDIA-Linux-x86_64-grid.run
-
    sudo ./NVIDIA-Linux-x86_64-grid.run
    ``` 
 
@@ -263,13 +239,9 @@ NV veya NVv3 serisi VM 'Lere NVıDıA GRID sürücüleri yüklemek için, her VM
  
    ```bash  
    sudo yum update
- 
    sudo yum install kernel-devel
- 
    sudo rpm -Uvh https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
- 
    sudo yum install dkms
-   
    sudo yum install hyperv-daemons
    ```
 
@@ -277,26 +249,22 @@ NV veya NVv3 serisi VM 'Lere NVıDıA GRID sürücüleri yüklemek için, her VM
 
    ```
    blacklist nouveau
-
    blacklist lbm-nouveau
    ```
- 
-3. [Hyper-V ve Azure IÇIN](https://www.microsoft.com/download/details.aspx?id=55106)VM 'yi yeniden başlatın, yeniden bağlanın ve en son Linux Tümleştirme hizmetlerini kurun. Lspcı sonuçlarının doğrulanması için LIS 'nin gerekli olup olmadığını denetleyin. Tüm GPU cihazları beklenen olarak listeleniyorsa, LIS 'nin yüklenmesi gerekli değildir. 
 
-Bu adımı atla, CentOS/RHEL 7,8 ve üstünü kullanıyorsunuz.
- 
-   ```bash
-   wget https://aka.ms/lis
+3. [Hyper-V ve Azure IÇIN](https://www.microsoft.com/download/details.aspx?id=55106)VM 'yi yeniden başlatın, yeniden bağlanın ve en son Linux Tümleştirme hizmetlerini kurun. Lspcı sonuçlarının doğrulanması için LIS 'nin gerekli olup olmadığını denetleyin. Tüm GPU cihazları beklenen (ve yukarıda belgelenmiş) olarak listeleniyorsa, LIS 'nin yüklenmesi gerekli değildir. 
 
-   tar xvzf lis
+   Bu sürümler için LIS 'nin artık gerekli olmadığı için CentOS/RHEL 7,8 (veya üzeri sürümler) kullanmayı planlıyorsanız bu adımı atlayın.
 
-   cd LISISO
+      ```bash
+      wget https://aka.ms/lis
+      tar xvzf lis
+      cd LISISO
 
-   sudo ./install.sh
+      sudo ./install.sh
+      sudo reboot
 
-   sudo reboot
-
-   ```
+      ```
  
 4. SANAL makineye yeniden bağlanın ve komutu çalıştırın `lspci` . NVıDıA M60 kartının veya kartlarının PCI cihazlar olarak görünür olduğunu doğrulayın.
  
@@ -304,7 +272,6 @@ Bu adımı atla, CentOS/RHEL 7,8 ve üstünü kullanıyorsunuz.
 
    ```bash
    wget -O NVIDIA-Linux-x86_64-grid.run https://go.microsoft.com/fwlink/?linkid=874272  
-
    chmod +x NVIDIA-Linux-x86_64-grid.run
 
    sudo ./NVIDIA-Linux-x86_64-grid.run
@@ -384,7 +351,7 @@ Ardından, içinde güncelleştirme betiğinizin bir girdisini oluşturun, `/etc
 
 * ' I kullanarak Kalıcılık modunu ayarlayabilirsiniz `nvidia-smi` . böylece, kartları sorgulamak için komutun çıktısının daha hızlı olması gerekir. Kalıcılık modunu ayarlamak için yürütün `nvidia-smi -pm 1` . VM yeniden başlatılırsa mod ayarının dışarıda olacağını unutmayın. Başlatma sırasında her zaman Mod ayarını çalıştırmak için komut dosyası oluşturabilirsiniz.
 * NVıDıA CUDA sürücülerini en son sürüme güncelleştirdiyseniz ve RDMA bağlantısı bulunursa, bu bağlantıyı yeniden kurmak için [RDMA sürücülerini yeniden yükleyin](#rdma-network-connectivity) . 
-* LIS için belirli bir CentOS/RHEL işletim sistemi sürümü (veya çekirdeği) desteklenmiyorsa, "desteklenmeyen çekirdek sürümü" hatası oluşturulur. Lütfen bu hatayı işletim sistemi ve çekirdek sürümleriyle birlikte bildirin.
+* LIS yüklemesi sırasında, belirli bir CentOS/RHEL işletim sistemi sürümü (veya çekirdeği) LIS için desteklenmiyorsa, "desteklenmeyen çekirdek sürümü" hatası oluşturulur. Lütfen bu hatayı işletim sistemi ve çekirdek sürümleriyle birlikte bildirin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

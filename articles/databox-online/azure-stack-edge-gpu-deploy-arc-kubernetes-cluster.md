@@ -6,23 +6,25 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 11/12/2020
+ms.date: 03/05/2021
 ms.author: alkohli
-ms.openlocfilehash: 53ef73c70f5d20133e7b408ad7af91c3778e5568
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: 4d75986880075f6eb07aa31b9322bdae15535802
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98787460"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102437613"
 ---
 # <a name="enable-azure-arc-on-kubernetes-cluster-on-your-azure-stack-edge-pro-gpu-device"></a>Azure Stack Edge Pro GPU cihazındaki Kubernetes kümesinde Azure yayı 'yi etkinleştirme
+
+[!INCLUDE [applies-to-GPU-and-pro-r-and-mini-r-skus](../../includes/azure-stack-edge-applies-to-gpu-pro-r-mini-r-sku.md)]
 
 Bu makalede, Azure Arc 'ın Azure Stack Edge Pro cihazınızdaki mevcut bir Kubernetes kümesinde nasıl etkinleştirileceği gösterilmektedir. 
 
 Bu yordam, [Azure Stack Edge Pro cihazındaki Kubernetes iş yüklerini](azure-stack-edge-gpu-kubernetes-workload-management.md) Inceleyen ve [Azure Arc etkinleştirilmiş Kubernetes (Önizleme)](../azure-arc/kubernetes/overview.md)ile ilgili kavramlara yönelik kavramlar hakkında bilgi sahibi olmak için tasarlanmıştır.
 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Kubernetes kümesinde Azure yayı etkinleştirebilmeniz için, Azure Stack Edge Pro cihazınızda ve cihaza erişmek için kullanacağınız istemcide aşağıdaki önkoşulları tamamladığınızdan emin olun:
 
@@ -86,7 +88,7 @@ Ayrıca, kaynak sağlayıcılarını ile de kaydedebilirsiniz `az cli` . Daha fa
 
 1. Hizmet sorumlusu oluşturmak için, aracılığıyla aşağıdaki komutu kullanın `az cli` .
 
-    `az ad sp create-for-rbac --skip assignment --name "<Informative name for service principal>"`  
+    `az ad sp create-for-rbac --skip-assignment --name "<Informative name for service principal>"`  
 
     ' De oturum açma hakkında bilgi için `az cli` [Azure Portal Cloud Shell başlatın](../cloud-shell/quickstart-powershell.md#start-cloud-shell)
 
@@ -228,4 +230,4 @@ Azure Arc yönetimini kaldırmak için şu adımları izleyin:
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure Arc dağıtımının nasıl çalıştırılacağını anlamak için bkz. [bir Azure Stack Edge Pro cihazında Gilar aracılığıyla durum bilgisiz olmayan php Konuk uygulaması dağıtma](azure-stack-edge-gpu-deploy-stateless-application-git-ops-guestbook.md)
+Azure Arc dağıtımının nasıl çalıştırılacağını anlamak için, bkz. [ `Guestbook` Azure Stack Edge Pro cihazında Gile aracılığıyla durum bilgisiz olmayan bir php uygulaması dağıtma](azure-stack-edge-gpu-deploy-stateless-application-git-ops-guestbook.md)

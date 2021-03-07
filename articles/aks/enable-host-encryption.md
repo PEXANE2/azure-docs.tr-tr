@@ -4,12 +4,12 @@ description: Azure Kubernetes Service (AKS) kümesinde konak tabanlı şifreleme
 services: container-service
 ms.topic: article
 ms.date: 03/03/2021
-ms.openlocfilehash: 66e71dfd6a76fb4e6b464eb5c44dcc809fb9be38
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: f4e599ae7aa81c15f86d0e8b1c934824010ea45b
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102039742"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102430165"
 ---
 # <a name="host-based-encryption-on-azure-kubernetes-service-aks-preview"></a>Azure Kubernetes hizmeti (AKS) üzerinde ana bilgisayar tabanlı şifreleme (Önizleme)
 
@@ -48,7 +48,7 @@ az extension update --name aks-preview
 
 ### <a name="limitations"></a>Sınırlamalar
 
-- Yalnızca yeni düğüm havuzlarında veya yeni kümelerde etkinleştirilebilir.
+- Yalnızca yeni düğüm havuzlarında etkinleştirilebilir.
 - Yalnızca Azure yönetilen disklerinin sunucu tarafı şifrelemesini ve yalnızca belirli [desteklenen VM boyutlarını][supported-sizes]destekleyen [Azure bölgelerinde][supported-regions] etkinleştirilebilir.
 - *VM kümesi türü* olarak sanal makine ölçek kümeleri (VMSS) tabanlı bir aks kümesi ve düğüm havuzu gerektirir.
 

@@ -12,12 +12,12 @@ metadata:
   title: Kişiselleştirme belgeleri
   titleSuffix: Azure Cognitive Services
   description: Azure Kişiselleştirme, kullanıcıların gerçek zamanlı davranışlarından öğrenerek onlara gösterilebilecek en iyi deneyimi seçmenizi sağlayan bulut tabanlı bir API’dir.
-  ms.openlocfilehash: f4d263e551360b326fbe849e4cb62347e8125849
-  ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
-  ms.translationtype: HT
+  ms.openlocfilehash: 51d86faac37ad4131adad395d0fb52a23870e2ea
+  ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+  ms.translationtype: MT
   ms.contentlocale: tr-TR
-  ms.lasthandoff: 11/08/2020
-  ms.locfileid: "94368143"
+  ms.lasthandoff: 03/07/2021
+  ms.locfileid: "102433718"
 landingContent:
 - title: Kişiselleştirme hakkında
   linkLists:
@@ -68,7 +68,7 @@ landingContent:
     - text: NuGet paketi
       url: https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Personalizer/0.8.0-preview
     - text: NuGet başvuru belgeleri
-      url: /dotnet/api/microsoft.azure.cognitiveservices.personalizer?view=azure-dotnet-preview&viewFallbackFrom=azure-dotnet
+      url: /dotnet/api/microsoft.azure.cognitiveservices.personalizer?view=azure-dotnet-preview&preserve-view=true
   - linkListType: get-started
     links:
     - text: Node.js ile Kişiselleştirme döngüsü geliştirme

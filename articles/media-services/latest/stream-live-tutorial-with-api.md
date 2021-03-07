@@ -28,18 +28,18 @@ Azure Media Services, canlı [Olaylar](/rest/api/media/liveevents) canlı akış
 Öğreticiyi tamamlamak için aşağıdakiler gereklidir:
 
 - Visual Studio Code veya Visual Studio 'Yu yükler.
-- [Media Services hesabı oluşturun](./create-account-howto.md).<br/>Kaynak grubu adı ve Media Services hesap adı için kullandığınız değerleri anımsadığınızdan emin olun.
-- [Azure CLI Ile Access Azure Media Services API 'sindeki](./access-api-howto.md) adımları izleyin ve kimlik bilgilerini kaydedin. API 'ye erişmek için bunları kullanmanız gerekir.
+- [Media Services hesabı oluşturun](./create-account-howto.md).<br/>API erişim ayrıntılarını JSON biçiminde kopyalamaya veya bu örnekte kullanılan. env dosya biçimindeki Media Services hesabına bağlanmak için gereken değerleri depoladığınızdan emin olun.
+- [Azure CLI Ile Access Azure Media Services API 'sindeki](./access-api-howto.md) adımları izleyin ve kimlik bilgilerini kaydedin. Bu örnekteki API 'ye erişmek için bunları kullanmanız veya. env dosya biçimine girmeniz gerekir. 
 - Bir olayı yayımlamak için kullanılan bir kamera veya bir cihaz (dizüstü bilgisayar gibi).
-- Kameradan gelen sinyalleri Media Services canlı akış hizmetine gönderilen akışlara dönüştüren, şirket içi bir Live Encoder, bkz. [Önerilen şirket içi canlı kodlayıcılar](recommended-on-premises-live-encoders.md). Akışın **RTMP** veya **Kesintisiz Akış** biçiminde olması gerekir.  
-- Bu örnekte, kullanmaya başlamak için OBS Studio canlı akış yazılımı gibi bir yazılım Kodlayıcısı ile başlamanız önerilir. 
+- Kamera akışınızı kodlayan ve RTMP protokolünü kullanarak Media Services canlı akış hizmetine Gönderen şirket içi yazılım Kodlayıcısı, bkz. [Önerilen şirket içi canlı kodlayıcılar](recommended-on-premises-live-encoders.md). Akışın **RTMP** veya **Kesintisiz Akış** biçiminde olması gerekir.  
+- Bu örnek için, ücretsiz [Açık yayın yazılımı OBS Studio](https://obsproject.com/download) gibi bir yazılım kodlayıcıyla başlamak önerilir, bu da başlamak için basit hale gelir. 
 
 > [!TIP]
 > Devam etmeden önce [Media Services v3 ile canlı akış](live-streaming-overview.md) konusunu gözden geçirmeyi unutmayın. 
 
 ## <a name="download-and-configure-the-sample"></a>Örneği indirin ve yapılandırın
 
-Aşağıdaki komutu kullanarak, akış .NET örneğini içeren bir GitHub havuzunu makinenize kopyalayın:  
+Aşağıdaki komutu kullanarak, canlı akış .NET örneğini içeren aşağıdaki git hub deposunu makinenize kopyalayın:  
 
  ```bash
  git clone https://github.com/Azure-Samples/media-services-v3-dotnet.git
@@ -48,6 +48,9 @@ Aşağıdaki komutu kullanarak, akış .NET örneğini içeren bir GitHub havuzu
 Canlı akış örneği [Live](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/main/Live) klasöründe bulunabilir.
 
 İndirilen projenizde [appsettings.js](https://github.com/Azure-Samples/media-services-v3-dotnet/blob/main/Live/LiveEventWithDVR/appsettings.json) açın. Değerleri, [API 'lere erişirken](./access-api-howto.md)aldığınız kimlik bilgileriyle değiştirin.
+
+Aynı zamanda, .NET örnekleri deposundaki tüm projeler için ortam değişkenlerinizi yalnızca bir kez ayarlamak üzere projenin kökünde. env dosya biçimini de kullanabileceğinizi unutmayın. Örnek. env dosyasını kopyalamanız, Azure portal Media Services API erişimi sayfasından veya Azure CLı 'dan elde ettiğiniz bilgileri doldurmanız yeterlidir.  Sample. env dosyasını tüm projeler genelinde kullanmak için yalnızca ". env" olarak yeniden adlandırın.
+. Gitignore dosyası, bu dosyanın içeriğini otomatik olarak oluşturulan deponuza Yayımlamamak üzere zaten yapılandırılmış. 
 
 > [!IMPORTANT]
 > Bu örnek her kaynak için benzersiz bir sonek kullanır. Hata ayıklamayı iptal ederseniz veya uygulamayı üzerinden çalıştırmadan sonlandırdıysanız, hesabınızda birden çok canlı olayla karşılaşırsınız. <br/>Çalışan canlı olayları durdurduğunuzdan emin olun. Aksi takdirde **faturalandırılırsınız**!
@@ -58,27 +61,24 @@ Bu bölüm, *Liveeventwithdvr* projesinin [program.cs](https://github.com/Azure-
 
 Örnek, her kaynak için benzersiz bir sonek oluşturur, böylece örnek birden çok kez temizlemeden çalıştırırsanız ad çarpışmaları olmaz.
 
-> [!IMPORTANT]
-> Bu örnek her kaynak için benzersiz bir sonek kullanır. Hata ayıklamayı iptal ederseniz veya uygulamayı üzerinden çalıştırmadan sonlandırdıysanız, hesabınızda birden çok canlı olayla karşılaşırsınız. <br/>
-> Çalışan canlı olayları durdurduğunuzdan emin olun. Aksi takdirde **faturalandırılırsınız**!
 
 ### <a name="start-using-media-services-apis-with-net-sdk"></a>.NET SDK ile Media Services API’sini kullanmaya başlama
 
-.NET ile Media Services API’lerini kullanmaya başlamak için bir **AzureMediaServicesClient** nesnesi oluşturmanız gerekir. Nesneyi oluşturmak için, Azure AD kullanarak Azure’a bağlanmak üzere istemcinin ihtiyaç duyduğu kimlik bilgilerini sağlamanız gerekir. Makalenin başlangıcında kopyaladığınız kodda, **GetCredentialsAsync** işlevi, yerel yapılandırma dosyasında sağlanan kimlik bilgilerini temel alarak ServiceClientCredentials nesnesi oluşturur. 
+.NET ile Media Services API’lerini kullanmaya başlamak için bir **AzureMediaServicesClient** nesnesi oluşturmanız gerekir. Nesneyi oluşturmak için, Azure AD kullanarak Azure’a bağlanmak üzere istemcinin ihtiyaç duyduğu kimlik bilgilerini sağlamanız gerekir. Makalenin başlangıcında Klonladığınız kodda, **Getcredentialsasync** işlevi, yerel yapılandırma dosyasında (appsettings.jsüzerinde) veya deponun kökündeki. env ortam değişkenleri dosyası aracılığıyla sağlanan kimlik bilgilerini temel alan ServiceClientCredentials nesnesini oluşturur.
 
 [!code-csharp[Main](../../../media-services-v3-dotnet/Live/LiveEventWithDVR/Program.cs#CreateMediaServicesClient)]
 
 ### <a name="create-a-live-event"></a>Canlı etkinlik oluşturma
 
-Bu bölümde, bir **geçişli** canlı etkinlik türünün nasıl oluşturulduğu gösterilir (LiveEventEncodingType None olarak ayarlanır). Kullanılabilir canlı etkinlik türleri hakkında daha fazla bilgi için bkz. [canlı olay türleri](live-events-outputs-concept.md#live-event-types). 
+Bu bölümde, bir **geçişli** canlı etkinlik türünün nasıl oluşturulduğu gösterilir (LiveEventEncodingType None olarak ayarlanır). Mevcut canlı etkinlik türleri hakkında daha fazla bilgi için bkz. [canlı olay türleri](live-events-outputs-concept.md#live-event-types). Doğrudan geçiş 'nin yanı sıra, 720P veya 1080P Uyarlamalı bit hızı bulut kodlaması için canlı bir dönüştürme canlı olayı kullanabilirsiniz. 
  
 Canlı olay oluştururken belirtmek isteyebileceğiniz bazı şeyler şunlardır:
 
-* Media Services konumu.
-* Canlı olay için Akış Protokolü (Şu anda, RTMP ve Kesintisiz Akış protokolleri desteklenir).<br/>Canlı olay veya ilişkili canlı çıktıları çalışırken protokol seçeneğini değiştiremezsiniz. Farklı protokollere ihtiyacınız varsa, her akış protokolü için ayrı canlı etkinlik oluşturun.  
+* Canlı etkinlik için alma Protokolü (Şu anda, RTMP (S) ve Kesintisiz Akış protokolleri desteklenir).<br/>Canlı olay veya ilişkili canlı çıktıları çalışırken protokol seçeneğini değiştiremezsiniz. Farklı protokollere ihtiyacınız varsa, her akış protokolü için ayrı canlı etkinlik oluşturun.  
 * Alma ve önizleme için IP kısıtlamaları. Bu canlı olaya bir video almasına izin verilen IP adreslerini tanımlayabilirsiniz. İzin verilen IP adresleri tek bir IP adresi (örneğin '10.0.0.1'), bir IP adresi ve CIDR alt ağ maskesi kullanan bir IP aralığı (örneğin '10.0.0.1/22') veya bir IP adresi ve bir noktalı ondalık alt ağ maskesi kullanan bir IP aralığı (örneğin '10.0.0.1(255.255.252.0)') olabilir.<br/>Hiçbir IP adresi belirtilmemişse ve kural tanımı yoksa, hiçbir IP adresine izin verilmez. Tüm IP adreslerine izin vermek için, bir kural oluşturun ve 0.0.0.0/0 olarak ayarlayın.<br/>IP adresleri aşağıdaki biçimlerden birinde olmalıdır: dört sayı veya CıDR adres aralığı olan IPv4 adresi.
 * Olayı oluştururken, başlatmayı belirtebilirsiniz. <br/>Autostart değeri true olarak ayarlandığında, canlı olay oluşturulduktan sonra başlatılır. Bu, canlı olay çalışmaya başladığı anda faturalandırma başladığı anlamına gelir. Daha fazla faturalandırmayı durdurmak için canlı olay kaynağında durdurmayı açıkça çağırmanız gerekir. Daha fazla bilgi için bkz. [canlı olay durumları ve faturalandırma](live-event-states-billing.md).
-* Tahmine dayalı bir URL 'nin tahmin alınması için, "Vanity" modunu ayarlayın. Ayrıntılı bilgi için bkz. [canlı olay alma URL 'leri](live-events-outputs-concept.md#live-event-ingest-urls).
+Canlı olayı, daha düşük maliyetli bir ' çalışma ' durumuna taşımayı daha hızlı hale getiren daha düşük maliyetli ' bir ' durumda başlatmak için kullanılabilir bekleme modları de vardır. Bu, kanalları hızla havuza alma ihtiyacı olan hotpool gibi durumlarda faydalıdır.
+* Bir alma URL 'sinin tahmine dayalı olması ve donanım tabanlı bir canlı kodlayıcıda daha kolay korunması için, "useStaticHostname" özelliğini doğru olarak ayarlayın. Ayrıntılı bilgi için bkz. [canlı olay alma URL 'leri](live-events-outputs-concept.md#live-event-ingest-urls).
 
 [!code-csharp[Main](../../../media-services-v3-dotnet/Live/LiveEventWithDVR/Program.cs#CreateLiveEvent)]
 
@@ -101,15 +101,27 @@ Kodlayıcıdan gelen girişin gerçekten alındığını önizlemek ve doğrulam
 
 Akışın canlı olayına akışını tamamladıktan sonra bir varlık, canlı çıkış ve akış Bulucu oluşturarak akış olayını başlatabilirsiniz. Bu olay, akışı arşivler ve akışın Akış Uç Noktası aracılığıyla izleyiciler tarafından kullanılabilmesini sağlar.
 
+Bu kavramları öğrenirken, "varlık" nesnesini, bir video bant kaydedicisine eski günlerde ekleyebileceğiniz bant olarak düşünmek en iyisidir. "Canlı çıktı", bant kaydedici makinedir. "Canlı etkinlik" yalnızca makinenin arkasına gelen video sinyalinden oluşur.
+
+Önce "canlı etkinlik" i oluşturarak sinyali oluşturursunuz.  Bu canlı olayı başlatıp kodlayıcıyı girişe bağlayaana kadar sinyal akmaz.
+
+Bant herhangi bir zamanda oluşturulabilir. Bu benzerleme vurguladı içindeki bant Kaydedicisi olan canlı çıktı nesnesine yönelik olan yalnızca boş bir "varlık" olur.
+
+Bant Kaydedicisi herhangi bir zamanda oluşturulabilir. Yani, sinyal akışını başlatmadan önce veya daha sonra canlı bir çıkış oluşturabilirsiniz. İşlem hızlanmaya ihtiyacınız varsa, sinyal akışına başlamadan önce bu işlem bazen oluşturmanız yararlı olur.
+
+Bant kaydedicisinin durdurulması için, LiveOutput üzerinde Delete 'i çağırın. Bu, "varlık" bandının içeriğini silmez.  Varlık, doğrudan varlık üzerinde silme işlemi yapana kadar arşivlenmiş video içeriğiyle her zaman tutulur.
+
+Sonraki bölümde, varlığın ("bant") ve canlı çıktının ("bant Kaydedicisi") oluşturulmasına yol gösterilir.
+
 #### <a name="create-an-asset"></a>Asset oluşturma
 
-Canlı çıktının kullanması için bir varlık oluşturun.
+Canlı çıktının kullanması için bir varlık oluşturun. Yukarıdaki benzerleme vurguladı, bu, canlı video sinyalini üzerine kaydedediğimiz bantımız olacaktır. Görüntüleyiciler, bu sanal banttaki içerikleri canlı veya isteğe bağlı olarak görebilecektir.
 
 [!code-csharp[Main](../../../media-services-v3-dotnet/Live/LiveEventWithDVR/Program.cs#CreateAsset)]
 
 #### <a name="create-a-live-output"></a>Canlı çıkış oluştur
 
-Canlı çıktılar oluşturma sırasında başlar ve silindiğinde durdurulur. Canlı çıktıyı sildiğinizde, ilgili varlık ve varlığın içeriğini silmezsiniz.
+Canlı çıktılar oluşturma sırasında başlar ve silindiğinde durdurulur. Bu, olayımız için "bant Kaydedicisi" olacaktır. Canlı çıktıyı sildiğinizde, ilgili varlık veya varlığın içeriğini silmezsiniz. Bandı çıkaracağınızı düşünün. Kaydı olan varlık istediğiniz kadar sürer ve çıkarıldığında (yani, canlı çıktı silindiğinde) isteğe bağlı olarak anında görüntüleme için kullanılabilir olacaktır. 
 
 [!code-csharp[Main](../../../media-services-v3-dotnet/Live/LiveEventWithDVR/Program.cs#CreateLiveOutput)]
 
@@ -118,7 +130,7 @@ Canlı çıktılar oluşturma sırasında başlar ve silindiğinde durdurulur. C
 > [!NOTE]
 > Media Services hesabınız oluşturulduğunda hesabınıza **durdurulmuş** durumda bir **varsayılan** akış uç noktası eklenir. İçeriğinizi akışa almak ve [dinamik paketleme](dynamic-packaging-overview.md) ile dinamik şifrelemeden yararlanmak için içerik akışı yapmak istediğiniz akış uç noktasının **çalışıyor** durumda olması gerekir.
 
-Canlı çıkış varlığını bir akış Bulucuyu kullanarak yayımladığınızda, canlı olay (DVR pencere uzunluğuna kadar), akış bulucunun bitiş tarihi veya silme işlemi, hangisi önce geldiği sürece görüntülenebilir olmaya devam edecektir.
+Bir akış Bulucuyu kullanarak varlığı yayımladığınızda, canlı olay (DVR pencere uzunluğuna kadar), akış bulucunun süre sonu veya silme işlemi ne kadar önce gelirse görüntülenmeye devam eder. Canlı ve isteğe bağlı olarak görüntülemek için sanal "bant" kaydını görüntüleme izleyicileriniz için kullanılabilir hale getirebilirsiniz. Kayıt tamamlandığında (canlı çıktı silindiğinde) canlı etkinlik, DVR penceresi veya isteğe bağlı varlık izlemek için aynı URL de kullanılabilir.
 
 [!code-csharp[Main](../../../media-services-v3-dotnet/Live/LiveEventWithDVR/Program.cs#CreateStreamingLocator)]
 

@@ -13,12 +13,12 @@ ms.custom:
 - mqtt
 - 'Role: Cloud Development'
 - 'Role: Operations'
-ms.openlocfilehash: e786a323cfb1ebacdf7e6693e3ca4299f10aadb3
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.openlocfilehash: 7940ac3a67a0562aa0b7a21690deec30220a48a3
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102216046"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102434721"
 ---
 # <a name="choose-the-right-iot-hub-tier-for-your-solution"></a>Çözümünüz için doğru IoT Hub katmanını seçin
 
@@ -85,7 +85,7 @@ IoT Hub temel ve standart katmanları arasındaki desteklenen özelliklerde fark
 | [Hizmet istatistiklerini al](/javascript/api/azure-iot-digitaltwins-service/registrymanager#getservicestatistics-msrest-requestoptionsbase-) | Yes | Yes |
 | [Cihaz oluştur veya güncelleştir](/javascript/api/azure-iot-digitaltwins-service/registrymanager#createorupdatedevice-string--device--servicecallback-device--) | Yes | Yes |
 | [Modül oluştur veya güncelleştir](/javascript/api/azure-iot-digitaltwins-service/registrymanager#createorupdatemodule-string--string--module--models-registrymanagercreateorupdatemoduleoptionalparams-) | Yes | Yes |
-| [Sorgu IoT Hub](/dotnet/api/microsoft.azure.devices.registrymanager?view=azure-dotnet) | Yes | Yes |
+| [Sorgu IoT Hub](/dotnet/api/microsoft.azure.devices.registrymanager) | Yes | Yes |
 | [Karşıya dosya yükleme SAS URI 'SI oluştur](/rest/api/iothub/device/createfileuploadsasuri) | Yes | Yes |
 | [Cihaz ile sınırlı bildirim al](/rest/api/iothub/device/receivedeviceboundnotification) | Yes | Yes |
 | [Cihaz olayı gönder](/rest/api/iothub/device/senddeviceevent) | Yes | Yes |

@@ -13,12 +13,12 @@ ms.date: 07/09/2020
 ms.author: ryanwi
 ms.reviewer: agirling, saeeda, benv
 ms.custom: identityplatformtop40, contperf-fy21q2
-ms.openlocfilehash: 662523b1544fe3ca9e8bda993efa7b578b9f69cc
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: a4ce8242bd3110fee038ac826973e6a134413344
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98752584"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102426850"
 ---
 # <a name="what-is-the-microsoft-identity-platform"></a>Microsoft kimlik platformu nedir?
 
@@ -39,7 +39,9 @@ Geliştiriciler için, Microsoft Identity platformu, kimlik ve güvenlik alanın
 
 Microsoft Identity platformu ile kodu bir kez yazabilir ve herhangi bir kullanıcıya ulaşabilirsiniz. Bir uygulamayı bir kez oluşturup çok sayıda platformda çalışır hale getirebilirsiniz veya istemci olarak bir kaynak uygulaması (API) olarak işlev gören bir uygulama oluşturabilirsiniz.
 
-## <a name="getting-started"></a>Kullanmaya başlama
+Platforma ve kimlik doğrulama deneyiminin bir başlığına ilişkin bir genel bakış için bkz. [geliştiriciler Için Microsoft Identity platform nedir?](https://youtu.be/uDU1QTSw7Ps).
+
+## <a name="getting-started"></a>Başlarken
 
 Derlemek istediğiniz [uygulama senaryosunu](authentication-flows-app-scenarios.md) seçin. Bu senaryo yollarının her biri, bir genel bakış ile başlar ve hızlı başlangıç bağlantısı ile çalışmaya başlamanıza yardımcı olur:
 

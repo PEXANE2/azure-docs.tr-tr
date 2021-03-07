@@ -2,16 +2,16 @@
 title: Azure Stream Analytics 'de anomali algılama
 description: Bu makalede, Azure Stream Analytics ve Azure Machine Learning nasıl kullanılacağı açıklanır.
 ms.service: stream-analytics
-author: jasonwhowell
-ms.author: jasonh
+author: jseb225
+ms.author: jeanb
 ms.topic: how-to
 ms.date: 06/21/2019
-ms.openlocfilehash: 78730b011e508f98779b9e00624882466d6a03a0
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: ec37ea6cbb1c1c6693aab1f6855948d32b85e95b
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102178515"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102441202"
 ---
 # <a name="anomaly-detection-in-azure-stream-analytics"></a>Azure Stream Analytics 'de anomali algılama
 
@@ -128,7 +128,7 @@ windowDuration (MS) = 1000 * geçmişini/(Toplam giriş olayı/sn/giriş bölüm
 ### <a name="observations"></a>Lemin
 Aşağıdaki tablo, bölümlenmemiş durum için tek bir düğüm (6 SU) için üretilen iş gözlemlerini içerir:
 
-| Geçmiş boyutu (olaylar) | Pencere süresi (MS) | Saniyede toplam giriş olayı sayısı |
+| Geçmiş boyutu (olaylar)    | Pencere süresi (MS) | Saniyede toplam giriş olayı sayısı |
 | --------------------- | -------------------- | -------------------------- |
 | 60 | 55 | 2.200 |
 | 600 | 728 | 1.650 |

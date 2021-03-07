@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 8/4/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 9b092c3c7382c984e8555125820c7c34d91f5e87
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: 63817c8a65678579ce535a3c2e667e4eb0971a63
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98048938"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102434075"
 ---
 # <a name="troubleshooting-azure-digital-twins-metrics"></a>Azure dijital TWINS sorunlarını giderme: ölçümler
 
@@ -55,7 +55,7 @@ Bu ölçümleri, çözümünüzün bazı yönlerine yönelik [yayımlanmış bir
 
 Bu ayarı yapmak için Azure Izleyici 'de [Uyarılar](troubleshoot-alerts.md) özelliğini kullanın. Bu ölçümler için eşikler tanımlayabilir, böylece bir ölçüm yayımlanmış sınırının belirli bir yüzdesine ulaştığında bir uyarı alırsınız.
 
-| Ölçüm | Ölçüm görünen adı | Birim | Toplama türü| Açıklama | Boyutlar |
+| Metric | Ölçüm görünen adı | Birim | Toplama türü| Açıklama | Boyutlar |
 | --- | --- | --- | --- | --- | --- |
 | TwinCount | İkizi sayısı (Önizleme) | Count | Toplam | Azure dijital TWINS örneğindeki toplam TWINS sayısı. Örnek başına izin verilen en fazla sayıda TWINS için [hizmet sınırına](reference-service-limits.md#functional-limits) yaklaşıp yaklaşmadığını öğrenmek için bu ölçümü kullanın. |  Yok |
 | ModelCount | Model sayısı (Önizleme) | Count | Toplam | Azure dijital TWINS örneğindeki toplam model sayısı. Örnek başına izin verilen maksimum model sayısı için [hizmet sınırına](reference-service-limits.md#functional-limits) yaklaşıp yaklaşmadığını öğrenmek için bu ölçümü kullanın. | Yok |
@@ -64,7 +64,7 @@ Bu ayarı yapmak için Azure Izleyici 'de [Uyarılar](troubleshoot-alerts.md) ö
 
 API istekleriyle yapılacak ölçümler:
 
-| Ölçüm | Ölçüm görünen adı | Birim | Toplama türü| Açıklama | Boyutlar |
+| Metric | Ölçüm görünen adı | Birim | Toplama türü| Açıklama | Boyutlar |
 | --- | --- | --- | --- | --- | --- |
 | ApiRequests | API İstekleri | Count | Toplam | Dijital TWINS okuma, yazma, silme ve sorgu işlemleri için yapılan API Isteklerinin sayısı. |  Yetkilendirmesi <br>Çalışmasını <br>Protocol <br>Durum kodu, <br>Durum kodu sınıfı, <br>Durum metni |
 | ApiRequestsFailureRate | API Isteği başarısızlık oranı | Yüzde | Ortalama | Dijital TWINS okuma, yazma, silme ve sorgu işlemleri için bir iç hata (500) yanıt kodu veren örneğiniz için hizmetin aldığı API isteklerinin yüzdesi. | Yetkilendirmesi <br>Çalışmasını <br>Protocol <br>Durum kodu, <br>Durum kodu sınıfı, <br>Durum metni
@@ -74,11 +74,11 @@ API istekleriyle yapılacak ölçümler:
 
 Faturalandırma ile yapılacak ölçümler:
 
-| Ölçüm | Ölçüm görünen adı | Birim | Toplama türü| Açıklama | Boyutlar |
+| Metric | Ölçüm görünen adı | Birim | Toplama türü| Açıklama | Boyutlar |
 | --- | --- | --- | --- | --- | --- |
 | BillingApiOperations | Faturalandırma API 'SI Işlemleri | Count | Toplam | Azure Digital TWINS hizmetinde yapılan tüm API isteklerinin sayısı için faturalandırma ölçümü. | Ölçüm kimliği |
 | Billingiletide Işlendi | Işlenen faturalandırma Iletileri | Count | Toplam | Azure dijital TWINS 'den dış uç noktalara gönderilen ileti sayısı için faturalandırma ölçümü.<br><br>Faturalama amacıyla tek bir ileti olarak kabul edilebilmesi için yükün 1 KB 'den büyük olmaması gerekir. Bundan büyük yük, 1 KB 'lık artışlarla ek iletiler olarak sayılır (Bu nedenle 1 ile 2 KB arasında bir ileti 2 ileti olarak sayılır, 2 ile 3 KB arasında bir ileti 3 ileti olur ve bu şekilde devam eder).<br>Bu kısıtlama, yanıtlar için de geçerlidir. bu nedenle yanıt gövdesinde 1,5 KB döndüren bir çağrı, örneğin, 2 işlem olarak faturalandırılacaktır. | Ölçüm kimliği |
-| BillingQueryUnits | Faturalama sorgu birimleri | Count | Toplam | Sorgu birimlerinin sayısı, sorgu yürütmek için tüketilen, hizmet kaynağı kullanımının dahili olarak hesaplanan bir ölçümüdür. Sorgu birimlerini ölçmek için bir yardımcı API de mevcuttur: [Querychargehelper sınıfı](/dotnet/api/azure.digitaltwins.core.querychargehelper?preserve-view=true&view=azure-dotnet) | Ölçüm kimliği |
+| BillingQueryUnits | Faturalama sorgu birimleri | Count | Toplam | Sorgu birimlerinin sayısı, sorgu yürütmek için tüketilen, hizmet kaynağı kullanımının dahili olarak hesaplanan bir ölçümüdür. Sorgu birimlerini ölçmek için bir yardımcı API de mevcuttur: [Querychargehelper sınıfı](/dotnet/api/azure.digitaltwins.core.querychargehelper) | Ölçüm kimliği |
 
 Azure dijital TWINS 'nin faturalandırılmasıyla ilgili daha fazla ayrıntı için bkz. [*Azure dijital TWINS fiyatlandırması*](https://azure.microsoft.com/pricing/details/digital-twins/).
 
@@ -86,7 +86,7 @@ Azure dijital TWINS 'nin faturalandırılmasıyla ilgili daha fazla ayrıntı i�
 
 Veri girişi ile ilgili ölçümler:
 
-| Ölçüm | Ölçüm görünen adı | Birim | Toplama türü| Açıklama | Boyutlar |
+| Metric | Ölçüm görünen adı | Birim | Toplama türü| Açıklama | Boyutlar |
 | --- | --- | --- | --- | --- | --- |
 | Inressevents | Giriş olayları | Count | Toplam | Azure dijital TWINS 'e gelen telemetri olaylarının sayısı. | Sonuç |
 | Inresyettsfailurerate | Giriş olayları başarısızlık oranı | Yüzde | Ortalama | Hizmetin bir iç hata (500) yanıt kodu döndürdüğü gelen telemetri olaylarının yüzdesi. | Sonuç |
@@ -96,7 +96,7 @@ Veri girişi ile ilgili ölçümler:
 
 Yönlendirme ile yapmak zorunda olan ölçümler:
 
-| Ölçüm | Ölçüm görünen adı | Birim | Toplama türü| Açıklama | Boyutlar |
+| Metric | Ölçüm görünen adı | Birim | Toplama türü| Açıklama | Boyutlar |
 | --- | --- | --- | --- | --- | --- |
 | Iletime yönlendirildi | Yönlendirilen iletiler | Count | Toplam | Olay Hub 'ı, Service Bus veya Event Grid gibi bir uç nokta Azure hizmetine yönlendirilen ileti sayısı. | Uç nokta türü, <br>Sonuç |
 | RoutingFailureRate | Yönlendirme başarısızlık oranı | Yüzde | Ortalama | Azure dijital TWINS 'den, Olay Hub 'ı, Service Bus veya Event Grid gibi bir uç nokta Azure hizmetine yönlendirildikleri için hataya neden olan olayların yüzdesi. | Uç nokta türü, <br>Sonuç |

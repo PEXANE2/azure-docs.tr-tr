@@ -454,6 +454,8 @@
           href: how-to-understand-automated-ml.md
         - name: .NET uygulamasında ONNX modeli kullanma
           href: how-to-use-automl-onnx-model-dotnet.md
+        - name: Otomatik ML sorunlarını giderme
+          href: how-to-troubleshoot-auto-ml.md
     - name: Modelleri dağıtma ve sunma
       items:
         - name: Dağıtım nereye ve nasıl yapılır?

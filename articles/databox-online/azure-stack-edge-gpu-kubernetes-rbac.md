@@ -6,17 +6,18 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: conceptual
-ms.date: 09/22/2020
+ms.date: 02/22/2021
 ms.author: alkohli
-ms.openlocfilehash: 9a9625dcf40ae7d11e1154fc89b7f04652c8ca16
-ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
+ms.openlocfilehash: 1b38a9807e05385a378fa6103710fb6b393c7b1f
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/15/2020
-ms.locfileid: "94635849"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102443157"
 ---
 # <a name="kubernetes-role-based-access-control-on-your-azure-stack-edge-pro-gpu-device"></a>Azure Stack Edge Pro GPU cihazınızda Kubernetes rol tabanlı erişim denetimi
 
+[!INCLUDE [applies-to-GPU-and-pro-r-and-mini-r-skus](../../includes/azure-stack-edge-applies-to-gpu-pro-r-mini-r-sku.md)]
 
 Azure Stack Edge Pro cihazınızda, işlem rolünü yapılandırırken bir Kubernetes kümesi oluşturulur. Cihazınızdaki küme kaynaklarıyla erişimi sınırlandırmak için Kubernetes rol tabanlı erişim denetimi (Kubernetes RBAC) kullanabilirsiniz.
 
@@ -39,13 +40,13 @@ Azure Stack Edge Pro cihazınız aşağıdaki ad alanlarına sahiptir:
 - **Sistem ad alanı** -bu ad alanı, DNS ve proxy gibi ağ özellikleri veya Kubernetes panosu gibi çekirdek kaynakların bulunduğu yerdir. Genellikle kendi uygulamalarınızı bu ad alanına dağıtmazsınız. Kubernetes küme sorunlarını ayıklamak için bu ad alanını kullanın. 
 
     Cihazınızda birden fazla sistem ad alanı vardır ve bu sistem ad alanlarına karşılık gelen adlar ayrılmıştır. Ayrılmış sistem ad alanlarının listesi aşağıdadır: 
-    - kuin-sistem
+    - kube-system
     - meta allb-sistem
     - din-Namespace
     - default
     - Kubernetes-Pano
     - kuin düğüm kirası
-    - KUIN-genel
+    - kube-public
 
 
     Oluşturduğunuz Kullanıcı ad alanları için ayrılmış adlar kullanmayın. 
@@ -61,15 +62,15 @@ Azure Stack Edge Pro cihazınız aşağıdaki ad alanlarına sahiptir:
 
 Gerçek dünyada, kümeyi birden çok ad alanına bölmek önemlidir. 
 
-- **Birden çok Kullanıcı** : birden fazla kullanıcınız varsa, birden çok ad alanı, bu kullanıcıların her biri kendi belirli ad alanlarındaki uygulama ve hizmetlerini birbirinden yalıtımına dağıtmalarına olanak sağlar. 
-- **Tek Kullanıcı** : tek bir Kullanıcı olsa bile, birden çok ad alanı söz konusu kullanıcının aynı Kubernetes kümesinde uygulamaların birden çok sürümünü çalıştırmasına izin verir.
+- **Birden çok Kullanıcı**: birden fazla kullanıcınız varsa, birden çok ad alanı, bu kullanıcıların her biri kendi belirli ad alanlarındaki uygulama ve hizmetlerini birbirinden yalıtımına dağıtmalarına olanak sağlar. 
+- **Tek Kullanıcı**: tek bir Kullanıcı olsa bile, birden çok ad alanı söz konusu kullanıcının aynı Kubernetes kümesinde uygulamaların birden çok sürümünü çalıştırmasına izin verir.
 
 ### <a name="roles-and-rolebindings"></a>Roller ve RoleBindings
 
 Kubernetes, bir ad alanı düzeyinde ve bir küme düzeyinde Kullanıcı veya kaynaklara izin vermenizi sağlayan rol ve rol bağlama kavramıdır. 
 
-- **Roller** : kullanıcılar için Izinleri bir **rol** olarak tanımlayabilir ve ardından **Roller** kullanarak bir ad alanı içinde izinler verebilirsiniz. 
-- **Rolebindings** : rolleri tanımladıktan sonra, belirli bir ad alanı için rol atamak üzere **rolebindings** kullanabilirsiniz. 
+- **Roller**: kullanıcılar için Izinleri bir **rol** olarak tanımlayabilir ve ardından **Roller** kullanarak bir ad alanı içinde izinler verebilirsiniz. 
+- **Rolebindings**: rolleri tanımladıktan sonra, belirli bir ad alanı için rol atamak üzere **rolebindings** kullanabilirsiniz. 
 
 Bu yaklaşım, tek bir Kubernetes kümesini mantıksal olarak ayırt etmenizi sağlar, böylece kullanıcılar yalnızca atanan ad alanındaki uygulama kaynaklarına erişebilir. 
 

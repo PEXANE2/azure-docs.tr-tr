@@ -6,16 +6,18 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 02/02/2021
+ms.date: 02/22/2021
 ms.author: alkohli
-ms.openlocfilehash: 199ec8e2f1e8eb74d971286a4fc6180eb8b72f2a
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: c2f66895fccd14dcffd8c5570f1d5f46933090aa
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100595971"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102439196"
 ---
 # <a name="enable-azure-monitor-on-your-azure-stack-edge-pro-gpu-device"></a>Azure Stack Edge Pro GPU cihazınızda Azure Izleyicisini etkinleştirme
+
+[!INCLUDE [applies-to-GPU-and-pro-r-and-mini-r-skus](../../includes/azure-stack-edge-applies-to-gpu-pro-r-mini-r-sku.md)]
 
 Azure Stack Edge Pro GPU cihazındaki kapsayıcıları izlemek, özellikle birden çok işlem uygulaması çalıştırırken özel olarak kritik öneme sahiptir. Azure Izleyici, cihazınızda çalışan Kubernetes kümesinden kapsayıcı günlüklerini ve bellek ve işlemci ölçümlerini toplamanıza olanak tanır.
 

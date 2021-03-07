@@ -3,12 +3,12 @@ title: Kapsayıcı öngörülerine genel bakış | Microsoft Docs
 description: Bu makalede AKS kapsayıcı öngörüleri çözümünü izleyen kapsayıcı öngörüleri ve AKS kümelerinizin sistem durumunu izleyerek Azure 'daki Container Instances tarafından teslim edilen değer açıklanmaktadır.
 ms.topic: conceptual
 ms.date: 09/08/2020
-ms.openlocfilehash: 1055e2228c6625ae24e6bf388cf297e3e3363666
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: a29890f569c47c48aae7d5d61badee7edeef58a0
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101723393"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102441525"
 ---
 # <a name="container-insights-overview"></a>Kapsayıcı öngörülerine genel bakış
 
@@ -58,7 +58,7 @@ Bir Windows Server kümesini bir Linux kümesiyle karşılaştırılan izlemedek
 
 AKS kümenizi kapsayıcı öngörüleri ile izleme hakkında bilgi edinmenize yardımcı olmak için, aşağıdaki videoya göz atın.
 
-> [!VIDEO https://youtu.be/XEdwGvS2AwA]
+> [!VIDEO https://www.youtube.com/embed/XEdwGvS2AwA]
 
 ## <a name="how-do-i-access-this-feature"></a>Bu özelliğe erişmek Nasıl yaparım??
 
