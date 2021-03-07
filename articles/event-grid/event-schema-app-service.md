@@ -3,14 +3,14 @@ title: Event Grid kaynak olarak Azure App Service
 description: Bu makalede, Azure App Service Event Grid olay kaynağı olarak nasıl kullanılacağı açıklanır. Bu, şemayı ve öğretici ve nasıl yapılır makalelerini bağlar ve bağlantılar sağlar.
 author: jasonfreeberg
 ms.topic: conceptual
-ms.date: 02/12/2021
+ms.date: 03/06/2021
 ms.author: jafreebe
-ms.openlocfilehash: 224cb44ef7293f47855b5b418830a7fc4bf5ecd1
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 404fac634a628da49dee72b10b52785820fe1bf6
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100366662"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102443786"
 ---
 # <a name="azure-app-service-as-an-event-grid-source"></a>Event Grid kaynak olarak Azure App Service
 
@@ -20,7 +20,7 @@ Bu makalede Azure App Service olayları için özellikler ve şema sağlanmaktad
 
 Azure App Service aşağıdaki olay türlerini yayar
 
-|    Olay Türü                                             |    Description                                                     |
+|    Olay Türü                                             |    Açıklama                                                     |
 |-----------------------------------------------------------|--------------------------------------------------------------------|
 |    Microsoft. Web/Sites. Backupoperationbaşlatıldı             |    Bir yedekleme başlatıldığında tetiklendi                             |
 |    Microsoft. Web/Sites. BackupOperationCompleted           |    Bir yedekleme tamamlandığında tetiklenir                           |
@@ -89,7 +89,7 @@ Bu bölüm, verilerin her olay için nasıl görüneceğine ilişkin bir örnek 
         "appEventTypeDetail": {
             "action": "Started"
         },
-        "siteName": "<site-name>",
+        "name": "<site-name>",
         "clientRequestId": "None",
         "correlationRequestId": "None",
         "requestId": "292f499d-04ee-4066-994d-c2df57b99198",
@@ -113,7 +113,7 @@ Bu bölüm, verilerin her olay için nasıl görüneceğine ilişkin bir örnek 
         "appEventTypeDetail": {
             "action": "Started"
         },
-        "siteName": "<site-name>",
+        "name": "<site-name>",
         "clientRequestId": "None",
         "correlationRequestId": "None",
         "requestId": "292f499d-04ee-4066-994d-c2df57b99198",
@@ -128,7 +128,7 @@ Bu bölüm, verilerin her olay için nasıl görüneceğine ilişkin bir örnek 
 
 Veri nesnesi aşağıdaki özellikleri içerir:
 
-|    Özellik                |    Tür      |    Description                                                                                                       |
+|    Özellik                |    Tür      |    Açıklama                                                                                                       |
 |----------------------------|--------------|----------------------------------------------------------------------------------------------------------------------|
 |    `appEventTypeDetail`      |    object    |    Uygulamadaki eylemin ayrıntıları                                                                                       |
 |    `action`                  |    string    |    İşlem eyleminin türü                                                                                   |
@@ -154,7 +154,7 @@ Veri nesnesi aşağıdaki özellikleri içerir:
         "appEventTypeDetail": {
             "action": "Started"
         },
-        "siteName": "<site-name>",
+        "name": "<site-name>",
         "clientRequestId": "None",
         "correlationRequestId": "None",
         "requestId": "292f499d-04ee-4066-994d-c2df57b99198",
@@ -179,7 +179,7 @@ Veri nesnesi aşağıdaki özellikleri içerir:
         "appEventTypeDetail": {
             "action": "Started"
         },
-        "siteName": "<site-name>",
+        "name": "<site-name>",
         "clientRequestId": "None",
         "correlationRequestId": "None",
         "requestId": "292f499d-04ee-4066-994d-c2df57b99198",
@@ -194,7 +194,7 @@ Veri nesnesi aşağıdaki özellikleri içerir:
 
 Veri nesnesi aşağıdaki özellikleri içerir:
 
-|    Özellik                |    Tür      |    Description                                                                                                       |
+|    Özellik                |    Tür      |    Açıklama                                                                                                       |
 |----------------------------|--------------|----------------------------------------------------------------------------------------------------------------------|
 |    `appEventTypeDetail`      |    object    |    Uygulamadaki eylemin ayrıntıları                                                                                       |
 |    `action`                  |    string    |    İşlem eyleminin türü                                                                                   |
@@ -218,7 +218,7 @@ Veri nesnesi aşağıdaki özellikleri içerir:
     "eventTime": "2020-01-28T18:26:51.7194887Z",
     "data": {
         "appEventTypeDetail": null,
-        "siteName": "<site-name>",
+        "name": "<site-name>",
         "clientRequestId": "922f4841-20d9-4dd6-8c5b-23f0d85e5592",
         "correlationRequestId": "9ac46505-2b8a-4e06-834c-05ffbe2e8c3a",
         "requestId": "765117aa-eaf8-4bd2-a644-1dbf69c7b0fd",
@@ -243,7 +243,7 @@ Veri nesnesi aşağıdaki özellikleri içerir:
     "time": "2020-01-28T18:26:51.7194887Z",
     "data": {
         "appEventTypeDetail": null,
-        "siteName": "<site-name>",
+        "name": "<site-name>",
         "clientRequestId": "922f4841-20d9-4dd6-8c5b-23f0d85e5592",
         "correlationRequestId": "9ac46505-2b8a-4e06-834c-05ffbe2e8c3a",
         "requestId": "765117aa-eaf8-4bd2-a644-1dbf69c7b0fd",
@@ -260,7 +260,7 @@ Veri nesnesi aşağıdaki özellikleri içerir:
 
 Veri nesnesi aşağıdaki özellikleri içerir:
 
-|    Özellik                |    Tür      |    Description                                                                                                       |
+|    Özellik                |    Tür      |    Açıklama                                                                                                       |
 |----------------------------|--------------|----------------------------------------------------------------------------------------------------------------------|
 |    `appEventTypeDetail`      |    object    |    Uygulamadaki eylemin ayrıntıları                                                                                       |
 |    `action`                 |    string    |    İşlem eyleminin türü                                                                                   |
@@ -285,7 +285,7 @@ Veri nesnesi aşağıdaki özellikleri içerir:
     "eventTime": "2020-01-28T18:26:51.7194887Z",
     "data": {
         "appEventTypeDetail": null,
-        "siteName": "<site-name>",
+        "name": "<site-name>",
         "clientRequestId": "922f4841-20d9-4dd6-8c5b-23f0d85e5592",
         "correlationRequestId": "9ac46505-2b8a-4e06-834c-05ffbe2e8c3a",
         "requestId": "765117aa-eaf8-4bd2-a644-1dbf69c7b0fd",
@@ -310,7 +310,7 @@ Veri nesnesi aşağıdaki özellikleri içerir:
     "time": "2020-01-28T18:26:51.7194887Z",
     "data": {
         "appEventTypeDetail": null,
-        "siteName": "<site-name>",
+        "name": "<site-name>",
         "clientRequestId": "922f4841-20d9-4dd6-8c5b-23f0d85e5592",
         "correlationRequestId": "9ac46505-2b8a-4e06-834c-05ffbe2e8c3a",
         "requestId": "765117aa-eaf8-4bd2-a644-1dbf69c7b0fd",
@@ -327,7 +327,7 @@ Veri nesnesi aşağıdaki özellikleri içerir:
 
 Veri nesnesi aşağıdaki özellikleri içerir:
 
-|    Özellik                |    Tür      |    Description                                                                                                       |
+|    Özellik                |    Tür      |    Açıklama                                                                                                       |
 |----------------------------|--------------|----------------------------------------------------------------------------------------------------------------------|
 |    `appEventTypeDetail`      |    object    |    Uygulamadaki eylemin ayrıntıları                                                                                       |
 |    `action`                 |    string    |    İşlem eyleminin türü                                                                                   |
@@ -353,7 +353,7 @@ Veri nesnesi aşağıdaki özellikleri içerir:
         "appEventTypeDetail": {
             "action": "Stopped"
         },
-        "siteName": "<site-name>",
+        "name": "<site-name>",
         "clientRequestId": "64a5e0aa-7cee-4ff1-9093-b9197b820014",
         "correlationRequestId": "25bb36a5-8f6c-4f04-b615-e9a0ee045756",
         "requestId": "f2e8eb3f-b190-42de-b99e-6acefe587374",
@@ -378,7 +378,7 @@ Veri nesnesi aşağıdaki özellikleri içerir:
         "appEventTypeDetail": {
             "action": "Stopped"
         },
-        "siteName": "<site-name>",
+        "name": "<site-name>",
         "clientRequestId": "64a5e0aa-7cee-4ff1-9093-b9197b820014",
         "correlationRequestId": "25bb36a5-8f6c-4f04-b615-e9a0ee045756",
         "requestId": "f2e8eb3f-b190-42de-b99e-6acefe587374",
@@ -393,7 +393,7 @@ Veri nesnesi aşağıdaki özellikleri içerir:
 
 Veri nesnesi aşağıdaki özelliklere sahiptir:
 
-|    Özellik                |    Tür      |    Description                                                                                                       |
+|    Özellik                |    Tür      |    Açıklama                                                                                                       |
 |----------------------------|--------------|----------------------------------------------------------------------------------------------------------------------|
 |    `appEventTypeDetail`      |    object    |    Uygulamadaki eylemin ayrıntıları                                                                                       |
 |    `action`                  |    string    |    İşlem eyleminin türü                                                                                   |
@@ -477,7 +477,7 @@ Veri nesnesi aşağıdaki özelliklere sahiptir:
 
 Veri nesnesi aşağıdaki özelliklere sahiptir:
 
-|    Özellik                         |    Tür      |    Description                                                                                                       |
+|    Özellik                         |    Tür      |    Açıklama                                                                                                       |
 |-------------------------------------|--------------|----------------------------------------------------------------------------------------------------------------------|
 |    `appServicePlanEventTypeDetail`    |    object    |    App Service planındaki eylemin ayrıntıları                                                                          |
 |    `stampKind`                        |    string    |    App Service planının bulunduğu ortam türü                                                                     |

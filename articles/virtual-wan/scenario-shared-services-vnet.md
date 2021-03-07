@@ -6,15 +6,15 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: conceptual
-ms.date: 09/22/2020
+ms.date: 03/02/2021
 ms.author: cherylmc
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 03c71664769f1518ba80d36867c71ef35b2ca026
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 8e0d05d2cb960e760809ab35a8f9e4ca04acf250
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92461473"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102442970"
 ---
 # <a name="scenario-route-to-shared-services-vnets"></a>Senaryo: paylaşılan hizmetler sanal ağlarına yönlendirme
 
@@ -30,9 +30,9 @@ Bu senaryonun gereksinimlerini özetlemek için bir bağlantı matrisi kullanabi
 
 | Kaynak             | Hedef:   |*Yalıtılmış VNET 'ler*|*Paylaşılan VNet*|*Dallar*|
 |---|---|---|---|---|
-|**Yalıtılmış VNET 'ler**|&#8594;|        | Direct | Direct |
-|**Paylaşılan sanal ağlar**  |&#8594;| Direct | Direct | Direct |
-|**Dallar**      |&#8594;| Direct | Direct | Direct |
+|**Yalıtılmış VNET 'ler**| ->|        | Direct | Direct |
+|**Paylaşılan sanal ağlar**  |->| Direct | Direct | Direct |
+|**Dallar**      |->| Direct | Direct | Direct |
 
 Önceki tablodaki hücrelerin her biri, bir sanal WAN bağlantısının (akışın "Kimden" tarafı, satır başlıkları) bir hedefle (akışın "to" tarafı, italik olan sütun üst bilgileri) iletişim kuracağını açıklar. Bu senaryoda, güvenlik duvarı veya ağ sanal gereçleri yoktur, bu nedenle iletişim doğrudan sanal WAN üzerinden akar (Bu nedenle tablodaki "doğrudan" sözcüğü).
 
@@ -62,20 +62,20 @@ Sanal hub yönlendirmesi hakkında daha fazla bilgi için bkz. [sanal hub yönle
 Senaryoyu yapılandırmak için aşağıdaki adımları göz önünde bulundurun:
 
 1. **Paylaşılan hizmetler** VNET 'i tanımla.
-2. Özel bir yol tablosu oluşturun. Örnekte, yol tablosuna **RT_SHARED**olarak başvurduk. Yol tablosu oluşturma adımları için bkz. [sanal hub yönlendirmeyi yapılandırma](how-to-virtual-hub-routing.md). Aşağıdaki değerleri bir kılavuz olarak kullanın:
+2. Özel bir yol tablosu oluşturun. Örnekte, yol tablosuna **RT_SHARED** olarak başvurduk. Yol tablosu oluşturma adımları için bkz. [sanal hub yönlendirmeyi yapılandırma](how-to-virtual-hub-routing.md). Aşağıdaki değerleri bir kılavuz olarak kullanın:
 
    * **Kaldırma**
-     * **Paylaşılan hizmetler VNET *hariç* sanal**ağlar Için, yalıtmak için sanal ağları seçin. Bu, tüm bu sanal ağların (paylaşılan hizmetler VNet hariç), RT_SHARED yol tablosunun yollarına göre hedefe ulaşabilmesi anlamına gelmez.
+     * **Paylaşılan hizmetler VNET *hariç* sanal** ağlar Için, yalıtmak için sanal ağları seçin. Bu, tüm bu sanal ağların (paylaşılan hizmetler VNet hariç), RT_SHARED yol tablosunun yollarına göre hedefe ulaşabilmesi anlamına gelmez.
 
    * **Yayma**
-      * **Dallar**için, daha önce seçmiş olduğunuz diğer yol tablolarının yanı sıra rotaları bu yol tablosuna yayın. Bu adım nedeniyle, RT_SHARED yol tablosu tüm dal bağlantılarından (VPN/ER/Kullanıcı VPN) yolları öğrenmeyecektir.
-      * **Sanal**ağlar Için, **paylaşılan hizmetler VNET**' i seçin. Bu adım nedeniyle RT_SHARED yol tablosu, paylaşılan hizmetler VNet bağlantısından yolları öğrenmeyecektir.
+      * **Dallar** için, daha önce seçmiş olduğunuz diğer yol tablolarının yanı sıra rotaları bu yol tablosuna yayın. Bu adım nedeniyle, RT_SHARED yol tablosu tüm dal bağlantılarından (VPN/ER/Kullanıcı VPN) yolları öğrenmeyecektir.
+      * **Sanal** ağlar için, **paylaşılan hizmetler VNET**' i seçin. Bu adım nedeniyle RT_SHARED yol tablosu, paylaşılan hizmetler VNet bağlantısından yolları öğrenmeyecektir.
 
 Bu, yönlendirme yapılandırmasına aşağıdaki şekilde gösterilen şekilde neden olur:
 
-   :::image type="content" source="./media/routing-scenarios/shared-service-vnet/shared-services.png" alt-text="Paylaşılan hizmetler VNet" lightbox="./media/routing-scenarios/shared-service-vnet/shared-services.png":::
+   :::image type="content" source="./media/routing-scenarios/shared-service-vnet/shared-services.png" alt-text="Paylaşılan hizmetler VNet için diyagram." lightbox="./media/routing-scenarios/shared-service-vnet/shared-services.png":::
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Sanal WAN hakkında daha fazla bilgi için bkz. [SSS](virtual-wan-faq.md).
+* ARM şablonunu kullanarak yapılandırmak için bkz. [hızlı başlangıç: ARM şablonunu kullanarak paylaşılan hizmetlere sanal ağlara yönlendirme](quickstart-route-shared-services-vnet-template.md).
 * Sanal hub yönlendirmesi hakkında daha fazla bilgi için bkz. [sanal hub yönlendirmesi hakkında](about-virtual-hub-routing.md).

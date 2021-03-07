@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 11/23/2020
 ms.author: pafarley
 ms.custom: devx-track-csharp
-ms.openlocfilehash: ab251e9a156005d47a1516d23cb018fb1907ab6e
-ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
+ms.openlocfilehash: 7a9caf1c1785055cbc81ef56958fe8ce2aca229c
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95744781"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102428312"
 ---
 # <a name="tutorial-create-a-windows-presentation-framework-wpf-app-to-display-face-data-in-an-image"></a>Öğretici: bir görüntüde yüz verileri göstermek için bir Windows Presentation Framework (WPF) uygulaması oluşturma
 
@@ -41,7 +41,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 ## <a name="prerequisites"></a>Önkoşullar
 
 * Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/cognitive-services/)
-* Azure aboneliğiniz olduktan sonra, <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesFace"  title=" bir yüz kaynağı oluşturun "  target="_blank"> <span class="docon docon-navigate-external x-hidden-focus"></span> </a> Azure Portal anahtar ve uç noktanıza ulaşmak için bir yüz kaynağı oluşturun. Dağıtıldıktan sonra **Kaynağa Git ' e** tıklayın.
+* Azure aboneliğiniz olduktan sonra, <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesFace"  title=" bir yüz kaynağı oluşturun "  target="_blank"> </a> Azure Portal anahtar ve uç noktanıza ulaşmak için bir yüz kaynağı oluşturun. Dağıtıldıktan sonra **Kaynağa Git ' e** tıklayın.
     * Uygulamanızı Yüz Tanıma API'si bağlamak için oluşturduğunuz kaynaktaki anahtar ve uç nokta gerekir. Anahtarınızı ve uç noktanızı daha sonra hızlı başlangıçta aşağıdaki koda yapıştırabilirsiniz.
     * `F0`Hizmeti denemek ve daha sonra üretime yönelik ücretli bir katmana yükseltmek için ücretsiz fiyatlandırma katmanını () kullanabilirsiniz.
 * Sırasıyla ve olarak adlandırılan anahtar ve hizmet uç noktası dizesi için [ortam değişkenleri oluşturun](../../cognitive-services-apis-create-account.md#configure-an-environment-variable-for-authentication) `FACE_SUBSCRIPTION_KEY` `FACE_ENDPOINT` .
@@ -80,7 +80,7 @@ Ardından **MainWindow** oluşturucuyu ekleyin. Uç nokta URL dizenizi denetleyi
 
 [!code-csharp[](~/Cognitive-Face-CSharp-sample/FaceTutorialCS/FaceTutorialCS/MainWindow.xaml.cs?name=snippet_mainwindow_constructor)]
 
-Son olarak, **BrowseButton_Click** ve **FacePhoto_MouseMove** yöntemlerini sınıfına ekleyin. Bu yöntemler, *MainWindow. xaml* içinde belirtilen olay işleyicilerine karşılık gelir. **BrowseButton_Click** yöntemi, kullanıcının bir. jpg görüntüsü seçmesini sağlayan bir **OpenFileDialog** oluşturur. Sonra, görüntüyü ana pencerede görüntüler. Daha sonraki adımlarda **BrowseButton_Click** ve **FacePhoto_MouseMove** için kalan kodu eklersiniz. Ayrıca, `faceList` başvuruya &mdash; yönelik bir dizi nesnenin **DetectedFace** listesine başvurun. Bu başvuru, uygulamanızın gerçek yüz verilerini depolayacağı ve çağıracağı yerdir.
+Son olarak, **BrowseButton_Click** ve **FacePhoto_MouseMove** yöntemlerini sınıfına ekleyin. Bu yöntemler, *MainWindow. xaml* içinde belirtilen olay işleyicilerine karşılık gelir. **BrowseButton_Click** yöntemi, kullanıcının bir. jpg görüntüsü seçmesini sağlayan bir **OpenFileDialog** oluşturur. Sonra, görüntüyü ana pencerede görüntüler. Daha sonraki adımlarda **BrowseButton_Click** ve **FacePhoto_MouseMove** için kalan kodu eklersiniz. Ayrıca, `faceList` başvuruya &mdash; yönelik bir dizi nesnenin  listesine başvurun. Bu başvuru, uygulamanızın gerçek yüz verilerini depolayacağı ve çağıracağı yerdir.
 
 [!code-csharp[](~/Cognitive-Face-CSharp-sample/FaceTutorialCS/FaceTutorialCS/MainWindow.xaml.cs?name=snippet_browsebuttonclick_start)]
 

@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: estfan, logicappspm, az-logic-apps-dev
 ms.topic: conceptual
-ms.date: 03/02/2021
-ms.openlocfilehash: 0850830e6f8101feae80154a0e245196a690f276
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.date: 03/05/2021
+ms.openlocfilehash: 941d866fbdea0efc5775bccd08e0235b1629fae0
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102050248"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102440998"
 ---
 # <a name="create-stateful-and-stateless-workflows-in-visual-studio-code-with-the-azure-logic-apps-preview-extension"></a>Azure Logic Apps (Önizleme) uzantısıyla Visual Studio Code durum bilgisiz ve durum bilgisi olmayan iş akışları oluşturma
 
@@ -280,6 +280,7 @@ Mantıksal uygulamanızı oluşturabilmeniz için önce, Visual Studio Code mant
    1. `AzureWebJobsStorage`Özellik değerini daha önce kaydettiğiniz depolama hesabının bağlantı dizesiyle değiştirin, örneğin:
 
       Önce:
+
       ```json
       {
          "IsEncrypted": false,
@@ -291,6 +292,7 @@ Mantıksal uygulamanızı oluşturabilmeniz için önce, Visual Studio Code mant
       ```
 
       Sonra:
+
       ```json
       {
          "IsEncrypted": false,
@@ -302,6 +304,22 @@ Mantıksal uygulamanızı oluşturabilmeniz için önce, Visual Studio Code mant
       ```
 
    1. İşiniz bittiğinde, değişikliklerinizi kaydettiğinizden emin olun.
+
+<a name="enable-built-in-connector-authoring"></a>
+
+## <a name="enable-built-in-connector-authoring"></a>Yerleşik bağlayıcı yazmayı etkinleştir
+
+[Önizleme sürümünün genişletilebilirlik çerçevesini](https://techcommunity.microsoft.com/t5/integrations-on-azure/azure-logic-apps-running-anywhere-built-in-connector/ba-p/1921272)kullanarak ihtiyacınız olan herhangi bir hizmet için kendi yerleşik bağlayıcılarınızı oluşturabilirsiniz. Azure Service Bus ve SQL Server gibi yerleşik bağlayıcılara benzer şekilde, bu bağlayıcılar daha yüksek aktarım hızı, düşük gecikme süresi, yerel bağlantı sağlar ve Önizleme çalışma zamanı ile aynı işlemde yerel olarak çalışır.
+
+Yazma özelliği şu anda yalnızca Visual Studio Code ' de kullanılabilir, ancak varsayılan olarak etkinleştirilmemiştir. Bu bağlayıcıları oluşturmak için, önce projenizi paket tabanlı (Node.js), NuGet paket tabanlı (.NET) ' e dönüştürmeniz gerekir.
+
+1. Gezgin bölmesinde, projenizin kökünde, fare işaretçinizi diğer tüm dosya ve klasörlerin altındaki boş bir alana taşıyın, kısayol menüsünü açın ve **NuGet tabanlı mantıksal uygulama projesine Dönüştür**' ü seçin.
+
+   ![Projenin kısayol menüsünün proje penceresindeki boş bir alandan açıldığını gösteren Gezgin bölmesini gösteren ekran görüntüsü.](./media/create-stateful-stateless-workflows-visual-studio-code/convert-logic-app-project.png)
+
+1. İstem göründüğünde, proje dönüştürmeyi onaylayın.
+
+1. Devam etmek için, [her yerde yerleşik bağlayıcı genişletilebilirliği çalıştırmak Azure Logic Apps](https://techcommunity.microsoft.com/t5/integrations-on-azure/azure-logic-apps-running-anywhere-built-in-connector/ba-p/1921272)makaledeki adımları gözden geçirin ve uygulayın.
 
 <a name="open-workflow-definition-designer"></a>
 
@@ -1348,6 +1366,7 @@ Bir hata ayıklama oturumu başlatmaya çalıştığınızda, **"preLaunchTask '
 1. Aşağıdaki görevde satırı, `"dependsOn: "generateDebugSymbols"` önceki satırı sonlandıran virgülden birlikte silin, örneğin:
 
    Önce:
+
    ```json
     {
       "type": "func",
@@ -1359,6 +1378,7 @@ Bir hata ayıklama oturumu başlatmaya çalıştığınızda, **"preLaunchTask '
    ```
 
    Sonra:
+
    ```json
     {
       "type": "func",

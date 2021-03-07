@@ -3,14 +3,14 @@ title: PowerShell Galerisi 'de Azure Otomasyonu runbook 'larını ve modüllerin
 description: Bu makalede, Microsoft 'tan ve topluluk PowerShell Galerisi içindeki runbook 'ları ve modülleri nasıl kullanacağınız açıklanır.
 services: automation
 ms.subservice: process-automation
-ms.date: 01/08/2021
+ms.date: 03/04/2021
 ms.topic: conceptual
-ms.openlocfilehash: 590220782a7f43e785cc7885e68eefa99afb7d1d
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: afa782df8666413356fa334bf4e9dcb989b87c2f
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98049125"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102441478"
 ---
 # <a name="use-runbooks-and-modules-in-powershell-gallery"></a>PowerShell Galerisi’nde runbook’ları ve modülleri kullanma
 
@@ -33,7 +33,7 @@ Azure portal kullanarak yalnızca PowerShell Galerisi doğrudan içeri aktarabil
 
 ## <a name="modules-in-powershell-gallery"></a>PowerShell Galerisi modüller
 
-PowerShell modülleri, runbook 'larınızda kullanabileceğiniz cmdlet 'leri içerir ve Azure Otomasyonu 'nda yükleyebileceğiniz mevcut modüller [PowerShell Galerisi](https://www.powershellgallery.com)kullanılabilir. Bu galeriyi Azure portal başlatabilir ve doğrudan Azure Otomasyonu 'na yükleyebilirsiniz. Ayrıca, bunları indirip el ile yükleyebilirsiniz.
+PowerShell modülleri, runbook 'larınızda kullanabileceğiniz cmdlet 'leri içerir. Azure Otomasyonu 'nda yükleyebileceğiniz mevcut modüller [PowerShell Galerisi](https://www.powershellgallery.com)kullanılabilir. Bu galeriyi Azure portal başlatabilir ve modülleri doğrudan Azure Otomasyonu 'na yükleyebilir veya el ile indirip yükleyebilirsiniz.
 
 ## <a name="common-scenarios-available-in-powershell-gallery"></a>PowerShell Galerisi 'de bulunan yaygın senaryolar
 
@@ -47,19 +47,34 @@ Aşağıdaki liste, yaygın senaryoları destekleyen birkaç runbook içerir. Az
 ## <a name="import-a-powershell-runbook-from-the-runbook-gallery-with-the-azure-portal"></a>Azure portal ile runbook galerisinden bir PowerShell runbook 'unu içeri aktarın
 
 1. Azure portalında, Otomasyon hesabınızı açın.
-2. **Işlem Otomasyonu** altında **runbook 'lar Galerisi** ' ni seçin.
-3. **Kaynak seçin: PowerShell Galerisi**.
-4. İstediğiniz Galeri öğesini bulun ve ayrıntılarını görüntülemek için seçin. Sol tarafta yayımcı için ek arama parametreleri girebilir ve yazın.
+1. **Işlem Otomasyonu** altında **runbook 'lar Galerisi** ' ni seçin.
+1. **Kaynak seçin: PowerShell Galerisi**. Bu, gözatabilmeniz için kullanılabilir runbook 'ların bir listesini gösterir.
+1. Listeyi daraltmak için listenin üzerindeki arama kutusunu kullanabilir veya daha sonra görüntüyü Yayımcı, yazma ve sıralama ile daraltmak için filtreleri kullanabilirsiniz. İstediğiniz Galeri öğesini bulun ve ayrıntılarını görüntülemek için seçin.
 
-   ![Galeriye göz atma](media/automation-runbook-gallery/browse-gallery.png)
+   :::image type="content" source="media/automation-runbook-gallery/browse-gallery-sm.png" alt-text="Runbook galerisine göz atma" lightbox="media/automation-runbook-gallery/browse-gallery-lg.png":::
 
-5. [Azure Otomasyonu GitHub kuruluşunda](https://github.com/azureautomation)öğeyi görüntülemek için **kaynak projeyi görüntüle** ' ye tıklayın.
-6. Bir öğeyi içeri aktarmak için üzerine tıklayarak ayrıntılarını görüntüleyin ve ardından **Içeri aktar**' a tıklayın.
+1. Bir öğeyi içeri aktarmak için Ayrıntılar dikey penceresinde **Içeri aktar** ' a tıklayın.
 
-   ![İçeri Aktar düğmesi](media/automation-runbook-gallery/gallery-item-detail.png)
+   :::image type="content" source="media/automation-runbook-gallery/gallery-item-detail-sm.png" alt-text="Bir Runbook Galerisi öğe ayrıntısı göster" lightbox="media/automation-runbook-gallery/gallery-item-detail-lg.png":::
 
-7. İsteğe bağlı olarak, runbook 'un adını değiştirin ve ardından runbook 'u içeri aktarmak için **Tamam** ' ı tıklatın.
-8. Runbook, Otomasyon hesabı için **runbook 'lar** sekmesinde görünür.
+1. İsteğe bağlı olarak, runbook 'un adını değiştirin ve ardından runbook 'u içeri aktarmak için **Tamam** ' ı tıklatın.
+1. Runbook, Otomasyon hesabı için **runbook 'lar** sekmesinde görünür.
+
+## <a name="import-a--powershell-runbook-from-github-with-the-azure-portal"></a>Azure portal ile bir PowerShell runbook 'unu GitHub 'dan içeri aktarın
+
+1. Azure portalında, Otomasyon hesabınızı açın.
+1. **Işlem Otomasyonu** altında **runbook 'lar Galerisi** ' ni seçin.
+1. **Kaynak: GitHub**' ı seçin.
+1. Görünümü yayımcıya, türüne ve sıralamaya göre daraltmak için listenin üzerindeki filtreleri kullanabilirsiniz. İstediğiniz Galeri öğesini bulun ve ayrıntılarını görüntülemek için seçin.
+
+   :::image type="content" source="media/automation-runbook-gallery/browse-gallery-github-sm.png" alt-text="GitHub galerisine göz atma" lightbox="media/automation-runbook-gallery/browse-gallery-github-lg.png":::
+
+1. Bir öğeyi içeri aktarmak için Ayrıntılar dikey penceresinde **Içeri aktar** ' a tıklayın.
+
+   :::image type="content" source="media/automation-runbook-gallery/gallery-item-details-blade-github-sm.png" alt-text="GitHub galerisinden bir runbook 'un ayrıntılı görünümü" lightbox="media/automation-runbook-gallery/gallery-item-details-blade-github-lg.png":::
+
+1. İsteğe bağlı olarak, runbook 'un adını değiştirin ve ardından runbook 'u içeri aktarmak için **Tamam** ' ı tıklatın.
+1. Runbook, Otomasyon hesabı için **runbook 'lar** sekmesinde görünür.
 
 ## <a name="add-a-powershell-runbook-to-the-gallery"></a>Galeriye PowerShell runbook 'u ekleme
 
@@ -68,29 +83,29 @@ Microsoft, diğer müşteriler için yararlı olacağını düşündüğünüz P
 ## <a name="import-a-module-from-the-module-gallery-with-the-azure-portal"></a>Modül galerisinden bir modülü Azure portal içeri aktarma
 
 1. Azure portalında, Otomasyon hesabınızı açın.
-2. Modüllerin listesini açmak için **paylaşılan kaynaklar** altındaki **modüller** ' i seçin.
-3. Sayfanın üst kısmından **tarayıcı Galerisi** ' ne tıklayın.
+1. Modüllerin listesini açmak için **paylaşılan kaynaklar** altındaki **modüller** ' i seçin.
+1. Sayfanın üst kısmından **tarayıcı Galerisi** ' ne tıklayın.
 
-   ![Modül Galerisi](media/automation-runbook-gallery/modules-blade.png)
+      :::image type="content" source="media/automation-runbook-gallery/modules-blade-sm.png" alt-text="Modül galerisinin görünümü" lightbox="media/automation-runbook-gallery/modules-blade-lg.png":::
 
-4. Galeriye gözatamıyorum sayfasında, aşağıdaki alanlara göre arama yapabilirsiniz:
+1. Galeriye gözatamıyorum sayfasında, aşağıdaki alanlardan herhangi birinde eşleşmeleri bulmak için arama kutusunu kullanabilirsiniz:
 
    * Modül Adı
    * Etiketler
    * Yazma
    * Cmdlet/DSC kaynak adı
 
-5. İlgilendiğiniz bir modül bulun ve ayrıntılarını görüntülemek için seçin.
+1. İlgilendiğiniz bir modül bulun ve ayrıntılarını görüntülemek için seçin.
 
    Belirli bir modülün detayına göre daha fazla bilgi görüntüleyebilirsiniz. Bu bilgiler PowerShell Galerisi, tüm gerekli bağımlılıkları ve modülün içerdiği tüm cmdlet 'leri ya da DSC kaynaklarını geri bir bağlantı içerir.
 
-   ![PowerShell modülü ayrıntıları](media/automation-runbook-gallery/gallery-item-details-blade.png)
+   :::image type="content" source="media/automation-runbook-gallery/gallery-item-details-blade-sm.png" alt-text="Galeriden bir modülün ayrıntılı görünümü" lightbox="media/automation-runbook-gallery/gallery-item-details-blade-lg.png":::
 
-6. Modülü doğrudan Azure Otomasyonu 'na yüklemek için **Içeri aktar**' a tıklayın.
-7. Içeri aktarma bölmesinde, içeri aktarılacak modülün adını görebilirsiniz. Tüm bağımlılıklar yüklüyse, **Tamam** düğmesi etkinleştirilir. Bağımlılıklarınız eksikse, bu modülü içeri aktarmadan önce bu bağımlılıkları içeri aktarmanız gerekir.
-8. Içeri aktarma bölmesinde, modülü içeri aktarmak için **Tamam** ' ı tıklatın. Azure Otomasyonu hesabınıza bir modül içeri aktarırken, modül ve cmdlet 'ler hakkında meta verileri ayıklar. Bu eylem, her etkinliğin ayıklanması gerektiğinden birkaç dakika sürebilir.
-9. Modülün dağıtılmakta olduğu bir başlangıç bildirimi ve tamamlandığında başka bir bildirim alırsınız.
-10. Modül içeri aktarıldıktan sonra, kullanılabilir etkinlikleri görebilirsiniz. Runbook 'larınızda ve DSC kaynaklarınızın modül kaynaklarını kullanabilirsiniz.
+1. Modülü doğrudan Azure Otomasyonu 'na yüklemek için **Içeri aktar**' a tıklayın.
+1. Içeri aktarma bölmesinde, içeri aktarılacak modülün adını görebilirsiniz. Tüm bağımlılıklar yüklüyse, **Tamam** düğmesi etkinleştirilir. Bağımlılıklarınız eksikse, bu modülü içeri aktarmadan önce bu bağımlılıkları içeri aktarmanız gerekir.
+1. Içeri aktarma bölmesinde, modülü içeri aktarmak için **Tamam** ' ı tıklatın. Azure Otomasyonu hesabınıza bir modül içeri aktarırken, modül ve cmdlet 'ler hakkında meta verileri ayıklar. Bu eylem, her etkinliğin ayıklanması gerektiğinden birkaç dakika sürebilir.
+1. Modülün dağıtılmakta olduğu bir başlangıç bildirimi ve tamamlandığında başka bir bildirim alırsınız.
+1. Modül içeri aktarıldıktan sonra, kullanılabilir etkinlikleri görebilirsiniz. Runbook 'larınızda ve DSC kaynaklarınızın modül kaynaklarını kullanabilirsiniz.
 
 > [!NOTE]
 > Yalnızca PowerShell Core 'u destekleyen modüller Azure Otomasyonu 'nda desteklenmez ve Azure portal içeri aktarılamaz ya da doğrudan PowerShell Galerisi dağıtılır.

@@ -6,18 +6,18 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: troubleshooting
-ms.date: 02/04/2021
+ms.date: 02/22/2021
 ms.author: alkohli
-ms.openlocfilehash: c56fcecbd850dd0add26e5d50093eea595e3d825
-ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
+ms.openlocfilehash: 696faaecd2227c9b9ef74f20763e36661991ff67
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99833431"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102438992"
 ---
 # <a name="troubleshoot-issues-on-your-azure-stack-edge-pro-gpu-device"></a>Azure Stack Edge Pro GPU cihazındaki sorunları giderme 
 
-<!--[!INCLUDE [applies-to-skus](../../includes/azure-stack-edge-applies-to-all-sku.md)]-->
+[!INCLUDE [applies-to-GPU-and-pro-r-and-mini-r-skus](../../includes/azure-stack-edge-applies-to-gpu-pro-r-mini-r-sku.md)]
 
 Bu makalede Azure Stack Edge Pro GPU cihazınızdaki sorunların nasıl giderileceği açıklanır. 
 
@@ -167,7 +167,7 @@ Cihazınıza erişmek için Azure Resource Manager yapılandırması sırasında
 
 2. Doğru PowerShell modüllerinin [burada](azure-stack-edge-j-series-connect-resource-manager.md#step-4-set-up-azure-powershell-on-the-client)bahsedilen şekilde yüklendiğini doğrulayın.
 
-3. Azure Resource Manager ve oturum açma uç noktalarına erişilebildiğini doğrulayın. Uç noktalara ping yapmayı deneyebilirsiniz. Örneğin:
+3. Azure Resource Manager ve oturum açma uç noktalarına erişilebildiğini doğrulayın. Uç noktalara ping yapmayı deneyebilirsiniz. Örnek:
 
    `ping management.28bmdw2-bb9.microsoftdatabox.com`
    `ping login.28bmdw2-bb9.microsoftdatabox.com`
@@ -196,7 +196,7 @@ Azure Stack Edge Pro/Data Box Gateway cihazında blob depolamayla ilgili hatalar
 |AzCopy komutu, bu hatayı görüntülemeden önce 20 dakika boyunca yanıt vermeyi durdurmuş gibi görünüyor:<br>`Error parsing source location https://<accountname>.blob.<serialnumber>.microsoftdatabox.com/<cntnr>. No such device or address`|Uç nokta adının `<accountname>.blob.<serialnumber>.microsoftdatabox.com` Şu adreste bulunan Hosts dosyasına eklendiğinden emin olun: `/etc/hosts` .|
 |AzCopy komutu, bu hatayı görüntülemeden önce 20 dakika boyunca yanıt vermeyi durdurmuş gibi görünüyor: `Error parsing source location… The SSL connection could not be established` .|Cihazınızın SSL sertifikasını sistemin sertifika deposuna aktarın. Daha fazla bilgi için bkz. [sertifikayı indirme](../databox/data-box-deploy-copy-data-via-rest.md#download-certificate).|
 |HTTP başlıklarındaki bir değer doğru biçimde değil.|Python için Microsoft Azure Depolama kitaplığının yüklü sürümü Data Box tarafından desteklenmiyor. Desteklenen sürümler için Azure Data Box BLOB depolama gereksinimleri bölümüne bakın.|
-|… [SSL: CERTIFICATE_VERIFY_FAILED]...| Python 'u çalıştırmadan önce, REQUESTS_CA_BUNDLE ortam değişkenini Base64 kodlamalı SSL sertifika dosyasının yoluna ayarlayın (bkz. [sertifikayı indirme](../databox/data-box-deploy-copy-data-via-rest.md#download-certificate). Örneğin:<br>`export REQUESTS_CA_BUNDLE=/tmp/mycert.cer`<br>`python`<br>Alternatif olarak, sertifikayı sistemin sertifika deposuna ekleyin ve bu ortam değişkenini bu deponun yoluna ayarlayın. Örneğin, Ubuntu üzerinde:<br>`export REQUESTS_CA_BUNDLE=/etc/ssl/certs/ca-certificates.crt`<br>`python`.|
+|… [SSL: CERTIFICATE_VERIFY_FAILED]...| Python 'u çalıştırmadan önce, REQUESTS_CA_BUNDLE ortam değişkenini Base64 kodlamalı SSL sertifika dosyasının yoluna ayarlayın (bkz. [sertifikayı indirme](../databox/data-box-deploy-copy-data-via-rest.md#download-certificate). Örnek:<br>`export REQUESTS_CA_BUNDLE=/tmp/mycert.cer`<br>`python`<br>Alternatif olarak, sertifikayı sistemin sertifika deposuna ekleyin ve bu ortam değişkenini bu deponun yoluna ayarlayın. Örneğin, Ubuntu üzerinde:<br>`export REQUESTS_CA_BUNDLE=/etc/ssl/certs/ca-certificates.crt`<br>`python`.|
 |Bağlantı zaman aşımına uğrar.|Azure Stack Edge Pro 'da oturum açın ve sonra kilidinin açık olup olmadığını kontrol edin. Cihaz her yeniden başlatıldığında, birisi oturum açana kadar kilitli kalır.|
 
 ## <a name="troubleshoot-iot-edge-errors"></a>IoT Edge hatalarında sorun giderme

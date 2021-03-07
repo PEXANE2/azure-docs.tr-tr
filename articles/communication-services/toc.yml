@@ -88,40 +88,40 @@
           href: concepts/voice-video-calling/calling-sdk-features.md
         - name: Ses ve görüntü kavramları
           href: concepts/voice-video-calling/about-call-types.md
+        - name: Arama akışları
+          href: concepts/call-flows.md
+        - name: Çağrı akışı topolojileri
+          href: concepts/detailed-call-flows.md
     - name: UI çerçevesi
       items:
         - name: UI çerçevesine genel bakış
           href: concepts/ui-framework/ui-sdk-overview.md
         - name: UI çerçevesi özellikleri
           href: concepts/ui-framework/ui-sdk-features.md
-    - name: Teams ile birlikte çalışabilirlik
-      href: concepts/teams-interop.md
+    - name: Veri ve Işlemler
+      items:
+        - name: Hizmet olayları (EventGrid)
+          href: concepts/event-handling.md
+        - name: Günlüğe kaydetme ve tanılama
+          href: concepts/logging-and-diagnostics.md
+        - name: Ölçümler
+          href: concepts/metrics.md
+        - name: Sorun giderme
+          href: concepts/troubleshooting-info.md
+    - name: SDK 'Lar ve REST API 'Leri
+      href: concepts/sdk-options.md
     - name: İstemci ve sunucu mimarisi
       href: concepts/client-and-server-architecture.md
-    - name: Arama akışları
-      href: concepts/call-flows.md
-    - name: Çağrı akışı topolojileri
-      href: concepts/detailed-call-flows.md
-    - name: İstemci kitaplıkları ve REST API’leri
-      href: concepts/sdk-options.md
-    - name: Fiyatlandırma modeli
-      href: concepts/pricing.md
-    - name: Gizlilik
-      href: concepts/privacy.md
     - name: Kimlik modeli
       href: concepts/identity-model.md
     - name: Kimlik Doğrulaması
       href: concepts/authentication.md
-    - name: Olay işleme
-      href: concepts/event-handling.md
-    - name: Bildirimler
+    - name: Gizlilik
+      href: concepts/privacy.md
+    - name: 'Anında İletme Bildirimleri '
       href: concepts/notifications.md
-    - name: Günlüğe kaydetme ve tanılama
-      href: concepts/logging-and-diagnostics.md
-    - name: Ölçümler
-      href: concepts/metrics.md
-    - name: Sorun giderme
-      href: concepts/troubleshooting-info.md
+    - name: Teams ile birlikte çalışabilirlik
+      href: concepts/teams-interop.md
     - name: Bilinen sorunlar
       href: concepts/known-issues.md
 - name: Örnekler

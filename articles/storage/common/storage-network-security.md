@@ -5,16 +5,16 @@ services: storage
 author: santoshc
 ms.service: storage
 ms.topic: how-to
-ms.date: 01/27/2021
+ms.date: 03/05/2021
 ms.author: normesta
 ms.reviewer: santoshc
 ms.subservice: common
-ms.openlocfilehash: 4aa4e0566093f01e5f14691158f37c630c753b00
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 9e395ce996bf7e6889a27fcb04b0e643cf63c58b
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101714757"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102430896"
 ---
 # <a name="configure-azure-storage-firewalls-and-virtual-networks"></a>Azure Depolama güvenlik duvarlarını ve sanal ağları yapılandırma
 
@@ -136,7 +136,7 @@ Bölgesel bir kesinti sırasında olağanüstü durum kurtarma için planlama ya
 
 ### <a name="required-permissions"></a>Gerekli izinler
 
-Bir depolama hesabına sanal ağ kuralı uygulamak için, kullanıcının eklenmekte olan alt ağlar için uygun izinlere sahip olması gerekir. Gerekli olan izin, *hizmete bir alt ağa katılır* ve *depolama hesabı katılımcısı* yerleşik rolüne dahildir. Özel rol tanımlarına da eklenebilir.
+Bir depolama hesabına sanal ağ kuralı uygulamak için, kullanıcının eklenmekte olan alt ağlar için uygun izinlere sahip olması gerekir. Bir kuralı uygulamak, bir [depolama hesabı katılımcısı](../../role-based-access-control/built-in-roles.md#storage-account-contributor) veya `Microsoft.Network/virtualNetworks/subnets/joinViaServiceEndpoint/action` [Azure Kaynak sağlayıcısı Işlemi](../../role-based-access-control/resource-provider-operations.md#microsoftnetwork) için özel bir Azure rolü aracılığıyla izin verilen bir kullanıcı tarafından gerçekleştirilebilir.
 
 Depolama hesabı ve erişim verilen sanal ağlar, farklı bir Azure AD kiracısının parçası olan abonelikler de dahil olmak üzere farklı aboneliklerde olabilir.
 

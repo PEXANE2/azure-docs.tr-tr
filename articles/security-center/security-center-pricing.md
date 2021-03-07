@@ -7,15 +7,17 @@ manager: rkarlin
 ms.service: security-center
 ms.topic: overview
 ms.date: 02/14/2021
-ms.openlocfilehash: 7ca8a89cc93cc36d790eca7b19665e5bfed9695c
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.openlocfilehash: e72e312e932e71d4dac8532983c2c96ba105ba3b
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102099112"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102439485"
 ---
 # <a name="azure-security-center-free-vs-azure-defender-enabled"></a>Azure Güvenlik Merkezi Ücretsiz vs Azure Defender etkin
 Azure Defender, ilk 30 gün boyunca ücretsizdir. 30 günün sonunda hizmeti kullanmaya devam etmeyi seçmeniz gerekir, kullanım için otomatik olarak ücretlendirmeye başlayacağız.
+
+[Hızlı başlangıç: Azure Defender 'ı etkinleştirme](enable-azure-defender.md)bölümünde açıklandığı gibi **fiyatlandırma & ayarları** sayfasından yükseltebilirsiniz. Seçtiğiniz para birimindeki ve bölgenize göre fiyatlandırma ayrıntıları için bkz. [Güvenlik Merkezi fiyatlandırması](https://azure.microsoft.com/pricing/details/security-center/).
 
 ## <a name="what-are-the-benefits-of-enabling-azure-defender"></a>Azure Defender 'ı etkinleştirmenin avantajları nelerdir?
 
@@ -70,14 +72,14 @@ Güvenlik Merkezi 'nin iki teklifi vardır:
 ### <a name="how-do-i-enable-azure-defender-for-my-subscription"></a>Aboneliğim için Azure Defender'ı nasıl etkinleştirebilirim? 
 Aboneliğiniz için Azure Defender 'ı etkinleştirmek üzere aşağıdaki yolların herhangi birini kullanabilirsiniz: 
 
-|Yöntem  |Yönergeler  |
-|---------|---------|
-|Azure portal Azure Güvenlik Merkezi sayfaları|[Azure Defender’ı etkinleştirme](enable-azure-defender.md)|
-|REST API|[Prmerler API 'SI](/rest/api/securitycenter/pricings)|
-|Azure CLI|[az Security fiyatlandırması](/cli/azure/security/pricing)|
-|PowerShell|[Set-Azsecurityprsosu](/powershell/module/az.security/set-azsecuritypricing)|
-|Azure İlkesi|[Paket ları](https://github.com/Azure/Azure-Security-Center/blob/master/Pricing%20%26%20Settings/ARM%20Templates/Set-ASC-Bundle-Pricing.json)|
-|||
+| Yöntem                                          | Yönergeler                                                                                                                                       |
+|-------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------|
+| Azure portal Azure Güvenlik Merkezi sayfaları | [Azure Defender’ı etkinleştirme](enable-azure-defender.md)                                                                                                  |
+| REST API                                        | [Prmerler API 'SI](/rest/api/securitycenter/pricings)                                                                                                  |
+| Azure CLI                                       | [az Security fiyatlandırması](/cli/azure/security/pricing)                                                                                                 |
+| PowerShell                                      | [Set-Azsecurityprsosu](/powershell/module/az.security/set-azsecuritypricing)                                                                      |
+| Azure İlkesi                                    | [Paket ları](https://github.com/Azure/Azure-Security-Center/blob/master/Pricing%20%26%20Settings/ARM%20Templates/Set-ASC-Bundle-Pricing.json) |
+|                                                 |                                                                                                                                                    |
 
 ### <a name="can-i-enable-azure-defender-for-servers-on-a-subset-of-servers-in-my-subscription"></a>Azure Defender'ı aboneliğimdeki sunucuların bir alt kümesinde yer alan sunucular için etkinleştirebilir miyim?
 Hayır. Bir abonelikteki [sunucular Için Azure Defender](defender-for-servers-introduction.md) 'ı etkinleştirdiğinizde, abonelikteki tüm sunucular Azure Defender tarafından korunur. 

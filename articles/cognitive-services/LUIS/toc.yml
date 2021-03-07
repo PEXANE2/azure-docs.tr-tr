@@ -286,7 +286,7 @@
                 - name: NuGet - çalışma zamanı
                   href: 'https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Language.LUIS.Runtime/'
                 - name: Başvuru
-                  href: /dotnet/api/overview/azure/cognitiveservices/client/languageunderstanding?view=azure-dotnet
+                  href: /dotnet/api/overview/azure/cognitiveservices/client/languageunderstanding
                 - name: Örnekler
                   href: 'https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/LUIS'
             - name: Başlayın

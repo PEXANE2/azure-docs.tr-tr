@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: tutorial
 ms.date: 01/04/2021
 ms.author: pafarley
-ms.openlocfilehash: d0c95312e1794e2f78bbbef217ef5530a993146d
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 5b220652009f54482c757f01232517569596c562
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102040915"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102423905"
 ---
 # <a name="tutorial-extract-form-data-in-bulk-by-using-azure-data-factory"></a>Öğretici: Azure Data Factory kullanarak form verilerini toplu olarak ayıklayın
 
@@ -43,10 +43,11 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 ## <a name="prerequisites"></a>Önkoşullar
 
 * Azure aboneliği. [Ücretsiz bir tane oluşturun](https://azure.microsoft.com/free/cognitive-services/).
-* Azure aboneliğiniz olduktan sonra, <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFormRecognizer"  title=" "  target="_blank"> <span class="docon docon-navigate-external x-hidden-focus"></span> </a> anahtarınızı ve uç noktanızı almak için Azure Portal bir form tanıyıcı kaynağı oluşturun. Kaynak dağıtıldıktan sonra **Kaynağa git**'i seçin.
+* Azure aboneliğiniz olduktan sonra, <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFormRecognizer"  title=" "  target="_blank"> </a> anahtarınızı ve uç noktanızı almak için Azure Portal bir form tanıyıcı kaynağı oluşturun. Kaynak dağıtıldıktan sonra **Kaynağa git**'i seçin.
     * Uygulamanızı form tanıyıcı API 'sine bağlamak için oluşturduğunuz kaynaktaki anahtar ve uç nokta gerekir. Bu hızlı başlangıçta, anahtarınızı ve uç noktanızı kodunuza yapıştırmanız gerekir.
     * Hizmeti denemek için ücretsiz fiyatlandırma katmanını (F0) kullanabilirsiniz. Daha sonra üretim için daha sonra ücretli bir katmana yükseltebilirsiniz.
 * Aynı türde en az beş form kümesi. İdeal olarak, bu iş akışı büyük belge kümelerini desteklemeye yöneliktir. Eğitim veri kümenizi birlikte yerleştirmeye yönelik ipuçları ve seçenekler için bkz. [eğitim veri kümesi oluşturma](./build-training-data-set.md) . Bu öğreticide, [örnek veri kümesinin](https://go.microsoft.com/fwlink/?linkid=2128080)eğitme klasöründeki dosyaları kullanabilirsiniz.
+
 
 ## <a name="project-architecture"></a>Proje mimarisi 
 

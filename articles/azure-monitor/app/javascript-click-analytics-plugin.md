@@ -8,12 +8,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 01/14/2021
 ms.author: lagayhar
-ms.openlocfilehash: 5ad3e1a5a4ff47fe3d5fee8b8bc79235838995b8
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: e48d669321ad8c58681e8a92e68f2089962bdc17
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100593628"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102429859"
 ---
 # <a name="click-analytics-auto-collection-plugin-for-application-insights-javascript-sdk"></a>Application Insights JavaScript SDK 'Sı için analiz otomatik toplama eklentisi ' ne tıklayın
 
@@ -79,7 +79,7 @@ appInsights.loadAppInsights();
 
 ## <a name="configuration"></a>Yapılandırma
 
-| Ad                  | Tür                               | Varsayılan | Description                                                                                                                              |
+| Ad                  | Tür                               | Varsayılan | Açıklama                                                                                                                              |
 | --------------------- | -----------------------------------| --------| ---------------------------------------------------------------------------------------------------------------------------------------- |
 | Oto yakala           | boolean                            | true    | Otomatik yakalama yapılandırması.                                                                                                         |
 | callback              | [IValueCallback](#ivaluecallback)  | null    | Geri çağrılar yapılandırması.                                                                                                                 |
@@ -101,7 +101,7 @@ appInsights.loadAppInsights();
 
 ### <a name="icustomdatatags"></a>Icustomdatatags
 
-| Ad                      | Tür    | Varsayılan   | HTML içinde kullanılacak varsayılan etiket |   Description                                                                                |
+| Ad                      | Tür    | Varsayılan   | HTML içinde kullanılacak varsayılan etiket |   Açıklama                                                                                |
 |---------------------------|---------|-----------|-------------|----------------------------------------------------------------------------------------------|
 | Usedefaultcontentnameorıd | boolean | yanlış     | Yok         |Belirli bir öğe varsayılan customDataPrefix ile etiketlenmemişse veya customDataPrefix Kullanıcı tarafından sağlanmadıysa, contentName için standart HTML özniteliğini toplar. |
 | customDataPrefix          | string  | `data-`   | `data-*`| Otomatik yakalama içerik adı ve belirtilen önek ile etiketlenmiş öğelerin değeri. Örneğin, `data-*-id` `data-<yourcustomattribute>` HTML etiketleri içinde kullanılabilir.   |
@@ -315,4 +315,4 @@ appInsights.loadAppInsights();
 - Analiz otomatik toplama eklentisi için [GitHub deposunu](https://github.com/microsoft/ApplicationInsights-JS/tree/master/extensions/applicationinsights-clickanalytics-js) ve [NPM paketini](https://www.npmjs.com/package/@microsoft/applicationinsights-clickanalytics-js) inceleyin.
 - En üstteki tıklamaları analiz etmek ve kullanılabilir boyutlara göre dilimlemek için [kullanım deneyiminde olay analizini](usage-segmentation.md) kullanın.
 - [Log Analytics](../logs/log-analytics-tutorial.md#write-a-query)' deki CustomEvents tablosundaki customdimensions özniteliğinde bulunan içerik alanının altında bulunan verileri bulun. Ek rehberlik için bkz. [örnek uygulama](https://go.microsoft.com/fwlink/?linkid=2152871) .
-- Tıklama verilerinin özel görselleştirmelerini oluşturmak için bir [çalışma kitabı](../visualize/workbooks-overview.md) oluşturun.
+- Tıklama verileri özel görselleştirmeleri oluşturmak için Power BI bir [çalışma kitabı](../visualize/workbooks-overview.md) oluşturun veya [dışarı aktarın](../logs/log-powerbi.md#integrating-queries) .

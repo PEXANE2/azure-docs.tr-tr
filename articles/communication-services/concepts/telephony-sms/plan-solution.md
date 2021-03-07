@@ -10,21 +10,31 @@ ms.date: 10/05/2020
 ms.topic: overview
 ms.custom: references_regions
 ms.service: azure-communication-services
-ms.openlocfilehash: 4ba8a6b530f3f3650959eac90bba5b05e3ac0643
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.openlocfilehash: 8a811a033a2d6e2229c83899e237f996ccddd7b3
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102215417"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102430420"
 ---
 # <a name="phone-number-types-in-azure-communication-services"></a>Azure Iletişim hizmetlerindeki telefon numarası türleri
+
+
 
 [!INCLUDE [Public Preview Notice](../../includes/public-preview-include.md)]
 
 > [!IMPORTANT]
-> Telefon numarası kullanılabilirliği Şu anda Birleşik Devletler bir fatura adresi olan Azure abonelikleri ile kısıtlıdır. Daha fazla bilgi için bu belgenin [abonelik uygunluğu](#azure-subscriptions-eligibility) bölümünü ziyaret edin.
+> Telefon numarası kullanılabilirliği Şu anda, ABD veri konumuna sahip Birleşik Devletler ve Iletişim Hizmetleri kaynaklarında fatura adresi olan ücretli Azure abonelikleri ile kısıtlıdır. Telefon numaraları, deneme hesaplarında alınamıyor veya Azure Ücretsiz kredileri kullanılıyor. Daha fazla bilgi için bu belgenin [abonelik uygunluğu](#azure-subscriptions-eligibility) bölümünü ziyaret edin.
+
 
 Azure Iletişim Hizmetleri, sesli aramalar yapmak ve ortak anahtarlı telefon ağı (PSTN) ile SMS mesajları göndermek için telefon numaralarını kullanmanıza olanak sağlar. Bu belgede, Iletişim hizmetlerini kullanarak telefon ve SMS çözümünüzü planlamak için telefon numarası türlerini, yapılandırma seçeneklerini ve bölge kullanılabilirliğini gözden geçireceğiz.
+
+## <a name="azure-subscriptions-eligibility"></a>Azure aboneliklerine uygunluk
+
+Telefon numarası almak için ücretli bir Azure aboneliğinde olmanız gerekir. Telefon numaraları, deneme hesaplarında veya Azure Ücretsiz kredilerine göre alınamıyor. 
+
+Telefon numarası kullanılabilirliği Şu anda, ABD veri konumuna sahip Birleşik Devletler ve Iletişim Hizmetleri kaynaklarında faturalama adresine sahip Azure abonelikleri ile kısıtlıdır.
+
 
 ## <a name="number-types-and-features"></a>Sayı türleri ve özellikleri
 İletişim Hizmetleri iki tür telefon numarası sunar: **Yerel** **ve ücretsiz**. 
@@ -72,11 +82,6 @@ Aşağıdaki tabloda, bu telefon numarası türleriyle ilişkili gelen ve giden 
 
 * Çağrı hedefleri ve fiyatlandırma hakkında daha fazla bilgi için [fiyatlandırma sayfasına](../pricing.md)bakın.
 
-## <a name="azure-subscriptions-eligibility"></a>Azure aboneliklerine uygunluk
-
-Telefon numarası almak için ücretli bir Azure aboneliğinde olmanız gerekir. Telefon numaraları, deneme hesaplarında veya Azure Ücretsiz kredilerine göre alınamıyor. 
-
-Şu anda telefon numarası kullanılabilirliği, Birleşik Devletler fatura adresi olan Azure abonelikleri ile kısıtlıdır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

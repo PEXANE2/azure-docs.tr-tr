@@ -1,24 +1,18 @@
 ---
 title: Azure Güvenlik Merkezi 'ndeki izinler | Microsoft Docs
 description: Bu makalede, Azure Güvenlik Merkezi 'nin kullanıcılara izinler atamak ve her bir rol için izin verilen eylemleri tanımlamak için rol tabanlı erişim denetimi nasıl kullanıldığı açıklanmaktadır.
-services: security-center
-cloud: na
-documentationcenter: na
 author: memildin
 manager: rkarlin
 ms.service: security-center
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: overview
-ms.date: 12/01/2020
+ms.date: 01/03/2021
 ms.author: memildin
-ms.openlocfilehash: 14ee9f23379a26c1756c622efb7d739f49dd0537
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.openlocfilehash: dcbb4977e1bfd17f0cbed61abf9ba335615b7799
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102099191"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102443769"
 ---
 # <a name="permissions-in-azure-security-center"></a>Azure Güvenlik Merkezi'nde İzinler
 
@@ -39,15 +33,15 @@ Bu rollere ek olarak iki özel Güvenlik Merkezi rolü vardır:
 
 Aşağıdaki tabloda Güvenlik Merkezi 'nde roller ve izin verilen eylemler görüntülenmektedir.
 
-|Eylem|Güvenlik okuyucusu/ <br> Okuyucu |Güvenlik Yöneticisi  |Kaynak grubu Katılımcısı/ <br> Kaynak grubu sahibi  |Abonelik Katılımcısı  |Abonelik sahibi  |
-|:--- |:---:|:---:|:---:|:---:|:---:|
-|Güvenlik ilkesini Düzenle|-|✔|-|-|✔|
-|Ekleme/atama (yasal uyumluluk standartları dahil)|-|-|-|-|✔|
-|Azure Defender 'ı etkinleştirme/devre dışı bırakma|-|✔|-|-|✔|
-|Otomatik sağlamayı etkinleştir/devre dışı bırak|-|✔|-|✔|✔|
-|Bir kaynak için güvenlik önerilerini uygulama</br> (ve [hızlı düzelme kullanın!](security-center-remediate-recommendations.md#quick-fix-remediation))|-|-|✔|✔|✔|
-|Uyarıları kapat|-|✔|-|✔|✔|
-|Uyarıları ve önerileri görüntüleme|✔|✔|✔|✔|✔|
+| Eylem                                                                                                                                        | Güvenlik okuyucusu/ <br> Okuyucu | Güvenlik Yöneticisi | Kaynak grubu Katılımcısı/ <br> Kaynak grubu sahibi | Abonelik Katılımcısı | Abonelik sahibi |
+|:----------------------------------------------------------------------------------------------------------------------------------------------|:-----------------------------:|:--------------:|:------------------------------------------------------:|:------------------------:|:------------------:|
+| Güvenlik ilkesini Düzenle                                                                                                                          | -                             | ✔             | -                                                      | -                        | ✔                 |
+| Ekleme/atama (yasal uyumluluk standartları dahil)                                                                           | -                             | -              | -                                                      | -                        | ✔                 |
+| Azure Defender 'ı etkinleştirme/devre dışı bırakma                                                                                                               | -                             | ✔             | -                                                      | -                        | ✔                 |
+| Otomatik sağlamayı etkinleştir/devre dışı bırak                                                                                                            | -                             | ✔             | -                                                      | ✔                       | ✔                  |
+| Bir kaynak için güvenlik önerilerini uygulama</br> (ve [hızlı düzelme kullanın!](security-center-remediate-recommendations.md#quick-fix-remediation)) | -                             | -              | ✔                                                     | ✔                        | ✔                 |
+| Uyarıları kapat                                                                                                                                | -                             | ✔             | -                                                      | ✔                       | ✔                  |
+| Uyarıları ve önerileri görüntüleme                                                                                                               | ✔                            | ✔              | ✔                                                     | ✔                        | ✔                 |
 
 > [!NOTE]
 > Kullanıcılara, görevlerini tamamlamak için gereken rolleri en alt seviyede esneklik sunacak şekilde atamanızı öneririz. Örneğin, okuyucu rolünü yalnızca bir kaynağın güvenlik durumu ile ilgili bilgileri görüntülemesi gereken ancak öneri veya ilkeleri Düzenle gibi işlemleri olmayan kullanıcılara atayın.

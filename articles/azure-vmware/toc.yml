@@ -4,6 +4,8 @@
   items:
     - name: Azure VMware Çözümü hakkında
       href: introduction.md
+    - name: Platform güncelleştirmeleri
+      href: azure-vmware-solution-platform-updates.md
 - name: Hızlı başlangıç
   items:
     - name: 0 - Dağıtımı planlama
@@ -114,7 +116,7 @@
       href: faq.yml
 - name: Başvuru
   items:
-    - name: Azure CLI’si
+    - name: Azure CLI
       href: /cli/azure/ext/vmware/vmware
     - name: Azure PowerShell
       href: /powershell/module/az.vmware/

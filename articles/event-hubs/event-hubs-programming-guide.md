@@ -4,12 +4,12 @@ description: Bu makalede, Azure .NET SDK kullanarak Azure Event Hubs için kod y
 ms.topic: article
 ms.date: 06/23/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: a299813620ee90591d8c9491991237f75f2e9382
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: 32c3c05b61d2ee8fc79d7c863ddbe84de5fe7e2b
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98623057"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102432749"
 ---
 # <a name="net-programming-guide-for-azure-event-hubs-legacy-microsoftazureeventhubs-package"></a>Azure Event Hubs için .NET Programlama Kılavuzu (eski Microsoft. Azure. EventHubs paketi)
 Bu makalede, Azure Event Hubs kullanarak kod yazma konusunda bazı yaygın senaryolar ele alınmaktadır. Burada Event Hubs’ın önceden bilindiği varsayılır. Event Hubs’a kavramsal genel bakış için bkz. [Event Hubs’a genel bakış](./event-hubs-about.md).
@@ -73,21 +73,7 @@ for (var i = 0; i < numMessagesToSend; i++)
 > [!NOTE]
 > Bölümler hakkında bilginiz yoksa, [Bu makaleye](event-hubs-features.md#partitions)bakın. 
 
-Olay verilerini gönderirken, Bölüm ataması oluşturmak için karma hale getirilmiş bir değer belirtebilirsiniz. Bölüm, [Partitionsender. PartitionId](/dotnet/api/microsoft.azure.eventhubs.partitionsender.partitionid) özelliğini kullanarak belirtirsiniz. Ancak, bölümleri kullanma kararı kullanılabilirlik ve tutarlılık arasında seçim gösterir. 
-
-### <a name="availability-considerations"></a>Kullanılabilirlik konusunda dikkat edilmesi gerekenler
-
-Bölüm anahtarı kullanmak isteğe bağlıdır ve bir tane kullanıp kullanmayacağınızı dikkatle düşünün. Bir olayı yayımlarken bölüm anahtarı belirtmezseniz Event Hubs, yükü bölümler arasında dengeler. Çoğu durumda, olay sıralaması önemliyse, Bölüm anahtarının kullanılması iyi bir seçimdir. Bir bölüm anahtarı kullandığınızda, bu bölümler tek bir düğümde kullanılabilirlik gerektirir ve zaman içinde kesintiler meydana gelebilir; Örneğin, işlem düğümleri yeniden başlatıldığında ve düzeltme ekiyle. Bu nedenle, bir bölüm KIMLIĞI ayarlarsanız ve bu bölüm bazı nedenlerle kullanılamaz hale gelirse, bu bölümdeki verilere erişme girişimi başarısız olur. Yüksek kullanılabilirlik en önemse, bölüm anahtarı belirtmeyin. Bu durumda, olaylar iç yük dengeleme algoritması kullanılarak bölümlere gönderilir. Bu senaryoda, kullanılabilirlik (bölüm KIMLIĞI yok) ve tutarlılık (olayları bir bölüm KIMLIĞINE sabitleme) arasında açık bir seçim yapabilirsiniz.
-
-Diğer bir nokta, olayları işlerken gecikmelerin işlenmesine neden olur. Bazı durumlarda, verileri bırakıp işleme devam etmek denenmeye çalışmak daha iyi olabilir ve bu da daha fazla aşağı akış işleme gecikmesine neden olabilir. Örneğin, bir stok şeridi sayesinde, güncel verilerin tamamlanmasını beklemek daha iyidir, ancak canlı sohbet veya VOıP senaryosunda, tamamlanmamış olsa bile verilere hızlıca sahip olmanız önerilir.
-
-Bu kullanılabilirlik konuları verildiğinde, bu senaryolarda aşağıdaki hata işleme stratejilerinden birini seçebilirsiniz:
-
-- Durdur (işlemler düzeltilene kadar Event Hubs okumayı Durdur)
-- Bırak (iletiler önemli değildir, bunları bırakın)
-- Yeniden dene (iletileri uygun gördüğünüz şekilde yeniden deneyin)
-
-Kullanılabilirlik ve tutarlılık arasındaki denge hakkında daha fazla bilgi ve bir tartışma için bkz. [Event Hubs kullanılabilirlik ve tutarlılık](event-hubs-availability-and-consistency.md). 
+Olay verilerini gönderirken, Bölüm ataması oluşturmak için karma hale getirilmiş bir değer belirtebilirsiniz. Bölüm, [Partitionsender. PartitionId](/dotnet/api/microsoft.azure.eventhubs.partitionsender.partitionid) özelliğini kullanarak belirtirsiniz. Ancak, bölümleri kullanma kararı kullanılabilirlik ve tutarlılık arasında seçim gösterir. Daha fazla bilgi için bkz. [kullanılabilirlik ve tutarlılık](event-hubs-availability-and-consistency.md).
 
 ## <a name="batch-event-send-operations"></a>Toplu olay gönderme işlemleri
 

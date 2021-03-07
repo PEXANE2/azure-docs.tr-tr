@@ -1,17 +1,17 @@
 ---
 title: Raspberry Pi 3 B + başvuru yocto görüntüsünü kullanarak Azure IoT Hub öğreticisi için cihaz güncelleştirmesi | Microsoft Docs
 description: Raspberry Pi 3 B + başvuru yocto görüntüsünü kullanarak Azure IoT Hub cihaz güncelleştirmesi ile çalışmaya başlayın.
-author: vimeht
-ms.author: vimeht
+author: valls
+ms.author: valls
 ms.date: 2/11/2021
 ms.topic: tutorial
 ms.service: iot-hub-device-update
-ms.openlocfilehash: bb992e4f33cc833411e7cce560f71adf1dc72076
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: ca689df97e7268a5c0f7c0479e6514b98ffda9f2
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101665147"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102443463"
 ---
 # <a name="device-update-for-azure-iot-hub-tutorial-using-the-raspberry-pi-3-b-reference-image"></a>Raspberry Pi 3 B + başvuru görüntüsünü kullanarak Azure IoT Hub öğreticisi için cihaz güncelleştirmesi
 
@@ -143,13 +143,11 @@ Aşağıdaki güncelleştirme Içeri aktarma adımında bu sürüm numarasını 
 
 ## <a name="import-update"></a>Güncelleştirmeyi içeri aktar
 
-1. Sol taraftaki Gezinti çubuğundan otomatik cihaz yönetimi altında cihaz güncelleştirmeleri seçeneğini belirleyin.
-
-2. Güncelleştirmeler sekmesini seçin.
-
-3. "+ Yeni güncelleştirme al" seçeneğini belirleyin.
-
-4. "Içeri aktarma bildirim dosyası seçin" altında klasör simgesini veya metin kutusunu seçin. Bir dosya Seçicisi iletişim kutusu görürsünüz. Daha önce indirdiğiniz Içeri aktarma bildirimini seçin. Sonra, "bir veya daha fazla güncelleştirme dosyası seçin" altında klasör simgesini veya metin kutusunu seçin. Bir dosya Seçicisi iletişim kutusu görürsünüz. Daha önce indirdiğiniz apt bildirim güncelleştirme dosyasını seçin.
+1. Bu [yönergeleri](import-update.md)Izleyerek Içeri aktarma bildirimi oluşturun.
+2. Sol taraftaki Gezinti çubuğundan otomatik cihaz yönetimi altında cihaz güncelleştirmeleri seçeneğini belirleyin.
+3. Güncelleştirmeler sekmesini seçin.
+4. "+ Yeni güncelleştirme al" seçeneğini belirleyin.
+5. "Içeri aktarma bildirim dosyası seçin" altında klasör simgesini veya metin kutusunu seçin. Bir dosya Seçicisi iletişim kutusu görürsünüz. Yukarıda oluşturduğunuz Içeri aktarma bildirimini seçin.  Sonra, "bir veya daha fazla güncelleştirme dosyası seçin" altında klasör simgesini veya metin kutusunu seçin. Bir dosya Seçicisi iletişim kutusu görürsünüz. IoT cihazlarınıza dağıtmak istediğiniz güncelleştirme dosyasını seçin.
    
    :::image type="content" source="media/import-update/select-update-files.png" alt-text="Güncelleştirme dosyası seçimini gösteren ekran görüntüsü." lightbox="media/import-update/select-update-files.png":::
 

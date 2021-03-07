@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive, devx-track-azurecli
 ms.topic: how-to
 ms.date: 02/21/2018
-ms.openlocfilehash: 2ff62f4feba44a1c706ab85db1be3f7f654e6135
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: a8f808cd43f96f26db0de28e8059d02d9488320a
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98945775"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102434670"
 ---
 # <a name="migrating-to-azure-resource-manager-based-development-tools-for-hdinsight-clusters"></a>HDInsight kümeleri için Azure Resource Manager tabanlı geliştirme araçlarına geçiş
 
@@ -238,7 +238,7 @@ Bu bölümde Kaynak Yöneticisi tabanlı SDK kullanarak belirli görevleri gerç
 
 | Nasıl Yapılır... Kaynak Yöneticisi tabanlı HDInsight SDK 'sını kullanma | Bağlantılar |
 | --- | --- |
-| .NET için Azure HDInsight SDK'sı|Bkz. [.net Için Azure HDıNSIGHT SDK](/dotnet/api/overview/azure/hdinsight?view=azure-dotnet&preserve-view=true) |
+| .NET için Azure HDInsight SDK'sı|Bkz. [.net Için Azure HDıNSIGHT SDK](/dotnet/api/overview/azure/hdinsight) |
 | .NET SDK ile Azure Active Directory kullanarak etkileşimli uygulamaların kimliğini doğrulama |Bkz. [.NET SDK kullanarak Apache Hive sorguları çalıştırma](hadoop/apache-hadoop-use-hive-dotnet-sdk.md). Bu makaledeki kod parçacığı etkileşimli kimlik doğrulama yaklaşımını kullanır. |
 | .NET SDK ile Azure Active Directory kullanarak etkileşimli olmayan uygulamaların kimliğini doğrulama |Bkz. [HDInsight için etkileşimli olmayan uygulamalar oluşturma](hdinsight-create-non-interactive-authentication-dotnet-applications.md) |
 | .NET SDK kullanarak Apache Hive işi gönderme |Bkz. [Apache Hive Işleri gönderme](hadoop/apache-hadoop-use-hive-dotnet-sdk.md) |

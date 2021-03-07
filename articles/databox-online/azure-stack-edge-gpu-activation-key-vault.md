@@ -6,16 +6,18 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: conceptual
-ms.date: 10/10/2020
+ms.date: 02/22/2021
 ms.author: alkohli
-ms.openlocfilehash: ec7a32739940d53d976e73a7e170df96a0acc245
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: c18f875dde43ab6df512375152d76a31c30a9e77
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96449522"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102439876"
 ---
 # <a name="azure-key-vault-integration-with-azure-stack-edge"></a>Azure Stack Edge ile tümleştirme Azure Key Vault 
+
+[!INCLUDE [applies-to-GPU-and-pro-r-and-mini-r-skus](../../includes/azure-stack-edge-applies-to-gpu-pro-r-mini-r-sku.md)]
 
 Azure Key Vault, gizli yönetim için Azure Stack Edge kaynağıyla tümleşiktir. Bu makalede cihaz etkinleştirme sırasında Azure Stack Edge kaynağı için bir Azure Key Vault nasıl oluşturulduğu ve daha sonra gizli yönetim için kullanıldığı hakkında ayrıntılar sağlanmaktadır. 
 

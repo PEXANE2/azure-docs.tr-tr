@@ -2,16 +2,16 @@
 title: Power BI çıkışı için Azure Stream Analytics işinizin kimliğini doğrulamak üzere yönetilen kimliği kullanın
 description: Bu makalede, Power BI çıkışı için Azure Stream Analytics işinizin kimliğini doğrulamak üzere yönetilen kimliklerin nasıl kullanılacağı açıklanır.
 ms.service: stream-analytics
-author: jasonwhowell
-ms.author: jasonh
+author: enkrumah
+ms.author: ebnkruma
 ms.topic: how-to
 ms.date: 3/10/2020
-ms.openlocfilehash: bdc63765423f6ac269f1c66696717ffba12c8f16
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: b468df97f168562f4f5ce9e0e6d6e9a70835648b
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102183055"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102436116"
 ---
 # <a name="use-managed-identity-to-authenticate-your-azure-stream-analytics-job-to-power-bi-preview"></a>Azure Stream Analytics işinizin kimliğini doğrulamak için yönetilen kimliği kullanın Power BI (Önizleme)
 

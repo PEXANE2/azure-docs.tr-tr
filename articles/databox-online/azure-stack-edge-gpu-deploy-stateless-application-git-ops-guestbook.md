@@ -1,21 +1,23 @@
 ---
-title: "`PHP Guestbook`Azure Stack Edge Pro GPU cihazında uygulamayı yay etkinleştirilmiş Kubernetes 'e dağıtma | Microsoft Docs"
+title: '`Guestbook`Azure Stack Edge Pro GPU cihazında, yay etkin Kubernetes ÜZERINDE php uygulaması dağıtma | Microsoft Docs'
 description: '`Guestbook`Azure Stack Edge Pro cihazınızın bir yay özellikli bir Kubernetes kümesinde Gilar kullanarak BIR php durum bilgisiz uygulamasının nasıl dağıtılacağını açıklar.'
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 01/25/2021
+ms.date: 02/22/2021
 ms.author: alkohli
-ms.openlocfilehash: ba72617444a2c7ec30e4d1d25afe1edcda16ff35
-ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
+ms.openlocfilehash: f47f795335204ecd0c74463b76583d7dd79f8532
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98804875"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102436439"
 ---
 # <a name="deploy-a-php-guestbook-stateless-application-with-redis-on-arc-enabled-kubernetes-cluster-on-azure-stack-edge-pro-gpu"></a>`Guestbook`Azure Stack Edge Pro GPU 'su üzerinde Redis 'ı yay özellikli bir Kubernetes kümesi ile BIR php durum bilgisiz uygulaması dağıtma
+
+[!INCLUDE [applies-to-GPU-and-pro-r-and-mini-r-skus](../../includes/azure-stack-edge-applies-to-gpu-pro-r-mini-r-sku.md)]
 
 Bu makalede, Kubernetes ve Azure yay kullanılarak basit, çok katmanlı bir Web uygulaması oluşturma ve dağıtma işlemlerinin nasıl yapılacağı gösterilir. Bu örnek aşağıdaki bileşenlerden oluşur:
 

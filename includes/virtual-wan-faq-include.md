@@ -5,15 +5,15 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: include
-ms.date: 02/05/2021
+ms.date: 03/05/2021
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: a66eff14490add8269082e4e54f077d1d9db7e02
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
+ms.openlocfilehash: b7f79bebce5a086b268f4fc1080c33517555fb39
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102205966"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102431554"
 ---
 ### <a name="is-azure-virtual-wan-in-ga"></a>Azure sanal WAN, GA 'de mi?
 
@@ -93,7 +93,7 @@ P2S istemcileri için DNS sunucuları eklemenin iki seçeneği vardır. İlk yö
 
 ### <a name="for-user-vpn-point-to-site--how-many-clients-are-supported"></a>Kullanıcı VPN için (Noktadan siteye)-kaç istemci destekleniyor?
 
-Her bir kullanıcı VPN P2S ağ geçidi iki örneğe sahiptir ve her örnek, ölçek birimi değiştikçe belirli kullanıcıları destekler. Ölçek birimi 1-3, 500 bağlantıları destekler, birim 4-6, 1000 bağlantıları destekler, ölçek birimi 7-12 5000 bağlantıları destekler ve birim ölçek 13-18, en fazla 10.000 bağlantıyı destekler.
+Her kullanıcı VPN P2S ağ geçidi iki örneğe sahiptir. Her örnek, ölçek birimi değiştikçe belirli sayıda bağlantıyı destekler. Ölçek birimi 1-3, 500 bağlantıları destekler, birim 4-6 ölçeği 1000 bağlantıları destekler, ölçek birimi 7-12 5000 bağlantıları destekler ve ölçek birimi 13-18 en fazla 10.000 bağlantıyı destekler.
 
 Örneğin, kullanıcının 1 ölçek birimi seçtiği bir bakalım. Her ölçek birimi etkin-etkin bir ağ geçidinin dağıtıldığını ve örneklerin her biri (Bu durumda 2) en fazla 500 bağlantıyı destekleyeceği anlamına gelmez. Ağ Geçidi başına 500 bağlantı alabilmeniz için bu ölçek birimi için 500 yerine 1000 planlaması yapmanız anlamına gelmez. Önerilen bağlantı sayısını geçirirseniz, ek 500 bağlantısının kesintiye uğraması durumunda örneklere bakım yapılması gerekebilir. Ayrıca, ölçek biriminde ölçeği büyütme veya küçültme kararı verirken veya VPN ağ geçidinde Noktadan siteye yapılandırmayı değiştirmek için kapalı kalma süresi planlandığınızdan emin olun.
 
@@ -133,7 +133,7 @@ Bu, cihaz IPSec IKEv1 veya Ikev2 'yi desteklediği sürece evet. Sanal WAN iş o
 
 ### <a name="how-do-new-partners-that-are-not-listed-in-your-launch-partner-list-get-onboarded"></a>İlk iş ortağı listenizde yer almayan yeni iş ortakları nasıl eklenir?
 
-Tüm sanal WAN API 'Leri açık API. Teknik bir bilimme değerlendirmek için belgeler [sanal WAN iş ortağı Otomasyonu](../articles/virtual-wan/virtual-wan-configure-automation-providers.md) ' na gidebilirsiniz. İdeal bir iş ortağı, IKEv1 veya IKEv2 IPsec bağlantısına yönelik sağlanabilen bir cihaza sahip olandır. Şirket, yukarıda verilen Otomasyon yönergelerine bağlı olarak, CPE cihazları için Otomasyon işini tamamladıktan sonra, azurevirtualwan@microsoft.com [iş ortakları aracılığıyla burada bağlantı]( ../articles/virtual-wan/virtual-wan-locations-partners.md#partners)altına almak için öğesine ulaşabilirsiniz. Belirli bir şirket çözümünün sanal bir WAN iş ortağı olarak listelenmesini sağlayan bir müşteriyseniz, lütfen şirketinin adresine bir e-posta göndererek sanal WAN ile iletişim kurun azurevirtualwan@microsoft.com .
+Tüm sanal WAN API 'Leri açık API. Teknik bir bilimme değerlendirmek için belgeler [sanal WAN iş ortağı Otomasyonu](../articles/virtual-wan/virtual-wan-configure-automation-providers.md) ' na gidebilirsiniz. İdeal bir iş ortağı, IKEv1 veya IKEv2 IPsec bağlantısına yönelik sağlanabilen bir cihaza sahip olandır. Şirket, yukarıda verilen Otomasyon yönergelerine bağlı olarak, CPE cihazları için Otomasyon işini tamamladıktan sonra, azurevirtualwan@microsoft.com [iş ortakları aracılığıyla burada bağlantı]( ../articles/virtual-wan/virtual-wan-locations-partners.md#partners)altına almak için öğesine ulaşabilirsiniz. Belirli bir şirket çözümünün sanal bir WAN iş ortağı olarak listelenmesini sağlayan bir müşteriyseniz, şirketinin adresine bir e-posta göndererek sanal WAN ile iletişim kurun azurevirtualwan@microsoft.com .
 
 ### <a name="how-is-virtual-wan-supporting-sd-wan-devices"></a>SD-WAN cihazlarını sanal WAN 'ı destekleme
 
@@ -149,7 +149,7 @@ Bir daldan veya VPN cihazından Azure sanal WAN 'a bağlantı, sanal bir hub 'da
 
 ### <a name="what-happens-if-the-on-premises-vpn-device-only-has-1-tunnel-to-an-azure-virtual-wan-vpn-gateway"></a>Şirket içi VPN cihazının yalnızca bir Azure sanal WAN VPN Gateway 'e 1 tüneli varsa ne olur?
 
-Bir Azure sanal WAN bağlantısı 2 tünelden oluşur. Sanal bir WAN VPN Gateway, etkin-etkin modda bir sanal hub 'da dağıtılır ve bu, şirket içi cihazlardan ayrı bir örnek üzerinde sonlandıran ayrı tüneller olduğunu gösterir. Bu, tüm kullanıcıların önerisine yöneliktir. Ancak, Kullanıcı sanal WAN VPN Gateway örneklerinden birine yalnızca 1 tünele sahip olmasını seçerse, ağ geçidi örneği çevrimdışı duruma getirilse, tünel ikincil etkin örneğe taşınır ve Kullanıcı bir yeniden bağlantı yaşayabilir. BGP oturumları, örnekleri arasında hareket etmez.
+Bir Azure sanal WAN bağlantısı 2 tünelden oluşur. Sanal bir WAN VPN Gateway, etkin-etkin modda bir sanal hub 'da dağıtılır ve bu, şirket içi cihazlardan ayrı bir örnek üzerinde sonlandıran ayrı tüneller olduğunu gösterir. Bu, tüm kullanıcıların önerisine yöneliktir. Ancak, Kullanıcı sanal WAN VPN Gateway örneklerinden birine yalnızca 1 tünele sahip olacağını seçerse, herhangi bir nedenle (bakım, yayama vb.) ağ geçidi örneği çevrimdışı duruma getirildiğinde, tünel ikincil etkin örneğe taşınır ve Kullanıcı bir yeniden bağlantı yaşayabilir. BGP oturumları, örnekleri arasında hareket etmez.
 
 ### <a name="can-the-on-premises-vpn-device-connect-to-multiple-hubs"></a>Şirket içi VPN cihazı birden çok hub 'a bağlanabilir mi?
 
@@ -213,7 +213,7 @@ Bir hub 'ın toplam VPN verimlilik, VPN ağ geçidinin seçilen ölçek birimine
 
 ### <a name="can-i-use-nat-t-on-my-vpn-connections"></a>VPN bağlantımda NAT-T kullanabilir miyim?
 
-Evet, NAT geçişi (NAT-T) desteklenir. Sanal WAN VPN Gateway, IPSec tünellerine/bu paketlerin iç paketlerinde NAT benzeri işlevsellik gerçekleştirmez. Bu yapılandırmada, lütfen şirket içi cihazın IPSec Tünelini başlattığınızdan emin olun.
+Evet, NAT geçişi (NAT-T) desteklenir. Sanal WAN VPN Gateway, IPSec tünellerine/bu paketlerin iç paketlerinde NAT benzeri işlevsellik gerçekleştirmez. Bu yapılandırmada, şirket içi cihazın IPSec Tünelini başlattığınızdan emin olun.
 
 ### <a name="i-dont-see-the-20-gbps-setting-for-the-virtual-hub-in-portal-how-do-i-configure-that"></a>Portalda sanal hub için 20 Gbps ayarı görmüyorum. Nasıl yaparım? yapılandırmak mı istiyorsunuz?
 
@@ -305,5 +305,4 @@ Evet. Azure Marketi aracılığıyla etkinleştirilen yönetilen hizmet sağlay�
 
 ### <a name="how-does-virtual-wan-hub-routing-differ-from-azure-route-server-in-a-vnet"></a>Sanal WAN hub 'ı yönlendirme, VNet 'teki Azure yol sunucusundan nasıl farklıdır?
 
-Azure Route Server, bir DIY hub VNet 'teki yol sunucusundan yolları öğrenmek için NVA (ağ sanal gereci) tarafından kullanılabilecek bir Sınır Ağ Geçidi Protokolü (BGP) eşleme hizmeti sağlar. Sanal WAN yönlendirmesi, VNET-VNET geçiş yönlendirmesi, özel yönlendirme, özel yol Ilişkilendirme ve yayma ve ExpressRoute, site VPN, uzak kullanıcı/büyük ölçekli P2S VPN ve güvenli Merkez (Azure Güvenlik Duvarı) özelliklerine ait bağlantı Hizmetleri ile birlikte sıfır dokunuşla tam olarak bir hub hizmeti içeren çok sayıda özellik sağlar. NVA ve Azure yönlendirici sunucunuz arasında bir Sınır Ağ Geçidi Protokolü (BGP) eşleme oluşturduğunuzda, NVA 'ınızdan IP adreslerini sanal ağınıza tanıtabilirsiniz. Geçiş yönlendirmesi, özel yönlendirme vb. gibi tüm gelişmiş yönlendirme özellikleri için sanal WAN yönlendirmeyi kullanabilirsiniz.
-
+Azure Route Server, bir DIY hub VNet 'teki yol sunucusundan yolları öğrenmek için NVA 'lar (ağ sanal gereci) tarafından kullanılabilecek bir Sınır Ağ Geçidi Protokolü (BGP) eşleme hizmeti sağlar. Sanal WAN yönlendirmesi, VNet-VNet aktarma yönlendirmesi, özel yönlendirme, özel yol ilişkilendirmesi ve yayma gibi birden çok yetenek ve ExpressRoute, site VPN, uzak kullanıcı/büyük ölçekli P2S VPN ve güvenli Merkez (Azure Güvenlik Duvarı) özellikleri bağlantı hizmetleriyle birlikte sıfır dokunuşla tam bir hub hizmeti sağlar. NVA ve Azure Route sunucunuz arasında bir BGP eşlemesi oluşturduğunuzda, NVA 'ınızdan IP adreslerini sanal ağınıza tanıtabilirsiniz. Geçiş yönlendirmesi, özel yönlendirme vb. gibi tüm gelişmiş yönlendirme özellikleri için sanal WAN yönlendirmeyi kullanabilirsiniz.

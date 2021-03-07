@@ -7,16 +7,16 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: be8f4ba8552521d25992d7c3a405dc2628fbbb85
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
+ms.openlocfilehash: 86efd7781c7353b4846c77eba01ed34fb63067ff
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100560813"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102433259"
 ---
 # <a name="manage-azure-digital-twins-models"></a>Azure dijital TWINS modellerini yönetme
 
-Azure Digital TWINS örneğinizin, [**Digitaltwinmodeller API 'leri**](/rest/api/digital-twins/dataplane/models), [.net (C#) SDK](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true)veya [Azure dijital TWINS CLI](how-to-use-cli.md)'yi kullanma hakkında bilgi sahibi olan [modelleri](concepts-models.md) yönetebilirsiniz. 
+Azure Digital TWINS örneğinizin, [**Digitaltwinmodeller API 'leri**](/rest/api/digital-twins/dataplane/models), [.net (C#) SDK](/dotnet/api/overview/azure/digitaltwins/client)veya [Azure dijital TWINS CLI](how-to-use-cli.md)'yi kullanma hakkında bilgi sahibi olan [modelleri](concepts-models.md) yönetebilirsiniz. 
 
 Yönetim işlemlerine, modellerin karşıya yüklenmesi, doğrulanması, alınması ve silinmesi dahildir. 
 
@@ -61,7 +61,7 @@ Bir modeli karşıya yüklemeye hazırsanız, aşağıdaki kod parçacığını 
 
 :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/model_operations.cs" id="CreateModels_multi":::
 
-Model dosyaları tek bir modelden daha fazla bulunabilir. Bu durumda, modellerin bir JSON dizisine yerleştirilmesi gerekir. Örneğin:
+Model dosyaları tek bir modelden daha fazla bulunabilir. Bu durumda, modellerin bir JSON dizisine yerleştirilmesi gerekir. Örnek:
 
 :::code language="json" source="~/digital-twins-docs-samples/models/Planet-Moon.json":::
 

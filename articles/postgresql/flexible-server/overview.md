@@ -7,12 +7,12 @@ ms.custom: mvc
 ms.service: postgresql
 ms.topic: overview
 ms.date: 03/03/2021
-ms.openlocfilehash: d36dcfccb6843947991b2548af6dd98b81adb40e
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: a080a3b536cb6e11a254f15d745334fbf17531e8
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102049517"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102439570"
 ---
 # <a name="azure-database-for-postgresql---flexible-server"></a>PostgreSQL için Azure veritabanı-esnek sunucu
 
@@ -102,7 +102,7 @@ Azure 'da iş yükünüzü çalıştırmanın avantajlarından biri küresel eri
 | Güneydoğu Asya | :heavy_check_mark: | :heavy_check_mark: |
 | Doğu Japonya | :heavy_check_mark: | :heavy_check_mark: | 
 
-Yeni bölgeler eklemeye devam ediyoruz. 
+Esnek sunucu için daha fazla bölge eklemeye devam ediyoruz.
 
 ## <a name="migration"></a>Geçiş
 
@@ -110,6 +110,16 @@ Hizmet, PostgreSQL 'in topluluk sürümünü çalıştırır. Bu, tam uygulama u
 
 - **Döküm ve geri yükleme** – kullanıcıların bazı kapalı kalma süresini karşılayabileceği, pg_restore pg_dump gibi topluluk araçlarını kullanarak döküm ve geri yükleme işlemleri için en hızlı geçiş yolu sağlayabildiği çevrimdışı geçişler için. Ayrıntılar için bkz. [döküm kullanarak geçiş ve geri yükleme](../howto-migrate-using-dump-and-restore.md) .
 - **Azure veritabanı geçiş hizmeti** : en az kapalı kalma süresiyle esnek sunucuya sorunsuz ve Basitleştirilmiş geçişler Için Azure veritabanı geçiş hizmeti yararlanılabilir olabilir. [CLI aracılığıyla](../../dms/tutorial-postgresql-azure-postgresql-online.md)Portal ve DMS [aracılığıyla DMS](../../dms/tutorial-postgresql-azure-postgresql-online-portal.md) 'e bakın. PostgreSQL için Azure veritabanı-tek sunucudan esnek sunucuya geçiş yapabilirsiniz. Ayrıntılar için bu [DMS makalesine](../../dms/tutorial-azure-postgresql-to-azure-postgresql-online-portal.md) bakın.
+
+## <a name="contacts"></a>Kişiler
+PostgreSQL için Azure veritabanı esnek sunucusuna sahip olabileceğiniz tüm sorular veya öneriler için, PostgreSQL için Azure veritabanı ekibine bir e-posta gönderin ([ @Ask PostgreSQL IÇIN Azure DB](mailto:AskAzureDBforPostgreSQL@service.microsoft.com)). Bu e-posta adresinin bir teknik destek diğer adı olmadığına lütfen unutmayın.
+
+Buna ek olarak, aşağıdaki iletişim noktalarını uygun şekilde göz önünde bulundurun:
+
+- Azure Desteği ile iletişim kurmak için [Azure portaldan bir bilet oluşturun](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
+- Hesabınızla ilgili bir sorun gidermek için Azure portalda bir [destek isteği](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest) oluşturun.
+- Görüş bildirmek veya yeni özellikler istemek için [UserVoice](https://feedback.azure.com/forums/597976-azure-database-for-postgresql) aracılığıyla bir giriş oluşturun.
+  
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 05/15/2020
 ms.author: v-demjoh
-ms.openlocfilehash: b985399eb89ae7bbf73d280775157207498f0080
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: dcfc19700d24ca51d6e28aa511197c1c9e79e521
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100645537"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102428238"
 ---
 ## <a name="download-and-install"></a>İndirme ve yükleme
 
@@ -67,7 +67,7 @@ Linux 'ta konuşma CLı 'Yı x64 CPU 'ya yüklemek için şu adımları izleyin:
 
 Konuşma CLı 'Yı bir Docker kapsayıcısına yüklemek için şu adımları izleyin:
 
-1. <a href="https://www.docker.com/get-started" target="_blank">Docker Desktop <span class="docon docon-navigate-external x-hidden-focus"></span> 'ı yükler</a> zaten yüklü değilse, platformunuz için.
+1. Henüz yüklenmemişse, platformunuz için <a href="https://www.docker.com/get-started" target="_blank">Docker Desktop 'ı yükleme</a> .
 2. Yeni bir komut isteminde veya terminalde aşağıdaki komutu yazın:
    ```console   
    docker pull msftspeech/spx

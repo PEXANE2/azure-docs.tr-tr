@@ -3,12 +3,12 @@ title: Application Insights dağıtımınızı tasarlama-bir çok kaynak karşı
 description: Geliştirme, test ve üretim damgaları için farklı kaynaklara doğrudan telemetri.
 ms.topic: conceptual
 ms.date: 05/11/2020
-ms.openlocfilehash: 3964cddcf27a4b2c7397b508ccb3cc8928bd04ad
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 9a60981e692a45dd3630073300b206289cfd2a30
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100589524"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102424674"
 ---
 # <a name="how-many-application-insights-resources-should-i-deploy"></a>Kaç Application Insights kaynak dağıtmalıyım?
 
@@ -32,6 +32,9 @@ Her Application Insights kaynak, kullanıma hazır olan ölçümler ile gelir. T
 -   Faturalandırma/kotaları bileşenler arasında farklı şekilde yönetmeniz gerekmiyorsa.
 -   Bir API anahtarının tüm bileşenlerdeki verilere erişimi olması normaldir. Ve 10 API anahtarı tüm bunlar genelinde gereksinimler için yeterlidir.
 -   Tüm roller genelinde aynı akıllı algılama ve çalışma öğesi tümleştirme ayarlarına sahip olmak istiyorsanız.
+
+> [!NOTE]
+> Birden çok Application Insights kaynağı birleştirmek istiyorsanız, var olan uygulama bileşenlerinizi yeni, birleştirilmiş bir Application Insights kaynağına işaret edebilirsiniz. Eski kaynağınız içinde depolanan telemetri yeni kaynağa aktarılmayacak, bu nedenle yalnızca yeni kaynakta iş sürekliliği için yeterli telemetri varsa eski kaynağı silin.
 
 ### <a name="other-things-to-keep-in-mind"></a>Göz önünde bulundurmanız gereken diğer şeyler
 

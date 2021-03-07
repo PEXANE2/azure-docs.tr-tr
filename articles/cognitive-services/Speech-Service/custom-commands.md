@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: travisw
-ms.openlocfilehash: 40736764cf9cec6f652e0147eb25d83f15c5bee2
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: e4ae8a09a554afe232091b68888af17dfa096771
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95024951"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102426478"
 ---
 # <a name="what-is-custom-commands"></a>Özel Komutlar nedir?
 
@@ -36,7 +36,7 @@ Karmaşık konuşma uygulamaları oluşturmaya ilgileniyorsanız, [sanal yardım
 
 ## <a name="getting-started-with-custom-commands"></a>Özel komutlarla çalışmaya başlama
 
-Özel komutlarla amamız, tüm farklı teknolojileri öğrenmesini ve sesli komut uygulamanızı oluşturmaya odaklanmanızı sağlamak için bilişsel yükün azaltılmaktır. <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesSpeechServices" target="_blank">Azure konuşma kaynağı <span class="docon docon-navigate-external x-hidden-focus"></span> oluşturmak </a>için özel komutlar kullanmanın ilk adımı. Özel komutlar uygulamanızı konuşma Studio 'da yazabilir ve yayınladıktan sonra bir cihaz üzerindeki uygulamanın konuşma SDK 'sını kullanarak onunla iletişim kurabilme.
+Özel komutlarla amamız, tüm farklı teknolojileri öğrenmesini ve sesli komut uygulamanızı oluşturmaya odaklanmanızı sağlamak için bilişsel yükün azaltılmaktır. <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesSpeechServices" target="_blank">Azure konuşma kaynağı oluşturmak </a>Için özel komutlar kullanmanın ilk adımı. Özel komutlar uygulamanızı konuşma Studio 'da yazabilir ve yayınladıktan sonra bir cihaz üzerindeki uygulamanın konuşma SDK 'sını kullanarak onunla iletişim kurabilme.
 
 #### <a name="authoring-flow-for-custom-commands"></a>Özel komutlar için yazma akışı
    ![Özel komutlar için yazma akışı](media/voice-assistants/custom-commands-flow.png "Özel komutlar yazma akışı")

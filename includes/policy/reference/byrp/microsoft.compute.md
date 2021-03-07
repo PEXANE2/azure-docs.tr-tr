@@ -2,17 +2,17 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 02/09/2021
+ms.date: 03/05/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: f02874a54332519cbad53c74fafa61bcc71f7d08
-ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
+ms.openlocfilehash: de3f234d6698efb51e0f86fdab7983de5368fd05
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100090937"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102424946"
 ---
-|Name<br /><sub>(Azure portal)</sub> |Description |Efekt (ler) |Sürüm<br /><sub>GitHub</sub> |
+|Name<br /><sub>(Azure portal)</sub> |Açıklama |Efekt (ler) |Sürüm<br /><sub>GitHub</sub> |
 |---|---|---|---|
 |[\[ASC özel önizleme \] dağıtımı-VM 'Lerde Azure izleyici atamalarını etkinleştirmek için sistem tarafından atanan yönetilen kimliği yapılandırın](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F17b3de92-f710-4cf4-aa55-0e7859f1ed7b) |[ASC özel önizleme] Azure 'da barındırılan ve sistem tarafından atanan yönetilen kimliğe sahip olmayan Azure Izleyici tarafından desteklenen sanal makinelere sistem tarafından atanan yönetilen kimliği yapılandırın. Sistem tarafından atanan yönetilen kimlik, tüm Azure Izleyici atamaları için bir önkoşuldur ve herhangi bir Azure Izleyici uzantısı kullanılmadan önce makinelere eklenmelidir. Hedef sanal makineler desteklenen bir konumda olmalıdır. |değiştir |[1.0.0-Önizleme](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Monitoring/AzureMonitoring_AddSystemIdentity_Prerequisite.json) |
 |[\[Önizleme \] : denetim Log Analytics aracı dağıtımı-VM görüntüsü (OS) listelenmemiş](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F32133ab0-ee4b-4b44-98d6-042180979d50) |VM görüntüsü (OS) tanımlı listede değilse ve aracı yüklü değilse, VM 'Leri uyumsuz olarak bildirir. Destek güncelleştirildiğinden, işletim sistemi görüntülerinin listesi zaman içinde güncelleştirilir. |Auditınotexists |[1.0.0-Önizleme](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Monitoring/LogAnalytics_OSImage_Audit.json) |
