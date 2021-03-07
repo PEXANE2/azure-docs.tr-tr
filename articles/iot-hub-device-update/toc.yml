@@ -32,7 +32,7 @@
       href: device-update-agent-overview.md
     - name: Cihaz güncelleştirme yapılandırma dosyası
       href: device-update-configuration-file.md
-    - name: Cihaz güncelleştirme bildirimi
+    - name: Bildirimi Güncelleştir
       href: update-manifest.md
     - name: Cihaz güncelleştirmesinin güvenliği nasıl sağlanır
       href: device-update-security.md

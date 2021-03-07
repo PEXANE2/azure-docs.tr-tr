@@ -5,14 +5,14 @@ services: expressroute
 author: duongau
 ms.service: expressroute
 ms.topic: how-to
-ms.date: 01/11/2021
+ms.date: 03/05/2021
 ms.author: duau
-ms.openlocfilehash: 8366978d50875389ce872c2d1402f0defa2a7371
-ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
+ms.openlocfilehash: 336bd4aaf881b7315921ef374c92a2ac95ff3c8c
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99539358"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102431364"
 ---
 # <a name="configure-expressroute-global-reach-using-the-azure-portal"></a>Azure portal kullanarak ExpressRoute Global Reach yapılandırma
 
@@ -36,7 +36,7 @@ Yapılandırmaya başlamadan önce aşağıdaki ölçütleri onaylayın:
    * Aboneliğiniz her iki devrede sahipse, aşağıdaki bölümlerde yapılandırmayı çalıştırmak için devre seçeneğini belirleyebilirsiniz.
    * İki devre farklı Azure aboneliklerdeyse, bir Azure aboneliğinden yetkilendirme yapmanız gerekir. Ardından, diğer Azure aboneliğinde yapılandırma komutunu çalıştırdığınızda yetkilendirme anahtarını geçirirsiniz.
 
-    :::image type="content" source="./media/expressroute-howto-set-global-reach-portal/expressroute-circuit-global-reach-list.png" alt-text="ExpressRoute devreleri listesi":::
+    :::image type="content" source="./media/expressroute-howto-set-global-reach-portal/expressroute-circuit-global-reach-list.png" alt-text="ExpressRoute devreleri listesinin ekran görüntüsü.":::
 
 ## <a name="enable-connectivity"></a>Bağlantıyı etkinleştir
 
@@ -46,19 +46,19 @@ Yapılandırmaya başlamadan önce aşağıdaki ölçütleri onaylayın:
 
 1. **Azure özel** eşleme yapılandırmasını seçin. 
 
-    :::image type="content" source="./media/expressroute-howto-set-global-reach-portal/expressroute-circuit-private-peering.png" alt-text="ExpressRoute eşlemesine genel bakış":::
+    :::image type="content" source="./media/expressroute-howto-set-global-reach-portal/expressroute-circuit-private-peering.png" alt-text="ExpressRoute Genel Bakış sayfasının ekran görüntüsü.":::
 
-1. **Etkinleştir Global Reach** onay kutusunu seçin ve ardından **Global Reach Ekle** ' yi seçerek *Global Reach yapılandırma Ekle* sayfasını açın.
+1. *Global Reach yapılandırma Ekle* sayfasını açmak Için **Global Reach Ekle** ' yi seçin.
 
     :::image type="content" source="./media/expressroute-howto-set-global-reach-portal/private-peering-enable-global-reach.png" alt-text="Özel eşlemeden küresel erişim sağlama":::
 
 1. Global Reach yapılandırma *Ekle* sayfasında bu yapılandırmaya bir ad verin. Bu devreyi bağlamak istediğiniz *ExpressRoute* bağlantı hattını seçin ve *Global Reach alt ağı* Için bir **/29 IPv4** girin. İki ExpressRoute devreleri arasında bağlantı kurmak için bu alt ağdaki IP adreslerini kullanıyoruz. Bu alt ağdaki adresleri Azure sanal ağlarınızda veya şirket içi ağınızda kullanmayın. Devreyi özel eşleme yapılandırmasına eklemek için **Ekle** ' yi seçin.
 
-    :::image type="content" source="./media/expressroute-howto-set-global-reach-portal/add-global-reach-configuration.png" alt-text="Global Reach yapılandırma sayfası":::
+    :::image type="content" source="./media/expressroute-howto-set-global-reach-portal/add-global-reach-configuration.png" alt-text="Özel eşlemeye Global Reach eklemenin ekran görüntüsü.":::
 
 1. Global Reach yapılandırmasını gerçekleştirmek için **Kaydet** ' i seçin. İşlem tamamlandığında, hem ExpressRoute devreleri aracılığıyla iki şirket içi ağınız arasında bağlantınız olur.
 
-    :::image type="content" source="./media/expressroute-howto-set-global-reach-portal/save-private-peering-configuration.png" alt-text="Özel eşleme yapılandırması kaydediliyor":::
+    :::image type="content" source="./media/expressroute-howto-set-global-reach-portal/save-private-peering-configuration.png" alt-text="Özel eşleme yapılandırmalarının kaydedilmesinin ekran görüntüsü.":::
 
 ### <a name="expressroute-circuits-in-different-azure-subscriptions"></a>Farklı Azure aboneliklerinde ExpressRoute devreleri
 
@@ -66,41 +66,41 @@ Yapılandırmaya başlamadan önce aşağıdaki ölçütleri onaylayın:
 
 1. Yetkilendirme anahtarı oluşturun.
 
-   :::image type="content" source="./media/expressroute-howto-set-global-reach-portal/create-authorization-expressroute-circuit.png" alt-text="Yetkilendirme anahtarı oluştur"::: 
+   :::image type="content" source="./media/expressroute-howto-set-global-reach-portal/create-authorization-expressroute-circuit.png" alt-text="Yetkilendirme anahtarı oluşturma ekranının ekran görüntüsü."::: 
 
    Devre 2 ' nin devre dışı kaynak KIMLIĞINI ve yetkilendirme anahtarını bir yere getirin.
 
 1. **Azure özel** eşleme yapılandırmasını seçin. 
 
-    :::image type="content" source="./media/expressroute-howto-set-global-reach-portal/expressroute-circuit-private-peering.png" alt-text="Devre 1 eşlemeye genel bakış":::
+    :::image type="content" source="./media/expressroute-howto-set-global-reach-portal/expressroute-circuit-private-peering.png" alt-text="Genel Bakış sayfasında özel eşleme ekran görüntüsü.":::
 
-1. **Etkinleştir Global Reach** onay kutusunu seçin ve ardından **Global Reach Ekle** ' yi seçerek *Global Reach yapılandırma Ekle* sayfasını açın.
+1. *Global Reach yapılandırma Ekle* sayfasını açmak Için **Global Reach Ekle** ' yi seçin.
 
-    :::image type="content" source="./media/expressroute-howto-set-global-reach-portal/private-peering-enable-global-reach.png" alt-text="Devre 1 ' den küresel erişim 'i etkinleştir":::
+    :::image type="content" source="./media/expressroute-howto-set-global-reach-portal/private-peering-enable-global-reach.png" alt-text="Özel eşleme içinde Global Reach ekleme görüntüsünün ekran görüntüsü.":::
 
 1. Global Reach yapılandırma *Ekle* sayfasında bu yapılandırmaya bir ad verin. **Kullanma yetkilendirme** kutusunu işaretleyin. 1. adımda oluşturulan ve edinilen **Yetkilendirme anahtarını** ve **EXPRESSROUTE** bağlantı hattı kimliğini girin. Sonra *Global Reach alt ağı* için bir **/29 IPv4** sağlayın. İki ExpressRoute devreleri arasında bağlantı kurmak için bu alt ağdaki IP adreslerini kullanıyoruz. Bu alt ağdaki adresleri Azure sanal ağlarınızda veya şirket içi ağınızda kullanmayın. Devreyi özel eşleme yapılandırmasına eklemek için **Ekle** ' yi seçin.
 
-    :::image type="content" source="./media/expressroute-howto-set-global-reach-portal/add-global-reach-configuration-with-authorization.png" alt-text="Yetkilendirme anahtarıyla Global Reach ekleyin":::
+    :::image type="content" source="./media/expressroute-howto-set-global-reach-portal/add-global-reach-configuration-with-authorization.png" alt-text="Yetkilendirme anahtarıyla Global Reach Ekle ekran görüntüsü.":::
 
 1. Global Reach yapılandırmasını gerçekleştirmek için **Kaydet** ' i seçin. İşlem tamamlandığında, hem ExpressRoute devreleri aracılığıyla iki şirket içi ağınız arasında bağlantınız olur.
 
-    :::image type="content" source="./media/expressroute-howto-set-global-reach-portal/save-private-peering-configuration.png" alt-text="Devre 1 ' de özel eşleme yapılandırması kaydediliyor":::
+    :::image type="content" source="./media/expressroute-howto-set-global-reach-portal/save-private-peering-configuration.png" alt-text="Global Reach ile özel eşleme yapılandırmasını kaydetme ekran görüntüsü.":::
 
 ## <a name="verify-the-configuration"></a>Yapılandırmayı doğrulama
 
 ExpressRoute bağlantı hattı yapılandırması altında *özel eşleme* ' i seçerek Global Reach yapılandırmasını doğrulayın. Doğru yapılandırıldığında yapılandırmanız şu şekilde görünmelidir:
 
-:::image type="content" source="./media/expressroute-howto-set-global-reach-portal/verify-global-reach-configuration.png" alt-text="Global Reach yapılandırmayı doğrula":::
+:::image type="content" source="./media/expressroute-howto-set-global-reach-portal/verify-global-reach-configuration.png" alt-text="Global Reach 'ın ekran görüntüsü.":::
 
 ## <a name="disable-connectivity"></a>Bağlantıyı devre dışı bırakma
 
-Global Reach devre dışı bırakmak için iki seçeneğiniz vardır. Tüm devreler arasındaki bağlantıyı devre dışı bırakmak için tüm devreler arasında bağlantıyı devre dışı bırakmak üzere **Global Reach etkinleştir** seçeneğinin işaretini kaldırın Tek bir devre arasındaki bağlantıyı devre dışı bırakmak için *Global Reach adının* yanındaki Sil düğmesini seçerek aralarında bağlantıyı kaldırın. Ardından, işlemi gerçekleştirmek için **Kaydet** ' i seçin.
+Tek bir devre arasındaki bağlantıyı devre dışı bırakmak için *Global Reach adının* yanındaki Sil düğmesini seçerek aralarında bağlantıyı kaldırın. Ardından, işlemi gerçekleştirmek için **Kaydet** ' i seçin.
 
-:::image type="content" source="./media/expressroute-howto-set-global-reach-portal/disable-global-reach-configuration.png" alt-text="Global Reach yapılandırmayı devre dışı bırak":::
+:::image type="content" source="./media/expressroute-howto-set-global-reach-portal/disable-global-reach-configuration.png" alt-text="Global Reach devre dışı bırakmayı gösteren ekran görüntüsü.":::
 
 İşlem tamamlandıktan sonra, ExpressRoute devrelerinizi kullanarak şirket içi ağınız arasında artık bağlantı kuramadınız.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-1. [ExpressRoute Global Reach hakkında daha fazla bilgi edinin](expressroute-global-reach.md)
-2. [ExpressRoute bağlantısını doğrulama](expressroute-troubleshooting-expressroute-overview.md)
-3. [Azure sanal ağına bir ExpressRoute bağlantı hattı bağlama](expressroute-howto-linkvnet-arm.md)
+- [ExpressRoute Global Reach hakkında daha fazla bilgi edinin](expressroute-global-reach.md)
+- [ExpressRoute bağlantısını doğrulama](expressroute-troubleshooting-expressroute-overview.md)
+- [Azure sanal ağına bir ExpressRoute bağlantı hattı bağlama](expressroute-howto-linkvnet-arm.md)

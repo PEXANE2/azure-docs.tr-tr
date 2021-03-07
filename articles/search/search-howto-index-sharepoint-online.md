@@ -8,12 +8,12 @@ ms.author: maheff
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 03/01/2021
-ms.openlocfilehash: 558df115043d76acf865f19611e8c4cd322e00a7
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 22adccfc4adbb7f8b1c72d8b5705ec8fcdb9a375
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101680210"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102441100"
 ---
 # <a name="how-to-configure-sharepoint-online-indexing-in-cognitive-search-preview"></a>Bilişsel Arama 'da SharePoint Online Dizin oluşturmayı yapılandırma (Önizleme)
 
@@ -23,6 +23,9 @@ ms.locfileid: "101680210"
 > Önizleme işlevselliği, bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yükleri için önerilmez. Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 > 
 > [REST API sürüm 2020-06-30-önizleme](search-api-preview.md) bu özelliği sağlar. Şu anda portal veya SDK desteği yok.
+
+> [!NOTE]
+> SharePoint Online, belge düzeyinde Kullanıcı başına erişimi belirleyen ayrıntılı bir yetkilendirme modelini destekler. SharePoint Online Indexer bu izinleri arama dizinine çekmez ve Bilişsel Arama belge düzeyinde yetkilendirmeyi desteklemez. SharePoint Online 'dan bir arama hizmeti olarak bir belge dizine eklendiğinde, içerik, dizine okuma erişimi olan herkes tarafından kullanılabilir. Belge düzeyi izinlerine ihtiyacınız varsa, yetkisiz içeriğin sonuçlarını kırpmak için güvenlik filtrelerini araştırmanız gerekir. Daha fazla bilgi için bkz. [Active Directory kimlikleri kullanarak güvenlik kırpması](search-security-trimming-for-azure-search-with-aad.md).
 
 Bu makalede, SharePoint Online belge kitaplıklarında saklanan belgeleri (PDF 'Ler, Microsoft Office belgeler ve diğer birçok yaygın biçim gibi) Azure Bilişsel Arama dizinine bağlamak için Azure Bilişsel Arama nasıl kullanılacağı açıklanır. İlk olarak, Dizin oluşturucuyu ayarlama ve yapılandırma hakkında temel bilgileri açıklar. Daha sonra, büyük olasılıkla karşılaştığınız davranış ve senaryolar hakkında daha ayrıntılı bir araştırma sunar.
 

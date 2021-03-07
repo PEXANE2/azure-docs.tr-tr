@@ -126,7 +126,7 @@
         - name: C#
           items:
             - name: Başvuru Belgeleri
-              href: /dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker?view=azure-dotnet
+              href: /dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker
             - name: NuGet paketi
               href: 'https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Knowledge.QnAMaker/'
             - name: Örnekler

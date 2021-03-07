@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 01/03/2020
 ms.author: twooley
 ms.custom: devx-track-dotnet
-ms.openlocfilehash: cb6d5fafa8d956c296124c5a20f8a087160961da
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: faa539119bbb8d73e66788b8ba472cf0db26a2e4
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92109247"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102431746"
 ---
 # <a name="filesystem-operations-on-data-lake-storage-gen1-using-the-net-sdk"></a>.NET SDK kullanarak Data Lake Storage 1. dosya sistemi işlemleri
 
@@ -28,7 +28,7 @@ Bu makalede, .NET SDK kullanarak Data Lake Storage 1. dosya sistemi işlemlerini
 
 .NET SDK kullanarak Data Lake Storage 1. hesap yönetimi işlemlerinin nasıl yapılacağı hakkında yönergeler için bkz. [.NET SDK kullanarak Data Lake Storage 1. üzerinde hesap yönetimi işlemleri](data-lake-store-get-started-net-sdk.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * **Visual Studio 2013 veya üzeri**. Bu makaledeki yönergeler Visual Studio 2019 kullanır.
 
@@ -42,17 +42,17 @@ Bu makalede, .NET SDK kullanarak Data Lake Storage 1. dosya sistemi işlemlerini
 
 1. Visual Studio 'da **Dosya** menüsünü, **Yeni**' yi ve ardından **Proje**' yi seçin.
 1. **Konsol uygulaması (.NET Framework)** öğesini seçin ve ardından **İleri**' yi seçin.
-1. **Proje adı**alanına girin `CreateADLApplication` ve ardından **Oluştur**' u seçin.
+1. **Proje adı** alanına girin `CreateADLApplication` ve ardından **Oluştur**' u seçin.
 1. NuGet paketlerini projenize ekleyin.
 
    1. Çözüm Gezgini'nde proje adına sağ tıklayın ve **NuGet Paketlerini Yönet**'e tıklayın.
-   1. **NuGet Paket Yöneticisi** sekmesinde, **paket kaynağının** **NuGet.org**olarak ayarlandığından emin olun. Ayrıca, **ön sürümü dahil** et onay kutusunun işaretli olduğundan emin olun.
+   1. **NuGet Paket Yöneticisi** sekmesinde, **paket kaynağının** **NuGet.org** olarak ayarlandığından emin olun. Ayrıca, **ön sürümü dahil** et onay kutusunun işaretli olduğundan emin olun.
    1. Aşağıdaki NuGet paketlerini arayıp yükleyin:
 
       * `Microsoft.Azure.DataLake.Store` -Bu makalede v 1.0.0 kullanılmaktadır.
       * `Microsoft.Rest.ClientRuntime.Azure.Authentication` -Bu makalede v 2.3.1 kullanılmaktadır.
 
-      **NuGet Paket Yöneticisi 'ni**kapatın.
+      **NuGet Paket Yöneticisi 'ni** kapatın.
 
 1. **Program.cs** öğesini açın, var olan kodu silin ve ardından ad alanlarına başvurular eklemek için aşağıdaki deyimleri ekleyin.
 
@@ -202,7 +202,7 @@ Data Lake Storage 1. dosya sistemi SDK 'sının nasıl kullanılacağını göst
 ## <a name="see-also"></a>Ayrıca bkz.
 
 * [.NET SDK kullanarak Data Lake Storage 1. hesap yönetimi işlemleri](data-lake-store-get-started-net-sdk.md)
-* [Data Lake Storage 1. .NET SDK başvurusu](/dotnet/api/overview/azure/data-lake-store?view=azure-dotnet)
+* [Data Lake Storage 1. .NET SDK başvurusu](/dotnet/api/overview/azure/data-lake-store)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

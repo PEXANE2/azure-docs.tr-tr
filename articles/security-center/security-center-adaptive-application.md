@@ -1,24 +1,18 @@
 ---
 title: Azure Güvenlik Merkezi'ndeki uyarlamalı uygulama denetimleri
 description: Bu belge, Azure makinelerinde çalışan liste uygulamalarına izin vermek için Azure Güvenlik Merkezi 'nde Uyarlamalı uygulama denetimi kullanmanıza yardımcı olur.
-services: security-center
-documentationcenter: na
 author: memildin
 manager: rkarlin
-ms.assetid: 9268b8dd-a327-4e36-918e-0c0b711e99d2
 ms.service: security-center
-ms.devlang: na
 ms.topic: how-to
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 02/07/2021
 ms.author: memildin
-ms.openlocfilehash: be37f2d361b6bb164a3e01b9ac6f115294137dd0
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.openlocfilehash: de5c5fbb6673d022517bba2486ed4aa1f739d19b
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102099548"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102439587"
 ---
 # <a name="use-adaptive-application-controls-to-reduce-your-machines-attack-surfaces"></a>Makinelerinizin saldırı yüzeylerini azaltmak için uyarlamalı uygulama denetimleri kullanma
 

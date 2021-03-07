@@ -8,12 +8,12 @@ ms.date: 11/19/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 3a5c98b3fad76d2206d1fcba79663063e22ecdbc
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: a38af4c942de280e7b1c094885a1ede6774ead56
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101737979"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102433225"
 ---
 # <a name="query-the-azure-digital-twins-twin-graph"></a>Azure Digital TWINS ikizi grafiğini sorgulama
 
@@ -220,11 +220,11 @@ Bir sorgu dizesine karar verdikten sonra [**sorgu API**](/rest/api/digital-twins
 
 API 'yi doğrudan çağırabilir veya Azure dijital TWINS için kullanılabilen [SDK 'lardan](how-to-use-apis-sdks.md#overview-data-plane-apis) birini kullanabilirsiniz.
 
-Aşağıdaki kod parçacığı, bir istemci uygulamasından [.net (C#) SDK](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true) çağrısını gösterir:
+Aşağıdaki kod parçacığı, bir istemci uygulamasından [.net (C#) SDK](/dotnet/api/overview/azure/digitaltwins/client) çağrısını gösterir:
 
 :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/queries.cs" id="RunQuery":::
 
-Bu çağrıda kullanılan sorgu, yukarıdaki örnek [BasicDigitalTwin](/dotnet/api/azure.digitaltwins.core.basicdigitaltwin?view=azure-dotnet&preserve-view=true) nesneleriyle temsil eden dijital TWINS listesini döndürür. Her sorgu için verilerinizin dönüş türü, ifadesiyle belirttiğiniz koşullara bağlıdır `SELECT` :
+Bu çağrıda kullanılan sorgu, yukarıdaki örnek [BasicDigitalTwin](/dotnet/api/azure.digitaltwins.core.basicdigitaltwin) nesneleriyle temsil eden dijital TWINS listesini döndürür. Her sorgu için verilerinizin dönüş türü, ifadesiyle belirttiğiniz koşullara bağlıdır `SELECT` :
 * İle başlayan sorgular `SELECT * FROM ...` , dijital TWINS 'in bir listesini döndürür (nesneler olarak seri hale getirilebilir `BasicDigitalTwin` veya oluşturmuş olduğunuz diğer özel dijital ikizi türleri).
 * Biçimde başlayan sorgular `SELECT <A>, <B>, <C> FROM ...` , ve anahtarlarına sahip bir sözlük döndürür `<A>` `<B>` `<C>` .
 * Diğer deyim biçimleri `SELECT` özel verileri döndürmek için oluşturulabilir. Çok özelleştirilmiş sonuç kümelerini işlemek için kendi sınıflarınızı oluşturmayı düşünebilirsiniz. 

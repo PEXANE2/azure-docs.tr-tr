@@ -12,16 +12,16 @@ ms.workload: identity
 ms.date: 07/17/2020
 ms.author: hahamil
 ms.custom: aaddev, scenarios:getting-started, languages:JavaScript, devx-track-js
-ms.openlocfilehash: 1af1c990c284c91d8bb8344834991c69ed6f00c5
-ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
+ms.openlocfilehash: a626ae1406a6ea4a83919f0fc3ee71ffaa5fbac2
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100103643"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102427055"
 ---
-# <a name="quickstart-sign-in-users-and-get-an-access-token-in-a-javascript-spa-using-the-auth-code-flow"></a>Hızlı başlangıç: Kullanıcı oturum açma ve kimlik doğrulama kod akışını kullanarak JavaScript SPA 'da erişim belirteci edinme
+# <a name="quickstart-sign-in-users-and-get-an-access-token-in-a-javascript-spa-using-the-auth-code-flow-with-pkce"></a>Hızlı başlangıç: Kullanıcı oturum açma ve bir JavaScript SPA 'da, PKCE ile kimlik doğrulama kod akışını kullanarak bir erişim belirteci edinme 
 
-Bu hızlı başlangıçta, JavaScript tek sayfalı uygulamanın (SPA) Kullanıcı oturumunu nasıl çalıştırabildiğini ve yetkilendirme kodu akışını kullanarak Microsoft Graph çağırabildiğini gösteren bir kod örneği indirip çalıştırırsınız. Kod örneği, Microsoft Graph API 'sini veya herhangi bir Web API 'sini çağırmak için bir erişim belirtecinin nasıl alınacağını gösterir. 
+Bu hızlı başlangıçta, JavaScript tek sayfalı uygulamanın (SPA) Kullanıcı oturumunu nasıl çalıştırabildiğini ve kod değişimi (PKCE) için kanıt anahtarı ile yetkilendirme kodu akışını kullanarak Microsoft Graph arayacağını gösteren bir kod örneği indirip çalıştırırsınız. Kod örneği, Microsoft Graph API 'sini veya herhangi bir Web API 'sini çağırmak için bir erişim belirtecinin nasıl alınacağını gösterir. 
 
 Örneğin bir çizim için [nasıl çalıştığını](#how-the-sample-works) görün.
 

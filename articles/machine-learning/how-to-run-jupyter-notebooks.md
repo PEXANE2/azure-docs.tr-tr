@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to
 ms.date: 01/19/2021
-ms.openlocfilehash: fe6fa5c9b05afd5479818fe9bb25e471665cb867
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: fe3f2328bb1ec9e7bb2ef79c09a821412ce7f7e1
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102171475"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102423994"
 ---
 # <a name="run-jupyter-notebooks-in-your-workspace"></a>Çalışma alanınızda Jupyıter not defterlerini çalıştırma
 
@@ -273,7 +273,7 @@ Aşağıdaki tuş vuruşu kısayollarını kullanarak, düzenleme modundayken Az
 
 * Bir not defterine bağlanamıyorsanız, Web yuva iletişiminin devre dışı **bırakılmadığından** emin olun. İşlem örneği jupi işlevinin çalışması için Web yuva iletişiminin etkinleştirilmesi gerekir. Lütfen ağınızın *. instances.azureml.net ve *. instances.azureml.ms öğesine WebSocket bağlantılarına izin verdiğinden emin olun. 
 
-* İşlem örneği bir özel bağlantı çalışma alanında dağıtıldığında, yalnızca [sanal ağ içinden erişilebilir](https://docs.microsoft.com/azure/machine-learning/how-to-secure-training-vnet#compute-instance). Özel DNS veya hosts dosyası kullanıyorsanız lütfen <örnek adı> için bir giriş <region> ekleyin. çalışma alanı özel uç noktasının özel IP adresi ile instances.azureml.ms. Daha fazla bilgi için bkz. [özel DNS](./how-to-custom-dns.md?tabs=azure-cli) makalesi.
+* İşlem örneği bir özel bağlantı çalışma alanında dağıtıldığında, yalnızca [sanal ağ içinden erişilebilir](https://docs.microsoft.com/azure/machine-learning/how-to-secure-training-vnet#compute-instance). Özel DNS veya hosts dosyası kullanıyorsanız lütfen < örnek adı >. < > bölgesi için özel IP adresi çalışma alanı özel uç noktası ile bir giriş ekleyin. Daha fazla bilgi için bkz. [özel DNS](./how-to-custom-dns.md?tabs=azure-cli) makalesi.
     
 ## <a name="next-steps"></a>Sonraki adımlar
 

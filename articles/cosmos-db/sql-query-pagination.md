@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 07/29/2020
-ms.openlocfilehash: c49fee169b7bd01ee7cf8a6d539c2125cf6568b3
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 5faff410fa18c5161d93f739f77eeb9c85d581a8
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96545324"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102430964"
 ---
 # <a name="pagination-in-azure-cosmos-db"></a>Azure Cosmos DB sayfalandırma
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -25,7 +25,7 @@ Bazen sorgu sonuçları birden çok sayfaya bölünecektir. Her sayfanın sonuç
 
 Bir sorgu tarafından döndürülen en fazla öğe sayısını ayarlayarak belirtebilirsiniz `MaxItemCount` . , `MaxItemCount` İstek başına belirtilir ve sorgu altyapısının bu öğe sayısını veya daha az sayıda dönemeyeceğini söyler. `MaxItemCount` `-1` Sorgu yürütme başına sonuç sayısı için bir sınır koymak istemiyorsanız, öğesini olarak ayarlayabilirsiniz.
 
-Ayrıca, sorgu altyapısının sorgu sonuçlarını birden çok sayfaya bölünmesi gerekebilecek başka nedenler de vardır. Bunlar:
+Ayrıca, sorgu altyapısının sorgu sonuçlarını birden çok sayfaya bölünmesi gerekebilecek başka nedenler de vardır. Bu modüller şunlardır:
 
 - Kapsayıcı daraltıldı ve daha fazla sorgu sonucu döndürecek RUs kullanılamıyor
 - Sorgu yürütmesinin yanıtı çok büyüktü
@@ -59,7 +59,7 @@ Sorgu bir devamlılık belirteci döndürürse ek sorgu sonuçları vardır.
 
 Azure Cosmos DB REST API, üst bilgiyle devamlılık belirteçlerini yönetebilirsiniz `x-ms-continuation` . .NET veya Java SDK ile sorgulama yaparken, `x-ms-continuation` yanıt üst bilgisi boş değilse, sorgunun ek sonuçlara sahip olduğu anlamına gelir.
 
-Aynı SDK sürümünü kullandığınız sürece, devamlılık belirteçleri hiçbir zaman sona ermez. [Bir devamlılık belirtecinin boyutunu](/dotnet/api/microsoft.azure.documents.client.feedoptions.responsecontinuationtokenlimitinkb?preserve-view=true&view=azure-dotnet#Microsoft_Azure_Documents_Client_FeedOptions_ResponseContinuationTokenLimitInKb)isteğe bağlı olarak kısıtlayabilirsiniz. Sorgularınızdaki veri miktarı veya fiziksel bölüm sayısı ne olursa olsun sorgular tek bir devamlılık belirteci döndürür.
+Aynı SDK sürümünü kullandığınız sürece, devamlılık belirteçleri hiçbir zaman sona ermez. [Bir devamlılık belirtecinin boyutunu](/dotnet/api/microsoft.azure.documents.client.feedoptions.responsecontinuationtokenlimitinkb#Microsoft_Azure_Documents_Client_FeedOptions_ResponseContinuationTokenLimitInKb)isteğe bağlı olarak kısıtlayabilirsiniz. Sorgularınızdaki veri miktarı veya fiziksel bölüm sayısı ne olursa olsun sorgular tek bir devamlılık belirteci döndürür.
 
 Bu sorgular önemli miktarda durum depolamayı gerektirdiğinden [Group By](sql-query-group-by.md) veya [DISTINCT](sql-query-keywords.md#distinct) içeren sorgular için devamlılık belirteçlerini kullanamazsınız. İle sorgular için `DISTINCT` , sorguya eklerseniz devamlılık belirteçlerini kullanabilirsiniz `ORDER BY` .
 

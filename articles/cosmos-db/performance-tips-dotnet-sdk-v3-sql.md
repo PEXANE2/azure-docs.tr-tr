@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 10/13/2020
 ms.author: jawilley
 ms.custom: devx-track-dotnet, contperf-fy21q2
-ms.openlocfilehash: f503f132794f6d04b587a78b8f838acba26f9ac3
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 06fb087744ff4ecd96bee7a26e4a796e87866322
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97032023"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102433684"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-and-net"></a>Azure Cosmos DB ve .NET için performans ipuçları
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -172,7 +172,7 @@ Paralel sorgular, gereksinimlerinize uyacak şekilde ayarlayabilmeniz için iki 
 
 Performans testi sırasında, küçük bir istek hızı kısıtlanana kadar yükü artırmanız gerekir. İstekler kısıtlandığı zaman, istemci uygulamanın, sunucu tarafından belirtilen yeniden deneme aralığı için azaltma kapatması gerekir. Geri alma işleminin ne kadar düşük olması, yeniden denemeler arasında bekleyen en az miktarda süre harcamanızı sağlar. 
 
-Daha fazla bilgi için bkz. [RetryAfter](/dotnet/api/microsoft.azure.cosmos.cosmosexception.retryafter?preserve-view=true&view=azure-dotnet#Microsoft_Azure_Cosmos_CosmosException_RetryAfter).
+Daha fazla bilgi için bkz. [RetryAfter](/dotnet/api/microsoft.azure.cosmos.cosmosexception.retryafter#Microsoft_Azure_Cosmos_CosmosException_RetryAfter).
     
 Aşağıdaki örnekte gösterildiği gibi, ek tanılama bilgileri ve sorun giderme gecikme sorunlarını günlüğe kaydetme mekanizması vardır. Daha yüksek okuma gecikmesi olan istekler için tanılama dizesini günlüğe kaydedebilirsiniz. Yakalanan tanılama dizesi, belirli bir istek için kaç kez *429* hatası aldığınızı anlamanıza yardımcı olur.
 
@@ -213,9 +213,9 @@ Bu işlemlerden her biriyle ilişkili maliyetler, işlemi gerçekleştirmek içi
 
 Aktarım hızı, her bir kapsayıcı için ayarlanan [Istek birimi](request-units.md) sayısına göre sağlanır. İstek birimi tüketimi, saniye başına bir birim olarak değerlendirilir. Kapsayıcı için sağlanan Istek birimi oranını aşan uygulamalar, oran için sağlanan düzeyin altına düşene kadar sınırlandırılır. Uygulamanız daha yüksek bir işleme düzeyi gerektiriyorsa, ek Istek birimleri sağlayarak aktarım hızını artırabilirsiniz.
 
-Bir sorgunun karmaşıklığı, bir işlem için kaç Istek biriminin tüketildiğini etkiler. Koşulların sayısı, koşulların doğası, UDF dosyalarının sayısı ve kaynak veri kümesinin boyutu, sorgu işlemlerinin maliyetini etkiler.
+Bir sorgunun karmaşıklık düzeyi, işlem için kullanılan istek birimi sayısını etkiler. Koşulların sayısı, koşulların doğası, UDF dosyalarının sayısı ve kaynak veri kümesinin boyutu, sorgu işlemlerinin maliyetini etkiler.
 
-Herhangi bir işlemin (oluşturma, güncelleştirme veya silme) yükünü ölçmek için, [x-ms-request-charge](/rest/api/cosmos-db/common-cosmosdb-rest-response-headers) `RequestCharge` `ResourceResponse\<T>` `FeedResponse\<T>` işlemler tarafından tüketilen istek birimlerinin sayısını ölçmek üzere x-MS-Request-ücret üst bilgisini (veya .NET SDK içindeki veya içinde eşdeğer özelliği) inceleyin:
+Herhangi bir işlemin (oluşturma, güncelleştirme veya silme) yükünü ölçmek için, [](/rest/api/cosmos-db/common-cosmosdb-rest-response-headers) `RequestCharge` `ResourceResponse\<T>` `FeedResponse\<T>` işlemler tarafından tüketilen istek birimlerinin sayısını ölçmek üzere x-MS-Request-ücret üst bilgisini (veya .NET SDK içindeki veya içinde eşdeğer özelliği) inceleyin:
 
 ```csharp
 // Measure the performance (Request Units) of writes

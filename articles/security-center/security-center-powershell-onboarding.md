@@ -1,24 +1,18 @@
 ---
 title: PowerShell ile Azure Güvenlik Merkezi 'ne ekleme
 description: Bu belge, PowerShell cmdlet 'leriyle Azure Güvenlik Merkezi 'Ni etkinleştirme sürecinde size yol gösterir.
-services: security-center
-documentationcenter: na
 author: memildin
 manager: rkarlin
-ms.assetid: e400fcbf-f0a8-4e10-b571-5a0d0c3d0c67
 ms.service: security-center
-ms.devlang: na
 ms.topic: quickstart
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 01/24/2021
 ms.author: memildin
-ms.openlocfilehash: 4979ff0010c1f959e8f8fc16f56da61971faf1e9
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 25639509cfb689e025ea4388f302378648af8ba6
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98757077"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102439502"
 ---
 # <a name="automate-onboarding-of-azure-security-center-using-powershell"></a>PowerShell kullanarak Azure Güvenlik Merkezi 'Ni otomatik olarak ekleme
 
@@ -41,7 +35,7 @@ Bu örnekte, KIMLIĞI: d07c0080-170c-4c24-861d-9c817742786c olan bir abonelikte 
 
 6. Güvenlik Merkezi 'nin [varsayılan güvenlik ilkelerini](tutorial-security-policy.md)atayın.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Güvenlik Merkezi cmdlet 'lerini çalıştırmadan önce Bu adımlar gerçekleştirilmelidir:
 

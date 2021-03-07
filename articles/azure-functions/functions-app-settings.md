@@ -3,12 +3,12 @@ title: Azure İşlevleri için uygulama ayarları başvurusu
 description: Azure Işlevleri uygulama ayarları veya ortam değişkenleri için başvuru belgeleri.
 ms.topic: conceptual
 ms.date: 09/22/2018
-ms.openlocfilehash: 6f77efc877f210455be6716f8159ee000241c62f
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 6fa8e2d9fb2270d53d8c0419ac7b4d88d79f30fd
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102040354"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102425711"
 ---
 # <a name="app-settings-reference-for-azure-functions"></a>Azure İşlevleri için uygulama ayarları başvurusu
 
@@ -159,11 +159,11 @@ Azure portal düzenlemenin etkinleştirilip etkinleştirilmeyeceğini belirler. 
 
 ## <a name="functions_extension_version"></a>Işlev \_ Uzantısı \_ sürümü
 
-Bu işlev uygulamasında kullanılacak Işlevler çalışma zamanının sürümü. Ana sürümü olan bir tilde, bu ana sürümün en son sürümünü (örneğin, "~ 2") kullanır. Aynı ana sürüme yönelik yeni sürümler kullanılabilir olduğunda, bunlar işlev uygulamasına otomatik olarak yüklenir. Uygulamayı belirli bir sürüme sabitlemek için, tam sürüm numarasını (örneğin, "2.0.12345") kullanın. Varsayılan değer "~ 2" dir. Bir değeri `~1` , uygulamanızı çalışma zamanının 1. x sürümüne sabitlemelerini sağlar.
+İşlev uygulamanızı barındıran Işlevlerin çalışma zamanının sürümü. `~`Ana sürümü olan bir tilde (), bu ana sürümün en son sürümünü (örneğin, "~ 3") kullanır. Aynı ana sürüme yönelik yeni sürümler kullanılabilir olduğunda, bunlar işlev uygulamasına otomatik olarak yüklenir. Uygulamayı belirli bir sürüme sabitlemek için, tam sürüm numarasını (örneğin, "3.0.12345") kullanın. Varsayılan değer "~ 3". Bir değeri `~1` , uygulamanızı çalışma zamanının 1. x sürümüne sabitlemelerini sağlar. Daha fazla bilgi için bkz. [Azure işlevleri çalışma zamanı sürümlerine genel bakış](functions-versions.md).
 
 |Anahtar|Örnek değer|
 |---|------------|
-|Işlev \_ Uzantısı \_ sürümü|~ 2|
+|Işlev \_ Uzantısı \_ sürümü|~ 3|
 
 ## <a name="functions_v2_compatibility_mode"></a>IŞLEVLER \_ v2 \_ Uyumluluk \_ modu
 

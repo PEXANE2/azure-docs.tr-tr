@@ -6,16 +6,18 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 12/11/2020
+ms.date: 02/22/2021
 ms.author: alkohli
-ms.openlocfilehash: b437ce7b6894ebefe38b32f27d370d9f8c4bfe80
-ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
+ms.openlocfilehash: 60469dc834c28bd8dbc73a1883ea01b06797c01f
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/13/2020
-ms.locfileid: "97369030"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102442987"
 ---
 # <a name="prepare-for-an-azure-stack-edge-pro-gpu-device-failure"></a>Azure Stack Edge Pro GPU cihaz hatası için hazırlanma
+
+[!INCLUDE [applies-to-GPU-and-pro-r-skus](../../includes/azure-stack-edge-applies-to-gpu-pro-r-sku.md)]
 
 Bu makale, Azure Stack Edge Pro GPU cihazınıza cihaz yapılandırma ve verilerini kaydetme ve yedeklemenin nasıl yapılacağını ayrıntılandıran bir cihaz hatasına hazırlanmanıza yardımcı olur. 
 
@@ -76,7 +78,7 @@ Aşağıdaki üçüncü taraf veri koruma çözümleri, yerel SMB veya NFS payla
 Azure Stack Edge, cihaza dağıtılan VM 'lerde bulunan verileri korumak için bir yedekleme çözümü sağlamak üzere Azure Backup ve diğer üçüncü taraf veri koruma çözümleriyle birlikte çalışarak. Aşağıdaki tabloda, aralarından seçim yapabileceğiniz kullanılabilir çözümlere yönelik başvurular listelenmektedir.
 
 
-| Yedekleme çözümleri        | Desteklenen işletim sistemi   | Başvuru                                                                |
+| Yedekleme çözümleri        | Desteklenen İşletim Sistemi   | Başvuru                                                                |
 |-------------------------|----------------|--------------------------------------------------------------------------|
 | Azure Backup için Microsoft Azure Kurtarma Hizmetleri (MARS) Aracısı | Windows        | [MARS aracısı hakkında](../backup/backup-azure-about-mars.md)    |
 | Cohesity                | Windows, Linux | [Microsoft Azure tümleştirme, yedekleme & kurtarma çözümü kısa](https://www.cohesity.com/solution/cloud/azure) <br>Ayrıntılar için Cohesity başvurun.                          |

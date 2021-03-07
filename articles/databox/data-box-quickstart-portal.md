@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: quickstart
-ms.date: 09/03/2019
+ms.date: 03/05/2021
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 81dee0c63db711b39ff8fd2123623a16b2b9cb91
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
-ms.translationtype: HT
+ms.openlocfilehash: 3359152455df2701d897689a1f177bf63051b94b
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92122798"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102440726"
 ---
 # <a name="get-started-with-azure-data-box-to-import-data-into-azure"></a>Azure’a verileri içeri aktarmak için Azure Data Box kullanmaya başlama
 
@@ -39,7 +39,7 @@ Bu kılavuzda içeri aktarma için Azure portalı kullanarak Azure Data Box'ı d
 Başlamadan önce:
 
 - Data Box hizmeti için kullandığınız aboneliğin aşağıdaki türlerden birinde olduğundan emin olun:
-    - Microsoft Kurumsal Anlaşma (EA). [EA abonelikleri](https://azure.microsoft.com/pricing/enterprise-agreement/) hakkındaki yazıları okuyun.
+    - Yeni abonelikler için Microsoft Müşteri Sözleşmesi (MCA) veya mevcut abonelikler için Microsoft Kurumsal Anlaşma (EA). Yeni abonelikler ve [EA abonelikleri](https://azure.microsoft.com/pricing/enterprise-agreement/) [için MCA](https://www.microsoft.com/licensing/how-to-buy/microsoft-customer-agreement) hakkında daha fazla bilgi edinin.
     - Bulut Çözümü Sağlayıcısı (CSP). [Azure CSP programı](/azure/cloud-solution-provider/overview/azure-csp-overview) hakkında daha fazla bilgi edinin.
     - Microsoft Azure Sponsorluğu. [Azure sponsorluğu programı](https://azure.microsoft.com/offers/ms-azr-0036p/) hakkında daha fazla bilgi edinin. 
 

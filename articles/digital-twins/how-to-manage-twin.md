@@ -7,16 +7,16 @@ ms.author: baanders
 ms.date: 10/21/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: cbab73a2fb3aecaacdfc92950c0d0b86edf775af
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.openlocfilehash: e20cd09ce3d9eb1937819da79cea17bdd14a07dc
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "100653355"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102433276"
 ---
 # <a name="manage-digital-twins"></a>Dijital ikizleri yönetme
 
-Ortamınızdaki varlıklar [dijital TWINS](concepts-twins-graph.md)tarafından temsil edilir. Dijital iklerinizi yönetmek oluşturma, değiştirme ve kaldırma işlemini içerebilir. Bu işlemleri yapmak için, [**Digitaltwins API 'lerini**](/rest/api/digital-twins/dataplane/twins), [.net (C#) SDK 'Sını](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true)veya [Azure dijital TWINS CLI](how-to-use-cli.md)' yi kullanabilirsiniz.
+Ortamınızdaki varlıklar [dijital TWINS](concepts-twins-graph.md)tarafından temsil edilir. Dijital iklerinizi yönetmek oluşturma, değiştirme ve kaldırma işlemini içerebilir. Bu işlemleri yapmak için, [**Digitaltwins API 'lerini**](/rest/api/digital-twins/dataplane/twins), [.net (C#) SDK 'Sını](/dotnet/api/overview/azure/digitaltwins/client)veya [Azure dijital TWINS CLI](how-to-use-cli.md)' yi kullanabilirsiniz.
 
 Bu makale, dijital TWINS yönetimine odaklanır; ilişkiler ve [ikizi Graf](concepts-twins-graph.md) bir bütün olarak çalışmak için bkz. [*nasıl yapılır: ilişkiler Ile ikizi grafiğini yönetme*](how-to-manage-graph.md).
 
@@ -72,7 +72,7 @@ Yardımcı sınıfı, `BasicDigitalTwin` Özellik alanlarını doğrudan bir "ik
 :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/twin_operations_sample.cs" id="CreateTwin_withHelper":::
 
 >[!NOTE]
-> `BasicDigitalTwin` nesneler bir alanla gelir `Id` . Bu alanı boş bırakabilirsiniz, ancak bir KIMLIK değeri eklerseniz, çağrıya geçirilen ID parametresiyle eşleşmesi gerekir `CreateOrReplaceDigitalTwinAsync()` . Örneğin:
+> `BasicDigitalTwin` nesneler bir alanla gelir `Id` . Bu alanı boş bırakabilirsiniz, ancak bir KIMLIK değeri eklerseniz, çağrıya geçirilen ID parametresiyle eşleşmesi gerekir `CreateOrReplaceDigitalTwinAsync()` . Örnek:
 >
 >```csharp
 >twin.Id = "myRoomId";
@@ -160,7 +160,7 @@ JSON yama kodu örneği aşağıda verilmiştir. Bu belge, uygulandığı dijita
 
 :::code language="json" source="~/digital-twins-docs-samples/models/patch.json":::
 
-Azure .NET SDK 'nın [Jsonpatchdocument](/dotnet/api/azure.jsonpatchdocument?view=azure-dotnet&preserve-view=true)kullanarak düzeltme ekleri oluşturabilirsiniz. Aşağıda bir örnek verilmiştir.
+Azure .NET SDK 'nın [Jsonpatchdocument](/dotnet/api/azure.jsonpatchdocument)kullanarak düzeltme ekleri oluşturabilirsiniz. Aşağıda bir örnek verilmiştir.
 
 :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/twin_operations_other.cs" id="UpdateTwin":::
 
@@ -227,7 +227,7 @@ Kod parçacığı öğreticiden model tanımındaki [Room.js](https://github.com
 Örneği çalıştırmadan önce aşağıdakileri yapın:
 1. Model dosyasını indirin, projenize yerleştirin ve `<path-to>` aşağıdaki koddaki yer tutucuyu değiştirip, programınıza onu nerede bulacağınızı söyleyin.
 2. Yer tutucusunu `<your-instance-hostname>` Azure dijital TWINS örneğinizin ana bilgisayar adı ile değiştirin.
-3. Projenize Azure dijital TWINS ile çalışmak için gerekli olacak iki bağımlılık ekleyin. Birincisi [.net Için Azure Digital TWINS SDK 'sının](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true)paketidir, Ikincisi ise Azure 'da kimlik doğrulamaya yardımcı olacak araçlar sağlar.
+3. Projenize Azure dijital TWINS ile çalışmak için gerekli olacak iki bağımlılık ekleyin. Birincisi [.net Için Azure Digital TWINS SDK 'sının](/dotnet/api/overview/azure/digitaltwins/client)paketidir, Ikincisi ise Azure 'da kimlik doğrulamaya yardımcı olacak araçlar sağlar.
 
       ```cmd/sh
       dotnet add package Azure.DigitalTwins.Core

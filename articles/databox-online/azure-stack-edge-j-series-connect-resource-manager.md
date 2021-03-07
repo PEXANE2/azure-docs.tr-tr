@@ -8,16 +8,16 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 03/01/2021
 ms.author: alkohli
-ms.openlocfilehash: 0b4a31200b99062a72a02ca62ac8f3bf1206f9c9
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 37d1b1613f4d346fa22d10e338f442c17b8425a0
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101722101"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102439009"
 ---
 # <a name="connect-to-azure-resource-manager-on-your-azure-stack-edge-pro-device"></a>Azure Stack Edge Pro cihazınızda Azure Resource Manager bağlanma
 
-<!--[!INCLUDE [applies-to-skus](../../includes/azure-stack-edge-applies-to-all-sku.md)]-->
+[!INCLUDE [applies-to-GPU-and-pro-r-and-mini-r-skus](../../includes/azure-stack-edge-applies-to-gpu-pro-r-mini-r-sku.md)]
 
 Azure Resource Manager, Azure aboneliğinizdeki kaynakları oluşturmanızı, güncelleştirmenizi ve silmenizi sağlayan bir yönetim katmanı sunar. Azure Stack Edge Pro cihazı, yerel bir abonelikte VM 'Ler oluşturmak, güncelleştirmek ve silmek için aynı Azure Resource Manager API 'Leri destekler. Bu destek, cihazı bulutla tutarlı bir şekilde yönetmenizi sağlar. 
 

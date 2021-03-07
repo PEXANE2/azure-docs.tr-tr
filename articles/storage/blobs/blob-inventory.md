@@ -4,18 +4,18 @@ description: Azure depolama envanteri, bir depolama hesabındaki tüm blob veril
 services: storage
 author: mhopkins-msft
 ms.service: storage
-ms.date: 12/03/2020
+ms.date: 03/05/2021
 ms.topic: conceptual
 ms.author: mhopkins
 ms.reviewer: yzheng
 ms.subservice: blobs
 ms.custom: references_regions
-ms.openlocfilehash: a41966c2b3ba73d7b68399b1b99d14313e220833
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.openlocfilehash: 7972385ba017059407b994029c37f347b919cad3
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99257820"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102435129"
 ---
 # <a name="use-azure-storage-blob-inventory-to-manage-blob-data-preview"></a>Blob verilerini yönetmek için Azure Storage blob envanterini kullanma (Önizleme)
 
@@ -24,6 +24,9 @@ Azure Depolama Blobu envanter özelliği, bir depolama hesabındaki blob veriler
 ## <a name="availability"></a>Kullanılabilirlik
 
 Blob envanteri hem genel amaçlı sürüm 2 (GPv2) hem de Premium Blok Blob depolama hesapları için desteklenir. Bu özellik [hiyerarşik ad alanı](data-lake-storage-namespace.md) özelliği etkin olan veya olmadan desteklenir.
+
+> [!IMPORTANT]
+> Bob envanteri şu anda **Önizleme** aşamasındadır. Beta, önizleme veya henüz genel kullanıma sunulmayan Azure özelliklerine uygulanan yasal koşullara yönelik [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) 'na bakın.
 
 ### <a name="preview-regions"></a>Önizleme bölgeleri
 

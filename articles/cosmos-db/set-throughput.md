@@ -6,12 +6,12 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 01/25/2021
-ms.openlocfilehash: d39ade2536b96bf5e665ecfc01e81232f2fec075
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.openlocfilehash: 1d5fba12ce9b1ce8d30c59a08aa36e1222abe3c7
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102217950"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102433939"
 ---
 # <a name="introduction-to-provisioned-throughput-in-azure-cosmos-db"></a>Azure Cosmos DB sağlanan üretilen iş hızına giriş
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -98,12 +98,12 @@ Bir Azure Cosmos kapsayıcısı veya veritabanı oluşturduktan sonra, sağlanan
 
 Azure portal bir kapsayıcının veya veritabanının sağlanan verimini veya SDK 'Ları kullanarak elde edebilirsiniz:
 
-* .NET SDK üzerinde [Container. ReadThroughputAsync](/dotnet/api/microsoft.azure.cosmos.container.readthroughputasync?view=azure-dotnet&preserve-view=true) .
+* .NET SDK üzerinde [Container. ReadThroughputAsync](/dotnet/api/microsoft.azure.cosmos.container.readthroughputasync) .
 * [Cosmoscontainer. Readüretilen Iş](/java/api/com.azure.cosmos.cosmosasynccontainer.readthroughput) Java SDK 'sı.
 
 Bu yöntemlerin yanıtı, kapsayıcı veya veritabanı için [sağlanan en düşük üretilen işi](concepts-limits.md#storage-and-database-operations) de içerir:
 
-* .NET SDK 'da [Throughputresponse. Minüretilen iş](/dotnet/api/microsoft.azure.cosmos.throughputresponse.minthroughput?view=azure-dotnet&preserve-view=true) .
+* .NET SDK 'da [Throughputresponse. Minüretilen iş](/dotnet/api/microsoft.azure.cosmos.throughputresponse.minthroughput) .
 * , Java SDK 'sında [Throughputresponse. Getminüretilen iş](/java/api/com.azure.cosmos.models.throughputresponse.getminthroughput) .
 
 Gerçek minimum RU/sn, hesap yapılandırmanıza göre farklılık gösterebilir. Ancak genellikle en yüksek değer:
@@ -116,7 +116,7 @@ Gerçek minimum RU/sn, hesap yapılandırmanıza göre farklılık gösterebilir
 
 Azure portal veya SDK 'Ları kullanarak bir kapsayıcının veya veritabanının sağlanan verimini ölçeklendirebilirsiniz:
 
-* .NET SDK üzerinde [Container. ReplaceThroughputAsync](/dotnet/api/microsoft.azure.cosmos.container.replacethroughputasync?view=azure-dotnet&preserve-view=true) .
+* .NET SDK üzerinde [Container. ReplaceThroughputAsync](/dotnet/api/microsoft.azure.cosmos.container.replacethroughputasync) .
 * Java SDK 'sında [Cosmoscontainer. Replaceverimini](/java/api/com.azure.cosmos.cosmosasynccontainer.replacethroughput) .
 
 **Sağlanan aktarım hızını azalttıktan** sonra [En düşük düzeyde](#current-provisioned-throughput)yapabileceksiniz.
@@ -128,7 +128,7 @@ Azure portal veya SDK 'Ları kullanarak bir kapsayıcının veya veritabanının
 
 [Geçerli sağlanan üretilen işi](#current-provisioned-throughput) okuyarak ve kullanarak ölçeklendirme ilerlemesini programlı bir şekilde denetleyebilirsiniz:
 
-* [IBir .NET SDK 'Da Throughputresponse. ısıncepcepbitiriliyor](/dotnet/api/microsoft.azure.cosmos.throughputresponse.isreplacepending?view=azure-dotnet&preserve-view=true) .
+* [IBir .NET SDK 'Da Throughputresponse. ısıncepcepbitiriliyor](/dotnet/api/microsoft.azure.cosmos.throughputresponse.isreplacepending) .
 * , Java SDK 'sında [Throughputresponse. ısıncepsonbitiriliyor ()](/java/api/com.azure.cosmos.models.throughputresponse.isreplacepending) .
 
 [Azure izleyici ölçümlerini](monitor-cosmos-db.md#view-operation-level-metrics-for-azure-cosmos-db) , kaynak üzerinde sağlanan üretilen Iş (ru/s) ve depolamanın geçmişini görüntülemek için kullanabilirsiniz.

@@ -6,16 +6,18 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 02/26/2021
+ms.date: 03/03/2021
 ms.author: alkohli
-ms.openlocfilehash: 6c9e8938feb3c3444d01f9d37476589776707425
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: cb11d7d3b2da9ab793cb18814e4021ea7afeb806
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101703193"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102443599"
 ---
 # <a name="return-your-azure-stack-edge-pro-device"></a>Azure Stack Edge Pro cihazınızı döndürün
+
+[!INCLUDE [applies-to-GPU-and-pro-r-and-mini-r-skus](../../includes/azure-stack-edge-applies-to-gpu-pro-r-mini-r-sku.md)]
 
 Bu makalede, verileri silme ve sonra Azure Stack Edge Pro cihazınızı döndürme açıklanmaktadır. Cihazı geri aldıktan sonra cihazla ilişkili kaynağı da silebilirsiniz.
 
@@ -38,8 +40,7 @@ Cihaz sıfırlanmadan önce, cihazın dönmesini başlatabilirsiniz.
 
 Cihazınızı yerel Web Kullanıcı arabiriminde veya PowerShell 'de sıfırlayabilirsiniz. PowerShell yönergeleri için bkz. [cihazınızı sıfırlama](./azure-stack-edge-connect-powershell-interface.md#reset-your-device).
 
-
-[! Ekle] [cihazdan veri sıfırlama](../../includes/azure-stack-edge-device-reset.md)
+[!INCLUDE [Reset data from the device](../../includes/azure-stack-edge-device-reset.md)]
 
 > [!NOTE]
 > - Yeni bir cihaza değiş tokuş yapıyorsanız veya yükseltiyorsanız, Cihazınızı yalnızca yeni cihazı aldıktan sonra sıfırlamanız önerilir.

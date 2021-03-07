@@ -10,12 +10,12 @@ ms.date: 03/23/2020
 ms.author: ramkris
 ms.reviewer: sngun
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 6f6994717ff4c730fb27bd26c40d199fb198e528
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 34aef5bd880e3ef080676fb9e90e62796d499e7b
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "96019965"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102429825"
 ---
 # <a name="use-the-bulk-executor-net-library-to-perform-bulk-operations-in-azure-cosmos-db"></a>Toplu yürütücü .NET kitaplığı 'nı kullanarak Azure Cosmos DB toplu işlemleri gerçekleştirin
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -94,7 +94,7 @@ Kopyalanmış depo "Bulkımportsample" ve "BulkUpdateSample" olmak üzere iki ö
    client.ConnectionPolicy.RetryOptions.MaxRetryAttemptsOnThrottledRequests = 0;
    ```
 
-5. Uygulama, Bulkımportasync API 'sini çağırır. .NET kitaplığı, serileştirilmiş JSON belgelerinin bir listesini kabul eden ve diğeri Serisi kaldırılan POCO belgelerinin listesini kabul eden, toplu içeri aktarma API 'sinin iki aşırı yüklemesini sağlar. Bu aşırı yüklenmiş yöntemlerin her birinin tanımları hakkında daha fazla bilgi edinmek için [API belgelerine](/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor.bulkexecutor.bulkimportasync?view=azure-dotnet&preserve-view=true)bakın.
+5. Uygulama, Bulkımportasync API 'sini çağırır. .NET kitaplığı, serileştirilmiş JSON belgelerinin bir listesini kabul eden ve diğeri Serisi kaldırılan POCO belgelerinin listesini kabul eden, toplu içeri aktarma API 'sinin iki aşırı yüklemesini sağlar. Bu aşırı yüklenmiş yöntemlerin her birinin tanımları hakkında daha fazla bilgi edinmek için [API belgelerine](/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor.bulkexecutor.bulkimportasync)bakın.
 
    ```csharp
    BulkImportResponse bulkImportResponse = await bulkExecutor.BulkImportAsync(
@@ -126,11 +126,11 @@ Kopyalanmış depo "Bulkımportsample" ve "BulkUpdateSample" olmak üzere iki ö
 
 ## <a name="bulk-update-data-in-your-azure-cosmos-account"></a>Azure Cosmos hesabınızdaki verileri toplu güncelleştirme
 
-Mevcut belgeleri BulkUpdateAsync API kullanarak güncelleştirebilirsiniz. Bu örnekte, `Name` alanı yeni bir değere ayarlayacaksınız ve `Description` mevcut belgelerden alanı kaldıracaksınız. Desteklenen güncelleştirme işlemlerinin tam kümesi için [API belgelerine](/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor.bulkupdate?view=azure-dotnet&preserve-view=true)bakın.
+Mevcut belgeleri BulkUpdateAsync API kullanarak güncelleştirebilirsiniz. Bu örnekte, `Name` alanı yeni bir değere ayarlayacaksınız ve `Description` mevcut belgelerden alanı kaldıracaksınız. Desteklenen güncelleştirme işlemlerinin tam kümesi için [API belgelerine](/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor.bulkupdate)bakın.
 
 1. "BulkUpdateSample" klasörüne gidin ve "BulkUpdateSample. sln" dosyasını açın.  
 
-2. Güncelleştirme öğelerini ilgili alan güncelleştirme işlemleriyle birlikte tanımlayın. Bu örnekte, `SetUpdateOperation` `Name` alanı güncelleştirmek ve `UnsetUpdateOperation` `Description` Tüm belgelerden alanı kaldırmak için kullanacaksınız. Ayrıca, belirli bir değere göre bir belge alanını artırma, belirli değerleri bir dizi alanına gönderme veya dizi alanından belirli bir değeri kaldırma gibi başka işlemler de gerçekleştirebilirsiniz. Toplu güncelleştirme API 'SI tarafından sunulan farklı yöntemler hakkında bilgi edinmek için [API belgelerine](/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor.bulkupdate?view=azure-dotnet&preserve-view=true)bakın.
+2. Güncelleştirme öğelerini ilgili alan güncelleştirme işlemleriyle birlikte tanımlayın. Bu örnekte, `SetUpdateOperation` `Name` alanı güncelleştirmek ve `UnsetUpdateOperation` `Description` Tüm belgelerden alanı kaldırmak için kullanacaksınız. Ayrıca, belirli bir değere göre bir belge alanını artırma, belirli değerleri bir dizi alanına gönderme veya dizi alanından belirli bir değeri kaldırma gibi başka işlemler de gerçekleştirebilirsiniz. Toplu güncelleştirme API 'SI tarafından sunulan farklı yöntemler hakkında bilgi edinmek için [API belgelerine](/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor.bulkupdate)bakın.
 
    ```csharp
    SetUpdateOperation<string> nameUpdate = new SetUpdateOperation<string>("Name", "UpdatedDoc");
@@ -147,7 +147,7 @@ Mevcut belgeleri BulkUpdateAsync API kullanarak güncelleştirebilirsiniz. Bu ö
    }
    ```
 
-3. Uygulama, BulkUpdateAsync API 'sini çağırır. BulkUpdateAsync yönteminin tanımı hakkında bilgi edinmek için [API belgelerine](/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor.ibulkexecutor.bulkupdateasync?view=azure-dotnet&preserve-view=true)bakın.  
+3. Uygulama, BulkUpdateAsync API 'sini çağırır. BulkUpdateAsync yönteminin tanımı hakkında bilgi edinmek için [API belgelerine](/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor.ibulkexecutor.bulkupdateasync)bakın.  
 
    ```csharp
    BulkUpdateResponse bulkUpdateResponse = await bulkExecutor.BulkUpdateAsync(

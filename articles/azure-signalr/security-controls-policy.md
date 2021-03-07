@@ -1,18 +1,18 @@
 ---
 title: Azure SignalR için Azure Ilke mevzuat uyumluluk denetimleri
 description: Azure SignalR için kullanılabilen Azure Ilke mevzuat uyumluluk denetimlerini listeler. Bu yerleşik ilke tanımları, Azure kaynaklarınızın uyumluluğunu yönetmek için yaygın yaklaşımlar sağlar.
-ms.date: 02/09/2021
+ms.date: 03/05/2021
 ms.topic: sample
 author: sffamily
 ms.author: zhshang
 ms.service: signalr
 ms.custom: subject-policy-compliancecontrols
-ms.openlocfilehash: c77aaffa2607d5096f46cafd50c54bdc7a80219f
-ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
+ms.openlocfilehash: 155c5d9eaefeb53face3688993400960128cad1c
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100096638"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102440386"
 ---
 # <a name="azure-policy-regulatory-compliance-controls-for-azure-signalr"></a>Azure SignalR için Azure Ilke mevzuat uyumluluk denetimleri
 

@@ -152,7 +152,7 @@
           items:
             - name: PostgreSQL verilerini bir Postgres Hiper Ölçek sunucu grubuna geçirme
               href: migrate-postgresql-data-into-postgresql-hyperscale-server-group.md
-            - name: Örnek veritabanı AdventureWorks’ü geri yükleme
+            - name: Örnek veritabanı AdventureWorks 'i içeri aktarma
               href: restore-adventureworks-sample-db-into-postgresql-hyperscale-server-group.md
         - name: Sorun giderme
           href: troubleshoot-postgresql-hyperscale-server-group.md

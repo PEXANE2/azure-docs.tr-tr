@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
 ms.custom: devx-track-csharp
-ms.openlocfilehash: c5b2364328fc4e0103b969f94a4c877a388edb7c
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 2c4ed092604e9511023a7025a69dc7a78652ea56
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92103620"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102430488"
 ---
 # <a name="account-management-operations-on-azure-data-lake-storage-gen1-using-net-sdk"></a>.NET SDK kullanarak Azure Data Lake Storage 1. hesap yönetimi işlemleri
 > [!div class="op_single_selector"]
@@ -26,7 +26,7 @@ Bu makalede, .NET SDK kullanarak Azure Data Lake Storage 1. hesap yönetimi işl
 
 .NET SDK kullanarak Data Lake Storage 1. veri yönetimi işlemlerini gerçekleştirme hakkında yönergeler için, bkz. [.NET SDK kullanarak Data Lake Storage 1. dosya sistemi işlemleri](data-lake-store-data-operations-net-sdk.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 * **Visual Studio 2013 veya üzeri**. Aşağıdaki yönergelerde Visual Studio 2019 kullanılır.
 
 * **Bir Azure aboneliği**. Bkz. [Azure ücretsiz deneme sürümü edinme](https://azure.microsoft.com/pricing/free-trial/).
@@ -34,7 +34,7 @@ Bu makalede, .NET SDK kullanarak Azure Data Lake Storage 1. hesap yönetimi işl
 ## <a name="create-a-net-application"></a>.NET uygulaması oluşturma
 1. Visual Studio 'da **Dosya** menüsünü, **Yeni**' yi ve ardından **Proje**' yi seçin.
 2. **Konsol uygulaması (.NET Framework)** öğesini seçin ve ardından **İleri**' yi seçin.
-3. **Proje adı**alanına girin `CreateADLApplication` ve ardından **Oluştur**' u seçin.
+3. **Proje adı** alanına girin `CreateADLApplication` ve ardından **Oluştur**' u seçin.
 
 4. NuGet paketlerini projenize ekleyin.
 
@@ -46,7 +46,7 @@ Bu makalede, .NET SDK kullanarak Azure Data Lake Storage 1. hesap yönetimi işl
       * `Microsoft.Rest.ClientRuntime.Azure.Authentication` - Bu öğreticide v2.2.12 kullanılır.
 
         ![NuGet kaynağı ekleme](./media/data-lake-store-get-started-net-sdk/data-lake-store-install-nuget-package.png "Yeni bir Azure Data Lake hesabı oluşturun")
-   4. **NuGet Paket Yöneticisi 'ni**kapatın.
+   4. **NuGet Paket Yöneticisi 'ni** kapatın.
 5. **Program.cs** öğesini açın, var olan kodu silin ve ardından ad alanlarına başvurular eklemek için aşağıdaki deyimleri ekleyin.
 
     ```csharp
@@ -144,7 +144,7 @@ _adlsClient.Account.Delete(_resourceGroupName, _adlsAccountName);
 
 ## <a name="see-also"></a>Ayrıca bkz.
 * [.NET SDK kullanarak Data Lake Storage 1. dosya sistemi işlemleri](data-lake-store-data-operations-net-sdk.md)
-* [Data Lake Storage 1. .NET SDK başvurusu](/dotnet/api/overview/azure/data-lake-store?view=azure-dotnet)
+* [Data Lake Storage 1. .NET SDK başvurusu](/dotnet/api/overview/azure/data-lake-store)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 * [Data Lake Storage Gen1'de verilerin güvenliğini sağlama](data-lake-store-secure-data.md)

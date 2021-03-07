@@ -7,12 +7,12 @@ ms.topic: reference
 ms.date: 02/19/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
-ms.openlocfilehash: 12e57361b9e275fc441df27a3a1381989d48751c
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: ae2be8dbcb4839c7d16b864c484c3360fdcfe324
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98788579"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102425592"
 ---
 # <a name="azure-service-bus-output-binding-for-azure-functions"></a>Azure Işlevleri için çıkış bağlamasını Azure Service Bus
 
@@ -429,7 +429,7 @@ Bu bölümde, 2. x ve üzeri sürümlerde bu bağlama için kullanılabilen gene
 |---------|---------|---------|
 |prefetchCount|0|İleti alıcısının eşzamanlı olarak isteyebildiği ileti sayısını alır veya ayarlar.|
 |maxAutoRenewDuration|00:05:00|İleti kilidinin otomatik olarak yenilenebileceği en uzun süre.|
-|'Nın|true|Tetikleyicinin işlemden sonra otomatik olarak tamamlanmalı veya işlev kodu el ile tamamlanacaktır.<br><br>Ayarı `false` yalnızca C# dilinde desteklenir.<br><br>Olarak ayarlanırsa `true` , işlev yürütmesi başarıyla tamamlanırsa, tetikleyici iletiyi otomatik olarak tamamlar ve aksi takdirde iletiyi terk edin.<br><br>Olarak ayarlandığında `false` , iletiyi tamamlamaya, bırakmaya veya atılacak şekilde [MessageReceiver](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver?view=azure-dotnet&preserve-view=true) Yöntemler çağrılmadan siz sorumlusunuz. Bir özel durum oluşturulursa (ve `MessageReceiver` yöntemlerin hiçbiri çağrılmadığında), kilit kalır. Kilidin süresi dolduktan sonra ileti, artdıktan sonra yeniden kuyruğa alınır `DeliveryCount` ve kilit otomatik olarak yenilenir.<br><br>C olmayan işlevlerde işlevlerdeki özel durumlar, arka planda çalışma zamanı çağrılarına neden olur `abandonAsync` . Özel durum oluşursa, `completeAsync` arka planda çağırılır. |
+|'Nın|true|Tetikleyicinin işlemden sonra otomatik olarak tamamlanmalı veya işlev kodu el ile tamamlanacaktır.<br><br>Ayarı `false` yalnızca C# dilinde desteklenir.<br><br>Olarak ayarlanırsa `true` , işlev yürütmesi başarıyla tamamlanırsa, tetikleyici iletiyi otomatik olarak tamamlar ve aksi takdirde iletiyi terk edin.<br><br>Olarak ayarlandığında `false` , iletiyi tamamlamaya, bırakmaya veya atılacak şekilde [MessageReceiver](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver) Yöntemler çağrılmadan siz sorumlusunuz. Bir özel durum oluşturulursa (ve `MessageReceiver` yöntemlerin hiçbiri çağrılmadığında), kilit kalır. Kilidin süresi dolduktan sonra ileti, artdıktan sonra yeniden kuyruğa alınır `DeliveryCount` ve kilit otomatik olarak yenilenir.<br><br>C olmayan işlevlerde işlevlerdeki özel durumlar, arka planda çalışma zamanı çağrılarına neden olur `abandonAsync` . Özel durum oluşursa, `completeAsync` arka planda çağırılır. |
 |Maxconcurrentçağrıları|16|İleti göndericisinin ölçeklendirilmiş örnek başına başlatılması gereken geri çağrıya yönelik eşzamanlı çağrı sayısı üst sınırı. Varsayılan olarak, Işlevler çalışma zamanı birden çok iletiyi eşzamanlı olarak işler.|
 |maxConcurrentSessions|2000|Ölçeklendirilen örnek başına eşzamanlı olarak işlenebilecek en fazla oturum sayısı.|
 

@@ -6,16 +6,18 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 08/31/2020
+ms.date: 02/22/2021
 ms.author: alkohli
-ms.openlocfilehash: 1f16ef0ede25f17acb915a7812ae5b15b45f78a4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4142542c9f17ae464a996df310c50d73d8711d8e
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90899724"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102438208"
 ---
 # <a name="deploy-a-gpu-enabled-iot-module-on-azure-stack-edge-pro-gpu-device"></a>Azure Stack Edge Pro GPU cihazında GPU özellikli IoT modülünü dağıtma
+
+[!INCLUDE [applies-to-GPU-and-pro-r-skus](../../includes/azure-stack-edge-applies-to-gpu-pro-r-sku.md)]
 
 Bu makalede, Azure Stack Edge Pro GPU cihazınızda GPU özellikli bir IoT Edge modülünün nasıl dağıtılacağı açıklanır. 
 
@@ -31,11 +33,11 @@ Bu makalede şunları öğreneceksiniz:
 
 Bu makaledeki GPU örnek modülü,, GPU 'ya karşı CPU için örnek kodu PyTorch ve TensorFlow benchişaretlemesini içerir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamadan önce aşağıdakilere sahip olduğunuzdan emin olun:
 
-- GPU etkin 1 düğümlü Azure Stack Edge Pro cihazına erişirsiniz. Bu cihaz Azure 'da bir kaynakla etkinleştirildi. Bkz. [cihazı etkinleştirme](azure-stack-edge-gpu-deploy-activate.md).
+- GPU etkin 1 düğümlü Azure Stack Edge Pro cihazına erişirsiniz. Bu cihaz, Azure'da bir kaynakla birlikte etkinleştirilir. Bkz. [cihazı etkinleştirme](azure-stack-edge-gpu-deploy-activate.md).
 - Bu cihazda işlem yapılandırdınız. Öğreticideki adımları izleyin [: Azure Stack Edge Pro cihazınızda Işlem yapılandırma](azure-stack-edge-gpu-deploy-configure-compute.md).
 - Bir Azure Container Registry (ACR). **Erişim tuşları** dikey penceresine gidin ve ACR oturum açma sunucusunu, Kullanıcı adını ve parolayı bir yere getirin. Daha fazla bilgi için [hızlı başlangıç: Azure Portal kullanarak özel kapsayıcı kayıt defteri oluşturma](../container-registry/container-registry-get-started-portal.md#create-a-container-registry)sayfasına gidin.
 - Bir Windows istemcisinde aşağıdaki geliştirme kaynakları:
@@ -44,7 +46,7 @@ Başlamadan önce aşağıdakilere sahip olduğunuzdan emin olun:
     - [Visual Studio Code](https://code.visualstudio.com/)  
     - [Visual Studio Code için Azure IoT Edge uzantısı](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-edge).    
     - [Visual Studio Code için Python uzantısı](https://marketplace.visualstudio.com/items?itemName=ms-python.python)    
-    - [Python 3](https://www.python.org/)    
+    - [Python 3 karşılaştırması](https://www.python.org/)    
     - Python paketlerini yüklemek için PIP (genellikle Python yüklemenize dahildir)
 
 ## <a name="get-the-sample-code"></a>Örnek kodunu alma
@@ -126,7 +128,7 @@ Başlamadan önce aşağıdakilere sahip olduğunuzdan emin olun:
     ![Kapsayıcı kayıt defterinde modül](media/azure-stack-edge-gpu-deploy-sample-module/module-container-registry-1.png)    
 
 
-7. Bir dağıtım bildirimi oluşturmak için, ** üzerindedeployment.template.js** sağ tıklayın ve sonra **IoT Edge dağıtım bildirimi oluştur**' u seçin. 
+7. Bir dağıtım bildirimi oluşturmak için, **üzerindedeployment.template.js** sağ tıklayın ve sonra **IoT Edge dağıtım bildirimi oluştur**' u seçin. 
 
     ![IoT Edge dağıtım bildirimi oluştur](media/azure-stack-edge-gpu-deploy-sample-module/generate-iot-edge-deployment-manifest-1.png)  
 

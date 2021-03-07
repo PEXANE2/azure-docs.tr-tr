@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 3/3/2021
 ms.author: wgries
 ms.subservice: files
-ms.openlocfilehash: 38754e0f43ceaf40411cd89b97d1c0bf5fe7eb99
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 5549fc3b63b76c6158ae7399e6d94a43d2d4f28f
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102049262"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102435197"
 ---
 # <a name="release-notes-for-the-azure-file-sync-agent"></a>Azure Dosya Eşitleme aracısı sürüm notları
 Azure Dosya Eşitleme aracısı şirket içi dosya sunucularının sağladığı esneklik, performans ve uyumluluk özelliklerinden vazgeçmeden kuruluşunuzun dosya paylaşımlarını Azure Dosyaları'nda toplamanızı sağlar. Windows Server yüklemeleriniz, Azure dosya paylaşımınızın hızlı bir önbelleğine dönüştürülür. Verilere yerel olarak erişmek için Windows Server üzerinde kullanılabilen tüm protokolleri (SMB, NFS ve FTPS gibi) kullanabilirsiniz. Dünya çapında istediğiniz sayıda önbellek oluşturabilirsiniz.
@@ -150,6 +150,8 @@ Aşağıdaki öğeler eşitlenmez ancak sistem normal şekilde çalışmaya deva
 ### <a name="cloud-tiering"></a>Bulut katmanlaması
 - Katmanlanmış bir dosya Robocopy kullanılarak başka bir konuma kopyalanırsa, elde edilen dosya katmanlanmaz. Robocopy bu özniteliği kopyalama işlemlerine yanlışlıkla dahil ettiği için çevrimdışı özniteliği ayarlanmış olabilir.
 - Robocopy kullanarak dosyaları kopyalarken dosya zaman damgalarını korumak için/MıR seçeneğini kullanın. Bu, eski dosyaların son erişilen dosyalardan daha önce katmanlı olmasını sağlayacaktır.
+    > [!Warning]  
+    > Robocopy/B anahtarı Azure Dosya Eşitleme desteklenmez. Kaynak dosya bozulmasına yol açacağından Robocopy/B anahtarını bir Azure Dosya Eşitleme sunucusu uç noktasıyla kullanma.
 
 ## <a name="agent-version-10100"></a>Aracı sürümü 10.1.0.0
 Aşağıdaki sürüm notları, 5 Haziran 2020 ' de yayınlanan Azure Dosya Eşitleme aracısının sürüm 10.1.0.0 içindir. Bu notlar, 10.0.0.0 ve 10.0.2.0 sürümü için listelenen sürüm notlarına ek niteliğindedir.

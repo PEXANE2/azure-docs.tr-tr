@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 03/05/2020
 ms.author: aahi
 ms.custom: devx-track-js
-ms.openlocfilehash: f725a4095103a7dcfc3dcdbdcefdc84d16501632
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: f2c15221268635ca1892a9292d5b0c208c13dd34
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94366542"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102426816"
 ---
 # <a name="tutorial-single-page-web-app"></a>Öğretici: Tek sayfalı web uygulaması
 
@@ -27,7 +27,7 @@ ms.locfileid: "94366542"
 
 Bing Varlık Arama API’si, *varlıklar* ve *yerler* hakkındaki bilgiler için Web araması yapmanızı sağlar. Belirli bir sorguda bir sonuç türünü veya her ikisini de isteyebilirsiniz. Yerlerin ve varlıkların tanımları aşağıda sağlanmıştır.
 
-| Sonuç | Description |
+| Sonuç | Açıklama |
 |-|-|
 |Varlıklar|Ada göre bulduğunuz tanınmış kişiler, yerler ve nesneler|
 |Yerler|Ada *veya* türe (İtalyan restoranları) bulduğunuz restoranlar, oteller ve diğer yerel işletmeler|
@@ -68,8 +68,8 @@ Bu öğreticide, kaynak kodun yalnızca seçilen bölümlerini açıklıyoruz. T
 
 * Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/cognitive-services/)
 * Azure aboneliğiniz varsa:
-  * <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesBingSearch-v7"  title="Bing Arama kaynak oluşturma "  target="_blank"> <span class="docon docon-navigate-external x-hidden-focus"></span> </a> anahtar ve uç noktanıza ulaşmak için Azure Portal Bing arama bir kaynak oluşturun. Dağıtıldıktan sonra **Kaynağa Git ' e** tıklayın.
-  * <a href="https://www.microsoft.com/maps/create-a-bing-maps-key.aspx"  title=""  target="_blank"> <span class="docon docon-navigate-external x-hidden-focus"></span> </a> Anahtar ve uç noktanıza ulaşmak Için Azure Portal bir Bing haritalar kaynağı oluşturun görüntü işleme kaynak oluşturun. Dağıtıldıktan sonra **Kaynağa Git ' e** tıklayın.
+  * <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesBingSearch-v7"  title="Bing Arama kaynak oluşturma "  target="_blank"> </a> anahtar ve uç noktanıza ulaşmak için Azure Portal Bing arama bir kaynak oluşturun. Dağıtıldıktan sonra **Kaynağa Git ' e** tıklayın.
+  * <a href="https://www.microsoft.com/maps/create-a-bing-maps-key.aspx"  title=""  target="_blank"> </a> Anahtar ve uç noktanıza ulaşmak için Azure Portal bir Bing Haritalar kaynağı oluşturun görüntü işleme kaynak oluşturun. Dağıtıldıktan sonra **Kaynağa Git ' e** tıklayın.
 
 ## <a name="app-components"></a>Uygulama bileşenleri
 
@@ -147,7 +147,7 @@ HTML `<body>` etiketi, sayfanın yüklenmesi tamamlandığında `getSearchSubscr
 
 HTML formu aşağıdaki denetimleri içerir:
 
-| Denetim | Description |
+| Denetim | Açıklama |
 |-|-|
 |`where`|Aramada kullanılan pazarı (konum ve dil) seçmek için açılan menü.|
 |`query`|Arama terimlerinin girildiği metin alanı.|

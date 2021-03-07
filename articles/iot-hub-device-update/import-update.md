@@ -6,15 +6,15 @@ ms.author: andbrown
 ms.date: 2/11/2021
 ms.topic: how-to
 ms.service: iot-hub-device-update
-ms.openlocfilehash: c83221743e0566d783c38c40aaf92111a0cd80f7
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 7f2353d9e87c35f01a9fd514df7cfb090a98bf27
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102030741"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102442953"
 ---
 # <a name="import-new-update"></a>Yeni güncelleştirme al
-IoT Hub için yeni bir güncelleştirmeyi cihaz güncelleştirmesine aktarmayı öğrenin.
+IoT Hub için yeni bir güncelleştirmeyi cihaz güncelleştirmesine aktarmayı öğrenin. Henüz yapmadıysanız, temel [içeri aktarma kavramlarını öğrendiğinizden](import-concepts.md)emin olun.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -59,9 +59,9 @@ IoT Hub için yeni bir güncelleştirmeyi cihaz güncelleştirmesine aktarmayı 
     | --------- | ----------- |
     | deviceManufacturer | Güncelleştirmenin uyumlu olduğu cihazın üreticisi, örneğin contoso
     | deviceModel | Güncelleştirmenin uyumlu olduğu cihazın modeli, örneğin, Toaster
-    | updateProvider | Güncelleştirme kimliğinin sağlayıcı parçası, örneğin fabrikam
-    | updateName | Güncelleştirme kimliğinin bölüm bölümü, örneğin, ımageupdate
-    | updateVersion | Güncelleştirme sürümü, örneğin, 2,0
+    | updateProvider | Güncelleştirme tarafından oluşturulan veya doğrudan sorumlu olan varlık. Genellikle şirket adı olacaktır.
+    | updateName | Bir güncelleştirme sınıfının tanımlayıcısı. Sınıf, seçtiğiniz herhangi bir şey olabilir. Genellikle bir cihaz veya model adı olacaktır.
+    | updateVersion | Sürüm numarası, aynı sağlayıcıya ve ada sahip diğer başkalarından bu güncelleştirmeyi ayırt eder. Cihazdaki tek bir yazılım bileşeninin sürümüyle aynı olabilir veya eşleşmeyebilir.
     | Güncelleştirme türü | <ul><li>`microsoft/swupdate:1`Görüntü güncelleştirmesi için belirt</li><li>`microsoft/apt:1`Paket güncelleştirmesi için belirtin</li></ul>
     | ınstalınstalbu ölçüt | <ul><li>Güncelleştirme türü için SWVersion değerini belirtin `microsoft/swupdate:1`</li><li>Güncelleştirme türü için önerilen değeri belirtin `microsoft/apt:1` .
     | updateFilePath | Bilgisayarınızdaki güncelleştirme dosyalarının yolu

@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/28/2020
 ms.author: erhopf
 ms.custom: devx-track-python, devx-track-js, devx-track-csharp
-ms.openlocfilehash: f14ac72443dedc8e33e607a82b2145c7ebf95ad2
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: 66de81387fe27bd2a81ebcfeab7d86aac7031ff1
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94368789"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102425303"
 ---
 # <a name="azure-cognitive-services-security"></a>Azure bilişsel hizmetler güvenliği
 
@@ -29,13 +29,13 @@ HTTP üzerinden sunulan bilişsel hizmetler uç noktaları, TLS 1,2 ' i zorlar. 
 * HTTP çağrısının isteğin bir parçası olarak TLS 1,2 belirtmesini sağlamak için kullanılan dil (ve platform)
   * Dile ve platforma bağlı olarak, TLS belirtmek örtük olarak veya açık olarak yapılır
 
-.NET kullanıcıları için, <a href="https://docs.microsoft.com/dotnet/framework/network-programming/tls" target="_blank">Aktarım Katmanı Güvenliği en iyi yöntemlerini <span class="docon docon-navigate-external x-hidden-focus"></span> </a>göz önünde bulundurun.
+.NET kullanıcıları için, <a href="https://docs.microsoft.com/dotnet/framework/network-programming/tls" target="_blank">Aktarım Katmanı Güvenliği en iyi yöntemlerini </a>göz önünde bulundurun.
 
 ## <a name="authentication"></a>Kimlik Doğrulaması
 
-Kimlik doğrulaması tartışırken, yaygın olarak karşılaşılan birkaç yanlış rastlamalar vardır. Kimlik doğrulama ve yetkilendirme genellikle bir diğeri için karıştırılır. Kimlik ayrıca güvenlik ' de bir ana bileşendir. Kimlik, bir <a href="https://en.wikipedia.org/wiki/Principal_(computer_security)" target="_blank">sorumlu <span class="docon docon-navigate-external x-hidden-focus"></span> </a>hakkındaki bilgilerin koleksiyonudur. Kimlik sağlayıcıları (IDP) kimlik doğrulama hizmetlerine kimlikler sağlar. Kimlik doğrulaması, bir kullanıcının kimliğini doğrulama işlemidir. Yetkilendirme, belirli bir kimlik için kaynaklara yönelik erişim haklarının ve ayrıcalıkların belirtiledir. Bilişsel hizmetler tekliflerinin birkaçı, Azure rol tabanlı erişim denetimi (Azure RBAC) içerir. Azure RBAC, sorumluları el ile yönetme ile ilgili bazı sertifika işlemlerini basitleştirmek için kullanılabilir. Daha ayrıntılı bilgi için bkz. [Azure için Azure rol tabanlı erişim denetimi](../role-based-access-control/overview.md).
+Kimlik doğrulaması tartışırken, yaygın olarak karşılaşılan birkaç yanlış rastlamalar vardır. Kimlik doğrulama ve yetkilendirme genellikle bir diğeri için karıştırılır. Kimlik ayrıca güvenlik ' de bir ana bileşendir. Kimlik, bir <a href="https://en.wikipedia.org/wiki/Principal_(computer_security)" target="_blank">sorumlu </a>hakkındaki bilgilerin koleksiyonudur. Kimlik sağlayıcıları (IDP) kimlik doğrulama hizmetlerine kimlikler sağlar. Kimlik doğrulaması, bir kullanıcının kimliğini doğrulama işlemidir. Yetkilendirme, belirli bir kimlik için kaynaklara yönelik erişim haklarının ve ayrıcalıkların belirtiledir. Bilişsel hizmetler tekliflerinin birkaçı, Azure rol tabanlı erişim denetimi (Azure RBAC) içerir. Azure RBAC, sorumluları el ile yönetme ile ilgili bazı sertifika işlemlerini basitleştirmek için kullanılabilir. Daha ayrıntılı bilgi için bkz. [Azure için Azure rol tabanlı erişim denetimi](../role-based-access-control/overview.md).
 
-Abonelik anahtarları, erişim belirteçleri ve Azure Active Directory (AAD) ile kimlik doğrulaması hakkında daha fazla bilgi için bkz. Azure bilişsel <a href="https://docs.microsoft.com/azure/cognitive-services/authentication" target="_blank">Hizmetler <span class="docon docon-navigate-external x-hidden-focus"></span> 'e yönelik kimlik doğrulama istekleri</a>.
+Abonelik anahtarları, erişim belirteçleri ve Azure Active Directory (AAD) ile kimlik doğrulaması hakkında daha fazla bilgi için bkz. Azure bilişsel <a href="https://docs.microsoft.com/azure/cognitive-services/authentication" target="_blank">Hizmetler 'e yönelik kimlik doğrulama istekleri</a>.
 
 ## <a name="environment-variables-and-application-configuration"></a>Ortam değişkenleri ve uygulama yapılandırması
 
@@ -76,7 +76,7 @@ Değer verilen kalıcı ortam değişkeni oluşturun ve atayın.
 [System.Environment]::SetEnvironmentVariable('ENVIRONMENT_VARIABLE_KEY', 'value', 'User')
 ```
 
-**Windows PowerShell** 'in yeni bir örneğinde, ortam değişkenini okuyun.
+**Windows PowerShell**'in yeni bir örneğinde, ortam değişkenini okuyun.
 
 ```powershell
 # Prints the env var value
@@ -92,7 +92,7 @@ Değer verilen kalıcı ortam değişkeni oluşturun ve atayın.
 echo export ENVIRONMENT_VARIABLE_KEY="value" >> /etc/environment && source /etc/environment
 ```
 
-**Bash** 'in yeni bir örneğinde, ortam değişkenini okuyun.
+**Bash**'in yeni bir örneğinde, ortam değişkenini okuyun.
 
 ```Bash
 # Prints the env var value
@@ -113,7 +113,7 @@ Bir ortam değişkenini almak için, belleğin belleğine okunmalıdır. Kullanm
 
 # <a name="c"></a>[C#](#tab/csharp)
 
-Daha fazla bilgi için bkz. <a href="https://docs.microsoft.com/dotnet/api/system.environment.getenvironmentvariable" target="_blank">`Environment.GetEnvironmentVariable` <span class="docon docon-navigate-external x-hidden-focus"></span></a>.
+Daha fazla bilgi için bkz <a href="https://docs.microsoft.com/dotnet/api/system.environment.getenvironmentvariable" target="_blank"> `Environment.GetEnvironmentVariable` </a>..
 
 ```csharp
 using static System.Environment;
@@ -132,7 +132,7 @@ class Program
 
 # <a name="c"></a>[C++](#tab/cpp)
 
-Daha fazla bilgi için bkz. <a href="https://docs.microsoft.com/cpp/c-runtime-library/reference/getenv-wgetenv" target="_blank">`getenv` <span class="docon docon-navigate-external x-hidden-focus"></span></a>.
+Daha fazla bilgi için bkz <a href="https://docs.microsoft.com/cpp/c-runtime-library/reference/getenv-wgetenv" target="_blank"> `getenv` </a>..
 
 ```cpp
 #include <stdlib.h>
@@ -147,7 +147,7 @@ int main()
 
 # <a name="java"></a>[Java](#tab/java)
 
-Daha fazla bilgi için bkz. <a href="https://docs.oracle.com/javase/7/docs/api/java/lang/System.html#getenv(java.lang.String)" target="_blank">`System.getenv` <span class="docon docon-navigate-external x-hidden-focus"></span></a>.
+Daha fazla bilgi için bkz <a href="https://docs.oracle.com/javase/7/docs/api/java/lang/System.html#getenv(java.lang.String)" target="_blank"> `System.getenv` </a>..
 
 ```java
 import java.lang.*;
@@ -164,7 +164,7 @@ public class Program {
 
 # <a name="nodejs"></a>[Node.js](#tab/node-js)
 
-Daha fazla bilgi için bkz. <a href="https://nodejs.org/api/process.html#process_process_env" target="_blank">`process.env` <span class="docon docon-navigate-external x-hidden-focus"></span></a>.
+Daha fazla bilgi için bkz <a href="https://nodejs.org/api/process.html#process_process_env" target="_blank"> `process.env` </a>..
 
 ```javascript
 // Get the named env var, and assign it to the value variable
@@ -174,7 +174,7 @@ const value =
 
 # <a name="python"></a>[Python](#tab/python)
 
-Daha fazla bilgi için bkz. <a href="https://docs.python.org/2/library/os.html#os.environ" target="_blank">`os.environ` <span class="docon docon-navigate-external x-hidden-focus"></span></a>.
+Daha fazla bilgi için bkz <a href="https://docs.python.org/2/library/os.html#os.environ" target="_blank"> `os.environ` </a>..
 
 ```python
 import os
@@ -185,7 +185,7 @@ value = os.environ['ENVIRONMENT_VARIABLE_KEY']
 
 # <a name="objective-c"></a>[Objective-C](#tab/objective-c)
 
-Daha fazla bilgi için bkz. <a href="https://developer.apple.com/documentation/foundation/nsprocessinfo/1417911-environment?language=objc" target="_blank">`environment` <span class="docon docon-navigate-external x-hidden-focus"></span></a>.
+Daha fazla bilgi için bkz <a href="https://developer.apple.com/documentation/foundation/nsprocessinfo/1417911-environment?language=objc" target="_blank"> `environment` </a>..
 
 ```objectivec
 // Get the named env var, and assign it to the value variable
@@ -201,12 +201,12 @@ NSString* value =
 
 Bu bilişsel hizmet için Müşteri Kasası kullanılabilir:
 
-* Çevirmen
+* Translator
 
 Aşağıdaki hizmetler için, Microsoft mühendisleri E0 katmanındaki herhangi bir müşteri verilerine erişmeyecektir: 
 
 * Language Understanding
-* Yüz
+* Yüz Tanıma
 * Content Moderator
 * Kişiselleştirme
 

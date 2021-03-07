@@ -9,12 +9,12 @@ ms.subservice: face-api
 ms.topic: conceptual
 ms.date: 11/17/2020
 ms.author: pafarley
-ms.openlocfilehash: 085dd18214f795566669fb862bba63b67eb9115d
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 218579176b807bbdae85646f27eaa7f301d4b9a6
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96350373"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102428278"
 ---
 # <a name="build-an-enrollment-app-for-android-with-react"></a>Tepki vererek Android için bir kayıt uygulaması oluşturun
 
@@ -37,9 +37,9 @@ Başlatıldığında, uygulama kullanıcılara ayrıntılı bir onay ekranı gö
 ## <a name="set-up-the-development-environment"></a>Geliştirme ortamını ayarlama
 
 1. [Örnek kayıt uygulaması](https://github.com/azure-samples/cognitive-services-FaceAPIEnrollmentSample)için Git deposunu kopyalayın.
-1. Geliştirme ortamınızı ayarlamak için, doğal <a href="https://reactnative.dev/docs/environment-setup"  title=" Yerel belgelere tepki verme doğal belgelerini izleyin "  target="_blank"> <span class="docon docon-navigate-external x-hidden-focus"></span> </a> . Geliştirme işletim sistemi olarak **Yerel CLI hızlı** başlangıcı ' nı seçin ve hedef işletim sistemi olarak **Android** ' i seçin. Bağımlılıklar ve **Android geliştirme ortamı** **yükleme** bölümlerini doldurun.
+1. Geliştirme ortamınızı ayarlamak için, doğal <a href="https://reactnative.dev/docs/environment-setup"  title=" Yerel belgelere tepki verme doğal belgelerini izleyin "  target="_blank"> </a> . Geliştirme işletim sistemi olarak **Yerel CLI hızlı** başlangıcı ' nı seçin ve hedef işletim sistemi olarak **Android** ' i seçin. Bağımlılıklar ve **Android geliştirme ortamı** **yükleme** bölümlerini doldurun.
 1. [Visual Studio Code](https://code.visualstudio.com/)gibi tercih ettiğiniz metin düzenleyicisinde env.jsdosyası açın ve uç nokta ve anahtarınızı ekleyin. Bitiş noktanıza ve anahtarınıza, kaynağınızın **genel bakış** sekmesi altına Azure Portal ulaşabilirsiniz. Bu adım yalnızca yerel test amaçlıdır &mdash; Yüz Tanıma API'si anahtarınızı uzak deponuza iade etmeyin.
-1. Android Studio veya kendi Android cihazınızdan Android sanal cihaz öykünücüsünü kullanarak uygulamayı çalıştırın. Uygulamanızı fiziksel bir cihazda test etmek için ilgili yanıt verme <a href="https://reactnative.dev/docs/running-on-device"  title=" Yerel belgelerini Izleyin "  target="_blank"> Yerel belgelere tepki verin <span class="docon docon-navigate-external x-hidden-focus"></span> </a> .  
+1. Android Studio veya kendi Android cihazınızdan Android sanal cihaz öykünücüsünü kullanarak uygulamayı çalıştırın. Uygulamanızı fiziksel bir cihazda test etmek için ilgili yanıt verme <a href="https://reactnative.dev/docs/running-on-device"  title=" Yerel belgelerini Izleyin "  target="_blank"> Yerel belgelere tepki verin </a> .  
 
 
 ## <a name="create-an-enrollment-experience"></a>Kayıt deneyimi oluşturma  
@@ -78,9 +78,9 @@ Uygulamanın işlevselliğini tam kayıt deneyimini kapsayacak şekilde genişle
 
 Uygulamanızı üretime bırakmaya hazırsanız, Android uygulamaları için paket dosyası biçimi olan, serbest kullanıma uygun bir APK dosyası oluşturacaksınız. Bu APK dosyası bir özel anahtarla imzalanmalıdır. Bu yayın derlemesi ile uygulamayı doğrudan cihazlarınıza dağıtmaya başlayabilirsiniz. 
 
-<a href="https://developer.android.com/studio/publish/preparing#publishing-build"  title=" "  target="_blank"> <span class="docon docon-navigate-external x-hidden-focus"></span> </a> Özel anahtar oluşturmayı, uygulamanızı imzalamayı ve bir APK yayını oluşturmayı öğrenmek için yayın hazırlığı için hazırlanma belgelerini izleyin.  
+<a href="https://developer.android.com/studio/publish/preparing#publishing-build"  title=" "  target="_blank"> </a> Özel anahtar oluşturmayı, uygulamanızı imzalamayı ve bir APK yayını oluşturmayı öğrenmek için yayın hazırlığı için hazırlanma belgelerini izleyin.  
 
-İmzalı bir APK oluşturduktan sonra uygulamanızı yayımlama <a href="https://developer.android.com/studio/publish"  title=" "  target="_blank"> <span class="docon docon-navigate-external x-hidden-focus"></span> </a> hakkında daha fazla bilgi edinmek için uygulamanızı yayımlama belgelerinize bakın.
+İmzalı bir APK oluşturduktan sonra uygulamanızı yayımlama <a href="https://developer.android.com/studio/publish"  title=" "  target="_blank"> </a> hakkında daha fazla bilgi edinmek için uygulamanızı yayımlama belgelerinize bakın.
 
 ## <a name="next-steps"></a>Sonraki adımlar  
 

@@ -5,13 +5,13 @@ author: lfittl-msft
 ms.author: lufittl
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 09/23/2020
-ms.openlocfilehash: 7e9268f69b0ec8d06cd86fe5aec19a46b20a3a76
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 03/05/2021
+ms.openlocfilehash: 70f54fc111bfd9443f988619cb2b86303fd3f07b
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91710592"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102443395"
 ---
 # <a name="postgresql-extensions-in-azure-database-for-postgresql---flexible-server"></a>PostgreSQL için Azure veritabanı 'nda PostgreSQL uzantıları-esnek sunucu
 
@@ -53,6 +53,7 @@ PostgreSQL için Azure veritabanı 'nda, Postgres sürüm 12 ' ye sahip olan esn
 > |[ltree](https://www.postgresql.org/docs/12/ltree.html)                        | 1.1             | hiyerarşik ağaç benzeri yapılar için veri türü|
 > |[pageincele](https://www.postgresql.org/docs/12/pageinspect.html)                        | 1.7             | veritabanı sayfalarının içeriğini düşük bir düzeyde inceleyin|
 > |[pg_buffercache](https://www.postgresql.org/docs/12/pgbuffercache.html)               | 1.3             | Paylaşılan arabellek önbelleğini inceleyin|
+> |[pg_cron](https://github.com/citusdata/pg_cron)                        | 1.2             | PostgreSQL için iş Zamanlayıcısı|
 > |[pg_freespacemap](https://www.postgresql.org/docs/12/pgfreespacemap.html)               | 1.2             | boş alan haritasını inceleyin (FSD)|
 > |[pg_prewarm](https://www.postgresql.org/docs/12/pgprewarm.html)                   | 1.2             | ön sıcak ilişki verileri|
 > |[pg_stat_statements](https://www.postgresql.org/docs/12/pgstatstatements.html)           | 1.7             | yürütülen tüm SQL deyimlerinin yürütme istatistiklerini izleyin|
@@ -60,6 +61,7 @@ PostgreSQL için Azure veritabanı 'nda, Postgres sürüm 12 ' ye sahip olan esn
 > |[pg_visibility](https://www.postgresql.org/docs/12/pgvisibility.html)                      | 1.2             | görünürlük haritasını (VM) ve sayfa düzeyi görünürlük bilgilerini inceleyin|
 > |[pgaudit](https://www.pgaudit.org/)                     | 1.4             | Denetim işlevselliği sağlar|
 > |[pgşifre](https://www.postgresql.org/docs/12/pgcrypto.html)                     | 1.3             | şifreleme işlevleri|
+> |[pglogical](https://github.com/2ndQuadrant/pglogical)                        | 2.3.2             | PostgreSQL mantıksal çoğaltma|
 > |[pgrowlocks](https://www.postgresql.org/docs/12/pgrowlocks.html)                   | 1.2             | satır düzeyinde kilitleme bilgilerini göster|
 > |[pgstattuple](https://www.postgresql.org/docs/12/pgstattuple.html)                  | 1,5             | demet düzeyi istatistiklerini göster|
 > |[plpgsql](https://www.postgresql.org/docs/12/plpgsql.html)                      | 1.0             | PL/pgSQL yordam dili|
@@ -102,6 +104,7 @@ PostgreSQL için Azure veritabanı 'nda, Postgres sürüm 11 ' i içeren esnek s
 > |[ltree](https://www.postgresql.org/docs/11/ltree.html)                        | 1.1             | hiyerarşik ağaç benzeri yapılar için veri türü|
 > |[pageincele](https://www.postgresql.org/docs/11/pageinspect.html)                        | 1.7             | veritabanı sayfalarının içeriğini düşük bir düzeyde inceleyin|
 > |[pg_buffercache](https://www.postgresql.org/docs/11/pgbuffercache.html)               | 1.3             | Paylaşılan arabellek önbelleğini inceleyin|
+> |[pg_cron](https://github.com/citusdata/pg_cron)                        | 1.2             | PostgreSQL için iş Zamanlayıcısı|
 > |[pg_freespacemap](https://www.postgresql.org/docs/11/pgfreespacemap.html)               | 1.2             | boş alan haritasını inceleyin (FSD)|
 > |[pg_prewarm](https://www.postgresql.org/docs/11/pgprewarm.html)                   | 1.2             | ön sıcak ilişki verileri|
 > |[pg_stat_statements](https://www.postgresql.org/docs/11/pgstatstatements.html)           | 1.6             | yürütülen tüm SQL deyimlerinin yürütme istatistiklerini izleyin|
@@ -109,6 +112,7 @@ PostgreSQL için Azure veritabanı 'nda, Postgres sürüm 11 ' i içeren esnek s
 > |[pg_visibility](https://www.postgresql.org/docs/11/pgvisibility.html)                      | 1.2             | görünürlük haritasını (VM) ve sayfa düzeyi görünürlük bilgilerini inceleyin|
 > |[pgaudit](https://www.pgaudit.org/)                     | 1.3.1             | Denetim işlevselliği sağlar|
 > |[pgşifre](https://www.postgresql.org/docs/11/pgcrypto.html)                     | 1.3             | şifreleme işlevleri|
+> |[pglogical](https://github.com/2ndQuadrant/pglogical)                        | 2.3.2             | PostgreSQL mantıksal çoğaltma|
 > |[pgrowlocks](https://www.postgresql.org/docs/11/pgrowlocks.html)                   | 1.2             | satır düzeyinde kilitleme bilgilerini göster|
 > |[pgstattuple](https://www.postgresql.org/docs/11/pgstattuple.html)                  | 1,5             | demet düzeyi istatistiklerini göster|
 > |[plpgsql](https://www.postgresql.org/docs/11/plpgsql.html)                      | 1.0             | PL/pgSQL yordam dili|
