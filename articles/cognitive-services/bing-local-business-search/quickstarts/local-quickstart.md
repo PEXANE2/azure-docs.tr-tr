@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 10/22/2020
 ms.author: aahi
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 02fc67862a332ef51e164c17ef973bb610cf4fc7
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: a4fbde55e8fd774e895b27ec2279b4ea80cfd92a
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96499127"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102430182"
 ---
 # <a name="quickstart-send-a-query-to-the-bing-local-business-search-api-in-c"></a>Hızlı başlangıç: C 'de Bing yerel Iş Arama API 'sine bir sorgu gönderme #
 
@@ -34,7 +34,7 @@ Bu örnek uygulama, bir arama sorgusu için API 'den gelen yerel yanıt verileri
 * Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/cognitive-services/)
 * Herhangi bir [Visual Studio 2019](https://www.visualstudio.com/downloads/)sürümü.
 * Linux/MacOS kullanıyorsanız, bu uygulama [mono](https://www.mono-project.com/)kullanılarak çalıştırılabilir.
-* Azure aboneliğiniz olduktan sonra, <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesBingSearch-v7"  title=" "  target="_blank"> <span class="docon docon-navigate-external x-hidden-focus"></span> </a> anahtarınızı ve uç noktanızı almak için Azure Portal bir Bing arama kaynağı oluşturun Bing arama bir kaynak oluşturun. Dağıtıldıktan sonra **Kaynağa Git ' e** tıklayın.
+* Azure aboneliğiniz olduktan sonra, <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesBingSearch-v7"  title=" "  target="_blank"> </a> anahtarınızı ve uç noktanızı almak için Azure Portal bir Bing Arama kaynağı oluşturun Bing arama bir kaynak oluşturun. Dağıtıldıktan sonra **Kaynağa Git ' e** tıklayın.
 
 ## <a name="create-the-request"></a>İstek oluştur 
 
@@ -78,8 +78,8 @@ namespace localSearch
     class Program
     {
         // **********************************************
-        // **_ Update or verify the following values. _*_
-        // _*********************************************
+        // *** Update or verify the following values. ***
+        // **********************************************
 
         // Replace the accessKey string value with your valid access key.
         const string accessKey = "enter key here";

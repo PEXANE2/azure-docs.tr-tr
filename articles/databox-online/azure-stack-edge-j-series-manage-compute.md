@@ -6,18 +6,18 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 01/27/2021
+ms.date: 03/04/2021
 ms.author: alkohli
-ms.openlocfilehash: bd49edcfaca781ac3d36fbf871ec146b32c64ae3
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 99068a68c5d35bc6a501c5860d0bbc9ea3e3f368
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101733423"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102437000"
 ---
 # <a name="manage-compute-on-your-azure-stack-edge-pro-gpu"></a>Azure Stack Edge Pro GPU 'unuzda işlem yönetme
 
-<!--[!INCLUDE [applies-to-skus](../../includes/azure-stack-edge-applies-to-all-sku.md)]-->
+[!INCLUDE [applies-to-GPU-and-pro-r-and-mini-r-skus](../../includes/azure-stack-edge-applies-to-gpu-pro-r-mini-r-sku.md)]
 
 Bu makalede, Azure Stack Edge Pro GPU cihazınızda IoT Edge hizmeti aracılığıyla işlem yönetimi açıklanmaktadır. Azure portal veya yerel Web Kullanıcı arabirimi aracılığıyla işlem yönetebilirsiniz. Modül, Tetikleyiciler ve IoT Edge yapılandırmayı yönetmek için Azure portal kullanın ve işlem ağ ayarlarını yönetmek için yerel Web Kullanıcı arabirimini kullanın.
 
@@ -37,7 +37,7 @@ Bir tetikleyici oluşturmak için Azure portal aşağıdaki adımları uygulayı
 
 1. Azure portal, Azure Stack Edge kaynağına gidin ve **IoT Edge**' e gidin. **Tetikleyiciler** ' e gidin ve komut çubuğunda **+ tetikleyici Ekle** ' yi seçin.
 
-    ![Tetikleyici Ekle 'yi seçin](media/azure-stack-edge-j-series-manage-compute/add-trigger-1m.png)
+    ![Tetikleyici Ekle 'yi seçin](media/azure-stack-edge-j-series-manage-compute/add-trigger-1-m.png)
 
 2. **Tetikleyici Ekle** dikey penceresinde Tetikleyiciniz için benzersiz bir ad sağlayın.
     

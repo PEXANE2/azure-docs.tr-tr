@@ -7,12 +7,12 @@ ms.service: storage
 ms.topic: conceptual
 ms.date: 02/17/2021
 ms.author: normesta
-ms.openlocfilehash: e5f62456b85791bad5bb66f3abf67e523558d76e
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.openlocfilehash: 9fa7f586db5a32640c16db5802b56d6481e8889d
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "100650397"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102439298"
 ---
 # <a name="access-control-model-in-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage 2. 'de erişim denetimi modeli
 
@@ -106,7 +106,7 @@ Aşağıdaki tabloda, bir güvenlik sorumlusunun **işlem** sütununda listelene
 
 
 > [!NOTE] 
-> Azure Depolama Gezgini bir kapsayıcının içeriğini görüntülemek için güvenlik sorumlularının [Azure ad kullanarak Depolama Gezgini oturum açması](../../vs-azure-tools-storage-manage-with-storage-explorer.md?tabs=windows#add-a-resource-via-azure-ad)gerekir ve (en azından) bir kapsayıcının kök klasörüne () okuma erişimi (R--) vardır `\` . Bu izin düzeyi, kök klasörün içeriğini listeleme özelliği sunar. Kök klasörün içeriğinin görünür olmasını istemiyorsanız, bunları [okuyucu](../../role-based-access-control/built-in-roles.md#reader) rolüne atayabilirsiniz. Bu rolle, bu rol, bir hesaptaki kapsayıcıları listeleyebilir, ancak kapsayıcı içerikleriyle kalmaz. Daha sonra ACL 'Leri kullanarak belirli dizinlere ve dosyalara erişim izni verebilirsiniz.   
+> Azure Depolama Gezgini bir kapsayıcının içeriğini görüntülemek için güvenlik sorumlularının [Azure ad kullanarak Depolama Gezgini oturum açması](../../vs-azure-tools-storage-manage-with-storage-explorer.md?tabs=windows#attach-to-an-individual-resource)gerekir ve (en azından) bir kapsayıcının kök klasörüne () okuma erişimi (R--) vardır `\` . Bu izin düzeyi, kök klasörün içeriğini listeleme özelliği sunar. Kök klasörün içeriğinin görünür olmasını istemiyorsanız, bunları [okuyucu](../../role-based-access-control/built-in-roles.md#reader) rolüne atayabilirsiniz. Bu rolle, bu rol, bir hesaptaki kapsayıcıları listeleyebilir, ancak kapsayıcı içerikleriyle kalmaz. Daha sonra ACL 'Leri kullanarak belirli dizinlere ve dosyalara erişim izni verebilirsiniz.   
 
 ## <a name="security-groups"></a>Güvenlik grupları
 

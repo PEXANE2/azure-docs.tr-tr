@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 02/02/2021
 ms.author: cherylmc
 ms.custom: subject-armqs
-ms.openlocfilehash: bf892a45ee6df2ab29a1b326a663dc41057c7ea6
-ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
+ms.openlocfilehash: d31f490baec49e8e0b6fcf89caa8c19202fdf763
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99509840"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102431389"
 ---
 # <a name="quickstart-create-an-any-to-any-configuration-using-an-arm-template"></a>Hızlı başlangıç: ARM şablonunu kullanarak herhangi bir yapılandırmaya sahip bir yapılandırma oluşturma
 
@@ -125,13 +125,7 @@ Bu şablonu düzgün bir şekilde dağıtmak için, aşağıdaki nedenlerden dol
 
 Oluşturduğunuz kaynaklara artık ihtiyacınız kalmadığında, bunları silin. Bağımlılıklar nedeniyle sanal WAN kaynaklarından bazılarının belirli bir sırada silinmesi gerekir. Silme işleminin tamamlanması yaklaşık 30 dakika sürebilir.
 
-1. Oluşturduğunuz sanal WAN 'ı açın.
-1. Hub sayfasını açmak için sanal WAN ile ilişkili bir sanal hub seçin.
-1. **Sil**'e tıklayın. Hub 'daki tüm varlıkları (bağlantılar, ağ geçitleri, vb.) silin. Bu, tamamlanması 30 dakika sürebilir.
-1. Hub 'ı bu noktada silebilir ya da kaynak grubunu sildiğinizde daha sonra silebilirsiniz.
-1. Sanal WAN ile ilişkili tüm Hub 'lar için tekrarlayın.
-1. Azure portal kaynak grubuna gidin.
-1. **Kaynak grubunu sil**'i seçin. Bu, hub ve sanal WAN dahil olmak üzere kaynak grubundaki her şeyi siler.
+[!INCLUDE [Delete resources](../../includes/virtual-wan-resource-cleanup.md)]
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

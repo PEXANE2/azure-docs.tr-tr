@@ -6,16 +6,18 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 10/06/2020
+ms.date: 02/22/2021
 ms.author: alkohli
-ms.openlocfilehash: 27af230f8fa157f76865bd38a48c17640491d7db
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: 1404dfd25f4e80e0e05c0071da649cacfa45dac0
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98896198"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102437766"
 ---
 # <a name="manage-an-azure-stack-edge-pro-gpu-device-via-windows-powershell"></a>Windows PowerShell aracılığıyla Azure Stack Edge Pro GPU cihazını yönetme
+
+[!INCLUDE [applies-to-GPU-and-pro-r-and-mini-r-skus](../../includes/azure-stack-edge-applies-to-gpu-pro-r-mini-r-sku.md)]
 
 Azure Stack Edge Pro çözümü, verileri işlemenize ve ağ üzerinden Azure 'a göndermenize olanak tanır. Bu makalede Azure Stack Edge Pro cihazınız için yapılandırma ve yönetim görevlerinin bazıları açıklanmaktadır. Cihazınızı yönetmek için Azure portal, yerel Web Kullanıcı arabirimini veya Windows PowerShell arabirimini kullanabilirsiniz.
 
@@ -121,7 +123,7 @@ NVIDIA GPU 'larda çoklu Işlem hizmeti (MPS), her bir işin GPU kaynaklarının
     - `FullLogCollection`: Bu parametre, günlük paketinin tüm işlem günlüklerini içermesini sağlar. Varsayılan olarak, günlük paketi yalnızca bir Günlükler alt kümesi içerir.
 
 
-## <a name="change-kubernetes-pod-and-service-subnets"></a>Kubernetes Pod ve hizmet alt ağlarını değiştirme
+## <a name="change-kubernetes-pod-and-service-subnets"></a>Kubernetes pod ve hizmet alt ağlarını değiştirme
 
 Azure Stack Edge cihazındaki Kubernetes varsayılan olarak, sırasıyla Pod ve hizmet için 172.27.0.0/16 ve 172.28.0.0/16 alt ağlarını kullanır. Bu alt ağlar ağınızda zaten kullanılıyorsa, `Set-HcsKubeClusterNetworkInfo` Bu alt ağları değiştirmek için cmdlet 'ini çalıştırabilirsiniz.
 
@@ -212,7 +214,7 @@ Commands:
 
 Aşağıdaki tabloda, için kullanılabilen komutların kısa bir açıklaması verilmiştir `iotedge` :
 
-|command  |Description |
+|command  |Açıklama |
 |---------|---------|
 |`list`     | Modülleri listeleme         |
 |`logs`     | Modülün günlüklerini getirme        |

@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 06/11/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 1ee631e3e4a13a18bb61ee6237ff67a49f663179
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 1ea67fa4ae925e04415fe358175c1dea3b0f03e3
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101693909"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102428805"
 ---
 # <a name="control-storage-account-access-for-serverless-sql-pool-in-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'te sunucusuz SQL havuzu için depolama hesabı erişimini denetleme
 
@@ -105,13 +105,13 @@ Kullanıcı kimliği aracılığıyla güvenlik duvarıyla korunan depolamaya er
 Depolama hesabı güvenlik duvarını yapılandırmak ve SYNAPSE çalışma alanı için bir özel durum eklemek için aşağıdaki adımları izleyin.
 
 1. PowerShell 'i açın veya [PowerShell 'i yükleyip](/powershell/scripting/install/installing-powershell-core-on-windows?preserve-view=true&view=powershell-7.1)
-2. Az. Storage 3.0.1 modülünü ve az. SYNAPSE 0.7.0 'yi yükler: 
+2. Az. Storage 3.4.0 modülünü ve az. SYNAPSE 0.7.0 'yi yükler: 
     ```powershell
-    Install-Module -Name Az.Storage -RequiredVersion 3.0.1-preview -AllowPrerelease
+    Install-Module -Name Az.Storage -RequiredVersion 3.4.0
     Install-Module -Name Az.Synapse -RequiredVersion 0.7.0
     ```
     > [!IMPORTANT]
-    > **3.0.1 sürümünü** kullandığınızdan emin olun. Şu komutu çalıştırarak az. Storage sürümünüzü kontrol edebilirsiniz:  
+    > **3.4.0 sürümünü** kullandığınızdan emin olun. Şu komutu çalıştırarak az. Storage sürümünüzü kontrol edebilirsiniz:  
     > ```powershell 
     > Get-Module -ListAvailable -Name  Az.Storage | select Version
     > ```

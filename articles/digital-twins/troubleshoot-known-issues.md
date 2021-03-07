@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.service: digital-twins
 ms.date: 07/14/2020
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: d7d97ca1eb590fb96789d439243dd04d6143a960
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
+ms.openlocfilehash: 641b44a5e21e6646c07e6e1511e1c4ff01707f79
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102203156"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102434109"
 ---
 # <a name="known-issues-in-azure-digital-twins"></a>Azure dijital TWINS 'de bilinen sorunlar
 
@@ -37,7 +37,7 @@ Bu makalede, Azure dijital TWINS ile ilişkili bilinen sorunlar hakkında bilgi 
 
 ## <a name="issue-with-interactive-browser-authentication-on-azureidentity-120"></a>Azure 'da etkileşimli tarayıcı kimlik doğrulamasıyla ilgili sorun. Identity 1.2.0
 
-**Sorun açıklaması:** Azure **[. Identity](/dotnet/api/azure.identity?view=azure-dotnet&preserve-view=true) kitaplığı**'Nın **1.2.0** sürümünü kullanarak Azure dijital TWINS uygulamalarınıza kimlik doğrulama kodu yazarken [ınteractivebrowsercredential](/dotnet/api/azure.identity.interactivebrowsercredential?view=azure-dotnet&preserve-view=true) yöntemiyle ilgili sorunlarla karşılaşabilirsiniz. Bu, bir tarayıcı penceresinde kimlik doğrulamaya çalışırken "Azure. Identity. AuthenticationFailedException" hata yanıtı olarak sunulur. Tarayıcı penceresi tamamen başlayamayabilir veya kullanıcının kimlik doğrulamasını başarıyla başarabilirken, istemci uygulaması yine de hata vererek başarısız olabilir.
+**Sorun açıklaması:** Azure **[. Identity](/dotnet/api/azure.identity) kitaplığı**'Nın **1.2.0** sürümünü kullanarak Azure dijital TWINS uygulamalarınıza kimlik doğrulama kodu yazarken [ınteractivebrowsercredential](/dotnet/api/azure.identity.interactivebrowsercredential) yöntemiyle ilgili sorunlarla karşılaşabilirsiniz. Bu, bir tarayıcı penceresinde kimlik doğrulamaya çalışırken "Azure. Identity. AuthenticationFailedException" hata yanıtı olarak sunulur. Tarayıcı penceresi tamamen başlayamayabilir veya kullanıcının kimlik doğrulamasını başarıyla başarabilirken, istemci uygulaması yine de hata vererek başarısız olabilir.
 
 | Bu, beni etkiler mi? | Nedeni | Çözüm |
 | --- | --- | --- |
@@ -45,7 +45,7 @@ Bu makalede, Azure dijital TWINS ile ilişkili bilinen sorunlar hakkında bilgi 
 
 ## <a name="issue-with-default-azure-credential-authentication-on-azureidentity-130"></a>Azure 'da varsayılan Azure kimlik bilgisi kimlik doğrulamasıyla sorun. Identity 1.3.0
 
-**Sorun açıklaması:** **[Azure. Identity](/dotnet/api/azure.identity?view=azure-dotnet&preserve-view=true) kitaplığı**'nın **1.3.0** sürümünü kullanarak kimlik doğrulama kodu yazarken, bazı kullanıcılar bu Azure dijital TWINS belgeleri genelinde birçok örnekte kullanılan [DefaultAzureCredential](/dotnet/api/azure.identity.defaultazurecredential?view=azure-dotnet?view=azure-dotnet&preserve-view=true) yöntemiyle ilgili sorunlarla karşılaşmıştır. Bu, kod kimlik doğrulamaya çalıştığında "Azure. Identity. AuthenticationFailedException: SharedTokenCacheCredential kimlik doğrulaması başarısız oldu" hata yanıtı olarak sunulur.
+**Sorun açıklaması:** **[Azure. Identity](/dotnet/api/azure.identity) kitaplığı**'nın **1.3.0** sürümünü kullanarak kimlik doğrulama kodu yazarken, bazı kullanıcılar bu Azure dijital TWINS belgeleri genelinde birçok örnekte kullanılan [DefaultAzureCredential](/dotnet/api/azure.identity.defaultazurecredential) yöntemiyle ilgili sorunlarla karşılaşmıştır. Bu, kod kimlik doğrulamaya çalıştığında "Azure. Identity. AuthenticationFailedException: SharedTokenCacheCredential kimlik doğrulaması başarısız oldu" hata yanıtı olarak sunulur.
 
 | Bu, beni etkiler mi? | Nedeni | Çözüm |
 | --- | --- | --- |

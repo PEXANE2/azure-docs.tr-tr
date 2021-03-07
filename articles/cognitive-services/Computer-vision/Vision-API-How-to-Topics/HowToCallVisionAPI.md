@@ -11,12 +11,12 @@ ms.topic: sample
 ms.date: 09/09/2019
 ms.author: kefre
 ms.custom: seodec18, devx-track-csharp
-ms.openlocfilehash: e5e404e4cc0e4131ba7ade5ec8ec6115e26268a2
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 3a9ef3fb009cfb91b20ac7492be193286e2f0410
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91965905"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102432545"
 ---
 # <a name="call-the-computer-vision-api"></a>Görüntü İşleme API’sini çağırma
 
@@ -35,10 +35,10 @@ Bu makaledeki örneklerde aşağıdaki özellikler gösterilmektedir:
 - **Seçenek 1**: kapsamlı analiz-yalnızca belirtilen modeli çözümle
 - **Seçenek 2**: gelişmiş analiz- [86-Categories taksonomi](../Category-Taxonomy.md) kullanarak ek ayrıntılar sağlamak için çözümleyin
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/cognitive-services/)
-* Azure aboneliğiniz olduktan sonra, <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesComputerVision"  title=" "  target="_blank"> <span class="docon docon-navigate-external x-hidden-focus"></span> </a> anahtarınızı ve uç noktanızı almak için Azure Portal bir görüntü işleme kaynağı oluşturun görüntü işleme bir kaynak oluşturun. Dağıtıldıktan sonra **Kaynağa Git ' e**tıklayın.
+* Azure aboneliğiniz olduktan sonra, <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesComputerVision"  title=" "  target="_blank"> </a> anahtarınızı ve uç noktanızı almak için Azure Portal bir Görüntü İşleme kaynağı oluşturun görüntü işleme bir kaynak oluşturun. Dağıtıldıktan sonra **Kaynağa Git ' e** tıklayın.
     * Uygulamanızı Görüntü İşleme hizmetine bağlamak için oluşturduğunuz kaynaktaki anahtar ve uç nokta gerekir. Anahtarınızı ve uç noktanızı daha sonra hızlı başlangıçta aşağıdaki koda yapıştırabilirsiniz.
     * `F0`Hizmeti denemek ve daha sonra üretime yönelik ücretli bir katmana yükseltmek için ücretsiz fiyatlandırma katmanını () kullanabilirsiniz.
 * Yerel olarak depolanmış görüntünün bir resim URL 'SI veya yolu
@@ -148,7 +148,7 @@ Bu durumda, tüm v1 sorgu parametreleri aynı şekilde davranır. VisualFeatures
 
 ## <a name="retrieve-and-understand-the-json-output-for-analysis"></a>Analiz için JSON çıkışını alma ve anlama
 
-İşte bir örnek:
+Aşağıda bir örnek verilmiştir:
 
 ```json
 {  
@@ -177,7 +177,7 @@ Bu durumda, tüm v1 sorgu parametreleri aynı şekilde davranır. VisualFeatures
 }
 ```
 
-Alan | Tür | İçerik
+Alan | Tür | Content
 ------|------|------|
 Etiketler  | `object` | Bir etiket dizisi için en üst düzey nesne.
 tags[].Name | `string`    | Etiketler sınıflandırıcıdan anahtar sözcüğü.
@@ -239,7 +239,7 @@ Seçenek 2 (gelişmiş analiz) kullanan alana özgü modeller için, aşağıdak
 
 Kategoriler alanı, orijinal taksonominin bir veya daha fazla [86 kategorisinin](../Category-Taxonomy.md) listesidir. Alt çizgi ile biten Kategoriler, bu kategori ve alt öğeleri ile eşleşir (örneğin, "people_" veya "people_group," Ünlüler modeli için).
 
-Alan    | Tür    | İçerik
+Alan    | Tür    | Content
 ------|------|------|
 kategoriler | `object`    | Üst düzey nesne.
 categories[].name     | `string`    | 86-kategori taksonomi listesindeki addır.

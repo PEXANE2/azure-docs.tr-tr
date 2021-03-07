@@ -12,12 +12,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 05/29/2020
-ms.openlocfilehash: 7dccce597dcfbcedd5083befafa79b8ba6f3adac
-ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
+ms.openlocfilehash: a9f9e03227bfb75d94ed79cdf858278e2efe4f31
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/19/2020
-ms.locfileid: "97693477"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102440403"
 ---
 # <a name="azure-sql-database-and-azure-sql-managed-instance-connect-and-query-articles"></a>Azure SQL veritabanı ve Azure SQL yönetilen örnek Connect ve sorgu makaleleri
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -30,7 +30,7 @@ Aşağıdaki belge, Azure SQL veritabanı ve Azure SQL yönetilen örneği ile b
 |---|---|
 |[SQL Server Management Studio](connect-query-ssms.md)|Bu hızlı başlangıçta SSMS kullanarak bir veritabanına bağlanma ve ardından Transact-SQL deyimlerini kullanarak veritabanındaki verileri sorgulama, ekleme, güncelleştirme ve silme işlemlerinin nasıl yapılacağı gösterilmiştir.|
 |[Azure Data Studio](/sql/azure-data-studio/quickstart-sql-database?toc=%2fazure%2fsql-database%2ftoc.json)|Bu hızlı başlangıçta, bir veritabanına bağlanmak için Azure Data Studio kullanma ve ardından Transact-SQL (T-SQL) deyimlerini kullanarak Azure Data Studio öğreticilerde kullanılan Tutorialdb 'yi oluşturma gösterilmektedir.|
-|[Azure Portal](connect-query-portal.md)|Bu hızlı başlangıçta sorgu Düzenleyicisi 'ni kullanarak bir veritabanına bağlanma (yalnızca Azure SQL veritabanı) ve ardından Transact-SQL deyimlerini kullanarak veritabanındaki verileri sorgulama, ekleme, güncelleştirme ve silme işlemlerinin nasıl yapılacağı gösterilmiştir.|
+|[Azure portalı](connect-query-portal.md)|Bu hızlı başlangıçta sorgu Düzenleyicisi 'ni kullanarak bir veritabanına bağlanma (yalnızca Azure SQL veritabanı) ve ardından Transact-SQL deyimlerini kullanarak veritabanındaki verileri sorgulama, ekleme, güncelleştirme ve silme işlemlerinin nasıl yapılacağı gösterilmiştir.|
 |[Visual Studio Code](connect-query-vscode.md)|Bu hızlı başlangıçta, bir veritabanına bağlanmak için Visual Studio Code kullanma ve ardından Transact-SQL deyimlerini kullanarak veritabanındaki verileri sorgulama, ekleme, güncelleştirme ve silme işlemlerinin nasıl yapılacağı gösterilmiştir.|
 |[Visual Studio ile .NET](connect-query-dotnet-visual-studio.md)|Bu hızlı başlangıçta, .NET Framework kullanarak bir veritabanına bağlanma ve Transact-SQL deyimleriyle veri sorgulayan bir C# programı oluşturma işlemlerinin nasıl yapılacağı gösterilmiştir.|
 |[.NET Core](connect-query-dotnet-core.md)|Bu hızlı başlangıçta, Windows/Linux/macOS 'ta .NET Core kullanarak bir veritabanına bağlanma ve Transact-SQL deyimleriyle veri sorgulama işlemlerinin nasıl yapılacağı gösterilmiştir.|
@@ -88,7 +88,7 @@ Aşağıdaki tabloda, istemci uygulamalarının şirket içinde veya bulutta ça
 | Dil | Platform | Ek kaynaklar | İndir | başlarken |
 | :-- | :-- | :-- | :-- | :-- |
 | C# | Windows, Linux, macOS | [SQL Server için Microsoft ADO.NET](/sql/connect/ado-net/microsoft-ado-net-sql-server) | [İndir](https://www.microsoft.com/net/download/) | [Kullanmaya başlama](https://www.microsoft.com/sql-server/developer-get-started/csharp/ubuntu)
-| Java | Windows, Linux, macOS | [SQL Server için Microsoft JDBC sürücüsü](/sql/connect/jdbc/microsoft-jdbc-driver-for-sql-server/) | [İndir](https://go.microsoft.com/fwlink/?linkid=852460) |  [Kullanmaya başlama](https://www.microsoft.com/sql-server/developer-get-started/java/ubuntu)
+| Java | Windows, Linux, macOS | [SQL Server için Microsoft JDBC sürücüsü](/sql/connect/jdbc/microsoft-jdbc-driver-for-sql-server/) | [İndir](/sql/connect/jdbc/download-microsoft-jdbc-driver-for-sql-server) |  [Kullanmaya başlama](https://www.microsoft.com/sql-server/developer-get-started/java/ubuntu)
 | PHP | Windows, Linux, macOS| [SQL Server için PHP SQL sürücüsü](/sql/connect/php/microsoft-php-driver-for-sql-server) | [İndir](/sql/connect/php/download-drivers-php-sql-server) | [Kullanmaya başlama](https://www.microsoft.com/sql-server/developer-get-started/php/ubuntu/)
 | Node.js | Windows, Linux, macOS | [ SQL Server içinNode.js sürücüsü](/sql/connect/node-js/node-js-driver-for-sql-server/) | [Yükleme](/sql/connect/node-js/step-1-configure-development-environment-for-node-js-development/) |  [Kullanmaya başlama](https://www.microsoft.com/sql-server/developer-get-started/node/ubuntu)
 | Python | Windows, Linux, macOS | [Python SQL sürücüsü](/sql/connect/python/python-driver-for-sql-server/) | Seçenekleri yüklensin: <br/> \*[pymssql](/sql/connect/python/pymssql/step-1-configure-development-environment-for-pymssql-python-development/) <br/> \*[pyodbc](/sql/connect/python/pyodbc/step-1-configure-development-environment-for-pyodbc-python-development/) |  [Kullanmaya başlama](https://www.microsoft.com/sql-server/developer-get-started/python/ubuntu)

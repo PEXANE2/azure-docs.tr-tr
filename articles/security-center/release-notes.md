@@ -7,12 +7,12 @@ ms.service: security-center
 ms.topic: reference
 ms.date: 03/04/2021
 ms.author: memildin
-ms.openlocfilehash: 6c69e5923e2b65bab0feca04d10fa67f49df3616
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: da2201931c92939029724b1086589803845109a7
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102174492"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102439638"
 ---
 # <a name="whats-new-in-azure-security-center"></a>Azure Güvenlik Merkezi 'ndeki yenilikler nelerdir?
 
@@ -53,7 +53,7 @@ Güvenlik durumunuzu merkezi bir deneyimden görüntülemenize yardımcı olma k
 
 ### <a name="sql-vulnerability-assessment-now-includes-the-disable-rule-experience-preview"></a>SQL güvenlik açığı değerlendirmesi artık "kuralı devre dışı bırak" deneyimini (Önizleme) içerir
 
-Güvenlik Merkezi, olası veritabanı güvenlik açıklarını keşfetmenize, izlemenize ve düzeltmenize yardımcı olan yerleşik bir güvenlik açığı tarayıcısı içerir. Değerlendirme taramalarınızın bulguları, SQL makinelerinizin güvenlik durumuna genel bir bakış ve güvenlik bulgularının ayrıntıları sağlar.
+Güvenlik Merkezi, olası veritabanı güvenlik açıklarını keşfetmenize, izlemenize ve düzeltmenize yardımcı olan yerleşik bir güvenlik açığı tarayıcısı içerir. Değerlendirme taramalarınızın sonuçları, SQL makinelerinizin güvenlik durumuna genel bir bakış ve güvenlik bulgularının ayrıntıları sağlar.
 
 Bir bulmayı yok saymanız gereken bir kuruluş varsa, bunu düzeltmek yerine isteğe bağlı olarak devre dışı bırakabilirsiniz. Devre dışı bulgular, güvenli puanınızı etkilemez veya istenmeyen gürültü oluşturmaz.
 

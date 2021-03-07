@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.date: 05/08/2020
 ms.author: chez
 ms.reviewer: mariozi
-ms.openlocfilehash: 4e30ac2e6836b40ab0c0c2915eae48266cb4845c
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
+ms.openlocfilehash: c6c376e44c6135a800e6f7e281f8ea85b828329a
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102199225"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102443903"
 ---
 # <a name="encrypt-azure-data-factory-with-customer-managed-keys"></a>Müşteri tarafından yönetilen anahtarlarla Azure Data Factory şifreleyin
 
@@ -102,9 +102,9 @@ Kullanıcı tarafından atanan yönetilen kimlik hakkında daha fazla bilgi edin
 1. Kullanıcı tarafından atanan yönetilen kimliğin (UA-mı), Key Vault için anahtar _Al_ ve  _sarmalama_ anahtarı izinlerini içerdiğinden emin olun
 
 1. __Gelişmiş__ sekmesinde, Azure Portal 'de veri fabrikası oluşturma deneyimine yönelik gelişmiş sekmesinin _müşteri tarafından yönetilen anahtar ekran görüntüsünü kullanarak şifrelemeyi etkinleştir_ kutusunu işaretleyin 
-   :::image type="content" source="media/enable-customer-managed-key/06-uami-cmk.png" alt-text=".":::
+   :::image type="content" source="media/enable-customer-managed-key/06-user-assigned-managed-identity.png" alt-text=".":::
 
-1. Key Vault URL 'sini girin
+1. Key Vault depolanan müşterinin yönettiği anahtarın URL 'sini sağlayın
 
 1. Key Vault kimlik doğrulaması için uygun bir kullanıcı tarafından atanan yönetilen kimlik seçin
 

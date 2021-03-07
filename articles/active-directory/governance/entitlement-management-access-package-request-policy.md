@@ -16,12 +16,12 @@ ms.date: 09/16/2020
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c4a1aa737b1f671c08d51d780fa98db50f2869a1
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.openlocfilehash: 7b6bc00af8d54c8748dd82b934974282e0e8da0e
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102211660"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102426969"
 ---
 # <a name="change-request-settings-for-an-access-package-in-azure-ad-entitlement-management"></a>Azure AD yetkilendirme yönetiminde bir erişim paketi için değişiklik isteği ayarları
 
@@ -197,6 +197,8 @@ Bir erişim paketinin istek ve onay ayarlarını değiştirmek için, ilgili ilk
     ![Erişim paketi-Ilke-ilke ayarını etkinleştir](./media/entitlement-management-access-package-approval-policy/enable-requests.png)
 
 1. **İleri**’ye tıklayın.
+
+1. Bir erişim paketine erişim isteğinde bulunulmak üzere istek sahibine ek bilgi sağlamak istiyorsanız, istek sahibi bilgilerini (Önizleme) yapılandırmak için [Azure AD Yetkilendirme Yönetimi 'nde bir erişim paketinin onay ve istek sahibi bilgilerini değiştirme (Önizleme) ayarlarını değiştirin](entitlement-management-access-package-approval-policy.md#collect-additional-requestor-information-for-approval-preview) bölümündeki adımları kullanın.
 
 1. Yaşam döngüsü ayarlarını yapılandırın.
 

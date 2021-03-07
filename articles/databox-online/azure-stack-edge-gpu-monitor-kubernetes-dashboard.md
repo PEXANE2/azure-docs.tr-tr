@@ -6,16 +6,18 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 09/22/2020
+ms.date: 02/22/2021
 ms.author: alkohli
-ms.openlocfilehash: 137cff47d49be1405f60bc47cd16f7f027ab63a9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 19b3595228c29814e42af88696972fd81b156190
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91320838"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102443055"
 ---
 # <a name="use-kubernetes-dashboard-to-monitor-your-azure-stack-edge-pro-gpu-device"></a>Azure Stack Edge Pro GPU cihazınızı izlemek için Kubernetes panosunu kullanma
+
+[!INCLUDE [applies-to-GPU-and-pro-r-and-mini-r-skus](../../includes/azure-stack-edge-applies-to-gpu-pro-r-mini-r-sku.md)]
 
 Bu makalede, Azure Stack Edge Pro GPU cihazınızı izlemek için Kubernetes panosuna nasıl erişebileceğiniz ve kullanılacağı açıklanmaktadır. Cihazınızı izlemek için Azure portal grafikleri kullanabilir, Kubernetes panosunu görüntüleyebilir veya `kubectl` komutları cihazın PowerShell arabirimi aracılığıyla çalıştırabilirsiniz. 
 
@@ -33,7 +35,7 @@ Bu makalede şunları öğreneceksiniz:
 
 ## <a name="about-kubernetes-dashboard"></a>Kubernetes panosu hakkında
 
-Kubernetes panosu, Kapsayıcılı uygulamalarınızın sorunlarını gidermek için kullanabileceğiniz web tabanlı bir kullanıcı arabirimidir. Kubernetes panosu, Kubernetes komut satırı için Kullanıcı arabirimi tabanlı bir alternatiftir `kubectl` . Daha fazla bilgi için bkz. [Kubernetes panosu](https://kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboard/). 
+Web tabanlı bir kullanıcı arabirimi olan Kubernetes panosunu kullanarak kapsayıcılı uygulamalarınızla ilgili sorunları giderebilirsiniz. Kubernetes panosu, Kubernetes komut satırı için Kullanıcı arabirimi tabanlı bir alternatiftir `kubectl` . Daha fazla bilgi için bkz. [Kubernetes panosu](https://kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboard/). 
 
 Azure Stack Edge Pro cihazınızda, Kubernetes panosunu *salt okuma* modunda kullanarak Azure Stack Edge Pro cihazınızda çalışan uygulamalara bir genel bakış alabilir, Kubernetes küme kaynaklarının durumunu görüntüleyebilir ve cihazda oluşan tüm hataları görebilirsiniz.
 

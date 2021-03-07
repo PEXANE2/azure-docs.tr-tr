@@ -5,12 +5,12 @@ ms.topic: include
 ms.date: 02/10/2021
 ms.author: trbye
 ms.custom: devx-track-js
-ms.openlocfilehash: b06defbdac0f1bddfca13db095799f3158095585
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 3fa47935721ccfccdfe18d60a66d5cc480582e7d
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100515113"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102428257"
 ---
 Bu hızlı başlangıçta, konuşma SDK 'sını kullanarak metinden konuşmaya senşlerini kullanmaya yönelik yaygın tasarım düzenlerini öğrenirsiniz. Temel yapılandırma ve birleştirme işlemleri gerçekleştirerek başlar ve aşağıdakiler de dahil olmak üzere özel uygulama geliştirme için daha gelişmiş örneklere geçin:
 
@@ -29,16 +29,16 @@ Bu makalede bir Azure hesabınız ve konuşma hizmeti kaynağınız olduğunu va
 
 ## <a name="install-the-speech-sdk"></a>Konuşma SDK 'sını yükler
 
-Herhangi bir şey yapabilmeniz <a href="https://www.npmjs.com/package/microsoft-cognitiveservices-speech-sdk" target="_blank">için önce JavaScript <span class="docon docon-navigate-external x-hidden-focus"></span> için konuşma SDK 'sını </a>yüklemeniz gerekir. Platformunuza bağlı olarak, aşağıdaki yönergeleri kullanın:
+Herhangi bir şey yapabilmeniz <a href="https://www.npmjs.com/package/microsoft-cognitiveservices-speech-sdk" target="_blank">için önce JavaScript Için konuşma SDK 'sını </a>yüklemeniz gerekir. Platformunuza bağlı olarak, aşağıdaki yönergeleri kullanın:
 - <a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk?tabs=nodejs#get-the-speech-sdk" target="_blank">Node.js <span 
 class="docon docon-navigate-external x-hidden-focus"></span></a>
-- <a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk?tabs=browser#get-the-speech-sdk" target="_blank">Web tarayıcısı <span class="docon docon-navigate-external x-hidden-focus"></span></a>
+- <a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk?tabs=browser#get-the-speech-sdk" target="_blank">Web tarayıcısı </a>
 
 Ayrıca, hedef ortama bağlı olarak, aşağıdakilerden birini kullanın:
 
 # <a name="script"></a>[SCRIPT](#tab/script)
 
-<a href="https://aka.ms/csspeech/jsbrowserpackage" target="_blank">JavaScript <span class="docon docon-navigate-external x-hidden-focus"></span>microsoft.cognitiveservices.speech.sdk.bundle.jsdosyası için konuşma SDK 'sını</a> indirip ayıklayın ve HTML dosyanıza erişilebilen bir klasöre yerleştirin. 
+JavaScript *microsoft.cognitiveservices.speech.sdk.bundle.js* dosyası <a href="https://aka.ms/csspeech/jsbrowserpackage" target="_blank">için konuşma SDK 'sını</a> indirip ayıklayın ve HTML dosyanıza erişilebilen bir klasöre yerleştirin.
 
 ```html
 <script src="microsoft.cognitiveservices.speech.sdk.bundle.js"></script>;
@@ -53,7 +53,7 @@ Ayrıca, hedef ortama bağlı olarak, aşağıdakilerden birini kullanın:
 import * as sdk from "microsoft-cognitiveservices-speech-sdk";
 ```
 
-Hakkında daha fazla bilgi için `import` bkz. <a href="https://javascript.info/import-export" target="_blank">dışa ve <span class="docon docon-navigate-external x-hidden-focus"></span> içeri aktarma </a>.
+Hakkında daha fazla bilgi için `import` bkz. <a href="https://javascript.info/import-export" target="_blank">dışa ve içeri aktarma </a>.
 
 # <a name="require"></a>[gerektirir](#tab/require)
 
@@ -61,7 +61,7 @@ Hakkında daha fazla bilgi için `import` bkz. <a href="https://javascript.info/
 const sdk = require("microsoft-cognitiveservices-speech-sdk");
 ```
 
-Hakkında daha fazla bilgi için `require` bkz. <a href="https://nodejs.org/en/knowledge/getting-started/what-is-require/" target="_blank">ne gerektiriyor? <span class="docon docon-navigate-external x-hidden-focus"></span> </a>.
+Hakkında daha fazla bilgi için `require` bkz. <a href="https://nodejs.org/en/knowledge/getting-started/what-is-require/" target="_blank">ne gerektiriyor? </a>.
 
 ---
 
@@ -285,7 +285,7 @@ function xmlToString(filePath) {
 }
 ```
 
-Hakkında daha fazla bilgi için `readFileSync` bkz. <a href="https://nodejs.org/api/fs.html#fs_fs_readlinksync_path_options" target="_blank">Node.js dosya <span class="docon docon-navigate-external x-hidden-focus"></span> sistemi</a>. Buradan, sonuç nesnesi önceki örneklerle tamamen aynıdır.
+Hakkında daha fazla bilgi için `readFileSync` bkz. <a href="https://nodejs.org/api/fs.html#fs_fs_readlinksync_path_options" target="_blank">Node.js dosya sistemi</a>. Buradan, sonuç nesnesi önceki örneklerle tamamen aynıdır.
 
 ```javascript
 function synthesizeSpeech() {

@@ -6,19 +6,19 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 02/03/2021
+ms.date: 02/22/2021
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to configure compute on Azure Stack Edge Pro so I can use it to transform the data before sending it to Azure.
-ms.openlocfilehash: 44265efd4d125bb2701742a490fc883c48f1877b
-ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
+ms.openlocfilehash: 6c067fb5f39e82bb1601ce7b4d9dc5e2ce4ac624
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99551000"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102440148"
 ---
 # <a name="tutorial-run-a-compute-workload-with-iot-edge-module-on-azure-stack-edge-pro-gpu"></a>Öğretici: Azure Stack Edge Pro GPU üzerinde IoT Edge modülüyle işlem yükünü çalıştırma
 
-<!--[!INCLUDE [applies-to-skus](../../includes/azure-stack-edge-applies-to-all-sku.md)]-->
+[!INCLUDE [applies-to-GPU-and-pro-r-skus](../../includes/azure-stack-edge-applies-to-gpu-pro-r-sku.md)]
 
 Bu öğreticide, Azure Stack Edge Pro GPU cihazınızda bir IoT Edge modülünü kullanarak bir işlem iş yükünün nasıl çalıştırılacağı açıklanmaktadır. İşlem yapılandırıldıktan sonra cihaz, verileri Azure 'a göndermeden önce dönüştürür.
 
@@ -75,7 +75,7 @@ Bu öğreticide basit dağıtım için iki paylaşım gerekir: bir kenar paylaş
 
     `rsync <source file path> < destination file path>`
 
-    Komutu hakkında daha fazla bilgi için `rsync` , [rsync belgelerine](https://www.computerhope.com/unix/rsync.htm)gidin.
+    Komutu hakkında daha fazla bilgi için `rsync` [ `Rsync` belgelere](https://www.computerhope.com/unix/rsync.htm)gidin.
  
 3. Güncelleştirilmiş paylaşımların listesini görmek için **bulut depolama ağ geçidi > paylaşımlarına** gidin.
 
@@ -108,7 +108,7 @@ Modül eklemek için aşağıdaki adımları uygulayın:
 
     ![Modül ekleme ve yapılandırma](./media/azure-stack-edge-gpu-deploy-compute-module-simple/add-module-1.png)
 
-3. **Ekle**’yi seçin. Modül eklendi. **IoT Edge > modülleri** sayfası, modülün dağıtıldığını belirtecek şekilde güncelleştirilir. Eklediğiniz modülün çalışma zamanı durumu *çalışıyor* olmalıdır.
+3. **Add (Ekle)** seçeneğini belirleyin. Modül eklendi. **IoT Edge > modülleri** sayfası, modülün dağıtıldığını belirtecek şekilde güncelleştirilir. Eklediğiniz modülün çalışma zamanı durumu *çalışıyor* olmalıdır.
 
     ![Modül dağıtıldı](./media/azure-stack-edge-gpu-deploy-compute-module-simple/add-module-2.png)
 

@@ -11,12 +11,12 @@ metadata:
   services: cognitive-services
   title: Soru-Cevap Oluşturma Belgeleri
   description: Soru-Cevap Oluşturma, verilerinizi temel alan bir sohbet ve soru-cevap katmanı oluşturan bulut tabanlı bir API hizmetidir. Soru-Cevap Oluşturma, SSS belgeleri, URL'ler ve ürün kılavuzları gibi yarı yapılandırılmış içeriklerinizden bir soru cevap hizmeti oluşturmanızı sağlar. Soru-Cevap Oluşturma hizmeti, kullanıcılarınızın doğal dil sorularını Bilgi Bankanızda bulunan en iyi cevapla eşleştirerek cevap verir.
-  ms.openlocfilehash: cf541ec285741b9050744c1c47fa36569f9a97b1
-  ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
+  ms.openlocfilehash: 44a142ec69e48ebf2a95f1afbd1076ac96caa37f
+  ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
   ms.translationtype: MT
   ms.contentlocale: tr-TR
-  ms.lasthandoff: 03/05/2021
-  ms.locfileid: "102201983"
+  ms.lasthandoff: 03/07/2021
+  ms.locfileid: "102432613"
 landingContent:
 - title: Soru-Cevap Oluşturma hakkında
   linkLists:
@@ -105,7 +105,7 @@ landingContent:
     - text: Yanıt API'leri oluşturma
       url: /rest/api/cognitiveservices/qnamaker4.0/Runtime
     - text: .Net SDK başvuru belgeleri
-      url: /dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker?view=azure-dotnet
+      url: /dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker
     - text: Azure PowerShell
       url: /powershell/module/az.cognitiveservices/?view=azps-2.6.0#cognitive_services
     - text: Azure Komut Satırı Arabirimi (CLI)

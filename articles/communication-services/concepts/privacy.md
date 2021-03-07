@@ -8,16 +8,18 @@ ms.author: chpalm
 ms.date: 10/03/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 8e08c531cd46d5112138a3feedf97b27307e3dca
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: f6e4218290de6ef41ef6eedc78b3b0b55ee322e8
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101656202"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102438566"
 ---
 # <a name="region-availability-and-data-residency"></a>Bölge kullanılabilirliği ve veri yerleşikliği
 
-Azure Iletişim Hizmetleri, müşterilerimizin gizlilik ve kişisel veri gereksinimlerini karşıladığından yardımcı olmaya kararlıdır. Uygulama kullanan insanlarla doğrudan ilişki ile Iletişim hizmetlerini kullanan bir geliştirici olarak, büyük olasılıkla kendi verilerinin bir denetleyicisidir. Azure Iletişim Hizmetleri bu verileri sizin adınıza depolarken, büyük olasılıkla bu verilerin bir işlemcisi yüksektir. Bu sayfada hizmetin verileri nasıl sakladığı ve bu verileri nasıl tanımlayabilmeniz, dışarı aktarılacağı ve silebilmeniz özetlenmektedir.
+[!INCLUDE [Public Preview Notice](../includes/public-preview-include.md)]
+
+Azure Iletişim Hizmetleri, müşterilerimizin gizlilik ve kişisel veri gereksinimlerini karşıladığından yardımcı olmaya kararlıdır. Uygulama kullanan insanlarla doğrudan ilişki ile Iletişim hizmetlerini kullanan bir geliştirici olarak, büyük olasılıkla kendi verilerinin bir denetleyicisidir. Azure Iletişim Hizmetleri bu verileri sizin adınıza depolarken ve şifrelerken, büyük olasılıkla bu verilerin bir işlemcisi olabilir. Bu sayfada hizmetin verileri nasıl sakladığı ve bu verileri nasıl tanımlayabilmeniz, dışarı aktarılacağı ve silebilmeniz özetlenmektedir.
 
 ## <a name="data-residency"></a>Veri yerleşimi
 
@@ -63,7 +65,7 @@ Sohbet iş parçacıkları ve iletiler açıkça silinene kadar tutulur. Tam bo�
 
 ### <a name="sms"></a>SMS
 
-Gönderilen ve alınan SMS iletileri, hizmet tarafından ephemersel olarak işlenir ve korunmaz.
+Gönderilen ve alınan SMS iletileri, hizmet tarafından ephemersel olarak işlenir ve korunmaz. 
 
 ### <a name="pstn-voice-calling"></a>PSTN sesli çağırma
 

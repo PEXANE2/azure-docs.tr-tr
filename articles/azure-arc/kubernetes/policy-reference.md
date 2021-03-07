@@ -1,18 +1,18 @@
 ---
 title: Azure Arc etkin Kubernetes için yerleşik ilke tanımları
 description: Azure Arc etkin Kubernetes için Azure Ilkesi yerleşik ilke tanımlarını listeler. Bu yerleşik ilke tanımları, Azure kaynaklarınızı yönetmek için yaygın yaklaşımlar sağlar.
-ms.date: 02/09/2021
+ms.date: 03/05/2021
 ms.service: azure-arc
 author: mlearned
 ms.author: mlearned
 ms.topic: reference
 ms.custom: subject-policy-reference
-ms.openlocfilehash: d4a411a2e1c2fcb7383e5582b8d857b88022315c
-ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
+ms.openlocfilehash: f68465129c5459eea73cab87585c1b179a3118e1
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100090485"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102432898"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-arc-enabled-kubernetes"></a>Azure Arc etkin Kubernetes için Azure Ilkesi yerleşik tanımları
 

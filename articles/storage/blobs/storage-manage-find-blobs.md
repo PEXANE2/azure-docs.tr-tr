@@ -3,18 +3,18 @@ title: Blob dizini etiketleriyle Azure blob verilerini yönetme ve bulma (Önizl
 description: Blob nesnelerini kategorilere ayırmak, yönetmek ve sorgulamak için blob dizini etiketlerini nasıl kullanacağınızı öğrenin.
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 10/19/2020
+ms.date: 03/05/2021
 ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
 ms.reviewer: klaasl
 ms.custom: references_regions
-ms.openlocfilehash: 4f84c3c2f6fc671a8cb6ac70313361540e3dd815
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: bfaee493c25f882b8beeed565a155db93efd0083
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95523289"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102431763"
 ---
 # <a name="manage-and-find-azure-blob-data-with-blob-index-tags-preview"></a>Blob dizini etiketleriyle Azure blob verilerini yönetme ve bulma (Önizleme)
 
@@ -29,6 +29,9 @@ Blob dizini etiketleri şunları yapmanızı sağlar:
 
 Depolama hesabınızda birçok farklı uygulama tarafından erişilen milyonlarca blob 'un bulunduğu bir senaryoyu düşünün. Tek bir projeden ilgili tüm verileri bulmak istiyorsunuz. Veriler farklı adlandırma kurallarıyla birden çok kapsayıcıya yayılabilecek kapsamda ne olduğundan emin değilsiniz. Ancak, uygulamalarınız tüm verileri, projelerini temel alarak, Etiketler ile karşıya yükler. Milyonlarca blob 'u aramak ve adları ve özellikleri karşılaştırmak yerine, `Project = Contoso` bulma ölçütleriniz olarak kullanabilirsiniz. Blob dizini, tüm depolama hesabınızdaki tüm kapsayıcıları filtreleyecek ve yalnızca 50 Blobları kümesini hızlı bir şekilde bulup döndürecek `Project = Contoso` .
 
+> [!IMPORTANT]
+> Blob dizini etiketleri şu anda **Önizleme** aşamasındadır. Beta, önizleme veya henüz genel kullanıma sunulmayan Azure özelliklerine uygulanan yasal koşullara yönelik [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) 'na bakın.
+
 Blob dizininin nasıl kullanılacağına ilişkin örneklere başlamak için bkz. [verileri yönetmek ve bulmak için blob dizini etiketlerini kullanma](storage-blob-index-how-to.md).
 
 ## <a name="blob-index-tags-and-data-management"></a>Blob dizin etiketleri ve veri yönetimi
@@ -42,7 +45,6 @@ Depolama hesabınızda aşağıdaki beş blobu göz önünde bulundurun:
 - *Fotoğraflar/bannerphoto.png*
 - *arşivleri/tamamlandı/2019review.pdf*
 - *günlük/2020/01/01/logfile.txt*
-
 
 Bu Bloblar *kapsayıcı/sanal klasör/blob adı* öneki kullanılarak ayrılır. Bu beş blobda bir dizin etiketi özniteliğini, `Project = Contoso` geçerli ön ek kuruluşlarını koruyarak birlikte kategorilere ayırmak için ayarlayabilirsiniz. Dizin etiketlerini eklemek, dizini kullanarak verileri filtreleme ve bulma özelliğini ortaya çıkaran verileri taşıma gereksinimini ortadan kaldırır.
 
@@ -265,7 +267,7 @@ Yalnızca dizin etiketleri otomatik olarak dizinlenir ve yerel BLOB depolama hiz
 
 Aşağıdaki tabloda meta veriler ve BLOB dizin etiketleri arasındaki farklılıklar özetlenmektedir:
 
-|              |   Meta Veriler   |   Blob dizin etiketleri  |
+|              |   Meta veri   |   Blob dizin etiketleri  |
 |--------------|--------------|--------------------|
 | **Sınırlar**      | Sayısal sınır yok, 8 KB toplam, büyük/küçük harfe duyarsız | blob başına en fazla 10 etiket, etiket başına 768 bayt, büyük/küçük harfe duyarlı |
 | **Güncelleştirmeler**    | Arşiv katmanında izin verilmiyor, `Set Blob Metadata` var olan tüm meta verileri değiştirir, `Set Blob Metadata` Blobun son değiştirilme süresini değiştirir | Tüm erişim katmanları için izin verilen `Set Blob Tags` tüm mevcut etiketlerin yerini alır, `Set Blob Tags` Blobun son değiştirilme zamanını değiştirmez |
