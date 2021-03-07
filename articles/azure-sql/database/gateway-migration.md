@@ -10,12 +10,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto
 ms.date: 07/01/2019
-ms.openlocfilehash: eab1ebb3bf66b28bae80fbf16eaf24dbbc63bfb0
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 588c6548afb07fb8ee3de5152c240ddd9ea2293b
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101690541"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102430199"
 ---
 # <a name="azure-sql-database-traffic-migration-to-newer-gateways"></a>Azure SQL veritabanı trafiğini daha yeni ağ geçitlerine geçirme
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -29,6 +29,18 @@ En güncel bilgiler [Azure SQL veritabanı ağ GEÇIDI IP adresleri](connectivit
 ## <a name="status-updates"></a>Durum güncelleştirmeleri
 
 # <a name="in-progress"></a>[Sürüyor](#tab/in-progress-ip)
+
+## <a name="april-2021"></a>2021 Nisan
+Yeni SQL ağ geçitleri aşağıdaki bölgelere ekleniyor:
+- Norveç Doğu: 51.120.96.33
+- Güney Doğu Asya: 13.67.16.193
+- Güney Afrika Kuzey: 102.133.152.32
+- Kore Güney: 52.231.151.96
+- Kuzey Orta: ABD 52.162.105.9
+- Avustralya Güney Doğu: 13.77.49.32 
+
+Bu SQL ağ geçitleri, 5 Nisan 2021 tarihinde müşteri trafiğini kabul etmeye başlar.
+
 ## <a name="march-2021"></a>Mart 2021
 Birden çok bölgedeki aşağıdaki SQL ağ geçitleri devre dışı bırakılıyor sürecinde:
 

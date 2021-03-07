@@ -13,12 +13,12 @@ ms.author: trbye
 ms.custom: devx-track-python, devx-track-js, devx-track-csharp, cog-serv-seo-aug-2020
 zone_pivot_groups: programming-languages-set-twenty-four
 keywords: Metinden konuşmaya
-ms.openlocfilehash: c3f1db836ce028b6881efe0b2fa90e9ac19caac8
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: 7a41c4d9c1074b376da3de556caf63ced0bc84ec
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92058242"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102428239"
 ---
 # <a name="get-started-with-text-to-speech"></a>Metin okumayı kullanmaya başlama
 
@@ -53,6 +53,20 @@ ms.locfileid: "92058242"
 ::: zone pivot="programmer-tool-spx"
 [!INCLUDE [CLI Basics include](includes/how-to/text-to-speech-basics/text-to-speech-basics-cli.md)]
 ::: zone-end
+
+## <a name="get-position-information"></a>Konum bilgilerini al
+
+Bu zamanlamaya göre belirli bir işlem yapabilmesi için, projeniz konuşmayı metne göre konuşularak bir sözcüğün ne zaman konuşmaya çalıştığını bilmeniz gerekebilir. Örnek olarak, kelimeleri konuşulan sözcükleri vurgulamak isterseniz, neyin vurgulanmasını, ne zaman vurgulanmasını ve ne kadar vurgulanmasını istediğinizi bilmeniz gerekir.
+
+Bunu, `WordBoundary` içinde bulunan olayını kullanarak gerçekleştirebilirsiniz `SpeechSynthesizer` . Bu olay, her yeni konuşulan kelimenin başlangıcında ortaya çıkar ve söylenen akış içinde bir saat ve giriş isteminde bir metin uzaklığında bir zaman boşluğu sağlar.
+
+* `AudioOffset` Çıktının başlangıcı ve sonraki sözcüğün başlangıcı arasındaki çıktı sesinin geçen süreyi bildirir. Bu, yüz-nanosaniyelik birim (HNS) ile 10.000 HNS ile 1 milisaniyeye denk ölçülür.
+* `WordOffset` Giriş dizesindeki karakter konumunu (özgün metin veya [SSML](speech-synthesis-markup.md)), konuşmadan önce gelen kelimeden hemen önce bildirir.
+
+> [!NOTE]
+> `WordBoundary` çıkış ses verileri kullanılabilir hale geldiği için olaylar tetiklenir, bu da çıkış cihazına kayıttan yürütmeyi daha hızlı olacaktır. Akış zamanlamasını "gerçek zamanlı" olarak uygun şekilde eşitleme, çağıran tarafından yapılmalıdır.
+
+`WordBoundary`GitHub 'da [metin okuma örneklerinde](https://aka.ms/csspeech/samples) kullanma örneklerini bulabilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -9,12 +9,12 @@ ms.date: 05/28/2019
 ms.author: chrande
 ms.reviewer: sngun
 ms.custom: devx-track-csharp
-ms.openlocfilehash: b31cb33e09158de5912132d0fb7bd31a62131181
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: 15e94dac02770bf28aae4cbfc4e337cb68b8be40
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93360522"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102425334"
 ---
 # <a name="using-the-graph-bulk-executor-net-library-to-perform-bulk-operations-in-azure-cosmos-db-gremlin-api"></a>Azure Cosmos DB Gremlin API 'de toplu işlemler gerçekleştirmek için Graph toplu yürütücü .NET kitaplığını kullanma
 [!INCLUDE[appliesto-gremlin-api](includes/appliesto-gremlin-api.md)]
@@ -25,12 +25,12 @@ Bir veritabanına Gremlin sorguları göndermenin aksine, komutun değerlendiril
 
 ## <a name="bulk-operations-with-graph-data"></a>Grafik verileriyle toplu işlemler
 
-[Toplu yürütücü kitaplığı](/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor.graph?preserve-view=true&view=azure-dotnet) , `Microsoft.Azure.CosmosDB.BulkExecutor.Graph` grafik nesneleri oluşturma ve içeri aktarma işlevselliği sağlayan bir ad alanı içerir. 
+[Toplu yürütücü kitaplığı](/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor.graph) , `Microsoft.Azure.CosmosDB.BulkExecutor.Graph` grafik nesneleri oluşturma ve içeri aktarma işlevselliği sağlayan bir ad alanı içerir. 
 
 Aşağıdaki işlem, veri geçişinin bir Gremlin API kapsayıcısı için nasıl kullanılabileceğini göstermektedir:
 1. Kayıtları veri kaynağından alın.
 2. Alınan kayıtlardan `GremlinVertex` ve `GremlinEdge` nesnesini oluşturun ve bunları bir `IEnumerable` veri yapısına ekleyin. Uygulamanın bu bölümünde veri kaynağının grafik veritabanı olmaması halinde ilişki algılama ve ekleme mantığının uygulanması gerekir.
-3. Grafik nesnelerini koleksiyona eklemek için [Grafik BulkImportAsync metodunu](/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor.graph.graphbulkexecutor.bulkimportasync?preserve-view=true&view=azure-dotnet) kullanın.
+3. Grafik nesnelerini koleksiyona eklemek için [Grafik BulkImportAsync metodunu](/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor.graph.graphbulkexecutor.bulkimportasync) kullanın.
 
 Bu mekanizma, Gremlin istemcisi kullanmaya kıyasla veri geçişinin verimliliğini artırır. Bu geliştirme, verilerin Gremlin ile eklenmesi için uygulamanın doğrulanması, değerlendirilmesi ve ardından veri oluşturmak için yürütülmesi gereken sorguları tek tek gönderilmesi gerektiğindendir. Toplu yürütücü kitaplığı, uygulamadaki doğrulamayı işler ve her bir ağ isteği için aynı anda birden çok Graph nesnesi gönderir.
 
@@ -79,7 +79,7 @@ Toplu yürütücü kitaplığının parametreleri hakkında daha fazla bilgi iç
 
 Yükün `GremlinVertex` ve `GremlinEdge` nesnelerinde oluşturulması gerekir. Bu nesneler şu şekilde oluşturulabilir:
 
-**Köşeler** :
+**Köşeler**:
 ```csharp
 // Creating a vertex
 GremlinVertex v = new GremlinVertex(
@@ -93,7 +93,7 @@ v.AddProperty("customProperty", "value");
 v.AddProperty("partitioningKey", "value");
 ```
 
-**Kenarlar** :
+**Kenarlar**:
 ```csharp
 // Creating an edge
 GremlinEdge e = new GremlinEdge(
@@ -160,4 +160,4 @@ Ayar|Açıklama
 
 * NuGet paket ayrıntıları ve toplu yürütücü .NET kitaplığı sürüm notları hakkında bilgi edinmek için bkz. [toplu yürütücü SDK ayrıntıları](sql-api-sdk-bulk-executor-dot-net.md). 
 * Toplu yürütücü kullanımını daha iyi iyileştirmek için [performans ipuçlarına](./bulk-executor-dot-net.md#performance-tips) göz atın.
-* Bu ad alanında tanımlanan sınıflar ve metotlar hakkında ayrıntılı bilgi için [BulkExecutor.Graph Başvurusu makalesini](/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor.graph?preserve-view=true&view=azure-dotnet) gözden geçirin.
+* Bu ad alanında tanımlanan sınıflar ve metotlar hakkında ayrıntılı bilgi için [BulkExecutor.Graph Başvurusu makalesini](/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor.graph) gözden geçirin.

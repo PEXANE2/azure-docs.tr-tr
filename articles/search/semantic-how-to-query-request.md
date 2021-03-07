@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 03/02/2021
-ms.openlocfilehash: 7551ef88c2251b64cf6f6db1de4fed22db2c69e2
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.date: 03/05/2021
+ms.openlocfilehash: 8fdb6a53ed0fd64953b75238c3ba3df62c4b644e
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101693654"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102432953"
 ---
 # <a name="create-a-semantic-query-in-cognitive-search"></a>Bilişsel Arama anlam sorgusu oluşturma
 
@@ -21,6 +21,8 @@ ms.locfileid: "101693654"
 > Anlam sorgu türü, önizleme REST API ve Azure portal aracılığıyla kullanılabilen genel önizlemede bulunur. Önizleme özellikleri, olduğu gibi, [ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)altında sunulur. İlk önizleme başlatma sırasında, semantik arama için ücret alınmaz. Daha fazla bilgi için bkz. [kullanılabilirlik ve fiyatlandırma](semantic-search-overview.md#availability-and-pricing).
 
 Bu makalede, anlam derecelendirmesi kullanan bir arama isteğini nasıl formülleyeceğinizi ve anlam başlıkları ve yanıtları üretir.
+
+Anlamsal sorgular, PDF 'Ler veya büyük parçalar içeren belgeler gibi metin açısından ağır içerikten oluşturulan arama dizinlerinde en iyi şekilde çalışır.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -38,7 +40,7 @@ Bu makalede, anlam derecelendirmesi kullanan bir arama isteğini nasıl formüll
 
 ## <a name="whats-a-semantic-query"></a>Anlamsal sorgu nedir?
 
-Bilişsel Arama bir sorgu, sorgu işlemeyi ve yanıtın şeklini belirleyen parametreli bir istek olur. *Anlam sorgusu* , eşleşen sonuçların bağlamını ve anlamını değerlendirebilen anlam yeniden yönlendirme algoritmasını çağıran parametreler ekler ve üst kısımdaki daha ilgili eşleşmeleri yükseltir.
+Bilişsel Arama bir sorgu, sorgu işlemeyi ve yanıtın şeklini belirleyen parametreli bir istek olur. Bir *anlam sorgusu* , eşleşen sonuçların kapsamını ve anlamını değerlendirebilen, daha fazla ilgili eşleştirmeyi en üst düzeye yükseltebilen ve anlam yanıtlarını ve açıklamalı alt yazıları döndüren anlam yeniden yönlendirme modelini çağıran parametreler ekler.
 
 Aşağıdaki istek, temel bir anlam sorgusunun temsilcisidir (yanıt olmadan).
 
@@ -48,7 +50,7 @@ POST https://[service name].search.windows.net/indexes/[index name]/docs/search?
     "search": " Where was Alan Turing born?",    
     "queryType": "semantic",  
     "searchFields": "title,url,body",  
-    "queryLanguage": "en-us",  
+    "queryLanguage": "en-us"  
 }
 ```
 
@@ -60,7 +62,7 @@ Başlangıçtaki sonuçlardan yalnızca ilk 50 eşleşme anlam olarak derecelend
 
 REST API tam belirtimi, [Arama belgelerinde (REST önizlemesi)](/rest/api/searchservice/preview-api/search-documents)bulunabilir.
 
-Anlamsal sorgular "polların en iyi tesisi nedir" veya "bir Yumura 'ya nasıl yapılır" gibi açık uçlu sorulara yöneliktir. Yanıtın yanıt içermesini istiyorsanız, isteğe isteğe bağlı bir **`answer`** parametre ekleyebilirsiniz.
+Anlamsal sorgular, otomatik olarak açıklamalı alt yazılar ve vurgulama sağlar. Yanıtın yanıt içermesini istiyorsanız, isteğe isteğe bağlı bir **`answer`** parametre ekleyebilirsiniz. Bu parametre ve sorgu dizesinin oluşturulması, yanıtta bir yanıt oluşturacak.
 
 Aşağıdaki örnek, semantik yanıtlar ve açıklamalı alt yazılar ile anlamsal bir sorgu isteği oluşturmak için oteller-Sample-Index ' i kullanır:
 
@@ -82,37 +84,66 @@ POST https://[service name].search.windows.net/indexes/hotels-sample-index/docs/
 
 ### <a name="formulate-the-request"></a>İsteği formül altına yaz
 
-1. **`"queryType"`**"Anlam" ve **`"queryLanguage"`** "en-US" olarak ayarlayın. Her iki parametre de gereklidir.
+Bu bölüm, semantik arama için gerekli olan sorgu parametrelerinin adımlarını izleyin.
 
-   QueryLanguage, dizin şemasında alan tanımlarına atanan [dil Çözümleyicileri](index-add-language-analyzers.md) ile tutarlı olmalıdır. QueryLanguage "en-US" ise, herhangi bir dil Çözümleyicileri de Ingilizce bir varyant ("en. Microsoft" veya "en. Lucene") olmalıdır. Anahtar sözcük veya basit gibi dilden bağımsız çözümleyiciler, queryLanguage değerleriyle çelişmez.
+#### <a name="step-1-set-querytype-and-querylanguage"></a>1. Adım: queryType ve queryLanguage ayarlama
 
-   Bir sorgu isteğinde, [Yazım denetimi](speller-how-to-add.md)de kullanıyorsanız, ayarladığınız QueryLanguage, yazım denetleyicisi, yanıtlar ve açıklamalı alt yazılar için de geçerlidir. Ayrı parçalar için geçersiz kılma yoktur. 
+Rest 'e aşağıdaki parametreleri ekleyin. Her iki parametre de gereklidir.
 
-   Bir arama dizinindeki içerik birden çok dilde birleştirileken, sorgu girişi büyük olasılıkla birdir. Arama altyapısı, queryLanguage, Language Analyzer ve içeriğin oluştuğu dilin uyumluluğunu kontrol etmez, bu nedenle yanlış sonuçlar üretmemek için sorguları uygun şekilde kapsamdığınızdan emin olun.
+```json
+"queryType": "semantic",
+"queryLanguage": "en-us",
+```
+
+QueryLanguage, dizin şemasında alan tanımlarına atanan [dil Çözümleyicileri](index-add-language-analyzers.md) ile tutarlı olmalıdır. QueryLanguage "en-US" ise, herhangi bir dil Çözümleyicileri de Ingilizce bir varyant ("en. Microsoft" veya "en. Lucene") olmalıdır. Anahtar sözcük veya basit gibi dilden bağımsız çözümleyiciler, queryLanguage değerleriyle çelişmez.
+
+Bir sorgu isteğinde, [Yazım denetimi](speller-how-to-add.md)de kullanıyorsanız, ayarladığınız QueryLanguage, yazım denetleyicisi, yanıtlar ve açıklamalı alt yazılar için de geçerlidir. Ayrı parçalar için geçersiz kılma yoktur. 
+
+Bir arama dizinindeki içerik birden çok dilde birleştirileken, sorgu girişi büyük olasılıkla birdir. Arama altyapısı, queryLanguage, Language Analyzer ve içeriğin oluştuğu dilin uyumluluğunu kontrol etmez, bu nedenle yanlış sonuçlar üretmemek için sorguları uygun şekilde kapsamdığınızdan emin olun.
 
 <a name="searchfields"></a>
 
-1. Ayarla **`"searchFields"`** (isteğe bağlı, ancak önerilir).
+#### <a name="step-2-set-searchfields"></a>2. Adım: searchFields ayarlama
 
-   Bir anlam sorgusunda, "searchFields" içindeki alanların sırası, semantik derecelendirlıklarla alanın önceliğini veya göreli önemini yansıtır. Yalnızca üst düzey dize alanları (tek başına veya bir koleksiyondaki) kullanılacaktır. SearchFields 'in basit ve tam Lucene sorgularında başka davranışları olduğundan (örtülü öncelik sırası yoksa), dize olmayan tüm alanlar ve alt alanlar bir hatayla sonuçlanmaz, ancak aynı zamanda semantik derecelendirmeden kullanılmamalıdır.
+Bu parametre, bu parametreyi dışarıda bıraktığınızda bir hata olmadığı için isteğe bağlıdır, ancak her iki başlık ve yanıt için bir dizi alanın Sıralı bir listesini sağlamak kesinlikle önerilir.
 
-   SearchFields belirtirken şu yönergeleri izleyin:
+Searchfields parametresi, sorguya "anlamsal benzerlik" için değerlendirilecek olan metinlerin belirlemek için kullanılır. Önizleme için, modelin işlemek için en önemli olan alanlar için bir ipucu gerektirdiğinden, searchFields 'in boş bırakılması önerilmez.
 
-   + HotelName veya title gibi kısa alanlar, açıklama gibi ayrıntılı alanlardan önce gelmelidir.
+SearchFields sırası kritik öneme sahiptir. Zaten var olan basit veya tam Lucene sorgularında searchFields kullanıyorsanız, anlamsal bir sorgu türüne geçiş yaparken bu parametreyi geri ziyaret ettiğinizden emin olun.
 
-   + Dizininizdeki metin olan bir URL alanı (örneğin, gibi makine odaklı gibi okunabilir `www.domain.com/name-of-the-document-and-other-details` `www.domain.com/?id=23463&param=eis` ) varsa, bunu listeye koyun (kısa başlık alanı yoksa önce yerleştirin).
+İki veya daha fazla searchFields belirtildiğinde en iyi sonuçları sağlamak için bu yönergeleri izleyin:
 
-   + Yalnızca bir alan belirtilmişse, belge anlam derecelendirmesi için açıklayıcı bir alan olarak değerlendirilir.  
++ Koleksiyonlardaki yalnızca dize alanlarını ve en üst düzey dize alanlarını dahil edin. Bir koleksiyonda dize olmayan alanları veya alt düzey alanları dahil etmek için bir hata yoktur, ancak bu alanlar semantik derecelendirmeden kullanılmaz.
 
-   + Hiçbir alan belirtilmemişse, belgelerin anlam derecelendirmesi için tüm aranabilir alanlar dikkate alınır. Ancak, arama dizininizden en iyi sonuçları sağlayamadığından bu önerilmez.
++ İlk alan, ideal olarak 25 kelimeyle, her zaman kısa (bir başlık veya ad gibi) olmalıdır.
 
-1. **`"orderBy"`** Mevcut bir istekte varsa, yan tümceleri kaldırın. Anlamsal puan sonuçları sıralamak için kullanılır ve açık sıralama mantığı eklerseniz bir HTTP 400 hatası döndürülür.
++ Dizinde metin olan bir URL alanı (örneğin, gibi `www.domain.com/name-of-the-document-and-other-details` makine odaklı gibi okunabilir `www.domain.com/?id=23463&param=eis` ) varsa, bunu bir yere yerleştirin (veya bir kısa başlık alanı yoksa önce).
 
-1. İsteğe bağlı olarak, **`"answers"`** "extractive" olarak ayarla ' yı ekleyin ve 1 ' den fazla istiyorsanız yanıt sayısını belirtin.
++ Bir belgenin ana içeriği gibi anlam sorgularının yanıtının bulunabileceği açıklayıcı alanlarla bu alanları izleyin.
 
-1. İsteğe bağlı olarak, açıklamalı alt yazıların uygulanan vurgu stilini özelleştirebilirsiniz. Açıklamalı alt yazılar, yanıtı özetleyen belgedeki anahtar paslar üzerinde vurgu biçimlendirme uygular. Varsayılan değer: `<em>`. Biçimlendirme türünü (örneğin, sarı arka plan) belirtmek istiyorsanız, highlightPreTag ve highlightPostTag ' i ayarlayabilirsiniz.
+Yalnızca bir alan belirtilmişse, anlam sorgularının yanıtının bulunduğu bir belgenin ana içeriği gibi açıklayıcı bir alan kullanın. Yeterli içerik sağlayan bir alan seçin.
 
-1. İstekte istediğiniz diğer parametreleri belirtin. [Yazım denetleyicisi](speller-how-to-add.md), [seçme](search-query-odata-select.md)ve sayı gibi parametreler, yanıtın kalitesini ve okunabilirliğini artırır.
+#### <a name="step-3-remove-orderby-clauses"></a>3. Adım: orderBy yan tümcelerini kaldırma
+
+Mevcut bir istekte varsa, herhangi bir orderBy yan tümcesini kaldırın. Anlamsal puan sonuçları sıralamak için kullanılır ve açık sıralama mantığı eklerseniz bir HTTP 400 hatası döndürülür.
+
+#### <a name="step-4-add-answers"></a>4. Adım: Yanıt ekleme
+
+İsteğe bağlı olarak, yanıt sağlayan ek işlemleri eklemek istiyorsanız "yanıtlar" ı ekleyin. Yanıtlar (ve açıklamalı alt yazılar), searchfields bölümünde listelenen alanlarda bulunan metinlerin 'lerden alınmıştır. Bir yanıtta en iyi yanıtları ve açıklamalı alt yazıları almak için, searchFields içeriğine zengin içerik alanları eklediğinizden emin olun.
+
+Yanıtları üreten açık ve örtük koşullar vardır. 
+
++ Açık koşullara "cevaplar = extractive" eklenmesi dahildir. Ayrıca, genel yanıtta döndürülen yanıt sayısını belirtmek için, "Count" sözcüğünü ve ardından bir sayıyı ekleyin: `"answers=extractive|count=3"` .  Varsayılan değer bir. En fazla beş.
+
++ Örtülü koşullar bir yanıt için kendisini hedefleyen bir sorgu dizesi oluşturmayı içerir. ' Hangi otel 'nin yeşil odasının bulunduğu bir sorgu daha büyük olasılıkla "Cevaplanan iç" gibi bir deyimden oluşan bir sorgudan "yanıtlanır". Bekleneceğiniz gibi sorgu belirtilmemiş veya null olamaz.
+
+Dikkat edilmesi gereken önemli nokta, sorgu bir soru gibi görünmüyorsa, "yanıtlar" parametresi ayarlanmış olsa bile yanıt işleme atlanır.
+
+#### <a name="step-5-add-other-parameters"></a>5. Adım: başka parametreler ekleme
+
+İstekte istediğiniz diğer parametreleri ayarlayın. [Yazım denetleyicisi](speller-how-to-add.md), [seçme](search-query-odata-select.md)ve sayı gibi parametreler, yanıtın kalitesini ve okunabilirliğini artırır.
+
+İsteğe bağlı olarak, açıklamalı alt yazıların uygulanan vurgu stilini özelleştirebilirsiniz. Açıklamalı alt yazılar, yanıtı özetleyen belgedeki anahtar paslar üzerinde vurgu biçimlendirme uygular. Varsayılan değer: `<em>`. Biçimlendirme türünü (örneğin, sarı arka plan) belirtmek istiyorsanız, highlightPreTag ve highlightPostTag ' i ayarlayabilirsiniz.
 
 ### <a name="review-the-response"></a>Yanıtı gözden geçirin
 

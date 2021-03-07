@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 02/07/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 86de3e1199b00dff4e03f3b4292f86e6c19ea491
-ms.sourcegitcommit: 192f9233ba42e3cdda2794f4307e6620adba3ff2
+ms.openlocfilehash: 0c95fc9e416399b5c8fe032e0d3af0c3b7f9cf6e
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96296548"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102433582"
 ---
 # <a name="optimize-provisioned-throughput-cost-in-azure-cosmos-db"></a>Azure Cosmos DB’de sağlanan işlem hızını iyileştirme
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -65,7 +65,7 @@ Aşağıdaki tabloda gösterildiği gibi, API seçimine bağlı olarak, farklı 
 
 Farklı düzeylerde üretilen iş yükünü sağlarken, iş yükünüzün özelliklerine göre maliyetlerinizi iyileştirebilirsiniz. Daha önce belirtildiği gibi, programlama yoluyla ve herhangi bir zamanda tek tek kapsayıcılar veya bir kapsayıcı kümesi genelinde sağlanan aktarım hızını artırabilir ya da azaltabilirsiniz. İş yükünüz değiştikçe ölçek işleme esnek göre yalnızca yapılandırdığınız aktarım hızı için ödeme yaparsınız. Kapsayıcınız veya bir kapsayıcı kümesi birden çok bölgeye dağıtılmışsa, kapsayıcıda yapılandırdığınız üretilen iş veya bir kapsayıcı kümesi tüm bölgelerde kullanılabilir hale getirilir.
 
-## <a name="optimize-with-rate-limiting-your-requests"></a>İsteklerin hız sınırlaması ile en iyileştirin
+## <a name="optimize-with-rate-limiting-your-requests"></a>İsteklerinizi hız sınırlama ile iyileştirin
 
 Gecikme süresine duyarlı olmayan iş yükleri için daha az üretilen iş sağlayabilir ve gerçek aktarım hızı sağlanan aktarım hızını aştığında uygulamanın hız sınırlaması olmasını sağlayabilirsiniz. Sunucu isteği preemptively `RequestRateTooLarge` (http durum kodu 429) ile sona erecektir ve `x-ms-retry-after-ms` kullanıcının isteği yeniden denemeden önce beklemesi gereken süreyi milisaniye olarak belirten üst bilgiyi döndürür. 
 
@@ -81,7 +81,7 @@ Yerel SDK 'lar (.NET/.NET Core, Java, Node.js ve Python), bu yanıtı, sunucu ta
 
 İstek hızının sürekli olarak birden fazla istemciniz varsa, o anda 9 ' a ayarlanmış olan varsayılan yeniden deneme sayısı yeterli olmayabilir. Bu gibi durumlarda, istemci `RequestRateTooLargeException` uygulamaya 429 durum kodu ile bir oluşturur. Varsayılan yeniden deneme sayısı, `RetryOptions` ConnectionPolicy örneğinde ayarlanarak değiştirilebilir. Varsayılan olarak, `RequestRateTooLargeException` isteğin istek hızının üzerinde çalışmaya devam etmesi durumunda 429 durum kodu ile toplam 30 saniyelik bir bekleme süresi dolduktan sonra döndürülür. Bu durum, geçerli yeniden deneme sayısı en fazla yeniden deneme sayısından az olduğunda bile, varsayılan olarak 9 veya Kullanıcı tanımlı bir değer olmalıdır. 
 
-[MaxRetryAttemptsOnThrottledRequests](/dotnet/api/microsoft.azure.documents.client.retryoptions.maxretryattemptsonthrottledrequests?preserve-view=true&view=azure-dotnet) 3 olarak ayarlanır. bu nedenle, bir istek işlemi, kapsayıcının ayrılmış aktarım hızını aşarak sınırlı olursa istek işlemi, uygulamaya özel durumu oluşturmadan önce üç kez yeniden dener. [Maxretrywaittimeınseconds](/dotnet/api/microsoft.azure.documents.client.retryoptions.maxretrywaittimeinseconds?preserve-view=true&view=azure-dotnet#Microsoft_Azure_Documents_Client_RetryOptions_MaxRetryWaitTimeInSeconds) 60 olarak ayarlanır. bu nedenle, ilk istek 60 saniye değerini aştığından kümülatif yeniden deneme bekleme süresi saniye cinsinden, özel durum atılır.
+[MaxRetryAttemptsOnThrottledRequests](/dotnet/api/microsoft.azure.documents.client.retryoptions.maxretryattemptsonthrottledrequests) 3 olarak ayarlanır. bu nedenle, bir istek işlemi, kapsayıcının ayrılmış aktarım hızını aşarak sınırlı olursa istek işlemi, uygulamaya özel durumu oluşturmadan önce üç kez yeniden dener. [Maxretrywaittimeınseconds](/dotnet/api/microsoft.azure.documents.client.retryoptions.maxretrywaittimeinseconds#Microsoft_Azure_Documents_Client_RetryOptions_MaxRetryWaitTimeInSeconds) 60 olarak ayarlanır. bu nedenle, ilk istek 60 saniye değerini aştığından kümülatif yeniden deneme bekleme süresi saniye cinsinden, özel durum atılır.
 
 ```csharp
 ConnectionPolicy connectionPolicy = new ConnectionPolicy(); 
@@ -99,7 +99,7 @@ Azure Cosmos DB maliyetleri iyileştirmek için iyi bölümleme stratejisi önem
 
 * Geniş bir değer aralığına sahip bir bölüm anahtarı seçin. 
 
-Temel düşünce, veri depolama ve aktarım kaynakları için kaynakların mantıksal bölümler arasında dağıtılabilecek şekilde, verileri ve etkinliklerinizi kapsayıcıda mantıksal bölümler kümesi genelinde yaymaya yöneliktir. Bölüm anahtarları adayları, sorgularda filtre olarak sık görüntülenen özellikleri içerebilir. Filtre koşuluna bölüm anahtarı eklenerek sorgular etkin bir şekilde yönlendirilebilir. Bu tür bir bölümleme stratejisiyle sağlanan üretilen işi iyileştirmek çok daha kolay olacaktır. 
+Temel düşünce, veri depolama ve aktarım kaynakları için kaynakların mantıksal bölümler arasında dağıtılabilecek şekilde, verileri ve etkinliklerinizi kapsayıcıda mantıksal bölümler kümesi genelinde yaymaya yöneliktir. Bölüm anahtarları adayları, sorgularda filtre olarak sık görüntülenen özellikleri içerebilir. Bölüm anahtarının filtre koşuluna dahil edilmesiyle sorgular etkili bir şekilde yönlendirilebilir. Bu tür bir bölümleme stratejisiyle sağlanan üretilen işi iyileştirmek çok daha kolay olacaktır. 
 
 ### <a name="design-smaller-items-for-higher-throughput"></a>Daha yüksek aktarım hızı için daha küçük öğeler tasarlama 
 

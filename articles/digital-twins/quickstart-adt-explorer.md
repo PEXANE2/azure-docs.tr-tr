@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 9/24/2020
 ms.topic: quickstart
 ms.service: digital-twins
-ms.openlocfilehash: 8c6e584a4bdb1953d7ceac4e3d612b329738f646
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
+ms.openlocfilehash: f1b25b853977b3a1f4871e232a562d6a3cfd2fae
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102203989"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102434211"
 ---
 # <a name="quickstart---explore-a-sample-azure-digital-twins-scenario-using-azure-digital-twins-explorer"></a>Hızlı başlangıç-Azure Digital TWINS gezginini kullanarak örnek bir Azure dijital TWINS senaryosunu araştırma
 
@@ -55,7 +55,7 @@ Bu bölümün geri kalanında bu adımlarda adım adım gösterilmektedir.
 
 ### <a name="set-up-local-azure-credentials"></a>Yerel Azure kimlik bilgilerini ayarlama
 
-Azure dijital TWINS Explorer uygulaması, [](/dotnet/api/azure.identity.defaultazurecredential?preserve-view=true&view=azure-dotnet) `Azure.Identity` Yerel makinenizde çalıştırdığınızda Azure dijital TWINS örneğiyle kullanıcıların kimliğini doğrulamak için DefaultAzureCredential (kitaplığın bir parçası) kullanır. İstemci uygulamasının Azure dijital TWINS ile kimlik doğrulaması yapabilme yolları hakkında daha fazla bilgi için bkz. [uygulama kimlik doğrulama kodu yazma](how-to-authenticate-client.md).
+Azure dijital TWINS Explorer uygulaması, [](/dotnet/api/azure.identity.defaultazurecredential) `Azure.Identity` Yerel makinenizde çalıştırdığınızda Azure dijital TWINS örneğiyle kullanıcıların kimliğini doğrulamak için DefaultAzureCredential (kitaplığın bir parçası) kullanır. İstemci uygulamasının Azure dijital TWINS ile kimlik doğrulaması yapabilme yolları hakkında daha fazla bilgi için bkz. [uygulama kimlik doğrulama kodu yazma](how-to-authenticate-client.md).
 
 Bu tür bir kimlik doğrulamasıyla Azure dijital TWINS Gezgini, yerel ortamınızda, yerel bir [Azure CLI](/cli/azure/install-azure-cli) veya Visual Studio veya Visual Studio Code Içindeki bir Azure oturum açma gibi kimlik bilgilerini arar. Bu nedenle, Azure Digital TWINS gezgin uygulamasının kimlik bilgilerini ayarlamak için bu mekanizmalardan biri aracılığıyla *yerel olarak Azure 'da oturum açmanız* gerekir.
 

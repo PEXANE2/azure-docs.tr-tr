@@ -10,12 +10,12 @@ ms.subservice: metrics-advisor
 ms.topic: quickstart
 ms.date: 09/30/2020
 ms.author: mbullwin
-ms.openlocfilehash: 5dbf98d363429e6d22a0b7719cdc669deebd21a0
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: f853dca12b6a5855dc0603259ab534fa9933cd5b
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96348645"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102432307"
 ---
 # <a name="quickstart-monitor-your-first-metric-using-the-web-portal"></a>Hızlı başlangıç: Web portalını kullanarak ilk ölçümünüzün Izlenmesi
 
@@ -30,7 +30,7 @@ Bir ölçüm Danışmanı örneği sağladığınızda, hizmetle çalışmak iç
 ## <a name="prerequisites"></a>Önkoşullar
 
 * Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/cognitive-services)
-* Azure aboneliğiniz olduktan sonra, ölçüm Danışmanı <a href="https://go.microsoft.com/fwlink/?linkid=2142156"  title=" "  target="_blank"> <span class="docon docon-navigate-external x-hidden-focus"></span> </a> örneğinizi dağıtmak için Azure Portal ölçüm Danışmanı kaynağı oluşturun.  
+* Azure aboneliğiniz olduktan sonra, ölçüm Danışmanı <a href="https://go.microsoft.com/fwlink/?linkid=2142156"  title=" "  target="_blank"> </a> örneğinizi dağıtmak için Azure Portal ölçüm Danışmanı kaynağı oluşturun.  
 
     
 > [!TIP]
@@ -91,10 +91,10 @@ Veri şeması yüklenip aşağıda gösterildiği gibi, uygun alanları seçin.
 
 |Seçim  |Açıklama  |Notlar  |
 |---------|---------|---------|
-|**Zaman damgası**     | Bir veri noktasının zaman damgası. Atlanırsa, ölçüm Danışmanı veri noktasının yerine kullanıldığı zaman damgasını kullanır. Her veri akışı için zaman damgası olarak en fazla bir sütun belirtebilirsiniz.        | İsteğe bağlı. En fazla bir sütun ile belirtilmelidir.       |
+|**İlişkin**     | Bir veri noktasının zaman damgası. Atlanırsa, ölçüm Danışmanı veri noktasının yerine kullanıldığı zaman damgasını kullanır. Her veri akışı için zaman damgası olarak en fazla bir sütun belirtebilirsiniz.        | İsteğe bağlı. En fazla bir sütun ile belirtilmelidir.       |
 |**Measure**     |  Veri akışındaki sayısal değerler. Her veri akışı için birden çok ölçü belirtebilirsiniz, ancak en az bir sütun ölçü olarak seçilmelidir.        | En az bir sütunla belirtilmelidir.        |
 |**Boyut**     | Kategorik değerler. Farklı değerlerin bir birleşimi belirli bir tek boyutlu zaman serisini tanımlar, örneğin: ülke, dil, kiracı. Boyut olarak hiçbiri veya rastgele sütun sayısını seçebilirsiniz. Note: dize olmayan bir sütunu boyut olarak seçiyorsanız boyut açılımına karşı dikkatli olun. | İsteğe bağlı.        |
-|**Yoksayma**     | Seçili sütunu yoksayın.        |         |
+|**Yoksay**     | Seçili sütunu yoksayın.        |         |
 
 
 :::image type="content" source="../media/schema-configuration.png" alt-text="Şema yapılandırması" lightbox="../media/schema-configuration.png":::

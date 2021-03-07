@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 02/03/2021
-ms.openlocfilehash: d0cc7630a3bea67a99c3cb65d2015e934e8ac2da
-ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
+ms.date: 03/05/2021
+ms.openlocfilehash: 96594d573c308727217f537e5421dcb79f02c2ff
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99539103"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102433803"
 ---
 # <a name="creating-search-indexes-in-azure-cognitive-search"></a>Azure Bilişsel Arama 'de arama dizinleri oluşturma
 
@@ -61,7 +61,7 @@ Diğer öğeler, kısaltma için daraltılır, ancak aşağıdaki bağlantılar,
 
 ## <a name="choose-a-client"></a>İstemci seçin
 
-Arama dizini oluşturmak için çeşitli yöntemler vardır. Erken geliştirme ve kavram kanıtı testi için Azure portal veya REST API 'Leri öneririz.
+Arama dizini oluşturmanın birkaç yolu vardır. Erken geliştirme ve kavram kanıtı testi için Azure portal veya SDK 'Ları öneririz.
 
 Geliştirme sırasında, sık sık yeniden deryi planlayın. Hizmette fiziksel yapılar oluşturulduğundan, var olan bir alan tanımında çoğu değişiklik için [dizinleri bırakma ve](search-howto-reindex.md) yeniden oluşturma gereklidir. Yeniden oluşturma işlemini daha hızlı hale getirmek için verilerinizin bir alt kümesiyle çalışmayı düşünebilirsiniz.
 
@@ -110,7 +110,7 @@ Bilişsel Arama için Azure SDK 'Ları, genel olarak kullanılabilen özellikler
 
 Bir arama belgesi, koleksiyon tarafından tanımlanır `fields` . Sorgular ve anahtarlar için alanlara ihtiyacınız olacak. Ayrıca muhtemelen filtreleri, modelleri ve sıralamayı desteklemek için alanlara ihtiyacınız olacaktır. Ayrıca, bir kullanıcının hiç görmemesi gereken veriler için alanlar da gerekebilir. Örneğin, arama sırasını değiştirmek için kullanabileceğiniz kar marjları veya pazarlama promosyonları için alanlar isteyebilirsiniz.
 
-EDM. String türünde bir alanın belge anahtarı olarak belirlenmesi gerekir. Her bir arama belgesini benzersiz bir şekilde tanımlamak için kullanılır. Ayrıntılar sayfasını doldurmak için bir belgeyi anahtarına göre alabilirsiniz.  
+EDM. String türünde bir alanın belge anahtarı olarak belirlenmesi gerekir. Her arama belgesini benzersiz bir şekilde tanımlamak için kullanılır ve büyük/küçük harfe duyarlıdır. Ayrıntılar sayfasını doldurmak için bir belgeyi anahtarına göre alabilirsiniz.
 
 Gelen veriler doğası halinde hiyerarşik ise, iç içe yapıları temsil etmek için [karmaşık tür](search-howto-complex-data-types.md) veri türünü atayın. Yerleşik örnek veri kümesi olan oteller, her bir otelle bire bir ilişkiye sahip olan ve her bir otel ile birden çok oda ilişkilendirildiği bir oda karmaşık koleksiyonu olan bir adres (birden çok alt alan içerir) kullanan karmaşık türleri gösterir. 
 

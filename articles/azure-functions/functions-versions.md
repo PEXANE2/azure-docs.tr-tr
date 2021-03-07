@@ -4,16 +4,16 @@ description: Azure Işlevleri, çalışma zamanının birden çok sürümünü d
 ms.topic: conceptual
 ms.custom: devx-track-dotnet
 ms.date: 12/09/2019
-ms.openlocfilehash: 935291c461e275902cb6905c4440fe4d289f0c16
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: b37cf33a96452f9f3e86f853d3d87fd3b4b3879c
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97653359"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102431861"
 ---
 # <a name="azure-functions-runtime-versions-overview"></a>Azure Işlevleri çalışma zamanı sürümlerine genel bakış
 
-Azure Işlevleri Şu anda çalışma zamanı ana bilgisayarının üç sürümünü desteklemektedir: 1. x, 2. x ve 3. x. Her üç sürüm de üretim senaryolarında desteklenir.  
+Azure Işlevleri Şu anda çalışma zamanı ana bilgisayarının üç sürümünü desteklemektedir: 3. x, 2. x ve 1. x. Her üç sürüm de üretim senaryolarında desteklenir.  
 
 > [!IMPORTANT]
 > Sürüm 1. x bakım modunda ve yalnızca Azure portal, Azure Stack hub portalında veya Windows bilgisayarlarda yerel olarak geliştirme desteklenir. Geliştirmeler yalnızca sonraki sürümlerde sağlanır. 
@@ -30,7 +30,69 @@ Aşağıdaki tablo, her çalışma zamanı sürümünde hangi programlama diller
 
 ## <a name="run-on-a-specific-version"></a><a name="creating-1x-apps"></a>Belirli bir sürümde Çalıştır
 
-Varsayılan olarak, Azure portal ve Azure CLı tarafından oluşturulan işlev uygulamaları sürüm 3. x olarak ayarlanır. Bu sürümü gerektiği gibi değiştirebilirsiniz. İşlev uygulamanızı oluşturduktan sonra, ancak herhangi bir işlev eklemeden önce çalışma zamanı sürümünü 1. x olarak değiştirebilirsiniz.  2. x ve 3. x arasında çalışmaya, işlevleri olan uygulamalarla bile izin verilir, ancak önce yeni bir uygulamada test etmek önerilir.
+Varsayılan olarak, Azure portal ve Azure CLı tarafından oluşturulan işlev uygulamaları sürüm 3. x olarak ayarlanır. Bu sürümü gerektiği gibi değiştirebilirsiniz. İşlev uygulamanızı oluşturduktan sonra, ancak herhangi bir işlev eklemeden önce çalışma zamanı sürümünü 1. x olarak indirgeyebilmeniz gerekir.  Mevcut işlevleri olan uygulamalarla bile 2. x ve 3. x arasında geçiş yapılmasına izin verilir. Bir uygulamayı 2. x ile 3. x arasında var olan işlevlerle taşımadan önce, [2. x ve 3. x arasındaki herhangi bir son değişikliği](#breaking-changes-between-2x-and-3x)unutmayın. 
+
+Çalışma zamanının ana sürümünde değişiklik yapmadan önce, mevcut kodunuzu en son ana sürümde çalışan başka bir işlev uygulamasına dağıtarak test etmelisiniz. Bu sınama, yükseltmeden sonra doğru şekilde çalıştığından emin olmaya yardımcı olur. 
+
+V3. x ile v2. x arasındaki eski sürüme düşürme desteklenmez. Mümkün olduğunda, uygulamalarınızı her zaman Işlevler çalışma zamanının desteklenen en son sürümünde çalıştırmalısınız. 
+
+### <a name="changing-version-of-apps-in-azure"></a>Azure 'da uygulamaların sürümünü değiştirme
+
+Azure 'da yayımlanan uygulamalar tarafından kullanılan Işlevlerin çalışma zamanının sürümü [`FUNCTIONS_EXTENSION_VERSION`](functions-app-settings.md#functions_extension_version) uygulama ayarı tarafından belirlenir. Aşağıdaki büyük çalışma zamanı sürümü değerleri desteklenir:
+
+| Değer | Çalışma zamanı hedefi |
+| ------ | -------- |
+| `~3` | 3.x |
+| `~2` | 2.x |
+| `~1` | 'in |
+
+>[!IMPORTANT]
+> Bu ayarı rastgele değiştirmeyin, çünkü diğer uygulama ayarı değişiklik ve işlev kodunuzda yapılan değişiklikler gerekebilir.
+
+Daha fazla bilgi için bkz. [Azure işlevleri çalışma zamanı sürümlerini hedefleme](set-runtime-version.md).  
+
+### <a name="pinning-to-a-specific-minor-version"></a>Belirli bir ikincil sürüme sabitleme
+
+En son ana sürümde çalışan işlev uygulamanız ile ilgili sorunları gidermek için, uygulamanızı belirli bir alt sürüme sabitetmeniz gerekir. Bu, uygulamanızı en son ana sürümde doğru şekilde çalışır şekilde almanızı sağlar. Küçük bir sürüme sabitlemeyi yaptığınız yol, Windows ve Linux arasında farklılık gösterir. Daha fazla bilgi için bkz. [Azure işlevleri çalışma zamanı sürümlerini hedefleme](set-runtime-version.md).
+
+Eski küçük sürümler düzenli olarak Işlevlerden kaldırılır. Belirli eski küçük sürümlerin kaldırılması dahil olmak üzere Azure Işlevleri ile ilgili en son haberler için [Azure App Service bildirilerini](https://github.com/Azure/app-service-announcements/issues)izleyin. 
+
+### <a name="pinning-to-version-20"></a>Sürüme sabitleme ~ 2,0
+
+Sürüm 2. x () üzerinde çalışan .NET işlevi uygulamaları, .NET Core `~2` 3,1 ' de uzun süreli destek sürümü olan .net core ' de çalışacak şekilde otomatik olarak yükseltilir. .NET Core 3,1 ' de .NET işlevlerinizi çalıştırmak, en son güvenlik güncelleştirmelerinden ve ürün geliştirmelerinden yararlanmanızı sağlar. 
+
+Hiçbir işlev uygulaması `~2.0` , artık güvenlik ve diğer güncelleştirmeleri alan .NET Core 2,2 ' de çalışmaya devam eder. Daha fazla bilgi için bkz. [işlevler v2. x konuları](functions-dotnet-class-library.md#functions-v2x-considerations).   
+
+## <a name="migrating-from-2x-to-3x"></a>2. x ile 3. x arasında geçiş
+
+Azure Işlevleri sürüm 3. x, sürüm 2. x ile yüksek oranda geriye dönük olarak uyumludur.  Birçok uygulama herhangi bir kod değişikliği yapmadan 3. x 'e güvenli bir şekilde yükseltebilmelidir.  3. x ' e geçiş yaparken, üretim uygulamalarındaki ana sürümü değiştirmeden önce kapsamlı testler çalıştırdığınızdan emin olun.
+
+### <a name="breaking-changes-between-2x-and-3x"></a>2. x ve 3. x arasındaki son değişiklikler
+
+Bir 2. x uygulamasını 3. x ' e yükseltmeden önce dikkat edilecek değişiklikler aşağıda verilmiştir.
+
+#### <a name="javascript"></a>JavaScript
+
+* Veya dönüş değerleri aracılığıyla atanan çıkış bağlamaları `context.done` artık ' de ayarıyla aynı şekilde davranır `context.bindings` .
+
+* Zamanlayıcı tetikleyici nesnesi PascalCase yerine camelCase
+
+* Olay Hub 'ı ile tetiklenen işlevler, `dataType` yerine bir dizisi alır `binary` `string` .
+
+* HTTP istek yüküne artık aracılığıyla erişilemez `context.bindingData.req` .  Bir giriş parametresi olarak, ve ' de erişilebilir olmaya devam edebilir `context.req` `context.bindings` .
+
+* Node.js 8 artık desteklenmemektedir ve 3. x işlevleri içinde yürütülecektir.
+
+#### <a name="net-core"></a>.NET Core
+
+.NET sınıf kitaplığı işlevleri çalıştırılırken sürümler arasındaki temel farklılıklar .NET Core çalışma zamanı ' dır. 2. x işlevleri .NET Core 2,2 ve sürüm 3 ' te çalışmak üzere tasarlanmıştır. x, .NET Core 3,1 ' de çalışacak şekilde tasarlanmıştır.  
+
+* [Zaman uyumlu sunucu işlemleri varsayılan olarak devre dışıdır](/dotnet/core/compatibility/2.2-3.0#http-synchronous-io-disabled-in-all-servers).
+
+* .NET Core tarafından sunulan ve Işlevlerine özgü olmayan ancak uygulamanızı etkileyebilecek olan sürüm [3,0](/dotnet/core/compatibility/3.0)' [3,1](/dotnet/core/compatibility/3.1) de .NET Core tarafından tanıtılan son değişiklikler.
+
+>[!NOTE]
+>.NET Core 2,2 ' deki destek sorunları nedeniyle, sürüm 2 ' ye () sabitlenmiş işlev uygulamaları `~2` temelde .NET Core 3,1 ' de çalışır. Daha fazla bilgi için bkz. [işlevler v2. x uyumluluk modu](functions-dotnet-class-library.md#functions-v2x-considerations).
 
 ## <a name="migrating-from-1x-to-later-versions"></a>1. x 'den sonraki sürümlere geçiş
 
@@ -68,43 +130,6 @@ Sürüm 1. x 'ten sonra bazı özellikler kaldırıldı, güncelleştirildi veya
 
 * Event Grid tetikleyicisi Web kancalarının URL biçimi olarak değiştirildi `https://{app}/runtime/webhooks/{triggerName}` .
 
-## <a name="migrating-from-2x-to-3x"></a>2. x ile 3. x arasında geçiş
-
-Azure Işlevleri sürüm 3. x, sürüm 2. x ile yüksek oranda geriye dönük olarak uyumludur.  Birçok uygulama herhangi bir kod değişikliği yapmadan 3. x 'e güvenli bir şekilde yükseltebilmelidir.  3. x ' e geçiş yaparken, üretim uygulamalarındaki ana sürümü değiştirmeden önce kapsamlı testler çalıştırdığınızdan emin olun.
-
-### <a name="breaking-changes-between-2x-and-3x"></a>2. x ve 3. x arasındaki son değişiklikler
-
-Bir 2. x uygulamasını 3. x ' e yükseltmeden önce dikkat edilecek değişiklikler aşağıda verilmiştir.
-
-#### <a name="javascript"></a>JavaScript
-
-* Veya dönüş değerleri aracılığıyla atanan çıkış bağlamaları `context.done` artık ' de ayarıyla aynı şekilde davranır `context.bindings` .
-
-* Zamanlayıcı tetikleyici nesnesi PascalCase yerine camelCase
-
-* Olay Hub 'ı ile tetiklenen işlevler, `dataType` yerine bir dizisi alır `binary` `string` .
-
-* HTTP istek yüküne artık aracılığıyla erişilemez `context.bindingData.req` .  Bir giriş parametresi olarak, ve ' de erişilebilir olmaya devam edebilir `context.req` `context.bindings` .
-
-* Node.js 8 artık desteklenmemektedir ve 3. x işlevleri içinde yürütülecektir.
-
-#### <a name="net"></a>.NET
-
-* [Zaman uyumlu sunucu işlemleri varsayılan olarak devre dışıdır](/dotnet/core/compatibility/2.2-3.0#http-synchronous-io-disabled-in-all-servers).
-
-### <a name="changing-version-of-apps-in-azure"></a>Azure 'da uygulamaların sürümünü değiştirme
-
-Azure 'da yayımlanan uygulamalar tarafından kullanılan Işlevlerin çalışma zamanının sürümü [`FUNCTIONS_EXTENSION_VERSION`](functions-app-settings.md#functions_extension_version) uygulama ayarı tarafından belirlenir. Aşağıdaki büyük çalışma zamanı sürümü değerleri desteklenir:
-
-| Değer | Çalışma zamanı hedefi |
-| ------ | -------- |
-| `~3` | 3.x |
-| `~2` | 2.x |
-| `~1` | 'in |
-
->[!IMPORTANT]
-> Bu ayarı rastgele değiştirmeyin, çünkü diğer uygulama ayarı değişiklik ve işlev kodunuzda yapılan değişiklikler gerekebilir.
-
 ### <a name="locally-developed-application-versions"></a>Yerel olarak geliştirilen uygulama sürümleri
 
 Hedeflenen sürümleri yerel olarak değiştirmek için uygulama işlevleri işlevine aşağıdaki güncelleştirmeleri yapabilirsiniz.
@@ -112,20 +137,6 @@ Hedeflenen sürümleri yerel olarak değiştirmek için uygulama işlevleri işl
 #### <a name="visual-studio-runtime-versions"></a>Visual Studio çalışma zamanı sürümleri
 
 Visual Studio 'da, bir proje oluştururken çalışma zamanı sürümünü seçersiniz. Visual Studio için Azure Işlevleri araçları, üç ana çalışma zamanı sürümünü destekler. Hata ayıklama sırasında ve proje ayarlarına bağlı olarak yayımlandığında doğru sürüm kullanılır. Sürüm ayarları, `.csproj` dosyasında aşağıdaki özelliklerde tanımlanmıştır:
-
-##### <a name="version-1x"></a>Sürüm 1. x
-
-```xml
-<TargetFramework>net472</TargetFramework>
-<AzureFunctionsVersion>v1</AzureFunctionsVersion>
-```
-
-##### <a name="version-2x"></a>Sürüm 2. x
-
-```xml
-<TargetFramework>netcoreapp2.1</TargetFramework>
-<AzureFunctionsVersion>v2</AzureFunctionsVersion>
-```
 
 ##### <a name="version-3x"></a>Sürüm 3. x
 
@@ -137,9 +148,23 @@ Visual Studio 'da, bir proje oluştururken çalışma zamanı sürümünü seçe
 > [!NOTE]
 > Azure Işlevleri 3. x ve .NET, `Microsoft.NET.Sdk.Functions` uzantının en az olmasını gerektirir `3.0.0` .
 
+##### <a name="version-2x"></a>Sürüm 2. x
+
+```xml
+<TargetFramework>netcoreapp2.1</TargetFramework>
+<AzureFunctionsVersion>v2</AzureFunctionsVersion>
+```
+
+##### <a name="version-1x"></a>Sürüm 1. x
+
+```xml
+<TargetFramework>net472</TargetFramework>
+<AzureFunctionsVersion>v1</AzureFunctionsVersion>
+```
+
 ###### <a name="updating-2x-apps-to-3x-in-visual-studio"></a>Visual Studio 'da 2. x uygulamalarını 3. x olarak güncelleştirme
 
-2. x hedefleme var olan bir işlevi açabilir ve `.csproj` dosyayı düzenleyerek ve yukarıdaki değerleri güncelleştirerek 3. x ' e geçebilirsiniz.  Visual Studio, çalışma zamanı sürümlerini proje meta verilerine göre otomatik olarak yönetir.  Ancak, Visual Studio 'Nun makinenizde 3. x için şablonlar ve çalışma zamanına sahip olmaması durumunda henüz bir 3. x uygulaması oluşturmadıysanız, bu mümkündür.  Bu, "projede belirtilen sürümle eşleşen Işlevler çalışma zamanı yok" gibi bir hatayla kendi kendine sunabilir.  En son şablonları ve çalışma zamanını getirmek için yeni bir işlev projesi oluşturma deneyiminden yararlanın.  Sürüm ve şablon seç ekran ' e geldiğinizde, Visual Studio 'nun en son şablonları getirme işleminin tamamlanmasını bekleyin.  En son .NET Core 3 şablonları kullanılabilir ve görüntülendikten sonra, sürüm 3. x için yapılandırılmış herhangi bir projeyi çalıştırabilmeniz ve hata ayıklaması yapmanız gerekir.
+2. x hedefleme var olan bir işlevi açabilir ve `.csproj` dosyayı düzenleyerek ve yukarıdaki değerleri güncelleştirerek 3. x ' e geçebilirsiniz.  Visual Studio, çalışma zamanı sürümlerini proje meta verilerine göre otomatik olarak yönetir.  Ancak, Visual Studio 'Nun makinenizde 3. x için şablonlar ve çalışma zamanına sahip olmaması durumunda henüz bir 3. x uygulaması oluşturmadıysanız, bu mümkündür.  Bu, "projede belirtilen sürümle eşleşen Işlevler çalışma zamanı yok" gibi bir hatayla kendi kendine sunabilir.  En son şablonları ve çalışma zamanını getirmek için yeni bir işlev projesi oluşturma deneyiminden yararlanın.  Sürüm ve şablon seç ekran ' e geldiğinizde, Visual Studio 'nun en son şablonları getirme işleminin tamamlanmasını bekleyin. En son .NET Core 3 şablonları kullanılabilir ve görüntülendikten sonra, sürüm 3. x için yapılandırılmış herhangi bir projeyi çalıştırabilir ve hata ayıklaması yapabilirsiniz.
 
 > [!IMPORTANT]
 > Sürüm 3. x işlevleri yalnızca Visual Studio sürüm 16,4 veya daha yeni bir sürümde kullanılıyorsa Visual Studio 'da geliştirilebilir.

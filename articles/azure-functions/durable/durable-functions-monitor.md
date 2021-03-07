@@ -4,18 +4,30 @@ description: Azure Işlevleri için Dayanıklı İşlevler uzantısını kullana
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: e70c50098ece516312e1e92984185624c276301b
-ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
+ms.openlocfilehash: 8ef32ecfb6f69b71d29578d3b8314f568fd9386a
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98028429"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102431083"
 ---
 # <a name="monitor-scenario-in-durable-functions---weather-watcher-sample"></a>Dayanıklı İşlevler-Hava durumu izleyici örneğinde izleme senaryosu
 
 İzleyici stili, bir iş akışında esnek bir *yinelenen* işleme anlamına gelir. Örneğin, belirli koşullar karşılanana kadar yoklama yapar. Bu makalede, izlemeyi uygulamak için [dayanıklı işlevler](durable-functions-overview.md) kullanan bir örnek açıklanmaktadır.
 
-[!INCLUDE [durable-functions-prerequisites](../../../includes/durable-functions-prerequisites.md)]
+## <a name="prerequisites"></a>Önkoşullar
+
+# <a name="c"></a>[C#](#tab/csharp)
+
+* [Hızlı başlangıç makalesini doldurun](durable-functions-create-first-csharp.md)
+* [Örnek projeyi GitHub 'dan kopyalayın veya indirin](https://github.com/Azure/azure-functions-durable-extension/tree/main/samples/precompiled)
+
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
+
+* [Hızlı başlangıç makalesini doldurun](quickstart-js-vscode.md)
+* [Örnek projeyi GitHub 'dan kopyalayın veya indirin](https://github.com/Azure/azure-functions-durable-extension/tree/main/samples/javascript)
+
+---
 
 ## <a name="scenario-overview"></a>Senaryoya genel bakış
 
@@ -72,9 +84,6 @@ Orchestrator, konum üzerinde açık hale geldiğinde bir ileti göndermek için
 
 [!code-javascript[Main](~/samples-durable-functions/samples/javascript/E3_Monitor/index.js)]
 
-# <a name="python"></a>[Python](#tab/python)
-Python 'da izleme düzenine yönelik farklı bir öğreticimiz var, lütfen [buradan buraya](durable-functions-monitor-python.md)bakın.
-
 ---
 
 Bu Orchestrator işlevi aşağıdaki eylemleri gerçekleştirir:
@@ -105,9 +114,6 @@ Diğer örneklerde olduğu gibi, yardımcı etkinlik işlevleri de tetikleyici b
 
 [!code-javascript[Main](~/samples-durable-functions/samples/javascript/E3_GetIsClear/index.js)]
 
-# <a name="python"></a>[Python](#tab/python)
-Python 'da izleme düzenine yönelik farklı bir öğreticimiz var, lütfen [buradan buraya](durable-functions-monitor-python.md)bakın.
-
 ---
 
 ### <a name="e3_sendgoodweatheralert-activity-function"></a>E3_SendGoodWeatherAlert Activity işlevi
@@ -130,9 +136,6 @@ Python 'da izleme düzenine yönelik farklı bir öğreticimiz var, lütfen [bur
 SMS iletisini gönderen kod aşağıda verilmiştir:
 
 [!code-javascript[Main](~/samples-durable-functions/samples/javascript/E3_SendGoodWeatherAlert/index.js)]
-
-# <a name="python"></a>[Python](#tab/python)
-Python 'da izleme düzenine yönelik farklı bir öğreticimiz var, lütfen [buradan buraya](durable-functions-monitor-python.md)bakın.
 
 ---
 

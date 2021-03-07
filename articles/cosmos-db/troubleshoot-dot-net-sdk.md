@@ -9,12 +9,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: troubleshooting
 ms.reviewer: sngun
 ms.custom: devx-track-dotnet
-ms.openlocfilehash: 04813b9d70557314e619fded5294644f5f6fadf5
-ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
+ms.openlocfilehash: dce309b955882f6236f285ee6bd20a79201e43fb
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99831255"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102429944"
 ---
 # <a name="diagnose-and-troubleshoot-issues-when-using-azure-cosmos-db-net-sdk"></a>Azure Cosmos DB .NET SDK'sını kullanırken karşılaşılan sorunları tanılama ve giderme
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -63,7 +63,7 @@ Tüm GÇ hatalarında Cosmos DB SDK'sı, SDK'da yeniden deneme uygulanabiliyorsa
 
 ## <a name="common-error-status-codes"></a>Ortak hata durum kodları <a id="error-codes"></a>
 
-| Durum Kodu | Description | 
+| Durum Kodu | Açıklama | 
 |----------|-------------|
 | 400 | Hatalı istek (hata iletisine bağlıdır)| 
 | 401 | [Yetkilendirilmemiş](troubleshoot-unauthorized.md) | 
@@ -91,7 +91,7 @@ Uygulamanız [Azure sanal makinelerinde genel IP adresi olmadan](../load-balance
 * [Azure sanal makinenize genel IP](../load-balancer/troubleshoot-outbound-connection.md#assignilpip)atayın.
 
 ### <a name="high-network-latency"></a><a name="high-network-latency"></a>Yüksek ağ gecikmesi
-Yüksek ağ gecikmesi, v2 SDK 'sindeki [Tanılama dizesi](/dotnet/api/microsoft.azure.documents.client.resourceresponsebase.requestdiagnosticsstring?preserve-view=true&view=azure-dotnet) veya v3 SDK 'daki [Tanılamalar](/dotnet/api/microsoft.azure.cosmos.responsemessage.diagnostics?preserve-view=true&view=azure-dotnet#Microsoft_Azure_Cosmos_ResponseMessage_Diagnostics) kullanılarak belirlenebilir.
+Yüksek ağ gecikmesi, v2 SDK 'sindeki [Tanılama dizesi](/dotnet/api/microsoft.azure.documents.client.resourceresponsebase.requestdiagnosticsstring) veya v3 SDK 'daki [Tanılamalar](/dotnet/api/microsoft.azure.cosmos.responsemessage.diagnostics#Microsoft_Azure_Cosmos_ResponseMessage_Diagnostics) kullanılarak belirlenebilir.
 
 Bir [zaman aşımı](troubleshoot-dot-net-sdk-request-timeout.md) yoksa ve tanılama, yüksek gecikme süresinin ve arasındaki farka göre `ResponseTime` `RequestStartTime` (Bu örnekte >300 milisaniyelik) açık olduğu tek istekleri gösterir.
 

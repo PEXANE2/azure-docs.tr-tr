@@ -11,12 +11,12 @@ author: barbaraselden
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 765bfe0f805ae4219110d689e8f7f8fd54a26cf3
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: ce8aa5108b6998424b35e3f4ecac6b51e78f276b
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96173945"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102424130"
 ---
 # <a name="plan-an-azure-active-directory-self-service-password-reset-deployment"></a>Azure Active Directory self servis parola sıfırlama dağıtımını planlayın
 
@@ -64,7 +64,7 @@ Sürümleri ve özellikleri karşılaştırmak ve grup veya Kullanıcı tabanlı
 
 Fiyatlandırma hakkında daha fazla bilgi için bkz. [Azure Active Directory fiyatlandırması](https://azure.microsoft.com/pricing/details/active-directory/).
 
-### <a name="prerequisites"></a>Ön koşullar
+### <a name="prerequisites"></a>Önkoşullar
 
 * En az deneme sürümü lisansı etkinleştirilmiş çalışan bir Azure AD kiracısına erişim. Gerekirse, [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
@@ -78,6 +78,7 @@ Fiyatlandırma hakkında daha fazla bilgi için bkz. [Azure Active Directory fiy
 | Videolar| [Daha iyi BT ölçeklenebilirliği sayesinde kullanıcılarınıza güç katın](https://youtu.be/g9RpRnylxS8) 
 | |[Self servis parola sıfırlama nedir?](https://youtu.be/hc97Yx5PJiM)|
 | |[Self servis parola sıfırlama dağıtımı](https://www.youtube.com/watch?v=Pa0eyqjEjvQ&index=18&list=PLLasX02E8BPBm1xNMRdvP6GtA6otQUqp0)|
+| |[Azure AD 'de SSPR 'yi etkinleştirme ve yapılandırma](https://www.youtube.com/watch?v=rA8TvhNcCvQ)|
 | |[Azure AD 'de kullanıcılar için self servis parola sıfırlama nasıl yapılandırılır?](https://azure.microsoft.com/resources/videos/self-service-password-reset-azure-ad/) |
 | |[[Kullanıcıların, Azure Active Directory için güvenlik bilgilerini kaydetmesi için [kullanıcıları hazırlama]](https://youtu.be/gXuh0XS18wA) |
 | Çevrimiçi kurslar|[Microsoft Azure Active Directory kimlikleri yönetme](https://www.pluralsight.com/courses/microsoft-azure-active-directory-managing-identities) Kullanıcılarınıza modern ve korumalı bir deneyim sunmak için SSPR 'yi kullanın. Özellikle "[Azure Active Directory Kullanıcıları ve grupları yönetme](https://app.pluralsight.com/library/courses/microsoft-azure-active-directory-managing-identities/table-of-contents)" modülünü inceleyin. |
@@ -154,14 +155,14 @@ SSPR 'yi önerilen değerlerle birlikte etkinleştirmek için aşağıdaki ayarl
 | **SSPR özellikleri** | Self servis parola sıfırlama etkin | Pilot için **Seçili** grup ve **üretim için** |
 | **Kimlik doğrulama yöntemleri** | Kaydolmak için gereken kimlik doğrulama yöntemleri | Sıfırlama için her zaman 1 daha fazla |
 |   | Sıfırlamak için gereken kimlik doğrulama yöntemleri | Bir veya iki |
-| **Kaydını** | Kullanıcılardan oturum açarken kaydolmalarını iste | Evet |
+| **Kaydını** | Kullanıcılardan oturum açarken kaydolmalarını iste | Yes |
 |   | Kullanıcıların kimlik doğrulaması bilgilerini yeniden onaylamasını istemeden önce geçen gün sayısı | 90 – 180 gün |
-| **Bildirimler** | Parola sıfırlamayı kullanıcılara bildir | Evet |
-|   | Diğer yöneticiler parolalarını sıfırladığında tüm yöneticilere bildir | Evet |
-| **Özelleştirme** | Yardım masası bağlantısını Özelleştir | Evet |
+| **Bildirimler** | Parola sıfırlamayı kullanıcılara bildir | Yes |
+|   | Diğer yöneticiler parolalarını sıfırladığında tüm yöneticilere bildir | Yes |
+| **Özelleştirme** | Yardım masası bağlantısını Özelleştir | Yes |
 |   | Özel yardım masası e-postası veya URL 'SI | Destek sitesi veya e-posta adresi |
-| **Şirket içi tümleştirme** | Parolaları şirket içi AD 'ye geri yazma | Evet |
-|   | Kullanıcıların, parolayı sıfırlamadan hesabın kilidini açma izni ver | Evet |
+| **Şirket içi tümleştirme** | Parolaları şirket içi AD 'ye geri yazma | Yes |
+|   | Kullanıcıların, parolayı sıfırlamadan hesabın kilidini açma izni ver | Yes |
 
 ### <a name="sspr-properties"></a>SSPR özellikleri
 
@@ -190,7 +191,7 @@ Kuruluşunuzun daha kısa bir zaman dilimine yönelik bir iş ihtiyacı yoksa, k
 
 ### <a name="notifications-settings"></a>Bildirim ayarları
 
-**Parola sıfırlamaları için kullanıcılara bildir** ' i ve **diğer yöneticiler parolasını Evet olarak sıfırladığında tüm yöneticilere bildir** ' **Yes** i yapılandırın. Her ikisinde de **Evet** ' i seçmek, kullanıcıların parolası sıfırlandığında haberdar olmanızı sağlayarak güvenliği artırır. Ayrıca, bir yönetici bir parolayı değiştirdiğinde tüm yöneticilerin farkında olmasını sağlar. Kullanıcılar veya Yöneticiler bir bildirim alıyorsa ve değişikliği başlatmadıklarında, olası bir güvenlik sorununu anında raporlayabilir.
+**Parola sıfırlamaları için kullanıcılara bildir** ' i ve **diğer yöneticiler parolasını Evet olarak sıfırladığında tüm yöneticilere bildir** ' i yapılandırın. Her ikisinde de **Evet** ' i seçmek, kullanıcıların parolası sıfırlandığında haberdar olmanızı sağlayarak güvenliği artırır. Ayrıca, bir yönetici bir parolayı değiştirdiğinde tüm yöneticilerin farkında olmasını sağlar. Kullanıcılar veya Yöneticiler bir bildirim alıyorsa ve değişikliği başlatmadıklarında, olası bir güvenlik sorununu anında raporlayabilir.
 
 ### <a name="customization-settings"></a>Özelleştirme ayarları
 

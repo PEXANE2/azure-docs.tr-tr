@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 4/15/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: 3395dc3010f7ae3aabadda8105c1765a9c300988
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
+ms.openlocfilehash: 30b30697750a0b9068cfcde19ea4bf9c474f9ad9
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102201269"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102424589"
 ---
 # <a name="tutorial-build-out-an-end-to-end-solution"></a>Öğretici: uçtan uca bir çözüm oluşturma
 
@@ -48,7 +48,7 @@ Senaryo aracılığıyla çalışmak için daha önce indirdiğiniz önceden yaz
 
 Yapı senaryosu *AdtSampleApp* örnek uygulaması tarafından uygulanan bileşenler şunlardır:
 * Cihaz kimlik doğrulaması 
-* [.Net (C#) SDK](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true) kullanım örnekleri ( *CommandLoop.cs* içinde bulunur)
+* [.Net (C#) SDK](/dotnet/api/overview/azure/digitaltwins/client) kullanım örnekleri ( *CommandLoop.cs* içinde bulunur)
 * Azure dijital TWINS API 'sini çağırmak için konsol arabirimi
 * *Sampleclientapp* -örnek bir Azure dijital TWINS çözümü
 * *Samplefunctionsapp* -Azure dijital TWINS grafınızı IoT Hub ve Azure dijital TWINS etkinliklerindeki telemetri sonucu olarak güncelleştiren bir Azure işlevleri uygulaması

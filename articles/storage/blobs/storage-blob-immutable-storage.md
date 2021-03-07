@@ -9,12 +9,12 @@ ms.date: 02/01/2021
 ms.author: tamram
 ms.reviewer: hux
 ms.subservice: blobs
-ms.openlocfilehash: ad660ee69bb568e1a76d59344cf31fbf044aaae9
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 8d04d1bd758480ec33a7480e4045d28ed750f22e
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100581423"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102430947"
 ---
 # <a name="store-business-critical-blob-data-with-immutable-storage"></a>İş açısından kritik blob verilerini sabit depolama alanıyla depolama
 
@@ -44,13 +44,13 @@ Sabit depolama aşağıdaki özellikleri destekler:
 
 - **Tüm blob katmanları için destek**: WORM ilkeleri Azure Blob depolama katmanından bağımsızdır ve sık erişimli, seyrek erişimli katmanlara ve arşiv katmanlarına uygulanır. Kullanıcılar verileri iş yüklerine göre en uygun maliyetli katmanda depolarken verilerin de sabit tutulmasını sağlayabilir.
 
-- **Kapsayıcı düzeyinde yapılandırma**: kullanıcılar, zaman tabanlı bekletme ilkelerini ve geçerli saklama etiketlerini kapsayıcı düzeyinde yapılandırabilir. Kullanıcılar basit kapsayıcı düzeyi ayarlarını kullanarak zamana bağlı saklama ilkelerini oluşturup kilitleme, saklama aralıklarını uzatma ve yasal tutma ayarlayıp silme gibi daha birçok işlem yapabilir. Bu ilkeler kapsayıcıdaki mevcut ve yeni tüm bloblara uygulanır.
+- **Kapsayıcı düzeyinde yapılandırma**: kullanıcılar, zaman tabanlı bekletme ilkelerini ve geçerli saklama etiketlerini kapsayıcı düzeyinde yapılandırabilir. Kullanıcılar basit kapsayıcı düzeyi ayarlarını kullanarak zamana bağlı saklama ilkelerini oluşturup kilitleme, saklama aralıklarını uzatma ve yasal tutma ayarlayıp silme gibi daha birçok işlem yapabilir. Bu ilkeler kapsayıcıdaki mevcut ve yeni tüm bloblara uygulanır. HNS etkin bir hesap için, bu ilkeler bir kapsayıcıdaki tüm dizinlere de uygulanır.
 
 - **Denetim günlüğü desteği**: her kapsayıcı bir ilke Denetim günlüğü içerir. Kilitleme zaman tabanlı bekletme ilkeleri için yedi adede kadar zamana dayalı saklama komutu gösterir ve Kullanıcı KIMLIĞI, komut türü, zaman damgaları ve bekletme aralığını içerir. Yasal tutma olaylarında günlük girişinde kullanıcı kimliği, komut türü, zaman damgaları ve yasal tutma etiketleri yer alır. Bu günlük, SEC 17A-4 (f) mevzuat yönergelerine uygun olarak ilkenin kullanım ömrü boyunca tutulur. [Azure etkinlik günlüğü](../../azure-monitor/essentials/platform-logs-overview.md) tüm denetim düzlemi etkinliklerinin daha kapsamlı bir günlüğünü gösterir; [Azure Kaynak günlüklerinin](../../azure-monitor/essentials/platform-logs-overview.md) etkinleştirilmesi ve veri düzlemi işlemlerini gösterir. Düzenlemeler veya diğer amaçlar doğrultusunda ihtiyaç duyulabilecek günlüklerin düzenli olarak depolanması kullanıcının sorumluluğundadır.
 
 ## <a name="how-it-works"></a>Nasıl çalışır?
 
-Azure Blob depolama için sabit depolama özelliği, iki WORM veya sabit ilke türünü destekler: zamana bağlı saklama ve yasal tutma. Bir kapsayıcıya zaman tabanlı bir bekletme ilkesi veya yasal saklama alanı uygulandığında, mevcut tüm Bloblar 30 saniyeden az bir şekilde sabit bir solucan durumuna geçer. Bu ilkeyle korunan kapsayıcıya yüklenen tüm yeni Bloblar da sabit bir duruma geçer. Tüm Bloblar sabit bir durumda olduktan sonra, değişmez ilke onaylanır ve sabit kapsayıcıda üzerine yazma veya silme işlemlerine izin verilmez.
+Azure Blob depolama için sabit depolama özelliği, iki WORM veya sabit ilke türünü destekler: zamana bağlı saklama ve yasal tutma. Bir kapsayıcıya zaman tabanlı bir bekletme ilkesi veya yasal saklama alanı uygulandığında, mevcut tüm Bloblar 30 saniyeden az bir şekilde sabit bir solucan durumuna geçer. Bu ilkeyle korunan kapsayıcıya yüklenen tüm yeni Bloblar da sabit bir duruma geçer. Tüm Bloblar sabit bir durumda olduktan sonra, değişmez ilke onaylanır ve sabit kapsayıcıda üzerine yazma veya silme işlemlerine izin verilmez. HNS etkin bir hesap söz konusu olduğunda, Bloblar yeniden adlandırılamaz veya farklı bir dizine taşınamaz.
 
 Kapsayıcıda, yasal bir saklama veya kilitli zaman tabanlı bir ilke tarafından korunan bir blob varsa kapsayıcı ve depolama hesabı silmeye de izin verilmez. Yasal bir saklama ilkesi blob, kapsayıcı ve depolama hesabı silmeye karşı korunur. Hem kilidi açılmış hem de kilitli zaman tabanlı ilkeler, belirtilen süre boyunca blob silinmeye karşı korunur. Hem kilitlemeli hem de kilitli zaman tabanlı ilkeler, kapsayıcıda yalnızca en az bir blob varsa kapsayıcı silmeye karşı koruma sağlayacaktır. Yalnızca *kilitli* zaman tabanlı ilkeye sahip bir kapsayıcı, depolama hesabı silmelerini karşı korunur; kilidi açılmış zaman tabanlı ilkelerle kapsayıcı, depolama hesabı silme koruması ve uyumluluğu sunmaz.
 
@@ -175,6 +175,9 @@ Evet. Zaman tabanlı bir bekletme ilkesi ilk oluşturulduğunda, *kilidi açılm
 **Sabit blob ilkeleriyle birlikte geçici silme kullanabilir miyim?**
 
 Evet, uyumluluk gereksinimleriniz geçici silmenin etkinleştirilmesini sağlar. [Azure Blob depolama Için geçici silme](./soft-delete-blob-overview.md) , yasal bir saklama veya zaman tabanlı bekletme ilkesinden bağımsız olarak bir depolama hesabındaki tüm kapsayıcılar için geçerlidir. Herhangi bir sabit solucan İlkesi uygulanmadan ve onaylanmadan önce ek koruma için geçici silme özelliğinin etkinleştirilmesini öneririz.
+
+**HNS etkin bir hesap için blob sabit durumundayken bir blobu yeniden adlandırabilir veya taşıyabilir miyim?**
+Hayır, hem ad hem de dizin yapısı, sabit ilke yerleştirildikten sonra değiştirilemeyen önemli kapsayıcı düzeyi veriler olarak değerlendirilir. Yeniden adlandırma ve taşıma yalnızca, genel olarak yalnızca HNS özellikli hesaplar için kullanılabilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

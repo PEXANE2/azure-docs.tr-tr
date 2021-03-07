@@ -7,12 +7,12 @@ ms.author: alkarche
 ms.date: 11/18/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 40cf83b0ca9e4c794979f2b20ddb73360758abc5
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
+ms.openlocfilehash: b0e440f9fe0b7ce1591318362ac0419b9aa01baf
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102198549"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102433310"
 ---
 # <a name="manage-endpoints-and-routes-in-azure-digital-twins-apis-and-cli"></a>Azure dijital TWINS 'te uç noktaları ve yolları yönetme (API 'Ler ve CLı)
 
@@ -20,7 +20,7 @@ ms.locfileid: "102198549"
 
 Azure dijital TWINS 'de, [olay bildirimlerini](how-to-interpret-event-data.md) aşağı akış hizmetlerine veya bağlı işlem kaynaklarına yönlendirebilirsiniz. Bunu yapmak için öncelikle olayları alabilecek **uç noktaları** ayarlamanız gerekir. Daha sonra, Azure dijital TWINS tarafından oluşturulan olayların hangi uç noktalara teslim edildiğini belirten  [**olay yolları**](concepts-route-events.md) oluşturabilirsiniz.
 
-Bu makalede [REST API 'leri](/rest/api/azure-digitaltwins/), [.net (C#) SDK](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true)ve [Azure dijital TWINS CLI](how-to-use-cli.md)ile uç noktalar ve rotalar oluşturma işlemi adım adım açıklanmaktadır.
+Bu makalede [REST API 'leri](/rest/api/azure-digitaltwins/), [.net (C#) SDK](/dotnet/api/overview/azure/digitaltwins/client)ve [Azure dijital TWINS CLI](how-to-use-cli.md)ile uç noktalar ve rotalar oluşturma işlemi adım adım açıklanmaktadır.
 
 Alternatif olarak, [Azure Portal](https://portal.azure.com)uç noktalarını ve yolları da yönetebilirsiniz. Bunun yerine portalı kullanan Bu makalenin bir sürümü için bkz. [*nasıl yapılır: uç noktaları ve yolları yönetme (portal)*](how-to-manage-routes-portal.md).
 
@@ -208,7 +208,7 @@ Olay yolları Azure Digital TWINS [ **eventroutes** veri düzlemi API 'leri](/re
 
 ### <a name="create-routes-with-the-apis-and-c-sdk"></a>API 'Ler ve C# SDK 'Sı ile rotalar oluşturma
 
-Olay yollarını tanımlamanın bir yolu, [veri düzlemi API](how-to-use-apis-sdks.md#overview-data-plane-apis)'lardır. Bu bölümdeki örnekler [.net (C#) SDK 'sını](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true)kullanır.
+Olay yollarını tanımlamanın bir yolu, [veri düzlemi API](how-to-use-apis-sdks.md#overview-data-plane-apis)'lardır. Bu bölümdeki örnekler [.net (C#) SDK 'sını](/dotnet/api/overview/azure/digitaltwins/client)kullanır.
 
 `CreateOrReplaceEventRouteAsync` , bir olay yolu eklemek için kullanılan SDK çağrıdır. Kullanım örneği aşağıda verilmiştir:
 

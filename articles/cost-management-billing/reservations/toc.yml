@@ -102,7 +102,7 @@
           href: ../../virtual-machines/prepay-reserved-vm-instances.md?toc=%2fazure%2fcost-management-billing%2freservations%2ftoc.json
     - name: 'Satın aldıktan sonra Görüntüleme, Yönetme ve İyileştirme'
       items:
-        - name: Rezervasyonları ve kullanımı görüntüleme
+        - name: Görüntüleme ve yönetme izinleri
           href: view-reservations.md?toc=/azure/cost-management-billing/reservations/toc.json
         - name: Rezervasyonları CSP olarak görüntüleme
           href: how-to-view-csp-reservations.md?toc=/azure/cost-management-billing/reservations/toc.json

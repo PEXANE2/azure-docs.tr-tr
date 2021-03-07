@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: troubleshooting
 ms.date: 01/30/2020
 ms.author: jlian
-ms.openlocfilehash: 7d48474d88a60c73f6094d3b9e65017c23404d8a
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 53364009f9b9c041c39728e438c3e24eacfd1665
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92144259"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102435486"
 ---
 # <a name="412002-devicemessagelocklost"></a>412002 DeviceMessageLockLost
 
@@ -21,11 +21,11 @@ Bu makalede, **412002 Devicemessagelockkayıp** hataları için nedenler ve çö
 
 ## <a name="symptoms"></a>Belirtiler
 
-Buluttan cihaza ileti gönderilmeye çalışırken, istek **412002 Devicemessagelockkaybedildi**hatasıyla başarısız olur.
+Buluttan cihaza ileti gönderilmeye çalışırken, istek **412002 Devicemessagelockkaybedildi** hatasıyla başarısız olur.
 
 ## <a name="cause"></a>Nedeni
 
-Bir cihaz kuyruktan cihaza bir ileti aldığında (örneğin, kullanarak [`ReceiveAsync()`](/dotnet/api/microsoft.azure.devices.client.deviceclient.receiveasync?view=azure-dotnet) ), bir dakikalık kilit zaman aşımı süresi için IoT Hub ileti kilitlenir. Kilit zaman aşımı süresi dolduktan sonra cihaz iletiyi tamamlamaya çalışırsa IoT Hub bu özel durumu oluşturur.
+Bir cihaz kuyruktan cihaza bir ileti aldığında (örneğin, kullanarak [`ReceiveAsync()`](/dotnet/api/microsoft.azure.devices.client.deviceclient.receiveasync) ), bir dakikalık kilit zaman aşımı süresi için IoT Hub ileti kilitlenir. Kilit zaman aşımı süresi dolduktan sonra cihaz iletiyi tamamlamaya çalışırsa IoT Hub bu özel durumu oluşturur.
 
 ## <a name="solution"></a>Çözüm
 

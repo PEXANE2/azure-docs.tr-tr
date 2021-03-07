@@ -6,12 +6,12 @@ ms.author: ebnkruma
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 11/30/2020
-ms.openlocfilehash: 7d624f2dd2c0c9b4c7e99d5628a1d47e4303da7f
-ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
+ms.openlocfilehash: 4246ad48624eb0ca53fbe6bb747f02daa32119bf
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/18/2021
-ms.locfileid: "98555602"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102432460"
 ---
 # <a name="use-managed-identities-to-access-azure-sql-database-or-azure-synapse-analytics-from-an-azure-stream-analytics-job-preview"></a>Azure Stream Analytics işinden Azure SQL veritabanı 'na veya Azure SYNAPSE Analytics 'e erişmek için Yönetilen kimlikler kullanma (Önizleme)
 
@@ -19,7 +19,21 @@ Azure Stream Analytics, Azure SQL veritabanı ve Azure SYNAPSE Analytics çıkı
 
 Yönetilen kimlik, belirli bir Stream Analytics işini temsil eden Azure Active Directory kayıtlı yönetilen bir uygulamadır. Yönetilen uygulama, hedeflenen bir kaynağın kimliğini doğrulamak için kullanılır. Bu makalede, Azure portal aracılığıyla bir Azure SQL veritabanı için yönetilen kimliğin veya bir Stream Analytics işinin Azure SYNAPSE Analytics çıkışının nasıl etkinleştirileceği gösterilmektedir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="overview"></a>Genel Bakış
+
+Bu makalede, yönetilen kimlik doğrulama modu kullanarak Stream Analytics işinizi Azure SQL veritabanınıza veya Azure SYNAPSE Analytics SQL havuzuna bağlamak için gereken adımlar gösterilir. 
+
+- Öncelikle Stream Analytics işiniz için sistem tarafından atanan bir yönetilen kimlik oluşturursunuz. İşte Azure Active Directory kimliği.  
+
+- SQL Server veya SYNAPSE çalışma alanınıza, bu kaynak için Azure AD (yönetilen kimlik) kimlik doğrulamasını sağlayan bir Active Directory yönetici ekleyin.
+
+- Sonra, veritabanında Stream Analytics işinin kimliğini temsil eden bir kapsanan kullanıcı oluşturun. Stream Analytics işi SQL DB veya SYNAPSE SQL DB kaynağı ile etkileşime geçtiğinde, bu, Stream Analytics işinizin hangi izinlere sahip olduğunu denetlemek için başvurduğu kimliktir.
+
+- SQL veritabanınıza veya SYNAPSE SQL havuzlara erişmek için Stream Analytics işinize izin verin.
+
+- Son olarak, Stream Analytics işinde Azure SQL veritabanınızı/Azure SYNAPSE analizlerinizi çıkış olarak ekleyin.
+
+## <a name="prerequisites"></a>Önkoşullar
 
 #### <a name="azure-sql-database"></a>[Azure SQL Veritabanı](#tab/azure-sql)
 
@@ -63,25 +77,25 @@ Bu özelliği kullanmak için aşağıdakiler gereklidir:
 
 Yönetilen bir kimlik oluşturduktan sonra bir Active Directory Yöneticisi seçersiniz.
 
-1. Azure SQL veritabanınıza veya Azure SYNAPSE Analytics kaynağına gidin ve veritabanının altında bulunduğu SQL Server seçin. Kaynak Genel Bakış sayfasında *sunucu adı* ' nın yanındaki SQL Server adı ' nı bulabilirsiniz.
+1. Azure SQL veritabanınıza veya Azure SYNAPSE Analytics SQL havuzu kaynağına giderek kaynağın sırasıyla altında olduğu SQL Server veya SYNAPSE çalışma alanını seçin. Bunlara bağlantıyı *sunucu adı* veya *çalışma alanı adı*' nın yanındaki kaynağa Genel Bakış sayfasında bulabilirsiniz.
 
-1. **Ayarlar** altında **Active Directory yönetici** ' yi seçin. Ardından, **yönetici ayarla**' yı seçin.
+1. Sırasıyla SQL Server ve SYNAPSE çalışma alanı için **Ayarlar** altında **Active Directory yönetici** veya **SQL Active Directory Yöneticisi** ' ni seçin. Ardından, **yönetici ayarla**' yı seçin.
 
    ![Active Directory yönetici sayfası](./media/sql-db-output-managed-identity/active-directory-admin-page.png)
 
-1. Active Directory yönetici sayfasında, bir kullanıcı veya grup için SQL Server Yöneticisi olacak şekilde arama yapın ve **Seç**' e tıklayın.
+1. Active Directory yönetici sayfasında, bir kullanıcı veya grup için SQL Server Yöneticisi olacak şekilde arama yapın ve **Seç**' e tıklayın. Bu, sonraki bölümde **Kapsanan Veritabanı kullanıcısını** oluşturacak Kullanıcı olacaktır.
 
    ![Active Directory Yöneticisi ekleme](./media/sql-db-output-managed-identity/add-admin.png)
 
-   Active Directory yönetici sayfası, Active Directory tüm üyelerini ve gruplarını gösterir. Gri olan kullanıcılar veya gruplar Azure Active Directory yönetici olarak desteklenmediği için seçilemez.  ****    [SQL veritabanı veya Azure Synapse kimlik doğrulaması Için Azure Active Directory kimlik doğrulaması kullan](../azure-sql/database/authentication-aad-overview.md#azure-ad-features-and-limitations)' ın Azure Active Directory Özellikler ve sınırlamalar bölümünde desteklenen Yöneticiler listesine bakın. Azure rol tabanlı erişim denetimi (Azure RBAC) yalnızca portala uygulanır ve SQL Server yayılmaz. Ayrıca, seçilen kullanıcı veya Grup, sonraki bölümde **Kapsanan Veritabanı kullanıcısını** oluşturamayacak Kullanıcı olur.
+   Active Directory yönetici sayfası, Active Directory tüm üyelerini ve gruplarını gösterir. Azure Active Directory yönetici olarak desteklenmediğinden, griden Kullanıcı veya grup seçilemez.  ****    [SQL veritabanı veya Azure Synapse kimlik doğrulaması Için Azure Active Directory kimlik doğrulaması kullan](../azure-sql/database/authentication-aad-overview.md#azure-ad-features-and-limitations)' ın Azure Active Directory Özellikler ve sınırlamalar bölümünde desteklenen Yöneticiler listesine bakın.
 
 1. **Active Directory yönetici** sayfasında **Kaydet** ' i seçin. Yönetici değiştirme işlemi birkaç dakika sürer.
-
-   Azure Active Directory Yöneticisi 'ni ayarlarken, yeni yönetici adı (Kullanıcı veya grup), sanal birincil veritabanında bir SQL Server kimlik doğrulama kullanıcısı olarak bulunamaz. Varsa, Azure Active Directory yönetici kurulumu başarısız olur ve bir yöneticinin (ad) zaten var olduğunu belirten oluşturma işlemi geri alınır. SQL Server kimlik doğrulama kullanıcısı Azure Active Directory parçası olmadığından, bu kullanıcı için Azure Active Directory kimlik doğrulaması kullanarak sunucuya bağlanma çabaları vardır. 
 
 ## <a name="create-a-contained-database-user"></a>Kapsanan veritabanı kullanıcısı oluşturma
 
 Daha sonra, Azure SQL veya Azure SYNAPSE veritabanınızda Azure Active Directory kimliğiyle eşlenmiş bir kapsanan veritabanı kullanıcısı oluşturun. Kapsanan Veritabanı kullanıcısının birincil veritabanı için bir oturum açma işlemi yoktur, ancak veritabanıyla ilişkili dizindeki bir kimlikle eşlenir. Azure Active Directory kimliği, tek bir kullanıcı hesabı veya grup olabilir. Bu durumda, Stream Analytics işiniz için kapsanan bir veritabanı kullanıcısı oluşturmak istersiniz. 
+
+Daha fazla bilgi için Azure AD tümleştirmesi ile ilgili arka plan için aşağıdaki makaleyi gözden geçirin: [SQL veritabanı ve Azure SYNAPSE Analytics Ile evrensel kimlik doğrulaması (MFA IÇIN SSMS desteği)](../azure-sql/database/authentication-mfa-ssms-overview.md)
 
 1. SQL Server Management Studio kullanarak Azure SQL veya Azure SYNAPSE veritabanınıza bağlanın. **Kullanıcı adı** , Kullanıcı **değiştirme** iznine sahip Azure Active Directory bir kullanıcı. SQL Server ayarladığınız yönetici bir örnektir. MFA kimlik doğrulamasıyla **Azure Active Directory – Universal** kullanın. 
 
@@ -97,7 +111,7 @@ Daha sonra, Azure SQL veya Azure SYNAPSE veritabanınızda Azure Active Director
 
    ![Yeni güvenlik duvarı kuralı penceresi](./media/sql-db-output-managed-identity/new-firewall-rule.png)
 
-   1. Bu durumda, Azure portal SQL Server kaynağına gidin. Güvenlik bölümünde **güvenlik** **duvarları ve sanal ağ** sayfasını açın. 
+   1. Bu durumda, Azure portal SQL Server/SYNAPSE çalışma alanı kaynağına gidin. Güvenlik bölümünde **güvenlik** **duvarları ve sanal ağ/güvenlik duvarları** sayfasını açın. 
    1. Kural adı olan yeni bir kural ekleyin.
    1. *Başlangıç IP 'si* Için **yeni güvenlik duvarı kuralı** penceresinde *Kimden* IP adresini kullanın.
    1. *Bitiş IP 'si* Için **yeni güvenlik duvarı kuralı** penceresinde *, IP adresini* kullanın. 
@@ -108,8 +122,15 @@ Daha sonra, Azure SQL veya Azure SYNAPSE veritabanınızda Azure Active Director
    ```sql
    CREATE USER [ASA_JOB_NAME] FROM EXTERNAL PROVIDER; 
    ```
+   
+    Kapsanan Veritabanı kullanıcısını doğru bir şekilde eklediğinizi doğrulamak için, ilgili veritabanı altında SSMS 'de aşağıdaki komutu çalıştırın ve *ASA_JOB_NAME* "ad" sütununun altında olup olmadığını denetleyin.
 
-1. Microsoft 'un Stream Analytics işinin SQL veritabanına erişimi olup olmadığını doğrulamak için Azure Active Directory, veritabanıyla iletişim kurmak için Azure Active Directory izni vermemiz gerekir. Bunu yapmak için, yeniden Azure portal "güvenlik duvarları ve sanal ağ" sayfasına gidin ve "Azure hizmetleri ve kaynaklarının bu sunucuya erişmesine Izin ver" seçeneğini etkinleştirin. 
+   ```sql
+   SELECT * FROM <SQL_DB_NAME>.sys.database_principals 
+   WHERE type_desc = 'EXTERNAL_USER' 
+   ```
+
+1. Microsoft 'un Stream Analytics işinin SQL veritabanına erişimi olup olmadığını doğrulamak için Azure Active Directory, veritabanıyla iletişim kurmak için Azure Active Directory izni vermemiz gerekir. Bunu yapmak için, yeniden Azure portal "güvenlik duvarları ve sanal ağ"/"güvenlik duvarları" sayfasına gidin ve "Azure hizmetleri ve kaynaklarının bu sunucuya/çalışma alanına erişmesine Izin ver" seçeneğini etkinleştirin.
 
    ![Güvenlik Duvarı ve sanal ağ](./media/sql-db-output-managed-identity/allow-access.png)
 
@@ -117,13 +138,13 @@ Daha sonra, Azure SQL veya Azure SYNAPSE veritabanınızda Azure Active Director
 
 #### <a name="azure-sql-database"></a>[Azure SQL Veritabanı](#tab/azure-sql)
 
-Kapsanan bir veritabanı kullanıcısı oluşturduktan ve önceki bölümde açıklandığı gibi portalda Azure hizmetlerine erişim izni verildiğinde, Stream Analytics işiniz yönetilen kimlik aracılığıyla Azure SQL veritabanı kaynağına, yönetilen kimlik üzerinden **bağlanmak** için bir izne sahiptir. Stream Analytics iş akışında daha sonra gerekli olacağı için Stream Analytics işine seçme ve ekleme izinleri vermenizi öneririz. **Select** izni, ışın Azure SQL veritabanındaki tabloyla bağlantısını test etmesine izin verir. **Ekleme** izni, bir girişi ve Azure SQL veritabanı çıkışını yapılandırdıktan sonra uçtan uca Stream Analytics sorgularının test edilmesine olanak tanır.
+Kapsanan bir veritabanı kullanıcısı oluşturduktan ve önceki bölümde açıklandığı gibi portalda Azure hizmetlerine erişim izni verildiğinde, Stream Analytics işiniz yönetilen kimlik aracılığıyla Azure SQL veritabanı kaynağına, yönetilen kimlik üzerinden **bağlanmak** için bir izne sahiptir. Stream Analytics iş akışında daha sonra gerekli olacağı için Stream Analytics işine **seçme** ve **ekleme** izinleri vermenizi öneririz. **Select** izni, ışın Azure SQL veritabanındaki tabloyla bağlantısını test etmesine izin verir. **Ekleme** izni, bir girişi ve Azure SQL veritabanı çıkışını yapılandırdıktan sonra uçtan uca Stream Analytics sorgularının test edilmesine olanak tanır.
 
 #### <a name="azure-synapse-analytics"></a>[Azure Synapse Analytics](#tab/azure-synapse)
 
-Kapsanan bir veritabanı kullanıcısı oluşturduktan ve önceki bölümde açıklandığı gibi portalda Azure hizmetlerine erişim izni verildiğinde, Stream Analytics işiniz yönetilen kimlik aracılığıyla Azure SYNAPSE veritabanı kaynaklarına, yönetilen kimlik üzerinden **bağlanmak** için bir izne sahiptir. Stream Analytics iş akışında daha sonra gerekli olacağı için Stream Analytics işine VERITABANı toplu IŞLEMLERINI seçme, ekleme ve yönetme izinleri vermenizi öneririz. **Select** izni, Işin Azure SYNAPSE veritabanındaki tabloyla bağlantısını test etmesine izin verir. VERITABANıNı **Ekle** ve **Yönet toplu işlemler** izinleri, bir girişi ve Azure SYNAPSE veritabanı çıktısını yapılandırdıktan sonra uçtan uca Stream Analytics sorgularının test edilmesine olanak tanır.
+Kapsanan bir veritabanı kullanıcısı oluşturduktan ve önceki bölümde açıklandığı gibi portalda Azure hizmetlerine erişim izni verildiğinde, Stream Analytics işiniz yönetilen kimlik aracılığıyla Azure SYNAPSE veritabanı kaynaklarına, yönetilen kimlik üzerinden **bağlanmak** için bir izne sahiptir. Stream Analytics iş akışında daha sonra gerekli olacağı için Stream Analytics işine **VERITABANı toplu Işlemlerini** **seçme**, **ekleme** ve yönetme izinleri vermenizi öneririz. **Select** izni, Işin Azure SYNAPSE veritabanındaki tabloyla bağlantısını test etmesine izin verir. VERITABANıNı **Ekle** ve **Yönet toplu işlemler** izinleri, bir girişi ve Azure SYNAPSE veritabanı çıktısını yapılandırdıktan sonra uçtan uca Stream Analytics sorgularının test edilmesine olanak tanır.
 
-VERITABANı yönetme Toplu IŞLEMLERI iznini vermek için, Stream Analytics işine [veritabanı izni tarafından ima](/sql/t-sql/statements/grant-database-permissions-transact-sql?view=azure-sqldw-latest&preserve-view=true#remarks) **altında etiketlenen** tüm izinleri vermeniz gerekir. Stream Analytics işi, [Veritabanını Yönet toplu işlemlerini ve eklemeyi](/sql/t-sql/statements/copy-into-transact-sql)gerektiren Copy ifadesini gerçekleştirdiğinden, bu izne ihtiyacınız vardır.
+**Veritabanı yönetme toplu işlemleri** iznini vermek için, Stream Analytics işine [veritabanı izni tarafından ima](/sql/t-sql/statements/grant-database-permissions-transact-sql?view=azure-sqldw-latest&preserve-view=true#remarks) **altında etiketlenen** tüm izinleri vermeniz gerekir. Stream Analytics işi, [Veritabanını Yönet toplu işlemlerini ve eklemeyi](/sql/t-sql/statements/copy-into-transact-sql)gerektiren **Copy** ifadesini gerçekleştirdiğinden, bu izne ihtiyacınız vardır.
 
 ---
 
@@ -134,18 +155,28 @@ Yalnızca veritabanındaki belirli bir tablo veya nesneye izin vermek için aşa
 #### <a name="azure-sql-database"></a>[Azure SQL Veritabanı](#tab/azure-sql)
 
 ```sql
-GRANT SELECT, INSERT ON OBJECT::TABLE_NAME TO ASA_JOB_NAME;
+GRANT CONNECT, SELECT, INSERT ON OBJECT::TABLE_NAME TO ASA_JOB_NAME;
 ```
 
 #### <a name="azure-synapse-analytics"></a>[Azure Synapse Analytics](#tab/azure-synapse)
 
 ```sql
-GRANT [PERMISSION NAME] OBJECT::TABLE_NAME TO ASA_JOB_NAME;
+GRANT CONNECT, SELECT, INSERT, CONTROL, ADMINISTER DATABASE BULK OPERATIONS OBJECT::TABLE_NAME TO ASA_JOB_NAME;
 ```
 
 ---
 
 Alternatif olarak, SQL Server Management Studio ' de Azure SQL veya Azure SYNAPSE veritabanınıza sağ tıklayıp **özellikler > izinler**' i seçebilirsiniz. İzinler menüsünde, daha önce eklediğiniz Stream Analytics işi görebilir ve uygun gördüğünüz şekilde izinleri el ile verebilir veya reddedebilirsiniz.
+
+*ASA_JOB_NAME* kullanıcıya eklediğiniz tüm izinlere bakmak için, ilgili veritabanı altında SSMS 'de aşağıdaki komutu çalıştırın: 
+
+```sql
+SELECT dprin.name, dbprin.type_desc, dbperm.permission_name, dbperm.state_desc, dbperm.class_desc, object_name(dbperm.major_id) 
+FROM sys.database_principals dbprin 
+LEFT JOIN sys.database_permissions dbperm 
+ON dbperm.grantee_principal_id = dbprin.principal_id 
+WHERE dbprin.name = '<ASA_JOB_NAME>' 
+```
 
 ## <a name="create-an-azure-sql-database-or-azure-synapse-output"></a>Azure SQL veritabanı veya Azure SYNAPSE çıkışı oluşturma
 
@@ -161,6 +192,8 @@ Uygun çıktı şemasıyla SQL veritabanınızda bir tablo oluşturduğunuzdan e
 
 1. Kalan özellikleri doldurun. SQL veritabanı çıkışı oluşturma hakkında daha fazla bilgi için, bkz. [Stream Analytics BIR SQL veritabanı çıkışı oluşturma](sql-database-output.md). İşiniz bittiğinde **Kaydet**' i seçin.
 
+1. **Kaydet**'e tıkladıktan sonra, kaynağınız için bir bağlantı testinin otomatik olarak tetiklenmesi gerekir. Başarılı bir şekilde tamamlandıktan sonra, Stream Analytics işinizi Azure SQL veritabanı 'na veya SYNAPSE SQL veritabanına bağlanmak için yönetilen kimlik doğrulama modu kullanarak başarıyla yapılandırdınız. 
+
 #### <a name="azure-synapse-analytics"></a>[Azure Synapse Analytics](#tab/azure-synapse)
 
 Yönetilen kimliğiniz ve depolama hesabınız yapılandırıldığına göre Stream Analytics işinize bir Azure SQL veritabanı veya Azure SYNAPSE çıkışı eklemeye hazırsınız.
@@ -172,6 +205,8 @@ Uygun çıktı şemasıyla Azure SYNAPSE veritabanınızda bir tablo oluşturdu�
 1. **> Azure SYNAPSE Analytics Ekle**' yi seçin. SQL veritabanı çıkış havuzunun çıkış özellikleri penceresinde, kimlik doğrulama modu açılır listesinden **yönetilen kimlik** ' i seçin.
 
 1. Kalan özellikleri doldurun. Azure SYNAPSE çıkışı oluşturma hakkında daha fazla bilgi edinmek için [Azure Stream Analytics Azure SYNAPSE Analytics çıkışı](azure-synapse-analytics-output.md)bölümüne bakın. İşiniz bittiğinde **Kaydet**' i seçin.
+
+1. **Kaydet**'e tıkladıktan sonra, kaynağınız için bir bağlantı testinin otomatik olarak tetiklenmesi gerekir. Başarılı bir şekilde tamamlandıktan sonra Azure SYNAPSE Analytics kaynağınız için Stream Analytics ile yönetilen kimlik kullanmaya devam etmeye hazırsınız. 
 
 ---
 

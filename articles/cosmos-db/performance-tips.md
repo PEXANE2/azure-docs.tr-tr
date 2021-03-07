@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 10/13/2020
 ms.author: sngun
 ms.custom: devx-track-dotnet, contperf-fy21q2
-ms.openlocfilehash: 47e20e89c8eaef59b9acd6cf7e31244afd4bcf60
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: 57b3d5853f83fc7ee75538d7966f5e20b1a64cd6
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97359056"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102428958"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-and-net-sdk-v2"></a>Azure Cosmos DB ve .NET SDK v2 için performans ipuçları
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -137,19 +137,19 @@ SQL .NET SDK 1.9.0 ve üzeri, bölümlenmiş bir koleksiyonu paralel olarak sorg
 - `MaxDegreeOfParallelism` paralel olarak sorgulanabilecek en fazla bölüm sayısını denetler. 
 - `MaxBufferedItemCount` önceden getirilen sonuçların sayısını denetler.
 
-**_Paralellik derecesi ayarlama_* _
+***Paralellik derecesi ayarlama***
 
 Paralel sorgu birden çok bölümü paralel olarak sorgulayarak işe yarar. Ancak tek bir bölümden alınan veriler sorguya göre işlem içine alınır. `MaxDegreeOfParallelism` [SDK v2](sql-api-sdk-dotnet.md) 'nin bölüm sayısına en iyi şekilde ayarlanması, diğer tüm sistem koşullarının aynı kalması şartıyla en iyi performansı elde etmek için en iyi şansınız vardır. Bölüm sayısını bilmiyorsanız paralellik derecesini yüksek bir sayı olarak ayarlayabilirsiniz. Sistem paralellik derecesi olarak en az (bölüm sayısını, Kullanıcı tarafından girilen girişi) seçer.
 
 Paralel sorgular, verilerin sorguya göre tüm bölümler arasında eşit bir şekilde dağıtılması halinde en avantaja sahip olur. Bölümlenmiş koleksiyon, bir sorgu tarafından döndürülen verilerin tümünün veya çoğu birkaç bölümde yoğunlaşarak (bir bölüm en kötü durumdur), bu bölümlerin sorgunun performansını performans sorunlarına neden olur.
 
-_*_MaxBufferedItemCount ayarlama_*_
+***MaxBufferedItemCount ayarlama***
     
 Paralel sorgu, geçerli sonuç toplu işi istemci tarafından işlendiği sırada sonuçları önceden getirmek üzere tasarlanmıştır. Bu önceden getirme, bir sorgunun genel gecikmesinin artırılmasına yardımcı olur. `MaxBufferedItemCount`Parametresi, önceden getirilen sonuçların sayısını sınırlar. `MaxBufferedItemCount`Sorgunun ön getirmeyi en fazla avantaj almasına izin vermek için beklenen sonuç sayısı (veya daha yüksek bir sayı) olarak ayarlayın.
 
 Önceden getirme, paralellik derecesi ne olursa olsun aynı şekilde çalışacaktır ve tüm bölümlerdeki veriler için tek bir arabellek vardır.  
 
-_ *RetryAfter aralıklarında geri alma Uygula**
+**RetryAfter aralıklarında geri alma Uygula**
 
 Performans testi sırasında, küçük bir istek hızı kısıtlanana kadar yükü artırmanız gerekir. İstekler kısıtlanmamışsa, sunucu tarafından belirtilen yeniden deneme aralığı için istemci uygulamanın azaltılmasından sonra kapatılması gerekir. Geri alma işleminin tamamlanması, yeniden denemeler arasında bekleyen en az miktarda süre harcamanızı sağlar. 
 
@@ -180,7 +180,7 @@ Tüm geçerli sonuçları almak için gereken ağ gidiş dönüşlerin sayısın
 > [!NOTE] 
 > `maxItemCount`Özelliği yalnızca sayfalandırma için kullanılmamalıdır. Ana kullanımı, tek bir sayfada döndürülen en fazla öğe sayısını azaltarak sorguların performansını artırmaktır.  
 
-Ayrıca, kullanılabilir Azure Cosmos DB SDK 'larını kullanarak sayfa boyutunu ayarlayabilirsiniz. İçindeki [Maxıtemcount](/dotnet/api/microsoft.azure.documents.client.feedoptions.maxitemcount?view=azure-dotnet&preserve-view=true) özelliği, `FeedOptions` sabit listesi işleminde döndürülecek en fazla öğe sayısını ayarlamanıza olanak sağlar. `maxItemCount`-1 olarak ayarlandığında, SDK, belge boyutuna bağlı olarak en uygun değeri otomatik olarak bulur. Örneğin:
+Ayrıca, kullanılabilir Azure Cosmos DB SDK 'larını kullanarak sayfa boyutunu ayarlayabilirsiniz. İçindeki [Maxıtemcount](/dotnet/api/microsoft.azure.documents.client.feedoptions.maxitemcount) özelliği, `FeedOptions` sabit listesi işleminde döndürülecek en fazla öğe sayısını ayarlamanıza olanak sağlar. `maxItemCount`-1 olarak ayarlandığında, SDK, belge boyutuna bağlı olarak en uygun değeri otomatik olarak bulur. Örnek:
     
 ```csharp
 IQueryable<dynamic> authorResults = client.CreateDocumentQuery(documentCollection.SelfLink, "SELECT p.Author FROM Pages p WHERE p.Title = 'About Seattle'", new FeedOptions { MaxItemCount = 1000 });
@@ -215,7 +215,7 @@ Azure Cosmos DB zengin bir veritabanı işlemleri kümesi sunar. Bu işlemler, b
 
 Aktarım hızı, her bir kapsayıcı için ayarlanan [Istek birimi](request-units.md) sayısına göre sağlanır. İstek birimi tüketimi, saniye başına bir hız olarak değerlendirilir. Kapsayıcı için sağlanan Istek birimi oranını aşan uygulamalar, oran için sağlanan düzeyin altına düşene kadar sınırlandırılır. Uygulamanız daha yüksek bir işleme düzeyi gerektiriyorsa, ek Istek birimleri sağlayarak aktarım hızını artırabilirsiniz.
 
-Bir sorgunun karmaşıklığı, bir işlem için kaç Istek biriminin tüketildiğini etkiler. Koşulların sayısı, koşulların doğası, UDF sayısı ve kaynak veri kümesinin boyutu, sorgu işlemlerinin maliyetini etkiler.
+Bir sorgunun karmaşıklık düzeyi, işlem için kullanılan istek birimi sayısını etkiler. Koşulların sayısı, koşulların doğası, UDF sayısı ve kaynak veri kümesinin boyutu, sorgu işlemlerinin maliyetini etkiler.
 
 Herhangi bir işlemin (oluşturma, güncelleştirme veya silme) yükünü ölçmek için, [](/rest/api/cosmos-db/common-cosmosdb-rest-response-headers) `RequestCharge` `ResourceResponse\<T>` `FeedResponse\<T>` işlemler tarafından tüketilen istek birimlerinin sayısını ölçmek üzere x-MS-Request-ücret üst bilgisini (veya .NET SDK içindeki veya içinde eşdeğer özelliği) inceleyin:
 
