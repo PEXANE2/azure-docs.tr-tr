@@ -3,25 +3,27 @@ title: Blob dizini etiketlerini kullanarak Azure Blob Storage 'da verileri yöne
 description: Blob nesnelerini kategorilere ayırmak, yönetmek ve sorgulamak için blob Dizin etiketlerinin nasıl kullanılacağına ilişkin örneklere bakın.
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 11/19/2020
+ms.date: 03/05/2021
 ms.service: storage
 ms.subservice: blobs
 ms.topic: how-to
 ms.reviewer: klaasl
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 411815ca2f947c47b8dfb0d2e5d61f8ea18f3545
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 32bb51751430dcd0208849f798d21f2b25e6b82b
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95541258"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102430879"
 ---
 # <a name="use-blob-index-tags-preview-to-manage-and-find-data-on-azure-blob-storage"></a>Blob Dizin etiketlerini (Önizleme) kullanarak Azure Blob depolamada verileri yönetme ve bulma
 
 Blob dizin etiketleri, anahtar-değer etiketi özniteliklerini kullanarak Depolama hesabınızdaki verileri kategorilere ayırın. Bu Etiketler otomatik olarak dizinlenir ve verileri kolayca bulmak için aranabilir çok boyutlu bir dizin olarak sunulur. Bu makalede blob Dizin etiketlerini kullanarak verileri ayarlama, alma ve bulma işlemlerinin nasıl yapılacağı gösterilir.
 
-> [!NOTE]
-> Blob dizini ortak önizlemededir ve **Kanada Orta**, **Kanada Doğu**, **Fransa orta** ve **Fransa Güney** bölgelerinde kullanılabilir. Bu özellik hakkında bilinen sorunlar ve sınırlamalar hakkında daha fazla bilgi edinmek için bkz. [blob dizini etiketleriyle Azure blob verilerini yönetme ve bulma (Önizleme)](storage-manage-find-blobs.md).
+> [!IMPORTANT]
+> Blob dizini etiketleri şu anda **Önizleme** aşamasındadır ve **Kanada Orta**, **Kanada Doğu**, **Fransa orta** ve **Fransa Güney** bölgelerinde kullanılabilir. Beta, önizleme veya henüz genel kullanıma sunulmayan Azure özelliklerine uygulanan yasal koşullara yönelik [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) 'na bakın.
+
+Bu özellik hakkında bilinen sorunlar ve sınırlamalar hakkında daha fazla bilgi edinmek için bkz. [blob dizini etiketleriyle Azure blob verilerini yönetme ve bulma (Önizleme)](storage-manage-find-blobs.md).
 
 ## <a name="prerequisites"></a>Önkoşullar
 
