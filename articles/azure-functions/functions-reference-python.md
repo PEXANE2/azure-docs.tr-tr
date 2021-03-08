@@ -4,12 +4,12 @@ description: Python ile işlev geliştirmeyi anlama
 ms.topic: article
 ms.date: 11/4/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 0829ef9a6b63866c2527e521ed7edf48a3249392
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 3eb3b3b015f401e872a879c46ec6f8c69df5f87f
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102044264"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102455425"
 ---
 # <a name="azure-functions-python-developer-guide"></a>Azure Işlevleri Python Geliştirici Kılavuzu
 
@@ -51,7 +51,7 @@ def main(req: azure.functions.HttpRequest) -> str:
     return f'Hello, {user}!'
 ```
 
-Yöntemlerinizi giriş ve çıkışları bağlamak için [Azure. Functions. *](/python/api/azure-functions/azure.functions?view=azure-python&preserve-view=true) paketinde bulunan Python ek açıklamalarını kullanın.
+Yöntemlerinizi giriş ve çıkışları bağlamak için [Azure. Functions. *](/python/api/azure-functions/azure.functions) paketinde bulunan Python ek açıklamalarını kullanın.
 
 ## <a name="alternate-entry-point"></a>Alternatif giriş noktası
 
@@ -199,7 +199,7 @@ def main(req: func.HttpRequest,
 
 Bir işlevin dönüş değerini çıkış bağlamasının değeri olarak kullanmak için, `name` bağlamanın özelliği içinde olarak ayarlanmalıdır `$return` `function.json` .
 
-Birden çok çıkış oluşturmak için, `set()` [`azure.functions.Out`](/python/api/azure-functions/azure.functions.out?view=azure-python&preserve-view=true) bağlamaya bir değer atamak üzere arabirim tarafından sunulan yöntemi kullanın. Örneğin, aşağıdaki işlev bir kuyruğa ileti gönderebilir ve ayrıca bir HTTP yanıtı döndürebilir.
+Birden çok çıkış oluşturmak için, `set()` [`azure.functions.Out`](/python/api/azure-functions/azure.functions.out) bağlamaya bir değer atamak üzere arabirim tarafından sunulan yöntemi kullanın. Örneğin, aşağıdaki işlev bir kuyruğa ileti gönderebilir ve ayrıca bir HTTP yanıtı döndürebilir.
 
 ```json
 {
@@ -306,7 +306,7 @@ Python işlev uygulamalarına yönelik ölçekleme ve performans için en iyi uy
 
 ## <a name="context"></a>Bağlam
 
-Yürütme sırasında bir işlevin çağırma bağlamını almak için, [`context`](/python/api/azure-functions/azure.functions.context?view=azure-python&preserve-view=true) bağımsız değişkenini imzasına ekleyin.
+Yürütme sırasında bir işlevin çağırma bağlamını almak için, [`context`](/python/api/azure-functions/azure.functions.context) bağımsız değişkenini imzasına ekleyin.
 
 Örnek:
 
@@ -319,7 +319,7 @@ def main(req: azure.functions.HttpRequest,
     return f'{context.invocation_id}'
 ```
 
-[**Bağlam**](/python/api/azure-functions/azure.functions.context?view=azure-python&preserve-view=true) sınıfı aşağıdaki dize özniteliklerine sahiptir:
+[**Bağlam**](/python/api/azure-functions/azure.functions.context) sınıfı aşağıdaki dize özniteliklerine sahiptir:
 
 `function_directory` İşlevin çalıştığı dizin.
 
@@ -640,7 +640,7 @@ Tüm bilinen sorunlar ve özellik istekleri [GitHub sorunları](https://github.c
 
 Daha fazla bilgi için aşağıdaki kaynaklara bakın:
 
-* [Azure Işlevleri paket API 'SI belgeleri](/python/api/azure-functions/azure.functions?view=azure-python&preserve-view=true)
+* [Azure Işlevleri paket API 'SI belgeleri](/python/api/azure-functions/azure.functions)
 * [Azure İşlevleri için en iyi uygulamalar](functions-best-practices.md)
 * [Azure Işlevleri Tetikleyicileri ve bağlamaları](functions-triggers-bindings.md)
 * [BLOB depolama bağlamaları](functions-bindings-storage-blob.md)
@@ -651,5 +651,5 @@ Daha fazla bilgi için aşağıdaki kaynaklara bakın:
 [Sorun mu yaşıyorsunuz? Bize bilgi verin.](https://aka.ms/python-functions-ref-survey)
 
 
-[HttpRequest]: /python/api/azure-functions/azure.functions.httprequest?view=azure-python&preserve-view=true
-[HttpResponse]: /python/api/azure-functions/azure.functions.httpresponse?view=azure-python&preserve-view=true
+[HttpRequest]: /python/api/azure-functions/azure.functions.httprequest
+[HttpResponse]: /python/api/azure-functions/azure.functions.httpresponse

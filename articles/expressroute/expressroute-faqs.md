@@ -5,14 +5,14 @@ services: expressroute
 author: duongau
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 12/13/2019
+ms.date: 03/07/2021
 ms.author: duau
-ms.openlocfilehash: 1be7331b0c2309350316d1c88c54e6018400463c
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: 59194f8d7b1783867ab1422597b361aa3a4a2a60
+ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98789356"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102449875"
 ---
 # <a name="expressroute-faq"></a>ExpressRoute SSS
 
@@ -40,9 +40,9 @@ Fiyatlandırma bilgileri için [fiyatlandırma ayrıntılarına](https://azure.m
 
 Evet, ExpressRoute bağlantı hattı bant genişliği çift yönlü. Örneğin, 200 Mbps ExpressRoute bağlantı hattı satın aldıysanız, giriş trafiği için 200 Mbps ve çıkış trafiği için 200 Mbps değeri sağlanır.
 
-### <a name="if-i-pay-for-an-expressroute-circuit-of-a-given-bandwidth-does-the-vpn-connection-i-purchase-from-my-network-service-provider-have-to-be-the-same-speed"></a>Belirli bir bant genişliği için bir ExpressRoute bağlantı hattı ödediğimde, ağ hizmeti sağlayıcımdan satın dığım VPN bağlantısının aynı hızda olması gerekir mi?
+### <a name="if-i-pay-for-an-expressroute-circuit-of-a-given-bandwidth-does-the-private-connection-i-purchase-from-my-network-service-provider-have-to-be-the-same-speed"></a>Belirli bir bant genişliği için bir ExpressRoute bağlantı hattı ödediğimde, ağ hizmeti sağlayıcımdan satın dığım özel bağlantının aynı hızda olması gerekir mi?
 
-Hayır. Hizmet sağlayıcınızdan herhangi bir hızda VPN bağlantısı satın alabilirsiniz. Ancak Azure bağlantınız, satın aldığınız ExpressRoute bağlantı hattı bant genişliği ile sınırlıdır.
+Hayır. Hizmet sağlayıcınızdan herhangi bir hızda özel bir bağlantı satın alabilirsiniz. Ancak Azure bağlantınız, satın aldığınız ExpressRoute bağlantı hattı bant genişliği ile sınırlıdır.
 
 ### <a name="if-i-pay-for-an-expressroute-circuit-of-a-given-bandwidth-do-i-have-the-ability-to-use-more-than-my-procured-bandwidth"></a>Belirli bir bant genişliğine ait bir ExpressRoute bağlantı hattı için ödeme yapıyorsanız, temin bant genişliğinden daha fazlasını kullanma imkanım var mı?
 
@@ -258,9 +258,13 @@ Varsayılan yolları tanılarsanız, Microsoft eşlemesi (Azure depolama ve SQL 
 
 Evet. Aynı ExpressRoute devresine bağlı sanal ağlarda dağıtılan sanal makineler birbirleriyle iletişim kurabilir. Bu iletişimi kolaylaştırmak için [sanal ağ eşlemesi](../virtual-network/virtual-network-peering-overview.md) ayarlamayı öneririz.
 
-### <a name="can-i-use-site-to-site-connectivity-for-virtual-networks-in-conjunction-with-expressroute"></a>ExpressRoute ile birlikte sanal ağlar için siteden siteye bağlantı kullanabilir miyim?
+### <a name="can-i-set-up-a-site-to-site-vpn-connection-to-my-virtual-network-in-conjunction-with-expressroute"></a>ExpressRoute ile birlikte sanal Ağımdaki bir siteden siteye VPN bağlantısı ayarlayabilir miyim?
 
 Evet. ExpressRoute, siteden siteye VPN 'Ler ile birlikte çalışabilir. Bkz. [ExpressRoute ve siteden siteye birlikte bulunan bağlantıları yapılandırma](expressroute-howto-coexist-resource-manager.md).
+
+### <a name="how-do-i-enable-routing-between-my-site-to-site-vpn-connection-and-my-expressroute"></a>Siteden siteye VPN bağlantısı ile ExpressRoute arasında yönlendirmeyi etkinleştirmek Nasıl yaparım?.
+
+Şubeleriniz arasında bir siteden siteye VPN bağlantısına bağlı olan dal arasında yönlendirmeyi etkinleştirmek istiyorsanız, [Azure Route Server](../route-server/expressroute-vpn-support.md)'ı ayarlamanız gerekir.
 
 ### <a name="why-is-there-a-public-ip-address-associated-with-the-expressroute-gateway-on-a-virtual-network"></a>Bir sanal ağ üzerindeki ExpressRoute ağ geçidiyle ilişkili bir genel IP adresi neden var?
 

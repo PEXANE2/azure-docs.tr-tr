@@ -25,6 +25,8 @@
       href: tutorial-respond-threats-playbook.md
 - name: Kavramlar
   items:
+    - name: Varlıkları kullanarak verileri sınıflandırma
+      href: entities-in-azure-sentinel.md
     - name: Erişimi yönetme
       items:
         - name: Azure Sentinel'de izinler
@@ -33,18 +35,20 @@
           href: resource-context-rbac.md
     - name: Gelişmiş çok aşamalı saldırı algılama
       href: fusion.md
-    - name: Kendi makine öğrenme platformunuzu getirme
-      href: bring-your-own-ml.md
-    - name: Azure Sentinel’i çalışma alanlarına ve kiracılara genişletme
-      href: extend-sentinel-across-workspaces-tenants.md
     - name: UEBA ile gelişmiş tehditleri belirleme
       href: identify-threats-with-entity-behavior-analytics.md
     - name: Tehdit analizini Azure Sentinel’e aktarma
       href: import-threat-intelligence.md
+    - name: Kendi makine öğrenme platformunuzu getirme
+      href: bring-your-own-ml.md
     - name: Microsoft 365 Defender 'ı Azure Sentinel ile tümleştirme
       href: microsoft-365-defender-sentinel-integration.md
     - name: İzleme listeleriyle dış veriler kullanma
       href: watchlists.md
+    - name: Rolleri kullanarak izin atama
+      href: roles.md
+    - name: Azure Sentinel’i çalışma alanlarına ve kiracılara genişletme
+      href: extend-sentinel-across-workspaces-tenants.md
     - name: Tablolardaki verilerinizi normalleştirme
       href: normalization.md
     - name: Güvenlik
@@ -84,7 +88,7 @@
               href: connect-office-365-advanced-threat-protection.md
             - name: ASC’den gelen Azure Defender uyarıları
               href: connect-azure-security-center.md
-            - name: IoT için Azure Defender (eski adıyla ASC)
+            - name: IoT için Defender (daha önce IoT için ASC)
               href: connect-asc-iot.md
             - name: Azure DDoS Koruması
               href: connect-azure-ddos-protection.md
@@ -242,12 +246,16 @@
           href: monitor-data-connector-health.md
     - name: Kullanıcı ve varlık davranışı analizlerini etkinleştir
       href: enable-entity-behavior-analytics.md
+    - name: Veri alanlarını varlıklara eşleme
+      href: map-data-fields-to-entities.md
     - name: Birden çok kiracıyı yönetme (MSSP)
       href: multiple-tenants-service-providers.md
     - name: Birden çok çalışma alanında olaylarla çalışma
       href: multiple-workspace-view.md
     - name: Müşteri tarafından yönetilen anahtarları (CMK) ayarlama
       href: customer-managed-keys.md
+    - name: Uyarılarla yüzey özel ayrıntıları
+      href: surface-custom-details-in-alerts.md
     - name: Uyarıdan olay oluşturma
       href: create-incidents-from-alerts.md
     - name: Olay ölçümleriyle SOC’nizi daha iyi yönetme
@@ -265,10 +273,10 @@
           href: livestream.md
     - name: Azure Sentinel’ı kaldırma
       href: offboard.md
-    - name: Gelişmiş RBAC Uygula
-      items: null
 - name: Başvuru
   items:
+    - name: Popüler Azure Sentinel çalışma kitapları
+      href: top-workbooks.md
     - name: Azure RBAC rolleri
       items:
         - name: Tüm Azure rolleri
@@ -285,6 +293,8 @@
           href: watchlist-with-rest-api.md
     - name: Azure Sentinel Logic Apps bağlayıcısı
       href: /connectors/azuresentinel/
+    - name: Varlık başvurusu
+      href: entities-reference.md
     - name: Ağ normalleştirme şeması
       href: normalization-schema.md
     - name: Veri kaynağı şema başvurusu

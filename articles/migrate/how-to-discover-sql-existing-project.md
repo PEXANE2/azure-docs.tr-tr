@@ -6,12 +6,12 @@ ms.author: rajosh
 ms.manager: abhemraj
 ms.topic: how-to
 ms.date: 11/23/2020
-ms.openlocfilehash: 3dc9b178b9aa22991230f4cc6a9d54b44cf09b4e
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.openlocfilehash: ca0052eebd8d3c8e80943ca8c0e0346216436800
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102098817"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102452773"
 ---
 # <a name="discover-sql-server-instances-in-an-existing-project"></a>Var olan bir projede SQL Server örnekleri bulma 
 
@@ -20,7 +20,7 @@ Bu makalede, Azure SQL değerlendirme özelliğinin önizlemesinden önce oluşt
 Şirket içi makinelerde çalışan SQL Server örnekleri ve veritabanlarını keşfetmek, bir geçiş yolunu Azure SQL 'e tanımlamasına ve uyarlamanıza yardımcı olur. Azure geçişi gereci, bu bulmayı etki alanı kimlik bilgilerini veya SQL Server örneklerine ve hedeflenen sunucularda çalışan veritabanlarına erişimi olan SQL Server kimlik doğrulama kimlik bilgilerini kullanarak gerçekleştirir. Bu bulma işlemi aracısız değildir, ancak hedef sunuculara hiçbir şey yüklenmez.
 
 > [!Note]
-> VMware ortamınızda çalışan SQL Server örnekleri ve veritabanlarının keşfi ve değerlendirmesi artık önizlemededir. Bu özelliği denemek için **Avustralya Doğu** bölgede bir proje oluşturmak üzere [**Bu bağlantıyı**](https://aka.ms/AzureMigrate/SQL) kullanın. Zaten Avustralya Doğu bir projeniz varsa ve bu özelliği denemek istiyorsanız, lütfen bu makaledeki [**önkoşulları**](how-to-discover-sql-existing-project.md) tamamladığınızdan emin olun.
+> VMware ortamınızda çalışan SQL Server örnekleri ve veritabanlarının keşfi ve değerlendirmesi artık önizlemededir. Bu özelliği denemek için [**bu bağlantıyı**](https://aka.ms/AzureMigrate/SQL) kullanarak **Doğu Avustralya** bölgesinde bir proje oluşturun. Zaten Avustralya Doğu bir projeniz varsa ve bu özelliği denemek istiyorsanız, lütfen bu makaledeki [**önkoşulları**](how-to-discover-sql-existing-project.md) tamamladığınızdan emin olun.
 
 ## <a name="before-you-start"></a>Başlamadan önce
 
@@ -44,7 +44,7 @@ Bu makalede, Azure SQL değerlendirme özelliğinin önizlemesinden önce oluşt
     - Gereç üzerinde çalışan hizmetlerin en son sürümlere güncelleştirildiğini doğrulayın. Bunu yapmak için gereç sunucusundan gereç Yapılandırma Yöneticisini başlatın ve önkoşulları ayarla panelinden gereç hizmetlerini görüntüle ' yi seçin.
         - Gereç ve bileşenleri otomatik olarak güncelleştirilerek :::image type="content" source="./media/how-to-discover-sql-existing-project/appliance-services-version.png" alt-text="gereç sürümünü denetleyin":::
     - Gereç Yapılandırma Yöneticisi 'nin kimlik bilgilerini ve keşif kaynaklarını yönet panelinde, SQL Server örneği ve keşfedilecek veritabanları üzerinde sysadmin erişimi olan etki alanı veya SQL Server kimlik doğrulaması bilgilerini ekleyin. 
-    Gerecin otomatik kimlik bilgisi eşleme özelliğinden yararlanabilir veya [burada](https://review.docs.microsoft.com/azure/migrate/tutorial-discover-vmware?branch=release-migrate-sql-scenario#start-continuous-discovery)vurgulanan kimlik bilgilerini ilgili sunucuyla el ile eşleyebilirsiniz.
+    Gerecin otomatik kimlik bilgisi eşleme özelliğinden yararlanabilir veya [burada](/azure/migrate/tutorial-discover-vmware#start-continuous-discovery)vurgulanan kimlik bilgilerini ilgili sunucuyla el ile eşleyebilirsiniz.
         
     Bazı noktalara işaret eder:
     - Lütfen yazılım envanterinin zaten etkinleştirildiğinden emin olun veya aynı etkinleştirmek için etki alanı ya da etki alanı dışı kimlik bilgileri sağlayın. SQL Server örnekleri bulması için yazılım envanteri gerçekleştirilmelidir.

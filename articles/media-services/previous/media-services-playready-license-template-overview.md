@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
-ms.openlocfilehash: 8cdf5915396fc40c12644552bb24a044279ea32d
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 6bcf6b439f8e49d194e1c0ea5dc1e996135589cf
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92019350"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102454320"
 ---
 # <a name="media-services-playready-license-template-overview"></a>Media Services PlayReady lisans şablonuna genel bakış
 
@@ -68,18 +68,18 @@ PlayReady lisans şablonunu yapılandırmak için .NET sınıfları kullanan uç
 ## <a name="media-services-net-classes-that-are-used-to-configure-license-templates"></a><a id="classes"></a>Lisans şablonlarını yapılandırmak için kullanılan .NET sınıflarını Media Services
 Aşağıdaki sınıflar, Media Services PlayReady lisans şablonlarını yapılandırmak için kullanılan ana .NET sınıflarıdır. Bu sınıflar, [PlayReady lisans şablonu XML şemasında](media-services-playready-license-template-overview.md#schema)tanımlanan türlerle eşlenir.
 
-[Mediaserviceslicensetemplateserializer](/dotnet/api/microsoft.windowsazure.mediaservices.client.contentkeyauthorization.mediaserviceslicensetemplateserializer?view=azure-dotnet#microsoft_windowsazure_mediaservices_client_contentkeyauthorization_mediaserviceslicensetemplateserializer) sınıfı, Media Services LISANS şablonu XML 'e ve öğesinden seri hale getirmek ve seri durumdan çıkarmak için kullanılır.
+[Mediaserviceslicensetemplateserializer](/dotnet/api/microsoft.windowsazure.mediaservices.client.contentkeyauthorization.mediaserviceslicensetemplateserializer#microsoft_windowsazure_mediaservices_client_contentkeyauthorization_mediaserviceslicensetemplateserializer) sınıfı, Media Services LISANS şablonu XML 'e ve öğesinden seri hale getirmek ve seri durumdan çıkarmak için kullanılır.
 
 ### <a name="playreadylicenseresponsetemplate"></a>PlayReadyLicenseResponseTemplate
-[Playreadylicenseresponsetemplate](/dotnet/api/microsoft.windowsazure.mediaservices.client.contentkeyauthorization.playreadylicenseresponsetemplate?view=azure-dotnet#microsoft_windowsazure_mediaservices_client_contentkeyauthorization_playreadylicenseresponsetemplate): Bu sınıf, kullanıcıya geri gönderilen yanıtın şablonunu temsil eder. Lisans sunucusu ve uygulama arasında özel bir veri dizesi alanı içerir (özel uygulama mantığı için yararlı olabilir). Ayrıca bir veya daha fazla lisans şablonu listesi içerir.
+[Playreadylicenseresponsetemplate](/dotnet/api/microsoft.windowsazure.mediaservices.client.contentkeyauthorization.playreadylicenseresponsetemplate#microsoft_windowsazure_mediaservices_client_contentkeyauthorization_playreadylicenseresponsetemplate): Bu sınıf, kullanıcıya geri gönderilen yanıtın şablonunu temsil eder. Lisans sunucusu ve uygulama arasında özel bir veri dizesi alanı içerir (özel uygulama mantığı için yararlı olabilir). Ayrıca bir veya daha fazla lisans şablonu listesi içerir.
 
 Şablon hiyerarşisindeki "en üst düzey" sınıfı olarak, yanıt şablonu lisans şablonlarının bir listesini içerir. Lisans şablonları, şablon verilerini oluşturan tüm diğer sınıfların (doğrudan veya dolaylı olarak) serileştirilmesi için içerir.
 
 ### <a name="playreadylicensetemplate"></a>PlayReadyLicenseTemplate
-[Playreadylicensetemplate](/dotnet/api/microsoft.windowsazure.mediaservices.client.contentkeyauthorization.playreadylicensetemplate?view=azure-dotnet#microsoft_windowsazure_mediaservices_client_contentkeyauthorization_playreadylicensetemplate): Bu sınıf, kullanıcılara döndürülecek PlayReady lisanslarını oluşturmak için kullanılan bir lisans şablonunu temsil eder. Bu, lisandaki içerik anahtarındaki verileri içerir. Ayrıca, içerik anahtarı kullanıldığında PlayReady DRM çalışma zamanının zorunlu olması gereken tüm hakları veya kısıtlamaları da içerir.
+[Playreadylicensetemplate](/dotnet/api/microsoft.windowsazure.mediaservices.client.contentkeyauthorization.playreadylicensetemplate#microsoft_windowsazure_mediaservices_client_contentkeyauthorization_playreadylicensetemplate): Bu sınıf, kullanıcılara döndürülecek PlayReady lisanslarını oluşturmak için kullanılan bir lisans şablonunu temsil eder. Bu, lisandaki içerik anahtarındaki verileri içerir. Ayrıca, içerik anahtarı kullanıldığında PlayReady DRM çalışma zamanının zorunlu olması gereken tüm hakları veya kısıtlamaları da içerir.
 
 ### <a name="playreadyplayright"></a><a id="PlayReadyPlayRight"></a>PlayReadyPlayRight
-[Playreadyplayright](/dotnet/api/microsoft.windowsazure.mediaservices.client.contentkeyauthorization.playreadyplayright?view=azure-dotnet#microsoft_windowsazure_mediaservices_client_contentkeyauthorization_playreadyplayright): Bu sınıf, bir PlayReady lisansının playright 'ı temsil eder. Kullanıcıya, lisansta ve PlayRight üzerinde yapılandırılmış tüm kısıtlamalara (kayıttan yürütmeye özgü ilke için) içerik konusunu kayıttan yürütme yeteneği verir. Bir PlayRight üzerindeki ilkenin çoğu, içeriğin oynatılabilecek çıkış türlerini denetleyen çıkış kısıtlamalarına sahiptir. Ayrıca, belirli bir çıkış kullanıldığında yerine verilmesi gereken tüm kısıtlamaları da içerir. Örneğin, DigitalVideoOnlyContentRestriction etkinleştirilirse, DRM çalışma zamanı yalnızca videonun dijital çıkışlar üzerinde görüntülenmesine izin verir. (Analog video çıkışları içeriği geçirmeye izin verilmez.)
+[Playreadyplayright](/dotnet/api/microsoft.windowsazure.mediaservices.client.contentkeyauthorization.playreadyplayright#microsoft_windowsazure_mediaservices_client_contentkeyauthorization_playreadyplayright): Bu sınıf, bir PlayReady lisansının playright 'ı temsil eder. Kullanıcıya, lisansta ve PlayRight üzerinde yapılandırılmış tüm kısıtlamalara (kayıttan yürütmeye özgü ilke için) içerik konusunu kayıttan yürütme yeteneği verir. Bir PlayRight üzerindeki ilkenin çoğu, içeriğin oynatılabilecek çıkış türlerini denetleyen çıkış kısıtlamalarına sahiptir. Ayrıca, belirli bir çıkış kullanıldığında yerine verilmesi gereken tüm kısıtlamaları da içerir. Örneğin, DigitalVideoOnlyContentRestriction etkinleştirilirse, DRM çalışma zamanı yalnızca videonun dijital çıkışlar üzerinde görüntülenmesine izin verir. (Analog video çıkışları içeriği geçirmeye izin verilmez.)
 
 > [!IMPORTANT]
 > Bu tür kısıtlamalar güçlü olabilir, ancak aynı zamanda tüketici deneyimini de etkileyebilir. Çıkış korumaları çok kısıtlayıcıysa, içerik bazı istemcilerde oynatılamaz olabilir. Daha fazla bilgi için bkz. [PlayReady Uyumluluk kuralları](https://www.microsoft.com/playready/licensing/compliance/).
@@ -319,5 +319,5 @@ Silverlight tarafından desteklenen koruma düzeylerine bir örnek için bkz. [�
 ## <a name="media-services-learning-paths"></a>Media Services’i öğrenme yolları
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Geri bildirimde bulunma
+## <a name="provide-feedback"></a>Geribildirim gönderme
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]

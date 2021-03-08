@@ -14,12 +14,12 @@ ms.topic: how-to
 ms.date: 11/17/2020
 ms.author: inhenkel
 ms.custom: has-adal-ref, devx-track-csharp
-ms.openlocfilehash: 3d4f232d87209a3a5676cac22e67a38b17af6917
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 8946f6e94dd26db45622bc7609fb2375d59bb57e
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94844328"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102455391"
 ---
 # <a name="connect-to-media-services-v3-api---net"></a>Media Services v3 API-.NET ' e bağlanın
 
@@ -27,7 +27,7 @@ ms.locfileid: "94844328"
 
 Bu makalede hizmet sorumlusu oturum açma yöntemi kullanılarak Azure Media Services v3 .NET SDK 'sına nasıl bağlanabilmeniz gösterilmektedir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - [Media Services hesabı oluşturun](./create-account-howto.md). Kaynak grubu adını ve Media Services hesap adını hatırlayacağınızdan emin olun
 - .NET geliştirme için kullanmak istediğiniz bir araç yükler. Bu makaledeki adımlarda, [Visual Studio 2019 Community Edition](https://www.visualstudio.com/downloads/)'ın nasıl kullanılacağı gösterilmektedir. Visual Studio Code kullanabilirsiniz, bkz. [C# ile çalışma](https://code.visualstudio.com/docs/languages/csharp). Ya da farklı bir kod düzenleyicisi kullanabilirsiniz.
@@ -249,5 +249,5 @@ namespace ConsoleApp1
 
 ## <a name="see-also"></a>Ayrıca bkz.
 
-* [.NET başvurusu](/dotnet/api/overview/azure/mediaservices/management?view=azure-dotnet&preserve-view=true)
+* [.NET başvurusu](/dotnet/api/overview/azure/mediaservices/management)
 * Daha fazla kod örneği için bkz. [.NET SDK örnek](https://github.com/Azure-Samples/media-services-v3-dotnet) deposu.

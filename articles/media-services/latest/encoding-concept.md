@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: seodec18
-ms.openlocfilehash: 159336d3e8949739cb00dbe66ed82fa90256dcfd
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: 84caa287803fa64b12d9da4c2afb1f8dd1418e13
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98897909"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102455289"
 ---
 # <a name="encoding-video-and-audio-with-media-services"></a>Video ve ses Media Services kodlama
 
@@ -137,7 +137,7 @@ Media Services, özel kodlama ihtiyaçlarınızı ve gereksinimlerinizi karşıl
 
 ## <a name="preset-schema"></a>Önceden ayarlanmış şema
 
-Media Services v3 'de, Önayarlar, API 'nin kendisinde kesin olarak belirlenmiş varlıklardır. Bu nesneler için "şema" tanımını [Open API belirtiminde (veya Swagger)](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/mediaservices/resource-manager/Microsoft.Media/stable/2018-07-01)bulabilirsiniz. Ayrıca, [REST API](/rest/api/media/transforms/createorupdate#standardencoderpreset), [.NET SDK](/dotnet/api/microsoft.azure.management.media.models.standardencoderpreset?view=azure-dotnet) (veya diğer Media Services v3 SDK başvuru belgelerinde) önceden ayarlanmış tanımları ( **standardencoderönayar** gibi) görüntüleyebilirsiniz.
+Media Services v3 'de, Önayarlar, API 'nin kendisinde kesin olarak belirlenmiş varlıklardır. Bu nesneler için "şema" tanımını [Open API belirtiminde (veya Swagger)](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/mediaservices/resource-manager/Microsoft.Media/stable/2018-07-01)bulabilirsiniz. Ayrıca, [REST API](/rest/api/media/transforms/createorupdate#standardencoderpreset), [.NET SDK](/dotnet/api/microsoft.azure.management.media.models.standardencoderpreset) (veya diğer Media Services v3 SDK başvuru belgelerinde) önceden ayarlanmış tanımları ( **standardencoderönayar** gibi) görüntüleyebilirsiniz.
 
 ## <a name="scaling-encoding-in-v3"></a>V3 'de ölçeklendirme kodlaması
 

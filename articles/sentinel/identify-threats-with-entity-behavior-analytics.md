@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/25/2021
+ms.date: 02/10/2021
 ms.author: yelevin
-ms.openlocfilehash: 458c801e1434832bf65da669ca89cb5c5eebe2e8
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.openlocfilehash: bf7a17d96d31fd4214d5465a5739acc9ce9a9d53
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99807572"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102455510"
 ---
 # <a name="identify-advanced-threats-with-user-and-entity-behavior-analytics-ueba-in-azure-sentinel"></a>Azure Sentinel 'de Kullanıcı ve varlık davranış analizi (UEBA) ile gelişmiş tehditleri tanımla
 
@@ -68,41 +68,9 @@ Her etkinlik "araştırma önceliği puanı" ile puanlanır. Bu, belirli bir kul
 
 Bunun nasıl çalıştığına ilişkin bir örnek için davranış analizinin [Microsoft Cloud App Security](https://techcommunity.microsoft.com/t5/microsoft-security-and/prioritize-user-investigations-in-cloud-app-security/ba-p/700136) nasıl kullanıldığını görün.
 
-## <a name="entities-in-azure-sentinel"></a>Azure Sentinel'de varlıklar
+## <a name="entity-pages"></a>Varlık sayfaları
 
-### <a name="entity-identifiers"></a>Varlık tanımlayıcıları
-
-Uyarılar Azure Sentinel 'e gönderildiğinde, Azure Sentinel 'in Kullanıcı hesapları, konaklar, IP adresleri ve diğerleri gibi varlıkları tanımladığı ve sınıflandırdığı veri öğelerini içerirler. Bazen, uyarı varlık hakkında yeterli bilgi içermiyorsa bu kimlik bir sorun olabilir.
-
-Örneğin, Kullanıcı hesapları birden çok şekilde tanımlanabilir: bir Azure AD hesabının sayısal tanımlayıcısı (GUID) veya Kullanıcı asıl adı (UPN) değeri veya alternatif olarak, Kullanıcı adının ve onun NT etki alanı adının bir birleşimi kullanılarak. Farklı veri kaynakları aynı kullanıcıyı farklı yollarla tanımlayabilir. Bu nedenle, mümkün olduğunda Azure Sentinel bu tanımlayıcıları, düzgün şekilde tanımlanabilmesi için tek bir varlığa birleştirir.
-
-Bu durum, kaynak sağlayıcılarınızın bir varlığın yeterince tanımlanmadığı bir uyarı oluşturduğundan (örneğin, etki alanı adı bağlamı olmayan bir Kullanıcı adı) meydana gelebilir. Böyle bir durumda, kullanıcı varlığı, ayrı bir varlık olarak tanımlanabilecek aynı kullanıcı hesabının diğer örnekleriyle birleştirilemez ve bu iki varlık Birleşik yerine ayrı kalır.
-
-Bu meydana gelme riskini en aza indirmek için, tüm uyarı sağlayıcılarınızın oluşturdukları uyarılarda varlıkları doğru şekilde tanımladıklarından emin olmalısınız. Ayrıca, Kullanıcı hesabı varlıklarının Azure Active Directory ile eşitlenmesi, Kullanıcı hesabı varlıklarını birleştirebilecek bir dizin oluşturamayacak.
-
-Aşağıdaki varlık türleri şu anda Azure Sentinel 'de tanımlanmıştır:
-
-- Kullanıcı hesabı (hesap)
-- Ana bilgisayar
-- IP adresi (IP)
-- Kötü Amaçlı Yazılımlar
-- Dosya
-- İşleme
-- Bulut uygulaması (Cloudadpplication)
-- Etki alanı adı (DNS)
-- Azure kaynağı
-- Dosya (FileHash)
-- Kayıt defteri anahtarı
-- Kayıt defteri değeri
-- Güvenlik grubu
-- URL
-- IoT cihazı
-- Mailbox
-- Posta kümesi
-- Posta iletisi
-- Gönderim postası
-
-### <a name="entity-pages"></a>Varlık sayfaları
+[Azure Sentinel 'de varlıklar](entities-in-azure-sentinel.md) hakkında daha fazla bilgi edinin ve [desteklenen varlıkların ve tanımlayıcıların](entities-reference.md)tam listesini görüntüleyin.
 
 Bir aramada, bir uyarıda veya bir araştırmada herhangi bir varlık (Şu anda kullanıcılarla ve konaklarla sınırlı) ile karşılaşırsanız, varlığı seçebilir ve bu varlıkla ilgili yararlı bilgiler içeren bir veri sayfası olan varlık **sayfasına** yönlendirilirsiniz. Bu sayfada bulacağınız bilgi türleri, varlıkla ilgili temel gerçekleri, bu varlıkla ilgili önemli olayların bir zaman çizelgesini ve varlığın davranışı hakkında öngörüleri içerir.
  
@@ -131,20 +99,23 @@ Aşağıdaki öğe türleri zaman çizelgesine dahildir:
  
 ### <a name="entity-insights"></a>Varlık öngörüleri
  
-Varlık öngörüleri, analistlerinizin daha verimli ve etkili bir şekilde araştırılması için Microsoft güvenlik araştırmacıları tarafından tanımlanan sorgulardır Öngörüler, varlık sayfasının bir parçası olarak sunulur ve ana bilgisayarlar ve kullanıcılar hakkında tablo verileri ve grafikler biçiminde değerli güvenlik bilgileri sağlar. Burada bilgilere sahip olmanız, Log Analytics için gezinti yapmanız gerekmediği anlamına gelir. Öngörüler, oturum açma işlemleri, Grup eklemeleri, anormal etkinlikler ve daha fazlası ile ilgili verileri içerir ve anormal davranışları algılamak için gelişmiş ML algoritmaları içerir. Öngörüler aşağıdaki veri türlerini temel alır:
-- Syslog
-- SecurityEvent
-- Denetim Günlükleri
-- Oturum açma günlükleri
-- Office etkinliği
-- BehaviorAnalytics (UEBA) 
- 
+Varlık öngörüleri, analistlerinizin daha verimli ve etkili bir şekilde araştırılması için Microsoft güvenlik araştırmacıları tarafından tanımlanan sorgulardır Öngörüler, varlık sayfasının bir parçası olarak sunulur ve ana bilgisayarlar ve kullanıcılar hakkında tablo verileri ve grafikler biçiminde değerli güvenlik bilgileri sağlar. Burada bilgilere sahip olmanız, Log Analytics için gezinti yapmanız gerekmediği anlamına gelir. Öngörüler, oturum açma işlemleri, Grup eklemeleri, anormal etkinlikler ve daha fazlası ile ilgili verileri içerir ve anormal davranışları algılamak için gelişmiş ML algoritmaları içerir. 
+
+Öngörüler aşağıdaki veri kaynaklarına dayalıdır:
+- Syslog (Linux)
+- SecurityEvent (Windows)
+- AuditLogs (Azure AD)
+- Signınlogs (Azure AD)
+- Officeetkinliği (Office 365)
+- BehaviorAnalytics (Azure Sentinel UEBA)
+- Sinyal (Azure Izleyici Aracısı)
+- CommonSecurityLog (Azure Sentinel)
+
 ### <a name="how-to-use-entity-pages"></a>Varlık sayfalarını kullanma
 
 Varlık sayfaları birden çok kullanım senaryosunun parçası olacak şekilde tasarlanmıştır ve olay yönetimi, araştırma grafiği, yer işaretleri veya doğrudan Azure Sentinel ana menüsündeki **varlık davranışı Analizi** altındaki varlık arama sayfasından erişilebilir.
 
 :::image type="content" source="./media/identify-threats-with-entity-behavior-analytics/entity-pages-use-cases.png" alt-text="Varlık sayfası kullanım örnekleri":::
-
 
 ## <a name="data-schema"></a>Veri şeması
 

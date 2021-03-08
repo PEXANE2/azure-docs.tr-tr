@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 01/27/2021
+ms.date: 03/08/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: d69675d7ab07e4097556d269c97c3ecb66dc2fc6
-ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
+ms.openlocfilehash: eb97ed6e43f70db4cce6a6f8013c8669a6a62a78
+ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/16/2021
-ms.locfileid: "100545843"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102448090"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-weibo-account-using-azure-active-directory-b2c"></a>Azure Active Directory B2C kullanarak oturum açma ve Weibo hesabı ile oturum açma ayarlama
 
@@ -76,7 +76,10 @@ Azure Active Directory B2C (Azure AD B2C) ' de bir Weibo hesabı olan kullanıc�
 1. **Kaydet**’i seçin.
 1. İlkenizi test etmek için **Kullanıcı akışını Çalıştır**' ı seçin.
 1. **Uygulama** için, daha önce kaydettiğiniz *testapp1* adlı Web uygulamasını seçin. **Yanıt URL 'si** gösterilmesi gerekir `https://jwt.ms` .
-1. **Kullanıcı akışını Çalıştır** 'a tıklayın
+1. **Kullanıcı akışını Çalıştır** düğmesini seçin.
+1. Kaydolma veya oturum açma sayfasında, Weibo hesabıyla oturum açmak için **Weibo** öğesini seçin.
+
+Oturum açma işlemi başarılı olursa, tarayıcınız öğesine yönlendirilir `https://jwt.ms` ve bu, Azure AD B2C tarafından döndürülen belirtecin içeriğini görüntüler.
 
 ::: zone-end
 
@@ -205,6 +208,13 @@ GitHub Technical profile, **Createıssueruserıd** talep dönüştürmelerinin C
 
 [!INCLUDE [active-directory-b2c-configure-relying-party-policy](../../includes/active-directory-b2c-configure-relying-party-policy-user-journey.md)]
 
-[!INCLUDE [active-directory-b2c-test-relying-party-policy](../../includes/active-directory-b2c-test-relying-party-policy-user-journey.md)]
+## <a name="test-your-custom-policy"></a>Özel ilkenizi test etme
+
+1. Örneğin, bağlı olan taraf ilkenizi seçin `B2C_1A_signup_signin` .
+1. **Uygulama** için, [daha önce kaydetmiş](troubleshoot-custom-policies.md#troubleshoot-the-runtime)olduğunuz bir Web uygulamasını seçin. **Yanıt URL 'si** gösterilmesi gerekir `https://jwt.ms` .
+1. **Şimdi Çalıştır** düğmesini seçin.
+1. Kaydolma veya oturum açma sayfasında, Weibo hesabıyla oturum açmak için **Weibo** öğesini seçin.
+
+Oturum açma işlemi başarılı olursa, tarayıcınız öğesine yönlendirilir `https://jwt.ms` ve bu, Azure AD B2C tarafından döndürülen belirtecin içeriğini görüntüler.
 
 ::: zone-end

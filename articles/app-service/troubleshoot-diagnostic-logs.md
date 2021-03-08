@@ -5,12 +5,12 @@ ms.assetid: c9da27b2-47d4-4c33-a3cb-1819955ee43b
 ms.topic: article
 ms.date: 09/17/2019
 ms.custom: devx-track-csharp, seodec18
-ms.openlocfilehash: 6008304ea7c1d17363587a4fa5bf6017cb0903f9
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 44e18be9d66131ad5f4a3ebcc039621ec9e9dbe6
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102049245"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102452263"
 ---
 # <a name="enable-diagnostics-logging-for-apps-in-azure-app-service"></a>Azure App Service uygulamalar için tanılama günlüğünü etkinleştirme
 ## <a name="overview"></a>Genel Bakış
@@ -134,19 +134,17 @@ Günlükleri gerçek zamanlı olarak akışa almadan önce istediğiniz günlük
 
 [Cloud Shell](../cloud-shell/overview.md)' de canlı günlükleri akışa almak için aşağıdaki komutu kullanın:
 
+> [!IMPORTANT]
+> Bu komut, bir Linux App Service planında barındırılan Web uygulamalarıyla çalışmayabilir.
+
 ```azurecli-interactive
 az webapp log tail --name appname --resource-group myResourceGroup
 ```
 
-Hatalar gibi belirli olayları filtrelemek için **--Filter** parametresini kullanın. Örnek:
+HTTP gibi belirli günlük türlerini filtrelemek için **--provider** parametresini kullanın. Örnek:
 
 ```azurecli-interactive
-az webapp log tail --name appname --resource-group myResourceGroup --filter Error
-```
-HTTP gibi belirli günlük türlerini filtrelemek için **--Path** parametresini kullanın. Örnek:
-
-```azurecli-interactive
-az webapp log tail --name appname --resource-group myResourceGroup --path http
+az webapp log tail --name appname --resource-group myResourceGroup --provider http
 ```
 
 ### <a name="in-local-terminal"></a>Yerel terminalde

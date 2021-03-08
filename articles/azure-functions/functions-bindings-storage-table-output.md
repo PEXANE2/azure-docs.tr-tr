@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 09/03/2018
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
-ms.openlocfilehash: 825a336b5ad07f50d96b19036d70c759b907bd07
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.openlocfilehash: f793f96f55a258b2d7cb11f214984416557618df
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102209688"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102453011"
 ---
 # <a name="azure-table-storage-output-bindings-for-azure-functions"></a>Azure Işlevleri için Azure Tablo depolama çıkış bağlamaları
 
@@ -438,7 +438,7 @@ Bir işlevden tablo depolama satırı iletisi çıktısı için iki seçenek var
 
 - **Dönüş değeri**: `name` *üzerindefunction.js* özelliğini olarak ayarlayın `$return` . Bu yapılandırmayla, işlevin dönüş değeri tablo depolama satırı olarak kalıcıdır.
 
-- **Zorunludur**: bir değeri, [Out](/python/api/azure-functions/azure.functions.out?view=azure-python&preserve-view=true) türü olarak belirtilen parametresinin [set](/python/api/azure-functions/azure.functions.out?view=azure-python&preserve-view=true#set-val--t-----none) yöntemine geçirin. Geçirilen değer `set` bir olay hub 'ı iletisi olarak kalıcıdır.
+- **Zorunludur**: bir değeri, [Out](/python/api/azure-functions/azure.functions.out) türü olarak belirtilen parametresinin [set](/python/api/azure-functions/azure.functions.out#set-val--t-----none) yöntemine geçirin. Geçirilen değer `set` bir olay hub 'ı iletisi olarak kalıcıdır.
 
 ---
 

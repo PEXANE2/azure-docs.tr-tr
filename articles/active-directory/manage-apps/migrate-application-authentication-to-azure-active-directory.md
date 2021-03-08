@@ -14,12 +14,12 @@ ms.date: 02/05/2021
 ms.author: kenwith
 ms.reviewer: baselden
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0c1a0be0b7834632ba79af7dfe6c3a4fa25c0316
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: ac3ea7ea6b3ed0bb8e1e9f7575b34f9dbf116a04
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101645520"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102453264"
 ---
 # <a name="migrate-application-authentication-to-azure-active-directory"></a>Uygulama kimlik doğrulamasını Azure Active Directory geçir
 
@@ -234,10 +234,10 @@ Bulut ortamında, tüm bulut hizmetlerinize yönelik olarak zengin görünürlü
 
 - **API 'ler** -bulut altyapısına bağlı uygulamalar için, barındırılan uygulamaların envanterini almak üzere bu sistemlerdeki API 'leri ve araçları kullanabilirsiniz. Azure ortamında:
 
-  - Azure Web siteleri hakkında bilgi almak için [Get-AzureWebsite](/powershell/module/servicemanagement/azure/get-azurewebsite?view=azuresmps-4.0.0&redirectedfrom=MSDN&preserve-view=true)cmdlet 'ini kullanın.
+  - Azure Web siteleri hakkında bilgi almak için [Get-AzureWebsite](/powershell/module/servicemanagement/azure.service/get-azurewebsite) cmdlet 'ini kullanın.
 
-  - Azure Web Apps hakkında bilgi almak için [Get-AzureRMWebApp](/powershell/module/azurerm.websites/get-azurermwebapp?view=azurermps-6.13.0&viewFallbackFrom=azurermps-6.2.0&preserve-view=true)cmdlet 'ini kullanın.
-
+  - Azure Web Apps hakkında bilgi almak için [Get-AzureRMWebApp](/powershell/module/azurerm.websites/get-azurermwebapp) cmdlet 'ini kullanın.
+D
   - Microsoft IIS 'de çalışan tüm uygulamaları, [AppCmd.exe](/iis/get-started/getting-started-with-iis/getting-started-with-appcmdexe#working-with-sites-applications-virtual-directories-and-application-pools)kullanarak Windows komut satırından bulabilirsiniz.
 
   - Azure AD 'de bir dizinde uygulama ve uygulama örneği hakkında bilgi edinmek için [uygulamalar](/previous-versions/azure/ad/graph/api/entity-and-complex-type-reference#application-entity) ve [hizmet sorumlularını](/previous-versions/azure/ad/graph/api/entity-and-complex-type-reference#serviceprincipal-entity) kullanın.

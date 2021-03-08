@@ -10,12 +10,12 @@ ms.custom: devx-track-dotnet, devx-track-azurecli
 ms.topic: how-to
 ms.date: 04/27/2020
 ms.author: avgupta
-ms.openlocfilehash: 39c50f539c04a6c49316f4541c759859be861f9d
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+ms.openlocfilehash: b3e0bcad7beccc31e1772fbb24ffad7f502b8140
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "101095514"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102454252"
 ---
 # <a name="back-up-app-configuration-stores-automatically"></a>Uygulama yapılandırma depolarını otomatik olarak yedekleme
 
@@ -137,7 +137,7 @@ Verilerinizi yedeklemeye başlamanız daha kolay hale getirmek için, kodda herh
 
 Daha önce belirtilen örnek kod gereksinimlerinizi karşılamıyorsa, kendi işlevinizi de oluşturabilirsiniz. Yedekleme işlemini tamamlamak için işleviniz aşağıdaki görevleri gerçekleştirebilmelidir:
 - Event Grid bir bildirim içerip içermediğinden, düzenli aralıklarla kuyrukla içeriğini okuyun. Uygulama ayrıntıları için [depolama kuyruğu SDK 'sına](../storage/queues/storage-quickstart-queues-dotnet.md) bakın.
-- Kuyruğunuz [Event Grid olay bildirimleri](./concept-app-configuration-event.md?branch=pr-en-us-112982#event-schema)içeriyorsa, tüm benzersiz `<key, label>` bilgileri olay iletilerinden ayıklayın. Anahtar ve etiket birleşimi, birincil depodaki anahtar-değer değişikliklerinin benzersiz tanımlayıcısıdır.
+- Kuyruğunuz [Event Grid olay bildirimleri](./concept-app-configuration-event.md#event-schema)içeriyorsa, tüm benzersiz `<key, label>` bilgileri olay iletilerinden ayıklayın. Anahtar ve etiket birleşimi, birincil depodaki anahtar-değer değişikliklerinin benzersiz tanımlayıcısıdır.
 - Birincil depodan tüm ayarları okuyun. Yalnızca ikincil depoda, kuyrukta karşılık gelen bir olaya sahip olan ayarları güncelleştirin. Depoda bulunan ancak birincil depoda olmayan ikincil depodan tüm ayarları silin. Yapılandırma depolarına programlı olarak erişmek için [uygulama yapılandırma SDK 'sını](https://github.com/Azure/AppConfiguration#sdks) kullanabilirsiniz.
 - İşlem sırasında özel durum yoksa kuyruktaki iletileri silin.
 - Gereksinimlerinize göre hata işleme uygulayın. İşlemek isteyebileceğiniz bazı yaygın özel durumları görmek için yukarıdaki kod örneğine bakın.

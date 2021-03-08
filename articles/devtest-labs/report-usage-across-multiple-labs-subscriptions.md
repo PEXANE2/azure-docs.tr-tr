@@ -3,12 +3,12 @@ title: Birden çok laboratuvarda ve aboneliğe Azure DevTest Labs kullanımı
 description: Birden çok laboratuvarda ve aboneliğe Azure DevTest Labs kullanımı rapor etme hakkında bilgi edinin.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: d789b9849ec798a396e99420649792937422470f
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: 1e4d1f0abb5596c7fd9d22740bf052827c2ca666
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98789947"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102452654"
 ---
 # <a name="report-azure-devtest-labs-usage-across-multiple-labs-and-subscriptions"></a>Birden çok laboratuvarda ve aboneliğe ilişkin Azure DevTest Labs kullanımını raporla
 
@@ -25,7 +25,7 @@ Bu bölümde, tek bir laboratuvarın kaynak kullanımının nasıl dışarı akt
 DevTest Labs kaynak kullanımını dışa aktarmaya başlamadan önce, kullanım verilerinin depolanacağı farklı dosyalara izin vermek için bir Azure depolama hesabı ayarlamanız gerekir. Verilerin dışarı aktarılmasını yürütmek için kullanılan iki yol vardır:
 
 * [DevTest Labs REST API](/rest/api/dtl/labs/exportresourceusage) 
-* PowerShell az. Resource Module WITH eylemi, laboratuvar kaynak KIMLIĞI ve gerekli parametreler ile [AzResourceAction komutunu çağırır](/powershell/module/az.resources/invoke-azresourceaction?view=azps-2.5.0&viewFallbackFrom=azps-2.3.2) `exportResourceUsage` . 
+* PowerShell az. Resource Module WITH eylemi, laboratuvar kaynak KIMLIĞI ve gerekli parametreler ile [AzResourceAction komutunu çağırır](/powershell/module/az.resources/invoke-azresourceaction) `exportResourceUsage` . 
 
     [Kişisel verileri dışarı aktarma veya silme](personal-data-delete-export.md) makalesi, dışarı aktarılmış veriler hakkında ayrıntılı bilgi içeren bir örnek PowerShell betiği içerir. 
 
@@ -75,7 +75,7 @@ Tek bir konum arabirimindeki kaynaklarınızı oluşturmak, bağlamak ve yönetm
 
 ## <a name="next-steps"></a>Sonraki Adımlar
 
-Sistem kurulduktan ve veriler uzun süreli depolamaya taşındıktan sonra, bir sonraki adım, verilerin yanıt vermesi gereken sorularla karşılaşmaktır. Örneğin: 
+Sistem kurulduktan ve veriler uzun süreli depolamaya taşındıktan sonra, bir sonraki adım, verilerin yanıt vermesi gereken sorularla karşılaşmaktır. Örnek: 
 
 -   VM boyutu kullanımı nedir?
 

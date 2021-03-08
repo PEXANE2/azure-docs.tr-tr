@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 05/07/2020
 ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 39cccd270a4947820640940ae43fa0feb3e52028
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.openlocfilehash: 9ef45e804b593f36171907395c564c8c6058c286
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98954488"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102453742"
 ---
 # <a name="media-services-v3-with-widevine-license-template-overview"></a>Wıdevine lisans şablonuna genel bakış ile Media Services v3
 
@@ -117,7 +117,7 @@ Her bir content_key_specs değeri, use_policy_overrides_exclusively seçeneğind
 
 ## <a name="configure-your-widevine-license-with-net"></a>.NET ile Widevine lisansınızı yapılandırma 
 
-Media Services Widevine lisansı yapılandırmanıza imkan tanıyan bir sınıf sağlar. Lisansı oluşturmak için JSON 'u [Widevinetemplate](/dotnet/api/microsoft.azure.management.media.models.contentkeypolicywidevineconfiguration.widevinetemplate?view=azure-dotnet#Microsoft_Azure_Management_Media_Models_ContentKeyPolicyWidevineConfiguration_WidevineTemplate)'e geçirin.
+Media Services Widevine lisansı yapılandırmanıza imkan tanıyan bir sınıf sağlar. Lisansı oluşturmak için JSON 'u [Widevinetemplate](/dotnet/api/microsoft.azure.management.media.models.contentkeypolicywidevineconfiguration.widevinetemplate#Microsoft_Azure_Management_Media_Models_ContentKeyPolicyWidevineConfiguration_WidevineTemplate)'e geçirin.
 
 Şablonu yapılandırmak için şunları yapabilirsiniz:
 
@@ -263,7 +263,7 @@ public class WidevineTemplate
 
 #### <a name="configure-the-license"></a>Lisansı yapılandırma
 
-[Widevınetemplate](/dotnet/api/microsoft.azure.management.media.models.contentkeypolicywidevineconfiguration.widevinetemplate?view=azure-dotnet#Microsoft_Azure_Management_Media_Models_ContentKeyPolicyWidevineConfiguration_WidevineTemplate)'i yapılandırmak IÇIN kullanılan JSON oluşturmak için önceki bölümde tanımlanan sınıfları kullanın:
+[Widevınetemplate](/dotnet/api/microsoft.azure.management.media.models.contentkeypolicywidevineconfiguration.widevinetemplate#Microsoft_Azure_Management_Media_Models_ContentKeyPolicyWidevineConfiguration_WidevineTemplate)'i yapılandırmak IÇIN kullanılan JSON oluşturmak için önceki bölümde tanımlanan sınıfları kullanın:
 
 ```csharp
 private static ContentKeyPolicyWidevineConfiguration ConfigureWidevineLicenseTempate()

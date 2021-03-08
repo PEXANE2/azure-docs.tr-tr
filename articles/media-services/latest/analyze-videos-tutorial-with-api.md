@@ -12,19 +12,19 @@ ms.topic: tutorial
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: seodec18
-ms.openlocfilehash: 2b6bab016f0b00f0df3ad9fd8f45bbdd2e8564b3
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.openlocfilehash: 4a050d838bae9b394f5f292698781a9a824af0bf
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102216825"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102454133"
 ---
 # <a name="tutorial-analyze-videos-with-media-services-v3"></a>Öğretici: Media Services v3 ile videoları analiz etme
 
 [!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 > [!NOTE]
-> Bu öğretici [.NET SDK](/dotnet/api/microsoft.azure.management.media.models.liveevent?view=azure-dotnet) örnekleri kullanıyor olsa da, genel adımlar [REST API](/rest/api/media/liveevents), [CLI](/cli/azure/ams/live-event)veya desteklenen diğer [SDK](media-services-apis-overview.md#sdks)'lar için aynıdır.
+> Bu öğretici [.NET SDK](/dotnet/api/microsoft.azure.management.media.models.liveevent) örnekleri kullanıyor olsa da, genel adımlar [REST API](/rest/api/media/liveevents), [CLI](/cli/azure/ams/live-event)veya desteklenen diğer [SDK](media-services-apis-overview.md#sdks)'lar için aynıdır.
 
 Bu öğreticide Azure Media Services ile videoları analiz etme işlemi gösterilir. Kayıtlı videolar veya ses içerikleri hakkında derin içgörüler kazanmak isteyebileceğiniz çok sayıda senaryo mevcuttur. Örneğin, daha yüksek müşteri memnuniyeti elde etmek isteyen kuruluşlar, müşteri destek kayıtlarını dizinler ve panolarla aranabilir bir katalog haline getirmek için konuşmayı metne dönüştürme işlemini çalıştırabilir. Daha sonra, işletdiklerinde Öngörüler elde edebilirler. Bu Öngörüler, yaygın şikayetlerin bir listesini, bu tür şikayetlerin kaynaklarını ve diğer yararlı bilgileri içerir.
 

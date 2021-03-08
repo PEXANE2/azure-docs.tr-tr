@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: dhanyahk
 ms.custom: it-pro, seo-update-azuread-jan, has-adal-ref
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8e342adee715bfd1f178557268b9f4515572f0e9
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: a555d2813030daeca1f2abcdc4b7787444bd0614
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102177224"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102453028"
 ---
 # <a name="archive-for-whats-new-in-azure-active-directory"></a>Azure Active Directory yenilikler için arşiv var mı?
 
@@ -348,18 +348,6 @@ Haziran 2020 ' de, Federasyon desteği ile App Gallery 'de aşağıdaki 55 yeni 
 Ayrıca, tüm uygulamaların belgelerini buradan bulabilirsiniz. https://aka.ms/AppsTutorial
 
 Uygulamanızı Azure AD uygulama galerisinde listelemek için lütfen buradaki ayrıntıları okuyun https://aka.ms/AzureADAppRequest
-
----
-
-### <a name="new-provisioning-connectors-in-the-azure-ad-application-gallery---july-2020"></a>Azure AD uygulama galerisinde yeni sağlama bağlayıcıları-Temmuz 2020
-
-**Şunu yazın:** Yeni Özellik  
-**Hizmet kategorisi:** Uygulama sağlama  
-**Ürün yeteneği:** üçüncü taraf tümleştirmesi
-
-Artık yeni tümleşik App [LinkedIn öğrenimi](../saas-apps/linkedin-learning-provisioning-tutorial.md)için Kullanıcı hesaplarını oluşturmayı, güncelleştirmeyi ve silmeyi otomatik hale getirebilirsiniz.
-
-Otomatik Kullanıcı hesabı sağlamayı kullanarak kuruluşunuzun daha iyi güvenliğini sağlama hakkında daha fazla bilgi için bkz. [Azure AD Ile SaaS uygulamalarına Kullanıcı sağlamayı otomatikleştirme](../app-provisioning/user-provisioning.md).
 
 ---
 
@@ -938,7 +926,7 @@ Yeni [ilke ayrıntıları dikey](../conditional-access/troubleshoot-conditional-
 
 2020 Nisan 'da, uygulama galerisine federasyon desteği olan bu 31 yeni uygulamayı ekledik: 
 
-Bol [Ropool Apps](https://www.sincropool.com/), [smartdb](https://hibiki.dreamarts.co.jp/smartdb/trial/), [float](../saas-apps/float-tutorial.md), [LMS365](https://lms.365.systems/), [IWT tedarik Suite](../saas-apps/iwt-procurement-suite-tutorial.md), [lunnı](https://lunni.fi/), [easysso, jira](../saas-apps/easysso-for-jira-tutorial.md), [sanal eğitim akademik My](https://vta.c3p.ca/app/en/openid?authenticate_with=microsoft), [Meraki panosu](../saas-apps/meraki-dashboard-tutorial.md), [Microsoft 365 taşıyıcısı](https://app.mover.io/login), [Konuşmacı](https://speakerengage.com/login.php)katılım, [his](../saas-apps/honestly-tutorial.md), [önemli](../saas-apps/ally-tutorial.md), [DutyFlow](https://app.dutyflow.nl/), [Alertmedia](../saas-apps/alertmedia-tutorial.md), [gr8 kişileri](../saas-apps/gr8-people-tutorial.md), [pendo](../saas-apps/pendo-tutorial.md), [üst](../saas-apps/highground-tutorial.md)düzey, [uyum](../saas-apps/harmony-tutorial.md), [timetabling çözümleri](../saas-apps/timetabling-solutions-tutorial.md), [Synchronet tıklama](../saas-apps/synchronet-click-tutorial.md), [Empower](https://www.made-in-office.com/en/), [ktes değişiklik bulutu](../saas-apps/fortes-change-cloud-tutorial.md), [Litmus](../saas-apps/litmus-tutorial.md), [grouptalk](https://recorder.grouptalk.com/), [mintify](../saas-apps/frontify-tutorial.md), [MongoDB Cloud](../saas-apps/mongodb-cloud-tutorial.md), [tickitlms öğreni](../saas-apps/tickitlms-learn-tutorial.md), [Coco](https://hexaware.com/partnerships-and-alliances/digital-transformation-using-microsoft-azure/), [Nitro üretkenlik Suite](../saas-apps/nitro-productivity-suite-tutorial.md), [Trend Micro Web Security (tmws)](https://review.docs.microsoft.com/azure/active-directory/saas-apps/trend-micro-tutorial)
+Bol [Ropool Apps](https://www.sincropool.com/), [smartdb](https://hibiki.dreamarts.co.jp/smartdb/trial/), [float](../saas-apps/float-tutorial.md), [LMS365](https://lms.365.systems/), [IWT tedarik Suite](../saas-apps/iwt-procurement-suite-tutorial.md), [lunnı](https://lunni.fi/), [easysso, jira](../saas-apps/easysso-for-jira-tutorial.md), [sanal eğitim akademik My](https://vta.c3p.ca/app/en/openid?authenticate_with=microsoft), [Meraki panosu](../saas-apps/meraki-dashboard-tutorial.md), [Microsoft 365 taşıyıcısı](https://app.mover.io/login), [Konuşmacı](https://speakerengage.com/login.php)katılım, [his](../saas-apps/honestly-tutorial.md), [önemli](../saas-apps/ally-tutorial.md), [DutyFlow](https://app.dutyflow.nl/), [Alertmedia](../saas-apps/alertmedia-tutorial.md), [gr8 kişileri](../saas-apps/gr8-people-tutorial.md), [pendo](../saas-apps/pendo-tutorial.md), [üst](../saas-apps/highground-tutorial.md)düzey, [uyum](../saas-apps/harmony-tutorial.md), [timetabling çözümleri](../saas-apps/timetabling-solutions-tutorial.md), [Synchronet tıklama](../saas-apps/synchronet-click-tutorial.md), [Empower](https://www.made-in-office.com/en/), [ktes değişiklik bulutu](../saas-apps/fortes-change-cloud-tutorial.md), [Litmus](../saas-apps/litmus-tutorial.md), [grouptalk](https://recorder.grouptalk.com/), [mintify](../saas-apps/frontify-tutorial.md), [MongoDB Cloud](../saas-apps/mongodb-cloud-tutorial.md), [tickitlms öğreni](../saas-apps/tickitlms-learn-tutorial.md), [Coco](https://hexaware.com/partnerships-and-alliances/digital-transformation-using-microsoft-azure/), [Nitro üretkenlik Suite](../saas-apps/nitro-productivity-suite-tutorial.md), [Trend Micro Web Security (tmws)](/azure/active-directory/saas-apps/trend-micro-tutorial)
 
 Uygulamalar hakkında daha fazla bilgi için, bkz. [Azure Active Directory SaaS uygulama tümleştirmesi](../saas-apps/tutorial-list.md). Uygulamanızı Azure AD uygulama galerisinde listeleme hakkında daha fazla bilgi için, [Azure Active Directory Uygulama galerisinde uygulamanızı](../develop/v2-howto-app-gallery-listing.md)listeleme bölümüne bakın.
 

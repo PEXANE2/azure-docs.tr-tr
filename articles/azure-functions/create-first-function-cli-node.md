@@ -4,12 +4,12 @@ description: Komut satırından bir JavaScript işlevi oluşturmayı ve ardında
 ms.date: 11/03/2020
 ms.topic: quickstart
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 3b14b7d9f97be12a73ffcb2416a00cd4a51bca5f
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: c9810b1eb9e5f6bc65843d65f2f2452eac1be703
+ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97937255"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102447325"
 ---
 # <a name="quickstart-create-a-javascript-function-in-azure-from-the-command-line"></a>Hızlı başlangıç: Azure 'da komut satırından bir JavaScript işlevi oluşturma
 
@@ -96,7 +96,7 @@ Azure Işlevlerinde bir işlev projesi, her birinin belirli bir tetikleyiciye ya
 
 :::code language="javascript" source="~/functions-quickstart-templates/Functions.Templates/Templates/HttpTrigger-JavaScript/index.js":::
 
-Bir HTTP tetikleyicisi için işlev, `req` *function.json* öğesinde tanımlanan şekilde değişkende istek verilerini alır. function.jsüzerinde olarak tanımlanan Return nesnesi `$return` Yanıt olur. Daha fazla bilgi için bkz. [Azure IŞLEVLERI http Tetikleyicileri ve bağlamaları](./functions-bindings-http-webhook.md?tabs=javascript).
+Bir HTTP tetikleyicisi için işlev, `req` *function.json* öğesinde tanımlanan şekilde değişkende istek verilerini alır. Yanıt, `res` *üzerindefunction.js* olarak tanımlanır ve kullanılarak erişilebilir `context.res` . Daha fazla bilgi için bkz. [Azure IŞLEVLERI http Tetikleyicileri ve bağlamaları](./functions-bindings-http-webhook.md?tabs=javascript).
 
 #### <a name="functionjson"></a>function.json
 

@@ -7,16 +7,16 @@ ms.service: attestation
 ms.topic: overview
 ms.date: 08/31/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 3c908fffe93d657662310d4e91ed25ae28ca6908
-ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
+ms.openlocfilehash: ebc12982bcc05c2d07f91fbc4d85afc170adf075
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99429101"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102453402"
 ---
 # <a name="quickstart-set-up-azure-attestation-with-azure-powershell"></a>Hızlı başlangıç: Azure PowerShell ile Azure kanıtlama ayarlama
 
-Azure PowerShell kullanarak bir kanıtlama sağlayıcısı oluşturmak ve yapılandırmak için aşağıdaki adımları izleyin. Azure PowerShell nasıl yükleneceği ve çalıştırılacağı hakkında bilgi için bkz. [Azure PowerShell genel bakış](/powershell/azure/?view=azps-2.8.0&viewFallbackFrom=azps-2.4.0) .
+Azure PowerShell kullanarak bir kanıtlama sağlayıcısı oluşturmak ve yapılandırmak için aşağıdaki adımları izleyin. Azure PowerShell nasıl yükleneceği ve çalıştırılacağı hakkında bilgi için bkz. [Azure PowerShell genel bakış](/powershell/azure/) .
 
 PowerShell Galerisi, kullanım dışı Aktarım Katmanı Güvenliği (TLS) 1,0 ve 1,1 sürümlerini içerir. TLS 1,2 veya sonraki bir sürüm önerilir. Bu nedenle, aşağıdaki hataları alabilirsiniz:
 

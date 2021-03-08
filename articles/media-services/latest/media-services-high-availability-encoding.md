@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.custom: ''
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: be3fd9b3d910e64245a1b52056499bbfba2e6379
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.openlocfilehash: 81feb5b95578cedea7bf368aa1e0d6c2e9117077
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98955860"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102456020"
 ---
 # <a name="high-availability-with-media-services-and-video-on-demand-vod"></a>Media Services ve Isteğe bağlı video (VOD) ile yüksek kullanılabilirlik
 
@@ -59,23 +59,23 @@ Bu üst düzey diyagramda, yüksek kullanılabilirlik ve Medya Hizmetleri ile ç
 
 ### <a name="regions"></a>Bölgeler
 
-* İki (veya daha fazla) Azure Media Services hesabı [oluşturun](https://review.docs.microsoft.com/azure/media-services/latest/create-account-cli-how-to) . İki hesabın farklı bölgelerde olması gerekir. Daha fazla bilgi için [Azure Media Services hizmetinin dağıtıldığı bölgeler](https://azure.microsoft.com/global-infrastructure/services/?products=media-services)bölümüne bakın.
-* Medyanızı, işi göndermeyi planladığınız aynı bölgeye yükleyin. Kodlama başlatma hakkında daha fazla bilgi için bkz. bir [https URL 'sinden iş girişi oluşturma](https://review.docs.microsoft.com/azure/media-services/latest/job-input-from-http-how-to) veya [yerel bir dosyadan iş girişi oluşturma](https://review.docs.microsoft.com/azure/media-services/latest/job-input-from-local-file-how-to).
-* [İşi](https://review.docs.microsoft.com/azure/media-services/latest/transforms-jobs-concept) başka bir bölgeye yeniden göndermeniz gerekirse, `JobInputHttp` `Copy-Blob` verileri kaynak varlık kapsayıcısından alternatif bölgedeki bir varlık kapsayıcısına kopyalamak için kullanabilirsiniz.
+* İki (veya daha fazla) Azure Media Services hesabı [oluşturun](/azure/media-services/latest/create-account-cli-how-to) . İki hesabın farklı bölgelerde olması gerekir. Daha fazla bilgi için [Azure Media Services hizmetinin dağıtıldığı bölgeler](https://azure.microsoft.com/global-infrastructure/services/?products=media-services)bölümüne bakın.
+* Medyanızı, işi göndermeyi planladığınız aynı bölgeye yükleyin. Kodlama başlatma hakkında daha fazla bilgi için bkz. bir [https URL 'sinden iş girişi oluşturma](/azure/media-services/latest/job-input-from-http-how-to) veya [yerel bir dosyadan iş girişi oluşturma](/azure/media-services/latest/job-input-from-local-file-how-to).
+* [İşi](/azure/media-services/latest/transforms-jobs-concept) başka bir bölgeye yeniden göndermeniz gerekirse, `JobInputHttp` `Copy-Blob` verileri kaynak varlık kapsayıcısından alternatif bölgedeki bir varlık kapsayıcısına kopyalamak için kullanabilirsiniz.
 
 ### <a name="monitoring"></a>İzleme
 
 * `JobStateChange`Her hesaptaki ileti için Azure Event Grid aracılığıyla abone olun.
-    * Azure portal veya CLı aracılığıyla [olaylara kaydolun](https://review.docs.microsoft.com/azure/media-services/latest/reacting-to-media-services-events) (Ayrıca, bunu Event Grid Yönetimi SDK 'sı ile de yapabilirsiniz)
+    * Azure portal veya CLı aracılığıyla [olaylara kaydolun](/azure/media-services/latest/reacting-to-media-services-events) (Ayrıca, bunu Event Grid Yönetimi SDK 'sı ile de yapabilirsiniz)
     * [Microsoft. Azure. EventGrid SDK 'sını](https://www.nuget.org/packages/Microsoft.Azure.EventGrid/) kullanın (yerel olarak Media Services olaylarını destekler).
     * Azure Işlevleri aracılığıyla Event Grid olaylarını da kullanabilirsiniz.
 
     Daha fazla bilgi için:
 
-    * Azure Event Grid iletilerinin bazı nedenlerle gecikildiği durumlarda geri dönüş ekleme dahil Azure Event Grid bir işi nasıl izleyeceğinizi gösteren [Ses analizi örneğine](https://review.docs.microsoft.com/azure/media-services/latest/transforms-jobs-concept) bakın.
-    * [Media Services olaylar için Azure Event Grid şemalarına](https://review.docs.microsoft.com/azure/media-services/latest/media-services-event-schemas)göz atın.
+    * Azure Event Grid iletilerinin bazı nedenlerle gecikildiği durumlarda geri dönüş ekleme dahil Azure Event Grid bir işi nasıl izleyeceğinizi gösteren [Ses analizi örneğine](/azure/media-services/latest/transforms-jobs-concept) bakın.
+    * [Media Services olaylar için Azure Event Grid şemalarına](/azure/media-services/latest/media-services-event-schemas)göz atın.
 
-* Bir [iş](https://review.docs.microsoft.com/azure/media-services/latest/transforms-jobs-concept)oluşturduğunuzda:
+* Bir [iş](/azure/media-services/latest/transforms-jobs-concept)oluşturduğunuzda:
     * Şu anda kullanılan hesapların listesinden rastgele bir hesap seçin (Bu liste normalde her iki hesabı da içerir, ancak sorunlar algılanırsa yalnızca bir hesap içerebilir). Liste boşsa, bir işlecin bir uyarı oluşturup Araştırabilmesi için bir uyarı yükseltin.
     * Her bir Inflight işini ve kullanılan bölge/hesabı izlemek için bir kayıt oluşturun.
 * `JobStateChange`İşleyiciniz bir işin zamanlanan duruma ulaştığı bir bildirim aldığında, zamanlanan duruma ve kullanılan bölgeye/hesaba giren zamanı kaydedin.

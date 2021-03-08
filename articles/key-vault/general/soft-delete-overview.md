@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: ShaneBala-keyvault
 ms.author: sudbalas
 ms.date: 12/15/2020
-ms.openlocfilehash: 331a7b1bef3621a080fe2fa891cf83565a1e55ac
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 7aeca89ed09182b7947b10f24c65b0cb58ed67ea
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101702581"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102452144"
 ---
 # <a name="azure-key-vault-soft-delete-overview"></a>Azure Key Vault geçici silmeye genel bakış
 
@@ -30,7 +30,7 @@ Key Vault geçici silme özelliği, geçici silme olarak bilinen silinmiş kasal
 
 ## <a name="supporting-interfaces"></a>Destekleyici arabirimler
 
-Geçici silme özelliği [REST API](/rest/api/keyvault/), [Azure CLI](./key-vault-recovery.md), [Azure PowerShell](./key-vault-recovery.md)ve [.NET/C#](/dotnet/api/microsoft.azure.keyvault?view=azure-dotnet&preserve-view=true) arabirimleri ve [ARM şablonları](/azure/templates/microsoft.keyvault/2019-09-01/vaults)aracılığıyla kullanılabilir.
+Geçici silme özelliği [REST API](/rest/api/keyvault/), [Azure CLI](./key-vault-recovery.md), [Azure PowerShell](./key-vault-recovery.md)ve [.NET/C#](/dotnet/api/microsoft.azure.keyvault) arabirimleri ve [ARM şablonları](/azure/templates/microsoft.keyvault/2019-09-01/vaults)aracılığıyla kullanılabilir.
 
 ## <a name="scenarios"></a>Senaryolar
 

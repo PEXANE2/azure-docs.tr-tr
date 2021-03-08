@@ -3,12 +3,12 @@ title: Sürekli video kaydı-Azure
 description: Sürekli video kaydı (CVR), videoyu bir video kaynağından sürekli kaydetme sürecini ifade eder. Bu konu, CVR 'nin ne olduğunu anlatmaktadır.
 ms.topic: conceptual
 ms.date: 04/27/2020
-ms.openlocfilehash: 04f09f1968e647c57ba0913a9e7f9e601d045771
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f8b25d74db279f8cfff68f08efeab2975484a0c5
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89566712"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102453759"
 ---
 # <a name="continuous-video-recording"></a>Sürekli video kaydı  
 
@@ -19,7 +19,7 @@ ms.locfileid: "89566712"
 
 ## <a name="overview"></a>Genel Bakış
 
-Sürekli video kaydı (CVR), videoyu bir video kaynağından sürekli kaydetme sürecini ifade eder. IoT Edge canlı video analizi, bir RTSP kaynak düğümünden ve bir varlık havuzu düğümünden oluşan bir [medya Graf](media-graph-concept.md) aracılığıyla bir CCTV kamerasından videoyu sürekli olarak 7/24 bir şekilde kaydetmeyi destekler. Aşağıdaki diyagramda böyle bir medya grafiğinin grafik temsili gösterilmektedir. Bu tür bir medya grafiğinin [grafik TOPOLOJISININ](media-graph-concept.md?branch=release-preview-media-services-lva#media-graph-topologies-and-instances) JSON temsili [burada](https://github.com/Azure/live-video-analytics/tree/master/MediaGraph/topologies/cvr-asset)bulunabilir.
+Sürekli video kaydı (CVR), videoyu bir video kaynağından sürekli kaydetme sürecini ifade eder. IoT Edge canlı video analizi, bir RTSP kaynak düğümünden ve bir varlık havuzu düğümünden oluşan bir [medya Graf](media-graph-concept.md) aracılığıyla bir CCTV kamerasından videoyu sürekli olarak 7/24 bir şekilde kaydetmeyi destekler. Aşağıdaki diyagramda böyle bir medya grafiğinin grafik temsili gösterilmektedir. Bu tür bir medya grafiğinin [grafik TOPOLOJISININ](media-graph-concept.md#media-graph-topologies-and-instances) JSON temsili [burada](https://github.com/Azure/live-video-analytics/tree/master/MediaGraph/topologies/cvr-asset)bulunabilir.
 
 > [!div class="mx-imgBorder"]
 > :::image type="content" source="./media/continuous-video-recording/continuous-video-recording-overview.svg" alt-text="Sürekli video kaydı":::

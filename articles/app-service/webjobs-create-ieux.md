@@ -10,16 +10,16 @@ ms.reviewer: msangapu;suwatch;pbatum;naren.soni
 ms.custom: seodec18
 zone_pivot_groups: app-service-webjob
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 4737f0f19acf199190df02386ecb2ece65fa571e
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 0d49323e2bc3c0522b1fb9ad49ffcc14f476e2dc
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101746683"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102452807"
 ---
 # <a name="run-background-tasks-with-webjobs-in-azure-app-service"></a>Azure App Service Web Işleri ile arka plan görevleri çalıştırma
 
-Azure 'da runn [arka plan görevlerinin](./webjobs-create-ieux-conceptual.md) kavramı, Azure App Service Web işleri ile sunulmaktadır. Dağıtma hakkında bilgi edinin <abbr title="Web uygulaması, API uygulaması veya mobil uygulama ile aynı örnekteki bir program veya komut dosyası.">Web İşleri</abbr> [Azure Portal](https://portal.azure.com) kullanarak bir yürütülebilir dosyayı veya betiği karşıya yükleyin. 
+Azure 'da [arka plan görevleri](./webjobs-create-ieux-conceptual.md) çalıştırma kavramı, Azure App Service Web işleri ile sunulmaktadır. Dağıtma hakkında bilgi edinin <abbr title="Web uygulaması, API uygulaması veya mobil uygulama ile aynı örnekteki bir program veya komut dosyası.">Web İşleri</abbr> [Azure Portal](https://portal.azure.com) kullanarak bir yürütülebilir dosyayı veya betiği karşıya yükleyin. 
 
 Desteklenen üç Web Işi şunları içerir:
 

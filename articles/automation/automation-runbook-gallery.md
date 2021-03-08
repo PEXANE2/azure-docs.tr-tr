@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 03/04/2021
 ms.topic: conceptual
-ms.openlocfilehash: afa782df8666413356fa334bf4e9dcb989b87c2f
-ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
+ms.openlocfilehash: c38a6236fe3ad9164d11d94e5563a7dddf5b4b32
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102441478"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102452790"
 ---
 # <a name="use-runbooks-and-modules-in-powershell-gallery"></a>PowerShell Galerisi’nde runbook’ları ve modülleri kullanma
 
@@ -51,11 +51,11 @@ Aşağıdaki liste, yaygın senaryoları destekleyen birkaç runbook içerir. Az
 1. **Kaynak seçin: PowerShell Galerisi**. Bu, gözatabilmeniz için kullanılabilir runbook 'ların bir listesini gösterir.
 1. Listeyi daraltmak için listenin üzerindeki arama kutusunu kullanabilir veya daha sonra görüntüyü Yayımcı, yazma ve sıralama ile daraltmak için filtreleri kullanabilirsiniz. İstediğiniz Galeri öğesini bulun ve ayrıntılarını görüntülemek için seçin.
 
-   :::image type="content" source="media/automation-runbook-gallery/browse-gallery-sm.png" alt-text="Runbook galerisine göz atma" lightbox="media/automation-runbook-gallery/browse-gallery-lg.png":::
+   :::image type="content" source="media/automation-runbook-gallery/browse-gallery-sm.png" alt-text="Runbook galerisine göz atma." lightbox="media/automation-runbook-gallery/browse-gallery-lg.png":::
 
 1. Bir öğeyi içeri aktarmak için Ayrıntılar dikey penceresinde **Içeri aktar** ' a tıklayın.
 
-   :::image type="content" source="media/automation-runbook-gallery/gallery-item-detail-sm.png" alt-text="Bir Runbook Galerisi öğe ayrıntısı göster" lightbox="media/automation-runbook-gallery/gallery-item-detail-lg.png":::
+   :::image type="content" source="media/automation-runbook-gallery/gallery-item-detail-sm.png" alt-text="Bir Runbook Galerisi öğe ayrıntısı görüntüleyin." lightbox="media/automation-runbook-gallery/gallery-item-detail-lg.png":::
 
 1. İsteğe bağlı olarak, runbook 'un adını değiştirin ve ardından runbook 'u içeri aktarmak için **Tamam** ' ı tıklatın.
 1. Runbook, Otomasyon hesabı için **runbook 'lar** sekmesinde görünür.
@@ -67,11 +67,11 @@ Aşağıdaki liste, yaygın senaryoları destekleyen birkaç runbook içerir. Az
 1. **Kaynak: GitHub**' ı seçin.
 1. Görünümü yayımcıya, türüne ve sıralamaya göre daraltmak için listenin üzerindeki filtreleri kullanabilirsiniz. İstediğiniz Galeri öğesini bulun ve ayrıntılarını görüntülemek için seçin.
 
-   :::image type="content" source="media/automation-runbook-gallery/browse-gallery-github-sm.png" alt-text="GitHub galerisine göz atma" lightbox="media/automation-runbook-gallery/browse-gallery-github-lg.png":::
+   :::image type="content" source="media/automation-runbook-gallery/browse-gallery-github-sm.png" alt-text="GitHub galerisine göz atma." lightbox="media/automation-runbook-gallery/browse-gallery-github-lg.png":::
 
 1. Bir öğeyi içeri aktarmak için Ayrıntılar dikey penceresinde **Içeri aktar** ' a tıklayın.
 
-   :::image type="content" source="media/automation-runbook-gallery/gallery-item-details-blade-github-sm.png" alt-text="GitHub galerisinden bir runbook 'un ayrıntılı görünümü" lightbox="media/automation-runbook-gallery/gallery-item-details-blade-github-lg.png":::
+   :::image type="content" source="media/automation-runbook-gallery/gallery-item-details-blade-github-sm.png" alt-text="GitHub galerisinden bir runbook 'un ayrıntılı görünümü." lightbox="media/automation-runbook-gallery/gallery-item-details-blade-github-lg.png":::
 
 1. İsteğe bağlı olarak, runbook 'un adını değiştirin ve ardından runbook 'u içeri aktarmak için **Tamam** ' ı tıklatın.
 1. Runbook, Otomasyon hesabı için **runbook 'lar** sekmesinde görünür.
@@ -86,7 +86,7 @@ Microsoft, diğer müşteriler için yararlı olacağını düşündüğünüz P
 1. Modüllerin listesini açmak için **paylaşılan kaynaklar** altındaki **modüller** ' i seçin.
 1. Sayfanın üst kısmından **tarayıcı Galerisi** ' ne tıklayın.
 
-      :::image type="content" source="media/automation-runbook-gallery/modules-blade-sm.png" alt-text="Modül galerisinin görünümü" lightbox="media/automation-runbook-gallery/modules-blade-lg.png":::
+      :::image type="content" source="media/automation-runbook-gallery/modules-blade-sm.png" alt-text="Modül galerisinin görünümü." lightbox="media/automation-runbook-gallery/modules-blade-lg.png":::
 
 1. Galeriye gözatamıyorum sayfasında, aşağıdaki alanlardan herhangi birinde eşleşmeleri bulmak için arama kutusunu kullanabilirsiniz:
 
@@ -99,7 +99,7 @@ Microsoft, diğer müşteriler için yararlı olacağını düşündüğünüz P
 
    Belirli bir modülün detayına göre daha fazla bilgi görüntüleyebilirsiniz. Bu bilgiler PowerShell Galerisi, tüm gerekli bağımlılıkları ve modülün içerdiği tüm cmdlet 'leri ya da DSC kaynaklarını geri bir bağlantı içerir.
 
-   :::image type="content" source="media/automation-runbook-gallery/gallery-item-details-blade-sm.png" alt-text="Galeriden bir modülün ayrıntılı görünümü" lightbox="media/automation-runbook-gallery/gallery-item-details-blade-lg.png":::
+   :::image type="content" source="media/automation-runbook-gallery/gallery-item-details-blade-sm.png" alt-text="Galeriden bir modülün ayrıntılı görünümü." lightbox="media/automation-runbook-gallery/gallery-item-details-blade-lg.png":::
 
 1. Modülü doğrudan Azure Otomasyonu 'na yüklemek için **Içeri aktar**' a tıklayın.
 1. Içeri aktarma bölmesinde, içeri aktarılacak modülün adını görebilirsiniz. Tüm bağımlılıklar yüklüyse, **Tamam** düğmesi etkinleştirilir. Bağımlılıklarınız eksikse, bu modülü içeri aktarmadan önce bu bağımlılıkları içeri aktarmanız gerekir.

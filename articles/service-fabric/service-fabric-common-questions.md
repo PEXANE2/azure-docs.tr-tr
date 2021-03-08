@@ -4,12 +4,12 @@ description: Yetenekler, kullanım örnekleri ve yaygın senaryolar da dahil olm
 ms.topic: troubleshooting
 ms.date: 08/18/2017
 ms.author: pepogors
-ms.openlocfilehash: 1655a8ed03b1f678cc5dba0a165e0bcca1d2517a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4e03ccf432852a5fc9ee700ba0e39dfe2e64fcc9
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87292846"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102456105"
 ---
 # <a name="commonly-asked-service-fabric-questions"></a>Sık sorulan Service Fabric soruları
 
@@ -22,7 +22,7 @@ Service Fabric ne yapabilecekleri ve nasıl kullanılması gerektiği hakkında 
 
 ### <a name="how-do-i-roll-back-my-service-fabric-cluster-certificate"></a>Service Fabric küme sertifikamı geri almak Nasıl yaparım??
 
-Uygulamanıza yapılan herhangi bir yükseltmeyi geri alma işlemi, Service Fabric kümesi çekirdeğinin değişikliği yapmadan önce sistem durumu hata algılaması gerektirir; yürütülen değişiklikler yalnızca ileri alınabilir. İzlenmeyen bir sertifika değişikliği ortaya çıktıysa, müşteri destek hizmetleri aracılığıyla yükseltme mühendisi, kümenizi kurtarmak için gerekli olabilir.  [Service Fabric uygulama yükseltmesi](./service-fabric-application-upgrade.md?branch=master) [uygulama yükseltme parametreleri](./service-fabric-application-upgrade-parameters.md?branch=master)uygular ve sıfır kesinti süresi yükseltme taahhüdünü sunar.  Önerilen uygulama yükseltme izlenen Modumuzdan sonra, güncelleştirme etki alanları aracılığıyla otomatik ilerleme durumu denetimleri başarılı olur ve varsayılan bir hizmetin güncelleştirilmesi başarısız olursa otomatik olarak geri döndürülüyor.
+Uygulamanıza yapılan herhangi bir yükseltmeyi geri alma işlemi, Service Fabric kümesi çekirdeğinin değişikliği yapmadan önce sistem durumu hata algılaması gerektirir; yürütülen değişiklikler yalnızca ileri alınabilir. İzlenmeyen bir sertifika değişikliği ortaya çıktıysa, müşteri destek hizmetleri aracılığıyla yükseltme mühendisi, kümenizi kurtarmak için gerekli olabilir.  [Service Fabric uygulama yükseltmesi](./service-fabric-application-upgrade.md) [uygulama yükseltme parametreleri](./service-fabric-application-upgrade-parameters.md)uygular ve sıfır kesinti süresi yükseltme taahhüdünü sunar.  Önerilen uygulama yükseltme izlenen Modumuzdan sonra, güncelleştirme etki alanları aracılığıyla otomatik ilerleme durumu denetimleri başarılı olur ve varsayılan bir hizmetin güncelleştirilmesi başarısız olursa otomatik olarak geri döndürülüyor.
  
 Kümeniz Kaynak Yöneticisi şablonunuzda klasik sertifika parmak Izi özelliğini kullanmaya devam ediyorsa, modern gizli dizi yönetim özelliklerinden yararlanmak için [kümeyi sertifika parmak iziyle ortak ad olarak değiştirmeniz](./service-fabric-cluster-change-cert-thumbprint-to-cn.md)önerilir.
 
@@ -76,7 +76,7 @@ Tek **düğüm**: Bu seçenek, herhangi bir nedenden dolayı tek bir düğümün
 
 **Üç düğüm**: üç düğüm (N = 3) ile bir çekirdek oluşturma gereksinimi yine iki düğüm olur (3/2 + 1 = 2). Bu, tek bir düğümü kaybedebilmeniz ve yine de çekirdeği koruyabilmeniz, ancak iki düğümden oluşan eşzamanlı başarısızlığın sistem hizmetlerini çekirdek kaybına ayıracağı ve kümenin kullanılamaz hale gelmesine neden olacağı anlamına gelir.
 
-**Dört**düğüm: dört düğüm (N = 4) ile bir çekirdek oluşturma gereksinimi üç düğümtür (4/2 + 1 = 3). Bu, tek bir düğümü kaybedebilmeniz ve yine de çekirdeği koruyabilmeniz, ancak iki düğümden oluşan eşzamanlı başarısızlığın sistem hizmetlerini çekirdek kaybına ayıracağı ve kümenin kullanılamaz hale gelmesine neden olacağı anlamına gelir.
+**Dört** düğüm: dört düğüm (N = 4) ile bir çekirdek oluşturma gereksinimi üç düğümtür (4/2 + 1 = 3). Bu, tek bir düğümü kaybedebilmeniz ve yine de çekirdeği koruyabilmeniz, ancak iki düğümden oluşan eşzamanlı başarısızlığın sistem hizmetlerini çekirdek kaybına ayıracağı ve kümenin kullanılamaz hale gelmesine neden olacağı anlamına gelir.
 
 **Beş düğüm**: beş düğüm (N = 5) ile bir çekirdek oluşturma gereksinimi hala üç düğüm olur (5/2 + 1 = 3). Bu, aynı anda iki düğümü kaybedebilmeniz ve sistem hizmetleri için çekirdeği sürdürmenize yol açabilir.
 

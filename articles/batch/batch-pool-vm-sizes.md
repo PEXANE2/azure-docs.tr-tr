@@ -2,14 +2,14 @@
 title: Havuzlar için VM boyutlarını ve görüntülerini seçin
 description: Azure Batch havuzlarda işlem düğümleri için kullanılabilir VM boyutları ve işletim sistemi sürümleri arasından seçim yapma
 ms.topic: conceptual
-ms.date: 11/24/2020
+ms.date: 03/08/2021
 ms.custom: seodec18
-ms.openlocfilehash: de1f61bb2bdc83377887fda726a65c1900f36d55
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.openlocfilehash: 42b8743fac6a6c64e98271490f0bfc4671fa7698
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99576710"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102455204"
 ---
 # <a name="choose-a-vm-size-and-image-for-compute-nodes-in-an-azure-batch-pool"></a>Bir Azure Batch havuzundaki işlem düğümleri için VM boyutu ve görüntüsü seçme
 
@@ -35,13 +35,11 @@ Sanal makine yapılandırmasındaki toplu iş havuzları neredeyse tüm [VM boyu
 | DC | Desteklenmez |
 | Dv2, DSv2 | Tüm Boyutlar |
 | Dv3, Dsv3 | Tüm Boyutlar |
-| Dav4 | Tüm Boyutlar |
-| Dasv4 | Tüm Boyutlar |
+| Dav4, Dasv4 | Tüm Boyutlar |
 | Ddv4, Ddsv4 |  Tüm Boyutlar |
 | Dv4, Dsv4 | Desteklenmez |
 | Ev3, Esv3 | E64is_v3 dışındaki tüm boyutlar |
-| Eav4 | Tüm Boyutlar |
-| Easv4 | Tüm Boyutlar |
+| Eav4, Easv4 | Tüm Boyutlar |
 | Edv4, Edsv4 |  Tüm Boyutlar |
 | Ev4, Esv4 | Desteklenmez |
 | F, FS | Tüm Boyutlar |
@@ -58,7 +56,7 @@ Sanal makine yapılandırmasındaki toplu iş havuzları neredeyse tüm [VM boyu
 | NC | Tüm Boyutlar |
 | NCv2 | Tüm Boyutlar |
 | NCv3 | Tüm Boyutlar |
-| NCasT4_v3 | Hiçbiri-henüz kullanılamıyor |
+| NCasT4_v3 | Tüm Boyutlar |
 | ND | Tüm Boyutlar |
 | NDv2 | Hiçbiri-henüz kullanılamıyor |
 | NV | Tüm Boyutlar |

@@ -2,13 +2,13 @@
 title: Şablonlara genel bakış
 description: Kaynak dağıtımı için Azure Resource Manager şablonları (ARM şablonları) kullanmanın avantajlarını açıklar.
 ms.topic: conceptual
-ms.date: 03/03/2021
-ms.openlocfilehash: 7f850d06066a6892db9f17ae86a6bba9496bad58
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.date: 03/08/2021
+ms.openlocfilehash: 3a144b69f69c90b997b17d9526c9c3e0f259c554
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102046389"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102455744"
 ---
 # <a name="what-are-arm-templates"></a>ARM şablonları nelerdir?
 
@@ -111,6 +111,15 @@ REQUEST BODY
 ```
 
 Kaynak için şablonda ayarladığınız **Apiversion** 'ın Rest IŞLEMI için API sürümü olarak kullanıldığını unutmayın. Şablonu tekrar tekrar dağıtabilir ve güvenle çalışmaya devam edecektir. Aynı API sürümünü kullanarak, sonraki sürümlerde kullanıma sunulmuş olabilecek son değişiklikler hakkında endişelenmeniz gerekmez.
+
+Bir şablonu dağıtmak için, aşağıdaki seçeneklerden birini kullanın:
+
+* [Azure portalı](deploy-portal.md)
+* [Azure CLI](deploy-cli.md)
+* [PowerShell](deploy-powershell.md)
+* [REST API](deploy-rest.md)
+* [GitHub deposunda düğme](deploy-to-azure-button.md)
+* [Azure Cloud Shell](deploy-cloud-shell.md)
 
 ## <a name="template-design"></a>Şablon tasarımı
 

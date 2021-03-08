@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 01/06/2020
 ms.author: joncole
-ms.openlocfilehash: 9754a043c90c01f889be9639d2d045fb1929de17
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: 4e209bfe5e3856f3847b0c24852c487a92c8f182
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102178125"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102454745"
 ---
 # <a name="best-practices-for-azure-cache-for-redis"></a>Redis için Azure Cache'in en iyi yöntemleri 
 Bu en iyi yöntemleri izleyerek Redsıs örneği için Azure önbelleğinizin performansını ve düşük maliyetli kullanımını en üst düzeye çıkarmanıza yardımcı olabilirsiniz.
@@ -74,7 +74,7 @@ Kodunuzun hata koşulları altında nasıl çalıştığını test etmek isterse
  * Daha iyi donanımlar olduğundan ve en iyi sonuçları sunduklarında, istemciniz için **dv2 VM serisini kullanmanızı öneririz** .
  * Kullandığınız istemci VM 'sinin, test edilmekte olan önbelleğin *en az işlem ve bant genişliğine* sahip olduğundan emin olun. 
  * Önbelleğinizin **Yük devretme koşulları altında test** edin. Önbelleğinizi yalnızca sabit durum koşulları altında performans testi olmamasını sağlamak önemlidir. Ayrıca yük devretme koşulları altında test edin ve bu süre boyunca önbelleğinizin CPU/sunucu yükünü ölçer. [Birincil düğümü](cache-administration.md#reboot)yeniden başlatarak bir yük devretme işlemi başlatabilirsiniz. Bu, uygulamanızın yük devretme koşulları sırasında işleme ve gecikme süresi boyunca nasıl davranacağını görmenizi sağlar (Güncelleştirmeler sırasında gerçekleşir ve planlanmamış bir olay sırasında gerçekleşebilir). İdeal olarak CPU/sunucu yükünü bir yük devretme sırasında %80 ' den fazlasına, performansı etkileyebilecek şekilde görmek istemezsiniz.
- * **Premium P2 ve üzeri** , 4 veya daha fazla çekirdeğe sahip VM 'lerde barındırılır. Bu, genel CPU kullanımını getirmek için TLS şifreleme/şifre çözme iş yükünü birden çok çekirdeğe dağıtmak için yararlıdır.  [VM boyutları ve çekirdekleri hakkında daha fazla bilgi için buraya bakın](cache-planning-faq.md#azure-cache-for-redis-performance)
+ * **Bazı önbellek boyutları** 4 veya daha fazla çekirdeğe sahip VM 'lerde barındırılır. Bu, önbellek VM 'lerinde genel CPU kullanımını getirmek için TLS şifreleme/şifre çözme ve birden çok çekirdekte TLS bağlantısı/bağlantı kesilmesi iş yükleri dağıtmak için yararlıdır.  [VM boyutları ve çekirdekleri hakkında daha fazla bilgi için buraya bakın](cache-planning-faq.md#azure-cache-for-redis-performance)
  * Windows kullanıyorsanız, istemci makinesinde **vRSS 'ı etkinleştirin** .  [Ayrıntılar için buraya bakın](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn383582(v=ws.11)).  Örnek PowerShell betiği:
      >PowerShell-ExecutionPolicy Kısıtlamasız Enable-NetAdapterRSS-adı (Get-NetAdapter). Ada 
 

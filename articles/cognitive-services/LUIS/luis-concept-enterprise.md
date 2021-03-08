@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 07/29/2019
-ms.openlocfilehash: 2e2165b81c7cd634fe79ec4438a550ad365f5a30
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: b8110323afda2ad445ffe279030ee7f3035e2b71
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95019186"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102455408"
 ---
 # <a name="enterprise-strategies-for-a-luis-app"></a>Bir LUSıS uygulaması için Kurumsal Stratejiler
 Kurumsal uygulamanız için bu tasarım stratejilerini gözden geçirin.
@@ -48,10 +48,10 @@ Uygulamanız çok çeşitli Kullanıcı çeşitlerini tahmin etmek istiyorsanız
 Her iki hafta gibi etkin öğrenme için [uç nokta utinlerini düzenli olarak gözden geçirin](luis-how-to-review-endpoint-utterances.md) , sonra yeniden eğitme ve yeniden yayımlayın. 
 
 ## <a name="when-you-need-to-have-more-than-500-intents"></a>500 ' den fazla amaç olması gerektiğinde
-500 ' den fazla amaç içeren bir Office Yardımcısı geliştirdiğinizi varsayın. 200 amaçları, toplantılar planlanmasıyla ilgili ise, 200 200 anımsatıcılar hakkında, çalışma arkadaşları hakkında bilgi almak ve her bir grubun tek bir uygulamada olması için adım adım, Grup amaçlarını ve her bir amacı içeren bir en üst düzey uygulama oluşturmak için 200. En üst düzey uygulamayı derlemek için [dağıtım modelini](#dispatch-tool-and-model) kullanın. Ardından, [dağıtım modelinin öğreticisinde](/azure/bot-service/bot-builder-tutorial-dispatch?branch=master&tabs=cs&view=azure-bot-service-4.0)gösterildiği gibi basamaklı çağrıyı kullanmak için bot ' ı değiştirin. 
+500 ' den fazla amaç içeren bir Office Yardımcısı geliştirdiğinizi varsayın. 200 amaçları, toplantılar planlanmasıyla ilgili ise, 200 200 anımsatıcılar hakkında, çalışma arkadaşları hakkında bilgi almak ve her bir grubun tek bir uygulamada olması için adım adım, Grup amaçlarını ve her bir amacı içeren bir en üst düzey uygulama oluşturmak için 200. En üst düzey uygulamayı derlemek için [dağıtım modelini](#dispatch-tool-and-model) kullanın. Ardından, [dağıtım modelinin öğreticisinde](/azure/bot-service/bot-builder-tutorial-dispatch?tabs=cs&view=azure-bot-service-4.0)gösterildiği gibi basamaklı çağrıyı kullanmak için bot ' ı değiştirin. 
 
 ## <a name="when-you-need-to-combine-several-luis-and-qna-maker-apps"></a>Birkaç LUO ve QnA Maker uygulaması birleştirmeniz gerektiğinde
-Bir bot 'a yanıt vermesi gereken birkaç LUVE QnA Maker uygulaması varsa, en üst düzey uygulamayı derlemek için [dağıtım modelini](#dispatch-tool-and-model) kullanın.  Ardından, [dağıtım modelinin öğreticisinde](/azure/bot-service/bot-builder-tutorial-dispatch?branch=master&tabs=cs&view=azure-bot-service-4.0)gösterildiği gibi basamaklı çağrıyı kullanmak için bot ' ı değiştirin. 
+Bir bot 'a yanıt vermesi gereken birkaç LUVE QnA Maker uygulaması varsa, en üst düzey uygulamayı derlemek için [dağıtım modelini](#dispatch-tool-and-model) kullanın.  Ardından, [dağıtım modelinin öğreticisinde](/azure/bot-service/bot-builder-tutorial-dispatch?tabs=cs&view=azure-bot-service-4.0)gösterildiği gibi basamaklı çağrıyı kullanmak için bot ' ı değiştirin. 
 
 ## <a name="dispatch-tool-and-model"></a>Dağıtım aracı ve modeli
 Birden çok LUO ve/veya Soru-Cevap Oluşturma uygulamalarını bir üst LUO uygulamasında birleştirmek için [Botbuilder-Tools](https://github.com/Microsoft/botbuilder-tools) ' da bulunan [dağıtım][dispatch-tool] komut satırı aracını kullanın. Bu yaklaşım, ayrı uygulamalardaki tüm konuları ve farklı alt konu etki alanlarını içeren bir üst etki alanınız olmasına olanak sağlar. 
@@ -62,7 +62,7 @@ Ana etki alanı,, uygulamalar listesinde adlı bir sürüm ile LUSıS 'de belirt
 
 Sohbet bot, utterance 'i alır, ardından tahmin için üst LUO uygulamasına gönderir. Üst uygulamadan alınan en iyi tahmin amacı, hangi LUO alt uygulamasının bir sonraki çağrıldığını belirler. Sohbet botu, daha belirli bir tahmin için alt uygulamaya gelen söylenişi 'yi gönderir.
 
-Bot Builder v4 [dağıtıcısı-Application-öğreticisi](/azure/bot-service/bot-builder-tutorial-dispatch?branch=master&tabs=cs&view=azure-bot-service-4.0)' nden bu çağrı hiyerarşisinin nasıl yapıldığını anlayın.  
+Bot Builder v4 [dağıtıcısı-Application-öğreticisi](/azure/bot-service/bot-builder-tutorial-dispatch?tabs=cs&view=azure-bot-service-4.0)' nden bu çağrı hiyerarşisinin nasıl yapıldığını anlayın.  
 
 ### <a name="intent-limits-in-dispatch-model"></a>Dağıtım modelinde amaç limitleri
 Bir dağıtım uygulamasının 500 dağıtım kaynağı, en fazla 500 hedefleri ile eşdeğerdir. 
@@ -70,7 +70,7 @@ Bir dağıtım uygulamasının 500 dağıtım kaynağı, en fazla 500 hedefleri 
 ## <a name="more-information"></a>Daha fazla bilgi
 
 * [Bot Framework SDK 'Sı](https://github.com/Microsoft/botframework)
-* [Dağıtım modeli öğreticisi](/azure/bot-service/bot-builder-tutorial-dispatch?branch=master&tabs=cs&view=azure-bot-service-4.0)
+* [Dağıtım modeli öğreticisi](/azure/bot-service/bot-builder-tutorial-dispatch?tabs=cs&view=azure-bot-service-4.0)
 * [CLı dağıtma](https://github.com/Microsoft/botbuilder-tools)
 * Dağıtım modeli bot örneği- [.net](https://github.com/microsoft/BotBuilder-Samples/tree/master/samples/csharp_dotnetcore/14.nlp-with-dispatch), [Node.js](https://github.com/microsoft/BotBuilder-Samples/tree/master/samples/javascript_nodejs/14.nlp-with-dispatch)
 
@@ -78,5 +78,5 @@ Bir dağıtım uygulamasının 500 dağıtım kaynağı, en fazla 500 hedefleri 
 
 * [Toplu işi test](luis-how-to-batch-test.md) etme hakkında bilgi edinin
 
-[dispatcher-application-tutorial]: /azure/bot-service/bot-builder-tutorial-dispatch?branch=master
+[dispatcher-application-tutorial]: /azure/bot-service/bot-builder-tutorial-dispatch
 [dispatch-tool]: https://aka.ms/dispatch-tool

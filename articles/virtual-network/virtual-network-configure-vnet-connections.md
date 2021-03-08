@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/28/2019
 ms.author: kaushika
-ms.openlocfilehash: 9975e40f7d4f3b69c9281efd0288389740bf92ec
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 9a0d06a8f8fa8f68f063404f2b483b817eb0563f
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98943654"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102452110"
 ---
 # <a name="configure-and-validate-virtual-network-or-vpn-connections"></a>Sanal ağ veya VPN bağlantılarını yapılandırma ve doğrulama
 
@@ -248,7 +248,7 @@ BGP, bir BGP ağ geçidinin bir BGP eşinden diğer tüm BGP eşlerine öğrenme
 
 BGP kullanan bir VPN bağlantısı yapılandırmak için bkz. [PowerShell kullanarak Azure VPN ağ geçitlerinde BGP yapılandırma](../vpn-gateway/vpn-gateway-bgp-resource-manager-ps.md).
 
-Sanal ağ geçidinde BGP 'yi, için bir otonom sistem (AS) numarası oluşturarak etkinleştirin. Temel ağ geçitleri BGP 'yi desteklemez. Ağ geçidinin SKU 'sunu denetlemek için Azure portal **VPN Gateway** dikey penceresinin **genel bakış** bölümüne gidin. SKU 'nuzu **temel** Ise, SKU 'yu (bkz. [ağ geçidini yeniden boyutlandırma](/powershell/module/azurerm.network/resize-azurermvirtualnetworkgateway?viewFallbackFrom=azurermps-4.0.0)) **VpnGw1** olarak değiştirmeniz gerekir. 
+Sanal ağ geçidinde BGP 'yi, için bir otonom sistem (AS) numarası oluşturarak etkinleştirin. Temel ağ geçitleri BGP 'yi desteklemez. Ağ geçidinin SKU 'sunu denetlemek için Azure portal **VPN Gateway** dikey penceresinin **genel bakış** bölümüne gidin. SKU 'nuzu **temel** Ise, SKU 'yu (bkz. [ağ geçidini yeniden boyutlandırma](/powershell/module/azurerm.network/resize-azurermvirtualnetworkgateway)) **VpnGw1** olarak değiştirmeniz gerekir. 
 
 SKU 'nun denetlenmesi, 20 ila 30 dakika kapalı kalma süresine neden olur. Ağ geçidinin doğru SKU 'SU varsa, [set-AzureRmVirtualNetworkGateway](/powershell/module/azurerm.network/set-azurermvirtualnetworkgateway) PowerShell cmdlet 'INI kullanarak as numarasını ekleyebilirsiniz. AS numarasını yapılandırdıktan sonra, ağ geçidi için bir BGP eşi IP 'si otomatik olarak sunulacaktır.
 
@@ -258,7 +258,7 @@ Bağlantı nesnesi BGP 'nin etkin olması gerekir. `-EnableBGP`Değeri `$True` [
 
 ### <a name="validate-the-bgp-configuration"></a>BGP yapılandırmasını doğrulama
 
-BGP 'nin doğru yapılandırılıp yapılandırılmadığını denetlemek için `get-AzureRmVirtualNetworkGateway` ve `get-AzureRmLocalNetworkGateway` cmdlet 'lerini çalıştırabilirsiniz. Daha sonra, bölümünde BGP ile ilgili çıkış olduğunu fark edeceksiniz `BgpSettingsText` . Örneğin:
+BGP 'nin doğru yapılandırılıp yapılandırılmadığını denetlemek için `get-AzureRmVirtualNetworkGateway` ve `get-AzureRmLocalNetworkGateway` cmdlet 'lerini çalıştırabilirsiniz. Daha sonra, bölümünde BGP ile ilgili çıkış olduğunu fark edeceksiniz `BgpSettingsText` . Örnek:
 
 ```
 {

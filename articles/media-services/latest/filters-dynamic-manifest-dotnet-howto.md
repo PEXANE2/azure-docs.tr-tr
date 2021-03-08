@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: d007c104dc53683d49547db582e8de6981ab921f
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+ms.openlocfilehash: 11c65498d5a31c2e2ee997bdaf18037b1f0f9060
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "101093422"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102455221"
 ---
 # <a name="create-filters-with-media-services-net-sdk"></a>Media Services .NET SDK ile filtre oluşturma
 
@@ -29,7 +29,7 @@ ms.locfileid: "101093422"
 
 Bu özelliğin ve kullanılan senaryoların ayrıntılı açıklaması için bkz. [dinamik bildirimler](filters-dynamic-manifest-overview.md) ve [Filtreler](filters-concept.md).
 
-Bu konu başlığı altında, Isteğe bağlı bir video için filtre tanımlamak ve [hesap filtreleri](/dotnet/api/microsoft.azure.management.media.models.accountfilter?view=azure-dotnet) ve [varlık filtreleri](/dotnet/api/microsoft.azure.management.media.models.assetfilter?view=azure-dotnet)oluşturmak için Media Services .NET SDK 'nın nasıl kullanılacağı gösterilmektedir. 
+Bu konu başlığı altında, Isteğe bağlı bir video için filtre tanımlamak ve [hesap filtreleri](/dotnet/api/microsoft.azure.management.media.models.accountfilter) ve [varlık filtreleri](/dotnet/api/microsoft.azure.management.media.models.assetfilter)oluşturmak için Media Services .NET SDK 'nın nasıl kullanılacağı gösterilmektedir. 
 
 > [!NOTE]
 > [Presentationtimerange](filters-concept.md#presentationtimerange)öğesini gözden geçirdiğinizden emin olun.
@@ -43,7 +43,7 @@ Bu konu başlığı altında, Isteğe bağlı bir video için filtre tanımlamak
 
 ## <a name="define-a-filter"></a>Filtre tanımlama  
 
-.NET ' te, izleme seçimlerini [Filtertrackselection](/dotnet/api/microsoft.azure.management.media.models.filtertrackselection?view=azure-dotnet) ve [Filtertrackpropertycondition](/dotnet/api/microsoft.azure.management.media.models.filtertrackpropertycondition?view=azure-dotnet) sınıflarıyla birlikte yapılandırırsınız. 
+.NET ' te, izleme seçimlerini [Filtertrackselection](/dotnet/api/microsoft.azure.management.media.models.filtertrackselection) ve [Filtertrackpropertycondition](/dotnet/api/microsoft.azure.management.media.models.filtertrackpropertycondition) sınıflarıyla birlikte yapılandırırsınız. 
 
 Aşağıdaki kod, EC-3 olan herhangi bir ses parçasını ve 0-1000000 aralığında bit hızına sahip herhangi bir video parçasını içeren bir filtre tanımlar.
 

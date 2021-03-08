@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 03/19/2020
 ms.author: brendm
 ms.custom: devx-track-java, devx-track-azurecli
-ms.openlocfilehash: d06a6eb8b504f2c5dd09de70d79f50a3ed5d89a3
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 6b2134ffd414aed3ed6561fb34544094eb52baa0
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94844736"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102452484"
 ---
 # <a name="map-an-existing-custom-domain-to-azure-spring-cloud"></a>Mevcut bir özel etki alanını Azure Spring Cloud ile eşleme
 
@@ -22,7 +22,7 @@ Etki alanı adı hizmeti (DNS), ağ düğümü adlarını ağ genelinde depolama
 
 Sertifikalar Web trafiğini şifreler. Bu TLS/SSL sertifikaları, Azure Key Vault depolanabilir. 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 * Azure yay bulutuna dağıtılan bir uygulama (bkz. [hızlı başlangıç: Azure Portal kullanarak mevcut bir Azure Spring Cloud uygulamasını başlatma](spring-cloud-quickstart.md)veya mevcut bir uygulamayı kullanma).
 * GoDaddy gibi etki alanı sağlayıcısı için DNS kayıt defterine erişimi olan bir etki alanı adı.
 * Bir üçüncü taraf sağlayıcıdan özel bir sertifika (otomatik olarak imzalanan sertifikanız). Sertifika, etki alanıyla aynı olmalıdır.
@@ -82,7 +82,7 @@ Sertifikanızı anahtar kasasına yüklemek için:
 1. **Sertifika oluşturma yönteminin** altında **sertifika oluştur** iletişim kutusunda öğesini seçin `Import` .
 1. **Sertifika dosyasını karşıya yükle** altında, sertifika konumuna gidin ve seçin.
 1. **Parola** altında, sertifikanız için özel anahtarı girin.
-1. **Oluştur**'a tıklayın.
+1. **Oluştur**’a tıklayın.
 
     ![Sertifikayı içeri aktar 1](./media/custom-dns-tutorial/import-certificate-a.png)
 
@@ -156,7 +156,7 @@ DNS sağlayıcınıza gidin ve etki alanınızı <service_name>. azuremicroservi
 ![DNS kayıtları sayfası](./media/custom-dns-tutorial/dns-records.png)
 
 ## <a name="map-your-custom-domain-to-azure-spring-cloud-app"></a>Özel etki alanınızı Azure Spring Cloud App 'e eşleyin
-Azure yay bulutu 'nda uygulamanız yoksa [hızlı başlangıç: Azure Portal kullanarak mevcut bir Azure yay bulutu uygulamasını başlatma](https://review.docs.microsoft.com/azure/spring-cloud/spring-cloud-quickstart-launch-app-portal?branch=master)' daki yönergeleri izleyin.
+Azure yay bulutu 'nda uygulamanız yoksa [hızlı başlangıç: Azure Portal kullanarak mevcut bir Azure yay bulutu uygulamasını başlatma](/azure/spring-cloud/spring-cloud-quickstart-launch-app-portal)' daki yönergeleri izleyin.
 
 #### <a name="portal"></a>[Portal](#tab/Azure-portal)
 Uygulama sayfasına gidin.

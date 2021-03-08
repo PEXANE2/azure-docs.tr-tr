@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 2/1/2021
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 534f9e76cfca4037634cfca089f1131984456636
-ms.sourcegitcommit: 2501fe97400e16f4008449abd1dd6e000973a174
+ms.openlocfilehash: f54156ed8cc4c049e10bada77a66eee084f7c5fb
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99820713"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102453283"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>Azure Dosya Eşitleme ile ilgili sorunları giderme
 Şirket içi bir dosya sunucusunun esnekliğini, performansını ve uyumluluğunu koruyarak kuruluşunuzun dosya paylaşımlarını Azure dosyalarında merkezileştirmek için Azure Dosya Eşitleme kullanın. Azure Dosya Eşitleme, Windows Server’ı Azure dosya paylaşımınızın hızlı bir önbelleğine dönüştürür. Verilere yerel olarak erişmek için Windows Server üzerinde kullanılabilen tüm protokolleri (SMB, NFS ve FTPS gibi) kullanabilirsiniz. Dünyanın dört bir yanında ihtiyacınız olan sayıda önbellekler olabilir.
@@ -74,8 +74,8 @@ PowerShell 5,1 ' ye az veya Azurerd modülünü yüklemek için aşağıdaki ad�
 
 1. Yükseltilmiş bir komut isteminden **PowerShell** yazın ve ENTER tuşuna basın.
 2. Belgeleri izleyerek en son az veya Azurerd modülünü yükler:
-    - [Az Module (.NET 4.7.2 gerektirir)](/powershell/azure/install-az-ps?viewFallbackFrom=azps-1.1.0)
-    - [AzureRM modülü]( https://go.microsoft.com/fwlink/?linkid=856959)
+    - [Az Module (.NET 4.7.2 gerektirir)](/powershell/azure/install-az-ps)
+    - [AzureRM modülü](https://go.microsoft.com/fwlink/?linkid=856959)
 3. ServerRegistration.exe çalıştırın ve sunucuyu bir depolama Eşitleme hizmetine kaydetmek için Sihirbazı doldurun.
 
 <a id="server-already-registered"></a>**Sunucu kaydı şu iletiyi görüntüler: "Bu sunucu zaten kayıtlı"** 

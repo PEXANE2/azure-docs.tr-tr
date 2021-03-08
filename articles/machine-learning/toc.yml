@@ -258,6 +258,8 @@
         - name: Resource Manager şablonu kullanma
           displayName: arm
           href: how-to-create-workspace-template.md
+        - name: Azure SYNAPSE Analytics çalışma alanına bağlantı
+          href: how-to-link-synapse-ml-workspaces.md
     - name: İşlem kaynakları oluşturma ve yönetme
       items:
         - name: İşlem örneği

@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 03/04/2021
+ms.date: 03/08/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 9cd5a62cd85687767497b142a30d31aa6dd00b77
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: 85574b7d33af6d9abfe25f5af4d811255f08ce4b
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102175099"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102452246"
 ---
 # <a name="string-claims-transformations"></a>Dize talep dönüştürmeleri
 
@@ -326,6 +326,77 @@ Aşağıdaki örnek 0 ile 1000 arasında bir tamsayı rastgele değeri üretir. 
     - **Outputclaim**: OTP_853
 
 
+## <a name="formatlocalizedstring"></a>FormatLocalizedString
+
+Birden çok talebi, belirtilen yerelleştirilmiş biçim dizesine göre biçimlendirin. Bu dönüşüm C# yöntemini kullanır `String.Format` .
+
+
+| Öğe | Dönüştürme Tionclaimtype | Veri Türü | Notlar |
+| ---- | ----------------------- | --------- | ----- |
+| Inputclaims |  |string | Dize biçimi olarak davranan giriş talepleri koleksiyonu, {0} {1} {2} parametreleri. |
+| InputParameter | Stringformatıd | string |  `StringId` [Yerelleştirilmiş bir dize](localization.md).   |
+| OutputClaim | outputClaim | string | Bu talep dönüştürmesinin ardından üretilen ClaimType çağırılır. |
+
+> [!NOTE]
+> Dize biçimi izin verilen maksimum boyut 4000.
+
+FormatLocalizedString talep dönüşümünü kullanmak için:
+
+1. Bir [Yerelleştirme dizesi](localization.md)tanımlayın ve bunu [kendi kendine onaylanan teknik profille](self-asserted-technical-profile.md)ilişkilendirin.
+1. `ElementType` `LocalizedString` Öğesinin öğesi olarak ayarlanması gerekir `FormatLocalizedStringTransformationClaimType` .
+1. , `StringId` Tanımladığınız benzersiz bir tanımlayıcıdır ve daha sonra talep dönüşümünüzün içinde kullanın `stringFormatId` .
+1. Talep dönüşümünde, yerelleştirilmiş dizeyle ayarlanacak taleplerin listesini belirtin. Ardından öğesini `stringFormatId` `StringId` yerelleştirilmiş dize öğesinin öğesine ayarlayın. 
+1. [Kendi kendine onaylanan bir teknik profilde](self-asserted-technical-profile.md)veya bir [görüntüleme denetim](display-controls.md) girişi veya çıkış talebi dönüştürmesi ' nde talep dönüşümünüze bir başvuru yapın.
+
+
+Aşağıdaki örnek, bir hesap zaten dizinde olduğunda bir hata iletisi oluşturur. Örnek, Ingilizce (varsayılan) ve Ispanyolca için yerelleştirilmiş dizeleri tanımlar.
+
+```xml
+<Localization Enabled="true">
+  <SupportedLanguages DefaultLanguage="en" MergeBehavior="Append">
+    <SupportedLanguage>en</SupportedLanguage>
+    <SupportedLanguage>es</SupportedLanguage>
+   </SupportedLanguages>
+
+  <LocalizedResources Id="api.localaccountsignup.en">
+    <LocalizedStrings>
+      <LocalizedString ElementType="FormatLocalizedStringTransformationClaimType" StringId="ResponseMessge_EmailExists">The email '{0}' is already an account in this organization. Click Next to sign in with that account.</LocalizedString>
+      </LocalizedStrings>
+    </LocalizedResources>
+  <LocalizedResources Id="api.localaccountsignup.es">
+    <LocalizedStrings>
+      <LocalizedString ElementType="FormatLocalizedStringTransformationClaimType" StringId="ResponseMessge_EmailExists">Este correo electrónico "{0}" ya es una cuenta de esta organización. Haga clic en Siguiente para iniciar sesión con esa cuenta.</LocalizedString>
+    </LocalizedStrings>
+  </LocalizedResources>
+</Localization>
+```
+
+Talep dönüştürmesi, yerelleştirilmiş dizeye dayalı bir yanıt iletisi oluşturur. İleti, yerelleştirilmiş *ResponseMessge_EmailExists* eklenen kullanıcının e-posta adresini içerir.
+
+```xml
+<ClaimsTransformation Id="SetResponseMessageForEmailAlreadyExists" TransformationMethod="FormatLocalizedString">
+  <InputClaims>
+    <InputClaim ClaimTypeReferenceId="email" />
+  </InputClaims>
+  <InputParameters>
+    <InputParameter Id="stringFormatId" DataType="string" Value="ResponseMessge_EmailExists" />
+  </InputParameters>
+  <OutputClaims>
+    <OutputClaim ClaimTypeReferenceId="responseMsg" TransformationClaimType="outputClaim" />
+  </OutputClaims>
+</ClaimsTransformation>
+```
+
+### <a name="example"></a>Örnek
+
+- Giriş talepleri:
+    - **ınputclaim**: sarah@contoso.com
+- Giriş parametreleri:
+    - **StringFormat**: ResponseMessge_EmailExists
+- Çıkış talepleri:
+  - **Outputclaim**: ' ' e-postası sarah@contoso.com Bu kuruluşta zaten bir hesap. Bu hesapla oturum açmak için Ileri ' ye tıklayın.
+
+
 ## <a name="formatstringclaim"></a>FormatStringClaim
 
 Bir talebi, belirtilen biçim dizesine göre biçimlendirin. Bu dönüşüm C# yöntemini kullanır `String.Format` .
@@ -335,6 +406,9 @@ Bir talebi, belirtilen biçim dizesine göre biçimlendirin. Bu dönüşüm C# y
 | Inputclaim | ınputclaim |string |Dize biçim parametresi olarak davranan ClaimType {0} . |
 | InputParameter | stringFormat | string | Parametresi dahil dize biçimi {0}  . Bu giriş parametresi [dize talep dönüştürme ifadelerini](string-transformations.md#string-claim-transformations-expressions)destekler.  |
 | OutputClaim | outputClaim | string | Bu talep dönüştürmesinin ardından üretilen ClaimType çağırılır. |
+
+> [!NOTE]
+> Dize biçimi izin verilen maksimum boyut 4000.
 
 Herhangi bir dizeyi tek bir parametreyle biçimlendirmek için bu talep dönüşümünü kullanın {0} . Aşağıdaki örnek bir **userPrincipalName** oluşturur. Tüm sosyal kimlik sağlayıcısı teknik profillerinin `Facebook-OAUTH` bir **userPrincipalName** oluşturmak için **createuserprincipalname** çağrısı.
 
@@ -371,6 +445,9 @@ Belirtilen biçim dizesine göre iki talebi biçimlendirin. Bu dönüşüm C# y�
 | Inputclaim | ınputclaim | string | Dize biçim parametresi olarak davranan ClaimType {1} . |
 | InputParameter | stringFormat | string | Ve parametreleri de dahil olmak üzere dize biçimi {0} {1} . Bu giriş parametresi [dize talep dönüştürme ifadelerini](string-transformations.md#string-claim-transformations-expressions)destekler.   |
 | OutputClaim | outputClaim | string | Bu talep dönüştürmesinin ardından üretilen ClaimType çağırılır. |
+
+> [!NOTE]
+> Dize biçimi izin verilen maksimum boyut 4000.
 
 İki parametreli dizeleri biçimlendirmek için bu talep dönüşümünü kullanın {0} ve {1} . Aşağıdaki örnek, belirtilen biçimde bir **DisplayName** oluşturuyor:
 

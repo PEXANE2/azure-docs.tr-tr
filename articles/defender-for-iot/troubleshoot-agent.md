@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/09/2020
 ms.author: mlottner
-ms.openlocfilehash: 9367cf4324d577e4dd44cb9294a8b82b1bceaf74
-ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
+ms.openlocfilehash: 7be6cf1df15d7afd7cb9447be68ff70ff7b14d03
+ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/15/2021
-ms.locfileid: "100522963"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102449229"
 ---
 # <a name="security-agent-troubleshoot-guide-linux"></a>Güvenlik aracısı sorun giderme kılavuzu (Linux)
 
@@ -28,10 +28,9 @@ IoT aracısının kendisi için Azure Defender, yüklemeden hemen sonra başlar.
 
 Bu sorun giderme kılavuzunda şunları nasıl yapacağınızı öğreneceksiniz:
 
-> [!div class="checklist"]
-> * Güvenlik aracısının çalışıp çalışmadığını doğrulama
-> * Güvenlik Aracısı hatalarını al
-> * Güvenlik Aracısı hatalarını anlayın ve düzeltin
+- Güvenlik aracısının çalışıp çalışmadığını doğrulama
+- Güvenlik Aracısı hatalarını al
+- Güvenlik Aracısı hatalarını anlayın ve düzeltin
 
 ## <a name="validate-if-the-security-agent-is-running"></a>Güvenlik aracısının çalışıp çalışmadığını doğrulama
 
@@ -108,4 +107,10 @@ Defender for IoT agent encountered an error! Error in: {Error Code}, reason: {Er
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-IoT [hizmeti Için](resources-frequently-asked-questions.md) Defender 'ı okuyun [genel bakış](overview.md) for IoT [mimarisi](architecture.md) hakkında daha fazla bilgi edinin IoT için Defender ['ı okuyun IoT hizmeti için](quickstart-onboard-iot-hub.md) Defender [](how-to-security-data-access.md) [](concept-recommendations.md) [](concept-security-alerts.md)
+- IoT hizmetine [genel bakış](overview.md) Için Defender 'ı okuyun
+- IoT [mimarisi](architecture.md) için Defender hakkında daha fazla bilgi edinin
+- IoT [hizmeti](quickstart-onboard-iot-hub.md) Için Defender 'ı etkinleştirin
+- IoT hizmeti için Defender 'ı okuyun [SSS](resources-frequently-asked-questions.md)
+- [Ham güvenlik verilerine](how-to-security-data-access.md) erişme hakkında bilgi edinin
+- [Önerileri](concept-recommendations.md) anlama
+- Güvenlik [uyarılarını](concept-security-alerts.md) anlama

@@ -7,13 +7,13 @@ ms.author: bagol
 ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.topic: conceptual
-ms.date: 03/03/2021
-ms.openlocfilehash: c466d7717dd1dad0ea9ee3f44088d1400cee083f
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.date: 03/08/2021
+ms.openlocfilehash: c24512ad38f9397c9a40a85489c45fcb0de906b3
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102048191"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102453810"
 ---
 # <a name="whats-new-in-azure-sentinel"></a>Azure Sentinel 'deki yenilikler
 
@@ -32,9 +32,26 @@ Belirtilen özellikler Şu anda ÖNIZLEME aşamasındadır. [Azure önizleme ek 
 
 ## <a name="february-2021"></a>Şubat 2021
 
+- [Siber güvenlik vade Model sertifikası (CMMC) çalışma kitabı](#cybersecurity-maturity-model-certification-cmmc-workbook)
 - [Üçüncü taraf veri bağlayıcıları](#third-party-data-connectors)
 - [Varlık sayfasında UEBA öngörüleri](#ueba-insights-in-the-entity-page)
 - [Geliştirilmiş olay arama](#improved-incident-search)
+
+### <a name="cybersecurity-maturity-model-certification-cmmc-workbook"></a>Siber güvenlik vade Model sertifikası (CMMC) çalışma kitabı
+
+Azure Sentinel CMMC çalışma kitabı, Microsoft Güvenlik teklifleri, Office 365, takımlar, Intune, Windows sanal masaüstü ve çok daha fazlası dahil olmak üzere Microsoft portföy genelinde CMMC denetimlerine hizalanmış günlük sorgularını görüntülemek için bir mekanizma sağlar.
+
+CMMC çalışma kitabı, güvenlik mimarları, mühendisler, güvenlik işlemleri analistleri, Yöneticiler ve BT uzmanlarının bulut iş yüklerinin güvenlik duruşunu durumsal tanıma görünürlüğü kazanmasına olanak sağlar. Ayrıca, Microsoft tekliflerini ilgili CMMC gereksinimleri ve uygulamalarıyla hizalama için seçme, tasarlama, dağıtma ve yapılandırma önerileri de vardır.
+
+CMMC 'ye uymanız gerekli olmasa bile, CMMC çalışma kitabı güvenlik Işlemleri merkezleri oluşturma, uyarılar geliştirme, tehditleri görselleştirme ve iş yüklerinin durumsal farkında sağlama konusunda yardımcı olur.
+
+Azure Sentinel **çalışma kitapları** alanında cmmc çalışma kitabına erişin. **Şablon**' u seçin ve ardından **cmmc**' yi arayın.
+
+Daha fazla bilgi için bkz.
+
+- [Azure Sentinel Cybersecurity vade modeli sertifikası (CMMC) çalışma kitabı](https://techcommunity.microsoft.com/t5/public-sector-blog/azure-sentinel-cybersecurity-maturity-model-certification-cmmc/ba-p/2110524)
+- [Öğretici: Verilerinizi görselleştirme ve izleme](tutorial-monitor-your-data.md)
+
 
 ### <a name="third-party-data-connectors"></a>Üçüncü taraf veri bağlayıcıları
 

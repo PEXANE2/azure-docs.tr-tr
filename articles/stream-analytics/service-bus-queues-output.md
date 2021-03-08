@@ -6,12 +6,12 @@ ms.author: ebnkruma
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 09/23/2020
-ms.openlocfilehash: 9f71a0f9c6d3fdca4b81be3a69479c78236fcc31
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: ad5bb90a0df68cc6c1c230c234c1f695312da3d8
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98014221"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102451788"
 ---
 # <a name="service-bus-queues-output-from-azure-stream-analytics"></a>Azure Stream Analytics Service Bus kuyruk çıktısı
 
@@ -69,9 +69,9 @@ Aşağıdaki görüntü, [Service Bus Explorer](https://github.com/paolosalvator
 
 ## <a name="system-properties"></a>Sistem özellikleri
 
-Sorgu sütunlarını, giden hizmet veri yolu kuyruğunuza veya konu iletilerinize [Sistem Özellikleri](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage?view=azure-dotnet&preserve-view=true#properties) olarak iliştirebilirsiniz.
+Sorgu sütunlarını, giden hizmet veri yolu kuyruğunuza veya konu iletilerinize [Sistem Özellikleri](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#properties) olarak iliştirebilirsiniz.
 
-Bu sütunlar, karşılık gelen BrokeredMessage [sistem özelliği](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage?view=azure-dotnet&preserve-view=true#properties) sorgu sütunu değerleriyle doldurulduğundan yük içine gitmez.
+Bu sütunlar, karşılık gelen BrokeredMessage [sistem özelliği](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#properties) sorgu sütunu değerleriyle doldurulduğundan yük içine gitmez.
 Bu sistem özellikleri desteklenir- `MessageId, ContentType, Label, PartitionKey, ReplyTo, SessionId, CorrelationId, To, ForcePersistence, TimeToLive, ScheduledEnqueueTimeUtc` .
 
 Bu sütunların dize değerleri karşılık gelen sistem özelliği değer türü olarak ayrıştırılır ve Ayrıştırma hataları veri hatası olarak değerlendirilir.
