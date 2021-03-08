@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 12/18/2020
+ms.date: 02/25/2021
 ms.author: jeedes
-ms.openlocfilehash: 8af8d92ca66cfbd3d6223bc9a73125c457164d82
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 70afa0a02f4e303105aec1884b966796854c6f49
+ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98735553"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102449332"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zscaler-internet-access-administrator"></a>Öğretici: Zscaler Internet erişim yöneticisiyle Azure Active Directory tümleştirme
 
@@ -26,12 +26,12 @@ Bu öğreticide, Zscaler Internet erişim yöneticisini Azure Active Directory (
 * Kullanıcılarınızın Azure AD hesaplarıyla Zscaler Internet erişim yöneticisine otomatik olarak oturum açmalarına olanak sağlayın.
 * Hesaplarınızı tek bir merkezi konumda yönetin-Azure portal.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
-Azure AD tümleştirmesini Zscaler Internet erişimi yöneticisiyle yapılandırmak için aşağıdaki öğeler gereklidir:
+Başlamak için aşağıdaki öğeler gereklidir:
 
-* Bir Azure AD aboneliği. Bir Azure AD ortamınız yoksa, [burada](https://azure.microsoft.com/pricing/free-trial/) bir aylık deneme sürümü edinebilirsiniz
-* Zscaler Internet erişimi yönetici aboneliği
+* Bir Azure AD aboneliği. Aboneliğiniz yoksa [ücretsiz bir hesap](https://azure.microsoft.com/free/)alabilirsiniz.
+* Zscaler Internet Access Administrator çoklu oturum açma (SSO) aboneliği etkin.
 
 > [!NOTE]
 > Bu tümleştirme Ayrıca Azure AD ABD kamu bulut ortamından kullanılabilir. Bu uygulamayı Azure AD ABD kamu bulutu uygulama galerisinde bulabilir ve bunu ortak buluttan yaptığınız şekilde yapılandırabilirsiniz.
@@ -40,9 +40,9 @@ Azure AD tümleştirmesini Zscaler Internet erişimi yöneticisiyle yapılandır
 
 Bu öğreticide, Azure AD çoklu oturum açmayı bir test ortamında yapılandırıp test edersiniz.
 
-* Zscaler Internet erişimi Yöneticisi **IDP** tarafından başlatılan SSO 'yu destekliyor
+* Zscaler Internet Access Administrator, **IDP** tarafından başlatılan SSO 'yu destekler.
 
-## <a name="adding-zscaler-internet-access-administrator-from-the-gallery"></a>Galeriden Zscaler Internet erişimi Yöneticisi ekleme
+## <a name="add-zscaler-internet-access-administrator-from-the-gallery"></a>Galeriden Zscaler Internet erişimi Yöneticisi ekleme
 
 Zscaler Internet Access Administrator 'ın Azure AD ile tümleştirilmesini yapılandırmak için, Galeriden Zscaler Internet Erişim Yöneticisi ' ni, Galeri 'den yönetilen SaaS uygulamaları listesine eklemeniz gerekir.
 
@@ -64,7 +64,7 @@ Azure AD SSO 'yu Zscaler Internet erişimi yöneticisiyle yapılandırmak ve tes
     1. Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanarak Britta Simon 'u etkinleştirin.
 2. **[Zscaler Internet erişim YÖNETICISI SSO 'Yu yapılandırma](#configure-zscaler-internet-access-administrator-sso)** -uygulama tarafında tek Sign-On ayarlarını yapılandırmak için.
     1. **[Zscaler Internet Access Administrator test kullanıcısı oluşturun](#create-zscaler-internet-access-administrator-test-user)** -Zscaler Internet Erişim Yöneticisi 'Nde kullanıcının Azure AD gösterimine bağlı Britta Simon 'a sahip olmak için.
-6. **[Test SSO](#test-sso)** -yapılandırmanın çalışıp çalışmadığını doğrulamak için.
+3. **[Test SSO](#test-sso)** -yapılandırmanın çalışıp çalışmadığını doğrulamak için.
 
 ## <a name="configure-azure-ad-sso"></a>Azure AD SSO’yu yapılandırma
 
@@ -78,7 +78,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
 1. **Temel SAML yapılandırması** bölümünde, aşağıdaki alanlar için değerleri girin:
 
-    a. **Tanımlayıcı** metin kutusunda, gereksiniminize göre bir URL yazın:
+    a. **Tanımlayıcı** metin kutusunda, gereksiniminize göre aşağıdaki URL 'lerden birini yazın:
 
     | Tanımlayıcı |
     |------------|
@@ -89,7 +89,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
     | `https://admin.zscloud.net` |
     | `https://admin.zscalerbeta.net` |
 
-    b. **Yanıt URL 'si** metin kutusuna, gereksiniminize göre bir URL yazın:
+    b. **Yanıt URL 'si** metin kutusuna, gereksiniminize göre aşağıdaki URL 'lerden birini yazın:
 
     | Yanıt URL'si |
     |-----------|
@@ -102,7 +102,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
 5. Zscaler Internet erişimi yönetici uygulaması, belirli bir biçimde SAML onayları bekliyor. Bu uygulama için aşağıdaki talepleri yapılandırın. Bu özniteliklerin değerlerini, uygulama tümleştirme sayfasındaki **Kullanıcı öznitelikleri & talepler** bölümünde yönetebilirsiniz. **SAML Ile tek Sign-On ayarlama sayfasında**, **Kullanıcı öznitelikleri & talepler** Iletişim kutusunu açmak için **Düzenle** düğmesine tıklayın.
 
-    ![Öznitelik bağlantısı](./media/zscaler-internet-access-administrator-tutorial/tutorial_zscaler-internet_attribute.png)
+    ![Öznitelik bağlantısı](./media/zscaler-internet-access-administrator-tutorial/attributes.png)
 
 6. **Kullanıcı öznitelikleri** Iletişim kutusundaki **Kullanıcı talepleri** bölümünde, YUKARıDAKI görüntüde gösterildiği gibi SAML belirteci özniteliğini yapılandırın ve aşağıdaki adımları gerçekleştirin:
 
@@ -153,14 +153,13 @@ Bu bölümde, Zscaler Internet erişim yöneticisine erişim vererek, B. Simon '
 1. Rolleri yukarıda açıklanan şekilde ayarlarsanız, **Rol Seç** açılır listesinden bunu seçebilirsiniz.
 1. **Atama Ekle** Iletişim kutusunda **ata** düğmesine tıklayın.
 
-
 ## <a name="configure-zscaler-internet-access-administrator-sso"></a>Zscaler Internet erişimi yönetici SSO 'yu yapılandırma
 
 1. Farklı bir Web tarayıcısı penceresinde, Zscaler Internet Access Yönetici Kullanıcı arabiriminize oturum açın.
 
 2. **Yönetim > Yönetici Yönetimi** ' ne gidin ve aşağıdaki adımları gerçekleştirin ve Kaydet ' e tıklayın:
 
-    ![Ekran görüntüsü, SAML kimlik doğrulamasını etkinleştirme, S S L sertifikasını karşıya yükleme ve bir veren belirleme seçenekleriyle yönetici yönetimini gösterir.](./media/zscaler-internet-access-administrator-tutorial/AdminSSO.png "Yönetim")
+    ![Ekran görüntüsü, SAML kimlik doğrulamasını etkinleştirme, S S L sertifikasını karşıya yükleme ve bir veren belirleme seçenekleriyle yönetici yönetimini gösterir.](./media/zscaler-internet-access-administrator-tutorial/management.png "Yönetim")
 
     a. **SAML kimlik doğrulamasını etkinleştir**' i işaretleyin.
 
@@ -170,7 +169,7 @@ Bu bölümde, Zscaler Internet erişim yöneticisine erişim vererek, B. Simon '
 
 3. Yönetici Kullanıcı arabiriminde aşağıdaki adımları gerçekleştirin:
 
-    ![Ekran görüntüsü, adımları gerçekleştirebileceğiniz Yönetici U 'yi gösterir.](./media/zscaler-internet-access-administrator-tutorial/ic800207.png)
+    ![Ekran görüntüsü, adımları gerçekleştirebileceğiniz Yönetici U 'yi gösterir.](./media/zscaler-internet-access-administrator-tutorial/activation.png)
 
     a. Sol alt kısımdaki **etkinleştirme** menüsünün üzerine gelin.
 
@@ -183,7 +182,7 @@ Yönetici hesabı oluşturma adımları için, Zscaler belgelerine bakın:
 
 https://help.zscaler.com/zia/adding-admins
 
-### <a name="test-sso"></a>Test SSO 'SU
+## <a name="test-sso"></a>Test SSO 'SU
 
 Bu bölümde, Azure AD çoklu oturum açma yapılandırmanızı aşağıdaki seçeneklerle test edersiniz.
 

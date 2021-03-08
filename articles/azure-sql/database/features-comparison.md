@@ -11,13 +11,13 @@ ms.topic: conceptual
 author: danimir
 ms.author: danil
 ms.reviewer: bonova, sstein, danil
-ms.date: 02/21/2021
-ms.openlocfilehash: 75fc4166614862c5ac48a72bacb6b7b19019d003
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.date: 03/08/2021
+ms.openlocfilehash: 56f7a233e7098f18b727da3ce56c5fbe30a328a1
+ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101691918"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102447495"
 ---
 # <a name="features-comparison-azure-sql-database-and-azure-sql-managed-instance"></a>Özellikler karşılaştırması: Azure SQL veritabanı ve Azure SQL yönetilen örneği
 
@@ -30,7 +30,11 @@ Azure SQL veritabanı ve SQL yönetilen örneği, SQL Server en son kararlı sü
 - Güvenlik özellikleri- [uygulama rolleri](/sql/relational-databases/security/authentication-access/application-roles), [dinamik veri maskeleme](/sql/relational-databases/security/dynamic-data-masking) ([bkz. Başlangıç Kılavuzu](dynamic-data-masking-overview.md)), [satır düzeyi güvenlik](/sql/relational-databases/security/row-level-security)ve tehdit algılama-bkz. [SQL veritabanı](threat-detection-configure.md) ve [SQL yönetilen örneği](../managed-instance/threat-detection-configure.md)için Başlarken Kılavuzu.
 - Çok modelli yetenekler- [grafik işleme](/sql/relational-databases/graphs/sql-graph-overview), [JSON verileri](/sql/relational-databases/json/json-data-sql-server) ([bkz](json-features.md). Başlarken Kılavuzu), [openxml](/sql/t-sql/functions/openxml-transact-sql), [uzamsal](/sql/relational-databases/spatial/spatial-data-sql-server), [openjson](/sql/t-sql/functions/openjson-transact-sql)ve [XML dizinleri](/sql/t-sql/statements/create-xml-index-transact-sql).
 
-Azure, veritabanlarınızı yönetir ve yüksek kullanılabilirliğe sahip olmasını garanti eder. Yüksek kullanılabilirliği etkileyebilecek veya PaaS dünyasında, SQL veritabanı ve SQL yönetilen örneği 'nde sınırlı işlevlere sahip olabilecek bazı özellikler. Bu özellikler aşağıdaki tablolarda açıklanmıştır. Farklılıklar hakkında daha fazla ayrıntıya ihtiyacınız varsa, bunları [Azure SQL veritabanı](../managed-instance/transact-sql-tsql-differences-sql-server.md) veya [Azure SQL yönetilen örneği](../managed-instance/transact-sql-tsql-differences-sql-server.md)için ayrı sayfalarda bulabilirsiniz.
+Azure, veritabanlarınızı yönetir ve yüksek kullanılabilirliğe sahip olmasını garanti eder. Yüksek kullanılabilirliği etkileyebilecek veya PaaS dünyasında, SQL veritabanı ve SQL yönetilen örneği 'nde sınırlı işlevlere sahip olabilecek bazı özellikler. Bu özellikler aşağıdaki tablolarda açıklanmıştır.
+
+Farklılıklar hakkında daha fazla ayrıntı gerekiyorsa bunları ayrı sayfalarda bulabilirsiniz:
+- [Azure SQL Veritabanı](transact-sql-tsql-differences-sql-server.md)
+- [Azure SQL Yönetilen Örnek](../managed-instance/transact-sql-tsql-differences-sql-server.md)
 
 ## <a name="features-of-sql-database-and-sql-managed-instance"></a>SQL veritabanı ve SQL yönetilen örneği özellikleri
 

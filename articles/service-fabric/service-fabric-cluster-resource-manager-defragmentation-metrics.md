@@ -5,12 +5,12 @@ author: masnider
 ms.topic: conceptual
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: bba459be4408f4a4bc438bb33b0570a91e84f2cd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6dee9a845df305b06153d99c2bafe6d74524a139
+ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75563369"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102449212"
 ---
 # <a name="defragmentation-of-metrics-and-load-in-service-fabric"></a>Service Fabric ölçümler ve yük birleştirme
 Kümedeki yük ölçümlerini yönetmek için Service Fabric kümesi Kaynak Yöneticisi varsayılan stratejisi, yükü dağıtmaktır. Düğümlerin eşit olarak kullanıldığından emin olmak, hem çekişmenin hem de harcanan kaynaklara yol açabilecek sıcak ve soğuk noktaları önler. İş yüklerini kümede dağıtmak, bir hatanın belirli bir iş yükünün büyük bir yüzdesine sahip olmamasını güvence altına almamasından dolayı hatalı çalışan hatalar açısından en güvenli seçenektir. 
@@ -89,7 +89,7 @@ Tek başına dağıtımlar veya Azure 'da barındırılan kümeler için Templat
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-- Küme Kaynak Yöneticisi, kümeyi açıklamak için Man seçeneklerine sahiptir. Bunlarla ilgili daha fazla bilgi edinmek için [Service Fabric kümesini açıklama](service-fabric-cluster-resource-manager-cluster-description.md) konusunda bu makaleye göz atın
+- Küme Kaynak Yöneticisi, kümeyi açıklamak için birçok seçenek içerir. Bunlarla ilgili daha fazla bilgi edinmek için [Service Fabric kümesini açıklama](service-fabric-cluster-resource-manager-cluster-description.md) konusunda bu makaleye göz atın
 - Ölçümler, Service Fabric küme kaynağı Yöneticisi 'nin kümedeki tüketimi ve kapasiteyi nasıl yönettiğini açıklamaktadır. Ölçümler ve bunların nasıl yapılandırılacağı hakkında daha fazla bilgi edinmek için [Bu makaleye](service-fabric-cluster-resource-manager-metrics.md) göz atın
 
 [Image1]:./media/service-fabric-cluster-resource-manager-defragmentation-metrics/balancing-defrag-compared.png

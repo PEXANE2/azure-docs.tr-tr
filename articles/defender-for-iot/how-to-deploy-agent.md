@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/23/2019
 ms.author: mlottner
-ms.openlocfilehash: 2634ed819b8818632c58b9e471b0f26190e5f16b
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 89ecf26778433a3f075f76905183f3fe866cb5db
+ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96339974"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102447274"
 ---
 # <a name="select-and-deploy-a-security-agent-on-your-iot-device"></a>IoT cihazınızda bir güvenlik Aracısı seçin ve dağıtın
 
@@ -28,11 +28,9 @@ Daha fazla bilgi için bkz. [Güvenlik Aracısı başvuru mimarisi](security-age
 Aracılar açık kaynaklı projeler olarak geliştirilmiştir ve iki şekilde kullanılabilir: <br> [C](https://aka.ms/iot-security-github-c)ve [C#](https://aka.ms/iot-security-github-cs).
 
 Bu makalede şunları öğreneceksiniz:
-
-> [!div class="checklist"]
-> * Güvenlik Aracısı türleri karşılaştırması
-> * Desteklenen aracı platformlarını bul
-> * Çözümünüz için doğru aracı seçin
+- Güvenlik Aracısı türleri karşılaştırması
+- Desteklenen aracı platformlarını bul
+- Çözümünüz için doğru aracı seçin
 
 ## <a name="understand-security-agent-options"></a>Güvenlik Aracısı seçeneklerini anlama
 
@@ -85,7 +83,7 @@ Daha fazla bilgi için bkz. [Güvenlik Aracısı karşılaştırması](how-to-de
 
 Aşağıdaki liste, şu anda desteklenen tüm platformları içerir.
 
-|IoT Aracısı için Defender |İşletim Sistemi |Mimari |
+|IoT Aracısı için Defender |Operating System |Mimari |
 |--------------|------------|--------------|
 |C|Ubuntu 16.04 |    x64|
 |C|Ubuntu 18.04 |    x64, ARMv7|

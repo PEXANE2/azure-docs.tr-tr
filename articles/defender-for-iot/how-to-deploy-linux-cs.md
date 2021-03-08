@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/09/2020
 ms.author: mlottner
-ms.openlocfilehash: 48737831440a1402b6974955b4da61a4216b011f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ec26cd0b66b6d08d8bd686d8f3e5ad8011df10b1
+ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90941706"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102449773"
 ---
 # <a name="deploy-defender-for-iot-c-based-security-agent-for-linux"></a>Linux için, IoT C# tabanlı güvenlik Aracısı için Defender 'ı dağıtma
 
@@ -27,13 +27,12 @@ Bu kılavuzda, Linux üzerinde IoT C# tabanlı güvenlik aracısına yönelik De
 
 Bu kılavuzda şunların nasıl yapıldığını öğrenirsiniz:
 
-> [!div class="checklist"]
-> * Yükleme
-> * Dağıtımı doğrulama
-> * Aracıyı kaldırın
-> * Sorun giderme
+- Yükleme
+- Dağıtımı doğrulama
+- Aracıyı kaldırın
+- Sorun giderme
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Diğer platformlar ve aracı türleri için bkz. [doğru güvenlik aracısını seçme](how-to-deploy-agent.md).
 
@@ -51,7 +50,7 @@ Güvenlik aracısını dağıtmak için aşağıdaki adımları kullanın:
 
 1. Çalıştırılarak **ınstallsecurityagent betiğine** çalışan izinleri ekleme `chmod +x InstallSecurityAgent.sh`
 
-1. Ardından, **kök ayrıcalıklarıyla**aşağıdaki komutu çalıştırın:
+1. Ardından, **kök ayrıcalıklarıyla** aşağıdaki komutu çalıştırın:
 
    ```
    ./InstallSecurityAgent.sh -i -aui <authentication identity>  -aum <authentication method> -f <file path> -hn <host name>  -di <device id> -cl <certificate location kind>

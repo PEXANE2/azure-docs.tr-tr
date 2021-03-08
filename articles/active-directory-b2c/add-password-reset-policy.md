@@ -8,16 +8,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/02/2021
+ms.date: 03/08/2021
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: b82d573b7d8a65447d75aa8f017c87795bbef6cd
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: fa34e8ea71c307b75a3f345861f8ed99d131b3fd
+ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102171663"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102447937"
 ---
 # <a name="set-up-a-password-reset-flow-in-azure-active-directory-b2c"></a>Azure Active Directory B2C bir parola sıfırlama akışı ayarlayın
 
@@ -203,6 +203,24 @@ Kullanıcı yolculuğunda, Unutulan parola alt **yolculuğunu bir Claimsprovider
     ```xml
     <ClaimsExchange Id="ForgotPasswordExchange" TechnicalProfileReferenceId="ForgotPassword" />
     ```
+    
+1. Aşağıdaki düzenleme adımını geçerli adım ve bir sonraki adım arasında ekleyin. Eklediğiniz yeni düzenleme adımı, talebin mevcut olup olmadığını denetler `isForgotPassword` . Talep varsa, [parola sıfırlama alt yolculuğunu](#add-the-password-reset-sub-journey)çağırır. 
+
+    ```xml
+    <OrchestrationStep Order="3" Type="InvokeSubJourney">
+      <Preconditions>
+        <Precondition Type="ClaimsExist" ExecuteActionsIf="false">
+          <Value>isForgotPassword</Value>
+          <Action>SkipThisOrchestrationStep</Action>
+        </Precondition>
+      </Preconditions>
+      <JourneyList>
+        <Candidate SubJourneyReferenceId="PasswordReset" />
+      </JourneyList>
+    </OrchestrationStep>
+    ```
+    
+1. Yeni düzenleme adımını ekledikten sonra, 1 ile N arasında bir tamsayı atlamadan adımları ardışık olarak yeniden numaralandırın.
 
 ### <a name="set-the-user-journey-to-be-executed"></a>Yürütülecek Kullanıcı yolculuğu ayarla
 
@@ -262,7 +280,7 @@ Aşağıdaki diyagramda:
 1. Kullanıcı **parolanızı unuttum?** bağlantısını seçer. Azure AD B2C, uygulamaya AADB2C90118 hata kodunu döndürür.
 1. Uygulama, hata kodunu işler ve yeni bir yetkilendirme isteği başlatır. Yetkilendirme isteği, **B2C_1_pwd_reset** gibi parola sıfırlama ilkesi adını belirtir.
 
-![Parola sıfırlama akışı](./media/add-password-reset-policy/password-reset-flow-legacy.png)
+![Eski parola sıfırlama Kullanıcı akışı](./media/add-password-reset-policy/password-reset-flow-legacy.png)
 
 Bir örneği görmek için, Kullanıcı akışlarının bağlantısını gösteren [basit bir ASP.net örneğine](https://github.com/AzureADQuickStarts/B2C-WebApp-OpenIDConnect-DotNet-SUSI)göz atın.
 

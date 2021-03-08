@@ -3,12 +3,12 @@ title: Azure Site Recovery 'de VMware/fiziksel olağanüstü durum kurtarma içi
 description: Azure Site Recovery kullanarak, VMware VM 'Leri ve fiziksel sunucu ile Azure arasında olağanüstü durum kurtarma desteğini özetler.
 ms.topic: conceptual
 ms.date: 07/14/2020
-ms.openlocfilehash: 3b658a0dd2522b1ca1ad2d46b5f778351b271a27
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.openlocfilehash: e025b1681306a3bb837a338655dc561e897226c2
+ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102212447"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102449263"
 ---
 # <a name="support-matrix-for-disaster-recovery--of-vmware-vms-and-physical-servers-to-azure"></a>VMware VM 'Leri ve fiziksel sunucuları Azure 'a olağanüstü durum kurtarma için destek matrisi
 
@@ -295,10 +295,10 @@ Azure 'a çoğaltılan şirket içi VM 'Ler, bu tabloda özetlenen Azure VM gere
 --- | --- | ---
 Konuk işletim sistemi | Çoğaltılan makineler için [desteklenen işletim sistemlerini](#replicated-machines) doğrulayın. | Desteklenmiyorsa denetim başarısız olur.
 Konuk işletim sistemi mimarisi | 64 bit. | Desteklenmiyorsa denetim başarısız olur.
-İşletim sistemi disk boyutu | 2.048 GB 'a kadar. | Desteklenmiyorsa denetim başarısız olur.
+İşletim sistemi disk boyutu | 1. nesil makineler için 2.048 GB 'a kadar. <br> 2. nesil makinelerde 4.095 GB 'a kadar. | Desteklenmiyorsa denetim başarısız olur.
 İşletim sistemi disk sayısı | 1 </br> farklı disklerde önyükleme ve sistem bölümü desteklenmiyor | Desteklenmiyorsa denetim başarısız olur.
 Veri diski sayısı | 64 veya daha az. | Desteklenmiyorsa denetim başarısız olur.
-Veri diski boyutu | Yönetilen diske çoğaltma sırasında 8.192 GB 'a kadar (9,26 sürüm ve sonraki sürümler)<br> Depolama hesabına çoğaltılırken 4.095 GB 'a kadar </br> Minimum disk boyutu gereksinimi-en az 1024 MB| Desteklenmiyorsa denetim başarısız olur.
+Veri diski boyutu | Yönetilen diske çoğaltma sırasında 32.767 GB 'a kadar (9,41 sürüm ve sonraki sürümler)<br> Depolama hesabına çoğaltılırken 4.095 GB 'a kadar </br> Minimum disk boyutu gereksinimi-en az 1024 MB| Desteklenmiyorsa denetim başarısız olur.
 Ağ bağdaştırıcıları | Birden çok bağdaştırıcı desteklenir. |
 Paylaşılan VHD | Desteklenmez. | Desteklenmiyorsa denetim başarısız olur.
 FC diski | Desteklenmez. | Desteklenmiyorsa denetim başarısız olur.

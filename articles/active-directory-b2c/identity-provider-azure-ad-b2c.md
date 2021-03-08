@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 01/27/2021
+ms.date: 03/08/2021
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit, project-no-code
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: ea4def3cfaa19e27dc05e955bf97b41976ec2190
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.openlocfilehash: c9a20305f05b285b29d4a5eaf75116c862f3a6d4
+ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98953929"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102448498"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-an-azure-ad-b2c-account-from-another-azure-ad-b2c-tenant"></a>Başka bir Azure AD B2C kiracısından Azure AD B2C hesabıyla kaydolma ve oturum açma ayarlama
 
@@ -115,8 +115,10 @@ Bir uygulama oluşturmak için.
 1. **Kaydet**’i seçin.
 1. İlkenizi test etmek için **Kullanıcı akışını Çalıştır**' ı seçin.
 1. **Uygulama** için, daha önce kaydettiğiniz *testapp1* adlı Web uygulamasını seçin. **Yanıt URL 'si** gösterilmesi gerekir `https://jwt.ms` .
-1. **Kullanıcı akışını Çalıştır** 'a tıklayın
-1. Kaydolma veya oturum açma sayfasından *fabrikam* ' ı seçerek diğer Azure AD B2C kiracısıyla oturum açın.
+1. **Kullanıcı akışını Çalıştır** düğmesini seçin.
+1. Kaydolma veya oturum açma sayfasından **fabrikam** ' ı seçerek diğer Azure AD B2C kiracısıyla oturum açın.
+
+Oturum açma işlemi başarılı olursa, tarayıcınız öğesine yönlendirilir `https://jwt.ms` ve bu, Azure AD B2C tarafından döndürülen belirtecin içeriğini görüntüler.
 
 ::: zone-end
 
@@ -221,7 +223,15 @@ Azure AD B2C, ilkenizin uzantısı dosyasındaki **ClaimsProvider** öğesine Az
 
 [!INCLUDE [active-directory-b2c-configure-relying-party-policy](../../includes/active-directory-b2c-configure-relying-party-policy-user-journey.md)]
 
-[!INCLUDE [active-directory-b2c-test-relying-party-policy](../../includes/active-directory-b2c-test-relying-party-policy-user-journey.md)]
+
+## <a name="test-your-custom-policy"></a>Özel ilkenizi test etme
+
+1. Örneğin, bağlı olan taraf ilkenizi seçin `B2C_1A_signup_signin` .
+1. **Uygulama** için, [daha önce kaydetmiş](troubleshoot-custom-policies.md#troubleshoot-the-runtime)olduğunuz bir Web uygulamasını seçin. **Yanıt URL 'si** gösterilmesi gerekir `https://jwt.ms` .
+1. **Şimdi Çalıştır** düğmesini seçin.
+1. Kaydolma veya oturum açma sayfasından **fabrikam** ' ı seçerek diğer Azure AD B2C kiracısıyla oturum açın.
+
+Oturum açma işlemi başarılı olursa, tarayıcınız öğesine yönlendirilir `https://jwt.ms` ve bu, Azure AD B2C tarafından döndürülen belirtecin içeriğini görüntüler.
 
 ::: zone-end
 

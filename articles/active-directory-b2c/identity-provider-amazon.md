@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
 ms.custom: project-no-code
-ms.date: 01/27/2021
+ms.date: 03/08/2021
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 23867ac6eb6941e2d132ae885fccd0e938fef907
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.openlocfilehash: 5880b6f44caec053aef292960cecbf64f25c6743
+ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98953115"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102448583"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-an-amazon-account-using-azure-active-directory-b2c"></a>Azure Active Directory B2C kullanarak bir Amazon hesabı ile kaydolma ve oturum açma ayarlama
 
@@ -66,7 +66,10 @@ Azure Active Directory B2C (Azure AD B2C) ' de bir Amazon hesabı olan kullanıc
 1. **Kaydet**’i seçin.
 1. İlkenizi test etmek için **Kullanıcı akışını Çalıştır**' ı seçin.
 1. **Uygulama** için, daha önce kaydettiğiniz *testapp1* adlı Web uygulamasını seçin. **Yanıt URL 'si** gösterilmesi gerekir `https://jwt.ms` .
-1. **Kullanıcı akışını Çalıştır** 'a tıklayın
+1. **Kullanıcı akışını Çalıştır** düğmesini seçin.
+1. Kaydolma veya oturum açma **sayfasından Amazon hesabıyla oturum açmak için Amazon** ' ı seçin.
+
+Oturum açma işlemi başarılı olursa, tarayıcınız öğesine yönlendirilir `https://jwt.ms` ve bu, Azure AD B2C tarafından döndürülen belirtecin içeriğini görüntüler.
 
 ::: zone-end
 
@@ -162,6 +165,13 @@ Bir Amazon hesabını, ilkenizin uzantı dosyasındaki **Claimsproviders** öğe
 
 [!INCLUDE [active-directory-b2c-configure-relying-party-policy](../../includes/active-directory-b2c-configure-relying-party-policy-user-journey.md)]
 
-[!INCLUDE [active-directory-b2c-test-relying-party-policy](../../includes/active-directory-b2c-test-relying-party-policy-user-journey.md)]
+## <a name="test-your-custom-policy"></a>Özel ilkenizi test etme
+
+1. Örneğin, bağlı olan taraf ilkenizi seçin `B2C_1A_signup_signin` .
+1. **Uygulama** için, [daha önce kaydetmiş](troubleshoot-custom-policies.md#troubleshoot-the-runtime)olduğunuz bir Web uygulamasını seçin. **Yanıt URL 'si** gösterilmesi gerekir `https://jwt.ms` .
+1. **Şimdi Çalıştır** düğmesini seçin.
+1. Kaydolma veya oturum açma **sayfasından Amazon hesabıyla oturum açmak için Amazon** ' ı seçin.
+
+Oturum açma işlemi başarılı olursa, tarayıcınız öğesine yönlendirilir `https://jwt.ms` ve bu, Azure AD B2C tarafından döndürülen belirtecin içeriğini görüntüler.
 
 ::: zone-end

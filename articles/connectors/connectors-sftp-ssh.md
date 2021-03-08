@@ -6,14 +6,14 @@ ms.suite: integration
 author: divyaswarnkar
 ms.reviewer: estfan, logicappspm, azla
 ms.topic: article
-ms.date: 01/07/2021
+ms.date: 03/08/2021
 tags: connectors
-ms.openlocfilehash: 388d747da692160ab6d0a89c0c35de348d921486
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 983e0d34692d67302e11c35abac590fefd610b2e
+ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98016771"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102449637"
 ---
 # <a name="monitor-create-and-manage-sftp-files-by-using-ssh-and-azure-logic-apps"></a>SSH ve Azure Logic Apps kullanarak SFTP dosyalarını izleme, oluşturma ve yönetme
 
@@ -54,16 +54,16 @@ SFTP-SSH Bağlayıcısı ve SFTP Bağlayıcısı arasındaki farklar için, bu k
   | Eylem | Öbek oluşturma desteği | Öbek boyutu desteğini geçersiz kıl |
   |--------|------------------|-----------------------------|
   | **Dosyayı Kopyala** | Hayır | Geçerli değil |
-  | **Dosya oluştur** | Evet | Evet |
-  | **Klasör oluştur** | Geçerli değil | Geçerli değil |
-  | **Dosyayı Sil** | Geçerli değil | Geçerli değil |
-  | **Arşivi klasöre Ayıkla** | Geçerli değil | Geçerli değil |
-  | **Dosya içeriğini al** | Evet | Evet |
-  | **Yolu kullanarak dosya içeriğini al** | Evet | Evet |
-  | **Dosya meta verilerini al** | Geçerli değil | Geçerli değil |
-  | **Yolu kullanarak dosya meta verilerini al** | Geçerli değil | Geçerli değil |
-  | **Klasördeki dosyaları Listele** | Geçerli değil | Geçerli değil |
-  | **Dosyayı yeniden adlandır** | Geçerli değil | Geçerli değil |
+  | **Dosya oluştur** | Yes | Yes |
+  | **Klasör oluştur** | Uygulanamaz | Uygulanamaz |
+  | **Dosyayı Sil** | Uygulanamaz | Uygulanamaz |
+  | **Arşivi klasöre Ayıkla** | Uygulanamaz | Uygulanamaz |
+  | **Dosya içeriğini al** | Yes | Yes |
+  | **Yolu kullanarak dosya içeriğini al** | Yes | Yes |
+  | **Dosya meta verilerini al** | Uygulanamaz | Uygulanamaz |
+  | **Yolu kullanarak dosya meta verilerini al** | Uygulanamaz | Uygulanamaz |
+  | **Klasördeki dosyaları Listele** | Uygulanamaz | Uygulanamaz |
+  | **Dosyayı yeniden adlandır** | Uygulanamaz | Uygulanamaz |
   | **Güncelleştirme dosyası** | Hayır | Geçerli değil |
   ||||
 
@@ -103,10 +103,10 @@ SFTP-SSH Bağlayıcısı ile SFTP-SSH bağlayıcısının bu yeteneklere sahip o
   >
   > * **Parmak izi**: MD5
   >
-  > Mantıksal uygulamanıza istediğiniz SFTP-SSH tetikleyicisini veya eylemini ekledikten sonra, SFTP sunucunuz için bağlantı bilgilerini sağlamanız gerekir. Bu bağlantı için SSH özel anahtarınızı sağladığınızda **_anahtarını el ile girmeyin veya düzenleyemezsiniz_*, bu da bağlantının başarısız olmasına neden olabilir. Bunun yerine, anahtarı SSH özel anahtar dosyanızdaki _*_kopyalamayın_*_ ve bu anahtarı bağlantı ayrıntılarına _*_yapıştırdığınızdan_*_ emin olun. 
+  > Mantıksal uygulamanıza istediğiniz SFTP-SSH tetikleyicisini veya eylemini ekledikten sonra, SFTP sunucunuz için bağlantı bilgilerini sağlamanız gerekir. Bu bağlantı için SSH özel anahtarınızı sağladığınızda ***anahtarı el ile girmeyin veya düzenlemeyin***, bu da bağlantının başarısız olmasına neden olabilir. Bunun yerine, anahtarı SSH özel anahtar dosyanızdaki ***kopyalamayın*** ve bu anahtarı bağlantı ayrıntılarına ***yapıştırdığınızdan*** emin olun. 
   > Daha fazla bilgi için bu makalenin ilerleyen kısımlarında [SFTP 'ye SSH Ile bağlanma](#connect) bölümüne bakın.
 
-_ [Mantıksal uygulamalar oluşturma](../logic-apps/quickstart-create-first-logic-app-workflow.md) hakkında temel bilgi
+* [Mantıksal uygulamalar oluşturma](../logic-apps/quickstart-create-first-logic-app-workflow.md) hakkında temel bilgi
 
 * SFTP hesabınıza erişmek istediğiniz mantıksal uygulama. Bir SFTP-SSH tetikleyicisiyle başlamak için [boş bir mantıksal uygulama oluşturun](../logic-apps/quickstart-create-first-logic-app-workflow.md). Bir SFTP-SSH eylemi kullanmak için, mantıksal uygulamanızı başka bir tetikleyici ile başlatın, örneğin **yineleme** tetikleyicisi.
 
@@ -148,7 +148,7 @@ Tetikleyici yeni bir dosya bulduğunda, tetikleyici yeni dosyanın tamamlandığ
 
    `puttygen <path-to-private-key-file-in-PuTTY-format> -O private-openssh -o <path-to-private-key-file-in-OpenSSH-format>`
 
-   Örneğin:
+   Örnek:
 
    `puttygen /tmp/sftp/my-private-key-putty.ppk -O private-openssh -o /tmp/sftp/my-private-key-openssh.pem`
 
@@ -170,7 +170,15 @@ Tetikleyici yeni bir dosya bulduğunda, tetikleyici yeni dosyanın tamamlandığ
 
 ## <a name="considerations"></a>Dikkat edilmesi gerekenler
 
-Bu bölümde, bu bağlayıcının Tetikleyiciler ve eylemleri için gözden geçirilecek noktalar açıklanmaktadır.
+Bu bölümde, bu bağlayıcının Tetikleyicileri ve eylemlerini kullandığınızda gözden geçirilecek noktalar açıklanmaktadır.
+
+<a name="different-folders-trigger-processing-file-storage"></a>
+
+### <a name="use-different-sftp-folders-for-file-upload-and-processing"></a>Karşıya dosya yükleme ve işleme için farklı SFTP klasörleri kullanma
+
+SFTP sunucunuzda, karşıya yüklenen dosyaları depoladığınız ve tetikleyicinin bu dosyaları işlenmek üzere izlediği ve bu klasörler arasında dosya taşımanın bir yolu olması gerektiği anlamına gelen ayrı klasörler kullandığınızdan emin olun. Aksi takdirde tetikleyici tetiklenmez ve tahmin edilemeyecek şekilde davranır, örneğin, tetikleyicinin işlediği rastgele sayıda dosyayı atlar.
+
+Bu sorun oluşursa, dosyaları tetikleyicinin izlediği klasörden kaldırın ve karşıya yüklenen dosyaları depolamak için farklı bir klasör kullanın.
 
 <a name="create-file"></a>
 
@@ -208,9 +216,9 @@ SFTP sunucunuzda bir dosya oluşturmak için, SFTP-SSH **dosya oluştur** eylemi
 
    1. Kopyayı **Düzenle**' yi seçin  >  .
 
-   1. Eklediğiniz SFTP-SSH tetikleyicisi veya eyleminde, birden çok satırı destekleyen **SSH özel anahtar** özelliğine kopyaladığınız *tam* anahtarı yapıştırın.  *_ Anahtarını *_yapıştırdığınızdan emin olun_*. _*_Anahtarı el ile girmeyin veya düzenleyemezsiniz_*_.
+   1. Eklediğiniz SFTP-SSH tetikleyicisi veya eyleminde, birden çok satırı destekleyen **SSH özel anahtar** özelliğine kopyaladığınız *tam* anahtarı yapıştırın.  **_ Anahtarını _yapıştırdığınızdan emin olun_*. _*_anahtarı el ile girmeyin veya düzenleyemezsiniz_**.
 
-1. Bağlantı ayrıntılarını girmeyi tamamladıktan sonra _ * oluştur * * öğesini seçin.
+1. Bağlantı ayrıntılarını girmeyi tamamladıktan sonra **Oluştur**' u seçin.
 
 1. Şimdi seçtiğiniz tetikleyici veya eyleminiz için gerekli ayrıntıları sağlayın ve mantıksal uygulamanızın iş akışını oluşturmaya devam edin.
 

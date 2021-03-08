@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: estfan, logicappspm, az-logic-apps-dev
 ms.topic: conceptual
 ms.date: 03/05/2021
-ms.openlocfilehash: 941d866fbdea0efc5775bccd08e0235b1629fae0
-ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
+ms.openlocfilehash: ab2d7c23e69c73c78c852de722733e8f0d09fcec
+ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102440998"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102449739"
 ---
 # <a name="create-stateful-and-stateless-workflows-in-visual-studio-code-with-the-azure-logic-apps-preview-extension"></a>Azure Logic Apps (Önizleme) uzantısıyla Visual Studio Code durum bilgisiz ve durum bilgisi olmayan iş akışları oluşturma
 
@@ -312,6 +312,9 @@ Mantıksal uygulamanızı oluşturabilmeniz için önce, Visual Studio Code mant
 [Önizleme sürümünün genişletilebilirlik çerçevesini](https://techcommunity.microsoft.com/t5/integrations-on-azure/azure-logic-apps-running-anywhere-built-in-connector/ba-p/1921272)kullanarak ihtiyacınız olan herhangi bir hizmet için kendi yerleşik bağlayıcılarınızı oluşturabilirsiniz. Azure Service Bus ve SQL Server gibi yerleşik bağlayıcılara benzer şekilde, bu bağlayıcılar daha yüksek aktarım hızı, düşük gecikme süresi, yerel bağlantı sağlar ve Önizleme çalışma zamanı ile aynı işlemde yerel olarak çalışır.
 
 Yazma özelliği şu anda yalnızca Visual Studio Code ' de kullanılabilir, ancak varsayılan olarak etkinleştirilmemiştir. Bu bağlayıcıları oluşturmak için, önce projenizi paket tabanlı (Node.js), NuGet paket tabanlı (.NET) ' e dönüştürmeniz gerekir.
+
+> [!IMPORTANT]
+> Bu eylem, geri alamayacaksınız tek yönlü bir işlemdir.
 
 1. Gezgin bölmesinde, projenizin kökünde, fare işaretçinizi diğer tüm dosya ve klasörlerin altındaki boş bir alana taşıyın, kısayol menüsünü açın ve **NuGet tabanlı mantıksal uygulama projesine Dönüştür**' ü seçin.
 

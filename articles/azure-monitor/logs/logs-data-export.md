@@ -1,17 +1,18 @@
 ---
 title: Azure Izleyici 'de çalışma alanı verilerini dışarı aktarma Log Analytics (Önizleme)
 description: Log Analytics veri dışa aktarma, seçili tabloların verilerini Log Analytics çalışma alanınızdan Azure depolama hesabına veya Azure Event Hubs toplandığından sürekli olarak dışarı aktaralmanıza olanak sağlar.
+ms.subservice: logs
 ms.topic: conceptual
 ms.custom: references_regions, devx-track-azurecli
 author: bwren
 ms.author: bwren
 ms.date: 02/07/2021
-ms.openlocfilehash: f0bbe02576323342376ad155878d575c6403cf70
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 556570b02664a0afd01137f939bea67a1014b680
+ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102048820"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102449501"
 ---
 # <a name="log-analytics-workspace-data-export-in-azure-monitor-preview"></a>Azure Izleyici 'de çalışma alanı verilerini dışarı aktarma Log Analytics (Önizleme)
 Azure Izleyici 'de Log Analytics çalışma alanı verileri dışarı aktarma işlemi, Log Analytics çalışma alanınızdaki seçili tablolardan verileri sürekli olarak bir Azure depolama hesabına veya Azure Event Hubs toplanarak dışarı aktaralmanıza olanak sağlar. Bu makalede, bu özellik hakkında ayrıntılar ve çalışma alanlarınızdaki veri dışarı aktarmayı yapılandırma adımları sağlanmaktadır.
@@ -75,7 +76,7 @@ Log Analytics veri dışa aktarma, zaman tabanlı bekletme ilkelerinde *allowPro
 Veriler, Azure Izleyici 'ye ulaştığında neredeyse gerçek zamanlı olarak olay hub 'ınıza gönderilir. Bir olay hub 'ı, adı " *ve ardından tablonun adı ile* dışarı aktarma yaptığınız her veri türü için oluşturulur. Örneğin, *securityevent* tablosu, *har-securityevent* adlı bir olay hub 'ına gönderilir. Dışarı aktarılmış verilerin belirli bir olay hub 'ına ulaşmasını istiyorsanız veya 47 karakter sınırını aşan bir ada sahip bir tablonuz varsa, kendi olay hub 'ınızın adını girip tanımlanmış tablolar için tüm verileri buna aktarabilirsiniz.
 
 > [!IMPORTANT]
-> [Ad alanı başına desteklenen Olay Hub 'ları sayısı 10 ' dur](../../event-hubs/event-hubs-quotas.md#common-limits-for-all-tiers). 10 ' dan fazla tablo dışa aktardığınızda, tüm tablolarınızı bu olay hub 'ına aktarmak için kendi olay hub 'ınızın adını sağlayın. 
+> [Ad alanı başına desteklenen Olay Hub 'ları sayısı 10 ' dur](../../event-hubs/event-hubs-quotas.md#common-limits-for-all-tiers). 10 ' dan fazla tablo dışa aktardığınızda, tüm tablolarınızı bu olay hub 'ına aktarmak için kendi olay hub 'ınızın adını sağlayın.
 
 Dikkat edilmesi gerekenler:
 1. ' Temel ' Olay Hub 'ı SKU, daha düşük olay boyutu [sınırını](../../event-hubs/event-hubs-quotas.md#basic-vs-standard-tiers) destekler ve çalışma alanınızdaki bazı Günlükler onu aşabilir ve bırakılamaz. Dışarı aktarma hedefi olarak ' Standard ' veya ' adanmış ' Olay Hub 'ı kullanmanızı öneririz.
@@ -113,10 +114,14 @@ Depolama hesabınızı seçili ağlardan erişime izin verecek şekilde yapılan
 
 [![Depolama hesabı güvenlik duvarları ve sanal ağlar](media/logs-data-export/storage-account-vnet.png)](media/logs-data-export/storage-account-vnet.png#lightbox)
 
-
 ### <a name="create-or-update-data-export-rule"></a>Veri dışarı aktarma kuralı oluştur veya güncelleştir
-Veri dışa aktarma kuralı, bir tablo kümesi için tek bir hedefe verilecek verileri tanımlar. Her hedef için tek bir kural oluşturabilirsiniz.
+Veri dışa aktarma kuralı, verilerin dışarı aktarıldığı tabloları ve hedefi tanımlar. Şu anda her bir hedef için tek bir kural oluşturabilirsiniz.
 
+Workapce kuralları için dışarı aktarma kuralları yapılandırması için Tablo listesine ihtiyacınız varsa, bu sorguyu çalışma alanınızda çalıştırın.
+
+```kusto
+find where TimeGenerated > ago(24h) | distinct Type
+```
 
 # <a name="azure-portal"></a>[Azure portalı](#tab/portal)
 
@@ -127,12 +132,6 @@ Yok
 Yok
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
-
-Çalışma alanınızdaki tabloları görüntülemek için aşağıdaki CLı komutunu kullanın. İstediğiniz tabloları kopyalayıp veri dışa aktarma kuralına dahil etmek için yardımcı olabilir.
-
-```azurecli
-az monitor log-analytics workspace table list --resource-group resourceGroupName --workspace-name workspaceName --query [].name --output table
-```
 
 CLı kullanarak bir depolama hesabına veri dışarı aktarma kuralı oluşturmak için aşağıdaki komutu kullanın.
 

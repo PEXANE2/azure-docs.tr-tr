@@ -4,44 +4,57 @@ description: Azure RTOS için güvenlik modülünüzü yapılandırma ve özelle
 services: defender-for-iot
 ms.service: defender-for-iot
 documentationcenter: na
-author: mlottner
+author: shhazam-ms
 manager: rkarlin
 editor: ''
 ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/09/2020
-ms.author: mlottner
-ms.openlocfilehash: fb2b7810c0829859f4a104c62b6df2ca0495bac7
-ms.sourcegitcommit: 4784fbba18bab59b203734b6e3a4d62d1dadf031
+ms.date: 03/07/2021
+ms.author: shhazam
+ms.openlocfilehash: 524286fa7a923485d0085fb63f3ef9669db1a4d5
+ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99809210"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102449824"
 ---
-# <a name="configure-and-customize-security-module-for-azure-rtos-preview"></a>Azure RTOS için güvenlik modülünü yapılandırma ve özelleştirme (Önizleme)
+# <a name="configure-and-customize-defender-iot-micro-agent-for-azure-rtos-ga"></a>Azure RTOS GA için Defender-IoT-Micro-Agent 'ı yapılandırma ve özelleştirme
+
+Bu makalede, Azure RTOS cihazınız için Defender-IoT-mikro-Agent ' ı ağınızı, bant genişliğini ve bellek gereksinimlerinizi karşılayacak şekilde yapılandırma açıklanmaktadır.
+
+Dizininden uzantısı olan bir hedef dağıtım dosyası seçmeniz gerekir `*.dist` `netxduo/addons/azure_iot/azure_iot_security_module/configs` .  
+
+CMake derleme ortamı kullanırken, seçilen değer için bir komut satırı parametresi ayarlamanız gerekir `IOT_SECURITY_MODULE_DIST_TARGET` . Örneğin, `-DIOT_SECURITY_MODULE_DIST_TARGET=RTOS_BASE`.
+
+Bir ıAR veya başka bir CMake derleme ortamında, `netxduo/addons/azure_iot/azure_iot_security_module/inc/configs/<target distribution>/` yolu bilinen herhangi bir dahil edilen yola eklemeniz gerekir. Örneğin, `netxduo/addons/azure_iot/azure_iot_security_module/inc/configs/RTOS_BASE`.
 
 Cihazınızın davranışını yapılandırmak için aşağıdaki dosyayı kullanın.
 
-## <a name="azure_iot_security_moduleincasc_porth"></a>azure_iot_security_module/inc/asc_port. h
+**netxduo/addons/azure_iot/azure_iot_security_module/inc/configs/ \<target distribution> /asc_config. h**
 
- Her yapılandırmanın varsayılan davranışı aşağıdaki tablolarda verilmiştir: 
+CMake derleme ortamında, dosyayı düzenleyerek varsayılan yapılandırmayı değiştirmeniz gerekir `netxduo/addons/azure_iot/azure_iot_security_module/configs/<target distribution>.dist` . Aşağıdaki CMake biçimini `set(ASC_XXX ON)` veya `netxduo/addons/azure_iot/azure_iot_security_module/inc/configs/<target distribution>/asc_config.h` diğer tüm ortamlar için aşağıdaki dosyayı kullanın. Örneğin, `#define ASC_XXX`.
 
-### <a name="general"></a>Genel
+Her yapılandırmanın varsayılan davranışı aşağıdaki tablolarda verilmiştir: 
 
-| Ad | Tür | Varsayılan | Ayrıntılar |
-| - | - | - | - |
-| ASC_SECURITY_MODULE_ID | Dize | --- | Cihazın benzersiz tanımlayıcısı  |
-| ASC_SECURITY_MODULE_PENDING_TIME  | Sayı | 300 | Güvenlik modülünün bekleme süresi (saniye). Süre, durum değişikliğini askıya al olarak aşarsa. |
-
-#### <a name="collection"></a>Koleksiyon
+## <a name="general"></a>Genel
 
 | Ad | Tür | Varsayılan | Ayrıntılar |
 | - | - | - | - |
-| ASC_HIGH_PRIORITY_INTERVAL | Sayı | 10 | Yüksek öncelikli Grup aralığını saniye cinsinden toplayıcılar. |
-| ASC_MEDIUM_PRIORITY_INTERVAL | Sayı | 30 | Saniye cinsinden toplayıcı orta öncelik grubu aralığı. |
-| ASC_LOW_PRIORITY_INTERVAL | Sayı | 145.440  | Saniyeler içinde düşük öncelikli Grup aralığı toplayıcıları. |
+| ASC_SECURITY_MODULE_ID | Dize | Defender-IoT-Micro-Agent | Cihazın benzersiz tanımlayıcısı.  |
+| SECURITY_MODULE_VERSION_ (BIRINCIL) (IKINCIL) (DÜZELTME EKI)  | Sayı | 3.2.1 | Sürüm. |
+| ASC_SECURITY_MODULE_SEND_MESSAGE_RETRY_TIME  | Sayı  | 3 | Defender-IoT-mikro-aracısının başarısız olduktan sonra güvenlik iletisini göndermek için gereken süre. (saniye cinsinden) |
+| ASC_SECURITY_MODULE_PENDING_TIME  | Sayı | 300 | Defender-IoT-Micro-Agent bekleme süresi (saniye cinsinden). Süre aşılırsa durum askıya al olarak değişir. |
+
+## <a name="collection"></a>Koleksiyon
+
+| Ad | Tür | Varsayılan | Ayrıntılar |
+| - | - | - | - |
+| ASC_FIRST_COLLECTION_INTERVAL | Sayı  | 30  | Toplayıcının başlangıç koleksiyonu Aralık boşluğu. Başlangıç sırasında, birden fazla cihazdan aynı anda ileti gönderilmesini önlemek için bu değer sistem koleksiyonuna eklenir.  |
+| ASC_HIGH_PRIORITY_INTERVAL | Sayı | 10 | Toplayıcının yüksek öncelikli Grup aralığı (saniye cinsinden). |
+| ASC_MEDIUM_PRIORITY_INTERVAL | Sayı | 30 | Toplayıcının orta öncelikli Grup aralığı (saniye cinsinden). |
+| ASC_LOW_PRIORITY_INTERVAL | Sayı | 145.440  | Toplayıcının düşük öncelikli Grup aralığı (saniye cinsinden). |
 
 #### <a name="collector-network-activity"></a>Toplayıcı ağ etkinliği
 
@@ -49,34 +62,32 @@ Toplayıcı ağ etkinlik yapılandırmanızı özelleştirmek için aşağıdaki
 
 | Ad | Tür | Varsayılan | Ayrıntılar |
 | - | - | - | - |
-| ASC_COLLECTOR_NETWORK_ACTIVITY_TCP_DISABLED | Boole | yanlış | `TCP`Ağ etkinliğini filtrele |
-| ASC_COLLECTOR_NETWORK_ACTIVITY_UDP_DISABLED | Boole | yanlış | `UDP`Ağ etkinliği olaylarını filtrele |
-| ASC_COLLECTOR_NETWORK_ACTIVITY_ICMP_DISABLED | Boole | yanlış | `ICMP`Ağ etkinliği olaylarını filtrele |
-| ASC_COLLECTOR_NETWORK_ACTIVITY_CAPTURE_UNICAST_ONLY | Boole | true | Yalnızca bir tek noktaya yayın gelen paketleri yakala, Ayrıca yanlış yakalama olarak ayarlandığında yayın ve çok noktaya yayın |
-| ASC_COLLECTOR_NETWORK_ACTIVITY_MAX_IPV4_OBJECTS_IN_CACHE | Sayı | 64 | Bellekte depolanacak en fazla IPv4 ağ olayı sayısı |
-| ASC_COLLECTOR_NETWORK_ACTIVITY_MAX_IPV6_OBJECTS_IN_CACHE | Sayı | 64  | Bellekte depolanacak en fazla IPv6 ağ olayı sayısı |
-
-
-## <a name="compile-flags"></a>Derleme bayrakları
-Derleme bayrakları, önceden tanımlanmış konfigürasyonları geçersiz kılmanıza olanak tanır.
+| ASC_COLLECTOR_NETWORK_ACTIVITY_TCP_DISABLED | Boole | yanlış | `TCP`Ağ etkinliğini filtreler. |
+| ASC_COLLECTOR_NETWORK_ACTIVITY_UDP_DISABLED | Boole | yanlış | `UDP`Ağ etkinlik olaylarını filtreler. |
+| ASC_COLLECTOR_NETWORK_ACTIVITY_ICMP_DISABLED | Boole | yanlış | `ICMP`Ağ etkinlik olaylarını filtreler. |
+| ASC_COLLECTOR_NETWORK_ACTIVITY_CAPTURE_UNICAST_ONLY | Boole | true | Yalnızca tek noktaya yayın gelen paketleri yakalar. Yanlış olarak ayarlandığında, hem yayını hem de çok noktaya yayını yakalar. |
+| ASC_COLLECTOR_NETWORK_ACTIVITY_SEND_EMPTY_EVENTS  | Boole  | yanlış  | Toplayıcının boş bir olayını gönderir. |
+| ASC_COLLECTOR_NETWORK_ACTIVITY_MAX_IPV4_OBJECTS_IN_CACHE | Sayı | 64 | Bellekte depolanacak en fazla IPv4 ağ olayı sayısı. |
+| ASC_COLLECTOR_NETWORK_ACTIVITY_MAX_IPV6_OBJECTS_IN_CACHE | Sayı | 64  | Bellekte depolanacak en fazla IPv6 ağ olayı sayısı. |
 
 ### <a name="collectors"></a>Toplayıcıları
 | Ad | Tür | Varsayılan | Ayrıntılar |
 | - | - | - | - |
-| collector_heartbeat_enabled | Boole | AÇIK | Sinyal toplayıcıyı etkinleştirme |
-| collector_network_activity_enabled | Boole | AÇIK | Ağ etkinliği toplayıcıyı etkinleştir |
-| collector_system_information_enabled | Boole | AÇIK | Sistem bilgisi toplayıcıyı etkinleştir |
+| ASC_COLLECTOR_HEARTBEAT_ENABLED | Boole | AÇIK | Sinyal toplayıcıyı etkinleştirilir. |
+| ASC_COLLECTOR_NETWORK_ACTIVITY_ENABLED  | Boole | AÇIK | Ağ etkinliği toplayıcıyı sunar. |
+| ASC_COLLECTOR_SYSTEM_INFORMATION_ENABLED | Boole | AÇIK | Sistem bilgisi toplayıcıyı sunar.  |
 
+Diğer yapılandırmalar bayrakları gelişmiş ve desteklenmeyen özelliklere sahiptir. Bunu değiştirmek veya daha fazla bilgi için desteğe başvurun.
+ 
 ## <a name="supported-security-alerts-and-recommendations"></a>Desteklenen güvenlik uyarıları ve önerileri
 
-Azure RTOS için güvenlik modülü, belirli güvenlik uyarılarını ve önerilerini destekler. Hizmetiniz için [ilgili uyarı ve öneri değerlerini incelediğinizden ve özelleştirdiğinizden](concept-rtos-security-alerts-recommendations.md) emin olun.
+Azure RTOS için Defender-IoT-Micro-Agent, belirli güvenlik uyarılarını ve önerilerini destekler. Hizmetiniz için [ilgili uyarı ve öneri değerlerini incelediğinizden ve özelleştirdiğinizden](concept-rtos-security-alerts-recommendations.md) emin olun.
 
 ## <a name="log-analytics-optional"></a>Log Analytics (isteğe bağlı)
 
-İsteğe bağlı ve gerekli olmadığında, cihaz olaylarını ve etkinliklerini daha fazla araştırmak istediğinizde Log Analytics etkinleştirme ve yapılandırma yararlı olabilir. Daha fazla bilgi edinmek için bkz. [IoT hizmeti Için Defender ile Log Analytics](how-to-security-data-access.md#log-analytics) ayarlama ve kullanma hakkında bilgi edinin. 
+Cihaz olaylarını ve etkinliklerini araştırmak için Log Analytics etkinleştirebilir ve yapılandırabilirsiniz. Kurma hakkında bilgi edinin ve daha fazla bilgi için bkz. [IoT hizmeti Için Defender ile Log Analytics](how-to-security-data-access.md#log-analytics) kullanma. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - Azure RTOS [güvenlik uyarıları ve önerileri](concept-rtos-security-alerts-recommendations.md) Için güvenlik modülünü gözden geçirin ve özelleştirin
 - Gerektiğinde [Azure RTOS API 'Sinin güvenlik modülüne](azure-rtos-security-module-api.md) bakın.
-

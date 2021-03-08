@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 02/12/2021
+ms.date: 03/08/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: e344d85bbdac92aa372fc5d5e59ef90b11dfac6c
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.openlocfilehash: 3082c249b04b5efc71187dd03515bc8c875b7c2f
+ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102095740"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102448600"
 ---
 # <a name="add-ad-fs-as-a-saml-identity-provider-using-custom-policies-in-azure-active-directory-b2c"></a>Azure Active Directory B2C içindeki özel ilkeleri kullanarak SAML kimlik sağlayıcısı olarak AD FS ekleyin
 
@@ -71,10 +71,10 @@ Bir AD FS hesabını, ilkenizin uzantısı dosyasındaki **Claimsproviders** ö�
     ```xml
     <ClaimsProvider>
       <Domain>contoso.com</Domain>
-      <DisplayName>Contoso AD FS</DisplayName>
+      <DisplayName>Contoso</DisplayName>
       <TechnicalProfiles>
         <TechnicalProfile Id="Contoso-SAML2">
-          <DisplayName>Contoso AD FS</DisplayName>
+          <DisplayName>Contoso</DisplayName>
           <Description>Login with your AD FS account</Description>
           <Protocol Name="SAML2"/>
           <Metadata>
@@ -199,8 +199,10 @@ Bir tarayıcı açın ve URL 'ye gidin. Doğru URL 'YI yazdığınızdan ve XML 
 1. Örneğin, bağlı olan taraf ilkenizi seçin `B2C_1A_signup_signin` .
 1. **Uygulama** için, [daha önce kaydetmiş](tutorial-register-applications.md)olduğunuz bir Web uygulamasını seçin. **Yanıt URL 'si** gösterilmesi gerekir `https://jwt.ms` .
 1. **Şimdi Çalıştır** düğmesini seçin.
+1. Kayıt veya oturum açma sayfasından Contoso AD FS kimlik sağlayıcısı ile oturum açmak için **contoso AD FS** ' yi seçin.
 
 Oturum açma işlemi başarılı olursa, tarayıcınız öğesine yönlendirilir `https://jwt.ms` ve bu, Azure AD B2C tarafından döndürülen belirtecin içeriğini görüntüler.
+
 ## <a name="troubleshooting-ad-fs-service"></a>AD FS hizmeti sorunlarını giderme  
 
 AD FS, Windows uygulama günlüğünü kullanacak şekilde yapılandırılmıştır. Azure AD B2C özel ilkeleri kullanarak SAML kimlik sağlayıcısı olarak AD FS ayarlama konusunda zorluk yaşıyorsanız, AD FS olay günlüğünü denetlemek isteyebilirsiniz:

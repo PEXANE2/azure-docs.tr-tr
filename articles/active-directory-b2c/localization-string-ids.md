@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 11/09/2020
+ms.date: 03/08/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 81a1263d0eacbffa77e2e35e4594e23235394183
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: e867fee753fb9db530db2b2015c3aea9280bc16f
+ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97108680"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102448653"
 ---
 # <a name="localization-string-ids"></a>Yerelleştirme dizesi kimlikleri
 
@@ -152,7 +152,7 @@ Aşağıdakiler, `api.localaccountsignup` ve gibi, ile başlayan bir içerik TAN
 | **cancel_message** | Kullanıcı kendi kendine onaylanan bilgileri girmeyi iptal etti |
 | **preloader_alt** | Lütfen bekleyin |
 | **ver_but_send** | Doğrulama kodu gönder |
-| **alert_yes** | Evet |
+| **alert_yes** | Yes |
 | **error_fieldIncorrect** | Bir veya daha fazla alan yanlış doldurulmuş. Lütfen girişlerinizi denetleyin ve yeniden deneyin. |
 | **yıl** | Yıl |
 | **verifying_blurb** | Bilgilerinizi işlerken lütfen bekleyin. |
@@ -357,7 +357,7 @@ Aşağıda, [sayfa düzeni sürüm](page-layout.md) 2.1.0 veya üzeri bir [doğr
 | ID | Varsayılan değer |
 | -- | ------------- |
 |intro_msg| Doğrulama gereklidir. Lütfen gönder düğmesine tıklayın.|
-|success_send_code_msg | Doğrulama kodu gelen kutunuza gönderildi. Lütfen aşağıdaki giriş kutusuna kopyalayın.|
+|success_send_code_msg | Doğrulama kodu gönderildi. Lütfen aşağıdaki giriş kutusuna kopyalayın.|
 |failure_send_code_msg | E-posta adresinizi doğrularken sorun yaşıyoruz. Lütfen geçerli bir e-posta adresi girin ve yeniden deneyin.|
 |success_verify_code_msg | E-posta adresi doğrulandı. Artık devam edebilirsiniz.|
 |failure_verify_code_msg | E-posta adresinizi doğrularken sorun yaşıyoruz. Lütfen tekrar deneyin.|

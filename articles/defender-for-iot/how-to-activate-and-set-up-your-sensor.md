@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 1/12/2021
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: 56f6c9d3ff3093c3acd28b670e37f823ad5e9f9a
-ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
+ms.openlocfilehash: 98d59ec4b37238005e89051064a60fa6a4407394
+ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/15/2021
-ms.locfileid: "100522521"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102449841"
 ---
 # <a name="activate-and-set-up-your-sensor"></a>Algılayıcınızı etkinleştirme ve ayarlama
 
@@ -142,7 +142,7 @@ Başlangıçta bu etkinlik öğrenme modunda yürütülür, bu da sensörize ağ
 
 Sensörin optimum olarak algılanması ve uyarı verecek şekilde yapılandırıldığından emin olmak için sensör sistem ayarlarını gözden geçirin.
 
-Algılayıcının sistem ayarlarını tanımlayın. Örneğin:
+Algılayıcının sistem ayarlarını tanımlayın. Örnek:
 
 - ICS (veya IoT) ve ayrılmış alt ağları tanımlayın.
 
@@ -214,9 +214,9 @@ Konsol araçlarına taraftaki menüden erişin.
 |----|---|---|
 | Destek | :::image type="icon" source="media/concept-sensor-console-overview/support-icon-azure.png" border="false"::: | Yardım için [Microsoft desteği](https://support.microsoft.com/) başvurun. |
 
-## <a name="next-steps"></a>Sonraki adımlar
+## <a name="see-also"></a>Ayrıca bkz.
 
-[Bir algılayıcı ekleme](getting-started.md#4-onboard-a-sensor)
+[Bir algılayıcı ekleme](getting-started.md#onboard-a-sensor)
 
 [Algılayıcı etkinleştirme dosyalarını Yönet](how-to-manage-individual-sensors.md#manage-sensor-activation-files)
 

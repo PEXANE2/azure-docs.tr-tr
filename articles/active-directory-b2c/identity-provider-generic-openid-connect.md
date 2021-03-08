@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 08/08/2019
+ms.date: 03/08/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 8b71a7b8ab29e8083a5f119a41ef6de312518301
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9434bd4042798dc05a33401e1884e11a73774936
+ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85388281"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102448345"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-openid-connect-using-azure-active-directory-b2c"></a>Azure Active Directory B2C kullanarak OpenID Connect ile kaydolma ve oturum açma ayarlama
 
@@ -28,6 +28,7 @@ ms.locfileid: "85388281"
 1. Üst menüdeki **Dizin + abonelik** filtresi ' ne tıklayarak ve kiracınızı içeren dizini seçerek Azure AD B2C kiracınızı içeren dizini kullandığınızdan emin olun.
 1. Azure portalın sol üst köşesinde **Tüm hizmetler**’i seçin ve **Azure AD B2C**’yi arayıp seçin.
 1. **Kimlik sağlayıcıları**' nı seçin ve ardından **Yeni OpenID Connect sağlayıcısı**' nı seçin.
+1. Bir **ad** girin. Örneğin, *contoso* girin.
 
 ## <a name="configure-the-identity-provider"></a>Kimlik sağlayıcısını yapılandırma
 
@@ -35,7 +36,7 @@ Her OpenID Connect kimlik sağlayıcısı, oturum açma işlemini gerçekleştir
 
 ## <a name="client-id-and-secret"></a>İstemci KIMLIĞI ve gizli anahtar
 
-Kullanıcıların oturum açmalarına izin vermek için, kimlik sağlayıcısı geliştiricilerin hizmetine bir uygulama kaydetmesini gerektirir. Bu uygulamanın, **ISTEMCI kimliği** ve **istemci PAROLASı**olarak adlandırılan kimliği vardır. Bu değerleri kimlik sağlayıcısından kopyalayın ve bunlara karşılık gelen alanlara girin.
+Kullanıcıların oturum açmalarına izin vermek için, kimlik sağlayıcısı geliştiricilerin hizmetine bir uygulama kaydetmesini gerektirir. Bu uygulamanın, **ISTEMCI kimliği** ve **istemci PAROLASı** olarak adlandırılan kimliği vardır. Bu değerleri kimlik sağlayıcısından kopyalayın ve bunlara karşılık gelen alanlara girin.
 
 > [!NOTE]
 > İstemci parolası isteğe bağlıdır. Ancak, belirteç kodunu değiştirmek için gizli dizi kullanan [yetkilendirme kodu akışını](https://openid.net/specs/openid-connect-core-1_0.html#CodeFlowAuth)kullanmak istiyorsanız bir istemci gizli anahtarı girmeniz gerekir.
@@ -71,3 +72,16 @@ Etki alanı ipucu, kullanıcının kullanılabilir kimlik sağlayıcılarının 
 * **Verilen ad**: kullanıcının *ilk adını* sağlayan talebi girin.
 * **Soyadı**: kullanıcının *soyadını* sağlayan talebi girin.
 * **E-posta**: kullanıcının *e-posta adresini* sağlayan talebi girin.
+
+## <a name="add-the-identity-provider-to-a-user-flow"></a>Kimlik sağlayıcısını bir Kullanıcı akışına ekleme 
+
+1. Azure AD B2C kiracınızda **Kullanıcı akışları**' nı seçin.
+1. Kimlik sağlayıcısını eklemek istediğiniz kullanıcı akışına tıklayın. 
+1. **Sosyal kimlik sağlayıcıları** altında, eklediğiniz kimlik sağlayıcısını seçin. Örneğin, *contoso*.
+1. **Kaydet**’i seçin.
+1. İlkenizi test etmek için **Kullanıcı akışını Çalıştır**' ı seçin.
+1. **Uygulama** için, daha önce kaydettiğiniz *testapp1* adlı Web uygulamasını seçin. **Yanıt URL 'si** gösterilmesi gerekir `https://jwt.ms` .
+1. **Kullanıcı akışını Çalıştır** düğmesini seçin.
+1. Kaydolma veya oturum açma sayfasından, oturum açmak istediğiniz kimlik sağlayıcısını seçin. Örneğin, *contoso*.
+
+Oturum açma işlemi başarılı olursa, tarayıcınız öğesine yönlendirilir `https://jwt.ms` ve bu, Azure AD B2C tarafından döndürülen belirtecin içeriğini görüntüler.

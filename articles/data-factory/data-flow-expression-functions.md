@@ -7,12 +7,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 03/04/2021
-ms.openlocfilehash: ec1ea7d727278076944b8cc11f47a1af587e6591
-ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
+ms.openlocfilehash: dee896c8e4946cb4f6406d2f9f50547d2723da05
+ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102440165"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102448991"
 ---
 # <a name="data-transformation-expressions-in-mapping-data-flow"></a>Eşleme veri akışındaki veri dönüştürme ifadeleri
 
@@ -1198,73 +1198,73 @@ ___
 
 Dönüştürme işlevleri veri türleri için veri dönüştürmek ve test etmek için kullanılır
 
-<code>isBoolean</code>
+### <code>isBoolean</code>
 <code><b>isBoolean(<value1> : string) => boolean</b></code><br/><br/>
 Dize değerinin, kurallarına göre bir Boole değeri olup olmadığını denetler. ``toBoolean()``
 * ``isBoolean('true') -> true``
 * ``isBoolean('no') -> true``
 * ``isBoolean('microsoft') -> false``
-
-<code>isByte</code>
+___
+### <code>isByte</code>
 <code><b>isByte(<value1> : string) => boolean</b></code><br/><br/>
 Dize değerinin, kurala göre isteğe bağlı bir biçim verilen bir bayt değeri olup olmadığını denetler. ``toByte()``
 * ``isByte('123') -> true``
 * ``isByte('chocolate') -> false``
-
-<code>isDate</code>
+___
+### <code>isDate</code>
 <code><b>isDate (<value1> : string, [<format>: string]) => boolean</b></code><br/><br/>
 Giriş Tarih dizesinin, isteğe bağlı bir giriş tarihi biçimi kullanarak tarih olup olmadığını denetler. Kullanılabilir biçimler için Java 'nın SimpleDateFormat bölümüne bakın. Giriş tarihi biçimi atlanırsa varsayılan biçim olur ``yyyy-[M]M-[d]d`` . Kabul edilen biçimler şunlardır ``[ yyyy, yyyy-[M]M, yyyy-[M]M-[d]d, yyyy-[M]M-[d]dT* ]``
 * ``isDate('2012-8-18') -> true``
 * ``isDate('12/18--234234' -> 'MM/dd/yyyy') -> false``
-
-<code>isShort</code>
+___
+### <code>isShort</code>
 <code><b>isShort (<value1> : string, [<format>: string]) => boolean</b></code><br/><br/>
 Dize değeri denetimleri, şu kurallara göre isteğe bağlı bir biçim verilen kısa bir değerdir ``toShort()``
 * ``isShort('123') -> true``
 * ``isShort('$123' -> '$###') -> true``
 * ``isShort('microsoft') -> false``
-
-<code>isInteger</code>
+___
+### <code>isInteger</code>
 <code><b>isInteger (<value1> : string, [<format>: string]) => boolean</b></code><br/><br/>
 Dize değeri denetimleri, şu kurallara göre isteğe bağlı biçim verilen bir tamsayı değeridir. ``toInteger()``
 * ``isInteger('123') -> true``
 * ``isInteger('$123' -> '$###') -> true``
 * ``isInteger('microsoft') -> false``
-
-<code>isLong</code>
+___
+### <code>isLong</code>
 <code><b>isLong (<value1> : string, [<format>: string]) => boolean</b></code><br/><br/>
 Dize değerinin denetimleri, şu kurallara göre isteğe bağlı bir biçim verilen bir Long değeridir ``toLong()``
 * ``isLong('123') -> true``
 * ``isLong('$123' -> '$###') -> true``
 * ``isLong('gunchus') -> false``
-
-<code>isFloat</code>
+___
+### <code>isFloat</code>
 <code><b>isFloat (<value1> : string, [<format>: string]) => boolean</b></code><br/><br/>
 Dize değeri denetimleri, şu kurallara göre isteğe bağlı biçim verilen bir float değeridir ``toFloat()``
 * ``isFloat('123') -> true``
 * ``isFloat('$123.45' -> '$###.00') -> true``
 * ``isFloat('icecream') -> false``
-
-<code>isDouble</code>
+___
+### <code>isDouble</code>
 <code><b>isDouble (<value1> : string, [<format>: string]) => boolean</b></code><br/><br/>
 Dize değeri denetimleri, şu kurallara göre isteğe bağlı biçim verilen bir Double değeridir ``toDouble()``
 * ``isDouble('123') -> true``
 * ``isDouble('$123.45' -> '$###.00') -> true``
 * ``isDouble('icecream') -> false``
-
-<code>isDecimal</code>
+___
+### <code>isDecimal</code>
 <code><b>isDecimal (<value1> : string) => boolean</b></code><br/><br/>
 Dize değeri denetimleri, şu kurallara göre isteğe bağlı biçim verilen bir ondalık değerdir. ``toDecimal()``
 * ``isDecimal('123.45') -> true``
 * ``isDecimal('12/12/2000') -> false``
-
-<code>isTimestamp</code>
+___
+### <code>isTimestamp</code>
 <code><b>isTimestamp (<value1> : string, [<format>: string]) => boolean</b></code><br/><br/>
 Giriş Tarih dizesinin, isteğe bağlı bir giriş zaman damgası biçimi kullanarak bir zaman damgası olup olmadığını denetler. Kullanılabilir biçimler için Java 'nın SimpleDateFormat bölümüne bakın. Zaman damgası atlanırsa varsayılan model ``yyyy-[M]M-[d]d hh:mm:ss[.f...]`` kullanılır. İsteğe bağlı bir saat dilimini ' GMT ', ' PST ', ' UTC ', ' Amerika/Cayman ' biçiminde geçirebilirsiniz. Zaman damgası, 999 değeri ile en fazla milisaniyeye kadar doğruluğu destekler ve kullanılabilir biçimler için Java 'nın SimpleDateFormat öğesine bakın.
 * ``isTimestamp('2016-12-31 00:12:00') -> true``
 * ``isTimestamp('2016-12-31T00:12:00' -> 'yyyy-MM-dd\\'T\\'HH:mm:ss' -> 'PST') -> true``
 * ``isTimestamp('2012-8222.18') -> false``
-
+___
 ### <code>toBase64</code>
 <code><b>toBase64(<i>&lt;value1&gt;</i> : string) => string</b></code><br/><br/>
 Verilen dizeyi Base64 olarak kodlar.  
@@ -1420,6 +1420,15 @@ Akışta göreli konumuna göre (1 tabanlı) bir sütun değeri seçer. Konum s�
 * ``toBoolean(byName(4))``  
 * ``toString(byName($colName))``  
 * ``toString(byPosition(1234))``  
+___
+### <code>hex</code>
+<code><b>hex(<value1>: binary) => string</b></code><br/><br/>
+İkili değerin onaltılı dize gösterimini döndürür * ``hex(toBinary([toByte(0x1f), toByte(0xad), toByte(0xbe)])) -> '1fadbe'``
+___
+### <code>unhex</code>
+<code><b>unhex(<value1>: string) => binary</b></code><br/><br/>
+Dize gösteriminden bir ikili değeri geri al. Bu, dizeden ikili gösterimine dönüştürmek için SHA2, MD5 ile birlikte kullanılabilir *   ``unhex('1fadbe') -> toBinary([toByte(0x1f), toByte(0xad), toByte(0xbe)])``
+*   ``unhex(md5(5, 'gunchus', 8.2, 'bojjus', true, toDate('2010-4-4'))) -> toBinary([toByte(0x4c),toByte(0xe8),toByte(0xa8),toByte(0x80),toByte(0xbd),toByte(0x62),toByte(0x1a),toByte(0x1f),toByte(0xfa),toByte(0xd0),toByte(0xbc),toByte(0xa9),toByte(0x05),toByte(0xe1),toByte(0xbc),toByte(0x5a)])``
 
 ## <a name="window-functions"></a>Pencere işlevleri
 Aşağıdaki işlevler yalnızca pencere dönüşümlerindeki kullanılabilir.

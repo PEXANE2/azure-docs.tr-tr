@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/24/2021
 ms.author: shhazam
-ms.openlocfilehash: c72fa87201fb0d7fdd526f0e6f4eeb2c35192fc2
-ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
+ms.openlocfilehash: 85a5edc1485cb5a1eeb4428b201380ad9ca89422
+ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/15/2021
-ms.locfileid: "100521654"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102449178"
 ---
 # <a name="security-agent-authentication-methods"></a>Güvenlik Aracısı kimlik doğrulama yöntemleri
 
@@ -26,9 +26,8 @@ Bu makalede, IoT Hub kimlik doğrulaması yapmak için AzureIoTSecurity aracıs�
 
 IoT Hub IoT için her cihaz eklendi için Defender, bir güvenlik modülü gereklidir. Cihazın kimliğini doğrulamak için, IoT için Defender iki yöntemden birini kullanabilir. Mevcut IoT çözümünüz için en iyi şekilde çalışacak yöntemi seçin.
 
-> [!div class="checklist"]
-> * SecurityModule seçeneği
-> * Cihaz seçeneği
+- SecurityModule seçeneği
+- Cihaz seçeneği
 
 ## <a name="authentication-methods"></a>Kimlik doğrulama yöntemleri
 
@@ -101,7 +100,8 @@ Aşağıdaki parametrelerle _LocalConfiguration.js'_ i düzenleyin:
     "HostName" : ""
 }
 ```
-## <a name="next-steps"></a>Sonraki adımlar
+
+## <a name="see-also"></a>Ayrıca bkz.
 
 - [Güvenlik aracılarına genel bakış](security-agent-architecture.md)
 - [Güvenlik aracısını dağıt](how-to-deploy-agent.md)

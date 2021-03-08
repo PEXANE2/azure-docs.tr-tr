@@ -1,33 +1,33 @@
 ---
 title: Dynamics 'te veri kopyalama (Common Data Service)
-description: Veri Fabrikası ardışık düzeninde bir kopyalama etkinliği kullanarak Microsoft Dynamics CRM veya Microsoft Dynamics 365 (Common Data Service) ' den desteklenen havuz veri depolarına veya desteklenen kaynak veri depolarından veya Dynamics 365 CRM 'ye veri kopyalamayı öğrenin.
+description: Veri Fabrikası ardışık düzeninde bir kopyalama etkinliği kullanarak Microsoft Dynamics CRM veya Microsoft Dynamics 365 (Common Data Service/Microsoft veri deposu) verilerini desteklenen havuz veri depolarına veya desteklenen kaynak veri depolarından Dynamics CRM 'ye veya Dynamics 365 ' e nasıl kopyalayacağınızı öğrenin.
 ms.service: data-factory
 ms.topic: conceptual
 ms.author: jingwang
 author: linda33wj
 ms.custom: seo-lt-2019
-ms.date: 02/02/2021
-ms.openlocfilehash: d238a232d719c75244e6f9b825272957d2a4a4bc
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.date: 03/08/2021
+ms.openlocfilehash: b1e7511f7666455592b6d5f463a316c3354ec76b
+ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100381010"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102447461"
 ---
-# <a name="copy-data-from-and-to-dynamics-365-common-data-service-or-dynamics-crm-by-using-azure-data-factory"></a>Ve Azure Data Factory kullanarak Dynamics 365 (Common Data Service) veya Dynamics CRM 'den veri kopyalama
+# <a name="copy-data-from-and-to-dynamics-365-common-data-servicemicrosoft-dataverse-or-dynamics-crm-by-using-azure-data-factory"></a>Ve Azure Data Factory kullanarak Dynamics 365 ' den (Common Data Service/Microsoft Dataverse) veya Dynamics CRM 'den veri kopyalama
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Bu makalede, Microsoft Dynamics 365 ve Microsoft Dynamics CRM 'den verileri kopyalamak için Azure Data Factory kopyalama etkinliğinin nasıl kullanılacağı özetlenmektedir. Kopyalama etkinliğine genel bir bakış sunan [kopyalama etkinliğine genel bakış](copy-activity-overview.md) makalesinde oluşturulur.
 
-## <a name="supported-capabilities"></a>Desteklenen yetenekler
+## <a name="supported-capabilities"></a>Desteklenen özellikler
 
 Bu bağlayıcı aşağıdaki etkinlikler için desteklenir:
 
 - [Etkinliği](copy-activity-overview.md) [Desteklenen kaynak ve havuz matrisi](copy-activity-overview.md) ile Kopyala
 - [Arama etkinliği](control-flow-lookup-activity.md)
 
-Dynamics 365 (Common Data Service) veya Dynamics CRM 'den, desteklenen herhangi bir havuz veri deposuna veri kopyalayabilirsiniz. Ayrıca, desteklenen herhangi bir kaynak veri deposundan verileri Dynamics 365 (Common Data Service) veya Dynamics CRM 'ye kopyalayabilirsiniz. Kopyalama etkinliğinin kaynak ve havuz olarak desteklediği veri depolarının listesi için [desteklenen veri depoları](copy-activity-overview.md#supported-data-stores-and-formats) tablosuna bakın.
+Dynamics 365 (Common Data Service/Microsoft veri deposu) veya Dynamics CRM 'den, desteklenen herhangi bir havuz veri deposuna veri kopyalayabilirsiniz. Ayrıca, desteklenen herhangi bir kaynak veri deposundan verileri Dynamics 365 (Common Data Service) veya Dynamics CRM 'ye kopyalayabilirsiniz. Kopyalama etkinliğinin kaynak ve havuz olarak desteklediği veri depolarının listesi için [desteklenen veri depoları](copy-activity-overview.md#supported-data-stores-and-formats) tablosuna bakın.
 
 Bu Dynamics Connector hem çevrimiçi hem de şirket içi için 7 ile 9 arasındaki Dynamics sürümlerini destekler. Daha ayrıntılı belirtmek gerekirse:
 
@@ -84,7 +84,7 @@ Dynamics bağlantılı hizmeti için aşağıdaki özellikler desteklenir.
 | servicePrincipalCredential | Hizmet sorumlusu kimlik bilgileri. <br/><br/>Kimlik bilgisi türü olarak "ServicePrincipalKey" kullandığınızda, `servicePrincipalCredential` bağlantılı hizmet dağıtımı üzerinde Azure Data Factory şifreler bir dize olabilir. Veya Azure Key Vault bir gizli dizi başvurusu olabilir. <br/><br/>Kimlik bilgisi olarak "ServicePrincipalCert" kullandığınızda, `servicePrincipalCredential` Azure Key Vault bir sertifikaya başvuru olmalıdır. | Kimlik doğrulaması "AADServicePrincipal" olduğunda Evet |
 | username | Dynamics 'e bağlanmak için Kullanıcı adı. | Kimlik doğrulaması "Office365" olduğunda Evet |
 | password | Kullanıcı adı olarak belirttiğiniz kullanıcı hesabının parolası. Data Factory güvenli bir şekilde depolamak için bu alanı "SecureString" ile işaretleyin veya [Azure Key Vault depolanan bir gizli dizi başvurusu](store-credentials-in-key-vault.md)yapın. | Kimlik doğrulaması "Office365" olduğunda Evet |
-| connectVia | Veri deposuna bağlanmak için kullanılacak [tümleştirme çalışma zamanı](concepts-integration-runtime.md) . Hiçbir değer belirtilmemişse, özelliği varsayılan Azure tümleştirme çalışma zamanını kullanır. | No |
+| connectVia | Veri deposuna bağlanmak için kullanılacak [tümleştirme çalışma zamanı](concepts-integration-runtime.md) . Hiçbir değer belirtilmemişse, özelliği varsayılan Azure tümleştirme çalışma zamanını kullanır. | Hayır |
 
 >[!NOTE]
 >Dynamics Connector, Dynamics CRM veya Dynamics 365 çevrimiçi örneğinizi tanımlamak için daha önce isteğe bağlı **Organizasyonadi** özelliğini kullanıyordu. Bu özellik hala çalışmaya devam ederken, örnek bulma için daha iyi performans elde etmek yerine yeni **ServiceUri** özelliğini belirtmenizi öneririz.
@@ -180,7 +180,7 @@ Dynamics Online ile karşılaştırılan ek özellikler **konak adı** ve **bağ
 | authenticationType | Dynamics sunucusuna bağlanmak için kimlik doğrulaması türü. IFD ile Dynamics şirket içi için "IFD" belirtin. | Evet. |
 | username | Dynamics 'e bağlanmak için Kullanıcı adı. | Evet. |
 | password | Kullanıcı adı için belirttiğiniz kullanıcı hesabının parolası. Bu alanı, Data Factory güvenli bir şekilde depolamak için "SecureString" ile işaretleyebilirsiniz. Ya da bir parolayı Key Vault saklayabilir ve veri kopyalama yapıldığında kopyalama etkinliğinin buradan çekmesini sağlayabilirsiniz. [Key Vault Içindeki mağaza kimlik bilgilerinden](store-credentials-in-key-vault.md)daha fazla bilgi edinin. | Evet. |
-| connectVia | Veri deposuna bağlanmak için kullanılacak [tümleştirme çalışma zamanı](concepts-integration-runtime.md) . Hiçbir değer belirtilmemişse, özelliği varsayılan Azure tümleştirme çalışma zamanını kullanır. | No |
+| connectVia | Veri deposuna bağlanmak için kullanılacak [tümleştirme çalışma zamanı](concepts-integration-runtime.md) . Hiçbir değer belirtilmemişse, özelliği varsayılan Azure tümleştirme çalışma zamanını kullanır. | Hayır |
 
 #### <a name="example-dynamics-on-premises-with-ifd-using-ifd-authentication"></a>Örnek: ıFD kimlik doğrulaması kullanarak ıFD ile şirket içi Dynamics
 
@@ -363,6 +363,32 @@ Dynamics 365 Online için, [her kuruluş için iki eş zamanlı toplu çağrı](
         }
     }
 ]
+```
+
+## <a name="retrieving-data-from-views"></a>Görünümlerden veri alma
+
+Dynamics görünümlerinden verileri almak için, görünümün kayıtlı sorgusunu almanız ve verileri almak için sorguyu kullanmanız gerekir.
+
+Farklı görünüm türlerini depolayan iki varlık vardır: "kaydedilen sorgu" sistem görünümünü depolar ve "Kullanıcı sorgusu" Kullanıcı görünümünü depolar. Görünümlerin bilgilerini almak için aşağıdaki FetchXML sorgusuna başvurun ve "TARGETENTITY" ifadesini veya ile değiştirin `savedquery` `userquery` . Her varlık türünün, ihtiyaınıza göre sorguya ekleyebileceğiniz daha fazla kullanılabilir özniteliği vardır. [Savedquery varlığı](https://docs.microsoft.com/dynamics365/customer-engagement/web-api/savedquery) ve [userquery varlığı](https://docs.microsoft.com/dynamics365/customer-engagement/web-api/userquery)hakkında daha fazla bilgi edinin.
+
+```xml
+<fetch top="5000" >
+  <entity name="<TARGETENTITY>">
+    <attribute name="name" />
+    <attribute name="fetchxml" />
+    <attribute name="returnedtypecode" />
+    <attribute name="querytype" />
+  </entity>
+</fetch>
+```
+
+Görünümleri filtrelemek için de filtre ekleyebilirsiniz. Örneğin, hesap varlığındaki "etkin Firmalarım" adlı bir görünüm almak için aşağıdaki filtreyi ekleyin.
+
+```xml
+<filter type="and" >
+    <condition attribute="returnedtypecode" operator="eq" value="1" />
+    <condition attribute="name" operator="eq" value="My Active Accounts" />
+</filter>
 ```
 
 ## <a name="data-type-mapping-for-dynamics"></a>Dynamics için veri türü eşlemesi

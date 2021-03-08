@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/09/2020
 ms.author: mlottner
-ms.openlocfilehash: 4d99cdbb2f50d04eff790cdfe675d0f8031c48a9
-ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
+ms.openlocfilehash: a4223dbc913b7b46cf73c0ed99f607fff67b7e67
+ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100517187"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102448073"
 ---
 # <a name="deploy-a-defender-for-iot-c-based-security-agent-for-windows"></a>Windows için IoT C# tabanlı güvenlik Aracısı için bir Defender dağıtma
 
@@ -27,11 +27,10 @@ Bu kılavuzda, Windows 'da IoT C# tabanlı güvenlik aracısının Defender 'ın
 
 Bu kılavuzda şunların nasıl yapıldığını öğrenirsiniz:
 
-> [!div class="checklist"]
-> * Yükleme
-> * Dağıtımı doğrulama
-> * Aracıyı kaldırın
-> * Sorun giderme
+- Yükleme
+- Dağıtımı doğrulama
+- Aracıyı kaldırın
+- Sorun giderme
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -62,7 +61,7 @@ Güvenlik aracısını yüklemek için aşağıdaki iş akışını kullanın:
     .\InstallSecurityAgent.ps1 -Install -aui <authentication identity> -aum <authentication method> -f <file path> -hn <host name> -di <device id> -cl <certificate location kind>
     ```
 
-    Örneğin:
+    Örnek:
 
     ```
     .\InstallSecurityAgent.ps1 -Install -aui Device -aum SymmetricKey -f c:\Temp\Key.txt -hn MyIotHub.azure-devices.net -di Mydevice1 -cl store

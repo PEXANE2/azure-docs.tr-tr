@@ -1,6 +1,6 @@
 ---
-title: Güvenlik aracılarına genel bakış
-description: IoT hizmetinde Azure Defender 'da kullanılan aracılar için güvenlik Aracısı mimarisini anlayın.
+title: 'Hızlı başlangıç: güvenlik aracılarına genel bakış'
+description: Bu hızlı başlangıçta, IoT hizmetinde Azure Defender 'da kullanılan aracıların güvenlik Aracısı mimarisini nasıl anlayacağınızı öğreneceksiniz.
 services: defender-for-iot
 ms.service: defender-for-iot
 documentationcenter: na
@@ -8,19 +8,19 @@ author: shhazam-ms
 manager: rkarlin
 editor: ''
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/24/2021
 ms.author: shhazam
-ms.openlocfilehash: ff837fe88f878c522366b2b6bc19a1ef3954b667
-ms.sourcegitcommit: 2501fe97400e16f4008449abd1dd6e000973a174
+ms.openlocfilehash: aceeaec63eb637002352f5c503f57890033b0381
+ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99820662"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102449246"
 ---
-# <a name="security-agent-reference-architecture"></a>Güvenlik Aracısı başvuru mimarisi
+# <a name="quickstart-security-agent-reference-architecture"></a>Hızlı başlangıç: güvenlik Aracısı başvuru mimarisi
 
 IoT için Azure Defender, IoT Hub aracılığıyla güvenlik verilerini günlüğe kaydetmek, işlemek, toplamak ve göndermek için kullanılan güvenlik aracıları için başvuru mimarisi sağlar.
 
@@ -41,6 +41,10 @@ IoT güvenlik aracıları için Defender, açık kaynaklı projeler olarak geli�
 - [IoT C tabanlı aracı için Defender](https://github.com/Azure/Azure-IoT-Security-Agent-C)
 - [IoT için Defender C# tabanlı aracı](https://github.com/Azure/Azure-IoT-Security-Agent-CS)
 
+## <a name="prerequisites"></a>Önkoşullar
+
+Yok
+
 ## <a name="agent-supported-platforms"></a>Aracılı desteklenen platformlar
 
 IoT için Defender, 32 bit ve 64 bit Windows için farklı yükleyici aracıları ve 32 bit ve 64 bit Linux için de aynı şekilde sunulmaktadır. Aşağıdaki tabloya göre cihazlarınızın her biri için doğru aracı yükleyicisine sahip olduğunuzdan emin olun:
@@ -57,8 +61,5 @@ Bu makalede, IoT güvenlik modülü mimarisi ve kullanılabilir yükleyiciler i�
 
 IoT dağıtımı için Defender 'ı kullanmaya devam etmek için aşağıdaki makaleleri kullanın:
 
-- [Güvenlik Aracısı kimlik doğrulama yöntemlerini](concept-security-agent-authentication-methods.md) anlama
-- [Güvenlik aracısını](how-to-deploy-agent.md) seçme ve dağıtma
-- IoT [Sistem önkoşulları](quickstart-system-prerequisites.md) Için Defender 'ı gözden geçirin
-- [IoT Hub Için Defender 'ı nasıl etkinleştirebileceğinizi](quickstart-onboard-iot-hub.md) öğrenin
-- [IoT Için Defender](resources-frequently-asked-questions.md) aracılığıyla hizmet hakkında daha fazla bilgi edinin
+> [!div class="nextstepaction"]
+> [Güvenlik Aracısı kimlik doğrulama yöntemleri](concept-security-agent-authentication-methods.md)
