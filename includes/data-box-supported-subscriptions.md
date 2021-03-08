@@ -1,22 +1,22 @@
 ---
-author: priestlg
+author: alkohli
 ms.service: databox
 ms.topic: include
-ms.date: 04/14/2020
-ms.author: v-grpr
-ms.openlocfilehash: bda52729707b3edfdd8e0a2b3159518af2e39e9a
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
-ms.translationtype: HT
+ms.date: 03/05/2021
+ms.author: alkohli
+ms.openlocfilehash: 40e8f2d35c78f4f3809fa7d102f82a48b5eab0c7
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96003481"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102445574"
 ---
 Başlamadan önce aşağıdakilerden emin olun:
 
 * Depolama hesabı adı ve erişim anahtarı gibi erişim kimlik bilgilerine sahip bir Microsoft Azure depolama hesabınız var.
 
 * Data Box hizmeti için kullandığınız abonelik aşağıdaki türlerden birindedir:
-  * Microsoft Kurumsal Anlaşma (EA). [EA abonelikleri](https://azure.microsoft.com/pricing/enterprise-agreement/) hakkındaki yazıları okuyun.
+  * Yeni abonelikler için Microsoft Müşteri Sözleşmesi (MCA) veya mevcut abonelikler için Microsoft Kurumsal Anlaşma (EA). Yeni abonelikler ve [EA abonelikleri](https://azure.microsoft.com/pricing/enterprise-agreement/) [için MCA](https://www.microsoft.com/licensing/how-to-buy/microsoft-customer-agreement) hakkında daha fazla bilgi edinin.
   * Bulut Çözümü Sağlayıcısı (CSP). [Azure CSP programı](/azure/cloud-solution-provider/overview/azure-csp-overview) hakkında daha fazla bilgi edinin.
   * Microsoft Azure Sponsorluğu. [Azure sponsorluğu programı](https://azure.microsoft.com/offers/ms-azr-0036p/) hakkında daha fazla bilgi edinin.
   * Microsoft İş Ortağı Ağı (MPN). [Microsoft İş Ortağı Ağı](https://partner.microsoft.com/commercial#) hakkında daha fazla bilgi edinin.

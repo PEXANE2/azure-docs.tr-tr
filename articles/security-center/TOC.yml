@@ -112,7 +112,7 @@
           href: exempt-resource.md
         - name: Özel güvenlik girişimleri ve ilkeleri oluşturma
           href: custom-security-policies.md
-    - name: 'Makinelerinizi, sunucular için Defender ile koruyun'
+    - name: Makinelerinizi koruyun
       displayName: 'hybrid, arc, Azure Defender for machines'
       items:
         - name: Sunucular için Azure Defender 'a genel bakış

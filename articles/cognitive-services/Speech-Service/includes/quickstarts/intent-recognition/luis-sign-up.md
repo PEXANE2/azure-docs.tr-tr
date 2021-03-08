@@ -5,12 +5,12 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 01/27/2020
 ms.author: trbye
-ms.openlocfilehash: a41c9dc888e85baf021712e3302da7ae6106db47
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 42dc7eb1a74bf2e376f834ee3198ad6a492226e9
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "81422324"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102444482"
 ---
 Amaç tanıma hızlı başlangıcı ' nı tamamlayabilmeniz için, LUSıS önizleme portalını kullanarak bir LUO hesabı ve proje oluşturmanız gerekir. Bu hızlı başlangıçta yalnızca bir LUSıS aboneliği gerekir. Konuşma hizmeti aboneliği gerekli *değildir* .
 
@@ -18,7 +18,7 @@ Yapmanız gereken ilk şey, LUSıS önizleme portalını kullanarak bir LUO hesa
 
 LUSıS uygulamanızı oluşturmak için bu yönergeleri izleyin:
 
-* <a href="https://docs.microsoft.com/azure/cognitive-services/luis/luis-get-started-create-app" target="_blank">Hızlı başlangıç: önceden oluşturulmuş etki alanı uygulaması oluşturma <span class="docon docon-navigate-external x-hidden-focus"></span></a>
+* <a href="https://docs.microsoft.com/azure/cognitive-services/luis/luis-get-started-create-app" target="_blank">Hızlı başlangıç: önceden oluşturulmuş etki alanı uygulaması oluşturma </a>
 
 İşiniz bittiğinde dört şeyin olması gerekir:
 
@@ -31,7 +31,7 @@ Burada, bu bilgileri [lusıs Önizleme portalında](https://preview.luis.ai/)bul
 
 1. LUSıS önizleme portalından uygulamanızı seçin ve ardından **Yayınla** düğmesini seçin.
 
-2. **Production** `en-US` **Konuşma primi** seçeneğini **Açık** konuma Dönüştür ' ü kullanıyorsanız üretim yuvasını seçin. Ardından **Yayınla** düğmesini seçin.
+2.  `en-US` **Konuşma primi** seçeneğini **Açık** konuma Dönüştür ' ü kullanıyorsanız üretim yuvasını seçin. Ardından **Yayınla** düğmesini seçin.
 
     > [!IMPORTANT]
     > Konuşma tanıma doğruluğunu iyileştirecek kadar **konuşma Prime** kesinlikle önerilir.
@@ -39,7 +39,7 @@ Burada, bu bilgileri [lusıs Önizleme portalında](https://preview.luis.ai/)bul
     > [!div class="mx-imgBorder"]
     > ![LUSıS 'yi uç noktaya Yayımla](../../../media/luis/publish-app-popup.png)
 
-3. LUSıS önizleme portalından **Yönet**' i ve ardından **Azure kaynakları**' nı seçin. Bu sayfada, LUSıS anahtarınızı ve konumunuzu (bazen _bölge_olarak adlandırılır) bulacaksınız.
+3. LUSıS önizleme portalından **Yönet**' i ve ardından **Azure kaynakları**' nı seçin. Bu sayfada, LUSıS anahtarınızı ve konumunuzu (bazen _bölge_ olarak adlandırılır) bulacaksınız.
 
    > [!div class="mx-imgBorder"]
    > ![LUSıS anahtar ve konumu](../../../media/luis/luis-key-region.png)

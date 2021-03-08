@@ -4,18 +4,18 @@ ms.service: azure-communication-services
 ms.topic: include
 ms.date: 9/1/2020
 ms.author: mikben
-ms.openlocfilehash: 9a9f8fdda1bc853057f3eb858e85b938357397cd
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.openlocfilehash: 778255dc7259bd66a7c7059ede855464c1e39569
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94886133"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102444642"
 ---
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/dotnet/).
 - İşletim sisteminiz için en son sürüm [.NET Core istemci kitaplığı](https://dotnet.microsoft.com/download/dotnet-core) .
-- [.NET Identity istemci kitaplığının](/dotnet/api/azure.identity?view=azure-dotnet)en son sürümünü alın.
+- [.NET Identity istemci kitaplığının](/dotnet/api/azure.identity)en son sürümünü alın.
 - [.Net Management istemci kitaplığının](../../concepts/sdk-options.md)en son sürümünü alın.
 
 ## <a name="installing-the-client-library"></a>İstemci kitaplığını yükleme
@@ -83,7 +83,7 @@ Yönetilen bir kimlik kullanmak yerine, kendinizi yönettiğiniz hizmet sorumlus
 
 Hizmet sorumlunuzu oluşturduktan sonra, Azure portal hakkında aşağıdaki bilgileri toplamanız gerekir:
 
-- **İstemci KIMLIĞI**
+- **İstemci Kimliği**
 - **İstemci parolası**
 - **Kiracı Kimliği**
 

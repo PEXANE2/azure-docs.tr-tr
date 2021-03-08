@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 01/05/2021
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: 780da47e6f071d854a16ca1d1c5cd02dbdd6bef0
-ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
+ms.openlocfilehash: f6bd0c13d5cbad802613e2bdea8fd6002f4deea2
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97955662"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102444218"
 ---
 Olay Hub 'ı, olay dizilerini bir veya daha fazla bölüm halinde düzenler. Daha yeni olaylar geldikçe, bu sıranın sonuna eklenir. Bölüm bir "yürütme günlüğü" olarak düşünülebilir.
 
@@ -57,4 +57,3 @@ Bölüm sayısının izin verilen maksimum değere ayarlanması, ancak her zaman
 
 Bölümler doğrudan gönderilebilirler, ancak önerilmez. Bunun yerine, [olay yayımcıları](../articles/event-hubs/event-hubs-features.md#event-publishers) bölümünde tanıtılan daha yüksek düzey yapıları kullanabilirsiniz. 
 
-Bölümleri ve kullanılabilirlikleri ile güvenilirlikleri arasındaki dengeleme hakkında daha fazla bilgi için, bkz: [Event Hubs programlama kılavuzu](../articles/event-hubs/event-hubs-programming-guide.md#partition-key) ve [Event Hubs’ta kullanılabilirlik ve tutarlılık](../articles/event-hubs/event-hubs-availability-and-consistency.md) makalesi.
