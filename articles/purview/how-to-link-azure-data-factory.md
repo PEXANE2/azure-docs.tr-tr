@@ -6,13 +6,13 @@ ms.author: csugunan
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
-ms.date: 03/03/2021
-ms.openlocfilehash: 6a71999f0896a5d056b7d0b38be4d494c347e9f9
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.date: 03/08/2021
+ms.openlocfilehash: 8812806e535e8e34ca07fdb13e6223bfa0c91d6b
+ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102049381"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102449620"
 ---
 # <a name="how-to-connect-azure-data-factory-and-azure-purview"></a>Azure Data Factory ve Azure purview 'a bağlanma
 
@@ -122,13 +122,13 @@ Data Factory ile takip görünümü arasındaki tümleştirme, aşağıdaki böl
 | Azure Dosya Depolama | Yes | 
 | Azure SQL veritabanı \* | Yes | 
 | Azure SQL yönetilen örneği \* | Yes | 
-| Azure SYNAPSE Analizi \* | Yes | 
-| Azure Tablo depolama \* | Yes |
-| SQL Server \* | Yes | 
+| Azure SYNAPSE Analizi \* | Evet | 
+| Azure Tablo Depolama | Evet |
 | Amazon S3 | Yes | 
 | Yığını \* | Yes | 
 | SAP ECC \* | Yes |
-| SAP tablosu \* | Yes |
+| SAP Tablosu | Yes |
+| SQL Server \* | Yes | 
 | Teradata \* | Yes |
 
 *\* Azure purview Şu anda kökenini veya tarama için sorgu veya saklı yordamı desteklemiyor. Kökenini yalnızca tablo ve görünüm kaynaklarıyla sınırlandırılmıştır.*
@@ -144,6 +144,7 @@ Data Factory ile takip görünümü arasındaki tümleştirme, aşağıdaki böl
 - PolyBase veya COPY deyimlerini kullanarak verileri Azure SYNAPSE Analytics 'e kopyalayın.
 - Ikili, ayrılmış metin, Excel, JSON ve XML dosyaları için sıkıştırma ayarı.
 - Azure SQL veritabanı, Azure SQL yönetilen örneği, Azure SYNAPSE Analytics, SQL Server ve SAP tablosu için kaynak bölüm seçenekleri.
+- Dosya tabanlı mağazaların kaynak bölümü bulma seçeneği.
 - Dosya başına en fazla satır ayarı ile verileri dosya tabanlı havuza kopyalayın.
 - Kopyalama sırasında ek sütunlar ekleyin.
 

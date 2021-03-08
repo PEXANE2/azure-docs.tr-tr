@@ -5,15 +5,15 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: tutorial
-ms.date: 11/13/2019
+ms.date: 03/08/2021
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 5731b65892877e5c363220d84a0bddeb5f958cee
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.openlocfilehash: 2a756313a4659dfc531289c2c86890371f700367
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93396881"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102452297"
 ---
 # <a name="tutorial-create-an-application-gateway-that-improves-web-application-access"></a>Öğretici: Web uygulaması erişimini geliştiren bir uygulama ağ geçidi oluşturma
 
@@ -36,7 +36,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Bu öğretici için Azure PowerShell’i yerel olarak çalıştırmanız gerekir. Azure PowerShell Module sürümü 1.0.0 veya daha yeni bir sürümün yüklü olması gerekir. Sürümü bulmak için `Get-Module -ListAvailable Az` komutunu çalıştırın. Yükseltmeniz gerekirse, bkz. [Azure PowerShell modülünü yükleme](/powershell/azure/install-az-ps). PowerShell sürümünü doğruladıktan sonra, Azure ile bağlantı oluşturmak için `Connect-AzAccount` komutunu çalıştırın.
+Bu öğretici, yönetici Azure PowerShell oturumunu yerel olarak çalıştırmanızı gerektirir. Azure PowerShell Module sürümü 1.0.0 veya daha yeni bir sürümün yüklü olması gerekir. Sürümü bulmak için `Get-Module -ListAvailable Az` komutunu çalıştırın. Yükseltmeniz gerekirse, bkz. [Azure PowerShell modülünü yükleme](/powershell/azure/install-az-ps). PowerShell sürümünü doğruladıktan sonra, Azure ile bağlantı oluşturmak için `Connect-AzAccount` komutunu çalıştırın.
 
 ## <a name="sign-in-to-azure"></a>Azure'da oturum açma
 
@@ -76,16 +76,17 @@ Thumbprint                                Subject
 E1E81C23B3AD33F9B4D1717B20AB65DBB91AC630  CN=www.contoso.com
 ```
 
-pfx dosyasını oluşturmak için parmak izini kullanın:
+Pfx dosyasını oluşturmak için parmak izini kullanın. *\<password>* İstediğiniz parolayla değiştirin:
 
 ```powershell
-$pwd = ConvertTo-SecureString -String "Azure123456!" -Force -AsPlainText
+$pwd = ConvertTo-SecureString -String "<password>" -Force -AsPlainText
 
 Export-PfxCertificate `
   -cert cert:\localMachine\my\E1E81C23B3AD33F9B4D1717B20AB65DBB91AC630 `
   -FilePath c:\appgwcert.pfx `
   -Password $pwd
 ```
+
 
 ## <a name="create-a-virtual-network"></a>Sanal ağ oluşturma
 
@@ -106,7 +107,7 @@ Publicıpaddress 'in ayırma yöntemini **static** olarak belirtin. Otomatik öl
 ```azurepowershell
 #Create static public IP
 $pip = New-AzPublicIpAddress -ResourceGroupName $rg -name "AppGwVIP" `
-       -location $location -AllocationMethod Static -Sku Standard
+       -location $location -AllocationMethod Static -Sku Standard -Zone 1,2,3
 ```
 
 ## <a name="retrieve-details"></a>Ayrıntıları alma
@@ -114,21 +115,33 @@ $pip = New-AzPublicIpAddress -ResourceGroupName $rg -name "AppGwVIP" `
 Uygulama ağ geçidinin IP yapılandırma ayrıntılarını oluşturmak için yerel bir nesnede kaynak grubunun, alt ağın ve IP 'nin ayrıntılarını alın.
 
 ```azurepowershell
-$resourceGroup = Get-AzResourceGroup -Name $rg
 $publicip = Get-AzPublicIpAddress -ResourceGroupName $rg -name "AppGwVIP"
 $vnet = Get-AzvirtualNetwork -Name "AutoscaleVNet" -ResourceGroupName $rg
 $gwSubnet = Get-AzVirtualNetworkSubnetConfig -Name "AppGwSubnet" -VirtualNetwork $vnet
+```
+
+## <a name="create-web-apps"></a>Web uygulamaları oluşturma
+
+Arka uç havuzu için iki Web uygulaması yapılandırın. *\<site1-name>* Ve ' i *\<site-2-name>* etki alanındaki benzersiz adlarla değiştirin `azurewebsites.net` .
+
+```azurepowershell
+New-AzAppServicePlan -ResourceGroupName $rg -Name "ASP-01"  -Location $location -Tier Basic `
+   -NumberofWorkers 2 -WorkerSize Small
+New-AzWebApp -ResourceGroupName $rg -Name <site1-name> -Location $location -AppServicePlan ASP-01
+New-AzWebApp -ResourceGroupName $rg -Name <site2-name> -Location $location -AppServicePlan ASP-01
 ```
 
 ## <a name="configure-the-infrastructure"></a>Altyapıyı yapılandırma
 
 IP yapılandırması, ön uç IP yapılandırması, arka uç havuzu, HTTP ayarları, sertifika, bağlantı noktası, dinleyici ve kuralı aynı biçimde varolan standart uygulama ağ geçidine göre yapılandırın. Yeni SKU, standart SKU ile aynı nesne modelini izler.
 
+$Pool değişken tanımındaki iki Web uygulamanızı FQDN 'larınızı (örneğin: `mywebapp.azurewebsites.net` ) değiştirin.
+
 ```azurepowershell
 $ipconfig = New-AzApplicationGatewayIPConfiguration -Name "IPConfig" -Subnet $gwSubnet
 $fip = New-AzApplicationGatewayFrontendIPConfig -Name "FrontendIPCOnfig" -PublicIPAddress $publicip
 $pool = New-AzApplicationGatewayBackendAddressPool -Name "Pool1" `
-       -BackendIPAddresses testbackend1.westus.cloudapp.azure.com, testbackend2.westus.cloudapp.azure.com
+       -BackendIPAddresses <your first web app FQDN>, <your second web app FQDN>
 $fp01 = New-AzApplicationGatewayFrontendPort -Name "SSLPort" -Port 443
 $fp02 = New-AzApplicationGatewayFrontendPort -Name "HTTPPort" -Port 80
 
@@ -141,7 +154,7 @@ $listener02 = New-AzApplicationGatewayHttpListener -Name "HTTPListener" `
              -Protocol Http -FrontendIPConfiguration $fip -FrontendPort $fp02
 
 $setting = New-AzApplicationGatewayBackendHttpSettings -Name "BackendHttpSetting1" `
-          -Port 80 -Protocol Http -CookieBasedAffinity Disabled
+          -Port 80 -Protocol Http -CookieBasedAffinity Disabled -PickHostNameFromBackendAddress
 $rule01 = New-AzApplicationGatewayRequestRoutingRule -Name "Rule1" -RuleType basic `
          -BackendHttpSettings $setting -HttpListener $listener01 -BackendAddressPool $pool
 $rule02 = New-AzApplicationGatewayRequestRoutingRule -Name "Rule2" -RuleType basic `
@@ -150,20 +163,13 @@ $rule02 = New-AzApplicationGatewayRequestRoutingRule -Name "Rule2" -RuleType bas
 
 ## <a name="specify-autoscale"></a>Otomatik ölçeklendirmeyi belirtme
 
-Artık uygulama ağ geçidi için otomatik ölçeklendirme yapılandırmasını belirtebilirsiniz. İki otomatik ölçeklendirme yapılandırması türü desteklenir:
-
-* **Sabit kapasite modu**. Bu modda, uygulama ağ geçidi otomatik ölçeklendirme yapmaz ve sabit bir Ölçek Birimi kapasitesinde çalışır.
-
-   ```azurepowershell
-   $sku = New-AzApplicationGatewaySku -Name Standard_v2 -Tier Standard_v2 -Capacity 2
-   ```
-
-* **Otomatik ölçeklendirme modu**. Bu modda, uygulama ağ geçidi uygulamanın trafik desenine bağlı olarak otomatik ölçeklendirme yapar.
+Artık uygulama ağ geçidi için otomatik ölçeklendirme yapılandırmasını belirtebilirsiniz. 
 
    ```azurepowershell
    $autoscaleConfig = New-AzApplicationGatewayAutoscaleConfiguration -MinCapacity 2
    $sku = New-AzApplicationGatewaySku -Name Standard_v2 -Tier Standard_v2
    ```
+Bu modda, uygulama ağ geçidi uygulamanın trafik desenine bağlı olarak otomatik ölçeklendirme yapar.
 
 ## <a name="create-the-application-gateway"></a>Uygulama ağ geçidi oluşturma
 
@@ -182,7 +188,11 @@ $appgw = New-AzApplicationGateway -Name "AutoscalingAppGw" -Zone 1,2,3 `
 
 Uygulama ağ geçidinin genel IP adresini almak için Get-AzPublicIPAddress kullanın. Genel IP adresini veya DNS adını kopyalayıp tarayıcınızın adres çubuğuna yapıştırın.
 
-`Get-AzPublicIPAddress -ResourceGroupName $rg -Name AppGwVIP`
+```azurepowershell
+$pip = Get-AzPublicIPAddress -ResourceGroupName $rg -Name AppGwVIP
+$pip.IpAddress
+```
+
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 

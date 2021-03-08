@@ -5,14 +5,14 @@ author: vhorne
 ms.service: firewall
 services: firewall
 ms.topic: conceptual
-ms.date: 02/25/2021
+ms.date: 03/08/2021
 ms.author: victorh
-ms.openlocfilehash: ff5c6961e64deddc8e52dc92a7c34b5b369a44ed
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: a3f72d235d6c52ce91ae351c2606ee6cf4285159
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101715573"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102453436"
 ---
 # <a name="azure-firewall-premium-preview-features"></a>Azure Güvenlik Duvarı Premium Önizleme özellikleri
 
@@ -39,9 +39,8 @@ Azure Güvenlik Duvarı Premium önizleme aşağıdaki özellikleri içerir:
 - **URL Filtresi** -Azure GÜVENLIK duvarının FQDN filtreleme özelliğini genişleterek tüm URL 'yi düşünün. Örneğin, `www.contoso.com/a/c` yerine `www.contoso.com` .
 - **Web kategorileri** -Yöneticiler, kumar web siteleri, sosyal medya web siteleri ve diğerleri gibi web sitesi kategorilerine Kullanıcı erişimine izin verebilir veya erişimi reddedebilir.
 
-## <a name="features"></a>Özellikler
 
-### <a name="tls-inspection"></a>TLS incelemesi
+## <a name="tls-inspection"></a>TLS incelemesi
 
 Azure Güvenlik Duvarı Premium, giden ve Doğu Batı TLS bağlantılarını sonlandırır. Gelen TLS incelemesi, [Azure Application Gateway](../web-application-firewall/ag/ag-overview.md) uçtan uca şifrelemeye izin vererek desteklenir. Azure Güvenlik Duvarı, gerekli değer katan güvenlik işlevlerini yapar ve özgün hedefe gönderilen trafiği yeniden şifreler.
 
@@ -50,23 +49,30 @@ Azure Güvenlik Duvarı Premium, giden ve Doğu Batı TLS bağlantılarını son
 
 Azure Güvenlik Duvarı Premium önizleme ara CA sertifika gereksinimleri hakkında daha fazla bilgi edinmek için bkz. [Azure Güvenlik Duvarı Premium önizleme sertifikaları](premium-certificates.md).
 
-### <a name="idps"></a>IDP 'YI DESTEKLEMESI
+## <a name="idps"></a>IDP 'YI DESTEKLEMESI
 
 Ağ üzerinden izinsiz giriş algılama ve önleme sistemi (ıDPS), ağınızı kötü amaçlı etkinlikler için izlemenize, bu etkinlikle ilgili bilgileri günlüğe almanıza, rapor etmeye ve isteğe bağlı olarak engellemeyi denemenize olanak tanır. 
 
 Azure Güvenlik Duvarı Premium önizleme, ağ trafiğinden bayt dizileri veya kötü amaçlı yazılım tarafından kullanılan bilinen kötü amaçlı yönerge dizileri gibi belirli desenleri arayarak saldırıları hızlı bir şekilde algılamaya izin veren imza tabanlı IDPs 'leri sağlar. IDPS imzaları tamamen yönetilir ve sürekli olarak güncelleştirilir.
 
+Azure Güvenlik Duvarı imzaları/RuleSets şunları içerir:
+- Bir parmak izi, gerçek kötü amaçlı yazılım, komut ve denetim, yararlanma setlerine ve geleneksel önleme yöntemleri tarafından kaçırılmış kötü amaçlı etkinlik.
+- 50 ' den fazla kategoride 35.000 kural üzerinde.
+    - Kategoriler arasında kötü amaçlı yazılım komutu ve denetimi, DoS saldırıları, botlar, bilgilendirici olaylar, güvenlik açıkları, güvenlik açıkları, SCADA ağ protokolleri, Exploit Kit etkinliği ve daha fazlası bulunur.
+- Her gün 20 ila 40 + yeni kural serbest bırakılır.
+- Son derece kötü amaçlı yazılım korumalı alanı ve küresel algılayıcı ağ geri bildirim döngüsü kullanılarak düşük yanlış pozitif derecelendirme.
+
 IDPS, şifrelenmemiş trafik için tüm bağlantı noktalarında ve protokollerde saldırıları algılamanıza olanak tanır. Ancak, HTTPS trafiğinin İncelenme gerektiğinde, Azure Güvenlik Duvarı trafiğin şifresini çözmek ve kötü amaçlı etkinlikleri daha iyi algılamak için TLS İnceleme özelliğini kullanabilir.  
 
-IDPS atlama listesi atlama listesinde belirtilen IP adreslerinden, aralıklardan ve alt ağlardan herhangi birine gelen trafiği filtrelemenize izin verir.  
+IDPS atlama listesi atlama listesinde belirtilen IP adreslerinden, aralıklardan ve alt ağlardan herhangi birine gelen trafiği filtrelemenize izin verir. 
 
-### <a name="url-filtering"></a>URL filtreleme
+## <a name="url-filtering"></a>URL filtreleme
 
 URL filtrelemesi, tüm URL 'YI kabul etmek için Azure Güvenlik duvarının FQDN filtreleme özelliğini genişletir. Örneğin, `www.contoso.com/a/c` yerine `www.contoso.com` .  
 
 URL filtrelemesi, hem HTTP hem de HTTPS trafiği üzerinde uygulanabilir. HTTPS trafiği incelemesinde Azure Güvenlik Duvarı Premium önizlemesi, trafiğin şifresini çözmek için TLS İnceleme özelliğini kullanabilir ve erişim izni verilip verilmediğini doğrulamak için hedef URL 'yi ayıklayabilir. TLS incelemesi, uygulama kuralı düzeyinde katılım gerektirir. Etkinleştirildikten sonra, HTTPS ile filtrelemek için URL 'Leri kullanabilirsiniz. 
 
-### <a name="web-categories"></a>Web kategorileri
+## <a name="web-categories"></a>Web kategorileri
 
 Web kategorileri, yöneticilerin kumar web siteleri, sosyal medya web siteleri ve diğerleri gibi web sitesi kategorilerine Kullanıcı erişimine izin verebilir veya erişimi reddetmesini sağlar. Web kategorileri de Azure Güvenlik Duvarı standardına dahil edilecek, ancak Azure Güvenlik Duvarı Premium önizlemesinde daha ince ayarlanmış olacak. Bir FQDN tabanlı kategori ile eşleşen standart SKU 'daki Web kategorileri yeteneğinin aksine, Premium SKU, hem HTTP hem de HTTPS trafiği için tüm URL 'ye göre kategori ile eşleşir. 
 
@@ -78,11 +84,11 @@ Web kategorileri, yöneticilerin kumar web siteleri, sosyal medya web siteleri v
 
 Kategoriler, **yükümlülük**, **yüksek bant genişliği**, **iş kullanımı**, **verimlilik kaybı**, **Genel gezinme** ve **kategorilere ayrılmamış** önem derecesine göre düzenlenmiştir.
 
-#### <a name="category-exceptions"></a>Kategori özel durumları
+### <a name="category-exceptions"></a>Kategori özel durumları
 
 Web kategorisi kurallarınız için özel durumlar oluşturabilirsiniz. Kural koleksiyonu grubu dahilinde daha yüksek önceliğe sahip bir izin verme veya reddetme kuralı koleksiyonu oluşturun. Örneğin, öncelik `www.linkedin.com` 200 Ile **sosyal ağı** engelleyen bir kural koleksiyonu ile öncelik 100 ile izin veren bir kural koleksiyonu yapılandırabilirsiniz. Bu, önceden tanımlanmış **sosyal ağ** Web kategorisi için özel durum oluşturur.
 
-#### <a name="categorization-change"></a>Kategori değişikliği
+### <a name="categorization-change"></a>Kategori değişikliği
 
 Şunları yaparsanız bir kategori değişikliği isteyebilirsiniz:
 

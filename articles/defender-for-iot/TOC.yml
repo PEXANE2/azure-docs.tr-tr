@@ -4,13 +4,13 @@
   displayName: 'IoT, OT, getting started'
   href: overview.md
   items:
-    - name: Yenilikler
-      href: release-notes.md
     - name: Aracısız çözüm mimarisi
       displayName: 'deployment, where to deploy'
       href: architecture.md
     - name: Aracı tabanlı çözüm mimarisi
       href: architecture-agent-based.md
+- name: Yenilikler
+  href: release-notes.md
 - name: Hızlı Başlangıçlar
   expanded: true
   items:

@@ -13,12 +13,12 @@ ms.devlang: ne
 ms.topic: conceptual
 ms.date: 10/23/2020
 ms.author: inhenkel
-ms.openlocfilehash: 7a74eca129ce273bd96ea8962ed9ddf2907ea100
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.openlocfilehash: a66532856263d31e9070bc99f297ae105ca48312
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102216182"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102454796"
 ---
 # <a name="live-events-and-live-outputs-in-media-services"></a>Canlı etkinlikler ve canlı çıktılar Media Services
 
@@ -149,7 +149,7 @@ Gösterim amaçlı olmayan URL'leri veya gösterim URL'lerini kullanabilirsiniz.
     |---|---|---|
     |REST|[Properties. vanityUrl 'Si](/rest/api/media/liveevents/create#liveevent)|[Liveeventınput. accessToken](/rest/api/media/liveevents/create#liveeventinput)|
     |CLI|[--Vanity-URL](/cli/azure/ams/live-event#az-ams-live-event-create)|[--erişim-belirteç](/cli/azure/ams/live-event#optional-parameters)|
-    |.NET|[LiveEvent. VanityUrl](/dotnet/api/microsoft.azure.management.media.models.liveevent?view=azure-dotnet#Microsoft_Azure_Management_Media_Models_LiveEvent_VanityUrl)|[Liveeventınput. AccessToken](/dotnet/api/microsoft.azure.management.media.models.liveeventinput.accesstoken?view=azure-dotnet#Microsoft_Azure_Management_Media_Models_LiveEventInput_AccessToken)|
+    |.NET|[LiveEvent. VanityUrl](/dotnet/api/microsoft.azure.management.media.models.liveevent#Microsoft_Azure_Management_Media_Models_LiveEvent_VanityUrl)|[Liveeventınput. AccessToken](/dotnet/api/microsoft.azure.management.media.models.liveeventinput.accesstoken#Microsoft_Azure_Management_Media_Models_LiveEventInput_AccessToken)|
 
 ### <a name="live-ingest-url-naming-rules"></a>Canlı alma URL'si adlandırma kuralları
 

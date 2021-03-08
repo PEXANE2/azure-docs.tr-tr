@@ -3,12 +3,12 @@ title: Medya grafiği uzantısı nedir? Azure
 description: IoT Edge üzerinde canlı video analizi, bir grafik uzantısı düğümü aracılığıyla medya grafiği işleme yeteneklerini genişletmenizi sağlar.
 ms.topic: overview
 ms.date: 09/14/2020
-ms.openlocfilehash: 6735148bf453cfe0afb58d51451dea65f06705d6
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
+ms.openlocfilehash: 66656690e4e53508253091134a67adeb899b3dbf
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97401126"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102455848"
 ---
 # <a name="media-graph-extension"></a>Medya grafiği uzantısı
 
@@ -19,11 +19,11 @@ Canlı video analizi, iki tür medya grafiği uzantısı işlemciyi destekler:
 * [HTTP uzantısı işlemcisi](media-graph-concept.md#http-extension-processor)
 * [gRPC uzantı işlemcisi](media-graph-concept.md#grpc-extension-processor)
 
-Grafik uzantısı düğümü, Analytics uzantı eklentisinin sonuçları JSON biçiminde döndürmesini bekler. İdeal olarak sonuçlar, [çıkarım meta veri şeması nesne modelini](https://review.docs.microsoft.com/en-us/azure/media-services/live-video-analytics-edge/inference-metadata-schema?branch=release-lva-dec-update)izlemelidir.
+Grafik uzantısı düğümü, Analytics uzantı eklentisinin sonuçları JSON biçiminde döndürmesini bekler. İdeal olarak sonuçlar, [çıkarım meta veri şeması nesne modelini](/azure/media-services/live-video-analytics-edge/inference-metadata-schema)izlemelidir.
 
 ## <a name="http-extension-processor"></a>HTTP uzantısı işlemcisi
 
-HTTP uzantısı işlemcisi, performans ve/veya en iyi kaynak kullanımının birincil sorun olmadığı [http protokolünü](https://review.docs.microsoft.com/en-us/azure/media-services/live-video-analytics-edge/http-extension-protocol?branch=release-lva-dec-update)kullanarak genişletilebilirlik senaryolarına izin verir. Bir HTTP REST uç noktası aracılığıyla kendi AI 'nizi bir medya grafiğinde kullanıma sunabilirsiniz. 
+HTTP uzantısı işlemcisi, performans ve/veya en iyi kaynak kullanımının birincil sorun olmadığı [http protokolünü](/azure/media-services/live-video-analytics-edge/http-extension-protocol)kullanarak genişletilebilirlik senaryolarına izin verir. Bir HTTP REST uç noktası aracılığıyla kendi AI 'nizi bir medya grafiğinde kullanıma sunabilirsiniz. 
 
 Şu durumlarda HTTP uzantı işlemcisi düğümünü kullan:
 
@@ -33,7 +33,7 @@ HTTP uzantısı işlemcisi, performans ve/veya en iyi kaynak kullanımının bir
 
 ## <a name="grpc-extension-processor"></a>gRPC uzantı işlemcisi
 
-gRPC uzantısı işlemcisi, gRPC tabanlı, yüksek performanslı [yapılandırılmış Protokolü](https://review.docs.microsoft.com/en-us/azure/media-services/live-video-analytics-edge/grpc-extension-protocol?branch=release-lva-dec-update)kullanan genişletilebilirlik senaryolarına izin vermez. Performans ve/veya en iyi kaynak kullanımının öncelik olduğu senaryolar için idealdir. GRPC uzantısı işlemcisi, yapılandırılmış veri tanımlarının tam avantajını almanızı sağlar. gRPC, aşağıdakileri kullanarak yüksek içerik aktarımı performansı sunar:
+gRPC uzantısı işlemcisi, gRPC tabanlı, yüksek performanslı [yapılandırılmış Protokolü](/azure/media-services/live-video-analytics-edge/grpc-extension-protocol)kullanan genişletilebilirlik senaryolarına izin vermez. Performans ve/veya en iyi kaynak kullanımının öncelik olduğu senaryolar için idealdir. GRPC uzantısı işlemcisi, yapılandırılmış veri tanımlarının tam avantajını almanızı sağlar. gRPC, aşağıdakileri kullanarak yüksek içerik aktarımı performansı sunar:
 
 * [yerleşik paylaşılan bellek](https://en.wikipedia.org/wiki/Shared_memory) veya 
 * içerik, gRPC iletilerinin gövdesine doğrudan katıştırılıyor. 
@@ -57,7 +57,7 @@ Aşağıdaki diyagramda üst düzey veri akışı gösterilmektedir:
 
 ## <a name="samples"></a>Örnekler
 
-Daha önceden oluşturulmuş uzantı hizmeti olan canlı video analizlerini, [http uzantısı işlemcisi](https://review.docs.microsoft.com/en-us/azure/media-services/live-video-analytics-edge/use-your-model-quickstart?branch=release-lva-dec-update&pivots=programming-language-csharp) Ile veya [GRPC uzantı işlemcisi](https://review.docs.microsoft.com/en-us/azure/media-services/live-video-analytics-edge/analyze-live-video-use-your-grpc-model-quickstart?branch=release-lva-dec-update&pivots=programming-language-csharp) ile yüksek kare ücretlerine sahip olan düşük kare ücretlerine sahip olan hızlı başlangıçlardan biriyle çalışmaya başlayın
+Daha önceden oluşturulmuş uzantı hizmeti olan canlı video analizlerini, [http uzantısı işlemcisi](/azure/media-services/live-video-analytics-edge/use-your-model-quickstart?pivots=programming-language-csharp) Ile veya [GRPC uzantı işlemcisi](/azure/media-services/live-video-analytics-edge/analyze-live-video-use-your-grpc-model-quickstart?pivots=programming-language-csharp) ile yüksek kare ücretlerine sahip olan düşük kare ücretlerine sahip olan hızlı başlangıçlardan biriyle çalışmaya başlayın
 
 Gelişmiş kullanıcılar için, canlı video analizi için [Jupyter Not defteri](https://github.com/Azure/live-video-analytics/blob/master/utilities/video-analysis/notebooks/readme.md) örneklerinden bazılarını kullanıma alabilirsiniz. Bu not defterleri size **medya grafik uzantıları** için adım adım yönergeler sağlar:
 

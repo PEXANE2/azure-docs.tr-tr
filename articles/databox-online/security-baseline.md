@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 12/18/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 1d7cd07ee8ae8b35d51fbdd25b34602c2e799c75
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: 460fd66ed4651248639334caa55eb8facbce866d
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98787273"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102452382"
 ---
 # <a name="azure-security-baseline-for-azure-stack-edge"></a>Azure Stack Edge için Azure Güvenlik temeli
 
@@ -308,7 +308,7 @@ Güvenlik Okuyucusu izinleri kiracının tamamına (Kök Yönetim Grubu) geniş 
 
 **Rehberlik**: kendi uygulamalarınızı yerel olarak oluşturulan tüm sanal makinelerde çalışacak şekilde getirebilirsiniz. Yığın uç cihazınızda yerel işlem sanal makineleri oluşturmak için PowerShell betikleri kullanın. Yalnızca güvenilen uygulamaların yerel sanal makinelerde çalıştırılmasını kesinlikle öneririz. 
 
-- [Windows ortamında PowerShell betiği yürütmeyi denetleme](/powershell/module/microsoft.powershell.security/set-executionpolicy?preserve-view=true&amp;viewFallbackFrom=powershell-6&view=powershell-7.1)
+- [Windows ortamında PowerShell betiği yürütmeyi denetleme](/powershell/module/microsoft.powershell.security/set-executionpolicy)
 
 **Azure Güvenlik Merkezi ile izleme**: Uygulanamaz
 

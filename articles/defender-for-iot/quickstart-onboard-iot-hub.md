@@ -1,6 +1,6 @@
 ---
-title: Bir aracı tabanlı çözüme IoT için Defender ekleme
-description: Azure IoT Hub IoT güvenlik hizmeti için Defender 'ı ekleme ve etkinleştirme hakkında bilgi edinin.
+title: 'Hızlı başlangıç: bir aracı tabanlı çözüme IoT için Defender ekleme'
+description: Bu hızlı başlangıçta, Azure IoT Hub IoT güvenlik hizmeti için Defender 'ı eklemeyi ve etkinleştirmeyi öğreneceksiniz.
 services: defender-for-iot
 ms.service: defender-for-iot
 documentationcenter: na
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 1/20/2021
 ms.author: shhazam
-ms.openlocfilehash: 62ea7b95609f9e1f896852da5c10244d1bd16ce1
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: d30a03aa7b7715a8792e7b70a0571270c6ad7b37
+ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102049954"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102449688"
 ---
-# <a name="onboard-defender-for-iot-to-an-agent-based-solution"></a>Bir aracı tabanlı çözüme IoT için Defender ekleme
+# <a name="quickstart-onboard-defender-for-iot-to-an-agent-based-solution"></a>Hızlı başlangıç: bir aracı tabanlı çözüme IoT için Defender ekleme
 
 Bu makalede, mevcut IoT Hub IoT hizmeti için Defender 'ın nasıl etkinleştirileceği açıklanır. Şu anda bir IoT Hub yoksa, kullanmaya başlamak için [Azure Portal kullanarak IoT Hub oluşturma](../iot-hub/iot-hub-create-through-portal.md) makalesine bakın.
 
@@ -34,6 +34,10 @@ IoT için Defender 'daki IoT Hub IoT güvenlerinizi yönetebilirsiniz. IoT Hub b
 
 > [!NOTE]
 > IoT için Defender Şu anda yalnızca Standart katman IoT Hub 'Larını desteklemektedir.
+
+## <a name="prerequisites"></a>Önkoşullar
+
+Yok
 
 ## <a name="onboard-defender-for-iot-to-an-iot-hub"></a>IoT Hub IoT için Defender 'ı ekleme
 

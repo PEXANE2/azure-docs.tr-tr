@@ -6,12 +6,12 @@ ms.author: deseelam
 ms.manager: bsiva
 ms.topic: how-to
 ms.date: 02/22/2021
-ms.openlocfilehash: b52d61c2828ddf5c04ab943d73964d236c9017c1
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.openlocfilehash: 5dd27e4502ac70ef10f2623ed6dfb2f62de37f06
+ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102098851"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102448837"
 ---
 # <a name="replicate-data-over-expressroute-with-azure-migrate-server-migration"></a>Azure geçişi ile ExpressRoute üzerinden veri çoğaltma: sunucu geçişi
 
@@ -72,6 +72,7 @@ Depolama hesabını oluşturmak ve bulmak için:
 ![Kaynak grubu görünümü](./media/replicate-using-expressroute/storage-account-name.png)
 
 > [!Tip]
+>  
 > Kaynak grubunuzda **"LSA"** ön ekine sahip birden fazla depolama hesabınız varsa, projede çoğaltılan VM 'lerden herhangi birinin çoğaltma ayarları ve hedef yapılandırma menüsüne giderek depolama hesabını doğrulayabilirsiniz. <br/> 
 > ![Çoğaltma ayarlarına genel bakış](./media/replicate-using-expressroute/storage-account.png)
 
@@ -125,8 +126,9 @@ Yalnızca bir Genel Amaçlı v2 (GPv2) depolama hesabında özel uç noktalar ol
 
     ![createprivatedns](./media/replicate-using-expressroute/create-private-dns.png)
 
-    a.  Yeni bir bölge oluşturmaya başlamak için **özel DNS bölgeleri** sayfasında **+ Ekle** düğmesini seçin.  
-    b.  **Özel DNS bölgesi oluştur** sayfasında, gerekli ayrıntıları girin. Özel DNS bölgesinin adını _Privatelink_. blob.Core.Windows.net olarak girin. c. DNS bölgesini gözden geçirmek ve oluşturmak için **gözden geçir + oluştur** sekmesine geçin.
+    a. Yeni bir bölge oluşturmaya başlamak için **özel DNS bölgeleri** sayfasında **+ Ekle** düğmesini seçin.  
+    b. **Özel DNS bölgesi oluştur** sayfasında, gerekli ayrıntıları girin. Özel DNS bölgesinin adını _Privatelink_. blob.Core.Windows.net olarak girin.  
+    c. DNS bölgesini gözden geçirmek ve oluşturmak için **gözden geçir + oluştur** sekmesine geçin.   
 
 2. Özel DNS bölgesini sanal ağınıza bağlayın.  
 

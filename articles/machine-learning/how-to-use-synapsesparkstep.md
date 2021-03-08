@@ -9,13 +9,13 @@ ms.author: laobri
 author: lobrien
 ms.date: 03/04/2021
 ms.topic: conceptual
-ms.custom: how-to
-ms.openlocfilehash: ea7dc30d0aed1350a8c9275d786ea22fa52c77bf
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
+ms.custom: how-to, synapse-azureml
+ms.openlocfilehash: 1dc4e0b70b0d39d01bada26992eb2213c1e855c5
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102203700"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102455068"
 ---
 # <a name="how-to-use-apache-spark-powered-by-azure-synapse-analytics-in-your-machine-learning-pipeline-preview"></a>Machine Learning işlem hattınızda Apache Spark (Azure SYNAPSE Analytics tarafından desteklenir) kullanma (Önizleme)
 
@@ -31,7 +31,7 @@ Bu makalede, bir Azure Machine Learning ardışık düzeninde veri hazırlama ad
 
 ## <a name="link-your-azure-machine-learning-workspace-and-azure-synapse-analytics-workspace"></a>Azure Machine Learning çalışma alanınızı ve Azure SYNAPSE Analytics çalışma alanınızı bağlama 
 
-Apache Spark havuzlarınızı bir Azure SYNAPSE Analytics çalışma alanında oluşturup yönetebilirsiniz. Bir Apache Spark havuzunu Azure Machine Learning çalışma alanıyla bütünleştirmek için Azure SYNAPSE Analytics çalışma alanına bağlamanız gerekir. 
+Apache Spark havuzlarınızı bir Azure SYNAPSE Analytics çalışma alanında oluşturup yönetebilirsiniz. Bir Apache Spark havuzunu Azure Machine Learning çalışma alanıyla bütünleştirmek için [Azure SYNAPSE Analytics çalışma alanına bağlamanız](how-to-link-synapse-ml-workspaces.md)gerekir. 
 
 **Bağlı hizmetler** sayfasını kullanarak Azure Machine Learning Studio Kullanıcı arabirimi aracılığıyla bir Apache Spark havuzu ekleyebilirsiniz. İşlem **Ekle** seçeneği ile **işlem** sayfası aracılığıyla da yapabilirsiniz.
 

@@ -1,7 +1,7 @@
 ---
 title: Azure Active Directory Uygulama sağlamadaki yenilikler
 description: Azure Active Directory uygulama sağlama için yeni ve güncelleştirilmiş belgeler.
-ms.date: 02/01/2021
+ms.date: 03/08/2021
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.topic: reference
@@ -9,16 +9,27 @@ ms.workload: identity
 ms.author: kenwith
 author: kenwith
 manager: daveba
-ms.openlocfilehash: a127552c47b9e1ee86d2164926971c8628367dc0
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.openlocfilehash: abee58607a5492548e4d64f44c15fd365876f3f5
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99256010"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102453691"
 ---
 # <a name="azure-active-directory-application-provisioning-whats-new"></a>Uygulama sağlamayı Azure Active Directory: yenilikler
 
 Azure Active Directory uygulama sağlama belgelerindeki yenilikler ' e hoş geldiniz. Bu makalede, eklenen ve son üç ay içinde önemli güncelleştirmeleri olan yeni belgeler listelenir. Sağlama hizmetiyle ilgili yenilikler hakkında bilgi edinmek için bkz. [Azure Active Directory](../fundamentals/whats-new.md)yenilikleri.
+
+## <a name="february-2021"></a>Şubat 2021
+
+### <a name="updated-articles"></a>Güncelleştirilmiş makaleler
+
+- [Azure Active Directory sağlama Workday ile nasıl tümleştirilir](workday-integration-reference.md)
+- [Öğretici-Kullanıcı sağlama özniteliğini özelleştirme-Azure Active Directory SaaS uygulamaları için eşlemeler](customize-application-attributes.md)
+- [Azure AD 'de otomatik SaaS uygulaması Kullanıcı hazırlama nedir?](user-provisioning.md)
+- [Öğretici: örnek SCıM uç noktası geliştirme](use-scim-to-build-users-and-groups-endpoints.md)
+- [Öğretici: SCıM uç noktası için geliştirme ve plan sağlama](use-scim-to-provision-users-and-groups.md)
+- [Sağlama nasıl çalışır?](how-provisioning-works.md)
 
 ## <a name="january-2021"></a>Ocak 2021
 

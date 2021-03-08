@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 01/27/2021
+ms.date: 03/08/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 8c2b97d1848450ecda2e83d5ba12469d7c61d8f9
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.openlocfilehash: f6e932cb6a6086e4cea6f474f296ca086e48c75e
+ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98952747"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102448469"
 ---
 # <a name="set-up-sign-in-for-multi-tenant-azure-active-directory-using-custom-policies-in-azure-active-directory-b2c"></a>Azure Active Directory B2C içindeki özel ilkeleri kullanarak çok kiracılı Azure Active Directory için oturum açma ayarlayın
 
@@ -38,7 +38,7 @@ Bu makalede, Azure Active Directory (Azure AD) için çoklu kiracı uç noktası
 
 [!INCLUDE [active-directory-b2c-customization-prerequisites](../../includes/active-directory-b2c-customization-prerequisites.md)]
 
-## <a name="register-an-application"></a>Uygulamaları kaydetme
+## <a name="register-an-application"></a>Bir uygulamayı kaydetme
 
 Azure Active Directory B2C (Azure AD B2C) ' de bir Azure AD hesabı olan kullanıcılar için oturum açmayı etkinleştirmek üzere, [Azure Portal](https://portal.azure.com)'de bir uygulama oluşturmanız gerekir. Daha fazla bilgi için bkz. [Microsoft Identity platformu ile uygulama kaydetme](../active-directory/develop/quickstart-register-app.md).
 
@@ -155,7 +155,7 @@ Azure AD 'yi, ilkenizin uzantısı dosyasındaki **ClaimsProvider** öğesine ek
 
 `https://login.microsoftonline.com/` **Validtokenıssueröneklerini** değer olarak kullanmak tüm Azure AD kullanıcılarının uygulamanızda oturum açmasını sağlar. Geçerli belirteç verenler listesini güncelleştirin ve erişimi, oturum açabilen belirli bir Azure AD kiracı kullanıcıları listesiyle sınırlayın.
 
-Değerleri almak için, kullanıcıların oturum açmasını istediğiniz her bir Azure AD kiracısından oluşan OpenID Connect bulgu meta verilerine bakın. Meta veri URL 'sinin biçimi şuna benzerdir; `https://login.microsoftonline.com/your-tenant/v2.0/.well-known/openid-configuration` burada `your-tenant` Azure AD kiracı adınız bulunur. Örneğin:
+Değerleri almak için, kullanıcıların oturum açmasını istediğiniz her bir Azure AD kiracısından oluşan OpenID Connect bulgu meta verilerine bakın. Meta veri URL 'sinin biçimi şuna benzerdir; `https://login.microsoftonline.com/your-tenant/v2.0/.well-known/openid-configuration` burada `your-tenant` Azure AD kiracı adınız bulunur. Örnek:
 
 `https://login.microsoftonline.com/fabrikam.onmicrosoft.com/v2.0/.well-known/openid-configuration`
 
@@ -186,9 +186,16 @@ Oturum açmak için kullanılması gereken her Azure AD kiracısı için aşağ�
 
 [!INCLUDE [active-directory-b2c-configure-relying-party-policy](../../includes/active-directory-b2c-configure-relying-party-policy-user-journey.md)]
 
-[!INCLUDE [active-directory-b2c-test-relying-party-policy](../../includes/active-directory-b2c-test-relying-party-policy-user-journey.md)]
+## <a name="test-your-custom-policy"></a>Özel ilkenizi test etme
+
+1. Örneğin, bağlı olan taraf ilkenizi seçin `B2C_1A_signup_signin` .
+1. **Uygulama** için, [daha önce kaydetmiş](troubleshoot-custom-policies.md#troubleshoot-the-runtime)olduğunuz bir Web uygulamasını seçin. **Yanıt URL 'si** gösterilmesi gerekir `https://jwt.ms` .
+1. **Şimdi Çalıştır** düğmesini seçin.
+1. Kaydolma veya oturum açma sayfasından Azure AD hesabıyla oturum açmak için **ortak AAD** ' yi seçin.
 
 Çok kiracılı oturum açma özelliğini test etmek için, başka bir Azure AD kiracısı olan bir kullanıcının kimlik bilgilerini kullanarak son iki adımı gerçekleştirin. **Şimdi Çalıştır uç noktasını** kopyalayın ve özel bir tarayıcı penceresinde açın. Örneğin, Google Chrome 'Da veya Microsoft Edge 'de bir InPrivate penceresinde. Özel bir tarayıcı penceresinde açmak, şu anda önbelleğe alınmış Azure AD kimlik bilgilerini kullanarak tüm Kullanıcı yolculuğunu test etmenize olanak tanır.
+
+Oturum açma işlemi başarılı olursa, tarayıcınız öğesine yönlendirilir `https://jwt.ms` ve bu, Azure AD B2C tarafından döndürülen belirtecin içeriğini görüntüler.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

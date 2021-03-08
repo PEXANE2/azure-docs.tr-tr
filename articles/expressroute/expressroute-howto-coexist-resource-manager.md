@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 03/06/2021
 ms.author: duau
 ms.custom: seodec18
-ms.openlocfilehash: df88bd9a1d4901b348fbec47ea9e2946542a08e3
-ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
+ms.openlocfilehash: 15ec8417ba5e2858b45176f0a214f6126209f942
+ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102440097"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102449756"
 ---
 # <a name="configure-expressroute-and-site-to-site-coexisting-connections-using-powershell"></a>PowerShell kullanarak ExpressRoute ve siteden siteye birlikte var olan bağlantıları yapılandırma
 > [!div class="op_single_selector"]
@@ -262,11 +262,11 @@ VPN ağ geçidize bir birlikte bulunma kurulumunda Noktadan siteye yapılandırm
    $p2sCertData = [System.Convert]::ToBase64String($p2sCertToUpload.RawData) 
    Add-AzVpnClientRootCertificate -VpnClientRootCertificateName $p2sCertFullName -VirtualNetworkGatewayname $azureVpn.Name -ResourceGroupName $resgrp.ResourceGroupName -PublicCertData $p2sCertData
    ```
+Noktadan Siteye VPN hakkında daha fazla bilgi içini bkz. [Noktadan Siteye bağlantı yapılandırma](../vpn-gateway/vpn-gateway-howto-point-to-site-rm-ps.md).
 
 ## <a name="to-enable-transit-routing-between-expressroute-and-azure-vpn"></a>ExpressRoute ile Azure VPN arasında geçiş yönlendirmeyi etkinleştirmek için
 ExpressRoute 'a bağlı yerel ağınızdan biri ile siteden siteye VPN bağlantısına bağlı olan yerel ağınızdan bir bağlantı sağlamak istiyorsanız, [Azure Route Server](../route-server/expressroute-vpn-support.md)'ı ayarlamanız gerekir.
 
-Noktadan Siteye VPN hakkında daha fazla bilgi içini bkz. [Noktadan Siteye bağlantı yapılandırma](../vpn-gateway/vpn-gateway-howto-point-to-site-rm-ps.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 ExpressRoute hakkında daha fazla bilgi için, bkz. [ExpressRoute SSS](expressroute-faqs.md).

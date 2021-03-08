@@ -13,12 +13,12 @@ ms.custom:
 - 'role: System Architecture'
 ms.service: iot-hub
 services: iot-hub
-ms.openlocfilehash: 7e72f628bf328a3b93e81c60aa65b8c2495f7f2b
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+ms.openlocfilehash: 86a373844b370cc9f9ce31dc65b2039a81279803
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "101095260"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102454779"
 ---
 # <a name="what-is-azure-iot-hub"></a>Azure IoT Hub nedir?
 
@@ -30,7 +30,7 @@ IoT Hub'ın özellikleri, sağlık hizmetleri sektöründeki değerli varlıklar
 
 ## <a name="scale-your-solution"></a>Çözümünüzü ölçeklendirme
 
-IoT Hub, IoT iş yüklerinizi desteklemek için saniye başına milyonlarca eş zamanlı cihazı ve milyonlarca etkinliği ölçeklendirir. IoT Hub ölçeklendirme hakkında daha fazla bilgi için bkz. [IoT Hub ölçeklendirme](iot-hub-scaling.md?branch=release-iotbasic). IoT Hub tarafından sunulan birden fazla hizmet katmanı hakkında daha fazla bilgi edinmek ve ölçeklenebilirlik ihtiyaçlarınıza en uygun şekilde uyum sağlamak için [fiyatlandırma sayfasına](https://azure.microsoft.com/pricing/details/iot-hub/)göz atın.
+IoT Hub, IoT iş yüklerinizi desteklemek için saniye başına milyonlarca eş zamanlı cihazı ve milyonlarca etkinliği ölçeklendirir. IoT Hub ölçeklendirme hakkında daha fazla bilgi için bkz. [IoT Hub ölçeklendirme](iot-hub-scaling.md). IoT Hub tarafından sunulan birden fazla hizmet katmanı hakkında daha fazla bilgi edinmek ve ölçeklenebilirlik ihtiyaçlarınıza en uygun şekilde uyum sağlamak için [fiyatlandırma sayfasına](https://azure.microsoft.com/pricing/details/iot-hub/)göz atın.
 
 ## <a name="secure-your-communications"></a>İletişimlerinizin güvenliğini sağlama
 

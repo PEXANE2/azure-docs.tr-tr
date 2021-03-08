@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 10/30/2020
 ms.author: kumud
 ms.reviewer: kumud
-ms.openlocfilehash: 1186715003abef387343bb2b6cb71d56490c519d
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 18b79b105bcc4b5b0b65fc6f7d6b602ffff55561
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101667846"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102455831"
 ---
 # <a name="virtual-network-service-tags"></a>Sanal ağ hizmeti etiketleri
 <a name="network-service-tags"></a>
@@ -131,7 +131,7 @@ Varsayılan olarak, hizmet etiketleri tüm bulutun aralıklarını yansıtır. B
 Hizmet etiketlerinin geçerli listesini, IP adres aralığı ayrıntıları ile birlikte program aracılığıyla alabilirsiniz:
 
 - [REST](/rest/api/virtualnetwork/servicetags/list)
-- [Azure PowerShell](/powershell/module/az.network/Get-AzNetworkServiceTag?viewFallbackFrom=azps-2.3.2)
+- [Azure PowerShell](/powershell/module/az.network/Get-AzNetworkServiceTag)
 - [Azure CLI](/cli/azure/network#az-network-list-service-tags)
 
 > [!NOTE]
@@ -153,7 +153,7 @@ Bu dosyalardaki IP adresi aralıkları CıDR gösteriminde.
 
 ### <a name="tips"></a>İpuçları 
 - JSON dosyasındaki daha fazla *ChangeNumber* değerini belirterek bir yayından sonraki güncelleştirmeleri tespit edebilirsiniz. Her alt bölüm (örneğin, **Storage. WestUS**), değişiklik gerçekleştiğinde arttırılan kendi *ChangeNumber* değerini içerir. Alt bölümleri değiştirildiğinde dosyanın *ChangeNumber* en üst düzeyi artırılır.
-- Hizmet etiketi bilgilerini ayrıştırmayla ilgili örnekler için (örneğin, WestUS ' de depolama için tüm adres aralıklarını alma), [hizmet etiketi bulma API PowerShell](/powershell/module/az.network/Get-AzNetworkServiceTag?viewFallbackFrom=azps-2.3.2) belgelerine bakın.
+- Hizmet etiketi bilgilerini ayrıştırmayla ilgili örnekler için (örneğin, WestUS ' de depolama için tüm adres aralıklarını alma), [hizmet etiketi bulma API PowerShell](/powershell/module/az.network/Get-AzNetworkServiceTag) belgelerine bakın.
 - Hizmet etiketlerine yeni IP adresleri eklendiğinde, bu adresler Azure 'da en az bir hafta boyunca kullanılmaz. Bu, hizmet etiketleriyle ilişkili IP adreslerini izlemek için gerekebilecek tüm sistemleri güncelleştirmeniz için size zaman kazandırır.
 
 ## <a name="next-steps"></a>Sonraki adımlar

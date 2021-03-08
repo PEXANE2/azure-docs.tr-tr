@@ -3,12 +3,12 @@ title: Hackathon için Azure Lab Services kullanma
 description: Bu makalede, hack maratonları çalıştırmak için kullanabileceğiniz Labs oluşturmak için Azure Lab Services nasıl kullanılacağı açıklanır.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: a0917ede4502dcbb59d1a30b7985b06c06975599
-ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
+ms.openlocfilehash: d4648def48557d70547ef7d41d6c3e516671849e
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96602589"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102452739"
 ---
 # <a name="use-azure-lab-services-for-your-next-hackathon"></a>Sonraki Hackathon için Azure Lab Services kullanın
 Azure Lab Services, Hackathon için yeni bir sanal makine Laboratuvarı (VM) hızlı bir şekilde çalıştırabilmeniz için hafif ve kullanımı kolay olacak şekilde tasarlanmıştır.  Hackathon 'nizin mümkün olduğunca sorunsuz bir şekilde gitmemesini sağlamak için aşağıdaki denetim listesini kullanın. Bu denetim listesi, Hackathon laboratuvarınızı oluşturmaktan ve yönetmekten sorumlu BT departmanınız veya fakülte tamamlanmalıdır. 
@@ -83,7 +83,7 @@ Bu bölümde, Hackathon gününü tamamlamaya yönelik adımlar özetlenmektedir
     - Makineye bağlanmak için kullanılması gereken kimlik bilgileri. Bu adım yalnızca laboratuvarınız Windows tabanlı bir görüntü kullanıyorsa ve tüm VM 'Leri aynı parolayı kullanacak şekilde yapılandırdıysanız geçerlidir.
     - Katılanların SSH ve/veya RDP makinelerine nasıl bağlanacağını gösteren yönergeler.
 
-        Daha fazla bilgi için bkz. [nasıl yapılır kılavuzu kullanıcılara davetiye gönderme](how-to-configure-student-usage.md?branch=master#send-invitations-to-users) ve [Linux VM 'lerine bağlanma](how-to-use-remote-desktop-linux-student.md?branch=master). 
+        Daha fazla bilgi için bkz. [nasıl yapılır kılavuzu kullanıcılara davetiye gönderme](how-to-configure-student-usage.md#send-invitations-to-users) ve [Linux VM 'lerine bağlanma](how-to-use-remote-desktop-linux-student.md). 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Laboratuarda laboratuvar hesabı oluşturmaya başlayın: [öğreticideki yönergeleri izleyerek Azure Lab Services bir laboratuvar hesabı kurun](tutorial-setup-lab-account.md).

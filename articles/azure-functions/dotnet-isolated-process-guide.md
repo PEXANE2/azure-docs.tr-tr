@@ -5,12 +5,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 03/01/2021
 ms.custom: template-concept
-ms.openlocfilehash: d6db6c366ae51dbdc5bf062e79358f752e4a05f5
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: ab89c012c985afa8d7375ff94d0f55b0ea6941cc
+ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102425915"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102449467"
 ---
 # <a name="guide-for-running-functions-on-net-50-in-azure"></a>Azure 'da .NET 5,0 üzerinde işlev çalıştırmaya yönelik kılavuz
 
@@ -63,18 +63,18 @@ Bu işlevler ayrı bir işlemde çalıştığından, .NET yalıtılmış işlev 
 Bir .NET yalıtılmış işleminde çalışan işlevler farklı bağlama türleri kullandığından, benzersiz bir bağlama uzantısı paketleri kümesi gerektirir. 
 
 Bu uzantı paketlerini [Microsoft. Azure. Functions. Worker. Extensions](https://www.nuget.org/packages?q=Microsoft.Azure.Functions.Worker.Extensions)altında bulacaksınız.
- 
+
 ## <a name="start-up-and-configuration"></a>Başlatma ve yapılandırma 
 
 .NET yalıtılmış işlevleri kullanılırken, genellikle Program.cs içinde olan işlev uygulamanızın başlangıcına erişebilirsiniz. Kendi konak örneğinizi oluşturup başlatmaktan siz sorumlusunuz. Bu nedenle, uygulamanız için yapılandırma ardışık düzenine doğrudan erişiminiz de vardır. Bağımlılıkları çok daha kolay bir şekilde ekleyebilir ve işlem dışı çalıştırırken ara yazılım çalıştırabilirsiniz. 
 
 Aşağıdaki kodda bir işlem hattının örneği gösterilmektedir `HostBuilder` :
 
-:::code language="csharp" source="~/azure-functions-dotnet-worker/samples/FunctionApp/Program.cs" range="20-33":::
+:::code language="csharp" source="~/azure-functions-dotnet-worker/samples/FunctionApp/Program.cs" id="docsnippet_startup":::
 
 `HostBuilder` `IHost` , İşlev uygulamanızı başlatmak için zaman uyumsuz olarak çalıştırdığınız, tam olarak başlatılmış bir örnek derlemek ve döndürmek için kullanılır. 
 
-:::code language="csharp" source="~/azure-functions-dotnet-worker/samples/FunctionApp/Program.cs" range="35":::
+:::code language="csharp" source="~/azure-functions-dotnet-worker/samples/FunctionApp/Program.cs" id="docsnippet_host_run":::
 
 ### <a name="configuration"></a>Yapılandırma
 
@@ -82,9 +82,9 @@ Konak Oluşturucu işlem hattına erişimi olması, başlatma sırasında uygula
 
 Aşağıdaki örnek `args` , komut satırı bağımsız değişkenleri olarak okunan yapılandırmanın nasıl ekleneceğini göstermektedir: 
  
-:::code language="csharp" source="~/azure-functions-dotnet-worker/samples/FunctionApp/Program.cs" range="21-24" :::
+:::code language="csharp" source="~/azure-functions-dotnet-worker/samples/FunctionApp/Program.cs" id="docsnippet_configure_app" :::
 
-`ConfigureAppConfiguration`Yöntemi, derleme işleminin ve uygulamanın geri kalanını yapılandırmak için kullanılır. Bu örnek, birden fazla yapılandırma öğesi eklemeyi kolaylaştıran bir [Iconıationbuilder](/dotnet/api/microsoft.extensions.configuration.iconfigurationbuilder?view=dotnet-plat-ext-5.0&preserve-view=true)da kullanır. `ConfigureAppConfiguration`Aynı örneğini döndürdüğünden [`IConfiguration `](/dotnet/api/microsoft.extensions.configuration.iconfiguration?view=dotnet-plat-ext-5.0&preserve-view=true) , birden çok yapılandırma öğesi eklemek için bunu birden çok kez çağırabilirsiniz. Tüm yapılandırma kümesine hem hem de erişebilirsiniz [`HostBuilderContext.Configuration`](/dotnet/api/microsoft.extensions.hosting.hostbuildercontext.configuration?view=dotnet-plat-ext-5.0&preserve-view=true) [`IHost.Services`](/dotnet/api/microsoft.extensions.hosting.ihost.services?view=dotnet-plat-ext-5.0&preserve-view=true) .
+`ConfigureAppConfiguration`Yöntemi, derleme işleminin ve uygulamanın geri kalanını yapılandırmak için kullanılır. Bu örnek, birden fazla yapılandırma öğesi eklemeyi kolaylaştıran bir [Iconıationbuilder](/dotnet/api/microsoft.extensions.configuration.iconfigurationbuilder?view=dotnet-plat-ext-5.0&preserve-view=true)da kullanır. `ConfigureAppConfiguration`Aynı örneğini döndürdüğünden [`IConfiguration`](/dotnet/api/microsoft.extensions.configuration.iconfiguration?view=dotnet-plat-ext-5.0&preserve-view=true) , birden çok yapılandırma öğesi eklemek için bunu birden çok kez çağırabilirsiniz. Tüm yapılandırma kümesine hem hem de erişebilirsiniz [`HostBuilderContext.Configuration`](/dotnet/api/microsoft.extensions.hosting.hostbuildercontext.configuration?view=dotnet-plat-ext-5.0&preserve-view=true) [`IHost.Services`](/dotnet/api/microsoft.extensions.hosting.ihost.services?view=dotnet-plat-ext-5.0&preserve-view=true) .
 
 Yapılandırma hakkında daha fazla bilgi edinmek için [ASP.NET Core yapılandırma](/aspnet/core/fundamentals/configuration/?view=aspnetcore-5.0&preserve-view=true)konusuna bakın. 
 
@@ -94,7 +94,7 @@ Bağımlılık ekleme, .NET sınıf kitaplıklarıyla karşılaştırıldığın
 
 Aşağıdaki örnek bir tek hizmet bağımlılığını çıkarır:  
  
-:::code language="csharp" source="~/azure-functions-dotnet-worker/samples/FunctionApp/Program.cs" range="29-32" :::
+:::code language="csharp" source="~/azure-functions-dotnet-worker/samples/FunctionApp/Program.cs" id="docsnippet_dependency_injection" :::
 
 Daha fazla bilgi için bkz. [ASP.NET Core bağımlılık ekleme](/aspnet/core/fundamentals/dependency-injection?view=aspnetcore-5.0&preserve-view=true).
 
@@ -104,7 +104,7 @@ Daha fazla bilgi için bkz. [ASP.NET Core bağımlılık ekleme](/aspnet/core/fu
 
 Tüm ara yazılım kayıt API 'Leri henüz gösterilmediğinden, ara yazılım kaydı desteklenirken, örnek uygulamaya bir örnek, ara yazılım klasörü altına ekledik.
 
-:::code language="csharp" source="~/azure-functions-dotnet-worker/samples/FunctionApp/Program.cs" range="25-28" :::
+:::code language="csharp" source="~/azure-functions-dotnet-worker/samples/FunctionApp/Program.cs" id="docsnippet_middleware" :::
 
 ## <a name="execution-context"></a>Yürütme bağlamı
 
@@ -114,7 +114,7 @@ Tüm ara yazılım kayıt API 'Leri henüz gösterilmediğinden, ara yazılım k
 
 Bağlamalar yöntemleri, parametreleri ve dönüş türleri üzerinde öznitelikler kullanılarak tanımlanır. Bir işlev yöntemi, `Function` Aşağıdaki örnekte gösterildiği gibi bir giriş parametresine uygulanan ve bir tetikleyici özniteliği olan bir yöntemdir:
 
-:::code language="csharp" source="~/azure-functions-dotnet-worker/samples/SampleApp/Queue/QueueFunction.cs" range="11-14" :::
+:::code language="csharp" source="~/azure-functions-dotnet-worker/samples/SampleApp/Queue/QueueFunction.cs" id="docsnippet_queue_trigger" :::
 
 Tetikleyici özniteliği Tetikleyici türünü belirtir ve giriş verilerini bir yöntem parametresine bağlar. Önceki örnek işlev bir kuyruk iletisi tarafından tetiklenir ve kuyruk iletisi parametresindeki yöntemine geçirilir `myQueueItem` .
 
@@ -132,13 +132,13 @@ Bir işlev, bir işleve veri geçiresağlayan sıfır veya daha fazla giriş ba�
 
 Bir çıkış bağlamasına yazmak için, işlev yöntemine bir çıkış bağlama özniteliği uygulamanız gerekir ve bu, bağlama hizmetine nasıl yazılacağını tanımlamış. Yöntemi tarafından döndürülen değer çıkış bağlamasına yazılır. Örneğin, aşağıdaki örnek, bir çıkış bağlaması kullanarak adlı bir ileti kuyruğuna bir String değeri yazar `functiontesting2` :
 
-:::code language="csharp" source="~/azure-functions-dotnet-worker/samples/SampleApp/Queue/QueueFunction.cs" range="11-21" :::
+:::code language="csharp" source="~/azure-functions-dotnet-worker/samples/SampleApp/Queue/QueueFunction.cs" id="docsnippet_queue_output_binding" :::
 
 ### <a name="multiple-output-bindings"></a>Birden çok çıkış bağlaması
 
 Bir çıkış bağlamasına yazılan veriler her zaman işlevin dönüş değeridir. Birden fazla çıkış bağlamaya yazmanız gerekiyorsa, özel bir dönüş türü oluşturmanız gerekir. Bu dönüş türü, sınıfın bir veya daha fazla özelliklerine uygulanmış çıkış bağlama özniteliğine sahip olmalıdır. Aşağıdaki örnek hem HTTP yanıtına hem de bir sıra çıkış bağlamaya Yazar:
 
-:::code language="csharp" source="~/azure-functions-dotnet-worker/samples/FunctionApp/Function1/Function1.cs" range="14-33":::
+:::code language="csharp" source="~/azure-functions-dotnet-worker/samples/FunctionApp/Function1/Function1.cs" id="docsnippet_multiple_outputs":::
 
 ### <a name="http-trigger"></a>HTTP tetikleyicisi
 
@@ -148,7 +148,7 @@ Benzer şekilde, işlev, `HttpReponseData` ileti `StatusCode` , `Headers` ve ist
 
 Aşağıdaki kod bir HTTP tetikleyicisine sahiptir 
 
-:::code language="csharp" source="~/azure-functions-dotnet-worker/samples/SampleApp/Http/HttpFunction.cs" range="13-27" :::
+:::code language="csharp" source="~/azure-functions-dotnet-worker/samples/SampleApp/Http/HttpFunction.cs" id="docsnippet_http_trigger" :::
 
 ## <a name="logging"></a>Günlüğe Kaydetme
 
@@ -156,7 +156,7 @@ Aşağıdaki kod bir HTTP tetikleyicisine sahiptir
 
 Aşağıdaki örnek, `ILogger` bir işlev içindeki bir ve yazma günlüklerinin nasıl alınacağını gösterir:
 
-:::code language="csharp" source="~/azure-functions-dotnet-worker/samples/SampleApp/Http/HttpFunction.cs" range="17-18" ::: 
+:::code language="csharp" source="~/azure-functions-dotnet-worker/samples/SampleApp/Http/HttpFunction.cs" id="docsnippet_logging" ::: 
 
 `ILogger`Veya gibi çeşitli günlük düzeylerini yazmak için çeşitli yöntemler kullanın `LogWarning` `LogError` . Günlük düzeyleri hakkında daha fazla bilgi için [İzleme makalesine](functions-monitoring.md#log-levels-and-categories)bakın.
 
@@ -174,7 +174,7 @@ Bu bölümde, .NET 5,0 ' de çalışan, işlem içi .NET sınıf kitaplığı i�
 | Günlüğe Kaydetme | [`ILogger`](/dotnet/api/microsoft.extensions.logging.ilogger?view=dotnet-plat-ext-5.0&preserve-view=true) işleve geçirildi | [`ILogger`](/dotnet/api/microsoft.extensions.logging.ilogger?view=dotnet-plat-ext-5.0&preserve-view=true) alındığı yer `FunctionContext` |
 | İptal belirteçleri | [Desteklenir](functions-dotnet-class-library.md#cancellation-tokens) | Desteklenmez |
 | Çıkış bağlamaları | Out parametreleri | Dönüş değerleri |
-| Çıkış bağlaması türleri |  `IAsyncCollector`, [Documentclient](/dotnet/api/microsoft.azure.documents.client.documentclient), [brokeredmessage](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage)ve istemciye özgü diğer türler | Basit türler, JSON serileştirilebilir türler ve diziler. |
+| Çıkış bağlaması türleri |  `IAsyncCollector`, [Documentclient](/dotnet/api/microsoft.azure.documents.client.documentclient?view=azure-dotnet&preserve-view=true), [brokeredmessage](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage?view=azure-dotnet&preserve-view=true)ve istemciye özgü diğer türler | Basit türler, JSON serileştirilebilir türler ve diziler. |
 | Birden çok çıkış bağlaması | Desteklenir | [Desteklenir](#multiple-output-bindings) |
 | HTTP tetikleyicisi | [`HttpRequest`](/dotnet/api/microsoft.aspnetcore.http.httprequest?view=aspnetcore-5.0&preserve-view=true)/[`ObjectResult`](/dotnet/api/microsoft.aspnetcore.mvc.objectresult?view=aspnetcore-5.0&preserve-view=true) | `HttpRequestData`/`HttpResponseData` |
 | Dayanıklı İşlevler | [Desteklenir](durable/durable-functions-overview.md) | Desteklenmez | 

@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/14/2019
 ms.author: raynew
-ms.openlocfilehash: 101e42263e46c5a21f26b0fa9cdeed798525fee9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cc87429f269fba5083b87e2c328f0e21de9707ff
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89047097"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102454356"
 ---
 # <a name="set-up-disaster-recovery-at-scale-for-vmware-vmsphysical-servers"></a>VMware VM 'Leri/fiziksel sunucular için ölçekte olağanüstü durum kurtarmayı ayarlama
 
@@ -26,15 +26,15 @@ Bu makalede, [Azure Site Recovery](site-recovery-overview.md) hizmetini kullanar
 - VMware VM 'Leri için büyük ölçekli olağanüstü durum kurtarma ve ihtiyacınız olan Azure kaynaklarını farklı şekilde planlarken, kapasite hesaplamaları için kullanılacak bir RTO değeri belirtebilirsiniz.
 
 
-## <a name="best-practices"></a>Önerilen uygulamalar
+## <a name="best-practices"></a>En iyi uygulamalar
 
 Büyük ölçekli olağanüstü durum kurtarma için bazı genel en iyi uygulamalar. Bu en iyi uygulamalar, belgenin sonraki bölümlerinde daha ayrıntılı bir şekilde ele alınmıştır.
 
 - **Hedef gereksinimleri belirleme**: olağanüstü durum kurtarmayı ayarlamadan önce Azure 'da kapasite ve kaynak gereksinimlerini tahmin edin.
-- **Site Recovery bileşenleri Için plan**yapın: tahmini kapasitenizi karşılamak için gereken Site Recovery bileşenlerini (yapılandırma sunucusu, işlem sunucuları) öğrenin.
+- **Site Recovery bileşenleri Için plan** yapın: tahmini kapasitenizi karşılamak için gereken Site Recovery bileşenlerini (yapılandırma sunucusu, işlem sunucuları) öğrenin.
 - **Bir veya daha fazla genişleme işlem sunucusu ayarlama**: yapılandırma sunucusunda varsayılan olarak çalışan işlem sunucusunu kullanmayın. 
 - **En son güncelleştirmeleri çalıştırın**: Site Recovery Team Site Recovery bileşenlerinin düzenli olarak yeni sürümlerini yayınlar ve en son sürümleri çalıştırdığınızdan emin olun. Bu konuda size yardımcı olmak için güncelleştirmeler için [yenilikleri](site-recovery-whats-new.md) izleyin ve güncelleştirmeleri yayınlarlar [ve yükler](service-updates-how-to.md) .
-- **İzleme**proaktif: olağanüstü durum kurtarma 'yı ve çalışır duruma getirmek için, çoğaltılan makinelerin durumunu ve sağlığını ve altyapı kaynaklarını önceden izlemeniz gerekir.
+- **İzleme** proaktif: olağanüstü durum kurtarma 'yı ve çalışır duruma getirmek için, çoğaltılan makinelerin durumunu ve sağlığını ve altyapı kaynaklarını önceden izlemeniz gerekir.
 - **Olağanüstü durum kurtarma ayrıntılarında**: olağanüstü durum kurtarma detaylarını düzenli olarak çalıştırmalısınız. Bu, üretim ortamınızda etkilenmez, ancak Azure 'a yük devretmenin gerektiğinde beklendiği gibi çalışmasını sağlamaya yardımcı olur.
 
 
@@ -100,7 +100,7 @@ Uyumluluk ne anlama geliyor? Azure VM 'yi başlatmak için, Azure 'un önyüklem
 
 **Makine Azure ile uyumlu mı?** | **Azure VM sınırları (yönetilen disk yük devretmesi)**
 --- | --- 
-Evet | 2000
+Yes | 2000
 Hayır | 1000
 
 - Sınırlar, aboneliğin hedef bölgesinde en az diğer işlerin devam ettiğini varsayar.
@@ -214,7 +214,7 @@ Büyük ölçekli yük devretme çalıştırmak için şunları öneririz:
     - Kurtarma planları hakkında [daha fazla bilgi edinin](recovery-plan-overview.md) .
 2. Azure 'daki tüm el ile görevleri otomatikleştirmek için kurtarma planlarına Azure Otomasyonu runbook betikleri ekleyin. Tipik görevler yük dengeleyicileri yapılandırmayı, DNS 'yi güncellemeyi içerir. [Daha fazla bilgi edinin](site-recovery-runbook-automation.md)
 2. Yük devretmeden önce, Windows makinelerini Azure ortamıyla uyumlu olacak şekilde hazırlayın. Uyumlu olan makineler için [Yük devretme limitleri](#plan-azure-subscriptions-and-quotas) daha yüksektir. Runbook 'lar hakkında [daha fazla bilgi edinin](site-recovery-failover-to-azure-troubleshoot.md#failover-failed-with-error-id-170010) .
-4.  Bir kurtarma planıyla birlikte [Start-AzRecoveryServicesAsrPlannedFailoverJob](/powershell/module/az.recoveryservices/start-azrecoveryservicesasrplannedfailoverjob?view=azps-2.0.0&viewFallbackFrom=azps-1.1.0) PowerShell cmdlet 'i ile yük devretmeyi tetikleyin.
+4.  Bir kurtarma planıyla birlikte [Start-AzRecoveryServicesAsrPlannedFailoverJob](/powershell/module/az.recoveryservices/start-azrecoveryservicesasrplannedfailoverjob) PowerShell cmdlet 'i ile yük devretmeyi tetikleyin.
 
 
 

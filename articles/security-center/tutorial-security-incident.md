@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/17/2021
 ms.author: memildin
-ms.openlocfilehash: aeabfb42d378f22ff660214517fea031d678b208
-ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
+ms.openlocfilehash: 41f96202bffc0169be9705cd7e67c1eedbecbc05
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100635583"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102453453"
 ---
 # <a name="tutorial-triage-investigate-and-respond-to-security-alerts"></a>Öğretici: Güvenlik uyarılarını önceliklendirme, araştırma ve yanıtlama
 Güvenlik Merkezi, bulut kaynaklarınızda potansiyel olabilecek kötü amaçlı etkinlikler hakkında sizi uyarmak için gelişmiş analiz ve tehdit bilgilerini kullanarak hibrit bulut iş yüklerinizi sürekli çözümler. Ayrıca, uyarıları diğer güvenlik ürünleri ve hizmetlerinden Güvenlik Merkezi 'ne tümleştirebilirsiniz. Bir uyarı oluşturulduktan sonra olası güvenlik sorununu araştırmak ve düzeltmek için Swift eylemi gerekir. 
@@ -112,7 +112,7 @@ Devam etmeyi planlamıyorsanız veya bu özelliklerden birini devre dışı bır
 1. Uygun aboneliği seçin.
 1. Düşürme için **Azure Defender kapalı**' yı seçin.
 1. Otomatik sağlamayı devre dışı bırakmak için, **veri toplama** sayfasını açın ve **otomatik sağlamayı** **kapalı** olarak ayarlayın.
-4. **Kaydet**’i seçin.
+1. **Kaydet**’i seçin.
 
 >[!NOTE]
 > Otomatik sağlamayı devre dışı bırakmak, zaten aracısına sahip olan Azure VM 'lerinden Log Analytics aracısını kaldırmaz. Otomatik sağlamanın devre dışı bırakılması, kaynaklarınızın güvenliğinin izlenmesini kısıtlar.

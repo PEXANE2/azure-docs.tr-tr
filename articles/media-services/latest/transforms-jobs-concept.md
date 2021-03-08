@@ -45,7 +45,7 @@ Videoları kodlamaya veya çözümlemeye yönelik ortak görevleri yapılandırm
 
 ### <a name="viewing-schema"></a>Şemayı görüntüleme
 
-Media Services v3 'de, Önayarlar, API 'nin kendisinde kesin olarak belirlenmiş varlıklardır. Bu nesneler için "şema" tanımını [Open API belirtiminde (veya Swagger)](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/mediaservices/resource-manager/Microsoft.Media/stable/2018-07-01)bulabilirsiniz. [REST API](/rest/api/media/transforms/createorupdate#standardencoderpreset), [.net sdk](/dotnet/api/microsoft.azure.management.media.models.standardencoderpreset?view=azure-dotnet)veya diğer Media Services v3 SDK başvuru belgelerindeki önceden ayarlanmış tanımları ( **standardencoderönayar** gibi) da görüntüleyebilirsiniz.
+Media Services v3 'de, Önayarlar, API 'nin kendisinde kesin olarak belirlenmiş varlıklardır. Bu nesneler için "şema" tanımını [Open API belirtiminde (veya Swagger)](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/mediaservices/resource-manager/Microsoft.Media/stable/2018-07-01)bulabilirsiniz. [REST API](/rest/api/media/transforms/createorupdate#standardencoderpreset), [.net sdk](/dotnet/api/microsoft.azure.management.media.models.standardencoderpreset)veya diğer Media Services v3 SDK başvuru belgelerindeki önceden ayarlanmış tanımları ( **standardencoderönayar** gibi) da görüntüleyebilirsiniz.
 
 ### <a name="creating-transforms"></a>Dönüşümler oluşturma
 

@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 02/22/2021
 ms.author: alkohli
-ms.openlocfilehash: b3ae2986b49cf6854e0d9a6b99aabdfc2dd6b713
-ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
+ms.openlocfilehash: 29ac6976b6248f066f18f0ffcc8e03061ee74f77
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102436660"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102454424"
 ---
 # <a name="use-the-azure-portal-to-manage-bandwidth-schedules-on-your-azure-stack-edge-pro-gpu"></a>Azure Stack Edge Pro GPU 'unuzda bant genişliği zamanlamalarını yönetmek için Azure portal kullanma 
 
@@ -44,7 +44,7 @@ Bir zamanlama eklemek için Azure portal aşağıdaki adımları uygulayın.
 
    1. **Başlangıç gününü**, **bitiş gününü**, **başlangıç saatini** ve zamanlamanın **bitiş saatini** belirtin.
    2. Bu zamanlamanın her gün çalışması gerekiyorsa, **tüm gün** seçeneğini işaretleyin.
-   3. **Bant genişliği oranı** , bulut ile ilgili işlemlerde (her ikisi de karşıya yükleme ve indirme) kullanılan bit/sn (Mbps) cinsinden bant genişliğidir. Bu alan için 20 ile 2.147.483.647 arasında bir sayı girin.
+   3. **Bant genişliği oranı** , bulut ile ilgili işlemlerde (her ikisi de karşıya yükleme ve indirme) kullanılan bit/sn (Mbps) cinsinden bant genişliğidir. Bu alan için 64 ile 2.147.483.647 arasında bir sayı girin.
    4. Karşıya yükleme ve indirme tarihini azaltmak istemiyorsanız **sınırsız bant genişliği** seçin.
    5. **Add (Ekle)** seçeneğini belirleyin.
 

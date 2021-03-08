@@ -10,12 +10,12 @@ author: mokabiru
 ms.author: mokabiru
 ms.reviewer: MashaMSFT
 ms.date: 02/18/2020
-ms.openlocfilehash: 1f619e1eac58f70642117dabafc266d1bc250609
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 59c000a816d55d248febb841b695d366cb9979cc
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101690422"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102455238"
 ---
 # <a name="migration-overview-sql-server-to-sql-managed-instance"></a>Geçişe genel bakış: SQL yönetilen örneğine SQL Server
 [!INCLUDE[appliesto--sqlmi](../../includes/appliesto-sqlmi.md)]
@@ -63,7 +63,7 @@ SQL Server 'larınızı SQL yönetilen örneği 'ne geçirmenin önemli avantajl
 Dağıtım sırasında işlem ve depolama kaynakları ' nı seçebilir ve sonra uygulamanız için kapalı kalma süresi olmadan [Azure Portal](../../database/scale-resources.md) kullanarak bunları değiştirebilirsiniz. 
 
 > [!IMPORTANT]
-> [Yönetilen örnek sanal ağ gereksinimlerindeki](../../managed-instance/connectivity-architecture-overview.md#network-requirements) herhangi bir tutarsızlık, yeni örnekler oluşturmanızı veya var olanları kullanmanızı engelleyebilir.  [Yeni oluşturma](../../managed-instance/virtual-network-subnet-create-arm-template.md)   ve [Mevcut ağları yapılandırma](../../managed-instance/vnet-existing-add-subnet.md?branch=release-ignite-arc-data)hakkında daha fazla bilgi edinin   . 
+> [Yönetilen örnek sanal ağ gereksinimlerindeki](../../managed-instance/connectivity-architecture-overview.md#network-requirements) herhangi bir tutarsızlık, yeni örnekler oluşturmanızı veya var olanları kullanmanızı engelleyebilir.  [Yeni oluşturma](../../managed-instance/virtual-network-subnet-create-arm-template.md)   ve [Mevcut ağları yapılandırma](../../managed-instance/vnet-existing-add-subnet.md)hakkında daha fazla bilgi edinin   . 
 
 ### <a name="sql-server-vm-alternative"></a>SQL Server VM alternatifi
 

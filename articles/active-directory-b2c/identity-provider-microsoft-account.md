@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 01/27/2021
+ms.date: 03/08/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 1f4aea472988555047a736e6a248fa5690e42a23
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 0d8ba3fc578580e6eee02f435272f4ea53523586
+ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101645866"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102448226"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-microsoft-account-using-azure-active-directory-b2c"></a>Microsoft hesabı Azure Active Directory B2C kullanarak kaydolma ve oturum açma ayarlama
 
@@ -75,7 +75,10 @@ Azure Active Directory B2C (Azure AD B2C) Microsoft hesabı olan kullanıcılar 
 1. **Kaydet**’i seçin.
 1. İlkenizi test etmek için **Kullanıcı akışını Çalıştır**' ı seçin.
 1. **Uygulama** için, daha önce kaydettiğiniz *testapp1* adlı Web uygulamasını seçin. **Yanıt URL 'si** gösterilmesi gerekir `https://jwt.ms` .
-1. **Kullanıcı akışını Çalıştır** 'a tıklayın
+1. **Kullanıcı akışını Çalıştır** düğmesini seçin.
+1. Kaydolma veya oturum açma sayfasından **Microsoft** 'u seçerek Microsoft hesabı oturum açın.
+
+Oturum açma işlemi başarılı olursa, tarayıcınız öğesine yönlendirilir `https://jwt.ms` ve bu, Azure AD B2C tarafından döndürülen belirtecin içeriğini görüntüler.
 
 ::: zone-end
 
@@ -188,6 +191,13 @@ Artık ilkenizi, Azure AD 'de Microsoft hesabı uygulamanızla nasıl iletişim 
 
 [!INCLUDE [active-directory-b2c-configure-relying-party-policy](../../includes/active-directory-b2c-configure-relying-party-policy-user-journey.md)]
 
-[!INCLUDE [active-directory-b2c-test-relying-party-policy](../../includes/active-directory-b2c-test-relying-party-policy-user-journey.md)]
+## <a name="test-your-custom-policy"></a>Özel ilkenizi test etme
+
+1. Örneğin, bağlı olan taraf ilkenizi seçin `B2C_1A_signup_signin` .
+1. **Uygulama** için, [daha önce kaydetmiş](troubleshoot-custom-policies.md#troubleshoot-the-runtime)olduğunuz bir Web uygulamasını seçin. **Yanıt URL 'si** gösterilmesi gerekir `https://jwt.ms` .
+1. **Şimdi Çalıştır** düğmesini seçin.
+1. Kaydolma veya oturum açma sayfasından **Microsoft** 'u seçerek Microsoft hesabı oturum açın.
+
+Oturum açma işlemi başarılı olursa, tarayıcınız öğesine yönlendirilir `https://jwt.ms` ve bu, Azure AD B2C tarafından döndürülen belirtecin içeriğini görüntüler.
 
 ::: zone-end

@@ -16,12 +16,12 @@ ms.date: 12/23/2020
 ms.author: barclayn
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1a7f0d937d41ee42bf0fe678eb2f49e78882f881
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: b635a83c5ea1378a525ff607e5c6f2725337ad1a
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100577865"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102453045"
 ---
 # <a name="archive-logs-and-reporting-on-azure-ad-entitlement-management-in-azure-monitor"></a>Azure Izleyici 'de Azure AD yetkilendirme yönetiminde arşiv günlükleri ve raporları
 
@@ -158,8 +158,7 @@ $subs = Get-AzSubscription
 $subs | ft
 ```
  
-Gibi bir komut kullanarak PowerShell oturumunuzu yeniden kimlik doğrulaması yapabilir ve bu abonelikle ilişkilendirebilirsiniz `Connect-AzAccount –Subscription $subs[0].id` . Etkileşimli olmayanlar dahil olmak üzere PowerShell 'den Azure 'da kimlik doğrulaması yapma hakkında daha fazla bilgi edinmek için bkz. [Azure PowerShell oturum açma](/powershell/azure/authenticate-azureps?view=azps-3.3.0&viewFallbackFrom=azps-2.5.0
-).
+Gibi bir komut kullanarak PowerShell oturumunuzu yeniden kimlik doğrulaması yapabilir ve bu abonelikle ilişkilendirebilirsiniz `Connect-AzAccount –Subscription $subs[0].id` . Etkileşimli olmayanlar dahil olmak üzere PowerShell 'den Azure 'da kimlik doğrulaması yapma hakkında daha fazla bilgi edinmek için bkz. [Azure PowerShell oturum açma](/powershell/azure/authenticate-azureps).
 
 Bu abonelikte birden çok Log Analytics çalışma alanınız varsa, [Get-Azoperationalınsightsworkspace](/powershell/module/Az.OperationalInsights/Get-AzOperationalInsightsWorkspace) cmdlet 'i, çalışma alanlarının listesini döndürür. Daha sonra Azure AD günlüklerine sahip olan bir tane bulabilirsiniz. `CustomerId`Bu cmdlet tarafından döndürülen alan, Log Analytics çalışma alanına genel bakış alanındaki Azure Portal gösterildiği "çalışma alanı kimliği" değeri ile aynıdır.
  

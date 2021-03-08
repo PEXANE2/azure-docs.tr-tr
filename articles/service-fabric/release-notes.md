@@ -5,12 +5,12 @@ ms.date: 06/10/2019
 ms.topic: conceptual
 hide_comments: true
 hideEdit: true
-ms.openlocfilehash: aec26c0109b4aa8e0819e7f5e9b3c69db7f74648
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 28abe5dbd9064fb0a6bc1b3f167830672deacdcc
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101726912"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102452705"
 ---
 # <a name="service-fabric-releases"></a>Service Fabric yayınları
 
@@ -71,7 +71,7 @@ Ayrıca, 7,1 6,5 ' den başlayan önemli yayınlar için destek tarihinin sonund
       -  Genel maliyetleri düşürün (diskler ücretsizdir ve ek depolama maliyeti yoktur)
 - [**Konu ortak adına göre Service Fabric uygulamalara yönelik hizmet uç noktası sertifikalarının**](./service-fabric-service-manifest-resources.md)bildirimi desteği.
 - [**Kapsayıcılı hizmetler Için sistem durumu araştırmaları desteği**](./probes-codepackage.md): Kapsayıcılı uygulamalar için Lizleştirme araştırma mekanizması desteği. Lizur araştırması Kapsayıcılı uygulamanın tam olarak duyurulmasına ve zamanında yanıt vermediklerinde yeniden başlatmaya neden olur. 
-- [Kapsayıcılar](https://review.docs.microsoft.com/azure/service-fabric/service-fabric-containers-overview) ve [Konuk yürütülebilir](https://review.docs.microsoft.com/azure/service-fabric/service-fabric-guest-executables-introduction) uygulamalar Için [**Başlatıcı kod paketleri desteği**](./initializer-codepackages.md) . Bu, hizmet paketi başlatmayı gerçekleştirmek için kod paketlerinin (ör. kapsayıcılar) belirtilen sırada yürütülmesini sağlar.
+- [Kapsayıcılar](/azure/service-fabric/service-fabric-containers-overview) ve [Konuk yürütülebilir](/azure/service-fabric/service-fabric-guest-executables-introduction) uygulamalar Için [**Başlatıcı kod paketleri desteği**](./initializer-codepackages.md) . Bu, hizmet paketi başlatmayı gerçekleştirmek için kod paketlerinin (ör. kapsayıcılar) belirtilen sırada yürütülmesini sağlar.
 - **Fabricgözlemci ve ClusterObserver** , bir SF kümesinin farklı yönlerine Ilişkin Service Fabric telemetri yakalayan durum bilgisiz uygulamalardır. Bu uygulamalar, ApplicationInsights, EventSource ve LogAnalytics için uygulanan destek ile zengin telemetri yakalamak üzere Windows üretim kümelerine dağıtım için hazırlardır.
     - [**Fabricgözlemci (FO) 2,0**](https://github.com/microsoft/service-fabric-observer)-tüm düğümlerde çalışır, sistem durumu olayları oluşturur, Kullanıcı tarafından yapılandırılan kaynak kullanım eşiklerine ulaşıldığında Telemetriyi yayar. Bu sürüm, izleme, veri yönetimi, sağlık olayı ayrıntıları, yapılandırılmış telemetri genelinde çeşitli geliştirmeler içerir.
      - [**Clustergözlemci (Co) 1,1**](https://github.com/microsoft/service-fabric-observer/tree/master/ClusterObserver) -tek bir düğümde çalışır, küme düzeyi durum telemetrisi yakalar. Bu sürümde, Kümegözlemci Ayrıca düğüm durumunu izler ve düğüm devre dışı bırakıldığında ve Kullanıcı tarafından belirtilen süre boyunca devre dışı bırakıldığında Telemetriyi yayar.

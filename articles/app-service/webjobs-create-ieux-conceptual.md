@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/16/2018
 ms.author: glenga
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 1cb5e99558d6bf1a5baa21d05d45415855c61cb5
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 7714b090399b0b184e2e216ff6da7b10f2bf4386
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101746694"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102452280"
 ---
 # <a name="webjobs-run-background-tasks-in-azure-app-service"></a>Web Işleri Azure App Service arka plan görevleri çalıştırır
 
@@ -60,4 +60,4 @@ Aşağıdaki dosya türleri desteklenir:
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [WebJob oluşturmayı](./webjobs-create-ieux.md) öğrenin
-* WebJobs günlük geçmişini görüntüle] (./WebJobs-Create-ieux-View-log.exe)
+* [Web işlerinin](./webjobs-create-ieux-view-log.md) günlük geçmişini görüntüle

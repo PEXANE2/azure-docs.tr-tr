@@ -7,14 +7,14 @@ author: divyaswarnkar
 ms.author: divswa
 ms.reviewer: estfan, daviburg, logicappspm
 ms.topic: article
-ms.date: 03/05/2021
+ms.date: 03/08/2021
 tags: connectors
-ms.openlocfilehash: 2820fe9d885187071924386ef71eb12fd42bbf01
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: 3e98dc36b3d58ce5289fccde7b5f5a49973c9de6
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102426459"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102454235"
 ---
 # <a name="connect-to-sap-systems-from-azure-logic-apps"></a>Azure Logic Apps’ten SAP sistemlerine bağlanma
 
@@ -30,7 +30,7 @@ Bu makalede [SAP bağlayıcısını](/connectors/sap/)kullanarak Logic Apps SAP 
 
     * Mantıksal uygulamanızı çok kiracılı Azure 'da çalıştırıyorsanız, [çok kiracılı önkoşullara](#multi-tenant-azure-prerequisites)bakın.
 
-    * Mantıksal uygulamanızı Premium düzeyinde bir[ tümleştirme hizmeti ortamında (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)çalıştırıyorsanız, [Ise önkoşulları](#ise-prerequisites)bölümüne bakın.
+    * Mantıksal uygulamanızı Premium düzeyinde bir [tümleştirme hizmeti ortamında (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)çalıştırıyorsanız, [Ise önkoşulları](#ise-prerequisites)bölümüne bakın.
 
 * Logic Apps erişmek istediğiniz [SAP uygulama sunucusu](https://wiki.scn.sap.com/wiki/display/ABAP/ABAP+Application+Server) veya [SAP ileti sunucusu](https://help.sap.com/saphelp_nw70/helpdata/en/40/c235c15ab7468bb31599cc759179ef/frameset.htm) . Bağlayıcıyla kullanabileceğiniz SAP sunucuları ve SAP eylemleri hakkında daha fazla bilgi için bkz. [SAP uyumluluğu](#sap-compatibility).
 
@@ -633,6 +633,14 @@ SAP 'den Logic App 'e IDoc 'Ları göndermek için, aşağıdaki en düşük yap
     * **RFC hedefi** için bir ad girin.
     
     * **Teknik ayarlar** sekmesinde, **etkinleştirme türü** Için, **kayıtlı sunucu programı**' nı seçin. **Program kimliğiniz** için bir değer girin. SAP 'de mantıksal uygulamanızın tetikleyicisi bu tanımlayıcı kullanılarak kaydedilir.
+
+    > [!IMPORTANT]
+    > SAP **program kimliği** büyük/küçük harfe duyarlıdır. Mantıksal uygulamanızı ve SAP sunucunuzu yapılandırırken, **Program kimliğiniz** için tutarlı olarak aynı durum biçimini kullandığınızdan emin olun. Aksi halde, SAP 'ye bir IDoc göndermeye çalıştığınızda tRFC Izleyicisinde (T-Code SM58) aşağıdaki hataları alabilirsiniz:
+    >
+    > * **İşlev IDOC_INBOUND_ASYNCHRONOUS bulunamadı**
+    > * **ABAP olmayan RFC istemcisi (iş ortağı türü) desteklenmiyor**
+    >
+    > SAP hakkında daha fazla bilgi için, aşağıdaki notlara (oturum açma gerekir) ve ' a bakın <https://launchpad.support.sap.com/#/notes/2399329> <https://launchpad.support.sap.com/#/notes/353597> .
     
     * **Unicode** sekmesinde, **hedef sistemle Iletişim türü** için **Unicode**' u seçin.
 
@@ -745,6 +753,14 @@ SAP 'yi, toplu işler veya IDoc grupları olan [paketlerdeki IDoc 'ları gönder
 İşte, [ `xpath()` işlevi](./workflow-definition-language-functions-reference.md#xpath)kullanarak bir paketten tek tek IDoc 'ları nasıl ayıklayabileceğiniz gösterilmektedir:
 
 1. Başlamadan önce SAP tetikleyicisine sahip bir mantıksal uygulama gerekir. Bu mantıksal uygulama henüz yoksa, [SAP tetikleyicisiyle bir mantıksal uygulama ayarlamak](#receive-message-from-sap)için bu konudaki önceki adımları izleyin.
+
+    > [!IMPORTANT]
+    > SAP **program kimliği** büyük/küçük harfe duyarlıdır. Mantıksal uygulamanızı ve SAP sunucunuzu yapılandırırken, **Program kimliğiniz** için tutarlı olarak aynı durum biçimini kullandığınızdan emin olun. Aksi halde, SAP 'ye bir IDoc göndermeye çalıştığınızda tRFC Izleyicisinde (T-Code SM58) aşağıdaki hataları alabilirsiniz:
+    >
+    > * **İşlev IDOC_INBOUND_ASYNCHRONOUS bulunamadı**
+    > * **ABAP olmayan RFC istemcisi (iş ortağı türü) desteklenmiyor**
+    >
+    > SAP hakkında daha fazla bilgi için, aşağıdaki notlara (oturum açma gerekir) ve ' a bakın <https://launchpad.support.sap.com/#/notes/2399329> <https://launchpad.support.sap.com/#/notes/353597> .
 
    Örnek:
 
@@ -1313,11 +1329,18 @@ Mantıksal uygulamanızdan SAP 'ye yinelenen IDoc 'Lar gönderilirken bir sorunl
 
 ## <a name="known-issues-and-limitations"></a>Bilinen sorunlar ve sınırlamalar
 
-Yönetilen (ıSE) SAP bağlayıcısının Şu anda bilinen sorunları ve sınırlamaları aşağıda verilmiştir:
+Yönetilen (ıSE) SAP bağlayıcısının Şu anda bilinen sorunları ve sınırlamaları aşağıda verilmiştir: 
 
-* SAP tetikleyicisi, veri ağ geçidi kümelerini desteklemez. Bazı yük devretme durumlarında, SAP sistemiyle iletişim kuran veri ağ geçidi düğümü etkin düğümden farklı olabileceğinden beklenmeyen davranışlara neden olur. Gönderme senaryolarında, veri ağ geçidi kümeleri desteklenir.
+* Genel olarak, SAP tetikleyicisi veri ağ geçidi kümelerini desteklemez. Bazı yük devretme durumlarında, SAP sistemiyle iletişim kuran veri ağ geçidi düğümü etkin düğümden farklı olabileceğinden beklenmeyen davranışlara neden olur.
+
+  * Gönderme senaryolarında, yük devretme modundaki veri ağ geçidi kümeleri desteklenir. 
+
+  * Yük Dengeleme modundaki veri ağ geçidi kümeleri durum bilgisi olan SAP eylemleri tarafından desteklenmez. Bu eylemler, **durum bilgisi olan oturum oluşturma**, **BAPI IŞLEMINI işleme**, **BAPI işlemini geri alma, işlem** **durum bilgisi kapatma oturumunu** ve **oturum kimliği** değeri belirten tüm eylemleri içerir. Durum bilgisi olan iletişimler aynı veri ağ geçidi kümesi düğümünde kalmalıdır. 
+
+  * Durum bilgisi olan SAP eylemleri için, veri ağ geçidini küme dışı modunda veya yalnızca yük devretme için ayarlanmış bir kümede kullanın.
 
 * SAP Bağlayıcısı Şu anda SAP yönlendirici dizelerini desteklemiyor. Şirket içi veri ağ geçidi, bağlanmak istediğiniz SAP sistemiyle aynı LAN üzerinde bulunmalıdır.
+
 
 ## <a name="connector-reference"></a>Bağlayıcı başvurusu
 

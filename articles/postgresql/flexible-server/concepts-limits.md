@@ -6,12 +6,12 @@ ms.author: lufittl
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/22/2020
-ms.openlocfilehash: 0221022c342735744d59f956d6047b4abf23b5cf
-ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
+ms.openlocfilehash: 58f71ddc470c06e17ff73dd5681cd343bcf8ac7b
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100516524"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102451906"
 ---
 # <a name="limits-in-azure-database-for-postgresql---flexible-server"></a>PostgreSQL için Azure veritabanı sınırları-esnek sunucu
 
@@ -68,7 +68,7 @@ Bir PostgreSQL bağlantısı bile boşta, yaklaşık 10 MB bellek içerebilir. A
 
 ### <a name="storage"></a>Depolama
 
-- Yapılandırıldıktan sonra, depolama boyutu küçültülemez.
+- Yapılandırıldıktan sonra, depolama boyutu küçültülemez. Gerekli depolama boyutuna sahip yeni bir sunucu oluşturmanız ve veritabanlarınızı geçirmek için el ile döküm ve geri yükleme işlemi gerçekleştirmeniz gerekir.
 - Şu anda, depolama otomatik büyüme özelliği kullanılamıyor. Lütfen kullanımı izleyin ve depolama alanını daha yüksek bir boyuta yükseltin. 
 - Depolama alanı kullanımı %95 ' e ulaştığında veya kullanılabilir kapasite 5 GiB 'den küçükse, disk dolu durumlarla ilişkili hataları önlemek için sunucu otomatik olarak **salt okuma moduna** geçiş yapılır. 
 - `storage used` `storage percent` Depolama boyutunu artırma gibi işlemleri daha etkili bir şekilde gerçekleştirmek için bazı eşikleri aştığında ya da bu uyarılar için uyarı kuralları ayarlamanızı öneririz. Örneğin, depolama alanı yüzdesi %80 kullanımı aşarsa bir uyarı ayarlayabilirsiniz.

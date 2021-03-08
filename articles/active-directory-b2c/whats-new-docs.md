@@ -1,7 +1,7 @@
 ---
 title: Azure Active Directory işletmeden müşteriye (B2C) yenilikleri
 description: Azure Active Directory işletmeden müşteriye (B2C) yönelik yeni ve güncelleştirilmiş belgeler.
-ms.date: 02/01/2021
+ms.date: 03/08/2021
 ms.service: active-directory
 ms.subservice: B2C
 ms.topic: reference
@@ -9,16 +9,28 @@ ms.workload: identity
 ms.author: mimart
 author: msmimart
 manager: CelesteDG
-ms.openlocfilehash: c4561780a20bb2dfdef39269a49ebf8cb2a29fff
-ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
+ms.openlocfilehash: 00be0a18984f1ad3eacf86a2cf3477d8b0d9065f
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99593019"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102454626"
 ---
 # <a name="azure-active-directory-b2c-whats-new"></a>Azure Active Directory B2C: yenilikler
 
 Azure Active Directory B2C belgelerindeki yenilikler 'e hoş geldiniz. Bu makalede, eklenen ve son üç ay içinde önemli güncelleştirmeleri olan yeni belgeler listelenir. B2C hizmetiyle ilgili yenilikler hakkında bilgi edinmek için bkz. [Azure Active Directory](../active-directory/fundamentals/whats-new.md)yenilikleri.
+
+## <a name="february-2021"></a>Şubat 2021
+
+### <a name="new-articles"></a>Yeni makaleler
+
+- [Telefon tabanlı Multi-Factor Authentication 'ın güvenliğini sağlama (MFA)](phone-based-mfa.md)
+
+### <a name="updated-articles"></a>Güncelleştirilmiş makaleler
+
+- [Azure Active Directory B2C kod örnekleri](code-samples.md)
+- [Application Insights kullanarak Azure AD B2C Kullanıcı davranışını izleme](analytics-with-application-insights.md)
+- [Azure Active Directory B2C'de oturum davranışını yapılandırma](session-behavior.md)
 
 ## <a name="january-2021"></a>Ocak 2021
 
