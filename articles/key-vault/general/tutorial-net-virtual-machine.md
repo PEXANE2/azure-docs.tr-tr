@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 07/20/2020
 ms.author: mbaldwin
 ms.custom: mvc, devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: 5d78299c4583251180b3fb9a902561406b849b4a
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
+ms.openlocfilehash: a56c08e5bf6054d24af3ade571ec625969286a77
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102201184"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102455653"
 ---
 # <a name="tutorial-use-azure-key-vault-with-a-virtual-machine-in-net"></a>Öğretici: .NET 'teki bir sanal makine ile Azure Key Vault kullanma
 
@@ -145,7 +145,7 @@ using Azure.Identity;
 using Azure.Security.KeyVault.Secrets;
 ```
 
-Bu satırları ekleyin ve URI 'yi `vaultUri` anahtar kasanızın sayısını yansıtacak şekilde güncelleyerek. Aşağıdaki kod, kimlik doğrulaması için uygulama tarafından yönetilen kimliğin belirtecini kullanan Anahtar Kasası kimlik doğrulaması için  [' DefaultAzureCredential () '](/dotnet/api/azure.identity.defaultazurecredential?view=azure-dotnet) kullanıyor. Ayrıca, Anahtar Kasası kısıtlanmadan yeniden denemeler için üstel geri alma özelliği de kullanılıyor.
+Bu satırları ekleyin ve URI 'yi `vaultUri` anahtar kasanızın sayısını yansıtacak şekilde güncelleyerek. Aşağıdaki kod, kimlik doğrulaması için uygulama tarafından yönetilen kimliğin belirtecini kullanan Anahtar Kasası kimlik doğrulaması için  [' DefaultAzureCredential () '](/dotnet/api/azure.identity.defaultazurecredential) kullanıyor. Ayrıca, Anahtar Kasası kısıtlanmadan yeniden denemeler için üstel geri alma özelliği de kullanılıyor.
 
 ```csharp
   class Program

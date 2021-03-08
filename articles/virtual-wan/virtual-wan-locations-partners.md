@@ -9,12 +9,12 @@ ms.date: 03/03/2021
 ms.author: cherylmc
 ms.custom: references_regions
 Customer intent: As someone with a networking background, I want to find a Virtual WAN partner
-ms.openlocfilehash: 1e8a8aa632d4c91cdfc6753d988a439d2de8938e
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: d1f05e76768ffc8ce930d97573c7729b8e4afafe
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102040557"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102452756"
 ---
 # <a name="virtual-wan-partners-and-virtual-hub-locations"></a>Sanal WAN iş ortakları ve sanal hub konumları
 
@@ -61,7 +61,8 @@ Bu iş ortakları, artık sanal WAN hub 'ına dağıtım için kullanılabilen *
 |İş Ortakları|Yapılandırma/nasıl yapılır/dağıtım kılavuzu|
 |---|---|
 |[Barracuda Networks](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/barracudanetworks.barracuda_cloudgenwan_gateway?tab=Overviewus/marketplace/apps/barracudanetworks.barracuda_cloudgenwan_gateway?tab=Overview)| [Barrampada CloudGen WAN dağıtım kılavuzu](https://campus.barracuda.com/product/cloudgenwan/doc/91980640/deployment/)|
-|[Cisco bulut hizmeti yönlendiricisi (CSR) VWAN](https://aka.ms/ciscoMarketPlaceOffer)| Cisco Cloud Services (CSR) WAN ' ın VWAN hub 'ına genel önizlemesi sırasında, Cisco, son müşterinin bir e-posta göndererek vwan_public_preview@external.cisco.com ve vManage dağıtım kılavuzunu istediğini bir CISCO EFT (erken alan denemesi) müşterisi olarak kaydetmesini gerektirir. |
+|[Cisco bulut hizmeti yönlendiricisi (CSR) VWAN](https://aka.ms/ciscoMarketPlaceOffer)| Cisco Cloud Services (CSR) WAN ' ın VWAN hub 'ına genel önizlemesi sırasında, Cisco, son müşterinin bir e-posta göndererek vwan_public_preview@external.cisco.com ve vManage dağıtım kılavuzunu istediğini bir CISCO EFT (erken alan denemesi) müşterisi olarak kaydetmesini gerektirir. 
+|[VMware SD-WAN, sanal WAN hub 'da](https://kb.vmware.com/s/article/82746) | VMware SD-WAN ' ın VWAN hub 'ına genel önizlemesi sırasında VMware, müşterinin adresine bir e-posta göndererek kaydolmanızı gerektirir vhubsupport@vmware.com . [VMware SD-WAN ın sanal WAN hub dağıtım kılavuzu](https://kb.vmware.com/s/article/82746)|
 
 Şu iş ortakları, sanal hub 'daki NVA 'yı yakın gelecekte sunmakta olan aviatrix, Citrix, VeloCloud ve tersi ağlar için alınmıştır.
 

@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/14/2020
-ms.openlocfilehash: 8c5b4eac17b4c7ae9b4081d0eb9118285dc74bd5
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: e32bf95ef52fdd081eeaa476f44bf5dab99657d6
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102030979"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102452127"
 ---
 # <a name="send-log-data-to-azure-monitor-with-the-http-data-collector-api-public-preview"></a>HTTP Veri Toplayıcı API 'SI ile günlük verilerini Azure Izleyici 'ye gönderme (Genel Önizleme)
 Bu makalede, Azure Izleyici 'ye bir REST API istemcisinden günlük verileri göndermek için HTTP Veri Toplayıcı API 'sinin nasıl kullanılacağı gösterilmektedir.  Betik veya uygulamanız tarafından toplanan verilerin nasıl biçimlendirileceğini, bir isteğe dahil edileceğini ve bu isteğin Azure Izleyici tarafından yetkilendirildiğini açıklar.  PowerShell, C# ve Python için örnekler verilmiştir.
@@ -650,7 +650,7 @@ Veri Toplayıcı API 'SI, Azure günlüklerine serbest biçimli veriler toplamak
 |---|---|---|
 | [Özel olaylar](../app/api-custom-events-metrics.md?toc=%2Fazure%2Fazure-monitor%2Ftoc.json#properties): APPLICATION INSIGHTS yerel SDK tabanlı alma | Genellikle uygulamanızdaki bir SDK aracılığıyla belgelenmiş olan Application Insights özel olaylar aracılığıyla özel veri göndermenize olanak sağlar. | <ul><li> Uygulamanızda oluşturulan, ancak varsayılan veri türlerinden biri (istekler, bağımlılıklar, özel durumlar vb.) aracılığıyla SDK tarafından çekilmemiş veriler.</li><li> Application Insights ' deki diğer uygulama verileriyle en sık bağıntılı veriler </li></ul> |
 | Azure Izleyici günlüklerinde veri toplayıcı API 'SI | Azure Izleyici günlüklerinde veri toplayıcı API 'SI, verileri almak için tamamen açık uçlu bir yoldur. JSON nesnesinde biçimlendirilen tüm veriler buraya gönderilebilir. Gönderildikten sonra işlenir ve günlüklerde bulunan diğer verilerle bağıntılı veya diğer Application Insights verilerine yönelik Günlükler kullanılabilir. <br/><br/> Verileri bir Azure Blob blob 'una dosya olarak yüklemek oldukça kolaydır, bu dosyaların nerede işleneceğini ve Log Analytics karşıya yükleneceğini buradan yükleyebilirsiniz. Bu tür bir işlem hattının örnek bir uygulanması için lütfen [Bu](./create-pipeline-datacollector-api.md) makaleye bakın. | <ul><li> Application Insights içinde belgelenmiş bir uygulama içinde oluşturulmayan veriler.</li><li> Arama ve olgu tablolarını, başvuru verilerini, ön toplanmış istatistikleri ve benzeri örnekleri içerir. </li><li> Diğer Azure Izleyici verilerine (Application Insights, diğer günlük veri türleri, Güvenlik Merkezi, kapsayıcı öngörüleri/VM 'Ler vb.) karşı çapraz başvuru yapılacak veriler için tasarlanmıştır. </li></ul> |
-| [Azure Veri Gezgini](/azure/data-explorer/ingest-data-overview) | Azure Veri Gezgini (ADX), Application Insights Analytics ve Azure Izleyici günlüklerini destekleyen veri platformudur. Genel kullanıma sunuldu ("GA"), veri platformunu ham biçimde kullanmak, küme üzerinden (Kubernetes RBAC, bekletme oranı, şema vb.) tüm esnekliği (yönetim yükünü gerektirir) sağlar. ADX [CSV, TSV ve JSON](/azure/kusto/management/mappings?branch=master) dosyaları gibi birçok alma [seçeneği](/azure/data-explorer/ingest-data-overview#ingestion-methods) sunar. | <ul><li> Application Insights veya günlükleri altındaki diğer verilerle bağıntılı olmayacak veriler. </li><li> Azure Izleyici günlüklerinde gelişmiş alma veya işleme özellikleri gerektiren veriler bugün kullanılamıyor. </li></ul> |
+| [Azure Veri Gezgini](/azure/data-explorer/ingest-data-overview) | Azure Veri Gezgini (ADX), Application Insights Analytics ve Azure Izleyici günlüklerini destekleyen veri platformudur. Genel kullanıma sunuldu ("GA"), veri platformunu ham biçimde kullanmak, küme üzerinden (Kubernetes RBAC, bekletme oranı, şema vb.) tüm esnekliği (yönetim yükünü gerektirir) sağlar. ADX [CSV, TSV ve JSON](/azure/kusto/management/mappings) dosyaları gibi birçok alma [seçeneği](/azure/data-explorer/ingest-data-overview#ingestion-methods) sunar. | <ul><li> Application Insights veya günlükleri altındaki diğer verilerle bağıntılı olmayacak veriler. </li><li> Azure Izleyici günlüklerinde gelişmiş alma veya işleme özellikleri gerektiren veriler bugün kullanılamıyor. </li></ul> |
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
