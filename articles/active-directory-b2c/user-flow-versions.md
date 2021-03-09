@@ -10,19 +10,19 @@ ms.topic: reference
 ms.date: 07/30/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 75ad3743a90f5773163a8f115e1924b8c5bbe097
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: 1c05ff1bf1956943230bf523584025787495d57f
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97108102"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102517863"
 ---
 # <a name="user-flow-versions-in-azure-active-directory-b2c"></a>Azure Active Directory B2C 'daki Kullanıcı akışı sürümleri
 
 Azure Active Directory B2C (Azure AD B2C) Kullanıcı akışları, müşteri kimlik deneyimlerini tam olarak tanımlayan ortak [ilkeleri](user-flow-overview.md) ayarlamanıza yardımcı olur. Bu deneyimlere kaydolma, oturum açma, parola sıfırlama veya profil düzenlemesi dahildir. Aşağıdaki tablolarda Azure AD B2C bulunan Kullanıcı akışları açıklanır.
 
 > [!IMPORTANT]
-> Kullanıcı akış sürümlerine başvurduğumuz şekilde değiştirdik. Daha önce v1 (üretime Ready) sürümleri ve V 1.1 ve v2 (Önizleme) sürümlerini sunuyoruz. Artık Kullanıcı akışlarını iki sürüme birleştiriyoruz:
+> Kullanıcı akışı sürümlerine başvuru şeklimizi değiştirdik. Daha önce V1 (üretime hazır) sürümleriyle V1.1 ve V2 (önizleme) sürümlerini sunduk. Artık Kullanıcı akışlarını iki sürüme birleştiriyoruz:
 >
 >- **Önerilen** Kullanıcı akışları, Kullanıcı akışlarının yeni önizleme sürümlerindedir. Kapsamlı olarak test edilmiştir ve eski **v2** ve **v 1.1** sürümlerinin tüm özelliklerini birleştirirler. İleri giderek, önerilen yeni Kullanıcı akışları korunur ve güncelleştirilir. Bu yeni önerilen Kullanıcı akışlarına taşıdıktan sonra, serbest bırakılanlar gibi yeni özelliklere erişebilirsiniz.
 >- Daha önce **v1** olarak bilinen **Standart** Kullanıcı akışları, genel olarak kullanılabilir, üretime hazır Kullanıcı akışıdır. Kullanıcı akışlarınız görev açısından kritiktir ve yüksek oranda kararlı sürümlere bağlıysa, standart Kullanıcı akışlarını kullanmaya devam edebilirsiniz ve bu sürümlerin korunmayacağını ve güncelleştirilmediğini da sürdürmez.
@@ -33,19 +33,19 @@ Azure Active Directory B2C (Azure AD B2C) Kullanıcı akışları, müşteri kim
 
 Önerilen Kullanıcı akışları, yeni özellikleri eski v2 ve V 1.1 özellikleriyle birleştiren önizleme sürümleridir. İleri giderek, önerilen Kullanıcı akışları korunur ve güncelleştirilir.
 
-| Kullanıcı akışı | Açıklama |
+| Kullanıcı akışı | Description |
 | --------- | ----------- |
-| Parola sıfırlama (Önizleme) | Kullanıcının e-postalarını doğruladıktan sonra yeni bir parola seçmesini sağlar. Bu kullanıcı akışını kullanarak şunları yapılandırabilirsiniz: <ul><li>[Çok faktörlü kimlik doğrulaması](multi-factor-authentication.md)</li><li>Belirteç uyumluluk ayarları</li><li>[Yaş sınırı](basic-age-gating.md)</li><li>[parola karmaşıklığı gereksinimleri](password-complexity.md)</li></ul> |
+| Parola sıfırlama (Önizleme) | Kullanıcının e-postalarını doğruladıktan sonra yeni bir parola seçmesini sağlar. Bu kullanıcı akışını kullanarak şunları yapılandırabilirsiniz: <ul><li>[Çok faktörlü kimlik doğrulaması](multi-factor-authentication.md)</li><li>Belirteç uyumluluk ayarları</li><li>[Yaş sınırı](age-gating.md)</li><li>[parola karmaşıklığı gereksinimleri](password-complexity.md)</li></ul> |
 | Profil düzenlemesi (Önizleme) | Kullanıcının kullanıcı özniteliklerini yapılandırmasına olanak sağlar. Bu kullanıcı akışını kullanarak şunları yapılandırabilirsiniz: <ul><li>[Belirteç ömrü](tokens-overview.md)</li><li>Belirteç uyumluluk ayarları</li><li>Oturum davranışı</li></ul> |
-| Oturum aç (Önizleme) | Kullanıcının hesabında oturum açmasını sağlar. Bu kullanıcı akışını kullanarak şunları yapılandırabilirsiniz: <ul><li>[Çok faktörlü kimlik doğrulaması](multi-factor-authentication.md)</li><li>[Belirteç ömrü](tokens-overview.md)</li><li>Belirteç uyumluluk ayarları</li><li>Oturum davranışı</li><li>[Yaş sınırı](basic-age-gating.md)</li><li>Oturum açma sayfası özelleştirmesi</li></ul> |
-| Kaydolma (Önizleme) | Kullanıcının hesap oluşturmasını sağlar. Bu kullanıcı akışını kullanarak şunları yapılandırabilirsiniz: <ul><li>[Çok faktörlü kimlik doğrulaması](multi-factor-authentication.md)</li><li>[Belirteç ömrü](tokens-overview.md)</li><li>Belirteç uyumluluk ayarları</li><li>Oturum davranışı</li><li>[Yaş sınırı](basic-age-gating.md)</li><li>[Parola karmaşıklığı gereksinimleri](password-complexity.md)</li></ul> |
-| Kaydolma ve oturum açma (Önizleme) | Kullanıcının hesabında hesap oluşturmasını veya oturum açmasını sağlar. Bu kullanıcı akışını kullanarak şunları yapılandırabilirsiniz: <ul><li>[Çok faktörlü kimlik doğrulaması](multi-factor-authentication.md)</li><li>[Yaş sınırı](basic-age-gating.md)</li><li>[Parola karmaşıklığı gereksinimleri](password-complexity.md)</li></ul> |
+| Oturum aç (Önizleme) | Kullanıcının hesabında oturum açmasını sağlar. Bu kullanıcı akışını kullanarak şunları yapılandırabilirsiniz: <ul><li>[Çok faktörlü kimlik doğrulaması](multi-factor-authentication.md)</li><li>[Belirteç ömrü](tokens-overview.md)</li><li>Belirteç uyumluluk ayarları</li><li>Oturum davranışı</li><li>[Yaş sınırı](age-gating.md)</li><li>Oturum açma sayfası özelleştirmesi</li></ul> |
+| Kaydolma (Önizleme) | Kullanıcının hesap oluşturmasını sağlar. Bu kullanıcı akışını kullanarak şunları yapılandırabilirsiniz: <ul><li>[Çok faktörlü kimlik doğrulaması](multi-factor-authentication.md)</li><li>[Belirteç ömrü](tokens-overview.md)</li><li>Belirteç uyumluluk ayarları</li><li>Oturum davranışı</li><li>[Yaş sınırı](age-gating.md)</li><li>[Parola karmaşıklığı gereksinimleri](password-complexity.md)</li></ul> |
+| Kaydolma ve oturum açma (Önizleme) | Kullanıcının hesabında hesap oluşturmasını veya oturum açmasını sağlar. Bu kullanıcı akışını kullanarak şunları yapılandırabilirsiniz: <ul><li>[Çok faktörlü kimlik doğrulaması](multi-factor-authentication.md)</li><li>[Yaş sınırı](age-gating.md)</li><li>[Parola karmaşıklığı gereksinimleri](password-complexity.md)</li></ul> |
 
 ## <a name="standard-user-flows"></a>Standart Kullanıcı akışları
 
 Standart Kullanıcı akışları (daha önce v1 olarak adlandırılır) genel olarak kullanılabilir, üretime hazır Kullanıcı akışıdır. Standart Kullanıcı akışları bundan sonra güncelleştirilmeyecek.
 
-| Kullanıcı akışı | Açıklama |
+| Kullanıcı akışı | Description |
 | --------- | ----------- | ----------- |
 | Parola sıfırlama | Kullanıcının e-postalarını doğruladıktan sonra yeni bir parola seçmesini sağlar. Bu kullanıcı akışını kullanarak şunları yapılandırabilirsiniz: <ul><li>[Çok faktörlü kimlik doğrulaması](multi-factor-authentication.md)</li><li>Belirteç uyumluluk ayarları</li><li>[Parola karmaşıklığı gereksinimleri](password-complexity.md)</li></ul> |
 | Profil düzenlemesi | Kullanıcının kullanıcı özniteliklerini yapılandırmasına olanak sağlar. Bu kullanıcı akışını kullanarak şunları yapılandırabilirsiniz: <ul><li>[Belirteç ömrü](tokens-overview.md)</li><li>Belirteç uyumluluk ayarları</li><li>Oturum davranışı</li></ul> |

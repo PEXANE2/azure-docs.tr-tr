@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.date: 06/17/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, deploy
-ms.openlocfilehash: 8480a0b8722fbfff0f1d8a8fafc1a64f38d21d6e
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 6797c32ded5c12bbac3fafa1eabd1e6f74d28e07
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93307220"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102519257"
 ---
 # <a name="deploy-a-deep-learning-model-for-inference-with-gpu"></a>GPU ile çıkarım için derin öğrenme modeli dağıtma
 
@@ -38,7 +38,7 @@ Bu makalede, GPU özellikli bir modeli bir Web hizmeti olarak dağıtmak için A
 
 * Azure Machine Learning çalışma alanı. Daha fazla bilgi için bkz. [Azure Machine Learning çalışma alanı oluşturma](how-to-manage-workspace.md).
 
-* Azure Machine Learning SDK yüklü bir Python geliştirme ortamı. Daha fazla bilgi için bkz. [SDK Azure Machine Learning](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py).  
+* Azure Machine Learning SDK yüklü bir Python geliştirme ortamı. Daha fazla bilgi için bkz. [SDK Azure Machine Learning](/python/api/overview/azure/ml/install).  
 
 * GPU kullanan kayıtlı bir model.
 
@@ -176,7 +176,7 @@ gpu_aks_config = AksWebservice.deploy_configuration(autoscale_enabled=False,
                                                     memory_gb=4)
 ```
 
-Daha fazla bilgi için bkz. [AksService.deploy_configuration](/python/api/azureml-core/azureml.core.webservice.akswebservice?view=azure-ml-py&preserve-view=true#&preserve-view=truedeploy-configuration-autoscale-enabled-none--autoscale-min-replicas-none--autoscale-max-replicas-none--autoscale-refresh-seconds-none--autoscale-target-utilization-none--collect-model-data-none--auth-enabled-none--cpu-cores-none--memory-gb-none--enable-app-insights-none--scoring-timeout-ms-none--replica-max-concurrent-requests-none--max-request-wait-time-none--num-replicas-none--primary-key-none--secondary-key-none--tags-none--properties-none--description-none--gpu-cores-none--period-seconds-none--initial-delay-seconds-none--timeout-seconds-none--success-threshold-none--failure-threshold-none--namespace-none--token-auth-enabled-none--compute-target-name-none-)için başvuru belgeleri.
+Daha fazla bilgi için bkz. [AksService.deploy_configuration](/python/api/azureml-core/azureml.core.webservice.akswebservice#deploy-configuration-autoscale-enabled-none--autoscale-min-replicas-none--autoscale-max-replicas-none--autoscale-refresh-seconds-none--autoscale-target-utilization-none--collect-model-data-none--auth-enabled-none--cpu-cores-none--memory-gb-none--enable-app-insights-none--scoring-timeout-ms-none--replica-max-concurrent-requests-none--max-request-wait-time-none--num-replicas-none--primary-key-none--secondary-key-none--tags-none--properties-none--description-none--gpu-cores-none--period-seconds-none--initial-delay-seconds-none--timeout-seconds-none--success-threshold-none--failure-threshold-none--namespace-none--token-auth-enabled-none--compute-target-name-none-)için başvuru belgeleri.
 
 ## <a name="define-the-inference-configuration"></a>Çıkarım yapılandırmasını tanımlama
 
@@ -192,7 +192,7 @@ inference_config = InferenceConfig(entry_script="score.py", environment=myenv)
 ```
 
 Ortamlar hakkında daha fazla bilgi için bkz. [eğitim ve dağıtım için ortamları oluşturma ve yönetme](how-to-use-environments.md).
-Daha fazla bilgi için bkz. [ınenceconfig](/python/api/azureml-core/azureml.core.model.inferenceconfig?preserve-view=true&view=azure-ml-py)için başvuru belgeleri.
+Daha fazla bilgi için bkz. [ınenceconfig](/python/api/azureml-core/azureml.core.model.inferenceconfig)için başvuru belgeleri.
 
 ## <a name="deploy-the-model"></a>Modeli dağıtma
 
@@ -217,7 +217,7 @@ aks_service.wait_for_deployment(show_output=True)
 print(aks_service.state)
 ```
 
-Daha fazla bilgi için bkz. [model](/python/api/azureml-core/azureml.core.model.model?preserve-view=true&view=azure-ml-py)için başvuru belgeleri.
+Daha fazla bilgi için bkz. [model](/python/api/azureml-core/azureml.core.model.model)için başvuru belgeleri.
 
 ## <a name="issue-a-sample-query-to-your-service"></a>Hizmetinize örnek bir sorgu verme
 

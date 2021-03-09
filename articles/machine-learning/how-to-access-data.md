@@ -11,16 +11,16 @@ author: MayMSFT
 ms.reviewer: nibaccam
 ms.date: 11/03/2020
 ms.custom: how-to, contperf-fy21q1, devx-track-python, data4ml
-ms.openlocfilehash: 0bc247e473ea96f2f9301eeaebb543b3317c84c7
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 78b7bab204a08b474ea3c5cf5c2f7735c019a9c3
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101659673"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102519937"
 ---
 # <a name="connect-to-storage-services-on-azure"></a>Azure 'da Storage Services 'a bağlanma
 
-Bu makalede, Azure 'daki veri depolama hizmetlerine Azure Machine Learning veri depoları ve [Azure Machine Learning Python SDK](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py)ile nasıl bağlanacağınızı öğrenin.
+Bu makalede, Azure 'daki veri depolama hizmetlerine Azure Machine Learning veri depoları ve [Azure Machine Learning Python SDK](/python/api/overview/azure/ml/intro)ile nasıl bağlanacağınızı öğrenin.
 
 Veri depoları, kimlik doğrulama kimlik bilgilerinizi ve risk altındaki özgün veri kaynağınızın bütünlüğünü yapmadan Azure 'da depolama hizmetinize güvenli bir şekilde bağlanır. Bu kişiler, çalışma alanıyla ilişkili [Key Vault](https://azure.microsoft.com/services/key-vault/) abonelik kimliğiniz ve belirteç yetkilendirmesi gibi bağlantı bilgilerini depolar, böylece depolama alanınıza güvenli bir şekilde kod yazmanız gerekmeden depolamaya güvenle erişebilirsiniz. [Bu Azure depolama çözümlerine](#matrix)bağlanan veri depoları oluşturabilirsiniz.
 
@@ -29,7 +29,7 @@ Datamağazaların Azure Machine Learning genel veri erişimi iş akışına uygu
 Düşük bir kod deneyimi için bkz. [Azure Machine Learning Studio 'yu kullanarak veri depoları oluşturma ve kaydetme](how-to-connect-data-ui.md#create-datastores).
 
 >[!TIP]
-> Bu makalede, hizmet sorumlusu veya paylaşılan erişim imzası (SAS) belirteci gibi kimlik bilgisi tabanlı kimlik doğrulama kimlik bilgileri ile depolama hizmetinize bağlanmak istediğiniz varsayılır. Kimlik bilgileri veri depolarıyla kayıtlıysa, çalışma alanı *okuyucusu* rolüne sahip tüm kullanıcıların bu kimlik bilgilerini alabilmesi için göz önünde bulundurun. [Çalışma alanı *okuyucu* rolü hakkında daha fazla bilgi edinin.](how-to-assign-roles.md#default-roles) <br><br>Bu sorun varsa, [kimlik tabanlı erişim ile depolama hizmetlerine nasıl bağlanacağınızı](how-to-identity-based-data-access.md)öğrenin. <br><br>Bu özellik, [deneysel](/python/api/overview/azure/ml/?preserve-view=true&view=azure-ml-py#stable-vs-experimental) Önizleme özelliğine sahiptir ve herhangi bir zamanda değişebilir. 
+> Bu makalede, hizmet sorumlusu veya paylaşılan erişim imzası (SAS) belirteci gibi kimlik bilgisi tabanlı kimlik doğrulama kimlik bilgileri ile depolama hizmetinize bağlanmak istediğiniz varsayılır. Kimlik bilgileri veri depolarıyla kayıtlıysa, çalışma alanı *okuyucusu* rolüne sahip tüm kullanıcıların bu kimlik bilgilerini alabilmesi için göz önünde bulundurun. [Çalışma alanı *okuyucu* rolü hakkında daha fazla bilgi edinin.](how-to-assign-roles.md#default-roles) <br><br>Bu sorun varsa, [kimlik tabanlı erişim ile depolama hizmetlerine nasıl bağlanacağınızı](how-to-identity-based-data-access.md)öğrenin. <br><br>Bu özellik, [deneysel](/python/api/overview/azure/ml/#stable-vs-experimental) Önizleme özelliğine sahiptir ve herhangi bir zamanda değişebilir. 
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -37,7 +37,7 @@ Düşük bir kod deneyimi için bkz. [Azure Machine Learning Studio 'yu kullanar
 
 - [Desteklenen depolama türü](#matrix)olan bir Azure depolama hesabı.
 
-- [Python için Azure MACHINE LEARNING SDK](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py).
+- [Python için Azure MACHINE LEARNING SDK](/python/api/overview/azure/ml/intro).
 
 - Azure Machine Learning çalışma alanı.
   
@@ -66,7 +66,7 @@ Datamağazaların Şu anda aşağıdaki matriste listelenen depolama hizmetlerin
 > [!TIP]
 > **Desteklenmeyen depolama çözümleri için** ve ml denemeleri sırasında veri çıkış maliyetini kaydetmek için, verilerinizi desteklenen bir Azure depolama çözümüne [taşıyın](#move) . 
 
-| Depolama &nbsp; türü | Kimlik doğrulama &nbsp; türü | [Azure &nbsp; Machine &nbsp; Learning Studio](https://ml.azure.com/) | [Azure &nbsp; Machine &nbsp; Learning &nbsp; Python SDK 'sı](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py) |  [Azure &nbsp; Machine &nbsp; Learning CLI](reference-azure-machine-learning-cli.md) | [Azure &nbsp; Machine &nbsp; Learning &nbsp; REST API 'si](/rest/api/azureml/) | VS Code
+| Depolama &nbsp; türü | Kimlik doğrulama &nbsp; türü | [Azure &nbsp; Machine &nbsp; Learning Studio](https://ml.azure.com/) | [Azure &nbsp; Machine &nbsp; Learning &nbsp; Python SDK 'sı](/python/api/overview/azure/ml/intro) |  [Azure &nbsp; Machine &nbsp; Learning CLI](reference-azure-machine-learning-cli.md) | [Azure &nbsp; Machine &nbsp; Learning &nbsp; REST API 'si](/rest/api/azureml/) | VS Code
 ---|---|---|---|---|---|---
 [Azure &nbsp; BLOB &nbsp; depolama](../storage/blobs/storage-blobs-overview.md)| Hesap anahtarı <br> SAS belirteci | ✓ | ✓ | ✓ |✓ |✓
 [Azure &nbsp; Dosya &nbsp; paylaşma](../storage/files/storage-files-introduction.md)| Hesap anahtarı <br> SAS belirteci | ✓ | ✓ | ✓ |✓|✓
@@ -77,8 +77,8 @@ Datamağazaların Şu anda aşağıdaki matriste listelenen depolama hizmetlerin
 [&nbsp; &nbsp; MySQL için Azure &nbsp; veritabanı](../mysql/overview.md) | SQL kimlik doğrulaması|  | ✓* | ✓* |✓*|
 [Databricks &nbsp; Dosya &nbsp; sistemi](/azure/databricks/data/databricks-file-system)| Kimlik doğrulaması yok | | ✓** | ✓ ** |✓** |
 
-\*MySQL yalnızca işlem hattı [Datatransferstep](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.datatransferstep?preserve-view=true&view=azure-ml-py) için destekleniyor<br />
-\*\*Databricks yalnızca işlem hattı [Databricksstep](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.databricks_step.databricksstep?preserve-view=true&view=azure-ml-py) için destekleniyor
+\*MySQL yalnızca işlem hattı [Datatransferstep](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.datatransferstep) için destekleniyor<br />
+\*\*Databricks yalnızca işlem hattı [Databricksstep](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.databricks_step.databricksstep) için destekleniyor
 
 
 ### <a name="storage-guidance"></a>Depolama yönergeleri
@@ -143,7 +143,7 @@ Bu bölüm içinde, aşağıdaki depolama türleri için Python SDK 'Sı aracıl
 * [Azure dosya paylaşma](#azure-file-share)
 * [Azure Data Lake Storage 2. nesil](#azure-data-lake-storage-generation-2)
 
- Desteklenen diğer depolama hizmetleri için veri depoları oluşturmak için, [ilgili `register_azure_*` Yöntemler için başvuru belgelerine](/python/api/azureml-core/azureml.core.datastore.datastore?preserve-view=true&view=azure-ml-py#&preserve-view=truemethods)bakın.
+ Desteklenen diğer depolama hizmetleri için veri depoları oluşturmak için, [ilgili `register_azure_*` Yöntemler için başvuru belgelerine](/python/api/azureml-core/azureml.core.datastore.datastore#methods)bakın.
 
 Düşük kod deneyimini tercih ediyorsanız bkz. [Azure Machine Learning Studio ile verilere bağlanma](how-to-connect-data-ui.md).
 >[!IMPORTANT]
@@ -154,7 +154,7 @@ Düşük kod deneyimini tercih ediyorsanız bkz. [Azure Machine Learning Studio 
 
 ### <a name="azure-blob-container"></a>Azure Blob kapsayıcısı
 
-Bir Azure Blob kapsayıcısını bir veri deposu olarak kaydetmek için kullanın [`register_azure_blob_container()`](/python/api/azureml-core/azureml.core.datastore%28class%29?preserve-view=true&view=azure-ml-py#&preserve-view=trueregister-azure-blob-container-workspace--datastore-name--container-name--account-name--sas-token-none--account-key-none--protocol-none--endpoint-none--overwrite-false--create-if-not-exists-false--skip-validation-false--blob-cache-timeout-none--grant-workspace-access-false--subscription-id-none--resource-group-none-) .
+Bir Azure Blob kapsayıcısını bir veri deposu olarak kaydetmek için kullanın [`register_azure_blob_container()`](/python/api/azureml-core/azureml.core.datastore%28class%29#register-azure-blob-container-workspace--datastore-name--container-name--account-name--sas-token-none--account-key-none--protocol-none--endpoint-none--overwrite-false--create-if-not-exists-false--skip-validation-false--blob-cache-timeout-none--grant-workspace-access-false--subscription-id-none--resource-group-none-) .
 
 Aşağıdaki kod, veri deposunu oluşturur ve `blob_datastore_name` `ws` çalışma alanına kaydeder. Bu veri deposu, `my-container-name` `my-account-name` belirtilen hesap erişim anahtarını kullanarak depolama hesabındaki blob kapsayıcısına erişir. Sanal ağ senaryolarında yönergeler ve gerekli kimlik doğrulama kimlik bilgilerinin nerede bulunacağı hakkında bilgi edinmek için [depolama erişimi & izinleri](#storage-access-and-permissions) bölümünü gözden geçirin. 
 
@@ -173,7 +173,7 @@ blob_datastore = Datastore.register_azure_blob_container(workspace=ws,
 
 ### <a name="azure-file-share"></a>Azure dosya paylaşımı
 
-Bir Azure dosya paylaşımının kaydını bir veri deposu olarak kaydetmek için kullanın [`register_azure_file_share()`](/python/api/azureml-core/azureml.core.datastore%28class%29?preserve-view=true&view=azure-ml-py#&preserve-view=trueregister-azure-file-share-workspace--datastore-name--file-share-name--account-name--sas-token-none--account-key-none--protocol-none--endpoint-none--overwrite-false--create-if-not-exists-false--skip-validation-false-) . 
+Bir Azure dosya paylaşımının kaydını bir veri deposu olarak kaydetmek için kullanın [`register_azure_file_share()`](/python/api/azureml-core/azureml.core.datastore%28class%29#register-azure-file-share-workspace--datastore-name--file-share-name--account-name--sas-token-none--account-key-none--protocol-none--endpoint-none--overwrite-false--create-if-not-exists-false--skip-validation-false-) . 
 
 Aşağıdaki kod, veri deposunu oluşturur ve `file_datastore_name` `ws` çalışma alanına kaydeder. Bu veri deposu `my-fileshare-name` `my-account-name` , belirtilen hesap erişim anahtarını kullanarak depolama hesabındaki dosya paylaşımına erişir. Sanal ağ senaryolarında yönergeler ve gerekli kimlik doğrulama kimlik bilgilerinin nerede bulunacağı hakkında bilgi edinmek için [depolama erişimi & izinleri](#storage-access-and-permissions) bölümünü gözden geçirin. 
 
@@ -192,7 +192,7 @@ file_datastore = Datastore.register_azure_file_share(workspace=ws,
 
 ### <a name="azure-data-lake-storage-generation-2"></a>Azure Data Lake Storage 2. nesil
 
-Bir Azure Data Lake Storage 2. nesil (ADLS Gen 2) veri deposu için, [hizmet sorumlusu izinleriyle](../active-directory/develop/howto-create-service-principal-portal.md)bir Azure Data Lake Gen 2 depolamasına bağlı bir kimlik bilgisi veri deposunu kaydetmek için [register_azure_data_lake_gen2 ()](/python/api/azureml-core/azureml.core.datastore.datastore?preserve-view=true&view=azure-ml-py#&preserve-view=trueregister-azure-data-lake-gen2-workspace--datastore-name--filesystem--account-name--tenant-id--client-id--client-secret--resource-url-none--authority-url-none--protocol-none--endpoint-none--overwrite-false-) kullanın.  
+Bir Azure Data Lake Storage 2. nesil (ADLS Gen 2) veri deposu için, [hizmet sorumlusu izinleriyle](../active-directory/develop/howto-create-service-principal-portal.md)bir Azure Data Lake Gen 2 depolamasına bağlı bir kimlik bilgisi veri deposunu kaydetmek için [register_azure_data_lake_gen2 ()](/python/api/azureml-core/azureml.core.datastore.datastore#register-azure-data-lake-gen2-workspace--datastore-name--filesystem--account-name--tenant-id--client-id--client-secret--resource-url-none--authority-url-none--protocol-none--endpoint-none--overwrite-false-) kullanın.  
 
 Hizmet sorumlunuzu kullanabilmeniz için, [uygulamanızı kaydetmeniz](../active-directory/develop/app-objects-and-service-principals.md) ve Azure rol tabanlı erişim denetimi (Azure RBAC) ya da erişim denetim LISTELERI (ACL) aracılığıyla hizmet sorumlusu verilerine erişim vermeniz gerekir. [ADLS Gen 2 için erişim denetimi ayarlama](../storage/blobs/data-lake-storage-access-control-model.md)hakkında daha fazla bilgi edinin. 
 
@@ -244,13 +244,13 @@ Veri kümeleri ile, bir işlem hedefinde model eğitimi için Azure depolama hiz
 
 ## <a name="get-datastores-from-your-workspace"></a>Çalışma alanınızdan veri depoları alın
 
-Geçerli çalışma alanında kayıtlı belirli bir veri deposunu almak için, [`get()`](/python/api/azureml-core/azureml.core.datastore%28class%29?preserve-view=true&view=azure-ml-py#&preserve-view=trueget-workspace--datastore-name-) sınıfında statik yöntemi kullanın `Datastore` :
+Geçerli çalışma alanında kayıtlı belirli bir veri deposunu almak için, [`get()`](/python/api/azureml-core/azureml.core.datastore%28class%29#get-workspace--datastore-name-) sınıfında statik yöntemi kullanın `Datastore` :
 
 ```Python
 # Get a named datastore from the current workspace
 datastore = Datastore.get(ws, datastore_name='your datastore name')
 ```
-Belirli bir çalışma alanıyla kaydedilen veri depolarının listesini almak için, [`datastores`](/python/api/azureml-core/azureml.core.workspace%28class%29?preserve-view=true&view=azure-ml-py#&preserve-view=truedatastores) özelliği bir çalışma alanı nesnesi üzerinde kullanabilirsiniz:
+Belirli bir çalışma alanıyla kaydedilen veri depolarının listesini almak için, [`datastores`](/python/api/azureml-core/azureml.core.workspace%28class%29#datastores) özelliği bir çalışma alanı nesnesi üzerinde kullanabilirsiniz:
 
 ```Python
 # List all datastores registered in the current workspace
@@ -274,7 +274,7 @@ Varsayılan veri deposunu aşağıdaki kodla da değiştirebilirsiniz. Bu özell
 
 Azure Machine Learning, modellerinizi Puanlama için kullanmanın birkaç yolunu sağlar. Bu yöntemlerin bazıları veri depolarına erişim sağlamaz. Puanlama sırasında veri depolarına erişmenize izin veren yöntemleri anlamak için aşağıdaki tabloyu kullanın:
 
-| Yöntem | Veri deposu erişimi | Açıklama |
+| Yöntem | Veri deposu erişimi | Description |
 | ----- | :-----: | ----- |
 | [Toplu tahmin](./tutorial-pipeline-batch-scoring-classification.md) | ✔ | Büyük miktarlarda verileri zaman uyumsuz olarak tahmin edin. |
 | [Web hizmeti](how-to-deploy-and-where.md) | &nbsp; | Modelleri bir Web hizmeti olarak dağıtın. |

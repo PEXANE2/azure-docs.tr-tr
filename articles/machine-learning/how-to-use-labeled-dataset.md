@@ -9,12 +9,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to, data4ml
 ms.date: 05/14/2020
-ms.openlocfilehash: a4f15a1a0911e5a33da8b5f9445709cb42e7e10e
-ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
+ms.openlocfilehash: 2eec512af9b139b2707c435fd0c78b7d50ac1b11
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99981519"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102521059"
 ---
 # <a name="create-and-explore-azure-machine-learning-dataset-with-labels"></a>Etiketlerle Azure Machine Learning veri kümesi oluşturma ve araştırma
 
@@ -27,8 +27,8 @@ Etiketli veri kümeleri olarak etiketlere sahip Azure Machine Learning veri küm
 ## <a name="prerequisites"></a>Önkoşullar
 
 * Azure aboneliği. Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://aka.ms/AMLFree) oluşturun.
-* [Python için Azure MACHINE LEARNING SDK](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py)veya [Azure Machine Learning Studio](https://ml.azure.com/)'ya erişim.
-    * [Azure-contrib-DataSet](/python/api/azureml-contrib-dataset/?preserve-view=true&view=azure-ml-py) paketini yükler
+* [Python için Azure MACHINE LEARNING SDK](/python/api/overview/azure/ml/intro)veya [Azure Machine Learning Studio](https://ml.azure.com/)'ya erişim.
+    * [Azure-contrib-DataSet](/python/api/azureml-contrib-dataset/) paketini yükler
 * Machine Learning çalışma alanı. Bkz. [Azure Machine Learning çalışma alanı oluşturma](how-to-manage-workspace.md).
 * Azure Machine Learning veri etiketleme projesine erişim. Etiketleme projeniz yoksa, [Bu adımlarla](how-to-create-labeling-projects.md)bir tane oluşturun.
 
@@ -55,7 +55,7 @@ Veri araştırması için popüler açık kaynaklı kitaplıkların yanı sıra 
 
 ### <a name="pandas-dataframe"></a>Pandas dataframe
 
-Etiketli veri kümelerini, sınıfındaki yöntemiyle bir Pandas dataframe 'e yükleyebilirsiniz [`to_pandas_dataframe()`](/python/api/azureml-core/azureml.data.tabulardataset?preserve-view=true&view=azure-ml-py#&preserve-view=trueto-pandas-dataframe-on-error--null---out-of-range-datetime--null--) `azureml-contrib-dataset` . Aşağıdaki kabuk komutuyla sınıfı yüklersiniz: 
+Etiketli veri kümelerini, sınıfındaki yöntemiyle bir Pandas dataframe 'e yükleyebilirsiniz [`to_pandas_dataframe()`](/python/api/azureml-core/azureml.data.tabulardataset#to-pandas-dataframe-on-error--null---out-of-range-datetime--null--) `azureml-contrib-dataset` . Aşağıdaki kabuk komutuyla sınıfı yüklersiniz: 
 
 ```shell
 pip install azureml-contrib-dataset
@@ -90,7 +90,7 @@ imgplot = plt.imshow(img)
 
 ### <a name="torchvision-datasets"></a>Torchvision veri kümeleri
 
-Etiketli veri kümelerini, sınıfından de [to_torchvision ()](/python/api/azureml-contrib-dataset/azureml.contrib.dataset.tabulardataset?preserve-view=true&view=azure-ml-py#&preserve-view=trueto-torchvision--) yöntemiyle birlikte Torchvision veri kümesine yükleyebilirsiniz `azureml-contrib-dataset` . Bu yöntemi kullanmak için [Pytorch](https://pytorch.org/) yüklü olmalıdır. 
+Etiketli veri kümelerini, sınıfından de [to_torchvision ()](/python/api/azureml-contrib-dataset/azureml.contrib.dataset.tabulardataset#to-torchvision--) yöntemiyle birlikte Torchvision veri kümesine yükleyebilirsiniz `azureml-contrib-dataset` . Bu yöntemi kullanmak için [Pytorch](https://pytorch.org/) yüklü olmalıdır. 
 
 Aşağıdaki kodda `animal_labels` veri kümesi, daha önce çalışma alanına kaydedilen bir etiketleme projesinin çıktıdır.
 

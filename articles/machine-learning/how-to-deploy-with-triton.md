@@ -11,12 +11,12 @@ ms.date: 02/16/2020
 ms.topic: conceptual
 ms.reviewer: larryfr
 ms.custom: deploy
-ms.openlocfilehash: 47d2c8865109e8ef43317b3c4a19c36e692aff91
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.openlocfilehash: 2966b685e1904102467bf16994ea781556544047
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102218851"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102519206"
 ---
 # <a name="high-performance-serving-with-triton-inference-server-preview"></a>Triton çıkarım sunucusuyla yüksek performanslı hizmet (Önizleme) 
 
@@ -36,7 +36,7 @@ Triton, *çıkarım için iyileştirilmiş* bir çerçevedir. GPU 'ların daha i
 
 * Bir **Azure aboneliği**. Bir tane yoksa, [Azure Machine Learning ücretsiz veya ücretli sürümünü](https://aka.ms/AMLFree)deneyin.
 * Azure Machine Learning [bir modelin nasıl ve nasıl dağıtılacağı hakkında](how-to-deploy-and-where.md) benzerlik.
-* [Python için Azure MACHINE LEARNING SDK](/python/api/overview/azure/ml/?view=azure-ml-py) **veya** [Azure CLI](/cli/azure/) ve [Machine Learning uzantısı](reference-azure-machine-learning-cli.md).
+* [Python için Azure MACHINE LEARNING SDK](/python/api/overview/azure/ml/) **veya** [Azure CLI](/cli/azure/) ve [Machine Learning uzantısı](reference-azure-machine-learning-cli.md).
 * Yerel test için çalışan bir Docker yüklemesi. Docker 'ı yükleme ve doğrulama hakkında daha fazla bilgi için bkz. Docker belgelerindeki [Yönlendirme ve kurulum](https://docs.docker.com/get-started/) .
 
 ## <a name="architectural-overview"></a>Mimariye genel bakış
@@ -134,7 +134,7 @@ model = Model.register(
 )
 
 ```
-Daha fazla bilgi için [model sınıfına](/python/api/azureml-core/azureml.core.model.model?preserve-view=true&view=azure-ml-py)yönelik belgelere bakın.
+Daha fazla bilgi için [model sınıfına](/python/api/azureml-core/azureml.core.model.model)yönelik belgelere bakın.
 
 ---
 
@@ -276,7 +276,7 @@ Bir çıkarım yapılandırması, Python SDK veya Azure CLı kullanarak Azure Ma
 > [!IMPORTANT]
 > `AzureML-Triton` [Seçkin ortamı](./resource-curated-environments.md)belirtmeniz gerekir.
 >
-> Python kod örneği `AzureML-Triton` adlı başka bir ortama klonlar `My-Triton` . Azure CLı kodu bu ortamı da kullanır. Ortam kopyalama hakkında daha fazla bilgi için [Environment. Clone ()](/python/api/azureml-core/azureml.core.environment.environment?preserve-view=true&view=azure-ml-py#clone-new-name-) başvurusuna bakın.
+> Python kod örneği `AzureML-Triton` adlı başka bir ortama klonlar `My-Triton` . Azure CLı kodu bu ortamı da kullanır. Ortam kopyalama hakkında daha fazla bilgi için [Environment. Clone ()](/python/api/azureml-core/azureml.core.environment.environment#clone-new-name-) başvurusuna bakın.
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azcli)
 
@@ -337,7 +337,7 @@ Puanlama URI 'sine çıkarım istekleri gönderen bir istemci oluşturma hakkın
 
 ### <a name="setting-the-number-of-workers"></a>Çalışan sayısını ayarlama
 
-Dağıtımınızdaki çalışanların sayısını ayarlamak için ortam değişkenini ayarlayın `WORKER_COUNT` . Adlı bir [ortam](/python/api/azureml-core/azureml.core.environment.environment?preserve-view=true&view=azure-ml-py) nesneniz varsa `env` , şunları yapabilirsiniz:
+Dağıtımınızdaki çalışanların sayısını ayarlamak için ortam değişkenini ayarlayın `WORKER_COUNT` . Adlı bir [ortam](/python/api/azureml-core/azureml.core.environment.environment) nesneniz varsa `env` , şunları yapabilirsiniz:
 
 ```{py}
 env.environment_variables["WORKER_COUNT"] = "1"

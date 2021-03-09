@@ -5,14 +5,14 @@ author: vhorne
 ms.service: firewall
 services: firewall
 ms.topic: conceptual
-ms.date: 02/16/2021
+ms.date: 03/09/2021
 ms.author: victorh
-ms.openlocfilehash: 31948d5e98ea3024c838bf0fa4b05609a5662ec5
-ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
+ms.openlocfilehash: 621bf6138e4336c63ca137a6a8c54f77a4a99d61
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 03/09/2021
-ms.locfileid: "102485529"
+ms.locfileid: "102520294"
 ---
 # <a name="azure-firewall-premium-preview-certificates"></a>Azure Güvenlik Duvarı Premium önizleme sertifikaları 
 
@@ -96,7 +96,7 @@ Güvenlik Duvarı Premium ilkenizde bir CA sertifikası yapılandırmak için il
 TLS incelemesini test etmenize ve doğrulamanıza yardımcı olması için, kendi otomatik olarak imzalanan kök SERTIFIKA yetkilinizi ve ara CA 'nizi oluşturmak üzere aşağıdaki komut dosyalarını kullanabilirsiniz.
 
 > [!IMPORTANT]
-> Üretim için, ara CA sertifikası oluşturmak üzere Kurumsal PKI 'nizi kullanmanız gerekir. Bir Kurumsal PKI, mevcut altyapıya yararlanır ve kök CA dağıtımını tüm uç nokta makinelerine işler.
+> Üretim için, ara CA sertifikası oluşturmak üzere Kurumsal PKI 'nizi kullanmanız gerekir. Bir Kurumsal PKI, mevcut altyapıya yararlanır ve kök CA dağıtımını tüm uç nokta makinelerine işler. Daha fazla bilgi için bkz. [Azure Güvenlik Duvarı önizlemesi Için kuruluş CA sertifikalarını dağıtma ve yapılandırma](premium-deploy-certificates-enterprise-ca.md).
 
 Bu betiğin iki sürümü vardır:
 - Bash betiği `cert.sh` 

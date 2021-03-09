@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 10/15/2020
+ms.date: 03/09/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: fadc739f16ce9690a735be22758f58857ff8b9ff
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 0ee26e7fe74d87f7b20f9a28b049b8043b376273
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94951630"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102518067"
 ---
 # <a name="manage-user-access-in-azure-active-directory-b2c"></a>Azure Active Directory B2C 'de Kullanıcı erişimini yönetme
 
@@ -83,7 +83,53 @@ Bir uygulama, başka yöntemlerle güvenilir bir şekilde DOB veya ülke/bölge 
 - Bir kullanıcının yetişkin olduğu bilindiğinde, bir **yetişme** değeri olan **agegroup** adlı dizin özniteliğini güncelleştirin.
 - Bir kullanıcının küçük olduğu bilindiğinde, dizin özniteliği **Agegroup** değerini bir **Minor** değeri ile güncelleştirin ve **consentProvidedForMinor** olarak ayarlayın.
 
-DOB verilerini toplama hakkında daha fazla bilgi için bkz. [Azure AD B2C yaş geçişi kullanma](basic-age-gating.md).
+## <a name="minor-calculation-rules"></a>Küçük hesaplama kuralları
+
+Yaş aşımları iki yaş değeri içerir: birinin artık küçük olarak değerlendirilmediği yaş ve küçük bir ana izin olması gereken yaş. Aşağıdaki tabloda, düşük ve küçük bir onay gerektiren bir izin tanımlamak için kullanılan yaş kuralları listelenmektedir.
+
+| Ülke/Bölge | Ülke/bölge adı | Küçük onay yaşı | Küçük yaş |
+| -------------- | ------------------- | ----------------- | --------- |
+| Varsayılan | Yok | Yok | 18 |
+| AE | Birleşik Arap Emirlikleri | Yok | 21 |
+| AT | Avusturya | 14 | 18 |
+| BE | Belçika | 14 | 18 |
+| BG | Bulgaristan | 16 | 18 |
+| BH | Bahreyn | Yok | 21 |
+| CM | Kamerun | Yok | 21 |
+| CY | Kıbrıs | 16 | 18 |
+| CZ | Çek Cumhuriyeti | 16 | 18 |
+| DE | Almanya | 16 | 18 |
+| DK | Danimarka | 16 | 18 |
+| EE | Estonya | 16 | 18 |
+| EG | Mısır | Yok | 21 |
+| ES | İspanya | 13 | 18 |
+| GS | Fransa | 16 | 18 |
+| GB | Birleşik Krallık | 13 | 18 |
+| GR | Yunanistan | 16 | 18 |
+| HR | Hırvatistan | 16 | 18 |
+| HU | Macaristan | 16 | 18 |
+| IE | İrlanda | 13 | 18 |
+| BT | İtalya | 16 | 18 |
+| KR | Kore Cumhuriyeti | 14 | 18 |
+| LT | Litvanya | 16 | 18 |
+| LU | Lüksemburg | 16 | 18 |
+| LV | Letonya | 16 | 18 |
+| MT | Malta | 16 | 18 |
+| NA | Namibya | Yok | 21 |
+| NL | Hollanda | 16 | 18 |
+| PL | Polonya | 13 | 18 |
+| PT | Portekiz | 16 | 18 |
+| RO | Romanya | 16 | 18 |
+| SE | İsveç | 13 | 18 |
+| SG | Singapur | Yok | 21 |
+| SI | Slovenya | 16 | 18 |
+| SK | Slovakya | 16 | 18 |
+| TD | Çad | Yok | 21 |
+| TH | Tayland | Yok | 20 |
+| TW | Tayvan | Yok | 20 |
+| ABD | Birleşik Devletler | 13 | 18 |
+
+
 
 ## <a name="capture-terms-of-use-agreement"></a>Kullanım koşullarını yakala sözleşmesi
 
@@ -175,5 +221,6 @@ Aşağıda, bir talepteki sürüm tabanlı kullanım koşulları onayı örneği
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
+- [Azure AD B2C yaş geçişi 'Ni etkinleştirin](age-gating.md).
 - Kullanıcı verilerini silme ve dışa aktarma hakkında bilgi edinmek için bkz. [Kullanıcı verilerini yönetme](manage-user-data.md).
 - Bir kullanım koşulları istemi uygulayan örnek bir özel ilke için bkz. [BIR B2C ıEF özel ilkesi-kaydolun ve ' Kullanım Koşulları ' Istemiyle oturum açın](https://github.com/azure-ad-b2c/samples/tree/master/policies/sign-in-sign-up-versioned-tou).

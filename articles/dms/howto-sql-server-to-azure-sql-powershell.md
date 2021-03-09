@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019, devx-track-azurepowershell
 ms.topic: how-to
 ms.date: 02/20/2020
-ms.openlocfilehash: 87505557653e70aab7f1392aeea8dbdf505327e0
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: a8f7e14500fb377b46f651b53e2704d8477aea7a
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94962765"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102520668"
 ---
 # <a name="migrate-a-sql-server-database-to-azure-sql-database-using-azure-powershell"></a>Azure PowerShell kullanarak SQL Server veritabanını Azure SQL veritabanı 'na geçirme
 
@@ -31,7 +31,7 @@ Bu makalede şunları öğreneceksiniz:
 > * Azure veritabanı geçiş hizmeti örneğinde bir geçiş projesi oluşturun.
 > * Geçişi çalıştırma.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu adımları tamamlayabilmeniz için şunlar gerekir:
 
@@ -42,7 +42,7 @@ Bu adımları tamamlayabilmeniz için şunlar gerekir:
 * [Data Migration Yardımcısı](https://www.microsoft.com/download/details.aspx?id=53595) v 3.3 veya üzeri.
 * Azure veritabanı geçiş hizmeti 'ni, [ExpressRoute](../expressroute/expressroute-introduction.md) veya [VPN](../vpn-gateway/vpn-gateway-about-vpngateways.md)kullanarak şirket içi kaynak sunucularınız için siteden siteye bağlantı ile sağlayan Azure Resource Manager dağıtım modelini kullanarak Microsoft Azure sanal ağ oluşturma.
 * [SQL Server geçiş değerlendirmesi gerçekleştirme](/sql/dma/dma-assesssqlonprem) makalesinde açıklandığı gibi Data Migration Yardımcısı kullanarak şirket içi veritabanınızın ve şema geçişinizin değerlendirmesini tamamlamış olması için
-* [Install-Module PowerShell cmdlet 'ini](/powershell/module/powershellget/Install-Module?view=powershell-5.1)kullanarak PowerShell Galerisi az. datamigration modülünü indirmek ve yüklemek için Yönetici olarak çalıştır 'ı kullanarak PowerShell komut penceresini açmayı unutmayın.
+* [Install-Module PowerShell cmdlet 'ini](/powershell/module/powershellget/Install-Module)kullanarak PowerShell Galerisi az. datamigration modülünü indirmek ve yüklemek için Yönetici olarak çalıştır 'ı kullanarak PowerShell komut penceresini açmayı unutmayın.
 * Kaynak SQL Server örneğine bağlanmak için kullanılan kimlik bilgilerinin [DENETIM sunucusu](/sql/t-sql/statements/grant-server-permissions-transact-sql) iznine sahip olduğundan emin olmak için.
 * Hedef Azure SQL DB örneğine bağlanmak için kullanılan kimlik bilgilerinin hedef Azure SQL veritabanı veritabanlarında DENETIM VERITABANı iznine sahip olduğundan emin olmak için.
 * Azure aboneliği. Bir tane yoksa, başlamadan önce [ücretsiz](https://azure.microsoft.com/free/) bir hesap oluşturun.

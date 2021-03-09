@@ -11,12 +11,12 @@ author: peterclu
 ms.date: 03/02/2021
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, references_regions, contperf-fy21q1
-ms.openlocfilehash: 1309ad1b3e3f6bd6f9b543959220bf71c569f083
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: fcb678efe29178784c9233e79b307f705c40e3f7
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102175014"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102518695"
 ---
 # <a name="virtual-network-isolation-and-privacy-overview"></a>Sanal ağ yalıtımı ve gizliliği genel bakış
 
@@ -69,9 +69,14 @@ Sonraki beş bölümde yukarıda açıklanan ağ senaryosunun güvenliğini sağ
 Çalışma alanınızı ve ilişkili kaynaklarınızı güvenli hale getirmek için aşağıdaki adımları kullanın. Bu adımlar, hizmetlerinizin sanal ağda iletişim kurmasına izin verir.
 
 1. VNet ve çalışma alanınız arasında iletişimi etkinleştirmek için [özel bir bağlantı etkin çalışma alanı](how-to-secure-workspace-vnet.md#secure-the-workspace-with-private-endpoint) oluşturun.
-1. Bir [hizmet uç noktası](../key-vault/general/overview-vnet-service-endpoints.md) veya [Özel uç nokta](../key-vault/general/private-link-service.md)ile sanal ağa Azure Key Vault ekleyin. Key Vault ["Güvenilen Microsoft hizmetlerinin bu güvenlik duvarını atlamasına Izin ver"](how-to-secure-workspace-vnet.md#secure-azure-key-vault)olarak ayarlayın.
-1. Azure depolama hesabınızı sanal ağa bir [hizmet uç noktası](how-to-secure-workspace-vnet.md#secure-azure-storage-accounts-with-service-endpoints) veya [özel bir uç nokta](how-to-secure-workspace-vnet.md#secure-azure-storage-accounts-with-private-endpoints)ile ekleyin.
-1. [Azure Container Registry özel bir uç nokta kullanacak şekilde yapılandırın](how-to-secure-workspace-vnet.md#enable-azure-container-registry-acr).
+1. Bir __hizmet uç noktası__ ya _da_ __Özel uç nokta__ kullanarak aşağıdaki hizmetleri sanal ağa ekleyin. Ayrıca, güvenilen Microsoft hizmetlerinin bu hizmetlere erişmesine de izin vermeniz gerekir:
+    
+    | Hizmet | Uç nokta bilgileri | Güvenilen bilgilere izin ver |
+    | ----- | ----- | ----- |
+    | __Azure Key Vault__| [Hizmet uç noktası](../key-vault/general/overview-vnet-service-endpoints.md)</br>[Özel uç nokta](../key-vault/general/private-link-service.md) | [Güvenilen Microsoft hizmetlerinin bu güvenlik duvarını atlamasına izin ver](how-to-secure-workspace-vnet.md#secure-azure-key-vault) |
+    | __Azure depolama hesabı__ | [Hizmet uç noktası](how-to-secure-workspace-vnet.md#secure-azure-storage-accounts-with-service-endpoints)</br>[Özel uç nokta](how-to-secure-workspace-vnet.md#secure-azure-storage-accounts-with-private-endpoints) | [Güvenilen Azure hizmetlerine erişim izni verme](../storage/common/storage-network-security.md#grant-access-to-trusted-azure-services) |
+    | __Azure Container Registry__ | [Hizmet uç noktası](how-to-secure-workspace-vnet.md#enable-azure-container-registry-acr)</br>[Özel uç nokta](../container-registry/container-registry-private-link.md) | [Güvenilen hizmetlere izin ver](../container-registry/allow-access-trusted-services.md) |
+
 
 ![Çalışma alanının ve ilişkili kaynakların, hizmet uç noktaları veya VNet 'in içindeki özel uç noktalar üzerinden nasıl iletişim kurduğunu gösteren mimari diyagramı](./media/how-to-network-security-overview/secure-workspace-resources.png)
 

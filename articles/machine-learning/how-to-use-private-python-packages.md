@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 07/10/2020
-ms.openlocfilehash: 6a722746c8e06a691e702b095d3081f1530645de
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: b922c25561843d140f1e2b8221f62fad89ea00c8
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93318925"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102520906"
 ---
 # <a name="use-private-python-packages-with-azure-machine-learning"></a>Azure Machine Learning ile özel Python paketleri kullanma
 
@@ -31,12 +31,12 @@ Bu makalede, Azure Machine Learning içinde özel Python paketlerini güvenli bi
 
 ## <a name="prerequisites"></a>Önkoşullar
 
- * [Python için Azure Machine Learning SDK 'sı](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py)
+ * [Python için Azure Machine Learning SDK 'sı](/python/api/overview/azure/ml/install)
  * [Azure Machine Learning çalışma alanı](how-to-manage-workspace.md)
 
 ## <a name="use-small-number-of-packages-for-development-and-testing"></a>Geliştirme ve test için az sayıda paket kullanın
 
-Tek bir çalışma alanı için az sayıda özel paket için, statik [`Environment.add_private_pip_wheel()`](/python/api/azureml-core/azureml.core.environment.environment?preserve-view=true&view=azure-ml-py#&preserve-view=trueadd-private-pip-wheel-workspace--file-path--exist-ok-false-) yöntemi kullanın. Bu yaklaşım, çalışma alanına hızlıca özel bir paket eklemenize olanak sağlar ve geliştirme ve test amaçlarıyla idealdir.
+Tek bir çalışma alanı için az sayıda özel paket için, statik [`Environment.add_private_pip_wheel()`](/python/api/azureml-core/azureml.core.environment.environment#add-private-pip-wheel-workspace--file-path--exist-ok-false-) yöntemi kullanın. Bu yaklaşım, çalışma alanına hızlıca özel bir paket eklemenize olanak sağlar ve geliştirme ve test amaçlarıyla idealdir.
 
 Dosya yolu bağımsız değişkenini yerel bir tekerlek dosyasına getirin ve ```add_private_pip_wheel``` komutunu çalıştırın. Komutu, çalışma alanınızdaki paketin konumunu izlemek için kullanılan bir URL döndürür. Depolama URL 'sini yakalayın ve `add_pip_package()` metodunu geçirin.
 
@@ -58,7 +58,7 @@ Bu yaklaşım, depoya karşı kimlik doğrulaması yapmak için kişisel erişim
 
  1. Azure DevOps örneğiniz için [bir kişisel erişim belirteci (Pat) oluşturun](/azure/devops/organizations/accounts/use-personal-access-tokens-to-authenticate?preserve-view=true&tabs=preview-page&view=azure-devops#create-a-pat) . Belirtecin kapsamını __paketlemek > okundu__ olarak ayarlayın. 
 
- 2. [Workspace.set_connection](/python/api/azureml-core/azureml.core.workspace.workspace?preserve-view=true&view=azure-ml-py#&preserve-view=trueset-connection-name--category--target--authtype--value-) yöntemini kullanarak Azure DEVOPS URL 'SINI ve Pat 'yi çalışma alanı özellikleri olarak ekleyin.
+ 2. [Workspace.set_connection](/python/api/azureml-core/azureml.core.workspace.workspace#set-connection-name--category--target--authtype--value-) yöntemini kullanarak Azure DEVOPS URL 'SINI ve Pat 'yi çalışma alanı özellikleri olarak ekleyin.
 
      ```python
     from azureml.core import Workspace

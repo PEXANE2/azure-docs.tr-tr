@@ -2,19 +2,19 @@
 title: Azure CLı ve şablonuyla kaynak dağıtma
 description: Azure 'a kaynak dağıtmak için Azure Resource Manager ve Azure CLı kullanın. Kaynaklar bir Kaynak Yöneticisi şablonunda veya bir Bıcep dosyasında tanımlanır.
 ms.topic: conceptual
-ms.date: 03/02/2021
-ms.openlocfilehash: 547b860869738f3cfe12d6a22262829ef132a671
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.date: 03/04/2021
+ms.openlocfilehash: d0c48a5cf05d6cec495a7a96e181910a0849a1ac
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101741132"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102521705"
 ---
 # <a name="deploy-resources-with-arm-templates-and-azure-cli"></a>ARM şablonları ve Azure CLı ile kaynak dağıtma
 
-Bu makalede, Azure CLı 'yi Azure 'a dağıtmak için Azure Resource Manager şablonları (ARM şablonları) veya Bıcep dosyası ile Azure CLı 'nın nasıl kullanılacağı açıklanmaktadır. Azure çözümlerinizi dağıtma ve yönetme kavramlarını bilmiyorsanız, bkz. [şablon dağıtımına genel bakış](overview.md) veya [bıcep genel bakış](bicep-overview.md).
+Bu makalede, Azure CLı kullanarak kaynaklarınızı Azure 'a dağıtmak için Azure Resource Manager şablonları (ARM şablonları) veya Bıcep dosyaları ile Azure CLı 'nın nasıl kullanılacağı açıklanmaktadır. Azure çözümlerinizi dağıtma ve yönetme kavramlarını bilmiyorsanız, bkz. [şablon dağıtımına genel bakış](overview.md) veya [bıcep genel bakış](bicep-overview.md).
 
-Azure CLı sürüm 2.2.0 'de dağıtım komutları değişmiştir. Bu makaledeki örneklerde Azure CLı sürüm 2.2.0 veya üzeri gerekir.
+Azure CLı sürüm 2.2.0 'de dağıtım komutları değişmiştir. Bu makaledeki örneklerde Azure CLı sürüm 2.2.0 veya üzeri gerekir. Bıcep dosyalarını dağıtmak için [Azure CLI sürüm 2.20.0 veya sonraki bir sürümü](/cli/azure/install-azure-cli)gerekir.
 
 [!INCLUDE [sample-cli-install](../../../includes/sample-cli-install.md)]
 
@@ -85,7 +85,7 @@ Dağıtımın tamamlanması birkaç dakika sürebilir. Tamamlandığında, sonuc
 ## <a name="deploy-remote-template"></a>Uzak şablonu dağıtma
 
 > [!NOTE]
-> Azure CLı Şu anda bicep dosyalarını kaldırma hizmetini desteklemiyor.
+> Şu anda Azure CLı, uzak Bıcep dosyalarının dağıtılmasını desteklemez. Uzak bir bicep dosyasını dağıtmak için, önce bir JSON şablonuna Bıcep dosyasını derlemek için CLı Bıcep ' yi kullanın.
 
 ARM şablonlarını yerel makinenizde depolamak yerine, bunları bir dış konumda depolamayı tercih edebilirsiniz. Şablonları bir kaynak denetimi deposunda (GitHub gibi) saklayabilirsiniz. İsterseniz kuruluşunuzda paylaşılan erişim sağlamak için bir Azure depolama hesabı kullanabilirsiniz.
 
@@ -148,7 +148,7 @@ Eşzamanlı dağıtımlar ile çakışmalardan kaçınmak ve dağıtım geçmiş
 ## <a name="deploy-template-spec"></a>Şablon belirtimini dağıt
 
 > [!NOTE]
-> Azure CLı Şu anda Bıcep dosyaları sağlayarak şablon özelliklerinin oluşturulmasını desteklemez. Ancak, bir şablon belirtimini dağıtmak için [Microsoft. resources/templatespec](/azure/templates/microsoft.resources/templatespecs) kaynağı Ile bir ARM şablonu veya Bıcep dosyası oluşturabilirsiniz. İşte bir [örnek](https://github.com/Azure/azure-docs-json-samples/blob/master/create-template-spec-using-template/azuredeploy.bicep).
+> Azure CLı Şu anda Bıcep dosyaları sağlayarak şablon özelliklerinin oluşturulmasını desteklemez. Ancak, bir şablon belirtimini dağıtmak için [Microsoft. resources/templatespec](/azure/templates/microsoft.resources/templatespecs) kaynağı Ile bir Bıcep dosyası oluşturabilirsiniz. İşte bir [örnek](https://github.com/Azure/azure-docs-json-samples/blob/master/create-template-spec-using-template/azuredeploy.bicep).
 
 Yerel veya uzak şablon dağıtmak yerine, bir [şablon belirtimi](template-specs.md)oluşturabilirsiniz. Şablon belirtimi, Azure aboneliğinizdeki bir ARM şablonu içeren bir kaynaktır. Şablonu kuruluşunuzdaki kullanıcılarla güvenli bir şekilde paylaşmayı kolaylaştırır. Şablon belirtimine erişim sağlamak için Azure rol tabanlı erişim denetimi (Azure RBAC) kullanırsınız. Bu özellik şu anda önizleme aşamasındadır.
 

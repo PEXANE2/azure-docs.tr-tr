@@ -10,12 +10,12 @@ author: lobrien
 ms.date: 02/26/2021
 ms.topic: conceptual
 ms.custom: how-to, contperf-fy20q4, devx-track-python, data4ml
-ms.openlocfilehash: 8f1cea6e9bc833c6d441c39c401f60d872cd9099
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: a4d1d1c4f4d6354d0206bf598a0622112dc99453
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102174946"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102518713"
 ---
 # <a name="moving-data-into-and-between-ml-pipeline-steps-python"></a>ML işlem hattı adımlarına ve adımlar arasında veri taşıma (Python)
 
@@ -36,7 +36,7 @@ Bu makalede nasıl yapılacağı gösterilmektedir:
 
 - Azure aboneliği. Azure aboneliğiniz yoksa başlamadan önce ücretsiz bir hesap oluşturun. [Azure Machine Learning ücretsiz veya ücretli sürümünü](https://aka.ms/AMLFree)deneyin.
 
-- [Python için Azure MACHINE LEARNING SDK](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py)veya [Azure Machine Learning Studio](https://ml.azure.com/)'ya erişim.
+- [Python için Azure MACHINE LEARNING SDK](/python/api/overview/azure/ml/intro)veya [Azure Machine Learning Studio](https://ml.azure.com/)'ya erişim.
 
 - Azure Machine Learning çalışma alanı.
   
@@ -55,7 +55,7 @@ Bu makalede nasıl yapılacağı gösterilmektedir:
 
 ## <a name="use-dataset-objects-for-pre-existing-data"></a>`Dataset`Önceden var olan veriler için nesneleri kullanma 
 
-Bir işlem hattına veri almanın tercih edilen yolu bir [veri kümesi](/python/api/azureml-core/azureml.core.dataset%28class%29?preserve-view=true&view=azure-ml-py) nesnesi kullanmaktır. `Dataset` nesneler, çalışma alanı genelinde kullanılabilir kalıcı verileri temsil eder.
+Bir işlem hattına veri almanın tercih edilen yolu bir [veri kümesi](/python/api/azureml-core/azureml.core.dataset%28class%29) nesnesi kullanmaktır. `Dataset` nesneler, çalışma alanı genelinde kullanılabilir kalıcı verileri temsil eder.
 
 Nesneleri oluşturmak ve kaydettirmek için birçok yol vardır `Dataset` . Tablo veri kümeleri, bir veya daha fazla dosyada kullanılabilen sınırlandırılmış verilere yöneliktir. Dosya veri kümeleri, ikili veriler (örneğin, görüntüler) veya ayrıştırılacak veriler içindir. Nesneleri oluşturmanın en basit programlama yolları, `Dataset` çalışma alanı depolamada veya genel URL 'lerde Mevcut blobları kullanmaktır:
 
@@ -154,7 +154,7 @@ ds = Dataset.get_by_name(workspace=ws, name='mnist_opendataset')
 
 ## <a name="use-outputfiledatasetconfig-for-intermediate-data"></a>`OutputFileDatasetConfig`Ara veriler için kullanın
 
-`Dataset`Nesneler yalnızca kalıcı verileri temsil ederken, [`OutputFileDatasetConfig`](/python/api/azureml-core/azureml.data.outputfiledatasetconfig?preserve-view=true&view=azure-ml-py) nesne (ler) ardışık düzen adımlarında **ve** kalıcı çıkış verilerinden geçici veri çıktısı için kullanılabilir. `OutputFileDatasetConfig` BLOB depolama, FileShare, adlsgen1 veya adlsgen2 'e veri yazılmasını destekler. Bağlama modunu ve karşıya yükleme modunu destekler. Bağlama modunda, bağlı dizine yazılan dosyalar dosya kapatıldığında kalıcı olarak depolanır. Karşıya yükleme modunda, çıkış dizinine yazılan dosyalar işin sonuna yüklenir. İş başarısız olursa veya iptal edilirse, çıkış dizini karşıya yüklenmeyecektir.
+`Dataset`Nesneler yalnızca kalıcı verileri temsil ederken, [`OutputFileDatasetConfig`](/python/api/azureml-core/azureml.data.outputfiledatasetconfig) nesne (ler) ardışık düzen adımlarında **ve** kalıcı çıkış verilerinden geçici veri çıktısı için kullanılabilir. `OutputFileDatasetConfig` BLOB depolama, FileShare, adlsgen1 veya adlsgen2 'e veri yazılmasını destekler. Bağlama modunu ve karşıya yükleme modunu destekler. Bağlama modunda, bağlı dizine yazılan dosyalar dosya kapatıldığında kalıcı olarak depolanır. Karşıya yükleme modunda, çıkış dizinine yazılan dosyalar işin sonuna yüklenir. İş başarısız olursa veya iptal edilirse, çıkış dizini karşıya yüklenmeyecektir.
 
  `OutputFileDatasetConfig` nesnenin varsayılan davranışı, çalışma alanının varsayılan veri deposuna yazılır. `OutputFileDatasetConfig`Nesnelerinizi `PythonScriptStep` `arguments` parametresine geçirin.
 

@@ -10,12 +10,12 @@ ms.author: jhirono
 author: jhirono
 ms.reviewer: larryfr
 ms.date: 11/09/2020
-ms.openlocfilehash: 211ef9571b5a126686b4583330dc0f80863fd47e
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.openlocfilehash: 13d5c02fbb4ae06c7a5279ab7c5d3af90c263f71
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94992055"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102521076"
 ---
 # <a name="data-encryption-with-azure-machine-learning"></a>Azure Machine Learning ile veri şifreleme
 
@@ -29,7 +29,7 @@ Azure Machine Learning, modellerdeki ve çıkarım gerçekleştirirken çeşitli
 ## <a name="encryption-at-rest"></a>Bekleme sırasında şifreleme
 
 > [!IMPORTANT]
-> Çalışma alanınız hassas veriler içeriyorsa, çalışma alanınızı oluştururken [hbi_workspace bayrağını](/python/api/azureml-core/azureml.core.workspace%28class%29?preserve-view=true&view=azure-ml-py#&preserve-view=truecreate-name--auth-none--subscription-id-none--resource-group-none--location-none--create-resource-group-true--sku--basic---friendly-name-none--storage-account-none--key-vault-none--app-insights-none--container-registry-none--cmk-keyvault-none--resource-cmk-uri-none--hbi-workspace-false--default-cpu-compute-target-none--default-gpu-compute-target-none--exist-ok-false--show-output-true-) ayarlamayı öneririz. `hbi_workspace`Bayrak yalnızca bir çalışma alanı oluşturulduğunda ayarlanabilir. Mevcut bir çalışma alanı için değiştirilemez.
+> Çalışma alanınız hassas veriler içeriyorsa, çalışma alanınızı oluştururken [hbi_workspace bayrağını](/python/api/azureml-core/azureml.core.workspace%28class%29#create-name--auth-none--subscription-id-none--resource-group-none--location-none--create-resource-group-true--sku--basic---friendly-name-none--storage-account-none--key-vault-none--app-insights-none--container-registry-none--cmk-keyvault-none--resource-cmk-uri-none--hbi-workspace-false--default-cpu-compute-target-none--default-gpu-compute-target-none--exist-ok-false--show-output-true-) ayarlamayı öneririz. `hbi_workspace`Bayrak yalnızca bir çalışma alanı oluşturulduğunda ayarlanabilir. Mevcut bir çalışma alanı için değiştirilemez.
 
 `hbi_workspace`Bayrak, [Microsoft 'un tanılama amacıyla topladığı veri](#microsoft-collected-data) miktarını denetler ve [Microsoft tarafından yönetilen ortamlarda ek şifrelemeye](../security/fundamentals/encryption-atrest.md)izin vermez. Ayrıca, aşağıdaki eylemleri sunar:
 
@@ -68,7 +68,7 @@ Abonelikinizde müşteri tarafından yönetilen anahtarlarla Cosmos DB bir örne
     * `cmk_keyvault`: Bu parametre, aboneliğinizdeki anahtar kasasının kaynak KIMLIĞIDIR. Bu anahtar kasasının, Azure Machine Learning çalışma alanı için kullanacağınız bölge ve abonelikte olması gerekir. 
     
         > [!NOTE]
-        > Bu Anahtar Kasası örneği, çalışma alanını sağladığınızda Azure Machine Learning tarafından oluşturulan anahtar kasasından farklı olabilir. Çalışma alanı için aynı Anahtar Kasası örneğini kullanmak istiyorsanız, [key_vault parametresini](/python/api/azureml-core/azureml.core.workspace%28class%29?preserve-view=true&view=azure-ml-py#&preserve-view=truecreate-name--auth-none--subscription-id-none--resource-group-none--location-none--create-resource-group-true--sku--basic---friendly-name-none--storage-account-none--key-vault-none--app-insights-none--container-registry-none--cmk-keyvault-none--resource-cmk-uri-none--hbi-workspace-false--default-cpu-compute-target-none--default-gpu-compute-target-none--exist-ok-false--show-output-true-)kullanarak çalışma alanını sağlarken aynı anahtar kasasını geçirin. 
+        > Bu Anahtar Kasası örneği, çalışma alanını sağladığınızda Azure Machine Learning tarafından oluşturulan anahtar kasasından farklı olabilir. Çalışma alanı için aynı Anahtar Kasası örneğini kullanmak istiyorsanız, [key_vault parametresini](/python/api/azureml-core/azureml.core.workspace%28class%29#create-name--auth-none--subscription-id-none--resource-group-none--location-none--create-resource-group-true--sku--basic---friendly-name-none--storage-account-none--key-vault-none--app-insights-none--container-registry-none--cmk-keyvault-none--resource-cmk-uri-none--hbi-workspace-false--default-cpu-compute-target-none--default-gpu-compute-target-none--exist-ok-false--show-output-true-)kullanarak çalışma alanını sağlarken aynı anahtar kasasını geçirin. 
 
 [!INCLUDE [machine-learning-customer-managed-keys.md](../../includes/machine-learning-customer-managed-keys.md)]
 
@@ -105,7 +105,7 @@ Azure Container Instance 'a model dağıttığınızda anahtarı kullanmak için
 
 Dağıtım yapılandırması oluşturma ve kullanma hakkında daha fazla bilgi için aşağıdaki makalelere bakın:
 
-* [AciWebservice.deploy_configuration ()](/python/api/azureml-core/azureml.core.webservice.aci.aciwebservice?preserve-view=true&view=azure-ml-py#&preserve-view=truedeploy-configuration-cpu-cores-none--memory-gb-none--tags-none--properties-none--description-none--location-none--auth-enabled-none--ssl-enabled-none--enable-app-insights-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--ssl-cname-none--dns-name-label-none--primary-key-none--secondary-key-none--collect-model-data-none--cmk-vault-base-url-none--cmk-key-name-none--cmk-key-version-none-) başvurusu
+* [AciWebservice.deploy_configuration ()](/python/api/azureml-core/azureml.core.webservice.aci.aciwebservice#deploy-configuration-cpu-cores-none--memory-gb-none--tags-none--properties-none--description-none--location-none--auth-enabled-none--ssl-enabled-none--enable-app-insights-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--ssl-cname-none--dns-name-label-none--primary-key-none--secondary-key-none--collect-model-data-none--cmk-vault-base-url-none--cmk-key-name-none--cmk-key-version-none-) başvurusu
 * [Dağıtım nereye ve nasıl yapılır?](how-to-deploy-and-where.md)
 * [Modeli Azure Container Instances’a dağıtma](how-to-deploy-azure-container-instance.md)
 
@@ -148,7 +148,7 @@ Puanlama uç noktasına yapılan dış çağrıların güvenliğini sağlamak i�
 
 Microsoft, kaynak adları (örneğin, veri kümesi adı veya makine öğrenimi deneme adı) gibi kullanıcı olmayan tanımlama bilgilerini veya tanılama amacıyla iş ortamı değişkenlerini toplayabilir. Bu tür veriler, Microsoft 'un sahip olduğu aboneliklerde barındırılan depolamada Microsoft tarafından yönetilen anahtarlar kullanılarak depolanır ve [Microsoft 'un standart Gizlilik ilkesi ve veri işleme standartlarını](https://privacy.microsoft.com/privacystatement)izler.
 
-Microsoft ayrıca, önemli bilgileri (örneğin, hesap anahtarı gizli dizileri) ortam değişkenlerine depolamamanızı da önerir. Ortam değişkenleri günlüğe kaydedilir, şifrelenir ve bizimle saklanır. Benzer şekilde [run_id](/python/api/azureml-core/azureml.core.run%28class%29?preserve-view=true&view=azure-ml-py)adlandırırken, Kullanıcı adları veya gizli proje adları gibi hassas bilgileri de eklemekten kaçının. Bu bilgiler, Microsoft Desteği mühendislerine erişilebilen telemetri günlüklerinde görünebilir.
+Microsoft ayrıca, önemli bilgileri (örneğin, hesap anahtarı gizli dizileri) ortam değişkenlerine depolamamanızı da önerir. Ortam değişkenleri günlüğe kaydedilir, şifrelenir ve bizimle saklanır. Benzer şekilde [run_id](/python/api/azureml-core/azureml.core.run%28class%29)adlandırırken, Kullanıcı adları veya gizli proje adları gibi hassas bilgileri de eklemekten kaçının. Bu bilgiler, Microsoft Desteği mühendislerine erişilebilen telemetri günlüklerinde görünebilir.
 
 `hbi_workspace`Çalışma alanını sağlarken parametresini olarak ayarlayarak, toplanan tanılama verilerinden bu verileri devre dışı kalabilirsiniz `TRUE` . Bu işlev, AzureML Python SDK 'Sı, CLı, REST API 'Leri veya Azure Resource Manager şablonları kullanılırken desteklenir.
 
@@ -166,7 +166,7 @@ Her çalışma alanı, çalışma alanıyla aynı ada sahip ilişkili, sistem ta
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Azure depolama 'ya bağlanma](how-to-access-data.md)
+* [Azure depolamaya bağlanma](how-to-access-data.md)
 * [Bir veri deposundan veri alma](how-to-create-register-datasets.md)
 * [Verilere bağlanma](how-to-connect-data-ui.md)
 * [Veri kümeleriyle eğitme](how-to-train-with-datasets.md)

@@ -7,12 +7,12 @@ ms.service: route-server
 ms.topic: quickstart
 ms.date: 03/02/2021
 ms.author: duau
-ms.openlocfilehash: c24d88e47569da430153dedfd1ff68a584083775
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: ef41c52fa1b63094d952dc34f81db36f7aeaac95
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101695252"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102521297"
 ---
 # <a name="quickstart-create-and-configure-route-server-using-azure-cli"></a>Hızlı başlangıç: Azure CLı kullanarak rota sunucusu oluşturma ve yapılandırma 
 
@@ -56,8 +56,8 @@ az account set --subscription "<subscription ID>"
 Bir Azure rota sunucusu oluşturabilmeniz için önce dağıtımı barındırmak üzere bir sanal ağ gerekir. Bir kaynak grubu ve sanal ağ oluşturmak için izle komutunu kullanın. Zaten bir sanal ağınız varsa, sonraki bölüme atlayabilirsiniz.
 
 ```azurecli-interactive
-az group create -n “RouteServerRG” -l “westus” 
-az network vnet create -g “RouteServerRG” -n “myVirtualNetwork” --address-prefix “10.0.0.0/16” 
+az group create -n "RouteServerRG" -l "westus" 
+az network vnet create -g "RouteServerRG" -n "myVirtualNetwork" --address-prefix "10.0.0.0/16" 
 ``` 
 
 ### <a name="add-a-subnet"></a>Alt ağ ekleme 
@@ -65,13 +65,13 @@ az network vnet create -g “RouteServerRG” -n “myVirtualNetwork” --addres
 1. Azure yol sunucusunu dağıtmak için *Routeserversubnet* adlı bir alt ağ ekleyin. Bu alt ağ, yalnızca Azure Route sunucusu için ayrılmış bir alt ağıdır. RouteServerSubnet/27 veya daha kısa bir ön ek olmalıdır (örneğin/26,/25) veya Azure yol sunucusunu eklediğinizde bir hata iletisi alırsınız.
 
     ```azurecli-interactive 
-    az network vnet subnet create -g “RouteServerRG” --vnet-name “myVirtualNetwork” --name “RouteServerSubnet” --address-prefix “10.0.0.0/24”  
+    az network vnet subnet create -g "RouteServerRG" --vnet-name "myVirtualNetwork" --name "RouteServerSubnet" --address-prefix "10.0.0.0/24"  
     ``` 
 
 1. RouteServerSubnet KIMLIĞINI alın. Sanal ağdaki tüm alt ağların kaynak KIMLIĞINI görüntülemek için şu komutu kullanın: 
 
     ```azurecli-interactive 
-    subnet_id = $(az network vnet subnet show -n “RouteServerSubnet” --vnet-name “myVirtualNetwork” -g “RouteServerRG” --query id -o tsv) 
+    subnet_id = $(az network vnet subnet show -n "RouteServerSubnet" --vnet-name "myVirtualNetwork" -g "RouteServerRG" --query id -o tsv) 
     ``` 
 
 RouteServerSubnet KIMLIĞI aşağıdakine benzer: 
@@ -83,7 +83,7 @@ RouteServerSubnet KIMLIĞI aşağıdakine benzer:
 Bu komutla rota sunucusu oluşturun: 
 
 ```azurecli-interactive
-az network routeserver create -n “myRouteServer” -g “RouteServerRG” --hosted-subnet $subnet_id  
+az network routeserver create -n "myRouteServer" -g "RouteServerRG" --hosted-subnet $subnet_id  
 ``` 
 
 Konumun, sanal ağınızın konumuyla eşleşmesi gerekir. HostedSubnet, önceki bölümde edindiğiniz RouteServerSubnet KIMLIĞIDIR. 
@@ -94,7 +94,7 @@ Yol sunucusundan NVA 'ya eşleme oluşturmak için aşağıdaki komutu kullanın
 
 ```azurecli-interactive 
 
-az network routeserver peering create --routeserver-name “myRouteServer” -g “RouteServerRG” --peer-ip “nva_ip” --peer-asn “nva_asn” -n “NVA1_name” 
+az network routeserver peering create --routeserver-name "myRouteServer" -g "RouteServerRG" --peer-ip "nva_ip" --peer-asn "nva_asn" -n "NVA1_name" 
 
 ``` 
 
@@ -104,7 +104,7 @@ Artıklığı için farklı NVA veya aynı NVA örneği ile eşleme ayarlamak i�
 
 ```azurecli-interactive 
 
-az network routeserver peering create --routeserver-name “myRouteServer” -g “RouteServerRG” --peer-ip “nva_ip” --peer-asn “nva_asn” -n “NVA2_name” 
+az network routeserver peering create --routeserver-name "myRouteServer" -g "RouteServerRG" --peer-ip "nva_ip" --peer-asn "nva_asn" -n "NVA2_name" 
 ``` 
 
 ## <a name="complete-the-configuration-on-the-nva"></a>NVA üzerinde yapılandırmayı doldurun 
@@ -112,7 +112,7 @@ az network routeserver peering create --routeserver-name “myRouteServer” -g 
 NVA üzerindeki yapılandırmayı tamamlayıp BGP oturumlarını etkinleştirmek için, Azure Route sunucusunun IP ve ASN 'sine ihtiyacınız vardır. Şu komutu kullanarak bu bilgileri alabilirsiniz: 
 
 ```azurecli-interactive 
-az network routeserver show -g “RouteServerRG” -n “myRouteServer” 
+az network routeserver show -g "RouteServerRG" -n "myRouteServer" 
 ``` 
 
 Çıktıda aşağıdaki bilgiler bulunur. 
@@ -143,14 +143,14 @@ Aynı VNet 'te bir ExpressRoute Gateway ve bir Azure VPN ağ geçidiniz varsa ve
 1. Azure yol sunucusu ve ağ geçidi (ler) arasında yönlendirme değişimini etkinleştirmek için şu komutu kullanın:
 
 ```azurecli-interactive 
-az network routeserver update -g “RouteServerRG” -n “myRouteServer” --allow-b2b-traffic true 
+az network routeserver update -g "RouteServerRG" -n "myRouteServer" --allow-b2b-traffic true 
 
 ``` 
 
 2. Azure yol sunucusu ve ağ geçidi (lar) arasında yönlendirme değişimini devre dışı bırakmak için şu komutu kullanın:
 
 ```azurecli-interactive
-az network routeserver update -g “RouteServerRG” -n “myRouteServer” --allow-b2b-traffic false 
+az network routeserver update -g "RouteServerRG" -n "myRouteServer" --allow-b2b-traffic false 
 ``` 
 
 ## <a name="troubleshooting"></a>Sorun giderme 
@@ -169,13 +169,13 @@ Azure Route sunucusuna artık ihtiyacınız yoksa, BGP eşlemesini kaldırmak i�
 1. Bu komutla Azure Route sunucusu ve NVA arasındaki BGP eşlemesini kaldırın:
 
 ```azurecli-interactive
-az network routeserver peering delete --routeserver-name “myRouteServer” -g “RouteServerRG” -n “NVA2_name” 
+az network routeserver peering delete --routeserver-name "myRouteServer" -g "RouteServerRG" -n "NVA2_name" 
 ``` 
 
 2. Azure yol sunucusunu şu komutla kaldırın: 
 
 ```azurecli-interactive 
-az network routeserver delete -n “myRouteServer” -g “RouteServerRG” 
+az network routeserver delete -n "myRouteServer" -g "RouteServerRG" 
 ``` 
 
 ## <a name="next-steps"></a>Sonraki adımlar

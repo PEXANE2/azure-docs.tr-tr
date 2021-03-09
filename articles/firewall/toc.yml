@@ -99,11 +99,13 @@
       href: firewall-workbook.md
     - name: Güvenlik Duvarı Premium 'u dağıtma ve yapılandırma
       href: premium-deploy.md
+    - name: Premium için kuruluş CA sertifikaları dağıtma
+      href: premium-deploy-certificates-enterprise-ca.md
     - name: Azure Güvenlik Duvarı Premium 'a geçiş
       href: premium-migrate.md
 - name: Başvuru
   items:
-    - name: Azure CLI
+    - name: Azure CLI’si
       href: /cli/azure/ext/azure-firewall/network/firewall
     - name: Azure PowerShell
       href: /powershell/module/az.network/new-azfirewall

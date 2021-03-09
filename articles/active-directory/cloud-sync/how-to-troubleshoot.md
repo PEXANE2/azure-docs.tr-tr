@@ -8,16 +8,16 @@ ms.date: 01/19/2021
 ms.topic: how-to
 ms.prod: windows-server-threshold
 ms.technology: identity-adfs
-ms.openlocfilehash: fad065795345314c58e83c8d2614ed01c9e78e49
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.openlocfilehash: 174ec8c42ea17ccae04769d7c0baaa91b8e7025b
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99805538"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102517880"
 ---
 # <a name="cloud-sync-troubleshooting"></a>Bulut eşitleme sorunlarını giderme
 
-Bulut eşitleme birçok farklı şeyi dokunduğunda birçok farklı bağımlılığı vardır. Bu geniş kapsamlı kapsam, çeşitli sorunlara göre daha fazla sorun verebilir. Bu makale, bu sorunları gidermenize yardımcı olur. Üzerinde odaklanmanız, ek bilgilerin toplanması ve sorunları izlemek için kullanabileceğiniz çeşitli teknikler için tipik alanlara odaklanırsınız.
+Bulut eşitleme birçok farklı öğeyi etkiler ve birçok farklı bağımlılığı vardır. Kapsamın genişliği çeşitli sorunlara yol açabilir. Bu makale, bu sorunları gidermenize yardımcı olur. Normal olarak odaklanmanız gereken alanları, ek bilgilerin nasıl toplanacağını ve sorunları izlerken kullanabileceğiniz çeşitli teknikleri tanıtır.
 
 
 ## <a name="common-troubleshooting-areas"></a>Ortak sorun giderme alanı
@@ -120,7 +120,7 @@ Bulut sağlama aracısını yüklerken bir hata iletisi alabilirsiniz.
 
 Bu sorun genellikle aracının yerel PowerShell yürütme ilkeleri nedeniyle PowerShell kayıt betikleri yürütmesine neden olur.
 
-Bu sorunu çözmek için sunucudaki PowerShell yürütme ilkelerini değiştirin. Makine ve kullanıcı ilkelerinin *tanımsız* veya *RemoteSigned* olarak ayarlanmış olması gerekir. *Kısıtlamasız* olarak ayarlandıklarında bu hatayı görürsünüz. Daha fazla bilgi için bkz. [PowerShell yürütme ilkeleri](/powershell/module/microsoft.powershell.core/about/about_execution_policies?view=powershell-6). 
+Bu sorunu çözmek için sunucudaki PowerShell yürütme ilkelerini değiştirin. Makine ve kullanıcı ilkelerinin *tanımsız* veya *RemoteSigned* olarak ayarlanmış olması gerekir. *Kısıtlamasız* olarak ayarlandıklarında bu hatayı görürsünüz. Daha fazla bilgi için bkz. [PowerShell yürütme ilkeleri](/powershell/module/microsoft.powershell.core/about/about_execution_policies). 
 
 ### <a name="log-files"></a>Günlük dosyaları
 

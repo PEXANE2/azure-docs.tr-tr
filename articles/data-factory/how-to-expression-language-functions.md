@@ -1,18 +1,18 @@
 ---
 title: Azure Data Factory içindeki parametreleri ve ifadeleri kullanma
 description: Bu nasıl yapılır makalesi, Data Factory varlıkları oluştururken kullanabileceğiniz ifadeler ve işlevler hakkında bilgi sağlar.
-author: dcstwh
-ms.author: weetok
+author: ssabat
+ms.author: susabat
 ms.reviewer: maghan
 ms.service: data-factory
 ms.topic: conceptual
-ms.date: 11/25/2019
-ms.openlocfilehash: 9cf37d554081ddd300a3ea4c16e2f167c5b98895
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.date: 03/08/2020
+ms.openlocfilehash: 4aa8a0790e7f5812e8c6a70eab1718f92a5e00d0
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 03/09/2021
-ms.locfileid: "102510562"
+ms.locfileid: "102520311"
 ---
 # <a name="how-to-use-parameters-expressions-and-functions-in-azure-data-factory"></a>Azure Data Factory içindeki parametreleri, ifadeleri ve işlevleri kullanma
 
@@ -21,7 +21,11 @@ ms.locfileid: "102510562"
 > * [Güncel sürüm](how-to-expression-language-functions.md)
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-Bu makalede, öncelikle Azure Data Factory içinde parametreli veri işlem hatları oluşturma özelliğini keşfetmeye yönelik örnekler ve öğreticiler ile öğrenme kavramlarına odaklanacağız. Parametreleştirme ve dinamik ifadeler, çok fazla sayıda esnek ayıklama, dönüştürme, yükleme (ETL) veya ayıklama, yükleme, dönüştürme (ELT) çözümüne izin verecek ve böylece çözüm bakımının maliyetini önemli ölçüde azaltan ve yeni özelliklerin mevcut işlem hatlarına uygulanmasını hızlandırdığı için ADF 'ye yönelik bu tür önemli eklemeleridir. Bu kazançlar, Parametreleştirme işlevinin sabit kodlama miktarını en aza indirecek ve bir çözümdeki yeniden kullanılabilir nesne ve işlemlerin sayısını arttığı için yapılır.
+Bu belgede, öncelikle Azure Data Factory içinde parametreli veri işlem hatları oluşturma özelliğini keşfetmeye yönelik çeşitli örneklerle temel kavramları öğrenmenize odaklanacağız. Parametreleştirme ve dinamik ifadeler, çok fazla sayıda esnek ayıklama, dönüştürme, yükleme (ETL) veya ayıklama, yükleme, dönüştürme (ELT) çözümüne izin verdiklerinden, çözüm bakımının maliyetini önemli ölçüde azaltır ve yeni özelliklerin mevcut işlem hatlarına uygulanmasını hızlandırmaya olanak tanıyan ADF 'ye yönelik önemli eklemelerdir. Bu kazançlar, Parametreleştirme işlevinin sabit kodlama miktarını en aza indirecek ve bir çözümdeki yeniden kullanılabilir nesne ve işlemlerin sayısını arttığı için yapılır.
+
+## <a name="azure-data-factory-ui-and-parameters"></a>Azure Data Factory Kullanıcı arabirimi ve parametreleri
+
+ADF Kullanıcı arabiriminde Azure Data Factory parametre kullanımı için yeni bir bağlantı kullanıyorsanız, Visual Açıklama [parametreleri ile meta veri odaklı işlem hattı için parametrelere ve Data Factory Kullanıcı](https://docs.microsoft.com/azure/data-factory/how-to-use-trigger-parameterization#data-factory-ui) arabirimine [sahip bağlı hizmetler IÇIN Data Factory Kullanıcı](https://docs.microsoft.comazure/data-factory/parameterize-linked-services#data-factory-ui) arabirimini gözden geçirin.
 
 ## <a name="parameter-and-expression-concepts"></a>Parametre ve ifade kavramları 
 
@@ -39,7 +43,7 @@ Dış değerleri işlem hatları, veri kümeleri, bağlı hizmetler ve veri akı
 "name": "@pipeline().parameters.password"
 ```
 
-İfadeler JSON dize değerinde herhangi bir yerde görünebilir ve her zaman başka bir JSON değerine neden olabilir. JSON değeri bir ifadesiyse, ifadenin gövdesi at-Sign () kaldırılarak ayıklanır \@ . İle başlayan bir sabit değer dizesi gerekliyse \@ , kullanılarak kaçışlı olması gerekir \@ \@ . Aşağıdaki örneklerde ifadelerin nasıl değerlendirildiği gösterilmektedir.  
+İfadeler JSON dize değerinde herhangi bir yerde görünebilir ve her zaman başka bir JSON değerine neden olabilir. Burada *parola* , ifadedeki bir işlem hattı parametresidir. JSON değeri bir ifadesiyse, ifadenin gövdesi at-Sign () kaldırılarak ayıklanır \@ . İle başlayan bir sabit değer dizesi gerekliyse \@ , kullanılarak kaçışlı olması gerekir \@ \@ . Aşağıdaki örneklerde ifadelerin nasıl değerlendirildiği gösterilmektedir.  
   
 |JSON değeri|Sonuç|  
 |----------------|------------|  
@@ -301,13 +305,20 @@ Bu işlevler, koşullar içinde yararlı olduğundan, her türlü mantığı de�
 | [onay](control-flow-expression-language-functions.md#ticks) | `ticks`Belirtilen zaman damgası için özellik değerini döndürün. |
 | [utcNow](control-flow-expression-language-functions.md#utcNow) | Geçerli zaman damgasını bir dize olarak döndürür. |
 
-## <a name="detailed-azure-data-factory-copy-pipeline-with-parameters"></a>Parametrelerle ilgili ayrıntılı Azure Data Factory kopyalama işlem hattı 
+## <a name="detailed-examples-for-practice"></a>Uygulama için ayrıntılı örnekler
+
+### <a name="detailed-azure-data-factory-copy-pipeline-with-parameters"></a>Parametrelerle ilgili ayrıntılı Azure Data Factory kopyalama işlem hattı 
 
 Bu [Azure Data Factory kopya ardışık düzen parametresi geçirme öğreticisi](https://azure.microsoft.com/mediahandler/files/resourcefiles/azure-data-factory-passing-parameters/Azure%20data%20Factory-Whitepaper-PassingParameters.pdf) , parametreleri bir işlem hattı ve etkinlik arasında ve Etkinlikler arasında nasıl geçiyüde size yol gösterir.
 
-## <a name="detailed--mapping-data-flow-pipeline-with-parameters"></a>Parametrelerle ilgili ayrıntılı eşleme veri akışı işlem hattı 
+### <a name="detailed--mapping-data-flow-pipeline-with-parameters"></a>Parametrelerle ilgili ayrıntılı eşleme veri akışı işlem hattı 
 
 Veri akışında parametrelerin nasıl kullanılacağına ilişkin kapsamlı bir örnek için [, lütfen veri akışını parametrelerle eşlemeyi](https://docs.microsoft.com/azure/data-factory/parameters-data-flow) izleyin.
+
+### <a name="detailed-metadata-driven-pipeline-with-parameters"></a>Parametrelerle ayrıntılı meta veri odaklı işlem hattı
+
+Meta veri odaklı işlem hatlarını tasarlamak için parametrelerin nasıl kullanılacağı hakkında daha fazla bilgi edinmek için lütfen [parametrelerle birlikte metaveri temelli](https://docs.microsoft.com/azure/data-factory/how-to-use-trigger-parameterization) işlem hattını izleyin. Bu, parametreler için popüler bir kullanım durumdur.
+
 
 ## <a name="next-steps"></a>Sonraki adımlar
 İfadelerde kullanabileceğiniz sistem değişkenlerinin listesi için bkz. [Sistem değişkenleri](control-flow-system-variables.md).

@@ -10,12 +10,12 @@ author: mx-iao
 ms.date: 09/28/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 41231e19960edfe1a4f0521b8738fa62a463c927
-ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
+ms.openlocfilehash: 583f588004f41fc07037e7f5e4ce75538a581c70
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/28/2020
-ms.locfileid: "97796474"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102518339"
 ---
 # <a name="train-tensorflow-models-at-scale-with-azure-machine-learning"></a>TensorFlow modellerini Azure Machine Learning ölçeklendirerek eğitme
 
@@ -36,7 +36,7 @@ Bu kodu şu ortamlardan birinde çalıştırın:
  
  - Kendi Jupyter Notebook sunucunuz
 
-    - [Azure Machine Learning SDK 'sını](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py) (>= 1.15.0) yükler.
+    - [Azure Machine Learning SDK 'sını](/python/api/overview/azure/ml/install) (>= 1.15.0) yükler.
     - [Bir çalışma alanı yapılandırma dosyası oluşturun](how-to-configure-environment.md#workspace).
     - [Örnek betik dosyalarını indirin](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/ml-frameworks/tensorflow/train-hyperparameter-tune-deploy-with-tensorflow) `tf_mnist.py` ' `utils.py`
      
@@ -66,7 +66,7 @@ from azureml.core.compute_target import ComputeTargetException
 
 ### <a name="initialize-a-workspace"></a>Çalışma alanını başlatma
 
-[Azure Machine Learning çalışma alanı](concept-workspace.md) , hizmet için en üst düzey kaynaktır. Oluşturduğunuz tüm yapıtlarla çalışmak için merkezi bir yer sağlar. Python SDK 'sında bir nesne oluşturarak çalışma alanı yapıtlarına erişebilirsiniz [`workspace`](/python/api/azureml-core/azureml.core.workspace.workspace?preserve-view=true&view=azure-ml-py) .
+[Azure Machine Learning çalışma alanı](concept-workspace.md) , hizmet için en üst düzey kaynaktır. Oluşturduğunuz tüm yapıtlarla çalışmak için merkezi bir yer sağlar. Python SDK 'sında bir nesne oluşturarak çalışma alanı yapıtlarına erişebilirsiniz [`workspace`](/python/api/azureml-core/azureml.core.workspace.workspace) .
 
 `config.json` [Önkoşullar bölümünde](#prerequisites)oluşturulan dosyadan bir çalışma alanı nesnesi oluşturun.
 
@@ -192,7 +192,7 @@ Ortamları oluşturma ve kullanma hakkında daha fazla bilgi için, bkz. [Azure 
 
 ### <a name="create-a-scriptrunconfig"></a>ScriptRunConfig oluşturma
 
-Eğitim betiğinizi, kullanılacak ortamı ve üzerinde çalıştırılacak işlem hedefini de içeren eğitim işinizin yapılandırma ayrıntılarını belirtmek için bir [ScriptRunConfig](/python/api/azureml-core/azureml.core.scriptrunconfig?preserve-view=true&view=azure-ml-py) nesnesi oluşturun. Eğitim betiğinizdeki bağımsız değişkenler, parametresinde belirtilmişse komut satırı aracılığıyla geçirilir `arguments` .
+Eğitim betiğinizi, kullanılacak ortamı ve üzerinde çalıştırılacak işlem hedefini de içeren eğitim işinizin yapılandırma ayrıntılarını belirtmek için bir [ScriptRunConfig](/python/api/azureml-core/azureml.core.scriptrunconfig) nesnesi oluşturun. Eğitim betiğinizdeki bağımsız değişkenler, parametresinde belirtilmişse komut satırı aracılığıyla geçirilir `arguments` .
 
 ```python
 from azureml.core import ScriptRunConfig
@@ -220,7 +220,7 @@ ScriptRunConfig ile işleri yapılandırma hakkında daha fazla bilgi için bkz.
 
 ### <a name="submit-a-run"></a>Bir çalıştırma gönder
 
-[Run nesnesi](/python/api/azureml-core/azureml.core.run%28class%29?preserve-view=true&view=azure-ml-py) , iş çalışırken ve tamamlandıktan sonra çalışma geçmişi için arabirim sağlar.
+[Run nesnesi](/python/api/azureml-core/azureml.core.run%28class%29) , iş çalışırken ve tamamlandıktan sonra çalışma geçmişi için arabirim sağlar.
 
 ```Python
 run = Experiment(workspace=ws, name='Tutorial-TF-Mnist').submit(src)
@@ -289,7 +289,7 @@ dependencies:
   - horovod==0.19.5
 ```
 
-Azure ML üzerinde MPı/Horovod kullanarak dağıtılmış bir işi yürütmek için, ScriptRunConfig oluşturucusunun parametresine bir [Mpicontısıdiation](/python/api/azureml-core/azureml.core.runconfig.mpiconfiguration?preserve-view=true&view=azure-ml-py) belirtmeniz gerekir `distributed_job_config` . Aşağıdaki kod, düğüm başına bir işlem çalıştıran 2 düğümlü dağıtılmış bir işi yapılandırır. Düğüm başına birden çok işlem çalıştırmak istiyorsanız (örneğin, küme SKU 'sunda birden fazla GPU varsa), ek olarak, `process_count_per_node` Mpiconation (varsayılan değer) parametresinde parametreyi de belirtin `1` .
+Azure ML üzerinde MPı/Horovod kullanarak dağıtılmış bir işi yürütmek için, ScriptRunConfig oluşturucusunun parametresine bir [Mpicontısıdiation](/python/api/azureml-core/azureml.core.runconfig.mpiconfiguration) belirtmeniz gerekir `distributed_job_config` . Aşağıdaki kod, düğüm başına bir işlem çalıştıran 2 düğümlü dağıtılmış bir işi yapılandırır. Düğüm başına birden çok işlem çalıştırmak istiyorsanız (örneğin, küme SKU 'sunda birden fazla GPU varsa), ek olarak, `process_count_per_node` Mpiconation (varsayılan değer) parametresinde parametreyi de belirtin `1` .
 
 ```python
 from azureml.core import ScriptRunConfig
@@ -309,7 +309,7 @@ Azure ML 'de Horovod ile dağıtılmış TensorFlow 'u çalıştırmaya ilişkin
 
 Eğitim kodunuzda [Yerel dağıtılmış TensorFlow](https://www.tensorflow.org/guide/distributed_training) kullanıyorsanız (örneğin, TensorFlow 2. x ' in API 'si), `tf.distribute.Strategy` Dağıtılmış işi Azure ML aracılığıyla da başlatabilirsiniz. 
 
-Bunu yapmak için, ScriptRunConfig oluşturucusunun parametresine yönelik bir [Tensorflowconfiguration](/python/api/azureml-core/azureml.core.runconfig.tensorflowconfiguration?preserve-view=true&view=azure-ml-py) belirtin `distributed_job_config` . Kullanıyorsanız, `tf.distribute.experimental.MultiWorkerMirroredStrategy` `worker_count` eğitim işinizin düğüm sayısına karşılık gelen TensorflowConfiguration içinde öğesini belirtin.
+Bunu yapmak için, ScriptRunConfig oluşturucusunun parametresine yönelik bir [Tensorflowconfiguration](/python/api/azureml-core/azureml.core.runconfig.tensorflowconfiguration) belirtin `distributed_job_config` . Kullanıyorsanız, `tf.distribute.experimental.MultiWorkerMirroredStrategy` `worker_count` eğitim işinizin düğüm sayısına karşılık gelen TensorflowConfiguration içinde öğesini belirtin.
 
 ```python
 import os

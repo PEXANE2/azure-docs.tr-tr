@@ -10,12 +10,12 @@ ms.author: gopalv
 ms.date: 11/25/2020
 ms.topic: troubleshooting
 ms.custom: contperf-fy20q4, devx-track-python, deploy, contperf-fy21q2
-ms.openlocfilehash: 1a7116f0edbed8270a3345bc924bf50872615b04
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.openlocfilehash: 8bec083e62bec6a0311487c1e64e780ad14f451b
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102217168"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102518272"
 ---
 # <a name="troubleshooting-remote-model-deployment"></a>Uzak model dağıtımı sorunlarını giderme 
 
@@ -32,7 +32,7 @@ Azure Machine Learning kullanarak bir modeli Azure Container Instances (ACI) ve 
 ## <a name="prerequisites"></a>Önkoşullar
 
 * Bir **Azure aboneliği**. [Azure Machine Learning ücretsiz veya ücretli sürümünü](https://aka.ms/AMLFree)deneyin.
-* [Azure MACHINE LEARNING SDK](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py).
+* [Azure MACHINE LEARNING SDK](/python/api/overview/azure/ml/install).
 * [Azure CLI](/cli/azure/install-azure-cli).
 * [Azure Machine Learning Için CLI uzantısı](reference-azure-machine-learning-cli.md).
 
@@ -99,7 +99,7 @@ Görüntü başarıyla derlendikten sonra, sistem dağıtım yapılandırmanız�
 
 ## <a name="function-fails-get_model_path"></a>İşlev başarısız oldu: get_model_path ()
 
-Genellikle, `init()` Puanlama betiğinin işlevindeki [model.get_model_path ()](/python/api/azureml-core/azureml.core.model.model?preserve-view=true&view=azure-ml-py#&preserve-view=trueget-model-path-model-name--version-none---workspace-none-) işlevi, bir model dosyasını veya kapsayıcıdaki model dosyalarının bir klasörünü bulmak için çağırılır. Model dosyası veya klasörü bulunamazsa işlev başarısız olur. Bu hatada hata ayıklamanın en kolay yolu, kapsayıcı kabuğu 'nda aşağıdaki python kodunu çalıştırmalıdır:
+Genellikle, `init()` Puanlama betiğinin işlevindeki [model.get_model_path ()](/python/api/azureml-core/azureml.core.model.model#get-model-path-model-name--version-none---workspace-none-) işlevi, bir model dosyasını veya kapsayıcıdaki model dosyalarının bir klasörünü bulmak için çağırılır. Model dosyası veya klasörü bulunamazsa işlev başarısız olur. Bu hatada hata ayıklamanın en kolay yolu, kapsayıcı kabuğu 'nda aşağıdaki python kodunu çalıştırmalıdır:
 
 ```python
 from azureml.core.model import Model
@@ -177,7 +177,7 @@ Azure Kubernetes hizmet dağıtımları otomatik ölçeklendirmeyi destekler, bu
     > [!NOTE]
     > Yeni en düşük çoğaltmalardan daha büyük istek ani artışları alırsanız, yeniden 503s alabilirsiniz. Örneğin, hizmetinizin trafiği arttıkça, en düşük çoğaltmaları artırmanız gerekebilir.
 
-, Ve için ayarları hakkında daha fazla bilgi için, `autoscale_target_utilization` `autoscale_max_replicas` `autoscale_min_replicas` bkz. [akswebservice](/python/api/azureml-core/azureml.core.webservice.akswebservice?preserve-view=true&view=azure-ml-py) modül başvurusu.
+, Ve için ayarları hakkında daha fazla bilgi için, `autoscale_target_utilization` `autoscale_max_replicas` `autoscale_min_replicas` bkz. [akswebservice](/python/api/azureml-core/azureml.core.webservice.akswebservice) modül başvurusu.
 
 ## <a name="http-status-code-504"></a>HTTP durum kodu 504
 

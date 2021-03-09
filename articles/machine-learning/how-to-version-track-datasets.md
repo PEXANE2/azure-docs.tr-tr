@@ -11,12 +11,12 @@ ms.reviewer: nibaccam
 ms.date: 03/09/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, data4ml
-ms.openlocfilehash: d72d2d094e220bd4e460cfca6b422f0609c083af
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: fde25e4ba75bfb86c9837582d7168f85335836b6
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98880076"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102520549"
 ---
 # <a name="version-and-track-azure-machine-learning-datasets"></a>Azure Machine Learning veri kümelerini sürüm ve izleme
 
@@ -31,7 +31,7 @@ Tipik sürüm oluşturma senaryoları:
 
 Bu öğretici için şunlar gerekir:
 
-- [Python için Azure Machine Learning SDK 'sı yüklendi](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py). Bu SDK, [azureml veri kümesi](/python/api/azureml-core/azureml.core.dataset?preserve-view=true&view=azure-ml-py) paketini içerir.
+- [Python için Azure Machine Learning SDK 'sı yüklendi](/python/api/overview/azure/ml/install). Bu SDK, [azureml veri kümesi](/python/api/azureml-core/azureml.core.dataset) paketini içerir.
     
 - [Azure Machine Learning çalışma alanı](concept-workspace.md). Aşağıdaki kodu çalıştırarak mevcut bir tane alın veya [Yeni bir çalışma alanı oluşturun](how-to-manage-workspace.md).
 
@@ -62,7 +62,7 @@ titanic_ds = titanic_ds.register(workspace = workspace,
 
 ### <a name="retrieve-a-dataset-by-name"></a>Bir veri kümesini ada göre al
 
-Varsayılan olarak, sınıfındaki [get_by_name ()](/python/api/azureml-core/azureml.core.dataset.dataset?preserve-view=true&view=azure-ml-py#&preserve-view=trueget-by-name-workspace--name--version--latest--) yöntemi, `Dataset` çalışma alanına kayıtlı veri kümesinin en son sürümünü döndürür. 
+Varsayılan olarak, sınıfındaki [get_by_name ()](/python/api/azureml-core/azureml.core.dataset.dataset#get-by-name-workspace--name--version--latest--) yöntemi, `Dataset` çalışma alanına kayıtlı veri kümesinin en son sürümünü döndürür. 
 
 Aşağıdaki kod, `titanic_ds` veri kümesinin 1. sürümünü alır.
 
@@ -182,7 +182,7 @@ Aşağıda, verilerinizin **Çıkış veri kümesi** olarak izlendiği senaryola
 
 Her Machine Learning deneme için, deneme nesnesiyle giriş olarak kullanılan veri kümelerini kolayca izleyebilirsiniz `Run` .
 
-Aşağıdaki kod, [`get_details()`](/python/api/azureml-core/azureml.core.run.run?preserve-view=true&view=azure-ml-py#&preserve-view=trueget-details--) deneme çalıştırması ile hangi giriş veri kümelerinin kullanıldığını izlemek için yöntemini kullanır:
+Aşağıdaki kod, [`get_details()`](/python/api/azureml-core/azureml.core.run.run#get-details--) deneme çalıştırması ile hangi giriş veri kümelerinin kullanıldığını izlemek için yöntemini kullanır:
 
 ```Python
 # get input datasets

@@ -12,12 +12,12 @@ ms.date: 02/28/2020
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 9612a26d7ac2e7a059655636fc1a2a7a43e3b8d7
-ms.sourcegitcommit: e3151d9b352d4b69c4438c12b3b55413b4565e2f
+ms.openlocfilehash: 2d6c76a15ee62c26e0d0261c6b0d2d1e27443a40
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/15/2021
-ms.locfileid: "100526247"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102518066"
 ---
 # <a name="get-started-with-custom-policies-in-azure-active-directory-b2c"></a>Azure Active Directory B2C özel ilkeleri kullanmaya başlama
 
@@ -30,6 +30,10 @@ ms.locfileid: "100526247"
 - Henüz bir tane yoksa, Azure aboneliğinize bağlı [bir Azure AD B2C kiracı oluşturun](tutorial-create-tenant.md) .
 - [Uygulamanızı](tutorial-register-applications.md) , Azure AD B2C ile iletişim kurabilmesi için oluşturduğunuz kiracıya kaydedin.
 - Facebook uygulamasını yapılandırmak için [kayıt ayarlama ve Facebook hesabıyla oturum açma](identity-provider-facebook.md) adımlarını izleyin. Özel ilkeleri kullanmak için Facebook uygulaması gerekli olmasa da, özel bir ilkede sosyal oturum açmayı etkinleştirmeyi göstermek için bu izlenecek yolda kullanılır.
+
+> [!TIP]
+> Bu makalede, kiracınızı el ile ayarlama açıklanmaktadır. İşlemin tamamını bu makaleden otomatikleştirebilirsiniz. Otomatik hale getirmek, kaydolma ve oturum açma, parola sıfırlama ve profil düzenleme ile bağlantı sağlayan Azure AD B2C [SocialAndLocalAccountsWithMFA başlangıç paketini](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack)dağıtır. Aşağıdaki izlenecek yolu otomatik hale getirmek için [IEF kurulum uygulamasını](https://aka.ms/iefsetup) ziyaret edin ve yönergeleri izleyin.
+
 
 ## <a name="add-signing-and-encryption-keys"></a>İmzalama ve şifreleme anahtarları Ekle
 

@@ -11,12 +11,12 @@ ms.author: amsaied
 ms.reviewer: sgilley
 ms.date: 02/11/2021
 ms.custom: devx-track-python
-ms.openlocfilehash: 18f76480d1327d6ab41c475395a689f8024d7b25
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 4f2b01b7a04958c4bd1f97332b54a1ff4fc32356
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100369042"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102522334"
 ---
 # <a name="tutorial-run-a-hello-world-python-script-part-2-of-4"></a>Öğretici: "Hello World!" Çalıştır Python betiği (Bölüm 2/4)
 
@@ -92,7 +92,7 @@ Denetim betiğinin nasıl çalıştığına ilişkin bir açıklama aşağıda v
       `ws = Workspace.from_config()`
    :::column-end:::
    :::column span="2":::
-      [Çalışma alanı](/python/api/azureml-core/azureml.core.workspace.workspace?preserve-view=true&view=azure-ml-py) Azure Machine Learning çalışma alanınıza bağlanarak Azure Machine Learning kaynaklarınızla iletişim kurabilirsiniz.
+      [Çalışma alanı](/python/api/azureml-core/azureml.core.workspace.workspace) Azure Machine Learning çalışma alanınıza bağlanarak Azure Machine Learning kaynaklarınızla iletişim kurabilirsiniz.
    :::column-end:::
 :::row-end:::
 :::row:::
@@ -100,7 +100,7 @@ Denetim betiğinin nasıl çalıştığına ilişkin bir açıklama aşağıda v
       `experiment =  Experiment( ... )`
    :::column-end:::
    :::column span="2":::
-      [Deneme](/python/api/azureml-core/azureml.core.experiment.experiment?preserve-view=true&view=azure-ml-py) , tek bir ad altında birden çok çalıştırma düzenlemek için basit bir yol sağlar. Daha sonra, denemeleri 'ın onlarca çalışma arasında ölçümleri karşılaştırmayı nasıl kolaylaştıradiğini görebilirsiniz.
+      [Deneme](/python/api/azureml-core/azureml.core.experiment.experiment) , tek bir ad altında birden çok çalıştırma düzenlemek için basit bir yol sağlar. Daha sonra, denemeleri 'ın onlarca çalışma arasında ölçümleri karşılaştırmayı nasıl kolaylaştıradiğini görebilirsiniz.
    :::column-end:::
 :::row-end:::
 :::row:::
@@ -108,7 +108,7 @@ Denetim betiğinin nasıl çalıştığına ilişkin bir açıklama aşağıda v
       `config = ScriptRunConfig( ... )` 
    :::column-end:::
    :::column span="2":::
-      [ScriptRunConfig](/python/api/azureml-core/azureml.core.scriptrunconfig?preserve-view=true&view=azure-ml-py) kodunuzu sarmalar `hello.py` ve çalışma alanınıza geçirir. Adından da anlaşılacağı gibi, bu sınıfı kullanarak _betiğinizi_ Azure Machine Learning ' de nasıl _çalıştırmak_ istediğinizi _yapılandırabilirsiniz_ . Ayrıca, betiğin çalışacağı işlem hedefini de belirtir. Bu kodda, hedef, [Kurulum öğreticisinde](tutorial-1st-experiment-sdk-setup-local.md)oluşturduğunuz işlem kümesidir.
+      [ScriptRunConfig](/python/api/azureml-core/azureml.core.scriptrunconfig) kodunuzu sarmalar `hello.py` ve çalışma alanınıza geçirir. Adından da anlaşılacağı gibi, bu sınıfı kullanarak _betiğinizi_ Azure Machine Learning ' de nasıl _çalıştırmak_ istediğinizi _yapılandırabilirsiniz_ . Ayrıca, betiğin çalışacağı işlem hedefini de belirtir. Bu kodda, hedef, [Kurulum öğreticisinde](tutorial-1st-experiment-sdk-setup-local.md)oluşturduğunuz işlem kümesidir.
    :::column-end:::
 :::row-end:::
 :::row:::
@@ -116,7 +116,7 @@ Denetim betiğinin nasıl çalıştığına ilişkin bir açıklama aşağıda v
       `run = experiment.submit(config)`
    :::column-end:::
    :::column span="2":::
-       Betiğinizi gönderir. Bu gönderim bir [çalıştırma](/python/api/azureml-core/azureml.core.run%28class%29?preserve-view=true&view=azure-ml-py)olarak adlandırılır. Bir çalıştırma, kodunuzun tek bir yürütmesini kapsüller. Betik ilerlemesini izlemek için bir çalıştırma kullanın, çıktıyı yakalayın, sonuçları çözümleyin, ölçümleri görselleştirin ve daha fazlasını yapın.
+       Betiğinizi gönderir. Bu gönderim bir [çalıştırma](/python/api/azureml-core/azureml.core.run%28class%29)olarak adlandırılır. Bir çalıştırma, kodunuzun tek bir yürütmesini kapsüller. Betik ilerlemesini izlemek için bir çalıştırma kullanın, çıktıyı yakalayın, sonuçları çözümleyin, ölçümleri görselleştirin ve daha fazlasını yapın.
    :::column-end:::
 :::row-end:::
 :::row:::

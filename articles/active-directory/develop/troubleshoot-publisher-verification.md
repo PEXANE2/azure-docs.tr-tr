@@ -13,12 +13,12 @@ ms.date: 01/28/2021
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: jesakowi
-ms.openlocfilehash: 9ae5d2279baab69d762a71b2f6400009747c16fe
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
+ms.openlocfilehash: acce282dcaac971716a97d7722543d78e28b7a34
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99584222"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102517676"
 ---
 # <a name="troubleshoot-publisher-verification"></a>Yayımcı doğrulaması ile ilgili sorunları giderme
 Bu işlemi tamamlayamadıysanız veya [yayımcı doğrulaması](publisher-verification-overview.md)ile ilgili beklenmeyen davranışlarla karşılaşıyorsanız, hata alıyorsanız veya beklenmeyen davranışı görüyorsanız aşağıdakileri yaparak başlatmanız gerekir: 
@@ -241,7 +241,7 @@ Doğrulanmış bir yayımcı ekleme isteği yapıldığında, güvenlik riski de
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Önceki bilgilerin tümünü gözden geçirdiğinizi ve Microsoft Graph hala bir hata alıyorsanız, başarısız istekle ilgili olarak aşağıdaki bilgilerin çoğunu toplayın ve [Microsoft desteği 'ne başvurun](developer-support-help-options.md#open-a-support-request).
+Önceki bilgilerin tümünü gözden geçirdiğinizi ve Microsoft Graph hala bir hata alıyorsanız, başarısız istekle ilgili olarak aşağıdaki bilgilerin çoğunu toplayın ve [Microsoft desteği 'ne başvurun](developer-support-help-options.md#create-an-azure-support-request).
 
 - Timestamp 
 - CorrelationId 

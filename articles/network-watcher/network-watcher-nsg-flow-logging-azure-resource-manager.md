@@ -14,17 +14,17 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/07/2021
 ms.author: damendo
-ms.openlocfilehash: 06e70bd31e2045925c1fe7b4088e1a0b1d560b2f
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: a7244aebef6adcfbf96884d377592b575e2c3acb
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98011076"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102519886"
 ---
 # <a name="configure-nsg-flow-logs-from-an-azure-resource-manager-template"></a>Azure Resource Manager şablonundan NSG akış günlüklerini yapılandırma
 
 > [!div class="op_single_selector"]
-> - [Azure Portal](network-watcher-nsg-flow-logging-portal.md)
+> - [Azure portalı](network-watcher-nsg-flow-logging-portal.md)
 > - [PowerShell](network-watcher-nsg-flow-logging-powershell.md)
 > - [Azure CLI](network-watcher-nsg-flow-logging-cli.md)
 > - [REST API](network-watcher-nsg-flow-logging-rest.md)
@@ -76,7 +76,7 @@ Bir Microsoft. Network/networkWatchers/flowLogs kaynağı oluşturmak için, yuk
 
 Azure Resource Manager şablonlarını ilk kez kullanıyorsanız aşağıdaki bağlantıları kullanarak bunlarla ilgili daha fazla bilgi edinebilirsiniz.
 
-* [Kaynakları Resource Manager şablonları ve Azure PowerShell ile dağıtma](../azure-resource-manager/templates/deploy-powershell.md#deploy-local-template)
+* [Kaynakları Resource Manager şablonları ve Azure PowerShell ile dağıtma](../azure-resource-manager/templates/deploy-powershell.md#deploy-local-template-or-bicep-file)
 * [Öğretici: ilk Azure Resource Manager şablonunuzu oluşturma ve dağıtma](../azure-resource-manager/templates/template-tutorial-create-first-template.md?tabs=azure-powershell)
 
 
@@ -144,7 +144,7 @@ Aşağıda NSG akış günlüklerini ayarlamaya yönelik tüm şablonlara yönel
         },
         "format": {
           "type": "JSON",
-          "version": 2          
+          "version": 2
         }
       }
     }

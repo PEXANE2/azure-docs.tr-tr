@@ -9,12 +9,12 @@ ms.service: virtual-machines
 ms.subservice: image-builder
 ms.collection: linux
 ms.reviewer: cynthn
-ms.openlocfilehash: eb02bff77ffedc0a1f2fee0a186d544c39374dbf
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: a3138da0ecbcabaeb7ef910975afc3b7005e5b50
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101693875"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102519716"
 ---
 # <a name="preview-create-an-azure-image-builder-template"></a>Önizleme: Azure görüntü Oluşturucu şablonu oluşturma 
 
@@ -391,7 +391,7 @@ Kabuk Özelleştirici PowerShell betikleri ve satır içi komutunu çalıştırm
 - **Validexitcodes** : isteğe bağlı, betiğe/satır içi komuttan döndürülebilecek geçerli kodlar, bu, betik/satır içi komutunun bildirilen başarısızlığından kaçınacaktır.
 - **runyükseltici** – isteğe bağlı, Boole, yükseltilmiş izinlerle komutları ve betikleri çalıştırmaya yönelik destek.
 - **sha256Checksum** -dosyanın SHA256 sağlama toplamı değeri, bu yerel olarak oluşturulur ve ardından görüntü Oluşturucu sağlama toplamı ve doğrular.
-    * Windows [Get-Hash](/powershell/module/microsoft.powershell.utility/get-filehash?view=powershell-6) üzerinde bir PowerShell kullanarak sha256Checksum oluşturmak için
+    * Windows [Get-Hash](/powershell/module/microsoft.powershell.utility/get-filehash) üzerinde bir PowerShell kullanarak sha256Checksum oluşturmak için
 
 
 ### <a name="file-customizer"></a>Dosya Özelleştirici
@@ -456,7 +456,7 @@ OS support: Windows
 - **Updatelimit** : isteğe bağlı, kaç güncelleştirme yüklenebileceğini tanımlar, varsayılan 1000.
  
 > [!NOTE]
-> Windows Update Özelleştirici, bekleyen bir Windows yeniden başlatmaları varsa veya uygulama yüklemeleri hala çalışıyorsa başarısız olabilir, genellikle bu hatayı özelleştirme. log ' da görebilirsiniz `System.Runtime.InteropServices.COMException (0x80240016): Exception from HRESULT: 0x80240016` . Bir Windows yeniden başlatmasına ekleme yapmayı düşünmenize ve/veya uygulamaların [Sleep] veya Wait komutlarıyla ( https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/start-sleep?view=powershell-7) Windows Update çalıştırmadan önce satır içi komutlarda veya betiklerinde) yüklemeyi tamamlaması için yeterli zaman olmasını öneririz.
+> Windows Update Özelleştirici, bekleyen bir Windows yeniden başlatmaları varsa veya uygulama yüklemeleri hala çalışıyorsa başarısız olabilir, genellikle bu hatayı özelleştirme. log ' da görebilirsiniz `System.Runtime.InteropServices.COMException (0x80240016): Exception from HRESULT: 0x80240016` . Bir Windows yeniden başlatmasına ekleme yapmayı ve/veya Windows Update çalıştırmadan önce iç satır komutlarında veya betiklerdeki [uyku](https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/start-sleep) veya bekleme komutlarını kullanarak yüklemelerin tamamlanmasını istediğiniz zaman izin vermenizi önemle tavsiye ederiz.
 
 ### <a name="generalize"></a>Genelleştir 
 Varsayılan olarak, Azure Image Builder, görüntüyü ' genelleştirmek ' için her görüntü özelleştirme aşamasının sonunda ' deprovision ' kodunu da çalıştıracak. Genelleştirmek, görüntünün ayarlandığı bir işlemdir, bu sayede birden fazla VM oluşturmak için yeniden kullanılabilir. Windows VM 'Leri için Azure Image Builder, Sysprep kullanır. Linux için Azure görüntü Oluşturucu ' waagent-deprovision ' çalıştırır. 

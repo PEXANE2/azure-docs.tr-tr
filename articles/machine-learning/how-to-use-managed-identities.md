@@ -10,12 +10,12 @@ ms.subservice: core
 ms.reviewer: larryfr
 ms.topic: conceptual
 ms.date: 10/22/2020
-ms.openlocfilehash: 014c592713a8568b3bbc7e8e536f81b203271ccc
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: a7efd57100ad89fa9824b7a635e11698515e13ae
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100388082"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102521025"
 ---
 # <a name="use-managed-identities-with-azure-machine-learning-preview"></a>Azure Machine Learning ile yönetilen kimlikler kullanma (Önizleme)
 
@@ -38,7 +38,7 @@ Bu makalede, yönetilen kimliklerin nasıl kullanılacağını şu şekilde öğ
 
 - Azure Machine Learning çalışma alanı. Daha fazla bilgi için bkz. [Azure Machine Learning çalışma alanı oluşturma](how-to-manage-workspace.md).
 - [Machine Learning hizmeti Için Azure CLI uzantısı](reference-azure-machine-learning-cli.md)
-- [Python SDK Azure Machine Learning](/python/api/overview/azure/ml/intro?view=azure-ml-py).
+- [Python SDK Azure Machine Learning](/python/api/overview/azure/ml/intro).
 - Rol atamak için, Azure aboneliğiniz için oturum açma, [yönetilen kimlik operatörü](../role-based-access-control/built-in-roles.md#managed-identity-operator) rolüne veya gerekli eylemlere (örneğin, __sahip__) izin veren başka bir role sahip olmalıdır.
 - [Yönetilen kimlikler](../active-directory/managed-identities-azure-resources/overview.md)oluşturma ve bunlarla çalışma konusunda bilgi sahibi olmanız gerekir.
 
@@ -107,7 +107,7 @@ Kendi ACR 'nizi getirmeyin, tek yapmanız gereken bir işlem gerçekleştirdiği
 
 # <a name="python"></a>[Python](#tab/python)
 
-[AmlComputeProvisioningConfiguration](/python/api/azureml-core/azureml.core.compute.amlcompute.amlcomputeprovisioningconfiguration?view=azure-ml-py)ile bir işlem kümesi oluştururken, `identity_type` yönetilen kimlik türünü ayarlamak için parametresini kullanın.
+[AmlComputeProvisioningConfiguration](/python/api/azureml-core/azureml.core.compute.amlcompute.amlcomputeprovisioningconfiguration)ile bir işlem kümesi oluştururken, `identity_type` yönetilen kimlik türünü ayarlamak için parametresini kullanın.
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -191,7 +191,7 @@ Bu senaryoda Azure Machine Learning hizmeti, özel bir ACR 'den sağladığını
 
         UAı kaynak KIMLIĞI, Kullanıcı tarafından atanan kimliğin Azure Kaynak KIMLIĞI biçimindedir `/subscriptions/<subscription ID>/resourceGroups/<resource group>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<UAI name>` .
 
-1. [Workspace.set_connection yöntemi](/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py#set-connection-name--category--target--authtype--value-)kullanarak çalışma alanı bağlantılarında __Kullanıcı tarafından atanan yönetilen kimliğin__ dış ACR ve istemci kimliğini belirtin:
+1. [Workspace.set_connection yöntemi](/python/api/azureml-core/azureml.core.workspace.workspace#set-connection-name--category--target--authtype--value-)kullanarak çalışma alanı bağlantılarında __Kullanıcı tarafından atanan yönetilen kimliğin__ dış ACR ve istemci kimliğini belirtin:
 
     ```python
     workspace.set_connection(
@@ -211,7 +211,7 @@ env = Environment(name="my-env")
 env.docker.base_image = "<acr url>/my-repo/my-image:latest"
 ```
 
-İsteğe bağlı olarak, yönetilen kimlik kaynak URL 'sini ve istemci KIMLIĞINI [registryıdentity](/python/api/azureml-core/azureml.core.container_registry.registryidentity?view=azure-ml-py)kullanarak ortam tanımında belirtebilirsiniz. Kayıt defteri kimliğini açık olarak kullanırsanız, daha önce belirtilen tüm çalışma alanı bağlantılarını geçersiz kılar:
+İsteğe bağlı olarak, yönetilen kimlik kaynak URL 'sini ve istemci KIMLIĞINI [registryıdentity](/python/api/azureml-core/azureml.core.container_registry.registryidentity)kullanarak ortam tanımında belirtebilirsiniz. Kayıt defteri kimliğini açık olarak kullanırsanız, daha önce belirtilen tüm çalışma alanı bağlantılarını geçersiz kılar:
 
 ```python
 from azureml.core.container_registry import RegistryIdentity

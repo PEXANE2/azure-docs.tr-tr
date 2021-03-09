@@ -10,12 +10,12 @@ ms.custom: how-to, devx-track-azurecli, devx-track-azurepowershell
 ms.author: larryfr
 author: Blackmist
 ms.date: 09/30/2020
-ms.openlocfilehash: 98ea51957014a4e9d83f27adefd86d8d0708b500
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.openlocfilehash: 9df8a67fd3dfbf23986f1cc5ed18392463fc7ecb
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 03/09/2021
-ms.locfileid: "102503190"
+ms.locfileid: "102522215"
 ---
 # <a name="use-an-azure-resource-manager-template-to-create-a-workspace-for-azure-machine-learning"></a>Azure Machine Learning için bir çalışma alanı oluşturmak üzere Azure Resource Manager şablonu kullanma
 
@@ -32,12 +32,7 @@ Daha fazla bilgi için bkz. [Azure Resource Manager şablonuyla uygulama dağıt
 
 * CLı 'dan bir şablon kullanmak için [Azure PowerShell](/powershell/azure/) ya da [Azure CLI](/cli/azure/install-azure-cli)gerekir.
 
-* Bazı senaryolar için bir destek bileti açmanız gerekir. Bu senaryolar şunlardır:
-
-    * __Müşteri tarafından yönetilen anahtarın bulunduğu Özel Bağlantı özellikli çalışma alanı__
-    * __Sanal ağınızın arkasındaki çalışma alanı için Azure Container Registry__
-
-    Daha fazla bilgi için bkz. [kotaları yönetme ve artırma](how-to-manage-quotas.md#private-endpoint-and-private-dns-quota-increases).
+* Bazı senaryolar için bir destek bileti açmanız gerekir. Örneğin, müşteri tarafından yönetilen bir anahtarla özel bir bağlantı etkin çalışma alanı kullanma. Daha fazla bilgi için bkz. [kotaları yönetme ve artırma](how-to-manage-quotas.md#private-endpoint-and-private-dns-quota-increases).
 
 ## <a name="limitations"></a>Sınırlamalar
 

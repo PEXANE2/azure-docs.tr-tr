@@ -11,16 +11,16 @@ ms.reviewer: larryfr, vaidyas, laobri, tracych
 ms.author: trmccorm
 author: tmccrmck
 ms.date: 09/23/2020
-ms.openlocfilehash: ee41ae2a705ceaa0e9742c91552d6bdae26820ce
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: b5511c8ecc33238e0409b5ee4c1c7a11adddeac5
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101690286"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102522164"
 ---
 # <a name="troubleshooting-the-parallelrunstep"></a>ParallelRunStep sorunlarını giderme
 
-Bu makalede, [Azure MACHINE LEARNING SDK](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py)'Dan [Parallelrunstep](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.parallel_run_step.parallelrunstep?preserve-view=true&view=azure-ml-py) sınıfını kullanarak hata alırken sorun gidermeyi öğreneceksiniz.
+Bu makalede, [Azure MACHINE LEARNING SDK](/python/api/overview/azure/ml/intro)'Dan [Parallelrunstep](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.parallel_run_step.parallelrunstep) sınıfını kullanarak hata alırken sorun gidermeyi öğreneceksiniz.
 
 İşlem hattının sorunlarını giderme hakkında genel ipuçları için bkz. [makine öğrenimi işlem hatları sorunlarını giderme](how-to-debug-pipelines.md).
 
@@ -212,7 +212,7 @@ def run(mini_batch):
 
 Kullanıcı, ParalleRunStep side_inputs parametresi kullanarak başvuru verilerini betiğe geçirebilir. Side_inputs olarak belirtilen tüm veri kümeleri her çalışan düğümüne bağlanır. Kullanıcı, bağımsız değişkeni geçirerek bağlama konumunu alabilir.
 
-Başvuru verilerini içeren bir [veri kümesi](/python/api/azureml-core/azureml.core.dataset.dataset?preserve-view=true&view=azure-ml-py) oluşturun ve çalışma alanınıza kaydedin. Bu `side_inputs` parametreye geçirin `ParallelRunStep` . Ayrıca, `arguments` bağlı yoluna kolayca erişmek için bölümüne yolunu ekleyebilirsiniz:
+Başvuru verilerini içeren bir [veri kümesi](/python/api/azureml-core/azureml.core.dataset.dataset) oluşturun ve çalışma alanınıza kaydedin. Bu `side_inputs` parametreye geçirin `ParallelRunStep` . Ayrıca, `arguments` bağlı yoluna kolayca erişmek için bölümüne yolunu ekleyebilirsiniz:
 
 ```python
 label_config = label_ds.as_named_input("labels_input")
@@ -262,6 +262,6 @@ registered_ds = ds.register(ws, '***dataset-name***', create_new_version=True)
 
 * Azure Machine Learning işlem [hatlarını gösteren bu Jupyıter not defterlerine](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/machine-learning-pipelines) bakın
 
-* [Azureml-işlem hattı-adımlar](/python/api/azureml-pipeline-steps/azureml.pipeline.steps?preserve-view=true&view=azure-ml-py) paketiyle ilgili yardım için SDK başvurusuna bakın. ParallelRunStep sınıfı için başvuru [belgelerini](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.parallelrunstep?preserve-view=true&view=azure-ml-py) görüntüleyin.
+* [Azureml-işlem hattı-adımlar](/python/api/azureml-pipeline-steps/azureml.pipeline.steps) paketiyle ilgili yardım için SDK başvurusuna bakın. ParallelRunStep sınıfı için başvuru [belgelerini](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.parallelrunstep) görüntüleyin.
 
 * ParallelRunStep ile işlem hatlarını kullanma hakkında [Gelişmiş öğreticiyi](tutorial-pipeline-batch-scoring-classification.md) izleyin. Öğreticide, başka bir dosyanın bir yan giriş olarak nasıl geçirileceğini gösterilmektedir.

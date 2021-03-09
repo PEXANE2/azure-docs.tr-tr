@@ -10,12 +10,12 @@ author: jpe316
 ms.date: 09/28/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: e80f33e6c36e1525eff954376d17c8a8b76204cb
-ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
+ms.openlocfilehash: 807174fdbede2e4631b3ca1df7220904038da4c8
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/28/2020
-ms.locfileid: "97796032"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102518305"
 ---
 # <a name="train-scikit-learn-models-at-scale-with-azure-machine-learning"></a>Scikit 'i eğitme-Azure Machine Learning modelleri uygun ölçekte öğrenme
 
@@ -35,7 +35,7 @@ Bu kodu şu ortamlardan birinde çalıştırın:
 
  - Kendi Jupyter Notebook sunucunuz
 
-    - [Azure Machine Learning SDK 'sını](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py) (>= 1.13.0) yükler.
+    - [Azure Machine Learning SDK 'sını](/python/api/overview/azure/ml/install) (>= 1.13.0) yükler.
     - [Bir çalışma alanı yapılandırma dosyası oluşturun](how-to-configure-environment.md#workspace).
 
 ## <a name="set-up-the-experiment"></a>Denemeyi ayarlama
@@ -44,7 +44,7 @@ Bu bölüm, gerekli Python paketlerini yükleyerek, bir çalışma alanı başla
 
 ### <a name="initialize-a-workspace"></a>Çalışma alanını başlatma
 
-[Azure Machine Learning çalışma alanı](concept-workspace.md) , hizmet için en üst düzey kaynaktır. Oluşturduğunuz tüm yapıtlarla çalışmak için merkezi bir yer sağlar. Python SDK 'sında bir nesne oluşturarak çalışma alanı yapıtlarına erişebilirsiniz [`workspace`](/python/api/azureml-core/azureml.core.workspace.workspace?preserve-view=true&view=azure-ml-py) .
+[Azure Machine Learning çalışma alanı](concept-workspace.md) , hizmet için en üst düzey kaynaktır. Oluşturduğunuz tüm yapıtlarla çalışmak için merkezi bir yer sağlar. Python SDK 'sında bir nesne oluşturarak çalışma alanı yapıtlarına erişebilirsiniz [`workspace`](/python/api/azureml-core/azureml.core.workspace.workspace) .
 
 `config.json` [Önkoşullar bölümünde](#prerequisites)oluşturulan dosyadan bir çalışma alanı nesnesi oluşturun.
 
@@ -162,7 +162,7 @@ import joblib
 joblib.dump(svm_model_linear, 'model.joblib')
 ```
 
-Aşağıdaki kodla modeli çalışma alanınıza kaydedin. , Ve parametrelerini belirterek,, `model_framework` `model_framework_version` ve `resource_configuration` , No-Code Model dağıtımı kullanılabilir hale gelir. Kod modeli dağıtımı, modelinizi kayıtlı modelden doğrudan bir Web hizmeti olarak dağıtmanızı sağlar ve [`ResourceConfiguration`](/python/api/azureml-core/azureml.core.resource_configuration.resourceconfiguration?preserve-view=true&view=azure-ml-py) nesne, Web hizmeti için işlem kaynağını tanımlar.
+Aşağıdaki kodla modeli çalışma alanınıza kaydedin. , Ve parametrelerini belirterek,, `model_framework` `model_framework_version` ve `resource_configuration` , No-Code Model dağıtımı kullanılabilir hale gelir. Kod modeli dağıtımı, modelinizi kayıtlı modelden doğrudan bir Web hizmeti olarak dağıtmanızı sağlar ve [`ResourceConfiguration`](/python/api/azureml-core/azureml.core.resource_configuration.resourceconfiguration) nesne, Web hizmeti için işlem kaynağını tanımlar.
 
 ```Python
 from azureml.core import Model
@@ -181,7 +181,7 @@ Yeni kaydettiğiniz model, Azure ML 'deki diğer kayıtlı modelde tam olarak ay
 
 ### <a name="preview-no-code-model-deployment"></a>Önizle Kod olmayan model dağıtımı
 
-Geleneksel dağıtım yolu yerine, scikit-öğren için kod dışı dağıtım özelliğini (Önizleme) de kullanabilirsiniz. Hiçbir kod modeli dağıtımı, yerleşik tüm scikit-öğrenme model türleri için desteklenmez. Modelinizi yukarıda gösterildiği gibi `model_framework` ,, ve parametreleriyle kaydederek, `model_framework_version` `resource_configuration` [`deploy()`](/python/api/azureml-core/azureml.core.model%28class%29?preserve-view=true&view=azure-ml-py#&preserve-view=truedeploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-) modelinizi dağıtmak için yalnızca statik işlevi kullanabilirsiniz.
+Geleneksel dağıtım yolu yerine, scikit-öğren için kod dışı dağıtım özelliğini (Önizleme) de kullanabilirsiniz. Hiçbir kod modeli dağıtımı, yerleşik tüm scikit-öğrenme model türleri için desteklenmez. Modelinizi yukarıda gösterildiği gibi `model_framework` ,, ve parametreleriyle kaydederek, `model_framework_version` `resource_configuration` [`deploy()`](/python/api/azureml-core/azureml.core.model%28class%29#deploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-) modelinizi dağıtmak için yalnızca statik işlevi kullanabilirsiniz.
 
 ```python
 web_service = Model.deploy(ws, "scikit-learn-service", [model])

@@ -6,14 +6,14 @@ author: v-dalc
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 01/13/2021
+ms.date: 03/08/2021
 ms.author: alkohli
-ms.openlocfilehash: f2bad214045710fe861040514beb3c536664d684
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
+ms.openlocfilehash: 281b22db692087f2876b4011563fee8c56bd476e
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102201898"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102522402"
 ---
 # <a name="tutorial-order-azure-data-box"></a>Öğretici: Azure Data Box sipariş etme
 
@@ -164,7 +164,7 @@ Windows PowerShell sürüm 6.2.4 veya sonraki bir sürümün yüklü olması ger
     WSManStackVersion              3.0
 ```
 
-Sürümünüz 6.2.4 'den düşükse, Windows PowerShell sürümünüzü yükseltmeniz gerekir. Windows PowerShell 'in en son sürümünü yüklemek için bkz. [ınstall Azure PowerShell](/powershell/scripting/install/installing-powershell?view=powershell-7&preserve-view=true).
+Sürümünüz 6.2.4 'den düşükse, Windows PowerShell sürümünüzü yükseltmeniz gerekir. Windows PowerShell 'in en son sürümünü yüklemek için bkz. [ınstall Azure PowerShell](/powershell/scripting/install/installing-powershell).
 
 **Azure PowerShell ve Data Box modülleri 'ni yükler**
 
@@ -355,22 +355,34 @@ Bir cihazı sıralamak için Azure portal aşağıdaki adımları uygulayın.
     ![Genişletilmiş bir Data Box içeri aktarma sırası için kendi parola seçeneklerinizi getirin](media/data-box-deploy-ordered/select-data-box-import-security-02.png) 
 
    - Yeni cihazınız için kendi parolanızı kullanmak üzere **cihaz parolası için tercih ayarla** **' yı seçin ve** güvenlik gereksinimlerini karşılayan bir parola yazın.
+     
+     Parolanın alfasayısal olması ve 12 ile 15 arasında karakter uzunluğunda olmalı ve en az bir büyük harf, bir küçük harf, bir özel karakter ve bir sayı içermelidir. 
+
+     - İzin verilen özel karakterler: @ #-$% ^! + = ; : _ ( )
+     - Karakterlere izin verilmiyor: ı i L o O 0
    
      ![Data Box içeri aktarma sırası için güvenlik ekranında kendi cihaz parolanızı kullanma seçenekleri](media/data-box-deploy-ordered/select-data-box-import-security-03.png)
 
  - Paylaşımlar için kendi parolalarınızı kullanmak için:
 
-   - **Parola paylaşma için tercih ayarla**' yı seçerek, **kendi parolalarınızı kullanın** ' ı seçin ve ardından **paylaşımlar için parolalar**' ı seçin.
+   1. **Parola paylaşma için tercih ayarla**' yı seçerek, **kendi parolalarınızı kullanın** ' ı seçin ve ardından **paylaşımlar için parolalar**' ı seçin.
      
-        ![Data Box içeri aktarma sırası için güvenlik ekranında kendi paylaşma parolalarınızı kullanma seçenekleri](media/data-box-deploy-ordered/select-data-box-import-security-04.png)
+       ![Data Box içeri aktarma sırası için güvenlik ekranında kendi paylaşma parolalarınızı kullanma seçenekleri](media/data-box-deploy-ordered/select-data-box-import-security-04.png)
 
-    - Her depolama hesabı için sırasıyla bir parola yazın. Parola, depolama hesabının tüm paylaşımlarında kullanılacaktır.
-     
-        Tüm depolama hesapları için aynı parolayı kullanmak için, **tümüne Kopyala**' yı seçin. Bitirdiğinizde **Kaydet**' i seçin.
-     
-        ![Data Box içeri aktarma sırası için paylaşma parolaları girme ekranı](media/data-box-deploy-ordered/select-data-box-import-security-05.png)
+    1. Her depolama hesabı için sırasıyla bir parola yazın. Parola, depolama hesabının tüm paylaşımlarında kullanılacaktır.
+    
+       Parola alfasayısal olmalı ve 12 ile 64 karakter arasında olmalıdır; en az bir büyük harf, bir küçük harf, bir özel karakter ve bir sayı içermelidir.
 
-       **Güvenlik** ekranında, parolaları değiştirmek Için **Parolaları görüntüleme veya değiştirme** seçeneğini kullanabilirsiniz.
+       - İzin verilen özel karakterler: @ #-$% ^! + = ; : _ ( )
+       - Karakterlere izin verilmiyor: ı i L o O 0
+     
+    1. Tüm depolama hesapları için aynı parolayı kullanmak için, **tümüne Kopyala**' yı seçin. 
+
+    1. Bitirdiğinizde **Kaydet**' i seçin.
+     
+       ![Data Box içeri aktarma sırası için paylaşma parolaları girme ekranı](media/data-box-deploy-ordered/select-data-box-import-security-05.png)
+
+    **Güvenlik** ekranında, parolaları değiştirmek Için **Parolaları görüntüleme veya değiştirme** seçeneğini kullanabilirsiniz.
 
 16. **Güvenlik** bölümünde, yazılım tabanlı çift şifrelemeyi etkinleştirmek Istiyorsanız, **çift şifrelemeyi genişletin (yüksek oranda güvenli ortamlar için)** ve **sıra için çift şifrelemeyi etkinleştir**' i seçin.
 
@@ -413,7 +425,7 @@ Bir cihaz sıralamak için Azure CLı kullanarak aşağıdaki adımları uygulay
 
 1. Data Box siparişiniz için ayarlarınızı yazın. Bu ayarlar kişisel/iş bilgilerinizi, abonelik adınızı, cihaz bilgilerini ve gönderi bilgilerini içerir. Data Box sırasını oluşturmak için CLı komutunu çalıştırırken bu ayarları parametre olarak kullanmanız gerekir. Aşağıdaki tabloda, için kullanılan parametre ayarları gösterilmektedir `az databox job create` :
 
-   | Ayar (parametre) | Açıklama |  Örnek değer |
+   | Ayar (parametre) | Description |  Örnek değer |
    |---|---|---|
    |resource-group| Var olan bir taneyi kullanın veya yenisini oluşturun. Kaynak grubu, birlikte yönetilebilen ve ya dağıtılabilen kaynaklardan oluşan mantıksal kapsayıcıdır. | myresourcegroup|
    |name| Oluşturmakta olduğunuz siparişin adı. | "mydataboxorder"|
@@ -532,7 +544,7 @@ Bir cihazı sıralamak için Azure PowerShell kullanarak aşağıdaki adımları
 
 2. Data Box siparişiniz için ayarlarınızı yazın. Bu ayarlar kişisel/iş bilgilerinizi, abonelik adınızı, cihaz bilgilerini ve gönderi bilgilerini içerir. Data Box sırasını oluşturmak için PowerShell komutunu çalıştırırken bu ayarları parametre olarak kullanmanız gerekir. Aşağıdaki tabloda [New-AzDataBoxJob](/powershell/module/az.databox/New-AzDataBoxJob)için kullanılan parametre ayarları gösterilmektedir.
 
-    | Ayar (parametre) | Açıklama |  Örnek değer |
+    | Ayar (parametre) | Description |  Örnek değer |
     |---|---|---|
     |ResourceGroupName [gerekli]| Mevcut bir kaynak grubunu kullanın. Kaynak grubu, birlikte yönetilebilen ve ya dağıtılabilen kaynaklardan oluşan mantıksal kapsayıcıdır. | myresourcegroup|
     |Ad [gerekli]| Oluşturmakta olduğunuz siparişin adı. | "mydataboxorder"|

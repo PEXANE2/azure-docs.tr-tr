@@ -11,12 +11,12 @@ manager: cgronlun
 ms.date: 02/28/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, automl
-ms.openlocfilehash: da973cf377ceace4a92d1cdd1e956321a5592e6a
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 0de3c9a7cf464f38a1a12d8bc19451fb1158a5ad
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101692224"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102520515"
 ---
 # <a name="use-automated-ml-in-an-azure-machine-learning-pipeline-in-python"></a>Python 'da Azure Machine Learning işlem hattında otomatik ML kullanma
 
@@ -37,7 +37,7 @@ Bir işlem hattındaki otomatikleştirilen ML bir nesne tarafından temsil edili
 
 Öğesinin birkaç alt sınıfları vardır `PipelineStep` . ' A ek olarak, `AutoMLStep` Bu makalede bir `PythonScriptStep` veri hazırlığı ve modeli kaydetmek için bir diğeri görüntülenir.
 
-İlk _olarak BIR ml_ ardışık düzenine veri taşımanın tercih edilen yolu, `Dataset` nesneleriyle birlikte. Adımlar _arasında_ veri taşımak ve çalışma sırasında veri çıkışı kazanmak için tercih edilen yol, [`OutputFileDatasetConfig`](/python/api/azureml-core/azureml.data.outputfiledatasetconfig?preserve-view=true&view=azure-ml-py) ve [`OutputTabularDatasetConfig`](/python/api/azureml-core/azureml.data.output_dataset_config.outputtabulardatasetconfig?preserve-view=true&view=azure-ml-py) nesneleridir. İle birlikte kullanılabilmesi için `AutoMLStep` `PipelineData` nesnenin bir nesnesine dönüştürülmesi gerekir `PipelineOutputTabularDataset` . Daha fazla bilgi için bkz. [ml işlem hatlarından giriş ve çıkış verileri](how-to-move-data-in-out-of-pipelines.md).
+İlk _olarak BIR ml_ ardışık düzenine veri taşımanın tercih edilen yolu, `Dataset` nesneleriyle birlikte. Adımlar _arasında_ veri taşımak ve çalışma sırasında veri çıkışı kazanmak için tercih edilen yol, [`OutputFileDatasetConfig`](/python/api/azureml-core/azureml.data.outputfiledatasetconfig) ve [`OutputTabularDatasetConfig`](/python/api/azureml-core/azureml.data.output_dataset_config.outputtabulardatasetconfig) nesneleridir. İle birlikte kullanılabilmesi için `AutoMLStep` `PipelineData` nesnenin bir nesnesine dönüştürülmesi gerekir `PipelineOutputTabularDataset` . Daha fazla bilgi için bkz. [ml işlem hatlarından giriş ve çıkış verileri](how-to-move-data-in-out-of-pipelines.md).
 
 , `AutoMLStep` Bir nesnesi aracılığıyla yapılandırılır `AutoMLConfig` . `AutoMLConfig` , [Python 'da OTOMATIK ml denemeleri yapılandırma](./how-to-configure-auto-train.md#configure-your-experiment-settings)bölümünde anlatıldığı gibi esnek bir sınıftır. 
 

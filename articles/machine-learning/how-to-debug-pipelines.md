@@ -10,16 +10,16 @@ ms.author: laobri
 ms.date: 10/22/2020
 ms.topic: troubleshooting
 ms.custom: troubleshooting, devx-track-python, contperf-fy21q2
-ms.openlocfilehash: 0f27688e31f772cc8d784371aa570d55c41f5695
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: 195942d1787cdef51ee480fa5c5595db99bc7c78
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98131823"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102522096"
 ---
 # <a name="troubleshooting-machine-learning-pipelines"></a>Makine öğrenimi ardışık düzenleri sorunlarını giderme
 
-Bu makalede, [Azure MACHINE LEARNING SDK](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py) ve [Azure Machine Learning tasarımcısında](./concept-designer.md) [makine öğrenimi işlem hattı](concept-ml-pipelines.md) çalıştırırken hata almanıza nasıl sorun gidermeyi öğreneceksiniz. 
+Bu makalede, [Azure MACHINE LEARNING SDK](/python/api/overview/azure/ml/intro) ve [Azure Machine Learning tasarımcısında](./concept-designer.md) [makine öğrenimi işlem hattı](concept-ml-pipelines.md) çalıştırırken hata almanıza nasıl sorun gidermeyi öğreneceksiniz. 
 
 ## <a name="troubleshooting-tips"></a>Sorun giderme ipuçları
 
@@ -192,7 +192,7 @@ Aşağıdaki tabloda, işlem hatları için farklı hata ayıklama seçenekleri 
 
 | Kitaplık                    | Tür   | Örnek                                                          | Hedef                                  | Kaynaklar                                                                                                                                                                                                                                                                                                                    |
 |----------------------------|--------|------------------------------------------------------------------|----------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Azure Machine Learning SDK’sı | Ölçüm | `run.log(name, val)`                                             | Azure Machine Learning Portal Kullanıcı arabirimi             | [Denemeleri izleme](how-to-track-experiments.md)<br>[azureml. Core. Run sınıfı](/python/api/azureml-core/azureml.core.run%28class%29?preserve-view=true&view=azure-ml-py)                                                                                                                                                 |
+| Azure Machine Learning SDK’sı | Metric | `run.log(name, val)`                                             | Azure Machine Learning Portal Kullanıcı arabirimi             | [Denemeleri izleme](how-to-track-experiments.md)<br>[azureml. Core. Run sınıfı](/python/api/azureml-core/azureml.core.run%28class%29)                                                                                                                                                 |
 | Python yazdırma/günlüğe kaydetme    | Günlük    | `print(val)`<br>`logging.info(message)`                          | Sürücü günlükleri, Azure Machine Learning Tasarımcısı | [Denemeleri izleme](how-to-track-experiments.md)<br><br>[Python günlüğü](https://docs.python.org/2/library/logging.html)                                                                                                                                                                       |
 | OpenCensus Python          | Günlük    | `logger.addHandler(AzureLogHandler())`<br>`logging.log(message)` | Application Insights-izlemeler                | [Application Insights’ta işlem hatlarında hata ayıklama](./how-to-log-pipelines-application-insights.md)<br><br>[OpenCensus Azure İzleyici Dışarı Aktarıcıları](https://github.com/census-instrumentation/opencensus-python/tree/master/contrib/opencensus-ext-azure)<br>[Python günlüğü tanıtım rehberi](https://docs.python.org/3/howto/logging-cookbook.html) |
 
@@ -244,7 +244,7 @@ Bir işlem hattı çalıştırması gönderdiğinizde ve yazma sayfasında kalad
 1. Modülün sağ bölmesinde,  **çıktılar + Günlükler** sekmesine gidin.
 1. Sağ bölmeyi genişletin ve dosyayı tarayıcıda görüntülemek için **70_driver_log.txt** seçin. Günlükleri yerel olarak da indirebilirsiniz.
 
-    ![Tasarımcıda genişletilmiş çıkış bölmesi](./media/how-to-debug-pipelines/designer-logs.png)? View = Azure-ML-Kopyala&Preserve-View = true)? View = Azure-ML-Kopyala&Preserve-View = true)
+    ![Tasarımcıda genişletilmiş çıkış bölmesi](./media/how-to-debug-pipelines/designer-logs.png)
 
 ### <a name="get-logs-from-pipeline-runs"></a>İşlem hattı çalıştırmalarından günlükleri al
 
@@ -274,6 +274,6 @@ Bazı durumlarda, ML ardışık düzeninde kullanılan Python kodunda etkileşim
 
 * ML ardışık düzeninde otomatik makine öğrenimini gösteren bir örnek için bkz. [Python 'da Azure Machine Learning işlem hattında OTOMATIK ml kullanma](how-to-use-automlstep-in-pipelines.md).
 
-* [Azureml işlem hatları-Core](/python/api/azureml-pipeline-core/?preserve-view=true&view=azure-ml-py) paketi ve [azureml-işlem hatları-adımlar](/python/api/azureml-pipeline-steps/?preserve-view=true&view=azure-ml-py) PAKETIYLE ilgili yardım için SDK başvurusuna bakın.
+* [Azureml işlem hatları-Core](/python/api/azureml-pipeline-core/) paketi ve [azureml-işlem hatları-adımlar](/python/api/azureml-pipeline-steps/) PAKETIYLE ilgili yardım için SDK başvurusuna bakın.
 
 * [Tasarımcı özel durumları ve hata kodları](algorithm-module-reference/designer-error-codes.md)listesine bakın.

@@ -11,12 +11,12 @@ author: lobrien
 ms.date: 8/25/2020
 ms.topic: conceptual
 ms.custom: how-to, contperf-fy21q1
-ms.openlocfilehash: 5dc14873f8863332d37a6ced6ce4013e76640dea
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: efedb21a1ec1ed53a8c6bfadf337d23a89c04383
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98879402"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102520185"
 ---
 # <a name="publish-and-track-machine-learning-pipelines"></a>Makine öğrenimi işlem hatlarını yayımlama ve izleme
 
@@ -38,7 +38,7 @@ Machine Learning işlem hatları, Machine Learning görevleri için yeniden kull
 
 İşlem hattınızı çalışır durumda yaptıktan sonra, farklı girişlerle çalışacak şekilde bir işlem hattı yayımlayabilirsiniz. Önceden yayımlanmış bir işlem hattının REST uç noktası parametreleri kabul etmek için, işlem hattınızı, `PipelineParameter` değişen bağımsız değişkenler için nesneleri kullanacak şekilde yapılandırmanız gerekir.
 
-1. Bir işlem hattı parametresi oluşturmak için bir [pipelineparameter](/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.pipelineparameter?preserve-view=true&view=azure-ml-py) nesnesini varsayılan bir değerle kullanın.
+1. Bir işlem hattı parametresi oluşturmak için bir [pipelineparameter](/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.pipelineparameter) nesnesini varsayılan bir değerle kullanın.
 
    ```python
    from azureml.pipeline.core.graph import PipelineParameter
@@ -76,7 +76,7 @@ Yayımlanan tüm işlem hatları bir REST uç noktasına sahiptir. Ardışık d�
 > [!IMPORTANT]
 > İşlem hattınızı erişimi yönetmek için Azure rol tabanlı erişim denetimi (Azure RBAC) kullanıyorsanız, işlem [hattı senaryonuz (eğitim veya Puanlama) için izinleri ayarlayın](how-to-assign-roles.md#common-scenarios).
 
-Önceki işlem hattının çalıştırılmasını çağırmak için bir Azure Active Directory kimlik doğrulaması üst bilgisi belirtecine ihtiyacınız vardır. Bu tür bir belirteci almak, [Azurecliauthentication sınıf](/python/api/azureml-core/azureml.core.authentication.azurecliauthentication?preserve-view=true&view=azure-ml-py) başvurusunda ve Azure Machine Learning not defterindeki [kimlik doğrulamasında](https://aka.ms/pl-restep-auth) açıklanmıştır.
+Önceki işlem hattının çalıştırılmasını çağırmak için bir Azure Active Directory kimlik doğrulaması üst bilgisi belirtecine ihtiyacınız vardır. Bu tür bir belirteci almak, [Azurecliauthentication sınıf](/python/api/azureml-core/azureml.core.authentication.azurecliauthentication) başvurusunda ve Azure Machine Learning not defterindeki [kimlik doğrulamasında](https://aka.ms/pl-restep-auth) açıklanmıştır.
 
 ```python
 from azureml.pipeline.core import PublishedPipeline
@@ -360,10 +360,10 @@ p = PublishedPipeline.get(ws, id="068f4885-7088-424b-8ce2-eeb9ba5381a6")
 p.disable()
 ```
 
-İle yeniden etkinleştirebilirsiniz `p.enable()` . Daha fazla bilgi için bkz. [Publishedpipeline sınıf](/python/api/azureml-pipeline-core/azureml.pipeline.core.publishedpipeline?preserve-view=true&view=azure-ml-py) başvurusu.
+İle yeniden etkinleştirebilirsiniz `p.enable()` . Daha fazla bilgi için bkz. [Publishedpipeline sınıf](/python/api/azureml-pipeline-core/azureml.pipeline.core.publishedpipeline) başvurusu.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - Makine öğrenimi işlem hatlarını daha fazla incelemek için [GitHub 'da bu jupi not defterlerini](https://aka.ms/aml-pipeline-readme) kullanın.
-- [Azureml işlem hatları-Core](/python/api/azureml-pipeline-core/?preserve-view=true&view=azure-ml-py) paketi ve [azureml-işlem hatları-adımlar](/python/api/azureml-pipeline-steps/?preserve-view=true&view=azure-ml-py) paketi için SDK başvuru yardımına bakın.
+- [Azureml işlem hatları-Core](/python/api/azureml-pipeline-core/) paketi ve [azureml-işlem hatları-adımlar](/python/api/azureml-pipeline-steps/) paketi için SDK başvuru yardımına bakın.
 - Hata ayıklama ve işlem hatlarında sorun [giderme hakkında ipuçları için bkz](how-to-debug-pipelines.md) ..

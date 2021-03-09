@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 01/06/2020
 ms.author: joncole
-ms.openlocfilehash: 4e209bfe5e3856f3847b0c24852c487a92c8f182
-ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
+ms.openlocfilehash: 84a6bba390b0f6b101bd8243cf47b79af9618999
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "102454745"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102521670"
 ---
 # <a name="best-practices-for-azure-cache-for-redis"></a>Redis için Azure Cache'in en iyi yöntemleri 
 Bu en iyi yöntemleri izleyerek Redsıs örneği için Azure önbelleğinizin performansını ve düşük maliyetli kullanımını en üst düzeye çıkarmanıza yardımcı olabilirsiniz.
@@ -30,6 +30,8 @@ Bu en iyi yöntemleri izleyerek Redsıs örneği için Azure önbelleğinizin pe
  * **Aynı bölgedeki önbellek örneğinizi ve uygulamanızı bulun.**  Farklı bir bölgedeki önbelleğe bağlanmak gecikme süresini önemli ölçüde artırabilir ve güvenilirliği azaltabilir.  Azure dışından bağlantı kurmak için, *özellikle redsıs 'in önbellek olarak kullanılması* önerilmez.  Redsıs 'i yalnızca anahtar/değer deposu olarak kullanıyorsanız, gecikme süresi birincil sorun olmayabilir. 
 
  * **Bağlantıları yeniden kullanın.**  Yeni bağlantılar oluşturmak pahalıdır ve gecikme süresini arttığı için, bağlantıları mümkün olduğunca yeniden kullanın. Yeni bağlantılar oluşturmayı seçerseniz, eski bağlantıları bırakmadan önce (.NET veya Java gibi yönetilen bellek dillerinde bile) kapatmayı unutmayın.
+
+* **Ardışık düzen oluşturma kullanın.**  En iyi performansı elde etmek için ağınızı en verimli şekilde kullanmasını sağlamak üzere [redin ardışık düzen](https://redis.io/topics/pipelining) sıralamasını destekleyen bir redsıs istemcisi seçmeyi deneyin.
 
  * **İstemci kitaplığınızı en az 15 saniyelik bir *bağlantı zaman aşımı süresi* kullanacak şekilde yapılandırın**, böylece daha yüksek CPU koşullarında bile sunucuya bağlanma süresi vermiş olursunuz.  Küçük bir bağlantı zaman aşımı değeri, bağlantının bu zaman çerçevesinde kurulu olduğunu garanti etmez.  Bir sorun yanlış olursa (yüksek istemci CPU, yüksek sunucu CPU 'SU vb.), kısa bir bağlantı zaman aşımı değeri bağlantı girişiminin başarısız olmasına neden olur. Bu davranış genellikle kötü bir durumun daha kötüleşmesini sağlar.  Yardımcı olmak yerine, daha kısa zaman aşımları, sistemi yeniden bağlanmaya çalışmak için yeniden başlamaya zorlayarak, *Connect-> Fail-> yeniden deneme* döngüsüne neden olabilecek sorunu ortadan kaldırır. Genellikle bağlantı zaman aşımını 15 saniye veya daha yüksek bir düzeye bırakmamanız önerilir. Bağlantı denemesinin 15 veya 20 saniye sonra, yalnızca yeniden denemek için hızlı bir şekilde başarısız olmasına izin vermek daha iyidir. Bu tür bir yeniden deneme döngüsü, sistemin başlangıçta yalnızca daha uzun sürmesine izin verenden daha uzun sürmesine neden olabilir.  
      > [!NOTE]

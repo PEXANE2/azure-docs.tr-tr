@@ -7,12 +7,12 @@ ms.subservice: files
 ms.topic: conceptual
 ms.date: 05/29/2020
 ms.author: rogarana
-ms.openlocfilehash: 0493b66928d944e251e6fe4abda4f1d3d8fb7e23
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: 8887243f953a7bb000033a2e56b4655b93cd7ca8
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94695903"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102519801"
 ---
 # <a name="overview-of-azure-files-identity-based-authentication-options-for-smb-access"></a>SMB erişimi için Azure dosyalarına yönelik kimlik tabanlı kimlik doğrulama seçeneklerine genel bakış
 [!INCLUDE [storage-files-aad-auth-include](../../../includes/storage-files-aad-auth-include.md)]
@@ -128,7 +128,7 @@ Azure AD DS veya şirket içi AD DS kimlik doğrulaması etkinleştirildikten so
 
 ### <a name="configure-directory-or-file-level-permissions-for-azure-files"></a>Azure dosyaları için dizin veya dosya düzeyi izinlerini yapılandırma
 
-Azure dosya paylaşımları, kök dizin dahil olmak üzere hem dizin hem de dosya düzeyinde standart Windows dosya izinlerini uygular. Dizin veya dosya düzeyi izinlerinin yapılandırılması hem SMB hem de REST üzerinde desteklenir. Hedef dosya paylaşımından sanal makineden bağlama yapın ve Windows Dosya Gezgini, Windows [ıacl 'leri](/windows-server/administration/windows-commands/icacls)veya [set-ACL](/powershell/module/microsoft.powershell.security/get-acl?view=powershell-6) komutunu kullanarak izinleri yapılandırın.
+Azure dosya paylaşımları, kök dizin dahil olmak üzere hem dizin hem de dosya düzeyinde standart Windows dosya izinlerini uygular. Dizin veya dosya düzeyi izinlerinin yapılandırılması hem SMB hem de REST üzerinde desteklenir. Hedef dosya paylaşımından sanal makineden bağlama yapın ve Windows Dosya Gezgini, Windows [ıacl 'leri](/windows-server/administration/windows-commands/icacls)veya [set-ACL](/powershell/module/microsoft.powershell.security/get-acl) komutunu kullanarak izinleri yapılandırın.
 
 ### <a name="use-the-storage-account-key-for-superuser-permissions"></a>Süper Kullanıcı izinleri için depolama hesabı anahtarını kullan
 
@@ -139,7 +139,7 @@ Depolama hesabı anahtarına sahip bir Kullanıcı, Azure dosya paylaşımların
 
 ### <a name="preserve-directory-and-file-acls-when-importing-data-to-azure-file-shares"></a>Azure dosya paylaşımlarına veri aktarırken dizin ve dosya ACL 'Lerini koruma
 
-Azure dosyaları, verileri Azure dosya paylaşımlarına kopyalarken dizin veya dosya düzeyi ACL 'Lerinin korunması destekler. Bir dizin veya dosyadaki ACL 'Leri, Azure Dosya Eşitleme veya ortak dosya taşıma araç kümelerinden birini kullanarak Azure dosya paylaşımlarına kopyalayabilirsiniz. Örneğin, [robocopy](/windows-server/administration/windows-commands/robocopy) `/copy:s` bir Azure dosya paylaşımındaki ACL 'leri ve verileri kopyalamak için, Robocopy 'yi bayrağıyla birlikte kullanabilirsiniz. ACL 'ler varsayılan olarak korunur, ACL 'Leri korumak için depolama hesabınızda kimlik tabanlı kimlik doğrulamasını etkinleştirmeniz gerekmez.
+Azure dosyaları, verileri Azure dosya paylaşımlarına kopyalarken dizin veya dosya düzeyi ACL 'Lerinin korunması destekler. Bir dizin veya dosyadaki ACL 'Leri, Azure Dosya Eşitleme veya ortak dosya taşıma araç kümelerinden birini kullanarak Azure dosya paylaşımlarına kopyalayabilirsiniz. Örneğin, [](/windows-server/administration/windows-commands/robocopy) `/copy:s` bir Azure dosya paylaşımındaki ACL 'leri ve verileri kopyalamak için, Robocopy 'yi bayrağıyla birlikte kullanabilirsiniz. ACL 'ler varsayılan olarak korunur, ACL 'Leri korumak için depolama hesabınızda kimlik tabanlı kimlik doğrulamasını etkinleştirmeniz gerekmez.
 
 ## <a name="pricing"></a>Fiyatlandırma
 Depolama hesabınızda SMB üzerinden kimlik tabanlı kimlik doğrulamasını etkinleştirmek için başka bir hizmet ücreti yoktur. Fiyatlandırma hakkında daha fazla bilgi için bkz. [Azure dosyaları fiyatlandırması](https://azure.microsoft.com/pricing/details/storage/files/) ve [Azure AD Domain Services fiyatlandırması](https://azure.microsoft.com/pricing/details/active-directory-ds/).

@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 09/28/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, contperf-fy21q1
-ms.openlocfilehash: 55e618a7e4e0d21f6d4afab270e257c26fa15634
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.openlocfilehash: f38fe7d847754247f8c1510527b3ffe026c20be5
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98251123"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102518509"
 ---
 # <a name="configure-and-submit-training-runs"></a>Eğitim çalıştırmalarını yapılandırma ve gönderme
 
@@ -26,15 +26,15 @@ Eğitim sırasında, yerel bilgisayarınızda başlamak ve daha sonra bulut taba
 
 Yapmanız gereken tek şey, bir **komut dosyası çalıştırma yapılandırması** içindeki her bir işlem hedefi için ortamı tanımlamaktır.  Daha sonra eğitim denemenizi farklı bir işlem hedefinde çalıştırmak istediğinizde, bu işlem için çalıştırma yapılandırmasını belirtin.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Azure aboneliğiniz yoksa başlamadan önce ücretsiz bir hesap oluşturun. [Azure Machine Learning ücretsiz veya ücretli sürümünü](https://aka.ms/AMLFree) bugün deneyin
-* [Python için Azure MACHINE LEARNING SDK](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py) (>= 1.13.0)
+* [Python için Azure MACHINE LEARNING SDK](/python/api/overview/azure/ml/install) (>= 1.13.0)
 * [Azure Machine Learning çalışma alanı](how-to-manage-workspace.md),`ws`
 * İşlem hedefi, `my_compute_target` .  [İşlem hedefi oluştur](how-to-create-attach-compute-studio.md) 
 
 ## <a name="whats-a-script-run-configuration"></a><a name="whats-a-run-configuration"></a>Betik çalıştırma Yapılandırması nedir?
-Bir deneme kapsamında bir eğitim çalışması göndermek için gereken bilgileri yapılandırmak üzere bir [ScriptRunConfig](/python/api/azureml-core/azureml.core.scriptrunconfig?preserve-view=true&view=azure-ml-py) kullanılır.
+Bir deneme kapsamında bir eğitim çalışması göndermek için gereken bilgileri yapılandırmak üzere bir [ScriptRunConfig](/python/api/azureml-core/azureml.core.scriptrunconfig) kullanılır.
 
 Eğitim denemenizi bir ScriptRunConfig nesnesi ile gönderebilirsiniz.  Bu nesne şunları içerir:
 
@@ -42,7 +42,7 @@ Eğitim denemenizi bir ScriptRunConfig nesnesi ile gönderebilirsiniz.  Bu nesne
 * **betik**: çalıştırılacak eğitim betiği
 * **compute_target**: üzerinde çalıştırılacak işlem hedefi
 * **ortam**: betiği çalıştırırken kullanılacak ortam
-* ve bazı ek yapılandırılabilir seçenekler (daha fazla bilgi için [başvuru belgelerine](/python/api/azureml-core/azureml.core.scriptrunconfig?preserve-view=true&view=azure-ml-py) bakın)
+* ve bazı ek yapılandırılabilir seçenekler (daha fazla bilgi için [başvuru belgelerine](/python/api/azureml-core/azureml.core.scriptrunconfig) bakın)
 
 ## <a name="train-your-model"></a><a id="submit"></a>Modelinizi eğitme
 
@@ -133,7 +133,7 @@ Eğitim betiğe geçirmek istediğiniz komut satırı bağımsız değişkenleri
 Çalıştırma için izin verilen varsayılan en uzun süreyi geçersiz kılmak istiyorsanız, bunu parametresi aracılığıyla yapabilirsiniz **`max_run_duration_seconds`** . Sistem, bu değerden daha uzun sürerse, çalıştırmayı otomatik olarak iptal etmeye çalışacaktır.
 
 ### <a name="specify-a-distributed-job-configuration"></a>Dağıtılmış iş yapılandırması belirtme
-Dağıtılmış bir eğitim işi çalıştırmak istiyorsanız, parametreye dağıtılmış işe özgü yapılandırmayı sağlayın **`distributed_job_config`** . Desteklenen yapılandırma türleri, [Mpiconation](/python/api/azureml-core/azureml.core.runconfig.mpiconfiguration?preserve-view=true&view=azure-ml-py), [Tensorflowconfiguration](/python/api/azureml-core/azureml.core.runconfig.tensorflowconfiguration?preserve-view=true&view=azure-ml-py)ve [pytorchconfiguration](/python/api/azureml-core/azureml.core.runconfig.pytorchconfiguration?preserve-view=true&view=azure-ml-py)içerir. 
+Dağıtılmış bir eğitim işi çalıştırmak istiyorsanız, parametreye dağıtılmış işe özgü yapılandırmayı sağlayın **`distributed_job_config`** . Desteklenen yapılandırma türleri, [Mpiconation](/python/api/azureml-core/azureml.core.runconfig.mpiconfiguration), [Tensorflowconfiguration](/python/api/azureml-core/azureml.core.runconfig.tensorflowconfiguration)ve [pytorchconfiguration](/python/api/azureml-core/azureml.core.runconfig.pytorchconfiguration)içerir. 
 
 Dağıtılmış Horovod, TensorFlow ve PyTorch işlerini çalıştırmaya yönelik daha fazla bilgi ve örnek için bkz.:
 
@@ -197,10 +197,10 @@ Kaynak dizinin yerel bir git deposu olduğu bir eğitim çalıştırması başla
     
     Azure ML tarafından sağlanan Docker görüntüleri ve içerikleri, [AzureML kapsayıcılarında](https://github.com/Azure/AzureML-Containers)görülebilir.
     Çerçeveye özgü bağımlılıklar ilgili Framework belgelerinde listelenmiştir:
-    *  [Chainer](/python/api/azureml-train-core/azureml.train.dnn.chainer?preserve-view=true&view=azure-ml-py#&preserve-view=trueremarks)
-    * [PyTorch](/python/api/azureml-train-core/azureml.train.dnn.pytorch?preserve-view=true&view=azure-ml-py#&preserve-view=trueremarks)
-    * [TensorFlow](/python/api/azureml-train-core/azureml.train.dnn.tensorflow?preserve-view=true&view=azure-ml-py#&preserve-view=trueremarks)
-    *  [Sköğren](/python/api/azureml-train-core/azureml.train.sklearn.sklearn?preserve-view=true&view=azure-ml-py#&preserve-view=trueremarks)
+    *  [Chainer](/python/api/azureml-train-core/azureml.train.dnn.chainer#remarks)
+    * [PyTorch](/python/api/azureml-train-core/azureml.train.dnn.pytorch#remarks)
+    * [TensorFlow](/python/api/azureml-train-core/azureml.train.dnn.tensorflow#remarks)
+    *  [Sköğren](/python/api/azureml-train-core/azureml.train.sklearn.sklearn#remarks)
     
     > [!Note]
     > Belirli bir paketin Azure ML tarafından korunan görüntülere ve ortamlara eklenmek için yeterince yaygın olduğunu düşünüyorsanız, lütfen [AzureML kapsayıcılarında](https://github.com/Azure/AzureML-Containers)GitHub sorununu yükseltin. 
@@ -208,7 +208,7 @@ Kaynak dizinin yerel bir git deposu olduğu bir eğitim çalıştırması başla
 * **NameError (ad tanımlı değil), AttributeError (nesne bir özniteliğe sahip değil)**: Bu özel durum eğitim betiklerinden gelmelidir. Tanımlı bir ad veya öznitelik hatası hakkında daha fazla bilgi edinmek için, Azure portal günlük dosyalarına bakabilirsiniz. SDK 'dan, `run.get_details()` hata iletisine bakmak için ' i kullanabilirsiniz. Bu, çalıştırma için oluşturulan tüm günlük dosyalarını da listeler. Lütfen eğitim betiğe göz atın ve çalıştırmayı yeniden göndermeden önce hatayı düzeltemedi. 
 
 
-* **Çalıştırma veya deneme silme**: denemeleri, [deneme. Arşiv](/python/api/azureml-core/azureml.core.experiment%28class%29?preserve-view=true&view=azure-ml-py#&preserve-view=truearchive--) yöntemi kullanılarak veya Azure Machine Learning Studio istemcisindeki deneme sekmesi görünümünden "Arşiv denemesi" düğmesi aracılığıyla arşivlenebilir. Bu eylem, sorgu ve görünümleri listeleme denemesini gizler, ancak silmez.
+* **Çalıştırma veya deneme silme**: denemeleri, [deneme. Arşiv](/python/api/azureml-core/azureml.core.experiment%28class%29#archive--) yöntemi kullanılarak veya Azure Machine Learning Studio istemcisindeki deneme sekmesi görünümünden "Arşiv denemesi" düğmesi aracılığıyla arşivlenebilir. Bu eylem, sorgu ve görünümleri listeleme denemesini gizler, ancak silmez.
 
     Tek tek denemelerin veya çalıştırmaların kalıcı olarak silinmesi şu anda desteklenmiyor. Çalışma alanı varlıklarını silme hakkında daha fazla bilgi için bkz. [Machine Learning hizmeti çalışma alanı verilerinizi dışarı veya silme](how-to-export-delete-data.md).
 
@@ -229,5 +229,5 @@ Kaynak dizinin yerel bir git deposu olduğu bir eğitim çalıştırması başla
 * Bkz. [Scikit-öğren](how-to-train-scikit-learn.md), [TensorFlow](how-to-train-tensorflow.md)ve [PYTORCH](how-to-train-pytorch.md)gibi belirli ml çerçeveleri ile modelleri eğitme.
 * Daha iyi modeller oluşturmak için [hiper parametreleri verimli](how-to-tune-hyperparameters.md) bir şekilde ayarlamayı öğrenin.
 * Eğitilen bir modelden sonra [modellerin nasıl ve nereye dağıtılacağını](how-to-deploy-and-where.md)öğrenin.
-* [ScriptRunConfig sınıfı](/python/api/azureml-core/azureml.core.scriptrunconfig?preserve-view=true&view=azure-ml-py) SDK başvurusunu görüntüleyin.
+* [ScriptRunConfig sınıfı](/python/api/azureml-core/azureml.core.scriptrunconfig) SDK başvurusunu görüntüleyin.
 * [Azure sanal ağları ile Azure Machine Learning kullanma](./how-to-network-security-overview.md)

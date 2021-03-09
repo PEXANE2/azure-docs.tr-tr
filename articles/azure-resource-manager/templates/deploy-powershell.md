@@ -1,18 +1,20 @@
 ---
 title: PowerShell ve şablon ile kaynakları dağıtma
-description: Azure 'a kaynak dağıtmak için Azure Resource Manager ve Azure PowerShell kullanın. Kaynaklar, bir Resource Manager şablonunda tanımlanır.
+description: Azure 'a kaynak dağıtmak için Azure Resource Manager ve Azure PowerShell kullanın. Kaynaklar bir Kaynak Yöneticisi şablonunda veya bir Bıcep dosyasında tanımlanır.
 ms.topic: conceptual
-ms.date: 01/26/2021
-ms.openlocfilehash: efefb6706794bc2488aa4d4fef6c4ecc082b41a7
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.date: 03/04/2021
+ms.openlocfilehash: 784f17566ce4fb19a7ec5e3fd4a504d7c25f90fe
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98881274"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102521637"
 ---
 # <a name="deploy-resources-with-arm-templates-and-azure-powershell"></a>ARM şablonları ve Azure PowerShell kaynak dağıtma
 
-Bu makalede, kaynaklarınızı Azure 'a dağıtmak için Azure Resource Manager şablonlarla (ARM şablonları) Azure PowerShell nasıl kullanılacağı açıklanmaktadır. Azure çözümlerinizi dağıtma ve yönetme kavramlarını bilmiyorsanız, bkz. [şablon dağıtımına genel bakış](overview.md).
+Bu makalede, kaynaklarınızı Azure 'a dağıtmak için Azure Resource Manager şablonları (ARM şablonları) veya Bıcep dosyaları ile Azure PowerShell nasıl kullanılacağı açıklanmaktadır. Azure çözümlerinizi dağıtma ve yönetme kavramlarını bilmiyorsanız, bkz. [şablon dağıtımına genel bakış](overview.md) veya [bıcep genel bakış](bicep-overview.md).
+
+Bicep dosyalarını dağıtmak için, [Azure PowerShell sürüm 5.6.0 veya sonraki bir sürümü](/powershell/azure/install-az-ps)gerekir.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -32,13 +34,13 @@ Dağıtımınızı bir kaynak grubuna, aboneliğe, yönetim grubuna veya kiracı
 - Bir **kaynak grubuna** dağıtmak Için, [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment)kullanın:
 
   ```azurepowershell
-  New-AzResourceGroupDeployment -ResourceGroupName <resource-group-name> -TemplateFile <path-to-template>
+  New-AzResourceGroupDeployment -ResourceGroupName <resource-group-name> -TemplateFile <path-to-template-or-bicep>
   ```
 
 - Bir **aboneliğe** dağıtmak için cmdlet 'in diğer adı olan [New-azsubscriptiondeployment](/powershell/module/az.resources/new-azdeployment) ' ı kullanın `New-AzDeployment` :
 
   ```azurepowershell
-  New-AzSubscriptionDeployment -Location <location> -TemplateFile <path-to-template>
+  New-AzSubscriptionDeployment -Location <location> -TemplateFile <path-to-template-or-bicep>
   ```
 
   Abonelik düzeyi dağıtımları hakkında daha fazla bilgi için bkz. [abonelik düzeyinde kaynak grupları ve kaynaklar oluşturma](deploy-to-subscription.md).
@@ -46,7 +48,7 @@ Dağıtımınızı bir kaynak grubuna, aboneliğe, yönetim grubuna veya kiracı
 - Bir **yönetim grubuna** dağıtmak Için, [New-AzManagementGroupDeployment](/powershell/module/az.resources/New-AzManagementGroupDeployment)' ı kullanın.
 
   ```azurepowershell
-  New-AzManagementGroupDeployment -Location <location> -TemplateFile <path-to-template>
+  New-AzManagementGroupDeployment -Location <location> -TemplateFile <path-to-template-or-bicep>
   ```
 
   Yönetim grubu düzeyi dağıtımları hakkında daha fazla bilgi için bkz. [Yönetim grubu düzeyinde kaynak oluşturma](deploy-to-management-group.md).
@@ -54,7 +56,7 @@ Dağıtımınızı bir kaynak grubuna, aboneliğe, yönetim grubuna veya kiracı
 - Bir **kiracıya** dağıtmak Için, [New-AzTenantDeployment](/powershell/module/az.resources/new-aztenantdeployment)kullanın.
 
   ```azurepowershell
-  New-AzTenantDeployment -Location <location> -TemplateFile <path-to-template>
+  New-AzTenantDeployment -Location <location> -TemplateFile <path-to-template-or-bicep>
   ```
 
   Kiracı düzeyinde dağıtımlar hakkında daha fazla bilgi için bkz. [kiracı düzeyinde kaynak oluşturma](deploy-to-tenant.md).
@@ -89,7 +91,7 @@ Her dağıtım için benzersiz bir ad belirttiğinizde, bunları çakışma olma
 
 Eşzamanlı dağıtımlar ile çakışmalardan kaçınmak ve dağıtım geçmişinde benzersiz girişler sağlamak için her dağıtıma benzersiz bir ad verin.
 
-## <a name="deploy-local-template"></a>Yerel şablonu dağıtma
+## <a name="deploy-local-template-or-bicep-file"></a>Yerel şablon veya Bıcep dosyası dağıtma
 
 Yerel makinenizden veya dışarıdan depolanan bir şablonu dağıtabilirsiniz. Bu bölümde yerel bir şablon dağıtımı açıklanmaktadır.
 
@@ -99,18 +101,21 @@ Mevcut olmayan bir kaynak grubuna dağıtıyorsanız, kaynak grubunu oluşturun.
 New-AzResourceGroup -Name ExampleGroup -Location "Central US"
 ```
 
-Yerel bir şablon dağıtmak için `-TemplateFile` dağıtım komutundaki parametresini kullanın. Aşağıdaki örnek ayrıca, şablondan gelen bir parametre değerinin nasıl ayarlanacağını gösterir.
+Yerel bir şablon veya Bıcep dosyası dağıtmak için `-TemplateFile` dağıtım komutundaki parametresini kullanın. Aşağıdaki örnek ayrıca, şablondan gelen bir parametre değerinin nasıl ayarlanacağını gösterir.
 
 ```azurepowershell
 New-AzResourceGroupDeployment `
   -Name ExampleDeployment `
   -ResourceGroupName ExampleGroup `
-  -TemplateFile c:\MyTemplates\azuredeploy.json
+  -TemplateFile <path-to-template-or-bicep>
 ```
 
 Dağıtımın tamamlanması birkaç dakika sürebilir.
 
 ## <a name="deploy-remote-template"></a>Uzak şablonu dağıtma
+
+> [!NOTE]
+> Şu anda Azure PowerShell uzak bicep dosyalarının dağıtılmasını desteklemez. Uzak bir bicep dosyasını dağıtmak için, önce bir JSON şablonuna Bıcep dosyasını derlemek için CLı Bıcep ' yi kullanın.
 
 ARM şablonlarını yerel makinenizde depolamak yerine, bunları bir dış konumda depolamayı tercih edebilirsiniz. Şablonları bir kaynak denetimi deposunda (GitHub gibi) saklayabilirsiniz. İsterseniz kuruluşunuzda paylaşılan erişim sağlamak için bir Azure depolama hesabı kullanabilirsiniz.
 
@@ -145,6 +150,8 @@ Daha fazla bilgi için bkz. [bağlantılı şablonlar için göreli yol kullanma
 
 ## <a name="deploy-template-spec"></a>Şablon belirtimini dağıt
 
+> [!NOTE]
+> Şu anda, Azure PowerShell Bıcep dosyaları sağlayarak şablon özelliklerinin oluşturulmasını desteklemez. Ancak, bir şablon belirtimini dağıtmak için [Microsoft. resources/templatespec](/azure/templates/microsoft.resources/templatespecs) kaynağı Ile bir Bıcep dosyası oluşturabilirsiniz. İşte bir [örnek](https://github.com/Azure/azure-docs-json-samples/blob/master/create-template-spec-using-template/azuredeploy.bicep).
 Yerel veya uzak şablon dağıtmak yerine, bir [şablon belirtimi](template-specs.md)oluşturabilirsiniz. Şablon belirtimi, Azure aboneliğinizdeki bir ARM şablonu içeren bir kaynaktır. Şablonu kuruluşunuzdaki kullanıcılarla güvenli bir şekilde paylaşmayı kolaylaştırır. Şablon belirtimine erişim sağlamak için Azure rol tabanlı erişim denetimi (Azure RBAC) kullanırsınız. Bu özellik şu anda önizleme aşamasındadır.
 
 Aşağıdaki örneklerde, bir şablon belirtiminin nasıl oluşturulacağı ve dağıtılacağı gösterilmektedir.
@@ -187,7 +194,7 @@ Satır içi parametreleri geçirmek için, komutuyla parametrenin adlarını sa�
 ```powershell
 $arrayParam = "value1", "value2"
 New-AzResourceGroupDeployment -ResourceGroupName testgroup `
-  -TemplateFile c:\MyTemplates\demotemplate.json `
+  -TemplateFile <path-to-template-or-bicep> `
   -exampleString "inline string" `
   -exampleArray $arrayParam
 ```
@@ -197,7 +204,7 @@ Ayrıca dosyanın içeriğini alabilir ve bu içeriği satır içi bir parametre
 ```powershell
 $arrayParam = "value1", "value2"
 New-AzResourceGroupDeployment -ResourceGroupName testgroup `
-  -TemplateFile c:\MyTemplates\demotemplate.json `
+  -TemplateFile <path-to-template-or-bicep> `
   -exampleString $(Get-Content -Path c:\MyTemplates\stringcontent.txt -Raw) `
   -exampleArray $arrayParam
 ```
@@ -211,13 +218,13 @@ $hash1 = @{ Name = "firstSubnet"; AddressPrefix = "10.0.0.0/24"}
 $hash2 = @{ Name = "secondSubnet"; AddressPrefix = "10.0.1.0/24"}
 $subnetArray = $hash1, $hash2
 New-AzResourceGroupDeployment -ResourceGroupName testgroup `
-  -TemplateFile c:\MyTemplates\demotemplate.json `
+  -TemplateFile <path-to-template-or-bicep> `
   -exampleArray $subnetArray
 ```
 
 ### <a name="parameter-files"></a>Parametre dosyaları
 
-Parametreleri betiğinize satır içi değerler olarak geçirmek yerine parametre değerlerini içeren bir JSON dosyası kullanmak daha kolayınıza gelebilir. Parametre dosyası yerel bir dosya veya erişilebilir bir URI 'ye sahip bir dış dosya olabilir.
+Parametreleri betiğinize satır içi değerler olarak geçirmek yerine parametre değerlerini içeren bir JSON dosyası kullanmak daha kolayınıza gelebilir. Parametre dosyası yerel bir dosya veya erişilebilir bir URI 'ye sahip bir dış dosya olabilir. Hem ARM şablonu hem de bicep dosyası JSON parametre dosyalarını kullanır.
 
 Parametre dosyası hakkında daha fazla bilgi için bkz. [Resource Manager parametre dosyası oluşturma](parameter-files.md).
 
@@ -225,7 +232,7 @@ Yerel bir parametre dosyasını geçirmek için `TemplateParameterFile` parametr
 
 ```powershell
 New-AzResourceGroupDeployment -Name ExampleDeployment -ResourceGroupName ExampleResourceGroup `
-  -TemplateFile c:\MyTemplates\azuredeploy.json `
+  -TemplateFile <path-to-template-or-bicep> `
   -TemplateParameterFile c:\MyTemplates\storage.parameters.json
 ```
 

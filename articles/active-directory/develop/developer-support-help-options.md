@@ -12,85 +12,96 @@ ms.date: 05/23/2019
 ms.author: ryanwi
 ms.reviewer: jmprieur, saeeda
 ms.custom: aaddev
-ms.openlocfilehash: ecbb7ec503011d78c2f83a76cea921e1cf438ac1
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.openlocfilehash: 43990952f6cbe90c729ac2df421c682fe8d42b1b
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102215111"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102517964"
 ---
 # <a name="support-and-help-options-for-developers"></a>Geliştiriciler için destek ve yardım seçenekleri
 
-Azure Active Directory (Azure AD), Microsoft kimlikleri veya Microsoft Graph API ile tümleştirmeye başladıysanız veya uygulamanıza yeni bir özellik uyguladığınızda, topluluktan yardım almanız veya bir geliştirici olarak sahip olduğunuz destek seçeneklerini anlamanız gereken durumlar vardır. Bu makale, aşağıdakiler dahil olmak üzere bu seçenekleri anlamanıza yardımcı olur:
+Azure Active Directory (Azure AD), Microsoft kimlikleri veya Microsoft Graph API ile tümleştirmeye başladıysanız veya uygulamanıza yeni bir özellik uyguladığınızda, topluluktan yardım almanız veya bir geliştirici olarak sahip olduğunuz destek seçeneklerini anlamanız gereken durumlar vardır. Microsoft Identity platform çözümlerinizi geliştirirken yardım alabileceğiniz öneriler aşağıda verilmiştir.
 
-> [!div class="checklist"]
-> * Sorunuzun topluluk tarafından yanıtlanmadığı veya uygulamaya çalıştığınız özelliğe yönelik mevcut bir belge zaten var olup olmadığını nasıl arayıyoruz
-> * Bazı durumlarda, belirli bir sorunu ayıklamanıza yardımcı olması için yalnızca destek araçlarımızı kullanmak isteyeceksiniz
-> * İhtiyacınız olan yanıtı bulamazsanız, *Microsoft Q&a* 'da soru sormak isteyebilirsiniz.
-> * Kimlik doğrulama kitaplıklarımızdan biriyle ilgili bir sorun bulursanız, bir *GitHub* sorunu oluştur
-> * Son olarak, birisiyle konuşmanız gerekiyorsa, bir destek isteği açmak isteyebilirsiniz
+## <a name="create-an-azure-support-request"></a>Azure destek isteği oluşturma
 
-## <a name="search"></a>Arayın
+<div class='icon is-large'>
+    <img alt='Azure support' src='https://docs.microsoft.com/media/logos/logo_azure.svg'>
+</div>
 
-Geliştirmeyle ilgili bir sorunuz varsa, yanıtı belgeler, [GitHub örnekleri](https://github.com/azure-samples)veya [bir soru&Microsoft soru](/answers/products/) -cevap bölümünde bulabilirsiniz.
+[Azure destek seçeneklerini bulun ve en uygun planı seçin](https://azure.microsoft.com/support/plans) , böylece yalnızca bulut yolculuğuna veya iş açısından kritik ve stratejik uygulamalar dağıtan büyük bir kuruluşa sahip bir geliştirici olursunuz. Azure müşterileri Azure portal destek istekleri oluşturabilir ve yönetebilir.
 
-### <a name="scoped-search"></a>Kapsamlı arama
+- Zaten bir Azure Destek planınız varsa, [burada bir destek isteği açın](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
 
-
-Daha hızlı sonuçlar için aramanızı [Microsoft Q 'a&bir](https://docs.microsoft.com/answers/products/) belge ve kod örnekleri kullanarak en sevdiğiniz arama motorunda aşağıdaki sorguyu kullanın:
-
-Daha hızlı sonuçlar için aramanızı [Microsoft Q 'a&bir](/answers/products/)belge ve kod örnekleri kullanarak en sevdiğiniz arama motorunda aşağıdaki sorguyu kullanın:
-
-
-```
-{Your Search Terms} (site:http://www.docs.microsoft.com/answers/products/ OR site:docs.microsoft.com OR site:github.com/azure-samples OR site:cloudidentity.com OR site:developer.microsoft.com/graph)
-```
-
-*{Arama koşullarınız}* arama anahtar kelimelerinizle aynıdır.
-
-## <a name="use-the-development-support-tools"></a>Geliştirme destek araçları 'nı kullanma
-
-| Araç  | Açıklama  |
-|---------|---------|
-| [jwt.ms](https://jwt.ms) | Talep adlarını ve değerlerini çözmek için bir KIMLIK veya erişim belirteci yapıştırın. |
-| [Microsoft Graph Gezgini](https://developer.microsoft.com/graph/graph-explorer)| Microsoft Graph API 'sine karşı istek yapmanızı ve yanıtları görmenizi sağlayan araç. |
+- Bir Azure müşterisiyseniz, [ticari destek](https://support.serviceshub.microsoft.com/supportforbusiness)aracılığıyla Microsoft ile bir destek isteği de açabilirsiniz.
 
 ## <a name="post-a-question-to-microsoft-qa"></a>Microsoft Q&bir soru gönderin
+<div class='icon is-large'>
+    <img alt='Microsoft Q&A' src='./media/common/question-mark-icon.png'>
+</div>             
 
-[Microsoft Q&A](/answers/products/) , geliştirmeyle ilgili sorular için tercih edilen kanaldır. Burada, geliştirici topluluğu ve Microsoft takım üyelerinin üyeleri, sorunlarınızı çözmenize yardımcı olmak için doğrudan ilgilidir.
+Doğrudan Microsoft mühendisleri, Azure en değerli Uzmanları (MVP) ve uzman topluluğumuz üyeleri aracılığıyla kimlik uygulama geliştirme sorularınıza yanıt alın.
 
-Arama ile sorunuz için bir yanıt bulamazsanız, [Microsoft Q&a](/answers/products/) 'ya yeni bir soru gönderin. Topluluğun sorunuzu daha hızlı belirlemesine ve yanıt vermesi için soru sorarken aşağıdaki etiketlerden birini kullanın:
+[Microsoft Q&A](/answers/products/) , Azure 'un önerilen topluluk desteği kaynağıdır.
 
-|Bileşen/alan  | Etiketler |
-|---------|---------|
-| ADAL kitaplığı | [adal](/answers/topics/azure-ad-adal-deprecation.html) |
-| MSAL kitaplığı     | [msal](/answers/topics/azure-ad-msal.html) |
-| OWıN ara yazılımı  | [[Azure-Active-Directory]](/answers/topics/azure-active-directory.html) |
-| [Azure B2B](../external-identities/what-is-b2b.md)  | [[Azure-AD-B2B]](/answers/topics/azure-ad-b2b.html) |
-| [Azure B2C](https://azure.microsoft.com/services/active-directory-b2c/)  | [[Azure-AD-B2C]](/answers/topics/azure-ad-b2c.html) |
-| [Microsoft Graph API](https://developer.microsoft.com/graph/) | [[Azure-AD-grafik]](/answers/topics/azure-ad-graph.html) |
-| Kimlik doğrulama veya yetkilendirme konularıyla ilgili başka bir alan | [[Azure-Active-Directory]](/answers/topics/azure-active-directory.html) |
+Microsoft Q&A araması yaparak sorununuza yanıt bulamazsanız yeni bir soru gönderin. [Yüksek kaliteli sorunuzu](https://docs.microsoft.com/answers/articles/24951/how-to-write-a-quality-question.html)sorduğunuz zaman aşağıdaki etiketlerden birini kullanın:
 
-[Microsoft Q&](/answers/products/) 'e ait aşağıdaki gönderiler, soru sorma ve kaynak kodu ekleme hakkında ipuçları içerir. Topluluk üyelerinin sorunuzu hızlı bir şekilde değerlendirmesine ve yanıt verebilmesini artırmak için bu yönergeleri izleyin:
-
-* [Nasıl yaparım? iyi bir soru sorun](/answers/articles/24951/how-to-write-a-quality-question.html)
-* [En az, tamamlanmış ve doğrulanabilir örnek oluşturma](/answers/articles/24907/how-to-write-a-quality-answer.html)
+| Bileşen/alan| Etiketler  |
+|------------|---------------------------|
+| Active Directory Authentication Library (ADAL)                              | [adal](https://docs.microsoft.com/answers/topics/azure-ad-adal-deprecation.html)                |
+| Microsoft Authentication Library (MSAL)                                     | [msal](https://docs.microsoft.com/answers/topics/azure-ad-msal.html)                            |
+| .NET (OWıN) ara yazılım için Web arabirimini açın                               | [[Azure-Active-Directory]](https://docs.microsoft.com/answers/topics/azure-active-directory.html) |
+| [Azure AD B2B/dış kimlikler](../external-identities/what-is-b2b.md) | [[Azure-AD-B2B]](https://docs.microsoft.com/answers/topics/azure-ad-b2b.html)                     |
+| [Azure AD B2C](https://azure.microsoft.com/services/active-directory-b2c/)  | [[Azure-AD-B2C]](https://docs.microsoft.com/answers/topics/azure-ad-b2c.html)                     |
+| [Microsoft Graph API](https://developer.microsoft.com/graph/)               | [[Azure-AD-grafik]](https://docs.microsoft.com/answers/topics/azure-ad-graph.html)                 |
+| Diğer tüm kimlik doğrulama ve yetkilendirme alanlarında                            | [[Azure-Active-Directory]](https://docs.microsoft.com/answers/topics/azure-active-directory.html) |
 
 ## <a name="create-a-github-issue"></a>GitHub sorunu oluştur
 
-Kitaplıklarımızla ilgili bir hata veya sorun bulursanız, GitHub depolarımızda bir sorun oluşturabilir. Kitaplıklarımız açık kaynak olduğundan, çekme isteği de gönderebilirsiniz.
+<div class='icon is-large'>
+    <img alt='GitHub-image' src='./media/common/github.svg'>
+</div>
 
-Kitaplıkların ve GitHub depolarının listesi için aşağıdakilere bakın:
+Microsoft kimlik doğrulama kitaplıklarından (MSAL) biriyle ilgili yardıma ihtiyacınız varsa, GitHub 'daki deposunda bir sorun açın.
 
-* [Azure Active Directory kimlik doğrulaması kitaplığı (ADAL)](../azuread-dev/active-directory-authentication-libraries.md) kitaplıkları ve GitHub depoları
-* [Microsoft kimlik doğrulama kitaplığı (msal)](reference-v2-libraries.md) kitaplıkları ve GitHub depoları
+| MSAL kitaplığı | GitHub sorunları URL 'SI|
+| --- | --- |
+| Android için MSAL | https://github.com/AzureAD/microsoft-authentication-library-for-android/issues |
+| MSAL angular | https://github.com/AzureAD/microsoft-authentication-library-for-js/issues |
+| iOS ve macOS için MSAL| https://github.com/AzureAD/microsoft-authentication-library-for-objc/issues |
+| MSAL Java | https://github.com/AzureAD/microsoft-authentication-library-for-java/issues |
+| MSAL.js | https://github.com/AzureAD/microsoft-authentication-library-for-js/issues |
+|MSAL.NET| https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/issues |
+| MSAL düğümü | https://github.com/AzureAD/microsoft-authentication-library-for-js/issues |
+| MSAL Python | https://github.com/AzureAD/microsoft-authentication-library-for-python/issues |
+| MSAL tepki verme | https://github.com/AzureAD/microsoft-authentication-library-for-js/issues |
 
-## <a name="open-a-support-request"></a>Bir destek isteği açın
+## <a name="submit-feedback-on-azure-feedback"></a>Azure geri bildirimi hakkında geri bildirim gönderin
 
-Birisiyle konuşmanız gerekiyorsa, bir destek isteği açabilirsiniz. Bir Azure müşterisiyseniz, çeşitli destek seçenekleri mevcuttur. Planları karşılaştırmak için [Bu sayfaya](https://azure.microsoft.com/support/plans/)bakın. Azure müşterileri için de Geliştirici desteği sunulmaktadır. Geliştirici destek planlarını satın alma hakkında daha fazla bilgi için [Bu sayfaya](https://azure.microsoft.com/support/plans/developer/)bakın.
+<div class='icon is-large'>
+    <img alt='UserVoice' src='https://docs.microsoft.com/media/logos/logo-uservoice.svg'>
+</div>
 
-* Zaten bir Azure Destek planınız varsa, [burada bir destek isteği açın](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)
+Yeni özellikler istemek için Azure geri bildirimlerine gönderin. Microsoft Identity platform 'un geliştirdiğiniz uygulamalar için daha iyi çalışmasını sağlamak için fikirlerinizi paylaşın.
 
-* Bir Azure müşterisiyseniz, [ticari destek](https://support.serviceshub.microsoft.com/supportforbusiness)aracılığıyla Microsoft ile bir destek isteği de açabilirsiniz.
+| Hizmet                       | Azure geri bildirim URL 'SI |
+|-------------------------------|---------------|
+| Azure Active Directory | https://feedback.azure.com/forums/169401-azure-active-directory |
+| Azure Active Directory geliştirici deneyimleri             | https://feedback.azure.com/forums/169401-azure-active-directory?category_id=164757 |
+| Azure Active Directory-kimlik doğrulaması             | https://feedback.azure.com/forums/169401-azure-active-directory?category_id=167256 |
 
-Ayrıca, destek almak veya soru sormak için bir [sanal aracıyı](https://support.microsoft.com/contactus/?ws=support) deneyebilirsiniz.
+## <a name="stay-informed-of-updates-and-new-releases"></a>Güncelleştirmeler ve yeni sürümlerden haberdar olun
+
+<div class='icon is-large'>
+    <img alt='Stay informed' src='https://docs.microsoft.com/media/common/i_blog.svg'>
+</div>
+
+- [Azure güncelleştirmeleri](https://azure.microsoft.com/updates/?category=identity): önemli ürün güncelleştirmeleri, yol haritası ve Duyurular hakkında bilgi edinin.
+
+- [Docs 'taki](https://docs.microsoft.com/azure/active-directory/develop/whats-new-docs)yenilikler: Microsoft Identity platform belgelerindeki yenilikleri öğrenin.
+
+- [Azure Active Directory kimlik blogu](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/bg-p/Identity): Azure AD ile ilgili haberleri ve bilgileri alın.
+
+- [Teknik topluluk](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/bg-p/Identity/): deneyimlerinizi paylaşma, uzmanlardan katılın ve uzmanlardan bilgi edinin.
+
+

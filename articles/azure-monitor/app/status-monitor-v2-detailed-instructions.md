@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: TimothyMothra
 ms.author: tilee
 ms.date: 04/23/2019
-ms.openlocfilehash: 2a955273c01d8c0d865aabd91bb1bfcce70fd373
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 29922f088a51e4876e5e2ec8fe87c3bbce4482f3
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100587376"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102521688"
 ---
 # <a name="application-insights-agent-formerly-named-status-monitor-v2-detailed-instructions"></a>Application Insights Aracısı (eski adıyla Durum İzleyicisi v2): ayrıntılı yönergeler
 
@@ -29,7 +29,7 @@ Başlamak için bir izleme anahtarına ihtiyacınız vardır. Daha fazla bilgi i
 PowerShell 'in bilgisayarınızda değişiklik yapması için yönetici düzeyinde izinleri olması gerekir.
 ### <a name="execution-policy"></a>Yürütme ilkesi
 - Açıklama: varsayılan olarak, PowerShell betikleri çalıştırıldığında devre dışı bırakılır. RemoteSigned betiklerin yalnızca geçerli kapsam için izin vermesini öneririz.
-- Başvuru: [yürütme ilkeleri](/powershell/module/microsoft.powershell.core/about/about_execution_policies?view=powershell-6) ve [set-executionpolicy](/powershell/module/microsoft.powershell.security/set-executionpolicy?view=powershell-6)hakkında.
+- Başvuru: [yürütme ilkeleri](/powershell/module/microsoft.powershell.core/about/about_execution_policies) ve [set-executionpolicy](/powershell/module/microsoft.powershell.security/set-executionpolicy)hakkında.
 - Komut: `Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope Process` .
 - İsteğe bağlı parametre:
     - `-Force`. Onay istemi 'ni atlar.
@@ -71,14 +71,14 @@ Bu yönergeler Windows 10 çalıştıran bir bilgisayarda ve yukarıda listelene
 Bu adımlar, sunucunuzu PowerShell Galerisi 'dan modül indirmek üzere hazırlar.
 
 > [!NOTE] 
-> PowerShell Galerisi, Windows 10, Windows Server 2016 ve PowerShell 6 ' da desteklenir.
+> PowerShell Galerisi, Windows 10, Windows Server 2016 ve PowerShell 6 + ' da desteklenir.
 > Önceki sürümler hakkında daha fazla bilgi için bkz. [PowerShellGet 'ı yükleme](/powershell/scripting/gallery/installing-psget).
 
 
 1. PowerShell 'i yükseltilmiş bir yürütme ilkesiyle yönetici olarak çalıştırın.
 2. NuGet paket sağlayıcısını yükler.
     - Açıklama: Bu sağlayıcının PowerShell Galerisi gibi NuGet tabanlı depolarla etkileşim kurması gerekir.
-    - Başvuru: [Install-PackageProvider](/powershell/module/packagemanagement/install-packageprovider?view=powershell-6).
+    - Başvuru: [Install-PackageProvider](/powershell/module/packagemanagement/install-packageprovider).
     - Komut: `Install-PackageProvider -Name NuGet -MinimumVersion 2.8.5.201` .
     - İsteğe bağlı parametreler:
         - `-Proxy`. İstek için bir proxy sunucusu belirtir.
@@ -98,7 +98,7 @@ Bu adımlar, sunucunuzu PowerShell Galerisi 'dan modül indirmek üzere hazırla
 
 3. PowerShell Galerisi güvenilir bir depo olarak yapılandırın.
     - Açıklama: varsayılan olarak, PowerShell Galerisi güvenilmeyen bir depodur.
-    - Başvuru: [set-PSRepository](/powershell/module/powershellget/set-psrepository?view=powershell-6).
+    - Başvuru: [set-PSRepository](/powershell/module/powershellget/set-psrepository).
     - Komut: `Set-PSRepository -Name "PSGallery" -InstallationPolicy Trusted` .
     - İsteğe bağlı parametre:
         - `-Proxy`. İstek için bir proxy sunucusu belirtir.
@@ -144,7 +144,7 @@ Bu adımlar, PowerShell Galerisi az. ApplicationMonitor modülünü indirir.
 1. PowerShell Galerisi için tüm önkoşulların karşılandığından emin olun.
 2. PowerShell 'i yükseltilmiş bir yürütme ilkesiyle yönetici olarak çalıştırın.
 3. Az. ApplicationMonitor modülünü yükler.
-    - Başvuru: [Install-Module](/powershell/module/powershellget/install-module?view=powershell-6).
+    - Başvuru: [Install-Module](/powershell/module/powershellget/install-module).
     - Komut: `Install-Module -Name Az.ApplicationMonitor` .
     - İsteğe bağlı parametreler:
         - `-Proxy`. İstek için bir proxy sunucusu belirtir.
@@ -170,7 +170,7 @@ Daha fazla bilgi için bkz. [PowerShell modülünü yükleme](/powershell/script
 #### <a name="unzip-nupkg-as-a-zip-file-by-using-expand-archive-v1010"></a>Expand-Archive kullanarak nupkg 'yi ZIP dosyası olarak sıkıştırmayı açın (v 1.0.1.0)
 
 - Açıklama: Microsoft. PowerShell. Archive (v 1.0.1.0) öğesinin temel sürümü nupkg dosyalarını sıkıştırmasını açamıyor. Dosyayı. zip uzantısıyla yeniden adlandırın.
-- Başvuru: [Expand-arşiv](/powershell/module/microsoft.powershell.archive/expand-archive?view=powershell-6).
+- Başvuru: [Expand-arşiv](/powershell/module/microsoft.powershell.archive/expand-archive).
 - Komutundaki
 
     ```console
@@ -184,7 +184,7 @@ Daha fazla bilgi için bkz. [PowerShell modülünü yükleme](/powershell/script
 #### <a name="unzip-nupkg-by-using-expand-archive-v1100"></a>Expand-Archive kullanarak nupkg sıkıştırmasını açın (v 1.1.0.0)
 
 - Açıklama: uzantıyı değiştirmeden nupkg dosyalarını açmak için Expand-Archive güncel bir sürümünü kullanın.
-- Başvuru: [Expand-Archive](/powershell/module/microsoft.powershell.archive/expand-archive?view=powershell-6) ve [Microsoft. PowerShell. Archive](https://www.powershellgallery.com/packages/Microsoft.PowerShell.Archive/1.1.0.0).
+- Başvuru: [Expand-Archive](/powershell/module/microsoft.powershell.archive/expand-archive) ve [Microsoft. PowerShell. Archive](https://www.powershellgallery.com/packages/Microsoft.PowerShell.Archive/1.1.0.0).
 - Komutundaki
 
     ```console
@@ -197,7 +197,7 @@ Daha fazla bilgi için bkz. [PowerShell modülünü yükleme](/powershell/script
 PowerShell oturumları tarafından keşfedilecek şekilde, el ile indirilen PowerShell modülünü bir PowerShell dizinine yükleyebilirsiniz.
 Daha fazla bilgi için bkz. [PowerShell modülünü yükleme](/powershell/scripting/developer/module/installing-a-powershell-module).
 
-Modülü başka bir dizine yüklüyorsanız, [Import-Module](/powershell/module/microsoft.powershell.core/import-module?view=powershell-6)kullanarak modülü el ile içeri aktarın.
+Modülü başka bir dizine yüklüyorsanız, [Import-Module](/powershell/module/microsoft.powershell.core/import-module)kullanarak modülü el ile içeri aktarın.
 
 > [!IMPORTANT] 
 > Dll 'Ler göreli yollar aracılığıyla yüklenir.

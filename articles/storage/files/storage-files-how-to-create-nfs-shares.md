@@ -8,12 +8,12 @@ ms.date: 01/22/2021
 ms.author: rogarana
 ms.subservice: files
 ms.custom: references_regions, devx-track-azurecli
-ms.openlocfilehash: 778d82cd36e1f7389a443630f0982dd8774fe3ee
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.openlocfilehash: b085b9991175d8cd43e2dac0db80c5af4e703c34
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 03/09/2021
-ms.locfileid: "102509209"
+ms.locfileid: "102521246"
 ---
 # <a name="how-to-create-an-nfs-share"></a>NFS paylaşma oluşturma
 Azure dosya paylaşımları, bulutta yaşayan tamamen yönetilen dosya paylaşımlardır. Bu makalede NFS protokolünü kullanan bir dosya paylaşımının oluşturulması ele alınmaktadır. Her iki protokol hakkında daha fazla bilgi için bkz. [Azure dosya paylaşma protokolleri](storage-files-compare-protocols.md).
@@ -192,7 +192,7 @@ Bir dosya depolama hesabı oluşturup ağı yapılandırdığınıza göre, bir 
    echo $PSVersionTable.PSVersion.ToString() 
    ```
     
-   PowerShell sürümünüzü yükseltmek için bkz. [var olan Windows PowerShell 'ı yükseltme](/powershell/scripting/install/installing-windows-powershell?view=powershell-6&preserve-view=true#upgrading-existing-windows-powershell)
+   PowerShell sürümünüzü yükseltmek için bkz. [var olan Windows PowerShell 'ı yükseltme](/powershell/scripting/install/installing-windows-powershell#upgrading-existing-windows-powershell)
     
 1. PowershellGet modülünün en son sürümünü yükler.
 

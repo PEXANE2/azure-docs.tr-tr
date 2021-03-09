@@ -11,12 +11,12 @@ ms.author: amsaied
 ms.reviewer: sgilley
 ms.date: 02/11/2021
 ms.custom: devx-track-python
-ms.openlocfilehash: 65c609343aece4e23917ede79dfb3c4723ffb70c
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: bee2b31f215758bf5cf73ff5393058fb915cdf25
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100369075"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102522351"
 ---
 # <a name="tutorial-train-your-first-machine-learning-model-part-3-of-4"></a>Öğretici: ilk makine öğrenimi modelinizi eğitme (Bölüm 3/4)
 
@@ -132,7 +132,7 @@ if __name__ == "__main__":
       `env = ...`
    :::column-end:::
    :::column span="2":::
-      Azure Machine Learning, denemeleri çalıştırmaya yönelik tekrarlanabilir, sürümlü bir Python ortamını temsil eden bir [ortam](/python/api/azureml-core/azureml.core.environment.environment?preserve-view=true&view=azure-ml-py) kavramı sağlar. Yerel bir Conda veya PIP ortamından ortam oluşturmak kolaydır.
+      Azure Machine Learning, denemeleri çalıştırmaya yönelik tekrarlanabilir, sürümlü bir Python ortamını temsil eden bir [ortam](/python/api/azureml-core/azureml.core.environment.environment) kavramı sağlar. Yerel bir Conda veya PIP ortamından ortam oluşturmak kolaydır.
    :::column-end:::
 :::row-end:::
 :::row:::
@@ -140,7 +140,7 @@ if __name__ == "__main__":
       `config.run_config.environment = env`
    :::column-end:::
    :::column span="2":::
-      Ortamı [ScriptRunConfig](/python/api/azureml-core/azureml.core.scriptrunconfig?preserve-view=true&view=azure-ml-py)'e ekler.
+      Ortamı [ScriptRunConfig](/python/api/azureml-core/azureml.core.scriptrunconfig)'e ekler.
    :::column-end:::
 :::row-end:::
 
@@ -262,7 +262,7 @@ Bu kez, Studio 'yu ziyaret ettiğinizde, artık model eğitimi kaybından canlı
 
 Bu oturumda, temel bir "Hello World!" üzerinden yükselttiniz belirli bir Python ortamının çalışmasını gerektiren daha gerçekçi bir eğitim betiğinin betiği. Azure Machine Learning ortamları ile buluta yerel bir Conda ortamını nasıl alacağınızı gördünüz. Son olarak, Azure Machine Learning ölçümleri günlüğe kaydetmek için birkaç satır kod satırını gördünüz.
 
-[Bir PIP requirements.txt](/python/api/azureml-core/azureml.core.environment.environment?preserve-view=true&view=azure-ml-py#from-pip-requirements-name--file-path-) dosyasından veya [var olan bir yerel conda ortamından](/python/api/azureml-core/azureml.core.environment.environment?preserve-view=true&view=azure-ml-py#from-existing-conda-environment-name--conda-environment-name-)Azure Machine Learning ortamlar oluşturmanın başka yolları da vardır.
+[Bir PIP requirements.txt](/python/api/azureml-core/azureml.core.environment.environment#from-pip-requirements-name--file-path-) dosyasından veya [var olan bir yerel conda ortamından](/python/api/azureml-core/azureml.core.environment.environment#from-existing-conda-environment-name--conda-environment-name-)Azure Machine Learning ortamlar oluşturmanın başka yolları da vardır.
 
 Bir sonraki oturumda, CIFAR10 veri kümesini Azure 'a yükleyerek Azure Machine Learning verilerle nasıl çalışacaksınız görürsünüz.
 

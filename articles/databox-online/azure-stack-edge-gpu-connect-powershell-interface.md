@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 02/22/2021
+ms.date: 03/08/2021
 ms.author: alkohli
-ms.openlocfilehash: 1404dfd25f4e80e0e05c0071da649cacfa45dac0
-ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
+ms.openlocfilehash: 1319f806dd2f32233dcfe7383f5283b67827f16f
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102437766"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102517590"
 ---
 # <a name="manage-an-azure-stack-edge-pro-gpu-device-via-windows-powershell"></a>Windows PowerShell aracılığıyla Azure Stack Edge Pro GPU cihazını yönetme
 
@@ -26,30 +26,12 @@ Bu makale, cihazın PowerShell arabirimine ve bu arabirimi kullanarak gerçekle�
 
 ## <a name="connect-to-the-powershell-interface"></a>PowerShell arabirimine bağlanın
 
-[!INCLUDE [Connect to admin runspace](../../includes/data-box-edge-gateway-connect-minishell.md)]
+[!INCLUDE [Connect to admin runspace](../../includes/azure-stack-edge-gateway-connect-minishell.md)]
 
 ## <a name="create-a-support-package"></a>Destek paketi oluşturma
 
 [!INCLUDE [Create a support package](../../includes/data-box-edge-gateway-create-support-package.md)]
 
-<!--## Upload certificate
-
-[!INCLUDE [Upload certificate](../../includes/data-box-edge-gateway-upload-certificate.md)]
-
-You can also upload IoT Edge certificates to enable a secure connection between your IoT Edge device and the downstream devices that may connect to it. There are three IoT Edge certificates (*.pem* format) that you need to install:
-
-- Root CA certificate or the owner CA
-- Device CA certificate
-- Device key certificate
-
-The following example shows the usage of this cmdlet to install IoT Edge certificates:
-
-```
-Set-HcsCertificate -Scope IotEdge -RootCACertificateFilePath "\\hcfs\root-ca-cert.pem" -DeviceCertificateFilePath "\\hcfs\device-ca-cert.pem\" -DeviceKeyFilePath "\\hcfs\device-key-cert.pem" -Credential "username"
-```
-When you run this cmdlet, you will be prompted to provide the password for the network share.
-
-For more information on certificates, go to [Azure IoT Edge certificates](../iot-edge/iot-edge-certs.md) or [Install certificates on a gateway](../iot-edge/how-to-create-transparent-gateway.md).-->
 
 ## <a name="view-device-information"></a>Cihaz bilgilerini görüntüle
  
@@ -88,17 +70,8 @@ Cihazınızda işlem rolü yapılandırılmışsa, PowerShell arabirimi aracıl�
 
 NVIDIA GPU 'larda çoklu Işlem hizmeti (MPS), her bir işin GPU kaynaklarının bir yüzdesi ayrıldığı birden çok iş tarafından paylaşılabilen bir mekanizma sağlar. MPS, Azure Stack Edge Pro GPU cihazınızda bir önizleme özelliğidir. Cihazınızda MP 'leri etkinleştirmek için şu adımları izleyin:
 
-1. Başlamadan önce şunları yaptığınızdan emin olun: 
+[!INCLUDE [Enable MPS](../../includes/azure-stack-edge-gateway-enable-mps.md)]
 
-    1. [Azure Stack Edge Pro cihazınızı](azure-stack-edge-gpu-deploy-activate.md) Azure 'Da Azure Stack Edge pro/Data Box Gateway kaynağıyla yapılandırdık ve etkinleştirdiniz.
-    1. [Bu cihazda işlem Azure Portal yapılandırdınız](azure-stack-edge-deploy-configure-compute.md#configure-compute).
-    
-1. [PowerShell arabirimine bağlanın](#connect-to-the-powershell-interface).
-1. Cihazınızda MPS 'yi etkinleştirmek için aşağıdaki komutu kullanın.
-
-    ```powershell
-    Start-HcsGpuMPS
-    ```
 
 ## <a name="reset-your-device"></a>Cihazınızı sıfırlama
 
@@ -150,45 +123,13 @@ Id                                   PodSubnet    ServiceSubnet
 [10.100.10.10]: PS>
 ```
 
-
 ## <a name="debug-kubernetes-issues-related-to-iot-edge"></a>IoT Edge ilgili Kubernetes sorunlarını ayıklama
 
-<!--When the Kubernetes cluster is created, there are two system namespaces created: `iotedge` and `azure-arc`. --> 
+Başlamadan önce, şunları yapmanız gerekir:
 
-<!--### Create config file for system namespace
-
-To troubleshoot, first create the `config` file corresponding to the `iotedge` namespace with `aseuser`.
-
-Run the `Get-HcsKubernetesUserConfig -AseUser` command and save the output as `config` file (no file extension). Save the file in the `.kube` folder of your user profile on the local machine.
-
-Following is the sample output of the `Get-HcsKubernetesUserConfig` command.
-
-```PowerShell
-[10.100.10.10]: PS>Get-HcsKubernetesUserConfig -AseUser
-apiVersion: v1
-clusters:
-- cluster:
-    certificate-authority-data: LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSUN5RENDQWJDZ0F3SUJBZ0lCQURBTkJna3Foa2lHOXcwQkFRc0ZBREFWTVJNd0VRWURWUVFERXdwcmRXSmwKY201bGRHVnpNQjRYRFRJd01EVXhNekl4TkRRME5sb1hEVE13TURVeE1USXhORFEwTmxvd0ZURVRNQkVHQTFVRQpBeE1LYTNWaVpYSnVaWFJsY3pDQ0FTSXdEUVlKS29aSWh2Y05BUUVCQlFBRGdnRVBBRENDQVFvQ2dnRUJBS0M1CjlJbzRSU2hudG90QUdxdjNTYmRjOVd4UmJDYlRzWXU5S0RQeU9xanVoZE1UUE9PcmROOGNoa0x4NEFyZkZaU1AKZithUmhpdWZqSE56bWhucnkvZlprRGdqQzQzRmV5UHZzcTZXeVVDV0FEK2JBdi9wSkJDbkg2MldoWGNLZ1BVMApqU1k0ZkpXenNFbzBaREhoeUszSGN3MkxkbmdmaEpEanBQRFJBNkRWb2pIaktPb29OT1J1dURvUHpiOTg2dGhUCkZaQXJMZjRvZXRzTEk1ZzFYRTNzZzM1YVhyU0g3N2JPYVVsTGpYTzFYSnpFZlZWZ3BMWE5xR1ZqTXhBMVU2b1MKMXVJL0d1K1ArY
-===========CUT=========================================CUT===================
-    server: https://compute.myasegpu1.wdshcsso.com:6443
-    name: kubernetes
-contexts:
-- context:
-    cluster: kubernetes
-    user: aseuser
-    name: aseuser@kubernetes
-current-context: aseuser@kubernetes
-kind: Config
-preferences: {}
-users:
-- name: aseuser
-    user:
-    client-certificate-data: LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSUMwRENDQWJpZ0F3SUJBZ0lJY1hOTXRPU2VwbG93RFFZSktvWklodmNOQVFFTEJRQXdGVEVUTUJFR0ExVUUKQXhNS2EzVmlaWEp1WlhSbGN6QWVGdzB5TURBMU1UTXlNVFEwTkRaYUZ3MHlNVEExTVRNeU1UVXhNVEphTUJJeApFREFPQmdOVkJBTVRCMkZ6WlhWelpYSXdnZ0VpTUEwR0NTcUdTSWIzRFFFQkFRVUFBNElCRHdBd2dnRUtBb0lCCkFRRHVjQ1pKdm9qNFIrc0U3a1EyYmVjNEJkTXdpUEhmU2R2WnNDVVY0aTRRZGY1Yzd0dkE3OVRSZkRLQTY1d08Kd0h0QWdlK3lLK0hIQ1Qyd09RbWtNek1RNjZwVFEzUlE0eVdtRDZHR1cWZWMExBR1hFUUxWWHRuTUdGCi0tLS0tRU5EIFJTQSBQUklWQVRFIEtFWS0tLS0tCg==
-
-[10.100.10.10]: PS>
-```
--->
-
+- İşlem ağı yapılandırıldı. Bkz. [öğretici: Azure Stack Edge Pro için ağı GPU Ile yapılandırma](azure-stack-edge-gpu-deploy-configure-network-compute-web-proxy.md).
+- Cihazınızda yapılandırılan işlem rolü.
+    
 İşlem rolü yapılandırılmış bir Azure Stack Edge Pro cihazında, iki farklı komut kümesi kullanarak cihazı sorun gidermeye veya izlemeye izleyebilirsiniz.
 
 - `iotedge`Komutları kullanma. Bu komutlar, cihazınız için temel işlemler için kullanılabilir.
@@ -214,7 +155,7 @@ Commands:
 
 Aşağıdaki tabloda, için kullanılabilen komutların kısa bir açıklaması verilmiştir `iotedge` :
 
-|command  |Açıklama |
+|command  |Description |
 |---------|---------|
 |`list`     | Modülleri listeleme         |
 |`logs`     | Modülün günlüklerini getirme        |
@@ -403,7 +344,7 @@ Bir modülün günlüklerini almak için, cihazın PowerShell arabiriminden aşa
 
 `kubectl logs <pod_name> -n <namespace> --all-containers` 
 
-`all-containers`Bayrak tüm kapsayıcıların tüm günlüklerinin dökümünü alacak, son hataları görmenin iyi bir yolu ise seçeneğini kullanmaktır `--tail 10` .
+`all-containers`Bayrak tüm kapsayıcıların tüm günlüklerinin dökümünü yaptığından, son hataları görmenin iyi bir yolu, seçeneğini kullanmaktır `--tail 10` .
 
 Aşağıda örnek bir çıktı verilmiştir. 
 
@@ -534,8 +475,8 @@ Bellek ve işlemci kullanımını değiştirirken bu yönergeleri izleyin.
 
 - Varsayılan bellek, cihaz belirtiminin %25 ' i.
 - Varsayılan işlemci sayısı cihaz belirtiminin %30 ' dur.
-- Bellek ve işlemci sayımlarını değerlerini değiştirirken, cihaz belleğinin ve işlemci sayısının %65 15 ' i arasındaki değerleri değiştirmeniz önerilir. 
-- Sistem bileşenleri için yeterli kaynak olması için %65 üst sınırı önerilir. 
+- Bellek ve işlemci sayımlarını değerlerini değiştirirken, cihaz belleğinin ve işlemci sayısının %60 15 ' i arasındaki değerleri değiştirmeniz önerilir. 
+- Sistem bileşenleri için yeterli kaynak olması için %60 üst sınırı önerilir. 
 
 ## <a name="connect-to-bmc"></a>BMC 'ye Bağlan
 

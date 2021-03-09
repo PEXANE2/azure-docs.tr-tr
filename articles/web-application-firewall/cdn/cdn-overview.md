@@ -7,14 +7,14 @@ ms.service: web-application-firewall
 ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: victorh
-ms.openlocfilehash: 6949c1e8f83ebf47878a3d449796ccc03920756a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cd1f21f150094094a6bf856b04a64a02963f35a8
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89225161"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102521722"
 ---
-# <a name="azure-web-application-firewall-on-azure-content-delivery-network"></a>Azure Content Delivery Network Azure Web uygulaması güvenlik duvarı
+# <a name="azure-web-application-firewall-on-azure-content-delivery-network-from-microsoft"></a>Microsoft 'tan Azure Content Delivery Network Azure Web uygulaması güvenlik duvarı
 
 Microsoft 'un Azure Content Delivery Network (CDN) üzerinde Azure Web uygulaması güvenlik duvarı (WAF), Web içeriğiniz için merkezi koruma sağlar. WAF, Web hizmetlerinizi yaygın güvenlik açıklarından ve güvenlik açıklarına karşı Savunlar. Kullanıcılarınız için hizmetinizi yüksek oranda kullanılabilir tutar ve uyumluluk gereksinimlerini karşılamanıza yardımcı olur.
 
@@ -35,7 +35,7 @@ Bir WAF ilkesi yapılandırabilir ve bu ilkeyi koruma için bir veya daha fazla 
 
 - Azure tarafından yönetilen önceden yapılandırılmış kuralların bir koleksiyonu olan yönetilen kural kümeleri.
 
-Her ikisi de varsa, yönetilen bir kural kümesindeki kuralları işlemeden önce özel kurallar işlenir. Bir kural eşleştirme koşulu, öncelik ve bir eylemden oluşur. Desteklenen eylem türleri şunlardır: *Izin ver*, *Engelle*, *log*ve *REDIRECT*. Yönetilen ve özel kuralları birleştirerek, belirli uygulama koruma gereksinimlerinizi karşılayan tam olarak özelleştirilmiş bir ilke oluşturabilirsiniz.
+Her ikisi de varsa, yönetilen bir kural kümesindeki kuralları işlemeden önce özel kurallar işlenir. Bir kural eşleştirme koşulu, öncelik ve bir eylemden oluşur. Desteklenen eylem türleri şunlardır: *Izin ver*, *Engelle*, *log* ve *REDIRECT*. Yönetilen ve özel kuralları birleştirerek, belirli uygulama koruma gereksinimlerinizi karşılayan tam olarak özelleştirilmiş bir ilke oluşturabilirsiniz.
 
 İlke içindeki kurallar öncelik sırasına göre işlenir. Öncelik, işlenecek kuralların sırasını tanımlayan benzersiz bir sayıdır. Daha küçük sayılar daha yüksek önceliktir ve bu kurallar daha büyük bir değere sahip kurallardan önce değerlendirilir. Bir kural eşleştiğinde, kuralda tanımlanan ilgili eylem isteğe uygulanır. Bu tür bir eşleşme işlendiğinde, daha düşük öncelikler olan kurallar daha fazla işlenmez.
 

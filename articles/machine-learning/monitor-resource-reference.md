@@ -10,12 +10,12 @@ ms.author: aashishb
 author: aashishb
 ms.custom: subject-monitoring
 ms.date: 10/02/2020
-ms.openlocfilehash: f9f25ec2dd8fb8b859f7863c1e695e22cb9a9cec
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: f130fc0c65c49c33c838812fc2758619e0d1bca0
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100575075"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102521348"
 ---
 # <a name="monitoring-azure-machine-learning-data-reference"></a>Azure Machine Learning veri başvurusunu izleme
 
@@ -88,7 +88,7 @@ Azure Machine Learning, ölçümleriyle ilişkili aşağıdaki boyutlara sahipti
 | NodeId | İşin çalıştığı yerde oluşturulan düğümün KIMLIĞI. Yalnızca Cpukullanımı ve Gpukullanımı için kullanılabilir. |
 | RunId | Çalışma/iş KIMLIĞI. Yalnızca Cpukullanımı ve Gpukullanımı için kullanılabilir. |
 | ComputeType | Çalıştırmanın kullandığı işlem türü. Yalnızca tamamlanan çalıştırmalar, başarısız çalıştırmalar ve başlatılan çalıştırmalar için kullanılabilir. |
-| PipelineStepType | Çalıştırmada kullanılan [ardışık düzen Inestep](/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinestep?preserve-view=true&view=azure-ml-py) türü. Yalnızca tamamlanan çalıştırmalar, başarısız çalıştırmalar ve başlatılan çalıştırmalar için kullanılabilir. |
+| PipelineStepType | Çalıştırmada kullanılan [ardışık düzen Inestep](/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinestep) türü. Yalnızca tamamlanan çalıştırmalar, başarısız çalıştırmalar ve başlatılan çalıştırmalar için kullanılabilir. |
 | Publishedpipelineıd | Çalıştırmada kullanılan yayınlanan işlem hattının KIMLIĞI. Yalnızca tamamlanan çalıştırmalar, başarısız çalıştırmalar ve başlatılan çalıştırmalar için kullanılabilir. |
 | RunType | Çalıştırma türü. Yalnızca tamamlanan çalıştırmalar, başarısız çalıştırmalar ve başlatılan çalıştırmalar için kullanılabilir. |
 

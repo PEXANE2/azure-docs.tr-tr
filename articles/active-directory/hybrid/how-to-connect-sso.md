@@ -16,12 +16,12 @@ ms.date: 08/13/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 88eae702782e2f1af9c20797676214db458c2adc
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: eeede88bfbe024a66e40270240d32488e581dd77
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98937626"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102517710"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on"></a>Azure Active Directory Sorunsuz Çoklu Oturum Açma
 
@@ -37,7 +37,7 @@ Kesintisiz SSO, [Parola karması eşitlemesi](how-to-connect-password-hash-synch
 
 ## <a name="sso-via-primary-refresh-token-vs-seamless-sso"></a>Birincil yenileme belirteci ve sorunsuz SSO ile SSO
 
-Windows 10 için, SSO 'yu birincil yenileme belirteci (PRT) aracılığıyla kullanmanız önerilir. Windows 7 ve 8,1 için sorunsuz SSO kullanmanız önerilir.
+Windows 10, Windows Server 2016 ve sonraki sürümlerinde, SSO 'yu birincil yenileme belirteci (PRT) aracılığıyla kullanmanız önerilir. Windows 7 ve 8,1 için sorunsuz SSO kullanmanız önerilir.
 Sorunsuz SSO Kullanıcı cihazının etki alanına katılmış olmasını gerektirir, ancak Windows 10 [Azure AD 'ye katılmış cihazlarda](../devices/concept-azure-ad-join.md) veya [karma Azure AD 'ye katılmış cihazlarda](../devices/concept-azure-ad-join-hybrid.md)kullanılmaz. Azure AD 'ye katılmış, hibrit Azure AD 'ye katılmış ve Azure AD 'ye kayıtlı cihazlarda SSO, [birincil yenileme belirtecine (PRT)](../devices/concept-primary-refresh-token.md) göre çalışmaktadır
 
 PRT aracılığıyla SSO, karma Azure AD 'ye katılmış, Azure AD 'ye katılmış veya kişisel kayıtlı cihazlarda Iş veya okul hesabı ekle yoluyla cihazlar Azure AD 'ye kaydedildikten sonra çalışır. Windows 10 ile PRT kullanarak SSO 'nun nasıl çalıştığı hakkında daha fazla bilgi için bkz. [birincil yenileme belirteci (prt) ve Azure AD](../devices/concept-primary-refresh-token.md)

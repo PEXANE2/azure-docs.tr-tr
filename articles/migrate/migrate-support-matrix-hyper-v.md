@@ -6,12 +6,12 @@ ms.author: rajosh
 ms.manager: abhemraj
 ms.topic: conceptual
 ms.date: 06/14/2020
-ms.openlocfilehash: 4407f9544a7d3a19e3ff7d404669fdb27b881d30
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: fc7be5c6c5dda8c5065330f819f646f4abd08994
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100590637"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102521365"
 ---
 # <a name="support-matrix-for-hyper-v-assessment"></a>Hyper-V değerlendirmesi için destek matrisi
 
@@ -39,7 +39,7 @@ Değerlendirmeler hakkında [daha fazla bilgi edinin](concepts-assessment-calcul
 | :-------------------       | :------------------- |
 | **Hyper-V konağı**       | Hyper-V konağı tek başına olabilir veya bir kümede dağıtılabilir.<br/><br/> Hyper-V konağı Windows Server 2019, Windows Server 2016 veya Windows Server 2012 R2 çalıştırabilir. Bu işletim sistemlerinin sunucu çekirdeği yüklemesi de desteklenir. <br/>Windows Server 2012 çalıştıran Hyper-V konaklarında yer alan VM'leri değerlendiremezsiniz.
 | **İzinler**           | Hyper-V konağında yönetici izinlerine sahip olmanız gerekir. <br/> Yönetici izinleri atamak istemiyorsanız, bir yerel veya etki alanı kullanıcı hesabı oluşturun ve bu gruplara kullanıcı hesabını ekleyin-uzak yönetim kullanıcıları, Hyper-V yöneticileri ve performans Izleyicisi kullanıcıları. |
-| **PowerShell uzaktan iletişim**   | Her Hyper-V konağında [PowerShell uzaktan iletişim](/powershell/module/microsoft.powershell.core/enable-psremoting?view=powershell-7) özelliğinin etkinleştirilmesi gerekir. |
+| **PowerShell uzaktan iletişim**   | Her Hyper-V konağında [PowerShell uzaktan iletişim](/powershell/module/microsoft.powershell.core/enable-psremoting) özelliğinin etkinleştirilmesi gerekir. |
 | **Hyper-V Çoğaltma**       | Hyper-V çoğaltması kullanıyorsanız (veya aynı VM tanımlayıcılarına sahip birden fazla sanal makine varsa) ve Azure geçişi 'ni kullanarak hem özgün hem de çoğaltılan VM 'Leri keşfetiyorsanız, Azure geçişi tarafından oluşturulan değerlendirme doğru olmayabilir. |
 
 

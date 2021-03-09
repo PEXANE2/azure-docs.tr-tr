@@ -12,12 +12,12 @@ ms.date: 01/13/2021
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, deploy, devx-track-azurecli
 adobe-target: true
-ms.openlocfilehash: f8865c9e6726a19e5e215886f92507734ebf0662
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: fa68db4bd166ebe1acd1ae85fca2d7e51236a4c4
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101657324"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102522062"
 ---
 # <a name="deploy-machine-learning-models-to-azure"></a>Makine öğrenimi modellerini Azure 'a dağıtma
 
@@ -46,7 +46,7 @@ Machine Learning dağıtım iş akışında yer alan kavramlar hakkında daha fa
 
 - Azure Machine Learning çalışma alanı. Daha fazla bilgi için bkz. [Azure Machine Learning çalışma alanı oluşturma](how-to-manage-workspace.md).
 - Bir model. Eğitilen bir modeliniz yoksa, [Bu öğreticide](https://aka.ms/azml-deploy-cloud)verilen model ve bağımlılık dosyalarını kullanabilirsiniz.
-- [Python için Azure Machine Learning yazılım geliştirme seti (SDK)](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py).
+- [Python için Azure Machine Learning yazılım geliştirme seti (SDK)](/python/api/overview/azure/ml/intro).
 
 ---
 
@@ -71,7 +71,7 @@ from azureml.core import Workspace
 ws = Workspace.from_config(path=".file-path/ws_config.json")
 ```
 
-Bir çalışma alanına bağlanmak için SDK 'Yı kullanma hakkında daha fazla bilgi için bkz. [Python için Azure MACHINE LEARNING SDK](/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true#workspace) belgeleri.
+Bir çalışma alanına bağlanmak için SDK 'Yı kullanma hakkında daha fazla bilgi için bkz. [Python için Azure MACHINE LEARNING SDK](/python/api/overview/azure/ml/intro#workspace) belgeleri.
 
 
 ---
@@ -82,7 +82,7 @@ Bir çalışma alanına bağlanmak için SDK 'Yı kullanma hakkında daha fazla 
 Kayıtlı bir model, modelinizi oluşturan bir veya daha fazla dosya için mantıksal bir kapsayıcıdır. Örneğin, birden çok dosyada depolanan bir modeliniz varsa, bunları çalışma alanına tek bir model olarak kaydedebilirsiniz. Dosyaları kaydettikten sonra, kayıtlı modeli indirebilir veya dağıtabilir ve kaydettiğiniz tüm dosyaları alabilirsiniz.
 
 > [!TIP] 
-> Sürüm izleme için bir modelin kaydedilmesi önerilir, ancak gerekli değildir. Bir modeli kaydetmeden devam etmek istiyorsanız, [ınseenceconfig](/python/api/azureml-core/azureml.core.model.inferenceconfig?preserve-view=true&view=azure-ml-py) veya [ üzerindeinferenceconfig.js](./reference-azure-machine-learning-cli.md#inference-configuration-schema) bir kaynak dizin belirtmeniz ve modelinizin bu kaynak dizinde yer aldığından emin olmanız gerekir.
+> Sürüm izleme için bir modelin kaydedilmesi önerilir, ancak gerekli değildir. Bir modeli kaydetmeden devam etmek istiyorsanız, [ınseenceconfig](/python/api/azureml-core/azureml.core.model.inferenceconfig) veya [ üzerindeinferenceconfig.js](./reference-azure-machine-learning-cli.md#inference-configuration-schema) bir kaynak dizin belirtmeniz ve modelinizin bu kaynak dizinde yer aldığından emin olmanız gerekir.
 
 > [!TIP]
 > Bir modeli kaydettiğinizde, bir bulut konumunun (bir eğitim çalıştırmasında) ya da yerel bir dizinin yolunu sağlarsınız. Bu yol, kayıt işleminin bir parçası olarak karşıya yüklenecek dosyaları bulmak için yeterlidir. Giriş betiğinde kullanılan yol ile eşleşmesi gerekmez. Daha fazla bilgi için bkz. [giriş betiğinizdeki model dosyalarını bulma](./how-to-deploy-advanced-entry-script.md#load-registered-models).
@@ -118,7 +118,7 @@ Hakkında daha fazla bilgi için `az ml model register` [başvuru belgelerine](/
 
 ### <a name="register-a-model-from-an-azure-ml-training-run"></a>Azure ML eğitim çalıştırmasında bir modeli kaydetme
 
-  Bir modeli eğitebilmeniz için SDK 'yı kullandığınızda, modeli eğitidiğinize bağlı olarak bir [Run](/python/api/azureml-core/azureml.core.run.run?preserve-view=true&view=azure-ml-py) nesnesi ya da bir [oto mlrun](/python/api/azureml-train-automl-client/azureml.train.automl.run.automlrun) nesnesi alabilirsiniz. Her nesne, bir deneme çalıştırması tarafından oluşturulan bir modeli kaydetmek için kullanılabilir.
+  Bir modeli eğitebilmeniz için SDK 'yı kullandığınızda, modeli eğitidiğinize bağlı olarak bir [Run](/python/api/azureml-core/azureml.core.run.run) nesnesi ya da bir [oto mlrun](/python/api/azureml-train-automl-client/azureml.train.automl.run.automlrun) nesnesi alabilirsiniz. Her nesne, bir deneme çalıştırması tarafından oluşturulan bir modeli kaydetmek için kullanılabilir.
 
   + Bir nesneden model kaydetme `azureml.core.Run` :
  
@@ -129,7 +129,7 @@ Hakkında daha fazla bilgi için `az ml model register` [başvuru belgelerine](/
     print(model.name, model.id, model.version, sep='\t')
     ```
 
-    `model_path`Parametresi, modelin bulut konumunu ifade eder. Bu örnekte, tek bir dosyanın yolu kullanılır. Model kaydına birden çok dosya eklemek için, `model_path` dosyaları içeren bir klasörün yoluna ayarlayın. Daha fazla bilgi için [Run.register_model](/python/api/azureml-core/azureml.core.run.run?preserve-view=true&view=azure-ml-py#&preserve-view=trueregister-model-model-name--model-path-none--tags-none--properties-none--model-framework-none--model-framework-version-none--description-none--datasets-none--sample-input-dataset-none--sample-output-dataset-none--resource-configuration-none----kwargs-) belgelerine bakın.
+    `model_path`Parametresi, modelin bulut konumunu ifade eder. Bu örnekte, tek bir dosyanın yolu kullanılır. Model kaydına birden çok dosya eklemek için, `model_path` dosyaları içeren bir klasörün yoluna ayarlayın. Daha fazla bilgi için [Run.register_model](/python/api/azureml-core/azureml.core.run.run#register-model-model-name--model-path-none--tags-none--properties-none--model-framework-none--model-framework-version-none--description-none--datasets-none--sample-input-dataset-none--sample-output-dataset-none--resource-configuration-none----kwargs-) belgelerine bakın.
 
   + Bir nesneden model kaydetme `azureml.train.automl.run.AutoMLRun` :
 
@@ -171,7 +171,7 @@ Modelin yerel yolunu sağlayarak bir modeli kaydedebilirsiniz. Bir klasörün ya
 
   Model kaydına birden çok dosya eklemek için, `model_path` dosyaları içeren bir klasörün yoluna ayarlayın.
 
-Daha fazla bilgi için [model sınıfına](/python/api/azureml-core/azureml.core.model.model?preserve-view=true&view=azure-ml-py)yönelik belgelere bakın.
+Daha fazla bilgi için [model sınıfına](/python/api/azureml-core/azureml.core.model.model)yönelik belgelere bakın.
 
 Azure Machine Learning dışında eğitilen modellerle çalışma hakkında daha fazla bilgi için bkz. [var olan bir modeli dağıtma](how-to-deploy-existing-model.md).
 
@@ -227,7 +227,7 @@ inference_config = InferenceConfig(entry_script='path-to-score.py',
 
 Ortamlar hakkında daha fazla bilgi için bkz. [eğitim ve dağıtım için ortamları oluşturma ve yönetme](how-to-use-environments.md).
 
-Çıkarım yapılandırması hakkında daha fazla bilgi için bkz. [ınenceconfig](/python/api/azureml-core/azureml.core.model.inferenceconfig?preserve-view=true&view=azure-ml-py) sınıfı belgeleri.
+Çıkarım yapılandırması hakkında daha fazla bilgi için bkz. [ınenceconfig](/python/api/azureml-core/azureml.core.model.inferenceconfig) sınıfı belgeleri.
 
 ---
 
@@ -305,7 +305,7 @@ service.wait_for_deployment(show_output = True)
 print(service.state)
 ```
 
-Daha fazla bilgi için bkz. [Localwebservice](/python/api/azureml-core/azureml.core.webservice.local.localwebservice?preserve-view=true&view=azure-ml-py), [model. deploy ()](/python/api/azureml-core/azureml.core.model.model?preserve-view=true&view=azure-ml-py#&preserve-view=truedeploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-)ve [WebService](/python/api/azureml-core/azureml.core.webservice.webservice?preserve-view=true&view=azure-ml-py)belgeleri.
+Daha fazla bilgi için bkz. [Localwebservice](/python/api/azureml-core/azureml.core.webservice.local.localwebservice), [model. deploy ()](/python/api/azureml-core/azureml.core.model.model#deploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-)ve [WebService](/python/api/azureml-core/azureml.core.webservice.webservice)belgeleri.
 
 ---
 
@@ -315,11 +315,11 @@ Model dağıtımı sırasında hizmet durumu değişikliğini tam olarak dağıt
 
 Aşağıdaki tabloda farklı hizmet durumları açıklanmaktadır:
 
-| Web hizmeti durumu | Açıklama | Son durum?
+| Web hizmeti durumu | Description | Son durum?
 | ----- | ----- | ----- |
-| Kta | Hizmet, dağıtım sürecinde. | Hayır |
-| Uygun Değil | Hizmet dağıtıldı, ancak şu anda ulaşılamaz durumda.  | Hayır |
-| Unschedulable | Kaynak eksikliği nedeniyle hizmet şu anda dağıtılamıyor. | Hayır |
+| Kta | Hizmet, dağıtım sürecinde. | No |
+| Uygun Değil | Hizmet dağıtıldı, ancak şu anda ulaşılamaz durumda.  | No |
+| Unschedulable | Kaynak eksikliği nedeniyle hizmet şu anda dağıtılamıyor. | No |
 | Başarısız | Hizmet bir hata veya kilitlenme nedeniyle dağıtılamadı. | Yes |
 | Sağlam | Hizmet sağlıklı ve uç nokta kullanılabilir. | Yes |
 
@@ -357,7 +357,7 @@ Dağıtılan bir Web hizmetini silmek için kullanın `az ml service <name of we
 Dağıtılmış bir Web hizmetini silmek için kullanın `service.delete()` .
 Kayıtlı bir modeli silmek için kullanın `model.delete()` .
 
-Daha fazla bilgi için bkz. [WebService. Delete ()](/python/api/azureml-core/azureml.core.webservice%28class%29?preserve-view=true&view=azure-ml-py#&preserve-view=truedelete--) ve [model. Delete ()](/python/api/azureml-core/azureml.core.model.model?preserve-view=true&view=azure-ml-py#&preserve-view=truedelete--)belgeleri.
+Daha fazla bilgi için bkz. [WebService. Delete ()](/python/api/azureml-core/azureml.core.webservice%28class%29#delete--) ve [model. Delete ()](/python/api/azureml-core/azureml.core.model.model#delete--)belgeleri.
 
 ---
 

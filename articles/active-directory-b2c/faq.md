@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 03/08/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: cef2636aeecf78a12c48b31b384af2cf76903879
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.openlocfilehash: 722f3158c8eca4cec4dbf23658f9d8d4cb68c3ed
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 03/09/2021
-ms.locfileid: "102498838"
+ms.locfileid: "102517999"
 ---
 # <a name="azure-ad-b2c-frequently-asked-questions-faq"></a>Azure AD B2C: sık sorulan sorular (SSS)
 
@@ -145,13 +145,13 @@ Yeni Birleşik **uygulama kayıtları** deneyimimizi veya eski  **uygulamalar (e
 1. Üst menüden **Dizin + abonelik** filtresi ' ni seçin ve ardından Azure AD B2C kiracınızı içeren dizini seçin.
 1. Sol menüden **Azure AD B2C**' yi seçin. Ya da **tüm hizmetler** ' i seçin ve **Azure AD B2C** seçin.
 1. Azure AD B2C kiracınızdaki tüm **Kullanıcı akışlarını (ilkeleri)** silin.
+1. Azure AD B2C kiracınızdaki tüm **kimlik sağlayıcılarını** silin.
 1. **Uygulama kayıtları**' yi seçin ve ardından **tüm uygulamalar** sekmesini seçin.
 1. Kaydolduysanız tüm uygulamaları silin.
 1. **B2C-Extensions-App**' i silin.
 1. **Yönet** bölümünde **Kullanıcılar**'ı seçin.
 1. Her bir kullanıcıyı sırasıyla seçin (Şu anda oturum açmış olduğunuz *abonelik yönetici* kullanıcısını hariç tut). Sayfanın alt kısmındaki **Sil** ' i seçin ve istendiğinde **Evet** ' i seçin.
 1. Sol taraftaki menüden **Azure Active Directory** ' yi seçin.
-1. **Yönet** altında **Kullanıcı ayarları**' nı seçin.
 1. **Yönet** altında **Özellikler** ' i seçin.
 1. **Azure kaynakları için erişim yönetimi**'nin altında **Evet**'i ve sonra da **Kaydet**'i seçin.
 1. Azure portal oturumunuzu kapatıp erişiminizi yenilemek için yeniden oturum açın.

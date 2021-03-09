@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 10/29/2020
-ms.openlocfilehash: 30a511caec82ead406f0a80f107e4261a707bfdb
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.openlocfilehash: 8d246f06db9fc9f4e6916ea69ec49ddaf8cf0667
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93040170"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102519784"
 ---
 # <a name="quickstart-import-a-bacpac-file-to-a-database-in-azure-sql-database-or-azure-sql-managed-instance"></a>Hızlı başlangıç: BACPAC dosyasını Azure SQL veritabanı veya Azure SQL yönetilen örneği 'nde bir veritabanına aktarma
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -42,7 +42,7 @@ Bir veritabanını BACPAC dosyasından [Azure SQL yönetilen örneği](../manage
 > [!NOTE]
 > Azure portal veya PowerShell aracılığıyla gönderilen içeri/dışarı aktarma isteklerini işleyen makineler, BACPAC dosyasını ve Data-Tier uygulama çerçevesi (DacFX) tarafından oluşturulan geçici dosyaları da depolaması gerekir. Gerekli disk alanı, aynı boyuta sahip veritabanları arasında önemli ölçüde farklılık gösterir ve veritabanı boyutunun 3 katına kadar disk alanı gerektirebilir. İçeri/dışarı aktarma isteği çalıştıran makinelerde yalnızca 450GB yerel disk alanı vardır. Sonuç olarak, bazı istekler hata vererek başarısız olabilir `There is not enough space on the disk` . Bu durumda, geçici çözüm yeterli yerel disk alanına sahip bir makinede sqlpackage.exe çalıştırmak olur. Bu sorundan kaçınmak için, SQL paketini 150GB 'den büyük veritabanlarını içeri/dışarı aktarmak için kullanmayı öneririz.
 
-1. Bir BACPAC dosyasından Azure portal kullanarak yeni bir tek veritabanına aktarmak için, uygun sunucu sayfasını açın ve ardından araç çubuğundan **veritabanını Içeri aktar** ' ı seçin.  
+1. Bir BACPAC dosyasından Azure portal kullanarak yeni bir tek veritabanına aktarmak için, uygun sunucu sayfasını açın ve ardından araç çubuğundan **veritabanını Içeri aktar**' ı seçin.  
 
    ![Veritabanı import1](./media/database-import/sql-server-import-database.png)
 
@@ -52,9 +52,9 @@ Bir veritabanını BACPAC dosyasından [Azure SQL yönetilen örneği](../manage
 
    ![Veritabanı import2](./media/database-import/sql-server-import-database-settings.png)
 
-1. **Tamam** ’a tıklayın.
+1. **Tamam**'a tıklayın.
 
-1. İçeri aktarmanın ilerlemesini izlemek için veritabanının sunucu sayfasını açın ve **Ayarlar** altında **Içeri/dışarı aktarma geçmişi** ' ni seçin. Başarılı olduğunda, içeri aktarmanın **tamamlandı** durumu vardır.
+1. İçeri aktarmanın ilerlemesini izlemek için veritabanının sunucu sayfasını açın ve **Ayarlar** altında **Içeri/dışarı aktarma geçmişi**' ni seçin. Başarılı olduğunda, içeri aktarmanın **tamamlandı** durumu vardır.
 
    ![Veritabanı içeri aktarma durumu](./media/database-import/sql-server-import-database-history.png)
 
@@ -144,6 +144,15 @@ az sql db import --resource-group "<resourceGroup>" --server "<server>" --name "
 
 > [!TIP]
 > Başka bir betik örneği için bkz. [BACPAC dosyasından bir veritabanını Içeri aktarma](scripts/import-from-bacpac-powershell.md).
+
+## <a name="cancel-the-import-request"></a>İçeri aktarma isteğini iptal et
+
+[Database Operations-Cancel API](https://docs.microsoft.com/rest/api/sql/databaseoperations/cancel) veya PowerShell [stop-AzSqlDatabaseActivity komutunu](https://docs.microsoft.com/powershell/module/az.sql/Stop-AzSqlDatabaseActivity?view=azps-5.5.0)kullanın, burada PowerShell komutuna bir örnektir.
+
+```cmd
+Stop-AzSqlDatabaseActivity -ResourceGroupName $ResourceGroupName -ServerName $ServerName -DatabaseName $DatabaseName -OperationId $Operation.OperationId
+```
+
 
 ## <a name="limitations"></a>Sınırlamalar
 

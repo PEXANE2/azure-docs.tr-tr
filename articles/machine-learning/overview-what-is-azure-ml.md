@@ -10,12 +10,12 @@ author: BlackMist
 ms.date: 11/04/2020
 ms.custom: devx-track-python
 adobe-target: true
-ms.openlocfilehash: 09be6a73b092f6298099e4a11bcd606759515c07
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 00a3ab2954d09a7e70e81d8de3644b678b79d005
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100374261"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102521399"
 ---
 # <a name="what-is-azure-machine-learning"></a>Azure Machine Learning nedir?
 
@@ -42,7 +42,7 @@ Makine öğreniminin öngörüleri veya tahminleri, uygulama ve cihazları daha 
 Azure Machine Learning, aşağıdakiler dahil olmak üzere makine öğrenimi iş akışları için gereken tüm araç geliştiricileri ve veri bilimcilerini sağlar:
 + [Azure Machine Learning Tasarımcısı](tutorial-designer-automobile-price-train-score.md): denemeleri 'nizi derlemek ve sonra işlem hatları dağıtmak için-n-Drop modüllerini sürükleyin.
 
-+ Jupyter Not defterleri: makinenizde öğrendiğimiz <a href="/python/api/overview/azure/ml/intro?view=azure-ml-py" target="_blank">Python örnekleri Için SDK</a> 'ümüzden yararlanmak üzere [örnek Not defterlerimizi](https://github.com/Azure/MachineLearningNotebooks) kullanın veya kendi not defterlerinizi oluşturun. 
++ Jupyter Not defterleri: makinenizde öğrendiğimiz <a href="/python/api/overview/azure/ml/intro" target="_blank">Python örnekleri Için SDK</a> 'ümüzden yararlanmak üzere [örnek Not defterlerimizi](https://github.com/Azure/MachineLearningNotebooks) kullanın veya kendi not defterlerinizi oluşturun. 
 
 + Kendi kodunuzu yazmak için <a href="https://azure.github.io/azureml-sdk-for-r/reference/index.html" target="_blank">r Için SDK 'yı</a> kullandığınız r betikleri veya Not defterleri veya tasarımcıda r modüllerini kullanın.
 
@@ -60,7 +60,7 @@ Hatta, [ölçümleri izlemek Için Mlflow, modelleri](how-to-use-mlflow.md) veya
 
 ## <a name="build-ml-models-in-python-or-r"></a>Python veya R 'de ML modelleri derleme
 
-<a href="/python/api/overview/azure/ml/intro?view=azure-ml-py" target="_blank">Python SDK</a> veya <a href="https://azure.github.io/azureml-sdk-for-r/reference/index.html" target="_blank">R SDK</a>Azure Machine Learning kullanarak yerel makinenizde eğitim başlatın. Daha sonra, buluta ölçeklendirebilirsiniz. 
+<a href="/python/api/overview/azure/ml/intro" target="_blank">Python SDK</a> veya <a href="https://azure.github.io/azureml-sdk-for-r/reference/index.html" target="_blank">R SDK</a>Azure Machine Learning kullanarak yerel makinenizde eğitim başlatın. Daha sonra, buluta ölçeklendirebilirsiniz. 
 
 Azure Machine Learning Işlem ve [Azure Databricks](/azure/databricks/scenarios/what-is-azure-databricks)gibi birçok kullanılabilir [işlem hedefi](how-to-create-attach-compute-studio.md)ile ve [Gelişmiş hyperparameter ayarlama hizmetleriyle](how-to-tune-hyperparameters.md), bulutun gücünü kullanarak daha iyi modeller oluşturabilirsiniz.
 
@@ -91,7 +91,7 @@ SDK kullanarak [model eğitimi ve ayarlamayı otomatik hale](tutorial-auto-train
 ## <a name="mlops-deploy--lifecycle-management"></a>MLOps: & yaşam döngüsü yönetimini dağıtma
 Doğru modele sahip olduğunuzda, bir Web hizmetinde, IoT cihazında veya Power BI aracılığıyla kolayca kullanabilirsiniz. Daha fazla bilgi için, [nasıl dağıtılacağı ve nerede yapılacağı](how-to-deploy-and-where.md)hakkındaki makaleye bakın.
 
-Daha sonra Python, [Azure Machine Learning Studio](https://ml.azure.com)veya [Machine Learning CLI](reference-azure-machine-learning-cli.md) [için Azure Machine Learning SDK 'sını](/python/api/overview/azure/ml/?preserve-view=true&view=azure-ml-py)kullanarak dağıtılan modellerinizi yönetebilirsiniz.
+Daha sonra Python, [Azure Machine Learning Studio](https://ml.azure.com)veya [Machine Learning CLI](reference-azure-machine-learning-cli.md) [için Azure Machine Learning SDK 'sını](/python/api/overview/azure/ml/)kullanarak dağıtılan modellerinizi yönetebilirsiniz.
 
 Bu modeller tüketilebilir ve [gerçek zamanlı](how-to-consume-web-service.md) veya [zaman uyumsuz](./tutorial-pipeline-batch-scoring-classification.md) olarak büyük miktarlarda veri alabilir.
 

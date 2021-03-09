@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.date: 11/16/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, deploy, devx-track-azurecli
-ms.openlocfilehash: 4a9e374923f6317f7a325979dca1810fad91aeb6
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.openlocfilehash: 749ef16139bbab2742c43a81e985fb0a49e9393b
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102209484"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102519342"
 ---
 # <a name="deploy-a-model-using-a-custom-docker-base-image"></a>Özel bir Docker temel görüntüsü kullanarak model dağıtma
 
@@ -42,7 +42,7 @@ Bu belge iki bölüme ayrılmıştır:
 ## <a name="prerequisites"></a>Önkoşullar
 
 * Azure Machine Learning çalışma alanı. Daha fazla bilgi için [çalışma alanı oluşturma](how-to-manage-workspace.md) makalesine bakın.
-* [Azure MACHINE LEARNING SDK](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py). 
+* [Azure MACHINE LEARNING SDK](/python/api/overview/azure/ml/install). 
 * [Azure CLI](/cli/azure/install-azure-cli).
 * [Azure Machine Learning Için CLI uzantısı](reference-azure-machine-learning-cli.md).
 * Internet üzerinden erişilebilen bir [Azure Container Registry](../container-registry/index.yml) veya başka bir Docker kayıt defteri.
@@ -216,7 +216,7 @@ Mevcut görüntüleri bir Azure Container Registry karşıya yükleme hakkında 
 
 Microsoft, bu bölümdeki adımlarla kullanılabilecek, herkese açık bir şekilde erişilebilir bir depoda çeşitli Docker görüntüleri sağlar:
 
-| Görüntü | Açıklama |
+| Görüntü | Description |
 | ----- | ----- |
 | `mcr.microsoft.com/azureml/o16n-sample-user-base/ubuntu-miniconda` | Azure Machine Learning için çekirdek görüntü |
 | `mcr.microsoft.com/azureml/onnxruntime:latest` | CPU ınzoni için ONNX çalışma zamanını içerir |
@@ -234,7 +234,7 @@ Daha fazla bilgi için bkz. GitHub 'da [Azure Machine Learning kapsayıcıları]
 
 ### <a name="use-an-image-with-the-azure-machine-learning-sdk"></a>Azure Machine Learning SDK ile görüntü kullanma
 
-**Çalışma alanınızın Azure Container Registry** depolanan bir görüntüyü veya genel olarak **erişilebilen bir kapsayıcı kayıt defterini** kullanmak için aşağıdaki [ortam](/python/api/azureml-core/azureml.core.environment.environment?preserve-view=true&view=azure-ml-py) özniteliklerini ayarlayın:
+**Çalışma alanınızın Azure Container Registry** depolanan bir görüntüyü veya genel olarak **erişilebilen bir kapsayıcı kayıt defterini** kullanmak için aşağıdaki [ortam](/python/api/azureml-core/azureml.core.environment.environment) özniteliklerini ayarlayın:
 
 + `docker.enabled=True`
 + `docker.base_image`: Görüntünün kayıt defterine ve yoluna ayarlanır.
@@ -268,7 +268,7 @@ myenv.python.conda_dependencies=conda_dep
 
 Bir PIP bağımlılığı olarak >= 1.0.45 sürümü ile azureml-varsayılanlar eklemeniz gerekir. Bu paket, modeli bir Web hizmeti olarak barındırmak için gereken işlevleri içerir. Ayrıca, ortamda inferencing_stack_version özelliğini "en son" olarak ayarlamanız gerekir, bu, Web hizmeti tarafından gereken belirli apt paketlerini yükler. 
 
-Ortamı tanımladıktan sonra, model ve Web hizmeti 'nin çalışacağı çıkarım ortamını tanımlamak için bunu bir [ınısenceconfig](/python/api/azureml-core/azureml.core.model.inferenceconfig?preserve-view=true&view=azure-ml-py) nesnesiyle birlikte kullanın.
+Ortamı tanımladıktan sonra, model ve Web hizmeti 'nin çalışacağı çıkarım ortamını tanımlamak için bunu bir [ınısenceconfig](/python/api/azureml-core/azureml.core.model.inferenceconfig) nesnesiyle birlikte kullanın.
 
 ```python
 from azureml.core.model import InferenceConfig
@@ -297,7 +297,7 @@ Python ortamınızı özelleştirme hakkında daha fazla bilgi için bkz. [eğit
 > [!IMPORTANT]
 > Şu anda Machine Learning CLı, çalışma alanınız veya genel olarak erişilebilen depolarınız için Azure Container Registry görüntüleri kullanabilir. Tek başına özel kayıt defterlerinden görüntüleri kullanamaz.
 
-Machine Learning CLı kullanarak bir modeli dağıtmadan önce, özel görüntüyü kullanan bir [ortam](/python/api/azureml-core/azureml.core.environment.environment?preserve-view=true&view=azure-ml-py) oluşturun. Ardından, ortama başvuran bir çıkarım yapılandırma dosyası oluşturun. Ortamı doğrudan çıkarım yapılandırma dosyasında da tanımlayabilirsiniz. Aşağıdaki JSON belgesi, ortak kapsayıcı kayıt defterindeki bir görüntüye nasıl başvurululacağını gösterir. Bu örnekte, ortam satır içi olarak tanımlanmıştır:
+Machine Learning CLı kullanarak bir modeli dağıtmadan önce, özel görüntüyü kullanan bir [ortam](/python/api/azureml-core/azureml.core.environment.environment) oluşturun. Ardından, ortama başvuran bir çıkarım yapılandırma dosyası oluşturun. Ortamı doğrudan çıkarım yapılandırma dosyasında da tanımlayabilirsiniz. Aşağıdaki JSON belgesi, ortak kapsayıcı kayıt defterindeki bir görüntüye nasıl başvurululacağını gösterir. Bu örnekte, ortam satır içi olarak tanımlanmıştır:
 
 ```json
 {

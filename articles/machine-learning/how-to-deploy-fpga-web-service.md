@@ -11,16 +11,16 @@ author: jpe316
 ms.date: 09/24/2020
 ms.topic: conceptual
 ms.custom: how-to, contperf-fy21q2, devx-track-python, deploy
-ms.openlocfilehash: 39c7d980bf9a90e5f72dfc9366d0ec44204b1ed2
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.openlocfilehash: e6a58a6555602af2494683037721a1f83e7ea33c
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102212799"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102519325"
 ---
 # <a name="deploy-ml-models-to-field-programmable-gate-arrays-fpgas-with-azure-machine-learning"></a>Azure Machine Learning ile ML modellerini alan programlanabilir kapı dizileri (FPGAs) ile dağıtma 
 
-Bu makalede, FPGAs hakkında bilgi edinirsiniz ve [Azure Machine Learning](overview-what-is-azure-ml.md)' den [donanım hızlandırmalı modeller Python paketini](/python/api/azureml-accel-models/azureml.accel?preserve-view=true&view=azure-ml-py) kullanarak ml MODELLERINIZI bir Azure FPGA 'ye nasıl dağıtırsınız.
+Bu makalede, FPGAs hakkında bilgi edinirsiniz ve [Azure Machine Learning](overview-what-is-azure-ml.md)' den [donanım hızlandırmalı modeller Python paketini](/python/api/azureml-accel-models/azureml.accel) kullanarak ml MODELLERINIZI bir Azure FPGA 'ye nasıl dağıtırsınız.
 
 ## <a name="what-are-fpgas"></a>FPGAs nedir?
 FPGA’lar programlanabilen bir mantık blokları dizisi ve yeniden yapılandırılabilen bir bağlantı hiyerarşisi içerir. Birbirine bağlı, bu blokların üretim sonrasında çeşitli şekillerde yapılandırılmasına izin verir. Diğer yongalarla karşılaştırıldığında, FPGAs, bir programlama programlamasına ve performansına ilişkin bir bileşim sunar. 
@@ -31,7 +31,7 @@ Farklı makine öğrenimi modelleri türleri için FPGAs 'yi yeniden yapılandı
 
 ![Azure Machine Learning FPGA karşılaştırması diyagramı](./media/how-to-deploy-fpga-web-service/azure-machine-learning-fpga-comparison.png)
 
-|İşlemci| Kısaltma |Açıklama|
+|İşlemci| Kısaltma |Description|
 |---|:-------:|------|
 |Uygulamaya özgü tümleşik devreler|ASICS|Google 'ın Tensor Işlemci birimleri (TPU) gibi özel devreler en yüksek verimliliği sağlar. Gereksinimleriniz değiştikçe bu değişiklikler yeniden yapılandırılamaz.|
 |Alan-programlanabilir kapı dizileri|FPGA'lar|Azure 'da kullanılabilir olanlar gibi FPGAs 'ler, ASICs performansına yakın performans sağlar. Ayrıca, yeni mantık uygulamak için zaman içinde esnek ve yeniden yapılandırılabilir.|
@@ -56,7 +56,7 @@ Gecikme ve aktarım hızını iyileştirmek için, FPGA modeline veri gönderen 
 
 ## <a name="deploy-models-on-fpgas"></a>FPGAs 'de modeller dağıtma
 
-[Azure Machine Learning hızlandırılmış donanım modelleri](/python/api/azureml-accel-models/azureml.accel?preserve-view=true&view=azure-ml-py)Ile fpgas üzerinde bir modeli Web hizmeti olarak dağıtabilirsiniz. FPGAs kullanımı, tek bir toplu iş boyutuyla bile Ultra düşük gecikme çıkarımı sağlar. 
+[Azure Machine Learning hızlandırılmış donanım modelleri](/python/api/azureml-accel-models/azureml.accel)Ile fpgas üzerinde bir modeli Web hizmeti olarak dağıtabilirsiniz. FPGAs kullanımı, tek bir toplu iş boyutuyla bile Ultra düşük gecikme çıkarımı sağlar. 
 
 Bu örnekte, giriş görüntüsünü önceden işlemek için bir TensorFlow grafiği oluşturun, bir FPGA üzerinde ResNet 50 kullanarak çalışır hale getirin ve ardından, ImageNet veri kümesi üzerinde eğitilen bir sınıflandırıcı aracılığıyla özellikleri çalıştırın. Ardından, model bir AKS kümesine dağıtılır.
 
@@ -80,7 +80,7 @@ Bu örnekte, giriş görüntüsünü önceden işlemek için bir TensorFlow graf
 
 ### <a name="define-the-tensorflow-model"></a>TensorFlow modelini tanımlama
 
-Bir hizmet tanımı oluşturmak için [Python için Azure Machine Learning SDK 'sını](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py) kullanarak başlayın. Hizmet tanımı, TensorFlow 'a göre grafiklerin bir işlem hattını (giriş, korturun ve sınıflandırıcı) açıklayan bir dosyadır. Dağıtım komutu, tanım ve grafikleri bir ZIP dosyası olarak sıkıştırır ve ZIP 'yi Azure Blob depolama alanına yükler. DNN, FPGA üzerinde çalışmak üzere zaten dağıtıldı.
+Bir hizmet tanımı oluşturmak için [Python için Azure Machine Learning SDK 'sını](/python/api/overview/azure/ml/intro) kullanarak başlayın. Hizmet tanımı, TensorFlow 'a göre grafiklerin bir işlem hattını (giriş, korturun ve sınıflandırıcı) açıklayan bir dosyadır. Dağıtım komutu, tanım ve grafikleri bir ZIP dosyası olarak sıkıştırır ve ZIP 'yi Azure Blob depolama alanına yükler. DNN, FPGA üzerinde çalışmak üzere zaten dağıtıldı.
 
 1. Azure Machine Learning çalışma alanını yükle
 

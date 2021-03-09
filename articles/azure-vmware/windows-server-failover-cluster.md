@@ -2,17 +2,17 @@
 title: Yerel paylaşılan disklerle Azure VMware Çözüm vSAN üzerinde Windows Server yük devretme kümesi
 description: Azure VMware çözümünde Windows Server yük devretme kümesi (WSFC) ayarlayın ve WSFC özelliği gerektiren çözümlerin avantajlarından yararlanın.
 ms.topic: how-to
-ms.date: 03/08/2021
-ms.openlocfilehash: 84bb846cd3fb6dd1b138308670db7ccf122b2187
-ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
+ms.date: 03/09/2021
+ms.openlocfilehash: d667eef00fcad0e3f5243c6ab580e2e8371c6793
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 03/09/2021
-ms.locfileid: "102491332"
+ms.locfileid: "102519002"
 ---
 # <a name="windows-server-failover-cluster-on-azure-vmware-solution-vsan-with-native-shared-disks"></a>Yerel paylaşılan disklerle Azure VMware Çözüm vSAN üzerinde Windows Server yük devretme kümesi
 
-Bu makalede, Azure VMware çözümünde Windows Server yük devretme kümesi ayarlamayı adım adım inceleyeceğiz. Bu makaledeki uygulama kavram kanıtı ve pilot amaçlar için tasarlanmıştır.
+Bu makalede, Azure VMware çözümünde Windows Server yük devretme kümesi ayarlamayı adım adım inceleyeceğiz. Bu makaledeki uygulama kavram kanıtı ve pilot amaçlar için tasarlanmıştır. Yerleştirme ilkeleri kullanılabilir olana kadar bir küme içi (CıB) yapılandırma kullanmanızı öneririz.
 
 Daha önce Microsoft hizmet kümesi hizmeti (MSCS) olarak bilinen Windows Server yük devretme kümesi (WSFC), Windows Server Işletim sisteminin (OS) bir özelliğidir. WSFC, iş açısından kritik bir özelliktir ve birçok uygulama için gereklidir. Örneğin, aşağıdaki yapılandırmalarda WSFC gereklidir:
 
@@ -143,7 +143,7 @@ Aşağıdaki etkinlikler desteklenmez ve WSFC düğümü yük devretmesine neden
         
       - **Ağ Iletişimini doğrulayın**. Küme doğrulama testi, her küme düğümü için yalnızca bir ağ arabiriminin kullanılabilir olduğunu belirten bir uyarı oluşturur. Bu uyarıyı yoksayabilirsiniz. Düğümler NSX-T segmentlerinden birine bağlı olduğundan, Azure VMware çözümü gerekli kullanılabilirliği ve performansı sağlar. Ancak, ağ iletişiminin diğer yönlerini doğrulayacaktır, bu öğeyi küme doğrulama testinin bir parçası olarak saklayın.
 
-16. WSFC VM 'Leri Azure VMware Çözüm düğümleri arasında ayırmak için bir DRS kuralı oluşturun. Şu kuralları kullanın: bir ana bilgisayardan VM benzeşimi ve bir VM 'den VM 'ye karşı koruma kuralı. Bu şekilde, küme düğümleri aynı Azure VMware Çözüm ana bilgisayarında çalışmaz.
+16. WSFC VM 'Leri aynı Azure VMware Çözüm düğümlerine yerleştirmek için bir DRS kuralı oluşturun. Bunu yapmak için, konaktan VM benzeşim kuralına ihtiyacınız vardır. Bu şekilde, küme düğümleri aynı Azure VMware Çözüm ana bilgisayarında çalışır. Bu, yerleştirme ilkeleri kullanılabilir olana kadar pilot amaçlar için de geçerlidir.
 
     >[!NOTE]
     > Bunun için bir destek Istek bileti oluşturmanız gerekir. Azure destek kuruluşumuz, bu konuda size yardımcı olabilir.

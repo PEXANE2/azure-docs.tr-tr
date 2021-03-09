@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 01/07/2021
 ms.author: damendo
 ms.custom: subject-armqs
-ms.openlocfilehash: ded7b24461fdcdbc3d020a487cafc20620633097
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: bc075e5074fe39ad38e45235af932b40fef78fce
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98019729"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102521875"
 ---
 # <a name="quickstart-configure-network-security-group-flow-logs-by-using-an-arm-template"></a>Hızlı başlangıç: ARM şablonunu kullanarak ağ güvenlik grubu akış günlüklerini yapılandırma
 
@@ -82,7 +82,7 @@ NSG akış günlükleri nesne özelliklerine yönelik kapsamlı bir genel bakı�
 
 ARM şablonlarını ilk kez kullanıyorsanız ARM şablonları hakkında daha fazla bilgi edinmek için aşağıdaki makalelere bakın:
 
-- [ARM şablonları ve Azure PowerShell kaynak dağıtma](../azure-resource-manager/templates/deploy-powershell.md#deploy-local-template)
+- [ARM şablonları ve Azure PowerShell kaynak dağıtma](../azure-resource-manager/templates/deploy-powershell.md#deploy-local-template-or-bicep-file)
 - [Öğretici: ilk ARM şablonunuzu oluşturma ve dağıtma](../azure-resource-manager/templates/template-tutorial-create-first-template.md)
 
 Aşağıdaki örnek, tamamlanmış bir şablondur. Ayrıca, şablonun en basit sürümüdür. Örnek, NSG akış günlüklerini ayarlamak için geçirilen minimum parametreleri içerir. Daha fazla örnek için, [bir Azure Resource Manager şablonundan NSG akış günlüklerini yapılandırma](network-watcher-nsg-flow-logging-azure-resource-manager.md)genel bakış makalesine bakın.
@@ -145,7 +145,7 @@ New-AzResourceGroupDeployment -Name EnableFlowLog -ResourceGroupName NetworkWatc
 Dağıtımınızın başarılı olup olmadığını görmek için iki seçeneğiniz vardır:
 
 - PowerShell konsolunuz `ProvisioningState` olarak gösterilir `Succeeded` .
-- Değişikliklerinizi onaylamak için [NSG akış günlükleri portalı sayfasına](https://ms.portal.azure.com/#blade/Microsoft_Azure_Network/NetworkWatcherMenuBlade/flowLogs) gidin. 
+- Değişikliklerinizi onaylamak için [NSG akış günlükleri portalı sayfasına](https://ms.portal.azure.com/#blade/Microsoft_Azure_Network/NetworkWatcherMenuBlade/flowLogs) gidin.
 
 Dağıtım ile ilgili sorunlar varsa bkz. [Azure Resource Manager ile yaygın Azure dağıtım hatalarıyla Ilgili sorunları giderme](../azure-resource-manager/templates/common-deployment-errors.md).
 
