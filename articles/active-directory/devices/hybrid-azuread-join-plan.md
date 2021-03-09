@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 419823086fd7ba05ba5023216be302576350e30a
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: cadba181ea7d6a12ca64c78f3c7c58654d5f756f
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101687302"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102500817"
 ---
 # <a name="how-to-plan-your-hybrid-azure-active-directory-join-implementation"></a>Nasıl yapılır: karma Azure Active Directory JOIN Uygulamanızı planlayın
 
@@ -167,11 +167,11 @@ Bazen, şirket içi AD kullanıcılarınızın UPN 'leri Azure AD UPN 'inizden f
 
 Aşağıdaki tabloda, Windows 10 karma Azure AD 'ye yönelik bu şirket içi AD UPN 'leri için destek ayrıntıları verilmiştir
 
-| Şirket içi AD UPN türü | Etki alanı türü | Windows 10 sürümü | Açıklama |
+| Şirket içi AD UPN türü | Etki alanı türü | Windows 10 sürümü | Description |
 | ----- | ----- | ----- | ----- |
 | Lemez | Federe | 1703 sürümünden | Genel kullanıma sunuldu |
 | Yönlendirilemeyen | Federe | 1803 sürümünden | Genel kullanıma sunuldu |
-| Lemez | Yönetilen | 1803 sürümünden | Genel olarak kullanılabilir, Windows kilit ekranı üzerinde Azure AD SSPR desteklenmez |
+| Lemez | Yönetilen | 1803 sürümünden | Genel olarak kullanılabilir, Windows kilit ekranı üzerinde Azure AD SSPR desteklenmez. Şirket içi UPN,     `onPremisesUserPrincipalName` Azure AD 'deki öznitelikle eşitlenmelidir |
 | Yönlendirilemeyen | Yönetilen | Desteklenmez | |
 
 ## <a name="next-steps"></a>Sonraki adımlar

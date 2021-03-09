@@ -11,12 +11,12 @@ author: nibaccam
 ms.reviewer: nibaccam
 ms.date: 09/22/2020
 ms.custom: how-to, data4ml
-ms.openlocfilehash: 554c815e6384115d56611e497f49a2c97ed15e38
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 0e2230bdcf2b2f4358db4a0d600506b711f39c45
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96461444"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102508240"
 ---
 # <a name="connect-to-data-with-the-azure-machine-learning-studio"></a>Azure Machine Learning Studio ile verilere bağlanma
 
@@ -24,14 +24,14 @@ Bu makalede, [Azure Machine Learning Studio](overview-what-is-machine-learning-s
 
 Aşağıdaki tabloda, veri depolarının ve veri kümelerinin avantajları tanımlanmaktadır ve özetlenmektedir. 
 
-|Nesne|Açıklama| Yararları|   
+|Nesne|Description| Avantajlar|   
 |---|---|---|
 |Veri depoları| Çalışma alanıyla ilişkili [Key Vault](https://azure.microsoft.com/services/key-vault/) abonelik kimliğiniz ve belirteç yetkilendirmesi gibi bağlantı bilgilerinizi depolayarak Azure 'da depolama hizmetinize güvenli bir şekilde bağlanın | Bilgileriniz güvenli bir şekilde depolandığından, <br><br> <li> &nbsp; &nbsp; Kimlik doğrulama &nbsp; kimlik bilgilerini &nbsp; veya &nbsp; özgün &nbsp; veri kaynaklarını riske yerleştirmeyin. <li> Artık betiklerinizde kalıcı olarak kod yazmanız gerekmez.
 |Veri kümeleri| Bir veri kümesi oluşturduğunuzda ilgili veri kaynağı konumuna bir başvurunun yanı sıra meta verilerinin bir kopyasını oluşturmuş olursunuz. Veri kümeleri ile şunları yapabilirsiniz <br><br><li> Model eğitimi sırasında verilere erişin.<li> Veri paylaşma ve diğer kullanıcılarla işbirliği yapma.<li> Veri araştırması için Pandas gibi açık kaynak kitaplıklarından yararlanın. | Veri kümeleri geç olarak değerlendirildiğinden ve veriler mevcut konumunda kaldığı için <br><br><li>Depolamadaki verilerin tek bir kopyasını saklayın.<li> Ek depolama maliyeti yoktur <li> Özgün veri kaynaklarınızı yanlışlıkla değiştirmeyi riske eklemeyin.<li>ML iş akışı performans hızlarını geliştirir. 
 
 Datamağazaların ve veri kümelerinin Azure Machine Learning genel veri erişimi iş akışına uygun olduğunu anlamak için, [güvenli erişim verileri](concept-data.md#data-workflow) makalesine bakın.
 
-Kod ilk deneyimi için, [Azure Machine Learning Python SDK 'sını](/python/api/overview/azure/ml/?preserve-view=true&view=azure-ml-py) kullanmak için aşağıdaki makalelere bakın:
+Kod ilk deneyimi için, [Azure Machine Learning Python SDK 'sını](/python/api/overview/azure/ml/) kullanmak için aşağıdaki makalelere bakın:
 * [Veri depolarıyla Azure Storage Services 'A bağlanın](how-to-access-data.md). 
 * [Azure Machine Learning veri kümeleri oluşturun](how-to-create-register-datasets.md). 
 
@@ -111,14 +111,14 @@ Veri ayarlanmış olup olmadığını doğrulamak için veri kümesi genelinde �
 >[!NOTE]
 > İlgisiz türler içeren özellikler için boş girdiler görüntülenir.
 
-|İstatistik|Açıklama
+|İstatistik|Description
 |------|------
 |Özellik| Özetlenen sütunun adı.
 |Profil| Çıkarılan türe göre satır içi görselleştirme. Örneğin, dizeler, Boole değerleri ve tarihler değer sayılarına sahip olacaktır, ancak Ondalıklar (Numerics) de yaklaşık histogramlar olur. Bu, verilerin dağıtımını hızlı bir şekilde anlayabilmeniz için size izin verir.
 |Tür dağılımı| Bir sütun içindeki türlerin satır içi değer sayısı. Null değerler kendi türlerdir, bu nedenle bu görselleştirme tek veya eksik değerleri algılamak için yararlıdır.
 |Tür|Sütunun Çıkarsanan türü. Olası değerler şunlardır: dizeler, Boole değerleri, tarihler ve ondalıklar.
 |Min| Sütunun minimum değeri. Boş girdiler, türü bir devralınan sıralamaya (örneğin, Boolean) sahip olmayan özellikler için görünür.
-|Maks| Sütunun en büyük değeri. 
+|En yüksek değer| Sütunun en büyük değeri. 
 |Count| Sütundaki eksik ve eksik olmayan girdilerin toplam sayısı.
 |Eksik sayı yok| Sütundaki eksik girdi sayısı. Boş dizeler ve hatalar değer olarak değerlendirilir ve bu nedenle "eksik sayısı" öğesine katkıda bulunmazlar.
 |Dağılım Dilimleri| Verilerin dağıtılması hakkında bir fikir sağlamak için her bir satışla yaklaşık değerler.

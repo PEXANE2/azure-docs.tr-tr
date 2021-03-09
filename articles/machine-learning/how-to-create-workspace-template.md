@@ -10,12 +10,12 @@ ms.custom: how-to, devx-track-azurecli, devx-track-azurepowershell
 ms.author: larryfr
 author: Blackmist
 ms.date: 09/30/2020
-ms.openlocfilehash: d64dfdad0c51950228288b704b3fdb7579496abb
-ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
+ms.openlocfilehash: 98ea51957014a4e9d83f27adefd86d8d0708b500
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 03/09/2021
-ms.locfileid: "102488078"
+ms.locfileid: "102503190"
 ---
 # <a name="use-an-azure-resource-manager-template-to-create-a-workspace-for-azure-machine-learning"></a>Azure Machine Learning için bir çalışma alanı oluşturmak üzere Azure Resource Manager şablonu kullanma
 
@@ -30,7 +30,7 @@ Daha fazla bilgi için bkz. [Azure Resource Manager şablonuyla uygulama dağıt
 
 * Bir **Azure aboneliği**. Bir tane yoksa, [Azure Machine Learning ücretsiz veya ücretli sürümünü](https://aka.ms/AMLFree)deneyin.
 
-* CLı 'dan bir şablon kullanmak için [Azure PowerShell](/powershell/azure/?view=azps-1.2.0) ya da [Azure CLI](/cli/azure/install-azure-cli)gerekir.
+* CLı 'dan bir şablon kullanmak için [Azure PowerShell](/powershell/azure/) ya da [Azure CLI](/cli/azure/install-azure-cli)gerekir.
 
 * Bazı senaryolar için bir destek bileti açmanız gerekir. Bu senaryolar şunlardır:
 

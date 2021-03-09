@@ -5,12 +5,12 @@ services: container-service
 ms.topic: quickstart
 ms.date: 01/13/2021
 ms.custom: mvc,subject-armqs, devx-track-azurecli
-ms.openlocfilehash: 56bacf1ae68081d5822fdb0e80762926d4eb581c
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: f17e42915968f52aee8bd106b5cadd26457998ff
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102173741"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102501332"
 ---
 # <a name="quickstart-deploy-an-azure-kubernetes-service-aks-cluster-using-an-arm-template"></a>Hızlı başlangıç: ARM şablonunu kullanarak bir Azure Kubernetes hizmeti (AKS) kümesi dağıtma
 
@@ -32,7 +32,7 @@ Ortamınız önkoşulları karşılıyorsa ve ARM şablonlarını kullanma hakk�
 
 - Bu makale, Azure CLı 'nin sürüm 2.0.61 veya üstünü gerektirir. Azure Cloud Shell kullanılıyorsa, en son sürüm zaten yüklüdür.
 
-- Kaynak Yöneticisi şablonu kullanarak AKS kümesi oluşturmak için bir SSH ortak anahtarı ve Azure Active Directory hizmet sorumlusu sağlarsınız. Alternatif olarak, izinler için bir hizmet sorumlusu yerine [yönetilen bir kimlik](use-managed-identity.md) kullanabilirsiniz. Bu kaynaklardan herhangi birine ihtiyacınız varsa, aşağıdaki bölüme bakın; Aksi takdirde, [şablonu gözden geçirme](#review-the-template) bölümüne atlayın.
+- Kaynak Yöneticisi şablonu kullanarak AKS kümesi oluşturmak için bir SSH ortak anahtarı sağlarsınız. Bu kaynağa ihtiyacınız varsa, aşağıdaki bölüme bakın; Aksi takdirde, [şablonu gözden geçirme](#review-the-template) bölümüne atlayın.
 
 ### <a name="create-an-ssh-key-pair"></a>SSH anahtar çifti oluşturma
 
@@ -47,28 +47,6 @@ ssh-keygen -t rsa -b 2048
 ```
 
 SSH anahtarları oluşturma hakkında daha fazla bilgi için bkz. [Azure 'da kimlik doğrulaması IÇIN SSH anahtarları oluşturma ve yönetme][ssh-keys].
-
-### <a name="create-a-service-principal"></a>Hizmet sorumlusu oluşturma
-
-Bir AKS kümesinin diğer Azure kaynaklarıyla etkileşime geçmesini sağlamak için bir Azure Active Directory hizmet sorumlusu kullanılır. [az ad sp create-for-rbac][az-ad-sp-create-for-rbac] komutunu kullanarak bir hizmet sorumlusu oluşturun. `--skip-assignment` parametresi, ek izinlerin atanmasını engeller. Varsayılan olarak, bu hizmet sorumlusu bir yıl için geçerlidir. Hizmet sorumlusu yerine yönetilen bir kimlik kullanabileceğinizi unutmayın. Daha fazla bilgi için bkz. [yönetilen kimlikleri kullanma](use-managed-identity.md).
-
-```azurecli-interactive
-az ad sp create-for-rbac --skip-assignment
-```
-
-Çıktı aşağıdaki örneğe benzer:
-
-```json
-{
-  "appId": "8b1ede42-d407-46c2-a1bc-6b213b04295f",
-  "displayName": "azure-cli-2019-04-19-21-42-11",
-  "name": "http://azure-cli-2019-04-19-21-42-11",
-  "password": "27e5ac58-81b0-46c1-bd87-85b4ef622682",
-  "tenant": "73f978cf-87f2-41bf-92ab-2e7ce012db57"
-}
-```
-
-*appId* ve *password* değerlerini not edin. Bu değerler aşağıdaki adımlarda kullanılacaktır.
 
 ## <a name="review-the-template"></a>Şablonu gözden geçirme
 
@@ -95,13 +73,10 @@ Daha fazla AKS örneği için bkz. [aks hızlı başlangıç şablonları][aks-q
     * **DNS ön eki**: kümeniz için *myakscluster* gibi benzersiz bir DNS öneki girin.
     * **Linux Yöneticisi Kullanıcı adı**: SSH kullanarak bağlanmak için *azureuser* gibi bir Kullanıcı adı girin.
     * **Ssh rsa ortak anahtarı**: SSH anahtar çiftin *genel* bölümünü kopyalayıp yapıştırın (varsayılan olarak, *~/. ssh/id_rsa. pub* içeriğini).
-    * **Hizmet sorumlusu Istemci kimliği**: hizmet sorumlusunun *AppID* 'sini kopyalayıp `az ad sp create-for-rbac` komuttan yapıştırın.
-    * **Hizmet sorumlusu Istemci parolası**: hizmet sorumlusunun *parolasını* kopyalayıp yapıştırın `az ad sp create-for-rbac` .
-    * **Yukarıdaki hüküm ve koşullar durumunu kabul ediyorum**: kabul etmek için bu kutuyu işaretleyin.
 
     ![Portalda Azure Kubernetes hizmet kümesi oluşturmak için şablon Kaynak Yöneticisi](./media/kubernetes-walkthrough-rm-template/create-aks-cluster-using-template-portal.png)
 
-3. **Satın al**'ı seçin.
+3. **Gözden geçir + Oluştur**’u seçin.
 
 AKS kümesinin oluşturulması birkaç dakika sürer. Sonraki adıma geçmeden önce kümenin başarılı bir şekilde dağıtılmasını bekleyin.
 

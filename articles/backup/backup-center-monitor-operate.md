@@ -3,14 +3,14 @@ title: Yedekleme Merkezi'ni kullanarak yedeklemeleri izleme ve çalıştırma
 description: Bu makalede yedekleme merkezi kullanılarak yedeklemelerin nasıl izleneceği ve çalıştırılacağı açıklanmaktadır
 ms.topic: conceptual
 ms.date: 09/01/2020
-ms.openlocfilehash: 1c40f7804a0f0bb7694e6df205648d3ad20ad80e
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 86b81110d6abeb1425e18ee45dfe65a96f69687d
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101719551"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102506172"
 ---
-# <a name="monitor-and-operate-backups-using-backup-center"></a>Yedekleme Merkezi'ni kullanarak yedeklemeleri izleme ve çalıştırma
+# <a name="monitor-and-operate-backups-using-backup-center"></a>Yedekleme merkezi 'ni kullanarak yedeklemeleri izleme ve çalıştırma
 
 Yedekleme Yöneticisi olarak, iş ve yedekleme envanterinizi gün temelinde izlemek için yedekleme merkezini tek bir cam bölmesi olarak kullanabilirsiniz. Ayrıca, isteğe bağlı yedekleme isteklerine yanıt verme, yedeklemeleri geri yükleme, yedekleme ilkeleri oluşturma gibi düzenli işlemleri gerçekleştirmek için yedekleme merkezi 'ni de kullanabilirsiniz.
 

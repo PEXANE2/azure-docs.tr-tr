@@ -5,29 +5,29 @@ description: Azure Kubernetes Service (AKS) ile hizmetlerinizi kullanıma sunmak
 services: container-service
 ms.topic: article
 ms.date: 03/04/2019
-ms.openlocfilehash: ec8fd1f1b32d5bba6dc4dc756e1f95f4a74f9a96
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4c2c0866aa9a721a73e1eb8fa230f0022cf6b8ca
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87285892"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102505639"
 ---
 # <a name="use-an-internal-load-balancer-with-azure-kubernetes-service-aks"></a>Azure Kubernetes hizmeti (AKS) ile iç yük dengeleyici kullanma
 
 Azure Kubernetes Service (AKS) uygulamasındaki uygulamalarınıza erişimi kısıtlamak için bir iç yük dengeleyici oluşturup kullanabilirsiniz. İç yük dengeleyici, Kubernetes hizmetini yalnızca Kubernetes kümesiyle aynı sanal ağda çalışan uygulamalar için erişilebilir hale getirir. Bu makalede, Azure Kubernetes Service (AKS) ile iç yük dengeleyici oluşturma ve kullanma işlemlerinin nasıl yapılacağı gösterilir.
 
 > [!NOTE]
-> Azure Load Balancer, *temel* ve *Standart*olmak üzere iki SKU 'da kullanılabilir. Varsayılan olarak, bir AKS kümesi oluşturduğunuzda standart SKU kullanılır.  Yük dengeleyici olarak türünde bir hizmet oluştururken, kümeyi sağladığınızda aynı LB türüne sahip olursunuz. Daha fazla bilgi için bkz. [Azure Yük DENGELEYICI SKU karşılaştırması][azure-lb-comparison].
+> Azure Load Balancer, *temel* ve *Standart* olmak üzere iki SKU 'da kullanılabilir. Varsayılan olarak, bir AKS kümesi oluşturduğunuzda standart SKU kullanılır.  Yük dengeleyici olarak türünde bir hizmet oluştururken, kümeyi sağladığınızda aynı LB türüne sahip olursunuz. Daha fazla bilgi için bkz. [Azure Yük DENGELEYICI SKU karşılaştırması][azure-lb-comparison].
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 
 Bu makalede, mevcut bir AKS kümeniz olduğunu varsaymaktadır. AKS kümesine ihtiyacınız varsa bkz. [Azure CLI kullanarak][aks-quickstart-cli] aks hızlı başlangıç veya [Azure Portal kullanımı][aks-quickstart-portal].
 
-Ayrıca Azure CLı sürüm 2.0.59 veya üzeri yüklü ve yapılandırılmış olmalıdır.  `az --version`Sürümü bulmak için ' i çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse bkz. [Azure CLI 'Yı yüklemek][install-azure-cli].
+Ayrıca Azure CLı sürüm 2.0.59 veya üzeri yüklü ve yapılandırılmış olmalıdır. Sürümü bulmak için `az --version` komutunu çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse, bkz. [Azure CLI yükleme][install-azure-cli].
 
-Mevcut bir alt ağ veya kaynak grubu kullanıyorsanız AKS kümesi hizmet sorumlusu ağ kaynaklarını yönetmek için izne ihtiyaç duyuyor. Daha fazla bilgi için bkz. Azure [Kubernetes Service (aks) içindeki kendı IP adresi aralığınızla Kubernetes kullanan ağı kullanma][use-kubenet] veya Azure [Kubernetes hizmeti 'nde (aks) Azure CNI ağı 'nı yapılandırma][advanced-networking]. Yük dengeleyiciyi [farklı bir alt ağda bir IP adresi][different-subnet]kullanacak şekilde yapılandırıyorsanız, aks küme hizmeti sorumlusunun bu alt ağa okuma erişimi olduğundan emin olun.
+Var olan bir alt ağ veya kaynak grubu kullanıyorsanız AKS küme kümesi kimliğinin ağ kaynaklarını yönetmek için izni olması gerekir. Daha fazla bilgi için bkz. Azure [Kubernetes Service (aks) içindeki kendı IP adresi aralığınızla Kubernetes kullanan ağı kullanma][use-kubenet] veya Azure [Kubernetes hizmeti 'nde (aks) Azure CNI ağı 'nı yapılandırma][advanced-networking]. Yük dengeleyiciyi [farklı bir alt ağda bir IP adresi][different-subnet]kullanacak şekilde yapılandırıyorsanız, aks kümesi kimliğinin bu alt ağa de okuma erişiminin olduğundan emin olun.
 
-Hizmet sorumlusu yerine, izinler için sistem tarafından atanmış yönetilen kimliği de kullanabilirsiniz. Daha fazla bilgi için bkz. [yönetilen kimlikleri kullanma](use-managed-identity.md). İzinler hakkında daha fazla bilgi için bkz. [diğer Azure kaynaklarına AKS erişimi verme][aks-sp].
+İzinler hakkında daha fazla bilgi için bkz. [diğer Azure kaynaklarına AKS erişimi verme][aks-sp].
 
 ## <a name="create-an-internal-load-balancer"></a>İç yük dengeleyici oluşturma
 
@@ -110,7 +110,7 @@ internal-app   LoadBalancer   10.1.15.188   10.0.0.35     80:31669/TCP   1m
 ```
 
 > [!NOTE]
-> AKS kümeniz için hizmet sorumlusu ' nı, Azure sanal ağ kaynaklarınızın dağıtıldığı kaynak grubuna *ağ katılımcısı* rolü olarak vermeniz gerekebilir. Hizmet sorumlusunu, gibi [az aks Show][az-aks-show]ile görüntüleyin `az aks show --resource-group myResourceGroup --name myAKSCluster --query "servicePrincipalProfile.clientId"` . Rol ataması oluşturmak için [az role atama Create][az-role-assignment-create] komutunu kullanın.
+> AKS kümenizin küme kimliğini, Azure sanal ağ kaynaklarınızın dağıtıldığı kaynak grubuna *ağ katılımcısı* rolü için vermeniz gerekebilir. Küme kimliğini, gibi [az aks Show][az-aks-show]ile görüntüleyin `az aks show --resource-group myResourceGroup --name myAKSCluster --query "identity"` . Rol ataması oluşturmak için [az role atama Create][az-role-assignment-create] komutunu kullanın.
 
 ## <a name="specify-a-different-subnet"></a>Farklı bir alt ağ belirtin
 

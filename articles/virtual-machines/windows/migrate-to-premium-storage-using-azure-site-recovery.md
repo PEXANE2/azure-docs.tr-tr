@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 08/15/2017
 ms.author: luywang
 ms.subservice: disks
-ms.openlocfilehash: 58d4459e1869a9d1f7ccb8234c0356ac486a950c
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: e2bc42f8222c1c713b995a6184ac8a2d1d304d7e
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91975561"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102502731"
 ---
 # <a name="migrate-to-premium-storage-by-using-azure-site-recovery"></a>Azure Site Recovery kullanarak Premium depolamaya geçiş
 
@@ -62,7 +62,7 @@ Bunlar, bu geçiş senaryosuna yönelik Azure gereksinimleridir:
 * Yük devretmede oluşturulduklarında VM 'Lerin bağlanacağı bir Azure sanal ağı. Azure sanal ağı, Site Recovery çalıştığı ile aynı bölgede olmalıdır.
 * Çoğaltma günlüklerini depolamak için bir Azure Standart depolama hesabı. Bu, geçirilmekte olan VM diskleri için aynı depolama hesabı olabilir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Yukarıdaki bölümde ilgili geçiş senaryosu bileşenlerini anlayın.
 * [Site Recovery 'de yük devretme](../../site-recovery/site-recovery-failover.md)hakkında bilgi edinmek için kapalı kalma süresini planlayın.
@@ -74,7 +74,7 @@ Site Recovery, Azure IaaS VM 'lerini bölgeler arasında veya aynı bölge için
 ### <a name="step-1-create-a-recovery-services-vault"></a>1. Adım: kurtarma hizmetleri Kasası oluşturma
 
 1. [Azure portalını](https://portal.azure.com) açın.
-2. **Kaynak**  >  **yönetimi**  >  **Backup ve Site Recovery (OMS)** oluştur ' u seçin. Alternatif olarak, **Browse**  >  **Kurtarma Hizmetleri Kasası**  >  **ekleme**' yi de seçebilirsiniz.
+2. **Kaynak**  >  **yönetimi**  >  **Backup ve Site Recovery (OMS)** oluştur ' u seçin. Alternatif olarak,   >  **Kurtarma Hizmetleri Kasası**  >  **ekleme**' yi de seçebilirsiniz.
    >[!NOTE]
    >Yedekleme ve Site Recovery daha önce [OMS paketinin](../../azure-monitor/terminology.md#april-2018---retirement-of-operations-management-suite-brand)bir parçasıdır.
 1. VM 'Lerin çoğaltılacağı bir bölge belirtin. Aynı bölgedeki geçiş amacıyla, kaynak sanal makinelerinizin ve kaynak depolama hesaplarınızın bulunduğu bölgeyi seçin. 
@@ -82,17 +82,17 @@ Site Recovery, Azure IaaS VM 'lerini bölgeler arasında veya aynı bölge için
 ### <a name="step-2-choose-your-protection-goals"></a>2. Adım: koruma hedeflerinizi seçin 
 
 1. Yapılandırma sunucusunu yüklemek istediğiniz VM 'de [Azure Portal](https://portal.azure.com)açın.
-2. **Kurtarma Hizmetleri kasaları**ayarları ' na gidin  >  **Settings**  >  **Site Recovery**  >  **1. Adım: altyapı**  >  **koruma hedefini**hazırlama.
+2. **Kurtarma Hizmetleri kasaları** ayarları ' na gidin  >    >  **Site Recovery**  >  **1. Adım: altyapı**  >  **koruma hedefini** hazırlama.
 
    ![Koruma hedefi bölmesine göz atma][2]
 
-3. **Koruma hedefi**altında, ilk açılan listede **Azure**' ı seçin. İkinci açılan listede, **sanallaştırılmamış/diğer**' i seçin ve ardından **Tamam**' ı seçin.
+3. **Koruma hedefi** altında, ilk açılan listede **Azure**' ı seçin. İkinci açılan listede, **sanallaştırılmamış/diğer**' i seçin ve ardından **Tamam**' ı seçin.
 
    ![Doldurulmuş kutular ile koruma hedefi bölmesi][3]
 
 ### <a name="step-3-set-up-the-source-environment-configuration-server"></a>3. Adım: kaynak ortamı ayarlama (yapılandırma sunucusu)
 
-1. **Altyapı**hazırlama kaynağı **Azure Site Recovery Unified Setup**  >  **Prepare source**  >  **Sunucu Ekle** bölmesine giderek Birleşik kurulum 'u ve kasa kayıt anahtarını Azure Site Recovery indirin. 
+1. **Altyapı** hazırlama kaynağı   >    >  **Sunucu Ekle** bölmesine giderek Birleşik kurulum 'u ve kasa kayıt anahtarını Azure Site Recovery indirin. 
  
    Birleşik kurulumu çalıştırmak için kasa kayıt anahtarına ihtiyacınız olacak. Anahtar, oluşturulduktan sonra beş gün boyunca geçerlidir.
 
@@ -108,7 +108,7 @@ Site Recovery, Azure IaaS VM 'lerini bölgeler arasında veya aynı bölge için
 
       ![Başlamadan önce sayfasına][6]
 
-   2. **Kayıt**bölümünde, kasadan indirdiğiniz kayıt anahtarını bulup seçin.
+   2. **Kayıt** bölümünde, kasadan indirdiğiniz kayıt anahtarını bulup seçin.
 
       ![Kayıt sayfası][7]
 
@@ -125,7 +125,7 @@ Site Recovery, Azure IaaS VM 'lerini bölgeler arasında veya aynı bölge için
 
 ### <a name="step-4-set-up-the-target-environment"></a>4. Adım: hedef ortamı ayarlama
 
-**Altyapı**  >  **hedefini**hazırla ' yı seçin ve yük devretmeden sonra VM 'ler için kullanmak istediğiniz dağıtım modelini belirtin. Senaryonuza bağlı olarak **Klasik** veya **Kaynak Yöneticisi**seçebilirsiniz.
+**Altyapı**  >  **hedefini** hazırla ' yı seçin ve yük devretmeden sonra VM 'ler için kullanmak istediğiniz dağıtım modelini belirtin. Senaryonuza bağlı olarak **Klasik** veya **Kaynak Yöneticisi** seçebilirsiniz.
 
 ![Hedef bölme][10]
 
@@ -154,7 +154,7 @@ Yapılandırma sunucunuzun oluşturduğunuz çoğaltma ilkesiyle başarıyla ili
    Yük devredilen VM 'nin iki geçici diski vardır: biri birincil VM 'den diğeri, kurtarma bölgesinde VM sağlama sırasında oluşturulur. Çoğaltmayı etkinleştirmeden önce geçici diski dışlamak için, çoğaltmayı etkinleştirmeden önce Mobility hizmetini yükleyebilirsiniz. Geçici diski dışarıda bırakma hakkında daha fazla bilgi edinmek için bkz. [diskleri çoğaltmanın dışında tutma](../../site-recovery/vmware-azure-tutorial.md).
 
 2. Aşağıda belirtilen şekilde çoğaltmayı etkinleştirin:
-   1. **Uygulama kaynağını Çoğalt**' ı seçin  >  **Source**. Çoğaltmayı ilk kez etkinleştirdikten sonra ek makineler için çoğaltmayı etkinleştirmek üzere kasada **+ Çoğalt** ' ı seçin.
+   1. **Uygulama kaynağını Çoğalt**' ı seçin  >  . Çoğaltmayı ilk kez etkinleştirdikten sonra ek makineler için çoğaltmayı etkinleştirmek üzere kasada **+ Çoğalt** ' ı seçin.
    2. Adım 1 ' de, **kaynak** işlemini işlem sunucunuz olarak ayarlayın.
    3. 2. adımda, yük devretme sonrası dağıtım modeli, geçirilecek bir Premium depolama hesabı, günlüklerin kaydedileceği bir standart depolama hesabı ve başarısız olacak bir sanal ağ belirtin.
    4. 3. adımda korumalı VM 'Leri IP adresine göre ekleyin. (Bunları bulmak için bir iç IP adresi gerekebilir.)
@@ -167,7 +167,7 @@ Yapılandırma sunucunuzun oluşturduğunuz çoğaltma ilkesiyle başarıyla ili
 
    ![Kaynak seçiliyken çoğaltma bölmesini etkinleştir][13]
 
-Azure Storage ortamınızı tasarlarken, bir kullanılabilirlik kümesindeki her VM için ayrı depolama hesapları kullanmanızı öneririz. [Her kullanılabilirlik kümesi için birden çok depolama hesabı kullanmak](../manage-availability.md)üzere depolama katmanındaki en iyi uygulamayı izlemenizi öneririz. VM disklerini birden çok depolama hesabına dağıtmak, depolama kullanılabilirliğinin artırılmasına ve g/ç 'yi Azure Storage altyapısına dağıtmanıza yardımcı olur.
+Azure Storage ortamınızı tasarlarken, bir kullanılabilirlik kümesindeki her VM için ayrı depolama hesapları kullanmanızı öneririz. [Her kullanılabilirlik kümesi için birden çok depolama hesabı kullanmak](../availability.md)üzere depolama katmanındaki en iyi uygulamayı izlemenizi öneririz. VM disklerini birden çok depolama hesabına dağıtmak, depolama kullanılabilirliğinin artırılmasına ve g/ç 'yi Azure Storage altyapısına dağıtmanıza yardımcı olur.
 
 Sanal makinelerleriniz, tüm VM 'lerin disklerini tek bir depolama hesabında çoğaltmak yerine bir kullanılabilirlik kümesinde ise, birden çok VM 'yi birden çok kez geçirmeyi kesinlikle öneririz. Bu şekilde, aynı Kullanılabilirlik kümesindeki VM 'Ler tek bir depolama hesabını paylaşmaz. Her VM için tek seferde bir hedef depolama hesabı ayarlamak için **çoğaltmayı etkinleştir** bölmesini kullanın.
  
@@ -182,13 +182,13 @@ Yük devretme sonrası dağıtım modelini gereksinimize göre seçebilirsiniz. 
 > [!NOTE]
 > Herhangi bir yük devretmeyi çalıştırmadan önce, VM 'lerinizin ve çoğaltma stratejinizin gereksinimleri karşıladığından emin olun. Yük devretme testi çalıştırma hakkında daha fazla bilgi için bkz. [Azure 'a yük devretmeyi test etme Site Recovery](../../site-recovery/site-recovery-test-failover-to-azure.md).
 
-Test yük devretmesinin durumunu YOUR_FAILOVER_PLAN_NAME **Ayarlar**  >  **işler**' de görebilirsiniz  >  *YOUR_FAILOVER_PLAN_NAME*. Bölmesinde, adımların ve başarı/başarısızlık sonuçlarının bir dökümünü görebilirsiniz. Yük devretme testi herhangi bir adımda başarısız olursa, hata iletisini denetlemek için adımı seçin. 
+Test yük devretmesinin durumunu YOUR_FAILOVER_PLAN_NAME **Ayarlar**  >  **işler**' de görebilirsiniz  >  . Bölmesinde, adımların ve başarı/başarısızlık sonuçlarının bir dökümünü görebilirsiniz. Yük devretme testi herhangi bir adımda başarısız olursa, hata iletisini denetlemek için adımı seçin. 
 
 ### <a name="step-9-run-a-failover"></a>9. Adım: yük devretmeyi çalıştırma
 
 Yük devretme sınamasını tamamladıktan sonra, disklerinizi Premium depolamaya geçirmek ve sanal makine örneklerini çoğaltmak için bir yük devretme çalıştırın. [Yük devretme çalıştırma](../../site-recovery/site-recovery-failover.md#run-a-failover)bölümündeki ayrıntılı adımları izleyin. 
 
-**VM 'Leri Kapat ' ı seçtiğinizden ve en son verileri eşitlediğinizden**emin olun. Bu seçenek Site Recovery korunan VM 'Leri kapatmaya ve verilerin en son sürümünün yük devretmeleri için verileri eşitlemeye çalışacak şekilde çalışır. Bu seçeneği seçmezseniz veya deneme başarılı olmazsa, yük devretme VM için kullanılabilir en son kurtarma noktasından olur. 
+**VM 'Leri Kapat ' ı seçtiğinizden ve en son verileri eşitlediğinizden** emin olun. Bu seçenek Site Recovery korunan VM 'Leri kapatmaya ve verilerin en son sürümünün yük devretmeleri için verileri eşitlemeye çalışacak şekilde çalışır. Bu seçeneği seçmezseniz veya deneme başarılı olmazsa, yük devretme VM için kullanılabilir en son kurtarma noktasından olur. 
 
 Site Recovery, türü Premium depolama özellikli bir VM ile aynı veya buna benzer bir sanal makine örneği oluşturur. [Windows sanal makineleri fiyatlandırma](https://azure.microsoft.com/pricing/details/virtual-machines/windows/) veya [Linux sanal makineleri fiyatlandırmasına](https://azure.microsoft.com/pricing/details/virtual-machines/linux/)giderek çeşitli sanal makine örneklerinin performansını ve fiyatını kontrol edebilirsiniz.
 

@@ -1,24 +1,20 @@
 ---
-title: VM 'Leri birlikte bulma
-description: İyileştirilmiş gecikme için Azure VM kaynaklarını birlikte bulma hakkında bilgi edinin.
+title: Yakınlık yerleştirme grupları
+description: Azure 'da yakınlık yerleşimi gruplarını kullanma hakkında bilgi edinin.
 author: cynthn
 ms.author: cynthn
 ms.service: virtual-machines
 ms.topic: conceptual
-ms.date: 12/07/2020
+ms.date: 3/07/2021
 ms.reviewer: zivr
-ms.openlocfilehash: e193b7d084723ad50ddc0d1a40e0b6c8a111af73
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: 584d98c93083bc0b203276c8eda2801841da3ad7
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96924410"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102507866"
 ---
-# <a name="co-locate-resources-for-improved-latency"></a>Gecikme süresini geliştirmek için kaynakları birlikte konumlandırma
-
-Uygulamanızı Azure 'da dağıttığınızda, örnekleri bölgeler veya kullanılabilirlik alanları arasında yaymak, uygulamanızın genel performansını etkileyebilecek ağ gecikmesi oluşturur. 
-
-## <a name="proximity-placement-groups"></a>Yakınlık yerleştirme grupları
+# <a name="proximity-placement-groups"></a>Yakınlık yerleştirme grupları
 
 VM 'Lerin tek bir bölgeye yerleştirilmesi, örnekler arasındaki fiziksel mesafeyi azaltır. Bunları tek bir kullanılabilirlik alanına koymak, bunları fiziksel olarak bir araya getirir. Ancak, Azure ayak izi büyüdükçe, tek bir kullanılabilirlik alanı birden fazla fiziksel veri merkezine yayılabilir ve bu da uygulamanızı etkileyen bir ağ gecikme süresi oluşmasına neden olabilir. 
 

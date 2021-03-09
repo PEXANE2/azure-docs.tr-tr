@@ -6,12 +6,12 @@ ms.author: elhorton
 ms.service: iot-develop
 ms.topic: overview
 ms.date: 02/11/2021
-ms.openlocfilehash: 4ac675d0b6c2ce1e735a8ad530bc004f993a1833
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: fa10ddad8d2fbbc414f0ccaf16b9b99fae0b0786
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102435503"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102505044"
 ---
 # <a name="overview-of-azure-iot-device-sdks"></a>Azure IoT cihaz SDK 'larına genel bakış
 
@@ -116,7 +116,7 @@ Bu SDK 'lar, daha yüksek sıralı bir dil çalışma zamanını destekleyebilen
 * [Örnekler](https://github.com/Azure/azure-iot-sdk-python/tree/master/azure-iot-device/samples)
 * [Paket](https://pypi.org/project/azure-iot-device/)
 * [Başvuru Belgeleri](/python/api/azure-iot-device)
-* [Edge modülü başvuru belgeleri](/python/api/azure-iot-device/azure.iot.device.iothubmoduleclient?view=azure-python&preserve-view=true)
+* [Edge modülü başvuru belgeleri](/python/api/azure-iot-device/azure.iot.device.iothubmoduleclient)
 
 ### <a name="service-sdks"></a>Hizmet SDK'ları
 Azure IoT Ayrıca, cihazları yönetmek, Öngörüler elde etmek, verileri görselleştirmek ve daha fazlasını yapmak için çözüm tarafı uygulamalar oluşturmanıza olanak tanıyan hizmet SDK 'Ları sunar. Bu SDK 'lar her bir Azure IoT hizmetine özgüdür ve geliştirme deneyiminizi basitleştirmek için C#, Java, JavaScript ve Python 'da kullanılabilir. 
@@ -147,7 +147,7 @@ Azure dijital TWINS, tüm ortamların dijital modellerini temel alan bilgi grafi
 
 **Node.js ADT Service SDK**: [GitHub depo](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/digitaltwins/digital-twins-core)  |  [paketi](https://www.npmjs.com/package/@azure/digital-twins-core)  |  [örnekleri](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/digitaltwins/digital-twins-core/samples)  |  [başvuru belgeleri](/javascript/api/@azure/digital-twins-core/)
 
-**Python ADT hizmeti SDK 'sı**: [GitHub depo](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/digitaltwins/azure-digitaltwins-core)  |  [paketi](https://pypi.org/project/azure-digitaltwins-core/)  |  [örnekleri](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/digitaltwins/azure-digitaltwins-core/samples)  |  [başvuru belgeleri](/python/api/azure-digitaltwins-core/azure.digitaltwins.core?view=azure-python&preserve-view=true)
+**Python ADT hizmeti SDK 'sı**: [GitHub depo](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/digitaltwins/azure-digitaltwins-core)  |  [paketi](https://pypi.org/project/azure-digitaltwins-core/)  |  [örnekleri](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/digitaltwins/azure-digitaltwins-core/samples)  |  [başvuru belgeleri](/python/api/azure-digitaltwins-core/azure.digitaltwins.core)
 
 #### <a name="device-provisioning-service"></a>Cihaz Sağlama Hizmeti
 

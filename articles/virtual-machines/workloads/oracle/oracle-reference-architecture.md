@@ -8,12 +8,12 @@ ms.collection: linux
 ms.topic: article
 ms.date: 12/13/2019
 ms.author: kegorman
-ms.openlocfilehash: 8257c58c4185172218b833c3d4988b4db661a97a
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 6bce6f011086d9855c4da2739addbb34e661e2d6
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101669899"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102507492"
 ---
 # <a name="reference-architectures-for-oracle-database-enterprise-edition-on-azure"></a>Azure 'da Oracle Database Enterprise Edition için başvuru mimarileri
 
@@ -29,7 +29,7 @@ Oracle veritabanınızın performansını en üst düzeye çıkarmak hakkında d
 
 ## <a name="high-availability-for-oracle-databases"></a>Oracle veritabanları için yüksek kullanılabilirlik
 
-Bulutta yüksek kullanılabilirlik elde etmek, her kuruluşun planlama ve tasarımının önemli bir parçasıdır. Microsoft Azure kullanılabilirlik [alanları](../../../availability-zones/az-overview.md) ve kullanılabilirlik kümeleri sunar (kullanılabilirlik bölgelerinin kullanılamadığı bölgelerde kullanılmak üzere). Bulut için tasarlamak üzere [sanal makinelerinizin kullanılabilirliğini yönetme](../../manage-availability.md) hakkında daha fazla bilgi edinin.
+Bulutta yüksek kullanılabilirlik elde etmek, her kuruluşun planlama ve tasarımının önemli bir parçasıdır. Microsoft Azure kullanılabilirlik [alanları](../../../availability-zones/az-overview.md) ve kullanılabilirlik kümeleri sunar (kullanılabilirlik bölgelerinin kullanılamadığı bölgelerde kullanılmak üzere). Bulut için tasarlamak üzere [sanal makinelerinizin kullanılabilirliğini yönetme](../../availability.md) hakkında daha fazla bilgi edinin.
 
 Oracle Native araçlara ve sunumlarına ek olarak, Oracle [Data Guard](https://docs.oracle.com/en/database/oracle/oracle-database/18/sbydb/introduction-to-oracle-data-guard-concepts.html#GUID-5E73667D-4A56-445E-911F-1E99092DD8D7), Azure 'da AYARLANABILECEĞI fsfo, [parça](https://docs.oracle.com/en/database/oracle/oracle-database/12.2/admin/sharding-overview.html)ve [altın başak](https://www.oracle.com/middleware/technologies/goldengate.html) [ile Data Guard](https://docs.oracle.com/en/database/oracle/oracle-database/12.2/dgbkr/index.html)gibi yüksek kullanılabilirliğe yönelik çözümler sağlar. Bu kılavuz, bu çözümlerin her biri için başvuru mimarilerini içerir.
 
@@ -39,7 +39,7 @@ Son olarak, bulut için uygulamaları geçirirken veya oluştururken, [yeniden d
 
 Oracle gerçek uygulama kümesi (RAC), bir veritabanı depolamasına (paylaşılan-tüm mimari desenler) erişen çok sayıda örneğe sahip olacak şekilde, müşterilerin yüksek bir geçiş yapmasına yardımcı olmak için Oracle tarafından sağlanan bir çözümdür. Oracle RAC, şirket içi yüksek kullanılabilirlik için de kullanılabilir olsa da, yalnızca örnek düzeyindeki hatalara karşı koruma ve raf düzeyinde ya da veri merkezi düzeyindeki hatalara karşı değil, bulutta yüksek kullanılabilirlik için yalnızca Oracle RAC kullanılamaz. Bu nedenle, Oracle, yüksek kullanılabilirlik için veritabanınızda Oracle Data Guard (tek örnekli veya RAC) kullanmanızı önerir. Müşteriler, iş açısından kritik uygulamalarını çalıştırmak için genellikle yüksek bir SLA gerektirir. Oracle RAC Şu anda Azure 'da Oracle tarafından sertifikalı veya desteklenmiyor. Ancak Azure, örnek düzeyindeki hatalara karşı korumaya yardımcı olmak için Azure gibi Kullanılabilirlik Alanları ve planlı bakım pencereleri sunmaktadır. Bunlara ek olarak müşteriler, veritabanlarını raf düzeyinde ve veri merkezi düzeyi ve coğrafi siyatik arızalardan yararlanarak yüksek performans ve dayanıklılık için Oracle veri koruyucusu, Oracle GoldenGate ve Oracle parçaları gibi teknolojileri de kullanabilir.
 
-Oracle veritabanlarını Oracle Data Guard veya GoldenGate ile birlikte birden çok [kullanılabilirlik](../../../availability-zones/az-overview.md) alanında çalıştırırken, müşteriler% 99,99 ' lik bir çalışma süresi SLA 'sı alabilir. Kullanılabilirlik bölgelerinin henüz mevcut olmadığı Azure bölgelerinde, müşteriler [kullanılabilirlik kümelerini](../../manage-availability.md#configure-multiple-virtual-machines-in-an-availability-set-for-redundancy) kullanabilir ve% 99,95 ' lik bir çalışma süresi SLA 'sı elde edebilir.
+Oracle veritabanlarını Oracle Data Guard veya GoldenGate ile birlikte birden çok [kullanılabilirlik](../../../availability-zones/az-overview.md) alanında çalıştırırken, müşteriler% 99,99 ' lik bir çalışma süresi SLA 'sı alabilir. Kullanılabilirlik bölgelerinin henüz mevcut olmadığı Azure bölgelerinde, müşteriler [kullanılabilirlik kümelerini](../../availability-set-overview.md) kullanabilir ve% 99,95 ' lik bir çalışma süresi SLA 'sı elde edebilir.
 
 >NOTE: Microsoft tarafından sunulan çalışma süresi SLA 'sına göre çok daha yüksek bir çalışma süresi hedefi olabilir.
 
@@ -205,7 +205,7 @@ Bu kurulum, örnek düzeyinde veya kullanılabilirlik bölgesi düzeyinde bir ha
 
 ## <a name="patching-and-maintenance"></a>Düzeltme eki uygulama ve bakım
 
-Oracle iş yüklerinizi Azure 'a dağıttığınızda, Microsoft tüm ana bilgisayar işletim sistemi düzeyinde düzeltme eki uygulamayı üstlenir. Planlı tüm işletim sistemi düzeyinde bakım, müşterilere bu planlı bakım için izin vermek üzere önceden gönderilir. İki farklı Kullanılabilirlik Alanları iki sunucu aynı anda hiçbir şekilde Düzeltme Eki. VM bakımı ve düzeltme eki uygulama hakkında daha fazla bilgi için bkz. [sanal makinelerin kullanılabilirliğini yönetme](../../manage-availability.md) . 
+Oracle iş yüklerinizi Azure 'a dağıttığınızda, Microsoft tüm ana bilgisayar işletim sistemi düzeyinde düzeltme eki uygulamayı üstlenir. Planlı tüm işletim sistemi düzeyinde bakım, müşterilere bu planlı bakım için izin vermek üzere önceden gönderilir. İki farklı Kullanılabilirlik Alanları iki sunucu aynı anda hiçbir şekilde Düzeltme Eki. VM bakımı ve düzeltme eki uygulama hakkında daha fazla bilgi için bkz. [sanal makinelerin kullanılabilirliğini yönetme](../../availability.md) . 
 
 Sanal makine işletim sisteminizin düzeltme eki uygulama, [Azure otomasyonu güncelleştirme yönetimi](../../../automation/update-management/overview.md)kullanılarak otomatikleştirilebilir. Devre dışı kalma süresini en aza indirmek için Oracle veritabanınızın düzeltme ve sürdürme [Azure Pipelines](/azure/devops/pipelines/get-started/what-is-azure-pipelines) veya [Azure Otomasyonu güncelleştirme yönetimi](../../../automation/update-management/overview.md) kullanılarak otomatik ve zamanlanmış olabilir. Oracle veritabanlarınızın bağlamında nasıl kullanılabileceğini anlamak için [sürekli teslim ve mavi/yeşil dağıtımlar](/azure/devops/learn/what-is-continuous-delivery) konusuna bakın.
 

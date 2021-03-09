@@ -921,7 +921,7 @@
         - name: REST (Yönetim düzlemi)
           href: /rest/api/cosmos-db-resource-provider/2020-04-01/sqlresources
         - name: PowerShell
-          href: /powershell/module/az.cosmosdb/?view=azps-5.5.0#cosmos-db&preserve-view=true
+          href: /powershell/module/az.cosmosdb/#cosmos-db&preserve-view=true
         - name: Resource Manager şablonu
           href: /azure/templates/microsoft.documentdb/allversions
           displayName: ARM
@@ -1039,7 +1039,7 @@
         - name: REST kaynak sağlayıcısı
           href: /rest/api/cosmos-db-resource-provider/2020-04-01/cassandraresources
         - name: PowerShell
-          href: /powershell/module/az.cosmosdb/?view=azps-5.5.0#cosmos-db&preserve-view=true
+          href: /powershell/module/az.cosmosdb/#cosmos-db&preserve-view=true
         - name: Resource Manager şablonu
           href: /azure/templates/microsoft.documentdb/allversions
 - name: MongoDB API’si
@@ -1170,7 +1170,7 @@
         - name: REST kaynak sağlayıcısı
           href: /rest/api/cosmos-db-resource-provider/2020-04-01/mongodbresources
         - name: PowerShell
-          href: /powershell/module/az.cosmosdb/?view=azps-5.5.0#cosmos-db&preserve-view=true
+          href: /powershell/module/az.cosmosdb/#cosmos-db&preserve-view=true
         - name: Resource Manager şablonu
           href: /azure/templates/microsoft.documentdb/allversions
 - name: Gremlin API
@@ -1248,7 +1248,7 @@
         - name: Yanıt Üst Bilgileri
           href: gremlin-headers.md
         - name: PowerShell
-          href: /powershell/module/az.cosmosdb/?view=azps-5.5.0#cosmos-db&preserve-view=true
+          href: /powershell/module/az.cosmosdb/#cosmos-db&preserve-view=true
         - name: REST kaynak sağlayıcısı
           href: /rest/api/cosmos-db-resource-provider/2020-04-01/gremlinresources
         - name: Resource Manager şablonu
@@ -1334,7 +1334,7 @@
         - name: Python
           href: table-sdk-python.md
         - name: PowerShell
-          href: /powershell/module/az.cosmosdb/?view=azps-5.5.0#cosmos-db&preserve-view=true
+          href: /powershell/module/az.cosmosdb/#cosmos-db&preserve-view=true
         - name: Tablo depolama REST API'leri
           href: /rest/api/storageservices/table-service-rest-api
 - name: Nasıl yapılır kılavuzları

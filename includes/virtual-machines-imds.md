@@ -8,12 +8,12 @@ ms.date: 01/04/2021
 ms.author: chhenk
 ms.reviewer: azmetadatadev
 ms.custom: references_regions
-ms.openlocfilehash: e18c09130fcbcdbb470abc19d76bdf2ccfef0775
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: 554730919d4226c07e099d5e457cd0fd20dbad30
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102175725"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102510863"
 ---
 Azure Instance Metadata Service (IMDS), çalışmakta olan sanal makine örnekleri hakkında bilgi sağlar. Bunu, sanal makinelerinizi yönetmek ve yapılandırmak için kullanabilirsiniz.
 Bu bilgiler SKU, depolama, ağ yapılandırması ve yaklaşan bakım olaylarını içerir. Mevcut verilerin tüm listesi için bkz. [uç nokta kategorileri Özeti](#endpoint-categories).
@@ -86,7 +86,7 @@ Genel olarak, ıDS istekleri saniyede 5 istek ile sınırlıdır. Bu eşiği aş
 
 Aşağıdaki HTTP fiilleri Şu anda desteklenmektedir:
 
-| Fiil | Açıklama |
+| Fiil | Description |
 |------|-------------|
 | `GET` | İstenen kaynağı alma
 
@@ -264,7 +264,7 @@ Kök uç noktası `http://169.254.169.254/metadata` .
 
 IMDS API 'SI, her biri bir veya daha fazla uç nokta içeren farklı veri kaynaklarını temsil eden birden çok uç nokta kategorisi içerir. Ayrıntılar için bkz. her kategori.
 
-| Kategori kökü | Açıklama | Sunulan sürüm |
+| Kategori kökü | Description | Sunulan sürüm |
 |---------------|-------------|--------------------|
 | `/metadata/attested` | Bkz. [Atsınanan veriler](#attested-data) | 2018-10-01
 | `/metadata/identity` | Bkz. [yönetilen kimliği IMDS aracılığıyla](#managed-identity) | 2018-02-01
@@ -329,7 +329,7 @@ Bu uç nokta, [yol parametreleri](#route-parameters)aracılığıyla yanıt filt
 
 **İşlem**
 
-| Veriler | Açıklama | Sunulan sürüm |
+| Veriler | Description | Sunulan sürüm |
 |------|-------------|--------------------|
 | `azEnvironment` | VM 'nin çalıştığı Azure ortamı | 2018-10-01
 | `customData` | Bu özellik şu anda devre dışı. Bu belge kullanılabilir hale geldiğinde güncelleştirilecek | 2019-02-01
@@ -345,8 +345,8 @@ Bu uç nokta, [yol parametreleri](#route-parameters)aracılığıyla yanıt filt
 | `osType` | Linux veya Windows | 2017-04-02
 | `placementGroupId` | Sanal makine ölçek kümesinin [yerleştirme grubu](../articles/virtual-machine-scale-sets/virtual-machine-scale-sets-placement-groups.md) | 2017-08-01
 | `plan` | Bir Azure Market görüntüsü ise VM için ad, ürün ve yayımcı içeren [plan planlayın](/rest/api/compute/virtualmachines/createorupdate#plan) | 2018-04-02
-| `platformUpdateDomain` |  VM 'nin çalıştığı [etki alanını güncelleştirme](../articles/virtual-machines/manage-availability.md) | 2017-04-02
-| `platformFaultDomain` | VM 'nin çalıştığı [hata etki alanı](../articles/virtual-machines/manage-availability.md) | 2017-04-02
+| `platformUpdateDomain` |  VM 'nin çalıştığı [etki alanını güncelleştirme](../articles/virtual-machines/availability.md) | 2017-04-02
+| `platformFaultDomain` | VM 'nin çalıştığı [hata etki alanı](../articles/virtual-machines/availability.md) | 2017-04-02
 | `priority` | VM önceliği. Daha fazla bilgi için [spot VM](../articles/virtual-machines/spot-vms.md) 'lere başvurun | 2020-12-01
 | `provider` | VM sağlayıcısı | 2018-10-01
 | `publicKeys` | VM ve yollara atanan [ortak anahtarların koleksiyonu](/rest/api/compute/virtualmachines/createorupdate#sshpublickey) | 2018-04-02
@@ -372,7 +372,7 @@ Bir sanal makinenin depolama profili üç kategoriye ayrılmıştır: görüntü
 
 Görüntü başvurusu nesnesi, işletim sistemi görüntüsüyle ilgili aşağıdaki bilgileri içerir:
 
-| Veriler | Açıklama |
+| Veriler | Description |
 |------|-------------|
 | `id` | Kaynak kimliği
 | `offer` | Platform veya Market görüntüsü teklifi
@@ -382,7 +382,7 @@ Görüntü başvurusu nesnesi, işletim sistemi görüntüsüyle ilgili aşağı
 
 İşletim sistemi diski nesnesi, VM tarafından kullanılan işletim sistemi diski hakkında aşağıdaki bilgileri içerir:
 
-| Veriler | Açıklama |
+| Veriler | Description |
 |------|-------------|
 | `caching` | Önbelleğe alma gereksinimleri
 | `createOption` | VM 'nin nasıl oluşturulduğu hakkında bilgi
@@ -397,7 +397,7 @@ Görüntü başvurusu nesnesi, işletim sistemi görüntüsüyle ilgili aşağı
 
 Veri diskleri dizisi, VM 'ye bağlı veri disklerinin bir listesini içerir. Her veri diski nesnesi şu bilgileri içerir:
 
-Veriler | Açıklama |
+Veriler | Description |
 -----|-------------|
 | `caching` | Önbelleğe alma gereksinimleri
 | `createOption` | VM 'nin nasıl oluşturulduğu hakkında bilgi
@@ -413,7 +413,7 @@ Veriler | Açıklama |
 
 **Ağ**
 
-| Veriler | Açıklama | Sunulan sürüm |
+| Veriler | Description | Sunulan sürüm |
 |------|-------------|--------------------|
 | `ipv4.privateIpAddress` | VM 'nin yerel IPv4 adresi | 2017-04-02
 | `ipv4.publicIpAddress` | VM 'nin genel IPv4 adresi | 2017-04-02
@@ -933,7 +933,7 @@ Klasik dağıtım modeli kullanılarak oluşturulan VM 'Ler için yalnızca, `vm
 
 Kodu çözülen belge aşağıdaki alanları içerir:
 
-| Veriler | Açıklama | Sunulan sürüm |
+| Veriler | Description | Sunulan sürüm |
 |------|-------------|--------------------|
 | `licenseType` | [Azure hibrit avantajı](https://azure.microsoft.com/pricing/hybrid-benefit)için lisans türü. Bu yalnızca AHB özellikli VM 'Ler için geçerlidir. | 2020-09-01
 | `nonce` | İsteğe bağlı olarak istekle birlikte sağlanmış bir dize. Hayır `nonce` sağlanmazsa, geçerli Eşgüdümlü Evrensel Saat zaman damgası kullanılır. | 2018-10-01

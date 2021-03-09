@@ -1,78 +1,62 @@
 ---
-title: Kullanılabilirlik seçenekleri
-description: Azure 'da sanal makine çalıştırmaya yönelik kullanılabilirlik özellikleri hakkında bilgi edinin
-author: cynthn
-ms.author: cynthn
+title: Azure sanal makineleri için kullanılabilirlik seçenekleri
+description: Azure 'da sanal makine çalıştırmaya yönelik kullanılabilirlik seçenekleri hakkında bilgi edinin
+author: mimckitt
+ms.author: mimckitt
 ms.service: virtual-machines
 ms.topic: conceptual
-ms.date: 02/18/2021
-ms.openlocfilehash: 0af9d27561649a559913912165e63e913a32ff2e
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.date: 03/08/2021
+ms.reviewer: cynthn
+ms.openlocfilehash: 1ea87d40430dbf3edabd557b80ab1456b49f4605
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102178295"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102507883"
 ---
-# <a name="availability-options-for-virtual-machines-in-azure"></a>Azure'da sanal makineler için kullanılabilirlik seçenekleri
+# <a name="availability-options-for-azure-virtual-machines"></a>Azure sanal makineleri için kullanılabilirlik seçenekleri
+Bu makalede, Azure sanal makineleri (VM 'Ler) için kullanılabilirlik seçeneklerine genel bakış sunulmaktadır.
 
-Bu makalede, Azure sanal makinelerinin (VM 'Ler) kullanılabilirlik özelliklerine ilişkin bir genel bakış sunulmaktadır.
+## <a name="availability-zones"></a>Kullanılabilirlik alanları
 
-## <a name="high-availability"></a>Yüksek kullanılabilirlik
+[Kullanılabilirlik alanları](../availability-zones/az-overview.md?context=/azure/virtual-machines/context/context) , sanal makinelerinizdeki uygulamaların ve verilerin kullanılabilirliğini korumak için sahip olduğunuz denetim düzeyini genişletir. Bir kullanılabilirlik alanı, bir Azure bölgesi içinde fiziksel olarak ayrı bir bölgedir. Desteklenen Azure bölgesi başına üç Kullanılabilirlik Alanları vardır. 
 
-İş yükleri genellikle yüksek aktarım hızı, performans ve bir VM 'nin bir güncelleştirme ya da başka bir olay nedeniyle etkilenmemesi durumunda artıklık oluşturmak için farklı sanal makinelere yayılır. 
+Her Kullanılabilirlik Alanı farklı bir güç kaynağı, ağ ve soğutma sistemine sahiptir. Bölgelerinizi, bölgelerde çoğaltılan VM 'Leri kullanmak üzere tasarlayarak, uygulamalarınızı ve verilerinizi bir veri merkezi kaybından koruyabilirsiniz. Bir bölge tehlikeye girerse, çoğaltılan uygulamalar ve veriler başka bir bölgede anında kullanılabilir. 
 
-Azure 'un yüksek kullanılabilirlik elde etmek için sağladığı birkaç seçenek vardır. İlk olarak temel yapılar hakkında konuşalım. 
-
-### <a name="availability-zones"></a>Kullanılabilirlik alanları
-
-[Kullanılabilirlik alanları](../availability-zones/az-overview.md) , sanal makinelerinizdeki uygulamaların ve verilerin kullanılabilirliğini korumak için sahip olduğunuz denetim düzeyini genişletir. Bir kullanılabilirlik alanı, bir Azure bölgesi içinde fiziksel olarak ayrı bir bölgedir. Desteklenen Azure bölgesi başına üç Kullanılabilirlik Alanları vardır. 
-
-Her Kullanılabilirlik Alanı farklı bir güç kaynağı, ağ ve soğutma sistemine sahiptir. Bölgelerde çoğaltılan VM 'Leri kullanma çözümlerinizi tasarlayarak, uygulamalarınızı ve verilerinizi bir veri merkezi kaybından koruyabilirsiniz. Bir bölge tehlikeye girerse, çoğaltılan uygulamalar ve veriler başka bir bölgede anında kullanılabilir. 
-
-![Kullanılabilirlik alanları](./media/virtual-machines-common-regions-and-availability/three-zones-per-region.png)
-
-Bir [Windows](./windows/create-powershell-availability-zone.md) veya [Linux](./linux/create-cli-availability-zone.md) VM 'yi bir kullanılabilirlik alanına dağıtma hakkında daha fazla bilgi edinin.
-
-
-### <a name="fault-domains"></a>Hata etki alanları
-
-Hata etki alanı, ortak bir güç kaynağı ve ağ anahtarını paylaşan, şirket içi veri merkezindeki rafa benzer bir temel alınan donanım mantık grubudur. 
-
-### <a name="update-domains"></a>Güncelleme etki alanları
-
-Güncelleme etki alanı, bakımdan geçirilebilen ya da aynı anda yeniden başlatılabilen bir temel alınan donanım mantıksal grubudur. 
-
-Bu yaklaşım, Azure platformu periyodik bakımdan geçirilirken uygulamanızın en az bir örneğinin her zaman çalışır durumda kalmasını sağlar. Yeniden başlatılan güncelleştirme etki alanlarının sırası bakım sırasında sırayla ilerlemeyebilir, ancak aynı anda yalnızca bir güncelleştirme etki alanı yeniden başlatılır.
+## <a name="availability-sets"></a>Kullanılabilirlik kümeleri
+[Kullanılabilirlik kümesi](availability-set-overview.md) , Azure 'un uygulamanızın artıklık ve kullanılabilirlik sağlamak üzere nasıl oluşturulduğunu anlamasına olanak tanıyan mantıksal bir sanal makine gruplandırmasıdır. Yüksek oranda kullanılabilir bir uygulama sağlamak ve [% 99,95 Azure SLA 'sını](https://azure.microsoft.com/support/legal/sla/virtual-machines/)karşılamak için bir kullanılabilirlik kümesi içinde iki veya daha fazla sanal makine oluşturulmasını öneririz. Kullanılabilirlik kümesinin kendisi için herhangi bir maliyet yoktur, yalnızca oluşturduğunuz her sanal makine örneği için ödeme yaparsınız.
 
 
 ## <a name="virtual-machines-scale-sets"></a>Sanal Makine Ölçek Kümeleri 
 
-Azure sanal makine ölçek kümeleri, yük dengeli bir VM grubu oluşturmanızı ve yönetmenizi sağlar. Tanımlı bir zamanlamaya veya talebe yanıt olarak sanal makine örneği sayısı otomatik olarak artabilir ya da azalabilir. Ölçek Kümeleri, uygulamalarınız için yüksek kullanılabilirlik sağlar ve birçok VM 'yi merkezi olarak yönetmenize, yapılandırmanıza ve güncelleştirmenize olanak tanır. Yüksek oranda kullanılabilir bir uygulama sağlamak ve [% 99,95 Azure SLA 'sını](https://azure.microsoft.com/support/legal/sla/virtual-machines/)karşılamak için ölçek kümesi içinde iki veya daha fazla sanal makine oluşturulmasını öneririz. Ölçek kümesinin kendisi için herhangi bir maliyet yoktur, yalnızca oluşturduğunuz her sanal makine örneği için ödeme yaparsınız. Tek bir VM [Azure Premium SSD](./disks-types.md#premium-ssd)kullanırken, planlanmamış bakım olayları için Azure SLA 'sı geçerlidir. Ölçek kümesindeki sanal makineler, çok sayıda güncelleştirme etki alanına ve hata etki alanına dağıtılabilir ve bu da veri merkezi kesintileri ve planlı ya da plansız bakım olayları nedeniyle kullanılabilirlik ve esnekliği 'in kesintilerine en üst düzeye çıkarabilir. Ölçek kümesindeki sanal makineler aynı zamanda tek bir kullanılabilirlik bölgesine veya bölgeye göre dağıtılabilir. Kullanılabilirlik alanı dağıtım seçenekleri, düzenleme moduna göre farklılık gösterebilir.
+[Azure sanal makine ölçek kümeleri](../virtual-machine-scale-sets/overview.md?context=/azure/virtual-machines/context/context) , yük dengeli bir VM grubu oluşturmanızı ve yönetmenizi sağlar. Tanımlı bir zamanlamaya veya talebe yanıt olarak sanal makine örneği sayısı otomatik olarak artabilir ya da azalabilir. Ölçek Kümeleri, uygulamalarınız için yüksek kullanılabilirlik sağlar ve birçok VM 'yi merkezi olarak yönetmenize, yapılandırmanıza ve güncelleştirmenize olanak tanır. Yüksek oranda kullanılabilir bir uygulama sağlamak ve [% 99,95 Azure SLA 'sını](https://azure.microsoft.com/support/legal/sla/virtual-machines/)karşılamak için ölçek kümesi içinde iki veya daha fazla sanal makine oluşturulmasını öneririz. Ölçek kümesinin kendisi için herhangi bir maliyet yoktur, yalnızca oluşturduğunuz her sanal makine örneği için ödeme yaparsınız.
 
-**Hata etki alanları ve güncelleştirme etki alanları**
+Ölçek kümesindeki sanal makineler aynı zamanda tek bir kullanılabilirlik bölgesine veya bölgeye göre dağıtılabilir. Kullanılabilirlik alanı dağıtım seçenekleri, [düzenleme moduna](../virtual-machine-scale-sets/virtual-machine-scale-sets-orchestration-modes.md?context=/azure/virtual-machines/context/context)göre farklılık gösterebilir.
 
-Sanal Makine Ölçek Kümeleri, hata etki alanlarını ve güncelleştirme etki alanlarını hizalayarak yüksek kullanılabilirlik için tasarlamayı basitleştirir. Ölçek kümesi için yalnızca hata etki alanı sayısı tanımlamanız gerekir. Ölçek kümelerinin kullanabildiği hata etki alanlarının sayısı bölgeye göre farklılık gösterebilir. Bkz. [Azure 'da sanal makinelerin kullanılabilirliğini yönetme](./manage-availability.md).
-
-**Ölçek Kümeleri için düzenleme modları**
-
-Sanal makine ölçek kümeleri düzenleme modları, sanal makine örneklerinin ölçek kümesi tarafından yönetilme konusunda daha fazla denetime sahip olmasını sağlar. Ölçek kümesinde Tekdüzen veya esnek düzenleme modunu etkinleştirebilirsiniz. Tekdüzen düzenleme, aynı örneklere sahip büyük ölçekli durum bilgisiz iş yükleri için iyileştirilmiştir. Esnek düzenleme (Önizleme), aynı veya birden çok sanal makine türüyle ölçek açısından yüksek kullanılabilirlik için tasarlanmıştır. Bu [düzenleme modları](../virtual-machine-scale-sets/virtual-machine-scale-sets-orchestration-modes.md) ve bunların nasıl etkinleştirileceği hakkında daha fazla bilgi edinin.
+## <a name="load-balancer"></a>Yük dengeleyici
+En fazla uygulama esnekliğini almak için [Azure Load Balancer](../load-balancer/load-balancer-overview.md) bir kullanılabilirlik bölgesi veya kullanılabilirlik kümesiyle birleştirin. Azure Load Balancer, birden fazla sanal makine arasında trafiği dağıtır. Standart katman sanal makinelerimize Azure Load Balancer dahildir. Tüm sanal makine katmanları Azure Load Balancer hizmetini içermez. Sanal makinelerinizin Yük Dengelemesi hakkında daha fazla bilgi için bkz. [Linux](linux/tutorial-load-balancer.md) veya [Windows](windows/tutorial-load-balancer.md)Için **sanal makinelerin yükünü dengeleme** .
 
 
-## <a name="availability-sets"></a>Kullanılabilirlik kümeleri
-Kullanılabilirlik kümesi, Azure’un, uygulamanızın yedeklilik ve kullanılabilirlik sağlamak üzere nasıl oluşturulduğunu anlamasına olanak tanıyan bir mantıksal VM grubudur. Yüksek oranda kullanılabilir bir uygulama sağlamak ve [% 99,95 Azure SLA 'sını](https://azure.microsoft.com/support/legal/sla/virtual-machines/)karşılamak için bir kullanılabilirlik kümesi içinde iki veya daha fazla sanal makine oluşturulmasını öneririz. Kullanılabilirlik kümesinin kendisi için herhangi bir maliyet yoktur, yalnızca oluşturduğunuz her sanal makine örneği için ödeme yaparsınız. Tek bir VM [Azure Premium SSD](./disks-types.md#premium-ssd)kullanırken, planlanmamış bakım olayları için Azure SLA 'sı geçerlidir.
+## <a name="azure-storage-redundancy"></a>Azure Depolama yedekliliği
+Azure depolama, geçici donanım arızaları, ağ veya güç kesintileri ve çok büyük doğal felaketler de dahil olmak üzere planlı ve planlanmamış olaylardan korunabilmesi için verilerinizin birden çok kopyasını her zaman depolar. Artıklık, depolama hesabınızın, başarısızlık durumunda bile kullanılabilirlik ve dayanıklılık hedeflerini karşıladığından emin olmanızı sağlar.
 
-Bir kullanılabilirlik kümesinde VM 'Ler bu hata etki alanlarına otomatik olarak dağıtılır. Bu yaklaşım, olası fiziksel donanım hatalarının, ağ kesintilerinin veya güç kesintilerinin etkisini sınırlar.
+Senaryonuz için en uygun artıklık seçeneğinin hangisi olduğuna karar verirken, düşük maliyetler ve daha yüksek kullanılabilirlik arasındaki avantajları göz önünde bulundurun. Hangi artıklık seçeneğini belirlemenizi gerektiğine yardımcı olan faktörler şunlardır:
+- Verileriniz birincil bölgede nasıl çoğaltılır
+- Verilerinizin birincil bölgeye coğrafi olarak uzaktaki ikinci bir bölgeye çoğaltılıp çoğaltılmayacağı, bölgesel olağanüstü durumlara karşı koruma
+- Birincil bölge herhangi bir nedenle kullanılamaz duruma gelirse, uygulamanızın ikincil bölgedeki çoğaltılan verilere okuma erişimi gerektirip gerektirmediğini belirtir
 
-[Azure Yönetilen Diskler](./faq-for-disks.md)’i kullanan sanal makineler, yönetilen kullanılabilirlik kümesi kullanılırken yönetilen disk hata etki alanları ile hizalanır. Bu hizalama, bir VM'ye bağlı tüm yönetilen disklerin, aynı yönetilen disk hata etki alanı içinde olmasını sağlar. 
+Daha fazla bilgi için bkz. [Azure Storage yedekliği](../storage/common/storage-redundancy.md)
 
-Yönetilen bir kullanılabilirlik kümesinde yalnızca, yönetilen disklere sahip VM’ler oluşturulabilir. Yönetilen disk hata etki alanlarının sayısı bölgeye göre farklılık gösterir (bölge başına iki ya da üç yönetilen disk hata etki alanı). [Linux VM 'leri](./manage-availability.md#use-managed-disks-for-vms-in-an-availability-set) veya [Windows VM 'leri](./manage-availability.md#use-managed-disks-for-vms-in-an-availability-set)için bu yönetilen disk hata etki alanları hakkında daha fazla bilgi edinebilirsiniz.
+## <a name="azure-site-recovery"></a>Azure Site Recovery
+Bir kuruluş olarak, planlı ve plansız kesintiler gerçekleştiğinde verilerinizi güvende ve uygulamalarınız ile iş yüklerinizi çevrimiçi tutan bir iş sürekliliği ve olağanüstü durum kurtarma (BCDR) stratejisi benimsemeniz gerekir.
 
-![Yönetilen kullanılabilirlik kümesi](./media/virtual-machines-common-manage-availability/md-fd-updated.png)
+[Azure Site Recovery](../site-recovery/site-recovery-overview.md) , iş uygulamaları ve iş yüklerini kesintiler sırasında çalışır durumda tutarak iş sürekliliği sağlamaya yardımcı olur. Site Recovery, fiziksel ve sanal makineler (VM) üzerinde çalışan iş yüklerini birincil siteden ikincil bir konuma çoğaltır. Birincil sitenizde bir kesinti oluştuğunda ikinci konuma yük devredersiniz ve uygulamalara oradan erişirsiniz. Birincil konum tekrar çalışmaya başladıktan sonra o konuma geri dönebilirsiniz.
 
-
-Bir kullanılabilirlik kümesindeki VM 'Ler Ayrıca güncelleştirme etki alanları arasında otomatik olarak dağıtılır. 
-
-![Kullanılabilirlik kümeleri](./media/virtual-machines-common-manage-availability/ud-fd-configuration.png)
+Site Recovery, şunlar için çoğaltmayı yönetebilir:
+- Azure bölgeleri arasında çoğaltılan Azure VM’leri.
+- Şirket içi VM 'Ler, Azure Stack VM 'Ler ve fiziksel sunucular.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Azure ortamınızı oluşturmak için bu kullanılabilirlik ve yedeklilik özelliklerini kullanmaya başlayabilirsiniz. En iyi uygulama bilgileri için bkz. [Azure kullanılabilirlik en iyi uygulamaları](/azure/architecture/checklist/resiliency-per-service).
+- [Kullanılabilirlik bölgesinde bir sanal makine oluşturma](/linux/create-cli-availability-zone.md)
+- [Kullanılabilirlik kümesinde sanal makine oluşturma](/linux/tutorial-availability.md)
+- [Sanal makine ölçek kümesi oluşturma](../virtual-machine-scale-sets/quick-create-portal.md)

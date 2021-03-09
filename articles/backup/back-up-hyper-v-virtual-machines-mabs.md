@@ -3,12 +3,12 @@ title: MABS ile Hyper-V sanal makinelerini yedekleme
 description: Bu makale, Microsoft Azure Backup sunucusu (MABS) kullanarak sanal makinelerin yedeklenmesi ve kurtarılması için prosedürleri içerir.
 ms.topic: conceptual
 ms.date: 07/18/2019
-ms.openlocfilehash: fc4e34e11e2474521082b1c23f600e9a5ca7a9fe
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a020559229771fff1ecc8fb512a5b2af70240cdd
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89378007"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102509515"
 ---
 # <a name="back-up-hyper-v-virtual-machines-with-azure-backup-server"></a>Azure Backup Sunucusu ile Hyper-V sanal makinelerini yedekleme
 
@@ -66,7 +66,7 @@ Bunlar, MABS ile Hyper-V sanal makinelerini yedeklemeye yönelik önkoşullardı
 |Hyper-V VM önkoşulları|-Sanal makinede çalışan Tümleştirme Bileşenleri sürümünün Hyper-V konağının sürümüyle aynı olması gerekir. <br />-   Her bir sanal makine yedeklemesinde, Hyper-V'ye yedekleme sırasında farklı diskler (AVHD'nin) için yeterince alan bırakmak üzere sanal sabit disk dosyalarını barındıran birimde boş alan olması gerekir. Alan en az, hesaplanan **İlk disk boyutu\*Karmaşıklık oranı\*Yedekleme** penceresi zamanına eşit olmalıdır. Bir kümede birden fazla yedekleme çalıştırıyorsanız AVHD'leri bu hesaplamayı kullanan her bir sanal makine için uygun hale getirmek üzere yeterli depolama kapasitesine sahip olmanız gerekir.<br />-Windows Server 2012 R2 çalıştıran Hyper-V ana bilgisayar sunucularında bulunan sanal makineleri yedeklemek için, sanal makinenin herhangi bir şeye bağlı olmasa bile belirtilen bir SCSI denetleyicisi olmalıdır. (Windows Server 2012 R2 online yedekleme 'de, Hyper-V konağı VM 'de yeni bir VHD takar ve daha sonra onu takar. Bunu yalnızca SCSI denetleyicisi destekleyebilir ve bu nedenle sanal makinenin çevrimiçi yedeklemesi için gereklidir.  Bu ayar olmadan, sanal makineyi yedeklemeye çalıştığınızda 10103 olay KIMLIĞI verilecek.)|
 |Linux önkoşulları|-MABS kullanarak Linux sanal makinelerini yedekleyebilirsiniz. Yalnızca dosya tutarlı anlık görüntüler desteklenir.|
 |CSV depolama ile VM’leri yedekleyin|-   CSV depolama için Hyper-V sunucusuna Birim Gölge Kopya Hizmetleri (VSS) donanım sağlayıcısını yükleyin. VSS donanım sağlayıcısı için depolama alanı ağı (SAN) satıcınıza başvurun.<br />-Tek bir düğüm bir CSV kümesinde beklenmedik bir şekilde kapatılırsa, MABS bu düğümde çalışan sanal makinelere karşı bir tutarlılık denetimi gerçekleştirir.<br />-   CSV kümesinde BitLocker Sürücü Şifrelemesi etkinleştirilmiş bir Hyper-V sunucusunu yeniden başlatmanız gerekirse, Hyper-V sanal makinelerine yönelik bir tutarlılık denetimi gerçekleştirmeniz gerekir.|
-|SMB deposu ile VM’leri yedekleyin|-Sanal makine korumasını etkinleştirmek için Hyper-V çalıştıran sunucuda otomatik bağlama özelliğini açın.<br />   -   TCP Kanalı Boşaltma'yı devre dışı bırakın.<br />-   Tüm Hyper-V machine$ hesaplarının ilgili uzak SMB dosya paylaşımlarında tam izinleri olduğundan emin olun.<br />-Diğer konuma kurtarma sırasında tüm sanal makine bileşenlerinin dosya yolunun 260 karakterden kısa olduğundan emin olun. Değilse, kurtarma başarılı olabilir ancak Hyper-V sanal makineyi bağlayamayacak.<br />-Aşağıdaki senaryolar desteklenmez:<br />     Bazı sanal makine bileşenlerinin yerel birimlerde olduğu ve bazı bileşenlerin uzak birimlerde olduğu dağıtımlar; depolama konumu dosya sunucusu için IPv4 veya IPv6 adresi ve bir sanal makinenin uzak SMB paylaşımlarını kullanan bir bilgisayara kurtarılması.<br />-Dosya sunucusu VSS Aracısı hizmetini her SMB sunucusunda etkinleştirmeniz gerekir. **rol ve Özellik Ekle**' de  >  **sunucu rolleri**  >  **dosya ve depolama hizmetleri**dosya  >  **Hizmetleri**dosya  >  **hizmeti**dosya  >  **sunucusu VSS Aracısı hizmeti**' ni seçin.|
+|SMB deposu ile VM’leri yedekleyin|-Sanal makine korumasını etkinleştirmek için Hyper-V çalıştıran sunucuda otomatik bağlama özelliğini açın.<br />   -   TCP Kanalı Boşaltma'yı devre dışı bırakın.<br />-   Tüm Hyper-V machine$ hesaplarının ilgili uzak SMB dosya paylaşımlarında tam izinleri olduğundan emin olun.<br />-Diğer konuma kurtarma sırasında tüm sanal makine bileşenlerinin dosya yolunun 260 karakterden kısa olduğundan emin olun. Değilse, kurtarma başarılı olabilir ancak Hyper-V sanal makineyi bağlayamayacak.<br />-Aşağıdaki senaryolar desteklenmez:<br />     Bazı sanal makine bileşenlerinin yerel birimlerde olduğu ve bazı bileşenlerin uzak birimlerde olduğu dağıtımlar; depolama konumu dosya sunucusu için IPv4 veya IPv6 adresi ve bir sanal makinenin uzak SMB paylaşımlarını kullanan bir bilgisayara kurtarılması.<br />-Dosya sunucusu VSS Aracısı hizmetini her SMB sunucusunda etkinleştirmeniz gerekir. **rol ve Özellik Ekle**' de  >  **sunucu rolleri**  >  **dosya ve depolama hizmetleri** dosya  >  **Hizmetleri** dosya  >  **hizmeti** dosya  >  **sunucusu VSS Aracısı hizmeti**' ni seçin.|
 
 ## <a name="back-up-virtual-machines"></a>Sanal makineleri yedekleme
 
@@ -84,7 +84,7 @@ Bunlar, MABS ile Hyper-V sanal makinelerini yedeklemeye yönelik önkoşullardı
 
 5. **Veri Koruma Yöntemini Seçin** sayfasında, koruma grubunun adını belirtin. Verileri Azure Yedekleme hizmetini kullanarak Azure'a yedeklemek istiyorsanız **Disk kullanarak kısa vadeli koruma istiyorum** 'u seçin ve **Çevrimiçi koruma istiyorum** 'u seçin.
 
-6. **Short-Term hedefleri**  >  **bekletme aralığını**belirtin bölümünde disk verilerini ne kadar süreyle saklamak istediğinizi belirtin. **Eşitleme sıklığı**' nda verilerin artımlı yedeklemelerinin ne sıklıkta çalıştırılacağını belirtin. Alternatif olarak, artımlı yedeklemeler için bir aralık seçmek yerine **Bir kurtarma noktasından hemen önce**seçeneğini etkinleştirebilirsiniz. Bu ayar etkinleştirildiğinde, MABS her bir zamanlanan kurtarma noktasıyla hemen önce hızlı tam yedekleme çalıştırır.
+6. **Short-Term hedefleri**  >  **bekletme aralığını** belirtin bölümünde disk verilerini ne kadar süreyle saklamak istediğinizi belirtin. **Eşitleme sıklığı**' nda verilerin artımlı yedeklemelerinin ne sıklıkta çalıştırılacağını belirtin. Alternatif olarak, artımlı yedeklemeler için bir aralık seçmek yerine **Bir kurtarma noktasından hemen önce** seçeneğini etkinleştirebilirsiniz. Bu ayar etkinleştirildiğinde, MABS her bir zamanlanan kurtarma noktasıyla hemen önce hızlı tam yedekleme çalıştırır.
 
     > [!NOTE]
     >
@@ -94,7 +94,7 @@ Bunlar, MABS ile Hyper-V sanal makinelerini yedeklemeye yönelik önkoşullardı
 
    **Toplam veri boyutu** , yedeklemek istediğiniz verilerin boyutudur ve **mabs üzerinde sağlanacak disk alanı** , mabs 'nin koruma grubu için önerdiği alandır. MABS, ayarlara bağlı olarak ideal yedekleme birimini seçer. Ancak, yedekleme birimi seçeneklerini **Disk ayırma ayrıntıları**'nda düzenleyebilirsiniz. İş yükleri için açılan menüden tercih edilen depolamayı seçin. Düzenlemeleriniz, **Kullanılabilir Disk Depolaması** bölmesindeki **Toplam Depolama** ve **Boş Depolama** değerlerini değiştirir. Yetersiz sağlanan alan, daha sonra yedeklemeler ile devam etmek için, MABS 'ların birime eklemenizi önerdiği depolama miktarıdır.
 
-8. **Çoğaltma Oluşturma Yöntemini Seçin** sayfasında, veri koruma grubundaki ilk çoğaltmanın nasıl gerçekleştirileceğini belirtin. **Ağ üzerinden otomatik olarak çoğaltmayı**seçerseniz, yoğun olmayan bir zaman seçmeniz önerilir. Büyük miktarlarda veri veya en iyi ağ koşullarına göre, verileri çıkarılabilir medya kullanarak çevrimdışı olarak çoğaltmayı gerektiren **el ile**seçmeyi düşünün.
+8. **Çoğaltma Oluşturma Yöntemini Seçin** sayfasında, veri koruma grubundaki ilk çoğaltmanın nasıl gerçekleştirileceğini belirtin. **Ağ üzerinden otomatik olarak çoğaltmayı** seçerseniz, yoğun olmayan bir zaman seçmeniz önerilir. Büyük miktarlarda veri veya en iyi ağ koşullarına göre, verileri çıkarılabilir medya kullanarak çevrimdışı olarak çoğaltmayı gerektiren **el ile** seçmeyi düşünün.
 
 9. **Tutarlılık Denetimi Seçenekleri** sayfasında, tutarlılık denetimlerinin nasıl otomatikleştirilmesini istediğinizi seçin. Veri çoğaltma tutarsız hale geldiğinde veya bir zamanlamaya göre çalıştırmak için bir denetim etkinleştirebilirsiniz. Otomatik tutarlılık denetimini yapılandırmak istemiyorsanız, herhangi bir zamanda koruma grubuna sağ tıklayarak ve **Tutarlılık Denetimi Gerçekleştir**'i seçerek el ile denetim gerçekleştirebilirsiniz.
 
@@ -136,16 +136,19 @@ Yedeklenen bir sanal makineyi kurtardığınızda, sanal makineyi ve özgül kur
 
 4. **Kurtarma türü seçin** ekranında, verileri geri yüklemek istediğiniz yeri seçin ve ardından **İleri**' yi seçin.
 
-    - **Özgün örneğe kurtar**: Özgün örneğe kurtardığınızda, özgün VHD silinir. MABS, VHD 'yi ve diğer yapılandırma dosyalarını Hyper-V VSS yazıcı kullanarak özgün konuma kurtarır. Kurtarma işleminin sonunda, sanal makineler yüksek oranda kullanılabilir olarak kalır.
+    - **Özgün örneğe kurtar**: özgün örneği kurtardığınızda, özgün VHD ve tüm ilişkili kontrol noktaları silinir. MABS, VHD 'yi ve diğer yapılandırma dosyalarını Hyper-V VSS yazıcı kullanarak özgün konuma kurtarır. Kurtarma işleminin sonunda, sanal makineler yüksek oranda kullanılabilir olarak kalır.
         Kurtarma için kaynak grubunun mevcut olması gerekir. Mevcut değilse, başka bir konuma kurtarın ve ardından sanal makineyi yüksek oranda kullanılabilir hale getirin.
 
     - **Sanal makine olarak herhangi bir konağa kurtar**: mabs, korumalı bir Hyper-v sanal makinesinin işlemci mimarisinden bağımsız olarak farklı bir Hyper-v konağına sorunsuz bir şekilde kurtarılmasını sağlayan alternatif konum kurtarmayı (ALR) destekler. Bir küme düğümüne kurtarılan Hyper-V sanal makineleri yüksek oranda kullanılabilir olmaz. Bu seçeneği işaretlerseniz, Kurtarma Sihirbazı, hedefi ve hedef yolunu tanımlamak için size ek bir ekran sunar.
+    
+        >[!NOTE]
+        >Özgün Konağı seçerseniz, davranış **özgün örneğe kurtarma** ile aynı olur. Özgün VHD ve tüm ilişkili denetim noktaları silinir.
 
     - **Ağ klasörüne kopyala**: Mabs, Hyper-V sanal makinelerinin ana bilgisayar düzeyindeki yedeğinden dosya, klasör, birim ve sanal sabit diskleri (VHD), bir ağ paylaşımında veya mabs korumalı sunucusundaki bir birime öğe düzeyinde kurtarmanıza olanak sağlayan öğe düzeyinde kurtarmayı (ILR) destekler. Öğe düzeyinde kurtarma gerçekleştirmek için MABS koruma aracısının Konuk içinde yüklü olması gerekmez. Bu seçeneği işaretlerseniz, Kurtarma Sihirbazı, hedefi ve hedef yolunu tanımlamak için size ek bir ekran sunar.
 
-5. **Kurtarma seçeneklerini belirtin** bölümünde kurtarma seçeneklerini yapılandırın ve Ileri ' **yi**seçin:
+5. **Kurtarma seçeneklerini belirtin** bölümünde kurtarma seçeneklerini yapılandırın ve Ileri ' **yi** seçin:
 
-    - Düşük bant genişliğine sahip bir sanal makineyi kurtarıyorsanız, **ağ bant genişliği kullanımını azaltmayı**etkinleştirmek için **Değiştir** ' i seçin. Azaltma seçeneğini açtıktan sonra, kullandırmak istediğiniz bant genişliği miktarını ve bu bant genişliğinin kullanılabileceği zamanı belirtebilirsiniz.
+    - Düşük bant genişliğine sahip bir sanal makineyi kurtarıyorsanız, **ağ bant genişliği kullanımını azaltmayı** etkinleştirmek için **Değiştir** ' i seçin. Azaltma seçeneğini açtıktan sonra, kullandırmak istediğiniz bant genişliği miktarını ve bu bant genişliğinin kullanılabileceği zamanı belirtebilirsiniz.
     - Ağınızı yapılandırdıysanız, **donanım anlık görüntülerini kullanarak San tabanlı kurtarmayı etkinleştir** ' i seçin.
     - Kurtarma işlemi tamamlandığında e-posta bildirimleri gönderilmesini istiyorsanız, **Kurtarma tamamlandığında bir e-posta gönder**'i seçin ve e-posta adreslerini girin.
 

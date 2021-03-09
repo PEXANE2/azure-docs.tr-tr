@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/28/2020
 ms.author: blehr
-ms.openlocfilehash: f61d45b6c46830064c3b58608e2eca0787d559c2
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: f81e76e32bc0a50b945c54cdfcac0575540484bc
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101675125"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102502459"
 ---
 # <a name="quickstart-create-a-public-ip-address-using-azure-powershell"></a>Hızlı başlangıç: Azure PowerShell kullanarak genel IP adresi oluşturma
 
@@ -51,7 +51,7 @@ New-AzResourceGroup -Name $rg -Location $loc
 # <a name="standard-sku---using-zones"></a>[**Standart SKU-bölgeleri kullanma**](#tab/option-create-public-ip-standard-zones)
 
 >[!NOTE]
->Aşağıdaki komut az. Network Module Version 4.5.0 veya üzeri için geçerlidir.  Kullanılmakta olan PowerShell modülleri hakkında daha fazla bilgi için lütfen [PowerShellGet belgelerine](/powershell/module/powershellget/?view=powershell-7.1)bakın.
+>Aşağıdaki komut az. Network Module Version 4.5.0 veya üzeri için geçerlidir.  Kullanılmakta olan PowerShell modülleri hakkında daha fazla bilgi için lütfen [PowerShellGet belgelerine](/powershell/module/powershellget/)bakın.
 
 **Myresourcegroup** Içinde **Mystandardzrpublicıp** adlı standart bölge-yedekli genel IP adresi oluşturmak Için [New-azpublicıpaddress](/powershell/module/az.network/new-azpublicipaddress) komutunu kullanın.
 
@@ -89,7 +89,7 @@ Bölgeler için yukarıdaki seçeneklerin yalnızca [kullanılabilirlik alanlar�
 # <a name="standard-sku---no-zones"></a>[**Standart SKU-bölge yok**](#tab/option-create-public-ip-standard)
 
 >[!NOTE]
->Aşağıdaki komut az. Network Module Version 4.5.0 veya üzeri için geçerlidir.  Kullanılmakta olan PowerShell modülleri hakkında daha fazla bilgi için lütfen [PowerShellGet belgelerine](/powershell/module/powershellget/?view=powershell-7.1)bakın.
+>Aşağıdaki komut az. Network Module Version 4.5.0 veya üzeri için geçerlidir.  Kullanılmakta olan PowerShell modülleri hakkında daha fazla bilgi için lütfen [PowerShellGet belgelerine](/powershell/module/powershellget/)bakın.
 
 **Myresourcegroup** Içinde **mystandardpublicıp** ADıNDA bir standart genel IP adresi oluşturmak Için [New-azpublicıpaddress](/powershell/module/az.network/new-azpublicipaddress) komutunu kullanın.
 

@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, sstein
 ms.date: 02/13/2019
-ms.openlocfilehash: 659a8a3b38a79cc9dcc97f6f1e9c4395426ef7a8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b7d21852ad684782fa1cb917442fee236d3c882b
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91450271"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102502153"
 ---
 # <a name="manage-rolling-upgrades-of-cloud-applications-by-using-sql-database-active-geo-replication"></a>SQL veritabanı etkin coğrafi çoğaltma kullanarak bulut uygulamalarının sıralı yükseltmelerini yönetme
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -92,7 +92,7 @@ Yükseltmeyi geri almayı olanaklı kılmak için, uygulamanın tamamen eşitlen
 
 1. Birincil bölgede (6) Web uygulamasının hazırlama ortamını dağıtın.
 2. Birincil Azure bölgesinde (7) ikincil bir veritabanı oluşturun. Web uygulamasının hazırlama ortamını bu sunucuya bağlanacak şekilde yapılandırın. 
-3. Birincil bölgedeki ikincil veritabanını çoğaltarak yedekleme bölgesinde bir coğrafi olarak yedekli, ikincil veritabanı oluşturun. (Bu yöntem *zincirleme coğrafi çoğaltma*olarak adlandırılır.) (8).
+3. Birincil bölgedeki ikincil veritabanını çoğaltarak yedekleme bölgesinde bir coğrafi olarak yedekli, ikincil veritabanı oluşturun. (Bu yöntem *zincirleme coğrafi çoğaltma* olarak adlandırılır.) (8).
 4. Web uygulaması örneğinin hazırlama ortamını yedekleme bölgesinde (9) dağıtın ve (8) konumunda oluşturulan coğrafi olarak yedekli ikincil veritabanına bağlanacak şekilde yapılandırın.
 
 > [!NOTE]
@@ -110,7 +110,7 @@ ALTER DATABASE <Prod_DB>
 SET (ALLOW_CONNECTIONS = NO)
 ```
 
-2. İkincil (11) bağlantısını keserek Coğrafi çoğaltmayı sonlandırın. Bu eylem, üretim veritabanının bağımsız, tamamen eşitlenmiş bir kopyasını oluşturur. Bu veritabanı yükseltilecek. Aşağıdaki örnek Transact-SQL kullanır, ancak [PowerShell](/powershell/module/az.sql/remove-azsqldatabasesecondary?view=azps-1.5.0&preserve-view=true) de kullanılabilir. 
+2. İkincil (11) bağlantısını keserek Coğrafi çoğaltmayı sonlandırın. Bu eylem, üretim veritabanının bağımsız, tamamen eşitlenmiş bir kopyasını oluşturur. Bu veritabanı yükseltilecek. Aşağıdaki örnek Transact-SQL kullanır, ancak [PowerShell](/powershell/module/az.sql/remove-azsqldatabasesecondary) de kullanılabilir. 
 
 ```sql
 -- Disconnect the secondary, terminating geo-replication

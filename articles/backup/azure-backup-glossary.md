@@ -3,12 +3,12 @@ title: Azure Backup sözlüğü
 description: Bu makalede, Azure Backup ile kullanım için yararlı olan terimler tanımlanmaktadır.
 ms.topic: conceptual
 ms.date: 12/21/2020
-ms.openlocfilehash: 5b575e0f56c9cf39987e9e77850ab1d9b2e80d93
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: fb46415c8bdb463556d57004e37d741c1b9a9b57
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98723923"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102502034"
 ---
 # <a name="azure-backup-glossary"></a>Azure Backup sözlüğü
 
@@ -299,6 +299,18 @@ Azure aboneliği, Azure’da kaynakların sağlanması için kullanılan mantık
 ## <a name="tenant"></a>Kiracı
 
 Kiracı, bir kuruluşu temsil eden birimdir. Kuruluş veya uygulama geliştirici Microsoft'la bir ilişki oluşturduğunda, örneğin Azure'a, Microsoft Intune'a veya Microsoft 365'e kaydolduğunda kuruluşun veya uygulama geliştiricinin aldığı özel bir Azure AD örneğidir.
+
+## <a name="tier"></a>Katman
+
+Şu anda Azure Backup aşağıdaki yedekleme depolama katmanlarını destekler:
+
+### <a name="snapshot-tier"></a>Anlık görüntü katmanı
+
+(İş yüküne özgü terim) VM yedeklemesinin ilk aşamasında, alınan anlık görüntü diskle birlikte depolanır. Bu depolama formu, anlık görüntü katmanı olarak adlandırılır. Anlık görüntü katmanı geri yüklemeleri daha hızlıdır (bir kasadan geri yükleme işleminden) ve geri yükleme işlemini tetiklemeden önce anlık görüntülerin kasadan kopyalandığı bekleme süresini ortadan kaldırırlar.
+
+### <a name="vault-standard-tier"></a>Vault-Standard katmanı
+
+Azure Backup tarafından desteklenen tüm iş yükleri için yedekleme verileri, Azure Backup tarafından yönetilen bir depolama hesapları kümesi olan yedekleme depolama alanını tutan kasaların içinde depolanır. Vault-Standard katmanı, yedek verilerin yalıtılmış bir kopyasını Microsoft tarafından yönetilen bir kiracıda depolamanızı ve böylece ek bir koruma katmanı oluşturulmasını sağlayan bir çevrimiçi depolama katmanıdır. Anlık görüntü katmanının desteklendiği iş yükleri için, hem anlık görüntü katmanında hem de kasa standart katmanında yedekleme verilerinin bir kopyası vardır. Kasa standart katmanı, yedeklenmekte olan veri kaynağı silinmiş veya tehlikeye atılsa bile yedekleme verilerinin kullanılabilmesini sağlar.
 
 ## <a name="unmanaged-disk"></a>Yönetilmeyen disk
 

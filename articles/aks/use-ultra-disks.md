@@ -4,12 +4,12 @@ description: Azure Kubernetes Service (AKS) kümesinde Ultra disklerin nasıl et
 services: container-service
 ms.topic: article
 ms.date: 07/10/2020
-ms.openlocfilehash: d66b806adb7285e0ce2a21d8fe9254b3dbe89bcb
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: c743162ed3f75386287e050443e82069e797ced9
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102178856"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102502578"
 ---
 # <a name="use-azure-ultra-disks-on-azure-kubernetes-service-preview"></a>Azure Kubernetes hizmetinde Azure Ultra diskleri kullanma (Önizleme)
 
@@ -84,7 +84,7 @@ Ultra disk desteği olmayan kümeler oluşturmak istiyorsanız, özel parametrey
 
 ## <a name="enable-ultra-disks-on-an-existing-cluster"></a>Mevcut kümede Ultra diskleri etkinleştir
 
-Kümenize Ultra diskleri destekleyen yeni bir düğüm havuzu ekleyerek, mevcut kümelerde Ultra diskleri etkinleştirebilirsiniz. Bayrağını kullanarak ana bilgisayar tabanlı şifrelemeyi kullanmak için yeni bir düğüm havuzu yapılandırın `--aks-custom-headers` .
+Kümenize Ultra diskleri destekleyen yeni bir düğüm havuzu ekleyerek, mevcut kümelerde Ultra diskleri etkinleştirebilirsiniz. Bayrağını kullanarak Ultra diskler kullanmak için yeni bir düğüm havuzu yapılandırın `--aks-custom-headers` .
 
 ```azurecli
 az aks nodepool add --name ultradisk --cluster-name myAKSCluster --resource-group myResourceGroup --node-vm-size Standard_L8s_v2 --zones 1 2 --node-count 2 --aks-custom-headers EnableUltraSSD=true

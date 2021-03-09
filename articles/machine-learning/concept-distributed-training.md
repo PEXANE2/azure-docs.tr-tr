@@ -9,12 +9,12 @@ ms.author: nibaccam
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 03/27/2020
-ms.openlocfilehash: 4e1972e0530656bf6cc0e6319191ab4ebbfbfddb
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: f87175500fcf5bdbcf9a5c2f499f6bab96b37b63
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93358584"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102498974"
 ---
 # <a name="distributed-training-with-azure-machine-learning"></a>Azure Machine Learning ile dağıtılmış eğitim
 
@@ -24,7 +24,7 @@ Dağıtılmış eğitiminde, bir modeli eğitme iş yükü, çalışan düğüml
 
 ## <a name="deep-learning-and-distributed-training"></a>Derin öğrenme ve dağıtılmış eğitim 
 
-İki temel dağıtılmış eğitim türü vardır: [veri paralelliği](#data-parallelism) ve [model paralelliği](#model-parallelism). Derin öğrenme modelleriyle ilgili dağıtılmış eğitim için, [Python 'daki Azure MACHINE LEARNING SDK](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py) popüler çerçeveler, PyTorch ve TensorFlow ile tümleştirmeleri destekler. Her iki çerçeve de Dağıtılmış eğitim için veri paralelliğini artırır ve işlem hızlarını iyileştirmek için [horovod](https://horovod.readthedocs.io/en/latest/summary_include.html) özelliğinden yararlanabilir. 
+İki temel dağıtılmış eğitim türü vardır: [veri paralelliği](#data-parallelism) ve [model paralelliği](#model-parallelism). Derin öğrenme modelleriyle ilgili dağıtılmış eğitim için, [Python 'daki Azure MACHINE LEARNING SDK](/python/api/overview/azure/ml/intro) popüler çerçeveler, PyTorch ve TensorFlow ile tümleştirmeleri destekler. Her iki çerçeve de Dağıtılmış eğitim için veri paralelliğini artırır ve işlem hızlarını iyileştirmek için [horovod](https://horovod.readthedocs.io/en/latest/summary_include.html) özelliğinden yararlanabilir. 
 
 * [PyTorch ile dağıtılmış eğitim](how-to-train-pytorch.md#distributed-training)
 

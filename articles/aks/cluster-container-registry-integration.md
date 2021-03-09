@@ -5,18 +5,18 @@ services: container-service
 manager: gwallace
 ms.topic: article
 ms.date: 01/08/2021
-ms.openlocfilehash: fd599c69b3072831461acc94827d97c4520292e9
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: 19ece696dabc81e643e8a904d506d22e40eaa099
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102182460"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102499161"
 ---
 # <a name="authenticate-with-azure-container-registry-from-azure-kubernetes-service"></a>Azure Kubernetes Service'ten Azure Container Registry ile Kimlik Doğrulaması Yapma
 
 Azure Kubernetes Service (AKS) ile Azure Container Registry (ACR) kullanırken, bir kimlik doğrulama mekanizmasının kurulması gerekir. Bu işlem, ACR 'nize gerekli izinler verilerek CLı ve Portal deneyiminin bir parçası olarak uygulanır. Bu makalede, bu iki Azure hizmeti arasında kimlik doğrulaması yapılandırmak için örnekler sağlanmaktadır. 
 
-Azure CLı ile birkaç basit komutlarda ACR tümleştirmesi için AKS tümleştirmesini ayarlayabilirsiniz. Bu tümleştirme, AKS kümesiyle ilişkili hizmet sorumlusuna AcrPull rolünü atar.
+Azure CLı ile birkaç basit komutlarda ACR tümleştirmesi için AKS tümleştirmesini ayarlayabilirsiniz. Bu tümleştirme, AKS kümesiyle ilişkili yönetilen kimliğe AcrPull rolünü atar.
 
 > [!NOTE]
 > Bu makale, AKS ve ACR arasındaki otomatik kimlik doğrulamasını içerir. Özel bir dış kayıt defterinden görüntü çekmeniz gerekiyorsa, bir [resim çekme gizli anahtarı][Image Pull Secret]kullanın.
@@ -28,11 +28,11 @@ Bu örneklerde şunlar gerekir:
 * **Azure aboneliğinde** **sahip** veya **Azure Hesap Yöneticisi** rolü
 * Azure CLı sürüm 2.7.0 veya üzeri
 
-Bir **sahip** veya **Azure Hesap Yöneticisi** rolüne gerek duymamak için bir hizmet sorumlusunu el ile yapılandırabilir veya mevcut bir hizmet sorumlusunu kullanarak aks 'ten ACR 'nin kimliğini doğrulayabilirsiniz. Daha fazla bilgi için bkz. [hizmet sorumluları Ile ACR kimlik doğrulaması](../container-registry/container-registry-auth-service-principal.md) veya [çekme gizli anahtarı Ile Kubernetes kimlik doğrulaması](../container-registry/container-registry-auth-kubernetes.md).
+Bir **sahip** veya **Azure Hesap Yöneticisi** rolüne gerek duymamak için, yönetilen bir kimliği El Ile yapılandırabilir veya aks 'ten ACR 'nin kimliğini doğrulamak için mevcut bir yönetilen kimliği kullanabilirsiniz. Daha fazla bilgi için bkz. Azure [Container Registry 'de kimlik doğrulamak Için Azure yönetilen kimliği kullanma](../container-registry/container-registry-authentication-managed-identity.md).
 
 ## <a name="create-a-new-aks-cluster-with-acr-integration"></a>ACR tümleştirmesi ile yeni bir AKS kümesi oluşturma
 
-AKS kümenizi ilk oluşturma sırasında AKS ve ACR tümleştirmesini ayarlayabilirsiniz.  AKS kümesinin ACR ile etkileşime geçmesini sağlamak için bir Azure Active Directory **hizmet sorumlusu** kullanılır. Aşağıdaki CLı komutu aboneliğinizdeki mevcut bir ACR 'ye yetki vermenize ve hizmet sorumlusu için uygun **Acrpull** rolünü yapılandırmanıza olanak tanır. Aşağıdaki parametreleriniz için geçerli değerler sağlayın.
+AKS kümenizi ilk oluşturma sırasında AKS ve ACR tümleştirmesini ayarlayabilirsiniz.  AKS kümesinin ACR ile etkileşime geçmesini sağlamak için Azure Active Directory **yönetilen bir kimlik** kullanılır. Aşağıdaki CLı komutu aboneliğinizdeki mevcut bir ACR 'ye yetki vermenize ve yönetilen kimlik için uygun **Acrpull** rolünü yapılandırmanıza olanak tanır. Aşağıdaki parametreleriniz için geçerli değerler sağlayın.
 
 ```azurecli
 # set this to the name of your Azure Container Registry.  It must be globally unique

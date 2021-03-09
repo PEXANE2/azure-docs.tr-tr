@@ -3,14 +3,14 @@ title: Yedekleme Merkezi'ni kullanarak tüm yedeklemelerinizi idare etme
 description: Tüm kaynaklarınızın yedekleme merkezi ile yedekleme açısından uyumlu olduğundan emin olmak için Azure ortamınızı nasıl yöneteceğinizi öğrenin.
 ms.topic: conceptual
 ms.date: 09/01/2020
-ms.openlocfilehash: 67b0591c7d7146d162687018854365d338105d76
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: 283c99c4b17683850f71b25fb2006784e43f3b8f
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98893855"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102506218"
 ---
-# <a name="govern-your-backup-estate-using-backup-center-preview"></a>Yedekleme merkezi 'ni (Önizleme) kullanarak yedeklemenizi yönetme
+# <a name="govern-your-backup-estate-using-backup-center"></a>Yedekleme Merkezi'ni kullanarak tüm yedeklemelerinizi idare etme
 
 Yedekleme merkezi, tüm kaynaklarınızın yedekleme açısından uyumlu olduğundan emin olmak için Azure ortamınızı yönetmenize yardımcı olur. Aşağıda, yedekleme merkezi 'nin bazı idare özellikleri verilmiştir:
 

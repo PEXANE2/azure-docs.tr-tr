@@ -3,12 +3,12 @@ title: Azure DevTest Labs | laboratuvarınızda bir yapıt deposu ekleyin | Micr
 description: Ortak yapıt deposunda kullanılabilir olmayan depolama araçlarını Azure DevTest Labs ' de laboratuvarınız için kendi yapıt deponuzu belirtmeyi öğrenin.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 5dd7d89020bf077e29b177f6871f43b52467b0d8
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: da4e345b18a46226853d71bbf66af0487f1a761f
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97512020"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102502204"
 ---
 # <a name="add-an-artifact-repository-to-your-lab-in-devtest-labs"></a>DevTest Labs 'de laboratuvarınızda yapıt deposu ekleme
 DevTest Labs, VM oluşturma sırasında veya VM oluşturulduktan sonra VM 'ye eklenecek bir yapıt belirtmenize olanak tanır. Bu yapıt, VM 'ye yüklemek istediğiniz bir araç veya uygulama olabilir. Yapıtlar, GitHub veya Azure DevOps git deposundan yüklenen bir JSON dosyasında tanımlanır.
@@ -183,7 +183,7 @@ New-AzResourceGroupDeployment `
 New-AzResourceGroupDeployment başarılı bir şekilde çalıştıktan sonra, komut sağlama durumu (başarılı olmalıdır) ve şablon için tüm çıktılar gibi önemli bilgileri çıktı olarak verir.
 
 ## <a name="use-azure-powershell"></a>Azure PowerShell kullanma
-Bu bölüm, bir laboratuvara yapıt deposu eklemek için kullanılabilecek bir örnek PowerShell betiği sağlar. Azure PowerShell yoksa, yüklemek için ayrıntılı yönergeler için bkz. [Azure PowerShell nasıl yüklenir ve yapılandırılır](/powershell/azure/?view=azps-1.2.0) .
+Bu bölüm, bir laboratuvara yapıt deposu eklemek için kullanılabilecek bir örnek PowerShell betiği sağlar. Azure PowerShell yoksa, yüklemek için ayrıntılı yönergeler için bkz. [Azure PowerShell nasıl yüklenir ve yapılandırılır](/powershell/azure/) .
 
 ### <a name="full-script"></a>Tam betik
 Bazı ayrıntılı iletiler ve açıklamalar dahil olmak üzere tam komut dosyası aşağıda verilmiştir:

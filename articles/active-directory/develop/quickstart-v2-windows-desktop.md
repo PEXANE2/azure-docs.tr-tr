@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 12/12/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 81a5f28f0bf2f7f7ea005a4d9fe8d42337f6d0b9
-ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
+ms.openlocfilehash: 02dc2b4e86c9d0bad0c8274967aa4da77440ec01
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100103405"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102498770"
 ---
 # <a name="quickstart-acquire-a-token-and-call-microsoft-graph-api-from-a-windows-desktop-app"></a>Hızlı Başlangıç: Bir belirteç alma ve bir Windows masaüstü uygulamasından Microsoft Graph API'si çağırma
 
@@ -54,12 +54,12 @@ Bu hızlı başlangıçta, bir Windows Masaüstü .NET (WPF) uygulamasının kul
 > 1. Uygulamayı kaydetmek için **Kaydet**'i seçin.
 > 1. **Yönet** altında **kimlik doğrulaması**' nı seçin.
 > 1. **Platform**  >  **mobil ve Masaüstü uygulamaları Ekle '** yi seçin.
-> 1. **Yeniden yönlendirme URI 'leri** bölümünde öğesini seçin `https://login.microsoftonline.com/common/oauth2/nativeclient` .
+> 1. **Yeniden yönlendirme URI** 'leri bölümünde, `https://login.microsoftonline.com/common/oauth2/nativeclient` **özel yeniden yönlendirme URI 'leri** ' ni `ms-appx-web://microsoft.aad.brokerplugin/{client_id}` seçin `{client_id}` . burada, uygulamanızın uygulama (istemci) kimliği, (onay kutusunda görünen GUID de `msal{client_id}://auth` ).
 > 1. **Yapılandır**'ı seçin.
 
 > [!div class="sxs-lookup" renderon="portal"]
 > #### <a name="step-1-configure-your-application-in-azure-portal"></a>1. Adım: Uygulamanızı Azure portalında yapılandırma
-> Bu hızlı başlangıçtaki kod örneğinin çalışması için bir **yeniden yönlendirme URI 'si** ekleyin `https://login.microsoftonline.com/common/oauth2/nativeclient` .
+> Bu hızlı başlangıçtaki kod örneğinin çalışması için ve bir **yeniden yönlendirme URI 'si** ekleyin `https://login.microsoftonline.com/common/oauth2/nativeclient` `ms-appx-web://microsoft.aad.brokerplugin/{client_id}` .
 > > [!div renderon="portal" id="makechanges" class="nextstepaction"]
 > > [Bu değişikliği benim için yap]()
 >
@@ -135,7 +135,7 @@ PublicClientApplicationBuilder.Create(ClientId)
                 .Build();
 ```
 
-> |Konum: | Description |
+> |Konum: | Açıklama |
 > |---------|---------|
 > | `ClientId` | **Uygulama (istemci) Kimliği**, Azure portalda kayıtlı uygulamadır. Bu değeri Azure portalda uygulamanın **Genel bakış** sayfasında bulabilirsiniz. |
 
@@ -157,7 +157,7 @@ authResult = await App.PublicClientApp.AcquireTokenInteractive(_scopes)
                                       .ExecuteAsync();
 ```
 
-> |Konum:| Description |
+> |Konum:| Açıklama |
 > |---------|---------|
 > | `_scopes` | `{ "user.read" }`Microsoft Graph veya `{ "api://<Application ID>/access_as_user" }` özel Web API 'leri için istenen kapsamları içerir. |
 
@@ -172,7 +172,7 @@ authResult = await App.PublicClientApp.AcquireTokenSilent(scopes, firstAccount)
                                       .ExecuteAsync();
 ```
 
-> |Konum: | Description |
+> |Konum: | Açıklama |
 > |---------|---------|
 > | `scopes` | `{ "user.read" }`Microsoft Graph veya `{ "api://<Application ID>/access_as_user" }` özel Web API 'leri için istenen kapsamları içerir. |
 > | `firstAccount` | Önbellekteki ilk kullanıcıyı belirtir (MSAL destekleyen birden çok kullanıcı tek bir uygulama olarak). |

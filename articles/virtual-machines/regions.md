@@ -1,18 +1,19 @@
 ---
 title: Azure bölgeleri
 description: Azure 'da sanal makine çalıştırmaya yönelik bölgeler hakkında bilgi edinin.
-author: cynthn
-ms.author: cynthn
+author: mimckitt
+ms.author: mimckitt
+ms.reviewer: cynthnn
 ms.service: virtual-machines
 ms.topic: conceptual
 ms.workload: infrastructure-services
-ms.date: 05/28/2019
-ms.openlocfilehash: 094b78fa35da451101f4f5664cca46292d78d146
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 3/8/2021
+ms.openlocfilehash: e874a76cc447158127da8482f23bf03d56961818
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88650562"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102504618"
 ---
 # <a name="regions-for-virtual-machines-in-azure"></a>Azure’da sanal makine bölgeleri
 
@@ -75,8 +76,8 @@ Aşağıdaki tabloda, depolama çoğaltma türleri arasındaki farkları hızlı
 
 | Çoğaltma stratejisi | LRS | ZRS | GRS | RA-GRS |
 |:--- |:--- |:--- |:--- |:--- |
-| Veriler birden çok tesis arasında çoğaltılır. |Hayır |Evet |Evet |Evet |
-| Veriler ikincil konumdan ve birincil konumdan okunabilir. |Hayır |Hayır |Hayır |Evet |
+| Veriler birden çok tesis arasında çoğaltılır. |Hayır |Yes |Yes |Yes |
+| Veriler ikincil konumdan ve birincil konumdan okunabilir. |Hayır |Hayır |Hayır |Yes |
 | Ayrı düğümlerde tutulan veri kopyası sayısı. |3 |3 |6 |6 |
 
 [Azure Depolama çoğaltma seçenekleri hakkında buradan](../storage/common/storage-redundancy.md) daha fazla bilgi alabilirsiniz. Yönetilen diskler hakkında daha fazla bilgi için bkz. [Azure Yönetilen Disklere genel bakış](./managed-disks-overview.md).

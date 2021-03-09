@@ -8,12 +8,12 @@ ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.topic: conceptual
 ms.date: 03/08/2021
-ms.openlocfilehash: 66294e3c59c2252042e30864dd220683106cd574
-ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
+ms.openlocfilehash: 88ac8bb1bc804604b96d5c90025b8325a6ce4962
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 03/09/2021
-ms.locfileid: "102485393"
+ms.locfileid: "102503134"
 ---
 # <a name="whats-new-in-azure-sentinel"></a>Azure Sentinel 'deki yenilikler
 
@@ -72,6 +72,9 @@ CMMC çalışma kitabı, güvenlik mimarları, mühendisler, güvenlik işlemler
 CMMC 'ye uymanız gerekli olmasa bile, CMMC çalışma kitabı güvenlik Işlemleri merkezleri oluşturma, uyarılar geliştirme, tehditleri görselleştirme ve iş yüklerinin durumsal farkında sağlama konusunda yardımcı olur.
 
 Azure Sentinel **çalışma kitapları** alanında cmmc çalışma kitabına erişin. **Şablon**' u seçin ve ardından **cmmc**' yi arayın.
+
+:::image type="content" source="media/whats-new/cmmc-guide-toggle.gif" alt-text="CMMC çalışma kitabı kılavuzunu aç ve Kapat" lightbox="media/whats-new/cmmc-guide-toggle.gif":::
+
 
 Daha fazla bilgi için bkz.
 

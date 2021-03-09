@@ -3,12 +3,12 @@ title: Yedekleme merkezi 'ni kullanarak Öngörüler edinin
 description: Geçmiş eğilimleri çözümlemeyi ve yedekleme merkezi ile yedeklemeleriniz hakkında daha derin Öngörüler elde etmeyi öğrenin.
 ms.topic: conceptual
 ms.date: 09/01/2020
-ms.openlocfilehash: 47158e53e6248b2b9cef4ff6fd6b5da5972786eb
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: c48173749a9b47be7eeb906e9f8eec716e0cb200
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101719466"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102506025"
 ---
 # <a name="obtain-insights-using-backup-center"></a>Yedekleme merkezi 'ni kullanarak Öngörüler edinin
 
@@ -44,17 +44,19 @@ Kullanılabilen görünümler şunlardır:
 
 1. **Özet** -bu sekmeyi, yedeklemeinize ilişkin üst düzey bir genel bakış almak için kullanın. [Daha fazla bilgi edinin](./configure-reports.md#summary)
 
-1. **Yedekleme öğeleri** -bu sekmeyi, bir yedekleme öğesi düzeyinde tüketilen Bulut depolamada bilgi ve eğilimleri görmek için kullanın. [Daha fazla bilgi edinin](./configure-reports.md#backup-items)
+2. **Yedekleme öğeleri** -bu sekmeyi, bir yedekleme öğesi düzeyinde tüketilen Bulut depolamada bilgi ve eğilimleri görmek için kullanın. [Daha fazla bilgi edinin](./configure-reports.md#backup-items)
 
-1. **Kullanım** -yedeklemelerinizin anahtar faturalandırma parametrelerini görüntülemek için bu sekmeyi kullanın. [Daha fazla bilgi edinin](./configure-reports.md#usage)
+3. **Kullanım** -yedeklemelerinizin anahtar faturalandırma parametrelerini görüntülemek için bu sekmeyi kullanın. [Daha fazla bilgi edinin](./configure-reports.md#usage)
 
-1. **İşler** -bu sekmeyi, işlerinizde gerçekleşen başarısız iş sayısı ve iş hatasının en üst nedenleri gibi, işlere ilişkin uzun süre çalışan eğilimleri görüntülemek için kullanın. [Daha fazla bilgi edinin](./configure-reports.md#jobs)
+4. **İşler** -bu sekmeyi, işlerinizde gerçekleşen başarısız iş sayısı ve iş hatasının en üst nedenleri gibi, işlere ilişkin uzun süre çalışan eğilimleri görüntülemek için kullanın. [Daha fazla bilgi edinin](./configure-reports.md#jobs)
 
-1. **İlkeler** -bu sekmeyi, ilişkili öğe sayısı ve belirli bir ilke altında yedeklenen öğeler tarafından tüketilen toplam bulut depolama alanı gibi tüm etkin ilkeleriniz hakkındaki bilgileri görüntülemek için kullanın. [Daha fazla bilgi edinin](./configure-reports.md#policies)
+5. **İlkeler** -bu sekmeyi, ilişkili öğe sayısı ve belirli bir ilke altında yedeklenen öğeler tarafından tüketilen toplam bulut depolama alanı gibi tüm etkin ilkeleriniz hakkındaki bilgileri görüntülemek için kullanın. [Daha fazla bilgi edinin](./configure-reports.md#policies)
 
-1. **En Iyi duruma** getirme-yedeklemelerinize yönelik potansiyel maliyet iyileştirme fırsatlarıyla ilgili görünürlük elde etmek için bu sekmeyi kullanın. [Daha fazla bilgi edinin](./configure-reports.md#optimize)
+6. **En Iyi duruma** getirme-yedeklemelerinize yönelik potansiyel maliyet iyileştirme fırsatlarıyla ilgili görünürlük elde etmek için bu sekmeyi kullanın. [Daha fazla bilgi edinin](./configure-reports.md#optimize)
 
-1. **İlke bağlılığı** -her yedekleme örneğinin günde en az bir başarılı yedeklemeye sahip olup olmadığına dair görünürlük elde etmek için bu sekmeyi kullanın.
+7. **İlke bağlılığı** -her yedekleme örneğinin günde en az bir başarılı yedeklemeye sahip olup olmadığına dair görünürlük elde etmek için bu sekmeyi kullanın. [Daha fazla bilgi edinin](./configure-reports.md#policy-adherence)
+
+[E-posta raporu](backup-reports-email.md) özelliğini kullanarak bu raporların e-postalarını da yapılandırabilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

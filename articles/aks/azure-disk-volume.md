@@ -4,12 +4,12 @@ description: Azure Kubernetes hizmetinde (AKS) bir pod ile kullanım için Azure
 services: container-service
 ms.topic: article
 ms.date: 03/01/2019
-ms.openlocfilehash: d44c8a7241308c26a3f1148ec70a7a5730dd0c89
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+ms.openlocfilehash: 7d8a038926fc6bf3234b43a82c0259ba633df11e
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92900860"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102506659"
 ---
 # <a name="manually-create-and-use-a-volume-with-azure-disks-in-azure-kubernetes-service-aks"></a>Azure Kubernetes hizmetinde (AKS) Azure diskleriyle bir birimi el ile oluşturma ve kullanma
 
@@ -28,7 +28,7 @@ Ayrıca Azure CLı sürüm 2.0.59 veya üzeri yüklü ve yapılandırılmış ol
 
 ## <a name="create-an-azure-disk"></a>Azure diski oluşturma
 
-AKS ile kullanmak üzere bir Azure diski oluşturduğunuzda, **düğüm** kaynak grubunda disk kaynağını oluşturabilirsiniz. Bu yaklaşım, AKS kümesinin disk kaynağına erişip yönetmesine olanak tanır. Bunun yerine diski ayrı bir kaynak grubunda oluşturursanız, Azure Kubernetes hizmeti (AKS) hizmet sorumlusunu kümeniz için `Contributor` diskin kaynak grubuna vermeniz gerekir. Alternatif olarak, sistem tarafından atanmış yönetilen kimliği, hizmet sorumlusu yerine izinler için kullanabilirsiniz. Daha fazla bilgi için bkz. [yönetilen kimlikleri kullanma](use-managed-identity.md).
+AKS ile kullanmak üzere bir Azure diski oluşturduğunuzda, **düğüm** kaynak grubunda disk kaynağını oluşturabilirsiniz. Bu yaklaşım, AKS kümesinin disk kaynağına erişip yönetmesine olanak tanır. Bunun yerine, diski ayrı bir kaynak grubunda oluşturursanız, uygulamanızın kaynak grubu için Azure Kubernetes Service (AKS) tarafından yönetilen kimliğini kümenizin rolünü sağlamanız gerekir `Contributor` .
 
 Bu makalede, düğüm kaynak grubunda diski oluşturun. İlk olarak, [az aks Show][az-aks-show] komutuyla kaynak grubu adını alın ve `--query nodeResourceGroup` sorgu parametresini ekleyin. Aşağıdaki örnek, *Myresourcegroup* kaynak grubu adı altında *Myakscluster* adlı aks kümesi için düğüm kaynak grubunu alır:
 

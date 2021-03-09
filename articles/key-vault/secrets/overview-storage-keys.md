@@ -10,12 +10,12 @@ ms.author: mbaldwin
 manager: rkarlin
 ms.date: 09/18/2019
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 8473d3a19a86027b5b01af59d24833dc40cd1fe9
-ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
+ms.openlocfilehash: e89716d0560cbf7960cb7bde67156c8df0045a31
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/22/2020
-ms.locfileid: "95242364"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102499229"
 ---
 # <a name="manage-storage-account-keys-with-key-vault-and-the-azure-cli"></a>Key Vault ve Azure CLı ile depolama hesabı anahtarlarını yönetme
 > [!IMPORTANT]
@@ -32,7 +32,7 @@ Yönetilen depolama hesabı anahtar özelliğini kullandığınızda, aşağıda
 - Depolama hesabı anahtarlarını yalnızca tek bir Key Vault nesnesi yönetmelidir. Birden çok nesneden anahtar yönetimine izin verme.
 - Anahtarları yalnızca Key Vault kullanarak yeniden oluşturun. Depolama hesabı anahtarlarınızı el ile yeniden üretme.
 
-## <a name="service-principal-application-id"></a>Hizmet sorumlusu uygulama KIMLIĞI
+## <a name="service-principal-application-id"></a>Hizmet sorumlusu uygulama kimliği
 
 Bir Azure AD kiracısı, kayıtlı her uygulamayı bir [hizmet sorumlusu](../../active-directory/develop/developer-glossary.md#service-principal-object)ile sağlar. Hizmet sorumlusu, Azure RBAC aracılığıyla diğer Azure kaynaklarına erişim için yetkilendirme kurulumu sırasında kullanılan uygulama KIMLIĞI olarak görev yapar.
 
@@ -42,21 +42,21 @@ Key Vault, tüm Azure AD kiracılarında önceden kaydedilmiş bir Microsoft uyg
 | --- | --- | --- |
 | Azure AD | Azure Kamu | `7e7c393b-45d0-48b1-a35e-2905ddf8183c` |
 | Azure AD | Azure genel | `cfa8b339-82a2-471a-a3c9-0fc0be7a4093` |
-| Diğer  | Herhangi bir | `cfa8b339-82a2-471a-a3c9-0fc0be7a4093` |
+| Diğer  | Herhangi biri | `cfa8b339-82a2-471a-a3c9-0fc0be7a4093` |
 
 ## <a name="prerequisites"></a>Önkoşullar
 
 Bu kılavuzu gerçekleştirmek için, önce aşağıdakileri yapmanız gerekir:
 
 - [Azure CLI 'Yı yükler](/cli/azure/install-azure-cli).
-- [Anahtar Kasası oluşturma](quick-create-cli.md)
+- [Anahtar kasası oluşturma](quick-create-cli.md)
 - [Bir Azure depolama hesabı oluşturun](../../storage/common/storage-account-create.md?tabs=azure-cli). Depolama hesabı adı yalnızca küçük harfler ve rakamlar kullanmalıdır. Adın uzunluğu 3 ile 24 karakter arasında olmalıdır.
       
 ## <a name="manage-storage-account-keys"></a>Depolama hesabı anahtarlarını yönetme
 
 ### <a name="connect-to-your-azure-account"></a>Azure hesabınıza bağlanma
 
-[Az Login](/powershell/module/az.accounts/connect-azaccount?view=azps-2.5.0) komutunu kullanarak Azure CLI oturumunuzun kimliğini doğrulayın.
+[Az Login](/powershell/module/az.accounts/connect-azaccount) komutunu kullanarak Azure CLI oturumunuzun kimliğini doğrulayın.
 
 ```azurecli-interactive
 az login
