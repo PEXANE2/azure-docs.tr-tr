@@ -4,12 +4,12 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 09/04/2018
 ms.author: glenga
-ms.openlocfilehash: 51a683c6121af088e0b5f2d34ae9d4b41d53e706
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.openlocfilehash: fe80a71125d43220e408eab7b07aeedcafa0a526
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102245042"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102473763"
 ---
 ### <a name="functions-2x-and-higher"></a>İşlevler 2.x ve üzeri
 
@@ -37,8 +37,8 @@ ms.locfileid: "102245042"
 |Batchcheckpointflik|1|Bir EventHub imleç denetim noktası oluşturmadan önce işlenecek olay toplu işlemlerinin sayısı.|
 |eventProcessorOptions/maxBatchSize|10|Alma döngüsü başına alınan en yüksek olay sayısı.|
 |eventProcessorOptions/prefetchCount|300|Temel tarafından kullanılan varsayılan önceden getirme sayısı `EventProcessorHost` . İzin verilen en düşük değer 10 ' dur.|
-|ınitialoffsetoptions/tür<sup>1</sup>|fromStart|Depolamadaki bir denetim noktası mevcut olmadığında işlemenin başlatılacağı olay akışındaki konum. Seçenekler `fromStart` , `fromEnd` veya `fromEnqueuedTime` . `fromEnd` işlev uygulaması çalışmaya başladıktan sonra sıraya alınan yeni olayları işler. Tüm bölümler için geçerlidir.  Daha fazla bilgi için [Eventprocessoroptions belgelerine](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessoroptions.initialoffsetprovider?view=azure-dotnet)bakın.|
-|ınitialoffsetoptions/enqueuedTimeUtc<sup>1</sup>|Yok| İşlemin başlatılacağı akışta olayın sıraya alınma süresini belirtir. `initialOffsetOptions/type`Olarak yapılandırıldığında `fromEnqueuedTime` , bu ayar zorunludur. [DateTime. Parse ()](/dotnet/standard/base-types/parsing-datetime)tarafından desteklenen herhangi bir biçimdeki süreyi destekler `2020-10-26T20:31Z` . Açıklık için bir saat dilimi de belirtmeniz gerekir. Saat dilimi belirtilmediğinde Işlevler, Azure üzerinde çalışırken UTC olan işlev uygulamasını çalıştıran makinenin yerel saat dilimini varsayar. Daha fazla bilgi için [Eventprocessoroptions belgelerine](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessoroptions.initialoffsetprovider?view=azure-dotnet)bakın.|
+|ınitialoffsetoptions/tür<sup>1</sup>|fromStart|Depolamadaki bir denetim noktası mevcut olmadığında işlemenin başlatılacağı olay akışındaki konum. Seçenekler `fromStart` , `fromEnd` veya `fromEnqueuedTime` . `fromEnd` işlev uygulaması çalışmaya başladıktan sonra sıraya alınan yeni olayları işler. Tüm bölümler için geçerlidir.  Daha fazla bilgi için [Eventprocessoroptions belgelerine](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessoroptions.initialoffsetprovider)bakın.|
+|ınitialoffsetoptions/enqueuedTimeUtc<sup>1</sup>|Yok| İşlemin başlatılacağı akışta olayın sıraya alınma süresini belirtir. `initialOffsetOptions/type`Olarak yapılandırıldığında `fromEnqueuedTime` , bu ayar zorunludur. [DateTime. Parse ()](/dotnet/standard/base-types/parsing-datetime)tarafından desteklenen herhangi bir biçimdeki süreyi destekler `2020-10-26T20:31Z` . Açıklık için bir saat dilimi de belirtmeniz gerekir. Saat dilimi belirtilmediğinde Işlevler, Azure üzerinde çalışırken UTC olan işlev uygulamasını çalıştıran makinenin yerel saat dilimini varsayar. Daha fazla bilgi için [Eventprocessoroptions belgelerine](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessoroptions.initialoffsetprovider)bakın.|
 
 <sup>1</sup> desteği `intitialOffsetOptions` [eventhubs v 4.2.0](https://github.com/Azure/azure-functions-eventhubs-extension/releases/tag/v4.2.0)ile başlar.
 

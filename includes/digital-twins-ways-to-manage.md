@@ -5,14 +5,14 @@ ms.service: digital-twins
 ms.topic: include
 ms.date: 11/11/2020
 ms.author: baanders
-ms.openlocfilehash: 887d185249f96b5d3be4aab6a96aa3c6c4a85690
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 02f6c59a76a3fdb7bd4360570b29d7b40a1aff8d
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96231421"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102473693"
 ---
-Bu makalede, [Azure Digital TWINS .net (C#) **SDK 'sını**](/dotnet/api/overview/azure/digitaltwins/management?view=azure-dotnet&preserve-view=true)kullanarak farklı yönetim işlemlerinin nasıl tamamlanacağı vurgulanmıştır. Ayrıca, [*nasıl yapılır: Azure Digital TWINS API 'leri ve SDK 'Ları kullanma*](../articles/digital-twins/how-to-use-apis-sdks.md)bölümünde açıklanan diğer dil SDK 'larını kullanarak aynı yönetim çağrılarını da oluşturabilirsiniz.
+Bu makalede, [Azure Digital TWINS .net (C#) **SDK 'sını**](/dotnet/api/overview/azure/digitaltwins/management)kullanarak farklı yönetim işlemlerinin nasıl tamamlanacağı vurgulanmıştır. Ayrıca, [*nasıl yapılır: Azure Digital TWINS API 'leri ve SDK 'Ları kullanma*](../articles/digital-twins/how-to-use-apis-sdks.md)bölümünde açıklanan diğer dil SDK 'larını kullanarak aynı yönetim çağrılarını da oluşturabilirsiniz.
 
 > [!TIP] 
 > Tüm SDK yöntemlerinin zaman uyumlu ve zaman uyumsuz sürümlerde yer aldığını unutmayın. Disk belleği çağrılarında zaman uyumsuz yöntemler, `AsyncPageable<T>` zaman uyumlu sürümler geri dönirken döndürülür `Pageable<T>` .

@@ -2,20 +2,36 @@
 author: alkohli
 ms.service: databox
 ms.topic: include
-ms.date: 12/12/2019
+ms.date: 03/08/2021
 ms.author: alkohli
-ms.openlocfilehash: 1f93f4d4e3295a0f08ac2e9f3e5826d3c8e6f6e4
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 5c1ac3f79ab5db2622dafd3229b39bbe19bce41e
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95562237"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102473848"
 ---
 İstemci işletim sistemine bağlı olarak, cihaza uzaktan bağlanma yordamları farklıdır.
 
 ### <a name="remotely-connect-from-a-windows-client"></a>Bir Windows istemcisinden uzaktan bağlanma
 
-Başlamadan önce, Windows istemcinizin Windows PowerShell 5,0 veya sonraki bir sürümünü çalıştırdığından emin olun.
+
+#### <a name="prerequisites"></a>Ön koşullar
+
+Başlamadan önce aşağıdakilerden emin olun:
+
+- Windows istemciniz Windows PowerShell 5,0 veya üstünü çalıştırıyor.
+- Windows istemciniz, cihazda yüklü olan düğüm sertifikasına karşılık gelen imzalama zincirine (kök sertifika) sahiptir. Ayrıntılı yönergeler için bkz. [Windows istemcinizdeki sertifikayı yükler](../articles/databox-online/azure-stack-edge-j-series-manage-certificates.md#import-certificates-on-the-client-accessing-the-device).
+- `hosts` `C:\Windows\System32\drivers\etc` Windows istemciniz için konumunda bulunan dosyası aşağıdaki biçimde düğüm sertifikasına karşılık gelen bir girdiye sahiptir:
+
+    `<Device IP>    <Node serial number>.<DNS domain of the device>`
+
+    Dosya için örnek bir giriş aşağıda verilmiştir `hosts` :
+ 
+    `10.100.10.10    1HXQG13.wdshcsso.com`
+  
+
+#### <a name="detailed-steps"></a>Ayrıntılı adımlar
 
 Bir Windows istemcisinden uzaktan bağlanmak için aşağıdaki adımları izleyin.
 
@@ -23,6 +39,8 @@ Bir Windows istemcisinden uzaktan bağlanmak için aşağıdaki adımları izley
 2. Windows Uzaktan Yönetimi hizmetinin istemciniz üzerinde çalıştığından emin olun. Komut istemine şunları yazın:
 
     `winrm quickconfig`
+
+    Daha fazla bilgi için bkz. [Windows Uzaktan Yönetimi Için yükleme ve yapılandırma](/windows/win32/winrm/installation-and-configuration-for-windows-remote-management#quick-default-configuration).
 
 3. Cihaz IP adresine bir değişken atayın.
 
@@ -36,7 +54,12 @@ Bir Windows istemcisinden uzaktan bağlanmak için aşağıdaki adımları izley
 
 5. Cihazda bir Windows PowerShell oturumu başlatın:
 
-    `Enter-PSSession -ComputerName $ip -Credential $ip\EdgeUser -ConfigurationName Minishell`
+    `Enter-PSSession -ComputerName $ip -Credential $ip\EdgeUser -ConfigurationName Minishell -UseSSL`
+
+    Güven ilişkisiyle ilgili bir hata görürseniz, cihazınıza yüklenen düğüm sertifikasının imzalama zincirinin cihazınıza erişen istemciye de yüklenip yüklenmediğini kontrol edin.
+
+    > [!NOTE] 
+    > `-UseSSL`Seçeneğini kullandığınızda, *https* üzerinden PowerShell aracılığıyla uzaktan iletişim oluşturursunuz. PowerShell aracılığıyla uzaktan bağlanmak için her zaman *https* kullanmanızı öneririz. Bir *http* oturumu en güvenli bağlantı yöntemi olmasa da, güvenilir ağlarda kabul edilebilir.
 
 6. İstendiğinde parolayı girin. Yerel Web Kullanıcı arabiriminde oturum açmak için kullanılan parolayı kullanın. Varsayılan yerel Web UI parolası *Parola1*'dır. Uzak PowerShell kullanarak cihaza başarıyla bağlandığınızda aşağıdaki örnek çıktıyı görürsünüz:  
 
@@ -48,7 +71,7 @@ Bir Windows istemcisinden uzaktan bağlanmak için aşağıdaki adımları izley
     WinRM service is already running on this machine.
     PS C:\WINDOWS\system32> $ip = "10.100.10.10"
     PS C:\WINDOWS\system32> Set-Item WSMan:\localhost\Client\TrustedHosts $ip -Concatenate -Force
-    PS C:\WINDOWS\system32> Enter-PSSession -ComputerName $ip -Credential $ip\EdgeUser -ConfigurationName Minishell
+    PS C:\WINDOWS\system32> Enter-PSSession -ComputerName $ip -Credential $ip\EdgeUser -ConfigurationName Minishell -UseSSL
 
     WARNING: The Windows PowerShell interface of your device is intended to be used only for the initial network configuration. Please engage Microsoft Support if you need to access this interface to troubleshoot any potential issues you may be experiencing. Changes made through this interface without involving Microsoft Support could result in an unsupported configuration.
     [10.100.10.10]: PS>
@@ -58,11 +81,11 @@ Bir Windows istemcisinden uzaktan bağlanmak için aşağıdaki adımları izley
 
 Bağlanmak için kullanacağınız Linux istemcisinde:
 
-- SSH uzaktan iletişim özelliğini almak için GitHub 'dan [Linux için en son PowerShell Core 'U yükler](/powershell/scripting/install/installing-powershell-core-on-linux?view=powershell-6) . 
+- SSH uzaktan iletişim özelliğini almak için GitHub 'dan [Linux için en son PowerShell Core 'U yükler](/powershell/scripting/install/installing-powershell-core-on-linux?view=powershell-6&preserve-view=true) . 
 - [Yalnızca `gss-ntlmssp` NTLM modülünden paketi yükler](https://github.com/Microsoft/omi/blob/master/Unix/doc/setup-ntlm-omi.md). Ubuntu istemcileri için aşağıdaki komutu kullanın:
     - `sudo apt-get install gss-ntlmssp`
 
-Daha fazla bilgi için [SSH üzerinden PowerShell uzaktan iletişimi](/powershell/scripting/learn/remoting/ssh-remoting-in-powershell-core?view=powershell-6)konusuna gidin.
+Daha fazla bilgi için [SSH üzerinden PowerShell uzaktan iletişimi](/powershell/scripting/learn/remoting/ssh-remoting-in-powershell-core?view=powershell-6&preserve-view=true)konusuna gidin.
 
 NFS istemcisinden uzaktan bağlanmak için aşağıdaki adımları izleyin.
 
@@ -72,7 +95,7 @@ NFS istemcisinden uzaktan bağlanmak için aşağıdaki adımları izleyin.
  
 2. Uzak istemciyi kullanarak bağlanmak için şunu yazın:
 
-    `Enter-PSSession -ComputerName $ip -Authentication Negotiate -ConfigurationName Minishell -Credential ~\EdgeUser`
+    `Enter-PSSession -ComputerName $ip -Authentication Negotiate -ConfigurationName Minishell -Credential ~\EdgeUser -UseSSL`
 
     İstendiğinde, cihazınızda oturum açmak için kullanılan parolayı belirtin.
  
