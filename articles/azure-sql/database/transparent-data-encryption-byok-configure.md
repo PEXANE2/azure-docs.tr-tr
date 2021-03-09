@@ -12,12 +12,12 @@ author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto
 ms.date: 03/12/2019
-ms.openlocfilehash: b4480f3d28cb89165a6ba3c5b26b10b1aba9765c
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 610f0a9692c18afbd7bb446959b09bac14d6f629
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96461846"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102507628"
 ---
 # <a name="powershell-and-the-azure-cli-enable-transparent-data-encryption-with-customer-managed-key-from-azure-key-vault"></a>PowerShell ve Azure CLı: Saydam Veri Şifrelemesi Azure Key Vault müşteri tarafından yönetilen anahtarla etkinleştirin
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -37,8 +37,8 @@ Bu makalede, Azure SQL veritabanı veya Azure SYNAPSE Analytics 'te Saydam Veri 
     - Anahtar Kasası, TDE için aşağıdaki özelliğe sahip olmalıdır:
   - [geçici-silme](../../key-vault/general/soft-delete-overview.md) ve Temizleme koruması
 - Anahtar, TDE için kullanılacak aşağıdaki özniteliklere sahip olmalıdır:
-  - Sona erme tarihi yok
-  - Devre dışı değil
+  - Son kullanma tarihi yok
+  - Devre dışı bırakılmadı
   - Al, *sarmalama tuşu*, *anahtar sarmalama işlemini geri* *alabilir*
 - **(Önizlemede)** Yönetilen bir HSM anahtarı kullanmak için [Azure CLI kullanarak yönetilen BIR HSM oluşturma ve etkinleştirme](../../key-vault/managed-hsm/quick-create-cli.md) yönergelerini izleyin
 
@@ -79,7 +79,7 @@ Yönetilen bir HSM 'de sunucunuza izinler eklemek için, ' yönetilen HSM şifre
 
 ## <a name="add-the-key-vault-key-to-the-server-and-set-the-tde-protector"></a>Key Vault anahtarını sunucuya ekleme ve TDE koruyucuyu ayarlama
 
-- Anahtar kasasından anahtar KIMLIĞI almak için [Get-AzKeyVaultKey](/powershell/module/az.keyvault/get-azkeyvaultkey?view=azps-2.4.0) cmdlet 'ini kullanın
+- Anahtar kasasından anahtar KIMLIĞI almak için [Get-AzKeyVaultKey](/powershell/module/az.keyvault/get-azkeyvaultkey) cmdlet 'ini kullanın
 - Anahtarı Key Vault sunucuya eklemek için [Add-AzSqlServerKeyVaultKey](/powershell/module/az.sql/add-azsqlserverkeyvaultkey) cmdlet 'ini kullanın.
 - Anahtarı tüm sunucu kaynaklarının TDE koruyucusu olarak ayarlamak için [set-AzSqlServerTransparentDataEncryptionProtector](/powershell/module/az.sql/set-azsqlservertransparentdataencryptionprotector) cmdlet 'ini kullanın.
 - TDE koruyucunun amaçlanan olarak yapılandırıldığını doğrulamak için [Get-AzSqlServerTransparentDataEncryptionProtector](/powershell/module/az.sql/get-azsqlservertransparentdataencryptionprotector) cmdlet 'ini kullanın.

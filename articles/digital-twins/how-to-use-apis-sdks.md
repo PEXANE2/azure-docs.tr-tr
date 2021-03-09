@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 06/04/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: d2d3d04bdb8066db263c608bb1d42acca303a656
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: b9804e119f5b5cfbee1a61eabf217dad7dbf5500
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102433837"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102507237"
 ---
 # <a name="use-the-azure-digital-twins-apis-and-sdks"></a>Azure Digital Twins API’lerini ve SDK’larını kullanma
 
@@ -68,7 +68,7 @@ Veri düzlemi API 'Lerini kullanmak için:
    - SDK kaynağını GitHub 'da bulabilirsiniz: [JavaScript Için Azure Azure dijital TWINS çekirdek istemci kitaplığı](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/digitaltwins/digital-twins-core)
 * **Python SDK 'sını** kullanabilirsiniz. Python SDK 'Yı kullanmak için...
    - paketi PyPi 'dan görüntüleyebilir ve yükleyebilirsiniz: [Python Için Azure Azure Digital TWINS çekirdek istemci kitaplığı](https://pypi.org/project/azure-digitaltwins-core/).
-   - [SDK başvuru belgelerini](/python/api/azure-digitaltwins-core/azure.digitaltwins.core?view=azure-python&preserve-view=true)görüntüleyebilirsiniz.
+   - [SDK başvuru belgelerini](/python/api/azure-digitaltwins-core/azure.digitaltwins.core)görüntüleyebilirsiniz.
    - SDK kaynağını GitHub 'da bulabilirsiniz: [Python Için Azure Azure dijital TWINS çekirdek istemci kitaplığı](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/digitaltwins/azure-digitaltwins-core)
 * Diğer bir dil için, oto Rest kullanarak bir SDK oluşturabilirsiniz. [*Nasıl yapılır: Azure dijital TWINS için özel SDK 'Lar oluşturma*](how-to-create-custom-sdks.md)bölümündeki yönergeleri Izleyerek oto Rest kullanın.
 

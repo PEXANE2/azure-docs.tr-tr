@@ -2,18 +2,18 @@
 title: include dosyası
 description: include dosyası
 services: virtual-machines
-author: styli365
+author: rishabv90
 ms.service: virtual-machines
 ms.topic: include
 ms.date: 11/05/2020
-ms.author: sttsinar
+ms.author: risverma
 ms.custom: include file
-ms.openlocfilehash: 3d78441e56e23cf49b09073fdf88bef4b3434da9
-ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
+ms.openlocfilehash: fc61c111291f9862f71f9a81828fa0fa828ab2ad
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "102473890"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102510748"
 ---
 Azure Işlem, belirli bir donanım türüne yalıtılmış ve tek bir müşteriye adanmış sanal makine boyutları sunar. Yalıtılmış boyutlar canlı ve belirli donanım nesli üzerinde çalışır ve donanım oluşturma kullanımdan kaldırıldığında kullanım dışı kalır.
 
@@ -42,12 +42,12 @@ Yalıtılmış VM boyutları bir donanım sınırlı ömrü vardır. Azure, boyu
 
 | Boyut | Yalıtım kullanımdan kaldırma tarihi | 
 | --- | --- |
-| Standard_DS15_v2 | 15 Mayıs 2020 |
-| Standard_D15_v2  | 15 Mayıs 2020 |
-| Standard_G5  | 15 Şubat 2021 |
-| Standard_GS5  | 15 Şubat 2021 |
-| Standard_E64i_v3  | 15 Şubat 2021 |
-| Standard_E64is_v3  | 15 Şubat 2021 |
+| Standard_DS15_v2 | 15 Mayıs 2021 |
+| Standard_D15_v2  | 15 Mayıs 2021 |
+| Standard_G5  | 15 Şubat 2022 |
+| Standard_GS5  | 15 Şubat 2022 |
+| Standard_E64i_v3  | 15 Şubat 2022 |
+| Standard_E64is_v3  | 15 Şubat 2022 |
 
 
 ## <a name="faq"></a>SSS
@@ -71,8 +71,8 @@ Y:
  
 | Tarih | Eylem |
 |---|---| 
-| 15 Mayıs 2019<sup>1</sup> | D/DS15_v2 yalıtımı kullanımdan kaldırma duyurusu| 
-| 15 Mayıs 2020 | D/DS15_v2 yalıtım garantisi kaldırıldı| 
+| 15 Mayıs 2020<sup>1</sup> | D/DS15_v2 yalıtımı kullanımdan kaldırma duyurusu| 
+| 15 Mayıs 2021 | D/DS15_v2 yalıtım garantisi kaldırıldı| 
 
 <sup>1</sup> bu boyutları kullanan mevcut müşteri, sonraki adımlarda ayrıntılı yönergeler içeren bir duyuru e-postası alacaktır.  
 
@@ -81,8 +81,8 @@ Y:
  
 | Tarih | Eylem |
 |---|---|
-| 15 Şub, 2020<sup>1</sup> | G5/GS5/E64i_v3/E64is_v3 yalıtımı kullanımdan kaldırma duyurusu |
-| 15 Şubat 2021 | G5/GS5/E64i_v3/E64is_v3 yalıtım garantisi kaldırıldı |
+| 15 Şub, 2021<sup>1</sup> | G5/GS5/E64i_v3/E64is_v3 yalıtımı kullanımdan kaldırma duyurusu |
+| 15 Şubat 2022 | G5/GS5/E64i_v3/E64is_v3 yalıtım garantisi kaldırıldı |
 
 <sup>1</sup> bu boyutları kullanan mevcut müşteri, sonraki adımlarda ayrıntılı yönergeler içeren bir duyuru e-postası alacaktır.  
 

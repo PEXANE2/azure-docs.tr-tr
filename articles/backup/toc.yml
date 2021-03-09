@@ -366,7 +366,7 @@
           href: monitor-azure-backup-with-backup-explorer.md
         - name: Azure portalını kullanma
           href: backup-azure-monitoring-built-in-monitor.md
-        - name: Azure İzleyici’yi kullanma
+        - name: Azure Izleyici günlüklerini kullanma
           href: backup-azure-monitoring-use-azuremonitor.md
     - name: Raporlar
       items:
@@ -374,10 +374,14 @@
           items:
             - name: Azure Backup raporlarını yapılandırma
               href: configure-reports.md
+            - name: E-posta Azure Backup raporları
+              href: backup-reports-email.md
         - name: Kurtarma Hizmetleri Kasaları için Tanılama Olaylarını yapılandırma
           items:
             - name: Kurtarma Hizmetleri Kasaları için Tanılama Olaylarını kullanma
               href: backup-azure-diagnostic-events.md
+            - name: Sistem Işlevlerini kullanma
+              href: backup-reports-system-functions.md
             - name: Kaynağa Özgü Tanılama Olayları için Log Analytics Veri Modeli
               href: backup-azure-reports-data-model.md
             - name: Azure Backup için Log Analytics Veri Modeli (Azure Tanılama modu)

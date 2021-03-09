@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.author: brbell
 ms.reviewer: mimckitt
 ms.date: 06/15/2020
-ms.openlocfilehash: 30587fac7d7be37d7595a78502b7999adee9a30f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4dd078205989872179b0b2474974a29cf6b88dad
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91665319"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102507849"
 ---
 # <a name="azure-vm-sizes-with-no-local-temporary-disk"></a>Azure VM boyutları yerel geçici disk yok 
 Bu makalede, yerel geçici disk (yerel geçici disk yok) olmayan Azure VM boyutları hakkında sık sorulan soruların (SSS) yanıtları sağlanmaktadır. Bu VM boyutları hakkında daha fazla bilgi için bkz. [dv4 and Dsv4-Series (genel amaçlı Iş yükleri) Için belirtimler](dv4-dsv4-series.md) veya [Ev4 ve Esv4 serisi (bellek Için iyileştirilmiş Iş yükleri) özellikleri](ev4-esv4-series.md).
@@ -40,8 +40,22 @@ Hayır. Yeniden boyutlandırma için izin verilen tek birleşimler şunlardır:
 1. VM (yerel geçici disk ile)-> VM (yerel geçici disk ile); ' 
 2. VM (yerel geçici disk olmadan)-> VM (yerel geçici disk olmadan). 
 
+Geçici bir çözüm ile ilgileniyorsa lütfen sonraki soruya bakın.
+
 > [!NOTE]
 > Bir görüntü kaynak diskine bağımlıysa veya yerel geçici diskte bir disk belleği dosyası ya da takas dosyası varsa disksiz görüntüler çalışmaz; bunun yerine ' disk ' ile ' alternatif kullanın. 
+
+## <a name="how-do-i-migrate-from-a-vm-size-with-local-temp-disk-to-a-vm-size-with-no-local-temp-disk"></a>Yerel geçici disk olan bir VM boyutundan yerel geçici disk olmadan bir VM boyutuna geçiş Nasıl yaparım? mı?  
+Aşağıdaki adımları izleyerek geçiş yapabilirsiniz: 
+
+1. Yerel bir geçici diske (örneğin, bir D: sürücü) yerel yönetici olarak sahip sanal makinenize bağlanın.
+2. Sayfa dosyasını yerel geçici diskten (D: sürücü) C: sürücüsüne taşımak için, [bir WINDOWS sanal makinesinde veri sürücüsü olarak D: sürücüsünü kullanarak](./windows/change-drive-letter.md) "c sürücüsüne geçici olarak pagefile.sys taşıma" bölümündeki yönergeleri izleyin.
+
+   > [!NOTE]
+   > Sayfa dosyasını yerel geçici diskten (D: sürücü) C: Drive ' a taşımak için bir Windows sanal makinesinde veri sürücüsü olarak D: sürücüsünü kullanın ' ın "C sürücüsüne geçici olarak pagefile.sys taşıma" bölümünde yer alan yönergeleri izleyin. **Özetlenen adımlardan sapma şu hata iletisine neden olur-"kaynak diskinden kaynak olmayan disk VM boyutuna ve tam tersi izin verilmediğinden VM yeniden boyutlandırılamıyor.**
+
+3. [Portal veya Azure CLI kullanarak anlık görüntü oluşturma](./linux/snapshot-copy-managed-disk.md)bölümünde özetlenen ADıMLARı izleyerek VM 'nin anlık görüntüsünü alın. 
+4. [CLI ile anlık görüntüden sanal makine oluşturma](./scripts/virtual-machines-linux-cli-sample-create-vm-from-snapshot.md)bölümünde özetlenen adımları izleyerek yeni bir disksiz VM (örneğin, dv4, Dsv4, Ev4, Esv4 serisi) oluşturmak için anlık görüntüyü kullanın. 
 
 ## <a name="do-these-vm-sizes-support-both-linux-and-windows-operating-systems-os"></a>Bu sanal makine boyutları hem Linux hem de Windows Işletim sistemlerini (OS) destekler mi?
 Evet.

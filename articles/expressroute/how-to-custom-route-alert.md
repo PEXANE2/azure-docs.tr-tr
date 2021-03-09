@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: how-to
 ms.date: 05/29/2020
 ms.author: duau
-ms.openlocfilehash: a960150d68cf2f939e206321a20d98b0e4080313
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: fed7663e2342a708aee70b9a54e6e0a6b6f97e8c
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92371503"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102504410"
 ---
 # <a name="configure-custom-alerts-to-monitor-advertised-routes"></a>Kullanıma sunulan yolları izlemek için özel uyarılar yapılandırma
 
@@ -42,7 +42,7 @@ Yapılandırmanıza başlamadan önce aşağıdaki ölçütleri karşıladığı
 
 * [Azure Logic Apps](../logic-apps/logic-apps-overview.md)hakkında bilgi sahibisiniz.
 
-* Azure PowerShell kullanma hakkında bilgi sahibisiniz. ExpressRoute Gateway 'de ağ öneklerini toplamak için Azure PowerShell gereklidir. Genel olarak Azure PowerShell hakkında daha fazla bilgi için [Azure PowerShell belgelerine](/powershell/azure/?view=azps-4.1.0)bakın.
+* Azure PowerShell kullanma hakkında bilgi sahibisiniz. ExpressRoute Gateway 'de ağ öneklerini toplamak için Azure PowerShell gereklidir. Genel olarak Azure PowerShell hakkında daha fazla bilgi için [Azure PowerShell belgelerine](/powershell/azure/)bakın.
 
 ### <a name="notes-and-limitations"></a><a name="limitations"></a>Notlar ve sınırlamalar
 
@@ -78,7 +78,7 @@ Varsayılan olarak, **katılımcı** rolü, **Farklı Çalıştır** hesabınız
 
 2. Kullanılmakta olan rol tanımını görüntülemek için **Roller** ' i seçin.
 
-   :::image type="content" source="./media/custom-route-alert-portal/run-as-account-permissions.png" alt-text="Otomasyon hesabı ekle":::
+   :::image type="content" source="./media/custom-route-alert-portal/run-as-account-permissions.png" alt-text="Rol atama":::
 
 ## <a name="create-and-configure-runbooks"></a><a name="runbooks"></a>Runbook 'lar oluşturma ve yapılandırma
 
@@ -88,25 +88,25 @@ Azure Otomasyonu runbook 'larda PowerShell cmdlet 'lerini çalıştırmak için 
 
 1. Azure Otomasyonu hesabınızı açın ve **modüller**' e gidin.
 
-   :::image type="content" source="./media/custom-route-alert-portal/navigate-modules.png" alt-text="Otomasyon hesabı ekle":::
+   :::image type="content" source="./media/custom-route-alert-portal/navigate-modules.png" alt-text="Modüllere git":::
 
-2. Galeride arama yapın ve şu modülleri içeri aktarın: **az. Accounts**, **az. Network**, **az. Automation**ve **az. Profile**.
+2. Galeride arama yapın ve şu modülleri içeri aktarın: **az. Accounts**, **az. Network**, **az. Automation** ve **az. Profile**.
 
-   :::image type="content" source="./media/custom-route-alert-portal/import-modules.png" alt-text="Otomasyon hesabı ekle" lightbox="./media/custom-route-alert-portal/import-modules-expand.png":::
+   :::image type="content" source="./media/custom-route-alert-portal/import-modules.png" alt-text="Modülleri arama ve içeri aktarma" lightbox="./media/custom-route-alert-portal/import-modules-expand.png":::
   
 ### <a name="2-create-a-runbook"></a><a name="create"></a>2. runbook oluşturma
 
-1. PowerShell runbook 'unuzu oluşturmak için Otomasyon hesabınıza gidin. **Işlem Otomasyonu**altında **runbook 'lar** kutucuğunu seçin ve ardından **runbook oluştur**' u seçin.
+1. PowerShell runbook 'unuzu oluşturmak için Otomasyon hesabınıza gidin. **Işlem Otomasyonu** altında **runbook 'lar** kutucuğunu seçin ve ardından **runbook oluştur**' u seçin.
 
-   :::image type="content" source="./media/custom-route-alert-portal/create-runbook.png" alt-text="Otomasyon hesabı ekle":::
+   :::image type="content" source="./media/custom-route-alert-portal/create-runbook.png" alt-text="Runbook oluşturma.":::
 
 2. Runbook 'u oluşturmak için **Oluştur** ' u seçin.
 
-   :::image type="content" source="./media/custom-route-alert-portal/create-runbook-2.png" alt-text="Otomasyon hesabı ekle":::
+   :::image type="content" source="./media/custom-route-alert-portal/create-runbook-2.png" alt-text="Oluştur ' u seçin.":::
 
 3. Yeni oluşturulan runbook 'u seçin ve ardından **Düzenle**' yi seçin.
 
-   :::image type="content" source="./media/custom-route-alert-portal/edit-runbook.png" alt-text="Otomasyon hesabı ekle":::
+   :::image type="content" source="./media/custom-route-alert-portal/edit-runbook.png" alt-text="Runbook’u düzenleme":::
 
 4. **Düzenle**' de PowerShell betiğini yapıştırın. [Örnek betik](#script) , bir veya daha fazla kaynak grubunda ExpressRoute ağ geçitlerini izlemek için değiştirilebilir ve kullanılabilir.
 
@@ -231,7 +231,7 @@ Write-Output  $jsonResults
 1. Runbook 'un taslak kopyasını kaydetmek için **Kaydet** ' i seçin.
 2. Runbook 'u Otomasyon hesabında runbook 'un resmi sürümü olarak yayımlamak için **Yayımla** ' yı seçin.
 
-   :::image type="content" source="./media/custom-route-alert-portal/save-publish-runbook.png" alt-text="Otomasyon hesabı ekle":::
+   :::image type="content" source="./media/custom-route-alert-portal/save-publish-runbook.png" alt-text="Runbook 'u kaydedin ve yayımlayın.":::
 
 PowerShell betiğini çalıştırdığınızda bir değer listesi toplanır:
  
@@ -247,7 +247,7 @@ PowerShell betiğini çalıştırdığınızda bir değer listesi toplanır:
 
 * ExpressRoute ağ geçidinden ikinci BGP eşine tanıtılan ağ önekleri sayısı (peer2)
 
-* Zaman damgası
+* Timestamp
 
 * Durum, sınıflandırılan:
 
@@ -263,7 +263,7 @@ PowerShell betiği, toplanan bilgileri bir JSON çıktısına dönüştürür. R
 
 Runbook oluşturulduktan sonra doğrulanması gerekir. **Başlat** ' ı seçin ve farklı iş akışları için çıktıyı ve hataları kontrol edin.
 
-:::image type="content" source="./media/custom-route-alert-portal/validate-runbook.png" alt-text="Otomasyon hesabı ekle" lightbox="./media/custom-route-alert-portal/validate-runbook-expand.png":::
+:::image type="content" source="./media/custom-route-alert-portal/validate-runbook.png" alt-text="Runbook 'u doğrulama" lightbox="./media/custom-route-alert-portal/validate-runbook-expand.png":::
 
 ## <a name="create-and-configure-a-logic-app"></a><a name="logic"></a>Mantıksal uygulama oluşturma ve yapılandırma
 
@@ -273,21 +273,21 @@ Azure Logic Apps tüm koleksiyon ve eylem işlemlerinin Orchestrator 'ı. Aşağ
 
 Bu iş akışında, ExpressRoute ağ geçitlerini düzenli olarak izleyen bir mantıksal uygulama oluşturacaksınız. Yeni öğeler varsa, mantıksal uygulama her öğe için bir e-posta gönderir. İşlemi tamamladığınızda, mantıksal uygulamanız bu yüksek düzeyli iş akışı gibi görünür:
 
-:::image type="content" source="./media/custom-route-alert-portal/logic-apps-workflow.png" alt-text="Otomasyon hesabı ekle":::
+:::image type="content" source="./media/custom-route-alert-portal/logic-apps-workflow.png" alt-text="Logic Apps iş akışı":::
 
 ### <a name="1-create-a-logic-app"></a>1. mantıksal uygulama oluşturma
 
 **Mantıksal uygulama Tasarımcısı**' nda **boş mantıksal uygulama** şablonunu kullanarak bir mantıksal uygulama oluşturun. Adımlar için bkz. [oluşturma Logic Apps](../logic-apps/quickstart-create-first-logic-app-workflow.md#create-your-logic-app).
 
-:::image type="content" source="./media/custom-route-alert-portal/blank-template.png" alt-text="Otomasyon hesabı ekle":::
+:::image type="content" source="./media/custom-route-alert-portal/blank-template.png" alt-text="Boş şablon":::
 
 ### <a name="2-add-a-trigger"></a>2. tetikleyici ekleme
 
 Her mantıksal uygulama bir tetikleyici tarafından başlatılır. Bir tetikleyici, belirli bir olay gerçekleştiğinde veya belirli bir koşul karşılandığında ateşlenir. Tetikleyici her tetiklendiğinde Azure Logic Apps altyapısı, iş akışınızı başlatan ve çalıştıran bir mantıksal uygulama örneği oluşturur.
 
-Önceden tanımlama zaman çizelgesine dayanan bir mantıksal uygulamayı düzenli olarak çalıştırmak için, iş akışınıza yerleşik **yinelenme: Schedule** ekleyin. Arama kutusuna **Schedule**yazın. **Tetikleyiciler**’i seçin. Tetikleyiciler listesinden **yineleme zamanlaması**' nı seçin.
+Önceden tanımlama zaman çizelgesine dayanan bir mantıksal uygulamayı düzenli olarak çalıştırmak için, iş akışınıza yerleşik **yinelenme: Schedule** ekleyin. Arama kutusuna **Schedule** yazın. **Tetikleyiciler**’i seçin. Tetikleyiciler listesinden **yineleme zamanlaması**' nı seçin.
 
-:::image type="content" source="./media/custom-route-alert-portal/schedule.png" alt-text="Otomasyon hesabı ekle":::
+:::image type="content" source="./media/custom-route-alert-portal/schedule.png" alt-text="Yinelenme: zamanlama":::
 
 Yineleme zamanlaması tetikleyicisinde, zaman dilimini ve bu iş akışını yinelemek için bir yinelenme belirleyebilirsiniz. Aralık ve sıklık özelliği, mantıksal uygulamanızın tetikleyicisi için zamanlamayı tanımlar. Makul bir en düşük yinelenme sıklığı oluşturmak için aşağıdaki faktörleri göz önünde bulundurun:
 
@@ -297,161 +297,163 @@ Yineleme zamanlaması tetikleyicisinde, zaman dilimini ve bu iş akışını yin
 
 * Azure ExpressRoute ağ geçitlerinde çok kısa bir yinelenme sıklığı gereksiz yük oluşturacak.
 
-İş akışı yapılandırmasının sonunda, iş akışını birkaç kez çalıştırarak ve sonra **çalıştırma geçmişinde**sonucu doğrulayarak yinelenme sıklığının tutarlılığını kontrol edebilirsiniz.
+İş akışı yapılandırmasının sonunda, iş akışını birkaç kez çalıştırarak ve sonra **çalıştırma geçmişinde** sonucu doğrulayarak yinelenme sıklığının tutarlılığını kontrol edebilirsiniz.
 
-:::image type="content" source="./media/custom-route-alert-portal/recurrence.png" alt-text="Otomasyon hesabı ekle" lightbox="./media/custom-route-alert-portal/recurrence-expand.png":::
+:::image type="content" source="./media/custom-route-alert-portal/recurrence.png" alt-text="Ekran görüntüsü yineleme aralığı ve sıklık değerlerini gösterir." lightbox="./media/custom-route-alert-portal/recurrence-expand.png":::
 
 ### <a name="3-create-a-job"></a><a name="job"></a>3. iş oluşturma
 
 Mantıksal uygulama, bağlayıcılar ve diğer uygulamalara, hizmetlere ve platforma erişir. Bu iş akışındaki sonraki adım, daha önce tanımlanmış olan Azure Otomasyonu hesabına erişmek için bir bağlayıcı seçdir.
 
-1. **Logic Apps tasarımcısında**, **yinelenme**altında **yeni adım**' ı seçin. **Eylem Seç** ' in altında ve arama kutusuna **Tümü**' nü seçin.
+1. **Logic Apps tasarımcısında**, **yinelenme** altında **yeni adım**' ı seçin. **Eylem Seç** ' in altında ve arama kutusuna **Tümü**' nü seçin.
 2. Arama kutusuna **Azure Otomasyonu** ve arama yazın. **Iş oluştur**' u seçin. **Oluşturma işi** , daha önce oluşturulmuş Otomasyon Runbook 'unu başlatmak için kullanılacaktır.
 
-   :::image type="content" source="./media/custom-route-alert-portal/create-job.png" alt-text="Otomasyon hesabı ekle":::
+   :::image type="content" source="./media/custom-route-alert-portal/create-job.png" alt-text="İş oluşturma":::
 
 3. Hizmet sorumlusu kullanarak oturum açın. Mevcut bir hizmet sorumlusunu kullanabilir veya yeni bir tane oluşturabilirsiniz. Yeni bir hizmet sorumlusu oluşturmak için, [kaynaklara erişebilen bir Azure AD hizmet sorumlusu oluşturmak için portalı kullanma](../active-directory/develop/howto-create-service-principal-portal.md)konusuna bakın. **Hizmet sorumlusu Ile Bağlan**' ı seçin.
 
-   :::image type="content" source="./media/custom-route-alert-portal/sign-in.png" alt-text="Otomasyon hesabı ekle":::
+   :::image type="content" source="./media/custom-route-alert-portal/sign-in.png" alt-text="' Hizmet sorumlusu ile bağlan ' eylemi vurgulanmış şekilde ' yinelenme ' bölümünü gösteren ekran görüntüsü.":::
 
-4. Bir **bağlantı adı**yazın, **istemci KIMLIĞINIZI** (uygulama kimliği), **ISTEMCI gizli**anahtarını ve **kiracı kimliğinizi**ekleyin. Ardından **Oluştur**’u seçin.
+4. Bir **bağlantı adı** yazın, **istemci KIMLIĞINIZI** (uygulama kimliği), **ISTEMCI gizli** anahtarını ve **kiracı kimliğinizi** ekleyin. Ardından **Oluştur**’u seçin.
 
-   :::image type="content" source="./media/custom-route-alert-portal/connect-service-principal.png" alt-text="Otomasyon hesabı ekle" ' ne sahip olmalıdır. Ayrıca, **runbook adını** yeni bir parametre olarak eklediğinizi doğrulayın.
+   :::image type="content" source="./media/custom-route-alert-portal/connect-service-principal.png" alt-text="Hizmet sorumlusu ile bağlanma":::
 
-   :::image type="content" source="./media/custom-route-alert-portal/roles.png" alt-text="Otomasyon hesabı ekle" lightbox="./media/custom-route-alert-portal/roles-expand.png":::
+5. **Iş oluştur** sayfasında, hizmet sorumlusu Otomasyon hesabını barındıran **kaynak grubunda** "okuyucu" rolüne ve **Otomasyon hesabında**"Otomasyon işi operatörü" ' ne sahip olmalıdır. Ayrıca, **runbook adını** yeni bir parametre olarak eklediğinizi doğrulayın.
+
+   :::image type="content" source="./media/custom-route-alert-portal/roles.png" alt-text="Ekran görüntüsünde, runbook adını doğrulayabileceğiniz Tekrardaki iş değeri oluşturma işlemi gösterilir." lightbox="./media/custom-route-alert-portal/roles-expand.png":::
 
 ### <a name="4-get-the-job-output"></a><a name="output"></a>4. iş çıktısını alın
 
 1. **Yeni adım**'ı seçin. "Azure Otomasyonu" araması yapın. **Eylemler** listesinden **iş çıktısını al**' ı seçin.
 
-   :::image type="content" source="./media/custom-route-alert-portal/get-output.png" alt-text="Otomasyon hesabı ekle":::
+   :::image type="content" source="./media/custom-route-alert-portal/get-output.png" alt-text="İş çıkışı alma":::
 
-2. **İş çıkışını al** sayfasında, Otomasyon hesabına erişmek için gereken bilgileri belirtin. Kullanmak istediğiniz **aboneliği, kaynak grubunu**ve **Otomasyon hesabını** seçin. **Iş kimliği** kutusunun içine tıklayın. **Dinamik içerik** listesi GÖRÜNDÜĞÜNDE **iş kimliği**' ni seçin.
+2. **İş çıkışını al** sayfasında, Otomasyon hesabına erişmek için gereken bilgileri belirtin. Kullanmak istediğiniz **aboneliği, kaynak grubunu** ve **Otomasyon hesabını** seçin. **Iş kimliği** kutusunun içine tıklayın. **Dinamik içerik** listesi GÖRÜNDÜĞÜNDE **iş kimliği**' ni seçin.
 
-   :::image type="content" source="./media/custom-route-alert-portal/job-id.png" alt-text="Otomasyon hesabı ekle" lightbox="./media/custom-route-alert-portal/job-id-expand.png":::
+   :::image type="content" source="./media/custom-route-alert-portal/job-id.png" alt-text="İş kimliği" lightbox="./media/custom-route-alert-portal/job-id-expand.png":::
 
 ### <a name="5-parse-the-json"></a><a name="parse"></a>5. JSON 'ı ayrıştırma
 
 ' Azure Otomasyonu oluşturma işi eyleminden (önceki adımlar) çıktıda bulunan bilgiler bir JSON nesnesi oluşturur. Logic Apps **AYRıŞTıRMA JSON** , özelliklerden ve BUNLARıN değerlerinin JSON içeriğindeki Kullanıcı dostu belirteçler oluşturmak için yerleşik bir eylemdir. Daha sonra bu özellikleri iş akışınızda kullanabilirsiniz.
 
-1. Eylem ekleyin. **İş çıkışı al->eylemi**altında **yeni adım**' ı seçin.
+1. Eylem ekleyin. **İş çıkışı al->eylemi** altında **yeni adım**' ı seçin.
 2. **Eylem seçin** arama kutusuna, bu eylemi sunan bağlayıcılar aramak için "JSON ayrıştırma" yazın. **Eylemler** listesinde, kullanmak istediğiniz veri IŞLEMLERI için **JSON 'u Ayrıştır** eylemini seçin.
 
-   :::image type="content" source="./media/custom-route-alert-portal/parse-json.png" alt-text="Otomasyon hesabı ekle":::
+   :::image type="content" source="./media/custom-route-alert-portal/parse-json.png" alt-text="JSON Ayrıştırma":::
 
 3. **İçerik** kutusunun içine tıklayın. Dinamik içerik listesi göründüğünde **içerik**' i seçin.
 
-   :::image type="content" source="./media/custom-route-alert-portal/content.png" alt-text="Otomasyon hesabı ekle" lightbox="./media/custom-route-alert-portal/content-expand.png":::
+   :::image type="content" source="./media/custom-route-alert-portal/content.png" alt-text="Ekran görüntüsünde Içerik seçili olan JSON ayrıştırma iletişim kutusu gösterilir." lightbox="./media/custom-route-alert-portal/content-expand.png":::
 
 4. JSON ayrıştırılırken bir şema olması gerekir. Şema, Automation runbook 'un çıktısı kullanılarak oluşturulabilir. Yeni bir Web tarayıcı oturumu açın, Otomasyon Runbook 'unu çalıştırın ve çıktıyı alın. **JSON veri işlemleri eylemini Logic Apps** döndürün. Sayfanın en altında, **şema oluşturmak için örnek yük kullan**' ı seçin.
 
-   :::image type="content" source="./media/custom-route-alert-portal/sample-payload.png" alt-text="Otomasyon hesabı ekle":::
+   :::image type="content" source="./media/custom-route-alert-portal/sample-payload.png" alt-text="Şema oluşturmak için örnek yük kullanma":::
 
 5. **Örnek BIR JSON yükü girin veya yapıştırın**, Automation runbook 'un çıkışını yapıştırın ve **bitti**' yi seçin.
 
-   :::image type="content" source="./media/custom-route-alert-portal/paste-payload.png" alt-text="Otomasyon hesabı ekle" lightbox="./media/custom-route-alert-portal/paste-payload-expand.png":::
+   :::image type="content" source="./media/custom-route-alert-portal/paste-payload.png" alt-text="Örnek yükü Yapıştır" lightbox="./media/custom-route-alert-portal/paste-payload-expand.png":::
 
 6. Bir şema, JSON giriş yükü ayrıştırılmasından otomatik olarak oluşturulur.
 
-   :::image type="content" source="./media/custom-route-alert-portal/generate-schema.png" alt-text="Otomasyon hesabı ekle" lightbox="./media/custom-route-alert-portal/generate-schema-expand.png":::
+   :::image type="content" source="./media/custom-route-alert-portal/generate-schema.png" alt-text="Şema oluştur" lightbox="./media/custom-route-alert-portal/generate-schema-expand.png":::
 
 ### <a name="6-define-and-initialize-a-variable"></a><a name="define-variable"></a>6. bir değişken tanımlayın ve başlatın
 
 İş akışının bu adımında, e-posta ile alarm göndermek için bir koşul oluşturacağız. E-posta gövdesi iletisinde esnek ve özel bir biçimlendirme için, iş akışında bir yardımcı değişken tanıtılmıştır.
 
-1. **İş çıkışı al eyleminin**altında **yeni adım**' ı seçin. Arama kutusunda **değişkenleri**bulun ve seçin.
+1. **İş çıkışı al eyleminin** altında **yeni adım**' ı seçin. Arama kutusunda **değişkenleri** bulun ve seçin.
 
-   :::image type="content" source="./media/custom-route-alert-portal/variables.png" alt-text="Otomasyon hesabı ekle":::
+   :::image type="content" source="./media/custom-route-alert-portal/variables.png" alt-text="Ekran görüntüsü, arama kutusunda değişkenle ve seçilen değişkenlerde bir eylem Seç iletişim kutusunu gösterir.":::
 
 2. **Eylemler** listesinden **değişkeni Başlat** eylemini seçin.
 
-   :::image type="content" source="./media/custom-route-alert-portal/initialize-variables.png" alt-text="Otomasyon hesabı ekle":::
+   :::image type="content" source="./media/custom-route-alert-portal/initialize-variables.png" alt-text="Değişkenleri Başlat":::
 
-3. Değişkenin adını belirtin. **Tür**için **dize**' yi seçin. Değişkenin **değeri** daha sonra iş akışında atanır.
+3. Değişkenin adını belirtin. **Tür** için **dize**' yi seçin. Değişkenin **değeri** daha sonra iş akışında atanır.
 
-   :::image type="content" source="./media/custom-route-alert-portal/string.png" alt-text="Otomasyon hesabı ekle" lightbox="./media/custom-route-alert-portal/string-expand.png":::
+   :::image type="content" source="./media/custom-route-alert-portal/string.png" alt-text="Ekran görüntüsü, bir ad, tür ve değer girebileceğiniz başlatma değişkeniyle ilişkili JSON 'u gösterir." lightbox="./media/custom-route-alert-portal/string-expand.png":::
 
 ### <a name="7-create-a-for-each-action"></a><a name="cycles-json"></a>7. bir "for each" eylemi oluşturun
 
 JSON bir kez ayrıştırıldıktan sonra **JSON veri Işlemini Ayrıştır** eylemi içeriği *gövde* çıktısında depolar. Çıktıyı işlemek için dizideki her öğe için bir veya daha fazla eylemi yinelenen bir "for each" döngüsü oluşturabilirsiniz.
 
-1. **Değişken Başlat**altında **Eylem Ekle**' yi seçin. Arama kutusuna filtreniz olarak "for each" yazın.
+1. **Değişken Başlat** altında **Eylem Ekle**' yi seçin. Arama kutusuna filtreniz olarak "for each" yazın.
 
-   :::image type="content" source="./media/custom-route-alert-portal/control.png" alt-text="Otomasyon hesabı ekle":::
+   :::image type="content" source="./media/custom-route-alert-portal/control.png" alt-text="Ekran görüntüsü, arama kutusu ve Denetim seçili her biri için bir eylem Seç iletişim kutusunu gösterir.":::
 
-2. **Eylemler** listesinden **her denetim için**eylemi seçin.
+2. **Eylemler** listesinden **her denetim için** eylemi seçin.
 
-   :::image type="content" source="./media/custom-route-alert-portal/for-each.png" alt-text="Otomasyon hesabı ekle":::
+   :::image type="content" source="./media/custom-route-alert-portal/for-each.png" alt-text="Her denetim için":::
 
-3. **Önceki adımlardan bir çıkış seçin** metin kutusunda tıklayın. **Dinamik içerik** listesi göründüğünde, ayrıştırılmış JSON 'dan çıktı olan **gövdeyi**seçin.
+3. **Önceki adımlardan bir çıkış seçin** metin kutusunda tıklayın. **Dinamik içerik** listesi göründüğünde, ayrıştırılmış JSON 'dan çıktı olan **gövdeyi** seçin.
 
-   :::image type="content" source="./media/custom-route-alert-portal/body.png" alt-text="Otomasyon hesabı ekle":::
+   :::image type="content" source="./media/custom-route-alert-portal/body.png" alt-text="Ekran görüntüsü, önceki adımlardan bir çıkış seçin metin kutusunda bulunan her biri Için ile ilişkili başlatılmış değişkeni gösterir.":::
 
 4. Her JSON gövdesi öğesi için bir koşul ayarlamak istiyoruz. Eylem grubundan **Denetim**' i seçin.
 
-   :::image type="content" source="./media/custom-route-alert-portal/condition-control.png" alt-text="Otomasyon hesabı ekle":::
+   :::image type="content" source="./media/custom-route-alert-portal/condition-control.png" alt-text="Denetim":::
 
 5. **Eylemler** listesinde **koşul denetimi**' ni seçin. Condition-Control bir denetim yapısıdır, iş akışındaki verileri belirli değerler veya alanlarla karşılaştırır. Daha sonra, verilerin koşulu karşılayıp karşılamadığını temel alarak çalışan farklı eylemler belirtebilirsiniz.
 
-   :::image type="content" source="./media/custom-route-alert-portal/condition.png" alt-text="Otomasyon hesabı ekle":::
+   :::image type="content" source="./media/custom-route-alert-portal/condition.png" alt-text="Koşul denetimi":::
 
-6. **Koşul** kökü eyleminde, mantıksal işlemi **veya**olarak değiştirin.
+6. **Koşul** kökü eyleminde, mantıksal işlemi **veya** olarak değiştirin.
 
-   :::image type="content" source="./media/custom-route-alert-portal/condition-or.png" alt-text="Otomasyon hesabı ekle" lightbox="./media/custom-route-alert-portal/condition-or-expand.png":::
+   :::image type="content" source="./media/custom-route-alert-portal/condition-or.png" alt-text="Veya" lightbox="./media/custom-route-alert-portal/condition-or-expand.png":::
 
-7. İki BGP eşine bir ExpressRoute ağ geçidinin tanıtan ağ önekleri sayısı değerini denetleyin. Yol sayısı, "numRoutePeer1" ve "numRoutePeer2" içinde **dinamik içerikte**kullanılabilir. Değer kutusuna **numRoutePeer1**değerini yazın.
+7. İki BGP eşine bir ExpressRoute ağ geçidinin tanıtan ağ önekleri sayısı değerini denetleyin. Yol sayısı, "numRoutePeer1" ve "numRoutePeer2" içinde **dinamik içerikte** kullanılabilir. Değer kutusuna **numRoutePeer1** değerini yazın.
 
-   :::image type="content" source="./media/custom-route-alert-portal/peer-1.png" alt-text="Otomasyon hesabı ekle":::
+   :::image type="content" source="./media/custom-route-alert-portal/peer-1.png" alt-text="numRoutesPeer1":::
 
 8. Koşulunuz için başka bir satır eklemek için **Ekle-> satır ekle**' yi seçin. İkinci kutuda, **dinamik Içerikten** **numRoutePeer2**' ı seçin.
 
-   :::image type="content" source="./media/custom-route-alert-portal/peer-2.png" alt-text="Otomasyon hesabı ekle":::
+   :::image type="content" source="./media/custom-route-alert-portal/peer-2.png" alt-text="numRoutesPeer2":::
 
 9. NumRoute1 veya numRoute2 gibi iki dinamik değişkenden biri eşikten büyük olduğunda Logic Condition değeri true 'dur. Bu örnekte, eşik 160 80 (en büyük değer olan 200) ' e sabitlenmiştir. Eşik değerini gereksinimlerinize uyacak şekilde değiştirebilirsiniz. Tutarlılık için, bu değer runbook PowerShell betiğinde kullanılan değer olmalıdır.
 
-   :::image type="content" source="./media/custom-route-alert-portal/logic-condition.png" alt-text="Otomasyon hesabı ekle":::
+   :::image type="content" source="./media/custom-route-alert-portal/logic-condition.png" alt-text="Mantıksal koşul":::
 
-10. **Doğru ise**, uyarıyı e-posta ile göndermek için eylemleri biçimlendirin ve oluşturun. * * Bir eylem seçin, sonra **değişkenleri**arayın ve seçin.
+10. **Doğru ise**, uyarıyı e-posta ile göndermek için eylemleri biçimlendirin ve oluşturun. * * Bir eylem seçin, sonra **değişkenleri** arayın ve seçin.
 
-    :::image type="content" source="./media/custom-route-alert-portal/condition-if-true.png" alt-text="Otomasyon hesabı ekle":::
+    :::image type="content" source="./media/custom-route-alert-portal/condition-if-true.png" alt-text="True ise":::
 
 11. Değişkenler ' de **Eylem Ekle**' yi seçin. **Eylemler** listesinde **değişkeni ayarla**' yı seçin.
 
-    :::image type="content" source="./media/custom-route-alert-portal/condition-set-variable.png" alt-text="Otomasyon hesabı ekle":::
+    :::image type="content" source="./media/custom-route-alert-portal/condition-set-variable.png" alt-text="' Actions ' sekmesi seçili ve ' set variable ' vurgulanmış olan ' Variables ' bölümünün ekran görüntüsü.":::
 
-12. **Ad**' da, daha önce oluşturduğunuz **emailbody** adlı değişkeni seçin. **Değer**için, uyarı e-postasını biçimlendirmek IÇIN gereken HTML betiğini yapıştırın. JSON gövdesinin değerlerini dahil etmek için **dinamik içeriği** kullanın. Bu ayarları yapılandırdıktan sonra sonuç, **emailbody** değişkeninin, uyarı ile ilgili tüm bilgileri HTML biçiminde içermasıdır.
+12. **Ad**' da, daha önce oluşturduğunuz **emailbody** adlı değişkeni seçin. **Değer** için, uyarı e-postasını biçimlendirmek IÇIN gereken HTML betiğini yapıştırın. JSON gövdesinin değerlerini dahil etmek için **dinamik içeriği** kullanın. Bu ayarları yapılandırdıktan sonra sonuç, **emailbody** değişkeninin, uyarı ile ilgili tüm bilgileri HTML biçiminde içermasıdır.
 
-    :::image type="content" source="./media/custom-route-alert-portal/paste-script.png" alt-text="Otomasyon hesabı ekle":::
+    :::image type="content" source="./media/custom-route-alert-portal/paste-script.png" alt-text="Değişken ayarla":::
 
 ### <a name="8-add-the-email-connector"></a><a name="email"></a>8. e-posta bağlayıcısını ekleyin
 
-Logic Apps çok sayıda e-posta Bağlayıcısı sağlar. Bu örnekte, uyarıyı e-posta ile göndermek için bir Outlook Bağlayıcısı ekleyeceğiz. **Değişken ayarla**altında **Eylem Ekle**' yi seçin. **Eylem seçin**bölümünde, arama kutusuna "e-posta gönder" yazın.
+Logic Apps çok sayıda e-posta Bağlayıcısı sağlar. Bu örnekte, uyarıyı e-posta ile göndermek için bir Outlook Bağlayıcısı ekleyeceğiz. **Değişken ayarla** altında **Eylem Ekle**' yi seçin. **Eylem seçin** bölümünde, arama kutusuna "e-posta gönder" yazın.
 
 1. **Office 365 Outlook**' u seçin.
 
-   :::image type="content" source="./media/custom-route-alert-portal/email.png" alt-text="Otomasyon hesabı ekle":::
+   :::image type="content" source="./media/custom-route-alert-portal/email.png" alt-text="E-posta gönder":::
 
 2. **Eylemler** listesinde, **e-posta gönder (v2)** seçeneğini belirleyin.
 
-   :::image type="content" source="./media/custom-route-alert-portal/email-v2.png" alt-text="Otomasyon hesabı ekle":::
+   :::image type="content" source="./media/custom-route-alert-portal/email-v2.png" alt-text="E-posta gönder (v2)":::
 
 3. Office 365 Outlook bağlantısı oluşturmak için oturum açın.
 
-   :::image type="content" source="./media/custom-route-alert-portal/office-365.png" alt-text="Otomasyon hesabı ekle":::
+   :::image type="content" source="./media/custom-route-alert-portal/office-365.png" alt-text="Oturum aç":::
 
-4. **Gövde** alanında **dinamik içerik Ekle**' ye tıklayın. Dinamik içerik panelinden, **emailbody**değişkenini ekleyin. **Konuyu** **ve alanları** doldurun.
+4. **Gövde** alanında **dinamik içerik Ekle**' ye tıklayın. Dinamik içerik panelinden, **emailbody** değişkenini ekleyin. **Konuyu** **ve alanları** doldurun.
 
-   :::image type="content" source="./media/custom-route-alert-portal/emailbody.png" alt-text="Otomasyon hesabı ekle":::
+   :::image type="content" source="./media/custom-route-alert-portal/emailbody.png" alt-text="Gövde":::
 
 5. **E-posta gönder (v2)** eylemi iş akışı kurulumunu tamamlar.
 
-   :::image type="content" source="./media/custom-route-alert-portal/send-email-v2.png" alt-text="Otomasyon hesabı ekle" lightbox="./media/custom-route-alert-portal/send-email-v2-expand.png":::
+   :::image type="content" source="./media/custom-route-alert-portal/send-email-v2.png" alt-text="E-posta v2 gönder" lightbox="./media/custom-route-alert-portal/send-email-v2-expand.png":::
 
 ### <a name="9-workflow-validation"></a><a name="validation"></a>9. iş akışı doğrulama
 
-Son adım iş akışı doğrulamadır. **Logic Apps genel bakış**bölümünde **tetikleyiciyi Çalıştır**' ı seçin. **Yinelenme**seçin. İş akışı, **çalışma geçmişinde**izlenebilir ve doğrulanabilir.
+Son adım iş akışı doğrulamadır. **Logic Apps genel bakış** bölümünde **tetikleyiciyi Çalıştır**' ı seçin. **Yinelenme** seçin. İş akışı, **çalışma geçmişinde** izlenebilir ve doğrulanabilir.
 
-:::image type="content" source="./media/custom-route-alert-portal/trigger.png" alt-text="Otomasyon hesabı ekle":::
+:::image type="content" source="./media/custom-route-alert-portal/trigger.png" alt-text="Tetikleyiciyi Çalıştır":::
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

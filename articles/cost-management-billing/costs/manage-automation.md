@@ -3,17 +3,17 @@ title: Otomasyon ile Azure maliyetlerini yönetme
 description: Bu makalede, otomasyon ile Azure maliyetlerini nasıl yönetebileceğiniz açıklanmaktadır.
 author: bandersmsft
 ms.author: banders
-ms.date: 01/06/2021
+ms.date: 03/08/2021
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: adwise
-ms.openlocfilehash: 02215bace693ac5ac36f9fc29758215d45b23eb1
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
-ms.translationtype: HT
+ms.openlocfilehash: f5cebffeaba1ce198be347758004068e8c03133b
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98051794"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102499688"
 ---
 # <a name="manage-costs-with-automation"></a>Otomasyon ile maliyetleri yönetme
 
@@ -46,6 +46,8 @@ Maliyet verileriniz küçük bir kümeyse [Kullanım Ayrıntıları API’sini](
 ## <a name="automate-retrieval-with-usage-details-api"></a>Kullanım Ayrıntıları API’si ile alımı otomatikleştirme
 
 [Kullanım Ayrıntıları API’si](/rest/api/consumption/usageDetails) Azure faturanıza karşılık gelen ham, toplu olmayan maliyet verilerini almanın kolay bir yolunu sunar. Kuruluşunuz için programlı bir veri alma çözümüne ihtiyaç duyuyorsanız API’den faydalanabilirsiniz. Daha küçük maliyet verisi kümelerini analiz etmek istiyorsanız API’yi kullanmanız faydalı olabilir. Ancak daha büyük veri kümeleriniz varsa önceden açıklanan diğer çözümleri kullanmanız gerekir. Kullanım Ayrıntılarındaki veriler günlük olarak ölçüm başına sağlanır. Bu veriler, aylık faturanız hesaplanırken kullanılır. Bu API’lerin genel kullanılabilirlik (GA) sürümü, `2019-10-01` sürümüdür. Rezervasyon ve Azure Market satın alımlarına yönelik önizleme sürümüne erişmek için API’lerle `2019-04-01-preview` sürümünü kullanın.
+
+Düzenli olarak büyük miktarlarda dışarı aktarılan veri almak istiyorsanız, bkz. [dışarı aktarmalar ile büyük maliyet veri kümelerini yinelenen olarak alma](ingest-azure-usage-at-scale.md).
 
 ### <a name="usage-details-api-suggestions"></a>Kullanım Ayrıntıları API’si önerileri
 
@@ -101,81 +103,19 @@ Gerçek maliyetlerin, yansıtılan satın alma işlemlerini göstermesini istiyo
 GET https://management.azure.com/{scope}/providers/Microsoft.Consumption/usageDetails?metric=AmortizedCost&$filter=properties/usageStart+ge+'2019-04-01'+AND+properties/usageEnd+le+'2019-04-30'&api-version=2019-04-01-preview
 ```
 
-## <a name="retrieve-large-cost-datasets-recurringly-with-exports"></a>Dışarı aktarmalar ile büyük miktarda veri kümelerini düzenli olarak alma
-
-Dışarı aktarmalarla Maliyet Yönetimi’nden düzenli olarak yüksek miktarda veri dışarı aktarabilirsiniz. Dışarı aktarma, toplu olmayan maliyet verilerini almak için önerilen yoldur. Özellikle Kullanım Ayrıntıları API’sini kullanarak çağırıp indirilemeyecek kadar büyük kullanım dosyaları olduğunda bu yoldan faydalanabilirsiniz. Dışarı aktarılan veriler, seçtiğiniz Azure Depolama hesabına yerleştirilir. Buradan, verileri kendi sistemlerinize yükleyip gereken şekilde analiz edebilirsiniz. Dışarı aktarmaları Azure portalında yapılandırmak için bkz. [Verileri dışarı aktarma](tutorial-export-acm-data.md).
-
-Belirli kapsamlardaki dışarı aktarmaları otomatikleştirmek istiyorsanız sonraki bölümde yer alan örnek API isteğiyle çalışmaya başlamanız faydalı olabilir. Genel ortam yapılandırmanızın bir parçası olarak otomatik dışarı aktarmalar oluşturmak için Dışarı Aktarmalar API’sini kullanabilirsiniz. Otomatik dışarı aktarmalar, ihtiyaç duyduğunuz verilere sahip olmanızı sağlar. Azure kullanımınızı genişlettikçe kendi kuruluşunuzun sistemlerinde kullanabilirsiniz.
-
-### <a name="common-export-configurations"></a>Ortak dışarı aktarma yapılandırmaları
-
-İlk dışarı aktarmanızı oluşturmadan önce, bunu sağlamak için gereken senaryoyu ve yapılandırma seçeneklerini dikkate alın. Aşağıdaki dışarı aktarma seçeneklerini göz önünde bulundurun:
-
-- **Yinelenme**: Dışarı aktarma işlerinin ne sıklıkla çalıştırıldığını ve bir dosyanın Azure Depolama hesabınıza yerleştirilme zamanını belirler. Günlük, Haftalık ve Aylık arasında seçim yapın. Yinelenmenizi, kuruluşunuzun şirket içindeki sistemi tarafından kullanılan veri içeri aktarma işleriyle eşleşecek şekilde yapılandırmayı deneyin.
-- **Yinelenme Süresi**: Dışarı aktarmanın ne kadar süre boyunca geçerli kalacağını belirler. Dosyalar yalnızca yinelenme süresi boyunca dışarı aktarılır.
-- **Zaman Dilimi**: Belirli bir çalıştırma üzerinde dışarı aktarma tarafından oluşturulan veri miktarını belirler. Yaygın seçenekler MonthToDate ve WeekToDate’tir.
-- **StartDate**: Dışarı aktarma zamanlamasının başlamasını istediğiniz zamanı yapılandırır. Dışarı aktarma ilk önce StartDate tarihinde, daha sonra Yinelenmenize göre oluşturulur.
-- **Tür** - Üç tür dışarı aktarma vardır:
-  - ActualCost - Belirli bir döneme ait toplam kullanımı ve maliyetleri, faturanıza yansıtıldığı şekilde gösterir.
-  - AmortizedCost - Belirli bir döneme ait toplam kullanımı ve maliyetleri, amortismanların uygun rezervasyon satın alma maliyetlerine uygulanmış şekilde gösterir.
-  - Kullanım - 20 Temmuz 2020’den önce oluşturulan tüm dışarı aktarmalar Kullanım türündedir. Tüm zamanlanmış dışarı aktarmalarınızı ActualCost veya AmortizedCost olarak güncelleştirin.
-- **Sütunlar**: Dışarı aktarma dosyanıza dahil etmek istediğiniz veri alanlarını tanımlar. Bunlar, Kullanım Ayrıntıları API’sinde yer alan dosyalarla ilişkilidir. Daha fazla bilgi için bkz. [Kullanım Ayrıntıları API’si](/rest/api/consumption/usagedetails/list).
-
-### <a name="create-a-daily-month-to-date-export-for-a-subscription"></a>Bir abonelik için günlük ay başından bugüne kadar dışarı aktarması oluşturma
-
-İstek URL’si: `PUT https://management.azure.com/{scope}/providers/Microsoft.CostManagement/exports/{exportName}?api-version=2020-06-01`
-
-```json
-{
-  "properties": {
-    "schedule": {
-      "status": "Active",
-      "recurrence": "Daily",
-      "recurrencePeriod": {
-        "from": "2020-06-01T00:00:00Z",
-        "to": "2020-10-31T00:00:00Z"
-      }
-    },
-    "format": "Csv",
-    "deliveryInfo": {
-      "destination": {
-        "resourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/MYDEVTESTRG/providers/Microsoft.Storage/storageAccounts/{yourStorageAccount} ",
-        "container": "{yourContainer}",
-        "rootFolderPath": "{yourDirectory}"
-      }
-    },
-    "definition": {
-      "type": "ActualCost",
-      "timeframe": "MonthToDate",
-      "dataSet": {
-        "granularity": "Daily",
-        "configuration": {
-          "columns": [
-            "Date",
-            "MeterId",
-            "ResourceId",
-            "ResourceLocation",
-            "Quantity"
-          ]
-        }
-      }
-    }
-}
-```
-
-### <a name="automate-alerts-and-actions-with-budgets"></a>Uyarıları ve eylemleri Bütçelerle otomatikleştirme
+## <a name="automate-alerts-and-actions-with-budgets"></a>Uyarıları ve eylemleri bütçelerle otomatikleştirin
 
 Buluttaki yatırımınızın değerini en üst düzeye çıkarmak için dikkate alınması gereken iki kritik bileşen vardır. Bunlardan ilki otomatik bütçe oluşturulmasıdır. Diğeriyse bütçe uyarılarına karşılık maliyet temelli düzenlemeler yapılandırmaktır. Azure bütçe oluşturmayı otomatikleştirmenin farklı yöntemleri vardır. Yapılandırılmış uyarı eşikleri geçildiğinde, çeşitli uyarı yanıtları meydana gelir.
 
 Aşağıdaki bölümlerde, kullanılabilir seçenekler ele alınır ve bütçe otomasyonunu kullanmaya başlamanız için örnek API istekleri sağlanır.
 
-#### <a name="how-costs-are-evaluated-against-your-budget-threshold"></a>Maliyetler bütçe eşiğinize karşı nasıl değerlendirilir?
+### <a name="how-costs-are-evaluated-against-your-budget-threshold"></a>Maliyetler bütçe eşiğinize karşı nasıl değerlendirilir?
 
 Maliyetler bütçe eşiğinize karşı günde bir kez değerlendirilir. Yeni bir bütçe oluşturduğunuzda veya bütçenizin sıfırlanma gününde, değerlendirme yapılmamış olabileceğinden eşikle karşılaştırılan maliyetler sıfır/null olur.
 
 Azure, maliyetlerinizin eşiği aştığını algıladığında, algılandığı saatte bir bildirim tetiklenir.
 
-#### <a name="view-your-current-cost"></a>Geçerli maliyetinizi görüntüleme
+### <a name="view-your-current-cost"></a>Geçerli maliyetinizi görüntüleme
 
 Geçerli maliyetlerinizi görüntülemek için [Sorgu API’sini](/rest/api/cost-management/query) kullanarak bir GET çağrısı yapmanız gerekir.
 
@@ -185,7 +125,7 @@ Bütçeler API’sine yapılan bir GET çağrısı, Maliyet Analizi’nde göste
 
 [Bütçeler API’sini](/rest/api/consumption/budgets) kullanarak bütçe oluşturmayı otomatikleştirebilirsiniz. Ayrıca, [bütçe şablonuyla](quick-create-budget-template.md) bir bütçe oluşturabilirsiniz. Şablonlar, maliyet denetiminizin düzgün yapılandırılıp zorlanmasını sağlarken Azure dağıtımlarınızı standart hale getirmenize yönelik kolay bir yöntem sağlar.
 
-#### <a name="supported-locales-for-budget-alert-emails"></a>Bütçe uyarısı e-postaları için desteklenen yerel ayarlar
+### <a name="supported-locales-for-budget-alert-emails"></a>Bütçe uyarısı e-postaları için desteklenen yerel ayarlar
 
 Bütçeler sayesinde, maliyetleriniz belirli bir eşiği açtığında uyarı alırsınız. Bütçe başına en fazla beş e-posta alıcısı ayarlayabilirsiniz. Bütçe eşiği aşıldıktan sonraki 24 saat içinde alıcılara e-posta gönderilir. Ancak, alıcınızın farklı bir dilde e-posta alması gerekebilir. Bütçe API’siyle aşağıdaki dil kültür kodlarını kullanabilirsiniz. Kültür kodunu, aşağıdaki örneğe benzer şekilde `locale` parametresiyle ayarlayın.
 
@@ -249,7 +189,7 @@ Kültür koduyla desteklenen diller:
 | pt-pt | Portekizce (Portekiz) |
 | sv-se | İsveççe (İsviçre) |
 
-#### <a name="common-budgets-api-configurations"></a>Yaygın Bütçeler API’si yapılandırmaları
+### <a name="common-budgets-api-configurations"></a>Yaygın Bütçeler API’si yapılandırmaları
 
 Azure ortamınızda bir bütçeyi yapılandırmanın pek çok yolu vardır. İlk olarak senaryonuzu ele alın, daha sonra bu senaryoyu gerçekleştirmeye yarayan yapılandırma seçeneklerini belirleyin. Aşağıdaki seçenekleri gözden geçirin:
 

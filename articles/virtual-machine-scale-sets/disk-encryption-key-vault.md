@@ -9,12 +9,12 @@ ms.subservice: disks
 ms.date: 10/10/2019
 ms.reviewer: mimckitt
 ms.custom: mimckitt
-ms.openlocfilehash: b8697e64eac69af8b8552f01fb6a03da0488a7cc
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.openlocfilehash: 3d30d506ae3b49b2e247ee77ef17d101f94854c7
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102210109"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102501026"
 ---
 # <a name="create-and-configure-a-key-vault-for-azure-disk-encryption"></a>Azure disk şifrelemesi için Anahtar Kasası oluşturma ve yapılandırma
 
@@ -36,7 +36,7 @@ Bu makaledeki adımlar [Azure CLI](/cli/azure/), [Azure PowerShell Az Module](/p
 
 ### <a name="connect-to-your-azure-account"></a>Azure hesabınıza bağlanma
 
-Azure CLı veya Azure PowerShell kullanmadan önce, önce Azure aboneliğinize bağlanmanız gerekir. Bunun için [Azure CLI Ile oturum](/cli/azure/authenticate-azure-cli)açıp [Azure PowerShell ile oturum](/powershell/azure/authenticate-azureps?view=azps-2.5.0)açarak veya istendiğinde kimlik bilgilerinizi Azure Portal sağlayabilirsiniz.
+Azure CLı veya Azure PowerShell kullanmadan önce, önce Azure aboneliğinize bağlanmanız gerekir. Bunun için [Azure CLI Ile oturum](/cli/azure/authenticate-azure-cli)açıp [Azure PowerShell ile oturum](/powershell/azure/authenticate-azureps)açarak veya istendiğinde kimlik bilgilerinizi Azure Portal sağlayabilirsiniz.
 
 ```azurecli-interactive
 az login

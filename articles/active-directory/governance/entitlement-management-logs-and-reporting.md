@@ -16,12 +16,12 @@ ms.date: 12/23/2020
 ms.author: barclayn
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b635a83c5ea1378a525ff607e5c6f2725337ad1a
-ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
+ms.openlocfilehash: 4c5ab92fcc1d70d12e37ae351e768514b4e7522f
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "102453045"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102501711"
 ---
 # <a name="archive-logs-and-reporting-on-azure-ad-entitlement-management-in-azure-monitor"></a>Azure Izleyici 'de Azure AD yetkilendirme yönetiminde arşiv günlükleri ve raporları
 
@@ -130,7 +130,7 @@ Rol atamasını ayarlamak ve bir sorgu oluşturmak için aşağıdaki adımları
 
 ### <a name="install-azure-powershell-module"></a>Azure PowerShell modülünü Install
 
-Uygun rol atamasını aldıktan sonra PowerShell 'i başlatın ve [Azure PowerShell modülünü](/powershell/azure/install-az-ps?view=azps-3.3.0) (henüz yapmadıysanız), şunu yazarak yükleyebilirsiniz:
+Uygun rol atamasını aldıktan sonra PowerShell 'i başlatın ve [Azure PowerShell modülünü](/powershell/azure/install-az-ps) (henüz yapmadıysanız), şunu yazarak yükleyebilirsiniz:
 
 ```azurepowershell
 install-module -Name az -allowClobber -Scope CurrentUser
@@ -168,8 +168,7 @@ $wks | ft CustomerId, Name
 ```
 
 ### <a name="send-the-query-to-the-log-analytics-workspace"></a>Sorguyu Log Analytics çalışma alanına gönder
-Son olarak, bir çalışma alanı tanımlandıktan sonra, bu çalışma alanına bir kusto sorgusu göndermek için [Invoke-Azoperationalınsightsquery](/powershell/module/az.operationalinsights/Invoke-AzOperationalInsightsQuery?view=azps-3.3.0
-) komutunu kullanabilirsiniz. Bu sorgular [kusto sorgu dilinde](/azure/kusto/query/)yazılır.
+Son olarak, bir çalışma alanı tanımlandıktan sonra, bu çalışma alanına bir kusto sorgusu göndermek için [Invoke-Azoperationalınsightsquery](/powershell/module/az.operationalinsights/Invoke-AzOperationalInsightsQuery) komutunu kullanabilirsiniz. Bu sorgular [kusto sorgu dilinde](/azure/kusto/query/)yazılır.
  
 Örneğin, Log Analytics çalışma alanından denetim olay kayıtlarının tarih aralığını, PowerShell cmdlet 'leri ile birlikte kullanarak, şunun gibi bir sorgu gönderebilmeniz için alabilirsiniz:
  

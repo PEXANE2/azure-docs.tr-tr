@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 03/31/2020
 ms.author: robinsh
 ms.custom: mqtt, devx-track-python
-ms.openlocfilehash: 1112df382fb10051ac06c4461a9e4328e1663388
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 77d51b2c839a64567838fa4d6308d203a6bb8b82
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92139311"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102501150"
 ---
 # <a name="upload-files-from-your-device-to-the-cloud-with-iot-hub-python"></a>IoT Hub (Python) ile cihazınızdan buluta dosya yükleme
 
@@ -109,7 +109,7 @@ Bu bölümde, IoT Hub 'a bir dosya yüklemek üzere cihaz uygulaması oluşturac
             return (False, ex)
     ```
 
-    Bu işlev, bir [Azure. Storage. blob. BlobClient](/python/api/azure-storage-blob/azure.storage.blob.blobclient?view=azure-python)başlatmak için KULLANDıĞı bir URL oluşturmak üzere kendisine geçirilen *blob_info* yapısını ayrıştırır. Daha sonra bu istemciyi kullanarak dosyanızı Azure Blob depolama alanına yükler.
+    Bu işlev, bir [Azure. Storage. blob. BlobClient](/python/api/azure-storage-blob/azure.storage.blob.blobclient)başlatmak için KULLANDıĞı bir URL oluşturmak üzere kendisine geçirilen *blob_info* yapısını ayrıştırır. Daha sonra bu istemciyi kullanarak dosyanızı Azure Blob depolama alanına yükler.
 
 1. İstemcisini bağlamak ve dosyayı karşıya yüklemek için aşağıdaki kodu ekleyin:
 
@@ -211,4 +211,4 @@ Aşağıdaki bağlantılarla Azure Blob depolama hakkında daha fazla bilgi edin
 
 * [Azure Blob depolama belgeleri](../storage/blobs/index.yml)
 
-* [Python API belgeleri için Azure Blob depolama](/python/api/overview/azure/storage-blob-readme?view=azure-python)
+* [Python API belgeleri için Azure Blob depolama](/python/api/overview/azure/storage-blob-readme)

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: larryfr
 author: BlackMist
 ms.date: 11/16/2020
-ms.openlocfilehash: 78f8d6d216659eaad01d512dd45696dd31035885
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: 648dbe6b8d275c832f219cb6f3119ac0bc518a54
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94695393"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102508478"
 ---
 # <a name="what-are-azure-machine-learning-environments"></a>Azure Machine Learning ortamları nelerdir?
 
@@ -78,13 +78,13 @@ Ortam tanımı çalışma alanı ACR 'de zaten mevcut değilse yeni bir görünt
  1. Temel görüntü indirme ve herhangi bir Docker adımını yürütme
  2. Ortam tanımında belirtilen Conda bağımlılıklarına göre Conda ortamı oluşturma.
 
-[Kullanıcı tarafından yönetilen bağımlılıklar](/python/api/azureml-core/azureml.core.environment.pythonsection?preserve-view=true&view=azure-ml-py)belirtirseniz ikinci adım atlanır. Bu durumda, tüm Python paketlerini temel görüntlerinize dahil ederek veya ilk adımda özel Docker adımları belirterek siz sorumlusunuz. Ayrıca, Python yürütülebilir dosyası için doğru konumu belirtmekten de sorumlusunuz. [Özel bir Docker temel görüntüsü](how-to-deploy-custom-docker-image.md)kullanmak da mümkündür.
+[Kullanıcı tarafından yönetilen bağımlılıklar](/python/api/azureml-core/azureml.core.environment.pythonsection)belirtirseniz ikinci adım atlanır. Bu durumda, tüm Python paketlerini temel görüntlerinize dahil ederek veya ilk adımda özel Docker adımları belirterek siz sorumlusunuz. Ayrıca, Python yürütülebilir dosyası için doğru konumu belirtmekten de sorumlusunuz. [Özel bir Docker temel görüntüsü](how-to-deploy-custom-docker-image.md)kullanmak da mümkündür.
 
 ### <a name="image-caching-and-reuse"></a>Görüntü önbelleğe alma ve yeniden kullanma
 
 Başka bir çalıştırma için aynı ortam tanımını kullanıyorsanız, Azure Machine Learning hizmeti, önbelleğe alınmış görüntüyü çalışma alanından ACR 'den yeniden kullanır. 
 
-Önbelleğe alınmış bir görüntünün ayrıntılarını görüntülemek için [Environment.get_image_details](/python/api/azureml-core/azureml.core.environment.environment?preserve-view=true&view=azure-ml-py#&preserve-view=trueget-image-details-workspace-) yöntemi kullanın.
+Önbelleğe alınmış bir görüntünün ayrıntılarını görüntülemek için [Environment.get_image_details](/python/api/azureml-core/azureml.core.environment.environment#get-image-details-workspace-) yöntemi kullanın.
 
 Önbelleğe alınmış bir görüntünün yeniden kullanılıp kullanılmayacağını veya yeni bir tane derlemenizi öğrenmek için, hizmet ortam tanımından [bir karma değer](https://en.wikipedia.org/wiki/Hash_table) hesaplar ve bunu mevcut ortamların karmalarıyla karşılaştırır. Karma şunları temel alır:
  
@@ -107,10 +107,10 @@ Aşağıdaki diyagramda üç ortam tanımı gösterilmektedir. Bunlardan ikisi f
 Paketi güncelleştirmek için, örneğin, görüntü yeniden oluşturmayı zorlamak için bir sürüm numarası belirtin ```numpy==1.18.1``` . İç içe geçmiş olanlar dahil yeni bağımlılıklar yüklenir, daha önce çalışan bir senaryoyu bozabilecek. 
 
 > [!WARNING]
->  [Environment. Build](/python/api/azureml-core/azureml.core.environment.environment?preserve-view=true&view=azure-ml-py#&preserve-view=truebuild-workspace--image-build-compute-none-) yöntemi, önbelleğe alınmış görüntüyü, bu önbelleğe alınmış görüntüye karşılık gelen tüm ortam tanımları için ayrılmış paketleri güncelleştirmenin ve son reproducibility güncelleştirme olasılığı ile yeniden oluşturur.
+>  [Environment. Build](/python/api/azureml-core/azureml.core.environment.environment#build-workspace--image-build-compute-none-) yöntemi, önbelleğe alınmış görüntüyü, bu önbelleğe alınmış görüntüye karşılık gelen tüm ortam tanımları için ayrılmış paketleri güncelleştirmenin ve son reproducibility güncelleştirme olasılığı ile yeniden oluşturur.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * Azure Machine Learning [ortamında ortam oluşturma ve kullanma](how-to-use-environments.md) hakkında bilgi edinin.
-* [Ortam sınıfı](/python/api/azureml-core/azureml.core.environment%28class%29?preserve-view=true&view=azure-ml-py)IÇIN Python SDK başvuru belgelerine bakın.
+* [Ortam sınıfı](/python/api/azureml-core/azureml.core.environment%28class%29)IÇIN Python SDK başvuru belgelerine bakın.
 * [Ortamlar](https://azure.github.io/azureml-sdk-for-r/reference/index.html#section-environments)IÇIN R SDK başvuru belgelerine bakın.

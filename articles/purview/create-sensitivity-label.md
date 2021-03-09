@@ -6,13 +6,13 @@ ms.author: bagol
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
-ms.date: 01/19/2021
-ms.openlocfilehash: bcfe26bc6f637dd140776df98f8267c4c43684ba
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.date: 03/09/2021
+ms.openlocfilehash: 37ac292acc76c681ea38b2ae881ff8cd2ae5ec3c
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102049563"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102502455"
 ---
 # <a name="automatically-label-your-data-in-azure-purview"></a>Verilerinizi Azure purview 'da otomatik olarak etiketleme
 
@@ -114,6 +114,14 @@ Aşağıdaki adımlar, duyarlılık etiketlerinizi SQL sütunları, Azure Blob d
 Etiketlemeyi Azure purview içindeki varlıklara genişlettikten sonra, purview 'ta kullanılabilir hale getirmek istediğiniz etiketleri seçebilirsiniz. Daha fazla bilgi için bkz. [yeni duyarlılık etiketleri oluşturma veya varolan etiketleri değiştirme](#creating-new-sensitivity-labels-or-modifying-existing-labels).
 ### <a name="creating-new-sensitivity-labels-or-modifying-existing-labels"></a>Yeni duyarlılık etiketleri oluşturma veya varolan etiketleri değiştirme
 
+Windows, macOS, iOS ve Android 'de Office uygulamaları için duyarlılık etiketleri kullandığınızda, kullanıcılar yeni etiketleri dört saat içinde ve Web 'de Office için bir saat içinde görür. Ancak, değişikliklerin tüm uygulama ve hizmetlere çoğaltılması 24 saate kadar izin verir.
+
+> [!IMPORTANT]
+> Kullanıcılarınızın etkisini anlamadığınız müddetçe bir etiketi silmeyin. Daha fazla bilgi için Microsoft 365 belgelerindeki [etiketleri kaldırma ve silme](/microsoft-365/compliance/create-sensitivity-labels#removing-and-deleting-labels) bölümüne bakın.
+>
+
+**Yeni duyarlılık etiketleri oluşturmak veya varolan etiketleri değiştirmek için**:
+
 1. [Microsoft 365 güvenlik ve Uyumluluk Merkezi 'ni](https://protection.office.com/homepage)açın. 
 
 1. **Çözümler** altında **bilgi koruması**' nı seçin ve **etiket oluştur**' u seçin. 
@@ -152,10 +160,6 @@ Etiketlemeyi Azure purview içindeki varlıklara genişlettikten sonra, purview 
 
     Daha fazla bilgi için Microsoft 365 belgelerinde [etiket önceliği (sıralama)](/microsoft-365/compliance/sensitivity-labels#label-priority-order-matters) bölümüne bakın.
 
-> [!IMPORTANT]
-> Kullanıcılarınızın etkisini anlamadığınız müddetçe bir etiketi silmeyin. 
->
-> Daha fazla bilgi için Microsoft 365 belgelerindeki [etiketleri kaldırma ve silme](/microsoft-365/compliance/create-sensitivity-labels#removing-and-deleting-labels) bölümüne bakın.
 
 [Etiketleri otomatik olarak uygulamak için verilerinizi tarayarak](#scan-your-data-to-apply-labels-automatically)devam edin ve ardından:
 

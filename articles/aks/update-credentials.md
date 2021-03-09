@@ -5,16 +5,16 @@ description: Bir Azure Kubernetes hizmeti (AKS) kümesi için hizmet sorumlusu v
 services: container-service
 ms.topic: article
 ms.date: 03/11/2019
-ms.openlocfilehash: ba2c31872ae026cfdfcb7be17d333fb98194dce6
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 84cadc54a11c2e57d73fd1f06e98deb3d599d648
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100389017"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102501184"
 ---
 # <a name="update-or-rotate-the-credentials-for-azure-kubernetes-service-aks"></a>Azure Kubernetes hizmeti (AKS) için kimlik bilgilerini güncelleştirme veya döndürme
 
-Varsayılan olarak, AKS kümeleri bir yıllık sona erme saati olan bir hizmet sorumlusu ile oluşturulur. Sona erme tarihinin yakınında, hizmet sorumlusunu ek bir süre için uzatmak üzere kimlik bilgilerini sıfırlayabilirsiniz. Ayrıca, kimlik bilgilerini tanımlanmış güvenlik ilkesinin bir parçası olarak güncelleştirmek veya döndürmek isteyebilirsiniz. Bu makalede bir AKS kümesi için bu kimlik bilgilerini güncelleştirme ayrıntıları anlatılmaktadır.
+Hizmet sorumlusu ile oluşturulan AKS kümelerinin bir yıllık sona erme saati vardır. Sona erme tarihinin yakınında, hizmet sorumlusunu ek bir süre için uzatmak üzere kimlik bilgilerini sıfırlayabilirsiniz. Ayrıca, kimlik bilgilerini tanımlanmış güvenlik ilkesinin bir parçası olarak güncelleştirmek veya döndürmek isteyebilirsiniz. Bu makalede bir AKS kümesi için bu kimlik bilgilerini güncelleştirme ayrıntıları anlatılmaktadır.
 
 Ayrıca [AKS kümenizi Azure Active Directory ile tümleştirmiş][aad-integration]ve bunu kümeniz için bir kimlik doğrulama sağlayıcısı olarak kullanmanıza da olabilirsiniz. Bu durumda, kümeniz, AAD sunucu uygulaması ve AAD Istemci uygulaması için 2 daha fazla kimliğe sahip olursunuz. bu kimlik bilgilerini de sıfırlayabilirsiniz.
 

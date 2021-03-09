@@ -5,12 +5,12 @@ description: Azure Kubernetes Service (AKS) kümesinde statik bir genel IP adres
 services: container-service
 ms.topic: article
 ms.date: 08/17/2020
-ms.openlocfilehash: 58cda3f2bfc76f00deaa85347c059040e39f9ef5
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: fa6572ddc694cb892f48cb3e618c176f087524f6
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98729022"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102506574"
 ---
 # <a name="create-an-ingress-controller-with-a-static-public-ip-address-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) içinde statik bir genel IP adresi ile giriş denetleyicisi oluşturma
 
@@ -50,7 +50,7 @@ az network public-ip create --resource-group MC_myResourceGroup_myAKSCluster_eas
 ```
 
 > [!NOTE]
-> Yukarıdaki komutlar, AKS kümenizi silerseniz silinecek bir IP adresi oluşturur. Alternatif olarak, AKS kümeinizden ayrı olarak yönetilebilen farklı bir kaynak grubunda bir IP adresi oluşturabilirsiniz. Farklı bir kaynak grubunda bir IP adresi oluşturursanız, AKS kümesi tarafından kullanılan hizmet sorumlusunun, *ağ katılımcısı* gibi diğer kaynak grubu için izin Temsilcili olduğundan emin olun. Daha fazla bilgi için bkz. [AKS yük dengeleyicisiyle statik bir genel IP adresi ve DNS etiketi kullanma][aks-static-ip].
+> Yukarıdaki komutlar, AKS kümenizi silerseniz silinecek bir IP adresi oluşturur. Alternatif olarak, AKS kümeinizden ayrı olarak yönetilebilen farklı bir kaynak grubunda bir IP adresi oluşturabilirsiniz. Farklı bir kaynak grubunda bir IP adresi oluşturursanız, AKS kümesi tarafından kullanılan küme kimliğinin, *ağ katılımcısı* gibi diğer kaynak grubu için izin Temsilcili olduğundan emin olun. Daha fazla bilgi için bkz. [AKS yük dengeleyicisiyle statik bir genel IP adresi ve DNS etiketi kullanma][aks-static-ip].
 
 Şimdi *NGINX-ingress* grafiğini Held ile dağıtın. Daha fazla yedeklilik sağlamak için `--set controller.replicaCount` parametresiyle iki NGINX giriş denetleyicisi çoğaltması dağıtılır. Giriş denetleyicisinin Çoğaltmalarından tamamen yararlanmak için AKS kümenizde birden fazla düğüm olduğundan emin olun.
 

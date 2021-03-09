@@ -1,22 +1,22 @@
 ---
-title: Öğretici-Azure 'da Windows VM 'Leri için yüksek kullanılabilirlik
-description: Bu öğreticide, Kullanılabilirlik Kümelerinde yüksek oranda kullanılabilir sanal makineler dağıtmak için Azure PowerShell kullanmayı öğreneceksiniz
+title: Azure PowerShell kullanarak VM 'Leri bir kullanılabilirlik kümesinde dağıtma
+description: Kullanılabilirlik kümelerinde yüksek oranda kullanılabilir sanal makineleri dağıtmak için Azure PowerShell kullanmayı öğrenin
 services: virtual-machines-windows
-author: cynthn
-ms.service: virtual-machines-windows
-ms.workload: infrastructure-services
-ms.topic: tutorial
-ms.date: 11/30/2018
-ms.author: cynthn
+author: mimckitt
+ms.service: virtual-machines
+ms.topic: how-to
+ms.date: 3/8/2021
+ms.author: mimckitt
+ms.reviewer: cynthn
 ms.custom: mvc
-ms.openlocfilehash: e1c9cf0a60446fba6fae5c850231b0805e7ea135
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 90f57e48ef8cd2f71eea7a5c2b98fda83f282203
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98736660"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102509107"
 ---
-# <a name="tutorial-create-and-deploy-highly-available-virtual-machines-with-azure-powershell"></a>Öğretici: Azure PowerShell ile yüksek oranda kullanılabilir sanal makineler oluşturma ve dağıtma
+# <a name="create-and-deploy-virtual-machines-in-an-availability-set-using-azure-powershell"></a>Azure PowerShell kullanarak bir kullanılabilirlik kümesinde sanal makine oluşturma ve dağıtma
 
 Bu öğreticide, kullanılabilirlik kümelerini kullanarak sanal makinelerinizin (VM) kullanılabilirliğini ve güvenilirliğini nasıl artıracağınızı öğreneceksiniz. Kullanılabilirlik kümeleri, Azure 'da dağıttığınız VM 'Lerin bir kümede birden çok, yalıtılmış donanım düğümüne dağıtıldığından emin olun. 
 
@@ -28,14 +28,6 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > * Kullanılabilir sanal makine boyutlarını denetleme
 > * Azure Danışmanı’nı denetleme
 
-
-## <a name="availability-set-overview"></a>Kullanılabilirlik kümesine genel bakış
-
-Kullanılabilirlik kümesi, dağıtılan VM kaynaklarını birbirinden yalıtmak için bir mantıksal gruplama özelliğidir. Azure, bir kullanılabilirlik kümesi içinde yerleştirdiğiniz VM 'Lerin birden çok fiziksel sunucuda, bilgi işlem raflarında, depolama birimlerinde ve ağ anahtarlarında çalıştığından emin olmanızı sağlar. Bir donanım veya yazılım hatası oluşursa, sanal makinelerinizin yalnızca bir alt kümesi etkilenir ve genel çözümünüz çalışır durumda kalır. Kullanılabilirlik kümeleri, güvenilir bulut çözümleri oluşturmak için gereklidir.
-
-Dört adet ön uç web sunucusuna ve iki adet arka uç sanal makineye sahip olabileceğiniz tipik bir sanal makine tabanlı çözümü düşünelim. Azure ile, sanal makinelerinizi dağıtmadan önce iki kullanılabilirlik kümesi tanımlamak istersiniz: bir Web katmanı ve diğeri arka katman için. Yeni bir VM oluşturduğunuzda, kullanılabilirlik kümesini parametre olarak belirtirsiniz. Azure, VM 'Lerin birden fazla fiziksel donanım kaynağı arasında yalıtılmasını sağlar. Sunucularınızdaki bir fiziksel donanımda bir sorun varsa, farklı donanımlarda olduklarından sunucularınızın diğer örneklerinin çalışmaya devam edecek olduğunu bilirsiniz.
-
-Azure’da güvenilir sanal makine tabanlı çözümleri dağıtmak istediğinizde Kullanılabilirlik Kümelerini kullanın.
 
 ## <a name="launch-azure-cloud-shell"></a>Azure Cloud Shell’i başlatma
 

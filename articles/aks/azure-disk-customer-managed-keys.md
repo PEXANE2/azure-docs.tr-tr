@@ -4,12 +4,12 @@ description: AKS işletim sistemini ve veri disklerini şifrelemek için kendi a
 services: container-service
 ms.topic: article
 ms.date: 09/01/2020
-ms.openlocfilehash: 60a7e36039500ccb8a46fd1f5998c23c37174689
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 4b1c311132cc812ccb2bbbc95c4b7414b108008c
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98728144"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102499212"
 ---
 # <a name="bring-your-own-keys-byok-with-azure-disks-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) içindeki Azure diskleriyle kendi anahtarlarınızı (BYOK) getirin
 
@@ -19,7 +19,7 @@ Azure depolama, bekleyen bir depolama hesabındaki tüm verileri şifreler. Vars
 * Veri diski şifreleme desteği, Kubernetes sürüm 1,17 ve üstünü çalıştıran AKS kümeleriyle sınırlıdır.
 * Müşteri tarafından yönetilen anahtarlarla işletim sistemi ve veri diski şifrelemesi, yalnızca bir AKS kümesi oluşturulurken etkinleştirilebilir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 * Yönetilen diskleri şifrelemek için Key Vault kullanırken *Azure Key Vault* için geçici silme ve Temizleme korumasını etkinleştirmeniz gerekir.
 * Azure CLı sürüm 2.11.1 veya sonraki bir sürümü gereklidir.
 
@@ -93,7 +93,7 @@ Yukarıda oluşturulan kümeye yeni düğüm havuzları eklendiğinde, oluşturm
 V 1.17.2 veri diski için anahtar sağlanmazsa ve ayrıca AKS veri disklerini diğer anahtarlarla şifreleyebiliyorsanız, işletim sistemi disk şifreleme anahtarı veri diskini şifrelemek için kullanılacaktır.
 
 > [!IMPORTANT]
-> Uygun AKS kimlik bilgilerine sahip olduğunuzdan emin olun. Hizmet sorumlusunun, diskencryptionset 'in dağıtıldığı kaynak grubuna katkıda bulunan erişiminin olması gerekir. Aksi takdirde, hizmet sorumlusunun izin içermediğinden emin olmak için bir hata alırsınız.
+> Uygun AKS kimlik bilgilerine sahip olduğunuzdan emin olun. Yönetilen kimliğin, diskencryptionset 'in dağıtıldığı kaynak grubuna katkıda bulunan erişiminin olması gerekir. Aksi takdirde, yönetilen kimliğin izinlere sahip olmadığından emin olarak bir hata alırsınız.
 
 ```azurecli-interactive
 # Retrieve your Azure Subscription Id from id property as shown below

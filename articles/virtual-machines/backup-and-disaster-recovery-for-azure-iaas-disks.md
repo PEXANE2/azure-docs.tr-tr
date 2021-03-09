@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/19/2017
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 01133ab5582e63c0e87d8a5cf8de12f5445394c5
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: e5ae08c23748e55a8c3b75eb8fb9c112684f022e
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91969713"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102507915"
 ---
 # <a name="backup-and-disaster-recovery-for-azure-iaas-disks"></a>Azure IaaS diskleri için yedekleme ve olağanüstü durum kurtarma
 
@@ -48,7 +48,7 @@ Bu mimaride, Azure, IaaS diskleri için sürekli olarak kurumsal düzeyde dayan�
 
 İşlem konağında veya depolama platformunda yerelleştirilmiş donanım hataları bazen, VM kullanılabilirliği için [Azure SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/) kapsamındaki VM 'nin geçici kullanım dışı kalması ile sonuçlanabilir. Azure ayrıca Azure Premium SSD 'leri kullanan tek VM örnekleri için sektör lideri bir SLA sağlar.
 
-Bir disk veya VM 'nin geçici olarak KULLANILAMAMASINDAN dolayı uygulama iş yüklerinin kapalı kalma süresini korumak için, müşteriler [kullanılabilirlik kümelerini](./manage-availability.md)kullanabilir. Bir kullanılabilirlik kümesindeki iki veya daha fazla sanal makine uygulama için artıklık sağlar. Azure daha sonra bu VM 'Leri ve diskleri farklı güç, ağ ve sunucu bileşenleriyle ayrı hata etki alanlarında oluşturur.
+Bir disk veya VM 'nin geçici olarak KULLANILAMAMASINDAN dolayı uygulama iş yüklerinin kapalı kalma süresini korumak için, müşteriler [kullanılabilirlik kümelerini](./availability.md)kullanabilir. Bir kullanılabilirlik kümesindeki iki veya daha fazla sanal makine uygulama için artıklık sağlar. Azure daha sonra bu VM 'Leri ve diskleri farklı güç, ağ ve sunucu bileşenleriyle ayrı hata etki alanlarında oluşturur.
 
 Bu ayrı hata etki alanları nedeniyle, yerelleştirilmiş donanım arızaları genellikle aynı anda küme içinde birden çok VM 'yi etkilemez. Ayrı hata etki alanlarının olması, uygulamanız için yüksek kullanılabilirlik sağlar. Yüksek kullanılabilirlik gerektiğinde kullanılabilirlik kümelerini kullanmak iyi bir uygulama olarak kabul edilir. Sonraki bölümde olağanüstü durum kurtarma yönü ele alınmaktadır.
 
@@ -120,7 +120,7 @@ Yüksek kullanılabilirlik, Azure Backup birlikte bir kullanılabilirlik kümesi
 
 Uygulama veya altyapı seviyeleri için yüksek kullanılabilirlik, yedekleme ve DR seçimleriniz aşağıdaki gibi gösterilebilir:
 
-| Düzey |   Yüksek kullanılabilirlik   | Yedekleme veya DR |
+| Level |   Yüksek kullanılabilirlik   | Yedekleme veya DR |
 | --- | --- | --- |
 | Uygulama | SQL Server AlwaysOn | Azure Backup |
 | Altyapı    | Kullanılabilirlik kümesi  | Tutarlı anlık görüntülerle coğrafi olarak yedekli depolama |
@@ -143,7 +143,7 @@ Geri yüklemek için, kullanılabilir yedeklemeleri Azure Backup aracılığıyl
 
 1.  Bir VM için kurtarma hizmetleri Kasası oluşturma:
 
-    a. [Azure Portal](https://portal.azure.com/), **tüm kaynaklara** gözatıp **Kurtarma Hizmetleri kasalarını**bulun.
+    a. [Azure Portal](https://portal.azure.com/), **tüm kaynaklara** gözatıp **Kurtarma Hizmetleri kasalarını** bulun.
 
     b. **Kurtarma Hizmetleri kasaları** menüsünde, **Ekle** ' ye tıklayın ve VM ile aynı bölgede yeni bir kasa oluşturmak için adımları izleyin. Örneğin, VM 'niz Batı ABD bölgedeyse, kasa için Batı ABD seçin.
 

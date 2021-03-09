@@ -11,6 +11,10 @@
   items:
     - name: Ön kapı Standart/Premium Oluşturma-Portal
       href: create-front-door-portal.md
+- name: Örnekler
+  items:
+    - name: Resource Manager şablonları
+      href: resource-manager-template-samples.md
 - name: Kavramlar
   items:
     - name: Front Door hakkında SSS

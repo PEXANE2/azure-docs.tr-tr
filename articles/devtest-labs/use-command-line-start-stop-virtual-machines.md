@@ -3,12 +3,12 @@ title: VM 'Leri başlatmak ve durdurmak için komut satırı araçlarını kulla
 description: Azure DevTest Labs ' de sanal makineleri başlatmak ve durdurmak için komut satırı araçlarını kullanmayı öğrenin.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 2b9be3d09c488fdae211d81daf88e8807bc7b4dc
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
+ms.openlocfilehash: 2ddc1620cf86fa203b2f0e31359f9fd262df8916
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102201201"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102499552"
 ---
 # <a name="use-command-line-tools-to-start-and-stop-azure-devtest-labs-virtual-machines"></a>Azure DevTest Labs sanal makineleri başlatmak ve durdurmak için komut satırı araçlarını kullanma
 Bu makalede, Azure DevTest Labs bir laboratuvardaki sanal makineleri başlatmak veya durdurmak için Azure PowerShell veya Azure CLı kullanarak nasıl kullanılacağı gösterilmektedir. Bu işlemleri otomatikleştirmek için PowerShell/CLı betikleri oluşturabilirsiniz. 
@@ -29,7 +29,7 @@ Ancak bazı senaryolarda, PowerShell/CLı betiklerinden VM 'Leri başlatma ve du
 > [!NOTE]
 > Aşağıdaki betik Azure PowerShell az Module kullanır. 
 
-Aşağıdaki PowerShell betiği laboratuvara bir sanal makine başlatır. [Invoke-AzResourceAction](/powershell/module/az.resources/invoke-azresourceaction?view=azps-1.7.0) , bu betiğin birincil odadır. **RESOURCEID** parametresi, LABORATUVARA sanal makine için tam kaynak kimliğidir. **Eylem** parametresi, gerekli olan seçeneğe göre **Başlangıç** veya **durdurma** seçeneklerinin ayarlandığı yerdir.
+Aşağıdaki PowerShell betiği laboratuvara bir sanal makine başlatır. [Invoke-AzResourceAction](/powershell/module/az.resources/invoke-azresourceaction) , bu betiğin birincil odadır. **RESOURCEID** parametresi, LABORATUVARA sanal makine için tam kaynak kimliğidir. **Eylem** parametresi, gerekli olan seçeneğe göre **Başlangıç** veya **durdurma** seçeneklerinin ayarlandığı yerdir.
 
 ```powershell
 # The id of the subscription

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 10/06/2019
 ms.author: mbaldwin
 ms.custom: include file, devx-track-azurecli
-ms.openlocfilehash: 26a9e931c42822218e7935f50c1f222ac33c34f2
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.openlocfilehash: 6f8cfc314c75221a88b58095cc71ea685280ac49
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102210110"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102501027"
 ---
 ## <a name="create-a-resource-group"></a>Kaynak grubu oluşturma
 
@@ -161,7 +161,7 @@ az vm encryption enable -g "MyResourceGroup" --name "myVM" --disk-encryption-key
 
 ###  <a name="azure-powershell"></a>Azure PowerShell 
 
-Yeni bir KEK oluşturmak ve bunu Anahtar Kasanızda depolamak için Azure PowerShell [Add-AzKeyVaultKey](/powershell/module/az.keyvault/add-azkeyvaultkey?view=azps-2.5.0) cmdlet 'ini kullanın.
+Yeni bir KEK oluşturmak ve bunu Anahtar Kasanızda depolamak için Azure PowerShell [Add-AzKeyVaultKey](/powershell/module/az.keyvault/add-azkeyvaultkey) cmdlet 'ini kullanın.
 
  ```powershell-interactive
 Add-AzKeyVaultKey -Name "myKEK" -VaultName "<your-unique-keyvault-name>" -Destination "HSM"
@@ -169,7 +169,7 @@ Add-AzKeyVaultKey -Name "myKEK" -VaultName "<your-unique-keyvault-name>" -Destin
 
 Bunun yerine, Azure PowerShell [az keykasa Key Import](/cli/azure/keyvault/key#az-keyvault-key-import) komutunu kullanarak bir özel anahtarı içeri aktarabilirsiniz.
 
-Her iki durumda da, KEK anahtar kasanızın KIMLIĞINI ve KEK [set-AzVMDiskEncryptionExtension](/powershell/module/az.compute/set-azvmdiskencryptionextension?view=azps-2.5.0) -keyencryptionkeytultıd ve-KeyEncryptionKeyUrl PARAMETRELERINE Azure PowerShell URL 'sini sağlamanız gerekir. Bu örnekte, hem disk şifreleme anahtarı hem de KEK için aynı anahtar kasasını kullandığınızı varsaydığını unutmayın.
+Her iki durumda da, KEK anahtar kasanızın KIMLIĞINI ve KEK [set-AzVMDiskEncryptionExtension](/powershell/module/az.compute/set-azvmdiskencryptionextension) -keyencryptionkeytultıd ve-KeyEncryptionKeyUrl PARAMETRELERINE Azure PowerShell URL 'sini sağlamanız gerekir. Bu örnekte, hem disk şifreleme anahtarı hem de KEK için aynı anahtar kasasını kullandığınızı varsaydığını unutmayın.
 
  ```powershell-interactive
 $KeyVault = Get-AzKeyVault -VaultName "<your-unique-keyvault-name>" -ResourceGroupName "myResourceGroup"

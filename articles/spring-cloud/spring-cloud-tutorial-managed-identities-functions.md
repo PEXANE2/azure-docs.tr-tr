@@ -6,12 +6,12 @@ ms.author: margard
 ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 07/10/2020
-ms.openlocfilehash: a33ba6813b4a67de7f46f3576a44fa7411278ba7
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 861463b13c6ce8b29911432ad96f98fed527745b
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102031795"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102501065"
 ---
 # <a name="tutorial-use-a-managed-identity-to-invoke-azure-functions-from-an-azure-spring-cloud-app"></a>Öğretici: Azure yay bulut uygulamasından Azure Işlevleri çağırmak için yönetilen bir kimlik kullanma
 
@@ -175,4 +175,4 @@ Bu örnek, önce [MSI uç noktasından](../active-directory/managed-identities-a
 
 * [Azure yay bulut uygulaması için sistem tarafından atanan yönetilen kimliği etkinleştirme](./spring-cloud-howto-enable-system-assigned-managed-identity.md)
 * [Azure kaynakları için Yönetilen kimlikler hakkında daha fazla bilgi edinin](https://github.com/MicrosoftDocs/azure-docs/blob/master/articles/active-directory/managed-identities-azure-resources/overview.md)
-* [Hizmetten hizmete çağrılar için bir Daemon istemci uygulaması yapılandırma](../app-service/configure-authentication-provider-aad.md#configure-a-daemon-client-application-for-service-to-service-calls)
+* [İstemci uygulamalarını App Service erişmek için yapılandırma](../app-service/configure-authentication-provider-aad.md#configure-client-apps-to-access-your-app-service)

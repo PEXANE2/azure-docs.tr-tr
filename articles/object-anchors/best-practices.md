@@ -6,12 +6,12 @@ ms.author: crtreasu
 ms.date: 02/17/2021
 ms.topic: best-practice
 ms.service: azure-object-anchors
-ms.openlocfilehash: 5b84bfae4a338a15b75e4f61114869aab1e94f87
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: da3be6e3d97e50b27ded29ba017164fdbd9a0a5b
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101747133"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102503054"
 ---
 # <a name="best-practices"></a>En iyi uygulamalar
 
@@ -28,6 +28,8 @@ En iyi sonuçları elde etmek için bu adımlardan bazılarını denemeyi öneri
 - Model dönüştürme hizmetimiz, büyük, yüksek bir LOD (ayrıntı düzeyi) modelini işlemek uzun zaman alabilir. Göre etkinliğine için, iç yüzeyleri kaldırmak üzere 3B modelinizi önceden işleyebilirsiniz.
 
 ## <a name="detection"></a>Algılama
+
+> [!VIDEO https://channel9.msdn.com/Shows/Docs-Mixed-Reality/Azure-Object-Anchors-Detection-and-Alignment-Best-Practices/player]
 
 - Belirtilen çalışma zamanı SDK 'Sı, fiziksel nesneleri aramak ve algılamak için Kullanıcı tarafından sağlanmış bir arama bölgesi gerektirir. Arama bölgesi bir sınırlayıcı kutusu, küre, görünüm Frustum veya bunların herhangi bir birleşimini olabilir. Yanlış algılamayı önlemek için, bir arama bölgesinin nesneyi kapsayacak kadar büyük bir şekilde ayarlanması tercih edilir. Sunulan örnek uygulamaları kullanırken, en yakın yüzeyden 2 Ölçüm hakkında nesnenin bir tarafına tek tek ekleyebilirsiniz ve uygulamayı başlatabilirsiniz.
 - HoloLens 2 cihazında nesne tutturucularını uygulamayı başlatmadan önce, çalışma alanınızın çevresinin, ***Ayarlar->sistem >hologram***

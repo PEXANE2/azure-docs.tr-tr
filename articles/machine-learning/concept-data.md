@@ -11,12 +11,12 @@ author: nibaccam
 ms.author: nibaccam
 ms.date: 08/31/2020
 ms.custom: devx-track-python, data4ml
-ms.openlocfilehash: 1c2a917712cbde95fda9321e56fe1c033ad444aa
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 601be8409db22162a410d481e6609d378718a7b4
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101659724"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102503598"
 ---
 # <a name="secure-data-access-in-azure-machine-learning"></a>Azure Machine Learning 'da güvenli veri erişimi
 
@@ -67,7 +67,7 @@ Azure 'da, veri depoları olarak kaydedilenebilir desteklenen bulut tabanlı dep
 + MySQL için Azure Veritabanı
 
 >[!TIP]
-> Veri depoları oluşturmak için genel kullanıma sunulan işlevsellik, hizmet sorumlusu veya paylaşılan erişim imzası (SAS) belirteci gibi depolama hizmetlerine erişmek için kimlik bilgisi tabanlı kimlik doğrulaması gerektirir. Bu kimlik bilgilerine, çalışma alanına *okuyucu* erişimi olan kullanıcılar erişebilir. <br><br>Bu sorun varsa,  [Depolama Hizmetleri 'ne (Önizleme) kimlik tabanlı veri erişimi kullanan bir veri deposu oluşturun](how-to-identity-based-data-access.md). Bu özellik, [deneysel](/python/api/overview/azure/ml/?preserve-view=true&view=azure-ml-py#stable-vs-experimental) Önizleme özelliğine sahiptir ve herhangi bir zamanda değişebilir.
+> Veri depoları oluşturmak için genel kullanıma sunulan işlevsellik, hizmet sorumlusu veya paylaşılan erişim imzası (SAS) belirteci gibi depolama hizmetlerine erişmek için kimlik bilgisi tabanlı kimlik doğrulaması gerektirir. Bu kimlik bilgilerine, çalışma alanına *okuyucu* erişimi olan kullanıcılar erişebilir. <br><br>Bu sorun varsa,  [Depolama Hizmetleri 'ne (Önizleme) kimlik tabanlı veri erişimi kullanan bir veri deposu oluşturun](how-to-identity-based-data-access.md). Bu özellik, [deneysel](/python/api/overview/azure/ml/#stable-vs-experimental) Önizleme özelliğine sahiptir ve herhangi bir zamanda değişebilir.
 
 <a name="datasets"></a>
 ## <a name="reference-data-in-storage-with-datasets"></a>Veri kümeleriyle depolamadaki başvuru verileri
@@ -86,9 +86,9 @@ Veri kümeleri yerel dosyalardan, genel URL 'lerden, [Azure açık veri](https:/
 
 2 tür veri kümesi vardır: 
 
-+ Bir [dosya veri kümesi](/python/api/azureml-core/azureml.data.file_dataset.filedataset?preserve-view=true&view=azure-ml-py) , veri mağazalarınızın veya genel URL 'nizin tek veya birden çok dosyasına başvurur. Verileriniz zaten Temizleme ve eğitim denemeleri ' de kullanıma hazırsa, dosya veri kümeleri tarafından başvurulan dosyaları işlem Hedefinizle [karşıdan yükleyebilir veya bağlayabilirsiniz](how-to-train-with-datasets.md#mount-files-to-remote-compute-targets) .
++ Bir [dosya veri kümesi](/python/api/azureml-core/azureml.data.file_dataset.filedataset) , veri mağazalarınızın veya genel URL 'nizin tek veya birden çok dosyasına başvurur. Verileriniz zaten Temizleme ve eğitim denemeleri ' de kullanıma hazırsa, dosya veri kümeleri tarafından başvurulan dosyaları işlem Hedefinizle [karşıdan yükleyebilir veya bağlayabilirsiniz](how-to-train-with-datasets.md#mount-files-to-remote-compute-targets) .
 
-+ [Tabulardataset](/python/api/azureml-core/azureml.data.tabulardataset?preserve-view=true&view=azure-ml-py) , belirtilen dosya veya dosya listesini ayrıştırarak verileri tablolu biçimde temsil eder. Daha fazla düzenleme ve temizleme için TabularDataset ' i Pandas veya Spark veri çerçevesine yükleyebilirsiniz. ' Den Tabulardataset 'ler oluşturabileceğiniz veri biçimlerinin tamamen listesi için, [Tabulardatasetfactory sınıfına](/python/api/azureml-core/azureml.data.dataset_factory.tabulardatasetfactory)bakın.
++ [Tabulardataset](/python/api/azureml-core/azureml.data.tabulardataset) , belirtilen dosya veya dosya listesini ayrıştırarak verileri tablolu biçimde temsil eder. Daha fazla düzenleme ve temizleme için TabularDataset ' i Pandas veya Spark veri çerçevesine yükleyebilirsiniz. ' Den Tabulardataset 'ler oluşturabileceğiniz veri biçimlerinin tamamen listesi için, [Tabulardatasetfactory sınıfına](/python/api/azureml-core/azureml.data.dataset_factory.tabulardatasetfactory)bakın.
 
 Ek veri kümesi özellikleri aşağıdaki belgelerde bulunabilir:
 
