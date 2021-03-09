@@ -10,12 +10,12 @@ author: mokabiru
 ms.author: mokabiru
 ms.reviewer: MashaMSFT
 ms.date: 02/18/2020
-ms.openlocfilehash: 59c000a816d55d248febb841b695d366cb9979cc
-ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
+ms.openlocfilehash: 9074480f44e75a90c202f0d0813c43aed1f7ba95
+ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "102455238"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102488214"
 ---
 # <a name="migration-overview-sql-server-to-sql-managed-instance"></a>Geçişe genel bakış: SQL yönetilen örneğine SQL Server
 [!INCLUDE[appliesto--sqlmi](../../includes/appliesto-sqlmi.md)]
@@ -88,9 +88,10 @@ Aşağıdaki tabloda önerilen geçiş araçları listelenmektedir:
 
 |Teknoloji | Açıklama|
 |---------|---------|
+| [Azure Geçişi](/azure/migrate/how-to-create-azure-sql-assessment) | Azure SQL için Azure geçişi, VMware 'de SQL verilerinizi keşfetmenize ve değerlendirmenize, Azure SQL dağıtım önerileri, hedef boyutlandırma ve aylık tahminler sağlar. | 
 |[Azure Veritabanı Geçiş Hizmeti (DMS)](../../../dms/tutorial-sql-server-to-managed-instance.md)  | Geçiş işlemi sırasında kesinti süresini karşılayabilen uygulamalar için çevrimdışı modda geçişi destekleyen ilk taraf Azure hizmeti. Çevrimiçi modda sürekli geçişin aksine, çevrimdışı mod geçişi kaynaktan hedefe tam bir veritabanı yedeklemesi için tek seferlik bir geri yükleme çalıştırır. | 
 |[Yerel yedekleme ve geri yükleme](../../managed-instance/restore-sample-database-quickstart.md) | SQL yönetilen örneği, yerel SQL Server veritabanı yedeklerinin (. bak dosyaları) geri yüklenmesini destekler, böylece Azure depolama 'ya tam veritabanı yedeklemeleri sağlayabilen müşteriler için en kolay geçiş seçeneği sağlanır. Tam ve fark yedeklemeleri, bu makalenin ilerleyen bölümlerinde yer alarak [geçiş varlıkları bölümünde](#migration-assets) de desteklenir ve belgelenmiştir.| 
-|[Günlük yeniden yürütme hizmeti (LRS)](../../managed-instance/log-replay-service-migrate.md) | Bu, Azure depolama 'ya tam, fark ve günlük veritabanı yedeklemeleri sağlayabilen müşteriler için bir geçiş seçeneği sunarak, SQL Server günlük aktarma teknolojisine bağlı olarak yönetilen örnek için etkinleştirilmiş bir bulut hizmetidir. LRS, yedekleme dosyalarını Azure Blob depolamadan SQL yönetilen örneğine geri yüklemek için kullanılır.| 
+|[Günlük yeniden yürütme hizmeti (LRS)](../../managed-instance/log-replay-service-migrate.md) | Bu, Azure depolama 'ya tam, değişiklik ve günlük veritabanı yedeklemeleri sağlayabilen müşteriler için bir geçiş seçeneği sunarak, SQL Server günlük aktarma teknolojisine bağlı olarak yönetilen örnek için etkinleştirilmiş bir bulut hizmetidir. LRS, yedekleme dosyalarını Azure Blob depolamadan SQL yönetilen örneğine geri yüklemek için kullanılır.| 
 | | |
 
 ### <a name="alternative-tools"></a>Alternatif araçlar

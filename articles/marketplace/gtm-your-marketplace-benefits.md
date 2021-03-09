@@ -4,15 +4,15 @@ description: Go-to-market Services-yayımcıların kullanabileceği Microsoft ka
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
-ms.date: 01/13/2021
+ms.date: 03/03/2021
 author: keferna
 ms.author: keferna
-ms.openlocfilehash: 07535add495484abae06fc6ac8ac435d84bccc52
-ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
+ms.openlocfilehash: 06f98a8e303d2ff692c0f84314e639c2a51cbcc1
+ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98246256"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102489511"
 ---
 # <a name="your-commercial-marketplace-benefits"></a>Ticari Market avantajlarınız
 
@@ -38,7 +38,7 @@ Size sunulan kaynakları anlama ve en iyi uygulamaları uygulama konusunda, sizi
 
 Tüm program avantajlarının ayrıntılı açıklamaları bu Market 'te yer alabilir [Program sunumunda](https://aka.ms/marketplacerewards)bulunabilir.
 
-Kullanmaya başlamak kolaydır:
+## <a name="getting-started-is-easy"></a>Kullanmaya başlamak kolaydır:
 
 1. Microsoft AppSource veya Azure Marketi 'nde teklif yayımlayın.
 2. Iş Ortağı Merkezi ' nde [Market](https://partner.microsoft.com/dashboard/mpn/program/commercialmarketplace) 'e gidin ve **Market yeniden oluşturma programı '** nı seçin.
@@ -49,19 +49,19 @@ Kullanmaya başlamak kolaydır:
     1. Bu pazarlama ilgili kişisi için telefon numarasını ve tercih edilen dilini belirtin. Bu bilgileri girmeyi tamamladığınızda **Kullanıcı ata**’yı seçin.
     1. Pazarlama ilgili kişisini güncelleştirdikten sonra, kullanmaya başlamak istediğiniz avantaj için **Etkinleştir** ' i seçin. Siz avantajı etkinleştirdikten sonra, bir hafta içinde Rewards ekibinin bir üyesi pazarlama ilgili kişinizle iletişim kurar.
 
-### <a name="technical-benefits"></a>Teknik avantajlar
+> [!NOTE]
+> Teklifiniz dört haftadan uzun bir süredir yaşlanmışsa ve bir ileti almadıysanız, Iş Ortağı Merkezi ' ne bakarak, söz konusu teklifin sahibi olan kuruluşunuz dahilinde lütfen kontrol edin. İletişim ve sonraki adımlara sahip olmaları gerekir.
 
-1. Bulut ve karma çözümlerinizin ön satışları, tasarımı, dağıtımı ve uygulama geliştirme aşamaları sırasında teknik destek istemek için teknik avantajlarınızı kullanabilirsiniz. Yardım istemek için istek formunu doldurup **Isteği gönder**' i seçin.
-2. Azure Sponsorluk avantajlarının kullanımı, bu avantajlardan yararlanılması sırasında bir e-posta aracılığıyla paylaşılır.
-
->[!NOTE]
->Teklifiniz dört haftadan uzun bir süredir yaşlanmışsa ve bir ileti almadıysanız, Iş Ortağı Merkezi ' ne bakarak, söz konusu teklifin sahibi olan kuruluşunuz dahilinde lütfen kontrol edin. İletişim ve sonraki adımlara sahip olmaları gerekir.<br><br>Sahibi belirleyemezse veya sahibi şirketiniz ile ayrıldıysa [Yardım ve destek](https://aka.ms/marketplacepublishersupport)' e bir destek bileti yükseltebilirsiniz.
+Sahibi belirleyemezse veya sahibi şirketiniz ile ayrıldıysa [Yardım ve destek](https://aka.ms/marketplacepublishersupport)' e bir destek bileti yükseltebilirsiniz.
 
 Ticari Market 'teki tekliflerinizi büyürken genişleyebilmeniz için kullanabileceğiniz etkinliklerin kapsamı. Tüm dökümler, kaynakların ve en iyi yöntemlerin self servis e-postasıyla ilgili bir temel düzey iyileştirme önerisi ve promosyon alır.
 
 ## <a name="list-trial-and-consulting-benefits"></a>Liste, deneme ve danışmanlık avantajları
 
-Kavram, uygulama veya atölyenin deneme sürümünü veya danışmanlığını yayımlarsanız, üç ay boyunca bir katılım Yöneticisi atamış olursunuz ve bu, başarılı bir pazara karşı ücretsiz planda size rehberlik eder. Yeni bir teklif yayımladığınızda bu üç aylık katılımı tekrarlayabilirsiniz. böylece yeni tekliflerinizin her biri başarılı ile çalışmaya başlamanıza yardımcı olur.
+Microsoft AppSource veya Azure Marketi ' nde her yayımladığınızda, yeni bir avantaj kümesine erişim elde edersiniz. Teklifiniz canlı olduktan sonra uygun pazarlama, satış ve teknik avantajlarınızı etkinleştirmek için [Iş Ortağı Merkezi](https://nam06.safelinks.protection.outlook.com/?url=https%3A%2F%2Fpartner.microsoft.com%2Fdashboard%2Fmpn%2Fmembership%2Fbenefits%2Fcommercialmarketplace&data=04%7C01%7Cv-kilieb%40microsoft.com%7C3b13a8a6e41a47d6d96008d8c7cb3b50%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C637479022971578374%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C1000&sdata=MF1ZlPX9M5JiJZE2e%2B6kXEsRX1klB5hTcSqcHYDjZq8%3D&reserved=0) ' ne gidin.
+
+> [!NOTE]
+> Tüm deneme ve danışmanlık avantajları 3 ay sonra sona erer.
 
 Aşağıdaki tabloda liste, deneme ve danışmanlık teklifleri için uygunluk gereksinimleri özetlenmektedir:
 

@@ -10,12 +10,12 @@ ms.date: 10/05/2020
 ms.topic: overview
 ms.custom: references_regions
 ms.service: azure-communication-services
-ms.openlocfilehash: 8a811a033a2d6e2229c83899e237f996ccddd7b3
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: 380792db21932ed2c6cffb4227df09b27f0cdf5e
+ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102430420"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102487495"
 ---
 # <a name="phone-number-types-in-azure-communication-services"></a>Azure Iletişim hizmetlerindeki telefon numarası türleri
 
@@ -37,10 +37,10 @@ Telefon numarası kullanılabilirliği Şu anda, ABD veri konumuna sahip Birleş
 
 
 ## <a name="number-types-and-features"></a>Sayı türleri ve özellikleri
-İletişim Hizmetleri iki tür telefon numarası sunar: **Yerel** **ve ücretsiz**. 
+İletişim Hizmetleri iki tür telefon numarası sunar: **Yerel** **ve ücretsiz**.
 
 ### <a name="local-numbers"></a>Yerel numaralar
-Yerel (coğrafi) numaralar Birleşik Devletler yerel alan kodlarından oluşan 10 basamaklı telefon numaralarıdır. Örneğin, `+1 (206) XXX-XXXX` alan koduna sahip yerel bir sayıdır `206` . Bu alan kodu Seattle şehrine atanır. Bu telefon numaraları genellikle bireyler ve yerel işletmeler tarafından kullanılır. Azure Iletişim Hizmetleri Birleşik Devletler yerel sayılar sunar. Bu sayılar, telefon çağrılarını yerleştirmek için kullanılabilir ancak SMS iletileri gönderemezler. 
+Yerel (coğrafi) numaralar Birleşik Devletler yerel alan kodlarından oluşan 10 basamaklı telefon numaralarıdır. Örneğin, `+1 (206) XXX-XXXX` alan koduna sahip yerel bir sayıdır `206` . Bu alan kodu Seattle şehrine atanır. Bu telefon numaraları genellikle bireyler ve yerel işletmeler tarafından kullanılır. Azure Iletişim Hizmetleri Birleşik Devletler yerel sayılar sunar. Bu sayılar, telefon çağrılarını yerleştirmek için kullanılabilir ancak SMS iletileri gönderemezler.
 
 ### <a name="toll-free-numbers"></a>Ücretsiz numaralar
 Ücretsiz numaralar, ücretsiz alan kodlarına sahip 10 basamaklı telefon numaralarıdır ve ücretsiz olarak herhangi bir telefon numarasından çağrılabilecek. Örneğin, `+1 (800) XXX-XXXX` Kuzey Amerika bölgesindeki ücretsiz bir sayıdır. Bu telefon numaraları genellikle müşteri hizmeti amaçları için kullanılır. Azure Iletişim Hizmetleri Amerika Birleşik Devletleri 'nde ücretsiz numaralar sunar. Bu sayılar, telefon çağrılarını yerleştirmek ve SMS iletileri göndermek için kullanılabilir. Ücretsiz numaralar kişiler tarafından kullanılamaz ve yalnızca uygulamalara atanabilir.
@@ -49,9 +49,9 @@ Yerel (coğrafi) numaralar Birleşik Devletler yerel alan kodlarından oluşan 1
 
 Telefon numaranız bir uygulama tarafından kullanılacaksa (örneğin, hizmetiniz adına çağrı yapmak veya ileti göndermek için), ücretsiz veya yerel (coğrafi) bir numara seçebilirsiniz. Uygulamanız SMS mesajları gönderiyor ve/veya çağrılar yaparken ücretsiz bir numara seçebilirsiniz.
 
-Telefon numaranız bir kişi tarafından kullanılıyorsa (örneğin, çağıran uygulamanızın bir kullanıcısı), yerel (coğrafi) telefon numarası kullanılmalıdır. 
+Telefon numaranız bir kişi tarafından kullanılıyorsa (örneğin, çağıran uygulamanızın bir kullanıcısı), yerel (coğrafi) telefon numarası kullanılmalıdır.
 
-Aşağıdaki tabloda bu telefon numarası türleri özetlenmektedir: 
+Aşağıdaki tabloda bu telefon numarası türleri özetlenmektedir:
 
 | Telefon numarası türü | Örnek                              | Ülke kullanılabilirliği    | Telefon numarası özelliği |Yaygın kullanım durumu                                                                                                     |
 | ----------------- | ------------------------------------ | ----------------------- | ------------------------|------------------------------------------------------------------------------------------------------------------- |
@@ -59,7 +59,7 @@ Aşağıdaki tabloda bu telefon numarası türleri özetlenmektedir:
 | Toll-Free         | + 1 (ücretsiz alan *kodu*) xxx xx xx | ABD                      | Çağırma (giden), SMS (gelen/giden)| Telefon numaralarını etkileşimli sesli yanıt (ıVR) sistemleri/botlar, SMS uygulamalarına atama                                        |
 
 
-### <a name="phone-number-features-in-azure-communication-services"></a>Azure Iletişim hizmetlerindeki telefon numarası özellikleri 
+### <a name="phone-number-features-in-azure-communication-services"></a>Azure Iletişim hizmetlerindeki telefon numarası özellikleri
 
 [!INCLUDE [Emergency Calling Notice](../../includes/emergency-calling-notice-include.md)]
 
@@ -67,7 +67,7 @@ Aşağıdaki tabloda bu telefon numarası türleri özetlenmektedir:
 
 Sizin için kullanılabilir olan özellikler, kullandığınız ülkeye, kullanım servis talebine ve seçtiğiniz telefon numarası türüne bağlıdır. Bu özellikler, yasal gereksinimler nedeniyle ülkeye göre farklılık gösterir. Azure Iletişim Hizmetleri aşağıdaki telefon numarası özelliklerini sunar:
 
-- **Tek yönlü gıden SMS** Bu seçenek kullanıcılarınıza SMS iletileri göndermenizi sağlar. Bu, bildirim ve iki öğeli kimlik doğrulama senaryolarında yararlı olabilir. 
+- **Tek yönlü gıden SMS** Bu seçenek kullanıcılarınıza SMS iletileri göndermenizi sağlar. Bu, bildirim ve iki öğeli kimlik doğrulama senaryolarında yararlı olabilir.
 - **İki yönlü gelen ve gıden SMS** Bu seçenek, telefon numaralarını kullanarak kullanıcılarınızın iletilerinizi göndermenizi ve almanızı sağlar. Bu, müşteri hizmeti senaryolarında yararlı olabilir.
 - **Tek yönlü giden telefon çağırma** Bu seçenek, kullanıcılarınız için çağrılar yapmanıza ve hizmetiniz tarafından verilen giden çağrılar için arayan KIMLIĞINI yapılandırmanıza olanak tanır. Bu, müşteri hizmeti ve sesli bildirim senaryolarında yararlı olabilir.
 

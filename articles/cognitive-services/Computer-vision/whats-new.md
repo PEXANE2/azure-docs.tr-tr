@@ -10,16 +10,25 @@ ms.subservice: computer-vision
 ms.topic: overview
 ms.date: 01/13/2021
 ms.author: pafarley
-ms.openlocfilehash: 4f5ea68102e98a9abc3e5a0a31d3153bc1bd1663
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 78746e7623f58af5ae9df829b48245295dc39f01
+ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101738234"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102487109"
 ---
 # <a name="whats-new-in-computer-vision"></a>Görüntü İşleme yenilikleri
 
 Hizmette nelerin yeni olduğunu öğrenin. Bu öğeler sürüm notları, videolar, blog gönderileri ve diğer bilgi türleri olabilir. Hizmette güncel kalmak için bu sayfaya yer işareti ekleyin.
+
+## <a name="march-2021"></a>Mart 2021
+
+### <a name="computer-vision-32-public-preview-update"></a>Görüntü İşleme 3,2 genel önizleme güncelleştirmesi
+
+Görüntü İşleme API'si v 3.2 genel önizlemesi güncelleştirildi. Önizleme sürümü, güncelleştirilmiş okuma ve analiz API 'Leri ile birlikte tüm Görüntü İşleme özelliklere sahiptir.
+
+> [!div class="nextstepaction"]
+> [Bkz. Görüntü İşleme v 3.2 genel önizleme 3](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2-preview-3/operations/5d986960601faab4bf452005)
 
 ## <a name="february-2021"></a>Şubat 2021
 
@@ -34,7 +43,7 @@ Görüntü İşleme, bulut hizmeti ve Docker kapsayıcısı olarak sunulan Read 
 Okuma API 'SI hakkında [daha fazla bilgi edinin](concept-recognizing-text.md) .
 
 > [!div class="nextstepaction"]
-> [Read API v 3.2 genel önizlemeyi kullanın](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2-preview-2/operations/5d986960601faab4bf452005)
+> [Read API v 3.2 genel önizlemeyi kullanın](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2-preview-3/operations/5d986960601faab4bf452005)
 
 
 ## <a name="january-2021"></a>Ocak 2021

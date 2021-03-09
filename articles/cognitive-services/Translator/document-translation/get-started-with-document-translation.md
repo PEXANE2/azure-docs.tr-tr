@@ -5,13 +5,13 @@ ms.topic: how-to
 manager: nitinme
 ms.author: lajanuar
 author: laujan
-ms.date: 02/11/2021
-ms.openlocfilehash: 886889ef9a42e358fca22a9d86955a23c5419dfa
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.date: 03/05/2021
+ms.openlocfilehash: cb6b3af8d8fb6c2d3fe63964e59f8e3e32f0f0fd
+ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101738166"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102486667"
 ---
 # <a name="get-started-with-document-translation-preview"></a>Belge çevirisi 'ni kullanmaya başlama (Önizleme)
 
@@ -19,18 +19,18 @@ ms.locfileid: "101738166"
 
 ## <a name="prerequisites"></a>Önkoşullar
 
+> [!NOTE]
+> Genellikle, Azure portal bir bilişsel hizmet kaynağı oluşturduğunuzda, çok sunuculu bir abonelik anahtarı veya tek servis abonelik anahtarı oluşturma seçeneğiniz vardır. Ancak, belge çevirisi şu anda yalnızca Translator (tek hizmet) kaynağında desteklenir ve **bilişsel** hizmetler (çok hizmet) kaynağına dahil değildir.
+
 Başlamak için şunlar gerekir:
 
 * Etkin bir [**Azure hesabı**](https://azure.microsoft.com/free/cognitive-services/).  Bir [**hesabınız yoksa ücretsiz bir hesap oluşturabilirsiniz**](https://azure.microsoft.com/free/).
 
-* Bir [**Translator**](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextTranslation) hizmet kaynağı (**bilişsel** hizmetler kaynağı değil). 
+* Bir [**Translator**](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextTranslation) hizmet kaynağı (**bilişsel** hizmetler kaynağı değil).
 
-* [**Azure Blob depolama hesabı**](https://ms.portal.azure.com/#create/Microsoft.StorageAccount-ARM). Tüm Azure depolama erişimi bir depolama hesabı üzerinden gerçekleşir.
+* [**Azure Blob depolama hesabı**](https://ms.portal.azure.com/#create/Microsoft.StorageAccount-ARM). BLOB verilerinizi depolama hesabınızda depolamak ve düzenlemek için kapsayıcılar oluşturacaksınız.
 
 * Azure aboneliğinizin yeni belge çevirisi özelliğini kullanmasını sağlamak için tamamlanmış bir [**belge çevirisi (Önizleme) formu**](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR-riVR3Xj0tOnIRdZOALbM9UOEE4UVdFQVBRQVBWWDBRQUM3WjYxUEpUTC4u) .
-
-> [!NOTE]
-> Belge çevirisi şu anda **bilişsel** hizmetler (çok hizmet) kaynağında değil yalnızca çevirmen (tek hizmet) kaynağında destekleniyor.
 
 ## <a name="get-your-custom-domain-name-and-subscription-key"></a>Özel etki alanı adınızı ve abonelik anahtarınızı alın
 
@@ -39,7 +39,7 @@ Başlamak için şunlar gerekir:
 > * Belge çevirisi için HTTP istekleri yapmak üzere Azure portal kaynak _anahtarlarınız ve uç_ nokta sayfanızda veya küresel çevirmen uç noktasında bulunan uç noktayı kullanamazsınız `api.cognitive.microsofttranslator.com` .
 > * **Belge çevirisi hizmetine yönelik tüm API istekleri özel bir etki alanı uç noktası gerektirir**.
 
-### <a name="what-is-the-custom-domain-endpoint"></a>Özel etki alanı uç noktası nedir? 
+### <a name="what-is-the-custom-domain-endpoint"></a>Özel etki alanı uç noktası nedir?
 
 Özel etki alanı uç noktası, kaynak adınız, ana bilgisayar adı ve çevirmen alt dizinleriyle biçimlendirilen bir URL 'dir:
 
@@ -72,9 +72,9 @@ Kaynak, hedef ve isteğe bağlı sözlük dosyaları için [**Azure Blob depolam
 * **Hedef kapsayıcı**. Bu kapsayıcı, çevrilmiş dosyalarınızın depolanacağı (gerekli).  
 * **Sözlük kapsayıcısı**. Bu kapsayıcı, sözlük dosyalarınızı yüklediğiniz yerdir (isteğe bağlı).  
 
-*Bkz* . **belge çevirisi için SAS erişim belirteçleri oluşturma**
+### <a name="create-sas-access-tokens-for-document-translation"></a>**Belge çevirisi için SAS erişim belirteçleri oluşturma**
 
-`sourceUrl`, `targetUrl` Ve isteğe bağlı, `glossaryUrl` bir sorgu dizesi olarak eklenmiş bir paylaşılan ERIŞIM imzası (SAS) belirteci içermelidir. Belirteç, kapsayıcınıza veya belirli bloblarınıza atanabilir.
+`sourceUrl`, `targetUrl` Ve isteğe bağlı, `glossaryUrl` bir sorgu dizesi olarak eklenmiş bir paylaşılan ERIŞIM imzası (SAS) belirteci içermelidir. Belirteç, kapsayıcınıza veya belirli bloblarınıza atanabilir. *Bkz* . [**belge ÇEVIRISI işlemi için SAS belirteçleri oluşturma**](create-sas-tokens.md).
 
 * **Kaynak** Kapsayıcınız veya Blobun, **okuma** ve **Listeleme** erişiminin belirlenmiş olması gerekir.
 * **Hedef** Kapsayıcınız veya Blobun, **yazma** ve **Listeleme** erişiminin belirlenmiş olması gerekir.
@@ -271,7 +271,9 @@ Her belge çevirisi API isteğine aşağıdaki üstbilgiler dahildir:
 
 > [!IMPORTANT]
 >
-> Aşağıdaki kod örnekleri için, işleme bağlı olarak aşağıdaki alanları güncelleştirmeniz gerekebilir:
+> Aşağıdaki kod örnekleri için, belirttiğiniz yerlerde anahtarınızı ve uç noktanızı sabit kodlarız. İşiniz bittiğinde kodu koddan kaldırmayı unutmayın ve hiçbir zaman herkese açık bir şekilde nakletmeyin.  Kimlik bilgilerinizi güvenli bir şekilde depolamanıza ve erişmenize yönelik yollar için bkz. Azure bilişsel [Hizmetler güvenliği](/azure/cognitive-services/cognitive-services-security?tabs=command-line%2Ccsharp) .
+>
+> İşleme bağlı olarak aşağıdaki alanları güncelleştirmeniz gerekebilir:
 >>>
 >> * `endpoint`
 >> * `subscriptionKey`
@@ -280,13 +282,18 @@ Her belge çevirisi API isteğine aşağıdaki üstbilgiler dahildir:
 >> * `glossaryURL`
 >> * `id`  (iş KIMLIĞI)
 >>
-> Değerin nerede bulunacağı `id` :
-> * İşi `id`  Post yönteminin yanıt üst bilgisi `Operation-Location`  URL 'si değerinde bulabilirsiniz. URL 'nin son parametresi işlemin işdir **`id`** .  
-> * Bir belge çevirisi işlemi için işi almak üzere bir Işleri Al isteği de kullanabilirsiniz `id`  .
+
+#### <a name="locating--the-id-value"></a>Değer bulma `id`
+
+* İşi `id`  POST yöntemi yanıt üst bilgisi `Operation-Location`  URL 'si değerinde bulabilirsiniz. URL 'nin son parametresi işlemin işdir **`id`** :
+
+|**Yanıt üst bilgisi**|**Sonuç URL 'SI**|
+|-----------------------|----------------|
+Operation-Location   | https://<<span>kaynak adı>. cognitiveservices.Azure.com/Translator/Text/Batch/v1.0-Preview.1/Batches/9dce0aa9-78dc-41ba-8cae-2e2f3c2ff8ec</span>
+
+* Bir belge çevirisi işi almak için bir **Işleri al** isteği de kullanabilirsiniz `id` .
+
 >
-> Aşağıdaki kod örnekleri için, belirttiğiniz yerlerde anahtarınızı ve uç noktanızı sabit kodlarız. İşiniz bittiğinde kodu koddan kaldırmayı unutmayın ve hiçbir zaman herkese açık bir şekilde nakletmeyin.  
->
-> Kimlik bilgilerinizi güvenli bir şekilde depolamanıza ve erişmenize yönelik yollar için bkz. Azure bilişsel [Hizmetler güvenliği](/azure/cognitive-services/cognitive-services-security?tabs=command-line%2Ccsharp) .
 
 ## <a name="_post-document-translation_-request"></a>_Belge çevirisi Isteği gönder_
 

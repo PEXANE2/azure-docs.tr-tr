@@ -11,12 +11,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 02/09/2021
-ms.openlocfilehash: 34b37fde83ca957e7c90302561589e2568beb59b
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.openlocfilehash: 752f38c0a44d40f2bf7e7b5961dca7743fbf4b76
+ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102215060"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102488044"
 ---
 # <a name="configure-azure-private-link-for-an-azure-machine-learning-workspace"></a>Azure Machine Learning çalışma alanı için Azure özel bağlantısını yapılandırma
 
@@ -36,7 +36,7 @@ Azure özel bağlantısı, özel bir uç nokta kullanarak çalışma alanınıza
 * İçinde özel uç noktasını oluşturmak için var olan bir sanal ağınız olmalıdır. Özel uç nokta eklemeden önce [Özel uç noktalar için ağ ilkelerini de devre dışı bırakmanız](../private-link/disable-private-endpoint-network-policy.md) gerekir.
 ## <a name="limitations"></a>Sınırlamalar
 
-* Azure Kamu bölgelerinde veya Azure Çin 21Vianet bölgelerinde özel bağlantıyla birlikte bir Azure Machine Learning çalışma alanı kullanılması kullanılamaz.
+* Azure Kamu bölgelerinde özel bağlantıyla bir Azure Machine Learning çalışma alanı kullanılması kullanılamaz.
 * Özel bağlantıyla güvenli hale getirilmiş bir çalışma alanı için genel erişimi etkinleştirir ve ortak internet üzerinden Azure Machine Learning Studio 'yu kullanıyorsanız, tasarımcı gibi bazı özellikler verilerinize erişemez. Bu sorun, veriler VNet 'in arkasında güvenliği sağlanmış bir hizmette depolandığında oluşur. Örneğin, bir Azure depolama hesabı.
 
 ## <a name="create-a-workspace-that-uses-a-private-endpoint"></a>Özel uç nokta kullanan bir çalışma alanı oluşturma

@@ -1,25 +1,25 @@
 ---
 title: 'Öğretici: kilitlerle yeni kaynakları koruma'
 description: Bu öğreticide, Azure şemaları kaynak kilitleri seçeneklerini salt okunurdur ve yeni dağıtılan kaynakları korumak için silmeyin.
-ms.date: 01/27/2021
+ms.date: 03/08/2021
 ms.topic: tutorial
-ms.openlocfilehash: c671d641982ba833b54586c1b33979a97747396b
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.openlocfilehash: 87da0f5a1fff2feb103b32533c8d314fb7690f80
+ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98915415"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102485750"
 ---
 # <a name="tutorial-protect-new-resources-with-azure-blueprints-resource-locks"></a>Öğretici: Azure şemaları kaynak kilitleri ile yeni kaynakları koruma
 
-Azure şemaları [kaynak kilitleri](../concepts/resource-locking.md)ile, yeni dağıtılan _kaynakların, sahip rolü olan_ bir hesap tarafından bile üzerinde oynanarak korunmasını sağlayabilirsiniz. Bu korumayı, bir Azure Resource Manager şablonu (ARM şablonu) yapıtı tarafından oluşturulan kaynakların şeması tanımlarına ekleyebilirsiniz.
+Azure şemaları [kaynak kilitleri](../concepts/resource-locking.md)ile, yeni dağıtılan _kaynakların, sahip rolü olan_ bir hesap tarafından bile üzerinde oynanarak korunmasını sağlayabilirsiniz. Bu korumayı, bir Azure Resource Manager şablonu (ARM şablonu) yapıtı tarafından oluşturulan kaynakların şeması tanımlarına ekleyebilirsiniz. Şema kaynak kilidi, şema atama sırasında ayarlanır.
 
 Bu öğreticide, aşağıdaki adımları tamamlayacaksınız:
 
 > [!div class="checklist"]
 > - Şema tanımı oluşturma
 > - Şema tanımınızı **yayımlandı** olarak işaretleyin
-> - Şema tanımınızı mevcut bir aboneliğe atama
+> - Şema tanımınızı mevcut bir aboneliğe atama (**kaynak kilitlerini ayarla**)
 > - Yeni kaynak grubunu İncele
 > - Kilitleri kaldırmak için şema atamasını kaldırma
 
@@ -56,6 +56,9 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
    1. **Rgtolock** girişinin altındaki **yapıt Ekle** satırını seçin.
    1. **Yapıt türü** altında **Azure Resource Manager şablonu** ' nu seçin, **yapıt görünen adını** **storageaccount** olarak ayarlayın ve **açıklamayı** boş bırakın.
    1. **Şablon** sekmesinde, aşağıdaki ARM şablonunu düzenleyici kutusuna yapıştırın. Şablonu yapıştırdıktan sonra, yapıtı şemasını Blueprint 'e eklemek için **Ekle** ' yi seçin.
+
+      > [!NOTE]
+      > Bu adım, BLUEPRINT kaynak kilidi tarafından kilitlenen, ancak BLUEPRINT kaynak kilitlerini içermeyen dağıtılacak kaynakları tanımlar. Şema kaynak kilitleri, şema atamasının bir parametresi olarak ayarlanır.
 
    ```json
    {
@@ -142,6 +145,9 @@ Bu adım, şema 'in bir aboneliğe atanmasını olanaklı kılar. Şema tanımı
    - **Kilit ataması**
 
      **Salt okuma** şeması kilit modunu seçin. Daha fazla bilgi için bkz. [şema kaynağı kilitleme](../concepts/resource-locking.md).
+
+     > [!NOTE]
+     > Bu adım, yeni dağıtılan kaynaklarda BLUEPRINT kaynak kilidini yapılandırır.
 
    - **Yönetilen Kimlik**
 

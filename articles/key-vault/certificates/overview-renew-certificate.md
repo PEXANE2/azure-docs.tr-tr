@@ -10,12 +10,12 @@ ms.subservice: certificates
 ms.topic: overview
 ms.date: 07/20/2020
 ms.author: sebansal
-ms.openlocfilehash: 0720e6b55cec8150eea9d41ca89b2c9b21a0bc94
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: c7948230164258aa785f3dd6c1f487c51ece9333
+ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93287686"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102487195"
 ---
 # <a name="renew-your-azure-key-vault-certificates"></a>Azure Key Vault sertifikalarınızı yenileme
 
@@ -57,7 +57,7 @@ Azure Key Vault kullanarak, çeşitli Azure kaynaklarıyla tümleştirmenize ve 
 Tümleşik olmayan bir CA sertifikasını yenilemek için aşağıdakileri yapın:
 
 1. Azure portal oturum açın ve ardından yenilemek istediğiniz sertifikayı açın.
-1. Sertifika bölmesinde **Yeni sürüm** ' ü seçin.
+1. Sertifika bölmesinde **Yeni sürüm**' ü seçin.
 1. **Sertifika işlemi** seçin.
 1. Yerel sürücünüze bir CSR dosyası indirmek için **CSR 'Yi indir** ' i seçin.
 1. İsteği imzalamak için CSR 'yi seçtiğiniz CA 'ya gönderin.
@@ -73,13 +73,16 @@ Yeni bir CSR oluşturma hakkında daha fazla bilgi için, bkz. [Key Vault BIR CS
 Azure Key Vault Ayrıca otomatik olarak imzalanan sertifikaların otomatik yenileme de işler. Verme ilkesini değiştirme ve bir sertifikanın yaşam döngüsü özniteliklerini güncelleştirme hakkında daha fazla bilgi edinmek için bkz. [Key Vault sertifika oto döndürmeyi yapılandırma](./tutorial-rotate-certificates.md#update-lifecycle-attributes-of-a-stored-certificate).
 
 ## <a name="troubleshoot"></a>Sorun giderme
-Verilen sertifika Azure portal *devre dışı bırakılmışsa* , sertifikanın hata iletisini görüntülemek Için **sertifika işleme** ' ya gidin.
+* Verilen sertifika Azure portal *devre dışı bırakılmışsa* , sertifikanın hata iletisini görüntülemek Için **sertifika işleme** ' ya gidin.
+* Hata türü "sertifikanızı almak için kullanılan CSR zaten kullanıldı. Lütfen yeni bir CSR ile yeni bir sertifika oluşturmayı deneyin. "
+  Sertifikanın ' Gelişmiş Ilke ' bölümüne gidin ve **' yenileme sırasında anahtarı yeniden kullan '** seçeneğinin kapalı olup olmadığını denetleyin.
+
 
 ## <a name="frequently-asked-questions"></a>Sık sorulan sorular
 
 **Sertifikanın oto döndürme özelliğini nasıl test edebilirim?**
 
-**1 aylık** geçerliliği olan bir sertifika oluşturun ve ardından **%1** ' deki döndürme için ömür eylemini ayarlayın. Bu ayar sertifika her 7,2 saatte bir döndürülür.
+**1 aylık** geçerliliği olan bir sertifika oluşturun ve ardından **%1**' deki döndürme için ömür eylemini ayarlayın. Bu ayar sertifika her 7,2 saatte bir döndürülür.
   
 **Etiketler sertifikanın otomatik yenileme sonra çoğaltılacaktır mi?**
 

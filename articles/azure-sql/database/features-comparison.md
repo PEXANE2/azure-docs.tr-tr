@@ -12,12 +12,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: bonova, sstein, danil
 ms.date: 03/08/2021
-ms.openlocfilehash: 56f7a233e7098f18b727da3ce56c5fbe30a328a1
-ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
+ms.openlocfilehash: 8c98ce661e7bb753d4e62d1eaf98702de91c5106
+ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "102447495"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102489778"
 ---
 # <a name="features-comparison-azure-sql-database-and-azure-sql-managed-instance"></a>Özellikler karşılaştırması: Azure SQL veritabanı ve Azure SQL yönetilen örneği
 
@@ -33,8 +33,8 @@ Azure SQL veritabanı ve SQL yönetilen örneği, SQL Server en son kararlı sü
 Azure, veritabanlarınızı yönetir ve yüksek kullanılabilirliğe sahip olmasını garanti eder. Yüksek kullanılabilirliği etkileyebilecek veya PaaS dünyasında, SQL veritabanı ve SQL yönetilen örneği 'nde sınırlı işlevlere sahip olabilecek bazı özellikler. Bu özellikler aşağıdaki tablolarda açıklanmıştır.
 
 Farklılıklar hakkında daha fazla ayrıntı gerekiyorsa bunları ayrı sayfalarda bulabilirsiniz:
-- [Azure SQL Veritabanı](transact-sql-tsql-differences-sql-server.md)
-- [Azure SQL Yönetilen Örnek](../managed-instance/transact-sql-tsql-differences-sql-server.md)
+- [Azure SQL veritabanı ile SQL Server farklılıklar](transact-sql-tsql-differences-sql-server.md)
+- [Azure SQL yönetilen örneği ile SQL Server farklılıklar](../managed-instance/transact-sql-tsql-differences-sql-server.md)
 
 ## <a name="features-of-sql-database-and-sql-managed-instance"></a>SQL veritabanı ve SQL yönetilen örneği özellikleri
 

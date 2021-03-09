@@ -6,12 +6,12 @@ ms.author: lichris
 ms.date: 2/11/2021
 ms.topic: conceptual
 ms.service: iot-hub
-ms.openlocfilehash: cf05d5f93180db91658d0e94a23359edd5b0f7ad
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 86b2dbe6a28d1440f93788eb40e133d9b62d3f0c
+ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101664077"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102489438"
 ---
 # <a name="device-update-security-model"></a>Cihaz güncelleştirme güvenlik modeli
 
@@ -54,7 +54,7 @@ Kök ve imzalama anahtarlarının olması, Microsoft 'un bir güvenlik en iyi uy
 
 ### <a name="json-web-signature-jws"></a>JSON Web Imzası (JWS)
 
-, `updateManifestSignature` İçinde yer alan bilgilerin değiştirilmediğinden emin olmak için kullanılır `updateManifest` . , `updateManifestSignature` JSON Web anahtarları Ile JSON Web imzası kullanılarak oluşturulur ve kaynak doğrulaması için izin verilir. İmza, "." tarafından düzenlenen üç bölümden oluşan Base64Url kodlu bir dizedir.  JSON anahtarlarını ve belirteçlerini ayrıştırmak ve doğrulamak için jws_util. h yardımcı yöntemlerine bakın.
+, `updateManifestSignature` İçinde yer alan bilgilerin değiştirilmediğinden emin olmak için kullanılır `updateManifest` . , `updateManifestSignature` JSON Web anahtarları Ile JSON Web imzası kullanılarak oluşturulur ve kaynak doğrulaması için izin verilir. İmza, "." tarafından düzenlenen üç bölümden oluşan Base64Url kodlu bir dizedir.  JSON anahtarlarını ve belirteçlerini ayrıştırmak ve doğrulamak için [jws_util. h yardımcı yöntemlerine](https://github.com/Azure/iot-hub-device-update/tree/main/src/utils/jws_utils) bakın.
 
 JSON Web Imzası, JSON tabanlı veri yapılarını kullanarak içerik imzalama için yaygın olarak kullanılan bir [IETF standardıdır](https://tools.ietf.org/html/rfc7515) . Verilerin imzasını doğrulayarak verilerin bütünlüğünü sağlamaya yönelik bir yoldur. JSON Web Imzası (JWS) [RFC 7515](https://www.rfc-editor.org/info/rfc7515)' de daha fazla bilgi bulabilirsiniz.
 

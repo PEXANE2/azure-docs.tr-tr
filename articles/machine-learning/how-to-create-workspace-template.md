@@ -10,12 +10,12 @@ ms.custom: how-to, devx-track-azurecli, devx-track-azurepowershell
 ms.author: larryfr
 author: Blackmist
 ms.date: 09/30/2020
-ms.openlocfilehash: f8ceacf88968d884de666b764c1037db9e63450f
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.openlocfilehash: d64dfdad0c51950228288b704b3fdb7579496abb
+ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102214924"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102488078"
 ---
 # <a name="use-an-azure-resource-manager-template-to-create-a-workspace-for-azure-machine-learning"></a>Azure Machine Learning için bir çalışma alanı oluşturmak üzere Azure Resource Manager şablonu kullanma
 
@@ -285,7 +285,7 @@ Verileriniz için sağlayabilmeniz için ek bir yapılandırma **confidential_da
 İlişkili kaynaklarınız bir sanal ağın arkasında değilse,  `AutoAproval` `ManualApproval` çalışma alanını özel bir uç noktanın arkasında dağıtmak için privateendpointtype parametresini veya olarak ayarlayabilirsiniz. Bu, hem yeni hem de mevcut çalışma alanları için yapılabilir. Mevcut bir çalışma alanını güncelleştirirken, şablon parametrelerini mevcut çalışma alanındaki bilgilerle birlikte girin.
 
 > [!IMPORTANT]
-> Azure Kamu bölgelerinde veya Azure Çin 21Vianet bölgelerinde özel bağlantıyla birlikte bir Azure Machine Learning çalışma alanı kullanılması kullanılamaz.
+> Azure Kamu bölgelerinde özel bağlantıyla bir Azure Machine Learning çalışma alanı kullanılması kullanılamaz.
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azcli)
 

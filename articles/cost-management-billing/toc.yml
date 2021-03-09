@@ -292,6 +292,8 @@
           href: manage/mca-check-azure-credits-balance.md
         - name: EA'dan MCA API'lerine geçiş
           href: costs/migrate-cost-management-api.md
+        - name: SPN 'lere roller atama
+          href: manage/assign-roles-azure-service-principals.md
     - name: Rezervasyonları satın alma ve yönetme
       items:
         - name: Neyin satın alınacağını saptama

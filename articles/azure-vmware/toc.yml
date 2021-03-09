@@ -74,6 +74,8 @@
       href: public-ip-usage.md
     - name: IPSec tüneli oluşturma
       href: create-ipsec-tunnel.md
+    - name: Windows Server yük devretme kümesi
+      href: windows-server-failover-cluster.md
     - name: Azure’da yerel tümleştirme
       items:
         - name: API Management

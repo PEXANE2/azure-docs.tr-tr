@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 10/14/2020
 ms.author: akjosh
 ms.reviewer: cynthn
-ms.openlocfilehash: baba35bd29ec6708aca77bd9c6d74401a365014a
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+ms.openlocfilehash: 9a5bc0620468980da68e1b92f758d5f3862ac7d3
+ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "101091892"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102487262"
 ---
 # <a name="shared-image-galleries-overview"></a>Paylaşılan görüntü galerilerine genel bakış
 
@@ -104,7 +104,7 @@ Paylaşılan görüntü Galerisi tarafından desteklenen iki işletim sistemi du
 
 ## <a name="regional-support"></a>Bölgesel destek
 
-Tüm ortak bölgeler hedef bölge olabilir, ancak Avustralya Orta ve Avustralya Orta 2 çoğaltmak için, aboneliğiniz izin verilenler listesine eklenmiş olması gerekir. İzin verilenler listesine bir abonelik eklendiğini istemek için şuraya gidin: https://azure.microsoft.com/global-infrastructure/australia/contact/
+Tüm ortak bölgeler hedef bölge olabilir, ancak Avustralya Orta ve Avustralya Orta 2 çoğaltmak için, aboneliğiniz izin verilenler listesine eklenmiş olması gerekir. İzin verilenler listesine bir abonelik eklendiğini istemek için şuraya gidin: https://docs.microsoft.com/azure/virtual-machines/shared-image-galleries#regional-support
 
 ## <a name="limits"></a>Sınırlar 
 
@@ -170,12 +170,12 @@ Paylaşılan görüntü Galerisi hizmetinin kullanılması için ek ücret alın
 Oluşturulduktan sonra, görüntü Galerisi kaynaklarında bazı değişiklikler yapabilirsiniz. Bunlarla sınırlı:
  
 Paylaşılan görüntü Galerisi:
-- Description
+- Açıklama
 
 Görüntü tanımı:
 - Önerilen vCPU 'Lar
 - Önerilen bellek
-- Description
+- Açıklama
 - Yaşam tarihi sonu
 
 Görüntü sürümü:
@@ -325,4 +325,3 @@ Buna ek olarak, soru- `azure-virtual-machines-images` [cevap A&](/answers/topics
 ## <a name="next-steps"></a>Sonraki adımlar
 
 [Azure CLI](shared-images-cli.md) veya [PowerShell](shared-images-powershell.md)kullanarak paylaşılan görüntüleri dağıtmayı öğrenin.
-

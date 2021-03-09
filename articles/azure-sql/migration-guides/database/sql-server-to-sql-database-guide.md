@@ -10,12 +10,12 @@ author: mokabiru
 ms.author: mokabiru
 ms.reviewer: MashaMSFT
 ms.date: 11/06/2020
-ms.openlocfilehash: a9dfd185af012314ddc481b598f181b6760640ec
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 2d43eda404a5257c0ec28a884b6ebf182330ba51
+ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101690949"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102488424"
 ---
 # <a name="migration-guide-sql-server-to-sql-database"></a>Geçiş Kılavuzu: SQL veritabanı 'na SQL Server
 [!INCLUDE[appliesto--sqldb](../../includes/appliesto-sqldb.md)]
@@ -58,6 +58,8 @@ Alternatif olarak, geçerli BT altyapınızı değerlendirmek için [Microsoft
 Bulma aşamasında kullanılabilecek araçlar hakkında daha fazla bilgi için bkz. [veri geçiş senaryoları için kullanılabilen hizmetler ve araçlar](../../../dms/dms-tools-matrix.md). 
 
 ### <a name="assess"></a>Değerlendirme 
+
+[!INCLUDE [assess-estate-with-azure-migrate](../../../../includes/azure-migrate-to-assess-sql-data-estate.md)]
 
 Veri kaynakları bulunduktan sonra, geçiş engelleyicileri veya uyumluluk sorunlarını belirlemek için Azure SQL veritabanı 'na geçirilebilecek şirket içi SQL Server veritabanlarını değerlendirin. 
 
@@ -157,10 +159,10 @@ Azure SQL veritabanı 'na geçişi hızlandırmak için aşağıdaki önerileri 
 |  | Kaynak çakışması | Öneri |
 |--|--|--|
 | **Kaynak (genellikle şirket içi)** |Kaynakta geçiş sırasında birincil performans sorunu, dikkatle izlenmesi gereken veri dosyasında VERI g/ç ve gecikme süresine sahiptir.  |VERI GÇ ve VERI dosyası gecikmesini temel alarak, bir sanal makine veya fiziksel sunucu olmasına bağlı olarak, Depolama Yöneticisi 'ne ihtiyacınız ve performans sorunlarını hafifletmek için seçenekleri araştırmanıza gerek vardır. |
-|**Hedef (Azure SQL veritabanı)**|En büyük sınırlandırma faktörü günlük oluşturma oranı ve günlük dosyasında gecikme süresi olur. Azure SQL veritabanı ile en fazla 96 MB/sn günlük oluşturma oranı edinebilirsiniz. | Geçiş hızını hızlandırmak için, hedef SQL DB İş Açısından Kritik 'yi, 96 MB/sn 'lik maksimum günlük oluşturma oranını elde etmek üzere 5. nesil 8 sanal Core ' a ölçeklendirin ve günlük dosyası için düşük gecikme süresine ulaşın. [Hiper ölçek](../../database/service-tier-hyperscale.md) hizmet katmanı, seçilen hizmet düzeyinden bağımsız olarak 100 MB/sn günlük hızı sağlar |
+|**Hedef (Azure SQL veritabanı)**|En büyük sınırlandırma faktörü günlük oluşturma oranı ve günlük dosyasında gecikme süresi olur. Azure SQL veritabanı ile en fazla 96 MB/sn günlük oluşturma oranı edinebilirsiniz. | Geçiş hızını hızlandırmak için, hedef SQL DB İş Açısından Kritik 'yi, 96 MB/sn 'lik maksimum günlük oluşturma oranını elde etmek üzere 5. nesil 8 sanal Core ' a ölçeklendirin ve günlük dosyası için düşük gecikme süresine ulaşın. [Hiper ölçek](../../database/service-tier-hyperscale.md) hizmeti katmanı, seçilen hizmet düzeyinden bağımsız olarak 100 MB/sn günlük hızı sağlar |
 |**Ağ** |Gereken ağ bant genişliği, en fazla günlük alma oranı 96 MB/s (768 MB/s) değerine eşit |Şirket içi veri merkezinizden Azure 'a ağ bağlantısına bağlı olarak, en fazla günlük alma hızına uyum sağlamak için ağ bant genişliğinizi (genellikle [Azure ExpressRoute](../../../expressroute/expressroute-introduction.md#bandwidth-options)) kontrol edin. |
 |**Data Migration Yardımcısı için kullanılan sanal makine (DMA)** |CPU, DMA çalıştıran sanal makine için birincil darboğazdır |Kullanarak veri geçişini hızlandırmak için göz önünde bulundurmanız gerekenler </br>-Azure işlem yoğunluklu VM 'Ler </br>-DMA çalıştırmak için en az F8s_v2 (8 sanal çekirdek) VM kullanın </br>-VM 'nin hedefle aynı Azure bölgesinde çalıştığından emin olun |
-|**Azure Veritabanı Geçiş Hizmeti (DMS)** |DMS için işlem kaynağı çekişmesi ve veritabanı nesneleri dikkate alınması |Premium 4 sanal çekirdek kullanın. DMS, yabancı anahtarlar, Tetikleyiciler, kısıtlamalar ve kümelenmemiş dizinler gibi veritabanı nesneleri için otomatik olarak işlem gerçekleştirir ve el ile müdahale gerektirmez.  |
+|**Azure Veritabanı Geçiş Hizmeti (DMS)** |DMS için işlem kaynağı çekişmesi ve veritabanı nesneleri dikkate alınması |Premium 4 sanal çekirdek kullanın. DMS, yabancı anahtarlar, Tetikleyiciler, kısıtlamalar ve kümelenmemiş dizinler gibi veritabanı nesnelerinden otomatik olarak ilgilenmez ve el ile müdahale gerektirmez.  |
 
 
 ## <a name="post-migration"></a>Geçiş sonrası

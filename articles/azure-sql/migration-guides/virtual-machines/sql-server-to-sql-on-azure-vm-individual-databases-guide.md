@@ -10,12 +10,12 @@ author: markjones-msft
 ms.author: markjon
 ms.reviewer: mathoma
 ms.date: 11/06/2020
-ms.openlocfilehash: cc2a641cb017edace24db5df69bc4adf3a607524
-ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
+ms.openlocfilehash: d95da29b732e2d520b3413628c9b4a1c403abed6
+ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98797884"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102488260"
 ---
 # <a name="migration-guide-sql-server-to-sql-server-on-azure-vms"></a>Geçiş Kılavuzu: Azure VM 'lerinde SQL Server SQL Server 
 [!INCLUDE[appliesto--sqlmi](../../includes/appliesto-sqlvm.md)]
@@ -58,6 +58,8 @@ Ek keşif araçları için bkz. veri geçiş senaryoları için kullanılabilen 
 
 
 ### <a name="assess"></a>Değerlendirme
+
+[!INCLUDE [assess-estate-with-azure-migrate](../../../../includes/azure-migrate-to-assess-sql-data-estate.md)]
 
 Tüm veri kaynaklarını bulduktan sonra, kaynak ve hedef örnekler arasındaki boşlukları anlamak üzere Azure VM 'de bir SQL Server örneğine geçişi SQL Server değerlendirmek için [Data Migration Yardımcısı (DMA)](/sql/dma/dma-overview) kullanın. 
 
@@ -109,7 +111,7 @@ Tüm DMA düzeltmelerinin, [geçiş sonrası](#post-migration)için komut dosyas
 > Tüm SQL Server sürümleri tüm uyumluluk modlarını desteklemez. [Hedef SQL Server sürümünüzün](/sql/t-sql/statements/alter-database-transact-sql-compatibility-level) seçtiğiniz veritabanı uyumluluğunu desteklediğinden emin olun. Örneğin, SQL Server 2019, düzey 90 uyumluluğu olan veritabanlarını desteklemez (SQL Server 2005). Bu veritabanları, en azından uyumluluk düzeyi 100 ' e yükseltme yapılmasını gerektirir.
 >
 
-## <a name="migrate"></a>Geçiş
+## <a name="migrate"></a>MongoDB v3.6 için Azure Cosmos DB API'sinin en son sürümünden yararlanmak için
 
 Geçiş öncesi adımları tamamladıktan sonra, Kullanıcı veritabanlarını ve bileşenlerini geçirmeye hazırlanın. Tercih ettiğiniz [geçiş yönteminizi](sql-server-to-sql-on-azure-vm-migration-overview.md#migrate)kullanarak veritabanlarınızı geçirin.  
 
@@ -123,7 +125,7 @@ Yedekleme ve geri yükleme kullanarak standart bir geçiş gerçekleştirmek iç
 1. Geçiş için tasarlanan veritabanlarını kullanan tüm uygulamaları duraklatın/durdurun. 
 1. Kullanıcı veritabanlarının [Tek Kullanıcı modu](/sql/relational-databases/databases/set-a-database-to-single-user-mode)kullanılarak etkin olmadığından emin olun. 
 1. Şirket içi bir konumda tam bir veritabanı yedeklemesi gerçekleştirin.
-1. Şirket içi yedekleme dosyanızı Uzak Masaüstü, [Azure Veri Gezgini](/azure/data-explorer/data-explorer-overview)veya [AzCopy komut satırı YARDıMCı programını](../../../storage/common/storage-use-azcopy-v10.md) kullanarak sanal makinenize KOPYALAYıN (> 2 TB yedeklemeler önerilir).
+1. Şirket içi yedekleme dosyanızı Uzak Masaüstü, [Azure Veri Gezgini](/azure/data-explorer/data-explorer-overview)veya [AzCopy komut satırı YARDıMCı programını](../../../storage/common/storage-use-azcopy-v10.md) kullanarak sanal makinenize kopyalayın (> 2 TB 'lık yedeklemeler önerilir).
 1. Tam veritabanı yedeklerini Azure VM 'de SQL Server geri yükleyin.
 
 ### <a name="log-shipping--minimize-downtime"></a>Günlük aktarma (kapalı kalma süresini en aza indir)
@@ -133,7 +135,7 @@ Yedekleme, geri yükleme ve günlük dağıtımını kullanarak en az bir kesint
 1. Gereksinimlerinize göre Azure VM 'de hedef SQL Server bağlantı kurun. Bkz. [Azure 'da SQL Server sanal makinesine bağlanma (Kaynak Yöneticisi)](../../virtual-machines/windows/ways-to-connect-to-sql.md).
 1. Geçirilecek şirket içi kullanıcı veritabanlarının tam veya toplu olarak günlüğe kaydedilmiş kurtarma modelinde olduğundan emin olun.
 1. Şirket içi bir konumda tam bir veritabanı yedeklemesi gerçekleştirin ve günlük zincirini korumak için [copy_only](/sql/relational-databases/backup-restore/copy-only-backups-sql-server) anahtar sözcüğünü kullanmak üzere mevcut tüm veritabanı yedeklemeleri işlerini değiştirin.
-1. Şirket içi yedekleme dosyanızı Uzak Masaüstü, [Azure Veri Gezgini](/azure/data-explorer/data-explorer-overview)veya [AzCopy komut satırı YARDıMCı programını](../../../storage/common/storage-use-azcopy-v10.md) kullanarak sanal makinenize KOPYALAYıN (>1 TB yedeklemeler önerilir).
+1. Şirket içi yedekleme dosyanızı Uzak Masaüstü, [Azure Veri Gezgini](/azure/data-explorer/data-explorer-overview)veya [AzCopy komut satırı YARDıMCı programını](../../../storage/common/storage-use-azcopy-v10.md) kullanarak sanal makinenize kopyalayın (>1-TB yedeklemeleri önerilir).
 1. Azure VM 'de SQL Server tam veritabanı yedeklerini geri yükleyin.
 1. Azure VM 'de şirket içi veritabanı ve hedef SQL Server arasındaki [günlük dağıtımını](/sql/database-engine/log-shipping/configure-log-shipping-sql-server) ayarlayın. Önceki adımlarda zaten tamamlanmış olduğundan, veritabanlarını yeniden denetlediğinizden emin olun.
 1. Hedef sunucuya **kesin** . 

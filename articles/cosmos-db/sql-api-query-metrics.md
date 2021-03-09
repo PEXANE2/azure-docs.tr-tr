@@ -5,15 +5,15 @@ author: SnehaGunda
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: how-to
-ms.date: 05/23/2019
+ms.date: 01/06/2021
 ms.author: sngun
 ms.custom: devx-track-csharp
-ms.openlocfilehash: fedcdd55a465f5c09c331a0fa917811c349b15b1
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 019ca26143a4879efafa973299703f0abcb21162
+ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93097235"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102488095"
 ---
 # <a name="tuning-query-performance-with-azure-cosmos-db"></a>Azure Cosmos DB ile sorgu performansını ayarlama
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -143,7 +143,6 @@ Sorgu performansını Azure Cosmos DB etkileyen en yaygın etmenler aşağıda v
 | Sağlanan aktarım hızı | Sorgu başına RU ile ölçüm yapın ve sorgularınız için gereken sağlanmış iş hızına sahip olduğunuzdan emin olun. | 
 | Bölümlendirme ve bölüm anahtarları | Filtre yan tümcesindeki bölüm anahtarı değeri için düşük gecikme süresine sahip sorguları tercih edin. |
 | SDK ve sorgu seçenekleri | Doğrudan bağlantı gibi SDK en iyi yöntemlerini izleyin ve istemci tarafı sorgu yürütme seçeneklerini ayarlayın. |
-| Ağ gecikmesi | Ölçümlü ağ yükü için hesap ve en yakın bölgeden okumak için çok girişli API 'Ler kullanın. |
 | Dizin Oluşturma İlkesi | Sorgu için gerekli dizin oluşturma yollarına/ilkesine sahip olduğunuzdan emin olun. |
 | Sorgu yürütme ölçümleri | Sorgu ve veri şekillerinin olası yeniden yazar durumunu belirlemek için sorgu yürütme ölçümlerini çözümleyin.  |
 
@@ -239,7 +238,7 @@ IReadOnlyDictionary<string, QueryMetrics> metrics = result.QueryMetrics;
 
 ```
 
-| Ölçüm | Birim | Açıklama | 
+| Metric | Birim | Açıklama | 
 | ------ | -----| ----------- |
 | `totalExecutionTimeInMs` | milisaniye | Sorgu yürütme süresi | 
 | `queryCompileTimeInMs` | milisaniye | Sorgu derleme süresi  | 

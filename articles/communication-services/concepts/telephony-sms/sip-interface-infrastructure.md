@@ -8,12 +8,12 @@ ms.author: bobazile
 ms.date: 02/09/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 432a9dab851bda65ecf8736d725b08c5e726ac16
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: a94aa0a0deea14cca2b558c602ff7e35ca0ba81f
+ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101659265"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102487393"
 ---
 # <a name="sip-interface-infrastructure-requirements"></a>SIP arabirimi altyapı gereksinimleri 
 
@@ -158,12 +158,12 @@ Medya Işlemcilerin bağlantı noktası aralığı aşağıdaki tabloda gösteri
 
 ## <a name="media-traffic-media-processors-geography"></a>Medya trafiği: medya işlemcileri Coğrafya
 
-Medya trafiği, medya işlemcileri adlı bileşenler aracılığıyla akar. Medya işlemcileri, SIP Proxy 'leriyle aynı veri merkezlerine yerleştirilir. Ayrıca, medya akışını iyileştirmek için ek medya işlemcileri de vardır. Örneğin, Avustralya 'da (Singapur veya Hong Kong aracılığıyla SIP akışı) bir SIP Proxy bileşeni yoktur, ancak Media Processor 'ı Avustralya 'da yerel olarak sunuyoruz. Medya işlemcilerin yerel olarak gereksinimi, trafik uzun mesafe göndererek (örneğin, Avustralya 'dan Singapur 'ye veya Hong Kong 'a) Karşılaşdığımız gecikme süresine göre belirlenir. Avustralya 'dan Hong Kong veya Singapur 'a akan trafik örneğinde gecikme süresi, SIP trafiği için iyi çağrı kalitesini korumak için kabul edilebilir ancak gerçek zamanlı medya trafiği için bu değildir.
+Medya trafiği, medya işlemcileri adlı bileşenler aracılığıyla akar. Medya işlemcileri, SIP Proxy 'leriyle aynı veri merkezlerine yerleştirilir. Ayrıca, medya akışını iyileştirmek için ek medya işlemcileri de vardır. Örneğin, Avustralya 'da (Singapur veya Hong Kong çın ÖIB) artık bir SIP Proxy bileşeni yoktur, ancak Media Processor 'ı Avustralya 'da yerel olarak sunuyoruz. Medya işlemcilerin yerel olarak gereksinimi, trafik uzun mesafe göndererek (örneğin, Avustralya 'dan Singapur veya Hong Kong SAR), gecikme süresine göre belirlenir. Avustralya 'dan Hong Kong SAR veya Singapur 'a akan trafik örneğinde gecikme süresi, SIP trafiği için iyi çağrı kalitesini korumak için kabul edilebilir ancak gerçek zamanlı medya trafiği için bu değildir.
 
 Hem SIP Proxy 'si hem de medya işlemcisi bileşenlerinin dağıtıldığı konumlar:
 - ABD (ABD Batı ve ABD Doğu veri merkezlerinde ikisi)
 - Avrupa (Amsterdam ve Dublin datacenters)
-- Asya (Singapur ve Hong Kong veri merkezleri)
+- Asya (Singapur ve Hong Kong çın ÖIB veri merkezleri)
 - Avustralya (AU Doğu ve Güneydoğu veri merkezleri)
 
 Yalnızca medya işlemcilerin dağıtıldığı konumlar (yukarıda listelenen en yakın veri merkezi üzerinden SIP akışları):

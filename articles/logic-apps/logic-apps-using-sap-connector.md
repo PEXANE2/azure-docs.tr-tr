@@ -9,12 +9,12 @@ ms.reviewer: estfan, daviburg, logicappspm
 ms.topic: article
 ms.date: 03/08/2021
 tags: connectors
-ms.openlocfilehash: 3e98dc36b3d58ce5289fccde7b5f5a49973c9de6
-ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
+ms.openlocfilehash: b9238d099c7b33e904c2fc8de3c4fc08369f1f36
+ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "102454235"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102489846"
 ---
 # <a name="connect-to-sap-systems-from-azure-logic-apps"></a>Azure Logic Apps’ten SAP sistemlerine bağlanma
 
@@ -752,7 +752,7 @@ SAP 'yi, toplu işler veya IDoc grupları olan [paketlerdeki IDoc 'ları gönder
 
 İşte, [ `xpath()` işlevi](./workflow-definition-language-functions-reference.md#xpath)kullanarak bir paketten tek tek IDoc 'ları nasıl ayıklayabileceğiniz gösterilmektedir:
 
-1. Başlamadan önce SAP tetikleyicisine sahip bir mantıksal uygulama gerekir. Bu mantıksal uygulama henüz yoksa, [SAP tetikleyicisiyle bir mantıksal uygulama ayarlamak](#receive-message-from-sap)için bu konudaki önceki adımları izleyin.
+1. Başlamadan önce SAP tetikleyicisine sahip bir mantıksal uygulama gerekir. Bu mantıksal uygulamanızda zaten yoksa, [SAP tetikleyicisiyle bir mantıksal uygulama ayarlamak](#receive-message-from-sap)için bu konudaki önceki adımları izleyin.
 
     > [!IMPORTANT]
     > SAP **program kimliği** büyük/küçük harfe duyarlıdır. Mantıksal uygulamanızı ve SAP sunucunuzu yapılandırırken, **Program kimliğiniz** için tutarlı olarak aynı durum biçimini kullandığınızdan emin olun. Aksi halde, SAP 'ye bir IDoc göndermeye çalıştığınızda tRFC Izleyicisinde (T-Code SM58) aşağıdaki hataları alabilirsiniz:
@@ -765,6 +765,14 @@ SAP 'yi, toplu işler veya IDoc grupları olan [paketlerdeki IDoc 'ları gönder
    Örnek:
 
    ![Logic App 'e SAP tetikleyicisi ekleme](./media/logic-apps-using-sap-connector/first-step-trigger.png)
+
+1. SAP isteğinizin durumuyla hemen yanıtlamak için [mantıksal uygulamanıza bir yanıt eylemi ekleyin](/azure/connectors/connectors-native-reqres#add-a-response-action) . Bu eylemi, bir iletişim kanalını SAP sunucunuz ile boşaltmak için tetikleyicinizin hemen arkasına eklemek en iyi uygulamadır. `statusCode`Yanıt eyleminiz içinde kullanmak için aşağıdaki durum kodlarından birini () seçin:
+
+    * **kabul edilen 202**, bu, isteğin işleme için kabul edildiği anlamına gelir ancak işlem henüz tamamlanmaz.
+
+    * **204 Içerik yok**, bu, sunucunun isteği başarıyla karşıladığı ve yanıt yükü gövdesinde gönderilmesi gereken ek bir içerik olmadığı anlamına gelir. 
+
+    * **200 Tamam**. Bu durum kodu, sunucu, sıfır uzunlukta bir yük gövdesi üretse bile her zaman bir yük içerir. 
 
 1. Mantıksal uygulamanızın SAP 'den aldığı XML IDoc 'ından kök ad alanını alın. Bu ad alanını XML belgesinden ayıklamak için, bir yerel dize değişkeni oluşturan ve bu ad alanını bir ifade kullanarak depolayan bir adım ekleyin `xpath()` :
 

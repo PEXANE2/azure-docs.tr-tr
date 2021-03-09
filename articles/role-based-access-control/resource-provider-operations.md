@@ -9,12 +9,12 @@ author: rolyon
 ms.author: rolyon
 ms.date: 02/25/2021
 ms.custom: generated
-ms.openlocfilehash: 1ee422d4c040e8546135981e0640484acc997b0a
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: c91172ff110b950335c66f2c0ea9ac59c37e0a76
+ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101718735"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102487860"
 ---
 # <a name="azure-resource-provider-operations"></a>Azure Kaynak sağlayıcısı işlemleri
 
@@ -50,6 +50,7 @@ Bu bölümde, yerleşik rollerde kullanılan Azure Kaynak sağlayıcılarının 
 | [Microsoft. storagessync](#microsoftstoragesync) |
 | [Microsoft. StorSimple](#microsoftstorsimple) |
 | **Web** |
+| [Microsoft. AppPlatform](#microsoftappplatform) |
 | [Microsoft. CertificateRegistration](#microsoftcertificateregistration) |
 | [Microsoft. DomainRegistration](#microsoftdomainregistration) |
 | [Microsoft. Maps](#microsoftmaps) |
@@ -2047,6 +2048,62 @@ Azure hizmeti: [StorSimple](../storsimple/index.yml)
 > | Microsoft. StorSimple/işlemler/okuma | Işlemleri listeler veya alır |
 
 ## <a name="web"></a>Web
+
+### <a name="microsoftappplatform"></a>Microsoft. AppPlatform
+
+Azure hizmeti: [Azure yay bulutu](../spring-cloud/index.yml)
+
+> [!div class="mx-tableFixed"]
+> | Eylem | Açıklama |
+> | --- | --- |
+> | Microsoft. AppPlatform/Register/ACTION | Aboneliği Microsoft. AppPlatform kaynak sağlayıcısına kaydetme |
+> | Microsoft. AppPlatform/kaydını kaldırma/eylem | Microsoft. AppPlatform kaynak sağlayıcısı 'ndan aboneliğin kaydını silme |
+> | Microsoft. AppPlatform/Locations/Checknameavaılabılıty/Action | Kaynak adı kullanılabilirliğini denetle |
+> | Microsoft. AppPlatform/konumlar/operationResults/yay/okuma | Kaynak işlemi sonucunu oku |
+> | Microsoft. AppPlatform/konumlar/operationStatus/operationId/Read | Kaynak işlemi durumunu oku |
+> | Microsoft. AppPlatform/işlemler/okuma | Microsoft Azure Spring Cloud 'ın kullanılabilir işlemlerini listeleyin |
+> | Microsoft. AppPlatform/SKU/okuma | Microsoft Azure Spring Cloud 'ın kullanılabilir SKU 'larını listeleyin |
+> | Microsoft. AppPlatform/yay/yazma | Belirli bir Azure yay bulut hizmeti örneği oluşturma veya güncelleştirme |
+> | Microsoft. AppPlatform/yay/silme | Belirli bir Azure yay bulutu hizmet örneğini silme |
+> | Microsoft. AppPlatform/yay/okuma | Azure yay bulut hizmeti örneklerini al |
+> | Microsoft. AppPlatform/yay/enableTestEndpoint/eylem | Belirli bir Azure yay bulut hizmeti örneği için test uç noktası işlevselliğini etkinleştir |
+> | Microsoft. AppPlatform/Spring/disableTestEndpoint/eylem | Belirli bir Azure yay bulut hizmeti örneği için test uç noktası işlevselliğini devre dışı bırak |
+> | Microsoft. AppPlatform/yay/listTestKeys/eylem | Belirli bir Azure yay bulut hizmeti örneği için test anahtarlarını listeleyin |
+> | Microsoft. AppPlatform/Spring/regenerateTestKey/eylem | Belirli bir Azure yay bulutu hizmet örneği için test anahtarını yeniden üret |
+> | Microsoft. AppPlatform/yay/uygulamalar/yazma | Belirli bir Azure Spring Cloud Service örneği için uygulama oluşturma veya güncelleştirme |
+> | Microsoft. AppPlatform/yay/uygulamalar/Sil | Belirli bir Azure Spring Cloud Service örneği için uygulamayı silme |
+> | Microsoft. AppPlatform/yay/uygulamalar/okuma | Belirli bir Azure yay bulut hizmeti örneği için uygulamaları alın |
+> | Microsoft. AppPlatform/Spring/Apps/getResourceUploadUrl/eylem | Belirli bir Microsoft Azure Spring Cloud uygulamasının kaynak yükleme URL 'sini alın |
+> | Microsoft. AppPlatform/yay/uygulamalar/validateDomain/eylem | Belirli bir uygulama için özel etki alanını doğrulama |
+> | Microsoft. AppPlatform/yay/uygulamalar/bağlamalar/yazma | Belirli bir uygulama için bağlamayı oluşturma veya güncelleştirme |
+> | Microsoft. AppPlatform/yay/uygulamalar/bağlamalar/silme | Belirli bir uygulama için bağlamayı silme |
+> | Microsoft. AppPlatform/yay/uygulamalar/bağlamalar/okuma | Belirli bir uygulama için bağlamaları al |
+> | Microsoft. AppPlatform/yay/uygulamalar/dağıtımlar/yazma | Belirli bir uygulama için dağıtım oluşturma veya güncelleştirme |
+> | Microsoft. AppPlatform/yay/uygulamalar/dağıtımlar/Sil | Belirli bir uygulama için dağıtımı silme |
+> | Microsoft. AppPlatform/yay/uygulamalar/dağıtımlar/okuma | Belirli bir uygulama için dağıtımları alın |
+> | Microsoft. AppPlatform/yay/uygulamalar/dağıtımlar/Başlat/eylem | Belirli bir uygulama için dağıtımı Başlat |
+> | Microsoft. AppPlatform/yay/uygulamalar/dağıtımlar/durdur/eylem | Belirli bir uygulama için dağıtımı durdur |
+> | Microsoft. AppPlatform/yay/uygulamalar/dağıtımlar/yeniden Başlat/eylem | Belirli bir uygulama için dağıtımı yeniden Başlat |
+> | Microsoft. AppPlatform/yay/uygulamalar/dağıtımlar/getLogFileUrl/eylem | Belirli bir Microsoft Azure yay bulut uygulaması dağıtımının günlük dosyası URL 'sini alın |
+> | Microsoft. AppPlatform/yay/uygulamalar/dağıtımlar/SKU/okuma | Bir uygulama dağıtımının kullanılabilir SKU 'larını listeleyin |
+> | Microsoft. AppPlatform/yay/uygulamalar/etki alanları/yazma | Belirli bir uygulama için özel etki alanı oluşturma veya güncelleştirme |
+> | Microsoft. AppPlatform/yay/uygulamalar/etki alanları/Sil | Belirli bir uygulama için özel etki alanını silme |
+> | Microsoft. AppPlatform/yay/uygulamalar/etki alanları/okuma | Belirli bir uygulama için özel etki alanlarını al |
+> | Microsoft. AppPlatform/yay/sertifikalar/yazma | Belirli bir Azure Spring Cloud Service örneği için sertifika oluşturma veya güncelleştirme |
+> | Microsoft. AppPlatform/yay/sertifikalar/Sil | Belirli bir Azure yay bulutu hizmet örneği için sertifikayı silme |
+> | Microsoft. AppPlatform/yay/sertifikalar/okuma | Belirli bir Azure yay bulut hizmeti örneği için sertifikaları al |
+> | Microsoft. AppPlatform/yay/configServers/okuma | Belirli bir Azure yay bulut hizmeti örneği için yapılandırma sunucusunu al |
+> | Microsoft. AppPlatform/yay/configServers/yazma | Belirli bir Azure Spring Cloud Service örneği için yapılandırma sunucusu oluşturma veya güncelleştirme |
+> | Microsoft. AppPlatform/yay/dağıtımlar/okuma | Belirli bir Azure yay bulut hizmeti örneği için dağıtımları edinme |
+> | Microsoft. AppPlatform/yay/detektorler/okuma | Belirli bir Azure yay bulut hizmeti örneği için algılayıcıları alın |
+> | Microsoft. AppPlatform/Spring/monitoringSettings/Read | Belirli bir Azure yay bulut hizmeti örneği için izleme ayarını al |
+> | Microsoft. AppPlatform/Spring/monitoringSettings/Write | Belirli bir Azure Spring Cloud Service örneği için izleme ayarı oluşturun veya güncelleştirin |
+> | **DataAction** | **Açıklama** |
+> | Microsoft. AppPlatform/Spring/configService/Read | Belirli bir Azure Spring Cloud Service örneği için yapılandırma içeriğini (örneğin, Application. YAML) okuyun |
+> | Microsoft. AppPlatform/yay/eurekaService/okuma | Belirli bir Azure yay bulut hizmeti örneği için kullanıcı uygulamaları kayıt bilgilerini okuyun |
+> | Microsoft. AppPlatform/yay/eurekaService/yazma | Belirli bir Azure Spring Cloud Service örneği için kullanıcı uygulamaları kayıt bilgilerini yazın |
+> | Microsoft. AppPlatform/yay/eurekaService/Sil | Belirli bir Azure Spring Cloud Service örneği için Kullanıcı uygulaması kayıt bilgilerini silme |
+> | Microsoft. AppPlatform/Spring/logstreamService/Read | Belirli bir Azure yay bulut hizmeti örneği için Kullanıcı uygulamasının akış günlüğünü okuyun |
 
 ### <a name="microsoftcertificateregistration"></a>Microsoft. CertificateRegistration
 

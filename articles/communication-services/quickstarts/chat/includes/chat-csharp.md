@@ -10,17 +10,17 @@ ms.date: 9/1/2020
 ms.topic: include
 ms.custom: include file
 ms.author: mikben
-ms.openlocfilehash: 70287a837b17268f2cddebfb2cf3344a8fe66ffe
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: b4f058d9829a23748b8ef61daea5b3f12ce5fedf
+ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102444776"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102489711"
 ---
 ## <a name="prerequisites"></a>Önkoşullar
 Başlamadan önce şunları yaptığınızdan emin olun:
-- Etkin abonelikle bir Azure hesabı oluşturun. Ayrıntılar için bkz. [ücretsiz hesap oluşturma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F). 
-- [Visual Studio 'yu](https://visualstudio.microsoft.com/downloads/) yükler 
+- Etkin abonelikle bir Azure hesabı oluşturun. Ayrıntılar için bkz. [ücretsiz hesap oluşturma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+- [Visual Studio 'yu](https://visualstudio.microsoft.com/downloads/) yükler
 - Bir Azure Iletişim Hizmetleri kaynağı oluşturun. Ayrıntılar için bkz. [Azure Iletişim kaynağı oluşturma](../../create-communication-resource.md). Bu hızlı başlangıç için kaynak **uç** noktanızı kaydetmeniz gerekir.
 - Bir [Kullanıcı erişim belirteci](../../access-tokens.md). Kapsamı "sohbet" olarak ayarladığınızdan emin olun ve belirteç dizesinin yanı sıra Kullanıcı kimliği dizesini de unutmayın.
 
@@ -47,7 +47,7 @@ dotnet build
 
 ```PowerShell
 dotnet add package Azure.Communication.Chat --version 1.0.0-beta.4
-``` 
+```
 
 ## <a name="object-model"></a>Nesne modeli
 
@@ -60,7 +60,7 @@ Aşağıdaki sınıflar, C# için Azure Iletişim Hizmetleri sohbeti istemci kit
 
 ## <a name="create-a-chat-client"></a>Sohbet istemcisi oluşturma
 
-Bir sohbet istemcisi oluşturmak için, Iletişim Hizmetleri uç noktanızı ve önkoşul adımlarının bir parçası olarak oluşturulan erişim belirtecini kullanacaksınız. `CommunicationIdentityClient` `Administration` Kullanıcı oluşturmak ve sohbet istemcinize geçirilecek bir belirteç vermek için istemci kitaplığındaki sınıfını kullanmanız gerekir.
+Bir sohbet istemcisi oluşturmak için, Iletişim Hizmetleri uç noktanızı ve önkoşul adımlarının bir parçası olarak oluşturulan erişim belirtecini kullanacaksınız. `CommunicationIdentityClient`Kullanıcı oluşturmak ve sohbet istemcinize geçiş yapmak için bir belirteç vermek üzere kimlik istemci kitaplığındaki sınıfını kullanmanız gerekir.
 
 [Kullanıcı erişim belirteçleri](../../access-tokens.md)hakkında daha fazla bilgi edinin.
 
@@ -95,7 +95,7 @@ namespace ChatQuickstart
 - `topic`Bu sohbete bir konu vermek için kullanın; Konu, işlevi kullanılarak sohbet iş parçacığı oluşturulduktan sonra güncelleştirilemeyebilir `UpdateTopic` .
 - `participants` `ChatParticipant` Sohbet iş parçacığına eklenecek nesne listesini geçirmek için özelliğini kullanın. `ChatParticipant`Nesne bir nesne ile başlatılır `CommunicationIdentifier` . `CommunicationIdentifier` , veya türünde olabilir `CommunicationUserIdentifier` `MicrosoftTeamsUserIdentifier` `PhoneNumberIdentifier` . Örneğin, bir nesneyi almak için `CommunicationIdentifier` , bir [Kullanıcı oluşturmak](../../access-tokens.md#create-an-identity) için aşağıdaki yönergeyi uygulayarak oluşturduğunuz bir erişim kimliği geçirmeniz gerekir
 
-CreateChatThread yönteminden Response nesnesi chatThread ayrıntılarını içerir. Katılımcı ekleme, ileti gönderme, ileti silme, vb. gibi sohbet iş parçacığı işlemleriyle etkileşimde bulunmak için, ChatClient istemcisinde GetChatThreadClient yöntemi kullanılarak bir chatThreadClient istemci örneğinin örneği oluşturulması gerekir. 
+Yönteminden yanıt nesnesi `createChatThread` `chatThread` ayrıntıları içerir. Katılımcı ekleme, ileti gönderme, ileti silme, vb. gibi sohbet iş parçacığı işlemleriyle etkileşimde bulunmak için istemci `chatThreadClient` örneğinin, `GetChatThreadClient` istemci üzerindeki yöntemi kullanılarak örneği oluşturulması gerekir `ChatClient` .
 
 ```csharp
 var chatParticipant = new ChatParticipant(communicationIdentifier: new CommunicationUserIdentifier(id: "<Access_ID>"))

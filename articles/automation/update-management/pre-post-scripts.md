@@ -3,14 +3,14 @@ title: Azure 'da Güncelleştirme Yönetimi dağıtımınızda ön betikleri ve 
 description: Bu makalede, güncelleştirme dağıtımları için betiklerin ve son betiklerin nasıl yapılandırılacağı ve yönetileceği açıklanmaktadır.
 services: automation
 ms.subservice: update-management
-ms.date: 12/17/2020
+ms.date: 03/08/2021
 ms.topic: conceptual
-ms.openlocfilehash: 3ca1dec1b6139f3192edb09f8748c8f23a9d399e
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: ce60c773626d951062de3cc830b898e3b875f3cb
+ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101701510"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102485546"
 ---
 # <a name="manage-pre-scripts-and-post-scripts"></a>Ön betikleri ve son betikleri yönetme
 
@@ -19,6 +19,8 @@ ms.locfileid: "101701510"
 ## <a name="pre-script-and-post-script-requirements"></a>Betik öncesi ve betik sonrası gereksinimler
 
 Bir runbook 'un bir ön betik veya komut dosyası olarak kullanılabilmesi için, uygulamayı Otomasyon hesabınıza aktarmanız ve [runbook 'u yayımlamanız](../manage-runbooks.md#publish-a-runbook)gerekir.
+
+Şu anda yalnızca PowerShell ve Python 2 runbook 'ları, ön/son betik olarak desteklenmektedir. Python 3, grafik, PowerShell Iş akışı, grafik PowerShell Iş akışı gibi diğer runbook türleri şu anda ön/Post betikleri olarak desteklenmemektedir.
 
 ## <a name="pre-script-and-post-script-parameters"></a>Betik öncesi ve betik sonrası parametreler
 
@@ -91,9 +93,6 @@ Tüm özelliklere sahip tam bir örnek şurada bulunabilir: [ada göre yazılım
 > [!NOTE]
 > `SoftwareUpdateConfigurationRunContext`Nesne, makineler için yinelenen girdiler içerebilir. Bu, ön betiklerin ve betiklerin aynı makinede birden fazla kez çalışmasına neden olabilir. Bu davranışı geçici olarak çözmek için, `Sort-Object -Unique` yalnızca BENZERSIZ VM adlarını seçmek üzere kullanın.
 
-> [!NOTE]
-> Şu anda yalnızca PowerShell runbook 'ları, ön/sonrası betikleri olarak desteklenmektedir. Python, grafik, PowerShell Iş akışı, grafik PowerShell Iş akışı gibi diğer runbook türleri şu anda ön/sonrası betikleri olarak desteklenmemektedir.
-
 ## <a name="use-a-pre-script-or-post-script-in-a-deployment"></a>Bir dağıtımda ön betik veya komut dosyası kullanma
 
 Bir güncelleştirme dağıtımında bir ön betik veya bir komut dosyası kullanmak için, bir güncelleştirme dağıtımı oluşturarak başlayın. **Ön betikler + betikleri sonrası**' u seçin. Bu eylem, **betikleri ön betikleri Seç + betikleri sonrası** sayfasını açar.
@@ -120,7 +119,7 @@ Güncelleştirme dağıtımı çalıştırmasını seçtiğinizde, betiklerin ve
 
 ## <a name="stop-a-deployment"></a>Dağıtımı durdur
 
-Bir ön koda dayalı bir dağıtımı durdurmak isterseniz, bir özel durum [oluşturmanız gerekir.](../automation-runbook-execution.md#throw) Bunu yapmazsanız dağıtım ve son betik çalışmaya devam edecektir. Aşağıdaki kod parçacığı bir özel durum oluşturmayı gösterir.
+Bir ön koda dayalı bir dağıtımı durdurmak isterseniz, bir özel durum [oluşturmanız gerekir.](../automation-runbook-execution.md#throw) Bunu yapmazsanız dağıtım ve son betik çalışmaya devam edecektir. Aşağıdaki kod parçacığı, PowerShell kullanarak özel durum oluşturmayı gösterir.
 
 ```powershell
 #In this case, we want to terminate the patch job if any run fails.
@@ -134,6 +133,8 @@ foreach($summary in $finalStatus)
     }
 }
 ```
+
+Python 2 ' de, özel durum işleme bir [TRY](https://www.python-course.eu/exception_handling.php) bloğunda yönetilir.
 
 ## <a name="interact-with-machines"></a>Makinelerle etkileşim kurma
 
@@ -169,6 +170,13 @@ if (<My custom error logic>)
     #Throw an error to fail the patch deployment.
     throw "There was an error, abort deployment"
 }
+```
+
+Python 2 ' de, belirli bir koşul oluştuğunda bir hata oluşturmak istiyorsanız, bir [Raise](https://docs.python.org/2.7/reference/simple_stmts.html#the-raise-statement) ifadesini kullanın.
+
+```python
+If (<My custom error logic>)
+   raise Exception('Something happened.')
 ```
 
 ## <a name="samples"></a>Örnekler

@@ -5,14 +5,14 @@ author: sidramadoss
 ms.author: sidram
 ms.service: stream-analytics
 ms.topic: how-to
-ms.date: 06/21/2018
+ms.date: 03/08/2021
 ms.custom: seodec18
-ms.openlocfilehash: 3356e0bdd45b6a213ef5ef4a814e64585d8e8924
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 6d3558511721a91c3a195cb510a1a00d5d8a9a51
+ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101726776"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102487887"
 ---
 # <a name="understand-stream-analytics-job-monitoring-and-how-to-monitor-queries"></a>Stream Analytics iş izlemeyi ve sorguların nasıl izleneceğini anlayın
 
@@ -30,7 +30,7 @@ Bu pencere gösterildiği gibi görünür:
 | ---------------------- | ---------------------------------------- |
 | Biriktirme listesindeki giriş olayları       | Biriktirme listesindeki giriş olaylarının sayısı. Bu ölçüm için sıfır olmayan bir değer, işinizin gelen olay sayısıyla devam edemediğinden emin olmak anlamına gelir. Bu değer yavaş bir şekilde artarak veya sürekli olarak sıfır değilse, işinizi ölçeklendirmelisiniz. Daha fazla bilgi edinmek için öğrenme [ve akış birimlerini ayarlayın](stream-analytics-streaming-unit-consumption.md). |
 | Veri dönüştürme hataları | Beklenen çıkış şemasına dönüştürülemeyen çıkış olaylarının sayısı. Hata ilkesi, bu senaryoya ilişkin olayları bırakmak için ' Drop ' olarak değiştirilebilir. |
-| CPU% kullanımı (Önizleme)       | İşiniz için kullanılan CPU yüzdesi. Bu ölçüm %80 ' den tutarlı bir şekilde fazlaysa, işiniz bottlenecked CPU kullanımı üzerine gelir ve büyük olasılıkla giriş olaylarının geri kaydedilmesini sağlar. Bu tür sorunları azaltmak için, işinize ayrılan SUs sayısını artırabilirsiniz. |
+| CPU% kullanımı (Önizleme)       | İşiniz için kullanılan CPU yüzdesi. Bu değer çok yüksek olsa da (%90 veya üzeri), bu ölçüme göre yalnızca SUs sayısını artırmanız gerekir. Biriktirme listesindeki giriş olaylarının sayısı veya filigran gecikmesi arttıkça CPU 'nun performans sorunu olup olmadığını anlamak için bu CPU% kullanım ölçümünü kullanabilirsiniz. Bu ölçümün zaman zaman ani artışlar olabilir. CPU tıkanıklarından dolayı biriktirme listesi geri alma veya eşik gecikmesi arttıkça işinizin üst sınırını belirlemede testlerin ölçeklendirilmesi önerilir. |
 | Erken giriş olayları       | Uygulama zaman damgası, 5 dakikadan uzun bir süre içinde olan olay zaman damgasından daha önce. |
 | Başarısız Işlev Istekleri | Başarısız Azure Machine Learning işlev çağrılarının sayısı (varsa). |
 | İşlev olayları        | Azure Machine Learning işlevine gönderilen olay sayısı (varsa). |

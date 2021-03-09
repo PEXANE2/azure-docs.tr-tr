@@ -7,12 +7,12 @@ ms.topic: guide
 author: iqshahmicrosoft
 ms.author: iqshah
 ms.date: 10/15/2020
-ms.openlocfilehash: 88ec58ca9bcfa5c64036d3b65e77f3248e26357d
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: d045af3b170d585b4bf1f8c57b7ba924c6b30695
+ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93124960"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102489795"
 ---
 # <a name="common-questions-about-vm-in-azure-marketplace"></a>Azure Market 'te VM hakkında sık sorulan sorular
 
@@ -49,6 +49,19 @@ Daha fazla bilgi için şu makalelere bakın:
 VHD 'lerimin içinden bir görüntü oluşturmaya her seferinde, bu Azure PowerShell "VHD, kaynak olarak görüntü deposuna zaten kaydedildi" hatasını alıyorum. Azure 'da bu ada sahip herhangi bir görüntü oluşturmadım veya bu adı taşıyan bir resim bulmadı. Bu sorunu nasıl çözebilirim?
 
 Bu sorun genellikle kilidi olan bir VHD 'den bir VM oluşturduysanız görüntülenir. Bu VHD 'den ayrılmış bir VM olmadığından emin olun ve işlemi yeniden deneyin. Bu sorun devam ederse bir destek bileti açın. Bkz. [Iş ortağı merkezi desteği](support.md).
+
+## <a name="how-do-i-test-a-hidden-preview-image"></a>Gizli önizleme görüntüsünü test Nasıl yaparım??
+
+Hızlı Başlangıç şablonlarını kullanarak gizli önizleme görüntülerini dağıtabilirsiniz.
+Linux önizleme görüntüsünü dağıtmak için 
+1. Bu [hızlı başlangıç şablonuna](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-simple-linux)git, "Azure 'a dağıt" ı seçin. Bu işlem sizi Azure portal
+2. Azure portal, "şablonu Düzenle" seçeneğini belirleyin.
+3. JSON şablonunda, ImageReference araması yapın ve PublisherId, OfferId, skuid ve görüntünün sürümünü güncelleştirin. Önizleme görüntüsünü test etmek için, OfferId 'ye "-PREVIEW" ekleyin.
+ ![image](https://user-images.githubusercontent.com/79274470/110191995-71c7d500-7de0-11eb-9f3c-6a42f55d8f03.png)
+4. Kaydet’e tıklayın.
+5. Ayrıntıların geri kalanını doldurun. İnceleme ve oluşturma
+
+
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 01/12/2021
 ms.author: aahi
-ms.openlocfilehash: 849afe54125588cb7664ee221e4f229e83be8f96
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.openlocfilehash: 4c2d1cd1c73b377d85501fd31d0f5a1893df5183
+ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98185487"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102487432"
 ---
 # <a name="camera-placement-guide"></a>Kamera Yerleştirme Kılavuzu
 
@@ -72,12 +72,12 @@ Kameranın, belirli bağlama yükseklikleri temelinde odak noktasından uzaklı�
 
 | Kamera yüksekliği | Kamera-odak noktası uzaklığı (min/max) |  
 | ------------- | ---------------------------------------- |  
-| 240            | 10 '-13 '                                  |  
-| (           | 7 '-13 '                                   |  
-| +           | 10 '-17 '                                  |  
-| May           | 11 '-18 '                                  |  
-| k           | 12 '-22 '                                  |  
-| 2.0           | 15 '-30 '                                  |  
+| 240            | 4.6 '-8 '                                  |  
+| (           | 5.8 '-10 '                                 |  
+| +           | 7 '-12 '                                   |  
+| May           | 8 '-14 ' '                                  |  
+| k           | 9.2 '-16 '                                 |  
+| 2.0           | 11,5 lik '-20 '                                |  
 
 Aşağıdaki çizim, kamera görünümlerinin en yakın ve en uzak kameradan odak noktası uzaklıklarından benzetimini yapar.
 
@@ -91,15 +91,9 @@ Bu bölümde, kabul edilebilir kamera açısı bağlama aralıkları açıklanma
 
 ### <a name="line-configuration"></a>Satır yapılandırma
 
-Aşağıdaki tabloda, **biliveservices. Vision. spatialanalysis-personcrossingline** işlemi için yapılandırılmış kameralara yönelik öneriler gösterilmektedir. Yüz maskesi algılama için +/-30 derece, kamera yüksekliği için 8 ' ila 12 ' arasındaki en iyi kamera bağlama açısıdır.
+**Biliveservices. Vision. spatialanalysis-personcrossingline** işlemi için +/-5 °, doğruluğu en üst düzeye çıkarmak için en uygun kamera bağlama açıdır.
 
-| Kamera yüksekliği | Kamera-odak noktası uzaklığı | En uygun kamera bağlama açısı (en az/en fazla) |  
-| ------------- | ------------------------------ | ------------------------------------------ |  
-| 240            | tuşlarına                             | +/-40 °                                     |  
-| (           | (                            | +/-30 °                                     |  
-| +           | hatası                            | +/-20 °                                     |  
-| k           | 18                            | +/-10 °                                     |  
-| 2.0           | #c16                            | +/-10 °                                     |  
+Yüz maskesi algılama için +/-30 derece, kamera yüksekliği için 8 ' ila 12 ' arasındaki en iyi kamera bağlama açısıdır.
 
 Aşağıdaki çizim, bir kapı için giriş sayımını yapmak üzere **biliveservices. Vision. spatialanalysis-personcrossingline** 'ı kullanmak için en soldaki (-) ve en sağdaki (+) bağlama açısı önerilerini kullanarak kamera görünümlerinin benzetimini yapar.
 

@@ -11,12 +11,12 @@ author: jhirono
 ms.date: 11/20/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 2215c47fcd250a9ac1d6621f7e4b434bd33b3832
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 66a709f15191a8142f10f15d825276ea2ba4b83f
+ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98871104"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102487993"
 ---
 # <a name="how-to-use-your-workspace-with-a-custom-dns-server"></a>Çalışma alanınızı özel DNS sunucusuyla kullanma
 
@@ -52,7 +52,7 @@ Aşağıdaki liste, çalışma alanınız tarafından kullanılan tam etki alan�
     > [!NOTE]
     > İşlem örneklerine yalnızca sanal ağ içinden erişilebilir.
     
-### <a name="these-fqdns-are-in-use-in-all-other-regions"></a>Bu FQDN 'Ler diğer tüm bölgelerde kullanımda
+### <a name="these-fqdns-are-in-use-in-all-other-public-regions"></a>Bu FQDN 'Ler diğer tüm genel bölgelerde kullanımda
 Aşağıdaki liste, çalışma alanınız tarafından kullanılan tam etki alanı adlarını (FQDN) içerir:
 
 * `<workspace-GUID>.workspace.<region>.cert.api.azureml.ms`
@@ -63,6 +63,17 @@ Aşağıdaki liste, çalışma alanınız tarafından kullanılan tam etki alan�
     > [!NOTE]
     > İşlem örneklerine yalnızca sanal ağ içinden erişilebilir.
 
+### <a name="azure-china-21vianet-regions"></a>Azure Çin 21Vianet bölgeleri
+
+Aşağıdaki FQDN 'Ler Azure Çin 21Vianet bölgeleri içindir:
+
+* `<workspace-GUID>.workspace.<region>.cert.api.ml.azure.cn`
+* `<workspace-GUID>.workspace.<region>.api.ml.azure.cn`
+* `ml-<workspace-name, truncated>-<region>-<workspace-guid>.notebooks.chinacloudapi.cn`
+
+    > [!NOTE]
+    > Bu FQDN için çalışma alanı adı kesilebilir. En az 63 karakterden oluşan FQDN 'yi korumak için kesme yapılır.
+* `<instance-name>.<region>.instances.ml.azure.cn`
 ## <a name="find-the-ip-addresses"></a>IP adreslerini bulma
 
 VNet 'teki FQDN 'lerin iç IP adreslerini bulmak için aşağıdaki yöntemlerden birini kullanın:
@@ -94,7 +105,7 @@ $workspaceDns.CustomDnsConfigs | format-table
 
 ---
 
-Tüm yöntemlerden döndürülen bilgiler aynıdır; kaynaklar için FQDN ve özel IP adresi listesi.
+Tüm yöntemlerden döndürülen bilgiler aynıdır; kaynaklar için FQDN ve özel IP adresi listesi. Aşağıdaki örnek, genel bir Azure bölgesinden verilmiştir:
 
 | FQDN | IP Adresi |
 | ----- | ----- |
@@ -112,6 +123,12 @@ Tüm yöntemlerden döndürülen bilgiler aynıdır; kaynaklar için FQDN ve öz
 >
 > Bu IP adreslerinin tümü için, `*.api.azureml.ms` önceki adımlardan döndürülen girişlerle aynı adresi kullanın.
 
+Aşağıdaki tabloda, Azure Çin 21Vianet bölgelerindeki örnek IP 'Ler gösterilmektedir:
+
+| FQDN | IP Adresi |
+| ----- | ----- |
+| `52882c08-ead2-44aa-af65-08a75cf094bd.workspace.chinaeast2.api.ml.azure.cn` | `10.1.0.5` |
+| `ml-mype-pltest-chinaeast2-52882c08-ead2-44aa-af65-08a75cf094bd.notebooks.chinacloudapi.cn` | `10.1.0.6` |
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Sanal Ağla Azure Machine Learning kullanma hakkında daha fazla bilgi için bkz. [sanal ağa genel bakış](how-to-network-security-overview.md).

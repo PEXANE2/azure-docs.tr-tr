@@ -8,23 +8,24 @@ tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: keys
 ms.topic: tutorial
-ms.date: 05/29/2020
+ms.date: 02/24/2021
 ms.author: ambapat
-ms.openlocfilehash: 8a1f3b5e80152fb0fb9458aef0d3524dd2d6f5eb
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: 511544f81f6de887014545e3f4bbc7a4172fc91e
+ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97092338"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102488758"
 ---
 # <a name="import-hsm-protected-keys-for-key-vault-ncipher"></a>Key Vault için HSM korumalı anahtarları içeri aktarma (nCipher)
+
+> [!WARNING]
+> Bu belgede açıklanan HSM-Key içeri aktarma yöntemi **kullanımdan kaldırılmıştır** ve gelecekte desteklenecektir. Yalnızca üretici yazılımı 12.40.2 veya 12,50 olan nCipher nShield ailesi ile bir düzeltme ile birlikte kullanılabilir. [HSM anahtarları içeri aktarmak için yeni yöntem](hsm-protected-keys-byok.md) kullanılması önemle önerilir.
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 Ek güvence için, Azure Key Vault kullandığınızda, donanım güvenlik modüllerinde (HSM 'ler), hiçbir zaman HSM sınırını bırakmamış anahtarlar içeri aktarabilir veya oluşturabilirsiniz. Bu senaryo genellikle *kendi anahtarını getir* veya KAG olarak adlandırılır. Azure Key Vault anahtarlarınızı korumak için HSM 'lerin nCipher nShield ailesini (FIPS 140-2 düzey 2 doğrulanan) kullanır.
 
-> [!NOTE]
-> Bu belgede açıklanan HSM-Key içeri aktarma yöntemi yalnızca nCipher nShield for HSM ailesiyle birlikte kullanılabilir. HSM 'lerin içeri aktarılması için diğer HSM 'lerin anahtarlarını [buraya bakın](hsm-protected-keys-byok.md).
 
 Bu konudaki bilgileri kullanarak, Azure Key Vault ile kullanmak üzere kendi HSM korumalı anahtarlarınızı planlayıp, oluşturmanıza ve daha sonra aktarmanızı sağlamanıza yardımcı olması için bu konudaki bilgileri kullanın. 
 

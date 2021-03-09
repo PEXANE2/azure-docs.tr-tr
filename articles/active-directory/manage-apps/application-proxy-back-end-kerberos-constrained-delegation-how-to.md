@@ -11,12 +11,12 @@ ms.topic: troubleshooting
 ms.date: 04/23/2019
 ms.author: kenwith
 ms.reviewer: asteen, japere
-ms.openlocfilehash: 65d68924fbc3a777ef7ef59d2532a1ae20e23c48
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.openlocfilehash: b8562f3bdd82b5b0c2c1340f511f87ad90dfbe3b
+ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99258227"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102487959"
 ---
 # <a name="troubleshoot-kerberos-constrained-delegation-configurations-for-application-proxy"></a>Uygulama Ara Sunucusu için Kerberos kısıtlanmış temsil yapılandırmalarının sorunlarını giderme 
 
@@ -161,7 +161,7 @@ Hala ilerleme yapadıysanız Microsoft desteği size yardımcı olabilir. Doğru
 ## <a name="other-scenarios"></a>Diğer senaryolar
 
 - Azure uygulama proxy 'Si, isteği bir uygulamaya göndermeden önce Kerberos bileti ister. Bazı üçüncü taraf uygulamalar bu kimlik doğrulama yöntemini beğenmez. Bu uygulamalar, daha geleneksel anlaşmaların gerçekleşmesini bekler. İlk istek anonimdir ve bu, uygulamanın bir 401 aracılığıyla desteklediği kimlik doğrulama türleriyle yanıt vermesini sağlar. Bu tür bir Kerberos anlaşması, bu belgede özetlenen adımlar kullanılarak etkinleştirilebilir: [Çoklu oturum açma Için Kerberos kısıtlanmış temsili](application-proxy-configure-single-sign-on-with-kcd.md).
-- Çoklu atlama kimlik doğrulaması, genellikle bir uygulamanın katmanlı olduğu senaryolarda, her ikisi de SQL Server Reporting Services gibi kimlik doğrulaması gerektiren bir arka uç ve ön uç ile kullanılır. Çoklu atlama senaryosunu yapılandırmak için, bkz. [Kerberos kısıtlanmış temsili Destek makalesi çoklu atlama senaryolarında protokol geçişi gerektirebilir](https://support.microsoft.com/help/2005838/kerberos-constrained-delegation-may-require-protocol-transition-in-mul).
+- Çoklu atlama kimlik doğrulaması, genellikle bir uygulamanın katmanlı olduğu senaryolarda, her ikisi de SQL Server Reporting Services gibi kimlik doğrulaması gerektiren bir arka uç ve ön uç ile kullanılır. Daha ayrıntılı bilgi için bkz. [Web kaydı proxy sayfaları Için Kerberos kısıtlanmış temsil 'nı yapılandırma](/troubleshoot/windows-server/identity/configure-kerberos-constrained-delegation).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -8,12 +8,12 @@ ms.author: mikben
 ms.date: 07/20/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 27b1a2654a52c136c0b827b536f5cf99928e5947
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 30b075cfbd7d38ff81cdf79a05a3a95b87b0bc13
+ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101691595"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102488554"
 ---
 # <a name="what-is-azure-communication-services"></a>Azure İletişim Hizmetleri nedir?
 
@@ -21,6 +21,7 @@ ms.locfileid: "101691595"
 
 > [!IMPORTANT]
 > Azure Iletişim Hizmetleri 'ni kullanarak oluşturduğunuz uygulamalar Microsoft ekipleriyle iletişim kurabilir. Daha fazla bilgi edinmek için [takımlar birlikte çalışma](./quickstarts/voice-video-calling/get-started-teams-interop.md) belgelerimizi ziyaret edin.
+
 
 Azure Iletişim Hizmetleri, uygulamalarınıza kolay bir şekilde gerçek zamanlı multimedya sesi, video ve telefon üzerinden iletişim özellikleri eklemenizi sağlar. Iletişim Hizmetleri istemci kitaplıkları, iletişim çözümlerinizi sohbet ve SMS işlevselliği eklemenize de olanak tanır.
 

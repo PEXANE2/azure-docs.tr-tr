@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 03/03/2021
-ms.openlocfilehash: 234a0137f0a9487a56b3e0343eaea375d2f9a1af
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 97b0a4ca3e4fb94a21cbd30a27a3037f45fed782
+ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102043033"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102487126"
 ---
 # <a name="querying-in-azure-cognitive-search"></a>Azure Bilişsel Arama sorgulama
 
@@ -24,10 +24,11 @@ Bilişsel Arama bir sorgu, **`search`** her ikisinin de sorgu yürütmesini bilg
 ```http
 POST https://[service name].search.windows.net/indexes/hotels-sample-index/docs/search?api-version=2020-06-30
 {
-    "queryType": "simple"
-    "search": "`New York` +restaurant",
-    "searchFields": "Description, Address/City, Tags",
-    "select": "HotelId, HotelName, Description, Rating, Address/City, Tags",
+    "queryType": "simple",
+    "searchMode": "all",
+    "search": "restaurant +view",
+    "searchFields": "HotelName, Description, Address/City, Address/StateProvince, Tags",
+    "select": "HotelName, Description, Address/City, Address/StateProvince, Tags",
     "top": "10",
     "count": "true",
     "orderby": "Rating desc"
@@ -38,9 +39,11 @@ Sorgu yürütme sırasında kullanılan parametreler şunları içerir:
 
 + **`queryType`**[varsayılan basit sorgu ayrıştırıcı](search-query-simple-examples.md) (tam metin araması için en uygun) veya normal ifadeler, yakınlık araması, belirsiz ve joker karakter arama gibi gelişmiş sorgu yapıları için kullanılan [tam Lucene sorgu ayrıştırıcısının](search-query-lucene-examples.md) , birkaç kez ad vermek üzere Ayrıştırıcıyı ayarlar.
 
++ **`searchMode`** eşleşmelerin ifadede "All" kriterine mi yoksa "Any" ölçütlerine göre mi olduğunu belirtir. Varsayılan değer.
+
 + **`search`** eşleştirme ölçütünü, genellikle tüm terimleri veya tümceleri, işleçlere sahip veya olmayan bir şekilde sağlar. Dizin şemasında *aranabilir* olarak öznitelikli tüm alanlar, bu parametre için bir adaydır.
 
-+ **`searchFields`** sorgu yürütmesini belirli aranabilir alanlarla kısıtlar.
++ **`searchFields`** sorgu yürütmesini belirli aranabilir alanlarla kısıtlar. Geliştirme sırasında, seçme ve arama için aynı alan listesinin kullanılması yararlı olur. Aksi takdirde, bir eşleşme, sonuçların neden döndürüldüğünden emin olmak için sonuçlarda görmediğiniz alan değerlerine dayalı olabilir.
 
 Yanıtı şekillendirmek için kullanılan parametreler:
 
@@ -114,4 +117,4 @@ Sorgu uygulamasına daha yakından bakmak için, her bir sözdizimi için örnek
 
 + [Basit sorgu örnekleri](search-query-simple-examples.md)
 + [Lucene sözdizimi sorgu gelişmiş sorgular oluşturmaya yönelik örnekler](search-query-lucene-examples.md)
-+ [Azure Bilişsel Arama’da tam metin araması nasıl çalışır?](search-lucene-query-architecture.md)
++ [Tam metin aramasının Azure bilişsel arama git 'Te nasıl çalıştığı](search-lucene-query-architecture.md)
