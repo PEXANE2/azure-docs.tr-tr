@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 11/12/2020
 ms.author: gasinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f8210e00824d7680f4eecde2f0b299dfcdc93b90
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 38b484bd67f3354132675f343dcc06bd7f9d48a0
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98730580"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102499823"
 ---
 # <a name="f5-big-ip-access-policy-manager-and-azure-active-directory-integration-for-secure-hybrid-access"></a>F5 BIG-IP Access Policy Manager ve güvenli karma erişim için Azure Active Directory tümleştirme
 
@@ -68,7 +68,7 @@ Diyagramdaki Adım 1-4, bir Kullanıcı, büyük IP ve Azure AD arasında bir hi
 
 ![Görüntüde yüksek düzey mimari gösteriliyor](./media/f5-aad-integration/integration-flow-diagram.png)
 
-| Adım | Açıklama |
+| Adım | Description |
 |:------|:-----------|
 | 1. | Kullanıcı portalda bir uygulama simgesi seçer, URL 'YI SAML SP 'ye çözümlüyor (BIG-IP) |
 | 2. | BÜYÜK IP, kullanıcıyı ön kimlik doğrulama için SAML ıDP 'ye (Azure AD) yönlendirir|
@@ -101,7 +101,7 @@ Olayları yerel olarak veya bir güvenlik bilgileri ve olay yönetimi (SıEM) ç
 
 ![Görüntü, izleme akışını gösterir](media/f5-aad-integration/azure-sentinel.png)
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 SHA için Azure AD ile F5 BIG-IP tümleştirme aşağıdaki önkoşulların yerine getirilmesini ister:
 

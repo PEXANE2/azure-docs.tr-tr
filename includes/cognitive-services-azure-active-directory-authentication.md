@@ -4,12 +4,12 @@ ms.author: erhopf
 ms.service: cognitive-services
 ms.topic: include
 ms.date: 05/11/2020
-ms.openlocfilehash: fcb4113a4dab1e3de17eb022b1ad386cbc6a9583
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 2d186463f340be14113228baa583fdcf6ff55401
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102109338"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102510659"
 ---
 ## <a name="authenticate-with-azure-active-directory"></a>Azure Active Directory ile kimlik doğrulaması
 
@@ -25,13 +25,13 @@ Aşağıdaki bölümlerde, bir alt etki alanı oluşturmak, roller atamak ve Azu
 
 İlk adım özel bir alt etki alanı oluşturmaktır. Özel alt etki alanı adı olmayan mevcut bir bilişsel hizmetler kaynağını kullanmak istiyorsanız, kaynağınız için özel alt etki alanını etkinleştirmek üzere bilişsel [Hizmetler özel alt etki alanları](../articles/cognitive-services/cognitive-services-custom-subdomains.md#how-does-this-impact-existing-resources) ' nda yer alan yönergeleri izleyin.
 
-1. Azure Cloud Shell açarak başlayın. Ardından [bir abonelik seçin](/powershell/module/az.accounts/set-azcontext?view=azps-3.3.0):
+1. Azure Cloud Shell açarak başlayın. Ardından [bir abonelik seçin](/powershell/module/az.accounts/set-azcontext):
 
    ```powershell-interactive
    Set-AzContext -SubscriptionName <SubscriptionName>
    ```
 
-2. Ardından, özel bir alt etki alanı ile bilişsel [Hizmetler kaynağı oluşturun](/powershell/module/az.cognitiveservices/new-azcognitiveservicesaccount?view=azps-1.8.0) . Alt etki alanı adının genel olarak benzersiz olması gerekir ve örneğin: ".", "!", "," gibi özel karakterler içermemelidir.
+2. Ardından, özel bir alt etki alanı ile bilişsel [Hizmetler kaynağı oluşturun](/powershell/module/az.cognitiveservices/new-azcognitiveservicesaccount) . Alt etki alanı adının genel olarak benzersiz olması gerekir ve örneğin: ".", "!", "," gibi özel karakterler içermemelidir.
 
    ```powershell-interactive
    $account = New-AzCognitiveServicesAccount -ResourceGroupName <RESOURCE_GROUP_NAME> -name <ACCOUNT_NAME> -Type <ACCOUNT_TYPE> -SkuName <SUBSCRIPTION_TYPE> -Location <REGION> -CustomSubdomainName <UNIQUE_SUBDOMAIN>
@@ -47,7 +47,7 @@ Artık kaynakla ilişkili özel bir alt etki alanı olduğuna göre, bir hizmet 
 > [!NOTE]
 > Azure rol atamalarının yaymanın beş dakika sürebileceğini aklınızda bulundurun.
 
-1. İlk olarak, bir [AAD uygulaması](/powershell/module/Az.Resources/New-AzADApplication?view=azps-1.8.0)kaydedelim.
+1. İlk olarak, bir [AAD uygulaması](/powershell/module/Az.Resources/New-AzADApplication)kaydedelim.
 
    ```powershell-interactive
    $SecureStringPassword = ConvertTo-SecureString -String <YOUR_PASSWORD> -AsPlainText -Force
@@ -57,7 +57,7 @@ Artık kaynakla ilişkili özel bir alt etki alanı olduğuna göre, bir hizmet 
 
    Bir sonraki adımda **ApplicationId** 'ye ihtiyacınız olacak.
 
-2. Ardından, AAD uygulaması için [bir hizmet sorumlusu oluşturmanız](/powershell/module/az.resources/new-azadserviceprincipal?view=azps-1.8.0) gerekir.
+2. Ardından, AAD uygulaması için [bir hizmet sorumlusu oluşturmanız](/powershell/module/az.resources/new-azadserviceprincipal) gerekir.
 
    ```powershell-interactive
    New-AzADServicePrincipal -ApplicationId <APPLICATION_ID>
@@ -66,7 +66,7 @@ Artık kaynakla ilişkili özel bir alt etki alanı olduğuna göre, bir hizmet 
    >[!NOTE]
    > Azure portal bir uygulamayı kaydettiğinizde, bu adım sizin için tamamlanır.
 
-3. Son adım, "bilişsel [Hizmetler kullanıcısı" rolünün](/powershell/module/az.Resources/New-azRoleAssignment?view=azps-1.8.0) hizmet sorumlusuna atanması (kaynağa kapsamlı olarak). Rol atayarak, bu kaynağa hizmet sorumlusu erişimi vermiş olursunuz. Aboneliğinizdeki birden fazla kaynağa aynı hizmet sorumlusu erişimi verebilirsiniz.
+3. Son adım, "bilişsel [Hizmetler kullanıcısı" rolünün](/powershell/module/az.Resources/New-azRoleAssignment) hizmet sorumlusuna atanması (kaynağa kapsamlı olarak). Rol atayarak, bu kaynağa hizmet sorumlusu erişimi vermiş olursunuz. Aboneliğinizdeki birden fazla kaynağa aynı hizmet sorumlusu erişimi verebilirsiniz.
    >[!NOTE]
    > Hizmet sorumlusu objectID, uygulamanın ObjectID değil kullanılır.
    > ACCOUNT_ID, oluşturduğunuz bilişsel hizmetler hesabının Azure Kaynak Kimliği olacaktır. Azure Kaynak Kimliği ' ni kaynağın "Özellikler" bölümünde bulabilirsiniz Azure portal.

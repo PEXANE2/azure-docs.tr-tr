@@ -8,12 +8,12 @@ ms.date: 05/29/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 118c08c8ede369eecd86fe8e6db24473b67ff306
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.openlocfilehash: c22b3f3164cbb7c1a7ed150d093f77777c7b1023
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102214448"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102501303"
 ---
 # <a name="enable-and-create-large-file-shares"></a>Büyük dosya paylaşımlarını etkinleştirme ve oluşturma
 
@@ -23,7 +23,7 @@ Depolama hesabınızda büyük dosya paylaşımlarını etkinleştirdiğinizde, 
 
 - Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
 - Azure CLı 'yı kullanmayı planlıyorsanız [en son sürümü yükleyebilirsiniz](/cli/azure/install-azure-cli).
-- Azure PowerShell modülünü kullanmayı düşünüyorsanız, [en son sürümü yükleyebilirsiniz](/powershell/azure/install-az-ps?view=azps-4.6.0).
+- Azure PowerShell modülünü kullanmayı düşünüyorsanız, [en son sürümü yükleyebilirsiniz](/powershell/azure/install-az-ps).
 
 ## <a name="restrictions"></a>Kısıtlamalar
 
@@ -76,7 +76,7 @@ az storage account create --name <yourStorageAccountName> -g <yourResourceGroup>
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-İlk olarak, büyük dosya paylaşımlarını etkinleştirebilmeniz için [en son PowerShell sürümünü yüklemeniz](/powershell/azure/install-az-ps?view=azps-3.0.0) gerekir.
+İlk olarak, büyük dosya paylaşımlarını etkinleştirebilmeniz için [en son PowerShell sürümünü yüklemeniz](/powershell/azure/install-az-ps) gerekir.
 
 Büyük dosya paylaşımları etkin olan bir depolama hesabı oluşturmak için aşağıdaki komutu kullanın. `<yourStorageAccountName>`, `<yourResourceGroup>` Ve `<yourDesiredRegion>` bilgilerinizi ile değiştirin.
 

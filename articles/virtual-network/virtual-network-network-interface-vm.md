@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/13/2020
 ms.author: kumud
-ms.openlocfilehash: 2b45bd2e2b9ad971891cbcb944286f40b4f66883
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 43d3da49688a7daeb3ea4e0c1c3dba505dcd3b59
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98216980"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102508342"
 ---
 # <a name="add-network-interfaces-to-or-remove-network-interfaces-from-virtual-machines"></a>Sanal makinelerde ağ arabirimi ekleme veya kaldırma işlemlerini gerçekleştirme
 
@@ -143,7 +143,7 @@ Ağ arabirimi ayarları ve bunların nasıl değiştirileceği hakkında bilgi e
 
 - Giden trafiği hangi ağ arabirimine göndereğinizi kontrol edebilirsiniz. Bununla birlikte, varsayılan olarak bir VM, tüm giden trafiği birincil ağ arabiriminin birincil IP yapılandırmasına atanan IP adresine gönderir.
 
-- Geçmişte, aynı Kullanılabilirlik kümesi içindeki tüm VM 'Lerin tek veya birden çok ağ arabirimine sahip olması gerekiyordu. Herhangi bir sayıda ağ arabirimine sahip VM 'Ler artık aynı Kullanılabilirlik kümesinde bulunabilir ve bu, VM boyutu tarafından desteklenen sayıya kadar olabilir. Bir VM 'yi yalnızca oluşturulduğu zaman bir kullanılabilirlik kümesine ekleyebilirsiniz. Kullanılabilirlik kümeleri hakkında daha fazla bilgi edinmek için bkz. [Azure 'Da VM 'lerin kullanılabilirliğini yönetme](../virtual-machines/manage-availability.md?toc=%2fazure%2fvirtual-network%2ftoc.json#configure-multiple-virtual-machines-in-an-availability-set-for-redundancy).
+- Geçmişte, aynı Kullanılabilirlik kümesi içindeki tüm VM 'Lerin tek veya birden çok ağ arabirimine sahip olması gerekiyordu. Herhangi bir sayıda ağ arabirimine sahip VM 'Ler artık aynı Kullanılabilirlik kümesinde bulunabilir ve bu, VM boyutu tarafından desteklenen sayıya kadar olabilir. Bir VM 'yi yalnızca oluşturulduğu zaman bir kullanılabilirlik kümesine ekleyebilirsiniz. Kullanılabilirlik kümeleri hakkında daha fazla bilgi edinmek için bkz. [Azure 'Da VM 'lerin kullanılabilirliğini yönetme](../virtual-machines/availability.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
 - Aynı VM 'deki ağ arabirimlerini bir sanal ağ içindeki farklı alt ağlara bağlayabilirsiniz. Ancak, ağ arabirimlerinin tümünün aynı sanal ağa bağlanması gerekir.
 

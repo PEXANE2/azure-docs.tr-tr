@@ -1,22 +1,22 @@
 ---
-title: Azure portal ile bölge Windows VM oluşturma
+title: Azure portal ile bir bölge sanal makinesi oluşturma
 description: Azure portal ile bir kullanılabilirlik alanında Windows VM oluşturma
 documentationcenter: virtual-machines
-author: cynthn
-ms.service: virtual-machines-windows
+author: mimckitt
+ms.service: virtual-machines
 ms.topic: conceptual
-ms.workload: infrastructure
-ms.date: 03/27/2018
-ms.author: cynthn
+ms.date: 3/8/2021
+ms.author: mimckitt
+ms.reviewer: cynthn
 ms.custom: ''
-ms.openlocfilehash: 339c093e5444839f9b106cd08980438a864c0474
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7c7f135d4033a31f855342c172d73f51478931ab
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87828923"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102501694"
 ---
-# <a name="create-a-windows-virtual-machine-in-an-availability-zone-with-the-azure-portal"></a>Azure portal ile bir kullanılabilirlik alanında Windows sanal makinesi oluşturma
+# <a name="create-a-virtual-machine-in-an-availability-zone-using-the-azure-portal"></a>Azure portal kullanarak bir kullanılabilirlik bölgesinde sanal makine oluşturma
 
 Bu makalede, Azure kullanılabilirlik bölgesinde bir sanal makine oluşturmak için Azure portal kullanma adımları sağlanır. [Kullanılabilirlik alanı](../../availability-zones/az-overview.md), bir Azure bölgesinde fiziksel olarak ayrılmış bir alandır. Uygulamalarınızı beklenmeyen hatalardan veya tüm veri merkezinin kaybedilmesinden korumak için kullanılabilirlik alanlarından yararlanın.
 
@@ -40,7 +40,7 @@ https://portal.azure.com adresinden Azure portalında oturum açın.
 
     ![VM boyutu seçin](./media/create-portal-availability-zone/create-windows-vm-portal-sizes.png)  
 
-5. **Ayarlar**  >  **yüksek kullanılabilirlik**bölümünde, **kullanılabilirlik bölgesi** açılan listesinden numaralandırılmış bölgelerden birini seçin, kalan varsayılan ayarları tutun ve **Tamam**' a tıklayın.
+5. **Ayarlar**  >  **yüksek kullanılabilirlik** bölümünde, **kullanılabilirlik bölgesi** açılan listesinden numaralandırılmış bölgelerden birini seçin, kalan varsayılan ayarları tutun ve **Tamam**' a tıklayın.
 
     ![Bir kullanılabilirlik bölgesi seçin](./media/create-portal-availability-zone/create-windows-vm-portal-availability-zone.png)
 
@@ -54,7 +54,7 @@ VM bir kullanılabilirlik alanında dağıtıldığında, sanal makine için yö
 
 Portalda bu kaynakların bölge ayarlarını doğrulayabilirsiniz.  
 
-1. **Kaynak grupları** ' nı ve ardından VM için kaynak grubunun adını ( *myresourcegroup*gibi) tıklatın.
+1. **Kaynak grupları** ' nı ve ardından VM için kaynak grubunun adını ( *myresourcegroup* gibi) tıklatın.
 
 2. Disk kaynağının adına tıklayın. **Genel bakış** sayfası, kaynağın konumu ve kullanılabilirlik bölgesi hakkındaki ayrıntıları içerir.
 

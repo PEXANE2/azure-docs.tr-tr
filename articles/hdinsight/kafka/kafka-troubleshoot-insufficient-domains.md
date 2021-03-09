@@ -4,12 +4,12 @@ description: Azure HDInsight 'taki bölgede yeterli hata etki alanı olmadığı
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 08/09/2019
-ms.openlocfilehash: 3f7d866d1c9b8c8437bc0f84acca47e0b8631895
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: ed9e98750a469f78855096c3149254cf92c2788f
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98939053"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102501354"
 ---
 # <a name="scenario-cluster-creation-failed-due-to-not-sufficient-fault-domains-in-region-in-azure-hdinsight"></a>Senaryo: `not sufficient fault domains in region` Azure HDInsight 'Ta küme oluşturma işlemi başarısız oldu
 
@@ -23,7 +23,7 @@ Apache Kafka kümesi oluşturulmaya çalışılırken aşağıdakine benzer bir 
 
 Hata etki alanı, bir Azure veri merkezinde temel donanımlardan oluşan mantıksal bir gruplandırmadır. Her hata etki alanı ortak bir güç kaynağı ve ağ anahtarına sahiptir. Bir HDInsight kümesi içindeki düğümleri uygulayan sanal makineler ve yönetilen diskler, bu hata etki alanlarına dağıtılır. Bu mimari, fiziksel donanım hatalarının olası etkisini sınırlar.
 
-Her Azure bölgesinde belirli sayıda hata etki alanı bulunur. Etki alanlarının listesi ve içerdikleri hata etki alanlarının sayısı için [kullanılabilirlik kümeleri](../../virtual-machines/manage-availability.md)hakkındaki belgelere bakın.
+Her Azure bölgesinde belirli sayıda hata etki alanı bulunur. Etki alanlarının listesi ve içerdikleri hata etki alanlarının sayısı için [kullanılabilirlik kümeleri](../../virtual-machines/availability.md)hakkındaki belgelere bakın.
 
 HDInsight 'ta, Kafka kümelerinin en az üç hata etki alanına sahip bir bölgede sağlanması gerekir.
 

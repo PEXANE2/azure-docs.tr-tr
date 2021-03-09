@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 09/22/2020
-ms.openlocfilehash: 5211555102c0a8d29eb05abd7a680935d828f9dc
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: bf2419799ad6c229c6ffb891bc588479e134d427
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98683449"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102500402"
 ---
 # <a name="what-is-an-azure-machine-learning-workspace"></a>Azure Machine Learning çalışma alanı nedir?
 
@@ -52,7 +52,7 @@ Aşağıdaki yollarla çalışma alanım ile etkileşim kurabilirsiniz:
 + Web 'de:
     + [Azure Machine Learning Studio ](https://ml.azure.com) 
     + [Azure Machine Learning tasarımcısı](concept-designer.md) 
-+ Python [için Azure Machine Learning SDK 'sı](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py)olan herhangi bir Python ortamında.
++ Python [için Azure Machine Learning SDK 'sı](/python/api/overview/azure/ml/intro)olan herhangi bir Python ortamında.
 + [R (Önizleme) için Azure Machine Learning SDK 'sı](https://azure.github.io/azureml-sdk-for-r/reference/index.html)olan herhangi bir r ortamında.
 + Azure Machine Learning [CLI uzantısını](./reference-azure-machine-learning-cli.md) kullanarak komut satırında
 + [Azure Machine Learning VS Code uzantısı](how-to-manage-resources-vscode.md#workspaces)

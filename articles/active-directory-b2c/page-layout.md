@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 03/04/2021
+ms.date: 03/09/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: df94bb5e6066b83afd566181debbc0872dc1a5b4
-ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
+ms.openlocfilehash: b15c63545c71d4513abe9102b4de165e2ab5857a
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102120271"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102499858"
 ---
 # <a name="page-layout-versions"></a>Sayfa düzeni sürümleri
 
@@ -73,6 +73,9 @@ Sayfa düzeni paketleri, sayfa öğelerinde düzeltmeler ve iyileştirmeler içe
 - İlk yayın
 
 ## <a name="unified-sign-in-sign-up-page-with-password-reset-link-unifiedssp"></a>Parola sıfırlama bağlantısı ile Birleşik oturum açma sayfası (unifiedssp)
+
+> [!TIP]
+> Sayfanızı birden çok yerel ayarı veya Kullanıcı akışındaki dilleri desteklemek üzere yerelleştirin. [Yerelleştirme kimlikleri](localization-string-ids.md) makalesi, seçtiğiniz sayfa sürümü için kullanabileceğiniz yerelleştirme kimliklerinin listesini sağlar.
 
 **2.1.2**
 - Ispanyolca ve Fransızca gibi diller için yerelleştirme kodlama sorunu düzeltildi.

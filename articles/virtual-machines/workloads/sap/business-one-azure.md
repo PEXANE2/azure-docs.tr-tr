@@ -6,12 +6,12 @@ ms.service: virtual-machines-sap
 ms.topic: article
 ms.date: 07/15/2018
 ms.author: juergent
-ms.openlocfilehash: c9c2b0c3f55cf5fb6dfd32774baac2a49ec3609f
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: e17739c65c0b80beb1f6fdd09f31897b317d7858
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101677165"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102506897"
 ---
 # <a name="sap-business-one-on-azure-virtual-machines"></a>Azure Sanal Makineler'de SAP Business One
 Bu belge, Azure sanal makinelerinde SAP Business One dağıtımı için rehberlik sağlar. Belgeler, SAP için Iş 'nin yükleme belgelerinin yerini almaz. Belgeler, Azure altyapısına ilişkin Iş tek uygulamaları çalıştırmak için temel planlama ve dağıtım yönergelerini kapsamalıdır.
@@ -102,7 +102,7 @@ Veritabanı türü için SQL Server ve SAP HANA kullanılabilir. DBMS 'den bağ�
 
 Yalnızca belirli ve genel veritabanı belgelerinde vurgulandı olsa da şunları öğrenmelisiniz:
 
-- Azure ['Da Windows sanal makinelerinin kullanılabilirliğini yönetme](../../manage-availability.md) ve [Linux sanal makinelerinin Azure 'da kullanılabilirliğini yönetme](../../manage-availability.md)
+- Azure ['Da Windows sanal makinelerinin kullanılabilirliğini yönetme](../../availability.md) ve [Linux sanal makinelerinin Azure 'da kullanılabilirliğini yönetme](../../availability.md)
 - [Sanal Makineler için SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_8/)
 
 Bu belgeler, depolama türleri ve yüksek kullanılabilirlik yapılandırması seçimine karar vermenize yardımcı olmalıdır.

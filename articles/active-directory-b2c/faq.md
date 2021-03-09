@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 10/14/2020
+ms.date: 03/08/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: e181b90219f340a29e818801ee2b53f1ccbd9c23
-ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
+ms.openlocfilehash: cef2636aeecf78a12c48b31b384af2cf76903879
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98660293"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102498838"
 ---
 # <a name="azure-ad-b2c-frequently-asked-questions-faq"></a>Azure AD B2C: sık sorulan sorular (SSS)
 
@@ -82,7 +82,10 @@ E-posta imzası, Azure AD B2C kiracıyı ilk oluşturduğunuzda verdiğiniz Azur
 1. **Ad** alanını değiştirin.
 1. Sayfanın üst kısmından **Kaydet**'e tıklayın.
 
-Şu anda e-postadaki "Kimden:" alanını değiştirme yöntemi yoktur.
+Şu anda e-postadaki "Kimden:" alanını değiştiremezsiniz.
+
+> [!TIP]
+> Azure AD B2C [özel ilkeyle](custom-policy-overview.md), e-postanın "Kimden:" alanı da dahil olmak üzere Azure AD B2C e-postayı özelleştirebilirsiniz. Özel e-posta doğrulaması, [Mailjet](custom-email-mailjet.md), [SendGrid](custom-email-sendgrid.md)veya [mini](https://sparkpost.com)posta gibi bir üçüncü taraf e-posta sağlayıcısının kullanılmasını gerektirir.
 
 ### <a name="how-can-i-migrate-my-existing-user-names-passwords-and-profiles-from-my-database-to-azure-ad-b2c"></a>Var olan Kullanıcı adlarınızı, parolalarımı ve Profillerimi Veritabanım 'den Azure AD B2C 'a nasıl geçirebilirim?
 

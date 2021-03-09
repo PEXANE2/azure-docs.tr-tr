@@ -6,17 +6,17 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 08/11/2020
-ms.openlocfilehash: 0cb7ee5b9fa02e726d03bf1ae9935c07ded6e4a6
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 0623f47528d0530838f62c28cf5546e1e66c187b
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93088021"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102508274"
 ---
 # <a name="enable-zone-redundancy-for-azure-cache-for-redis-preview"></a>Redsıs için Azure önbelleği için bölge yedekliliği etkinleştirme (Önizleme)
 Bu makalede, Azure portal kullanarak bölgesel olarak yedekli bir Azure önbellek örneğini yapılandırmayı öğreneceksiniz.
 
-Redsıs standart, Premium ve kurumsal katmanları için Azure önbelleği, her bir önbelleği iki adanmış sanal makinede (VM) barındırarak yerleşik artıklık sağlar. Bu VM 'Ler ayrı [Azure hata ve güncelleştirme etki alanları](../virtual-machines/manage-availability.md) ve yüksek oranda kullanılabilir olmasına rağmen, veri merkezi düzeyindeki hatalara açıktır. Redin için Azure Cache Ayrıca, Premium ve kurumsal katmanlarında bölge yedekliliği destekler. Bölgesel olarak yedekli bir önbellek, birden fazla [kullanılabilirlik](../virtual-machines/manage-availability.md#use-availability-zones-to-protect-from-datacenter-level-failures)alanına yayılan sanal makinelerde çalışır. Daha yüksek esnekliği ve kullanılabilirlik sağlar.
+Redsıs standart, Premium ve kurumsal katmanları için Azure önbelleği, her bir önbelleği iki adanmış sanal makinede (VM) barındırarak yerleşik artıklık sağlar. Bu VM 'Ler ayrı [Azure hata ve güncelleştirme etki alanları](../virtual-machines/availability.md) ve yüksek oranda kullanılabilir olmasına rağmen, veri merkezi düzeyindeki hatalara açıktır. Redin için Azure Cache Ayrıca, Premium ve kurumsal katmanlarında bölge yedekliliği destekler. Bölgesel olarak yedekli bir önbellek, birden fazla [kullanılabilirlik](../availability-zones/az-overview.md)alanına yayılan sanal makinelerde çalışır. Daha yüksek esnekliği ve kullanılabilirlik sağlar.
 
 ## <a name="prerequisites"></a>Önkoşullar
 * Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/)
@@ -28,9 +28,9 @@ Redsıs standart, Premium ve kurumsal katmanları için Azure önbelleği, her b
 ## <a name="create-a-cache"></a>Bir önbellek oluşturma
 Önbellek oluşturmak için aşağıdaki adımları izleyin:
 
-1. [Azure Portal](https://portal.azure.com) oturum açın ve **kaynak oluştur** ' u seçin.
+1. [Azure Portal](https://portal.azure.com) oturum açın ve **kaynak oluştur**' u seçin.
   
-1. **Yeni** sayfada **veritabanları** ' nı seçin ve ardından **redsıs için Azure önbelleği** ' ni seçin.
+1. **Yeni** sayfada **veritabanları** ' nı seçin ve ardından **redsıs için Azure önbelleği**' ni seçin.
 
     :::image type="content" source="media/cache-create/new-cache-menu.png" alt-text="Redsıs için Azure önbelleği ' ni seçin.":::
    
@@ -44,13 +44,13 @@ Redsıs standart, Premium ve kurumsal katmanları için Azure önbelleği, her b
     | **Konum** | Bir konum seçin. | Önbelleğinizi kullanacak diğer hizmetlerin yakınında bir [bölge](https://azure.microsoft.com/regions/) seçin. |
     | **Önbellek türü** | [Premium veya kurumsal katman](https://azure.microsoft.com/pricing/details/cache/) önbelleği seçin. |  Fiyatlandırma katmanı önbellek için kullanılabilen boyut, performans ve özellikleri belirler. Daha fazla bilgi için bkz. [redsıs Için Azure önbelleği 'Ne genel bakış](cache-overview.md). |
    
-1. **Gelişmiş** sayfasında, Premium katman önbelleği için **çoğaltma sayısı** ' nı seçin.
+1. **Gelişmiş** sayfasında, Premium katman önbelleği için **çoğaltma sayısı**' nı seçin.
    
-    :::image type="content" source="media/cache-how-to-multi-replicas/create-multi-replicas.png" alt-text="Redsıs için Azure önbelleği ' ni seçin.":::
+    :::image type="content" source="media/cache-how-to-multi-replicas/create-multi-replicas.png" alt-text="Çoğaltma sayısı":::
 
-1. **Kullanılabilirlik alanları** ' nı seçin. 
+1. **Kullanılabilirlik alanları**' nı seçin. 
    
-    :::image type="content" source="media/cache-how-to-zone-redundancy/create-zones.png" alt-text="Redsıs için Azure önbelleği ' ni seçin.":::
+    :::image type="content" source="media/cache-how-to-zone-redundancy/create-zones.png" alt-text="Kullanılabilirlik alanları":::
 
 1. Diğer seçenekleri varsayılan ayarlarında bırakın. 
 
@@ -58,7 +58,7 @@ Redsıs standart, Premium ve kurumsal katmanları için Azure önbelleği, her b
     > Bölge artıklığı desteği, şu anda kümelenmemiş ve coğrafi olmayan çoğaltmasız önbelleklerle çalışır. Ayrıca, özel bağlantıyı, ölçeklendirmeyi, veri kalıcılığını veya içeri/dışarı aktarmayı desteklemez.
     >
 
-1. **Oluştur** 'a tıklayın. 
+1. **Oluştur**’a tıklayın. 
    
     Önbelleğin oluşturulması biraz zaman alır. Redsıs **genel bakış** sayfasında ilerlemeyi izleyebilirsiniz. **Durum** **çalışıyor** olarak görüntülendiğinde, önbellek kullanıma hazırdır.
    

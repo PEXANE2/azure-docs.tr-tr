@@ -10,12 +10,12 @@ ms.date: 05/05/2020
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: e00e22862121f2f974f9531a9892e32e115d6041
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: f556c7acd903c108193f9c12a2849500645b119b
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101737656"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102506710"
 ---
 # <a name="disaster-recovery-and-storage-account-failover"></a>Olağanüstü durum kurtarma ve depolama hesabı yükünü devretme
 
@@ -132,7 +132,7 @@ Azure depolama kaynak sağlayıcısı yük devretmediğinden, [konum](/dotnet/ap
 
 ### <a name="azure-virtual-machines"></a>Azure sanal makineleri
 
-Azure sanal makineleri (VM 'Ler), hesap yük devretmesi kapsamında yük devreder. Birincil bölge kullanılamaz duruma gelirse ve ikincil bölgeye yük devretmek, yük devretmeden sonra VM 'Leri yeniden oluşturmanız gerekir. Ayrıca, hesap yük devretmesi ile ilişkili potansiyel bir veri kaybı vardır. Microsoft, Azure 'daki sanal makinelere özgü aşağıdaki [yüksek kullanılabilirlik](../../virtual-machines/manage-availability.md) ve [olağanüstü durum kurtarma](../../virtual-machines/backup-recovery.md) kılavuzunu önerir.
+Azure sanal makineleri (VM 'Ler), hesap yük devretmesi kapsamında yük devreder. Birincil bölge kullanılamaz duruma gelirse ve ikincil bölgeye yük devretmek, yük devretmeden sonra VM 'Leri yeniden oluşturmanız gerekir. Ayrıca, hesap yük devretmesi ile ilişkili potansiyel bir veri kaybı vardır. Microsoft, Azure 'daki sanal makinelere özgü aşağıdaki [yüksek kullanılabilirlik](../../virtual-machines/availability.md) ve [olağanüstü durum kurtarma](../../virtual-machines/backup-recovery.md) kılavuzunu önerir.
 
 ### <a name="azure-unmanaged-disks"></a>Azure yönetilmeyen diskler
 

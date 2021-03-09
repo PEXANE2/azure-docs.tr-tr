@@ -11,17 +11,17 @@ ms.subservice: core
 ms.date: 09/29/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python,contperf-fy21q1, automl
-ms.openlocfilehash: 98260b909514febf80ea6a1a33b0f9e3d2d1446b
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: e8e904511178f494890b25764a84df8ca64a6b6c
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102431899"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102498873"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>Python’da otomatik ML denemelerini yapılandırma
 
 
-Bu kılavuzda, [Azure MACHINE LEARNING SDK](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py)ile otomatik makine öğrenimi denemeleri 'in çeşitli yapılandırma ayarlarını nasıl tanımlayacağınızı öğrenin. Otomatik makine öğrenimi, sizin için bir algoritma ve hiper parametreler seçer ve dağıtım için hazırlanın bir model oluşturur. Otomatik makine öğrenimi denemeleri yapılandırmak için kullanabileceğiniz çeşitli seçenekler vardır.
+Bu kılavuzda, [Azure MACHINE LEARNING SDK](/python/api/overview/azure/ml/intro)ile otomatik makine öğrenimi denemeleri 'in çeşitli yapılandırma ayarlarını nasıl tanımlayacağınızı öğrenin. Otomatik makine öğrenimi, sizin için bir algoritma ve hiper parametreler seçer ve dağıtım için hazırlanın bir model oluşturur. Otomatik makine öğrenimi denemeleri yapılandırmak için kullanabileceğiniz çeşitli seçenekler vardır.
 
 Otomatik makine öğrenimi denemeleri örneklerini görüntülemek için bkz. [öğretici: bir sınıflandırma modelini otomatik makine öğrenimi Ile eğitme](tutorial-auto-train-models.md) veya [bulutta otomatik makine öğrenimi Ile modeller eğitme](how-to-auto-train-remote.md).
 
@@ -46,7 +46,7 @@ Kod deneyimini tercih ediyorsanız, [Azure Machine Learning Studio 'da otomatik 
     SDK 'yı yüklemek için şunlardan birini yapabilirsiniz 
     * SDK 'Yı otomatik olarak yüklediği ve ML iş akışları için önceden yapılandırılmış bir işlem örneği oluşturun. Daha fazla bilgi için bkz. [Azure Machine Learning işlem örneği oluşturma ve yönetme](how-to-create-manage-compute-instance.md) . 
 
-    * SDK 'nın [varsayılan yüklemesini](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py#default-install) içeren [ `automl` paketi kendiniz yüklemeniz](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/README.md#setup-using-a-local-conda-environment)gerekir.
+    * SDK 'nın [varsayılan yüklemesini](/python/api/overview/azure/ml/install#default-install) içeren [ `automl` paketi kendiniz yüklemeniz](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/README.md#setup-using-a-local-conda-environment)gerekir.
 
 ## <a name="select-your-experiment-type"></a>Deneme türünüzü seçme
 
@@ -69,7 +69,7 @@ Machine Learning 'de Eğitim verileri için gereksinimler:
 - Verilerin tablolu biçimde olması gerekir.
 - Tahmin edilecek değer, hedef sütun, verilerde olmalıdır.
 
-**Uzak denemeleri için** eğitim verilerine uzaktan işlem üzerinden erişilebilir olması gerekir. AutoML uzak işlem üzerinde çalışırken yalnızca [Azure Machine Learning TabularDatasets](/python/api/azureml-core/azureml.data.tabulardataset?preserve-view=true&view=azure-ml-py) kabul eder. 
+**Uzak denemeleri için** eğitim verilerine uzaktan işlem üzerinden erişilebilir olması gerekir. AutoML uzak işlem üzerinde çalışırken yalnızca [Azure Machine Learning TabularDatasets](/python/api/azureml-core/azureml.data.tabulardataset) kabul eder. 
 
 Azure Machine Learning veri kümeleri şu işlevleri kullanıma sunar:
 

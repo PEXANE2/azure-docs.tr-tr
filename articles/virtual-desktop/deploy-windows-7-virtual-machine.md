@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 07/11/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 0dcf21190b52f966dafb9caa9ae28fdf9b99ba86
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d245b780acee59afbc6cb8bde6c916bfd1046e3c
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88007589"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102508563"
 ---
 # <a name="deploy-a-windows-7-virtual-machine-on-windows-virtual-desktop"></a>Windows Sanal Masaüstü’nde Windows 7 sanal makinesi dağıtma
 
@@ -20,7 +20,7 @@ ms.locfileid: "88007589"
 
 Windows sanal masaüstü üzerinde bir Windows 7 sanal makinesi (VM) dağıtma işlemi, Windows 'un sonraki sürümlerini çalıştıran VM 'lerden biraz farklıdır. Bu kılavuzda, Windows 7 ' nin nasıl dağıtılacağı açıklanır.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamadan önce, bir konak havuzu oluşturmak için [PowerShell ile konak havuzu oluşturma](create-host-pools-powershell.md) ' daki yönergeleri izleyin. Portalı kullanıyorsanız, [Azure Portal kullanarak bir konak havuzu oluşturmak için](create-host-pools-azure-marketplace.md)adım 1 ' den 9 ' a kadar olan yönergeleri izleyin. Bundan sonra boş bir konak havuzu oluşturmak için **gözden geçir + oluştur** ' u seçin.
 
@@ -37,7 +37,7 @@ Windows sanal masaüstü 'nde Windows 7 VM ayarlamak için:
 5. SANAL makinenizde Windows Update gidin.
 6. Tüm Windows güncelleştirmelerini önemli kategoride yükler.
 7. Tüm Windows güncelleştirmelerini Isteğe bağlı kategoride (dil paketleri hariç) yükler. Bu işlem, bu yönergeleri tamamlayabilmeniz için ihtiyaç duyduğunuz Uzak Masaüstü Protokolü 8,0 güncelleştirmesini ([KB2592687](https://www.microsoft.com/download/details.aspx?id=35387)) yüklüyor.
-8. Yerel Grup İlkesi Düzenleyicisi açın ve **Computer Configuration**  >  **Administrative Templates**  >  **Windows Components**  >  **Remote Desktop Services**  >  **Uzak Masaüstü oturumu ana bilgisayarı**  >  **uzak oturum ortamı**Uzak Masaüstü Hizmetleri Windows bileşenleri Yönetim Şablonları bilgisayar yapılandırması ' na gidin.
+8. Yerel Grup İlkesi Düzenleyicisi açın ve   >    >    >    >  **Uzak Masaüstü oturumu ana bilgisayarı**  >  **uzak oturum ortamı** Uzak Masaüstü Hizmetleri Windows bileşenleri Yönetim Şablonları bilgisayar yapılandırması ' na gidin.
 9. Uzak Masaüstü Protokolü 8,0 ilkesini etkinleştirin.
 10. Bu sanal makineyi Active Directory etki alanınıza ekleyin.
 11. Aşağıdaki komutu çalıştırarak sanal makineyi yeniden başlatın:
@@ -46,7 +46,7 @@ Windows sanal masaüstü 'nde Windows 7 VM ayarlamak için:
      shutdown /r /t 0
      ```
 
-12. Kayıt belirteci almak için [buradaki](/powershell/module/az.desktopvirtualization/new-azwvdregistrationinfo?view=azps-4.3.0) yönergeleri izleyin.
+12. Kayıt belirteci almak için [buradaki](/powershell/module/az.desktopvirtualization/new-azwvdregistrationinfo) yönergeleri izleyin.
 
       - Azure portal kullanmayı tercih ediyorsanız, VM 'yi eklemek istediğiniz konak havuzunun genel bakış sayfasına gidebilir ve burada bir belirteç oluşturabilirsiniz.
 

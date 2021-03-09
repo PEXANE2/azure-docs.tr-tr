@@ -4,12 +4,12 @@ description: Bu makalede, Azure sanal makine yedekleme çözümünü kullanarak 
 ms.topic: conceptual
 ms.date: 07/17/2020
 ms.custom: references_regions , devx-track-azurecli
-ms.openlocfilehash: 38ead1591bf2ecadc8bfca5875ac1fa3e69d56ef
-ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
+ms.openlocfilehash: e82c959dc63222e8565243cc9ac805283cab6617
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98806379"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102501843"
 ---
 # <a name="selective-disk-backup-and-restore-for-azure-virtual-machines"></a>Azure sanal makineleri için seçmeli disk yedekleme ve geri yükleme
 
@@ -193,7 +193,7 @@ Koruma yapılandırma işlemi sırasında, disk listesi ayarını bir içerme/ç
 
 ### <a name="enable-backup-with-powershell"></a>PowerShell ile yedeklemeyi etkinleştir
 
-Örneğin:
+Örnek:
 
 ```azurepowershell
 $disks = ("0","1")
@@ -219,7 +219,7 @@ Enable-AzRecoveryServicesBackupProtection -Policy $pol -Name "V2VM" -ResourceGro
 ### <a name="get-backup-item-object-to-be-passed-in-modify-protection-with-powershell"></a>PowerShell ile değişiklik koruması ile geçirilecek yedekleme öğesi nesnesini Al
 
 ```azurepowershell
-$item= Get-AzRecoveryServicesBackupItem -BackupManagementType "AzureVM" -WorkloadType "AzureVM" -VaultId $Vault.ID -FriendlyName "V2VM"
+$item= Get-AzRecoveryServicesBackupItem -BackupManagementType "AzureVM" -WorkloadType "AzureVM" -VaultId $targetVault.ID -FriendlyName "V2VM"
 ```
 
 Aşağıdaki cmdlet 'lerde, alınan **$item** nesnesini **– item** parametresine geçirmeniz gerekir.
@@ -249,7 +249,10 @@ Enable-AzRecoveryServicesBackupProtection -Item $item -ResetExclusionSettings -V
 ### <a name="restore-selective-disks-with-powershell"></a>Seçmeli diskleri PowerShell ile geri yükleme
 
 ```azurepowershell
-Restore-AzRecoveryServicesBackupItem -RecoveryPoint $rp[0] -StorageAccountName "DestAccount" -StorageAccountResourceGroupName "DestRG" -TargetResourceGroupName "DestRGforManagedDisks" -VaultId $targetVault.ID -RestoreDiskList [Strings]
+$startDate = (Get-Date).AddDays(-7)
+$endDate = Get-Date
+$rp = Get-AzRecoveryServicesBackupRecoveryPoint -Item $item -StartDate $startdate.ToUniversalTime() -EndDate $enddate.ToUniversalTime() -VaultId $targetVault.ID
+Restore-AzRecoveryServicesBackupItem -RecoveryPoint $rp[0] -StorageAccountName "DestAccount" -StorageAccountResourceGroupName "DestRG" -TargetResourceGroupName "DestRGforManagedDisks" -VaultId $targetVault.ID -RestoreDiskList [$disks]
 ```
 
 ### <a name="restore-only-os-disk-with-powershell"></a>Yalnızca PowerShell ile işletim sistemi diskini geri yükleme

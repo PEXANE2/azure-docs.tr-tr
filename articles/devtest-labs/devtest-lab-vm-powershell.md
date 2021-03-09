@@ -3,12 +3,12 @@ title: Azure PowerShell ile DevTest Labs 'de sanal makine oluşturma
 description: Azure PowerShell ile sanal makineler oluşturmak ve yönetmek için Azure DevTest Labs nasıl kullanacağınızı öğrenin.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 6bcc1b8cfe1da7e5eafbee0af008a1defbe6f49d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f79b6ff92d633cf63477cddaabec918df352bec8
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85484120"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102499263"
 ---
 # <a name="create-a-virtual-machine-with-devtest-labs-using-azure-powershell"></a>Azure PowerShell kullanarak DevTest Labs ile sanal makine oluşturma
 Bu makalede Azure PowerShell kullanarak Azure DevTest Labs sanal makine oluşturma gösterilmektedir. Azure DevTest Labs bir laboratuvarda sanal makine oluşturulmasını otomatikleştirmek için PowerShell betikleri kullanabilirsiniz. 
@@ -17,10 +17,10 @@ Bu makalede Azure PowerShell kullanarak Azure DevTest Labs sanal makine oluştur
 Başlamadan önce:
 
 - Bu makaledeki betiği veya komutları test etmek için mevcut bir laboratuvarı kullanmak istemiyorsanız [bir laboratuvar oluşturun](devtest-lab-create-lab.md) . 
-- [Azure PowerShell yükleyip](/powershell/azure/install-az-ps?view=azps-1.7.0) Azure portal tümleştirilmiş Azure Cloud Shell kullanın. 
+- [Azure PowerShell yükleyip](/powershell/azure/install-az-ps) Azure portal tümleştirilmiş Azure Cloud Shell kullanın. 
 
 ## <a name="powershell-script"></a>PowerShell betiği
-Bu bölümdeki örnek komut dosyası [Invoke-AzResourceAction](/powershell/module/az.resources/invoke-azresourceaction?view=azps-1.7.0) cmdlet 'ini kullanır.  Bu cmdlet, laboratuvarın kaynak KIMLIĞINI, gerçekleştirilecek eylemin adını ( `createEnvironment` ) ve bu eylemi gerçekleştirmek için gereken parametreleri alır. Parametreler, tüm sanal makine açıklaması özelliklerini içeren bir karma tablodur. 
+Bu bölümdeki örnek komut dosyası [Invoke-AzResourceAction](/powershell/module/az.resources/invoke-azresourceaction) cmdlet 'ini kullanır.  Bu cmdlet, laboratuvarın kaynak KIMLIĞINI, gerçekleştirilecek eylemin adını ( `createEnvironment` ) ve bu eylemi gerçekleştirmek için gereken parametreleri alır. Parametreler, tüm sanal makine açıklaması özelliklerini içeren bir karma tablodur. 
 
 ```powershell
 [CmdletBinding()]
@@ -173,9 +173,9 @@ Bu örnekte, bir Azure pazar yeri görüntüsünün tanımını nasıl kullanaca
 Aşağıdaki yordam REST API kullanarak bir görüntünün özelliklerini elde etmenizi sağlar: Bu adımlar yalnızca laboratuvardaki mevcut bir VM için çalışır. 
 
 1. [Sanal makineler-liste](/rest/api/dtl/virtualmachines/list) sayfasına gidin, **deneyin** düğmesini seçin. 
-2. **Azure aboneliğinizi**seçin.
-3. **Laboratuvar için kaynak grubunu**girin.
-4. **Laboratuvarın adını**girin. 
+2. **Azure aboneliğinizi** seçin.
+3. **Laboratuvar için kaynak grubunu** girin.
+4. **Laboratuvarın adını** girin. 
 5. **Çalıştır**'ı seçin.
 6. VM 'nin oluşturulduğu **görüntünün özelliklerini** görürsünüz. 
 

@@ -11,12 +11,12 @@ ms.workload: infrastructure-services
 ms.date: 08/17/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017, devx-track-azurecli
-ms.openlocfilehash: 98cc41b735a5a25f84bed4b443b735fadb0925e5
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 8bc289e90470ae9bc8b1996ac08c3144ea78de35
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101668023"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102504721"
 ---
 # <a name="azure-virtual-machines-planning-and-implementation-for-sap-netweaver"></a>SAP NetWeaver için Azure sanal makineleri planlama ve uygulama
 
@@ -273,7 +273,7 @@ ms.locfileid: "101668023"
 [virtual-machines-linux-how-to-attach-disk-how-to-initialize-a-new-data-disk-in-linux]:../../linux/add-disk.md#format-and-mount-the-disk
 [virtual-machines-linux-tutorial]:../../linux/quick-create-cli.md
 [virtual-machines-linux-update-agent]:../../linux/update-agent.md
-[virtual-machines-manage-availability]:../../linux/manage-availability.md
+[virtual-machines-manage-availability]:../../linux/availability.md
 [virtual-machines-ps-create-preconfigure-windows-resource-manager-vms]:virtual-machines-windows-create-powershell.md
 [virtual-machines-sizes-linux]:../../linux/sizes.md
 [virtual-machines-sizes-windows]:../../windows/sizes.md
@@ -348,7 +348,7 @@ Belge boyunca aşağıdaki terimleri kullanırız:
 
 
 
-### <a name="resources"></a><a name="e55d1e22-c2c8-460b-9897-64622a34fdff"></a>Kaynakların
+### <a name="resources"></a><a name="e55d1e22-c2c8-460b-9897-64622a34fdff"></a>Kaynaklar
 Azure belgelerindeki SAP iş yükünün giriş noktası [burada](./get-started.md)bulunur. Bu giriş noktasıyla başlayarak, şu konuları kapsayan birçok makaleyi bulabilirsiniz:
 
 - Azure 'da SAP NetWeaver ve Business One
@@ -965,7 +965,7 @@ Hizmet olarak Azure altyapısı, yalnızca VHD 'leri ve SAP sistemlerini karşı
 
   Save-AzVhd cmdlet 'i hakkında daha fazla bilgi için buraya bakın <https://docs.microsoft.com/powershell/module/az.compute/save-Azvhd> .
 
-#### <a name="azure-cli"></a>Azure CLI
+#### <a name="azure-cli"></a>Azure CLI’si
 * Yönetilen disk indiriliyor, önce yönetilen diskin temel blobuna erişmeniz gerekir. Ardından, temel alınan blobu yeni bir depolama hesabına kopyalayabilir ve blobu bu depolama hesabından indirebilirsiniz.
 
   ```azurecli
@@ -1005,7 +1005,7 @@ $config = New-AzDiskConfig -CreateOption Copy -SourceUri "/subscriptions/<subscr
 New-AzDisk -ResourceGroupName <resource group name> -DiskName <disk name> -Disk $config
 ```
 
-##### <a name="azure-cli"></a>Azure CLI
+##### <a name="azure-cli"></a>Azure CLI’si
 
 Bir VHD 'YI kopyalamak için Azure CLı kullanabilirsiniz. Yeni bir yönetilen disk oluşturmak için aşağıdaki örnekte gösterildiği gibi *az disk Create* kullanın.
 
@@ -1094,7 +1094,7 @@ Get-AzStorageBlobCopyState -Blob <target blob name> -Container <target container
 
 Örnekler için [Bu makaleye][storage-powershell-guide-full-copy-vhd]bakın.
 
-##### <a name="azure-cli"></a>Azure CLI
+##### <a name="azure-cli"></a>Azure CLI’si
 * Kopyayı ile Başlat
 
 ```azurecli
@@ -1805,7 +1805,7 @@ Sanal makinelerinizin kullanılabilirliğini etkileyebilecek iki tür Azure plat
 * Planlı bakım olayları, Microsoft tarafından, sanal makinelerinizin üzerinde çalıştığı platform altyapısının genel güvenilirlik, performans ve güvenliğini geliştirmek amacıyla temel alınan Azure platformunda yapılan düzenli güncelleştirmelerdir.
 * Plansız bakım olayları, sanal makinenizin altında yatan donanım ya da fiziksel altyapı bir şekilde arıza yaptığında gerçekleştirilir. Buna yerel ağ hataları, yerel disk hataları veya raf düzeyinde diğer hatalar dahildir. Böyle bir hata algılandığında, Azure platformu sanal makinenizi sanal makinenizi barındıran uygun olmayan fiziksel sunucudan sağlıklı fiziksel bir sunucuya otomatik olarak geçirilir. Bu tür olaylar nadirdir, ancak sanal makinenizin yeniden başlatılmasına da neden olabilir.
 
-Daha fazla ayrıntı için bkz. [Azure 'Da Windows sanal makinelerinin kullanılabilirliği](../../manage-availability.md) ve [Linux sanal makinelerinin Azure 'da kullanılabilirliği](../../manage-availability.md).
+Daha fazla ayrıntı için bkz. [Azure 'Da Windows sanal makinelerinin kullanılabilirliği](../../availability.md) ve [Linux sanal makinelerinin Azure 'da kullanılabilirliği](../../availability.md).
 
 #### <a name="azure-storage-redundancy"></a>Azure depolama artıklığı
 

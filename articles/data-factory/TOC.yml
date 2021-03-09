@@ -586,6 +586,8 @@
           href: control-flow-system-variables.md
         - name: Eşleme veri akışlarını parametreleştirme
           href: parameters-data-flow.md
+        - name: Nasıl yapılır?
+          href: how-to-expression-language-functions.md
     - name: Güvenlik
       items:
         - name: Veri taşırken güvenlikle ilgili dikkat edilmesi gerekenler

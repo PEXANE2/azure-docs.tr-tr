@@ -3,12 +3,12 @@ title: Azure Işlevleri 'ni kullanarak Azure DevTest Labs genişletme | Microsof
 description: Azure Işlevleri 'ni kullanarak Azure DevTest Labs genişletmeyi öğrenin.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 7a51f0935540df18cfb8805902bbe2c4ec365291
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
+ms.openlocfilehash: 620cda83094ee65f421a5529a9d5b51e505ec48e
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102203683"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102501167"
 ---
 # <a name="use-azure-functions-to-extend-devtest-labs"></a>DevTest Labs'i genişletmek için Azure İşlevleri'ni kullanma
 DevTest Labs tarafından zaten desteklenenden daha fazla senaryoyu desteklemek için Azure Işlevleri 'ni kullanabilirsiniz. Azure Işlevleri, hizmetin yerleşik işlevselliğini işletmeye özgü gereksinimlerinizi karşılayacak şekilde genişletmek için kullanılabilir. Aşağıdaki listede olası senaryolardan bazıları verilmiştir. Bu makalede, bu örnek senaryolarından birinin nasıl uygulanacağı gösterilmektedir.
@@ -44,7 +44,7 @@ Windows Update yapıtlarının son zamanlarda uygulanmadığı tüm VM 'Ler içi
 Bu bölümde, **iç destek** sayfasını güncelleştirmek Için gereken Azure kaynaklarını ayarlamaya yönelik adım adım yönergeler sağlanmaktadır. Bu izlenecek yol, DevTest Labs 'i genişletmeyi bir örnek sağlar. Bu kalıbı diğer senaryolar için kullanabilirsiniz.
 
 ### <a name="step-1-create-a-service-principal"></a>1. Adım: hizmet sorumlusu oluşturma 
-İlk adım, Laboratuvarı içeren aboneliğe izin veren bir hizmet sorumlusu almaya yönelik bir hizmettir. Hizmet sorumlusu, parola tabanlı kimlik doğrulaması kullanmalıdır. [Azure CLI](/cli/azure/create-an-azure-service-principal-azure-cli), [Azure PowerShell](/powershell/azure/create-azure-service-principal-azureps?view=azps-2.5.0)veya [Azure Portal](../active-directory/develop/howto-create-service-principal-portal.md)gerçekleştirilebilir. Kullanmak üzere zaten bir hizmet sorumlunuz varsa, bu adımı atlayabilirsiniz.
+İlk adım, Laboratuvarı içeren aboneliğe izin veren bir hizmet sorumlusu almaya yönelik bir hizmettir. Hizmet sorumlusu, parola tabanlı kimlik doğrulaması kullanmalıdır. [Azure CLI](/cli/azure/create-an-azure-service-principal-azure-cli), [Azure PowerShell](/powershell/azure/create-azure-service-principal-azureps)veya [Azure Portal](../active-directory/develop/howto-create-service-principal-portal.md)gerçekleştirilebilir. Kullanmak üzere zaten bir hizmet sorumlunuz varsa, bu adımı atlayabilirsiniz.
 
 Hizmet sorumlusu için **uygulama kimliği**, **anahtar** ve **Kiracı kimliği** ' ni aklınızda edin. Bu izlenecek yolda daha sonra ihtiyacınız olacak. 
 

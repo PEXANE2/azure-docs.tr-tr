@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2019
 ms.author: terrylan
-ms.openlocfilehash: e7e8d51b8227acd033c95583d6e61d78a56d62a3
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 6f073777930b4d026d826d2c3586e0886f906206
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100590281"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102503088"
 ---
 # <a name="security-best-practices-for-iaas-workloads-in-azure"></a>Azure'da IaaS iş yükleri için en iyi güvenlik yöntemleri
 Bu makalede, VM 'Ler ve işletim sistemleri için en iyi güvenlik uygulamaları açıklanmaktadır.
@@ -63,7 +63,7 @@ Abonelik yöneticileri ve coyöneticileri bu ayarı değiştirebilir ve bu ayar�
 VM erişimini ve kurulumunu denetleyen kuruluşlar, genel VM güvenliğini artırır.
 
 ## <a name="use-multiple-vms-for-better-availability"></a>Daha iyi kullanılabilirlik için birden çok VM kullanma
-VM 'niz yüksek kullanılabilirliğe sahip olması gereken kritik uygulamalar çalıştırıyorsa, birden çok VM kullanmanızı önemle tavsiye ederiz. Daha iyi kullanılabilirlik için bir [kullanılabilirlik kümesi](../../virtual-machines/manage-availability.md#configure-multiple-virtual-machines-in-an-availability-set-for-redundancy) veya kullanılabilirlik [alanları](../../availability-zones/az-overview.md)kullanın.
+VM 'niz yüksek kullanılabilirliğe sahip olması gereken kritik uygulamalar çalıştırıyorsa, birden çok VM kullanmanızı önemle tavsiye ederiz. Daha iyi kullanılabilirlik için bir [kullanılabilirlik kümesi](../../virtual-machines/availability-set-overview.md) veya kullanılabilirlik [alanları](../../availability-zones/az-overview.md)kullanın.
 
 Kullanılabilirlik kümesi, Azure 'da yerleştirdiğiniz VM kaynaklarının bir Azure veri merkezinde dağıtıldıklarında birbirinden yalıtılmış olmasını sağlamak için Azure 'da kullanabileceğiniz mantıksal bir gruplandırmadır. Azure, bir kullanılabilirlik kümesine yerleştirdiğiniz VM 'Lerin birden çok fiziksel sunucuda, bilgi işlem raflarının, depolama biriminde ve ağ anahtarlarında çalıştırılmasını sağlar. Bir donanım veya Azure yazılım hatası oluşursa, sanal makinelerinizin yalnızca bir alt kümesi etkilenir ve genel uygulamanız müşterilerinizin kullanımına açık olmaya devam eder. Kullanılabilirlik kümeleri, güvenilir bulut çözümleri oluşturmak istediğinizde önemli bir yetenektir.
 

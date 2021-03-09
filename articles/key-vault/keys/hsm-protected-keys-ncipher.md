@@ -10,12 +10,12 @@ ms.subservice: keys
 ms.topic: tutorial
 ms.date: 02/24/2021
 ms.author: ambapat
-ms.openlocfilehash: 511544f81f6de887014545e3f4bbc7a4172fc91e
-ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
+ms.openlocfilehash: f7761cf011a3a678bb7609e1063ac6ebec90d395
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 03/09/2021
-ms.locfileid: "102488758"
+ms.locfileid: "102499195"
 ---
 # <a name="import-hsm-protected-keys-for-key-vault-ncipher"></a>Key Vault için HSM korumalı anahtarları içeri aktarma (nCipher)
 
@@ -63,7 +63,7 @@ Azure Key Vault için kendi anahtarınızı getir (BYOK) önkoşulları listesi 
 | Azure aboneliği |Azure Key Vault oluşturmak için bir Azure aboneliğine ihtiyacınız vardır: [ücretsiz deneme Için kaydolun](https://azure.microsoft.com/pricing/free-trial/) |
 | HSM korumalı anahtarları desteklemek için Azure Key Vault Premium hizmet katmanı |Azure Key Vault yönelik hizmet katmanları ve özellikleri hakkında daha fazla bilgi için [Azure Key Vault fiyatlandırma](https://azure.microsoft.com/pricing/details/key-vault/) Web sitesine bakın. |
 | nCipher nShield HSM 'leri, smartcards ve Destek yazılımı |NCipher donanım güvenlik modülüne erişiminizin olması ve nCipher nShield HSM 'lerin temel operasyonel bilgisine sahip olmanız gerekir. Uyumlu modellerin listesi için bkz. [NCipher nShield Hardware Security Module](https://go.ncipher.com/rs/104-QOX-775/images/nCipher_nShield_Family_Brochure.pdf?_ga=2.106120835.1607422418.1590478092-577009923.1587131206) veya yoksa bir HSM satın alma. |
-| Aşağıdaki donanım ve yazılımlar:<ol><li>En az sürüm 11,50 olan Windows 7 ve nCipher nShield yazılımının en düşük Windows işletim sistemine sahip çevrimdışı bir x64 iş istasyonu.<br/><br/>Bu iş istasyonu Windows 7 çalıştırıyorsa, [Microsoft .NET Framework 4.5 sürümünü yüklemeniz](https://download.microsoft.com/download/b/a/4/ba4a7e71-2906-4b2d-a0e1-80cf16844f5f/dotnetfx45_full_x86_x64.exe) gerekir.</li><li>Internet 'e bağlı ve Windows 7 ' nin en düşük Windows işletim sistemine sahip ve **En düşük sürüm 1.1.0** [Azure PowerShell](/powershell/azure/?view=azps-1.2.0) yüklü bir iş istasyonu.</li><li>En az 16 MB boş alana sahip bir USB sürücü veya başka bir taşınabilir depolama cihazı.</li></ol> |Güvenlik nedenleriyle ilk iş istasyonunun bir ağa bağlı olmaması önerilir. Ancak, bu öneri programlı bir şekilde zorlanmaz.<br/><br/>Aşağıdaki yönergelerde, bu iş istasyonu, bağlantısı kesilen iş istasyonu olarak adlandırılır.</p></blockquote><br/>Ayrıca, kiracı anahtarınız bir üretim ağı için ise, araç takımını indirmek için ikinci ve ayrı bir iş istasyonu kullanmanızı ve kiracı anahtarını yüklemenizi öneririz. Ancak test amacıyla, birincisi ile aynı iş istasyonunu kullanabilirsiniz.<br/><br/>Aşağıdaki yönergelerde, bu ikinci iş istasyonu Internet 'e bağlı iş istasyonu olarak adlandırılır.</p></blockquote><br/> |
+| Aşağıdaki donanım ve yazılımlar:<ol><li>En az sürüm 11,50 olan Windows 7 ve nCipher nShield yazılımının en düşük Windows işletim sistemine sahip çevrimdışı bir x64 iş istasyonu.<br/><br/>Bu iş istasyonu Windows 7 çalıştırıyorsa, [Microsoft .NET Framework 4.5 sürümünü yüklemeniz](https://download.microsoft.com/download/b/a/4/ba4a7e71-2906-4b2d-a0e1-80cf16844f5f/dotnetfx45_full_x86_x64.exe) gerekir.</li><li>Internet 'e bağlı ve Windows 7 ' nin en düşük Windows işletim sistemine sahip ve **En düşük sürüm 1.1.0** [Azure PowerShell](/powershell/azure/) yüklü bir iş istasyonu.</li><li>En az 16 MB boş alana sahip bir USB sürücü veya başka bir taşınabilir depolama cihazı.</li></ol> |Güvenlik nedenleriyle ilk iş istasyonunun bir ağa bağlı olmaması önerilir. Ancak, bu öneri programlı bir şekilde zorlanmaz.<br/><br/>Aşağıdaki yönergelerde, bu iş istasyonu, bağlantısı kesilen iş istasyonu olarak adlandırılır.</p></blockquote><br/>Ayrıca, kiracı anahtarınız bir üretim ağı için ise, araç takımını indirmek için ikinci ve ayrı bir iş istasyonu kullanmanızı ve kiracı anahtarını yüklemenizi öneririz. Ancak test amacıyla, birincisi ile aynı iş istasyonunu kullanabilirsiniz.<br/><br/>Aşağıdaki yönergelerde, bu ikinci iş istasyonu Internet 'e bağlı iş istasyonu olarak adlandırılır.</p></blockquote><br/> |
 
 ## <a name="generate-and-transfer-your-key-to-azure-key-vault-hsm"></a>Anahtarınızı Azure Key Vault HSM 'ye oluşturun ve aktarın
 

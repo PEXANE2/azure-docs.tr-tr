@@ -10,12 +10,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 05/13/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: a84e4e767092a1507ef0608c21ff1896cb1dde0d
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: de3d9aa60322cc3e6e189f6f16c35d6f42c0cf61
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98880953"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102500419"
 ---
 # <a name="train-models-with-azure-machine-learning"></a>Modelleri Azure Machine Learning ile eğitme
 
@@ -23,7 +23,7 @@ Azure Machine Learning, SDK 'yı kullanarak otomatik makine öğrenimi ve görse
 
 + [Python IÇIN sdk Azure Machine Learning](#python-sdk): Python SDK, her biri farklı yeteneklere sahip modelleri eğitmek için çeşitli yollar sağlar.
 
-    | Eğitim yöntemi | Description |
+    | Eğitim yöntemi | Açıklama |
     | ----- | ----- |
     | [Yapılandırmayı Çalıştır](#run-configuration) | **Modelleri eğitmek için tipik bir yol** , bir eğitim betiği kullanmaktır ve yapılandırma çalıştırmalıdır. Çalıştırma yapılandırması, modelinizi eğitemak için kullanılan eğitim ortamını yapılandırmak için gereken bilgileri sağlar. Çalışma yapılandırmanızda eğitim betiğinizi, işlem hedefini ve Azure ML ortamınızı belirtebilir ve bir eğitim işi çalıştırabilirsiniz. |
     | [Otomatik makine öğrenimi](#automated-machine-learning) | Otomatikleştirilmiş makine **öğrenimi, kapsamlı veri bilimi veya programlama bilgisi olmadan modelleri eğmenize** olanak tanır. Veri bilimi ve programlama arka planına sahip kişiler için, algoritma seçimini ve hiper parametre ayarlamayı otomatikleştirerek zaman ve kaynak tasarrufu yapmak için bir yol sağlar. Otomatik makine öğrenimi kullanırken çalıştırma yapılandırması tanımlama konusunda endişelenmeniz gerekmez. |
@@ -41,13 +41,13 @@ Bu eğitim yöntemlerinin her biri, eğitim için farklı türlerde işlem kayna
 
 Python için Azure Machine Learning SDK, Azure Machine Learning ile makine öğrenimi iş akışları oluşturmanıza ve çalıştırmanıza olanak tanır. Etkileşimli bir Python oturumundan, Jupyıter not defterlerinden, Visual Studio Code veya başka bir IDE 'den hizmetle etkileşime geçebilirsiniz.
 
-* [Python için Azure Machine Learning SDK nedir?](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py)
-* [SDK’yı yükleme/güncelleştirme](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py)
+* [Python için Azure Machine Learning SDK nedir?](/python/api/overview/azure/ml/intro)
+* [SDK’yı yükleme/güncelleştirme](/python/api/overview/azure/ml/install)
 * [Azure Machine Learning için bir geliştirme ortamı yapılandırma](how-to-configure-environment.md)
 
 ### <a name="run-configuration"></a>Yapılandırmayı Çalıştır
 
-Azure Machine Learning ile genel bir eğitim işi [ScriptRunConfig](/python/api/azureml-core/azureml.core.scriptrunconfig?preserve-view=true&view=azure-ml-py)kullanılarak tanımlanabilir. Komut dosyası çalıştırma yapılandırması daha sonra, bir işlem hedefinde bir modeli eğitmek için eğitim betikleriyle birlikte kullanılır.
+Azure Machine Learning ile genel bir eğitim işi [ScriptRunConfig](/python/api/azureml-core/azureml.core.scriptrunconfig)kullanılarak tanımlanabilir. Komut dosyası çalıştırma yapılandırması daha sonra, bir işlem hedefinde bir modeli eğitmek için eğitim betikleriyle birlikte kullanılır.
 
 Yerel bilgisayarınız için bir çalıştırma yapılandırması ile başlayabilir ve ardından gerektiğinde bulut tabanlı bir işlem hedefi için birine geçiş yapabilirsiniz. İşlem hedefini değiştirirken yalnızca kullandığınız çalıştırma yapılandırmasını değiştirirsiniz. Bir çalıştırma Ayrıca, eğitim işiyle ilgili olarak girişler, çıktılar ve Günlükler gibi bilgileri de günlüğe kaydeder.
 

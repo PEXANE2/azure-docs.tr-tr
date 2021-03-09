@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 12/24/2019
-ms.openlocfilehash: 2c8b77e480f3a4f9ba342c6793a708ca6723ec34
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: bae48dc78eb6973e5bce4d535091bc330c4c897f
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102036580"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102509039"
 ---
 # <a name="connect-computers-without-internet-access-by-using-the-log-analytics-gateway-in-azure-monitor"></a>Azure Izleyici 'de Log Analytics ağ geçidini kullanarak internet erişimi olmadan bilgisayarları bağlama
 
@@ -205,7 +205,7 @@ Windows Server 2016 Ağ Yükü Dengeleme kümesini nasıl tasarlayacağınızı 
 Bir Azure Load Balancer tasarlamayı ve dağıtmayı öğrenmek için bkz. Azure Load Balancer nedir [?](../../load-balancer/load-balancer-overview.md). Temel yük dengeleyiciyi dağıtmak için, **arka uç sunucuları oluşturma** bölümünde özetlenen adımları dışlayarak bu [hızlı](../../load-balancer/quickstart-load-balancer-standard-public-portal.md) başlangıçta özetlenen adımları izleyin.   
 
 > [!NOTE]
-> **Temel SKU 'yu** kullanarak Azure Load Balancer yapılandırma, Azure sanal makinelerinin bir kullanılabilirlik kümesine ait olmasını gerektirir. Kullanılabilirlik kümeleri hakkında daha fazla bilgi edinmek için bkz. [Azure 'Da Windows sanal makinelerinin kullanılabilirliğini yönetme](../../virtual-machines/manage-availability.md). Mevcut sanal makineleri bir kullanılabilirlik kümesine eklemek için [Azure Resource Manager VM kullanılabilirlik kümesi ayarla](https://gallery.technet.microsoft.com/Set-Azure-Resource-Manager-f7509ec4)' ya bakın.
+> **Temel SKU 'yu** kullanarak Azure Load Balancer yapılandırma, Azure sanal makinelerinin bir kullanılabilirlik kümesine ait olmasını gerektirir. Kullanılabilirlik kümeleri hakkında daha fazla bilgi edinmek için bkz. [Azure 'Da Windows sanal makinelerinin kullanılabilirliğini yönetme](../../virtual-machines/availability.md). Mevcut sanal makineleri bir kullanılabilirlik kümesine eklemek için [Azure Resource Manager VM kullanılabilirlik kümesi ayarla](https://gallery.technet.microsoft.com/Set-Azure-Resource-Manager-f7509ec4)' ya bakın.
 > 
 
 Yük dengeleyici oluşturulduktan sonra, trafiği bir veya daha fazla ağ geçidi sunucusuna dağıtan bir arka uç havuzunun oluşturulması gerekir. Hızlı başlangıç makalesi bölümünde açıklanan adımları izleyerek [Yük Dengeleyici için kaynak oluşturma](../../load-balancer/quickstart-load-balancer-standard-public-portal.md)bölümüne bakın.  

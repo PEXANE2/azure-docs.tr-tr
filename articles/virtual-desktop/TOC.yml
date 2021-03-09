@@ -223,7 +223,7 @@
 - name: Kaynaklar
   items:
     - name: PowerShell
-      href: /powershell/module/az.desktopvirtualization/?view=azps-4.2.0#desktopvirtualization
+      href: /powershell/module/az.desktopvirtualization/#desktopvirtualization
     - name: REST API başvurusu
       href: /rest/api/desktopvirtualization/
     - name: Deneyim tahmin aracı

@@ -3,12 +3,12 @@ title: Azure Advisor 'ı kullanarak hizmet maliyetlerini azaltma
 description: Azure dağıtımlarınızın maliyetini iyileştirmek için Azure Advisor 'ı kullanın.
 ms.topic: article
 ms.date: 09/27/2020
-ms.openlocfilehash: 767c82c818535304552c1c98ff50a252acc0d08a
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 346b790c6970abc8670661e1ec180662957af47d
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96458508"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102503383"
 ---
 # <a name="reduce-service-costs-by-using-azure-advisor"></a>Azure Advisor 'ı kullanarak hizmet maliyetlerini azaltma
 
@@ -21,7 +21,7 @@ Bazı uygulama senaryoları tasarım tarafından düşük kullanıma yol açabil
 Önerilen Eylemler, değerlendirilen kaynağa özgü olarak kapatılır veya yeniden boyutlandırılır.
 
 Bu tüm deyimler doğru olduğunda, Advisor 'daki gelişmiş değerlendirme modeli sanal makinelerin kapatılmasını kabul eder: 
-- En yüksek CPU kullanımı değeri olan P95th, %3 ' ten az. 
+- CPU kullanımının en büyük P95th değeri, %3 ' ten az. 
 - Ağ kullanımı, yedi günlük bir dönemde %2 ' den küçük.
 - Bellek baskısı eşik değerlerinden daha düşük
 

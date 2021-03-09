@@ -3,14 +3,18 @@ title: Azure Backup tanılama olayları için veri modeli
 description: Bu veri modeli, Log Analytics (LA) ' a tanılama olayları göndermenin kaynağa özgü moda başvurdadır.
 ms.topic: conceptual
 ms.date: 10/30/2019
-ms.openlocfilehash: 52c5c0694ed59aea20453ae7a2bd3209d76df433
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.openlocfilehash: 0d75af6d2b41aad0b5f821dd1f6409b30f7ca531
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92173972"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102499603"
 ---
 # <a name="data-model-for-azure-backup-diagnostics-events"></a>Azure Backup tanılama olayları için veri modeli
+
+> [!NOTE]
+>
+> Özel Raporlama görünümleri oluşturmak için, aşağıda listelenen ham tablolarla çalışmak yerine [Azure izleyici günlüklerinde sistem işlevlerinin](backup-reports-system-functions.md) kullanılması önerilir.
 
 ## <a name="coreazurebackup"></a>CoreAzureBackup
 
@@ -220,7 +224,7 @@ Bu tablo, depolama ile ilgili alanlarla ilgili ayrıntıları sağlar.
 
 ## <a name="valid-operation-names-for-each-table"></a>Her tablo için geçerli Işlem adları
 
-Yukarıdaki tablolardaki her kaydın ilişkili bir **Işlem adı**vardır. Işlem adı kayıt türünü açıklar (ve ayrıca tablodaki hangi alanların bu kayıt için doldurulduğunu gösterir). Her tablo (kategori) bir veya daha fazla farklı Işlem adını destekler. Yukarıdaki tabloların her biri için desteklenen Işlem adlarının özeti aşağıda verilmiştir.
+Yukarıdaki tablolardaki her kaydın ilişkili bir **Işlem adı** vardır. Işlem adı kayıt türünü açıklar (ve ayrıca tablodaki hangi alanların bu kayıt için doldurulduğunu gösterir). Her tablo (kategori) bir veya daha fazla farklı Işlem adını destekler. Yukarıdaki tabloların her biri için desteklenen Işlem adlarının özeti aşağıda verilmiştir.
 
 | **Tablo adı/kategori**                   | **Desteklenen Işlem adları** | **Açıklama**              |
 | ------------------------------------------- | ------------------------------|----------------------------- |

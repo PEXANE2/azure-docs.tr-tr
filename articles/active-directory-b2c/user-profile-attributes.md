@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 03/04/2021
+ms.date: 03/09/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: db2715f0827203dac505fa4dc15c22bdab953010
-ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
+ms.openlocfilehash: 7dfad71d05a882e3a3941a96e12489adb5fb3234
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102120224"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102500538"
 ---
 # <a name="user-profile-attributes"></a>Kullanıcı profili öznitelikleri
 
@@ -39,7 +39,7 @@ Aşağıdaki tabloda, Azure AD B2C Directory Kullanıcı profili tarafından des
 - Öznitelik bir Kullanıcı akışında kullanılıyorsa
 - Öznitelik, özel bir ilkede [Azure AD teknik profilinde](active-directory-technical-profile.md) ve bu bölümde ( &lt; ınputclaim &gt; , &lt; outputclaim &gt; veya &lt; PersistedClaims &gt; ) kullanılabilir
 
-|Ad     |Tür     |Açıklama|Azure portalı|Kullanıcı akışları|Özel ilke|
+|Ad     |Tür     |Description|Azure portalı|Kullanıcı akışları|Özel ilke|
 |---------|---------|----------|------------|----------|-------------|
 |accountEnabled  |Boole|Kullanıcı hesabının etkin mi yoksa devre dışı mı olduğunu: hesap etkinse **doğru** , aksi takdirde **yanlış** olur.|Yes|Hayır|Kalıcı, çıkış|
 |ageGroup        |Dize|Kullanıcının yaş grubu. Olası değerler: null, tanımsız, küçük, Yetişkin, NotAdult.|Yes|Hayır|Kalıcı, çıkış|
@@ -64,13 +64,13 @@ Aşağıdaki tabloda, Azure AD B2C Directory Kullanıcı profili tarafından des
 |Mobil (mobilePhone) |Dize|Kullanıcının birincil cep telefonu numarası. Maksimum uzunluk 64.|Yes|Hayır|Kalıcı, çıkış|
 |NetID           |Dize|Ağ KIMLIĞI.|Hayır|Hayır|Kalıcı, çıkış|
 |objectId        |Dize|Kullanıcının benzersiz tanımlayıcısı olan bir genel benzersiz tanımlayıcı (GUID). Örnek: 12345678-9ABC-def0-1234-56789abcde. Salt okuma, sabit.|Salt okunur|Yes|Giriş, kalıcı, çıkış|
-|Diğer postalar      |Dize koleksiyonu|Kullanıcı için diğer e-posta adreslerinin listesi. Örnek: [" bob@contoso.com ", " Robert@fabrikam.com "].|Evet (alternatif e-posta)|Hayır|Kalıcı, çıkış|
+|Diğer postalar      |Dize koleksiyonu|Kullanıcı için diğer e-posta adreslerinin listesi. Örnek: [" bob@contoso.com ", " Robert@fabrikam.com "].|Evet (alternatif e-posta)|No|Kalıcı, çıkış|
 |password        |Dize|Kullanıcı oluşturma sırasında yerel hesabın parolası.|Hayır|Hayır|Kalıcı|
 |passwordPolicies     |Dize|Parolanın ilkesi. Bu, virgülle ayrılmış farklı ilke adından oluşan bir dizedir. Örneğin, "Disablepasswordexpiasyon, DisableStrongPassword".|Hayır|Hayır|Kalıcı, çıkış|
 |physicalDeliveryOfficeName (officeLocation)|Dize|Kullanıcının iş yerinde Office konumu. Maksimum uzunluk 128.|Yes|Hayır|Kalıcı, çıkış|
 |postalCode      |Dize|Kullanıcının posta adresi için posta kodu. Posta kodu kullanıcının ülkesine/bölgesine özeldir. America Birleşik Devletler, bu öznitelik ZIP kodunu içerir. Maksimum Uzunluk 40.|Yes|Hayır|Kalıcı, çıkış|
-|preferredLanguage    |Dize|Kullanıcı için tercih edilen dil. ISO 639-1 kodunu izlemelidir. Örnek: "en-US".|Hayır|Hayır|Kalıcı, çıkış|
-|refreshTokensValidFromDateTime|DateTime|Bu saatten önce verilen yenileme belirteçleri geçersiz ve uygulamalar, yeni bir erişim belirteci almak için geçersiz yenileme belirteci kullanırken bir hata alır. Bu durumda, uygulamanın yetkilendirme uç noktasına istek yaparak yeni bir yenileme belirteci edinmesi gerekir. Salt okunur.|Hayır|Hayır|Çıktı|
+|preferredLanguage    |Dize|Kullanıcı için tercih edilen dil. Tercih edilen dil biçimi, RFC 4646 ' i temel alır. Ad, dille ilişkili ISO 639 2 harfli küçük harfli bir kültür kodu ve ülke veya bölge ile ilişkili bir ISO 3166 2-Letter büyük harfli alt kültür kodu birleşimidir. Örnek: "en-US" veya "ES-ES".|Hayır|Hayır|Kalıcı, çıkış|
+|refreshTokensValidFromDateTime (Signınsessionsvalidfromdatetime)|DateTime|Bu saatten önce verilen yenileme belirteçleri geçersiz ve uygulamalar, yeni bir erişim belirteci almak için geçersiz yenileme belirteci kullanırken bir hata alır. Bu durumda, uygulamanın yetkilendirme uç noktasına istek yaparak yeni bir yenileme belirteci edinmesi gerekir. Salt okunur.|Hayır|Hayır|Çıktı|
 |Signınnames ([kimlikler](#identities-attribute)) |Dize|Dizindeki herhangi bir türdeki yerel hesap kullanıcısının benzersiz oturum açma adı. Yerel hesap türünü belirtmeden oturum açma değeri olan bir kullanıcıyı almak için bu özniteliği kullanın.|Hayır|Hayır|Giriş|
 |Signınnames. userName ([kimlikler](#identities-attribute)) |Dize|Dizindeki yerel hesap kullanıcısının benzersiz Kullanıcı adı. Bu özniteliği, belirli bir oturum açma Kullanıcı adı ile Kullanıcı oluşturmak veya almak için kullanın. Bunu Patch işlemi sırasında PersistedClaims içinde belirtmek, diğer oturum adı türlerini kaldırır. Yeni bir Signınnames türü eklemek istiyorsanız, mevcut Signınnames 'leri de kalıcı hale getirmeniz gerekir.|Hayır|Hayır|Giriş, kalıcı, çıkış|
 |Signınnames. phoneNumber ([kimlikler](#identities-attribute)) |Dize|Dizindeki yerel hesap kullanıcısının benzersiz telefon numarası. Bu özniteliği, belirli bir oturum açma telefon numarası olan bir kullanıcı oluşturmak veya almak için kullanın. Bu özniteliğin, düzeltme eki sırasında tek başına PersistedClaims içinde belirtilmesi, diğer Signınnames türlerini kaldırır. Yeni bir Signınnames türü eklemek istiyorsanız, mevcut Signınnames 'leri de kalıcı hale getirmeniz gerekir.|Hayır|Hayır|Giriş, kalıcı, çıkış|
@@ -84,7 +84,7 @@ Aşağıdaki tabloda, Azure AD B2C Directory Kullanıcı profili tarafından des
 |telephoneNumber (ilk departman girişi)|Dize|Kullanıcının iş yeri için birincil telefon numarası.|Yes|Hayır|Kalıcı, çıkış|
 |userPrincipalName    |Dize|Kullanıcının kullanıcı asıl adı (UPN). UPN, Internet standart RFC 822 ' i temel alan Kullanıcı için Internet stili bir oturum açma adıdır. Etki alanının, kiracının doğrulanmış etki alanları koleksiyonunda mevcut olması gerekir. Bir hesap oluşturulduğunda bu özellik gereklidir. Değişmez.|Hayır|Hayır|Giriş, kalıcı, çıkış|
 |usageLocation   |Dize|Ülkelerde/bölgelerde hizmetlerin kullanılabilirliğini kontrol etmek için yasal gereksinim nedeniyle lisanslar atanacak kullanıcılar için gereklidir. Null yapılabilir değil. İki harfli ülke/bölge kodu (ISO standart 3166). Örnekler: "US", "JP" ve "GB".|Yes|Hayır|Kalıcı, çıkış|
-|userType        |Dize|Dizininizdeki Kullanıcı türlerini sınıflandırmak için kullanılabilen bir dize değeri. Değer üye olmalıdır. Salt okunur.|Salt okunur|Hayır|Kalıcı, çıkış|
+|userType        |Dize|Dizininizdeki Kullanıcı türlerini sınıflandırmak için kullanılabilen bir dize değeri. Değer üye olmalıdır. Salt okunur.|Salt okunur|No|Kalıcı, çıkış|
 |userState (externalUserState)<sup>3</sup>|Dize|Yalnızca Azure AD B2B hesabı için, davetin Pendingkabulünü veya kabul edilip edilmediğini belirtir.|Hayır|Hayır|Kalıcı, çıkış|
 |userStateChangedOn (externalUserStateChangeDateTime)<sup>2</sup>|DateTime|UserState özelliği için en son değişikliğin zaman damgasını gösterir.|Hayır|Hayır|Kalıcı, çıkış|
 
@@ -105,7 +105,7 @@ Müşteri hesabı olan bir Kullanıcı birden çok kimlik ile oturum açabilir. 
 
 Microsoft Graph API 'sinde, hem yerel hem de Federasyon kimlikleri, `identities` [Objectıdentity](/graph/api/resources/objectidentity)türünde olan User özniteliğinde depolanır. `identities`Koleksiyon, bir kullanıcı hesabında oturum açmak için kullanılan bir kimlik kümesini temsil eder. Bu koleksiyon, kullanıcının Kullanıcı hesabında ilişkili kimliklerinden herhangi biriyle oturum açmasını sağlar. Kimlikler özniteliği en fazla on [Objectıdentity](/graph/api/resources/objectidentity) nesnesi içerebilir. Her nesne aşağıdaki özellikleri içerir:
 
-| Ad   | Tür |Açıklama|
+| Ad   | Tür |Description|
 |:---------------|:--------|:----------|
 |Signıntype|string| Dizininizdeki Kullanıcı oturum açma türlerini belirtir. Yerel hesap için:,,,,  `emailAddress` `emailAddress1` `emailAddress2` `emailAddress3`  `userName` veya istediğiniz diğer herhangi bir tür. Sosyal hesabın olarak ayarlanması gerekir  `federated` .|
 |yayınlayan|string|Kimliğin verenini belirtir. Yerel hesaplar için ( **Signıntype** değil `federated` ), bu özellik yerel B2C kiracısı varsayılan etki alanı adıdır (örneğin,) `contoso.onmicrosoft.com` . Sosyal kimlik (burada **Signıntype** ) için  `federated` değer verenin adıdır, örneğin `facebook.com`|

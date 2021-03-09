@@ -11,12 +11,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 06/19/2020
-ms.openlocfilehash: 78829ae52d74cf6ec58c12779c51bca9a98e0af1
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 787f7727e18b7055055ed2b764ddce5be20f5afc
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96450801"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102503445"
 ---
 # <a name="regenerate-storage-account-access-keys"></a>Depolama hesabı erişim anahtarlarını yeniden oluştur
 
@@ -33,7 +33,7 @@ Güvenlik nedeniyle, bir Azure depolama hesabının erişim anahtarlarını değ
 
 * Azure Machine Learning çalışma alanı. Daha fazla bilgi için [çalışma alanı oluşturma](how-to-manage-workspace.md) makalesine bakın.
 
-* [Azure MACHINE LEARNING SDK](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py).
+* [Azure MACHINE LEARNING SDK](/python/api/overview/azure/ml/install).
 
 * [Azure MACHINE LEARNING CLI uzantısı](reference-azure-machine-learning-cli.md).
 
@@ -142,4 +142,4 @@ Yeni anahtarı kullanmak üzere Azure Machine Learning güncelleştirmek için a
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Veri depolarını kaydetme hakkında daha fazla bilgi için bkz [`Datastore`](/python/api/azureml-core/azureml.core.datastore%28class%29?preserve-view=true&view=azure-ml-py) . sınıf başvurusu.
+Veri depolarını kaydetme hakkında daha fazla bilgi için bkz [`Datastore`](/python/api/azureml-core/azureml.core.datastore%28class%29) . sınıf başvurusu.

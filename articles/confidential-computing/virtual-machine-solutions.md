@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.author: JenCook
-ms.openlocfilehash: de7eaf40271965d48dc0507e0335e6924bdfb73f
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
+ms.openlocfilehash: 3e55ae476becca23e6ea23fdc9c5fc7ec72b68ef
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102204193"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102509158"
 ---
 # <a name="solutions-on-azure-virtual-machines"></a>Azure sanal makinelerinde çözümler
 
@@ -76,7 +76,7 @@ DCsv2-Series bir sanal makineyi 10 dakikadan kısa bir süre içinde dağıtmak 
 
 Azure 'da sanal makineler kullanırken, kapalı kalma süresini önlemek için yüksek kullanılabilirlik ve olağanüstü durum kurtarma çözümü uygulamaktan siz sorumlusunuz. 
 
-Azure gizli bilgi işlem, şu anda Kullanılabilirlik Alanları aracılığıyla bölge yedekliliği desteklemez. Gizli bilgi işlem için en yüksek kullanılabilirlik ve yedeklilik için [kullanılabilirlik kümelerini](../virtual-machines/manage-availability.md#configure-multiple-virtual-machines-in-an-availability-set-for-redundancy)kullanın. Donanım kısıtlamaları nedeniyle, gizli bilgi işlem örneklerinin kullanılabilirlik kümelerinin yalnızca en fazla 10 güncelleştirme etki alanı olabilir. 
+Azure gizli bilgi işlem, şu anda Kullanılabilirlik Alanları aracılığıyla bölge yedekliliği desteklemez. Gizli bilgi işlem için en yüksek kullanılabilirlik ve yedeklilik için [kullanılabilirlik kümelerini](../virtual-machines/availability-set-overview.md)kullanın. Donanım kısıtlamaları nedeniyle, gizli bilgi işlem örneklerinin kullanılabilirlik kümelerinin yalnızca en fazla 10 güncelleştirme etki alanı olabilir. 
 
 ## <a name="deployment-with-azure-resource-manager-arm-template"></a>Azure Resource Manager (ARM) şablonuyla dağıtım
 

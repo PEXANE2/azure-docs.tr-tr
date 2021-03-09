@@ -9,12 +9,12 @@ ms.subservice: custom-vision
 ms.topic: how-to
 ms.date: 09/08/2020
 ms.author: pafarley
-ms.openlocfilehash: 363f0062d316b22019b864972d5a830e4a838b93
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: 7d58a8239c728f70efe3584c2649e196dffd791f
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102178108"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102501099"
 ---
 # <a name="copy-and-move-your-custom-vision-projects"></a>Özel Görüntü İşleme projelerinizi kopyalayın ve taşıyın
 
@@ -31,7 +31,7 @@ Uygulamanız veya işletmeniz Özel Görüntü İşleme bir proje kullanımına 
 - İki Azure Özel Görüntü İşleme kaynağı. Bunlar yoksa, Azure portal gidin ve [Yeni bir özel görüntü işleme kaynağı oluşturun](https://portal.azure.com/?microsoft_azure_marketplace_ItemHideKey=microsoft_azure_cognitiveservices_customvision#create/Microsoft.CognitiveServicesCustomVision?azure-portal=true).
 - Özel Görüntü İşleme kaynaklarınızın eğitim tuşları ve uç nokta URL 'Leri. Bu değerleri, Azure portal kaynağın **genel bakış** sekmesinde bulabilirsiniz.
 - Oluşturulmuş bir Özel Görüntü İşleme projesi. Bunu nasıl yapacağınız hakkında yönergeler için bkz. [sınıflandırıcı oluşturma](./getting-started-build-a-classifier.md) .
-* [PowerShell sürüm 6.0 +](https://docs.microsoft.com/powershell/scripting/install/installing-powershell-core-on-windows?view=powershell-7.1)veya benzer bir komut satırı yardımcı programı.
+* [PowerShell sürüm 6.0 +](https://docs.microsoft.com/powershell/scripting/install/installing-powershell-core-on-windows)veya benzer bir komut satırı yardımcı programı.
 
 ## <a name="process-overview"></a>İşleme genel bakış
 

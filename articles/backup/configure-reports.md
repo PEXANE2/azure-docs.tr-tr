@@ -3,12 +3,12 @@ title: Azure Backup raporlarını yapılandırma
 description: Log Analytics ve Azure çalışma kitaplarını kullanarak Azure Backup raporlarını yapılandırma ve görüntüleme
 ms.topic: conceptual
 ms.date: 02/10/2020
-ms.openlocfilehash: 62bb59a8a77d11e30e54298317a35e1f883a9622
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: e9f3d9dfa33e71d827a338258001f2b52af62b06
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101710626"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102509378"
 ---
 # <a name="configure-azure-backup-reports"></a>Azure Backup raporlarını yapılandırma
 
@@ -22,8 +22,8 @@ Bugün Azure Backup [Azure izleyici günlüklerini](../azure-monitor/logs/log-an
 
 ## <a name="supported-scenarios"></a>Desteklenen senaryolar
 
-- Yedekleme raporları Azure VM 'leri, Azure sanal makinelerinde SQL, Azure VM 'lerinde SAP HANA, Microsoft Azure Kurtarma Hizmetleri (MARS) Aracısı, Microsoft Azure Backup sunucu (MABS) ve System Center Data Protection Manager (DPM) için desteklenir. Azure dosya paylaşma yedeklemesi için veriler, 1 Haziran 2020 ' de veya sonrasında oluşturulan tüm kayıtlar için görüntülenir.
-- Azure dosya paylaşma yedeklemesi için, korunan örneklerdeki veriler şu anda raporlarda gösterilmez (tüm yedekleme öğeleri için varsayılan olarak sıfırdır).
+- Yedekleme raporları Azure VM 'leri, Azure sanal makinelerinde SQL, Azure VM 'lerinde SAP HANA, Microsoft Azure Kurtarma Hizmetleri (MARS) Aracısı, Microsoft Azure Backup sunucu (MABS) ve System Center Data Protection Manager (DPM) için desteklenir. Azure dosya paylaşma yedeklemesi için veriler, 1 Haziran 2020 ' de veya sonrasında oluşturulan kayıtlar için görüntülenir.
+- Azure dosya paylaşma yedeklemesi için, korumalı örneklerdeki veriler, 1 Şubat 2021 ' den sonra oluşturulan kayıtlar için görüntülenir (eski kayıtlar için varsayılan olarak sıfırdır).
 - DPM iş yükleri için yedekleme raporları, DPM sürüm 5.1.363.0 ve üzeri ve aracı sürümü 2.0.9127.0 ve üzeri için desteklenir.
 - MABS iş yükleri için yedekleme raporları, MABS sürümü 13.0.415.0 ve üzeri ve aracı sürümü 2.0.9170.0 ve üzeri için desteklenir.
 - Yedekleme raporları, verileri kullanıcının erişimi olan bir Log Analytics çalışma alanına gönderildiği sürece tüm yedekleme öğeleri, kasa, abonelik ve bölgelerde görüntülenebilir. Bir kasa kümesinin raporlarını görüntülemek için, yalnızca kasaların verilerini gönderdiği Log Analytics çalışma alanına okuyucu erişiminizin olması gerekir. Bireysel kasaların erişimine sahip olmanız gerekmez.
@@ -142,17 +142,31 @@ Kılavuzun veritabanı iş yüklerini beklendiği gibi görüntüleyebilmesi iç
 
 ###### <a name="policy-adherence"></a>İlke bağlılığı
 
-Bu sekmeyi kullanarak tüm yedekleme örneklerinizin her gün en az bir başarılı yedeklemeye sahip olup olmadığını belirleyebilirsiniz. İlke uygunluğunu zaman dilimine veya yedekleme örneğine göre görüntüleyebilirsiniz.
+Bu sekmeyi kullanarak tüm yedekleme örneklerinizin her gün en az bir başarılı yedeklemeye sahip olup olmadığını belirleyebilirsiniz. Haftalık yedekleme ilkesi olan öğeler için, tüm yedekleme örneklerinin haftada en az bir başarılı yedekleme olup olmadığını anlamak için bu sekmeyi kullanabilirsiniz.
+
+İki tür ilke uygunluk görünümü mevcuttur:
+
+* **Zaman aralığına göre Ilke uyumluluğu**: Bu görünümü kullanarak, belirli bir günde en az bir başarılı yedeklemeye sahip olduğunu ve bu gün için kaç tane başarılı bir yedekleme kalmadığını belirleyebilirsiniz. Seçili günde tetiklenen tüm yedekleme işlerinin ayrıntılarını görmek için bir satıra tıklayabilirsiniz. Zaman aralığını, son 60 gün gibi daha büyük bir değere artırdıysanız, kılavuz haftalık görünümde işlenir ve verilen hafta her gününde en az bir başarılı yedeklemeye sahip olan tüm öğelerin sayısını görüntüler. Benzer şekilde, daha büyük zaman aralıkları için aylık bir görünüm vardır.
+
+Haftalık olarak yedeklenen öğeler söz konusu olduğunda, bu kılavuz verilen hafta içinde en az bir başarılı yedeklemeye sahip olan tüm öğeleri belirlemenize yardımcı olur. Son 120 gün gibi daha büyük bir zaman aralığı için kılavuz aylık görünümde işlenir ve verilen aydaki her hafta en az bir başarılı yedeklemeye sahip olan tüm öğelerin sayısını görüntüler. Günlük, haftalık ve aylık görünümler hakkında daha fazla ayrıntı için [yedekleme raporlarında kullanılan kurallara](https://docs.microsoft.com/azure/backup/configure-reports#conventions-used-in-backup-reports) bakın.
+
+![Döneme göre ilke bağlılığı](./media/backup-azure-configure-backup-reports/policy-adherence-by-time-period.png)
+
+* **Yedekleme örneğine göre Ilke uyumluluğu**: Bu görünümü kullanarak, bir yedekleme örneği düzeyinde ilke bağlılığı ayrıntılarını kullanabilirsiniz. Yeşil bir hücre, yedekleme örneğinin verilen gün üzerinde en az bir başarılı yedekleme olduğunu gösterir. Kırmızı olan bir hücre, yedekleme örneğinin verilen günde bir başarılı yedekleme yapmamış olduğunu gösterir. Günlük, haftalık ve aylık toplamalar, zaman dönemi görünümü ile Ilke bağlılığı ile aynı davranışı izler. Seçilen zaman aralığında verilen yedekleme örneğindeki tüm yedekleme işlerini görüntülemek için herhangi bir satıra tıklayabilirsiniz.
+
+![Yedekleme örneğine göre ilke bağlılığı](./media/backup-azure-configure-backup-reports/policy-adherence-by-backup-instance.png)
 
 ###### <a name="email-azure-backup-reports"></a>E-posta Azure Backup raporları
 
 Yedekleme raporlarında kullanılabilen **e-posta raporu** özelliğini kullanarak, e-posta yoluyla düzenli raporlar almak için otomatikleştirilmiş görevler oluşturabilirsiniz. Bu özellik, Azure ortamınızda, sağladığınız girişlere göre seçtiğiniz Log Analytics (LA) çalışma alanlarından verileri sorgulayan bir mantıksal uygulama dağıtarak işe yarar.
 
-Mantıksal uygulama oluşturulduktan sonra Azure Izleyici günlüklerine ve Office 365 ' e bağlantı yetkilendirmeniz gerekir. Bunu yapmak için Azure portal **Logic Apps** gidin ve oluşturduğunuz görevin adını arayın. **API bağlantıları** menü öğesini seçmek, YETKILENDIRMENIZ gereken API bağlantılarının listesini açar.
+Mantıksal uygulama oluşturulduktan sonra Azure Izleyici günlüklerine ve Office 365 ' e bağlantı yetkilendirmeniz gerekir. Bunu yapmak için Azure portal **Logic Apps** gidin ve oluşturduğunuz görevin adını arayın. **API bağlantıları** menü öğesini seçmek, YETKILENDIRMENIZ gereken API bağlantılarının listesini açar. [E-postaları yapılandırma ve sorunları giderme hakkında daha fazla bilgi edinin](backup-reports-email.md).
 
 ###### <a name="customize-azure-backup-reports"></a>Azure Backup raporlarını özelleştirme
 
-Yedekleme raporları Azure Izleyici günlüklerinde işlevleri kullanır. Bu işlevler, LA 'daki ham Azure Backup tablolarındaki veriler üzerinde çalışır ve basit sorgular kullanarak yedeklemeyle ilgili tüm varlıklarınızın bilgilerini kolayca almanıza yardımcı olan biçimli verileri döndürür.
+Yedekleme raporları, [Azure izleyici günlüklerinde sistem işlevlerini](backup-reports-system-functions.md)kullanır. Bu işlevler, LA 'daki ham Azure Backup tablolarındaki veriler üzerinde çalışır ve basit sorgular kullanarak yedeklemeyle ilgili tüm varlıklarınızın bilgilerini kolayca almanıza yardımcı olan biçimli verileri döndürür. 
+
+Yedekleme raporlarını temel olarak kullanarak kendi raporlama çalışma kitaplarınızı oluşturmak için, yedekleme raporları ' na gidebilir, raporun en üstünde **Düzenle** ' ye tıklayabilir ve raporlarda kullanılan sorguları görüntüleyebilir/düzenleyebilirsiniz. Özel raporların nasıl oluşturulacağı hakkında daha fazla bilgi edinmek için [Azure çalışma kitapları belgelerine](https://docs.microsoft.com/azure/azure-monitor/visualize/workbooks-overview) bakın. 
 
 ## <a name="export-to-excel"></a>Excel'e aktar
 
@@ -175,6 +189,8 @@ Pencere öğesini Azure portal panonuza sabitlemek için her pencere öğesinin 
 - Rapor, seçilen zaman aralığında *tetiklenen* işlerin ayrıntılarını (günlük işlerden ayrı olarak) gösterir.
 - **Bulut depolama** ve **korumalı örnekler** için gösterilen değerler seçili zaman aralığının *sonunda* .
 - Raporlarda görüntülenen yedekleme öğeleri, seçili zaman aralığının *sonunda* bulunan öğelerdir. Seçilen zaman aralığının ortasında silinen yedekleme öğeleri gösterilmez. Aynı kural yedekleme ilkeleri için de geçerlidir.
+- Seçilen zaman aralığı 30 günlük bir döneme yayılmışsa, grafikler günlük görünümde işlenir ve burada her gün için bir veri noktası bulunur. Zaman aralığı 30 günden daha uzun ve 90 günden daha az (veya buna eşit) bir döneme yayılırsa, grafikler haftalık görünümde işlenir. Daha büyük zaman aralıkları için grafikler aylık görünümde işlenir. Verilerin haftalık veya aylık olarak yönetilmesi, sorguların daha iyi performansına ve grafiklerdeki verilerin daha kolay okunmanıza yardımcı olur.
+- Ilke bağlılığı ızgaraları, yukarıda açıklandığı gibi benzer bir toplama mantığını da izler. Ancak, birkaç küçük fark vardır. İlk fark, haftalık yedekleme ilkesi olan öğeler için günlük görünüm yoktur (yalnızca haftalık ve aylık görünümler kullanılabilir). Ayrıca, haftalık yedekleme ilkesi olan öğelerin kılavuzlarında, kısmi haftaların dikkate alınması için bir ' ay ' 4 haftalık dönem (28 gün) ve 30 gün olarak değerlendirilir.
 
 ## <a name="query-load-times"></a>Sorgu yükleme süreleri
 

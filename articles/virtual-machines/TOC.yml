@@ -280,28 +280,26 @@
           href: ./linux/spot-template.md
         - name: Hata kodları
           href: error-codes-spot.md
-    - name: Satın alma seçenekleri
+    - name: Azure Hibrit Avantajı
       items:
-        - name: Azure Hibrit Avantajı
+        - name: Linux
+          href: ./linux/azure-hybrid-benefit-linux.md
+        - name: Windows
           items:
-            - name: Linux
-              href: ./linux/azure-hybrid-benefit-linux.md
-            - name: Windows
-              items:
-                - name: Azure Hibrit Avantajı lisansını kullanma
-                  href: ./windows/hybrid-use-benefit-licensing.md
-                - name: Windows 10 için Çok Kiracılı Barındırma Kuralları’nı kullanma
-                  href: ./windows/windows-desktop-multitenant-hosting-deployment.md
-        - name: Ayrılmış örnekler
-          items:
-            - name: VM'ler için ön ödeme yapma
-              href: ./prepay-reserved-vm-instances.md
-            - name: Ayrılmış Konaklar için önceden ödeme
-              href: prepay-dedicated-hosts-reserved-instances.md
-            - name: Azure ayırmaları nedir?
-              href: ../cost-management-billing/reservations/save-compute-costs-reservations.md?context=/azure/virtual-machines/context/context
-            - name: Sanal makine örneği boyut esnekliği
-              href: reserved-vm-instance-size-flexibility.md
+            - name: Azure Hibrit Avantajı lisansını kullanma
+              href: ./windows/hybrid-use-benefit-licensing.md
+            - name: Windows 10 için Çok Kiracılı Barındırma Kuralları’nı kullanma
+              href: ./windows/windows-desktop-multitenant-hosting-deployment.md
+    - name: Ayrılmış örnekler
+      items:
+        - name: VM'ler için ön ödeme yapma
+          href: ./prepay-reserved-vm-instances.md
+        - name: Ayrılmış Konaklar için önceden ödeme
+          href: prepay-dedicated-hosts-reserved-instances.md
+        - name: Azure ayırmaları nedir?
+          href: ../cost-management-billing/reservations/save-compute-costs-reservations.md?context=/azure/virtual-machines/context/context
+        - name: Sanal makine örneği boyut esnekliği
+          href: reserved-vm-instance-size-flexibility.md
     - name: Linux VM 'Leri oluşturma
       items:
         - name: Doğrulanan dağıtımlar
@@ -783,41 +781,52 @@
           href: ./windows/build-image-with-packer.md
 - name: Kullanılabilirlik ve ölçek
   items:
-    - name: Ölçek kümeleri
-      href: ../virtual-machine-scale-sets/overview.md?context=/azure/virtual-machines/context/context
-    - name: Kullanılabilirlik
+    - name: Genel Bakış
       href: availability.md
-    - name: Birlikte bulunma
-      href: co-location.md
-    - name: Ağ performansı
-      href: ../virtual-network/virtual-network-optimize-network-bandwidth.md?context=/azure/virtual-machines/context/context
-    - name: Durumlar ve yaşam döngüsü
-      href: states-lifecycle.md
-    - name: Otomatik Ölçeklendirme
-      href: ../virtual-machine-scale-sets/virtual-machine-scale-sets-autoscale-overview.md?context=/azure/virtual-machines/context/context
-    - name: Yüksek kullanılabilirlik
-      href: manage-availability.md
     - name: Kullanılabilirlik kümeleri
       items:
-        - name: Linux
+        - name: Genel Bakış
+          href: availability-set-overview.md
+        - name: CLI
           href: ./linux/tutorial-availability-sets.md
-        - name: Windows
-          items:
-            - name: Kullanılabilirlik kümesi oluşturma
-              href: ./windows/tutorial-availability-sets.md
-            - name: Kullanılabilirlik kümesini değiştirme
-              href: ./windows/change-availability-set.md
-    - name: Yakınlık yerleştirme grubu oluşturma
-      displayName: PPG aligned colocation co-location
+        - name: PowerShell
+          href: ./windows/tutorial-availability-sets.md
+        - name: Kullanılabilirlik kümesini değiştirme
+          href: ./windows/change-availability-set.md
+    - name: Kullanılabilirlik alanları
       items:
+        - name: Genel Bakış
+          href: ../availability-zones/az-overview.md?context=/azure/virtual-machines/context/context
+        - name: CLI
+          href: ./linux/create-cli-availability-zone.md
+        - name: PowerShell
+          href: ./windows/create-powershell-availability-zone.md
+        - name: Portal
+          href: ./windows/create-portal-availability-zone.md
+    - name: Yakınlık yerleştirme grupları
+      items:
+        - name: Genel Bakış
+          href: co-location.md
         - name: CLI
           href: ./linux/proximity-placement-groups.md
-        - name: Portal
-          href: ./windows/proximity-placement-groups-portal.md
         - name: PowerShell
           href: ./windows/proximity-placement-groups.md
-    - name: Kullanılabilirlik alanında VM oluşturma
-      href: ./linux/create-cli-availability-zone.md
+        - name: Portal
+          href: ./windows/proximity-placement-groups-portal.md
+    - name: Sanal Makine Ölçek Kümeleri
+      items:
+        - name: Genel Bakış
+          href: ../virtual-machine-scale-sets/overview.md?context=/azure/virtual-machines/context/context
+        - name: Otomatik Ölçeklendirme
+          href: ../virtual-machine-scale-sets/virtual-machine-scale-sets-autoscale-overview.md?context=/azure/virtual-machines/context/context
+        - name: Düzenleme modları
+          href: ../virtual-machine-scale-sets/virtual-machine-scale-sets-orchestration-modes.md?context=/azure/virtual-machines/context/context
+    - name: VM yeniden başlatmaları anlama
+      href: understand-vm-reboots.md
+    - name: Durumlar ve yaşam döngüsü
+      href: states-lifecycle.md
+    - name: Azure Bölgeleri
+      href: regions.md
 - name: Diskler
   items:
     - name: Yönetilen disklere giriş

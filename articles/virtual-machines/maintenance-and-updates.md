@@ -7,12 +7,12 @@ ms.workload: infrastructure-services
 ms.topic: conceptual
 ms.date: 05/22/2020
 ms.author: shants
-ms.openlocfilehash: 3cf126caaaa0c518574418aca194ebd82cc4d6b9
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 51df72e31acaadc83f4c094b99fa938377e5f023
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91972076"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102500011"
 ---
 # <a name="maintenance-for-virtual-machines-in-azure"></a>Azure’da sanal makineler için bakım
 
@@ -23,7 +23,7 @@ Güncelleştirmeler barındırılan VM 'Leri nadiren etkiler. Güncelleştirmele
 - Güncelleştirme için bir yeniden başlatma gerektirmiyorsa, konak güncelleştirilirken VM duraklatılır veya VM canlı olarak zaten güncelleştirilmiş bir konağa geçirilir. 
 - Bakım için yeniden başlatma gerekiyorsa, planlı bakım hakkında bilgilendirilirsiniz. Azure aynı zamanda, sizin için uygun bir zamanda bakımı kendiniz başlatabileceğinizi bir zaman penceresi sağlar. Bakım acil değilse, kendi kendine bakım penceresi genellikle 35 gün olur. Azure, planlı platform bakımının VM 'Lerin yeniden başlatılmasını gerektirdiği durum sayısını azaltmak için teknolojiden yatırım yapıyor. Planlı bakım yönetimi hakkında yönergeler için bkz. Azure [CLI](maintenance-notifications-cli.md), [PowerShell](maintenance-notifications-powershell.md) veya [Portal](maintenance-notifications-portal.md)kullanarak planlı bakım bildirimlerini işleme.
 
-Bu sayfa, Azure 'un her iki türde bakım gerçekleştirmesini açıklar. Planlanmamış Olaylar (kesintiler) hakkında daha fazla bilgi için bkz. [Windows Için VM 'lerin kullanılabilirliğini yönetme](./manage-availability.md) veya [Linux](./manage-availability.md)için ilgili makale.
+Bu sayfa, Azure 'un her iki türde bakım gerçekleştirmesini açıklar. Planlanmamış Olaylar (kesintiler) hakkında daha fazla bilgi için bkz. [Windows Için VM 'lerin kullanılabilirliğini yönetme](./availability.md) veya [Linux](./availability.md)için ilgili makale.
 
 Bir VM içinde, Windows veya [Linux](./linux/scheduled-events.md)için [zamanlanan olaylar kullanarak](./windows/scheduled-events.md) yaklaşan bakım hakkında bildirim alabilirsiniz.
 
@@ -61,7 +61,7 @@ Dinamik geçiş Ayrıca, Azure Machine Learning algoritmalarda olası bir donan�
 
 Planlanan bakım için VM 'Lerin yeniden başlatılması gereken nadir bir durumda, önceden bildirilir. Planlı bakım iki aşamaya sahiptir: Self Servis aşaması ve zamanlanmış bakım aşaması.
 
-Genellikle dört hafta içinde olan *self servis aşaması*sırasında, VM 'lerinize bakım başlatabilirsiniz. Self Servis 'nin bir parçası olarak, her bir VM 'yi sorgulayabilir ve son bakım isteğinizin sonucunu görebilirsiniz.
+Genellikle dört hafta içinde olan *self servis aşaması* sırasında, VM 'lerinize bakım başlatabilirsiniz. Self Servis 'nin bir parçası olarak, her bir VM 'yi sorgulayabilir ve son bakım isteğinizin sonucunu görebilirsiniz.
 
 Self servis bakımı 'nı başlattığınızda, VM 'niz zaten güncelleştirilmiş bir düğüme yeniden dağıtılır. VM yeniden başlatıldığında geçici disk kaybedilir ve sanal ağ arabirimiyle ilişkili dinamik IP adresleri güncelleştirilir.
 
@@ -87,7 +87,7 @@ Bir kullanılabilirlik kümesi içinde, tek tek VM 'Ler 20 güncelleştirme etki
 
 Sanal makine *Ölçek Kümeleri* , aynı VM 'lerin bir kümesini tek bir kaynak olarak dağıtmak ve yönetmek için kullanabileceğiniz bir Azure işlem kaynağıdır. Ölçek kümesi, bir kullanılabilirlik kümesindeki VM 'Ler gibi UDs 'lerde otomatik olarak dağıtılır. Kullanılabilirlik kümelerinde olduğu gibi, ölçek kümeleri kullandığınızda, zamanlanan bakım sırasında belirli bir zamanda yalnızca bir UD güncelleştirilir.
 
-Sanal makinelerinizi yüksek kullanılabilirlik için ayarlama hakkında daha fazla bilgi için bkz. [Windows Için sanal makinelerinizin kullanılabilirliğini yönetme](./manage-availability.md) veya [Linux](./manage-availability.md)için ilgili makale.
+Sanal makinelerinizi yüksek kullanılabilirlik için ayarlama hakkında daha fazla bilgi için bkz. [Windows Için sanal makinelerinizin kullanılabilirliğini yönetme](./availability.md) veya [Linux](./availability.md)için ilgili makale.
 
 #### <a name="availability-zones"></a>Kullanılabilirlik alanları
 
