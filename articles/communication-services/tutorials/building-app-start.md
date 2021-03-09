@@ -8,12 +8,12 @@ ms.author: nmurav
 ms.date: 01/03/2012
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 08fe9e56298218936e700518cdd150f54d7f01de
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: adb9ddee3d1caaac4c7530755b5e49ac50ab3181
+ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102425745"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102488877"
 ---
 # <a name="tutorial-prepare-a-web-app-for-azure-communication-services-nodejs"></a>Öğretici: Azure Iletişim Hizmetleri için bir Web uygulaması hazırlama (Node.js)
 
@@ -161,7 +161,7 @@ module.exports ={
     output: {
         filename:'app.js',
         path: path.resolve(__dirname, 'dist'),
-    }     
+    }
 }
 ```
 
@@ -218,7 +218,7 @@ Dosyanız şu şekilde görünmelidir:
 }
 ```
 
-NPM 'den kullanılabilecek komutu eklediniz. 
+NPM 'den kullanılabilecek komutu eklediniz.
 
 :::image type="content" source="./media/step-one-pic-12.png" alt-text="package.jsdeğişikliğini gösteren ekran görüntüsü.":::
 
@@ -327,7 +327,7 @@ Bu yapılandırma ile birleştirilecek `webpack.common.js` (giriş dosyasını b
 İçinde `package.json` , aşağıdaki kodu ekleyin:
 
 ```JavaScript
-"build:prod": "webpack --config webpack.prod.js" 
+"build:prod": "webpack --config webpack.prod.js"
 ```
 
 Dosyanız şu şekilde görünmelidir:
@@ -341,14 +341,14 @@ Dosyanız şu şekilde görünmelidir:
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build:dev": "webpack-dev-server --config webpack.dev.js",
-    "build:prod": "webpack --config webpack.prod.js" 
+    "build:prod": "webpack --config webpack.prod.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@azure/communication-calling": "^1.0.0-beta.3",
-    "@azure/communication-common": "^1.0.0-beta.3"
+    "@azure/communication-calling": "^1.0.0-beta.6",
+    "@azure/communication-common": "^1.0.0"
   },
   "devDependencies": {
     "webpack": "^4.42.0",
@@ -374,7 +374,7 @@ Komut `dist` içinde bir klasör ve üretime Ready bir `app.js` statik dosya olu
  
  
 ### <a name="deploy-your-app-to-azure-storage"></a>Uygulamanızı Azure Storage 'a dağıtma
- 
+
 `index.html`Klasörünü ve `app.css` klasörüne kopyalayın `dist` .
 
 `dist`Klasörde bir dosya oluşturun ve bu dosyayı adlandırın `404.html` . Aşağıdaki biçimlendirmeyi bu dosyaya kopyalayın:

@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 02/03/2021
-ms.openlocfilehash: b013c66feefade077c85194ba3b1ff04ff4c4aa5
-ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
+ms.openlocfilehash: 5a89e9ae05b0733c865d537ffeb1714d3b3ebef1
+ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99536841"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102489370"
 ---
 # <a name="creating-queries-in-azure-cognitive-search"></a>Azure Bilişsel Arama sorgu oluşturma
 
@@ -21,18 +21,21 @@ ms.locfileid: "99536841"
 
 ## <a name="whats-a-query-request"></a>Sorgu isteği nedir?
 
-Sorgu, tek bir arama dizininin docs koleksiyonuna yönelik salt okunurdur. ' Search ' parametresi olsa da bir ' queryType ' ve bir sorgu ifadesi belirtiyor. Sorgu ifadesi arama koşullarına, tırnak içine alınmış bir ifadeye ve işleçlere sahip olabilir.
+Sorgu, tek bir arama dizininin docs koleksiyonuna yönelik salt okunurdur. Bir ' Search ' parametresi, terimleri, tırnak içine alınmış tümcecikleri ve işleçleri içeren sorgu ifadesini içerir.
 
-Bir sorgu, dizinde bulunan eşleşmelerin sayısını döndürmek için ' Count ' öğesine de sahip olabilir, arama sonucunda hangi alanların döndürüleceğini seçmek için ' Seç ' ve sonuçları sıralamak için ' OrderBy '. Aşağıdaki örnek, kullanılabilir parametrelerin bir alt kümesini göstererek bir sorgu isteğine ilişkin genel bir fikir verir. Sorgu kompozisyonu hakkında daha fazla bilgi için bkz. [sorgu türleri ve kompozisyon](search-query-overview.md) ve [arama belgeleri (REST)](/rest/api/searchservice/search-documents).
+Ek parametreler sorgu ve yanıta daha fazla tanım sağlar. Örneğin, ' searchFields ' kapsamları belirli alanlara sorgu yürütmeyi sorgular, ' Select ' hangi alanların sonuçlarda döndürüleceğini belirtir ve ' Count ', dizinde bulunan eşleşmelerin sayısını döndürür.
+
+Aşağıdaki örnek, kullanılabilir parametrelerin bir alt kümesini göstererek bir sorgu isteğine ilişkin genel bir fikir verir. Sorgu kompozisyonu hakkında daha fazla bilgi için bkz. [sorgu türleri ve kompozisyon](search-query-overview.md) ve [arama belgeleri (REST)](/rest/api/searchservice/search-documents).
 
 ```http
 POST https://[service name].search.windows.net/indexes/hotels-sample-index/docs/search?api-version=2020-06-30
 {
-    "queryType": "simple"
-    "search": "`New York` +restaurant",
-    "select": "HotelId, HotelName, Description, Rating, Address/City, Tags",
-    "count": "true",
-    "orderby": "Rating desc"
+    "search": "NY +view",
+    "queryType": "simple",
+    "searchMode": "all",
+    "searchFields": "HotelName, Description, Address/City, Address/StateProvince, Tags",
+    "select": "HotelName, Description, Address/City, Address/StateProvince, Tags",
+    "count": "true"
 }
 ```
 

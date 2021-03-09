@@ -10,12 +10,12 @@ author: mokabiru
 ms.author: mokabiru
 ms.reviewer: MashaMSFT
 ms.date: 11/06/2020
-ms.openlocfilehash: ac8b0e0c2cdbd46626677f4be0f78800d839ad28
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: 67f5665225bc1297d0eb1b1e1da954fb47660dee
+ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97358903"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102488979"
 ---
 # <a name="migration-guide-sql-server-to-sql-managed-instance"></a>Geçiş Kılavuzu: SQL yönetilen örneğine SQL Server
 [!INCLUDE[appliesto-sqldb-sqlmi](../../includes/appliesto-sqlmi.md)]
@@ -57,6 +57,8 @@ Alternatif olarak, geçerli BT altyapınızı değerlendirmek için [Microsoft
 Bulma aşamasında kullanılabilecek araçlar hakkında daha fazla bilgi için bkz. [veri geçiş senaryoları için kullanılabilen hizmetler ve araçlar](../../../dms/dms-tools-matrix.md). 
 
 ### <a name="assess"></a>Değerlendirme 
+
+[!INCLUDE [assess-estate-with-azure-migrate](../../../../includes/azure-migrate-to-assess-sql-data-estate.md)]
 
 Veri kaynakları bulunana sonra, geçiş engelleyicileri veya uyumluluk sorunlarını belirlemek için Azure SQL yönetilen örneği 'ne geçirilebilecek tüm şirket içi SQL Server örneklerini değerlendirin. 
 
@@ -102,7 +104,7 @@ Bir SQL yönetilen örneği üzerinde iş yükünüzün performansını SQL Serv
 Bulma ve değerlendirme aşamasındaki bilgilere bağlı olarak, uygun boyutta bir hedef SQL yönetilen örneği oluşturun. [Azure Portal](../../managed-instance/instance-create-quickstart.md), [PowerShell](../../managed-instance/scripts/create-configure-managed-instance-powershell.md)veya bir [Azure Resource Manager (ARM) şablonu](../../managed-instance/create-template-quickstart.md)kullanarak bunu yapabilirsiniz. 
 
 
-## <a name="migrate"></a>Geçiş
+## <a name="migrate"></a>MongoDB v3.6 için Azure Cosmos DB API'sinin en son sürümünden yararlanmak için
 
 Geçiş öncesi aşamalarla ilişkili görevleri tamamladıktan sonra şema ve veri geçişini gerçekleştirmeye hazırlanın. 
 
@@ -144,14 +146,14 @@ Yedekleme ve geri yükleme kullanarak geçiş yapmak için şu adımları izleyi
 
 1. Veritabanınızı Azure Blob depolama alanına yedekleyin. Örneğin [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms)içindeki [URL 'ye yedekleme](/sql/relational-databases/backup-restore/sql-server-backup-to-url) kullanın. SQL Server 2012 SP1 CU2 UYGULAMAZSANıZ ' den önceki veritabanlarını desteklemek için [Microsoft Azure aracını](https://go.microsoft.com/fwlink/?LinkID=324399) kullanın. 
 1. SQL Server Management Studio kullanarak Azure SQL yönetilen örneğinizi bağlayın. 
-1. Veritabanı yedeklemelerinizle Azure Blob depolama hesabınıza erişmek için paylaşılan erişim Imzasını kullanarak bir kimlik bilgisi oluşturun. Örneğin:
+1. Veritabanı yedeklemelerinizle Azure Blob depolama hesabınıza erişmek için paylaşılan erişim Imzasını kullanarak bir kimlik bilgisi oluşturun. Örnek:
 
    ```sql
    CREATE CREDENTIAL [https://mitutorials.blob.core.windows.net/databases]
    WITH IDENTITY = 'SHARED ACCESS SIGNATURE'
    , SECRET = 'sv=2017-11-09&ss=bfqt&srt=sco&sp=rwdlacup&se=2028-09-06T02:52:55Z&st=2018-09-04T18:52:55Z&spr=https&sig=WOTiM%2FS4GVF%2FEEs9DGQR9Im0W%2BwndxW2CQ7%2B5fHd7Is%3D'
    ```
-1. Azure Storage blob kapsayıcısından yedeklemeyi geri yükleyin. Örneğin: 
+1. Azure Storage blob kapsayıcısından yedeklemeyi geri yükleyin. Örnek: 
 
     ```sql
    RESTORE DATABASE [TargetDatabaseName] FROM URL =

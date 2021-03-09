@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 03/05/2021
-ms.openlocfilehash: 8fdb6a53ed0fd64953b75238c3ba3df62c4b644e
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: 7f7a09b9e20b461a8a1e448bf4a7b0747a35fbb1
+ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102432953"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102487160"
 ---
 # <a name="create-a-semantic-query-in-cognitive-search"></a>Bilişsel Arama anlam sorgusu oluşturma
 
@@ -177,7 +177,7 @@ Aşağıdaki tablo, bir anlamsal sorgu için kullanılan sorgu parametrelerini �
 | queryType | Dize | Geçerli değerler basit, tam ve anlam içerir. Anlam sorguları için "anlam" değeri gereklidir. |
 | Sorgu dili | Dize | Anlam sorguları için gereklidir. Şu anda yalnızca "en-US" uygulandı. |
 | searchFields | Dize | Aranabilir alanların virgülle ayrılmış listesi. İsteğe bağlı ancak önerilir. Anlam derecelendirmenin gerçekleştiği alanları belirtir. </br></br>Basit ve tam sorgu türlerinin aksine, alanların listelenme sırası öncelik belirler.|
-| acağınız |Dize | Anlam yanıtlarının sonuca dahil edilip edilmeyeceğini belirtmek için isteğe bağlı alan. Şu anda yalnızca "extractive" uygulandı. Yanıtlar en fazla beş olacak şekilde yapılandırılabilir. Bu örnek "extractive|count3 "', üç yanıt sayısını gösterir. Varsayılan değer 1'dir.|
+| acağınız |Dize | Anlam yanıtlarının sonuca dahil edilip edilmeyeceğini belirtmek için isteğe bağlı alan. Şu anda yalnızca "extractive" uygulandı. Yanıtlar en fazla beş olacak şekilde yapılandırılabilir. Varsayılan değer bir. Bu örnek, üç yanıt sayısını gösterir: "extractive \| count3" '. |
 
 ## <a name="query-with-search-explorer"></a>Arama gezgini ile sorgulama
 
@@ -186,7 +186,7 @@ Aşağıdaki sorgu yerleşik oteller örnek dizinini, API sürüm 2020-06-30-ön
 ### <a name="with-querytypesemantic"></a>QueryType = anlam ile
 
 ```json
-search=I want a nice hotel on the water with a great restaurant&$select=HotelId,HotelName,Description,Tags&queryType=semantic&queryLanguage=english&searchFields=Description,Tags
+search=nice hotel on water with a great restaurant&$select=HotelId,HotelName,Description,Tags&queryType=semantic&queryLanguage=english&searchFields=Description,Tags
 ```
 
 İlk birkaç sonuç aşağıdaki gibidir.

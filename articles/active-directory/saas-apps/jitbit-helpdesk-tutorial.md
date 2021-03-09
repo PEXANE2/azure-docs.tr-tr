@@ -9,99 +9,76 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 03/14/2019
+ms.date: 03/02/2021
 ms.author: jeedes
-ms.openlocfilehash: a1f000572badcaa09c958c7ca19ed81c4d0603bb
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 26d9321f028bc8b9293e9d7d46616fff2f3b60ce
+ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92459518"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102486879"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-jitbit-helpdesk"></a>Öğretici: Jbıt yardım masanızla Azure Active Directory tümleştirme
 
-Bu öğreticide, Jbıt yardım masanızla Azure Active Directory (Azure AD) ile nasıl tümleştirileceğini öğreneceksiniz.
-Jbıt yardım masasına Azure AD ile tümleştirme aşağıdaki avantajları sağlar:
+Bu öğreticide, Jbıt yardım masanızla Azure Active Directory (Azure AD) ile nasıl tümleştirileceğini öğreneceksiniz. Jbıt yardım masasına Azure AD ile tümleştirdiğinizde şunları yapabilirsiniz:
 
-* Azure AD 'de, Jbıt yardım masasına erişimi olan denetim yapabilirsiniz.
-* Kullanıcılarınızın Azure AD hesaplarıyla Jbıt yardım masasına (çoklu oturum açma) otomatik olarak oturum açmasını sağlayabilirsiniz.
-* Hesaplarınızı tek bir merkezi konumda yönetebilirsiniz-Azure portal.
+* Azure AD 'de, Jbıt yardım masasına erişimi olan denetim.
+* Kullanıcılarınızın Azure AD hesaplarıyla Jbıt yardım masasına otomatik olarak oturum açmalarına olanak sağlayın.
+* Hesaplarınızı tek bir merkezi konumda yönetin-Azure portal.
 
-Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](../manage-apps/what-is-single-sign-on.md).
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
+## <a name="prerequisites"></a>Önkoşullar
 
-## <a name="prerequisites"></a>Ön koşullar
+Başlamak için aşağıdaki öğeler gereklidir:
 
-Azure AD tümleştirmesini Jbıt yardım masası ile yapılandırmak için aşağıdaki öğeler gereklidir:
-
-* Bir Azure AD aboneliği. Bir Azure AD ortamınız yoksa, [burada](https://azure.microsoft.com/pricing/free-trial/) bir aylık deneme sürümü edinebilirsiniz
-* Jbıt yardım masası çoklu oturum açma etkin abonelik
+* Bir Azure AD aboneliği. Aboneliğiniz yoksa [ücretsiz bir hesap](https://azure.microsoft.com/free/)alabilirsiniz.
+* Jbıbit yardım masası çoklu oturum açma (SSO) etkin aboneliği.
 
 ## <a name="scenario-description"></a>Senaryo açıklaması
 
 Bu öğreticide, Azure AD çoklu oturum açmayı bir test ortamında yapılandırıp test edersiniz.
 
-* Jbıt Yardım Masası **SP** tarafından başlatılan SSO 'yu destekler
+* Jbıt Yardım Masası **SP** tarafından başlatılan SSO 'yu destekler.
 
-## <a name="adding-jitbit-helpdesk-from-the-gallery"></a>Galeriden Jbıt yardım masası ekleme
+> [!NOTE]
+> Bu uygulamanın tanımlayıcısı, tek bir kiracıda yalnızca bir örneğin yapılandırılabilmesini sağlamak için sabit bir dize değeridir.
+
+## <a name="add-jitbit-helpdesk-from-the-gallery"></a>Galeriden Jbıt yardım masası ekleme
 
 Jbıt yardım masasının Azure AD ile tümleştirilmesini yapılandırmak için, Galeriden, yönetilen SaaS uygulamaları listenize Jbıt yardım masası eklemeniz gerekir.
 
-**Galeriden Jbıt yardım masası eklemek için aşağıdaki adımları uygulayın:**
+1. Azure portal iş veya okul hesabı ya da kişisel Microsoft hesabı kullanarak oturum açın.
+1. Sol gezinti bölmesinde **Azure Active Directory** hizmeti ' ni seçin.
+1. **Kurumsal uygulamalar** ' a gidin ve **tüm uygulamalar**' ı seçin.
+1. Yeni uygulama eklemek için **Yeni uygulama**' yı seçin.
+1. **Galeriden Ekle** bölümünde, arama kutusuna **Jbıt yardım masası** yazın.
+1. Sonuçlar panelinden **Jbıt yardım masası** ' nı seçin ve ardından uygulamayı ekleyin. Uygulama kiracınıza eklenirken birkaç saniye bekleyin.
 
-1. **[Azure Portal](https://portal.azure.com)** sol gezinti panelinde **Azure Active Directory** simgesine tıklayın.
+## <a name="configure-and-test-azure-ad-sso-for-jitbit-helpdesk"></a>Jbıt yardım masası için Azure AD SSO 'yu yapılandırma ve test etme
 
-    ![Azure Active Directory düğmesi](common/select-azuread.png)
+**B. Simon** adlı bir test kullanıcısı kullanarak, Jbım yardım MASANıZLA Azure AD SSO 'yu yapılandırın ve test edin. SSO 'nun çalışması için, Jbıt yardım masasının bir Azure AD kullanıcısı ve ilgili Kullanıcı arasında bağlantı ilişkisi oluşturmanız gerekir.
 
-2. **Kurumsal uygulamalar** ' a gidin ve **tüm uygulamalar** seçeneğini belirleyin.
+Azure AD SSO 'yu Jbıt yardım masası ile yapılandırmak ve test etmek için aşağıdaki adımları gerçekleştirin:
 
-    ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
+1. **[Azure AD SSO 'Yu yapılandırın](#configure-azure-ad-sso)** -kullanıcılarınızın bu özelliği kullanmasını sağlamak için.
+    1. Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -B. Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
+    1. Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanmak için B. Simon 'u etkinleştirmek için.
+1. **[Jbıt yardım masası SSO 'Yu yapılandırma](#configure-jitbit-helpdesk-sso)** -uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için.
+    1. **[Jbım yardım masası test kullanıcısı oluşturma](#create-jitbit-helpdesk-test-user)** -kullanıcının Azure AD gösterimine bağlı olan Jbım yardım masanızla birlikte B. Simon ' a karşılık gelen bir.
+1. **[Test SSO](#test-sso)** -yapılandırmanın çalışıp çalışmadığını doğrulamak için.
 
-3. Yeni uygulama eklemek için, iletişim kutusunun üst kısmındaki **Yeni uygulama** düğmesine tıklayın.
+## <a name="configure-azure-ad-sso"></a>Azure AD SSO’yu yapılandırma
 
-    ![Yeni uygulama düğmesi](common/add-new-app.png)
+Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
-4. Ara kutusuna **Jbıt yardım masası**yazın, sonuç panelinden **Jbıt yardım masası** ' nı seçin ve sonra uygulamayı eklemek için düğme **Ekle** ' ye tıklayın.
+1. Azure portal, **Jbıt yardım masası** uygulama tümleştirmesi sayfasında, **Yönet** bölümünü bulun ve **Çoklu oturum açma**' yı seçin.
+1. **Çoklu oturum açma yöntemi seçin** sayfasında **SAML**' yi seçin.
+1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, ayarları düzenlemek IÇIN **temel SAML yapılandırması** kalem simgesine tıklayın.
 
-     ![Sonuçlar listesinde jbıt yardım masası](common/search-new-app.png)
-
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma ve test etme
-
-Bu bölümde, Azure AD çoklu oturum açmayı, **Britta Simon**adlı bir test kullanıcısına göre Jbıt yardım masanızla yapılandırıp test edersiniz.
-Çoklu oturum açma için, bir Azure AD kullanıcısı ve Jbıt yardım masadaki ilgili Kullanıcı arasındaki bağlantı ilişkisinin kurulması gerekir.
-
-Azure AD çoklu oturum açmayı, Jbıt yardım masası ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını gerçekleştirmeniz gerekir:
-
-1. **[Azure AD çoklu oturum açma özelliğini yapılandırarak](#configure-azure-ad-single-sign-on)** kullanıcılarınızın bu özelliği kullanmasına olanak sağlayın.
-2. **[Jbıt yardım masası çoklu oturum açmayı yapılandırma](#configure-jitbit-helpdesk-single-sign-on)** -uygulama tarafında tek Sign-On ayarlarını yapılandırmak için.
-3. Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -Britta Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
-4. Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanarak Britta Simon 'u etkinleştirin.
-5. **[Jbıt yardım masası test kullanıcısı oluşturun](#create-jitbit-helpdesk-test-user)** . Bu, kullanıcının Azure AD gösterimine bağlı olan Jbıt yardım masasına Britta Simon 'un bir karşılığı.
-6. Yapılandırmanın çalışıp çalışmadığını doğrulamak için **[Çoklu oturum açmayı sınayın](#test-single-sign-on)** .
-
-### <a name="configure-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma
-
-Bu bölümde, Azure portal Azure AD çoklu oturum açma özelliğini etkinleştirirsiniz.
-
-Azure AD çoklu oturum açmayı Jbıt yardım masası ile yapılandırmak için aşağıdaki adımları uygulayın:
-
-1. [Azure Portal](https://portal.azure.com/), **Jbıt yardım masası** uygulama tümleştirmesi sayfasında, **Çoklu oturum açma**' yı seçin.
-
-    ![Çoklu oturum açma bağlantısını yapılandırma](common/select-sso.png)
-
-2. Çoklu oturum **açma yöntemi seç** iletişim kutusunda, çoklu oturum açmayı etkinleştirmek için **SAML/WS-Besme** modunu seçin.
-
-    ![Çoklu oturum açma seçme modu](common/select-saml-option.png)
-
-3. **SAML Ile tek Sign-On ayarlama** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
-
-    ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
+   ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
 
 4. **Temel SAML yapılandırması** bölümünde aşağıdaki adımları gerçekleştirin:
 
-    ![Jbıt yardım masası etki alanı ve URL 'Ler çoklu oturum açma bilgileri](common/sp-identifier.png)
-
-    a. **Oturum açma URL 'si** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:
+    a. **Oturum açma URL 'si** metin kutusunda, aşağıdaki kalıbı kullanarak URL 'lerden birini yazın:
     | |
     | ----------------------------------------|
     | `https://<hostname>/helpdesk/User/Login`|
@@ -111,7 +88,7 @@ Azure AD çoklu oturum açmayı Jbıt yardım masası ile yapılandırmak için 
     > [!NOTE] 
     > Bu değer gerçek değil. Bu değeri gerçek Sign-On URL 'siyle güncelleştirin. Bu değeri almak için, [Jbıt yardım masası istemci destek ekibine](https://www.jitbit.com/support/) başvurun.
 
-    b. **Tanımlayıcı (VARLıK kimliği)** metin kutusuna aşağıdaki şekılde bir URL yazın:`https://www.jitbit.com/web-helpdesk/`
+    b. **Tanımlayıcı (VARLıK kimliği)** metın kutusuna URL yazın:`https://www.jitbit.com/web-helpdesk/`
 
 5. **SAML Ile tek Sign-On ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, **sertifika (base64)** ' i gereksiniminize göre ve bilgisayarınıza kaydetmek için **İndir** ' e tıklayın.
 
@@ -121,86 +98,53 @@ Azure AD çoklu oturum açmayı Jbıt yardım masası ile yapılandırmak için 
 
     ![Yapılandırma URL 'Lerini Kopyala](common/copy-configuration-urls.png)
 
-    a. Oturum Açma URL’si
+### <a name="create-an-azure-ad-test-user"></a>Azure AD test kullanıcısı oluşturma
 
-    b. Azure AD tanımlayıcısı
+Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaksınız.
 
-    c. Oturum kapatma URL 'SI
+1. Azure portal sol bölmeden **Azure Active Directory**' i seçin, **Kullanıcılar**' ı seçin ve ardından **tüm kullanıcılar**' ı seçin.
+1. Ekranın üst kısmındaki **Yeni Kullanıcı** ' yı seçin.
+1. **Kullanıcı** özellikleri ' nde şu adımları izleyin:
+   1. **Ad** alanına `B.Simon` girin.  
+   1. **Kullanıcı adı** alanına, girin username@companydomain.extension . Örneğin, `B.Simon@contoso.com`.
+   1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
+   1. **Oluştur**’a tıklayın.
 
-### <a name="configure-jitbit-helpdesk-single-sign-on"></a>Jbıt yardım masası tek Sign-On yapılandırma
+### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
+
+Bu bölümde, Azure çoklu oturum açma özelliğini kullanarak Jon bit yardım masasına erişim izni vererek B. Simon 'u etkinleştireceksiniz.
+
+1. Azure portal **Kurumsal uygulamalar**' ı seçin ve ardından **tüm uygulamalar**' ı seçin.
+1. Uygulamalar listesinde, **Jbıt yardım masası**' nı seçin.
+1. Uygulamanın genel bakış sayfasında **Yönet** bölümünü bulun ve **Kullanıcılar ve gruplar**' ı seçin.
+1. **Kullanıcı Ekle**' yi seçin, sonra **atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar** ' ı seçin.
+1. **Kullanıcılar ve gruplar** iletişim kutusunda, kullanıcılar listesinden **B. Simon** ' ı seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
+1. Kullanıcılara bir rolün atanmasını bekliyorsanız, **Rol Seç** açılır listesinden bunu seçebilirsiniz. Bu uygulama için ayarlanmış bir rol yoksa, "varsayılan erişim" rolü seçili olduğunu görürsünüz.
+1. **Atama Ekle** Iletişim kutusunda **ata** düğmesine tıklayın.
+
+## <a name="configure-jitbit-helpdesk-sso"></a>Jbıt yardım masası SSO 'yu yapılandırma
 
 1. Farklı bir Web tarayıcısı penceresinde, Jbıt yardım masası şirket sitenizde yönetici olarak oturum açın.
 
 1. Üstteki araç çubuğunda **Yönetim**' e tıklayın.
 
-    ![Yönetim](./media/jitbit-helpdesk-tutorial/ic777681.png "Yönetim")
+    ![Yönetim](./media/jitbit-helpdesk-tutorial/settings.png "Yönetim")
 
 1. **Genel ayarlar**' a tıklayın.
 
-    ![Ekran görüntüsü Genel Ayarlar bağlantısını gösterir.](./media/jitbit-helpdesk-tutorial/ic777680.png "Kullanıcılar, şirketler ve izinler")
+    ![Ekran görüntüsü Genel Ayarlar bağlantısını gösterir.](./media/jitbit-helpdesk-tutorial/general.png "Kullanıcılar, şirketler ve izinler")
 
 1. **Kimlik doğrulama ayarları** yapılandırması bölümünde aşağıdaki adımları uygulayın:
 
-    ![Kimlik doğrulaması ayarları](./media/jitbit-helpdesk-tutorial/ic777683.png "Kimlik doğrulaması ayarları")
+    ![Kimlik doğrulaması ayarları](./media/jitbit-helpdesk-tutorial/authentication.png "Kimlik doğrulaması ayarları")
 
-    a. **Onelogin**ile tek Sign-On (SSO) kullanarak oturum açmak için **SAML 2,0 çoklu oturum açmayı etkinleştir**' i seçin.
+    a. **Onelogin** ile tek Sign-On (SSO) kullanarak oturum açmak için **SAML 2,0 çoklu oturum açmayı etkinleştir**' i seçin.
 
     b. **Uç nokta URL** metin kutusunda, Azure Portal kopyaladığınız **oturum açma URL 'si** değerini yapıştırın.
 
     c. **Base-64** kodlu sertifikanızı Not defteri 'nde açın, bu içeriği panonuza kopyalayın ve **X. 509.440 sertifikası** metin kutusuna yapıştırın
 
     d. **Değişiklikleri Kaydet**' e tıklayın.
-
-### <a name="create-an-azure-ad-test-user"></a>Azure AD test kullanıcısı oluşturma
-
-Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı oluşturmaktır.
-
-1. Azure portal, sol bölmedeki **Azure Active Directory**' i seçin, **Kullanıcılar**' ı seçin ve ardından **tüm kullanıcılar**' ı seçin.
-
-    !["Kullanıcılar ve gruplar" ve "tüm kullanıcılar" bağlantıları](common/users.png)
-
-2. Ekranın üst kısmındaki **Yeni Kullanıcı** ' yı seçin.
-
-    ![Yeni Kullanıcı düğmesi](common/new-user.png)
-
-3. Kullanıcı Özellikleri ' nde aşağıdaki adımları gerçekleştirin.
-
-    ![Kullanıcı iletişim kutusu](common/user-properties.png)
-
-    a. **Ad** alanına **Brittasıon**girin.
-  
-    b. **Kullanıcı adı** alan türü**brittasimon@yourcompanydomain.extension**  
-    Örneğin, BrittaSimon@contoso.com
-
-    c. **Parolayı göster** onay kutusunu seçin ve ardından parola kutusunda görüntülenen değeri yazın.
-
-    d. **Oluştur**’a tıklayın.
-
-### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
-
-Bu bölümde, Azure çoklu oturum açma özelliğini kullanarak, Jbıt yardım masasına erişim izni vererek Britta Simon 'u etkinleştirin.
-
-1. Azure portal **Kurumsal uygulamalar**' ı seçin, **tüm uygulamalar**' ı seçin ve ardından **jbıt yardım masası**' nı seçin
-
-    ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
-
-2. Uygulamalar listesinde, **Jbıt yardım masası**' nı seçin.
-
-    ![Uygulamalar listesinde Jbıt yardım masası bağlantısı](common/all-applications.png)
-
-3. Soldaki menüde **Kullanıcılar ve gruplar**' ı seçin.
-
-    !["Kullanıcılar ve gruplar" bağlantısı](common/users-groups-blade.png)
-
-4. **Kullanıcı Ekle** düğmesine tıklayın, sonra **atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar** ' ı seçin.
-
-    ![Atama Ekle bölmesi](common/add-assign-user.png)
-
-5. **Kullanıcılar ve gruplar** Iletişim kutusunda kullanıcılar listesinde **Britta Simon** ' ı seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
-
-6. SAML onaylama işlemi içinde herhangi bir rol değeri bekliyorsanız, **Rol Seç** iletişim kutusunda, listeden Kullanıcı için uygun rolü seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
-
-7. **Atama Ekle** Iletişim kutusunda **ata** düğmesine tıklayın.
 
 ### <a name="create-jitbit-helpdesk-test-user"></a>Jbıt yardım masası test kullanıcısı oluşturma
 
@@ -212,43 +156,43 @@ Azure AD kullanıcılarının, Jbıt yardım masasına oturum açmasını sağla
 
 1. Üstteki menüde **Yönetim**' e tıklayın.
 
-    ![Yönetim](./media/jitbit-helpdesk-tutorial/ic777681.png "Yönetim")
+    ![Yönetim](./media/jitbit-helpdesk-tutorial/settings.png "Yönetim")
 
 1. **Kullanıcılar, şirketler ve izinler**' e tıklayın.
 
-    ![Kullanıcılar, şirketler ve izinler](./media/jitbit-helpdesk-tutorial/ic777682.png "Kullanıcılar, şirketler ve izinler")
+    ![Kullanıcılar, şirketler ve izinler](./media/jitbit-helpdesk-tutorial/users.png "Kullanıcılar, şirketler ve izinler")
 
 1. **Kullanıcı Ekle**' ye tıklayın.
 
-    ![Kullanıcı ekle](./media/jitbit-helpdesk-tutorial/ic777685.png "Kullanıcı ekleme")
+    ![Kullanıcı ekle](./media/jitbit-helpdesk-tutorial/add.png "Kullanıcı ekleme")
 
 1. Oluştur bölümünde, sağlamak istediğiniz Azure AD hesabının verilerini aşağıdaki gibi yazın:
 
-    ![Oluştur](./media/jitbit-helpdesk-tutorial/ic777686.png "Oluştur")
+    ![Oluştur](./media/jitbit-helpdesk-tutorial/create-section.png "Oluştur")
 
-   a. Kullanıcı **adı** metin kutusuna, **Brittasıon**gibi kullanıcının Kullanıcı adını yazın.
+   a. Kullanıcı **adı** metin kutusuna, **Brittasıon** gibi kullanıcının Kullanıcı adını yazın.
 
    b. **E-posta** metin kutusuna, gibi kullanıcının e-postasını yazın **BrittaSimon@contoso.com** .
 
-   c. **Ilk ad** metin kutusuna, **Britta**gibi kullanıcının adını yazın.
+   c. **Ilk ad** metin kutusuna, **Britta** gibi kullanıcının adını yazın.
 
-   d. **Soyadı** metin kutusunda, **Simon**adlı kullanıcının soyadını yazın.
+   d. **Soyadı** metin kutusunda, **Simon** adlı kullanıcının soyadını yazın.
 
    e. **Oluştur**’a tıklayın.
 
 > [!NOTE]
 > Azure AD Kullanıcı hesaplarını sağlamak için, jbıx yardım masası tarafından sunulan diğer bir Jbım Yardım Masası Kullanıcı hesabı oluşturma araçlarını veya API 'Leri kullanabilirsiniz.
 
-### <a name="test-single-sign-on"></a>Çoklu oturum açma testi
+## <a name="test-sso"></a>Test SSO 'SU
 
-Bu bölümde, erişim panelini kullanarak Azure AD çoklu oturum açma yapılandırmanızı test edersiniz.
+Bu bölümde, Azure AD çoklu oturum açma yapılandırmanızı aşağıdaki seçeneklerle test edersiniz. 
 
-Erişim panelinde Jbıt yardım masası kutucuğuna tıkladığınızda, SSO 'yu ayarladığınız Jbıt yardım masasına otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](../user-help/my-apps-portal-end-user-access.md).
+* Azure portal içinde **Bu uygulamayı test et** ' e tıklayın. Bu, oturum açma akışını başlatabileceğiniz Jbıt yardım masası oturum açma URL 'sine yeniden yönlendirilir. 
 
-## <a name="additional-resources"></a>Ek Kaynaklar
+* Jbıt yardım masası oturum açma URL 'sine doğrudan gidin ve oturum akışını buradan başlatın.
 
-- [SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](./tutorial-list.md)
+* Microsoft My Apps ' i kullanabilirsiniz. Uygulamalarım içindeki Jbım yardım masası kutucuğuna tıkladığınızda bu işlem, Jbım yardım masası oturum açma URL 'sine yönlendirilir. Uygulamalarım hakkında daha fazla bilgi için bkz. [uygulamalarıma giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](../manage-apps/what-is-single-sign-on.md)
+## <a name="next-steps"></a>Sonraki adımlar
 
-- [Azure Active Directory Koşullu erişim nedir?](../conditional-access/overview.md)
+Jbıt yardım masası 'nı yapılandırdıktan sonra, kuruluşunuzun hassas verilerinin gerçek zamanlı olarak ayıklanmasını ve zaman korumasını koruyan oturum denetimini zorunlu kılabilirsiniz. Oturum denetimi koşullu erişimden genişletiliyor. [Microsoft Cloud App Security ile oturum denetimini nasıl zorlayacağınızı öğrenin](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).

@@ -5,20 +5,20 @@ author: markjbrown
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: how-to
-ms.date: 09/10/2020
+ms.date: 01/06/2021
 ms.author: mjbrown
 ms.custom: devx-track-python, devx-track-js, devx-track-csharp, "seo-nov-2020"
-ms.openlocfilehash: 6f71f4c0ec353f36614ea6dcabf4d698b31baacb
-ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
+ms.openlocfilehash: 08d50b18605fd833e6b0efca987338d0ca1eef8d
+ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94336735"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102488520"
 ---
 # <a name="configure-multi-region-writes-in-your-applications-that-use-azure-cosmos-db"></a>Azure Cosmos DB kullanan uygulamalarınızda çok bölgeli yazmaları yapılandırma
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
-Birden fazla yazma bölgesi etkinken bir hesap oluşturulduktan sonra, Azure Cosmos DB içinde çok bölgeli yazma ve çok parçalı özellikleri etkinleştirmek üzere, uygulamanızda, DocumentClient için ConnectionPolicy için iki değişiklik yapmanız gerekir. ConnectionPolicy içinde UseMultipleWriteLocations öğesini true olarak ayarlayın ve uygulamanın SetCurrentLocation 'a dağıtıldığı bölgenin adını geçirin. Bu işlem, PreferredLocations özelliğini geçirilen konumdan coğrafi yakınlık temelinde doldurur. Yeni bir bölge daha sonra hesaba eklenirse, uygulamanın güncellenmesi veya yeniden dağıtılması gerekmez, daha yakın bölgeyi otomatik olarak algılar ve bölgesel bir olay oluşması gerekir.
+Birden fazla yazma bölgesi etkinken bir hesap oluşturulduktan sonra, Azure Cosmos DB içinde çok bölgeli yazmaları etkinleştirmek üzere Cosmos istemcisinin ConnectionPolicy öğesinde uygulamanızda iki değişiklik yapmanız gerekir. ConnectionPolicy içinde UseMultipleWriteLocations öğesini true olarak ayarlayın ve uygulamanın ApplicationRegion 'a dağıtıldığı bölgenin adını geçirin. Bu işlem, PreferredLocations özelliğini geçirilen konumdan coğrafi yakınlık temelinde doldurur. Yeni bir bölge daha sonra hesaba eklenirse, uygulamanın güncellenmesi veya yeniden dağıtılması gerekmez, daha yakın bölgeyi otomatik olarak algılar ve bölgesel bir olay oluşması gerekir.
 
 > [!Note]
 > Başlangıçta tek bir yazma bölgesi ile yapılandırılan Cosmos hesapları, sıfır saati olan birden fazla yazma bölgesine yapılandırılabilir. Daha fazla bilgi edinmek için bkz. [birden çok yazma bölgelerini yapılandırma](how-to-manage-database-account.md#configure-multiple-write-regions)
@@ -31,7 +31,7 @@ Azure portal çok bölgeli yazmaları etkinleştirmek için aşağıdaki adımla
 
 1. Azure Cosmos hesabınıza gidin ve menüden **verileri küresel olarak Çoğalt** bölmesini açın.
 
-1. **Çok bölgeli yazma** seçeneği altında **Etkinleştir** ' i seçin. Otomatik olarak, mevcut bölgeleri okuma ve yazma bölgelerine ekler.
+1. **Çok bölgeli yazma** seçeneği altında **Etkinleştir**' i seçin. Otomatik olarak, mevcut bölgeleri okuma ve yazma bölgelerine ekler.
 
 1. Haritadaki simgeleri seçerek veya **bölge Ekle** düğmesini seçerek ek bölgeler ekleyebilirsiniz. Eklediğiniz tüm bölgelerde hem okuma hem de yazma işlemleri etkinleştirilir.
 
@@ -126,7 +126,7 @@ const client = new CosmosClient({
 });
 ```
 
-## <a name="python-sdk"></a><a id="python"></a>Python SDK'sı
+## <a name="python-sdk"></a><a id="python"></a>Python SDK 'Sı
 
 Uygulamanızda çok bölgeli yazmaları etkinleştirmek için `connection_policy.UseMultipleWriteLocations` olarak ayarlayın `true` . Ayrıca, `connection_policy.PreferredLocations` uygulamanın dağıtıldığı bölgeye ve Cosmos DB nerede çoğaltıldığına ayarlanır.
 

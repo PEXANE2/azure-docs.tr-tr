@@ -66,40 +66,46 @@
               href: connect-aws.md
             - name: Azure Active Directory
               href: connect-azure-active-directory.md
-            - name: Office 365 (şimdi Teams ile!)
-              href: connect-office-365.md
-            - name: Dynamics 365 (yeni!)
-              href: connect-dynamics-365.md
-            - name: Cloud App Security
-              href: connect-cloud-app-security.md
             - name: Azure Etkinlik Günlüğü
               href: connect-azure-activity.md
             - name: Azure AD Kimlik Koruması
               href: connect-azure-ad-identity-protection.md
-            - name: Azure Information Protection
-              href: connect-azure-information-protection.md
-            - name: Microsoft 365 Defender
-              href: connect-microsoft-365-defender.md
-            - name: Uç nokta için Microsoft Defender (eski adıyla MDATP)
-              href: connect-microsoft-defender-advanced-threat-protection.md
-            - name: Kimlik için Microsoft Defender (eski adıyla Azure ATP)
-              href: connect-azure-atp.md
-            - name: Office 365 için Microsoft Defender (eski adıyla Office 365 ATP)
-              href: connect-office-365-advanced-threat-protection.md
             - name: ASC’den gelen Azure Defender uyarıları
               href: connect-azure-security-center.md
-            - name: IoT için Defender (daha önce IoT için ASC)
-              href: connect-asc-iot.md
             - name: Azure DDoS Koruması
               href: connect-azure-ddos-protection.md
             - name: Azure Güvenlik Duvarı
               href: connect-azure-firewall.md
-            - name: Azure Web Uygulaması Güvenlik Duvarı (WAF)
-              href: connect-azure-waf.md
+            - name: Azure Information Protection
+              href: connect-azure-information-protection.md
+            - name: Azure Key Vault
+              href: connect-azure-key-vault.md
+            - name: Azure Kubernetes Service (AKS)
+              href: connect-azure-kubernetes-service.md
             - name: Azure SQL veritabanı günlükleri
               href: connect-azure-sql-logs.md
+            - name: Azure Web Uygulaması Güvenlik Duvarı (WAF)
+              href: connect-azure-waf.md
+            - name: IoT için Defender (daha önce IoT için ASC)
+              href: connect-asc-iot.md
             - name: Etki alanı adı sunucusu
               href: connect-dns.md
+            - name: Dynamics 365 (yeni!)
+              href: connect-dynamics-365.md
+            - name: Microsoft 365 Defender
+              href: connect-microsoft-365-defender.md
+              expanded: true
+              items:
+                - name: Cloud App Security
+                  href: connect-cloud-app-security.md
+                - name: Uç nokta için Microsoft Defender (eski adıyla MDATP)
+                  href: connect-microsoft-defender-advanced-threat-protection.md
+                - name: Kimlik için Microsoft Defender (eski adıyla Azure ATP)
+                  href: connect-azure-atp.md
+                - name: Office 365 için Microsoft Defender (eski adıyla Office 365 ATP)
+                  href: connect-office-365-advanced-threat-protection.md
+            - name: Office 365 (şimdi Teams ile!)
+              href: connect-office-365.md
             - name: Windows güvenlik duvarı
               href: connect-windows-firewall.md
             - name: Windows güvenlik olayları

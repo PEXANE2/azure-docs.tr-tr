@@ -8,12 +8,12 @@ ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.topic: conceptual
 ms.date: 03/08/2021
-ms.openlocfilehash: c24512ad38f9397c9a40a85489c45fcb0de906b3
-ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
+ms.openlocfilehash: 66294e3c59c2252042e30864dd220683106cd574
+ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "102453810"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102485393"
 ---
 # <a name="whats-new-in-azure-sentinel"></a>Azure Sentinel 'deki yenilikler
 
@@ -29,6 +29,32 @@ Belirtilen özellikler Şu anda ÖNIZLEME aşamasındadır. [Azure önizleme ek 
 >
 > Ayrıca katkıda bulunabilirsiniz! [Azure Sentinel tehdit arayıcılar GitHub Community](https://github.com/Azure/Azure-Sentinel/wiki)' de bize katılarak.
 > 
+
+## <a name="march-2021"></a>Mart 2021
+
+- [Microsoft 365 Defender olay tümleştirmesi](#microsoft-365-defender-incident-integration) (Genel Önizleme)
+- [Azure Ilkesi kullanarak yeni Microsoft hizmet bağlayıcıları](#new-microsoft-service-connectors-using-azure-policy)
+
+### <a name="microsoft-365-defender-incident-integration"></a>Microsoft 365 Defender olay tümleştirmesi
+
+Azure Sentinel [Microsoft 365 Defender (M365D)](/microsoft-365/security/mtp/microsoft-threat-protection) olay tümleştirmesi, tüm M365D olaylarını Azure Sentinel 'e akışını ve her iki Portal arasında eşitlenmesini sağlar. M365D (eski adıyla Microsoft tehdit koruması veya MTP) olayları, ilişkili tüm uyarıları, varlıkları ve ilgili bilgileri içerir ve Azure Sentinel 'de önceliklendirme ve ön araştırma gerçekleştirmek için yeterli bağlam sağlar. Sentinel 'de, olaylar M365D ile eşitlenmiş olarak kalır ve olay araştırmanızda her iki portalın avantajlarından yararlanmanızı sağlar.
+
+Hem Azure Sentinel hem de Microsoft 365 Defender 'ın birlikte kullanılması, her iki dünyanın da en iyi şekilde yararlanmanızı sağlar. Bir SıEM 'nin kuruluşunuzun tüm bilgi kaynakları kapsamında size sahip olduğunu ve ayrıca bir XDR 'nin Microsoft 365 kaynaklarınızı korumak için sunduğu özelleştirilmiş ve özel araştırma gücünün derinliğine sahip olduğunu ve bunların her ikisi de bu koordine ve sorunsuz SOC işlemleri için eşitlenmiş olduğunu elde edersiniz.
+
+Daha fazla bilgi için bkz. [Azure Sentinel ile Microsoft 365 Defender tümleştirmesi](microsoft-365-defender-sentinel-integration.md).
+
+### <a name="new-microsoft-service-connectors-using-azure-policy"></a>Azure Ilkesi kullanarak yeni Microsoft hizmet bağlayıcıları
+
+[Azure ilkesi](../governance/policy/overview.md) , bir kaynağın özelliklerini zorlamak ve denetlemek için ilkeleri kullanmanıza olanak tanıyan bir Azure hizmetidir. İlkelerin kullanımı, kaynakların BT idare standartlarınızla uyumlu kalmasını sağlar.
+
+İlkeler tarafından denetlenebilecek kaynakların özellikleri arasında, tanılama ve denetim günlüklerinin oluşturulması ve işlenmesi vardır. Azure Sentinel, günlükleri Azure Sentinel 'e almak istediğiniz belirli bir türün tüm (geçerli ve gelecekteki) kaynaklarına ortak bir tanılama günlüğü ayarı uygulamanızı sağlamak için Azure Ilkesini kullanıyor. Azure Ilkesi sayesinde, artık tanılama günlükleri ayarları kaynağını kaynağa göre ayarlamanız gerekmez.
+
+Azure Ilke tabanlı bağlayıcılar artık aşağıdaki Azure hizmetleri için kullanılabilir:
+- [Azure Key Vault](connect-azure-key-vault.md) (Genel Önizleme)
+- [Azure Kubernetes hizmeti](connect-azure-kubernetes-service.md) (Genel Önizleme)
+- Azure SQL veritabanları/sunucuları (GA)
+
+Müşteriler yine de belirli örnekler için günlükleri el ile gönderebilecektir ve ilke altyapısını kullanmak zorunda kalmaz.
 
 ## <a name="february-2021"></a>Şubat 2021
 
@@ -86,7 +112,7 @@ Daha fazla bilgi için bkz.
 - [Symantec Endpoint Protection](connect-data-sources.md)
 - [Thycotic Secret Server](connect-thycotic-secret-server.md)
 - [Eğilim mikro XDR](connect-data-sources.md)
-- [VMWare ESXi](connect-vmware-esxi.md)
+- [VMware ESXi](connect-vmware-esxi.md)
 
 ### <a name="ueba-insights-in-the-entity-page"></a>Varlık sayfasında UEBA öngörüleri
 

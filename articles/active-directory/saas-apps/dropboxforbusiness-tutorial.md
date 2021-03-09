@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 01/28/2021
+ms.date: 02/17/2021
 ms.author: jeedes
-ms.openlocfilehash: c5bdab2038f2f41c7240addaff99bd831d29f489
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: d4c9d2e290f6a8f07878a019b755c8add2ab69ea
+ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101643822"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102488485"
 ---
 # <a name="tutorial-integrate-dropbox-business-with-azure-active-directory"></a>Öğretici: Dropbox Işletmelerini Azure Active Directory ile tümleştirme
 
@@ -38,9 +38,9 @@ Başlamak için aşağıdaki öğeler gereklidir:
 
 ## <a name="scenario-description"></a>Senaryo açıklaması
 
-* Bu öğreticide, Azure AD SSO 'yu bir test ortamında yapılandırıp test edersiniz. Dropbox Business, **SP** tarafından başlatılan SSO 'yu destekler
+* Bu öğreticide, Azure AD SSO 'yu bir test ortamında yapılandırıp test edersiniz. Dropbox Business, **SP** tarafından başlatılan SSO 'yu destekler.
 
-* Dropbox Işi [Otomatik Kullanıcı sağlamayı ve sağlamayı kaldırmayı](dropboxforbusiness-tutorial.md) destekler
+* Dropbox Işi [Otomatik Kullanıcı sağlamayı ve sağlamayı kaldırmayı](dropboxforbusiness-tutorial.md)destekler.
 
 > [!NOTE]
 > Bu uygulamanın tanımlayıcısı, tek bir kiracıda yalnızca bir örneğin yapılandırılabilmesini sağlamak için sabit bir dize değeridir.
@@ -82,11 +82,11 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 1. **Temel SAML yapılandırması** sayfasında, aşağıdaki alanlar için değerleri girin:
 
     a. **Oturum açma URL 'si** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:`https://www.dropbox.com/sso/<id>`
-
-    b. **Tanımlayıcı (VARLıK kimliği)** metin kutusuna şu değeri yazın:`Dropbox`
-
+    
+     b. **Tanımlayıcı (VARLıK kimliği)** metin kutusuna şu değeri yazın:`Dropbox`
+    
     > [!NOTE]
-    > Yukarıdaki oturum açma URL 'SI değeri gerçek bir değer değil. Değeri, Öğreticinin ilerleyen kısımlarında açıklanan gerçek oturum açma URL 'siyle güncellecektir.
+    > Dropbox **IŞARETI SSO kimliği** , Dropbox sitesindeki Dropbox sitesinde bulunabilir > yönetici konsolu > ayarlar > çoklu oturum açma > SSO oturum açma URL 'si.
 
 1. **SAML Ile tek Sign-On ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, **sertifika (base64)** ' i gereksiniminize göre ve bilgisayarınıza kaydetmek için **İndir** ' e tıklayın.
 
@@ -137,23 +137,23 @@ Bu bölümde, Dropbox Business 'a erişim vererek Azure çoklu oturum açma öze
 
 4. **Kullanıcı simgesine** tıklayın ve **Ayarlar** sekmesini seçin.
 
-    !["Kullanıcı SIMGESI" eylemini ve "ayarları" seçili olduğunu gösteren ekran görüntüsü.](./media/dropboxforbusiness-tutorial/configure1.png "Çoklu oturum açmayı yapılandırma")
+    !["Kullanıcı SIMGESI" eylemini ve "ayarları" seçili olduğunu gösteren ekran görüntüsü.](./media/dropboxforbusiness-tutorial/configure-1.png "Çoklu oturum açmayı yapılandırma")
 
 5. Sol taraftaki Gezinti bölmesinde, **Yönetim Konsolu**' na tıklayın.
 
-    !["Yönetici Konsolu" nin seçili olduğunu gösteren ekran görüntüsü.](./media/dropboxforbusiness-tutorial/configure2.png "Çoklu oturum açmayı yapılandırma")
+    !["Yönetici Konsolu" nin seçili olduğunu gösteren ekran görüntüsü.](./media/dropboxforbusiness-tutorial/configure-2.png "Çoklu oturum açmayı yapılandırma")
 
 6. **Yönetim konsolunda**, sol gezinti bölmesinde **Ayarlar** ' a tıklayın.
 
-    !["Ayarlar" ın seçili olduğunu gösteren ekran görüntüsü.](./media/dropboxforbusiness-tutorial/configure3.png "Çoklu oturum açmayı yapılandırma")
+    !["Ayarlar" ın seçili olduğunu gösteren ekran görüntüsü.](./media/dropboxforbusiness-tutorial/configure-3.png "Çoklu oturum açmayı yapılandırma")
 
 7. **Kimlik doğrulama** bölümünde **Çoklu oturum açma** seçeneğini belirleyin.
 
-    !["Çoklu oturum açma" seçiliyken "kimlik doğrulama" bölümünü gösteren ekran görüntüsü.](./media/dropboxforbusiness-tutorial/configure4.png "Çoklu oturum açmayı yapılandırma")
+    !["Çoklu oturum açma" seçiliyken "kimlik doğrulama" bölümünü gösteren ekran görüntüsü.](./media/dropboxforbusiness-tutorial/configure-4.png "Çoklu oturum açmayı yapılandırma")
 
 8. **Çoklu oturum açma** bölümünde aşağıdaki adımları gerçekleştirin:  
 
-    !["Çoklu oturum açma" yapılandırma ayarlarını gösteren ekran görüntüsü.](./media/dropboxforbusiness-tutorial/configure5.png "Çoklu oturum açmayı yapılandırma")
+    !["Çoklu oturum açma" yapılandırma ayarlarını gösteren ekran görüntüsü.](./media/dropboxforbusiness-tutorial/configure-5.png "Çoklu oturum açmayı yapılandırma")
 
     a. **Çoklu oturum açma** için açılan listeden bir seçenek olarak **gerekli** ' ı seçin.
 
@@ -174,7 +174,7 @@ Bu bölümde, Dropbox Business 'ta B. Simon adlı bir Kullanıcı oluşturulur. 
 >[!Note]
 >Bir kullanıcıyı el ile oluşturmanız gerekiyorsa, [Dropbox Iş istemci destek ekibine](https://www.dropbox.com/business/contact) başvurun
 
-### <a name="test-sso"></a>Test SSO 'SU
+## <a name="test-sso"></a>Test SSO 'SU
 
 Bu bölümde, Azure AD çoklu oturum açma yapılandırmanızı aşağıdaki seçeneklerle test edersiniz. 
 
@@ -186,4 +186,4 @@ Bu bölümde, Azure AD çoklu oturum açma yapılandırmanızı aşağıdaki se�
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Dropbox Işletmelerini yapılandırdıktan sonra, kuruluşunuzun hassas verilerinin gerçek zamanlı olarak ayıklanmasını ve zaman korumasını koruyan oturum denetimini zorunlu kılabilirsiniz. Oturum denetimi koşullu erişimden genişletiliyor. [Microsoft Cloud App Security ile oturum denetimini nasıl zorlayacağınızı öğrenin](/cloud-app-security/proxy-deployment-any-app).
+Dropbox Işletmelerini yapılandırdıktan sonra, kuruluşunuzun hassas verilerinin gerçek zamanlı olarak ayıklanmasını ve zaman korumasını koruyan oturum denetimini zorunlu kılabilirsiniz. Oturum denetimi koşullu erişimden genişletiliyor. [Microsoft Cloud App Security ile oturum denetimini nasıl zorlayacağınızı öğrenin](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).

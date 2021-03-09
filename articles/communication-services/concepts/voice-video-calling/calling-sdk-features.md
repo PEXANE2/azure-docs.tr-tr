@@ -9,16 +9,17 @@ ms.author: mikben
 ms.date: 03/04/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 54f3f075e9bf8bce9d8fb01a28f0f81dd3a930aa
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.openlocfilehash: fe1e08434a9137fced3dc8aa061affc2d6580b67
+ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102218426"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102489285"
 ---
 # <a name="calling-client-library-overview"></a>Arama istemci kitaplığına genel bakış
 
 [!INCLUDE [Public Preview Notice](../../includes/public-preview-include.md)]
+
 
 İstemci kitaplıkları, *istemciler* ve hizmetler için iki ayrı iki farklı aileleri vardır *.* Şu anda kullanılabilir olan istemci kitaplıkları son kullanıcı deneyimleri için tasarlanmıştır: Web siteleri ve yerel uygulamalar.
 
@@ -28,12 +29,12 @@ Hizmet istemci kitaplıkları henüz kullanılabilir değildir ve botların ve d
 
 Aşağıdaki liste, şu anda istemci kitaplıklarını çağıran Azure Iletişim hizmetlerinde bulunan özellik kümesini gösterir.
 
-| Özellik grubu | Özellik                                                                                                          | JS  | Java (Android) | Objective-C (iOS) 
+| Özellik grubu | Özellik                                                                                                          | JS  | Java (Android) | Objective-C (iOS)
 | ----------------- | ------------------------------------------------------------------------------------------------------------------- | ---  | -------------- | -------------
-| Temel yetenekler | İki kullanıcı arasında bire bir çağrı yerleştir                                                                           | ✔️   | ✔️            | ✔️  
-|                   | İkiden fazla kullanıcısı olan bir grup çağrısı Yerleştir (en fazla 350 Kullanıcı)                                                       | ✔️   | ✔️            | ✔️ 
-|                   | İki kullanıcıyla daha fazla kullanıcı içeren bir grup çağrısında bir tek-bir çağrıyı yükseltin                                 | ✔️   | ✔️            | ✔️ 
-|                   | Başlatıldıktan sonra bir grup çağrısına katılır                                                                              | ✔️   | ✔️            | ✔️ 
+| Temel yetenekler | İki kullanıcı arasında bire bir çağrı yerleştir                                                                           | ✔️   | ✔️            | ✔️
+|                   | İkiden fazla kullanıcısı olan bir grup çağrısı Yerleştir (en fazla 350 Kullanıcı)                                                       | ✔️   | ✔️            | ✔️
+|                   | İki kullanıcıyla daha fazla kullanıcı içeren bir grup çağrısında bir tek-bir çağrıyı yükseltin                                 | ✔️   | ✔️            | ✔️
+|                   | Başlatıldıktan sonra bir grup çağrısına katılır                                                                              | ✔️   | ✔️            | ✔️
 |                   | Başka bir VoIP katılımcısını devam eden bir grup çağrısına katılmaya davet etme                                                       | ✔️   | ✔️            | ✔️
 |  PARÇAAL çağrısı denetimi | Videonuzu açma/kapatma                                                                                              | ✔️   | ✔️            | ✔️ 
 |                   | Mikrofonu sustur/aç                                                                                                     | ✔️   | ✔️            | ✔️         

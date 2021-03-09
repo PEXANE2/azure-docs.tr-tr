@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 08/12/2019
+ms.date: 03/02/2021
 ms.author: jeedes
-ms.openlocfilehash: 23998a46db21173598ad01954d36027c4fd97935
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: eaa57e27f8cdd09c5c8ca6ecad8a213da6105727
+ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92453772"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102486253"
 ---
 # <a name="tutorial-integrate-expensify-with-azure-active-directory"></a>Öğretici: Azure Active Directory ile Expensesıfy tümleştirme
 
@@ -26,9 +26,7 @@ Bu öğreticide, Expensesıfy 'yi Azure Active Directory (Azure AD) ile tümleş
 * Kullanıcılarınızın Azure AD hesaplarıyla Expensesıfy 'ye otomatik olarak oturum açmalarına olanak sağlayın.
 * Hesaplarınızı tek bir merkezi konumda yönetin-Azure portal.
 
-Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](../manage-apps/what-is-single-sign-on.md).
-
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -39,24 +37,27 @@ Başlamak için aşağıdaki öğeler gereklidir:
 
 Bu öğreticide, Azure AD SSO 'yu bir test ortamında yapılandırıp test edersiniz.
 
-* Expensesıfy, **SP** tarafından başlatılan SSO 'yu destekler
+* Expensesıfy, **SP** tarafından başlatılan SSO 'yu destekler.
 
-## <a name="adding-expensify-from-the-gallery"></a>Galeriden Expensesıfy ekleme
+> [!NOTE]
+> Bu uygulamanın tanımlayıcısı, tek bir kiracıda yalnızca bir örneğin yapılandırılabilmesini sağlamak için sabit bir dize değeridir.
+
+## <a name="add-expensify-from-the-gallery"></a>Galeriden Expensesıfy ekleyin
 
 Expensesıfy 'yi Azure AD 'ye tümleştirmeyi yapılandırmak için, Galeriden yönetilen SaaS uygulamaları listenize Expensesıfy eklemeniz gerekir.
 
-1. [Azure Portal](https://portal.azure.com) iş veya okul hesabı ya da kişisel Microsoft hesabı kullanarak oturum açın.
+1. Azure portal iş veya okul hesabı ya da kişisel Microsoft hesabı kullanarak oturum açın.
 1. Sol gezinti bölmesinde **Azure Active Directory** hizmeti ' ni seçin.
 1. **Kurumsal uygulamalar** ' a gidin ve **tüm uygulamalar**' ı seçin.
 1. Yeni uygulama eklemek için **Yeni uygulama**' yı seçin.
 1. **Galeriden Ekle** bölümünde, arama kutusuna **expensesıfy** yazın.
 1. Sonuçlar panelinden **Expensesıfy** ' i seçin ve ardından uygulamayı ekleyin. Uygulama kiracınıza eklenirken birkaç saniye bekleyin.
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-expensify"></a>Azure AD çoklu oturum açmayı, Expensesıfy için yapılandırma ve test etme
+## <a name="configure-and-test-azure-ad-sso-for-expensify"></a>Azure AD SSO 'yu Expensesıfy için yapılandırın ve test edin
 
-**B. Simon**adlı bir test kullanıcısı kullanarak Azure AD SSO 'Yu Expensesıfy ile yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ve Expensesıfy içindeki ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
+**B. Simon** adlı bir test kullanıcısı kullanarak Azure AD SSO 'Yu Expensesıfy ile yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ve Expensesıfy içindeki ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
 
-Azure AD SSO 'yu Expensesıfy ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
+Azure AD SSO 'yu Expensesıfy ile yapılandırmak ve test etmek için aşağıdaki adımları gerçekleştirin:
 
 1. **[Azure AD SSO 'Yu yapılandırın](#configure-azure-ad-sso)** -kullanıcılarınızın bu özelliği kullanmasını sağlamak için.
     1. Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -B. Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
@@ -69,17 +70,17 @@ Azure AD SSO 'yu Expensesıfy ile yapılandırmak ve test etmek için aşağıda
 
 Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
-1. [Azure Portal](https://portal.azure.com/), **expensesıfy** uygulama tümleştirmesi sayfasında, **Yönet** bölümünü bulun ve **Çoklu oturum açma**' yı seçin.
+1. Azure portal, **Expensesıfy** uygulama tümleştirmesi sayfasında, **Yönet** bölümünü bulun ve **Çoklu oturum açma**' yı seçin.
 1. **Çoklu oturum açma yöntemi seçin** sayfasında **SAML**' yi seçin.
-1. **SAML Ile tek Sign-On ayarlama** sayfasında, ayarları düzenlemek IÇIN **temel SAML yapılandırması** için Düzenle/kalem simgesine tıklayın.
+1. **SAML Ile tek Sign-On ayarlama** sayfasında, ayarları düzenlemek IÇIN **temel SAML yapılandırması** kalem simgesine tıklayın.
 
    ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
 
 1. **Temel SAML yapılandırması** bölümünde, aşağıdaki alanlar için değerleri girin:
 
-    a. **Oturum açma URL 'si** metin kutusuna bir URL yazın:`https://www.expensify.com/authentication/saml/login`
+    a. **Oturum açma URL 'si** metin kutusuna URL 'yi yazın:`https://www.expensify.com/authentication/saml/login`
 
-    b. **Tanımlayıcı (VARLıK kimliği)** metin kutusuna bir URL yazın:`https://www.expensify.com`
+    b. **Tanımlayıcı (VARLıK kimliği)** metın kutusuna URL yazın:`https://www.expensify.com`
 
     c. b. **Yanıt URL 'si** metin kutusuna aşağıdaki kalıbı kullanarak bir URL yazın:`https://www.expensify.com/authentication/saml/loginCallback?domain=<yourdomain>`
 
@@ -113,28 +114,22 @@ Bu bölümde, Azure çoklu oturum açma özelliğini kullanarak Expensesıfy 'ye
 1. Azure portal **Kurumsal uygulamalar**' ı seçin ve ardından **tüm uygulamalar**' ı seçin.
 1. Uygulamalar listesinde, **Expensesıfy**' yi seçin.
 1. Uygulamanın genel bakış sayfasında **Yönet** bölümünü bulun ve **Kullanıcılar ve gruplar**' ı seçin.
-
-   !["Kullanıcılar ve gruplar" bağlantısı](common/users-groups-blade.png)
-
 1. **Kullanıcı Ekle**' yi seçin, sonra **atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar** ' ı seçin.
-
-    ![Kullanıcı Ekle bağlantısı](common/add-assign-user.png)
-
 1. **Kullanıcılar ve gruplar** iletişim kutusunda, kullanıcılar listesinden **B. Simon** ' ı seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
-1. SAML assertion 'da herhangi bir rol değeri bekliyorsanız, **Rol Seç** iletişim kutusunda, Kullanıcı için listeden uygun rolü seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
+1. Kullanıcılara bir rolün atanmasını bekliyorsanız, **Rol Seç** açılır listesinden bunu seçebilirsiniz. Bu uygulama için ayarlanmış bir rol yoksa, "varsayılan erişim" rolü seçili olduğunu görürsünüz.
 1. **Atama Ekle** Iletişim kutusunda **ata** düğmesine tıklayın.
 
 ## <a name="configure-expensify-sso"></a>Expensesıfy SSO 'yu yapılandırma
 
 Expensesıfy 'de SSO 'yu etkinleştirmek için önce uygulamada **etki alanı denetimini** etkinleştirmeniz gerekir. Uygulamada, [burada](https://help.expensify.com/domain-control)listelenen adımlar aracılığıyla etki alanı denetimini etkinleştirebilirsiniz. Ek destek için, [Expensesıfy istemci desteği ekibi](mailto:help@expensify.com)ile çalışın. Etki alanı denetimi etkinleştirildikten sonra aşağıdaki adımları izleyin:
 
-![Tek Sign-On yapılandırma](./media/expensify-tutorial/tutorial_expensify_51.png)
+![Tek Sign-On yapılandırma](./media/expensify-tutorial/domain-control.png)
 
 1. Expensesıfy uygulamanızda oturum açın.
 
 2. Sol bölmede, **Ayarlar** ' a tıklayın ve **SAML**' ye gidin.
 
-3. **SAML oturum açma** seçeneğini **etkin**olarak değiştirin.
+3. **SAML oturum açma** seçeneğini **etkin** olarak değiştirin.
 
 4. Azure AD 'den indirilen Federasyon meta verilerini Not defteri 'nde açın, içeriği kopyalayın ve ardından **kimlik sağlayıcısı meta verileri** metin kutusuna yapıştırın.
 
@@ -144,14 +139,14 @@ Bu bölümde, Expensesıfy 'de B. Simon adlı bir Kullanıcı oluşturacaksını
 
 ## <a name="test-sso"></a>Test SSO 'SU
 
-Bu bölümde, erişim panelini kullanarak Azure AD çoklu oturum açma yapılandırmanızı test edersiniz.
+Bu bölümde, Azure AD çoklu oturum açma yapılandırmanızı aşağıdaki seçeneklerle test edersiniz. 
 
-Erişim panelinde Expensesıfy kutucuğuna tıkladığınızda, SSO 'yu ayarladığınız Expensesıfy 'de otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](../user-help/my-apps-portal-end-user-access.md).
+* Azure portal içinde **Bu uygulamayı test et** ' e tıklayın. Bu, oturum açma akışını başlatabileceğiniz Expensesıfy oturum açma URL 'sine yeniden yönlendirilir. 
 
-## <a name="additional-resources"></a>Ek kaynaklar
+* Doğrudan Expensesıfy oturum açma URL 'sine gidin ve oturum açma akışını buradan başlatın.
 
-- [ SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi ](./tutorial-list.md)
+* Microsoft My Apps ' i kullanabilirsiniz. Uygulamalarım üzerinde Expensesıfy kutucuğuna tıkladığınızda bu, Expensesıfy oturum açma URL 'sine yeniden yönlendirilir. Uygulamalarım hakkında daha fazla bilgi için bkz. [uygulamalarıma giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir? ](../manage-apps/what-is-single-sign-on.md)
+## <a name="next-steps"></a>Sonraki adımlar
 
-- [Azure Active Directory'de koşullu erişim nedir?](../conditional-access/overview.md)
+Expensesıfy 'yi yapılandırdıktan sonra, kuruluşunuzun hassas verilerinin gerçek zamanlı olarak ayıklanmasını ve zaman korumasını koruyan oturum denetimini zorunlu kılabilirsiniz. Oturum denetimi koşullu erişimden genişletiliyor. [Microsoft Cloud App Security ile oturum denetimini nasıl zorlayacağınızı öğrenin](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).

@@ -6,12 +6,12 @@ ms.author: ebnkruma
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 11/30/2020
-ms.openlocfilehash: 4246ad48624eb0ca53fbe6bb747f02daa32119bf
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: e491c421f4af256b2e74fa61eb442d269bdb9e34
+ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102432460"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102487925"
 ---
 # <a name="use-managed-identities-to-access-azure-sql-database-or-azure-synapse-analytics-from-an-azure-stream-analytics-job-preview"></a>Azure Stream Analytics işinden Azure SQL veritabanı 'na veya Azure SYNAPSE Analytics 'e erişmek için Yönetilen kimlikler kullanma (Önizleme)
 
@@ -52,6 +52,8 @@ Bu özelliği kullanmak için aşağıdakiler gereklidir:
 - Azure SYNAPSE Analytics SQL Havuzu.
 
 - [Stream Analytics işiniz için yapılandırılmış](azure-synapse-analytics-output.md)bir Azure depolama hesabı.
+
+- Note: SYNAPSE SQL MSI ile tümleştirilmiş Stream Analytics hesap depolama MSI Şu anda kullanılamıyor.
 
 ---
 
@@ -171,7 +173,7 @@ Alternatif olarak, SQL Server Management Studio ' de Azure SQL veya Azure SYNAPS
 *ASA_JOB_NAME* kullanıcıya eklediğiniz tüm izinlere bakmak için, ilgili veritabanı altında SSMS 'de aşağıdaki komutu çalıştırın: 
 
 ```sql
-SELECT dprin.name, dbprin.type_desc, dbperm.permission_name, dbperm.state_desc, dbperm.class_desc, object_name(dbperm.major_id) 
+SELECT dbprin.name, dbprin.type_desc, dbperm.permission_name, dbperm.state_desc, dbperm.class_desc, object_name(dbperm.major_id) 
 FROM sys.database_principals dbprin 
 LEFT JOIN sys.database_permissions dbperm 
 ON dbperm.grantee_principal_id = dbprin.principal_id 
