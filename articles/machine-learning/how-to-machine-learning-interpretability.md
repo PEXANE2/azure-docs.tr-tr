@@ -11,12 +11,12 @@ ms.author: mithigpe
 author: minthigpen
 ms.reviewer: Luis.Quintanilla
 ms.date: 02/25/2021
-ms.openlocfilehash: 2c61cfaf0e97f7d483239a23e5eea52b51c6a126
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 44ccf6b6d2459b87040fcac7d9cdcd336cc7b82f
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101690218"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102522045"
 ---
 # <a name="model-interpretability-in-azure-machine-learning-preview"></a>Azure Machine Learning model yorumlenebilirliği (Önizleme)
 
@@ -39,7 +39,7 @@ Bir makine öğrenimi modelinin açıklanması özelliğinin etkinleştirilmesi,
 
 ## <a name="interpretability-with-azure-machine-learning"></a>Azure Machine Learning ile yorumlenebilirlik
 
-Model yorumsıuyumluluk sınıfları şu SDK paketiyle kullanılabilir: ( [Azure Machine Learning IÇIN SDK paketlerini yüklemeyi](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py)öğrenin)
+Model yorumsıuyumluluk sınıfları şu SDK paketiyle kullanılabilir: ( [Azure Machine Learning IÇIN SDK paketlerini yüklemeyi](/python/api/overview/azure/ml/install)öğrenin)
 
 * `azureml.interpret`, Microsoft tarafından desteklenen işlevleri içerir.
 

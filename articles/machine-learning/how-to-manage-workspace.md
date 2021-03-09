@@ -10,23 +10,23 @@ author: sdgilley
 ms.date: 09/30/2020
 ms.topic: conceptual
 ms.custom: how-to, fasttrack-edit
-ms.openlocfilehash: 3fca8e74112b90b3cac70adaa955bbf242999705
-ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
+ms.openlocfilehash: 472bc66c75881d622e8ecfe23031f58db773a919
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97739595"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102518934"
 ---
 # <a name="create-and-manage-azure-machine-learning-workspaces"></a>Azure Machine Learning çalışma alanları oluşturma ve yönetme 
 
-Bu makalede, [Python için](/python/api/overview/azure/ml/?preserve-view=true&view=azure-ml-py) Azure Portal veya SDK kullanarak [Azure Machine Learning](overview-what-is-azure-ml.md)için [**Azure Machine Learning çalışma alanları**](concept-workspace.md) oluşturacaksınız, görüntüleyebilir ve silebilirsiniz.
+Bu makalede, [Python için](/python/api/overview/azure/ml/) Azure Portal veya SDK kullanarak [Azure Machine Learning](overview-what-is-azure-ml.md)için [**Azure Machine Learning çalışma alanları**](concept-workspace.md) oluşturacaksınız, görüntüleyebilir ve silebilirsiniz.
 
 Gereksinimleriniz değiştikçe veya Otomasyon artışı için gereksinimler değiştikçe, [CLI kullanarak](reference-azure-machine-learning-cli.md)veya [vs Code uzantısı aracılığıyla](tutorial-setup-vscode-extension.md)çalışma alanları oluşturabilir ve silebilirsiniz.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
 * Azure aboneliği. Azure aboneliğiniz yoksa başlamadan önce ücretsiz bir hesap oluşturun. [Azure Machine Learning ücretsiz veya ücretli sürümünü](https://aka.ms/AMLFree) bugün deneyin.
-* Python SDK 'yı kullanıyorsanız SDK 'yı [yükler](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py).
+* Python SDK 'yı kullanıyorsanız SDK 'yı [yükler](/python/api/overview/azure/ml/install).
 
 ## <a name="limitations"></a>Sınırlamalar
 
@@ -111,7 +111,7 @@ Varsayılan olarak, bir çalışma alanı oluşturmak Azure Container Registry (
                              exist_ok=False)
    ```
 
-Daha fazla bilgi için bkz. [çalışma alanı SDK başvurusu](/python/api/azureml-core/azureml.core.workspace.workspace?preserve-view=true&view=azure-ml-py).
+Daha fazla bilgi için bkz. [çalışma alanı SDK başvurusu](/python/api/azureml-core/azureml.core.workspace.workspace).
 
 Aboneliğinize erişim konusunda sorun yaşıyorsanız, bkz. [Azure Machine Learning kaynakları ve iş akışları için kimlik doğrulamasını ayarlama ve](how-to-setup-authentication.md)Azure Machine Learning Not defteri ['nde kimlik doğrulama](https://aka.ms/aml-notebook-auth) .
 
@@ -136,11 +136,11 @@ Aboneliğinize erişim konusunda sorun yaşıyorsanız, bkz. [Azure Machine Lear
    Çalışma alanı adı |Çalışma alanınızı tanımlayan benzersiz bir ad girin. Bu örnekte **docs-WS** kullanıyoruz. Adlar, kaynak grubu genelinde benzersiz olmalıdır. Başkaları tarafından oluşturulan çalışma alanlarını birbirinden ayırmak ve geri çekmek için kolay bir ad kullanın. Çalışma alanı adı büyük/küçük harfe duyarlıdır.
    Abonelik |Kullanmak istediğiniz Azure aboneliğini seçin.
    Kaynak grubu | Aboneliğinizde mevcut kaynak gruplarından birini seçin veya bir ad girerek yeni bir kaynak grubu oluşturun. Kaynak grubu, bir Azure çözümü için ilgili kaynakları barındırır. Bu örnekte **docs-AML** kullanılır. Mevcut bir kaynak grubunu kullanmak için *katkıda bulunan* veya *sahip* rolünün olması gerekir.  Erişim hakkında daha fazla bilgi için bkz. [Azure Machine Learning çalışma alanına erişimi yönetme](how-to-assign-roles.md).
-   Bölge | Çalışma alanınızı oluşturmak için kullanıcılarınıza en yakın Azure bölgesini ve veri kaynaklarını seçin.
+   Region | Çalışma alanınızı oluşturmak için kullanıcılarınıza en yakın Azure bölgesini ve veri kaynaklarını seçin.
    | Depolama hesabı | Çalışma alanı için varsayılan depolama hesabı. Varsayılan olarak, yeni bir tane oluşturulur. |
    | Key Vault | Çalışma alanı tarafından kullanılan Azure Key Vault. Varsayılan olarak, yeni bir tane oluşturulur. |
    | Application Insights | Çalışma alanı için Application Insights örneği. Varsayılan olarak, yeni bir tane oluşturulur. |
-   | Container Kayıt Defteri | Çalışma alanı için Azure Container Registry. Varsayılan olarak, çalışma alanı _için başlangıçta yeni bir tane oluşturulmaz._ Bunun yerine, eğitim veya dağıtım sırasında bir Docker görüntüsü oluştururken ihtiyacınız olduğunda oluşturulur. |
+   | Container Registry | Çalışma alanı için Azure Container Registry. Varsayılan olarak, çalışma alanı _için başlangıçta yeni bir tane oluşturulmaz._ Bunun yerine, eğitim veya dağıtım sırasında bir Docker görüntüsü oluştururken ihtiyacınız olduğunda oluşturulur. |
 
    :::image type="content" source="media/how-to-manage-workspace/create-workspace-form.png" alt-text="Çalışma alanınızı yapılandırın.":::
 
@@ -167,7 +167,7 @@ Aboneliğinize erişim konusunda sorun yaşıyorsanız, bkz. [Azure Machine Lear
 
 # <a name="python"></a>[Python](#tab/python)
 
-Azure Machine Learning Python SDK 'Sı, özel bir uç nokta ile bir çalışma alanı oluşturmak için [çalışma alanı. Create ()](/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py#create-name--auth-none--subscription-id-none--resource-group-none--location-none--create-resource-group-true--sku--basic---tags-none--friendly-name-none--storage-account-none--key-vault-none--app-insights-none--container-registry-none--adb-workspace-none--cmk-keyvault-none--resource-cmk-uri-none--hbi-workspace-false--default-cpu-compute-target-none--default-gpu-compute-target-none--private-endpoint-config-none--private-endpoint-auto-approval-true--exist-ok-false--show-output-true-&preserve-view=true) Ile kullanılabilen [privateendpointconfig](/python/api/azureml-core/azureml.core.privateendpointconfig?preserve-view=true&view=azure-ml-py) sınıfını sağlar. Bu sınıf, var olan bir sanal ağ gerektirir.
+Azure Machine Learning Python SDK 'Sı, özel bir uç nokta ile bir çalışma alanı oluşturmak için [çalışma alanı. Create ()](/python/api/azureml-core/azureml.core.workspace.workspace#create-name--auth-none--subscription-id-none--resource-group-none--location-none--create-resource-group-true--sku--basic---tags-none--friendly-name-none--storage-account-none--key-vault-none--app-insights-none--container-registry-none--adb-workspace-none--cmk-keyvault-none--resource-cmk-uri-none--hbi-workspace-false--default-cpu-compute-target-none--default-gpu-compute-target-none--private-endpoint-config-none--private-endpoint-auto-approval-true--exist-ok-false--show-output-true-) Ile kullanılabilen [privateendpointconfig](/python/api/azureml-core/azureml.core.privateendpointconfig) sınıfını sağlar. Bu sınıf, var olan bir sanal ağ gerektirir.
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
@@ -193,7 +193,7 @@ Azure Machine Learning Python SDK 'Sı, özel bir uç nokta ile bir çalışma a
 
 1. [Azure Portal](https://portal.azure.com), çalışma alanını içeren kaynak grubunu seçin. Sonra __Privatelink.api.azureml.MS__ adlı özel DNS bölgesi kaynağını seçin.
 2. __Ayarlar__' da, __sanal ağ bağlantıları__' nı seçin.
-3. __Ekle__’yi seçin. __Sanal ağ bağlantısı ekle__ sayfasında, benzersiz bir __bağlantı adı__ girin ve eklenecek __sanal ağı__ seçin. Ağ bağlantısını eklemek için __Tamam ' ı__ seçin.
+3. __Add (Ekle)__ seçeneğini belirleyin. __Sanal ağ bağlantısı ekle__ sayfasında, benzersiz bir __bağlantı adı__ girin ve eklenecek __sanal ağı__ seçin. Ağ bağlantısını eklemek için __Tamam ' ı__ seçin.
 
 Daha fazla bilgi için bkz. [Azure özel uç nokta DNS yapılandırması](../private-link/private-endpoint-dns.md).
 

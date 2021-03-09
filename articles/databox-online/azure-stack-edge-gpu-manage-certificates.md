@@ -6,20 +6,20 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: article
-ms.date: 02/22/2021
+ms.date: 03/08/2021
 ms.author: alkohli
-ms.openlocfilehash: 4193e58c28b481297df38bca8f18d2ea766ce886
-ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
+ms.openlocfilehash: 534870e6bd67b7aa5273289f3154a794a2b9bd22
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102443140"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102519019"
 ---
 # <a name="use-certificates-with-azure-stack-edge-pro-gpu-device"></a>Azure Stack Edge Pro GPU cihazındaki sertifikaları kullanma
 
 [!INCLUDE [applies-to-GPU-and-pro-r-and-mini-r-skus](../../includes/azure-stack-edge-applies-to-gpu-pro-r-mini-r-sku.md)]
 
-Bu makalede Azure Stack Edge Pro cihazınıza yüklenebilen sertifika türleri açıklanmaktadır. Makalede ayrıca, her sertifika türünün ayrıntıları ve sona erme tarihini yüklemek ve tanımlamak için olan yordamlar da yer alır. 
+Bu makalede Azure Stack Edge Pro cihazınıza yüklenebilen sertifika türleri açıklanmaktadır. Makalede ayrıca, her sertifika türünün ayrıntıları ve sona erme tarihini yüklemek ve tanımlamak için olan yordamlar da yer alır.  
 
 ## <a name="about-certificates"></a>Sertifikalar hakkında
 
@@ -400,7 +400,7 @@ Bir Windows makinesinde özel anahtarla SSL sertifikasını dışarı aktarmak i
 
 ## <a name="supported-certificate-algorithms"></a>Desteklenen sertifika algoritmaları
 
- Azure Stack Edge Pro cihazınız ile yalnızca Rivest – Shamir – Adtaman (RSA) sertifikaları desteklenir. Eliptik Eğri dijital Imza algoritması (ECDSA) sertifikaları kullanılıyorsa, cihaz davranışı belirsiz olur.
+ Azure Stack Edge Pro cihazınız ile yalnızca Rivest – Shamir – Adtaman (RSA) sertifikaları desteklenir. Eliptik Eğri dijital Imza algoritması (ECDSA) sertifikaları desteklenmez.
 
  RSA ortak anahtarı içeren sertifikalara RSA sertifikaları denir. Eliptik Eğri Şifreleme (ECC) ortak anahtarı içeren sertifikalara ECDSA (Eliptik Eğri dijital Imza algoritması) sertifikaları denir. 
 

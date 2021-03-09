@@ -11,19 +11,19 @@ author: MayMSFT
 ms.reviewer: nibaccam
 ms.date: 02/22/2021
 ms.custom: how-to, contperf-fy21q1, devx-track-python, data4ml
-ms.openlocfilehash: dbfb4ea729b8360c7065d75cb3efbaf42b82c0da
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 68d07481e228b1d1b2f4571a783f925add261cff
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101663906"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102520022"
 ---
 # <a name="connect-to-storage-with-identity-based-data-access-preview"></a>Kimlik tabanlı veri erişimi (Önizleme) ile depolama 'ya bağlanma
 
 >[!IMPORTANT]
-> Bu makalede sunulan işlevler önizlemededir ve herhangi bir zamanda değişebilir, [deneysel](/python/api/overview/azure/ml/?preserve-view=true&view=azure-ml-py#stable-vs-experimental) Önizleme özellikleri olarak kabul edilmelidir.
+> Bu makalede sunulan işlevler önizlemededir ve herhangi bir zamanda değişebilir, [deneysel](/python/api/overview/azure/ml/#stable-vs-experimental) Önizleme özellikleri olarak kabul edilmelidir.
 
-Bu makalede, Azure 'daki depolama hizmetlerine kimlik tabanlı veri erişimi ve [Azure Machine Learning Python SDK](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py)aracılığıyla Azure Machine Learning veri depoları ile nasıl bağlanacağınızı öğreneceksiniz.  
+Bu makalede, Azure 'daki depolama hizmetlerine kimlik tabanlı veri erişimi ve [Azure Machine Learning Python SDK](/python/api/overview/azure/ml/intro)aracılığıyla Azure Machine Learning veri depoları ile nasıl bağlanacağınızı öğreneceksiniz.  
 
 Genellikle, veri depoları depolama hizmetine erişim izninizin olduğunu onaylamak için kimlik bilgisi tabanlı veri erişimini kullanır. Bunlar, çalışma alanıyla ilişkili [Key Vault](https://azure.microsoft.com/services/key-vault/) abonelik kimliğiniz ve belirteç yetkilendirmesi gibi bağlantı bilgilerini tutar. Kimlik tabanlı veri erişimi kullanan bir veri deposu oluşturduğunuzda, depolama hizmetine erişim izninizin olduğunu doğrulamak için Azure oturum açma ([Azure Active Directory belirteç](../active-directory/fundamentals/active-directory-whatis.md)) kullanılır. Bu senaryoda, kimlik doğrulama kimlik bilgileri kaydedilmez ve yalnızca depolama hesabı bilgileri veri deposunda depolanır. 
 
@@ -67,7 +67,7 @@ Belirli makine öğrenimi senaryoları, özel verilerle eğitim modelleri içeri
     - [Azure Data Lake Gen 2](../storage/blobs/data-lake-storage-introduction.md)
     - [Azure SQL veritabanı](../azure-sql/database/sql-database-paas-overview.md)
 
-- [Python için Azure MACHINE LEARNING SDK](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py).
+- [Python için Azure MACHINE LEARNING SDK](/python/api/overview/azure/ml/install).
 
 - Azure Machine Learning çalışma alanı.
   
@@ -105,7 +105,7 @@ Aşağıdaki kodda,,, `sas_token` `account_key` `subscription_id` veya hizmet so
 
 ### <a name="azure-blob-container"></a>Azure Blob kapsayıcısı
 
-Bir Azure Blob kapsayıcısını bir veri deposu olarak kaydetmek için kullanın [`register_azure_blob_container()`](/python/api/azureml-core/azureml.core.datastore%28class%29?preserve-view=true&view=azure-ml-py#&preserve-view=trueregister-azure-blob-container-workspace--datastore-name--container-name--account-name--sas-token-none--account-key-none--protocol-none--endpoint-none--overwrite-false--create-if-not-exists-false--skip-validation-false--blob-cache-timeout-none--grant-workspace-access-false--subscription-id-none--resource-group-none-) .
+Bir Azure Blob kapsayıcısını bir veri deposu olarak kaydetmek için kullanın [`register_azure_blob_container()`](/python/api/azureml-core/azureml.core.datastore%28class%29#register-azure-blob-container-workspace--datastore-name--container-name--account-name--sas-token-none--account-key-none--protocol-none--endpoint-none--overwrite-false--create-if-not-exists-false--skip-validation-false--blob-cache-timeout-none--grant-workspace-access-false--subscription-id-none--resource-group-none-) .
 
 Aşağıdaki kod, `credentialless_blob` veri deposunu oluşturup `ws` çalışma alanına kaydettirir ve değişkenine atar `blob_datastore` . Bu veri deposu, `my_container_name` depolama hesabındaki blob kapsayıcısına erişir `my-account-name` .
 
@@ -119,7 +119,7 @@ blob_datastore = Datastore.register_azure_blob_container(workspace=ws,
 
 ### <a name="azure-data-lake-storage-generation-1"></a>Azure Data Lake Storage oluşturma 1
 
-Azure Data Lake Storage nesil 1 (ADLS Gen 1) veri deposu için, Azure Data Lake Generation 1 depolamasına bağlanan bir veri deposunu kaydetmek için [register_azure_data_lake ()](/python/api/azureml-core/azureml.core.datastore.datastore?preserve-view=true&view=azure-ml-py#&preserve-view=trueregister-azure-data-lake-workspace--datastore-name--store-name--tenant-id-none--client-id-none--client-secret-none--resource-url-none--authority-url-none--subscription-id-none--resource-group-none--overwrite-false--grant-workspace-access-false-) kullanın.
+Azure Data Lake Storage nesil 1 (ADLS Gen 1) veri deposu için, Azure Data Lake Generation 1 depolamasına bağlanan bir veri deposunu kaydetmek için [register_azure_data_lake ()](/python/api/azureml-core/azureml.core.datastore.datastore#register-azure-data-lake-workspace--datastore-name--store-name--tenant-id-none--client-id-none--client-secret-none--resource-url-none--authority-url-none--subscription-id-none--resource-group-none--overwrite-false--grant-workspace-access-false-) kullanın.
 
 Aşağıdaki kod, `credentialless_adls1` veri deposunu oluşturup `workspace` çalışma alanına kaydettirir ve değişkenine atar `adls_dstore` . Bu veri deposu `adls_storage` Azure Data Lake Store depolama hesabına erişir.
 
@@ -133,7 +133,7 @@ adls_dstore = Datastore.register_azure_data_lake(workspace = workspace,
 
 ### <a name="azure-data-lake-storage-generation-2"></a>Azure Data Lake Storage 2. nesil
 
-Bir Azure Data Lake Storage 2. nesil (ADLS Gen 2) veri deposu için, bir Azure Data Lake Gen 2 depolamasına bağlanan bir veri deposunu kaydetmek için [register_azure_data_lake_gen2 ()](/python/api/azureml-core/azureml.core.datastore.datastore?preserve-view=true&view=azure-ml-py#&preserve-view=trueregister-azure-data-lake-gen2-workspace--datastore-name--filesystem--account-name--tenant-id--client-id--client-secret--resource-url-none--authority-url-none--protocol-none--endpoint-none--overwrite-false-) kullanın.
+Bir Azure Data Lake Storage 2. nesil (ADLS Gen 2) veri deposu için, bir Azure Data Lake Gen 2 depolamasına bağlanan bir veri deposunu kaydetmek için [register_azure_data_lake_gen2 ()](/python/api/azureml-core/azureml.core.datastore.datastore#register-azure-data-lake-gen2-workspace--datastore-name--filesystem--account-name--tenant-id--client-id--client-secret--resource-url-none--authority-url-none--protocol-none--endpoint-none--overwrite-false-) kullanın.
 
 Aşağıdaki kod, `credentialless_adls2` veri deposunu oluşturup `ws` çalışma alanına kaydettirir ve değişkenine atar `adls2_dstore` . Bu veri deposu, depolama hesabındaki dosya sistemine erişir `tabular` `myadls2` .  
 

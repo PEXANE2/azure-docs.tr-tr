@@ -12,12 +12,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to
 ms.date: 03/10/2020
-ms.openlocfilehash: 49e1e9efbd6f59bd037a8033f83836bf7fc71c43
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.openlocfilehash: ad641c2270f94b9d902a25e8d061fb1137a0cdb7
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94630337"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102518611"
 ---
 # <a name="where-to-save-and-write-files-for-azure-machine-learning-experiments"></a>Azure Machine Learning denemeleri için dosya kaydetme ve yazma
 
@@ -30,13 +30,13 @@ Bir [işlem hedefi](concept-compute-target.md)üzerinde eğitim çalıştırmala
 
 Bir işlem hedefi veya yerel makinenizde bir deneme başlamadan önce, kodunuzun çalışması gereken bağımlılık dosyaları ve veri dosyaları gibi gerekli dosyaların bu işlem hedefi için kullanılabilir olduğundan emin olmanız gerekir.
 
-Azure Machine Learning, tüm kaynak dizinini kopyalayarak eğitim betikleri çalıştırır. Karşıya yüklemek istemediğiniz gizli verileriniz varsa, bir [. Ignore dosyası](how-to-save-write-experiment-files.md#storage-limits-of-experiment-snapshots) kullanın veya kaynak dizine eklemeyin. Bunun yerine, veri [deposu](/python/api/azureml-core/azureml.data?preserve-view=true&view=azure-ml-py)kullanarak verilerinize erişin.
+Azure Machine Learning, tüm kaynak dizinini kopyalayarak eğitim betikleri çalıştırır. Karşıya yüklemek istemediğiniz gizli verileriniz varsa, bir [. Ignore dosyası](how-to-save-write-experiment-files.md#storage-limits-of-experiment-snapshots) kullanın veya kaynak dizine eklemeyin. Bunun yerine, veri [deposu](/python/api/azureml-core/azureml.data)kullanarak verilerinize erişin.
 
 Deneme anlık görüntülerinin depolama sınırı 300 MB ve/veya 2000 dosyadır.
 
 Bu nedenle şunları öneririz:
 
-* **Dosyalarınızı Azure Machine Learning [veri deposunda](/python/api/azureml-core/azureml.data?preserve-view=true&view=azure-ml-py)depolama.** Bu, deneme süresi sorunlarını önler ve uzaktan bir işlem hedefinden verilere erişmenin avantajlarından yararlanır, bu da kimlik doğrulama ve bağlama Azure Machine Learning tarafından yönetilir. Kaynak dizininiz olarak bir veri deposu belirtme ve [verileri veri depoları makalesindeki erişim verilerine](how-to-access-data.md) yükleme hakkında daha fazla bilgi edinin.
+* **Dosyalarınızı Azure Machine Learning [veri deposunda](/python/api/azureml-core/azureml.data)depolama.** Bu, deneme süresi sorunlarını önler ve uzaktan bir işlem hedefinden verilere erişmenin avantajlarından yararlanır, bu da kimlik doğrulama ve bağlama Azure Machine Learning tarafından yönetilir. Kaynak dizininiz olarak bir veri deposu belirtme ve [verileri veri depoları makalesindeki erişim verilerine](how-to-access-data.md) yükleme hakkında daha fazla bilgi edinin.
 
 * **Yalnızca birkaç veri dosyası ve bağımlılık betiklerine Ihtiyacınız varsa ve bir veri deposu kullanamaz,** dosyaları eğitim betiğinizle aynı klasör dizinine yerleştirin. Bu klasörü `source_directory` doğrudan eğitim betiğinizdeki veya eğitim betiğinizi çağıran kodda belirtin.
 
@@ -69,7 +69,7 @@ Değişiklikleri yazarken, bir Azure Machine Learning veri deposuna dosya yazıl
 Bir veri deposu gerekmiyorsa, dosyaları `./outputs` ve/veya `./logs` klasörüne yazın.
 
 >[!Important]
-> İki klasör, *Çıkış* ve *günlük* , Azure Machine Learning özel bir işleme alır. Eğitim sırasında, dosyaları `./outputs` ve `./logs` klasörlere yazdığınızda, dosyalar çalışma geçmişinize otomatik olarak yüklenir, böylece çalıştırma tamamlandıktan sonra bunlara erişebilirsiniz.
+> İki klasör, *Çıkış* ve *günlük*, Azure Machine Learning özel bir işleme alır. Eğitim sırasında, dosyaları `./outputs` ve `./logs` klasörlere yazdığınızda, dosyalar çalışma geçmişinize otomatik olarak yüklenir, böylece çalıştırma tamamlandıktan sonra bunlara erişebilirsiniz.
 
 * **Durum iletileri veya Puanlama sonuçları gibi bir çıktı için,** dosyaları `./outputs` klasöre yazın ve bu nedenle çalışma geçmişinde yapıtlar olarak kalıcı hale getirilir. İçerik çalıştırma geçmişine yüklendiğinde gecikme sürebileceği için, bu klasöre yazılan dosyaların sayısı ve boyutu hakkında mindazın. Gecikme bir sorun oluşturacaksa, dosyaları bir veri deposuna yazmak önerilir.
 

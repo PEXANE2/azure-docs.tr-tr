@@ -7,12 +7,12 @@ author: vhorne
 ms.service: web-application-firewall
 ms.date: 04/14/2020
 ms.author: victorh
-ms.openlocfilehash: c0f802f5113e38e811c110ee913099e76fa7be0b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dd917bcf54022564640d22a5968738c27f75ff38
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81383823"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102519053"
 ---
 # <a name="custom-rules-for-web-application-firewall-v2-on-azure-application-gateway"></a>Azure Application Gateway Web uygulaması güvenlik duvarı v2 için özel kurallar
 
@@ -20,13 +20,13 @@ Azure Application Gateway Web uygulaması güvenlik duvarı (WAF) v2, birçok fa
 
 Özel kurallar, WAF üzerinden geçen her istek için değerlendirilen kendi kurallarınızı oluşturmanızı sağlar. Bu kurallar, yönetilen kural kümelerindeki kuralların geri kalanından daha yüksek bir öncelik tutar. Özel kurallar bir kural adı, kural önceliği ve eşleşen koşulların bir dizisini içerir. Bu koşullar karşılanıyorsa, bir eylem yapılır (izin vermek veya engellemek için).
 
-Örneğin, 192.168.5.4/24 aralığındaki bir IP adresinden gelen tüm istekleri engelleyebilirsiniz. Bu kuralda, işleç *Ipmatch*Ise, MATCHVALUES değeri IP adres aralığıdır (192.168.5.4/24) ve işlem trafiği engeller. Kuralın adını ve önceliğini de ayarlarsınız.
+Örneğin, 192.168.5.4/24 aralığındaki bir IP adresinden gelen tüm istekleri engelleyebilirsiniz. Bu kuralda, işleç *Ipmatch* Ise, MATCHVALUES değeri IP adres aralığıdır (192.168.5.4/24) ve işlem trafiği engeller. Kuralın adını ve önceliğini de ayarlarsınız.
 
 Özel kurallar, güvenlik gereksinimlerinizi karşılayan daha gelişmiş kurallar oluşturmak için bileşik mantık kullanımını destekler. Örneğin, (koşul 1 **ve** koşul 2) **veya** koşul 3). Bu, koşul 1 **ve** koşul 2 karşılanırsa **veya** koşul 3 karşılanıyorsa, WAF 'nin özel kuralda belirtilen eylemi yapması gerektiği anlamına gelir.
 
-Aynı kural içindeki farklı eşleşen koşullar, **ve**kullanarak her zaman bileşik bir şekilde yapılır. Örneğin, belirli bir IP adresinden gelen trafiği ve yalnızca belirli bir tarayıcıyı kullanıyorsa engelleyin.
+Aynı kural içindeki farklı eşleşen koşullar, **ve** kullanarak her zaman bileşik bir şekilde yapılır. Örneğin, belirli bir IP adresinden gelen trafiği ve yalnızca belirli bir tarayıcıyı kullanıyorsa engelleyin.
 
-**Ya** da iki farklı koşul istiyorsanız, iki koşulun farklı kurallarda olması gerekir. Örneğin, belirli bir IP adresinden gelen trafiği engelleyin veya belirli bir tarayıcı kullanılıyorsa trafiği engelleyin.
+İki farklı **koşul kullanmak istiyorsanız** , iki koşulun farklı kurallarda olması gerekir. Örneğin, belirli bir IP adresinden gelen trafiği engelleyin veya belirli bir tarayıcı kullanılıyorsa trafiği engelleyin.
 
 > [!NOTE]
 > WAF özel kural sayısı üst sınırı 100 ' dir. Application Gateway limitleri hakkında daha fazla bilgi için bkz. [Azure aboneliği ve hizmet limitleri, Kotalar ve kısıtlamalar](../../azure-resource-manager/management/azure-subscription-service-limits.md#application-gateway-limits).
@@ -37,7 +37,7 @@ Normal ifadeler Ayrıca, benzer RuleSets gibi özel kurallarda de desteklenir. �
 
 Özel kurallar sayesinde trafiğin izin verilmesi ve engellenmesi basittir. Örneğin, bir IP adresi aralığından gelen tüm trafiği engelleyebilirsiniz. İstek belirli bir tarayıcıdan geliyorsa, trafiğe izin vermek için başka bir kural yapabilirsiniz.
 
-Bir şeye izin vermek için, `-Action` parametrenin **izin ver**' e ayarlandığından emin olun. Bir şeyi engellemek için, `-Action` parametresinin **Block**olarak ayarlandığından emin olun.
+Bir şeye izin vermek için, `-Action` parametrenin **izin ver**' e ayarlandığından emin olun. Bir şeyi engellemek için, `-Action` parametresinin **Block** olarak ayarlandığından emin olun.
 
 ```azurepowershell
 $AllowRule = New-AzApplicationGatewayFirewallCustomRule `
@@ -101,7 +101,7 @@ Kuralın adı.  Günlüklerde görüntülenir.
 
 ### <a name="rule-type-required"></a>Kural türü [gerekli]
 
-Şu anda **Matchrule**olmalıdır.
+Şu anda **Matchrule** olmalıdır.
 
 ### <a name="match-variable-required"></a>Match değişkeni [gerekli]
 

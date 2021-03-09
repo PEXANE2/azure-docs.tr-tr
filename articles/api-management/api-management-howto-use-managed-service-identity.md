@@ -9,14 +9,14 @@ editor: ''
 ms.service: api-management
 ms.workload: integration
 ms.topic: article
-ms.date: 11/14/2020
+ms.date: 03/09/2021
 ms.author: apimpm
-ms.openlocfilehash: 8ec0f8cf090b3ae85a8602fb39cb07f03a417133
-ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
+ms.openlocfilehash: 98237efae89e7d88dd23cb7e8fc9f7e9f05bca70
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97605607"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102521552"
 ---
 # <a name="use-managed-identities-in-azure-api-management"></a>Azure API Management Yönetilen kimlikler kullanma
 
@@ -29,7 +29,7 @@ API Management örneğine iki tür kimlik verebilirsiniz:
 
 ## <a name="create-a-system-assigned-managed-identity"></a>Sistem tarafından atanan yönetilen kimlik oluşturma
 
-### <a name="azure-portal"></a>Azure portal
+### <a name="azure-portal"></a>Azure portalı
 
 Azure portal yönetilen bir kimlik ayarlamak için, önce bir API Management örneği oluşturup sonra özelliği etkinleştirmeniz gerekir.
 
@@ -264,12 +264,25 @@ Aşağıdaki örnekte aşağıdaki adımları içeren bir Azure Resource Manager
 
 [Kimlik doğrulaması ile yönetilen](api-management-authentication-policies.md#ManagedIdentity) kimlik ilkesi aracılığıyla arka uçta kimlik doğrulaması yapmak için sistem tarafından atanan kimliğini kullanabilirsiniz.
 
+### <a name="connect-to-azure-resources-behind-ip-firewall-using-system-assigned-managed-identity"></a><a name="apim-as-trusted-service"></a>Sistem tarafından atanan yönetilen kimliği kullanarak IP güvenlik duvarının arkasındaki Azure kaynaklarına bağlanma
+
+
+API Management, aşağıdaki kaynaklara güvenilir bir Microsoft hizmetidir. Bu, hizmetin bir güvenlik duvarının arkasındaki aşağıdaki kaynaklara bağlanmasına izin verir. Uygun Azure rolünü bu kaynak örneği için [sistem tarafından atanan yönetilen kimliğe](../active-directory/managed-identities-azure-resources/overview.md) açık bir şekilde atadıktan sonra, örneğin erişim kapsamı yönetilen kimliğe atanan Azure rolüne karşılık gelir.
+
+
+|Azure hizmeti | Bağlantı|
+|---|---|
+|Azure Storage | [Güvenilen-Azure-Azure-depolama](../storage/common/storage-network-security.md?tabs=azure-portal#trusted-access-based-on-system-assigned-managed-identity)|
+|Azure Service Bus | [Güvenilen-Azure-Service-Bus](../service-bus-messaging/service-bus-ip-filtering.md#trusted-microsoft-services)|
+|Azure Event Hub | [Popüler-Azure-Event-hub 'a erişme](../event-hubs/event-hubs-ip-filtering.md#trusted-microsoft-services)|
+
+
 ## <a name="create-a-user-assigned-managed-identity"></a>Kullanıcı tarafından atanan yönetilen kimlik oluşturma
 
 > [!NOTE]
 > API Management örneği, en fazla 10 Kullanıcı tarafından atanan yönetilen kimlik ile ilişkilendirebilirsiniz.
 
-### <a name="azure-portal"></a>Azure portal
+### <a name="azure-portal"></a>Azure portalı
 
 Portalda yönetilen bir kimlik ayarlamak için önce bir API Management örneği oluşturup sonra özelliği etkinleştirmeniz gerekir.
 

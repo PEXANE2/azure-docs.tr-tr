@@ -11,12 +11,12 @@ ms.author: amsaied
 ms.reviewer: sgilley
 ms.date: 02/11/2021
 ms.custom: tracking-python
-ms.openlocfilehash: 5e1af60cccb48195db38e420dfe3df01f404669c
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: bbe28f4fda32ce7d55a437e4ac944dc206f436ee
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100378017"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102522368"
 ---
 # <a name="tutorial-use-your-own-data-part-4-of-4"></a>Öğretici: kendi verilerinizi kullanın (4. bölüm)
 
@@ -200,7 +200,7 @@ Denetim betiği, [Bu serinin 3. bölümtekine](tutorial-1st-experiment-sdk-train
       `dataset = Dataset.File.from_files( ... )`
    :::column-end:::
    :::column span="2":::
-      Veri [kümesi](/python/api/azureml-core/azureml.core.dataset.dataset?preserve-view=true&view=azure-ml-py) , Azure Blob depolama alanına yüklediğiniz verilere başvurmak için kullanılır. Veri kümeleri, verilerinizin üzerinde güvenilirlik ve güvenilirliği artırmak için tasarlanan bir Özet katmandır.
+      Veri [kümesi](/python/api/azureml-core/azureml.core.dataset.dataset) , Azure Blob depolama alanına yüklediğiniz verilere başvurmak için kullanılır. Veri kümeleri, verilerinizin üzerinde güvenilirlik ve güvenilirliği artırmak için tasarlanan bir Özet katmandır.
    :::column-end:::
 :::row-end:::
 :::row:::
@@ -208,7 +208,7 @@ Denetim betiği, [Bu serinin 3. bölümtekine](tutorial-1st-experiment-sdk-train
       `config = ScriptRunConfig(...)`
    :::column-end:::
    :::column span="2":::
-      [ScriptRunConfig](/python/api/azureml-core/azureml.core.scriptrunconfig?preserve-view=true&view=azure-ml-py) , içine geçirilecek bağımsız değişkenlerin bir listesini içerecek şekilde değiştirilir `train.py` . `dataset.as_named_input('input').as_mount()`Bağımsız değişkeni belirtilen dizinin işlem hedefine _bağlanması_ anlamına gelir.
+      [ScriptRunConfig](/python/api/azureml-core/azureml.core.scriptrunconfig) , içine geçirilecek bağımsız değişkenlerin bir listesini içerecek şekilde değiştirilir `train.py` . `dataset.as_named_input('input').as_mount()`Bağımsız değişkeni belirtilen dizinin işlem hedefine _bağlanması_ anlamına gelir.
    :::column-end:::
 :::row-end:::
 

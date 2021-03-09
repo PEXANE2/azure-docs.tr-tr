@@ -11,12 +11,12 @@ ms.reviewer: peterlu
 ms.date: 01/14/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: cb556466a5a76cbb9447538e98a5a2385f7b5614
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: b1cb14e07f6c0e402510abad6f1cb160f5215c63
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101661010"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102518390"
 ---
 # <a name="train-pytorch-models-at-scale-with-azure-machine-learning"></a>PyTorch modellerini Azure Machine Learning ölçeklendirerek eğitme
 
@@ -36,7 +36,7 @@ Bu kodu şu ortamlardan birinde çalıştırın:
     - Not defteri sunucusundaki örnekler derin öğrenimi klasöründe, bu dizine giderek tamamlanmış ve genişletilmiş bir not defteri bulun: **nasıl kullanılır-azureml > ml-çerçeveleri > pytorch > tren-hyperparameter-ayarla-dağıt-with-pytorch** klasörü. 
  
  - Kendi Jupyter Notebook sunucunuz
-    - [Azure Machine Learning SDK 'sını](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py) (>= 1.15.0) yükler.
+    - [Azure Machine Learning SDK 'sını](/python/api/overview/azure/ml/install) (>= 1.15.0) yükler.
     - [Bir çalışma alanı yapılandırma dosyası oluşturun](how-to-configure-environment.md#workspace).
     - [Örnek betik dosyalarını indirin](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/ml-frameworks/pytorch/train-hyperparameter-tune-deploy-with-pytorch)`pytorch_train.py`
      
@@ -64,7 +64,7 @@ from azureml.core.compute_target import ComputeTargetException
 
 ### <a name="initialize-a-workspace"></a>Çalışma alanını başlatma
 
-[Azure Machine Learning çalışma alanı](concept-workspace.md) , hizmet için en üst düzey kaynaktır. Oluşturduğunuz tüm yapıtlarla çalışmak için merkezi bir yer sağlar. Python SDK 'sında bir nesne oluşturarak çalışma alanı yapıtlarına erişebilirsiniz [`workspace`](/python/api/azureml-core/azureml.core.workspace.workspace?preserve-view=true&view=azure-ml-py) .
+[Azure Machine Learning çalışma alanı](concept-workspace.md) , hizmet için en üst düzey kaynaktır. Oluşturduğunuz tüm yapıtlarla çalışmak için merkezi bir yer sağlar. Python SDK 'sında bir nesne oluşturarak çalışma alanı yapıtlarına erişebilirsiniz [`workspace`](/python/api/azureml-core/azureml.core.workspace.workspace) .
 
 `config.json` [Önkoşullar bölümünde](#prerequisites)oluşturulan dosyadan bir çalışma alanı nesnesi oluşturun.
 
@@ -181,7 +181,7 @@ Ortamları oluşturma ve kullanma hakkında daha fazla bilgi için, bkz. [Azure 
 
 ### <a name="create-a-scriptrunconfig"></a>ScriptRunConfig oluşturma
 
-Eğitim betiğinizi, kullanılacak ortamı ve üzerinde çalıştırılacak işlem hedefini de içeren eğitim işinizin yapılandırma ayrıntılarını belirtmek için bir [ScriptRunConfig](/python/api/azureml-core/azureml.core.scriptrunconfig?preserve-view=true&view=azure-ml-py) nesnesi oluşturun. Eğitim betiğinizdeki bağımsız değişkenler, parametresinde belirtilmişse komut satırı aracılığıyla geçirilir `arguments` . 
+Eğitim betiğinizi, kullanılacak ortamı ve üzerinde çalıştırılacak işlem hedefini de içeren eğitim işinizin yapılandırma ayrıntılarını belirtmek için bir [ScriptRunConfig](/python/api/azureml-core/azureml.core.scriptrunconfig) nesnesi oluşturun. Eğitim betiğinizdeki bağımsız değişkenler, parametresinde belirtilmişse komut satırı aracılığıyla geçirilir `arguments` . 
 
 ```python
 from azureml.core import ScriptRunConfig
@@ -203,7 +203,7 @@ ScriptRunConfig ile işleri yapılandırma hakkında daha fazla bilgi için bkz.
 
 ## <a name="submit-your-run"></a>Çalıştırmanızı gönder
 
-[Run nesnesi](/python/api/azureml-core/azureml.core.run%28class%29?preserve-view=true&view=azure-ml-py) , iş çalışırken ve tamamlandıktan sonra çalışma geçmişi için arabirim sağlar.
+[Run nesnesi](/python/api/azureml-core/azureml.core.run%28class%29) , iş çalışırken ve tamamlandıktan sonra çalışma geçmişi için arabirim sağlar.
 
 ```Python
 run = Experiment(ws, name='Tutorial-pytorch-birds').submit(src)
@@ -267,7 +267,7 @@ dependencies:
   - horovod==0.19.5
 ```
 
-Azure ML üzerinde MPı/Horovod kullanarak dağıtılmış bir işi yürütmek için, ScriptRunConfig oluşturucusunun parametresine bir [Mpicontısıdiation](/python/api/azureml-core/azureml.core.runconfig.mpiconfiguration?preserve-view=true&view=azure-ml-py) belirtmeniz gerekir `distributed_job_config` . Aşağıdaki kod, düğüm başına bir işlem çalıştıran 2 düğümlü dağıtılmış bir işi yapılandırır. Düğüm başına birden çok işlem çalıştırmak istiyorsanız (örneğin, küme SKU 'sunda birden fazla GPU varsa), ek olarak, `process_count_per_node` Mpiconation (varsayılan değer) parametresinde parametreyi de belirtin `1` .
+Azure ML üzerinde MPı/Horovod kullanarak dağıtılmış bir işi yürütmek için, ScriptRunConfig oluşturucusunun parametresine bir [Mpicontısıdiation](/python/api/azureml-core/azureml.core.runconfig.mpiconfiguration) belirtmeniz gerekir `distributed_job_config` . Aşağıdaki kod, düğüm başına bir işlem çalıştıran 2 düğümlü dağıtılmış bir işi yapılandırır. Düğüm başına birden çok işlem çalıştırmak istiyorsanız (örneğin, küme SKU 'sunda birden fazla GPU varsa), ek olarak, `process_count_per_node` Mpiconation (varsayılan değer) parametresinde parametreyi de belirtin `1` .
 
 ```python
 from azureml.core import ScriptRunConfig
@@ -294,7 +294,7 @@ Bu başlatma seçenekleri arasında temel farklılık yoktur; Bu, büyük ölç�
 #### <a name="per-process-launch"></a>İşlem başına başlatma
 Dağıtılmış bir PyTorch işini çalıştırmak için bu seçeneği kullanmak üzere şunları yapın:
 1. Eğitim betiğini ve bağımsız değişkenleri belirtin
-2. [Pytorchconfiguration](/python/api/azureml-core/azureml.core.runconfig.pytorchconfiguration?preserve-view=true&view=azure-ml-py) oluşturun ve öğesini ve öğesini belirtin `process_count` `node_count` . , `process_count` İşiniz için çalıştırmak istediğiniz toplam işlem sayısına karşılık gelir. Bu, genellikle düğüm başına GPU sayısını düğüm sayısıyla çarparak eşit olmalıdır. `process_count`Belirtilmezse, Azure ML varsayılan olarak düğüm başına bir işlem başlatır.
+2. [Pytorchconfiguration](/python/api/azureml-core/azureml.core.runconfig.pytorchconfiguration) oluşturun ve öğesini ve öğesini belirtin `process_count` `node_count` . , `process_count` İşiniz için çalıştırmak istediğiniz toplam işlem sayısına karşılık gelir. Bu, genellikle düğüm başına GPU sayısını düğüm sayısıyla çarparak eşit olmalıdır. `process_count`Belirtilmezse, Azure ML varsayılan olarak düğüm başına bir işlem başlatır.
 
 Azure ML aşağıdaki ortam değişkenlerini ayarlar:
 * `MASTER_ADDR` -İşlemi 0 sırasıyla barındıracak olan makinenin IP adresi.

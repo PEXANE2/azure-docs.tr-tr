@@ -9,18 +9,49 @@ ms.topic: reference
 ms.author: larryfr
 author: BlackMist
 ms.date: 02/18/2021
-ms.openlocfilehash: ebd4aed284869eb74760de8612a76139d26d47f5
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.openlocfilehash: b61337f29eac11ca3fb45056b9348fbc70956b53
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 03/09/2021
-ms.locfileid: "102502357"
+ms.locfileid: "102521212"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Azure Machine Learning sürüm notları
 
 Bu makalede Azure Machine Learning sürümleri hakkında bilgi edinin.  Tam SDK başvuru içeriği için Azure Machine Learning [**Python başvurusu için ana SDK**](/python/api/overview/azure/ml/intro) sayfasına gidin.
 
 __RSS akışı__: aşağıdaki URL 'yi kopyalayıp akış okuyucunuzun içine yapıştırarak Bu sayfa güncelleştirildikten sonra bildirim alın: `https://docs.microsoft.com/api/search/rss?search=%22Azure+machine+learning+release+notes%22&locale=en-us`
+
+
+## <a name="2021-03-08"></a>2021-03-08
+
+### <a name="azure-machine-learning-sdk-for-python-v1240"></a>Python v 1.24.0 için SDK Azure Machine Learning
++ **Yeni özellikler**
+  + **azureml-automl-core**
+    + Geriye dönük uyumlu içeri aktarmalar öğesinden kaldırıldı `azureml.automl.core.shared` . Ad alanındaki modül bulunamadı hataları, `azureml.automl.core.shared` öğesinden içeri aktarma ile çözülebilir `azureml.automl.runtime.shared` .
+  + **azureml-contrib-oto ml-DNN-Vision**
+    + Gösterilen nesne algılama Yolo modeli.
+  + **azureml-contrib-dataset**
+    + Sütun değerlerine ve dosya veri kümelerine meta verilere göre tablo veri kümelerini filtrelemek için işlevsellik eklenmiştir.
+  + **azureml-contrib-fairness**
+    + İçin tekerlek şemasında JSON şemasını dahil et `azureml-contrib-fairness`
+  + **azureml-contrib-k8s**
+    + Artık kaynak grubu ve küme adı yerine iliştirilecek resource_id sağlanmalıdır.
+  + **azureml-contrib-mir**
+    + Modelleri dağıtırken show_output true olarak ayarlayarak, istek sunucuya gönderilmeden önce çıkarım yapılandırması ve dağıtım yapılandırması yeniden yürütülür.
+  + **azureml-core**
+    + Sütun değerlerine ve dosya veri kümelerine meta verilere göre tablo veri kümelerini filtrelemek için işlevsellik eklenmiştir.
+    + Daha önce, kullanıcıların ComputeTarget için, alan için parola gücü gereksinimlerini karşılamayan `admin_user_password` (yani, şu kümeden en az 3 ' e, 1 büyük harf, 1 rakam ve 1 özel karakter içermesi gerekir) için sağlama yapılandırması oluşturma olasılığı vardır ``\`~!@#$%^&*()=+_[]{}|;:./'",<>?`` . Kullanıcı zayıf bir parolayla bir yapılandırma oluşturup bu yapılandırmayı kullanarak bir işi çalıştırmışsa, iş çalışma zamanında başarısız olur. Şimdi, çağrısı, `AmlCompute.provisioning_configuration` `ComputeTargetException` Parola gücü gereksinimlerini açıklayan bir hata iletisiyle birlikte bir oluşturacak. 
+    + Ayrıca, bazı durumlarda, negatif sayıda maksimum düğüme sahip bir yapılandırma belirtmek de mümkündür. Bunu yapmak artık mümkün değildir. Şimdi `AmlCompute.provisioning_configuration` `ComputeTargetException` `max_nodes` bağımsız değişken negatif bir tamsayı ise bir oluşturur.
+    + Model dağıtırken,, çıkarım yapılandırması ve dağıtım yapılandırması görüntülenecek şekilde ayarla show_output.
+    + Model dağıtımının tamamlanmasını beklerken ayarı true olarak show_output ayarlayarak, dağıtım işleminin ilerlemesi görüntülenir.
+    + Ortam değişkeni ile müşteri tarafından belirtilen AzureML kimlik doğrulama yapılandırma dizinine izin ver: AZUREML_AUTH_CONFIG_DIR
+    + Daha önce, en düşük düğüm sayısı en fazla düğüm sayısından az olan bir sağlama yapılandırması oluşturmak mümkün oldu. İş çalışma zamanında çalışır, ancak başarısız olur. Bu hata düzeltildi. Artık SDK ile bir sağlama yapılandırması oluşturmayı denerseniz, `min_nodes < max_nodes` bir sağlar `ComputeTargetException` .
+  + **azureml-interpret**
+    + Açıklama açıklaması panosu, seyrek mühendislik uygulanan açıklamalar için toplu özellik özelliklerini gösterilmiyor
+    + ExplanationClient 'in azureml için en iyileştirilmiş bellek kullanımı-paketi yorumlama
+  + **azureml-train-automl-client**
+    +  Fixed show_output = false kullanılarak çalışırken denetimin kullanıcıya döndürülmesi için false.
 
 ## <a name="2021-02-28"></a>2021-02-28
 ### <a name="azure-machine-learning-studio-notebooks-experience-february-update"></a>Azure Machine Learning Studio Not defteri deneyimi (Şubat güncelleştirmesi)
@@ -39,6 +70,7 @@ __RSS akışı__: aşağıdaki URL 'yi kopyalayıp akış okuyucunuzun içine ya
   + Gelişmiş hız ve çekirdek güvenilirliği
   + Tüm devam eden [Işlem örneği işlemlerinin](https://docs.microsoft.com/azure/machine-learning/how-to-run-jupyter-notebooks#status-indicators)ilerlemesini göstermek için dönen tekerlek eklendi.
   + Dosya Gezgini 'ne sağ tıklayın. Dosya işlemlerini açmak için herhangi bir dosyaya sağ tıklayın. 
+
 
 ## <a name="2021-02-16"></a>2021-02-16
 
@@ -1020,7 +1052,7 @@ Artık Azure Machine Learning doğrudan stüdyo Web deneyiminin içinde Machine 
 
 Studio 'dan aşağıdaki Web tabanlı yazma araçlarına erişin:
     
-| Web tabanlı araç  |     Açıklama  |
+| Web tabanlı araç  |     Description  |
 |---|---|
 | Azure ML Studio Not defterleri   |     Not defteri dosyaları için birinci sınıf yazma ve Azure ML Python SDK 'da bulunan tüm işlemleri destekleme. | 
 
@@ -1532,7 +1564,7 @@ Studio 'dan veri kümeleri, işlem hatları, modeller, uç noktaları ve daha fa
 
 Studio 'dan aşağıdaki Web tabanlı yazma araçlarına erişin:
 
-| Web tabanlı araç | Açıklama | 
+| Web tabanlı araç | Description | 
 |-|-|-|
 | Not defteri VM (Önizleme) | Tam olarak yönetilen bulut tabanlı iş istasyonu | 
 | [Otomatik makine öğrenimi](tutorial-first-experiment-automated-ml.md) (Önizleme) | Machine Learning modeli geliştirmeyi otomatikleştirmek için kod deneyimi yok | 

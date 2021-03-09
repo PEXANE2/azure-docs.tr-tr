@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 08/07/2020
 ms.reviewer: sngun
-ms.openlocfilehash: 455fdc7615e0909189f311755571d02a9acca24e
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.openlocfilehash: a8e968d05a1f844a79d2e42d10c323ed4c392424
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 03/09/2021
-ms.locfileid: "102502000"
+ms.locfileid: "102521229"
 ---
 # <a name="azure-cosmos-db-attachments"></a>Ekleri Azure Cosmos DB
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-mongodb-api.md)]
@@ -42,9 +42,9 @@ Azure Cosmos DB yönetilen ekler standart öğe desteğinden farklıdır. bu say
 - Yönetilen ekler Azure Cosmos DB genel dağıtımı ile uyumlu değildir ve bölgeler arasında çoğaltılmaz.
 
 > [!NOTE]
-> MongoDB sürüm 3,2 için Azure Cosmos DB API, GridFS için yönetilen ekleri kullanır ve bu nedenle Azure Cosmos DB yönetilen eklerle aynı sınırlamalara tabidir.
+> MongoDB sürüm 3,2 için Azure Cosmos DB API, GridFS için yönetilen ekleri kullanır ve aynı sınırlamalara tabidir.
 >
-> MongoDB Grdfs özelliği kümesini kullanarak, eklerden ayrılan ve daha güçlü ve daha güçlü bir deneyim sunan MongoDB sürüm 3,6 veya üzeri için Azure Cosmos DB API 'sine yükseltmek üzere geliştiricilerin kullanmasını öneririz. Alternatif olarak, MongoDB Grdfs özelliği kümesini kullanan geliştiriciler de blob içeriğini depolamak için tasarlanmış olan Azure Blob Storage 'ı kullanmayı göz önünde bulundurmalı ve daha düşük maliyetli bir genişletilmiş işlevsellik sunar.
+> MongoDB Grdfs özelliği kümesini kullanan geliştiricilerin, eklerden ayrılan ve daha iyi bir deneyim sunan MongoDB sürüm 3,6 veya üzeri için Azure Cosmos DB API 'sine yükseltmesini öneririz. Alternatif olarak, MongoDB Grdfs özelliği kümesini kullanan geliştiriciler de blob içeriğini depolamak için tasarlanmış olan Azure Blob Storage 'ı kullanmayı göz önünde bulundurmalı ve daha düşük maliyetli bir genişletilmiş işlevsellik sunar.
 
 ## <a name="migrating-attachments-to-azure-blob-storage"></a>Ekleri Azure Blob depolamaya geçirme
 

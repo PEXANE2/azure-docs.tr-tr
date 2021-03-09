@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 03/05/2021
 ms.author: alkohli
-ms.openlocfilehash: bc8d14f3d4621a41c2d2845802313033d0809b4b
-ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
+ms.openlocfilehash: 40065189f3c1dd52f462985aef344e9cbeb12f0b
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102442137"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102522385"
 ---
 # <a name="deploy-a-kubernetes-stateless-application-via-kubectl-on-your-azure-stack-edge-pro-gpu-device"></a>Azure Stack Edge Pro GPU cihazınızdan kubectl aracılığıyla bir Kubernetes durum bilgisiz uygulaması dağıtma
 
@@ -27,7 +27,7 @@ Bir Kubernetes kümesi oluşturabilmeniz ve `kubectl` komut satırı aracını k
 
 - 1 düğümlü Azure Stack Edge Pro cihazı için oturum açma kimlik bilgileriniz vardır.
 
-- Windows PowerShell 5,0 veya üzeri bir Windows istemci sisteminde Azure Stack Edge Pro cihazına erişmek için yüklenir. Desteklenen bir işletim sistemine sahip başka bir istemciniz de olabilir. Bu makalede, bir Windows istemcisi kullanılırken yordam açıklanmaktadır. Windows PowerShell 'in en son sürümünü indirmek için [Windows PowerShell 'ı yükleme](/powershell/scripting/install/installing-windows-powershell?view=powershell-7&preserve-view=true)bölümüne gidin.
+- Windows PowerShell 5,0 veya üzeri bir Windows istemci sisteminde Azure Stack Edge Pro cihazına erişmek için yüklenir. Desteklenen bir işletim sistemine sahip başka bir istemciniz de olabilir. Bu makalede, bir Windows istemcisi kullanılırken yordam açıklanmaktadır. Windows PowerShell 'in en son sürümünü indirmek için [Windows PowerShell 'ı yükleme](/powershell/scripting/install/installing-windows-powershell)bölümüne gidin.
 
 - Azure Stack Edge Pro cihazında işlem etkindir. İşlem ' ı etkinleştirmek için, cihazın yerel kullanıcı arabirimindeki **işlem** sayfasına gidin. Sonra, işlem için etkinleştirmek istediğiniz bir ağ arabirimi seçin. **Etkinleştir**’i seçin. İşlem, bu ağ arabirimindeki cihazınızda sanal anahtar oluşturulmasına neden olur. Daha fazla bilgi için bkz. [Azure Stack Edge Pro 'da işlem ağını etkinleştirme](azure-stack-edge-gpu-deploy-configure-network-compute-web-proxy.md).
 

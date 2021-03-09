@@ -237,7 +237,7 @@
         - name: Koşullu erişimi yapılandırma
           href: conditional-access-user-flow.md
     - name: Yaş sınırını yapılandırma
-      href: basic-age-gating.md
+      href: age-gating.md
     - name: API bağlayıcıları (önizleme)
       items:
         - name: Genel Bakış

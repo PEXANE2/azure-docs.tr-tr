@@ -9,12 +9,12 @@ ms.subservice: extensions
 ms.date: 02/12/2021
 ms.reviewer: jushiman
 ms.custom: mimckitt
-ms.openlocfilehash: 71ddb1217be7fe3e1254e0d49e1f40c43a55a3f0
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.openlocfilehash: 8805b3c4947311a3054066b3378d881d673c2b14
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 03/09/2021
-ms.locfileid: "102502425"
+ms.locfileid: "102521756"
 ---
 # <a name="preview-orchestration-modes-for-virtual-machine-scale-sets-in-azure"></a>Önizleme: Azure 'da sanal makine ölçek kümeleri için düzenleme modları 
 
@@ -106,7 +106,7 @@ Aşağıdaki tabloda esnek düzenleme modu, Tekdüzen düzenleme modu ve kullan�
 |         Otomatik ölçeklendirme  |            Hayır  |            Yes  |            Hayır  |
 |         VM 'yi belirli bir hata etki alanına atama  |            Yes  |             Hayır   |            Hayır  |
 |         Sanal makine örneklerini silerken NIC 'Leri ve diskleri kaldırma  |            Hayır  |            Yes  |            Hayır  |
-|         Yükseltme Ilkesi (VM Ölçek Kümeleri) |            Hayır  |            Otomatik, kayan, El Ile  |            Yok  |
+|         Yükseltme Ilkesi (VM Ölçek Kümeleri) |            No  |            Otomatik, kayan, El Ile  |            Yok  |
 |         Otomatik işletim sistemi güncelleştirmeleri (VM Ölçek Kümeleri) |            Hayır  |            Yes  |            Yok  |
 |         Konuk güvenlik düzeltme eki uygulama  |            Yes  |            Hayır  |            Yes  |
 |         Bildirimleri sonlandır (VM Ölçek Kümeleri) |            Hayır  |            Yes  |            Yok  |
@@ -115,8 +115,8 @@ Aşağıdaki tabloda esnek düzenleme modu, Tekdüzen düzenleme modu ve kullan�
 |         Spot örnekleri ve fiyatlandırma   |            Evet, hem nokta hem de normal öncelik örneklerine sahip olabilirsiniz  |            Evet, örneklerin tümü nokta veya hepsi normal olmalıdır  |            Hayır, yalnızca normal öncelik örnekleri  |
 |         İşletim sistemlerini karıştır  |            Evet, Linux ve Windows aynı esnek ölçek kümesinde bulunabilir |            Hayır, örnek aynı işletim sistemidir  |               Evet, Linux ve Windows aynı esnek ölçek kümesinde bulunabilir |
 |         Uygulama durumunu izleme  |            Uygulama durumu uzantısı  |            Uygulama durumu uzantısı veya Azure yük dengeleyici araştırması  |            Uygulama durumu uzantısı  |
-|         UltraSSD diskler   |            Yes  |            Evet, yalnızca bölgesel dağıtımları için  |            Hayır  |
-|         InfiniBand   |            Hayır  |            Evet, yalnızca tek yerleşim grubu  |            Yes  |
+|         UltraSSD diskler   |            Yes  |            Evet, yalnızca bölgesel dağıtımları için  |            No  |
+|         InfiniBand   |            No  |            Evet, yalnızca tek yerleşim grubu  |            Yes  |
 |         Yazma Hızlandırıcısı   |            Hayır  |            Yes  |            Yes  |
 |         Yakınlık yerleştirme grupları   |            Yes  |            Yes  |            Yes  |
 |         Azure ayrılmış Konakları   |            Hayır  |            Yes  |            Yes  |
@@ -128,7 +128,7 @@ Aşağıdaki tabloda esnek düzenleme modu, Tekdüzen düzenleme modu ve kullan�
 |         Azure uyarıları  |            Hayır  |            Yes  |            Yes  |
 |         VM öngörüleri  |            Hayır  |            Yes  |            Yes  |
 |         Azure Backup  |            Yes  |            Yes  |            Yes  |
-|         Azure Site Recovery  |            Evet, yalnızca PowerShell  |            Yes  |            Yes  |
+|         Azure Site Recovery  |            Hayır  |            Hayır  |            Yes  |
 |         Mevcut VM 'yi gruba ekle/kaldır  |            Hayır  |            Hayır  |            Hayır  | 
 
 

@@ -11,12 +11,12 @@ ms.reviewer: nibaccam
 ms.date: 12/23/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: ed9d41a84e455241ed3cfc41b905a671f2a2d499
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: 02684ba91c207357e15684870a6fa0ceab3e17ff
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97912963"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102520974"
 ---
 # <a name="train-and-track-ml-models-with-mlflow-and-azure-machine-learning-preview"></a>MLflow ve Azure Machine Learning (Önizleme) ile ML modellerini eğitme ve izleme
 
@@ -46,7 +46,7 @@ Aşağıdaki diyagramda, MLflow Izlemenin yanı sıra, Azure Machine Learning ç
 
  Aşağıdaki tabloda Azure Machine Learning kullanılabilecek farklı istemciler ve ilgili işlev özellikleri özetlenmektedir.
 
- MLflow Izleme yalnızca [Azure Machine Learning Python SDK 'sı](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py)aracılığıyla kullanılabilen ölçüm günlüğü ve yapıt depolama işlevleri sunar.
+ MLflow Izleme yalnızca [Azure Machine Learning Python SDK 'sı](/python/api/overview/azure/ml/intro)aracılığıyla kullanılabilen ölçüm günlüğü ve yapıt depolama işlevleri sunar.
 
 | Özellik | MLflow Izleme & dağıtımı | Python SDK Azure Machine Learning |  Azure Machine Learning CLI | Azure Machine Learning Studio|
 |---|---|---|---|---|
@@ -60,10 +60,10 @@ Aşağıdaki diyagramda, MLflow Izlemenin yanı sıra, Azure Machine Learning ç
 |Model performansını izleme||✓|  |   |
 | Veri değişikliklerini algılama |   | ✓ |   | ✓ |
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * `azureml-mlflow` paketini yükleyin. 
-    * Bu paket `azureml-core` , çalışma alanınıza erişmek Için MLflow bağlantısını sağlayan [Azure Machine Learning Python SDK 'sını](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py)otomatik olarak getirir.
+    * Bu paket `azureml-core` , çalışma alanınıza erişmek Için MLflow bağlantısını sağlayan [Azure Machine Learning Python SDK 'sını](/python/api/overview/azure/ml/install)otomatik olarak getirir.
 * [Azure Machine Learning çalışma alanı oluşturun](how-to-manage-workspace.md).
     * [MLflow işlemlerinizi çalışma alanınız ile gerçekleştirmek için hangi erişim izinlerine ihtiyacınız](how-to-assign-roles.md#mlflow-operations)olduğunu görün.
 
@@ -71,7 +71,7 @@ Aşağıdaki diyagramda, MLflow Izlemenin yanı sıra, Azure Machine Learning ç
 
 Azure Machine Learning ile MLflow Izleme, yerel çalıştırmanıza ait günlüğe kaydedilen ölçümleri ve yapıtları Azure Machine Learning çalışma alanınıza depolamanıza olanak sağlar.
 
-`mlflow` [`Workspace`](/python/api/azureml-core/azureml.core.workspace%28class%29?preserve-view=true&view=azure-ml-py) Mlflow 'un izleme URI 'sine erişmek ve çalışma alanınızı yapılandırmak için ve sınıflarını içeri aktarın.
+`mlflow` [`Workspace`](/python/api/azureml-core/azureml.core.workspace%28class%29) Mlflow 'un izleme URI 'sine erişmek ve çalışma alanınızı yapılandırmak için ve sınıflarını içeri aktarın.
 
 Aşağıdaki kodda `get_mlflow_tracking_uri()` yöntemi, çalışma alanına benzersiz bir Izleme URI adresi atar `ws` ve `set_tracking_uri()` MLFLOW izleme URI 'sini bu adrese yönlendirir.
 
@@ -118,7 +118,7 @@ dependencies:
     - numpy
 ```
 
-Betiğinizdeki işlem ve eğitim çalıştırma ortamınızı [`Environment`](/python/api/azureml-core/azureml.core.environment.environment?preserve-view=true&view=azure-ml-py) sınıfıyla yapılandırın. Sonra,  [`ScriptRunConfig`](/python/api/azureml-core/azureml.core.script_run_config.scriptrunconfig?preserve-view=true&view=azure-ml-py) işlem hedefi olarak uzak işlem ile oluşturun.
+Betiğinizdeki işlem ve eğitim çalıştırma ortamınızı [`Environment`](/python/api/azureml-core/azureml.core.environment.environment) sınıfıyla yapılandırın. Sonra,  [`ScriptRunConfig`](/python/api/azureml-core/azureml.core.script_run_config.scriptrunconfig) işlem hedefi olarak uzak işlem ile oluşturun.
 
 ```Python
 import mlflow
@@ -145,7 +145,7 @@ Bu örnek, Azure Machine Learning izleme ile MLflow projelerinin yerel olarak na
 pip install azureml-mlflow
 ```
 
-`mlflow` [`Workspace`](/python/api/azureml-core/azureml.core.workspace%28class%29?preserve-view=true&view=azure-ml-py) Mlflow 'un izleme URI 'sine erişmek ve çalışma alanınızı yapılandırmak için ve sınıflarını içeri aktarın.
+`mlflow` [`Workspace`](/python/api/azureml-core/azureml.core.workspace%28class%29) Mlflow 'un izleme URI 'sine erişmek ve çalışma alanınızı yapılandırmak için ve sınıflarını içeri aktarın.
 
 ```Python
 import mlflow

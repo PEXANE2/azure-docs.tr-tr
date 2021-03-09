@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 09/09/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 155df45d975a30991edc80d587445d699a8d2695
-ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
+ms.openlocfilehash: 8a1a2d7f5272def78cd162da1f6ac0265d4fb30b
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100103235"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102517745"
 ---
 # <a name="desktop-app-that-calls-web-apis-app-registration"></a>Web API 'Lerini çağıran masaüstü uygulaması: uygulama kaydı
 
@@ -43,7 +43,7 @@ Bir masaüstü uygulamasında kullanılacak yeniden yönlendirme URI 'Leri, kull
 - Etkileşimli kimlik doğrulama veya cihaz kod akışı kullanıyorsanız, kullanın `https://login.microsoftonline.com/common/oauth2/nativeclient` . Bu yapılandırmayı başarmak için, uygulamanız için **kimlik doğrulama** bölümünde karşılık gelen URL 'yi seçin.
 
   > [!IMPORTANT]
-  > `https://login.microsoftonline.com/common/oauth2/nativeclient`Yeniden yönlendirme URI 'si olarak kullanılması en iyi güvenlik uygulaması olarak önerilir.  Yeniden yönlendirme URI 'SI belirtilmemişse, MSAL.NET `urn:ietf:wg:oauth:2.0:oob` Varsayılan olarak, yeniden uygulanmaz.  Bu varsayılan, sonraki büyük sürümde bir son değişiklik olarak güncelleştirilir.
+  > `https://login.microsoftonline.com/common/oauth2/nativeclient`Yeniden yönlendirme URI 'si olarak kullanılması en iyi güvenlik uygulaması olarak önerilir.  Yeniden yönlendirme URI 'SI belirtilmemişse, MSAL.NET `urn:ietf:wg:oauth:2.0:oob` Varsayılan olarak kullanılması önerilmez.  Bu varsayılan, sonraki büyük sürümde bir son değişiklik olarak güncelleştirilir.
 
 - MacOS için yerel bir amaç-C veya Swift uygulaması oluşturuyorsanız, yeniden yönlendirme URI 'sini uygulamanızın paket tanımlayıcısına göre aşağıdaki biçimde kaydedin: `msauth.<your.app.bundle.id>://auth` . `<your.app.bundle.id>`Uygulamanızın paket tanımlayıcısı ile değiştirin.
 - Uygulamanız yalnızca tümleşik Windows kimlik doğrulaması veya Kullanıcı adı ve parola kullanıyorsa, uygulamanız için bir yeniden yönlendirme URI 'SI kaydetmeniz gerekmez. Bu akışlar Microsoft Identity platform v 2.0 uç noktasına gidiş dönüş yapılır. Uygulamanız belirli bir URI üzerinde geri çağrılmayacaktır.

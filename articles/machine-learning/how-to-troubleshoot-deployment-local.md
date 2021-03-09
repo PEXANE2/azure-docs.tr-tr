@@ -11,12 +11,12 @@ ms.reviewer: luquinta
 ms.date: 11/25/2020
 ms.topic: troubleshooting
 ms.custom: devx-track-python, deploy, contperf-fy21q2
-ms.openlocfilehash: ebd984ad6fd91aa29af9766042a03bc56efe17eb
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.openlocfilehash: 69ac47296cb4624de6cdf05ddb3e72973751f631
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102215757"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102519631"
 ---
 # <a name="troubleshooting-with-a-local-model-deployment"></a>Yerel model dağıtımıyla ilgili sorunları giderme
 
@@ -28,7 +28,7 @@ Azure Container Instances (ACI) veya Azure Kubernetes hizmeti (AKS) dağıtımı
 * Seçenek A (**Önerilen**)-Azure Machine Learning işlem örneğinde yerel olarak hata ayıkla
    * [İşlem örneği](how-to-deploy-local-container-notebook-vm.md) çalıştıran bir Azure Machine Learning çalışma alanı
 * Seçenek B-işlem sırasında yerel olarak hata ayıklama
-   * [Azure MACHINE LEARNING SDK](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py).
+   * [Azure MACHINE LEARNING SDK](/python/api/overview/azure/ml/install).
    * [Azure CLI](/cli/azure/install-azure-cli).
    * [Azure Machine Learning Için CLI uzantısı](reference-azure-machine-learning-cli.md).
    * Yerel sisteminizde çalışan bir Docker yüklemesine sahip olmanız gerekir. 
@@ -98,7 +98,7 @@ print(service.run(input_data=test_sample))
 > [!NOTE]
 > Betik, `InferenceConfig` hizmet tarafından kullanılan nesne tarafından belirtilen konumdan yeniden yüklenir.
 
-Modeli, Conda bağımlılıklarını veya dağıtım yapılandırmasını değiştirmek için [Update ()](/python/api/azureml-core/azureml.core.webservice%28class%29?preserve-view=true&view=azure-ml-py#&preserve-view=trueupdate--args-)kullanın. Aşağıdaki örnek, hizmet tarafından kullanılan modeli güncelleştirir:
+Modeli, Conda bağımlılıklarını veya dağıtım yapılandırmasını değiştirmek için [Update ()](/python/api/azureml-core/azureml.core.webservice%28class%29#update--args-)kullanın. Aşağıdaki örnek, hizmet tarafından kullanılan modeli güncelleştirir:
 
 ```python
 service.update([different_model], inference_config, deployment_config)
@@ -106,7 +106,7 @@ service.update([different_model], inference_config, deployment_config)
 
 ### <a name="delete-the-service"></a>Hizmeti Sil
 
-Hizmeti silmek için [Delete ()](/python/api/azureml-core/azureml.core.webservice%28class%29?preserve-view=true&view=azure-ml-py#&preserve-view=truedelete--)kullanın.
+Hizmeti silmek için [Delete ()](/python/api/azureml-core/azureml.core.webservice%28class%29#delete--)kullanın.
 
 ### <a name="inspect-the-docker-log"></a><a id="dockerlog"></a> Docker günlüğünü İnceleme
 

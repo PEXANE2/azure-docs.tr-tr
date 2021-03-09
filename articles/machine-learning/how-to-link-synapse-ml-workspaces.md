@@ -11,12 +11,12 @@ author: nibaccam
 ms.reviewer: nibaccam
 ms.date: 03/08/2021
 ms.custom: how-to, devx-track-python, data4ml, synapse-azureml
-ms.openlocfilehash: 8941a7f7a27f6ffe58cda3f0bf2c6833ec226783
-ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
+ms.openlocfilehash: d1c4defc53c4af0fb481a57c0a455e987fdd480a
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "102456330"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102520006"
 ---
 # <a name="link-azure-synapse-analytics-and-azure-machine-learning-workspaces-preview"></a>Azure SYNAPSE Analytics ve Azure Machine Learning çalışma alanlarını bağlama (Önizleme)
 
@@ -29,7 +29,7 @@ Azure SYNAPSE çalışma alanınız ile bağlantılı Azure Machine Learning ça
 Ayrıca, çalışma alanlarını bağlayabilir ve tek bir [Azure Resource Manager (ARM) şablonuyla](https://github.com/Azure/azure-quickstart-templates/blob/master/101-machine-learning-linkedservice-create/azuredeploy.json)bir Synapse Spark havuzu iliştirebilirsiniz.
 
 >[!IMPORTANT]
-> Azure Machine Learning ve Azure SYNAPSE tümleştirmesi genel önizlemededir. Paketten sunulan işlevler `azureml-synapse` [deneysel](/python/api/overview/azure/ml/?preserve-view=true&view=azure-ml-py#stable-vs-experimental) önizleme özellikleridir ve herhangi bir zamanda değişebilir.
+> Azure Machine Learning ve Azure SYNAPSE tümleştirmesi genel önizlemededir. Paketten sunulan işlevler `azureml-synapse` [deneysel](/python/api/overview/azure/ml/#stable-vs-experimental) önizleme özellikleridir ve herhangi bir zamanda değişebilir.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -39,7 +39,7 @@ Ayrıca, çalışma alanlarını bağlayabilir ve tek bir [Azure Resource Manage
 
 * [Azure portal, Web araçları veya SYNAPSE Studio kullanarak Apache Spark havuzu oluşturma](/synapse-analytics/quickstart-create-apache-spark-pool-portal.md)
 
-* [Azure Machine Learning Python SDK 'sını](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py) yükler
+* [Azure Machine Learning Python SDK 'sını](/python/api/overview/azure/ml/intro) yükler
 
 * [Azure Machine Learning Studio](https://ml.azure.com/)'ya erişin.
 
@@ -51,7 +51,7 @@ Ayrıca, çalışma alanlarını bağlayabilir ve tek bir [Azure Resource Manage
 >
 > Bir **sahip** değilseniz ve yalnızca SYNAPSE çalışma alanına **katkıda** bulundıysanız yalnızca var olan bağlı hizmetleri kullanabilirsiniz. Bkz. [mevcut bir bağlı hizmeti alma ve kullanma](how-to-data-prep-synapse-spark-pool.md#get-an-existing-linked-service).
 
-Aşağıdaki kod, [`LinkedService`](/python/api/azureml-core/azureml.core.linked_service.linkedservice?preserve-view=true&view=azure-ml-py) ve sınıflarını kullanır [`SynapseWorkspaceLinkedServiceConfiguration`](/python/api/azureml-core/azureml.core.linked_service.synapseworkspacelinkedserviceconfiguration?preserve-view=true&view=azure-ml-py) ,
+Aşağıdaki kod, [`LinkedService`](/python/api/azureml-core/azureml.core.linked_service.linkedservice) ve sınıflarını kullanır [`SynapseWorkspaceLinkedServiceConfiguration`](/python/api/azureml-core/azureml.core.linked_service.synapseworkspacelinkedserviceconfiguration) ,
 
 * Machine Learning çalışma alanınızı `ws` Azure SYNAPSE çalışma alanınıza bağlayın.
 * SYNAPSE çalışma alanınızı bağlı hizmet olarak Azure Machine Learning kaydettirin.

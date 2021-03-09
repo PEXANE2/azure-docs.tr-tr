@@ -11,12 +11,12 @@ ms.author: siarora
 ms.date: 12/1/2020
 ms.topic: conceptual
 ms.custom: troubleshooting,contperf-fy20q4, contperf-fy21q2
-ms.openlocfilehash: aa25a81068b25b7b8696a7472eb04542e8bb1a60
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 4e61a15b86d1d2d05889253f615eec0865c87a70
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98878961"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102520396"
 ---
 # <a name="manage-and-increase-quotas-for-resources-with-azure-machine-learning"></a>Azure Machine Learning olan kaynaklar için kotaları yönetme ve artırma
 
@@ -189,7 +189,6 @@ Azure Machine Learning (müşteri) aboneliğinizde kaynak oluşturuyor, ancak ba
  Aşağıdaki senaryolarda, Microsoft 'a ait abonelikte bir kota indirimi istemeniz gerekebilir:
 
 * Azure özel bağlantısı, müşteri tarafından yönetilen bir anahtarla etkin çalışma alanı (CMK)
-* Sanal ağınızın arkasındaki çalışma alanı için Azure Container Registry
 * Çalışma alanınıza Özel Bağlantı özellikli Azure Kubernetes Service kümesi ekleme
 
 Bu senaryolar için bir kesinti istemek üzere aşağıdaki adımları kullanın:

@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 07/30/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: e86ea0d90ea267b1c9ceecc8fed6c3d7e5102eaf
-ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
+ms.openlocfilehash: 47531da9c1e508281a57074df7aa10ffffe78810
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102443582"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102518747"
 ---
 # <a name="monitor-and-view-ml-run-logs-and-metrics"></a>ML çalıştırma günlüklerini ve ölçümlerini izleme ve görüntüleme
 
@@ -39,7 +39,7 @@ Denemeleri 'nizi yönetme hakkında genel bilgi için bkz. [başlatma, izleme ve
 
 ## <a name="monitor-runs-using-the-jupyter-notebook-widget"></a>Jupyter Not defteri pencere öğesini kullanarak izleme çalıştırmaları
 
-Çalıştırmaları göndermek için **ScriptRunConfig** yöntemini kullandığınızda, [Jupyıter pencere öğesini](/python/api/azureml-widgets/azureml.widgets?preserve-view=true&view=azure-ml-py)kullanarak çalıştırmanın ilerlemesini izleyebilirsiniz. Çalıştırma gönderimi gibi pencere öğesi de zaman uyumsuzdur ve iş tamamlanana kadar her 10-15 saniyede bir canlı güncelleştirmeler sağlar.
+Çalıştırmaları göndermek için **ScriptRunConfig** yöntemini kullandığınızda, [Jupyıter pencere öğesini](/python/api/azureml-widgets/azureml.widgets)kullanarak çalıştırmanın ilerlemesini izleyebilirsiniz. Çalıştırma gönderimi gibi pencere öğesi de zaman uyumsuzdur ve iş tamamlanana kadar her 10-15 saniyede bir canlı güncelleştirmeler sağlar.
 
 Çalıştırmanın tamamlanmasını beklerken Jupyıter pencere öğesini görüntüleyin.
     
@@ -127,7 +127,7 @@ Aşağıdaki tablolarda, bu bölümde göreceğiniz klasörlerdeki günlük dosy
 
 #### <a name="azureml-logs-folder"></a>`azureml-logs` klasörde
 
-|Dosya  |Açıklama  |
+|Dosya  |Description  |
 |---------|---------|
 |20_image_build_log.txt     | Eğitim ortamı için Docker görüntü oluşturma günlüğü, her çalıştırma için isteğe bağlı. Yalnızca ortamınız güncelleştirilirken geçerlidir. Aksi takdirde AML, önbelleğe alınmış görüntüyü yeniden kullanır. Başarılı olursa, ilgili görüntü için görüntü kayıt defteri ayrıntılarını içerir.         |
 |55_azureml yürütme-<node_id # C1.txt     | düğüm başına bir tane olmak üzere konak aracının stdout/stderr günlüğü. İşlem hedefine görüntü çeker. Bu günlük, işlem kaynaklarını güvenli hale getirildikten sonra yalnızca bir kez görünür.         |
@@ -140,7 +140,7 @@ Aşağıdaki tablolarda, bu bölümde göreceğiniz klasörlerdeki günlük dosy
 
 #### <a name="logs--azureml-folder"></a>`logs > azureml` klasörde
 
-|Dosya  |Açıklama  |
+|Dosya  |Description  |
 |---------|---------|
 |110_azureml. log      |         |
 |job_prep_azureml. log     |   iş hazırlığı için sistem günlüğü        |
@@ -150,7 +150,7 @@ Aşağıdaki tablolarda, bu bölümde göreceğiniz klasörlerdeki günlük dosy
 
 Sepet etkinleştirildiğinde, iş hazırlığı ve iş sürümü betikleri, sepet kapsayıcısı içinde çalıştırılır.  Her düğüm için bir klasör vardır. 
 
-|Dosya  |Açıklama  |
+|Dosya  |Description  |
 |---------|---------|
 |start_cms.txt     |  Sepet kapsayıcısı başladığında başlayan işlem günlüğü       |
 |prep_cmd.txt      |   Çalıştırıldığında girilen Contextyöneticileri için günlük kaydı `job_prep.py` (bir kısmı bu şekilde akışa alınacaktır `azureml-logs/65-job_prep` )       |

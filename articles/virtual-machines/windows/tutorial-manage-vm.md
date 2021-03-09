@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.date: 06/06/2019
 ms.author: cynthn
 ms.custom: mvc, devx-track-azurepowershell
-ms.openlocfilehash: 3e52a808b187e3823acfee2c260986518f2f6f49
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: b9b7fee32ec8d844452cfcb5eba29859467105e4
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91978012"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102520770"
 ---
 # <a name="tutorial-create-and-manage-windows-vms-with-azure-powershell"></a>Öğretici: Azure PowerShell ile Windows VM’leri Oluşturma ve Yönetme
 
@@ -50,7 +50,7 @@ Kaynak grubu, bu öğretici boyunca görülebileceği gibi bir VM oluşturulurke
 
 Bir VM oluştururken, işletim sistemi görüntüsü, ağ yapılandırması ve yönetici kimlik bilgileri gibi çeşitli seçenekler bulunur. Bu örnekte Windows Server 2016 Datacenter'ın varsayılan sürümünü çalıştıran *myVM* adlı bir VM oluşturulur.
 
-[Get-Credential](/powershell/module/microsoft.powershell.security/get-credential?view=powershell-6) komutuyla VM’de yönetici hesabı için gereken kullanıcı adı ve parolasını ayarlayın:
+[Get-Credential](/powershell/module/microsoft.powershell.security/get-credential) komutuyla VM’de yönetici hesabı için gereken kullanıcı adı ve parolasını ayarlayın:
 
 ```azurepowershell-interactive
 $cred = Get-Credential
@@ -234,7 +234,7 @@ Start-AzVM `
 Bir Azure VM’si birçok güç durumuna sahip olabilir. 
 
 
-| Güç Durumu | Açıklama
+| Güç Durumu | Description
 |----|----|
 | Başlatılıyor | Sanal makine başlatılıyor. |
 | Çalışma | Sanal makine çalışıyor. |
@@ -262,7 +262,7 @@ Status
 PowerState/running
 ```
 
-Aboneliğinizdeki tüm VM 'lerin güç durumunu almak için, [sanal makineler-tüm API](/rest/api/compute/virtualmachines/listall) 'Leri parametresi **statusonly** *true*olarak ayarlanmış şekilde kullanın.
+Aboneliğinizdeki tüm VM 'lerin güç durumunu almak için, [sanal makineler-tüm API](/rest/api/compute/virtualmachines/listall) 'Leri parametresi **statusonly** *true* olarak ayarlanmış şekilde kullanın.
 
 ## <a name="management-tasks"></a>Yönetim görevleri
 

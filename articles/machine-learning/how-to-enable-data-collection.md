@@ -11,12 +11,12 @@ author: lostmygithubaccount
 ms.date: 07/14/2020
 ms.topic: conceptual
 ms.custom: how-to, data4ml
-ms.openlocfilehash: fc890dbaf717d3eb9ec87afcb69c87e80c7f14bc
-ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
+ms.openlocfilehash: f42a2f9e606eaa0475f2e35c479e99545ecf8193
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97680967"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102521909"
 ---
 # <a name="collect-data-from-models-in-production"></a>Üretim içindeki modellerden veri toplama
 
@@ -65,11 +65,11 @@ Blob 'daki çıkış verilerinin yolu şu sözdizimini izler:
 
 - Bir AKS kümeniz olması gerekir. Oluşturma ve dağıtma hakkında daha fazla bilgi için bkz. [nasıl dağıtılır ve nerede](how-to-deploy-and-where.md).
 
-- [Ortamınızı ayarlayın](how-to-configure-environment.md) ve [Azure Machine Learning izleme SDK 'sını](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py)kurun.
+- [Ortamınızı ayarlayın](how-to-configure-environment.md) ve [Azure Machine Learning izleme SDK 'sını](/python/api/overview/azure/ml/install)kurun.
 
 ## <a name="enable-data-collection"></a>Veri toplamayı etkinleştirme
 
-Azure Machine Learning veya diğer araçlarla dağıttığınız modelden bağımsız olarak [veri toplamayı](/python/api/azureml-monitoring/azureml.monitoring.modeldatacollector.modeldatacollector?preserve-view=true&view=azure-ml-py) etkinleştirebilirsiniz.
+Azure Machine Learning veya diğer araçlarla dağıttığınız modelden bağımsız olarak [veri toplamayı](/python/api/azureml-monitoring/azureml.monitoring.modeldatacollector.modeldatacollector) etkinleştirebilirsiniz.
 
 Veri toplamayı etkinleştirmek için şunları yapmanız gerekir:
 
