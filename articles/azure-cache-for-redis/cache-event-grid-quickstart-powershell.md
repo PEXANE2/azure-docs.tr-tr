@@ -6,12 +6,12 @@ author: curib
 ms.author: cauribeg
 ms.topic: quickstart
 ms.service: cache
-ms.openlocfilehash: 0ab959d531ff1080e5e6a640410b4955e4cfeff7
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 6c3b433a8e433f39b723a7155bb6de116857efca
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101652207"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102508172"
 ---
 # <a name="quickstart-route-azure-cache-for-redis-events-to-web-endpoint-with-powershell"></a>Hızlı başlangıç: PowerShell ile Redsıs olayları için Azure önbelleğini Web uç noktasına yönlendirme
 
@@ -73,7 +73,7 @@ New-AzRedisCache
    [-Confirm]
    [<CommonParameters>]
 ```
-PowerShell 'de bir önbellek örneği oluşturma hakkında daha fazla bilgi için [Azure PowerShell başvurusuna](/powershell/module/az.rediscache/new-azrediscache?view=azps-5.2.0)bakın. 
+PowerShell 'de bir önbellek örneği oluşturma hakkında daha fazla bilgi için [Azure PowerShell başvurusuna](/powershell/module/az.rediscache/new-azrediscache)bakın. 
 
 ## <a name="create-a-message-endpoint"></a>İleti uç noktası oluşturma
 
@@ -132,7 +132,7 @@ Import-AzRedisCache
       [-Confirm]
       [<CommonParameters>]
 ```
-PowerShell 'de içeri aktarma hakkında daha fazla bilgi için [Azure PowerShell başvurusuna](/powershell/module/az.rediscache/import-azrediscache?view=azps-5.2.0)bakın. 
+PowerShell 'de içeri aktarma hakkında daha fazla bilgi için [Azure PowerShell başvurusuna](/powershell/module/az.rediscache/import-azrediscache)bakın. 
 
 Olayı tetiklediniz ve Event Grid, iletiyi abone olurken yapılandırdığınız uç noktaya gönderdi. Az önce gönderdiğiniz olayı görmek için web uygulamanızı görüntüleyin.
 

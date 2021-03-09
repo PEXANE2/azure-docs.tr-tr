@@ -5,12 +5,12 @@ services: container-service
 ms.topic: tutorial
 ms.date: 01/12/2021
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: a8e0ddcd77c26a00cf784fb8c2372734314dc0bb
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.openlocfilehash: c39169c0531a73bd00db7de5fe393ef8c51c8c96
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98250647"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102509430"
 ---
 # <a name="tutorial-deploy-an-azure-kubernetes-service-aks-cluster"></a>Hızlı Başlangıç: Azure Kubernetes Hizmeti (AKS) kümesini dağıtma
 
@@ -35,7 +35,7 @@ AKS kümelerinde Kubernetes rol tabanlı erişim denetimi (Kubernetes RBAC) kull
 
 [az aks create][] komutunu kullanarak bir AKS kümesi oluşturun. Aşağıdaki örnek, *myResourceGroup* adlı kaynak grubunda *myAKSCluster* adlı bir küme oluşturur. Bu kaynak grubu, *eastus* bölgesindeki [önceki öğreticide][aks-tutorial-prepare-acr] oluşturulmuştur. Aşağıdaki örnek, *eastus* bölgesinde aks kümesinin de oluşturulması için bir bölge belirtmiyor. Daha fazla bilgi için bkz. [Azure Kubernetes Service (aks) Içindeki kotalar, sanal makine boyutu kısıtlamaları ve bölge kullanılabilirliği][quotas-skus-regions] , aks için kaynak sınırları ve bölge kullanılabilirliği hakkında daha fazla bilgi için.
 
-Bir AKS kümesinin diğer Azure kaynaklarıyla etkileşime geçmesini sağlamak için bir Azure Active Directory hizmet sorumlusu, bir tane belirtmediği için otomatik olarak oluşturulur. Burada, bu hizmet sorumlusu, önceki öğreticide oluşturduğunuz Azure Container Registry (ACR) örneğinden [görüntü çekme hakkı vermiş][container-registry-integration] olur. Komutu başarıyla yürütmek için Azure aboneliğinde bir **sahip** veya **Azure hesabı Yöneticisi** rolüne sahip olmanız gerekir.
+Bir AKS kümesinin diğer Azure kaynaklarıyla etkileşime geçmesini sağlamak için bir küme kimliği belirtmediği için otomatik olarak oluşturulur. Burada, bu küme kimliğine önceki öğreticide oluşturduğunuz Azure Container Registry (ACR) örneğinden [çekme görüntülerinin hakkı verilir][container-registry-integration] . Komutu başarıyla yürütmek için Azure aboneliğinde bir **sahip** veya **Azure hesabı Yöneticisi** rolüne sahip olmanız gerekir.
 
 ```azurecli
 az aks create \

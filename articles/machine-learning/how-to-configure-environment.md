@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.date: 11/16/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, contperf-fy21q1, devx-track-azurecli
-ms.openlocfilehash: 6fe43c39b17e574e1913cd9e7b4292a71f1e418d
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 7e493404e7a36b60e8f9e62cd4ac2f2b32845bb9
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97031768"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102501626"
 ---
 # <a name="set-up-a-python-development-environment-for-azure-machine-learning"></a>Azure Machine Learning için bir Python geliştirme ortamı ayarlama
 
@@ -55,19 +55,19 @@ Bu makalede ayrıca aşağıdaki araçlar için ek kullanım ipuçları sunulmak
 
 Bu JSON dosyası, Python betikleri veya Jupyıter not defterlerini içeren dizin yapısında olmalıdır. Aynı dizinde, *. azureml* adlı bir alt dizin veya bir üst dizin içinde olabilir.
 
-Bu dosyayı kodunuzda kullanmak için [`Workspace.from_config`](/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py#from-config-path-none--auth-none---logger-none---file-name-none-&preserve-view=true) yöntemini kullanın. Bu kod, dosyadaki bilgileri yükler ve çalışma alanınıza bağlanır.
+Bu dosyayı kodunuzda kullanmak için [`Workspace.from_config`](/python/api/azureml-core/azureml.core.workspace.workspace#from-config-path-none--auth-none---logger-none---file-name-none-) yöntemini kullanın. Bu kod, dosyadaki bilgileri yükler ve çalışma alanınıza bağlanır.
 
 Aşağıdaki yöntemlerden birinde bir çalışma alanı yapılandırma dosyası oluşturun:
 
-* Azure portal
+* Azure portalı
 
     **Dosyayı indirin**: [Azure Portal](https://ms.portal.azure.com), çalışma alanınızın **genel bakış** bölümünde **config.jsindir** ' i seçin.
 
-    ![Azure portal](./media/how-to-configure-environment/configure.png)
+    ![Azure portalı](./media/how-to-configure-environment/configure.png)
 
 * Python SDK Azure Machine Learning
 
-    Azure Machine Learning çalışma alanınıza bağlanmak için bir betik oluşturun ve [`write_config`](/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py#write-config-path-none--file-name-none-&preserve-view=true) dosyanızı oluşturmak ve *. azureml/config.js* olarak kaydetmek için yöntemini kullanın. `subscription_id`,, Ve ' yi `resource_group` `workspace_name` kendi ile değiştirdiğinizden emin olun.
+    Azure Machine Learning çalışma alanınıza bağlanmak için bir betik oluşturun ve [`write_config`](/python/api/azureml-core/azureml.core.workspace.workspace#write-config-path-none--file-name-none-) dosyanızı oluşturmak ve *. azureml/config.js* olarak kaydetmek için yöntemini kullanın. `subscription_id`,, Ve ' yi `resource_group` `workspace_name` kendi ile değiştirdiğinizden emin olun.
 
     ```python
     from azureml.core import Workspace
@@ -99,7 +99,7 @@ Yerel bir geliştirme ortamını veya uzak VM 'yi yapılandırmak için:
     > Linux veya macOS 'ta çalışıyorsanız ve Bash dışında bir Shell kullanıyorsanız (örneğin, ZSH), bazı komutları çalıştırdığınızda hatalar alabilirsiniz. Bu sorunu geçici olarak çözmek için, `bash` komutunu kullanarak yeni bir bash kabuğu başlatın ve komutları burada çalıştırın.
 
 1. Yeni oluşturduğunuz Python sanal ortamınızı etkinleştirin.
-1. [Azure Machine Learning Python SDK 'sını](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py)yükler.
+1. [Azure Machine Learning Python SDK 'sını](/python/api/overview/azure/ml/install)yükler.
 1. Yerel ortamınızı Azure Machine Learning çalışma alanınızı kullanacak şekilde yapılandırmak için, [bir çalışma alanı yapılandırma dosyası oluşturun](#workspace) veya var olan bir dosyayı kullanın.
 
 Yerel ortamınız ayarlamış olduğunuza göre artık Azure Machine Learning çalışmaya başlamaya hazırsınız. Başlamak için [Python başlangıç kılavuzu Azure Machine Learning](tutorial-1st-experiment-sdk-setup-local.md) bakın.
@@ -174,7 +174,7 @@ Veri Bilimi VM'si bir geliştirme ortamı olarak kullanmak için:
 
     * [Ubuntu](data-science-virtual-machine/dsvm-ubuntu-intro.md) veya [Windows](data-science-virtual-machine/provision-vm.md) dsvm oluşturmak için Azure Portal kullanın.
     * [ARM şablonları kullanarak bir veri bilimi VM'si oluşturun](data-science-virtual-machine/dsvm-tutorial-resource-manager.md).
-    * Azure CLI'yi kullanma
+    * Azure CLI kullanma
 
         Ubuntu Veri Bilimi VM'si oluşturmak için aşağıdaki komutu kullanın:
 
@@ -217,4 +217,4 @@ Daha fazla bilgi için bkz. [veri bilimi sanal makineleri](https://azure.microso
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - Azure Machine Learning bir modeli, veri kümesi ile birlikte [eğitme](tutorial-train-models-with-aml.md) .
-- [Python başvurusu için Azure Machine Learning SDK 'sına](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py)bakın. 
+- [Python başvurusu için Azure Machine Learning SDK 'sına](/python/api/overview/azure/ml/intro)bakın. 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/27/2020
 ms.author: mathoma
-ms.openlocfilehash: 4443ccfe8d570e50352cbb70c83d6094132038cc
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: f4d870f458607ceb0f05812b5c0c066ce810448e
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98736908"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102508328"
 ---
 # <a name="business-continuity-and-hadr-for-sql-server-on-azure-virtual-machines"></a>Azure sanal makineler 'de SQL Server için iş sürekliliği ve HADR
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -106,7 +106,7 @@ Azure VM 'Leri, depolama ve ağ, şirket içi, sanallaştırılmamış BT altyap
 ### <a name="high-availability-nodes-in-an-availability-set"></a>Kullanılabilirlik kümesindeki yüksek kullanılabilirlik düğümleri
 Azure 'daki kullanılabilirlik kümeleri, yüksek kullanılabilirliğe sahip düğümleri ayrı hata etki alanlarına ve güncelleştirme etki alanlarına yerleştirmenizi sağlar. Azure platformu, kullanılabilirlik kümesindeki her bir sanal makineye bir güncelleştirme etki alanı ve bir hata etki alanı atar. Bir veri merkezi içindeki bu yapılandırma, planlı veya plansız bir bakım olayı sırasında en az bir sanal makinenin kullanılabilir olmasını sağlar ve yüzde 99,95 Azure SLA 'sını karşılar. 
 
-Yüksek kullanılabilirliğe sahip bir kurulum yapılandırmak için, bakım olayı sırasında uygulama veya veri kaybını önlemek üzere tüm katılan SQL Server sanal makinelerini aynı Kullanılabilirlik kümesine yerleştirin. Aynı Kullanılabilirlik kümesine yalnızca aynı bulut hizmetindeki düğümler katılabilir. Daha fazla bilgi için bkz. [sanal makinelerin kullanılabilirliğini yönetme](../../../virtual-machines/manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+Yüksek kullanılabilirliğe sahip bir kurulum yapılandırmak için, bakım olayı sırasında uygulama veya veri kaybını önlemek üzere tüm katılan SQL Server sanal makinelerini aynı Kullanılabilirlik kümesine yerleştirin. Aynı Kullanılabilirlik kümesine yalnızca aynı bulut hizmetindeki düğümler katılabilir. Daha fazla bilgi için bkz. [sanal makinelerin kullanılabilirliğini yönetme](../../../virtual-machines/availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
 ### <a name="high-availability-nodes-in-an-availability-zone"></a>Kullanılabilirlik bölgesindeki yüksek kullanılabilirlik düğümleri
 Kullanılabilirlik alanları, bir Azure bölgesi içinde benzersiz fiziksel konumlardır. Her bölge, bağımsız güç, soğutma ve ağ ile donatılmış bir veya daha fazla veri merkezinden oluşur. Bölge içindeki kullanılabilirlik bölgelerinin fiziksel ayrımı, en az bir sanal makinenin kullanılabilir olduğundan ve yüzde 99,99 Azure SLA 'Sı karşıladığından emin olarak veri merkezi hatalarından uygulama ve verilerin korunmasına yardımcı olur. 

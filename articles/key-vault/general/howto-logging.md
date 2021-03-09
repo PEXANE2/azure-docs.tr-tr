@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 10/01/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 9ec1e59a5599ca2e95578eacc1484932956ebf16
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
+ms.openlocfilehash: 7b71fc2f3afb67d766bfe267888674b55af6a3a5
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102204023"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102503922"
 ---
 # <a name="how-to-enable-key-vault-logging"></a>Key Vault günlüğü etkinleştirme
 
@@ -42,7 +42,7 @@ az account list
 az account set --subscription "<subscriptionID>"
 ```
 
-Azure PowerShell ile, önce [Get-AzSubscription](/powershell/module/az.accounts/get-azsubscription?view=azps-4.7.0) cmdlet 'ini kullanarak aboneliklerinizi listeleyebilir ve sonra [set-azcontext](/powershell/module/az.accounts/set-azcontext?view=azps-4.7.0) cmdlet 'ini kullanarak birine bağlanabilirsiniz: 
+Azure PowerShell ile, önce [Get-AzSubscription](/powershell/module/az.accounts/get-azsubscription) cmdlet 'ini kullanarak aboneliklerinizi listeleyebilir ve sonra [set-azcontext](/powershell/module/az.accounts/set-azcontext) cmdlet 'ini kullanarak birine bağlanabilirsiniz: 
 
 ```powershell-interactive
 Get-AzSubscription
@@ -64,13 +64,13 @@ Azure CLı ile [az Storage Account Create](/cli/azure/storage/account#az_storage
 az storage account create --name "<your-unique-storage-account-name>" -g "myResourceGroup" --sku "Standard_LRS"
 ```
 
-Azure PowerShell, [New-AzStorageAccount](/powershell/module/az.storage/new-azstorageaccount?view=azps-4.7.0) cmdlet 'ini kullanın. Kaynak grubuna karşılık gelen konumu belirtmeniz gerekecektir.
+Azure PowerShell, [New-AzStorageAccount](/powershell/module/az.storage/new-azstorageaccount) cmdlet 'ini kullanın. Kaynak grubuna karşılık gelen konumu belirtmeniz gerekecektir.
 
 ```powershell
  New-AzStorageAccount -ResourceGroupName myResourceGroup -Name "<your-unique-storage-account-name>" -Type "Standard_LRS" -Location "eastus"
 ```
 
-Her iki durumda da depolama hesabının "kimliğini" aklınızda bırakın. Azure CLı işlemi çıktıda "kimlik" döndürür. "ID" öğesini Azure PowerShell almak için [Get-AzStorageAccount](/powershell/module/az.storage/get-azstorageaccount?view=azps-4.7.0) komutunu kullanın ve çıktıyı $sa değişkenine atanır. Daha sonra $sa. ID ile depolama hesabı 'nı görebilirsiniz. ("$Sa. Bağlam "özelliği de bu makalenin ilerleyen kısımlarında kullanılacaktır.)
+Her iki durumda da depolama hesabının "kimliğini" aklınızda bırakın. Azure CLı işlemi çıktıda "kimlik" döndürür. "ID" öğesini Azure PowerShell almak için [Get-AzStorageAccount](/powershell/module/az.storage/get-azstorageaccount) komutunu kullanın ve çıktıyı $sa değişkenine atanır. Daha sonra $sa. ID ile depolama hesabı 'nı görebilirsiniz. ("$Sa. Bağlam "özelliği de bu makalenin ilerleyen kısımlarında kullanılacaktır.)
 
 ```powershell-interactive
 $sa = Get-AzStorageAccount -Name "<your-unique-storage-account-name>" -ResourceGroup "myResourceGroup"
@@ -84,7 +84,7 @@ Depolama hesabının "kimliği", "/Subscriptions/<-abonelik KIMLIĞI>/resourceGr
 
 ## <a name="obtain-your-key-vault-resource-id"></a>Anahtar Kasası kaynak KIMLIĞINIZI edinin
 
-[CLI hızlı](quick-create-cli.md) başlangıcı ve [PowerShell hızlı](quick-create-powershell.md)başlangıcı ' nda, benzersiz bir ada sahip bir anahtar oluşturdunuz.  Aşağıdaki adımlarda bu adı yeniden kullanın.  Anahtar kasanızın adını hatırlayamıyorsanız, bunları listelemek için Azure CLı [az keykasası List](/cli/azure/keyvault#az_keyvault_list) komutunu veya [Get-azkeykasası](/powershell/module/az.keyvault/get-azkeyvault?view=azps-4.7.0) cmdlet 'ini Azure PowerShell kullanabilirsiniz.
+[CLI hızlı](quick-create-cli.md) başlangıcı ve [PowerShell hızlı](quick-create-powershell.md)başlangıcı ' nda, benzersiz bir ada sahip bir anahtar oluşturdunuz.  Aşağıdaki adımlarda bu adı yeniden kullanın.  Anahtar kasanızın adını hatırlayamıyorsanız, bunları listelemek için Azure CLı [az keykasası List](/cli/azure/keyvault#az_keyvault_list) komutunu veya [Get-azkeykasası](/powershell/module/az.keyvault/get-azkeyvault) cmdlet 'ini Azure PowerShell kullanabilirsiniz.
 
 Kaynak KIMLIĞINI bulmak için anahtar kasanızın adını kullanın.  Azure CLı ile [az keykasa Show](/cli/azure/keyvault#az_keyvault_show) komutunu kullanın.
 
@@ -92,7 +92,7 @@ Kaynak KIMLIĞINI bulmak için anahtar kasanızın adını kullanın.  Azure CL�
 az keyvault show --name "<your-unique-keyvault-name>"
 ```
 
-Azure PowerShell, [Get-Azkeykasası](/powershell/module/az.keyvault/get-azkeyvault?view=azps-4.7.0) cmdlet 'ini kullanın.
+Azure PowerShell, [Get-Azkeykasası](/powershell/module/az.keyvault/get-azkeyvault) cmdlet 'ini kullanın.
 
 ```powershell-interactive
 Get-AzKeyVault -VaultName "<your-unique-keyvault-name>"
@@ -102,13 +102,13 @@ Anahtar kasanızın kaynak KIMLIĞI "/Subscriptions/<-Subscription-ID>/resourceG
 
 ## <a name="enable-logging-using-azure-powershell"></a>Azure PowerShell kullanarak günlüğü etkinleştirme
 
-Key Vault günlük kaydını etkinleştirmek için, depolama hesabı KIMLIĞI ve Anahtar Kasası kaynak KIMLIĞIYLE birlikte Azure CLı [az Monitor Diagnostic-Settings Create](/cli/azure/monitor/diagnostic-settings) komutunu veya [set-azdiagnosticsetting](/powershell/module/az.monitor/set-azdiagnosticsetting?view=azps-4.7.0) cmdlet 'ini kullanacağız.
+Key Vault günlük kaydını etkinleştirmek için, depolama hesabı KIMLIĞI ve Anahtar Kasası kaynak KIMLIĞIYLE birlikte Azure CLı [az Monitor Diagnostic-Settings Create](/cli/azure/monitor/diagnostic-settings) komutunu veya [set-azdiagnosticsetting](/powershell/module/az.monitor/set-azdiagnosticsetting) cmdlet 'ini kullanacağız.
 
 ```azurecli-interactive
 az monitor diagnostic-settings create --storage-account "<storage-account-id>" --resource "<key-vault-resource-id>" --name "Key vault logs" --logs '[{"category": "AuditEvent","enabled": true}]' --metrics '[{"category": "AllMetrics","enabled": true}]'
 ```
 
-Azure PowerShell, [set-AzDiagnosticSetting](/powershell/module/az.monitor/set-azdiagnosticsetting?view=azps-4.7.0) cmdlet 'ini, **etkin** bayrağı **$true** olarak ayarlanmış şekilde ve kategori olarak ayarlanmış şekilde `AuditEvent` (Key Vault günlüğe kaydetme için tek kategori) kullanacak şekilde kullanacağız:
+Azure PowerShell, [set-AzDiagnosticSetting](/powershell/module/az.monitor/set-azdiagnosticsetting) cmdlet 'ini, **etkin** bayrağı **$true** olarak ayarlanmış şekilde ve kategori olarak ayarlanmış şekilde `AuditEvent` (Key Vault günlüğe kaydetme için tek kategori) kullanacak şekilde kullanacağız:
 
 ```powershell-interactive
 Set-AzDiagnosticSetting -ResourceId "<key-vault-resource-id>" -StorageAccountId $sa.id -Enabled $true -Category "AuditEvent"
@@ -123,7 +123,7 @@ az monitor diagnostic-settings update
 ```
 -->
 
-Azure PowerShell, [set-AzDiagnosticSetting](/powershell/module/az.monitor/set-azdiagnosticsetting?view=azps-4.7.0) cmdlet 'ini kullanın. 
+Azure PowerShell, [set-AzDiagnosticSetting](/powershell/module/az.monitor/set-azdiagnosticsetting) cmdlet 'ini kullanın. 
 
 ```powershell-interactive
 Set-AzDiagnosticSetting "<key-vault-resource-id>" -StorageAccountId $sa.id -Enabled $true -Category AuditEvent -RetentionEnabled $true -RetentionInDays 90
@@ -149,7 +149,7 @@ Key Vault Günlükler, belirttiğiniz depolama hesabındaki "Insights-logs-audit
 az storage blob list --account-name "<your-unique-storage-account-name>" --container-name "insights-logs-auditevent"
 ```
 
-Azure PowerShell ile, bu kapsayıcıdaki tüm Blobları [Get-AzStorageBlob](/powershell/module/az.storage/get-azstorageblob?view=azps-4.7.0) listesini kullanın, şunu girin:
+Azure PowerShell ile, bu kapsayıcıdaki tüm Blobları [Get-AzStorageBlob](/powershell/module/az.storage/get-azstorageblob) listesini kullanın, şunu girin:
 
 ```powershell
 Get-AzStorageBlob -Container "insights-logs-auditevent" -Context $sa.Context
@@ -165,7 +165,7 @@ Azure CLı ile [az Storage blob Download](/cli/azure/storage/blob#az_storage_blo
 az storage blob download --container-name "insights-logs-auditevent" --file <path-to-file> --name "<blob-name>" --account-name "<your-unique-storage-account-name>"
 ```
 
-Azure PowerShell, [gt-azstorageblobu](/powershell/module/az.storage/get-azstorageblob?view=azps-4.7.0) cmdlet 'ini kullanarak Blobların bir listesini alın ve ardından günlükleri seçtiğiniz yola Indirmek için [Get-AzStorageBlobContent](/powershell/module/az.storage/get-azstorageblobcontent?view=azps-4.7.0) cmdlet 'ine yöneltin.
+Azure PowerShell, [gt-azstorageblobu](/powershell/module/az.storage/get-azstorageblob) cmdlet 'ini kullanarak Blobların bir listesini alın ve ardından günlükleri seçtiğiniz yola Indirmek için [Get-AzStorageBlobContent](/powershell/module/az.storage/get-azstorageblobcontent) cmdlet 'ine yöneltin.
 
 ```powershell-interactive
 $blobs = Get-AzStorageBlob -Container "insights-logs-auditevent" -Context $sa.Context | Get-AzStorageBlobContent -Destination "<path-to-file>"

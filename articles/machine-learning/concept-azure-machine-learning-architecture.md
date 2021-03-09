@@ -10,12 +10,12 @@ ms.author: sgilley
 author: sdgilley
 ms.date: 08/20/2020
 ms.custom: seoapril2019, seodec18
-ms.openlocfilehash: 987b56eb1b258e1c5f2fd7d5bcfdd0e95f6c0730
-ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
+ms.openlocfilehash: dc1954c97da0d7f40deaf0f4efa7ca99793107bb
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100091678"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102503700"
 ---
 # <a name="how-azure-machine-learning-works-architecture-and-concepts"></a>Azure Machine Learning nasıl kullanılır: mimari ve kavramlar
 
@@ -102,7 +102,7 @@ Bir modeli eğitme için bir komut dosyası gönderdiğinizde bir çalıştırma
 
 [Çalışma alanı](#workspace)  >  [Denemeleri](#experiments)  >  [Çalıştır](#runs)  >  **Yapılandırmayı Çalıştır**
 
-Çalıştırma yapılandırması, bir betiğin belirtilen işlem hedefinde nasıl çalıştırılacağını tanımlar. Betiği, üzerinde çalıştırılacak işlem hedefini ve Azure ML ortamını, dağıtılmış işe özgü yapılandırmaları ve bazı ek özellikleri belirtmek için yapılandırmayı kullanabilirsiniz. Çalışma için yapılandırılabilir seçeneklerin tam kümesi hakkında daha fazla bilgi için bkz. [ScriptRunConfig](/python/api/azureml-core/azureml.core.scriptrunconfig?preserve-view=true&view=azure-ml-py).
+Çalıştırma yapılandırması, bir betiğin belirtilen işlem hedefinde nasıl çalıştırılacağını tanımlar. Betiği, üzerinde çalıştırılacak işlem hedefini ve Azure ML ortamını, dağıtılmış işe özgü yapılandırmaları ve bazı ek özellikleri belirtmek için yapılandırmayı kullanabilirsiniz. Çalışma için yapılandırılabilir seçeneklerin tam kümesi hakkında daha fazla bilgi için bkz. [ScriptRunConfig](/python/api/azureml-core/azureml.core.scriptrunconfig).
 
 Çalışma yapılandırması, eğitim betiğinizi içeren dizin içindeki bir dosyaya kalıcı yapılabilir.   Ya da bellek içi bir nesne olarak oluşturulabilir ve bir çalıştırma göndermek için kullanılabilir.
 
@@ -282,7 +282,7 @@ Ayrıca, Azure Machine Learning parçası olan etkileşimli araçlara de erişeb
 > Aşağıda işaretlenmiş araçlar (Önizleme) Şu anda genel önizlemede.
 > Önizleme sürümü, bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yükleri için önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-+  [Python için Azure MACHINE LEARNING SDK](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py)ile herhangi bir Python ortamında hizmetle etkileşime geçin.
++  [Python için Azure MACHINE LEARNING SDK](/python/api/overview/azure/ml/intro)ile herhangi bir Python ortamında hizmetle etkileşime geçin.
 + [R için Azure MACHINE LEARNING SDK](https://azure.github.io/azureml-sdk-for-r/reference/index.html) (Önizleme) ile herhangi bir r ortamındaki hizmetle etkileşime geçin.
 + Kod yazmadan iş akışı adımlarını gerçekleştirmek için [Azure Machine Learning tasarımcısını](concept-designer.md) kullanın. 
 + Otomasyon için [Azure MACHINE LEARNING CLI](./reference-azure-machine-learning-cli.md) kullanın.

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 10/05/2020
 ms.author: depadia
-ms.openlocfilehash: 7a40acf7dea11781a0381e93ea180c5185b7818b
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: b94e1f82409da3329eb6d978fa2ae0222928cd97
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101671915"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102505945"
 ---
 # <a name="sap-businessobjects-bi-platform-deployment-guide-for-linux-on-azure"></a>Azure’da Linux için SAP BusinessObjects İş Zekası platformu dağıtım kılavuzu
 
@@ -36,7 +36,7 @@ Bu örnekte, ürün sürümü ve dosya sistemi düzeninin altında kullanılır
 - MySQL için Azure veritabanı (sürüm: 8.0.15)
 - MySQL C API Bağlayıcısı-libmysqlclient (sürüm: 6.1.11)
 
-| Dosya Sistemi        | Açıklama                                                                                                               | Boyut (GB)             | Sahip  | Grup  | Depolama                    |
+| Dosya Sistemi        | Description                                                                                                               | Boyut (GB)             | Sahip  | Grup  | Depolama                    |
 |--------------------|---------------------------------------------------------------------------------------------------------------------------|-----------------------|--------|--------|----------------------------|
 | /usr/SAP           | SAP BOBI örneği, varsayılan Tomcat Web uygulaması ve veritabanı sürücüleri (gerekliyse) yüklemek için dosya sistemi | SAP boyutlandırma yönergeleri | bl1adm | sapsys | Yönetilen Premium disk-SSD |
 | /usr/SAP/frsinput  | Bağlama dizini, giriş dosyası deposu dizini olarak kullanılacak tüm BOBI konaklarındaki paylaşılan dosyalara yöneliktir  | İşletme gereksinimi         | bl1adm | sapsys | Azure NetApp Files         |
@@ -603,7 +603,7 @@ Bir veya daha fazla olay nedeniyle kapalı kalma süresinin etkilerini azaltmak 
 - Bir kullanılabilirlik kümesindeki VM 'Ler için yönetilen diskleri kullanın.
 - Her uygulama katmanını ayrı kullanılabilirlik kümeleri olarak yapılandırın.
 
-Daha fazla bilgi için [Linux sanal makinelerinin kullanılabilirliğini yönetme](../../manage-availability.md) ' yi inceleyin
+Daha fazla bilgi için [Linux sanal makinelerinin kullanılabilirliğini yönetme](../../availability.md) ' yi inceleyin
 
 #### <a name="high-availability-for-cms-database"></a>CMS veritabanı için yüksek kullanılabilirlik
 

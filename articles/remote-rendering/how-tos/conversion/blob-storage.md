@@ -5,12 +5,12 @@ author: jakrams
 ms.author: jakras
 ms.date: 02/04/2020
 ms.topic: how-to
-ms.openlocfilehash: 889c25fd1402c4438ff648afce64905de112c8db
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.openlocfilehash: d8a6fd458cdcf79cdeb693b25acf72d4ec48def7
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102215553"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102507526"
 ---
 # <a name="use-azure-blob-storage-for-model-conversion"></a>Model dönüştürmesi için Azure Blob depolamayı kullanma
 
@@ -65,7 +65,7 @@ Bir modeli dönüştürmeye başlamak için, aşağıdaki seçeneklerden birini 
 
 - [Azure Depolama Gezgini](https://azure.microsoft.com/features/storage-explorer/) -Azure Blob Storage 'da dosyaları karşıya yüklemek/indirmek/yönetmek için uygun bir kullanıcı arabirimi
 - [Azure komut satırı](../../../storage/blobs/storage-quickstart-blobs-cli.md)
-- [Azure PowerShell modülü](/powershell/azure/install-az-ps?view=azps-2.2.0)
+- [Azure PowerShell modülü](/powershell/azure/install-az-ps)
   - [örnek PowerShell betiklerine](../../samples/powershell-example-scripts.md) bakın
 - [Depolama SDK 'sını kullanma (Python, C#...)](../../../storage/index.yml)
 - [Azure depolama REST API 'Lerini kullanma](/rest/api/storageservices/blob-service-rest-api)

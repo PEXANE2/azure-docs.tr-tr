@@ -9,16 +9,16 @@ ms.topic: reference
 ms.author: larryfr
 author: BlackMist
 ms.date: 02/18/2021
-ms.openlocfilehash: 69313b48b505bd0b53df6f15f636e2903f41ebfd
-ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
+ms.openlocfilehash: ebd4aed284869eb74760de8612a76139d26d47f5
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102124015"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102502357"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Azure Machine Learning sürüm notları
 
-Bu makalede Azure Machine Learning sürümleri hakkında bilgi edinin.  Tam SDK başvuru içeriği için Azure Machine Learning [**Python başvurusu için ana SDK**](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py) sayfasına gidin.
+Bu makalede Azure Machine Learning sürümleri hakkında bilgi edinin.  Tam SDK başvuru içeriği için Azure Machine Learning [**Python başvurusu için ana SDK**](/python/api/overview/azure/ml/intro) sayfasına gidin.
 
 __RSS akışı__: aşağıdaki URL 'yi kopyalayıp akış okuyucunuzun içine yapıştırarak Bu sayfa güncelleştirildikten sonra bildirim alın: `https://docs.microsoft.com/api/search/rss?search=%22Azure+machine+learning+release+notes%22&locale=en-us`
 
@@ -49,7 +49,7 @@ __RSS akışı__: aşağıdaki URL 'yi kopyalayıp akış okuyucunuzun içine ya
     + [Deneysel özellik] SYNAPSE Spark havuzunu bir işlem olarak AML 'ye eklemek için destek ekleme
     + [Deneysel özellik] Kimlik tabanlı veri erişimi için destek ekleyin. Kullanıcılar, kimlik bilgilerini sağlamadan veri deposunu veya veri kümelerini kaydedebilir. Böyle bir durumda, kimlik doğrulaması için kullanıcıların AAD belirteci veya yönetilen kimliği işlem hedefini kullanılacaktır. [Daha fazla bilgi edinin](https://aka.ms/data-access).
   + **azureml-pipeline-steps**
-    + [Deneysel özellik] [SynapseSparkStep](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.synapsesparkstep?preserve-view=true&view=azure-ml-py) için destek ekleme
+    + [Deneysel özellik] [SynapseSparkStep](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.synapsesparkstep) için destek ekleme
   + **azureml-synapse**
     + [Deneysel özellik] SYNAPSE Spark havuzunda etkileşimli oturum çalıştırmak için Spark Magic desteği ekleyin.
 + **Hata düzeltmeleri ve geliştirmeleri**
@@ -80,10 +80,10 @@ __RSS akışı__: aşağıdaki URL 'yi kopyalayıp akış okuyucunuzun içine ya
     + Klasik tahmin modellerinin (örn. oto), bilinmeyen hedef değerleri olan satırlarda eğitim verileri alabileceği bir hata düzeltildi. Bu, bu modellerin veri sözleşmesini ihlal etti. * Zaman serisi gecikme işlecinde yineleme ölçütü ile çeşitli hatalar düzeltildi. Daha önce, yineleme ölçütü işlemi, tüm düzenlenmiş satırları doğru şekilde işaretlemez, bu nedenle her zaman doğru oluşum gecikmesi değerlerini oluşturmaz. Ayrıca, öteleme işleci ile sıralı pencere işleci arasındaki bazı uyumluluk sorunlarını, yinelenme ölçütü davranışına göre de düzeltildi. Daha önce bu, yuvarlama penceresi işlecinin, aksi takdirde kullanması gereken eğitim verilerinden bazı satırları bırakmasıyla sonuçlandı.
   + **azureml-core**
     + Hedef kitle tarafından belirteç kimlik doğrulaması desteği ekleniyor.
-    + `process_count`Çok işlem çok düğümlü PyTorch işlerini desteklemek Için [Pytorchconfiguration](/python/api/azureml-core/azureml.core.runconfig.pytorchconfiguration?preserve-view=true&view=azure-ml-py) öğesine ekleyin.
+    + `process_count`Çok işlem çok düğümlü PyTorch işlerini desteklemek Için [Pytorchconfiguration](/python/api/azureml-core/azureml.core.runconfig.pytorchconfiguration) öğesine ekleyin.
   + **azureml-pipeline-steps**
-    + [Commandstep](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.commandstep?preserve-view=true&view=azure-ml-py) şimdi GA ve artık deneysel yok.
-    + [Parallelrunconfig](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.parallelrunconfig?preserve-view=true&view=azure-ml-py): allowed_failed_count bağımsız değişken ekleyin ve mini toplu iş düzeyinde hata eşiğini denetlemek için allowed_failed_percent. Hata eşiğinin Şu anda 3 türleri vardır:
+    + [Commandstep](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.commandstep) şimdi GA ve artık deneysel yok.
+    + [Parallelrunconfig](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.parallelrunconfig): allowed_failed_count bağımsız değişken ekleyin ve mini toplu iş düzeyinde hata eşiğini denetlemek için allowed_failed_percent. Hata eşiğinin Şu anda 3 türleri vardır:
        + error_threshold-izin verilen başarısız mini Batch öğelerinin sayısı; 
        + allowed_failed_count-izin verilen başarısız mini toplu iş sayısı; 
        + allowed_failed_percent-izin verilen başarısız mini toplu işlerin yüzdesi. 
@@ -93,7 +93,7 @@ __RSS akışı__: aşağıdaki URL 'yi kopyalayıp akış okuyucunuzun içine ya
     + ScriptRunConfig artık HyperDriveStep tarafından destekleniyor
   + **azureml-train-core**
     + ScriptRun 'tan çağrılan hiper sürücü çalıştırmaları artık alt çalıştırma olarak kabul edilir.
-    + `process_count`Çok işlem çok düğümlü PyTorch işlerini desteklemek Için [Pytorchconfiguration](/python/api/azureml-core/azureml.core.runconfig.pytorchconfiguration?preserve-view=true&view=azure-ml-py) öğesine ekleyin.
+    + `process_count`Çok işlem çok düğümlü PyTorch işlerini desteklemek Için [Pytorchconfiguration](/python/api/azureml-core/azureml.core.runconfig.pytorchconfiguration) öğesine ekleyin.
   + **azureml-widgets**
     + Bir ParallelRunStep durumunu görselleştirmek için pencere öğesi ParallelRunStepDetails öğesini ekleyin.
     + Hiper sürücü kullanıcılarının, her alt çalışma için her bir hiper parametre kümesine karşılık gelen ölçüm değerini gösteren paralel koordinatlar grafiğinde ek bir eksen görmesini sağlar.
@@ -454,7 +454,7 @@ Veri etiketlemesi içindeki görüntü örneği segmentleme (Çokgen ek açıkla
 
 ### <a name="azure-machine-learning-sdk-for-python-v1130"></a>Python v 1.13.0 için SDK Azure Machine Learning
 + **Önizleme özellikleri**
-  + **azureml-çekirdek** Yeni çıkış veri kümeleri özelliğiyle blob, ADLS Gen 1, ADLS Gen 2 ve FileShare dahil bulut depolama alanına geri yazabilirsiniz. Verilerin çıktısının nerede yapılacağını, verilerin nasıl alınacağını (bağlama veya karşıya yükleme yoluyla), daha sonra yeniden kullanmak üzere çıkış verilerinin kaydedilip edilmeyeceğini ve ardışık düzen adımları arasında ara verileri paylaşmayı ve bunu nasıl geçitirsiniz yapılandırabilirsiniz. Bu, reproducibility, paylaşma, verilerin çoğaltılmasını önler ve maliyet verimliliği ve verimlilik kazançları elde etmenizi sağlar. [Nasıl kullanacağınızı öğrenin](/python/api/azureml-core/azureml.data.output_dataset_config.outputfiledatasetconfig?preserve-view=true&view=azure-ml-py)
+  + **azureml-çekirdek** Yeni çıkış veri kümeleri özelliğiyle blob, ADLS Gen 1, ADLS Gen 2 ve FileShare dahil bulut depolama alanına geri yazabilirsiniz. Verilerin çıktısının nerede yapılacağını, verilerin nasıl alınacağını (bağlama veya karşıya yükleme yoluyla), daha sonra yeniden kullanmak üzere çıkış verilerinin kaydedilip edilmeyeceğini ve ardışık düzen adımları arasında ara verileri paylaşmayı ve bunu nasıl geçitirsiniz yapılandırabilirsiniz. Bu, reproducibility, paylaşma, verilerin çoğaltılmasını önler ve maliyet verimliliği ve verimlilik kazançları elde etmenizi sağlar. [Nasıl kullanacağınızı öğrenin](/python/api/azureml-core/azureml.data.output_dataset_config.outputfiledatasetconfig)
     
 + **Hata düzeltmeleri ve geliştirmeleri**
   + **azureml-automl-core**
@@ -528,7 +528,7 @@ Veri etiketlemesi içindeki görüntü örneği segmentleme (Çokgen ek açıkla
   + **azureml-core**
     + Yeni bir yöntem `run.get_detailed_status()` artık geçerli çalışma durumunun ayrıntılı açıklamasını gösterir. Şu anda yalnızca durum açıklaması gösteriliyor `Queued` .
     + Oluşturulan paket görüntüsünün yeniden adlandırılmasını etkinleştirmek için model. Package () image_name ve image_label parametreleri ekleyin.
-    + `set_pip_requirements()`Tüm PIP bölümünü aynı anda ayarlamak için yeni yöntem [`CondaDependencies`](/python/api/azureml-core/azureml.core.conda_dependencies.condadependencies?preserve-view=true&view=azure-ml-py) .
+    + `set_pip_requirements()`Tüm PIP bölümünü aynı anda ayarlamak için yeni yöntem [`CondaDependencies`](/python/api/azureml-core/azureml.core.conda_dependencies.condadependencies) .
     + Kimlik bilgisini kaydetmeyi etkinleştirme-daha az ADLS 2. veri deposu.
     + Yanlış bir veri kümesi türü indirilmeye veya bağlamaya çalışırken geliştirilmiş hata iletisi.
     + Zaman serisi veri kümesi filtresi örnek Not defterini, filtre iyileştirmesi sağlayan partition_timestamp daha fazla örneklerle güncelleştirin.
@@ -553,7 +553,7 @@ Veri etiketlemesi içindeki görüntü örneği segmentleme (Çokgen ek açıkla
     + Kullanıcı tarafından sağlanmayan betikler olmadan, oto ml çalıştırmaları gönderilirken düzeltilen anlık görüntü sorunları.
     + Veriler Nan içerdiğinde ve korleştirme kapalıyken düzeltilen alt çalıştırma sorunları.
   + **azureml-train-core**
-    + Bir Through parametreye geçirilen PIP gereksinimleri dosyasında PIP seçenekleri (örneğin,--ek-dizin-URL) belirtilmesine yönelik destek [`Estimator`](/python/api/azureml-train-core/azureml.train.estimator.estimator?preserve-view=true&view=azure-ml-py) eklendi `pip_requirements_file` .
+    + Bir Through parametreye geçirilen PIP gereksinimleri dosyasında PIP seçenekleri (örneğin,--ek-dizin-URL) belirtilmesine yönelik destek [`Estimator`](/python/api/azureml-train-core/azureml.train.estimator.estimator) eklendi `pip_requirements_file` .
 
 
 ## <a name="2020-08-03"></a>2020-08-03
@@ -1001,7 +1001,7 @@ Veri etiketlemesi içindeki görüntü örneği segmentleme (Çokgen ek açıkla
 ## <a name="2020-05-04"></a>2020-05-04
 **Yeni Not defteri deneyimi**
 
-Artık Azure Machine Learning doğrudan stüdyo Web deneyiminin içinde Machine Learning not defterlerini ve dosyalarını oluşturabilir, düzenleyebilir ve paylaşabilirsiniz. [Azure Machine Learning Python SDK](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py) ' da bulunan tüm sınıfları ve yöntemleri bu not defterleri içinde [kullanmaya başlayın.](./how-to-run-jupyter-notebooks.md)
+Artık Azure Machine Learning doğrudan stüdyo Web deneyiminin içinde Machine Learning not defterlerini ve dosyalarını oluşturabilir, düzenleyebilir ve paylaşabilirsiniz. [Azure Machine Learning Python SDK](/python/api/overview/azure/ml/intro) ' da bulunan tüm sınıfları ve yöntemleri bu not defterleri içinde [kullanmaya başlayın.](./how-to-run-jupyter-notebooks.md)
 
 **Sunulan yeni özellikler:**
 
@@ -1372,7 +1372,7 @@ Studio 'dan aşağıdaki Web tabanlı yazma araçlarına erişin:
     + Tüm görüntü sınıfı kod yolları için kullanımdan kaldırılması iletileri eklendi
     + Azure Çin 21Vianet bölgesi için Model Yönetimi URL yapımı düzeltildi.
     + Azure Işlevleri için source_dir kullanan modellerin paketlenemediğinde sorun düzeltildi.    
-    + Bir görüntüyü AzureML çalışma alanı kapsayıcısı kayıt defterine göndermek için [Environment.build_local ()](/python/api/azureml-core/azureml.core.environment.environment?preserve-view=true&view=azure-ml-py) seçeneği eklendi
+    + Bir görüntüyü AzureML çalışma alanı kapsayıcısı kayıt defterine göndermek için [Environment.build_local ()](/python/api/azureml-core/azureml.core.environment.environment) seçeneği eklendi
     + SDK, Azure SYNAPSE üzerinde yeni belirteç kitaplığını yeniden uyumlu bir şekilde kullanacak şekilde güncelleştirildi.
   + **azureml-interpret**
     + İndirilmek üzere hiçbir açıklamalar kullanılamadığı zaman düzeltilmeyen hata düzeltildi. Artık bir özel durum ve eşleşen davranışı başka bir yerde yükseltir.
@@ -1751,7 +1751,7 @@ Azure Machine Learning artık Event Grid için bir kaynak sağlayıcıdır, Azur
       + ' Daily_latest_only ' parametresi kullanım dışıdır.
     + Veri kümesi tabanlı veri Drçıkışları almayı destekler.
   + **azureml-explain-model**
-    + [ScoringExplainer](/python/api/azureml-interpret/azureml.interpret.scoring.scoring_explainer.scoringexplainer?view=azure-ml-py&preserve-view=true) için Mmıısarmalayıcı kullanılarak doğrudan oluşturulacak destek ekleme
+    + [ScoringExplainer](/python/api/azureml-interpret/azureml.interpret.scoring.scoring_explainer.scoringexplainer) için Mmıısarmalayıcı kullanılarak doğrudan oluşturulacak destek ekleme
   + **[azureml-pipeline-core](/python/api/azureml-pipeline-core)**
     + Büyük işlem hattı oluşturma performansı geliştirildi.
   + **[azureml-train-core](/python/api/azureml-train-core)**
@@ -2334,7 +2334,7 @@ Bu sürümün sırasında, aşağıdaki tarayıcılar desteklenir: Chrome, Firef
 
 Python v 1.0.30 için SDK Azure Machine Learning.
 
-[`PipelineEndpoint`](/python/api/azureml-pipeline-core/azureml.pipeline.core.pipeline_endpoint.pipelineendpoint?preserve-view=true&view=azure-ml-py)Aynı uç noktayı koruyarak yayımlanmış bir işlem hattının yeni bir sürümünü eklemek için sunulmuştur.
+[`PipelineEndpoint`](/python/api/azureml-pipeline-core/azureml.pipeline.core.pipeline_endpoint.pipelineendpoint)Aynı uç noktayı koruyarak yayımlanmış bir işlem hattının yeni bir sürümünü eklemek için sunulmuştur.
 
 ## <a name="2019-04-15"></a>2019-04-15
 
@@ -2351,7 +2351,7 @@ Python v 1.0.30 için SDK Azure Machine Learning.
 + **Yeni özellikler**
   + Azure Machine Learning SDK artık Python 3,7 ' i desteklemektedir.
   + Azure Machine Learning DNN estimators artık yerleşik çoklu sürüm desteği sağlıyor. Örneğin, `TensorFlow` tahmin aracı şimdi bir parametreyi kabul eder `framework_version` ve kullanıcılar ' 1,10 ' veya ' 1,12 ' sürümünü belirtebilir. Geçerli SDK sürümleriniz tarafından desteklenen sürümlerin bir listesi için, `get_supported_versions()` istenen Framework sınıfını (örneğin, `TensorFlow.get_supported_versions()` ) çağırın.
-  En son SDK sürümü tarafından desteklenen sürümlerin bir listesi için [DNN Estimator belgelerine](/python/api/azureml-train-core/azureml.train.dnn?preserve-view=true&view=azure-ml-py)bakın.
+  En son SDK sürümü tarafından desteklenen sürümlerin bir listesi için [DNN Estimator belgelerine](/python/api/azureml-train-core/azureml.train.dnn)bakın.
 
 ## <a name="2019-03-25"></a>2019-03-25
 
@@ -2388,13 +2388,13 @@ Python v 1.0.30 için SDK Azure Machine Learning.
 ### <a name="azure-machine-learning-sdk-for-python-v1017"></a>Python v 1.0.17 için SDK Azure Machine Learning
 
 + **Yeni özellikler**
-  + Azure Machine Learning artık popüler DNN Framework Chainer için birinci sınıf destek sağlar. [`Chainer`](/python/api/azureml-train-core/azureml.train.dnn.chainer?preserve-view=true&view=azure-ml-py)Sınıf kullanıcıları, Chainer modellerini kolayca eğitebilir ve dağıtabilir.
+  + Azure Machine Learning artık popüler DNN Framework Chainer için birinci sınıf destek sağlar. [`Chainer`](/python/api/azureml-train-core/azureml.train.dnn.chainer)Sınıf kullanıcıları, Chainer modellerini kolayca eğitebilir ve dağıtabilir.
     + [Chaeylemsizlik ile dağıtılmış eğitime nasıl çalıştırılacağını](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/ml-frameworks/chainer/distributed-chainer/distributed-chainer.ipynb) öğrenin
     + [Hyperparameter ayarlamayı hiper sürücü kullanarak Chainer ile çalıştırma](https://github.com/Azure/MachineLearningNotebooks/blob/b881f78e4658b4e102a72b78dbd2129c24506980/how-to-use-azureml/ml-frameworks/chainer/deployment/train-hyperparameter-tune-deploy-with-chainer/train-hyperparameter-tune-deploy-with-chainer.ipynb) hakkında bilgi edinin
   + Azure Machine Learning işlem hatları, veri deposu değişikliklerine göre bir işlem hattı çalıştırmasını tetikleyebilme özelliği eklendi. İşlem hattı [zamanlama Not defteri](https://aka.ms/pl-schedule) , bu özelliği göstermek için güncelleştirilir.
 
 + **Hata düzeltmeleri ve geliştirmeleri**
-  + Source_directory_data_store özelliğini, [PythonScriptStep](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.python_script_step.pythonscriptstep?preserve-view=true&view=azure-ml-py)Için sağlanan [runconfigurations](/python/api/azureml-core/azureml.core.runconfig.runconfiguration?preserve-view=true&view=azure-ml-py) 'lar üzerinde istenen veri deposuna (BLOB depolama gibi) ayarlamaya yönelik Azure Machine Learning işlem hatlarında destek ekledik. Varsayılan olarak, çok sayıda adım eşzamanlı olarak yürütüldüğünde sorunları azaltma sorunlarını ortadan kaldırarak Azure dosya deposunu, yedekleme veri deposu olarak kullanır.
+  + Source_directory_data_store özelliğini, [PythonScriptStep](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.python_script_step.pythonscriptstep)Için sağlanan [runconfigurations](/python/api/azureml-core/azureml.core.runconfig.runconfiguration) 'lar üzerinde istenen veri deposuna (BLOB depolama gibi) ayarlamaya yönelik Azure Machine Learning işlem hatlarında destek ekledik. Varsayılan olarak, çok sayıda adım eşzamanlı olarak yürütüldüğünde sorunları azaltma sorunlarını ortadan kaldırarak Azure dosya deposunu, yedekleme veri deposu olarak kullanır.
 
 ### <a name="azure-portal"></a>Azure portalı
 

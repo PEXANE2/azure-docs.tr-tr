@@ -6,12 +6,12 @@ services: container-service
 ms.topic: quickstart
 ms.date: 01/13/2021
 ms.custom: mvc, seo-javascript-october2019, contperfq3
-ms.openlocfilehash: 63d23b01eddc70dedd849560248dd053c80e0037
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: 5f758c0bc50b2d4f22b3dbf0efaa4ecbc3f334cb
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102181423"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102507815"
 ---
 # <a name="quickstart-deploy-an-azure-kubernetes-service-aks-cluster-using-the-azure-portal"></a>Hızlı başlangıç: Azure portal kullanarak bir Azure Kubernetes hizmeti (AKS) kümesi dağıtma
 
@@ -47,13 +47,11 @@ AKS kümesi oluşturmak için aşağıdaki adımları tamamlayın:
 
 4. **Düğüm havuzları** sayfasında, varsayılan seçenekleri değiştirmeyin. Ekranın alt kısmındaki **İleri: kimlik doğrulama**' ya tıklayın.
     > [!CAUTION]
-    > Yeni AAD hizmet sorumlularının oluşturulması, yayma ve kullanılabilir hale gelmesi birkaç dakika sürebilir ve bu durum, Azure portal ' de hizmet sorumlusu hata ve doğrulama hataları oluşmasına neden olur. Bu duruma ulaşırsanız, azaltma için [Genel Azure Kubernetes hizmet sorunlarını giderme](troubleshooting.md#received-an-error-saying-my-service-principal-wasnt-found-or-is-invalid-when-i-try-to-create-a-new-cluster) makalesini ziyaret edin.
+    > Yeni küme kimliği oluşturmak, yaymak ve kullanılabilir hale gelmesi, Azure portal ' de hizmet sorumlusu hata ve doğrulama hataları oluşmasına neden olacak birkaç dakika sürebilir. Bu duruma ulaşırsanız, azaltma için [Genel Azure Kubernetes hizmet sorunlarını giderme](troubleshooting.md#received-an-error-saying-my-service-principal-wasnt-found-or-is-invalid-when-i-try-to-create-a-new-cluster) makalesini ziyaret edin.
 
 5. **Kimlik Doğrulaması** sayfasında aşağıdaki seçenekleri yapılandırın:
-    - **Hizmet Sorumlusu** alanını **(yeni) varsayılan hizmet sorumlusu** olarak bırakarak yeni bir hizmet sorumlusu oluşturun. Alternatif olarak, mevcut bir hizmet sorumlusunu kullanmak için *Hizmet sorumlusu yapılandır*’ı seçebilirsiniz. Mevcut bir tane kullanırsanız, SPN istemci KIMLIĞINI ve parolasını sağlamanız gerekir.
+    - **Kimlik doğrulama** alanını **sistem tarafından alınan yönetilen kimlikle** bırakarak yeni bir küme kimliği oluşturun. Alternatif olarak, hizmet sorumlusu kullanmak için **hizmet sorumlusu** ' nı seçebilirsiniz. Varsayılan hizmet sorumlusu oluşturmak için *(yeni) varsayılan hizmet sorumlusu* ' nı seçin veya mevcut olanı kullanmak için *hizmet sorumlusu* ' nı yapılandırın. Mevcut bir tane kullanırsanız, SPN istemci KIMLIĞINI ve parolasını sağlamanız gerekir.
     - Kubernetes rol tabanlı erişim denetimi (Kubernetes RBAC) için seçeneği etkinleştirin. Böylece, AKS kümenizde görüntülenen Kubernetes kaynaklarına erişim konusunda daha ayrıntılı denetim sunulur.
-
-    Alternatif olarak, bir hizmet sorumlusu yerine yönetilen bir kimlik de kullanabilirsiniz. Daha fazla bilgi için bkz. [Yönetilen kimlikler kullanma](use-managed-identity.md) .
 
 Varsayılan olarak, *temel* ağ kullanılır ve kapsayıcılar Için Azure izleyici etkindir. Doğrulama tamamlandığında **İncele ve oluştur**’a ve sonra **Oluştur**’a tıklayın.
 

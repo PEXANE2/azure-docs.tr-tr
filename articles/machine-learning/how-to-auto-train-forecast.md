@@ -10,17 +10,17 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to, contperf-fy21q1, automl
 ms.date: 08/20/2020
-ms.openlocfilehash: 6e686c7b22eb834a096cdd7a67beb6d8d291ef20
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 14837391f7bf907acbbe1d573f3171acef4db658
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100392332"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102503513"
 ---
 # <a name="auto-train-a-time-series-forecast-model"></a>Zaman serisi tahmin modelini otomatik eğitme
 
 
-Bu makalede, [Azure Machine Learning Python SDK 'sında](/python/api/overview/azure/ml/?preserve-view=true&view=azure-ml-py)otomatik makine öğrenimi, otomatik ml kullanarak zaman serisi tahmin regresyon modelini yapılandırmayı ve eğitecağınızı öğreneceksiniz. 
+Bu makalede, [Azure Machine Learning Python SDK 'sında](/python/api/overview/azure/ml/)otomatik makine öğrenimi, otomatik ml kullanarak zaman serisi tahmin regresyon modelini yapılandırmayı ve eğitecağınızı öğreneceksiniz. 
 
 Bunun için şunları yapın: 
 
@@ -120,7 +120,7 @@ Oto [içi modelleri engellemek](concept-manage-ml-pitfalls.md#prevent-over-fitti
 
 ## <a name="configure-experiment"></a>Deneme yapılandırma
 
-[`AutoMLConfig`](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig?preserve-view=true&view=azure-ml-py)Nesnesi, otomatik makine öğrenimi görevi için gereken ayarları ve verileri tanımlar. Tahmin modelinin yapılandırması, standart regresyon modelinin kurulumuna benzerdir, ancak belirli modeller, yapılandırma seçenekleri ve yükseltme adımları özellikle zaman serisi verileri için mevcuttur. 
+[`AutoMLConfig`](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig)Nesnesi, otomatik makine öğrenimi görevi için gereken ayarları ve verileri tanımlar. Tahmin modelinin yapılandırması, standart regresyon modelinin kurulumuna benzerdir, ancak belirli modeller, yapılandırma seçenekleri ve yükseltme adımları özellikle zaman serisi verileri için mevcuttur. 
 
 ### <a name="supported-models"></a>Desteklenen modeller
 Otomatik makine öğrenimi, model oluşturma ve ayarlama sürecinin bir parçası olarak farklı modeller ve algoritmalar otomatik olarak dener. Bir kullanıcı olarak, algoritmayı belirtmeniz gerekmez. Tahmin denemeleri için hem yerel zaman serisi hem de derin öğrenme modelleri öneri sisteminin bir parçasıdır. Aşağıdaki tabloda modellerin Bu alt kümesi özetlenmektedir. 
@@ -138,7 +138,7 @@ Forekaletcn (Önizleme)| Forekaletcn, en zorlu tahmin görevlerinin üstesinden 
 
 Regresyon sorununa benzer şekilde, görev türü, yineleme sayısı, eğitim verileri ve çapraz doğrulamaları sayısı gibi standart eğitim parametrelerini tanımlarsınız. Tahmin görevleri için, denemeyi etkileyen ayarlanması gereken ek parametreler vardır. 
 
-Aşağıdaki tabloda bu ek parametreler özetlenmektedir. Sözdizimi tasarım desenleri için bkz. [Forekaleingparameter sınıfı başvuru belgeleri](/python/api/azureml-automl-core/azureml.automl.core.forecasting_parameters.forecastingparameters?preserve-view=true&view=azure-ml-py) .
+Aşağıdaki tabloda bu ek parametreler özetlenmektedir. Sözdizimi tasarım desenleri için bkz. [Forekaleingparameter sınıfı başvuru belgeleri](/python/api/azureml-automl-core/azureml.automl.core.forecasting_parameters.forecastingparameters) .
 
 | Parametre &nbsp; adı | Açıklama | Gerekli |
 |-------|-------|-------|
@@ -154,7 +154,7 @@ Aşağıdaki tabloda bu ek parametreler özetlenmektedir. Sözdizimi tasarım de
 
 
 Aşağıdaki kod, 
-* [`ForecastingParameters`](/python/api/azureml-automl-core/azureml.automl.core.forecasting_parameters.forecastingparameters?preserve-view=true&view=azure-ml-py)Deneme eğitimine yönelik tahmin parametrelerini tanımlamak için sınıfından yararlanır
+* [`ForecastingParameters`](/python/api/azureml-automl-core/azureml.automl.core.forecasting_parameters.forecastingparameters)Deneme eğitimine yönelik tahmin parametrelerini tanımlamak için sınıfından yararlanır
 * `time_column_name` `day_datetime` Veri kümesindeki alanını ayarlar. 
 * `time_series_id_column_names`Parametresini öğesine tanımlar `"store"` . Bu, veriler için **iki ayrı zaman serisi grubu** oluşturulmasını sağlar; bir mağaza A ve B.
 * `forecast_horizon`Tüm test kümesini tahmin etmek için 50 olarak ayarlar. 
@@ -298,7 +298,7 @@ Tablo, pencere toplama uygulandığında ortaya çıkan özellik mühendisliğin
 
 ### <a name="short-series-handling"></a>Kısa seri işleme
 
-Model geliştirmenin eğitim ve doğrulama aşamalarını yürütmek için yeterli veri noktası yoksa otomatik ML bir zaman serisini bir **kısa seriler** olarak değerlendirir. Veri noktalarının sayısı her bir denemeye göre farklılık gösterir ve max_horizon, çapraz doğrulama sayısını ve modelin geri elde ettiği, zaman serisi özelliklerinin oluşturulması için gereken en fazla geçmişin uzunluğunu bağlıdır. Tam hesaplama için [short_series_handling_configuration başvuru belgelerine](/python/api/azureml-automl-core/azureml.automl.core.forecasting_parameters.forecastingparameters?preserve-view=true&view=azure-ml-py#short-series-handling-configuration)bakın.
+Model geliştirmenin eğitim ve doğrulama aşamalarını yürütmek için yeterli veri noktası yoksa otomatik ML bir zaman serisini bir **kısa seriler** olarak değerlendirir. Veri noktalarının sayısı her bir denemeye göre farklılık gösterir ve max_horizon, çapraz doğrulama sayısını ve modelin geri elde ettiği, zaman serisi özelliklerinin oluşturulması için gereken en fazla geçmişin uzunluğunu bağlıdır. Tam hesaplama için [short_series_handling_configuration başvuru belgelerine](/python/api/azureml-automl-core/azureml.automl.core.forecasting_parameters.forecastingparameters#short-series-handling-configuration)bakın.
 
 Otomatik ML `short_series_handling_configuration` , nesne içindeki parametresiyle varsayılan olarak kısa seri işleme sağlar `ForecastingParameters` . 
 

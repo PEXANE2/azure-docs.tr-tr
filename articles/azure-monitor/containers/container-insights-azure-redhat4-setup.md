@@ -2,13 +2,13 @@
 title: Azure Red Hat OpenShift v4. x 'i Container Insights ile yapılandırma | Microsoft Docs
 description: Bu makalede, Azure Red Hat OpenShift sürüm 4 veya sonraki sürümlerde barındırılan Azure Izleyici ile bir Kubernetes kümesi için izlemenin nasıl yapılandırılacağı açıklanır.
 ms.topic: conceptual
-ms.date: 06/30/2020
-ms.openlocfilehash: a9e04818f1a915a853d32b5db408a521cdae9f4c
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.date: 03/05/2021
+ms.openlocfilehash: 02cb794463b965ebafef0b6861477dbf69227511
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101713941"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102506421"
 ---
 # <a name="configure-azure-red-hat-openshift-v4x-with-container-insights"></a>Azure Red Hat OpenShift v4. x 'i kapsayıcı öngörüleri ile yapılandırma
 
@@ -61,21 +61,8 @@ Azure Red Hat OpenShift sürüm 4 veya sonraki bir küme için izlemeyi etkinle�
 
     `curl -o enable-monitoring.sh -L https://aka.ms/enable-monitoring-bash-script`
 
-1. Kümenizin *Kubebağlamını* belirlemek için aşağıdaki komutları çalıştırın
+1. [Öğretici: Azure Red Hat OpenShift 4 kümesine bağlanma](../../openshift/tutorial-connect-cluster.md)YÖNERGELERINI kullanarak Aro v4 kümesine bağlanın.
 
-    ```
-    adminUserName=$(az aro list-credentials -g $clusterResourceGroup -n $clusterName --query 'kubeadminUsername' -o tsv)
-    adminPassword=$(az aro list-credentials -g $clusterResourceGroup -n $clusterName --query 'kubeadminPassword' -o tsv)
-    apiServer=$(az aro show -g $clusterResourceGroup -n $clusterName --query apiserverProfile.url -o tsv)
-    oc login $apiServer -u $adminUserName -p $adminPassword
-    # openshift project name for Container insights
-    openshiftProjectName="azure-monitor-for-containers"
-    oc new-project $openshiftProjectName
-    # get the kube config context
-    kubeContext=$(oc config current-context)
-    ```
-
-1. Daha sonra kullanmak için değeri kopyalayın.
 
 ### <a name="integrate-with-an-existing-workspace"></a>Mevcut bir çalışma alanıyla tümleştirin
 
@@ -113,17 +100,16 @@ Belirtmek için bir çalışma alanınız yoksa, [varsayılan çalışma alanı 
 
 1. Çıktıda, çalışma alanı adını bulun ve alan **kimliği** altında bu Log Analytics çalışma alanının tam kaynak kimliğini kopyalayın.
 
-1. İzlemeyi etkinleştirmek için aşağıdaki komutu çalıştırın. `azureAroV4ClusterResourceId`, `logAnalyticsWorkspaceResourceId` Ve parametrelerinin değerlerini değiştirin `kubeContext` .
+1. İzlemeyi etkinleştirmek için aşağıdaki komutu çalıştırın. `azureAroV4ClusterResourceId`Ve parametrelerinin değerlerini değiştirin `logAnalyticsWorkspaceResourceId` .
 
     ```bash
-    export azureAroV4ClusterResourceId=“/subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/providers/Microsoft.RedHatOpenShift/OpenShiftClusters/<clusterName>”
-    export logAnalyticsWorkspaceResourceId=“/subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/providers/microsoft.operationalinsights/workspaces/<workspaceName>”
-    export kubeContext="<kubeContext name of your ARO v4 cluster>"  
+    export azureAroV4ClusterResourceId="/subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/providers/Microsoft.RedHatOpenShift/OpenShiftClusters/<clusterName>"
+    export logAnalyticsWorkspaceResourceId="/subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/providers/microsoft.operationalinsights/workspaces/<workspaceName>" 
     ```
 
     Dışarı aktarma komutlarıyla 3 değişken doldurduktan sonra çalıştırmanız gereken komut aşağıda verilmiştir:
 
-    `bash enable-monitoring.sh --resource-id $azureAroV4ClusterResourceId --kube-context $kubeContext --workspace-id $logAnalyticsWorkspaceResourceId`
+    `bash enable-monitoring.sh --resource-id $azureAroV4ClusterResourceId --workspace-id $logAnalyticsWorkspaceResourceId`
 
 İzlemeyi etkinleştirdikten sonra, küme için sistem durumu ölçümlerini görüntüleyebilmeniz yaklaşık 15 dakika sürebilir.
 
@@ -135,16 +121,15 @@ Bu örnekte, var olan bir çalışma alanını önceden oluşturmanız veya beli
 
 Oluşturulan varsayılan çalışma alanı *defaultworkspace- \<GUID> - \<Region>* biçimindedir.  
 
-`azureAroV4ClusterResourceId`Ve parametrelerinin değerlerini değiştirin `kubeContext` .
+Parametresinin değerini değiştirin `azureAroV4ClusterResourceId` .
 
 ```bash
 export azureAroV4ClusterResourceId="/subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/providers/Microsoft.RedHatOpenShift/OpenShiftClusters/<clusterName>"
-export kubeContext="<kubeContext name of your ARO v4 cluster>"
 ```
 
 Örnek:
 
-`bash enable-monitoring.sh --resource-id $azureAroV4ClusterResourceId --kube-context $kubeContext`
+' Bash enable-monitoring.sh--Resource-id $azureAroV 4Clusterresourceıd 
 
 İzlemeyi etkinleştirdikten sonra, küme için sistem durumu ölçümlerini görüntüleyebilmeniz yaklaşık 15 dakika sürebilir.
 

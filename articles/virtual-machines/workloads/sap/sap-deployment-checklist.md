@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 08/10/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 40d22a410054f17676c4d9db639fd5e32da18531
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 51bfd632e854132be27a7b971cf03e9fe5b00138
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101665996"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102504312"
 ---
 # <a name="sap-workloads-on-azure-planning-and-deployment-checklist"></a>Azure 'da SAP iş yükleri: planlama ve dağıtım denetim listesi
 
@@ -138,7 +138,7 @@ Bir pilot dağıtımı sırasında tam bir HADR çözümü ve güvenlik tasarım
         - Linux konuk işletim sistemleriyle birlikte Azure Load Balancer kullanıyorsanız, Linux ağ parametresinin **net.ipv4.tcp_timestamps** **0** olarak ayarlandığından emin olun. Bu öneri, daha eski [SAP note #2382421](https://launchpad.support.sap.com/#/notes/2382421)sürümlerindeki önerilerle çakışıyor. SAP Note artık bu parametrenin Azure yük dengeleyiciler ile çalışması için **0** olarak ayarlanması gerektiğini belirten bir durum olarak güncelleştirilir.
         - En iyi ağ gecikmesini sağlamak için [Azure yakınlık yerleştirme gruplarını](../../co-location.md) kullanmayı düşünün. Daha fazla bilgi için bkz. [SAP uygulamalarıyla en iyi ağ gecikmesi Için Azure yakınlık yerleşimi grupları](sap-proximity-placement-scenarios.md).
    4. Yüksek kullanılabilirlik ve olağanüstü durum kurtarma dağıtımları.
-        - SAP uygulama katmanını belirli bir Azure kullanılabilirlik bölgesi belirtmeden dağıtırsanız, SAP iletişim kutusu örnekleri veya tek bir SAP sisteminin ara yazılım örneklerini çalıştıran tüm VM 'Lerin bir [kullanılabilirlik kümesinde](../../manage-availability.md)dağıtıldığından emin olun.
+        - SAP uygulama katmanını belirli bir Azure kullanılabilirlik bölgesi belirtmeden dağıtırsanız, SAP iletişim kutusu örnekleri veya tek bir SAP sisteminin ara yazılım örneklerini çalıştıran tüm VM 'Lerin bir [kullanılabilirlik kümesinde](../../availability-set-overview.md)dağıtıldığından emin olun.
         - SAP Merkezi Hizmetleri ve DBMS için yüksek kullanılabilirliğe ihtiyacınız yoksa, bu VM 'Leri SAP uygulama katmanıyla aynı Kullanılabilirlik kümesine dağıtabilirsiniz.
         - Pasif çoğaltma kullanarak yüksek kullanılabilirlik için SAP merkezi hizmetlerini ve DBMS katmanını koruduğunuzda, SAP Merkezi Hizmetleri için iki düğümü ayrı bir kullanılabilirlik kümesine ve farklı bir kullanılabilirlik kümesindeki iki DBMS düğümüne yerleştirin.
         - Azure Kullanılabilirlik Alanları dağıtırsanız, kullanılabilirlik kümelerini kullanamazsınız. Ancak, etkin ve pasif Merkezi Hizmetler düğümlerini iki farklı Kullanılabilirlik Alanları dağıttığınızdan emin olmanız gerekir. Aralarında en düşük gecikme süresine sahip Kullanılabilirlik Alanları kullanın.

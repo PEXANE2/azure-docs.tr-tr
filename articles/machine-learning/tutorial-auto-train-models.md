@@ -11,12 +11,12 @@ ms.author: anumamah
 ms.reviewer: nibaccam
 ms.date: 08/14/2020
 ms.custom: devx-track-python, automl
-ms.openlocfilehash: f4d26ba6bec8f3e63ba89ed9abae789704a0828b
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.openlocfilehash: 04e50f5a990624aa01c845c82658639b8450f57d
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98184110"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102503870"
 ---
 # <a name="tutorial-use-automated-machine-learning-to-predict-taxi-fares"></a>Öğretici: Taksi ücretlerini tahmin etmek için otomatik makine öğrenmesini kullanma
 
@@ -34,7 +34,7 @@ Bu öğreticide aşağıdaki görevleri öğreneceksiniz:
 
 Azure aboneliğiniz yoksa başlamadan önce ücretsiz bir hesap oluşturun. Azure Machine Learning [ücretsiz veya ücretli sürümünü](https://aka.ms/AMLFree) bugün deneyin.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Zaten bir Azure Machine Learning çalışma alanınız veya Not defteri sanal makineniz yoksa [Kurulum öğreticisini](tutorial-1st-experiment-sdk-setup.md) doldurun.
 * Kurulum öğreticisini tamamladıktan sonra, aynı not defteri sunucusunu kullanarak *öğreticiler/Regression-automl-NYC-Taxi-Data/Regression-Automated-ml. ipynb* Not defterini açın.
@@ -175,7 +175,7 @@ final_df.describe()
 
 ## <a name="configure-workspace"></a>Çalışma alanını yapılandırma
 
-Mevcut çalışma alanından bir çalışma alanı nesnesi oluşturun. [Çalışma alanı](/python/api/azureml-core/azureml.core.workspace.workspace?preserve-view=true&view=azure-ml-py) , Azure aboneliğinizi ve kaynak bilgilerinizi kabul eden bir sınıftır. Ayrıca, modelinizi izlemek ve izlemek için bir bulut kaynağı oluşturur. `Workspace.from_config()` Dosya **config.js** okur ve kimlik doğrulama ayrıntılarını adlı bir nesneye yükler `ws` . Bu öğreticideki kodun kalanında `ws` kullanılır.
+Mevcut çalışma alanından bir çalışma alanı nesnesi oluşturun. [Çalışma alanı](/python/api/azureml-core/azureml.core.workspace.workspace) , Azure aboneliğinizi ve kaynak bilgilerinizi kabul eden bir sınıftır. Ayrıca, modelinizi izlemek ve izlemek için bir bulut kaynağı oluşturur. `Workspace.from_config()` Dosya **config.js** okur ve kimlik doğrulama ayrıntılarını adlı bir nesneye yükler `ws` . Bu öğreticideki kodun kalanında `ws` kullanılır.
 
 ```python
 from azureml.core.workspace import Workspace
@@ -302,7 +302,7 @@ BEST: The best observed score thus far.
 
 ## <a name="explore-the-results"></a>Sonuçları inceleme
 
-[Jupyıter pencere öğesiyle](/python/api/azureml-widgets/azureml.widgets?preserve-view=true&view=azure-ml-py)otomatik eğitime ilişkin sonuçları keşfet. Pencere öğesi, eğitim doğruluğu ölçümleri ve meta verileri ile birlikte tüm bireysel çalıştırma yinelemelerini bir grafik ve tablo görmenizi sağlar. Ayrıca, açılan seçiciyle, birincil ölçümünüzün farklı doğruluk ölçümlerine filtre uygulayabilirsiniz.
+[Jupyıter pencere öğesiyle](/python/api/azureml-widgets/azureml.widgets)otomatik eğitime ilişkin sonuçları keşfet. Pencere öğesi, eğitim doğruluğu ölçümleri ve meta verileri ile birlikte tüm bireysel çalıştırma yinelemelerini bir grafik ve tablo görmenizi sağlar. Ayrıca, açılan seçiciyle, birincil ölçümünüzün farklı doğruluk ölçümlerine filtre uygulayabilirsiniz.
 
 ```python
 from azureml.widgets import RunDetails

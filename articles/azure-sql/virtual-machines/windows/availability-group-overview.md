@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 10/07/2020
 ms.author: mathoma
 ms.custom: seo-lt-2019
-ms.openlocfilehash: d879039e6d3ad94e55ed7f7bd283f8b99a5b2161
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 8bbd56499c9b62248662fc5e8df0d5b3e1b672d4
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102042462"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102504176"
 ---
 # <a name="always-on-availability-group-on-sql-server-on-azure-vms"></a>Azure VM 'lerinde SQL Server her zaman kullanılabilirlik grubu
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -38,7 +38,7 @@ Aşağıdaki diyagramda Azure VM 'lerinde SQL Server için bir kullanılabilirli
 
 ## <a name="vm-redundancy"></a>VM artıklığı 
 
-Yedeklilik ve yüksek kullanılabilirliği artırmak için SQL Server VM 'Lerin aynı [kullanılabilirlik kümesinde](../../../virtual-machines/windows/tutorial-availability-sets.md#availability-set-overview)veya farklı [kullanılabilirlik bölgelerinde](../../../availability-zones/az-overview.md)olması gerekir.
+Yedeklilik ve yüksek kullanılabilirliği artırmak için SQL Server VM 'Lerin aynı [kullanılabilirlik kümesinde](../../../virtual-machines/availability-set-overview.md)veya farklı [kullanılabilirlik bölgelerinde](../../../availability-zones/az-overview.md)olması gerekir.
 
 Aynı Kullanılabilirlik kümesine bir VM kümesinin yerleştirilmesi, donanım arızasından kaynaklanan bir veri merkezi içindeki kesintilerden (bir kullanılabilirlik kümesindeki VM 'Ler, kaynakları paylaşmaz) veya güncelleştirmelerden (bir kullanılabilirlik kümesindeki VM 'ler aynı anda güncellenmez) karşı koruma sağlar. Bir bölgedeki veri merkezleri kümesini temsil eden her bölge ile tüm veri merkezinde hataya karşı koruma Kullanılabilirlik Alanları.  Kaynakların farklı Kullanılabilirlik Alanları yerleştirildiğinden emin olduktan sonra, tüm sanal makinelerinizi çevrimdışına alabilir.
 

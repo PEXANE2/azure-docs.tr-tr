@@ -9,12 +9,12 @@ ms.subservice: billing
 ms.topic: how-to
 ms.date: 03/07/2021
 ms.author: banders
-ms.openlocfilehash: 0f30c90bf81a837b1e78ca5f91450cf085cc91bc
-ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
+ms.openlocfilehash: e7f5370e1e387947d196959fef31043ea8f4d3bd
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 03/09/2021
-ms.locfileid: "102495147"
+ms.locfileid: "102508529"
 ---
 # <a name="assign-roles-to-azure-enterprise-agreement-service-principal-names"></a>Azure Kurumsal Anlaşma hizmet sorumlusu adlarına roller atama
 
@@ -23,7 +23,7 @@ ms.locfileid: "102495147"
 Başlamadan önce, aşağıdaki makalelere alışkın olduğunuzdan emin olun:
 
 - [Kurumsal Anlaşma rolleri](understand-ea-roles.md)
-- [Azure PowerShell ile oturum açma](/powershell/azure/authenticate-azureps?view=azps-5.5.0&preserve-view=true)
+- [Azure PowerShell ile oturum açma](/powershell/azure/authenticate-azureps)
 - [Postman ile REST API 'Leri çağırma](/rest/api/azure/#how-to-call-azure-rest-apis-with-postman)
 
 ## <a name="create-and-authenticate-your-service-principal"></a>Hizmet sorumlunuzu oluşturma ve kimlik doğrulama
@@ -89,7 +89,7 @@ Parametresi faturalandırma hesabı KIMLIĞIDIR. Bunu, Azure portal maliyet yön
 
 **Billingroleatamaadı**
 
-Parametresi sağlamanız gereken benzersiz bir GUID 'dir. [New-GUID](/powershell/module/microsoft.powershell.utility/new-guid?view=powershell-7.1&preserve-view=true) PowerShell komutunu kullanarak bir GUID oluşturabilirsiniz.
+Parametresi sağlamanız gereken benzersiz bir GUID 'dir. [New-GUID](/powershell/module/microsoft.powershell.utility/new-guid) PowerShell komutunu kullanarak bir GUID oluşturabilirsiniz.
 
 Veya, [ÇEVRIMIÇI GUID/UUID Oluşturucu](https://guidgenerator.com/) Web sitesini kullanarak BENZERSIZ bir GUID oluşturabilirsiniz.
 
@@ -141,7 +141,7 @@ Bu, faturalandırma hesabı KIMLIĞIDIR. Bunu, Azure portal maliyet yönetimi + 
 
 **Billingroleatamaadı**
 
-Parametresi sağlamanız gereken benzersiz bir GUID 'dir. [New-GUID](/powershell/module/microsoft.powershell.utility/new-guid?view=powershell-7.1&preserve-view=true) PowerShell komutunu kullanarak bir GUID oluşturabilirsiniz.
+Parametresi sağlamanız gereken benzersiz bir GUID 'dir. [New-GUID](/powershell/module/microsoft.powershell.utility/new-guid) PowerShell komutunu kullanarak bir GUID oluşturabilirsiniz.
 
 Veya, [ÇEVRIMIÇI GUID/UUID Oluşturucu](https://guidgenerator.com/) Web sitesini kullanarak BENZERSIZ bir GUID oluşturabilirsiniz.
 
@@ -199,7 +199,7 @@ Parametresi faturalandırma hesabı KIMLIĞIDIR. Bunu, Azure portal maliyet yön
 
 **Billingroleatamaadı**
 
-Parametresi sağlamanız gereken benzersiz bir GUID 'dir. [New-GUID](/powershell/module/microsoft.powershell.utility/new-guid?view=powershell-7.1&preserve-view=true) PowerShell komutunu kullanarak bir GUID oluşturabilirsiniz.
+Parametresi sağlamanız gereken benzersiz bir GUID 'dir. [New-GUID](/powershell/module/microsoft.powershell.utility/new-guid) PowerShell komutunu kullanarak bir GUID oluşturabilirsiniz.
 
 Veya, [ÇEVRIMIÇI GUID/UUID Oluşturucu](https://guidgenerator.com/) Web sitesini kullanarak BENZERSIZ bir GUID oluşturabilirsiniz.
 **enrollmentAccountName**

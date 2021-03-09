@@ -11,12 +11,12 @@ author: barbaraselden
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ce8aa5108b6998424b35e3f4ecac6b51e78f276b
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: 94187f2f94581b4ff48ddb0cd014dc26268fcf15
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102424130"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102500521"
 ---
 # <a name="plan-an-azure-active-directory-self-service-password-reset-deployment"></a>Azure Active Directory self servis parola sıfırlama dağıtımını planlayın
 
@@ -25,7 +25,7 @@ ms.locfileid: "102424130"
 >
 > **Son bir Kullanıcı kullanıyorsanız ve hesabınıza geri [https://aka.ms/sspr](https://aka.ms/sspr)** dönmek istiyorsanız adresine gidin.
 
-[Self servis parola sıfırlama (SSPR)](https://www.youtube.com/watch?v=tnb2Qf4hTP8) , kullanıcıların yardım için BT personeline başvurmadan parolalarını sıfırlamalarını sağlayan bir Azure ACTIVE DIRECTORY (ad) özelliğidir. Kullanıcılar kendi kendilerini engellemeyi kaldırabilir ve nerede olurlarsa veya gün içinde çalışmaya devam edebilir. Kuruluşunuz, çalışanların kendi engellemesini engellemelerine izin vererek, en yaygın parolayla ilgili sorunlara yönelik üretken olmayan süreyi ve yüksek destek maliyetlerini azaltabilir.
+[Self servis parola sıfırlama (SSPR)](https://www.youtube.com/watch?v=pS3XwfxJrMo) , kullanıcıların yardım için BT personeline başvurmadan parolalarını sıfırlamalarını sağlayan bir Azure ACTIVE DIRECTORY (ad) özelliğidir. Kullanıcılar kendi kendilerini engellemeyi kaldırabilir ve nerede olurlarsa veya gün içinde çalışmaya devam edebilir. Kuruluşunuz, çalışanların kendi engellemesini engellemelerine izin vererek, en yaygın parolayla ilgili sorunlara yönelik üretken olmayan süreyi ve yüksek destek maliyetlerini azaltabilir.
 
 SSPR aşağıdaki temel yeteneklere sahiptir:
 

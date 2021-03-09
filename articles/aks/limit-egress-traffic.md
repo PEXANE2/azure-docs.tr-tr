@@ -6,12 +6,12 @@ ms.topic: article
 ms.author: jpalma
 ms.date: 11/09/2020
 author: palma21
-ms.openlocfilehash: c6160d36240b59c60fafa955b916fb6167c2648e
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 93c8d1392de8f502a829276287a4687476dd36de
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98685763"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102505067"
 ---
 # <a name="control-egress-traffic-for-cluster-nodes-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) içindeki küme düğümleri için çıkış trafiğini denetleme
 
@@ -28,13 +28,13 @@ AKS giden bağımlılıkları, bunların arkasında statik adresler bulunmayan F
 Varsayılan olarak, AKS kümelerinde sınırsız giden (çıkış) internet erişimi vardır. Bu ağ erişimi düzeyi, çalıştırdığınız düğüm ve hizmetlere, gerektiğinde dış kaynaklara erişmek için izin verir. Çıkış trafiğini kısıtlamak istiyorsanız, sağlıklı küme bakım görevlerini sürdürmek için sınırlı sayıda bağlantı noktasına ve adrese erişilebilir olması gerekir. Giden adreslerin güvenliğini sağlamaya yönelik en basit çözüm, etki alanı adlarına göre giden trafiği denetleyesağlayan bir güvenlik duvarı cihazının kullanılmasına yol açabilir. Örneğin, Azure Güvenlik Duvarı, giden HTTP ve HTTPS trafiğini hedefin FQDN 'sine göre kısıtlayabilir. Ayrıca tercih ettiğiniz güvenlik duvarı ve güvenlik kurallarınızı, bu gerekli bağlantı noktalarına ve adreslere izin verecek şekilde yapılandırabilirsiniz.
 
 > [!IMPORTANT]
-> Bu belge, yalnızca AKS alt ağını bırakarak trafiğin nasıl kilitleneceği hakkında ele alınmaktadır. AKS 'ler varsayılan olarak giriş gereksinimlerine sahip değildir.  Ağ güvenlik grupları (NSG 'ler) ve güvenlik duvarları kullanılarak **iç alt ağ trafiğinin** engellenmesi desteklenmez. Küme içindeki trafiği denetlemek ve engellemek için [ * *_ağ ilkeleri_* _][network-policy]' i kullanın.
+> Bu belge, yalnızca AKS alt ağını bırakarak trafiğin nasıl kilitleneceği hakkında ele alınmaktadır. AKS 'ler varsayılan olarak giriş gereksinimlerine sahip değildir.  Ağ güvenlik grupları (NSG 'ler) ve güvenlik duvarları kullanılarak **iç alt ağ trafiğinin** engellenmesi desteklenmez. Küme içindeki trafiği denetlemek ve engellemek için [**_ağ ilkelerini_**][network-policy]kullanın.
 
 ## <a name="required-outbound-network-rules-and-fqdns-for-aks-clusters"></a>AKS kümeleri için gerekli giden ağ kuralları ve FQDN 'Ler
 
 Aşağıdaki ağ ve FQDN/uygulama kuralları bir AKS kümesi için gereklidir, Azure Güvenlik Duvarı dışında bir çözüm yapılandırmak istiyorsanız bunları kullanabilirsiniz.
 
-_ IP adresi bağımlılıkları HTTP/sn olmayan trafiğe yöneliktir (TCP ve UDP trafiği)
+* IP adresi bağımlılıkları HTTP/sn olmayan trafiğe yöneliktir (TCP ve UDP trafiği)
 * FQDN HTTP/HTTPS uç noktaları, güvenlik duvarı cihazınıza yerleştirilebilir.
 * Joker karakter HTTP/HTTPS uç noktaları, AKS kümenizde farklı bir dizi niteleyicileri temel alarak değişebilen bağımlılıklardır.
 * AKS, bu FQDN 'yi kuas sistemi ve Gatekeeper-System altındaki tüm dağıtımlara bir ortam değişkeni olarak eklemek için bir giriş denetleyicisi kullanır. Bu, düğümler ve API sunucusu arasındaki tüm sistem iletişiminin API sunucusu IP 'sini kullanmamasını sağlar. 
@@ -407,7 +407,7 @@ Artık bir AKS kümesi var olan sanal ağa dağıtılabilir. [Giden türü `user
 
 ### <a name="create-a-service-principal-with-access-to-provision-inside-the-existing-virtual-network"></a>Mevcut sanal ağın içinde sağlamaya yönelik erişime sahip bir hizmet sorumlusu oluşturma
 
-Hizmet sorumlusu, AKS tarafından küme kaynakları oluşturmak için kullanılır. Oluşturma zamanında geçirilen hizmet sorumlusu, AKS tarafından kullanılan depolama kaynakları, IP 'Ler ve yük dengeleyiciler gibi temel AKS kaynaklarını oluşturmak için kullanılır (Bunun yerine bir [yönetilen kimlik](use-managed-identity.md) de kullanabilirsiniz). Aşağıdaki uygun izinler verilmemişse, AKS kümesini sağlayamayacaksınız.
+Küme kimliği (yönetilen kimlik veya hizmet sorumlusu), AKS tarafından küme kaynakları oluşturmak için kullanılır. Oluşturma zamanında geçirilen bir hizmet sorumlusu, AKS tarafından kullanılan depolama kaynakları, IP 'Ler ve yük dengeleyiciler gibi temel AKS kaynaklarını oluşturmak için kullanılır (Bunun yerine bir [yönetilen kimlik](use-managed-identity.md) de kullanabilirsiniz). Aşağıdaki uygun izinler verilmemişse, AKS kümesini sağlayamayacaksınız.
 
 ```azurecli
 # Create SP and Assign Permission to Virtual Network

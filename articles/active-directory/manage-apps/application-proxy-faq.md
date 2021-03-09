@@ -12,12 +12,12 @@ ms.date: 07/23/2020
 ms.author: kenwith
 ms.reviewer: japere
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 19a5d223b587e47c562977cc9fea34f990eb0e46
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: edd2ec633bd78ce1a596782deab57105e9d7f1c3
+ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100370827"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102487755"
 ---
 # <a name="active-directory-azure-ad-application-proxy-frequently-asked-questions"></a>Active Directory (Azure AD) uygulama proxy 'Si hakkında sık sorulan sorular
 
@@ -37,6 +37,21 @@ Lisansınızın süresi dolarsa, uygulama proxy 'Si otomatik olarak devre dış�
 En az bir Azure AD Premium P1 veya P2 lisansına sahip olduğunuzdan ve Azure AD Uygulama Ara Sunucusu bağlayıcısının yüklü olduğundan emin olun. İlk bağlayıcınızı başarıyla yükledikten sonra Azure AD Uygulama Ara Sunucusu hizmeti otomatik olarak etkinleştirilir.
 
 ## <a name="connector-configuration"></a>Bağlayıcı yapılandırması
+
+### <a name="why-is-my-connector-still-using-an-older-version-and-not-auto-upgraded-to-latest-version"></a>Bağlayıcım neden daha eski bir sürüm kullanıyor ve en son sürüme otomatik olarak yükseltilmiyor?
+
+Bunun nedeni, Güncelleştirici hizmetin doğru çalışmaması veya hizmetin yükleyebileceği yeni bir güncelleştirme olmaması olabilir.
+
+Güncelleştirici hizmeti çalışıyorsa ve olay günlüğünde kayıtlı bir hata yoksa (uygulamalar ve hizmetler günlükleri-> Microsoft-> AadApplicationProxy-> Güncelleştirici-> admin). 
+
+> [!IMPORTANT]
+> Yalnızca ana sürümler otomatik yükseltme için serbest bırakılır. Bağlayıcıyı düzenli bir zamanlamaya göre el ile güncelleştirmenizi öneririz. Yeni sürümler hakkında daha fazla bilgi için yayın türü (indirme, otomatik yükseltme), hata düzeltmeleri ve yeni özellikler Bkz. [Azure AD uygulama ara sunucusu: sürüm sürümü geçmişi](application-proxy-release-version-history.md).
+
+Bağlayıcıyı el ile yükseltmek için:
+
+-  Bağlayıcının en son sürümünü indirin. (Bunu Azure portalında uygulama proxy 'Si altında bulabilirsiniz. Ayrıca bağlantıyı [Azure AD uygulama ara sunucusu: sürüm yayınlama geçmişi](application-proxy-release-version-history.md)' nde bulabilirsiniz.
+-   Yükleyici, Azure AD Uygulama Ara Sunucusu Bağlayıcısı hizmetlerini yeniden başlatır. Bazı durumlarda, yükleyici tüm dosyaları değiştirip, sunucunun yeniden başlatılması gerekebilir. Bu nedenle, yükseltmeye başlamadan önce tüm uygulamaların (yani Olay Görüntüleyicisi) kapatılması önerilir.
+-   Yükleyiciyi çalıştırın. Yükseltme işlemi hızlı bir işlemdir ve herhangi bir kimlik bilgisi sağlanması gerekmez ve bağlayıcı yeniden kaydedilmeyecektir.
 
 ### <a name="can-application-proxy-connector-services-run-in-a-different-user-context-than-the-default"></a>Uygulama proxy Bağlayıcısı Hizmetleri varsayılandan farklı bir kullanıcı bağlamında çalıştırılabilir mi?
 

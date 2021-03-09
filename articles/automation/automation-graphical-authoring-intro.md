@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 03/16/2018
 ms.topic: conceptual
-ms.openlocfilehash: ec74ca19978a4164289276d44b34eb14b694687f
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: bbac794263fec176e03c7148d860c479a2ed9d39
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99051592"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102501237"
 ---
 # <a name="author-graphical-runbooks-in-azure-automation"></a>Azure Otomasyonu 'nda grafik runbook 'ları yazma
 
@@ -34,7 +34,7 @@ Tuval denetimi, runbook 'unuzu tasarlamanızı sağlar. Kitaplık denetimindeki 
 
 Kitaplık denetimi, runbook uygulamanıza eklenecek [etkinlikleri](#use-activities) seçmenizi sağlar. Bunları başka etkinliklere bağlayabileceğiniz tuvale eklersiniz. Kitaplık denetimi, aşağıdaki tabloda tanımlanan bölümleri içerir.
 
-| Section | Description |
+| Section | Açıklama |
 |:--- |:--- |
 | Cmdlet’ler |Runbook 'da kullanılabilen tüm cmdlet 'ler. Cmdlet 'ler modüle göre düzenlenir. Otomasyon hesabınızda yüklediğiniz tüm modüller kullanılabilir. |
 | Runbook'lar |Otomasyon hesabınızdaki runbook 'lar. Bu runbook 'ları alt runbook 'lar olarak kullanılacak tuvale ekleyebilirsiniz. Yalnızca düzenlenmekte olan runbook ile aynı çekirdek türündeki runbook 'lar gösterilir. Grafik runbook 'lar için yalnızca PowerShell tabanlı runbook 'lar gösterilir. Grafik PowerShell Iş akışı runbook 'ları için yalnızca PowerShell Iş akışı tabanlı runbook 'lar gösterilir. |
@@ -61,7 +61,7 @@ Yapılandırma dikey penceresinde özelliklerini ve parametrelerini yapılandır
 
 Bir parametre kümesi, belirli bir cmdlet için değerleri kabul eden zorunlu ve isteğe bağlı parametreleri tanımlar. Tüm cmdlet 'ler en az bir parametre kümesine sahiptir ve bazılarında birkaç küme vardır. Bir cmdlet birden çok parametre kümesine sahipse, parametreleri yapılandırmadan önce kullanılacak birini seçmeniz gerekir. Bir etkinlik tarafından kullanılan parametre kümesini **parametre kümesi** seçip başka bir küme seçerek değiştirebilirsiniz. Bu durumda, önceden yapılandırdığınız herhangi bir parametre değeri kaybedilir.
 
-Aşağıdaki örnekte, [Get-AzVM](/powershell/module/az.compute/get-azvm?view=azps-3.5.0&preserve-view=true) cmdlet 'inin üç parametre kümesi vardır. Örnek, bir kaynak grubundaki tüm sanal makineleri döndürmek için **Listvirtualmachineınresourcegroupparamset** adlı tek bir isteğe bağlı parametre içeren bir kümesi kullanır. Örnek, döndürülecek sanal makineyi belirtmek için **Getvirtualmachineınresourcegroupparamset** parametre kümesini de kullanır. Bu küme, iki zorunlu parametreye ve bir isteğe bağlı parametreye sahiptir.
+Aşağıdaki örnekte, [Get-AzVM](/powershell/module/az.compute/get-azvm) cmdlet 'inin üç parametre kümesi vardır. Örnek, bir kaynak grubundaki tüm sanal makineleri döndürmek için **Listvirtualmachineınresourcegroupparamset** adlı tek bir isteğe bağlı parametre içeren bir kümesi kullanır. Örnek, döndürülecek sanal makineyi belirtmek için **Getvirtualmachineınresourcegroupparamset** parametre kümesini de kullanır. Bu küme, iki zorunlu parametreye ve bir isteğe bağlı parametreye sahiptir.
 
 ![Parametre kümesi](media/automation-graphical-authoring-intro/get-azvm-parameter-sets.png)
 
@@ -69,7 +69,7 @@ Aşağıdaki örnekte, [Get-AzVM](/powershell/module/az.compute/get-azvm?view=az
 
 Bir parametre için bir değer belirttiğinizde, değerin nasıl belirtilceğini belirlemek için bir veri kaynağı seçersiniz. Belirli bir parametre için kullanılabilen veri kaynakları, bu parametre için geçerli değerlere bağlıdır. Örneğin, null değerlere izin verilmeyen bir parametre için null kullanılabilir bir seçenek değildir.
 
-| Veri Kaynağı | Description |
+| Veri Kaynağı | Açıklama |
 |:--- |:--- |
 | Sabit değer |Parametre için bir değer yazın. Bu veri kaynağı yalnızca şu veri türleri için kullanılabilir: Int32, Int64, String, Boolean, DateTime, anahtar. |
 | Etkinlik çıkışı |İş akışındaki geçerli etkinlikten önce gelen bir etkinliğin çıkışını kullanın. Tüm geçerli etkinlikler listelenir. Parametre değeri için yalnızca çıktıyı üreten etkinliği kullanın. Etkinlik birden fazla özelliğe sahip bir nesne çıktıbulunursa, etkinlik seçildikten sonra belirli bir özelliğin adını yazabilirsiniz. |
@@ -151,7 +151,7 @@ Kaynak etkinliğini seçip şeklin altındaki daireye tıklayarak iki etkinlik a
 
 Yapılandırma dikey penceresinde özelliklerini yapılandırmak için bağlantıyı seçin. Özellikler, aşağıdaki tabloda açıklanan bağlantı türünü içerir.
 
-| Bağlantı türü | Description |
+| Bağlantı türü | Açıklama |
 |:--- |:--- |
 | İşlem Hattı |Hedef etkinlik, kaynak etkinlikten her nesne çıktısı için bir kez çalışır. Kaynak etkinlik hiçbir çıkış içermiyorsa, hedef etkinlik çalışmaz. Kaynak etkinlikten alınan çıkış bir nesne olarak kullanılabilir. |
 | Sequence |Hedef etkinlik, kaynak etkinlikten çıkış aldığında yalnızca bir kez çalışır. Kaynak etkinlikten alınan çıkış, nesne dizisi olarak kullanılabilir. |
@@ -257,7 +257,7 @@ Her giriş parametresi aşağıdaki tablodaki Özellikler tarafından tanımlan�
 | Özellik | Açıklama |
 |:--- |:--- |
 | Ad | Gereklidir. Parametrenin adı. Ad, runbook içinde benzersiz olmalıdır. Bir harfle başlamalı ve yalnızca harf, rakam ve alt çizgi içermelidir. Ad boşluk içeremez. |
-| Description |İsteğe bağlı. Giriş parametresinin amacının açıklaması. |
+| Açıklama |İsteğe bağlı. Giriş parametresinin amacının açıklaması. |
 | Tür | İsteğe bağlı. Parametre değeri için beklenen veri türü. Azure portal, giriş isterken her bir parametre için veri türü için uygun bir denetim sağlar. Desteklenen parametre türleri String, Int32, Int64, Decimal, Boolean, DateTime ve Object. Bir veri türü seçilmezse, varsayılan olarak dize olur.|
 | Zorunlu | İsteğe bağlı. Parametresi için bir değer sağlanması gerektiğini belirten ayar. `yes`' I seçerseniz, runbook başlatıldığında bir değer sağlanmalıdır. Seçeneğini belirlerseniz `no` , runbook başlatıldığında bir değer gerekli değildir ve varsayılan bir değer kullanılabilir. Varsayılan bir değeri tanımlanmış olmayan her zorunlu parametre için bir değer sağlamazsanız runbook başlatılamaz. |
 | Varsayılan değer | İsteğe bağlı. Bir parametre için, runbook başlatıldığında bir parametre geçirilmemişse kullanılan değer. Varsayılan bir değer ayarlamak için öğesini seçin `Custom` . `None`Herhangi bir varsayılan değer sağlamak istemiyorsanız seçin. |
@@ -435,4 +435,4 @@ Runbook 'un yayımlanmış sürümüne dönmek için seçeneğiniz vardır. Bu i
 * Grafik runbook 'larını kullanmaya başlamak için bkz. [öğretici: grafik runbook 'U oluşturma](learn/automation-tutorial-runbook-graphical.md).
 * Runbook türleri ve bunların avantajları ve sınırlamaları hakkında daha fazla bilgi edinmek için bkz. [Azure Otomasyonu runbook türleri](automation-runbook-types.md).
 * Otomasyon farklı çalıştır hesabını kullanarak kimlik doğrulaması yapılacağını anlamak için bkz. [Farklı Çalıştır hesabı](automation-security-overview.md#run-as-account).
-* PowerShell cmdlet başvurusu için bkz. [az. Automation](/powershell/module/az.automation/?view=azps-3.7.0&preserve-view=true#automation).
+* PowerShell cmdlet başvurusu için bkz. [az. Automation](/powershell/module/az.automation/#automation).

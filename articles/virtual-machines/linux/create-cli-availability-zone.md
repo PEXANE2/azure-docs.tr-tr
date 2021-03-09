@@ -1,19 +1,19 @@
 ---
-title: Azure CLı ile bölge ile bir Linux VM oluşturma
-description: Azure CLı ile bir kullanılabilirlik bölgesinde Linux VM oluşturma
+title: Azure CLı ile bir bölge sanal makinesi oluşturma
+description: Azure CLı ile bir kullanılabilirlik bölgesinde bir sanal makine oluşturma
 author: cynthn
 ms.service: virtual-machines-linux
 ms.topic: how-to
 ms.date: 04/05/2018
 ms.author: cynthn
-ms.openlocfilehash: 964d2b5d89fd91aca68e9b47b0049529fe284848
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: fbed3e7ac3e809658da532ccc27e78230cc0b581
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96016412"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102509141"
 ---
-# <a name="create-a-linux-virtual-machine-in-an-availability-zone-with-the-azure-cli"></a>Azure CLı ile bir kullanılabilirlik alanında Linux sanal makinesi oluşturma
+# <a name="create-a-virtual-machine-in-an-availability-zone-using-azure-cli"></a>Azure CLı kullanarak bir kullanılabilirlik bölgesinde sanal makine oluşturma
 
 Bu makalede, Azure CLı bölgesinde bir Linux sanal makinesi oluşturmak için Azure CLı kullanma adımları sağlanır. [Kullanılabilirlik alanı](../../availability-zones/az-overview.md), bir Azure bölgesinde fiziksel olarak ayrılmış bir alandır. Uygulamalarınızı beklenmeyen hatalardan veya tüm veri merkezinin kaybedilmesinden korumak için kullanılabilirlik alanlarından yararlanın.
 

@@ -27,12 +27,12 @@
         - name: IoT Aracısı tabanlı çözüm için Defender 'a ekleme
           displayName: 'IoT Hub, existing, enable'
           href: quickstart-onboard-iot-hub.md
-        - name: IoT mikro Aracısı için Defender 'ı yükler
+        - name: IoT mikro Aracısı (Önizleme) için Defender 'ı yükler
           displayName: 'package, authentication, methods, certificate, authenticate, version'
           href: quickstart-standalone-agent-binary-installation.md
-        - name: Bir Defender IoT mikro aracı modülü oluşturma ikizi
+        - name: Bir Defender IoT mikro aracı modülü oluşturma ikizi (Önizleme)
           href: quickstart-create-micro-agent-module-twin.md
-        - name: Kaynak kodundan IoT mikro Aracısı için Defender 'ı oluşturma
+        - name: Kaynak kodundan IoT mikro Aracısı için Defender 'ı derleme (Önizleme)
           displayName: 'baseline, configuration, customize, distribution'
           href: quickstart-building-the-defender-micro-agent-from-source.md
         - name: Azure RTOS için güvenlik modülünü yapılandırma
@@ -56,18 +56,18 @@
           href: concept-key-concepts.md
     - name: Cihaz Oluşturucular için aracı tabanlı çözüm
       items:
-        - name: Aracı portföyüne genel bakış ve işletim sistemi desteği
+        - name: Aracı portföyüne genel bakış ve işletim sistemi desteği (Önizleme)
           displayName: 'standalone agent, micro agent, RTOS'
           href: concept-agent-portfolio-overview-os-support.md
-        - name: Tek başına mikro aracıya genel bakış
+        - name: Tek başına mikro aracıya genel bakış (Önizleme)
           displayName: 'endpoint, posture, distribution, flexible, model'
           href: concept-standalone-micro-agent-overview.md
-        - name: Güvenlik aracısında kimlik doğrulaması
+        - name: Güvenlik Aracısı kimlik doğrulaması (Önizleme)
           displayName: 'connection string, certificate, authentication'
           href: concept-security-agent-authentication.md
         - name: Güvenlik sonrası-CIS kıyaslaması
           href: concept-security-posture.md
-        - name: Olay toplama
+        - name: Olay toplama (Önizleme)
           displayName: 'process events, network connection'
           href: concept-event-aggregation.md
         - name: IoT Hub için yerleşik uyarılar
@@ -297,7 +297,7 @@
               href: how-to-investigate-device.md
 - name: Sorun giderme
   items:
-    - name: Defender IoT mikro aracı sorunlarını giderme
+    - name: Defender IoT mikro aracı sorunlarını giderme (Önizleme)
       displayName: 'service status, review logs'
       href: troubleshoot-defender-micro-agent.md
 - name: Özellik desteği ve kullanımdan kaldırma

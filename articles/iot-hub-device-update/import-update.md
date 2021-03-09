@@ -6,12 +6,12 @@ ms.author: andbrown
 ms.date: 2/11/2021
 ms.topic: how-to
 ms.service: iot-hub-device-update
-ms.openlocfilehash: 7f2353d9e87c35f01a9fd514df7cfb090a98bf27
-ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
+ms.openlocfilehash: 6502728a14ea825fadfde107e61f235db5619ae0
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102442953"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102507288"
 ---
 # <a name="import-new-update"></a>Yeni güncelleştirme al
 IoT Hub için yeni bir güncelleştirmeyi cihaz güncelleştirmesine aktarmayı öğrenin. Henüz yapmadıysanız, temel [içeri aktarma kavramlarını öğrendiğinizden](import-concepts.md)emin olun.
@@ -57,8 +57,8 @@ IoT Hub için yeni bir güncelleştirmeyi cihaz güncelleştirmesine aktarmayı 
 
     | Parametre | Açıklama |
     | --------- | ----------- |
-    | deviceManufacturer | Güncelleştirmenin uyumlu olduğu cihazın üreticisi, örneğin contoso
-    | deviceModel | Güncelleştirmenin uyumlu olduğu cihazın modeli, örneğin, Toaster
+    | deviceManufacturer | Güncelleştirmenin, örneğin contoso ile uyumlu olduğu cihaz üreticisi. _Üretici_ [cihaz özelliği](https://docs.microsoft.com/azure/iot-hub-device-update/device-update-plug-and-play#device-properties) ile eşleşmelidir
+    | deviceModel | Güncelleştirmenin uyumlu olduğu cihazın modeli, örneğin, Toaster. _Model_ [cihaz özelliği](https://docs.microsoft.com/azure/iot-hub-device-update/device-update-plug-and-play#device-properties) ile eşleşmelidir
     | updateProvider | Güncelleştirme tarafından oluşturulan veya doğrudan sorumlu olan varlık. Genellikle şirket adı olacaktır.
     | updateName | Bir güncelleştirme sınıfının tanımlayıcısı. Sınıf, seçtiğiniz herhangi bir şey olabilir. Genellikle bir cihaz veya model adı olacaktır.
     | updateVersion | Sürüm numarası, aynı sağlayıcıya ve ada sahip diğer başkalarından bu güncelleştirmeyi ayırt eder. Cihazdaki tek bir yazılım bileşeninin sürümüyle aynı olabilir veya eşleşmeyebilir.

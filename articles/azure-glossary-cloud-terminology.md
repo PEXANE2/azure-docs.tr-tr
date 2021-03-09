@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/16/2017
 ms.author: monicar
-ms.openlocfilehash: 33672e90406b94a1b5788803911c072cdc2577f7
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 785c87e8136430557af819cd8c7ab1db8f54c060
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96186397"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102507730"
 ---
 # <a name="microsoft-azure-glossary-a-dictionary-of-cloud-terminology-on-the-azure-platform"></a>Microsoft Azure sözlüğü: Azure platformunda bulut terminolojisi sözlüğü
 
@@ -41,12 +41,12 @@ Bir Azure aboneliğine erişmek ve bunları yönetmek için kullanılan bir hesa
 
 ## <a name="availability-set"></a>kullanılabilirlik kümesi
 Uygulama artıklığı ve güvenilirliği sağlamak için birlikte yönetilen bir sanal makine koleksiyonu. Kullanılabilirlik kümesi kullanımı, planlı veya plansız bir bakım olayı sırasında en az bir sanal makinenin kullanılabilir olmasını sağlar.  
-Bkz [. Windows sanal makinelerinin kullanılabilirliğini yönetme](./virtual-machines/manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) ve [Linux sanal makinelerinin kullanılabilirliğini yönetme](./virtual-machines/manage-availability.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+Bkz [. Windows sanal makinelerinin kullanılabilirliğini yönetme](./virtual-machines/availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) ve [Linux sanal makinelerinin kullanılabilirliğini yönetme](./virtual-machines/availability.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
 ## <a name="azure-classic-deployment-model"></a><a name="classic-model"></a>Azure klasik dağıtım modeli
 Azure 'da kaynak dağıtmak için kullanılan iki [dağıtım modelinden](./azure-resource-manager/management/deployment-models.md) biri (yeni model Azure Resource Manager). Bazı Azure hizmetleri yalnızca Kaynak Yöneticisi dağıtım modelini destekler, bazıları yalnızca klasik dağıtım modelini destekler ve her ikisini de destekler. Her Azure hizmeti için belgeler, hangi model destekler destekledikleri belirler.
 
-## <a name="azure-command-line-interface-cli"></a><a name="cli"></a>Azure komut satırı arabirimi (CLI)
+## <a name="azure-command-line-interface-cli"></a><a name="cli"></a>Azure komut satırı arabirimi (CLı)
 Windows, macOS ve Linux 'tan Azure hizmetlerini yönetmek için kullanılabilen bir komut satırı arabirimi.  Bazı hizmetler veya hizmet özellikleri yalnızca PowerShell veya CLı aracılığıyla yönetilebilir. Bkz. [Azure CLI](/cli/azure)
 
 ## <a name="azure-powershell"></a><a name="powershell"></a>Azure PowerShell
@@ -58,7 +58,7 @@ Microsoft Azure içinde kaynak dağıtmak için kullanılan iki [dağıtım mode
 
 ## <a name="fault-domain"></a>hata etki alanı
 Aynı anda başarısız olabilecek bir kullanılabilirlik kümesindeki sanal makinelerin toplanması. Bir raf içindeki ortak bir güç kaynağı ve ağ anahtarını paylaşan bir makine grubudur. Azure 'da, bir kullanılabilirlik kümesindeki sanal makineler birden çok hata etki alanı arasında otomatik olarak ayrılır.  
-Bkz [. Windows sanal makinelerinin kullanılabilirliğini yönetme](./virtual-machines/manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) veya [Linux sanal makinelerinin kullanılabilirliğini yönetme](./virtual-machines/manage-availability.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)  
+Bkz [. Windows sanal makinelerinin kullanılabilirliğini yönetme](./virtual-machines/availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) veya [Linux sanal makinelerinin kullanılabilirliğini yönetme](./virtual-machines/availability.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)  
 
 ## <a name="geo"></a>Co
 Genellikle iki veya daha fazla bölge içeren veri yerleşimi için tanımlanmış sınır. Sınırlar Ulusal kenarlıkların içinde veya ötesinde olabilir ve vergi Yönetmeliği etkilenebilir. Her coğrafi bölgede en az bir bölge vardır. Coğrafyalar örnekleri Asya Pasifik ve Japonya örnekleridir. *Coğrafya* da denir.  
@@ -135,7 +135,7 @@ Bkz. [Azure kaynaklarınızı düzenlemek için etiketleri kullanma](./azure-res
 
 ## <a name="update-domain"></a>etki alanını güncelleştir
 Aynı anda güncelleştirilmiş bir kullanılabilirlik kümesindeki sanal makinelerin toplanması. Aynı güncelleştirme etki alanındaki sanal makineler, planlı bakım sırasında birlikte yeniden başlatılır. Azure tek seferde birden çok güncelleştirme etki alanını yeniden başlatmaz. Yükseltme etki alanı da denir.  
-Bkz [. Windows sanal makinelerinin kullanılabilirliğini yönetme](./virtual-machines/manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) ve [Linux sanal makinelerinin kullanılabilirliğini yönetme](./virtual-machines/manage-availability.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+Bkz [. Windows sanal makinelerinin kullanılabilirliğini yönetme](./virtual-machines/availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) ve [Linux sanal makinelerinin kullanılabilirliğini yönetme](./virtual-machines/availability.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
 ## <a name="virtual-machine"></a><a name="vm"></a>sanal makine
 Bir işletim sistemi çalıştıran fiziksel bir bilgisayarın yazılım uygulamasıdır. Aynı donanımda birden çok sanal makine aynı anda çalışabilir. Azure 'da, sanal makineler çeşitli boyutlarda kullanılabilir.  

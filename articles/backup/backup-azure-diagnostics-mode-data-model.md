@@ -3,12 +3,12 @@ title: Azure Izleyici günlükleri veri modeli
 description: Bu makalede, Azure Backup verileri için Azure Izleyici Log Analytics veri modeli ayrıntıları hakkında bilgi edinin.
 ms.topic: conceptual
 ms.date: 02/26/2019
-ms.openlocfilehash: 2d2146612763bac39eb636bb7da522586a0daee2
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 004c5a6c0c2c4dcfcf13134bd5a5143ba647048f
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100586770"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102500997"
 ---
 # <a name="log-analytics-data-model-for-azure-backup-data"></a>Azure Backup verileri için Log Analytics veri modeli
 
@@ -18,7 +18,8 @@ Log Analytics özel uyarılar oluşturmak için Log Analytics veri modelini kull
 
 > [!NOTE]
 >
-> Bu veri modeli, Log Analytics (LA) öğesine tanılama olayları gönderme Azure Tanılama moduna başvurdadır. Yeni kaynağa özgü moda yönelik veri modelini öğrenmek için şu makaleye başvurabilirsiniz: [Azure Backup tanılama olayları Için veri modeli](./backup-azure-reports-data-model.md)
+> * Bu veri modeli, Log Analytics (LA) öğesine tanılama olayları gönderme Azure Tanılama moduna başvurdadır. Yeni kaynağa özgü moda yönelik veri modelini öğrenmek için şu makaleye başvurabilirsiniz: [Azure Backup tanılama olayları Için veri modeli](./backup-azure-reports-data-model.md)
+> * Özel Raporlama görünümleri oluşturmak için, aşağıda listelenen ham tablolarla çalışmak yerine [Azure izleyici günlüklerinde sistem işlevlerinin](backup-reports-system-functions.md) kullanılması önerilir.
 
 ## <a name="using-azure-backup-data-model"></a>Azure Backup veri modelini kullanma
 
@@ -172,7 +173,7 @@ Bu tablo, işle ilgili alanlarla ilgili ayrıntıları sağlar.
 
 Bu tablo ilkeyle ilgili alanlarla ilgili ayrıntıları sağlar.
 
-| Alan | Veri Türü | Uygulanabilir sürümler | Description |
+| Alan | Veri Türü | Uygulanabilir sürümler | Açıklama |
 | --- | --- | --- | --- |
 | EventName_s |Metin ||Bu alan bu olayın adını temsil eder. Her zaman AzureBackupCentralReport |
 | SchemaVersion_s |Metin ||Bu alan, şemanın geçerli sürümünü gösterir. **V2** 'dir |
@@ -220,7 +221,7 @@ Bu tablo ilkeyle ilgili alanlarla ilgili ayrıntıları sağlar.
 
 Bu tablo, çeşitli varlıklarla ilke ilişkilendirmeleri hakkında ayrıntılar sağlar.
 
-| Alan | Veri Türü | Uygulanabilir sürümler | Description |
+| Alan | Veri Türü | Uygulanabilir sürümler | Açıklama |
 | --- | --- | --- | --- |
 | EventName_s |Metin ||Bu alan bu olayın adını temsil eder. Her zaman AzureBackupCentralReport |
 | SchemaVersion_s |Metin ||Bu alan, şemanın geçerli sürümünü gösterir. **V2** 'dir |
@@ -349,7 +350,7 @@ Bu tablo, bir birimin ilişkilendirildiği iş yüklerini belirtir.
 
 Bu tablo, temel korumalı örneklerle ilgili alanları sağlar.
 
-| Alan | Veri Türü |Uygulanabilir sürümler | Description |
+| Alan | Veri Türü |Uygulanabilir sürümler | Açıklama |
 | --- | --- | --- | --- |
 | BackupItemUniqueId_s |Metin |v2|DPM, MABS kullanılarak yedeklenen VM 'Ler için yedekleme öğesini tanımlamak üzere kullanılan benzersiz KIMLIK|
 | ProtectedContainerUniqueId_s |Metin |v2|DPM, MABS kullanılarak yedeklenen VM 'Ler hariç her şey için korunan kapsayıcıyı tanımlamak üzere kullanılan benzersiz KIMLIK|

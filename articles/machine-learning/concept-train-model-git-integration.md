@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: jordane
 author: jpe316
 ms.date: 11/16/2020
-ms.openlocfilehash: 53459ad766ffcf156d2906a38666a14c4883b5e8
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.openlocfilehash: 461c50bca53286cedcbb9ac21fc44467885e3d18
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102215944"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102500453"
 ---
 # <a name="git-integration-for-azure-machine-learning"></a>Azure Machine Learning için git tümleştirmesi
 
@@ -178,7 +178,7 @@ Günlüğe kaydedilen bilgiler aşağıdaki JSON 'a benzer bir metin içerir:
 
 ### <a name="python-sdk"></a>Python SDK'sı
 
-Bir eğitim çalıştırması gönderdikten sonra bir [çalıştırma](/python/api/azureml-core/azureml.core.run%28class%29?preserve-view=true&view=azure-ml-py) nesnesi döndürülür. `properties`Bu nesnenin özniteliği, günlüğe kaydedilen git bilgilerini içerir. Örneğin, aşağıdaki kod, COMMIT karmasını alır:
+Bir eğitim çalıştırması gönderdikten sonra bir [çalıştırma](/python/api/azureml-core/azureml.core.run%28class%29) nesnesi döndürülür. `properties`Bu nesnenin özniteliği, günlüğe kaydedilen git bilgilerini içerir. Örneğin, aşağıdaki kod, COMMIT karmasını alır:
 
 ```python
 run.properties['azureml.git.commit']

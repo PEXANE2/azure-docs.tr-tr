@@ -11,16 +11,16 @@ ms.topic: how-to
 ms.date: 02/18/2021
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: 04492abc0f235c2dc6139adbe543bcce82f7f7b3
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 46f117b13909c2d9624b88e9f5d9a62c4c646e51
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101646906"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102500301"
 ---
 # <a name="tutorial-configure-arkose-labs-with-azure-active-directory-b2c"></a>Öğretici: Azure Active Directory B2C ile Arkoo Labs yapılandırma
 
-Bu öğreticide, [Arkoo Labs](https://www.arkoselabs.com/)ile Azure ACTIVE DIRECTORY (ad) B2C kimlik doğrulamasını tümleştirmeyi öğrenin. Arkoo Labs, kuruluşlara bot saldırılarına, hesap hileli saldırıları ve sahte hesap açılışlarına karşı yardımcı olur.  
+Bu örnek öğreticide, [Arkoo Labs](https://www.arkoselabs.com/)ile Azure ACTIVE DIRECTORY (ad) B2C kimlik doğrulamasını tümleştirmeyi öğrenin. Arkoo Labs, kuruluşlara bot saldırılarına, hesap hileli saldırıları ve sahte hesap açılışlarına karşı yardımcı olur.  
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -196,7 +196,7 @@ Azure Işlevleri için Visual Studio Code geliştirme hakkında daha fazla bilgi
 
 [BIR API Bağlayıcısı oluşturun](https://docs.microsoft.com/azure/active-directory-b2c/add-api-connector) ve Kullanıcı akışınız için etkinleştirin. API Bağlayıcısı yapılandırmanız şöyle görünmelidir:
 
-![Görüntü, uygulama kimliğine göre arama gösterir](media/partner-arkose-labs/configure-api-connector.png)
+![Görüntü, API bağlayıcısının nasıl yapılandırılacağını gösterir](media/partner-arkose-labs/configure-api-connector.png)
 
 - **Uç nokta URL 'si** -Azure işlevi dağıtılırken daha önce kopyaladığınız işlev URL 'sidir.
 

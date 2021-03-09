@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 10/05/2020
 ms.author: depadia
-ms.openlocfilehash: e753d810bbc2ed1079b58d20a0659bf5e2219d11
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 3b3c313df5704e49481c66ad682faccd48d180ea
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101671901"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102505911"
 ---
 # <a name="sap-businessobjects-bi-platform-planning-and-implementation-guide-on-azure"></a>Azure’da SAP BusinessObjects İş Zekası platformu planlama ve uygulama kılavuzu
 
@@ -222,7 +222,7 @@ SAP BI platformu birçok farklı bileşen içerir ve mimaride, bu bileşenin her
 
 Ayrıca, Azure ölçek birimi içindeki bir Azure kullanılabilirlik kümesi tarafından kullanılabilen güncelleştirme ve hata etki alanlarının sayısı sınırlıdır. Bu nedenle, VM 'Leri tek bir kullanılabilirlik kümesine eklemeye devam ederseniz, iki veya daha fazla VM sonunda aynı hata veya güncelleştirme etki alanında sona bırakılır. Daha fazla bilgi için bkz. SAP için Azure sanal makineler planlama ve uygulama belgesi 'nin [Azure kullanılabilirlik kümeleri](https://github.com/MicrosoftDocs/azure-docs/blob/master/articles/virtual-machines/workloads/sap/planning-guide.md#azure-availability-sets) bölümü.
 
-Azure kullanılabilirlik kümeleri kavramını ve kullanılabilirlik kümelerinin hata ve yükseltme etki alanlarıyla ilişkisini anlamak için [kullanılabilirliği Yönet](../../manage-availability.md) makalesini okuyun.
+Azure kullanılabilirlik kümeleri kavramını ve kullanılabilirlik kümelerinin hata ve yükseltme etki alanlarıyla ilişkisini anlamak için [kullanılabilirliği Yönet](../../availability.md) makalesini okuyun.
 
 > [!Important]
 > Azure Kullanılabilirlik Alanları ve Azure kullanılabilirlik kümelerinin kavramları birbirini dışlıyor. Yani, bir çift veya birden çok VM 'yi belirli bir kullanılabilirlik alanına veya Azure kullanılabilirlik kümesine dağıtabileceğiniz anlamına gelir. Ancak ikisini birden değil.
