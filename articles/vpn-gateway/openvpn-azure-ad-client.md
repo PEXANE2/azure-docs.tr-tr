@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 10/15/2020
 ms.author: alzam
-ms.openlocfilehash: 7c2c1930b8f801db7f70baa5b713a641606be644
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 02ce8e1809c5dd404e7afa25178acf37e7346cab
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96019795"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102548419"
 ---
 # <a name="azure-active-directory-authentication-configure-a-vpn-client-for-p2s-openvpn-protocol-connections"></a>Azure Active Directory kimlik doğrulaması: P2S OpenVPN Protokolü bağlantıları için VPN istemcisi yapılandırma
 
@@ -194,7 +194,7 @@ Evet, [KB4577063](https://support.microsoft.com/help/4577063/windows-10-update-k
 ```
 
 > [!NOTE]
-> OpenVPN Azure AD İstemcisi, DNS ad çözümleme Ilkesi tablosu (NRPT) girdilerini kullanır, bu da DNS sunucularının çıktının altında listelenmeyeceği anlamına gelir `ipconfig /all` . Kullanımdaki DNS ayarlarınızı onaylamak için lütfen PowerShell 'de [Get-DnsClientNrptPolicy](/powershell/module/dnsclient/get-dnsclientnrptpolicy?preserve-view=true&view=win10-ps) bölümüne başvurun.
+> OpenVPN Azure AD İstemcisi, DNS ad çözümleme Ilkesi tablosu (NRPT) girdilerini kullanır, bu da DNS sunucularının çıktının altında listelenmeyeceği anlamına gelir `ipconfig /all` . Kullanımdaki DNS ayarlarınızı onaylamak için lütfen PowerShell 'de [Get-DnsClientNrptPolicy](/powershell/module/dnsclient/get-dnsclientnrptpolicy) bölümüne başvurun.
 >
 
 ### <a name="how-do-i-add-custom-routes-to-the-vpn-client"></a>Nasıl yaparım? VPN istemcisine özel yollar eklensin mi?

@@ -1,23 +1,24 @@
 ---
 title: Azure 'da Linux VM 'Leri için zaman eşitleme
 description: Linux sanal makineleri için zaman eşitleme.
-services: virtual-machines-linux
+services: virtual-machines
 documentationcenter: ''
 author: cynthn
 manager: gwallace
 tags: azure-resource-manager
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
+ms.collection: linux
 ms.topic: how-to
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 08/20/2020
 ms.author: cynthn
-ms.openlocfilehash: 399022c1ef740865e4b2f7b82e2175e748a2a925
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 18c8570a8066985cab5263c4779787062dc32d75
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91306965"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102552652"
 ---
 # <a name="time-sync-for-linux-vms-in-azure"></a>Azure 'da Linux VM 'Leri için zaman eşitleme
 
@@ -61,7 +62,7 @@ Azure 'da barındırılan Linux sanal makinelerinize zaman eşitlemesini yapıla
 
 Varsayılan olarak, Linux için Azure Market görüntülerinin çoğu iki kaynaktan eşitlenmek üzere yapılandırılır: 
 
-- NTP, birincil olarak NTP sunucusundan zaman alır. Örneğin, Ubuntu 16,04 LTS Market görüntüleri **NTP.Ubuntu.com**kullanır.
+- NTP, birincil olarak NTP sunucusundan zaman alır. Örneğin, Ubuntu 16,04 LTS Market görüntüleri **NTP.Ubuntu.com** kullanır.
 - Konak saati VM 'lere iletmek ve bakım için VM duraklatıldıktan sonra düzeltmeler yapmak için kullanılan, ikincil olarak Vmictimessync hizmeti. Azure Konakları, doğru zaman saklamak için Microsoft 'a ait stratum 1 cihazlarını kullanır.
 
 Daha yeni Linux dağıtımlarında, Vmictimessync hizmeti bir duyarlık Time Protocol (PTP) donanım saati kaynağı sağlar, ancak önceki dağıtımlar bu saat kaynağını sağlayamayabilir ve konaktan zaman almak için NTP 'e geri dönecektir.
@@ -114,7 +115,7 @@ root        391      2  0 17:52 ?        00:00:00 [hv_balloon]
 
 ### <a name="check-for-ptp-clock-source"></a>PTP saat kaynağını denetle
 
-Linux 'un daha yeni sürümleriyle, bir duyarlık Time Protocol (PTP) saat kaynağı Vmictimessync sağlayıcının bir parçası olarak kullanılabilir. Red Hat Enterprise Linux veya CentOS 7. x ' in eski sürümlerinde, [Linux Tümleştirme Hizmetleri](https://github.com/LIS/lis-next) indirilebilir ve güncelleştirilmiş sürücüyü yüklemek için kullanılabilir. PTP Clock kaynağı kullanılabilir olduğunda, Linux cihazı/dev/PTP*x*biçiminde olacaktır. 
+Linux 'un daha yeni sürümleriyle, bir duyarlık Time Protocol (PTP) saat kaynağı Vmictimessync sağlayıcının bir parçası olarak kullanılabilir. Red Hat Enterprise Linux veya CentOS 7. x ' in eski sürümlerinde, [Linux Tümleştirme Hizmetleri](https://github.com/LIS/lis-next) indirilebilir ve güncelleştirilmiş sürücüyü yüklemek için kullanılabilir. PTP Clock kaynağı kullanılabilir olduğunda, Linux cihazı/dev/PTP *x* biçiminde olacaktır. 
 
 Hangi PTP saat kaynaklarının kullanılabilir olduğunu görün.
 
@@ -144,7 +145,7 @@ Red Hat ve NTP hakkında daha fazla bilgi için bkz. [NTP yapılandırma](https:
 
 Zaman hatası hakkında daha fazla bilgi için bkz. zaman [hatası kullanımı](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/system_administrators_guide/ch-configuring_ntp_using_the_chrony_suite#sect-Using_chrony).
 
-Aynı anda hem Tarihçe hem de Vmictimessync kaynakları etkinleştirilmişse, diğer kaynağı yedek olarak ayarlayan bir tane **tercih**edebilirsiniz. NTP Hizmetleri uzun bir süre sonra büyük bir eğriltin saatini güncelleştirmediğinden, Vmictimessync, saati yalnızca NTP tabanlı araçlardan daha hızlı bir şekilde duraklatılmış şekilde kurtaracaktır.
+Aynı anda hem Tarihçe hem de Vmictimessync kaynakları etkinleştirilmişse, diğer kaynağı yedek olarak ayarlayan bir tane **tercih** edebilirsiniz. NTP Hizmetleri uzun bir süre sonra büyük bir eğriltin saatini güncelleştirmediğinden, Vmictimessync, saati yalnızca NTP tabanlı araçlardan daha hızlı bir şekilde duraklatılmış şekilde kurtaracaktır.
 
 Varsayılan olarak, Tarihçe her zaman drivi giderecek şekilde sistem saatini hızlandırır veya yavaşlatır. Drın çok büyük hale gelirse, zaman hatası, drmali 'i düzeltemedi. Bunu aşmak için, `makestep` /etc/, ' deki parametre, belirtilen eşiği aşarsa, bir zaman eşitlemesini zorlamak için **/etc/yılın.exe** .
 

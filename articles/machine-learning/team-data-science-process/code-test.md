@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=weig, previous-ms.author=weig
-ms.openlocfilehash: ce37ee51e549a2bd6f2747f28af8c038c39d8f1f
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: 66853b580ba1b619bf4cc995e05bd3cfaff07cfb
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97656844"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102565878"
 ---
 # <a name="data-science-code-testing-on-azure-with-the-team-data-science-process-and-azure-devops-services"></a>Team Data Science Işlemi ve Azure DevOps Services Azure 'da veri bilimi kodu testi
 Bu makale, bir veri bilimi iş akışındaki kodu test etmek için ön yönergeleri sağlar. Bu tür testler, veri bilimcilerinin, kodunuzun kalitesini ve beklenen sonucunu denetlemek için sistematik ve verimli bir yol sunar. Kod testinin nasıl yapılacağını göstermek için daha önce yayımladığımız [UCI yetişkin gelir veri kümesini kullanan](https://github.com/Azure/MachineLearningSamples-TDSPUCIAdultIncome) bir ekip veri bilimi IŞLEMI (TDSP) projesi kullanıyoruz. 
@@ -124,7 +124,7 @@ Derleme Aracısı ve Azure DevOps kullanarak kod testini ve otomatikleştirilmi�
 
     ![Şablonların listesi ve "boş işlem" düğmesi](./media/code-test/start_empty_process_template.PNG)
 
-    d. Derlemeyi adlandırın ve aracıyı seçin. Derleme işlemini gerçekleştirmek için DSVM kullanmak istiyorsanız, varsayılan olarak bu seçeneği belirleyebilirsiniz. Aracıları ayarlama hakkında daha fazla bilgi için bkz. [derleme ve yayın aracıları](/azure/devops/pipelines/agents/agents?view=vsts).
+    d. Derlemeyi adlandırın ve aracıyı seçin. Derleme işlemini gerçekleştirmek için DSVM kullanmak istiyorsanız, varsayılan olarak bu seçeneği belirleyebilirsiniz. Aracıları ayarlama hakkında daha fazla bilgi için bkz. [derleme ve yayın aracıları](/azure/devops/pipelines/agents/agents).
     
     ![Yapı ve aracı seçimleri](./media/code-test/select_agent.PNG)
 

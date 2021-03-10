@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 202f2190e68b89d790c628248ae89f0cb274ff76
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 266142240ba9e892c905ac8aa6521da5a14c4c3d
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98725220"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102554029"
 ---
 # <a name="3-create-a-security-plan-for-external-access"></a>3. dış erişim için bir güvenlik planı oluşturun 
 
@@ -132,9 +132,9 @@ Kaynaklara erişimi gözden geçirmeniz gerektiğinde ve dış kullanıcılar i�
 
    * Tüm kullanıcıları tek bir iş ortağından gruplamak için [bağlı kuruluşlar](../governance/entitlement-management-organization.md) kullanıyorsanız, iş sahibi ve iş ortağı temsilcisiyle düzenli İncelemeleri zamanlayın.
 
-* **Grupları Microsoft 365**. Dış kullanıcıların davet ettiği Microsoft 365 Gruplar için bir [Grup süre sonu ilkesi](/microsoft-365/solutions/microsoft-365-groups-expiration-policy?view=o365-worldwide) ayarlayın. 
+* **Grupları Microsoft 365**. Dış kullanıcıların davet ettiği Microsoft 365 Gruplar için bir [Grup süre sonu ilkesi](/microsoft-365/solutions/microsoft-365-groups-expiration-policy) ayarlayın. 
 
-* **Diğer seçenekler**. Dış kullanıcıların, yetkilendirme yönetim erişimi paketleri veya Microsoft 365 gruplarının dışında erişimi varsa, hesapların ne zaman etkin hale getirilmeli veya silinmeleri gerektiğini gözden geçirmek için iş sürecini ayarlayın. Örneğin:
+* **Diğer seçenekler**. Dış kullanıcıların, yetkilendirme yönetim erişimi paketleri veya Microsoft 365 gruplarının dışında erişimi varsa, hesapların ne zaman etkin hale getirilmeli veya silinmeleri gerektiğini gözden geçirmek için iş sürecini ayarlayın. Örnek:
 
    * 90 gün boyunca oturum açmamış herhangi bir hesap için oturum açma yeteneğini kaldırın.
 
@@ -159,7 +159,7 @@ Azure AD P2 ve Microsoft 365 E5, güvenlik ve idare araçlarının eksiksiz pake
 
 ### <a name="provisioning-signing-in-reviewing-access-and-deprovisioning-bolded-entries-are-preferred-methods"></a>Sağlama, oturum açma, erişim gözden geçirme ve sağlamayı kaldırma. Kalın girdiler tercih edilen yöntemlerdir
 
-| Öne çıkan özelliği| Dış Kullanıcı sağlama| Oturum açma yeniden QS 'yi zorlayın.| Erişimi gözden geçirme| Erişim sağlamayı kaldırma |
+| Özellik| Dış Kullanıcı sağlama| Oturum açma yeniden QS 'yi zorlayın.| Erişimi gözden geçirme| Erişim sağlamayı kaldırma |
 | - | - | - | - | - |
 | Azure AD B2B Işbirliği| E-posta, OTP, self servis aracılığıyla davet edin| | **İş ortağı başına Dönemsel gözden geçirme**| Hesabı kaldır<br>Oturum açmayı kısıtla |
 | Yetkilendirme Yönetimi| **Atama veya self servis erişimi aracılığıyla Kullanıcı ekleme**| | Erişim gözden geçirmeleri|**Veya kaldırma, erişim paketi**|
@@ -170,7 +170,7 @@ Azure AD P2 ve Microsoft 365 E5, güvenlik ve idare araçlarının eksiksiz pake
 
  ### <a name="access-to-resources-bolded-entries-are-preferred-methods"></a>Kaynaklara erişim. Kalın girdiler tercih edilen yöntemlerdir
 
-|Öne çıkan özelliği | Uygulama & kaynak erişimi| SharePoint & OneDrive erişimi| Takımlar erişimi| E-posta & belge güvenliği |
+|Özellik | Uygulama & kaynak erişimi| SharePoint & OneDrive erişimi| Takımlar erişimi| E-posta & belge güvenliği |
 | - |-|-|-|-|
 | Yetkilendirme Yönetimi| **Atama veya self servis erişimi aracılığıyla Kullanıcı ekleme**| **Erişim paketleri**| **Erişim paketleri**|  |
 | Office 365 Grubu| | Gruba eklenen siteler (ve ilişkili içerik) erişimi| Gruba dahil olan takımlara (ve ilişkili içeriğe) erişim|  |
@@ -190,7 +190,7 @@ Azure AD P1 ve Microsoft 365 E3 ile güçlü idare elde edebilirsiniz
 ### <a name="provisioning-signing-in-reviewing-access-and-deprovisioning"></a>Sağlama, oturum açma, erişim gözden geçirme ve sağlamayı kaldırma
 
 
-|Öne çıkan özelliği | Dış Kullanıcı sağlama| Oturum açma gereksinimlerini zorla| Erişimi gözden geçirme| Erişim sağlamayı kaldırma |
+|Özellik | Dış Kullanıcı sağlama| Oturum açma gereksinimlerini zorla| Erişimi gözden geçirme| Erişim sağlamayı kaldırma |
 | - |-|-|-|-|
 | Azure AD B2B Işbirliği| **E-posta, OTP, self servis aracılığıyla davet edin**| Doğrudan B2B Federasyonu| **İş ortağı başına Dönemsel gözden geçirme**| Hesabı kaldır<br>Oturum açmayı kısıtla |
 | Microsoft veya Office 365 grupları| | | | Grup sonu veya silme.<br>Gruptan kaldırma. |
@@ -200,7 +200,7 @@ Azure AD P1 ve Microsoft 365 E3 ile güçlü idare elde edebilirsiniz
 
  ### <a name="access-to-resources"></a>Kaynaklara erişim.
 
-|Öne çıkan özelliği | Uygulama & kaynak erişimi| SharePoint & OneDrive erişimi| Takımlar erişimi| E-posta & belge güvenliği |
+|Özellik | Uygulama & kaynak erişimi| SharePoint & OneDrive erişimi| Takımlar erişimi| E-posta & belge güvenliği |
 | - |-|-|-|-|
 | Microsoft veya Office 365 grupları| | **Gruba (ve ilişkili içeriğe) dahil edilen site (ler) e erişim**|**Microsoft 365 grubuna (ve ilişkili içeriğe) dahil olan takımlara erişim**|  |
 | Duyarlılık etiketleri| | Erişimi el ile sınıflandırma ve kısıtlama| Erişimi el ile sınıflandırın ve kısıtlayın.| Kısıtlamak ve şifrelemek için el ile sınıflandır |

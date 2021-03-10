@@ -97,10 +97,10 @@
       items:
         - name: API’leri ve SDK’ları kullanma
           href: how-to-use-apis-sdks.md
+        - name: Oto Rest ile özel dil SDK 'Ları oluşturma
+          href: how-to-create-custom-sdks.md
         - name: Postman ile istekte bulunma
           href: how-to-use-postman.md
-        - name: AutoRest ile özel SDK oluşturma
-          href: how-to-create-custom-sdks.md
         - name: Azure SignalR Hizmeti ile tümleştirme
           href: how-to-integrate-azure-signalr.md
     - name: Bağlantı girişi

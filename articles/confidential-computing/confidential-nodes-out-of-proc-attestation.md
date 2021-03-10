@@ -1,17 +1,17 @@
 ---
 title: Azure 'da Intel SGX quote Yardımcısı Daemonset ile işlem dışı kanıtlama desteği (Önizleme)
-description: DaemonSet,, SGX uygulama işlemi dışında teklif oluşturmak için. Bu makalede, bir kapsayıcı içinde çalışan gizli iş yükleri için işlem dışı kanıtlama özelliğinin nasıl sağlandığı açıklanmaktadır.
+description: DaemonSet,, SGX uygulama işlemi dışında teklif oluşturmak için. Bu makalede, işlem dışı kanıtlama özelliğinin bir kapsayıcı içinde çalışan gizli iş yükleri için nasıl kullanılacağı açıklanmaktadır.
 ms.service: container-service
 author: agowdamsft
 ms.topic: overview
 ms.date: 2/12/2021
 ms.author: amgowda
-ms.openlocfilehash: 89890740b06a399bad4678ff6ddd9be09c1cda0e
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.openlocfilehash: 5d872032ea5b4e08c3f436dd3bfc202786d8514d
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "100653338"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102553264"
 ---
 # <a name="platform-software-management-with-sgx-quote-helper-daemon-set-preview"></a>SGX quote yardımcı Daemon ayarlanmış platform yazılım yönetimi (Önizleme)
 

@@ -1,20 +1,19 @@
 ---
 title: Azure Linux VM aracısına genel bakış
 description: Linux aracısının (waagent) nasıl yükleneceğini ve yapılandırılacağını, sanal makinenizin Azure Fabric denetleyicisiyle etkileşimini yönetme hakkında bilgi edinin.
-author: axayjo
-ms.service: virtual-machines-linux
-ms.subservice: extensions
-ms.workload: infrastructure-services
 ms.topic: article
+ms.service: virtual-machines
+ms.subservice: extensions
+ms.author: amjads
+author: amjads1
+ms.collection: linux
 ms.date: 10/17/2016
-ms.author: akjosh
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a4a391e52f80ec171d48718a18764f0f88f34133
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: e8851ddd5211536394614727d990a2b52d32bfcc
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96016497"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102565386"
 ---
 # <a name="understanding-and-using-the-azure-linux-agent"></a>Azure Linux aracısını anlama ve kullanma
 
@@ -85,9 +84,9 @@ Desteklenen diğer sistemler:
 
 Linux Aracısı düzgün çalışması için bazı sistem paketlerine bağımlıdır:
 
-* Python 2.6 +
-* OpenSSL 1.0 +
-* OpenSSH 5.3 +
+* Python 2.6+
+* OpenSSL 1.0+
+* OpenSSH 5.3+
 * Dosya sistemi yardımcı programları: sfdisk, Fdisk, mkfs, ayrıştırmuş
 * Parola araçları: chpasswd, sudo
 * Metin işleme araçları: SED, grep

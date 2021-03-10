@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 2fdebffbf9643febc08cba997b3a5a5fc4bb5998
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: 8aafb08ff0ccc9391071f796450e69f87de279ba
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97652322"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102547841"
 ---
 #   <a name="key-phrase-extraction-cognitive-skill"></a>Bilişsel Beceri Anahtar İfade Ayıklama
 
@@ -41,6 +41,7 @@ Parametreler büyük/küçük harfe duyarlıdır.
 |---------------------|-------------|
 | `defaultLanguageCode` | Seçim Açıkça dil belirtmeyen belgelere uygulanacak dil kodu.  Varsayılan dil kodu belirtilmemişse, varsayılan dil kodu olarak Ingilizce (en) kullanılır. <br/> [Desteklenen dillerin tam listesini](../cognitive-services/text-analytics/language-support.md)görüntüleyin. |
 | `maxKeyPhraseCount`   | Seçim Üretilecek anahtar tümceciklerin en fazla sayısı. |
+| `modelVersion`   | Seçim Metin Analizi hizmeti çağrılırken kullanılacak modelin sürümü. Belirtilmediğinde, varsayılan olarak en son kullanılabilir. Kesinlikle gerekli olmadığı takdirde bu değeri belirtmemenizi öneririz. Daha fazla ayrıntı için [Metin Analizi API'si model sürümü oluşturma](../cognitive-services/text-analytics/concepts/model-versioning.md) bölümüne bakın. |
 
 ## <a name="skill-inputs"></a>Beceri girişleri
 
@@ -109,8 +110,8 @@ Yukarıdaki örnekte, becerinizi gösteren çıktı, belirttiğimiz bu yana "Doc
 
 "Document/myKeyPhrases" öğesini diğer becerilere giriş olarak veya bir [Çıkış alanı eşlemesinin](cognitive-search-output-field-mapping.md)kaynağı olarak kullanabilirsiniz.
 
-## <a name="errors-and-warnings"></a>Hatalar ve uyarılar
-Desteklenmeyen bir dil kodu sağlarsanız bir hata oluşturulur ve anahtar ifadeler ayıklanmaz.
+## <a name="warnings"></a>Uyarılar
+Desteklenmeyen bir dil kodu sağlarsanız, bir uyarı oluşturulur ve anahtar ifadeler ayıklanmaz.
 Metniniz boşsa bir uyarı üretilir.
 Metniniz 50.000 karakterden fazlaysa, yalnızca ilk 50.000 karakter analiz edilir ve bir uyarı verilir.
 

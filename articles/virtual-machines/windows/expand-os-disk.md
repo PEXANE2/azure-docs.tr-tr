@@ -1,26 +1,27 @@
 ---
 title: Azure 'da Windows VM 'nin işletim sistemi sürücüsünü genişletme
 description: Kaynak Yöneticisi dağıtım modelinde Azure PowerShell kullanarak bir sanal makinenin işletim sistemi sürücüsünün boyutunu genişletin.
-services: virtual-machines-windows
+services: virtual-machines
 documentationcenter: ''
 author: kirpasingh
 manager: roshar
 editor: ''
 tags: azure-resource-manager
 ms.assetid: d9edfd9f-482f-4c0b-956c-0d2c2c30026c
-ms.service: virtual-machines-windows
+ms.service: virtual-machines
+ms.collection: windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 09/02/2020
 ms.author: kirpas
 ms.subservice: disks
-ms.openlocfilehash: df27d7b25010fa68fc86ffe093318b2b0b7f4e96
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.openlocfilehash: 2f991dd93549cf73005127569af496df541eecde
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93393838"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102549609"
 ---
 # <a name="how-to-expand-the-os-drive-of-a-virtual-machine"></a>Bir sanal makinenin işletim sistemi sürücüsünü genişletme
 
@@ -39,7 +40,7 @@ ms.locfileid: "93393838"
 ## <a name="resize-a-managed-disk-in-the-azure-portal"></a>Azure portal yönetilen bir diski yeniden boyutlandırma
 
 1. [Azure Portal](https://portal.azure.com), diski genişletmek istediğiniz sanal makineye gidin. VM 'yi serbest bırakmak için **Durdur** ' u seçin.
-2. VM durdurulduğunda, sol taraftaki menüde, **Ayarlar** ' ın altında, **diskler** ' i seçin.
+2. VM durdurulduğunda, sol taraftaki menüde, **Ayarlar**' ın altında, **diskler**' i seçin.
 
     :::image type="content" source="./media/expand-os-disk/select-disks.png" alt-text="Menünün ayarlar bölümünde seçilen diskler seçeneğini gösteren ekran görüntüsü.":::
 
@@ -48,11 +49,11 @@ ms.locfileid: "93393838"
 
     :::image type="content" source="./media/expand-os-disk/disk-name.png" alt-text="Bir disk adı seçili olan diskler bölmesini gösteren ekran görüntüsü.":::
 
-4. **Ayarlar** altındaki sol menüde **yapılandırma** ' yı seçin.
+4. **Ayarlar** altındaki sol menüde **yapılandırma**' yı seçin.
 
     :::image type="content" source="./media/expand-os-disk/configuration.png" alt-text="Menünün ayarlar bölümünde seçilen yapılandırma seçeneğini gösteren ekran görüntüsü.":::
 
-5. **Boyut (GiB)** ' de istediğiniz disk boyutunu seçin.
+5. **Boyut (GiB)**' de istediğiniz disk boyutunu seçin.
    
    > [!WARNING]
    > Yeni boyut mevcut disk boyutundan büyük olmalıdır. İşletim sistemi diskleri için izin verilen en yüksek 2.048 GB 'dir. (VHD blobunun boyutunu bu boyuttan büyük bir şekilde genişletmek mümkündür, ancak işletim sistemi yalnızca ilk 2.048 GB alan ile çalışabilir.)
@@ -60,7 +61,7 @@ ms.locfileid: "93393838"
 
     :::image type="content" source="./media/expand-os-disk/size.png" alt-text="Yapılandırma bölmesini seçilen disk boyutuyla gösteren ekran görüntüsü.":::
 
-6. **Kaydet** ’i seçin.
+6. **Kaydet**’i seçin.
 
     :::image type="content" source="./media/expand-os-disk/save.png" alt-text="Kaydet düğmesinin seçili olduğu yapılandırma bölmesini gösteren ekran görüntüsü.":::
 

@@ -1,6 +1,6 @@
 ---
-title: Azure AD Connect bulut eşitleme özniteliği Düzenleyicisi
-description: Bu makalede, öznitelik düzenleyicisinin nasıl kullanılacağı açıklanır.
+title: Azure AD Connect bulut eşitlemede öznitelik eşleme
+description: Bu makalede, öznitelikleri eşlemek için Azure AD Connect bulut eşitleme özelliğinin nasıl kullanılacağı açıklanır.
 services: active-directory
 author: billmath
 manager: daveba
@@ -11,97 +11,97 @@ ms.date: 01/21/2021
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c6d2adbd0fe0715cb22ac158d1804f53384f8b94
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: cdb043374cf6252da3929c8f0cda6c0a4be558b7
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98682114"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102555219"
 ---
-# <a name="azure-ad-connect-cloud-sync-attribute-mapping"></a>Azure AD Connect bulut eşitleme öznitelik eşlemesi
+# <a name="attribute-mapping-in-azure-ad-connect-cloud-sync"></a>Azure AD Connect bulut eşitlemede öznitelik eşleme
 
-Azure AD Connect bulut eşitlemesi, şirket içi Kullanıcı/Grup nesneleriniz ile Azure AD içindeki nesneler arasındaki öznitelikleri kolayca eşlemenizi sağlayacak yeni bir özellik getirmiştir.  Bu özellik, bulut eşitleme yapılandırmasına eklenmiştir.
+Şirket içi kullanıcı veya grup nesneleriniz ile Azure AD içindeki nesneler arasında öznitelikleri eşlemek için Azure Active Directory (Azure AD) ' ın bulut eşitleme özelliğini kullanabilirsiniz. Bu özellik, bulut eşitleme yapılandırmasına eklenmiştir.
 
-Varsayılan öznitelik eşlemelerini iş gereksinimlerinize göre özelleştirebilirsiniz. Bu nedenle, var olan öznitelik eşlemelerini değiştirebilir veya silebilir veya yeni öznitelik eşlemeleri oluşturabilirsiniz.  Eşitlenen özniteliklerin bir listesi için bkz. [eşitlenen öznitelikler](../hybrid/reference-connect-sync-attributes-synchronized.md?context=azure%2factive-directory%2fcloud-provisioning%2fcontext%2fcp-context/hybrid/reference-connect-sync-attributes-synchronized.md).
+Varsayılan öznitelik eşlemelerini iş gereksinimlerinize göre özelleştirebilir (değiştirebilir, silebilir veya oluşturabilirsiniz). Eşitlenen özniteliklerin bir listesi için bkz. [Azure Active Directory ile eşitlenen öznitelikler](../hybrid/reference-connect-sync-attributes-synchronized.md?context=azure%2factive-directory%2fcloud-provisioning%2fcontext%2fcp-context/hybrid/reference-connect-sync-attributes-synchronized.md).
 
-## <a name="understanding-attribute-mapping-types"></a>Öznitelik eşleme türlerini anlama
-Öznitelik eşlemeleriyle, özniteliklerin Azure AD 'de nasıl doldurulduğunu kontrol edersiniz.
-Dört farklı eşleme türü desteklenir:
+## <a name="understand-types-of-attribute-mapping"></a>Öznitelik eşleme türlerini anlayın
+Öznitelik eşleme ile özniteliklerin Azure AD 'de nasıl doldurulduğunu kontrol edersiniz. Azure AD dört eşleme türünü destekler:
 
-- **Doğrudan** – Target ÖZNITELIĞI, ad 'deki bağlantılı nesnenin bir özniteliğinin değeri ile doldurulur.
-- **Sabit** – Target özniteliği belirttiğiniz belirli bir dizeyle doldurulur.
-- **İfade** -Target özniteliği, komut dosyası benzeri bir ifadenin sonucuna göre doldurulur.
-  Daha fazla bilgi için bkz. [öznitelik eşlemeleri Için Ifadeler yazma](reference-expressions.md).
-- **Hiçbiri** -hedef öznitelik değiştirilmemiş olarak bırakıldı. Ancak, hedef özniteliği boşsa, belirttiğiniz varsayılan değerle doldurulur.
+- **Doğrudan**: Target özniteliği, Active Directory bağlantılı nesnenin bir özniteliğinin değeri ile doldurulur.
+- **Sabit**: Target özniteliği belirttiğiniz belirli bir dizeyle doldurulur.
+- **İfade**: Target özniteliği, komut dosyası benzeri bir ifadenin sonucuna göre doldurulur. Daha fazla bilgi için bkz. [Azure Active Directory öznitelik eşlemeleri için Ifadeler yazma](reference-expressions.md).
+- **Hiçbiri**: hedef özniteliği değiştirilmemiş olarak bırakıldı. Ancak, hedef özniteliği boşsa, belirttiğiniz varsayılan değerle doldurulur.
 
-Bu dört temel tür ile birlikte özel öznitelik eşlemeleri, isteğe bağlı **varsayılan** değer atama kavramını destekler. Varsayılan değer atama, Azure AD 'de veya hedef nesnede bir değer olmadığında bir hedef özniteliğin bir değer ile doldurulmasını sağlar. En yaygın yapılandırma bu boş bırakılmamalıdır.
+Bu temel türlerle birlikte, özel öznitelik eşlemeleri isteğe bağlı bir *varsayılan* değer atama kavramını destekler. Varsayılan değer atama, Azure AD veya hedef nesne bir değere sahip değilse bir hedef özniteliğin bir değerle doldurulmasını sağlar. En yaygın yapılandırma bu boş bırakılmamalıdır.
 
-## <a name="understanding-attribute-mapping-properties"></a>Öznitelik eşleme özelliklerini anlama
+## <a name="understand-properties-of-attribute-mapping"></a>Öznitelik eşlemesinin özelliklerini anlayın
 
-Önceki bölümde, öznitelik eşleme türü özelliğine zaten sunuldu.
-Bu özellik ile birlikte, öznitelik eşlemeleri de aşağıdaki öznitelikleri destekler:
+Tür özelliği ile birlikte, öznitelik eşlemeleri aşağıdaki öznitelikleri destekler:
 
-- **Source özniteliği** -kaynak sistemden Kullanıcı özniteliği (örnek: Active Directory).
-- **Target özniteliği** – hedef sistemdeki kullanıcı özniteliği (örnek: Azure Active Directory).
-- **Null Ise varsayılan değer (isteğe bağlı)** -kaynak özniteliği null ise hedef sisteme geçirilecek değer. Bu değer, yalnızca bir kullanıcı oluşturulduğunda sağlanacak. Mevcut bir Kullanıcı güncelleştirilirken "null olduğunda varsayılan değer" sağlanmayacak.  
-- **Bu eşlemeyi Uygula**
-  - **Her zaman** : Bu eşlemeyi hem Kullanıcı oluşturma hem de güncelleştirme eylemlerinde uygulayın.
-  - **Yalnızca oluşturma sırasında** -bu eşlemeyi yalnızca Kullanıcı oluşturma eylemlerinde uygulayın.
+- **Kaynak özniteliği**: kaynak sistemden Kullanıcı özniteliği (örnek: Active Directory).
+- **Target özniteliği**: Hedef sistemdeki kullanıcı özniteliği (örnek: Azure Active Directory).
+- **Null Ise varsayılan değer (isteğe bağlı)**: kaynak özniteliği null ise hedef sisteme geçirilecek değer. Bu değer, yalnızca bir kullanıcı oluşturulduğunda sağlanacak. Mevcut bir kullanıcıyı güncelleştirirken bu, sağlanmayacaktır.  
+- **Bu eşlemeyi Uygula**:
+  - **Her zaman**: Bu eşlemeyi hem Kullanıcı oluşturma hem de güncelleştirme eylemlerine uygulayın.
+  - **Yalnızca oluşturma sırasında**: Bu eşlemeyi yalnızca Kullanıcı oluşturma eylemlerinde uygulayın.
 
 > [!NOTE]
-> Bu belgede, Azure portal öznitelikleri eşlemek için nasıl kullanılacağı açıklanmaktadır.  Graph kullanma hakkında daha fazla bilgi için bkz. [dönüşümler](how-to-transformation.md)
+> Bu makalede, Azure portal öznitelikleri eşlemek için nasıl kullanılacağı açıklanır.  Microsoft Graph kullanımı hakkında bilgi için bkz. [dönüşümler](how-to-transformation.md).
 
-## <a name="using-attribute-mapping"></a>Öznitelik eşlemesini kullanma
+## <a name="add-an-attribute-mapping"></a>Öznitelik eşlemesi Ekle
 
-Yeni özelliği kullanmak için aşağıdaki adımları izleyin.
+Yeni özelliği kullanmak için şu adımları izleyin:
 
 1.  Azure portalında **Azure Active Directory** seçeneğini belirleyin.
 2.  **Azure AD Connect** seçin.
 3.  **Bulut eşitlemesini Yönet**' i seçin.
 
-    ![Sağlamayı Yönet](media/how-to-install/install-6.png)
+    ![Bulut eşitlemesini yönetme bağlantısını gösteren ekran görüntüsü.](media/how-to-install/install-6.png)
 
 4. **Yapılandırma** altında yapılandırmanızı seçin.
-5. **Eşlemeleri düzenlemek Için tıklayın ' ı** seçin.  Bu işlem öznitelik eşleme ekranını açar.
+5. **Eşlemeleri düzenlemek Için tıklayın ' ı** seçin.  Bu bağlantı, **öznitelik eşlemeleri** ekranını açar.
 
-    ![Öznitelik ekleme](media/how-to-attribute-mapping/mapping-6.png)
+    ![Öznitelik ekleme bağlantısını gösteren ekran görüntüsü.](media/how-to-attribute-mapping/mapping-6.png)
 
-6.  **Öznitelik Ekle**' ye tıklayın.
+6.  **Öznitelik Ekle**' yi seçin.
 
-    ![Eşleme türü](media/how-to-attribute-mapping/mapping-1.png)
+    ![Öznitelik ve eşleme türleri listeleriyle birlikte öznitelik ekleme düğmesini gösteren ekran görüntüsü.](media/how-to-attribute-mapping/mapping-1.png)
 
-7. **Eşleme türünü** seçin.  Bu örnekte Ifadesi kullanıyoruz.
-8.  Kutuya ifadeyi girin.  Bu örnekte şunu kullanıyoruz: `Replace([mail], "@contoso.com", , ,"", ,).`
-9.  Target özniteliğini girin.  Bu örnekte ExtensionAttribute15 kullanacağız.
-10. Bunun ne zaman uygulanacağını seçin ve ardından **Uygula** ' ya tıklayın.
+7. Eşleme türünü seçin. Bu örnekte, **ifadesini** kullandık.
+8. Kutuya ifadeyi girin. Bu örnekte, kullanıyoruz `Replace([mail], "@contoso.com", , ,"", ,)` .
+9. Target özniteliğini girin. Bu örnekte, **ExtensionAttribute15** kullanıyoruz.
+10. Bu eşlemenin ne zaman uygulanacağını seçin ve ardından **Uygula**' yı seçin.
 
-    ![Eşlemeleri Düzenle](media/how-to-attribute-mapping/mapping-2a.png)
+    ![Öznitelik eşlemesi oluşturmak için doldurulmuş kutuları gösteren ekran görüntüsü.](media/how-to-attribute-mapping/mapping-2a.png)
 
-11. Öznitelik eşleme ekranına geri döndüğünüzde yeni öznitelik eşlemenizi görmeniz gerekir.  
-12. **Şemayı kaydet**' e tıklayın.
+11. **Öznitelik eşlemeleri** ekranına geri döndüğünüzde yeni öznitelik eşlemenizi görmeniz gerekir.  
+12. **Şemayı kaydet**' i seçin.
 
-    ![Şemayı Kaydet](media/how-to-attribute-mapping/mapping-3.png)
+    ![Şemayı Kaydet düğmesini gösteren ekran görüntüsü.](media/how-to-attribute-mapping/mapping-3.png)
 
 ## <a name="test-your-attribute-mapping"></a>Öznitelik eşlemenizi test etme
 
-Öznitelik eşlemenizi test etmek için [isteğe bağlı sağlama](how-to-on-demand-provision.md)seçeneğini kullanabilirsiniz.  Öğesinden 
+Öznitelik eşlemenizi test etmek için [isteğe bağlı sağlama](how-to-on-demand-provision.md)kullanabilirsiniz: 
 
 1. Azure portalında **Azure Active Directory** seçeneğini belirleyin.
 2. **Azure AD Connect** seçin.
 3. **Sağlamayı Yönet**' i seçin.
 4. **Yapılandırma** altında yapılandırmanızı seçin.
-5. **Doğrula** altında **Kullanıcı sağla** düğmesine tıklayın. 
-6. İsteğe bağlı sağlama ekranında.  Bir kullanıcının veya grubun **ayırt edici adını** girin ve **sağla** düğmesine tıklayın.  
-7. Tamamlandıktan sonra, başarılı bir ekran ve başarıyla sağlandığını belirten 4 yeşil onay kutusu görmeniz gerekir.  
+5. **Doğrula** altında **Kullanıcı sağla** düğmesini seçin. 
+6. **İsteğe bağlı sağlama** ekranında, bir kullanıcının veya grubun ayırt edici adını girin ve **sağlama** düğmesini seçin. 
 
-    ![Sağlama başarısı](media/how-to-attribute-mapping/mapping-4.png)
+   Ekranda sağlamanın devam ettiğini gösterir.
 
-8. **Eylem gerçekleştir** altında **Ayrıntıları görüntüle**' ye tıklayın.  Sağ tarafta, yeni özniteliği eşitlenmiş ve ifade uygulanmış olarak görmeniz gerekir.
+   ![Sürmekte olan sağlamayı gösteren ekran görüntüsü.](media/how-to-attribute-mapping/mapping-4.png)
 
-  ![Eylem gerçekleştir](media/how-to-attribute-mapping/mapping-5.png)
+8. Sağlama bittikten sonra, dört yeşil onay işareti içeren bir başarı ekranı görünür. 
 
-## <a name="next-steps"></a>Sonraki Adımlar
+   **Eylem gerçekleştir** altında **Ayrıntıları görüntüle**' yi seçin. Sağ tarafta, yeni özniteliği eşitlenmiş ve ifade uygulanmış olarak görmeniz gerekir.
+
+   ![Başarı ve dışarı aktarma ayrıntılarını gösteren ekran görüntüsü.](media/how-to-attribute-mapping/mapping-5.png)
+
+## <a name="next-steps"></a>Sonraki adımlar
 
 - [Azure AD Connect bulut eşitlemesi nedir?](what-is-cloud-sync.md)
-- [Öznitelik eşlemeleri için Ifadeler yazma](reference-expressions.md)
-- [Eşitlenen öznitelikler](../hybrid/reference-connect-sync-attributes-synchronized.md?context=azure%2factive-directory%2fcloud-provisioning%2fcontext%2fcp-context/hybrid/reference-connect-sync-attributes-synchronized.md)
+- [Öznitelik eşlemeleri için ifadeler yazma](reference-expressions.md)
+- [Azure Active Directory eşitlenen öznitelikler](../hybrid/reference-connect-sync-attributes-synchronized.md?context=azure%2factive-directory%2fcloud-provisioning%2fcontext%2fcp-context/hybrid/reference-connect-sync-attributes-synchronized.md)

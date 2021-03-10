@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 3/18/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: 4a874e6f1e026a1888b9039799be71c95f040ac6
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
+ms.openlocfilehash: 27056f39885949d52c9fcc0d1472033cfc8f9aa0
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102202357"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102554879"
 ---
 # <a name="migrate-to-azure-file-shares"></a>Azure dosya paylaşımlarına geçirme
 
@@ -81,13 +81,12 @@ Bağlantı olmadan bir senaryoda, henüz yayımlanmış bir geçiş kılavuzu yo
 | Kaynak | Hedef: </br>Karma dağıtım | Hedef: </br>Yalnızca bulutta dağıtım |
 |:---|:--|:--|
 | | Araç birleşimi:| Araç birleşimi: |
-| Windows Server 2012 R2 ve üzeri | <ul><li>[Azure Dosya Eşitleme](storage-sync-files-deployment-guide.md)</li><li>[Azure Dosya Eşitleme ve Azure Data Box](storage-sync-offline-data-transfer.md)</li><li>[Bulutta Azure Dosya Eşitleme ve önceden oluşturulmuş dosyalar](storage-sync-offline-data-transfer.md#azure-file-sync-and-pre-seeded-files-in-the-cloud)</li><li>Azure Dosya Eşitleme ve depolama geçiş hizmeti</li></ul> | <ul><li>Azure Dosya Eşitleme</li><li>Azure Dosya Eşitleme ve Data Box</li><li>Azure Dosya Eşitleme ve depolama geçiş hizmeti</li><li>RoboCopy</li></ul> |
-| Windows Server 2012 ve öncesi | <ul><li>Azure Dosya Eşitleme ve Data Box</li><li>Azure Dosya Eşitleme ve depolama geçiş hizmeti</li></ul> | <ul><li>Azure Dosya Eşitleme ve depolama geçiş hizmeti</li><li>RoboCopy</li></ul> |
-| Ağa bağlı depolama (NAS) | <ul><li>[Azure Dosya Eşitleme ve RoboCopy](storage-files-migration-nas-hybrid.md)</li></ul> | <ul><li>RoboCopy</li></ul> |
-| Linux veya Samba | <ul><li>[Azure Dosya Eşitleme ve RoboCopy](storage-files-migration-linux-hybrid.md)</li></ul> | <ul><li>RoboCopy</li></ul> |
-| Microsoft Azure StorSimple Cloud gereç 8100 veya StorSimple Cloud Appliance 8600 | <ul><li>[Azure Dosya Eşitleme ve StorSimple Cloud Appliance 8020](storage-files-migration-storsimple-8000.md)</li></ul> | |
-| StorSimple Cloud Appliance 1200 | <ul><li>[Azure Dosya Eşitleme](storage-files-migration-storsimple-1200.md)</li></ul> | |
-| | | |
+| Windows Server 2012 R2 ve üzeri | <ul><li>[Azure Dosya Eşitleme](storage-sync-files-deployment-guide.md)</li><li>[Azure Dosya Eşitleme ve Azure veri kutusu](storage-sync-offline-data-transfer.md)</li></ul> | <ul><li>RoboCopy aracılığıyla bağlı bir Azure dosya paylaşımında</li><li>Azure Dosya Eşitleme aracılığıyla</li></ul> |
+| Windows Server 2012 ve öncesi | <ul><li>Veri kutusu aracılığıyla ve son sunucu işletim sistemine Azure Dosya Eşitleme</li><li>Depolama geçiş hizmeti 'ni Azure Dosya Eşitleme ile son sunucuya kullanarak karşıya yükleyin</li></ul> | <ul><li>Azure Dosya Eşitleme ile son sunucuya depolama geçiş hizmeti üzerinden</li><li>RoboCopy aracılığıyla bağlı bir Azure dosya paylaşımında</li></ul> |
+| Ağa bağlı depolama (NAS) | <ul><li>[Azure Dosya Eşitleme karşıya yükleme yoluyla](storage-files-migration-nas-hybrid.md)</li><li>[Veri kutusu + Azure Dosya Eşitleme aracılığıyla](storage-files-migration-nas-hybrid-databox.md)</li></ul> | <ul><li>RoboCopy aracılığıyla bağlı bir Azure dosya paylaşımında</li></ul> |
+| Linux/Samba | <ul><li>[Azure Dosya Eşitleme ve RoboCopy](storage-files-migration-linux-hybrid.md)</li></ul> | <ul><li>RoboCopy aracılığıyla bağlı bir Azure dosya paylaşımında</li></ul> |
+| Microsoft Azure StorSimple Cloud gereç 8100 veya StorSimple Cloud Appliance 8600 | <ul><li>[Adanmış veri geçişi bulut hizmeti aracılığıyla](storage-files-migration-storsimple-8000.md)</li></ul> | |
+| StorSimple Cloud Appliance 1200 | <ul><li>[Azure Dosya Eşitleme aracılığıyla](storage-files-migration-storsimple-1200.md)</li></ul> | |
 
 ## <a name="migration-toolbox"></a>Geçiş Araç kutusu
 
@@ -120,9 +119,9 @@ Aşağıdaki tabloda, Microsoft araçları ve Azure dosya paylaşımları için 
 |![Evet, önerilir](media/storage-files-migration-overview/circle-green-checkmark.png)| RoboCopy | Destekleniyor. Azure dosya paylaşımları, ağ sürücüleri olarak takılabilir. | Tam doğruluk. * |
 |![Evet, önerilir](media/storage-files-migration-overview/circle-green-checkmark.png)| Azure Dosya Eşitleme | Azure dosya paylaşımları ile yerel olarak tümleşiktir. | Tam doğruluk. * |
 |![Evet, önerilir](media/storage-files-migration-overview/circle-green-checkmark.png)| Depolama geçiş hizmeti | Dolaylı olarak desteklenir. Azure dosya paylaşımları, SMS hedef sunucularına ağ sürücüleri olarak takılabilir. | Tam doğruluk. * |
-|![Evet, önerilir](media/storage-files-migration-overview/circle-green-checkmark.png)| AzCopy, sürüm 10,4 veya üzeri| Destekleniyor. | Tam doğruluk. * |
-|![Evet, önerilir](media/storage-files-migration-overview/circle-green-checkmark.png)| Data Box | Destekleniyor. | DataBox artık meta verileri tam olarak destekliyor. [Data Box Ayrıca, Azure dosya eşitleme birlikte kullanılabilir](storage-sync-offline-data-transfer.md). |
-|![Tam olarak önerilmez](media/storage-files-migration-overview/triangle-yellow-exclamation.png)| Azure Depolama Gezgini, sürüm 1,14 | Destekleniyor. | ACL 'Leri kopyalamaz. Zaman damgalarını destekler.  |
+|![Evet, önerilir](media/storage-files-migration-overview/circle-green-checkmark.png)| AzCopy </br>sürüm 10,6 | Destekleniyor. | Kaynak kök ACL 'nin kopyasını desteklemez, aksi takdirde tam doğruluk. * </br>[Azure dosya paylaşımları ile AzCopy kullanmayı öğrenin](../common/storage-use-azcopy-files.md) |
+|![Evet, önerilir](media/storage-files-migration-overview/circle-green-checkmark.png)| Data Box | Destekleniyor. | DataBox meta verileri tam olarak destekler. |
+|![Tam olarak önerilmez](media/storage-files-migration-overview/triangle-yellow-exclamation.png)| Azure Depolama Gezgini </br>sürüm 1,14 | Destekleniyor. | ACL 'Leri kopyalamaz. Zaman damgalarını destekler.  |
 |![Önerilmez](media/storage-files-migration-overview/circle-red-x.png)| Azure Data Factory | Destekleniyor. | Meta verileri kopyalamaz. |
 |||||
 
@@ -149,7 +148,7 @@ Aracın sınanan sürümü 4.4.1 sürümüdür. Bulut katmanlı dosyalarla uyuml
 1. İstediğiniz Azure dosya paylaşımları (yalnızca bulut veya karma) dağıtımı için bir plan oluşturun.
 1. Azure dosya paylaşımlarınızın kaynağı ve dağıtımı ile eşleşen ayrıntılı Kılavuzu bulmak için kullanılabilir geçiş kılavuzlarından oluşan listeyi gözden geçirin.
 
-Bu makalede bahsedilen Azure dosyaları teknolojileri hakkında daha fazla bilgi aşağıda verilmiştir:
+Bu makalede bahsedilen Azure dosyaları teknolojileri hakkında daha fazla bilgi:
 
 * [Azure dosya paylaşımında genel bakış](storage-files-introduction.md)
 * [Azure Dosya Eşitleme dağıtımı planlama](storage-sync-files-planning.md)

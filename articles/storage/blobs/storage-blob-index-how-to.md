@@ -9,19 +9,19 @@ ms.subservice: blobs
 ms.topic: how-to
 ms.reviewer: klaasl
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 32bb51751430dcd0208849f798d21f2b25e6b82b
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: a820f7efc39af8c6ab66c883d285b507c7bc7368
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102430879"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102563277"
 ---
 # <a name="use-blob-index-tags-preview-to-manage-and-find-data-on-azure-blob-storage"></a>Blob Dizin etiketlerini (Önizleme) kullanarak Azure Blob depolamada verileri yönetme ve bulma
 
 Blob dizin etiketleri, anahtar-değer etiketi özniteliklerini kullanarak Depolama hesabınızdaki verileri kategorilere ayırın. Bu Etiketler otomatik olarak dizinlenir ve verileri kolayca bulmak için aranabilir çok boyutlu bir dizin olarak sunulur. Bu makalede blob Dizin etiketlerini kullanarak verileri ayarlama, alma ve bulma işlemlerinin nasıl yapılacağı gösterilir.
 
 > [!IMPORTANT]
-> Blob dizini etiketleri şu anda **Önizleme** aşamasındadır ve **Kanada Orta**, **Kanada Doğu**, **Fransa orta** ve **Fransa Güney** bölgelerinde kullanılabilir. Beta, önizleme veya henüz genel kullanıma sunulmayan Azure özelliklerine uygulanan yasal koşullara yönelik [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) 'na bakın.
+> Blob dizini etiketleri şu anda **Önizleme** aşamasındadır ve tüm genel bölgelerde kullanılabilir. Beta, önizleme veya henüz genel kullanıma sunulmayan Azure özelliklerine uygulanan yasal koşullara yönelik [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) 'na bakın.
 
 Bu özellik hakkında bilinen sorunlar ve sınırlamalar hakkında daha fazla bilgi edinmek için bkz. [blob dizini etiketleriyle Azure blob verilerini yönetme ve bulma (Önizleme)](storage-manage-find-blobs.md).
 

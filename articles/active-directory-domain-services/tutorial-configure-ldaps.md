@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/04/2021
 ms.author: justinha
-ms.openlocfilehash: fd93635e7087d6f4a3590ec7bcb25482dc8382da
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: 1619622ad9594f252c3d4cf5551704c6a788f9f8
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102174738"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102564093"
 ---
 # <a name="tutorial-configure-secure-ldap-for-an-azure-active-directory-domain-services-managed-domain"></a>Öğretici: Azure Active Directory Domain Services yönetilen bir etki alanı için Güvenli LDAP yapılandırma
 
@@ -152,7 +152,7 @@ Yönetilen etki alanınız ile önceki adımda oluşturulan dijital sertifikayı
 
     **Güvenlik** sayfasında, korumak için **parola** seçeneğini belirleyin *. PFX* sertifika dosyası. Şifreleme algoritması *TripleDES-SHA1* olmalıdır. Bir parola girin ve onaylayın, ardından **İleri**' yi seçin. Bu parola, yönetilen etki alanınız için Güvenli LDAP özelliğini etkinleştirmek üzere bir sonraki bölümde kullanılır.
 
-    [PowerShell Export-pfxsertifikası cmdlet 'ini](https://docs.microsoft.com/powershell/module/pkiclient/export-pfxcertificate?view=win10-ps)kullanarak dışa aktardığınızda, TripleDES_SHA1 kullanarak *-CryptoAlgorithmOption* bayrağını geçirmeniz gerekir.
+    [PowerShell Export-pfxsertifikası cmdlet 'ini](https://docs.microsoft.com/powershell/module/pkiclient/export-pfxcertificate)kullanarak dışa aktardığınızda, TripleDES_SHA1 kullanarak *-CryptoAlgorithmOption* bayrağını geçirmeniz gerekir.
 
     ![Parolanın nasıl şifrelendiğinin ekran görüntüsü](./media/tutorial-configure-ldaps/encrypt.png)
 

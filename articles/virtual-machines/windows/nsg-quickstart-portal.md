@@ -3,16 +3,17 @@ title: Azure portal kullanarak bir VM 'ye bağlantı noktalarını açma
 description: Azure portal kullanarak sanal makinenize bir bağlantı noktası açmayı/bir uç nokta oluşturmayı öğrenin
 author: cynthn
 ms.service: virtual-machines
+ms.subservice: networking
 ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 05/27/2020
 ms.author: cynthn
-ms.openlocfilehash: 1c3c39dd8c907f780876f97f9703857653d4e359
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 28b3ee98d44e1567d9e25cf9237015396975ab01
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92777767"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102550459"
 ---
 # <a name="how-to-open-ports-to-a-virtual-machine-with-the-azure-portal"></a>Azure portal bir sanal makineye bağlantı noktaları açma
 [!INCLUDE [virtual-machines-common-nsg-quickstart](../../../includes/virtual-machines-common-nsg-quickstart.md)]
@@ -23,9 +24,9 @@ https://portal.azure.com adresinden Azure portalında oturum açın.
 
 ## <a name="create-a-network-security-group"></a>Ağ güvenlik grubu oluşturma
 
-1. VM için kaynak grubunu arayıp seçin, **Ekle** ' yi seçin ve **ağ güvenlik grubu** ' nu arayıp seçin.
+1. VM için kaynak grubunu arayıp seçin, **Ekle**' yi seçin ve **ağ güvenlik grubu**' nu arayıp seçin.
 
-1. **Oluştur** ’u seçin.
+1. **Oluştur**’u seçin.
 
     **Ağ güvenlik grubu oluştur** penceresi açılır.
 
@@ -41,7 +42,7 @@ https://portal.azure.com adresinden Azure portalında oturum açın.
 
 1. Yeni ağ güvenlik grubunuzu seçin. 
 
-1. Sol menüden **gelen güvenlik kuralları** ' nı seçin ve ardından **Ekle** ' yi seçin.
+1. Sol menüden **gelen güvenlik kuralları** ' nı seçin ve ardından **Ekle**' yi seçin.
 
     ![Gelişmiş sayfaya geç](./media/nsg-quickstart-portal/advanced.png)
 
@@ -57,13 +58,13 @@ https://portal.azure.com adresinden Azure portalında oturum açın.
 
 Gerçekleştirmeniz gereken son adım, ağ güvenlik grubunuzu bir alt ağ ile veya belirli bir ağ arabirimiyle ilişkilendirmektir. Bu örnekte ağ güvenlik grubunu bir alt ağ ile ilişkilendireceğiz. 
 
-1. Sol menüden **alt ağlar** ' ı seçin ve ardından **ilişkilendir** ' i seçin.
+1. Sol menüden **alt ağlar** ' ı seçin ve ardından **ilişkilendir**' i seçin.
 
 1. Sanal ağınızı ve ardından uygun alt ağı seçin.
 
     ![Ağ güvenlik grubunu sanal ağ ile ilişkilendirme](./media/nsg-quickstart-portal/select-vnet-subnet.png)
 
-1. İşiniz bittiğinde **Tamam** ’ı seçin.
+1. İşiniz bittiğinde **Tamam**’ı seçin.
 
 ## <a name="additional-information"></a>Ek bilgiler
 

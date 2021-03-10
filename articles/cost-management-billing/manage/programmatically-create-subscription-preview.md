@@ -9,12 +9,12 @@ ms.date: 11/17/2020
 ms.reviewer: andalmia
 ms.author: banders
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: bc761d0bf4001fb1e3fb757b9be9e1e19689913d
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
+ms.openlocfilehash: b524869998dd2464ed359ec61ce655a807899aaa
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102203003"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102565725"
 ---
 # <a name="programmatically-create-azure-subscriptions-with-preview-apis"></a>Önizleme API’leriyle program aracılığıyla Azure abonelikleri oluşturma
 
@@ -190,7 +190,7 @@ New-AzSubscription -OfferType MS-AZR-0017P -Name "Dev Team Subscription" -Enroll
 | `EnrollmentAccountObjectId`      | Evet       | Dize | Altında aboneliğin oluşturulduğu ve faturalandığı kayıt hesabının Nesne Kimliği. Bu değer, `Get-AzEnrollmentAccount` komutundan aldığınız GUID'dir. |
 | `OwnerObjectId`      | Hayır       | Dize | Abonelik oluşturulurken aboneliğe Azure RBAC Sahibi olarak eklenecek kullanıcının Nesne Kimliği.  |
 | `OwnerSignInName`    | Hayır       | Dize | Abonelik oluşturulurken aboneliğe Azure RBAC Sahibi olarak eklenecek kullanıcının e-posta adresi. `OwnerObjectId` yerine bu parametreyi kullanabilirsiniz.|
-| `OwnerApplicationId` | Hayır       | Dize | Abonelik oluşturulurken aboneliğe Azure RBAC Sahibi olarak eklenecek hizmet sorumlusunun uygulama kimliği. `OwnerObjectId` yerine bu parametreyi kullanabilirsiniz. Bu parametre kullanıldığında hizmet sorumlusunun [dizine okuma erişimi](/powershell/azure/active-directory/signing-in-service-principal?view=azureadps-2.0#give-the-service-principal-reader-access-to-the-current-tenant-get-azureaddirectoryrole&preserve-view=true) olmalıdır.|
+| `OwnerApplicationId` | Hayır       | Dize | Abonelik oluşturulurken aboneliğe Azure RBAC Sahibi olarak eklenecek hizmet sorumlusunun uygulama kimliği. `OwnerObjectId` yerine bu parametreyi kullanabilirsiniz. Bu parametre kullanıldığında hizmet sorumlusunun [dizine okuma erişimi](/powershell/azure/active-directory/signing-in-service-principal#give-the-service-principal-reader-access-to-the-current-tenant-get-azureaddirectoryrole) olmalıdır.|
 
 Tüm parametrelerin listesini görmek için bkz. [New-AzSubscription](/powershell/module/az.subscription/New-AzSubscription).
 
@@ -211,7 +211,7 @@ az account create --offer-type "MS-AZR-0017P" --display-name "Dev Team Subscript
 | `enrollment-account-object-id`      | Evet       | Dize | Altında aboneliğin oluşturulduğu ve faturalandığı kayıt hesabının Nesne Kimliği. Bu değer, `az billing enrollment-account list` komutundan aldığınız GUID'dir. |
 | `owner-object-id`      | Hayır       | Dize | Abonelik oluşturulurken aboneliğe Azure RBAC Sahibi olarak eklenecek kullanıcının Nesne Kimliği.  |
 | `owner-upn`    | Hayır       | Dize | Abonelik oluşturulurken aboneliğe Azure RBAC Sahibi olarak eklenecek kullanıcının e-posta adresi. `owner-object-id` yerine bu parametreyi kullanabilirsiniz.|
-| `owner-spn` | Hayır       | Dize | Abonelik oluşturulurken aboneliğe Azure RBAC Sahibi olarak eklenecek hizmet sorumlusunun uygulama kimliği. `owner-object-id` yerine bu parametreyi kullanabilirsiniz. Bu parametre kullanıldığında hizmet sorumlusunun [dizine okuma erişimi](/powershell/azure/active-directory/signing-in-service-principal?view=azureadps-2.0#give-the-service-principal-reader-access-to-the-current-tenant-get-azureaddirectoryrole&preserve-view=true) olmalıdır.|
+| `owner-spn` | Hayır       | Dize | Abonelik oluşturulurken aboneliğe Azure RBAC Sahibi olarak eklenecek hizmet sorumlusunun uygulama kimliği. `owner-object-id` yerine bu parametreyi kullanabilirsiniz. Bu parametre kullanıldığında hizmet sorumlusunun [dizine okuma erişimi](/powershell/azure/active-directory/signing-in-service-principal#give-the-service-principal-reader-access-to-the-current-tenant-get-azureaddirectoryrole) olmalıdır.|
 
 Tüm parametrelerin listesini görmek için bkz. [az account create](/cli/azure/ext/subscription/account#-ext-subscription-az-account-create).
 

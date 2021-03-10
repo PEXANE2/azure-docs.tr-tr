@@ -14,16 +14,16 @@ ms.author: rolyon
 ms.reviewer: anandy
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0fb61388b13b912166c9c07b9ee28b365c4a63b9
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.openlocfilehash: c1f41dca3b52ce75ba2342506f621cca0618a3bf
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98740389"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102565895"
 ---
 # <a name="azure-ad-administrative-units-troubleshooting-and-faq"></a>Azure AD yönetim birimleri: sorun giderme ve SSS
 
-Azure Active Directory (Azure AD) ' da daha ayrıntılı yönetim denetimi için, bir veya daha fazla yönetim birimiyle sınırlı bir kapsama sahip bir Azure AD rolüne kullanıcı atayabilirsiniz. Ortak görevlere yönelik örnek PowerShell betikleri için bkz. [çalışma, yönetim birimleriyle çalışma](/powershell/azure/active-directory/working-with-administrative-units?view=azureadps-2.0&preserve-view=true).
+Azure Active Directory (Azure AD) ' da daha ayrıntılı yönetim denetimi için, bir veya daha fazla yönetim birimiyle sınırlı bir kapsama sahip bir Azure AD rolüne kullanıcı atayabilirsiniz. Ortak görevlere yönelik örnek PowerShell betikleri için bkz. [çalışma, yönetim birimleriyle çalışma](/powershell/azure/active-directory/working-with-administrative-units).
 
 ## <a name="frequently-asked-questions"></a>Sık sorulan sorular
 
@@ -69,9 +69,9 @@ Y **:** Hayır, iç içe geçmiş yönetim birimleri desteklenmez.
 
 **S: PowerShell ve Graph API desteklenen yönetim birimleri var mı?**
 
-**Y:** Evet. [PowerShell cmdlet belgeleri](/powershell/module/Azuread/?view=azureadps-2.0&preserve-view=true) ve [örnek betiklerdeki](/powershell/azure/active-directory/working-with-administrative-units?view=azureadps-2.0&preserve-view=true)yönetim birimleri için destek bulacaksınız.
+**Y:** Evet. [PowerShell cmdlet belgeleri](/powershell/module/Azuread/) ve [örnek betiklerdeki](/powershell/azure/active-directory/working-with-administrative-units)yönetim birimleri için destek bulacaksınız.
 
-Microsoft Graph ' de [Yönetimtiveunit kaynak türü](/graph/api/resources/administrativeunit?view=graph-rest-1.0&preserve-view=true) için destek bulun.
+Microsoft Graph ' de [Yönetimtiveunit kaynak türü](/graph/api/resources/administrativeunit) için destek bulun.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

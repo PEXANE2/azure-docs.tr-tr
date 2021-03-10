@@ -4,16 +4,16 @@ description: Kullandıkça Öde maliyetlerinizden tasarruf etmek için yazılım
 author: bandersmsft
 manager: yashesvi
 ms.service: virtual-machines
-ms.subservice: sizes
+ms.subservice: reserved-instances
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.author: banders
-ms.openlocfilehash: 5a4f7de0cacb17087e346123f53dad45ae1de357
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: 136207afef3fef9266fadcea1e67bb0aa6a38a32
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98602610"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102549762"
 ---
 # <a name="prepay-for-azure-software-plans"></a>Azure yazılım planları için ön ödeme yapma
 
@@ -32,7 +32,7 @@ Azure portal SUSE ve RedHat yazılım planlarını satın alabilirsiniz. Bir pla
 Gerekli alanları girin. Satın alma yaptığınız özelliklerin öznitelikleriyle eşleşen SUSE Linux VM veya RedHat VM 'si indirimi alır. İndirimin alınacağı gerçek dağıtım sayısı, seçilen kapsama ve miktara bağlıdır.
 3. Bir abonelik seçin. Plan için ödeme yapmak üzere kullanılır.
 Abonelik ödeme yöntemi, rezervasyonun ön maliyetlerine göre ücretlendirilir. Abonelik türü bir Kurumsal Anlaşma (teklif numaraları: MS-AZR-0017P veya MS-AZR-0148P) veya kullandıkça öde fiyatlandırması (teklif numaraları: MS-AZR-0003P veya MS-AZR-0023P) içeren tek bir anlaşma olmalıdır.
-    - Bir kurumsal abonelik için ücretler, kaydın Azure ön ödemesinin (daha önce parasal taahhüt olarak adlandırılır) bakiyesinden düşülür veya fazla kullanım olarak ücretlendirilir.
+    - Kurumsal abonelik için ücretler kaydın Azure Ön Ödemesinden (eski adıyla parasal taahhüt) düşülür ve fazla kullanım olarak ücretlendirilir.
     - Kullandıkça Öde fiyatlandırmasına sahip bireysel bir abonelik için ücretler, aboneliğin kredi kartına veya fatura ödeme yöntemine faturalandırılır.
 4. Bir kapsam seçin. Kapsam bir aboneliği veya birden çok aboneliği (paylaşılan kapsamı) kapsayabilir.
     - Tek abonelik-plan indirimi, aboneliğin eşleşen kullanımı için uygulanır.

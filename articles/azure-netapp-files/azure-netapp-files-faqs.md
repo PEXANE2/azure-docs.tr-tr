@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 01/21/2021
+ms.date: 03/09/2021
 ms.author: b-juche
-ms.openlocfilehash: 2cb0e3829011ca9bd0f2b6f36ebf3e6744a180ec
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 6d9d56a7f6d1e265508081f735e2dbc379f195fb
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101713414"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102552040"
 ---
 # <a name="faqs-about-azure-netapp-files"></a>Azure NetApp Files hakkında SSS
 
@@ -147,6 +147,16 @@ Evet, yazabilirsiniz. Ancak, dosya yolu farklı bir abonelikte ya da farklı bir
 2. Windows Server 'da birimi bağlayın.   
     Örnek:   
     `Mount -o rsize=1024 -o wsize=1024 -o mtype=hard \\10.x.x.x\testvol X:*`
+
+### <a name="how-does-azure-netapp-files-support-nfsv41-file-locking"></a>Azure NetApp Files NFSv 4.1 dosya kilitlemeyi nasıl destekler? 
+
+NFSv 4.1 istemcileri için Azure NetApp Files, kira tabanlı bir model altındaki tüm dosya kilitlerinin durumunu tutan NFSv 4.1 dosya kilitleme mekanizmasını destekler. 
+
+RFC 3530 başına Azure NetApp Files, bir NFS istemcisi tarafından tutulan tüm durum için tek bir kira süresi tanımlar. İstemci, tanımlanan süre içinde kiralamasını yenilemezse, istemcinin kirası ile ilişkili tüm durumlar sunucu tarafından serbest bırakılır.  
+
+Örneğin, bir birimi bağlamak zaman aşımlarının dışında yanıt vermeyen veya kilitlenirse, kilitler serbest bırakılır. İstemci, bir dosyayı okumak gibi işlemleri gerçekleştirerek kirayı açıkça veya örtük olarak yenileyebilir.   
+
+Yetkisiz kullanım süresi, istemcilerin bir sunucu kurtarması sırasında kilitleme durumunu geri kazanmak için deneyebileceği özel bir işleme süresini tanımlar. Kiralamalar için varsayılan zaman aşımı, 45 saniyelik yetkisiz kullanım süresi ile 30 saniyedir. Bu süreden sonra, istemcinin kirası serbest bırakılır.   
 
 ## <a name="smb-faqs"></a>SMB hakkında SSS
 

@@ -107,6 +107,8 @@
       href: concepts/logging-diagnostics.md
     - name: Kaba yeniden yerelleştirme
       href: concepts/coarse-reloc.md
+    - name: Bağlayıcı bulma stratejisi
+      href: concepts/anchor-locate-strategy.md
 - name: Başvurular
   items:
     - name: Unity için SDK

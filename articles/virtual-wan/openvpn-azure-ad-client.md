@@ -7,12 +7,12 @@ ms.service: virtual-wan
 ms.topic: how-to
 ms.date: 09/22/2020
 ms.author: cherylmc
-ms.openlocfilehash: 8e97a2f077efd4d00eec4a91645dc1b65057ebd9
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: 3dbdfb461bc2ae79439f39df3efbc2c564782110
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94565016"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102548402"
 ---
 # <a name="configure-a-vpn-client-for-p2s-openvpn-protocol-connections-azure-ad-authentication"></a>P2S OpenVPN protokolü bağlantıları için VPN istemcisi yapılandırma: Azure AD kimlik doğrulaması
 
@@ -54,7 +54,7 @@ Sertifika tabanlı bir profille çalışırken, istemci bilgisayarda uygun serti
 
 Çalışma profiliniz varsa ve diğer kullanıcılara dağıtmanız gerekiyorsa, aşağıdaki adımları kullanarak dışarı aktarabilirsiniz:
 
-1. Dışarı aktarmak istediğiniz VPN istemci profilini vurgulayın, **...** öğesini seçin ve ardından **dışarı aktar** ' ı seçin.
+1. Dışarı aktarmak istediğiniz VPN istemci profilini vurgulayın, **...** öğesini seçin ve ardından **dışarı aktar**' ı seçin.
 
     ![Ekran görüntüsünde, menüden dışa aktarma seçili görüntülenir.](./media/openvpn-azure-ad-client/export/export1.jpg)
 
@@ -64,15 +64,15 @@ Sertifika tabanlı bir profille çalışırken, istemci bilgisayarda uygun serti
 
 ### <a name="to-import-a-client-profile"></a><a name="import"></a>İstemci profilini içeri aktarmak için
 
-1. Sayfasında **Içeri aktar** ' ı seçin.
+1. Sayfasında **Içeri aktar**' ı seçin.
 
     ![Ekran görüntüsü artı menüsünden Seçili Içeri aktarmayı gösterir.](./media/openvpn-azure-ad-client/import/import1.jpg)
 
-2. Profil XML dosyasına gidin ve seçin. Dosya seçili olduğunda **Aç** ' ı seçin.
+2. Profil XML dosyasına gidin ve seçin. Dosya seçili olduğunda **Aç**' ı seçin.
 
     ![Ekran görüntüsü, bir dosyayı seçebileceğiniz açık bir iletişim kutusu gösterir.](./media/openvpn-azure-ad-client/import/import2.jpg)
 
-3. Profilin adını belirtin ve **Kaydet** ' i seçin.
+3. Profilin adını belirtin ve **Kaydet**' i seçin.
 
     ![Ekran görüntüsünde, eklenen bağlantı adı ve Kaydet düğmesi seçili görüntülenir.](./media/openvpn-azure-ad-client/import/import3.jpg)
 
@@ -86,7 +86,7 @@ Sertifika tabanlı bir profille çalışırken, istemci bilgisayarda uygun serti
 
 ### <a name="to-delete-a-client-profile"></a><a name="delete"></a>İstemci profilini silmek için
 
-1. Silmek istediğiniz istemci profilinin yanındaki üç nokta simgesini seçin. Ardından **Kaldır** ' ı seçin.
+1. Silmek istediğiniz istemci profilinin yanındaki üç nokta simgesini seçin. Ardından **Kaldır**' ı seçin.
 
     ![Ekran görüntüsü menüden Seçileni kaldır 'ı gösterir.](./media/openvpn-azure-ad-client/delete/delete1.jpg)
 
@@ -96,11 +96,11 @@ Sertifika tabanlı bir profille çalışırken, istemci bilgisayarda uygun serti
 
 ## <a name="create-a-connection"></a><a name="connection"></a>Bağlantı oluşturma
 
-1. Sayfasında **+** , ve ardından **+ Ekle** ' yi seçin.
+1. Sayfasında **+** , ve ardından **+ Ekle**' yi seçin.
 
     ![Ekran görüntüsü artı menüsünden Seçileni Ekle ' ye gösterir.](./media/openvpn-azure-ad-client/create/create1.jpg)
 
-2. Bağlantı bilgilerini doldurun. Değerlerden emin değilseniz yöneticinize başvurun. Değerleri doldurduktan sonra **Kaydet** ' i seçin.
+2. Bağlantı bilgilerini doldurun. Değerlerden emin değilseniz yöneticinize başvurun. Değerleri doldurduktan sonra **Kaydet**' i seçin.
 
     ![Ekran görüntüsü, gerekli değerleri girebileceğiniz bölmeyi gösterir.](./media/openvpn-azure-ad-client/create/create2.jpg)
 
@@ -108,7 +108,7 @@ Sertifika tabanlı bir profille çalışırken, istemci bilgisayarda uygun serti
 
     ![Ekran görüntüsü, bağlantınızın Bağlan düğmesini gösterir.](./media/openvpn-azure-ad-client/create/create3.jpg)
 
-4. Doğru kimlik bilgilerini seçip **devam** ' ı seçin.
+4. Doğru kimlik bilgilerini seçip **devam**' ı seçin.
 
     ![Ekran görüntüsü oturum aç iletişim kutusunu gösterir.](./media/openvpn-azure-ad-client/create/create4.jpg)
 
@@ -120,7 +120,7 @@ Sertifika tabanlı bir profille çalışırken, istemci bilgisayarda uygun serti
 
 Bu adımlar, bağlantınızı her zaman açık ile otomatik olarak bağlanacak şekilde yapılandırmanıza yardımcı olur.
 
-1. VPN istemcinizin ana sayfasında **VPN ayarları** ' nı seçin.
+1. VPN istemcinizin ana sayfasında **VPN ayarları**' nı seçin.
 
     ![Ekran görüntüsü, v p n ayarlarını seçebileceğiniz V P N bağlantılarını gösterir.](./media/openvpn-azure-ad-client/auto/auto1.jpg)
 
@@ -138,11 +138,11 @@ Bu adımlar, bağlantınızı her zaman açık ile otomatik olarak bağlanacak �
 
 ## <a name="diagnose-connection-issues"></a><a name="diagnose"></a>Bağlantı sorunlarını Tanıla
 
-1. Bağlantı sorunlarını tanılamak için **Tanılama** aracını kullanabilirsiniz. Menüyü açığa çıkarmak için tanılamak istediğiniz VPN bağlantısının yanındaki **...** seçeneğini belirleyin. Ardından **Tanıla** ' yı seçin.
+1. Bağlantı sorunlarını tanılamak için **Tanılama** aracını kullanabilirsiniz. Menüyü açığa çıkarmak için tanılamak istediğiniz VPN bağlantısının yanındaki **...** seçeneğini belirleyin. Ardından **Tanıla**' yı seçin.
 
     ![Ekran görüntüsü, menüden seçili tanılamayı gösterir.](./media/openvpn-azure-ad-client/diagnose/diagnose1.jpg)
 
-2. **Bağlantı özellikleri** sayfasında, **tanı Çalıştır** ' ı seçin.
+2. **Bağlantı özellikleri** sayfasında, **tanı Çalıştır**' ı seçin.
 
     ![Ekran görüntüsü, bir bağlantı için tanılama Çalıştır düğmesini gösterir.](./media/openvpn-azure-ad-client/diagnose/diagnose2.jpg)
 
@@ -192,7 +192,7 @@ Bu adımlar, bağlantınızı her zaman açık ile otomatik olarak bağlanacak �
 ```
 
 > [!NOTE]
-> OpenVPN Azure AD İstemcisi, DNS ad çözümleme Ilkesi tablosu (NRPT) girdilerini kullanır, bu da DNS sunucularının çıktının altında listelenmeyeceği anlamına gelir `ipconfig /all` . Kullanımdaki DNS ayarlarınızı onaylamak için lütfen PowerShell 'de [Get-DnsClientNrptPolicy](/powershell/module/dnsclient/get-dnsclientnrptpolicy?view=win10-ps) bölümüne başvurun.
+> OpenVPN Azure AD İstemcisi, DNS ad çözümleme Ilkesi tablosu (NRPT) girdilerini kullanır, bu da DNS sunucularının çıktının altında listelenmeyeceği anlamına gelir `ipconfig /all` . Kullanımdaki DNS ayarlarınızı onaylamak için lütfen PowerShell 'de [Get-DnsClientNrptPolicy](/powershell/module/dnsclient/get-dnsclientnrptpolicy) bölümüne başvurun.
 >
 
 ### <a name="how-do-i-add-custom-routes-to-the-vpn-client"></a>Nasıl yaparım? VPN istemcisine özel yollar eklensin mi?

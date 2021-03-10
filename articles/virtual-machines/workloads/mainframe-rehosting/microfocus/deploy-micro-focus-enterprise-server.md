@@ -1,7 +1,7 @@
 ---
 title: Micro Focus Enterprise Server 5,0 'i AKS 'e dağıtma | Microsoft Docs
 description: Azure sanal makinelerinde (VM) mikro odak geliştirme ve test ortamını kullanarak IBM z/OS ana bilgisayar iş yüklerinizi yeniden barındırın.
-services: virtual-machines-linux
+services: virtual-machines
 documentationcenter: ''
 author: maggsl
 ms.author: edprice
@@ -12,12 +12,12 @@ ms.date: 06/29/2020
 tags: ''
 keywords: ''
 ms.service: multiple
-ms.openlocfilehash: 6780942d922f885c7afebd8e64f4f28654c3800e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9e5b3857c2252a939080206fb1f92cc422f326fc
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87042551"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102564365"
 ---
 # <a name="deploy-micro-focus-enterprise-server-50-to-aks"></a>Micro Focus Enterprise Server 5,0 'i AKS 'e dağıtma
 
@@ -39,7 +39,7 @@ Geldiğinizde? Başlayalım!
 
 ## <a name="create-the-azure-container-registry"></a>Azure Container Registry oluşturun
 
-Azure portal, sol üst köşedeki **kaynak oluştur** ' u seçin. Market panosundan **kapsayıcılar '** ı seçin ve **Container Registry**. Bu sizi, **kayıt defteri adı**, **Azure aboneliği**, **kaynak grubu**ve **konum**' u doldurmanız gereken **kapsayıcı kayıt defteri oluştur** bölmesine götürür. **Kayıt defteri adının** çözümlenmesi gerekir, bu nedenle benzersiz olmalıdır. Önceki blog gönderisinin ve ilgili **konumun**aynısını kullandığınız **kaynak grubunu** seçin. **SKU**için **Yönetici Kullanıcı** ve **temel** için **Etkinleştir** ' i seçin. Her şeyi doldurduktan sonra **Oluştur**' u seçin.
+Azure portal, sol üst köşedeki **kaynak oluştur** ' u seçin. Market panosundan **kapsayıcılar '** ı seçin ve **Container Registry**. Bu sizi, **kayıt defteri adı**, **Azure aboneliği**, **kaynak grubu** ve **konum**' u doldurmanız gereken **kapsayıcı kayıt defteri oluştur** bölmesine götürür. **Kayıt defteri adının** çözümlenmesi gerekir, bu nedenle benzersiz olmalıdır. Önceki blog gönderisinin ve ilgili **konumun** aynısını kullandığınız **kaynak grubunu** seçin. **SKU** için **Yönetici Kullanıcı** ve **temel** için **Etkinleştir** ' i seçin. Her şeyi doldurduktan sonra **Oluştur**' u seçin.
 
 ![Kapsayıcı kayıt defteri arabirimi oluştur](media/deploy-image-1.png)
 
@@ -71,13 +71,13 @@ Oturum açtıktan sonra, bir komut istemi açın ve aşağıdaki Docker komutlar
 
 -   **Docker görüntüleri** : Bu, sanal makinede yüklü olan tüm görüntülerin bir listesini gösterir. Üzerinde çalıştığınız bir hizmet olduğundan, **mikro odak/es-acctdemo** ' i de göz önünde bulabilirsiniz.
 
--   **Docker login acrmf50.azurecr.io** – burada doğru biçim *Docker oturum açma \<registry name\> *biçimidir. Kayıt defterini oluştururken kullandığınız adı değiştirin.
+-   **Docker login acrmf50.azurecr.io** – burada doğru biçim *Docker oturum açma \<registry name\>* biçimidir. Kayıt defterini oluştururken kullandığınız adı değiştirin.
 
     -   Azure portal kopyaladığınız **Kullanıcı adı** ve **parolaya** ihtiyacınız olacak. Aşağıdaki görüntüye benzer bir sonuçla karşılaşmanız gerekir.
 
     ![Yönetici komut Isteminin ekran görüntüsü](media/deploy-image-2.png)
 
--   **Docker Tag mikro Focus/es-acctdemo acrmf50.azurecr.io/es-acctdemo** – bu, deponun adı ile ilgili görüntüyü Etiketler. **Not**: ad \<microfocus/es-acctdemo\> çalışmazsa, tam görüntü kimliğini kullanmayı deneyin. Komutu çalıştırdıktan sonra **Docker görüntüleri – No-TRUNC**yazın. Sonraki görüntüde olduğu gibi bir şey görmeniz gerekir. Görüntünün düzgün etiketlendiğine dikkat edin.
+-   **Docker Tag mikro Focus/es-acctdemo acrmf50.azurecr.io/es-acctdemo** – bu, deponun adı ile ilgili görüntüyü Etiketler. **Not**: ad \<microfocus/es-acctdemo\> çalışmazsa, tam görüntü kimliğini kullanmayı deneyin. Komutu çalıştırdıktan sonra **Docker görüntüleri – No-TRUNC** yazın. Sonraki görüntüde olduğu gibi bir şey görmeniz gerekir. Görüntünün düzgün etiketlendiğine dikkat edin.
 
     ![Yönetici komut Istemi ekranını seçin](media/deploy-image-3.png)
 
@@ -85,7 +85,7 @@ Oturum açtıktan sonra, bir komut istemi açın ve aşağıdaki Docker komutlar
 
     ![Yönetici komut Istemi ekranı](media/deploy-image-4.png)
 
-Artık, özel olarak **depoya**Azure Portal geri dönün. **Deponun**menüsünde **depolar**' ı seçin ve ardından **es-acctdemo** ' i görmeniz gerekir. Şimdi AKS kümesini oluşturun.
+Artık, özel olarak **depoya** Azure Portal geri dönün. **Deponun** menüsünde **depolar**' ı seçin ve ardından **es-acctdemo** ' i görmeniz gerekir. Şimdi AKS kümesini oluşturun.
 
 ## <a name="create-the-azure-kubernetes-aks-cluster"></a>Azure Kubernetes (AKS) kümesi oluşturma
 

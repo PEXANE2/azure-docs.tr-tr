@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 ms.date: 09/02/2020
-ms.openlocfilehash: 04137fef640da46ca8876811e127e109a8c3d445
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: 4bfc29472373a53bcebb2ba59134d1f3702d4793
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93348313"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102549881"
 ---
 # <a name="build-the-landing-page-for-your-transactable-saas-offer-in-the-commercial-marketplace"></a>Ticari Market 'te transactable SaaS teklifinizin giriş sayfasını oluşturun
 
@@ -62,7 +62,7 @@ Hazırlama veya sağlama işleminizin bir parçası olarak yükseltilmiş izinle
 
 Azure AD oturum açma özelliği etkinken basit bir Web sitesi uygulayan birkaç örnek uygulama sunuyoruz. Uygulamanız Azure AD 'ye kaydedildikten sonra, **hızlı başlangıç** dikey penceresi Şekil 1 ' de görüldüğü gibi ortak uygulama türlerinin ve geliştirme yığınlarının bir listesini sunar. Ortamınızla eşleşen birini seçin ve indirme ve kurulum yönergelerini izleyin.
 
-**_Şekil 1: Azure Portal _ ' de hızlı başlangıç dikey_* penceresi
+***Şekil 1: Azure portal hızlı başlangıç dikey penceresi***
 
 :::image type="content" source="./media/azure-ad-saas/azure-ad-quickstart-blade.png" alt-text="Azure portal hızlı başlangıç dikey penceresini gösterir.":::
 
@@ -109,7 +109,7 @@ SaaS karşılama API 'Leri, Market belirtecinin geçerliliğini onaylamak ve abo
 
 ## <a name="use-the-microsoft-graph-api"></a>Microsoft Graph API’sini kullanma
 
-KIMLIK belirteci, alıcıya yönelik temel bilgileri içerir, ancak etkinleştirme işleminiz ekleme işlemini tamamlamaya yönelik ek ayrıntılar gerektirebilir (örneğin, alıcının şirketi). Kullanıcı bu ayrıntıları yeniden girmemek için bu bilgileri istemek üzere [MICROSOFT Graph API](/graph/use-the-api) 'sini kullanın. Standart _ *User. Read* * izinleri, varsayılan olarak aşağıdaki bilgileri içerir.
+KIMLIK belirteci, alıcıya yönelik temel bilgileri içerir, ancak etkinleştirme işleminiz ekleme işlemini tamamlamaya yönelik ek ayrıntılar gerektirebilir (örneğin, alıcının şirketi). Kullanıcı bu ayrıntıları yeniden girmemek için bu bilgileri istemek üzere [MICROSOFT Graph API](/graph/use-the-api) 'sini kullanın. Standart **Kullanıcı. okuma** izinleri, varsayılan olarak aşağıdaki bilgileri içerir.
 
 | Değer | Açıklama |
 | ------------ | ------------- |
@@ -122,7 +122,7 @@ KIMLIK belirteci, alıcıya yönelik temel bilgileri içerir, ancak etkinleştir
 | surname | Kullanıcının soyadı. |
 |||
 
-Kullanıcı şirketinin adı veya Kullanıcı konumu (ülke) gibi ek özellikler, isteğe eklenmek üzere seçilebilir. Daha fazla ayrıntı için [Kullanıcı kaynak türü özelliklerine](/graph/api/resources/user?view=graph-rest-1.0&preserve-view=true#properties) bakın.
+Kullanıcı şirketinin adı veya Kullanıcı konumu (ülke) gibi ek özellikler, isteğe eklenmek üzere seçilebilir. Daha fazla ayrıntı için [Kullanıcı kaynak türü özelliklerine](/graph/api/resources/user#properties) bakın.
 
 Azure AD 'ye kayıtlı uygulamaların çoğu, kullanıcının şirketinin Azure AD kiracısından bilgilerini okumak için temsilci izinleri verir. Bu bilgilere yönelik Microsoft Graph yönelik istekler, kimlik doğrulaması için bir erişim belirteciyle birlikte gelmelidir. Erişim belirtecini oluşturmaya yönelik belirli adımlar, kullanmakta olduğunuz teknoloji yığınına bağlıdır, ancak örnek kod bir örnek içerir. Daha fazla bilgi için bkz. [Kullanıcı adına erişim edinme](/graph/auth-v2-user).
 

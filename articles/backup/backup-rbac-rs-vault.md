@@ -3,13 +3,13 @@ title: Azure rol tabanlı erişim denetimi ile yedeklemeleri yönetme
 description: Kurtarma Hizmetleri kasasındaki yedekleme yönetimi işlemlerine erişimi yönetmek için Azure rol tabanlı erişim denetimi kullanın.
 ms.reviewer: utraghuv
 ms.topic: conceptual
-ms.date: 06/24/2019
-ms.openlocfilehash: 0dd8d08c4ee79082f47929cf7d453f3f4bbd60ee
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.date: 03/09/2021
+ms.openlocfilehash: 179cb6efcff4bcf50a64a6d58f861622e853b02b
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92090888"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102553417"
 ---
 # <a name="use-azure-role-based-access-control-to-manage-azure-backup-recovery-points"></a>Azure Backup kurtarma noktalarını yönetmek için Azure rol tabanlı erişim denetimi kullanma
 
@@ -28,37 +28,57 @@ Daha da fazla denetim için kendi rollerinizi tanımlamak istiyorsanız bkz. Azu
 
 ## <a name="mapping-backup-built-in-roles-to-backup-management-actions"></a>Yedekleme yerleşik rollerini yedekleme yönetim eylemlerine eşleme
 
+### <a name="minimum-role-requirements-for-azure-vm-backup"></a>Azure VM yedeklemesi için en düşük rol gereksinimleri
+
 Aşağıdaki tabloda, bu işlemi gerçekleştirmek için gereken yedekleme yönetimi eylemleri ve ilgili minimum Azure rolü yer alır.
 
-| Yönetim Işlemi | Gerekli en düşük Azure rolü | Kapsam gerekli |
-| --- | --- | --- |
-| Kurtarma Hizmetleri kasası oluşturma | Yedek Katılımcısı | Kasayı içeren kaynak grubu |
-| Azure VM 'lerinin yedeklenmesini etkinleştirme | Yedekleme Işletmeni | Kasayı içeren kaynak grubu |
-| | Sanal Makine Katılımcısı | VM kaynağı |
-| VM 'nin isteğe bağlı yedeklemesi | Yedekleme Işletmeni | Kurtarma Hizmetleri kasası |
-| Sanal makineyi geri yükleme | Yedekleme Işletmeni | Kurtarma Hizmetleri kasası |
-| | Katılımcı | VM 'nin dağıtılacağı kaynak grubu |
-| | Sanal Makine Katılımcısı | Yedeklenen kaynak VM |
-| Yönetilmeyen diskleri geri yükleme VM yedeklemesi | Yedekleme Işletmeni | Kurtarma Hizmetleri kasası |
-| | Sanal Makine Katılımcısı | Yedeklenen kaynak VM |
-| | Depolama Hesabı Katılımcısı | Disklerin geri yükleneceği depolama hesabı kaynağı |
-| Yönetilen diskleri VM yedeklemesinden geri yükleme | Yedekleme Işletmeni | Kurtarma Hizmetleri kasası |
-| | Sanal Makine Katılımcısı | Yedeklenen kaynak VM |
-| | Depolama Hesabı Katılımcısı | Geri yükleme 'nin bir parçası olarak seçilen geçici depolama hesabı, verileri yönetilen disklere dönüştürmeden önce kasadan bekletme |
-| | Katılımcı | Yönetilen disklerin geri yükleneceği kaynak grubu |
-| Tek tek dosyaları VM yedeklemesinden geri yükleme | Yedekleme Işletmeni | Kurtarma Hizmetleri kasası |
-| | Sanal Makine Katılımcısı | Yedeklenen kaynak VM |
+| Yönetim Işlemi | Gerekli en düşük Azure rolü | Kapsam gerekli | Yapıyı |
+| --- | --- | --- | --- |
+| Kurtarma Hizmetleri kasası oluşturma | Yedek Katılımcısı | Kasayı içeren kaynak grubu |   |
+| Azure VM 'lerinin yedeklenmesini etkinleştirme | Yedekleme Operatörü | Kasayı içeren kaynak grubu |   |
+| | Sanal Makine Katılımcısı | VM kaynağı |  Alternatif olarak, yerleşik rol yerine, şu izinlere sahip özel bir rol düşünebilirsiniz: Microsoft. COMPUTE/virtualMachines/Write |
+| VM 'nin isteğe bağlı yedeklemesi | Yedekleme Operatörü | Kurtarma Hizmetleri kasası |   |
+| Sanal makineyi geri yükleme | Yedekleme Operatörü | Kurtarma Hizmetleri kasası |   |
+| | Katılımcı | VM 'nin dağıtılacağı kaynak grubu |   Alternatif olarak, yerleşik rol yerine, aşağıdaki izinlere sahip olan özel bir rol düşünebilirsiniz: Microsoft. resources/abonelikler/resourceGroups/Write Microsoft. DomainRegistration/Domains/Write, Microsoft. Domain/virtualMachines/Write Microsoft. Network/virtualNetworks/Read/ACTION | 
+| | Sanal Makine Katılımcısı | Yedeklenen kaynak VM |   Alternatif olarak, yerleşik rol yerine, şu izinlere sahip özel bir rol düşünebilirsiniz: Microsoft. COMPUTE/virtualMachines/Write |
+| Yönetilmeyen diskleri geri yükleme VM yedeklemesi | Yedekleme Operatörü | Kurtarma Hizmetleri kasası |
+| | Sanal Makine Katılımcısı | Yedeklenen kaynak VM | Alternatif olarak, yerleşik rol yerine, şu izinlere sahip özel bir rol düşünebilirsiniz: Microsoft. COMPUTE/virtualMachines/Write |
+| | Depolama Hesabı Katılımcısı | Disklerin geri yükleneceği depolama hesabı kaynağı |   Alternatif olarak, yerleşik rol yerine, şu izinlere sahip özel bir rol düşünebilirsiniz: Microsoft. Storage/storageAccounts/Write |
+| Yönetilen diskleri VM yedeklemesinden geri yükleme | Yedekleme Operatörü | Kurtarma Hizmetleri kasası |
+| | Sanal Makine Katılımcısı | Yedeklenen kaynak VM |    Alternatif olarak, yerleşik rol yerine, şu izinlere sahip özel bir rol düşünebilirsiniz: Microsoft. COMPUTE/virtualMachines/Write |
+| | Depolama Hesabı Katılımcısı | Geri yükleme 'nin bir parçası olarak seçilen geçici depolama hesabı, verileri yönetilen disklere dönüştürmeden önce kasadan bekletme |   Alternatif olarak, yerleşik rol yerine, şu izinlere sahip özel bir rol düşünebilirsiniz: Microsoft. Storage/storageAccounts/Write |
+| | Katılımcı | Yönetilen disklerin geri yükleneceği kaynak grubu | Alternatif olarak, yerleşik rol yerine, şu izinlere sahip özel bir rol düşünebilirsiniz: Microsoft. resources/abonelikler/resourceGroups/Write|
+| Tek tek dosyaları VM yedeklemesinden geri yükleme | Yedekleme Operatörü | Kurtarma Hizmetleri kasası |
+| | Sanal Makine Katılımcısı | Yedeklenen kaynak VM | Alternatif olarak, yerleşik rol yerine, şu izinlere sahip özel bir rol düşünebilirsiniz: Microsoft. COMPUTE/virtualMachines/Write |
 | Azure VM yedeklemesi için yedekleme ilkesi oluşturma | Yedek Katılımcısı | Kurtarma Hizmetleri kasası |
 | Azure VM yedeklemesi 'nin yedekleme ilkesini değiştirme | Yedek Katılımcısı | Kurtarma Hizmetleri kasası |
 | Azure VM yedeklemesi 'nin yedekleme ilkesini silme | Yedek Katılımcısı | Kurtarma Hizmetleri kasası |
 | VM yedeklemede Yedeklemeyi Durdur (verileri sakla veya verileri Sil) | Yedek Katılımcısı | Kurtarma Hizmetleri kasası |
-| Şirket içi Windows Server/Client/SCDPM veya Azure Backup Sunucusu Kaydet | Yedekleme Işletmeni | Kurtarma Hizmetleri kasası |
+| Şirket içi Windows Server/Client/SCDPM veya Azure Backup Sunucusu Kaydet | Yedekleme Operatörü | Kurtarma Hizmetleri kasası |
 | Kayıtlı şirket içi Windows Server/Client/SCDPM veya Azure Backup Sunucusu Sil | Yedek Katılımcısı | Kurtarma Hizmetleri kasası |
 
 > [!IMPORTANT]
 > VM 'yi bir VM kaynak kapsamında belirtir ve VM ayarlarının bir parçası olarak **yedekleme** ' yi SEÇERSENIZ, VM zaten yedeklense de **yedeklemeyi etkinleştir** ekranını açar. Bunun nedeni, yedekleme durumunu doğrulama çağrısının yalnızca abonelik düzeyinde çalışmadır. Bunu önlemek için kasaya gidin ve VM 'nin yedekleme öğesi görünümünü açın ya da bir abonelik düzeyinde VM katılımcısı rolünü belirtin.
 
-## <a name="minimum-role-requirements-for-the-azure-file-share-backup"></a>Azure dosya paylaşımının yedeklenmesi için en düşük rol gereksinimleri
+### <a name="minimum-role-requirements-for-azure-workload-backups-sql-and-hana-db-backups"></a>Azure iş yükü yedeklemeleri için en düşük rol gereksinimleri (SQL ve HANA DB yedeklemeleri)
+
+Aşağıdaki tabloda, bu işlemi gerçekleştirmek için gereken yedekleme yönetimi eylemleri ve ilgili minimum Azure rolü yer alır.
+
+| Yönetim Işlemi | Gerekli en düşük Azure rolü | Kapsam gerekli | Yapıyı |
+| --- | --- | --- | --- |
+| Kurtarma Hizmetleri kasası oluşturma | Yedek Katılımcısı | Kasayı içeren kaynak grubu |   |
+| SQL ve/veya HANA veritabanlarının yedeklenmesini etkinleştir | Yedekleme Operatörü | Kasayı içeren kaynak grubu |   |
+| | Sanal Makine Katılımcısı | DB 'nin yüklendiği VM kaynağı |  Alternatif olarak, yerleşik rol yerine, şu izinlere sahip özel bir rol düşünebilirsiniz: Microsoft. COMPUTE/virtualMachines/Write |
+| DB 'nin isteğe bağlı yedeklemesi | Yedekleme Operatörü | Kurtarma Hizmetleri kasası |   |
+| Veritabanını geri yükle veya dosya olarak geri yükle | Yedekleme Operatörü | Kurtarma Hizmetleri kasası |   |
+| | Sanal Makine Katılımcısı | Yedeklenen kaynak VM |   Alternatif olarak, yerleşik rol yerine, şu izinlere sahip özel bir rol düşünebilirsiniz: Microsoft. COMPUTE/virtualMachines/Write |
+| | Sanal Makine Katılımcısı | DB 'nin geri yükleneceği veya dosyaların oluşturulduğu hedef VM |   Alternatif olarak, yerleşik rol yerine, şu izinlere sahip özel bir rol düşünebilirsiniz: Microsoft. COMPUTE/virtualMachines/Write |
+| Azure VM yedeklemesi için yedekleme ilkesi oluşturma | Yedek Katılımcısı | Kurtarma Hizmetleri kasası |
+| Azure VM yedeklemesi 'nin yedekleme ilkesini değiştirme | Yedek Katılımcısı | Kurtarma Hizmetleri kasası |
+| Azure VM yedeklemesi 'nin yedekleme ilkesini silme | Yedek Katılımcısı | Kurtarma Hizmetleri kasası |
+| VM yedeklemede Yedeklemeyi Durdur (verileri sakla veya verileri Sil) | Yedek Katılımcısı | Kurtarma Hizmetleri kasası |
+
+### <a name="minimum-role-requirements-for-the-azure-file-share-backup"></a>Azure dosya paylaşımının yedeklenmesi için en düşük rol gereksinimleri
 
 Aşağıdaki tabloda, yedekleme yönetim eylemleri ve Azure dosya paylaşma işlemini gerçekleştirmek için gereken ilgili rol yer alır.
 
@@ -66,10 +86,10 @@ Aşağıdaki tabloda, yedekleme yönetim eylemleri ve Azure dosya paylaşma işl
 | --- | --- | --- |
 | Azure dosya paylaşımlarının yedeklenmesini etkinleştir | Yedek Katılımcısı |Kurtarma Hizmetleri kasası |
 | |Depolama Hesabı | Katkıda bulunan depolama hesabı kaynağı |
-| VM 'nin isteğe bağlı yedeklemesi | Yedekleme Işletmeni | Kurtarma Hizmetleri kasası |
-| Dosya payını geri yükle | Yedekleme Işletmeni | Kurtarma Hizmetleri kasası |
+| VM 'nin isteğe bağlı yedeklemesi | Yedekleme Operatörü | Kurtarma Hizmetleri kasası |
+| Dosya payını geri yükle | Yedekleme Operatörü | Kurtarma Hizmetleri kasası |
 | | Depolama Hesabı Katılımcısı | Geri yükleme kaynağı ve hedef dosya paylaşımlarının mevcut olduğu depolama hesabı kaynakları |
-| Tek tek dosyaları geri yükle | Yedekleme Işletmeni | Kurtarma Hizmetleri kasası |
+| Tek tek dosyaları geri yükle | Yedekleme Operatörü | Kurtarma Hizmetleri kasası |
 | |Depolama Hesabı Katılımcısı|Geri yükleme kaynağı ve hedef dosya paylaşımlarının mevcut olduğu depolama hesabı kaynakları |
 | Korumayı durdurma |Yedek Katılımcısı | Kurtarma Hizmetleri kasası |
 | Depolama hesabının kasadan kaydını sil |Yedek Katılımcısı | Kurtarma Hizmetleri kasası |

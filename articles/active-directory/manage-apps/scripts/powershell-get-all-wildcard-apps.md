@@ -11,12 +11,12 @@ ms.topic: sample
 ms.date: 12/05/2019
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: ae9131e8e98126bc87a3d88156e182332409d7de
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.openlocfilehash: 944fe9606963c4d4fb9ec41e4d1a87ab62d1bc6b
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99253722"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102548992"
 ---
 # <a name="get-all-application-proxy-apps-using-wildcard-publishing"></a>Joker bir yayımlama kullanarak tüm uygulama proxy uygulamalarını al
 
@@ -28,7 +28,7 @@ Bu PowerShell betiği örneği, joker bir yayımlama kullanan tüm Azure Active 
 
 [!INCLUDE [cloud-shell-try-it.md](../../../../includes/cloud-shell-try-it.md)]
 
-Bu örnek, Graf modülü (azuread) [Için Azuread v2 PowerShell](/powershell/azure/active-directory/install-adv2) 'ı veya Graf modülü önizleme sürümü (azureadpreview) [Için Azuread v2 PowerShell](/powershell/azure/active-directory/install-adv2?view=azureadps-2.0-preview) 'i gerektirir.
+Bu örnek, Graf modülü (azuread) [Için Azuread v2 PowerShell](/powershell/azure/active-directory/install-adv2) 'ı veya Graf modülü önizleme sürümü (azureadpreview) [Için Azuread v2 PowerShell](/powershell/azure/active-directory/install-adv2?view=azureadps-2.0-preview&preserve-view=true) 'i gerektirir.
 
 ## <a name="sample-script"></a>Örnek betik
 

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/12/2021
-ms.openlocfilehash: b8cfb483f2b06c072707c57ff45b7ad995a22eb4
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: a2f6023b86b96266be8e625fd5b0d6625500e3fc
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102034447"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102551479"
 ---
 # <a name="overview-of-azure-monitor-agents"></a>Azure Izleyici aracılarına genel bakış
 
@@ -152,10 +152,10 @@ Aşağıdaki tablolarda, Azure Izleyici aracıları tarafından desteklenen işl
 
 ### <a name="linux"></a>Linux
 
-| İşletim sistemi | Azure İzleyici aracısı | Log Analytics aracısı | Bağımlılık aracısı | Tanılama uzantısı | 
+| İşletim sistemi | Azure Izleyici Aracısı <sup>1</sup> | Log Analytics Aracısı <sup>1</sup> | Bağımlılık aracısı | Tanılama uzantısı <sup>2</sup>| 
 |:---|:---:|:---:|:---:|:---:
 | Amazon Linux 2017,09                                        |   | X |   |   |
-| CentOS Linux 8 <sup>1</sup> <sup>2</sup>                    | X | X | X |   |
+| CentOS Linux 8                                              | X <sup>3</sup> | X | X |   |
 | CentOS Linux 7                                              | X | X | X | X |
 | CentOS Linux 6                                              |   | X |   |   |
 | CentOS Linux 6.5 +                                           |   | X | X | X |
@@ -164,26 +164,28 @@ Aşağıdaki tablolarda, Azure Izleyici aracıları tarafından desteklenen işl
 | Debian 8                                                    |   | X | X |   |
 | Deyi 7                                                    |   |   |   | X |
 | OpenSUSE 13.1 +                                              |   |   |   | X |
-| Oracle Linux 8 <sup>1</sup> <sup>2</sup>                    | X | X |   |   |
+| Oracle Linux 8                                              | X <sup>3</sup> | X |   |   |
 | Oracle Linux 7                                              | X | X |   | X |
 | Oracle Linux 6                                              |   | X |   |   |
 | Oracle Linux 6.4 +                                           |   | X |   | X |
-| Red Hat Enterprise Linux Server 8 <sup>1</sup> <sup>2</sup> | X | X | X |   |
+| Red Hat Enterprise Linux Server 8                           | X <sup>3</sup> | X | X |   |
 | Red Hat Enterprise Linux Server 7                           | X | X | X | X |
 | Red Hat Enterprise Linux Server 6                           |   | X | X |   |
 | Red Hat Enterprise Linux Server 6.7 +                        |   | X | X | X |
-| SUSE Linux Enterprise Server 15,2 <sup>1</sup> <sup>2</sup> | X |   |   |   |
-| SUSE Linux Enterprise Server 15,1 <sup>1</sup> <sup>2</sup> | X | X |   |   |
+| SUSE Linux Enterprise Server 15,2                           | X <sup>3</sup> |   |   |   |
+| SUSE Linux Enterprise Server 15,1                           | X <sup>3</sup> | X |   |   |
 | SUSE Linux Enterprise Server 15                             | X | X | X |   |
 | SUSE Linux Enterprise Server 12                             | X | X | X | X |
-| Ubuntu 20,04 LTS <sup>1</sup>                               | X | X | X |   |
+| Ubuntu 20,04 LTS                                            | X | X | X |   |
 | Ubuntu 18.04 LTS                                            | X | X | X | X |
 | Ubuntu 16.04 LTS                                            | X | X | X | X |
 | Ubuntu 14,04 LTS                                            |   | X |   | X |
 
-<sup>1</sup> makinede Python 3 ' ün yüklü olmasını gerektirir.
+<sup>1</sup> , bir Python (2 veya 3) makinede yüklü olmasını gerektirir.
 
-<sup>2</sup> Syslog olaylarını toplama bilinen sorunu. Şu anda yalnızca performans verileri destekleniyor.
+<sup>2</sup> makinede Python 2 ' nin yüklü olmasını gerektirir.
+
+<sup>3</sup> bilinen bir sorun Syslog olaylarını topluyor. Şu anda yalnızca performans verileri destekleniyor.
 #### <a name="dependency-agent-linux-kernel-support"></a>Bağımlılık Aracısı Linux çekirdek desteği
 
 Bağımlılık Aracısı çekirdek düzeyinde çalıştığından, destek de çekirdek sürümüne bağımlıdır. Aşağıdaki tabloda, bağımlılık aracısına yönelik birincil ve küçük Linux işletim sistemi sürümü ve desteklenen çekirdek sürümleri listelenmektedir.
@@ -195,8 +197,8 @@ Bağımlılık Aracısı çekirdek düzeyinde çalıştığından, destek de çe
 |                    | 8.0     | 4.18.0-80. \* EL8.x86_64<br>4.18.0-80.\*el8_0.x86_64 |
 |  Red Hat Linux 7   | 7.9     | 3.10.0-1160 |
 |                    | 7.8     | 3.10.0-1136 |
-|                    | 7,7     | 3.10.0-1062 |
-|                    | 7,6     | 3.10.0-957  |
+|                    | 7.7     | 3.10.0-1062 |
+|                    | 7.6     | 3.10.0-957  |
 |                    | 7,5     | 3.10.0-862  |
 |                    | 7.4     | 3.10.0-693  |
 | Red Hat Linux 6    | 6,10    | 2.6.32-754 |
@@ -206,7 +208,7 @@ Bağımlılık Aracısı çekirdek düzeyinde çalıştığından, destek de çe
 |                    | 8.0     | 4.18.0-80. \* EL8.x86_64<br>4.18.0-80.\*el8_0.x86_64 |
 | CentOS Linux 7     | 7.9     | 3.10.0-1160 |
 |                    | 7.8     | 3.10.0-1136 |
-|                    | 7,7     | 3.10.0-1062 |
+|                    | 7.7     | 3.10.0-1062 |
 | CentOS Linux 6     | 6,10    | 2.6.32-754.3.5<br>2.6.32-696.30.1 |
 |                    | 6,9     | 2.6.32-696.30.1<br>2.6.32-696.18.7 |
 | Ubuntu Server      | 20,04   | 5.4\* |

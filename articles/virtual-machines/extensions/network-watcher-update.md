@@ -1,24 +1,25 @@
 ---
 title: Ağ Izleyicisi uzantısını en son sürüme güncelleştirin
 description: Azure ağ Izleyicisi uzantısını en son sürüme güncelleştirmeyi öğrenin.
-services: virtual-machines-windows
+services: virtual-machines
 documentationcenter: ''
 author: damendo
 manager: balar
 editor: ''
 tags: azure-resource-manager
-ms.service: virtual-machines-windows
+ms.service: virtual-machines
 ms.subservice: extensions
+ms.collection: windows
 ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 09/23/2020
 ms.author: damendo
-ms.openlocfilehash: 144320ea1b2505d8a43e1885091ec14a847e4ab1
-ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
+ms.openlocfilehash: 42efe2927b4d711f7fa66a96ebd25f1a62bf654a
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96853671"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102563617"
 ---
 # <a name="update-the-network-watcher-extension-to-the-latest-version"></a>Ağ Izleyicisi uzantısını en son sürüme güncelleştirin
 
@@ -144,7 +145,7 @@ Azure portal, Azure CLı veya PowerShell 'i kullanarak uzantı sürümünüzü k
 1. Ayrıntılar bölmesini görmek için **Azurenetworkizleyici** uzantısını seçin.
 1. **Sürüm alanındaki sürüm** numarasını bulun.  
 
-#### <a name="use-the-azure-cli"></a>Azure CLI'yi kullanma
+#### <a name="use-the-azure-cli"></a>Azure CLI kullanma
 
 Bir Azure CLı isteminde aşağıdaki komutu çalıştırın:
 

@@ -7,18 +7,18 @@ ms.topic: article
 ms.date: 11/09/2020
 author: sayantanroy83
 ms.author: sroy
-ms.openlocfilehash: 9089fee7565633b198043efeed929fc7446437d5
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: a8a53a54d30df9a2f7079d705f754e554328c3f7
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96458299"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102553944"
 ---
 # <a name="marketplace-insights-dashboard-in-commercial-marketplace-analytics"></a>Ticari market analizinde Market İçgörüleri
 
 Bu makalede, Iş Ortağı Merkezi 'nde Market öngörüleri panosu hakkında bilgi sağlanmaktadır. Bu Pano, yayımcıların ticari Market çevrimiçi mağazalarında listelenen ilgili ürün ayrıntıları sayfalarına yönelik müşteri etkileşimini ölçmesine olanak sağlayan ticari Market Web Analytics 'in bir özetini görüntüler: Microsoft AppSource ve Azure Marketi.
 
-**Market Insights** panosuna iş ortağı merkezi 'ne erişmek için, ticari Market ' in altında **[Analyze](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/summary)**  >  **Market öngörülerini** Çözümle ' yi seçin.
+**Market Insights** panosuna iş ortağı merkezi 'ne erişmek için, ticari Market ' in altında **[](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/summary)**  >  **Market öngörülerini** Çözümle ' yi seçin.
 
 Analiz terminolojisi hakkında ayrıntılı tanımlamalar için bkz. [ticari Market Analytics terminolojisi ve sık sorulan sorular](./analytics-faq.md).
 
@@ -103,6 +103,19 @@ Bu tabloda, sayfa ziyaretlerinin bir liste görünümü ve seçili teklifleriniz
 
 > [!TIP]
 > Verileri indirmek için herhangi bir pencere öğesinin sağ üst köşesinde bulunan İndir simgesini kullanabilirsiniz. "Thumbs up" veya "thumbs aşağı" simgesine tıklayarak Pencere öğelerinin her biri hakkında geri bildirim sağlayabilirsiniz.
+
+| İçindeki sütun adı<br>kullanıcı arabirimi | Öznitelik adı | Tanım | Programlı olarak sütun adı<br>erişim raporları |
+| ------------ | ------------- | ------------- | ------------- |
+| Tarih | Ziyaret tarihi | Sayfa ziyareti ve/veya CTA 'ın tarihi, Azure Marketi ve/veya AppSource 'daki teklifin sayfasında olay oluşturma ' ya tıklayın. | Tarih |
+| Teklif Adı | Teklif Adı | Ticari Market sunumunun adı. | OfferName |
+| Başvuru etki alanı | Başvuru etki alanı | Sayfanın ziyaret edildiği başvuru etki alanının adı. Sayfa ziyaret için yakalanan bir başvuru etki alanı yoksa, ilgili giriş "başvuru etki alanı yok" olur. |  ReferralDomain |
+| Ülke Adı | Ülke Adı | Sayfanın ziyaret edildiği ülkenin adı. | CountryName |
+| Sayfa ziyaretleri | Sayfa ziyaretleri | Belirli bir tarih için teklif adıyla ilişkili sayfa ziyaretlerinin sayısı. | Pageziyaretler |
+| Hemen alın | Hemen alın | Belirli bir tarih için teklifin sayfasındaki "Şimdi al" CTA öğesine tıklama sayısı. | Şimdi getit |
+| Benimle iletişim kurun | Benimle iletişim kurun | Belirli bir tarih için teklifin sayfasında "benimle Iletişime geçin" ADLı tıklama sayısı. | ContactMe |
+| Test Sürüşü | Test Sürüşü | Belirli bir tarih için teklifin sayfasında "Test Drive" CTA öğesine tıklama sayısı. | TestDrive |
+| Ücretsiz Deneme | Ücretsiz Deneme | Belirli bir tarih için teklifin sayfasındaki "ücretsiz deneme" CTA 'ya tıklama sayısı. | FreeTrial |
+|||||
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
