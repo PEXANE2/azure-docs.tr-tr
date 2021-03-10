@@ -11,12 +11,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: ''
 ms.date: 07/11/2019
-ms.openlocfilehash: 2761b97e595f5e11b00e75cd778ee269b12bfcae
-ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
+ms.openlocfilehash: 49d37a5537ada260eae453bbb5f81716d42657a5
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94917809"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102565833"
 ---
 # <a name="sql-server-instance-migration-to-azure-sql-managed-instance"></a>Azure SQL yönetilen örneğine örnek geçişi SQL Server
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -59,6 +59,26 @@ Tüm belirlenen geçiş engelleyicilerini çözümledikten ve SQL yönetilen ör
 - Saydam veritabanı şifreleme (TDE) veya otomatik yük devretme grupları gibi kullandığınız yeni özellikler CPU ve GÇ kullanımını etkileyebilir.
 
 SQL yönetilen örneği kritik senaryolarda bile% 99,99 kullanılabilirlik sağlar, bu nedenle bu özelliklerden kaynaklanan yükün devre dışı bırakılamaz. Daha fazla bilgi için, [SQL Server ve Azure SQL yönetilen örneği üzerinde farklı performansa neden olabilecek kök nedenleri](https://azure.microsoft.com/blog/key-causes-of-performance-differences-between-sql-managed-instance-and-sql-server/)bölümüne bakın.
+
+#### <a name="in-memory-oltp-memory-optimized-tables"></a>In-Memory OLTP (bellek için iyileştirilmiş tablolar)
+
+SQL Server, yüksek aktarım hızı ve düşük gecikmeli işlem işleme gereksinimlerine sahip iş yüklerini çalıştırmak için bellek için iyileştirilmiş tabloların, bellek için iyileştirilmiş tablo türlerinin ve yerel koda derlenmiş SQL modüllerinin kullanılmasına izin veren In-Memory OLTP yeteneği sağlar. 
+
+> [!IMPORTANT]
+> In-Memory OLTP yalnızca Azure SQL yönetilen örneğindeki İş Açısından Kritik katmanında desteklenir (Genel Amaçlı katmanında desteklenmez).
+
+Şirket içi SQL Server bellek için iyileştirilmiş tablolar veya bellek için iyileştirilmiş tablo türleriniz varsa ve Azure SQL yönetilen örneği 'ne geçiş yapmak istiyorsanız şunlardan birini yapmalısınız:
+
+- In-Memory OLTP 'yi destekleyen hedef Azure SQL yönetilen örneğiniz için İş Açısından Kritik katmanını seçin veya
+- Azure SQL yönetilen örneği 'nde Genel Amaçlı katmanına geçiş yapmak istiyorsanız, bellek için iyileştirilmiş tabloları, bellek için iyileştirilmiş tablo türlerini ve veritabanınızı geçirmeden önce bellek için iyileştirilmiş nesnelerle etkileşime geçen yerel koda derlenmiş SQL modüllerini kaldırın. Aşağıdaki T-SQL sorgusu, Genel Amaçlı katmana geçişten önce kaldırılması gereken tüm nesneleri tanımlamak için kullanılabilir:
+
+```tsql
+SELECT * FROM sys.tables WHERE is_memory_optimized=1
+SELECT * FROM sys.table_types WHERE is_memory_optimized=1
+SELECT * FROM sys.sql_modules WHERE uses_native_compilation=1
+```
+
+Bellek içi teknolojiler hakkında daha fazla bilgi edinmek için bkz. [Azure SQL veritabanı ve Azure SQL yönetilen örneği 'nde bellek içi teknolojileri kullanarak performansı iyileştirme](https://docs.microsoft.com/azure/azure-sql/in-memory-oltp-overview)
 
 ### <a name="create-a-performance-baseline"></a>Performans temeli oluşturma
 

@@ -10,19 +10,19 @@ ms.date: 05/01/2020
 ms.author: mrys
 ms.reviewer: jrasnick
 ms.custom: devx-track-csharp
-ms.openlocfilehash: b93addfe659847187dffe61f12f5a2bfac9dca21
-ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
+ms.openlocfilehash: a8080720480beaeb7bc8692f2dcddddad5da0e3c
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98209636"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102548470"
 ---
 # <a name="azure-synapse-analytics-shared-metadata-tables"></a>Azure SYNAPSE Analytics paylaşılan meta veri tabloları
 
 
 Azure SYNAPSE Analytics, farklı çalışma alanı hesaplama altyapılarının, Apache Spark havuzları ve sunucusuz SQL havuzu arasında veritabanlarını ve Parquet tarafından desteklenen tabloları paylaşmasına izin verir.
 
-Bir Spark işi tarafından bir veritabanı oluşturulduktan sonra, depolama biçimi olarak Parquet kullanan Spark ile birlikte tablo oluşturabilirsiniz. Bu tablolar, Azure SYNAPSE çalışma alanı Spark havuzlarından herhangi biri tarafından sorgulanarak hemen kullanılabilir hale gelir. Bunlar ayrıca, izinlerle ilgili Spark işlerinin herhangi birinden de kullanılabilir.
+Bir Spark işi tarafından bir veritabanı oluşturulduktan sonra, depolama biçimi olarak Parquet kullanan Spark ile birlikte tablo oluşturabilirsiniz. Tablo adları, küçük harflere dönüştürülecek ve küçük harf adı kullanılarak sorgulanmalıdır. Bu tablolar, Azure SYNAPSE çalışma alanı Spark havuzlarından herhangi biri tarafından sorgulanarak hemen kullanılabilir hale gelir. Bunlar ayrıca, izinlerle ilgili Spark işlerinin herhangi birinden de kullanılabilir.
 
 Spark oluşturulan, yönetilen ve dış tablolar aynı zamanda sunucusuz SQL havuzundaki karşılık gelen eşitlenmiş veritabanında aynı ada sahip harici tablolar olarak da kullanılabilir hale getirilir. [SQL 'de Spark tablosunun kullanıma](#expose-a-spark-table-in-sql) sunulması tablo eşitlemesi hakkında daha fazla ayrıntı sağlar.
 
@@ -101,17 +101,17 @@ Bu senaryoda adlı bir Spark veritabanınız vardır `mytestdb` . Bkz. [sunucusu
 Aşağıdaki komutu çalıştırarak, mini bir SQL ile yönetilen Spark tablosu oluşturun:
 
 ```sql
-    CREATE TABLE mytestdb.myParquetTable(id int, name string, birthdate date) USING Parquet
+    CREATE TABLE mytestdb.myparquettable(id int, name string, birthdate date) USING Parquet
 ```
 
-Bu komut, tabloyu `myParquetTable` veritabanında oluşturur `mytestdb` . Kısa bir gecikmeden sonra, tabloyu sunucusuz SQL havuzunuzdaki görebilirsiniz. Örneğin, sunucusuz SQL havuzunuzdaki aşağıdaki ifadeyi çalıştırın.
+Bu komut, tabloyu `myparquettable` veritabanında oluşturur `mytestdb` . Tablo adları, küçük harfe dönüştürülecek. Kısa bir gecikmeden sonra, tabloyu sunucusuz SQL havuzunuzdaki görebilirsiniz. Örneğin, sunucusuz SQL havuzunuzdaki aşağıdaki ifadeyi çalıştırın.
 
 ```sql
     USE mytestdb;
     SELECT * FROM sys.tables;
 ```
 
-`myParquetTable`Sonuçlara dahil edildiğini doğrulayın.
+`myparquettable`Sonuçlara dahil edildiğini doğrulayın.
 
 >[!NOTE]
 >Depolama biçimi olarak Parquet kullanmayan bir tablo eşitlenmeyecektir.
@@ -136,13 +136,13 @@ var schema = new StructType
     );
 
 var df = spark.CreateDataFrame(data, schema);
-df.Write().Mode(SaveMode.Append).InsertInto("mytestdb.myParquetTable");
+df.Write().Mode(SaveMode.Append).InsertInto("mytestdb.myparquettable");
 ```
 
 Artık sunucusuz SQL havuzunuzdaki verileri şu şekilde okuyabilirsiniz:
 
 ```sql
-SELECT * FROM mytestdb.dbo.myParquetTable WHERE name = 'Alice';
+SELECT * FROM mytestdb.dbo.myparquettable WHERE name = 'Alice';
 ```
 
 Sonuç olarak aşağıdaki satırı almalısınız:
@@ -160,26 +160,26 @@ Bu örnekte, yönetilen tablo için önceki örnekte oluşturulan Parquet veri d
 Örneğin, Mini SQL çalıştırması ile:
 
 ```sql
-CREATE TABLE mytestdb.myExternalParquetTable
+CREATE TABLE mytestdb.myexternalparquettable
     USING Parquet
     LOCATION "abfss://<fs>@arcadialake.dfs.core.windows.net/synapse/workspaces/<synapse_ws>/warehouse/mytestdb.db/myparquettable/"
 ```
 
 Yer tutucusunu, `<fs>` çalışma alanı varsayılan dosya sistemi olan dosya sistemi adıyla ve `<synapse_ws>` Bu örneği çalıştırmak için kullandığınız SYNAPSE çalışma alanının adı ile birlikte yer tutucu ile değiştirin.
 
-Önceki örnekte, tablosu veritabanında oluşturulur `myExtneralParquetTable` `mytestdb` . Kısa bir gecikmeden sonra, tabloyu sunucusuz SQL havuzunuzdaki görebilirsiniz. Örneğin, sunucusuz SQL havuzunuzdaki aşağıdaki ifadeyi çalıştırın.
+Önceki örnekte, tablosu veritabanında oluşturulur `myextneralparquettable` `mytestdb` . Kısa bir gecikmeden sonra, tabloyu sunucusuz SQL havuzunuzdaki görebilirsiniz. Örneğin, sunucusuz SQL havuzunuzdaki aşağıdaki ifadeyi çalıştırın.
 
 ```sql
 USE mytestdb;
 SELECT * FROM sys.tables;
 ```
 
-`myExternalParquetTable`Sonuçlara dahil edildiğini doğrulayın.
+`myexternalparquettable`Sonuçlara dahil edildiğini doğrulayın.
 
 Artık sunucusuz SQL havuzunuzdaki verileri şu şekilde okuyabilirsiniz:
 
 ```sql
-SELECT * FROM mytestdb.dbo.myExternalParquetTable WHERE name = 'Alice';
+SELECT * FROM mytestdb.dbo.myexternalparquettable WHERE name = 'Alice';
 ```
 
 Sonuç olarak aşağıdaki satırı almalısınız:

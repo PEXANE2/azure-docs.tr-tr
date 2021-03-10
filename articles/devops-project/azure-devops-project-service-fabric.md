@@ -8,12 +8,12 @@ ms.technology: devops-cicd
 ms.topic: tutorial
 ms.date: 03/24/2020
 author: mlearned
-ms.openlocfilehash: 723f46652643883dc8e718468a9ca9eead50e1aa
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 078331c35c76a3cda97398b1a487933a3f0f5ab8
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91856033"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102559316"
 ---
 # <a name="tutorial-deploy-your-aspnet-core-app-to-azure-service-fabric-by-using-azure-devops-starter"></a>Öğretici: Azure DevOps Starter kullanarak ASP.NET Core uygulamanızı Azure Service Fabric dağıtma
 
@@ -43,15 +43,15 @@ Bu öğreticide şunları yapacaksınız:
 
 DevOps Starter Azure Pipelines ' de bir CI/CD işlem hattı oluşturur. Yeni bir Azure DevOps kuruluşu oluşturabilir veya var olan bir kuruluşu kullanabilirsiniz. DevOps Starter Ayrıca tercih ettiğiniz Azure aboneliğinde Service Fabric kümesi gibi Azure kaynakları oluşturur.
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 
-1. Arama kutusuna **DevOps Starter**yazın ve ardından öğesini seçin. Yeni bir tane oluşturmak için **Ekle** ' ye tıklayın.
+1. Arama kutusuna **DevOps Starter** yazın ve ardından öğesini seçin. Yeni bir tane oluşturmak için **Ekle** ' ye tıklayın.
 
     ![DevOps başlangıç panosu](_img/azure-devops-starter-aks/search-devops-starter.png) 
 
 1. **.Net**' i seçin ve ardından **İleri**' yi seçin.
 
-1. **Uygulama çerçevesi seçin**altında **ASP.NET Core**' yi seçin ve ardından **İleri**' yi seçin.
+1. **Uygulama çerçevesi seçin** altında **ASP.NET Core**' yi seçin ve ardından **İleri**' yi seçin.
 
 1. **Service Fabric kümesi**' ni seçin ve ardından **İleri**' yi seçin. 
 
@@ -82,7 +82,7 @@ DevOps Starter, Azure Pipelines bir CI/CD işlem hattını otomatik olarak yapı
 
 1. **Durum** alanını işaret edin ve ardından üç nokta (...) simgesini seçin. Bir menü, yeni bir derlemeyi sıraya alma, bir derlemeyi duraklatma ve derleme işlem hattını düzenlemeyle çeşitli seçenekleri görüntüler.
 
-1. **Düzenle**’yi seçin.
+1. **Düzenle**'yi seçin.
 
 1. Bu bölmede, derleme işlem hattınızla ilgili çeşitli görevleri inceleyebilirsiniz. Derleme git deposundan kaynak getirme, bağımlılıkları geri yükleme ve dağıtımlar için kullanılan yayınlama çıkışları gibi çeşitli görevleri gerçekleştirir.
 
@@ -112,7 +112,7 @@ DevOps Starter, Azure DevOps kuruluşunuzdan Azure aboneliğinize dağıtım yap
 
 1. **İşlemeler**'i seçin. Bu görünüm, bu dağıtımla ilişkili kod işlemelerini gösterir. Dağıtımlar arasındaki işleme farklılıklarını görmek için yayınları karşılaştırın.
 
-1. **Günlükleri**seçin. Günlüklerde, dağıtım işlemiyle ilgili yararlı bilgiler bulunur. Bunları, dağıtımları sırasında ve sonrasında görüntüleyebilirsiniz.
+1. **Günlükleri** seçin. Günlüklerde, dağıtım işlemiyle ilgili yararlı bilgiler bulunur. Bunları, dağıtımları sırasında ve sonrasında görüntüleyebilirsiniz.
 
 ## <a name="commit-changes-to-git-and-automatically-deploy-them-to-azure"></a>Git 'e değişiklikleri işleyin ve Azure 'a otomatik olarak dağıtın 
 
@@ -158,4 +158,4 @@ Ekibinizin gereksinimlerine uygun olarak bu Azure CI/CD işlem hatlarını isted
 Service Fabric ve mikro hizmetler hakkında daha fazla bilgi edinmek için bkz.:
 
 > [!div class="nextstepaction"]
-> [Uygulamaları oluşturmak için bir mikro hizmetler yaklaşımı kullanma](/azure/devops/pipelines/release/define-multistage-release-process?view=vsts)
+> [Uygulamaları oluşturmak için bir mikro hizmetler yaklaşımı kullanma](/azure/devops/pipelines/release/define-multistage-release-process)

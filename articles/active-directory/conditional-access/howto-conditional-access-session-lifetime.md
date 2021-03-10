@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jlu, calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 205136437fa1a2a33b3b337f5cc9f2dde283faef
-ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
+ms.openlocfilehash: 6116ab543d6dfc886e44206c2a60e4456b39fbc9
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99491949"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102558194"
 ---
 # <a name="configure-authentication-session-management-with-conditional-access"></a>Koşullu erişimle kimlik doğrulama oturumu yönetimini yapılandırma
 
@@ -37,7 +37,7 @@ Oturum açma sıklığı, bir kullanıcıdan bir kaynağa erişmeye çalışırk
 
 Kullanıcı oturum açma sıklığı için Azure Active Directory (Azure AD) varsayılan yapılandırması, 90 günlük bir toplama penceresidir. Kimlik bilgileri için kullanıcılardan genellikle yapılacak bir şey gibi görünse de, bu durum geri yüklenebilir: kimlik bilgilerini düşünmeden girmek için eğitilen kullanıcılar, bunları istemeden kötü amaçlı bir kimlik bilgisi istemine girebilirler.
 
-Bir kullanıcının yeniden oturum açmasını istememe konusunda bir sorun olabilir, çünkü gerçekte BT ilkelerinin ihlal edilmesi oturumu iptal eder. Bir parola değişikliği, uyumsuz bir cihaz veya hesabı devre dışı bırakmak için bazı örnekler vardır (ancak bunlarla sınırlı değildir). Ayrıca, [PowerShell kullanarak kullanıcıların oturumlarını açıkça iptal](/powershell/module/azuread/revoke-azureaduserallrefreshtoken?view=azureadps-2.0&preserve-view=true)edebilirsiniz. Azure AD varsayılan yapılandırması, "oturumlarından oluşan güvenlik durusız" kullanıcılardan kimlik bilgilerini sağlamasını isteme "olarak değişir.
+Bir kullanıcının yeniden oturum açmasını istememe konusunda bir sorun olabilir, çünkü gerçekte BT ilkelerinin ihlal edilmesi oturumu iptal eder. Bir parola değişikliği, uyumsuz bir cihaz veya hesabı devre dışı bırakmak için bazı örnekler vardır (ancak bunlarla sınırlı değildir). Ayrıca, [PowerShell kullanarak kullanıcıların oturumlarını açıkça iptal](/powershell/module/azuread/revoke-azureaduserallrefreshtoken)edebilirsiniz. Azure AD varsayılan yapılandırması, "oturumlarından oluşan güvenlik durusız" kullanıcılardan kimlik bilgilerini sağlamasını isteme "olarak değişir.
 
 Oturum açma sıklığı ayarı, standartlara göre OAUTH2 veya OıDC protokollerini uygulamış olan uygulamalarla birlikte kullanılır. Aşağıdaki Web uygulamaları dahil olmak üzere Windows, Mac ve mobil için Microsoft Native uygulamaların çoğu ayarla uyumlu değil.
 

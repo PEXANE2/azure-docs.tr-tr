@@ -2,13 +2,13 @@
 title: Azure Pipelines ve şablonlar ile CI/CD
 description: Azure Resource Manager şablonları kullanarak Azure Pipelines sürekli tümleştirmenin nasıl yapılandırılacağını açıklar. Bir PowerShell betiğini kullanmayı veya dosyaları bir hazırlama konumuna kopyalamayı ve buradan dağıtmayı gösterir.
 ms.topic: conceptual
-ms.date: 02/05/2021
-ms.openlocfilehash: ea1ccac00f121bd81fd8b9b1f182b565fc53d214
-ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
+ms.date: 03/09/2021
+ms.openlocfilehash: 4a2f1f15de0abd802f3dce138b2cea33e52e3dfc
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99594206"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102561951"
 ---
 # <a name="integrate-arm-templates-with-azure-pipelines"></a>ARM şablonlarını Azure Pipelines ile tümleştirme
 
@@ -234,4 +234,5 @@ steps:
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-GitHub eylemleri ile ARM şablonlarını kullanma hakkında bilgi edinmek için bkz. [GitHub eylemlerini kullanarak Azure Resource Manager şablonlarını dağıtma](deploy-github-actions.md).
+* İşlem hattındaki durum işlemini kullanmak için, bkz. bir işlem hattındaki [What-If test ARM şablonları](https://4bes.nl/2021/03/06/test-arm-templates-with-what-if/).
+* GitHub eylemleri ile ARM şablonlarını kullanma hakkında bilgi edinmek için bkz. [GitHub eylemlerini kullanarak Azure Resource Manager şablonlarını dağıtma](deploy-github-actions.md).

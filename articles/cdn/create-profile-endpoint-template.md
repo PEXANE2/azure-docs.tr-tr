@@ -1,7 +1,7 @@
 ---
 title: 'Hızlı başlangıç: profil ve uç nokta Kaynak Yöneticisi şablonu oluşturma'
 titleSuffix: Azure Content Delivery Network
-description: Bir Azure Content Delivery Network profili ve uç nokta Kaynak Yöneticisi şablonu oluşturmayı öğrenin
+description: Bu hızlı başlangıçta, bir Azure Content Delivery Network profili ve uç nokta Kaynak Yöneticisi şablonu oluşturmayı öğrenin
 services: cdn
 author: asudbring
 manager: KumudD
@@ -12,12 +12,12 @@ ms.topic: quickstart
 ms.custom: subject-armqs, devx-track-azurecli
 ms.date: 06/25/2020
 ms.author: allensu
-ms.openlocfilehash: b215dfff3bf62b67b89aa260b0134381de6edeae
-ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
+ms.openlocfilehash: a36484bea3a2bc9caadc5cf4482aae3bea84eafa
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/19/2020
-ms.locfileid: "97695714"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102560472"
 ---
 # <a name="quickstart-create-an-azure-cdn-profile-and-endpoint---arm-template"></a>Hızlı başlangıç: Azure CDN profili ve uç nokta ARM şablonu oluşturma
 
@@ -96,7 +96,7 @@ New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateUri
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-### <a name="azure-cli"></a>Azure CLI
+### <a name="azure-cli"></a>Azure CLI’si
 
 Artık gerekli değilse, [az Group Delete](/cli/azure/group#az-group-delete) komutunu kullanarak kaynak grubunu ve içinde yer alan tüm kaynakları kaldırabilirsiniz.
 
@@ -107,7 +107,7 @@ Artık gerekli değilse, [az Group Delete](/cli/azure/group#az-group-delete) kom
 
 ### <a name="powershell"></a>PowerShell
 
-Artık gerekli değilse, [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup?view=latest) komutunu kullanarak kaynak grubunu ve içinde yer alan tüm kaynakları kaldırabilirsiniz.
+Artık gerekli değilse, [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) komutunu kullanarak kaynak grubunu ve içinde yer alan tüm kaynakları kaldırabilirsiniz.
 
 ```azurepowershell-interactive 
 Remove-AzResourceGroup -Name myResourceGroupCDN
@@ -126,5 +126,5 @@ Bu hızlı başlangıçta şunu oluşturdunuz:
 
 Azure CDN ve Azure Resource Manager hakkında daha fazla bilgi edinmek için aşağıdaki makalelere ilerleyin.
 
-* [Azure CDN genel bakışını](cdn-overview.md) okuyun
-* [Azure Resource Manager](../azure-resource-manager/management/overview.md) hakkında daha fazla bilgi edinin
+> [!div class="nextstepaction"]
+> [Öğretici: bir Web uygulamasından statik içerik sağlamak için CDN kullanma](cdn-add-to-web-app.md)

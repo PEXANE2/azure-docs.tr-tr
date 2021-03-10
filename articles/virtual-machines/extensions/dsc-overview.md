@@ -1,7 +1,7 @@
 ---
 title: Azure için istenen durum yapılandırması genel bakış
 description: PowerShell Istenen durum yapılandırması (DSC) için Microsoft Azure uzantısı işleyicisini nasıl kullanacağınızı öğrenin. Makale önkoşulları, mimarisi ve cmdlet 'leri içerir.
-services: virtual-machines-windows
+services: virtual-machines
 documentationcenter: ''
 author: mgoedtel
 manager: evansma
@@ -9,20 +9,21 @@ editor: ''
 tags: azure-resource-manager
 keywords: dsc
 ms.assetid: bbacbc93-1e7b-4611-a3ec-e3320641f9ba
-ms.service: virtual-machines-windows
+ms.service: virtual-machines
 ms.subservice: extensions
+ms.collection: windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: na
 ms.date: 07/13/2020
 ms.author: magoedte
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 17ada83f6fa1b57f8dd72d591b6625f25e9a2388
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: dcdc325633aff5ab828cb1c82f4bb2d8becee967
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94955863"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102560047"
 ---
 # <a name="introduction-to-the-azure-desired-state-configuration-extension-handler"></a>Azure Desired State Configuration uzantısı işleyicisine giriş
 
@@ -38,7 +39,7 @@ Sanal makinede yerel olarak bulunmayan sürekli raporlama yok.
 
 Bu makalede her iki senaryo hakkında bilgi verilmektedir: Otomasyon ekleme için DSC uzantısını kullanma ve DSC uzantısını Azure SDK kullanarak VM 'lere yapılandırma atamak için bir araç olarak kullanma.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - **Yerel makine**: Azure VM uzantısıyla etkileşim kurmak için Azure Portal ya da Azure PowerShell SDK 'sını kullanmanız gerekir.
 - **Konuk Aracısı**: DSC yapılandırması tarafından YAPıLANDıRıLAN Azure VM, Windows Management Framework (WMF) 4,0 veya üstünü destekleyen bir işletim sistemi olmalıdır. Desteklenen işletim sistemi sürümlerinin tam listesi için [DSC Uzantısı Sürüm geçmişine](../../automation/automation-dsc-extension-history.md)bakın.

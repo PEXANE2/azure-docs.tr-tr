@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: sumitp
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3bba64f8c07545107d57f79ae94dab96e517815f
-ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
+ms.openlocfilehash: ceea2dbcf408b6b35ef7c26580278d3979244119
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97900714"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102551547"
 ---
 # <a name="identify-and-resolve-license-assignment-problems-for-a-group-in-azure-active-directory"></a>Azure Active Directory bir grup için lisans atama sorunlarını tanımla ve çözümle
 
@@ -106,7 +106,7 @@ Exchange Online kullanıyorsanız, kuruluşunuzdaki bazı kullanıcılar aynı a
 > ```
 > Get-Recipient -ResultSize unlimited | where {$_.EmailAddresses -match "user@contoso.onmicrosoft.com"} | fL Name, RecipientType,emailaddresses
 > ```
-> Bu sorun hakkında daha fazla bilgi için bkz. [Exchange Online 'da "proxy adresi zaten kullanılıyor" hata iletisi](https://support.microsoft.com/help/3042584/-proxy-address-address-is-already-being-used-error-message-in-exchange-online). Bu makalede, [uzak PowerShell kullanarak Exchange Online 'a bağlanma](/powershell/exchange/connect-to-exchange-online-powershell?view=exchange-ps)hakkında bilgiler de yer almaktadır.
+> Bu sorun hakkında daha fazla bilgi için bkz. [Exchange Online 'da "proxy adresi zaten kullanılıyor" hata iletisi](https://support.microsoft.com/help/3042584/-proxy-address-address-is-already-being-used-error-message-in-exchange-online). Bu makalede, [uzak PowerShell kullanarak Exchange Online 'a bağlanma](/powershell/exchange/connect-to-exchange-online-powershell)hakkında bilgiler de yer almaktadır.
 
 Etkilenen kullanıcılar için tüm proxy adres sorunlarını çözdükten sonra, lisansların artık uygulanabilir olduğundan emin olmak için Grup üzerinde lisans işlemeyi zorladığınızdan emin olun.
 

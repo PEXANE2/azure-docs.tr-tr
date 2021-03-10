@@ -2,16 +2,17 @@
 title: Azure 'da Linux VM 'de Cloud-init kullanma
 description: Azure CLı ile oluşturma sırasında bir Linux sanal makinesine paket güncelleştirmek ve yüklemek için Cloud-init kullanma
 author: cynthn
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
+ms.collection: linux
 ms.topic: how-to
 ms.date: 04/20/2018
 ms.author: cynthn
-ms.openlocfilehash: 98198a2eb2476138f7794b26c30397798ede32b1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bbd3c30cb00dae25afeea356cefb86a9c860cde5
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87373445"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102559350"
 ---
 # <a name="use-cloud-init-to-update-and-install-packages-in-a-linux-vm-in-azure"></a>Azure 'daki bir Linux sanal makinesine paket güncelleştirmek ve onları yüklemek için Cloud-init kullanma
 Bu makalede, Azure 'da sağlama zamanında bir Linux sanal makinesi (VM) veya sanal makine ölçek kümelerinde paketleri güncelleştirmek için [Cloud-init](https://cloudinit.readthedocs.io) ' in nasıl kullanılacağı gösterilmektedir. Bu Cloud-init betikleri, kaynaklar Azure tarafından sağlandıktan sonra ilk önyüklemede çalışır. Cloud-init 'in Azure 'da ve desteklenen Linux korumalar 'daki yerel olarak nasıl çalıştığı hakkında daha fazla bilgi için bkz. [Cloud-init Overview](using-cloud-init.md)

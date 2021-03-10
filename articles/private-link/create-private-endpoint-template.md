@@ -1,19 +1,19 @@
 ---
-title: Azure özel bağlantısında özel uç nokta oluşturma
+title: Hızlı başlangıç-ARM şablonu kullanarak özel uç nokta oluşturma
 description: Bu hızlı başlangıçta özel uç nokta oluşturmak için bir Azure Resource Manager şablonu (ARM şablonu) kullanırsınız.
 services: private-link
-author: mblanco77
+author: asudbring
 ms.service: private-link
 ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 05/26/2020
 ms.author: allensu
-ms.openlocfilehash: 553d36a86671617417b6b9b1ea47966c3ba3fdf6
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: e80adc16e08e676ac2daabec01a11c10d537c547
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88705818"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102562954"
 ---
 # <a name="quickstart-create-a-private-endpoint-by-using-an-arm-template"></a>Hızlı başlangıç: ARM şablonu kullanarak özel uç nokta oluşturma
 
@@ -63,7 +63,7 @@ ARM şablonunu Azure 'a dağıtma:
 2. Kaynak grubunuzu seçin veya oluşturun.
 3. SQL Yöneticisi oturum açma ve parolasını yazın.
 4. Sanal Makine Yöneticisi Kullanıcı adını ve parolasını yazın.
-5. Hüküm ve koşullar ekstresini okuyun. Kabul ediyorsanız, satın alma sırasında **belirtilen hüküm ve koşulları kabul**ediyorum ' u seçin  >  **Purchase**. Dağıtımın tamamlanması 20 dakika veya daha uzun sürebilir.
+5. Hüküm ve koşullar ekstresini okuyun. Kabul ediyorsanız, satın alma sırasında **belirtilen hüküm ve koşulları kabul** ediyorum ' u seçin  >  . Dağıtımın tamamlanması 20 dakika veya daha uzun sürebilir.
 
 ## <a name="validate-the-deployment"></a>Dağıtımı doğrulama
 
@@ -76,7 +76,7 @@ ARM şablonunu Azure 'a dağıtma:
 
 1. Portalın arama çubuğunda _Myvm {UniqueId}_ girin.
 
-2. **Bağlan**'ı seçin. **Sanal makineye bağlan** açılır.
+2. **Bağlan**’ı seçin. **Sanal makineye bağlan** açılır.
 
 3. **RDP Dosyasını İndir**’i seçin. Azure bir Uzak Masaüstü Protokolü (_. rdp_) dosyası oluşturur ve bilgisayarınıza indirir.
 
@@ -87,7 +87,7 @@ ARM şablonunu Azure 'a dağıtma:
    b. VM oluştururken belirttiğiniz kullanıcı adını ve parolayı girin.
 
       > [!NOTE]
-      > **More choices**  >  VM oluştururken girdiğiniz kimlik bilgilerini belirtmek için**farklı bir hesap kullan**' ı seçmeniz gerekebilir.
+      >   >  VM oluştururken girdiğiniz kimlik bilgilerini belirtmek için **farklı bir hesap kullan**' ı seçmeniz gerekebilir.
 
 5. **Tamam**’ı seçin.
 
@@ -114,14 +114,14 @@ ARM şablonunu Azure 'a dağıtma:
 
 3.  SQL Server Management Studio 'i yükler.
 4.   **Sunucuya Bağlan**' da bu bilgileri girin veya seçin:
-    - **Sunucu türü**: **veritabanı altyapısını**seçin.
-    - **Sunucu adı**: **SqlServer {UniqueId}. Database. Windows. net**öğesini seçin.
+    - **Sunucu türü**: **veritabanı altyapısını** seçin.
+    - **Sunucu adı**: **SqlServer {UniqueId}. Database. Windows. net** öğesini seçin.
     - **Kullanıcı adı**: oluşturma sırasında sağlanmış bir Kullanıcı adı girin.
     - **Parola**: oluşturma sırasında bir parola girin.
     - **Parolayı anımsa**: **Evet**' i seçin.
 
-5.  **Bağlan**'ı seçin.
-6.  Soldaki menüden **veritabanlarına**gidin.
+5.  **Bağlan**’ı seçin.
+6.  Soldaki menüden **veritabanlarına** gidin.
 7.  İsteğe bağlı olarak, _örnek DB_'den bilgi oluşturabilir veya sorgulayabilirsiniz.
 8.  _Myvm {UniqueId}_ Ile uzak masaüstü bağlantısını kapatın.
 
@@ -137,4 +137,6 @@ Remove-AzResourceGroup -Name <your resource group name>
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Azure özel bağlantısı](private-link-overview.md)hakkında daha fazla bilgi edinin.
+Özel bir uç noktayı destekleyen hizmetler hakkında daha fazla bilgi için bkz.:
+> [!div class="nextstepaction"]
+> [Özel bağlantı kullanılabilirliği](private-link-overview.md#availability)

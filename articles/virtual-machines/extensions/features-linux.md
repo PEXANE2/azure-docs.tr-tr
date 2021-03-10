@@ -1,26 +1,19 @@
 ---
 title: Linux için Azure VM uzantıları ve özellikleri
 description: Linux 'ta Azure sanal makineleri için neler sundukları veya geliştirdikleri ile gruplanan uzantıları öğrenin.
-services: virtual-machines-linux
-documentationcenter: ''
-author: axayjo
-manager: gwallace
-editor: ''
-tags: azure-service-management,azure-resource-manager
-ms.assetid: 52f5d0ec-8f75-49e7-9e15-88d46b420e63
-ms.service: virtual-machines-linux
-ms.subservice: extensions
 ms.topic: article
-ms.tgt_pltfrm: vm-linux
-ms.workload: infrastructure-services
+ms.service: virtual-machines
+ms.subservice: extensions
+author: amjads1
+ms.author: amjads
+ms.collection: linux
 ms.date: 03/30/2018
-ms.author: akjosh
-ms.openlocfilehash: 66687f5954894d962a67767669081de15a30c7c3
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: b6a834ede381ee319d3ff7678f49febd11e34a5d
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101672620"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102559788"
 ---
 # <a name="virtual-machine-extensions-and-features-for-linux"></a>Linux için sanal makine uzantıları ve özellikleri
 
@@ -84,7 +77,7 @@ Azure VM uzantıları, mevcut VM 'lerde çalışır, bu, önceden dağıtılmı�
 
 Aşağıdaki yöntemler mevcut bir VM 'ye karşı bir uzantı çalıştırmak için kullanılabilir.
 
-### <a name="azure-cli"></a>Azure CLI
+### <a name="azure-cli"></a>Azure CLI’si
 
 Azure VM uzantıları, [az VM Extension set](/cli/azure/vm/extension#az-vm-extension-set) komutuyla mevcut bir VM 'ye karşı çalıştırılabilir. Aşağıdaki örnek, *Myresourcegroup* adlı kaynak grubunda *MYVM* adlı bir VM 'ye karşı özel Betik uzantısı 'nı çalıştırır. Örnek kaynak grubu adı, VM adı ve betiği (https: \/ /RAW.githubusercontent.com/Me/Project/Hello.sh) kendi bilgileriniz ile değiştirin. 
 
@@ -404,7 +397,7 @@ Azure portal bir uzantıyı aşağıdaki gibi da kaldırabilirsiniz:
 
 ## <a name="common-vm-extension-reference"></a>Ortak VM Uzantısı başvurusu
 
-| Uzantı adı | Açıklama | Daha fazla bilgi |
+| Uzantı adı | Description | Daha fazla bilgi |
 | --- | --- | --- |
 | Linux için özel Betik uzantısı |Azure sanal makinesinde betikleri çalıştırma |[Linux için özel Betik uzantısı](custom-script-linux.md) |
 | VM Erişimi uzantısı |Bir Azure sanal makinesine yeniden erişim elde edin |[VM Erişimi uzantısı](https://github.com/Azure/azure-linux-extensions/tree/master/VMAccess) |

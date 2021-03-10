@@ -5,15 +5,15 @@ author: roygara
 ms.date: 08/24/2020
 ms.topic: how-to
 ms.author: rogarana
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: 3882aae0fb1ecf330917f886555208c3937dd9a5
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: b5f58b549fc9d879f6c2e5515c679d82c3ff44e4
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93358227"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102560370"
 ---
 # <a name="use-the-azure-portal-to-enable-double-encryption-at-rest-for-managed-disks"></a>Yönetilen diskler için REST 'te çift şifrelemeyi etkinleştirmek üzere Azure portal kullanın
 
@@ -30,7 +30,7 @@ Azure Disk Depolama, yönetilen diskler için REST 'de çift şifrelemeyi destek
 
     :::image type="content" source="media/virtual-machines-disks-double-encryption-at-rest-portal/double-encryption-disk-encryption-sets-search.png" alt-text="Ana Azure portal ekran görüntüsü, disk şifreleme kümeleri arama çubuğunda vurgulanır.":::
 
-1. **+ Ekle** öğesini seçin.
+1. **+ Ekle**'yi seçin.
 
     :::image type="content" source="media/virtual-machines-disks-double-encryption-at-rest-portal/double-encryption-add-disk-encryption-set.png" alt-text="Disk şifreleme kümesi dikey penceresinin ekran görüntüsü, + Ekle vurgulanır.":::
 
@@ -51,7 +51,7 @@ Azure Disk Depolama, yönetilen diskler için REST 'de çift şifrelemeyi destek
 
     :::image type="content" source="media/virtual-machines-disks-double-encryption-at-rest-portal/double-encryption-select-key-vault.png" alt-text="Key Vault oluşturma dikey penceresinin ekran görüntüsü.":::
 
-1. **Oluştur** ’u seçin.
+1. **Oluştur**’u seçin.
 1. Oluşturduğunuz disk şifreleme kümesine gidin ve görüntülenen hatayı seçin. Bu işlem, disk şifreleme kümesini çalışacak şekilde yapılandırır.
 
     :::image type="content" source="media/virtual-machines-disks-double-encryption-at-rest-portal/double-encryption-disk-set-error.png" alt-text="Disk şifreleme kümesi görüntülenirken hata, hata metni: bir disk, resim veya anlık görüntüyü bu disk şifrelemesi kümesiyle ilişkilendirmek Için, Anahtar Kasası 'na izin vermeniz gerekir.":::
@@ -64,7 +64,7 @@ Azure Disk Depolama, yönetilen diskler için REST 'de çift şifrelemeyi destek
 1. **Şifrelemeyi** seçin.
 1. **Şifreleme türü** için, **platform tarafından yönetilen ve müşteri tarafından yönetilen anahtarlarla çift şifrelemeyi** seçin.
 1. Disk şifreleme kümesini seçin.
-1. **Kaydet** ' i seçin.
+1. **Kaydet**' i seçin.
 
     :::image type="content" source="media/virtual-machines-disks-double-encryption-at-rest-portal/double-encryption-enable-disk-blade.png" alt-text="Yönetilen diskinizin şifreleme dikey penceresinin ekran görüntüsü, belirtilen şifreleme türü vurgulanır.":::
 

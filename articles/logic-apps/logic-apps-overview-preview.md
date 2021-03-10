@@ -1,28 +1,28 @@
 ---
 title: Azure Logic Apps Önizleme sürümüne genel bakış
-description: Azure Logic Apps Preview, uygulamaları, verileri, hizmetleri ve sistemleri kurumsal düzeyde senaryolar için en az kodla tümleştiren otomatik durum bilgisiz ve durum bilgisi olmayan iş akışları oluşturmaya yönelik bir bulut çözümüdür.
+description: Azure Logic Apps Preview, uygulamaları, verileri, hizmetleri ve sistemleri kurumsal düzeyde senaryolar için en az kodla tümleştiren otomatik, tek kiracılı, durum bilgisiz ve durum bilgisi olmayan iş akışları oluşturmaya yönelik bir bulut çözümüdür.
 services: logic-apps
 ms.suite: integration
 ms.reviewer: estfan, logicappspm, az-logic-apps-dev
 ms.topic: conceptual
-ms.date: 03/05/2021
-ms.openlocfilehash: ad059931d87603c957e446e82b894731dca984dd
-ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
+ms.date: 03/08/2021
+ms.openlocfilehash: d53a36d99c9a54fdfef7baceb50edb4e8f5ae4c8
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102442749"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102561866"
 ---
 # <a name="overview-azure-logic-apps-preview"></a>Genel Bakış: Azure Logic Apps Önizleme
 
 > [!IMPORTANT]
 > Bu özellik genel önizleme aşamasındadır, bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yüklerinde kullanılması önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Azure Logic Apps önizlemesi sayesinde, yeni **mantıksal uygulama (Önizleme)** kaynak türünü kullanarak [ *durum* *bilgisiz ve durum bilgisi* olmayan iş akışlarını](#stateful-stateless) içeren mantıksal uygulamalar oluşturup çalıştırarak, uygulamalar, veriler, bulut hizmetleri ve sistemler arasında Otomasyon ve tümleştirme çözümleri oluşturabilirsiniz. Bu yeni mantıksal uygulama türü ile, yalnızca Azure, ancak Docker Kapsayıcıları değil çeşitli barındırma ortamlarında dağıtım ve çalıştırma için taşınabilirlik, daha iyi performans ve esneklik sağlayan, yeniden tasarlanan Azure Logic Apps Önizleme çalışma zamanı tarafından desteklenen birden çok iş akışı oluşturabilirsiniz.
+Azure Logic Apps önizlemesi sayesinde, yeni **mantıksal uygulama (Önizleme)** kaynak türü ile tek kiracılı mantıksal uygulamalar oluşturup çalıştırarak, uygulamalar, veriler, bulut hizmetleri ve sistemler arasında Otomasyon ve tümleştirme çözümleri oluşturabilirsiniz. Bu tek kiracılı mantıksal uygulama türünü kullanarak, yalnızca Azure değil de Docker kapsayıcıları dahil olmak üzere çeşitli barındırma ortamlarında taşınabilirlik, daha iyi performans ve çalıştırma esnekliği sağlayan, yeniden tasarlanan Azure Logic Apps Önizleme çalışma zamanı tarafından desteklenen birden fazla [ *durum* *bilgisiz ve olmayan* iş akışı](#stateful-stateless) oluşturabilir.
 
-Bu nasıl mümkün? Yeniden tasarlanan çalışma zamanı [Azure işlevleri genişletilebilirlik modelini](../azure-functions/functions-bindings-register.md) kullanır ve Azure işlevleri çalışma zamanı 'nda bir uzantı olarak barındırılır. Bu mimari, yeni mantıksal uygulama türünü Azure Işlevlerinin çalıştığı her yerde çalıştırabilmeniz anlamına gelir. Yeniden tasarlanan çalışma zamanını neredeyse tüm ağ topolojisinde barındırabilir ve iş akışlarınız için gereken gerekli iş yükünü işlemek için kullanılabilir işlem boyutunu seçebilirsiniz. Daha fazla bilgi için bkz. [Azure Işlevlerine giriş](../azure-functions/functions-overview.md) ve [Azure işlevleri Tetikleyicileri ve bağlamaları](../azure-functions/functions-triggers-bindings.md).
+Bu nasıl mümkün? Yeniden tasarlanan çalışma zamanı [Azure işlevleri genişletilebilirlik modelini](../azure-functions/functions-bindings-register.md) kullanır ve Azure işlevleri çalışma zamanı 'nda bir uzantı olarak barındırılır. Bu mimari, tek kiracılı mantıksal uygulama türünü Azure Işlevlerinin çalıştığı her yerde çalıştırabilmeniz anlamına gelir. Yeniden tasarlanan çalışma zamanını neredeyse tüm ağ topolojisinde barındırabilir ve iş akışlarınız için gereken gerekli iş yükünü işlemek için kullanılabilir işlem boyutunu seçebilirsiniz. Daha fazla bilgi için bkz. [Azure Işlevlerine giriş](../azure-functions/functions-overview.md) ve [Azure işlevleri Tetikleyicileri ve bağlamaları](../azure-functions/functions-triggers-bindings.md).
 
-[Azure Portal başlatarak](create-stateful-stateless-workflows-azure-portal.md) veya [Azure Logic Apps (önizleme) uzantısıyla Visual Studio Code bir proje oluşturarak](create-stateful-stateless-workflows-visual-studio-code.md) **mantıksal uygulama (Önizleme)** kaynağını oluşturabilirsiniz. Ayrıca, Visual Studio Code ' de, iş akışlarınızı geliştirme ortamınızda oluşturup *yerel olarak çalıştırabilirsiniz* . Portalı veya Visual Studio Code kullanmanıza bakılmaksızın, yeni mantıksal uygulama türünü aynı barındırma ortamları türlerinde dağıtabilir ve çalıştırabilirsiniz.
+[Azure Portal başlatarak](create-stateful-stateless-workflows-azure-portal.md) veya [Azure Logic Apps (önizleme) uzantısıyla Visual Studio Code bir proje oluşturarak](create-stateful-stateless-workflows-visual-studio-code.md) **mantıksal uygulama (Önizleme)** kaynağını oluşturabilirsiniz. Ayrıca, Visual Studio Code ' de, iş akışlarınızı geliştirme ortamınızda oluşturup *yerel olarak çalıştırabilirsiniz* . Portalı veya Visual Studio Code kullanmanıza bakılmaksızın, tek kiracılı mantıksal uygulama türünü aynı barındırma ortamları türlerinde dağıtabilir ve çalıştırabilirsiniz.
 
 Bu genel bakışta aşağıdaki alanlarda yer verilmiştir:
 
@@ -48,7 +48,7 @@ Daha fazla bilgi için şu diğer konuları gözden geçirin:
 
 ## <a name="how-does-azure-logic-apps-preview-differ"></a>Azure Logic Apps önizlemesi nasıl farklıdır?
 
-Azure Logic Apps Preview çalışma zamanı, [Azure işlevleri](../azure-functions/functions-overview.md) genişletilebilirliği kullanır ve Azure işlevleri çalışma zamanı 'nda bir uzantı olarak barındırılır. Bu mimari, yeni mantıksal uygulama türünü Azure Işlevlerinin çalıştığı her yerde çalıştırabilmeniz anlamına gelir. Azure Logic Apps Preview çalışma zamanını istediğiniz neredeyse her türlü ağ topolojisinde barındırabilir ve iş akışınız için gereken gerekli iş yükünü işlemek için kullanılabilir işlem boyutunu seçebilirsiniz. Azure Işlevleri genişletilebilirliği hakkında daha fazla bilgi için bkz. [WebJobs SDK: özel giriş ve çıkış bağlamaları oluşturma](https://github.com/Azure/azure-webjobs-sdk/wiki/Creating-custom-input-and-output-bindings).
+Azure Logic Apps Preview çalışma zamanı, [Azure işlevleri](../azure-functions/functions-overview.md) genişletilebilirliği kullanır ve Azure işlevleri çalışma zamanı 'nda bir uzantı olarak barındırılır. Bu mimari, tek kiracılı mantıksal uygulama türünü Azure Işlevlerinin çalıştığı her yerde çalıştırabilmeniz anlamına gelir. Azure Logic Apps Preview çalışma zamanını istediğiniz neredeyse her türlü ağ topolojisinde barındırabilir ve iş akışınız için gereken gerekli iş yükünü işlemek için kullanılabilir işlem boyutunu seçebilirsiniz. Azure Işlevleri genişletilebilirliği hakkında daha fazla bilgi için bkz. [WebJobs SDK: özel giriş ve çıkış bağlamaları oluşturma](https://github.com/Azure/azure-webjobs-sdk/wiki/Creating-custom-input-and-output-bindings).
 
 Bu yeni yaklaşımla, Azure Logic Apps Preview çalışma zamanı ve iş akışlarınız uygulamanızın bir parçası olarak birlikte paketleyebilir. Bu özellik, yalnızca yapıları barındırma ortamına kopyalayarak ve uygulamanızı başlatarak iş akışlarınızı dağıtmanıza ve çalıştırmanıza olanak tanır. Bu yaklaşım ayrıca, üretim ortamlarında değişiklik dağıtmadan önce gerekli testleri ve doğrulamaları çalıştırmaya yönelik iş akışı projelerinin çevresinde dağıtım işlem hatları oluşturmak için daha standartlaştırılmış bir deneyim sağlar. Daha fazla bilgi için bkz. [Azure Logic Apps her yerde çalıştırma-çalışma zamanı derinlemesine](https://techcommunity.microsoft.com/t5/integrations-on-azure/azure-logic-apps-running-anywhere-runtime-deep-dive/ba-p/1835564)bakış.
 
@@ -56,16 +56,18 @@ Aşağıdaki tabloda, çalıştığı ortama göre iş akışlarının kaynaklar
 
 | Ortam | Kaynak paylaşımı ve tüketimi |
 |-------------|----------------------------------|
-| Azure Logic Apps (çok kiracılı) | *Birden çok Kiracıdaki müşterilerden alınan* iş akışları aynı işleme (işlem), depolama, ağ ve benzeri bir şekilde paylaşır. |
-| Azure Logic Apps (Önizleme) | *Aynı mantıksal uygulamadaki* iş akışları aynı işleme (işlem), depolama, ağ ve benzeri bir şekilde paylaşır. |
+| Azure Logic Apps (çok kiracılı) | *Birden çok kiracının içindeki müşterilerden alınan* iş akışları aynı işleme (işlem), depolama, ağ vb. paylaşır. |
+| Azure Logic Apps (Önizleme, tek kiracılı) | *Aynı mantıksal uygulamadaki iş akışları ve tek bir kiracı* aynı işleme (işlem), depolama, ağ ve benzeri bir şekilde paylaşır. |
 | Tümleştirme hizmeti ortamı (önizlemede kullanılamaz) | *Aynı ortamdaki* iş akışları aynı işleme (işlem), depolama, ağ vb. paylaşır. |
 ||||
 
-Bu arada, Azure portal özgün mantıksal uygulama türünü ve Visual Studio Code özgün Azure Logic Apps uzantısını kullanarak oluşturabilirsiniz. Geliştirme deneyimleri orijinal ve yeni mantıksal uygulama türleri arasında farklılık gösterebilse de Azure aboneliğiniz her iki türü de içerebilir. Azure aboneliğinizde dağıtılan tüm mantıksal uygulamaları görüntüleyebilir ve bunlara erişebilirsiniz, ancak uygulamalar kendi kategorilerine ve bölümlerine göre düzenlenir.
+Bu arada, Azure portal çok kiracılı mantıksal uygulama türünü ve Visual Studio Code çok kiracılı Azure Logic Apps uzantısını kullanarak de oluşturabilirsiniz. Geliştirme deneyimleri, çok kiracılı ve tek kiracılı mantıksal uygulama türleri arasında farklılık gösterir, ancak Azure aboneliğiniz her iki türü de içerebilir. Azure aboneliğinizde dağıtılan tüm mantıksal uygulamaları görüntüleyebilir ve bunlara erişebilirsiniz, ancak uygulamalar kendi kategorileriyle ve bölümlerinde düzenlenir.
 
 <a name="stateful-stateless"></a>
 
 ## <a name="stateful-and-stateless-workflows"></a>Durum bilgisi olan ve durumsuz iş akışları
+
+Tek kiracılı mantıksal uygulama türü ile, bu iş akışı türlerini aynı mantıksal uygulama içinde oluşturabilirsiniz:
 
 * *Durum Bilgisi Olan*
 
@@ -149,9 +151,9 @@ Azure Logic Apps önizleme birçok geçerli ve ek özellik içerir, örneğin:
 
   * [Azure Logic Apps önizlemesiyle her yerde ağ olasılıklarını çalıştırmak Azure Logic Apps](https://techcommunity.microsoft.com/t5/integrations-on-azure/logic-apps-anywhere-networking-possibilities-with-logic-app/ba-p/2105047)
 
-* **Mantıksal uygulama (Önizleme)** kaynağında bireysel iş akışları tarafından kullanılan yönetilen bağlantılar için erişim anahtarlarını yeniden oluşturun. Bu görev için, mantıksal uygulama kaynak düzeyi değil, [ **Logic Apps** kaynağı için aynı adımları izleyin](logic-apps-securing-a-logic-app.md#regenerate-access-keys).
+* Tek kiracılı **mantıksal uygulama (Önizleme)** kaynağında bireysel iş akışları tarafından kullanılan yönetilen bağlantılar için erişim anahtarlarını yeniden oluşturun. Bu görev için, [çok kiracılı **Logic Apps** kaynağıyla aynı adımları izleyin](logic-apps-securing-a-logic-app.md#regenerate-access-keys), mantıksal uygulama kaynak düzeyi değil ayrı iş akışı düzeyinde.
 
-* Önizleme tasarlayıcı olmayan tasarımcı ile aynı adımları izleyerek yeni tasarımcıya paralel dallar ekleyin.
+* Çok kiracılı tasarımcı ile aynı adımları izleyerek, tek kiracılı tasarımcıya paralel dallar ekleyin.
 
 Daha fazla bilgi için bkz. GitHub 'daki [değişen, sınırlı, kullanılamayan ve desteklenmeyen yetenekler](#limited-unavailable-unsupported) ve [Logic Apps genel önizleme bilinen sorunlar sayfası](https://github.com/Azure/logicapps/blob/master/articles/logic-apps-public-preview-known-issues.md).
 
@@ -159,14 +161,14 @@ Daha fazla bilgi için bkz. GitHub 'daki [değişen, sınırlı, kullanılamayan
 
 ## <a name="pricing-model"></a>Fiyatlandırma modeli
 
-Azure portal yeni mantıksal uygulama türünü oluştururken veya Visual Studio Code dağıtırken, mantıksal uygulamanızın kullanması için [App Service veya Premium](../azure-functions/functions-scale.md)bir barındırma planı seçmelisiniz. Bu plan, mantıksal uygulamanızı çalıştırmak için geçerli olan fiyatlandırma modelini belirler. App Service planını seçerseniz, ayrıca bir [fiyatlandırma katmanı](../app-service/overview-hosting-plans.md)da seçmeniz gerekir.
+Azure portal veya Visual Studio Code dağıtım için tek kiracılı mantıksal uygulama türünü oluşturduğunuzda, mantıksal uygulamanızın kullanması için [App Service veya Premium](../azure-functions/functions-scale.md)bir barındırma planı seçmelisiniz. Bu plan, mantıksal uygulamanızı çalıştırmak için geçerli olan fiyatlandırma modelini belirler. App Service planını seçerseniz, ayrıca bir [fiyatlandırma katmanı](../app-service/overview-hosting-plans.md)da seçmeniz gerekir.
 
 *Durum bilgisi olan* iş akışları [harici depolama](../azure-functions/storage-considerations.md#storage-account-requirements)kullanır, bu nedenle [Azure Depolama fiyatlandırması](https://azure.microsoft.com/pricing/details/storage/) Azure Logic Apps önizlemesi çalışma zamanının gerçekleştirdiği depolama işlemleri için geçerlidir. Örneğin, kuyruklar zamanlama için kullanılır, ancak tablolar ve Bloblar iş akışı durumlarını depolamak için kullanılır.
 
 > [!NOTE]
 > Genel Önizleme sırasında App Service Logic apps çalıştırmak, seçtiğiniz planın üzerine *ek* ücret vermez.
 
-Bu yeni kaynak türüne uygulanan fiyatlandırma modelleri hakkında daha fazla bilgi için şu konuları gözden geçirin:
+Tek kiracılı kaynak türüne uygulanan fiyatlandırma modelleri hakkında daha fazla bilgi için şu konuları gözden geçirin:
 
 * [Azure İşlevleri’ni ölçeklendirme ve barındırma](../azure-functions/functions-scale.md)
 * [Azure App Service bir uygulamayı büyütme](../app-service/manage-scale-up.md)
@@ -202,9 +204,9 @@ Azure Logic Apps önizlemede, bu yetenekler değiştirilmiştir veya şu anda s�
       Azure portal, Kullanıcı deneyimi aracılığıyla bir bağlantı oluşturarak erişiminizin bulunduğu bir HTTP tetikleyici işlevi seçebilirsiniz. Kod görünümündeki veya dosyadaki **workflow.js** Işlev eyleminin JSON tanımını inceleyebilirsiniz, eylem bir başvuru kullanarak işleve başvurur `connectionName` . Bu sürüm, işlevin bilgilerini bir bağlantı olarak soyutlar, bu, bir bağlantı oluşturduktan sonra, projenizin **connections.js** dosyasında bulabilirsiniz.
 
       > [!NOTE]
-      > Önizleme sürümünde işlev eylemi yalnızca sorgu dizesi kimlik doğrulamasını destekler. Azure Logic Apps önizleme, bağlantıyı yaparken işlevden varsayılan anahtarı alır, bu anahtarı uygulamanızın ayarlarına depolar ve işlevi çağırırken kimlik doğrulaması için anahtarı kullanır.
+      > Tek kiracılı sürümde işlev eylemi yalnızca sorgu dizesi kimlik doğrulamasını destekler. Azure Logic Apps önizleme, bağlantıyı yaparken işlevden varsayılan anahtarı alır, bu anahtarı uygulamanızın ayarlarına depolar ve işlevi çağırırken kimlik doğrulaması için anahtarı kullanır.
       >
-      > Özgün sürümde olduğu gibi, bu anahtarı yenilemeniz (örneğin, portalda Azure Işlevleri deneyimi aracılığıyla), geçersiz anahtar nedeniyle işlev eylemi artık çalışmıyor. Bu sorunu gidermek için, yeni anahtarla uygulamanızın ayarlarını çağırmak veya güncelleştirmek istediğiniz işleve yeniden oluşturmanız gerekir.
+      > Çok kiracılı sürümde olduğu gibi, bu anahtarı yenilemeniz (örneğin, portalda Azure Işlevleri deneyimi aracılığıyla), geçersiz anahtar nedeniyle işlev eylemi artık çalışmıyor. Bu sorunu gidermek için, yeni anahtarla uygulamanızın ayarlarını çağırmak veya güncelleştirmek istediğiniz işleve yeniden oluşturmanız gerekir.
 
     * Yerleşik eylem, [satır Içi kod yürütme JavaScript kodu](logic-apps-add-run-inline-code.md) artık **satır içi kod Işlemleri-çevrimiçi JavaScript çalıştırma**.
 
@@ -222,7 +224,7 @@ Azure Logic Apps önizlemede, bu yetenekler değiştirilmiştir veya şu anda s�
 
 * [Özel bağlayıcılar](../connectors/apis-list.md#custom-apis-and-connectors) Şu anda önizleme için desteklenmiyor.
 
-* **Barındırma planı kullanılabilirliği**: Azure portal veya Visual Studio Code dağıtım için yeni bir **mantıksal uygulama (Önizleme)** kaynak türü oluşturup, Azure 'da yalnızca Premium veya App Service barındırma planını kullanabilirsiniz. Tüketim barındırma planları bu kaynak türünü dağıtmak için kullanılamaz ve desteklenmez. Visual Studio Code bir Docker kapsayıcısına dağıtabilirsiniz, ancak bir [tümleştirme hizmeti ortamına (ıSE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)ekleyebilirsiniz.
+* **Barındırma planı kullanılabilirliği**: Azure portal veya Visual Studio Code dağıtım için tek kiracılı **mantıksal uygulama (Önizleme)** kaynak türünü oluşturup, Azure 'da yalnızca Premium veya App Service barındırma planını kullanabilirsiniz. Tüketim barındırma planları bu kaynak türünü dağıtmak için kullanılamaz ve desteklenmez. Visual Studio Code bir Docker kapsayıcısına dağıtabilirsiniz, ancak bir [tümleştirme hizmeti ortamına (ıSE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)ekleyebilirsiniz.
 
 * **Visual Studio Code kesme noktası hata ayıklaması**: bir iş akışı için dosyada **workflow.js** içinde kesme noktaları ekleyip kullanabilmenize karşın, kesme noktaları yalnızca şu anda eylemler için desteklenir, tetiklerdir. Daha fazla bilgi için, bkz. [Visual Studio Code durum bilgisi olan ve durumsuz iş akışları oluşturma](create-stateful-stateless-workflows-visual-studio-code.md#manage-breakpoints).
 
@@ -233,6 +235,17 @@ Azure Logic Apps önizlemede, bu yetenekler değiştirilmiştir veya şu anda s�
    * Çalıştırma geçmişini görüntülemek için, mantıksal uygulamanızda iş akışını açın. İş akışı menüsünde, **Geliştirici** altında, **izleme**' yi seçin.
 
    * Tetikleyici geçmişini gözden geçirmek için, mantıksal uygulamanızda iş akışını açın. İş akışı menüsünde, **Geliştirici** altında **tetikleyici geçmişi**' ni seçin.
+
+<a name="firewall-permissions"></a>
+
+## <a name="permit-traffic-in-strict-network-and-firewall-scenarios"></a>Katı ağ ve güvenlik duvarı senaryolarında trafiğe izin verme
+
+Ortamınızda trafiği sınırlayan katı ağ gereksinimleri veya güvenlik duvarları varsa, mantıksal uygulama iş akışlarınızda herhangi bir tetikleyici veya eylem bağlantısına erişime izin vermeniz gerekir.
+
+Bu bağlantılar için tam etki alanı adlarını (FQDN) bulmak için, bu konularda ilgili bölümleri gözden geçirin:
+
+* [Tek kiracılı mantık uygulamaları için güvenlik duvarı izinleri-Visual Studio Code](create-stateful-stateless-workflows-visual-studio-code.md#firewall-setup)
+* [Tek kiracılı mantık uygulamaları için güvenlik duvarı izinleri-Azure portal](create-stateful-stateless-workflows-azure-portal.md#firewall-setup)
 
 <a name="limits"></a>
 

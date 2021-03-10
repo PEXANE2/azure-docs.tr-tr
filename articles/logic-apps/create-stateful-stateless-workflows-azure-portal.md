@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: estfan, logicappspm, az-logic-apps-dev
 ms.topic: conceptual
-ms.date: 03/02/2021
-ms.openlocfilehash: 3cf5047dbb79f6d8b35b0fe089069a20ab4a50a6
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.date: 03/08/2021
+ms.openlocfilehash: ff938d29d998b6fcf0b2cfae72a9a9e685a10dc5
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101736380"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102563973"
 ---
 # <a name="create-stateful-and-stateless-workflows-in-the-azure-portal-with-azure-logic-apps-preview"></a>Azure Logic Apps önizlemesiyle Azure portal durum bilgisiz ve durum bilgisi olmayan iş akışları oluşturma
 
@@ -236,7 +236,33 @@ Boş bir iş akışına tetikleyici ekleyebilmek için önce iş akışı tasar�
 
 1. Çalışmanızı kaydedin. Tasarımcı araç çubuğunda **Kaydet**' i seçin.
 
-Sonra, iş akışınızı test etmek için el ile bir çalıştırmayı tetikleyin.
+1. Ortamınızda trafiği sınırlayan katı ağ gereksinimleri veya güvenlik duvarları varsa, iş akışınızda mevcut olan herhangi bir tetikleyici veya eylem bağlantısı için izinleri ayarlamanız gerekir. Tam nitelikli olduğunu bulmak için 
+
+   Aksi takdirde, iş akışınızı test etmek için [el ile bir çalıştırmayı tetikleyin](#trigger-workflow).
+
+<a name="firewall-setup"></a>
+
+##  <a name="find-domain-names-for-firewall-access"></a>Güvenlik duvarı erişimi için etki alanı adlarını bulma
+
+Mantıksal uygulamanızı dağıtmadan ve Azure portal iş akışınızı çalıştırmadan önce, ortamınızda trafiği sınırlayan katı ağ gereksinimleri veya güvenlik duvarları varsa, mantıksal uygulamanızda bulunan iş akışlarında herhangi bir tetikleyici veya eylem bağlantısı için ağ veya güvenlik duvarı izinleri ayarlamanız gerekir.
+
+Bu bağlantılar için tam etki alanı adlarını (FQDN) bulmak için şu adımları izleyin:
+
+1. Mantıksal uygulama menüsünde, **Iş akışları** altında **Bağlantılar**' ı seçin. **API bağlantıları** sekmesinde bağlantının kaynak adını seçin, örneğin:
+
+   !["Connections" ve "offic365" Bağlantı kaynağı adı seçili olan Azure portal ve Logic App menüsünü gösteren ekran görüntüsü.](./media/create-stateful-stateless-workflows-azure-portal/logic-app-connections.png)
+
+1. Tarayıcınızın sağ üst köşesinde **JSON görünümü** göründüğünde **JSON görünümü**' nü seçerek tarayıcınızı yeterince genişletebilirsiniz.
+
+   !["JSON görünümü" seçiliyken Azure portal ve API bağlantı bölmesini gösteren ekran görüntüsü.](./media/create-stateful-stateless-workflows-azure-portal/logic-app-connection-view-json.png)
+
+1. `connectionRuntimeUrl`Güvenlik duvarınızı bu bilgilerle ayarlayabilmeniz için özellik değerini güvenli bir yerde bulun, kopyalayın ve kaydedin.
+
+   ![Seçili "connectionRuntimeUrl" özellik değerini gösteren ekran görüntüsü.](./media/create-stateful-stateless-workflows-azure-portal/logic-app-connection-runtime-url.png)
+
+1. Her bağlantı için ilgili adımları yineleyin.
+
+<a name="trigger-workflow"></a>
 
 ## <a name="trigger-the-workflow"></a>İş akışını tetikleme
 
@@ -304,7 +330,7 @@ Durum bilgisi olan bir iş akışı için, her iş akışı çalıştıktan sonr
    > [!TIP]
    > En son çalıştırma durumu görünmezse, **izleyici** bölmesi araç çubuğunda **Yenile**' yi seçin. Karşılanmayan ölçütler veya veri bulma nedeniyle atlanan bir tetikleyici için çalıştırma gerçekleşilmedi.
 
-   | Çalışma durumu | Açıklama |
+   | Çalışma durumu | Description |
    |------------|-------------|
    | **İptal edildi** | Çalıştırma, dış sorunlar nedeniyle durdurulmuş veya bitmedi; Örneğin, bir sistem kesintisi veya bir Azure aboneliği. |
    | **Yürütüldükten** | Çalıştırma tetiklendi ve başlatıldı, ancak iptal isteği alındı. |
@@ -323,7 +349,7 @@ Durum bilgisi olan bir iş akışı için, her iş akışı çalıştıktan sonr
 
    İşte iş akışındaki her adımın sahip olduğu olası durumlar şunlardır:
 
-   | Eylem durumu | Simge | Açıklama |
+   | Eylem durumu | Simge | Description |
    |---------------|------|-------------|
    | **İptal edildi** | !["Durdurulan" eylem durumu simgesi][aborted-icon] | Bu eylem, dış sorunlar nedeniyle durdurulmuş veya bitmedi; Örneğin, bir sistem kesintisi veya bir Azure aboneliği. |
    | **Yürütüldükten** | !["Iptal edildi" eylem durumu simgesi][cancelled-icon] | Eylem çalışıyor ancak iptal isteği alındı. |

@@ -1,20 +1,20 @@
 ---
-title: Azure CLı kullanarak Azure özel bağlantı hizmeti oluşturma
-description: Azure CLı kullanarak Azure özel bağlantı hizmeti oluşturmayı öğrenin
+title: Hızlı başlangıç-Azure CLı kullanarak Azure özel bağlantı hizmeti oluşturma
+description: Bu hızlı başlangıçta Azure CLı kullanarak Azure özel bağlantı hizmeti oluşturmayı öğrenin
 services: private-link
 author: asudbring
 ms.service: private-link
 ms.topic: quickstart
 ms.date: 01/22/2021
 ms.author: allensu
-ms.openlocfilehash: 27ce0b2646b6c380e86b377d3dba287f7791794e
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.openlocfilehash: 76fd959c28203132be4695031d96315f258cf53f
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "100653739"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102563141"
 ---
-# <a name="create-a-private-link-service-using-azure-cli"></a>Azure CLı kullanarak özel bağlantı hizmeti oluşturma
+# <a name="quickstart-create-a-private-link-service-using-azure-cli"></a>Hızlı başlangıç: Azure CLı kullanarak özel bağlantı hizmeti oluşturma
 
 Hizmetinize başvuran bir özel bağlantı hizmeti oluşturmaya başlayın.  Azure Standart Load Balancer arkasında dağıtılan hizmetinize veya kaynağa özel bağlantı erişimi verin.  Hizmetinizin kullanıcılarının sanal ağından özel erişimi vardır.
 

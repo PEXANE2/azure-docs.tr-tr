@@ -2,16 +2,17 @@
 title: REST API bir Linux sanal makinesi oluşturma
 description: Azure REST API ile yönetilen diskler ve SSH kimlik doğrulaması kullanan Azure 'da Linux sanal makinesi oluşturmayı öğrenin.
 author: cynthn
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
+ms.collection: linux
 ms.topic: how-to
 ms.date: 06/05/2018
 ms.author: cynthn
-ms.openlocfilehash: b3eeaf5f343b6026e02d17e4d3bd90dba4b991c4
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 519939445e67f0f993662e2faf506eb186686156
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98737054"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102554573"
 ---
 # <a name="create-a-linux-virtual-machine-that-uses-ssh-authentication-with-the-rest-api"></a>REST API ile SSH kimlik doğrulaması kullanan bir Linux sanal makinesi oluşturma
 
@@ -54,7 +55,7 @@ REST API isteklerle çalışma hakkında genel bilgi için, bkz. [bir REST API i
 
 Aşağıdaki ortak tanımlar bir istek gövdesi oluşturmak için kullanılır:
 
-| Name                       | Gerekli | Tür                                                                                | Açıklama  |
+| Name                       | Gerekli | Tür                                                                                | Description  |
 |----------------------------|----------|-------------------------------------------------------------------------------------|--------------|
 | location                   | True     | string                                                                              | Kaynak konumu. |
 | name                       |          | string                                                                              | Sanal makinenin adı. |
@@ -128,7 +129,7 @@ Bu HTTP isteğini göndermek için tercih ettiğiniz istemciyi kullanabilirsiniz
 
 Bir sanal makineyi oluşturma veya güncelleştirme işlemi için iki başarılı yanıt vardır:
 
-| Ad        | Tür                                                                              | Açıklama |
+| Ad        | Tür                                                                              | Description |
 |-------------|-----------------------------------------------------------------------------------|-------------|
 | 200 TAMAM      | [VirtualMachine](/rest/api/compute/virtualmachines/createorupdate#virtualmachine) | Tamam          |
 | 201 oluşturuldu | [VirtualMachine](/rest/api/compute/virtualmachines/createorupdate#virtualmachine) | Oluşturulan     |

@@ -2,17 +2,19 @@
 title: Linux Sanal Makineleri Windows Sanal Makineleri için Azure Güvenlik temeli
 description: Windows Sanal Makineleri güvenlik temeli, Azure Güvenlik kıyaslaması 'nda belirtilen güvenlik önerilerini uygulamaya yönelik yordamsal kılavuz ve kaynaklar sağlar.
 author: msmbaldwin
-ms.service: virtual-machines-windows
+ms.service: virtual-machines
+ms.subservice: security
+ms.collection: linux
 ms.topic: conceptual
 ms.date: 07/13/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 5a9bc576541c5991bb5f9352dc41fb0cce99c601
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 11f0a58f8c6d38d070d4bafe68794bdd9ada7cf3
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100594273"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102556171"
 ---
 # <a name="azure-security-baseline-for-windows-virtual-machines"></a>Windows Sanal Makineleri için Azure Güvenlik temeli
 

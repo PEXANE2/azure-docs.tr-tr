@@ -1,21 +1,22 @@
 ---
 title: Azure Backup için VM anlık görüntüsü Windows uzantısı
 description: VM anlık görüntü uzantısı kullanarak Azure Backup sanal makinenin uygulamayla tutarlı yedeklemesini gerçekleştirin
-services: backup, virtual-machines-windows
+services: backup, virtual-machines
 documentationcenter: ''
 author: trinadhkotturu
 manager: gwallace
-ms.service: virtual-machines-windows
+ms.service: virtual-machines
 ms.subservice: extensions
+ms.collection: windows
 ms.topic: article
 ms.date: 10/15/2020
 ms.author: trinadhk
-ms.openlocfilehash: 1d1342cffc6bc8743c34cb4c028c0790de91dc50
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 834c886c15e50870ec008dbb5ceab38132cc4649
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94965876"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102561083"
 ---
 # <a name="vm-snapshot-windows-extension-for-azure-backup"></a>Azure Backup için VM anlık görüntüsü Windows uzantısı
 
@@ -23,7 +24,7 @@ Azure Backup, iş yüklerini Şirket içinden buluta yedeklemeye ve bulut kaynak
 
 VMSnapshot uzantısı, yalnızca yönetilmeyen VM 'Ler için Azure portal görüntülenir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 ### <a name="operating-system"></a>İşletim sistemi
 Desteklenen işletim sistemlerinin listesi için, [Azure Backup tarafından desteklenen Işletim sistemlerine](../../backup/backup-azure-arm-vms-prepare.md#before-you-start) bakın
@@ -62,7 +63,7 @@ Aşağıdaki JSON, VM Snapshot uzantısı için şemayı gösterir. Uzantı, gö
 
 | Name | Değer/örnek | Veri Türü |
 | ---- | ---- | ---- |
-| apiVersion | 2015-06-15 | tarih |
+| apiVersion | 2015-06-15 | date |
 | TaskID | e07354cf-041e-4370-929f-25a319ce8933_1 | string |
 | commandStartTimeUTCTicks | 6.36458 e + 17 | string |
 | locale | tr-tr | string |

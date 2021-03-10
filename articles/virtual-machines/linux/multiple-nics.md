@@ -2,18 +2,18 @@
 title: Azure 'da birden çok NIC ile Linux VM oluşturma
 description: Azure CLı veya Kaynak Yöneticisi şablonlarını kullanarak, birden çok NIC 'ye eklenmiş bir Linux VM oluşturma hakkında bilgi edinin.
 author: cynthn
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
 ms.subservice: networking
 ms.topic: how-to
 ms.workload: infrastructure
 ms.date: 06/07/2018
 ms.author: cynthn
-ms.openlocfilehash: 86910ece57d8fb72ade0c67a9e6787023c4283f3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c0eea74890665297a0d450c8afd0a5d60dd1ae00
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87836930"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102551819"
 ---
 # <a name="how-to-create-a-linux-virtual-machine-in-azure-with-multiple-network-interface-cards"></a>Azure 'da birden çok ağ arabirim kartı ile Linux sanal makinesi oluşturma
 
@@ -23,7 +23,7 @@ Bu makalede, Azure CLı ile birden çok NIC ile VM oluşturma hakkında bilgi ye
 ## <a name="create-supporting-resources"></a>Destekleyici kaynaklar oluşturma
 En son [Azure CLI](/cli/azure/install-az-cli2) 'yı yükleyip [az Login](/cli/azure/reference-index)kullanarak bir Azure hesabında oturum açın.
 
-Aşağıdaki örneklerde, örnek parametre adlarını kendi değerlerinizle değiştirin. *Myresourcegroup*, *Mystorageaccount*ve *myvm*dahil olmak üzere örnek parametre adları.
+Aşağıdaki örneklerde, örnek parametre adlarını kendi değerlerinizle değiştirin. *Myresourcegroup*, *Mystorageaccount* ve *myvm* dahil olmak üzere örnek parametre adları.
 
 Öncelikle [az group create](/cli/azure/group) komutuyla bir kaynak grubu oluşturun. Aşağıdaki örnek *eastus* konumunda *myresourcegroup* adlı bir kaynak grubu oluşturur:
 
@@ -31,7 +31,7 @@ Aşağıdaki örneklerde, örnek parametre adlarını kendi değerlerinizle değ
 az group create --name myResourceGroup --location eastus
 ```
 
-[Az Network VNET Create](/cli/azure/network/vnet)ile sanal ağ oluşturun. Aşağıdaki örnek *Mysubnetön uç*adlı *myvnet* ve subnet adlı bir sanal ağ oluşturur:
+[Az Network VNET Create](/cli/azure/network/vnet)ile sanal ağ oluşturun. Aşağıdaki örnek *Mysubnetön uç* adlı *myvnet* ve subnet adlı bir sanal ağ oluşturur:
 
 ```azurecli
 az network vnet create \
@@ -42,7 +42,7 @@ az network vnet create \
     --subnet-prefix 10.0.1.0/24
 ```
 
-[Az Network VNET subnet Create](/cli/azure/network/vnet/subnet)ile arka uç trafiği için bir alt ağ oluşturun. Aşağıdaki örnek, *Mysubnetarka ucu*adlı bir alt ağ oluşturur:
+[Az Network VNET subnet Create](/cli/azure/network/vnet/subnet)ile arka uç trafiği için bir alt ağ oluşturun. Aşağıdaki örnek, *Mysubnetarka ucu* adlı bir alt ağ oluşturur:
 
 ```azurecli
 az network vnet subnet create \
@@ -61,7 +61,7 @@ az network nsg create \
 ```
 
 ## <a name="create-and-configure-multiple-nics"></a>Birden çok NIC oluşturma ve yapılandırma
-[Az Network Nic Create](/cli/azure/network/nic)Ile iki NIC oluşturun. Aşağıdaki örnek, her bir alt ağa bağlanan bir NIC ile ağ güvenlik grubu 'na bağlı olan *myNic1* ve *MyNic2*adlı iki NIC oluşturur:
+[Az Network Nic Create](/cli/azure/network/nic)Ile iki NIC oluşturun. Aşağıdaki örnek, her bir alt ağa bağlanan bir NIC ile ağ güvenlik grubu 'na bağlı olan *myNic1* ve *MyNic2* adlı iki NIC oluşturur:
 
 ```azurecli
 az network nic create \
@@ -110,7 +110,7 @@ az network nic create \
     --network-security-group myNetworkSecurityGroup
 ```
 
-Mevcut bir VM 'ye bir NIC eklemek için, önce VM 'yi [az VM serbest bırakma](/cli/azure/vm)ile serbest bırakın. Aşağıdaki örnek, *myvm*adlı VM 'yi kaldırır:
+Mevcut bir VM 'ye bir NIC eklemek için, önce VM 'yi [az VM serbest bırakma](/cli/azure/vm)ile serbest bırakın. Aşağıdaki örnek, *myvm* adlı VM 'yi kaldırır:
 
 
 ```azurecli
@@ -135,7 +135,7 @@ az vm start --resource-group myResourceGroup --name myVM
 [Konuk IŞLETIM sistemini birden çok NIC Için yapılandırma](#configure-guest-os-for-multiple-nics)bölümündeki adımları tamamlayarak Konuk işletim sistemine yönlendirme tabloları ekleyin.
 
 ## <a name="remove-a-nic-from-a-vm"></a>Bir VM 'den NIC kaldırma
-Bir NIC 'yi var olan bir VM 'den kaldırmak için ilk olarak VM 'yi [az VM serbest bırakma](/cli/azure/vm)ile serbest bırakın. Aşağıdaki örnek, *myvm*adlı VM 'yi kaldırır:
+Bir NIC 'yi var olan bir VM 'den kaldırmak için ilk olarak VM 'yi [az VM serbest bırakma](/cli/azure/vm)ile serbest bırakın. Aşağıdaki örnek, *myvm* adlı VM 'yi kaldırır:
 
 ```azurecli
 az vm deallocate --resource-group myResourceGroup --name myVM
@@ -167,7 +167,7 @@ Azure Resource Manager şablonlar, ortamınızı tanımlamak için bildirim teme
 }
 ```
 
-[ *Kopyayı*kullanarak birden çok örnek oluşturma](../../azure-resource-manager/templates/copy-resources.md)hakkında daha fazla bilgi edinin. 
+[ *Kopyayı* kullanarak birden çok örnek oluşturma](../../azure-resource-manager/templates/copy-resources.md)hakkında daha fazla bilgi edinin. 
 
 Ayrıca `copyIndex()` , bir kaynak adına bir sayı eklemek için bir de kullanabilirsiniz. bu sayede `myNic1` ,, `myNic2` vb. oluşturabilirsiniz. Aşağıda dizin değeri ekleme örneği gösterilmektedir:
 
@@ -212,7 +212,7 @@ VM 'nin genel IP adresini görüntülemek için [az VM Show](/cli/azure/vm#az-vm
 az vm show --resource-group myResourceGroup --name myVM -d --query publicIps -o tsv
 ```
 
-Şimdi VM 'nizin genel IP adresi için SSH. Önceki adımda belirtilen varsayılan Kullanıcı adı *azureuser*idi. Kendi Kullanıcı adınızı ve genel IP adresinizi girin:
+Şimdi VM 'nizin genel IP adresi için SSH. Önceki adımda belirtilen varsayılan Kullanıcı adı *azureuser* idi. Kendi Kullanıcı adınızı ve genel IP adresinizi girin:
 
 ```bash
 ssh azureuser@137.117.58.232
@@ -220,7 +220,7 @@ ssh azureuser@137.117.58.232
 
 İkincil bir ağ arabirimine veya bir ikincil ağ arabirimine göndermek için, her bir ikincil ağ arabirimi için işletim sistemine kalıcı yolları el ile eklemeniz gerekir. Bu makalede, *eth1* ikincil arabirimdir. İşletim sistemine kalıcı yollar eklemeye yönelik yönergeler, farklıdır. Kendi talimatlarınız için belgelere bakın.
 
-Yönlendirme işletim sistemine eklenirken, ağ arabiriminin içinde bulunduğu alt ağ için ağ geçidi adresi *1* ' dir. Örneğin, ağ arabirimine *10.0.2.4*adresi atanmışsa, yol için belirttiğiniz ağ geçidi *10.0.2.1*olur. Arabirimin tüm trafiğinin belirtilen ağ geçidiyle gitmesini istiyorsanız yolun hedefi için belirli bir ağ tanımlayabilir veya *0.0.0.0*hedefini belirtebilirsiniz. Her alt ağ için ağ geçidi sanal ağ tarafından yönetilir.
+Yönlendirme işletim sistemine eklenirken, ağ arabiriminin içinde bulunduğu alt ağ için ağ geçidi adresi *1* ' dir. Örneğin, ağ arabirimine *10.0.2.4* adresi atanmışsa, yol için belirttiğiniz ağ geçidi *10.0.2.1* olur. Arabirimin tüm trafiğinin belirtilen ağ geçidiyle gitmesini istiyorsanız yolun hedefi için belirli bir ağ tanımlayabilir veya *0.0.0.0* hedefini belirtebilirsiniz. Her alt ağ için ağ geçidi sanal ağ tarafından yönetilir.
 
 Bir ikincil arabirim için yolu ekledikten sonra, yolun yol tablonuzda olduğunu doğrulayın `route -n` . Aşağıdaki örnek çıktı, bu makaledeki sanal makineye iki ağ arabirimi eklenmiş olan rota tablosu içindir:
 

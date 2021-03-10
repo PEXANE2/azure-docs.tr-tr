@@ -2,17 +2,18 @@
 title: Bir Linux VM 'yi yönetilmeyen disklerden yönetilen disklere dönüştürme
 description: Azure CLı kullanarak bir Linux VM 'yi yönetilmeyen disklerden yönetilen disklere dönüştürme.
 author: roygara
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
+ms.collection: linux
 ms.topic: how-to
 ms.date: 12/15/2017
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 89035d26e05ca4b93dc271f02fef1afea24b0f20
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1f3b62f8c05edffa1b55bf3d8cd24494b1c918bd
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88815343"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102558500"
 ---
 # <a name="convert-a-linux-virtual-machine-from-unmanaged-disks-to-managed-disks"></a>Bir Linux sanal makinesini yönetilmeyen disklerden yönetilen disklere dönüştürme
 
@@ -94,7 +95,7 @@ Kullanılabilirlik kümesini dönüştürmeden önce kullanılabilirlik kümesin
 
 Azure portal kullanarak, yönetilmeyen diskleri yönetilen disklere de dönüştürebilirsiniz.
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 2. Portaldaki VM 'Ler listesinden VM 'yi seçin.
 3. VM 'nin dikey penceresinde, menüden **diskler** ' i seçin.
 4. **Diskler** dikey penceresinin üst kısmında, **yönetilen disklere geçir**' i seçin.

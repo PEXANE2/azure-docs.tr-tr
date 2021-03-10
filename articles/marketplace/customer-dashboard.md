@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 11/09/2020
 author: sayantanroy83
 ms.author: sroy
-ms.openlocfilehash: c98b47507a7543002f00aae82370f5ea0043510d
-ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
+ms.openlocfilehash: c5c50787ef3e287d164e051ece26da4e83199d47
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97954286"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102555644"
 ---
 # <a name="customers-dashboard-in-commercial-marketplace-analytics"></a>Ticari Market Analytics 'te müşteriler panosu
 
@@ -142,28 +142,28 @@ Seçilen hesaplama dönemi için ısı haritasını, toplam müşteri sayısın�
 
 _**Tablo 1: veri koşullarının sözlüğü**_
 
-| Sütun adı | Öznitelik adı | Tanım |
-| ------------ | ------------- | ------------- |
-| Market abonelik kimliği | Market abonelik KIMLIĞI | Ticari Market teklifinizi satın almak için kullanılan müşterinin Azure aboneliğiyle ilişkili benzersiz tanımlayıcı. Altyapı teklifleri için bu müşterinin Azure abonelik GUID 'sidir. SaaS tekliflerini bir Azure aboneliği gerektirmediğinden, SaaS teklifleri için bu sıfır olarak gösterilir. |
-| Tarih alındı | Alınma tarihi | Müşterinin yayımladığınız teklifi satın aldığı ilk tarih. |
-| Tarih kayıp | Kayıp tarihi | Müşterinin önceden satın alınan tüm tekliflerden en son iptal edilme tarihi. |
-| Sağlayıcı Adı | Sağlayıcı Adı | Microsoft ile müşteri arasındaki ilişkide yer alan sağlayıcının adı. Müşteri, satıcı üzerinden bir kurumsal ise, bu satıcı olacaktır. Bir bulut çözümü sağlayıcısı (CSP) dahil edilmişse, bu CSP olacaktır. |
-| Sağlayıcı e-postası | Sağlayıcı e-postası | Sağlayıcının, Microsoft ile müşteri arasındaki ilişkiye dahil olan e-posta adresi. Müşteri, satıcı üzerinden bir kurumsal ise, bu satıcı olacaktır. Bir bulut çözümü sağlayıcısı (CSP) dahil edilmişse, bu CSP olacaktır. |
-| FirstName | Müşteri adı | Müşterinin ilk adı. Ad, müşterinin Azure aboneliğinde belirtilen ad ile farklı olabilir. |
-| LastName | Müşterinin soyadını soyadı | Müşterinin sunduğu soyadı. Ad, müşterinin Azure aboneliğinde belirtilen ad ile farklı olabilir. |
-| E-posta | Müşteri e-postası | Son müşteri tarafından sunulan e-posta adresi. E-posta, müşterinin Azure aboneliğindeki e-posta adresinden farklı olabilir. |
-| Müşteri şirket adı | Müşteri şirket adı | Müşterinin sunduğu şirket adı. Ad, müşterinin Azure aboneliğindeki şehirden farklı olabilir. |
-| CustomerCity | Müşteri şehri | Müşteri tarafından sunulan şehir adı. Şehir, müşterinin Azure aboneliğindeki şehirden farklı olabilir. |
-| Müşteri posta kodu | Müşteri posta kodu | Müşteri tarafından sunulan posta kodu. Kod, müşterinin Azure aboneliğinde girilen posta kodundan farklı olabilir. |
-| CustomerCommunicationCulture | Müşteri Iletişim dili | İletişim için müşterinin tercih ettiği dil. |
-| CustomerCountryRegion | Müşteri ülkesi/bölgesi | Müşterinin sunduğu ülke/bölge adı. Ülke/bölge, müşterinin Azure aboneliğindeki ülke/bölgeden farklı olabilir. |
-| AzureLicenseType | Azure lisans türü | Müşteriler tarafından Azure satın alma için kullanılan lisans sözleşmesinin türü. _Kanal_ olarak da bilinir. Olası değerler şunlardır:<ul><li>Bulut çözümü sağlayıcısı</li><li>Kurumsal</li><li>Satıcı aracılığıyla kurumsal</li><li>Kullandıkça öde</li></ul> |
-| Promotionalmüşterileri | Promosyon ekibine katılım kabul ediyor | Bu değer, müşterinin yayımcılardan promosyon kişisini önceden kabul eder olduğunu bilmenizi sağlar. Şu anda, bu seçeneği müşterilere sunuyoruz, bu nedenle Pano genelinde "Hayır" belirtiyoruz. Bu özellik dağıtıldıktan sonra, güncelleştirmeye uygun olarak başlayacağız. |
-| CustomerState | Müşteri durumu | Müşterinin verdiği durum. Durum, müşterinin Azure aboneliğinde belirtilen durumdan farklı olabilir. |
-| Ticari sertifika kimliği müşterisi | Ticaret kök müşterisi | Bir faturalandırma hesabı KIMLIĞI, birden fazla müşteri kimliğiyle ilişkilendirilebilir.<br>Bir faturalandırma hesabı KIMLIĞI ve müşteri KIMLIĞI birleşimi, birden çok ticari Market abonelikleriyle ilişkilendirilebilir.<br>Commerce root müşterisi, abonelik müşterisinin adını belirtir. |
-| Müşteri kimliği | Müşteri Kimliği | Müşteriye atanan benzersiz tanımlayıcı. Müşterinin sıfır veya daha fazla Azure Market aboneliği olabilir. |
-| Faturalandırma hesabı kimliği | Faturalandırma hesabı KIMLIĞI | Faturalandırma 'nin oluşturulduğu hesabın tanımlayıcısı. Ödeme Işlem raporunuzu müşteri, sipariş ve kullanım raporlarıyla bağlamak için **faturalandırma HESABı kimliğini** **MüşteriNo** olarak eşleyin. |
-||||
+| İçindeki sütun adı<br>kullanıcı arabirimi | Öznitelik adı | Tanım | Programlı olarak sütun adı<br>erişim raporları |
+| ------------ | ------------- | ------------- | ------------- |
+| Market abonelik KIMLIĞI | Market abonelik KIMLIĞI | Ticari Market teklifinizi satın almak için kullanılan müşterinin Azure aboneliğiyle ilişkili benzersiz tanımlayıcı. Altyapı teklifleri için bu müşterinin Azure abonelik GUID 'sidir. SaaS tekliflerini bir Azure aboneliği gerektirmediğinden, SaaS teklifleri için bu sıfır olarak gösterilir. | Pazar Placesubscriptionıd |
+| Tarih alındı | Alınma tarihi | Müşterinin yayımladığınız teklifi satın aldığı ilk tarih. | Tarih alındı |
+| Tarih kayıp | Kayıp tarihi | Müşterinin önceden satın alınan tüm tekliflerden en son iptal edilme tarihi. | Tarih kayıp |
+| Sağlayıcı Adı | Sağlayıcı Adı | Microsoft ile müşteri arasındaki ilişkide yer alan sağlayıcının adı. Müşteri, satıcı üzerinden bir kurumsal ise, bu satıcı olacaktır. Bir bulut çözümü sağlayıcısı (CSP) dahil edilmişse, bu CSP olacaktır. | Adı |
+| Sağlayıcı e-postası | Sağlayıcı e-postası | Sağlayıcının, Microsoft ile müşteri arasındaki ilişkiye dahil olan e-posta adresi. Müşteri, satıcı üzerinden bir kurumsal ise, bu satıcı olacaktır. Bir bulut çözümü sağlayıcısı (CSP) dahil edilmişse, bu CSP olacaktır. | ProviderEmail |
+| FirstName | Müşteri adı | Müşterinin ilk adı. Ad, müşterinin Azure aboneliğinde belirtilen ad ile farklı olabilir. | FirstName |
+| LastName | Müşterinin soyadını soyadı | Müşterinin sunduğu soyadı. Ad, müşterinin Azure aboneliğinde belirtilen ad ile farklı olabilir. | LastName |
+| E-posta | Müşteri e-postası | Son müşteri tarafından sunulan e-posta adresi. E-posta, müşterinin Azure aboneliğindeki e-posta adresinden farklı olabilir. | E-posta |
+| Müşteri şirket adı | Müşteri şirket adı | Müşterinin sunduğu şirket adı. Ad, müşterinin Azure aboneliğindeki şehirden farklı olabilir. | CustomerCompany adı |
+| CustomerCity | Müşteri şehri | Müşteri tarafından sunulan şehir adı. Şehir, müşterinin Azure aboneliğindeki şehirden farklı olabilir. | CustomerCity |
+| Müşteri posta kodu | Müşteri posta kodu | Müşteri tarafından sunulan posta kodu. Kod, müşterinin Azure aboneliğinde girilen posta kodundan farklı olabilir. | Customerposta kodu |
+| CustomerCommunicationCulture | Müşteri Iletişim dili | İletişim için müşterinin tercih ettiği dil. | CustomerCommunicationCulture |
+| CustomerCountryRegion | Müşteri ülkesi/bölgesi | Müşterinin sunduğu ülke/bölge adı. Ülke/bölge, müşterinin Azure aboneliğindeki ülke/bölgeden farklı olabilir. | CustomerCountryRegion |
+| AzureLicenseType | Azure lisans türü | Müşteriler tarafından Azure satın alma için kullanılan lisans sözleşmesinin türü. _Kanal_ olarak da bilinir. Olası değerler şunlardır:<ul><li>Bulut çözümü sağlayıcısı</li><li>Kurumsal</li><li>Satıcı aracılığıyla kurumsal</li><li>Kullandıkça öde</li></ul> | AzureLicenseType |
+| Promotionalmüşterileri | Promosyon ekibine katılım kabul ediyor | Bu değer, müşterinin yayımcılardan promosyon kişisini önceden kabul eder olduğunu bilmenizi sağlar. Şu anda, bu seçeneği müşterilere sunuyoruz, bu nedenle Pano genelinde "Hayır" belirtiyoruz. Bu özellik dağıtıldıktan sonra, güncelleştirmeye uygun olarak başlayacağız. | Promotionalmüşterileri |
+| CustomerState | Müşteri durumu | Müşterinin verdiği durum. Durum, müşterinin Azure aboneliğinde belirtilen durumdan farklı olabilir. | CustomerState |
+| Ticari sertifika kimliği müşterisi | Ticaret kök müşterisi | Bir faturalandırma hesabı KIMLIĞI, birden fazla müşteri kimliğiyle ilişkilendirilebilir.<br>Bir faturalandırma hesabı KIMLIĞI ve müşteri KIMLIĞI birleşimi, birden çok ticari Market abonelikleriyle ilişkilendirilebilir.<br>Commerce root müşterisi, abonelik müşterisinin adını belirtir. | Ticari sertifika kimliği müşterisi |
+| Müşteri Kimliği | Müşteri Kimliği | Müşteriye atanan benzersiz tanımlayıcı. Müşterinin sıfır veya daha fazla Azure Market aboneliği olabilir. | CustomerId |
+| Faturalandırma hesabı KIMLIĞI | Faturalandırma hesabı KIMLIĞI | Faturalandırma 'nin oluşturulduğu hesabın tanımlayıcısı. Ödeme Işlem raporunuzu müşteri, sipariş ve kullanım raporlarıyla bağlamak için **faturalandırma HESABı kimliğini** **MüşteriNo** olarak eşleyin. | Billingaccountıd |
+|||||
 
 ### <a name="customers-page-filters"></a>Müşteriler sayfa filtreleri
 

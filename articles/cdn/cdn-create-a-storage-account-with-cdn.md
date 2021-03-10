@@ -1,26 +1,19 @@
 ---
-title: Hızlı başlangıç-Azure CDN bir Azure Depolama hesabını tümleştirme
-description: Azure İçerik Teslim Ağı'nı (CDN) Azure Depolama'dan önbelleğe blob alarak yüksek bant genişlikli içerik sunmak için kullanmayı öğrenin.
+title: 'Hızlı başlangıç: Azure Depolama hesabını Azure CDN ile tümleştirme'
+description: Bu hızlı başlangıçta, Azure depolama 'daki Blobları önbelleğe alarak yüksek bant genişlikli içerik sunmak için Azure Content Delivery Network (CDN) kullanmayı öğrenin.
 services: cdn
-documentationcenter: ''
 author: asudbring
-manager: danielgi
-editor: ''
-ms.assetid: cbc2ff98-916d-4339-8959-622823c5b772
 ms.service: azure-cdn
-ms.workload: tbd
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: quickstart
 ms.date: 04/30/2020
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: b80437fa1ac41bb240565923eb40e562c8cf8c5b
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 7cd1c6b0b11ba291a36f49a2a9990a2755cdd74b
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96018622"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102561934"
 ---
 # <a name="quickstart-integrate-an-azure-storage-account-with-azure-cdn"></a>Hızlı başlangıç: Azure Depolama hesabını Azure CDN ile tümleştirme
 
@@ -123,9 +116,6 @@ Azure CDN'de daha önce önbelleğe alınmış bir nesne, yaşam süresi sona er
 3. Depolama hesabınızı silmek için, hesabı panodan seçin, sonra üstteki menüden **Sil**'i seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-
-> [!div class="nextstepaction"]
-> [Azure CDN profili ve uç noktası oluşturma](cdn-create-new-endpoint.md)
 
 > [!div class="nextstepaction"]
 > [Öğretici: bir Web uygulamasının statik içeriğini sunucu için CDN kullanma](cdn-add-to-web-app.md)

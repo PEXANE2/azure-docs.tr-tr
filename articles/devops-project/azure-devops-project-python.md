@@ -13,18 +13,18 @@ ms.topic: quickstart
 ms.date: 03/24/2020
 ms.author: mlearned
 ms.custom: mvc, devx-track-python
-ms.openlocfilehash: dec41f1b9de6920338360edeb18b9878a8c86432
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 99ca60f2610d34d194c50e92501c0126a7c80323
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97588939"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102566558"
 ---
 # <a name="create-a-cicd-pipeline-for-python-with-azure-devops-starter"></a>Azure DevOps Starter ile Python için bir CI/CD işlem hattı oluşturma
 
 Bu hızlı başlangıçta, Azure Pipelines ' de Python uygulamanız için sürekli tümleştirme (CI) ve sürekli teslim (CD) işlem hattı ayarlamak üzere Basitleştirilmiş Azure DevOps Starter deneyimini kullanırsınız. Uygulamanızı geliştirmek, dağıtmak ve izlemek için ihtiyacınız olan her şeyi ayarlamak için Azure DevOps Starter 'ı kullanabilirsiniz. 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio). 
 - Bir [Azure DevOps](https://azure.microsoft.com/services/devops/) hesabı ve kuruluşu.
@@ -87,7 +87,7 @@ DevOps Starter, Azure Repos veya GitHub 'da bir git deposu oluşturur. Depoyu g�
 
 1. **Durum** alanını işaret edin ve ardından **üç nokta** (...) simgesini seçin. Bir menü, yeni bir derlemeyi sıraya alma, bir derlemeyi duraklatma ve derleme işlem hattını düzenlemeyle çeşitli seçenekleri görüntüler.
 
-1. **Düzenle**’yi seçin.
+1. **Düzenle**'yi seçin.
 
 1. Bu bölmede, derleme işlem hattınızla ilgili çeşitli görevleri inceleyebilirsiniz. Derleme git deposundan kaynak getirme, bağımlılıkları geri yükleme ve dağıtımlar için yayımlama çıkışları gibi çeşitli görevleri gerçekleştirir.
 
@@ -129,4 +129,4 @@ Artık ihtiyaç duymadığınızda Azure App Service ve ilgili kaynakları sileb
 CI/CD işleminizi yapılandırdığınızda, derleme ve yayın işlem hatları otomatik olarak oluşturulmuştur. Ekibinizin ihtiyaçlarını karşılamak için bu derleme ve yayın işlem hatlarını değiştirebilirsiniz. CI/CD işlem hattı hakkında daha fazla bilgi edinmek için bkz.:
 
 > [!div class="nextstepaction"]
-> [CD işlemini özelleştirme](/azure/devops/pipelines/release/define-multistage-release-process?view=vsts)
+> [CD işlemini özelleştirme](/azure/devops/pipelines/release/define-multistage-release-process)
