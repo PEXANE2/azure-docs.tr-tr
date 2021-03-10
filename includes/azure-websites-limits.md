@@ -3,13 +3,13 @@ author: rothja
 ms.service: app-service
 ms.topic: include
 ms.date: 03/04/2020
-ms.author: jroth
-ms.openlocfilehash: 71782661fd960cae3248005a8b90944eff9bef45
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.author: msangapu
+ms.openlocfilehash: bcbbd133c71b2917b73c200c4453ea57385fcaf1
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98024326"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102532691"
 ---
 | Kaynak | Ücretsiz | Paylaşılan | Temel | Standart | Premium (v1-v3) | Yalıtılmış </th> |
 | --- | --- | --- | --- | --- | --- | --- |
@@ -24,14 +24,14 @@ ms.locfileid: "98024326"
 | Bant genişliği |165 MB |Sınırsız, [veri aktarımı ücretleri](https://azure.microsoft.com/pricing/details/data-transfers/) uygulanır |Sınırsız, [veri aktarımı ücretleri](https://azure.microsoft.com/pricing/details/data-transfers/) uygulanır |Sınırsız, [veri aktarımı ücretleri](https://azure.microsoft.com/pricing/details/data-transfers/) uygulanır |Sınırsız, [veri aktarımı ücretleri](https://azure.microsoft.com/pricing/details/data-transfers/) uygulanır |Sınırsız, [veri aktarımı ücretleri](https://azure.microsoft.com/pricing/details/data-transfers/) uygulanır |
 | Uygulama mimarisi |32 bit |32 bit |32 bit/64 bit |32 bit/64 bit |32 bit/64 bit |32 bit/64 bit |
 | Örnek başına Web Yuvaları<sup>7</sup> |5 |35 |350 |Sınırsız |Sınırsız |Sınırsız |
-| IP bağlantıları | 600 | 600 | Örnek boyutuna bağlıdır<sup>8</sup> | Örnek boyutuna bağlıdır<sup>8</sup> | Örnek boyutuna bağlıdır<sup>8</sup> | 16.000 |
+| Örnek başına giden IP bağlantısı sayısı | 600 | 600 | Örnek boyutuna bağlıdır<sup>8</sup> | Örnek boyutuna bağlıdır<sup>8</sup> | Örnek boyutuna bağlıdır<sup>8</sup> | 16.000 |
 | Uygulama başına eşzamanlı [hata ayıklayıcı bağlantıları](../articles/app-service/troubleshoot-dotnet-visual-studio.md) |1 |1 |1 |5 |5 |5 |
 | Abonelik başına App Service sertifikaları<sup>9</sup>| Desteklenmez | Desteklenmez |10 |10 |10 |10 |
 | Uygulama başına özel etki alanları</a> |0 (yalnızca azurewebsites.net alt etki alanı)|500 |500 |500 |500 |500 |
 | Özel etki alanı [SSL desteği](../articles/app-service/configure-ssl-certificate.md) |Desteklenmiyor, \* Varsayılan olarak. azurewebsites.NET için joker sertifika kullanılabilir|Desteklenmiyor, \* Varsayılan olarak. azurewebsites.NET için joker sertifika kullanılabilir|Sınırsız SNI SSL bağlantı |Sınırsız SNI SSL ve 1 IP SSL bağlantı dahil değildir |Sınırsız SNI SSL ve 1 IP SSL bağlantı dahil değildir | Sınırsız SNI SSL ve 1 IP SSL bağlantı dahil değildir|
 | Karma bağlantılar | | | plan başına 5 | plan başına 25 | Uygulama başına 200 | Uygulama başına 200 |
 | [Sanal Ağ Tümleştirmesi](../articles/app-service/web-sites-integrate-with-vnet.md) | | |   |  X |  X  |  X  |
-| [Özel Uç Noktalar](../articles/app-service/networking/private-endpoint.md) | | |   |   |  Uygulama başına 100  |    |
+| [Özel uç noktalar](../articles/app-service/networking/private-endpoint.md) | | |   |   |  Uygulama başına 100  |    |
 | Tümleşik yük dengeleyici | |X |X |X |X |X<sup>10</sup> |
 | [Erişim kısıtlamaları](../articles/app-service/networking-features.md#access-restrictions) | Uygulama başına 512 kural | Uygulama başına 512 kural | Uygulama başına 512 kural | Uygulama başına 512 kural | Uygulama başına 512 kural | Uygulama başına 512 kural |
 | [Her zaman açık](../articles/app-service/configure-common.md) | | |X |X |X |X |

@@ -2,15 +2,15 @@
 title: Şablon dağıtma-Azure portal
 description: Azure portal kullanarak ilk Azure Resource Manager şablonunuzu (ARM şablonu) oluşturmayı ve nasıl dağıtılacağını öğrenin.
 author: mumian
-ms.date: 01/26/2021
+ms.date: 03/09/2021
 ms.topic: quickstart
 ms.author: jgao
-ms.openlocfilehash: 946156caa7252a89cab006d604eb6b441e09c643
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: 20b1bf47ae2fd63e91a11c8cccd1f03cf3464899
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98892515"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102548172"
 ---
 # <a name="quickstart-create-and-deploy-arm-templates-by-using-the-azure-portal"></a>Hızlı başlangıç: Azure portal kullanarak ARM şablonları oluşturma ve dağıtma
 
@@ -34,7 +34,7 @@ Birçok deneyimli şablon geliştiricisi, bu yöntemi, alışık oldukları Azur
     ![Azure portal menüsünden kaynak oluştur ' u seçin](./media/quickstart-create-templates-use-the-portal/azure-resource-manager-template-tutorial-create-a-resource.png)
 
 1. Arama kutusuna **depolama hesabı** yazın ve **[ENTER]** tuşuna basın.
-1. **Oluştur**’u seçin.
+1. **Oluştur**' un yanındaki aşağı oku seçin ve ardından **depolama hesabı**' nı seçin.
 
     ![Azure depolama hesabı oluşturma](./media/quickstart-create-templates-use-the-portal/azure-resource-manager-template-tutorial-create-storage-account-portal.png)
 
@@ -59,7 +59,7 @@ Birçok deneyimli şablon geliştiricisi, bu yöntemi, alışık oldukları Azur
 
     Şablon ana bölmede gösterilir. Bu, en üst düzey altı öğe olan (,,, `schema` `contentVersion` `parameters` `variables` , `resources` , ve `output` ) bir JSON dosyasıdır. Daha fazla bilgi için bkz [. ARM şablonlarının yapısını ve sözdizimini anlama](./template-syntax.md)
 
-    Tanımlanmış sekiz parametre vardır. Bunlardan biri **storageAccountName** olarak adlandırılmıştır. Önceki ekran görüntüsünde vurgulanan ikinci bölüm, şablondaki bu parametreye nasıl başvurulacağını gösterir. Sonraki bölümde şablonu düzenleyerek depolama hesabı için oluşturulan bir adı kullanacaksınız.
+    Tanımlanmış dokuz parametre vardır. Bunlardan biri **storageAccountName** olarak adlandırılmıştır. Önceki ekran görüntüsünde vurgulanan ikinci bölüm, şablondaki bu parametreye nasıl başvurulacağını gösterir. Sonraki bölümde şablonu düzenleyerek depolama hesabı için oluşturulan bir adı kullanacaksınız.
 
     Şablonda bir Azure kaynağı tanımlanmıştır. Türü `Microsoft.Storage/storageAccounts` . Kaynağın nasıl tanımlandığını ve tanım yapısını göz atın.
 1. Ekranın üstünden **İndir** ' i seçin.
@@ -92,72 +92,76 @@ Azure'daki her Azure hizmetinin adının benzersiz olması gerekir. Zaten var ol
    - **StorageAccountName** parametresini önceki ekran görüntüsünde gösterildiği gibi kaldırın.
    - Önceki ekran görüntüsünde gösterildiği gibi **storageAccountName** adlı bir değişken ekleyin:
 
-       ```json
-       "storageAccountName": "[concat(uniqueString(subscription().subscriptionId), 'storage')]"
-       ```
+      ```json
+      "storageAccountName": "[concat(uniqueString(subscription().subscriptionId), 'storage')]"
+      ```
 
-       İki şablon işlevi burada kullanılır: `concat()` ve `uniqueString()` .
+      İki şablon işlevi burada kullanılır: `concat()` ve `uniqueString()` .
    - **Microsoft.Storage/storageAccounts** kaynağının name öğesini parametre yerine yeni tanımlanan değişkeni kullanacak şekilde güncelleştirin:
 
-       ```json
-       "name": "[variables('storageAccountName')]",
-       ```
+      ```json
+      "name": "[variables('storageAccountName')]",
+      ```
 
-     Şablonun son halinin şu şekilde olması gerekir:
+      Şablonun son halinin şu şekilde olması gerekir:
 
-     ```json
-     {
-       "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-       "contentVersion": "1.0.0.0",
-       "parameters": {
-         "location": {
-           "type": "string"
-         },
-         "accountType": {
-           "type": "string"
-         },
-         "kind": {
-           "type": "string"
-         },
-         "accessTier": {
-           "type": "string"
-         },
-         "minimumTlsVersion": {
-           "type": "string"
-         },
-         "supportsHttpsTrafficOnly": {
-          "type": "bool"
-         },
-         "allowBlobPublicAccess": {
-           "type": "bool"
-         }
-       },
-       "variables": {
-         "storageAccountName": "[concat(uniqueString(subscription().subscriptionId), 'storage')]"
-       },
-       "resources": [
-         {
-           "name": "[variables('storageAccountName')]",
-           "type": "Microsoft.Storage/storageAccounts",
-           "apiVersion": "2019-06-01",
-           "location": "[parameters('location')]",
-           "properties": {
-             "accessTier": "[parameters('accessTier')]",
-             "minimumTlsVersion": "[parameters('minimumTlsVersion')]",
-             "supportsHttpsTrafficOnly": "[parameters('supportsHttpsTrafficOnly')]",
-             "allowBlobPublicAccess": "[parameters('allowBlobPublicAccess')]"
-           },
-           "dependsOn": [],
-           "sku": {
-             "name": "[parameters('accountType')]"
-           },
-           "kind": "[parameters('kind')]",
-           "tags": {}
-         }
-       ],
-       "outputs": {}
-     }
-     ```
+      ```json
+      {
+        "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+        "contentVersion": "1.0.0.0",
+        "parameters": {
+          "location": {
+            "type": "string"
+          },
+          "accountType": {
+            "type": "string"
+          },
+          "kind": {
+            "type": "string"
+          },
+          "accessTier": {
+            "type": "string"
+          },
+          "minimumTlsVersion": {
+            "type": "string"
+          },
+          "supportsHttpsTrafficOnly": {
+            "type": "bool"
+          },
+          "allowBlobPublicAccess": {
+            "type": "bool"
+          },
+          "allowSharedKeyAccess": {
+            "type": "bool"
+          }
+        },
+        "variables": {
+          "storageAccountName": "[concat(uniqueString(subscription().subscriptionId), 'storage')]"
+        },
+        "resources": [
+          {
+            "name": "[variables('storageAccountName')]",
+            "type": "Microsoft.Storage/storageAccounts",
+            "apiVersion": "2019-06-01",
+            "location": "[parameters('location')]",
+            "properties": {
+              "accessTier": "[parameters('accessTier')]",
+              "minimumTlsVersion": "[parameters('minimumTlsVersion')]",
+              "supportsHttpsTrafficOnly": "[parameters('supportsHttpsTrafficOnly')]",
+              "allowBlobPublicAccess": "[parameters('allowBlobPublicAccess')]",
+              "allowSharedKeyAccess": "[parameters('allowSharedKeyAccess')]"
+            },
+            "dependsOn": [],
+            "sku": {
+              "name": "[parameters('accountType')]"
+            },
+            "kind": "[parameters('kind')]",
+            "tags": {}
+          }
+        ],
+        "outputs": {}
+      }
+      ```
 
 1. **Kaydet**’i seçin.
 1. Aşağıdaki değerleri girin:
@@ -173,6 +177,7 @@ Azure'daki her Azure hizmetinin adının benzersiz olması gerekir. Zaten var ol
     |**En düşük TLS sürümü**|**TLS1_0** girin. |
     |**Yalnızca HTTPS trafiğini destekler**| Bu hızlı başlangıç için **true** değerini seçin. |
     |**Blob genel erişimine izin ver**| Bu hızlı başlangıç için **false** değerini seçin. |
+    |**Paylaşılan anahtar erişimine izin ver**| Bu hızlı başlangıç için **true** değerini seçin. |
 
 1. **Gözden geçir ve oluştur**’u seçin.
 1. **Oluştur**’u seçin.
