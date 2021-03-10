@@ -11,12 +11,12 @@ ms.topic: sample
 ms.date: 12/05/2019
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: b071bd29c3e66b2d2e504936b3653d15a22ca6f2
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.openlocfilehash: 77c4cfeb45510b1a06e02e398e20006f385511b8
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99258482"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102548572"
 ---
 # <a name="assign-a-group-to-a-specific-azure-ad-application-proxy-application"></a>Belirli bir Azure AD Uygulama Ara Sunucusu uygulamasına bir grup atama
 
@@ -28,7 +28,7 @@ Bu PowerShell betiği örneği, bir Azure Active Directory (Azure AD) uygulama p
 
 [!INCLUDE [cloud-shell-try-it.md](../../../../includes/cloud-shell-try-it.md)]
 
-Bu örnek, Graf modülü (azuread) [Için Azuread v2 PowerShell](/powershell/azure/active-directory/install-adv2) 'ı veya Graf modülü önizleme sürümü (azureadpreview) [Için Azuread v2 PowerShell](/powershell/azure/active-directory/install-adv2?view=azureadps-2.0-preview) 'i gerektirir.
+Bu örnek, Graf modülü (azuread) [Için Azuread v2 PowerShell](/powershell/azure/active-directory/install-adv2) 'ı veya Graf modülü önizleme sürümü (azureadpreview) [Için Azuread v2 PowerShell](/powershell/azure/active-directory/install-adv2?view=azureadps-2.0-preview&preserve-view=true) 'i gerektirir.
 
 ## <a name="sample-script"></a>Örnek betik
 
