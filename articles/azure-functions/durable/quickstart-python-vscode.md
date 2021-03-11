@@ -5,12 +5,12 @@ author: anthonychu
 ms.topic: quickstart
 ms.date: 12/23/2020
 ms.reviewer: azfuncdf, antchu
-ms.openlocfilehash: 749dea2d9d46cb69d0c7c8a799a3f82c04d020e8
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: 567388277f5a68ae23e8c806a8581c177c3fd1dd
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97936184"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102549473"
 ---
 # <a name="create-your-first-durable-function-in-python"></a>Python 'da ilk dayanıklı işlevinizi oluşturma
 
@@ -20,7 +20,7 @@ Bu makalede, bir "Hello World" dayanıklı işlevini yerel olarak oluşturmak ve
 
 ![Azure 'da dayanıklı işlevi çalıştırma](./media/quickstart-python-vscode/functions-vs-code-complete.png)
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticiyi tamamlamak için:
 
@@ -58,22 +58,7 @@ Bu bölümde, yerel bir Azure Işlevleri projesi oluşturmak için Visual Studio
 
 Gerekirse Azure Functions Core Tools Visual Studio Code yüklenir. Ayrıca, bir klasörde işlev uygulaması projesi oluşturur. Bu proje yapılandırma dosyalarında [host.js](../functions-host-json.md) ve [local.settings.js](../functions-run-local.md#local-settings-file) içerir.
 
-Kök klasörde bir requirements.txt dosyası da oluşturulur. İşlev uygulamanızı çalıştırmak için gereken Python paketlerini belirtir.
-
-## <a name="update-azure-functions-extension-bundles-version"></a>Azure Işlevleri uzantı demeti sürümünü Güncelleştir
-
-Python Azure Işlevleri, [Azure işlevleri uzantı paketleri](../functions-bindings-register.md#access-extensions-in-non-net-languages)sürüm 2. x gerektirir. Uzantı paketleri *host.jsüzerinde* yapılandırılır.
-
-1. Projede *host.js* açın. Uzantı paketini olarak güncelleştirin `version` `[2.*, 3.0.0)` . Bu, 2,0 değerinden büyük veya buna eşit ve 3,0 ' den az olan bir sürüm aralığı belirtir.
-
-    ```json
-    "extensionBundle": {
-        "id": "Microsoft.Azure.Functions.ExtensionBundle",
-        "version": "[2.*, 3.0.0)"
-    }
-    ```
-
-1. Güncelleştirilmiş Uzantı paketi sürümü yansıtılmadan önce VS Code yeniden yüklenmelidir. Komut paletinde, *Geliştirici: pencereyi yeniden yükle* komutunu çalıştırın ve çalıştırın.
+Kök klasörde bir *requirements.txt* dosyası da oluşturulur. İşlev uygulamanızı çalıştırmak için gereken Python paketlerini belirtir.
 
 ## <a name="install-azure-functions-durable-from-pypi"></a>Pypı 'den Azure işlevleri 'ni dayanıklı bir şekilde yükler
 
@@ -83,7 +68,7 @@ Projeyi oluşturduğunuzda Azure Işlevleri VS Code uzantısı, seçtiğiniz Pyt
 
     ```
     azure-functions
-    azure-functions-durable>=1.0.0b12
+    azure-functions-durable
     ```
 
 1. Düzenleyicinin tümleşik terminalini geçerli klasörde açın (<kbd>Ctrl + Shift + '</kbd>).

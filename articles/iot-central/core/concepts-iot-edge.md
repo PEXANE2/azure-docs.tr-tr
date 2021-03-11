@@ -10,12 +10,12 @@ services: iot-central
 ms.custom:
 - device-developer
 - iot-edge
-ms.openlocfilehash: 1a464b9e039f256fae52c32d828b1ec39a20a228
-ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
+ms.openlocfilehash: e0f3464420c5cb429f780999bf5983b2ab142567
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102123284"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102608640"
 ---
 # <a name="connect-azure-iot-edge-devices-to-an-azure-iot-central-application"></a>Azure IoT Edge cihazlarını Azure IoT Central uygulamasına bağlama
 
@@ -74,8 +74,6 @@ Aşağıdaki diyagramda her iki tür modül aracılığıyla bir IoT Edge ağ ge
 Aşağı akış cihazları, birden çok özel modülle bir IoT Edge ağ geçidi cihazına bağlanabilir. Aşağıdaki diyagramda, bir Modbus özel modülü, uyumlu olmayan özel bir modül ve *IoT Edge hub*  modülü aracılığıyla bağlanan aşağı akış cihazları gösterilmektedir:
 
 :::image type="content" source="media/concepts-iot-edge/gateway-two-modules-transparent.png" alt-text="Birden çok özel modül kullanılarak bağlantı diyagramı" border="false":::
-
-<!-- To do: add link to how to configure gateway article? -->
 
 ## <a name="iot-edge-devices-and-iot-central"></a>IoT Edge cihazlar ve IoT Central
 
@@ -286,7 +284,7 @@ IoT Edge çalışma zamanını aşağıdaki ortamlara da yükleyebilirsiniz:
 
 Bir IoT Edge cihazını ağ geçidi cihazı olacak şekilde seçtiyseniz, ağ geçidi cihazına bağlanmak istediğiniz cihazların cihaz modellerine aşağı akış ilişkileri ekleyebilirsiniz.
 
-<!-- TODO - add link to Edge Gateway how-to -->
+Daha fazla bilgi edinmek için bkz. [IoT Edge saydam bir ağ geçidi aracılığıyla cihazları bağlama](how-to-connect-iot-edge-transparent-gateway.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

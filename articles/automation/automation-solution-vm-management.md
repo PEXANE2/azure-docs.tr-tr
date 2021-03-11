@@ -5,16 +5,16 @@ services: automation
 ms.subservice: process-automation
 ms.date: 02/04/2020
 ms.topic: conceptual
-ms.openlocfilehash: e58f63b6ed7fb26a4e3b3069773810c5e5b7cdc3
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: e9a5427f7c3a057f291067ac83d3d9032d7e693d
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101732284"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102559367"
 ---
 # <a name="startstop-vms-during-off-hours-overview"></a>VM'leri çalışma saatleri dışında başlat/durdur genel bakış
 
-VM'leri çalışma saatleri dışında başlat/durdur özelliği, etkin Azure VM 'Leri başlatır veya sonlandırır. Kullanıcı tanımlı zamanlamalarda makineleri başlatır veya sonlandırır, Azure Izleyici günlükleri aracılığıyla öngörüler sağlar ve [eylem gruplarını](../azure-monitor/alerts/action-groups.md)kullanarak isteğe bağlı e-postalar gönderir. Bu özellik çoğu senaryo için hem Azure Resource Manager hem de klasik VM 'lerde etkinleştirilebilir. 
+VM'leri çalışma saatleri dışında başlat/durdur özelliği, etkin Azure VM 'Leri başlatır veya sonlandırır. Kullanıcı tanımlı zamanlamalarda makineleri başlatır veya sonlandırır, Azure Izleyici günlükleri aracılığıyla öngörüler sağlar ve [eylem gruplarını](../azure-monitor/alerts/action-groups.md)kullanarak isteğe bağlı e-postalar gönderir. Bu özellik çoğu senaryo için hem Azure Resource Manager hem de klasik VM 'lerde etkinleştirilebilir.
 
 Bu özellik, VM 'Leri başlatmak için [Start-AzVm](/powershell/module/az.compute/start-azvm) cmdlet 'ini kullanır. VM 'Leri durdurmak için [stop-AzVM](/powershell/module/az.compute/stop-azvm) kullanır.
 
@@ -34,6 +34,9 @@ Geçerli özellikle ilgili sınırlamalar aşağıda verilmiştir:
 
 - Herhangi bir bölgedeki VM 'Leri yönetir, ancak yalnızca Azure Otomasyonu hesabınızla aynı abonelikte kullanılabilir.
 - Azure ve Azure Kamu 'da, bir Log Analytics çalışma alanını, bir Azure Otomasyonu hesabını ve uyarıları destekleyen her bölgede kullanılabilir. Azure Kamu bölgeleri Şu anda e-posta işlevlerini desteklememektedir.
+
+> [!NOTE]
+> Bu sürümü yüklemeden önce, şu anda önizleme aşamasında olan [sonraki sürümü](https://github.com/microsoft/startstopv2-deployments)öğrenmek istiyoruz.  Bu yeni sürüm (v2), bununla aynı işlevleri sunar, ancak Azure 'daki yeni teknolojiden faydalanmak için tasarlanmıştır. Tek bir Başlat/Durdur örneğinden çoklu abonelik desteği gibi müşterilerden gelen, yaygın olarak istenen özelliklerden bazılarını ekler.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -106,7 +109,7 @@ Aşağıdaki tabloda, özelliğin Otomasyon hesabınıza dağıttığı runbook 
 
 Tüm üst runbook 'lar `WhatIf` parametresi içerir. True olarak ayarlandığında parametresi, runbook 'un parametre olmadan çalıştırıldığında aldığı tam davranışı ayrıntılandıran şekilde destekler ve doğru VM 'Lerin hedeflendiğine doğrular. Bir runbook yalnızca `WhatIf` parametre false olarak ayarlandığında tanımlı eylemlerini gerçekleştirir.
 
-|Runbook | Parametreler | Açıklama|
+|Runbook | Parametreler | Description|
 | --- | --- | ---|
 |AutoStop_CreateAlert_Child | VMObject <br> AlertAction <br> WebHookURI | Üst runbook 'tan çağırılır. Bu runbook otomatik durdurma senaryosu için kaynak temelinde uyarı oluşturur.|
 |AutoStop_CreateAlert_Parent | VMList<br> WhatIf: true veya false  | Hedeflenen abonelik veya kaynak gruplarındaki VM 'lerde Azure uyarı kuralları oluşturur veya güncelleştirir. <br> `VMList` , örneğin, bir VM 'lerin virgülle ayrılmış listesidir (boşluk olmadan) `vm1,vm2,vm3` .<br> `WhatIf` yürütme olmadan runbook mantığının doğrulanmasına izin vermez.|
@@ -158,7 +161,7 @@ Aşağıdaki tabloda, Otomasyon hesabınızda oluşturulan varsayılan zamanlama
 
 Tüm zamanlamaları etkinleştirmeyin, çünkü bu durum çakışan zamanlama eylemleri oluşturabilir. En iyi yöntem, hangi iyileştirmelerin yapmak istediğinizi belirlemektir ve bunları uygun şekilde değiştirebilirsiniz. Daha fazla açıklama için genel bakış bölümündeki örnek senaryolar bölümüne bakın.
 
-|Zamanlama adı | Sıklık | Açıklama|
+|Zamanlama adı | Sıklık | Description|
 |--- | --- | ---|
 |Schedule_AutoStop_CreateAlert_Parent | 8 saatte bir | **AutoStop_CreateAlert_Parent** runbook 'u her 8 saatte bir çalıştırır ve bu da, `External_Start_ResourceGroupNames` `External_Stop_ResourceGroupNames` ve değişkenlerinde VM tabanlı değerleri de durduruyor `External_ExcludeVMNames` . Alternatif olarak, parametresini kullanarak, VM 'lerin virgülle ayrılmış bir listesini belirtebilirsiniz `VMList` .|
 |Scheduled_StopVM | Kullanıcı tanımlı, günlük | **ScheduledStopStart_Parent** runbook 'u `Stop` her gün belirtilen zamanda bir parametre ile çalıştırır. , Değişken varlıklar tarafından tanımlanan kuralları karşılayan tüm VM 'Leri otomatik olarak sonlandırır. **Zamanlanan-StartVM** ilgili zamanlamasını etkinleştirin.|

@@ -2,24 +2,25 @@
 title: Azure 'da bir Linux VM 'sine Kullanıcı eklemek için Cloud-init kullanma
 description: Azure CLı ile oluşturma sırasında bir Linux VM 'sine Kullanıcı eklemek için Cloud-init kullanma
 author: rickstercdn
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
+ms.collection: linux
 ms.topic: how-to
 ms.date: 11/29/2017
 ms.author: rclaus
-ms.openlocfilehash: 569ceb4c7158ba9dc08c99c234951fb4507b69f6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2c459965f2eb29a469ac90fdeb42107d1dbcf86a
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87370079"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102559418"
 ---
 # <a name="use-cloud-init-to-add-a-user-to-a-linux-vm-in-azure"></a>Azure 'da bir Linux VM 'sine Kullanıcı eklemek için Cloud-init kullanma
 Bu makalede, Azure 'da sağlama zamanında bir sanal makineye (VM) veya sanal makine ölçek kümelerine (VMSS) Kullanıcı eklemek için [Cloud-init](https://cloudinit.readthedocs.io) ' i nasıl kullanacağınız gösterilmektedir. Bu Cloud-init betiği, kaynaklar Azure tarafından sağlandıktan sonra ilk önyüklemede çalışır. Cloud-init 'in Azure 'da ve desteklenen Linux korumalar 'daki yerel olarak nasıl çalıştığı hakkında daha fazla bilgi için bkz. [Cloud-init Overview](using-cloud-init.md).
 
 ## <a name="add-a-user-to-a-vm-with-cloud-init"></a>Cloud-init ile bir VM 'ye Kullanıcı ekleme
-Yeni bir Linux VM 'deki ilk görevlerden biri, *kök*kullanımını önlemek için kendinize ek bir kullanıcı eklemektir. SSH anahtarları, güvenlik ve kullanılabilirlik için en iyi uygulamadır. Bu Cloud-init betiğine sahip *~/. SSH/authorized_keys* dosyasına anahtarlar eklenir.
+Yeni bir Linux VM 'deki ilk görevlerden biri, *kök* kullanımını önlemek için kendinize ek bir kullanıcı eklemektir. SSH anahtarları, güvenlik ve kullanılabilirlik için en iyi uygulamadır. Bu Cloud-init betiğine sahip *~/. SSH/authorized_keys* dosyasına anahtarlar eklenir.
 
-Bir Linux VM 'ye Kullanıcı eklemek için, geçerli kabuğunuzun *cloud_init_add_user.txt* adlı bir dosya oluşturun ve aşağıdaki yapılandırmayı yapıştırın. Bu örnekte, dosyayı yerel makinenizde değil Cloud Shell oluşturun. İstediğiniz düzenleyiciyi kullanabilirsiniz. Dosyayı oluşturmak ve kullanılabilir düzenleyicilerin listesini görmek için `sensible-editor cloud_init_add_user.txt` adını girin. **Nano** düzenleyiciyi kullanmak için #1 seçin. Tüm Cloud-init dosyalarının, özellikle de ilk satırda doğru şekilde kopyalandığından emin olun.  Örnek için kendi ortak anahtarınızı ( *~/. ssh/id_rsa. pub*içeriği gibi) sağlamanız gerekir `ssh-authorized-keys:` . Bu, örneği basitleştirmek için burada kısaltıldı.
+Bir Linux VM 'ye Kullanıcı eklemek için, geçerli kabuğunuzun *cloud_init_add_user.txt* adlı bir dosya oluşturun ve aşağıdaki yapılandırmayı yapıştırın. Bu örnekte, dosyayı yerel makinenizde değil Cloud Shell oluşturun. İstediğiniz düzenleyiciyi kullanabilirsiniz. Dosyayı oluşturmak ve kullanılabilir düzenleyicilerin listesini görmek için `sensible-editor cloud_init_add_user.txt` adını girin. **Nano** düzenleyiciyi kullanmak için #1 seçin. Tüm Cloud-init dosyalarının, özellikle de ilk satırda doğru şekilde kopyalandığından emin olun.  Örnek için kendi ortak anahtarınızı ( *~/. ssh/id_rsa. pub* içeriği gibi) sağlamanız gerekir `ssh-authorized-keys:` . Bu, örneği basitleştirmek için burada kısaltıldı.
 
 ```yaml
 #cloud-config

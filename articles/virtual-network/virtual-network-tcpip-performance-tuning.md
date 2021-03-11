@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 04/02/2019
 ms.author: rimayber
 ms.reviewer: dgoddard, stegag, steveesp, minale, btalb, prachank
-ms.openlocfilehash: 1f6abbf68d4f648aeee6c025800f24140c9459e9
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 10fae563f80a4d77e3f4bb1d5ca809a4130b050a
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98219326"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102558857"
 ---
 # <a name="tcpip-performance-tuning-for-azure-vms"></a>Azure VM 'Leri için TCP/IP performans ayarı
 
@@ -210,7 +210,7 @@ Get-NetTCPConnection
 Get-NetTCPSetting
 ```
 
-Windows 'daki ilk TCP pencere boyutunu ve TCP ölçeklendirme faktörünü `Set-NetTCPSetting` PowerShell komutunu kullanarak ayarlayabilirsiniz. Daha fazla bilgi için bkz.  [set-NetTCPSetting](/powershell/module/nettcpip/set-nettcpsetting?view=win10-ps).
+Windows 'daki ilk TCP pencere boyutunu ve TCP ölçeklendirme faktörünü `Set-NetTCPSetting` PowerShell komutunu kullanarak ayarlayabilirsiniz. Daha fazla bilgi için bkz.  [set-NetTCPSetting](/powershell/module/nettcpip/set-nettcpsetting).
 
 ```powershell
 Set-NetTCPSetting
@@ -230,7 +230,7 @@ Bu ayarlar, TCP performansını etkilemenin en olası nedenidir, ancak internet 
 
 #### <a name="increase-mtu-size"></a>MTU boyutunu artır
 
-Daha büyük bir MTU daha büyük bir sahip olduğu için, MTU 'nun arttırıp 'nin TCP performansını artıramayacağını merak edebilirsiniz. Büyük olasılıkla değil. Yalnızca TCP trafiğinin ötesinde paket boyutunun olumlu ve olumsuz yönleri vardır. Daha önce anlatıldığı gibi, TCP verimlilik performansını etkileyen en önemli faktörler TCP pencere boyutu, paket kaybı ve RTT ' dir.
+Daha büyük bir MTU daha büyük bir sahip olduğu için, MTU 'nun arttırıp 'nin TCP performansını artıramayacağını merak edebilirsiniz. Büyük olasılıkla gerekmez. Yalnızca TCP trafiğinin ötesinde paket boyutunun olumlu ve olumsuz yönleri vardır. Daha önce anlatıldığı gibi, TCP verimlilik performansını etkileyen en önemli faktörler TCP pencere boyutu, paket kaybı ve RTT ' dir.
 
 > [!IMPORTANT]
 > Azure müşterilerinin sanal makinelerde varsayılan MTU değerini değiştirmesini önermiyoruz.

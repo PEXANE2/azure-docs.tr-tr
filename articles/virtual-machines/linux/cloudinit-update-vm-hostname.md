@@ -2,16 +2,17 @@
 title: Bir Linux sanal makinesi için konak adı ayarlamak için Cloud-init kullanın
 description: Azure CLı ile oluşturma sırasında bir Linux sanal makinesini özelleştirmek için Cloud-init kullanma
 author: rickstercdn
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
+ms.collection: linux
 ms.topic: how-to
 ms.date: 11/29/2017
 ms.author: rclaus
-ms.openlocfilehash: 85d2772596224a3c4252d950ca6ca8d6af02991b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5c3195fd338d17e2dae3ff2aadfb90790519715b
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87373666"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102559401"
 ---
 # <a name="use-cloud-init-to-set-hostname-for-a-linux-vm-in-azure"></a>Azure 'da bir Linux sanal makinesi için konak adı ayarlamak için Cloud-init kullanın
 Bu makalede, Azure 'da sağlama zamanında bir sanal makinede (VM) veya sanal makine ölçek kümelerinde (VMSS) belirli bir ana bilgisayar adını yapılandırmak için [Cloud-init](https://cloudinit.readthedocs.io) ' in nasıl kullanılacağı gösterilmektedir. Bu Cloud-init betikleri, kaynaklar Azure tarafından sağlandıktan sonra ilk önyüklemede çalışır. Cloud-init 'in Azure 'da ve desteklenen Linux korumalar 'daki yerel olarak nasıl çalıştığı hakkında daha fazla bilgi için bkz. [Cloud-init Overview](using-cloud-init.md)

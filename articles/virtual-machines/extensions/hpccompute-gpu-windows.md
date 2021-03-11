@@ -1,25 +1,26 @@
 ---
 title: NVıDıA GPU sürücü uzantısı-Azure Windows VM 'Leri
 description: Windows çalıştıran N serisi işlem VM 'lerine NVıDıA GPU sürücülerini yüklemek için Microsoft Azure uzantısı.
-services: virtual-machines-windows
+services: virtual-machines
 documentationcenter: ''
 author: vermagit
 manager: gwallace
 editor: ''
 ms.assetid: ''
-ms.service: virtual-machines-windows
+ms.service: virtual-machines
 ms.subservice: extensions
+ms.collection: windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 01/09/2019
 ms.author: akjosh
-ms.openlocfilehash: 82ed1d57d72a4479005d8bfd2234c124a97096ee
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 7cd2c5e54ccb81294a93c0ecebaa174df8d14011
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94965995"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102559673"
 ---
 # <a name="nvidia-gpu-driver-extension-for-windows"></a>Windows için NVıDıA GPU sürücü uzantısı
 
@@ -30,7 +31,7 @@ Bu uzantı, Windows N serisi VM 'Lere NVıDıA GPU sürücülerini yüklüyor. V
 Sürücülerin ve desteklenen geçerli sürümlerin el ile yüklenmesiyle ilgili yönergeler [burada](../windows/n-series-driver-setup.md)bulunabilir.
 [Linux N serisi VM 'LERE](hpccompute-gpu-linux.md)NVIDIA GPU sürücülerini yüklemek için de bir uzantı kullanılabilir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 ### <a name="operating-system"></a>İşletim sistemi
 
@@ -74,7 +75,7 @@ Aşağıdaki JSON uzantı için şemayı gösterir.
 
 | Name | Değer/örnek | Veri Türü |
 | ---- | ---- | ---- |
-| apiVersion | 2015-06-15 | tarih |
+| apiVersion | 2015-06-15 | date |
 | yayımcı | Microsoft. HpcCompute | string |
 | tür | NvidiaGpuDriverWindows | string |
 | typeHandlerVersion | 1.3 | int |

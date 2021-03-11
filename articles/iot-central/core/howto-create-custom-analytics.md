@@ -1,7 +1,7 @@
 ---
 title: Azure IoT Central özel Analize genişletin | Microsoft Docs
 description: Çözüm geliştiricisi olarak, bir IoT Central uygulamasını özel analiz ve görselleştirmeler yapmak üzere yapılandırın. Bu çözüm Azure Databricks kullanır.
-author: TheJasonAndrew
+author: TheRealJasonAndrew
 ms.author: v-anjaso
 ms.date: 02/18/2020
 ms.topic: how-to
@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: philmea
-ms.openlocfilehash: 86f94b8059d85b892a87c82537b1e9b02552f8f7
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 11e5ba3c0700cc9b29b8a11c0f9aa20cb5adb132
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101741774"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102551326"
 ---
 # <a name="extend-azure-iot-central-with-custom-analytics-using-azure-databricks"></a>Azure Databricks kullanarak Azure IoT Central özel analiz ile genişletme
 
@@ -103,7 +103,7 @@ Event Hubs ad alanınız aşağıdaki ekran görüntüsüne benzer şekilde gör
 
 [Azure IoT Central uygulama Yöneticisi](https://aka.ms/iotcentral) Web sitesinde, contoso şablonundan oluşturduğunuz IoT Central uygulamasına gidin. Bu bölümde, uygulamayı sanal cihazınızdan, Olay Hub 'ınıza Telemetriyi akışa almak üzere yapılandırırsınız. Dışarı aktarmayı yapılandırmak için:
 
-1. **Veri dışa aktarma (eski)** sayfasına gidin, **+ Yeni**' yi seçin ve ardından **Azure Event Hubs**.
+1. **Veri dışa aktarma** sayfasına gidin, **+ Yeni**' yi ve ardından **Azure Event Hubs**' yi seçin.
 1. Dışarı aktarmayı yapılandırmak için aşağıdaki ayarları kullanın ve **Kaydet**' i seçin:
 
     | Ayar | Değer |
@@ -136,7 +136,7 @@ Kümenizi oluşturmak için aşağıdaki tablodaki bilgileri kullanın:
 | Küme modu | Standart |
 | Databricks Runtime sürümü | 5,5 LTS (Scala 2,11, Spark 2.4.5) |
 | Python sürümü | 3 |
-| Otomatik ölçeklendirmeyi etkinleştir | Hayır |
+| Otomatik ölçeklendirmeyi etkinleştir | No |
 | İşlem yapılmadan dakika sonra Sonlandır | 30 |
 | Çalışan türü | Standard_DS3_v2 |
 | Çalışanlarınız | 1 |

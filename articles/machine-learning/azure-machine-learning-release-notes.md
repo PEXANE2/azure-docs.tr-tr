@@ -9,12 +9,12 @@ ms.topic: reference
 ms.author: larryfr
 author: BlackMist
 ms.date: 02/18/2021
-ms.openlocfilehash: b61337f29eac11ca3fb45056b9348fbc70956b53
-ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
+ms.openlocfilehash: 8c876a09c77a2ed5441a2f40acc2da508697febb
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102521212"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102608691"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Azure Machine Learning sürüm notları
 
@@ -59,7 +59,7 @@ __RSS akışı__: aşağıdaki URL 'yi kopyalayıp akış okuyucunuzun içine ya
   + [Yerel Terminal (GA)](https://docs.microsoft.com/azure/machine-learning/how-to-access-terminal). Kullanıcılar artık tümleşik Terminal aracılığıyla bir tümleşik terminale ve git işlemine erişime sahip olur.
   + [Not defteri parçacıkları (Önizleme)](https://azure.github.io/azureml-web/docs/vs-code-snippets/snippets). Ortak Azure ML kodu alıntıları artık parmaklarınızın ucunda. Araç çubuğu aracılığıyla erişilebilen kod parçacıkları paneline gidin veya Ctrl + Space ' i kullanarak kod içi parçacıkları menüsünü etkinleştirin.  
   + [Klavye kısayolları](https://docs.microsoft.com/azure/machine-learning/how-to-run-jupyter-notebooks#shortcut-keys). Jupyter 'da kullanılabilen klavye kısayollarıyla tam eşlik. 
-  + Hücre parametrelerini belirtin. Bir not defterinde hücresi bulunan kullanıcıları parametre hücresi gösterir ve Işlem örneği üzerinde [Papermill](https://github.com/nteract/papermill) aracılığıyla parametreli not defterlerini çalıştırabilir.
+  + Hücre parametrelerini belirtin. Bir not defterindeki hücrelerin parametre hücreleri olduğunu ve Işlem örneği üzerinde [Papermill](https://github.com/nteract/papermill) aracılığıyla parametreli not defterlerini çalıştırabileceği kullanıcıları gösterir.
   + Terminal ve çekirdek oturum Yöneticisi: kullanıcılar, işlem sırasında çalışan tüm kerls ve Terminal oturumlarını yönetebilecektir.
   + Paylaşma düğmesi. Kullanıcılar artık dosyayı sağ tıklayıp paylaşma düğmesini kullanarak not defteri Dosya Gezgininde herhangi bir dosyayı paylaşabilir.
 

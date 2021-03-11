@@ -3,16 +3,17 @@ title: Linux VM 'de takas bölümü yapılandırmak için Cloud-init kullanma
 description: Azure CLı ile oluşturma sırasında bir Linux sanal makinesinde takas bölümü yapılandırmak için Cloud-init kullanma
 author: rickstercdn
 manager: gwallace
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
+ms.collection: linux
 ms.topic: how-to
 ms.date: 11/29/2017
 ms.author: rclaus
-ms.openlocfilehash: 1f8746e67ba712ac4c2c3e832fcb5ffefb170d59
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b9f4adc4e1e980db2af4fcc20b3a4492309c89f3
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87371949"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102559384"
 ---
 # <a name="use-cloud-init-to-configure-a-swap-partition-on-a-linux-vm"></a>Linux VM 'de takas bölümü yapılandırmak için Cloud-init kullanma
 Bu makalede, [Cloud-init](https://cloudinit.readthedocs.io) kullanarak çeşitli Linux dağıtımlarına takas bölümünü nasıl yapılandırabileceğiniz gösterilmektedir. Değiştirme bölümü geleneksel olarak Linux Aracısı (WALA) tarafından hangi dağıtımların gerekli olduğunu temel alan bir şekilde yapılandırılmıştır.  Bu belge, Cloud-init ' i kullanarak sağlama süresi boyunca değiştirme bölümünü isteğe bağlı olarak oluşturma sürecini özetler.  Cloud-init 'in Azure 'da ve desteklenen Linux korumalar 'daki yerel olarak nasıl çalıştığı hakkında daha fazla bilgi için bkz. [Cloud-init Overview](using-cloud-init.md)

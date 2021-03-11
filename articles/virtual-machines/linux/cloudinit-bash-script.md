@@ -2,16 +2,17 @@
 title: Azure 'da bir Linux VM 'de Bash betiğini çalıştırmak için Cloud-init kullanma
 description: Azure CLı ile oluşturma sırasında bir Linux sanal makinesinde Bash betiğini çalıştırmak için Cloud-init kullanma
 author: rickstercdn
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
+ms.collection: linux
 ms.topic: how-to
 ms.date: 11/29/2017
 ms.author: rclaus
-ms.openlocfilehash: 0370ddeafd1f695292ba122bfebd6197a360f560
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1dabd7db85d4222ca2e9f8387b716af291ee6a69
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87372816"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102559435"
 ---
 # <a name="use-cloud-init-to-run-a-bash-script-in-a-linux-vm-in-azure"></a>Azure 'da bir Linux sanal makinesinde Bash betiğini çalıştırmak için Cloud-init kullanma
 Bu makalede, Azure 'da sağlama sırasında Linux sanal makinesi (VM) veya sanal makine ölçek kümeleri (VMSS) üzerinde mevcut bir bash betiğini çalıştırmak için [Cloud-init](https://cloudinit.readthedocs.io) ' i nasıl kullanacağınız gösterilmektedir. Bu Cloud-init betikleri, kaynaklar Azure tarafından sağlandıktan sonra ilk önyüklemede çalışır. Cloud-init 'in Azure 'da ve desteklenen Linux korumalar 'daki yerel olarak nasıl çalıştığı hakkında daha fazla bilgi için bkz. [Cloud-init Overview](using-cloud-init.md)
