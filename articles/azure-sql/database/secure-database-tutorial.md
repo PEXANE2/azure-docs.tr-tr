@@ -10,12 +10,12 @@ ms.author: vanto
 ms.reviewer: ''
 ms.date: 09/21/2020
 ms.custom: seoapril2019 sqldbrb=1
-ms.openlocfilehash: f42db48e0fa0e85d919d6894e5476b7ef5380698
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: 8cdf95dd3c0e801896328136b15e4bd4efe53005
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99089300"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102563821"
 ---
 # <a name="tutorial-secure-a-database-in-azure-sql-database"></a>Öğretici: Azure SQL veritabanında bir veritabanını güvenli hale getirme
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -146,7 +146,7 @@ Azure AD 'yi yapılandırma hakkında daha fazla bilgi için bkz.
 - [Azure AD 'ye kendi etki alanı adınızı ekleyin](../../active-directory/fundamentals/add-custom-domain.md)
 - [Microsoft Azure artık Windows Server AD ile Federasyonu destekliyor](https://azure.microsoft.com/blog/20../../windows-azure-now-supports-federation-with-windows-server-active-directory/)
 - [Azure AD dizinini yönetme](../../active-directory/fundamentals/active-directory-whatis.md)
-- [PowerShell kullanarak Azure AD 'yi yönetme](/powershell/azure/?view=azureadps-2.0)
+- [PowerShell kullanarak Azure AD 'yi yönetme](/powershell/azure/)
 - [Karma kimlik için gerekli bağlantı noktaları ve protokoller](../../active-directory/hybrid/reference-connect-ports.md)
 
 ## <a name="manage-database-access"></a>Veritabanı erişimini yönetme

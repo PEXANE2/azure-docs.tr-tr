@@ -3,18 +3,18 @@ title: Azure PowerShell kullanarak Market satın alma planı bilgilerini belirtm
 description: Paylaşılan bir görüntü galerisinde görüntü oluştururken Azure Marketi satın alma planı ayrıntılarını belirtmeyi öğrenin.
 author: cynthn
 ms.service: virtual-machines
-ms.subservice: imaging
+ms.subservice: shared-image-gallery
 ms.topic: how-to
 ms.workload: infrastructure
 ms.date: 07/07/2020
 ms.author: cynthn
 ms.reviewer: akjosh
-ms.openlocfilehash: 2a971f6e56f441ab05a6a9b483eeef990d3ea31f
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: 9df1f6b02e6572c8f2153016c0142912e24fcfe8
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96903760"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102562546"
 ---
 # <a name="supply-azure-marketplace-purchase-plan-information-when-creating-images"></a>Görüntü oluştururken Azure Marketi satın alma planı bilgilerini sağlama
 

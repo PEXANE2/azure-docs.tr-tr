@@ -1,7 +1,7 @@
 ---
 title: Azure 'daki bir Docker kapsayıcısında mikro odak kurumsal sunucu 5,0 ' i çalıştırın | Microsoft Docs
 description: Bu makalede, Microsoft Azure 'de bir Docker kapsayıcısında Micro Focus Enterprise Server 5,0 ' i nasıl çalıştıracağınızı öğrenin.
-services: virtual-machines-linux
+services: virtual-machines
 documentationcenter: ''
 author: maggsl
 ms.author: edprice
@@ -12,12 +12,12 @@ ms.date: 06/29/2020
 tags: ''
 keywords: ''
 ms.service: multiple
-ms.openlocfilehash: f34767c160c8229eb5b63806924926a46ea00cc2
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 5c436eae53b16c980e9725cfef0573367d144842
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93127204"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102548385"
 ---
 # <a name="run-micro-focus-enterprise-server-50-in-a-docker-container-on-azure"></a>Azure 'daki bir Docker kapsayıcısında mikro odak kurumsal sunucu 5,0 ' i çalıştırın
 
@@ -40,11 +40,11 @@ Başlamadan önce Şu önkoşullara göz atın:
 
 -   [Kurumsal sunucu ve Kurumsal Geliştirici](https://www.microfocus.com/documentation/enterprise-developer/#%22)belgeleri.
 
-## <a name="create-a-vm"></a>VM oluştur
+## <a name="create-a-vm"></a>VM oluşturma
 
 1.  Medyayı ENT \_ Server \_ dockerfile 'ları destekliyor \_ 5,0 \_windows.zip dosyasından güvenli hale getirin. ES-Docker-prod-XXXXXXXX. mflik lisanslama dosyasının güvenliğini sağlayın (Docker görüntülerini derlemek için gereklidir).
 
-2.  VM 'yi oluşturun. Bunu yapmak için, Azure portal açın, sol üstteki menüden **kaynak oluştur** ' u seçin ve *Windows Server işletim sistemine* göre filtreleyin. Sonuçlarda **Windows Server** ' ı seçin. Sonraki ekranda, **kapsayıcılar Ile Windows Server 2016 Datacenter** ' u seçin.
+2.  VM 'yi oluşturun. Bunu yapmak için, Azure portal açın, sol üstteki menüden **kaynak oluştur** ' u seçin ve *Windows Server işletim sistemine* göre filtreleyin. Sonuçlarda **Windows Server** ' ı seçin. Sonraki ekranda, **kapsayıcılar Ile Windows Server 2016 Datacenter**' u seçin.
 
     ![Azure portal arama sonuçlarının ekran görüntüsü](./media/run-image-1.png)
 
@@ -58,7 +58,7 @@ Başlamadan önce Şu önkoşullara göz atın:
 
     4.  **Kullanıcı adı** için, kullanmak istediğiniz yönetici hesabını ve parolayı yazın.
 
-    5.  **3389 RDP bağlantı noktasının** açık olduğundan emin olun. VM 'de oturum açabilmeniz için yalnızca bu bağlantı noktasının herkese açık olması gerekir. Ardından, tüm varsayılan değerleri kabul edin ve **gözden geçir + oluştur** ' a tıklayın.
+    5.  **3389 RDP bağlantı noktasının** açık olduğundan emin olun. VM 'de oturum açabilmeniz için yalnızca bu bağlantı noktasının herkese açık olması gerekir. Ardından, tüm varsayılan değerleri kabul edin ve **gözden geçir + oluştur**' a tıklayın.
 
     ![Sanal makine oluştur bölmesinin ekran görüntüsü](./media/run-image-2.png)
 
@@ -66,7 +66,7 @@ Başlamadan önce Şu önkoşullara göz atın:
 
 5.  VM 'nizin **genel bakış** dikey penceresine gitmek Için **Kaynağa Git** ' i seçin.
 
-6.  Sağ tarafta **Bağlan** ' ı seçin. **Sanal makineye bağlan** seçenekleri sağda görünür.
+6.  Sağ tarafta **Bağlan**' ı seçin. **Sanal makineye bağlan** seçenekleri sağda görünür.
 
 7.  VM 'ye eklemenize olanak tanıyan Uzak Masaüstü Protokolü (RDP) dosyasını indirmek için **RDP dosyasını indir** düğmesini seçin.
 
@@ -75,13 +75,13 @@ Başlamadan önce Şu önkoşullara göz atın:
     > [!Note]    
     > Oturum açmak için şirket kimlik bilgilerinizi kullanmayın. (RDP istemcisi bunları kullanmak isteyebileceğiniz varsayılır. Değilsiniz.)
 
-9.  **Diğer seçimler** ' ı seçin, ardından VM kimlik bilgilerinizi seçin.
+9.  **Diğer seçimler**' ı seçin, ardından VM kimlik bilgilerinizi seçin.
 
 Bu noktada, VM çalışır ve RDP aracılığıyla iliştirilir. Oturumunuz açıldı ve bir sonraki adım için hazırsınız.
 
 ## <a name="create-a-sandbox-directory-and-upload-the-zip-file"></a>Korumalı alan dizini oluşturma ve ZIP dosyasını karşıya yükleme
 
-1.  VM üzerinde tanıtım ve lisans dosyalarını karşıya yükleyebileceğiniz bir dizin oluşturun. Örneğin, **C: \\ Sandbox** .
+1.  VM üzerinde tanıtım ve lisans dosyalarını karşıya yükleyebileceğiniz bir dizin oluşturun. Örneğin, **C: \\ Sandbox**.
 
 2.  **ENT \_ Server \_ dockerfile 'ları destekliyor \_ 5,0 \_windows.zip** ve **es-Docker-prod-xxxxxxxx. mflik** dosyasını oluşturduğunuz dizine yükleyin.
 
@@ -103,7 +103,7 @@ Bu noktada, VM çalışır ve RDP aracılığıyla iliştirilir. Oturumunuz aç�
     Örneğin, bu yazıldığında sürüm 18.09.0 idi.
 
 3.  Dizini değiştirmek için şunu yazın:  
-    **CD \\ Korumalı \\ alan \_ sunucu \_ dockerfile 'ları destekliyor \_ 5,0 \_ Windows \\ enterpriseserver** .
+    **CD \\ Korumalı \\ alan \_ sunucu \_ dockerfile 'ları destekliyor \_ 5,0 \_ Windows \\ enterpriseserver**.
 
 4.  İlk temel görüntü için derleme işlemini başlatmak üzere **IAcceptEulabld.bat** yazın. Bu işlemin çalışması için birkaç dakika bekleyin. Sonuçlarda, biri x64 ve diğeri x86 için oluşturulmuş iki resme dikkat edin:
 
@@ -137,7 +137,7 @@ Bu noktada, VM çalışır ve RDP aracılığıyla iliştirilir. Oturumunuz aç�
     docker inspect \<containerID\> --format="{{range.NetworkSettings.Networks}}{{.IPAddress}}{{end}}"
     ```
 
-    Örneğin:
+    Örnek:
 
     ```
     docker inspect 22a0fe3159d0 --format="{{range.NetworkSettings.Networks}}{{.IPAddress}}{{end}}"
@@ -147,7 +147,7 @@ Bu noktada, VM çalışır ve RDP aracılığıyla iliştirilir. Oturumunuz aç�
 
     ![IP adresini gösteren Komut penceresi ekran görüntüsü](./media/run-image-5.png)
 
-5. Öykünücüyü kullanarak görüntüyü bağlayın. Öykünücüyü, acctdemo görüntüsünün adresini ve 9040 numaralı bağlantı noktasını kullanacak şekilde yapılandırın. İşte bu **172.19.202.52:9040** . Sizinki benzer olacaktır. **CICS üzerinde oturum açma** ekranı açılır.
+5. Öykünücüyü kullanarak görüntüyü bağlayın. Öykünücüyü, acctdemo görüntüsünün adresini ve 9040 numaralı bağlantı noktasını kullanacak şekilde yapılandırın. İşte bu **172.19.202.52:9040**. Sizinki benzer olacaktır. **CICS üzerinde oturum açma** ekranı açılır.
 
     ![CICS için oturum açma ekranının ekran görüntüsü](./media/run-image-6.png)
 

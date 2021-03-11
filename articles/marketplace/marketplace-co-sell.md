@@ -6,13 +6,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 author: vamahtan
 ms.author: vamahtan
-ms.date: 2/24/2021
-ms.openlocfilehash: ef90a21ab8fad0e18542c1c88ee808237ff150c5
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.date: 3/08/2021
+ms.openlocfilehash: d3759590cdd926b5e144cdc11761630a0aba4e29
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102032594"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102563787"
 ---
 # <a name="co-sell-with-microsoft-sales-teams-and-partners-overview"></a>Microsoft satış ekiplerine ve iş ortaklarına genel bakış ile ortak satış
 
@@ -37,11 +37,16 @@ Ortak satış fırsatı, Microsoft satış ekiplerinin, Microsoft iş ortakları
 
 ## <a name="co-sell-statuses"></a>Ortak satış durumları
 
-Bir teklifine uygulanabilecek dört adet ortak satış durumu düzeyi vardır:
+Bunlar, bir teklifine uygulanabilen ortak satış durumu düzeylerdir.
+
+Azure için ortak satış durumları:
 
 - Ortak satış için hazırlanma
 - Ortak satış hazırlanıyor
 - Azure IP ortak satışı incentivized
+
+İş uygulamaları için ortak satış durumları
+- Biz ISV Apps ISV Connect standart
 - Biz uygulama ISV Connect Premium  
 
 Bu ortak satış durumlarını elde etme gereksinimleriyle ilgili ayrıntılı bilgi için bkz. [ortak satış gereksinimleri](co-sell-requirements.md).
@@ -54,7 +59,7 @@ Ortak satış için hazırlanma ve Azure IP ortak satışı durumuna nasıl ula�
 
 ## <a name="benefits-of-co-sell-incentivized-status"></a>Ortak satış incentivized durumunun avantajları
 
-_Ortak satış incentivized_ durumu, _Azure IP ortak satış Incentivized_ ve _biz uygulamaları ISV Connect Premium özenileri_ içerir. Bu durumlar, teklifinizi satmaya yönelik iş ortakları incentivize. Bu durumu elde etmek için Ayrıca ortak satış için hazırlık durumu elde etmeniz gerekir. Ortak satış incentivized durumu, ortak satış özellikli çözümlerin tüm avantajlarını elde edebilir ve Microsoft Sales ekipleri için ek teşvikleri kazanıyorsa ve daha ticari Market avantajlarına uygun olabilir.
+_Ortak satış incentivized_ durumu, _Azure IP ortak satış Incentivized_ ve _biz uygulamaları ISV Connect Standard veya Premium özenileri_ içerir. Bu durumlar, Microsoft satış ekiplerinizi teklifinizi satmaya incentivize. Bu durumu elde etmek için Ayrıca ortak satış için hazırlık durumu elde etmeniz gerekir. Ortak satış incentivized durumu, ortak satış için hazırlık durumunun tüm avantajlarını elde edebilir ve Microsoft Sales ekipleri için ek teşvikleri kazanıyorsa ve daha ticari Market avantajlarına uygun olabilir.
 
 Azure IP ortak satış incentivized durumu, bu teklif türlerine uygulanabilir:
 
@@ -64,18 +69,17 @@ Azure IP ortak satış incentivized durumu, bu teklif türlerine uygulanabilir:
 - IoT Edge modülü
 - Hizmet Olarak Yazılım (SaaS)
 
-Biz ISV Apps ISV Connect Premium teşvik durumu, bu teklif türlerine uygulanabilir:
+Biz ISV Apps ISV Connect standart veya Premium teşvik durumu, bu teklif türlerine uygulanabilir:
 
-- Dynamics 365 İş Merkezi
 - PowerApps & müşteri katılımı için Dynamics 365
 - İşlemler için Dynamics 365
 
-_Azure IP ortak satış incentivized_ durumu elde eden teklifler bu ticari Market avantajlarına ulaşın:
+_Azure IP ortak satış incentivized_ veya biz uygulamalarına YÖNELIK teklifler _ISV Connect Standard veya Premium özeniyileri_ , bu ticari Market avantajlarına ulaşın:
 
 - Market hizmeti ücreti %20 ile %10 arasında azaltılır. Bu indirim, ticari Market aracılığıyla satılan hizmet olarak altyapı (IaaS) çözümü veya hizmet olarak yazılım (SaaS) çözümü için geçerlidir. Daha fazla bilgi için bkz. [ticari Market hizmet ücretleri](marketplace-commercial-transaction-capabilities-and-considerations.md#commercial-marketplace-service-fees).
 - Bulut çözümü sağlayıcısı (CSP) iş ortakları, IaaS çözümünüzü veya SaaS teklifinizi satmaya yönelik %10 bir teşvik alır. CSP programı hakkında daha fazla bilgi edinmek için bkz. [bulut çözümü sağlayıcısı programı](cloud-solution-providers.md).
 - Ticari Market aracılığıyla teklifinizin satışları, müşterilerin Azure tüketim taahhütlerine katkıda bulunur. Uygun müşteriler, Azure portal için **uygun olan Azure avantajı** olarak işaretlenmiş teklifi görür. Daha fazla bilgi için bkz. [Azure tüketim taahhüt avantajı](azure-consumption-commitment-benefit.md).
-- _Azure IP ortak satış incentivized_ veya biz uygulamaları elde eden teklifler _ISV Connect Premium teşvik_ durumu, çevrimiçi mağazalardaki teklif listesi sayfasında **tercih edilen çözümler** rozet alır. Rozet, belirli bir sektör dikey veya çözüm alanında müşteri ihtiyaçlarını ele almak için bir teklifin kalitesini, performansını ve özelliklerini yükseltir. Daha fazla bilgi için bkz. [Microsoft AppSource ve Azure Market 'Te tercih edilen çözümler](preferred-solutions.md).
+- _Azure IP ortak satış incentivized_ veya biz uygulamaları elde eden teklifler _ISV Connect Standard veya Premium_ önerir durumu, çevrimiçi mağazalardaki teklif listesi sayfasında **Microsoft Tercihli çözümler** rozet alır. Rozet, belirli bir sektör dikey veya çözüm alanında müşteri ihtiyaçlarını ele almak için bir teklifin kalitesini, performansını ve özelliklerini yükseltir.
 
 Ortak satış için hazırlanma ve ortak satış incentivized durumuna nasıl ulaştığımızı öğrenmek için bkz. [ortak satış için hazırlanın ve ortak satış incentivized gereksinimleri](co-sell-requirements.md).
 

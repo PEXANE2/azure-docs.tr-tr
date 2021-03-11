@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 1/12/2021
 ms.topic: article
 ms.service: azure
-ms.openlocfilehash: d76db6830839902a46aaf6515f816fdcc36d0df5
-ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
+ms.openlocfilehash: f3c9f8f78f17153c3d2eb7b014cf616253b3c0c9
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/15/2021
-ms.locfileid: "100523949"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102618262"
 ---
 # <a name="manage-the-on-premises-management-console"></a>Şirket içi yönetim konsolunu yönetme
 
@@ -226,7 +226,7 @@ CLı komutunu kullanırken:
 
 Aşağıdaki komutlarla sertifikalarınızı yönetin:
 
-| Açıklama | CLı komutu |
+| Description | CLı komutu |
 |--|--|
 | Yeni bir özel anahtar ve sertifika Imzalama Isteği oluştur | `openssl req -out CSR.csr -new -newkey rsa:2048 -nodes -keyout privateKey.key` |
 | Otomatik olarak imzalanan bir sertifika oluşturma | `openssl req -x509 -sha256 -nodes -days 365 -newkey rsa:2048 -keyout privateKey.key -out certificate.crt` |
@@ -236,7 +236,7 @@ Aşağıdaki komutlarla sertifikalarınızı yönetin:
 
 Bir sertifika, CSR veya özel anahtar içindeki bilgileri denetlemeniz gerekiyorsa, bu komutları kullanın;
 
-| Açıklama | CLı komutu |
+| Description | CLı komutu |
 |--|--|
 | Sertifika Imzalama Isteği 'ni (CSR) denetleme | `openssl req -text -noout -verify -in CSR.csr` |
 | Özel anahtarı denetleme | `openssl rsa -in privateKey.key -check` |
@@ -244,13 +244,13 @@ Bir sertifika, CSR veya özel anahtar içindeki bilgileri denetlemeniz gerekiyor
 
 Özel anahtarın sertifikayla eşleşmemesi veya bir siteye yüklediğiniz bir sertifikanın güvenilir olmadığını belirten bir hata alırsanız, hatayı onarmak için bu komutları kullanın;
 
-| Açıklama | CLı komutu |
+| Description | CLı komutu |
 |--|--|
 | Bir CSR veya özel anahtardaki ile eşleştiğinden emin olmak için ortak anahtarın MD5 karmasını denetleyin | 1. `openssl x509 -noout -modulus -in certificate.crt | openssl md5` <br /> iki. `openssl rsa -noout -modulus -in privateKey.key | openssl md5` <br /> 03. `openssl req -noout -modulus -in CSR.csr | openssl md5 ` |
 
 Sertifikaları ve anahtarları, belirli sunucu türleri veya yazılımlar ile uyumlu hale getirmek üzere farklı biçimlere dönüştürmek için, bu komutları kullanın;
 
-| Açıklama | CLı komutu |
+| Description | CLı komutu |
 |--|--|
 | DER dosyasını (. CRT. cer. der) ped 'ye Dönüştür  | `openssl x509 -inform der -in certificate.cer -out certificate.pem`  |
 | PED dosyasını DER öğesine Dönüştür | `openssl x509 -outform der -in certificate.pem -out certificate.der`  |
@@ -415,7 +415,21 @@ Aşağıdaki yordamda, şirket içi yönetim konsolu yazılımının sürümün�
 
 1. IoT **güncelleştirmeleri** için Defender sayfasından indirdiğiniz dosyayı seçin.
 
-## <a name="next-steps"></a>Sonraki adımlar
+## <a name="mail-server-settings"></a>Posta sunucusu ayarları
+
+Şirket içi yönetim konsolu için SMTP posta sunucusu ayarlarını tanımlayın.
+
+Şunları tanımlamak için:
+
+1. Yönetim kimlik bilgileriyle şirket içi yönetim için CLı 'da oturum açın.
+1. ```nano /var/cyberx/properties/remote-interfaces.properties``` yazın.
+1. Enter'a basın. Aşağıdaki istemler görüntülenir.
+```mail.smtp_server= ```
+```mail.port=25 ```
+```mail.sender=```
+1. SMTP sunucusu adını ve göndereni girip ENTER ' u seçin.
+
+## <a name="see-also"></a>Ayrıca bkz.
 
 [Yönetim konsolundan algılayıcıları yönetme](how-to-manage-sensors-from-the-on-premises-management-console.md)
 

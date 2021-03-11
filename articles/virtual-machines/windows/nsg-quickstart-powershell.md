@@ -3,17 +3,18 @@ title: Azure PowerShell kullanarak bir VM 'ye bağlantı noktalarını açma
 description: Azure PowerShell kullanarak sanal makinenize bir bağlantı noktası açma/bitiş noktası oluşturma hakkında bilgi edinin
 author: cynthn
 ms.service: virtual-machines
+ms.subservice: networking
 ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 12/13/2017
 ms.author: cynthn
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: a432ce978f6fa9e3a472cb15e9ef9241bc41004d
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 8390b5c779e6aa053e1af2754c436dd51e410b06
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92891763"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102550425"
 ---
 # <a name="how-to-open-ports-and-endpoints-to-a-vm-using-powershell"></a>PowerShell kullanarak bir VM 'ye bağlantı noktalarını ve uç noktaları açma
 [!INCLUDE [virtual-machines-common-nsg-quickstart](../../../includes/virtual-machines-common-nsg-quickstart.md)]
@@ -27,7 +28,7 @@ Azure hesabınızda oturum açın:
 Connect-AzAccount
 ```
 
-Aşağıdaki örneklerde parametre adlarını kendi değerlerinizle değiştirin. *Myresourcegroup* , *mynetworksecuritygroup* ve *myvnet* dahil olmak üzere örnek parametre adları.
+Aşağıdaki örneklerde parametre adlarını kendi değerlerinizle değiştirin. *Myresourcegroup*, *mynetworksecuritygroup* ve *myvnet* dahil olmak üzere örnek parametre adları.
 
 [New-AzNetworkSecurityRuleConfig](/powershell/module/az.network/new-aznetworksecurityruleconfig)ile bir kural oluşturun. Aşağıdaki örnek, *80* numaralı bağlantı noktasında *TCP* trafiğine Izin vermek Için *mynetworksecuritygrouprule* adlı bir kural oluşturur:
 
@@ -55,7 +56,7 @@ $nsg = New-AzNetworkSecurityGroup `
     -SecurityRules $httprule
 ```
 
-Şimdi ağ güvenlik grubunuzu bir alt ağa atayalim. Aşağıdaki örnek, [Get-AzVirtualNetwork](/powershell/module/az.network/get-azvirtualnetwork)ile birlikte $VNET *myvnet* adlı var olan *$vnet* bir sanal ağı değişkene atar:
+Şimdi ağ güvenlik grubunuzu bir alt ağa atayalim. Aşağıdaki örnek, [Get-AzVirtualNetwork](/powershell/module/az.network/get-azvirtualnetwork)ile birlikte $VNET *myvnet* adlı var olan  bir sanal ağı değişkene atar:
 
 ```powershell
 $vnet = Get-AzVirtualNetwork `

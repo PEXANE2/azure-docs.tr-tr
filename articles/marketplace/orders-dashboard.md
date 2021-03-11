@@ -1,5 +1,5 @@
 ---
-title: Ticari Market Analytics, Microsoft AppSource ve Azure Market 'teki iş ortağı merkezi siparişleri panosu
+title: Ticari Market Analytics 'te iş ortağı merkezi siparişleri panosu | Microsoft AppSource ve Azure Marketi
 description: Ticari Market teklif siparişleriniz hakkındaki analitik raporlara grafik ve indirilebilir bir biçimde nasıl erişebileceğinizi öğrenin.
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 11/09/2020
 author: sayantanroy83
 ms.author: sroy
-ms.openlocfilehash: 31216db98cc02724ac3625eb1a8fa18b0f75c6ee
-ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
+ms.openlocfilehash: ed12e470f3f3d8c1035c1e4e2e0fa7a3b33e2369
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97955034"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102561390"
 ---
 # <a name="orders-dashboard-in-commercial-marketplace-analytics"></a>Ticari market analizinde Siparişler panosu
 
@@ -111,32 +111,32 @@ Sipariş Ayrıntıları tablosu, Alım tarihine göre sıralanan 1.000 üst sipa
 - Yalnızca ilgilendiğiniz verileri göstermek için **sipariş ayrıntıları** tablosuna filtre uygulayın. Ülke/bölge, Azure lisans türü, ticari Market lisans türü, teklif türü, sipariş durumu, ücretsiz izler, ticari Market abonelik KIMLIĞI, müşteri KIMLIĞI ve şirket adına göre filtreleyin.
 - Bir sipariş, korunan bir müşteri tarafından satın alındığında, **ayrıntılı verilerin emirdeki** bilgileri maskelenir (* * * * * * * * * * * *).
 
-**_Tablo 1: veri koşullarının sözlüğü_* _
+***Tablo 1: veri koşullarının sözlüğü***
 
-| Sütun adı | Öznitelik adı | Tanım |
-| ------------ | ------------- | ------------- |
-| Market abonelik kimliği | Market abonelik KIMLIĞI | Ticari Market teklifinizi satın almak için kullanılan müşterinin Azure aboneliğiyle ilişkili benzersiz tanımlayıcı. Altyapı teklifleri için bu müşterinin Azure abonelik GUID 'sidir. SaaS tekliflerini bir Azure aboneliği gerektirmediğinden, SaaS teklifleri için bu sıfır olarak gösterilir. |
-| MonthStartDate | Ay başlangıç tarihi | Ayın başlangıç tarihi, satın alma ayı ile temsil eder. |
-| Teklif Türü | Teklif Türü | Ticari Market teklifi türü. |
-| Azure lisans türü | Azure lisans türü | Müşteriler tarafından Azure satın alma için kullanılan lisans sözleşmesinin türü. Kanal olarak da bilinir. Olası değerler şunlardır:<ul><li>Bulut çözümü sağlayıcısı</li><li>Kurumsal</li><li>Satıcı aracılığıyla kurumsal</li><li>Kullandıkça öde</li></ul> |
-| Market lisans türü | Market lisans türü | Ticari Market teklifinin faturalandırma yöntemi. Farklı değerler şunlardır:<ul><li>Azure üzerinden faturalandırılır</li><li>Kendi lisansınızı getirin</li><li>Ücretsiz</li><li>Satıcı olarak Microsoft</li></ul> |
-| SKU | SKU | Teklifle ilişkili plan |
-| Müşteri ülkesi | Müşteri ülkesi/bölgesi | Müşterinin sunduğu ülke/bölge adı. Ülke/bölge, müşterinin Azure aboneliğindeki ülke/bölgeden farklı olabilir. |
-| Önizleme SKU 'SU | Önizleme SKU 'SU | Bu değer, SKU 'YU "Önizleme" olarak etiketlediyseniz size bilgi verir. SKU buna uygun şekilde etiketlenmişse değer "Evet" olur ve yalnızca sizin tarafından yetkilendirilen Azure abonelikleri bu görüntüyü dağıtabilir ve kullanabilir. SKU "Önizleme" olarak tanımlanmamışsa, değer "Hayır" olacaktır. |
-| Sipariş kimliği | Sipariş kimliği | Ticari Market hizmetiniz için müşteri siparişinin benzersiz tanımlayıcısı. Sanal makine kullanımı tabanlı teklifler bir siparişle ilişkili değildir. |
-| Sipariş Miktarı | Sipariş Miktarı | Etkin siparişler için sipariş KIMLIĞIYLE ilişkili varlıkların sayısı |
-| Bulut örneği adı | Bulut örneği adı | Bir VM dağıtımının gerçekleştiği Microsoft Bulut. |
-| Yeni müşteri | Yeni müşteri | Bu değer, yeni bir müşterinin bir veya daha fazla teklifinizden ilk kez elde edilip edilmeyeceğini tanımlar. "Tarihi alındı" için aynı takvim ayı içinde değer "Evet" olacaktır. Müşteri tekliflerinizin herhangi birini bildirilen takvim ayına göre satın alıyorsa değer "Hayır" olacaktır. |
-| Sipariş Durumu | Sipariş Durumu | Verilerin son yenilenme sırasındaki ticari Market siparişi durumu. |
-| Sipariş Iptali tarihi | Sipariş Iptali tarihi | Ticari Market siparişinin iptal edildiği tarih. |
-| Müşteri şirket adı | Müşteri şirket adı | Müşterinin sunduğu şirket adı. Ad, müşterinin Azure aboneliğindeki şehirden farklı olabilir. |
-| Sipariş satın alma tarihi | Sipariş satın alma tarihi | Ticari Market siparişinin oluşturulduğu tarih. |
-| Teklif Adı | Teklif Adı | Ticari Market sunumunun adı. |
-| Deneme bitiş tarihi | Deneme bitiş tarihi | Bu sipariş için deneme döneminin sona erdiği veya sonlandırmış olacağı tarih. |
-| Müşteri kimliği | Müşteri Kimliği | Müşteriye atanan benzersiz tanımlayıcı. Müşterinin sıfır veya daha fazla Azure Market aboneliği olabilir. |
-| Faturalandırma hesabı kimliği | Faturalandırma hesabı KIMLIĞI | Faturalandırma 'nin oluşturulduğu hesabın tanımlayıcısı. Ödeme Işlem raporunuzu müşteri, sipariş ve kullanım raporlarıyla bağlamak için _ *faturalandırma HESABı kimliği** ' yi **CustomerID** olarak eşleştirin. |
-| AssetCount | Varlık sayısı | Sipariş KIMLIĞIYLE ilişkili varlıkların sayısı. |
-||||
+| İçindeki sütun adı<br>kullanıcı arabirimi | Öznitelik adı | Tanım | Programlı olarak sütun adı<br>erişim raporları |
+| ------------ | ------------- | ------------- | ------------- |
+| Market abonelik KIMLIĞI | Market abonelik KIMLIĞI | Ticari Market teklifinizi satın almak için kullanılan müşterinin Azure aboneliğiyle ilişkili benzersiz tanımlayıcı. Altyapı teklifleri için bu müşterinin Azure abonelik GUID 'sidir. SaaS tekliflerini bir Azure aboneliği gerektirmediğinden, SaaS teklifleri için bu sıfır olarak gösterilir. | Market abonelik KIMLIĞI |
+| MonthStartDate | Ay başlangıç tarihi | Ayın başlangıç tarihi, satın alma ayı ile temsil eder. Biçim yyyy-aa-gg şeklindedir. | MonthStartDate |
+| Teklif Türü | Teklif Türü | Ticari Market teklifi türü. | OfferType |
+| Azure lisans türü | Azure lisans türü | Müşteriler tarafından Azure satın alma için kullanılan lisans sözleşmesinin türü. Kanal olarak da bilinir. Olası değerler şunlardır:<ul><li>Bulut çözümü sağlayıcısı</li><li>Kurumsal</li><li>Satıcı aracılığıyla kurumsal</li><li>Kullandıkça öde</li></ul> | AzureLicenseType |
+| Market lisans türü | Market lisans türü | Ticari Market teklifinin faturalandırma yöntemi. Farklı değerler şunlardır:<ul><li>Azure üzerinden faturalandırılır</li><li>Kendi lisansınızı getirin</li><li>Ücretsiz</li><li>Satıcı olarak Microsoft</li></ul> | MarketplaceLicenseType |
+| SKU | SKU | Teklifle ilişkili plan | SKU |
+| Müşteri ülkesi | Müşteri ülkesi/bölgesi | Müşterinin sunduğu ülke/bölge adı. Ülke/bölge, müşterinin Azure aboneliğindeki ülke/bölgeden farklı olabilir. | CustomerCountry |
+| Önizleme SKU 'SU | Önizleme SKU 'SU | Bu değer, SKU 'YU "Önizleme" olarak etiketlediyseniz size bilgi verir. SKU buna uygun şekilde etiketlenmişse değer "Evet" olur ve yalnızca sizin tarafından yetkilendirilen Azure abonelikleri bu görüntüyü dağıtabilir ve kullanabilir. SKU "Önizleme" olarak tanımlanmamışsa, değer "Hayır" olacaktır. | Isönizleme SKU 'su |
+| Sipariş kimliği | Sipariş kimliği | Ticari Market hizmetiniz için müşteri siparişinin benzersiz tanımlayıcısı. Sanal makine kullanımı tabanlı teklifler bir siparişle ilişkili değildir. | OrderId |
+| Sipariş Miktarı | Sipariş Miktarı | Etkin siparişler için sipariş KIMLIĞIYLE ilişkili varlıkların sayısı | OrderQuantity |
+| Bulut örneği adı | Bulut örneği adı | Bir VM dağıtımının gerçekleştiği Microsoft Bulut. | Cloudınstancename |
+| Yeni müşteri | Yeni müşteri | Bu değer, yeni bir müşterinin bir veya daha fazla teklifinizden ilk kez elde edilip edilmeyeceğini tanımlar. "Tarihi alındı" için aynı takvim ayı içinde değer "Evet" olacaktır. Müşteri tekliflerinizin herhangi birini bildirilen takvim ayına göre satın alıyorsa değer "Hayır" olacaktır. | IsNewCustomer |
+| Sipariş Durumu | Sipariş Durumu | Verilerin son yenilenme sırasındaki ticari Market siparişi durumu. | OrderStatus |
+| Sipariş Iptali tarihi | Sipariş Iptali tarihi | Ticari Market siparişinin iptal edildiği tarih. | OrderCancelDate |
+| Müşteri şirket adı | Müşteri şirket adı | Müşterinin sunduğu şirket adı. Ad, müşterinin Azure aboneliğindeki şehirden farklı olabilir. | CustomerCompanyName |
+| Sipariş satın alma tarihi | Sipariş satın alma tarihi | Ticari Market siparişinin oluşturulduğu tarih. Biçim yyyy-aa-gg şeklindedir. | OrderPurchaseDate |
+| Teklif Adı | Teklif Adı | Ticari Market sunumunun adı. | OfferName |
+| Deneme bitiş tarihi | Deneme bitiş tarihi | Bu sipariş için deneme döneminin sona erdiği veya sonlandırmış olacağı tarih. | TrialEndDate |
+| Müşteri Kimliği | Müşteri Kimliği | Müşteriye atanan benzersiz tanımlayıcı. Müşterinin sıfır veya daha fazla Azure Market aboneliği olabilir. | CustomerId |
+| Faturalandırma hesabı KIMLIĞI | Faturalandırma hesabı KIMLIĞI | Faturalandırma 'nin oluşturulduğu hesabın tanımlayıcısı. Ödeme Işlem raporunuzu müşteri, sipariş ve kullanım raporlarıyla bağlamak için **faturalandırma HESABı kimliğini** **MüşteriNo** olarak eşleyin. | Billingaccountıd |
+| AssetCount | Varlık sayısı | Sipariş KIMLIĞIYLE ilişkili varlıkların sayısı. | Kullanım Dışı |
+|||||
 
 ### <a name="orders-page-filters"></a>Sipariş sayfası filtreleri
 

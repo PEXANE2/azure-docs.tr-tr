@@ -7,26 +7,29 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: overview
-ms.date: 01/22/2021
+ms.date: 03/09/2021
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: 893bf37a5a4c8a314e5182bf2ac4bc28502b98d9
-ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
+ms.openlocfilehash: e17d08d09814c135af3e0b4fc299b6e6f42326d4
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98699455"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102549898"
 ---
 # <a name="what-is-azure-cognitive-search"></a>Azure Bilişsel Arama nedir?
 
 Azure Bilişsel Arama ([eskiden "Azure Search" olarak bilinirdi](whats-new.md#new-service-name)), geliştiriciler için Web, mobil ve kurumsal uygulamalarda özel, heterojen içerik üzerinde zengin arama deneyimi oluşturmaya yönelik API 'ler ve araçlar sağlayan bir bulut arama hizmetidir. 
 
+Arama, katalog veya belge arama, e-ticaret sitesi arama veya veri bilimi için bilgi madenciliği gibi yaygın senaryolar sayesinde kullanıcılara içerik sunan herhangi bir uygulamaya yöneliktir. Bilişsel Arama API 'Leri ve mimarisi, herhangi bir çözüme gelişmiş bilgi alımı ekleme görevini basitleştirir.
+
 Bir arama hizmeti aşağıdaki bileşenlere sahiptir:
 
 + Tam metin araması için arama altyapısı
 + Kullanıcıya ait dizine alınmış içeriğin kalıcı depolaması
-+ Dizin oluşturma ve sorgulama için API 'Ler
-+ İsteğe bağlı [AI tabanlı zenginler](cognitive-search-concept-intro.md), görüntülerin, ham metinlerin ve uygulama dosyalarının aranabilir içeriğini oluşturma
-+ Veri, makine öğrenimi/AI ve güvenlik için diğer Azure hizmetleriyle isteğe bağlı tümleştirme
++ İçerik dizinleme ve sorgulama için API 'Ler
++ İsteğe bağlı [AI tabanlı zenginler](cognitive-search-concept-intro.md), görüntülerden aranabilir içerik oluşturma, ham yapılandırılmamış metin, uygulama dosyaları
++ Veri, makine öğrenimi/AI, izleme ve güvenlik için diğer Azure hizmetleriyle isteğe bağlı tümleştirme
++ İyileştirilmiş uygunluk için isteğe bağlı [anlamsal arama (Önizleme)](semantic-search-overview.md) uygulamasına
 
 Mimari türsel olarak, bir arama hizmeti, dizini oluşturulmamış verilerinizi içeren dış veri depoları arasında ve bir arama dizinine sorgu istekleri gönderen ve yanıtı işleyen istemci uygulamanız arasında yer alır.
 
@@ -74,8 +77,9 @@ Temel arama özelliklerinin uçtan uca incelenmesi, dört adımda elde edilebili
 
 1. Portal, [REST API](search-get-started-rest.md), [.NET SDK](/dotnet/api/azure.search.documents.searchclient.search)veya başka bir SDK 'daki [Arama Gezgini](search-explorer.md) 'ni kullanarak [**bir dizini sorgulayın**](search-query-overview.md) .
 
-> [!TIP]
-> Birkaç dakika içinde bir dizin oluşturmak, yüklemek ve sorgulamak için [**veri alma Sihirbazı 'nı**](search-get-started-portal.md) ve bir Azure veri kaynağını kullanmaya başlayarak adımları en aza indirin.
+İlk araştırma için, [**verileri Içeri aktarma Sihirbazı**](search-get-started-portal.md) ile başlayın ve bir dizin oluşturmak, yüklemek ve birkaç dakika içinde sorgulamak için yerleşik bir Azure veri kaynağı.
+
+Karmaşık veya özel çözümlerle ilgili yardım için Bilişsel Arama teknolojide derin uzmanlığa sahip [**bir iş ortağıyla iletişim kurun**](resource-partners-knowledge-mining.md) .
 
 ## <a name="compare-search-options"></a>Arama seçeneklerini karşılaştırma
 

@@ -2,19 +2,19 @@
 title: Azure Windows VM 'Leri için kıyaslama puanlarını hesaplama
 description: Windows Server çalıştıran Azure VM 'Leri için Specınt işlem kıyaslama puanlarını karşılaştırın.
 author: cynthn
-ms.service: virtual-machines-windows
-ms.subservice: sizes
+ms.service: virtual-machines
+ms.subservice: azure-compute-unit
 ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 04/29/2020
 ms.author: cynthn
 ms.reviewer: davberg
-ms.openlocfilehash: b354f6f121e6a055e7db07a587936f3eaff94c33
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: bf809b695e8df14288c2c55e580ee76d37f487d4
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98201578"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102550782"
 ---
 # <a name="compute-benchmark-scores-for-windows-vms"></a>Windows VM 'Leri için kıyaslama puanlarını hesaplama
 Aşağıdaki Specınt kıyaslama puanları, Windows Server çalıştıran Select Azure VM 'Leri için işlem performansını gösterir. İşlem kıyaslama puanları, [Linux sanal makineleri](../linux/compute-benchmark-scores.md)için de kullanılabilir.
@@ -31,9 +31,9 @@ Aşağıdaki Specınt kıyaslama puanları, Windows Server çalıştıran Select
 | Standard_A2_v2 | 2 | 1 | Intel (R) Xeon (R) CPU E5-2673 v3 @ 2.40 GHz | 10 | 27,4 | 1.6 | 
 | Standard_A2_v2 | 2 | 1 | Intel (R) Xeon (R) CPU E5-2673 v4 @ 2.30 GHz | 17 | 28.9 | 1.8 | 
 | Standard_A2m_v2 | 2 | 1 | Intel (R) Xeon (R) CPU E5-2660 0 @ 2.20 GHz | 14 | 29,0 | 0,5 | 
-| Standard_A2m_v2 | 2 | 1 | Intel (R) Xeon (R) CPU E5-2673 v3 @ 2.40 GHz | 11 | 26.3 | 0.8 | 
-| Standard_A2m_v2 | 2 | 1 | Intel (R) Xeon (R) CPU E5-2673 v4 @ 2.30 GHz | 21 | 28.4 | 1,0 | 
-| Standard_A4_v2 | 4 | 1 | Intel (R) Xeon (R) CPU E5-2660 0 @ 2.20 GHz | 27 | 56,6 | 1,0 | 
+| Standard_A2m_v2 | 2 | 1 | Intel (R) Xeon (R) CPU E5-2673 v3 @ 2.40 GHz | 11 | 26.3 | 0,8 | 
+| Standard_A2m_v2 | 2 | 1 | Intel (R) Xeon (R) CPU E5-2673 v4 @ 2.30 GHz | 21 | 28.4 | 1.0 | 
+| Standard_A4_v2 | 4 | 1 | Intel (R) Xeon (R) CPU E5-2660 0 @ 2.20 GHz | 27 | 56,6 | 1.0 | 
 | Standard_A4_v2 | 4 | 1 | Intel (R) Xeon (R) CPU E5-2673 v3 @ 2.40 GHz | 13 | 52,8 | 2.0 | 
 | Standard_A4_v2 | 4 | 1 | Intel (R) Xeon (R) CPU E5-2673 v4 @ 2.30 GHz | 15 | 52,1 | 4,5 | 
 | Standard_A4m_v2 | 4 | 1 | Intel (R) Xeon (R) CPU E5-2660 0 @ 2.20 GHz | 17 | 56,4 | 1.8 | 
@@ -56,12 +56,12 @@ Aşağıdaki Specınt kıyaslama puanları, Windows Server çalıştıran Select
 
 | Boyut | Sanal çekirdek | NUMA düğümleri | CPU | Çalıştırmalar | Ortalama taban oranı | StdDev | 
 | ---- | ----: | ---------: | --- | ---: | ------------: | -----: | 
-| Standard_B1ms | 1 | 1 | Intel (R) Xeon (R) CPU E5-2673 v3 @ 2.40 GHz | 9 | 6.3 | 0.2 | 
-| Standard_B1ms | 1 | 1 | Intel (R) Xeon (R) CPU E5-2673 v4 @ 2.30 GHz | 47 | 6.4 | 0.2 | 
-| Standard_B2ms | 2 | 1 | Intel (R) Xeon (R) CPU E5-2673 v4 @ 2.30 GHz | 36 | 19.8 | 0.8 | 
+| Standard_B1ms | 1 | 1 | Intel (R) Xeon (R) CPU E5-2673 v3 @ 2.40 GHz | 9 | 6.3 | 0,2 | 
+| Standard_B1ms | 1 | 1 | Intel (R) Xeon (R) CPU E5-2673 v4 @ 2.30 GHz | 47 | 6.4 | 0,2 | 
+| Standard_B2ms | 2 | 1 | Intel (R) Xeon (R) CPU E5-2673 v4 @ 2.30 GHz | 36 | 19.8 | 0,8 | 
 | Standard_B2s | 2 | 1 | Intel (R) Xeon (R) CPU E5-2673 v3 @ 2.40 GHz | 2 | 13.0 | 0,0 | 
 | Standard_B2s | 2 | 1 | Intel (R) Xeon (R) CPU E5-2673 v4 @ 2.30 GHz | 29 | 13.0 | 0,5 | 
-| Standard_B4ms | 4 | 1 | Intel (R) Xeon (R) CPU E5-2673 v3 @ 2.40 GHz | 6 | 27,1 | 1,0 | 
+| Standard_B4ms | 4 | 1 | Intel (R) Xeon (R) CPU E5-2673 v3 @ 2.40 GHz | 6 | 27,1 | 1.0 | 
 | Standard_B4ms | 4 | 1 | Intel (R) Xeon (R) CPU E5-2673 v4 @ 2.30 GHz | 43 | 28.3 | 0.7 | 
 | Standard_B8ms | 8 | 1 | Intel (R) Xeon (R) CPU E5-2673 v3 @ 2.40 GHz | 3 | 42,0 | 0,0 | 
 | Standard_B8ms | 8 | 1 | Intel (R) Xeon (R) CPU E5-2673 v4 @ 2.30 GHz | 25 | 41,4 | 0,9 | 
@@ -142,7 +142,7 @@ Aşağıdaki Specınt kıyaslama puanları, Windows Server çalıştıran Select
 | Standard_DS12 2_v2 | 2 | 1 | Intel (R) Xeon (R) CPU E5-2673 v3 @ 2.40 GHz | 17 | 65,5 | 2.3 | 
 | Standard_DS12 2_v2 | 2 | 1 | Intel (R) Xeon (R) CPU E5-2673 v4 @ 2.30 GHz | 33 | 67,7 | 5.1 | 
 | Standard_DS13_v2 | 8 | 1 | Intel (R) Xeon (R) CPU E5-2673 v3 @ 2.40 GHz | 20 | 234,1 | 7.1 | 
-| Standard_DS13_v2 | 8 | 1 | Intel (R) Xeon (R) CPU E5-2673 v4 @ 2.30 GHz | 23 | 248,0 | 2.2 | 
+| Standard_DS13_v2 | 8 | 1 | Intel (R) Xeon (R) CPU E5-2673 v4 @ 2.30 GHz | 23 | 248,0 | 2,2 | 
 | Standard_DS13 2_v2 | 2 | 1 | Intel (R) Xeon (R) CPU E5-2673 v3 @ 2.40 GHz | 17 | 65,2 | 3,1 | 
 | Standard_DS13 2_v2 | 2 | 1 | Intel (R) Xeon (R) CPU E5-2673 v4 @ 2.30 GHz | 15 | 72,8 | 3.8 | 
 | Standard_DS13 4_v2 | 4 | 1 | Intel (R) Xeon (R) CPU E5-2673 v3 @ 2.40 GHz | 24 | 126,1 | 4.3 | 
@@ -163,7 +163,7 @@ Aşağıdaki Specınt kıyaslama puanları, Windows Server çalıştıran Select
 | Standard_D1_v2 | 1 | 1 | Intel (R) Xeon (R) CPU E5-2673 v4 @ 2.30 GHz | 31 | 34.7 | 2.5 | 
 | Standard_D2_v2 | 2 | 1 | Intel (R) Xeon (R) CPU E5-2673 v3 @ 2.40 GHz | 18 | 66.0 | 1.8 | 
 | Standard_D2_v2 | 2 | 1 | Intel (R) Xeon (R) CPU E5-2673 v4 @ 2.30 GHz | 31 | 69,9 | 5.0 | 
-| Standard_D3_v2 | 4 | 1 | Intel (R) Xeon (R) CPU E5-2673 v3 @ 2.40 GHz | 27 | 127,7 | 3,0 | 
+| Standard_D3_v2 | 4 | 1 | Intel (R) Xeon (R) CPU E5-2673 v3 @ 2.40 GHz | 27 | 127,7 | 3.0 | 
 | Standard_D3_v2 | 4 | 1 | Intel (R) Xeon (R) CPU E5-2673 v4 @ 2.30 GHz | 27 | 133,4 | 9,1 | 
 | Standard_D4_v2 | 8 | 1 | Intel (R) Xeon (R) CPU E5-2673 v3 @ 2.40 GHz | 15 | 238,7 | 4.4 | 
 | Standard_D4_v2 | 8 | 1 | Intel (R) Xeon (R) CPU E5-2673 v4 @ 2.30 GHz | 36 | 248,9 | 4.8 | 
@@ -184,11 +184,11 @@ Aşağıdaki Specınt kıyaslama puanları, Windows Server çalıştıran Select
 
 | Boyut | Sanal çekirdek | NUMA düğümleri | CPU | Çalıştırmalar | Ortalama taban oranı | StdDev | 
 | ---- | ----: | ---------: | --- | ---: | ------------: | -----: | 
-| Standard_E2s_v3 | 2 | 1 | Intel (R) Xeon (R) CPU E5-2673 v4 @ 2.30 GHz | 39 | 42,5 | 2.2 | 
+| Standard_E2s_v3 | 2 | 1 | Intel (R) Xeon (R) CPU E5-2673 v4 @ 2.30 GHz | 39 | 42,5 | 2,2 | 
 | Standard_E4s_v3 | 4 | 1 | Intel (R) Xeon (R) CPU E5-2673 v4 @ 2.30 GHz | 28 | 81,4 | 3.3 | 
 | Standard_E8s_v3 | 8 | 1 | Intel (R) Xeon (R) CPU E5-2673 v4 @ 2.30 GHz | 29 | 156,3 | 5.1 | 
 | Standard_E8 2s_v3 | 2 | 1 | Intel (R) Xeon (R) CPU E5-2673 v4 @ 2.30 GHz | 57 | 41,8 | 2,6 | 
-| Standard_E8 4s_v3 | 4 | 1 | Intel (R) Xeon (R) CPU E5-2673 v4 @ 2.30 GHz | 45 | 82,9 | 3,0 | 
+| Standard_E8 4s_v3 | 4 | 1 | Intel (R) Xeon (R) CPU E5-2673 v4 @ 2.30 GHz | 45 | 82,9 | 3.0 | 
 | Standard_E16s_v3 | 16 | 1 | Intel (R) Xeon (R) CPU E5-2673 v4 @ 2.30 GHz | 31 | 295,7 | 4,5 | 
 | Standard_E16 4s_v3 | 4 | 1 | Intel (R) Xeon (R) CPU E5-2673 v4 @ 2.30 GHz | 45 | 82,7 | 3.8 | 
 | Standard_E16 8s_v3 | 8 | 1 | Intel (R) Xeon (R) CPU E5-2673 v4 @ 2.30 GHz | 39 | 158,3 | 4,5 | 
@@ -241,7 +241,7 @@ Aşağıdaki Specınt kıyaslama puanları, Windows Server çalıştıran Select
 
 | Boyut | Sanal çekirdek | NUMA düğümleri | CPU | Çalıştırmalar | Ortalama taban oranı | StdDev | 
 | ---- | ----: | ---------: | --- | ---: | ------------: | -----: | 
-| Standard_F1s | 1 | 1 | Intel (R) Xeon (R) CPU E5-2673 v3 @ 2.40 GHz | 31 | 33.2 | 1,0 | 
+| Standard_F1s | 1 | 1 | Intel (R) Xeon (R) CPU E5-2673 v3 @ 2.40 GHz | 31 | 33.2 | 1.0 | 
 | Standard_F1s | 1 | 1 | Intel (R) Xeon (R) CPU E5-2673 v4 @ 2.30 GHz | 41 | 35.1 | 2.0 | 
 | Standard_F2s | 2 | 1 | Intel (R) Xeon (R) CPU E5-2673 v3 @ 2.40 GHz | 18 | 63,7 | 1.8 | 
 | Standard_F2s | 2 | 1 | Intel (R) Xeon (R) CPU E5-2673 v4 @ 2.30 GHz | 21 | 66,6 | 3.8 | 

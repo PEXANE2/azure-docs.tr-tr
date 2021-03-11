@@ -9,19 +9,19 @@ ms.topic: sample
 ms.date: 12/11/2017
 ms.author: msangapu
 ms.custom: mvc, seodec18, devx-track-azurecli
-ms.openlocfilehash: e1fc3771eaf5e8fa59b297e2052d232150ccfab3
-ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
+ms.openlocfilehash: 3d2dd7691ac601e690e9f477b0450da07233e201
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97006302"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102553468"
 ---
 # <a name="create-an-app-service-app-with-continuous-deployment-using-azure-cli"></a>Azure CLı kullanarak sürekli dağıtım ile App Service uygulaması oluşturma
 
 Bu örnek betik, ilgili kaynaklarıyla App Service bir uygulama oluşturur ve sonra Azure DevOps deposundan sürekli dağıtımı ayarlar. Bu örnekte şunlar gereklidir:
 
 * İçin yönetici izinlerine sahip olduğunuz uygulama kodu ile bir Azure DevOps deposu.
-* Azure DevOps kuruluşunuz için bir [Kişisel Erişim Belirteci (PAT)](/azure/devops/organizations/accounts/use-personal-access-tokens-to-authenticate?view=vsts).
+* Azure DevOps kuruluşunuz için bir [Kişisel Erişim Belirteci (PAT)](/azure/devops/organizations/accounts/use-personal-access-tokens-to-authenticate).
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 

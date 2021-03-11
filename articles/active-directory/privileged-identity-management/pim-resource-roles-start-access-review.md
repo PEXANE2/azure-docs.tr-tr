@@ -11,30 +11,28 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
 ms.subservice: pim
-ms.date: 02/11/2021
+ms.date: 03/09/2021
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b8f05ca02068c82a3839b22b698e49a7be818a56
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 4276b48584ecbad91794de58abafd7e3367f6877
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100370555"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102564042"
 ---
 # <a name="create-an-access-review-of-azure-resource-roles-in-privileged-identity-management"></a>Privileged Identity Management Azure Kaynak rolleri için erişim gözden geçirmesi oluşturma
 
-Çalışanların zaman içindeki değişiklikleri için ayrıcalıklı Azure Kaynak rollerine erişim. Eski rol atamalarıyla ilişkili riski azaltmak için, erişimi düzenli olarak gözden geçirmeniz gerekir. Ayrıcalıklı Azure Kaynak rolleri için erişim gözden geçirmeleri oluşturmak üzere Azure Active Directory (Azure AD) Privileged Identity Management (PıM) kullanabilirsiniz. Ayrıca, otomatik olarak gerçekleşen yinelenen erişim incelemelerini yapılandırabilirsiniz.
+Çalışanların zaman içinde değişiklik yaptığı ayrıcalıklı Azure Kaynak rollerine erişim gereksinimi. Eski rol atamalarıyla ilişkili riski azaltmak için, erişimi düzenli olarak gözden geçirmeniz gerekir. Azure Kaynak rollerine ayrıcalıklı erişim için erişim gözden geçirmeleri oluşturmak üzere Azure Active Directory (Azure AD) Privileged Identity Management (PıM) kullanabilirsiniz. Ayrıca, otomatik olarak gerçekleşen yinelenen erişim incelemelerini yapılandırabilirsiniz. Bu makalede bir veya daha fazla erişim incelemesi oluşturma açıklanır.
 
-Bu makalede, ayrıcalıklı Azure Kaynak rolleri için bir veya daha fazla erişim incelemesi oluşturma açıklanır.
-
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisite-role"></a>Önkoşul rolü
 
  Erişim İncelemeleri oluşturmak için, kaynak için [sahip](../../role-based-access-control/built-in-roles.md#owner) veya [Kullanıcı erişimi Yöneticisi](../../role-based-access-control/built-in-roles.md#user-access-administrator) Azure rolüne atanmış olmanız gerekir.
 
 ## <a name="open-access-reviews"></a>Açık erişim İncelemeleri
 
-1. Ayrıcalıklı rol yöneticisi rolünün üyesi olan bir kullanıcıyla [Azure Portal](https://portal.azure.com/) oturum açın.
+1. Önkoşul rollerinden birine atanan bir kullanıcıyla [Azure Portal](https://portal.azure.com/) için oturum açın.
 
 1. **Azure AD Privileged Identity Management** açın.
 

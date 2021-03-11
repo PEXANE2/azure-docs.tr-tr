@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 08/11/2020
 ms.author: trbye
-ms.openlocfilehash: e28bd5b5caca259201758f0c633b2120a411f422
-ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
+ms.openlocfilehash: 65c0d80394317c2b2bfbf621d3cc2ad0c2e3448a
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "100007457"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102618415"
 ---
 # <a name="long-audio-api"></a>Uzun ses API 'SI
 
@@ -47,6 +47,13 @@ Metin dosyanızı hazırlarken şunları yaptığınızdan emin olun:
 * SSML metni için düz metin veya 400 [faturalanabilir karakter](./text-to-speech.md#pricing-note) için 400 karakterden daha uzun ve 10.000 ' den az paragraf içeriyor
   * Düz metin için, her paragraf **Enter/Return** -View [düz metin girişi örneğine](https://github.com/Azure-Samples/Cognitive-Speech-TTS/blob/master/CustomVoice-API-Samples/Java/en-US.txt) vurarak ayrılır
   * SSML metninde her SSML parçası bir paragraf olarak değerlendirilir. SSML parçaları farklı paragraflar ile ayrılmalıdır- [SSML metin girişi örneğini](https://github.com/Azure-Samples/Cognitive-Speech-TTS/blob/master/CustomVoice-API-Samples/Java/SSMLTextInputSample.txt) görüntüleyin
+
+## <a name="sample-code"></a>Örnek kod
+Bu sayfanın geri kalanı Python 'a odaklanacaktır, ancak şu programlama dilleri için GitHub 'da uzun ses API 'SI için örnek kod mevcuttur:
+
+* [Örnek kod: Python](https://github.com/Azure-Samples/Cognitive-Speech-TTS/tree/master/CustomVoice-API-Samples/Python)
+* [Örnek kod: C #](https://github.com/Azure-Samples/Cognitive-Speech-TTS/tree/master/CustomVoice-API-Samples/CSharp)
+* [Örnek kod: Java](https://github.com/Azure-Samples/Cognitive-Speech-TTS/blob/master/CustomVoice-API-Samples/Java/)
 
 ## <a name="python-example"></a>Python örneği
 
@@ -456,10 +463,3 @@ Esnek ses çıkışı biçimlerini destekliyoruz. ' ConcatenateResult ' parametr
 * Ses-24khz-48kbit hızı-mono-MP3
 * Ses-24khz-96kbit hızı-mono-MP3
 * Ses-24khz-160kbit hızı-mono-MP3
-
-## <a name="sample-code"></a>Örnek kod
-Uzun ses API 'sinin örnek kodu GitHub ' da kullanılabilir.
-
-* [Örnek kod: Python](https://github.com/Azure-Samples/Cognitive-Speech-TTS/tree/master/CustomVoice-API-Samples/Python)
-* [Örnek kod: C #](https://github.com/Azure-Samples/Cognitive-Speech-TTS/tree/master/CustomVoice-API-Samples/CSharp)
-* [Örnek kod: Java](https://github.com/Azure-Samples/Cognitive-Speech-TTS/blob/master/CustomVoice-API-Samples/Java/)

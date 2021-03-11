@@ -7,19 +7,19 @@ ms.service: security-center
 ms.topic: quickstart
 ms.date: 03/04/2021
 ms.author: memildin
-ms.openlocfilehash: d9d0739704a9f5f16bdbde80661192b2f1ca9bb1
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.openlocfilehash: 17f3440df4fa88995f2148680aba926207a0e46b
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102099429"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102561271"
 ---
 # <a name="configure-auto-provisioning-for-agents-and-extensions-from-azure-security-center"></a>Azure Güvenlik Merkezi 'nden aracılar ve uzantılar için otomatik sağlamayı yapılandırma
 
-Güvenlik Merkezi, bu kaynak için ilgili aracıyı veya uzantıları ve etkinleştirdiğiniz veri koleksiyonu türünü kullanarak kaynaklarınızdan veri toplar. Kaynağınızın gerekli olduğundan emin olmak için aşağıdaki precedures ' i kullanın Bu makalede, Azure Güvenlik Merkezi tarafından kullanılan Log Analytics aracısının ve diğer aracıların ve uzantıların otomatik olarak sağlanması nasıl ayarlanacağı açıklanır
+Azure Güvenlik Merkezi, bu kaynak için ilgili aracıyı veya uzantıları ve etkinleştirdiğiniz veri koleksiyonu türünü kullanarak kaynaklarınızdan veri toplar. Kaynaklarınızın güvenlik merkezi tarafından kullanılan gerekli aracıları ve uzantılara sahip olduğundan emin olmak için aşağıdaki yordamları kullanın.
 
 ## <a name="prerequisites"></a>Önkoşullar
-Güvenlik Merkezi ile çalışmaya başlamak için Microsoft Azure aboneliğinizin olması gerekir. Bir aboneliğiniz yoksa [ücretsiz hesap](https://azure.microsoft.com/pricing/free-trial/) için kaydolabilirsiniz.
+Güvenlik Merkezi ile çalışmaya başlamak için Microsoft Azure aboneliğinizin olması gerekir. Aboneliğiniz yoksa [ücretsiz bir hesap](https://azure.microsoft.com/pricing/free-trial/)için kaydolabilirsiniz.
 
 ## <a name="availability"></a>Kullanılabilirlik
 
@@ -27,7 +27,7 @@ Güvenlik Merkezi ile çalışmaya başlamak için Microsoft Azure aboneliğiniz
 |-------------------------|:-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Yayın durumu:          | **Özellik**: otomatik sağlama genel kullanıma sunuldu (GA)<br>**Aracı ve uzantılar**: Azure VM 'ler için log ANALYTICS Aracısı GA, Microsoft bağımlılık Aracısı önizleme aşamasındadır, Kubernetes Için Ilke eklentisi GA                |
 | Fiyat                | Ücretsiz                                                                                                                                                                                                                         |
-| Desteklenen hedefler: | ![Yes](./media/icons/yes-icon.png) Azure makineleri<br>![Hayır](./media/icons/no-icon.png) Azure yay makineleri<br>![Hayır](./media/icons/no-icon.png) Kubernetes düğümleri<br>![Hayır](./media/icons/no-icon.png) Sanal Makine Ölçek Kümeleri |
+| Desteklenen hedefler: | ![Yes](./media/icons/yes-icon.png) Azure makineleri<br>![No](./media/icons/no-icon.png) Azure yay makineleri<br>![No](./media/icons/no-icon.png) Kubernetes düğümleri<br>![No](./media/icons/no-icon.png) Sanal Makine Ölçek Kümeleri |
 | Larının                 | ![Yes](./media/icons/yes-icon.png) Ticari bulutlar<br>![Yes](./media/icons/yes-icon.png) US Gov, Çin gov, diğer gov                                                                                                      |
 |                         |                                                                                                                                                                                                                              |
 
@@ -35,7 +35,9 @@ Güvenlik Merkezi ile çalışmaya başlamak için Microsoft Azure aboneliğiniz
 
 Güvenlik Merkezi, Azure sanal makinelerinizden (VM), sanal makine ölçek kümelerinden, IaaS kapsayıcılarından ve Azure olmayan (Şirket içi) makineler, güvenlik açıklarını ve tehditleri izlemek için veri toplar. 
 
-Eksik güncelleştirmelere görünürlük sağlamak için veri toplama gerekir, yanlış yapılandırılmış işletim sistemi güvenlik ayarları, uç nokta koruma durumu ve sistem durumu ve tehdit koruması. Veri toplama yalnızca işlem kaynakları (VM 'Ler, sanal makine ölçek kümeleri, IaaS kapsayıcıları ve Azure dışı bilgisayarlar) için gereklidir. Aracıları sağlamasanız bile Azure Güvenlik Merkezi 'nden faydalanabilirsiniz; Ancak, güvenlik sınırlı olur ve yukarıda listelenen yetenekler desteklenmez.  
+Eksik güncelleştirmelere görünürlük sağlamak için veri toplama gerekir, yanlış yapılandırılmış işletim sistemi güvenlik ayarları, uç nokta koruma durumu ve sistem durumu ve tehdit koruması. Veri toplama yalnızca VM 'Ler, sanal makine ölçek kümeleri, IaaS kapsayıcıları ve Azure dışı bilgisayarlar gibi işlem kaynakları için gereklidir. 
+
+Aracılar sağlamasanız bile Azure Güvenlik Merkezi 'nden faydalanabilirsiniz. Bununla birlikte, sınırlı güvenliğe sahip olacaksınız ve yukarıda listelenen yetenekler desteklenmez.  
 
 Şu kullanılarak toplanan veriler:
 
@@ -51,7 +53,7 @@ Bu sayfada açıklanan aracıların ve genişletmeler el *ile yüklenebilir (* b
 Otomatik sağlamayı etkinleştirmeniz önerilir, ancak varsayılan olarak devre dışıdır.
 
 ## <a name="how-does-auto-provisioning-work"></a>Otomatik sağlama nasıl çalışır?
-Güvenlik Merkezi 'nin otomatik sağlama ayarları her desteklenen uzantı türü için bir geçiş yapar. Bir uzantının otomatik olarak sağlanmasını etkinleştirdiğinizde, uzantının o türdeki tüm mevcut ve gelecekteki kaynaklarda sağlandığından emin olmak için uygun **dağıtım yok** ilkesi atanır.
+Güvenlik Merkezi 'nin otomatik sağlama ayarları her desteklenen uzantı türü için bir geçiş yapar. Bir uzantının otomatik olarak sağlanmasını etkinleştirdiğinizde uygun **dağıtım yok** ilkesi atanır. Bu ilke türü, uzantının, bu türdeki tüm mevcut ve gelecekteki kaynaklarda sağlanmış olmasını sağlar.
 
 > [!TIP]
 > Azure [ilke efektlerini anlama](../governance/policy/concepts/effects.md)bölümünde yoksa dağıtım dahil olmak üzere Azure ilke etkileri hakkında daha fazla bilgi edinin.
@@ -282,4 +284,4 @@ Bir aracının otomatik olarak sağlanmasını devre dışı bırakmak için:
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Bu sayfada, Log Analytics Aracısı ve diğer güvenlik merkezi uzantıları için otomatik sağlamayı etkinleştirme konusu açıklanmaktadır. Ayrıca, toplanan verilerin depolandığı bir Log Analytics çalışma alanını nasıl tanımlayacağınızı da tarif ediyor. Veri toplamayı etkinleştirmek için her iki işlem de gereklidir. Yeni veya mevcut bir çalışma alanı kullanmanıza bakılmaksızın verileri Log Analytics depolama, veri depolama için ek ücretler gerektirebilir. Seçtiğiniz para birimindeki ve bölgenize göre fiyatlandırma ayrıntıları için bkz. [Güvenlik Merkezi fiyatlandırması](https://azure.microsoft.com/pricing/details/security-center/).
+Bu sayfada, Log Analytics Aracısı ve diğer güvenlik merkezi uzantıları için otomatik sağlamayı etkinleştirme konusu açıklanmaktadır. Ayrıca, toplanan verilerin depolandığı bir Log Analytics çalışma alanını nasıl tanımlayacağınızı da tarif ediyor. Veri toplamayı etkinleştirmek için her iki işlem de gereklidir. Yeni veya mevcut bir çalışma alanı kullanmanıza bakılmaksızın verileri Log Analytics depolama, veri depolama için daha fazla ücret ödemeniz istenebilir. Seçtiğiniz para birimindeki ve bölgenize göre fiyatlandırma ayrıntıları için bkz. [Güvenlik Merkezi fiyatlandırması](https://azure.microsoft.com/pricing/details/security-center/).

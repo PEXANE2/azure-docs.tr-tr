@@ -2,17 +2,18 @@
 title: Bir Windows VM 'ye yönetilen veri diski iliştirme-Azure
 description: Azure portal kullanarak bir Windows VM 'ye yönetilen veri diski iliştirme.
 author: roygara
-ms.service: virtual-machines-windows
+ms.service: virtual-machines
+ms.collection: windows
 ms.topic: how-to
 ms.date: 02/06/2020
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: b100676cd8cfbffd273ea6ad50b63545f2d6037a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8c64b0ff5b7a9abfa58ec17d0ebcabe05b0ed6e9
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87836233"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102550816"
 ---
 # <a name="attach-a-managed-data-disk-to-a-windows-vm-by-using-the-azure-portal"></a>Azure portal kullanarak bir Windows VM 'sine yönetilen veri diski iliştirme
 
@@ -21,14 +22,14 @@ Bu makalede, Azure portal kullanarak yeni bir yönetilen veri diskini bir Window
 
 ## <a name="add-a-data-disk"></a>Veri diski ekleme
 
-1. Veri diski eklemek için [Azure Portal](https://portal.azure.com) gidin. **Sanal makineleri**arayın ve seçin.
+1. Veri diski eklemek için [Azure Portal](https://portal.azure.com) gidin. **Sanal makineleri** arayın ve seçin.
 2. Listeden bir sanal makine seçin.
 3. **Sanal makine** sayfasında, **diskler**' i seçin.
 4. **Diskler** sayfasında, **veri diski Ekle**' yi seçin.
 5. Yeni diskin açılan penceresinde **disk oluştur**' u seçin.
 6. **Yönetilen disk oluştur** sayfasında, disk için bir ad yazın ve diğer ayarları gerektiği gibi ayarlayın. İşiniz bittiğinde **Oluştur**'u seçin.
 7. **Diskler** sayfasında, sanal makine için yeni disk yapılandırmasını kaydetmek üzere **Kaydet** ' i seçin.
-8. Azure diski oluşturduktan ve sanal makineye iliştirdikten sonra, yeni disk, **veri diskleri**altındaki sanal makinenin disk ayarlarında listelenir.
+8. Azure diski oluşturduktan ve sanal makineye iliştirdikten sonra, yeni disk, **veri diskleri** altındaki sanal makinenin disk ayarlarında listelenir.
 
 
 ## <a name="initialize-a-new-data-disk"></a>Yeni bir veri diski Başlat
@@ -37,7 +38,7 @@ Bu makalede, Azure portal kullanarak yeni bir yönetilen veri diskini bir Window
 1. Çalışan VM 'nin içindeki Windows **Başlat** menüsünü seçin ve arama kutusuna **diskmgmt. msc** girin. **Disk yönetimi** konsolu açılır.
 2. Disk Yönetimi, yeni, başlatılmamış bir diskiniz olduğunu ve **Diski Başlat** penceresinin göründüğünü algılar.
 3. Yeni diskin seçili olduğunu doğrulayın ve ardından başlatmak için **Tamam** ' ı seçin.
-4. Yeni disk **ayrılmamış**olarak görünür. Diskte herhangi bir yere sağ tıklayın ve **Yeni basit birim**' i seçin. **Yeni Basit Birim Sihirbazı** penceresi açılır.
+4. Yeni disk **ayrılmamış** olarak görünür. Diskte herhangi bir yere sağ tıklayın ve **Yeni basit birim**' i seçin. **Yeni Basit Birim Sihirbazı** penceresi açılır.
 5. Sihirbazda ilerleyin, tüm varsayılanları tutarak ve işiniz bittiğinde **son**' u seçin.
 6. **Disk yönetimi**'ni kapatın.
 7. Bunu kullanabilmeniz için yeni diski biçimlendirmeniz gerektiğini bildiren bir açılır pencere görüntülenir. **Diski Biçimlendir**' i seçin.

@@ -2,22 +2,23 @@
 title: Linux sağlamaya genel bakış
 description: Linux VM görüntülerinizi getirme veya Azure 'da kullanmak üzere yeni görüntüler oluşturma konusuna genel bakış.
 author: danielsollondon
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
 ms.subservice: imaging
+ms.collection: linux
 ms.topic: overview
 ms.workload: infrastructure
 ms.date: 06/22/2020
 ms.author: danis
 ms.reviewer: cynthn
-ms.openlocfilehash: a7d9aa7de8bb75a22acc85c77924765eaa1b6b3b
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 6dafa400f2ce2421db6775084befc0abeab70a04
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87080157"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102563238"
 ---
 # <a name="azure-linux-vm-provisioning"></a>Azure Linux VM sağlama
-Genelleştirilmiş görüntüden (paylaşılan görüntü Galerisi veya yönetilen görüntü) bir VM oluşturduğunuzda, denetim düzlemi VM oluşturmanıza ve parametreleri ve ayarları VM 'ye geçirmenize olanak tanır. Bu, VM *sağlama*olarak adlandırılır. Sağlama sırasında, platform VM 'nin önyüklendiği sırada gereken sanal makine oluşturma parametre değerlerini (konak adı, Kullanıcı adı, parola, SSH anahtarları, customData) sağlar. 
+Genelleştirilmiş görüntüden (paylaşılan görüntü Galerisi veya yönetilen görüntü) bir VM oluşturduğunuzda, denetim düzlemi VM oluşturmanıza ve parametreleri ve ayarları VM 'ye geçirmenize olanak tanır. Bu, VM *sağlama* olarak adlandırılır. Sağlama sırasında, platform VM 'nin önyüklendiği sırada gereken sanal makine oluşturma parametre değerlerini (konak adı, Kullanıcı adı, parola, SSH anahtarları, customData) sağlar. 
 
 Görüntünün içindeki bir sağlama Aracısı, platform ile arabirim oluşturacak, birden çok bağımsız sağlama arabirimine bağlanan), özellikleri ve sinyali tamamladığı platforma ayarlar. 
 
@@ -70,10 +71,10 @@ Platformdan aracıya bilgi akışı iki kanal aracılığıyla gerçekleşir:
 
 ## <a name="azure-provisioning-agent-requirements"></a>Azure sağlama Aracısı gereksinimleri
 Linux Aracısı ve Cloud-init, düzgün çalışması için bazı sistem paketlerine bağımlıdır:
-- Python 2.6 +
-- OpenSSL 1.0 +
-- OpenSSH 5.3 +
-- Dosya sistemi yardımcı programları: `sfdisk` , `fdisk` , `mkfs` , `parted`
+- Python 2.6+
+- OpenSSL 1.0+
+- OpenSSH 5.3+
+- Dosya sistemi yardımcı programları: `sfdisk`, `fdisk`, `mkfs`, `parted`
 - Parola araçları: chpasswd, sudo
 - Metin işleme araçları: SED, grep
 - Ağ araçları: IP-yol

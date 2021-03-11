@@ -7,14 +7,23 @@ ms.topic: how-to
 ms.date: 03/19/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: f95585237bbee743083b855dd78cc850c4daffe8
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
+ms.openlocfilehash: ff26318cafdf493579961fc718643f831ae9efeb
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102202697"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102564263"
 ---
 # <a name="migrate-from-linux-to-a-hybrid-cloud-deployment-with-azure-file-sync"></a>Azure Dosya Eşitleme ile Linux 'tan karma bulut dağıtımına geçiş
+
+Bu geçiş makalesi, NFS ve Azure Dosya Eşitleme anahtar kelimeleriyle ilgili birkaç tane biridir. Bu makalenin senaryonuz için geçerli olup olmadığını denetleyin:
+
+> [!div class="checklist"]
+> * Veri kaynağı: ağa bağlı depolama (NAS)
+> * Geçiş rotası: SAMBA &rArr; Windows Server 2012R2 veya sonraki bir sürüme sahip Linux Server, &rArr; Azure dosya paylaşımıyla eşitleniyor
+> * Şirket içi dosyaları önbelleğe alma: Evet, son hedef, Azure Dosya Eşitleme bir dağıtımdır.
+
+Senaryonuz farklıysa, [geçiş kılavuzlarındaki tabloya](storage-files-migration-overview.md#migration-guides)bakın.
 
 Azure Dosya Eşitleme, doğrudan bağlı depolama (DAS) ile Windows Server örneklerinde çalışmaktadır. Linux istemcilerinden ve bu bilgisayarlardan veya bir uzak sunucu Ileti bloğu (SMB) paylaşımına veya ağ dosya sistemi (NFS) paylaşımlarına eşitlemeyi desteklemez.
 
@@ -22,13 +31,13 @@ Sonuç olarak, dosya hizmetlerinizi karma dağıtıma dönüştürmek, Windows S
 
 ## <a name="migration-goals"></a>Geçiş hedefleri
 
-Amaç, Linux Samba sunucunuzda bulunan paylaşımları bir Windows Server örneğine taşımaktır. Karma bulut dağıtımı için Azure Dosya Eşitleme kullanın. Bu geçişin, üretim verilerinin bütünlüğünü ve geçiş sırasında kullanılabilirliğini garanti eden bir şekilde yapılması gerekir. İkinci olarak, kapalı kalma süresinin en az bir süre içinde tutulması gerekir, böylece normal bakım pencereleri içine sığacak veya yalnızca biraz daha fazla olabilir.
+Amaç, Linux Samba sunucunuzda bulunan paylaşımları bir Windows Server örneğine taşımaktır. Karma bulut dağıtımı için Azure Dosya Eşitleme kullanın. Bu geçişin, geçiş sırasında üretim verilerinin bütünlüğünü ve kullanılabilirliğini garanti eden bir şekilde yapılması gerekir. İkinci olarak, kapalı kalma süresinin en az bir süre içinde tutulması gerekir, böylece normal bakım pencereleri içine sığacak veya yalnızca biraz daha fazla olabilir.
 
 ## <a name="migration-overview"></a>Geçişe genel bakış
 
 Azure dosyaları [geçişine genel bakış makalesinde](storage-files-migration-overview.md)belirtildiği gibi, doğru kopyalama aracını ve yaklaşımı kullanmak önemlidir. Linux Samba sunucunuz, SMB paylaşımlarını doğrudan yerel ağınızda kullanıma sunmaktadır. Windows Server 'da yerleşik olan Robocopy, dosyalarınızı bu geçiş senaryosunda taşımanın en iyi yoludur.
 
-Linux sunucunuzda Samba çalıştırmıyorsanız ve Windows Server 'da klasörleri karma dağıtıma geçirmek istiyorsanız Robocopy yerine Linux kopyalama araçlarını kullanabilirsiniz. Bunu yaparsanız, dosya kopyalama aracındaki uygunluk yeteneklerini unutmayın. Bir kopyalama aracında neleri aradığınızı öğrenmek için geçişe genel bakış makalesindeki [Geçiş temelleri bölümüne](storage-files-migration-overview.md#migration-basics) bakın.
+Linux sunucunuzda Samba çalıştırmıyorsanız ve Windows Server 'da klasörleri karma dağıtıma geçirmek istiyorsanız Robocopy yerine Linux kopyalama araçlarını kullanabilirsiniz. Kopyalama araclarınızın uygunluk özelliklerini unutmayın. Bir kopyalama aracında neleri aradığınızı öğrenmek için geçişe genel bakış makalesindeki [Geçiş temelleri bölümüne](storage-files-migration-overview.md#migration-basics) bakın.
 
 ## <a name="phase-1-identify-how-many-azure-file-shares-you-need"></a>1. Aşama: kaç Azure dosya paylaşımına ihtiyacınız olduğunu belirleme
 
@@ -39,11 +48,13 @@ Linux sunucunuzda Samba çalıştırmıyorsanız ve Windows Server 'da klasörle
 * Bir sanal makine veya fiziksel sunucu olarak Windows Server 2019 örneği oluşturun. Windows Server 2012 R2 en düşük gereksinimdir. Bir Windows Server yük devretme kümesi de desteklenir.
 * Doğrudan bağlı depolama alanı (DAS) sağlayın veya ekleyin. Ağa bağlı depolama (NAS) desteklenmiyor.
 
-  Azure Dosya Eşitleme [bulut katmanlama](storage-sync-cloud-tiering-overview.md) özelliğini kullanıyorsanız, sağladığınız depolama alanı, Linux Samba sunucunuzda kullanmakta olduğunuz miktardan daha küçük olabilir. Ancak, daha sonraki bir aşamada dosyalarınızı daha büyük Linux Samba sunucu alanından daha küçük Windows Server birimine kopyaladığınızda, toplu işlerle çalışmanız gerekir:
+  Azure Dosya Eşitleme [bulut katmanlama](storage-sync-cloud-tiering-overview.md) özelliğini kullanıyorsanız, sağladığınız depolama alanı, Linux Samba sunucunuzda kullanmakta olduğunuz miktardan daha küçük olabilir. 
+
+Sağladığınız depolama alanı miktarı, Linux Samba sunucunuzda kullanmakta olduğunuz miktardan daha küçük olabilir. Bu yapılandırma seçeneği, Azure dosya eşitleme [bulut katmanlama](storage-sync-cloud-tiering-overview.md) özelliğini de kullanmanızı gerektirir. Ancak, daha sonraki bir aşamada dosyalarınızı daha büyük Linux Samba sunucu alanından daha küçük Windows Server birimine kopyaladığınızda, toplu işlerle çalışmanız gerekir:
 
   1. Diske sığan bir dosya kümesini taşıyın.
   2. Dosya eşitlemeye ve bulut katmanlamasına izin verin.
-  3. Birimde daha fazla boş alan oluşturulduğunda, sonraki dosya toplu iş ile devam edin. 
+  3. Birimde daha fazla boş alan oluşturulduğunda, sonraki dosya toplu iş ile devam edin. Alternatif olarak, yeni anahtarın kullanımı için yaklaşan [Robocopy bölümünde](#phase-7-robocopy) Robocopy komutunu gözden geçirin `/LFSM` . Kullanmak `/LFSM` Robocopy işlerinizin önemli ölçüde basitleşmesini sağlayabilir, ancak buna bağlı olabileceğiniz diğer Robocopy anahtarlarıyla uyumlu değildir.
     
   Dosyalarınızın Linux Samba sunucusunda kaplayacağı Windows Server örneğindeki eşdeğer alanı sağlayarak bu toplu işleme yaklaşımına engel olabilirsiniz. Windows üzerinde Yinelenenleri kaldırmayı etkinleştirmeyi düşünün. Bu yüksek miktarda depolama alanını Windows Server örneğinize kalıcı olarak kaydetmek istemiyorsanız, geçişten sonra ve bulut katmanlama ilkelerini ayarlamadan önce birim boyutunu azaltabilirsiniz. Bu, Azure dosya paylaşımlarınızın daha küçük bir şirket içi önbelleği oluşturur.
 
@@ -102,76 +113,7 @@ Windows Server Örneğiniz Linux Samba sunucusuna düşenden daha az depolama al
 
 Robocopy, bulut ve katmana yerel olarak eşitlenebilmeniz için dosyaları daha hızlı taşıdığından, yerel disk alanının tükenmesine yol açabilir. Robocopy daha sonra başarısız olur. Paylaşımlar üzerinde sorunu önleyen bir sırada çalışmanız önerilir. Örneğin, aynı zamanda tüm paylaşımlar için Robocopy işlerini başlatmayabilirsiniz. Ya da Windows Server örneğindeki geçerli boş alan miktarına uygun olan paylaşımları taşımayı düşünün. Robocopy işiniz başarısız olursa, aşağıdaki yansıtma/Temizleme seçeneğini kullandığınız sürece komutu her zaman yeniden çalıştırabilirsiniz:
 
-```console
-Robocopy /MT:32 /UNILOG:<file name> /TEE /B /MIR /COPYALL /DCOPY:DAT <SourcePath> <Dest.Path>
-```
-
-Arka plan
-
-:::row:::
-   :::column span="1":::
-      /MT
-   :::column-end:::
-   :::column span="1":::
-      Robocopy 'nin çoklu iş parçacıklı çalıştırmasına izin verir. Varsayılan değer 8, en fazla 128 ' dir.
-   :::column-end:::
-:::row-end:::
-:::row:::
-   :::column span="1":::
-      /UNILOG:\<file name\>
-   :::column-end:::
-   :::column span="1":::
-      Bir günlük dosyasına Unicode olarak durum verir (varolan günlüğün üzerine yazar).
-   :::column-end:::
-:::row-end:::
-:::row:::
-   :::column span="1":::
-      /T
-   :::column-end:::
-   :::column span="1":::
-      Bir konsol penceresine çıkış verir. Günlük dosyasına çıktılarla birlikte kullanılır.
-   :::column-end:::
-:::row-end:::
-:::row:::
-   :::column span="1":::
-      /B
-   :::column-end:::
-   :::column span="1":::
-      Robocopy, bir yedekleme uygulamasının kullanacağı modda çalıştırır. Robocopy 'nin geçerli kullanıcının izinleri olmayan dosyaları taşımasına izin verir.
-   :::column-end:::
-:::row-end:::
-:::row:::
-   :::column span="1":::
-      /MıR
-   :::column-end:::
-   :::column span="1":::
-      Aynı hedef/hedef üzerinde bu Robocopy komutunu birkaç kez, sırayla çalıştırmaya izin verir. Daha önce kopyalanmış olanları tanımlar ve atlar. Yalnızca son çalıştırmasından bu yana gerçekleşen değişiklikler, eklemeler ve silme işlemleri işlenir. Komut daha önce çalıştırılmadıysa hiçbir şey atlanamaz. **/MIR** bayrağı, hala etkin olarak kullanılan ve değişen kaynak konumları için mükemmel bir seçenektir.
-   :::column-end:::
-:::row-end:::
-:::row:::
-   :::column span="1":::
-      /COPY: copyflag [s]
-   :::column-end:::
-   :::column span="1":::
-      Dosya kopyasının doğruluğu (varsayılan:/COPY: DAT). Kopyalama bayrakları: D = Data, A = Attributes, T = damgalar, S = Security = NTFS ACL 'Leri, O = Owner Info, U = denetim bilgileri.
-   :::column-end:::
-:::row-end:::
-:::row:::
-   :::column span="1":::
-      /COPYALL
-   :::column-end:::
-   :::column span="1":::
-      Tüm dosya bilgilerini KOPYALAYıN (/COPY: DATSOU ile eşdeğerdir).
-   :::column-end:::
-:::row-end:::
-:::row:::
-   :::column span="1":::
-      /DCOPY: copyflag [s]
-   :::column-end:::
-   :::column span="1":::
-      Dizinlerin kopyası için uygunluk (varsayılan:/DCOPY: DA). Kopyalama bayrakları: D = Data, A = Attributes, T = damgalardır.
-   :::column-end:::
-:::row-end:::
+[!INCLUDE [storage-files-migration-robocopy](../../../includes/storage-files-migration-robocopy.md)]
 
 ## <a name="phase-8-user-cut-over"></a>8. Aşama: Kullanıcı tarafından kesilen
 

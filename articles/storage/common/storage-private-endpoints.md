@@ -10,12 +10,12 @@ ms.date: 03/12/2020
 ms.author: santoshc
 ms.reviewer: santoshc
 ms.subservice: common
-ms.openlocfilehash: 7af2e6794d0d2f37c342a86b2f36b94c9601cc7e
-ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
+ms.openlocfilehash: 4ee0b71b63735d8417c11cba8d2a551c8da8b47f
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97617264"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102564297"
 ---
 # <a name="use-private-endpoints-for-azure-storage"></a>Azure depolama için özel uç noktaları kullanma
 
@@ -49,9 +49,13 @@ Depolama hesabınızı, varsayılan olarak genel bitiş noktası üzerinden eri�
 > [!NOTE]
 > Blob 'ları depolama hesapları arasında kopyalarken, istemciniz her iki hesaba da ağ erişimine sahip olmalıdır. Bu nedenle, yalnızca bir hesap (kaynak veya hedef) için özel bir bağlantı kullanmayı tercih ederseniz, istemcinizin diğer hesaba ağ erişimi olduğundan emin olun. Ağ erişimini yapılandırmanın diğer yolları hakkında bilgi edinmek için bkz. [Azure Storage güvenlik duvarlarını ve sanal ağları yapılandırma](storage-network-security.md?toc=/azure/storage/blobs/toc.json). 
 
-### <a name="private-endpoints-for-azure-storage"></a>Azure depolama için özel uç noktalar
+<a id="private-endpoints-for-azure-storage"></a>
 
-Özel uç nokta oluştururken, bağlandığı depolama hesabını ve depolama hizmetini belirtmeniz gerekir. Her depolama hizmeti için, [BLOB](../blobs/storage-blobs-overview.md), [Data Lake Storage 2.](../blobs/data-lake-storage-introduction.md), [Dosya](../files/storage-files-introduction.md), [kuyruk](../queues/storage-queues-introduction.md), [tablo](../tables/table-storage-overview.md)veya [statik Web siteleri](../blobs/storage-blob-static-website.md)olmak üzere erişmeniz gereken bir depolama hesabında ayrı bir özel uç noktaya ihtiyacınız vardır.
+## <a name="creating-a-private-endpoint"></a>Özel uç nokta oluşturma
+
+Özel bir uç nokta oluşturduğunuzda, bağlandığı depolama hesabı ve depolama hizmetini belirtmeniz gerekir. 
+
+Erişmeniz gereken her depolama kaynağı için [BLOB](../blobs/storage-blobs-overview.md), [Data Lake Storage 2.](../blobs/data-lake-storage-introduction.md), [Dosya](../files/storage-files-introduction.md), [kuyruk](../queues/storage-queues-introduction.md), [tablo](../tables/table-storage-overview.md)veya [statik Web siteleri](../blobs/storage-blob-static-website.md)için ayrı bir özel uç nokta gerekir. Data Lake Storage 2. depolama kaynağı için özel bir uç nokta oluşturursanız, blob Storage kaynağı için de bir tane oluşturmanız gerekir. Bunun nedeni, Data Lake Storage 2. uç noktasını hedefleyen işlemler blob uç noktasına yeniden yönlendirilebilir. Her iki kaynak için de özel bir uç nokta oluşturarak işlemlerin başarıyla tamamlanmasını sağlayabilirsiniz.
 
 > [!TIP]
 > RA-GRS hesaplarında daha iyi okuma performansı için depolama hizmetinin ikincil örneği için ayrı bir özel uç nokta oluşturun.
@@ -66,18 +70,20 @@ Depolama hesabınız için özel bir uç nokta oluşturma hakkında daha ayrınt
 - [Azure CLı kullanarak özel uç nokta oluşturma](../../private-link/create-private-endpoint-cli.md)
 - [Azure PowerShell kullanarak özel uç nokta oluşturma](../../private-link/create-private-endpoint-powershell.md)
 
-### <a name="connecting-to-private-endpoints"></a>Özel uç noktalara bağlanma
+<a id="connecting-to-private-endpoints"></a>
+
+## <a name="connecting-to-a-private-endpoint"></a>Özel bir uç noktaya bağlanma
 
 Özel uç nokta kullanan bir sanal ağdaki istemciler, genel uç noktaya bağlanan istemciler olarak depolama hesabı için aynı bağlantı dizesini kullanmalıdır. VNet 'ten gelen bağlantıları özel bir bağlantı üzerinden depolama hesabına otomatik olarak yönlendirmek için DNS çözümünden yararlanıyoruz.
 
 > [!IMPORTANT]
-> Başka türlü kullandığınızda, Özel uç noktaları kullanarak depolama hesabına bağlanmak için aynı bağlantı dizesini kullanın. Lütfen '*Privatelink*' alt etki alanı URL 'sini kullanarak depolama hesabına bağlanmayın.
+> Başka türlü kullandığınızda, Özel uç noktaları kullanarak depolama hesabına bağlanmak için aynı bağlantı dizesini kullanın. Lütfen alt `privatelink` etki alanı URL 'sini kullanarak depolama hesabına bağlanmayın.
 
 Varsayılan olarak, Özel uç noktalara yönelik gerekli güncelleştirmelerle VNet 'e bağlı [Özel BIR DNS bölgesi](../../dns/private-dns-overview.md) oluşturacağız. Ancak, kendi DNS sunucunuzu kullanıyorsanız, DNS yapılandırmanızda ek değişiklikler yapmanız gerekebilir. Aşağıdaki [DNS değişikliklerinin](#dns-changes-for-private-endpoints) bölümünde, Özel uç noktalar için gereken güncelleştirmeler açıklanmaktadır.
 
 ## <a name="dns-changes-for-private-endpoints"></a>Özel uç noktalar için DNS değişiklikleri
 
-Özel bir uç nokta oluşturduğunuzda, depolama hesabı için DNS CNAME kaynak kaydı, '*Privatelink*' önekine sahip bir alt etki alanındaki diğer ada güncelleştirilir. Varsayılan olarak, Özel uç noktalar için DNS A kaynak kayıtları ile '*Privatelink*' alt etki alanına karşılık gelen [özel bir DNS bölgesi](../../dns/private-dns-overview.md)de oluşturacağız.
+Özel bir uç nokta oluşturduğunuzda, depolama hesabı için DNS CNAME kaynak kaydı, ön ek içeren bir alt etki alanındaki diğer ada güncelleştirilir `privatelink` . Varsayılan olarak, [](../../dns/private-dns-overview.md) `privatelink` Özel uç noktalar için DNS a kaynak kayıtlarıyla birlikte alt etki alanına karşılık gelen özel bir DNS bölgesi de oluşturacağız.
 
 Depolama uç noktası URL 'sini VNet dışından özel uç noktayla çözdüğünde, depolama hizmetinin genel uç noktasına dönüşür. Özel uç noktayı barındıran VNet 'ten çözümlendiğinde, depolama uç noktası URL 'SI özel uç noktanın IP adresine çözümlenir.
 
@@ -103,7 +109,7 @@ Bu yaklaşım, Özel uç noktaları barındıran VNet 'teki istemciler ve VNet d
 Ağınızda özel bir DNS sunucusu kullanıyorsanız, istemciler depolama hesabı uç noktası için FQDN 'yi özel uç nokta IP adresine çözümleyebilmelidir. DNS sunucunuzu özel bağlantı alt etki alanınızı, sanal ağın özel DNS bölgesine devretmek üzere yapılandırmanız veya '*StorageAccountA.Privatelink.blob.Core.Windows.net*' için bir kayıtları özel uç nokta IP adresi ile yapılandırmanız gerekir.
 
 > [!TIP]
-> Özel veya şirket içi bir DNS sunucusu kullanırken, DNS sunucunuzu, ' Privatelink ' alt etki alanındaki depolama hesabı adını özel uç nokta IP adresine çözümlemek üzere yapılandırmanız gerekir. Bunu, sanal ağın özel DNS bölgesine ' Privatelink ' alt etki alanı temsilcisi seçerek veya DNS sunucunuzda DNS bölgesi yapılandırarak ve DNS A kayıtlarını ekleyerek yapabilirsiniz.
+> Özel veya şirket içi bir DNS sunucusu kullanırken, DNS sunucunuzu, alt etki alanındaki depolama hesabı adını `privatelink` Özel uç nokta IP adresine çözümlemek üzere yapılandırmalısınız. Bunu, alt `privatelink` etki alanını VNET 'in özel DNS bölgesine devredererek veya DNS SUNUCUNUZDA DNS bölgesini yapılandırarak ve DNS A kayıtlarını ekleyerek yapabilirsiniz.
 
 Depolama Hizmetleri için özel uç noktalar için önerilen DNS bölge adları şunlardır:
 
@@ -137,7 +143,7 @@ Bu kısıtlama, a2 hesabı özel bir uç nokta oluşturduğunda yapılan DNS de�
 
 ### <a name="network-security-group-rules-for-subnets-with-private-endpoints"></a>Özel uç noktaları olan alt ağlar için Ağ Güvenlik Grubu kuralları
 
-Şu anda, [ağ güvenlik grubu](../../virtual-network/network-security-groups-overview.md) (NSG) kurallarını ve özel uç noktalar için Kullanıcı tanımlı yolları yapılandıramazsınız. Özel uç noktayı barındıran alt ağa uygulanan NSG kuralları, Özel uç noktadan yalnızca diğer uç noktalara (ör. NIC 'ler) uygulanır. Bu sorun için sınırlı bir geçici çözüm, kaynak alt ağlardaki özel uç noktalar için erişim kurallarınızı uygulamaktır, ancak bu yaklaşım daha yüksek bir yönetim yükü gerektirebilir.
+Şu anda, [ağ güvenlik grubu](../../virtual-network/network-security-groups-overview.md) (NSG) kurallarını ve özel uç noktalar için Kullanıcı tanımlı yolları yapılandıramazsınız. Özel uç noktasını barındıran alt ağa uygulanan NSG kuralları özel uç noktaya uygulanmaz. Bunlar yalnızca diğer uç noktalara uygulanır (örneğin: ağ arabirim denetleyicileri). Bu sorun için sınırlı bir geçici çözüm, kaynak alt ağlardaki özel uç noktalar için erişim kurallarınızı uygulamaktır, ancak bu yaklaşım daha yüksek bir yönetim yükü gerektirebilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

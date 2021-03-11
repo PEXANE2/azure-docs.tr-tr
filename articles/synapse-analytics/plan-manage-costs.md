@@ -7,12 +7,12 @@ ms.custom: subject-cost-optimization
 ms.service: synapse-analytics
 ms.topic: how-to
 ms.date: 12/09/2020
-ms.openlocfilehash: c7a0be6f1d402cc994532ab4bc5a5d0ea39bc8b7
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: 06586b5bf20619f57b2ad1c3d5de84dd61952261
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98599053"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102561254"
 ---
 # <a name="plan-and-manage-costs-for-azure-synapse-analytics"></a>Azure SYNAPSE Analytics için maliyetleri planlayın ve yönetin
 
@@ -20,7 +20,7 @@ Bu makalede, Azure SYNAPSE Analytics maliyetlerinin nasıl planlanacağı ve yö
 
 Azure SYNAPSE kaynaklarını kullanmaya başladıktan sonra, bütçe ayarlamak ve maliyetleri izlemek için maliyet yönetimi özelliklerini kullanın. Ayrıca Tahmini maliyetleri gözden geçirebilir ve hareket etmek isteyebileceğiniz yerleri belirlemek için harcama eğilimlerini belirleyebilirsiniz. Azure SYNAPSE için maliyetler yalnızca Azure faturanızda bulunan Aylık maliyetlerin bir parçasıdır. Bu makalede, Azure SYNAPSE maliyetlerinin nasıl planlanacağı ve yönetileceği açıklanmakta olsa da, üçüncü taraf hizmetler de dahil olmak üzere Azure aboneliğinizde kullanılan tüm Azure hizmetleri ve kaynakları için faturalandırılırsınız.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Maliyet yönetimi 'nde maliyet analizi, çoğu Azure hesap türünü destekler, ancak bunların tümünü kullanmaz. Desteklenen hesap türlerinin tam listesini görüntülemek için, bkz. [Maliyet Yönetimi verilerini anlama](../cost-management-billing/costs/understand-cost-mgt-data.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn). Maliyet verilerini görüntülemek için bir Azure hesabı için en azından okuma erişiminizin olması gerekir. Azure Maliyet Yönetimi verilerine erişim atama hakkında daha fazla bilgi için bkz. [Verilere erişim atama](../cost-management-billing/costs/assign-access-acm-data.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn).
 
@@ -113,7 +113,12 @@ Sunucusuz SQL havuzunun maliyeti hakkında daha fazla bilgi edinmek için bkz. [
 
 Adanmış bir SQL havuzunun maliyetlerini, kullanımda olmadığında kaynak duraklayan şekilde denetleyebilirsiniz. Örneğin, gece ve hafta sonları sırasında veritabanını kullanmıyorsanız, bu zamanlarda duraklatıp gün içinde devam edebilirsiniz. Daha fazla bilgi için bkz [. Azure Portal aracılığıyla ADANMıŞ SQL havuzunda Işlem duraklatma ve devam ettirme](./sql-data-warehouse/pause-and-resume-compute-portal.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
 
-<!-- ### Serverless Apache Spark pool -->
+### <a name="serverless-apache-spark-pool"></a>Sunucusuz Apache Spark havuzu
+
+Sunucusuz Apache Spark havuzunuzun maliyetlerini denetlemek için sunucusuz Apache Spark otomatik duraklatma özelliğini etkinleştirin ve zaman aşımı değerini uygun şekilde ayarlayın.  Geliştirme için SYNAPSE Studio 'yu kullanırken, bu da yapılandırılabilir olan oturumu etkin tutmak üzere canlı tut iletisi gönderir, bu nedenle otomatik duraklama için kısa bir zaman aşımı değeri ayarlayın.  İşiniz bittiğinde oturumunuzu kapatın ve zaman aşımı değerine ulaşıldığında Apache Spark havuzu otomatik olarak duraklatılır.
+ 
+Geliştirme sırasında, çeşitli boyutlarda birden çok Apache Spark havuz tanımı oluşturun.  Apache Spark havuz tanımlarının oluşturulması ücretsizdir ve yalnızca kullanım için ücretlendirilirsiniz.  Azure SYNAPSE ' de Apache Spark kullanımı, vCore saati başına ücretlendirilir ve dakikaya eşit olarak dağıtılır.  Örneğin, performans testi için daha büyük havuz boyutları kullanırken kod geliştirme ve doğrulama için küçük havuz boyutları kullanın.
+
 
 ### <a name="data-integration---pipelines-and-data-flows"></a>Veri tümleştirme-işlem hatları ve veri akışları 
 

@@ -4,12 +4,12 @@ description: VM yedekleme yığını, Kaynak Yöneticisi dağıtım modeli için
 ms.reviewer: sogup
 ms.topic: conceptual
 ms.date: 04/23/2019
-ms.openlocfilehash: 147fadc92429157ed2f9ba3eb68297a3e1d08d24
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: 3448b162c17dec2ab5b7637a3527d1c470bd415c
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "96014457"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102618585"
 ---
 # <a name="get-improved-backup-and-restore-performance-with-azure-backup-instant-restore-capability"></a>Azure Backup Instant Restore özelliğiyle gelişmiş yedekleme ve geri yükleme performansı alın
 
@@ -67,7 +67,7 @@ Azure portal, **anlık geri yükleme** bölümünün altında **VM yedekleme ilk
 
 ![Anında geri yükleme özelliği](./media/backup-azure-vms/instant-restore-capability.png)
 
-### <a name="using-powershell"></a>PowerShell'i kullanma
+### <a name="using-powershell"></a>PowerShell’i kullanma
 
 >[!NOTE]
 > Az PowerShell Version 1.6.0 onenlerden itibaren, PowerShell kullanarak ilkede anlık geri yükleme anlık görüntü bekletme süresini güncelleştirebilirsiniz
@@ -112,7 +112,13 @@ Anlık görüntü (Katman1) silinene kadar yeni model geri yükleme noktasını 
 
 ### <a name="why-does-my-snapshot-still-exist-even-after-the-set-retention-period-in-backup-policy"></a>Yedekleme ilkesindeki bekletme süresinden sonra bile anlık görüntümi hala var?
 
-Kurtarma noktasının bir anlık görüntüsü varsa ve en son kurtarma noktası varsa, bir sonraki başarılı yedeklemeye kadar tutulur. Bu, belirlenen "çöp toplama" (GC) ilkesine göre belirlenir. Sonraki tüm yedeklemelerin VM 'deki bir sorun nedeniyle başarısız olması durumunda, en az bir en son kurtarma noktasının her zaman mevcut olması gerekir. Normal senaryolarda kurtarma noktaları, süresi dolduktan sonra en fazla 24 saat sonra temizlenir.
+Kurtarma noktasının bir anlık görüntüsü varsa ve en son kurtarma noktası varsa, bir sonraki başarılı yedeklemeye kadar tutulur. Bu, belirlenen "çöp toplama" (GC) ilkesine göre belirlenir. Sonraki tüm yedeklemelerin VM 'deki bir sorun nedeniyle başarısız olması durumunda, en az bir en son kurtarma noktasının her zaman mevcut olması gerekir. Normal senaryolarda kurtarma noktaları, süresi dolduktan sonra en fazla 24 saat sonra temizlenir. Nadir senaryolarda, çöp toplayıcısının (GC) daha ağır yüküne göre bir veya daha fazla ek anlık görüntü olabilir.
+
+### <a name="why-do-i-see-more-snapshots-than-my-retention-policy"></a>Neden bekletme ilkenğim daha fazla anlık görüntü görüyorum?
+
+Bekletme ilkesinin "1" olarak ayarlandığı bir senaryoda, iki anlık görüntü bulabilirsiniz. Bu, VM 'deki bir sorun nedeniyle sonraki tüm yedeklemelerin başarısız olması durumunda, en az bir en son kurtarma noktasının her zaman mevcut olduğunu bu şekilde sağlar. Bu, iki anlık görüntü varolup oluşmasına neden olabilir.<br></br>Bu nedenle, ilke "n" anlık görüntülerle "n + 1" anlık görüntülerini zaman içinde bulabilirsiniz. Ayrıca, atık toplamada bir gecikme olursa "n + 1 + 2" anlık görüntülerini bile bulabilirsiniz. Bu durum nadiren zaman alabilir:
+- Daha fazla bekletme olan anlık görüntüleri temizleyiyorsunuz.
+- Arka uçtaki çöp toplayıcı (GC) ağır yük altında.
 
 ### <a name="i-dont-need-instant-restore-functionality-can-it-be-disabled"></a>Anlık geri yükleme işlevselliğine ihtiyacım yok. Devre dışı bırakılabilir mi?
 
@@ -120,5 +126,5 @@ Anlık geri yükleme özelliği herkes için etkin ve devre dışı bırakılama
 
 ### <a name="is-it-safe-to-restart-the-vm-during-the-transfer-process-which-can-take-many-hours-will-restarting-the-vm-interrupt-or-slow-down-the-transfer"></a>Aktarım işlemi sırasında VM 'yi yeniden başlatmak güvenli mi (birkaç saat sürebilir)? VM kesmesi yeniden başlatılıyor veya aktarma yavaşlıyor mu?
 
-Güvenli bir şekilde Evet ve veri aktarımı hızında kesinlikle hiçbir etkisi yoktur.
+Evet ve veri aktarımı hızında kesinlikle hiçbir etkisi yoktur.
 

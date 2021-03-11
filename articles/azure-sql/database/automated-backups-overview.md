@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: shkale-msft
 ms.author: shkale
 ms.reviewer: mathoma, stevestein, danil
-ms.date: 11/18/2020
-ms.openlocfilehash: 862d33e523562511796999d82b67d2b4b11efaf3
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.date: 03/10/2021
+ms.openlocfilehash: 5879c9107a0ab5a2ef150d119e8b5ac8e16ac01d
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101690638"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102609932"
 ---
 # <a name="automated-backups---azure-sql-database--sql-managed-instance"></a>Otomatik yedeklemeler-SQL yönetilen örnek & Azure SQL veritabanı
 
@@ -140,9 +140,12 @@ Hem SQL veritabanı hem de SQL yönetilen örneği için, Azure Blob depolamada 
 
 LTR hakkında daha fazla bilgi için bkz. [uzun süreli yedek saklama](long-term-retention-overview.md).
 
-## <a name="storage-costs"></a>Depolama maliyetleri
+## <a name="backup-storage-costs"></a>Yedekleme depolama maliyetleri
 
 Yedekleme depolaması için fiyat değişir ve satın alma modelinize (DTU veya vCore), seçili yedekleme depolama artıklığı seçeneğine ve ayrıca bölgenizde bağlıdır. Yedekleme depolaması tüketilen GB/ay başına ücretlendirilir, fiyatlandırma için bkz. [Azure SQL Veritabanı fiyatlandırma](https://azure.microsoft.com/pricing/details/sql-database/single/) sayfası ve [Azure SQL yönetilen örnek fiyatlandırma](https://azure.microsoft.com/pricing/details/azure-sql/sql-managed-instance/single/) sayfası.
+
+> [!NOTE]
+> Azure faturasında, tüm yedekleme depolama tüketiminin değil, yalnızca tüketilen aşırı yedekleme depolaması gösterilir. Örneğin, bir kuramsal senaryoda 4TB veri depolama alanı sağladıysanız, 4TB boş yedekleme depolama alanı alacaksınız. Toplam 5.8 TB yedekleme depolama alanını kullandıysanız Azure faturasında yalnızca fazla yedekleme depolaması ücretlendirilildiği için, Azure faturasında yalnızca 1.8 TB görüntülenir.
 
 ### <a name="dtu-model"></a>DTU modeli
 
@@ -446,7 +449,7 @@ SQL veritabanı ve yönetilen örnek için yerleşik ilke tanımlarının tam li
 Bir kuruluş düzeyinde veri yerleşimi gereksinimlerini zorlamak için bu ilkeler bir aboneliğe atanabilir. Bunlar bir abonelik düzeyinde atandıktan sonra, belirtilen abonelikteki kullanıcılar Azure portal veya Azure PowerShell aracılığıyla coğrafi olarak yedekli yedekleme depolama alanı ile bir veritabanı veya yönetilen örnek oluşturamaz. 
 
 > [!IMPORTANT]
-> T-SQL aracılığıyla bir veritabanı oluşturulurken Azure ilkeleri zorlanmaz. T-SQL kullanarak bir veritabanı oluştururken veri fazlalığını zorlamak için, [Create Database ifadesinde BACKUP_STORAGE_REDUNDANCY parater olarak ' Local ' veya ' Zone ' kullanın](/sql/t-sql/statements/create-database-transact-sql?view=azuresqldb-current#create-database-using-zone-redundancy-for-backups).
+> T-SQL aracılığıyla bir veritabanı oluşturulurken Azure ilkeleri zorlanmaz. T-SQL kullanarak bir veritabanı oluştururken veri fazlalığını zorlamak için, [Create Database ifadesinde BACKUP_STORAGE_REDUNDANCY parater olarak ' Local ' veya ' Zone ' kullanın](/sql/t-sql/statements/create-database-transact-sql#create-database-using-zone-redundancy-for-backups).
 
 [Azure Portal](../../governance/policy/assign-policy-portal.md) veya [Azure PowerShell](../../governance/policy/assign-policy-powershell.md) kullanarak ilke atamayı öğrenin
 
@@ -458,4 +461,5 @@ Bir kuruluş düzeyinde veri yerleşimi gereksinimlerini zorlamak için bu ilkel
 - [PowerShell 'i kullanarak bir veritabanını zaman içinde bir noktaya geri yükleme](scripts/restore-database-powershell.md)hakkında daha fazla bilgi alın.
 - Azure Blob depolamada Azure portal kullanarak otomatik yedeklemelerin uzun süreli bekletmesini yapılandırma, yönetme ve geri yükleme hakkında daha fazla bilgi için, bkz. [Azure Portal kullanarak uzun süreli yedek saklama Işlemlerini yönetme](long-term-backup-retention-configure.md).
 - PowerShell kullanarak Azure Blob depolamada otomatik yedeklemelerin uzun süreli bekletmesini yapılandırma, yönetme ve geri yükleme hakkında daha fazla bilgi için bkz. [PowerShell kullanarak uzun süreli yedek saklama 'Yı yönetme](long-term-backup-retention-configure.md).
+- Azure SQL yönetilen örneği üzerinde yedekleme depolama tüketimi hakkında daha fazla bilgi edinmek için bkz. [yönetilen örnekteki yedekleme depolama tüketimi açıklanmıştı](https://aka.ms/mi-backup-explained).
 - Azure SQL yönetilen örneği için yedekleme depolama tutma ve maliyetlerinin ince ayar yapma hakkında bilgi edinmek için bkz. [yönetilen örnekteki yedekleme depolama maliyetlerini ayarlama](https://aka.ms/mi-backup-tuning).

@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b447873df882847f052125254ea52b5ae6ab9ec4
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 95274f42da7f6cac9b193504df834232d7c0eb90
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101644876"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102609999"
 ---
 # <a name="add-a-custom-approval-workflow-to-self-service-sign-up"></a>Self Servis kaydolma 'ya özel bir onay iş akışı ekleme
 
@@ -156,7 +156,6 @@ Content-type: application/json
     "version": "1.0.0",
     "action": "ShowBlockPage",
     "userMessage": "Your access request is already processing. You'll be notified when your request has been approved.",
-    "code": "CONTOSO-APPROVAL-PENDING"
 }
 ```
 
@@ -168,7 +167,6 @@ Content-type: application/json
     "version": "1.0.0",
     "action": "ShowBlockPage",
     "userMessage": "Your sign up request has been denied. Please contact an administrator if you believe this is an error",
-    "code": "CONTOSO-APPROVAL-DENIED"
 }
 ```
 
@@ -244,7 +242,6 @@ Content-type: application/json
     "version": "1.0.0",
     "action": "ShowBlockPage",
     "userMessage": "Your account is now waiting for approval. You'll be notified when your request has been approved.",
-    "code": "CONTOSO-APPROVAL-REQUESTED"
 }
 ```
 
@@ -256,7 +253,6 @@ Content-type: application/json
     "version": "1.0.0",
     "action": "ShowBlockPage",
     "userMessage": "Your sign up request has been denied. Please contact an administrator if you believe this is an error",
-    "code": "CONTOSO-APPROVAL-AUTO-DENIED"
 }
 ```
 
@@ -268,12 +264,12 @@ Content-type: application/json
 
 El ile onay aldıktan sonra, özel onay sistemi [Microsoft Graph](/graph/use-the-api)kullanarak bir [Kullanıcı](/graph/azuread-users-concept-overview) hesabı oluşturur. Onay sisteminizin Kullanıcı hesabını sağlama yolu, Kullanıcı tarafından kullanılan kimlik sağlayıcısına bağlıdır.
 
-### <a name="for-a-federated-google-or-facebook-user"></a>Federe bir Google veya Facebook kullanıcısı için
+### <a name="for-a-federated-google-or-facebook-user-and-email-one-time-passcode"></a>Bir Federasyon Google veya Facebook kullanıcısı ve tek seferlik geçiş kodu için e-posta
 
 > [!IMPORTANT]
-> Onay sistemi `identities` , `identities[0]` `identities[0].issuer` `identities[0].issuer` Bu yöntemi kullanmak için açıkça bu ve ' Facebook ' veya ' Google ' değerine eşit olup olmadığını denetlemelidir.
+> Onay sistemi `identities` , `identities[0]` `identities[0].issuer` `identities[0].issuer` Bu yöntemi kullanmak için açıkça bu ve ' Facebook ', ' Google ' veya ' Mail ' değerine eşit olup olmadığını kontrol etmelidir.
 
-Kullanıcılarınız bir Google veya Facebook hesabıyla oturum açmışsa, [Kullanıcı oluşturma API](/graph/api/user-post-users?tabs=http)'sini kullanabilirsiniz.
+Kullanıcılarınız bir Google veya Facebook hesabı ya da bir kerelik geçiş kodu ile oturum açmışsa, [Kullanıcı oluşturma API](/graph/api/user-post-users?tabs=http)'sini kullanabilirsiniz.
 
 1. Onay sistemi kullanımları Kullanıcı akışından gelen HTTP isteğini alır.
 
@@ -328,12 +324,12 @@ Content-type: application/json
 | posta                                                | Yes      | `email`API 'ye gönderilen talebe denktir.                                                                                                               |
 | userType                                            | Yes      | Olmalıdır `Guest` . Bu kullanıcıyı Konuk Kullanıcı olarak belirler.                                                                                                                 |
 | lerinizde                                          | Yes      | Federal kimlik bilgileri.                                                                                                                                    |
-| \<otherBuiltInAttribute>                            | Hayır       | , Ve gibi diğer yerleşik öznitelikler `displayName` `city` . Parametre adları, API Bağlayıcısı tarafından gönderilen parametrelerle aynıdır.                            |
-| \<extension\_\{extensions-app-id}\_CustomAttribute> | Hayır       | Kullanıcı hakkındaki özel öznitelikler. Parametre adları, API Bağlayıcısı tarafından gönderilen parametrelerle aynıdır.                                                            |
+| \<otherBuiltInAttribute>                            | No       | , Ve gibi diğer yerleşik öznitelikler `displayName` `city` . Parametre adları, API Bağlayıcısı tarafından gönderilen parametrelerle aynıdır.                            |
+| \<extension\_\{extensions-app-id}\_CustomAttribute> | No       | Kullanıcı hakkındaki özel öznitelikler. Parametre adları, API Bağlayıcısı tarafından gönderilen parametrelerle aynıdır.                                                            |
 
-### <a name="for-a-federated-azure-active-directory-user"></a>Federe Azure Active Directory Kullanıcı için
+### <a name="for-a-federated-azure-active-directory-user-or-microsoft-account-user"></a>Federe Azure Active Directory Kullanıcı veya Microsoft hesabı kullanıcı için
 
-Bir Kullanıcı bir federasyon Azure Active Directory hesabıyla oturum açarsa, kullanıcıyı oluşturmak için [davet API](/graph/api/invitation-post) 'sini ve isteğe bağlı olarak Kullanıcı [güncelleştirme API](/graph/api/user-update) 'sini kullanıcıya daha fazla öznitelik atamak için kullanmalısınız.
+Bir Kullanıcı bir federasyon Azure Active Directory hesabıyla veya bir Microsoft hesabı oturum açarsa, kullanıcıyı oluşturmak için [davet API](/graph/api/invitation-post) 'sini ve isteğe bağlı olarak Kullanıcı [güncelleştirme API](/graph/api/user-update) 'sini kullanıcıya daha fazla öznitelik atamak için kullanmalısınız.
 
 1. Onay sistemi, Kullanıcı akışından gelen HTTP isteğini alır.
 

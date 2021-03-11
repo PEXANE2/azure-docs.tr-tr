@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.reviewer: veyalla
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 7924b06b9056a53fa9861fcd0df516845662b34b
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: 113c8adccc5e8b1c3321569f32ca3fb33423ccd8
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92341575"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102562886"
 ---
 # <a name="access-built-in-metrics"></a>Yerleşik ölçümlere erişme
 
@@ -44,7 +44,9 @@ Sürüm 1.0.10 itibariyle, varsayılan olarak,, **Edgehub** ve **edgeagent** mod
 Hem edgeHub hem de edgeAgent 'ın ölçüm uç noktalarını eşlerken farklı ve benzersiz ana bilgisayar bağlantı noktası numaraları seçin.
 
 > [!NOTE]
-> Ölçümleri devre dışı bırakmak istiyorsanız, `MetricsEnabled` ortam değişkenini `false` **edgeagent**için olarak ayarlayın.
+> `httpSettings__enabled`Yerleşik ölçümlerin koleksiyon için kullanılabilir olması için ortam değişkeni olarak ayarlanmalıdır `false` .
+>
+> Ölçümleri devre dışı bırakmak için kullanılabilen ortam değişkenleri, [Azure/ıotedge deposu belgesi](https://github.com/Azure/iotedge/blob/master/doc/EnvironmentVariables.md)içinde listelenmiştir.
 
 ## <a name="available-metrics"></a>Mevcut ölçümler
 

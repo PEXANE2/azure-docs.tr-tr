@@ -10,12 +10,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/25/2019
 ms.author: duau
-ms.openlocfilehash: 0c1273f4a2025658520118ed843d90b3378a129f
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 4cf3709574e2055f40759fd2d7026c93ac9db098
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100577881"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102608028"
 ---
 # <a name="enable-resource-logging-in-azure-traffic-manager"></a>Azure Traffic Manager kaynak günlüğünü etkinleştirme
 
@@ -39,14 +39,14 @@ Azure Traffic Manager kaynak günlükleri, Traffic Manager profili kaynağının
 
 2. **Traffic Manager profili için kaynak günlüğünü etkinleştirin:**
 
-    Önceki adımda [set-AzDiagnosticSetting](/powershell/module/az.monitor/set-azdiagnosticsetting?view=latest)ile elde edilen kimliği kullanarak Traffic Manager profili için kaynak günlüğünü etkinleştirin. Aşağıdaki komut Traffic Manager profili için ayrıntılı günlükleri belirtilen Azure depolama hesabına depolar. 
+    Önceki adımda [set-AzDiagnosticSetting](/powershell/module/az.monitor/set-azdiagnosticsetting)ile elde edilen kimliği kullanarak Traffic Manager profili için kaynak günlüğünü etkinleştirin. Aşağıdaki komut Traffic Manager profili için ayrıntılı günlükleri belirtilen Azure depolama hesabına depolar. 
 
       ```azurepowershell-interactive
     Set-AzDiagnosticSetting -ResourceId <TrafficManagerprofileResourceId> -StorageAccountId <storageAccountId> -Enabled $true
       ``` 
 3. **Tanılama ayarlarını doğrulayın:**
 
-      [Get-AzDiagnosticSetting](/powershell/module/az.monitor/get-azdiagnosticsetting?view=latest)kullanarak Traffic Manager profili için tanılama ayarlarını doğrulayın. Aşağıdaki komut, bir kaynak için günlüğe kaydedilen kategorileri görüntüler.
+      [Get-AzDiagnosticSetting](/powershell/module/az.monitor/get-azdiagnosticsetting)kullanarak Traffic Manager profili için tanılama ayarlarını doğrulayın. Aşağıdaki komut, bir kaynak için günlüğe kaydedilen kategorileri görüntüler.
 
      ```azurepowershell-interactive
      Get-AzDiagnosticSetting -ResourceId <TrafficManagerprofileResourceId>

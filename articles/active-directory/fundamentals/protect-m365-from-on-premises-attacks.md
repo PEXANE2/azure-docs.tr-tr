@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9913132ca6ff3ce2840b55aa771f7bd9be2404ea
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: e6d548f4d792d8980e2aa5040b09530eaf7868c4
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101650983"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102609915"
 ---
 # <a name="protecting-microsoft-365-from-on-premises-attacks"></a>Şirket içi saldırılardan Microsoft 365 koruma
 
@@ -69,7 +69,7 @@ Daha önce özetlenen tehdit vektörlerine yönelik olarak, aşağıdaki diyagra
 
     Bu yönetici hesapları kısıtlı-hesapları kullanır. *Şirket içi hesapların Microsoft 365 için yönetim ayrıcalıklarına sahip olması gerekir.* 
 
-    Daha fazla bilgi için, [Microsoft 365 yönetici rollerine genel bakış](/microsoft-365/admin/add-users/about-admin-roles?view=o365-worldwide)bölümüne bakın. Ayrıca bkz. [Azure AD 'de Microsoft 365 rolleri](../roles/m365-workload-docs.md).
+    Daha fazla bilgi için, [Microsoft 365 yönetici rollerine genel bakış](/microsoft-365/admin/add-users/about-admin-roles)bölümüne bakın. Ayrıca bkz. [Azure AD 'de Microsoft 365 rolleri](../roles/m365-workload-docs.md).
 
 1. **Microsoft 365 cihazları yönetin.** Şirket içi cihaz yönetimi altyapınızın bağımlılıklarını ortadan kaldırmak için Azure AD JOIN ve bulut tabanlı mobil cihaz yönetimi (MDM) kullanın. Bu bağımlılıklar cihaz ve güvenlik denetimlerini tehlikeye atabilir.
 
@@ -151,7 +151,7 @@ Karma hesapları sağlamak için kullanıldığında, Azure-AD-Cloud-HR sistemi,
 
 Bulut grupları, işbirliklerinizi ve şirket içi altyapınızdan erişiminizi kullanmanıza olanak sağlar.
 
-* **İşbirliği**: modern işbirliği Için Microsoft 365 grupları ve Microsoft ekipleri kullanın. Şirket içi dağıtım listelerine yetki alın ve [dağıtım listelerini Outlook 'ta Microsoft 365 gruplara yükseltin](/office365/admin/manage/upgrade-distribution-lists?view=o365-worldwide).
+* **İşbirliği**: modern işbirliği Için Microsoft 365 grupları ve Microsoft ekipleri kullanın. Şirket içi dağıtım listelerine yetki alın ve [dağıtım listelerini Outlook 'ta Microsoft 365 gruplara yükseltin](/office365/admin/manage/upgrade-distribution-lists).
 
 * **Erişim**: Azure AD 'de uygulamalara erişim yetkisi vermek IÇIN Azure AD güvenlik gruplarını veya Microsoft 365 gruplarını kullanın.
 * **Office 365 lisansı**: yalnızca bulut gruplarını kullanarak Office 365 ' ye sağlamak için grup tabanlı lisanslama kullanın. Bu yöntem, şirket içi altyapıdan grup üyeliği denetimini ayırır.
@@ -203,9 +203,9 @@ Sinyalleri yorumlamak ve kimlik doğrulama kararları almak için bunları kulla
 
 * Mümkün olduğunda [eski kimlik doğrulama protokollerini engellemek](../conditional-access/howto-conditional-access-policy-block-legacy.md) Için koşullu erişimi kullanın. Ayrıca, uygulamaya özgü bir yapılandırma kullanarak, uygulama düzeyinde eski kimlik doğrulama protokollerini devre dışı bırakın.
 
-   Daha fazla bilgi için bkz. [eski kimlik doğrulama protokolleri](../fundamentals/auth-sync-overview.md). Veya [Exchange Online](/exchange/clients-and-mobile-in-exchange-online/disable-basic-authentication-in-exchange-online#how-basic-authentication-works-in-exchange-online) ve [SharePoint Online](/powershell/module/sharepoint-online/set-spotenant?view=sharepoint-ps)için belirli ayrıntılara bakın.
+   Daha fazla bilgi için bkz. [eski kimlik doğrulama protokolleri](../fundamentals/auth-sync-overview.md). Veya [Exchange Online](/exchange/clients-and-mobile-in-exchange-online/disable-basic-authentication-in-exchange-online#how-basic-authentication-works-in-exchange-online) ve [SharePoint Online](/powershell/module/sharepoint-online/set-spotenant)için belirli ayrıntılara bakın.
 
-* Önerilen [kimlik ve cihaz erişim yapılandırmasını](/microsoft-365/security/office-365-security/identity-access-policies?view=o365-worldwide)uygulayın.
+* Önerilen [kimlik ve cihaz erişim yapılandırmasını](/microsoft-365/security/office-365-security/identity-access-policies)uygulayın.
 
 * Azure AD 'nin koşullu erişimi içermeyen bir sürümünü kullanıyorsanız [Azure AD güvenlik varsayılanlarını](../fundamentals/concept-fundamentals-security-defaults.md)kullandığınızdan emin olun.
 
