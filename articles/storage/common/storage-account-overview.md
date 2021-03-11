@@ -6,15 +6,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 01/08/2021
+ms.date: 03/09/2021
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 5cf43310c68c8446b9465a39d85f84c8273a68d8
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: 24d955b0d1c53f57f5927f9e893b6ecd75fb3ca8
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98051233"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102561902"
 ---
 # <a name="storage-account-overview"></a>Depolama hesabına genel bakış
 
@@ -71,7 +71,7 @@ Genel amaçlı v2 depolama hesapları, en son Azure depolama özelliklerini dest
 - Tablolar
 
 > [!NOTE]
-> Microsoft, çoğu senaryo için genel amaçlı v2 depolama hesabı kullanılmasını önerir. Genel amaçlı v1 veya blob depolama hesabını, kapalı kalma süresi olmadan ve verileri kopyalamaya gerek kalmadan, genel amaçlı bir v2 hesabına kolayca yükseltebilirsiniz.
+> Microsoft, çoğu senaryo için genel amaçlı v2 depolama hesabı kullanılmasını önerir. Genel amaçlı v1 veya blob depolama hesabını, kapalı kalma süresi olmadan ve verileri kopyalamaya gerek kalmadan, genel amaçlı bir v2 hesabına kolayca yükseltebilirsiniz. Ancak yükseltme işlemi geri alınamaz.
 >
 > Genel amaçlı v2 hesabına yükseltme hakkında daha fazla bilgi için bkz. [genel amaçlı v2 depolama hesabına yükseltme](storage-account-upgrade.md).
 
@@ -87,13 +87,18 @@ Genel amaçlı v1 depolama hesapları, tüm Azure depolama hizmetlerine erişim 
 - Kuyruklar
 - Tablolar
 
-Microsoft, çoğu senaryo için genel amaçlı v2 hesapları önerir. Bu senaryolar için genel amaçlı v1 hesaplarını kullanabilirsiniz:
+Bu senaryolar için genel amaçlı v1 hesaplarını kullanabilirsiniz:
 
 - Uygulamalarınız Azure klasik dağıtım modelini gerektirir. Genel amaçlı v2 hesapları ve BLOB depolama hesapları yalnızca Azure Resource Manager dağıtım modelini destekler.
 
 - Uygulamalarınız işlem açısından yoğun veya önemli coğrafi çoğaltma bant genişliği kullanır, ancak büyük kapasiteye gerek kalmaz. Bu durumda, genel amaçlı v1 en ekonomik seçim olabilir.
 
 - 2014-02-14 'den önceki bir [depolama hizmetleri REST API](/rest/api/storageservices/Versioning-for-the-Azure-Storage-Services) veya 4. x sürümünden daha düşük bir sürüme sahip bir istemci kitaplığı kullanın. Uygulamanızı yükseltemezsiniz.
+
+> [!NOTE]
+> Microsoft çoğu senaryo için genel amaçlı v2 hesapları önerse de, Microsoft yeni ve mevcut müşteriler için genel amaçlı v1 hesaplarını desteklemeye devam edecektir. Azure Storage bu bölgelerde kullanılabilir olduğunda, yeni bölgelerde genel amaçlı v1 depolama hesapları oluşturabilirsiniz. Microsoft 'un, genel amaçlı v1 hesapları için desteği kullanımdan kaldırmaya yönelik bir planı yoktur ve herhangi bir Azure depolama özelliğinin kullanım dışı bırakılmadan önce en az bir yıllık ön uyarı sağlar. Microsoft, genel amaçlı v1 hesapları için güvenlik güncelleştirmeleri sağlamaya devam edecek, ancak bu hesap türü için yeni bir özellik geliştirmesi beklenmez.
+>
+> 1 Ekim 2020 itibariyle, yeni Azure depolama bölgelerinde genel amaçlı v1 hesapları için fiyatlandırma, bu bölgelerdeki genel amaçlı v2 hesapları için fiyatlandırmaya eşittir. Mevcut Azure depolama bölgelerinde fiyatlandırma değişmemiştir. Belirli bir bölgedeki genel amaçlı v1 hesapları için fiyatlandırma ayrıntıları için bkz. Azure Depolama fiyatlandırması sayfası. Bölgenizi seçin ve ardından **fiyatlandırma teklifleri**' nin yanındaki **diğer**' i seçin.
 
 ### <a name="blockblobstorage-accounts"></a>BlockBlobStorage hesapları
 

@@ -3,12 +3,12 @@ title: Azure Işlevleri 1. x için başvuru host.js
 description: Azure Işlevleri için başvuru belgeleri v1 çalışma zamanı ile dosyada host.js.
 ms.topic: conceptual
 ms.date: 10/19/2018
-ms.openlocfilehash: 588ab6723015f34d15e4a46ec4f7324302b13b81
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 48dba50b384731befdc7fba7c418e542994cedd9
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94832832"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102608963"
 ---
 # <a name="hostjson-reference-for-azure-functions-1x"></a>Azure Işlevleri 1. x için başvuru host.js
 
@@ -137,7 +137,7 @@ Bu makalenin aşağıdaki bölümlerinde her üst düzey özellik açıklanmakta
 }
 ```
 
-|Özellik  |Varsayılan | Açıklama |
+|Özellik  |Varsayılan | Description |
 |---------|---------|---------|
 |GatewayMode|Ağ geçidi|Azure Cosmos DB hizmetine bağlanırken işlev tarafından kullanılan bağlantı modu. Seçenekler `Direct` ve `Gateway`|
 |Protokol|'Dir|Azure Cosmos DB hizmetine bağlantı sırasında işlev tarafından kullanılan bağlantı protokolü.  [Her iki modun açıklaması için buraya](../cosmos-db/performance-tips.md#networking) okuyun|
@@ -149,7 +149,7 @@ Bu makalenin aşağıdaki bölümlerinde her üst düzey özellik açıklanmakta
 
 ## <a name="eventhub"></a>eventHub
 
-[Olay Hub 'ı Tetikleyicileri ve bağlamaları](functions-bindings-event-hubs-trigger.md#functions-1x)için yapılandırma ayarları.
+[Olay Hub 'ı Tetikleyicileri ve bağlamaları](functions-bindings-event-hubs.md#functions-1x)için yapılandırma ayarları.
 
 ## <a name="functions"></a> işlevleri
 
@@ -187,7 +187,7 @@ Tüm işlevler için zaman aşımı süresini gösterir. Sunucusuz tüketim plan
 }
 ```
 
-|Özellik  |Varsayılan | Açıklama |
+|Özellik  |Varsayılan | Description |
 |---------|---------|---------| 
 |enabled|true|Özelliğin etkinleştirilip etkinleştirilmeyeceğini belirtir. | 
 |Healthcheckınterval|10 saniye|Düzenli arka plan sistem durumu denetimleri arasındaki zaman aralığı. | 
@@ -210,7 +210,7 @@ Tüm işlevler için zaman aşımı süresini gösterir. Sunucusuz tüketim plan
 }
 ```
 
-|Özellik  |Varsayılan | Açıklama |
+|Özellik  |Varsayılan | Description |
 |---------|---------|---------| 
 |dynamicThrottlesEnabled|yanlış|Bu ayar etkinleştirildiğinde, istek işleme işlem hattının bağlantılar/iş parçacıkları/işlemler/bellek/CPU/vb gibi sistem performans sayaçlarını düzenli olarak denetlemesini sağlar. bu sayaçlardan herhangi biri yerleşik yüksek eşikten (%80%) olursa, sayaçlar normal düzeylere dönene kadar istekler 429 "çok meşgul" yanıtıyla reddedilir.|
 |maxConcurrentRequests|Sınırsız ( `-1` )|Paralel olarak yürütülecek HTTP işlevlerinin maksimum sayısı. Bu, kaynak kullanımının yönetilmesine yardımcı olabilecek eşzamanlılık denetlemenize olanak tanır. Örneğin, eşzamanlılık çok yüksek olduğunda sorunlara yol açacağından, çok fazla sistem kaynağı (bellek/CPU/yuva) kullanan bir HTTP işleviniz olabilir. Ya da bir üçüncü taraf hizmetine giden istekleri yapan bir işleviniz olabilir ve bu çağrıların hız sınırlı olması gerekir. Bu durumlarda, burada bir kısıtlama uygulanması yardımcı olabilir.|
@@ -248,7 +248,7 @@ Bir [ILogger](functions-dotnet-class-library.md#ilogger) nesnesi veya [Context. 
 }
 ```
 
-|Özellik  |Varsayılan | Açıklama |
+|Özellik  |Varsayılan | Description |
 |---------|---------|---------| 
 |categoryFilter|yok|Kategoriye göre filtrelemeyi belirtir| 
 |defaultLevel|Bilgi|Dizide belirtilmeyen hiçbir kategori için `categoryLevels` , günlükleri bu düzeyde ve yukarıya Application Insights için gönderin.| 
@@ -270,7 +270,7 @@ Bir [ILogger](functions-dotnet-class-library.md#ilogger) nesnesi veya [Context. 
 }
 ```
 
-|Özellik  |Varsayılan | Açıklama |
+|Özellik  |Varsayılan | Description |
 |---------|---------|---------| 
 |Maxpollingınterval|60000|Sıra yoklamaları arasındaki milisaniye olarak en fazla Aralık.| 
 |visibilityTimeout|0|Bir ileti işlenirken yeniden denemeler arasındaki zaman aralığı başarısız olur.| 
@@ -290,7 +290,7 @@ Bir [ILogger](functions-dotnet-class-library.md#ilogger) nesnesi veya [Context. 
 }    
 ```
 
-|Özellik  |Varsayılan | Açıklama |
+|Özellik  |Varsayılan | Description |
 |---------|---------|---------| 
 |Kaynak|yok|Tüm işlevler genelinde gönderenin e-posta adresi.| 
 
@@ -309,7 +309,7 @@ Bir [ILogger](functions-dotnet-class-library.md#ilogger) nesnesi veya [Context. 
 }
 ```
 
-|Özellik  |Varsayılan | Açıklama |
+|Özellik  |Varsayılan | Description |
 |---------|---------|---------| 
 |Maxconcurrentçağrıları|16|İleti göndericisinin başlatması gereken geri çağrıya yönelik eşzamanlı çağrı sayısı üst sınırı. Varsayılan olarak, Işlevler çalışma zamanı birden çok iletiyi eşzamanlı olarak işler. Çalışma zamanını aynı anda yalnızca tek bir kuyruğu veya konu iletisini işleyecek şekilde yönlendirmek için `maxConcurrentCalls` 1 olarak ayarlayın. | 
 |prefetchCount|yok|Temel alınan MessageReceiver tarafından kullanılacak varsayılan PrefetchCount.| 
@@ -332,7 +332,7 @@ Tek kilit davranışı için yapılandırma ayarları. Daha fazla bilgi için bk
 }
 ```
 
-|Özellik  |Varsayılan | Açıklama |
+|Özellik  |Varsayılan | Description |
 |---------|---------|---------| 
 |Kilit dönemi|00:00:15|İşlev düzeyi kilitlerinin alındığı dönem için. Kilitleri otomatik yenileme.| 
 |listenerLockPeriod|00:01:00|Dinleyici kilitlerinin alındığı dönem.| 
@@ -355,7 +355,7 @@ Bir nesne kullanarak oluşturduğunuz Günlükler için yapılandırma ayarları
 }
 ```
 
-|Özellik  |Varsayılan | Açıklama |
+|Özellik  |Varsayılan | Description |
 |---------|---------|---------| 
 |consoleLevel|bilgiler|Konsol günlüğü için izleme düzeyi. Seçenekler şunlardır: `off` , `error` , `warning` , `info` , ve `verbose` .|
 |fileLoggingMode|yalnızca Debug|Dosya günlüğü için izleme düzeyi. Seçenekler `never` , `always` , `debugOnly` .| 

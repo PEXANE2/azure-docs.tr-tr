@@ -11,12 +11,12 @@ ms.topic: sample
 ms.date: 02/18/2021
 ms.author: kenwith
 ms.reviewer: mifarca
-ms.openlocfilehash: e63931f62398e1344d001bedb27cc8d0d776bef1
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: 46297f7f0f648c8bebc887a9093e25dfea99f695
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102185427"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102561509"
 ---
 # <a name="azure-active-directory-powershell-examples-for-application-management"></a>Uygulama yönetimi için PowerShell örnekleri Azure Active Directory
 
@@ -24,9 +24,12 @@ Aşağıdaki tabloda, Azure AD uygulama yönetimi için PowerShell betiği örne
 - [Grafik modülü veya, Için Azuread v2 PowerShell](/powershell/azure/active-directory/install-adv2)
 - Aksi belirtilmediği takdirde, [grafik modülü önizleme sürümü Için Azuread v2 PowerShell](/powershell/azure/active-directory/install-adv2?view=azureadps-2.0-preview&preserve-view=true).
 
-Bu örneklerde kullanılan cmdlet 'ler hakkında daha fazla bilgi için bkz. [uygulamalar](/powershell/module/azuread/?view=azureadps-2.0#applications&preserve-view=true).
+Bu örneklerde kullanılan cmdlet 'ler hakkında daha fazla bilgi için bkz. [uygulamalar](/powershell/module/azuread/#applications).
 
-| Bağlantı | Açıklama |
+| Bağlantı | Description |
 |---|---|
 |**Uygulama yönetimi betikleri**||
-| [Tüm uygulama kayıtlarını, sırları ve sertifikaları dışarı aktarma](scripts/powershell-export-all-app-registrations-secrets-and-certs.md) | Dizininizde belirtilen uygulamalar için tüm uygulama kayıtlarını, gizli dizileri ve sertifikaları dışa aktarır. |
+| [Gizli dizileri ve sertifikaları dışa aktarma (uygulama kayıtları)](scripts/powershell-export-all-app-registrations-secrets-and-certs.md) | Azure Active Directory kiracısındaki uygulama kayıtları için gizli dizileri ve sertifikaları dışarı aktarın. |
+| [Gizli dizileri ve sertifikaları dışa aktarma (kurumsal uygulamalar)](scripts/powershell-export-all-enterprise-apps-secrets-and-certs.md) | Azure Active Directory kiracısındaki kurumsal uygulamalar için gizli dizileri ve sertifikaları dışarı aktarın. |
+| [Süresi dolan gizli dizileri ve sertifikaları dışa aktarma](scripts/powershell-export-apps-with-expriring-secrets.md) | Azure Active Directory kiracısındaki süresi dolan gizli dizileri ve sertifikaları dışarı aktarın. |
+| [Parolaların ve sertifikaların süresi gereken tarihten sonra dışarı aktarma](scripts/powershell-export-apps-with-secrets-beyond-required.md) | Uygulamaları gizli dizi ve sertifikalarla dışa aktarma Azure Active Directory kiracısında gerekli tarihin ötesinde süresi dolar. |

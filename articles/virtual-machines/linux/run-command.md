@@ -3,17 +3,18 @@ title: Azure 'da bir Linux VM 'de kabuk betikleri çalıştırma
 description: Bu konu, komut Çalıştır özelliğini kullanarak bir Azure Linux sanal makinesi içinde betikleri çalıştırmayı açıklamaktadır.
 services: automation
 ms.service: virtual-machines
+ms.collection: linux
 author: bobbytreed
 ms.author: robreed
 ms.date: 04/26/2019
 ms.topic: how-to
 manager: carmonm
-ms.openlocfilehash: dae77dfb72fb6b11721500686991f2b199606b99
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 73dd15a5eed3e27d9b72bc0357e35901c04ba7a2
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98737872"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102552941"
 ---
 # <a name="run-shell-scripts-in-your-linux-vm-by-using-run-command"></a>Run komutunu kullanarak Linux sanal makinenizde kabuk betikleri çalıştırma
 
@@ -54,7 +55,7 @@ The entity was not found in this Azure location
 |**RunShellScript**|Bir Linux kabuğu betiği çalıştırır.|
 |**ifconfig**| Tüm ağ arabirimlerinin yapılandırmasını alır.|
 
-## <a name="azure-cli"></a>Azure CLI
+## <a name="azure-cli"></a>Azure CLI’si
 
 Aşağıdaki örnek, bir Azure Linux sanal makinesinde kabuk betiği çalıştırmak için [az VM Run-Command](/cli/azure/vm/run-command#az_vm_run_command_invoke) komutunu kullanır.
 
@@ -65,7 +66,7 @@ az vm run-command invoke -g myResourceGroup -n myVm --command-id RunShellScript 
 > [!NOTE]
 > Komutları farklı bir kullanıcı olarak çalıştırmak için, `sudo -u` bir kullanıcı hesabı belirtmek üzere girin.
 
-## <a name="azure-portal"></a>Azure portal
+## <a name="azure-portal"></a>Azure portalı
 
 [Azure Portal](https://portal.azure.com) bir VM 'ye gidin ve **Işlemler** altında **komutu Çalıştır** ' ı seçin. VM 'de çalıştırılacak kullanılabilir komutların listesini görürsünüz.
 

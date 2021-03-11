@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 07/10/2020
-ms.openlocfilehash: b922c25561843d140f1e2b8221f62fad89ea00c8
-ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
+ms.openlocfilehash: 5cc1025528959f8c81aa80703e3fc26d59c5266f
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102520906"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102618109"
 ---
 # <a name="use-private-python-packages-with-azure-machine-learning"></a>Azure Machine Learning ile özel Python paketleri kullanma
 
@@ -52,11 +52,11 @@ Dahili olarak, Azure Machine Learning hizmet URL 'YI güvenli SAS URL 'si ile de
 
 ## <a name="use-a-repository-of-packages-from-azure-devops-feed"></a>Azure DevOps akışından paket deposu kullanma
 
-Machine Learning uygulamanız için Python paketlerini etkin bir şekilde geliştiriyorsanız, bunları bir Azure DevOps deposunda yapıtlar olarak barındırabilir ve akış olarak yayımlayabilirsiniz. Bu yaklaşım, Azure Machine Learning Çalışma Alanı paket oluşturmak için DevOps iş akışını tümleştirmenize olanak sağlar. Azure DevOps kullanarak Python akışlarını ayarlamayı öğrenmek için [Azure Artifacts 'Da Python paketlerini kullanmaya başlayın](/azure/devops/artifacts/quickstarts/python-packages?preserve-view=true&view=azure-devops) makalesini okuyun
+Machine Learning uygulamanız için Python paketlerini etkin bir şekilde geliştiriyorsanız, bunları bir Azure DevOps deposunda yapıtlar olarak barındırabilir ve akış olarak yayımlayabilirsiniz. Bu yaklaşım, Azure Machine Learning Çalışma Alanı paket oluşturmak için DevOps iş akışını tümleştirmenize olanak sağlar. Azure DevOps kullanarak Python akışlarını ayarlamayı öğrenmek için [Azure Artifacts 'Da Python paketlerini kullanmaya başlayın](/azure/devops/artifacts/quickstarts/python-packages) makalesini okuyun
 
 Bu yaklaşım, depoya karşı kimlik doğrulaması yapmak için kişisel erişim belirtecini kullanır. Aynı yaklaşım, özel GitHub depoları gibi belirteç tabanlı kimlik doğrulaması olan diğer depolar için de geçerlidir. 
 
- 1. Azure DevOps örneğiniz için [bir kişisel erişim belirteci (Pat) oluşturun](/azure/devops/organizations/accounts/use-personal-access-tokens-to-authenticate?preserve-view=true&tabs=preview-page&view=azure-devops#create-a-pat) . Belirtecin kapsamını __paketlemek > okundu__ olarak ayarlayın. 
+ 1. Azure DevOps örneğiniz için [bir kişisel erişim belirteci (Pat) oluşturun](/azure/devops/organizations/accounts/use-personal-access-tokens-to-authenticate?tabs=preview-page#create-a-pat) . Belirtecin kapsamını __paketlemek > okundu__ olarak ayarlayın. 
 
  2. [Workspace.set_connection](/python/api/azureml-core/azureml.core.workspace.workspace#set-connection-name--category--target--authtype--value-) yöntemini kullanarak Azure DEVOPS URL 'SINI ve Pat 'yi çalışma alanı özellikleri olarak ekleyin.
 

@@ -7,12 +7,12 @@ ms.subservice: files
 ms.topic: how-to
 ms.date: 09/13/2020
 ms.author: rogarana
-ms.openlocfilehash: 2214dbc9dcbd4ba7728065ee45471e9f94b9e513
-ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
+ms.openlocfilehash: 6098497e89ad66fad7659aa64c9a7849380f8c43
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95740004"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102547530"
 ---
 # <a name="overview---on-premises-active-directory-domain-services-authentication-over-smb-for-azure-file-shares"></a>Azure dosya paylaşımları için SMB üzerinden genel bakış-şirket içi Active Directory Domain Services kimlik doğrulaması
 
@@ -33,10 +33,14 @@ Azure dosya paylaşımlarından yeni bir deneyiminiz varsa, aşağıdaki makale 
 
 SMB üzerinden Azure dosya paylaşımları için AD DS etkinleştirdiğinizde, AD DS katılmış makineleriniz, mevcut AD DS kimlik bilgilerinizi kullanarak Azure dosya paylaşımlarını bağlayabilir. Bu özellik, şirket içi makinelerde barındırılan veya Azure 'da barındırılan bir AD DS ortamıyla etkinleştirilebilir.
 
-> [!NOTE]
-> Bazı yaygın kullanım örnekleri için Azure dosyaları AD kimlik doğrulamasını ayarlamanıza yardımcı olması için, aşağıdaki senaryolar için adım adım yönergeler içeren iki video yayımladık:
-> - [Şirket içi dosya sunucularını Azure dosyaları ile değiştirme (dosyalar ve AD kimlik doğrulaması için özel bağlantı kurulumu dahil)](https://sec.ch9.ms/ch9/3358/0addac01-3606-4e30-ad7b-f195f3ab3358/ITOpsTalkAzureFiles_high.mp4)
-> - [Azure dosyalarını Windows sanal masaüstü için profil kapsayıcısı olarak kullanma (AD kimlik doğrulaması ve FsLogix yapılandırmasında kurulum dahil)](https://www.youtube.com/embed/9S5A1IJqfOQ)
+## <a name="videos"></a>Videolar
+
+Bazı yaygın kullanım örnekleri için Azure dosyaları AD kimlik doğrulamasını ayarlamanıza yardımcı olması için, aşağıdaki senaryolar için adım adım yönergeler içeren iki video yayımladık:
+
+| Şirket içi dosya sunucularını Azure dosyaları ile değiştirme (dosyalar ve AD kimlik doğrulaması için özel bağlantı kurulumu dahil) | Azure dosyalarını Windows sanal masaüstü için profil kapsayıcısı olarak kullanma (AD kimlik doğrulaması ve FsLogix yapılandırmasında kurulum dahil)  |
+|-|-|
+| [![Şirket içi dosya sunucularını değiştirme videosunu ekran görüntüsü-oynatmak için tıklayın.](./media/storage-files-identity-auth-active-directory-enable/replace-on-prem-server-thumbnail.png)](https://www.youtube.com/watch?v=jd49W33DxkQ) | [![Profil kapsayıcısı olarak Azure dosyalarını kullanmaya yönelik ekran görüntüsü-oynatmak için tıklayın.](./media/storage-files-identity-auth-active-directory-enable/files-ad-ds-fslogix-thumbnail.png)](https://www.youtube.com/watch?v=9S5A1IJqfOQ) |
+
 
 ## <a name="prerequisites"></a>Önkoşullar 
 

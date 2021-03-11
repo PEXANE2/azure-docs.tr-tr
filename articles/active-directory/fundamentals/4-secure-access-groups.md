@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7eb168610f10ac336084ac04c19679d26fc913e0
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 2d9d63c7a703987d7b17e6e03d8b5596d5f1dfa5
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98725253"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102560625"
 ---
 # <a name="securing-external-access-with-groups"></a>Gruplarla dış erişimin güvenliğini sağlama 
 
@@ -54,7 +54,7 @@ Kaynaklarınıza dış erişimin güvenliğini sağlamak için Grup stratejinizi
 
    * *Varsayılan olarak, tüm kullanıcılar M365 grupları oluşturabilir ve kiracınızdaki tüm (iç ve dış) kullanıcıların katılması için gruplar açıktır*. 
 
-      * [Microsoft 365 grubu oluşturmayı,](/microsoft-365/solutions/manage-creation-of-groups?view=o365-worldwide) belirli bir güvenlik grubunun üyeleriyle kısıtlayabilirsiniz. Bu ayarı yapılandırmak için Windows PowerShell 'i kullanın. 
+      * [Microsoft 365 grubu oluşturmayı,](/microsoft-365/solutions/manage-creation-of-groups) belirli bir güvenlik grubunun üyeleriyle kısıtlayabilirsiniz. Bu ayarı yapılandırmak için Windows PowerShell 'i kullanın. 
 
 * **Kişileri gruplara davet edebiliyor musunuz?** Tüm grup üyeleri başka Üyeler ekleyebiliyor mu, yoksa yalnızca sahipleri üye ekleyebiliyor musunuz?
 
@@ -86,7 +86,7 @@ Dinamik Gruplar hakkında daha fazla bilgi için, bkz [. Azure Active Directory 
 
 Güvenlik veya kaynak erişimi amacıyla grupları kullanırken, tek bir işleve sahip olmaları önemlidir. Kaynaklara erişim izni vermek için bir grup kullanılıyorsa, bu herhangi bir amaçla kullanılmamalıdır. Bir grup, konum veya takım üyeliğini tanımlamak gibi genel amaçlarla kullanılıyorsa, erişimin güvenliğini sağlamak için de kullanılmamalıdır. 
 
-Amacı açık hale getiren güvenlik grupları için bir adlandırma kuralı öneririz. Örneğin:
+Amacı açık hale getiren güvenlik grupları için bir adlandırma kuralı öneririz. Örnek:
 
 * *Secure_access_finance_apps*
 
@@ -150,13 +150,13 @@ Hibrit kuruluşların hem şirket içi altyapısı hem de bir Azure AD bulut alt
 
 ## <a name="microsoft-365-groups"></a>Microsoft 365 grupları
 
-[Microsoft 365 Gruplar](/microsoft-365/admin/create-groups/office-365-groups?view=o365-worldwide) , tüm erişimi M365 genelinde yönlendiren temel üyelik hizmetidir. [Azure Portal](https://portal.azure.com/)veya [M365 Portal](https://admin.microsoft.com/)' dan oluşturulabilirler. Bir M365 grubu oluşturulduğunda, işbirliği yapmak için kullanılan bir kaynak grubuna erişim izni verirsiniz. Bu kaynakların tüm listesi için bkz. [Yöneticiler için Microsoft 365 gruplarına genel bakış](/microsoft-365/admin/create-groups/office-365-groups?view=o365-worldwide) .
+[Microsoft 365 Gruplar](/microsoft-365/admin/create-groups/office-365-groups) , tüm erişimi M365 genelinde yönlendiren temel üyelik hizmetidir. [Azure Portal](https://portal.azure.com/)veya [M365 Portal](https://admin.microsoft.com/)' dan oluşturulabilirler. Bir M365 grubu oluşturulduğunda, işbirliği yapmak için kullanılan bir kaynak grubuna erişim izni verirsiniz. Bu kaynakların tüm listesi için bkz. [Yöneticiler için Microsoft 365 gruplarına genel bakış](/microsoft-365/admin/create-groups/office-365-groups) .
 
 M365 gruplar, rollerinin aşağıdaki nuslarını sahiptir
 
 * **Sahipler** grubu sahipleri üye ekleyebilir veya kaldırabilir ve paylaşılan gelen kutusundan konuşmaları silme veya grup ayarlarını değiştirme yeteneği gibi benzersiz izinlere sahip olabilir. Grup sahipleri grubu yeniden adlandırabilir, açıklama veya resmi güncelleştirebilir ve daha fazlasını yapabilir.
 
-* **Üyeler** -Üyeler gruptaki her şeye erişebilir, ancak Grup ayarlarını değiştiremezler. Varsayılan olarak, Grup üyeleri konukları grubunuza katılmaya davet edebilir, ancak [Bu ayarı denetleyebilirsiniz](/microsoft-365/admin/create-groups/manage-guest-access-in-groups?view=o365-worldwide).
+* **Üyeler** -Üyeler gruptaki her şeye erişebilir, ancak Grup ayarlarını değiştiremezler. Varsayılan olarak, Grup üyeleri konukları grubunuza katılmaya davet edebilir, ancak [Bu ayarı denetleyebilirsiniz](/microsoft-365/admin/create-groups/manage-guest-access-in-groups).
 
 * **Konuklar** grubu konukları, kuruluşunuzun dışından gelen üyedir. Varsayılan olarak konuklar ekipteki işlevlere bazı sınırlara sahiptir.
 

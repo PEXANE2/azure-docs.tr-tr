@@ -2,14 +2,14 @@
 title: Azure Service Bus kullanarak performansı iyileştirmeye yönelik en iyi uygulamalar
 description: Aracılı iletileri değiş tokuşu yaparken performansı iyileştirmek için Service Bus nasıl kullanılacağını açıklar.
 ms.topic: article
-ms.date: 01/15/2021
+ms.date: 03/09/2021
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 4c775555f82258c532d72917220129e3913ad314
-ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
+ms.openlocfilehash: 10435f74cfb7c87ccb28b64e1b3f136add1dc927
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "102456054"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102561883"
 ---
 # <a name="best-practices-for-performance-improvements-using-service-bus-messaging"></a>Service Bus Mesajlaşması kullanarak performans geliştirmek için en iyi yöntemler
 
@@ -44,17 +44,22 @@ En düşük .NET Standard platform desteği hakkında daha fazla bilgi için bkz
 # <a name="azuremessagingservicebus-sdk"></a>[Azure. Messaging. ServiceBus SDK](#tab/net-standard-sdk-2)
 [Servicebusclient](/dotnet/api/azure.messaging.servicebus.servicebusclient), [servicebussender](/dotnet/api/azure.messaging.servicebus.servicebussender), [Servicebusalıcısı](/dotnet/api/azure.messaging.servicebus.servicebusreceiver)ve [servicebusprocessor](/dotnet/api/azure.messaging.servicebus.servicebusprocessor)gibi hizmetle etkileşime geçen Service Bus nesneleri, tek tonlar olarak bağımlılık ekleme (veya bir kez örneklenmiş ve paylaşılan) için kaydedilmelidir. ServiceBusClient, [Servicebusclientbuilderextensions](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/servicebus/Azure.Messaging.ServiceBus/src/Compatibility/ServiceBusClientBuilderExtensions.cs)ile bağımlılık ekleme için kaydedilebilir. 
 
-Her iletiyi gönderdikten veya aldıktan sonra bu nesneleri kapatmayın veya atmemenizi öneririz. Varlığa özgü nesneleri kapatma veya elden atma (ServiceBusSender/alıcı/Işlemci), Service Bus hizmetine olan bağlantıyı aşağı doğru bir şekilde kapatıyor. ServiceBusClient, Service Bus hizmetine yapılan bağlantıyı aşağı doğru bir şekilde elden atılıyor. Bir bağlantı kurmak, aynı ServiceBusClient öğesini yeniden oluşturup aynı ServiceBusClient örneğinden gerekli varlığa özgü nesneleri oluşturarak kaçınmanıza engel olan pahalı bir işlemdir. Bu istemci nesnelerini, eşzamanlı zaman uyumsuz işlemler ve birden çok iş parçacığından güvenle kullanabilirsiniz.
+Her iletiyi gönderdikten veya aldıktan sonra bu nesneleri kapatmayın veya atmemenizi öneririz. Varlığa özgü nesneleri kapatma veya elden atma (ServiceBusSender/alıcı/Işlemci), Service Bus hizmetine olan bağlantıyı aşağı doğru bir şekilde kapatıyor. ServiceBusClient, Service Bus hizmetine yapılan bağlantıyı aşağı doğru bir şekilde elden atılıyor. 
 
 # <a name="microsoftazureservicebus-sdk"></a>[Microsoft. Azure. ServiceBus SDK](#tab/net-standard-sdk)
 
-Veya uygulamaları gibi istemci nesnelerinin Service Bus [`IQueueClient`][QueueClient] [`IMessageSender`][MessageSender] , tek tonlar olarak bağımlılık ekleme (veya bir kez örneklenmiş ve paylaşılan) için kaydedilmesi gerekir. İletiyi gönderdikten sonra ileti fabrikalarını, kuyruğu, konuyu veya abonelik istemcilerini kapatmemenizi ve sonraki iletiyi gönderdiğinizde yeniden oluşturmanız önerilir. Bir ileti fabrikası kapatıldığında Service Bus hizmetine olan bağlantı silinir. Fabrika yeniden oluşturulurken yeni bir bağlantı oluşturulur. Bir bağlantı kurmak, birden çok işlem için aynı fabrika ve istemci nesnelerini yeniden kullandığınızda kaçınmanın pahalı bir işlemdir. Bu istemci nesnelerini, eşzamanlı zaman uyumsuz işlemler ve birden çok iş parçacığından güvenle kullanabilirsiniz.
+Veya uygulamaları gibi istemci nesnelerinin Service Bus [`IQueueClient`][QueueClient] [`IMessageSender`][MessageSender] , tek tonlar olarak bağımlılık ekleme (veya bir kez örneklenmiş ve paylaşılan) için kaydedilmesi gerekir. İletiyi gönderdikten sonra ileti fabrikalarını, kuyruğu, konuyu veya abonelik istemcilerini kapatmemenizi ve sonraki iletiyi gönderdiğinizde yeniden oluşturmanız önerilir. Bir ileti fabrikası kapatıldığında Service Bus hizmetine olan bağlantı silinir. Fabrika yeniden oluşturulurken yeni bir bağlantı oluşturulur. 
 
 # <a name="windowsazureservicebus-sdk"></a>[WindowsAzure. ServiceBus SDK 'Sı](#tab/net-framework-sdk)
 
-Ya da gibi istemci nesneleri Service Bus `QueueClient` , `MessageSender` bağlantı iç yönetimi de sağlayan bir [messagingfactory][MessagingFactory] nesnesi aracılığıyla oluşturulur. İletiyi gönderdikten sonra ileti fabrikalarını, kuyruğu, konuyu veya abonelik istemcilerini kapatmemenizi ve sonraki iletiyi gönderdiğinizde yeniden oluşturmanız önerilir. Bir mesajlaşma fabrikasının kapatılması Service Bus hizmetine olan bağlantıyı siler ve fabrikası yeniden oluştururken yeni bir bağlantı oluşturulur. Bir bağlantı kurmak, birden çok işlem için aynı fabrika ve istemci nesnelerini yeniden kullandığınızda kaçınmanın pahalı bir işlemdir. Bu istemci nesnelerini, eşzamanlı zaman uyumsuz işlemler ve birden çok iş parçacığından güvenle kullanabilirsiniz.
+Ya da gibi istemci nesneleri Service Bus `QueueClient` , `MessageSender` bağlantı iç yönetimi de sağlayan bir [messagingfactory][MessagingFactory] nesnesi aracılığıyla oluşturulur. İletiyi gönderdikten sonra ileti fabrikalarını, kuyruğu, konuyu veya abonelik istemcilerini kapatmemenizi ve sonraki iletiyi gönderdiğinizde yeniden oluşturmanız önerilir. Bir mesajlaşma fabrikasının kapatılması Service Bus hizmetine olan bağlantıyı siler ve fabrikası yeniden oluştururken yeni bir bağlantı oluşturulur. 
 
 ---
+
+Aşağıdaki notta tüm SDK 'lar için geçerli olur:
+
+> [!NOTE]
+> Bir bağlantı kurmak, birden çok işlem için aynı fabrika ve istemci nesnelerini yeniden kullandığınızda kaçınmanın pahalı bir işlemdir. Bu istemci nesnelerini, eşzamanlı zaman uyumsuz işlemler ve birden çok iş parçacığından güvenle kullanabilirsiniz.
 
 ## <a name="concurrent-operations"></a>Eş zamanlı işlemler
 Gönderme, alma, silme, vb. gibi işlemler, biraz zaman alabilir. Bu süre, Service Bus hizmetinin işlemi ve isteğin gecikme süresini ve yanıtı işlemek için aldığı süreyi içerir. Zaman başına işlem sayısını artırmak için, işlemlerin eşzamanlı olarak yürütülmesi gerekir.

@@ -2,18 +2,19 @@
 title: 'Hızlı başlangıç: bir Windows VM oluşturmak için Kaynak Yöneticisi şablonu kullanma'
 description: Bu hızlı başlangıçta, bir Windows sanal makinesi oluşturmak için Kaynak Yöneticisi şablonu kullanmayı öğreneceksiniz
 author: cynthn
-ms.service: virtual-machines-windows
+ms.service: virtual-machines
+ms.collection: windows
 ms.topic: quickstart
 ms.workload: infrastructure
 ms.date: 06/04/2020
 ms.author: cynthn
 ms.custom: subject-armqs
-ms.openlocfilehash: ded59b2f517c5b109dfd00bde2fb73f8351bf821
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: b2856c51ccc31b57ea567c5d0940cd260797f770
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88649678"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102560761"
 ---
 # <a name="quickstart-create-a-windows-virtual-machine-using-an-arm-template"></a>Hızlı başlangıç: ARM şablonu kullanarak Windows sanal makinesi oluşturma
 
@@ -59,7 +60,7 @@ Bu hızlı başlangıçta kullanılan şablon [Azure Hızlı Başlangıç Şablo
     - **Abonelik**: Bir Azure aboneliği seçin.
     - **Kaynak grubu**: açılan listeden var olan bir kaynak grubunu seçin veya **Yeni oluştur**' u seçin, kaynak grubu için benzersiz bir ad girin ve ardından **Tamam**' a tıklayın.
     - **Konum**: Bir konum seçin.  Örneğin **Orta ABD**.
-    - **Yönetici Kullanıcı adı**: *azureuser*gibi bir Kullanıcı adı sağlayın.
+    - **Yönetici Kullanıcı adı**: *azureuser* gibi bir Kullanıcı adı sağlayın.
     - **Yönetici parolası**: yönetici hesabı için kullanılacak bir parola belirtin. Parola en az 12 karakter uzunluğunda olmalı ve [tanımlanmış karmaşıklık gereksinimlerini](faq.md#what-are-the-password-requirements-when-creating-a-vm)karşılamalıdır.
     - **DNS etiketi öneki**: DNS etiketinin bir parçası olarak kullanmak üzere benzersiz bir tanımlayıcı girin.
     - **Windows işletim sistemi sürümü**: VM 'de hangi Windows sürümünü çalıştırmak istediğinizi seçin.
@@ -79,7 +80,7 @@ Sanal makineyi ve oluşturulan diğer kaynağı denetlemek için Azure portal ku
 
 Artık gerekli olmadığında, kaynak grubundaki VM 'yi ve tüm kaynakları silen kaynak grubunu silin. 
 
-1. **Kaynak grubunu**seçin.
+1. **Kaynak grubunu** seçin.
 1. Kaynak grubunun sayfasında **Sil**' i seçin.
 1. İstendiğinde, kaynak grubunun adını yazın ve **Sil**' i seçin.
 

@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 8dc18af933a4570112beb025c1fb9163abafffff
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e598f16c6b441cf986c7ac82d67c037f75be8982
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88935951"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102547450"
 ---
 #    <a name="named-entity-recognition-cognitive-skill"></a>Adlandırılmış varlık tanıma bilişsel yeteneği
 
@@ -46,14 +46,14 @@ Parametreler büyük/küçük harfe duyarlıdır.
 
 ## <a name="skill-inputs"></a>Beceri girişleri
 
-| Giriş adı      | Açıklama                   |
+| Giriş adı      | Description                   |
 |---------------|-------------------------------|
 | languageCode  | İsteğe bağlı. `"en"` varsayılan değerdir.  |
 | metin          | Çözümlenecek metin.          |
 
 ## <a name="skill-outputs"></a>Yetenek çıkışları
 
-| Çıkış adı     | Açıklama                   |
+| Çıkış adı     | Description                   |
 |---------------|-------------------------------|
 | elemanları      | Her bir dizenin bir kişinin adını temsil ettiği dizeler dizisi. |
 | yerlerini  | Her bir dizenin bir konumu temsil ettiği dizeler dizisi. |
@@ -150,8 +150,8 @@ Parametreler büyük/küçük harfe duyarlıdır.
 ```
 
 
-## <a name="error-cases"></a>Hata durumları
-Belge için dil kodu desteklenmiyorsa bir hata döndürülür ve hiçbir varlık ayıklanmaz.
+## <a name="warning-cases"></a>Uyarı durumları
+Belge dil kodu desteklenmiyorsa bir uyarı döndürülür ve hiçbir varlık ayıklanmaz.
 
 ## <a name="see-also"></a>Ayrıca bkz.
 

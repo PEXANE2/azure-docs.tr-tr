@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/17/2020
-ms.openlocfilehash: 895e22d94122539ee68bcac8ee4debce2d824ff0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6519cd952bd1265b4daad3b77b29aabd47ea4cc5
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88935288"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102547484"
 ---
 # <a name="sentiment-cognitive-skill"></a>Yaklaşım Bilişsel Beceri
 
@@ -36,20 +36,20 @@ Bir kaydın en büyük boyutu, tarafından ölçülen 5000 karakter olmalıdır 
 
 Parametreler büyük/küçük harfe duyarlıdır.
 
-| Parametre Adı | Açıklama |
+| Parametre Adı | Description |
 |----------------|----------------------|
 | `defaultLanguageCode` | seçim Açıkça dil belirtmeyen belgelere uygulanacak dil kodu. <br/> [Desteklenen dillerin tam listesini](../cognitive-services/text-analytics/language-support.md) görün |
 
 ## <a name="skill-inputs"></a>Beceri girişleri 
 
-| Giriş adı | Açıklama |
+| Giriş adı | Description |
 |--------------------|-------------|
 | `text` | Çözümlenecek metin.|
 | `languageCode`    |  Seçim Kayıtların dilini gösteren bir dize. Bu parametre belirtilmemişse, varsayılan değer "en" olur. <br/>[Desteklenen dillerin tam listesini](../cognitive-services/text-analytics/language-support.md)görüntüleyin.|
 
 ## <a name="skill-outputs"></a>Yetenek çıkışları
 
-| Çıkış adı | Açıklama |
+| Çıkış adı | Description |
 |--------------------|-------------|
 | `score` | Çözümlenen metnin yaklaşımını temsil eden 0 ile 1 arasında bir değer. 0 ' a yakın değerlerde negatif yaklaşım vardır, 0,5 ' a yakın nötr yaklaşım vardır ve 1 ' e yakın değerler pozitif yaklaşım vardır.|
 
@@ -110,11 +110,9 @@ Parametreler büyük/küçük harfe duyarlıdır.
 }
 ```
 
-## <a name="notes"></a>Notlar
-Boşsa, bu kayıtlar için bir yaklaşım puanı döndürülmez.
-
-## <a name="error-cases"></a>Hata durumları
-Bir dil desteklenmiyorsa bir hata oluşturulur ve bir yaklaşım puanı döndürülmez.
+## <a name="warning-cases"></a>Uyarı durumları
+Metniniz boşsa bir uyarı oluşturulur ve bir yaklaşım puanı döndürülmez.
+Bir dil desteklenmiyorsa bir uyarı oluşturulur ve bir yaklaşım puanı döndürülmez.
 
 ## <a name="see-also"></a>Ayrıca bkz.
 

@@ -11,12 +11,12 @@ ms.workload: na
 ms.topic: article
 ms.date: 10/21/2020
 ms.author: inhenkel
-ms.openlocfilehash: f14328567fdc9840b0a3d07aa23fe2496fd537ca
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.openlocfilehash: 98310f65767efc6081451d9931c4ea9772df5f3b
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102213105"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102609405"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>Azure Media Services v3 sürüm notları
 
@@ -37,6 +37,77 @@ En son gelişmelerden haberdar olmak için, bu makalede hakkında bilgi verilmek
 > V3 [canlı olaylarını](live-events-outputs-concept.md)yönetmek, v3 [varlıklarını](assets-concept.md) ve Işleri görüntülemek, API 'lere erişme hakkında bilgi almak, içeriği şifrelemek için [Azure Portal](https://portal.azure.com/) kullanabilirsiniz. Diğer tüm yönetim görevleri için (örneğin, dönüşümleri ve işleri yönetme) [REST API](/rest/api/media/accountfilters), [CLI](/cli/azure/ams)veya desteklenen [SDK 'lardan](media-services-apis-overview.md#sdks)birini kullanın.
 >
 > Ayrıntılar için bkz.: [Media Services v3 için Azure Portal sınırlamaları](frequently-asked-questions.md#what-are-the-azure-portal-limitations-for-media-services-v3).
+
+
+## <a name="february-2021"></a>Şubat 2021
+
+### <a name="hevc-encoding-support-in-standard-encoder"></a>Standart kodlayıcıda HEVC kodlama desteği
+
+Standart kodlayıcı artık 8 bit HEVC (H. 265) kodlama desteğini desteklemektedir. HEVC içeriği, dinamik Paketleyiciyi ' hev1 ' biçimi kullanılarak teslim edilebilir ve paketlenebilir.  
+
+[Media-Services-v3-DotNet git hub deposunda](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/main/VideoEncoding/EncodingWithMESCustomPreset_HEVC), HEVC örneği ile yeni bir .NET özel kodlaması bulunmaktadır.
+Özel kodlamaya ek olarak, aşağıdaki yeni yerleşik HEVC kodlama önayarları artık kullanılabilir:
+
+- H265ContentAwareEncoding
+- H265AdaptiveStreaming
+- H265SingleBitrate720P
+- H265SingleBitrate1080p
+- H265SingleBitrate4K
+
+
+V2 API 'sindeki Premium Encoder 'da daha önce HEVC kullanan müşterilerin standart Kodlayıcıdaki yeni HEVC kodlama desteğini kullanmak için geçirilmesi gerekir.
+
+### <a name="azure-media-services-v2-api-and-sdks-deprecation-announcement"></a>Azure Media Services V2 API ve SDK 'Ları kullanımdan kaldırma duyurusu
+
+#### <a name="update-your-azure-media-services-rest-api-and-sdks-to-v3-by-29-february-2024"></a>Azure Media Services REST API'si ve SDK 'larınızı, 29 Şubat 2024 ile v3 'e güncelleştirin
+
+.NET ve Java için Azure Media Services REST API'si sürüm 3 ve istemci SDK 'Ları sürüm 2 ' den daha fazla özellik sağladığından, .NET ve Java için Azure Media Services REST API'si ve istemci SDK 'larının 2. sürümünü devre dışı sunuyoruz. .NET ve Java için Azure Media Services REST API'si sürüm 3 ' ün ve istemci SDK 'larının daha zengin avantajlarından faydalanmak için anahtarı daha önce daha erken avantajlarına geçirmenizi öneririz. Sürüm 3 şunları sağlar: 
+ 
+- 7/24 canlı olay desteği
+- ARM REST API 'Leri, .NET Core için istemci SDK 'Ları, Node.js, Python, Java, Go ve Ruby.
+- Müşteri tarafından yönetilen anahtarlar, güvenilen depolama tümleştirmesi, özel bağlantı desteği ve [daha fazlası](https://review.docs.microsoft.com/en-us/azure/media-services/latest/migrate-v-2-v-3-migration-benefits)
+
+#### <a name="action-required"></a>Eylem gerekiyor:
+
+İş yüklerinizde kesinti olasılığını en aza indirmek için, sürüm 2 API 'SI ve SDK 'Ları sürüm 3 API 'sine ve SDK 'sına 2024 Şubat ' den önce olan [geçiş kılavuzunu](https://go.microsoft.com/fwlink/?linkid=2149150&clcid=0x409) gözden geçirin.
+**29 şubat 2024**' den sonra, Azure Media Services sürüm 2 REST API, ARM hesap yönetimi apı sürümü 2015-10-01 veya sürüm 2 .NET istemci SDK 'larından trafiği kabul etmez. Buna sürüm 2 API 'sini çağırabilen 3. taraf açık kaynaklı istemci SDK 'LARı dahildir.  
+
+Bkz. resmi [Azure güncelleştirmeleri duyurusu](https://azure.microsoft.com/updates/update-your-azure-media-services-rest-api-and-sdks-to-v3-by-29-february-2024/).
+
+### <a name="standard-encoder-support-for-v2-api-features"></a>V2 API özellikleri için standart kodlayıcı desteği
+
+Yeni bir HEVC (H. 265) için destek desteği 'ne ek olarak, aşağıdaki özellikler kodlama API 'sinin 2020-05-01 sürümünde de mevcuttur. 
+
+- Yeni **Jobınputclip** desteği kullanılarak birden çok giriş dosyası kullanımı desteklenmektedir. 
+    - .NET için [iki varlığı birlikte nasıl birleştirileneceğini](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/main/VideoEncoding/EncodingWithMESCustomStitchTwoAssets)gösteren bir örnek vardır.
+- Ses izleme seçimi, müşterilerin gelen ses izlerini seçmesini ve eşlemesini ve kodlama için bunları çıkışa yönlendirmesini sağlar
+    - **Audiotrackdescriptor** hakkındaki ayrıntılar ve seçimi izlemek için bkz. [REST API openapı](https://github.com/Azure/azure-rest-api-specs/blob/8d15dc681b081cca983e4d67fbf6441841d94ce4/specification/mediaservices/resource-manager/Microsoft.Media/stable/2020-05-01/Encoding.json#L385)
+- Kodlama seçimini izle – müşterilerin bir ABR kaynak dosyasından veya birden çok bit hızı izinin bulunduğu canlı arşivden izler seçmesine olanak sağlar. Canlı olay arşivi dosyalarından MP4 'leri oluşturmaya yönelik son derece yararlı.
+    - Bkz. [Videotrackdescriptor](https://github.com/Azure/azure-rest-api-specs/blob/8d15dc681b081cca983e4d67fbf6441841d94ce4/specification/mediaservices/resource-manager/Microsoft.Media/stable/2020-05-01/Encoding.json#L1562)
+- Redaksiyon (Bulanıklaştırma) FaceDetector 'a eklenen yetenekler
+    - FaceDetector önayarının [redaksiyonunu](https://github.com/Azure/azure-rest-api-specs/blob/8d15dc681b081cca983e4d67fbf6441841d94ce4/specification/mediaservices/resource-manager/Microsoft.Media/stable/2020-05-01/Encoding.json#L634) ve [Birleşik](https://github.com/Azure/azure-rest-api-specs/blob/8d15dc681b081cca983e4d67fbf6441841d94ce4/specification/mediaservices/resource-manager/Microsoft.Media/stable/2020-05-01/Encoding.json#L649) modlarını görün
+
+### <a name="new-client-sdk-releases-for-2020-05-01-version-of-the-azure-media-services-api"></a>Azure Media Services API 'sinin 2020-05-01 sürümü için yeni istemci SDK sürümleri
+
+Tüm kullanılabilir diller için yeni istemci SDK sürümleri, yukarıdaki özelliklerle birlikte kullanılabilir.
+Lütfen Paket Yöneticisi 'ni kullanarak kod tabanlarınızın en son istemci SDK 'larına güncelleştirin.
+
+- [.NET SDK paketi 3.0.4](https://www.nuget.org/packages/Microsoft.Azure.Management.Media/)
+- [Node.js TypeScript sürüm 8.1.0](https://www.npmjs.com/package/@azure/arm-mediaservices)
+- [Python Azure-MGMT-Media 3.1.0](https://pypi.org/project/azure-mgmt-media/)
+- [Java SDK 1.0.0-Beta. 2](https://search.maven.org/artifact/com.azure.resourcemanager/azure-resourcemanager-mediaservices/1.0.0-beta.2/jar)
+
+### <a name="updated-typescript-nodejs-samples-using-isomorphic-sdk-for-javascript"></a>JavaScript için isomorphic SDK kullanılarak TypeScript Node.js örnekleri güncelleştirildi
+
+Node.js örnekleri en son isomorphic SDK 'sını kullanacak şekilde güncelleştirilmiştir. Örnekler artık TypeScript kullanımını gösterir. Ayrıca, Node.js/Typescriptiçin yeni bir canlı akış örneği eklenmiştir.
+
+**[Media-Services-v3-node-öğreticiler](https://github.com/Azure-Samples/media-services-v3-node-tutorials)** git hub deposunda bulunan en son örneklere bakın.
+
+### <a name="new-live-stand-by-mode-to-support-faster-startup-from-warm-state"></a>Sıcak durumdan daha hızlı başlangıç desteği için yeni canlı tek yönlü mod
+
+Canlı olaylar artık "Stand" için daha düşük maliyetli faturalandırma modunu desteklemektedir. Bu, müşterilerin "etkin havuzlar" oluşturmak için daha düşük bir maliyetle canlı olayları önceden ayırmasını sağlar. Müşteriler daha sonra, oluşturma sırasında soğuk 'ten başlayarak çalışır duruma geçiş yapmak için tek başına canlı olayları kullanabilir.  Bu, kanalın önemli ölçüde başlatılması için geçen süreyi azaltır ve daha düşük bir fiyat modunda çalışan makinelerin hızlı etkin havuz ayırması için izin verir.
+En son [fiyatlandırma ayrıntılarına bakın](https://azure.microsoft.com/pricing/details/media-services).
+Bekleme durumu hakkında daha fazla bilgi ve canlı olaylardaki diğer durumlar hakkında daha fazla bilgi için bkz [. canlı olay durumları ve faturalama makalesi.](https://docs.microsoft.com/azure/media-services/latest/live-event-states-billing)
 
 ## <a name="december-2020"></a>Aralık 2020
 

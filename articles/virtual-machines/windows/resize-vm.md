@@ -2,18 +2,18 @@
 title: Azure 'da Windows VM 'yi yeniden boyutlandırma
 description: Bir Azure sanal makinesi için kullanılan VM boyutunu değiştirin.
 author: cynthn
-ms.service: virtual-machines-windows
-ms.subservice: sizes
+ms.service: virtual-machines
+ms.collection: windows
 ms.workload: infrastructure
 ms.topic: how-to
 ms.date: 01/13/2020
 ms.author: cynthn
-ms.openlocfilehash: 4860422fefb5a95fe41912b4898f02867f7b3aeb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f7f41c0fb2bf949dd47491761fde8025a2d35155
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87832255"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102560659"
 ---
 # <a name="resize-a-windows-vm"></a>Bir Windows VM'yi yeniden boyutlandırma
 
@@ -21,7 +21,7 @@ Bu makalede, bir sanal makineyi farklı bir [VM boyutuna](../sizes.md)nasıl ta�
 
 Bir sanal makine (VM) oluşturduktan sonra VM boyutunu değiştirerek VM 'yi yukarı veya aşağı ölçeklendirebilirsiniz. Bazı durumlarda, önce VM 'yi serbest bırakın. Yeni boyut, şu anda VM 'yi barındıran donanım kümesinde yoksa bu durum oluşabilir.
 
-VM 'niz Premium Depolama kullanıyorsa, Premium Depolama desteğini almak için boyutun bir **s** sürümünü seçtiğinizden emin olun. Örneğin, Standard_E4_v3 yerine Standard_E4**s**_v3 seçin.
+VM 'niz Premium Depolama kullanıyorsa, Premium Depolama desteğini almak için boyutun bir **s** sürümünü seçtiğinizden emin olun. Örneğin, Standard_E4_v3 yerine Standard_E4 **s** _v3 seçin.
 
 ## <a name="use-the-portal"></a>Portalı kullanma
 

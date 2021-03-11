@@ -6,20 +6,17 @@ ms.author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: how-to
-ms.date: 02/25/2021
-ms.openlocfilehash: b3ddbdf04dc736b6f78a04dc6bb2bc484e67f70f
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.date: 03/11/2021
+ms.openlocfilehash: 0a24546579df020dcb7c7a9b01ee3d181226d2df
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102107951"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102617497"
 ---
 # <a name="grant-and-request-tenant-wide-visibility"></a>Kiracı genelinde görünürlük verme ve isteme
 
 **Genel yöneticinin** Azure ACTIVE DIRECTORY (ad) rolüne sahip bir kullanıcının kiracı genelinde sorumlulukları olabilir, ancak Azure Güvenlik Merkezi 'nde kuruluş genelinde bu bilgileri görüntülemek için Azure izinlerinin olmaması gerekir. Azure AD rol atamaları Azure kaynaklarına erişim vermediği için izin yükseltme gereklidir. 
-
-> [!TIP]
-> [Tüm Azure aboneliklerini ve Yönetim gruplarını yönetmek için erişimi Yükselt](../role-based-access-control/elevate-access-global-admin.md)' de genel yönetici rolü için izin yükseltme hakkında daha fazla bilgi edinin.
 
 ## <a name="grant-tenant-wide-permissions-to-yourself"></a>Kendi kendinize kiracı genelinde izinler verin
 
@@ -45,6 +42,14 @@ Kendi kiracı düzeyi izinlerini atamak için:
 1. Azure portal oturumunuzu kapatıp yeniden oturum açın.
 
 1. Erişimi yükselttikten sonra Azure AD kiracınız kapsamındaki tüm aboneliklerde görünürlük olduğunu doğrulamak için Azure Güvenlik Merkezi 'ni açın veya yenileyin. 
+
+Yukarıdaki basit süreç sizin için otomatik olarak birkaç işlem gerçekleştirir:
+
+1. Kullanıcının izinleri geçici olarak yükseltilmiş.
+1. Yeni izinleri kullanarak, Kullanıcı kök yönetim grubundaki istenen Azure RBAC rolüne atanır.
+1. Yükseltilmiş izinler kaldırılır.
+
+Azure AD yükseltme işlemi hakkında daha fazla bilgi için bkz. [tüm Azure aboneliklerini ve Yönetim gruplarını yönetmek için erişimi yükseltme](../role-based-access-control/elevate-access-global-admin.md).
 
 
 ## <a name="request-tenant-wide-permissions-when-yours-are-insufficient"></a>Sizinki yetersizse kiracı genelinde izinler isteyin

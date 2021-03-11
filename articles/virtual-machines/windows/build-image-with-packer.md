@@ -4,16 +4,17 @@ description: Azure 'da sanal makinelerin görüntülerini oluşturmak için Pack
 author: cynthn
 ms.service: virtual-machines
 ms.subservice: imaging
+ms.collection: windows
 ms.topic: how-to
 ms.workload: infrastructure
 ms.date: 08/05/2020
 ms.author: cynthn
-ms.openlocfilehash: 16d0a4ea2353778b16803bd9b92a7f8af6e4ba88
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a2cd6152f9c8e75223fcf1aab77fee7700223979
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91325921"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102561016"
 ---
 # <a name="powershell-how-to-use-packer-to-create-virtual-machine-images-in-azure"></a>PowerShell: Azure 'da sanal makine görüntüleri oluşturmak için Packer kullanma
 Azure 'daki her sanal makine (VM), Windows Dağıtım ve işletim sistemi sürümünü tanımlayan bir görüntüden oluşturulur. Görüntüler, önceden yüklenmiş uygulamaları ve konfigürasyonları içerebilir. Azure Marketi, en yaygın işletim sistemi ve uygulama ortamları için pek çok birinci ve üçüncü taraf görüntü sağlar veya gereksinimlerinize uygun kendi özel görüntülerinizi de oluşturabilirsiniz. Bu makalede, Azure 'da özel görüntüler tanımlamak ve derlemek için açık kaynaklı araç [Packer](https://www.packer.io/) 'ın nasıl kullanılacağı açıklanır.
@@ -211,7 +212,7 @@ Packer 'ın VM 'yi oluşturması, hazırlayıcılar çalıştırması ve dağıt
 
 
 ## <a name="create-a-vm-from-the-packer-image"></a>Packer görüntüsünden VM oluşturma
-Artık, [Yeni-AzVM](/powershell/module/az.compute/new-azvm)ile görüntinizden bir VM oluşturabilirsiniz. Destekleyici ağ kaynakları, zaten mevcut değilse oluşturulur. İstendiğinde, VM 'de oluşturulacak bir Yönetici Kullanıcı adı ve parola girin. Aşağıdaki örnek *Mypackerımage*öğesinden *myvm* adlı bir VM oluşturur:
+Artık, [Yeni-AzVM](/powershell/module/az.compute/new-azvm)ile görüntinizden bir VM oluşturabilirsiniz. Destekleyici ağ kaynakları, zaten mevcut değilse oluşturulur. İstendiğinde, VM 'de oluşturulacak bir Yönetici Kullanıcı adı ve parola girin. Aşağıdaki örnek *Mypackerımage* öğesinden *myvm* adlı bir VM oluşturur:
 
 ```powershell
 New-AzVm `

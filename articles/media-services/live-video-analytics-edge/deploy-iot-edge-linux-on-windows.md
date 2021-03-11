@@ -3,16 +3,16 @@ title: Windows-Azure 'da Linux için bir IoT Edge dağıtma
 description: Bu makale, Windows cihazında Linux için bir IoT Edge dağıtma hakkında rehberlik sağlar.
 ms.topic: how-to
 ms.date: 02/18/2021
-ms.openlocfilehash: b635070d6a4834da2c6d82cc768684b6cde9cd71
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 9ec28c62ca804137ede3cd60d1980e55fbaa2807
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102042190"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102618143"
 ---
 # <a name="deploy-to-an-iot-edge-for-linux-on-windows-eflow-device"></a>Windows (EFLOW) cihazında Linux için IoT Edge dağıtma
 
-Bu makalede, [Windows 'da (EFLOW) Linux için IoT Edge](https://docs.microsoft.com/azure/iot-edge/iot-edge-for-linux-on-windows?view=iotedge-2018-06)olan bir uç cihazda canlı video analizinin nasıl dağıtılacağını öğreneceksiniz. Bu belgedeki adımları tamamladıktan sonra, bir videoda hareketi algılayan ve bu gibi olayları buluttaki IoT Hub 'ına yayan bir [medya grafiği](media-graph-concept.md) çalıştırabileceksiniz. Daha sonra Gelişmiş senaryolar için medya grafiğini değiştirebilir ve canlı video analizinin gücünü Windows tabanlı IoT Edge cihazınıza getirebilirsiniz.
+Bu makalede, [Windows 'da (EFLOW) Linux için IoT Edge](https://docs.microsoft.com/azure/iot-edge/iot-edge-for-linux-on-windows)olan bir uç cihazda canlı video analizinin nasıl dağıtılacağını öğreneceksiniz. Bu belgedeki adımları tamamladıktan sonra, bir videoda hareketi algılayan ve bu gibi olayları buluttaki IoT Hub 'ına yayan bir [medya grafiği](media-graph-concept.md) çalıştırabileceksiniz. Daha sonra Gelişmiş senaryolar için medya grafiğini değiştirebilir ve canlı video analizinin gücünü Windows tabanlı IoT Edge cihazınıza getirebilirsiniz.
 
 ## <a name="prerequisites"></a>Önkoşullar 
 

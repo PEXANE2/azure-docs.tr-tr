@@ -9,49 +9,31 @@ services: iot-edge
 ms.topic: conceptual
 ms.date: 12/18/2020
 ms.author: kgremban
-ms.openlocfilehash: 7857f93e8c767f270041bb6bf041447786ce19ff
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.openlocfilehash: c24389a1957f9e0cfb23e3bb5b8604c34e57a915
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98634245"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102609524"
 ---
-# <a name="install-and-manage-azure-iot-edge-for-windows"></a>Windows için Azure IoT Edge yükleyip yönetme
+# <a name="install-and-manage-azure-iot-edge-with-windows-containers"></a>Windows kapsayıcıları ile Azure IoT Edge yükleyip yönetme
 
-Windows için Azure IoT Edge doğrudan ana bilgisayar Windows cihazınızda çalışır ve kenarda iş mantığını çalıştırmak için Windows kapsayıcıları kullanır.
-
-Azure IoT Edge çalışma zamanı, bir cihazı IoT Edge cihazına dönüştürür. Çalışma zamanı, cihazlarda Raspberry Pi kadar küçük veya endüstriyel sunucu olarak büyük olarak dağıtılabilir. Bir cihaz IoT Edge çalışma zamanıyla yapılandırıldığında, buluttan cihaza iş mantığını dağıtmaya başlayabilirsiniz. Daha fazla bilgi edinmek için bkz. [Azure IoT Edge çalışma zamanını ve mimarisini anlayın](iot-edge-runtime.md).
-
->[!NOTE]
->Windows için Azure IoT Edge, Azure IoT Edge sürüm 1.2.0 ile başlayarak desteklenmez.
->
->Windows cihazlarda IoT Edge çalıştırmak için yeni yöntemi kullanmayı düşünün, Windows 'da Linux için Azure IoT Edge.
-
-<!-- TODO: link to EFLOW-->
+Azure IoT Edge çalışma zamanı, bir cihazı IoT Edge cihazına dönüştürür. Bir cihaz IoT Edge çalışma zamanıyla yapılandırıldığında, buluttan cihaza iş mantığını dağıtmaya başlayabilirsiniz. Daha fazla bilgi edinmek için bkz. [Azure IoT Edge çalışma zamanını ve mimarisini anlayın](iot-edge-runtime.md).
 
 IoT Edge bir cihaz kurmak için iki adım vardır. İlk adım çalışma zamanını ve bağımlılıklarını yüklemektir. İkinci adım, cihazı buluttaki kimliğine bağlamak ve IoT Hub kimlik doğrulamasını kurmak olur.
 
-Bu makalede, Windows cihazlarına Azure IoT Edge çalışma zamanını yüklemek için gereken adımlar listelenmektedir. Çalışma zamanını yüklediğinizde, Linux kapsayıcıları veya Windows kapsayıcıları kullanma seçeneğiniz vardır. Şu anda, üretim senaryolarında yalnızca Windows 'daki Windows kapsayıcıları desteklenir. Windows üzerinde Linux kapsayıcıları, özellikle de Linux cihazlarına dağıtmak üzere bir Windows BILGISAYARı geliştiriyorsanız geliştirme ve test senaryoları için yararlıdır.
+Bu makalede, Windows kapsayıcılarıyla Azure IoT Edge çalışma zamanını yüklemek için gereken adımlar listelenmektedir. Linux kapsayıcılarını bir Windows cihazında kullanmak istiyorsanız, lütfen [Windows 'Da Linux için Azure IoT Edge](how-to-install-iot-edge-on-windows.md) bakın.
+
+>[!NOTE]
+>Windows kapsayıcıları ile Azure IoT Edge, Azure IoT Edge sürüm 1,2 ' den itibaren desteklenmez.
+>
+>Windows cihazlarda IoT Edge çalıştırmak için yeni yöntemi kullanmayı düşünün, [Windows 'Da Linux için Azure IoT Edge](iot-edge-for-linux-on-windows.md).
 
 ## <a name="prerequisites"></a>Önkoşullar
 
 * Bir Windows cihazı
 
-  Windows kapsayıcıları ile IoT Edge, en son [Windows uzun süreli destek derlemesi](/windows/release-information/)olan Windows sürümü 1809/Build 17762 gerektirir. Geliştirme ve test senaryolarında, kapsayıcıları özelliğini destekleyen herhangi bir SKU (Pro, kurumsal, sunucu vb.) çalışır. Ancak, üretime geçmeden önce [desteklenen sistemler listesini](support.md#operating-systems) gözden geçirdiğinizden emin olun.
-
-  Linux kapsayıcılarıyla IoT Edge, [Docker Desktop gereksinimlerini](https://docs.docker.com/docker-for-windows/install/#what-to-know-before-you-install)karşılayan herhangi bir Windows sürümünde çalıştırılabilir.
-
-* Cihazda kapsayıcı desteği
-
-  Azure IoT Edge, [OCI uyumlu](https://www.opencontainers.org/) bir kapsayıcı altyapısına bağlıdır. Cihazınızın kapsayıcıları destekleyeceği şekilde emin olun.
-
-  Bir sanal makineye IoT Edge yüklüyorsanız, iç içe sanallaştırmayı etkinleştirin ve en az 2 GB bellek ayırın. Hyper-V için 2. nesil sanal makinelerde varsayılan olarak etkinleştirilmiş iç içe sanallaştırma vardır. VMware için, sanal makinenizde özelliği etkinleştirmek üzere bir geçiş düğmesi vardır.
-
-  IoT çekirdek cihazına IoT Edge yüklüyorsanız, cihazınızda Windows kapsayıcılarının desteklenip desteklenmediğini denetlemek için [uzak bir PowerShell oturumunda](/windows/iot-core/connect-your-device/powershell) aşağıdaki komutu kullanın:
-
-  ```powershell
-  Get-Service vmcompute
-  ```
+  Windows kapsayıcıları ile IoT Edge, en son [Windows uzun süreli destek derlemesi](/windows/release-information/)olan Windows sürümü 1809/Build 17763 gerektirir. Desteklenen SKU 'ların listesi için [desteklenen sistemler listesini](support.md#operating-systems) gözden geçirdiğinizden emin olun.
 
 * [Kayıtlı bir cıhaz kimliği](how-to-register-device.md)
 
@@ -61,16 +43,9 @@ Bu makalede, Windows cihazlarına Azure IoT Edge çalışma zamanını yüklemek
 
 ## <a name="install-a-container-engine"></a>Kapsayıcı Altyapısı yükler
 
-Azure IoT Edge, OCı uyumlu bir kapsayıcı çalışma zamanına bağlıdır. Üretim senaryolarında, Moby tabanlı altyapıyı kullanmanızı öneririz. Moby motoru, Azure IoT Edge ile resmi olarak desteklenen tek kapsayıcı altyapısıdır. Docker CE/EE kapsayıcı görüntüleri Moby çalışma zamanına göre uyumludur.
-
-Üretim senaryolarında, yükleme betiğine dahil olan Moby tabanlı altyapıyı kullanın. Altyapıyı yüklemek için başka bir adım yoktur.
-
-Linux kapsayıcılarıyla IoT Edge için kendi kapsayıcı çalışma zamanını sağlamanız gerekir. Cihazınıza [Docker Desktop](https://docs.docker.com/docker-for-windows/install/) 'ı yükleyip devam etmeden önce [Linux kapsayıcılarını kullanacak](https://docs.docker.com/docker-for-windows/#switch-between-windows-and-linux-containers) şekilde yapılandırın.
+Azure IoT Edge, [Moby](https://github.com/moby/moby)gibi OCI uyumlu bir kapsayıcı çalışma zamanına bağımlıdır. Yükleme betiğine eklenen bir Moby tabanlı altyapı. Altyapıyı yüklemek için başka bir adım yoktur.
 
 ## <a name="install-the-iot-edge-security-daemon"></a>IoT Edge güvenlik cini 'nı yükler
-
->[!TIP]
->IoT çekirdek cihazları için, uzak bir PowerShell oturumu kullanarak yükleme komutlarının çalıştırılmasını öneririz. Daha fazla bilgi için bkz. [Windows IoT Için PowerShell kullanma](/windows/iot-core/connect-your-device/powershell).
 
 1. PowerShell'i yönetici olarak çalıştırın.
 
@@ -91,21 +66,14 @@ Linux kapsayıcılarıyla IoT Edge için kendi kapsayıcı çalışma zamanını
    Deploy-IoTEdge
    ```
 
-   `Deploy-IoTEdge`Komut varsayılan olarak Windows kapsayıcıları ' nı kullanmaktır. Linux kapsayıcıları kullanmak istiyorsanız, şu `ContainerOs` parametreyi ekleyin:
-
-   ```powershell
-   . {Invoke-WebRequest -useb https://aka.ms/iotedge-win} | Invoke-Expression; `
-   Deploy-IoTEdge -ContainerOs Linux
-   ```
-
-3. Bu noktada, IoT çekirdek cihazları otomatik olarak yeniden başlatılabilir. Windows 10 veya Windows Server cihazları yeniden başlatmanızı isteyebilir. Bu durumda cihazınızı şimdi yeniden başlatın.
+3. İstenirse cihazınızı yeniden başlatın.
 
 Bir cihaza IoT Edge yüklediğinizde, aşağıdakileri de içeren ek parametreleri kullanarak işlemi değiştirebilirsiniz:
 
 * Bir proxy sunucusundan gelen trafiği doğrudan gönder
 * Yükleyiciyi çevrimdışı yükleme için yerel bir dizine işaret edin.
 
-Bu ek parametreler hakkında daha fazla bilgi için bkz. [Windows üzerinde IoT Edge Için PowerShell betikleri](reference-windows-scripts.md).
+Bu ek parametreler hakkında daha fazla bilgi için bkz. [Windows kapsayıcılarıyla IoT Edge Için PowerShell betikleri](reference-windows-scripts.md).
 
 ## <a name="provision-the-device-with-its-cloud-identity"></a>Cihazı bulut kimliğiyle sağlama
 
@@ -131,13 +99,6 @@ Bu bölümde, simetrik anahtar kimlik doğrulaması ile cihaz sağlama adımlar�
    Initialize-IoTEdge -ManualConnectionString -ContainerOs Windows
    ```
 
-   * Linux kapsayıcıları kullanıyorsanız, `-ContainerOs` bayrağına parametresini ekleyin. Daha önce çalıştırdığınız komutla seçtiğiniz kapsayıcı seçeneği ile tutarlı olun `Deploy-IoTEdge` .
-
-      ```powershell
-      . {Invoke-WebRequest -useb https://aka.ms/iotedge-win} | Invoke-Expression; `
-      Initialize-IoTEdge -ContainerOs Linux
-      ```
-
    * IoTEdgeSecurityDaemon.ps1 betiğini çevrimdışı veya belirli bir sürüm yüklemesi için cihazınıza indirdiyseniz, betiğin yerel kopyasına başvurduğunuzdan emin olun.
 
       ```powershell
@@ -154,7 +115,7 @@ Bir cihazı el ile sağladığınızda, aşağıdakileri de içeren ek parametre
 * Bir proxy sunucusundan gelen trafiği doğrudan gönder
 * Belirli bir edgeAgent kapsayıcı görüntüsü bildirin ve özel bir kayıt defterindeki kimlik bilgilerini sağlayın
 
-Bu ek parametreler hakkında daha fazla bilgi için bkz. [Windows üzerinde IoT Edge Için PowerShell betikleri](reference-windows-scripts.md).
+Bu ek parametreler hakkında daha fazla bilgi için bkz. [Windows kapsayıcılarıyla IoT Edge Için PowerShell betikleri](reference-windows-scripts.md).
 
 ### <a name="option-2-authenticate-with-x509-certificates"></a>Seçenek 2: X. 509.440 sertifikalarıyla kimlik doğrulama
 
@@ -170,13 +131,6 @@ Bu bölümde, X. 509.440 sertifika kimlik doğrulamasıyla bir cihaz sağlama ad
    . {Invoke-WebRequest -useb https://aka.ms/iotedge-win} | Invoke-Expression; `
    Initialize-IoTEdge -ManualX509
    ```
-
-   * Linux kapsayıcıları kullanıyorsanız, `-ContainerOs` bayrağına parametresini ekleyin. Daha önce çalıştırdığınız komutla seçtiğiniz kapsayıcı seçeneği ile tutarlı olun `Deploy-IoTEdge` .
-
-      ```powershell
-      . {Invoke-WebRequest -useb https://aka.ms/iotedge-win} | Invoke-Expression; `
-      Initialize-IoTEdge -ManualX509 -ContainerOs Linux
-      ```
 
    * IoTEdgeSecurityDaemon.ps1 betiğini çevrimdışı veya belirli bir sürüm yüklemesi için cihazınıza indirdiyseniz, betiğin yerel kopyasına başvurduğunuzdan emin olun.
 
@@ -197,7 +151,7 @@ Bir cihazı el ile sağladığınızda, aşağıdakileri de içeren ek parametre
 * Bir proxy sunucusundan gelen trafiği doğrudan gönder
 * Belirli bir edgeAgent kapsayıcı görüntüsü bildirin ve özel bir kayıt defterindeki kimlik bilgilerini sağlayın
 
-Bu ek parametreler hakkında daha fazla bilgi için bkz. [Windows üzerinde IoT Edge Için PowerShell betikleri](reference-windows-scripts.md).
+Bu ek parametreler hakkında daha fazla bilgi için bkz. [Windows kapsayıcılarıyla IoT Edge Için PowerShell betikleri](reference-windows-scripts.md).
 
 ## <a name="offline-or-specific-version-installation-optional"></a>Çevrimdışı veya belirli sürümü yükleme (isteğe bağlı)
 
@@ -220,9 +174,7 @@ Cihazınız yükleme sırasında çevrimdışı kalırsa veya IoT Edge belirli b
 2. Yüklemek istediğiniz sürümü bulun ve sürüm notlarının **varlıklar** bölümünden aşağıdaki dosyaları IoT cihazınıza indirin:
 
    * IoTEdgeSecurityDaemon.ps1
-   * 1.0.9 veya daha yeni sürümlerden Microsoft-Azure-IoTEdge.cab veya 1.0.8 'den daha eski sürümlerden Microsoft-Azure-IoTEdge-amd64.cab.
-
-   Microsoft-Azure-IotEdge-arm32.cab, yalnızca test için 1.0.9 ile başlayarak da kullanılabilir. IoT Edge Şu anda Windows ARM32 cihazlarında desteklenmemektedir.
+   * 1,1 yayın kanalından Microsoft-Azure-IoTEdge-amd64.cab.
 
    Her sürümdeki özellikleri desteklemek üzere değiştiğinden, kullandığınız. cab dosyası ile aynı sürümden PowerShell betiğinin kullanılması önemlidir.
 
@@ -246,19 +198,19 @@ Cihazınız yükleme sırasında çevrimdışı kalırsa veya IoT Edge belirli b
 `Update-IoTEdge`Güvenlik cini 'nı güncelleştirmek için komutunu kullanın. Komut dosyası otomatik olarak güvenlik arka plan programının en son sürümünü çeker.
 
 ```powershell
-. {Invoke-WebRequest -useb aka.ms/iotedge-win} | Invoke-Expression; Update-IoTEdge -ContainerOs <Windows or Linux>
+. {Invoke-WebRequest -useb aka.ms/iotedge-win} | Invoke-Expression; Update-IoTEdge
 ```
 
-Update-IoTEdge komutunun çalıştırılması, iki çalışma zamanı kapsayıcı görüntüsü ile birlikte cihazınızdan güvenlik arka plan programını kaldırır ve güncelleştirir. Config. YAML dosyası cihazda, ayrıca Moby kapsayıcı altyapısından (Windows kapsayıcıları kullanıyorsanız) veriler tutulur. Yapılandırma bilgilerinin tutulması, güncelleştirme işlemi sırasında cihazınız için bağlantı dizesini veya cihaz sağlama hizmeti bilgilerini yeniden sağlamanız gerekmediği anlamına gelir.
+Update-IoTEdge komutunun çalıştırılması, iki çalışma zamanı kapsayıcı görüntüsü ile birlikte cihazınızdan güvenlik arka plan programını kaldırır ve güncelleştirir. Config. YAML dosyası cihazda, ayrıca Moby kapsayıcı altyapısından de tutulur. Yapılandırma bilgilerinin tutulması, güncelleştirme işlemi sırasında cihazınız için bağlantı dizesini veya cihaz sağlama hizmeti bilgilerini yeniden sağlamanız gerekmediği anlamına gelir.
 
-Güvenlik arka plan programının belirli bir sürümüne güncelleştirmek istiyorsanız, [IoT Edge sürümlerden](https://github.com/Azure/azure-iotedge/releases)hedeflemek istediğiniz sürümü bulun. Bu sürümde, **Microsoft-Azure-IoTEdge.cab** dosyasını indirin. Ardından, `-OfflineInstallationPath` yerel dosya konumunu işaret etmek için parametresini kullanın. Örnek:
+Güvenlik arka plan programının belirli bir sürümüne güncelleştirmek istiyorsanız, [IoT Edge sürümlerden](https://github.com/Azure/azure-iotedge/releases)hedeflemek istediğiniz 1,1 yayın kanalından sürümü bulun. Bu sürümde, **Microsoft-Azure-IoTEdge.cab** dosyasını indirin. Ardından, `-OfflineInstallationPath` yerel dosya konumunu işaret etmek için parametresini kullanın. Örnek:
 
 ```powershell
-. {Invoke-WebRequest -useb aka.ms/iotedge-win} | Invoke-Expression; Update-IoTEdge -ContainerOs <Windows or Linux> -OfflineInstallationPath <absolute path to directory>
+. {Invoke-WebRequest -useb aka.ms/iotedge-win} | Invoke-Expression; Update-IoTEdge -OfflineInstallationPath <absolute path to directory>
 ```
 
 >[!NOTE]
->`-OfflineInstallationPath`Parametresi, belirtilen dizinde **Microsoft-Azure-IoTEdge.cab** adlı bir dosya arar. IoT Edge Version 1.0.9-RC4 ile başlayarak, biri AMD64 cihaz ve diğeri ARM32 için kullanılabilecek iki. cab dosyası vardır. Cihazınız için doğru dosyayı indirin ve ardından mimari sonekini kaldırmak için dosyayı yeniden adlandırın.
+>`-OfflineInstallationPath`Parametresi, belirtilen dizinde **Microsoft-Azure-IoTEdge.cab** adlı bir dosya arar. Mimarisi varsa, mimari sonekini kaldırmak için dosyayı yeniden adlandırın.
 
 Bir cihazı çevrimdışı güncelleştirmek istiyorsanız [Azure IoT Edge sürümlerden](https://github.com/Azure/azure-iotedge/releases)hedeflemek istediğiniz sürümü bulun. Bu sürümde, *IoTEdgeSecurityDaemon.ps1* ve *Microsoft-Azure-IoTEdge.cab* dosyalarını indirin. Her sürümdeki özellikleri desteklemek üzere değiştiğinden, kullandığınız. cab dosyası ile aynı sürümden PowerShell betiğinin kullanılması önemlidir.
 
@@ -271,7 +223,7 @@ Bir cihazı çevrimdışı güncelleştirmek istiyorsanız [Azure IoT Edge sür�
 Update-IoTEdge -OfflineInstallationPath <path>
 ```
 
-Güncelleştirme seçenekleri hakkında daha fazla bilgi için komutunu kullanın `Get-Help Update-IoTEdge -full` veya [Windows üzerinde IoT Edge için PowerShell betiği](reference-windows-scripts.md)bölümüne başvurun.
+Güncelleştirme seçenekleri hakkında daha fazla bilgi için komutunu kullanın `Get-Help Update-IoTEdge -full` veya [Windows kapsayıcılarıyla IoT Edge için PowerShell betikleri](reference-windows-scripts.md)bölümüne başvurun.
 
 ## <a name="uninstall-iot-edge"></a>IoT Edge kaldır
 
@@ -283,8 +235,6 @@ IoT Edge yüklemesini Windows cihazınızdan kaldırmak istiyorsanız, bir yöne
 . {Invoke-WebRequest -useb aka.ms/iotedge-win} | Invoke-Expression; `
 Uninstall-IoTEdge
 ```
-
-`Uninstall-IoTEdge`Komut Windows IoT Core üzerinde çalışmaz. IoT Edge kaldırmak için Windows IoT çekirdek görüntünüzü yeniden dağıtmanız gerekir.
 
 Kaldırma seçenekleri hakkında daha fazla bilgi için komutunu kullanın `Get-Help Uninstall-IoTEdge -full` .
 

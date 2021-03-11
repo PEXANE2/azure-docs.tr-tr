@@ -1,22 +1,22 @@
 ---
 title: Azure Backup için VM Snapshot Linux uzantısı
 description: VM Snapshot Linux uzantısı kullanarak Azure Backup sanal makinenin uygulamayla tutarlı yedeklemesini yapın.
-services: backup, virtual-machines-linux
+services: backup, virtual-machines
 documentationcenter: ''
 author: trinadhkotturu
-manager: gwallace
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
 ms.subservice: extensions
+ms.collection: linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.date: 12/17/2018
 ms.author: trinadhk
-ms.openlocfilehash: 2bf653bb42351c9ab4811fde695c8f821fd42d7c
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: ea984fdc4abeb08f4b080e913a0c34b99c59d93c
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94966777"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102561118"
 ---
 # <a name="vm-snapshot-linux-extension-for-azure-backup"></a>Azure Backup için VM Snapshot Linux uzantısı
 
@@ -26,7 +26,7 @@ Azure Backup, iş yüklerini Şirket içinden buluta yedeklemeye ve bulut kaynak
 
 VMSnapshot uzantısı, yalnızca yönetilmeyen VM 'Ler için Azure portal görüntülenir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 ### <a name="operating-system"></a>İşletim sistemi
 Desteklenen işletim sistemlerinin listesi için lütfen [Azure Backup tarafından desteklenen Işletim sistemlerine](../../backup/backup-azure-arm-vms-prepare.md#before-you-start) başvurun
@@ -65,7 +65,7 @@ Aşağıdaki JSON, VM Snapshot uzantısı için şemayı gösterir. Uzantı, gö
 
 | Name | Değer/örnek | Veri Türü |
 | ---- | ---- | ---- |
-| apiVersion | 2015-06-15 | tarih |
+| apiVersion | 2015-06-15 | date |
 | TaskID | e07354cf-041e-4370-929f-25a319ce8933_1 | string |
 | commandStartTimeUTCTicks | 6.36458 e + 17 | string |
 | locale | tr-tr | string |

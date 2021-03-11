@@ -7,21 +7,30 @@ ms.topic: how-to
 ms.date: 03/19/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: 73dc2520fbe970123a52133cb00909fea190610a
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
+ms.openlocfilehash: 86e79302716fa502d8562dd563b0a5c5fb220a67
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102202680"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102547569"
 ---
 # <a name="migrate-from-network-attached-storage-nas-to-a-hybrid-cloud-deployment-with-azure-file-sync"></a>Ağ bağlantılı depolamadan (NAS) Azure Dosya Eşitleme ile karma bulut dağıtımına geçiş
+
+Bu geçiş makalesi, NAS ve Azure Dosya Eşitleme anahtar kelimeleri içeren birçok bir biridir. Bu makalenin senaryonuz için geçerli olup olmadığını denetleyin:
+
+> [!div class="checklist"]
+> * Veri kaynağı: ağa bağlı depolama (NAS)
+> * Geçiş yolu: NAS &rArr; Windows Server &rArr; yükleme ve Azure dosya paylaşımıyla eşitleme
+> * Şirket içi dosyaları önbelleğe alma: Evet, son hedef, Azure Dosya Eşitleme bir dağıtımdır.
+
+Senaryonuz farklıysa, [geçiş kılavuzlarındaki tabloya](storage-files-migration-overview.md#migration-guides)bakın.
 
 Azure Dosya Eşitleme doğrudan bağlı depolama (DAS) konumlarında çalışarak ağa bağlı depolama (NAS) konumlarına eşitlemeyi desteklemez.
 Bu olgu, dosyalarınızın bir geçişini yapar ve bu makalede böyle bir geçişin planlanması ve yürütülmesi sırasında size kılavuzluk eder.
 
 ## <a name="migration-goals"></a>Geçiş hedefleri
 
-Amaç, NAS gerecinizde sahip olduğunuz paylaşımları bir Windows sunucusuna taşımaktır. Ardından karma bulut dağıtımı için Azure Dosya Eşitleme kullanın. Bu geçişin, üretim verilerinin bütünlüğünü ve geçiş sırasında kullanılabilirliğini garanti eden bir şekilde yapılması gerekir. İkinci olarak, kapalı kalma süresinin en az bir süre içinde tutulması gerekir, böylece normal bakım pencereleri içine sığacak veya yalnızca biraz daha fazla olabilir.
+Amaç, NAS gerecinizde sahip olduğunuz paylaşımları bir Windows sunucusuna taşımaktır. Ardından karma bulut dağıtımı için Azure Dosya Eşitleme kullanın. Genellikle, geçişlerin üretim verilerinin bütünlüğünü ve geçiş sırasında kullanılabilirliğini karşılayan bir şekilde yapılması gerekir. İkinci olarak, kapalı kalma süresinin en az bir süre içinde tutulması gerekir, böylece normal bakım pencereleri içine sığacak veya yalnızca biraz daha fazla olabilir.
 
 ## <a name="migration-overview"></a>Geçişe genel bakış
 
@@ -45,14 +54,14 @@ Azure dosyaları [geçişine genel bakış makalesinde](storage-files-migration-
 * Bir sanal makine veya fiziksel sunucu olarak en az 2012R2 ' de bir Windows Server 2019 oluşturun. Windows Server yük devretme kümesi de desteklenir.
 * Doğrudan bağlı depolama alanı sağlayın veya ekleyin (desteklenmeyen bir şekilde, NAS ile karşılaştırıldığında).
 
-    Azure dosya eşitleme [bulut katmanlama](storage-sync-cloud-tiering-overview.md) özelliğini kullanıyorsanız, sağladığınız depolama alanı miktarı, şu anda NAS gerecinizde kullandığınızdan daha küçük olabilir.
+    Sağladığınız depolama alanı miktarı, şu anda NAS gerecinizde kullandığınızdan daha küçük olabilir. Bu yapılandırma seçeneği, Azure dosya eşitleme [bulut katmanlama](storage-sync-cloud-tiering-overview.md) özelliğini de kullanmanızı gerektirir.
     Ancak, daha sonraki bir aşamada, daha büyük bir NAS alanından dosyalarınızı daha küçük bir Windows Server birimine kopyaladığınızda, toplu iş ' de çalışmanız gerekir:
 
     1. Diske sığan bir dosya kümesini taşıyın
     2. dosya eşitlemeye ve bulut katmanlamasına izin ver
-    3. birimde daha fazla boş alan oluşturulduğunda, sonraki dosya toplu iş ile devam edin. 
+    3. birimde daha fazla boş alan oluşturulduğunda, sonraki dosya toplu iş ile devam edin. Alternatif olarak, yeni anahtarın kullanımı için yaklaşan [Robocopy bölümünde](#phase-7-robocopy) Robocopy komutunu gözden geçirin `/LFSM` . Kullanmak `/LFSM` Robocopy işlerinizin önemli ölçüde basitleşmesini sağlayabilir, ancak buna bağlı olabileceğiniz diğer Robocopy anahtarlarıyla uyumlu değildir.
     
-    Dosyalarınızın NAS gereci üzerinde kaplayacağı Windows Server üzerinde eşdeğer alanı sağlayarak bu toplu işleme yaklaşımına engel olabilirsiniz. NAS/Windows üzerinde Yinelenenleri kaldırmayı göz önünde bulundurun. Bu yüksek miktarda depolama alanını Windows sunucunuza kalıcı olarak kaydetmek istemiyorsanız, geçişten sonra ve bulut katmanlama ilkelerini ayarlamadan önce birim boyutunu azaltabilirsiniz. Bu, Azure dosya paylaşımlarınızın daha küçük bir şirket içi önbelleği oluşturur.
+    Dosyalarınızın NAS gereci üzerinde kaplayacağı Windows Server üzerinde eşdeğer alanı sağlayarak bu toplu işleme yaklaşımına engel olabilirsiniz. NAS/Windows üzerinde Yinelenenleri kaldırmayı göz önünde bulundurun. Bu yüksek miktarda depolama alanını Windows sunucunuza kalıcı olarak kaydetmek istemiyorsanız, geçiş işleminden sonra ve bulut katmanlama ilkelerini ayarlamadan önce birim boyutunu azaltabilirsiniz. Bu, Azure dosya paylaşımlarınızın daha küçük bir şirket içi önbelleği oluşturur.
 
 Dağıttığınız Windows Server 'ın kaynak yapılandırması (işlem ve RAM), genellikle eşitlendirilecektir öğe sayısına (dosya ve klasör) bağlıdır. Herhangi bir endişeniz varsa daha yüksek performans yapılandırması yapmanızı öneririz.
 
@@ -108,76 +117,7 @@ Aşağıdaki RoboCopy komutu, dosyaları NAS depolamadan Windows Server hedef kl
 Windows Server 'da dosyalarınızın NAS gerecinden daha az depolama alanı sağladıysanız, bulut katmanlaması yapılandırmış olursunuz. Yerel Windows Server birimi tam aldığından, [bulut katmanlaması](storage-sync-cloud-tiering-overview.md) , zaten zaten eşitlenmiş olan ve katman dosyalarını açacaktır. Bulut katmanlaması, bir kopyanın NAS gerecinden devam etmesi için yeterli alan oluşturacak. Bulut katmanlaması, %99 birim boş alana ulaşmak için ne eşitlendiğini ve disk alanını boşaltmak için bir saatte bir kez kontrol eder.
 Bu, RoboCopy, buluta ve katmana yerel olarak eşitlenebilmeniz ve bu nedenle yerel disk alanı tükendiğinden dosyaları daha hızlı taşıbilirler. RoboCopy başarısız olacak. Paylaşımlar üzerinde bunu önleyen bir sırayla çalışmanız önerilir. Örneğin, aynı anda tüm paylaşımlar için RoboCopy işlerini başlatmaktan veya yalnızca Windows Server 'daki geçerli boş alan miktarına uygun olan paylaşımları birkaç kez bahsetmez.
 
-```console
-Robocopy /MT:32 /UNILOG:<file name> /TEE /B /MIR /COPYALL /DCOPY:DAT <SourcePath> <Dest.Path>
-```
-
-Arka plan
-
-:::row:::
-   :::column span="1":::
-      /MT
-   :::column-end:::
-   :::column span="1":::
-      RoboCopy 'nin çoklu iş parçacıklı çalıştırmasına izin verir. Varsayılan 8 ' dir, Max 128 ' dir.
-   :::column-end:::
-:::row-end:::
-:::row:::
-   :::column span="1":::
-      /UNILOG:\<file name\>
-   :::column-end:::
-   :::column span="1":::
-      GÜNLÜK dosyasının durumunu UNICODE olarak çıkış (varolan günlüğün üzerine yaz).
-   :::column-end:::
-:::row-end:::
-:::row:::
-   :::column span="1":::
-      /T
-   :::column-end:::
-   :::column span="1":::
-      Konsol penceresine çıkış. Günlük dosyasına çıktılarla birlikte kullanılır.
-   :::column-end:::
-:::row-end:::
-:::row:::
-   :::column span="1":::
-      /B
-   :::column-end:::
-   :::column span="1":::
-      RoboCopy, bir yedekleme uygulamasının kullanacağı modda çalıştırır. RoboCopy 'nin geçerli kullanıcının izinleri olmayan dosyaları taşımasına izin verir.
-   :::column-end:::
-:::row-end:::
-:::row:::
-   :::column span="1":::
-      /MıR
-   :::column-end:::
-   :::column span="1":::
-      Aynı hedefte/hedefte sırayla bu RoboCopy komutunu birkaç kez çalıştırmaya izin verir. Ne önce kopyalanmış olduğunu tanımlar ve onu atlar. Yalnızca değişiklikler, ekler ve "*silmeler*" işlenir. Bu, son çalıştırmasından bu yana yapılır. Komut daha önce çalıştırılmadıysa hiçbir şey atlanamaz. */MIR* bayrağı, hala etkin olarak kullanılan ve değişen kaynak konumları için mükemmel bir seçenektir.
-   :::column-end:::
-:::row-end:::
-:::row:::
-   :::column span="1":::
-      /COPY: copyflag [s]
-   :::column-end:::
-   :::column span="1":::
-      dosya kopyasının doğruluğu (varsayılan:/COPY: DAT), kopya bayrakları: D = veri, A = öznitelikler, T = zaman damgaları, S = güvenlik = NTFS ACL 'Leri, O = sahip bilgileri, U = denetim bilgileri
-   :::column-end:::
-:::row-end:::
-:::row:::
-   :::column span="1":::
-      /COPYALL
-   :::column-end:::
-   :::column span="1":::
-      Tüm dosya bilgilerini kopyala (/COPY: DATSOU ile eşdeğer)
-   :::column-end:::
-:::row-end:::
-:::row:::
-   :::column span="1":::
-      /DCOPY: copyflag [s]
-   :::column-end:::
-   :::column span="1":::
-      dizinlerin kopyasına uygunluk (varsayılan:/DCOPY: DA), kopyalama bayrakları: D = veri, A = öznitelikler, T = zaman damgaları
-   :::column-end:::
-:::row-end:::
+[!INCLUDE [storage-files-migration-robocopy](../../../includes/storage-files-migration-robocopy.md)]
 
 ## <a name="phase-8-user-cut-over"></a>8. Aşama: Kullanıcı tarafından kesilen
 
@@ -196,7 +136,7 @@ RoboCopy komutunu ilk kez çalıştırdığınızda, kullanıcılarınız ve uyg
 
 Belirli bir konum için bir RoboCopy için gereken süre miktarının, kapalı kalma süresi için kabul edilebilir bir pencere dahilinde olduğundan memnun olana kadar bu işlemi tekrarlayın.
 
-Kapalı kalma süresini kabul ediyorsanız ve NAS konumunu çevrimdışı duruma getirmek için hazırladınız: Kullanıcı erişimini çevrimdışı duruma getirmek için, paylaşma kökündeki ACL 'Leri değiştirme seçeneğine sahip olursunuz. bu şekilde, kullanıcılar konuma erişemez veya içeriği NAS 'unuzda bu klasörde değiştirilmesini engelleyen herhangi bir uygun adımı alamaz.
+Kapalı kalma süresini kabul ediyorsanız, NAS tabanlı paylaşımlarınız için Kullanıcı erişimini kaldırmanız gerekir. Bunu, kullanıcıların dosya ve klasör yapısını ve içeriğini değiştirmesini önleyen herhangi bir adımla yapabilirsiniz. DFS-Namespace, mevcut olmayan bir konuma işaret etmek veya paylaşımdaki kök ACL 'Leri değiştirmek örneğidir.
 
 Bir son RoboCopy Round çalıştırın. Bu işlem, kaçırılmış olabilecek tüm değişiklikleri seçer.
 Bu son adımın ne kadar süreceği, RoboCopy taramasının hızına bağlıdır. Önceki çalıştırmanın ne kadar sürdüğünü ölçerek süreyi tahmin edebilirsiniz (kapalı kalma süresine eşittir).

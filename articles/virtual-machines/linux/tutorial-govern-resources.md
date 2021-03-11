@@ -1,23 +1,23 @@
 ---
 title: Öğretici-CLı ile sanal makineleri yönetme
 description: Bu öğreticide Azure RBAC, ilkeler, kilitler ve Etiketler uygulayarak Azure sanal makinelerini yönetmek için Azure CLı 'yı nasıl kullanacağınızı öğreneceksiniz.
-services: virtual-machines-linux
+services: virtual-machines
 documentationcenter: virtual-machines
 author: tfitzmac
 manager: gwallace
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
 ms.workload: infrastructure
 ms.tgt_pltfrm: vm-linux
 ms.topic: tutorial
 ms.date: 09/30/2019
 ms.author: tomfitz
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 695bf57e120889207151209702c16d456da79385
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: c724f41172ef675f94139cea0ed77fc0232b126b
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98736776"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102561798"
 ---
 # <a name="tutorial-learn-about-linux-virtual-machine-management-with-azure-cli"></a>Öğretici: Azure CLı ile Linux sanal makine yönetimi hakkında bilgi edinin
 
