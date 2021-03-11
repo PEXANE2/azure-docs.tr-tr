@@ -3,12 +3,12 @@ title: Azure DevTest Labs ' de bekletme ilkesi ayarlama | Microsoft Docs
 description: Bir bekletme ilkesi yapılandırmayı, fabrikası temizlemeyi ve eski görüntüleri DevTest Labs 'den devre dışı bırakmayı öğrenin.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 115fdff215399a9a51171161191ecf5009e8e20e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 85384e88f8d456c7bf67302a57618d7a9703a5ee
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85476062"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102550034"
 ---
 # <a name="set-up-retention-policy-in-azure-devtest-labs"></a>Azure DevTest Labs 'de bekletme ilkesi ayarlama
 Bu makalede bir bekletme ilkesi ayarlama, fabrikasını Temizleme ve eski görüntüleri kuruluştaki tüm diğer DevTest Labs 'den devre dışı bırakma konuları ele alınmaktadır. 
@@ -64,7 +64,7 @@ Fabrikanıza yeni bir görüntü eklemek de basittir. Fabrikanıza yeni bir gör
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-1. Görüntü fabrikasını düzenli aralıklarla çalıştırmak için [derlemenizi/sürümünüzü zamanlayın](/azure/devops/pipelines/build/triggers?view=azure-devops&tabs=designer) . Fabrika tarafından üretilen görüntülerinizi düzenli aralıklarla yeniler.
+1. Görüntü fabrikasını düzenli aralıklarla çalıştırmak için [derlemenizi/sürümünüzü zamanlayın](/azure/devops/pipelines/build/triggers?tabs=designer) . Fabrika tarafından üretilen görüntülerinizi düzenli aralıklarla yeniler.
 2. Fabrikanızın daha fazla altın görüntüsünü oluşturun. Ayrıca sanal makine kurulum görevlerinizin ek parçalarını betiğe ve yapıtları fabrika yansımalarına dahil etmek için [yapıtlar oluşturmayı](devtest-lab-artifact-author.md) düşünebilirsiniz.
 4. **DistributeImages** betiğini ayrı olarak çalıştırmak için [ayrı bir derleme/yayın](/azure/devops/pipelines/overview?view=azure-devops-2019) oluşturun. Üzerinde Labs.jsdeğişiklikler yaptığınızda ve tüm görüntüleri yeniden oluşturmak zorunda kalmadan hedef laboratuvarlara kopyalanmış resimleri almak için bu betiği çalıştırabilirsiniz.
 

@@ -3,12 +3,12 @@ title: Azure DevTest Labs kaynakların dağıtılmış işbirliğine dayalı gel
 description: DevTest Labs kaynaklarını geliştirmek üzere dağıtılmış ve işbirliğine dayalı bir geliştirme ortamı ayarlamak için en iyi yöntemleri sağlar.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 1ef6d7aa7d3cfd4fcc64eaa45259684dfcb9ccee
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: caf4bd13f2ec9c45db392a027db269b492cbd802
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97592373"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102550085"
 ---
 # <a name="best-practices-for-distributed-and-collaborative-development-of-azure-devtest-labs-resources"></a>Azure DevTest Labs kaynaklarının dağıtılmış ve işbirliğine dayalı olarak geliştirilmesi için en iyi uygulamalar
 Dağıtılmış işbirliğine dayalı geliştirme, farklı ekiplerin veya kişilerin bir kod tabanı geliştirmesini ve bakımını sağlar. Geliştirme süreci başarılı olmak için bilgi oluşturma, paylaşma ve tümleştirme özelliğine bağlıdır. Bu anahtar geliştirme ilkesi, Azure DevTest Labs içinde kullanılabilir. Bir laboratuvarda, bir kuruluş içindeki farklı laboratuvarlar arasında yaygın olarak dağıtılan birkaç kaynak türü vardır. Farklı kaynak türleri iki alana odaklanılmıştır:
@@ -27,7 +27,7 @@ Labs 'e gecelik esasına göre dağıtılan özel resimlerden oluşan ortak bir 
 [Formüller](devtest-lab-manage-formulas.md) laboratuvara özeldir ve bir dağıtım mekanizmasına sahip değildir. Laboratuvar üyeleri formüllerin tüm geliştirilmesini ister. 
 
 ## <a name="code-repository-based-resources"></a>Kod deposu tabanlı kaynaklar
-Kod depolarını, yapıtları ve ortamları temel alan iki farklı özellik vardır. Bu makale, özellikleri ve kuruluş düzeyindeki veya ekip düzeyindeki kullanılabilir yapıtları ve ortamları özelleştirebilme olanağı sağlamak üzere depoları ve iş akışını en verimli şekilde ayarlamaya yönelik olarak, özelliklerin üzerine gider.  Bu iş akışı standart [kaynak kodu denetimi dallanma stratejisini](/azure/devops/repos/tfvc/branching-strategies-with-tfvc?view=azure-devops)temel alır. 
+Kod depolarını, yapıtları ve ortamları temel alan iki farklı özellik vardır. Bu makale, özellikleri ve kuruluş düzeyindeki veya ekip düzeyindeki kullanılabilir yapıtları ve ortamları özelleştirebilme olanağı sağlamak üzere depoları ve iş akışını en verimli şekilde ayarlamaya yönelik olarak, özelliklerin üzerine gider.  Bu iş akışı standart [kaynak kodu denetimi dallanma stratejisini](/azure/devops/repos/tfvc/branching-strategies-with-tfvc)temel alır. 
 
 ### <a name="key-concepts"></a>Önemli kavramlar
 Yapıtlar için kaynak bilgileri, meta verileri, betikleri içerir. Ortamlar için kaynak bilgileri, PowerShell betikleri, DSC betikleri, ZIP dosyaları ve benzeri destekleyici dosyaları içeren meta veriler ve Kaynak Yöneticisi şablonlar içerir.  
@@ -39,7 +39,7 @@ Kaynak kodu denetimi (SCC) için en yaygın yapılandırma, laboratuvarlarda kul
 - İş birimi/bölüm genelinde kaynaklar
 - Ekibe özel kaynaklar.
 
-Bu düzeylerin her biri, ana dalın üretim kalitesi olması gereken farklı bir depoya bağlanır. Her depodaki [dallar](/azure/devops/repos/git/git-branching-guidance?view=azure-devops) , söz konusu kaynakların (yapıtlar veya şablonlar) geliştirilmesi için kullanılır. Aynı anda birden çok depo ve birden çok dalı kuruluşun laboratuvarlarına kolayca bağlayabilmeniz için bu yapı, DevTest Labs ile iyi bir şekilde hizalanır. Aynı adlar, açıklama ve yayımcı olduğunda karışıklık oluşmasını önlemek için depo adı Kullanıcı arabirimine (UI) dahil edilir.
+Bu düzeylerin her biri, ana dalın üretim kalitesi olması gereken farklı bir depoya bağlanır. Her depodaki [dallar](/azure/devops/repos/git/git-branching-guidance) , söz konusu kaynakların (yapıtlar veya şablonlar) geliştirilmesi için kullanılır. Aynı anda birden çok depo ve birden çok dalı kuruluşun laboratuvarlarına kolayca bağlayabilmeniz için bu yapı, DevTest Labs ile iyi bir şekilde hizalanır. Aynı adlar, açıklama ve yayımcı olduğunda karışıklık oluşmasını önlemek için depo adı Kullanıcı arabirimine (UI) dahil edilir.
      
 Aşağıdaki diyagramda iki depo gösterilmektedir: BT bölümünün tuttuğu bir şirket deposu ve R&D bölümü tarafından tutulan bir bölüm deposu.
 

@@ -2,18 +2,19 @@
 title: Azure 'da Linux VM 'lerine genel bakış
 description: Azure 'da Linux sanal makinelerine genel bakış.
 author: cynthn
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
+ms.collection: linux
 ms.topic: overview
 ms.workload: infrastructure
 ms.date: 11/14/2019
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 4067fc4e47dce83852af971daae6cda3933d0e39
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: fe1db967dac8a76119733f930e54a38160395932
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101667179"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102549847"
 ---
 # <a name="linux-virtual-machines-in-azure"></a>Azure’da Linux sanal makineleri
 
@@ -50,7 +51,7 @@ Bu tabloda, kullanılabilen konumların listesini edinme yöntemlerinden bazıla
 | Azure portalı |VM oluştururken listeden konum seçin. |
 | Azure PowerShell |[Get-AzLocation](/powershell/module/az.resources/get-azlocation) komutunu kullanın. |
 | REST API |[List locations](/rest/api/resources/subscriptions) işlemini kullanın. |
-| Azure CLI |[az account list-locations](/cli/azure/account) işlemini kullanın. |
+| Azure CLI’si |[az account list-locations](/cli/azure/account) işlemini kullanın. |
 
 ## <a name="availability"></a>Kullanılabilirlik
 Azure, sanal makineyi tüm diskler için premium depolamayla dağıtmanız koşuluyla, tek örnekli sanal makinelerde endüstri lideri %99,9 kullanılabilirlik Hizmet Düzeyi Sözleşmesi'nin duyurusunu yaptı.  Dağıtımınızın standart %99,95 VM Hizmet Düzeyi Sözleşmesinin kapsamına girebilmesi için iş yükünüzü çalıştıran iki veya daha fazla VM’yi yine bir kullanılabilirlik kümesi içinde dağıtmanız gerekir. Bir kullanılabilirlik kümesi, VM’lerinizin Azure veri merkezlerinde birden çok hata etki alanına dağıtılmasını ve aynı zamanda dağıtımlarının farklı bakım aralıklarına sahip konaklara yapılmasını sağlar. [Azure SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/) şartları, Azure’un tamamının kullanılabilirlik garantisini açıklamaktadır.

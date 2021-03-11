@@ -4,12 +4,6 @@
   items:
     - name: Apache Cassandra için Azure yönetilen örneği nedir?
       href: introduction.md
-- name: Kavramlar
-  items:
-    - name: SSS
-      href: faq.md
-    - name: Yönetilen örnek-Azure Cosmos DB Cassandra API
-      href: compare-cosmosdb-managed-instance.md
 - name: Hızlı Başlangıçlar
   items:
     - name: Küme oluşturma-Portal
@@ -20,9 +14,23 @@
       href: configure-hybrid-cluster.md
     - name: Databricks ile Spark kümesi dağıtma
       href: deploy-cluster-databricks.md
+- name: Kavramlar
+  items:
+    - name: Sık sorulan sorular
+      href: faq.md
+    - name: Yönetilen örnek-Azure Cosmos DB Cassandra API
+      href: compare-cosmosdb-managed-instance.md
 - name: Nasıl yapılır kılavuzları
   items:
     - name: Azure CLI ile yönetme
       href: manage-resources-cli.md
     - name: Grafana ile Prometheus içindeki ölçümleri görselleştirin
       href: visualize-prometheus-grafana.md
+- name: Başvuru
+  items:
+    - name: REST API
+      items:
+        - name: Cassandra kümeleri
+          href: /rest/api/cosmos-db-resource-provider/2021-03-01-preview/cassandraclusters
+        - name: Cassandra veri merkezleri
+          href: /rest/api/cosmos-db-resource-provider/2021-03-01-preview/cassandradatacenters

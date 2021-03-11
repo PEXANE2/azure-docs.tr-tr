@@ -2,18 +2,19 @@
 title: 'Hızlı başlangıç: bir Ubuntu Linux VM oluşturmak için Kaynak Yöneticisi şablonu kullanma'
 description: Bu hızlı başlangıçta, bir Linux sanal makinesi oluşturmak için Kaynak Yöneticisi şablonu kullanmayı öğreneceksiniz
 author: cynthn
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
+ms.collection: linux
 ms.topic: quickstart
 ms.workload: infrastructure
 ms.date: 06/04/2020
 ms.author: cynthn
 ms.custom: subject-armqs
-ms.openlocfilehash: bd22d20703dc72e220f9b479b4a4005033f964ae
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 97a9d3632cb0e78b899844b1aaa84a030c6da23e
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88649780"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102549626"
 ---
 # <a name="quickstart-create-an-ubuntu-linux-virtual-machine-using-an-arm-template"></a>Hızlı başlangıç: ARM şablonunu kullanarak Ubuntu Linux sanal makine oluşturma
 
@@ -57,7 +58,7 @@ Bu hızlı başlangıçta kullanılan şablon [Azure Hızlı Başlangıç Şablo
     - **Abonelik**: Bir Azure aboneliği seçin.
     - **Kaynak grubu**: açılan listeden var olan bir kaynak grubunu seçin veya **Yeni oluştur**' u seçin, kaynak grubu için benzersiz bir ad girin ve ardından **Tamam**' a tıklayın.
     - **Konum**: Bir konum seçin.  Örneğin **Orta ABD**.
-    - **Yönetici Kullanıcı adı**: *azureuser*gibi bir Kullanıcı adı sağlayın.
+    - **Yönetici Kullanıcı adı**: *azureuser* gibi bir Kullanıcı adı sağlayın.
     - **Kimlik doğrulama türü**: SSH anahtarı veya parola kullanma arasında seçim yapabilirsiniz.
     - Kimlik doğrulama türü için belirlediğiniz seçeneğe bağlı olarak **yönetici parolası veya anahtarı** :
         - **Parola**' yı seçerseniz, parola en az 12 karakter uzunluğunda olmalı ve [tanımlanmış karmaşıklık gereksinimlerini](faq.md#what-are-the-password-requirements-when-creating-a-vm)karşılamalıdır.
@@ -83,7 +84,7 @@ Sanal makineyi ve oluşturulan diğer kaynağı denetlemek için Azure portal ku
 
 Artık gerekli olmadığında, kaynak grubundaki VM 'yi ve tüm kaynakları silen kaynak grubunu silin. 
 
-1. **Kaynak grubunu**seçin.
+1. **Kaynak grubunu** seçin.
 1. Kaynak grubunun sayfasında **Sil**' i seçin.
 1. İstendiğinde, kaynak grubunun adını yazın ve **Sil**' i seçin.
 

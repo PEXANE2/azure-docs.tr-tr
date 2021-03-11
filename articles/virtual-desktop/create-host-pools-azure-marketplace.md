@@ -4,15 +4,15 @@ description: Azure portal kullanarak Windows sanal masaüstü konak havuzu oluş
 author: Heidilohr
 ms.topic: tutorial
 ms.custom: references_regions
-ms.date: 02/17/2021
+ms.date: 03/10/2021
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 46a029a3b803428d6250b74059190f66183be452
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.openlocfilehash: 60566b95447c1b69fb257435f45a11524ac5d8b2
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "100651468"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102617357"
 ---
 # <a name="tutorial-create-a-host-pool-with-the-azure-portal"></a>Öğretici: Azure portal bir konak havuzu oluşturma
 
@@ -101,18 +101,16 @@ Sanal makinenizi konak Havuzu Kurulum işlemi içinde ayarlamak için:
 
 1. **Kaynak grubu** altında, sanal makineleri oluşturmak istediğiniz kaynak grubunu seçin. Bu, konak havuzu için kullanılandan farklı bir kaynak grubu olabilir.
 
-2. Sanal makineleri oluşturmak istediğiniz **sanal makine konumunu** seçin. Konak havuzu için seçtiğiniz bölgeden aynı veya farklı olabilir.
+2. Bundan sonra, kurulum işleminin oluşturduğu sanal makineleri adlandırmak için bir **ad ön eki** sağlayın. Sonek `-` 0 ' dan başlayan sayılarla birlikte olacaktır.
 
-3. Ardından, kullanmak istediğiniz **sanal makine boyutunu** seçin. Varsayılan boyutu olduğu gibi tutabilirsiniz ya da boyutu değiştirmek için **boyutu Değiştir** ' i seçin. **Boyutu Değiştir**' i seçerseniz, görüntülenen pencerede, iş yükünüz için uygun olan sanal makine boyutunu seçin.
+3. Sanal makineleri oluşturmak istediğiniz **sanal makine konumunu** seçin. Konak havuzu için seçtiğiniz bölgeden aynı veya farklı olabilir.
+   
+4. Ardından, gereksinimlerinize en uygun kullanılabilirlik seçeneğini belirleyin. Sizin için uygun olan seçenek hakkında daha fazla bilgi edinmek için bkz. [Azure 'da sanal makineler Için kullanılabilirlik seçenekleri](../virtual-machines/availability.md) ve [SSS](faq.md#which-availability-option-is-best-for-me).
+   
+   > [!div class="mx-imgBorder"]
+   > [Kullanılabilirlik bölgesi açılan menüsünün ekran görüntüsü. "Kullanılabilirlik alanı" seçeneği vurgulanır.](media/availability-zone.png)
 
-4. **VM sayısı**' nın altında, konak havuzunuz için oluşturmak istediğiniz VM sayısını sağlayın.
-
-    >[!NOTE]
-    >Kurulum işlemi, konak havuzunuzu ayarlarken en fazla 400 VM oluşturabilir ve her bir VM kurulum işlemi kaynak grubunuzda dört nesne oluşturur. Oluşturma işlemi abonelik kotayı denetlemediğinden, girdiğiniz sanal makine sayısının Azure VM 'de ve kaynak grubunuz ve aboneliğiniz için API sınırları içinde olduğundan emin olun. Konak havuzunuzu oluşturmayı bitirdikten sonra daha fazla VM ekleyebilirsiniz.
-
-5. Bundan sonra, kurulum işleminin oluşturduğu sanal makineleri adlandırmak için bir **ad ön eki** sağlayın. Sonek `-` 0 ' dan başlayan sayılarla birlikte olacaktır.
-
-6. Sonra, sanal makineyi oluşturmak için kullanılması gereken görüntüyü seçin. **Galeri** veya **Depolama Blobu** seçeneklerinden birini belirleyebilirsiniz.
+5. Sonra, sanal makineyi oluşturmak için kullanılması gereken görüntüyü seçin. **Galeri** veya **Depolama Blobu** seçeneklerinden birini belirleyebilirsiniz.
 
     - **Galeri**' yi seçerseniz, açılan menüden önerilen görüntülerden birini seçin:
 
@@ -122,23 +120,30 @@ Sanal makinenizi konak Havuzu Kurulum işlemi içinde ayarlamak için:
       - Windows 10 Enterprise multi-session, sürüm 2004
       - Windows 10 Enterprise çoklu oturum, sürüm 2004 + Microsoft 365 uygulamalar
 
-     İstediğiniz görüntüyü görmüyorsanız, galerinizdeki başka bir görüntüyü ya da Microsoft ve diğer yayımcılar tarafından sunulan bir görüntüyü seçmenizi sağlayan **tüm görüntülere ve disklere gözatamazsınız**' ı seçin. Seçtiğiniz görüntünün [desteklenen işletim sistemi görüntülerinden](overview.md#supported-virtual-machine-os-images)biri olduğundan emin olun.
+      İstediğiniz görüntüyü görmüyorsanız Galerinizdeki başka bir görüntüyü veya Microsoft ve diğer yayımcılar tarafından sunulan bir görüntüyü seçmenizi sağlayan **tüm görüntüleri gör**' ü seçin. Seçtiğiniz görüntünün [desteklenen işletim sistemi görüntülerinden](overview.md#supported-virtual-machine-os-images)biri olduğundan emin olun.
 
-     > [!div class="mx-imgBorder"]
-     > ![Microsoft 'un gösterildiği resimlerin listesini içeren Market 'in ekran görüntüsü.](media/marketplace-images.png)
+      > [!div class="mx-imgBorder"]
+      > ![Microsoft 'un gösterildiği resimlerin listesini içeren Market 'in ekran görüntüsü.](media/marketplace-images.png)
 
-     **Öğelerime** giderek, zaten karşıya yüklediğiniz özel bir görüntüyü seçebilirsiniz.
+      **Öğelerime** giderek, zaten karşıya yüklediğiniz özel bir görüntüyü seçebilirsiniz.
 
-     > [!div class="mx-imgBorder"]
-     > ![Öğelerimin sekmesinin ekran görüntüsü.](media/my-items.png)
+      > [!div class="mx-imgBorder"]
+      > ![Öğelerimin sekmesinin ekran görüntüsü.](media/my-items.png)
 
     - **Depolama Blobu**' nı seçerseniz, Hyper-V veya BIR Azure VM 'de kendi görüntü yapınızı kullanabilirsiniz. Tüm yapmanız gerekirse, bir URI olarak Depolama Blobu içindeki görüntünün konumunu girin.
+   
+   Görüntünün konumu kullanılabilirlik seçeneğinden bağımsızdır, ancak görüntünün bölge dayanıklılığı, bu görüntünün kullanılabilirlik bölgesi ile kullanılıp kullanılamayacağını belirler. Görüntünüzü oluştururken bir kullanılabilirlik bölgesi seçerseniz, galerideki bölge dayanıklılığı etkin olan bir görüntü kullandığınızdan emin olun. Kullanmanız gereken bölge dayanıklılığı seçeneği hakkında daha fazla bilgi edinmek için bkz. [SSS](faq.md#which-availability-option-is-best-for-me).
 
-7. Sanal makinelerinizin ne tür işletim sistemi diskleri kullanmasını istediğinizi seçin: Standart SSD, Premium SSD veya Standart HDD.
+6. Bundan sonra, kullanmak istediğiniz **sanal makine boyutunu** seçin. Varsayılan boyutu olduğu gibi tutabilirsiniz ya da boyutu değiştirmek için **boyutu Değiştir** ' i seçin. **Boyutu Değiştir**' i seçerseniz, görüntülenen pencerede, iş yükünüz için uygun olan sanal makine boyutunu seçin.
 
-8. Ağ ve güvenlik altında, oluşturduğunuz sanal makineleri yerleştirmek istediğiniz **sanal ağı** ve **alt ağı** seçin. Sanal ağ içindeki sanal makineleri etki alanına katdığınızdan emin olmanız gerektiğinden, sanal ağın etki alanı denetleyicisine bağlanabildiğinden emin olun. Seçtiğiniz sanal ağın DNS sunucuları, etki alanı denetleyicisinin IP 'sini kullanacak şekilde yapılandırılmalıdır.
+7. **VM sayısı**' nın altında, konak havuzunuz için oluşturmak istediğiniz VM sayısını sağlayın.
 
-9. Sonra, sanal makineler için genel IP isteyip istemediğinizi seçin. Özel bir IP daha güvenli olduğundan **Hayır** ' ı seçmenizi öneririz.
+    >[!NOTE]
+    >Kurulum işlemi, konak havuzunuzu ayarlarken en fazla 400 VM oluşturabilir ve her bir VM kurulum işlemi kaynak grubunuzda dört nesne oluşturur. Oluşturma işlemi abonelik kotayı denetlemediğinden, girdiğiniz sanal makine sayısının Azure VM 'de ve kaynak grubunuz ve aboneliğiniz için API sınırları içinde olduğundan emin olun. Konak havuzunuzu oluşturmayı bitirdikten sonra daha fazla VM ekleyebilirsiniz.
+
+8. Sanal makinelerinizin ne tür işletim sistemi diskleri kullanmasını istediğinizi seçin: Standart SSD, Premium SSD veya Standart HDD.
+
+9. Ağ ve güvenlik altında, oluşturduğunuz sanal makineleri yerleştirmek istediğiniz **sanal ağı** ve **alt ağı** seçin. Sanal ağ içindeki sanal makineleri etki alanına katdığınızdan emin olmanız gerektiğinden, sanal ağın etki alanı denetleyicisine bağlanabildiğinden emin olun. Seçtiğiniz sanal ağın DNS sunucuları, etki alanı denetleyicisinin IP 'sini kullanacak şekilde yapılandırılmalıdır.
 
 10. İstediğiniz güvenlik grubu türünü seçin: **temel**, **Gelişmiş** veya **yok**.
 
@@ -154,9 +159,9 @@ Sanal makinenizi konak Havuzu Kurulum işlemi içinde ayarlamak için:
 
 11. Bundan sonra, sanal makinelerin belirli bir etki alanına ve kuruluş birimine katılmasını isteyip istemediğinizi seçin. **Evet**' i seçerseniz, katılacak etki alanını belirtin. İsteğe bağlı olarak, sanal makinelerin içinde olmasını istediğiniz belirli bir kuruluş birimini ekleyebilirsiniz. **Hayır**' ı seçerseniz, VM 'ler **ad etkı alanına katılma UPN**'si sonekiyle eşleşen etki alanına birleştirilir.
 
-  - Bir OU belirttiğinizde, tam yolu (ayırt edici ad) ve tırnak işaretleri olmadan kullandığınızdan emin olun.
+    - Bir OU belirttiğinizde, tam yolu (ayırt edici ad) ve tırnak işaretleri olmadan kullandığınızdan emin olun.
 
-12. Yönetici hesabı ' nın altında, seçtiğiniz sanal ağın Active Directory Etki Alanı yöneticisinin kimlik bilgilerini girin. Bu hesabın birden çok facklu kimlik doğrulaması (MFA) etkin olamaz. Azure Active Directory Domain Services (Azure AD DS) etki alanına katılırken, hesap Azure AD DC yöneticileri grubunun bir parçası olmalıdır ve hesap parolasının Azure AD DS 'de çalışması gerekir.
+12. Etki alanı yöneticisi hesabı ' nın altında, seçtiğiniz sanal ağın Active Directory Etki Alanı yöneticisinin kimlik bilgilerini girin. Bu hesabın birden çok facklu kimlik doğrulaması (MFA) etkin olamaz. Azure Active Directory Domain Services (Azure AD DS) etki alanına katılırken, hesap Azure AD DC yöneticileri grubunun bir parçası olmalıdır ve hesap parolasının Azure AD DS 'de çalışması gerekir.
 
 13. **İleri ' yi seçin: çalışma alanı >**.
 

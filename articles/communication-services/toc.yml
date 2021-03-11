@@ -120,6 +120,8 @@
       href: concepts/authentication.md
     - name: Gizlilik
       href: concepts/privacy.md
+    - name: Fiyatlandırma
+      href: concepts/pricing.md
     - name: 'Anında İletme Bildirimleri '
       href: concepts/notifications.md
     - name: Teams ile birlikte çalışabilirlik

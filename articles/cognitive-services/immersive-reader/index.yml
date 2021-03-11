@@ -12,12 +12,12 @@ metadata:
   author: IEvangelist
   ms.author: dapine
   ms.date: 01/23/2020
-  ms.openlocfilehash: c19e6c7e05a3478007505ee4f02f12a7eade5eb6
-  ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
-  ms.translationtype: HT
+  ms.openlocfilehash: 4cc05d3b99530e5ba923bfcbf7f749fbcd1c0f20
+  ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
+  ms.translationtype: MT
   ms.contentlocale: tr-TR
-  ms.lasthandoff: 10/30/2020
-  ms.locfileid: "93130247"
+  ms.lasthandoff: 03/10/2021
+  ms.locfileid: "102616647"
 landingContent:
 - title: Tam Ekran Okuyucu hakkında
   linkLists:
@@ -43,28 +43,20 @@ landingContent:
       url: ./quickstarts/client-libraries.md?pivots=programming-language-kotlin
     - text: Swift kullanma (iOS)
       url: ./quickstarts/client-libraries.md?pivots=programming-language-swift
-  - linkListType: tutorial
-    links:
-    - text: Android
-      url: tutorial-android.md
-    - text: iOS
-      url: tutorial-ios.md
-    - text: Python
-      url: tutorial-python.md
-    - text: Birden çok Tam Ekran Okuyucu kaynağı kullanma
-      url: tutorial-multiple-resources.md
 - title: Tam Ekran Okuyucu’yu keşfedin
   linkLists:
   - linkListType: how-to-guide
     links:
     - text: Tam Ekran Okuyucu Kaynağı oluşturma
       url: how-to-create-immersive-reader.md
+    - text: Birden çok Tam Ekran Okuyucu kaynağı kullanma
+      url: how-to-multiple-resources.md
+    - text: Tam ekran okuyucuyu başlatın
+      url: how-to-launch-immersive-reader.md
     - text: Tanımlama bilgisi ilkesini ayarlama
       url: how-to/set-cookie-policy.md
     - text: Matematiksel ifadeleri görüntüleme
       url: how-to/display-math.md
-    - text: Tam Ekran Okuyucu’yu HTML içeriğiyle başlatma
-      url: how-to-launch-with-html.md
     - text: Tam Ekran Okuyucu’yu Özelleştir düğmesi
       url: how-to-customize-launch-button.md
     - text: Kimlik doğrulaması belirtecini önbelleğe alma

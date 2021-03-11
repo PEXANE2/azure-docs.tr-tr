@@ -13,12 +13,12 @@ ms.topic: quickstart
 ms.date: 03/24/2020
 ms.author: mlearned
 ms.custom: mvc
-ms.openlocfilehash: 5727a08159f750a69920f66f4b743c187aa00885
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 06ac110da35a5a77157bd4e31caaa5aa5fd015cc
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97588973"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102566575"
 ---
 # <a name="create-a-cicd-pipeline-for-php-with-azure-devops-starter"></a>Azure DevOps Starter ile PHP için bir CI/CD işlem hattı oluşturma
 
@@ -84,7 +84,7 @@ Bir Azure aboneliğiniz yoksa, [Visual Studio Dev Essentials](https://visualstud
 
 1. **Durum** alanını işaret edin ve ardından **üç nokta** (...) simgesini seçin. Bir menü, yeni bir derlemeyi sıraya alma, bir derlemeyi duraklatma ve derleme işlem hattını düzenlemeyle çeşitli seçenekleri görüntüler.
 
-1. **Düzenle**’yi seçin.
+1. **Düzenle**'yi seçin.
 
 1. Bu bölmede, derleme işlem hattınızla ilgili çeşitli görevleri inceleyebilirsiniz. Derleme, git deposundan kaynak getirme, bağımlılıkları geri yükleme ve dağıtımlar için kullanılan çıkışları yayımlama gibi çeşitli görevleri çalıştırır.
 
@@ -125,4 +125,4 @@ Artık ihtiyaç duymadığınızda, Azure App Service ve diğer ilgili kaynaklar
 CI/CD işleminizi yapılandırdığınızda, derleme ve yayın işlem hatları otomatik olarak oluşturulmuştur. Ekibinizin ihtiyaçlarını karşılamak için bu derleme ve yayın işlem hatlarını değiştirebilirsiniz. CI/CD işlem hattı hakkında daha fazla bilgi edinmek için şu öğreticiye bakın:
 
 > [!div class="nextstepaction"]
-> [CD işlemini özelleştirme](/azure/devops/pipelines/release/define-multistage-release-process?view=vsts)
+> [CD işlemini özelleştirme](/azure/devops/pipelines/release/define-multistage-release-process)

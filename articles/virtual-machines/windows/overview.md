@@ -3,17 +3,18 @@ title: Azure 'da Windows VM 'lerine genel bakış
 description: Azure 'da Windows sanal makinelerine genel bakış.
 author: cynthn
 ms.service: virtual-machines
+ms.collection: windows
 ms.workload: infrastructure-services
 ms.topic: overview
 ms.date: 11/14/2019
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 9113abe14af942700a073626c5aad19dc2ebcd06
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 2432cc49d770471979e089a496b9d0351eec26fd
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101665970"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102550340"
 ---
 # <a name="windows-virtual-machines-in-azure"></a>Azure’da Windows sanal makineleri
 
@@ -50,7 +51,7 @@ Bu tabloda, kullanılabilen konumların listesini edinme yöntemlerinden bazıla
 | Azure portalı |VM oluştururken listeden konum seçin. |
 | Azure PowerShell |[Get-AzLocation](/powershell/module/az.resources/get-azlocation) komutunu kullanın. |
 | REST API |[List locations](/rest/api/resources/subscriptions) işlemini kullanın. |
-| Azure CLI |[az account list-locations](/cli/azure/account) işlemini kullanın. |
+| Azure CLI’si |[az account list-locations](/cli/azure/account) işlemini kullanın. |
 
 ## <a name="availability"></a>Kullanılabilirlik
 Azure, sanal makineyi tüm diskler için premium depolamayla dağıtmanız koşuluyla, tek örnekli sanal makinelerde endüstri lideri %99,9 kullanılabilirlik Hizmet Düzeyi Sözleşmesi'nin duyurusunu yaptı.  Dağıtımınızın standart %99,95 VM Hizmet Düzeyi Sözleşmesinin kapsamına girebilmesi için iş yükünüzü çalıştıran iki veya daha fazla VM’yi yine bir kullanılabilirlik kümesi içinde dağıtmanız gerekir. Bir kullanılabilirlik kümesi, VM’lerinizin Azure veri merkezlerinde birden çok hata etki alanına dağıtılmasını ve aynı zamanda dağıtımlarının farklı bakım aralıklarına sahip konaklara yapılmasını sağlar. [Azure SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/) şartları, Azure’un tamamının kullanılabilirlik garantisini açıklamaktadır.
@@ -76,7 +77,7 @@ Bu tabloda bir görüntünün bilgilerine nasıl erişebileceğiniz gösterilmi�
 | Azure portalı |Bir görüntüyü kullanmak istediğinizde değerler otomatik olarak belirtilir. |
 | Azure PowerShell |[Get-Azvmımagepublisher](/powershell/module/az.compute/get-azvmimagepublisher) -Location *konumu*<BR>[Get-Azvmımageteklifinin](/powershell/module/az.compute/get-azvmimageoffer) -Location *konumu* -yayımcı *PublisherName*<BR>[Get-Azvmımagesku](/powershell/module/az.compute/get-azvmimagesku) -Location *konumu* -yayımcı *PublisherName* -bir *offername* sunma |
 | REST API'leri |[Görüntü yayımcılarını listeleme](/rest/api/compute/platformimages/platformimages-list-publishers)<BR>[Görüntü tekliflerini listeleme](/rest/api/compute/platformimages/platformimages-list-publisher-offers)<BR>[Görüntü sku’larını listeleme](/rest/api/compute/platformimages/platformimages-list-publisher-offer-skus) |
-| Azure CLI |[az VM image List-Publishers](/cli/azure/vm/image) --Location *Location*<BR>[az VM image List-teklifler](/cli/azure/vm/image) --Location *Location* --Publisher *PublisherName*<BR>[az VM image List-SKU 'lar](/cli/azure/vm) --konum *konumu* --yayımcı *PublisherName* -- *offername*|
+| Azure CLI’si |[az VM image List-Publishers](/cli/azure/vm/image) --Location *Location*<BR>[az VM image List-teklifler](/cli/azure/vm/image) --Location *Location* --Publisher *PublisherName*<BR>[az VM image List-SKU 'lar](/cli/azure/vm) --konum *konumu* --yayımcı *PublisherName* -- *offername*|
 
 [Kendi görüntünüzü yükleyip kullanmanız halinde](upload-generalized-managed.md) yayımcı adı, teklif ve sku kullanılmaz.
 
@@ -97,9 +98,9 @@ Bu tablodaki kaynaklar VM tarafından kullanılır ve VM oluşturulduğunda mevc
 | [Kaynak grubu](../../azure-resource-manager/management/overview.md) |Yes |VM bir kaynak grubunda yer almalıdır. |
 | [Depolama hesabı](../../storage/common/storage-account-create.md) |Yes |VM, sanal sabit disklerini depolamak için bir depolama hesabına ihtiyaç duyar. |
 | [Sanal ağ](../../virtual-network/virtual-networks-overview.md) |Yes |VM’in bir sanal ağa üye olması gerekir. |
-| [Genel IP adresi](../../virtual-network/public-ip-addresses.md) |Hayır |VM, uzaktan erişim için atanmış bir genel IP adresine sahip olabilir. |
+| [Genel IP adresi](../../virtual-network/public-ip-addresses.md) |No |VM, uzaktan erişim için atanmış bir genel IP adresine sahip olabilir. |
 | [Ağ arabirimi](../../virtual-network/virtual-network-network-interface.md) |Yes |VM’in ağda iletişim kurabilmek için ağ arabirimine ihtiyacı vardır. |
-| [Veri diskleri](attach-managed-disk-portal.md) |Hayır |VM, depolama olanaklarını genişletmek için veri disklerine sahip olabilir. |
+| [Veri diskleri](attach-managed-disk-portal.md) |No |VM, depolama olanaklarını genişletmek için veri disklerine sahip olabilir. |
 
 
 ## <a name="data-residency"></a>Veri yerleşimi

@@ -9,12 +9,12 @@ ms.subservice: monitoring
 ms.date: 11/30/2020
 ms.author: mahi
 ms.reviewer: mahi
-ms.openlocfilehash: f801d25a0d0f70daaaac1ade3e8966cf5f53affc
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: ac5b1df5ff246623b73dbc41d18216396e6ed7ef
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101672762"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102549864"
 ---
 # <a name="use-azure-monitor-with-your-azure-synapse-analytics-workspace"></a>Azure Izleyici 'yi Azure SYNAPSE Analytics çalışma alanınız ile birlikte kullanma
 
@@ -103,7 +103,7 @@ Azure Portal oturum açın ve   >  uyarı oluşturmak için **uyarıları** İzl
 
 Azure SYNAPSE Analytics çalışma alanları tarafından yayılan Günlükler şunlardır:
 
-| Log Analytics tablo adı | Günlük kategorisi adı                 | Açıklama |
+| Log Analytics tablo adı | Günlük kategorisi adı                 | Description |
 |-------------------------------|-------------------------------------------------|-------------|
 | SynapseGatewayApiRequests     | GatewayApiRequests             | Azure SYNAPSE ağ geçidi API istekleri. |
 | SynapseRbacOperations         | SynapseRbacOperations          | Azure SYNAPSE rol tabanlı erişim denetimi (SRTZB) işlemleri. |
@@ -112,7 +112,7 @@ Azure SYNAPSE Analytics çalışma alanları tarafından yayılan Günlükler ş
 
 Adanmış SQL havuzları tarafından yayılan Günlükler şunlardır:
 
-| Log Analytics tablo adı        | Günlük kategorisi adı             | Açıklama |
+| Log Analytics tablo adı        | Günlük kategorisi adı             | Description |
 |----------------------|--------------------------------------|-------------|
 | SynapseSqlPoolExecRequests  | ExecRequests | Azure SYNAPSE adanmış bir SQL havuzundaki SQL istekleri/sorguları hakkında bilgi.
 | SynapseSqlPoolDmsWorkers    | Dmsçalışanları   | Azure SYNAPSE adanmış bir SQL havuzunda DMS adımlarını tamamlayan çalışanlar hakkında bilgiler.
@@ -131,7 +131,7 @@ Bu Günlükler hakkında daha fazla bilgi için aşağıdaki bilgilere bakın:
 
 Apache Spark havuzları tarafından yayılan günlük aşağıda verilmiştir:
 
-| Log Analytics tablo adı               | Günlük kategorisi adı              | Açıklama                 |
+| Log Analytics tablo adı               | Günlük kategorisi adı              | Description                 |
 |-----------------------------|---------------------------------------|-----------------------------|
 | SynapseBigDataPoolApplicationsEnded | BigDataPoolAppsEnded | Sonlandırılan Apache Spark uygulamalar hakkında bilgi |
 
@@ -171,7 +171,7 @@ Günlükleri yayan kaynağın aboneliğinde olmayan bir depolama hesabı veya Ol
 1. Ayarınızı bir ad verin, **Log Analytics gönder**' i seçin ve sonra **Log Analytics çalışma** alanından bir çalışma alanı seçin.
 
     > [!NOTE]
-    > Bir Azure günlük tablosunda 500 ' den fazla sütun olabileceğinden _kaynağa özgü mod_' u **seçmeniz önerilir.** Daha fazla bilgi için bkz. [Log Analytics bilinen sınırlamalar](../../azure-monitor/essentials/resource-logs.md#column-limit-in-azurediagnostics).
+    > Bir Azure günlük tablosunda 500 ' den fazla sütun olabileceğinden _kaynağa özgü mod_' u **seçmeniz önerilir.** Daha fazla bilgi için bkz. [AzureDiagnostics logs Reference](/azure-monitor/reference/tables/azurediagnostics#additionalfields-column).
 
 1. **Kaydet**’i seçin.
 

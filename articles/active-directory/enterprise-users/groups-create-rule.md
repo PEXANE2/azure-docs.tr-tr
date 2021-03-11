@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7a25caa3b59d242b8dcc8a52e1a5d684815cf7bf
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 8525e9a76fa2439692cdb26b36c0bb761d63177c
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96547789"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102550238"
 ---
 # <a name="create-or-update-a-dynamic-group-in-azure-active-directory"></a>Azure Active Directory içinde dinamik grup oluşturma veya güncelleştirme
 
@@ -80,7 +80,7 @@ Girdiğiniz kural geçerli değilse, kuralın neden işlenmediği hakkında bir 
 
 ## <a name="turn-on-or-off-welcome-email"></a>Hoş geldiniz e-postasını aç veya kapat
 
-Yeni bir Microsoft 365 Grubu oluşturulduğunda, gruba eklenen kullanıcılar bir hoş geldiniz e-posta bildirimi gönderilir. Daha sonra, bir kullanıcının veya cihazın herhangi bir özniteliği değişirse, kuruluştaki tüm dinamik grup kuralları üyelik değişiklikleri için işlenir. Ayrıca eklenen kullanıcılar da hoş geldiniz bildirimini alır. Bu davranışı [Exchange PowerShell](/powershell/module/exchange/users-and-groups/Set-UnifiedGroup?view=exchange-ps&preserve-view=true)'de devre dışı bırakabilirsiniz.
+Yeni bir Microsoft 365 Grubu oluşturulduğunda, gruba eklenen kullanıcılar bir hoş geldiniz e-posta bildirimi gönderilir. Daha sonra, bir kullanıcının veya cihazın herhangi bir özniteliği değişirse, kuruluştaki tüm dinamik grup kuralları üyelik değişiklikleri için işlenir. Ayrıca eklenen kullanıcılar da hoş geldiniz bildirimini alır. Bu davranışı [Exchange PowerShell](/powershell/module/exchange/users-and-groups/Set-UnifiedGroup)'de devre dışı bırakabilirsiniz.
 
 ## <a name="check-processing-status-for-a-rule"></a>Bir kural için işleme durumunu denetleme
 

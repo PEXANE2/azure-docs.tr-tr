@@ -3,17 +3,17 @@ title: Hızlı başlangıç-Market ile Azure gizli bilgi işlem sanal makinesi o
 description: Market ile nasıl hızlı bir şekilde gizli bilgi işlem sanal makinesi oluşturulacağını öğrenerek dağıtımlarınızla çalışmaya başlayın.
 author: JBCook
 ms.service: virtual-machines
-ms.subservice: workloads
+ms.subservice: confidential-computing
 ms.workload: infrastructure
 ms.topic: quickstart
 ms.date: 04/06/2020
 ms.author: JenCook
-ms.openlocfilehash: 82d9c143f84dfced639c928bf12693024079c2ba
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: aba23b67574fb74b7cd571dc5d4642bb8b991b93
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91409502"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102566643"
 ---
 # <a name="quickstart-deploy-an-azure-confidential-computing-vm-in-the-marketplace"></a>Hızlı başlangıç: market 'te Azure gizli bilgi Işlem VM 'si dağıtma
 
@@ -45,14 +45,14 @@ Azure aboneliğiniz yoksa başlamadan önce [bir hesap oluşturun](https://azure
 
 ## <a name="configure-your-virtual-machine"></a>Sanal makinenizi yapılandırma
 
-1. **Temel bilgiler** sekmesinde, **aboneliğinizi** ve **kaynak grubunuzu**seçin. Bu şablondan bir sanal makine dağıtmak için kaynak grubunuzun boş olması gerekir.
+1. **Temel bilgiler** sekmesinde, **aboneliğinizi** ve **kaynak grubunuzu** seçin. Bu şablondan bir sanal makine dağıtmak için kaynak grubunuzun boş olması gerekir.
 
 1. Aşağıdaki değerleri yazın veya seçin:
 
    * **Bölge**: sizin Için doğru Azure bölgesini seçin.
 
         > [!NOTE]
-        > Gizli işlem sanal makineleri yalnızca belirli bölgelerde bulunan özel donanımlar üzerinde çalışır. DCsv2 serisi VM 'Ler için kullanılabilir en son bölgeler için bkz. [kullanılabilir bölgeler](https://azure.microsoft.com/global-infrastructure/services/?products=virtual-machines).
+        > Gizli işlem sanal makineleri yalnızca belirli bölgelerde bulunan özel donanımlar üzerinde çalışır. DCsv2-Series VM 'Ler için kullanılabilir olan en son bölgeler için bkz. [kullanılabilir bölgeler](https://azure.microsoft.com/global-infrastructure/services/?products=virtual-machines).
     
     * **Görüntü seçin**: herhangi bir görüntü seçin. Bu öğreticiyi tamamladığınızda, Ubuntu 18,04 (Gen 2) seçeneğini belirleyin. Aksi takdirde, aşağıdaki uygun adımlara yönlendirilirsiniz. 
 
@@ -72,22 +72,22 @@ Azure aboneliğiniz yoksa başlamadan önce [bir hesap oluşturun](https://azure
 1. Ekranınızın altındaki **Sonraki: sanal makine ayarları** düğmesini seçin.
 
     > [!IMPORTANT]
-    > Sayfanın güncelleştirilmesini bekleyin. "Gizli bilgi Işlem DCsv2 serisi VM 'Lerin sınırlı sayıda bölgede kullanılabilir olduğunu belirten bir ileti *görmemelisiniz* . Bu ileti devam ederse, önceki sayfaya dönün ve kullanılabilir bir DCsv2 serisi bölgesi seçin.
+    > Sayfanın güncelleştirilmesini bekleyin. "Gizli bilgi Işlem DCsv2 serisi VM 'Lerin sınırlı sayıda bölgede kullanılabilir olduğunu belirten bir ileti *görmemelisiniz* . Bu ileti devam ederse, önceki sayfaya dönün ve kullanılabilir bir DCsv2-Series bölgesi seçin.
 
-1. **Değişiklik boyutu**için, boyut seçicisinde gizli işlem özelliklerine sahıp bir VM seçin. 
+1. **Değişiklik boyutu** için, boyut seçicisinde gizli işlem özelliklerine sahıp bir VM seçin. 
 
     > [!TIP]
-    > Boyutları **DC1s_v2**, **DC2s_v2**, **DC4s_V2**ve **DC8_v2**görmeniz gerekir. Bunlar şu anda gizli bilgi işlem desteği olan tek sanal makine boyutlarıdır. [Daha fazla bilgi edinin](virtual-machine-solutions.md).
+    > Boyutları **DC1s_v2**, **DC2s_v2**, **DC4s_V2** ve **DC8_v2** görmeniz gerekir. Bunlar şu anda gizli bilgi işlem desteği olan tek sanal makine boyutlarıdır. [Daha fazla bilgi edinin](virtual-machine-solutions.md).
 
-1. **Işletim sistemi disk türü**için bir disk türü seçin.
+1. **Işletim sistemi disk türü** için bir disk türü seçin.
 
-1. **Sanal ağ**için yeni bir tane oluşturun veya var olan bir kaynaktan seçim yapın.
+1. **Sanal ağ** için yeni bir tane oluşturun veya var olan bir kaynaktan seçim yapın.
 
-1. **Alt ağ**için yeni bir tane oluşturun veya var olan bir kaynaktan seçim yapın.
+1. **Alt ağ** için yeni bir tane oluşturun veya var olan bir kaynaktan seçim yapın.
 
-1. **Ortak gelen bağlantı noktalarını Seç**için **SSH (Linux)/RDP (Windows)** öğesini seçin. Bu hızlı başlangıçta, sanal makineye bağlanmak ve açık şifreleme SDK yapılandırmasını gerçekleştirmek için bu adım gereklidir. 
+1. **Ortak gelen bağlantı noktalarını Seç** için **SSH (Linux)/RDP (Windows)** öğesini seçin. Bu hızlı başlangıçta, sanal makineye bağlanmak ve açık şifreleme SDK yapılandırmasını gerçekleştirmek için bu adım gereklidir. 
 
-1. **Önyükleme tanılaması**için, bu hızlı başlangıç için devre dışı bırakın. 
+1. **Önyükleme tanılaması** için, bu hızlı başlangıç için devre dışı bırakın. 
 
 1. **Gözden geçir ve oluştur**’u seçin.
 
@@ -126,7 +126,7 @@ Linux VM'lerinize bağlanma hakkında daha fazla bilgi için bkz. [Portal kullan
 
 ## <a name="install-the-open-enclave-sdk-oe-sdk"></a>Açık Enclave SDK 'sını yükleme (OE SDK) <a id="Install"></a>
 
-Bir Ubuntu 18,04 LTS Gen 2 görüntüsünü çalıştıran DCsv2 serisi sanal makinenize [OE SDK](https://github.com/openenclave/openenclave) 'yı yüklemek için adım adım yönergeleri izleyin. 
+Bir Ubuntu 18,04 LTS Gen 2 görüntüsünü çalıştıran DCsv2-Series sanal makinesine [OE SDK 'yı](https://github.com/openenclave/openenclave) yüklemek için adım adım yönergeleri izleyin. 
 
 Sanal makineniz Ubuntu 16,04 LTS Gen 2 üzerinde çalışıyorsa [ubuntu 16,04 yükleme yönergelerini](https://github.com/openenclave/openenclave/blob/master/docs/GettingStartedDocs/install_oe_sdk-Ubuntu_16.04.md)izlemeniz gerekir. 
 

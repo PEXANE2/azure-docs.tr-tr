@@ -2,18 +2,19 @@
 title: Azure AD Uygulaması Linux IaaS VM 'Leri ile Azure disk şifrelemesi (önceki sürüm)
 description: Bu makale, Linux IaaS VM 'Leri için Microsoft Azure disk şifrelemeyi etkinleştirme hakkında yönergeler sağlar.
 author: msmbaldwin
-ms.service: virtual-machines-linux
-ms.subservice: security
+ms.service: virtual-machines
+ms.subservice: disks
+ms.collection: linux
 ms.topic: conceptual
 ms.author: mbaldwin
 ms.date: 03/15/2019
 ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: c8228086eb67478d80aa041004e0da3eed71f896
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: d1607ef4ff277f9c9cdb55db3e58da1052a00756
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92741799"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102558415"
 ---
 # <a name="enable-azure-disk-encryption-with-azure-ad-on-linux-vms-previous-release"></a>Linux sanal makinelerinde Azure AD ile Azure disk şifrelemesini etkinleştirme (önceki sürüm)
 
@@ -36,7 +37,7 @@ Diskleri şifrelemeden önce bir [anlık görüntü](snapshot-copy-managed-disk.
 
  
 
-## <a name="enable-encryption-on-an-existing-or-running-iaas-linux-vm"></a><a name="bkmk_RunningLinux"> </a> Mevcut veya çalışan IaaS Linux VM 'de şifrelemeyi etkinleştirme
+## <a name="enable-encryption-on-an-existing-or-running-iaas-linux-vm"></a><a name="bkmk_RunningLinux"></a> Mevcut veya çalışan IaaS Linux VM 'de şifrelemeyi etkinleştirme
 
 Bu senaryoda, Azure Resource Manager şablonu, PowerShell cmdlet 'leri veya Azure CLı komutlarını kullanarak şifrelemeyi etkinleştirebilirsiniz. 
 
@@ -78,7 +79,7 @@ Azure 'da çalışan bir IaaS sanal makinesinde şifrelemeyi etkinleştirmek iç
          az vm encryption disable --name "MySecureVM" --resource-group "MyVirtualMachineResourceGroup" --volume-type DATA
      ```
 
-### <a name="enable-encryption-on-an-existing-or-running-linux-vm-by-using-powershell"></a><a name="bkmk_RunningLinuxPSH"> </a> PowerShell kullanarak mevcut veya çalışan BIR Linux VM 'de şifrelemeyi etkinleştirme
+### <a name="enable-encryption-on-an-existing-or-running-linux-vm-by-using-powershell"></a><a name="bkmk_RunningLinuxPSH"></a> PowerShell kullanarak mevcut veya çalışan BIR Linux VM 'de şifrelemeyi etkinleştirme
 Azure 'da çalışan bir IaaS sanal makinesinde şifrelemeyi etkinleştirmek için [set-AzVMDiskEncryptionExtension](/powershell/module/az.compute/set-azvmdiskencryptionextension) cmdlet 'ini kullanın. Diskler şifrelenmeden önce bir [anlık görüntü](snapshot-copy-managed-disk.md) alın veya [Azure Backup](../../backup/backup-azure-vms-encryption.md) VM yedeklemesi yapın. -SkipVmBackup parametresi, çalışan bir Linux sanal makinesini şifrelemek için PowerShell betiklerine zaten belirtildi.
 
 - **Çalışan bir VM 'yi bir istemci parolası kullanarak şifreleyin:** Aşağıdaki betik, değişkenlerinizi başlatır ve Set-AzVMDiskEncryptionExtension cmdlet 'ini çalıştırır. Kaynak grubu, VM, Anahtar Kasası, Azure AD uygulaması ve istemci parolası zaten ön koşullar olarak oluşturulmuş olmalıdır. MyVirtualMachineResourceGroup, MyKeyVaultResourceGroup, MySecureVM, Mysecurekasası, My-AAD-Client-ID ve My-AAD-Client-Secret değerlerini değerlerinizle değiştirin. Hangi diskleri şifrelediğiniz belirlemek için-VolumeType parametresini değiştirin.
@@ -132,7 +133,7 @@ Azure 'da çalışan bir IaaS sanal makinesinde şifrelemeyi etkinleştirmek iç
      ```
 
 
-### <a name="enable-encryption-on-an-existing-or-running-iaas-linux-vm-with-a-template"></a><a name="bkmk_RunningLinux"> </a> Bir şablonla mevcut veya çalışan bir IaaS Linux sanal makinesinde şifrelemeyi etkinleştirme
+### <a name="enable-encryption-on-an-existing-or-running-iaas-linux-vm-with-a-template"></a><a name="bkmk_RunningLinux"></a> Bir şablonla mevcut veya çalışan bir IaaS Linux sanal makinesinde şifrelemeyi etkinleştirme
 
 [Kaynak Yöneticisi şablonunu](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-running-linux-vm)kullanarak Azure 'da var olan veya çalışan bir IaaS Linux sanal makinesinde disk şifrelemeyi etkinleştirebilirsiniz.
 
@@ -148,7 +149,7 @@ Aşağıdaki tabloda, bir Azure AD istemci KIMLIĞI kullanan mevcut veya çalı�
 | AADClientSecret | Anahtar kasanıza gizli diziler yazma izinleri olan Azure AD uygulamasının istemci gizli anahtarı. |
 | keyVaultName | Anahtarın karşıya yüklenmesi gereken anahtar kasasının adı. Azure CLı komutunu kullanarak edinebilirsiniz `az keyvault show --name "MySecureVault" --query KVresourceGroup` . |
 |  keyEncryptionKeyURL 'Si | Oluşturulan anahtarı şifrelemek için kullanılan anahtar şifreleme anahtarının URL 'SI. **UseExistingKek** açılır listesinde **nokek** ' ı seçerseniz bu parametre isteğe bağlıdır. **UseExistingKek** açılır listesinde **kek** ' yi seçerseniz _Keyencryptionkeyurl_ değerini girmeniz gerekir. |
-| Birimtürü | Şifreleme işleminin gerçekleştirildiği birimin türü. Desteklenen geçerli değerler _OS_ veya _All_ . (Önkoşul bölümünde daha önce desteklenen Linux dağıtımlarını ve işletim sistemi ve veri diskleri sürümlerini inceleyin.) |
+| Birimtürü | Şifreleme işleminin gerçekleştirildiği birimin türü. Desteklenen geçerli değerler _OS_ veya _All_. (Önkoşul bölümünde daha önce desteklenen Linux dağıtımlarını ve işletim sistemi ve veri diskleri sürümlerini inceleyin.) |
 | sequenceVersion | BitLocker işleminin sıra sürümü. Aynı VM 'de her disk şifreleme işlemi gerçekleştirildiğinde bu sürüm numarasını artırın. |
 | vmName | Şifreleme işleminin gerçekleştirileceği sanal makinenin adı. |
 | passphrase | Veri şifreleme anahtarı olarak güçlü bir parola yazın. |
@@ -164,7 +165,7 @@ EncryptFormatAll parametresi, Linux veri disklerinin şifrelenme süresini azalt
 > Bir VM 'nin veri birimlerinde gerekli veriler olduğunda, EncryptFormatAll kullanılmamalıdır. Diskleri şifrelemeden hariç tutun. Özellik parametresini ve uygulamayı üretim VM 'sinde denemeden önce anlamak için öncelikle bir test sanal makinesinde EncryptFormatAll parametresini deneyin. EncryptFormatAll seçeneği veri diskini biçimlendirir, bu nedenle üzerindeki tüm veriler kaybedilir. Devam etmeden önce, dışlamak istediğiniz disklerin düzgün şekilde takılmamış olduğunu doğrulayın. </br></br>
  >Şifreleme ayarlarını güncelleştirdiğinizde bu parametreyi ayarlarsanız, gerçek şifrelemeden önce yeniden başlatmaya neden olabilir. Bu durumda, fstab dosyasından biçimlendirilmesini istemediğiniz diski de kaldırmak isteyeceksiniz. Benzer şekilde, şifreleme işlemini çalıştırmadan önce fstab dosyasına şifrelemek istediğiniz bölümü eklemeniz gerekir. 
 
-### <a name="encryptformatall-criteria"></a><a name="bkmk_EFACriteria"> </a> Encryptformatall ölçütü
+### <a name="encryptformatall-criteria"></a><a name="bkmk_EFACriteria"></a> Encryptformatall ölçütü
 Parametresi tüm bölümler arasında gider ve aşağıdaki ölçütlerin *Tümünü* karşılayan sürece bunları şifreler: 
 - Bir kök/işletim sistemi/önyükleme bölümü değil
 - Zaten şifreli değil
@@ -175,7 +176,7 @@ Parametresi tüm bölümler arasında gider ve aşağıdaki ölçütlerin *Tüm�
 
 RAID veya LVM birimi yerine RAID veya LVM birimini oluşturan diskleri şifreleyin.
 
-### <a name="use-the-encryptformatall-parameter-with-a-template"></a><a name="bkmk_EFATemplate"> </a> Bir şablonla EncryptFormatAll parametresini kullanın
+### <a name="use-the-encryptformatall-parameter-with-a-template"></a><a name="bkmk_EFATemplate"></a> Bir şablonla EncryptFormatAll parametresini kullanın
 EncryptFormatAll seçeneğini kullanmak için, bir Linux sanal makinesini şifreleyen ve AzureDiskEncryption kaynağı için **Encryptionoperation** alanını değiştiren önceden var olan Azure Resource Manager şablonu kullanın.
 
 1. Örnek olarak, [çalışan bir Linux IaaS VM 'sini şifrelemek için Kaynak Yöneticisi şablonunu](https://github.com/vermashi/azure-quickstart-templates/tree/encrypt-format-running-linux-vm/201-encrypt-running-linux-vm)kullanın. 
@@ -184,7 +185,7 @@ EncryptFormatAll seçeneğini kullanmak için, bir Linux sanal makinesini şifre
 4. Abonelik, kaynak grubu, kaynak grubu konumu, diğer parametreler, yasal koşullar ve anlaşma ' ı seçin. Mevcut veya çalışan IaaS sanal makinesinde şifrelemeyi etkinleştirmek için **Oluştur** ' u seçin.
 
 
-### <a name="use-the-encryptformatall-parameter-with-a-powershell-cmdlet"></a><a name="bkmk_EFAPSH"> </a> Bir PowerShell cmdlet 'ı Ile EncryptFormatAll parametresini kullanma
+### <a name="use-the-encryptformatall-parameter-with-a-powershell-cmdlet"></a><a name="bkmk_EFAPSH"></a> Bir PowerShell cmdlet 'ı Ile EncryptFormatAll parametresini kullanma
 EncryptFormatAll parametresiyle [set-AzVMDiskEncryptionExtension](/powershell/module/az.compute/set-azvmdiskencryptionextension) cmdlet 'ini kullanın.
 
 **Çalışan bir VM 'yi bir istemci gizli anahtarı ve EncryptFormatAll kullanarak şifreleyin:** Örnek olarak, aşağıdaki betik değişkenlerinizi başlatır ve Set-AzVMDiskEncryptionExtension cmdlet 'ini EncryptFormatAll parametresiyle çalıştırır. Kaynak grubu, VM, Anahtar Kasası, Azure AD uygulaması ve istemci parolası zaten ön koşullar olarak oluşturulmuş olmalıdır. MyKeyVaultResourceGroup, MyVirtualMachineResourceGroup, MySecureVM, Mysecurekasası, My-AAD-Client-ID ve My-AAD-Client-Secret değerlerini değerlerinizle değiştirin.
@@ -203,7 +204,7 @@ EncryptFormatAll parametresiyle [set-AzVMDiskEncryptionExtension](/powershell/mo
    ```
 
 
-### <a name="use-the-encryptformatall-parameter-with-logical-volume-manager-lvm"></a><a name="bkmk_EFALVM"> </a> Mantıksal birim Yöneticisi (LVM) Ile EncryptFormatAll parametresini kullanın 
+### <a name="use-the-encryptformatall-parameter-with-logical-volume-manager-lvm"></a><a name="bkmk_EFALVM"></a> Mantıksal birim Yöneticisi (LVM) Ile EncryptFormatAll parametresini kullanın 
 Bir LVM-şifreli kurulum önerilir. Aşağıdaki örneklerin tümü için, cihaz yolu ve bağlama noktalarını kullanım örnekinizdeki her türlü uygun olacak şekilde değiştirin. Bu kurulum şu şekilde yapılabilir:
 
 - VM 'yi oluşturacak veri disklerini ekleyin.
@@ -238,7 +239,7 @@ Bir LVM-şifreli kurulum önerilir. Aşağıdaki örneklerin tümü için, cihaz
 
 
 
-## <a name="new-iaas-vms-created-from-customer-encrypted-vhd-and-encryption-keys"></a><a name="bkmk_VHDpre"> </a> Müşteri tarafından şifrelenen VHD ve şifreleme anahtarlarından oluşturulan yeni IaaS VM 'leri
+## <a name="new-iaas-vms-created-from-customer-encrypted-vhd-and-encryption-keys"></a><a name="bkmk_VHDpre"></a> Müşteri tarafından şifrelenen VHD ve şifreleme anahtarlarından oluşturulan yeni IaaS VM 'leri
 Bu senaryoda, Kaynak Yöneticisi şablonu, PowerShell cmdlet 'leri veya CLı komutlarını kullanarak şifrelemeyi etkinleştirebilirsiniz. Aşağıdaki bölümlerde Kaynak Yöneticisi şablonu ve CLı komutlarının daha ayrıntılı bir şekilde açıklanmaktadır. 
 
 Azure 'da kullanılabilen önceden şifrelenmiş görüntüleri hazırlama ekinde yer alan yönergeleri kullanın. Görüntü oluşturulduktan sonra, şifrelenmiş bir Azure VM oluşturmak için sonraki bölümdeki adımları kullanabilirsiniz.
@@ -252,7 +253,7 @@ Azure 'da kullanılabilen önceden şifrelenmiş görüntüleri hazırlama ekind
 
 
 
-### <a name="use-azure-powershell-to-encrypt-iaas-vms-with-pre-encrypted-vhds"></a><a name="bkmk_VHDprePSH"> </a> IaaS VM 'lerini önceden şifrelenen VHD 'lerle şifrelemek için Azure PowerShell kullanma 
+### <a name="use-azure-powershell-to-encrypt-iaas-vms-with-pre-encrypted-vhds"></a><a name="bkmk_VHDprePSH"></a> IaaS VM 'lerini önceden şifrelenen VHD 'lerle şifrelemek için Azure PowerShell kullanma 
 [Set-AzVMOSDisk](/powershell/module/az.compute/set-azvmosdisk#examples)PowerShell cmdlet 'ini kullanarak, şifrelenen VHD 'niz üzerinde disk şifrelemeyi etkinleştirebilirsiniz. Aşağıdaki örnek size bazı ortak parametreler vermektedir. 
 
 ```powershell
@@ -341,7 +342,7 @@ Azure PowerShell, Azure CLı veya Kaynak Yöneticisi şablonunu kullanarak şifr
          az vm encryption disable --name "MySecureVM" --resource-group "MyVirtualMachineResourceGroup" --volume-type [ALL, DATA, OS]
      ```
 - **Kaynak Yöneticisi şablonuyla şifrelemeyi devre dışı bırak:** Şifrelemeyi devre dışı bırakmak için [çalışan bir LINUX VM şablonunda şifrelemeyi devre dışı bırak](https://aka.ms/decrypt-linuxvm) ' ı kullanın.
-     1. **Azure 'A dağıt** ' ı seçin.
+     1. **Azure 'A dağıt**' ı seçin.
      2. Abonelik, kaynak grubu, konum, VM, yasal koşullar ve Sözleşme ' yi seçin.
      3. Çalışan bir Windows VM 'de disk şifrelemeyi devre dışı bırakmak için **satın al** ' ı seçin 
 

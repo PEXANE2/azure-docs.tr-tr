@@ -7,12 +7,12 @@ ms.service: azure-percept
 ms.topic: conceptual
 ms.date: 02/18/2021
 ms.custom: template-concept
-ms.openlocfilehash: a08876cde9fac64c3a361b469049b4e33678a86f
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.openlocfilehash: 6a3049709c6c094f722a8132ee4c4b2051e24d95
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102098154"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102616698"
 ---
 # <a name="azure-percept-security-overview"></a>Azure Percept güvenliğine genel bakış
 
@@ -37,7 +37,7 @@ Azure Percept cihazları, bellenimi güvenli hale getirmek için donanım kök g
 
 ### <a name="iot-edge"></a>IoT Edge
 
-Azure Percept DK, Aktarım Katmanı Güvenliği (TLS) protokolü kullanan ek güvenlik ve diğer Azure hizmetleriyle Azure Percept Studio 'ya bağlanır. Azure Percept DK, Azure IoT Edge özellikli bir cihazdır. IoT Edge Runtime, bir cihazı IoT Edge cihazına veren bir programlar koleksiyonudur. Toplu olarak, IoT Edge çalışma zamanı bileşenleri, IoT Edge cihazların kenarda çalışacak kodu almasını ve sonuçları iletmelerini sağlar. Azure Percept DK, ana bilgisayar işletim sistemi ve kenar özellikli uygulamalardan IoT Edge iş yüklerini yalıtmak için Docker kapsayıcılarını kullanır. Azure IoT Edge güvenlik çerçevesi hakkında daha fazla bilgi için [IoT Edge Güvenlik Yöneticisi](https://docs.microsoft.com/azure/iot-edge/iot-edge-security-manager?view=iotedge-2018-06)hakkında makalesini okuyun.
+Azure Percept DK, Aktarım Katmanı Güvenliği (TLS) protokolü kullanan ek güvenlik ve diğer Azure hizmetleriyle Azure Percept Studio 'ya bağlanır. Azure Percept DK, Azure IoT Edge özellikli bir cihazdır. IoT Edge Runtime, bir cihazı IoT Edge cihazına veren bir programlar koleksiyonudur. Toplu olarak, IoT Edge çalışma zamanı bileşenleri, IoT Edge cihazların kenarda çalışacak kodu almasını ve sonuçları iletmelerini sağlar. Azure Percept DK, ana bilgisayar işletim sistemi ve kenar özellikli uygulamalardan IoT Edge iş yüklerini yalıtmak için Docker kapsayıcılarını kullanır. Azure IoT Edge güvenlik çerçevesi hakkında daha fazla bilgi için [IoT Edge Güvenlik Yöneticisi](https://docs.microsoft.com/azure/iot-edge/iot-edge-security-manager)hakkında makalesini okuyun.
 
 ### <a name="device-update-for-iot-hub"></a>IoT Hub için cihaz güncelleştirmesi
 
@@ -57,7 +57,7 @@ Bu denetim listesi, güvenlik duvarı kuralları için bir başlangıç noktası
 |*. auth.azureperceptdk.azure.net|   443|    Azure DK SOM kimlik doğrulaması ve yetkilendirme|
 |*. auth.projectsantacruz.azure.net| 443|    Azure DK SOM kimlik doğrulaması ve yetkilendirme|
 
-Ayrıca, [Azure IoT Edge tarafından kullanılan bağlantıların](https://docs.microsoft.com/azure/iot-edge/production-checklist?view=iotedge-2018-06#allow-connections-from-iot-edge-devices)listesini gözden geçirin.
+Ayrıca, [Azure IoT Edge tarafından kullanılan bağlantıların](https://docs.microsoft.com/azure/iot-edge/production-checklist#allow-connections-from-iot-edge-devices)listesini gözden geçirin.
 
 <!---
 ## Additional Recommendations for Deployment to Production

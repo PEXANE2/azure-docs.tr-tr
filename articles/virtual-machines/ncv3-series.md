@@ -3,16 +3,16 @@ title: NCv3-Series-Azure sanal makineleri
 description: NCv3 serisi VM 'Ler için Özellikler.
 author: vikancha-MSFT
 ms.service: virtual-machines
-ms.subservice: sizes
+ms.subservice: vm-sizes-gpu
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: 313ca9ddb893ad2d84fdb3f808bdee38dfc9e846
-ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
+ms.openlocfilehash: c28ed042156865c52607ce031507c696f28b4e7c
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102119765"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102617310"
 ---
 # <a name="ncv3-series"></a>NCv3 serisi
 
@@ -24,7 +24,7 @@ NCv3 serisi VM 'Ler NVıDıA Tesla V100 GPU 'ları tarafından desteklenir. Bu G
 [Güncelleştirmeleri koruyan bellek](maintenance-and-updates.md): desteklenmiyor<br>
 [VM oluşturma desteği](generation-2.md): 1. ve 2. nesil<br>
 [Hızlandırılmış ağ](../virtual-network/create-vm-accelerated-networking-cli.md): desteklenmez<br>
-[Kısa ömürlü işletim sistemi diskleri](ephemeral-os-disks.md): desteklenmez <br>
+[Kısa ömürlü işletim sistemi diskleri](ephemeral-os-disks.md): desteklenir <br>
 NVIDIA NVLink Interconnect: desteklenmiyor<br>
 
 > [!IMPORTANT]

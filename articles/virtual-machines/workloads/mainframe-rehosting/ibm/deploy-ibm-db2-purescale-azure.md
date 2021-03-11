@@ -2,16 +2,16 @@
 title: Azure 'da IBM DB2 pureScale dağıtma
 description: Kısa bir süre önce, bir kuruluşu z/OS üzerinde çalışan IBM DB2 ortamından Azure 'da IBM DB2 pureScale 'e geçirmeye yönelik örnek bir mimari dağıtmayı öğrenin.
 author: njray
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
 ms.topic: how-to
 ms.date: 11/09/2018
 ms.author: edprice
-ms.openlocfilehash: 91ab11dce1c88f698640ce446b529c9cbe92cac5
-ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
+ms.openlocfilehash: 481816ca0c1fecfee9396f6cc40582695b0952f2
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/31/2021
-ms.locfileid: "99221688"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102550204"
 ---
 # <a name="deploy-ibm-db2-purescale-on-azure"></a>Azure 'da IBM DB2 pureScale dağıtma
 

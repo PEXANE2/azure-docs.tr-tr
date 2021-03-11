@@ -7,12 +7,12 @@ ms.reviewer: maghan
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 07/13/2020
-ms.openlocfilehash: 5e2ecf8dff432f2a0ce6b3356ce3eca7a8127932
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 09456c06f2a171ec32c1b885dc2b4e475fea5371
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100586869"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102550306"
 ---
 # <a name="monitor-and-alert-data-factory-by-using-azure-monitor"></a>Azure Izleyici 'yi kullanarak Data Factory izleyin ve uyarır
 
@@ -76,7 +76,7 @@ Veri fabrikanızın tanılama ayarlarını oluşturun veya ekleyin.
    ![Ayarlarınızı adlandırın ve bir Log Analytics çalışma alanı seçin](media/data-factory-monitor-oms/monitor-oms-image2.png)
 
     > [!NOTE]
-    > Bir Azure günlük tablosunda 500 ' den fazla sütun olabileceğinden _kaynağa özgü mod_' u **seçmeniz önerilir.** Daha fazla bilgi için bkz. [Log Analytics bilinen sınırlamalar](../azure-monitor/essentials/resource-logs.md#column-limit-in-azurediagnostics).
+    > Bir Azure günlük tablosunda 500 ' den fazla sütun olabileceğinden _kaynağa özgü mod_' u **seçmeniz önerilir.** Daha fazla bilgi için bkz. [AzureDiagnostics logs Reference](/azure-monitor/reference/tables/azurediagnostics#additionalfields-column).
 
 1. **Kaydet**’i seçin.
 
@@ -574,7 +574,7 @@ SSIS IR Başlat/Durdur/bakım işlemlerinin günlük öznitelikleri aşağıda v
 | **ıntegrationruntimename** | Dize | SSIS IR 'nizin adı                                      | `MySSISIR` |
 | **düzey**                  | Dize | Tanılama günlüklerinin düzeyi                                  | `Informational` |
 | **'ı**             | Dize | SSIS IR işleminin sonucu                          | `Started/InProgress/Succeeded/Failed` |
-| **İleti**                | Dize | SSIS IR işleminizi çıkış iletisi                  | `The stopping of your SSIS integration runtime has succeeded.` |
+| **message**                | Dize | SSIS IR işleminizi çıkış iletisi                  | `The stopping of your SSIS integration runtime has succeeded.` |
 | **RESOURCEID**             | Dize | ADF kaynağınızın benzersiz KIMLIĞI                            | `/SUBSCRIPTIONS/<subscriptionID>/RESOURCEGROUPS/<resourceGroupName>/PROVIDERS/MICROSOFT.DATAFACTORY/FACTORIES/<dataFactoryName>` |
 
 #### <a name="ssis-event-message-context-log-attributes"></a>SSIS olay iletisi bağlam günlüğü öznitelikleri
@@ -667,7 +667,7 @@ SSIS IR 'niz üzerinde SSIS paket yürütmeleri tarafından oluşturulan olay il
 | **messageTime**            | Dize | Olay iletinizin UTC biçiminde oluşturulduğu zaman          | `2017-06-28T21:00:27.3534352Z` |
 | **messageType**            | Dize | Olay iletinizin türü                                     | `70`( [daha fazla ileti türüne](/sql/integration-services/system-views/catalog-operation-messages-ssisdb-database#remarks)bakın) |
 | **messageSourceType**      | Dize | Olay iletisi kaynağınızın türü                              | `20`( [daha fazla ileti kaynağı türü](/sql/integration-services/system-views/catalog-operation-messages-ssisdb-database#remarks)görüntüleyin) |
-| **İleti**                | Dize | Olay iletinizin metni                                     | `MyPackage:Validation has started.` |
+| **message**                | Dize | Olay iletinizin metni                                     | `MyPackage:Validation has started.` |
 | **PaketAdı**            | Dize | Yürütülen paket dosyanızın adı                             | `MyPackage.dtsx` |
 | **eventName**              | Dize | İlgili çalışma zamanı olayının adı                                 | `OnPreValidate` |
 | **messageSourceName**      | Dize | Olay iletisi kaynağınız olarak paket bileşeninin adı         | `Data Flow Task` |

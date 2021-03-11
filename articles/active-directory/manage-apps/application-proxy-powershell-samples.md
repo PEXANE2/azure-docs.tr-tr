@@ -12,21 +12,21 @@ ms.date: 12/05/2019
 ms.author: kenwith
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 117b4fec13c22ffb2f3163d50be44734d24ef3fa
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.openlocfilehash: aeff14e1676389eb2204cad45ea7b00d5aa9796b
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99259109"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102566660"
 ---
 # <a name="azure-ad-powershell-examples-for-azure-ad-application-proxy"></a>Azure AD Uygulama Ara Sunucusu için Azure AD PowerShell örnekleri
 
-Aşağıdaki tablo Azure AD Uygulama Ara Sunucusu için PowerShell betiği örneklerine bağlantılar içerir. Bu örnekler, aksi belirtilmedikçe, Graph modülü [Için Azuread v2 PowerShell](/powershell/azure/active-directory/install-adv2) veya [Graf modülü önizleme sürümü Için azuread v2 PowerShell](/powershell/azure/active-directory/install-adv2?view=azureadps-2.0-preview)gerektirir.
+Aşağıdaki tablo Azure AD Uygulama Ara Sunucusu için PowerShell betiği örneklerine bağlantılar içerir. Bu örnekler, aksi belirtilmedikçe, Graph modülü [Için Azuread v2 PowerShell](/powershell/azure/active-directory/install-adv2) veya [Graf modülü önizleme sürümü Için azuread v2 PowerShell](/powershell/azure/active-directory/install-adv2?view=azureadps-2.0-preview&preserve-view=true)gerektirir.
 
 
 Bu örneklerde kullanılan cmdlet 'ler hakkında daha fazla bilgi için bkz. [uygulama proxy 'Si uygulama yönetimi](/powershell/module/azuread/#application_proxy_application_management) ve [uygulama proxy Bağlayıcısı yönetimi](/powershell/module/azuread/#application_proxy_connector_management).
 
-| Bağlantı | Açıklama |
+| Bağlantı | Description |
 |---|---|
 |**Uygulama proxy 'Si uygulamaları**||
 | [Tüm uygulama proxy uygulamaları için temel bilgileri listeleyin](scripts/powershell-get-all-app-proxy-apps-basic.md) | Dizininizdeki tüm uygulama proxy uygulamaları hakkında temel bilgileri (AppID, DisplayName, ObjId) listeler. |
