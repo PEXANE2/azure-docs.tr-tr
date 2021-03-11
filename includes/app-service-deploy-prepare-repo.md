@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/12/2019
 ms.author: cephalin
 ms.custom: include file
-ms.openlocfilehash: f783245b17a880a67b62aa24a3feabb9b113053b
-ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
+ms.openlocfilehash: 93bfb515c46413400ecd47105de378c7b677cecd
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102122264"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102564976"
 ---
 ## <a name="prepare-your-repository"></a>Deponuzu hazırlayın
 
@@ -34,6 +34,6 @@ Azure App Service yapı sunucusundan otomatik derlemeler almak için, depo kökl
 Dağıtımınızı özelleştirmek için depo köküne bir *. Deployment* dosyası ekleyin. Daha fazla bilgi için bkz. dağıtımları ve [özel dağıtım betiğini](https://github.com/projectkudu/kudu/wiki/Custom-Deployment-Script) [Özelleştirme](https://github.com/projectkudu/kudu/wiki/Customizing-deployments) .
 
 > [!NOTE]
-> Visual Studio 'da geliştirirseniz, [Visual Studio 'nun sizin için bir depo oluşturmasına](/azure/devops/repos/git/creatingrepo?view=vsts&tabs=visual-studio&preserve-view=true)izin verin. Proje git kullanılarak dağıtılmaya hemen hazırlanın.
+> Visual Studio 'da geliştirirseniz, [Visual Studio 'nun sizin için bir depo oluşturmasına](/azure/devops/repos/git/creatingrepo?tabs=visual-studio)izin verin. Proje git kullanılarak dağıtılmaya hemen hazırlanın.
 >
 

@@ -1,17 +1,17 @@
 ---
-title: Azure Işlevleri 'ni kullanarak C# işlevleri geliştirme
-description: Azure Işlevleri çalışma zamanı ile işlem içinde çalışan kodu geliştirmek ve yayımlamak Için C# ' nin nasıl kullanılacağını anlayın.
+title: Azure Işlevleri 'ni kullanarak C# sınıf kitaplığı işlevleri geliştirme
+description: C# kullanarak Azure Işlevleri çalışma zamanı ile işleme içinde çalışan sınıf kitaplıkları olarak kod geliştirme ve yayımlama hakkında bilgi edinin.
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 07/24/2020
-ms.openlocfilehash: 748b4a2a6af1c0183e28af8da732bc90531bee29
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: c7d14599ec1ebbcb94e0c0f3985a3b857f9353dc
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102428430"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102563889"
 ---
-# <a name="develop-c-functions-using-azure-functions"></a>Azure Işlevleri 'ni kullanarak C# işlevleri geliştirme
+# <a name="develop-c-class-library-functions-using-azure-functions"></a>Azure Işlevleri 'ni kullanarak C# sınıf kitaplığı işlevleri geliştirme
 
 <!-- When updating this article, make corresponding changes to any duplicate content in functions-reference-csharp.md -->
 

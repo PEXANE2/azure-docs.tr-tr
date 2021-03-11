@@ -2,14 +2,14 @@
 title: Değişiklikleri engellemek için kaynakları kilitle
 description: Kullanıcıların tüm kullanıcılar ve roller için bir kilit uygulayarak Azure kaynaklarını güncelleştirmesini ve silmesini engelleyin.
 ms.topic: conceptual
-ms.date: 02/01/2021
+ms.date: 03/09/2021
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 6df6aec06fadaacc6b1d08ed9ee33b72c5971359
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 28c31681b8fbe981cd51db294c91276dfd65d71f
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100369484"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102619180"
 ---
 # <a name="lock-resources-to-prevent-unexpected-changes"></a>Beklenmeyen değişiklikleri önlemek için kaynakları kilitleme
 
@@ -33,6 +33,10 @@ Resource Manager kilitleri yalnızca yönetim düzleminde gerçekleşen ve `http
 Kilitleri uygulamak, kaynağı değiştirmeyen bazı işlemler gerçekten kilit tarafından engellenen eylemler gerektirdiğinden beklenmedik sonuçlara neden olabilir. Kilitler Azure Resource Manager API 'sine POST isteği gerektiren tüm işlemleri engeller. Kilitlerle engellenen işlemlerin bazı yaygın örnekleri şunlardır:
 
 * **Depolama hesabında** salt okunurdur bir kilit, kullanıcıların hesap anahtarlarını listelemesine engel olur. Azure depolama [listesi anahtarları](/rest/api/storagerp/storageaccounts/listkeys) işlemi, depolama hesabındaki verilere yönelik tüm erişimleri sağlayan hesap anahtarlarına erişimi korumak IÇIN bir post isteği aracılığıyla işlenir. Bir depolama hesabı için salt okunurdur bir kilit yapılandırıldığında, hesap anahtarlarına sahip olmayan kullanıcıların blob veya kuyruk verilerine erişmek için Azure AD kimlik bilgilerini kullanması gerekir. Salt okunurdur bir kilit, depolama hesabı kapsamındaki Azure RBAC rollerinin atanmasını veya bir veri kapsayıcısını (blob kapsayıcısı ya da kuyruğu) engeller.
+
+* Bir **depolama hesabındaki** bir Delete kilidi, bu hesabın içindeki verilerin silinmesini veya değiştirilmesini engellemez. Bu tür kilit yalnızca depolama hesabının silinmesini önler ve bu depolama hesabı içindeki blob, kuyruk, tablo veya dosya verilerini korumaz. 
+
+* Bir **depolama hesabındaki** salt okunurdur bir kilit, söz konusu hesabın içindeki verilerin silinmesini veya değiştirilmesini engellemez. Bu tür kilit yalnızca depolama hesabının silinmesini veya değiştirilmesini önler ve bu depolama hesabı içindeki blob, kuyruk, tablo veya dosya verilerini korumaz. 
 
 * Bir **App Service** kaynağı üzerinde salt okunurdur bir kilit, bu etkileşim yazma erişimi gerektirdiğinden Visual Studio Sunucu Gezgini kaynak için dosya görüntülemesini engeller.
 

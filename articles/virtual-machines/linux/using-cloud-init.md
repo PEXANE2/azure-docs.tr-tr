@@ -2,18 +2,19 @@
 title: Azure 'da Linux VM 'Leri için Cloud-init desteğine genel bakış
 description: Azure 'da sağlama sırasında VM yapılandırma için Cloud-init özelliklerine genel bakış.
 author: danielsollondon
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
 ms.subservice: extensions
+ms.collection: linux
 ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 02/14/2021
 ms.author: danis
-ms.openlocfilehash: a4fc51c8bb8a07f768da16224b9258bbdbf6d9b4
-ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
+ms.openlocfilehash: ac907c2ea2ae53bd192c01232c66e0467025daae
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100632943"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102563243"
 ---
 # <a name="cloud-init-support-for-virtual-machines-in-azure"></a>Azure 'da sanal makineler için Cloud-init desteği
 Bu makalede, Azure 'da sağlama sırasında bir sanal makineyi (VM) veya sanal makine ölçek kümelerini yapılandırmak üzere [Cloud-init](https://cloudinit.readthedocs.io) için mevcut destek açıklanmaktadır. Bu Cloud-init yapılandırması, kaynaklar Azure tarafından sağlandıktan sonra ilk önyüklemede çalıştırılır.  
@@ -47,7 +48,7 @@ Cloud-init ' i Azure 'da, desteklenen Linux 'un Azure 'da, paket desteğinin ve 
 |:--- |:--- |:--- |:--- |:--- |:--- |
 |RedHat 7,6 |RHEL |7-RAW-CI |7.6.2019072418 |evet | Evet-paket sürümünden destek: *18.2-1.el7_6.2*|
 |RedHat 7,7 |RHEL |7-RAW-CI |7.7.2019081601 | Evet (Not: Bu bir önizleme **görüntüsüdür ve artık kullanılmamalıdır,** bu, 1 Eylül 2020 ' den kaldırılacak) | Yok |
-|RedHat 7,7 (Gen1)|RHEL |7,7 | 7.7.2020051912 | evet | Evet-paket sürümünden destek: *18.5 -6. EL7*|
+|RedHat 7,7 (Gen1)|RHEL |7.7 | 7.7.2020051912 | evet | Evet-paket sürümünden destek: *18.5 -6. EL7*|
 |RedHat 7,7 (Gen2)|RHEL | 77-Gen2 | 7.7.2020051913 | evet | Evet-paket sürümünden destek: *18.5 -6. EL7*|
 |RedHat 7,7 (Gen1)|RHEL |7-LVM | 7.7.2020051921 | evet | Evet-paket sürümünden destek: *18.5 -6. EL7*|
 |RedHat 7,7 (Gen2)|RHEL | 7lvm-Gen2 | 7.7.2020051922  | evet | Evet-paket sürümünden destek: *18.5 -6. EL7*|
@@ -62,9 +63,9 @@ Cloud-init ' i Azure 'da, desteklenen Linux 'un Azure 'da, paket desteğinin ve 
 | Yayımcı/sürüm | Sunduğu | SKU | Sürüm | görüntü bulutu-init Ready | Azure 'da Cloud-init paketi desteği|
 |:--- |:--- |:--- |:--- |:--- |:--- |
 |OpenLogic 7,7 |CentOS |7-CI |7.7.20190920 |Evet (Not: Bu bir önizleme **görüntüsüdür ve artık kullanılmamalıdır,** bu, 1 Eylül 2020 ' den kaldırılacak) | Yok |
-|OpenLogic 7,7 |CentOS | 7,7 |7.7.2020062400 |evet | Evet-paket sürümünden destek: `18.5-6.el7.centos.5`|
+|OpenLogic 7,7 |CentOS | 7.7 |7.7.2020062400 |evet | Evet-paket sürümünden destek: `18.5-6.el7.centos.5`|
 |OpenLogic 7,7 (Gen2) |CentOS | 7_7-Gen2 |7.7.2020062401 |evet | Evet-paket sürümünden destek: `18.5-6.el7.centos.5`|
-|OpenLogic 7,7 |CentOS-HPC | 7,7 |7.6.2020062600 |evet | Evet-paket sürümünden destek: `18.5-6.el7.centos.5`|
+|OpenLogic 7,7 |CentOS-HPC | 7.7 |7.6.2020062600 |evet | Evet-paket sürümünden destek: `18.5-6.el7.centos.5`|
 |OpenLogic 7,7 (Gen2) |CentOS-HPC | 7_7-Gen2 |7.6.2020062601 |evet | Evet-paket sürümünden destek: `18.5-6.el7.centos.5`|
 |OpenLogic 8,1 |CentOS | 8_1 |8.1.2020062400 |evet | Evet-paket sürümünden destek: `18.5-7.el8_1.1`|
 |OpenLogic 8,1 (Gen2) |CentOS | 8_1-Gen2 |8.1.2020062401 |evet | Evet-paket sürümünden destek: `18.5-7.el8_1.1`|

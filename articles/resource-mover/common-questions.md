@@ -5,14 +5,14 @@ author: rayne-wiselman
 manager: evansma
 ms.service: resource-move
 ms.topic: conceptual
-ms.date: 02/04/2021
+ms.date: 02/21/2021
 ms.author: raynew
-ms.openlocfilehash: a75cd3c5dbf205f49aa606bfe96623a61bce39db
-ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
+ms.openlocfilehash: e900250aea84b4a9c9112fa54632a2be8b9cb49c
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "100007066"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102564280"
 ---
 # <a name="common-questions"></a>Sık sorulan sorular
 
@@ -24,6 +24,15 @@ Bu makalede, [Azure Kaynak taşıyıcısı](overview.md)hakkında sık sorulan s
 ### <a name="can-i-move-resources-across-any-regions"></a>Kaynakları herhangi bir bölgede taşıyabilir miyim?
 
 Şu anda, [söz konusu bölgede bulunan kaynak türlerine](https://azure.microsoft.com/global-infrastructure/services/)bağlı olarak, kaynakları herhangi bir kaynak ortak bölgesinden herhangi bir hedef ortak bölgeye taşıyabilirsiniz. Azure Kamu bölgelerinde kaynak taşıma Şu anda desteklenmiyor.
+
+### <a name="what-regions-are-currently-supported"></a>Şu anda hangi bölgeler destekleniyor?
+
+Azure Kaynak taşıyıcısı Şu anda aşağıdaki gibi kullanılabilir:
+
+**Destek** | **Ayrıntılar**
+--- | ---
+Taşıma desteği | Kaynak taşıyıcısı ile taşıma için desteklenen Azure kaynakları, herhangi bir genel bölgeden başka bir genel bölgeye taşınabilir.
+Meta veri desteği |  Taşınacak makineler hakkında meta verilerin depolanması için desteklenen bölgeler, Doğu ABD2, Kuzey Avrupa, Güneydoğu Asya, Japonya Doğu, UK Güney ve meta veri bölgeleri olarak Avustralya Doğu içerir. <br/><br/> Azure Çin bölgesi içindeki kaynakları taşımak Çin North2 meta veri bölgesi ile de desteklenir.
 
 ### <a name="what-resources-can-i-move-across-regions-using-resource-mover"></a>Kaynak taşıyıcısı kullanarak bölgeler arasında hangi kaynakları taşıyabilirim?
 
@@ -44,15 +53,14 @@ Bölgeler arasında taşınan kaynak olarak disk seçemezsiniz. Ancak, diskler V
 
 ### <a name="what-does-it-mean-to-move-a-resource-group"></a>Bir kaynak grubunu taşımanın ne anlama geliyor?
 
-Taşıma için bir kaynak seçildiğinde, karşılık gelen kaynak grubu taşıma için otomatik olarak eklenir. Hedef kaynağın hedefte olduğu gibi bir kaynak grubuna yerleştirilmesi gerektiğinden, bu gereklidir. Taşıma için eklendikten sonra, özelleştirmeyi ve bir kaynak grubu sağlamayı tercih edebilirsiniz. Kaynak grubunun taşınması, kaynak **kaynak grubundaki tüm kaynakların taşınacağı anlamına gelmez** .
+Taşıma için bir kaynak seçildiğinde, karşılık gelen kaynak grubu taşıma için otomatik olarak eklenir. Bu, hedef kaynağın bir kaynak grubuna yerleştirilebileceği şekilde yapılır. Taşıma için eklendikten sonra, var olan bir kaynak grubunu özelleştirmeyi ve sağlamayı tercih edebilirsiniz. Kaynak grubunun taşınması, kaynak kaynak grubundaki tüm kaynakların taşınacağı anlamına gelmez.
 
 ### <a name="can-i-move-resources-across-subscriptions-when-i-move-them-across-regions"></a>Kaynakları bölgeler arasında taşırken kaynakları abonelikler arasında taşıyabilir miyim?
 
 Kaynakları hedef bölgeye taşıdıktan sonra aboneliği değiştirebilirsiniz. Kaynakları farklı bir aboneliğe taşıma hakkında [daha fazla bilgi edinin](../azure-resource-manager/management/move-resource-group-and-subscription.md) . 
 
-### <a name="does-azure-resource-move-service-store-customer-data"></a>Azure kaynağı hizmet mağazası müşteri verilerini taşır mi? 
-Hayır. Kaynak taşıma hizmeti müşteri verilerini depolamaz, yalnızca müşteri tarafından taşıma için seçilen kaynakların izlenmesini ve ilerlemesini kolaylaştıran meta veri bilgilerini depolar.
-
+### <a name="does-azure-resource-mover-store-customer-data"></a>Azure Kaynak taşıyıcısı müşteri verilerini depolar mı? 
+Hayır. Kaynak taşıyıcısı hizmeti müşteri verilerini depolamaz, yalnızca taşıdığınız kaynakların izlenmesini ve ilerlemesini kolaylaştıran meta veri bilgilerini depolar.
 
 ### <a name="where-is-the-metadata-for-moving-across-regions-stored"></a>Bölgeler arasında taşınabilecek meta veriler nerede?
 
@@ -85,13 +93,15 @@ Portaldaki Kaynak Taşıyıcı hub'ında kaynak eklediğinizde kullanıcı yukar
 > [!IMPORTANT]
 > Kimlik rolü atamalarını değiştirmemenizi veya kaldırmanızı kesinlikle öneririz. 
 
-### <a name="what-should-i-do-if-i-dont-have-permissions-to-assign-role-identity"></a>Rol kimliği atama iznim yoksa ne yapmam gerekir?
+### <a name="what-if-i-dont-have-permissions-to-assign-role-identity"></a>Rol kimliği atama izinlerim yoksa ne yapmalıyım?
 
-**Olası nedeni** | **Öneri**
+İzinlerinizin olmaması gerekebilecek birkaç neden vardır.
+
+**Olası nedeni** | **Önerilen**
 --- | ---
 İlk kez bir kaynak eklediğinizde *katkıda bulunan* ve *Kullanıcı erişimi Yöneticisi* (veya *sahibi*) değilsiniz. | Abonelik için *katkıda* bulunan ve *Kullanıcı erişimi Yöneticisi* (veya *sahibi*) izinleri olan bir hesap kullanın.
 Kaynak taşıyıcısı tarafından yönetilen kimliğin gerekli rolü yok. | ' Katkıda bulunan ' ve ' Kullanıcı erişimi Yöneticisi ' rollerini ekleyin.
-Kaynak taşıyıcısı yönetilen kimliği *none* olarak sıfırlandı. | Taşıma koleksiyonunda sistem tarafından atanan bir kimliği yeniden etkinleştirin > **kimliği**. Alternatif olarak, kaynağı Ekle ' ye aynı şeyi sağlayan **kaynakları** yeniden ekleyin.  
+Kaynak taşıyıcısı yönetilen kimliği *none* olarak sıfırlandı. | Koleksiyon ayarlarını taşıma > **kimlik** içinde sistem tarafından atanan bir kimliği yeniden etkinleştirin. Alternatif olarak, kaynak **Ekle**' de kaynağı yeniden ekleyin ve aynı şeyi yapar.  
 Abonelik farklı bir kiracıya taşındı. | Taşıma koleksiyonu için yönetilen kimliği devre dışı bırakıp etkinleştirin.
 
 ### <a name="how-can-i-do-multiple-moves-together"></a>Birden çok daha fazla hareketi nasıl yapabilirim?
@@ -100,7 +110,7 @@ Portalda Değiştir seçeneğini kullanarak kaynak/hedef birleşimleri gerektiğ
 
 ### <a name="what-happens-when-i-remove-a-resource-from-a-list-of-move-resources"></a>Kaynak taşıma listesinden bir kaynağı kaldırdığımda ne olur?
 
-Taşıma listesine eklediğiniz kaynakları kaldırabilirsiniz. Listeden bir kaynağı kaldırdığınızda oluşan davranış, kaynak durumuna bağlıdır. [Daha fazla bilgi edinin](remove-move-resources.md#vm-resource-state-after-removing).
+Taşıma listesine eklediğiniz kaynakları kaldırabilirsiniz. Tam kaldırma davranışı, kaynak durumuna bağlıdır. [Daha fazla bilgi edinin](remove-move-resources.md#vm-resource-state-after-removing).
 
 
 

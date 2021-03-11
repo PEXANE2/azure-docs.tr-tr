@@ -1,19 +1,19 @@
 ---
-title: Azure özel bağlantısında özel bağlantı hizmeti oluşturma
+title: 'Hızlı başlangıç: Azure özel bağlantısında özel bağlantı hizmeti oluşturma'
 description: Bu hızlı başlangıçta, bir özel bağlantı hizmeti oluşturmak için bir Azure Resource Manager şablonu (ARM şablonu) kullanırsınız.
 services: private-link
-author: mblanco77
+author: asudbring
 ms.service: private-link
 ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 05/29/2020
 ms.author: allensu
-ms.openlocfilehash: dce80d70af7cd711cf852a60b98ad65b6d21117f
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 34993ad3d3d0494f89bd264a8b7194f52129ad7c
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88705257"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102555066"
 ---
 # <a name="quickstart-create-a-private-link-service-by-using-an-arm-template"></a>Hızlı başlangıç: ARM şablonu kullanarak özel bağlantı hizmeti oluşturma
 
@@ -60,7 +60,7 @@ ARM şablonunu Azure 'a dağıtma:
 
 2. Kaynak grubunuzu seçin veya oluşturun.
 3. Sanal Makine Yöneticisi Kullanıcı adını ve parolasını yazın.
-4. Hüküm ve koşullar ekstresini okuyun. Kabul ediyorsanız, satın alma sırasında **belirtilen hüküm ve koşulları kabul**ediyorum ' u seçin  >  **Purchase**.
+4. Hüküm ve koşullar ekstresini okuyun. Kabul ediyorsanız, satın alma sırasında **belirtilen hüküm ve koşulları kabul** ediyorum ' u seçin  >  .
 
 ## <a name="validate-the-deployment"></a>Dağıtımı doğrulama
 
@@ -73,7 +73,7 @@ ARM şablonunu Azure 'a dağıtma:
 
 1.  Portalın arama çubuğunda _Myconsumervm {UniqueId}_ girin.
 
-2.  **Bağlan**'ı seçin. **Sanal makineye bağlan** açılır.
+2.  **Bağlan**’ı seçin. **Sanal makineye bağlan** açılır.
 
 3.  **RDP Dosyasını İndir**’i seçin. Azure bir Uzak Masaüstü Protokolü (_. rdp_) dosyası oluşturur ve bilgisayarınıza indirir.
 
@@ -84,7 +84,7 @@ ARM şablonunu Azure 'a dağıtma:
     b. VM oluştururken belirttiğiniz kullanıcı adını ve parolayı girin.
     
     > [!NOTE]
-    > **More choices**  >  VM oluştururken girdiğiniz kimlik bilgilerini belirtmek için**farklı bir hesap kullan**' ı seçmeniz gerekebilir.
+    >   >  VM oluştururken girdiğiniz kimlik bilgilerini belirtmek için **farklı bir hesap kullan**' ı seçmeniz gerekebilir.
 
 5.  **Tamam**’ı seçin.
 
@@ -112,4 +112,7 @@ Remove-AzResourceGroup -Name <your resource group name>
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Azure özel bağlantısı](private-link-overview.md)hakkında daha fazla bilgi edinin.
+
+Özel bir uç noktayı destekleyen hizmetler hakkında daha fazla bilgi için bkz.:
+> [!div class="nextstepaction"]
+> [Özel bağlantı kullanılabilirliği](private-link-overview.md#availability)

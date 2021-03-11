@@ -1,32 +1,26 @@
 ---
-title: HTTPS üzerinden Azure CDN özel etki alanı kullanarak depolama bloblarına erişme
+title: 'Öğretici: Depolama bloblarına HTTPS üzerinden Azure CDN özel etki alanı kullanarak erişme'
 description: Özel BLOB depolama uç noktanız için Azure CDN özel etki alanı ekleme ve bu etki alanında HTTPS 'yi etkinleştirme hakkında bilgi edinin.
 services: cdn
 documentationcenter: ''
 author: asudbring
-manager: danielgi
-editor: ''
-ms.assetid: ''
 ms.service: azure-cdn
-ms.workload: tbd
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 06/15/2018
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: 6061de0a330518baaa829a9a1c8a05f196d68dcb
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 296a51edf024551a03330f4843690e97c6abd47d
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92777852"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102564892"
 ---
 # <a name="tutorial-access-storage-blobs-using-an-azure-cdn-custom-domain-over-https"></a>Öğretici: Depolama bloblarına HTTPS üzerinden Azure CDN özel etki alanı kullanarak erişme
 
 Azure depolama hesabınızı Azure Content Delivery Network (CDN) ile tümleştirdikten sonra, özel bir etki alanı ekleyebilir ve özel blob depolama uç noktanız için bu etki alanında HTTPS’yi etkinleştirebilirsiniz. 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticideki adımları tamamlamadan önce, ilk olarak Azure depolama hesabınızı Azure CDN ile tümleştirmeniz gerekir. Daha fazla bilgi için bkz. [Hızlı başlangıç: Azure CDN ile bir Azure depolama hesabını tümleştirme](cdn-create-a-storage-account-with-cdn.md).
 

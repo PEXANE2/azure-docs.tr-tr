@@ -3,17 +3,18 @@ title: Azure 'da kullanmak üzere bir Yataykapsayıcı Linux VHD 'SI oluşturma 
 description: Bir Yataykapsayıcı Linux işletim sistemi içeren bir VHD oluşturmayı ve yüklemeyi öğrenin.
 author: marga-kinvolk
 ms.author: danis
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
+ms.collection: linux
 ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 07/16/2020
 ms.reviewer: cynthn
-ms.openlocfilehash: 555e53899ed78a5200009d04659e974f8157057e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5d8be9493b7a312270301e3520f301f797fe2167
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87268248"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102565300"
 ---
 # <a name="using-a-prebuilt-flatcar-image-for-azure"></a>Azure için önceden oluşturulmuş bir Yatayaraç görüntüsü kullanma
 
@@ -21,7 +22,7 @@ Her bir Jcar kapsayıcı Linux 'un önceden oluşturulmuş Azure sanal sabit dis
 
 - [kararlı](https://stable.release.flatcar-linux.net/amd64-usr/current/flatcar_production_azure_image.vhd.bz2)
 - [beta](https://beta.release.flatcar-linux.net/amd64-usr/current/flatcar_production_azure_image.vhd.bz2)
-- [alfa](https://alpha.release.flatcar-linux.net/amd64-usr/current/flatcar_production_azure_image.vhd.bz2)
+- [Alfa](https://alpha.release.flatcar-linux.net/amd64-usr/current/flatcar_production_azure_image.vhd.bz2)
 - [kenarını](https://edge.release.flatcar-linux.net/amd64-usr/current/flatcar_production_azure_image.vhd.bz2)
 
 Bu görüntü zaten tam olarak ayarlandı ve Azure 'da çalışacak şekilde iyileştirildi. Yalnızca sıkıştırmasını açmanız gerekir.

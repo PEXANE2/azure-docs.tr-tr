@@ -10,12 +10,12 @@ ms.date: 03/03/2021
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 4e6dac1ab7350caeb29e23b21eace433568b38ea
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: da869091fb1f7bf31a29ba1bc6db8c1c42254dc4
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102031642"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102618092"
 ---
 # <a name="point-in-time-restore-for-block-blobs"></a>Blok Blobları için noktadan noktaya geri yükleme
 
@@ -47,7 +47,7 @@ Tek seferde bir depolama hesabında yalnızca bir geri yükleme işlemi çalış
 > Depolama hesabı coğrafi olarak çoğaltılırsa, ikincil konumdaki okuma işlemleri geri yükleme işlemi sırasında devam edebilir.
 
 > [!CAUTION]
-> Zaman içinde geri yükleme, yalnızca blok Bloblarındaki işlemleri geri yüklemeyi destekler. Kapsayıcılardaki işlemler geri yüklenemez. [Kapsayıcıyı silme](/rest/api/storageservices/delete-container) işlemini çağırarak depolama hesabından bir kapsayıcıyı silerseniz, o kapsayıcı geri yükleme işlemiyle geri yüklenemez. Bir kapsayıcının tamamını silmek yerine, daha sonra geri yüklemek istiyorsanız ayrı Blobları silin.
+> Zaman içinde geri yükleme, yalnızca blok Blobları üzerinde işlem yapan işlemlere karşı geri yüklemeyi destekler. Kapsayıcılar üzerinde işlem yapan işlemler geri yüklenemez. Örneğin, kapsayıcıyı [silme](/rest/api/storageservices/delete-container) işlemini çağırarak depolama hesabından bir kapsayıcıyı silerseniz, o kapsayıcı bir zaman noktası geri yükleme işlemiyle geri yüklenemez. Bir kapsayıcının tamamını silmek yerine, daha sonra geri yüklemek istiyorsanız ayrı Blobları silin.
 
 ### <a name="prerequisites-for-point-in-time-restore"></a>Zaman içinde nokta geri yükleme önkoşulları
 

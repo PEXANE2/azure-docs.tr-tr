@@ -11,12 +11,12 @@ ms.topic: include
 ms.date: 09/14/2020
 ms.author: dylankil
 ms.custom: devx-track-js
-ms.openlocfilehash: e29aff97d510dfed178e32aa319e5cb51ae9786c
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: fa28d5779c05af615479e3143713badb7842f6c6
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91376568"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102619267"
 ---
 [Modern okuyucu](https://www.onenote.com/learningtools) , yeni okuyucular, dil öğrenimi ve öğrenimi gibi öğrenme farklılığı olan kişiler için okuma kavramasını geliştirmek üzere kanıtlanmış teknikler uygulayan, benzer şekilde tasarlanmış bir araçtır. Uygulamalarınızı odaklamak üzere metin yalıtmak, yaygın olarak kullanılan sözcüklerin resimlerini göstermek, konuşma parçalarını vurgulamak, seçili metni sesli okumak, sözcükleri ve tümceleri gerçek zamanlı olarak çevirmek ve daha fazlasını yapmak için uygulamalarınızda modern okuyucu kullanabilirsiniz.
 
@@ -42,7 +42,7 @@ Android Studio yeni bir proje başlatın. Bu örnek için kaynak kodu, [tam ekra
 
 ## <a name="configure-the-project"></a>Projeyi yapılandırma
 
-Projeyi **Quickstartkotlin**olarak adlandırın ve kaydedilecek bir konum seçin. Programlama dili olarak **Kotlin** ' ı seçin ve ardından **son**' u seçin.
+Projeyi **Quickstartkotlin** olarak adlandırın ve kaydedilecek bir konum seçin. Programlama dili olarak **Kotlin** ' ı seçin ve ardından **son**' u seçin.
 
 ![Projeyi yapılandırma-Kotlin](../../media/android/kotlin/android-studio-configure-project.png)
 
@@ -208,7 +208,7 @@ dependencies {
 
 ## <a name="set-up-the-app-kotlin-code-javascript-interface"></a>Uygulama Kotlin kodu JavaScript arabirimini ayarlama
 
-**/Java/com.example.quickstartkotlin** klasöründe yeni bir Kotlin sınıfı oluşturun ve **webappınterface**olarak adlandırın. Ardından aşağıdaki kodu ekleyin. Bu kod, uygulamanın HTML 'de daha sonraki bir adımda eklenecek JavaScript işlevleriyle arabirim oluşturmasını sağlar.
+**/Java/com.example.quickstartkotlin** klasöründe yeni bir Kotlin sınıfı oluşturun ve **webappınterface** olarak adlandırın. Ardından aşağıdaki kodu ekleyin. Bu kod, uygulamanın HTML 'de daha sonraki bir adımda eklenecek JavaScript işlevleriyle arabirim oluşturmasını sağlar.
 
 ![com. example. quickstartkotlin klasörü-Kotlin](../../media/android/kotlin/android-studio-com-folder.png)
 
@@ -522,7 +522,7 @@ class MainActivity : AppCompatActivity() {
 
 ## <a name="add-the-app-html-to-the-web-view"></a>Uygulama HTML 'ini Web görünümüne ekleme
 
-Web görünümü uygulamasının çalışması için HTML gerekir. **/Varlıklar** klasörüne sağ tıklayın, yeni bir dosya oluşturun ve **immersiveReader.html**olarak adlandırın.
+Web görünümü uygulamasının çalışması için HTML gerekir. **/Varlıklar** klasörüne sağ tıklayın, yeni bir dosya oluşturun ve **immersiveReader.html** olarak adlandırın.
 
 ![Yeni bir HTML dosyası oluşturma-Kotlin](../../media/android/kotlin/android-studio-immersive-reader-html.png)
 
@@ -613,4 +613,5 @@ Uygulamayı bir cihaz öykünücüsünde çalıştırmak için Android Studio ku
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Modern Okuyucu SDK 'sını](https://github.com/microsoft/immersive-reader-sdk) ve [tam ekran okuyucu SDK başvurusunu](../../reference.md)bulun.
+> [!div class="nextstepaction"]
+> [Kaynak oluşturma ve AAD yapılandırma](../../how-to-create-immersive-reader.md)

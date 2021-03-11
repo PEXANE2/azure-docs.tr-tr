@@ -15,12 +15,12 @@ ms.topic: overview
 ms.date: 05/09/2018
 ms.author: duau
 ms.custom: mvc
-ms.openlocfilehash: b0c8170947b59b3d40a388642dac3df772238197
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 54ee903b490e10f7ea4ca3bca91f742b5811404d
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92778336"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102563311"
 ---
 # <a name="what-is-a-content-delivery-network-on-azure"></a>Azure’da içerik teslim ağı nedir?
 İçerik teslim ağı (CDN), kullanıcılara etkili bir şekilde web içeriği teslim edebilen dağıtılmış bir sunucu ağıdır. CDNs ', gecikme süresini en aza indirmek için son kullanıcılara yakın olan ara sunucu (POP) konumlarında önbelleğe alınmış içerik depolar. 
@@ -38,7 +38,7 @@ Geçerli CDN düğümü konumlarının listesi için bkz. [Azure CDN POP konumla
 ## <a name="how-it-works"></a>Nasıl çalışır?
 ![CDN'ye Genel Bakış](./media/cdn-overview/cdn-overview.png)
 
-1. Kullanıcı (Gamze), _&lt; uç nokta adı &gt;_ . azureedge.NET gibi özel bir etki alanı adına sahip bir URL kullanarak bir dosya (varlık olarak da adlandırılır) ister. Bu ad, bir uç nokta konak adı veya özel bir etki alanı olabilir. DNS, genellikle coğrafi olarak kullanıcıya en yakın bulunma noktası olan en iyi performansa sahip bulunma noktası konumuna isteği yönlendirir.
+1. Kullanıcı (Gamze), _&lt; uç nokta adı &gt;_. azureedge.NET gibi özel bir etki alanı adına sahip bir URL kullanarak bir dosya (varlık olarak da adlandırılır) ister. Bu ad, bir uç nokta konak adı veya özel bir etki alanı olabilir. DNS, genellikle coğrafi olarak kullanıcıya en yakın bulunma noktası olan en iyi performansa sahip bulunma noktası konumuna isteği yönlendirir.
     
 2. Bulunma noktasındaki uç sunucuların önbelleğinde dosya mevcut değilse bulunma noktası, kaynak sunucudan dosyayı ister. Kaynak sunucu; bir Azure Web App, Azure Bulut Hizmeti, Azure Depolama hesabı veya genel olarak erişilebilen herhangi bir web sunucusu olabilir.
    
@@ -74,8 +74,7 @@ Azure CDN aşağıdaki temel özellikleri sunar:
 Her bir Azure CDN ürününün desteklediği özelliklerin tam listesi için bkz. [Azure CDN ürün özelliklerinin karşılaştırması](cdn-features.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
+
 - CDN ile çalışmaya başlamak için bkz. [Azure CDN profili ve uç noktası oluşturma](cdn-create-new-endpoint.md).
 - [Microsoft Azure Portal](https://portal.azure.com) üzerinden veya [PowerShell](cdn-manage-powershell.md) ile CDN uç noktalarınızı yönetme.
 - Azure CDN’yi [.NET](cdn-app-dev-net.md) veya [Node.js](cdn-app-dev-node.md) ile nasıl otomatik hale getireceğinizi öğrenin.
-- Azure CDN’yi çalışır halde görmek için [Azure CDN videolarını](https://azure.microsoft.com/resources/videos/index/?services=cdn&sort=newest) izleyin.
-- En son Azure CDN özellikleri hakkında daha fazla bilgi için bkz. [Azure CDN blogu](https://azure.microsoft.com/blog/tag/azure-cdn/).

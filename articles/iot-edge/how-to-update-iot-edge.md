@@ -9,12 +9,12 @@ ms.date: 03/01/2021
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 9c311826c2b17f8e9f95d1ef31980922154635b9
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: db809807f0494b8510ba7eb71c742a7a7631f97e
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102042326"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102609592"
 ---
 # <a name="update-the-iot-edge-security-daemon-and-runtime"></a>IoT Edge güvenlik daemon'ını ve çalışma zamanını güncelleştirme
 
@@ -120,8 +120,9 @@ En son IoT Edge sürümüne güncelleştirmek istiyorsanız, kimlik hizmetini de
 # <a name="windows"></a>[Windows](#tab/windows)
 
 <!-- 1.1 -->
-:::moniker range="iotedge-2018-06"
-Windows üzerinde Linux için IoT Edge, IoT Edge bir Windows cihazında barındırılan bir Linux sanal makinesinde çalışır. Bu sanal makine, IoT Edge ile önceden yüklenir ve bileşenleri güncel tutmak için Microsoft Update ile yönetilir. Şu anda kullanılabilir güncelleştirme yok.
+::: moniker range="iotedge-2018-06"
+
+Windows üzerinde Linux için IoT Edge, IoT Edge bir Windows cihazında barındırılan bir Linux sanal makinesinde çalışır. Bu sanal makine, IoT Edge ile önceden yüklenir ve bileşenleri güncel tutmak için Microsoft Update ile yönetilir. Otomatik Güncelleştirmeler etkinse, yeni güncelleştirmeler kullanılabilir olduğunda indirilir ve yüklenir.
 
 Windows için IoT Edge ile, IoT Edge doğrudan Windows cihazında çalışır. PowerShell betiklerini kullanan güncelleştirme yönergeleri için bkz. [Windows için Azure IoT Edge 'ı yükleyip yönetme](how-to-install-iot-edge-windows-on-windows.md).
 :::moniker-end

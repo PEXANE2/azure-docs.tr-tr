@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-mongo
 ms.devlang: rust
 ms.topic: quickstart
 ms.date: 01/12/2021
-ms.openlocfilehash: b5dbb8498157096c8e3178175f827eb47591c9de
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 91e7bafe98b1aceaf8fe27b07029291a48a31351
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101659928"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102555661"
 ---
 # <a name="quickstart-connect-a-rust-application-to-azure-cosmos-dbs-api-for-mongodb"></a>Hızlı başlangıç: bir Rust uygulamayı MongoDB için Azure Cosmos DB API 'sine bağlama
 [!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
@@ -279,7 +279,7 @@ fn list_todos(self, status_filter: &str) {
 }
 ```
 
-Bir `todo` durum `pending` `completed` kullanılarak (veya tam tersi) bir durum güncelleştirilebilen olabilir. , `todo` Güncelleştirilmesi gereken belgeyi bulmak için[Collection.update_one](https://docs.rs/mongodb/1.1.1/mongodb/struct.Collection.html#method.update_one) yöntemi tarafından kullanılan bir [bSon:: OID:: ObjectID](https://docs.rs/bson/1.1.0/bson/oid/struct.ObjectId.html) değerine dönüştürülür.
+Bir `todo` durum güncelleştirilemeyebilir ( `pending` `completed` veya tersi). , `todo` Güncelleştirilmesi gereken belgeyi bulmak için[Collection.update_one](https://docs.rs/mongodb/1.1.1/mongodb/struct.Collection.html#method.update_one) yöntemi tarafından kullanılan bir [bSon:: OID:: ObjectID](https://docs.rs/bson/1.1.0/bson/oid/struct.ObjectId.html) değerine dönüştürülür.
 
 ```rust
 fn update_todo_status(self, todo_id: &str, status: &str) {

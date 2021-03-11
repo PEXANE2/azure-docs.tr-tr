@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 04/13/2020
-ms.openlocfilehash: cef2e2ca9c7ad4640014d9b5a9a7da42d308ef7c
-ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
+ms.openlocfilehash: 313d1a390c30e7e5612b8d9bab7783b6698c35fd
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97605153"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102618500"
 ---
 # <a name="use-follow-up-prompts-to-create-multiple-turns-of-a-conversation"></a>Birden çok konuşma geçişi oluşturmak için takip istemlerini kullanma
 
@@ -111,7 +111,7 @@ Mevcut bir soru-cevap çiftine Şu anda bağlı olmayan bir izleme istemi ekleyi
     |Alan|Değer|
     |--|--|
     |Görüntü metni|**Cihazı** kapatma ' yı girin. Bu, izleme isteminde görüntülenecek özel bir metindir.|
-    |Yalnızca bağlam| Bu onay kutusunu seçin. Yanıt yalnızca soru, bağlam belirttiğinde döndürülür.|
+    |Yalnızca bağlam| Bu onay kutusunu işaretleyin. Yanıt yalnızca soru, bağlam belirttiğinde döndürülür.|
     |Yanıta bağla|Mevcut soru-cevap çiftini bulmak için **oturum açma ekranını kullanın** yazın.|
 
 1.  Bir eşleşme döndürülür. Bu yanıtı izleme olarak seçin ve ardından **Kaydet**' i seçin.
@@ -146,7 +146,7 @@ Bilgi Bankası 'na yeni bir soru-cevap çifti eklediğinizde, her bir çiftin bi
     |Alan|Değer|
     |--|--|
     |Görüntü metni|*Bir Windows hesabı oluşturun*. İzleme isteminde görüntülenecek özel metin.|
-    |Yalnızca bağlam|Bu onay kutusunu seçin. Bu yanıt yalnızca soru bağlam belirttiğinde döndürülür.|
+    |Yalnızca bağlam|Bu onay kutusunu işaretleyin. Bu yanıt yalnızca soru bağlam belirttiğinde döndürülür.|
     |Yanıta bağla|Yanıt olarak aşağıdaki metni girin:<br>*Yeni veya var olan bir e-posta hesabıyla bir Windows hesabı [oluşturun](https://account.microsoft.com/)*.<br>Veritabanını kaydedip eğitmeniz durumunda bu metin dönüştürülür. |
     |||
 
@@ -363,7 +363,7 @@ Soru-Cevap Oluşturma, dışarıya açılan dosyadaki çok yönlü konuşma adı
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu [iletişim kutusu](https://github.com/microsoft/BotBuilder-Samples/blob/master/samples/csharp_dotnetcore/adaptive-dialog/07.qnamaker/QnAMaker.csproj) örneğinden bağlamsal konuşmalar hakkında daha fazla bilgi edinin veya [çok yönlü konuşmalar için kavramsal bot tasarımı](/azure/bot-service/bot-builder-conversations?view=azure-bot-service-4.0)hakkında daha fazla bilgi edinin.
+Bu [iletişim kutusu](https://github.com/microsoft/BotBuilder-Samples/blob/master/samples/csharp_dotnetcore/adaptive-dialog/07.qnamaker/QnAMaker.csproj) örneğinden bağlamsal konuşmalar hakkında daha fazla bilgi edinin veya [çok yönlü konuşmalar için kavramsal bot tasarımı](/azure/bot-service/bot-builder-conversations)hakkında daha fazla bilgi edinin.
 
 > [!div class="nextstepaction"]
 > [Bilgi bankasını geçirme](../Tutorials/migrate-knowledge-base.md)

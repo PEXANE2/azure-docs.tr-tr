@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/17/2020
-ms.openlocfilehash: ddfca965ea32ca726df39f894ba45f9580225d9d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3300d68c6356cb7cdd56a9ad79eb0ac011942eb2
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91542470"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102547909"
 ---
 #    <a name="entity-recognition-cognitive-skill"></a>Varlık tanıma Bilişsel Beceri
 
@@ -45,7 +45,7 @@ Parametreler büyük/küçük harfe duyarlıdır ve tümü isteğe bağlıdır.
 
 ## <a name="skill-inputs"></a>Beceri girişleri
 
-| Giriş adı      | Açıklama                   |
+| Giriş adı      | Description                   |
 |---------------|-------------------------------|
 | `languageCode`    | İsteğe bağlı. `"en"` varsayılan değerdir.  |
 | `text`          | Çözümlenecek metin.          |
@@ -53,9 +53,9 @@ Parametreler büyük/küçük harfe duyarlıdır ve tümü isteğe bağlıdır.
 ## <a name="skill-outputs"></a>Yetenek çıkışları
 
 > [!NOTE]
-> Tüm diller için varlık kategorilerinin hepsi desteklenmez. `"Person"`, `"Location"` , Ve `"Organization"` varlık kategorisi türleri yukarıdaki dillerin tam listesi için desteklenir. Yalnızca _de_, _en_, _es_, _fr_ve _zh-Hans_ ,,, `"Quantity"` `"Datetime"` `"URL"` ve türlerinin ayıklanmasını destekler `"Email"` . Daha fazla bilgi için bkz. [Metin Analizi API'si Için dil ve bölge desteği](../cognitive-services/text-analytics/language-support.md).  
+> Tüm diller için varlık kategorilerinin hepsi desteklenmez. `"Person"`, `"Location"` , Ve `"Organization"` varlık kategorisi türleri yukarıdaki dillerin tam listesi için desteklenir. Yalnızca _de_, _en_, _es_, _fr_ ve _zh-Hans_ ,,, `"Quantity"` `"Datetime"` `"URL"` ve türlerinin ayıklanmasını destekler `"Email"` . Daha fazla bilgi için bkz. [Metin Analizi API'si Için dil ve bölge desteği](../cognitive-services/text-analytics/language-support.md).  
 
-| Çıkış adı      | Açıklama                   |
+| Çıkış adı      | Description                   |
 |---------------|-------------------------------|
 | `persons`       | Her bir dizenin bir kişinin adını temsil ettiği dizeler dizisi. |
 | `locations`  | Her bir dizenin bir konumu temsil ettiği dizeler dizisi. |
@@ -189,8 +189,8 @@ Parametreler büyük/küçük harfe duyarlıdır ve tümü isteğe bağlıdır.
 
 Bu yeteneğin çıktılarındaki varlıklar için döndürülen uzaklıklardan doğrudan [Metin Analizi API'si](../cognitive-services/text-analytics/overview.md)döndürüldüğünü unutmayın. Bu, özgün dizede dizin haline getirmek için kullanıyorsanız, doğru içeriği ayıklamak üzere .net Içindeki [StringInfo](/dotnet/api/system.globalization.stringinfo) sınıfını kullanmanız gerekir.  [Daha fazla ayrıntı burada bulunabilir.](../cognitive-services/text-analytics/concepts/text-offsets.md)
 
-## <a name="error-cases"></a>Hata durumları
-Belge için dil kodu desteklenmiyorsa bir hata döndürülür ve hiçbir varlık ayıklanmaz.
+## <a name="warning-cases"></a>Uyarı durumları
+Belge dil kodu desteklenmiyorsa bir uyarı döndürülür ve hiçbir varlık ayıklanmaz.
 
 ## <a name="see-also"></a>Ayrıca bkz.
 

@@ -1,26 +1,19 @@
 ---
 title: Windows için Azure Ağ İzleyicisi Aracısı sanal makine uzantısı
 description: Ağ Izleyicisi aracısını bir sanal makine uzantısı kullanarak Windows sanal makinesine dağıtın.
-services: virtual-machines-windows
-documentationcenter: ''
-author: mimckitt
-manager: vashan
-editor: ''
-tags: azure-resource-manager
-ms.assetid: 27e46af7-2150-45e8-b084-ba33de8c5e3f
-ms.service: virtual-machines-windows
-ms.subservice: extensions
 ms.topic: article
-ms.tgt_pltfrm: vm-windows
-ms.workload: infrastructure-services
+ms.service: virtual-machines
+ms.subservice: extensions
+author: amjads1
+ms.author: amjads
+ms.collection: windows
 ms.date: 02/14/2017
-ms.author: mimckitt
-ms.openlocfilehash: 813fc7db2a028590797bef1c54fff20b231c3d7d
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: d336a39714712e5436086e22ad24fc942a7d850a
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94965910"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102563549"
 ---
 # <a name="network-watcher-agent-virtual-machine-extension-for-windows"></a>Windows için ağ Izleyicisi Aracısı sanal makine uzantısı
 
@@ -31,7 +24,7 @@ ms.locfileid: "94965910"
 
 Bu belgede, Windows için ağ Izleyicisi Aracısı sanal makine uzantısı için desteklenen platformlar ve dağıtım seçenekleri ayrıntılı olarak bulunmaktadır. Aracının yüklenmesi, sanal makinenin yeniden başlatılmasını kesintiye uğramaz veya gerektirmez. Uzantıyı dağıttığınız sanal makinelere dağıtabilirsiniz. Sanal makine bir Azure hizmeti tarafından dağıtılırsa, sanal makinede uzantıların yüklenmesine izin verilip verilmeyeceğini öğrenmek için hizmetin belgelerini denetleyin.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 ### <a name="operating-system"></a>İşletim sistemi
 

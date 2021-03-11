@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5265b875769e6a1b8f1728c9c41c0bee00619956
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: f190b8ffbb98c6ff5465af869305de4c9135cc3f
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101647396"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102610114"
 ---
 # <a name="add-an-api-connector-to-a-user-flow"></a>Kullanıcı akışına API Bağlayıcısı ekleme
 
@@ -27,7 +27,7 @@ Bir [API bağlayıcısını](api-connectors-overview.md)kullanmak IÇIN önce AP
 
 ## <a name="create-an-api-connector"></a>API Bağlayıcısı oluşturma
 
-1. [Azure portalda](https://portal.azure.com/) Azure AD yöneticisi olarak oturum açın.
+1. [Azure portalında](https://portal.azure.com/) oturum açın.
 2. **Azure hizmetleri** altında **Azure Active Directory**' yi seçin.
 3. Sol taraftaki menüden **dış kimlikler**' i seçin.
 4. **Tüm API bağlayıcıları**' nı seçin ve ardından **yeni API Bağlayıcısı**' nı seçin.
@@ -36,15 +36,35 @@ Bir [API bağlayıcısını](api-connectors-overview.md)kullanmak IÇIN önce AP
 
 5. Çağrı için bir görünen ad belirtin. Örneğin, **onay durumunu kontrol edin**.
 6. API çağrısının **uç nokta URL 'sini** sağlayın.
-7. API için kimlik doğrulama bilgilerini sağlayın.
+7. **Kimlik doğrulama türünü** SEÇIN ve API 'nizi çağırmak için kimlik doğrulama bilgilerini yapılandırın. API 'nizin güvenliğini sağlama seçenekleri için aşağıdaki bölüme bakın.
 
-   - Şu anda yalnızca temel kimlik doğrulaması destekleniyor. Geliştirme amacıyla temel kimlik doğrulaması olmadan bir API kullanmak istiyorsanız, API 'nizin yoksaymasına yönelik bir kukla **Kullanıcı adı** ve **parola** girmeniz yeterlidir. API anahtarı olan bir Azure Işleviyle birlikte kullanmak için, kodu, **uç nokta URL 'sine** bir sorgu parametresi olarak dahil edebilirsiniz (örneğin, `https://contoso.azurewebsites.net/api/endpoint?code=0123456789` ).
+    ![API bağlayıcısını yapılandırma](./media/self-service-sign-up-add-api-connector/api-connector-config.png)
 
-   ![Yeni bir API Bağlayıcısı yapılandırma](./media/self-service-sign-up-add-api-connector/api-connector-config.png)
 8. **Kaydet**’i seçin.
 
+## <a name="securing-the-api-endpoint"></a>API uç noktası güvenliğini sağlama
+API uç noktanızı, HTTP temel kimlik doğrulaması veya HTTPS istemci sertifikası kimlik doğrulaması (Önizleme) kullanarak koruyabilirsiniz. Her iki durumda da, API uç noktanızı çağırırken Azure Active Directory kullanacağı kimlik bilgilerini sağlarsınız. API uç noktanız daha sonra kimlik bilgilerini denetler ve yetkilendirme kararları gerçekleştirir.
+
+### <a name="http-basic-authentication"></a>HTTP temel kimlik doğrulaması
+HTTP temel kimlik doğrulaması, [RFC 2617](https://tools.ietf.org/html/rfc2617)' de tanımlanmıştır. Azure Active Directory, üst bilgiyle istemci kimlik bilgileri (ve) ile bir HTTP isteği gönderir `username` `password` `Authorization` . Kimlik bilgileri Base64 kodlamalı dize olarak biçimlendirilir `username:password` . Daha sonra API 'niz, bir API çağrısının engellenip engellenmeyeceğini tespit etmek için bu değerleri denetler.
+
+### <a name="https-client-certificate-authentication-preview"></a>HTTPS istemci sertifikası kimlik doğrulaması (Önizleme)
+
 > [!IMPORTANT]
-> Daha önce, API 'ye hangi kullanıcı özniteliklerinin gönderileceğini (' gönderilen talepler ') ve API 'den hangi kullanıcı özniteliklerinin kabul edeceğini (' alma talepleri ') yapılandırmanız gerekiyordu. Artık, bir değer varsa ve bir ' devamlılık ' yanıtında API tarafından herhangi bir kullanıcı özniteliği döndürülebilecek tüm Kullanıcı öznitelikleri varsayılan olarak gönderilir.
+> Bu işlevsellik önizlemededir ve hizmet düzeyi anlaşmadan sağlanır. Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
+İstemci sertifikası kimlik doğrulaması, istemcinin kimliğini kanıtlamak için bir istemci sertifikası sağladığı, karşılıklı sertifika tabanlı bir kimlik doğrulamasıdır. Bu durumda Azure Active Directory, API Bağlayıcısı yapılandırmasının bir parçası olarak karşıya yüklediğiniz sertifikayı kullanır. Bu, SSL el sıkışmasının bir parçası olarak gerçekleşir. API hizmetinize yalnızca uygun sertifikalara sahip olan hizmetler erişebilir. İstemci sertifikası bir X. 509.952 dijital sertifikasıdır. Üretim ortamlarında, bir sertifika yetkilisi tarafından imzalanması gerekir. 
+
+Bir sertifika oluşturmak için, imzalanmış sertifikalara yönelik sertifika veren sağlayıcılarıyla otomatik olarak imzalanan sertifikalara ve tümleştirmelere yönelik seçeneklere sahip [Azure Key Vault](../../key-vault/certificates/create-certificate.md)kullanabilirsiniz. Daha sonra [sertifikayı dışa aktarabilir](../../key-vault/certificates/how-to-export-certificate.md) ve API bağlayıcıları yapılandırmasında kullanmak üzere karşıya yükleyebilirsiniz. Parolanın yalnızca bir parola ile korunan sertifika dosyaları için gerekli olduğunu unutmayın. Ayrıca, otomatik olarak imzalanan bir sertifika oluşturmak için PowerShell 'in [New-SelfSignedCertificate cmdlet 'ini](../../active-directory-b2c/secure-rest-api.md#prepare-a-self-signed-certificate-optional) de kullanabilirsiniz.
+
+Azure App Service ve Azure Işlevleri için bkz. API [karşılıklı kimlik doğrulamasını yapılandırma](../../app-service/app-service-web-configure-tls-mutual-auth.md) ve sertifikayı API uç noktanıza nasıl etkinleştireceğinizi ve doğrulayacağınızı öğrenmek için.
+
+Sertifikanızın kullanım süreleri dolduğunda anımsatıcı uyarılarını ayarlamanız önerilir. Var olan bir API bağlayıcısına yeni bir sertifika yüklemek için, **tüm API bağlayıcıları** altında API bağlayıcısını seçin ve **Yeni bağlayıcıyı karşıya yükle**' ye tıklayın. Süresi dolmayan ve geçmiş en son karşıya yüklenen sertifika, Azure Active Directory tarafından otomatik olarak kullanılacaktır.
+
+### <a name="api-key"></a>API Anahtarı
+Bazı hizmetler, geliştirme sırasında HTTP uç noktalarınıza erişmeyi daha zor hale getirmek için bir "API anahtarı" mekanizması kullanır. [Azure işlevleri](../../azure-functions/functions-bindings-http-webhook-trigger.md#authorization-keys)için, bunu `code` **uç nokta URL 'sine** sorgu parametresi olarak ekleyerek yapabilirsiniz. Örneğin, `https://contoso.azurewebsites.net/api/endpoint` <b>`?code=0123456789`</b> ). 
+
+Bu, yalnızca üretimde kullanılması gereken bir mekanizma değildir. Bu nedenle, temel veya sertifika kimlik doğrulaması için yapılandırma her zaman gereklidir. Geliştirme amacıyla herhangi bir kimlik doğrulama yöntemi uygulamak isterseniz, temel kimlik doğrulaması ' nı seçebilir ve için geçici değerleri kullanabilir `username` ve API `password` 'niz, yetkilendirmeyi uyguladığınızda API 'nizin göz ardı edilebilir.
 
 ## <a name="the-request-sent-to-your-api"></a>API 'nize gönderilen istek
 Bir API Bağlayıcısı, bir JSON gövdesinde anahtar-değer çiftleri olarak Kullanıcı öznitelikleri (' talepler ') gönderen bir **http post** isteği olarak yürütülür. Öznitelikler, [Microsoft Graph](/graph/api/resources/user#properties) Kullanıcı özelliklerine benzer şekilde serileştirilir. 
@@ -85,7 +105,7 @@ Yalnızca **Azure Active Directory**  >  **dış kimlikler**  >  **Özel Kullan�
 Ayrıca, **Kullanıcı arabirimi yerel ayarları (' ui_locales ')** talebi tüm isteklerde varsayılan olarak gönderilir. Bu, bir kullanıcının kendi cihazında yapılandırılan, uluslararası yanıtları döndürmek için API tarafından kullanılabilecek olan yerel ayarları sağlar.
 
 > [!IMPORTANT]
-> Gönderilecek bir talebin API uç noktası çağrıldığında bir değeri yoksa, talep API 'ye gönderilmez. API 'niz, beklediği değeri açıkça denetleyecek şekilde tasarlanmalıdır.
+> Bir talebin API uç noktası çağrıldığında bir değeri yoksa, talep API 'ye gönderilmez. API 'niz istek içinde olmayan bir talebi açıkça denetlemek ve işlemek için tasarlanmalıdır.
 
 > [!TIP] 
 > [**kimlikler (' kimlikler ')**](/graph/api/resources/objectidentity) ve **e-posta adresi (' e-posta ')** talepleri, kiracınızda bir hesabı olmadan önce BIR kullanıcıyı tanımlamak için API 'niz tarafından kullanılabilir. ' Kimlikler ' talebi, Kullanıcı Google veya Facebook gibi bir kimlik sağlayıcısı ile kimlik doğrulaması yapıldığında gönderilir. ' e-posta ' her zaman gönderilir.
@@ -109,11 +129,7 @@ Self Servis kaydolma Kullanıcı akışına bir API Bağlayıcısı eklemek içi
 
 ## <a name="after-signing-in-with-an-identity-provider"></a>Bir kimlik sağlayıcısıyla oturum açtıktan sonra
 
-Kaydolma işleminde bu adımdaki bir API Bağlayıcısı, Kullanıcı kimlik sağlayıcısıyla (Google, Facebook, Azure AD) kimliğini doğruladıktan hemen sonra çağrılır. Bu adım, kullanıcı özniteliklerinin toplanması için kullanıcıya sunulan form olan ***öznitelik koleksiyonu sayfasından*** önce gelir. 
-
-<!-- The following are examples of API connector scenarios you may enable at this step:
-- Use the email or federated identity that the user provided to look up claims in an existing system. Return these claims from the existing system, pre-fill the attribute collection page, and make them available to return in the token.
-- Validate whether the user is included in an allow or deny list, and control whether they can continue with the sign-up flow. -->
+Kaydolma işleminde bu adımdaki bir API Bağlayıcısı, Kullanıcı kimlik sağlayıcısıyla kimlik doğrulamasından sonra (Google, Facebook, & Azure AD) hemen çağrılır. Bu adım, kullanıcı özniteliklerinin toplanması için kullanıcıya sunulan form olan ***öznitelik koleksiyonu sayfasından*** önce gelir. Bir kullanıcı yerel hesapla kayıt alıyorsa bu adım çağrılmaz.
 
 ### <a name="example-request-sent-to-the-api-at-this-step"></a>Bu adımda API 'ye gönderilen örnek isteği
 ```http
@@ -165,13 +181,6 @@ Engelleme yanıtı Kullanıcı akışından çıkar. Kullanıcıya bir engelleme
 
 Kaydolma işleminde bu adımda bulunan bir API Bağlayıcısı, varsa öznitelik toplama sayfasından sonra çağrılır. Bu adım, Azure AD 'de bir kullanıcı hesabı oluşturulmadan önce her zaman çağrılır. 
 
-<!-- The following are examples of scenarios you might enable at this point during sign-up: -->
-<!-- 
-- Validate user input data and ask a user to resubmit data.
-- Block a user sign-up based on data entered by the user.
-- Perform identity verification.
-- Query external systems for existing data about the user and overwrite the user-provided value. -->
-
 ### <a name="example-request-sent-to-the-api-at-this-step"></a>Bu adımda API 'ye gönderilen örnek isteği
 
 ```http
@@ -212,7 +221,6 @@ Web API 'SI, bir Kullanıcı akışı sırasında Azure AD 'den bir HTTP isteği
 - Doğrulama yanıtı
 
 #### <a name="continuation-response"></a>Devamlılık yanıtı
-
 Devamlılık yanıtı, Kullanıcı akışının bir sonraki adıma devam etmesi gerektiğini gösterir: kullanıcıyı dizinde oluşturun.
 
 Devamlılık yanıtında, API talepleri döndürebilir. API tarafından bir talep döndürülürse talep şunları yapar:
@@ -251,8 +259,8 @@ Content-type: application/json
 | -------------------------------------------------- | ----------------- | -------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | sürüm                                            | Dize            | Yes      | API sürümü.                                                                                                                                                                                                                                                                |
 | eylem                                             | Dize            | Yes      | Değer olmalıdır `Continue` .                                                                                                                                                                                                                                                              |
-| \<builtInUserAttribute>                            | \<attribute-type> | Hayır       | Bir Kullanıcı akışı için API Bağlayıcısı yapılandırmasında ve **Kullanıcı özniteliklerinde** **alma talebi** olarak seçilirse, değerler dizinde depolanabilir. Bir **uygulama talebi** olarak seçilirse, belirteçte değerler döndürülür.                                              |
-| \<extension\_{extensions-app-id}\_CustomAttribute> | \<attribute-type> | Hayır       | Döndürülen talebin içermesi gerekmez `_<extensions-app-id>_` . Bir Kullanıcı akışı için API Bağlayıcısı yapılandırmasında ve **Kullanıcı özniteliğinde** **alma talebi** olarak seçilirse değerler dizinde depolanır. Özel öznitelikler belirtece geri gönderilemez. |
+| \<builtInUserAttribute>                            | \<attribute-type> | No       | Bir Kullanıcı akışı için API Bağlayıcısı yapılandırmasında ve **Kullanıcı özniteliklerinde** **alma talebi** olarak seçilirse, değerler dizinde depolanabilir. Bir **uygulama talebi** olarak seçilirse, belirteçte değerler döndürülür.                                              |
+| \<extension\_{extensions-app-id}\_CustomAttribute> | \<attribute-type> | No       | Döndürülen talebin içermesi gerekmez `_<extensions-app-id>_` . Döndürülen değerler, bir kullanıcıdan toplanan değerlerin üzerine yazabilir. Ayrıca, uygulamanın bir parçası olarak yapılandırıldıysa belirtece da döndürülebilecek.  |
 
 ### <a name="example-of-a-blocking-response"></a>Engelleme yanıtı örneği
 
@@ -264,7 +272,6 @@ Content-type: application/json
     "version": "1.0.0",
     "action": "ShowBlockPage",
     "userMessage": "There was a problem with your request. You are not able to sign up at this time.",
-    "code": "CONTOSO-BLOCK-00"
 }
 
 ```
@@ -274,7 +281,6 @@ Content-type: application/json
 | sürüm     | Dize | Yes      | API sürümü.                                                    |
 | eylem      | Dize | Yes      | Değer olmalıdır `ShowBlockPage`                                              |
 | userMessage | Dize | Yes      | Kullanıcıya görüntülenecek ileti.                                            |
-| kod        | Dize | Hayır       | Hata kodu. Hata ayıklama amacıyla kullanılabilir. Kullanıcıya gösterilmez. |
 
 **Engelleyici bir Yanıt ile son kullanıcı deneyimi**
 
@@ -291,17 +297,18 @@ Content-type: application/json
     "status": 400,
     "action": "ValidationError",
     "userMessage": "Please enter a valid Postal Code.",
-    "code": "CONTOSO-VALIDATION-00"
 }
 ```
 
 | Parametre   | Tür    | Gerekli | Açıklama                                                                |
 | ----------- | ------- | -------- | -------------------------------------------------------------------------- |
-| sürüm     | Dize  | Yes      | API sürümü.                                                    |
+| sürüm     | Dize  | Yes      | API 'nizin sürümü.                                                    |
 | eylem      | Dize  | Yes      | Değer olmalıdır `ValidationError` .                                           |
 | durum      | Tamsayı | Yes      | `400`Bir ValidationError yanıtı için değer olmalıdır.                        |
 | userMessage | Dize  | Yes      | Kullanıcıya görüntülenecek ileti.                                            |
-| kod        | Dize  | Hayır       | Hata kodu. Hata ayıklama amacıyla kullanılabilir. Kullanıcıya gösterilmez. |
+
+> [!NOTE]
+> Yanıt gövdesinde "durum" değerine ek olarak HTTP durum kodu "400" olmalıdır.
 
 **Doğrulama hatası yanıtıyla Son Kullanıcı deneyimi**
 
@@ -311,7 +318,7 @@ Content-type: application/json
 ## <a name="best-practices-and-how-to-troubleshoot"></a>En iyi uygulamalar ve sorun giderme
 
 ### <a name="using-serverless-cloud-functions"></a>Sunucusuz bulut işlevlerini kullanma
-Azure Işlevlerinde HTTP Tetikleyicileri gibi sunucusuz işlevler, API Bağlayıcısı ile kullanmak üzere API uç noktaları oluşturma basit bir yol sağlar. [Örneğin](code-samples-self-service-sign-up.md#api-connector-azure-function-quickstarts), doğrulama mantığını gerçekleştirmek ve kayıt pencerelerini belirli etki alanlarına kısıtlamak için sunucusuz bulut işlevini kullanabilirsiniz. Sunucusuz bulut işlevi ayrıca daha karmaşık senaryolar için diğer Web API 'Lerini, Kullanıcı depolarını ve diğer bulut hizmetlerini çağırıp çağırabilir.
+Azure Işlevlerinde HTTP Tetikleyicileri gibi sunucusuz işlevler, API Bağlayıcısı ile kullanmak üzere API uç noktaları oluşturma basit bir yol sağlar. [Örneğin](code-samples-self-service-sign-up.md#api-connector-azure-function-quickstarts), doğrulama mantığını gerçekleştirmek ve belirli e-posta etki alanları için oturum açma işlemleri kısıtlamak gibi sunucusuz bulut işlevini kullanabilirsiniz. Sunucusuz bulut işlevi ayrıca daha karmaşık senaryolar için diğer Web API 'Lerini, Kullanıcı depolarını ve diğer bulut hizmetlerini çağırıp çağırabilir.
 
 ### <a name="best-practices"></a>En iyi uygulamalar
 Aşağıdakileri doğrulayın:
@@ -319,8 +326,7 @@ Aşağıdakileri doğrulayın:
 * API bağlayıcısının **uç nokta URL 'si** doğru API uç noktasını işaret eder.
 * API 'niz alınan taleplerin null değerlerini açıkça denetler.
 * Akıcı bir kullanıcı deneyimi sağlamak için API 'niz mümkün olduğunca çabuk yanıt verir.
-    * Sunucusuz bir işlev veya ölçeklenebilir Web hizmeti kullanıyorsanız, API 'YI "uyanık" veya "normal" olarak tutan bir barındırma planı kullanın. Azure Işlevleri için [Premium planı](../../azure-functions/functions-premium-plan.md)kullanmanız önerilir. 
-
+    * Sunucusuz bir işlev veya ölçeklenebilir Web hizmeti kullanıyorsanız, API 'YI "uyanık" veya "normal" olarak tutan bir barındırma planı kullanın. Üretimde. Azure Işlevleri için [Premium planı](../../azure-functions/functions-scale.md) kullanmanız önerilir
 
 ### <a name="use-logging"></a>Günlüğe kaydetmeyi kullanma
 Genel olarak, API 'nizi beklenmedik hata kodları, özel durumlar ve düşük performans için izlemek üzere [Application Insights](../../azure-functions/functions-monitoring.md)gıbı Web API hizmetiniz tarafından etkinleştirilen günlük araçlarını kullanmak yararlı olacaktır.
@@ -330,7 +336,5 @@ Genel olarak, API 'nizi beklenmedik hata kodları, özel durumlar ve düşük pe
 * API 'nizi uzun yanıt süreleri için izleyin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-<!-- - Learn [where you can enable an API connector](api-connectors-overview.md#where-you-can-enable-an-api-connector-in-a-user-flow) -->
 - [Self servis kaydolma 'ya özel bir onay iş akışı eklemeyi](self-service-sign-up-add-approvals.md) öğrenin
-- [Azure işlevi hızlı başlangıç örneklerimize](code-samples-self-service-sign-up.md#api-connector-azure-function-quickstarts)başlayın.
-<!-- - Learn how to [use API connectors to verify a user identity](code-samples-self-service-sign-up.md#identity-verification) -->
+- [Hızlı başlangıç örneklerimizi](code-samples-self-service-sign-up.md#api-connector-azure-function-quickstarts)kullanmaya başlayın.

@@ -2,17 +2,17 @@
 title: NCas T4 v3-serisi
 description: NCas T4 v3 serisi VM 'Leri için belirtim.
 ms.service: virtual-machines
-ms.subservice: hpc
+ms.subservice: vm-sizes-gpu
 author: vikancha-MSFT
 ms.topic: conceptual
 ms.date: 01/12/2021
 ms.author: vikancha
-ms.openlocfilehash: 0ead1c5772cb4a2e231867ef1e77bfa646cbb29e
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: b7418825b4f22bfe4fe1941cb1f70ffb9f0a939b
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102042751"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102609218"
 ---
 # <a name="ncast4_v3-series"></a>NCasT4_v3 serisi 
 
@@ -28,7 +28,7 @@ NCasT4_v3 serisi sanal makineler, [NVIDIA Tesla T4](https://www.nvidia.com/en-us
 [VM oluşturma desteği](generation-2.md): 1. ve 2. nesil<br>
 [Hızlandırılmış ağ](../virtual-network/create-vm-accelerated-networking-cli.md): desteklenir<br>
 [Kısa ömürlü işletim sistemi diskleri](ephemeral-os-disks.md): desteklenmez <br>
-NVIDIA NVLink Interconnect: desteklenmiyor<br>
+NVIDIA NVLink Interconnect: destekleniyor<br>
 <br>
 
 | Boyut | Sanal işlemci | Bellek: GiB | Geçici depolama (SSD) GiB | GPU | GPU belleği: GiB | Maksimum veri diskleri | En fazla NIC/beklenen ağ bant genişliği (Mbps) |

@@ -3,12 +3,12 @@ title: Azure Backup Sunucusu ile Azure VMware Çözüm VM 'lerini yedekleme
 description: Azure VMware Çözüm ortamınızı, Azure Backup Sunucusu kullanarak sanal makineleri yedekleyecek şekilde yapılandırın.
 ms.topic: how-to
 ms.date: 02/04/2021
-ms.openlocfilehash: ea2164ba19703660e54879c25b975342d824662c
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
+ms.openlocfilehash: 163065556b7dbc979d68613744ea827c209d9fda
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99585033"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102618925"
 ---
 # <a name="back-up-azure-vmware-solution-vms-with-azure-backup-server"></a>Azure Backup Sunucusu ile Azure VMware Çözüm VM 'lerini yedekleme
 
@@ -73,7 +73,7 @@ VMware 6,7 üzerinde iletişim kuralı olarak TLS etkinleştirilmiş.
 
 1. Aşağıdaki kayıt defteri ayarlarını kopyalayıp Not defteri 'ne yapıştırın. Sonra dosyayı TLS olarak kaydedin. . Txt uzantısı olmayan REG.
 
-   ```text
+   ```
    
    Windows Registry Editor Version 5.00
    

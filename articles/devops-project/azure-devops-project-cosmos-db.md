@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 03/24/2020
 author: mlearned
 ms.custom: devx-track-js
-ms.openlocfilehash: de98d9db515e4ed88759efa7f22dddcca06151c8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d1bdae976d5e5b7d98311d33bb38b5035f2557ca
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91854690"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102548708"
 ---
 # <a name="deploy-nodejs-apps-powered-by-azure-cosmos-db-with-devops-starter"></a>DevOps Starter ile Azure Cosmos DB tarafından desteklenen Node.js uygulamalar dağıtın
 
@@ -45,21 +45,21 @@ Bu öğreticide şunları yapacaksınız:
 
 DevOps Starter Azure Pipelines ' de bir CI/CD işlem hattı oluşturur. Yeni bir Azure DevOps kuruluşu oluşturabilir veya var olan bir kuruluşu kullanabilirsiniz. DevOps Starter Ayrıca seçtiğiniz Azure aboneliğinde Azure Cosmos DB, Application Insights, App Service ve App Service planları gibi Azure kaynakları da oluşturur.
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 
-1. Arama kutusuna **DevOps Starter**yazın ve ardından öğesini seçin. Yeni bir tane oluşturmak için **Ekle** ' ye tıklayın.
+1. Arama kutusuna **DevOps Starter** yazın ve ardından öğesini seçin. Yeni bir tane oluşturmak için **Ekle** ' ye tıklayın.
 
     ![DevOps başlangıç panosu](_img/azure-devops-starter-aks/search-devops-starter.png)
 
-1. Çalışma zamanı olarak **Node.js** seçin ve ardından **İleri**' yi seçin. **Uygulama çerçevesi seçin**altında **Express.js**' yi seçin.
+1. Çalışma zamanı olarak **Node.js** seçin ve ardından **İleri**' yi seçin. **Uygulama çerçevesi seçin** altında **Express.js**' yi seçin.
 
-1. **Cosmos DB**Için **veritabanı ekleme** bölümünü etkinleştirin ve sonra **İleri**' yi seçin.
+1. **Cosmos DB** Için **veritabanı ekleme** bölümünü etkinleştirin ve sonra **İleri**' yi seçin.
 
     ![Veritabanı ekleyin](_img/azure-devops-project-cosmos-db/add-database.png)
 
-    Azure DevOps Starter, **Express.js**, **örnek Node.js uygulama**ve **Sail.js**gibi çeşitli uygulama çerçevelerini destekler. Bu öğreticide **Express.js**kullanırız.
+    Azure DevOps Starter, **Express.js**, **örnek Node.js uygulama** ve **Sail.js** gibi çeşitli uygulama çerçevelerini destekler. Bu öğreticide **Express.js** kullanırız.
 
-1. Uygulamayı dağıtmak için bir Azure hizmeti seçin ve ardından **İleri**' yi seçin. Seçenekleriniz Windows Web uygulaması, Azure Kubernetes hizmeti ve Azure Kapsayıcılar için Web App içerir. Bu öğreticide, **Windows Web App**kullanıyoruz.
+1. Uygulamayı dağıtmak için bir Azure hizmeti seçin ve ardından **İleri**' yi seçin. Seçenekleriniz Windows Web uygulaması, Azure Kubernetes hizmeti ve Azure Kapsayıcılar için Web App içerir. Bu öğreticide, **Windows Web App** kullanıyoruz.
 
 ## <a name="configure-azure-devops-and-azure-subscription"></a>Azure DevOps ve Azure aboneliğini yapılandırma
 
@@ -97,11 +97,11 @@ DevOps Starter, Azure DevOps kuruluşunuzda bir CI/CD işlem hattını otomatik 
 
 1. DevOps başlangıç panosuna gidin.
 
-1. **Build**altındaki köprüyü seçin. Bir tarayıcı sekmesi, yeni projeniz için derleme işlem hattını görüntüler.
+1. **Build** altındaki köprüyü seçin. Bir tarayıcı sekmesi, yeni projeniz için derleme işlem hattını görüntüler.
 
     ![Derleme bölmesi](_img/azure-devops-project-cosmos-db/build.png)
 
-1. **Düzenle**’yi seçin. Bu bölmede, derleme işlem hattınızla ilgili çeşitli görevleri inceleyebilirsiniz. Derleme, git deposundan kaynak kodu getirme, uygulamayı oluşturma, birim testlerini çalıştırma ve dağıtımlar için kullanılan yayınlama çıkışları gibi çeşitli görevleri gerçekleştirir.
+1. **Düzenle**'yi seçin. Bu bölmede, derleme işlem hattınızla ilgili çeşitli görevleri inceleyebilirsiniz. Derleme, git deposundan kaynak kodu getirme, uygulamayı oluşturma, birim testlerini çalıştırma ve dağıtımlar için kullanılan yayınlama çıkışları gibi çeşitli görevleri gerçekleştirir.
 
 1. **Tetikleyiciler**’i seçin. DevOps Starter otomatik olarak bir CI tetikleyicisi oluşturur ve depoya yapılan her bir işleme yeni bir derleme başlatır. CI işlemindeki dalları dahil etmek veya hariç tutmak seçebilirsiniz.
 
@@ -119,7 +119,7 @@ DevOps Starter, Azure DevOps kuruluşunuzdan Azure aboneliğinize dağıtım yap
 
 1. İşlem **hatları** ' na gidin ve **yayınlar**' ı seçin.
 
-1. **Düzenle**’yi seçin.
+1. **Düzenle**'yi seçin.
 
 1. **Yapıtlar**’ın altında **Bırak**’ı seçin. Önceki adımlarda inceettiğiniz derleme işlem hattı, yapıt için kullanılan çıktıyı üretir.
 
@@ -144,7 +144,7 @@ Artık App Service en son çalışmalarınızı dağıtan bir CI/CD işlemi kull
 
 1. Depo, oluşturma işleminde seçtiğiniz uygulama diline bağlı olarak zaten kod içeriyor. **Uygulama/görünümler/index. Pug** dosyasını açın.
 
-1. **Düzenle**' yi seçin ve ardından **15 numaralı satırda**bir değişiklik yapın. Örneğin, bunu "Ilk dağıtımma Azure App Service Azure Cosmos DB tarafından desteklenen olarak değiştirebilirsiniz.
+1. **Düzenle**' yi seçin ve ardından **15 numaralı satırda** bir değişiklik yapın. Örneğin, bunu "Ilk dağıtımma Azure App Service Azure Cosmos DB tarafından desteklenen olarak değiştirebilirsiniz.
 
 1. Sağ üst köşede, **Kaydet**' i seçin ve sonra da değişiklerinizi göndermek Için yeniden **Yürüt** ' ü seçin.
 
@@ -167,4 +167,4 @@ Ekibinizin ihtiyaçlarını karşılamak için bu derleme ve yayın işlem hatla
 > * Git 'e değişiklikleri işleyin ve Azure 'a otomatik olarak dağıtın
 > * Kaynakları temizleme
 
-Daha fazla bilgi ve sonraki adımlar için bkz. [Multi-Stage sürekli dağıtımı (CD) ardışık düzenini tanımlama](/azure/devops/pipelines/release/define-multistage-release-process?view=azure-devops&viewFallbackFrom=vsts) .
+Daha fazla bilgi ve sonraki adımlar için bkz. [Multi-Stage sürekli dağıtımı (CD) ardışık düzenini tanımlama](/azure/devops/pipelines/release/define-multistage-release-process) .

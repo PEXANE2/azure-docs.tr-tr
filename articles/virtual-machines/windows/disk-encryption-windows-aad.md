@@ -3,17 +3,18 @@ title: Windows VM 'Leri için Azure AD ile Azure disk şifrelemesi (önceki sür
 description: Bu makalede, Windows IaaS VM 'Leri için Microsoft Azure disk şifrelemeyi etkinleştirme yönergeleri sunulmaktadır.
 author: msmbaldwin
 ms.service: virtual-machines
-ms.subservice: security
+ms.subservice: disks
+ms.collection: windows
 ms.topic: how-to
 ms.author: mbaldwin
 ms.date: 03/15/2019
 ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: 352c8848b98bfb463c03ceea89ebe3f4b6ad6d5b
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 3b7f6f63953ba09e57e4586c698e16b9abb8aa1c
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92742435"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102555287"
 ---
 # <a name="azure-disk-encryption-with-azure-ad-for-windows-vms-previous-release"></a>Windows VM 'Leri için Azure AD ile Azure disk şifrelemesi (önceki sürüm)
 
@@ -31,7 +32,7 @@ Birçok disk şifreleme senaryosunu etkinleştirebilirsiniz ve adımlar senaryoy
 ## <a name="enable-encryption-on-new-iaas-vms-created-from-the-marketplace"></a>Market 'ten oluşturulan yeni IaaS sanal makinelerinde şifrelemeyi etkinleştirme
 Kaynak Yöneticisi şablonu kullanarak Azure 'daki Market 'ten yeni IaaS Windows VM 'de disk şifrelemeyi etkinleştirebilirsiniz. Şablon, Windows Server 2012 Galeri görüntüsünü kullanarak yeni bir şifrelenmiş Windows VM oluşturur.
 
-1. [Kaynak Yöneticisi şablonunda](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-create-new-vm-gallery-image) **Azure 'a dağıt** ' a tıklayın.
+1. [Kaynak Yöneticisi şablonunda](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-create-new-vm-gallery-image) **Azure 'a dağıt**' a tıklayın.
 
 2. Abonelik, kaynak grubu, kaynak grubu konumu, parametreler, yasal koşullar ve Sözleşme ' yi seçin. Şifrelemenin etkinleştirildiği yeni bir IaaS VM 'si dağıtmak için **satın al** ' a tıklayın.
 
@@ -156,7 +157,7 @@ Azure 'da çalışan bir IaaS sanal makinesinde şifrelemeyi etkinleştirmek iç
 [Çalışan bir WINDOWS VM 'yi şifrelemek için Kaynak Yöneticisi şablonunu](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-running-windows-vm)kullanarak Azure 'da var olan veya çalışan IaaS Windows VM 'lerinde disk şifrelemeyi etkinleştirebilirsiniz.
 
 
-1. Azure hızlı başlangıç şablonunda **Azure 'A dağıt** ' a tıklayın.
+1. Azure hızlı başlangıç şablonunda **Azure 'A dağıt**' a tıklayın.
 
 2. Abonelik, kaynak grubu, kaynak grubu konumu, parametreler, yasal koşullar ve Sözleşme ' yi seçin. Mevcut veya çalışan IaaS VM üzerinde şifrelemeyi etkinleştirmek için **satın al** ' a tıklayın.
 
@@ -168,7 +169,7 @@ Aşağıdaki tabloda, bir Azure AD istemci KIMLIĞI kullanan mevcut veya çalı�
 | AADClientSecret | Anahtar kasasına gizli diziler yazma izinleri olan Azure AD uygulamasının istemci gizli anahtarı. |
 | keyVaultName | BitLocker anahtarının yüklenmesi gereken anahtar kasasının adı. Bunu, cmdlet 'ini `(Get-AzKeyVault -ResourceGroupName <MyKeyVaultResourceGroupName>). Vaultname` veya Azure CLI komutunu kullanarak edinebilirsiniz `az keyvault list --resource-group "MySecureGroup"`|
 |  keyEncryptionKeyURL 'Si | Oluşturulan BitLocker anahtarını şifrelemek için kullanılan anahtar şifreleme anahtarının URL 'SI. UseExistingKek açılır listesinde **nokek** ' ı seçerseniz bu parametre isteğe bağlıdır. UseExistingKek açılır listesinde **kek** ' yi seçerseniz _Keyencryptionkeyurl_ değerini girmeniz gerekir. |
-| Birimtürü | Şifreleme işleminin gerçekleştirildiği birimin türü. Geçerli değerler _Işletim sistemi_ , _veri_ ve _hepsi_ . |
+| Birimtürü | Şifreleme işleminin gerçekleştirildiği birimin türü. Geçerli değerler _Işletim sistemi_, _veri_ ve _hepsi_. |
 | sequenceVersion | BitLocker işleminin sıra sürümü. Aynı VM 'de her disk şifreleme işlemi gerçekleştirildiğinde bu sürüm numarasını artırın. |
 | vmName | Şifreleme işleminin gerçekleştirileceği sanal makinenin adı. |
 
@@ -181,7 +182,7 @@ Azure 'da kullanılabilen önceden şifrelenmiş görüntüleri hazırlama ekind
 * [Önceden şifrelenmiş bir Windows VHD hazırlama](disk-encryption-sample-scripts.md#prepare-a-pre-encrypted-windows-vhd)
 
 
-### <a name="encrypt-vms-with-pre-encrypted-vhds-with-azure-powershell"></a><a name="bkmk_VHDprePSH"> </a> Azure PowerShell ile önceden şifrelenen VHD 'Ler Ile VM 'leri şifreleme
+### <a name="encrypt-vms-with-pre-encrypted-vhds-with-azure-powershell"></a><a name="bkmk_VHDprePSH"></a> Azure PowerShell ile önceden şifrelenen VHD 'Ler Ile VM 'leri şifreleme
 [Set-AzVMOSDisk](/powershell/module/az.compute/set-azvmosdisk#examples)PowerShell cmdlet 'ini kullanarak, şifrelenen VHD 'niz üzerinde disk şifrelemeyi etkinleştirebilirsiniz. Aşağıdaki örnek size bazı ortak parametreler vermektedir. 
 
 ```powershell
