@@ -6,12 +6,12 @@ ms.author: anvar
 ms.manager: bsiva
 ms.topic: how-to
 ms.date: 03/02/2021
-ms.openlocfilehash: 6e81b3d62fb5b208c88257d7660f74ac25f099b8
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 1c93002a6dd97aadbf407713ab25091436bd85e0
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102048021"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102612074"
 ---
 # <a name="scale-agentless-migration-of-vmware-virtual-machines-to-azure"></a>VMware sanal makinelerinin aracısız geçişini Azure 'a ölçeklendirin
 
@@ -147,10 +147,10 @@ Başlamadan önce, [Bu Azure uç noktalarına](migrate-appliance.md#public-cloud
 1. Önceki adımda açılan açılan pencerede, kopyalanmış yapılandırma ZIP dosyasının konumunu seçin ve **Kaydet**' e tıklayın.
 
 Dosyalar başarıyla alındıktan sonra, ölçek genişletme gerecinin kaydı tamamlanır ve son başarılı almanın zaman damgasını gösterir. Ayrıca, **Ayrıntıları görüntüle**' ye tıklayarak kayıt ayrıntılarına bakabilirsiniz.
-:::image type="content" source="./media/how-to-scale-out-for-migration/import-success.png" alt-text="İçeri aktarma başarılı":::
+:::image type="content" source="./media/how-to-scale-out-for-migration/import-success.png" alt-text="Ekran görüntüsünde, Azure geçişi projesi ile genişleme gereç kaydı gösterilmektedir.":::
 
 Bu noktada, ölçek genişletme gerecinin vCenter Server 'a bağlanabildiğini yeniden doğrulamanız gerekir. Genişleme gerecinden vCenter Server bağlantısını doğrulamak için **yeniden doğrula** ' ya tıklayın.
-:::image type="content" source="./media/how-to-scale-out-for-migration/view-sources.png" alt-text="İçeri aktarma başarılı":::
+:::image type="content" source="./media/how-to-scale-out-for-migration/view-sources.png" alt-text="Ekran görüntüsü, doğrulanacak kimlik bilgilerini ve bulma kaynaklarını gösterir.":::
 
 > [!IMPORTANT]
 > Birincil gereç üzerinde vCenter Server kimlik bilgilerini düzenlerseniz, en son yapılandırmayı almak ve devam eden çoğaltmaları sürdürmek için yapılandırma dosyalarını ölçek genişletme gerecine yeniden içeri aktartığınızdan emin olun.<br/> Genişleme gerecine daha fazla ihtiyacınız yoksa, genişleme gerecini devre dışı bıraktığınızdan emin olun. Gerekli olmadığında ölçek genişletme gerecinin nasıl devre dışı bırakılacağı hakkında [**daha fazla bilgi edinin**](./common-questions-appliance.md) .

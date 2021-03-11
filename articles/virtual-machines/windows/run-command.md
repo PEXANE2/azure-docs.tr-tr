@@ -3,22 +3,23 @@ title: Azure 'da Windows VM 'de PowerShell betikleri çalıştırma
 description: Bu konuda, komut Çalıştır özelliğini kullanarak bir Azure Windows sanal makinesi içinde PowerShell betikleri çalıştırma açıklanmaktadır
 services: automation
 ms.service: virtual-machines
+ms.collection: windows
 author: bobbytreed
 ms.author: robreed
 ms.date: 04/26/2019
 ms.topic: how-to
 ms.custom: devx-track-azurecli
 manager: carmonm
-ms.openlocfilehash: eac6201f45b11cae223e2293644bd9d0144e6e31
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: e2cd8ee4095db235215a2beaa68975e819b474c1
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98203363"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102560693"
 ---
 # <a name="run-powershell-scripts-in-your-windows-vm-by-using-run-command"></a>Çalıştır komutunu kullanarak PowerShell betiklerini Windows sanal makinenizde çalıştırma
 
-Çalıştır komutu özelliği, bir Azure Windows VM içinde PowerShell betikleri çalıştırmak için sanal makine (VM) aracısını kullanır. Bu betikleri, genel makine veya uygulama yönetimi için kullanabilirsiniz. VM erişimi ve ağ sorunlarını hızla tanılamanıza ve düzeltmenize ve VM 'yi iyi bir duruma almanıza yardımcı olabilirler.
+Çalıştır komutu özelliği, bir Azure Windows VM içinde PowerShell betikleri çalıştırmak için sanal makine (VM) aracısını kullanır. Genel makine veya uygulama yönetimi için bu betikleri kullanabilirsiniz. VM erişimi ve ağ sorunlarını hızla tanılamanıza ve düzeltmenize ve VM 'yi iyi bir duruma almanıza yardımcı olabilirler.
 
 
 
@@ -63,7 +64,7 @@ The entity was not found in this Azure location
 |**ResetRDPCert**|RDP dinleyicisine bağlı TLS/SSL sertifikasını kaldırır ve RDP dinleyicisi güvenliğini varsayılana geri yükler. Sertifikayla ilgili herhangi bir sorun görürseniz bu betiği kullanın.|
 |**SetRDPPort**|Uzak Masaüstü bağlantıları için varsayılan veya Kullanıcı tarafından belirtilen bağlantı noktası numarasını ayarlar. Bağlantı noktasına gelen erişim için güvenlik duvarı kuralları sağlar.|
 
-## <a name="azure-cli"></a>Azure CLI
+## <a name="azure-cli"></a>Azure CLI’si
 
 Aşağıdaki örnek, bir Azure Windows sanal makinesinde kabuk betiği çalıştırmak için [az VM Run-Command](/cli/azure/vm/run-command#az-vm-run-command-invoke) komutunu kullanır.
 
@@ -102,7 +103,7 @@ Aşağıdaki örnek, bir Azure VM üzerinde PowerShell betiğini çalıştırmak
 Invoke-AzVMRunCommand -ResourceGroupName '<myResourceGroup>' -Name '<myVMName>' -CommandId 'RunPowerShellScript' -ScriptPath '<pathToScript>' -Parameter @{"arg1" = "var1";"arg2" = "var2"}
 ```
 
-## <a name="limiting-access-to-run-command"></a>Çalıştır komutuna erişimi sınırlandırma
+## <a name="limiting-access-to-run-command"></a>Komut Çalıştırma'ya erişimi sınırlama
 
 Çalıştırma komutlarının listelenmesi veya bir komutun ayrıntılarını göstermek için `Microsoft.Compute/locations/runCommands/read` abonelik düzeyinde izin gerekir. Yerleşik [okuyucu](../../role-based-access-control/built-in-roles.md#reader) rolü ve daha yüksek düzeyler bu izne sahiptir.
 

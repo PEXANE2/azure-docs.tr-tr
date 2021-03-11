@@ -1,6 +1,6 @@
 - name: Azure Kaynak Taşıyıcı Belgeleri
   href: index.yml
-- name: Genel Bakış
+- name: Genel bakış
   items:
     - name: Azure Kaynak Taşıyıcı hakkında
       href: overview.md
@@ -14,6 +14,8 @@
       href: tutorial-move-region-virtual-machines.md
     - name: Şifrelenmiş Azure sanal makinelerini başka bir bölgeye taşıma
       href: tutorial-move-region-encrypted-virtual-machines.md
+    - name: PowerShell ile bölgeler arasında kaynakları taşıma
+      href: tutorial-move-region-powershell.md
     - name: SQL kaynaklarını başka bir bölgeye taşıma
       href: tutorial-move-region-sql.md
 - name: Kavramlar
@@ -28,8 +30,6 @@
   items:
     - name: Bölgeler arasında taşıma
       items:
-        - name: PowerShell ile bölgeler arasında taşıma
-          href: move-region-powershell.md
         - name: Azure VM'lerini kullanılabilirlik alanlarına taşıma
           href: move-region-availability-zone.md
         - name: Bölgeler arasında taşıma (kaynak grubundan)

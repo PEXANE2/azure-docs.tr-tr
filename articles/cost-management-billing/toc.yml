@@ -52,8 +52,6 @@
           href: costs/ingest-azure-usage-at-scale.md
         - name: İş ortakları için Maliyet Yönetimi
           href: costs/get-started-partners.md
-        - name: EA raporlamasından Azure Resource Manager API’lerine geçiş
-          href: costs/migrate-from-enterprise-reporting-to-azure-resource-manager-apis.md
     - name: Rezervasyonlar
       items:
         - name: Azure Ayırmaları nedir?
@@ -296,8 +294,10 @@
           href: manage/mca-check-azure-credits-balance.md
         - name: EA'dan MCA API'lerine geçiş
           href: costs/migrate-cost-management-api.md
-        - name: SPN 'lere roller atama
+        - name: EA SPN 'lere roller atama
           href: manage/assign-roles-azure-service-principals.md
+        - name: EA raporlamasından Azure Resource Manager API’lerine geçiş
+          href: costs/migrate-from-enterprise-reporting-to-azure-resource-manager-apis.md
     - name: Rezervasyonları satın alma ve yönetme
       items:
         - name: Neyin satın alınacağını saptama

@@ -8,12 +8,12 @@ ms.technology: devops-cicd
 ms.topic: tutorial
 ms.date: 03/24/2020
 author: mlearned
-ms.openlocfilehash: 6a1af644bbd88af5c513ed9a43ce154f285c06df
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7e85b698e1b3c3a1c3e8730ab85e8b72b7b0d9f6
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91856016"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102548487"
 ---
 # <a name="tutorial-deploy-your-aspnet-app-and-azure-sql-database-code-by-using-azure-devops-starter"></a>Öğretici: Azure DevOps Starter kullanarak ASP.NET uygulamanızı ve Azure SQL veritabanı kodunuzu dağıtın
 
@@ -44,15 +44,15 @@ Bu öğreticide şunları yapacaksınız:
 
 DevOps Starter Azure Pipelines ' de bir CI/CD işlem hattı oluşturur. Yeni bir Azure DevOps kuruluşu oluşturabilir veya var olan bir kuruluşu kullanabilirsiniz. DevOps Starter Ayrıca Azure SQL veritabanı gibi tercih ettiğiniz Azure aboneliğinde Azure kaynakları da oluşturur.
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 
-1. Arama kutusuna **DevOps Starter**yazın ve ardından öğesini seçin. Yeni bir tane oluşturmak için **Ekle** ' ye tıklayın.
+1. Arama kutusuna **DevOps Starter** yazın ve ardından öğesini seçin. Yeni bir tane oluşturmak için **Ekle** ' ye tıklayın.
 
     ![DevOps başlangıç panosu](_img/azure-devops-starter-aks/search-devops-starter.png)
 
 1. **.Net**' i seçin ve ardından **İleri**' yi seçin.
 
-1. **Uygulama çerçevesi seçin**altında **ASP.net**' yi seçin.
+1. **Uygulama çerçevesi seçin** altında **ASP.net**' yi seçin.
 
 1. **Veritabanı Ekle**' yi seçin ve ardından **İleri**' yi seçin. Önceki adımda seçtiğiniz uygulama çerçevesi, burada kullanılabilir olan Azure hizmet dağıtım hedefinin türünü belirler. 
     
@@ -76,7 +76,7 @@ DevOps Starter, Azure Repos içinde tam bir CI/CD işlem hattını otomatik olar
 
 1. **Durum** alanını işaret edin ve ardından üç nokta (...) simgesini seçin. Bir menü, yeni bir derlemeyi sıraya alma, bir derlemeyi duraklatma ve derleme işlem hattını düzenlemeyle çeşitli seçenekleri görüntüler.
 
-1. **Düzenle**’yi seçin.
+1. **Düzenle**'yi seçin.
 
 1. Bu bölmede, derleme işlem hattınızla ilgili çeşitli görevleri inceleyebilirsiniz. Derleme, git deposundan kaynak getirme, bağımlılıkları geri yükleme ve dağıtımlar için kullanılan yayınlama çıkışları gibi çeşitli görevleri gerçekleştirir.
 
@@ -113,7 +113,7 @@ DevOps Starter, Azure DevOps kuruluşunuzdan Azure aboneliğinize dağıtım yap
 
 1. Solda, **Görevler**' i seçin ve ardından ortamınızı seçin. Görevler, dağıtım işleminizin yürütüldüğü etkinliklerdir ve aşamalar halinde gruplandırılır. Bu yayın işlem hattının bir *Azure App Service dağıtımı* ve *Azure SQL veritabanı dağıtım* görevi içeren tek bir aşaması vardır.
 
-1. *Azure SQL Yürüt* görevini SEÇIN ve SQL dağıtımı için kullanılan çeşitli özellikleri inceleyin. **Dağıtım paketi**altında, görev BIR *SQL dacpac* dosyası kullanır.
+1. *Azure SQL Yürüt* görevini SEÇIN ve SQL dağıtımı için kullanılan çeşitli özellikleri inceleyin. **Dağıtım paketi** altında, görev BIR *SQL dacpac* dosyası kullanır.
 
 1. Sağ tarafta, sürümlerin geçmişini görüntülemek için **yayınları görüntüle** ' yi seçin.
 
@@ -121,7 +121,7 @@ DevOps Starter, Azure DevOps kuruluşunuzdan Azure aboneliğinize dağıtım yap
 
 1. **İşlemeler**'i seçin. Bu görünüm, bu dağıtımla ilişkili kod işlemelerini gösterir. Dağıtımlar arasındaki işleme farklılıklarını görmek için yayınları karşılaştırın.
 
-1. **Günlükleri**seçin. Günlüklerde, dağıtım işlemiyle ilgili yararlı bilgiler bulunur. Bunları, dağıtımları sırasında ve sonrasında görüntüleyebilirsiniz.
+1. **Günlükleri** seçin. Günlüklerde, dağıtım işlemiyle ilgili yararlı bilgiler bulunur. Bunları, dağıtımları sırasında ve sonrasında görüntüleyebilirsiniz.
 
 ## <a name="commit-changes-to-azure-repos-and-automatically-deploy-them-to-azure"></a>Azure Repos değişiklikleri işleyin ve Azure 'a otomatik olarak dağıtın 
 
@@ -152,13 +152,13 @@ Azure SQL veritabanı 'na bağlanmak için uygun izinlere sahip olmanız gerekir
 
 1. **SQL veritabanı** bölmesine geri dönün. 
 
-1. Sağ tarafta, **SQL Server**için yapılandırma sayfasına gitmek üzere sunucu adını seçin.
+1. Sağ tarafta, **SQL Server** için yapılandırma sayfasına gitmek üzere sunucu adını seçin.
 
 1. **Parolayı Sıfırla**' yı seçin, SQL Server yönetici oturumu için bir parola girin ve ardından **Kaydet**' i seçin. Bu öğreticide daha sonra kullanmak üzere bu parolayı kaydettiğinizden emin olun.
 
     İsteğe bağlı olarak, SQL Server ve Azure SQL veritabanı 'na bağlanmak için SQL Server Management Studio veya Visual Studio gibi istemci araçlarını kullanabilirsiniz. Bağlanmak için **Sunucu adı** özelliğini kullanın.
 
-    DevOps Projeleri içinde projeyi başlangıçta yapılandırdığınızda veritabanı kullanıcı adını değiştirmediyseniz, Kullanıcı adınız e-posta adresinizin yerel kısmıdır. Örneğin, e-posta adresiniz *cetikan \@ Microsoft.com*ise, Kullanıcı adınız *johntikan*olur.
+    DevOps Projeleri içinde projeyi başlangıçta yapılandırdığınızda veritabanı kullanıcı adını değiştirmediyseniz, Kullanıcı adınız e-posta adresinizin yerel kısmıdır. Örneğin, e-posta adresiniz *cetikan \@ Microsoft.com* ise, Kullanıcı adınız *johntikan* olur.
 
    > [!NOTE]
    > SQL oturum açma parolasını değiştirirseniz, sürüm ardışık düzen değişkeninde bulunan parolayı, CD işlem hattını [İnceleme](#examine-the-cd-pipeline) bölümünde açıklandığı gibi değiştirmeniz gerekir.
@@ -190,7 +190,7 @@ Ekibinizin gereksinimlerine uygun olarak bu derleme ve yayın işlem hatlarını
 CI/CD işlem hattı hakkında daha fazla bilgi edinmek için bkz.:
 
 > [!div class="nextstepaction"]
-> [Çoklu aşamalı sürekli dağıtım (CD) işlem hattınızı tanımlama](/azure/devops/pipelines/release/define-multistage-release-process?view=vsts)
+> [Çoklu aşamalı sürekli dağıtım (CD) işlem hattınızı tanımlama](/azure/devops/pipelines/release/define-multistage-release-process)
 
 ## <a name="videos"></a>Videolar
 

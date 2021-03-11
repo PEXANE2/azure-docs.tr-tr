@@ -6,12 +6,12 @@ ms.service: storsimple
 ms.topic: how-to
 ms.date: 01/25/2021
 ms.author: alkohli
-ms.openlocfilehash: e41d2e531a051738a31325b4ea33961bfb39e7f9
-ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
+ms.openlocfilehash: 3292f337a39e2adb7dc5e78f12785ead8759f5d1
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98808021"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102611955"
 ---
 # <a name="use-windows-powershell-for-storsimple-to-administer-your-device"></a>StorSimple için Windows PowerShell’i kullanarak cihazınızı yönetme
 
@@ -29,7 +29,7 @@ Bu makaleyi okuduktan sonra şunları yapabilirsiniz:
 
 > [!NOTE]
 > * StorSimple için Windows PowerShell cmdlet 'leri, StorSimple cihazınızı bir seri konsolundan veya Windows PowerShell uzaktan iletişim yoluyla uzaktan yönetmenize olanak sağlar. Bu arabirimde kullanılabilecek tek tek cmdlet 'ler hakkında daha fazla bilgi için, [StorSimple için Windows PowerShell için cmdlet başvurusuna](/powershell/module/hcs/?viewFallbackFrom=winserverr2-ps&preserve-view=true)gidin.
-> * Azure PowerShell StorSimple cmdlet 'leri, komut satırından StorSimple hizmet düzeyi ve geçiş görevlerini otomatikleştirmenizi sağlayan farklı cmdlet koleksiyonlardır. StorSimple için Azure PowerShell cmdlet 'leri hakkında daha fazla bilgi için [Azure StorSimple cmdlet başvurusuna](/powershell/module/servicemanagement/azure.service/?view=azuresmps-4.0.0&viewFallbackFrom=azuresmps-3.7.0&preserve-view=true#azure)gidin.
+> * Azure PowerShell StorSimple cmdlet 'leri, komut satırından StorSimple hizmet düzeyi ve geçiş görevlerini otomatikleştirmenizi sağlayan farklı cmdlet koleksiyonlardır. StorSimple için Azure PowerShell cmdlet 'leri hakkında daha fazla bilgi için [Azure StorSimple cmdlet başvurusuna](/powershell/module/servicemanagement/azure.service/#azure)gidin.
 
 
 Aşağıdaki yöntemlerden birini kullanarak StorSimple için Windows PowerShell erişebilirsiniz:

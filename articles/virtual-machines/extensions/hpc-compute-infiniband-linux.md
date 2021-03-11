@@ -1,24 +1,25 @@
 ---
 title: InfiniBand Sürücü Uzantısı-Azure Linux VM 'Leri
 description: Linux çalıştıran H ve N serisi işlem VM 'lerinde InfiniBand sürücülerini yüklemek için Microsoft Azure uzantısı.
-services: virtual-machines-linux
+services: virtual-machines
 documentationcenter: ''
 author: vermagit
 editor: ''
 ms.assetid: ''
-ms.service: virtual-machines-linux
-ms.subservice: extensions
+ms.service: virtual-machines
+ms.subservice: hpc
+ms.collection: linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 07/20/2020
 ms.author: amverma
-ms.openlocfilehash: 2a5aa8983e6cbb0745e05ce275edeadeccb60736
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 1219f5befb4de81850681a53c10f03dc81249d53
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94966046"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102559741"
 ---
 # <a name="infiniband-driver-extension-for-linux"></a>Linux için InfiniBand sürücü uzantısı
 
@@ -28,7 +29,7 @@ ALıNAN sürücülerin el ile yüklenmesiyle ilgili yönergeler [burada](../work
 
 [Windows VM 'ler](hpc-compute-infiniband-windows.md)için InfiniBand sürücülerini yüklemek için de bir uzantı kullanılabilir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 ### <a name="operating-system"></a>İşletim sistemi
 
@@ -72,7 +73,7 @@ Aşağıdaki JSON uzantı için şemayı gösterir.
 
 | Name | Değer/örnek | Veri Türü |
 | ---- | ---- | ---- |
-| apiVersion | 2015-06-15 | tarih |
+| apiVersion | 2015-06-15 | date |
 | yayımcı | Microsoft. HpcCompute | string |
 | tür | Infinibanddriverlinux | string |
 | typeHandlerVersion | 1.1 | int |

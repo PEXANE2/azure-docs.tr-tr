@@ -3,12 +3,12 @@ title: MABS & System Center DPM destek matrisi
 description: Bu makalede, şirket içi ve Azure VM kaynaklarını yedeklemek için Microsoft Azure Backup sunucusu (MABS) veya System Center DPM kullandığınızda Azure Backup desteği özetlenmektedir.
 ms.date: 02/17/2019
 ms.topic: conceptual
-ms.openlocfilehash: aaa68dba0bbd1f3f5ffb5480a2bdb0a48ae85656
-ms.sourcegitcommit: 04297f0706b200af15d6d97bc6fc47788785950f
+ms.openlocfilehash: e888b43ea5641f1943a096f045747d547c52fcfa
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98986065"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102609762"
 ---
 # <a name="support-matrix-for-backup-with-microsoft-azure-backup-server-or-system-center-dpm"></a>Microsoft Azure Backup Server veya System Center DPM ile yedekleme için destek matrisi
 
@@ -60,9 +60,9 @@ DPM/MABS, aşağıdaki tabloda özetlenen şekilde dağıtılabilir.
 
 **Dağıtım** | **Destek** | **Ayrıntılar**
 --- | --- | ---
-**Şirket içinde dağıtıldı** | Fiziksel sunucu<br/><br/>Hyper-V VM<br/><br/> VMware VM | Daha fazla ayrıntı için [koruma matrisine](backup-mabs-protection-matrix.md) bakın. 
+**Şirket içinde dağıtıldı** | Fiziksel bir kümede değil, fiziksel sunucu.<br/><br/>Hyper-V VM. MABS 'yi, tek başına bir hiper yönetici veya kümede konuk makine olarak dağıtabilirsiniz. Bir kümenin veya tek başına hiper yöneticinin düğümüne dağıtılamaz. Azure Backup Sunucusu, özel, tek amaçlı bir sunucuda çalışmak üzere tasarlanmıştır.<br/><br/> Bir VMware ortamında Windows sanal makinesi olarak. | Şirket içi MABS sunucuları, Azure tabanlı iş yüklerini koruyamaz. <br><br> Daha fazla bilgi için bkz. [koruma matrisi](backup-mabs-protection-matrix.md).
 **Azure Stack VM olarak dağıtıldı** | Yalnızca MABS | DPM, Azure Stack VM 'Leri yedeklemek için kullanılamaz.
-**Azure VM olarak dağıtıldı** | Bu VM 'lerde çalışan Azure sanal makinelerini ve iş yüklerini korur | Azure 'da çalışan DPM/MABS, şirket içi makineleri yedekleyebilir.
+**Azure VM olarak dağıtıldı** | Bu VM 'lerde çalışan Azure sanal makinelerini ve iş yüklerini korur | Azure 'da çalışan DPM/MABS, şirket içi makineleri yedekleyebilir. Yalnızca Azure IaaS VM 'lerinde çalışan iş yüklerini koruyabilir.
 
 ## <a name="supported-mabs-and-dpm-operating-systems"></a>Desteklenen MABS ve DPM işletim sistemleri
 
@@ -87,6 +87,9 @@ Azure Backup, aşağıdaki işletim sistemlerinden herhangi birini çalıştıra
 **Depolama** | Modern yedekleme depolaması (MB), DPM 2016/MABS v2 ve sonrasında desteklenir. MABS v1 için kullanılamaz.
 **MABS yükseltmesi** | Mabs v3 'i doğrudan yükleyebilir veya mabs v2 'den MABS v3 'e yükseltebilirsiniz. [Daha fazla bilgi edinin](backup-azure-microsoft-azure-backup.md#upgrade-mabs).
 **MABS taşınıyor** | MB kullanıyorsanız, depolama alanını korurken MABS 'i yeni bir sunucuya taşımak desteklenir.<br/><br/> Sunucu orijinalde aynı ada sahip olmalıdır. Aynı depolama havuzunu korumak istiyorsanız adı değiştiremezsiniz ve veri kurtarma noktalarını depolamak için aynı MABS veritabanını kullanabilirsiniz.<br/><br/> Geri yüklemeniz gereken için MABS veritabanının bir yedeklemesi gerekir.
+
+>[!NOTE]
+>DPM/MABS sunucusunu yeniden adlandırma desteklenmiyor.
 
 ## <a name="mabs-support-on-azure-stack"></a>Azure Stack için MABS desteği
 
@@ -168,11 +171,19 @@ Bağlı | Süre dolma/sağlaması kaldırılmış | Diske veya Azure 'a yedeklem
 |Gereksinim |Ayrıntılar |
 |---------|---------|
 |Etki alanı    | DPM/MABS sunucusunun bir Windows Server 2019, Windows Server 2016, Windows Server 2012 R2, Windows Server 2012 etki alanında olması gerekir.        |
-|Etki alanı güveni   |  Ayrı ormanlar arasında orman düzeyinde, çift yönlü bir güven kurarsınız, DPM/MABS, ormanlar genelinde veri korumasını destekler.   <BR><BR>   DPM/MABS, DPM/MABS sunucu etki alanıyla çift yönlü bir güven ilişkisine sahip olan bir ormandaki etki alanlarında bulunan sunucuları ve iş istasyonlarını koruyabilir. Çalışma gruplarındaki veya güvenilmeyen etki alanlarındaki bilgisayarları korumak için bkz [. çalışma gruplarında ve güvenilmeyen etki alanlarında iş yüklerini yedekleme ve geri yükleme.](/system-center/dpm/back-up-machines-in-workgroups-and-untrusted-domains)  |
+|Etki alanı güveni   |  Ayrı ormanlar arasında orman düzeyinde, çift yönlü bir güven kurarsınız, DPM/MABS, ormanlar genelinde veri korumasını destekler.   <BR><BR>   DPM/MABS, DPM/MABS sunucu etki alanıyla çift yönlü bir güven ilişkisine sahip olan bir ormandaki etki alanlarında bulunan sunucuları ve iş istasyonlarını koruyabilir. Çalışma gruplarındaki veya güvenilmeyen etki alanlarındaki bilgisayarları korumak için bkz [. çalışma gruplarında ve güvenilmeyen etki alanlarında iş yüklerini yedekleme ve geri yükleme.](/system-center/dpm/back-up-machines-in-workgroups-and-untrusted-domains) <br><br> Hyper-V sunucu kümelerini yedeklemek için, bunların MABS sunucusuyla aynı etki alanında veya güvenilen ya da alt etki alanında bulunması gerekir. Güvenilmeyen bir etki alanı veya iş yükündeki sunucuları ve kümeleri NTLM ya da tek bir sunucu için sertifika kimlik doğrulaması veya bir küme için yalnızca sertifika kimlik doğrulaması kullanarak yedekleyebilirsiniz.  |
 
 ## <a name="dpmmabs-storage-support"></a>DPM/MABS depolama desteği
 
 DPM/MABS 'e yedeklenen veriler yerel disk depolama alanında depolanır.
+
+USB veya çıkarılabilir sürücüler desteklenmez.
+
+DPM/MABS birimlerinde NTFS sıkıştırması desteklenmez.
+
+BitLocker yalnızca disk depolama havuzunu ekledikten sonra etkinleştirilebilir. Eklemeden önce BitLocker 'ı etkinleştirmeyin.
+
+Ağa bağlı depolama (NAS), DPM depolama havuzunda kullanım için desteklenmiyor.
 
 **Depolama** | **Ayrıntılar**
 --- | ---
@@ -199,6 +210,38 @@ Data Protection Manager ile koruyabileceğiniz çeşitli sunucular ve iş yükle
 
 - DPM/MABS tarafından yedeklenen kümelenmiş iş yükleri, DPM/MABS ile aynı etki alanında veya alt/güvenilen bir etki alanında olmalıdır.
 - Güvenilmeyen etki alanları veya çalışma gruplarındaki verileri yedeklemek için NTLM/sertifika kimlik doğrulaması kullanabilirsiniz.
+
+## <a name="deduplicated-volumes-support"></a>Yinelenenleri kaldırılan birimler desteği
+
+>[!NOTE]
+> MABS için Yinelenenleri kaldırma desteği, işletim sistemi desteğine bağlıdır.
+
+### <a name="for-ntfs-volumes"></a>NTFS birimlerinde
+
+| Korumalı sunucunun işletim sistemi  | MABS sunucusunun işletim sistemi  | MABS sürümü  | Yinelenenleri kaldırma desteği |
+| ------------------------------------------ | ------------------------------------- | ------------------ | -------------------- |
+| Windows Server 2019                       | Windows Server 2019                  | MABS v3            | Y                    |
+| Windows Server 2016                       | Windows Server 2019                  | MABS v3            | Iz                   |
+| Windows Server 2012 R2                    | Windows Server 2019                  | MABS v3            | N                    |
+| Windows Server 2012                       | Windows Server 2019                  | MABS v3            | N                    |
+| Windows Server 2019                       | Windows Server 2016                  | MABS v3            | Y * *                  |
+| Windows Server 2016                       | Windows Server 2016                  | MABS v3            | Y                    |
+| Windows Server 2012 R2                    | Windows Server 2016                  | MABS v3            | Y                    |
+| Windows Server 2012                       | Windows Server 2016                  | MABS v3            | Y                    |
+
+- \* WS 2019 üzerinde çalışan MABS v3 ile WS 2016 NTFS yinelenenleri kaldırılmış bir birimi korurken, kurtarma işlemleri etkilenebilir. Yinelenenleri kaldırılmış bir şekilde kurtarma işlemi gerçekleştirmek için bir düzeltmemiz var. MABS v3 UR1 üzerinde bu düzeltmeyle karşılaşırsanız MABS desteğine ulaşın.
+- \** WS 2016 üzerinde MABS v3 ile WS 2019 NTFS yinelenenleri kaldırılmış bir birimi korurken, yedeklemeler ve geri yüklemeler yinelenenleri kaldırma işlemi geri alınamaz. Bu, yedeklemelerin MABS sunucusunda özgün NTFS yinelenenleri kaldırılmış birimden daha fazla alan tükettiği anlamına gelir.
+
+**Sorun**: korumalı sunucu Işletim sistemini windows Server 2016 ' den windows Server 2019 ' e yükseltirseniz, yinelenenleri kaldırma mantığındaki değişiklikler nedenıyle, NTFS yinelenenleri kaldırılmış birimin yedeklemesi etkilenecektir.
+
+**Geçici çözüm**: mabs v3 UR1 için bu düzeltmeyle ihtiyacınız olduğunda mabs desteğine ulaşın.
+
+### <a name="for-refs-volumes"></a>ReFS birimleri için
+
+>[!NOTE]
+> Yinelenenleri kaldırılmış ReFS birimlerinin yedeklemeleriyle ilgili birkaç sorun tespit ettik. Bunları düzeltmek için çalışıyoruz ve kullanılabilir bir düzeltme olduğunda bu bölümü güncelliyoruz. Bundan sonra, MABS v3 'den yinelenenleri kaldırılmış ReFS birimlerinin yedeklenme desteğini kaldırdık.
+>
+> MABS v3 UR1 ve üzeri, normal ReFS birimlerinin korunmasını ve kurtarılmasını desteklemeye devam etmektedir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

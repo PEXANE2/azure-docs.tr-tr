@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/04/2021
 ms.author: albecker1
 ms.custom: include file
-ms.openlocfilehash: a2f6a3fd8d36bb54773db21e3d36dab0060bae57
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: 3035b5d2803ff91e84bc6b47a99963185f9195d3
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102178394"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102623209"
 ---
 ## <a name="disk-level-bursting"></a>Disk düzeyinde burdıya
 
@@ -147,7 +147,7 @@ VM başlatıldığında, işletim sistemi diskinden 1.280 MB/sn 'ye ait veri blo
 
 Başlangıçtan sonra, kritik olmayan iş yüküne sahip bir uygulama başlatabilirsiniz. Bu uygulama, tüm diskler arasında eşit olarak yayılan 15 MB/s gerektirir.
 
-![Uygulama VM 'ye 15 MB/sn aktarım hızı isteği gönderir, VM isteği alır ve disklerin her birini 5 MB/sn için bir istek gönderir, sanal makine 5 MB/sn döndürür; VM, uygulamaya 15 MB/s döndürür.](media/managed-disks-bursting/bursting-vm-bursting-disk/burst-vm-burst-disk-idling.jpg)
+![Uygulama, VM 'ye 15 MB/sn aktarım hızı isteği gönderir, VM isteği alır ve disklerin her birini 5 MB/sn için bir istek gönderir, sanal makine 5 MB/sn yanıt döndürür; VM, uygulamaya 15 MB/s döndürür.](media/managed-disks-bursting/bursting-vm-bursting-disk/burst-vm-burst-disk-idling.jpg)
 
 Sonra uygulamanın 360 MB/s gerektiren bir toplu işi işlemesi gerekir. Standard_L8s_v2, bu talebi karşılamak ve sonra isteklerini karşılar. İşletim sistemi diski için yalnızca 20 MB/sn gerekiyor. Kalan 340 MB/s, burdıya P4 veri diskleri tarafından işlenir.
 

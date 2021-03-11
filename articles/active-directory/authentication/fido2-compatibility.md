@@ -11,12 +11,12 @@ author: knicholasa
 manager: martinco
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7e5eb77a27a7c74ad9738a0e1784066a6a859e43
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: 3f90edd5729ff5229be09bc3798082c33bdeead2
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102175377"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102632110"
 ---
 # <a name="browser-support-of-fido2-passwordless-authentication"></a>FIDO2 passwordless kimlik doğrulamasının tarayıcı desteği
 
@@ -54,8 +54,7 @@ En düşük tarayıcı sürümü gereksinimleri aşağıda verilmiştir.
 | ---- | ---- |
 | Chrome | 76 |
 | Edge | Windows 10 sürüm 1903<sup>1</sup> |
-| Firefox | Chrome |
-| Kmeos | 66 |
+| Firefox | 66 |
 
 <sup>1</sup> Yeni Kmıum tabanlı Microsoft Edge support Fido2 'ın tüm sürümleri. Microsoft Edge için eski destek 1903 ' ye eklenmiştir.
 

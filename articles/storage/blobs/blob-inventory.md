@@ -10,12 +10,12 @@ ms.author: mhopkins
 ms.reviewer: yzheng
 ms.subservice: blobs
 ms.custom: references_regions
-ms.openlocfilehash: 7972385ba017059407b994029c37f347b919cad3
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: a625ad780d01f3d19d26f2b9626ead3ae455b86b
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102435129"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102631481"
 ---
 # <a name="use-azure-storage-blob-inventory-to-manage-blob-data-preview"></a>Blob verilerini yönetmek için Azure Storage blob envanterini kullanma (Önizleme)
 
@@ -117,9 +117,9 @@ Blob envanter raporunu özelleştirmek için çeşitli filtreler mevcuttur:
 | Filtre adı         | Filtre türü                     | Notlar | Gerekli mi? |
 |---------------------|---------------------------------|-------|-----------|
 | blobTypes           | Öntanımlı Enum değerlerinin dizisi | Geçerli değerler `blockBlob` ve `appendBlob` hiyerarşik ad alanı etkin hesaplar için ve `blockBlob` , `appendBlob` ve `pageBlob` diğer hesaplar için. | Yes |
-| prefixMatch         | Öneklerin eşleşmesi için 10 ' a kadar dize dizisi. Ön ek bir kapsayıcı adıyla başlamalıdır, örneğin "kapsayıcı1/foo" | *PrefixMatch* tanımlayamazsınız veya boş bir ön ek sağlamazsanız, kural depolama hesabındaki tüm Bloblar için geçerlidir. | Hayır |
-| ıncludesnapshots    | Boole                         | Envanterin anlık görüntüleri içerip içermediğini belirtir. Varsayılan değer **false**'dur. | Hayır |
-| ıncludeblobversions | Boole                         | Envanterin blob sürümlerini içerip içermediğini belirtir. Varsayılan değer **false**'dur. | Hayır |
+| prefixMatch         | Öneklerin eşleşmesi için 10 ' a kadar dize dizisi. Ön ek bir kapsayıcı adıyla başlamalıdır, örneğin "kapsayıcı1/foo" | *PrefixMatch* tanımlayamazsınız veya boş bir ön ek sağlamazsanız, kural depolama hesabındaki tüm Bloblar için geçerlidir. | No |
+| ıncludesnapshots    | Boole                         | Envanterin anlık görüntüleri içerip içermediğini belirtir. Varsayılan değer **false**'dur. | No |
+| ıncludeblobversions | Boole                         | Envanterin blob sürümlerini içerip içermediğini belirtir. Varsayılan değer **false**'dur. | No |
 
 Azure portal **BLOB stoğu** bölümünde **kod görünümü** sekmesini seçerek envanter kuralları için JSON kurallarını görüntüleyin. Filtreler bir kural tanımı içinde belirtilmiştir.
 
@@ -205,4 +205,5 @@ Envanter çalıştırması tamamlandığında bildirim almak için envanter tama
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Azure Blob depolama yaşam döngüsünü yönetme](storage-lifecycle-management-concepts.md)
+- [Kapsayıcı başına Blobların sayısını ve toplam boyutunu hesaplama](calculate-blob-count-size.md)
+- [Azure Blob depolama yaşam döngüsünü yönetme](storage-lifecycle-management-concepts.md)

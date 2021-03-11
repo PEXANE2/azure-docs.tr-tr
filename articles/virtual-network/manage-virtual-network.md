@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/10/2019
 ms.author: kumud
-ms.openlocfilehash: cc0028a8c7d6d15277c3789118b13b80ed4306ea
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 1ec4e26e266a1777857fe0e890b093f60a3597f0
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100596631"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102612533"
 ---
 # <a name="create-change-or-delete-a-virtual-network"></a>Sanal ağ oluşturma, değiştirme veya silme
 
@@ -53,7 +53,7 @@ Bu makalenin herhangi bir bölümündeki adımları tamamlamadan önce aşağıd
      > Bir sanal ağda başka bir sanal ağla veya şirket içi ağla çakışan adres aralıkları varsa, iki ağ bağlanamaz. Bir adres aralığı tanımlayabilmeniz için önce sanal ağı diğer sanal ağlara veya gelecekte şirket içi ağlara bağlamak isteyip istemediğinizi göz önünde bulundurun. Microsoft, kuruluşunuzun sahip olduğu özel adres alanı veya ortak adres alanı ile sanal ağ adres aralıklarının yapılandırılmasını önerir.
      >
 
-     - **Alt ağ adı**: alt ağ adı sanal ağ içinde benzersiz olmalıdır. Alt ağ oluşturulduktan sonra alt ağ adını değiştiremezsiniz. Bir sanal ağ oluşturmak için sanal ağ gerekli olmasa bile, Portal bir sanal ağ oluşturduğunuzda bir alt ağ tanımlamanızı gerektirir. Portalda, bir sanal ağ oluştururken yalnızca bir alt ağ tanımlayabilirsiniz. Sanal ağ oluşturulduktan sonra, sanal ağa daha sonra daha fazla alt ağ ekleyebilirsiniz. Bir sanal ağa alt ağ eklemek için bkz. [alt ağları yönetme](virtual-network-manage-subnet.md). Azure CLı veya PowerShell kullanarak birden çok alt ağa sahip bir sanal ağ oluşturabilirsiniz.
+     - **Alt ağ adı**: alt ağ adı sanal ağ içinde benzersiz olmalıdır. Alt ağ oluşturulduktan sonra alt ağ adını değiştiremezsiniz. Bir sanal ağ oluşturmak için sanal ağ gerekli olmasa bile, Portal bir sanal ağ oluşturduğunuzda bir alt ağ tanımlamanızı gerektirir. Portalda bir sanal ağ oluştururken bir veya daha fazla alt ağ tanımlayabilirsiniz. Sanal ağ oluşturulduktan sonra, sanal ağa daha sonra daha fazla alt ağ ekleyebilirsiniz. Bir sanal ağa alt ağ eklemek için bkz. [alt ağları yönetme](virtual-network-manage-subnet.md). Azure CLı veya PowerShell kullanarak birden çok alt ağa sahip bir sanal ağ oluşturabilirsiniz.
 
        >[!TIP]
        >Bazen, yöneticiler alt ağlar arasındaki trafik yönlendirmeyi filtrelemek veya denetlemek için farklı alt ağlar oluşturur. Alt ağları tanımladıktan önce, alt ağlarınız arasında trafiği nasıl filtrelemek ve dolaştırmak istediğinizi göz önünde bulundurun. Alt ağlar arasındaki trafiği Filtreleme hakkında daha fazla bilgi için bkz. [ağ güvenlik grupları](./network-security-groups-overview.md). Azure, trafiği otomatik olarak alt ağlar arasında yönlendirir, ancak Azure varsayılan yollarını geçersiz kılabilirsiniz. Varsayılan alt ağ trafiği yönlendirmesi hakkında daha fazla bilgi edinmek için bkz. [yönlendirmeye genel bakış](virtual-networks-udr-overview.md).

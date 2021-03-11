@@ -8,22 +8,22 @@ ms.date: 09/08/2020
 ms.author: brendm
 ms.custom: devx-track-java, devx-track-azurecli
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: ff54c1dc62189f2a00528c6a82abe26c667c5538
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 331ef39facb9f7cf8f069f2a238be325f53de2d0
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102038705"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102618042"
 ---
 # <a name="cicd-for-azure-spring-cloud"></a>Azure yay bulutu için CI/CD
 
-Sürekli tümleştirme ve sürekli teslim araçları, var olan uygulamalara en az çaba ve riske sahip güncelleştirmeleri hızlı bir şekilde dağıtmanızı sağlar. Azure DevOps, bu anahtar işleri düzenlemenize ve denetlemenize yardımcı olur. Şu anda Azure yay bulutu belirli bir Azure DevOps eklentisi sunmaz.  Ancak, [Azure CLI görevi](/azure/devops/pipelines/tasks/deploy/azure-cli?preserve-view=true&view=azure-devops)kullanarak Spring Cloud uygulamalarınızı DevOps ile tümleştirebilirsiniz.
+Sürekli tümleştirme ve sürekli teslim araçları, var olan uygulamalara en az çaba ve riske sahip güncelleştirmeleri hızlı bir şekilde dağıtmanızı sağlar. Azure DevOps, bu anahtar işleri düzenlemenize ve denetlemenize yardımcı olur. Şu anda Azure yay bulutu belirli bir Azure DevOps eklentisi sunmaz.  Ancak, [Azure CLI görevi](/azure/devops/pipelines/tasks/deploy/azure-cli)kullanarak Spring Cloud uygulamalarınızı DevOps ile tümleştirebilirsiniz.
 
 Bu makalede Azure DevOps ile tümleştirme için Azure Spring Cloud ile Azure CLı görevinin nasıl kullanılacağı gösterilmektedir.
 
 ## <a name="create-an-azure-resource-manager-service-connection"></a>Azure Resource Manager hizmet bağlantısı oluşturma
 
-Azure DevOps projenize Azure Resource Manager bir hizmet bağlantısı oluşturmayı öğrenmek için [Bu makaleyi](/azure/devops/pipelines/library/connect-to-azure?preserve-view=true&view=azure-devops) okuyun. Azure Spring Cloud Service örneğiniz için kullandığınız aboneliğin aynısını seçtiğinizden emin olun.
+Azure DevOps projenize Azure Resource Manager bir hizmet bağlantısı oluşturmayı öğrenmek için [Bu makaleyi](/azure/devops/pipelines/library/connect-to-azure) okuyun. Azure Spring Cloud Service örneğiniz için kullandığınız aboneliğin aynısını seçtiğinizden emin olun.
 
 ## <a name="azure-cli-task-templates"></a>Azure CLı görev şablonları
 ::: zone pivot="programming-language-csharp"

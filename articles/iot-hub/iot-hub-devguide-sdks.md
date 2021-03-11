@@ -12,12 +12,12 @@ ms.custom:
 - mqtt
 - 'Role: IoT Device'
 - 'Role: Cloud Development'
-ms.openlocfilehash: 8a65619d65e1a3655d3ef8a295749a705e6a79e1
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: d35535c87ca20bfc573995bf15f79bc149619776
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102431287"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102611598"
 ---
 # <a name="understand-and-use-azure-iot-hub-sdks"></a>Azure IoT Hub SDK'larını anlama ve kullanma
 
@@ -84,7 +84,7 @@ Node.js için Azure IoT Hub cihaz SDK 'Sı:
 
 * [NPM](https://www.npmjs.com/package/azure-iot-device) 'den yüklensin
 * [Kaynak kod](https://github.com/Azure/azure-iot-sdk-node)
-* [API başvurusu](/javascript/api/azure-iot-device/?view=azure-iot-typescript-latest&preserve-view=true)
+* [API başvurusu](/javascript/api/azure-iot-device/)
 * [Modül başvurusu](/javascript/api/azure-iot-device/moduleclient)
 
 Python için Azure IoT Hub cihaz SDK 'Sı:
@@ -119,7 +119,7 @@ Node.js için Azure IoT Hub hizmeti SDK 'Sı:
 
 * [NPM](https://www.npmjs.com/package/azure-iothub) 'den indir
 * [Kaynak kod](https://github.com/Azure/azure-iot-sdk-node)
-* [API başvurusu](/javascript/api/azure-iothub/?view=azure-iot-typescript-latest&preserve-view=true)
+* [API başvurusu](/javascript/api/azure-iothub/)
 
 Python için Azure IoT Hub Service SDK:
 

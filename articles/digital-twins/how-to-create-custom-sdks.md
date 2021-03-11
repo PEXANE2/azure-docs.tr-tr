@@ -1,39 +1,44 @@
 ---
-title: Oto Rest ile Azure dijital TWINS için özel SDK 'lar oluşturma
+title: Oto Rest ile özel dil SDK 'Ları oluşturma
 titleSuffix: Azure Digital Twins
-description: Azure dijital TWINS 'i C# dışındaki dillerde kullanmak için bkz. özel SDK 'lar oluşturma.
+description: Azure dijital TWINS kodunu yayımlanmış SDK 'Ları olmayan diğer dillerde yazmak için, AutoRest 'i nasıl kullanacağınızı öğrenin.
 author: baanders
 ms.author: baanders
-ms.date: 4/24/2020
+ms.date: 3/9/2021
 ms.topic: how-to
 ms.service: digital-twins
-ms.custom: devx-track-js
-ms.openlocfilehash: e7239bfdca1dc464048c0db08488029b0868deb5
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.custom:
+- devx-track-js
+- contperf-fy21q3
+ms.openlocfilehash: 35cf54199f8f2c187ad397c21fb941111f07c4a3
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102049806"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102561849"
 ---
-# <a name="create-custom-sdks-for-azure-digital-twins-using-autorest"></a>Oto Rest kullanarak Azure dijital TWINS için özel SDK 'lar oluşturma
+# <a name="create-custom-language-sdks-for-azure-digital-twins-using-autorest"></a>Oto Rest kullanarak Azure dijital TWINS için özel dil SDK 'Ları oluşturma
 
-Şu anda, Azure Digital TWINS API 'Leri ile etkileşime yönelik yalnızca yayımlanan veri düzlemi SDK 'Ları .NET (C#), JavaScript ve Java içindir. Bu SDK 'Lar hakkında genel bilgi edinmek için bkz. [*nasıl yapılır: Azure dijital TWINS API 'leri ve SDK 'Larını kullanma*](how-to-use-apis-sdks.md). Başka bir dilde çalışıyorsanız, bu makalede, oto Rest kullanarak kendi veri düzlemi SDK 'sını tercih ettiğiniz dilde nasıl oluşturabileceğiniz gösterilecektir.
+[Yayımlanmış bir Azure dijital TWINS SDK 'sı](how-to-use-apis-sdks.md)olmayan bir dil kullanarak Azure Digital TWINS ile çalışmanız gerekiyorsa, bu makalede kendi SDK 'nizi seçtiğiniz dilde oluşturmak Için, oto Rest 'in nasıl kullanılacağı gösterilir. 
 
->[!NOTE]
-> Ayrıca, dilerseniz bir denetim düzlemi SDK 'Sı oluşturmak için, oto Rest 'i de kullanabilirsiniz. Bunu yapmak için, veri düzlemi yerine [Denetim düzlemi Swagger klasöründen](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/digitaltwins/resource-manager/Microsoft.DigitalTwins/) en son **Denetim düzlemi Swagger** (openapı) dosyasını kullanarak bu makaledeki adımları izleyin.
+Bu makaledeki örneklerde bir [veri düzlemi SDK 'sı](how-to-use-apis-sdks.md#overview-data-plane-apis)oluşturulması gösterilmektedir, ancak bu işlem bir  [Denetim düzlemi SDK 'sı](how-to-use-apis-sdks.md#overview-control-plane-apis) oluşturmak için de çalışır.
 
-## <a name="set-up-your-machine"></a>Makinenizi kurma
+## <a name="prerequisites"></a>Önkoşullar
 
-Bir SDK oluşturmak için şunlar gerekir:
-* [Oto Rest](https://github.com/Azure/autorest), sürüm 2.0.4413 (sürüm 3 Şu anda desteklenmiyor)
-* Otomatik Rest için önkoşul olarak [Node.js](https://nodejs.org)
-* [Veri düzlemi Swagger klasöründeki](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/digitaltwins/data-plane/Microsoft.DigitalTwins)en son Azure dijital TWINS **veri düzlemi Swagger** (openapı) dosyası ve buna eşlik eden örnek klasörü.  Swagger dosyasını ve örnekleri klasöründeki *digitaltwins.js* yerel makinenize indirin.
+Bir SDK oluşturmak için önce yerel makinenizde aşağıdaki kurulumu gerçekleştirmeniz gerekir:
+* [**Oto Rest**](https://github.com/Azure/autorest)'i (sürüm 3) Install 2.0.4413 (sürüm 3)
+* Otomatik Rest kullanımı için önkoşul olan [**Node.js**](https://nodejs.org)'yi yükler
+* [ **Visual Studio 'yu** yükler](https://visualstudio.microsoft.com/downloads/)
+* [Veri düzlemi Swagger klasöründen](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/digitaltwins/data-plane/Microsoft.DigitalTwins)en son Azure dijital TWINS **veri düzlemi Swagger** (openapı) dosyasını, birlikte gelen örnek klasörüyle birlikte indirin. Swagger dosyası *digitaltwins.js* adlı bir dosyadır.
 
-Makinenizde yukarıdaki listeden her şey varsa, SDK 'Yı oluşturmak için oto Rest 'i kullanmaya hazırsınız demektir.
+>[!TIP]
+> Bunun yerine bir **Denetim düzlemi SDK 'sı** oluşturmak için, bu makaledeki adımları, veri düzlemi yerine [Denetim düzlemi Swagger klasöründen](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/digitaltwins/resource-manager/Microsoft.DigitalTwins/) en son **Denetim düzlemi Swagger** (openapı) dosyasını kullanarak doldurun.
 
-## <a name="create-the-sdk-with-autorest"></a>Oto Rest ile SDK oluşturma 
+Makinenizde yukarıdaki listeden her şey varsa, bir SDK oluşturmak için, oto Rest 'i kullanmaya hazırsınız demektir.
 
-Node.js yüklüyse, doğru oto Rest sürümünün yüklü olduğundan emin olmak için bu komutu çalıştırabilirsiniz:
+## <a name="create-the-sdk-using-autorest"></a>Oto Rest kullanarak SDK oluşturma 
+
+Node.js yüklendikten sonra, gerekli olan oto Rest sürümünün yüklü olduğundan emin olmak için bu komutu çalıştırabilirsiniz:
 ```cmd/sh
 npm install -g autorest@2.0.4413
 ```
@@ -51,11 +56,11 @@ Sonuç olarak, çalışma dizininizde *Digitaltwınsapı* adlı yeni bir klasör
 
 Oto Rest, çok çeşitli dil kodu oluşturucuları destekler.
 
-## <a name="add-the-sdk-to-a-visual-studio-project"></a>SDK 'Yı bir Visual Studio projesine ekleme
+## <a name="make-the-sdk-into-a-class-library"></a>SDK 'Yı bir sınıf kitaplığı olarak oluşturma
 
-Doğrudan bir .NET çözümüne, oto Rest tarafından oluşturulan dosyaları dahil edebilirsiniz. Ancak, Azure dijital TWINS SDK 'sını çeşitli ayrı projelere (istemci uygulamalarınız, Azure Işlevleri uygulamalarınız vb.) eklemek isteyeceksiniz. Bu nedenle, oluşturulan dosyalardan ayrı bir proje (.NET sınıf kitaplığı) oluşturmak yararlı olabilir. Daha sonra, bu sınıf kitaplığı projesini bir proje başvurusu olarak çeşitli çözümlere dahil edebilirsiniz.
+Doğrudan bir .NET çözümüne, oto Rest tarafından oluşturulan dosyaları dahil edebilirsiniz. Ancak, Azure dijital TWINS SDK 'sını çeşitli ayrı projelere (istemci uygulamalarınız, Azure Işlevleri Uygulamalarınız ve daha fazlası) dahil etmek isteyebilirsiniz. Bu nedenle, oluşturulan dosyalardan ayrı bir proje (.NET sınıf kitaplığı) oluşturmak yararlı olabilir. Daha sonra, bu sınıf kitaplığı projesini bir proje başvurusu olarak çeşitli çözümlere dahil edebilirsiniz.
 
-Bu bölüm, SDK 'nın kendi projesi olan ve diğer projelere dahil olabilen bir sınıf kitaplığı olarak nasıl oluşturulacağı hakkında yönergeler sağlar. Bu adımlar **Visual Studio 'yu** kullanır (en son sürümü [buradan](https://visualstudio.microsoft.com/downloads/)yükleyebilirsiniz).
+Bu bölüm, SDK 'nın kendi projesi olan ve diğer projelere dahil olabilen bir sınıf kitaplığı olarak nasıl oluşturulacağı hakkında yönergeler sağlar. Bu adımlar **Visual Studio 'yu** kullanır.
 
 Adımlar aşağıdaki gibidir:
 
@@ -81,7 +86,7 @@ Bunları eklemek için *NuGet paket yöneticisi > açık araçlar > çözüm Iç
 
 Artık projeyi oluşturabilir ve yazdığınız herhangi bir Azure dijital TWINS uygulamasına bir proje başvurusu olarak ekleyebilirsiniz.
 
-## <a name="general-guidelines-for-generated-sdks"></a>Oluşturulan SDK 'lar için genel yönergeler
+## <a name="tips-for-using-the-sdk"></a>SDK 'Yı kullanmaya yönelik ipuçları
 
 Bu bölüm, oluşturulan SDK 'Yı kullanmaya yönelik genel bilgileri ve yönergeleri içerir.
 

@@ -76,7 +76,7 @@
     - name: Azure Bastion güvenlik temeli
       href: ../../bastion/security-baseline.md
     - name: Azure Bot Network güvenlik temeli
-      href: /azure/bot-service/security-baseline?view=azure-bot-service-4.0
+      href: /azure/bot-service/security-baseline
     - name: Redis için Azure Cache güvenlik temeli
       href: ../../azure-cache-for-redis/security-baseline.md
     - name: Azure Bilişsel Arama güvenlik temeli

@@ -2,16 +2,17 @@
 title: OpenBSD görüntüsü oluşturma ve karşıya yükleme
 description: Azure CLı aracılığıyla bir Azure sanal makinesi oluşturmak için OpenBSD işletim sistemini içeren bir sanal sabit disk (VHD) oluşturmayı ve yüklemeyi öğrenin
 author: gbowerman
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
+ms.collection: linux
 ms.topic: how-to
 ms.date: 05/24/2017
 ms.author: guybo
-ms.openlocfilehash: efa38384778bb63857d3c867d74ace7f4f199118
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 3437fcd2d1d521aad237ecf6d3f7937b4835d376
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98685098"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102554607"
 ---
 # <a name="create-and-upload-an-openbsd-disk-image-to-azure"></a>OpenBSD disk görüntüsünü Azure 'a oluşturma ve yükleme
 Bu makalede, OpenBSD işletim sistemini içeren bir sanal sabit disk (VHD) oluşturma ve karşıya yükleme işleminin nasıl yapılacağı gösterilir. Karşıya yükledikten sonra, Azure CLı aracılığıyla Azure 'da bir sanal makine (VM) oluşturmak için kendi görüntünüz olarak kullanabilirsiniz.
@@ -87,7 +88,7 @@ Artık sanal makinenizin kapatılmasını sağlayabilirsiniz.
 
 
 ## <a name="prepare-the-vhd"></a>VHD 'YI hazırlama
-VHDX biçimi Azure 'da desteklenmiyor, yalnızca **sabıt VHD**. Hyper-V Yöneticisi 'Ni veya PowerShell [Convert-VHD](/powershell/module/hyper-v/convert-vhd?view=win10-ps) cmdlet 'ini kullanarak DISKI sabit vhd biçimine dönüştürebilirsiniz. Aşağıda bir örnek verilmiştir.
+VHDX biçimi Azure 'da desteklenmiyor, yalnızca **sabıt VHD**. Hyper-V Yöneticisi 'Ni veya PowerShell [Convert-VHD](/powershell/module/hyper-v/convert-vhd) cmdlet 'ini kullanarak DISKI sabit vhd biçimine dönüştürebilirsiniz. Aşağıda bir örnek verilmiştir.
 
 ```powershell
 Convert-VHD OpenBSD61.vhdx OpenBSD61.vhd -VHDType Fixed

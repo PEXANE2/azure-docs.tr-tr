@@ -13,12 +13,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 8e69803f4740a58adb4230bd82cc723221762cb4
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.openlocfilehash: 52c93bef4529f27ad38677f17209e7b48e997368
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99576625"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102548453"
 ---
 # <a name="develop-secure-applications-on-azure"></a>Azure üzerinde güvenli uygulamalar geliştirme
 Bu makalede, bulut için uygulama geliştirirken göz önünde bulundurmanız gereken güvenlik etkinlikleri ve denetimler sunuyoruz. Microsoft [güvenlik geliştirme yaşam döngüsü 'nin (SDL)](/previous-versions/windows/desktop/cc307891(v=msdn.10)) uygulama ve doğrulama aşamaları sırasında göz önünde bulundurmanız gereken güvenlik soruları ve kavramlar ele alınmıştır. Amaç, daha güvenli bir uygulama geliştirmek için kullanabileceğiniz etkinlikleri ve Azure hizmetlerini tanımlamanıza yardımcı olmaktır.
@@ -34,7 +34,7 @@ Uygulamanızın kullanılmasını amaçlamadığınız yollarla kullanılacağı
 
 ### <a name="perform-code-reviews"></a>Kod İncelemeleri gerçekleştirme
 
-Kodu iade etmeden önce, genel kod kalitesini artırmak ve hata oluşturma riskini azaltmak için [kod İncelemeleri](/azure/devops/learn/devops-at-microsoft/code-reviews-not-primarily-finding-bugs) gerçekleştirin. Kod inceleme sürecini yönetmek için [Visual Studio 'yu](/azure/devops/repos/tfvc/get-code-reviewed-vs?view=vsts) kullanabilirsiniz.
+Kodu iade etmeden önce, genel kod kalitesini artırmak ve hata oluşturma riskini azaltmak için [kod İncelemeleri](/azure/devops/learn/devops-at-microsoft/code-reviews-not-primarily-finding-bugs) gerçekleştirin. Kod inceleme sürecini yönetmek için [Visual Studio 'yu](/azure/devops/repos/tfvc/get-code-reviewed-vs) kullanabilirsiniz.
 
 ### <a name="perform-static-code-analysis"></a>Statik kod analizini gerçekleştirme
 

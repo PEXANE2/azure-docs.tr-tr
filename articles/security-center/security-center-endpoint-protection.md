@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/29/2019
 ms.author: memildin
-ms.openlocfilehash: 778feda8d72101d4ae2a0f0c27549701dfb53340
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: 1ce20deed8b26dc5f5bebf4656dd3f1c370d766f
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92341422"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102561237"
 ---
 # <a name="endpoint-protection-assessment-and-recommendations-in-azure-security-center"></a>Azure Güvenlik Merkezi 'nde Endpoint Protection değerlendirmesi ve önerileri
 
@@ -29,9 +29,9 @@ Azure Güvenlik Merkezi, Endpoint Protection çözümlerinin [desteklenen](secur
 
 ## <a name="windows-defender"></a>Windows Defender
 
-* Güvenlik Merkezi, [Get-MpComputerStatus](/powershell/module/defender/get-mpcomputerstatus?preserve-view=true&view=win10-ps) çalıştırıldığında ve Result **amserviceenabled** olduğunda **"Endpoint Protection çözümlerini sanal makineye yüklemenizi"** önerir.
+* Güvenlik Merkezi, [Get-MpComputerStatus](/powershell/module/defender/get-mpcomputerstatus) çalıştırıldığında ve Result **amserviceenabled** olduğunda **"Endpoint Protection çözümlerini sanal makineye yüklemenizi"** önerir.
 
-* Güvenlik Merkezi, [Get-MpComputerStatus](/powershell/module/defender/get-mpcomputerstatus?preserve-view=true&view=win10-ps) çalıştırıldığında ve aşağıdakilerden biri gerçekleştiğinde **"makinelerinizdeki Endpoint Protection sistem durumu sorunlarını çözme"** işlemi yapmanızı önerir:
+* Güvenlik Merkezi, [Get-MpComputerStatus](/powershell/module/defender/get-mpcomputerstatus) çalıştırıldığında ve aşağıdakilerden biri gerçekleştiğinde **"makinelerinizdeki Endpoint Protection sistem durumu sorunlarını çözme"** işlemi yapmanızı önerir:
 
   * Aşağıdaki özelliklerden herhangi biri false şeklindedir:
 
@@ -49,7 +49,7 @@ Azure Güvenlik Merkezi, Endpoint Protection çözümlerinin [desteklenen](secur
 
 ## <a name="microsoft-system-center-endpoint-protection"></a>Microsoft System Center Endpoint Protection
 
-* Güvenlik Merkezi, **Scepmpmodule ("$env:P rogramFiles\Microsoft Security Client\MpProvider\MpProvider.psd1")** içeri aktarırken ve **amserviceenabled = false**Içinde **Get-mprotcomputerstatus** sonuçlarını çalıştırırken " **Endpoint Protection çözümlerini sanal makineye yükle"** önerir.
+* Güvenlik Merkezi, **Scepmpmodule ("$env:P rogramFiles\Microsoft Security Client\MpProvider\MpProvider.psd1")** içeri aktarırken ve **amserviceenabled = false** Içinde **Get-mprotcomputerstatus** sonuçlarını çalıştırırken " **Endpoint Protection çözümlerini sanal makineye yükle"** önerir.
 
 * Güvenlik Merkezi, **Get-MprotComputerStatus** çalıştırıldığında ve aşağıdakilerden biri gerçekleştiğinde **"makinelerinizdeki Endpoint Protection sistem durumu sorunlarını çözme"** işlemi yapmanızı önerir:
 

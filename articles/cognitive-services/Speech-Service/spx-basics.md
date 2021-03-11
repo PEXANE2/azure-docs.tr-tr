@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 01/13/2021
 ms.author: trbye
-ms.openlocfilehash: 4a6c7b36665c7a38534ce8e470bc8b327c274d95
-ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
+ms.openlocfilehash: 53138a22c58e89ade4af234630e9429a19738a6a
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/17/2021
-ms.locfileid: "99095195"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102556477"
 ---
 # <a name="get-started-with-the-azure-speech-cli"></a>Azure konuşma CLı ile çalışmaya başlama
 
@@ -86,7 +86,7 @@ spx synthesize --text "Testing synthesis using the Speech CLI" --speakers
 Ayrıca, sentezlenmiş çıktıyı dosyasına kaydedebilirsiniz. Bu örnekte, dizinde komutun çalıştırıldığı adlı bir dosya oluşturacağız `my-sample.wav` .
 
 ```console
-spx synthesize --text "We hope that you enjoy using the Speech CLI." --audio output my-sample.wav
+spx synthesize --text "Enjoy using the Speech CLI." --audio output my-sample.wav
 ```
 
 Bu örnekler, Ingilizce 'de test olduğunuzu kabul ediyor. Ancak, çok sayıda dilde konuşma birleştirmemiz destekliyoruz. Bu komutla birlikte seslerin tam listesini çekerek veya [dil desteği sayfasını](./language-support.md)ziyaret edebilirsiniz.

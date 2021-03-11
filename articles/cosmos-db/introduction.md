@@ -6,12 +6,12 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: overview
 ms.date: 10/23/2020
-ms.openlocfilehash: 37ba5fc7ce118e2e8532ea4db18634265aaacb64
-ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
+ms.openlocfilehash: 9df5c63ef175d0cf736ce16036466158ab6565f9
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99556856"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102618313"
 ---
 # <a name="welcome-to-azure-cosmos-db"></a>Azure Cosmos DB’ye hoş geldiniz
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -19,6 +19,9 @@ ms.locfileid: "99556856"
 Günümüzde uygulamaların çok kısa sürede yanıt vermesi ve her zaman açık olması beklenmektedir. Düşük gecikme süresi ve yüksek kullanılabilirlik düzeylerine erişmek için bu uygulamaların örneklerinin kullanıcılara yakın veri merkezlerine dağıtılması gerekir. Uygulamaların yoğun saatlerdeki büyük ölçekli kullanım değişikliklerine gerçek zamanlı olarak yanıt vermesi, hacmi sürekli artan verileri depolaması ve bu verileri birkaç milisaniye içinde kullanıcılara sunması gerekmektedir.
 
 Azure Cosmos DB modern uygulama geliştirmesi için tam olarak yönetilen bir NoSQL veritabanıdır. Tek basamaklı milisaniyelik yanıt süreleri ve otomatik ve anında ölçeklenebilirlik, herhangi bir ölçekte hız garantisi. İş sürekliliği, [SLA ile desteklenen](https://azure.microsoft.com/support/legal/sla/cosmos-db) kullanılabilirlik ve kurumsal sınıf güvenlik olanakları konusunda garanti edilir. Uygulama geliştirme, dünyanın herhangi bir yerindeki çok fazla bölge veri dağıtımı, popüler diller için açık kaynak API 'Leri ve SDK 'lar sayesinde daha hızlı ve daha üretken bir hale gelidir. Tam olarak yönetilen bir hizmet olarak Azure Cosmos DB, otomatik yönetim, güncelleştirmeler ve düzeltme eki uygulama sayesinde veritabanı yönetimini ellerinizi kapabir biçimde alır. Ayrıca, uygun maliyetli sunucusuz ve uygulama ihtiyaçlarına yanıt veren otomatik ölçeklendirme seçenekleriyle kapasite yönetimini de işler.
+
+> [!NOTE]
+> Kullanıcı incelemeye katılarak Azure Cosmos DB docs 'ın artırılmasına yardımcı olmak ister misiniz? Bu 5 dakikalık [filtreleme anketini](https://aka.ms/cosmosdb-documentation-screener-survey)doldurmanız için lütfen birkaç dakikanızı alın. ' Yi nitelendirmeniz durumunda, etkileşimli bir araştırma oturumuna katmak üzere bir yuva için kitap oluşturabileceğiniz bir Scheduler 'a yönlendirilirsiniz. Bu işlem sırasında [Gizlilik Bildirimimize](https://go.microsoft.com/fwlink/?LinkId=521839)göre hiçbir kişisel veri toplanmadı.
 
 Azure aboneliği olmadan [ücretsiz Azure Cosmos DB deneyebilir](https://azure.microsoft.com/try/cosmosdb/) , ücretsiz ve taahhütlere sahip olabilirsiniz veya Ilk 400 ru/sn ve 5 GB depolama alanı ücretsiz bir hesap almak için [Azure Cosmos DB ücretsiz katmanını](optimize-dev-test.md#azure-cosmos-db-free-tier) kullanabilirsiniz.
 

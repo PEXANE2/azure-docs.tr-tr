@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/23/2020
-ms.openlocfilehash: 6625cd5ad91826ac5cdf8ec63382e9f94d8a2c08
-ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
+ms.openlocfilehash: 3ba0abe8510291351c10ba085ba7e42b8197d886
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97895953"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102553247"
 ---
 # <a name="troubleshooting-common-indexer-errors-and-warnings-in-azure-cognitive-search"></a>Azure Bilişsel Arama ortak Dizin Oluşturucu hataları ve uyarıları sorunlarını giderme
 
@@ -236,6 +236,8 @@ Eksik giriş durumunda varsayılan bir değer sağlamak istiyorsanız, [koşullu
 
 ## <a name="warning--skill-input-languagecode-has-the-following-language-codes-xyz-at-least-one-of-which-is-invalid"></a>Uyarı: ' languageCode ' yetenek girişi, en az bir tane geçersiz olan ' X, Y, Z ' dil kodlarına sahip.
 Aşağı akış beceriye ait isteğe bağlı girişe geçirilen bir veya daha fazla değer `languageCode` desteklenmiyor. Bu durum, [LanguageDetectionSkill](cognitive-search-skill-language-detection.md) çıktısını sonraki becerilerle geçirmeniz durumunda meydana gelir ve çıktı bu aşağı akış becerilerinizi desteklenenden daha fazla dilde oluşur.
+
+Ayrıca `countryHint` , LanguageDetectionSkill 'e geçersiz bir giriş geçiriliyorsa buna benzer bir uyarı alabilirsiniz. Bu durumda, bu giriş için veri kaynağınızdan kullandığınız alanın geçerli ISO 3166-1 Alpha-2 2 Letter ülke kodları içerdiğini doğrulayın. Bazıları geçerliyse ve bazıları geçersizse, aşağıdaki kılavuzlarla devam edin, ancak ile ile değiştirin `languageCode` `countryHint` ve `defaultLanguageCode` `defaultCountryHint` kullanım örneği ile eşleştirin.
 
 Veri ayarlamış olduğunuz tek bir dilde olduğunu biliyorsanız, [LanguageDetectionSkill](cognitive-search-skill-language-detection.md) ve yetenek girişini kaldırmalı ve söz konusu beceri için `languageCode` `defaultLanguageCode` dilin desteklendiği varsayıldığında bu beceri için yetenek parametresini kullanmanız gerekir.
 

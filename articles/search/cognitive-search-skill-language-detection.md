@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/17/2020
-ms.openlocfilehash: 087989638193bb59001ed33c4ee253d61682d8bf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 078a9312a7ee1b3b0eafd000928ed74348a540c3
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88936002"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102548062"
 ---
 #   <a name="language-detection-cognitive-skill"></a>Dil algılama Bilişsel Beceri
 
@@ -21,7 +21,7 @@ ms.locfileid: "88936002"
 
 Bu özellik özellikle, örneğin [yaklaşım Analizi beceri](cognitive-search-skill-sentiment.md) veya [metin bölünmüş beceri](cognitive-search-skill-textsplit.md)gibi, metnin dilini girmeniz gerektiğinde faydalıdır.
 
-Dil algılama, Bing 'in doğal dil işleme kitaplıklarını kullanır ve bu, Metin Analizi için listelenen [desteklenen dil ve bölge](../cognitive-services/text-analytics/language-support.md) sayısını aşıyor. Dillerin tam listesi yayımlanmaz, ancak tüm yaygın olarak konuşulan dillerin yanı sıra çeşitleri, diapacts ve bazı bölgesel ve kültürel dillerini içerir. Daha az sıklıkta kullanılan bir dilde ifade ettiğiniz bir içeriğiniz varsa, bir kodu döndürüp döndürdüğünü görmek için [DIL ALGıLAMA API 'sini deneyebilirsiniz](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c7) . Tespit edilemez dillerin yanıtı `unknown` .
+Dil algılama, Bing 'in doğal dil işleme kitaplıklarını kullanır ve bu, Metin Analizi için listelenen [desteklenen dil ve bölge](../cognitive-services/text-analytics/language-support.md) sayısını aşıyor. Dillerin tam listesi yayımlanmaz, ancak tüm yaygın olarak konuşulan dillerin yanı sıra çeşitleri, diapacts ve bazı bölgesel ve kültürel dillerini içerir. Daha az sıklıkta kullanılan bir dilde ifade ettiğiniz bir içeriğiniz varsa, bir kodu döndürüp döndürdüğünü görmek için [DIL ALGıLAMA API 'sini deneyebilirsiniz](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0/operations/Languages) . Tespit edilemez dillerin yanıtı `(Unknown)` .
 
 > [!NOTE]
 > İşlem sıklığını artırarak, daha fazla belge ekleyerek veya daha fazla AI algoritması ekleyerek kapsamı genişlettikten sonra faturalandırılabilir bilişsel [Hizmetler kaynağı](cognitive-search-attach-cognitive-services.md)eklemeniz gerekir. Bilişsel hizmetlerde API 'Leri çağırırken ve Azure Bilişsel Arama belge çözme aşamasının bir parçası olarak görüntü ayıklama için ücretler tahakkuk eder. Belgelerden metin ayıklama için herhangi bir ücret alınmaz.
@@ -35,17 +35,27 @@ Microsoft. yetenekler. Text. LanguageDetectionSkill
 ## <a name="data-limits"></a>Veri sınırları
 Bir kaydın en büyük boyutu, tarafından ölçülen 50.000 karakter olmalıdır [`String.Length`](/dotnet/api/system.string.length) . Verileri dil algılama beceriye göndermeden önce bölmeniz gerekirse, [metin bölme becerinizi](cognitive-search-skill-textsplit.md)kullanabilirsiniz.
 
+## <a name="skill-parameters"></a>Yetenek parametreleri
+
+Parametreler büyük/küçük harfe duyarlıdır.
+
+| Girişler | Description |
+|---------------------|-------------|
+| `defaultCountryHint` | Seçim Bir ISO 3166-1 Alpha-2 2 Letter ülke kodu, dilin ayırt edilemez olması durumunda dil algılama modelinin ipucu olarak kullanılması için kullanılabilir. Daha fazla bilgi için bu konudaki [metin analizi belgelerine](../cognitive-services/text-analytics/how-tos/text-analytics-how-to-language-detection.md#ambiguous-content) bakın. Özellikle, `defaultCountryHint` parametresi girişi açıkça belirtmeyen belgelerle kullanılır `countryHint` .  |
+| `modelVersion`   | Seçim Metin Analizi hizmeti çağrılırken kullanılacak modelin sürümü. Belirtilmediğinde, varsayılan olarak en son kullanılabilir. Kesinlikle gerekli olmadığı takdirde bu değeri belirtmemenizi öneririz. Daha fazla ayrıntı için [Metin Analizi API'si model sürümü oluşturma](../cognitive-services/text-analytics/concepts/model-versioning.md) bölümüne bakın. |
+
 ## <a name="skill-inputs"></a>Beceri girişleri
 
 Parametreler büyük/küçük harfe duyarlıdır.
 
-| Girişler     | Açıklama |
+| Girişler     | Description |
 |--------------------|-------------|
 | `text` | Çözümlenecek metin.|
+| `countryHint` | Dili ayırt edemez bir ISO 3166-1 Alpha-2 2 mektup ülke kodu, dil algılama modeli için ipucu olarak kullanılacak. Daha fazla bilgi için bu konudaki [metin analizi belgelerine](../cognitive-services/text-analytics/how-tos/text-analytics-how-to-language-detection.md#ambiguous-content) bakın. |
 
 ## <a name="skill-outputs"></a>Yetenek çıkışları
 
-| Çıkış adı    | Açıklama |
+| Çıkış adı    | Description |
 |--------------------|-------------|
 | `languageCode` | Tanımlanan dilin ISO 6391 dil kodu. Örneğin, "en". |
 | `languageName` | Dilin adı. Örneğin, "Ingilizce". |
@@ -60,6 +70,10 @@ Parametreler büyük/küçük harfe duyarlıdır.
       {
         "name": "text",
         "source": "/document/text"
+      },
+      {
+        "name": "countryHint",
+        "source": "/document/countryHint"
       }
     ],
     "outputs": [
@@ -98,6 +112,14 @@ Parametreler büyük/küçük harfe duyarlıdır.
            {
              "text": "Estamos muy felices de estar con ustedes."
            }
+      },
+      {
+        "recordId": "3",
+        "data":
+           {
+             "text": "impossible",
+             "countryHint": "fr"
+           }
       }
     ]
 ```
@@ -125,14 +147,19 @@ Parametreler büyük/küçük harfe duyarlıdır.
               "languageName": "Spanish",
               "score": 1,
             }
+      },
+      {
+        "recordId": "3",
+        "data":
+            {
+              "languageCode": "fr",
+              "languageName": "French",
+              "score": 1,
+            }
       }
     ]
 }
 ```
-
-
-## <a name="error-cases"></a>Hata durumları
-Metin desteklenmeyen bir dilde ifade edildiğinde bir hata oluşturulur ve hiçbir dil tanımlayıcısı döndürülmez.
 
 ## <a name="see-also"></a>Ayrıca bkz.
 

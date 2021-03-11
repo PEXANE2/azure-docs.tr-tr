@@ -1,7 +1,7 @@
 ---
 title: Azure 'da Micro Focus Enterprise Server 5,0 ve Enterprise Developer 5,0 'yi yükler | Microsoft Docs
 description: Bu makalede, Microsoft Azure için Micro Focus Enterprise Server 5,0 ve Enterprise Developer 5,0 ' yi nasıl yükleyeceğinizi öğrenin.
-services: virtual-machines-linux
+services: virtual-machines
 documentationcenter: ''
 author: maggsl
 ms.author: edprice
@@ -12,12 +12,12 @@ ms.date: 06/29/2020
 tags: ''
 keywords: ''
 ms.service: multiple
-ms.openlocfilehash: d9e5f9b531fc28caf8f3162a70318927d40bb923
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 0d0a7d9060d751dbf05d39545b332c13010cbfae
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96483071"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102553587"
 ---
 # <a name="install-micro-focus-enterprise-server-50-and-enterprise-developer-50-on-azure"></a>Azure 'da Micro Focus Enterprise Server 5,0 ve Enterprise Developer 5,0 'yi yükler
 
@@ -87,7 +87,7 @@ Yükleme sonrasında, Microsoft C++ yeniden dağıtılabilir ve .NET Framework g
 
 1.  Micro Focus lisans yönetimini başlatın.
 
-2.  **Start** \> **Micro Focus License Manager** \> **lisans yönetimini** Başlat ' ı seçin ve ardından **Yükle** sekmesine tıklayın. karşıya yüklenecek lisans biçimi türünü seçin: bir lisans dosyası veya 16 karakterlik lisans kodu. Örneğin, bir dosya için, **Lisans dosyasında**, `mflic` daha önce VM 'ye yüklenen * dosyasına gidin ve **Lisansları Yükleme ' yi** seçin.
+2.   \> **Micro Focus License Manager** \> **lisans yönetimini** Başlat ' ı seçin ve ardından **Yükle** sekmesine tıklayın. karşıya yüklenecek lisans biçimi türünü seçin: bir lisans dosyası veya 16 karakterlik lisans kodu. Örneğin, bir dosya için, **Lisans dosyasında**, `mflic` daha önce VM 'ye yüklenen * dosyasına gidin ve **Lisansları Yükleme ' yi** seçin.
 
     ![Ekran görüntüsü, Lisans yüklemesi ' ni seçebileceğiniz mikro odak lisans yönetimi iletişim kutusunu gösterir.](media/install-image-3.png)
 
@@ -115,7 +115,7 @@ Yükleme sonrasında, Microsoft C++ yeniden dağıtılabilir ve .NET Framework g
 
     ![Kurulum başarılı iletisi](media/install-image-6.png)
 
-6.  Micro Focus lisans yöneticisini, yalnızca kurumsal sunucu için yaptığınız gibi başlatın. **Start** \> **Micro Focus License Manager** \> **lisans yönetimini** Başlat ' ı seçin ve sonra da **Install** sekmesine tıklayın.
+6.  Micro Focus lisans yöneticisini, yalnızca kurumsal sunucu için yaptığınız gibi başlatın.  \> **Micro Focus License Manager** \> **lisans yönetimini** Başlat ' ı seçin ve sonra da **Install** sekmesine tıklayın.
 
 7.  Karşıya yüklenecek lisans biçimi türünü seçin: bir lisans dosyası veya 16 karakterlik lisans kodu. Örneğin, bir dosya için, **Lisans dosyasında**, `mflic` daha önce VM 'ye yüklenen dosyaya gidin ve  **Lisansları Yükleme ' yi** seçin.
 

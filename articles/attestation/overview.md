@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 08/31/2020
 ms.author: mbaldwin
 ms.custom: references_regions
-ms.openlocfilehash: 85585b771d9c0ed7c6fcdba9cfef7b589a987c8c
-ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
+ms.openlocfilehash: 020ba74948a062d23d61272ee912eb3364180f1e
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99429271"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102618007"
 ---
 # <a name="microsoft-azure-attestation"></a>Microsoft Azure Doğrulama 
 
@@ -78,10 +78,10 @@ Azure kanıtlama için [Iş sürekliliği ve olağanüstü durum kurtarma](../be
 İki bölgede dağıtılan kümeler, normal koşullarda bağımsız olarak çalışır. Bir bölgenin hatası veya kesilmesi durumunda aşağıdakiler gerçekleşir:
 
 - Azure kanıtlama BCDR, müşterilerin kurtarmak için ek bir adım yapması gerekmeyen sorunsuz yük devretme sağlayacak
-- Bölge için [Azure Traffic Manager](../traffic-manager/index.yml) , sistem durumu araştırmasının düştüğü olduğunu algılayacak ve uç noktayı eşleştirilmiş bölgeye geçecek
+- Bölge için [Azure Traffic Manager](../traffic-manager/index.yml) , sistem durumu araştırmasının düştüğü olduğunu algılar ve uç noktayı eşleştirilmiş bölgeye geçirir
 - Mevcut bağlantılar çalışmayacak ve iç sunucu hatası ya da zaman aşımı sorunları alacak
-- Tüm denetim düzlemi işlemleri engellenir. Müşteriler, birincil bölgede kanıtlama sağlayıcıları ve güncelleştirme ilkeleri oluşturamayacak
-- Onaylamasını sağlar çağrıları dahil tüm veri düzlemi işlemleri birincil bölgede çalışmaya devam edecektir
+- Tüm denetim düzlemi işlemleri engellenir. Müşteriler birincil bölgede kanıtlama sağlayıcıları oluşturamayacak
+- Onaylamasını sağlar çağrıları ve ilke yapılandırması da dahil olmak üzere tüm veri düzlemi işlemleri ikincil bölge tarafından sunulacaktır. Müşteriler, birincil bölgeye karşılık gelen özgün URI ile veri düzlemi işlemlerinde çalışmaya devam edebilir
 
 ## <a name="next-steps"></a>Sonraki adımlar
 - [Azure kanıtlama temel kavramları](basic-concepts.md) hakkında bilgi edinin
