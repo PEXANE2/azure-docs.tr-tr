@@ -1,25 +1,19 @@
 ---
 title: Azure Istenen durum yapılandırma uzantısı Işleyicisi
 description: DSC uzantısını kullanarak bir Azure VM 'de PowerShell DSC yapılandırmasını karşıya yükleme ve uygulama
-services: virtual-machines-windows
-documentationcenter: ''
-author: bobbytreed
-manager: carmonm
-editor: ''
-ms.assetid: ''
-ms.service: virtual-machines-windows
-ms.subservice: extensions
 ms.topic: article
-ms.tgt_pltfrm: windows
-ms.workload: ''
-ms.date: 03/26/2018
+ms.service: virtual-machines
+ms.subservice: extensions
+author: bobbytreed
 ms.author: robreed
-ms.openlocfilehash: 5254d83c18ddc9f2a5518ed4f711d4cd73ab6de7
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.collection: windows
+ms.date: 03/26/2018
+ms.openlocfilehash: 72f66aeee64133a13ce0e49155c4b2a90240a3fb
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97510949"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102559996"
 ---
 # <a name="powershell-dsc-extension"></a>PowerShell DSC Uzantısı
 
@@ -98,7 +92,7 @@ Aşağıdaki JSON, bir Azure Resource Manager şablonunda DSC uzantısının Aya
 
 ### <a name="property-values"></a>Özellik değerleri
 
-| Ad | Değer/örnek | Veri Türü |
+| Name | Değer/örnek | Veri Türü |
 | ---- | ---- | ---- |
 | apiVersion | 2018-10-01 | date |
 | yayımcı | Microsoft. PowerShell. DSC | string |
@@ -107,7 +101,7 @@ Aşağıdaki JSON, bir Azure Resource Manager şablonunda DSC uzantısının Aya
 
 ### <a name="settings-property-values"></a>Ayarlar özellik değerleri
 
-| Ad | Veri Türü | Açıklama
+| Name | Veri Türü | Açıklama
 | ---- | ---- | ---- |
 | Settings. wmfVersion | string | Sanal makinenize yüklenmesi gereken Windows Management Framework sürümünü belirtir. Bu özelliğin ' en son ' olarak ayarlanması, WMF 'nin en güncel sürümünü yükler. Bu özellik için geçerli olası değerler şunlardır. ' 4,0 ', ' 5,0 ' ve ' Latest '. Bu olası değerler güncelleştirmelere tabidir. Varsayılan değer ' Latest '. |
 | settings.configacation. URL | string | DSC yapılandırma ZIP dosyanızın indirileceği URL konumunu belirtir. Belirtilen URL erişim için bir SAS belirteci gerektiriyorsa, protectedSettings.configurationUrlSasToken özelliğini SAS belirtecinizin değerine ayarlamanız gerekir. settings.configuration. Script ve/veya settings.configuration. Function tanımlanırsa bu özellik gereklidir.
@@ -121,7 +115,7 @@ Aşağıdaki JSON, bir Azure Resource Manager şablonunda DSC uzantısının Aya
 
 ### <a name="protected-settings-property-values"></a>Korumalı ayarlar özellik değerleri
 
-| Ad | Veri Türü | Açıklama
+| Name | Veri Türü | Açıklama
 | ---- | ---- | ---- |
 | protectedSettings.configurationArguments | string | DSC yapılandırmanıza geçirmek istediğiniz parametreleri tanımlar. Bu özellik şifrelenir. |
 | protectedSettings.configurationUrlSasToken | string | Configuration. URL tarafından tanımlanan URL 'ye erişmek için SAS belirtecini belirtir. Bu özellik şifrelenir. |

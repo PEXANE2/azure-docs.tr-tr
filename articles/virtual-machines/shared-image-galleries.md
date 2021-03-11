@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 10/14/2020
 ms.author: akjosh
 ms.reviewer: cynthn
-ms.openlocfilehash: 225aca8c4695db33e504a5857acb856f4e01d1f1
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.openlocfilehash: 32b4cf1555a2d0e074ae1551a5c0085f2758fa2b
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 03/10/2021
-ms.locfileid: "102551071"
+ms.locfileid: "102609150"
 ---
 # <a name="shared-image-galleries-overview"></a>Paylaşılan görüntü galerilerine genel bakış
 
@@ -104,7 +104,7 @@ Paylaşılan görüntü Galerisi tarafından desteklenen iki işletim sistemi du
 
 ## <a name="regional-support"></a>Bölgesel destek
 
-Tüm ortak bölgeler hedef bölge olabilir, ancak Avustralya Orta ve Avustralya Orta 2 çoğaltmak için, aboneliğiniz izin verilenler listesine eklenmiş olması gerekir. İzin verilenler listesine bir abonelik eklendiğini istemek için şuraya gidin: https://docs.microsoft.com/azure/virtual-machines/shared-image-galleries#regional-support
+Tüm ortak bölgeler hedef bölge olabilir, ancak belirli bölgeler, müşterilerin erişim kazanmak için bir istek sürecinden gitmesini gerektirir. Avustralya Orta veya Avustralya Orta 2 gibi bir bölgenin izin verilenler listesine bir abonelik eklenmesini istemek için, [bir erişim isteği](/troubleshoot/azure/general/region-access-request-process) gönder
 
 ## <a name="limits"></a>Sınırlar 
 

@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 302e4becd337c8e7b0b425a52ed46d562db5bae4
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 30858e9978f7e8857c5f8a2dcdfd7455f6e97b60
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98725336"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102553434"
 ---
 # <a name="discover-the-current-state-of-external-collaboration-in-your-organization"></a>Kuruluşunuzda dış işbirliğinin geçerli durumunu bulma 
 
@@ -34,11 +34,11 @@ Kuruluşunuzdaki kişiler büyük olasılıkla diğer kuruluşlardaki kullanıc�
 
 Dış işbirliği başlatan kullanıcılar, dış işbirliği için en uygun uygulamaları ve erişimin ne zaman bitmesi gerektiğini en iyi şekilde anlayın. Bu kullanıcıları anlamak, dış kullanıcıları davet etme, erişim paketleri oluşturma ve erişim incelemelerini tamamlamaya yönelik hangi kişilere temsilci atanmış olduğunu belirlemenize yardımcı olabilir.
 
-Şu anda işbirliği yapan kullanıcıları bulmak için, [Paylaşım ve erişim isteği etkinliklerinin Microsoft 365 denetim günlüğünü](/microsoft-365/compliance/search-the-audit-log-in-security-and-compliance?view=o365-worldwide#sharing-and-access-request-activities)gözden geçirin. Ayrıca, [Azure AD denetim günlüğünü, B2B kullanıcılarını dizininize davet eden Ayrıntılar için](../external-identities/auditing-and-reporting.md) de gözden geçirebilirsiniz.
+Şu anda işbirliği yapan kullanıcıları bulmak için, [Paylaşım ve erişim isteği etkinliklerinin Microsoft 365 denetim günlüğünü](/microsoft-365/compliance/search-the-audit-log-in-security-and-compliance#sharing-and-access-request-activities)gözden geçirin. Ayrıca, [Azure AD denetim günlüğünü, B2B kullanıcılarını dizininize davet eden Ayrıntılar için](../external-identities/auditing-and-reporting.md) de gözden geçirebilirsiniz.
 
 ## <a name="find-current-collaboration-partners"></a>Geçerli işbirliği iş ortaklarını bulun
 
-Dış kullanıcılar, [Azure AD B2B kullanıcıları](../external-identities/what-is-b2b.md) (tercih edilen) iş ortağı tarafından yönetilen kimlik bilgileriyle veya yerel olarak sağlanan kimlik bilgilerine sahip harici kullanıcılarla olabilir. Bu kullanıcılar genellikle UserType Konukiyle işaretlenir (ancak her zaman değildir). Konuk kullanıcıları [MICROSOFT Graph API](/graph/api/user-list?tabs=http&view=graph-rest-1.0), [PowerShell](/graph/api/user-list?tabs=http&view=graph-rest-1.0)veya [Azure Portal](../enterprise-users/users-bulk-download.md)üzerinden sıralayabilirsiniz.
+Dış kullanıcılar, [Azure AD B2B kullanıcıları](../external-identities/what-is-b2b.md) (tercih edilen) iş ortağı tarafından yönetilen kimlik bilgileriyle veya yerel olarak sağlanan kimlik bilgilerine sahip harici kullanıcılarla olabilir. Bu kullanıcılar genellikle UserType Konukiyle işaretlenir (ancak her zaman değildir). Konuk kullanıcıları [MICROSOFT Graph API](/graph/api/user-list?tabs=http), [PowerShell](/graph/api/user-list?tabs=http)veya [Azure Portal](../enterprise-users/users-bulk-download.md)üzerinden sıralayabilirsiniz.
 
 ### <a name="use-email-domains-and-companyname-property"></a>E-posta etki alanlarını ve companyName özelliğini kullanma
 
@@ -55,7 +55,7 @@ Yetkilendirme Yönetimi kullanıyorsanız, aşağıda gösterildiği gibi belirl
 
 ## <a name="find-access-being-granted-to-external-users"></a>Dış kullanıcılara verilen erişim bulma
 
-Dış Kullanıcı ve kuruluşların envanterini aldıktan sonra, Azure AD [Grup üyeliğini](/graph/api/resources/groups-overview?view=graph-rest-1.0) veya Azure AD 'de [doğrudan uygulama atamasını](/graph/api/resources/approleassignment?view=graph-rest-1.0) öğrenmek için Microsoft Graph API 'sini kullanarak bu kullanıcılara verilen erişimi belirleyebilirsiniz.
+Dış Kullanıcı ve kuruluşların envanterini aldıktan sonra, Azure AD [Grup üyeliğini](/graph/api/resources/groups-overview) veya Azure AD 'de [doğrudan uygulama atamasını](/graph/api/resources/approleassignment) öğrenmek için Microsoft Graph API 'sini kullanarak bu kullanıcılara verilen erişimi belirleyebilirsiniz.
 
 
 ### <a name="enumerate-application-specific-permissions"></a>Uygulamaya özgü izinleri listeleme
@@ -65,7 +65,7 @@ Uygulamaya özgü izin numaralandırması da gerçekleştirebilirsiniz. Örneği
 Tüm dış erişimlerinizi tamamen bilmeniz için, tüm işletme duyarlı ve iş açısından kritik uygulamalarınız için erişimi özellikle araştırın.
 
 ### <a name="detect-ad-hoc-sharing"></a>Geçici paylaşımı Algıla
-E-postanız ve ağ planlarınız bunu etkinleştiriyorsa, e-posta ile veya izinsiz yazılım hizmet olarak yazılım (SaaS) uygulamaları aracılığıyla paylaşılmakta olan içeriği inceleyebilirsiniz. [Microsoft 365 veri kaybı koruması](/microsoft-365/compliance/data-loss-prevention-policies?view=o365-worldwide) , hassas bilgilerin Microsoft 365 altyapınızda yanlışlıkla paylaşılmasını belirlemenize, engellemenize ve izlemenize yardımcı olur. [Microsoft Cloud App Security](https://www.microsoft.com/microsoft-365/enterprise-mobility-security/cloud-app-security) , ortamınızda yetkisiz SaaS uygulamalarının kullanımını belirlemenize yardımcı olabilir.
+E-postanız ve ağ planlarınız bunu etkinleştiriyorsa, e-posta ile veya izinsiz yazılım hizmet olarak yazılım (SaaS) uygulamaları aracılığıyla paylaşılmakta olan içeriği inceleyebilirsiniz. [Microsoft 365 veri kaybı koruması](/microsoft-365/compliance/data-loss-prevention-policies) , hassas bilgilerin Microsoft 365 altyapınızda yanlışlıkla paylaşılmasını belirlemenize, engellemenize ve izlemenize yardımcı olur. [Microsoft Cloud App Security](https://www.microsoft.com/microsoft-365/enterprise-mobility-security/cloud-app-security) , ortamınızda yetkisiz SaaS uygulamalarının kullanımını belirlemenize yardımcı olabilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

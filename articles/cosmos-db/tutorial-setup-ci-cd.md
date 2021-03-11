@@ -8,12 +8,12 @@ ms.date: 01/28/2020
 ms.author: dech
 ms.reviewer: sngun
 ms.custom: devx-track-csharp
-ms.openlocfilehash: a5b8842718aa2d9f90ac06283abc5fe2fdd925cb
-ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
+ms.openlocfilehash: c7246511a88e2d2756a8ef56c5adf51ddbfd3e58
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95997010"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102560540"
 ---
 # <a name="set-up-a-cicd-pipeline-with-the-azure-cosmos-db-emulator-build-task-in-azure-devops"></a>Azure DevOps 'da Azure Cosmos DB öykünücü derleme göreviyle bir CI/CD işlem hattı ayarlama
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -33,13 +33,13 @@ Derleme görevini kullanmak için öncelikle Azure DevOps kuruluşunuza yükleme
 Ardından uzantının yükleneceği kuruluşu seçin. 
 
 > [!NOTE]
-> Bir Azure DevOps kuruluşuna uzantı yüklemek için bir hesap sahibi veya proje koleksiyonu yöneticisi olmanız gerekir. Gerekli izinlere sahip değilseniz ancak hesap üyesiyseniz uzantı isteyebilirsiniz. [Daha fazla bilgi edinin.](/azure/devops/marketplace/faq-extensions?preserve-view=true&view=vsts)
+> Bir Azure DevOps kuruluşuna uzantı yüklemek için bir hesap sahibi veya proje koleksiyonu yöneticisi olmanız gerekir. Gerekli izinlere sahip değilseniz ancak hesap üyesiyseniz uzantı isteyebilirsiniz. [Daha fazla bilgi edinin.](/azure/devops/marketplace/faq-extensions)
 
 :::image type="content" source="./media/tutorial-setup-ci-cd/addExtension_2.png" alt-text="Uzantı yüklemek için bir Azure DevOps organizasyonu seçin":::
 
 ## <a name="create-a-build-definition"></a>Derleme tanımı oluşturma
 
-Artık uzantı yüklendikten sonra, Azure DevOps kuruluşunuzda oturum açıp projeler panosundan projenizi bulabilirsiniz. Projenize bir [derleme işlem hattı](/azure/devops/pipelines/get-started-designer?preserve-view=true&tabs=new-nav&view=vsts) ekleyebilir veya var olan derleme işlem hattını değiştirebilirsiniz. Bir derleme işlem hattınız varsa [Derleme tanımına Öykünücü derlemesi ekleme](#addEmulatorBuildTaskToBuildDefinition) bölümüne geçebilirsiniz.
+Artık uzantı yüklendikten sonra, Azure DevOps kuruluşunuzda oturum açıp projeler panosundan projenizi bulabilirsiniz. Projenize bir [derleme işlem hattı](/azure/devops/pipelines/get-started-designer?preserve-view=true&tabs=new-nav) ekleyebilir veya var olan derleme işlem hattını değiştirebilirsiniz. Bir derleme işlem hattınız varsa [Derleme tanımına Öykünücü derlemesi ekleme](#addEmulatorBuildTaskToBuildDefinition) bölümüne geçebilirsiniz.
 
 1. Yeni bir derleme tanımı oluşturmak için Azure DevOps uygulamasının **Derlemeler** sekmesine gidin. **+ Yeni** seçeneğini belirleyin. \> **Yeni derleme işlem hattı**
 
@@ -52,7 +52,7 @@ Artık uzantı yüklendikten sonra, Azure DevOps kuruluşunuzda oturum açıp pr
 3. Son olarak derleme işlem hattı için kullanmak istediğiniz şablonu belirleyin. Bu öğreticide **ASP.NET** şablonunu seçeceğiz. Artık Azure Cosmos DB öykünücü derleme görevini kullanacak şekilde ayarlayabileceğiniz bir yapı ardışık düzeni vardır. 
 
 > [!NOTE]
-> Yükleme, CI 'nin bir parçası olarak önceki bir görevde el ile yapılmazsa, bu CI için seçilecek aracı havuzunun Docker for Windows yüklü olması gerekir. Aracı havuzlarının seçimi için bkz. [Microsoft barındırılan aracılar](/azure/devops/pipelines/agents/hosted?preserve-view=true&tabs=yaml&view=azure-devops) makalesi. ' i kullanmaya başlamanız önerilir `Hosted VS2017` .
+> Yükleme, CI 'nin bir parçası olarak önceki bir görevde el ile yapılmazsa, bu CI için seçilecek aracı havuzunun Docker for Windows yüklü olması gerekir. Aracı havuzlarının seçimi için bkz. [Microsoft barındırılan aracılar](/azure/devops/pipelines/agents/hosted?tabs=yaml) makalesi. ' i kullanmaya başlamanız önerilir `Hosted VS2017` .
 
 Azure Cosmos DB öykünücü Şu anda barındırılan VS2019 Aracısı havuzunu desteklemiyor. Ancak, öykünücü zaten VS2019 yüklendi ve öykünücü, aşağıdaki PowerShell cmdlet 'leri ile başlatılarak bunu kullanıyorsunuz. VS2019 kullanırken herhangi bir sorunla karşılaşırsanız, yardım için [Azure DevOps](https://developercommunity.visualstudio.com/spaces/21/index.html) ekibine ulaşın:
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 08/04/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 19935037e98bbc7ce9c4152b034b664d802a8f3a
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: c373bb172be01594bb5642a626cad24838b66ea2
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100588295"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102607994"
 ---
 # <a name="azure-security-baseline-for-azure-database-for-postgresql---hyperscale-citus"></a>PostgreSQL için Azure veritabanı-hiper ölçek (Citus) için Azure Güvenlik temeli
 
@@ -544,9 +544,9 @@ Ayrıca, Azure Resource Manager, yapılandırmanın kuruluşunuzun güvenlik ger
 
 **Rehberlik**: hyperscale (Citus) örneklerinizin ve ilgili kaynaklarınızın özel Azure ilke tanımlarını kullanıyorsanız, kodunuzu güvenli bir şekilde depolamak ve yönetmek için Azure Repos kullanın.
 
-- [Azure DevOps 'da kod depolama](/azure/devops/repos/git/gitworkflow?view=azure-devops&preserve-view=true)
+- [Azure DevOps 'da kod depolama](/azure/devops/repos/git/gitworkflow)
 
-- [Azure Repos belgeleri](/azure/devops/repos/index?view=azure-devops&preserve-view=true)
+- [Azure Repos belgeleri](/azure/devops/repos/index)
 
 **Azure Güvenlik Merkezi ile izleme**: Uygulanamaz
 

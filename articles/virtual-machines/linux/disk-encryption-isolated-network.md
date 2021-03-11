@@ -2,18 +2,19 @@
 title: Yalıtılmış bir ağda Azure disk şifrelemesi
 description: Bu makalede, Linux VM 'lerinde Microsoft Azure disk şifrelemesi için sorun giderme ipuçları hakkında bilgi edinin.
 author: msmbaldwin
-ms.service: virtual-machines-linux
-ms.subservice: security
+ms.service: virtual-machines
+ms.subservice: disks
+ms.collection: linux
 ms.topic: conceptual
 ms.author: mbaldwin
 ms.date: 02/27/2020
 ms.custom: seodec18
-ms.openlocfilehash: 1d7e019e7759e22e945bddee477a4cb77f17350b
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: 8d8d2b88251f837a23c4e82a90eb4d4eb0043702
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92913832"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102553060"
 ---
 # <a name="azure-disk-encryption-on-an-isolated-network"></a>Yalıtılmış bir ağda Azure disk şifrelemesi
 
@@ -25,12 +26,12 @@ Azure disk şifrelemesi, genellikle zaten mevcut değilse, daha önce ADE etkinl
 
 Her dağıtım için gereken paketler aşağıda verilmiştir. Desteklenen destekler ve birim türlerinin tam listesi için bkz. [desteklenen VM 'ler ve işletim sistemleri](disk-encryption-overview.md#supported-vms-and-operating-systems).
 
-- **Ubuntu 14,04, 16,04, 18,04** : lsscsı, psmisc, at, cryptsetup-bin, Python-Parted, Python-altı, PROCPS, grub-PC-bin
-- **CentOS 7,2-7,7** : lsscsı, psmisc, lvm2, UUID, at, Patch, cryptsetup, cryptsetup-reencrypt, pyparted, PROCPS-ng, Util-Linux
-- **CentOS 6,8** : lsscsı, psmisc, lvm2, UUID, at, cryptsetup-reencrypt, pyparted, Python-altı
-- **RedHat 7,2-7,7** : lsscsı, psmisc, lvm2, UUID, at, Patch, cryptsetup, cryptsetup-reencrypt, PROCPS-ng, Util-Linux
-- **RedHat 6,8** : lsscsı, psmisc, lvm2, UUID, at, Patch, cryptsetup-reencrypt
-- **openSUSE 42,3, SLES 12-SP4, 12-SP3** : lsscsı, cryptsetup
+- **Ubuntu 14,04, 16,04, 18,04**: lsscsı, psmisc, at, cryptsetup-bin, Python-Parted, Python-altı, PROCPS, grub-PC-bin
+- **CentOS 7,2-7,7**: lsscsı, psmisc, lvm2, UUID, at, Patch, cryptsetup, cryptsetup-reencrypt, pyparted, PROCPS-ng, Util-Linux
+- **CentOS 6,8**: lsscsı, psmisc, lvm2, UUID, at, cryptsetup-reencrypt, pyparted, Python-altı
+- **RedHat 7,2-7,7**: lsscsı, psmisc, lvm2, UUID, at, Patch, cryptsetup, cryptsetup-reencrypt, PROCPS-ng, Util-Linux
+- **RedHat 6,8**: lsscsı, psmisc, lvm2, UUID, at, Patch, cryptsetup-reencrypt
+- **openSUSE 42,3, SLES 12-SP4, 12-SP3**: lsscsı, cryptsetup
 
 Red hat üzerinde bir ara sunucu gerektiğinde, abonelik Yöneticisi 'nin ve en fazla 'nin düzgün kurulduğundan emin olmanız gerekir. Daha fazla bilgi için bkz. [abonelik-yönetici ve sorun giderme sorunları nasıl giderilir](https://access.redhat.com/solutions/189533).  
 

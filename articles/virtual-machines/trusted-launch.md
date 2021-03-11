@@ -4,17 +4,17 @@ description: Azure sanal makineler için güvenilir başlatma hakkında bilgi ed
 author: khyewei
 ms.author: khwei
 ms.service: virtual-machines
-ms.subservice: security
+ms.subservice: trusted-launch
 ms.topic: conceptual
 ms.date: 02/26/2021
 ms.reviewer: cynthn
 ms.custom: template-concept; references_regions
-ms.openlocfilehash: bc1afa72a0eebd2bb467616237641222b790923c
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 449eb1d65e0104e6c5c74a78901cf29c5aeb3e57
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101680329"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102609099"
 ---
 # <a name="trusted-launch-for-azure-virtual-machines-preview"></a>Azure sanal makineleri için güvenilir başlatma (Önizleme)
 
@@ -40,7 +40,6 @@ Azure, [2. nesil](generation-2.md) VM 'lerin güvenliğini artırmanın sorunsuz
 
 **Boyut desteği**: tüm [2. nesil](generation-2.md) VM boyutları, şunlar hariç:
 
-- HBv3 
 - Lsv2 serisi 
 - M serisi 
 - Mv2 serisi 

@@ -27,8 +27,6 @@
       href: cdn-custom-ssl.md
     - name: Önbelleğe alma kuralları ayarlama
       href: cdn-caching-rules-tutorial.md
-    - name: Standart kural altyapısını kullanarak HTTPS'yi zorlama
-      href: cdn-standard-rules-engine.md
 - name: Örnekler
   items:
     - name: Kod örnekleri
@@ -76,6 +74,8 @@
           href: cdn-improve-performance.md
         - name: Uç nokta çoklu kaynak
           href: endpoint-multiorigin.md
+        - name: Standart kural altyapısını kullanarak HTTPS'yi zorlama
+          href: cdn-standard-rules-engine.md
         - name: Önbelleğe alma davranışını denetleme
           items:
             - name: Önbelleğe alma davranışını önbelleğe alma kurallarını kullanarak denetleme

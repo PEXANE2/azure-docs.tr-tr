@@ -3,19 +3,19 @@ title: Azure CLı ile bir görüntü sürümüne yönetilen görüntü kopyalama
 description: Azure CLı kullanarak paylaşılan görüntü galerisindeki bir görüntü sürümüne yönetilen bir görüntü kopyalamayı öğrenin.
 author: cynthn
 ms.service: virtual-machines
-ms.subservice: imaging
+ms.subservice: shared-image-gallery
 ms.topic: how-to
 ms.workload: infrastructure
 ms.date: 05/04/2020
 ms.author: cynthn
 ms.reviewer: akjosh
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 56611794bc2f190eccef739679da8474c9b04eb4
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: cae82072785838d410453b2eb83685905b0ba04e
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98675969"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102553791"
 ---
 # <a name="clone-a-managed-image-to-an-image-version-using-the-azure-cli"></a>Azure CLı kullanarak bir görüntü sürümüne yönetilen görüntü kopyalama
 Paylaşılan görüntü galerisine kopyalamak istediğiniz mevcut bir yönetilen görüntünüz varsa, doğrudan yönetilen görüntüden paylaşılan bir görüntü Galerisi görüntüsü oluşturabilirsiniz. Yeni görüntünüzü sınadıktan sonra, kaynak yönetilen görüntüyü silebilirsiniz. Ayrıca, [PowerShell](image-version-managed-image-powershell.md)kullanarak yönetilen bir görüntüden paylaşılan görüntü galerisine geçiş yapabilirsiniz.

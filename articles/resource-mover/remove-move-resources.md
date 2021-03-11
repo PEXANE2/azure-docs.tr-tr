@@ -5,14 +5,14 @@ manager: evansma
 author: rayne-wiselman
 ms.service: resource-move
 ms.topic: how-to
-ms.date: 11/30/2020
+ms.date: 02/22/2020
 ms.author: raynew
-ms.openlocfilehash: 63548e2bf470c012e0dd8a5f879a51eeb631f453
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 25311e93e1081b3c7638c275c39153b2c357048d
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96459277"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102559142"
 ---
 # <a name="manage-move-collections-and-resource-groups"></a>Taşıma koleksiyonlarını ve kaynak gruplarını yönetme
 
@@ -39,70 +39,111 @@ Portalda bir taşıma koleksiyonunu/kaynak grubunu kaldırabilirsiniz.
 
 ## <a name="remove-a-resource-powershell"></a>Kaynak kaldırma (PowerShell)
 
-PowerShell kullanarak bir kaynağı (bizim örneğimizde PSDemoVM makineleri) aşağıdaki gibi kaldırın:
+PowerShell cmdlet 'lerini kullanarak bir MoveCollection 'dan tek bir kaynağı kaldırabilir veya birden fazla kaynağı kaldırabilirsiniz.
+
+### <a name="remove-a-single-resource"></a>Tek bir kaynağı kaldırma
+
+Bir kaynağı (bizim örneğimizde, sanal ağ *psdemorz-VNET*) aşağıdaki gibi kaldırın:
 
 ```azurepowershell-interactive
 # Remove a resource using the resource ID
-Remove-AzResourceMoverMoveResource -SubscriptionId  <subscription-id> -ResourceGroupName RegionMoveRG-centralus-westcentralus  -MoveCollectionName MoveCollection-centralus-westcentralus -Name PSDemoVM
+Remove-AzResourceMoverMoveResource -ResourceGroupName "RG-MoveCollection-demoRMS" -MoveCollectionName "PS-centralus-westcentralus-demoRMS" -Name "psdemorm-vnet"
 ```
-**Beklenen çıkış**
+**Cmdlet 'i çalıştırdıktan sonra çıkış**
 
-![Taşıma koleksiyonundan kaynak kaldırıldıktan sonra çıkış metni](./media/remove-move-resources/remove-resource.png)
+![Taşıma koleksiyonundan kaynak kaldırıldıktan sonra çıkış metni](./media/remove-move-resources/powershell-remove-single-resource.png)
 
-## <a name="remove-a-collection-powershell"></a>Bir koleksiyonu kaldırma (PowerShell)
+### <a name="remove-multiple-resources"></a>Birden çok kaynağı kaldırma
 
-PowerShell kullanarak tüm taşıma koleksiyonunu aşağıdaki gibi kaldırın:
+Birden çok kaynağı aşağıdaki gibi kaldırın:
 
-1. PowerShell kullanarak koleksiyondaki kaynakları kaldırmak için yukarıdaki yönergeleri izleyin.
-2. Çalıştır:
+1. Bağımlılıkları doğrula:
+
+    ````azurepowershell-interactive
+    $resp = Invoke-AzResourceMoverBulkRemove -ResourceGroupName "RG-MoveCollection-demoRMS" -MoveCollectionName "PS-centralus-westcentralus-demoRMS"  -MoveResource $('psdemorm-vnet') -ValidateOnly
+    ```
+
+    **Output after running cmdlet**
+
+    ![Output text after removing multiple resources from a move collection](./media/remove-move-resources/remove-multiple-validate-dependencies.png)
+
+2. Retrieve the dependent resources that need to be removed (along with our example virtual network psdemorm-vnet):
+
+    ````azurepowershell-interactive
+    $resp.AdditionalInfo[0].InfoMoveResource
+    ```
+
+    **Output after running cmdlet**
+
+    ![Output text after removing multiple resources from a move collection](./media/remove-move-resources/remove-multiple-get-dependencies.png)
+
+
+3. Remove all resources, along with the virtual network:
+
+    
+    ````azurepowershell-interactive
+    Invoke-AzResourceMoverBulkRemove -ResourceGroupName "RG-MoveCollection-demoRMS" -MoveCollectionName "PS-centralus-westcentralus-demoRMS"  -MoveResource $('PSDemoVM','psdemovm111', 'PSDemoRM-vnet','PSDemoVM-nsg')
+    ```
+
+    **Output after running cmdlet**
+
+    ![Output text after removing all resources from a move collection](./media/remove-move-resources/remove-multiple-all.png)
+
+
+## Remove a collection (PowerShell)
+
+Remove an entire move collection from the subscription, as follows:
+
+1. Follow the instructions above to remove resources in the collection using PowerShell.
+2. Run:
 
     ```azurepowershell-interactive
-    # Remove a resource using the resource ID
-    Remove-AzResourceMoverMoveCollection -SubscriptionId <subscription-id> -ResourceGroupName RegionMoveRG-centralus-westcentralus -MoveCollectionName MoveCollection-centralus-westcentralus
+    Remove-AzResourceMoverMoveCollection -ResourceGroupName "RG-MoveCollection-demoRMS" -MoveCollectionName "PS-centralus-westcentralus-demoRMS"
     ```
-    **Beklenen çıkış**
+
+    **Output after running cmdlet**
     
-    ![Taşıma koleksiyonu kaldırıldıktan sonra çıkış metni](./media/remove-move-resources/remove-collection.png)
+    ![Output text after removing a move collection](./media/remove-move-resources/remove-collection.png)
 
-## <a name="vm-resource-state-after-removing"></a>Kaldırdıktan sonra VM kaynağı durumu
+## VM resource state after removing
 
-Bir taşıma koleksiyonundan bir VM kaynağını kaldırdığınızda ne olacağı, tabloda özetlenen kaynak durumuna bağlıdır.
+What happens when you remove a VM resource from a move collection depends on the resource state, as summarized in the table.
 
-###  <a name="remove-vm-state"></a>VM durumunu kaldır
-**Kaynak durumu** | **VM** | **Ağ**
+###  Remove VM state
+**Resource state** | **VM** | **Networking**
 --- | --- | --- 
-**Taşıma koleksiyonuna eklendi** | Taşıma koleksiyonundan Sil. | Taşıma koleksiyonundan Sil. 
-**Bağımlılıklar çözümlendi/hazırlık bekliyor** | Taşıma koleksiyonundan Sil  | Taşıma koleksiyonundan Sil. 
-**Hazırlama devam ediyor**<br/> (veya devam eden başka bir durum) | Silme işlemi hata vererek başarısız oldu.  | Silme işlemi hata vererek başarısız oldu.
-**Hazırlama başarısız oldu** | Taşıma koleksiyonundan silin.<br/>Çoğaltma diskleri dahil olmak üzere hedef bölgede oluşturulan her şeyi silin. <br/><br/> Taşıma sırasında oluşturulan altyapı kaynaklarının el ile silinmesi gerekir. | Taşıma koleksiyonundan silin.  
-**Taşımayı başlatma beklemede** | Taşıma koleksiyonundan Sil.<br/><br/> VM, çoğaltma diskleri vb. dahil olmak üzere hedef bölgede oluşturulan her şeyi silin.  <br/><br/> Taşıma sırasında oluşturulan altyapı kaynaklarının el ile silinmesi gerekir. | Taşıma koleksiyonundan Sil.
-**Taşıma başlatılamadı** | Taşıma koleksiyonundan Sil.<br/><br/> VM, çoğaltma diskleri vb. dahil olmak üzere hedef bölgede oluşturulan her şeyi silin.  <br/><br/> Taşıma sırasında oluşturulan altyapı kaynaklarının el ile silinmesi gerekir. | Taşıma koleksiyonundan Sil.
-**Tamamlama bekleniyor** | Hedef kaynakların önce silinmesi için taşımayı atmenizi öneririz.<br/><br/> Kaynak, **başlatma taşıma bekleme** durumuna geri döner ve buradan devam edebilirsiniz. | Hedef kaynakların önce silinmesi için taşımayı atmenizi öneririz.<br/><br/> Kaynak, **başlatma taşıma bekleme** durumuna geri döner ve buradan devam edebilirsiniz. 
-**Kayıt başarısız oldu** | Önce hedef kaynakların silinmesi için öğesini atmenizi öneririz.<br/><br/> Kaynak, **başlatma taşıma bekleme** durumuna geri döner ve buradan devam edebilirsiniz. | Hedef kaynakların önce silinmesi için taşımayı atmenizi öneririz.<br/><br/> Kaynak, **başlatma taşıma bekleme** durumuna geri döner ve buradan devam edebilirsiniz.
-**Atma tamamlandı** | Kaynak, **başlatma taşıma bekleme** durumuna geri döner.<br/><br/> Hedef VM, çoğaltma diskleri, kasa vb. üzerinde oluşturulan her türlü şeyle birlikte taşıma koleksiyonundan silinir.  <br/><br/> Taşıma sırasında oluşturulan altyapı kaynaklarının el ile silinmesi gerekir. <br/><br/> Taşıma sırasında oluşturulan altyapı kaynaklarının el ile silinmesi gerekir. |  Kaynak, **başlatma taşıma bekleme** durumuna geri döner.<br/><br/> Taşıma koleksiyonundan silinir.
-**Atma başarısız oldu** | Hedef kaynakları önce silinmeden önce, taşımaları atlanmasını öneririz.<br/><br/> Bundan sonra kaynak, **başlatma taşıma bekleme** durumuna geri döner ve buradan devam edebilirsiniz. | Hedef kaynakları önce silinmeden önce, taşımaları atlanmasını öneririz.<br/><br/> Bundan sonra kaynak, **başlatma taşıma bekleme** durumuna geri döner ve buradan devam edebilirsiniz.
-**Kaynağı silme bekleniyor** | Taşıma koleksiyonundan silinir.<br/><br/> Hedef bölgede oluşturulan herhangi bir şeyi silmez.  | Taşıma koleksiyonundan silinir.<br/><br/> Hedef bölgede oluşturulan herhangi bir şeyi silmez.
-**Kaynak silme başarısız** | Taşıma koleksiyonundan silinir.<br/><br/> Hedef bölgede oluşturulan herhangi bir şeyi silmez. | Taşıma koleksiyonundan silinir.<br/><br/> Hedef bölgede oluşturulan herhangi bir şeyi silmez.
+**Added to move collection** | Delete from move collection. | Delete from move collection. 
+**Dependencies resolved/prepare pending** | Delete from move collection  | Delete from move collection. 
+**Prepare in progress**<br/> (or any other state in progress) | Delete operation fails with error.  | Delete operation fails with error.
+**Prepare failed** | Delete from the move collection.<br/>Delete anything created in the target region, including replica disks. <br/><br/> Infrastructure resources created during the move need to be deleted manually. | Delete from the move collection.  
+**Initiate move pending** | Delete from move collection.<br/><br/> Delete anything created in the target region, including VM, replica disks etc.  <br/><br/> Infrastructure resources created during the move need to be deleted manually. | Delete from move collection.
+**Initiate move failed** | Delete from move collection.<br/><br/> Delete anything created in the target region, including VM, replica disks etc.  <br/><br/> Infrastructure resources created during the move need to be deleted manually. | Delete from move collection.
+**Commit pending** | We recommend that you discard the move so that the target resources are deleted first.<br/><br/> The resource goes back to the **Initiate move pending** state, and you can continue from there. | We recommend that you discard the move so that the target resources are deleted first.<br/><br/> The resource goes back to the **Initiate move pending** state, and you can continue from there. 
+**Commit failed** | We recommend that you discard the  so that the target resources are deleted first.<br/><br/> The resource goes back to the **Initiate move pending** state, and you can continue from there. | We recommend that you discard the move so that the target resources are deleted first.<br/><br/> The resource goes back to the **Initiate move pending** state, and you can continue from there.
+**Discard completed** | The resource goes back to the **Initiate move pending** state.<br/><br/> It's deleted from the move collection, along with anything created at target - VM, replica disks, vault etc.  <br/><br/> Infrastructure resources created during the move need to be deleted manually. <br/><br/> Infrastructure resources created during the move need to be deleted manually. |  The resource goes back to the **Initiate move pending** state.<br/><br/> It's deleted from the move collection.
+**Discard failed** | We recommend that you discard the moves so that the target resources are deleted first.<br/><br/> After that, the resource goes back to the **Initiate move pending** state, and you can continue from there. | We recommend that you discard the moves so that the target resources are deleted first.<br/><br/> After that, the resource goes back to the **Initiate move pending** state, and you can continue from there.
+**Delete source pending** | Deleted from the move collection.<br/><br/> It doesn't delete anything created in the target region.  | Deleted from the move collection.<br/><br/> It doesn't delete anything created in the target region.
+**Delete source failed** | Deleted from the move collection.<br/><br/> It doesn't delete anything created in the target region. | Deleted from the move collection.<br/><br/> It doesn't delete anything created in the target region.
 
-## <a name="sql-resource-state-after-removing"></a>Kaldırdıktan sonra SQL kaynak durumu
+## SQL resource state after removing
 
-Bir Azure SQL kaynağını bir taşıma koleksiyonundan kaldırdığınızda ne olacağı, tabloda özetlenen kaynak durumuna bağlıdır.
+What happens when you remove an Azure SQL resource from a move collection depends on the resource state, as summarized in the table.
 
-**Kaynak durumu** | **SQL** 
+**Resource state** | **SQL** 
 --- | --- 
-**Taşıma koleksiyonuna eklendi** | Taşıma koleksiyonundan Sil. 
-**Bağımlılıklar çözümlendi/hazırlık bekliyor** | Taşıma koleksiyonundan Sil 
-**Hazırlama devam ediyor**<br/> (veya devam eden başka bir durum)  | Silme işlemi hata vererek başarısız oldu. 
-**Hazırlama başarısız oldu** | Taşıma koleksiyonundan Sil<br/><br/>Hedef bölgede oluşturulan her şeyi silin. 
-**Taşımayı başlatma beklemede** |  Taşıma koleksiyonundan Sil<br/><br/>Hedef bölgede oluşturulan her şeyi silin. SQL veritabanı bu noktada bulunur ve silinecek. 
-**Taşıma başlatılamadı** | Taşıma koleksiyonundan Sil<br/><br/>Hedef bölgede oluşturulan her şeyi silin. SQL veritabanı bu noktada var ve silinmelidir. 
-**Tamamlama bekleniyor** | Hedef kaynakların önce silinmesi için taşımayı atmenizi öneririz.<br/><br/> Kaynak, **başlatma taşıma bekleme** durumuna geri döner ve buradan devam edebilirsiniz.
-**Kayıt başarısız oldu** | Hedef kaynakların önce silinmesi için taşımayı atmenizi öneririz.<br/><br/> Kaynak, **başlatma taşıma bekleme** durumuna geri döner ve buradan devam edebilirsiniz. 
-**Atma tamamlandı** |  Kaynak, **başlatma taşıma bekleme** durumuna geri döner.<br/><br/> SQL veritabanları da dahil olmak üzere, hedefte oluşturulan her türlü şeyle birlikte taşıma koleksiyonundan silinir. 
-**Atma başarısız oldu** | Hedef kaynakları önce silinmeden önce, taşımaları atlanmasını öneririz.<br/><br/> Bundan sonra kaynak, **başlatma taşıma bekleme** durumuna geri döner ve buradan devam edebilirsiniz. 
-**Kaynağı silme bekleniyor** | Taşıma koleksiyonundan silinir.<br/><br/> Hedef bölgede oluşturulan herhangi bir şeyi silmez. 
-**Kaynak silme başarısız** | Taşıma koleksiyonundan silinir.<br/><br/> Hedef bölgede oluşturulan herhangi bir şeyi silmez. 
+**Added to move collection** | Delete from move collection. 
+**Dependencies resolved/prepare pending** | Delete from move collection 
+**Prepare in progress**<br/> (or any other state in progress)  | Delete operation fails with error. 
+**Prepare failed** | Delete from move collection<br/><br/>Delete anything created in the target region. 
+**Initiate move pending** |  Delete from move collection<br/><br/>Delete anything created in the target region. The SQL database exists at this point and will be deleted. 
+**Initiate move failed** | Delete from move collection<br/><br/>Delete anything created in the target region. The SQL database exists at this point and must be deleted. 
+**Commit pending** | We recommend that you discard the move so that the target resources are deleted first.<br/><br/> The resource goes back to the **Initiate move pending** state, and you can continue from there.
+**Commit failed** | We recommend that you discard the move so that the target resources are deleted first.<br/><br/> The resource goes back to the **Initiate move pending** state, and you can continue from there. 
+**Discard completed** |  The resource goes back to the **Initiate move pending** state.<br/><br/> It's deleted from the move collection, along with anything created at target, including SQL databases. 
+**Discard failed** | We recommend that you discard the moves so that the target resources are deleted first.<br/><br/> After that, the resource goes back to the **Initiate move pending** state, and you can continue from there. 
+**Delete source pending** | Deleted from the move collection.<br/><br/> It doesn't delete anything created in the target region. 
+**Delete source failed** | Deleted from the move collection.<br/><br/> It doesn't delete anything created in the target region. 
 
-## <a name="next-steps"></a>Sonraki adımlar
+## Next steps
 
-Kaynak taşıyıcısı ile [BIR VM](tutorial-move-region-virtual-machines.md) 'yi başka bir bölgeye taşımayı deneyin.
+Try [moving a VM](tutorial-move-region-virtual-machines.md) to another region with Resource Mover.

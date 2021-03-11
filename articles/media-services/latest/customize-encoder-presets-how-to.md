@@ -12,12 +12,12 @@ ms.topic: how-to
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: seodec18
-ms.openlocfilehash: 18127da3064a7eac3e6bfdc0692972d4194119cc
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.openlocfilehash: eb72c34489755dad17700a16a5109824ad892e83
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102508308"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102553281"
 ---
 # <a name="how-to-encode-with-a-custom-transform---net"></a>Özel bir dönüşümle kodlama-.NET
 
@@ -44,7 +44,7 @@ Aşağıdaki komutu kullanarak makinenize tam .NET Core örneği içeren bir Git
  git clone https://github.com/Azure-Samples/media-services-v3-dotnet.git
  ```
  
-Özel önceden ayarlanmış örnek, [.NET klasörü kullanan özel bir önayar Ile Encoding](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/main/VideoEncoding/EncodingWithMESCustomPreset) içinde bulunur.
+Özel önceden ayarlanmış örnek, [.NET klasörü kullanan özel bir önayar Ile Encoding](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/main/VideoEncoding/EncodingWithMESCustomPreset_H264) içinde bulunur.
 
 ## <a name="create-a-transform-with-a-custom-preset"></a>Özel önayar olan bir dönüşüm oluşturma
 

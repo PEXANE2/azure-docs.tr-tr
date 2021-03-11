@@ -12,12 +12,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 4fe13c418452a7a88dcd97939d6e853039f3fb64
-ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
+ms.openlocfilehash: 30d6061e15b8eb17c1450500d9e8c141a83a3e08
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94517079"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102553927"
 ---
 # <a name="onboarding-and-installing"></a>Ekleme ve yükleme
 
@@ -59,11 +59,11 @@ Microsoft Güvenlik kodu çözümleme ekibi, iş ortakları için bir Premier De
 ## <a name="installing-the-microsoft-security-code-analysis-extension"></a>Microsoft Güvenlik kodu analizi uzantısını yükleme
 
 1. Uzantı Azure DevOps kuruluşunuzla paylaşıldıktan sonra Azure DevOps kuruluş sayfanıza gidin. Böyle bir sayfanın örnek URL 'SI `https://dev.azure.com/contoso` .
-1. Adınızın yanındaki sağ üst köşede bulunan alışveriş çantası simgesini seçin ve ardından **Uzantıları Yönet** ' i seçin.
-1. **Paylaşılan** ' ı seçin.
-1. Microsoft Güvenlik kodu analiz uzantısı ' nı seçin, ardından **Install** ' ı seçin.
+1. Adınızın yanındaki sağ üst köşede bulunan alışveriş çantası simgesini seçin ve ardından **Uzantıları Yönet**' i seçin.
+1. **Paylaşılan**' ı seçin.
+1. Microsoft Güvenlik kodu analiz uzantısı ' nı seçin, ardından **Install**' ı seçin.
 1. Açılan listeden, uzantıyı yüklemek için Azure DevOps organizasyonunu seçin.
-1. **Yükle** ’yi seçin. Yükleme tamamlandıktan sonra, uzantısını kullanmaya başlayabilirsiniz.
+1. **Yükle**'yi seçin. Yükleme tamamlandıktan sonra, uzantısını kullanmaya başlayabilirsiniz.
 
 >[!NOTE]
 > Uzantıyı yükleme erişiminiz olmasa bile, yükleme adımlarıyla devam edin. Yükleme işlemi sırasında Azure DevOps kuruluş yöneticinizden erişim isteğinde bulabilirsiniz.
@@ -78,7 +78,7 @@ Uzantıyı yükledikten sonra, güvenli geliştirme derleme görevleri görünü
    - Yeni işlem hattı: **Yeni** ' yi seçin ve yeni bir işlem hattı oluşturmak için ayrıntılı adımları izleyin.
    - İşlem hattını Düzenle: mevcut bir işlem hattını seçin ve ardından işlem hattını düzenlemeye başlamak için **Düzenle** ' yi seçin.
 1. ' İ seçin **+** ve **Görevler Ekle** bölmesine gidin.
-1. Listeden ya da arama kutusunu kullanarak eklemek istediğiniz derleme görevini bulun. **Ekle** ’yi seçin.
+1. Listeden ya da arama kutusunu kullanarak eklemek istediğiniz derleme görevini bulun. **Add (Ekle)** seçeneğini belirleyin.
 1. Görev için gereken parametreleri belirtin.
 1. Yeni bir derlemeyi kuyruğa al.
    >[!NOTE]
@@ -90,7 +90,7 @@ Uzantıyı yükledikten sonra, güvenli geliştirme derleme görevleri görünü
 > - Güvenli Geliştirme derleme görevleri için her zaman **hata durumunda devam et '** i seçin. Bir araç başarısız olsa da, diğerleri çalıştırılabilir. Araçlar arasında bağımlılık yoktur.
 > - Microsoft Güvenlik kodu Analizi derleme görevleri yalnızca bir araç başarıyla çalışamazsa başarısız olur. Ancak bir araç, koddaki sorunları tanımlarsa bile başarılı olur. Analiz sonrası derleme görevini kullanarak, bir araç koddaki sorunları belirlediğinde, derlemenizi başarısız olarak yapılandırabilirsiniz.
 > - Bir yayın işlem hattı aracılığıyla çalıştırıldığında bazı Azure DevOps derleme görevleri desteklenmez. Daha belirgin olarak, Azure DevOps bir yayın işlem hattı içinden yapıtları yayınlayan görevleri desteklemez.
-> - Azure DevOps ekip derlemesinde parametre olarak belirtebileceğiniz önceden tanımlanmış değişkenlerin bir listesi için bkz. [Azure DevOps derleme değişkenleri](/azure/devops/pipelines/build/variables?tabs=batch&view=vsts).
+> - Azure DevOps ekip derlemesinde parametre olarak belirtebileceğiniz önceden tanımlanmış değişkenlerin bir listesi için bkz. [Azure DevOps derleme değişkenleri](/azure/devops/pipelines/build/variables?tabs=batch).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

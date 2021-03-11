@@ -10,12 +10,12 @@ ms.date: 9/1/2020
 ms.topic: include
 ms.custom: include file
 ms.author: mikben
-ms.openlocfilehash: 18282bbe902599c471775a853704e459ea44bac1
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 24f64e19077488223e13d01e110b5b5118231673
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101661673"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102603400"
 ---
 ## <a name="prerequisites"></a>Önkoşullar
 Başlamadan önce şunları yaptığınızdan emin olun:
@@ -140,22 +140,22 @@ Aşağıdaki sınıflar ve arabirimler, JavaScript için Azure Iletişim Hizmetl
 - `topic`Bu sohbete bir konu vermek için kullanın. Konular, sohbet iş parçacığı işlevi kullanılarak oluşturulduktan sonra güncelleştirilir `UpdateThread` .
 - `participants`Sohbet iş parçacığına eklenecek katılımcıları listelemek için kullanın.
 
-Çözümlendiğinde, `createChatThread` Yöntem bir döndürür `CreateChatThreadResponse` . Bu model `chatThread` , `id` Yeni oluşturulan iş parçacığının öğesine erişebileceğiniz bir özelliği içerir. Daha sonra ' `id` a bir örneğini almak için kullanabilirsiniz `ChatThreadClient` . `ChatThreadClient`Daha sonra, ileti gönderme veya katılımcıları listeleme gibi iş parçacığı içinde işlem yapmak için kullanılabilir.
+Çözümlendiğinde, `createChatThread` Yöntem bir döndürür `CreateChatThreadResult` . Bu model `chatThread` , `id` Yeni oluşturulan iş parçacığının öğesine erişebileceğiniz bir özelliği içerir. Daha sonra ' `id` a bir örneğini almak için kullanabilirsiniz `ChatThreadClient` . `ChatThreadClient`Daha sonra, ileti gönderme veya katılımcıları listeleme gibi iş parçacığı içinde işlem yapmak için kullanılabilir.
 
 ```JavaScript
 async function createChatThread() {
     let createThreadRequest = {
         topic: 'Preparation for London conference',
         participants: [{
-                    user: { communicationUserId: '<USER_ID_FOR_JACK>' },
+                    id: { communicationUserId: '<USER_ID_FOR_JACK>' },
                     displayName: 'Jack'
                 }, {
-                    user: { communicationUserId: '<USER_ID_FOR_GEETA>' },
+                    id: { communicationUserId: '<USER_ID_FOR_GEETA>' },
                     displayName: 'Geeta'
                 }]
     };
-    let createThreadResponse = await chatClient.createChatThread(createThreadRequest);
-    let threadId = createThreadResponse.chatThread.id;
+    let createChatThreadResult = await chatClient.createChatThread(createThreadRequest);
+    let threadId = createChatThreadResult.chatThread.id;
     return threadId;
     }
 
@@ -184,7 +184,7 @@ Thread created: <thread_id>
 `getChatThreadClient`Yöntemi, `chatThreadClient` zaten var olan bir iş parçacığı için bir döndürür. Oluşturulan iş parçacığında işlem gerçekleştirmek için kullanılabilir: katılımcı ekleme, ileti gönderme vb. ThreadId, mevcut sohbet iş parçacığının benzersiz KIMLIĞIDIR.
 
 ```JavaScript
-let chatThreadClient = await chatClient.getChatThreadClient(threadId);
+let chatThreadClient = chatClient.getChatThreadClient(threadId);
 console.log(`Chat Thread client for threadId:${threadId}`);
 
 ```
@@ -195,35 +195,33 @@ Chat Thread client for threadId: <threadId>
 
 ## <a name="send-a-message-to-a-chat-thread"></a>Sohbet iş parçacığına ileti gönderin
 
-`sendMessage`Az önce oluşturduğunuz iş parçacığına, ThreadID tarafından tanımlanan bir sohbet iletisi göndermek için yöntemini kullanın.
+`sendMessage`ThreadID tarafından tanımlanan bir iş parçacığına ileti göndermesi için yöntemini kullanın.
 
-`sendMessageRequest` Sohbet iletisi isteğinin gerekli alanlarını açıklar:
+`sendMessageRequest` ileti isteğini anlatmak için kullanılır:
 
 - `content`Sohbet iletisi içeriğini sağlamak için kullanın;
 
-`sendMessageOptions` Sohbet iletisi isteğinin isteğe bağlı alanlarını açıklar:
+`sendMessageOptions` işlem isteğe bağlı params parametreleri için kullanılır:
 
-- `priority`' Normal ' veya ' yüksek ' gibi sohbet iletisi öncelik düzeyini belirtmek için kullanın. Bu özellik, iletiye dikkat çekmek veya özel iş mantığını yürütmek üzere uygulamanızdaki alıcı kullanıcısına ait bir kullanıcı ARABIRIMI göstergesi görüntülemek için kullanılabilir.
 - `senderDisplayName`Gönderenin görünen adını belirtmek için kullanın;
+- `type`' Text ' veya ' HTML ' gibi ileti türünü belirtmek için kullanın;
 
-Yanıt, `sendChatMessageResult` Bu iletinin BENZERSIZ kimliği olan BIR kimlik içerir.
+`SendChatMessageResult` yanıt ileti göndermekten döndürülen yanıt, iletinin benzersiz KIMLIĞI olan bir ID içeriyor.
 
 ```JavaScript
-
 let sendMessageRequest =
 {
     content: 'Hello Geeta! Can you share the deck for the conference?'
 };
 let sendMessageOptions =
 {
-    priority: 'Normal',
-    senderDisplayName : 'Jack'
+    senderDisplayName : 'Jack',
+    type: 'text'
 };
 let sendChatMessageResult = await chatThreadClient.sendMessage(sendMessageRequest, sendMessageOptions);
 let messageId = sendChatMessageResult.id;
-console.log(`Message sent!, message id:${messageId}`);
-
 ```
+
 Bu kodu `<SEND MESSAGE TO A CHAT THREAD>` **client.js** açıklamanın yerine ekleyin, tarayıcı sekmesini yenileyin ve konsolu denetleyin.
 ```console
 Message sent!, message id:<number>
@@ -286,7 +284,7 @@ Sohbet iş parçacığı oluşturulduktan sonra, bundan sonra kullanıcı ekleye
 Yöntemi çağırmadan önce `addParticipants` , bu kullanıcı için yeni bir erişim belirteci ve kimliği aldığınızdan emin olun. Kullanıcının sohbet istemcisini başlatması için bu erişim belirtecine ihtiyacı olacak.
 
 `addParticipantsRequest``participants`sohbet iş parçacığına eklenecek katılımcıları listeleyen istek nesnesini açıklar;
-- `user`, gerekli, sohbet iş parçacığına eklenecek iletişim Kullanıcı.
+- `id`, gerekli, sohbet iş parçacığına eklenecek olan iletişim tanımlayıcısıdır.
 - `displayName`, isteğe bağlı, iş parçacığı katılımcısı için görünen addır.
 - `shareHistoryTime`, isteğe bağlı, sohbet geçmişinin katılımcının paylaştığı süredir. Sohbet iş parçacığının başlatılmasından bu yana geçmişi paylaşmak için, bu özelliği, iş parçacığı oluşturma zamanından daha küçük veya ona eşit bir tarih olarak ayarlayın. Katılımcının eklendiği tarihten önce geçmiş paylaşmak için, geçerli tarih olarak ayarlayın. Kısmi geçmişi paylaşmak için, bunu tercih ettiğiniz tarihe ayarlayın.
 
@@ -296,7 +294,7 @@ let addParticipantsRequest =
 {
     participants: [
         {
-            user: { communicationUserId: '<NEW_PARTICIPANT_USER_ID>' },
+            id: { communicationUserId: '<NEW_PARTICIPANT_USER_ID>' },
             displayName: 'Jane'
         }
     ]

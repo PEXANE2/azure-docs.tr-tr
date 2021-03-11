@@ -2,17 +2,20 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 03/05/2021
+ms.date: 03/10/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: 1c78986a5c2777c0db7cca314d5a49494f733e22
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: abd6de6c935af58e30f09b2f2091b45e61f6d3de
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102432183"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102608890"
 ---
-|Name<br /><sub>(Azure portal)</sub> |Açıklama |Efekt (ler) |Sürüm<br /><sub>GitHub</sub> |
+|Name<br /><sub>(Azure portal)</sub> |Description |Efekt (ler) |Sürüm<br /><sub>GitHub</sub> |
 |---|---|---|---|
+|[Redsıs için Azure önbelleği, genel ağ erişimini devre dışı bırakmalıdır](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F470baccb-7e51-4549-8b1a-3e5be069f663) |Ortak ağ erişiminin devre dışı bırakılması, redin Azure önbelleğinin genel İnternet 'te açık olmamasını sağlayarak güvenliği geliştirir. Bunun yerine özel uç noktalar oluşturarak redo için Azure önbelleğinizin görünürlüğünü sınırlayabilirsiniz. Daha fazla bilgi: [https://docs.microsoft.com/azure/azure-cache-for-redis/cache-private-link](https://docs.microsoft.com/azure/azure-cache-for-redis/cache-private-link) . |Denetim, reddetme, devre dışı |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Cache/RedisCache_PublicNetworkAccess_AuditDeny.json) |
 |[Redo için Azure önbelleği bir sanal ağ içinde yer almalıdır](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F7d092e0a-7acd-40d2-a975-dca21cae48c4) |Azure sanal ağ dağıtımı, daha fazla erişimi kısıtlamak için Azure önbelleğiniz için gelişmiş güvenlik ve yalıtımın yanı sıra alt ağlar, erişim denetim ilkeleri ve diğer özellikleri sağlar. Redsıs örneği için bir Azure önbelleği bir sanal ağla yapılandırıldığında, genel olarak adreslenebilir ve yalnızca sanal ağ içindeki sanal makineler ve uygulamalardan erişilebilir. |Denetim, reddetme, devre dışı |[1.0.3](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Cache/RedisCache_CacheInVnet_Audit.json) |
+|[Redsıs için Azure önbelleği özel bağlantı kullanmalıdır](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F7803067c-7d34-46e3-8c79-0ca68fc4036d) |Özel uç noktalar, Sanal ağınızı kaynak veya hedefte genel bir IP adresi olmadan Azure hizmetlerine bağlamanıza olanak tanır. Özel uç noktaları Redsıs örnekleri için Azure önbelleğinize eşleyerek veri sızıntısı riskleri azalır. Daha fazla bilgi: [https://docs.microsoft.com/azure/azure-cache-for-redis/cache-private-link](https://docs.microsoft.com/azure/azure-cache-for-redis/cache-private-link) . |Auditınotexists, devre dışı |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Cache/RedisCache_PrivateEndpoint_AuditIfNotExists.json) |
+|[Genel ağ erişimini devre dışı bırakmak için Redsıs için Azure önbelleğini yapılandırma](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F30b3dfa5-a70d-4c8e-bed6-0083858f663d) |Genel internet üzerinden erişilememesi için Redsıs kaynağı için Azure önbelleğiniz için ortak ağ erişimini devre dışı bırakın. Bu, önbelleğin veri sızıntısı risklerine karşı korunmasını sağlar. |Değiştirme, devre dışı |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Cache/RedisCache_PublicNetworkAccess_Modify.json) |
 |[Redsıs için yalnızca Azure önbelleğinize güvenli bağlantılar etkinleştirilmelidir](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F22bee202-a82f-4305-9a2a-6d7f44d4dedb) |Redsıs için yalnızca SSL ile SSL aracılığıyla bağlantıların etkinleştirilmesini denetleme. Güvenli bağlantı kullanımı, sunucu ve hizmet arasında kimlik doğrulaması sağlar ve geçiş sırasında ortadaki adam, gizlice dinleme ve oturum ele geçirme gibi ağ katmanı saldırılarına karşı verileri korur |Denetim, reddetme, devre dışı |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Cache/RedisCache_AuditSSLPort_Audit.json) |

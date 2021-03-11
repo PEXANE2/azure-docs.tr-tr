@@ -1,21 +1,31 @@
 ---
 title: MongoDB için Azure Cosmos DB API 'sine veri geçişinin geçiş öncesi adımları
 description: Bu belge, MongoDB 'den Cosmos DB 'e veri geçişinin önkoşulları hakkında genel bakış sağlar.
-author: christopheranderson
+author: anfeldma-ms
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.topic: how-to
 ms.date: 03/02/2021
-ms.author: chrande
-ms.openlocfilehash: ced795385fdf00e706ea897db80f558b513a9f9d
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.author: anfeldma
+ms.openlocfilehash: cdc5dc9cee3520d9a3f22ff710dfa193e6ef4fed
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101656967"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102553298"
 ---
 # <a name="pre-migration-steps-for-data-migrations-from-mongodb-to-azure-cosmos-dbs-api-for-mongodb"></a>MongoDB 'den Azure Cosmos DB MongoDB için API 'sine veri geçişleri için geçiş öncesi adımlar
 [!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
+
+> [!IMPORTANT]  
+> Bu MongoDB geçiş öncesi Kılavuzu, MongoDB 'yi ölçekte Azure Cosmos DB Mongo API 'sine geçirmeye yönelik bir seride ilk kez gönderilir. Kendi kendini yönetilen altyapıda MongoDB 'yi lisanslayan ve dağıtan müşteriler, Kullandıkça Öde fiyatlandırması ve esnek ölçeklenebilirlik ile Azure Cosmos DB gibi yönetilen bir bulut hizmetine geçiş yaparak veri kuruluşlarının maliyetini azaltmak ve yönetmek isteyebilir. Bu serinin amacı, müşteriyi geçiş işlemi boyunca rehberlik olmaktır:
+>
+> 1. [Geçiş öncesi](mongodb-pre-migration.md) -mevcut MongoDB verilerinin envanterini çıkarın, geçiş planlayın ve uygun geçiş araçlarını seçin.
+> 2. Yürütme-sunulan [öğreticileri]()kullanarak MongoDB 'den Azure Cosmos DB 'e geçiş yapın.
+> 3. [Geçiş sonrası](mongodb-post-migration.md) -yeni Azure Cosmos DB verilerinize karşı yürütmek üzere mevcut uygulamaları güncelleştirin ve iyileştirin.
+>
+
+Katı bir ön geçiş planı, takımınızın geçişinin dakikliklerini ve başarısı üzerinde bir fazla boyut etkiye sahip olabilir. Geçiş öncesi için iyi bir benzerleme vurguladı yeni bir proje başlatıyor. Gereksinimleri tanımlayarak başlayabilir, sonra dahil edilen görevleri özetler ve ayrıca en büyük görevleri ilk olarak tackled olacak şekilde önceliklendirin. Bu, Proje zamanlamanızı tahmin edilebilir hale getirme, ancak kuşkusuz, tahmin edilmemiş gereksinimlerin proje zamanlamasını karmaşıklaştırabilir ve karmaşık olmasına yardımcı olur. Geçişe geri dönme-geçiş öncesi aşamada kapsamlı bir yürütme planı oluşturma işlemi, süreçte beklenmedik geçiş görevlerini keşfetmenizi, geçiş sırasında zamandan tasarruf etmenizi ve hedeflerin karşılanmasını sağlamanıza yardımcı olma olasılığını en aza indirir.
 
 Verilerinizi MongoDB 'ye (Şirket içi veya buluttaki) MongoDB için Azure Cosmos DB API 'sine geçirmeden önce şunları yapmalısınız:
 

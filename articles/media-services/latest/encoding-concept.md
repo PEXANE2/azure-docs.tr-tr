@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: seodec18
-ms.openlocfilehash: 84caa287803fa64b12d9da4c2afb1f8dd1418e13
-ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
+ms.openlocfilehash: 6a486057a265b02ce30059940c8c98837ec43f8e
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "102455289"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102617650"
 ---
 # <a name="encoding-video-and-audio-with-media-services"></a>Video ve ses Media Services kodlama
 
@@ -95,20 +95,25 @@ Media Services aşağıdaki yerleşik kodlama önayarlarını destekler:
 
 [Builtınstandencoderönayar](/rest/api/media/transforms/createorupdate#builtinstandardencoderpreset) , giriş videosunu standart kodlayıcıyla kodlamak için yerleşik bir ön ayar ayarlamak üzere kullanılır.
 
-Şu ön ayarlar şu anda destekleniyor:
+Aşağıdaki yerleşik ön ayarlar şu anda desteklenmektedir:
 
 - **Encodernamedönayar. AACGoodQualityAudio**: yalnızca 192 Kbps hızında kodlanmış tek bir MP4 dosyası üretir.
-- **Encodernamedönayar. Uyarlantivestreaming** (önerilir): daha fazla bilgi için bkz. [bit hızı el ile oluşturma](autogen-bitrate-ladder.md).
-- **Encodernamedönayar. ContentAwareEncoding**: içeriğe duyarlı kodlama için önceden ayarlanmış bir ön ayar sunar. Herhangi bir giriş içeriği verildiğinde, hizmet en iyi katman sayısını ve uyarlamalı akış gönderimi için uygun bit hızı ve çözüm ayarlarını otomatik olarak saptamaya çalışır. Temel algoritmalar zaman içinde gelişmeye devam edecektir. Çıktı, video ve ses Aralanmış MP4 dosyaları içerir. Daha fazla bilgi için bkz. [içeriğe duyarlı kodlama](content-aware-encoding.md).
-
+- **Encodernamedönayar. Uyarlantivestreaming** (önerilir): Bu, H. Ise Uyarlamalı bit hızı kodlamasını destekler. Daha fazla bilgi için bkz. [bit hızı merdiveni otomatik oluşturma](autogen-bitrate-ladder.md).
+- **Encodernamerönayar. H265AdaptiveStreaming** : uyarlamalı akış ön ayarıyla benzerdir, ancak HEVC (H. 265) codec bileşenini kullanır. H. 265 video ve stereo AAC ses içeren bir GOP hizalanmış MP4 dosyaları kümesi üretir. Giriş çözümlemesi, bit hızı ve kare hızına dayalı olarak bir bit hızı merdiveni otomatik olarak oluşturulur. Otomatik olarak oluşturulan önayar, giriş çözünürlüğünü hiçbir şekilde aşmaz. Örneğin, giriş 720p ise, çıkış en iyi 720p olarak kalır.
+- **Encodernamedönayar. ContentAwareEncoding**: H. IBU içerik algılayan kodlama için önceden ayarlanmış bir ön ayar sunar. Herhangi bir giriş içeriği verildiğinde, hizmet en iyi katman sayısını ve uyarlamalı akış gönderimi için uygun bit hızı ve çözüm ayarlarını otomatik olarak saptamaya çalışır. Temel algoritmalar zaman içinde gelişmeye devam edecektir. Çıktı, video ve ses Aralanmış MP4 dosyaları içerir. Daha fazla bilgi için bkz. [içeriğe duyarlı kodlama](content-aware-encoding.md).
+- **Encodernamedönayar. H265ContentAwareEncoding**: HEVC (H. 265) içerik kullanan kodlama için önceden ayarlanmış bir ayar sunar. İçeriğe duyarlı kodlama kullanarak bir GOP hizalanmış MP4 'leri kümesi üretir. Herhangi bir giriş içeriği verildiğinde, hizmet, giriş içeriğinin ilk hafif analizini yapar ve en iyi katman sayısını, uyarlamalı akışa göre teslim etmek için uygun bit hızını ve çözüm ayarlarını belirlemede sonuçları kullanır. Bu ön ayar özellikle düşük ve orta ölçekli karmaşıklık videoları için geçerlidir. burada çıktı dosyaları düşük bitoranlarda, ancak görüntüleyiciler için de iyi bir deneyim sunan bir kalitede olur. Çıktı, video ve ses Aralanmış MP4 dosyaları içerir.
   > [!NOTE]
-  > **Contentawareencoding** 'i ContentAwareEncodingExperimental olarak kullandığınızdan emin olun.
+  > Artık kullanım dışı olan **Contentawareencoding** değil ContentAwareEncodingExperimental ' i kullandığınızdan emin olun
+
 - **Encodernamedönayar. H264MultipleBitrate1080p**: 6000 kbps 'den 400 Kbps 'e ve stereo AAC ses arasında değişen sekiz GOP hizalanmış MP4 dosyası kümesi oluşturur. Çözüm, 1080p ' de başlar ve 360p 'ye gider.
 - **Encodernamedönayar. H264MultipleBitrate720p**: altı GOP hizalanmış MP4 dosyası kümesi oluşturur ve 3400 kbps ile 400 Kbps arasında ve stereo AAC sesde vardır. Çözüm 720p ' de başlar ve 360p 'ye gider.
 - **Encodernamedönayar. H264MultipleBitrateSD**: beş adet GOP hizalanmış MP4 dosyası kümesi oluşturur ve 1600 kbps ila 400 Kbps ve stereo AAC sestir. Çözüm 480p 'de başlar ve 360p 'ye gider.
 - **Encodernamedönayar. H264SingleBitrate1080p**: videonun, 6750 kbps ve 1080 piksellik bir resim yüksekliği ile KODLANDıĞı bir MP4 dosyası üretir ve stereo ses, 64 kbps 'de AAC-LC codec bileşeniyle kodlanır.
 - **Encodernamedönayar. H264SingleBitrate720p**: videonun, 4500 kbps ve 720 piksellik bir resim yüksekliği ile KODLANDıĞı bir MP4 dosyası üretir ve stereo ses, 64 kbps 'de AAC-LC codec bileşeniyle kodlanır.
 - **Encodernamedönayar. H264SingleBitrateSD**: videonun, 2200 kbps ve 480 piksellik bir resim yüksekliği ile KODLANDıĞı bir MP4 dosyası üretir ve stereo ses, 64 kbps 'de AAC-LC codec bileşeniyle kodlanır.
+- **Encodernamedönayar. H265SingleBitrate720P**: videonun 1800 Kbps hızında ve 720 piksellik bir resim yüksekliğinde ve stereo ses, 128 kbps 'de AAC-LC codec bileşeniyle kodlandığı bir MP4 dosyası üretir.
+- **Encodernamedönayar. H265SingleBitrate1080p**: videonun 3500 Kbps hızında ve 1080 piksellik bir resim yüksekliğinde ve stereo ses, 128 kbps 'de AAC-LC codec bileşeniyle kodlandığı bir MP4 dosyası üretir.
+- **Encodernamedönayar. H265SingleBitrate4K**: videonun 9500 Kbps hızında ve 2160 piksellik bir resim yüksekliğinde ve stereo ses, 128 kbps 'de AAC-LC codec bileşeniyle kodlandığı bir MP4 dosyası üretir.
 
 En güncel ön ayar listesini görmek için bkz. [videoları kodlamada kullanılacak yerleşik ön ayarlar](/rest/api/media/transforms/createorupdate#encodernamedpreset).
 
@@ -135,6 +140,7 @@ Media Services, özel kodlama ihtiyaçlarınızı ve gereksinimlerinizi karşıl
 - [CLı ile önayarları özelleştirme](custom-preset-cli-howto.md)
 - [Önayarları REST ile özelleştirme](custom-preset-rest-howto.md)
 
+
 ## <a name="preset-schema"></a>Önceden ayarlanmış şema
 
 Media Services v3 'de, Önayarlar, API 'nin kendisinde kesin olarak belirlenmiş varlıklardır. Bu nesneler için "şema" tanımını [Open API belirtiminde (veya Swagger)](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/mediaservices/resource-manager/Microsoft.Media/stable/2018-07-01)bulabilirsiniz. Ayrıca, [REST API](/rest/api/media/transforms/createorupdate#standardencoderpreset), [.NET SDK](/dotnet/api/microsoft.azure.management.media.models.standardencoderpreset) (veya diğer Media Services v3 SDK başvuru belgelerinde) önceden ayarlanmış tanımları ( **standardencoderönayar** gibi) görüntüleyebilirsiniz.
@@ -142,6 +148,7 @@ Media Services v3 'de, Önayarlar, API 'nin kendisinde kesin olarak belirlenmiş
 ## <a name="scaling-encoding-in-v3"></a>V3 'de ölçeklendirme kodlaması
 
 Medya işlemeyi ölçeklendirmek için bkz. [CLI Ile ölçekleme](media-reserved-units-cli-how-to.md).
+İçinde, API 'nin **2020-05-01** sürümü veya Azure Portal üzerinden oluşturulan hesaplar için, ölçekleme ve medya ayrılmış birimleri artık gerekli değildir. Ölçeklendirme, hizmet tarafından dahili olarak otomatik olarak işlenir.
 
 ## <a name="billing"></a>Faturalandırma
 

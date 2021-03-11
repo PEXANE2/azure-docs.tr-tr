@@ -6,12 +6,12 @@ services: azure-monitor
 ms.topic: conceptual
 ms.date: 07/17/2019
 ms.author: bwren
-ms.openlocfilehash: cb4f1ecdada68218c104558a85277417641906f6
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 2435e4ed16889d9d4701b6047c0a1f602ee7ae91
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102033023"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102558704"
 ---
 # <a name="azure-resource-logs"></a>Azure kaynak günlükleri
 Azure Kaynak günlükleri, bir Azure kaynağı içinde gerçekleştirilen işlemlere ilişkin Öngörüler sağlayan [Platform günlüklerdir](../essentials/platform-logs-overview.md) . Kaynak günlüklerinin içeriği, Azure hizmeti ve kaynak türüne göre farklılık gösterir. Kaynak günlükleri varsayılan olarak toplanmaz. Azure [Izleyici günlükleri](../logs/data-platform-logs.md)ile kullanmak için kaynak günlüklerini bir Log Analytics çalışma alanına göndermek üzere her bir Azure kaynağı için bir tanılama ayarı oluşturmanız gerekir, Azure 'un dışından iletmek için Azure Event Hubs veya arşivlenmek üzere Azure Storage.
@@ -28,11 +28,11 @@ Oluşturduğunuz her Azure kaynağı için otomatik olarak bir tanılama ayarı 
 
 Kaynak günlüklerini bir Log Analytics çalışma alanına göndermek için [bir tanılama ayarı oluşturun](../essentials/diagnostic-settings.md) . Bu veriler, [Azure Izleyici günlüklerinin yapısı](../logs/data-platform-logs.md)bölümünde açıklandığı gibi tablolarda depolanır. Kaynak günlükleri tarafından kullanılan tablolar, kaynağın kullandığı koleksiyon türüne bağlıdır:
 
-- Azure tanılama-yazılan tüm veriler _AzureDiagnostics_ tablosuna gönderilir.
+- Azure tanılama-yazılan tüm veriler [AzureDiagnostics](/azure/azure-monitor/reference/tables/azurediagnostics) tablosuna gönderilir.
 - Kaynağa özgü veriler, kaynağın her kategorisi için ayrı ayrı tabloya yazılır.
 
 ### <a name="azure-diagnostics-mode"></a>Azure tanılama modu 
-Bu modda, herhangi bir tanılama ayarının tüm verileri _AzureDiagnostics_ tablosunda toplanır. Bu, bugün en çok Azure hizmeti tarafından kullanılan eski yöntemdir. Birden çok kaynak türü aynı tabloya veri gönderdiğinden, bu şema, toplanmakta olan tüm farklı veri türlerinin şemaların üst kümesidir.
+Bu modda, herhangi bir tanılama ayarının tüm verileri [AzureDiagnostics](/azure/azure-monitor/reference/tables/azurediagnostics) tablosunda toplanır. Bu, bugün en çok Azure hizmeti tarafından kullanılan eski yöntemdir. Birden çok kaynak türü aynı tabloya veri gönderdiğinden, bu şema, toplanmakta olan tüm farklı veri türlerinin şemaların üst kümesidir. Bu tablonun yapısı ve bu olası çok sayıda sütunla nasıl çalıştığı hakkında ayrıntılar için bkz. [AzureDiagnostics Reference](/azure/azure-monitor/reference/tables/azurediagnostics) .
 
 Aşağıdaki veri türleri için tanılama ayarlarının aynı çalışma alanında toplandığı aşağıdaki örneği göz önünde bulundurun:
 
@@ -95,16 +95,6 @@ Azure kaynaklarının çoğu, verileri bir seçim yapmadan **Azure tanılama** v
 Mevcut bir tanılama ayarını kaynağa özgü mod olarak değiştirebilirsiniz. Bu durumda, zaten toplanmış olan veriler, çalışma alanının saklama ayarına göre kaldırılana kadar _AzureDiagnostics_ tablosunda kalır. Adanmış tabloda yeni veriler toplanacak. Her iki tablo genelinde verileri sorgulamak için [UNION](/azure/kusto/query/unionoperator) işlecini kullanın.
 
 Resource-Specific modunu destekleyen Azure hizmetleri hakkında duyurular için [Azure Updates](https://azure.microsoft.com/updates/) blogunu izlemeye devam edin.
-
-### <a name="column-limit-in-azurediagnostics"></a>AzureDiagnostics içinde sütun sınırı
-Azure Izleyici günlüklerinde herhangi bir tablo için 500 Özellik sınırı vardır. Bu sınıra ulaşıldığında, ilk 500 dışında herhangi bir özelliği olan verileri içeren tüm satırlar alma zamanında bırakılır. *AzureDiagnostics* tablosu, bu sınıra yönelik olan tüm Azure hizmetlerinin özelliklerini içerdiğinden bu sınıra açıktır.
-
-Birden çok hizmetten kaynak günlükleri topluyorsanız, _AzureDiagnostics_ bu sınırı aşabilir ve veriler kaçırılacaktır. Tüm Azure hizmetleri kaynağa özgü modu destekleene kadar, 500 sütun sınırına ulaşma olasılığını azaltmak üzere kaynakları birden fazla çalışma alanına yazacak şekilde yapılandırmanız gerekir.
-
-### <a name="azure-data-factory"></a>Azure Data Factory
-Azure Data Factory, ayrıntılı bir Günlükler kümesi nedeniyle, çok sayıda sütun yazmak için bilinen ve _AzureDiagnostics_ 'in sınırını aşmasına neden olabilecek bir hizmettir. Kaynağa özgü mod etkinleştirilmeden önce yapılandırılan tüm Tanılama ayarları için, her bir etkinliğe karşı benzersiz olarak adlandırılan her Kullanıcı parametresi için yeni bir sütun oluşturulur. Etkinlik girişlerinin ve çıktıların ayrıntılı doğası nedeniyle daha fazla sütun oluşturulacak.
- 
-Günlüklerinizi kaynağa özgü modu en kısa sürede kullanmak üzere geçirmeniz gerekir. Hemen bunu yapamadıysanız, geçici bir alternatif, bu günlüklerin çalışma alanınızda toplanmakta olan diğer günlük türlerini etkileme olasılığını en aza indirmek için Azure Data Factory günlüklerini kendi çalışma alanlarında yalıtmaktır.
 
 
 ## <a name="send-to-azure-event-hubs"></a>Azure Event Hubs gönder

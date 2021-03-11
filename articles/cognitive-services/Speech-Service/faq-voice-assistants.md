@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: travisw
-ms.openlocfilehash: 4b0bbb982ed48dc052b1a15514ad36b1d69b62b5
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: 511eb12df511fd037fc0b5bec701c0cc5c29bad2
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98599426"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102617786"
 ---
 # <a name="voice-assistants-frequently-asked-questions"></a>Sesli yardımcılar hakkında sık sorulan sorular
 
@@ -36,7 +36,7 @@ Y **:** Cortana gibi, bir ses Yardımcısı, kullanıcının konuşulan makollar
 Y **:** Özel komutlar (Önizleme) uygulaması veya temel bot Framework bot oluşturmaya başlamak için en iyi yol.
 
 - [Özel komutlar (Önizleme) uygulaması oluşturma](./quickstart-custom-commands-application.md)
-- [Temel bir bot Framework bot oluşturma](/azure/bot-service/bot-builder-tutorial-basic-deploy?view=azure-bot-service-4.0)
+- [Temel bir bot Framework bot oluşturma](/azure/bot-service/bot-builder-tutorial-basic-deploy)
 - [Bir bot 'ı doğrudan hat konuşma kanalına bağlama](/azure/bot-service/bot-service-channel-connect-directlinespeech)
 
 ## <a name="debugging"></a>Hata Ayıklama

@@ -13,12 +13,12 @@ ms.topic: tutorial
 ms.date: 03/24/2020
 author: mlearned
 ms.custom: mvc
-ms.openlocfilehash: 41f2ee9806b8f6818f2b2dd7a48920ac9907ca79
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c03ba657ac264b72d035f28956354398421ed2f9
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91854656"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102566609"
 ---
 # <a name="create-a-cicd-pipeline-for-github-repo-using-azure-devops-starter"></a>Azure DevOps Starter kullanarak GitHub deposu için bir CI/CD işlem hattı oluşturma
 
@@ -43,9 +43,9 @@ Azure DevOps Starter, Azure 'da sürekli tümleştirme (CI) ve sürekli teslim (
 
 Azure DevOps Starter, Azure Pipelines içinde bir CI/CD işlem hattı oluşturur. Yeni bir Azure DevOps kuruluşu oluşturabilir veya var olan bir kuruluşu kullanabilirsiniz. Azure DevOps Starter Ayrıca seçtiğiniz Azure aboneliğindeki Azure kaynaklarını da oluşturur.
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 
-1. Arama kutusuna **DevOps Starter**yazın ve ardından öğesini seçin. Yeni bir tane oluşturmak için **Ekle** ' ye tıklayın.
+1. Arama kutusuna **DevOps Starter** yazın ve ardından öğesini seçin. Yeni bir tane oluşturmak için **Ekle** ' ye tıklayın.
 
     ![DevOps başlangıç panosu](_img/azure-devops-starter-aks/search-devops-starter.png)
     
@@ -55,25 +55,25 @@ Azure DevOps Starter, Azure Pipelines içinde bir CI/CD işlem hattı oluşturur
 
 1. **GitHub** veya harici bir **Git** kod deposu seçin. Bu öğretici için **GitHub**' ı seçin. Azure 'un GitHub deponuza erişmesi için ilk kez GitHub ile kimlik doğrulamanız gerekebilir.
 
-1. Bir **Depo** ve **dal**seçin ve ardından **İleri**' yi seçin.
+1. Bir **Depo** ve **dal** seçin ve ardından **İleri**' yi seçin.
 
-1. Docker Kapsayıcıları kullanıyorsanız, değişiklik **uygulama Dockerto** **Evet**olarak ayarlanır. Bu öğretici için seçili **değil** ' i seçin ve ardından **İleri**' yi seçin. Docker kapsayıcılarını kullanma hakkında daha fazla bilgi için **ı** simgesinin üzerine gelin.
+1. Docker Kapsayıcıları kullanıyorsanız, değişiklik **uygulama Dockerto** **Evet** olarak ayarlanır. Bu öğretici için seçili **değil** ' i seçin ve ardından **İleri**' yi seçin. Docker kapsayıcılarını kullanma hakkında daha fazla bilgi için **ı** simgesinin üzerine gelin.
 
    ![Açılan menüde uygulama çerçevesi seçimi](_img/azure-devops-project-github/appframework.png)
 
-1. Açılan menülerden bir **uygulama çalışma zamanı** ve bir **uygulama çerçevesi**seçin ve ardından **İleri**' yi seçin. Uygulama çerçevesi, kullanılabilir olan Azure hizmet dağıtım hedefinin türünü belirler.
+1. Açılan menülerden bir **uygulama çalışma zamanı** ve bir **uygulama çerçevesi** seçin ve ardından **İleri**' yi seçin. Uygulama çerçevesi, kullanılabilir olan Azure hizmet dağıtım hedefinin türünü belirler.
 
 1. Uygulamayı dağıtmak için bir **Azure hizmeti** seçin ve ardından **İleri**' yi seçin.
 
 ## <a name="configure-azure-devops-and-an-azure-subscription"></a>Azure DevOps ve bir Azure aboneliği yapılandırma
 
-1. **Proje adı**için bir ad girin.
+1. **Proje adı** için bir ad girin.
 
 1. **Azure DevOps kuruluşunda** yeni bir ücretsiz kuruluş oluşturun veya açılan menüden var olan bir kuruluşu seçin.
 
-1. **Azure aboneliğindeki**aboneliğinizi seçin ve **Web** uygulamasında bir ad girin veya varsayılanı kullanın. Bir **konum**seçin ve **bitti**' yi seçin. Birkaç dakika sonra DevOps Başlatıcı dağıtımına genel bakış Azure portal görüntülenir.
+1. **Azure aboneliğindeki** aboneliğinizi seçin ve **Web** uygulamasında bir ad girin veya varsayılanı kullanın. Bir **konum** seçin ve **bitti**' yi seçin. Birkaç dakika sonra DevOps Başlatıcı dağıtımına genel bakış Azure portal görüntülenir.
 
-1. DevOps başlangıç panosunu görüntülemek için **Kaynağa Git** ' i seçin. Hızlı erişim için, sağ üst köşede **projeyi** panonuza sabitleyin. Azure DevOps Starter, otomatik olarak bir CI derleme ve yayın tetikleyicisi yapılandırır. Kodunuz, GitHub deponuzda veya başka bir dış depoda kalır ve **Azure DevOps kuruluşundaki**bir depoda bir örnek uygulama ayarlanır. Azure DevOps Starter derlemeyi çalıştırır ve uygulamayı Azure 'a dağıtır.
+1. DevOps başlangıç panosunu görüntülemek için **Kaynağa Git** ' i seçin. Hızlı erişim için, sağ üst köşede **projeyi** panonuza sabitleyin. Azure DevOps Starter, otomatik olarak bir CI derleme ve yayın tetikleyicisi yapılandırır. Kodunuz, GitHub deponuzda veya başka bir dış depoda kalır ve **Azure DevOps kuruluşundaki** bir depoda bir örnek uygulama ayarlanır. Azure DevOps Starter derlemeyi çalıştırır ve uygulamayı Azure 'a dağıtır.
 
    ![Azure DevOps Projeleri pano görünümü](_img/azure-devops-project-github/projectsdashboard.png)
 
@@ -97,7 +97,7 @@ Azure DevOps Starter, Azure Pipelines bir CI/CD işlem hattını otomatik olarak
 
    ![Azure Pipelines yapılar sayfası](_img/azure-devops-project-github/pipelinesbuildpage.png)
 
-1. **Yapılar** sayfasının sağ üst köşesinde, geçerli derlemeyi değiştirmek için **Düzenle** ' yi, yeni bir derleme eklemek için **kuyruğu** veya dikey üç nokta düğmesini (**&#8942;**) seçerek daha fazla seçenek içeren bir menüyü açabilirsiniz. **Düzenle**’yi seçin.
+1. **Yapılar** sayfasının sağ üst köşesinde, geçerli derlemeyi değiştirmek için **Düzenle** ' yi, yeni bir derleme eklemek için **kuyruğu** veya dikey üç nokta düğmesini (**&#8942;**) seçerek daha fazla seçenek içeren bir menüyü açabilirsiniz. **Düzenle**'yi seçin.
 
 1. Derleme, depodan kaynak getirme, bağımlılıkları geri yükleme ve dağıtımlar için yayımlama çıkışları gibi çeşitli görevleri yapar. Sağ tarafta, **ad**' ın altında, derleme işlem hattı adını daha açıklayıcı bir şekilde değiştirin. **& kuyruğu kaydet**' i seçin ve ardından **Kaydet**' i seçin. Bir açıklama girin ve sonra yeniden **Kaydet** ' i seçin.
 
@@ -118,7 +118,7 @@ Bu öğreticide CI/CD işleminizi yapılandırdığınızda, Azure DevOps Projel
 CI/CD işlem hattı hakkında daha fazla bilgi edinmek için bkz.:
 
 > [!div class="nextstepaction"]
-> [Çoklu aşamalı sürekli dağıtım (CD) işlem hattınızı tanımlama](/azure/devops/pipelines/release/define-multistage-release-process?view=vsts)
+> [Çoklu aşamalı sürekli dağıtım (CD) işlem hattınızı tanımlama](/azure/devops/pipelines/release/define-multistage-release-process)
 
 Uygulama izleme hakkında daha fazla bilgi için bkz.
   

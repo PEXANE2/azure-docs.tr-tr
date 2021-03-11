@@ -4,16 +4,16 @@ description: Azure gizli (ACC) Bilgi Işlem 'ye Genel Bakış
 services: virtual-machines
 author: JBCook
 ms.service: virtual-machines
-ms.subservice: workloads
+ms.subservice: confidential-computing
 ms.topic: overview
 ms.date: 09/22/2020
 ms.author: JenCook
-ms.openlocfilehash: 44479db6b29075e87b0d2dcef6f0d9bc1881738c
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: c3ef6a764123f52583f081a3b152651b9bb8b8b7
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94560834"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102554199"
 ---
 # <a name="confidential-computing-on-azure"></a>Azure 'da gizli bilgi işlem
 
@@ -49,11 +49,11 @@ T, yalnızca yetkili kodun yürütülmesini zorlayan bir ortamdır. T 'deki herh
 Bulutta çalışan iş yükleri için güven gerekir. Bu güveni, uygulamanızın farklı bileşenlerini etkinleştiren çeşitli sağlayıcılara verirsiniz.
 
 
-**Uygulama yazılım satıcıları** : açık kaynak kullanarak veya şirket içi uygulama yazılımı oluşturarak şirket içinde dağıtımı yaparak yazılıma güvenin.
+**Uygulama yazılım satıcıları**: açık kaynak kullanarak veya şirket içi uygulama yazılımı oluşturarak şirket içinde dağıtımı yaparak yazılıma güvenin.
 
-**Donanım satıcıları** : şirket içi donanım veya şirket içi donanım kullanarak donanıma güvenin. 
+**Donanım satıcıları**: şirket içi donanım veya şirket içi donanım kullanarak donanıma güvenin. 
 
-**Altyapı sağlayıcıları** : bulut sağlayıcılarına güvenin veya kendi şirket içi veri merkezlerinizi yönetin.
+**Altyapı sağlayıcıları**: bulut sağlayıcılarına güvenin veya kendi şirket içi veri merkezlerinizi yönetin.
 
 
 Azure gizli bilgi işlem, işlem bulutu altyapısının çeşitli yönleri genelinde güven gereksinimini azaltarak bulut sağlayıcısına güvenmeyi kolaylaştırır. Azure gizli bilgi işlem, konak işletim sistemi çekirdeği, hiper yönetici, VM Yöneticisi ve konak Yöneticisi için güveni en aza indirir.
@@ -68,13 +68,13 @@ Daha düşük bir TCB daha yüksek güvenlik anlamına gelir. Çeşitli güvenli
 
 Azure gizli bilgi işlem, sanallaştırılmış bir ortamda gizli bilgi işlem özelliklerinden yararlanmanızı sağlar. Artık güvenli donanımın üzerine derlemek için araçlar, yazılımlar ve bulut altyapısını kullanabilirsiniz.  
 
-**Yetkisiz erişimi engelleyin** : bulutta hassas verileri çalıştırın. Azure 'un şimdiye kadar en iyi veri korumasını sağladığı güvenle, bugüne kadar çok değişiklik yapılmamaktadır.
+**Yetkisiz erişimi engelleyin**: bulutta hassas verileri çalıştırın. Azure 'un şimdiye kadar en iyi veri korumasını sağladığı güvenle, bugüne kadar çok değişiklik yapılmamaktadır.
 
-**Mevzuata uyumluluğu** : kişisel bilgileri korumak ve kurumsal IP güvenliğini sağlamak için kuruluşa geçiş yapın ve kamu düzenlemelerine uygun şekilde tam denetim sağlayın.
+**Mevzuata uyumluluğu**: kişisel bilgileri korumak ve kurumsal IP güvenliğini sağlamak için kuruluşa geçiş yapın ve kamu düzenlemelerine uygun şekilde tam denetim sağlayın.
 
-**Güvenli ve güvenilmeyen işbirliği** : büyük veri analizlerinin ve daha derin Öngörüler 'in kilidini açmak için kuruluşlar genelinde, hatta rakipler genelinde sektör genelinde iş ölçeğinde sorunları ortadan kaldırır.
+**Güvenli ve güvenilmeyen işbirliği**: büyük veri analizlerinin ve daha derin Öngörüler 'in kilidini açmak için kuruluşlar genelinde, hatta rakipler genelinde sektör genelinde iş ölçeğinde sorunları ortadan kaldırır.
 
-**Yalıtılmış işleme** : özel veriler üzerinde, görme engelli bir yükümlülüğün sorumluluğun kaldırılması için yeni bir ürün dalgası sunun. Kullanıcı verileri, hizmet sağlayıcısı tarafından bile alınamaz. 
+**Yalıtılmış işleme**: özel veriler üzerinde, görme engelli bir yükümlülüğün sorumluluğun kaldırılması için yeni bir ürün dalgası sunun. Kullanıcı verileri, hizmet sağlayıcısı tarafından bile alınamaz. 
 
 ## <a name="get-started"></a>Başlarken
 ### <a name="azure-compute"></a>Azure İşlem

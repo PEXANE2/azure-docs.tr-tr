@@ -38,8 +38,14 @@
       items:
         - name: Uygulama yönetimi örneklerine genel bakış
           href: app-management-powershell-samples.md
-        - name: 'Tüm uygulama kayıtlarını, gizli dizileri ve sertifikaları dışarı aktar'
+        - name: Gizli dizileri ve sertifikaları dışa aktarma (uygulama kayıtları)
           href: ./scripts/powershell-export-all-app-registrations-secrets-and-certs.md
+        - name: Gizli dizileri ve sertifikaları dışa aktarma (kurumsal uygulamalar)
+          href: ./scripts/powershell-export-all-enterprise-apps-secrets-and-certs.md
+        - name: Süresi dolan gizli dizileri ve sertifikaları dışa aktarma
+          href: ./scripts/powershell-export-apps-with-expriring-secrets.md
+        - name: Parolaların ve sertifikaların süresi gereken tarihten sonra dışarı aktarma
+          href: ./scripts/powershell-export-apps-with-secrets-beyond-required.md
     - name: Uygulama proxy 'Si PowerShell örnekleri
       href: application-proxy-powershell-samples.md
 - name: Kavramlar
