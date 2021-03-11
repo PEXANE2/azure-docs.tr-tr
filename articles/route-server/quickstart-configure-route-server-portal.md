@@ -7,12 +7,12 @@ ms.service: route-server
 ms.topic: quickstart
 ms.date: 03/03/2021
 ms.author: duau
-ms.openlocfilehash: ef48f7623aee1256ad1f889d2e70b5a2fdb8e6bf
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.openlocfilehash: f76c48af4f5ebc8013daad457f9973cf7792c7c6
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102108882"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102548010"
 ---
 # <a name="quickstart-create-and-configure-route-server-using-the-azure-portal"></a>Hızlı başlangıç: Azure portal kullanarak rota sunucusu oluşturma ve yapılandırma
 
@@ -101,6 +101,12 @@ Bir ExpressRoute Gateway ve/veya VPN Gateway varsa ve yönlendirme sunucusu ile 
 1. **Dal dalı** ayarı için **Etkinleştir** ' i seçin ve ardından **Kaydet**' i seçin.
 
     :::image type="content" source="./media/quickstart-configure-route-server-portal/enable-route-exchange.png" alt-text="Yol değişimini etkinleştirme ekran görüntüsü.":::
+
+## <a name="clean-up-resources"></a>Kaynakları temizleme
+
+Azure Route sunucusuna artık ihtiyacınız yoksa, yol sunucusunun sağlamasını kaldırmak için genel bakış sayfasından **Sil** ' i seçin.
+
+:::image type="content" source="./media/quickstart-configure-route-server-portal/delete-route-server.png" alt-text="Yol sunucusunun nasıl silineceği ekran görüntüsü.":::
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

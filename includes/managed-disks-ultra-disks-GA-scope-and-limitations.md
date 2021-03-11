@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/28/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 26a5537496d9e881ece135437c403baf4a4fd67c
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: e94b14584f8eece3d772f67b680df4a2ffb8b5cd
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96016650"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102603218"
 ---
 Şimdilik, Ultra diskler ek sınırlamalara sahiptir ve bunlar şu şekildedir:
 
@@ -26,7 +26,7 @@ Aşağıdaki tabloda, Ultra disklerin ' de kullanılabildiği bölgeler ve bunla
 
 |Bölgeler  |Artıklık seçenekleri  |
 |---------|---------|
-|Brezilya Güney     |Yalnızca tek VM 'Ler (kullanılabilirlik kümeleri ve sanal makine ölçek kümeleri desteklenmez)|
+|Güney Brezilya     |Yalnızca tek VM 'Ler (kullanılabilirlik kümeleri ve sanal makine ölçek kümeleri desteklenmez)|
 |Orta Hindistan     |Yalnızca tek VM 'Ler (kullanılabilirlik kümeleri ve sanal makine ölçek kümeleri desteklenmez)|
 |Doğu Asya     |Yalnızca tek VM 'Ler (kullanılabilirlik kümeleri ve sanal makine ölçek kümeleri desteklenmez)|
 |Almanya Orta Batı     |Yalnızca tek VM 'Ler (kullanılabilirlik kümeleri ve sanal makine ölçek kümeleri desteklenmez)|
@@ -39,8 +39,8 @@ Aşağıdaki tabloda, Ultra disklerin ' de kullanılabildiği bölgeler ve bunla
 |Orta Avustralya    |Yalnızca tek VM 'Ler (kullanılabilirlik kümeleri ve sanal makine ölçek kümeleri desteklenmez)|
 |Doğu Avustralya     |Üç kullanılabilirlik bölgesi         |
 |Güneydoğu Asya    |Üç kullanılabilirlik bölgesi        |
-|Kanada Orta *     |Üç kullanılabilirlik bölgesi          |
-|Orta ABD     |Üç kullanılabilirlik bölgesi          |
+|Orta Kanada     |Üç kullanılabilirlik bölgesi          |
+|Central US     |Üç kullanılabilirlik bölgesi          |
 |Doğu ABD     |Üç kullanılabilirlik bölgesi          |
 |Doğu ABD 2     |Üç kullanılabilirlik bölgesi         |
 |Orta Fransa    |İki kullanılabilirlik bölgesi        |
@@ -49,8 +49,6 @@ Aşağıdaki tabloda, Ultra disklerin ' de kullanılabildiği bölgeler ve bunla
 |Güney Birleşik Krallık    |Üç kullanılabilirlik bölgesi        |
 |West Europe    | Üç kullanılabilirlik bölgesi|
 |Batı ABD 2    |Üç kullanılabilirlik bölgesi|
-
-\* Bu bölgeye yönelik Kullanılabilirlik Alanları erişim sağlamak için Azure desteğine başvurun.
 
 - Yalnızca şu VM serisinde desteklenir:
     - [ESv3](../articles/virtual-machines/ev3-esv3-series.md#esv3-series)

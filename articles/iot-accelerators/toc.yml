@@ -91,7 +91,7 @@
 - name: Kaynaklar
   items:
     - name: Destek ve yardım seçenekleri
-      href: ../iot-fundamentals/iot-support-help.md
+      href: ../iot-fundamentals/iot-support-help.md?toc=/azure/iot-accelerators/toc.json&bc=/azure/iot-accelerators/breadcrumb/toc.json
     - name: Azure IoT hizmetleri
       items:
         - name: IoT Hub

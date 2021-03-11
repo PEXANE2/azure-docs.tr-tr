@@ -12,20 +12,20 @@ author: eedorenko
 manager: davete
 ms.reviewer: larryfr
 ms.date: 06/23/2020
-ms.openlocfilehash: fe2f35708f6a148f8db9ef6fd0a598e19e746fbd
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: e8a8b952d917db3a7eefd2e0371d41287c5be944
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93358635"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102612482"
 ---
 # <a name="devops-for-a-data-ingestion-pipeline"></a>Veri alımı işlem hattı için DevOps
 
 Çoğu senaryoda, bir veri alma çözümü, betikleri, hizmet etkinleştirmeleri ve tüm etkinlikleri düzenleyen bir işlem hattı oluşturma çözümüdür. Bu makalede, Machine Learning model eğitimi için veri hazırlayan ortak bir veri alma işlem hattının geliştirme yaşam döngüsüne DevOps uygulamalarını nasıl uygulayacağınızı öğreneceksiniz. İşlem hattı aşağıdaki Azure Hizmetleri kullanılarak oluşturulmuştur:
 
-* __Azure Data Factory__ : ham verileri okur ve veri hazırlanmasını düzenler.
-* __Azure Databricks__ : verileri dönüştüren bir Python Not defteri çalıştırır.
-* __Azure Pipelines__ : sürekli tümleştirme ve geliştirme sürecini otomatikleştirir.
+* __Azure Data Factory__: ham verileri okur ve veri hazırlanmasını düzenler.
+* __Azure Databricks__: verileri dönüştüren bir Python Not defteri çalıştırır.
+* __Azure Pipelines__: sürekli tümleştirme ve geliştirme sürecini otomatikleştirir.
 
 ## <a name="data-ingestion-pipeline-workflow"></a>Veri alımı ardışık düzeni iş akışı
 
@@ -78,11 +78,12 @@ Sürekli tümleştirme işleminin Ultimate hedefi, kaynak koddan ortak ekip işi
 
 ### <a name="python-notebook-ci"></a>Python Not defteri CI
 
-Python Not defterleri için CI işlemi, işbirliği dalından kodu alır (örneğin, * **ana** _ veya _*_geliştirme_*_ ) ve aşağıdaki etkinlikleri gerçekleştirir: _ kod işleme
+Python Not defterleri için CI işlemi, işbirliği dalından kodu alır (örneğin, ***Master** _ veya _ *_Geliştir_* *) ve aşağıdaki etkinlikleri gerçekleştirir:
+* Kod ele
 * Birim testi
 * Kodu yapıt olarak kaydetme
 
-Aşağıdaki kod parçacığı, bu adımların bir Azure DevOps * **YAML** _ ardışık düzeninde uygulanmasını gösterir:
+Aşağıdaki kod parçacığı, bu adımların bir Azure DevOps ***YAML*** ardışık düzeninde uygulanmasını göstermektedir:
 
 ```yaml
 steps:
@@ -98,7 +99,7 @@ steps:
 - task: PublishTestResults@2
   condition: succeededOrFailed()
   inputs:
-    testResultsFiles: '$(Build.BinariesDirectory)/_-testresults.xml'
+    testResultsFiles: '$(Build.BinariesDirectory)/*-testresults.xml'
     testRunTitle: 'Linting & Unit tests'
     failTaskOnFailedTests: true
   displayName: 'Publish linting and unit test results'
@@ -115,11 +116,11 @@ steps:
 
 ### <a name="azure-data-factory-ci"></a>Azure Data Factory CI
 
-Azure Data Factory işlem hattı için CI işlemi, veri alma işlem hattı için bir darboğazdır. Sürekli tümleştirme yoktur. Azure Data Factory için dağıtılabilir yapıt, bir Azure Resource Manager şablonları koleksiyonudur. Bu şablonları oluşturmanın tek yolu Azure Data Factory çalışma alanındaki * **Yayımla** _ düğmesine tıklamalıdır.
+Azure Data Factory işlem hattı için CI işlemi, veri alma işlem hattı için bir darboğazdır. Sürekli tümleştirme yoktur. Azure Data Factory için dağıtılabilir yapıt, bir Azure Resource Manager şablonları koleksiyonudur. Bu şablonları oluşturmanın tek yolu Azure Data Factory çalışma alanındaki ***Yayınla*** düğmesine tıklamalıdır.
 
-1. Veri mühendisleri, kaynak kodunu Özellik dallarından, _*_ana_*_ veya _*_geliştirme_*_ gibi işbirliği dalında birleştirir. 
-1. Verilen izinlere sahip birisi, işbirliği dalında kaynak kodundan Azure Resource Manager şablonları oluşturmak için _*_Yayımla_*_ düğmesine tıklar. 
-1. Çalışma alanı, işlem hatlarını doğrular (bunu, oluşturma ve birim testi olarak düşünün), Azure Resource Manager şablonlar oluşturur (derleme olarak düşünün) ve oluşturulan şablonları aynı kod deposundaki bir teknik dala _*_adf_publish_*_ kaydeder (yayımlama yapıtları olarak düşünün). Bu dal, Azure Data Factory çalışma alanı tarafından otomatik olarak oluşturulur. 
+1. Veri mühendisler, kaynak kodunu Özellik dallarından işbirliği dalında birleştirir; Örneğin, ***Master** _ veya _ *_Geliştir_* *. 
+1. Verilen izinlere sahip birisi, işbirliği dalında kaynak kodundan Azure Resource Manager şablonları oluşturmak için ***Yayımla*** düğmesine tıklar. 
+1. Çalışma alanı, işlem hatlarını doğrular (bunu, oluşturma ve birim testi olarak düşünün), Azure Resource Manager şablonlar oluşturur (derleme olarak düşünün) ve oluşturulan şablonları aynı kod deposundaki bir teknik dala ***adf_publish*** kaydeder (yayımlama yapıtları olarak düşünün). Bu dal, Azure Data Factory çalışma alanı tarafından otomatik olarak oluşturulur. 
 
 Bu işlem hakkında daha fazla bilgi için [Azure Data Factory ' de sürekli tümleştirme ve teslim](../data-factory/continuous-integration-deployment.md)konusuna bakın.
 
@@ -165,7 +166,7 @@ labels = np.array(data['target'])
 ...
 ```
 
-Bu ad _*_dev_*_ , _*_qa_*_ , _*_UAT_*_ ve _*_Üretim_*_ ortamları için farklıdır. Birden çok etkinliği olan karmaşık bir işlem hattında, birkaç özel özellik olabilir. Bu değerlerin tümünü tek bir yerde toplamak ve ardışık düzen _*_değişkenleri_*_ olarak tanımlamak iyi bir uygulamadır:
+Bu ad ***dev** _, _*_qa_*_, _*_UAT_*_ ve _*_Üretim_*_ ortamları için farklıdır. Birden çok etkinliği olan karmaşık bir işlem hattında, birkaç özel özellik olabilir. Bu değerlerin tümünü tek bir yerde toplamak ve bunları işlem hattı _ *_değişkenler_* * olarak tanımlamak iyi bir uygulamadır:
 
 ![Ekran görüntüsünde, her biri bir ad, tür ve varsayılan değer olan yeni değişkenler ekleme seçeneğiyle birlikte, en üstte, her biri bir ad, tür ve varsayılan değer olan yeni değişkenler ekleme seçeneğiyle birlikte, aşağıdaki değişkenler sekmesi ile birlikte, PrepareData ve M L yürütme hattı adlı](media/how-to-cicd-data-ingestion/adf-variables.png)
 
@@ -173,13 +174,13 @@ Bu ad _*_dev_*_ , _*_qa_*_ , _*_UAT_*_ ve _*_Üretim_*_ ortamları için farklı
 
 ![Ekran görüntüsü, en üstte, aşağıda seçilen ayarlar sekmesi ile birlikte M.](media/how-to-cicd-data-ingestion/adf-notebook-parameters.png)
 
-Azure Data Factory çalışma alanı, işlem hattı değişkenlerini varsayılan olarak Azure Resource Manager şablonları parametresi olarak _*_kullanıma sunmaz._*_ Çalışma alanı [varsayılan Parameterleştirme şablonunu](../data-factory/continuous-integration-deployment.md#default-parameterization-template) kullanır Azure Resource Manager şablon parametresi olarak hangi ardışık düzen özelliklerinin gösterilmesini gerektiğini dikte eder. Listeye işlem hattı değişkenleri eklemek için, `"Microsoft.DataFactory/factories/pipelines"` [varsayılan Parameterleştirme şablonunun](../data-factory/continuous-integration-deployment.md#default-parameterization-template) bölümünü aşağıdaki kod parçacığıyla güncelleştirin ve sonuç json dosyasını kaynak klasörün köküne yerleştirin:
+Azure Data Factory çalışma alanı, işlem hattı değişkenlerini varsayılan olarak Azure Resource Manager şablonları parametresi olarak ***kullanıma sunmaz.*** Çalışma alanı [varsayılan Parameterleştirme şablonunu](../data-factory/continuous-integration-deployment.md#default-parameterization-template) kullanır Azure Resource Manager şablon parametresi olarak hangi ardışık düzen özelliklerinin gösterilmesini gerektiğini dikte eder. Listeye işlem hattı değişkenleri eklemek için, `"Microsoft.DataFactory/factories/pipelines"` [varsayılan Parameterleştirme şablonunun](../data-factory/continuous-integration-deployment.md#default-parameterization-template) bölümünü aşağıdaki kod parçacığıyla güncelleştirin ve sonuç json dosyasını kaynak klasörün köküne yerleştirin:
 
 ```json
 "Microsoft.DataFactory/factories/pipelines": {
         "properties": {
             "variables": {
-                "_": {
+                "*": {
                     "defaultValue": "="
                 }
             }
@@ -187,7 +188,7 @@ Azure Data Factory çalışma alanı, işlem hattı değişkenlerini varsayılan
     }
 ```
 
-Bunun yapılması, * **Publish** _ düğmesine tıklandığında Azure Data Factory çalışma alanını parametreler listesine eklemek için zorlayacaktır:
+Bunun yapılması, ***Yayımla*** düğmesine tıklandığında Azure Data Factory çalışma alanını parametreler listesine eklemek için zorlayacaktır:
 
 ```json
 {
@@ -211,18 +212,18 @@ JSON dosyasındaki değerler, işlem hattı tanımında yapılandırılmış var
 
 Sürekli teslim süreci yapıtları alır ve ilk hedef ortama dağıtır. Bu, çözümün test çalıştırması yoluyla çalıştığından emin olmanızı sağlar. Başarılı olursa, sonraki ortama devam eder. 
 
-CD Azure işlem hattı, ortamları temsil eden birden çok aşamadan oluşur. Her aşama, aşağıdaki adımları gerçekleştiren [dağıtımlar](/azure/devops/pipelines/process/deployment-jobs?view=azure-devops&preserve-view=true) ve [işler](/azure/devops/pipelines/process/phases?tabs=yaml&view=azure-devops&preserve-view=true) içerir:
+CD Azure işlem hattı, ortamları temsil eden birden çok aşamadan oluşur. Her aşama, aşağıdaki adımları gerçekleştiren [dağıtımlar](/azure/devops/pipelines/process/deployment-jobs) ve [işler](/azure/devops/pipelines/process/phases?tabs=yaml) içerir:
 
-_ Azure Databricks çalışma alanına bir Python Not defteri dağıtma
+* Azure Databricks çalışma alanına Python Not defteri dağıtma
 * Azure Data Factory işlem hattı dağıtma 
 * İşlem hattını çalıştırma
 * Veri alma sonucunu denetleme
 
-İşlem hattı aşamaları, dağıtım işleminin ortam zinciri aracılığıyla nasıl geliştikçe daha fazla denetim sağlayan [onaylar](/azure/devops/pipelines/process/approvals?tabs=check-pass&view=azure-devops&preserve-view=true) ve [kapıları](/azure/devops/pipelines/release/approvals/gates?view=azure-devops&preserve-view=true) ile yapılandırılabilir.
+İşlem hattı aşamaları, dağıtım işleminin ortam zinciri aracılığıyla nasıl geliştikçe daha fazla denetim sağlayan [onaylar](/azure/devops/pipelines/process/approvals?tabs=check-pass) ve [kapıları](/azure/devops/pipelines/release/approvals/gates) ile yapılandırılabilir.
 
 ### <a name="deploy-a-python-notebook"></a>Python Not defteri dağıtma
 
-Aşağıdaki kod parçacığı, bir Python Not defterini Databricks kümesine kopyalayan bir Azure işlem hattı [dağıtımını](/azure/devops/pipelines/process/deployment-jobs?view=azure-devops&preserve-view=true) tanımlar:
+Aşağıdaki kod parçacığı, bir Python Not defterini Databricks kümesine kopyalayan bir Azure işlem hattı [dağıtımını](/azure/devops/pipelines/process/deployment-jobs) tanımlar:
 
 ```yaml
 - stage: 'Deploy_to_QA'
@@ -258,13 +259,13 @@ Aşağıdaki kod parçacığı, bir Python Not defterini Databricks kümesine ko
               displayName: 'Deploy (copy) data processing notebook to the Databricks cluster'       
 ```            
 
-CI tarafından üretilen yapıtlar otomatik olarak dağıtım aracısına kopyalanır ve `$(Pipeline.Workspace)` klasöründe kullanılabilir. Bu durumda, dağıtım görevi `di-notebooks` Python Not defterini içeren yapıtı ifade eder. Bu [dağıtım](/azure/devops/pipelines/process/deployment-jobs?view=azure-devops&preserve-view=true) , Not defteri dosyalarını databricks çalışma alanına kopyalamak Için [Databricks Azure DevOps uzantısını](https://marketplace.visualstudio.com/items?itemName=riserrad.azdo-databricks) kullanır.
+CI tarafından üretilen yapıtlar otomatik olarak dağıtım aracısına kopyalanır ve `$(Pipeline.Workspace)` klasöründe kullanılabilir. Bu durumda, dağıtım görevi `di-notebooks` Python Not defterini içeren yapıtı ifade eder. Bu [dağıtım](/azure/devops/pipelines/process/deployment-jobs) , Not defteri dosyalarını databricks çalışma alanına kopyalamak Için [Databricks Azure DevOps uzantısını](https://marketplace.visualstudio.com/items?itemName=riserrad.azdo-databricks) kullanır.
 
 `Deploy_to_QA`Aşama, `devops-ds-qa-vg` Azure DevOps projesinde tanımlanan değişken grubuna yönelik bir başvuru içerir. Bu aşamadaki adımlar, bu değişken grubundaki değişkenlere (örneğin, `$(DATABRICKS_URL)` ve `$(DATABRICKS_TOKEN)` ) başvurur. Fikir bir sonraki aşamanın (örneğin, `Deploy_to_UAT` ) kendı uıın kapsamlı değişken grubunda tanımlanan aynı değişken adlarıyla çalışacağı bir fikirdir.
 
 ### <a name="deploy-an-azure-data-factory-pipeline"></a>Azure Data Factory işlem hattı dağıtma
 
-Azure Data Factory için dağıtılabilir yapıt Azure Resource Manager şablonudur. Aşağıdaki kod parçacığında gösterildiği gibi * **Azure Kaynak grubu dağıtımı** _ göreviyle birlikte dağıtılacak:
+Azure Data Factory için dağıtılabilir yapıt Azure Resource Manager şablonudur. Aşağıdaki kod parçacığında gösterildiği gibi ***Azure Kaynak grubu dağıtım*** göreviyle birlikte dağıtılacak:
 
 ```yaml
   - deployment: "Deploy_to_ADF"
@@ -285,7 +286,7 @@ Azure Data Factory için dağıtılabilir yapıt Azure Resource Manager şablonu
                 csmParametersFile: '$(Pipeline.Workspace)/adf-pipelines/ARMTemplateParametersForFactory.json'
                 overrideParameters: -data-ingestion-pipeline_properties_variables_data_file_name_defaultValue "$(DATA_FILE_NAME)"
 ```
-Veri dosya adı parametresinin değeri, `$(DATA_FILE_NAME)` qa aşama değişkeni grubunda tanımlanan değişkenden gelir. Benzer şekilde, _*_üzerindeARMTemplateForFactory.js_*_ tanımlanmış tüm parametreler geçersiz kılınabilir. Aksi takdirde, varsayılan değerler kullanılır.
+Veri dosya adı parametresinin değeri, `$(DATA_FILE_NAME)` qa aşama değişkeni grubunda tanımlanan değişkenden gelir. Benzer şekilde, ***üzerindeARMTemplateForFactory.js*** tanımlanmış tüm parametreler geçersiz kılınabilir. Aksi takdirde, varsayılan değerler kullanılır.
 
 ### <a name="run-the-pipeline-and-check-the-data-ingestion-result"></a>İşlem hattını çalıştırma ve veri alma sonucunu denetleme
 
@@ -334,14 +335,15 @@ Sonraki adım, dağıtılan çözümün çalıştığından emin olmak. Aşağı
 
 ## <a name="putting-pieces-together"></a>Parçaları birlikte yerleştirme
 
-Tüm CI/CD Azure işlem hattı aşağıdaki aşamaları içerir: _ CI
+Tüm CI/CD Azure işlem hattı aşağıdaki aşamalardan oluşur:
+* CI
 * QA 'e dağıtın
     * Databricks + ADF 'ye dağıt
     * Tümleştirme testi
 
-Sahip olduğunuz hedef ortam sayısına eşit sayıda * **Deploy** _ aşaması içerir. Her _*_dağıtım_*_ aşaması paralel olarak çalışan iki [dağıtım](/azure/devops/pipelines/process/deployment-jobs?view=azure-devops&preserve-view=true) ve bir ortamda çözümü test etmek için dağıtımlardan sonra çalışan bir [iş](/azure/devops/pipelines/process/phases?tabs=yaml&view=azure-devops&preserve-view=true) içerir.
+Sahip olduğunuz hedef ortam sayısına eşit sayıda ***Deploy** _ aşaması içerir. Her _ *_Deploy_** aşaması, paralel olarak çalışan iki [dağıtım](/azure/devops/pipelines/process/deployment-jobs) ve bir ortamda çözümü test etmek için dağıtımlardan sonra çalışan bir [iş](/azure/devops/pipelines/process/phases?tabs=yaml) içerir.
 
-İşlem hattının örnek bir uygulama aşağıdaki _*_YAML_*_ kod parçacığında toplanır:
+İşlem hattının örnek bir uygulama aşağıdaki ***YAML*** kod parçacığında toplanır:
 
 ```yaml
 variables:
@@ -376,7 +378,7 @@ stages:
     - task: PublishTestResults@2
     condition: succeededOrFailed()
     inputs:
-        testResultsFiles: '$(Build.BinariesDirectory)/_-testresults.xml'
+        testResultsFiles: '$(Build.BinariesDirectory)/*-testresults.xml'
         testRunTitle: 'Linting & Unit tests'
         failTaskOnFailedTests: true
     displayName: 'Publish linting and unit test results'    
@@ -479,5 +481,5 @@ stages:
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [Azure Data Factory'de Kaynak Denetimi](../data-factory/source-control.md)
-* [Azure Data Factory sürekli tümleştirme ve teslim](../data-factory/continuous-integration-deployment.md)
+* [Azure Data Factory’de sürekli tümleştirme ve teslim](../data-factory/continuous-integration-deployment.md)
 * [Azure Databricks için DevOps](https://marketplace.visualstudio.com/items?itemName=riserrad.azdo-databricks)

@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: a84942337b3c8eb5f7509f61f9ba5bcd564d8bb3
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: ceac1e7b5e8efa7e87ecf6e1f4c9dd8286c87e98
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97653087"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102614080"
 ---
 # <a name="team-data-science-process-for-developer-operations"></a>Geliştirici Işlemleri için ekip veri bilimi Işlemi
 
@@ -25,7 +25,7 @@ Bu makalede, gelişmiş analiz ve bilişsel hizmetler çözüm uygulamalarına �
 ## <a name="lesson-path"></a>Ders yolu
 Aşağıdaki tabloda, Azure 'da veri bilimi çözümlerini uygulamaya yönelik DevOps hedeflerini tamamlamaya yardımcı olacak düzey tabanlı yönergeler sağlanmaktadır.
 
-| Hedef | Konu | **Kaynak** | **Teknolojiler** | **Düzeyde** | **Önkoşullar** |
+| Amaç | Konu | **Kaynak** | **Teknolojiler** | **Düzeyde** | **Önkoşullar** |
 |--|--|--|--|--|--|
 | Gelişmiş Analizi anlama | Team Data Science Işlem yaşam döngüsü | [Bu teknik izlenecek yol, Team Data Science Işlemini açıklar](overview.md) | Veri Bilimi | Orta | Genel teknoloji arka planı, veri çözümlerini benzerlik, BT projelerine ve çözüm uygulamasıyla benzerlik |
 | Gelişmiş analiz için Microsoft Azure platformunu anlayın | Bilgi yönetimi |
@@ -58,11 +58,11 @@ Aşağıdaki tabloda, Azure 'da veri bilimi çözümlerini uygulamaya yönelik D
 |  |  | [Bu belge, geliştirici ve operasyon ekiplerinin PowerShell Istenen durum yapılandırmasının avantajlarını anlamasına yöneliktir](/powershell/scripting/dsc/overview/dscforengineers) | PowerShell DSC | Orta | PowerShell kodlama, kurumsal mimariler, komut dosyası oluşturma deneyimi |
 |  | Kod | [Bu indirme, veri bilimi ve AI uygulamaları oluşturmak için Visual Studio Codespace kodunu kullanma hakkındaki belgeleri de içerir](https://code.visualstudio.com/) | Visual Studio Codespace | Orta | Yazılım geliştirme |
 |  |  | [Bu başlangıç sitesi, DevOps ve Visual Studio hakkında sizi öğretir](https://www.visualstudio.com/devops/) | Visual Studio | Başlangıç | Yazılım geliştirme |
-|  |  | [App Service Düzenleyicisi kullanarak Azure portal doğrudan kod yazabilirsiniz. Bu araçla sürekli tümleştirme hakkında daha fazla bilgi edinmek için bu kaynağı öğrenin](https://github.com/projectkudu/kudu/wiki/App-Service-Editor) | Azure portal | Yüksek oranda deneyimli | Veri bilimi arka planı, ancak yine de okuyun |
+|  |  | [App Service Düzenleyicisi kullanarak Azure portal doğrudan kod yazabilirsiniz. Bu araçla sürekli tümleştirme hakkında daha fazla bilgi edinmek için bu kaynağı öğrenin](https://github.com/projectkudu/kudu/wiki/App-Service-Editor) | Azure portalı | Yüksek oranda deneyimli | Veri bilimi arka planı, ancak yine de okuyun |
 |  |  | [Bu kaynak, Web tabanlı Azure Machine Learning Studio (klasik) aracını kullanarak tahmine dayalı analiz denemeleri nasıl kod oluşturacağınızı ve oluşturulacağını açıklamaktadır.](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio) | Azure Machine Learning Studio (klasik) | Karşılaştığınızda | Yazılım geliştirme |
 |  |  | [Bu başvuru, Azure 'daki Veri Bilimi Sanal Makinesi tüm geliştirme araçlarına bir liste ve bir inceleme bağlantısı içerir](../data-science-virtual-machine/overview.md) | Veri Bilimi Sanal Makinesi | Karşılaştığınızda | Yazılım geliştirme, veri bilimi |
 |  |  | [Güvenlik, gizlilik ve uyumluluk için bu Azure Güvenlik Güven Merkezi 'ndeki her bir başvuruyu okuyun ve anlayın-çok önemli](https://azure.microsoft.com/support/trust-center/) | Azure Güvenlik | Orta | Sistem mimarisi deneyimi, güvenlik geliştirme deneyimi |
-|  | Yapı | [Bu kurs, Visual Studio Codespace derlemesi ile DevOps uygulamalarını etkinleştirmeyi öğretir](https://mva.microsoft.com/training-courses/enabling-devops-practices-with-visual-studio-online-build-12478?l=ipCj6MuNB_6305094681) | Visual Studio Codespace | Karşılaştığınızda | Yazılım geliştirme, bir SDLC ile benzerlik |
+|  | Oluşturma | [Bu kurs, Visual Studio Codespace derlemesi ile DevOps uygulamalarını etkinleştirmeyi öğretir](https://mva.microsoft.com/training-courses/enabling-devops-practices-with-visual-studio-online-build-12478?l=ipCj6MuNB_6305094681) | Visual Studio Codespace | Karşılaştığınızda | Yazılım geliştirme, bir SDLC ile benzerlik |
 |  |  | [Bu başvuru, Visual Studio kullanılarak derleme ve derlemeyi açıklar](/previous-versions/visualstudio/visual-studio-2015/ide/compiling-and-building-in-visual-studio) | Visual Studio | Orta | Yazılım geliştirme, bir SDLC ile benzerlik |
 |  |  | [Bu başvuru, runbook 'larla yazılım derlemeleri gibi işlemleri nasıl düzenleyeceğinizi açıklar](/system-center/orchestrator/automate-runbooks) | System Center | Karşılaştığınızda | System Center Orchestrator ile deneyim |
 |  | Test etme | [Test çalışması yönetimi için Visual Studio Codespace 'in nasıl kullanılacağını anlamak için bu başvuruyu kullanın](http://www.almguide.com/2014/07/visual-studio-online-test-case-management/) | Visual Studio Codespace | Karşılaştığınızda | Yazılım geliştirme, bir SDLC ile benzerlik |
@@ -74,10 +74,10 @@ Aşağıdaki tabloda, Azure 'da veri bilimi çözümlerini uygulamaya yönelik D
 |  |  | [Bu başvuru, çözümünüz için bir "paket" olarak JSON şablonu olarak kaydedebileceğiniz bir veri ardışık düzeni oluşturmayı açıklar.](../../data-factory/v1/data-factory-introduction.md) | Azure Data Factory | Orta | Genel bilgi işlem arka planı, veri projesi deneyimi |
 |  |  | [Bu konu, bir Azure Resource Manager şablonunun yapısını açıklamaktadır](../../azure-resource-manager/templates/template-syntax.md) | Azure Resource Manager | Orta | Microsoft Azure platformuyla benzerlik |
 |  |  | [DSC, PowerShell 'deki bir yönetim platformudur ve bu sayede, bir paket olarak kaydedilen, BT ve geliştirme altyapınızı kod olarak yapılandırma ile yönetmenizi sağlar. Bu başvuru, bu konu için bir genel bakış](/powershell/scripting/dsc/overview/overview) | PowerShell Istenen durum yapılandırması | Orta | PowerShell kodlaması, kurumsal mimariler hakkında, betik oluşturma |
-|  | Yayınla | [Bu baş başvuru makalesinde, CI/CD ortamları için derleme, test ve yayın kavramları bulunur](/azure/devops/pipelines/?view=azure-devops) | Visual Studio Codespace | Karşılaştığınızda | Yazılım geliştirme, CI/CD ortamları hakkında, bir SDLC ile benzerlik |
+|  | Yayınla | [Bu baş başvuru makalesinde, CI/CD ortamları için derleme, test ve yayın kavramları bulunur](/azure/devops/pipelines/) | Visual Studio Codespace | Karşılaştığınızda | Yazılım geliştirme, CI/CD ortamları hakkında, bir SDLC ile benzerlik |
 |  |  | [System Center kullanarak yayın yönetimini otomatikleştirmek için Runbook 'Lara yönelik bu önceki başvuruyu kullanın](/system-center/orchestrator/automate-runbooks) | System Center | Karşılaştığınızda | System Center Orchestrator ile deneyim |
 |  |  | [Bu makale, Web uygulamanız, mobil uygulama arka ucu veya API uygulamanız için dosyaları Azure App Service dağıtmak üzere en iyi seçeneği belirlemenize yardımcı olur ve sonra tercih ettiğiniz seçeneğe özgü yönergelerden uygun kaynaklara kılavuzluk eder](../../app-service/deploy-local-git.md) | Microsoft Azure dağıtımı | Orta | Microsoft Azure platformuyla yazılım geliştirme, deneyim |
-|  | İzleme | [Bu başvuru, Application Insights ve gelişmiş analiz çözümlerinizi nasıl ekleyebileceğiniz açıklanmaktadır](../../azure-monitor/app/app-insights-overview.md) | Application Insights | Orta | Yazılım geliştirme, Microsoft Azure platformuyla benzerlik |
+|  | İzleyici | [Bu başvuru, Application Insights ve gelişmiş analiz çözümlerinizi nasıl ekleyebileceğiniz açıklanmaktadır](../../azure-monitor/app/app-insights-overview.md) | Application Insights | Orta | Yazılım geliştirme, Microsoft Azure platformuyla benzerlik |
 |  |  | [Bu konuda, Operations Manager altyapısını yöneten yönetici için Operations Manager temel kavramları ve gelişmiş analiz çözümünü izleyen ve destekleyen işletmeni açıklanmaktadır](/previous-versions/system-center/system-center-2012-R2/hh230741(v=sc.12)) | System Center | Karşılaştığınızda | Kurumsal izleme hakkında benzerlik, System Center Operations Manager |
 |  |  | [Bu blog girişi, gelişmiş analiz işlem hattını izlemek ve yönetmek için Azure Data Factory kullanmayı açıklar](https://azure.microsoft.com/blog/azure-data-factory-updates-monitoring-and-management-enhancements/) | Azure Data Factory | Orta | Azure Data Factory hakkında benzerlik |
 |  |  | [Bu videoda, Azure Izleyici günlükleri ile bir günlüğün nasıl izleneceği gösterilmektedir](https://channel9.msdn.com/Shows/Data-Exposed/Enterprise-HDInsight-Monitoring-with-Operations-Management-Suite) | Azure günlükleri, PowerShell | Karşılaştığınızda | Azure platformuyla benzerlik |

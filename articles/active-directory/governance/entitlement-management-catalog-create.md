@@ -16,12 +16,12 @@ ms.date: 12/23/2020
 ms.author: ajburnle
 ms.reviewer: hanki
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8ae3ee8cb96453bae1ce581ea92bdb77854c02d8
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 3c6f37a1b5cc16c80af8316cfeae164d58ea9796
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101644155"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102552176"
 ---
 # <a name="create-and-manage-a-catalog-of-resources-in-azure-ad-entitlement-management"></a>Azure AD Yetkilendirme Yönetimi 'nde kaynakların kataloğunu oluşturma ve yönetme
 
@@ -83,7 +83,7 @@ Kaynakları bir erişim paketine dahil etmek için, kaynakların bir katalogda m
 
 ### <a name="add-a-multi-geo-sharepoint-site"></a>Çok coğrafi coğrafi SharePoint sitesi ekleme
 
-1. SharePoint için [Çoklu coğrafi bölge](https://docs.microsoft.com/microsoft-365/enterprise/multi-geo-capabilities-in-onedrive-and-sharepoint-online-in-microsoft-365?view=o365-worldwide) özelliği etkinleştirilmişse, siteleri seçmek istediğiniz ortamı seçin.
+1. SharePoint için [Çoklu coğrafi bölge](https://docs.microsoft.com/microsoft-365/enterprise/multi-geo-capabilities-in-onedrive-and-sharepoint-online-in-microsoft-365) özelliği etkinleştirilmişse, siteleri seçmek istediğiniz ortamı seçin.
     
     :::image type="content" source="media/entitlement-management-catalog-create/sharepoint-multigeo-select.png" alt-text="Erişim paketi-kaynak rolleri ekleme-SharePoint Çoklu coğrafi siteleri seçme":::
 

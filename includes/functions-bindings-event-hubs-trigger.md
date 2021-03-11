@@ -4,12 +4,12 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 03/05/2019
 ms.author: cshoe
-ms.openlocfilehash: 0cd514c852e13b83a679821ca2d940e4ed112bd8
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 145db7693db126d4e114e8c8a885ea7fd7809e69
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95561811"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102608924"
 ---
 Bir olay hub 'ı olay akışına gönderilen olaya yanıt vermek için işlev tetikleyicisini kullanın. Tetikleyiciyi ayarlamak için temeldeki Olay Hub 'ına okuma erişiminizin olması gerekir. İşlev tetiklendiğinde, işleve geçirilen ileti bir dize olarak yazılır.
 
@@ -360,9 +360,59 @@ Aşağıdaki tabloda, dosyasında ve özniteliğinde *function.js* ayarladığı
 |**eventHubName** |**EventHubName** | İşlevler 2. x ve üzeri. Olay Hub 'ının adı. Aynı zamanda, Olay Hub 'ı adı bağlantı dizesinde de mevcutsa, bu değer çalışma zamanında bu özelliği geçersiz kılar. [Uygulama ayarları](../articles/azure-functions/functions-bindings-expressions-patterns.md#binding-expressions---app-settings) aracılığıyla başvurulabilirler`%eventHubName%` |
 |**consumerGroup** |**ConsumerGroup** | Hub 'daki olaylara abone olmak için kullanılan [Tüketici grubunu](../articles/event-hubs/event-hubs-features.md#event-consumers) ayarlayan isteğe bağlı bir özellik. Atlanırsa, `$Default` Tüketici grubu kullanılır. |
 |**ite** | yok | C olmayan tüm diller için kullanılır. Toplu işlemeyi `many` etkinleştirmek için olarak ayarlayın.  Atlanırsa veya olarak ayarlandıysa `one` , işleve tek bir ileti geçirilir.<br><br>C# ' de, tetikleyici tür için bir diziye sahip her seferinde bu özellik otomatik olarak atanır.|
-|**bağlanma** |**Bağlantı** | Olay Hub 'ının ad alanına bağlantı dizesini içeren bir uygulama ayarının adı. Bu bağlantı dizesini, Olay Hub 'ının değil, [ad alanı](../articles/event-hubs/event-hubs-create.md#create-an-event-hubs-namespace)Için **bağlantı bilgileri** düğmesine tıklayarak kopyalayın. Bu bağlantı dizesinin tetikleyiciyi etkinleştirmek için en azından okuma izinlerine sahip olması gerekir.|
+|**bağlanma** |**Bağlantı** | Olay Hub 'ının ad alanına bağlantı dizesini içeren bir uygulama ayarının adı. Bu bağlantı dizesini, Olay Hub 'ının değil, [ad alanı](../articles/event-hubs/event-hubs-create.md#create-an-event-hubs-namespace)Için **bağlantı bilgileri** düğmesine tıklayarak kopyalayın. Bu bağlantı dizesinin tetikleyiciyi etkinleştirmek için en azından okuma izinlerine sahip olması gerekir.<br><br>[Uzantının 5. x veya daha yüksek bir sürümünü](../articles/azure-functions/functions-bindings-event-hubs.md#event-hubs-extension-5x-and-higher)kullanıyorsanız, bağlantı dizesi yerine bağlantıyı tanımlayan bir yapılandırma bölümüne başvuru sağlayabilirsiniz. Bkz. [Bağlantılar](../articles/azure-functions/functions-reference.md#connections).|
 
 [!INCLUDE [app settings to local.settings.json](../articles/azure-functions/../../includes/functions-app-settings-local.md)]
+
+## <a name="usage"></a>Kullanım
+
+# <a name="c"></a>[C#](#tab/csharp)
+
+### <a name="default"></a>Varsayılan
+
+Tetikleyici olay hub 'ı için aşağıdaki parametre türlerini kullanabilirsiniz:
+
+* `string`
+* `byte[]`
+* `POCO`
+* `EventData` -EventData 'ın varsayılan özellikleri, [Microsoft. Azure. EventHubs ad alanı](https://docs.microsoft.com/dotnet/api/microsoft.azure.eventhubs.eventdata?view=azure-dotnet)için ' de verilmiştir.
+
+### <a name="additional-types"></a>Ek türler 
+Olay Hub uzantısının 5.0.0 veya daha yüksek sürümünü kullanan uygulamalar, `EventData` [Microsoft. Azure. eventhubs ad alanı](https://docs.microsoft.com/dotnet/api/microsoft.azure.eventhubs.eventdata?view=azure-dotnet)yerine [Azure. Messaging. eventhubs](https://docs.microsoft.com/dotnet/api/azure.messaging.eventhubs.eventdata?view=azure-dotnet) türünü kullanır. Bu sürüm, `Body` aşağıdaki türlerin yerine eski tür için desteği bırakır:
+
+- [EventBody](https://docs.microsoft.com/dotnet/api/azure.messaging.eventhubs.eventdata.eventbody?view=azure-dotnet)
+
+# <a name="c-script"></a>[C# betiği](#tab/csharp-script)
+
+### <a name="default"></a>Varsayılan
+
+Tetikleyici olay hub 'ı için aşağıdaki parametre türlerini kullanabilirsiniz:
+
+* `string`
+* `byte[]`
+* `POCO`
+* `EventData` -EventData 'ın varsayılan özellikleri, [Microsoft. Azure. EventHubs ad alanı](https://docs.microsoft.com/dotnet/api/microsoft.azure.eventhubs.eventdata?view=azure-dotnet)için ' de verilmiştir.
+
+### <a name="additional-types"></a>Ek türler 
+Olay Hub uzantısının 5.0.0 veya daha yüksek sürümünü kullanan uygulamalar, `EventData` [Microsoft. Azure. eventhubs ad alanı](https://docs.microsoft.com/dotnet/api/microsoft.azure.eventhubs.eventdata?view=azure-dotnet)yerine [Azure. Messaging. eventhubs](https://docs.microsoft.com/dotnet/api/azure.messaging.eventhubs.eventdata?view=azure-dotnet) türünü kullanır. Bu sürüm, `Body` aşağıdaki türlerin yerine eski tür için desteği bırakır:
+
+- [EventBody](https://docs.microsoft.com/dotnet/api/azure.messaging.eventhubs.eventdata.eventbody?view=azure-dotnet)
+
+# <a name="java"></a>[Java](#tab/java)
+
+Ayrıntılar için Java [tetikleme örneğine](#example) bakın.
+
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
+
+Ayrıntılar için JavaScript [tetikleyicisi örneğine](#example) bakın.
+
+# <a name="python"></a>[Python](#tab/python)
+
+Ayrıntılar için Python [tetikleyicisi örneğine](#example) bakın.
+
+
+---
+
 
 ## <a name="event-metadata"></a>Olay meta verileri
 
@@ -379,10 +429,3 @@ Event Hubs tetikleyicisi çeşitli [meta veri özellikleri](../articles/azure-fu
 |`SystemProperties`|`IDictionary<String,Object>`|Olay verileri de dahil olmak üzere sistem özellikleri.|
 
 Bu makalenin önceki kısımlarında bu özellikleri kullanan [kod örneklerine](#example) bakın.
-
-## <a name="hostjson-properties"></a>host.jsözelliklerde
-<a name="host-json"></a>
-
-Dosyadaki [host.js](../articles/azure-functions/functions-host-json.md#eventhub) , Event Hubs tetikleme davranışını denetleyen ayarları içerir. Yapılandırma, Azure Işlevleri sürümüne bağlı olarak farklılık görür.
-
-[!INCLUDE [functions-host-json-event-hubs](../articles/azure-functions/../../includes/functions-host-json-event-hubs.md)]

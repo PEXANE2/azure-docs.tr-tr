@@ -1,25 +1,26 @@
 ---
 title: Öğretici-Azure CLı ile Linux VM 'Leri oluşturma ve yönetme
 description: Bu öğreticide, Azure CLI kullanarak Azure’da Linux VM’leri oluşturup yönetmeyi öğrenirsiniz
-services: virtual-machines-linux
+services: virtual-machines
 documentationcenter: virtual-machines
 author: cynthn
 manager: gwallace
 tags: azure-resource-manager
 ms.assetid: ''
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
+ms.collection: linux
 ms.topic: tutorial
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 03/23/2018
 ms.author: cynthn
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: aeb44a52dc7a83321752bb00e09270fe7bfd0bbe
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 77213fe83a56a33f4d10658f85465349949be792
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91972195"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102555610"
 ---
 # <a name="tutorial-create-and-manage-linux-vms-with-the-azure-cli"></a>Öğretici: Azure CLI ile Linux VM’leri Oluşturma ve Yönetme
 
@@ -251,7 +252,7 @@ Bir Azure VM’si birçok güç durumuna sahip olabilir. Bu durum VM’nin hiper
 
 ### <a name="power-states"></a>Güç durumları
 
-| Güç Durumu | Açıklama
+| Güç Durumu | Description
 |----|----|
 | Başlatılıyor | Sanal makinenin başlatıldığını gösterir. |
 | Çalışma | Sanal makinenin çalıştığını gösterir. |
@@ -280,7 +281,7 @@ ode                DisplayStatus    Level
 PowerState/running  VM running       Info
 ```
 
-Aboneliğinizdeki tüm VM 'lerin güç durumunu almak için, [sanal makineler-tüm API](/rest/api/compute/virtualmachines/listall) 'Leri parametresi **statusonly** *true*olarak ayarlanmış şekilde kullanın.
+Aboneliğinizdeki tüm VM 'lerin güç durumunu almak için, [sanal makineler-tüm API](/rest/api/compute/virtualmachines/listall) 'Leri parametresi **statusonly** *true* olarak ayarlanmış şekilde kullanın.
 
 ## <a name="management-tasks"></a>Yönetim görevleri
 

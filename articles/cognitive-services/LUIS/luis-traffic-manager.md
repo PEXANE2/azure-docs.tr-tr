@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 08/20/2019
-ms.openlocfilehash: 6fc5bea71909d0e17b4ef0256ab0cad644dacbb3
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 37c4bd2af080a76e93bc9599f06e4d502985979f
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95993831"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102609660"
 ---
 # <a name="use-microsoft-azure-traffic-manager-to-manage-endpoint-quota-across-keys"></a>Anahtarlar genelinde uç nokta kotasını yönetmek için Microsoft Azure Traffic Manager kullanma
 Language Understanding (LUSıS), uç nokta istek kotasını tek bir anahtarın kotasının ötesinde artırma yeteneği sağlar. Bu, lug 'ler için daha fazla anahtar oluşturularak ve bunları **kaynak ve anahtarlar** bölümündeki **Yayımla** sayfasında halsıs uygulamasına ekleyerek yapılır.
@@ -371,7 +371,7 @@ Uç nokta durumunun düşürüldüğünü görmek için Traffic Manager [tanıla
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu trafik yönetimi kodunun bir BotFramework bot 'a nasıl eklenebileceğini anlamak için BotFramework v4 içindeki [Ara yazılım](/azure/bot-service/bot-builder-create-middleware?tabs=csaddmiddleware%252ccsetagoverwrite%252ccsmiddlewareshortcircuit%252ccsfallback%252ccsactivityhandler&view=azure-bot-service-4.0) seçeneklerini inceleyin.
+Bu trafik yönetimi kodunun bir BotFramework bot 'a nasıl eklenebileceğini anlamak için BotFramework v4 içindeki [Ara yazılım](/azure/bot-service/bot-builder-create-middleware?tabs=csaddmiddleware%252ccsetagoverwrite%252ccsmiddlewareshortcircuit%252ccsfallback%252ccsactivityhandler) seçeneklerini inceleyin.
 
 [traffic-manager-marketing]: https://azure.microsoft.com/services/traffic-manager/
 [traffic-manager-docs]: ../../traffic-manager/index.yml

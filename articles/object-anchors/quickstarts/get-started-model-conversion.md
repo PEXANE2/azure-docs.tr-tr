@@ -7,12 +7,12 @@ ms.author: crtreasu
 ms.date: 02/22/2021
 ms.topic: quickstart
 ms.service: azure-object-anchors
-ms.openlocfilehash: 93443a321f22d232f8b2bfa6a0fe5a05a5e18175
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 69d23b9d02eb176a2e42985ef5c3673e83d9bb7e
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101749050"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102607909"
 ---
 # <a name="quickstart-create-an-object-anchors-model-from-a-3d-model"></a>Hızlı başlangıç: 3B modelden nesne bağlantıları modeli oluşturma
 
@@ -102,7 +102,7 @@ Bu hızlı başlangıcı tamamlamak için aşağıdakileri yaptığınızdan emi
 
     | Alan                    | Açıklama                       |
     | ---                      | ---                               |
-    | Inputassetpath           | Yerel makinenizde bir 3B modelin mutlak yolu (kullanabileceğiniz klasörde örnek bir model vardır `assets/models` ). Desteklenen dosya biçimleri,,, ve ' dir `fbx` `ply` `obj` `glb` `gltf` . |
+    | Inputassetpath           | Yerel makinenizde bir 3B modelin mutlak yolu. Desteklenen dosya biçimleri,,, ve ' dir `fbx` `ply` `obj` `glb` `gltf` . |
     | AssetDimensionUnit       | 3B modelinizin ölçüm birimi. Tüm desteklenen ölçü birimlerine numaralandırma kullanılarak erişilebilir `Azure.MixedReality.ObjectAnchors.Conversion.AssetLengthUnit` . |
     | Yer çekimi                  | 3B modelin yerçekimi vektörünün yönü. Bu 3B vektör, modelinizin koordinat sisteminde aşağı yönde bir yön sağlar. Örneğin negatif, `y` modelin 3B alanındaki aşağı doğru yönü gösteriyorsa, bu değer olacaktır `Vector3(0.0f, -1.0f, 0.0f)` . |
 

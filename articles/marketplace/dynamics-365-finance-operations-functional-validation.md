@@ -7,12 +7,12 @@ ms.topic: article
 author: emuench
 ms.author: navits
 ms.date: 07/17/2020
-ms.openlocfilehash: b9685081c0beacd745a83067b9d9876384933377
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 9be90cdac742a581c6346f923f44e769c8a70f76
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93131250"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102613638"
 ---
 # <a name="appsource-dynamics-365-finance-and-operations-functional-validation"></a>AppSource Dynamics 365 finans ve Operations işlev doğrulaması
 
@@ -50,17 +50,17 @@ Nihai bir gözden geçirme çağrısını zamanlamak için, [appsourceCRM@micros
 
 2. , Yayınlamak istediğiniz teklif veya çözümle eşleşen [LCS](https://lcs.dynamics.com/) ortamının aşağıdaki ekran görüntülerini alın. Sertifika ekibinin metni okuyabilmesi için yeterince net olması gerekir. Ekran görüntülerini JPG dosyası olarak kaydedin. Bu [appSourceCRM@microsoft.com](mailto:appSourceCRM@microsoft.com) kurulumu, ekran görüntüleri sağlama yerine doğrulayabilmemiz IÇIN LCS ortamınız için izin sağlayabilirsiniz.
 
-    1. **LCS**  >  **iş süreci Modelleyicisi**  >  **proje kitaplığı** ' na gidin. Tüm Işlem adımlarının ekran görüntülerini alın. **Diyagramları** ve **Gözden geçirilen** sütunları aşağıda gösterildiği gibi ekleyin:
+    1. **LCS**  >  **iş süreci Modelleyicisi**  >  **proje kitaplığı**' na gidin. Tüm Işlem adımlarının ekran görüntülerini alın. **Diyagramları** ve **Gözden geçirilen** sütunları aşağıda gösterildiği gibi ekleyin:
 
        :::image type="content" source="media/dynamics-365-finance-operations/project-library.png" alt-text="Proje kitaplığı penceresini gösterir.":::
 
       2. **LCS**  >  **Çözüm Yönetimi**  >  **test çözüm paketine** gidin. Bu örneklerde gösterilen pakete genel bakış ve içerikleri içeren ekran görüntülerini alın:
 
-    | Alan | Görüntü <img src="" width="400px">|
+    | Alan | Görüntü |
     | --- | --- |
     | Pakete genel bakış | [!["Pakete genel bakış" penceresini gösteren ekran görüntüsü.](media/dynamics-365-finance-operations/package-overview-45.png)](media/dynamics-365-finance-operations/package-overview.png#lightbox) |
     | <ul><li>Çözüm onaylayanları</li></ul> | [![Pakete genel bakış ekranı](media/dynamics-365-finance-operations/solution-approvers-45.png)](media/dynamics-365-finance-operations/solution-approvers.png#lightbox) |
-    | Paket içeriği<ul><li>Model</li><li>Yazılım dağıtılabilir paket</li></ul> | [![Paket içerikleri ekranı bir](media/dynamics-365-finance-operations/package-contents-1-45.png)](media/dynamics-365-finance-operations/package-contents-1.png#lightbox) |
+    | Paket içeriği<ul><li>Modelleme</li><li>Yazılım dağıtılabilir paket</li></ul> | [![Paket içerikleri ekranı bir](media/dynamics-365-finance-operations/package-contents-1-45.png)](media/dynamics-365-finance-operations/package-contents-1.png#lightbox) |
     | <ul><li>Yapılandırmayı GER</li><li>Veritabanı yedeklemesi</li></ul><br>Yapıtlar **yapılandırma** bölümünde yapıt gerekli değildir. | [![Paket içeriği ekranı iki](media/dynamics-365-finance-operations/package-contents-2-45.png)](media/dynamics-365-finance-operations/package-contents-2.png#lightbox) |
     | <ul><li>Power BI rapor modeli</li><li>BPM yapıtı</li></ul><br>**Power BI** bölümünde yapıtlar gerekli değildir. | [![Paket içeriği ekranı üç](media/dynamics-365-finance-operations/package-contents-3-45.png)](media/dynamics-365-finance-operations/package-contents-3.png#lightbox) |
     | <ul><li>İşlem veri paketi</li><li>Çözüm Lisans Sözleşmesi ve Gizlilik ilkesi</li></ul><br>**Grup yapılandırma** ve **Power BI rapor modeli** bölümleri, finans ve işlemler tekliflerini içerecek şekilde isteğe bağlıdır. | [![Paket içeriği ekranı dört](media/dynamics-365-finance-operations/package-contents-4-45.png)](media/dynamics-365-finance-operations/package-contents-4.png#lightbox) |

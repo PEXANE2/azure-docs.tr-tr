@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 06/04/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: b9804e119f5b5cfbee1a61eabf217dad7dbf5500
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.openlocfilehash: cab32a6c2835dc283a169f58c79ff54e7925467b
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102507237"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102554250"
 ---
 # <a name="use-the-azure-digital-twins-apis-and-sdks"></a>Azure Digital Twins API’lerini ve SDK’larını kullanma
 
@@ -122,18 +122,21 @@ Bu örnek uygulama kodundan izlenecek yol için [*öğreticiye bakın: istemci u
 Serileştirme yardımcıları, temel bilgilere erişim için hızlı bir şekilde ikizi verileri oluşturmak veya seri durumdan çıkarmak amacıyla SDK içinde kullanılabilen yardımcı işlevlerdir. Core SDK yöntemleri varsayılan olarak JSON olarak ikizi verisi döndürdüğü için, ikizi verilerini daha fazla bölmek üzere bu yardımcı sınıfları kullanmak yararlı olabilir.
 
 Kullanılabilir yardımcı sınıfları şunlardır:
-* `BasicDigitalTwin`: Bir Digital ikizi 'ın temel verilerini temsil eder
-* `BasicRelationship`: Bir ilişkinin temel verilerini temsil eder
-* `UpdateOperationUtility`: Güncelleştirme çağrılarında kullanılan JSON Patch bilgilerini temsil eder
-* `WriteableProperty`: Özellik meta verilerini temsil eder
+* `BasicDigitalTwin`: Genel olarak dijital bir ikizi 'ın temel verilerini temsil eder
+* `BasicDigitalTwinComponent`: Genel bir bileşen, `Contents` bir bileşenin özelliklerinde bir bileşeni temsil eder `BasicDigitalTwin`
+* `BasicRelationship`: Genel olarak bir ilişkinin temel verilerini temsil eder
+* `DigitalTwinsJsonPropertyName`: JSON serileştirme ve özel dijital ikizi türleri için seri hale getirme içinde kullanılacak dize sabitlerini içerir
 
 ##### <a name="deserialize-a-digital-twin"></a>Dijital ikizi serisini kaldırma
 
-Ya da gibi tercih ettiğiniz JSON kitaplığını kullanarak ikizi verilerinin serisini her zaman kaldırabilirsiniz `System.Test.Json` `Newtonsoft.Json` . Bir ikizi temel erişimi için yardımcı sınıflar bunu biraz daha uygun hale getirir.
+Ya da gibi tercih ettiğiniz JSON kitaplığını kullanarak ikizi verilerinin serisini her zaman kaldırabilirsiniz `System.Text.Json` `Newtonsoft.Json` . Bir ikizi temel erişimi için yardımcı sınıflar bunu daha kullanışlı hale getirir.
 
 `BasicDigitalTwin`Yardımcı sınıfı ayrıca, ile ikizi üzerinde tanımlanan özelliklere erişmenizi sağlar `Dictionary<string, object>` . İkizi özelliklerini listelemek için şunu kullanabilirsiniz:
 
 :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/twin_operations_sample.cs" id="GetTwin":::
+
+> [!NOTE]
+> `BasicDigitalTwin``System.Text.Json`öznitelikleri kullanır. `BasicDigitalTwin` [DigitalTwinsClient](/dotnet/api/azure.digitaltwins.core.digitaltwinsclient?view=azure-dotnet&preserve-view=true)ile birlikte kullanmak için, varsayılan oluşturucuya sahip istemciyi başlatmalısınız veya serileştirici seçeneğini özelleştirmek Istiyorsanız, [jsonobjectserializer](/dotnet/api/azure.core.serialization.jsonobjectserializer?view=azure-dotnet&preserve-view=true)kullanın.
 
 ##### <a name="create-a-digital-twin"></a>Dijital ikizi oluşturma
 

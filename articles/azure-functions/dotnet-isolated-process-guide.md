@@ -5,18 +5,20 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 03/01/2021
 ms.custom: template-concept
-ms.openlocfilehash: ab89c012c985afa8d7375ff94d0f55b0ea6941cc
-ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
+ms.openlocfilehash: ffdb146b26e83e1973c1d1bfee130eabfa09ea6a
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "102449467"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102613961"
 ---
 # <a name="guide-for-running-functions-on-net-50-in-azure"></a>Azure 'da .NET 5,0 üzerinde işlev çalıştırmaya yönelik kılavuz
 
-_.NET 5,0 desteği şu anda önizleme aşamasındadır._
-
 Bu makale, Azure Işlevleri 'nde işlem dışı çalışan .NET yalıtılmış işlem işlevleri geliştirmek Için C# kullanmaya giriş niteliğindedir. İşlem dışı çalışmak, işlev kodunuzu Azure Işlevleri çalışma zamanından ayırarak kullanmanıza olanak sağlar. Ayrıca, geçerli .NET 5,0 sürümünü hedefleyen işlevleri oluşturmanız ve çalıştırmanız için bir yol sağlar. 
+
+| Başlarken | Kavramlar| Örnekler |
+|--|--|--| 
+| <ul><li>[Visual Studio Code’u kullanma](dotnet-isolated-process-developer-howtos.md?pivots=development-environment-vscode)</li><li>[Komut satırı araçlarını kullanma](dotnet-isolated-process-developer-howtos.md?pivots=development-environment-cli)</li><li>[Visual Studio’yu kullanma](dotnet-isolated-process-developer-howtos.md?pivots=development-environment-vs)</li></ul> | <ul><li>[Barındırma seçenekleri](functions-scale.md)</li><li>[İzleme](functions-monitoring.md)</li> | <ul><li>[Başvuru örnekleri](https://github.com/Azure/azure-functions-dotnet-worker/tree/main/samples)</li></ul> |
 
 .NET 5,0 ' i desteklemeniz veya işlevlerinizi işlem dışı olarak çalıştırmanız gerekmiyorsa, bunun yerine [C# sınıf kitaplığı işlevleri geliştirmek](functions-dotnet-class-library.md)isteyebilirsiniz.
 
@@ -80,11 +82,12 @@ Aşağıdaki kodda bir işlem hattının örneği gösterilmektedir `HostBuilder
 
 Konak Oluşturucu işlem hattına erişimi olması, başlatma sırasında uygulamaya özgü herhangi bir yapılandırmayı ayarlayabileceğiniz anlamına gelir. Bu yapılandırma işlevleri ayrı bir işlemde çalışan işlev uygulamanız için geçerlidir. İşlev konağında veya tetikleyici ve bağlama yapılandırmasında değişiklik yapmak için, [host.jsdosya üzerinde](functions-host-json.md)kullanmanız gerekecektir.      
 
-Aşağıdaki örnek `args` , komut satırı bağımsız değişkenleri olarak okunan yapılandırmanın nasıl ekleneceğini göstermektedir: 
+<!--The following example shows how to add configuration `args`, which are read as command-line arguments: 
  
 :::code language="csharp" source="~/azure-functions-dotnet-worker/samples/FunctionApp/Program.cs" id="docsnippet_configure_app" :::
 
-`ConfigureAppConfiguration`Yöntemi, derleme işleminin ve uygulamanın geri kalanını yapılandırmak için kullanılır. Bu örnek, birden fazla yapılandırma öğesi eklemeyi kolaylaştıran bir [Iconıationbuilder](/dotnet/api/microsoft.extensions.configuration.iconfigurationbuilder?view=dotnet-plat-ext-5.0&preserve-view=true)da kullanır. `ConfigureAppConfiguration`Aynı örneğini döndürdüğünden [`IConfiguration`](/dotnet/api/microsoft.extensions.configuration.iconfiguration?view=dotnet-plat-ext-5.0&preserve-view=true) , birden çok yapılandırma öğesi eklemek için bunu birden çok kez çağırabilirsiniz. Tüm yapılandırma kümesine hem hem de erişebilirsiniz [`HostBuilderContext.Configuration`](/dotnet/api/microsoft.extensions.hosting.hostbuildercontext.configuration?view=dotnet-plat-ext-5.0&preserve-view=true) [`IHost.Services`](/dotnet/api/microsoft.extensions.hosting.ihost.services?view=dotnet-plat-ext-5.0&preserve-view=true) .
+The `ConfigureAppConfiguration` method is used to configure the rest of the build process and application. This example also uses an [IConfigurationBuilder](/dotnet/api/microsoft.extensions.configuration.iconfigurationbuilder?view=dotnet-plat-ext-5.0&preserve-view=true), which makes it easier to add multiple configuration items. Because `ConfigureAppConfiguration` returns the same instance of [`IConfiguration`](/dotnet/api/microsoft.extensions.configuration.iconfiguration?view=dotnet-plat-ext-5.0&preserve-view=true), you can also just call it multiple times to add multiple configuration items.-->  
+Tüm yapılandırma kümesine hem hem de erişebilirsiniz [`HostBuilderContext.Configuration`](/dotnet/api/microsoft.extensions.hosting.hostbuildercontext.configuration?view=dotnet-plat-ext-5.0&preserve-view=true) [`IHost.Services`](/dotnet/api/microsoft.extensions.hosting.ihost.services?view=dotnet-plat-ext-5.0&preserve-view=true) .
 
 Yapılandırma hakkında daha fazla bilgi edinmek için [ASP.NET Core yapılandırma](/aspnet/core/fundamentals/configuration/?view=aspnetcore-5.0&preserve-view=true)konusuna bakın. 
 
@@ -98,13 +101,13 @@ Aşağıdaki örnek bir tek hizmet bağımlılığını çıkarır:
 
 Daha fazla bilgi için bkz. [ASP.NET Core bağımlılık ekleme](/aspnet/core/fundamentals/dependency-injection?view=aspnetcore-5.0&preserve-view=true).
 
-### <a name="middleware"></a>Ara yazılım
+<!--### Middleware
 
-.NET yalıtılmış Ayrıca, ASP.NET ' de mevcut olana benzer bir model kullanarak ara yazılım kaydını da destekler. Bu model, çağırma işlem hattına mantık ekleme ve After ve After işlevleri yürütme olanağı sağlar.
+.NET isolated also supports middleware registration, again by using a model similar to what exists in ASP.NET. This model gives you the ability to inject logic into the invocation pipeline, and before and after functions execute.
 
-Tüm ara yazılım kayıt API 'Leri henüz gösterilmediğinden, ara yazılım kaydı desteklenirken, örnek uygulamaya bir örnek, ara yazılım klasörü altına ekledik.
+While the full middleware registration set of APIs is not yet exposed, we do support middleware registration and have added an example to the sample application under the Middleware folder.
 
-:::code language="csharp" source="~/azure-functions-dotnet-worker/samples/FunctionApp/Program.cs" id="docsnippet_middleware" :::
+:::code language="csharp" source="~/azure-functions-dotnet-worker/samples/FunctionApp/Program.cs" id="docsnippet_middleware" :::-->
 
 ## <a name="execution-context"></a>Yürütme bağlamı
 
@@ -180,12 +183,15 @@ Bu bölümde, .NET 5,0 ' de çalışan, işlem içi .NET sınıf kitaplığı i�
 | Dayanıklı İşlevler | [Desteklenir](durable/durable-functions-overview.md) | Desteklenmez | 
 | Kesinlik temelli bağlamalar | [Desteklenir](functions-dotnet-class-library.md#binding-at-runtime) | Desteklenmez |
 | Yapıt üzerinde function.js | Üret | Üretilmedi |
-| Yapılandırma | [ Üzerindehost.js](functions-host-json.md) | [host.js](functions-host-json.md) ve [özel başlatma](#configuration) |
+| Yapılandırma | [ Üzerindehost.js](functions-host-json.md) | [host.js](functions-host-json.md) ve özel başlatma |
 | Bağımlılık ekleme | [Desteklenir](functions-dotnet-dependency-injection.md)  | [Desteklenir](#dependency-injection) |
-| Ara yazılım | Desteklenmez | [Desteklenir](#middleware) |
+| Ara yazılım | Desteklenmez | Desteklenir |
 | Soğuk başlangıç süreleri | Genelde | Daha uzun, tam zamanında başlangıç. Olası gecikmeleri azaltmak için Windows yerine Linux üzerinde çalıştırın. |
 | ReadyToRun | [Desteklenir](functions-dotnet-class-library.md#readytorun) | _TBD_ |
 
+## <a name="known-issues"></a>Bilinen sorunlar
+
+.NET yalıtılmış işlem işlevlerini çalıştırma sorunları hakkında daha fazla bilgi edinmek için [Bu bilinen sorunlar sayfasına](https://aka.ms/AAbh18e)bakın. Sorunları bildirmek için [Bu GitHub deposunda bir sorun oluşturun](https://github.com/Azure/azure-functions-dotnet-worker/issues/new/choose).  
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

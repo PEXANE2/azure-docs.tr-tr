@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 03/03/2021
 ms.reviewer: dariac
 ms.custom: seodec18
-ms.openlocfilehash: 8dc290ed59a7738a1e2263b4203ab0d5be338ec8
-ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
+ms.openlocfilehash: 5af8294518759181326e7736ef755f0a83581014
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102122281"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102564977"
 ---
 # <a name="continuous-deployment-to-azure-app-service"></a>Azure App Service için sürekli dağıtım
 
@@ -160,7 +160,7 @@ Windows uygulamaları için, [Mercurial gibi,](https://gitlab.com/)portalın do�
 
 ## <a name="more-resources"></a>Diğer kaynaklar
 
-* [Azure Pipelines 'den Azure Uygulama Hizmetleri 'ne dağıtma](/azure/devops/pipelines/apps/cd/deploy-webdeploy-webapps?view=azure-devops&preserve-view=true)
+* [Azure Pipelines 'den Azure Uygulama Hizmetleri 'ne dağıtma](/azure/devops/pipelines/apps/cd/deploy-webdeploy-webapps)
 * [Sürekli dağıtımla ilgili yaygın sorunları araştırın](https://github.com/projectkudu/kudu/wiki/Investigating-continuous-deployment)
 * [Azure PowerShell kullanma](/powershell/azure/)
 * [Kudu Projesi](https://github.com/projectkudu/kudu/wiki)

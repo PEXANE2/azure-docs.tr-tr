@@ -1,30 +1,26 @@
 - name: Tam Ekran Okuyucu Belgeleri
   href: index.yml
-- name: Tam Ekran Okuyucu nedir?
-  href: Overview.md
-- name: Hızlı Başlangıç
-  href: ./quickstarts/client-libraries.md
-- name: Öğreticiler
+- name: Genel Bakış
   items:
-    - name: Tam Ekran Okuyucu’yu Başlatma (Android)
-      href: tutorial-android.md
-    - name: Tam Ekran Okuyucu’yu Başlatma (iOS)
-      href: tutorial-ios.md
-    - name: Tam Ekran Okuyucu’yu Başlatma (Python)
-      href: tutorial-python.md
-    - name: Birden çok Tam Ekran Okuyucu kaynağı kullanma
-      href: tutorial-multiple-resources.md
+    - name: Modern okuyucuya genel bakış
+      href: Overview.md
+    - name: Dil desteği
+      href: language-support.md
+    - name: Fiyatlandırma
+      href: 'https://azure.microsoft.com/pricing/details/cognitive-services/immersive-reader/'
+    - name: Sürüm notları
+      href: release-notes.md
+- name: Modern okuyucu hızlı başlangıcı
+  href: ./quickstarts/client-libraries.md
 - name: Nasıl Yapılır
   items:
     - name: Tam Ekran Okuyucu kaynağı oluşturma
       href: how-to-create-immersive-reader.md
-    - name: Tanımlama bilgisi ilkesini ayarlama
-      href: how-to/set-cookie-policy.md
-    - name: Matematiksel ifadeleri görüntüleme
-      href: how-to/display-math.md
-    - name: Tam Ekran Okuyucu’yu HTML içeriğiyle başlatma
-      href: how-to-launch-with-html.md
-    - name: Tam Ekran Okuyucu’yu Özelleştir düğmesi
+    - name: Tam ekran okuyucuyu başlatın
+      href: how-to-launch-immersive-reader.md
+    - name: HTML içeriğini hazırlama
+      href: how-to-prepare-html.md
+    - name: Tam ekran okuyucu başlatma düğmesini düzenleme
       href: how-to-customize-launch-button.md
     - name: Kimlik doğrulaması belirtecini önbelleğe alma
       href: how-to-cache-token.md
@@ -32,21 +28,23 @@
       href: how-to-configure-read-aloud.md
     - name: Çeviriyi yapılandırma
       href: how-to-configure-translation.md
+    - name: Matematiksel ifadeleri görüntüleme
+      href: how-to/display-math.md
+    - name: Tanımlama bilgisi ilkesini ayarlama
+      href: how-to/set-cookie-policy.md
     - name: Kullanıcı tercihlerini depolama
       href: how-to-store-user-preferences.md
+    - name: Birden çok Tam Ekran Okuyucu kaynağı kullanma
+      href: how-to-multiple-resources.md
 - name: Başvuru
   items:
     - name: JavaScript SDK'sı
       href: reference.md
-    - name: Sürüm notları
-      href: release-notes.md
 - name: Kaynaklar
   items:
+    - name: Bölgesel destek
+      href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
     - name: Destek ve yardım seçenekleri
       href: ../cognitive-services-support-options.md?context=/azure/cognitive-services/immersive-reader/context/context
-    - name: Azure yol haritası
+    - name: Azure güncelleştirmeleri
       href: 'https://azure.microsoft.com/updates/?product=cognitive-services'
-    - name: Dil desteği
-      href: language-support.md
-    - name: Bölgesel kullanılabilirlik
-      href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'

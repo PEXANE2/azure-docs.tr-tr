@@ -4,12 +4,12 @@ description: Azure Backup hizmeti ile Azure VM 'lerini yedeklerken destek ayarla
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.custom: references_regions
-ms.openlocfilehash: 2536ae0d33767de5ad53740407622e67c582cc37
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 82de73944bd833ec5f921e07a29960ac6d175f8d
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101710677"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102609796"
 ---
 # <a name="support-matrix-for-azure-vm-backup"></a>Azure VM yedekleme için destek matrisi
 
@@ -72,6 +72,7 @@ Linux makinelerini yedeklemek istiyorsanız, bu desteklenir.
 Linux Azure VM aracısıyla Linux Azure VM 'lerini yedekleme | Dosya tutarlı yedekleme.<br/><br/> [Özel betikler](backup-azure-linux-app-consistent.md)kullanılarak uygulamayla tutarlı yedekleme.<br/><br/> Geri yükleme sırasında yeni bir sanal makine oluşturabilir, bir diski geri yükleyebilir ve bir VM oluşturmak veya bir diski geri yüklemek için kullanabilir ve bunu kullanarak var olan bir VM 'deki bir diski değiştirebilirsiniz. Tek tek dosyaları ve klasörleri de geri yükleyebilirsiniz.
 MARS Aracısı ile Linux Azure VM 'lerini yedekleme | Desteklenmez.<br/><br/> MARS Aracısı yalnızca Windows makinelere yüklenebilir.
 DPM/MABS ile Linux Azure VM 'lerini yedekleme | Desteklenmez.
+Docker bağlama noktalarıyla Linux Azure VM 'lerini yedekleme | Şu anda, Azure Backup Docker bağlama noktalarının dışlamasını her seferinde farklı yollarda bağlandığından desteklemez.
 
 ## <a name="operating-system-support-linux"></a>İşletim sistemi desteği (Linux)
 
@@ -170,6 +171,7 @@ Paylaşılan depolama alanı| Küme Paylaşılan Birimi (CSV) veya Scale-Out dos
 [Paylaşılan diskler](../virtual-machines/disks-shared-enable.md) | Desteklenmez.
 Ultra SSD diskler | Desteklenmez. Daha fazla bilgi için, bkz. bu [sınırlamalar](selective-disk-backup-restore.md#limitations).
 [Geçici diskler](../virtual-machines/managed-disks-overview.md#temporary-disk) | Geçici diskler Azure Backup tarafından yedeklenmez.
+NVMe/kısa ömürlü diskler | Desteklenmez.
 
 ## <a name="vm-network-support"></a>VM ağı desteği
 

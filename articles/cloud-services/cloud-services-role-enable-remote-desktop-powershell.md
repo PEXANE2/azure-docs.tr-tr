@@ -8,12 +8,12 @@ ms.author: tagore
 author: tanmaygore
 ms.reviewer: mimckitt
 ms.custom: ''
-ms.openlocfilehash: 989aeaa4396cebcdfec0992231cb0e5ef3e9c237
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.openlocfilehash: 5b1650edb575de8fd59ad2495dafcd628a717c02
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98741358"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102610416"
 ---
 # <a name="enable-remote-desktop-connection-for-a-role-in-azure-cloud-services-classic-using-powershell"></a>PowerShell kullanarak Azure Cloud Services (klasik) bir rol için Uzak Masaüstü Bağlantısı etkinleştirme
 
@@ -30,7 +30,7 @@ Uzak Masaüstü, Azure 'da çalışan bir rolün masaüstüne erişmenizi sağla
 Bu makalede, PowerShell kullanarak bulut hizmeti rolleriniz üzerinde Uzak Masaüstü 'nün nasıl etkinleştirileceği açıklanır. Bu makale için gereken önkoşullar için bkz. [Azure PowerShell nasıl yüklenir ve yapılandırılır](/powershell/azure/) . PowerShell, Uzak Masaüstü uzantısını kullanır, böylece uygulama dağıtıldıktan sonra Uzak Masaüstü 'Nü etkinleştirebilirsiniz.
 
 ## <a name="configure-remote-desktop-from-powershell"></a>Uzak Masaüstü 'Nü PowerShell 'den yapılandırma
-[Set-Azurezerviceremotedesktopextension](/powershell/module/servicemanagement/azure.service/set-azureserviceremotedesktopextension?view=azuresmps-3.7.0&preserve-view=true) cmdlet 'i belirtilen roller üzerinde uzak masaüstünü veya bulut hizmeti dağıtımınızın tüm rollerini etkinleştirmenizi sağlar. Cmdlet 'i, bir PSCredential nesnesini kabul eden *Credential* parametresi aracılığıyla uzak masaüstü kullanıcısına ait Kullanıcı adını ve parolayı belirtmenizi sağlar.
+[Set-Azurezerviceremotedesktopextension](/powershell/module/servicemanagement/azure.service/set-azureserviceremotedesktopextension) cmdlet 'i belirtilen roller üzerinde uzak masaüstünü veya bulut hizmeti dağıtımınızın tüm rollerini etkinleştirmenizi sağlar. Cmdlet 'i, bir PSCredential nesnesini kabul eden *Credential* parametresi aracılığıyla uzak masaüstü kullanıcısına ait Kullanıcı adını ve parolayı belirtmenizi sağlar.
 
 PowerShell 'i etkileşimli olarak kullanıyorsanız, [Get-Credentials](/powershell/module/microsoft.powershell.security/get-credential) cmdlet 'Ini çağırarak PSCredential nesnesini kolayca ayarlayabilirsiniz.
 
@@ -53,7 +53,7 @@ ConvertTo-SecureString -String "Password123" -AsPlainText -Force | ConvertFrom-S
 
 Güvenli parola dosyasından kimlik bilgisi nesnesini oluşturmak için, dosya içeriğini okumanız ve [ConvertTo-SecureString](/powershell/module/microsoft.powershell.security/convertto-securestring)kullanarak bunları güvenli bir dizeye dönüştürmeniz gerekir.
 
-[Set-Azurezerviceremotedesktopextension](/powershell/module/servicemanagement/azure.service/set-azureserviceremotedesktopextension?view=azuresmps-3.7.0&preserve-view=true) cmdlet 'i Ayrıca, Kullanıcı hesabının süresinin dolacağı bir **Tarih saat** belirten bir *süre sonu* parametresini kabul eder. Örneğin, hesabı geçerli tarih ve saatten birkaç gün dolacak şekilde ayarlayabilirsiniz.
+[Set-Azurezerviceremotedesktopextension](/powershell/module/servicemanagement/azure.service/set-azureserviceremotedesktopextension) cmdlet 'i Ayrıca, Kullanıcı hesabının süresinin dolacağı bir **Tarih saat** belirten bir *süre sonu* parametresini kabul eder. Örneğin, hesabı geçerli tarih ve saatten birkaç gün dolacak şekilde ayarlayabilirsiniz.
 
 Bu PowerShell örneğinde, bir bulut hizmetinde uzak masaüstü uzantısının nasıl ayarlanacağı gösterilmektedir:
 
@@ -71,7 +71,7 @@ Uzak Masaüstü uzantısı bir dağıtım ile ilişkili. Hizmet için yeni bir d
 
 ## <a name="remote-desktop-into-a-role-instance"></a>Bir rol örneğine uzak masaüstü
 
-[Get-AzureRemoteDesktopFile](/powershell/module/servicemanagement/azure.service/get-azureremotedesktopfile?view=azuresmps-3.7.0&preserve-view=true) cmdlet 'i, bulut hizmetinizin belirli bir rol örneğinde uzak masaüstü için kullanılır. Yerel olarak RDP dosyasını indirmek için *LocalPath* parametresini kullanabilirsiniz. Ya da, bulut hizmeti rolü örneğine erişmek için Uzak Masaüstü Bağlantısı iletişim kutusunu doğrudan başlatmak üzere *başlatma* parametresini kullanabilirsiniz.
+[Get-AzureRemoteDesktopFile](/powershell/module/servicemanagement/azure.service/get-azureremotedesktopfile) cmdlet 'i, bulut hizmetinizin belirli bir rol örneğinde uzak masaüstü için kullanılır. Yerel olarak RDP dosyasını indirmek için *LocalPath* parametresini kullanabilirsiniz. Ya da, bulut hizmeti rolü örneğine erişmek için Uzak Masaüstü Bağlantısı iletişim kutusunu doğrudan başlatmak üzere *başlatma* parametresini kullanabilirsiniz.
 
 ```powershell
 Get-AzureRemoteDesktopFile -ServiceName $servicename -Name "WorkerRole1_IN_0" -Launch
@@ -79,7 +79,7 @@ Get-AzureRemoteDesktopFile -ServiceName $servicename -Name "WorkerRole1_IN_0" -L
 
 ## <a name="check-if-remote-desktop-extension-is-enabled-on-a-service"></a>Bir hizmette uzak masaüstü uzantısının etkinleştirilip etkinleştirilmediğini denetle
 
-[Get-Azurezerviceremotedesktopextension](/powershell/module/servicemanagement/azure.service/get-azureremotedesktopfile?view=azuresmps-3.7.0&preserve-view=true) cmdlet 'i bir hizmet dağıtımında uzak masaüstü 'nün etkin veya devre dışı olduğunu gösterir. Cmdlet 'i, uzak masaüstü kullanıcısına ait Kullanıcı adını ve uzak masaüstü uzantısının etkinleştirildiği rolleri döndürür. Varsayılan olarak, bu dağıtım yuvası üzerinde gerçekleşir ve bunun yerine hazırlama yuvasını kullanmayı seçebilirsiniz.
+[Get-Azurezerviceremotedesktopextension](/powershell/module/servicemanagement/azure.service/get-azureremotedesktopfile) cmdlet 'i bir hizmet dağıtımında uzak masaüstü 'nün etkin veya devre dışı olduğunu gösterir. Cmdlet 'i, uzak masaüstü kullanıcısına ait Kullanıcı adını ve uzak masaüstü uzantısının etkinleştirildiği rolleri döndürür. Varsayılan olarak, bu dağıtım yuvası üzerinde gerçekleşir ve bunun yerine hazırlama yuvasını kullanmayı seçebilirsiniz.
 
 ```powershell
 Get-AzureServiceRemoteDesktopExtension -ServiceName $servicename
@@ -89,7 +89,7 @@ Get-AzureServiceRemoteDesktopExtension -ServiceName $servicename
 
 Bir dağıtımda Uzak Masaüstü uzantısını zaten etkinleştirdiyseniz ve uzak masaüstü ayarlarını güncelleştirmeniz gerekiyorsa, önce uzantıyı kaldırın. Ve yeni ayarlarla yeniden etkinleştirin. Örneğin, uzak kullanıcı hesabı için yeni bir parola ayarlamak istiyorsanız veya hesabın kullanım alanı dolmuşsa. Bu, uzak masaüstü uzantısının etkinleştirildiği mevcut dağıtımlarda gereklidir. Yeni dağıtımlar için, uzantıyı doğrudan uygulamanız yeterlidir.
 
-Uzak Masaüstü uzantısını dağıtımdan kaldırmak için, [Remove-Azurezerviceremotedesktopextension](/powershell/module/servicemanagement/azure.service/remove-azureserviceremotedesktopextension?view=azuresmps-3.7.0&preserve-view=true) cmdlet 'ini kullanabilirsiniz. İsteğe bağlı olarak, Uzak Masaüstü uzantısını kaldırmak istediğiniz dağıtım yuvasını ve rolünü de belirtebilirsiniz.
+Uzak Masaüstü uzantısını dağıtımdan kaldırmak için, [Remove-Azurezerviceremotedesktopextension](/powershell/module/servicemanagement/azure.service/remove-azureserviceremotedesktopextension) cmdlet 'ini kullanabilirsiniz. İsteğe bağlı olarak, Uzak Masaüstü uzantısını kaldırmak istediğiniz dağıtım yuvasını ve rolünü de belirtebilirsiniz.
 
 ```powershell
 Remove-AzureServiceRemoteDesktopExtension -ServiceName $servicename -UninstallConfiguration

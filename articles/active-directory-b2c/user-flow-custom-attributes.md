@@ -7,17 +7,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/04/2021
+ms.date: 03/10/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: c9453f2fc5803fb6ce09d8749cbf7fa1c7c2ec46
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: 17c73257db371bbec0c72a23b1303847a8d14102
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102174844"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102607926"
 ---
 # <a name="define-custom-attributes-in-azure-active-directory-b2c"></a>Azure Active Directory B2C özel öznitelikleri tanımlama
 
@@ -30,6 +30,8 @@ Azure AD B2C dizininizde [yerleşik öznitelikler](user-profile-attributes.md) b
 * Müşteriye yönelik bir uygulamanın **Loyaltyıd** özniteliğini kalıcı hale getirmek gerekir.
 * Bir kimlik sağlayıcısı, kalıcı olması gereken benzersiz bir Kullanıcı tanımlayıcısına sahip olan **Uniqueuserguid** öğesine sahiptir.
 * Özel bir Kullanıcı yolculuğu, diğer mantığın üzerinde çalışması için kullanıcının, **Migrationstatus** durumunu kalıcı hale getirebilmesini gerektirir.
+
+Terimler *uzantı özelliği*, *özel öznitelik* ve *özel talep* , bu makalenin bağlamıyla aynı şeyi ifade eder. Ad, uygulama, nesne veya ilke gibi içeriğe göre değişir.
 
 Azure AD B2C, her kullanıcı hesabında depolanan özniteliklerin kümesini genişletmenizi sağlar. Ayrıca, [MICROSOFT Graph API](microsoft-graph-operations.md)'sini kullanarak bu öznitelikleri okuyabilir ve yazabilirsiniz.
 
@@ -66,11 +68,7 @@ Yeni oluşturulan özel özniteliği kullanan bir Kullanıcı akışı kullanara
 
 ## <a name="azure-ad-b2c-extensions-app"></a>Azure AD B2C uzantıları uygulaması
 
-Uzantı öznitelikleri, bir kullanıcı için veri içerse de, yalnızca bir uygulama nesnesine kaydedilebilir. Extension özniteliği B2C-Extensions-App adlı uygulamaya iliştirilir. Bu uygulamayı, Kullanıcı verilerini depolamak için Azure AD B2C tarafından kullanıldığından değiştirmeyin. Bu uygulamayı Azure AD B2C, uygulama kayıtları altında bulabilirsiniz.
-
-Terimler *uzantı özelliği*, *özel öznitelik* ve *özel talep* , bu makalenin bağlamıyla aynı şeyi ifade eder. Ad, uygulama, nesne veya ilke gibi içeriğe göre değişir.
-
-## <a name="get-the-application-properties"></a>Uygulama özelliklerini al
+Uzantı öznitelikleri, bir kullanıcı için veri içerse de, yalnızca bir uygulama nesnesine kaydedilebilir. Extension özniteliği adlı uygulamaya iliştirilir `b2c-extensions-app` . Bu uygulamayı, Kullanıcı verilerini depolamak için Azure AD B2C tarafından kullanıldığından değiştirmeyin. Bu uygulamayı Azure AD B2C, uygulama kayıtları altında bulabilirsiniz. Uygulama özelliklerini al:
 
 1. [Azure portalında](https://portal.azure.com) oturum açın.
 1. Üst menüden **Dizin + abonelik** filtresi ' ni seçin ve ardından Azure AD B2C kiracınızı içeren dizini seçin.
@@ -80,14 +78,6 @@ Terimler *uzantı özelliği*, *özel öznitelik* ve *özel talep* , bu makaleni
 1. Aşağıdaki tanımlayıcıları panonuza kopyalayın ve kaydedin:
     * **Uygulama kimliği**. Örnek: `11111111-1111-1111-1111-111111111111`.
     * **Nesne kimliği**. Örnek: `22222222-2222-2222-2222-222222222222`.
-
-## <a name="using-custom-attribute-with-ms-graph-api"></a>MS Graph API ile özel öznitelik kullanma
-
-Microsoft Graph API, uzantı öznitelikleri olan bir kullanıcının oluşturulmasını ve güncelleştirilmesini destekler. Graph API uzantı öznitelikleri, yöntemi kullanılarak adlandırılır `extension_ApplicationClientID_attributename` ; burada, `ApplicationClientID` uygulamanın uygulama **(istemci) kimliğidir** `b2c-extensions-app` . Uzantı öznitelik adında temsil edilen **uygulama (istemci) kimliğinin** hiçbir tire içerdiğini unutmayın. Örnek:
-
-```json
-"extension_831374b3bd5041bfaa54263ec9e050fc_loyaltyNumber": "212342"
-``` 
 
 ::: zone pivot="b2c-custom-policy"
 
@@ -172,6 +162,14 @@ Aşağıdaki örnek, bir teknik profilde, girişte, çıkışta ve kalıcı tale
 ```
 
 ::: zone-end
+
+## <a name="using-custom-attribute-with-ms-graph-api"></a>MS Graph API ile özel öznitelik kullanma
+
+Microsoft Graph API, uzantı öznitelikleri olan bir kullanıcının oluşturulmasını ve güncelleştirilmesini destekler. Graph API uzantı öznitelikleri, yöntemi kullanılarak adlandırılır `extension_ApplicationClientID_attributename` ; burada, `ApplicationClientID` uygulamanın uygulama **(istemci) kimliğidir** `b2c-extensions-app` . Uzantı öznitelik adında temsil edilen **uygulama (istemci) kimliğinin** hiçbir tire içerdiğini unutmayın. Örnek:
+
+```json
+"extension_831374b3bd5041bfaa54263ec9e050fc_loyaltyId": "212342" 
+``` 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

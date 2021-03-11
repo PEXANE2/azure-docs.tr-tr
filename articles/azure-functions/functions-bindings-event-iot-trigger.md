@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 02/21/2020
 ms.author: cshoe
-ms.openlocfilehash: 25396da3fb9a4293633308bf2e9d3c6b3d07265d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5c9309834b407ee56d29e38afd965ac947fc8a4f
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87041643"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102612295"
 ---
 # <a name="azure-iot-hub-trigger-for-azure-functions"></a>Azure Işlevleri için Azure IoT Hub tetikleyicisi
 
@@ -22,6 +22,10 @@ Kurulum ve yapılandırma ayrıntıları hakkında bilgi için bkz. [genel bakı
 > Aşağıdaki kod örnekleri Olay Hub 'ı API 'sini kullanırken, verilen söz dizimi IoT Hub işlevleri için geçerlidir.
 
 [!INCLUDE [functions-bindings-event-hubs](../../includes/functions-bindings-event-hubs-trigger.md)]
+
+## <a name="hostjson-properties"></a>host.jsözelliklerde
+
+Dosyadaki [host.js](functions-host-json.md#eventhub) , Olay Hub 'ı tetikleme davranışını denetleyen ayarları içerir. Kullanılabilir ayarlarla ilgili ayrıntılar için [ ayarlarıhost.js](functions-bindings-event-iot.md#hostjson-settings) bölümüne bakın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

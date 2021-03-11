@@ -201,6 +201,8 @@
           href: core/how-to-connect-devices-x509.md
         - name: Azure CLI'yı kullanarak cihaz bağlantısını izleme
           href: core/howto-monitor-devices-azure-cli.md
+        - name: IoT Edge saydam bir ağ geçidi aracılığıyla cihazları bağlama
+          href: core/how-to-connect-iot-edge-transparent-gateway.md
         - name: Azure Sphere DevKit'i hazırlama ve bağlama
           href: core/howto-connect-sphere.md
         - name: RuuviTag cihazını hazırlama ve bağlama
@@ -209,6 +211,8 @@
           href: core/howto-connect-rigado-cascade-500.md
         - name: Diğer IoT bulutlarına bağlanma
           href: core/howto-build-iotc-device-bridge.md
+        - name: Cihazlarınızı yönetme
+          href: core/how-to-move-device-to-iot.md
     - name: Tümleşik çözümler oluşturun
       items:
         - name: Panonuza kutucuklar ekleme
@@ -289,7 +293,7 @@
       href: core/howto-faq.md
 - name: Başvuru
   items:
-    - name: Azure CLI
+    - name: Azure CLI’si
       href: /cli/azure/azure-cli-reference-for-IoT
     - name: IoT Central API başvurusu
       href: /rest/api/iotcentral/
@@ -298,7 +302,7 @@
     - name: Kod örnekleri
       href: /samples/browse/?expanded=azure&products=azure-iot-central
     - name: Destek ve yardım seçenekleri
-      href: ../iot-fundamentals/iot-support-help.md
+      href: ../iot-fundamentals/iot-support-help.md?toc=/azure/iot-central/toc.json&bc=/azure/iot-central/breadcrumb/toc.json
     - name: Azure IoT hizmetleri
       items:
         - name: IoT Hub
