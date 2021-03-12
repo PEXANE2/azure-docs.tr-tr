@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 08/31/2020
+ms.date: 03/10/2021
 ms.author: inhenkel
-ms.openlocfilehash: 00808c25ac84da852cce6169fb210767ee2b56cf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2f55d1dcc3364f119faab0c728f6e3b7f5ecbb06
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89265890"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102614947"
 ---
 # <a name="get-credentials-to-access-media-services-api"></a>Media Services API 'sine erişim için kimlik bilgilerini alın
 
@@ -35,9 +35,9 @@ Azure Media Services API 'sine erişmek için Azure AD kimlik doğrulaması kull
 
 Bu makalede Media Services API 'sine erişmek için kimlik bilgilerini alma adımları açıklanır. Aşağıdaki sekmelerden birini seçin.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
-- Azure hesabı. Hesabınız yoksa [Azure Ücretsiz deneme sürümü](https://azure.microsoft.com/pricing/free-trial/)ile başlayın. 
+- Azure hesabı. Hesabınız yoksa [Azure Ücretsiz deneme sürümü](https://azure.microsoft.com/pricing/free-trial/)ile başlayın.
 - Bir Media Services hesabı. Daha fazla bilgi için [Azure Portal kullanarak Azure Media Services hesabı oluşturma](create-account-howto.md)konusuna bakın.
 
 ## <a name="portal"></a>[Portal](#tab/portal/)
@@ -47,8 +47,8 @@ Bu makalede Media Services API 'sine erişmek için kimlik bilgilerini alma adı
 **API erişimi** sayfası, API 'ye bağlanmak için kullanmak istediğiniz kimlik doğrulama yöntemini seçmenizi sağlar. Bu sayfa, API 'ye bağlanmak için gereken değerleri de sağlar.
 
 1. [Azure portal](https://portal.azure.com/)Media Services hesabınızı seçin.
-2. Sol gezinti çubuğunda **API erişimi (yeni)** dikey penceresini seçin.
-3. **MEDIA SERVICES API 'Sine Bağlan**altında, bağlanmak ISTEDIĞINIZ Media Services API sürümünü seçin (v3 hizmetin en son sürümüdür).
+2. Sol gezinti çubuğunda **API erişimi** dikey penceresini seçin.
+3. **MEDIA SERVICES API 'Sine Bağlan** altında, bağlanmak ISTEDIĞINIZ Media Services API sürümünü seçin (v3 hizmetin en son sürümüdür).
 
 ### <a name="service-principal-authentication--recommended"></a>Hizmet sorumlusu kimlik doğrulaması (önerilir)
 

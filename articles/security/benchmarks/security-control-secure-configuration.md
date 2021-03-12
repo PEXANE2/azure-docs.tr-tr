@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 44604f910b3ee6e6ce1b21c736c6ad1f0443e996
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.openlocfilehash: b13cc6f8bb50a3c9ec3cae519db387f9f32c950d
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102500045"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102615287"
 ---
 # <a name="security-control-secure-configuration"></a>Güvenlik denetimi: güvenli yapılandırma
 
@@ -100,7 +100,7 @@ Ayrıca, Microsoft tarafından yayımlanan Azure Marketi Sanal makine görüntü
 
 Kodunuzu özel Azure ilkeleri, Azure Resource Manager şablonları ve Istenen durum yapılandırması betikleri gibi güvenli bir şekilde depolamak ve yönetmek için Azure DevOps kullanın. Azure DevOps 'da yönettiğiniz kaynaklara erişmek için, Azure DevOps ile tümleşikse veya TFS ile tümleşikse Active Directory belirli kullanıcılara, yerleşik güvenlik gruplarına veya Azure Active Directory (Azure AD) tanımlanmış gruplara izin verebilir veya vermeyebilirsiniz.
 
-- [Azure DevOps 'da kod depolama](/azure/devops/repos/git/gitworkflow?view=azure-devops)
+- [Azure DevOps 'da kod depolama](/azure/devops/repos/git/gitworkflow)
 
 - [Azure DevOps 'da izinler ve gruplar hakkında](/azure/devops/organizations/security/about-permissions)
 

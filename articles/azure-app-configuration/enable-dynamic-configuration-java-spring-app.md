@@ -3,26 +3,47 @@ title: Spring Boot uygulamasında dinamik yapılandırma kullanma
 titleSuffix: Azure App Configuration
 description: Spring Boot uygulamaları için yapılandırma verilerini dinamik olarak güncelleştirme hakkında bilgi edinin
 services: azure-app-configuration
-author: AlexandraKemperMS
+author: mrm9084
 ms.service: azure-app-configuration
 ms.topic: tutorial
-ms.date: 08/06/2020
+ms.date: 12/09/2020
 ms.custom: devx-track-java
-ms.author: alkemper
-ms.openlocfilehash: c32e928bd4a83b4884c99e3ec3a9c647f5433e87
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.author: mametcal
+ms.openlocfilehash: 076ab0bb7dbc85a31b626a24d977e6fea558143e
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96929178"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102636547"
 ---
 # <a name="tutorial-use-dynamic-configuration-in-a-java-spring-app"></a>Öğretici: bir Java Spring uygulamasında dinamik yapılandırma kullanma
 
-Uygulama yapılandırması Spring Boot istemci kitaplığı, bir uygulamanın yeniden başlatılmasına neden olmadan, bir yapılandırma ayarları kümesinin isteğe bağlı olarak güncelleştirilmesini destekler. Yapılandırma deposuna çok fazla çağrı yapmaktan kaçınmak için istemci kitaplığı her ayarı önbelleğe alır. Yenileme işlemi, değeri yapılandırma deposunda değiştiği zaman, önbelleğe alınan değerin süresi doluncaya kadar değeri güncelleştirmez. Her istek için varsayılan sona erme saati 30 saniyedir. Gerekirse, geçersiz kılınabilir.
+Uygulama yapılandırmasının Spring için iki kitaplığı vardır. `spring-cloud-azure-appconfiguration-config` Spring Boot gerektirir ve bir bağımlılığı alır `spring-cloud-context` . `spring-cloud-azure-appconfiguration-config-web` Spring Boot ile birlikte Spring Web 'i gerektirir. Her iki kitaplık de yenilenen yapılandırma değerlerini denetlemek için el ile tetikleme desteği sağlar. `spring-cloud-azure-appconfiguration-config-web` Ayrıca yapılandırma yenileme otomatik denetimi için de destek ekler.
 
-' In metodunu çağırarak, güncelleştirilmiş ayarları isteğe bağlı olarak `AppConfigurationRefresh` denetleyebilirsiniz `refreshConfigurations()` .
+Yenile, uygulamanızı yeniden başlatmak zorunda kalmadan yapılandırma değerlerinizi yenileirsiniz, ancak içindeki tüm adamlar yeniden oluşturulmasına neden olur `@RefreshScope` . İstemci kitaplığı, yapılandırma deposuna çok fazla çağrı yapmaktan kaçınmak için şu anda yüklü olan yapılandırmaların karma kimliğini önbelleğe alır. Yenileme işlemi, değeri yapılandırma deposunda değiştiği zaman, önbelleğe alınan değerin süresi doluncaya kadar değeri güncelleştirmez. Her istek için varsayılan sona erme saati 30 saniyedir. Gerekirse, geçersiz kılınabilir.
 
-Alternatif olarak, `spring-cloud-azure-appconfiguration-config-web` `spring-web` otomatik yenilemeyi işlemek için bir bağımlılığı alan paketi kullanabilirsiniz.
+`spring-cloud-azure-appconfiguration-config-web`Otomatik yenileme, özellikle de Web 'e yay ve etkinlik temel alınarak tetiklenir `ServletRequestHandledEvent` . Bir `ServletRequestHandledEvent` tetiklenemez, `spring-cloud-azure-appconfiguration-config-web` önbelleğin süre sonu süresi dolmuşsa bile otomatik yenileme yenileme tetiklemez.
+
+## <a name="use-manual-refresh"></a>El ile yenileme kullan
+
+Uygulama Yapılandırması `AppConfigurationRefresh` , önbelleğin kullanım dışı olup olmadığını denetlemek için kullanılabilir ve zaman aşımına uğradı bir yenileme tetikleyin.
+
+```java
+import com.microsoft.azure.spring.cloud.config.AppConfigurationRefresh;
+
+...
+
+@Autowired
+private AppConfigurationRefresh appConfigurationRefresh;
+
+...
+
+public void myConfigurationRefreshCheck() {
+    Future<Boolean> triggeredRefresh = appConfigurationRefresh.refreshConfigurations();
+}
+```
+
+`AppConfigurationRefresh``refreshConfigurations()` `Future` , bir yenileme tetikleniyorsa true, değilse false döndürür. Yanlış, önbelleğin süre sonu zamanının süresinin dolmadığı, hiçbir değişiklik olmadığı veya başka bir iş parçacığının Şu anda yenileme işlemi denetlemesi anlamına gelir.
 
 ## <a name="use-automated-refresh"></a>Otomatik yenilemeyi kullan
 
@@ -59,7 +80,7 @@ Sonra, *pom.xml* dosyasını bir metin düzenleyicisinde açın ve için bir ekl
     mvn spring-boot:run
     ```
 
-1. Bir tarayıcı penceresi açın ve URL 'ye gidin: `http://localhost:8080` .  Anahtarınızla ilişkili iletiyi görürsünüz. 
+1. Bir tarayıcı penceresi açın ve URL 'ye gidin: `http://localhost:8080` .  Anahtarınızla ilişkili iletiyi görürsünüz.
 
     Ayrıca, uygulamanızı test etmek için *kıvrımlı* da kullanabilirsiniz, örneğin: 
     

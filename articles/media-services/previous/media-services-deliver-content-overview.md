@@ -2,20 +2,20 @@
 title: Müşterilere içerik sunma
 description: Bu konu, Azure Media Services ile içeriğinizi sunmaya nelerin ilgili olduğuna ilişkin genel bir bakış sunar.
 services: media-services
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 ms.assetid: 89ede54a-6a9c-4814-9858-dcfbb5f4fed5
 ms.service: media-services
 ms.workload: media
 ms.topic: article
-ms.date: 03/18/2019
-ms.author: juliako
-ms.openlocfilehash: 363bb5389eda8336d04b1ff457f8246e89a042d8
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.date: 03/10/2021
+ms.author: inhenkel
+ms.openlocfilehash: 1ad89345a2779766fde4559758e61dff92023741
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92014401"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103016620"
 ---
 # <a name="deliver-content-to-customers"></a>Müşterilere içerik sunma
 
@@ -154,7 +154,7 @@ Akış uç noktası, daha fazla dağıtım için doğrudan bir istemci oynatıc�
 
 ## <a name="known-issues"></a>Bilinen sorunlar
 ### <a name="changes-to-smooth-streaming-manifest-version"></a>Kesintisiz Akış manifest sürümündeki değişiklikler
-Temmuz 2016 hizmet sürümünden önce--Media Encoder Standard, Media Encoder Premium Workflow veya daha önceki Azure Medya Kodlayıcısı tarafından oluşturulan varlıklar dinamik paketleme kullanılarak akışa alındı--döndürülen Kesintisiz Akış bildirimi sürüm 2,0 ' e uygundur. Sürüm 2,0 ' de, parça süreleri so-çağrılan yineleme (' r ') etiketlerini kullanmaz. Örneğin:
+Temmuz 2016 hizmet sürümünden önce--Media Encoder Standard, Media Encoder Premium Workflow veya daha önceki Azure Medya Kodlayıcısı tarafından oluşturulan varlıklar dinamik paketleme kullanılarak akışa alındı--döndürülen Kesintisiz Akış bildirimi sürüm 2,0 ' e uygundur. Sürüm 2,0 ' de, parça süreleri so-çağrılan yineleme (' r ') etiketlerini kullanmaz. Örnek:
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -169,7 +169,7 @@ Temmuz 2016 hizmet sürümünden önce--Media Encoder Standard, Media Encoder Pr
 </SmoothStreamingMedia>
 ```
 
-Temmuz 2016 hizmet sürümünde, üretilen Kesintisiz Akış bildirimi sürüm 2,2 ' ye uygundur. Bu, yineleme etiketlerini kullanarak parça sürelerle uyumludur. Örneğin:
+Temmuz 2016 hizmet sürümünde, üretilen Kesintisiz Akış bildirimi sürüm 2,2 ' ye uygundur. Bu, yineleme etiketlerini kullanarak parça sürelerle uyumludur. Örnek:
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -186,7 +186,7 @@ Eski Kesintisiz Akış istemcilerinden bazıları yineleme etiketlerini destekle
 ## <a name="media-services-learning-paths"></a>Media Services’i öğrenme yolları
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Geri bildirimde bulunma
+## <a name="provide-feedback"></a>Geribildirim gönderme
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="related-topics"></a>İlgili konular

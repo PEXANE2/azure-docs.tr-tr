@@ -1,9 +1,9 @@
 ---
 title: Media Services işlemler REST API genel bakış | Microsoft Docs
-description: "\"Media Services Operations REST\" API 'SI, bir Media Services hesabındaki Işleri, varlıkları, canlı kanalları ve diğer kaynakları oluşturmak için kullanılır. Bu makalede bir Azure Media Services V2 REST API genel bakış sunulmaktadır."
+description: Media Services Işlemler REST API, bir Media Services hesabındaki Işleri, varlıkları, canlı kanalları ve diğer kaynakları oluşturmak için kullanılır. Bu makalede bir Azure Media Services V2 REST API genel bakış sunulmaktadır.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.assetid: a5f1c5e7-ec52-4e26-9a44-d9ea699f68d9
@@ -12,15 +12,15 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 03/20/2019
-ms.author: juliako
+ms.date: 3/10/2021
+ms.author: inhenkel
 ms.reviewer: johndeu
-ms.openlocfilehash: f48a01bb81829ff2bc10b4db1ed543382f992b58
-ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
+ms.openlocfilehash: 9f147e333e4d1b95a14dd3121d7ab304b6166248
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98696236"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103010057"
 ---
 # <a name="media-services-operations-rest-api-overview"></a>Media Services işlemler REST API genel bakış
 

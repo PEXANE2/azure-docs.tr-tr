@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 05/12/2020
-ms.openlocfilehash: 046fcb9d7473de5666b3acb25cbcaa1f9549e679
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 40e737a1ec5fb34cd22a08925143a100d36cdc6b
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102039504"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103009326"
 ---
 # <a name="connect-itsm-productsservices-with-it-service-management-connector"></a>BT Hizmet Yönetimi Bağlayıcısı ile ITSM ürünlerine/hizmetlerine bağlanma
 Bu makalede, çalışma öğelerinizi merkezi olarak yönetmek için ıTSM ürününüz/hizmetiniz ile Log Analytics BT Hizmet Yönetimi Bağlayıcısı (ITSMC) arasındaki bağlantının nasıl yapılandırılacağı hakkında bilgi sağlanır. ISMC hakkında daha fazla bilgi için bkz. [genel bakış](./itsmc-overview.md).
@@ -24,6 +24,9 @@ Aşağıdaki ıTSM ürünleri/hizmetleri desteklenir. Ürünün ıSMC 'a nasıl 
 
 > [!NOTE]
 > Çeriyi ve Provance müşterilerinin, tümleştirmede başka bir çözüm olarak, Cherwell ve Provance uç noktasına [Web kancası eylemi](./action-groups.md#webhook) kullanmasını sağlıyoruz.
+
+## <a name="ip-ranges-for-itsm-partners-connections"></a>ITSM iş ortakları bağlantıları için IP aralıkları
+ITSM IP adreslerini iş ortakları ITSM araçlarından gelen bağlantılara izin verecek şekilde listelemek için, Azure bölgesinin tüm genel IP aralığını, LogAnalytics çalışma alanının ait olduğu yere listeetmenizi öneririz. [Ayrıntılar burada](https://www.microsoft.com/en-us/download/details.aspx?id=56519) EUS/WEU/EUS2/WUS2/ABD Orta Güney bölgeleri için müşteri yalnızca ActionGroup ağ etiketini listeleyebilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

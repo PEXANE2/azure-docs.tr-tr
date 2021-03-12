@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 07/12/2020
-ms.openlocfilehash: a13f78b6aa4fc3cb6f6777c76bc762ec565624fc
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.openlocfilehash: dce4c41d0d6f15ac9dc33e687c9a5ac7b7b96e06
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91951324"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103200778"
 ---
 # <a name="configure-a-connection-from-an-azure-cognitive-search-indexer-to-sql-server-on-an-azure-vm"></a>Azure Bilişsel Arama Dizin oluşturucudan Azure sanal makinesinde SQL Server bağlantı yapılandırma
 
@@ -75,18 +75,9 @@ IP adresleme, sorunu ve olası geçici çözümleri fark ediyorsanız kolayca el
 #### <a name="restrict-access-to-the-azure-cognitive-search"></a>Azure Bilişsel Arama erişimi kısıtlama
 `AzureCognitiveSearch`SQL Azure VM 'lerinizi tüm bağlantı isteklerine açık hale getirmek yerine, arama HIZMETINIZIN IP adresine ve ACL 'deki [HIZMET etiketinin](../virtual-network/service-tags-overview.md#available-service-tags) IP adresi aralığına erişimi kısıtlamanız önemle önerilir.
 
-Arama hizmetinizin FQDN 'sini (örneğin,) ping yaparak IP adresini bulabilirsiniz `<your-search-service-name>.search.windows.net` .
+Arama hizmetinizin FQDN 'sini (örneğin,) ping yaparak IP adresini bulabilirsiniz `<your-search-service-name>.search.windows.net` . Arama hizmeti IP adresinin değiştirilmesi mümkün olsa da, değişebilir. IP adresi, hizmetin kullanım ömrü boyunca statik olarak eğilimindedir.
 
-Hizmet etiketinin IP adresi aralığını `AzureCognitiveSearch` [service tag](../virtual-network/service-tags-overview.md#available-service-tags) [Indirilebilir JSON dosyalarını](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files) veya [hizmet etiketi bulma API 'si](../virtual-network/service-tags-overview.md#use-the-service-tag-discovery-api-public-preview)aracılığıyla bulabilirsiniz. IP adresi aralığı haftalık olarak güncelleştirilir.
-
-#### <a name="managing-ip-address-fluctuations"></a>IP adresi dalgalanmaları yönetme
-Arama hizmetinizin yalnızca bir arama birimi (yani bir çoğaltma ve bir bölüm) varsa, hizmet yeniden başlatmaları sırasında IP adresi değişir ve bu, arama hizmetinizin IP adresine sahip mevcut bir ACL 'yi geçersiz kılmıştır.
-
-Sonraki bağlantı hatasından kaçınmak için bir yol, Azure Bilişsel Arama 'de birden fazla çoğaltma ve bir bölüm kullanmaktır. Bunun yapılması maliyeti artırır, ancak IP adresi sorununu da çözer. Azure Bilişsel Arama 'de, birden fazla arama biriminiz olduğunda IP adresleri değişmez.
-
-İkinci bir yaklaşım bağlantının başarısız olmasına izin vermek ve ardından NSG 'deki ACL 'Leri yeniden yapılandırmak. Ortalama olarak, IP adreslerinin her birkaç haftada bir değiştirilmesini bekleyebilir. Bu yaklaşım, seyrek olarak dizin oluşturmayı denetleyen müşteriler için önemli olabilir.
-
-Bir üçüncü uygun (özellikle güvenli değil) yaklaşım, arama hizmetinizin sağlandığı Azure bölgesinin IP adresi aralığını belirtmektir. Genel IP adreslerinin Azure kaynaklarına ayrıldığı IP aralıklarının listesi, [Azure veri MERKEZI IP aralıklarında](https://www.microsoft.com/download/details.aspx?id=41653)yayımlanır. 
+Hizmet etiketinin IP adresi aralığını `AzureCognitiveSearch` [](../virtual-network/service-tags-overview.md#available-service-tags) [Indirilebilir JSON dosyalarını](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files) veya [hizmet etiketi bulma API 'si](../virtual-network/service-tags-overview.md#use-the-service-tag-discovery-api-public-preview)aracılığıyla bulabilirsiniz. IP adresi aralığı haftalık olarak güncelleştirilir.
 
 #### <a name="include-the-azure-cognitive-search-portal-ip-addresses"></a>Azure Bilişsel Arama portal IP adreslerini ekleme
 Bir dizin oluşturucu oluşturmak için Azure portal kullanıyorsanız, Azure Bilişsel Arama portal mantığının oluşturma sırasında SQL Azure sanal makinenize erişmesi da gerekir. Azure Bilişsel Arama portal IP adresleri, ping işlemi tarafından bulunabilir `stamp2.search.ext.azure.com` .

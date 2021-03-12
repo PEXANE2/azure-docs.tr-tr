@@ -295,6 +295,8 @@
               href: storage-blob-copy.md
             - name: Blob dizini etiketlerini kullanma
               href: storage-blob-index-how-to.md
+            - name: Blobların sayısını ve toplam boyutunu hesapla
+              href: calculate-blob-count-size.md
         - name: Blob verilerine erişimi yetkilendirme
           items:
             - name: Kullanıcılar için yetkilendirme seçenekleri

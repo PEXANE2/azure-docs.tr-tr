@@ -12,14 +12,16 @@ ms.custom:
 - amqp
 - mqtt
 - devx-track-js
-ms.openlocfilehash: 44fe128658b90d2327f17f22b2a33aaa1d4da1fc
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: dc2d2d3e92435c7a028b43a095f456c2c383ecb4
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102046134"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103199628"
 ---
 # <a name="connect-a-downstream-device-to-an-azure-iot-edge-gateway"></a>Aşağı akış cihazını Azure IoT Edge ağ geçidine bağlama
+
+[!INCLUDE [iot-edge-version-all-supported](../../includes/iot-edge-version-all-supported.md)]
 
 Bu makalede, aşağı akış cihazları arasında güvenilir bir bağlantı kurmak ve saydam ağ geçitleri IoT Edge için yönergeler sağlanmaktadır. Saydam bir ağ geçidi senaryosunda, bir veya daha fazla cihaz iletilerini IoT Hub bağlantısını tutan tek bir ağ geçidi cihazından geçirebilir.
 
@@ -44,7 +46,19 @@ Bu makalede, terimler *ağ geçidi* ve *IoT Edge Ağ* geçidi, saydam bir ağ ge
 
 ## <a name="prepare-a-downstream-device"></a>Aşağı akış cihazı hazırlama
 
+<!-- 1.1 -->
+:::moniker range="iotedge-2018-06"
 Bir aşağı akış cihazı, Azure IoT Hub bulut hizmeti ile oluşturulmuş bir kimliği olan herhangi bir uygulama veya platform olabilir. Çoğu durumda bu uygulamalar [Azure IoT cihaz SDK 'sını](../iot-hub/iot-hub-devguide-sdks.md)kullanır. Bir aşağı akış cihazı, IoT Edge ağ geçidi cihazının kendisi üzerinde çalışan bir uygulama bile olabilir. Ancak, başka bir IoT Edge cihaz IoT Edge bir ağ geçidinin bir aşağı akış olamaz.
+:::moniker-end
+<!-- end 1.1 -->
+
+<!-- 1.2 -->
+:::moniker range=">=iotedge-2020-11"
+Bir aşağı akış cihazı, Azure IoT Hub bulut hizmeti ile oluşturulmuş bir kimliği olan herhangi bir uygulama veya platform olabilir. Çoğu durumda bu uygulamalar [Azure IoT cihaz SDK 'sını](../iot-hub/iot-hub-devguide-sdks.md)kullanır. Bir aşağı akış cihazı, IoT Edge ağ geçidi cihazının kendisi üzerinde çalışan bir uygulama bile olabilir.
+
+Bu makalede, IoT cihazını bir aşağı akış cihazı olarak bağlama adımları sağlanmaktadır. Aşağı akış cihazı olarak bir IoT Edge cihazınız varsa bkz. bir [aşağı akış IoT Edge cihazını bir Azure IoT Edge ağ geçidine bağlama](how-to-connect-downstream-iot-edge-device.md).
+:::moniker-end
+<!-- end 1.2 -->
 
 >[!NOTE]
 >IoT Hub kayıtlı IoT cihazları, tek bir cihazdaki farklı işlemleri, donanımları veya işlevleri yalıtmak için [Modül TWINS](../iot-hub/iot-hub-devguide-module-twins.md) kullanabilir. IoT Edge ağ geçitleri, simetrik anahtar kimlik doğrulaması kullanan ancak X. 509.440 sertifikası kimlik doğrulaması olmadan aşağı akış modülü bağlantılarını destekler

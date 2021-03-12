@@ -6,15 +6,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 03/05/2021
+ms.date: 03/11/2021
 ms.author: tamram
 ms.reviewer: fryu
-ms.openlocfilehash: 2ed6c0c20869e31c0ef664d15305c5aa85ca4c6c
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.openlocfilehash: b7290abe102d22bb87c87c3c9d13ee99c127b942
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102215587"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103199922"
 ---
 # <a name="prevent-shared-key-authorization-for-an-azure-storage-account-preview"></a>Azure depolama hesabı (Önizleme) için paylaşılan anahtar yetkilendirmesini engelleyin
 
@@ -143,28 +143,15 @@ Set-AzStorageAccount -ResourceGroupName <resource-group> `
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Azure CLı ile bir depolama hesabı için paylaşılan anahtar yetkilendirmesine izin vermemek için Azure CLı sürüm 2.9.1 veya sonraki bir sürümünü yüklemelisiniz. Daha fazla bilgi için bkz. [Azure CLI 'Yı yüklerken](/cli/azure/install-azure-cli). Ardından, **Allowsharedkeyaccess** özelliğini yeni veya mevcut bir depolama hesabı için yapılandırın.
+Azure CLı ile bir depolama hesabı için paylaşılan anahtar yetkilendirmesine izin vermemek için Azure CLı sürüm 2.20.0 veya sonraki bir sürümünü yüklemelisiniz. Daha fazla bilgi için bkz. [Azure CLI 'Yı yüklerken](/cli/azure/install-azure-cli). Ardından, **Allowsharedkeyaccess** özelliğini yeni veya mevcut bir depolama hesabı için yapılandırın.
 
 Aşağıdaki örnek, Azure CLı ile var olan bir depolama hesabı için paylaşılan anahtarla erişime nasıl izin vermemeyi gösterir. Köşeli ayraçlar içindeki yer tutucu değerlerini kendi değerlerinizle değiştirmeyi unutmayın:
 
 ```azurecli-interactive
-$storage_account_id=$(az resource show \
+az storage account update \
     --name <storage-account> \
     --resource-group <resource-group> \
-    --resource-type Microsoft.Storage/storageAccounts \
-    --query id \
-    --output tsv)
-
-az resource update \
-    --ids $storage_account_id \
-    --set properties.allowSharedKeyAccess=false
-
-az resource show \
-    --name <storage-account> \
-    --resource-group <resource-group> \
-    --resource-type Microsoft.Storage/storageAccounts \
-    --query properties.allowSharedKeyAccess \
-    --output tsv
+    --allow-shared-key-access false
 ```
 
 ---
@@ -179,7 +166,7 @@ Paylaşılan anahtar yetkilendirmesinin artık izin verilmediğini doğrulamak i
 az storage container create \
     --account-name <storage-account> \
     --name sample-container \
-    --account-key <key>
+    --account-key <key> \
     --auth-mode key
 ```
 
@@ -240,7 +227,7 @@ Bazı Azure Araçları, Azure depolama 'ya erişmek için Azure AD yetkilendirme
 | AzCopy | BLOB depolama için desteklenir. AzCopy işlemlerini yetkilendirme hakkında daha fazla bilgi için bkz. AzCopy belgelerinde [Yetkilendirme kimlik bilgilerini nasıl sağlayacaksınız](storage-use-azcopy-v10.md#choose-how-youll-provide-authorization-credentials) . |
 | Azure Depolama Gezgini | Yalnızca BLOB depolama ve Azure Data Lake Storage 2. için desteklenir. Kuyruk depolamaya Azure AD erişimi desteklenmiyor. Doğru Azure AD kiracısını seçtiğinizden emin olun. Daha fazla bilgi için bkz. [Depolama Gezgini kullanmaya başlama](../../vs-azure-tools-storage-manage-with-storage-explorer.md?tabs=windows#sign-in-to-azure) |
 | Azure PowerShell | Destekleniyor. Azure AD ile blob veya kuyruk işlemleri için PowerShell komutlarının nasıl yetkilendirdiği hakkında daha fazla bilgi için bkz. blob verilerine erişmek için Azure [ad kimlik bilgileriyle PowerShell komutlarını çalıştırma](../blobs/authorize-data-operations-powershell.md) veya [kuyruk verilerine ERIŞIM için Azure AD kimlik bilgileriyle PowerShell komutlarını çalıştırma](../queues/authorize-data-operations-powershell.md). |
-| Azure CLI | Destekleniyor. Blob ve kuyruk verilerine erişim için Azure AD ile Azure CLı komutlarına yetki verme hakkında bilgi için bkz. [BLOB veya kuyruk verilerine erişmek için Azure AD kimlik bilgileriyle Azure CLI komutlarını çalıştırma](../blobs/authorize-data-operations-cli.md). |
+| Azure CLI’si | Destekleniyor. Blob ve kuyruk verilerine erişim için Azure AD ile Azure CLı komutlarına yetki verme hakkında bilgi için bkz. [BLOB veya kuyruk verilerine erişmek için Azure AD kimlik bilgileriyle Azure CLI komutlarını çalıştırma](../blobs/authorize-data-operations-cli.md). |
 | Azure IoT Hub | Destekleniyor. Daha fazla bilgi için bkz. [sanal ağlar için IoT Hub desteği](../../iot-hub/virtual-network-support.md). |
 | Azure Cloud Shell | Azure Cloud Shell, Azure portal tümleşik bir kabuktur. Azure Cloud Shell, depolama hesabındaki bir Azure dosya paylaşımında Kalıcılık için dosya barındırır. Bu depolama hesabı için paylaşılan anahtar yetkilendirmesi devre dışı bırakılırsa, bu dosyalar erişilemez duruma getirilir. Daha fazla bilgi için bkz. [Microsoft Azure dosyaları depolama alanınızı bağlama](../../cloud-shell/overview.md#connect-your-microsoft-azure-files-storage). <br /><br /> Paylaşılan anahtar erişimine izin verilmeyen depolama hesaplarını yönetmek için Azure Cloud Shell komutları çalıştırmak için, önce Azure RBAC aracılığıyla bu hesaplara gerekli izinleri vermiş olduğunuzdan emin olun. Daha fazla bilgi için bkz. [Azure rol tabanlı erişim denetimi (Azure RBAC) nedir?](../../role-based-access-control/overview.md). |
 

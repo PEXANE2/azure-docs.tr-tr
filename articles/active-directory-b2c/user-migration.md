@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 02/14/2020
+ms.date: 03/11/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 34bc50f5f95725b59c0d2b30b529e12abb6aa7fa
-ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
+ms.openlocfilehash: d2d4a61f653c5bedb31223d2eb3d37b92a076821
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98661162"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103010176"
 ---
-# <a name="migrate-users-to-azure-ad-b2c"></a>Kullanıcıları Azure AD B2C geçir
+# <a name="migrate-users-to-azure-ad-b2c"></a>Kullanıcıları Azure AD B2C'ye geçirme
 
 Başka bir kimlik sağlayıcısından Azure Active Directory B2C (Azure AD B2C) uygulamasına geçiş, mevcut kullanıcı hesaplarının geçirilmesini de gerektirebilir. Burada iki geçiş yöntemi ele alınmıştır, *geçiş öncesi* ve *sorunsuz geçiş*. Her iki yaklaşım da, Azure AD B2C içinde Kullanıcı hesapları oluşturmak için [MICROSOFT Graph API](microsoft-graph-operations.md) 'sini kullanan bir uygulama veya betik yazmanız gerekir.
 
@@ -50,7 +50,7 @@ Bu nedenle kesintisiz geçiş akışı iki aşamaya sahiptir: *geçiş öncesi* 
 ### <a name="phase-1-pre-migration"></a>1. Aşama: geçiş öncesi
 
 1. Geçiş uygulamanız, eski kimlik sağlayıcısından Kullanıcı hesaplarını okur.
-1. Geçiş uygulaması, Azure AD B2C dizininizde karşılık gelen Kullanıcı hesaplarını oluşturur, ancak *parola ayarlamaz*.
+1. Geçiş uygulaması Azure AD B2C dizininizde karşılık gelen Kullanıcı hesaplarını oluşturur, ancak oluşturduğunuz *rastgele parolaları ayarlar* .
 
 ### <a name="phase-2-set-credentials"></a>2. Aşama: kimlik bilgilerini ayarlama
 

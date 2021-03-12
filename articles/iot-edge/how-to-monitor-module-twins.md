@@ -9,14 +9,16 @@ ms.topic: conceptual
 ms.reviewer: veyalla
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: d968fb066e68fe1bb6986c63ce750c5de5c98cf9
-ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
+ms.openlocfilehash: 0b7013979199eefa873a651d99e87dc8b2c47856
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100633187"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103201592"
 ---
 # <a name="monitor-module-twins"></a>Modül ikizlerini izleme
+
+[!INCLUDE [iot-edge-version-all-supported](../../includes/iot-edge-version-all-supported.md)]
 
 Azure 'da modül TWINS IoT Hub IoT Edge dağıtımlarınızın bağlantısını ve durumunu izlemeyi etkinleştirir. Modül TWINS, IoT Hub 'ınızda çalışan modüllerinizin performansı hakkında yararlı bilgiler depolar. [IoT Edge Aracısı](iot-edge-runtime.md#iot-edge-agent) ve [IoT Edge merkezi](iot-edge-runtime.md#iot-edge-hub) çalışma zamanı modülleri, her biri sırasıyla kendi modül ikliklerini `$edgeAgent` ve `$edgeHub` ' ı korur:
 

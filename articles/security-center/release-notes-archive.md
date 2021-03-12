@@ -7,12 +7,12 @@ ms.service: security-center
 ms.topic: reference
 ms.date: 03/04/2021
 ms.author: memildin
-ms.openlocfilehash: 3766f29f26a6b2ffeb385cffc971b1ac7a1556cb
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: a00c11924d2c0f6860c297ab7e58da21da5e1975
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102182585"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102634711"
 ---
 # <a name="archive-for-whats-new-in-azure-security-center"></a>Azure Güvenlik Merkezi 'ndeki yenilikler için Arşiv mi var?
 
@@ -759,7 +759,7 @@ Kimlik ve erişim önerilerine örnek olarak şunlar verilebilir:
 
 [Kimlik ve erişim önerileri](recommendations-reference.md#recs-identityandaccess)hakkında daha fazla bilgi edinin.
 
-[Kimlik ve erişim izleme](security-center-identity-access.md)hakkında daha fazla bilgi edinin.
+[Aboneliklerinizde Multi-Factor Authentication (MFA) zorlamayı yönetme](security-center-identity-access.md)hakkında daha fazla bilgi edinin.
 
 
 

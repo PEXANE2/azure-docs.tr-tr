@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mqtt
-ms.openlocfilehash: e5b1950935e6279995b44c2e07931519e82359d2
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 9b066dfd260a18f35149822b4107ea2c37db931c
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102040643"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103200246"
 ---
 # <a name="understand-how-azure-iot-edge-uses-certificates"></a>Azure IoT Edge sertifikaları nasıl kullandığını anlayın
 
@@ -90,7 +90,7 @@ Makul bir soru, "Neden IoT Edge ' iş yükü CA 'sı ek sertifikası gerekiyor? 
 
 ## <a name="devtest-implications"></a>Geliştirme ve test etkileri
 
-Microsoft, geliştirme ve test senaryolarını kolaylaştırmak için, saydam ağ geçidi senaryosunda IoT Edge için uygun olan üretim dışı sertifikaları oluşturmaya yönelik bir dizi [kullanışlı betik](https://github.com/Azure/azure-iot-sdk-c/tree/master/tools/CACertificates) sağlar. Betiklerin nasıl çalıştığı hakkında örnekler için bkz. [IoT Edge cihaz özelliklerini test etmek için tanıtım sertifikaları oluşturma](how-to-create-test-certificates.md).
+Microsoft, geliştirme ve test senaryolarını kolaylaştırmak için, saydam ağ geçidi senaryosunda IoT Edge için uygun olan üretim dışı sertifikaları oluşturmaya yönelik bir dizi [kullanışlı betik](https://github.com/Azure/iotedge/tree/master/tools/CACertificates) sağlar. Betiklerin nasıl çalıştığı hakkında örnekler için bkz. [IoT Edge cihaz özelliklerini test etmek için tanıtım sertifikaları oluşturma](how-to-create-test-certificates.md).
 
 >[!Tip]
 > IoT cihaz SDK 'sını kullanan cihaz IoT "yaprak" cihazlarınızı ve uygulamalarınızı IoT Edge aracılığıyla bağlamak için, isteğe bağlı GatewayHostName parametresini cihazın bağlantı dizesinin sonuna eklemeniz gerekir. Sınır hub sunucusu sertifikası oluşturulduğunda, yapılandırma dosyasından ana bilgisayar adının düşük küçük bir sürümünü temel alır, bu nedenle, eşleşecek adların ve TLS sertifikası doğrulamasının başarılı olması için, daha küçük bir durumda GatewayHostName parametresini girmeniz gerekir.

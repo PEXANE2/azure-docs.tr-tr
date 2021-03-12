@@ -17,12 +17,12 @@ ms.date: 11/07/2020
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: cab5ac5e6a8fd900a41ff3690763746033b6200e
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: fdff3f6144f7099f3f61cfe57186357e17136e9f
+ms.sourcegitcommit: 94c3c1be6bc17403adbb2bab6bbaf4a717a66009
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102034821"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103225498"
 ---
 # <a name="automate-management-with-the-sql-server-iaas-agent-extension"></a>SQL Server IaaS Aracısı Uzantısı ile yönetimi otomatikleştirme
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -164,6 +164,8 @@ SQL IaaS Aracısı uzantısı yalnızca şunları destekler:
 - Genel veya Azure Kamu bulutuna dağıtılan VM 'Ler SQL Server. Diğer özel veya kamu bulutlarına dağıtımlar desteklenmez. 
 
 
+## <a name="in-region-data-residency"></a>Bölge içi veri yerleşimi
+Azure SQL sanal makinesi ve SQL IaaS Aracısı uzantısı, müşteri verilerini dağıtıldığı bölge dışına taşımaz veya depolamaz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

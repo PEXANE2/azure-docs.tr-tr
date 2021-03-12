@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 10/22/2020
 ms.author: marsma
 ms.custom: aaddev, scenarios:getting-started, languages:js, devx-track-js
-ms.openlocfilehash: 5ca8c41dc1e6a05975227555abd91f5d6725285a
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+ms.openlocfilehash: d6be9753cbcb2a6be9836b27f82f1b60068570b8
+ms.sourcegitcommit: 94c3c1be6bc17403adbb2bab6bbaf4a717a66009
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "101092179"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103224988"
 ---
 # <a name="quickstart-sign-in-users-and-get-an-access-token-in-a-node-web-app-using-the-auth-code-flow"></a>Hızlı başlangıç: kimlik doğrulama kod akışını kullanarak Kullanıcı oturumu açma ve düğüm Web uygulamasında erişim belirteci edinme
 
@@ -48,6 +48,15 @@ Bu hızlı başlangıçta yetkilendirme kodu akışıyla Node.js (MSAL node) iç
 > 1. Uygulamaya **genel bakış** sayfasında, daha sonra kullanılmak üzere **uygulama (istemci) kimliği** değerini aklınızda edin.
 > 1. **Yönet**' in altında **Sertifikalar & gizli**  >  **anahtar istemci parolası**' nı seçin.  Açıklamayı boş bırakın ve varsayılan süre sonu ' nu ve ardından **Ekle**' yi seçin.
 > 1. Daha sonra kullanmak üzere **Istemci parolasının** **değerini** aklınızda yapın.
+
+> [!div class="sxs-lookup" renderon="portal"]
+> #### <a name="step-1-configure-the-application-in-azure-portal"></a>1. Adım: uygulamayı Azure portal yapılandırma
+> Bu hızlı başlangıçta çalışması için kod örneği için, bir istemci parolası oluşturmanız ve bir yanıt URL 'SI eklemeniz gerekir **http://localhost:3000/redirect** .
+> > [!div renderon="portal" id="makechanges" class="nextstepaction"]
+> > [Bu değişikliği benim için yap]()
+>
+> > [!div id="appconfigured" class="alert alert-info"]
+> > ![Zaten yapılandırılmış](media/quickstart-v2-windows-desktop/green-check.png) Uygulamanız bu özniteliklerle yapılandırılmış.
 
 #### <a name="step-2-download-the-project"></a>2. Adım: Projeyi indirme
 
@@ -91,16 +100,17 @@ Bu hızlı başlangıçta yetkilendirme kodu akışıyla Node.js (MSAL node) iç
 > `config`Bölümündeki değerleri burada açıklandığı gibi değiştirin:
 >
 > - `Enter_the_Application_Id_Here` , kaydettiğiniz uygulamanın **uygulama (istemci) kimliğidir** .
+>
+>    **Uygulama (istemci) kimliğinin** değerini bulmak için, Azure Portal uygulama kaydının **genel bakış** sayfasına gidin.
 > - `Enter_the_Client_Secret_Here`, kaydettiğiniz uygulamanın **istemci gizli anahtarı** **değeridir** .
+>
+>    Yeni bir **istemci parolası** almak veya oluşturmak Için, **yönet** altında **Sertifikalar & parolaları**' nı seçin.
 >
 > Varsayılan `authority` değer, ana (genel) Azure bulutunu temsil eder:
 >
 > ```javascript
 > authority: "https://login.microsoftonline.com/common",
 > ```
->
-> > [!TIP]
-> > **Uygulama (istemci) kimliğinin** değerini bulmak için, Azure Portal uygulama kaydının **genel bakış** sayfasına gidin. Yeni bir **istemci parolası** almak veya oluşturmak için **Sertifikalar & gizlilikler** ' ın altına gidin.
 >
 > [!div class="sxs-lookup" renderon="portal"]
 > #### <a name="step-3-your-app-is-configured-and-ready-to-run"></a>3. Adım: uygulamanız yapılandırıldı ve çalıştırılmaya hazırlanıyor

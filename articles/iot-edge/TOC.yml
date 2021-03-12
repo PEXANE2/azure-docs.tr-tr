@@ -115,8 +115,6 @@
       href: support.md
     - name: Üretim dağıtımı denetim listesi
       href: production-checklist.md
-    - name: IoT Edge sözlüğü
-      href: iot-edge-glossary.md
 - name: Nasıl yapılır kılavuzları
   items:
     - name: IoT Edge cihazı oluşturma
@@ -259,6 +257,8 @@
   items:
     - name: Destek ve yardım seçenekleri
       href: ../iot-fundamentals/iot-support-help.md?toc=/azure/iot-edge/toc.json&bc=/azure/iot-edge/breadcrumb/toc.json
+    - name: IoT sözlüğü
+      href: ../iot-fundamentals/iot-glossary.md?toc=/azure/iot-edge/toc.json&bc=/azure/iot-edge/breadcrumb/toc.json
     - name: Azure IoT hizmetleri
       items:
         - name: IoT Hub

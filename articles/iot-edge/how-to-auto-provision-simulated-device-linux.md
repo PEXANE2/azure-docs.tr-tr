@@ -8,16 +8,23 @@ ms.date: 6/30/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 13f78691a3652cc82e261f807c690c04cebec3b4
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: 9356da9516ea17243be8e0e5519ec4b19e06db8a
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102175525"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103200868"
 ---
 # <a name="create-and-provision-an-iot-edge-device-with-a-tpm-on-linux"></a>Linux 'ta TPM ile IoT Edge cihaz oluşturma ve sağlama
 
+[!INCLUDE [iot-edge-version-201806](../../includes/iot-edge-version-201806.md)]
+
 Bu makalede, bir Güvenilir Platform Modülü (TPM) kullanarak bir Linux IoT Edge cihazında otomatik sağlamayı test etme işlemi gösterilmektedir. [Cihaz sağlama hizmeti](../iot-dps/index.yml)ile Azure IoT Edge cihazları otomatik olarak sağlayabilirsiniz. Otomatik sağlama işlemini tanımıyorsanız, devam etmeden önce [sağlamaya](../iot-dps/about-iot-dps.md#provisioning-process) genel bakış konusunu gözden geçirin.
+
+:::moniker range=">=iotedge-2020-11"
+> [!NOTE]
+> Şu anda, IoT Edge sürüm 1,2 ' de TPM kimlik doğrulaması kullanılarak otomatik sağlama desteklenmez.
+:::moniker-end
 
 Görevler aşağıdaki gibidir:
 

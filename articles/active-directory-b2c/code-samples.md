@@ -10,12 +10,12 @@ ms.custom: mvc
 ms.topic: sample
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: a75896dde7a23ea346e0af73ed145094e78812ca
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: b09587d90024a8c376be8b0d93f7ef7b6cc51a1e
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101654502"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103008493"
 ---
 # <a name="azure-active-directory-b2c-code-samples"></a>Azure Active Directory B2C kod örnekleri
 
@@ -47,9 +47,10 @@ Aşağıdaki tablolarda iOS, Android, .NET ve Node.js de dahil olmak üzere uygu
 
 | Örnek | Açıklama |
 |--------| ----------- |
+| [MS-Identity-JavaScript-tepki verme-öğretici](https://github.com/Azure-Samples/ms-identity-javascript-react-tutorial/tree/main/3-Authorization-II/2-call-api-b2c) | Web API 'sini çağıran tek sayfalı uygulama (SPA). Kimlik doğrulaması, MSAL tepki kullanılarak Azure AD B2C yapılır. Bu örnek, PKI CE ile yetkilendirme kodu akışını kullanır. |
 | [MS-Identity-B2C-JavaScript-Spa](https://github.com/Azure-Samples/ms-identity-b2c-javascript-spa) | Web API 'sini çağıran tek sayfalı uygulama (SPA). Azure AD B2C, MSAL.js kullanılarak kimlik doğrulaması gerçekleştirilir. Bu örnek, PKI CE ile yetkilendirme kodu akışını kullanır. |
-| [JavaScript-NodeJS-yönetim](https://github.com/Azure-Samples/ms-identity-b2c-javascript-nodejs-management/tree/main/Chapter1) | B2C dizinindeki kullanıcıları yönetmek için Microsoft Graph çağıran tek sayfalı uygulama (SPA). Azure AD B2C, MSAL.js kullanılarak kimlik doğrulaması gerçekleştirilir. Bu örnek, PKI CE ile yetkilendirme kodu akışını kullanır.|
 | [javascript-msal-singlepageapp](https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp) | Web API 'sini çağıran tek sayfalı uygulama (SPA). Azure AD B2C, MSAL.js kullanılarak kimlik doğrulaması gerçekleştirilir. Bu örnek örtük akışı kullanır.|
+| [JavaScript-NodeJS-yönetim](https://github.com/Azure-Samples/ms-identity-b2c-javascript-nodejs-management/tree/main/Chapter1) | B2C dizinindeki kullanıcıları yönetmek için Microsoft Graph çağıran tek sayfalı uygulama (SPA). Azure AD B2C, MSAL.js kullanılarak kimlik doğrulaması gerçekleştirilir. Bu örnek, PKI CE ile yetkilendirme kodu akışını kullanır.|
 
 ## <a name="consoledaemon-apps"></a>Konsol/Daemon uygulamaları
 

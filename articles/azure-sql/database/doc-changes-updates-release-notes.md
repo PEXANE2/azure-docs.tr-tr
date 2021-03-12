@@ -9,14 +9,14 @@ ms.subservice: service
 ms.custom: sqldbrb=2
 ms.devlang: ''
 ms.topic: conceptual
-ms.date: 06/17/2020
+ms.date: 03/10/2021
 ms.author: sstein
-ms.openlocfilehash: 86687e8259e7abcb9ff0e97f8cb75d96c0abfca8
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 0ddd2c96be3513d253537cefd5b9eb83da2b3c12
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102042513"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102634847"
 ---
 # <a name="whats-new-in-azure-sql-database--sql-managed-instance"></a>SQL yönetilen örneği & Azure SQL veritabanı 'ndaki yenilikler nelerdir?
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -50,13 +50,10 @@ Bu tablo, terminoloji değişikliği için hızlı bir karşılaştırma sağlar
 
 | Özellik | Ayrıntılar |
 | ---| --- |
-| Tek veritabanları ve elastik havuzlarla hızlandırılmış veritabanı kurtarma | Bilgi için bkz. [hızlandırılmış veritabanı kurtarma](../accelerated-database-recovery.md).|
-| Veri bulma ve sınıflandırma  |Bilgi için bkz. [Azure SQL veritabanı ve Azure SYNAPSE Analytics veri bulma & sınıflandırması](data-discovery-and-classification-overview.md).|
 | Elastik veritabanı işleri (Önizleme) | Bilgi için bkz. [elastik Işler oluşturma, yapılandırma ve yönetme](elastic-jobs-overview.md). |
 | Esnek sorgular | Daha fazla bilgi için bkz. [elastik sorguya genel bakış](elastic-query-overview.md). |
 | Elastik işlemler | [Bulut veritabanları arasında dağıtılmış işlemler](elastic-transactions-overview.md). |
 | Azure portal sorgu Düzenleyicisi |Bilgi için bkz. [Azure Portal SQL sorgu düzenleyicisini kullanarak bağlanma ve veri sorgulama](connect-query-portal.md).|
-| Tek veritabanları ve elastik havuzlarla R Hizmetleri/makine öğrenimi |Bilgi için bkz. [Azure SQL veritabanı 'nda Machine Learning Services](/sql/advanced-analytics/what-s-new-in-sql-server-machine-learning-services?view=sql-server-2017#machine-learning-services-in-azure-sql-database).|
 |SQL Analytics|Bilgi için bkz. [Azure SQL Analytics](../../azure-monitor/insights/azure-sql.md).|
 | &nbsp; |
 
@@ -66,7 +63,7 @@ Bu tablo, terminoloji değişikliği için hızlı bir karşılaştırma sağlar
 | ---| --- |
 | <a href="/azure/azure-sql/database/elastic-transactions-overview">Dağıtılmış işlemler</a> | Yönetilen örnekler arasında dağıtılmış işlemler. |
 | <a href="/azure/sql-database/sql-database-instance-pools">Örnek havuzları</a> | Daha küçük SQL örneklerini buluta geçirmek için kullanışlı ve uygun maliyetli bir yol. |
-| <a href="/en-gb/sql/t-sql/statements/create-login-transact-sql">Örnek düzeyi Azure AD sunucu sorumluları (oturum açmalar)</a> | <a href="/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">Dış sağlayıcıdan BIR oturum açma oluştur</a> ifadesiyle örnek düzeyinde oturumlar oluşturun. |
+| <a href="/en-gb/sql/t-sql/statements/create-login-transact-sql">Örnek düzeyi Azure AD sunucu sorumluları (oturum açmalar)</a> | <a href="/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current&preserve-view=true">Dış sağlayıcıdan BIR oturum açma oluştur</a> ifadesiyle örnek düzeyinde oturumlar oluşturun. |
 | [İşlemsel çoğaltma](../managed-instance/replication-transactional-overview.md) | Tablolardaki değişiklikleri SQL yönetilen örneği, SQL veritabanı veya SQL Server diğer veritabanlarına çoğaltın. Ya da diğer SQL yönetilen örneği veya SQL Server diğer örneklerinde bazı satırlar değiştirildiğinde tablolarınızı güncelleştirin. Daha fazla bilgi için bkz. [Azure SQL yönetilen örneği 'nde çoğaltmayı yapılandırma](../managed-instance/replication-between-two-instances-configure-tutorial.md). |
 | Tehdit algılama |Bilgi için bkz. [Azure SQL yönetilen örneği 'nde tehdit algılamayı yapılandırma](../managed-instance/threat-detection-configure.md).|
 | Uzun süreli yedek saklama | Daha fazla bilgi için, şu anda sınırlı genel önizleme aşamasında olan [Azure SQL yönetilen örneği 'nde uzun süreli yedek saklama süresini yapılandırma](../managed-instance/long-term-backup-retention-configure.md)konusuna bakın. | 
@@ -101,7 +98,7 @@ Aşağıdaki özellikler, H1 2019 ' de SQL yönetilen örnek dağıtım modelind
 |[Parametre kullanıldığında yordam sp_send_dbmail geçişli olarak başarısız olabilir @query](#procedure-sp_send_dbmail-may-transiently-fail-when--parameter-is-used)|Ocak 2021|Geçici çözüm vardır||
 |[Dağıtılmış işlemler, sunucu güven grubundan yönetilen örnek kaldırıldıktan sonra yürütülebilir](#distributed-transactions-can-be-executed-after-removing-managed-instance-from-server-trust-group)|Eki 2020|Geçici çözüm vardır||
 |[Dağıtılmış işlemler, yönetilen örnek ölçeklendirme işleminden sonra yürütülemez](#distributed-transactions-cannot-be-executed-after-managed-instance-scaling-operation)|Eki 2020|Geçici çözüm vardır||
-|[bulk INSERT](/sql/t-sql/statements/bulk-insert-transact-sql) / [](/sql/t-sql/functions/openrowset-transact-sql?view=sql-server-ver15) Azure SQL 'de ve `BACKUP` / `RESTORE` yönetilen örnekteki deyimdeki OPENROWSET, Azure depolama 'da kimlik doğrulaması yapmak için Azure AD Yönetim kimliğini kullanamaz|Eyl 2020|Geçici çözüm vardır||
+|[bulk INSERT](/sql/t-sql/statements/bulk-insert-transact-sql) / [](/sql/t-sql/functions/openrowset-transact-sql) Azure SQL 'de ve `BACKUP` / `RESTORE` yönetilen örnekteki deyimdeki OPENROWSET, Azure depolama 'da kimlik doğrulaması yapmak için Azure AD Yönetim kimliğini kullanamaz|Eyl 2020|Geçici çözüm vardır||
 |[Hizmet sorumlusu Azure AD 'ye ve AKV 'ye erişemiyor](#service-principal-cannot-access-azure-ad-and-akv)|Ağu 2020|Geçici çözüm vardır||
 |[SAĞLAMA TOPLAMı olmadan el ile yedeklemenin geri yüklenmesi başarısız olabilir](#restoring-manual-backup-without-checksum-might-fail)|Mayıs 2020|Çözümlendi|Haziran 2020|
 |[Aracı, mevcut işleri değiştirme, devre dışı bırakma veya etkinleştirme sırasında yanıt vermemeye başladı](#agent-becomes-unresponsive-upon-modifying-disabling-or-enabling-existing-jobs)|Mayıs 2020|Çözümlendi|Haziran 2020|
@@ -174,7 +171,7 @@ GO
 BULK INSERT Sales.Invoices FROM 'inv-2017-12-08.csv' WITH (DATA_SOURCE = 'MyAzureBlobStorage');
 ```
 
-**Geçici çözüm**: [depolama için kimlik doğrulaması yapmak üzere paylaşılan erişim imzasını](/sql/t-sql/statements/bulk-insert-transact-sql?view=sql-server-ver15#f-importing-data-from-a-file-in-azure-blob-storage)kullanın.
+**Geçici çözüm**: [depolama için kimlik doğrulaması yapmak üzere paylaşılan erişim imzasını](/sql/t-sql/statements/bulk-insert-transact-sql#f-importing-data-from-a-file-in-azure-blob-storage)kullanın.
 
 ### <a name="service-principal-cannot-access-azure-ad-and-akv"></a>Hizmet sorumlusu Azure AD 'ye ve AKV 'ye erişemiyor
 

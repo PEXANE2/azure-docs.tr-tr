@@ -3,7 +3,7 @@ title: Azure portalını kullanarak isteğe bağlı video göndermeye başlama |
 description: Bu öğretici, Azure portalı kullanarak Azure Media Services uygulaması ile temel bir isteğe bağlı video içerik teslim hizmeti uygulamanın adımlarını açıklar.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.assetid: 6c98fcfa-39e6-43a5-83a5-d4954788f8a4
@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 03/19/2019
-ms.author: juliako
-ms.openlocfilehash: 0cc3e26895f6bd11ba4f2e5f0b04e4dd36a4fcab
-ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
+ms.date: 03/10/2021
+ms.author: inhenkel
+ms.openlocfilehash: fc908f909cdb64e968db78b2c98b8f0edf1c61dd
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98695300"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103009700"
 ---
 # <a name="get-started-with-delivering-content-on-demand-by-using-the-azure-portal"></a>Azure Portal’ı kullanarak isteğe bağlı içerik göndermeye başlama
 
@@ -137,7 +137,7 @@ Bulucunun sona erme tarihini güncelleştirmek için bir [REST API](/rest/api/me
 2. **Ayar**  >  **varlıkları**' nı seçin. Yayımlamak istediğiniz varlığı seçin.
 3. **Yayımla** düğmesini seçin.
 4. Bulucu türünü seçin.
-5. **Ekle**’yi seçin.
+5. **Add (Ekle)** seçeneğini belirleyin.
    
     ![Videoyu yayımlama](./media/media-services-portal-vod-get-started/media-services-publish1.png)
 

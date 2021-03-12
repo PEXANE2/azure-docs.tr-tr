@@ -10,14 +10,16 @@ ms.topic: conceptual
 ms.service: iot-edge
 ms.custom: devx-track-azurecli
 services: iot-edge
-ms.openlocfilehash: 4ecb1c3dc0e72523b19e3183e17306774b3ce164
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 7b12b6c1cdc85eaba531f34b23aa74bee6b38f7b
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100370385"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103201118"
 ---
 # <a name="deploy-and-monitor-iot-edge-modules-at-scale-using-the-azure-cli"></a>Azure CLı kullanarak IoT Edge modüllerini ölçeklendirerek dağıtma ve izleme
+
+[!INCLUDE [iot-edge-version-all-supported](../../includes/iot-edge-version-all-supported.md)]
 
 Tek seferde birçok cihaza yönelik devam eden dağıtımları yönetmek için Azure komut satırı arabirimini kullanarak **IoT Edge otomatik dağıtım** oluşturun. IoT Edge için otomatik dağıtımlar IoT Hub [otomatik cihaz yönetimi](../iot-hub/iot-hub-automatic-device-management.md) özelliğinin bir parçasıdır. Dağıtımlar birden çok modülü birden çok cihaza dağıtmanızı, modüllerin durumunu ve durumunu izlemenizi ve gerektiğinde değişiklik yapmayı sağlayan dinamik işlemlerdir.
 
@@ -155,7 +157,7 @@ Aşağıda örnek olarak bir modüllü temel katmanlı dağıtım bildirimi veri
 }
 ```
 
-Önceki örnekte, bir modül için bir katmanlı dağıtım ayarı gösteriliyordu `properties.desired` . Bu katmanlı dağıtım, aynı modülün zaten uygulanmış olduğu bir cihazı hedeflediğinden, istenen tüm özellikler üzerine yazılır. Güncelleştirmek için, istenen özelliklerin üzerine yazmak yerine yeni bir alt bölüm tanımlayabilirsiniz. Örneğin:
+Önceki örnekte, bir modül için bir katmanlı dağıtım ayarı gösteriliyordu `properties.desired` . Bu katmanlı dağıtım, aynı modülün zaten uygulanmış olduğu bir cihazı hedeflediğinden, istenen tüm özellikler üzerine yazılır. Güncelleştirmek için, istenen özelliklerin üzerine yazmak yerine yeni bir alt bölüm tanımlayabilirsiniz. Örnek:
 
 ```json
 "SimulatedTEmperatureSensor": {

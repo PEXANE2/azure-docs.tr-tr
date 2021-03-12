@@ -10,14 +10,16 @@ ms.topic: conceptual
 ms.date: 06/29/2020
 ms.author: pdecarlo
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 0e044e8102308fce4145d4aa6c887cefaa99be34
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.openlocfilehash: 1cd89f3f772effce4997fb69b37858ce2077c1dc
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98629971"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103201088"
 ---
 # <a name="run-azure-iot-edge-on-ubuntu-virtual-machines"></a>Ubuntu sanal makinelerinde Azure IoT Edge çalıştırma
+
+[!INCLUDE [iot-edge-version-201806](../../includes/iot-edge-version-201806.md)]
 
 Azure IoT Edge çalışma zamanı, bir cihazı IoT Edge cihazına dönüştürür. Çalışma zamanı, cihazlarda Raspberry Pi kadar küçük veya endüstriyel sunucu olarak büyük olarak dağıtılabilir. Bir cihaz IoT Edge çalışma zamanıyla yapılandırıldığında, buluttan cihaza iş mantığını dağıtmaya başlayabilirsiniz.
 
@@ -26,7 +28,10 @@ IoT Edge çalışma zamanının nasıl çalıştığı ve hangi bileşenlerin da
 Bu makalede, önceden sağlanmış bir cihaz bağlantı dizesi kullanılarak yüklenen ve yapılandırılan Azure IoT Edge çalışma zamanına sahip bir Ubuntu 18,04 LTS sanal makinesini dağıtma adımları listelenir. Dağıtım, [ıotedge-VM-Deploy](https://github.com/Azure/iotedge-vm-deploy) proje deposunda tutulan bir [Cloud-init](../virtual-machines/linux/using-cloud-init.md
 ) tabanlı [Azure Resource Manager şablonu](../azure-resource-manager/templates/overview.md) kullanılarak gerçekleştirilir.
 
-İlk önyüklemede, Ubuntu 18,04 LTS sanal makinesi, [Azure IoT Edge çalışma zamanının en son sürümünü Cloud-init aracılığıyla yükler](https://github.com/Azure/iotedge-vm-deploy/blob/master/cloud-init.txt). Ayrıca, çalışma zamanı başlamadan önce, bir SSH veya Uzak Masaüstü oturumu başlatmaya gerek kalmadan IoT Edge cihazı kolayca yapılandırıp bağlayabilmenizi sağlayan bir bağlantı dizesi de ayarlar. 
+İlk önyüklemede, Ubuntu 18,04 LTS sanal makinesi, [Azure IoT Edge çalışma zamanının en son sürümünü Cloud-init aracılığıyla yükler](https://github.com/Azure/iotedge-vm-deploy/blob/master/cloud-init.txt). Ayrıca, çalışma zamanı başlamadan önce, bir SSH veya Uzak Masaüstü oturumu başlatmaya gerek kalmadan IoT Edge cihazı kolayca yapılandırıp bağlayabilmenizi sağlayan bir bağlantı dizesi de ayarlar.
+
+>[!NOTE]
+>Bu makalede kullanılan şablon IoT Edge sürüm 1,1 ' i yüklüyor.
 
 ## <a name="deploy-using-deploy-to-azure-button"></a>Azure 'a dağıt düğmesini kullanarak dağıtma
 

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/07/2019
 ms.author: robb
 ms.custom: include file
-ms.openlocfilehash: c55314764f973a5a015a2bfc02815a58ce659901
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: ee7ccb126eb04e168ccc213f0429d41a76a8bc2f
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101734054"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103021630"
 ---
 **Veri toplama birimi ve bekletme** 
 
@@ -57,6 +57,7 @@ ms.locfileid: "101734054"
 | En yüksek istek hızı | Azure AD kullanıcısı veya istemci IP adresi başına 30 saniyelik 200 istek | Ayrıntılar için [Hız sınırlarına](https://dev.loganalytics.io/documentation/Using-the-API/Limits) bakın. |
 
 **Azure İzleyici Günlükleri bağlayıcısı**
+
 | Kategori | Sınır | Yorumlar |
 |:---|:---|:---|
 | En fazla kayıt sayısı | 500.000 | |

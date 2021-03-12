@@ -11,12 +11,12 @@ ms.author: sgilley
 author: sdgilley
 ms.reviewer: sgilley
 ms.date: 10/02/2020
-ms.openlocfilehash: 5aaaf2000fb8310a5208447f8eaf8546feda90fb
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.openlocfilehash: 6c29bf87c5f0ecaaeb6d608069791431a949c89b
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102509328"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103009972"
 ---
 # <a name="create-and-manage-an-azure-machine-learning-compute-instance"></a>Azure Machine Learning işlem örneği oluşturma ve yönetme
 
@@ -108,7 +108,7 @@ Ayrıca, [Azure Resource Manager şablonuyla](https://github.com/Azure/azure-qui
 ### <a name="create-on-behalf-of-preview"></a>Adına oluştur (Önizleme)
 
 Yönetici olarak, bir veri bilimcu adına bir işlem örneği oluşturabilir ve örneği bunlara ile atayabilirsiniz:
-* [Azure Resource Manager şablonu](https://github.com/Azure/azure-quickstart-templates/tree/master/101-machine-learning-compute-create-computeinstance).  Bu şablonda gereken Tenantıd ve objectID 'yi bulma hakkında daha fazla bilgi için bkz. [kimlik doğrulama yapılandırması için kimlik nesne kimliklerini bulma](../healthcare-apis/find-identity-object-ids.md).  Bu değerleri Azure Active Directory portalında da bulabilirsiniz.
+* [Azure Resource Manager şablonu](https://github.com/Azure/azure-quickstart-templates/tree/master/101-machine-learning-compute-create-computeinstance).  Bu şablonda gereken Tenantıd ve objectID 'yi bulma hakkında daha fazla bilgi için bkz. [kimlik doğrulama yapılandırması için kimlik nesne kimliklerini bulma](../healthcare-apis/fhir/find-identity-object-ids.md).  Bu değerleri Azure Active Directory portalında da bulabilirsiniz.
 * REST API
 
 İşlem örneğini oluşturduğunuz veri bilimcilerinin [Azure rol tabanlı erişim denetimi (Azure RBAC)](../role-based-access-control/overview.md) izinleri olması gerekir: 

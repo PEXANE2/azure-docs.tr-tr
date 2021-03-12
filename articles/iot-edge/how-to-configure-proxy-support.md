@@ -10,14 +10,16 @@ services: iot-edge
 ms.custom:
 - amqp
 - contperf-fy21q1
-ms.openlocfilehash: 22cea6a641a03d60565e62e64ccdeef72437d476
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 888761bb976b9d7a87211a77cb6504a44f108bbd
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102046151"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103200050"
 ---
 # <a name="configure-an-iot-edge-device-to-communicate-through-a-proxy-server"></a>IoT Edge cihazını ara sunucu üzerinden iletişim kuracak şekilde yapılandırma
+
+[!INCLUDE [iot-edge-version-201806-or-202011](../../includes/iot-edge-version-201806-or-202011.md)]
 
 IoT Edge cihazlar, IoT Hub iletişim kurmak için HTTPS istekleri gönderir. Cihazınız bir ara sunucu kullanan bir ağa bağlıysa, IoT Edge çalışma zamanını sunucu üzerinden iletişim kuracak şekilde yapılandırmanız gerekir. Proxy sunucular Ayrıca, IoT Edge hub 'ı üzerinden yönlendirilmeyen HTTP veya HTTPS isteklerini IoT Edge bağımsız modülleri etkileyebilir.
 

@@ -6,13 +6,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 author: vamahtan
 ms.author: vamahtan
-ms.date: 2/24/2021
-ms.openlocfilehash: 9fb86b3d4a46a70d71aa0c3fe9fd1b4a1ea6f298
-ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
+ms.date: 3/12/2021
+ms.openlocfilehash: fa8f2b5e952ddd188f99d130c2154d4602191c2b
+ms.sourcegitcommit: 94c3c1be6bc17403adbb2bab6bbaf4a717a66009
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102120139"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103225073"
 ---
 # <a name="co-sell-requirements"></a>Ortak satış gereksinimleri
 
@@ -24,7 +24,7 @@ Bu tabloda tüm olası ortak satış durumları gösterilmektedir:
 | ------------ | ------------- |
 | Ortak satış için hazırlanma | [Ortak satış için hazırlık durumunun minimum gereksinimleri](#requirements-for-co-sell-ready-status) karşılanmamış. |
 | Ortak satış hazırlanıyor | [Ortak satış için hazırlık durumunun tüm gereksinimleri](#requirements-for-co-sell-ready-status) karşılandı. |
-| Azure IP ortak satışı incentivized | Ortak satış için hazırlık gereksinimleri, [Bu ek gereksinimlerin](#requirements-for-ip-co-sell-incentivized-status)yanı sıra karşılandı. |
+| Azure IP ortak satışı incentivized | Ortak satış için hazırlık gereksinimleri, [Bu ek gereksinimlerin](#requirements-for-azure-ip-co-sell-incentivized-status)yanı sıra karşılandı. |
 | Biz uygulama ISV Connect Premium özenileri  | Bu durum Dynamics 365 ve Power Apps teklifleri için geçerlidir ve [Bu durum için tüm gereksinimlerin](#requirements-for-biz-apps-isv-connect-premium-incentive-status) karşılandığını gösterir. |
 |||
 
@@ -35,7 +35,7 @@ Ortak satış için hazırlık durumuna ulaşmak üzere bir teklif için aşağ�
 **Tüm iş ortakları**:
 
 - [Iş Ortağı Merkezi 'nde](./partner-center-portal/create-account.md)MPN kimliği ve etkin bir ticari Market hesabınız olmalıdır.
-- İş Ortağı Merkezi 'nde, bir [iş profilinizin](/partner-center/create-a-marketing-profile.md) tamamen bulunduğundan emin olun. Nitelikli bir Microsoft iş ortağı olarak iş profiliniz, işletmenizin gereksinimlerini karşılamak üzere benzersiz çözümlerinizi ve uzmanlığınızı arayan müşterilere ve bunlarla [ilgili olarak iş](/partner-center/referrals.md)ihtiyaçlarını karşılayacak şekilde sergilemenize yardımcı olur.
+- İş Ortağı Merkezi 'nde, bir [iş profilinizin](/partner-center/create-a-marketing-profile) tamamen bulunduğundan emin olun. Nitelikli bir Microsoft iş ortağı olarak iş profiliniz, işletmenizin gereksinimlerini karşılamak üzere benzersiz çözümlerinizi ve uzmanlığınızı arayan müşterilere ve bunlarla [ilgili olarak iş](/partner-center/referrals)ihtiyaçlarını karşılayacak şekilde sergilemenize yardımcı olur.
 - **Ortak satışı Microsoft** sekmesini doldurun ve teklifi ticari Market 'e yayımlayın.
 - Her ortak satış için uygun Coğrafya ve gerekli ürün reçeteleri için bir satış kişisi sağlayın
 
@@ -60,7 +60,7 @@ Bu belgeleri oluşturmanıza yardımcı olacak şablonlar sunuyoruz. Microsoft i
 
 Ortak satış için hazırlık durumuna uygun hale getirmek için teklifiniz veya çözümünüz, ticari Market çevrimiçi mağazalarından en az birine canlı olarak yayımlanmalıdır: Azure Marketi veya Microsoft AppSource. Ticari Market 'e sunulan teklifleri yayımlama hakkında daha fazla bilgi için bkz. [sunulan Kılavuzu teklif türüne göre yayımlama](publisher-guide-by-offer-type.md). Daha önce ticari Market 'te bir teklif yayımlamadıysanız, [ticari bir market hesabınız](./partner-center-portal/create-account.md)olduğundan emin olun.
 
-## <a name="requirements-for-ip-co-sell-incentivized-status"></a>IP ortak satış incentivized durumu gereksinimleri
+## <a name="requirements-for-azure-ip-co-sell-incentivized-status"></a>Azure IP ortak satış incentivized durumu gereksinimleri
 
 Azure IP ortak satış incentivized durumu aşağıdaki teklif türleri için geçerlidir:
 
