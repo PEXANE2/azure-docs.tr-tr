@@ -12,12 +12,12 @@ ms.date: 11/04/2020
 ms.author: marsma
 ms.reviewer: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: d61ddee1ac510b6d3528a2221a52fd266a2dd5ad
-ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
+ms.openlocfilehash: dc740acb366212640015ca0fb527d34fade1097d
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102436507"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103010771"
 ---
 # <a name="microsoft-identity-platform-code-samples-v20-endpoint"></a>Microsoft Identity platform kodu örnekleri (v 2.0 uç noktası)
 
@@ -36,20 +36,21 @@ GitHub 'daki örneklere da katkıda bulunabilirsiniz. Nasıl yapılacağını ö
 
 Bu örnekler, Microsoft Identity platform ile güvenliği sağlanmış tek sayfalı bir uygulamanın nasıl yazılacağını gösterir. Bu örnekler MSAL.js sahip olan türleri kullanır.
 
-| Platform | Açıklama | Bağlantı |
+| Platform | Description | Bağlantı |
 | -------- | --------------------- | -------- |
 | ![Bu resimde JavaScript logosu ](media/sample-v2-code/logo_js.png) [javascript (MSAL.js)](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-core) gösterilmektedir | SPA çağrıları Microsoft Graph |[JavaScript-graphapı-v2](https://github.com/Azure-Samples/active-directory-javascript-graphapi-v2) |
 | ![Bu resimde JavaScript logosu ](media/sample-v2-code/logo_js.png) [javascript (MSAL.js 2,0)](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-browser) gösterilmektedir | SPA, kimlik doğrulama kod akışı kullanan Microsoft Graph çağırır/PKI CE |[JavaScript-v2](https://github.com/Azure-Samples/ms-identity-javascript-v2) |
 | ![Bu resimde JavaScript logosu ](media/sample-v2-code/logo_js.png) [javascript (MSAL.js)](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-core) gösterilmektedir | SPA çağrıları B2C |[B2C-JavaScript-msal-singlepageapp](https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp) |
 | ![Bu resimde JavaScript logosu ](media/sample-v2-code/logo_js.png) [javascript (MSAL.js 2,0)](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-browser) gösterilmektedir | SPA, kimlik doğrulama kod akışı kullanarak B2C 'yi çağırır |[B2C-JavaScript-Spa](https://github.com/Azure-Samples/ms-identity-b2c-javascript-spa) |
+| ![Bu resimde JavaScript logosu ](media/sample-v2-code/logo_js.png) [javascript (MSAL.js 2,0)](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-browser) gösterilmektedir | SPA, sırasıyla çağrı yaptığı özel Web API 'sini çağırır Microsoft Graph  | [MS-Identity-JavaScript-öğretici-chapter4-OBO](https://github.com/Azure-Samples/ms-identity-javascript-tutorial/tree/main/4-AdvancedGrants/1-call-api-graph) |
 | ![Bu resimde angular logosu ](media/sample-v2-code/logo_angular.png) [(msal angular)](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-angular) gösterilmektedir| SPA çağrıları Microsoft Graph  | [Active-Directory-JavaScript-singlepageapp-angular](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-angular) |
 | ![Bu resimde angular logosu ](media/sample-v2-code/logo_angular.png) [(msal angular 2,0)](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-angular) gösterilmektedir| SPA, kimlik doğrulama kod akışı kullanan Microsoft Graph çağırır/PKI CE | [MS-Identity-JavaScript-angular-Spa](https://github.com/Azure-Samples/ms-identity-javascript-angular-spa) |
 | ![Bu resimde angular logosu ](media/sample-v2-code/logo_angular.png) [(msal angular 2,0)](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-angular) gösterilmektedir| SPA özel Web API 'SI çağırır | [MS-Identity-JavaScript-angular-Spa-aspnetcore-WebApi](https://github.com/Azure-Samples/ms-identity-javascript-angular-spa-aspnetcore-webapi) |
 | ![Bu resimde angular logosu ](media/sample-v2-code/logo_angular.png) [(msal angular)](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-angular) gösterilmektedir | SPA çağrıları B2C |[Active-Directory-B2C-JavaScript-angular-Spa](https://github.com/Azure-Samples/active-directory-b2c-javascript-angular-spa) |
-| ![Bu görüntüde yanıt verme logosunun yanıt verme ](media/sample-v2-code/logo_react.png) [(msal tepki verme)](https://github.com/AzureAD/microsoft-authentication-library-for-js/tree/dev/lib/msal-react) gösterilmektedir| SPA, kimlik doğrulama kod akışı kullanan Microsoft Graph çağırır/PKI CE | [MS-Identity-JavaScript-tepki-Spa](https://github.com/Azure-Samples/ms-identity-javascript-react-spa) |
-| ![Bu görüntüde tepki verme logosu yanıt verir ](media/sample-v2-code/logo_react.png) [(MSAL.js 2,0)](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-core)| SPA, sırasıyla çağrı yaptığı özel Web API 'sini çağırır Microsoft Graph  | [MS-Identity-JavaScript-tepki-Spa-dotnetcore-WebApi-OBO](https://github.com/Azure-Samples/ms-identity-javascript-react-spa-dotnetcore-webapi-obo) |
-| ![Bu resimde JavaScript logosu ](media/sample-v2-code/logo_js.png) [javascript (MSAL.js 2,0)](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-browser) gösterilmektedir | SPA, sırasıyla çağrı yaptığı özel Web API 'sini çağırır Microsoft Graph  | [MS-Identity-JavaScript-öğretici-chapter4-OBO](https://github.com/Azure-Samples/ms-identity-javascript-tutorial/tree/main/4-AdvancedGrants/1-call-api-graph) |
 | ![Bu resimde angular logosu ](media/sample-v2-code/logo_angular.png) [(msal angular 2,0)](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-angular) gösterilmektedir | SPA, uygulama rolleri ve güvenlik grupları ile özel Web API 'SI çağırır |[MS-Identity-JavaScript-angular-Spa-dotnetcore-WebApi-Roles-Groups](https://github.com/Azure-Samples/ms-identity-javascript-angular-spa-dotnetcore-webapi-roles-groups) |
+| ![Bu görüntüde yanıt verme logosunun yanıt verme ](media/sample-v2-code/logo_react.png) [(msal tepki verme)](https://github.com/AzureAD/microsoft-authentication-library-for-js/tree/dev/lib/msal-react) gösterilmektedir| SPA, kimlik doğrulama kod akışı kullanan Microsoft Graph çağırır/PKI CE | [MS-Identity-JavaScript-tepki-Spa](https://github.com/Azure-Samples/ms-identity-javascript-react-spa) |
+| ![Bu görüntüde yanıt verme logosunun yanıt verme ](media/sample-v2-code/logo_react.png) [(msal tepki verme)](https://github.com/AzureAD/microsoft-authentication-library-for-js/tree/dev/lib/msal-react) gösterilmektedir| SPA özel Web API 'SI çağırır | [MS-Identity-JavaScript-tepki verme-öğretici](https://github.com/Azure-Samples/ms-identity-javascript-react-tutorial/tree/main/3-Authorization-II/1-call-api) |
+| ![Bu görüntüde tepki verme logosu yanıt verir ](media/sample-v2-code/logo_react.png) [(MSAL.js 2,0)](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-core)| SPA, sırasıyla çağrı yaptığı özel Web API 'sini çağırır Microsoft Graph  | [MS-Identity-JavaScript-tepki-Spa-dotnetcore-WebApi-OBO](https://github.com/Azure-Samples/ms-identity-javascript-react-spa-dotnetcore-webapi-obo) |
 | ![Bu görüntüde Blazor logosu ](media/sample-v2-code/logo-blazor.png) [Blazor WebAssembly (MSAL.js)](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-browser) gösterilmektedir | Kullanıcı oturum açma ve API 'Leri Azure Active Directory ile çağırmak için Blazor WebAssembly öğreticisi |[MS-Identity-blazor-baym](https://github.com/Azure-Samples/ms-identity-blazor-wasm) |
 
 ## <a name="web-applications"></a>Web uygulamaları
@@ -129,7 +130,7 @@ Aşağıdaki örnek, bir Web tarayıcısı olmadan cihazda çalışan ortak bir 
 
 Aşağıdaki örneklerde, uygulamanızın herhangi bir Azure Active Directory (Azure AD) kiracısından oturum açma işlemlerini kabul etmek üzere nasıl yapılandırılacağı gösterilmektedir. Uygulamanızı *çok kiracılı* olarak yapılandırmak, birçok kuruluşa bir **hizmet olarak yazılım** (SaaS) uygulaması sunabileceğiniz, kullanıcıların onay sağladıktan sonra uygulamanızda oturum açabilmesine izin veren anlamına gelir.
 
-| Platform | Açıklama | Bağlantı |
+| Platform | Description | Bağlantı |
 | -------- | --------------------- | -------- |
 | ![Bu resimde angular logosu ](media/sample-v2-code/logo_angular.png) [(msal angular 2,0)](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-angular) gösterilmektedir | Çok kiracılı SPA çağrıları Graph API |[MS-Identity-JavaScript-angular-Spa-ASPNET-WebApi-Multitenant](https://github.com/Azure-Samples/ms-identity-javascript-angular-spa-aspnet-webapi-multitenant/tree/master/Chapter1) |
 | ![Bu resimde angular logosu ](media/sample-v2-code/logo_angular.png) [(msal angular 2,0)](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-angular) gösterilmektedir | Çok kiracılı SPA, çok kiracılı özel Web API 'sini çağırır |[MS-Identity-JavaScript-angular-Spa-ASPNET-WebApi-Multitenant](https://github.com/Azure-Samples/ms-identity-javascript-angular-spa-aspnet-webapi-multitenant/tree/master/Chapter2) |

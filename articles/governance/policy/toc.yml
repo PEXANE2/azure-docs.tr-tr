@@ -103,6 +103,12 @@
           href: ./samples/nist-sp-800-53-r4.md
         - name: NIST SP 800-171 R2
           href: ./samples/nist-sp-800-171-r2.md
+    - name: Konuk yapılandırma temelleri
+      items:
+        - name: Azure Güvenlik kıyaslaması için Linux temeli
+          href: ./samples/guest-configuration-baseline-linux.md
+        - name: Azure Güvenlik kıyaslaması için Windows Baseline
+          href: ./samples/guest-configuration-baseline-windows.md
 - name: Kavramlar
   items:
     - name: Tanım yapısı
@@ -221,7 +227,7 @@
       href: 'https://github.com/azure/azure-policy#known-issues'
 - name: Başvuru
   items:
-    - name: Azure CLI
+    - name: Azure CLI’si
       href: /cli/azure/policy
     - name: Azure PowerShell
       items:

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/30/2020
 ms.author: inhenkel
-ms.openlocfilehash: 9be00fd89234be0a8b5740af9e12811f36a47619
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+ms.openlocfilehash: 4f4f53d4a20397f38b565cb73e74b01d15cc3022
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "101092333"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102633062"
 ---
 # <a name="dynamic-packaging-in-media-services-v3"></a>Media Services v3 'de dinamik paketleme
 
@@ -27,9 +27,6 @@ ms.locfileid: "101092333"
 Microsoft Azure Media Services, birçok medya kaynak dosya biçimini kodlamak için kullanılabilir. Bu, tüm büyük cihazlara (iOS ve Android cihazlar gibi) erişmek için, içerik koruma ile veya olmayan farklı akış protokolleriyle bu cihazları sunar. Bu istemciler farklı protokolleri anladım. Örneğin, iOS HTTP Canlı Akışı (HLS) biçiminde ve Android cihazlarında HLS 'yi ve MPEG DASH 'i desteklemek için akışların teslim edilmesini gerektirir.
 
 Media Services, bir [akış uç noktası](streaming-endpoint-concept.md) (Origin), canlı ve isteğe bağlı içeriğinizi doğrudan bir istemci oynatıcı uygulamasına teslim edebilen bir dinamik (tam zamanında) paketleme ve kaynak hizmetini temsil eder. Aşağıdaki bölümde bahsedilen ortak akış medya protokollerinden birini kullanır. *Dinamik paketleme* , tüm akış uç noktalarında standart olarak gelen bir özelliktir.
-
-> [!NOTE]
-> V3 [canlı olaylarını](live-events-outputs-concept.md)yönetmek, v3 [varlıklarını](assets-concept.md)görüntülemek, API 'lere erişim hakkında bilgi almak için [Azure Portal](https://portal.azure.com/) kullanabilirsiniz. Diğer tüm yönetim görevleri (örneğin, dönüşümler ve işler) için [REST API](/rest/api/media/), [CLI](/cli/azure/ams)veya desteklenen [SDK 'lardan](media-services-apis-overview.md#sdks)birini kullanın.
 
 ## <a name="to-prepare-your-source-files-for-delivery"></a>Kaynak dosyalarınızı teslim edilmek üzere hazırlamak için
 

@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: article
-ms.date: 02/22/2021
+ms.date: 03/08/2021
 ms.author: alkohli
-ms.openlocfilehash: e8005bbf0373c91cf9f3515059544b9af3d52384
-ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
+ms.openlocfilehash: 922480eb2f4795729919c6ed039ccf61f19875b3
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102443803"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102630376"
 ---
 # <a name="azure-stack-edge-2101-release-notes"></a>Azure Stack Edge 2101 sürüm notları
 
@@ -29,7 +29,7 @@ Bu makale, **2.2.1473.2521** yazılım sürüm numarası ile eşleşen **Azure S
 
 Azure Stack Edge 2101 sürümünde aşağıdaki yeni özellikler mevcuttur. 
 
-- **Azure Stack Edge Pro r ve Azure Stack Edge Mini r cihazlarının genel kullanılabilirliği** -Bu sürümden başlayarak Azure Stack Edge Pro r ve Azure Stack Edge Mini r cihazları kullanıma sunulacaktır. Daha fazla bilgi için bkz. [Azure Stack Edge Pro R](azure-stack-edge-j-series-overview.md) nedir ve [Azure Stack Edge Mini r nedir?](azure-stack-edge-k-series-overview.md).  
+- **Azure Stack Edge Pro r ve Azure Stack Edge Mini r cihazlarının genel kullanılabilirliği** -Bu sürümden başlayarak Azure Stack Edge Pro r ve Azure Stack Edge Mini r cihazları kullanıma sunulacaktır. Daha fazla bilgi için bkz. [Azure Stack Edge Pro R](azure-stack-edge-pro-r-overview.md) nedir ve [Azure Stack Edge Mini r nedir?](azure-stack-edge-mini-r-overview.md).  
 - **Sanal makinelerin bulut yönetimi** -Bu sürümden başlayarak, Azure Portal aracılığıyla cihazınızda sanal makineler oluşturabilir ve yönetebilirsiniz. Daha fazla bilgi için bkz. [VM 'leri Azure Portal aracılığıyla dağıtma](azure-stack-edge-gpu-deploy-virtual-machine-portal.md).
 - **Azure izleyici Ile tümleştirme** -artık cihazınızda çalışan işlem uygulamalarından kapsayıcıları Izlemek Için Azure izleyici 'yi kullanabilirsiniz. Azure Izleyici ölçüm deposu bu sürümde desteklenmiyor. Daha fazla bilgi için bkz. [cihazınızda Azure Izleyicisini etkinleştirme](azure-stack-edge-gpu-enable-azure-monitor.md).
 - **Edge kapsayıcısı kayıt defteri** -bu sürümde, cihazınızın kenarında bir depo sağlayan bir kenar kapsayıcısı kayıt defteri mevcuttur. Kapsayıcı görüntülerini depolamak ve yönetmek için bu kayıt defterini kullanabilirsiniz. Daha fazla bilgi için bkz. [Edge kapsayıcısı kayıt defterini etkinleştirme](azure-stack-edge-gpu-deploy-arc-kubernetes-cluster.md). 

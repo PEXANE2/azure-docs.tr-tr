@@ -312,6 +312,8 @@
           href: search-query-create.md
         - name: Anlamsal sorgu oluşturma
           href: semantic-how-to-query-request.md
+        - name: Anlam yanıtı döndürme
+          href: semantic-answers.md
         - name: Sorgulara yazım denetimi ekleme
           href: speller-how-to-add.md
         - name: Sorgu türleri ve oluşturma
@@ -330,6 +332,8 @@
               href: index-add-suggesters.md
             - name: Otomatik tamamlama ve öneriler ekleme
               href: search-autocomplete-tutorial.md
+        - name: Sayfalama ve sayımlar
+          href: search-pagination-page-layout.md
         - name: Söz dizimi başvurusu
           items:
             - name: Basit sorgu söz dizimi
@@ -352,16 +356,14 @@
           href: search-query-understand-collection-filters.md
         - name: Dile göre filtrele
           href: search-filters-language.md
-    - name: Sonuçlar
+    - name: İlgi düzeyi
       items:
-        - name: Sonuçlar üzerinde çalışma
-          href: search-pagination-page-layout.md
-        - name: Anlam yanıtı yapısı
-          href: semantic-how-to-query-response.md
+        - name: Benzerlik derecelendirmesi
+          href: index-ranking-similarity.md
+        - name: Anlam derecelendirmesi
+          href: semantic-ranking.md
         - name: Puanlama modelleri
           href: index-add-scoring-profiles.md
-        - name: Benzerlik algoritması
-          href: index-ranking-similarity.md
     - name: Güvenlik
       items:
         - name: Veri şifrelemesi
@@ -426,7 +428,7 @@
           href: cognitive-search-common-errors-warnings.md
 - name: Başvuru
   items:
-    - name: Azure CLI
+    - name: Azure CLI’si
       href: /cli/azure/search
     - name: Azure PowerShell
       href: /powershell/module/az.search

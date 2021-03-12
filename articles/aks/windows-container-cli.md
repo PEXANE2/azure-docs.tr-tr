@@ -4,12 +4,12 @@ description: Azure CLı kullanarak Azure Kubernetes Service (AKS) içindeki bir 
 services: container-service
 ms.topic: article
 ms.date: 07/16/2020
-ms.openlocfilehash: 4d429b7136158723fa6110975326217c5540bc2e
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: 13b4fbd21bb348d1ef79a3ca68128869115745cc
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102181015"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103200900"
 ---
 # <a name="create-a-windows-server-container-on-an-azure-kubernetes-service-aks-cluster-using-the-azure-cli"></a>Azure CLı kullanarak Azure Kubernetes Service (AKS) kümesinde Windows Server kapsayıcısı oluşturma
 
@@ -69,32 +69,35 @@ Aşağıdaki örnek çıktıda başarıyla oluşturulan kaynak grubu gösterilme
 
 Windows Server kapsayıcıları için düğüm havuzlarını destekleyen bir AKS kümesi çalıştırmak için, kümenizin [Azure CNI][azure-cni-about] (Gelişmiş) ağ eklentisini kullanan bir ağ ilkesi kullanması gerekir. Gerekli alt ağ aralıklarını ve ağ konularını planlamaya yardımcı olacak daha ayrıntılı bilgi için bkz. [Azure CNI ağını yapılandırma][use-advanced-networking]. *Myakscluster* adlı bir aks kümesi oluşturmak için [az aks Create][az-aks-create] komutunu kullanın. Mevcut değilse, bu komut gerekli ağ kaynaklarını oluşturur.
 
-* Küme iki düğüm ile yapılandırılmış
-* *Windows-Admin-Password* ve *Windows-admin-username* parametreleri, kümede oluşturulan herhangi bir Windows Server kapsayıcısı için yönetici kimlik bilgilerini ayarlar ve [Windows Server parola gereksinimlerini][windows-server-password]karşılamalıdır.
-* Düğüm havuzu şunu kullanır `VirtualMachineScaleSets`
+* Küme iki düğüm ile yapılandırılır.
+* `--windows-admin-password`Ve `--windows-admin-username` parametreleri, kümede oluşturulan herhangi bir Windows Server kapsayıcısı için yönetici kimlik bilgilerini ayarlar ve [Windows Server parola gereksinimlerini][windows-server-password]karşılamalıdır. *Windows-Admin-Password* parametresini belirtmezseniz, sizden bir değer girmeniz istenir.
+* Düğüm havuzu kullanır `VirtualMachineScaleSets` .
 
 > [!NOTE]
 > Kümenizin güvenilir bir şekilde çalışmasını sağlamak için varsayılan düğüm havuzunda en az 2 (iki) düğüm çalıştırmanız gerekir.
 
-Kendi güvenli *PASSWORD_WIN* sağlayın (Bu makaledeki komutların bash kabuğu 'na girildiğini unutmayın):
+Kümenizdeki Windows Server kapsayıcılarınız için yönetici kimlik bilgileri olarak kullanılacak bir Kullanıcı adı oluşturun. Aşağıdaki komutlar bir Kullanıcı adı ister ve daha sonraki bir komutta kullanılmak üzere WINDOWS_USERNAME ayarlamanız gerekir (Bu makaledeki komutların BASH kabuğu 'na girildiğini unutmayın).
 
 ```azurecli-interactive
-PASSWORD_WIN="P@ssw0rd1234"
+echo "Please enter the username to use as administrator credentials for Windows Server containers on your cluster: " && read WINDOWS_USERNAME
+```
 
+Parametre belirtdiğinizden emin olmak için kümenizi oluşturun `--windows-admin-username` . Aşağıdaki örnek komut, önceki komutta ayarladığınız *WINDOWS_USERNAME* değerini kullanarak bir küme oluşturur. Alternatif olarak, *WINDOWS_USERNAME* kullanmak yerine doğrudan parametresinde farklı bir Kullanıcı adı sağlayabilirsiniz. Aşağıdaki komut ayrıca kümenizdeki Windows Server kapsayıcılarınız için yönetici kimlik bilgileri için bir parola oluşturmanızı ister. Alternatif olarak, *Windows-Admin-Password* parametresini kullanabilir ve kendi değerini burada belirtebilirsiniz.
+
+```azurecli-interactive
 az aks create \
     --resource-group myResourceGroup \
     --name myAKSCluster \
     --node-count 2 \
     --enable-addons monitoring \
     --generate-ssh-keys \
-    --windows-admin-password $PASSWORD_WIN \
-    --windows-admin-username azureuser \
+    --windows-admin-username $WINDOWS_USERNAME \
     --vm-set-type VirtualMachineScaleSets \
     --network-plugin azure
 ```
 
 > [!NOTE]
-> Parola doğrulama hatası alırsanız, *Windows-Admin-Password* parametresinin [Windows Server parola gereksinimlerini][windows-server-password]karşıladığını doğrulayın. Parolanız gereksinimleri karşılıyorsa, kaynak grubunuzu başka bir bölgede oluşturmayı deneyin. Ardından yeni kaynak grubuyla kümeyi oluşturmayı deneyin.
+> Parola doğrulama hatası alırsanız, ayarladığınız parolanın [Windows Server parola gereksinimlerini][windows-server-password]karşıladığını doğrulayın. Parolanız gereksinimleri karşılıyorsa, kaynak grubunuzu başka bir bölgede oluşturmayı deneyin. Ardından yeni kaynak grubuyla kümeyi oluşturmayı deneyin.
 
 Birkaç dakika sonra komut tamamlanır ve küme hakkında JSON biçimli bilgileri döndürür. Bazen kümenin sağlanması birkaç dakikadan uzun sürebilir. Bu durumlarda en fazla 10 dakika bekleyin.
 

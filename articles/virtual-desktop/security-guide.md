@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 12/15/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: cfc980fdabdb9c6e7085088db12754243f133d89
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 0ddbd4b798d37498af92cec40af6a80a88115fab
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100581403"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103014902"
 ---
 # <a name="security-best-practices"></a>En iyi güvenlik uygulamaları
 
@@ -117,7 +117,6 @@ Bu yeni özelliği test etmek için:
 >[!NOTE]
 >Önizleme sırasında, yalnızca Windows 10 uç noktalarından gelen tam masaüstü bağlantıları bu özelliği destekler.
 
-
 ### <a name="enable-endpoint-protection"></a>Endpoint Protection 'ı etkinleştir
 
 Dağıtımınızı bilinen kötü amaçlı yazılımlardan korumak için tüm oturum konaklarda Endpoint Protection 'ın etkinleştirilmesini öneririz. Windows Defender virüsten koruma veya bir üçüncü taraf programını kullanabilirsiniz. Daha fazla bilgi edinmek için bkz. [VDI ortamında Windows Defender virüsten koruma Için dağıtım kılavuzu](/windows/security/threat-protection/windows-defender-antivirus/deployment-vdi-windows-defender-antivirus).
@@ -169,6 +168,52 @@ Oturum konaklarınızın güvenliğini sağlamaya ek olarak, bunların içinde �
 - Yerel ve uzak dosya sistemlerine erişirken kullanıcılara sınırlı izinleri verin. Yerel ve uzak dosya sistemlerinizin, en az ayrıcalığa sahip erişim denetim listelerine sahip olduğundan emin olmak için izinleri kısıtlayabilirsiniz. Bu şekilde, kullanıcılar yalnızca ihtiyaç duydukları kaynaklara erişebilir ve kritik kaynakları değiştiremez veya silemez.
 
 - İstenmeyen yazılımların oturum konakları üzerinde çalışmasını engelleyin. Oturum konakları üzerinde ek güvenlik için uygulama Kilitleyici 'yi etkinleştirerek yalnızca izin verilen uygulamaların konakta çalıştırılabilmesini sağlayabilirsiniz.
+
+## <a name="windows-virtual-desktop-support-for-trusted-launch"></a>Güvenilen başlatma için Windows sanal masaüstü desteği
+
+Güvenilir başlatma, rootkits, önyükleme setleri ve çekirdek düzeyi kötü amaçlı yazılım gibi saldırı vektörleri aracılığıyla "yığının en altında" tehditleri korumak için geliştirilmiş güvenlik özellikleriyle Gen2 Azure VM 'leridir. Aşağıda, Windows sanal masaüstü 'nde desteklenen, güvenilir başlatma 'nın gelişmiş güvenlik özellikleri verilmiştir. Güvenilen başlatma hakkında daha fazla bilgi edinmek için [Azure sanal makineler Için güvenilir başlatma (Önizleme)](../virtual-machines/trusted-launch.md)sayfasını ziyaret edin.
+
+### <a name="secure-boot"></a>Güvenli Önyükleme
+
+Güvenli önyükleme, platform üretici yazılımının desteklediği, bellenimlerinizi kötü amaçlı yazılım tabanlı kök takımları ve önyükleme setlerinden koruyan bir moddur. Bu mod yalnızca, imzalanmış Işletim sistemleri ve sürücülerin makinenin başlatılmasını sağlar. 
+
+### <a name="monitor-boot-integrity-using-remote-attestation"></a>Uzaktan kanıtlama kullanarak önyükleme bütünlüğünü izleme
+
+Uzaktan kanıtlama, sanal makinelerinizin durumunu denetlemek için harika bir yoldur. Uzak kanıtlama, ölçülen önyükleme kayıtlarının var olduğunu, orijinal olduğunu ve sanal Güvenilir Platform Modülü (vTPM) geldiğini doğrular. Bir sistem durumu denetimi olarak, bir platformun doğru şekilde başlatıldığını belirten şifreleme belirsizlik sağlar. 
+
+### <a name="vtpm"></a>vTPM
+
+VTPM, sanal makıne başına TPM 'nin sanal örneğiyle bir donanım Güvenilir Platform Modülü (TPM) 'nin sanallaştırılmış bir sürümüdür. vTPM, sanal makinenin (UEFı, IŞLETIM sistemi, sistem ve sürücüler) tüm önyükleme zincirinin bütünlük ölçüsünü gerçekleştirerek uzaktan kanıtlamayı mümkün bir şekilde sunar. 
+
+Sanal makinelerinize uzaktan kanıtlama kullanmak için vTPM 'nin etkinleştirilmesini öneririz. VTPM etkinken, bekleyen verileri korumak için tam birim şifrelemesi sağlayan BitLocker işlevselliğini de etkinleştirebilirsiniz. VTPM kullanan tüm özellikler, belirli bir VM 'ye göre gizli dizileri oluşmasına neden olur. Kullanıcılar havuza alınmış bir senaryoda Windows sanal masaüstü hizmetine bağlandıklarında, kullanıcılar konak havuzundaki herhangi bir sanal makineye yeniden yönlendirilebilir. Özelliğin nasıl tasarlandığına bağlı olarak, bu bir etkiye sahip olabilir.
+
+>[!NOTE]
+>FSLogix profil verilerinizi depoladığınız belirli diski şifrelemek için BitLocker kullanılmamalıdır.
+
+### <a name="virtualization-based-security"></a>Sanallaştırma tabanlı güvenlik
+
+Sanallaştırma tabanlı güvenlik (VBS), işletim sistemi tarafından erişilemeyen güvenli bir bellek bölgesi oluşturup yalıtmak için hiper yöneticiyi kullanır. Hypervisor-Protected Code Integrity (HVCı) ve Windows Defender Credential Guard her ikisi de güvenlik açıklarından daha fazla koruma sağlamak için VBS 'yi kullanır. 
+
+#### <a name="hypervisor-protected-code-integrity"></a>Hypervisor-Protected kodu bütünlüğü
+
+HVCı, Windows çekirdek modu süreçlerini kötü amaçlı veya doğrulanmamış kodların eklenmesine ve yürütülmesine karşı korumak için, VBS kullanan güçlü bir sistem risk azaltma sürecidir.
+
+#### <a name="windows-defender-credential-guard"></a>Windows Defender Credential Guard
+
+Windows Defender Credential Guard, yalnızca ayrıcalıklı sistem yazılımlarının erişebilmesi için gizli dizileri yalıtmak ve korumak üzere VBS 'yi kullanır. Bu, karma değer geçişi saldırıları gibi bu gizli dizi ve kimlik bilgisi hırsızlığı saldırılarına karşı yetkisiz erişimi engeller.
+
+### <a name="deploy-trusted-launch-in-your-windows-virtual-desktop-environment"></a>Windows sanal masaüstü ortamınızda güvenilen başlatma dağıtma
+
+Windows sanal masaüstü Şu anda konak Havuzu Kurulum işlemi sırasında güvenilen başlatmayı otomatik olarak yapılandırmayı desteklememektedir. Windows sanal masaüstü ortamınızda güvenilir başlatma 'yı kullanmak için, güvenilir başlatmayı normal olarak dağıtmanız ve ardından sanal makineyi istediğiniz konak havuzunuza el ile eklemeniz gerekir.
+
+## <a name="nested-virtualization"></a>İç içe sanallaştırma
+
+Aşağıdaki işletim sistemleri, Windows sanal masaüstü 'nde iç içe sanallaştırmayı çalıştırmayı destekler:
+
+- Windows Server 2016
+- Windows Server 2019
+- Windows 10 Enterprise
+- Windows 10 Enterprise çoklu oturum.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

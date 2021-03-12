@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: d30d8cdfe6ee93f54dfd560987ac8b6a78517fd8
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: ccfbb585ccf50366721925b0b31b17088fd36371
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101718701"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102612431"
 ---
 # <a name="security-control-logging-and-monitoring"></a>Güvenlik denetimi: günlüğe kaydetme ve Izleme
 
@@ -124,9 +124,9 @@ Alternatif olarak, Azure Sentinel 'de ve yerleşik verileri etkinleştirebilir.
 
 Azure sanal makineleri ve Cloud Services için kötü amaçlı yazılımdan koruma olayı toplamayı etkinleştirin.
 
-- [Sanal makineler için Microsoft Antimalware 'i yapılandırma](/powershell/module/servicemanagement/azure.service/set-azurevmmicrosoftantimalwareextension?view=azuresmps-4.0.0)
+- [Sanal makineler için Microsoft Antimalware 'i yapılandırma](/powershell/module/servicemanagement/azure.service/set-azurevmmicrosoftantimalwareextension)
 
-- [Cloud Services için Microsoft Antimalware yapılandırma](/powershell/module/servicemanagement/azure.service/set-azureserviceantimalwareextension?view=azuresmps-4.0.0)
+- [Cloud Services için Microsoft Antimalware yapılandırma](/powershell/module/servicemanagement/azure.service/set-azureserviceantimalwareextension)
 
 - [Microsoft kötü amaçlı yazılımdan koruma](../fundamentals/antimalware.md)
 

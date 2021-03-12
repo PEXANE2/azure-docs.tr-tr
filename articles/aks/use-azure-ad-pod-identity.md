@@ -3,13 +3,13 @@ title: Azure Kubernetes hizmetinde Azure Active Directory Pod tarafından yönet
 description: Azure Kubernetes Service 'te (AKS) AAD Pod tarafından yönetilen Yönetilen kimlikler kullanmayı öğrenin
 services: container-service
 ms.topic: article
-ms.date: 12/01/2020
-ms.openlocfilehash: e7c8a96ad012afdcd724a4a242c27018563f3a10
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.date: 3/12/2021
+ms.openlocfilehash: 8b94c859800c3757842ad56df6e20f215bb13a7d
+ms.sourcegitcommit: ec39209c5cbef28ade0badfffe59665631611199
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102176323"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103233505"
 ---
 # <a name="use-azure-active-directory-pod-managed-identities-in-azure-kubernetes-service-preview"></a>Azure Kubernetes hizmetinde Azure Active Directory Pod tarafından yönetilen kimlikler kullanma (Önizleme)
 
@@ -24,13 +24,13 @@ Pod tarafından yönetilen kimlik Azure Active Directory, Kubernetes temel öğe
 
 Aşağıdaki kaynağın yüklü olması gerekir:
 
-* Azure CLı, sürüm 2.8.0 veya üzeri
-* `azure-preview`Uzantı sürümü 0.4.68 veya üzeri
+* Azure CLı, sürüm 2.20.0 veya üzeri
+* `azure-preview`Uzantı sürümü 0.5.5 veya üzeri
 
 ### <a name="limitations"></a>Sınırlamalar
 
-* Küme için en fazla 50 Pod kimliği kullanılabilir.
-* Küme için en fazla 50 Pod kimlik özel durumu kullanılabilir.
+* Küme için en fazla 200 Pod kimliği kullanılabilir.
+* Küme için en fazla 200 Pod kimlik özel durumu kullanılabilir.
 * Pod tarafından yönetilen kimlikler yalnızca Linux düğüm havuzlarında kullanılabilir.
 
 ### <a name="register-the-enablepodidentitypreview"></a>Kayıt defteri `EnablePodIdentityPreview`
@@ -66,6 +66,21 @@ AKS kümenizde oturum açmak için [az aks Get-Credentials][az-aks-get-credentia
 
 ```azurecli-interactive
 az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
+```
+## <a name="create-an-aks-cluster-with-kubenet-network-plugin"></a>Kubenet Network eklentisi ile AKS kümesi oluşturma
+
+Kubenet Network eklentisi ve pod ile yönetilen kimlik etkin bir AKS kümesi oluşturun.
+
+```azurecli-interactive
+az aks create -g $MY_RESOURCE_GROUP -n $MY_CLUSTER --enable-pod-identity --enable-pod-identity-with-kubenet
+```
+
+## <a name="update-an-existing-aks-cluster-with-kubenet-network-plugin"></a>Var olan bir AKS kümesini Kubenet Network eklentisi ile güncelleştirme
+
+Var olan bir AKS kümesini, Pod tarafından yönetilen kimliği içerecek şekilde Kubnet Network eklentisine güncelleştirin.
+
+```azurecli-interactive
+az aks update -g $MY_RESOURCE_GROUP -n $MY_CLUSTER --enable-pod-identity --enable-pod-identity-with-kubenet
 ```
 
 ## <a name="create-an-identity"></a>Kimlik oluşturma

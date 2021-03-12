@@ -16,12 +16,12 @@ ms.author: ajburnle
 ms.reviewer: dhanyahk
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9abed17f5a3d23f811c7cec0d4fd31e4433f651d
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: df90857bf30b6fff3c18faf126efabe8c959c0c6
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102177034"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102633436"
 ---
 # <a name="whats-new-in-azure-active-directory"></a>Azure Active Directory yenilikler nelerdir?
 
@@ -211,7 +211,7 @@ Daha fazla bilgi için [Azure AD Ile SaaS uygulamalarına Kullanıcı sağlamay�
  
 10 Azure AD yerleşik rolleri, [Microsoft 365 Yönetim Merkezi](https://docs.microsoft.com/microsoft-365/admin/microsoft-365-admin-center-preview), [Azure AD portalı](https://portal.azure.com/)ve [Microsoft Graph](https://developer.microsoft.com/graph/)hizalanabilmesi için yeniden adlandırıldı. Yeni roller hakkında daha fazla bilgi edinmek için [Azure Active Directory Içindeki yönetici rolü izinleri](../roles/permissions-reference.md#all-roles)bölümüne bakın.
 
-![Yeni rol adları tablosu](media/whats-new/roles-table-rbac.png)
+![MS Graph API rol adlarını ve Azure portal ve önerilen son adı API, Azure portal ve Mac arasında gösteren tablo.](media/whats-new/roles-table-rbac.png)
 
 ---
 
@@ -968,7 +968,7 @@ Artık uygulama sahiplerinin etkinlikleri sağlama hizmeti tarafından izlemesin
  
 Bazı Azure Active Directory (AD) yerleşik rollerinin, Microsoft 365 Yönetim Merkezi, Azure AD portalı ve Microsoft Graph gibi görünenlerden farklı adları vardır. Bu tutarsızlık otomatik işlemlerde sorunlara neden olabilir. Bu güncelleştirmeyle, 10 rol adını tutarlı hale getirmek için yeniden adlandırıyoruz. Aşağıdaki tabloda yeni rol adları verilmiştir:
 
-![Yeni rol adları tablosu](media/whats-new/azure-role.png)
+![M365 Yönetim Merkezi, Azure portal ve API 'sinde, MS Graph API ve Azure portal ve önerilen yeni rol adındaki rol adlarını gösteren tablo.](media/whats-new/azure-role.png)
 
 ---
 

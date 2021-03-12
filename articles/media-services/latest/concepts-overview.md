@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: seodec18
-ms.openlocfilehash: b425cd9268b336a8926e4fad9cb1f288f4fe3e87
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: 2a1c0c0685ab5a908a89f4a43073f9f773cd58c3
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98897926"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102632008"
 ---
 # <a name="media-services-terminology-and-concepts"></a>Media Services terminoloji ve kavramlar
 
@@ -26,10 +26,6 @@ ms.locfileid: "98897926"
 Bu konu, Azure Media Services terminoloji ve kavramlar hakkında kısa bir genel bakış sunar. Makalede ayrıca Media Services v3 kavramları ve işlevselliği hakkında derinlemesine bir açıklama içeren makalelere bağlantılar da sağlanmaktadır.
 
 Bu konularda açıklanan temel kavramlar, geliştirmeye başlamadan önce incelenmelidir.
-
-> [!NOTE]
-> Şu anda [Azure Portal](https://portal.azure.com/) : Media Services v3 [canlı olaylarını](live-events-outputs-concept.md)yönetmek, v3 [varlıklarını](assets-concept.md)görüntülemek (yönetmek değil) ve [apı 'lere erişim hakkında bilgi almak](./access-api-howto.md)için kullanabilirsiniz.
-> Diğer tüm yönetim görevleri (örneğin, [dönüşümler ve işler](transforms-jobs-concept.md) ve [içerik koruması](content-protection-overview.md)) için [REST API](/rest/api/media/accountfilters), [CLI](/cli/azure/ams)veya desteklenen [SDK 'lardan](media-services-apis-overview.md#sdks)birini kullanın.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 

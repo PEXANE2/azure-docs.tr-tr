@@ -4,16 +4,16 @@ ms.service: azure-communication-services
 ms.topic: include
 ms.date: 9/1/2020
 ms.author: mikben
-ms.openlocfilehash: 4a9454abc2c4e41d711a4aef6a30438a72d27edb
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: e013765579fd560952172166b24f898b354c1d17
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101750753"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103021391"
 ---
 ## <a name="prerequisites"></a>Önkoşullar
 
-- Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F). 
+- Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - Dağıtılan bir Iletişim Hizmetleri kaynağı. [Iletişim Hizmetleri kaynağı oluşturun](../../create-communication-resource.md).
 - Bir `User Access Token` çağrı istemcisini etkinleştirmek için. [Nasıl yapılır `User Access Token` ](../../access-tokens.md) hakkında daha fazla bilgi edinmek için
 - İsteğe bağlı: [uygulamanıza çağrı ekleme ile çalışmaya](../getting-started-with-calling.md) başlama için hızlı başlangıcı doldurun
@@ -63,14 +63,14 @@ const deviceManager = await callClient.getDeviceManager()
 
 ## <a name="place-an-outgoing-call"></a>Giden bir çağrı yerleştir
 
-Bir çağrı oluşturmak ve başlatmak için, CallAgent 'da API 'lerden birini kullanmanız ve Iletişim Hizmetleri Yönetimi istemci kitaplığı aracılığıyla oluşturduğunuz bir Kullanıcı sağlamanız gerekir.
+Bir çağrı oluşturmak ve başlatmak için, CallAgent 'da API 'lerden birini kullanmanız ve Iletişim Hizmetleri kimlik istemci kitaplığı aracılığıyla oluşturduğunuz bir Kullanıcı sağlamanız gerekir.
 
 Çağrı oluşturma ve başlatma zaman uyumludur. Çağrı örneği, çağrı olaylarına abone olmanızı sağlar.
 
 ## <a name="place-a-call"></a>Bir çağrı yerleştir
 
 ### <a name="place-a-11-call-to-a-user-or-pstn"></a>Bir kullanıcıya veya PSTN 'e 1:1 çağrısı koyun
-Başka bir Iletişim Hizmetleri kullanıcısına çağrı yerleştirmek için, `startCall` yöntemi çağırın `callAgent` ve [iletişim Hizmetleri yönetim kitaplığıyla oluşturduğunuz](https://docs.microsoft.com/azure/communication-services/quickstarts/access-tokens)çağrılan communicationuserıdentifier ' ı geçirin.
+Başka bir Iletişim Hizmetleri kullanıcısına çağrı yerleştirmek için, `startCall` yöntemi çağırın `callAgent` ve [iletişim hizmetleri kimlik kitaplığıyla oluşturduğunuz](https://docs.microsoft.com/azure/communication-services/quickstarts/access-tokens)çağrılan communicationuserıdentifier ' ı geçirin.
 
 ```js
 const userCallee = { communicationUserId: '<ACS_USER_ID>' }
@@ -254,10 +254,10 @@ Yerel uç noktanın sesini kapatmak veya sesini açmak için `mute` ve `unmute` 
 
 ```js
 
-//mute local device 
+//mute local device
 await call.mute();
 
-//unmute local device 
+//unmute local device
 await call.unmute();
 
 ```
@@ -401,7 +401,7 @@ Uzak katılımcıların video akışlarını ve ekran paylaşım akışlarını 
 const remoteVideoStream: RemoteVideoStream = call.remoteParticipants[0].videoStreams[0];
 const streamType: MediaStreamType = remoteVideoStream.mediaStreamType;
 ```
- 
+
 A 'yı işlemek için `RemoteVideoStream` bir olaya abone olmanız gerekir `isAvailableChanged` .
 `isAvailable`Özelliği olarak değişirse `true` , uzak katılımcı bir akış gönderiyor.
 Bu durumda, yeni bir örneğini oluşturun `Renderer` ve ardından `RendererView` zaman uyumsuz yöntemi kullanarak yeni bir örnek oluşturun `createView` .  Daha sonra `view.target` herhangi bir kullanıcı arabirimi öğesine iliştirebilirsiniz.
@@ -581,7 +581,7 @@ const isRecordingActiveChangedHandler = () => {
 };
 
 callRecordingApi.on('isRecordingActiveChanged', isRecordingActiveChangedHandler);
-               
+
 ```
 
 ## <a name="call-transfer-management"></a>Çağrı aktarım yönetimi

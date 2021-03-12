@@ -7,12 +7,12 @@ ms.topic: article
 author: mingshen-ms
 ms.author: mingshen
 ms.date: 07/14/2020
-ms.openlocfilehash: 091feacceb510038786ae487c0895f9ff1e47aba
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: e071692a1c6fe423b048dab884164d9b3c98f1fd
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98880347"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102613621"
 ---
 # <a name="frequently-asked-questions-about-transitioning-from-the-cloud-partner-portal-to-partner-center"></a>Bulut İş Ortağı Portalı Iş ortağı merkezine geçiş hakkında sık sorulan sorular
 
@@ -22,7 +22,7 @@ Bulut İş Ortağı Portalı Iş Ortağı Merkezi 'ne geçti. İş Ortağı Merk
 
 İş Ortağı Merkezi 'nde iş yapmaya devam edebilirsiniz:
 
-| Alan<img src="" width=200px> | Değişiklikler |
+| Alan | Değişiklikler |
 | --- | --- |
 | Hesap | Yeni bir Iş Ortağı Merkezi hesabı oluşturmanız gerekmez; Hesabınızı, kullanıcılarınızı, izinlerinizi ve faturanızı yönettiğiniz Iş Ortağı Merkezi 'Nde oturum açmak için mevcut Bulut İş Ortağı Portalı kimlik bilgilerinizi kullanabilirsiniz. Yayımlama sözleşmesi ve şirket profili bilgileri, yeni Iş Ortağı Merkezi hesabınıza geçirilir, bu da tüm ödeme profili bilgileri, Kullanıcı hesapları ve izinleri ve etkin tekliflerdir. [Iş Ortağı Merkezi 'nde ticari Market hesabınızı yönetme](partner-center-portal/manage-account.md)hakkında daha fazla bilgi edinin. |
 | Teklif yayımlama ve teklif yönetimi deneyimi | Teklif verilerinizi Bulut İş Ortağı Portalı Iş Ortağı Merkezi 'ne taşıdık. Artık, gelişmiş bir kullanıcı deneyimi ve sezgisel arabirim sunan Iş Ortağı Merkezi 'nde tekliflerinizi erişirsiniz. [Ticari Market 'te mevcut bir teklifi güncelleştirmeyi](partner-center-portal/update-existing-offer.md)öğrenin. |
@@ -41,7 +41,7 @@ Hayır, hesabınız korunacaktır. Yani, mevcut bir iş ortağıysanız, Iş Ort
 
 Aşağıda, Bulut İş Ortağı Portalı yaygın olarak kullanılan sayfalar için Iş Ortağı Merkezi bağlantıları verilmiştir. Bulut İş Ortağı Portalı bağlantılarını yer işareti olarak kaydettiyseniz, bunları güncellemek isteyeceksiniz.
 
-| Bulut İş Ortağı Portalı sayfası <img src="" width=100px>| Bulut İş Ortağı Portalı sayfa bağlantısı | İş Ortağı Merkezi sayfa bağlantısı |
+| Bulut İş Ortağı Portalı sayfası | Bulut İş Ortağı Portalı sayfa bağlantısı | İş Ortağı Merkezi sayfa bağlantısı |
 | --- | --- | --- |
 | Tüm teklifler sayfası | [https://cloudpartner.azure.com/#alloffers](https://cloudpartner.azure.com/#alloffers) | [https://partner.microsoft.com/dashboard/commercial-marketplace/overview](https://partner.microsoft.com/dashboard/commercial-marketplace/overview) |
 | Tüm yayımcılar sayfası | [https://cloudpartner.azure.com/#publishers](https://cloudpartner.azure.com/#publishers) | [https://partner.microsoft.com/dashboard/account/v3/publishers/list](https://partner.microsoft.com/dashboard/account/v3/publishers/list) |
@@ -75,7 +75,7 @@ Daha önce Bulut İş Ortağı Portalı desteklenen tüm teklif türleri, Iş Or
 
 Iş Ortağı Merkezi 'nde desteklenen teklif türleri için tüm teklifler, durumlarına bakılmaksızın taşındı; taslak, de listede ve yalnızca önizleme teklifleri de taşınır.
 
-| Teklif türü <img src="" width=150px>| Iş Ortağı Merkezi 'ne taşındı mi? <img src="" width=100px>| Sonraki adımlar |
+| Teklif türü | Iş Ortağı Merkezi 'ne taşındı mi? | Sonraki adımlar |
 | --- | --- | --- |
 | SaaS | Yes | Yeni teklifler oluşturmak ve Bulut İş Ortağı Portalı oluşturulan teklifleri yönetmek için Iş Ortağı Merkezi ' nde oturum açın. [Ticari Market için bir SaaS teklifi planlayın](plan-saas-offer.md)hakkında daha fazla bilgi edinin. |
 | Sanal Makine | Yes | Yeni teklifler oluşturmak ve Bulut İş Ortağı Portalı oluşturulan teklifleri yönetmek için Iş Ortağı Merkezi ' nde oturum açın. [Bir sanal makine teklifi planlayın](marketplace-virtual-machines.md)hakkında daha fazla bilgi edinin. |
@@ -88,8 +88,8 @@ Iş Ortağı Merkezi 'nde desteklenen teklif türleri için tüm teklifler, duru
 | Kapsayıcı | Yes | Yeni teklifler oluşturmak ve Bulut İş Ortağı Portalı oluşturulan teklifleri yönetmek için Iş Ortağı Merkezi ' nde oturum açın. [Azure Container teklifi oluşturma](./create-azure-container-offer.md)hakkında daha fazla bilgi edinin. |
 | Danışmanlık Hizmetleri | Yes | Yeni teklifler oluşturmak ve Bulut İş Ortağı Portalı oluşturulan teklifleri yönetmek için Iş Ortağı Merkezi ' nde oturum açın. [Danışmanlık hizmeti teklifi oluşturma](./create-consulting-service-offer.md)hakkında daha fazla bilgi edinin. |
 | Yönetilen hizmet | Yes | Yeni teklifler oluşturmak ve Bulut İş Ortağı Portalı oluşturulan teklifleri yönetmek için Iş Ortağı Merkezi ' nde oturum açın. [Yönetilen hizmet teklifi oluşturma](./plan-managed-service-offer.md)hakkında daha fazla bilgi edinin. |
-| Dynamics NAV yönetilen hizmeti | Hayır | Microsoft Dynamics NAV yönetilen hizmetini [dynamics 365 Business Central](/dynamics365/business-central/)'a geliştirmiştir. bu nedenle, appsource 'TAN Dynamics NAV yönetilen hizmet canlı teklifleri de listelenmiştir. Bu teklifler artık müşteriler tarafından keşfedilemez ve Iş Ortağı Merkezi 'ne taşınmadı. Tekliflerinizi AppSource 'ta kullanılabilir hale getirmek için bunları Dynamics 365 Iş Merkezi teklifleridir ve [Iş Ortağı Merkezi](https://partner.microsoft.com/)'nde gönderebilirsiniz. [Dynamics 365 Iş Merkezi teklifi oluşturma](partner-center-portal/create-new-business-central-offer.md)hakkında daha fazla bilgi edinin. |
-| Cortana Intelligence | Hayır | Microsoft, Cortana Intelligence için ürün yol haritasını geliştirmiştir, bu nedenle AppSource 'tan canlı tekliflerle Cortana Intelligence listeliyoruz. Bu teklifler artık müşteriler tarafından keşfedilemez ve Iş Ortağı Merkezi 'ne taşınmadı. Tekliflerinizi ticari Market 'te kullanılabilir hale getirmek için, tekliflerinizi hizmet olarak yazılım (SaaS) teklifleri ile uyarlayın ve [Iş Ortağı Merkezi](https://partner.microsoft.com/)'ne gönderebilirsiniz. [Iş Ortağı Merkezi 'Nde SaaS teklifi oluşturma denetim listesi](./plan-saas-offer.md)hakkında daha fazla bilgi edinin. |
+| Dynamics NAV yönetilen hizmeti | No | Microsoft Dynamics NAV yönetilen hizmetini [dynamics 365 Business Central](/dynamics365/business-central/)'a geliştirmiştir. bu nedenle, appsource 'TAN Dynamics NAV yönetilen hizmet canlı teklifleri de listelenmiştir. Bu teklifler artık müşteriler tarafından keşfedilemez ve Iş Ortağı Merkezi 'ne taşınmadı. Tekliflerinizi AppSource 'ta kullanılabilir hale getirmek için bunları Dynamics 365 Iş Merkezi teklifleridir ve [Iş Ortağı Merkezi](https://partner.microsoft.com/)'nde gönderebilirsiniz. [Dynamics 365 Iş Merkezi teklifi oluşturma](partner-center-portal/create-new-business-central-offer.md)hakkında daha fazla bilgi edinin. |
+| Cortana Intelligence | No | Microsoft, Cortana Intelligence için ürün yol haritasını geliştirmiştir, bu nedenle AppSource 'tan canlı tekliflerle Cortana Intelligence listeliyoruz. Bu teklifler artık müşteriler tarafından keşfedilemez ve Iş Ortağı Merkezi 'ne taşınmadı. Tekliflerinizi ticari Market 'te kullanılabilir hale getirmek için, tekliflerinizi hizmet olarak yazılım (SaaS) teklifleri ile uyarlayın ve [Iş Ortağı Merkezi](https://partner.microsoft.com/)'ne gönderebilirsiniz. [Iş Ortağı Merkezi 'Nde SaaS teklifi oluşturma denetim listesi](./plan-saas-offer.md)hakkında daha fazla bilgi edinin. |
 
 ## <a name="i-cant-find-my-cloud-partner-portal-offers-in-partner-center"></a>Iş Ortağı Merkezi 'nde Bulut İş Ortağı Portalı tekliflerimi bulamıyorum
 
@@ -181,7 +181,7 @@ Market 'teki bir teklifi doğrudan Iş Ortağı Merkezi portalından [satmaya](p
 
 Bulut İş Ortağı Portalı API 'Leri iş ortağı merkezi ile tümleşiktir ve çalışmaya devam edecektir. Iş Ortağı Merkezi 'ne geçiş küçük değişiklikler sunar. Kodunuzun iş ortağı merkezi 'nde çalışmaya devam ettiğinden emin olmak için aşağıdaki tabloyu gözden geçirin.
 
-| API <img src="" width=100px>| Açıklamayı Değiştir | Etki |
+| API | Açıklamayı Değiştir | Etki |
 | --- | --- | --- |
 | Yayınlama SONRASı, GoLive, Iptal | Geçirilen tekliflere, yanıt üst bilgisi farklı bir biçime sahip olur ancak işlem durumunu almak için göreli bir yol belirten aynı şekilde çalışmaya devam edecektir. | Bir teklif için karşılık gelen POST isteklerinin herhangi birine gönderim yaparken, konum üst bilgisi teklifin geçiş durumuna bağlı olarak iki biçimden birine sahip olur: <ul><li>Geçirilmeyen teklifler: `/api/operations/{PublisherId}${offerId}$2$preview?api-version=2017-10-31`</li><li>Geçirilen teklifler: `/api/publishers/{PublisherId}/offers/{offereId}/operations/408a4835-0000-1000-0000-000000000000?api-version=2017-10-31`</li></ul>|
 | Işlemi al | Daha önce yanıtta bir ' bildirim-e-posta ' alanını destekleyen teklifler için, bu alan kullanım dışı bırakılır ve artık geçirilmiş teklifler için döndürülmez. | Geçirilmiş teklifleriniz için, isteklerde belirtilen e-posta listesine artık bildirim gönderemeyecektir. Bunun yerine, API hizmeti, e-posta göndermek için Iş Ortağı Merkezi 'nde bildirim e-postası işlemiyle hizalanır. Özellikle, işlem ilerleme durumu bildirimleri Iş Ortağı Merkezi 'nde hesap ayarlarınızın satıcı iletişim bilgileri bölümünde ayarlanan e-posta adresine gönderilir.<br><br>Iş Ortağı Merkezi 'ndeki [Hesap ayarları](https://partner.microsoft.com/dashboard/account/management) bölümündeki satıcı iletişim bilgileri bölümünde ayarlanan e-posta adresinin bildirimleri almak için doğru olduğundan emin olun. |

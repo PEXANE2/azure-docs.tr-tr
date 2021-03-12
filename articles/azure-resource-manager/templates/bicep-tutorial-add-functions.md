@@ -2,16 +2,16 @@
 title: Öğretici-Azure Resource Manager bicep dosyalarına işlev ekleme
 description: Değerleri oluşturmak için Bıcep dosyalarınıza işlevler ekleyin.
 author: mumian
-ms.date: 03/02/2021
+ms.date: 03/10/2021
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: references_regions
-ms.openlocfilehash: 9c66ab132d3343115b1a9bd852d3eb3d83ae4ca7
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: b909beb0cce9ad04ba00068ee25247520dcff47d
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101748303"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102633164"
 ---
 # <a name="tutorial-add-functions-to-azure-resource-manager-bicep-file"></a>Öğretici: Azure Resource Manager bicep dosyasına işlev ekleme
 
@@ -37,7 +37,7 @@ Depolama hesabının konumu **Doğu ABD** için sabit olarak kodlanmıştır. An
 
 İşlevler, dağıtım sırasında değerleri dinamik olarak alarak Bıcep dosyanıza esneklik ekler. Bu öğreticide, dağıtım için kullanmakta olduğunuz kaynak grubunun konumunu almak üzere bir işlev kullanırsınız.
 
-Aşağıdaki örnek, adlı bir parametre ekleme değişikliklerini vurgular `location` . Parametre varsayılan değeri [resourceGroup](template-functions-resource.md#resourcegroup) işlevini çağırır. Bu işlev, dağıtım için kullanılan kaynak grubuyla ilgili bilgileri içeren bir nesne döndürür. Nesnedeki özelliklerden biri bir konum özelliğidir. Varsayılan değeri kullandığınızda, depolama hesabı konumu kaynak grubuyla aynı konuma sahiptir. Kaynak grubu içindeki kaynakların aynı konumu paylaşması gerekmez. Gerektiğinde farklı bir konum da sağlayabilirsiniz.
+Aşağıdaki örnek, adlı bir parametre eklemek için değişiklikleri gösterir `location` . Parametre varsayılan değeri [resourceGroup](template-functions-resource.md#resourcegroup) işlevini çağırır. Bu işlev, dağıtım için kullanılan kaynak grubuyla ilgili bilgileri içeren bir nesne döndürür. Nesnedeki özelliklerden biri bir konum özelliğidir. Varsayılan değeri kullandığınızda, depolama hesabı konumu kaynak grubuyla aynı konuma sahiptir. Kaynak grubu içindeki kaynakların aynı konumu paylaşması gerekmez. Gerektiğinde farklı bir konum da sağlayabilirsiniz.
 
 Tüm dosyayı kopyalayın ve Bıcep dosyanızı içeriğiyle değiştirin.
 

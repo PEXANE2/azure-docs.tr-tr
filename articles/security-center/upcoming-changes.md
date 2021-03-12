@@ -1,23 +1,18 @@
 ---
 title: Azure Güvenlik Merkezi 'ne gelen önemli değişiklikler
 description: Azure Güvenlik Merkezi 'Nde, planlamanız gerekebilecek ve planlamanız gerekebilen değişiklikler
-services: security-center
-documentationcenter: na
 author: memildin
 manager: rkarlin
 ms.service: security-center
-ms.devlang: na
 ms.topic: overview
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 03/04/2021
+ms.date: 03/10/2021
 ms.author: memildin
-ms.openlocfilehash: 6bec9f0a1c22691d818566cec3f59c1ec0f3d3bb
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 49141f7f11c0e8ead090459238e15b56f57b990b
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102051625"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102633725"
 ---
 # <a name="important-upcoming-changes-to-azure-security-center"></a>Azure Güvenlik Merkezi 'Nde yapılan önemli değişiklikler
 
@@ -32,7 +27,6 @@ En son sürüm notlarını arıyorsanız, bunları [Azure Güvenlik Merkezi 'nde
 ## <a name="planned-changes"></a>Planlanan değişiklikler
 
 - [AWS 'nin önerileri genel kullanıma sunulacaktır (GA)](#recommendations-from-aws-will-be-released-for-general-availability-ga)
-- [İki eski öneri artık doğrudan Azure etkinlik günlüğüne veri yazmayacaktır](#two-legacy-recommendations-will-no-longer-write-data-directly-to-azure-activity-log)
 - ["Sistem güncelleştirmelerini Uygula" güvenlik denetiminin kullanım dışı olmasının iki önerisi](#two-recommendations-from-apply-system-updates-security-control-being-deprecated)
 - [SQL veri sınıflandırması önerisine yönelik geliştirmeler](#enhancements-to-sql-data-classification-recommendation)
 - [11 Azure Defender uyarılarının kullanımdan kaldırılması](#deprecation-of-11-azure-defender-alerts)
@@ -53,21 +47,6 @@ Bu değişiklik ile, AWS önerilerinden oluşan iki küme GA 'ye taşınır:
 
 Bunlar GA ve değerlendirmeler AWS kaynaklarınız üzerinde çalıştırıldığında, sonuçlar tüm çok ve karma bulut kaynaklarınız için Birleşik güvenli puanınızı etkiler. 
 
-
-
-### <a name="two-legacy-recommendations-will-no-longer-write-data-directly-to-azure-activity-log"></a>İki eski öneri artık doğrudan Azure etkinlik günlüğüne veri yazmayacaktır 
-
-**Değişikliğin tahmini tarihi:** Mart 2021
-
-Güvenlik Merkezi, Azure Advisor 'a neredeyse tüm güvenlik önerileri için verileri geçirir, bu da [Azure etkinlik günlüğüne](../azure-monitor/essentials/activity-log.md)yazar.
-
-İki öneri için, veriler eşzamanlı olarak doğrudan Azure etkinlik günlüğüne yazılır. Bu değişiklik ile, güvenlik merkezi bu eski güvenlik önerileri için verileri doğrudan etkinlik günlüğüne yazmayı durdurur. Bunun yerine, diğer tüm önerilerin yaptığımız gibi verileri Azure Advisor 'a dışarı aktaracağız. 
-
-Bu iki eski öneri şunlardır:
-- Endpoint Protection sistem durumu sorunları makinelerinizde çözümlenmelidir
-- Makinelerinizdeki güvenlik yapılandırmasındaki güvenlik açıkları düzeltilmelidir
-
-Bu iki öneriye yönelik bilgilere, Etkinlik günlüğünün "TaskDiscovery türü önerisi" kategorisinin bilgilerine erişiyorsanız, artık kullanılamaz.
 
 ### <a name="two-recommendations-from-apply-system-updates-security-control-being-deprecated"></a>"Sistem güncelleştirmelerini Uygula" güvenlik denetiminin kullanım dışı olmasının iki önerisi 
 

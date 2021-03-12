@@ -12,27 +12,22 @@ ms.workload: identity
 ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev, devx-track-python
-ms.openlocfilehash: 5b74c817a974378a7fefc71e4eed67e6564765be
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 372efa217e400ffd4bcecd286f3c3dc7b81f64d6
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98756555"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103007982"
 ---
 # <a name="desktop-app-that-calls-web-apis-code-configuration"></a>Web API 'Lerini çağıran masaüstü uygulaması: kod yapılandırması
 
 Uygulamanızı oluşturduğunuza göre, kodun uygulamanın koordinatlarıyla nasıl yapılandırılacağını öğreneceksiniz.
 
-## <a name="microsoft-authentication-libraries"></a>Microsoft kimlik doğrulama kitaplıkları
+## <a name="microsoft-libraries-supporting-desktop-apps"></a>Masaüstü uygulamalarını destekleyen Microsoft kitaplıkları
 
-Aşağıdaki Microsoft kimlik doğrulama kitaplıkları (MSALs) masaüstü uygulamalarını destekler.
+Aşağıdaki Microsoft kitaplıkları masaüstü uygulamalarını destekler:
 
-  Microsoft Authentication Library | Açıklama
-  ------------ | ----------
-  ![MSAL.NET](media/sample-v2-code/logo_NET.png) <br/> MSAL.NET  | , Linux, Windows ve macOS gibi birden çok platformda masaüstü uygulaması oluşturmayı destekler.
-  ![Python](media/sample-v2-code/logo_python.png) <br/> MSAL Python | , Bir masaüstü uygulamasının birden çok platformda oluşturulmasını destekler.
-  ![Java](media/sample-v2-code/logo_java.png) <br/> MSAL Java | , Bir masaüstü uygulamasının birden çok platformda oluşturulmasını destekler.
-  ![MSAL iOS](media/sample-v2-code/logo_iOS.png) <br/> MSAL iOS | Yalnızca macOS 'ta çalışan masaüstü uygulamalarını destekler.
+[!INCLUDE [active-directory-develop-libraries-desktop](../../../includes/active-directory-develop-libraries-desktop.md)]
 
 ## <a name="public-client-application"></a>Genel istemci uygulaması
 
@@ -104,7 +99,7 @@ app = PublicClientApplicationBuilder.Create(clientId)
         .Build();
 ```
 
-### <a name="learn-more"></a>Daha fazlasını öğrenin
+### <a name="learn-more"></a>Daha fazla bilgi edinin
 
 MSAL.NET masaüstü uygulamasını yapılandırma hakkında daha fazla bilgi edinmek için:
 

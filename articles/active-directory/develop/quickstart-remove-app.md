@@ -13,12 +13,12 @@ ms.date: 11/15/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: marsma, aragra, lenalepa, sureshja
-ms.openlocfilehash: a0543905f41abc9c21327159d63f7adaa5b025dc
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: e04884c078bd9a5693ddcbc4e71470bb23e13d60
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101645900"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103199804"
 ---
 # <a name="how-to-remove-an-application-registered-with-the-microsoft-identity-platform"></a>Microsoft Identity platformu ile kaydedilen bir uygulamayı kaldırma
 
@@ -47,7 +47,8 @@ Bir uygulamayı silmek için, uygulamanın sahibi olarak listelenmiş veya yöne
 1. **Azure Active Directory** arayın ve seçin. 
 1. **Yönet**' in altında **uygulama kayıtları** ' yi seçin ve yapılandırmak istediğiniz uygulamayı seçin. Uygulamayı seçtikten sonra uygulamanın **Genel Bakış** sayfasını görebilirsiniz.
 1. **Genel Bakış** sayfasından **Sil**'i seçin.
-1. Uygulamayı silmek istediğinizi onaylamak için **Evet**'i seçin.
+1. Silme sonuçlarını okuyun.  Bölmenin alt kısmında bir tane görünürse kutuyu işaretleyin.
+1. Uygulamayı silmek istediğinizi onaylamak için **Sil** ' i seçin.
 
 ## <a name="remove-an-application-authored-by-another-organization"></a>Başka bir kuruluş tarafından yazılmış bir uygulamayı kaldırma
 

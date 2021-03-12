@@ -8,14 +8,16 @@ ms.date: 08/14/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 53d1504b03e3dbe99cbdeac23df2623a5390b3d9
-ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
+ms.openlocfilehash: d88d35eece698c7d0079221ae3c76058d1877948
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100635430"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103200473"
 ---
 # <a name="give-modules-access-to-a-devices-local-storage"></a>Modüllerin bir cihazın yerel depolama alanına erişmesine izin ver
+
+[!INCLUDE [iot-edge-version-all-supported](../../includes/iot-edge-version-all-supported.md)]
 
 Azure depolama hizmetleri 'ni veya cihazınızın kapsayıcı depolama alanını kullanarak veri depolamanın yanı sıra, özellikle çevrimdışı çalışırken daha iyi bir güvenilirlik sağlamak için konak IoT Edge cihazının kendisini de ayırabilirsiniz.
 
@@ -26,11 +28,11 @@ Modül depolamadaki bir bağlantıyı konak sistemindeki depolamaya etkinleştir
 Örneğin, IoT Edge hub 'ını cihazınızın yerel depolamadaki iletileri depolamak ve daha sonra almak için etkinleştirmek istiyorsanız, ortam değişkenlerini ve oluşturma seçeneklerini **çalışma zamanı ayarları** bölümünde Azure portal yapılandırabilirsiniz.
 
 1. IoT Edge hub ve IoT Edge Aracısı için, modüldeki bir dizini işaret eden **StorageFolder** adlı bir ortam değişkeni ekleyin.
-1. IoT Edge hub ve IoT Edge Aracısı için, konak makinedeki yerel bir dizini modüldeki bir dizine bağlamak üzere bağlamalar ekleyin. Örneğin:
+1. IoT Edge hub ve IoT Edge Aracısı için, konak makinedeki yerel bir dizini modüldeki bir dizine bağlamak üzere bağlamalar ekleyin. Örnek:
 
    ![Yerel depolama için oluşturma seçenekleri ve ortam değişkenleri ekleme](./media/how-to-access-host-storage-from-module/offline-storage.png)
 
-Ya da, yerel depolamayı doğrudan dağıtım bildiriminde yapılandırabilirsiniz. Örneğin:
+Ya da, yerel depolamayı doğrudan dağıtım bildiriminde yapılandırabilirsiniz. Örnek:
 
 ```json
 "systemModules": {

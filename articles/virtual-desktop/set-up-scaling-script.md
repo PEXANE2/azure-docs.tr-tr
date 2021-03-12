@@ -3,15 +3,15 @@ title: Ölçek oturumu Azure Otomasyonu 'Nu barındırır-Azure
 description: Windows sanal masaüstü oturumu konaklarının Azure Otomasyonu ile otomatik olarak ölçeklendirilmesi.
 author: Heidilohr
 ms.topic: how-to
-ms.date: 03/30/2020
+ms.date: 03/09/2021
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 12a15ab1a4c7369c448e9f65862121b03ca05bba
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f60341ea51f1cf4e856b1b4598887da3dc37ebb2
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89078563"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102613128"
 ---
 # <a name="scale-session-hosts-using-azure-automation"></a>Azure Otomasyonu 'Nu kullanarak oturum ana bilgisayarlarını ölçeklendirme
 
@@ -52,11 +52,14 @@ Ancak, araç aşağıdaki sınırlamalara de sahiptir:
 - Bu çözüm yalnızca havuza alınmış çok oturumlu oturum ana bilgisayar VM 'Leri için geçerlidir.
 - Bu çözüm, herhangi bir bölgedeki VM 'Leri yönetir, ancak yalnızca Azure Otomasyonu hesabınız ve Azure Logic App ile aynı abonelikte kullanılabilir.
 - Runbook 'taki bir işin en fazla çalışma zamanı 3 saattir. Konak havuzundaki VM 'Leri başlatmak veya durdurmak bundan daha uzun sürer, iş başarısız olur. Daha fazla ayrıntı için bkz. [paylaşılan kaynaklar](../automation/automation-runbook-execution.md#fair-share).
+- Ölçeklendirme algoritmasının düzgün çalışması için en az bir VM veya oturum konağının açık olması gerekir.
+- Ölçeklendirme Aracı, CPU veya belleğe göre ölçeklendirmeyi desteklemez.
+- Ölçeklendirme yalnızca konak havuzundaki mevcut konaklarla birlikte kullanılabilir. Ölçeklendirme Aracı, yeni oturum ana bilgisayarlarının ölçeklendirilmesini desteklemez.
 
 >[!NOTE]
 >Ölçeklendirme Aracı, şu anda ölçeklendirildiği konak havuzunun yük dengeleme modunu denetler. Araç, hem yoğun hem de yoğun olmayan saatlerde, birinci düzey Yük Dengeleme modunu kullanır.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Ölçeklendirme aracı 'nı ayarlamaya başlamadan önce, aşağıdaki şeyleri hazırlamış olduğunuzdan emin olun:
 
@@ -136,7 +139,7 @@ Abonelik yöneticileri rolünün üyesi olan bir Kullanıcı ve aboneliğin orta
 
 Azure Otomasyonu hesabınızda bir farklı çalıştır hesabı oluşturmak için:
 
-1. Azure portal, **tüm hizmetler**' i seçin. Kaynak listesinde **Otomasyon hesapları**girin ve seçin.
+1. Azure portal, **tüm hizmetler**' i seçin. Kaynak listesinde **Otomasyon hesapları** girin ve seçin.
 
 2. **Otomasyon hesapları** sayfasında, Azure Otomasyonu hesabınızın adını seçin.
 
@@ -146,7 +149,7 @@ Azure Otomasyonu hesabınızda bir farklı çalıştır hesabı oluşturmak içi
 
 5. Azure 'un farklı çalıştır hesabını oluşturması için birkaç dakika bekleyin. Oluşturma ilerleme durumunu menüdeki Bildirimler bölümünde izleyebilirsiniz.
 
-6. İşlem tamamlandığında, belirtilen Azure Otomasyonu hesabında **Azurerunasconnection** adlı bir varlık oluşturur. **Azure farklı çalıştır hesabı**' nı seçin. Bağlantı varlığı uygulama KIMLIĞI, kiracı KIMLIĞI, abonelik KIMLIĞI ve sertifika parmak izini barındırır. Ayrıca, **Bağlantılar** sayfasında aynı bilgileri de bulabilirsiniz. Bu sayfaya gitmek için pencerenin sol tarafındaki bölmede, **paylaşılan kaynaklar** bölümünün altındaki **Bağlantılar** ' ı seçin ve **azurerunasconnection**adlı bağlantı varlığına tıklayın.
+6. İşlem tamamlandığında, belirtilen Azure Otomasyonu hesabında **Azurerunasconnection** adlı bir varlık oluşturur. **Azure farklı çalıştır hesabı**' nı seçin. Bağlantı varlığı uygulama KIMLIĞI, kiracı KIMLIĞI, abonelik KIMLIĞI ve sertifika parmak izini barındırır. Ayrıca, **Bağlantılar** sayfasında aynı bilgileri de bulabilirsiniz. Bu sayfaya gitmek için pencerenin sol tarafındaki bölmede, **paylaşılan kaynaklar** bölümünün altındaki **Bağlantılar** ' ı seçin ve **azurerunasconnection** adlı bağlantı varlığına tıklayın.
 
 ## <a name="create-the-azure-logic-app-and-execution-schedule"></a>Azure Logic App ve yürütme zamanlaması oluşturma
 
@@ -257,7 +260,7 @@ Seçtiğiniz Azure Otomasyonu hesabınızın sağında, "Iş Istatistikleri" bö
 
 Runbook 'unuzu açıp işi seçerek genişleme ve ölçek işlemleri işlemlerini izleyebilirsiniz.
 
-Azure Otomasyonu hesabını barındıran kaynak grubunuzda runbook 'a gidin ve **Genel Bakış ' ı**seçin. Genel Bakış sayfasında, aşağıdaki görüntüde gösterildiği gibi, ölçek aracı çıktısını görüntülemek için **son işler** altında bir iş seçin.
+Azure Otomasyonu hesabını barındıran kaynak grubunuzda runbook 'a gidin ve **Genel Bakış ' ı** seçin. Genel Bakış sayfasında, aşağıdaki görüntüde gösterildiği gibi, ölçek aracı çıktısını görüntülemek için **son işler** altında bir iş seçin.
 
 >[!div class="mx-imgBorder"]
 >![Ölçeklendirme aracı için çıkış penceresinin bir görüntüsü.](media/tool-output.png)
@@ -282,7 +285,7 @@ Bir sorunu bildirmenizde, sorun gidermenize yardımcı olması için aşağıdak
     - OMSIngestionAPI
     - Az.DesktopVirtualization
 
-- [Farklı Çalıştır hesabınız](#create-an-azure-automation-run-as-account)için sona erme tarihi. Bunu bulmak için Azure Otomasyonu hesabınızı açın ve pencerenin sol tarafındaki bölmede **Hesap ayarları** altında **Farklı Çalıştır hesapları** ' nı seçin. Sona erme tarihi, **Azure farklı çalıştır hesabı**altında olmalıdır.
+- [Farklı Çalıştır hesabınız](#create-an-azure-automation-run-as-account)için sona erme tarihi. Bunu bulmak için Azure Otomasyonu hesabınızı açın ve pencerenin sol tarafındaki bölmede **Hesap ayarları** altında **Farklı Çalıştır hesapları** ' nı seçin. Sona erme tarihi, **Azure farklı çalıştır hesabı** altında olmalıdır.
 
 ### <a name="log-analytics"></a>Log Analytics
 

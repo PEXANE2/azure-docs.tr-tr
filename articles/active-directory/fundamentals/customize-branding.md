@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: kexia
 ms.custom: it-pro, seodec18, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bb138ade0f579a7545c0910646b6adfb7d5ac02a
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 4b69daf9e9fbbb3f6d6597a8e8349dc8bec61fbf
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95996670"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103008784"
 ---
 # <a name="add-branding-to-your-organizations-azure-active-directory-sign-in-page"></a>Kuruluşunuzun Azure Active Directory oturum açma sayfasına marka ekleyin
 Azure Active Directory (Azure AD) oturum açma sayfalarınızda tutarlı bir görünüm sağlamak için kuruluşunuzun logosu ve özel renk düzenlerini kullanın. Kullanıcılar kuruluşunuzun Web tabanlı uygulamalarında oturum açtığında (örneğin, kimlik sağlayıcınız olarak Azure AD 'yi kullanan Microsoft 365) oturum açma sayfalarınız görüntülenir.
@@ -58,7 +58,7 @@ Kullanıcılarınızın www office.com gibi sitelere gitmesi durumunda özel mar
 
         - **Başlık logosu.** Kullanıcı bir Kullanıcı adı girdikten ve **uygulamalarım** portalı sayfasında, oturum açma sayfasında görünmesi için logonuzun bir. png veya. jpg sürümü seçin.
             
-            Görüntü 60 pikselden veya 280 pikselden daha büyük olamaz. Arka plan, logo arka planıyla eşleşmediğinden saydam bir görüntü kullanmanızı öneririz. Ayrıca, görüntünün etrafına doldurma eklememeyi önermiyoruz veya logonuzu küçük bir görünüme alabilir.
+            Görüntü 60 pikselden büyük veya 280 pikselden daha büyük olamaz ve dosya 10 KB 'den büyük olmamalıdır. Arka plan, logo arka planıyla eşleşmediğinden saydam bir görüntü kullanmanızı öneririz. Ayrıca, görüntünün etrafına doldurma eklememeyi önermiyoruz veya logonuzu küçük bir görünüme alabilir. 
 
         - **Kullanıcı adı ipucu.** Kullanıcı Kullanıcı adını unutduklarında görüntülenen ipucu metnini yazın. Bu metin, bağlantı veya kod olmadan Unicode olmalıdır ve 64 karakteri aşamaz. Konuklarınız uygulamanızda oturum açtığında, bu ipucunu eklememeyi öneririz.
 
@@ -113,7 +113,7 @@ Kullanıcılarınızın www office.com gibi sitelere gitmesi durumunda özel mar
 
 3. **Şirket markasını Yapılandır** sayfasında, bu MAKALENIN [Azure AD oturum açma sayfasını özelleştirme](#customize-your-azure-ad-sign-in-page) bölümünde yer alan açıklamalara göre bilgileri ekleyin, kaldırın veya değiştirin.
 
-4. **Kaydet**'i seçin.
+4. **Kaydet**’i seçin.
 
    Oturum açma sayfası markasında yaptığınız değişikliklerin görünmesi bir saate kadar sürebilir.
 
@@ -130,7 +130,7 @@ Kullanıcılarınızın www office.com gibi sitelere gitmesi durumunda özel mar
 
 3. **Şirket markasını Yapılandır** sayfasında, dilinizi (örneğin, Fransızca) seçin ve ardından bu MAKALENIN [Azure AD oturum açma sayfasını özelleştirme](#customize-your-azure-ad-sign-in-page) bölümündeki açıklamalara göre çevrilmiş bilgilerinizi ekleyin.
 
-4. **Kaydet**'i seçin.
+4. **Kaydet**’i seçin.
 
     **Contoso – Company marka** sayfası, yeni Fransızca yapılandırmanızı gösterecek şekilde güncelleştirilir.
 

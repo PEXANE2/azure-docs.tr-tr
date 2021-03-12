@@ -12,23 +12,27 @@ ms.reviewer: nibaccam
 ms.date: 03/04/2021
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, devx-track-azurecli
-ms.openlocfilehash: d142c523862d61bf56723726be50cd6f095c5ee9
-ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
+ms.openlocfilehash: 977498abb17fe592cef344f407a662d3b79749b7
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102520345"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102634781"
 ---
-# <a name="start-monitor-and-cancel-training-runs-in-python"></a>Python 'da eğitim çalıştırmalarını başlatın, izleyin ve iptal edin
+# <a name="start-monitor-and-track-runs"></a>Çalıştırmaları Başlat, izle ve izle 
 
 [Python için Azure MACHINE LEARNING SDK](/python/api/overview/azure/ml/intro), [Machine Learning CLI](reference-azure-machine-learning-cli.md)ve [Azure Machine Learning Studio](https://ml.azure.com) , eğitim ve deneme için çalıştırmalarını izlemek, düzenlemek ve yönetmek için çeşitli yöntemler sağlar.
 
 Bu makalede aşağıdaki görevlerin örnekleri gösterilmektedir:
 
 * Çalışma performansını izleme.
+* Çalışma durumunu e-posta bildirimine göre izleyin.
+* Etiket ve bulma çalıştırmaları.
+* Çalıştırma açıklaması ekleyin. 
+* Aramayı çalıştırın. 
 * İptal veya başarısız çalıştırmalar.
 * Alt çalıştırmalar oluşturun.
-* Etiket ve bulma çalıştırmaları.
+ 
 
 > [!TIP]
 > Azure Machine Learning hizmeti ve ilişkili Azure hizmetlerini izleme hakkında bilgi arıyorsanız bkz. [nasıl yapılır Azure Machine Learning](monitor-azure-machine-learning.md).
@@ -50,7 +54,8 @@ Aşağıdaki öğeler gerekir:
     print(azureml.core.VERSION)
     ```
 
-* Azure Machine Learning için [Azure CLI](/cli/azure/) ve [CLI uzantısı](reference-azure-machine-learning-cli.md).
+* Azure Machine Learning için [Azure CLI](/cli/azure/?preserve-view=true&view=azure-cli-latest) ve [CLI uzantısı](reference-azure-machine-learning-cli.md).
+
 
 ## <a name="monitor-run-performance"></a>Çalışma performansını izleme
 
@@ -96,7 +101,7 @@ Aşağıdaki öğeler gerekir:
     
         Bu komut `.azureml` , örnek runconfig ve Conda ortam dosyalarını içeren bir alt dizin oluşturur. Ayrıca `config.json` , Azure Machine Learning çalışma alanınız ile iletişim kurmak için kullanılan bir dosya içerir.
     
-        Daha fazla bilgi için bkz. [az ml Folder Attach](/cli/azure/ext/azure-cli-ml/ml/folder#ext-azure-cli-ml-az-ml-folder-attach).
+        Daha fazla bilgi için bkz. [az ml Folder Attach](/cli/azure/ext/azure-cli-ml/ml/folder?preserve-view=true&view=azure-cli-latest#ext-azure-cli-ml-az-ml-folder-attach).
     
     2. Çalıştırmayı başlatmak için aşağıdaki komutu kullanın. Bu komutu kullanırken,-c parametresine karşı runconfig dosyasının adını ( \* dosya sisteminize bakıyorsanız. runconfig öğesinden önceki metin) belirtin.
     
@@ -111,7 +116,7 @@ Aşağıdaki öğeler gerekir:
         >
         > Daha fazla örnek runconfig dosyası için bkz [https://github.com/MicrosoftDocs/pipelines-azureml/](https://github.com/MicrosoftDocs/pipelines-azureml/) ..
     
-        Daha fazla bilgi için bkz. [az ml Run gönderme-betiği](/cli/azure/ext/azure-cli-ml/ml/run#ext-azure-cli-ml-az-ml-run-submit-script).
+        Daha fazla bilgi için bkz. [az ml Run gönderme-betiği](/cli/azure/ext/azure-cli-ml/ml/run?preserve-view=true&view=azure-cli-latest#ext-azure-cli-ml-az-ml-run-submit-script).
 
     # <a name="studio"></a>[Studio](#tab/azure-studio)
 
@@ -162,7 +167,7 @@ Aşağıdaki öğeler gerekir:
     
         Bu komut, bu deneme için çalıştırmalar hakkındaki bilgileri listeleyen bir JSON belgesi döndürür.
     
-        Daha fazla bilgi için bkz. [az ml deneme listesi](/cli/azure/ext/azure-cli-ml/ml/experiment#ext-azure-cli-ml-az-ml-experiment-list).
+        Daha fazla bilgi için bkz. [az ml deneme listesi](/cli/azure/ext/azure-cli-ml/ml/experiment?preserve-view=true&view=azure-cli-latest#ext-azure-cli-ml-az-ml-experiment-list).
     
     * Belirli bir çalıştırma hakkındaki bilgileri görüntülemek için aşağıdaki komutu kullanın. `runid`ÇALıŞTıRMANıN kimliğiyle değiştirin:
     
@@ -172,7 +177,7 @@ Aşağıdaki öğeler gerekir:
     
         Bu komut, çalıştırma hakkındaki bilgileri listeleyen bir JSON belgesi döndürür.
     
-        Daha fazla bilgi için bkz. [az ml Run Show](/cli/azure/ext/azure-cli-ml/ml/run#ext-azure-cli-ml-az-ml-run-show).
+        Daha fazla bilgi için bkz. [az ml Run Show](/cli/azure/ext/azure-cli-ml/ml/run?preserve-view=true&view=azure-cli-latest#ext-azure-cli-ml-az-ml-run-show).
     
     
     # <a name="studio"></a>[Studio](#tab/azure-studio)
@@ -192,6 +197,29 @@ Aşağıdaki öğeler gerekir:
     1. Çalıştırma günlüklerini görüntülemek için belirli bir çalıştırma seçin ve **çıktılar + Günlükler** sekmesinde, çalıştıralım için tanılama ve hata günlüklerini bulabilirsiniz.
     
     ---
+
+## <a name="monitor-the-run-status-by-email-notification"></a>Çalışma durumunu e-posta bildirimine göre izle
+
+1. [Azure Portal](https://ms.portal.azure.com/)sol gezinti çubuğunda **izleyici** sekmesini seçin. 
+
+1. **Tanılama ayarları** ' nı seçin ve ardından **+ Tanılama ayarı Ekle**' yi seçin.
+
+    ![E-posta bildirimi için tanılama ayarlarının ekran görüntüsü](./media/how-to-manage-runs/diagnostic-setting.png)
+
+1. Tanılama ayarında, 
+    1. **Kategori ayrıntıları** altında **Amlrunstatuschangedevent** öğesini seçin. 
+    1. **Hedef ayrıntılarında** **Log Analytics gönder çalışma alanını** seçin ve **aboneliği** ve **Log Analytics çalışma alanını** belirtin. 
+
+    > [!NOTE]
+    > **Azure Log Analytics çalışma alanı** , **Azure Machine Learning hizmeti çalışma alanından** farklı bir Azure kaynağı türüdür. Bu listede hiçbir seçenek yoksa, [bir Log Analytics çalışma alanı oluşturabilirsiniz](https://docs.microsoft.com/azure/azure-monitor/logs/quick-create-workspace). 
+    
+    ![E-posta bildiriminin kaydedileceği yer](./media/how-to-manage-runs/log-location.png)
+
+1. **Günlükler** sekmesinde **Yeni bir uyarı kuralı** ekleyin. 
+
+    ![Yeni uyarı kuralı](./media/how-to-manage-runs/new-alert-rule.png)
+
+1. Bkz. [Azure izleyici kullanarak günlük uyarıları oluşturma ve yönetme](https://docs.microsoft.com/azure/azure-monitor/alerts/alerts-log).
 
 ## <a name="run-description"></a>Çalıştırma açıklaması 
 
@@ -253,7 +281,7 @@ Azure Machine Learning ' de, önemli bilgiler için çalıştırmalarınızı d�
     az ml run update -r runid --add-tag quality='fantastic run'
     ```
     
-    Daha fazla bilgi için bkz. [az ml Run Update](/cli/azure/ext/azure-cli-ml/ml/run#ext-azure-cli-ml-az-ml-run-update).
+    Daha fazla bilgi için bkz. [az ml Run Update](/cli/azure/ext/azure-cli-ml/ml/run?preserve-view=true&view=azure-cli-latest#ext-azure-cli-ml-az-ml-run-update).
     
     # <a name="studio"></a>[Studio](#tab/azure-studio)
     
@@ -287,17 +315,17 @@ Azure Machine Learning ' de, önemli bilgiler için çalıştırmalarınızı d�
     az ml run list --experiment-name experiment [?properties.author=='azureml-user' && tags.quality=='fantastic run']
     ```
     
-    Azure CLı sonuçlarını sorgulama hakkında daha fazla bilgi için bkz. [Azure CLI komut çıkışını sorgulama](/cli/azure/query-azure-cli).
+    Azure CLı sonuçlarını sorgulama hakkında daha fazla bilgi için bkz. [Azure CLI komut çıkışını sorgulama](/cli/azure/query-azure-cli?preserve-view=true&view=azure-cli-latest).
     
     # <a name="studio"></a>[Studio](#tab/azure-studio)
     
-    1. **Tüm çalıştırmalar** listesine gidin.
+    Belirli çalıştırmaları aramak için  **Tüm çalıştırmalar** listesine gidin. Buradan iki seçeneğiniz vardır:
     
-    1. Etiketler, açıklamalar, deneme adları ve gönderenin adı gibi çalıştırma meta verilerini filtrelemek için arama çubuğunu kullanın. Etiketler filtresi, etiketleri filtrelemek için de kullanılabilir. 
+    1. Çalıştırmaya atanan etikete göre çalıştırmaları filtrelemek için **Filtre Ekle** düğmesini kullanın ve etiketleri filtrele ' yi seçin. <br><br>
+    VEYA
     
-    ---
-
-
+    1. Çalıştırma durumu, açıklamalar, deneme adları ve gönderenin adı gibi çalıştırma meta verilerini arayarak çalıştırmaları hızlı bir şekilde bulmak için arama çubuğunu kullanın. 
+    
 ## <a name="cancel-or-fail-runs"></a>İptal veya başarısız çalıştırmalar
 
 Bir hata fark ederseniz veya çalıştırmanın tamamlanmasının çok uzun sürmesi durumunda, çalıştırmayı iptal edebilirsiniz.
@@ -331,7 +359,7 @@ CLı kullanarak bir çalıştırmayı iptal etmek için aşağıdaki komutu kull
 az ml run cancel -r runid -w workspace_name -e experiment_name
 ```
 
-Daha fazla bilgi için bkz. [az ml Run Cancel](/cli/azure/ext/azure-cli-ml/ml/run#ext-azure-cli-ml-az-ml-run-cancel).
+Daha fazla bilgi için bkz. [az ml Run Cancel](/cli/azure/ext/azure-cli-ml/ml/run?preserve-view=true&view=azure-cli-latest#ext-azure-cli-ml-az-ml-run-cancel).
 
 # <a name="studio"></a>[Studio](#tab/azure-studio)
 
@@ -375,7 +403,7 @@ with exp.start_logging() as parent_run:
 
 ### <a name="submit-child-runs"></a>Alt çalıştırmaları gönder
 
-Alt çalıştırmalar da bir üst çalışmadan gönderilebilir. Bu, üst ve alt çalıştırmaların hiyerarşilerini oluşturmanızı sağlar. Parentdaha az alt çalışma oluşturamazsınız: üst çalıştırma Nothing olsa da alt çalıştırmaları çalıştırsa bile, hiyerarşinin oluşturulması hala gereklidir. Tüm çalıştırmaların durumu bağımsızdır: bir `"Completed"` veya daha fazla alt çalışma iptal edildiyse veya başarısız olsa bile üst öğe başarılı durumunda olabilir.  
+Alt çalıştırmalar da bir üst çalışmadan gönderilebilir. Bu, üst ve alt çalıştırmaların hiyerarşilerini oluşturmanızı sağlar. Parentdaha az alt çalışma oluşturamazsınız: üst çalıştırma Nothing olsa da alt çalıştırmaları çalıştırsa bile, hiyerarşinin oluşturulması hala gereklidir. Tüm çalıştırmaların durumları bağımsızdır: bir `"Completed"` veya daha fazla alt çalışma iptal edildiyse veya başarısız olsa bile üst öğe başarılı durumunda olabilir.  
 
 Çocuğunuzun, üst çalışmadan farklı bir çalıştırma yapılandırması kullanmasını isteyebilirsiniz. Örneğin, çocuklarınız için GPU tabanlı yapılandırmalar kullanırken üst için daha az güçlü ve CPU tabanlı bir yapılandırma kullanabilirsiniz. Diğer bir yaygın, her bir alt öğenin farklı bağımsız değişkenlerini ve verileri geçirmektir. Alt çalışmayı özelleştirmek için `ScriptRunConfig` alt çalıştırma için bir nesne oluşturun. Aşağıdaki kod aşağıdakileri yapar:
 

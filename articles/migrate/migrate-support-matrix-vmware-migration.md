@@ -6,12 +6,12 @@ ms.author: anvar
 ms.manager: bsiva
 ms.topic: conceptual
 ms.date: 06/08/2020
-ms.openlocfilehash: fc3ba062f4995e975015d7c4db145ccde0c3f701
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: cbb1db15eed53af1d0e4590e1b228e5e47680560
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101705220"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102614930"
 ---
 # <a name="support-matrix-for-vmware-migration"></a>VMware geçişi için destek matrisi
 
@@ -73,7 +73,7 @@ Tablo, VMware VM 'Leri için aracısız geçiş gereksinimlerini özetler.
 **IPv6** | Desteklenmez.
 **Hedef disk** | VM 'Ler, yalnızca Azure 'da yönetilen disklere (Standart HDD, standart SSD, Premium SSD) geçirilebilir.
 **Eşzamanlı çoğaltma** | vCenter Server başına 500 VM. Daha fazlasına sahipseniz, bunları 500 toplu işlem halinde geçirin.
-**Azure VM Aracısı 'nın otomatik yüklemesi (Windows Aracısı)** | Windows Server 2008 R2 sürümleri için desteklenir.
+**Azure VM Aracısı 'nın otomatik yüklemesi (Windows ve Linux Aracısı)** | Windows Server 2008 R2 sürümleri için desteklenir. <br/> RHEL6, RHEL7, CentOS7, Ubuntu 14,04, Ubuntu 16,04, Ubuntu 18.04 için desteklenir. Bu Linux işletim sistemleri için [gerekli paketlerin](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-linux#requirements)listesini gözden geçirin.
 
 ### <a name="appliance-requirements-agentless"></a>Gereç gereksinimleri (aracısız)
 

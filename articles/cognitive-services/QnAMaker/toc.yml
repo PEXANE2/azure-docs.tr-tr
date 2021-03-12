@@ -32,14 +32,16 @@
       href: Concepts/data-sources-and-content.md
     - name: Azure rol tabanlı erişim denetimi (Azure RBAC)
       href: Concepts/role-based-access-control.md
+    - name: Hassas yanıtlama
+      href: reference-precise-answering.md
+    - name: Etkin öğrenmeyi açma
+      href: How-To/use-active-learning.md
     - name: Derecelendirici İşlemi
       displayName: 'DefaultAnswer, Default answer'
       href: Concepts/query-knowledge-base.md
     - name: Geliştirme yaşam döngüsü
       href: Concepts/development-lifecycle-knowledge-base.md
       displayName: 'version control, test, index, publish, monitor usage, create'
-    - name: Hassas yanıtlama
-      href: reference-precise-answering.md
     - name: En iyi uygulamalar
       href: Concepts/best-practices.md
       displayName: 'tag, rank, score, threshold, question, alternate, filter, synonym, answer, active learning, collaborate, alteration, metadata, bot, personality, extraction, chit-chat'
@@ -47,15 +49,17 @@
       href: choose-natural-language-processing-service.md
 - name: Nasıl yapılır kılavuzları
   items:
-    - name: Azure kaynaklarını yönetme
-      href: How-To/set-up-qnamaker-service-azure.md
-      displayName: 'azure, resource, key, upgrade, pricing, tier,'
-    - name: Soru-Cevap Oluşturma kaynaklarını yapılandırma
-      href: How-To/configure-QnA-Maker-resources.md
-    - name: Azure kaynakları için ağ yalıtımı
-      href: How-To/network-isolation.md
-    - name: Soru-Cevap Oluşturma kaynak erişimini yönetme
-      href: How-To/manage-qna-maker-app.md
+    - name: Soru-Cevap Oluşturma kaynaklarını yönetme
+      items:
+        - name: Soru-Cevap Oluşturma kaynaklarını ayarlama
+          href: How-To/set-up-qnamaker-service-azure.md
+          displayName: 'azure, resource, key, upgrade, pricing, tier,'
+        - name: Soru-Cevap Oluşturma kaynak erişimini yönetme
+          href: How-To/manage-qna-maker-app.md
+        - name: Soru-Cevap Oluşturma kaynaklarını yapılandırma
+          href: How-To/configure-qna-maker-resources.md
+        - name: Azure kaynakları için ağ yalıtımı
+          href: How-To/network-isolation.md
     - name: Bilgi bankasını yönetme
       items:
         - name: Bilgi bankası oluşturma
@@ -65,7 +69,7 @@
         - name: Yeni bilgi bankasına geçiş
           href: Tutorials/migrate-knowledge-base.md
           displayName: 'metadata, pair'
-        - name: Test etme
+        - name: Test bilgi tabanı
           href: How-To/test-knowledge-base.md
     - name: Soru-Cevap çiftlerini yönetme
       items:
@@ -79,15 +83,15 @@
         - name: Varsayılan yanıtı değiştirme
           href: How-To/change-default-answer.md
     - name: Bilgi bankasında sorgu yapma
-      href: How-To/metadata-generateanswer-usage.md
-      displayName: 'isTest, test, route, request, http, post, body, header, json, metadata, top, strictFilters, GenerateAnswer, API, answer, RankerType, id, text, question, context, 200, 2xx, 400, 401, 403, 404'
-    - name: Bilgi Bankası 'nı geliştirmek için etkin öğrenimi ayarlama
       items:
-        - name: Etkin öğrenmeyi açma
-          href: How-To/use-active-learning.md
-        - name: Önerilen alternatif soruları alma
-          href: How-to/improve-knowledge-base.md
-          displayName: 'active learning, suggestion, dialog prompt, train api, feedback loop, autolearn, auto-learn, user setting, service setting, services setting, accept, reject, filter by suggestion, filter active learning, clusterHead, totalAutoSuggestedCount, totalUserSuggestedCount, autoSuggestedCount, userSuggestedCount'
+        - name: GenerateAnswer API 'sini kullanma
+          href: How-To/metadata-generateanswer-usage.md
+          displayName: 'isTest, test, route, request, http, post, body, header, json, metadata, top, strictFilters, GenerateAnswer, API, answer, RankerType, id, text, question, context, 200, 2xx, 400, 401, 403, 404'
+        - name: Meta verilere göre QnAs 'yi filtrele
+          href: How-To/query-knowledge-base-with-metadata.md
+    - name: Etkin öğrenme aracılığıyla önerilen alternatif soruları alın
+      href: How-to/improve-knowledge-base.md
+      displayName: 'active learning, suggestion, dialog prompt, train api, feedback loop, autolearn, auto-learn, user setting, service setting, services setting, accept, reject, filter by suggestion, filter active learning, clusterHead, totalAutoSuggestedCount, totalUserSuggestedCount, autoSuggestedCount, userSuggestedCount'
     - name: Analiz ve telemetri
       href: How-To/get-analytics-knowledge-base.md
 - name: Başvuru

@@ -2,19 +2,19 @@
 title: Azure Resource Manager şablonları için bıcep dili
 description: Azure Resource Manager şablonları aracılığıyla Azure 'a altyapı dağıtmak için Bıcep dilini açıklar.
 ms.topic: conceptual
-ms.date: 03/03/2021
-ms.openlocfilehash: 2fb13bca9e9d456889185d512ee2fc9d4cbbe673
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.date: 03/12/2021
+ms.openlocfilehash: 11ba562fa3d91ffc7baeca647ed05e839f9c8013
+ms.sourcegitcommit: ec39209c5cbef28ade0badfffe59665631611199
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102036393"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103232979"
 ---
 # <a name="what-is-bicep-preview"></a>Bicep (Önizleme) nedir?
 
-Bıcep, Azure kaynaklarını bildirimli olarak dağıtmaya yönelik bir dildir. Daha kısa sözdizimi sağlayarak ve kod yeniden kullanımı için daha iyi destek sunarak yazma deneyimini basitleştirir. Bıcep, etki alanına özgü bir dildir (DSL), bu, belirli bir senaryo veya etki alanı için tasarlanmasıdır. Bıcep, uygulama yazmak için genel programlama dili olarak tasarlanmamıştır.
+Bıcep, Azure kaynaklarını bildirimli olarak dağıtmaya yönelik bir dildir. Azure Resource Manager şablonlarınızı geliştirmek için JSON yerine Bıcep kullanabilirsiniz (ARM şablonları). Bıcep, daha kısa bir sözdizimi sağlayarak kod yeniden kullanımı için daha iyi destek ve geliştirilmiş tür güvenliği sunarak yazma deneyimini basitleştirir. Bıcep, etki alanına özgü bir dildir (DSL), bu, belirli bir senaryo veya etki alanı için tasarlanmasıdır. Uygulama yazmak için genel programlama dili olarak tasarlanmamıştır.
 
-Geçmişte, JSON ile Azure Resource Manager şablonları (ARM şablonları) geliştirmiş olursunuz. Şablon oluşturmak için JSON sözdizimi ayrıntılı olabilir ve karmaşık ifade gerektirebilir. Bıcep, bir JSON şablonunun özelliklerini kaybetmeden bu deneyimi geliştirir. ARM şablonları için JSON üzerinde saydam bir soyutlamadır. Her bicep dosyası standart bir ARM şablonuna derlenir. Bir ARM şablonunda geçerli olan kaynak türleri, API sürümleri ve özellikler bir Bıcep dosyasında geçerlidir.
+Şablon oluşturmak için JSON sözdizimi ayrıntılı olabilir ve karmaşık ifade gerektirebilir. Bıcep, bir JSON şablonunun özelliklerini kaybetmeden bu deneyimi geliştirir. ARM şablonları için JSON üzerinde saydam bir soyutlamadır. Her bicep dosyası standart bir ARM şablonuna derlenir. Bir ARM şablonunda geçerli olan kaynak türleri, API sürümleri ve özellikler bir Bıcep dosyasında geçerlidir. Geçerli sürümde bazı [bilinen sınırlamalar](#known-limitations) vardır.
 
 ## <a name="get-started"></a>başlarken
 
@@ -55,7 +55,15 @@ Bıcep ile projenizi birden çok modüle kesebilirsiniz.
 
 Bicep dosyasının yapısı, JSON şablonundan daha esnektir. Dosya içinde herhangi bir yerde parametreler, değişkenler ve çıktılar bildirebilirsiniz. JSON 'da, şablonun ilgili bölümlerinin içindeki tüm parametreleri, değişkenleri ve çıkışları bildirmeniz gerekir.
 
-Bicep için VS Code uzantısı, daha zengin doğrulama ve IntelliSense sağlar. Örneğin, uzantısı bir kaynağın özelliklerini almak için IntelliSense 'e sahiptir.
+Bicep için VS Code uzantısı, zengin doğrulama ve IntelliSense sağlar. Örneğin, bir kaynağın özelliklerini almak için uzantının IntelliSense 'i kullanabilirsiniz.
+
+## <a name="known-limitations"></a>Bilinen sınırlamalar
+
+Şu an şu sınırlar mevcuttur:
+
+* Kopyalama döngüleri üzerinde mod veya toplu iş boyutu ayarlanamaz.
+* Döngüleri ve koşulları birleştiremez.
+* Gibi tek satırlı nesne ve diziler `['a', 'b', 'c']` desteklenmez.
 
 ## <a name="faq"></a>SSS
 

@@ -1,6 +1,6 @@
 ---
-title: 'Azure AD Uygulama Ara Sunucusu: sürüm sürümü geçmişi'
-description: Bu makalede tüm Azure AD Uygulama Ara Sunucusu sürümleri listelenir ve yeni özellikler ve düzeltilen sorunlar açıklanmaktadır
+title: 'Azure Active Directory Uygulama Ara Sunucusu: sürüm sürümü geçmişi'
+description: Bu makalede tüm Azure Active Directory Uygulama Ara Sunucusu sürümleri listelenir ve yeni özellikler ve düzeltilen sorunlar açıklanmaktadır.
 services: active-directory
 author: kenwith
 manager: daveba
@@ -8,15 +8,16 @@ ms.assetid: ''
 ms.service: active-directory
 ms.topic: reference
 ms.workload: identity
-ms.date: 07/22/2020
+ms.date: 02/17/2021
 ms.subservice: app-mgmt
 ms.author: kenwith
-ms.openlocfilehash: 6ba622bd52dc13fb0053b61b65529db6e6912611
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.reviewer: japere
+ms.openlocfilehash: 0244e0ca66f452649d3136eb122d1c2666182ae2
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101686725"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103200978"
 ---
 # <a name="azure-ad-application-proxy-version-release-history"></a>Azure AD Uygulama Ara Sunucusu: sürüm sürümü geçmişi
 Bu makalede, yayımlanan Azure Active Directory (Azure AD) uygulama proxy 'sinin sürümleri ve özellikleri listelenmektedir. Azure AD ekibi, uygulama ara sunucusunu düzenli olarak yeni özellikler ve işlevlerle güncelleştirir. Uygulama proxy bağlayıcıları, yeni bir sürüm yayınlandığında otomatik olarak güncelleştirilir. 
@@ -25,11 +26,11 @@ En son özelliklere ve hata düzeltmelerine sahip olduğunuzdan emin olmak için
 
 İlgili kaynakların listesi aşağıda verilmiştir:
 
-Kaynak |  Ayrıntılar
---------- | --------- |
-Uygulama proxy 'Sini etkinleştirme | Uygulama proxy 'Sini etkinleştirme ve bir bağlayıcıyı yükleme ve kaydetme önkoşulları, bu [öğreticide](application-proxy-add-on-premises-application.md)açıklanmıştır.
-Azure AD Uygulama Ara Sunucusu bağlayıcılarını anlama | [Bağlayıcı yönetimi](application-proxy-connectors.md) ve bağlayıcılar [otomatik yükseltme](application-proxy-connectors.md#automatic-updates)hakkında daha fazla bilgi edinin.
-Azure AD Uygulama Ara Sunucusu Bağlayıcısı Indirme |  [En son bağlayıcıyı indirin](https://download.msappproxy.net/subscription/d3c8b69d-6bf7-42be-a529-3fe9c2e70c90/connector/download).
+| Kaynak                                         | Ayrıntılar                                                      |
+| ------------------------------------------------ | ------------------------------------------------------------ |
+| Uygulama proxy 'Sini etkinleştirme                  | Uygulama proxy 'Sini etkinleştirme ve bir bağlayıcıyı yükleme ve kaydetme önkoşulları, bu [öğreticide](application-proxy-add-on-premises-application.md)açıklanmıştır. |
+| Azure AD Uygulama Ara Sunucusu bağlayıcılarını anlama | [Bağlayıcı yönetimi](application-proxy-connectors.md) ve bağlayıcılar [otomatik yükseltme](application-proxy-connectors.md#automatic-updates)hakkında daha fazla bilgi edinin. |
+| Azure AD Uygulama Ara Sunucusu Bağlayıcısı Indirme    | [En son bağlayıcıyı indirin](https://download.msappproxy.net/subscription/d3c8b69d-6bf7-42be-a529-3fe9c2e70c90/connector/download). |
 
 ## <a name="1519750"></a>1.5.1975.0
 
@@ -41,6 +42,7 @@ Azure AD Uygulama Ara Sunucusu Bağlayıcısı Indirme |  [En son bağlayıcıy�
 -   Azure Kamu bulut ortamları için geliştirilmiş destek. Azure Kamu Bulutu için bağlayıcının düzgün şekilde yüklenmesiyle ilgili adımlar için [önkoşulları](../hybrid/reference-connect-government-cloud.md#allow-access-to-urls) ve [yükleme adımlarını](../hybrid/reference-connect-government-cloud.md#install-the-agent-for-the-azure-government-cloud)gözden geçirin.
 - Uygulama proxy 'Si ile Uzak Masaüstü Hizmetleri Web istemcisinin kullanılmasına yönelik destek. Daha fazla bilgi için bkz. [Azure AD uygulama ara sunucusu Uzak Masaüstü yayımlama](application-proxy-integrate-with-remote-desktop-services.md) .
 - İyileştirilmiş WebSocket uzantı anlaşmaları. 
+- Bölgeye göre bağlayıcı grupları ve uygulama proxy 'Si bulut hizmetleri arasında iyileştirilmiş yönlendirme desteği. Daha fazla ayrıntı için bkz. [Azure Active Directory uygulama ara sunucusu trafik akışını iyileştirme](application-proxy-network-topology.md) . 
 
 ### <a name="fixed-issues"></a>Düzeltilen sorunlar
 - Küçük harfli dizeler zorlayan bir WebSocket sorunu düzeltildi.

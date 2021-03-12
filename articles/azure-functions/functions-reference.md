@@ -4,12 +4,12 @@ description: Tüm programlama dillerinde ve bağlamalarda Azure 'da işlevleri g
 ms.assetid: d8efe41a-bef8-4167-ba97-f3e016fcd39e
 ms.topic: conceptual
 ms.date: 10/12/2017
-ms.openlocfilehash: fdc898c02cfd20ecfdd72dece4fb1e92d803dbb0
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 7030ca1c1950f7c06580ce7417a4429fbe330c4e
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100386909"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102614828"
 ---
 # <a name="azure-functions-developer-guide"></a>Azure İşlevleri geliştirici kılavuzu
 Azure Işlevlerinde belirli işlevler, kullandığınız dil veya bağlama ne olursa olsun, birkaç temel teknik kavram ve bileşeni paylaşır. Belirli bir dile veya bağlamaya özgü öğrenme ayrıntılarına geçmeden önce, tüm bunlar için geçerli olan bu genel bakışı okuduğunuzdan emin olun.
@@ -116,10 +116,11 @@ Azure Işlevlerinde bazı bağlantılar, gizli anahtar yerine bir kimlik kullana
 
 Kimlik tabanlı bağlantılar aşağıdaki tetikleyici ve bağlama uzantıları tarafından desteklenir:
 
-| Uzantı adı | Uzantı sürümü                                                                                     | Tüketim planında kimlik tabanlı bağlantıları destekler |
+| Uzantı adı | Uzantı sürümü                                                                                     | Tüketim planında destekleniyor |
 |----------------|-------------------------------------------------------------------------------------------------------|---------------------------------------|
 | Azure Blob     | [Sürüm 5.0.0-Beta1 veya üzeri](./functions-bindings-storage-blob.md#storage-extension-5x-and-higher)  | No                                    |
 | Azure Kuyruk    | [Sürüm 5.0.0-Beta1 veya üzeri](./functions-bindings-storage-queue.md#storage-extension-5x-and-higher) | No                                    |
+| Azure Event Hubs    | [Sürüm 5.0.0-Beta1 veya üzeri](./functions-bindings-event-hubs.md#event-hubs-extension-5x-and-higher) | No                                    |
 
 > [!NOTE]
 > Temel davranışlar için Işlevler çalışma zamanı tarafından kullanılan depolama bağlantılarında kimlik tabanlı bağlantılar için destek henüz kullanılamamaktadır. Bu, `AzureWebJobsStorage` ayarın bir bağlantı dizesi olması gerektiği anlamına gelir.
@@ -128,9 +129,10 @@ Kimlik tabanlı bağlantılar aşağıdaki tetikleyici ve bağlama uzantıları 
 
 Azure hizmeti için kimlik tabanlı bağlantı aşağıdaki özellikleri kabul eder:
 
-| Özellik    | Ortam değişkeni | Gereklidir | Description |
+| Özellik    | Uzantılar için gerekli | Ortam değişkeni | Description |
 |---|---|---|---|
-| Hizmet URI 'SI | `<CONNECTION_NAME_PREFIX>__serviceUri` | Yes | Bağlanmakta olduğunuz hizmetin veri düzlemi URI 'SI. |
+| Hizmet URI 'SI | Azure blobu, Azure kuyruğu | `<CONNECTION_NAME_PREFIX>__serviceUri` |  Bağlanmakta olduğunuz hizmetin veri düzlemi URI 'SI. |
+| Tam nitelikli ad alanı | Event Hubs | `<CONNECTION_NAME_PREFIX>__fullyQualifiedNamespace` | Tam nitelikli Olay Hub 'ı ad alanı. |
 
 Belirli bir bağlantı türü için ek seçenekler desteklenebilir. Bağlantıyı kuran bileşen için lütfen belgelere bakın.
 
@@ -152,14 +154,26 @@ Bazı durumlarda, farklı bir kimlik kullanımını belirtmek isteyebilirsiniz. 
 > [!NOTE]
 > Azure Işlevleri hizmetinde barındırılırken aşağıdaki yapılandırma seçenekleri desteklenmez.
 
-İstemci KIMLIĞI ve gizli bir Azure Active Directory hizmet sorumlusu kullanarak bağlanmak için aşağıdaki özelliklerle bağlantıyı tanımlayın:
+İstemci KIMLIĞI ve gizli bir Azure Active Directory hizmet sorumlusu kullanarak bağlanmak için, yukarıdaki [bağlantı özelliklerine](#connection-properties) ek olarak aşağıdaki gerekli özelliklerle bağlantıyı tanımlayın:
 
-| Özellik    | Ortam değişkeni | Gereklidir | Description |
-|---|---|---|---|
-| Hizmet URI 'SI | `<CONNECTION_NAME_PREFIX>__serviceUri` | Yes | Bağlanmakta olduğunuz hizmetin veri düzlemi URI 'SI. |
-| Kiracı Kimliği | `<CONNECTION_NAME_PREFIX>__tenantId` | Yes | Azure Active Directory kiracı (Dizin) KIMLIĞI. |
-| İstemci Kimliği | `<CONNECTION_NAME_PREFIX>__clientId` | Yes |  Kiracıdaki bir uygulama kaydının istemci (uygulama) KIMLIĞI. |
-| Gizli anahtar | `<CONNECTION_NAME_PREFIX>__clientSecret` | Yes | Uygulama kaydı için oluşturulan bir istemci gizli anahtarı. |
+| Özellik    | Ortam değişkeni | Description |
+|---|---|---|
+| Kiracı Kimliği | `<CONNECTION_NAME_PREFIX>__tenantId` | Azure Active Directory kiracı (Dizin) KIMLIĞI. |
+| İstemci Kimliği | `<CONNECTION_NAME_PREFIX>__clientId` |  Kiracıdaki bir uygulama kaydının istemci (uygulama) KIMLIĞI. |
+| Gizli anahtar | `<CONNECTION_NAME_PREFIX>__clientSecret` | Uygulama kaydı için oluşturulan bir istemci gizli anahtarı. |
+
+`local.settings.json`Azure blob ile kimlik tabanlı bağlantı için gereken özellikler örneği: 
+```json
+{
+  "IsEncrypted": false,
+  "Values": {
+    "<CONNECTION_NAME_PREFIX>__serviceUri": "<serviceUri>",
+    "<CONNECTION_NAME_PREFIX>__tenantId": "<tenantId>",
+    "<CONNECTION_NAME_PREFIX>__clientId": "<clientId>",
+    "<CONNECTION_NAME_PREFIX>__clientSecret": "<clientSecret>"
+  }
+}
+```
 
 #### <a name="grant-permission-to-the-identity"></a>Kimliğe izin ver
 

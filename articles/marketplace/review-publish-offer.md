@@ -7,13 +7,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 author: mingshen-ms
 ms.author: mingshen
-ms.date: 10/27/2020
-ms.openlocfilehash: 8b63dfb015c7337e36dac3812e92ddc53914206d
-ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
+ms.date: 03/10/2021
+ms.openlocfilehash: f8ddcbef6d2ce4a9cba625374db9908335954424
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98247174"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102630903"
 ---
 # <a name="how-to-review-and-publish-an-offer-to-the-commercial-marketplace"></a>Ticari Market 'e yönelik bir teklifi İnceleme ve yayımlama
 
@@ -74,6 +74,13 @@ Yayımlama işlemindeki ilk adım bir otomatik doğrulama kümesidir. Her doğru
 - **Müşteri adayı yönetimi doğrulama ve kayıt** (<15 dk)
 
     Müşteri adayı yönetim sisteminizin müşteri adaylarını, teklif Kurulumu sayfasında verdiğiniz ayrıntılara göre **alacağından** emin veriyoruz. Bu adım yalnızca, lider yönetimi etkinleştirilmiş teklifler için geçerlidir.
+
+- **Teklif doğrulaması** (<30 dakika)
+
+    Yalnızca SaaS teklifleri için içerik ve teknik yapılandırmalara yönelik hızlı doğrulamalar gerçekleştiririz. Bu adımda algılanan doğrulama sorunlarında Önizleme oluşturma engellenmeyecektir. Sertifikalamamasına neden olan herhangi bir sorun bulduk, **teklif genel bakış** sayfasında bir **Görünüm doğrulama raporu** bağlantısı görüntülenir. Rapor, herhangi bir ilke ihlallerinin açıklamalarını içerir.
+
+    > [!IMPORTANT]
+    > **Canlı çalış** düğmesini seçmeden önce teklif doğrulama adımındaki tüm uyarıları gözden geçirip adreslediğinizden emin olun. Aksi takdirde, teklifinizin canlı olmaya devam edecek şekilde hata yaratması riski vardır.
 
 ## <a name="certification-phase"></a>Sertifika aşaması
 
@@ -143,16 +150,19 @@ Teklifi daha sonra yayınlamak istiyorsanız, Yayımlama sürecini üzerinde ba�
 
 Teklif gözden geçirmeniz ve oturumunuz devre dışı bırakıldığında size, teklif önizlemeinizi gözden geçirip onaylamanıza yönelik bir e-posta göndereceğiz. Teklifinizin Yayımcı oturum açma aşamasına ulaşmış olup olmadığını görmek için tarayıcınızda **teklif genel bakış** sayfasını da yenileyebilirsiniz. Varsa, **canlı çalış** düğmesi ve önizleme bağlantıları kullanılabilir hale gelir.
 
-Aşağıdaki ekran görüntüsünde bir SaaS teklifinin **teklif genel bakış** sayfası gösterilmektedir. Bu sayfada göreceğiniz doğrulama adımları, teklif türüne ve teklifi oluştururken yaptığınız seçimlere bağlı olarak değişir.
+Aşağıdaki ekran görüntüsünde, Iş Ortağı Merkezi 'nde ticari Market programında **teklif genel bakış** sayfası gösterilmektedir. Bu sayfada göreceğiniz doğrulama adımları, teklif türüne ve teklifi oluştururken yaptığınız seçimlere bağlı olarak değişir. Sertifika aşamasının, teklif türüne bağlı olarak önizleme veya canlı gönderim sırasında gerçekleşebileceğini unutmayın.
 
 ![Iş Ortağı Merkezi 'nde teklif için teklif genel bakış sayfasını gösterir. Canlı çalış düğmesi ve önizleme bağlantıları gösterilir.](./media/publish-status-publisher-signoff.png)
 
 ### <a name="previewing-and-approving-your-offer"></a>Teklifinizi önizleme ve onaylama
 
 > [!IMPORTANT]
-> Uçtan uca satın alma ve kurulum akışını doğrulamak için, önizleme aşamasında olan teklifinizi satın alın. Bir ücreti işlememenizi sağlamak için öncelikle Microsoft 'un bir [destek bileti](https://aka.ms/marketplacesupport) olduğunu bildirin. Teklifiniz bir kişi benimle Ilgili ise, önizleme sırasında Ilgili kişi ayrıntılarını sağlayarak bir müşteri adayının beklenen şekilde oluşturulduğunu test edin.
+> Uçtan uca satın alma ve kurulum akışını doğrulamak için, önizleme aşamasında olan teklifinizi satın alın. Bir ücreti işlememenizi sağlamak için öncelikle Microsoft 'un bir [destek bileti](https://aka.ms/marketplacesupport) olduğunu bildirin. Teklifiniz bir _kişi benimle ilgili_ ise, önizleme sırasında ilgili kişi ayrıntılarını sağlayarak bir müşteri adayının beklenen şekilde oluşturulduğunu test edin.
 
 **Teklif genel bakış** sayfasında, **canlı çalış** düğmesinin altında Önizleme bağlantıları görüntülenir. Teklifinizi oluştururken seçtiğiniz seçeneklere bağlı olarak, AppSource Preview, Azure Marketi önizlemesi veya her ikisinin de bir bağlantısı olacaktır. Teklifinizi Microsoft aracılığıyla satmayı seçerseniz, önizleme izleyicisine eklenmiş olan herkes, bu aşamada gereksinimlerinizi karşıladığından emin olmak için teklifinizin Alım ve dağıtımını test edebilir.
+
+> [!IMPORTANT]
+> **Canlı çalış** düğmesini seçmeden önce _teklif doğrulama_ adımındaki tüm uyarıları gözden geçirip adreslediğinizden emin olun. Aksi takdirde, teklifinizin canlı olmaya devam edecek şekilde hata yaratması riski vardır.
 
 Önizlemeyi onayladıktan sonra, teklifinizi ticari Market 'te canlı yayımlamak için **canlı ol** ' u seçin. 
 

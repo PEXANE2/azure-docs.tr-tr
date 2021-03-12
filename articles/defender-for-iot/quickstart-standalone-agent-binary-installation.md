@@ -1,27 +1,27 @@
 ---
-title: IoT mikro Aracısı için Defender 'ı yükler
+title: IoT mikro Aracısı (Önizleme) için Defender 'ı yükler
 titleSuffix: Azure Defender for IoT
 description: Defender Micro Agent 'ı yüklemeyi ve kimlik doğrulamasını öğrenin.
 author: shhazam-ms
 manager: rkarlin
 ms.author: shhazam
-ms.date: 3/3/2021
+ms.date: 3/9/2021
 ms.topic: quickstart
 ms.service: azure
-ms.openlocfilehash: ccf28c47e2e1438a141e2497da70d32c1832ddb9
-ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
+ms.openlocfilehash: 8984b1dbcb9a6aca6d313d8195a75093ae421bbd
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102120445"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102611684"
 ---
-# <a name="install-defender-for-iot-micro-agent"></a>IoT mikro Aracısı için Defender 'ı yükler 
+# <a name="install-defender-for-iot-micro-agent-preview"></a>IoT mikro Aracısı (Önizleme) için Defender 'ı yükler
 
 Bu makalede, Defender mikro aracısının nasıl yükleneceğine ve kimlik doğrulamasının nasıl yapılacağı hakkında bir açıklama sağlanmaktadır.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-IoT modülü için Defender 'ı yüklemeden önce IoT Hub bir modül kimliği oluşturmanız gerekir. Modül kimliği oluşturma hakkında daha fazla bilgi için bkz. [Defender IoT mikro aracı modülü oluşturma ikizi ](quickstart-create-micro-agent-module-twin.md).
+IoT modülünü için Defender 'ı yüklemeden önce IoT Hub bir modül kimliği oluşturmanız gerekir. Modül kimliği oluşturma hakkında daha fazla bilgi için bkz. [Defender IoT mikro aracı modülü oluşturma ikizi (Önizleme)](quickstart-create-micro-agent-module-twin.md).
 
 ## <a name="install-the-package"></a>Paketi yükler
 
@@ -49,13 +49,37 @@ sudo apt-get install defender-iot-micro-agent
 
 IoT mikro aracısının Defender kimliğini doğrulamak için kullanılan iki seçenek şunlardır: 
 
-- Bağlantı dizesi. 
+- Modül kimliği bağlantı dizesi. 
 
 - Sertifika.
 
-### <a name="authenticate-using-a-connection-string"></a>Bağlantı dizesi kullanarak kimlik doğrulama
+### <a name="authenticate-using-a-module-identity-connection-string"></a>Modül kimlik bağlantı dizesi kullanarak kimlik doğrulama
 
-Bir bağlantı dizesi kullanarak kimlik doğrulaması yapmak için:
+Bu makaleye yönelik [önkoşulların](#prerequisites) karşılandığından ve bu adımları başlatmadan önce bir modül kimliği oluşturduğunuzdan emin olun. 
+
+#### <a name="get-the-module-identity-connection-string"></a>Modül kimlik bağlantı dizesini al
+
+IoT Hub modül kimliği bağlantı dizesini almak için: 
+
+1. IoT Hub gidin ve hub 'ınızı seçin.
+
+1. Sol taraftaki menüde, **araştırma yapanlar** bölümünde **IoT cihazları**' nı seçin.
+
+   :::image type="content" source="media/quickstart-standalone-agent-binary-installation/iot-devices.png" alt-text="Sol taraftaki menüden IoT cihazları ' nı seçin.":::
+
+1. Cihaz **ayrıntıları** sayfasını görüntülemek IÇIN cihaz kimliği listesinden bir cihaz seçin.
+
+1.  **Modül kimlikleri**   sekmesini seçin ve ardından cihazla ilişkili modül kimlikleri listesinden **Savunmiotmicroagent**   modülünü seçin.
+
+   :::image type="content" source="media/quickstart-standalone-agent-binary-installation/module-identities.png" alt-text="Modül kimlikleri sekmesini seçin.":::
+
+1. **Modül kimlik ayrıntıları** sayfasında, **Kopyala** düğmesini seçerek birincil anahtarı kopyalayın.
+
+   :::image type="content" source="media/quickstart-standalone-agent-binary-installation/copy-button.png" alt-text="Birincil anahtarı kopyalamak için Kopyala düğmesini seçin.":::
+
+#### <a name="configure-authentication-using-a-module-identity-connection-string"></a>Modül kimlik bağlantı dizesi kullanarak kimlik doğrulamasını yapılandırma
+
+Aracıyı bir modül kimliği bağlantı dizesi kullanarak kimlik doğrulaması yapacak şekilde yapılandırmak için:
 
 1. `connection_string.txt`Aşağıdaki komutu girerek Defender aracı dizin yolunda UTF-8 ile kodlanmış bağlantı dizesini içeren adlı bir dosya yerleştirin `/var/defender_iot_micro_agent` :
 
@@ -63,7 +87,7 @@ Bir bağlantı dizesi kullanarak kimlik doğrulaması yapmak için:
     sudo bash -c 'echo "<connection string" > /var/defender_iot_micro_agent/connection_string.txt' 
     ```
 
-    `connection_string.txt`Şimdi aşağıdaki yol konumunda bulunmalıdır `/var/defender_iot_micro_agent/connection_string.txt` .
+    , `connection_string.txt` Aşağıdaki yol konumunda bulunmalıdır `/var/defender_iot_micro_agent/connection_string.txt` .
 
 1. Bu komutu kullanarak hizmeti yeniden başlatın:  
 
