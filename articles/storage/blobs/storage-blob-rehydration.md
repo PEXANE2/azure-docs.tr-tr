@@ -4,17 +4,17 @@ description: Blob verilerine erişebilmek için bloblarınızı arşiv depolamad
 services: storage
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 01/08/2021
+ms.date: 03/11/2021
 ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
 ms.reviewer: hux
-ms.openlocfilehash: 5a89e5a9eca653a2d15e5b09605b78bc18d76b8f
-ms.sourcegitcommit: 16887168729120399e6ffb6f53a92fde17889451
+ms.openlocfilehash: 2f0ddca9cbd7d85909b1d86e68b92fa1d847476d
+ms.sourcegitcommit: 94c3c1be6bc17403adbb2bab6bbaf4a717a66009
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98165680"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103225090"
 ---
 # <a name="rehydrate-blob-data-from-the-archive-tier"></a>Arşiv katmanından blob verilerini yeniden doldurma
 
@@ -29,6 +29,10 @@ Blob, arşiv erişim katmanında olduğunda çevrimdışı olarak kabul edilir v
 
 [!INCLUDE [storage-blob-rehydration](../../../includes/storage-blob-rehydrate-include.md)]
 
+### <a name="lifecycle-management"></a>Yaşam döngüsü yönetimi
+
+Blob 'u yeniden doldurma, `Last-Modified` zamanı değiştirmez. [Yaşam döngüsü yönetimi](storage-lifecycle-management-concepts.md) özelliğinin kullanılması, bir Blobun yeniden Sarmalanan bir senaryo oluşturabilir, sonra `Last-Modified` zaman, ilke için eşik kümesinin ötesinde bir yaşam döngüsü yönetimi ilkesi, blobu arşive geri taşımalıdır. Bu senaryoyu önlemek için, *[arşivlenmiş bir blobu bir çevrimiçi katmana kopyalama](#copy-an-archived-blob-to-an-online-tier)* yöntemine kullanın. Copy yöntemi, bir blob 'un güncelleştirilmiş bir zamana sahip yeni bir örneğini oluşturur `Last-Modified` ve yaşam döngüsü yönetim ilkesini tetiklemez.
+
 ## <a name="monitor-rehydration-progress"></a>İzleme yeniden doldurma ilerlemesi
 
 Yeniden doldurma sırasında, **Arşiv durumu** özniteliğini denetlemek için blob özelliklerini Al işlemini kullanın ve katman değişikliğinin ne zaman tamamlandığını onaylayın. Durum, hedef katmana göre "rehydrate-pending-to-hot" veya "rehydrate-pending-to-cool" olabilir. Tamamlandıktan sonra arşiv durumu özelliği kaldırılır ve **Erişim Katmanı** blob özelliği sık veya seyrek erişimli bu yeni katmanı gösterir.
@@ -42,7 +46,7 @@ Bir Blobun arşivden kopyalanması, seçili olan yeniden doldurma önceliğine b
 > [!IMPORTANT]
 > Hedef üzerinde kopyalama başarıyla tamamlanana kadar kaynak blobu silmeyin. Kaynak blobu silinirse, hedef blobu kopyalamayı tamamlamayabilir ve boş olur. Kopyalama işleminin durumunu öğrenmek için *x-MS-Copy-Status durumunu* kontrol edebilirsiniz.
 
-Arşiv blob 'ları yalnızca aynı depolama hesabı içindeki çevrimiçi hedef katmanlara kopyalanabilir. Bir arşiv blobunun başka bir arşiv blobuna kopyalanması desteklenmez. Aşağıdaki tablo, CopyBlob 'un yeteneklerini gösterir.
+Arşiv blob 'ları yalnızca aynı depolama hesabı içindeki çevrimiçi hedef katmanlara kopyalanabilir. Bir arşiv blobunun başka bir arşiv blobuna kopyalanması desteklenmez. Aşağıdaki tabloda, **kopyalama blobu** işleminin özellikleri gösterilmektedir.
 
 |                                           | **Etkin katman kaynağı**   | **Cool katmanı kaynağı** | **Arşiv katmanı kaynağı**    |
 | ----------------------------------------- | --------------------- | -------------------- | ------------------- |

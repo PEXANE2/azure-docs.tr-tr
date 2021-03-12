@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 02/22/2021
 ms.author: alkohli
-ms.openlocfilehash: b32757dddf745e7aaa0ea8276a3527fa464cc0d4
-ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
+ms.openlocfilehash: b1bfbda007619bf5bd94d47297845881758037bc
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102442171"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102636649"
 ---
 # <a name="recover-from-a-failed-azure-stack-edge-pro-gpu-device"></a>Başarısız Azure Stack Edge Pro GPU cihazından kurtarma 
 
@@ -52,10 +52,10 @@ Artık eski cihazda çalıştırdığınız iş yüklerini dağıtmaya hazırsı
 
 Cihazınızdaki uç bulut paylaşımlarındaki verileri geri yüklemek için şu adımları izleyin:
 
-1. Daha önce başarısız olan cihazda oluşturulmuş aynı paylaşım adlarına sahip [Paylaşımlar ekleyin](azure-stack-edge-j-series-manage-shares.md#add-a-share) . Paylaşımlar oluştururken, **BLOB kapsayıcısı** ' nın **var olan seçeneği kullanacak** şekilde ayarlandığından emin olun ve ardından önceki cihazla kullanılan kapsayıcıyı seçin.
-1. Önceki cihaza erişimi olan [kullanıcıları ekleyin](azure-stack-edge-j-series-manage-users.md#add-a-user) .
-1. Daha önce cihazda bulunan paylaşımlarla ilişkili [depolama hesaplarını ekleyin](azure-stack-edge-j-series-manage-storage-accounts.md#add-an-edge-storage-account) . Sınır depolama hesapları oluştururken, mevcut bir kapsayıcı arasından seçim yapın ve önceki cihazda eşlenen Azure depolama hesabıyla eşleştirilmiş kapsayıcıyı işaret edin. Cihazdan önceki cihazdaki Edge depolama hesabına yazılan tüm veriler, eşlenen Azure depolama hesabındaki seçili depolama kapsayıcısına yüklendi.
-1. Azure 'daki [Share verilerini yenileyin](azure-stack-edge-j-series-manage-shares.md#refresh-shares) . Bu, mevcut kapsayıcıdan tüm bulut verilerini paylaşımlara çeker.
+1. Daha önce başarısız olan cihazda oluşturulmuş aynı paylaşım adlarına sahip [Paylaşımlar ekleyin](azure-stack-edge-gpu-manage-shares.md#add-a-share) . Paylaşımlar oluştururken, **BLOB kapsayıcısı** ' nın **var olan seçeneği kullanacak** şekilde ayarlandığından emin olun ve ardından önceki cihazla kullanılan kapsayıcıyı seçin.
+1. Önceki cihaza erişimi olan [kullanıcıları ekleyin](azure-stack-edge-gpu-manage-users.md#add-a-user) .
+1. Daha önce cihazda bulunan paylaşımlarla ilişkili [depolama hesaplarını ekleyin](azure-stack-edge-gpu-manage-storage-accounts.md#add-an-edge-storage-account) . Sınır depolama hesapları oluştururken, mevcut bir kapsayıcı arasından seçim yapın ve önceki cihazda eşlenen Azure depolama hesabıyla eşleştirilmiş kapsayıcıyı işaret edin. Cihazdan önceki cihazdaki Edge depolama hesabına yazılan tüm veriler, eşlenen Azure depolama hesabındaki seçili depolama kapsayıcısına yüklendi.
+1. Azure 'daki [Share verilerini yenileyin](azure-stack-edge-gpu-manage-shares.md#refresh-shares) . Bu, mevcut kapsayıcıdan tüm bulut verilerini paylaşımlara çeker.
 
 ## <a name="restore-edge-local-shares"></a>Uç yerel paylaşımları geri yükleme
 
@@ -73,7 +73,7 @@ Değiştirme aygıtı tam olarak yapılandırıldıktan sonra, cihazı yerel dep
 Yerel paylaşımlardaki verileri kurtarmak için şu adımları izleyin:
 
 1. [Cihazda Işlem yapılandırma](azure-stack-edge-gpu-deploy-configure-compute.md).
-1. [Yerel bir paylaşımdan geri ekleyin](azure-stack-edge-j-series-manage-shares.md#add-a-local-share) .
+1. [Yerel bir paylaşımdan geri ekleyin](azure-stack-edge-gpu-manage-shares.md#add-a-local-share) .
 1. Tercih edilen veri koruma çözümü tarafından sunulan kurtarma yordamını çalıştırın. Yukarıdaki tablodaki başvurulara bakın.
 
 ## <a name="restore-vm-files-and-folders"></a>VM dosyalarını ve klasörlerini geri yükleme

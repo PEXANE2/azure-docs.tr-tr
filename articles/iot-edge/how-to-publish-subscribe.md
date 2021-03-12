@@ -10,14 +10,16 @@ ms.date: 11/09/2020
 ms.topic: conceptual
 ms.service: iot-edge
 monikerRange: '>=iotedge-2020-11'
-ms.openlocfilehash: e4043fd8b7c9571b62cbf65d7398754b27375efd
-ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
+ms.openlocfilehash: 730680b0cb6e8a728ed3072419674346de649368
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100633980"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103200680"
 ---
 # <a name="publish-and-subscribe-with-azure-iot-edge"></a>Azure IoT Edge yayımlayın ve abone olun
+
+[!INCLUDE [iot-edge-version-202011](../../includes/iot-edge-version-202011.md)]
 
 İletileri yayımlamak ve abone olmak için MQTT Broker Azure IoT Edge kullanabilirsiniz. Bu makalede, bu aracıya nasıl bağlanacağınız, Kullanıcı tanımlı konular üzerinden iletileri yayımlayıp abone olabileceğiniz ve IoT Hub mesajlaşma temelleri kullanabileceğiniz gösterilmektedir. IoT Edge MQTT Aracısı, IoT Edge hub 'ında yerleşik olarak bulunur. Daha fazla bilgi için [IoT Edge hub 'ının aracı özelliklerine](iot-edge-runtime.md)bakın.
 

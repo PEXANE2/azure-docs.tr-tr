@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 01/13/2021
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: 92bf066c9769cc4b2525923b9e18ed3c0e9c577a
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 2ad5bf08542cd98f7acae36827b1a7b284a893b0
+ms.sourcegitcommit: 6776f0a27e2000fb1acb34a8dddc67af01ac14ac
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98937133"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103149312"
 ---
 # <a name="identify-required-appliances"></a>Gerekli gereçlerini tanımlama
 
@@ -38,13 +38,13 @@ IoT için Defender hem fiziksel hem de sanal dağıtımları destekler.
 
 Bu bölümde, kullanılabilir fiziksel algılayıcı modelleriyle ilgili bir genel bakış sunulmaktadır. Önceden yapılandırılmış yazılımlar veya önceden yapılandırılmış bir satın alma sensörle sensörlerle satın alabilirsiniz.
 
-| Dağıtım türü | Kurumsal | Kurumsal | SMB |
-|--|--|--|--|
-| Görüntü | :::image type="content" source="media/how-to-prepare-your-network/corporate-hpe-proliant-dl360-v2.png" alt-text="Kurumsal düzeyde model."::: | :::image type="content" source="media/how-to-prepare-your-network/enterprise-and-smb-hpe-proliant-dl20-v2.png" alt-text="Kurumsal düzeyde model."::: | :::image type="content" source="media/how-to-prepare-your-network/enterprise-and-smb-hpe-proliant-dl20-v2.png" alt-text="SMB düzeyi modeli."::: |
-| Modelleme | HPE ProLiant DL360 | HPE ProLiant DL20 | HPE ProLiant DL20 |
-| İzleme bağlantı noktaları | En fazla 15 RJ45 veya 8 OPT | En fazla 8 RJ45 veya 6 OPT | 4 RJ45 |
-| Maksimum bant genişliği [1](#anchortext) | saniyede 3 GB | saniyede 1 GB | saniyede 200 MB |
-| En fazla korumalı cihaz | 30.000 | 15.000 | 1.000 |
+| Dağıtım türü | Kurumsal | Kurumsal | SMB raf bağlama| SMB rugkanlı|
+|--|--|--|--|--|
+| Görüntü | :::image type="content" source="media/how-to-prepare-your-network/corporate-hpe-proliant-dl360-v2.png" alt-text="Kurumsal düzeyde model."::: | :::image type="content" source="media/how-to-prepare-your-network/enterprise-and-smb-hpe-proliant-dl20-v2.png" alt-text="Kurumsal düzeyde model."::: | :::image type="content" source="media/how-to-prepare-your-network/enterprise-and-smb-hpe-proliant-dl20-v2.png" alt-text="SMB düzeyi modeli."::: | :::image type="content" source="media/how-to-prepare-your-network/office-ruggedized.png" alt-text="SMB-ruggesıed Level modeli."::: |
+| Modelleme | HPE ProLiant DL360 | HPE ProLiant DL20 | HPE ProLiant DL20 | HPE EL300 |
+| İzleme bağlantı noktaları | En fazla 15 RJ45 veya 8 OPT | En fazla 8 RJ45 veya 6 OPT | 4 RJ45 | En fazla 5 |
+| Maksimum bant genişliği [1](#anchortext) | 3 GB/sn | 1 GB/sn | 200 MB/sn | 100 MB/sn |
+| En fazla korumalı cihaz | 30.000 | 15.000 | 1.000 | 800 |
 
 Satıcı ayrıntıları için bkz. [gereç belirtimleri](#appliance-specifications) .
 
@@ -195,6 +195,45 @@ Bu bölümde, aşağıdaki gereçlere yönelik donanım belirtimleri açıklanma
 | 512485-B21 | HPE ILO adv 1-sunucu lisansı 1 yıl desteği | 1 |
 | 775612-B21 | HPE 1U kısa Friction demiryolu Seıl seti | 1 |
 
+## <a name="smb-rugged-hpe-edgeline-el300"></a>SMB Rugged: HPE Edgeline EL300
+
+| Bileşen | Teknik özellikler |
+|--|--|
+| İnşaat | Alumum, daha az & toz-prova tasarımı |
+| Boyutlar (yükseklik x Genişlik x derinlik) | 200.5 mm (7,9 ") yüksekliğinde, 232mm (9,14") Genişlik, 100 mm (3,9 ") derin |
+| Ağırlık | 4,91 KG (10,83 lbs.) |
+| CPU | Intel Core i7-8650U (1.9 GHz/4-çekirdek/15W) |
+| Ç | Intel® Q170 platform denetleyicisi hub 'ı |
+| Bellek | 8DDR4 2133MHz Wide sıcaklık SODıMM |
+| Depolama | 128GB 3ME3 geniş sıcaklık mSATA SSD |
+| Ağ denetleyicisi | Intel® I219 'e göre 6x Gigabit Ethernet bağlantı noktaları |
+| Cihaz erişimi  | 4 USBs: 2 ön yüz; 2 yeniden Vana; 1 iç |
+| Güç bağdaştırıcısı | 250V/10A |
+| Takarak | Bağlama kiti, DIN |
+| İşletim sıcaklığı | 0C 'den + 70C  |
+| Nem oranı | %10, %90, yoğunlaşmayan |
+| Titreşimi | 0,3 grms 10Hz ila 300Hz, eksen başına 15 dakika-DIN demiryolu   |
+| Şok | 10G 10ms, yarım sinüs, her eksen için üç. (Pozitif & negatif Pulse) – DIN |
+
+### <a name="appliance-bom"></a>Gereç ürün ağacı
+| Ürün | Description |
+|--|--|
+| P25828-B21 | HPE Edgeline EL300 v2 yakınsanmış uç sistemi |
+| P25828-B21 B19 | HPE EL300 v2 Yakınsanan uç sistemi |
+| P25833-B21 | Intel Core i7-8650U (1.9 GHz/4-Core/15W) HPE Edgeline EL300 için FIO temel Işlemci seti |
+| P09176-B21 | HPE Edgeline 8GB (1X8s) Dual Rank x8 DDR4-2666 SODıMM WT CAS-19-19-19 kayıtlı bellek FIO kiti |
+| P09188-B21 | HPE Edgeline 256GB SATA 6G yoğun okuma yoğun M. 2 2242 3yr WTY geniş geçici SSD |
+| P04054-B21 | HPE Edgeline EL300 SFF-d. 2 etkinleştirme paketi |
+| P08120-B21 | HPE Edgeline EL300 12VDC FIO aktarma panosu |
+| P08641-B21 | HPE Edgeline EL300 80W 12VDC güç kaynağı |
+| AF564A | HPE C13-SI-32 Il 250V 10Amp 1.83 m güç kablosu |
+| P25835-B21 | HPE EL300 v2 FIO taşıyıcı panosu |
+| R1P49AAE | HPE EL300 ISM adv 3 yıl 7/24 Sup_Upd E-LTU |
+| P08018-B21 isteğe bağlı | HPE Edgeline EL300 düşük profil ayracı kiti  |
+| P08019-B21 isteğe bağlı | HPE Edgeline EL300 DIN demiryolu seti |
+| P08020-B21 isteğe bağlı | HPE Edgeline EL300 duvar bağlama seti |
+| P03456-B21 isteğe bağlı | HPE Edgeline 1GbE 4-bağlantı noktası TSN FIO dişi kartı |
+
 ## <a name="virtual-appliance-specifications"></a>Sanal Gereç belirtimleri
 
 ### <a name="sensors"></a>Sensörlerden
@@ -238,7 +277,7 @@ Gereci satın aldıktan sonra,   >  yazılımı indirmek için IoT **ağ sensör
 
 | Bileşen | Teknik özellikler |
 |--|--|
-| Kasa | 1U raf sunucusu |
+| Kasa | 1U raf sunucusu
 | Boyutlar | 42,8 x 434,0 x 596 (mm)/1,67 "x 17,09" x 23,5 "(içinde) |
 | Ağırlık | Maksimum 29,98 lb/13,6 kg |
 | İşlemci | Intel Xeon E-2144G 3,6 GHz, 8M önbellek, 4C/8T, Turbo (71 W) |
@@ -260,3 +299,4 @@ Gereci satın aldıktan sonra,   >  yazılımı indirmek için IoT **ağ sensör
 [IoT yüklemesi için Azure Defender hakkında](how-to-install-software.md)
 
 [IoT Ağ kurulumu için Azure Defender hakkında](how-to-set-up-your-network.md)
+

@@ -9,12 +9,12 @@ ms.subservice: extensions
 ms.date: 02/12/2021
 ms.reviewer: jushiman
 ms.custom: mimckitt
-ms.openlocfilehash: 8805b3c4947311a3054066b3378d881d673c2b14
-ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
+ms.openlocfilehash: d1290b1dcc1e97d63dd41d5be8ca19b81e32f838
+ms.sourcegitcommit: 94c3c1be6bc17403adbb2bab6bbaf4a717a66009
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102521756"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103225039"
 ---
 # <a name="preview-orchestration-modes-for-virtual-machine-scale-sets-in-azure"></a>Önizleme: Azure 'da sanal makine ölçek kümeleri için düzenleme modları 
 
@@ -128,12 +128,22 @@ Aşağıdaki tabloda esnek düzenleme modu, Tekdüzen düzenleme modu ve kullan�
 |         Azure uyarıları  |            Hayır  |            Yes  |            Yes  |
 |         VM öngörüleri  |            Hayır  |            Yes  |            Yes  |
 |         Azure Backup  |            Yes  |            Yes  |            Yes  |
-|         Azure Site Recovery  |            Hayır  |            Hayır  |            Yes  |
+|         Azure Site Recovery  |     Hayır  |            Hayır  |            Yes  |
 |         Mevcut VM 'yi gruba ekle/kaldır  |            Hayır  |            Hayır  |            Hayır  | 
 
 
 ## <a name="register-for-flexible-orchestration-mode"></a>Esnek düzenleme moduna kaydolun
 Esnek düzenleme modunda sanal makine ölçek kümelerini dağıtabilmeniz için önce önizleme özelliği aboneliğinizi kaydetmeniz gerekir. Kaydın tamamlanması birkaç dakika sürebilir. Kaydolmak için aşağıdaki Azure PowerShell veya Azure CLı komutlarını kullanabilirsiniz.
+
+### <a name="azure-portal"></a>Azure Portalı
+Esnek düzenleme modunda bir ölçek kümesi oluşturmak istediğiniz aboneliğin ayrıntılar sayfasına gidin ve menüden Önizleme özellikleri ' ni seçin. Etkinleştirmek için iki Orchestrator özelliğini seçin: _VMOrchestratorSingleFD_ ve _VMOrchestratorMultiFD_ ve Kaydet düğmesine basın. Özellik kaydı 15 dakikaya kadar sürebilir.
+
+![Özellik kaydı.](https://user-images.githubusercontent.com/157768/110361543-04d95880-7ff5-11eb-91a7-2e98f4112ae0.png)
+
+Aboneliğiniz için özellikler kaydedildikten sonra, değişikliği işlem kaynak sağlayıcısına yayarak katılım işlemini doldurun. Aboneliğiniz için kaynak sağlayıcıları sekmesine gidin, Microsoft. COMPUTE ' i seçin ve yeniden Kaydet ' e tıklayın.
+
+![Yeniden Kaydet](https://user-images.githubusercontent.com/157768/110362176-cd1ee080-7ff5-11eb-8cc8-36aa967e267a.png)
+
 
 ### <a name="azure-powershell"></a>Azure PowerShell 
 Aboneliğiniz için Önizlemeyi etkinleştirmek üzere [register-AzProviderFeature](/powershell/module/az.resources/register-azproviderfeature) cmdlet 'ini kullanın. 

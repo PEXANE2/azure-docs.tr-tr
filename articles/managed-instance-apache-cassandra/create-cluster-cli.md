@@ -6,12 +6,12 @@ ms.author: thvankra
 ms.service: managed-instance-apache-cassandra
 ms.topic: quickstart
 ms.date: 03/02/2021
-ms.openlocfilehash: 86fa7e2e45dacb86b6601b699dca46b1b909fd08
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: 28599c08f25533e042c03612d035912a8d0f17c0
+ms.sourcegitcommit: 94c3c1be6bc17403adbb2bab6bbaf4a717a66009
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102424708"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103225379"
 ---
 # <a name="quickstart-create-an-azure-managed-instance-for-apache-cassandra-cluster-using-azure-cli-preview"></a>Hızlı başlangıç: Azure CLı kullanarak Apache Cassandra kümesi için Azure yönetilen örneği oluşturma (Önizleme)
 
@@ -56,7 +56,7 @@ Bu hızlı başlangıçta Apache Cassandra için Azure yönetilen örneği ile b
    ```
 
    > [!NOTE]
-   > `assignee` `role` Önceki komutta ve değerleri sırasıyla sabit hizmet ilkesi ve rol tanımlayıcılarıdır.
+   > `assignee` `role` Önceki komutta ve değerleri sabit değerlerdir, bu değerleri tam olarak komutta belirtildiği gibi girin. Bunu yapmadığınızda, küme oluşturulurken hatalara neden olur. Bu komutu yürütürken herhangi bir hatayla karşılaşırsanız, çalıştırma izniniz olmayabilir, lütfen izinler için yöneticinize ulaşın.
 
 1. Daha sonra yeni oluşturduğunuz sanal ağınızda kümeyi oluşturun. Aşağıdaki komutu çalıştırın ve `Resource ID` önceki komutta alınan değeri değişkenin değeri olarak kullandığınızdan emin olun `delegatedManagementSubnetId` :
 

@@ -3,7 +3,7 @@ title: REST ile içerik anahtarları oluşturma | Microsoft Docs
 description: Bu makalede, varlıklara güvenli erişim sağlayan içerik anahtarlarının nasıl oluşturulacağı gösterilmektedir.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.assetid: 95e9322b-168e-4a9d-8d5d-d7c946103745
@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/20/2019
-ms.author: juliako
-ms.openlocfilehash: 5038a6d70f3293dfa1556d72b2f85aa930794949
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 03/10/2021
+ms.author: inhenkel
+ms.openlocfilehash: a9960ece05b7cab4ddd26fdac7516f4adbccf5b0
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89256982"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103017265"
 ---
 # <a name="create-content-keys-with-rest"></a>REST ile içerik anahtarları oluşturma
 
@@ -31,13 +31,13 @@ ms.locfileid: "89256982"
 > 
 > 
 
-Media Services şifrelenmiş varlıklar sunmanızı sağlar. Bir **Contentkey** , **varlığınıza güvenli**erişim sağlar. 
+Media Services şifrelenmiş varlıklar sunmanızı sağlar. Bir **Contentkey** , **varlığınıza güvenli** erişim sağlar. 
 
-Yeni bir varlık oluşturduğunuzda (örneğin, [dosyaları karşıya](media-services-rest-upload-files.md)yüklemeden önce) aşağıdaki şifreleme seçeneklerini belirtebilirsiniz: **storageencryptıon**, **CommonEncryptionProtected**veya **EnvelopeEncryptionProtected**. 
+Yeni bir varlık oluşturduğunuzda (örneğin, [dosyaları karşıya](media-services-rest-upload-files.md)yüklemeden önce) aşağıdaki şifreleme seçeneklerini belirtebilirsiniz: **storageencryptıon**, **CommonEncryptionProtected** veya **EnvelopeEncryptionProtected**. 
 
 İstemcilerinize varlıklar sunışınızda, varlıkların aşağıdaki iki şifreleden biriyle [dinamik olarak şifrelenmesini](media-services-rest-configure-asset-delivery-policy.md) sağlayabilirsiniz: **DynamicEnvelopeEncryption** veya **dynamiccommonencryption**.
 
-Şifrelenmiş varlıkların, **Contentkey**s ile ilişkilendirilmesi gerekir. Bu makalede bir içerik anahtarının nasıl oluşturulacağı açıklanır.
+Şifrelenmiş varlıkların, **Contentkey** s ile ilişkilendirilmesi gerekir. Bu makalede bir içerik anahtarının nasıl oluşturulacağı açıklanır.
 
 Aşağıda, şifrelenmesini istediğiniz varlıklarla ilişkilendirdiğiniz içerik anahtarlarının oluşturulması için genel adımlar verilmiştir. 
 
@@ -71,7 +71,7 @@ Aşağıda, şifrelenmesini istediğiniz varlıklarla ilişkilendirdiğiniz içe
      }
     ```
 
-5. Önceki adımlarda aldığınız **Encryptedcontentkey** (base64 kodlu dizeye dönüştürülmüş), **protectionkeyıd**, **Protectionkeytype**, **Contentkeytype**ve **sağlama toplamı** değerleri ile içerik anahtarı oluşturun.
+5. Önceki adımlarda aldığınız **Encryptedcontentkey** (base64 kodlu dizeye dönüştürülmüş), **protectionkeyıd**, **Protectionkeytype**, **Contentkeytype** ve **sağlama toplamı** değerleri ile içerik anahtarı oluşturun.
 6. $Links işlemi aracılığıyla **Contentkey** varlığını **varlık** varlığınızla ilişkilendirin.
 
 Bu makale, bir AES anahtarı oluşturmayı, anahtarı şifrelemeyi ve sağlama toplamını hesaplamayı göstermez. 
@@ -269,5 +269,5 @@ HTTP/1.1 204 No Content
 ## <a name="media-services-learning-paths"></a>Media Services’i öğrenme yolları
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Geri bildirimde bulunma
+## <a name="provide-feedback"></a>Geribildirim gönderme
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]

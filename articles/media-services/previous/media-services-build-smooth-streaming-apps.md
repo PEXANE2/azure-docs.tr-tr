@@ -3,7 +3,7 @@ title: Windows Mağazası uygulaması öğreticisini Kesintisiz Akış | Microso
 description: Kesintisiz akış içeriğini kayıttan yürütmek için XML MediaElement denetimiyle bir C# Windows Mağazası uygulaması oluşturmak üzere Azure Media Services nasıl kullanacağınızı öğrenin.
 services: media-services
 documentationcenter: ''
-author: juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.assetid: 0fa5d8c5-3d5f-4886-ae55-fb6de4f5256d
@@ -12,15 +12,15 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/14/2019
-ms.author: juliako
+ms.date: 03/10/2021
+ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 9b616b03698e83d256a7b81e4548edbf21dba058
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 20c7068fa0cb56699fdbc6d75b279abadd583832
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96021138"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103017129"
 ---
 # <a name="how-to-build-a-smooth-streaming-windows-store-application"></a>Kesintisiz Akış Windows Mağazası uygulaması oluşturma
 
@@ -78,7 +78,7 @@ Windows Mağazası uygulaması geliştirme hakkında daha fazla bilgi için bkz.
     | Çözüm Adı |SSPlayer |
     | Çözüm için dizin oluştur |seçildiğinde |
 
-1. **Tamam** düğmesine tıklayın.
+1. **Tamam**'a tıklayın.
 
 ### <a name="to-add-a-reference-to-the-smooth-streaming-client-sdk"></a>Kesintisiz Akış Istemci SDK 'sına bir başvuru eklemek için
 
@@ -90,7 +90,7 @@ Windows Mağazası uygulaması geliştirme hakkında daha fazla bilgi için bkz.
     | Başvuru grubu |Pencereler/uzantılar |
     | Başvuru |Windows 8 ve Microsoft Visual C++ çalışma zamanı paketi için Microsoft Kesintisiz Akış Istemci SDK 'sını seçin |
 
-1. **Tamam** düğmesine tıklayın. 
+1. **Tamam**'a tıklayın. 
 
 Başvuruları ekledikten sonra, hedeflenen platformu (x64 veya x86) seçmeniz gerekir. başvuruları eklemek herhangi bir CPU platformu yapılandırması için çalışmaz.  Çözüm Gezgini 'nde, bu eklenen başvurular için sarı bir uyarı işareti görürsünüz.
 
@@ -1039,7 +1039,7 @@ Kesintisiz Akış sunusu, farklı kalite düzeyleri (bit hızları) ve çözün�
 
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Geri bildirimde bulunma
+## <a name="provide-feedback"></a>Geribildirim gönderme
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="other-resources"></a>Diğer kaynaklar:

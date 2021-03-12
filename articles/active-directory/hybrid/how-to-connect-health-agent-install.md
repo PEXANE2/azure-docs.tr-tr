@@ -17,12 +17,12 @@ ms.topic: how-to
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 0e644b7937f6ccb23b4833405b8f4ed3119879a5
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: a3aff7b99dad910a9691eef2004df856ca883789
+ms.sourcegitcommit: 94c3c1be6bc17403adbb2bab6bbaf4a717a66009
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100362293"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103224393"
 ---
 # <a name="azure-ad-connect-health-agent-installation"></a>Aracı yüklemesini Azure AD Connect Health
 
@@ -38,7 +38,7 @@ Aşağıdaki tabloda Azure AD Connect Health kullanımı için gereksinimler lis
 | Azure AD 'de Genel yöneticuyoruz. |Varsayılan olarak, yalnızca genel Yöneticiler, sistem durumu aracılarını yükleyebilir ve yapılandırabilir, portala erişebilir ve Azure AD Connect Health içinde herhangi bir işlem yapabilir. Daha fazla bilgi için bkz. [Azure AD dizininizi yönetme](../fundamentals/active-directory-whatis.md). <br /><br /> Azure rol tabanlı erişim denetimi (Azure RBAC) kullanarak, kuruluşunuzdaki diğer kullanıcıların Azure AD Connect Health erişmesine izin verebilirsiniz. Daha fazla bilgi için bkz. [Azure RBAC Azure AD Connect Health](how-to-connect-health-operations.md#manage-access-with-azure-rbac). <br /><br />**Önemli**: aracıları yüklemek için bir iş veya okul hesabı kullanın. Microsoft hesabı kullanamazsınız. Daha fazla bilgi için bkz. [Azure 'a kuruluş olarak kaydolma](../fundamentals/sign-up-organization.md). |
 | Azure AD Connect Health Aracısı hedeflenen her sunucuya yüklenir. | Sistem durumu aracılarının veri alabilmesi ve izleme ve analiz özellikleri sağlaması için hedeflenen sunucularda yüklü ve yapılandırılmış olması gerekir. <br /><br />Örneğin, Active Directory Federasyon Hizmetleri (AD FS) (AD FS) altyapınızdan veri almak için aracıyı AD FS sunucusuna ve Web uygulaması proxy sunucusuna yüklemelisiniz. Benzer şekilde, şirket içi Azure AD Domain Services (Azure AD DS) altyapınızdan veri almak için aracıyı etki alanı denetleyicilerine yüklemelisiniz.  |
 | Azure hizmet uç noktalarında giden bağlantı vardır. | Yükleme ve çalışma zamanı sırasında, aracı ile Azure AD Connect Health hizmet uç noktaları arasında bağlantı kurulması gerekir. Güvenlik duvarları giden bağlantıyı engel, [giden bağlantı uç noktalarını](how-to-connect-health-agent-install.md#outbound-connectivity-to-the-azure-service-endpoints) izin verilenler listesine ekleyin. |
-|Giden bağlantı, IP adreslerini temel alır. | IP adreslerine göre güvenlik duvarı filtrelemesi hakkında daha fazla bilgi için bkz. [Azure IP aralıkları](https://www.microsoft.com/download/details.aspx?id=41653).|
+|Giden bağlantı, IP adreslerini temel alır. | IP adreslerine göre güvenlik duvarı filtrelemesi hakkında daha fazla bilgi için bkz. [Azure IP aralıkları](https://www.microsoft.com/download/details.aspx?id=56519).|
 | Giden trafik için TLS denetlemesi filtrelenmiştir veya devre dışı bırakıldı. | Ağ katmanında giden trafik için TLS incelemesi veya sonlandırılması varsa, aracı kayıt adımı veya veri yükleme işlemleri başarısız olabilir. Daha fazla bilgi için bkz. [TLS Incelemesini ayarlama](/previous-versions/tn-archive/ee796230(v=technet.10)). |
 | Sunucudaki güvenlik duvarı bağlantı noktaları aracıyı çalıştırıyor. |Aracı, Azure AD Connect Health hizmet uç noktaları ile iletişim kurabilmesi için aşağıdaki güvenlik duvarı bağlantı noktalarının açılmasını gerektirir: <br /><li>TCP bağlantı noktası 443</li><li>TCP bağlantı noktası 5671</li> <br />Aracının en son sürümü bağlantı noktası 5671 ' i gerektirmez. Yalnızca 443 numaralı bağlantı noktası gerekli olacak şekilde en son sürüme yükseltin. Daha fazla bilgi için bkz. [karma kimlik için gerekli bağlantı noktaları ve protokoller](./reference-connect-ports.md). |
 | Internet Explorer Artırılmış Güvenlik etkinse, belirtilen Web sitelerine izin verin.  |Internet Explorer Artırılmış Güvenlik etkinse, aracıyı yüklediğiniz sunucuda aşağıdaki Web sitelerine izin verin:<br /><li>https:\//login.microsoftonline.com</li><li>https:\//secure.aadcdn.microsoftonline-p.com</li><li>https:\//login.windows.net</li><li>https: \/ /aadcdn.msftauth.net</li><li>Kuruluşunuzun Azure AD tarafından güvenilen Federasyon sunucusu (örneğin, https: \/ /STS.contoso.com)</li> <br />Daha fazla bilgi için bkz. [Internet Explorer 'ı yapılandırma](https://support.microsoft.com/help/815141/internet-explorer-enhanced-security-configuration-changes-the-browsing). Ağınızda bir ara sunucu varsa, bu tablonun sonunda görüntülenen nota bakın.|

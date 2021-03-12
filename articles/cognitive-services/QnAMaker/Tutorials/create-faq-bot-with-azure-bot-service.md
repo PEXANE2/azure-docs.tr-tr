@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: tutorial
 ms.date: 08/31/2020
-ms.openlocfilehash: 356b954c65086ff65264ce7a62b038cd7a8eac3d
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: ab6607175c596a0d82cf75f0ad786a76e85b6959
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96350968"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102612159"
 ---
 # <a name="tutorial-create-an-faq-bot-with-azure-bot-service"></a>Öğretici: Azure bot hizmeti ile bir SSS bot oluşturma
 Kod içermeyen Soru-Cevap Oluşturma ve Azure [bot hizmeti](https://azure.microsoft.com/services/bot-service/) Ile bir SSS bot oluşturun.
@@ -62,7 +62,7 @@ Bilgi bankasında değişiklikler yaptığınızda ve yeniden yayımladığını
 
 1. Azure bot hizmetinin oluşturma sayfası ile Azure portal için yeni bir tarayıcı sekmesi açılır. Azure bot hizmetini yapılandırın. Bot ve Soru-Cevap Oluşturma Web App Service planını paylaşabilir, ancak Web uygulamasını paylaşamaz. Bu, bot 'ın **uygulama adının** soru-cevap oluşturma hizmeti için uygulama adından farklı olması anlamına gelir.
 
-    * **Gösterme**
+    * **Yapın**
         * Bot tanıtıcısını Değiştir-benzersiz değilse.
         * SDK dilini seçin. Bot oluşturulduktan sonra, kodu yerel geliştirme ortamınıza indirebilir ve geliştirme sürecine devam edebilirsiniz.
     * **Yapmayın**
@@ -80,4 +80,4 @@ Bilgi bankasında değişiklikler yaptığınızda ve yeniden yayımladığını
     Sohbet bot, bilgi tabanınızdan bir cevap vererek yanıt verir.
 
     :::image type="content" source="../media/qnamaker-create-publish-knowledge-base/test-web-chat.png" alt-text="Test Web sohbetine bir Kullanıcı sorgusu girin.":::
-1. Ek [desteklenen kanallarda](/azure/bot-service/bot-service-manage-channels?preserve-view=true&view=azure-bot-service-4.0)bot 'ı aydınlatın.
+1. Ek [desteklenen kanallarda](/azure/bot-service/bot-service-manage-channels)bot 'ı aydınlatın.

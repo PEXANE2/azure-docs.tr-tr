@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: dhanyahk
 ms.custom: it-pro, seo-update-azuread-jan, has-adal-ref
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a555d2813030daeca1f2abcdc4b7787444bd0614
-ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
+ms.openlocfilehash: 74bfd0fe8cf1d26ccf96a8a27985e456b4e0e67c
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "102453028"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102633487"
 ---
 # <a name="archive-for-whats-new-in-azure-active-directory"></a>Azure Active Directory yenilikler için arşiv var mı?
 
@@ -2106,7 +2106,7 @@ Daha fazla bilgi için [Azure Portal grupları yönetme](./active-directory-grou
 Kullanıcı ve grup sağlama dağıtımını izlemenize ve sorunlarını gidermenize yardımcı olacak yeni sağlama günlükleri mevcuttur. Bu yeni günlük dosyaları aşağıdakiler hakkında bilgiler içerir:
 
 - [ServiceNow](../saas-apps/servicenow-provisioning-tutorial.md) 'da başarıyla oluşturulan gruplar
-- [Amazon Web Services (AWS)](../saas-apps/amazon-web-service-tutorial.md#configure-and-test-azure-ad-sso-for-amazon-web-services-aws) öğesinden alınan roller
+- [AWS Single-Account erişimi](../saas-apps/amazon-web-service-tutorial.md#configure-and-test-azure-ad-sso-for-aws-single-account-access) 'nden hangi roller içeri aktarıldı
 - [Workday](../saas-apps/workday-inbound-tutorial.md) 'den hangi çalışanların içeri aktarılmadığı
 
 Daha fazla bilgi için, [Azure Active Directory portalında (Önizleme) raporları sağlama](../reports-monitoring/concept-provisioning-logs.md)konusuna bakın.

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 550481b9153d8fe8745d2a745fe6b6f00d09cdb1
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 509d267dcdaef58a9792609a60c8a9401e90e867
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100365829"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103199706"
 ---
 # <a name="azure-active-directory-device-management-faq"></a>Azure Active Directory cihaz yönetimi SSS
 
@@ -147,7 +147,7 @@ Y **:** İptal etme işlemi, Azure AD cihazının devre dışı olarak işaretle
 
 ### <a name="q-i-cannot-add-more-than-3-azure-ad-user-accounts-under-the-same-user-session-on-a-windows-10-device-why"></a>S: Windows 10 cihazında aynı kullanıcı oturumu altında 3 ' ten fazla Azure AD Kullanıcı hesabı ekleyemiyorum, neden?
 
-Y **: Azure** ad, Windows 10 1803 sürümünde birden çok Azure AD hesabı için destek eklendi. Ancak, Windows 10, belirteç isteklerinin boyutunu sınırlandırmak ve güvenilir çoklu oturum açmayı (SSO) etkinleştirmek için bir cihazdaki Azure AD hesabı sayısını 3 olarak kısıtlar. 3 hesap eklendikten sonra, kullanıcılar sonraki hesaplar için bir hata görür. Hata ekranındaki ek sorun bilgileri, "hesap ekleme işlemi, accout sınırına ulaşıldığı için engellendi" nedenini belirten aşağıdaki iletiyi sağlar. 
+Y **: Azure** ad, Windows 10 1803 sürümünde birden çok Azure AD hesabı için destek eklendi. Ancak, Windows 10, belirteç isteklerinin boyutunu sınırlandırmak ve güvenilir çoklu oturum açmayı (SSO) etkinleştirmek için bir cihazdaki Azure AD hesabı sayısını 3 olarak kısıtlar. 3 hesap eklendikten sonra, kullanıcılar sonraki hesaplar için bir hata görür. Hata ekranındaki ek sorun bilgileri, "hesap sınırına ulaşıldığı için hesap ekleme işlemi engellendi" nedenini belirten aşağıdaki iletiyi sağlar. 
 
 ---
 ## <a name="azure-ad-join-faq"></a>Azure AD 'ye ekleme hakkında SSS

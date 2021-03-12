@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: how-to
-ms.date: 08/03/2020
+ms.date: 03/04/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 57826fcff03e79d5617c7eb69aac7d535d3c86f7
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: 35178ecc9bc736bbaca3adc932022b15cc2fc956
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97915717"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102632093"
 ---
 # <a name="conditional-access-require-mfa-for-administrators"></a>Koşullu erişim: Yöneticiler için MFA gerektir
 
@@ -56,7 +56,7 @@ Aşağıdaki adımlar, atanan yönetim rollerinin Multi-Factor Authentication ge
 1. **Yeni ilke**' yi seçin.
 1. İlkenize bir ad verin. Kuruluşların ilkelerinin adları için anlamlı bir standart oluşturmasını öneririz.
 1. **Atamalar** altında **Kullanıcılar ve gruplar** ' ı seçin.
-   1. **Dahil et** altında **Dizin rolleri (Önizleme)** öğesini seçin ve en azından aşağıdaki rolleri seçin:
+   1. Ekle ' nin altında **Dizin rolleri** ' ni seçin ve **aşağıdakiler** gibi yerleşik roller ' i seçin:
       * Kimlik doğrulama Yöneticisi
       * Faturalama yöneticisi
       * Koşullu Erişim Yöneticisi
@@ -69,12 +69,11 @@ Aşağıdaki adımlar, atanan yönetim rollerinin Multi-Factor Authentication ge
       * Kullanıcı yöneticisi
    
       > [!WARNING]
-      > Koşullu erişim ilkeleri, [özel roller](../roles/custom-create.md)gibi doğrudan bir nesne için bir [yönetim birimi](../roles/admin-units-assign-roles.md) veya dizin rollerine kapsamlı bir dizin rolü atanmış olan kullanıcıları desteklemez.
+      > Koşullu erişim ilkeleri yerleşik rolleri destekler. Koşullu erişim ilkeleri, [yönetim birimi kapsamlı](../roles/admin-units-assign-roles.md) veya [özel roller](../roles/custom-create.md)de dahil diğer rol türleri için zorlanmaz.
 
    1. **Dışla** altında, **Kullanıcılar ve gruplar** ' ı seçin ve kuruluşunuzun acil erişim veya kesme camı hesaplarını seçin. 
-   1. **Bitti**’yi seçin.
+   1. **Bitti** seçeneğini belirleyin.
 1. **Bulut uygulamaları veya eylemleri**  >  **dahil**, **tüm bulut uygulamaları**' nı seçin ve **bitti**' yi seçin.
-1.   >  **İstemci uygulamaları** Koşulları ' nın altında **, Yapılandır** ' ı **Evet** ' in altında ve **istemci uygulamalarını seçin** ' in altında, tüm varsayılanları seçili bırak ' a ve **bitti**' yi seçerek
 1. **Erişim denetimleri**  >  **izni** altında **erişim ver**' i seçin, **Multi-Factor Authentication gerektir**' i seçin ve **Seç**' i seçin
 1. Ayarlarınızı doğrulayın ve **ilke** ayarını **Açık** olarak ayarlayın.
 1. İlkenizi etkinleştirmek için oluşturmak **için Oluştur ' u seçin.**

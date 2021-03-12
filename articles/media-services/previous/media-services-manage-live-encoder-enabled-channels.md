@@ -3,7 +3,7 @@ title: Çoklu bit hızına sahip akışlar oluşturmak için Azure Media Service
 description: Bu konu başlığı altında, şirket içi kodlayıcıdan tek bir bit hızı canlı akış alan ve sonra Media Services ile Uyarlamalı bit hızında akışa canlı kodlama gerçekleştiren bir kanalın nasıl ayarlanacağı açıklanır.
 services: media-services
 documentationcenter: ''
-author: anilmur
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.assetid: 30ce6556-b0ff-46d8-a15d-5f10e4c360e2
@@ -12,15 +12,15 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/18/2019
+ms.date: 03/10/2021
 ms.author: anilmur
 ms.reviewer: juliako
-ms.openlocfilehash: 09d0e53840c2bf7a0d67c7c7fb0b224f9f77c587
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b9b4cd54375a13da95259e27da680255f785df45
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89268314"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103013219"
 ---
 # <a name="live-streaming-using-azure-media-services-to-create-multi-bitrate-streams"></a>Azure Media Services aracılığıyla canlı akış gerçekleştirerek çoklu bit hızına sahip akışlar oluşturma
 
@@ -33,7 +33,7 @@ ms.locfileid: "89268314"
 Azure Media Services (AMS) ' de **Kanal** , canlı akış içeriğini işlemek için bir işlem hattını temsil eder. **Kanal** , canlı giriş akışlarını iki şekilde alır:
 
 * Şirket içi bir Live Encoder, aşağıdaki biçimlerden birinde Media Services ile canlı kodlama gerçekleştirmek için etkinleştirilen kanala tek bit hızlı bir akış gönderir: RTMP veya Kesintisiz Akış (parçalanmış MP4). Ardından Kanal, gelen tek bit hızlı akışın çoklu bit hızlı (uyarlamalı) bir video akışına gerçek zamanlı kodlanmasını gerçekleştirir. İstendiğinde, Media Services akışı müşterilere teslim eder.
-* Şirket içi bir Live Encoder, AMS ile gerçek zamanlı kodlama gerçekleştirmek için etkinleştirilmemiş kanala çoklu bit hızlı **RTMP** veya **KESINTISIZ AKıŞ** (parçalanmış MP4) gönderir. Alınan akışlar, başka bir işlem yapılmadan **Kanal**s üzerinden geçer. Bu yönteme **doğrudan geçiş**adı verilir. Çoklu bit hızı Kesintisiz Akış: MediaExcel, Ateme, Imagine Communications, Envivio, Cisco ve elete çıkış yapan aşağıdaki canlı kodlayıcıları kullanabilirsiniz. Aşağıdaki Live kodlayıcılar çıkışı RTMP: [Telestream kablo,](media-services-configure-wirecast-live-encoder.md)haivision ve teradek kodlayıcıları.  Gerçek zamanlı bir kodlayıcı, gerçek zamanlı kodlama için etkinleştirilmemiş bir kanala tek bit hızlı bir akış da gönderebilir, ancak bu işlem önerilmez. İstendiğinde, Media Services akışı müşterilere teslim eder.
+* Şirket içi bir Live Encoder, AMS ile gerçek zamanlı kodlama gerçekleştirmek için etkinleştirilmemiş kanala çoklu bit hızlı **RTMP** veya **KESINTISIZ AKıŞ** (parçalanmış MP4) gönderir. Alınan akışlar, başka bir işlem yapılmadan **Kanal** s üzerinden geçer. Bu yönteme **doğrudan geçiş** adı verilir. Çoklu bit hızı Kesintisiz Akış: MediaExcel, Ateme, Imagine Communications, Envivio, Cisco ve elete çıkış yapan aşağıdaki canlı kodlayıcıları kullanabilirsiniz. Aşağıdaki Live kodlayıcılar çıkışı RTMP: [Telestream kablo,](media-services-configure-wirecast-live-encoder.md)haivision ve teradek kodlayıcıları.  Gerçek zamanlı bir kodlayıcı, gerçek zamanlı kodlama için etkinleştirilmemiş bir kanala tek bit hızlı bir akış da gönderebilir, ancak bu işlem önerilmez. İstendiğinde, Media Services akışı müşterilere teslim eder.
 
   > [!NOTE]
   > Doğrudan geçiş yöntemi kullanmak, canlı akış yapmanın en ekonomik yoludur.
@@ -75,7 +75,7 @@ Aşağıdaki tabloda, kanal durumlarının faturalandırma moduna nasıl eşlenm
 | Başlatılıyor |Başlatılıyor |Hayır (geçici durum) |
 | Çalışma |Ready (çalışan program yok)<br/>veya<br/>Akış (en az bir çalışan program) |EVET |
 | Durduruluyor |Durduruluyor |Hayır (geçici durum) |
-| Durduruldu |Durduruldu |Hayır |
+| Durduruldu |Durduruldu |No |
 
 ### <a name="automatic-shut-off-for-unused-channels"></a>Kullanılmayan kanallar için otomatik kapatma
 25 Ocak 2016 tarihinden itibaren, uzun bir süre boyunca kullanılmayan bir durumda çalıştıktan sonra bir kanalı otomatik olarak durduran bir güncelleştirmeyi (canlı kodlama etkin olan) Media Services. Bu, etkin bir programı olmayan ve uzun bir süre için bir giriş katkısı akışı almamış olan kanallar için geçerlidir.
@@ -127,7 +127,7 @@ Yaygın canlı akış uygulamaları oluşturmak için gerekli olan genel adımla
 
 ## <a name="channels-input-ingest-configurations"></a><a id="channel"></a>Kanalın giriş (ınest) konfigürasyonları
 ### <a name="ingest-streaming-protocol"></a><a id="Ingest_Protocols"></a>Alma akış protokolü
-**Kodlayıcı türü** **Standart**olarak ayarlandıysa, geçerli seçenekler şunlardır:
+**Kodlayıcı türü** **Standart** olarak ayarlandıysa, geçerli seçenekler şunlardır:
 
 * Tek bit hızı **RTMP**
 * Tek bit hızlı **PARÇALANMıŞ MP4** (kesintisiz akış)
@@ -193,7 +193,7 @@ Kanal verileri geri almaya başladıktan sonra, akışınızı önizleyebilirsin
 Önizleme uç noktasına bağlanmasına izin verilen IP adreslerini tanımlayabilirsiniz. Hiçbir IP adresi belirtilmemişse, herhangi bir IP adresi izin verilmez. İzin verilen IP adresleri tek bir IP adresi (örneğin, ' 10.0.0.1 '), bir IP adresi ve CıDR alt ağ maskesi kullanarak bir IP aralığı (örneğin, ' 10.0.0.1/22 ') veya bir IP adresi ve noktalı ondalık alt ağ maskesi kullanarak bir IP aralığı (örneğin, ' 10.0.0.1 (255.255.252.0) ') olarak belirtilebilir.
 
 ## <a name="live-encoding-settings"></a>Canlı kodlama ayarları
-Bu bölümde, kanalın **kodlama türü** **Standart**olarak ayarlandığında, kanal içindeki canlı kodlayıcı için ayarların nasıl ayarlanacağı açıklanmaktadır.
+Bu bölümde, kanalın **kodlama türü** **Standart** olarak ayarlandığında, kanal içindeki canlı kodlayıcı için ayarların nasıl ayarlanacağı açıklanmaktadır.
 
 > [!NOTE]
 > Katkı akışınız yalnızca tek bir ses izi içerebilir: birden çok ses parçasını almak şu anda desteklenmiyor. [Şirket içi canlı](media-services-live-streaming-with-onprem-encoders.md)kodlama ile gerçek zamanlı kodlama yaparken, birden çok ses parçası içeren kesintisiz akış protokolüne bir katkı akışı gönderebilirsiniz.
@@ -201,7 +201,7 @@ Bu bölümde, kanalın **kodlama türü** **Standart**olarak ayarlandığında, 
 > 
 
 ### <a name="ad-marker-source"></a>Ad işaretçisi kaynağı
-Ad işaretçileri sinyallerinin kaynağını belirtebilirsiniz. Varsayılan değer **API**'dir ve bu, kanalın içindeki canlı kodlayıcının zaman uyumsuz bir **ad işaretçisi API 'sini**dinlemesi gerektiğini gösterir.
+Ad işaretçileri sinyallerinin kaynağını belirtebilirsiniz. Varsayılan değer **API**'dir ve bu, kanalın içindeki canlı kodlayıcının zaman uyumsuz bir **ad işaretçisi API 'sini** dinlemesi gerektiğini gösterir.
 
 ### <a name="cea-708-closed-captions"></a>CEA 708 kapalı açıklamalı altyazı
 Live Encoder 'ın gelen videoda gömülü olan CEA 708 açıklamalı alt yazı verilerini yok saymasını belirten isteğe bağlı bir bayrak. Bayrak false (varsayılan) olarak ayarlandığında, kodlayıcı çıkış video akışlarına CEA 708 verilerini algılayıp yeniden ekleyecektir.
@@ -277,7 +277,7 @@ True olarak ayarlandığında, bu ayar, Live Encoder 'ı bir ad kesmesi sırası
 * Dosya adının bir *. jpg uzantısı olmalıdır.
 * Görüntü, söz konusu varlığın tek Assetdosyası olarak bir varlığa yüklenmelidir ve bu Assetdosyası birincil dosya olarak işaretlenmelidir. Varlık depolama şifreli olamaz.
 
-**Varsayılan kurşun Işlem varlığı kimliği** belirtilmemişse ve **ad işaretçisi üzerine kurşun ekleme** değeri **true**olarak ayarlanırsa, giriş video akışını gizlemek için varsayılan bir Azure Media Services görüntüsü kullanılır. Ses, tablet sırasında da sessize. 
+**Varsayılan kurşun Işlem varlığı kimliği** belirtilmemişse ve **ad işaretçisi üzerine kurşun ekleme** değeri **true** olarak ayarlanırsa, giriş video akışını gizlemek için varsayılan bir Azure Media Services görüntüsü kullanılır. Ses, tablet sırasında da sessize. 
 
 ## <a name="channels-programs"></a>Kanalın programları
 Kanal, bir canlı akıştaki segmentlerin yayımlanması ve depolanmasını denetlemenizi sağlayan programlarla ilişkilidir. Kanallar, Programları yönetir. Kanal ve program ilişkisi, bir kanalın sabit bir içerik akışına ve bir programın bu kanalda zaman aşımına uğramış bir olay kapsamına sahip olduğu geleneksel medyaya çok benzer.
@@ -315,9 +315,9 @@ Aşağıdaki tabloda, kanal durumlarının faturalandırma moduna nasıl eşlenm
 | Kanal durumu | Portal Kullanıcı arabirimi göstergeleri | IP? |
 | --- | --- | --- |
 | Başlatılıyor |Başlatılıyor |Hayır (geçici durum) |
-| Çalışma |Ready (çalışan program yok)<br/>veya<br/>Akış (en az bir çalışan program) |Evet |
+| Çalışma |Ready (çalışan program yok)<br/>veya<br/>Akış (en az bir çalışan program) |Yes |
 | Durduruluyor |Durduruluyor |Hayır (geçici durum) |
-| Durduruldu |Durduruldu |Hayır |
+| Durduruldu |Durduruldu |No |
 
 > [!NOTE]
 > Şu anda kanal başlangıç ortalaması yaklaşık 2 dakikadır, ancak her zaman 20 + dakikaya kadar sürebilir. Kanal sıfırlamaları 5 dakikaya kadar sürebilir.
@@ -352,7 +352,7 @@ Media Services öğrenme yollarını gözden geçirin.
 
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Geri bildirimde bulunma
+## <a name="provide-feedback"></a>Geribildirim gönderme
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="related-topics"></a>İlgili konular

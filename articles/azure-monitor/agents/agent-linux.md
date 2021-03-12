@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/21/2020
-ms.openlocfilehash: 2c86086a636ea667cff4fc8a853c4ef20fa6ae04
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: dae9ab56ca1349d288aee02f7e2dfa4eccf1508c
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102041850"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103199154"
 ---
 # <a name="install-log-analytics-agent-on-linux-computers"></a>Linux bilgisayarlarına Log Analytics aracısını yükleme
 Bu makalede, aşağıdaki yöntemleri kullanarak Linux bilgisayarlarına Log Analytics aracısını yükleme hakkında ayrıntılı bilgi verilmektedir:
@@ -41,7 +41,7 @@ Log Analytics Aracısı tarafından desteklenen Linux dağıtımların listesi i
 * Üreticisinin destek sonu tarihini geçen sürümler desteklenmez.
 * Yalnızca VM görüntülerini destekler; Hatta, resmi olmayan yayımcıların görüntülerinin türevi olan kapsayıcılar desteklenmez.
 * Yeni bir AMı sürümü desteklenmez.  
-* Yalnızca SSL 1. x çalıştıran sürümler varsayılan olarak desteklenir.
+* Yalnızca OpenSSL 1. x 'i varsayılan olarak çalıştıran sürümler desteklenir.
 
 >[!NOTE]
 >Şu anda desteklenmeyen ve destek modelimize hizalanmayan bir veya daha fazla sürümü kullanıyorsanız, bu depoyu çatalla, Microsoft destek 'in aracılı aracı sürümleriyle ilgili yardım sağlamayamayacak olduğunu bildiren bu depoyu çatallandırmanızı öneririz.
@@ -86,7 +86,7 @@ Diğer sağlamlaştırma ve özelleştirme yöntemleri, OMS Aracısı için dest
 
 Aşağıdaki tabloda, aracının yükleneceği [desteklenen Linux destekleri](#supported-operating-systems) için gereken paketler vurgulanmıştır.
 
-|Gerekli paket |Açıklama |En düşük sürüm |
+|Gerekli paket |Description |En düşük sürüm |
 |-----------------|------------|----------------|
 |GLIBC |    GNU C Kitaplığı | 2.5-12 
 |Openssl    | OpenSSL kitaplıkları | 1.0. x veya 1.1. x |

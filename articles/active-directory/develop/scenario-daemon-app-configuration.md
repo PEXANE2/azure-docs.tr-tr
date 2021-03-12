@@ -11,26 +11,22 @@ ms.workload: identity
 ms.date: 09/19/2020
 ms.author: jmprieur
 ms.custom: aaddev, devx-track-python
-ms.openlocfilehash: 8a01ee4e2b0d4e72c1b17cf56953675e735ead79
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
+ms.openlocfilehash: 300df35918ea4868664fcb7c5882709eee4090ca
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99582899"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103008017"
 ---
 # <a name="daemon-app-that-calls-web-apis---code-configuration"></a>Web API 'Lerini çağıran Daemon uygulaması-kod yapılandırması
 
 Web API 'Lerini çağıran Daemon uygulamanız için kodu yapılandırmayı öğrenin.
 
-## <a name="msal-libraries-that-support-daemon-apps"></a>Daemon uygulamalarını destekleyen MSAL kitaplıkları
+## <a name="microsoft-libraries-supporting-daemon-apps"></a>Daemon uygulamalarını destekleyen Microsoft kitaplıkları
 
-Bu Microsoft kitaplıkları, Daemon uygulamalarını destekler:
+Aşağıdaki Microsoft kitaplıkları, Daemon uygulamalarını destekler:
 
-  MSAL kitaplığı | Description
-  ------------ | ----------
-  ![MSAL.NET](media/sample-v2-code/logo_NET.png) <br/> MSAL.NET  | .NET Framework ve .NET Core platformları, Daemon uygulamalarının oluşturulması için desteklenir. (UWP, Xamarin. iOS ve Xamarin. Android desteklenmez çünkü bu platformlar ortak istemci uygulamaları oluşturmak için kullanılır.)
-  ![Python](media/sample-v2-code/logo_python.png) <br/> MSAL Python | Python 'da Daemon uygulamaları için destek.
-  ![Java](media/sample-v2-code/logo_java.png) <br/> MSAL Java | Java 'da Daemon uygulamaları için destek.
+[!INCLUDE [active-directory-develop-libraries-daemon](../../../includes/active-directory-develop-libraries-daemon.md)]
 
 ## <a name="configure-the-authority"></a>Yetkilendirmeyi yapılandırma
 
