@@ -116,9 +116,19 @@
           href: fix-deployment-provisioning-failures.md
     - name: SSS
       href: faq.yml
+    - name: Videolar
+      items:
+        - name: Ekler
+          href: 'https://youtube.com/playlist?list=PL1NLwHeM6ewbZu0dC0guj-OSpIoZnnJin'
+        - name: Azure hizmeti ile tümleştirme
+          href: 'https://youtu.be/m26iLu6DHbU'
+        - name: Azure Application Gateway ile tümleştirme
+          href: 'https://youtu.be/BoQYvqzb6Y8'
+        - name: Geçiş ve kapasite planlaması
+          href: 'https://youtu.be/NoNG-hkksrA'
 - name: Başvuru
   items:
-    - name: Azure CLI
+    - name: Azure CLI’si
       href: /cli/azure/ext/vmware/vmware
     - name: Azure PowerShell
       href: /powershell/module/az.vmware/

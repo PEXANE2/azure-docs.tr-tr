@@ -10,14 +10,16 @@ ms.reviewer: veyalla
 ms.service: iot-edge
 ms.custom: devx-track-azurecli
 services: iot-edge
-ms.openlocfilehash: 65d95533e4cff02866111881f036225f9f544852
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: c06120d1a2e8aa6aa0c006c6f40fed6fab44c5b7
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101719024"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103200705"
 ---
 # <a name="retrieve-logs-from-iot-edge-deployments"></a>IoT Edge dağıtımlarından günlükleri alma
+
+[!INCLUDE [iot-edge-version-all-supported](../../includes/iot-edge-version-all-supported.md)]
 
 IoT Edge aracı modülüne dahil olan doğrudan yöntemleri kullanarak cihaza fiziksel veya SSH erişimi gerekmeden IoT Edge dağıtımlarınızdan günlükleri alın. Doğrudan yöntemler cihaza uygulanır ve sonra buluttan çağrılabilir. IoT Edge Aracısı, IoT Edge cihazlarınızı uzaktan izlemenize ve yönetmenize yardımcı olan doğrudan yöntemler içerir. Bu makalede ele alınan doğrudan Yöntemler 1.0.10 sürümü ile birlikte kullanılabilir.
 
@@ -74,7 +76,7 @@ Bu yöntem, aşağıdaki şemaya sahip bir JSON yükünü kabul eder:
     }
 ```
 
-| Ad | Tür | Açıklama |
+| Ad | Tür | Description |
 |-|-|-|
 | schemaVersion | string | Ayarla `1.0` |
 | öğeler | JSON dizisi | `id`Ve tanımlama gruplarını içeren bir dizi `filter` . |
@@ -183,7 +185,7 @@ Bu yöntem, "sasUrl" anahtarının eklenmesiyle **GetModuleLogs** ile benzer bir
     }
 ```
 
-| Ad | Tür | Açıklama |
+| Ad | Tür | Description |
 |-|-|-|
 | sasURL | dize (URI) | [Azure Blob depolama kapsayıcısına yazma erişimi olan paylaşılan erişim imzası URL 'si](/archive/blogs/jpsanders/easily-create-a-sas-to-download-a-file-from-azure-storage-using-azure-storage-explorer). |
 
@@ -197,7 +199,7 @@ Günlükleri karşıya yükleme başarılı bir isteği, **"durum": 200** ve ard
     }
 ```
 
-| Ad | Tür | Açıklama |
+| Ad | Tür | Description |
 |-|-|-|
 | durum | string | Bunlardan biri,,, `NotStarted` `Running` `Completed` `Failed` veya `Unknown` . |
 | message | string | Hata olduğunda ileti, aksi halde boş dize. |
@@ -300,7 +302,7 @@ Bu yöntem, aşağıdaki şemaya sahip bir JSON yükünü kabul eder:
     }
 ```
 
-| Ad | Tür | Açıklama |
+| Ad | Tür | Description |
 |-|-|-|
 | schemaVersion | string | Ayarla `1.0` |
 | sasURL | dize (URI) | [Azure Blob depolama kapsayıcısına yazma erişimi olan paylaşılan erişim Imzası URL 'SI](/archive/blogs/jpsanders/easily-create-a-sas-to-download-a-file-from-azure-storage-using-azure-storage-explorer) |
@@ -321,7 +323,7 @@ Günlükleri karşıya yükleme başarılı olan bir istek, **"durum": 200** ve 
     }
 ```
 
-| Ad | Tür | Açıklama |
+| Ad | Tür | Description |
 |-|-|-|
 | durum | string | Bunlardan biri,,, `NotStarted` `Running` `Completed` `Failed` veya `Unknown` . |
 | message | string | Hata olduğunda ileti, aksi halde boş dize. |
@@ -379,7 +381,7 @@ Günlükleri karşıya yükleme başarılı olan bir istek, **"durum": 200** ve 
     }
 ```
 
-| Ad | Tür | Açıklama |
+| Ad | Tür | Description |
 |-|-|-|
 | durum | string | Bunlardan biri,,, `NotStarted` `Running` `Completed` `Failed` veya `Unknown` . |
 | message | string | Hata olduğunda ileti, aksi halde boş dize. |

@@ -6,12 +6,12 @@ ms.author: vimeht
 ms.date: 2/11/2021
 ms.topic: overview
 ms.service: iot-hub-device-update
-ms.openlocfilehash: 17674c1a5d7acff50a3dd17b9d98f5295c2e1b19
-ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
+ms.openlocfilehash: 60dfd448a66ca67a241f97570c91f683323a7d6d
+ms.sourcegitcommit: ec39209c5cbef28ade0badfffe59665631611199
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/11/2021
-ms.locfileid: "102633045"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103232384"
 ---
 # <a name="device-update-for-iot-hub-preview-overview"></a>IoT Hub için cihaz Güncelleştirmesi (Önizleme) genel bakış
 
@@ -23,7 +23,8 @@ IoT özellikli dijital dönüştürmenin tüm avantajlarından yararlanmak için
 
 ## <a name="support-for-a-wide-range-of-iot-devices"></a>Çok çeşitli IoT cihazları için destek
 
-IoT Hub cihaz güncelleştirmesi, [Azure IoT Hub](https://azure.microsoft.com/en-us/services/iot-hub/)tümleştirmesiyle iyileştirilmiş güncelleştirme dağıtımı ve kolaylaştırılmış işlemler sunacak şekilde tasarlanmıştır. Bu tümleştirme, mevcut herhangi bir çözümde cihaz güncelleştirmesini benimsemeyi kolaylaştırır. Neredeyse tüm cihazları bağlamak için bulutta barındırılan bir çözüm sağlar. Cihaz güncelleştirme, Linux ve [Azure RTOS](https://azure.microsoft.com/en-us/services/rtos/) (gerçek zamanlı işletim sistemi) dahil olmak üzere çok çeşitli IoT işletim sistemlerini destekler ve açık kaynak aracılığıyla Genişletilebilir. Stmikro elektronik, NXP, Renesas ve mikro yonga dahil olmak üzere, yarı iletken iş ortaklarıyla IoT Hub teklifleri için cihaz güncelleştirmesi geliştiriyoruz. Bkz. Başlarken kılavuzlarını içeren temel yarı iletken değerlendirme panoları [örneklerine](https://github.com/azure-rtos/samples/tree/PublicPreview/ADU) bakın. Bu arada,-AIR (OTA) güncelleştirmelerini MCU sınıf cihazlarına nasıl yapılandıracağınızı, oluşturacağınızı ve dağıtacağınızı öğrenin.
+
+IoT Hub cihaz güncelleştirmesi, [Azure IoT Hub](https://azure.microsoft.com/en-us/services/iot-hub/)tümleştirmesiyle iyileştirilmiş güncelleştirme dağıtımı ve kolaylaştırılmış işlemler sunacak şekilde tasarlanmıştır. Bu tümleştirme, mevcut herhangi bir çözümde cihaz güncelleştirmesini benimsemeyi kolaylaştırır. Neredeyse tüm cihazları bağlamak için bulutta barındırılan bir çözüm sağlar. Cihaz güncelleştirme, Linux ve [Azure RTOS](https://azure.microsoft.com/en-us/services/rtos/) (gerçek zamanlı işletim sistemi) dahil olmak üzere çok çeşitli IoT işletim sistemlerini destekler ve açık kaynak aracılığıyla Genişletilebilir. Stmikro elektronik, NXP, Renesas ve mikro yonga dahil olmak üzere, yarı iletken iş ortaklarıyla IoT Hub teklifleri için cihaz güncelleştirmesi geliştiriyoruz. Bkz. Başlarken kılavuzlarını içeren temel yarı iletken değerlendirme panoları [örneklerine](https://github.com/azure-rtos/samples/tree/PublicPreview/ADU) bakın. Bu arada,-AIR (OTA) güncelleştirmelerini MCU sınıf cihazlarına nasıl yapılandıracağınızı, oluşturacağınızı ve dağıtacağınızı öğrenin. 
 
 Hem cihaz Güncelleştirme Aracısı simülatörü ikili dosyası hem de Raspberry PI başvuru yocto görüntüleri sağlanır.
 IoT Hub cihaz güncelleştirmesi Azure IoT Edge cihazların güncelleştirilmesini de destekler. Ubuntu Server 18,04 amd64 platformu için bir cihaz Güncelleştirme Aracısı sağlanır. IoT Hub cihaz güncelleştirmesi, yukarıdaki platformlardan birini çalıştırmıyorsanız açık kaynaklı kod de sağlar. Aracının çalıştırdığınız dağıtıma bağlantı noktası oluşturabilirsiniz.
@@ -79,7 +80,7 @@ Cihaz Güncelleştirme Aracısı hakkında [daha fazla bilgi edinin](device-upda
 
 ### <a name="importing"></a>İçeri aktarma
 
-İçeri aktarma, güncelleştirmenizi cihaz güncelleştirmesine aktarma olanağıdır. Cihaz güncelleştirme, cihaz başına tek bir güncelleştirme kullanıma alınmasını destekler. Bu, bir işletim sistemi bölümünün tamamını veya cihazınızda güncelleştirmek istediğiniz tüm paketleri açıklayan bir apt bildirimini güncelleştiren tam görüntü güncelleştirmelerini ideal hale getirir. Güncelleştirmeleri cihaz güncelleştirmesine aktarmak için öncelikle güncelleştirmeyi açıklayan bir içeri aktarma bildirimi oluşturun ve ardından güncelleştirme dosyalarını ve içeri aktarma bildirimini Internet erişimli bir konuma yükleyin. Bundan sonra, güncelleştirme içeri aktarma işleminin zaman uyumsuz işlemini başlatmak için Azure portal veya cihaz güncelleştirme Içeri aktarma REST API kullanabilirsiniz. Cihaz güncelleştirme, dosyaları karşıya yükler, işler ve IoT cihazlarına dağıtım için kullanılabilir hale getirir.
+İçeri aktarma, güncelleştirmelerin cihaza dağıtılabilmesi için cihaz güncelleştirmesine nasıl alınacağını aşağıda bulabilirsiniz. Cihaz güncelleştirme, cihaz başına tek bir güncelleştirme kullanıma alınmasını destekler. Bu, bir işletim sistemi bölümünün tamamını veya cihazınızda güncelleştirmek istediğiniz tüm paketleri açıklayan bir apt bildirimini güncelleştiren tam görüntü güncelleştirmelerini ideal hale getirir. Güncelleştirmeleri cihaz güncelleştirmesine aktarmak için öncelikle güncelleştirmeyi açıklayan bir içeri aktarma bildirimi oluşturun ve ardından güncelleştirme dosyalarını ve içeri aktarma bildirimini Internet erişimli bir konuma yükleyin. Bundan sonra, güncelleştirme içeri aktarma işleminin zaman uyumsuz işlemini başlatmak için Azure portal veya [cihaz güncelleştirme Içeri aktarma REST API](https://github.com/Azure/iot-hub-device-update/tree/main/docs/publish-api-reference) kullanabilirsiniz. Cihaz güncelleştirme, dosyaları karşıya yükler, işler ve IoT cihazlarına dağıtım için kullanılabilir hale getirir.
 
 Hassas içerik için, Azure Blob depolama için geçici SAS gibi paylaşılan erişim imzasını (SAS) kullanarak indirmeyi koruyun. [SAS hakkında daha fazla bilgi](https://docs.microsoft.com/azure/storage/common/storage-sas-overview)
 

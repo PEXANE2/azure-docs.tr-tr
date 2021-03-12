@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 03/06/2021
-ms.openlocfilehash: f10978107f80e7dea4e6d5ad40c078c55f225c2d
-ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
+ms.openlocfilehash: f4eec89aadee1966271286b9280916af973e4b1c
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102494795"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102614352"
 ---
 # <a name="quickstart-connect-and-query-with-azure-cli--with-azure-database-for-postgresql---flexible-server"></a>Hızlı başlangıç: Azure CLı ile PostgreSQL için Azure veritabanı-esnek sunucu ile bağlanma ve sorgulama
 
@@ -34,7 +34,7 @@ Oluşturacağız ilk şey, yönetilen bir PostgreSQL sunucusudur. [Azure Cloud S
 ```azurecli
 az postgres flexible-server create --public-access <your-ip-address>
 ```
-Bu komut için özelleştirmek üzere ek bağımsız değişkenler sağlayabilirsiniz. [Az Postgres esnek-sunucu oluşturma](/cli/azure/postgres/flexible-server?view=azure-cli-latest#az_postgres_flexible_server_create)için tüm bağımsız değişkenlere bakın.
+Bu komut için özelleştirmek üzere ek bağımsız değişkenler sağlayabilirsiniz. [Az Postgres esnek-sunucu oluşturma](/cli/azure/postgres/flexible-server#az_postgres_flexible_server_create)için tüm bağımsız değişkenlere bakın.
 
 ## <a name="view-all-the-arguments"></a>Tüm bağımsız değişkenleri görüntüle
 Bu komutun tüm bağımsız değişkenlerini ```--help``` bağımsız değişkenle görüntüleyebilirsiniz. 

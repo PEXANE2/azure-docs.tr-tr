@@ -13,12 +13,12 @@ ms.date: 02/15/2021
 ms.author: ryanwi
 ms.custom: aaddev, identityplatformtop40
 ms.reviewer: sureshja
-ms.openlocfilehash: f0a9298b6d8ee011052a20dc34d314adbc5a0b1e
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 358e066631304e727d18d092bd4b9a5b2a0bb89a
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101646410"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103199605"
 ---
 # <a name="application-and-service-principal-objects-in-azure-active-directory"></a>Azure Active Directory'deki uygulama ve hizmet sorumlusu nesneleri
 
@@ -63,11 +63,10 @@ Uygulama nesnesi, uygulamanızın tüm kiracılarda kullanılmak üzere *genel* 
 
 Uygulama nesnesi, buna karşılık gelen hizmet sorumlusu nesnelerini oluştururken kullanılmak üzere ortak ve varsayılan özelliklerin *türetildiği* şablon görevi görür. Bu nedenle bir uygulama nesnesi, yazılım uygulamasıyla 1:1 ilişkisine sahiptir ve buna karşılık gelen hizmet sorumlusu nesnesiyle 1: çok ilişki vardır.
 
-Uygulamanın kullanıldığı her kiracıda bir hizmet sorumlusu oluşturulmalıdır, bu sayede oturum açma ve/veya kiracı tarafından güvenliği sağlanmış kaynaklara erişim için bir kimlik oluşturulmasını sağlar. Tek kiracı uygulamasının (ana kiracısında) uygulama kaydı sırasında kullanılmak için oluşturulan ve onaylanan tek bir hizmet sorumlusu vardır. Çok kiracılı bir Web uygulaması/API 'SI, bu kiracıdan gelen bir kullanıcının kendi kullanımına neden olan her bir kiracıda oluşturulmuş bir hizmet sorumlusu de vardır.
+Uygulamanın kullanıldığı her kiracıda bir hizmet sorumlusu oluşturulmalıdır, bu sayede oturum açma ve/veya kiracı tarafından güvenliği sağlanmış kaynaklara erişim için bir kimlik oluşturulmasını sağlar. Tek kiracı uygulamasının (ana kiracısında) uygulama kaydı sırasında kullanılmak için oluşturulan ve onaylanan tek bir hizmet sorumlusu vardır. Çok kiracılı bir uygulama, bu kiracıdan gelen bir kullanıcının kendi kullanımına yönelik olarak çalıştığı her bir kiracıda oluşturulmuş bir hizmet sorumlusuna sahiptir.
 
-Silme de dahil olmak üzere uygulama nesneniz üzerinde yaptığınız tüm değişiklikler, uygulamanın yalnızca giriş kiracısındaki hizmet sorumlusu nesnesine yansıtılır (kayıtlı olan kiracı). Çok kiracılı uygulamalarda, erişim [uygulama erişim paneli](https://myapps.microsoft.com) aracılığıyla kaldırılana ve yeniden verilene kadar, uygulama nesnesi üzerindeki değişiklikler herhangi bir tüketici kiracının hizmet sorumlusu nesnelerinde yansıtılmaz.
-
-Yerel uygulamalar, varsayılan olarak çok kiracılı olarak kaydedilir.
+### <a name="consequences-of-modifying-and-deleting-applications"></a>Uygulamaları değiştirme ve silme sonuçları
+Uygulama nesneniz üzerinde yaptığınız tüm değişiklikler Ayrıca uygulamanın yalnızca giriş kiracısındaki hizmet sorumlusu nesnesine yansıtılır (kayıtlı olan kiracı). Bu, bir uygulama nesnesinin silinmesinin ana kiracı hizmet sorumlusu nesnesini de silebileceği anlamına gelir.  Ancak, bu uygulama nesnesinin geri yüklenmesi karşılık gelen hizmet sorumlusunu geri yüklememeyecektir. Çok kiracılı uygulamalarda, erişim [uygulama erişim paneli](https://myapps.microsoft.com) aracılığıyla kaldırılana ve yeniden verilene kadar, uygulama nesnesi üzerindeki değişiklikler herhangi bir tüketici kiracının hizmet sorumlusu nesnelerinde yansıtılmaz.
 
 ## <a name="example"></a>Örnek
 

@@ -7,12 +7,12 @@ ms.author: anvar
 ms.manager: bsiva
 ms.date: 04/19/2020
 ms.custom: mvc
-ms.openlocfilehash: f50737bdefc9065c9b16633ba3360bda1d028cd6
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 41476c5f8165729caa6780f8e74eb6c3ae30a59c
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102043057"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102614641"
 ---
 # <a name="whats-new-in-azure-migrate"></a>Azure geçişi 'ndeki yenilikler
 
@@ -20,7 +20,9 @@ ms.locfileid: "102043057"
 
 ## <a name="update-march-2021"></a>Güncelleştirme (Mart 2021)
 - Yüklü uygulamaları (yazılım envanteri) ve aracısız bağımlılık analizini öğrenmek ve VMware ortamınızda SQL Server örnekleri ve veritabanlarını öğrenmek için Azure geçiş gereci üzerinde birden çok sunucu kimlik bilgisi sağlamaya yönelik destek. [Daha fazla bilgi edinin](tutorial-discover-vmware.md#provide-server-credentials)
-- VMware ortamınızda çalışan SQL Server örnekleri ve veritabanlarının keşfi ve değerlendirmesi artık önizlemededir. [Daha Fazla Bilgi](concepts-azure-sql-assessment-calculation.md)<br/>Bu özelliği denemek için **Avustralya Doğu** bölgede bir proje oluşturmak üzere [Bu bağlantıyı](https://aka.ms/AzureMigrate/SQL) kullanın. Başlamak için [bulma](tutorial-discover-vmware.md) ve [değerlendirme](tutorial-assess-sql.md) öğreticilerine bakın.
+- VMware ortamınızda çalışan SQL Server örnekleri ve veritabanlarının keşfi ve değerlendirmesi artık önizlemededir. [Daha Fazla Bilgi](concepts-azure-sql-assessment-calculation.md)<br/>Bu özelliği denemek için [bu bağlantıyı](https://aka.ms/AzureMigrate/SQL) kullanarak **Doğu Avustralya** bölgesinde bir proje oluşturun. Başlamak için [Bulma](tutorial-discover-vmware.md) ve [değerlendirme](tutorial-assess-sql.md) öğreticilerine bakın.
+- Aracısız VMware geçişi artık vCenter başına 500 VM 'nin eşzamanlı çoğaltmasını desteklemektedir.
+- Azure geçişi artık, VMware geçiş 'nin aracısız yöntemini kullanarak Azure VM aracısını VMware VM 'lerine otomatik olarak Azure 'a geçirirken VMware VM 'lerine otomatik olarak yüklenir.
 
 ## <a name="update-january-2021"></a>Güncelleştirme (Ocak 2021)
 -  Azure geçişi: sunucu geçiş aracı artık, VMware sanal makinelerini, fiziksel sunucuları ve sanal makineleri diğer bulutlardan Azure sanal makinelerine, müşteri tarafından yönetilen anahtarlarla (CMK) sunucu tarafı şifrelemesiyle şifrelenen disklerle Azure sanal makinelerine geçirmenize olanak tanır.

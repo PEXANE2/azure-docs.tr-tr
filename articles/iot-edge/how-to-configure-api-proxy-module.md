@@ -12,14 +12,16 @@ ms.custom:
 - amqp
 - mqtt
 monikerRange: '>=iotedge-2020-11'
-ms.openlocfilehash: 894398d63e326db3c6ee9de9bebc426a6e621600
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 1070a4c8daecfedae513f2fd8738c27abfb33078
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95024679"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103200576"
 ---
 # <a name="configure-the-api-proxy-module-for-your-gateway-hierarchy-scenario-preview"></a>Ağ Geçidi hiyerarşi senaryonuz için API proxy modülünü yapılandırma (Önizleme)
+
+[!INCLUDE [iot-edge-version-202011](../../includes/iot-edge-version-202011.md)]
 
 API proxy modülü IoT Edge cihazların, bulut hizmetlerine doğrudan bağlantı yapmak yerine ağ geçitleri aracılığıyla HTTP istekleri göndermesini sağlar. Bu makalede, modülü ağ geçidi hiyerarşi gereksinimlerinizi destekleyecek şekilde özelleştirebilmeniz için yapılandırma seçeneklerini adım adım açıklar.
 

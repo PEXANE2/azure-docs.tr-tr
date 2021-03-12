@@ -3,7 +3,7 @@ title: Haivision KB Kodlayıcısı 'nı Azure 'a tek bit hızlı canlı bir akı
 description: Bu konuda, Haivision KB Live Encoder 'ın canlı kodlama için etkinleştirilmiş AMS kanallarına tek bir bit hızı akışı göndermek için nasıl yapılandırılacağı gösterilmektedir.
 services: media-services
 documentationcenter: ''
-author: dbgeorge
+author: IngridAtMicrosoft
 manager: vsood
 editor: ''
 ms.assetid: 0d2f1e81-51a6-4ca9-894a-6dfa51ce4c70
@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 03/14/2019
-ms.author: juliako
-ms.openlocfilehash: ab73b22e927ad1bbcc8a07173e1548157de03cdd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 03/10/2021
+ms.author: inhenkel
+ms.openlocfilehash: 20c75672bc7198fb028278dc5432cc6a77e3766e
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89258104"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103016874"
 ---
 # <a name="use-the-haivision-kb-live-encoder-to-send-a-single-bitrate-live-stream"></a>Tek bit hızlı canlı akış göndermek için Haivision KB Live Encoder kullanın
 
@@ -33,7 +33,7 @@ Bu konuda, [Havision KB Live Encoder](https://www.haivision.com/products/kb-seri
 
 Bu öğreticide, Azure Media Services (AMS) Azure Media Services Explorer (AMSE) aracıyla nasıl yönetileceği gösterilmektedir. Bu araç yalnızca Windows bilgisayarında çalışır. Mac veya Linux kullanıyorsanız, [kanalları](media-services-portal-creating-live-encoder-enabled-channel.md#create-a-channel) ve [programları](media-services-portal-creating-live-encoder-enabled-channel.md)oluşturmak için Azure Portal kullanın.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 *   SW v 5.01 veya üzerini çalıştıran bir Haivision KB Kodlayıcısı 'na erişin.
 * [Azure Media Services hesabı oluşturma](media-services-portal-create-account.md)
 * Çalışan bir akış uç noktası olduğundan emin olun. Daha fazla bilgi için bkz. [Media Services hesapta akış uç noktalarını yönetme](media-services-portal-manage-streaming-endpoints.md)
@@ -48,7 +48,7 @@ Bu öğreticide, Azure Media Services (AMS) Azure Media Services Explorer (AMSE)
 ## <a name="create-a-channel"></a>Kanal oluşturma
 1. AMI aracında, **canlı** sekmesine gidin ve kanal alanının içine sağ tıklayın. Kanal oluştur ' u seçin **...** menüsünde.
 [Haivision](./media/media-services-configure-kb-live-encoder/channel.png)
-2. Bir kanal adı belirtin, açıklama alanı isteğe bağlıdır. Kanal ayarları altında, Live Encoding seçeneği için **Standart** ' ı seçerek giriş Protokolü **RTMP**olarak ayarlanır. Diğer tüm ayarları olduğu gibi bırakabilirsiniz. **Yeni kanalı Şimdi Başlat** ' ın seçildiğinden emin olun.
+2. Bir kanal adı belirtin, açıklama alanı isteğe bağlıdır. Kanal ayarları altında, Live Encoding seçeneği için **Standart** ' ı seçerek giriş Protokolü **RTMP** olarak ayarlanır. Diğer tüm ayarları olduğu gibi bırakabilirsiniz. **Yeni kanalı Şimdi Başlat** ' ın seçildiğinden emin olun.
 3. **Kanal oluştur**' a tıklayın.
 [Haivision](./media/media-services-configure-kb-live-encoder/livechannel.png)
 

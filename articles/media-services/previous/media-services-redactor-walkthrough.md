@@ -3,7 +3,7 @@ title: Azure Media Analytics izlenecek yüzü redaksiyonu | Microsoft Docs
 description: Bu konuda, Azure Media Services Explorer (AMI) ve Azure Media Redactor görselleştiricisi (açık kaynak aracı) kullanarak tam bir redaksiyon iş akışının nasıl çalıştırılacağı hakkında adım adım yönergeler gösterilmektedir.
 services: media-services
 documentationcenter: ''
-author: Lichard
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.assetid: d6fa21b8-d80a-41b7-80c1-ff1761bc68f2
@@ -12,15 +12,15 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 03/20/2019
+ms.date: 03/10/2021
 ms.author: ril
 ms.reviewer: juliako
-ms.openlocfilehash: 048635a33c3d84416dae00b731b386572aa3f89d
-ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
+ms.openlocfilehash: 1a7e20681dfa7da7ce30f46a7c4b0b6df6f78916
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/29/2020
-ms.locfileid: "97802584"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103009573"
 ---
 # <a name="redact-faces-with-azure-media-analytics-walkthrough"></a>Azure Media Analytics izlenecek yüzü redaksiyonu
 
@@ -127,7 +127,7 @@ JSON ek açıklama verilerini ayrıştırmaya çalışan bir geliştiricisiyseni
 
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Geri bildirimde bulunma
+## <a name="provide-feedback"></a>Geribildirim gönderme
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="related-links"></a>İlgili bağlantılar

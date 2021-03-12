@@ -3,7 +3,7 @@ title: Akış uç noktalarını Azure portal yönetme | Microsoft Docs
 description: Bu makalede, Azure portal ile akış uç noktalarının nasıl yönetileceği gösterilmektedir.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 writer: juliako
 manager: femila
 editor: ''
@@ -13,14 +13,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/19/2019
-ms.author: juliako
-ms.openlocfilehash: 496c5de8f9ead0773dfef7e65051344645ffa9de
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.date: 03/10/2021
+ms.author: inhenkel
+ms.openlocfilehash: bda244267e81d959abbc4ae0a8532ddce68d5726
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93041964"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103017401"
 ---
 # <a name="manage-streaming-endpoints-with-the-azure-portal"></a>Azure portalı ile akış uç noktalarını yönetme
 
@@ -38,7 +38,7 @@ Akış uç noktasını ölçeklendirme hakkında daha fazla bilgi için [Bu](med
 Hesabınız için akış uç noktalarını yönetmeye başlamak üzere aşağıdakileri yapın.
 
 1. [Azure portalında](https://portal.azure.com/) Azure Media Services hesabınızı seçin.
-2. **Ayarlar** dikey penceresinde, **akış uç noktaları** ' nı seçin.
+2. **Ayarlar** dikey penceresinde, **akış uç noktaları**' nı seçin.
    
     !["Ayarlar" dikey penceresinden "akış uç noktaları" seçiliyken "Medya Hizmetleri" sayfasını gösteren ekran görüntüsü.](./media/media-services-portal-manage-streaming-endpoints/media-services-manage-streaming-endpoints1.png)
 
@@ -77,7 +77,7 @@ Bu özellikler hakkında ayrıntılı bilgi için bkz. [Streamingendpoint](/rest
 Akış uç noktasını aşağıdakileri yaparak yapılandırabilirsiniz:
 
 1. Yapılandırmak istediğiniz akış uç noktasını seçin.
-2. **Ayarlar** 'a tıklayın.
+2. **Ayarlar**'a tıklayın.
 
 Alanların kısa bir açıklaması aşağıda verilmiştir.
 
@@ -89,7 +89,7 @@ Alanların kısa bir açıklaması aşağıda verilmiştir.
 
 ## <a name="scale-your-premium-streaming-endpoint"></a>Premium akış uç noktanızı ölçeklendirin
 
-Daha fazla bilgi için [bu makaleye](media-services-portal-scale-streaming-endpoints.md) bakın.
+Daha fazla bilgi için [Bu](media-services-portal-scale-streaming-endpoints.md) makaleye bakın.
 
 ## <a name="enable-azure-cdn-integration"></a><a id="enable_cdn"></a>Azure CDN tümleştirmeyi etkinleştir
 
@@ -99,7 +99,7 @@ Daha sonra CDN 'yi devre dışı bırakmak/etkinleştirmek istiyorsanız, akış
 
 CDN tümleştirmesi, Çin ve Federal Kamu bölgeleri dışındaki tüm Azure veri merkezlerinde etkin olur.
 
-Etkinleştirildikten sonra, **Access Control** , * * özel ana bilgisayar adı ve **Akamai imza kimlik doğrulama** yapılandırması devre dışı bırakılır.
+Etkinleştirildikten sonra, **Access Control**, * * özel ana bilgisayar adı ve **Akamai imza kimlik doğrulama** yapılandırması devre dışı bırakılır.
  
 > [!IMPORTANT]
 > Azure CDN ile tümleştirme Azure Media Services standart akış uç noktaları için **Verizon 'tan Azure CDN** uygulanır. Premium akış uç noktaları, tüm **Azure CDN fiyatlandırma katmanları ve sağlayıcıları** kullanılarak yapılandırılabilir. Azure CDN özellikler hakkında daha fazla bilgi için bkz. [CDN 'ye genel bakış](../../cdn/cdn-overview.md).
@@ -122,5 +122,5 @@ Media Services öğrenme yollarını gözden geçirin.
 
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Geri bildirimde bulunma
+## <a name="provide-feedback"></a>Geribildirim gönderme
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]

@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/21/2019
-ms.openlocfilehash: 202182d6485bc340a7f9bb34622e483dcc9ff891
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: f8558644fc24f3190247e57b4de7228af161a2a8
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102041884"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102631175"
 ---
 # <a name="how-to-troubleshoot-issues-with-the-log-analytics-agent-for-linux"></a>Linux için Log Analytics aracısıyla ilgili sorunları giderme 
 
@@ -82,7 +82,7 @@ Aracının temiz bir şekilde yeniden yüklemesinin çoğu sorunu gidereceğini 
 
  >[!NOTE]
  >Koleksiyon, veri menüsünden yapılandırılmışsa, çalışma alanınızın Azure portal [Gelişmiş ayarları Log Analytics](../agents/agent-data-sources.md#configuring-data-sources) , performans sayaçları ve Syslog için yapılandırma dosyalarını düzenlemenin üzerine yazılır. Tüm aracıların yapılandırmasını devre dışı bırakmak için Log Analytics **Gelişmiş ayarlarından** koleksiyonu devre dışı bırakın ya da tek bir aracı için aşağıdakileri çalıştırın:  
-> `sudo su omsagent -c 'python /opt/microsoft/omsconfig/Scripts/OMS_MetaConfigHelper.py --disable'`
+> `sudo /opt/microsoft/omsconfig/Scripts/OMS_MetaConfigHelper.py --disable && sudo rm /etc/opt/omi/conf/omsconfig/configuration/Current.mof* /etc/opt/omi/conf/omsconfig/configuration/Pending.mof*`
 
 ## <a name="installation-error-codes"></a>Yükleme hata kodları
 

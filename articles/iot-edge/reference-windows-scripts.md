@@ -1,5 +1,5 @@
 ---
-title: Azure IoT Edge için Windows komut dosyaları | Microsoft Docs
+title: Windows kapsayıcıları ile Azure IoT Edge için betikler | Microsoft Docs
 description: Windows cihazlarında yükleme, kaldırma veya güncelleştirme yapmak için IoT Edge PowerShell betikleri için başvuru bilgileri
 author: kgremban
 manager: philmea
@@ -8,14 +8,14 @@ ms.date: 10/06/2020
 ms.topic: reference
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 2878d682d0f2025a50f26baf87476f66aa236e2c
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.openlocfilehash: b7614f7ccd24d0237a043a9b5bf0ad988146d89c
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98630625"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102615916"
 ---
-# <a name="powershell-scripts-for-iot-edge-on-windows"></a>Windows üzerinde IoT Edge için PowerShell betikleri
+# <a name="powershell-scripts-for-iot-edge-with-windows-containers"></a>Windows kapsayıcıları ile IoT Edge için PowerShell betikleri
 
 Windows cihazlarında IoT Edge yükleyen, güncelleştiren veya kaldırabileceği PowerShell betiklerini anlayın.
 

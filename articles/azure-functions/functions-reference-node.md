@@ -3,14 +3,14 @@ title: Azure Işlevleri için JavaScript geliştirici başvurusu
 description: JavaScript kullanarak işlevleri geliştirmeyi anlayın.
 ms.assetid: 45dedd78-3ff9-411f-bb4b-16d29a11384c
 ms.topic: conceptual
-ms.date: 11/17/2020
+ms.date: 03/07/2021
 ms.custom: devx-track-js
-ms.openlocfilehash: 71fe2d342f928c9d50a3fcf3f5367c21d7fba2ff
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 971fb2a3239614a708e14c109e567081f1ec9ff6
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100591050"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102614913"
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>Azure Işlevleri JavaScript Geliştirici Kılavuzu
 
@@ -507,20 +507,20 @@ Aşağıdaki tabloda, işletim sistemine göre Işlevler çalışma zamanının 
 
 | İşlevler sürümü | Düğüm sürümü (Windows) | Düğüm sürümü (Linux) |
 |---|---| --- |
+| 3. x (önerilir) | `~14` Önerilen<br/>`~12`<br/>`~10` | `node|14` Önerilen<br/>`node|12`<br/>`node|10` |
+| 2.x  | `~12`<br/>`~10`<br/>`~8` | `node|10`<br/>`node|8`  |
 | 'in | 6.11.2 (çalışma zamanı tarafından kilitlendi) | yok |
-| 2.x  | `~8`<br/>`~10` Önerilen<br/>`~12` | `node|8`<br/>`node|10` Önerilen  |
-| 3.x | `~10`<br/>`~12` Önerilen<br/>`~14` Önizle  | `node|10`<br/>`node|12` Önerilen<br/>`node|14` Önizle |
 
 Çalışma zamanının herhangi bir işlevden günlüğe kaydederek kullandığı geçerli sürümü görebilirsiniz `process.version` .
 
 ### <a name="setting-the-node-version"></a>Düğüm sürümü ayarlanıyor
 
-Windows işlev uygulamaları için `WEBSITE_NODE_DEFAULT_VERSION` [uygulama ayarını](functions-how-to-use-azure-function-app-settings.md#settings) desteklenen bir LTS sürümüne ayarlayarak Azure 'daki sürümü hedefleyin `~12` .
+Windows işlev uygulamaları için `WEBSITE_NODE_DEFAULT_VERSION` [uygulama ayarını](functions-how-to-use-azure-function-app-settings.md#settings) desteklenen bir LTS sürümüne ayarlayarak Azure 'daki sürümü hedefleyin `~14` .
 
 Linux işlev uygulamaları için, düğüm sürümünü güncelleştirmek için aşağıdaki Azure CLı komutunu çalıştırın.
 
 ```bash
-az functionapp config set --linux-fx-version "node|12" --name "<MY_APP_NAME>" --resource-group "<MY_RESOURCE_GROUP_NAME>"
+az functionapp config set --linux-fx-version "node|14" --name "<MY_APP_NAME>" --resource-group "<MY_RESOURCE_GROUP_NAME>"
 ```
 
 ## <a name="dependency-management"></a>Bağımlılık yönetimi
@@ -597,6 +597,23 @@ module.exports = async function (context, myTimer) {
 
     context.log("AzureWebJobsStorage: " + process.env["AzureWebJobsStorage"]);
     context.log("WEBSITE_SITE_NAME: " + process.env["WEBSITE_SITE_NAME"]);
+};
+```
+
+## <a name="ecmascript-modules-preview"></a><a name="ecmascript-modules"></a>ECMAScript modülleri (Önizleme)
+
+> [!NOTE]
+> ECMAScript modülleri Şu anda Node.js 14 ' te *deneysel* etiketli olduğundan, Node.js 14 Azure işlevlerinde önizleme özelliği olarak kullanılabilir. ECMAScript modülleri için Node.js 14 desteği *kararlı* hale gelene kadar, API veya davranışında olası değişiklikler beklenir.
+
+[ECMAScript modülleri](https://nodejs.org/docs/latest-v14.x/api/esm.html#esm_modules_ecmascript_modules) (es modülleri) Node.js için yeni resmi standart modül sistemidir. Şimdiye kadar, bu makaledeki kod örnekleri CommonJS sözdizimini kullanır. Azure Işlevlerini Node.js 14 ' te çalıştırırken, işlevlerinizi ES modülleri sözdizimini kullanarak yazmayı seçebilirsiniz.
+
+Bir işlevde ES modüllerini kullanmak için dosya adını uzantı kullanacak şekilde değiştirin `.mjs` . Aşağıdaki *index. MJS* dosyası örneği, kitaplığı içeri aktarıp bir değer döndürecek şekilde es modülleri sözdizimini kullanan bir http tetiklenen işlevdir `uuid` .
+
+```js
+import { v4 as uuidv4 } from 'uuid';
+
+export default async function (context, req) {
+    context.res.body = uuidv4();
 };
 ```
 

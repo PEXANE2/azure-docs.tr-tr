@@ -10,12 +10,12 @@ ms.date: 9/1/2020
 ms.topic: include
 ms.custom: include file
 ms.author: mikben
-ms.openlocfilehash: 8ec1ac5d804721e9af50a70a29cdcaf40d3375be
-ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
+ms.openlocfilehash: ce6d2c34c48a26f99f78c364db5f06f9931c9dd7
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102623373"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103021685"
 ---
 ## <a name="prerequisites"></a>Önkoşullar
 Başlamadan önce şunları yaptığınızdan emin olun:
@@ -68,10 +68,10 @@ Bu hızlı başlangıç, sohbet uygulamanız için belirteçleri yönetmek üzer
 
 Aşağıdaki kod parçacıklarını kopyalayın ve kaynak dosyasına yapıştırın: **program.cs**
 ```csharp
-using Azure.Communication.Identity;
-using Azure.Communication.Chat;
 using Azure;
 using Azure.Communication;
+using Azure.Communication.Chat;
+using System;
 
 namespace ChatQuickstart
 {
@@ -98,12 +98,12 @@ namespace ChatQuickstart
 Yönteminden yanıt nesnesi `createChatThread` `chatThread` ayrıntıları içerir. Katılımcı ekleme, ileti gönderme, ileti silme, vb. gibi sohbet iş parçacığı işlemleriyle etkileşimde bulunmak için istemci `chatThreadClient` örneğinin, `GetChatThreadClient` istemci üzerindeki yöntemi kullanılarak örneği oluşturulması gerekir `ChatClient` .
 
 ```csharp
-var chatParticipant = new ChatParticipant(communicationIdentifier: new CommunicationUserIdentifier(id: "<Access_ID>"))
+var chatParticipant = new ChatParticipant(identifier: new CommunicationUserIdentifier(id: "<Access_ID>"))
 {
     DisplayName = "UserDisplayName"
 };
 CreateChatThreadResult createChatThreadResult = await chatClient.CreateChatThreadAsync(topic: "Hello world!", participants: new[] { chatParticipant });
-ChatThreadClient chatThreadClient = chatClient.GetChatThreadClient(createChatThreadResult.ChatThread.Id);
+ChatThreadClient chatThreadClient = chatClient.GetChatThreadClient(threadId: createChatThreadResult.ChatThread.Id);
 string threadId = chatThreadClient.Id;
 ```
 
@@ -112,7 +112,7 @@ string threadId = chatThreadClient.Id;
 
 ```csharp
 string threadId = "<THREAD_ID>";
-ChatThreadClient chatThreadClient = chatClient.GetChatThreadClient(threadId);
+ChatThreadClient chatThreadClient = chatClient.GetChatThreadClient(threadId: threadId);
 ```
 
 ## <a name="send-a-message-to-a-chat-thread"></a>Sohbet iş parçacığına ileti gönderin
@@ -134,7 +134,7 @@ var messageId = await chatThreadClient.SendMessageAsync(content:"hello world", t
 `ChatMessage` ileti alma işleminden döndürülen yanıt, diğer alanlar arasında iletinin benzersiz tanımlayıcısı olan bir KIMLIK içerir. Lütfen Azure. Communication. chat. ChatMessage adresine başvurun
 
 ```csharp
-ChatMessage chatMessage = await chatThreadClient.GetMessageAsync(messageId);
+ChatMessage chatMessage = await chatThreadClient.GetMessageAsync(messageId: messageId);
 ```
 
 ## <a name="receive-chat-messages-from-a-chat-thread"></a>Sohbet iş parçacığından sohbet iletileri alma
@@ -174,7 +174,7 @@ Daha ayrıntılı bilgi için bkz. [Ileti türleri](../../../concepts/chat/conce
 ```csharp
 string id = "id-of-message-to-edit";
 string content = "updated content";
-await chatThreadClient.UpdateMessageAsync(id, content);
+await chatThreadClient.UpdateMessageAsync(messageId: id, content: content);
 ```
 
 ## <a name="deleting-a-message"></a>İleti silme
@@ -183,7 +183,7 @@ await chatThreadClient.UpdateMessageAsync(id, content);
 
 ```csharp
 string id = "id-of-message-to-delete";
-await chatThreadClient.DeleteMessageAsync(id);
+await chatThreadClient.DeleteMessageAsync(messageId: id);
 ```
 
 ## <a name="add-a-user-as-a-participant-to-the-chat-thread"></a>Sohbet iş parçacığına katılımcı olarak Kullanıcı ekleme
@@ -207,7 +207,7 @@ var participants = new[]
     new ChatParticipant(amy) { DisplayName = "Amy" }
 };
 
-await chatThreadClient.AddParticipantsAsync(participants);
+await chatThreadClient.AddParticipantsAsync(participants: participants);
 ```
 ## <a name="remove-user-from-a-chat-thread"></a>Kullanıcı sohbet iş parçacığından kaldır
 
@@ -215,7 +215,7 @@ Bir iş parçacığına kullanıcı eklemeye benzer şekilde, bir sohbet iş par
 
 ```csharp
 var gloria = new CommunicationUserIdentifier(id: "<Access_ID_For_Gloria>");
-await chatThreadClient.RemoveParticipantAsync(gloria);
+await chatThreadClient.RemoveParticipantAsync(identifier: gloria);
 ```
 
 ## <a name="get-thread-participants"></a>İş parçacığı katılımcıları al
@@ -243,7 +243,7 @@ await chatThreadClient.SendTypingNotificationAsync();
 `SendReadReceipt`İletinin Kullanıcı tarafından okunduğunu diğer katılımcılara bildirmek için kullanın.
 
 ```csharp
-await chatThreadClient.SendReadReceiptAsync(messageId);
+await chatThreadClient.SendReadReceiptAsync(messageId: messageId);
 ```
 
 ## <a name="get-read-receipts"></a>Okundu alındıları al

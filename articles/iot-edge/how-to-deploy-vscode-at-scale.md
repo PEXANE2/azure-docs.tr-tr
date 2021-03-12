@@ -9,14 +9,16 @@ ms.date: 1/8/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 9ae7009468b548cb9386fd405abfbe110d62f9a3
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: a20992ef26b74bcc37a7403e4ee77cacc0f8f66e
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100377525"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103200285"
 ---
 # <a name="deploy-iot-edge-modules-at-scale-using-visual-studio-code"></a>Visual Studio Code kullanarak ölçekli IoT Edge modülleri dağıtma
+
+[!INCLUDE [iot-edge-version-all-supported](../../includes/iot-edge-version-all-supported.md)]
 
 Aynı anda birçok cihaza yönelik devam eden dağıtımları yönetmek için Visual Studio Code kullanarak **IoT Edge otomatik dağıtım** oluşturabilirsiniz. IoT Edge için otomatik dağıtımlar IoT Hub [otomatik cihaz yönetimi](../iot-hub/iot-hub-automatic-device-management.md) özelliğinin bir parçasıdır. Dağıtımlar birden çok modülü birden çok cihaza dağıtmanızı sağlayan dinamik işlemlerdir. Ayrıca, modüllerin durumunu ve sistem durumunu izleyebilir ve gerektiğinde değişiklik yapabilirsiniz.
 

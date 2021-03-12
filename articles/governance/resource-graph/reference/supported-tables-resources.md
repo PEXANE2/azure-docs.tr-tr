@@ -1,15 +1,15 @@
 ---
 title: Desteklenen Azure Resource Manager kaynak türleri
 description: Azure Kaynak Grafiği ve değişiklik geçmişi tarafından desteklenen Azure Resource Manager kaynak türlerinin bir listesini sağlayın.
-ms.date: 02/04/2021
+ms.date: 03/10/2021
 ms.topic: reference
 ms.custom: generated
-ms.openlocfilehash: 865aed468f8a6bcb848b77a82467efc2c531398b
-ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
+ms.openlocfilehash: d7b4be0b35fdfebd2f680a299bc7b90375e36afc
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99594342"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102633776"
 ---
 # <a name="azure-resource-graph-table-and-resource-type-reference"></a>Azure Kaynak Grafiği tablosu ve kaynak türü başvurusu
 
@@ -26,9 +26,18 @@ Azure Kaynak Grafiği [Azure Resource Manager](../../../azure-resource-manager/m
 
 - Microsoft. alertsmanagement/uyarılar
 
+## <a name="extendedlocationresources"></a>extendedlocationresources
+
+- Microsoft. extendedlocation/customlocations/enabledresourcetypes
+
 ## <a name="guestconfigurationresources"></a>guestconfigurationresources
 
 - Microsoft. guestconfiguration/guestconfigurationatamaları
+
+## <a name="kubernetesconfigurationresources"></a>kubernetesconfigurationresources
+
+- Microsoft. kubernetesconfiguration/uzantıları
+- Microsoft. kubernetesconfiguration/sourcecontrolconfigurations
 
 ## <a name="maintenanceresources"></a>maintenanceresources
 
@@ -118,6 +127,7 @@ Azure Kaynak Grafiği [Azure Resource Manager](../../../azure-resource-manager/m
 - Microsoft. AzureArcData/Postgresınstances (PostgreSQL için Azure veritabanı sunucu grupları-Azure ARC)
 - Microsoft. AzureArcData/Sqlmanagedınstances (SQL yönetilen Örnekler-Azure ARC)
 - Microsoft. AzureArcData/Sqlserverınstances (SQL Server-Azure ARC)
+- Microsoft. azurecsıs/autopilotenvironments
 - Microsoft. azuredata/datacontrollers
 - Microsoft. azuredata/hybriddatayöneticileri
 - Microsoft. azuredata/postgresınstances
@@ -132,6 +142,7 @@ Azure Kaynak Grafiği [Azure Resource Manager](../../../azure-resource-manager/m
 - Microsoft. Azurestackhcı/kümeler (Azure Stack HCı)
 - Microsoft. azurestackhcı/gallerımages
 - Microsoft. azurestackhcı/NetworkInterfaces
+- Microsoft. Azurestackhcı/virtualmachines (Azure Stack HCı sanal makinesi-Azure ARC)
 - Microsoft. azurestackhcı/virtualnetworks
 - Microsoft. baremetal/consoleconnections
 - Microsoft. BareMetal/crayServers (Cray sunucuları)
@@ -151,12 +162,13 @@ Azure Kaynak Grafiği [Azure Resource Manager](../../../azure-resource-manager/m
 - Microsoft. BotService/botServices (bot Services)
 - Microsoft. Cache/Redsıs (Redsıs için Azure önbelleği)
 - Microsoft. Cache/RedisEnterprise (Redsıs Enterprise)
+- Microsoft. Cascade/Sites
 - Microsoft. CDN/CdnWebApplicationFirewallPolicies (Web uygulaması güvenlik duvarı ilkeleri (WAF))
-- Microsoft. CDN/Profiles (CDN profilleri)
+- Microsoft. CDN/Profiles (ön kapılar Standart/Premium (Önizleme))
 - Microsoft. CDN/profiller/afdendpoints
 - Microsoft. CDN/profiller/uç noktalar (uç noktalar)
 - Microsoft. CertificateRegistration/certificateOrders (App Service sertifikaları)
-- Microsoft. Chaos/chaosexperımtalar
+- Microsoft. Chaos/chaosexperımstalar (Chaos denemeleri)
 - Microsoft. classicCompute/domainNames (bulut Hizmetleri (klasik))
 - Microsoft. ClassicCompute/VirtualMachines (sanal makineler (klasik))
 - Microsoft. ClassicNetwork/networkSecurityGroups (ağ güvenlik grupları (klasik))
@@ -169,6 +181,7 @@ Azure Kaynak Grafiği [Azure Resource Manager](../../../azure-resource-manager/m
 - Microsoft. CloudTest/hostedpools (1ES barındırılan havuzlar)
 - Microsoft. CloudTest/yansımaları (CloudTest görüntüleri)
 - Microsoft. CloudTest/havuzlar (CloudTest havuzları)
+- Microsoft. ClusterStor/nodes (Kümeleyiciler)
 - Microsoft. codespaces/planlar
 - Microsoft. Bilticisi/syntheticsAccounts (Synthetika hesapları)
 - Microsoft. Biliveservices/hesapları (bilişsel hizmetler)
@@ -204,6 +217,11 @@ Azure Kaynak Grafiği [Azure Resource Manager](../../../azure-resource-manager/m
 - Microsoft. confluent/kuruluşlar (Batik kuruluşlar)
 - Microsoft. ConnectedCache/cacheNodes (bağlı önbellek kaynakları)
 - Microsoft. connectedaraç/platformaccounts
+- Microsoft. connectedvmwarevsphere/ResourcePools
+- Microsoft. connectedvmwarevsphere/vcenters
+- Microsoft. connectedvmwarevsphere/virtualmachines
+- Microsoft. connectedvmwarevsphere/virtualmachinetemplates
+- Microsoft. connectedvmwarevsphere/virtualnetworks
 - Microsoft. Containerınstance/containerGroups (kapsayıcı örnekleri)
 - Microsoft. ContainerRegistry/kayıt defterleri (kapsayıcı kayıt defterleri)
 - Microsoft. containerregistry/kayıt defterleri/agentpools
@@ -226,7 +244,7 @@ Azure Kaynak Grafiği [Azure Resource Manager](../../../azure-resource-manager/m
 - Microsoft. Databricks/Workspaces (Azure Databricks Services)
 - Microsoft. DataCatalog/Catalogs (veri kataloğu)
 - Microsoft. datacatalog/datacatalogs
-- Microsoft. Dataişbirliği/çalışma alanları (veri Işbirliği)
+- Microsoft. Dataişbirliği/çalışma alanları (proje CI)
 - Microsoft. Dataköpek/izleyiciler (Dataköpek)
 - Microsoft. DataFactory/DataFactory (veri fabrikaları)
 - Microsoft. DataFactory/Factory (veri fabrikaları (v2))
@@ -244,6 +262,7 @@ Azure Kaynak Grafiği [Azure Resource Manager](../../../azure-resource-manager/m
 - Microsoft. Dbformyısql/Servers (MySQL sunucuları için Azure veritabanı)
 - Microsoft. DBforPostgreSQL/Flexibtaservers (PostgreSQL için Azure veritabanı esnek sunucular)
 - Microsoft. DBforPostgreSQL/serverGroups (PostgreSQL için Azure veritabanı sunucu grupları)
+- Microsoft. dbforpostgresql/servergroupsv2
 - Microsoft. DBforPostgreSQL/Servers (PostgreSQL için Azure veritabanı sunucuları)
 - Microsoft. DBforPostgreSQL/serversv2 (PostgreSQL için Azure veritabanı sunucuları v2)
 - Microsoft. dbforpostgresql/singleservers
@@ -258,7 +277,7 @@ Azure Kaynak Grafiği [Azure Resource Manager](../../../azure-resource-manager/m
 - Microsoft. deploymentmanager/adımlar
 - Microsoft. DesktopVirtualization/ApplicationGroups (uygulama grupları)
 - Microsoft. DesktopVirtualization/HostPools (konak havuzları)
-- Microsoft. desktopvirtualization/scalingplanlar
+- Microsoft. DesktopVirtualization/Scalingplanlar (ölçeklendirme planları)
 - Microsoft. DesktopVirtualization/çalışma alanları (çalışma alanları)
 - Microsoft. Devices/elaun havuzları
 - Microsoft. Devices/elaun havuzları/iothubkiracılar
@@ -274,9 +293,13 @@ Azure Kaynak Grafiği [Azure Resource Manager](../../../azure-resource-manager/m
 - Microsoft. DevTestLab/Labs/virtualMachines (sanal makineler)
 - Microsoft. devtestlab/zamanlamalar
 - Microsoft. DigitalTwins/Digitaltwınsınstances (Azure dijital TWINS)
+- Microsoft.DocumentDB/Cassandrakümeler (Apache Cassandra için Azure yönetilen örneği)
 - Microsoft.DocumentDb/databaseAccounts (Azure Cosmos DB hesapları)
 - Microsoft. DomainRegistration/Domains (App Service etki alanları)
-- Microsoft. elastik/izleyiciler (elastik)
+- Microsoft. edgeorder/adresleri
+- Microsoft. edgeorder/ordercollections
+- Microsoft. edgeorder/siparişleri
+- Microsoft. elastik/izleyiciler (Elana Search)
 - Microsoft. enterpriseknowledgegraph/hizmetler
 - Microsoft. EventGrid/Domains (Event Grid etki alanları)
 - Microsoft. EventGrid/partnerNamespaces (Event Grid Iş ortağı ad alanları)
@@ -306,8 +329,8 @@ Azure Kaynak Grafiği [Azure Resource Manager](../../../azure-resource-manager/m
 - Microsoft. hybridcompute/makineler/uzantılar
 - Microsoft. HybridCompute/privateLinkScopes (Azure Arc özel bağlantı kapsamları)
 - Microsoft. HybridData/Datayöneticileri (StorSimple veri yöneticileri)
-- Microsoft. HybridNetwork/Devices (Azure ağ Işlev Yöneticisi-cihazlar)
-- Microsoft. HybridNetwork/networkFunctions (Azure ağ Işlev Yöneticisi – ağ Işlevleri)
+- Microsoft. HybridNetwork/Devices (Azure ağ Işlev Yöneticisi-cihazlar (Önizleme))
+- Microsoft. HybridNetwork/networkFunctions (Azure ağ Işlev Yöneticisi – ağ Işlevleri (Önizleme))
 - Microsoft. hybridnetwork/virtualnetworkfunctions
 - Microsoft. ımportexport/Jobs (Içeri/dışarı aktarma işleri)
 - Microsoft. industrydatalifecycle/basemodeller
@@ -333,10 +356,10 @@ Azure Kaynak Grafiği [Azure Resource Manager](../../../azure-resource-manager/m
 - Microsoft. Insights/çalışma kitapları (Azure çalışma kitapları)
 - Microsoft. Insights/workbooktemplates (Azure çalışma kitabı şablonları)
 - Microsoft. IntelligentITDigitalTwin/digitalTwins (Minervas)
-- Microsoft. intelligentitdigitaltwin/digitaltwins/varlıklar
-- Microsoft. intelligentitdigitaltwin/digitaltwins/executionplanlar
-- Microsoft. intelligentitdigitaltwin/digitaltwins/testplanlar
-- Microsoft. intelligentitdigitaltwin/digitaltwins/testler
+- Microsoft. IntelligentITDigitalTwin/digitalTwins/varlıklar (varlıklar)
+- Microsoft. IntelligentITDigitalTwin/digitalTwins/Executionplanlar (dağıtımlar)
+- Microsoft. IntelligentITDigitalTwin/digitalTwins/Testplanları (paketler)
+- Microsoft. IntelligentITDigitalTwin/digitalTwins/testler (betikler)
 - Microsoft. ıotcentral/ıotapps (IoT Central uygulamaları)
 - Microsoft. ıotspaces/Graph (dijital TWINS (kullanım dışı))
 - Microsoft. keykasası/hsmpools
@@ -352,13 +375,14 @@ Azure Kaynak Grafiği [Azure Resource Manager](../../../azure-resource-manager/m
 - Microsoft. Logic/ıntegrationserviceortamlarını/Managedapdir (yönetilen bağlayıcı)
 - Microsoft. Logic/iş akışları (Logic Apps)
 - Microsoft. Logz/izleyiciler (Logz ana hesabı)
-- Microsoft. Logz/izleyiciler/hesaplar (Logz alt firmaları sayısı)
+- Microsoft. Logz/izleyiciler/hesaplar (Logz Sub hesabı)
 - Microsoft. Machinöğrenim/Commitmentplanlar (Machine Learning Studio (klasik) Web hizmeti planları)
 - Microsoft. Machinöğrenim/webServices (Machine Learning Studio (klasik) Web Hizmetleri)
 - Microsoft. Machinöğrenim/çalışma alanları (Machine Learning Studio (klasik) çalışma alanları)
 - Microsoft. machinelearningcompute/operationalizationkümeler
 - Microsoft. machinelearningservices/modelinventories
 - Microsoft. machinelearningservices/modelinventory
+- Microsoft. machinelearningservices/virtualkümeler
 - Microsoft. MachineLearningServices/çalışma alanları (Machine Learning)
 - Microsoft. machinelearningservices/Workspaces/batchendpoints
 - Microsoft. machinelearningservices/Workspaces/batchendpoints/dağıtımlar
@@ -383,16 +407,22 @@ Azure Kaynak Grafiği [Azure Resource Manager](../../../azure-resource-manager/m
 - Microsoft. Media/mediaservices/liveevents (canlı olaylar)
 - Microsoft. Media/mediaservices/streamingEndpoints (akış uç noktaları)
 - Microsoft. Media/mediaservices/dönüşümler
+- Microsoft. Media/videoçözümleyiciler
 - Microsoft. microservices4spring/appkümeler
 - Microsoft. Migrate/assessmentprojects
 - Microsoft. Migrate/migrateprojects
 - Microsoft. Migrate/movecollections
 - Microsoft. Migrate/projeler (geçiş projeleri)
 - Microsoft. MixedReality/holographicsBroadcastAccounts (holografik yayın hesapları)
+- Microsoft. MixedReality/objectAnchorsAccounts (Nesne tutturucuları hesapları)
 - Microsoft. MixedReality/objectUnderstandingAccounts (nesne anlama hesapları)
 - Microsoft. MixedReality/remoteRenderingAccounts (uzaktan Işleme hesapları)
 - Microsoft. MixedReality/spatialAnchorsAccounts (uzamsal bağlayıcı hesapları)
 - Microsoft. mixedreality/surfacereconstructionaccounts
+- Microsoft. mobilenetwork/Networks
+- Microsoft. mobilenetwork/Networks/Sites
+- Microsoft. mobilenetwork/SIMS
+- Microsoft. mobilenetwork/SIMS/simprofiles
 - Microsoft. NetApp/netAppAccounts (NetApp hesapları)
 - Microsoft. NetApp/netappaccounts/backuppolicies
 - Microsoft. NetApp/netAppAccounts/Capacityhavuzları (kapasite havuzları)
@@ -485,6 +515,7 @@ Azure Kaynak Grafiği [Azure Resource Manager](../../../azure-resource-manager/m
 - Microsoft. PowerBI/privatelinkservicesforpowerbı
 - Microsoft. PowerBI/kiracılar
 - Microsoft. PowerBI/workspacecollections
+- Microsoft. powerbiadanmış/oto scalevçekirdekleri
 - Microsoft. Powerbiadanmış/kapasiteler (Power BI Embedded)
 - Microsoft. ProjectBabylon/Accounts (Babylon hesapları)
 - Microsoft. purview/Accounts (purview hesapları)
@@ -494,13 +525,13 @@ Azure Kaynak Grafiği [Azure Resource Manager](../../../azure-resource-manager/m
 - Microsoft. Relay/namespaces (geçişler)
 - Microsoft. RemoteApp/Koleksiyonlar
 - Microsoft. dayanıklılık/chaosexperimstalar
-- Microsoft. resourceconnector/gereçler
+- Microsoft. ResourceConnector/gereçler (gereçler)
 - Microsoft. resourcegraph/sorguları (kaynak Graph sorguları)
 - Microsoft. resources/deploymentScripts (dağıtım betikleri)
 - Microsoft. resources/Templatespec (şablon özellikleri)
 - Microsoft. resources/templatespec/sürümler
 - Microsoft. SaaS/uygulamalar (hizmet olarak yazılım (klasik))
-- Microsoft. SaaS/kaynaklar (CPX-PlaceHolder)
+- Microsoft. SaaS/kaynaklar (SaaS)
 - Microsoft. Scheduler/jobCollections (Zamanlayıcı Iş koleksiyonları)
 - Microsoft. SCVMM/bulutlar
 - Microsoft. SCVMM/virtualMachines (SCVMM sanal makinesi-Azure ARC)
@@ -514,7 +545,7 @@ Azure Kaynak Grafiği [Azure Resource Manager](../../../azure-resource-manager/m
 - Microsoft. ServiceBus/namespaces (Service Bus ad alanları)
 - Microsoft. ServiceFabric/kümeler (Service Fabric kümeleri)
 - Microsoft. servicefabric/containergroupsets
-- Microsoft. ServiceFabric/managedkümeler (yönetilen Service Fabric kümeleri)
+- Microsoft. ServiceFabric/managedkümeler (Service Fabric yönetilen kümeler)
 - Microsoft. Servicefabrickafes/Applications (kafes uygulamaları)
 - Microsoft. servicefabrickafesi/ağ geçitleri
 - Microsoft. servicefabrickafes/Networks
@@ -542,6 +573,7 @@ Azure Kaynak Grafiği [Azure Resource Manager](../../../azure-resource-manager/m
 - Microsoft. SqlVirtualMachine/SqlVirtualMachines (SQL sanal makineleri)
 - Microsoft. sqlvm/dwvm
 - Microsoft. Storage/StorageAccounts (depolama hesapları)
+- Microsoft. storagecache/amlfılesystems
 - Microsoft. StorageCache/önbellekler (HPC önbellekleri)
 - Microsoft. storagePool/diskpools
 - Microsoft. Storagessync/storageSyncServices (depolama Eşitleme Hizmetleri)
@@ -558,12 +590,13 @@ Azure Kaynak Grafiği [Azure Resource Manager](../../../azure-resource-manager/m
 - Microsoft. SYNAPSE/Workspaces/sqldatabases
 - Microsoft. SYNAPSE/Workspaces/Sqlhavuzlar (adanmış SQL havuzları)
 - Microsoft. teroyformoss/providerkayıtları
+- Microsoft. Testbase/testesaları
 - Microsoft. Timeseriesınsights/ortamlar (Time Series Insights ortamları)
 - Microsoft. Timeseriesınsights/ortamlar/EventSources (Time Series Insights olay kaynakları)
 - Microsoft. Timeseriesınsights/ortamlar/Referencedataset (Time Series Insights başvuru veri kümeleri)
 - Microsoft. Token/mağazaları
 - Microsoft. tokenkasasını/kasalarını
-- Microsoft. virtualmachineımages/ımagetemplates
+- Microsoft. Virtualmachineımages/ımagetemplates (görüntü şablonları)
 - Microsoft. VisualStudio/Account (Azure DevOps kuruluşları)
 - Microsoft. VisualStudio/Account/Extension
 - Microsoft. VisualStudio/Account/Project (DevOps Starter)
@@ -628,7 +661,8 @@ Azure Kaynak Grafiği [Azure Resource Manager](../../../azure-resource-manager/m
 
 - Microsoft. Security/değerlendirmeleri
 - Microsoft. Security/değerlendirmeleri/subassessments
-- Microsoft. Security/Locations/Alerts (güvenlik uyarıları (Önizleme))
+- Microsoft. Security/ıotalerts
+- Microsoft. Security/Locations/Alerts (güvenlik uyarıları)
 - Microsoft. Security/pricler
 - Microsoft. Security/rereber ancestandards
 - Microsoft. Security/Re, daha karmaşık güvenlik standartları/redüzenleyicisi
@@ -639,6 +673,10 @@ Azure Kaynak Grafiği [Azure Resource Manager](../../../azure-resource-manager/m
 ## <a name="servicehealthresources"></a>servicehealthresources
 
 - Microsoft. resourcehealth/olayları
+
+## <a name="workloadmonitorresources"></a>workloadmonitorresources
+
+- Microsoft. workloadmonitor/izleyicileri
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

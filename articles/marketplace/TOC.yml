@@ -13,6 +13,8 @@
       href: partner-center-portal/company-work-accounts.md
     - name: CPP’den İş Ortağı Merkezi’ne hesap geçişi
       href: partner-center-portal/account-migration-from-cpp-to-pc.md
+    - name: Microsoft 'a bildirme
+      href: submit-legal-notice.md
 - name: Kavramlar
   items:
     - name: Listeleme seçenekleri

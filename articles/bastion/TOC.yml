@@ -57,6 +57,8 @@
       href: diagnostic-logs.md
     - name: Oturumları izleme ve yönetme
       href: session-monitoring.md
+    - name: 'Ölçümler, izleme ve uyarılar'
+      href: howto-metrics-monitor-alert.md
     - name: Sorun giderme
       href: troubleshoot.md
 - name: Başvuru

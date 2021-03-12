@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: troubleshooting
 ms.date: 11/09/2020
-ms.openlocfilehash: aea205bee41aed232b8453417dca521d2dfc83ab
-ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
+ms.openlocfilehash: 7b7ac20672ee653cbf6d2b82b7a9454c1d742b2c
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98233789"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102612703"
 ---
 # <a name="troubleshooting-for-qna-maker"></a>Soru-Cevap Oluşturma için sorun giderme
 
@@ -389,7 +389,7 @@ Birden çok dilde içeriğiniz varsa, her dil için ayrı bir hizmet oluşturmay
 <details>
 <summary><b>Soru-Cevap Oluşturma kullanmak için bot Framework 'Ü kullanmam gerekir mi?</b></summary>
 
-**Cevap**: hayır, soru-cevap oluşturma Ile [bot çerçevesini](https://github.com/Microsoft/botbuilder-dotnet) kullanmanıza gerek yoktur. Ancak, Soru-Cevap Oluşturma [Azure bot hizmetinde](/azure/bot-service/?preserve-view=true&view=azure-bot-service-4.0)birkaç şablondan biri olarak sunulur. Bot hizmeti, Microsoft bot Framework aracılığıyla hızlı akıllı bot geliştirmesi sunar ve sunucu-daha az bir ortamda çalışır.
+**Cevap**: hayır, soru-cevap oluşturma Ile [bot çerçevesini](https://github.com/Microsoft/botbuilder-dotnet) kullanmanıza gerek yoktur. Ancak, Soru-Cevap Oluşturma [Azure bot hizmetinde](/azure/bot-service/)birkaç şablondan biri olarak sunulur. Bot hizmeti, Microsoft bot Framework aracılığıyla hızlı akıllı bot geliştirmesi sunar ve sunucu-daha az bir ortamda çalışır.
 
 </details>
 
@@ -438,7 +438,7 @@ Bilgi Bankası 'nın uç nokta anahtarı, `QnAAuthkey` ABS hizmetinde etiketlidi
 <details>
 <summary><b>Soru-Cevap Oluşturma kullanmak için bot Framework 'Ü kullanmam gerekir mi?</b></summary>
 
-**Cevap**: hayır, soru-cevap oluşturma Ile [bot çerçevesini](https://github.com/Microsoft/botbuilder-dotnet) kullanmanıza gerek yoktur. Ancak, Soru-Cevap Oluşturma [Azure bot hizmetinde](/azure/bot-service/?preserve-view=true&view=azure-bot-service-4.0)birkaç şablondan biri olarak sunulur. Bot hizmeti, Microsoft bot Framework aracılığıyla hızlı akıllı bot geliştirmesi sunar ve sunucu-daha az bir ortamda çalışır.
+**Cevap**: hayır, soru-cevap oluşturma Ile [bot çerçevesini](https://github.com/Microsoft/botbuilder-dotnet) kullanmanıza gerek yoktur. Ancak, Soru-Cevap Oluşturma [Azure bot hizmetinde](/azure/bot-service/)birkaç şablondan biri olarak sunulur. Bot hizmeti, Microsoft bot Framework aracılığıyla hızlı akıllı bot geliştirmesi sunar ve sunucu-daha az bir ortamda çalışır.
 
 </details>
 

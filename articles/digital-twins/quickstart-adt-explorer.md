@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 9/24/2020
 ms.topic: quickstart
 ms.service: digital-twins
-ms.openlocfilehash: f1b25b853977b3a1f4871e232a562d6a3cfd2fae
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: c1c1b5f58aa0e760ff626af4607cf8e2d1e13910
+ms.sourcegitcommit: ec39209c5cbef28ade0badfffe59665631611199
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102434211"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103232430"
 ---
 # <a name="quickstart---explore-a-sample-azure-digital-twins-scenario-using-azure-digital-twins-explorer"></a>Hızlı başlangıç-Azure Digital TWINS gezginini kullanarak örnek bir Azure dijital TWINS senaryosunu araştırma
 
@@ -93,13 +93,16 @@ Ardından, Azure Digital TWINS gezgin uygulamasını çalıştırın ve Azure di
 
 1. Daha önce [Azure dijital TWINS örneği ayarlama](#set-up-an-azure-digital-twins-instance) bölümünde toplanan Azure dijital TWıNS örneği URL 'sini *https://{örnek konak adı}* biçiminde girin.
 
->[!NOTE]
-> Aynı simgeyi seçerek, **oturum açma** kutusunu yeniden açmak için bu bilgileri dilediğiniz zaman tekrar ziyaret edebilir veya düzenleyebilirsiniz. Bu, geçirilen değerleri tutacak.
-
 > [!TIP]
 > Bağlandığınızda bir `SignalRService.subscribe` hata iletisi görünürse, Azure Digital TWINS URL 'nizin *https://* ile başladığından emin olun.
 
+> [!TIP]
+> Bir kimlik doğrulama hatası görünürse, Azure dijital TWINS için geçerli olduğundan emin olmak üzere ortam değişkenlerinizi kontrol etmek isteyebilirsiniz. DefaultAzureCredential, [kimlik bilgileri türlerine](/dotnet/api/overview/azure/identity-readme#defaultazurecredential) karşı belirli bir sırada kimlik doğrulaması yapmayı dener ve ortam değişkenleri önce değerlendirilir.
+
 Microsoft 'tan bir **izin** iste açılan pencere görürseniz, bu uygulamaya izin verin ve devam etmek için kabul edin.
+
+>[!NOTE]
+> Aynı simgeyi seçerek, **oturum açma** kutusunu yeniden açmak için bu bilgileri dilediğiniz zaman tekrar ziyaret edebilir veya düzenleyebilirsiniz. Bu, geçirilen değerleri tutacak.
 
 ## <a name="add-the-sample-data"></a>Örnek verileri ekleme
 

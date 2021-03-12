@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: estfan, logicappspm, azla, rarayudu
 ms.topic: conceptual
-ms.date: 02/22/2021
-ms.openlocfilehash: 21edde3eba76b565332acb9c67225f3bbb0fe803
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.date: 03/09/2021
+ms.openlocfilehash: 7b082c226b38633d6c34ee2fe4d5227252b2bfcb
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102177292"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102556392"
 ---
 # <a name="secure-access-and-data-in-azure-logic-apps"></a>Azure Logic Apps 'da güvenli erişim ve veriler
 
@@ -933,7 +933,7 @@ Bu tabloda, bir kimlik doğrulama türünü seçebileceğiniz Tetikleyiciler ve 
 | [İstemci sertifikası](#client-certificate-authentication) | Azure API Management, Azure App Services, HTTP, HTTP + Swagger, HTTP Web kancası |
 | [Active Directory OAuth](#azure-active-directory-oauth-authentication) | Azure API Management, Azure Uygulama Hizmetleri, Azure Işlevleri, HTTP, HTTP + Swagger, HTTP Web kancası |
 | [Ham](#raw-authentication) | Azure API Management, Azure Uygulama Hizmetleri, Azure Işlevleri, HTTP, HTTP + Swagger, HTTP Web kancası |
-| [Yönetilen kimlik](#managed-identity-authentication) | **Yerleşik Tetikleyiciler ve eylemler** <p><p>Azure API Management, Azure Uygulama Hizmetleri, Azure Işlevleri, HTTP, HTTP Web kancası <p><p>**Yönetilen bağlayıcılar** <p><p>Azure AD Kimlik Koruması, Azure Otomasyonu, Azure Container Instance, Azure Veri Gezgini, Azure Data Factory, Azure Data Lake, Azure Event Grid, Azure IoT Central v3, Azure Key Vault, Azure Log Analytics, Azure Izleyici günlükleri, Azure Resource Manager, Azure Sentinel, Azure AD ile HTTP <p><p>**Note**: yönetilen bağlayıcılar için destek şu anda önizlemededir. |
+| [Yönetilen kimlik](#managed-identity-authentication) | **Yerleşik Tetikleyiciler ve eylemler** <p><p>Azure API Management, Azure Uygulama Hizmetleri, Azure Işlevleri, HTTP, HTTP Web kancası <p><p>**Yönetilen bağlayıcılar** <p><p>Azure AD Kimlik Koruması, Azure Otomasyonu, Azure Container Instance, Azure Veri Gezgini, Azure Data Factory, Azure Data Lake, Azure Event Grid, Azure IoT Central v3, Azure Key Vault, Azure Resource Manager, Azure Sentinel, Azure AD ile HTTP <p><p>**Note**: yönetilen bağlayıcılar için destek şu anda önizlemededir. |
 |||
 
 <a name="basic-authentication"></a>
@@ -977,7 +977,7 @@ Gizli bilgileri işlemek ve güvenli hale getirmek için [güvenli parametreleri
 |---------------------|-----------------|----------|-------|-------------|
 | **Kimlik Doğrulaması** | `type` | Yes | **İstemci sertifikası** <br>veya <br>`ClientCertificate` | Kullanılacak kimlik doğrulaması türü. Sertifikaları [Azure API Management](../api-management/api-management-howto-mutual-certificates.md)yönetebilirsiniz. <p></p>**Note**: özel bağlayıcılar hem gelen hem de giden çağrılar için sertifika tabanlı kimlik doğrulamasını desteklemez. |
 | **Türk** | `pfx` | Yes | <*kodlanmış-pfx-dosya-içerik*> | Kişisel bilgi değişimi (PFX) dosyasından gelen Base64 kodlamalı içerik <p><p>PFX dosyasını Base64 kodlamalı biçime dönüştürmek için aşağıdaki adımları izleyerek PowerShell kullanabilirsiniz: <p>1. sertifika içeriğini bir değişkene kaydedin: <p>   `$pfx_cert = get-content 'c:\certificate.pfx' -Encoding Byte` <p>2. işlevi kullanarak sertifika içeriğini dönüştürün `ToBase64String()` ve bu içeriği bir metin dosyasına kaydedin: <p>   `[System.Convert]::ToBase64String($pfx_cert) | Out-File 'pfx-encoded-bytes.txt'` <p><p>**Sorun giderme**: `cert mmc/PowerShell` komutunu kullanırsanız, şu hatayı alabilirsiniz: <p><p>`Could not load the certificate private key. Please check the authentication certificate password is correct and try again.` <p><p>Bu hatayı çözmek için PFX dosyasını bir ped dosyasına dönüştürmeyi ve komutunu kullanarak yeniden geri dönüştürmeyi deneyin `openssl` : <p><p>`openssl pkcs12 -in certificate.pfx -out certificate.pem` <br>`openssl pkcs12 -in certificate.pem -export -out certificate2.pfx` <p><p>Daha sonra, sertifikanın yeni dönüştürülen PFX dosyası için Base64 kodlamalı dizeyi aldığınızda, dize artık Azure Logic Apps ' de çalışmaktadır. |
-| **Parola** | `password`| Hayır | <*-pfx dosyası için parola*> | PFX dosyasına erişim parolası |
+| **Parola** | `password`| No | <*-pfx dosyası için parola*> | PFX dosyasına erişim parolası |
 |||||
 
 Gizli bilgileri işlemek ve güvenli hale getirmek için [güvenli parametreleri](#secure-action-parameters) kullandığınızda (örneğin, [dağıtımı otomatikleştirmek için bir Azure Resource Manager şablonunda](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md)), çalışma zamanında bu parametre değerlerine erişmek için ifadeleri kullanabilirsiniz. Bu örnek HTTP eylemi tanımı, kimlik doğrulamasını `type` olarak belirtir `ClientCertificate` ve parametre değerlerini almak için [Parameters () işlevini](../logic-apps/workflow-definition-language-functions-reference.md#parameters) kullanır:
@@ -1015,7 +1015,7 @@ Istek Tetikleyicileri üzerinde, mantıksal uygulamanız için [Azure AD yetkile
 | Özellik (Tasarımcı) | Özellik (JSON) | Gerekli | Değer | Açıklama |
 |---------------------|-----------------|----------|-------|-------------|
 | **Kimlik Doğrulaması** | `type` | Yes | **Active Directory OAuth** <br>veya <br>`ActiveDirectoryOAuth` | Kullanılacak kimlik doğrulaması türü. Logic Apps Şu anda [OAuth 2,0 protokolünü](../active-directory/develop/v2-overview.md)izler. |
-| **Yetkili** | `authority` | Hayır | <*URL-for-Authority-Token-Issuer*> | Erişim belirtecini sağlayan yetkilinin URL 'SI. Varsayılan olarak, bu değer `https://login.windows.net` . |
+| **Yetkili** | `authority` | No | <*URL-for-Authority-Token-Issuer*> | Erişim belirtecini sağlayan yetkilinin URL 'SI. Varsayılan olarak, bu değer `https://login.windows.net` . |
 | **Kiracı** | `tenant` | Yes | <*Kiracı KIMLIĞI*> | Azure AD kiracısı için kiracı KIMLIĞI |
 | **Hedef kitle** | `audience` | Yes | <*kaynaktan yetkilendirme*> | Yetkilendirme için kullanmak istediğiniz kaynak (örneğin, `https://management.core.windows.net/` |
 | **İstemci Kimliği** | `clientId` | Yes | <*istemci KIMLIĞI*> | Yetkilendirme isteyen uygulamanın istemci KIMLIĞI |

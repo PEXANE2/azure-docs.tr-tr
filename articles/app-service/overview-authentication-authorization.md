@@ -1,21 +1,21 @@
 ---
-title: Kimlik doğrulama ve yetkilendirme
+title: Kimlik doğrulaması ve yetkilendirme
 description: Azure App Service ve Azure Işlevlerinde yerleşik kimlik doğrulama ve yetkilendirme desteği hakkında bilgi edinin ve uygulamanızın yetkisiz erişime karşı nasıl güvenli hale getirilmesine yardımcı olabilir.
 ms.assetid: b7151b57-09e5-4c77-a10c-375a262f17e5
 ms.topic: article
 ms.date: 07/08/2020
 ms.reviewer: mahender
 ms.custom: seodec18, fasttrack-edit, has-adal-ref
-ms.openlocfilehash: 1b95b1e96dc26fb72338518fc969c69b035d5f68
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: 83758f63b7e60d08a31f1da9da4a6eec6ba7d4a4
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97095245"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102632076"
 ---
 # <a name="authentication-and-authorization-in-azure-app-service-and-azure-functions"></a>Azure App Service ve Azure Işlevlerinde kimlik doğrulama ve yetkilendirme
 
-Azure App Service, yerleşik kimlik doğrulama ve yetkilendirme desteği sunarak, Web uygulamanızda, yeniden derlenen API 'de ve mobil arka uçta ve ayrıca [Azure işlevlerinde](../azure-functions/functions-overview.md)en az veya hiç kod yazmadan kullanıcılara oturum açabilir ve verilere erişebilirsiniz. Bu makalede, App Service uygulamanızın kimlik doğrulama ve yetkilendirme işlemlerini basitleştirmeye nasıl yardımcı olduğu açıklanır.
+Azure App Service, yerleşik kimlik doğrulaması ve yetkilendirme desteği (bazen "kolay kimlik doğrulaması" olarak adlandırılır) sağlar. böylece, Web uygulamanızda, yeniden derlenen API 'de ve mobil arka uçta ve ayrıca [Azure işlevlerinde](../azure-functions/functions-overview.md)en az veya hiç kod yazmadan kullanıcılara oturum açabilir ve verilere erişebilirsiniz. Bu makalede, App Service uygulamanızın kimlik doğrulama ve yetkilendirme işlemlerini basitleştirmeye nasıl yardımcı olduğu açıklanır.
 
 Güvenli kimlik doğrulama ve yetkilendirme, Federasyon, şifreleme, [JSON Web belirteçleri (JWT)](https://wikipedia.org/wiki/JSON_Web_Token) yönetimi, [izin verme](https://oauth.net/2/grant-types/)vb. gibi güvenlik konusunda ayrıntılı bilgiler gerektirir. App Service, müşterinize iş değeri sağlamaya yönelik daha fazla zaman ve enerji harcayabilmeniz için bu yardımcı programları sağlar.
 
@@ -24,9 +24,6 @@ Güvenli kimlik doğrulama ve yetkilendirme, Federasyon, şifreleme, [JSON Web b
 >
 > App Service tarafından barındırılan ASP.NET Core 2,1 ve üzeri sürümleri, bu son değişiklik için zaten düzeltme eki uygulanmış ve Chrome 80 ve daha eski tarayıcıları uygun şekilde işleyecek. Ayrıca, ASP.NET Framework 4.7.2 için de aynı düzeltme eki, 2020 Ocak boyunca App Service örneklerine dağıtılır. Daha fazla bilgi için bkz. [Azure App Service SameSite tanımlama bilgisi güncelleştirmesi](https://azure.microsoft.com/updates/app-service-samesite-cookie-update/).
 >
-
-> [!NOTE]
-> Kimlik doğrulama/yetkilendirme özelliği bazen "kolay kimlik doğrulaması" olarak da adlandırılır.
 
 > [!NOTE]
 > Bu özelliği etkinleştirmek, [https 'yi zorlamak](configure-ssl-bindings.md#enforce-https)için App Service yapılandırma ayarından bağımsız olarak, uygulamanıza yönelik **Tüm** güvenli olmayan http isteklerinin otomatik olarak https 'ye yönlendirilmesini sağlar. Gerekirse, `requireHttps` [kimlik doğrulama ayarları yapılandırma dosyasındaki](app-service-authentication-how-to.md#configuration-file-reference)ayarı aracılığıyla bunu devre dışı bırakabilirsiniz, ancak bundan böyle hiçbir güvenlik BELIRTECININ güvenli olmayan http bağlantıları üzerinden iletilmemesini sağlamak için dikkatli olmanız gerekir.

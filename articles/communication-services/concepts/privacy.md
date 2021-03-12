@@ -8,12 +8,12 @@ ms.author: chpalm
 ms.date: 10/03/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 6fbc20ec7145a474d9f3aada153f2d012aba34f8
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.openlocfilehash: 4e9ea1ec85067a59c5ee6bcd27993e294559f410
+ms.sourcegitcommit: ec39209c5cbef28ade0badfffe59665631611199
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102561356"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103232095"
 ---
 # <a name="region-availability-and-data-residency"></a>Bölge kullanılabilirliği ve veri yerleşikliği
 
@@ -51,12 +51,14 @@ Iletişim hizmetleriyle Azure portal veya Azure Resource Manager API 'Leri kulla
 
 ### <a name="telephone-number-management"></a>Telefon numarası yönetimi
 
-Azure Iletişim Hizmetleri, bir Iletişim Hizmetleri kaynağıyla ilişkili telefon numaralarının dizinini tutar. Telefon numaralarını almak ve bunları silmek için bu API 'Leri kullanın:
+Azure Iletişim Hizmetleri, bir Iletişim Hizmetleri kaynağıyla ilişkili telefon numaralarının dizinini tutar. Telefon numaralarını almak ve silmek için [telefon numarası yönetim API 'lerini](/rest/api/communication/phonenumberadministration) kullanın:
+
+- `Get All Phone Numbers`
 - `Release Phone Number`
 
 ### <a name="chat"></a>Sohbet
 
-Sohbet iş parçacıkları ve iletiler açıkça silinene kadar tutulur. Tam boş bir iş parçacığı, 30 gün sonra otomatik olarak silinir. İletileri almak, listelemek, güncelleştirmek ve silmek için [sohbet API 'lerini](/rest/api/communication/chat/deletechatmessage/deletechatmessage) kullanın.
+Sohbet iş parçacıkları ve iletiler açıkça silinene kadar tutulur. Tam boş bir iş parçacığı, 30 gün sonra otomatik olarak silinir. İletileri almak, listelemek, güncelleştirmek ve silmek için [sohbet API 'lerini](/rest/api/communication/chat/chatthread) kullanın.
 
 - `Get Thread`
 - `Get Message`

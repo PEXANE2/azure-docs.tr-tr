@@ -6,13 +6,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 author: vamahtan
 ms.author: vamahtan
-ms.date: 3/08/2021
-ms.openlocfilehash: 7d1d4a1a89931e3ded8274a4731aa3606695771b
-ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
+ms.date: 3/12/2021
+ms.openlocfilehash: 47f8f4ec3b5c5dd2d4545fc67561487d4f5a465c
+ms.sourcegitcommit: 94c3c1be6bc17403adbb2bab6bbaf4a717a66009
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 03/12/2021
-ms.locfileid: "103199878"
+ms.locfileid: "103225327"
 ---
 # <a name="co-sell-with-microsoft-sales-teams-and-partners-overview"></a>Microsoft satış ekiplerine ve iş ortaklarına genel bakış ile ortak satış
 
@@ -33,7 +33,7 @@ Ortak satış fırsatı, Microsoft satış ekiplerinin, Microsoft iş ortakları
 - **Microsoft satış ekipleriyle ortak** satış: müşteri ihtiyaçlarını etkin bir şekilde karşılamak için bir veya daha fazla Microsoft satış ekiple çalışın. Bu, tekliflerinizi, Microsoft 'un tekliflerini veya her ikisini birden satmaya dahil edebilir. Siz ve Microsoft satış ekipleri, çözümlerinizin iyi bir uyum olabileceği müşteri fırsatlarını tanımlayabilir ve paylaşabilir.
 - İş **ortağı (P2P)** : bir müşteri sorununu etkin bir şekilde çözmek için başka bir Microsoft ortağıyla birlikte çalışın.
 - **Özel anlaşma** – Microsoft raporlama sisteminde, analiz ve tahmin amacıyla yansıtılmak Için, Microsoft ile bağımsız olarak çalışan şeyleri paylaşabilirsiniz.
-- **Çözüm değerlendirmesi (SA)** – Microsoft teknolojilerini kullanan veya kullanmayı planlayan müşterilerin teknoloji gereksinimlerine erişmek üzere çözüm değerlendirmesi iş ekibi tarafından taklit edilen iş ortaklarıyla çalışın.
+- **Çözüm değerlendirmesi (SA)** – Microsoft teknolojilerini kullanan veya kullanmayı planlayan müşterilerin teknoloji ihtiyaçlarını değerlendirmek üzere çözüm değerlendirmesi iş ekibi tarafından taklit edilen iş ortaklarıyla çalışın.
 
 ## <a name="co-sell-statuses"></a>Ortak satış durumları
 

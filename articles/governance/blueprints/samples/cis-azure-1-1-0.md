@@ -1,26 +1,26 @@
 ---
-title: CIS Microsoft Azure temel geçişleri kıyaslama şeması örneği
-description: CIS Microsoft Azure Foundations Benchmark şeması örneğine genel bakış. Bu şema örneği, müşterilerin belirli denetimleri değerlendirmesine yardımcı olur.
-ms.date: 01/27/2021
+title: CIS Microsoft Azure temel geçişleri kıyaslama v 1.1.0 şema Sample
+description: Yönetim bilgileri kıyaslama v 1.1.0 şema Sample Microsoft Azure CIS 'ye genel bakış. Bu şema örneği, müşterilerin belirli denetimleri değerlendirmesine yardımcı olur.
+ms.date: 03/11/2021
 ms.topic: sample
-ms.openlocfilehash: fc9e2443cd1e413588487646d6400ae1f2185208
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.openlocfilehash: b6188d96971329a83bc82042a1f840bd893354eb
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98918425"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103197793"
 ---
-# <a name="cis-microsoft-azure-foundations-benchmark-blueprint-sample"></a>CIS Microsoft Azure temel geçişleri kıyaslama şeması örneği
+# <a name="cis-microsoft-azure-foundations-benchmark-v110-blueprint-sample"></a>CIS Microsoft Azure temel geçişleri kıyaslama v 1.1.0 şema Sample
 
-CIS Microsoft Azure Foundations Benchmark şeması örneği, belirli CIS Microsoft Azure Foundations Benchmark önerilerini değerlendirmenize yardımcı olan [Azure İlkesi](../../policy/overview.md)'ni kullanarak idare korumaları sağlar. Bu şema müşterilerin CIS Microsoft Azure Foundations Benchmark önerilerini uygulaması gereken, Azure'da dağıtılmış herhangi bir mimari için bir dizi ilke dağıtmasına yardımcı olur.
+Microsoft Azure Yönetim kıyaslaması, kıyaslama v 1.1.0 şema örneği, belirli Microsoft Azure CIS 'leri temel alan kıyaslama önerilerini değerlendirmenize yardımcı olan [Azure ilkesi](../../policy/overview.md) 'ni kullanarak idare koruyucu-rayları sağlar. Bu şema, müşterilerin bir Azure dağıtılan mimari için Microsoft Azure, yönetim kıyaslaması kıyaslama v 1.1.0 önerilerini uygulaması gereken bir çekirdek ilke kümesi dağıtmakta yardımcı olur.
 
 ## <a name="recommendation-mapping"></a>Öneri eşlemesi
 
-[Azure ilke önerisi eşleme](../../policy/samples/cis-azure-1-1-0.md) , bu şema içinde yer alan ilke tanımlarına ilişkin ayrıntılar ve bu ilke tanımlarının, yönetim kıyaslama v 1.1.0 Microsoft Azure temelleri olan **Uyumluluk etki alanları** ve **denetimleriyle** nasıl eşlendiğini açıklar. Bir mimariye atandığında kaynaklar, atanan ilke tanımlarına yönelik uyumsuzluk için Azure Ilkesi tarafından değerlendirilir. Daha fazla bilgi için bkz. [Azure İlkesi](../../policy/overview.md).
+[Azure ilke önerisi eşleme](../../policy/samples/cis-azure-1-1-0.md) , bu şema içinde yer alan ilke tanımları hakkında ayrıntılar ve bu ilke **tanımlarının, yönetim** kıyaslama v 1.1.0 temel Microsoft Azure Bir mimariye atandığında kaynaklar, atanan ilke tanımlarına yönelik uyumsuzluk için Azure Ilkesi tarafından değerlendirilir. Daha fazla bilgi için bkz. [Azure İlkesi](../../policy/overview.md).
 
 ## <a name="deploy"></a>Dağıtma
 
-Azure şemaları CIS 'yi Microsoft Azure temelleri şema Sample 'ı dağıtmak için aşağıdaki adımlar gerçekleştirilmelidir:
+Azure şemaları CIS 'yi, kıyaslama v 1.1.0 şema örneğini Microsoft Azure dağıtmak için aşağıdaki adımlar gerçekleştirilmelidir:
 
 > [!div class="checklist"]
 > - Örnekten yeni bir şema oluşturma
@@ -50,7 +50,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 ### <a name="publish-the-sample-copy"></a>Örnek kopyayı yayımlama
 
-Şimdi şema örneği kopyanız, ortamınızda oluşturulmuştur. Bu, **Taslak** modunda oluşturulur ve atanabilmesi ve dağıtılabilmesi için önce **Yayımlandı** durumunda olmalıdır. Şema örneğinin kopyası ortamınıza ve gereksinimlerinize göre özelleştirilebilir, ancak bu değişiklik, CIS Microsoft Azure temel alınan kıyaslama önerilerini kullanarak bu değişikliği, CIS ile hizalamadan uzağa taşıyabilir.
+Şimdi şema örneği kopyanız, ortamınızda oluşturulmuştur. Bu, **Taslak** modunda oluşturulur ve atanabilmesi ve dağıtılabilmesi için önce **Yayımlandı** durumunda olmalıdır. Şema örneğinin kopyası ortamınıza ve gereksinimlerinize göre özelleştirilebilir, ancak bu değişiklik, yönetim, kıyaslama v 1.1.0 önerilerini kullanarak CIS Microsoft Azure
 
 1. Sol bölmede **Tüm hizmetler**'i seçin. **Şemalar**’ı arayıp seçin.
 
@@ -101,8 +101,8 @@ Aşağıdaki tabloda, şema yapıtı parametrelerinin bir listesi verilmiştir:
 
 |Yapıt adı|Yapıt türü|Parametre adı|Açıklama|
 |-|-|-|-|
-|Microsoft Azure, kıyaslama 1.1.0 önerilerini ve belirli destekleyici VM uzantılarını dağıtmak için CIS 'yi denetleyin|İlke ataması|Ağ Izleyicisi 'nin etkinleştirilmesi gereken bölgelerin listesi|Bir bölge için noktalı virgülle ayrılmış bir liste. Bölgelerin tam bir listesini görmek için Get-AzLocation kullanın. Örn.: eastus; eastus2|
-|Microsoft Azure, kıyaslama 1.1.0 önerilerini ve belirli destekleyici VM uzantılarını dağıtmak için CIS 'yi denetleyin|İlke ataması|Kullanım için onaylanan sanal makine uzantılarının listesi|Bir uzantı için noktalı virgülle ayrılmış bir liste. Sanal makine uzantılarının tam listesini görmek için Get-Azvmextensionımage komutunu kullanın. Örn.: AzureDiskEncryption; Iaasantimalware|
+|Yönetim, kıyaslama v 1.1.0 önerilerini ve belirli destekleyici VM uzantılarını dağıtmak Microsoft Azure CIS 'yi denetleyin|İlke ataması|Ağ Izleyicisi 'nin etkinleştirilmesi gereken bölgelerin listesi|Bir bölge için noktalı virgülle ayrılmış bir liste. Bölgelerin tam bir listesini görmek için Get-AzLocation kullanın. Örn.: eastus; eastus2|
+|Yönetim, kıyaslama v 1.1.0 önerilerini ve belirli destekleyici VM uzantılarını dağıtmak Microsoft Azure CIS 'yi denetleyin|İlke ataması|Kullanım için onaylanan sanal makine uzantılarının listesi|Bir uzantı için noktalı virgülle ayrılmış bir liste. Sanal makine uzantılarının tam listesini görmek için Get-Azvmextensionımage komutunu kullanın. Örn.: AzureDiskEncryption; Iaasantimalware|
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -3,7 +3,7 @@ title: Azure isteğe bağlı medya Kodlayıcılara genel bakış | Microsoft Doc
 description: Azure Media Services, buluttaki medya kodlaması için birden çok seçenek sağlar. Bu makale, Azure isteğe bağlı medya Kodlayıcılara genel bakış sunar.
 services: media-services
 documentationcenter: ''
-author: juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/25/2019
-ms.author: juliako
-ms.openlocfilehash: d6e64ed7476b3f9fd5427c2f3d26855bc4d5f97d
-ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
+ms.date: 03/10/2021
+ms.author: inhenkel
+ms.openlocfilehash: 0fcf3aaa830c092dfa225f55fef882e2263b16cd
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98695772"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103013559"
 ---
 # <a name="overview-of-azure-on-demand-media-encoders"></a>İsteğe bağlı Azure Medya Kodlayıcılara genel bakış
 
