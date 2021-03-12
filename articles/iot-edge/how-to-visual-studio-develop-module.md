@@ -8,14 +8,16 @@ ms.author: kgremban
 ms.date: 3/27/2020
 ms.topic: conceptual
 ms.service: iot-edge
-ms.openlocfilehash: 2ae6d46198d979f91de5bf31d389f75961b4ab88
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.openlocfilehash: 6e5b5c021eb6a83de9ecfb31757855065b70c290
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96437176"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103196976"
 ---
 # <a name="use-visual-studio-2019-to-develop-and-debug-modules-for-azure-iot-edge"></a>Azure IoT Edge için modülleri geliştirmek ve hatalarını ayıklamak için Visual Studio 2019 kullanın
+
+[!INCLUDE [iot-edge-version-all-supported](../../includes/iot-edge-version-all-supported.md)]
 
 İş mantığınızı Azure IoT Edge için modüllere dönüştürebilirsiniz. Bu makalede, modülleri geliştirmek ve hatalarını ayıklamak için Visual Studio 2019 ' i ana araç olarak nasıl kullanacağınız gösterilmektedir.
 
@@ -147,7 +149,7 @@ Genellikle, birden çok modülle bir çözümün tamamında çalıştırmadan ö
 
    ![Modül çalışıyor](./media/how-to-visual-studio-develop-csharp-module/single-module-run.png)
 
-1. C# dilinde geliştirme yapıyorsanız, Program.cs işlevindeki bir kesme noktası ayarlayın `PipeMessage()` ; **Program.cs** C kullanıyorsanız, `InputQueue1Callback()` **Main. c** içindeki işlevde bir kesme noktası ayarlayın. Ardından, **Git Bash** veya **WSL Bash** kabuğu 'nda aşağıdaki komutu çalıştırarak bir ileti göndererek test edebilirsiniz. ( `curl` Komutu bir PowerShell veya komut isteminden çalıştıramazsınız.)
+1. C# dilinde geliştirme yapıyorsanız, Program.cs işlevindeki bir kesme noktası ayarlayın `PipeMessage()` ; C kullanıyorsanız, `InputQueue1Callback()` **Main. c** içindeki işlevde bir kesme noktası ayarlayın. Ardından, **Git Bash** veya **WSL Bash** kabuğu 'nda aşağıdaki komutu çalıştırarak bir ileti göndererek test edebilirsiniz. ( `curl` Komutu bir PowerShell veya komut isteminden çalıştıramazsınız.)
 
     ```bash
     curl --header "Content-Type: application/json" --request POST --data '{"inputName": "input1","data":"hello world"}' http://localhost:53000/api/v1/messages
@@ -166,7 +168,7 @@ Genellikle, birden çok modülle bir çözümün tamamında çalıştırmadan ö
 
 Tek bir modülün geliştirilmesini tamamladıktan sonra, birden çok modülle bir çözümün tamamını çalıştırmak ve hatalarını ayıklamak isteyebilirsiniz.
 
-1. **Çözüm Gezgini**, çözüme **sağ tıklayıp** **Add**  >  **Yeni IoT Edge modülü** Ekle ' yi seçerek ikinci bir modül ekleyin. İkinci modülün varsayılan adı **IotEdgeModule2** ' dür ve başka bir kanal modülü olarak görev görür.
+1. **Çözüm Gezgini**, çözüme **sağ tıklayıp**   >  **Yeni IoT Edge modülü** Ekle ' yi seçerek ikinci bir modül ekleyin. İkinci modülün varsayılan adı **IotEdgeModule2** ' dür ve başka bir kanal modülü olarak görev görür.
 
 1. Dosyayı açtığınızda `deployment.template.json` **modüller** bölümüne **IotEdgeModule2** eklendiğini görürsünüz. **Rotalar** bölümünü aşağıdaki kodla değiştirin. Modül adlarınızı özelleştirdiyseniz, bu adları eşleşecek şekilde güncelleştirdiğinizden emin olun.
 
@@ -222,7 +224,7 @@ Tek bir modülün geliştirilmesini tamamladıktan sonra, birden çok modülle b
 
 IoT Edge cihazınızı ayarlamak için kullandığınız hızlı başlangıç makalesinde Azure portalı kullanarak bir modül dağıttınız. Ayrıca, Visual Studio için Cloud Explorer 'ı kullanarak modüller dağıtabilirsiniz. Senaryonuz için hazırlanmış bir dağıtım bildiriminiz zaten var, `deployment.json` dosya ve tüm yapmanız gereken, dağıtımı alacak bir cihaz seçin.
 
-1. Bulut Gezginini **görüntüle**' ye tıklayarak **Cloud Explorer** 'ı açın  >  **Cloud Explorer**. Visual Studio 2019 ' de oturum açtığınızdan emin olun.
+1. Bulut Gezginini **görüntüle**' ye tıklayarak **Cloud Explorer** 'ı açın  >  . Visual Studio 2019 ' de oturum açtığınızdan emin olun.
 
 1. **Cloud Explorer**'da aboneliğinizi genişletin, Azure IoT Hub ve dağıtmak istediğiniz Azure IoT Edge cihazını bulun.
 

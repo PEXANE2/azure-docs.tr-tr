@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 8/27/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 4889744347b72603a0f6318f981bc2db4906b835
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: 7bb9b6d4a6ca006952d709244e6526345d44431e
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102433548"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102630275"
 ---
 # <a name="connect-function-apps-in-azure-for-processing-data"></a>Verileri işlemek için Azure 'da işlev uygulamalarına bağlanma
 
@@ -63,7 +63,7 @@ SDK 'yı kullanmak için aşağıdaki paketleri projenize eklemeniz gerekir. Pak
 * [System .net. http](https://www.nuget.org/packages/System.Net.Http/)
 * [Azure. Core](https://www.nuget.org/packages/Azure.Core/)
 
-Ardından, Visual Studio Çözüm Gezgini, örnek kodunuzun bulunduğu _function1.cs_ dosyasını açın ve `using` Bu paketler için aşağıdaki deyimlerini işlevlerinize ekleyin. 
+Ardından, Visual Studio Çözüm Gezgini, örnek kodunuzun bulunduğu _function1.cs_ dosyasını açın ve `using` Bu paketler için aşağıdaki deyimlerini işlevlerinize ekleyin.
 
 :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/adtIngestFunctionSample.cs" id="Function_dependencies":::
 
@@ -96,6 +96,20 @@ Uygulamanız yazıldığına göre, sonraki bölümde yer alan adımları kullan
 ## <a name="publish-the-function-app-to-azure"></a>İşlev uygulamasını Azure'da yayımlama
 
 [!INCLUDE [digital-twins-publish-azure-function.md](../../includes/digital-twins-publish-azure-function.md)]
+
+### <a name="verify-function-publish"></a>İşlev yayımlamayı doğrula
+
+1. [Azure Portal](https://portal.azure.com/)kimlik bilgilerinizle oturum açın.
+2. Pencerenin üst kısmındaki arama çubuğunda, **işlev uygulamanızın adını** arayın.
+
+    :::image type="content" source="media/how-to-create-azure-function/search-function-app.png" alt-text="Azure portal, işlev uygulamanızı adıyla arama yapın." lightbox="media/how-to-create-azure-function/search-function-app.png":::
+
+3. Açılan *işlev uygulaması* sayfasında, sol taraftaki menü seçeneklerinde *işlevler* ' i seçin. İşleviniz başarıyla yayımlanıyorsa, işlevinizin adını listede görürsünüz.
+İşlevinizi yayımlanmış işlevler listesinde görebilmeniz için birkaç dakika beklemeniz veya sayfayı birkaç kez yenilemeniz gerekebileceğini unutmayın.
+
+    :::image type="content" source="media/how-to-create-azure-function/view-published-functions.png" alt-text="Azure portal yayınlanan işlevleri görüntüleyin." lightbox="media/how-to-create-azure-function/view-published-functions.png":::
+
+İşlev uygulamanızın Azure dijital TWINS 'e erişebilmesi için, Azure dijital TWINS örneğinizi erişim izinleri olan sistem tarafından yönetilen bir kimliğe sahip olması gerekir. Bunu daha sonra ayarlayacaksınız.
 
 ## <a name="set-up-security-access-for-the-function-app"></a>İşlev uygulaması için güvenlik erişimini ayarlama
 
@@ -155,7 +169,7 @@ Bir sistem tarafından atanmış yönetilen kimlik, Azure kaynaklarının kimlik
 
     :::image type="content" source="media/how-to-create-azure-function/portal-search-for-function-app.png" alt-text="Azure portal ekran görüntüsü: işlev uygulamasının adı, Portal arama çubuğunda aranır ve arama sonucu vurgulanır.":::
 
-1. İşlev uygulaması sayfasında, işlevin yönetilen kimliğiyle çalışmak için sol taraftaki gezinti çubuğundaki _kimlik_ ' i seçin. _Sistem atandı_ sayfasında, _durumun_ **Açık** olarak ayarlandığını doğrulayın (değilse, şimdi ayarlayın ve değişikliği *kaydedin* ).
+1. İşlev uygulaması sayfasında, işlevin yönetilen kimliğiyle çalışmak için sol taraftaki gezinti çubuğundaki _kimlik_ ' i seçin. _Sistem atandı_ sayfasında, _durumun_ **Açık** olarak ayarlandığını doğrulayın (yoksa, şimdi ayarlayın ve değişikliği *kaydedin* ).
 
     :::image type="content" source="media/how-to-create-azure-function/verify-system-managed-identity.png" alt-text="Azure portal ekran görüntüsü: işlev uygulamasının kimlik sayfasında, durum seçeneği açık olarak ayarlanır." lightbox="media/how-to-create-azure-function/verify-system-managed-identity.png":::
 

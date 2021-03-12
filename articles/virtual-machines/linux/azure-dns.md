@@ -2,16 +2,18 @@
 title: Linux VM 'Ler için DNS ad çözümleme seçenekleri
 description: Azure IaaS içindeki Linux sanal makineleri için, sunulan DNS hizmetleri, karma dış DNS ve kendi DNS sunucunuzu getir gibi ad çözümleme senaryoları.
 author: RicksterCDN
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
+ms.subservice: networking
 ms.topic: conceptual
 ms.date: 10/19/2016
 ms.author: rclaus
-ms.openlocfilehash: aa007888c68df41242f937e1062a90ec1b7fc3ce
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.collection: linux
+ms.openlocfilehash: e689e934f11e3cc2a621f25525e507a72a7044b8
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87372833"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102556800"
 ---
 # <a name="dns-name-resolution-options-for-linux-virtual-machines-in-azure"></a>Azure 'da Linux sanal makineleri için DNS ad çözümleme seçenekleri
 Azure, tek bir sanal ağdaki tüm sanal makineler için varsayılan olarak DNS ad çözümlemesi sağlar. Azure 'un barındırdığı sanal makinelerinizde kendi DNS hizmetlerinizi yapılandırarak kendi DNS ad çözümlemesi çözümünüzü uygulayabilirsiniz. Aşağıdaki senaryolar, durumunuza uygun olanı seçmenize yardımcı olmalıdır.

@@ -10,12 +10,12 @@ ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.custom: it-pro
-ms.openlocfilehash: b63db3d02b471a577586ecd54f56caa59af504d6
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.openlocfilehash: facdb99a49c3778a75e733abf1fc72eed67549ab
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99805521"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102611628"
 ---
 # <a name="add-an-api-connector-to-a-sign-up-user-flow-preview"></a>Kaydolma Kullanıcı akışına API Bağlayıcısı ekleme (Önizleme)
 
@@ -34,12 +34,36 @@ Bir [API bağlayıcısını](api-connectors-overview.md)kullanmak IÇIN önce AP
 
 5. Çağrı için bir görünen ad belirtin. Örneğin, **Kullanıcı bilgilerini doğrulayın**.
 6. API çağrısının **uç nokta URL 'sini** sağlayın.
-7. API için kimlik doğrulama bilgilerini sağlayın.
+7. **Kimlik doğrulama türünü** SEÇIN ve API 'nizi çağırmak için kimlik doğrulama bilgilerini yapılandırın. API 'nizin güvenliğini sağlama seçenekleri için aşağıdaki bölüme bakın.
 
-   - Şu anda yalnızca temel kimlik doğrulaması destekleniyor. Geliştirme amacıyla temel kimlik doğrulaması olmadan bir API kullanmak istiyorsanız, API 'nizin yoksaymasına yönelik bir ' kukla ' **Kullanıcı adı** ve **parola** girmeniz yeterlidir. API anahtarı olan bir Azure Işleviyle birlikte kullanmak için, kodu, **uç nokta URL 'sine** bir sorgu parametresi olarak dahil edebilirsiniz (örneğin, `https://contoso.azurewebsites.net/api/endpoint?code=0123456789` ).
+    ![API bağlayıcısını yapılandırma](./media/add-api-connector/api-connector-config.png)
 
-   ![Yeni bir API Bağlayıcısı yapılandırma](./media/add-api-connector/api-connector-config.png)
 8. **Kaydet**’i seçin.
+
+## <a name="securing-the-api-endpoint"></a>API uç noktası güvenliğini sağlama
+API uç noktanızı, HTTP temel kimlik doğrulaması veya HTTPS istemci sertifikası kimlik doğrulaması (Önizleme) kullanarak koruyabilirsiniz. Her iki durumda da, API uç noktanızı çağırırken Azure AD B2C kullanacağı kimlik bilgilerini sağlarsınız. API uç noktanız daha sonra kimlik bilgilerini denetler ve yetkilendirme kararları gerçekleştirir.
+
+### <a name="http-basic-authentication"></a>HTTP temel kimlik doğrulaması
+HTTP temel kimlik doğrulaması, [RFC 2617](https://tools.ietf.org/html/rfc2617)' de tanımlanmıştır. Azure AD B2C, üst bilgiyle istemci kimlik bilgileri (ve) ile bir HTTP isteği gönderir `username` `password` `Authorization` . Kimlik bilgileri Base64 kodlamalı dize olarak biçimlendirilir `username:password` . Daha sonra API 'niz, bir API çağrısının engellenip engellenmeyeceğini tespit etmek için bu değerleri denetler.
+
+### <a name="https-client-certificate-authentication-preview"></a>HTTPS istemci sertifikası kimlik doğrulaması (Önizleme)
+
+> [!IMPORTANT]
+> Bu işlevsellik önizlemededir ve hizmet düzeyi anlaşmadan sağlanır. Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
+İstemci sertifikası kimlik doğrulaması, istemcinin kimliğini kanıtlamak için bir istemci sertifikası sağladığı, karşılıklı sertifika tabanlı bir kimlik doğrulamasıdır. Bu durumda Azure AD B2C, API Bağlayıcısı yapılandırmasının bir parçası olarak karşıya yüklediğiniz sertifikayı kullanır. Bu, SSL el sıkışmasının bir parçası olarak gerçekleşir. Yalnızca uygun sertifikalara sahip hizmetler REST API hizmetinize erişebilir. İstemci sertifikası bir X. 509.952 dijital sertifikasıdır. Üretim ortamlarında, bir sertifika yetkilisi tarafından imzalanması gerekir. 
+
+
+Bir sertifika oluşturmak için, imzalanmış sertifikalara yönelik sertifika veren sağlayıcılarıyla otomatik olarak imzalanan sertifikalara ve tümleştirmelere yönelik seçeneklere sahip [Azure Key Vault](../key-vault/certificates/create-certificate.md)kullanabilirsiniz. Daha sonra [sertifikayı dışa aktarabilir](../key-vault/certificates/how-to-export-certificate.md) ve API bağlayıcıları yapılandırmasında kullanmak üzere karşıya yükleyebilirsiniz. Parolanın yalnızca bir parola ile korunan sertifika dosyaları için gerekli olduğunu unutmayın. Ayrıca, otomatik olarak imzalanan bir sertifika oluşturmak için PowerShell 'in [New-SelfSignedCertificate cmdlet 'ini](./secure-rest-api.md#prepare-a-self-signed-certificate-optional) de kullanabilirsiniz.
+
+Azure App Service ve Azure Işlevleri için bkz. API [karşılıklı kimlik doğrulamasını yapılandırma](../app-service/app-service-web-configure-tls-mutual-auth.md) ve sertifikayı API uç noktanıza nasıl etkinleştireceğinizi ve doğrulayacağınızı öğrenmek için.
+
+Sertifikanızın kullanım süreleri dolduğunda anımsatıcı uyarılarını ayarlamanız önerilir. Var olan bir API bağlayıcısına yeni bir sertifika yüklemek için **API bağlayıcıları (Önizleme)** altında API bağlayıcısını seçin ve **yeni sertifikayı karşıya yükle**' ye tıklayın. Süresi dolmayan ve geçmiş en son karşıya yüklenen sertifika, Azure AD B2C tarafından otomatik olarak kullanılacaktır.
+
+### <a name="api-key"></a>API Anahtarı
+Bazı hizmetler, geliştirme sırasında HTTP uç noktalarınıza erişmeyi daha zor hale getirmek için bir "API anahtarı" mekanizması kullanır. [Azure işlevleri](../azure-functions/functions-bindings-http-webhook-trigger.md#authorization-keys)için, bunu `code` **uç nokta URL 'sine** sorgu parametresi olarak ekleyerek yapabilirsiniz. Örneğin, `https://contoso.azurewebsites.net/api/endpoint` <b>`?code=0123456789`</b> ). 
+
+Bu, yalnızca üretimde kullanılması gereken bir mekanizma değildir. Bu nedenle, temel veya sertifika kimlik doğrulaması için yapılandırma her zaman gereklidir. Geliştirme amacıyla herhangi bir kimlik doğrulama yöntemi uygulamak isterseniz, temel kimlik doğrulaması ' nı seçebilir ve için geçici değerleri kullanabilir `username` ve API `password` 'niz, yetkilendirmeyi uyguladığınızda API 'nizin göz ardı edilebilir.
 
 ## <a name="the-request-sent-to-your-api"></a>API 'nize gönderilen istek
 Bir API Bağlayıcısı, bir JSON gövdesinde anahtar-değer çiftleri olarak Kullanıcı öznitelikleri (' talepler ') gönderen bir **http post** isteği olarak yürütülür. Öznitelikler, [Microsoft Graph](/graph/api/resources/user#properties) Kullanıcı özelliklerine benzer şekilde serileştirilir. 
@@ -75,7 +99,7 @@ Content-type: application/json
 
 İstekte yalnızca Kullanıcı özellikleri ve **Azure AD B2C**  >  **Kullanıcı öznitelikleri** deneyiminde listelenen özel öznitelikler kullanılabilir.
 
-Özel öznitelikler dizindeki **extension_ \<extensions-app-id> _CustomAttribute**  biçiminde bulunur. API 'nizin bu aynı serileştirilmiş biçimde talepler alması beklenir. Özel öznitelikler hakkında daha fazla bilgi için, bkz. [Azure Active Directory B2C özel öznitelikleri tanımlama](user-flow-custom-attributes.md).
+Özel öznitelikler dizindeki **extension_ \<extensions-app-id> _CustomAttribute**  biçiminde bulunur. API 'nizin bu aynı serileştirilmiş biçimde talepler alması beklenir. Özel öznitelikler hakkında daha fazla bilgi için, bkz. [Azure AD B2C özel öznitelikleri tanımlama](user-flow-custom-attributes.md).
 
 Ayrıca, **Kullanıcı arabirimi yerel ayarları (' ui_locales ')** talebi tüm isteklerde varsayılan olarak gönderilir. Bu, bir kullanıcının kendi cihazında yapılandırılan, uluslararası yanıtları döndürmek için API tarafından kullanılabilecek olan yerel ayarları sağlar.
 
@@ -155,13 +179,6 @@ Engelleme yanıtı Kullanıcı akışından çıkar. Kullanıcıya bir engelleme
 
 Kaydolma işleminde bu adımda bulunan bir API Bağlayıcısı, varsa öznitelik toplama sayfasından sonra çağrılır. Bu adım, Kullanıcı hesabı oluşturulmadan önce her zaman çağrılır.
 
-<!-- The following are examples of scenarios you might enable at this point during sign-up: -->
-<!-- 
-- Validate user input data and ask a user to resubmit data.
-- Block a user sign-up based on data entered by the user.
-- Perform identity verification.
-- Query external systems for existing data about the user and overwrite the user-provided value. -->
-
 ### <a name="example-request-sent-to-the-api-at-this-step"></a>Bu adımda API 'ye gönderilen örnek isteği
 
 ```http
@@ -239,7 +256,6 @@ Content-type: application/json
 
 | Parametre                                          | Tür              | Gerekli | Açıklama                                                                                                                                                                                                                                                                            |
 | -------------------------------------------------- | ----------------- | -------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| sürüm                                            | Dize            | Yes      | API sürümü.                                                                                                                                                                                                                                                                |
 | eylem                                             | Dize            | Yes      | Değer olmalıdır `Continue` .                                                                                                                                                                                                                                                              |
 | \<builtInUserAttribute>                            | \<attribute-type> | No       | Döndürülen değerler, bir kullanıcıdan toplanan değerlerin üzerine yazabilir. Ayrıca, bir **uygulama talebi** olarak seçilirse belirtece de döndürülebilir.                                              |
 | \<extension\_{extensions-app-id}\_CustomAttribute> | \<attribute-type> | No       | Talebin içermesi gerekmez `_<extensions-app-id>_` . Döndürülen değerler, bir kullanıcıdan toplanan değerlerin üzerine yazabilir. Ayrıca, bir **uygulama talebi** olarak seçilirse belirtece de döndürülebilir.  |
@@ -270,8 +286,6 @@ Content-type: application/json
 
 ### <a name="example-of-a-validation-error-response"></a>Doğrulama hatası yanıt örneği
 
-
-
 ```http
 HTTP/1.1 400 Bad Request
 Content-type: application/json
@@ -286,7 +300,7 @@ Content-type: application/json
 
 | Parametre   | Tür    | Gerekli | Açıklama                                                                |
 | ----------- | ------- | -------- | -------------------------------------------------------------------------- |
-| sürüm     | Dize  | Yes      | API sürümü.                                                    |
+| sürüm     | Dize  | Yes      | API 'nizin sürümü.                                                    |
 | eylem      | Dize  | Yes      | Değer olmalıdır `ValidationError` .                                           |
 | durum      | Tamsayı | Yes      | `400`Bir ValidationError yanıtı için değer olmalıdır.                        |
 | userMessage | Dize  | Yes      | Kullanıcıya görüntülenecek ileti.                                            |
@@ -311,7 +325,7 @@ Aşağıdakileri doğrulayın:
 * API 'niz alınan taleplerin null değerlerini açıkça denetler.
 * Akıcı bir kullanıcı deneyimi sağlamak için API 'niz mümkün olduğunca çabuk yanıt verir.
     * Sunucusuz bir işlev veya ölçeklenebilir Web hizmeti kullanıyorsanız, API 'YI "uyanık" veya "normal" olarak tutan bir barındırma planı kullanın. Üretimde. Azure Işlevleri için [Premium planı](../azure-functions/functions-scale.md) kullanmanız önerilir
-
+ 
 
 ### <a name="use-logging"></a>Günlüğe kaydetmeyi kullanma
 Genel olarak, API 'nizi beklenmedik hata kodları, özel durumlar ve düşük performans için izlemek üzere [Application Insights](../azure-functions/functions-monitoring.md)gıbı Web API hizmetiniz tarafından etkinleştirilen günlük araçlarını kullanmak yararlı olacaktır.
@@ -321,5 +335,4 @@ Genel olarak, API 'nizi beklenmedik hata kodları, özel durumlar ve düşük pe
 * API 'nizi uzun yanıt süreleri için izleyin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-<!-- - Learn how to [add a custom approval workflow to sign-up](add-approvals.md) -->
 - [Örneklerimizi](code-samples.md#api-connectors)kullanmaya başlayın.

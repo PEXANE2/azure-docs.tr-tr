@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: article
 ms.date: 11/17/2020
 ms.author: alkohli
-ms.openlocfilehash: 763ccd397d8cd704ca161032e65f17979bccb53b
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 9fa4c678a04342b47601f81ede7c49ab841f42ba
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96468067"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102630971"
 ---
 # <a name="configure-vpn-on-your-azure-stack-edge-mini-r-device-via-azure-powershell"></a>Azure Stack Edge Mini R cihazınızda VPN 'yi Azure PowerShell aracılığıyla yapılandırma
 
@@ -303,7 +303,7 @@ Azure Stack Edge cihazınızın yerel kullanıcı arabirimindeki adımları izle
 
 ## <a name="validate-data-transfer-through-vpn"></a>VPN üzerinden veri aktarımını doğrulama
 
-VPN 'nin çalıştığını doğrulamak için, verileri bir SMB paylaşımında kopyalayın. Azure Stack Edge cihazınızda [paylaşma ekleme](azure-stack-edge-j-series-manage-shares.md#add-a-share) bölümündeki adımları izleyin. 
+VPN 'nin çalıştığını doğrulamak için, verileri bir SMB paylaşımında kopyalayın. Azure Stack Edge cihazınızda [paylaşma ekleme](azure-stack-edge-gpu-manage-shares.md#add-a-share) bölümündeki adımları izleyin. 
 
 1. \data\pictures\waterfall.jpg, örneğin, istemci sisteminize bağladığınız SMB paylaşımında bir dosya kopyalayın. 
 2. Veriler kopyalanırken verilerin VPN üzerinden gittiğini doğrulamak için:

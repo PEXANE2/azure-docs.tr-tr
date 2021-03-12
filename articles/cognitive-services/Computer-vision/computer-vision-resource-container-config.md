@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 11/23/2020
 ms.author: aahi
 ms.custom: seodec18
-ms.openlocfilehash: 0539f37fe15f68d8bfd47bf426333f9d5c67c37d
-ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
+ms.openlocfilehash: ee2e4fca697c086b95e83feb9d40ce8e07dc344c
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "96006890"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102611904"
 ---
 # <a name="configure-read-ocr-docker-containers"></a>Okuma OCR Docker kapsayıcılarını yapılandırma
 
@@ -39,6 +39,8 @@ Kapsayıcı Ayrıca, kapsayıcıya özgü aşağıdaki yapılandırma ayarların
 |No|Kuyruk: Azure: Queuevisibilitytimeoutınmilliseconds | yalnızca v3. x kapsayıcıları. Başka bir çalışan tarafından işlendiği zaman bir iletinin görünmez olması. |
 |No|Depolama::D Okısaentstore:: MongoDB|yalnızca v 2.0 kapsayıcıları. Kalıcı sonuç depolaması için MongoDB 'yi sunar. |
 |No|Depolama: ObjectStore: AzureBlob: ConnectionString| yalnızca v3. x kapsayıcıları. Azure Blob depolama bağlantı dizesi. |
+|No|Depolama: Timetoliveındays| yalnızca v3. x kapsayıcıları. Sonuç süre sonu dönemi (gün). Ayar sistemin tanınma sonuçlarını ne zaman temizlemeli olduğunu belirtir. Varsayılan değer 2 gündür (48 saat); Bu, bu dönemden daha uzun süre içinde olan tüm sonuçlar başarıyla alınmayacağından garanti edilmez. |
+|No|Görev: Maxrunningtimespanınminutes| yalnızca v3. x kapsayıcıları. Tek bir istek için en fazla çalışma süresi. Varsayılan değer 60 dakikadır. |
 
 ## <a name="apikey-configuration-setting"></a>ApiKey yapılandırma ayarı
 
@@ -113,7 +115,7 @@ Aşağıdaki örneklerde, komutlarının nasıl yazılacağını ve kullanılaca
 
 > [!IMPORTANT]
 > `Eula` `Billing` `ApiKey` Kapsayıcıyı çalıştırmak için, ve seçenekleri belirtilmelidir; Aksi takdirde kapsayıcı başlatılmaz.  Daha fazla bilgi için bkz. [faturalandırma](computer-vision-how-to-install-containers.md#billing).
-> ApiKey değeri, Azure **Key** `Cognitive Services` kaynak anahtarları sayfasından alınan anahtardır.
+> ApiKey değeri, Azure  `Cognitive Services` kaynak anahtarları sayfasından alınan anahtardır.
 
 ## <a name="container-docker-examples"></a>Kapsayıcı Docker örnekleri
 

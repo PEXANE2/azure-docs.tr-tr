@@ -8,14 +8,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 06/05/2020
+ms.date: 03/10/2021
 ms.author: justinha
-ms.openlocfilehash: 76af477af8290634d2658c58574b8f96cff7b1fb
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.openlocfilehash: 5473ef46751d64fdbbf1d52f39c66f49d707e615
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/05/2020
-ms.locfileid: "96620350"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102631396"
 ---
 # <a name="management-concepts-for-user-accounts-passwords-and-administration-in-azure-active-directory-domain-services"></a>Azure Active Directory Domain Services 'de Kullanıcı hesapları, parolalar ve yönetim için yönetim kavramları
 
@@ -80,8 +80,8 @@ Azure AD DS 'de, kullanılabilir performans ve Özellikler SKU 'YU temel alır. 
 
 | SKU adı   | En fazla nesne sayısı | Yedekleme sıklığı | En fazla giden orman güveni sayısı |
 |------------|----------------------|------------------|----|
-| Standart   | Sınırsız            | Her 7 günde bir     | 0  |
-| Enterprise | Sınırsız            | 3 günde bir     | 5  |
+| Standart   | Sınırsız            | 5 günde bir     | 0  |
+| Kurumsal | Sınırsız            | 3 günde bir     | 5  |
 | Premium    | Sınırsız            | Günlük            | 10 |
 
 Bu Azure AD DS SKU 'larından önce, yönetilen etki alanındaki nesne sayısına (Kullanıcı ve bilgisayar hesapları) göre bir faturalandırma modeli kullanılmıştır. Yönetilen etki alanındaki nesne sayısına bağlı olarak artık değişken fiyatlandırma yoktur.

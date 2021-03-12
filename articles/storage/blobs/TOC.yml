@@ -153,18 +153,18 @@
               href: ../common/network-routing-preference.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: Veri koruma
           items:
+            - name: Kapsayıcılar için geçici silme
+              href: soft-delete-container-overview.md
             - name: Sürüm oluşturma
               href: versioning-overview.md
             - name: Bloblar için geçici silme
               href: soft-delete-blob-overview.md
-            - name: Kapsayıcılar için geçici silme
-              href: soft-delete-container-overview.md
+            - name: Belirli bir noktaya geri yükleme
+              href: point-in-time-restore-overview.md
             - name: Anlık Görüntüler
               href: snapshots-overview.md
             - name: Akışı değiştirme
               href: storage-blob-change-feed.md
-            - name: Belirli bir noktaya geri yükleme
-              href: point-in-time-restore-overview.md
             - name: Sabit bloblar
               href: storage-blob-immutable-storage.md
         - name: Artıklık ve olağanüstü durum kurtarma
@@ -401,18 +401,20 @@
               href: ../common/azure-defender-storage-configure.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: Blob verilerini koruma
           items:
+            - name: Depolama hesabını kilitleme
+              href: ../common/lock-account-resource.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+            - name: Kapsayıcılar için geçici silmeyi etkinleştirme
+              href: soft-delete-container-enable.md
             - name: Blob sürümü oluşturmayı etkinleştirme
               href: versioning-enable.md
             - name: Bloblar için geçici silmeyi etkinleştirme
               href: soft-delete-blob-enable.md
-            - name: Kapsayıcılar için geçici silmeyi etkinleştirme
-              href: soft-delete-container-enable.md
+            - name: Belirli bir noktaya geri yüklemeyi etkinleştirme
+              href: point-in-time-restore-manage.md
             - name: Anlık görüntüler oluşturma (.NET)
               href: snapshots-manage-dotnet.md
             - name: Değişiklik akışı günlüklerini işleme
               href: storage-blob-change-feed-how-to.md
-            - name: Belirli bir noktaya geri yüklemeyi etkinleştirme
-              href: point-in-time-restore-manage.md
             - name: Değiştirilemezlik ilkelerini ayarlama ve yönetme
               href: storage-blob-immutability-policies-manage.md
         - name: Yedekliliği ve yük devretmeyi yönetme

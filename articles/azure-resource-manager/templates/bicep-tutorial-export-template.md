@@ -2,15 +2,15 @@
 title: Öğretici-Bıcep geliştirme için Azure portal JSON şablonunu dışarı aktarma
 description: Bıcep geliştirmeyi gerçekleştirmek için, dışarıya aktarılmış bir JSON şablonu kullanmayı öğrenin.
 author: mumian
-ms.date: 03/01/2021
+ms.date: 03/10/2021
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 0cba91a8c021f4baa90d1a4264bf84d3c56930ec
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 3bc7ed4ada4f7810e9864778c7f76a0573c9dc89
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101748267"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102632568"
 ---
 # <a name="tutorial-use-exported-json-template-from-the-azure-portal"></a>Öğretici: Azure portal aktarılmış JSON şablonunu kullanın
 
@@ -79,7 +79,7 @@ Bu Bıcep dosyası depolama hesaplarının dağıtımı için iyi bir işlem sa�
 
 Karmaşıkmış olan bir şekilde, ihtiyacınız olan bicep 'nin çoğunu sağlayan, ancak Bıcep dosyanız için özelleştirmeniz gerekir. Bicep dosyanız ile içe aktarılmış bicep dosyası arasındaki parametrelere ve değişkenlerde oluşan farklara dikkat edin. Kuşkusuz, dışa aktarma işlemi Bıcep dosyanızda zaten tanımlamış olduğunuz parametreleri ve değişkenleri bilmez.
 
-Aşağıdaki örnek, Bıcep dosyanıza yapılan eklemeleri vurgular. Bu, içe aktarılmış kodu ve bazı değişiklikleri içerir. İlk olarak, parametre adını adlandırma kuralınızın eşleşmesi için değiştirir. İkincisi, App Service planının konumu için konum parametresini kullanır. Üçüncü olarak, varsayılan değerin iyi olduğu bazı özellikleri kaldırır.
+Aşağıdaki örnek, Bıcep dosyanıza yapılan eklemeleri gösterir. Bu, içe aktarılmış kodu ve bazı değişiklikleri içerir. İlk olarak, parametre adını adlandırma kuralınızın eşleşmesi için değiştirir. İkincisi, App Service planının konumu için konum parametresini kullanır. Üçüncü olarak, varsayılan değerin iyi olduğu bazı özellikleri kaldırır.
 
 Tüm dosyayı kopyalayın ve Bıcep dosyanızı içeriğiyle değiştirin.
 

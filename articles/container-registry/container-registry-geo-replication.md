@@ -5,12 +5,12 @@ author: stevelas
 ms.topic: article
 ms.date: 07/21/2020
 ms.author: stevelas
-ms.openlocfilehash: e5f0fe76b599874afe8d64c293f3d914da5dd243
-ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
+ms.openlocfilehash: 4e82be0e81e5e8c0182e061a0fba0f880bd45cc6
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/20/2020
-ms.locfileid: "97705175"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102632399"
 ---
 # <a name="geo-replication-in-azure-container-registry"></a>Azure Container Registry coğrafi çoğaltma
 
@@ -22,6 +22,7 @@ Coğrafi olarak çoğaltılmış bir kayıt defteri aşağıdaki avantajları sa
 * Ağ, kayıt defteri erişimini kapatma ile bölgesel dağıtımların performansını ve güvenilirliğini geliştirme
 * Kapsayıcı konağınız ile aynı veya yakın bölgede yerel, çoğaltılan bir kayıt defterinden görüntü katmanları çekerek veri aktarımı maliyetlerini azaltın
 * Birden çok bölgede kayıt defterinin tek noktadan yönetimi
+* Bölgesel bir kesinti oluşursa kayıt defteri esnekliği
 
 > [!NOTE]
 > Birden fazla Azure Container Registry 'de kapsayıcı görüntülerinin kopyalarını korumanız gerekiyorsa Azure Container Registry de [görüntü içeri aktarmayı](container-registry-import-images.md)destekler. Örneğin, bir DevOps iş akışında, Docker komutlarını kullanmaya gerek kalmadan bir geliştirme kayıt defterindeki bir görüntüyü üretim kayıt defterine aktarabilirsiniz.
@@ -59,6 +60,7 @@ Azure Container Registry coğrafi çoğaltma özelliğini kullanarak bu avantajl
 * Tüm bölgeler aynı görüntü URL 'sini kullandığı için tek bir görüntü dağıtımı yapılandırmasını yönetin: `contoso.azurecr.io/public/products/web:1.2`
 * Tek bir kayıt defterine göndererek ACR, Coğrafi çoğaltmayı yönetir. ACR yalnızca benzersiz katmanları çoğaltır, bölgeler arasında veri aktarımını azaltır. 
 * Belirli çoğaltmalarda olayları bilgilendirmek için bölgesel [Web kancalarını](container-registry-webhook.md) yapılandırın.
+* Bölgesel kesintiler için dayanıklı olan yüksek oranda kullanılabilir bir kayıt defteri sağlayın.
 
 Azure Container Registry Ayrıca, Azure bölgesinde dayanıklı ve yüksek oranda kullanılabilir bir Azure Container Registry oluşturmak için [kullanılabilirlik bölgelerini](zone-redundancy.md) destekler. Bölge içindeki artıklık için kullanılabilirlik bölgelerinin birleşimi ve birden çok bölgede coğrafi çoğaltma, bir kayıt defterinin güvenilirliğini ve performansını geliştirir.
 

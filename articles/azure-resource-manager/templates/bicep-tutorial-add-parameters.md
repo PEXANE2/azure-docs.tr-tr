@@ -2,15 +2,15 @@
 title: Öğretici-Azure Resource Manager bicep dosyasına parametre ekleme
 description: Yeniden kullanılabilir hale getirmek için Bıcep dosyanıza parametreler ekleyin.
 author: mumian
-ms.date: 03/01/2021
+ms.date: 03/10/2021
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 603aa8f8bdb8136f4418d8f9a77bb40ec39243c0
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 00df2ffc6272011127c5a1eb0c1e302011f8de5f
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101748294"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102632790"
 ---
 # <a name="tutorial-add-parameters-to-azure-resource-manager-bicep-file"></a>Öğretici: Azure Resource Manager bicep dosyasına parametre ekleme
 
@@ -34,7 +34,7 @@ Bu bicep dosyası ile ilgili bir sorun olduğunu fark etmiş olabilirsiniz. Depo
 
 ## <a name="make-bicep-file-reusable"></a>Bıcep dosyasını yeniden kullanılabilir yap
 
-Bicep dosyanızı yeniden kullanılabilir hale getirmek için, depolama hesabı adında geçiş yapmak üzere kullanabileceğiniz bir parametre ekleyelim. Aşağıdaki örnekte vurgulanan bicep dosyanızdaki nelerin değiştiğini gösterir. `storageName`Parametresi bir dize olarak tanımlanır. Çok uzun olan adların önlenmesi için en fazla uzunluk 24 karakter olarak ayarlanır.
+Bicep dosyanızı yeniden kullanılabilir hale getirmek için, depolama hesabı adında geçiş yapmak üzere kullanabileceğiniz bir parametre ekleyelim. Aşağıdaki bicep dosyası dosyanızdaki nelerin değiştiğini gösterir. `storageName`Parametresi bir dize olarak tanımlanır. Çok uzun olan adların önlenmesi için en fazla uzunluk 24 karakter olarak ayarlanır.
 
 Tüm dosyayı kopyalayın ve aşağıdaki içerikle değiştirin.
 

@@ -1,0 +1,148 @@
+- name: FHIR için Azure API'si
+  href: index.yml
+- name: Genel Bakış
+  items:
+    - name: FHIR için Azure API'si hakkında
+      href: overview.md
+    - name: FHIR için Azure IoT Bağlayıcısı hakkında (önizleme)
+      href: overview.md#azure-iot-connector-for-fhir-preview
+- name: Hızlı Başlangıçlar
+  expanded: true
+  items:
+    - name: FHIR için Azure API'sini dağıtma
+      expanded: false
+      items:
+        - name: Portalı kullanma
+          href: fhir-paas-portal-quickstart.md
+        - name: PowerShell'i kullanma
+          href: fhir-paas-powershell-quickstart.md
+        - name: CLI kullanma
+          href: fhir-paas-cli-quickstart.md
+        - name: ARM şablonunu kullanma
+          displayName: Resource Manager
+          href: fhir-paas-arm-template-quickstart.md
+    - name: FHIR için Azure IoT Bağlayıcısı dağıtma (önizleme)
+      expanded: false
+      items:
+        - name: Portalı kullanma
+          href: iot-fhir-portal-quickstart.md
+        - name: ARM şablonunu kullanma
+          href: iot-fhir-arm-template-quickstart.md
+- name: Öğreticiler
+  expanded: false
+  items:
+    - name: JavaScript uygulaması dağıtma
+      expanded: false
+      items:
+        - name: 1. İlk kurulum ve FHIR dağıtımı
+          href: tutorial-web-app-fhir-server.md
+        - name: 2. Genel istemci uygulamasını kaydetme
+          href: tutorial-web-app-public-app-reg.md
+        - name: 3. Postman ile test kurulumu
+          href: tutorial-web-app-test-postman.md
+        - name: 4. Web uygulaması yazma
+          href: tutorial-web-app-write-web-app.md
+    - name: Postman ile FHIR API'ye erişme
+      href: access-fhir-postman-tutorial.md
+    - name: FHIR ara sunucusu üzerinde SMART kullanma
+      href: use-smart-on-fhir-proxy.md
+    - name: IoT cihazlarından verileri alma
+      expanded: false
+      items:
+        - name: Azure IoT Hub aracılığıyla cihaz verilerini alma
+          href: device-data-through-iot-hub.md
+- name: Nasıl yapılır kılavuzları
+  expanded: false
+  items:
+    - name: Uygulamaları kaydetme
+      expanded: false
+      items:
+        - name: FHIR için Azure API’ye yönelik uygulamaları kaydetmeye genel bakış
+          href: fhir-app-registration.md
+        - name: Kaynak uygulaması
+          href: register-resource-azure-ad-client-app.md
+        - name: Gizli istemci uygulaması
+          href: register-confidential-azure-ad-client-app.md
+        - name: Genel istemci uygulaması
+          href: register-public-azure-ad-client-app.md
+        - name: Hizmet istemcisi uygulaması
+          href: register-service-azure-ad-client-app.md
+    - name: Ayarları yapılandırma
+      expanded: false
+      items:
+        - name: FHIR için Azure API ek ayarlarını yapılandırma
+          href: azure-api-for-fhir-additional-settings.md
+        - name: Azure RBAC'yi yapılandırma
+          href: configure-azure-rbac.md
+        - name: Yerel RBAC'yi yapılandırma
+          href: configure-local-rbac.md
+        - name: Veritabanı ayarlarını yapılandırma
+          href: configure-database.md
+        - name: Müşteri tarafından yönetilen anahtarları yapılandırma
+          href: customer-managed-key.md
+        - name: CORS Yapılandırma
+          href: configure-cross-origin-resource-sharing.md
+        - name: Dışarı aktarmayı yapılandırma
+          href: configure-export-data.md
+        - name: Özel Bağlantı’yı yapılandırma
+          href: configure-private-link.md
+    - name: Verileri dışarı aktarma
+      expanded: false
+      items:
+        - name: Verileri dışarı aktarma
+          href: export-data.md
+        - name: Tanımlanmamış dışarı aktarma
+          href: de-identified-export.md
+    - name: Verileri Dönüştür
+      expanded: false
+      items:
+        - name: $convert-Data ve FHıR dönüştürücü uzantı şablonları
+          href: convert-data.md
+    - name: Kimlik nesnesi kimliklerini bulma
+      href: find-identity-object-ids.md
+    - name: Tanılama günlüğüne kaydetme ve ölçümler
+      expanded: false
+      items:
+        - name: FHIR için Azure API üzerinde Tanılama Günlüğüne Kaydetmeyi Etkinleştirme
+          href: enable-diagnostic-logging.md
+        - name: FHIR için Azure IoT Bağlayıcısı (önizleme) ölçümlerini görüntüleme ve yapılandırma
+          href: iot-metrics-display.md
+    - name: FHIR için Azure API'sine yönelik belirteç alma - CLI
+      href: get-healthcare-apis-access-token-cli.md
+    - name: FHIR için Azure IoT Bağlayıcısı’ndaki sorunları giderme (önizleme)
+      href: iot-troubleshoot-guide.md
+- name: Kavramlar
+  expanded: false
+  items:
+    - name: Azure AD ve FHIR için Azure API’ye Genel Bakış
+      href: azure-ad-hcapi.md
+    - name: Erişim belirteci doğrulaması
+      href: azure-ad-hcapi-token-validation.md
+    - name: Denetim Günlüklerine veri eklemek için Özel HTTP üst bilgileri kullanma
+      href: use-custom-headers.md
+    - name: FHIR için Azure IoT Bağlayıcısı’nın (önizleme) işleyişi
+      expanded: false
+      items:
+        - name: FHIR için Azure IoT Bağlayıcısı’nın (önizleme) veri akışı
+          href: iot-data-flow.md
+        - name: FHIR için Azure IoT Bağlayıcısı’nın (önizleme) eşleme şablonları
+          href: iot-mapping-templates.md
+    - name: Güvenlik
+      items:
+        - name: Azure İlkesi’ne göre güvenlik denetimleri
+          href: ./security-controls-policy.md
+- name: Kaynaklar
+  items:
+    - name: SSS
+      href: fhir-faq.md
+    - name: Desteklenen özellikler
+      href: fhir-features-supported.md
+    - name: İş ortağı ekosistemi
+      href: partner-ecosystem.md
+- name: Başvuru
+  items:
+    - name: Azure CLI
+      href: /cli/azure/ext/healthcareapis/healthcareapis
+    - name: Azure İlkesi yerleşik ilkeler
+      displayName: 'samples, policies, definitions'
+      href: ./policy-reference.md

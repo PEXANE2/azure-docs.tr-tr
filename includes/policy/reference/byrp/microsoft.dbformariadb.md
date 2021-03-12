@@ -2,17 +2,17 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 03/05/2021
+ms.date: 03/10/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: 3b8cab3cf193d132b50a07f9f72503bb90caf650
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: c4129555ef04205d13574be327d0cbb8e2a85ba7
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102425196"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102613345"
 ---
-|Name<br /><sub>(Azure portal)</sub> |Açıklama |Efekt (ler) |Sürüm<br /><sub>GitHub</sub> |
+|Name<br /><sub>(Azure portal)</sub> |Description |Efekt (ler) |Sürüm<br /><sub>GitHub</sub> |
 |---|---|---|---|
 |[MariaDB için Azure veritabanı 'nda coğrafi olarak yedekli yedekleme etkinleştirilmelidir](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0ec47710-77ff-4a3d-9181-6aa50af424d0) |MariaDB için Azure veritabanı, veritabanı sunucunuz için artıklık seçeneğini seçmenize olanak sağlar. Verilerin yalnızca sunucunuzun barındırıldığı bölgede depolanmadığı, ancak aynı zamanda bir bölge hatası durumunda kurtarma seçeneği sağlamak için eşlenmiş bir bölgeye çoğaltılan coğrafi olarak yedekli bir yedekleme depolamasına ayarlanabilir. Yedekleme için coğrafi olarak yedekli depolamayı yapılandırmaya yalnızca sunucu oluşturma sırasında izin verilir. |Denetim, devre dışı |[1.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/SQL/GeoRedundant_DBForMariaDB_Audit.json) |
 |[MariaDB sunucusu bir sanal ağ hizmeti uç noktası kullanmalıdır](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fdfbd9a64-6114-48de-a47d-90574dc2e489) |Sanal ağ tabanlı güvenlik duvarı kuralları, trafiğin Azure sınırları içinde kalmasını sağlarken, belirli bir alt ağdan MariaDB için Azure veritabanı 'na trafik sağlamak üzere kullanılır. Bu ilke, MariaDB için Azure veritabanı 'nın, kullanılmakta olan sanal ağ hizmeti uç noktası olup olmadığını denetlemek için bir yol sağlar. |Auditınotexists, devre dışı |[1.0.2](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/SQL/MariaDB_VirtualNetworkServiceEndpoint_Audit.json) |

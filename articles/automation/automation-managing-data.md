@@ -3,14 +3,14 @@ title: Azure Otomasyonu veri güvenliği
 description: Bu makale, Azure Otomasyonu 'nun gizliliğinizi nasıl koruduğunu ve verilerinizin güvenliğini nasıl sağladığını öğrenmenize yardımcı olur.
 services: automation
 ms.subservice: shared-capabilities
-ms.date: 03/02/2021
+ms.date: 03/10/2021
 ms.topic: conceptual
-ms.openlocfilehash: 2bdf25ef24f1fbf4aaf4dec154ea6af3421b915a
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: e41e9af418b08210f5f0f40de9951d03711dc8e7
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102050826"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102616125"
 ---
 # <a name="management-of-azure-automation-data"></a>Azure Otomasyonu verilerinin yönetilmesi
 
@@ -22,11 +22,11 @@ Azure Otomasyonu 'na geçişte verilerin güvenliğini sağlamak için, Aktarım
 
 * Web kancası çağrıları
 
-* Güncelleştirme Yönetimi ve Değişiklik İzleme ve envanter tarafından yönetilen makineler içeren karma runbook çalışanları.
+* Güncelleştirme Yönetimi ve Değişiklik İzleme ve envanter tarafından yönetilen makineleri içeren karma runbook çalışanları.
 
 * DSC düğümleri
 
-TLS/Güvenli Yuva Katmanı (SSL) uygulamasının güvenlik açığı olduğu ve geriye dönük uyumlulukla hala çalışmaya devam eden daha eski sürümlerinin **kullanılması önerilmez**. Yalnızca, TLS 1,3 gibi daha yeni güvenli protokollerden otomatik olarak algılama ve bu özelliklerden faydalanmanıza olanak tanıyan platform düzeyi güvenlik özelliklerini bozabileceği için, yalnızca kesinlikle gerekli olmadığı sürece, aracılarınızın yalnızca TLS 1,2 kullanmasını öneririz.
+TLS/Güvenli Yuva Katmanı (SSL) uygulamasının güvenlik açığı olduğu ve geriye dönük uyumlulukla hala çalışmaya devam eden daha eski sürümlerinin **kullanılması önerilmez**. Gerekli olmadığı sürece aracınızı yalnızca TLS 1,2 kullanacak şekilde ayarlamayı önermiyoruz, çünkü TLS 1,3 gibi daha yeni bir daha güvenli protokolde otomatik olarak algılamanıza ve bu protokollerin avantajlarından yararlanmanızı sağlar.
 
 Karma Runbook Worker rolüne yönelik bir bağımlılık olan Windows ve Linux için Log Analytics aracısıyla TLS 1,2 desteği hakkında bilgi için bkz. [Log Analytics Agent genel bakış-TLS 1,2](..//azure-monitor/agents/log-analytics-agent.md#tls-12-protocol).
 
@@ -41,7 +41,7 @@ Karma Runbook Worker rolüne yönelik bir bağımlılık olan Windows ve Linux i
 
 ## <a name="data-retention"></a>Veri saklama
 
-Azure Otomasyonu 'nda bir kaynağı sildiğinizde, kalıcı kaldırma işleminden önce denetim amaçları için birkaç gün boyunca tutulur. Bu süre içinde kaynağı göremez veya kullanamazsınız. Bu ilke, silinen bir Otomasyon hesabına ait olan kaynaklar için de geçerlidir. Bekletme ilkesi tüm kullanıcılar için geçerlidir ve şu anda özelleştirilemiyor. Ancak, verileri daha uzun bir süre tutmanız gerekiyorsa [Azure Otomasyonu iş verilerini Azure izleyici günlüklerine iletebilirsiniz](automation-manage-send-joblogs-log-analytics.md).
+Azure Otomasyonu 'nda bir kaynağı sildiğinizde, kalıcı kaldırma işleminden önce denetim amacıyla birçok gün boyunca tutulur. Bu süre içinde kaynağı göremez veya kullanamazsınız. Bu ilke, silinen bir Otomasyon hesabına ait olan kaynaklar için de geçerlidir. Bekletme ilkesi tüm kullanıcılar için geçerlidir ve şu anda özelleştirilemiyor. Ancak, verileri daha uzun bir süre tutmanız gerekiyorsa [Azure Otomasyonu iş verilerini Azure izleyici günlüklerine iletebilirsiniz](automation-manage-send-joblogs-log-analytics.md).
 
 Aşağıdaki tabloda, farklı kaynaklar için bekletme ilkesi özetlenmektedir.
 
@@ -68,7 +68,7 @@ Windows PowerShell 'de Azure portal veya [Get-AzureAutomationRunbookDefinition](
 
 ### <a name="integration-modules"></a>Tümleştirme modülleri
 
-Azure Otomasyonu 'ndan tümleştirme modüllerini dışarı aktarabilirsiniz. Onları Otomasyon hesabı dışında kullanılabilir yapmanız gerekir.
+Tümleştirme modüllerini Azure Otomasyonu 'ndan dışarı aktaralamazsınız, bu, Otomasyon hesabı dışında kullanılabilir hale getirilmeleri gerekir.
 
 ### <a name="assets"></a>Varlıklar
 
@@ -84,7 +84,10 @@ Windows PowerShell 'de Azure portal veya [Export-AzAutomationDscConfiguration](/
 
 Coğrafi çoğaltma, Azure Otomasyonu hesaplarında standarttır. Hesabınızı ayarlarken bir birincil bölge seçersiniz. İç otomasyon coğrafi çoğaltma hizmeti, hesaba otomatik olarak bir ikincil bölge atar. Hizmet daha sonra birincil bölgedeki hesap verilerini ikincil bölgeye sürekli olarak yedekler. Birincil ve ikincil bölgelerin tam listesi [iş sürekliliği ve olağanüstü durum kurtarma (BCDR): Azure eşlenmiş bölgeler '](../best-practices-availability-paired-regions.md)de bulunabilir.
 
-Automation coğrafi çoğaltma hizmeti tarafından oluşturulan yedekleme, Otomasyon varlıklarının, yapılandırmaların ve benzeri tam bir kopyasıdır. Bu yedekleme, birincil bölge aşağı gittiğinde ve verileri kaybederse kullanılabilir. Birincil bir bölgenin verilerinin kaybedilmesi olası olmayan olayda, Microsoft bunu kurtarmaya çalışır. Şirket birincil verileri kurtaramaz, otomatik yük devretme kullanır ve Azure aboneliğinizde bu durumu bilgilendirir.
+Automation coğrafi çoğaltma hizmeti tarafından oluşturulan yedekleme, Otomasyon varlıklarının, yapılandırmaların ve benzeri tam bir kopyasıdır. Bu yedekleme, birincil bölge aşağı gittiğinde ve verileri kaybederse kullanılabilir. Birincil bir bölgenin verilerinin kaybedilmesi olası olmayan olayda, Microsoft bunu kurtarmaya çalışır.
+
+> [!NOTE]
+> Azure Otomasyonu müşteri verilerini müşteri tarafından seçilen bölgede depolar. BCDR için, Brezilya Güney ve Güneydoğu Asya dışındaki tüm bölgelerde Azure Otomasyonu verileri farklı bir bölgede (Azure eşleştirilmiş bölge) depolanır. Asya Pasifik Coğrafya 'un yalnızca Brezilya Coğrafya ve Güneydoğu Asya Bölgesi (Singapur) Brezilya Güney (Sao Paulo Eyaleti) bölgesi için, Azure Otomasyonu verilerini bu bölgelerin veri fazlalığını karşılamak üzere aynı bölgede depolarız.
 
 Bir bölgesel hata varsa, Otomasyon coğrafi çoğaltma hizmetine doğrudan dış müşteriler erişemez. Bölgesel hatalarda Otomasyon yapılandırmasını ve Runbook 'larını sürdürmek istiyorsanız:
 

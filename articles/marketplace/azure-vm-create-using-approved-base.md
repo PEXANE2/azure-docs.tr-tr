@@ -6,17 +6,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 author: emuench
 ms.author: krsh
-ms.date: 01/06/2021
-ms.openlocfilehash: 9164c1e2542024a02bf4868658d0f29728f32c7b
-ms.sourcegitcommit: 8f0803d3336d8c47654e119f1edd747180fe67aa
+ms.date: 02/18/2021
+ms.openlocfilehash: 7ed3f707ad69c60111bcc97e139c0825fd503d8e
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97976869"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102630120"
 ---
 # <a name="how-to-create-a-virtual-machine-using-an-approved-base"></a>Onaylanan bir temel kullanılarak sanal makine oluşturma
 
-Bu makalede, önceden yapılandırılmış, onaylı bir işletim sistemi içeren bir sanal makine (VM) oluşturmak için Azure 'un nasıl kullanılacağı açıklanır. Çözümünüz ile uyumlu değilse, onaylanmış bir işletim sistemi kullanarak [Şirket içi BIR VM oluşturup yapılandırabilir](azure-vm-create-using-own-image.md) , ardından [WINDOWS VHD veya vhdx 'i Azure 'A yüklemek için hazırlama](../virtual-machines/windows/prepare-for-upload-vhd-image.md)bölümünde açıklandığı gibi karşıya yüklemek üzere yapılandırabilir ve hazırlarsınız.
+Bu makalede, önceden yapılandırılmış, onaylı bir işletim sistemi içeren bir sanal makine (VM) oluşturmak için Azure 'un nasıl kullanılacağı açıklanır. Çözümünüz ile uyumlu değilse, onaylanmış bir işletim sistemi kullanarak [Şirket içi BIR VM oluşturmak ve yapılandırmak](azure-vm-create-using-own-image.md) mümkündür.
 
 > [!NOTE]
 > Bu yordama başlamadan önce, sanal sabit disk (VHD) gereksinimleri de dahil olmak üzere Azure VM teklifleri için [teknik gereksinimleri](marketplace-virtual-machines.md#technical-requirements) gözden geçirin.
@@ -36,7 +36,7 @@ Azure, onaylı bir Linux dağıtımları yelpazesi sunar. Geçerli bir liste iç
 
 ## <a name="create-vm-on-the-azure-portal"></a>Azure portal VM oluşturma
 
-1. [Azure Portal](https://ms.portal.azure.com/) oturum açın.
+1. [Azure portalında](https://ms.portal.azure.com/) oturum açın.
 2. **Sanal makineler**'i seçin.
 3. **+ Ekle** ' yi seçerek **sanal makine oluştur** ekranını açın.
 4. Açılan listeden görüntüyü seçin veya tüm kullanılabilir sanal makine görüntülerini aramak veya taramak için **tüm ortak ve özel görüntülere gözatıp '** yi seçin.
@@ -78,5 +78,5 @@ Bu bölümde bir Azure VM 'nin nasıl boyutlandırılacağını, güncelleştiri
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - Önerilen sonraki adım: Azure Marketi yayımlama gereksinimlerini karşıladığından emin olmak için [VM görüntünüzü test edin](azure-vm-image-test.md) . Bu isteğe bağlıdır.
-- VM görüntünüzü test etmeyin, [SAS URI 'Si oluşturma](azure-vm-get-sas-uri.md)ile devam edin.
+- VM görüntünüzü test etmek istemiyorsanız, görüntünüzü yayımlamak için [Iş Ortağı Merkezi](https://partner.microsoft.com/) ' nde oturum açın.
 - Yeni Azure tabanlı VHD 'nizi oluştururken zorluk yaşıyorsanız bkz. [Azure Market Için VM SSS](azure-vm-create-faq.md).

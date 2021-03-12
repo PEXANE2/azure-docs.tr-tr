@@ -4,15 +4,15 @@ description: Go-to-market Services-yayımcıların kullanabileceği Microsoft ka
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
-ms.date: 03/03/2021
+ms.date: 03/09/2021
 author: keferna
 ms.author: keferna
-ms.openlocfilehash: 06f98a8e303d2ff692c0f84314e639c2a51cbcc1
-ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
+ms.openlocfilehash: 58e55527c84db0c368e676f2bf1314dca32e78db
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102489511"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102631083"
 ---
 # <a name="your-commercial-marketplace-benefits"></a>Ticari Market avantajlarınız
 
@@ -34,7 +34,7 @@ Transact iş ortakları için, ticari Market platformu aracılığıyla faturala
 
 Çevrimiçi mağazalarda yayımlamak için en düşük gereksinim bir MPNıD 'dir, bu nedenle MPN uzmanlığa veya iş ortağı türünden bağımsız olarak bu avantajlar tüm iş ortakları tarafından kullanılabilir. Her iş ortağı, ticari Market aracılığıyla işletmelerini bir platform olarak büyümeye güç sağlar.
 
-Size sunulan kaynakları anlama ve en iyi uygulamaları uygulama konusunda, sizin de [gözden geçirebilmeniz](https://partner.microsoft.com/asset/collection/azure-marketplace-and-appsource-publisher-toolkit#/)için destek alacaksınız.
+Size sunulan kaynakları anlama ve en iyi uygulamaları uygulama bölümünde [kendi kendinize de gözden geçirebilmeniz](https://partner.microsoft.com/asset/collection/azure-marketplace-and-appsource-publisher-toolkit#/)için destek alacaksınız.
 
 Tüm program avantajlarının ayrıntılı açıklamaları bu Market 'te yer alabilir [Program sunumunda](https://aka.ms/marketplacerewards)bulunabilir.
 
@@ -50,18 +50,16 @@ Tüm program avantajlarının ayrıntılı açıklamaları bu Market 'te yer ala
     1. Pazarlama ilgili kişisini güncelleştirdikten sonra, kullanmaya başlamak istediğiniz avantaj için **Etkinleştir** ' i seçin. Siz avantajı etkinleştirdikten sonra, bir hafta içinde Rewards ekibinin bir üyesi pazarlama ilgili kişinizle iletişim kurar.
 
 > [!NOTE]
-> Teklifiniz dört haftadan uzun bir süredir yaşlanmışsa ve bir ileti almadıysanız, Iş Ortağı Merkezi ' ne bakarak, söz konusu teklifin sahibi olan kuruluşunuz dahilinde lütfen kontrol edin. İletişim ve sonraki adımlara sahip olmaları gerekir.
-
-Sahibi belirleyemezse veya sahibi şirketiniz ile ayrıldıysa [Yardım ve destek](https://aka.ms/marketplacepublishersupport)' e bir destek bileti yükseltebilirsiniz.
+> Teklifiniz dört haftadan uzun bir süredir yaşlanmışsa ve bir ileti almadıysanız, Iş Ortağı Merkezi ' ne bakarak, söz konusu teklifin sahibi olan kuruluşunuz dahilinde lütfen kontrol edin. İletişim ve sonraki adımlara sahip olmaları gerekir.<br><br>Sahibi belirleyemezse veya sahibi şirketiniz ile ayrıldıysa [Yardım ve destek](https://aka.ms/marketplacepublishersupport)' e bir destek bileti yükseltin.
 
 Ticari Market 'teki tekliflerinizi büyürken genişleyebilmeniz için kullanabileceğiniz etkinliklerin kapsamı. Tüm dökümler, kaynakların ve en iyi yöntemlerin self servis e-postasıyla ilgili bir temel düzey iyileştirme önerisi ve promosyon alır.
 
 ## <a name="list-trial-and-consulting-benefits"></a>Liste, deneme ve danışmanlık avantajları
 
-Microsoft AppSource veya Azure Marketi ' nde her yayımladığınızda, yeni bir avantaj kümesine erişim elde edersiniz. Teklifiniz canlı olduktan sonra uygun pazarlama, satış ve teknik avantajlarınızı etkinleştirmek için [Iş Ortağı Merkezi](https://nam06.safelinks.protection.outlook.com/?url=https%3A%2F%2Fpartner.microsoft.com%2Fdashboard%2Fmpn%2Fmembership%2Fbenefits%2Fcommercialmarketplace&data=04%7C01%7Cv-kilieb%40microsoft.com%7C3b13a8a6e41a47d6d96008d8c7cb3b50%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C637479022971578374%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C1000&sdata=MF1ZlPX9M5JiJZE2e%2B6kXEsRX1klB5hTcSqcHYDjZq8%3D&reserved=0) ' ne gidin.
+Microsoft AppSource veya Azure Marketi ' nde her yayımladığınızda, yeni bir avantaj kümesine erişim elde edersiniz. Teklifiniz canlı olduktan sonra uygun pazarlama, satış ve teknik avantajlarınızı etkinleştirmek için [Iş Ortağı Merkezi](https://partner.microsoft.com/dashboard) ' ne gidin.
 
-> [!NOTE]
-> Tüm deneme ve danışmanlık avantajları 3 ay sonra sona erer.
+> [!IMPORTANT]
+> Tüm deneme ve danışmanlık avantajları üç ay sonra sona erer.
 
 Aşağıdaki tabloda liste, deneme ve danışmanlık teklifleri için uygunluk gereksinimleri özetlenmektedir:
 
@@ -71,7 +69,7 @@ Tüm bu avantajlara yönelik ayrıntılı açıklamalar [Market 'Teki releye pro
 
 ## <a name="marketplace-rewards-for-transact-partners"></a>Transact iş ortakları için Market depoları
 
-Microsoft AppSource veya Azure Marketi 'nde transactable teklifinizle canlı olduğunuzda, faturalandırılan satış işlemlerinizi veya ticari Market aracılığıyla satılan bilgisayarları büyürken ek avantajlara erişebilirsiniz.
+Microsoft AppSource veya Azure Marketi 'nde transactable teklifinizle canlı olduğunuzda, faturalandırılan satış işlemlerinizi veya ticari Market aracılığıyla satılan lisans işlemlerini büyürken ek avantajlara erişebilirsiniz.
 
 >[!NOTE]
 >Satılan bir koltuk, yalnızca Microsoft 365 uygulamalar için geçerlidir (Microsoft ekipleri, Office, Outlook veya SharePoint ile tümleştirmelere sahip SaaS uygulamaları) ve avantajların 30 Haziran 2021 tarihine kadar tamamlanması gerekir.
@@ -80,13 +78,19 @@ Bu avantajlar, pazarlama, satış ve teknik etkinliklerinizde size yardımcı ol
 
 Canlı bir teklif sahibi olan tüm iş ortakları, ticari Market teklifleriniz için en yüksek değerli etkinlikleri seçmek üzere adanmış bir katılım yöneticisiyle birlikte çalışmaya yöneliktir. Bu katılım, teklif başına her zaman yeşil bir şekilde yapılır, böylece etkinliklerinizi ve bu etkinliklerin zamanlamasını seçerek şirketinizin daha geniş pazarlama ve satış stratejilerinin zamanlamasına uyum sağlayabilirsiniz.
 
+### <a name="marketing-benefits-for-transact-offers"></a>Transact teklifleri için pazarlama avantajları
+
 ![Pazarlama avantajları](./media/marketplace-publishers-guide/marketing-benefit.png)
+
+### <a name="sales-benefits-for-transact-offers"></a>Transact teklifleri için satış avantajları
 
 ![Satış avantajları](./media/marketplace-publishers-guide/sales-benefit.png)
 
+### <a name="technical-benefits-for-transact-offers"></a>Transact teklifleri için teknik avantajlar
+
 ![Teknik avantajlar](./media/marketplace-publishers-guide/technical-benefit.png)
 
-\* Satılan bilgisayar eşiği yalnızca Microsoft 365 uygulamalar için geçerlidir (Microsoft ekipleri, Office, Outlook veya SharePoint ile tümleştirmelere sahip SaaS uygulamaları) ve avantajların 30 Haziran 2021 tarihine kadar tamamlanması gerekir.
+Satılan bilgisayar eşiği yalnızca Microsoft 365 uygulamalar için geçerlidir (Microsoft ekipleri, Office, Outlook veya SharePoint ile tümleştirmelere sahip SaaS uygulamaları) ve avantajların 30 Haziran 2021 tarihine kadar tamamlanması gerekir.
 
 Tüm bu avantajlara yönelik ayrıntılı açıklamalar [Market 'Teki releye program destesi](https://aka.ms/marketplacerewards)' nde bulunabilir.
 

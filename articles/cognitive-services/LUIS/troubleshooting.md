@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: troubleshooting
 ms.date: 05/06/2020
-ms.openlocfilehash: e4de77a8a56ce21511ad099af59a77e10ab1815d
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: b5e25e9ed25ced96d38994928bcb6275ce79420f
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98787545"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102612805"
 ---
 # <a name="language-understanding-frequently-asked-questions-faq"></a>Language Understanding ile ilgili Sık Sorulan Sorular (SSS)
 
@@ -286,7 +286,7 @@ Azure bot hizmetini kullanıyorsanız ve sorun **Web sohbeti Içindeki testin** 
 
 #### <a name="resolve-issue-while-debugging-on-local-machine-with-bot-framework"></a>Bot Framework ile yerel makinede hata ayıklama sırasında sorunu çözün.
 
-Bir bot 'ın yerel hata ayıklaması hakkında daha fazla bilgi edinmek için bkz. [bir bot hata ayıklama](/azure/bot-service/bot-service-debug-bot?view=azure-bot-service-4.0).
+Bir bot 'ın yerel hata ayıklaması hakkında daha fazla bilgi edinmek için bkz. [bir bot hata ayıklama](/azure/bot-service/bot-service-debug-bot).
 
 ## <a name="integrating-luis"></a>LUSıS 'yi tümleştirme
 

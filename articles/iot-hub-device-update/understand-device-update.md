@@ -6,12 +6,12 @@ ms.author: vimeht
 ms.date: 2/11/2021
 ms.topic: overview
 ms.service: iot-hub-device-update
-ms.openlocfilehash: 0d12ce74cb961148776d81b3d7cabc281bbc59fc
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 17674c1a5d7acff50a3dd17b9d98f5295c2e1b19
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101665611"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102633045"
 ---
 # <a name="device-update-for-iot-hub-preview-overview"></a>IoT Hub için cihaz Güncelleştirmesi (Önizleme) genel bakış
 
@@ -23,10 +23,10 @@ IoT özellikli dijital dönüştürmenin tüm avantajlarından yararlanmak için
 
 ## <a name="support-for-a-wide-range-of-iot-devices"></a>Çok çeşitli IoT cihazları için destek
 
-IoT Hub cihaz güncelleştirmesi, [Azure IoT Hub](https://azure.microsoft.com/en-us/services/iot-hub/)tümleştirmesiyle iyileştirilmiş güncelleştirme dağıtımı ve kolaylaştırılmış işlemler sunacak şekilde tasarlanmıştır. Bu tümleştirme, mevcut herhangi bir çözümde cihaz güncelleştirmesini benimsemeyi kolaylaştırır. Neredeyse tüm cihazları bağlamak için bulutta barındırılan bir çözüm sağlar. Cihaz güncelleştirme, Linux ve [Azure RTOS](https://azure.microsoft.com/en-us/services/rtos/) (gerçek zamanlı işletim sistemi) dahil olmak üzere çok çeşitli IoT işletim sistemlerini destekler ve açık kaynak aracılığıyla Genişletilebilir. 
+IoT Hub cihaz güncelleştirmesi, [Azure IoT Hub](https://azure.microsoft.com/en-us/services/iot-hub/)tümleştirmesiyle iyileştirilmiş güncelleştirme dağıtımı ve kolaylaştırılmış işlemler sunacak şekilde tasarlanmıştır. Bu tümleştirme, mevcut herhangi bir çözümde cihaz güncelleştirmesini benimsemeyi kolaylaştırır. Neredeyse tüm cihazları bağlamak için bulutta barındırılan bir çözüm sağlar. Cihaz güncelleştirme, Linux ve [Azure RTOS](https://azure.microsoft.com/en-us/services/rtos/) (gerçek zamanlı işletim sistemi) dahil olmak üzere çok çeşitli IoT işletim sistemlerini destekler ve açık kaynak aracılığıyla Genişletilebilir. Stmikro elektronik, NXP, Renesas ve mikro yonga dahil olmak üzere, yarı iletken iş ortaklarıyla IoT Hub teklifleri için cihaz güncelleştirmesi geliştiriyoruz. Bkz. Başlarken kılavuzlarını içeren temel yarı iletken değerlendirme panoları [örneklerine](https://github.com/azure-rtos/samples/tree/PublicPreview/ADU) bakın. Bu arada,-AIR (OTA) güncelleştirmelerini MCU sınıf cihazlarına nasıl yapılandıracağınızı, oluşturacağınızı ve dağıtacağınızı öğrenin.
 
 Hem cihaz Güncelleştirme Aracısı simülatörü ikili dosyası hem de Raspberry PI başvuru yocto görüntüleri sağlanır.
-IoT Hub cihaz güncelleştirmesi Azure IoT Edge cihazların güncelleştirilmesini de destekler. Ubuntu Server 18,04 amd64 platformu için bir cihaz Güncelleştirme Aracısı sağlanır. IoT Hub cihaz güncelleştirmesi, yukarıdaki platformlardan birini çalıştırmıyorsanız açık kaynaklı kod de sağlar. Bu, aracının çalıştırdığınız dağıtıma bağlantı kurmanıza olanak sağlar.
+IoT Hub cihaz güncelleştirmesi Azure IoT Edge cihazların güncelleştirilmesini de destekler. Ubuntu Server 18,04 amd64 platformu için bir cihaz Güncelleştirme Aracısı sağlanır. IoT Hub cihaz güncelleştirmesi, yukarıdaki platformlardan birini çalıştırmıyorsanız açık kaynaklı kod de sağlar. Aracının çalıştırdığınız dağıtıma bağlantı noktası oluşturabilirsiniz.
 
 Cihaz güncelleştirme IoT Tak ve Kullan (PnP) ile birlikte çalışarak, gerekli PnP arabirimlerini destekleyen herhangi bir cihazı yönetebilir. Daha fazla bilgi için bkz. [IoT Hub ve ıot Tak ve kullan Için cihaz güncelleştirme](device-update-plug-and-play.md).
 

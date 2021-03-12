@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 02/19/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: d76fd3b30d823efbf85e84a74a21c694f5a0e6fb
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.openlocfilehash: aafac1133b2bee54624d5f0b00061c5332fcd90b
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102565572"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102631889"
 ---
 # <a name="windows-10-enterprise-multi-session-faq"></a>Windows 10 Enterprise çoklu oturum hakkında SSS
 
@@ -63,7 +63,7 @@ Windows 10 Enterprise multi-session, 1809 ve üzeri sürümler desteklenmektedir
 
 ## <a name="which-profile-management-solution-should-i-use-for-windows-10-enterprise-multi-session"></a>Windows 10 Enterprise çoklu oturum için hangi profil yönetimi çözümünü kullanmalıyım?
 
-Windows 10 Enterprise 'ı kalıcı olmayan ortamlarda veya merkezi olarak depolanmış bir profile ihtiyaç duyulan diğer senaryolarda yapılandırırken FSLogix profil kapsayıcılarını kullanmanızı öneririz. FSLogix, Kullanıcı profilinin her Kullanıcı oturumu için kullanılabilir ve güncel olmasını sağlar. Ayrıca, uygun izinlere sahip herhangi bir SMB paylaşımında bir kullanıcı profilini depolamak için FSLogix profil kapsayıcınızı kullanmanızı öneririz, ancak gerekirse Azure sayfa BLOB depolama alanında Kullanıcı profillerini saklayabilirsiniz. Windows sanal masaüstü kullanıcıları FSLogix 'i ek bir ücret olmadan kullanabilir.
+Windows 10 Enterprise 'ı kalıcı olmayan ortamlarda veya merkezi olarak depolanmış bir profile ihtiyaç duyulan diğer senaryolarda yapılandırırken FSLogix profil kapsayıcılarını kullanmanızı öneririz. FSLogix, Kullanıcı profilinin her Kullanıcı oturumu için kullanılabilir ve güncel olmasını sağlar. Ayrıca, uygun izinlere sahip herhangi bir SMB paylaşımında bir kullanıcı profilini depolamak için FSLogix profil kapsayıcınızı kullanmanızı öneririz, ancak gerekirse Azure sayfa BLOB depolama alanında Kullanıcı profillerini saklayabilirsiniz. Windows sanal masaüstü kullanıcıları FSLogix 'i ek bir ücret olmadan kullanabilir.  FSLogix, tüm Windows 10 Enterprise çoklu oturum görüntülerinde önceden yüklenmiş olarak gelir, ancak BT Yöneticisi FSLogix profil kapsayıcısını yapılandırmadan hala sorumludur.
 
 FSLogix profil kapsayıcısını yapılandırma hakkında daha fazla bilgi için bkz. [FSLogix profil kapsayıcısını yapılandırma](create-host-pools-user-profile.md#configure-the-fslogix-profile-container).
 

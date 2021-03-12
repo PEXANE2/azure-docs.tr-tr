@@ -23,6 +23,8 @@
       href: tutorial-investigate-cases.md
     - name: Tehditlere yanıt verme
       href: tutorial-respond-threats-playbook.md
+    - name: KQL sorguları oluşturma (modülü öğrenme)
+      href: /learn/paths/sc-200-utilize-kql-for-azure-sentinel/
 - name: Kavramlar
   items:
     - name: Varlıkları kullanarak verileri sınıflandırma
@@ -311,6 +313,8 @@
           href: /azure/data-explorer/kusto/query/
         - name: Kusto sorgu dili hızlı başvurusu
           href: /azure/data-explorer/kql-quick-reference
+        - name: Azure Izleyici günlük sorgusu iyileştirmeleri
+          href: /azure/azure-monitor/logs/query-optimization
     - name: UEBA zenginleştirmeleri
       href: ueba-enrichments.md
 - name: Kaynaklar

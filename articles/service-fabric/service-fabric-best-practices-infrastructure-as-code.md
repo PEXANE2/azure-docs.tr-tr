@@ -5,12 +5,12 @@ author: peterpogorski
 ms.topic: conceptual
 ms.date: 01/23/2019
 ms.author: pepogors
-ms.openlocfilehash: a0f0324d1f7308eb1392c4f7a98a6a5d226026be
-ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
+ms.openlocfilehash: b765d92778df40caec0864dc6f547324216fdb07
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/20/2020
-ms.locfileid: "97705515"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102611989"
 ---
 # <a name="infrastructure-as-code"></a>Kod olarak altyapı
 
@@ -91,7 +91,7 @@ microservices_sfpkg.close()
 ```
 
 ## <a name="azure-virtual-machine-operating-system-automatic-upgrade-configuration"></a>Azure sanal makine Işletim sistemi otomatik yükseltme yapılandırması 
-Sanal makinelerinizin yükseltilmesi Kullanıcı tarafından başlatılan bir işlemdir ve Azure Service Fabric kümeleri ana bilgisayar düzeltme eki yönetimi için [sanal makine ölçek kümesi otomatik Işletim sistemi yükseltmesini](../virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade.md) kullanmanız önerilir; Düzeltme Eki düzenleme uygulaması, POA 'nın Azure 'da barındırılmasına yönelik olarak Azure 'da barındırılması için tasarlanan alternatif bir çözümdür ve Azure 'da POA 'nın sanal makine Işletim sistemi otomatik yükseltmesini tercih etmek için sık karşılaşılan bir neden olabilir. Otomatik işletim sistemi yükseltmesini etkinleştirmek için, Işlem Sanal Makine Ölçek Kümesi Kaynak Yöneticisi şablonu özellikleri aşağıda verilmiştir:
+Sanal makinelerinizin yükseltilmesi Kullanıcı tarafından başlatılan bir işlemdir ve Azure Service Fabric kümeleri ana bilgisayar düzeltme eki yönetimi için [sanal makine ölçek kümesi otomatik Işletim sistemi yükseltmesini](service-fabric-patch-orchestration-application.md) kullanmanız önerilir; Düzeltme Eki düzenleme uygulaması, POA 'nın Azure 'da barındırılmasına yönelik olarak Azure 'da barındırılması için tasarlanan alternatif bir çözümdür ve Azure 'da POA 'nın sanal makine Işletim sistemi otomatik yükseltmesini tercih etmek için sık karşılaşılan bir neden olabilir. Otomatik işletim sistemi yükseltmesini etkinleştirmek için, Işlem Sanal Makine Ölçek Kümesi Kaynak Yöneticisi şablonu özellikleri aşağıda verilmiştir:
 
 ```json
 "upgradePolicy": {
