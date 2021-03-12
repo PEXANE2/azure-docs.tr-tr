@@ -5,19 +5,19 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/12/2021
-ms.openlocfilehash: 1dc8e3a78e681947a70ad96638d1d6e09f0bbc88
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 8b3b1d39766d556b820f21c1775210611b995d92
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102050673"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103199896"
 ---
 # <a name="log-analytics-agent-overview"></a>Log Analytics aracısına genel bakış
 
 Azure Log Analytics Aracısı tüm bulutta, şirket içi makinelerde ve [System Center Operations Manager](/system-center/scom/) tarafından izlenen Windows ve Linux sanal makinelerinden telemetri toplar ve toplanan verileri Azure izleyici 'de Log Analytics çalışma alanınıza gönderir. Log Analytics Aracısı Ayrıca Azure Izleyici 'de [VM öngörüleri](../vm/vminsights-enable-overview.md), [Azure Güvenlik Merkezi](../../security-center/index.yml)ve [Azure Otomasyonu](../../automation/automation-intro.md)gibi diğer hizmetleri de destekler. Bu makalede Aracı, sistem ve ağ gereksinimleri ve dağıtım yöntemlerine ilişkin ayrıntılı bir genel bakış sunulmaktadır.
 
 > [!NOTE]
-> Ayrıca, Microsoft Monitoring Agent (MMA) veya OMS Linux Aracısı olarak adlandırılan Log Analytics aracısını da görebilirsiniz.
+> Ayrıca, Microsoft Monitoring Agent (MMA) olarak adlandırılan Log Analytics aracısını da görebilirsiniz.
 
 ## <a name="comparison-to-azure-diagnostics-extension"></a>Azure tanılama uzantısına kıyasla
 Azure Izleyici 'de Azure [Tanılama uzantısı](./diagnostics-extension-overview.md) , Azure sanal makinelerinin Konuk işletim sisteminden izleme verilerini toplamak için de kullanılabilir. Gereksinimlerinize bağlı olarak ya da her ikisini de kullanmayı seçebilirsiniz. Azure izleyici aracılarının ayrıntılı bir karşılaştırması için bkz. [Azure izleyici aracılarına genel bakış](../agents/agents-overview.md) . 
@@ -40,7 +40,7 @@ Log Analytics Aracısı için maliyet yoktur, ancak alınan veriler için ücret
 
 Aşağıdaki tabloda, tüm bağlı aracılardan toplanacak bir Log Analytics çalışma alanını yapılandırabileceğiniz veri türleri listelenmektedir. Diğer veri türlerini toplamak için Log Analytics aracısını kullanan Öngörüler, çözümler ve diğer çözümlerin listesi için bkz. [Azure izleyici tarafından Izlenen nedir?](../monitor-reference.md) .
 
-| Veri Kaynağı | Açıklama |
+| Veri Kaynağı | Description |
 | --- | --- |
 | [Windows olay günlükleri](../agents/data-sources-windows-events.md) | Windows olay günlüğü sistemine gönderilen bilgiler. |
 | [Syslog](../agents/data-sources-syslog.md)                     | Linux olay günlüğü sistemine gönderilen bilgiler. |

@@ -12,12 +12,12 @@ ms.topic: quickstart
 ms.workload: identity
 ms.date: 03/18/2020
 ms.author: janutter
-ms.openlocfilehash: 95747bb68a904212e7e075fc29b2497932d66e5f
-ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
+ms.openlocfilehash: 5ac6a19fc569d60f75f9da788629331a70b0a4c9
+ms.sourcegitcommit: 94c3c1be6bc17403adbb2bab6bbaf4a717a66009
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100103864"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103225056"
 ---
 # <a name="quickstart-sign-in-users-and-get-an-access-token-in-an-angular-single-page-application"></a>Hızlı başlangıç: angular tek sayfalı uygulamada Kullanıcı oturumu açma ve erişim belirteci edinme
 
@@ -102,8 +102,8 @@ Bu hızlı başlangıçta, angular bir tek sayfalı uygulamanın (SPA) kullanıc
 >|Enter_the_Redirect_Uri_Here|İle değiştirin **http://localhost:4200** .|
 >|Önbellekelocation  | Seçim Kimlik doğrulama durumu için tarayıcı depolamayı ayarlayın. Varsayılan değer **sessionStorage**' dır.   |
 >|Storeauthstateıncookie  | Seçim Kimlik doğrulama isteği durumunu depolayan kitaplığı belirler. Tarayıcı tanımlama bilgilerinde kimlik doğrulama akışlarını doğrulamak için bu durum gereklidir. Bu tanımlama bilgisi, Internet Explorer ve Edge 'in bu iki tarayıcıyı kapsayacak şekilde ayarlanır. Daha fazla ayrıntı için bkz. [bilinen sorunlar](https://github.com/AzureAD/microsoft-authentication-library-for-js/wiki/Known-issues->on-IE-and-Edge-Browser#issues). |
-> > [!TIP]
-> > **Uygulama (istemci) Kimliği**, **Dizin (kiracı) Kimliği** ve **Desteklenen hesap türleri** değerlerini bulmak için Azure portalında uygulamanın **Genel bakış** sayfasına gidin.
+>
+> **Uygulama (istemci) Kimliği**, **Dizin (kiracı) Kimliği** ve **Desteklenen hesap türleri** değerlerini bulmak için Azure portalında uygulamanın **Genel bakış** sayfasına gidin.
 
 Kullanılabilir yapılandırılabilir seçenekler hakkında daha fazla bilgi için bkz. [istemci uygulamalarını başlatma](msal-js-initializing-client-applications.md).
 

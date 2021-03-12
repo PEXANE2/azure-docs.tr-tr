@@ -13,28 +13,28 @@ ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 03/10/2020
+ms.date: 03/10/2021
 ms.author: markvi
-ms.reviewer: dhanyahk
+ms.reviewer: besiler
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 351669453a5ce6930d3eb912e95e530d14febf61
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: afb6a597d4fd58646f56e271cb6027fb46db1e26
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91335859"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102634235"
 ---
 # <a name="how-to-integrate-azure-active-directory-logs-with-splunk-using-azure-monitor"></a>Nasıl yapılır: Azure Izleyici kullanarak splunk ile Azure Active Directory günlüklerini tümleştirme
 
 Bu makalede, Azure Izleyici 'yi kullanarak Azure Active Directory (Azure AD) günlüklerini splunk ile tümleştirmeyi öğreneceksiniz. Önce günlükleri bir Azure Olay Hub 'ına yönlendirdiğinizde Olay Hub 'ını splunk ile tümleştirin.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu özelliği kullanmak için şunlara ihtiyacınız vardır:
 
 - Azure AD etkinlik günlüklerini içeren bir Azure Olay Hub 'ı. [Etkinlik günlüklerinizi bir olay hub 'ına akışa](./tutorial-azure-monitor-stream-logs-to-event-hub.md)alma hakkında bilgi edinin. 
 
--  [Microsoft Azure splunk Için ekleme](https://splunkbase.splunk.com/app/3757/). 
+-  [Microsoft bulut hizmetleri Için splunk eklentisi](https://splunkbase.splunk.com/app/3110/#/details). 
 
 ## <a name="integrate-azure-active-directory-logs"></a>Azure Active Directory günlüklerini tümleştirme 
 

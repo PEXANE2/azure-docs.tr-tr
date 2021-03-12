@@ -3,7 +3,7 @@ title: Microsoft PlayReady veya Apple FairPlay-Azure ile HLS içeriğini koruma 
 description: Bu konu, genel bir bakış sağlar ve Apple FairPlay ile HTTP Canlı Akışı (HLS) içeriğinizi dinamik olarak şifrelemek için Azure Media Services nasıl kullanacağınızı gösterir. Ayrıca, FairPlay lisanslarını istemcilere iletmek için Media Services lisans teslim hizmetini nasıl kullanacağınızı gösterir.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
@@ -11,15 +11,15 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/19/2019
-ms.author: juliako
+ms.date: 03/10/2021
+ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: e7290b5972bc81555bce102446923efd59ed2b34
-ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
+ms.openlocfilehash: 15aab28b7dfbaf305412f1080346b54cc6827437
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98695146"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103009649"
 ---
 # <a name="protect-your-hls-content-with-apple-fairplay-or-microsoft-playready"></a>Apple FairPlay veya Microsoft PlayReady ile HLS içeriğinizi koruma
 

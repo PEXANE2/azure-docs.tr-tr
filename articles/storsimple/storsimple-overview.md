@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 02/02/2021
 ms.author: timlt
-ms.openlocfilehash: 93278a2c8e83541f49ca76542de1c352fbc02239
-ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
+ms.openlocfilehash: 3f0ec053d806208b4a3c15604714f6bdb87399e7
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99524253"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102613230"
 ---
 # <a name="storsimple-8000-series-a-hybrid-cloud-storage-solution"></a>StorSimple 8000 serisi: karma bulut depolama çözümü
 
@@ -39,7 +39,7 @@ StorSimple veri koruma özellikleri, depolama yönetimine ek olarak isteğe bağ
 ## <a name="why-use-storsimple"></a>StorSimple neden kullanılmalıdır?
 Aşağıdaki tabloda Microsoft Azure StorSimple sağladığı bazı önemli avantajlar açıklanmaktadır.
 
-| Öne çıkan özelliği | Avantaj |
+| Özellik | Avantaj |
 | --- | --- |
 | Saydam tümleştirme |, Veri depolama olanaklarını ayrıntılı bir şekilde bağlamak için Iscsı protokolünü kullanır. Bulutta depolanan veriler, veri merkezinde veya uzak sunucularda tek bir konumda depolanıyor gibi görünüyor. |
 | Azaltılan depolama maliyetleri |Mevcut taleplerini karşılamak için yeterli yerel veya bulut depolama alanını ayırır ve bulut depolamayı yalnızca gerekli olduğunda genişletir. Aynı verilerin (yinelenenleri kaldırma) yedekli sürümlerini kaldırarak ve sıkıştırma kullanarak, depolama gereksinimlerini ve harcamayı daha da azaltır. |
@@ -60,7 +60,7 @@ Microsoft Azure StorSimple çözümü aşağıdaki bileşenleri içerir:
 * **StorSimple Cloud Appliance** : StorSimple Sanal gereci olarak da bilinir. Fiziksel karma depolama cihazının mimarisini ve yeteneklerini çoğaltan StorSimple cihazının yazılım sürümü. StorSimple Cloud Appliance, bir Azure sanal makinesinde tek bir düğümde çalışır. Azure Premium Storage 'ın avantajlarından yararlanan Premium sanal cihazlar güncelleştirme 2 ve sonrasında kullanılabilir.
 * **Storsimple Device Manager hizmeti** : bir StorSimple cihazını veya StorSimple Cloud Appliance tek bir web arabiriminden yönetmenizi sağlayan bir Azure Portal uzantısı. StorSimple Device Manager hizmetini kullanarak hizmetleri oluşturabilir ve yönetebilir, cihazları görüntüleyebilir ve yönetebilir, uyarıları görüntüleyebilir, birimleri yönetebilir, yedekleme ilkelerini ve yedekleme kataloğunu görüntüleyebilir ve yönetebilirsiniz.
 * **StorSimple için Windows PowerShell** : StorSimple cihazını yönetmek için kullanabileceğiniz bir komut satırı arabirimi. StorSimple için Windows PowerShell, StorSimple cihazınızı kaydetmenize, cihazınızda ağ arabirimini yapılandırmanıza, belirli güncelleştirme türlerini yüklemenize, destek oturumuna erişerek cihazınızda sorun gidermenize ve cihaz durumunu değiştirmenize olanak tanıyan özellikler içerir. StorSimple için Windows PowerShell, seri konsoluna bağlanarak veya Windows PowerShell uzaktan iletişimini kullanarak erişebilirsiniz.
-* **Azure PowerShell StorSimple cmdlet 'leri** : komut satırından hizmet düzeyi ve geçiş görevlerini otomatikleştirmenizi sağlayan Windows PowerShell cmdlet 'lerinin bir koleksiyonu. StorSimple için Azure PowerShell cmdlet 'leri hakkında daha fazla bilgi için [cmdlet başvurusuna](/powershell/module/servicemanagement/azure.service/?view=azuresmps-3.7.0&preserve-view=true#azure)gidin.
+* **Azure PowerShell StorSimple cmdlet 'leri** : komut satırından hizmet düzeyi ve geçiş görevlerini otomatikleştirmenizi sağlayan Windows PowerShell cmdlet 'lerinin bir koleksiyonu. StorSimple için Azure PowerShell cmdlet 'leri hakkında daha fazla bilgi için [cmdlet başvurusuna](/powershell/module/servicemanagement/azure.service/#azure)gidin.
 * **StorSimple Snapshot Manager** : uygulamayla tutarlı yedeklemeler oluşturmak için birim grupları ve Windows birim gölge kopyası hizmeti kullanan bir MMC ek bileşeni. Ayrıca, StorSimple Snapshot Manager kullanarak yedekleme zamanlamaları oluşturabilir, birimleri kopyalayabilir veya geri yükleyebilirsiniz.
 * **SharePoint Için StorSimple Bağdaştırıcısı** : Microsoft Azure StorSimple depolama ve veri korumasını SharePoint Server gruplarına şeffaf bir şekilde genişleten, StorSimple depolama alanını SharePoint Merkezi Yönetim portalından görüntülenebilir ve yönetilebilir hale getiren bir araç.
 
@@ -129,7 +129,7 @@ Windows PowerShell uzaktan iletişimini kullanarak, bir seri konsolundan (doğru
 Daha fazla bilgi için [cihazınızı yönetmek üzere StorSimple için Windows PowerShell kullanma](storsimple-8000-windows-powershell-administration.md)bölümüne gidin.
 
 ## <a name="azure-powershell-storsimple-cmdlets"></a>Azure PowerShell StorSimple cmdlet 'leri
-Azure PowerShell StorSimple cmdlet 'leri, komut satırından hizmet düzeyi ve geçiş görevlerini otomatikleştirmenizi sağlayan Windows PowerShell cmdlet 'lerinin bir koleksiyonudur. StorSimple için Azure PowerShell cmdlet 'leri hakkında daha fazla bilgi için [cmdlet başvurusuna](/powershell/module/servicemanagement/azure.service/?view=azuresmps-3.7.0&preserve-view=true)gidin.
+Azure PowerShell StorSimple cmdlet 'leri, komut satırından hizmet düzeyi ve geçiş görevlerini otomatikleştirmenizi sağlayan Windows PowerShell cmdlet 'lerinin bir koleksiyonudur. StorSimple için Azure PowerShell cmdlet 'leri hakkında daha fazla bilgi için [cmdlet başvurusuna](/powershell/module/servicemanagement/azure.service/)gidin.
 
 ## <a name="storsimple-snapshot-manager"></a>StorSimple Snapshot Manager
 StorSimple Snapshot Manager, yerel ve bulut verilerinin tutarlı, noktadan noktaya yedek kopyalarını oluşturmak için kullanabileceğiniz bir Microsoft Yönetim Konsolu (MMC) ek bileşenidir. Ek bileşen Windows Server tabanlı bir konakta çalışır. StorSimple Snapshot Manager kullanarak şunları yapabilirsiniz:

@@ -9,12 +9,12 @@ author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto
 ms.date: 02/11/2021
-ms.openlocfilehash: 15cc935457f76fb1d2fe4e8d699db831ebacc357
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: 68267cdedd2f0b64549791866e8750cf42928ab4
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102181763"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103201236"
 ---
 # <a name="azure-active-directory-service-principal-with-azure-sql"></a>Azure SQL ile hizmet sorumlusu Azure Active Directory
 
@@ -52,7 +52,7 @@ Bu işlevi desteklemek, Azure ad nesnelerinin SQL veritabanı 'nda oluşturulup 
 
 Bir Azure AD uygulaması adına SQL veritabanı ve Azure SYNAPSE 'de Azure AD nesne oluşturmayı etkinleştirmek için aşağıdaki ayarlar gereklidir:
 
-1. Sunucu kimliğini atayın. Atanan sunucu kimliği, yönetilen sistem kimliğini (MSI) temsil eder. Şu anda Azure SQL için sunucu kimliği kullanıcı tarafından yönetilen kimliği (UMI) desteklemiyor.
+1. Sunucu kimliğini atayın. Atanan sunucu kimliği Yönetilen Hizmet Kimliği (MSI) temsil eder. Şu anda Azure SQL için sunucu kimliği kullanıcı tarafından yönetilen kimliği (UMI) desteklemiyor.
     - Yeni bir Azure SQL mantıksal sunucusu için aşağıdaki PowerShell komutunu yürütün:
     
     ```powershell

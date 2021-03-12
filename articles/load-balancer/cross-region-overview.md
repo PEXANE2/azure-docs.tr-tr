@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 09/22/2020
 ms.author: allensu
 ms.custom: references_regions
-ms.openlocfilehash: 1d435c3b15433b7fec00d5dfa80970c04323e635
-ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
+ms.openlocfilehash: 8e14b22895c4734f1efd8688a5b20c946422a080
+ms.sourcegitcommit: 94c3c1be6bc17403adbb2bab6bbaf4a717a66009
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 03/12/2021
-ms.locfileid: "103199363"
+ms.locfileid: "103225634"
 ---
 # <a name="cross-region-load-balancer-preview"></a>Bölgeler arası yük dengeleyici (Önizleme)
 
@@ -94,7 +94,7 @@ Bölgeler arası yük dengeleyicinin arka uç havuzu bir veya daha fazla bölges
 
 Yüksek oranda kullanılabilir ve çapraz bölge dağıtımı için mevcut yük dengeleyici dağıtımlarınızı çapraz bölge yük dengeleyiciye ekleyin.
 
-**Ana bölge** , bölgeler arası yük dengeleyicinin dağıtıldığı yerdir. Bu bölge trafiğin nasıl yönlendirildiğini etkilemez. Bir giriş bölgesi aşağı gittiğinde trafik akışı etkilenmez.
+**Ana bölge** , bölgeler arası yük dengeleyicinin veya genel KATMANıN genel IP adresinin dağıtıldığı yerdir. Bu bölge trafiğin nasıl yönlendirildiğini etkilemez. Bir giriş bölgesi aşağı gittiğinde trafik akışı etkilenmez.
 
 ### <a name="home-regions"></a>Giriş bölgeleri
 * Doğu ABD 2
@@ -106,7 +106,7 @@ Yüksek oranda kullanılabilir ve çapraz bölge dağıtımı için mevcut yük 
 * Doğu Asya
 
 > [!NOTE]
-> Bölgeler arası yük dengeleyiciyi yalnızca yukarıdaki 7 bölgeden birinde dağıtabilirsiniz.
+> Yalnızca bölge içi yük dengeleyiciyi veya genel IP 'yi, yukarıdaki 7 bölgeden birinde genel katmanda dağıtabilirsiniz.
 
 Bir **katılım bölgesi** , yük dengeleyicinin genel genel IP 'nin kullanılabilir olduğu yerdir. 
 

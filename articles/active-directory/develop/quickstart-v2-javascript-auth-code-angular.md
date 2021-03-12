@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 01/14/2021
 ms.author: jamesmantu
 ms.custom: aaddev, scenarios:getting-started, languages:JavaScript, devx-track-js
-ms.openlocfilehash: fb7479f7e3b9ac631c164bbddf65ed8be3bab438
-ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
+ms.openlocfilehash: 1d5fc097be188c820f9be15594f4bb382754b849
+ms.sourcegitcommit: 94c3c1be6bc17403adbb2bab6bbaf4a717a66009
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102122655"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103224937"
 ---
 # <a name="quickstart-sign-in-and-get-an-access-token-in-an-angular-spa-using-the-auth-code-flow"></a>Hızlı başlangıç: kimlik doğrulama kod akışını kullanarak bir angular SPA 'da oturum açma ve erişim belirteci edinme
 
@@ -117,12 +117,18 @@ Bu hızlı başlangıçta yetkilendirme kodu akışıyla MSAL angular v2 kullan�
 > `auth`Bölümündeki değerleri burada açıklandığı gibi değiştirin:
 >
 > - `Enter_the_Application_Id_Here` , kaydettiğiniz uygulamanın **uygulama (istemci) kimliğidir** .
+>
+>    **Uygulama (istemci) kimliğinin** değerini bulmak için, Azure Portal uygulama kaydının **genel bakış** sayfasına gidin.
 > - `Enter_the_Cloud_Instance_Id_Here` , Azure bulutu örneğidir. Ana veya küresel Azure bulutu için girin `https://login.microsoftonline.com/` . **Ulusal** bulutlar (örneğin, Çin) için bkz. [Ulusal bulutlar](authentication-national-cloud.md).
 > - `Enter_the_Tenant_info_here` aşağıdakilerden birine ayarlanır:
 >   - Uygulamanız *bu kuruluş dizinindeki hesapları* destekliyorsa, bu DEĞERI **Kiracı kimliği** veya **kiracı adı** ile değiştirin. Örneğin, `contoso.microsoft.com`.
+>
+>    **Dizin (kiracı) kimliğinin** değerini bulmak için, Azure Portal uygulama kaydının **genel bakış** sayfasına gidin.
 >   - Uygulamanız *herhangi bir kuruluş dizinindeki hesapları* destekliyorsa, bu değeri ile değiştirin `organizations` .
 >   - Uygulamanız *herhangi bir kurumsal dizin ve kişisel Microsoft hesabında hesapları* destekliyorsa, bu değeri ile değiştirin `common` . **Bu hızlı başlangıç için** kullanın `common` .
 >   - *Yalnızca kişisel Microsoft hesaplarına* yönelik desteği kısıtlamak için bu değeri ile değiştirin `consumers` .
+>
+>    **Desteklenen hesap türlerinin** değerini bulmak için, Azure Portal uygulama kaydının **genel bakış** sayfasına gidin.
 > - `Enter_the_Redirect_Uri_Here`, `http://localhost:4200/` değeridir.
 >
 > `authority`Ana (genel) Azure bulutunu kullanıyorsanız, *app. Module. TS* içindeki değer şuna benzer olmalıdır:
@@ -131,8 +137,6 @@ Bu hızlı başlangıçta yetkilendirme kodu akışıyla MSAL angular v2 kullan�
 > authority: "https://login.microsoftonline.com/common",
 > ```
 >
-> > [!TIP]
-> > **Uygulama (istemci) kimliği**, **Dizin (kiracı) kimliği** ve **Desteklenen hesap türlerinin** değerlerini bulmak Için, Azure Portal uygulama kaydının **genel bakış** sayfasına gidin.
 
 > [!div class="sxs-lookup" renderon="portal"]
 > #### <a name="step-3-your-app-is-configured-and-ready-to-run"></a>3. Adım: uygulamanız yapılandırıldı ve çalıştırılmaya hazırlanıyor

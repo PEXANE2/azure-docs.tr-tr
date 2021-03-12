@@ -8,12 +8,12 @@ ms.service: digital-twins
 services: digital-twins
 ms.topic: how-to
 ms.date: 11/10/2020
-ms.openlocfilehash: c6b9cfab4256c72118a65f7fb0c8e672e2082ffe
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
+ms.openlocfilehash: 18ae21c4b1348a1690818f8c07a5b3fae45102cd
+ms.sourcegitcommit: ec39209c5cbef28ade0badfffe59665631611199
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102199671"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103232282"
 ---
 # <a name="how-to-use-postman-to-send-requests-to-the-azure-digital-twins-apis"></a>Azure dijital TWINS API 'Lerine istek göndermek için Postman kullanma
 
@@ -52,7 +52,7 @@ Aksi takdirde, tarayıcınızda bir [Azure Cloud Shell](https://shell.azure.com)
     az login
     ```
 
-1. Daha sonra, Azure dijital TWINS hizmetine erişimi olan bir taşıyıcı belirteci almak için [az Account Get-Access-Token](/cli/azure/account#az_account_get_access_token) komutunu kullanın.
+1. Daha sonra, Azure dijital TWINS hizmetine erişimi olan bir taşıyıcı belirteci almak için [az Account Get-Access-Token](/cli/azure/account#az_account_get_access_token) komutunu kullanın. Bu komutta, `0b07f429-9f4b-4714-9392-cc5e8e80c8b0` Azure Digital TWINS kaynaklarına erişebilen bir erişim belirteci almak Için Azure Digital TWINS hizmet uç noktası (statik değeri) kaynak kimliğini geçireceğiz.
 
     ```azurecli-interactive
     az account get-access-token --resource 0b07f429-9f4b-4714-9392-cc5e8e80c8b0

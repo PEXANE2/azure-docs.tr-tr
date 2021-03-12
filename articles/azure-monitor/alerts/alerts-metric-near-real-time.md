@@ -5,13 +5,13 @@ author: harelbr
 ms.author: harelbr
 services: monitoring
 ms.topic: conceptual
-ms.date: 02/10/2021
-ms.openlocfilehash: c282e6890d56fe047b319f72e05cdc97de76cfcf
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.date: 03/11/2021
+ms.openlocfilehash: efc1438fdc539af278ebff1f292c5fa0a91b7b91
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102038195"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103016109"
 ---
 # <a name="supported-resources-for-metric-alerts-in-azure-monitor"></a>Azure Izleyici 'de ölçüm uyarıları için desteklenen kaynaklar
 
@@ -36,6 +36,7 @@ Daha yeni uyarılar tarafından desteklenen Azure Izleyici ölçüm kaynakların
 |Microsoft. Automation/automationAccounts | Yes| Hayır | [Otomasyon Hesapları](../essentials/metrics-supported.md#microsoftautomationautomationaccounts) |
 |Microsoft. AVS/Privatebulutlar | Hayır | Hayır | [Azure VMware Çözümü](../essentials/metrics-supported.md#microsoftavsprivateclouds) |
 |Microsoft.Batch/batchAccounts | Yes | Hayır | [Toplu Hesaplar](../essentials/metrics-supported.md#microsoftbatchbatchaccounts) |
+|Microsoft. BotService/botServices | Yes | Hayır | [Bot Hizmetleri](../essentials/metrics-supported.md#microsoftbotservicebotservices) |
 |Microsoft. Cache/Redsıs | Yes | Yes | [Redis için Azure Önbelleği](../essentials/metrics-supported.md#microsoftcacheredis) |
 |Microsoft. ClassicCompute/domainNames/yuvalar/roller | Hayır | Hayır | [Klasik Cloud Services](../essentials/metrics-supported.md#microsoftclassiccomputedomainnamesslotsroles) |
 |Microsoft. ClassicCompute/virtualMachines | Hayır | Hayır | [Klasik sanal makineler](../essentials/metrics-supported.md#microsoftclassiccomputevirtualmachines) |
@@ -45,6 +46,8 @@ Daha yeni uyarılar tarafından desteklenen Azure Izleyici ölçüm kaynakların
 |Microsoft. ClassicStorage/storageAccounts/queueServices | Yes | Hayır | [Depolama hesapları (klasik)-kuyruklar](../essentials/metrics-supported.md#microsoftclassicstoragestorageaccountsqueueservices) |
 |Microsoft. ClassicStorage/storageAccounts/tableServices | Yes | Hayır | [Depolama hesapları (klasik)-tablolar](../essentials/metrics-supported.md#microsoftclassicstoragestorageaccountstableservices) |
 |Microsoft. Biliveservices/hesapları | Yes | Hayır | [Bilişsel Hizmetler](../essentials/metrics-supported.md#microsoftcognitiveservicesaccounts) |
+|Microsoft. COMPUTE/cloudServices | Yes | Hayır |  [Bulut Hizmetleri](../essentials/metrics-supported.md#microsoftcomputecloudservices) |
+|Microsoft. COMPUTE/cloudServices/rolleri | Yes | Hayır |  [Bulut hizmeti rolleri](../essentials/metrics-supported.md#microsoftcomputecloudservicesroles) |
 |Microsoft.Compute/virtualMachines | Yes | Evet<sup>1</sup> | [Sanal Makineler](../essentials/metrics-supported.md#microsoftcomputevirtualmachines) |
 |Microsoft.Compute/virtualMachineScaleSets | Yes | Hayır |[Sanal Makine Ölçek Kümeleri](../essentials/metrics-supported.md#microsoftcomputevirtualmachinescalesets) |
 |Microsoft. Containerınstance/containerGroups | Yes| Hayır | [Kapsayıcı grupları](../essentials/metrics-supported.md#microsoftcontainerinstancecontainergroups) |
@@ -56,9 +59,10 @@ Daha yeni uyarılar tarafından desteklenen Azure Izleyici ölçüm kaynakların
 |Microsoft. DataShare/hesapları | Yes | Hayır | [Veri paylaşımları](../essentials/metrics-supported.md#microsoftdatashareaccounts) |
 |Microsoft. Dbformarıdb/sunucular | Hayır | Hayır | [MariaDB için DB](../essentials/metrics-supported.md#microsoftdbformariadbservers) |
 |Microsoft. Dbformyısql/sunucuları | Hayır | Hayır |[MySQL için DB](../essentials/metrics-supported.md#microsoftdbformysqlservers)|
+|Microsoft. DBforPostgreSQL/Flexibtaservers | Yes | Hayır | [PostgreSQL için DB (esnek sunucular)](../essentials/metrics-supported.md#microsoftdbforpostgresqlflexibleservers)|
+|Microsoft. DBforPostgreSQL/serverGroupsv2 | Yes | Hayır | PostgreSQL için DB (hyperscale) |
 |Microsoft. DBforPostgreSQL/sunucuları | Hayır | Hayır | [PostgreSQL için DB](../essentials/metrics-supported.md#microsoftdbforpostgresqlservers)|
 |Microsoft. DBforPostgreSQL/serversv2 | Hayır | Hayır | [PostgreSQL için DB v2](../essentials/metrics-supported.md#microsoftdbforpostgresqlserversv2)|
-|Microsoft. DBforPostgreSQL/Flexibtaservers | Yes | Hayır | [PostgreSQL için DB (esnek sunucular)](../essentials/metrics-supported.md#microsoftdbforpostgresqlflexibleservers)|
 |Microsoft. Devices/IotHubs | Yes | Hayır |[IoT Hub’ı](../essentials/metrics-supported.md#microsoftdevicesiothubs) |
 |Microsoft. Devices/provisioningServices| Yes | Hayır | [Cihaz sağlama hizmetleri](../essentials/metrics-supported.md#microsoftdevicesprovisioningservices) |
 |Microsoft. DigitalTwins/Digitaltwınsınstances | Yes | Hayır | [Digital Twins](../essentials/metrics-supported.md#microsoftdigitaltwinsdigitaltwinsinstances) |
@@ -75,6 +79,8 @@ Daha yeni uyarılar tarafından desteklenen Azure Izleyici ölçüm kaynakların
 |Microsoft. Logic/ıntegrationserviceortamortamları | Yes | Hayır |[Tümleştirme hizmeti ortamları](../essentials/metrics-supported.md#microsoftlogicintegrationserviceenvironments) |
 |Microsoft. Logic/iş akışları | Hayır | Hayır |[Logic Apps](../essentials/metrics-supported.md#microsoftlogicworkflows) |
 |Microsoft. MachineLearningServices/çalışma alanları | Yes | Hayır | [Machine Learning](../essentials/metrics-supported.md#microsoftmachinelearningservicesworkspaces) |
+|Microsoft. MachineLearningServices/Workspaces/onlineEndpoints | Yes | Hayır | Machine Learning uç noktaları |
+|Microsoft. MachineLearningServices/Workspaces/onlineEndpoints/dağıtımlar | Yes | Hayır | Machine Learning uç nokta dağıtımları |
 |Microsoft. Maps/hesaplar | Yes | Hayır | [Hesapları eşleme](../essentials/metrics-supported.md#microsoftmapsaccounts) |
 |Microsoft. Media/mediaservices | Hayır | Hayır | [Media Services](../essentials/metrics-supported.md#microsoftmediamediaservices) |
 |Microsoft. Media/mediaservices/streamingEndpoints | Yes | Hayır | [Media Services akış uç noktaları](../essentials/metrics-supported.md#microsoftmediamediaservicesstreamingendpoints) |

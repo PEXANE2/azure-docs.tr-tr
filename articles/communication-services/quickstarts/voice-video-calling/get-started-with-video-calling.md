@@ -7,14 +7,18 @@ ms.author: mikben
 ms.date: 07/24/2020
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: 00721a5c7763663a17b1e67cf0ac3ae59fd9448a
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
+ms.openlocfilehash: 1d5bd8179d07477d8ae0cf60d4de291ed0e00201
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102204575"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103201069"
 ---
 # <a name="quickstart-add-11-video-calling-to-your-app-javascript"></a>Hızlı başlangıç: uygulamanıza 1:1 video çağrısı ekleme (JavaScript)
+
+## <a name="download-code"></a>Kodu indir
+
+Bu hızlı başlangıç için [GitHub](https://github.com/Azure-Samples/communication-services-javascript-quickstarts/tree/main/add-1-on-1-video-calling) 'da son kodu bulun
 
 ## <a name="prerequisites"></a>Önkoşullar
 - Etkin abonelikle bir Azure hesabı edinin. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
@@ -323,7 +327,7 @@ Tarayıcınızı açın ve adresine gidin http://localhost:8080/ . Şunları gö
 Metin alanına bir kullanıcı KIMLIĞI sağlayarak ve çağrıya başla düğmesine tıklayarak 1:1 giden bir video araması yapabilirsiniz. 
 
 ## <a name="sample-code"></a>Örnek Kod
-Örnek uygulamayı [GitHub](https://github.com/Azure-Samples/communication-services-javascript-quickstarts/tree/main/Add%201%20on%201%20video%20calling)'dan indirebilirsiniz.
+Örnek uygulamayı [GitHub](https://github.com/Azure-Samples/communication-services-javascript-quickstarts/tree/main/add-1-on-1-video-calling)'dan indirebilirsiniz.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 Bir Iletişim Hizmetleri aboneliğini temizleyip kaldırmak istiyorsanız, kaynağı veya kaynak grubunu silebilirsiniz. Kaynak grubunun silinmesi, onunla ilişkili diğer tüm kaynakları da siler. [Kaynakları Temizleme](https://docs.microsoft.com/azure/communication-services/quickstarts/create-communication-resource?tabs=windows&pivots=platform-azp#clean-up-resources)hakkında daha fazla bilgi edinin.

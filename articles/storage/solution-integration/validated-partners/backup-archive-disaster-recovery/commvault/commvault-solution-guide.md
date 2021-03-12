@@ -9,12 +9,12 @@ ms.date: 11/11/2020
 ms.topic: article
 ms.service: storage
 ms.subservice: blobs
-ms.openlocfilehash: f340a06f3b6b7c8fc0d78051fb0496dcab11fb5d
-ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
+ms.openlocfilehash: bc5bcca394fa66cea9cbf6bc20ac7d164c671cf7
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102122757"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102632960"
 ---
 # <a name="back-up-to-azure-with-commvault"></a>Commkasasıyla Azure 'a yedekleme
 
@@ -118,7 +118,7 @@ Bu bölümde, şirket içi bir iletişim dağıtımına Azure Storage eklemek i�
 
 1. Azure portal açın ve "depolama hesapları" ifadesini arayın veya varsayılan hizmetler simgesine tıklayın.
     
-    1. ![Azure Portal](../media/azure-portal.png)
+    1. ![Azure Portalı](../media/azure-portal.png)
   
     1. ![Azure portalındaki depolama hesapları](../media/locate-storage-account.png)
 
@@ -161,11 +161,11 @@ Bu bölümde, şirket içi bir iletişim dağıtımına Azure Storage eklemek i�
 
 9. Sonra, "depolama" a gidin--> "Cloud" (Commkasate "Ekle" yi seçin. Depolama hesabı için kolay bir ad girin ve "tür" listesinden "Microsoft Azure Depolama" öğesini seçin. Yedeklemeleri Azure depolama 'ya aktarmak için kullanılacak bir medya Aracısı sunucusu seçin. Oluşturduğunuz kapsayıcıyı ekleyin, Azure Storage hesabından yararlanmak üzere depolama katmanını seçin ve #8 adımında oluşturulan kimlik bilgilerini seçin. Son olarak, yinelenenleri kaldırılmış yedeklemelerin mi yoksa yinelenenleri kaldırma veritabanı için bir konumun mi aktarılmayacağını seçin.
     
-     ![Commkasasında depolama ekleme](../media/commvault-add-storage.png)
+     ![Bulut Kullanıcı ekleme arabiriminin ekran görüntüsü. Arşiv açılan menüsünde * * arşiv * * seçilidir.](../media/commvault-add-storage.png)
 
 10. Son olarak, yeni Azure depolama kaynağınızı "Yönet"--> "planlar" i "yedekleme hedefi" olarak "yönetme"--"planları" aracılığıyla mevcut veya yeni bir plana ekleyin.
 
-    ![Commkasasında depolama ekleme](../media/commvault-plan.png)
+    ![COMMKASASıNıN Komut Merkezi Kullanıcı arabiriminin ekran görüntüsü. Sol gezinti bölmesinde, * * Yönet * *, * * planlar * * altında seçilidir.](../media/commvault-plan.png)
 
 11. ***(Isteğe bağlı)*** Sunucuları ve uygulamaları Azure 'a geçirmek için Azure 'u bir kurtarma sitesi veya Commkasadan yararlanmaya çalışırsanız, Azure 'da bir VSA proxy 'Si dağıtmak en iyi uygulamadır. Ayrıntılı yönergeleri [buradan](https://documentation.commvault.com/commvault/v11/article?p=106208.htm)bulabilirsiniz.  
 

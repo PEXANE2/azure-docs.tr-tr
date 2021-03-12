@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: article
 ms.date: 10/23/2020
 ms.author: alkohli
-ms.openlocfilehash: 2139080367cdce9a5f018afab0970a7bd0e7504c
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 66edd4cad5b2f38696ef1df2030687bf4c7d9956
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96467964"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102634184"
 ---
 # <a name="configure-vpn-on-your-azure-stack-edge-pro-r-device-via-azure-powershell"></a>Azure Stack Edge Pro R cihazınızda VPN 'yi Azure PowerShell aracılığıyla yapılandırma
 
@@ -165,7 +165,7 @@ Daha sonra, cihazınızın yerel Web Kullanıcı arabiriminde VPN 'yi yapıland�
 
 ## <a name="validate-data-transfer-through-vpn"></a>VPN üzerinden veri aktarımını doğrulama
 
-VPN 'nin çalıştığını doğrulamak için, verileri bir SMB paylaşımında kopyalayın. Azure Stack Edge Pro R cihazınızda [paylaşma ekleme](azure-stack-edge-j-series-manage-shares.md#add-a-share) bölümündeki adımları izleyin. 
+VPN 'nin çalıştığını doğrulamak için, verileri bir SMB paylaşımında kopyalayın. Azure Stack Edge Pro R cihazınızda [paylaşma ekleme](azure-stack-edge-gpu-manage-shares.md#add-a-share) bölümündeki adımları izleyin. 
 
 1. \data\pictures\waterfall.jpg, örneğin, istemci sisteminize bağladığınız SMB paylaşımında bir dosya kopyalayın. 
 2. Bu dosyanın buluttaki depolama hesabınızda göründüğünü doğrulayın.

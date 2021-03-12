@@ -2,13 +2,13 @@
 title: Kavramlar-depolama
 description: Azure VMware Çözüm özel bulutlarında anahtar depolama özellikleri hakkında bilgi edinin.
 ms.topic: conceptual
-ms.date: 02/02/2021
-ms.openlocfilehash: 522e4f651b36532ac0c144b3889b2b67c91dc77b
-ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
+ms.date: 03/11/2021
+ms.openlocfilehash: a4c34f8767b20de3ca0647e09c5dc9edad3d45fb
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99536959"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103200551"
 ---
 #  <a name="azure-vmware-solution-storage-concepts"></a>Azure VMware Çözüm depolama kavramları
 
@@ -32,7 +32,7 @@ vSAN veri depoları varsayılan olarak rest şifreleme kullanır. Şifreleme ç�
 
 ## <a name="scaling"></a>Ölçeklendirme
 
-Yerel küme depolama kapasitesi, bir kümeye ana bilgisayar eklenerek ölçeklendirilir. Ana bilgisayarları kullanan kümeler için, ham küme genelinde kapasite, eklenen her konakla 15,4 TB ile artırılır. GP konaklarıyla oluşturulan kümelerin ham kapasitesi, eklenen her konak ile 7,7 TB artar. Her iki tür küme içinde, ana bilgisayarların bir kümeye eklenmesi yaklaşık 10 dakika sürer. Kümeleri ölçeklendirmeyle ilgili yönergeler için bkz. [özel bulutu ölçeklendirme öğreticisi][tutorial-scale-private-cloud].
+Yerel küme depolama kapasitesi, bir kümeye ana bilgisayar eklenerek ölçeklendirilir. AVS36 konakları kullanan kümeler için, ham küme genelinde kapasite, eklenen her konakla 15,4 TB ile artırılır. Ana bilgisayarların bir kümeye eklenmesi yaklaşık 10 dakika sürer. Kümeleri ölçeklendirmeyle ilgili yönergeler için bkz. [özel bulutu ölçeklendirme öğreticisi][tutorial-scale-private-cloud].
 
 ## <a name="azure-storage-integration"></a>Azure depolama tümleştirmesi
 

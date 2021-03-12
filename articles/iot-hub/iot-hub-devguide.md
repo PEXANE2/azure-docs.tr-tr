@@ -9,12 +9,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 01/29/2018
 ms.custom: mqtt
-ms.openlocfilehash: 03e05eb2bc56a07c2bda3d3fb224012abb3c9e4a
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 1fcf560ba1fef137a28ab1872635cc2182cd07e1
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92735932"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103009207"
 ---
 # <a name="azure-iot-hub-developer-guide"></a>Azure IoT Hub Geliştirici Kılavuzu
 
@@ -75,5 +75,3 @@ Bu IoT Hub Geliştirici Kılavuzu aşağıdaki makaleleri içerir:
 * [Başvuru-cihaz ve hizmet SDK 'ları](iot-hub-devguide-sdks.md) , IoT Hub 'ınız ile etkileşime geçen cihaz ve hizmet uygulamaları geliştirmeye yönelik Azure IoT SDK 'larını listeler. Bu makalede, çevrimiçi API belgelerinin bağlantıları bulunur.
 
 * [Reference-IoT Hub MQTT desteği](iot-hub-mqtt-support.md) , IoT Hub MQTT protokolünü nasıl desteklediğine ilişkin ayrıntılı bilgiler sağlar. Makale, Azure IoT SDK 'lerinde yerleşik olarak bulunan MQTT Protokolü desteğini açıklar ve MQTT protokolünü doğrudan kullanma hakkında bilgi sağlar.
-
-* [Sözlük](iot-hub-devguide-glossary.md) IoT Hub ilgili ortak koşulların bir listesi.

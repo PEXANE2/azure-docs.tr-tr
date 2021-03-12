@@ -6,12 +6,12 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/14/2020
-ms.openlocfilehash: 3f4c33a88d9a8fbf2c3d64135d93da54cf75fab3
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 36ecef007e10f9a090dbabc8b5a91fd473930141
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93097521"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102633861"
 ---
 # <a name="optimize-request-cost-in-azure-cosmos-db"></a>Azure Cosmos DB istek maliyetini iyileştirme
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -105,7 +105,7 @@ Bir öğe yazma ile ilgili RU maliyeti şunlara bağlıdır:
 - Öğe boyutu.
 - [Dizin oluşturma ilkesinin](index-policy.md) kapsadığı ve dizine alınması gereken özellik sayısı.
 
-5 ru 'ın üzerinde dizin maliyetlerine 5 ' ten az özellik içeren 1 KB 'lık öğe ekleniyor. Aynı öğeyi eklemek için gereken ücret, bir öğe maliyetlerini iki kez değiştirme.
+1 KB 'lık bir öğe, maliyetleri dizinlemeden ~ 5,5 ru etrafında ekleniyor. Aynı öğeyi eklemek için gereken ücret, bir öğe maliyetlerini iki kez değiştirme.
 
 ### <a name="optimizing-writes"></a>Yazmaları iyileştirme
 

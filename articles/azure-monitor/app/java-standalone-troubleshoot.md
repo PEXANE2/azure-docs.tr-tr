@@ -4,12 +4,12 @@ description: Azure Izleyici için Java aracısında sorun gidermeyi öğrenin Ap
 ms.topic: conceptual
 ms.date: 11/30/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 45f45e71546909b71c71c66303c1459edd74548f
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
+ms.openlocfilehash: f971466f25c2b7a4bd28e5b7eec6268f1b2e8b3d
+ms.sourcegitcommit: 94c3c1be6bc17403adbb2bab6bbaf4a717a66009
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102199620"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103225583"
 ---
 # <a name="troubleshooting-guide-azure-monitor-application-insights-for-java"></a>Sorun giderme kılavuzu: Java için Azure Izleyici Application Insights
 
@@ -41,7 +41,9 @@ Bu değişiklikler şunları içerir:
 
 ## <a name="some-logging-is-not-auto-collected"></a>Bazı günlük kaydı otomatik olarak toplanmadı
 
-Günlüğe kaydetme işlemi, yalnızca ilk olarak günlüğe kaydetme çerçevelerinin yapılandırılmış eşiğini karşılıyorsa yakalanır ve ikincisi de Application Insights yapılandırılan eşiği karşılar.
+Günlüğe kaydetme yalnızca, günlük çerçevesi için yapılandırılan düzeyi karşılıyorsa yakalanır ve ikincisi de Application Insights için yapılandırılan düzeyi karşılar.
+
+Örneğin, günlük oluşturma çatısı `WARN` paketten (ve üzeri) günlüğe kaydedilecek şekilde yapılandırıldıysa `com.example` ve Application Insights `INFO` , (ve üzerine) yakalanacak şekilde yapılandırıldıysa, Application Insights yalnızca paketten (ve üzeri) yakalama yapılır `WARN` `com.example` .
 
 Belirli bir günlüğe kaydetme bildiriminin günlüğe kaydetme çerçevelerinin yapılandırılmış eşiğini karşılayıp karşılamadığını öğrenmenin en iyi yolu, normal uygulama günlüğinizde (ör. dosya veya konsol) görüntülendiğini doğrulamadır.
 

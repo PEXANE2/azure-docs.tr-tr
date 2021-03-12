@@ -3,12 +3,12 @@ title: Azure Service Fabric küme ayarlarını değiştirme
 description: Bu makalede, özelleştirebileceğiniz doku ayarları ve doku yükseltme ilkeleri açıklanmaktadır.
 ms.topic: reference
 ms.date: 08/30/2019
-ms.openlocfilehash: fed66c1a1908977fbe9769c1aec77945bc38c3dc
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: 78d83faea802862d3cd6d1b1a9cf9f1016245065
+ms.sourcegitcommit: ec39209c5cbef28ade0badfffe59665631611199
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102183412"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103232061"
 ---
 # <a name="customize-service-fabric-cluster-settings"></a>Service Fabric kümesi ayarlarını özelleştirme
 Bu makalede, Service Fabric kümeniz için özelleştirebileceğiniz çeşitli yapı ayarları açıklanmaktadır. Azure 'da barındırılan kümeler için [Azure Portal](https://portal.azure.com) veya Azure Resource Manager şablonu kullanarak ayarları özelleştirebilirsiniz. Daha fazla bilgi için bkz. [Azure kümesinin yapılandırmasını yükseltme](service-fabric-cluster-config-upgrade-azure.md). Tek başına kümeler için, dosyadaki *ClusterConfig.js* güncelleyerek ve kümenizde bir yapılandırma yükseltmesi gerçekleştirerek ayarları özelleştirirsiniz. Daha fazla bilgi için bkz. [tek başına kümenin yapılandırmasını yükseltme](service-fabric-cluster-config-upgrade-windows-server.md).
@@ -349,6 +349,7 @@ Aşağıda, bölümüne göre organize ettiğiniz doku ayarlarının bir listesi
 |DisableContainers|bool, varsayılan değer FALSE|Statik|Kullanım dışı yapılandırma olan DisableContainerServiceStartOnContainerActivatorOpen yerine kapsayıcıları devre dışı bırakma yapılandırması |
 |DisableDockerRequestRetry|bool, varsayılan değer FALSE |Dinamik| Varsayılan olarak, e-postayla gönderilen her http isteği için ' DockerRequestTimeout ' zaman aşımı ile gg (Docker davmeon) ile iletişim kurar. DD bu süre içinde yanıt vermezse; En üst düzey işlem hala devam ediyorsa, SF, isteği sonlandırır.  Hyperv kapsayıcısı ile; DD, kapsayıcıyı getirmek veya devre dışı bırakmak için bazen çok daha fazla zaman alabilir. Bu gibi durumlarda, istek zaman içinde SF perspektifinden zaman aşımına uğrar ve SF işlemi yeniden dener. Bazen bu, DD 'ye daha fazla basınç ekliyor gibi görünüyor. Bu yapılandırma, bu yeniden denemeyi devre dışı bırakıp DD 'nin yanıt vermesini beklemek için izin verir. |
 |Dnsserverlisttwoıp 'Leri | Bool, varsayılan değer FALSE | Statik | Bu bayraklar, sorunları aralıklı olarak çözmeye yardımcı olmak için yerel DNS sunucusunu iki kez ekler. |
+| DockerTerminateOnLastHandleClosed | bool, varsayılan değer FALSE | Statik | FabricHost, ' dockerd ' öğesini yönetilirken (: SkipDockerProcessManagement = = false), bu ayar FabricHost veya dockerd kilitlenmesiyle ne olacağını yapılandırır. `true`Her iki işlem kilitlenirse, olarak ayarlandığında, tüm çalışan kapsayıcılar HCS tarafından zorla sonlandırılır. Kapsayıcılar olarak ayarlandıysa çalışmaya `false` devam eder. Note: 8,0 ' den önceki durum, bu davranışın farkında olarak eşdeğerdir `false` . Burada varsayılan ayar, `true` Temizleme mantığımızın bu işlemlerin yeniden başlatılması sırasında etkili olması için varsayılan olarak ilerleyebilmemiz gereken şeydir. |
 | DoNotInjectLocalDnsServer | bool, varsayılan değer FALSE | Statik | Çalışma zamanının, kapsayıcılar için DNS sunucusu olarak yerel IP 'yi ekleme engeller. |
 |EnableActivateNoWindow| bool, varsayılan değer FALSE|Dinamik| Etkinleştirilen işlem, herhangi bir konsol olmadan arka planda oluşturulur. |
 |EnableContainerServiceDebugMode|bool, varsayılan değer doğru|Statik|Docker kapsayıcıları için günlüğü etkinleştirin/devre dışı bırakın.  Yalnızca Windows.|

@@ -7,12 +7,12 @@ ms.reviewer: maghan
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 03/08/2020
-ms.openlocfilehash: 4aa8a0790e7f5812e8c6a70eab1718f92a5e00d0
-ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
+ms.openlocfilehash: 8f22645eafa0969eac3d6c4c0645909f8c650cad
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102520311"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103199809"
 ---
 # <a name="how-to-use-parameters-expressions-and-functions-in-azure-data-factory"></a>Azure Data Factory içindeki parametreleri, ifadeleri ve işlevleri kullanma
 
@@ -25,7 +25,7 @@ Bu belgede, öncelikle Azure Data Factory içinde parametreli veri işlem hatlar
 
 ## <a name="azure-data-factory-ui-and-parameters"></a>Azure Data Factory Kullanıcı arabirimi ve parametreleri
 
-ADF Kullanıcı arabiriminde Azure Data Factory parametre kullanımı için yeni bir bağlantı kullanıyorsanız, Visual Açıklama [parametreleri ile meta veri odaklı işlem hattı için parametrelere ve Data Factory Kullanıcı](https://docs.microsoft.com/azure/data-factory/how-to-use-trigger-parameterization#data-factory-ui) arabirimine [sahip bağlı hizmetler IÇIN Data Factory Kullanıcı](https://docs.microsoft.comazure/data-factory/parameterize-linked-services#data-factory-ui) arabirimini gözden geçirin.
+ADF Kullanıcı arabiriminde Azure Data Factory parametre kullanımı için yeni bir bağlantı kullanıyorsanız, Visual Açıklama [parametreleri ile meta veri odaklı işlem hattı için parametrelere ve Data Factory Kullanıcı](https://docs.microsoft.com/azure/data-factory/how-to-use-trigger-parameterization#data-factory-ui) arabirimine [sahip bağlı hizmetler IÇIN Data Factory Kullanıcı](https://docs.microsoft.com/azure/data-factory/parameterize-linked-services#data-factory-ui) arabirimini gözden geçirin.
 
 ## <a name="parameter-and-expression-concepts"></a>Parametre ve ifade kavramları 
 

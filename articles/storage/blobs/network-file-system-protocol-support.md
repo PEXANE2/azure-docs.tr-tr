@@ -9,12 +9,12 @@ ms.date: 02/19/2021
 ms.author: normesta
 ms.reviewer: yzheng
 ms.custom: references_regions
-ms.openlocfilehash: 22f4db04f37985e49065f80da6e4578ed71c5db1
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: b00956a6fb5a79b09602ca1752cc547595f32db6
+ms.sourcegitcommit: 94c3c1be6bc17403adbb2bab6bbaf4a717a66009
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102428448"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103224603"
 ---
 # <a name="network-file-system-nfs-30-protocol-support-in-azure-blob-storage-preview"></a>Azure Blob depolamada ağ dosya sistemi (NFS) 3,0 protokol desteği (Önizleme)
 
@@ -112,7 +112,7 @@ Hesabınızda NFS 3,0 protokolünü etkinleştirdiğinizde aşağıdaki Azure de
   
 ## <a name="nfs-30-features-not-yet-supported"></a>NFS 3,0 özellikleri henüz desteklenmiyor
 
-Aşağıdaki NFS 3,0 özellikleri henüz Azure Data Lake Storage 2. desteklenmez.
+Aşağıdaki NFS 3,0 özellikleri henüz desteklenmiyor.
 
 - UDP üzerinden NFS 3,0. Yalnızca TCP üzerinden NFS 3,0 desteklenir.
 
@@ -127,6 +127,12 @@ Aşağıdaki NFS 3,0 özellikleri henüz Azure Data Lake Storage 2. desteklenmez
 - Sabit bağlantı
 
 - Kapsayıcıyı salt okunurdur dışa aktarma
+
+## <a name="nfs-30-clients-not-yet-supported"></a>NFS 3,0 istemcileri henüz desteklenmiyor
+
+Aşağıdaki NFS 3,0 istemcileri henüz desteklenmemektedir.
+
+- NFS için Windows istemcisi
 
 ## <a name="pricing"></a>Fiyatlandırma
 

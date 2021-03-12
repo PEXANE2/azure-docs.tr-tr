@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 03/18/2020
 ms.topic: conceptual
 ms.service: azure-communication-services
-ms.openlocfilehash: b5c75f62f730c1bbc09a66e81f70f0e71a246fde
-ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
+ms.openlocfilehash: 8f82b59a9702ee249c2e8f330b4aec1ba512d2f3
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102613366"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102636088"
 ---
 # <a name="client-libraries-and-rest-apis"></a>İstemci kitaplıkları ve REST API’leri
 
@@ -30,6 +30,7 @@ Azure Iletişim Hizmetleri Özellikleri, kavramsal olarak altı alan halinde dü
 | Azure Resource Manager | REST | Aç            | Azure. ResourceManager. Communication | Iletişim Hizmetleri kaynaklarını sağlama ve yönetme             |
 | Common                 | REST | Aç               | Azure. Communication. Common          | Diğer istemci kitaplıkları için temel türleri sağlar |
 | Kimlik         | REST | Aç               | Azure. Communication. Identity  | Kullanıcıları yönetme, belirteçleri erişim |
+| Telefon numaraları         | REST | Aç               | Azure. Communication. PhoneNumbers  | Telefon numaralarını yönetme |
 | Sohbet                   | Özel sinyalle REST | Kapalı kaynak sinyal paketiyle aç    | Azure. Communication. sohbet            | Uygulamalarınıza gerçek zamanlı metin tabanlı sohbet ekleyin  |
 | SMS                    | REST | Aç              | Azure. Communication. SMS             | SMS iletileri gönderme ve alma |
 | Events                | Özel aktarım | Kapatıldı |Azure. Communication. çağrılıyor         | Ses, video, ekran paylaşımı ve diğer gerçek zamanlı veri iletişim özelliklerinden yararlanın          |
@@ -45,6 +46,7 @@ Ayrı istemci kitaplığı paketleri için yayımlama konumları aşağıda ayr�
 | Azure Resource Manager | -         | [NuGet](https://www.nuget.org/packages/Azure.ResourceManager.Communication)    |   [Pypı](https://pypi.org/project/azure-mgmt-communication/)    |  -  | -              | -  | [GitHub aracılığıyla git](https://github.com/Azure/azure-sdk-for-go/releases/tag/v46.3.0) |
 | Common         | [npm](https://www.npmjs.com/package/@azure/communication-common)         | [NuGet](https://www.nuget.org/packages/Azure.Communication.Common/)    | Yok      | [Maven](https://search.maven.org/search?q=a:azure-communication-common)   | [GitHub](https://github.com/Azure/azure-sdk-for-ios/releases)            | [Maven](https://search.maven.org/artifact/com.azure.android/azure-communication-common)             | -                              |
 | Kimlik | [npm](https://www.npmjs.com/package/@azure/communication-identity)         | [NuGet](https://www.nuget.org/packages/Azure.Communication.Identity)    | [Pypı](https://pypi.org/project/azure-communication-identity/)      | [Maven](https://search.maven.org/search?q=a:azure-communication-identity)   | -              | -              | -                            |
+| Telefon numaraları | [npm](https://www.npmjs.com/package/@azure/communication-phone-numbers)         | [NuGet](https://www.nuget.org/packages/Azure.Communication.PhoneNumbers)    | [Pypı](https://pypi.org/project/azure-communication-phonenumbers/)      | [Maven](https://search.maven.org/search?q=a:azure-communication-phonenumbers)   | -              | -              | -                            |
 | Sohbet           | [npm](https://www.npmjs.com/package/@azure/communication-chat)        | [NuGet](https://www.nuget.org/packages/Azure.Communication.Chat)     | [Pypı](https://pypi.org/project/azure-communication-chat/)     | [Maven](https://search.maven.org/search?q=a:azure-communication-chat)   | [GitHub](https://github.com/Azure/azure-sdk-for-ios/releases)  | [Maven](https://search.maven.org/search?q=a:azure-communication-chat)   | -                              |
 | SMS            | [npm](https://www.npmjs.com/package/@azure/communication-sms)         | [NuGet](https://www.nuget.org/packages/Azure.Communication.Sms)    | [Pypı](https://pypi.org/project/azure-communication-sms/)       | [Maven](https://search.maven.org/artifact/com.azure/azure-communication-sms)   | -              | -              | -                              |
 | Events        | [npm](https://www.npmjs.com/package/@azure/communication-calling)         | -      | -      | -     | [GitHub](https://github.com/Azure/Communication/releases)     | [Maven](https://search.maven.org/artifact/com.azure.android/azure-communication-calling/)            | -                              |

@@ -8,14 +8,16 @@ ms.date: 12/13/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 6cefb60d794defcce54766b9c7f71e7fbf40fe5c
-ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
+ms.openlocfilehash: 5954c3083afc73fb25c796086f8fb8809af03ec1
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99539442"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103200663"
 ---
 # <a name="store-data-at-the-edge-with-azure-blob-storage-on-iot-edge"></a>IoT Edge'de Azure Blob Depolama ile verileri kenarda depolama
+
+[!INCLUDE [iot-edge-version-all-supported](../../includes/iot-edge-version-all-supported.md)]
 
 IoT Edge üzerindeki Azure Blob depolama alanı, uç noktada bir [Blok Blobu](/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs#about-block-blobs) ve [ekleme blob](/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs#about-append-blobs) depolama çözümü sağlar. IoT Edge cihazınızdaki BLOB depolama modülü, Blobların IoT Edge cihazınızda yerel olarak depolanması dışında bir Azure Blob hizmeti gibi davranır. Bloblarınıza, daha önce kullandığınız Azure depolama SDK yöntemlerini veya blob API çağrılarını kullanarak erişebilirsiniz. Bu makalede, IoT Edge cihazınızda bir blob hizmeti çalıştıran IoT Edge kapsayıcısında Azure Blob depolama ile ilgili kavramlar açıklanmaktadır.
 
@@ -110,7 +112,7 @@ $creds = Get-Credential
 New-SmbGlobalMapping -RemotePath <remote SMB path> -Credential $creds -LocalPath <Any available drive letter>
 ```
 
-Örneğin:
+Örnek:
 
 ```powershell
 $creds = Get-Credential
@@ -136,7 +138,7 @@ sudo chown -R 11000:11000 <blob-dir>
 sudo chmod -R 700 <blob-dir>
 ```
 
-Örneğin:
+Örnek:
 
 ```terminal
 sudo chown -R 11000:11000 /srv/containerdata
@@ -291,7 +293,7 @@ Desteklenen
 
 IoT Edge modülündeki bu Azure Blob depolama alanı, IoT Edge Event Grid ile tümleştirme sağlar. Bu tümleştirmeyle ilgili ayrıntılı bilgi için, [modülleri dağıtma, olayları yayımlama ve olay teslimini doğrulama hakkında öğreticiye](../event-grid/edge/react-blob-storage-events-locally.md)bakın.
 
-## <a name="release-notes"></a>Sürüm Notları
+## <a name="release-notes"></a>Release Notes (Sürüm Notları)
 
 Bu modül için [Docker Hub 'daki sürüm notları](https://hub.docker.com/_/microsoft-azure-blob-storage) aşağıda verilmiştir. Belirli bir sürümün sürüm notlarındaki hata düzeltmeleri ve düzeltme ile ilgili daha fazla bilgi bulabilirsiniz.
 

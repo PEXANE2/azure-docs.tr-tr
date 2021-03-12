@@ -11,12 +11,12 @@ ms.subservice: user-help
 ms.topic: end-user-help
 ms.date: 02/13/2019
 ms.author: curtand
-ms.openlocfilehash: e383896e50ccf06ef6d1b5caaeb0ef36ece2ce3b
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: c947bee0b702797a86d1e038f74c6c10e2b23eb4
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96348305"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103197485"
 ---
 # <a name="set-up-the-microsoft-authenticator-app-as-your-verification-method"></a>Doğrulama yönteminiz olarak Microsoft Authenticator uygulamasını ayarlama
 
@@ -46,10 +46,10 @@ Güvenlik bilgileri yöntemleri hem iki öğeli güvenlik doğrulaması hem de p
 
 Kuruluşunuzun ayarlarına bağlı olarak, güvenlik bilgileri yöntemlerinizin biri olarak bir kimlik doğrulama uygulaması kullanabilirsiniz. Microsoft Authenticator uygulamasını kullanmanız gerekmez ve kurulum işlemi sırasında farklı bir uygulama seçebilirsiniz. Ancak, bu makale Microsoft Authenticator uygulamasını kullanır.
 
->[!Important]
-> 5 farklı cihazlarda veya 5 donanım belirteçlerinde Microsoft Authenticator uygulama kurulumuna sahipseniz, altıncı bir değer Ayarlayamayabilir ve aşağıdaki hata iletisini görebilirsiniz.
+> [!IMPORTANT]
+> Microsoft Authenticator uygulamayı beş farklı cihazda ayarladıysanız veya beş donanım belirteci kullandıysanız, altıncı bir tane ayarlayamazsınız ve aşağıdaki hata iletisini görebilirsiniz:.
 > 
-> **Zaten beş Authenticator uygulamanız veya donanım belirteçleriniz olduğundan Microsoft Authenticator kurulum yapamazsınız. Kimlik doğrulayıcı uygulamalarınızı veya donanım belirteçlerinden birini silmek için lütfen yöneticinize başvurun.**
+> **Zaten beş Authenticator uygulamanız veya donanım belirteçleriniz olduğundan Microsoft Authenticator ayarlayamazsınız. Kimlik doğrulayıcı uygulamalarınızı veya donanım belirteçlerinden birini silmek için lütfen yöneticinize başvurun.**
 
 ### <a name="to-set-up-the-microsoft-authenticator-app"></a>Microsoft Authenticator uygulamasını ayarlamak için
 
@@ -57,7 +57,7 @@ Kuruluşunuzun ayarlarına bağlı olarak, güvenlik bilgileri yöntemlerinizin 
 
     ![, Vurgulanan güvenlik bilgisi bağlantılarını gösteren profilim sayfası](media/security-info/securityinfo-myprofile-page.png)
 
-2. Sol gezinti bölmesinden veya **güvenlik bilgileri** bloğundaki bağlantıdan **güvenlik bilgileri** ' ni seçin ve ardından **güvenlik bilgileri** sayfasından **Yöntem Ekle** ' yi seçin.
+2. Sol menüden **güvenlik bilgileri** ' ni veya **güvenlik bilgileri** bölmesindeki bağlantıyı kullanarak öğesini seçin. Zaten kaydolduysanız, iki öğeli doğrulama istenir. Ardından, **güvenlik bilgileri** bölmesinde **Yöntem Ekle** ' yi seçin.
 
     ![Vurgulanan yöntem ekleme seçeneğiyle güvenlik bilgileri sayfası](media/security-info/securityinfo-myprofile-addmethod-page.png)
 

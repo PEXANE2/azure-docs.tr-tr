@@ -5,12 +5,12 @@ author: cgillum
 ms.topic: conceptual
 ms.date: 11/02/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 16fecf5ce0d4551125ded4ba05fcbc41530efaf1
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: 7329962d547fcb0635e3a9af3d80e562da59f7f2
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102430573"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103199783"
 ---
 # <a name="manage-instances-in-durable-functions-in-azure"></a>Azure 'da Dayanıklı İşlevler örnekleri yönetme
 
@@ -202,6 +202,9 @@ Yöntemi aşağıdaki özelliklerle bir nesne döndürür:
   * **Başarısız**: örnek bir hata vererek başarısız oldu.
   * **Sonlandırıldı**: örnek aniden durduruldu.
 * **Geçmiş**: Orchestration yürütme geçmişi. Bu alan yalnızca, `showHistory` olarak ayarlanmışsa doldurulur `true` .
+
+> [!NOTE]
+> Orchestrator `Completed` , tüm zamanlanmış görevlerinin bitene _ve_ Orchestrator döndürülünceye kadar olarak işaretlenmez. Diğer bir deyişle, bir Orchestrator 'ın, olarak işaretlenmesi için bildirimine ulaşması yeterli değildir `return` `Completed` . Bu durum özellikle kullanılan durumlar için geçerlidir `WhenAny` ; Bu, genellikle `return` tüm zamanlanmış görevler yürütülmeden önce kullanılır.
 
 `null`Örnek yoksa, bu Yöntem (.net), `undefined` (JavaScript) veya `None` (Python) döndürür.
 

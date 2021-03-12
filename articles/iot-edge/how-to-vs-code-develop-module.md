@@ -9,14 +9,16 @@ ms.date: 08/07/2019
 ms.topic: conceptual
 ms.service: iot-edge
 ms.custom: devx-track-js
-ms.openlocfilehash: ebc12e6d64d015267497497bebc22c8586adf999
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: eae6f1ec8cb6917d0d51deca8c9e88725c9b01a7
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95995922"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103200625"
 ---
 # <a name="use-visual-studio-code-to-develop-and-debug-modules-for-azure-iot-edge"></a>Azure IoT Edge için modülleri geliştirmek ve hatalarını ayıklamak için Visual Studio Code kullanın
+
+[!INCLUDE [iot-edge-version-all-supported](../../includes/iot-edge-version-all-supported.md)]
 
 İş mantığınızı Azure IoT Edge için modüllere dönüştürebilirsiniz. Bu makalede, modülleri geliştirme ve hata ayıklama için ana araç olarak Visual Studio Code nasıl kullanacağınız gösterilmektedir.
 
@@ -160,7 +162,7 @@ Simülatörü ayarlamak ve başlatmak için, Visual Studio Code komut paletinden
 
 1. Geliştirme dilinizin gereksinimlerine göre ortamınızı hata ayıklama için hazırlayın, modülünüzün bir kesme noktası ayarlayın ve kullanılacak hata ayıklama yapılandırmasını seçin:
    - **C#**
-     - Visual Studio Code tümleşik terminalde, dizini **_&lt; Modül adı &gt;_* _ klasörünüz olarak değiştirin ve ardından .NET Core uygulaması derlemek için aşağıdaki komutu çalıştırın.
+     - Visual Studio Code tümleşik terminalde, dizini ***&lt; Modül adı &gt;*** klasörünüz olarak değiştirin ve ardından .NET Core uygulaması derlemek için aşağıdaki komutu çalıştırın.
 
        ```cmd
        dotnet build
@@ -168,13 +170,13 @@ Simülatörü ayarlamak ve başlatmak için, Visual Studio Code komut paletinden
 
      - Dosyayı açın `Program.cs` ve bir kesme noktası ekleyin.
 
-     - _* View > Debug * * seçerek Visual Studio Code hata ayıklama görünümüne gidin. Açılan menüden hata ayıklama yapılandırması * *_ &lt; modülünüzün adı &gt; _ yerel hata ayıklama (.NET Core) * * öğesini seçin.
+     - Visual Studio Code hata ayıklama görünümüne giderek **görünüm > hata ayıkla**' yı seçin. Modülünüzün hata ayıklama yapılandırmasını, açılan menüden **yerel hata ayıklama (.NET Core) _&lt; adını &gt;_** seçin.
 
         > [!NOTE]
         > .NET Core ' `TargetFramework` daki program yolunuza uygun değilse `launch.json` , ' deki program yolunu,. csproj dosyanızdaki ile eşleşecek şekilde el ile güncelleştirmeniz gerekir, `launch.json` `TargetFramework` böylece Visual Studio Code bu programı başarıyla başlatabilir.
 
    - **Node.js**
-     - Visual Studio Code tümleşik terminalde, dizini **_&lt; Modül adı &gt;_* _ klasörünüz olarak değiştirin ve ardından düğüm paketlerini yüklemek için aşağıdaki komutu çalıştırın
+     - Visual Studio Code tümleşik terminalde, dizini ***&lt; Modül adı &gt;*** klasörünüze değiştirin ve düğüm paketlerini yüklemek için aşağıdaki komutu çalıştırın
 
        ```cmd
        npm install
@@ -182,7 +184,7 @@ Simülatörü ayarlamak ve başlatmak için, Visual Studio Code komut paletinden
 
      - Dosyayı açın `app.js` ve bir kesme noktası ekleyin.
 
-     - _* View > Debug * * seçerek Visual Studio Code hata ayıklama görünümüne gidin. Açılan menüden hata ayıklama yapılandırması * *_ &lt; modülünüzün adı &gt; _ yerel hata ayıklama (Node.js) * * öğesini seçin.
+     - Visual Studio Code hata ayıklama görünümüne giderek **görünüm > hata ayıkla**' yı seçin. Modülünüzün hata ayıklama yapılandırmasını, açılan listeden **yerel hata ayıklama (Node.js) _&lt; adını &gt;_** seçin.
    - **Java**
      - Dosyayı açın `App.java` ve bir kesme noktası ekleyin.
 
@@ -234,7 +236,7 @@ Geliştirme makinenizde, IoT Edge çözümünüzü çalıştırabilmeniz için I
 
    ![Değişkenleri izle](media/how-to-vs-code-develop-module/view-log.png)
 
-1. Visual Studio Code hata ayıklama görünümüne gidin ve modülünüzün hata ayıklama yapılandırma dosyasını seçin. Hata ayıklama seçeneği adı **_&lt; Modül adı &gt;_ uzaktan hata ayıklama ile aynı olmalıdır**
+1. Visual Studio Code hata ayıklama görünümüne gidin ve modülünüzün hata ayıklama yapılandırma dosyasını seçin. Hata ayıklama seçeneği adı ***&lt; Modül adı &gt;* uzaktan hata ayıklama ile aynı olmalıdır**
 
 1. **Hata ayıklamayı Başlat** ' ı seçin veya **F5** tuşuna basın. İliştirilecek işlemi seçin.
 
@@ -322,13 +324,13 @@ Modülleriniz Visual Studio Code ile aynı makinede çalışıyorsa, kapsayıcı
 
   - Hata ayıklamakta olan makinedeki modülün çalışır durumda olduğundan ve hata ayıklayıcılarına eklemek için, bağlantı noktası 9229 ' nin dışarıdan erişilebilir olduğundan emin olun. Bunu `http://<target-machine-IP>:9229/json` hata ayıklayıcı makinesinde açarak doğrulayabilirsiniz. Bu URL, ayıklanabilecek Node.js modülüyle ilgili bilgileri göstermelidir.
   
-  - Geliştirme makinenizde Visual Studio Code açın ve ardından, modül `launch.json` **_&lt; adı &gt;_ uzaktan hata ayıklama (Node.js)** profili (veya modülünüzün bir Windows kapsayıcısı olarak çalışıyorsa, modül **_&lt; adı &gt;_ uzaktan hata ayıklama (Windows kapsayıcısında Node.js)** profilinde, hata ayıklamakta olan makinenin IP 'si olması için düzenleyin.
+  - Geliştirme makinenizde Visual Studio Code açın ve ardından, modül `launch.json` ***&lt; adı &gt;* uzaktan hata ayıklama (Node.js)** profili (veya modülünüzün bir Windows kapsayıcısı olarak çalışıyorsa, modül **_&lt; adı &gt;_ uzaktan hata ayıklama (Windows kapsayıcısında Node.js)** profilinde, hata ayıklamakta olan makinenin IP 'si olması için düzenleyin.
 
 - **Java**
 
   - ' İ çalıştırarak hata ayıklaması yapılacak makineye bir SSH tüneli oluşturun `ssh -f <username>@<target-machine> -L 5005:127.0.0.1:5005 -N` .
   
-  - Geliştirme makinenizde Visual Studio Code açın ve hedef makineye iliştirebilmeniz için **_&lt; modül &gt; adı_ uzaktan hata ayıklama (Java)** profilinizi düzenleyin `launch.json` . `launch.json`Visual Studio Code Ile Java 'yı Düzenle ve hata ayıklama hakkında daha fazla bilgi için, [hata ayıklayıcıyı yapılandırma](https://code.visualstudio.com/docs/java/java-debugging#_configuration)konusundaki bölümüne bakın.
+  - Geliştirme makinenizde Visual Studio Code açın ve hedef makineye iliştirebilmeniz için ***&lt; modül &gt; adı* uzaktan hata ayıklama (Java)** profilinizi düzenleyin `launch.json` . `launch.json`Visual Studio Code Ile Java 'yı Düzenle ve hata ayıklama hakkında daha fazla bilgi için, [hata ayıklayıcıyı yapılandırma](https://code.visualstudio.com/docs/java/java-debugging#_configuration)konusundaki bölümüne bakın.
 
 - **Python**
 
@@ -336,11 +338,11 @@ Modülleriniz Visual Studio Code ile aynı makinede çalışıyorsa, kapsayıcı
 
   - `ptvsd.enable_attach(('0.0.0.0', 5678))`Daha önce eklediğiniz kodda `main.py` , **0.0.0.0** olarak ayıklanabilecek makinenin IP adresini değiştirin. IoT Edge modülünüzü yeniden derleyin, gönderin ve dağıtın.
 
-  - Geliştirme makinenizde Visual Studio Code açın ve ardından `launch.json` `host` , **_&lt; Modül adı &gt;_ uzaktan hata ayıklama (Python)** profilinizin değeri yerine hedef makinenin IP adresini kullandığından düzenleme yapın `localhost` .
+  - Geliştirme makinenizde Visual Studio Code açın ve ardından `launch.json` `host` , ***&lt; Modül adı &gt;* uzaktan hata ayıklama (Python)** profilinizin değeri yerine hedef makinenin IP adresini kullandığından düzenleme yapın `localhost` .
 
 ### <a name="debug-your-module"></a>Modülünüzün hatalarını ayıklama
 
-1. Visual Studio Code hata ayıklama görünümünde modülünüzün hata ayıklama yapılandırma dosyasını seçin. Hata ayıklama seçeneği adı **_&lt; Modül adı &gt;_ uzaktan hata ayıklama ile aynı olmalıdır**
+1. Visual Studio Code hata ayıklama görünümünde modülünüzün hata ayıklama yapılandırma dosyasını seçin. Hata ayıklama seçeneği adı ***&lt; Modül adı &gt;* uzaktan hata ayıklama ile aynı olmalıdır**
 
 1. Geliştirme diliniz için modül dosyasını açın ve bir kesme noktası ekleyin:
 

@@ -14,20 +14,79 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 2/01/2019
 ms.author: atsenthi
-ms.openlocfilehash: 7d52d49ab5d3a47dd69fdc1708f9e52f4f796a92
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: e51b247f8c1a5a9ed8f6ec8e24363015afb2f7de
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100390649"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102614420"
 ---
 # <a name="patch-the-windows-operating-system-in-your-service-fabric-cluster"></a>Service Fabric kümenizdeki Windows işletim sistemini düzeltme eki uygulama
 
-> [!IMPORTANT]
-> 30 Nisan 2019 itibariyle, düzeltme eki Orchestration uygulama sürümü 1,2. * artık desteklenmemektedir. En son sürüme yükseltdiğinizden emin olun. "Windows Update" sanal makine yükseltmeleri, işletim sistemi için işletim sistemi diski yerine düzeltme eklerini uygular. 
+## <a name="automatic-os-image-upgrades"></a>Otomatik işletim sistemi görüntüsü yükseltmeleri
 
-> [!NOTE]
-> [Sanal makine ölçek kümeniz üzerinde OTOMATIK işletim sistemi görüntüsü yükseltmelerini](../virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade.md) alma, Işletim sisteminizi Azure 'da düzeltme eki uygulama konusunda en iyi uygulamadır. Sanal makine ölçek kümesi tabanlı otomatik işletim sistemi görüntüsü yükseltmeleri, ölçek kümesi üzerinde gümüş veya daha fazla dayanıklılık gerektirir. Dayanıklılık katmanı bronz olan düğüm türlerinde bu desteklenmez; bu durumda, lütfen Patch Orchestration uygulamasını kullanın.
+[Sanal makine ölçek kümeleriniz üzerinde OTOMATIK işletim sistemi görüntüsü yükseltmelerini](../virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade.md) alma, Işletim sisteminizi Azure 'da düzeltme eki uygulama konusunda en iyi uygulamadır. Sanal makine ölçek kümesi tabanlı otomatik işletim sistemi görüntüsü yükseltmeleri, ölçek kümesi üzerinde gümüş veya daha fazla dayanıklılık gerektirir.
+
+Sanal makine ölçek kümelerine göre otomatik işletim sistemi görüntüsü yükseltmeleri için gereksinimler
+-   Service Fabric [dayanıklılık düzeyi](../service-fabric/service-fabric-cluster-capacity.md#durability-characteristics-of-the-cluster) gümüş veya altın, bronz değildir.
+-   Ölçek kümesi modeli tanımındaki Service Fabric uzantısının TypeHandlerVersion 1,1 veya üzeri olması gerekir.
+-   Dayanıklılık düzeyi, ölçek kümesi modeli tanımındaki Service Fabric kümesinde ve Service Fabric uzantısında aynı olmalıdır.
+- Sanal Makine Ölçek Kümeleri için ek bir sistem durumu araştırması veya uygulama durumu uzantısının kullanımı gerekli değildir.
+
+Uyuşmazlık ayarlarının Service Fabric kümesinde ve Service Fabric uzantısında eşleşmediğinden emin olun, bunun eşleşmemesi da yükseltme hatalarına neden olur. Dayanıklılık düzeyleri [Bu sayfada](../service-fabric/service-fabric-cluster-capacity.md#changing-durability-levels)özetlenen yönergeler başına değiştirilebilir.
+
+Bronz dayanıklılık sayesinde, otomatik işletim sistemi görüntüsü yükseltmesi kullanılamaz. [Düzeltme Eki düzenleme uygulaması](#patch-orchestration-application ) (yalnızca Azure 'da barındırılan kümeler için tasarlanan) gümüş veya daha fazla dayanıklılık düzeyi için *önerilmemekle* birlikte, Windows güncelleştirmelerini Service Fabric yükseltme etki alanlarına göre otomatik hale getirmek için tek seçeneğiniz vardır.
+
+> [!IMPORTANT]
+> "Windows Update" sanal makine yükseltmeleri, işletim sistemi için işletim sistemi diskinin değiştirilmesi gerekmeden Azure Service Fabric desteklenmez.
+
+Özelliği, işlem sistemindeki devre dışı Windows Update düzgün şekilde etkinleştirmek için iki adım gerekir.
+
+1. Otomatik işletim sistemi görüntü yükseltmesini etkinleştirme, Windows Update ARM devre dışı bırakma 
+    ```json
+    "virtualMachineProfile": { 
+        "properties": {
+          "upgradePolicy": {
+            "automaticOSUpgradePolicy": {
+              "enableAutomaticOSUpgrade":  true
+            }
+          }
+        }
+      }
+    ```
+    
+    ```json
+    "virtualMachineProfile": { 
+        "osProfile": { 
+            "windowsConfiguration": { 
+                "enableAutomaticUpdates": false 
+            }
+        }
+    }
+    ```
+
+    Azure PowerShell
+    ```azurepowershell-interactive
+    Update-AzVmss -ResourceGroupName $resourceGroupName -VMScaleSetName $scaleSetName -AutomaticOSUpgrade $true -EnableAutomaticUpdate $false
+    ``` 
+    
+1. Ölçek kümesi modelini Güncelleştir Bu yapılandırma sonrasında, değişikliğin etkili olması için ölçek kümesi modelinin güncelleştirilmesi için tüm makinelerin yeniden görüntüsünü değiştirmeniz gerekir.
+    
+    Azure PowerShell
+    ```azurepowershell-interactive
+    $scaleSet = Get-AzVmssVM -ResourceGroupName $resourceGroupName -VMScaleSetName $scaleSetName
+    $instances = foreach($vm in $scaleSet)
+    {
+        Set-AzVmssVM -ResourceGroupName $resourceGroupName -VMScaleSetName $scaleSetName -InstanceId $vm.InstanceID -Reimage
+    }
+    ``` 
+    
+Daha fazla yönerge için lütfen [sanal makine ölçek kümelerine göre otomatik işletim sistemi görüntüsü yükseltmelerini](../virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade.md) inceleyin.
+
+## <a name="patch-orchestration-application"></a>Düzeltme Eki düzenleme uygulaması
+
+> [!IMPORTANT]
+> 30 Nisan 2019 itibariyle, düzeltme eki Orchestration uygulama sürümü 1,2. * artık desteklenmemektedir. En son sürüme yükseltdiğinizden emin olun.
 
 Düzeltme Eki düzenleme uygulaması (POA), Azure 'da barındırılan kümeler için yapılandırma tabanlı işletim sistemi düzeltme eki zamanlamaya izin veren Azure Service Fabric Onarım Yöneticisi hizmeti etrafında bir sarmalayıcıdır. Azure dışı barındırılan kümeler için POA gerekli değildir, ancak kapalı kalma süresi olmadan Service Fabric küme konaklarına yama yapmak için güncelleştirme etki alanı tarafından yapılan düzeltme eki yüklemeyi zamanlama gerekir.
 

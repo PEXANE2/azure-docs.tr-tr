@@ -7,12 +7,12 @@ ms.custom: references_regions, devx-track-azurecli
 author: bwren
 ms.author: bwren
 ms.date: 02/07/2021
-ms.openlocfilehash: 556570b02664a0afd01137f939bea67a1014b680
-ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
+ms.openlocfilehash: ea33eff30e712c1597c3606d74cb6d56683211ae
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "102449501"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102615593"
 ---
 # <a name="log-analytics-workspace-data-export-in-azure-monitor-preview"></a>Azure Izleyici 'de çalışma alanı verilerini dışarı aktarma Log Analytics (Önizleme)
 Azure Izleyici 'de Log Analytics çalışma alanı verileri dışarı aktarma işlemi, Log Analytics çalışma alanınızdaki seçili tablolardan verileri sürekli olarak bir Azure depolama hesabına veya Azure Event Hubs toplanarak dışarı aktaralmanıza olanak sağlar. Bu makalede, bu özellik hakkında ayrıntılar ve çalışma alanlarınızdaki veri dışarı aktarmayı yapılandırma adımları sağlanmaktadır.
@@ -117,7 +117,7 @@ Depolama hesabınızı seçili ağlardan erişime izin verecek şekilde yapılan
 ### <a name="create-or-update-data-export-rule"></a>Veri dışarı aktarma kuralı oluştur veya güncelleştir
 Veri dışa aktarma kuralı, verilerin dışarı aktarıldığı tabloları ve hedefi tanımlar. Şu anda her bir hedef için tek bir kural oluşturabilirsiniz.
 
-Workapce kuralları için dışarı aktarma kuralları yapılandırması için Tablo listesine ihtiyacınız varsa, bu sorguyu çalışma alanınızda çalıştırın.
+Dışarı aktarma kuralı, çalışma alanınızdaki tabloları içermelidir. Çalışma alanınızdaki kullanılabilir tabloların bir listesi için bu sorguyu çalıştırın.
 
 ```kusto
 find where TimeGenerated > ago(24h) | distinct Type
