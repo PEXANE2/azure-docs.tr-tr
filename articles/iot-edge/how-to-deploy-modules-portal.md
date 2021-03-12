@@ -8,14 +8,16 @@ ms.date: 10/13/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: ef3f09648e0d9101d07c6d8941ee7f79ae97b2b8
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 9248c9578d94b000c04c82b33eeeb089e55a26ef
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92048041"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103200309"
 ---
 # <a name="deploy-azure-iot-edge-modules-from-the-azure-portal"></a>Azure portal Azure IoT Edge modüllerini dağıtma
+
+[!INCLUDE [iot-edge-version-all-supported](../../includes/iot-edge-version-all-supported.md)]
 
 İş mantığınızla IoT Edge modüller oluşturduktan sonra, bunları kenarda çalıştırmak için cihazlarınıza dağıtmak istersiniz. Verileri toplamak ve işlemek için birlikte çalışan birden fazla modülünüz varsa, bunları tek seferde dağıtabilir ve bunları bağlayan yönlendirme kurallarını bildirebilirsiniz.
 
@@ -32,7 +34,7 @@ Bu makalede, Azure portal dağıtım bildirimi oluşturma ve dağıtımı bir Io
 
 Dağıtım bildirimi, hangi modüllerin dağıtılacağını, modüller arasında verilerin nasıl akacağını ve modül TWINS 'in istenen özelliklerini tanımlayan bir JSON belgesidir. Dağıtım bildirimlerinin nasıl çalıştığı ve nasıl oluşturulacağı hakkında daha fazla bilgi için bkz. [IoT Edge modüllerinin nasıl kullanılabileceğini, yapılandırılacağını ve yeniden kullanıldığını anlayın](module-composition.md).
 
-Azure portal, JSON belgesini el ile oluşturmak yerine dağıtım bildirimini oluşturma konusunda size yol gösteren bir sihirbaza sahiptir. Üç adım vardır: **modüller ekleme**, **rotalar belirtme**ve **dağıtımı İnceleme**.
+Azure portal, JSON belgesini el ile oluşturmak yerine dağıtım bildirimini oluşturma konusunda size yol gösteren bir sihirbaza sahiptir. Üç adım vardır: **modüller ekleme**, **rotalar belirtme** ve **dağıtımı İnceleme**.
 
 >[!NOTE]
 >Bu makaledeki adımlarda IoT Edge aracısının ve hub 'ın en son şema sürümü yansıtılacaktır. Şema sürümü 1,1, IoT Edge Version 1.0.10 ile birlikte yayımlanmıştır ve modül başlangıç sırası ve yol önceliği belirleme özelliklerini sunar.
@@ -74,7 +76,7 @@ Yollar ayarlandıktan sonra, Ileri ' yi seçin ve sihirbazın sonraki adımına 
 
 ### <a name="review-deployment"></a>Dağıtımı gözden geçir
 
-İnceleme Bölümü, önceki iki bölümdeki seçimlerinize göre oluşturulan JSON dağıtım bildirimini gösterir. **$EdgeAgent** ve **$edgeHub**eklemediğiniz iki modül olduğunu unutmayın. Bu iki modül [IoT Edge çalışma zamanını](iot-edge-runtime.md) yapar ve her dağıtımda gerekli varsayılanlar olur.
+İnceleme Bölümü, önceki iki bölümdeki seçimlerinize göre oluşturulan JSON dağıtım bildirimini gösterir. **$EdgeAgent** ve **$edgeHub** eklemediğiniz iki modül olduğunu unutmayın. Bu iki modül [IoT Edge çalışma zamanını](iot-edge-runtime.md) yapar ve her dağıtımda gerekli varsayılanlar olur.
 
 Dağıtım bilgilerinizi gözden geçirin ve ardından **Oluştur**' u seçin.
 
@@ -90,7 +92,7 @@ Azure Marketi 'nden ve IoT Hub bir IoT Edge modülünü dağıtabilirsiniz.
 
 ### <a name="deploy-from-azure-marketplace"></a>Azure Marketi 'nden dağıtma
 
-Market 'teki IoT Edge modüllerini kullanın ve istediğiniz bir dosyayı bularak **Oluştur** veya **hemen al**seçeneğini belirleyerek dağıtabilirsiniz. Seçtiğiniz IoT Edge modüle göre değişebilen Dağıtım Sihirbazı adımlarına devam edin:
+Market 'teki IoT Edge modüllerini kullanın ve istediğiniz bir dosyayı bularak **Oluştur** veya **hemen al** seçeneğini belirleyerek dağıtabilirsiniz. Seçtiğiniz IoT Edge modüle göre değişebilen Dağıtım Sihirbazı adımlarına devam edin:
 
 1. Devam ' i seçerek sağlayıcının kullanım koşullarını ve gizlilik ilkesini kabul **edin**. Önce iletişim bilgilerini sağlamanız gerekebilir.
 1. Aboneliğinizi ve hedef cihazın eklendiği IoT Hub seçin.
@@ -105,7 +107,7 @@ Modülün Azure portal IoT Hub dağıtıldığını doğrulayın. Cihazınızı 
 Azure portal IoT Hub Azure Marketi 'nden cihazınıza hızlı bir şekilde bir modül dağıtabilirsiniz.
 
 1. Azure portal IoT Hub gidin.
-1. Sol bölmedeki **otomatik cihaz yönetimi**altında **IoT Edge**' yi seçin.
+1. Sol bölmedeki **otomatik cihaz yönetimi** altında **IoT Edge**' yi seçin.
 1. Dağıtımı alacak IoT Edge cihazını seçin.
 1. Üstteki çubukta **modülleri ayarla**' yı seçin.
 1. **IoT Edge modüller** bölümünde, **Ekle**' ye tıklayın ve açılan menüden **Market modülü** ' nü seçin.

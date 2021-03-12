@@ -1,14 +1,14 @@
 ---
 title: Sorgu dilini anlama
 description: Kaynak grafik tablolarını ve kullanılabilir kusto veri türlerini, işleçlerini ve Azure Kaynak Graf ile kullanılabilir işlevleri açıklar.
-ms.date: 01/14/2021
+ms.date: 03/10/2021
 ms.topic: conceptual
-ms.openlocfilehash: 137b5c40097d7de82e156b4a0869d7257d3e9964
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: f6cb13814fe725ff0253a0a5bf0098f0080fa407
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98624767"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102633810"
 ---
 # <a name="understanding-the-azure-resource-graph-query-language"></a>Azure Kaynak Grafiği sorgu dilini anlama
 
@@ -32,7 +32,9 @@ Kaynak Grafiği Azure Resource Manager kaynak türlerini ve bunların özellikle
 |ResourceContainers |Yes |Abonelik (Önizleme-- `Microsoft.Resources/subscriptions` ) ve kaynak grubu ( `Microsoft.Resources/subscriptions/resourcegroups` ) kaynak türleri ve verileri içerir. |
 |Danışmanlaştırın kaynakları |Evet (Önizleme) |İle _ilgili_ kaynakları içerir `Microsoft.Advisor` . |
 |AlertsManagementResources |Evet (Önizleme) |İle _ilgili_ kaynakları içerir `Microsoft.AlertsManagement` . |
+|ExtendedLocationResources |No |İle _ilgili_ kaynakları içerir `Microsoft.ExtendedLocation` . |
 |GuestConfigurationResources |No |İle _ilgili_ kaynakları içerir `Microsoft.GuestConfiguration` . |
+|KubernetesConfigurationResources |No |İle _ilgili_ kaynakları içerir `Microsoft.KubernetesConfiguration` . |
 |MaintenanceResources |Kısmi, yalnızca _öğesine_ ekleyin. (önizleme) |İle _ilgili_ kaynakları içerir `Microsoft.Maintenance` . |
 |PatchAssessmentResources|No |Azure sanal makineler düzeltme eki değerlendirmesiyle _ilgili_ kaynakları içerir. |
 |Patchınstalyüklemekaynakları|No |Azure sanal makineler düzeltme eki yüklemesiyle _ilgili_ kaynakları içerir. |
@@ -40,6 +42,7 @@ Kaynak Grafiği Azure Resource Manager kaynak türlerini ve bunların özellikle
 |RecoveryServicesResources |Kısmi, yalnızca _öğesine_ ekleyin. (önizleme) |Ve ile _ilgili_ kaynakları `Microsoft.DataProtection` içerir `Microsoft.RecoveryServices` . |
 |SecurityResources |Kısmi, yalnızca _öğesine_ ekleyin. (önizleme) |İle _ilgili_ kaynakları içerir `Microsoft.Security` . |
 |ServiceHealthResources |No |İle _ilgili_ kaynakları içerir `Microsoft.ResourceHealth` . |
+|WorkloadMonitorResources |No |İle _ilgili_ kaynakları içerir `Microsoft.WorkloadMonitor` . |
 
 Kaynak türleri dahil olmak üzere tüm liste için bkz. [Başvuru: desteklenen tablolar ve kaynak türleri](../reference/supported-tables-resources.md).
 
@@ -141,7 +144,7 @@ Aşağıda belirli örneklere sahip kaynak Graph tarafından desteklenen KQL tab
 |[almanız](/azure/kusto/query/takeoperator) |[Tüm genel IP adreslerini listele](../samples/starter.md#list-publicip) |Öğesinin eşanlamlısı `limit` . [Skip](./work-with-data.md#skipping-records)ile çalışmaz. |
 |[Sayfanın Üstü](/azure/kusto/query/topoperator) |[Ada ve işletim sistemi türlerine göre ilk beş sanal makineyi göster](../samples/starter.md#show-sorted) | |
 |[birleşim](/azure/kusto/query/unionoperator) |[İki sorgudan alınan sonuçları tek bir sonuç halinde birleştirin](../samples/advanced.md#unionresults) |Tek tablo izin verildi: _T_ `| union` \[ `kind=` `inner` \| `outer` \] \[ `withsource=` _ColumnName_ \] _tablosu_. `union`Tek bir sorgudaki 3 Tag sınırı. `union`Bacak tablolarının benzer çözümüne izin verilmez. Tek bir tablo içinde veya _kaynaklar_ Ile _resourcecontainers_ tabloları arasında kullanılabilir. |
-|[olmadığı](/azure/kusto/query/whereoperator) |[Depolama içeren kaynakları göster](../samples/starter.md#show-storage) | |
+|[konum](/azure/kusto/query/whereoperator) |[Depolama içeren kaynakları göster](../samples/starter.md#show-storage) | |
 
 `join` `mv-expand` Tek kaynak grafiği SDK sorgusunda 3 ve 3 işleçli varsayılan bir sınır vardır. **Yardım + Destek** aracılığıyla kiracınız için bu limitlere bir artış isteğinde bulunabilir.
 

@@ -2,18 +2,19 @@
 title: Azure AD ile Azure disk şifrelemesi için bir Anahtar Kasası oluşturma ve yapılandırma (önceki sürüm)
 description: Bu makalede, Linux sanal makineleri için Microsoft Azure disk şifrelemeyi kullanma önkoşulları sağlanır.
 author: msmbaldwin
-ms.service: virtual-machines-linux
-ms.subservice: security
+ms.service: virtual-machines
+ms.subservice: disks
+ms.collection: linux
 ms.topic: conceptual
 ms.author: mbaldwin
 ms.date: 03/15/2019
 ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: 3862a07eea2dcec3e67c0145fcdcff8140d19ec3
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 20cb94dd8bfca6adeba151d2169b1896cc7ff5a3
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92746783"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102557888"
 ---
 # <a name="creating-and-configuring-a-key-vault-for-azure-disk-encryption-with-azure-ad-previous-release-for-linux-vms"></a>Linux VM 'Ler için Azure AD (önceki sürüm) ile Azure disk şifrelemesi için bir Anahtar Kasası oluşturma ve yapılandırma
 
@@ -61,7 +62,7 @@ Azure disk şifrelemesi, Anahtar Kasası aboneliğinizdeki disk şifreleme anaht
      New-AzKeyVault -VaultName 'MySecureVault' -ResourceGroupName 'MyKeyVaultResourceGroup' -Location 'East US'
      ```
 
-4. Daha sonra diskleri şifrelerken kullanılmak üzere döndürülen **kasa adı** , **kaynak grubu adı** , **kaynak kimliği** , **kasa URI 'si** ve **nesne kimliği** ' ni unutmayın. 
+4. Daha sonra diskleri şifrelerken kullanılmak üzere döndürülen **kasa adı**, **kaynak grubu adı**, **kaynak kimliği**, **kasa URI 'si** ve **nesne kimliği** ' ni unutmayın. 
 
 
 ### <a name="create-a-key-vault-with-azure-cli"></a><a name="bkmk_KVCLI"></a> Azure CLı ile Anahtar Kasası oluşturma
@@ -80,14 +81,14 @@ Azure disk şifrelemesi, Anahtar Kasası aboneliğinizdeki disk şifreleme anaht
      az keyvault create --name "MySecureVault" --resource-group "MyKeyVaultResourceGroup" --location "East US"
      ```
 
-4. **Kasa adı** (ad), **kaynak grubu adı** , **kaynak kimliği** (kimlik), **kasa URI 'Si** ve daha sonra kullanılmak üzere döndürülen **nesne kimliği** ' ni unutmayın. 
+4. **Kasa adı** (ad), **kaynak grubu adı**, **kaynak kimliği** (kimlik), **kasa URI 'Si** ve daha sonra kullanılmak üzere döndürülen **nesne kimliği** ' ni unutmayın. 
 
 ### <a name="create-a-key-vault-with-a-resource-manager-template"></a><a name="bkmk_KVRM"></a> Kaynak Yöneticisi şablonuyla Anahtar Kasası oluşturma
 
 [Kaynak Yöneticisi şablonunu](https://github.com/Azure/azure-quickstart-templates/tree/master/101-key-vault-create)kullanarak bir Anahtar Kasası oluşturabilirsiniz.
 
-1. Azure hızlı başlangıç şablonunda **Azure 'A dağıt** ' a tıklayın.
-2. Abonelik, kaynak grubu, kaynak grubu konumu, Key Vault adı, nesne KIMLIĞI, yasal koşullar ve anlaşma ' ı seçin ve ardından **satın al** ' a tıklayın. 
+1. Azure hızlı başlangıç şablonunda **Azure 'A dağıt**' a tıklayın.
+2. Abonelik, kaynak grubu, kaynak grubu konumu, Key Vault adı, nesne KIMLIĞI, yasal koşullar ve anlaşma ' ı seçin ve ardından **satın al**' a tıklayın. 
 
 
 ## <a name="set-up-an-azure-ad-app-and-service-principal"></a><a name="bkmk_ADapp"></a> Bir Azure AD uygulaması ve hizmet sorumlusu ayarlama 
@@ -161,7 +162,7 @@ az keyvault set-policy --name "MySecureVault" --spn "<spn created with CLI/the A
 ### <a name="set-the-key-vault-access-policy-for-the-azure-ad-app-with-the-portal"></a><a name="bkmk_KVAPRM"></a> Portal ile Azure AD uygulaması için Anahtar Kasası erişim ilkesini ayarlama
 
 1. Anahtar kasanızın bulunduğu kaynak grubunu açın.
-2. Anahtar kasanızı seçin, **erişim ilkeleri** ' ne gidin ve **Yeni Ekle** ' ye tıklayın.
+2. Anahtar kasanızı seçin, **erişim ilkeleri**' ne gidin ve **Yeni Ekle**' ye tıklayın.
 3. **Asıl seçin** altında oluşturduğunuz Azure AD uygulamasını arayın ve seçin. 
 4. **Anahtar izinleri** Için, **şifreleme işlemleri** altında **Sarla tuşu** ' nı işaretleyin.
 5. **Gizli izinler** Için, **gizli yönetim işlemleri** altında **Ayarla** ' yı işaretleyin.
@@ -217,10 +218,10 @@ Anahtar Kasası için disk şifrelemeyi etkinleştirmek üzere [az keykasatıon 
 
 ### <a name="set-key-vault-advanced-access-policies-through-the-azure-portal"></a><a name="bkmk_KVperrm"></a> Azure portal aracılığıyla Anahtar Kasası Gelişmiş erişim ilkeleri ayarlama
 
-1. Keykasanızı seçin, **erişim ilkeleri** ' ne gidin ve **Gelişmiş erişim Ilkelerini göstermek için tıklayın** .
+1. Keykasanızı seçin, **erişim ilkeleri**' ne gidin ve **Gelişmiş erişim Ilkelerini göstermek için tıklayın**.
 2. **Birim şifrelemesi Için Azure disk şifrelemesi 'ne erişimi etkinleştir** etiketli kutuyu seçin.
-3. **Dağıtım Için Azure sanal makinelerine erişimi etkinleştir** ' i seçin ve/veya gerekirse **şablon dağıtımı Için Azure Resource Manager erişimi etkinleştirin** . 
-4. **Kaydet** ’e tıklayın.
+3. **Dağıtım Için Azure sanal makinelerine erişimi etkinleştir** ' i seçin ve/veya gerekirse **şablon dağıtımı Için Azure Resource Manager erişimi etkinleştirin**. 
+4. **Kaydet**’e tıklayın.
 
 ![Azure Anahtar Kasası Gelişmiş erişim ilkeleri](./media/disk-encryption/keyvault-portal-fig4.png)
 

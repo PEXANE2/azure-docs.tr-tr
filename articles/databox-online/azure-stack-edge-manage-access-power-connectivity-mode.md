@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 06/24/2019
 ms.author: alkohli
-ms.openlocfilehash: 6455e4c9fa9460e47e3be7c860f89be540a514b0
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 240d3872536e6974d7f65eed22dace6816844e9e
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96453070"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103200201"
 ---
 # <a name="manage-access-power-and-connectivity-mode-for-your-azure-stack-edge-pro"></a>Azure Stack Edge Pro için erişim, güç ve bağlantı modunu yönetme
 
@@ -103,7 +103,7 @@ Varsayılan tam bağlı moddan ayrı olarak, cihazınız kısmen bağlı veya ta
 
 - **Tam bağlantı** -bu, cihazın işlem yaptığı normal varsayılan moddur. Verilerin hem bulut yüklemesi hem de indirilmesi bu modda etkindir. Cihazı yönetmek için Azure portal veya yerel Web Kullanıcı arabirimini kullanabilirsiniz.
 
-- **Kısmen bağlantısı kesik** – bu modda cihaz, hiçbir paylaşma verisini karşıya yükleyemiyor veya indiremez, ancak Azure Portal aracılığıyla yönetilebilir.
+- **Kısmen bağlı** – bu modda cihaz, hiçbir paylaşma verisini karşıya yükleyebilir veya indiremez, ancak Azure Portal aracılığıyla yönetilebilir.
 
     Bu mod genellikle ölçülen uydu ağı kullanılırken kullanılır ve amaç ağ bant genişliği tüketimini en aza indirmektir. Cihaz izleme işlemleri için en az ağ tüketimi hala meydana gelebilir.
 

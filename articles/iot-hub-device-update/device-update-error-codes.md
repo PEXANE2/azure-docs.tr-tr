@@ -1,17 +1,17 @@
 ---
 title: Azure IoT Hub cihaz güncelleştirmesi için istemci hata kodları | Microsoft Docs
 description: Bu belge, çeşitli cihaz güncelleştirme bileşenleri için bir istemci hata kodları tablosu sağlar.
-author: lichris
+author: chrisjlin
 ms.author: lichris
 ms.date: 2/18/2021
 ms.topic: reference
 ms.service: iot-hub-device-update
-ms.openlocfilehash: 5251d0cb09e40305d1efd89c31d3af0fa36ad385
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: dbdddc7cee0c3664a83501ba619a38e1cc44e1f3
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101664081"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103200350"
 ---
 # <a name="device-update-for-iot-hub-error-codes"></a>IoT Hub hata kodları için cihaz güncelleştirmesi
 
@@ -38,7 +38,7 @@ Büyük olasılıkla `ExtendedResultCode` pnp arabiriminde işaretli bir tamsay�
 
 **Tesis kodları**
 
-| Tesis kodu     | Açıklama  |
+| Tesis kodu     | Description  |
 |-------------------|--------------|
 | D                 | DO SDK 'dan oluşan hata|
 | E                 | Hata kodu bir errno değil |
@@ -59,26 +59,19 @@ Büyük olasılıkla `ExtendedResultCode` pnp arabiriminde işaretli bir tamsay�
 ## <a name="delivery-optimization-agent"></a>Teslim Iyileştirme Aracısı
 Aşağıdaki tabloda, cihaz güncelleştirme istemcisinin teslim Iyileştirme (DO) bileşeni ile ilgili hata kodları listelenmektedir. DO bileşeni, güncelleştirme içeriğini IoT cihazına indirmekten sorumludur.
 
-DO hata kodu, bir API çağrısına yanıt olarak oluşturulan özel durumlar incelenerek elde edilebilir.
+DO hata kodu, bir API çağrısına yanıt olarak oluşturulan özel durumlar incelenerek elde edilebilir. Tüm hata kodları 0x80D0 ön eki tarafından tanımlanabilir.
 
-| Hata Kodu  | Dize hatası                       | Tür                 | Açıklama |
+| Hata Kodu  | Dize hatası                       | Tür                 | Description |
 |-------------|------------------------------------|----------------------|-------------|
 | 0x80D01001L | DO_E_NO_SERVICE                    | yok                  | Teslim Iyileştirme hizmeti sağlayamadı |
 | 0x80D02002L | DO_E_DOWNLOAD_NO_PROGRESS          | Işi indir         | Bir dosyanın indirilmesi, tanımlı süre içinde ilerleme bulunmadığını görmez |
-| 0x80D02003L | DO_E_JOB_NOT_FOUND                 | Işi indir         | İş bulunamadı |
-| 0x80D02005L | DO_E_NO_DOWNLOADS                  | Işi indir         | Şu anda indirme yok |
-| 0x80D0200CL | DO_E_JOB_TOO_OLD                   | Işi indir         | İş tamamlanmadı veya en yüksek yaş eşiğine ulaşmadan önce iptal edildi |
 | 0x80D02011L | DO_E_UNKNOWN_PROPERTY_ID           | Işi indir         | SetProperty () veya GetProperty (), bilinmeyen bir özellik KIMLIĞIYLE çağrıldı |
 | 0x80D02012L | DO_E_READ_ONLY_PROPERTY            | Işi indir         | Bir salt okunurdur özelliğinde SetProperty () çağrılamıyor |
 | 0x80D02013L | DO_E_INVALID_STATE                 | Işi indir         | İstenen eyleme, geçerli iş durumunda izin verilmiyor. İş iptal edilmiş veya aktarımını tamamlamış olabilir. Şimdi salt okuma durumunda. |
 | 0x80D02018L | DO_E_FILE_DOWNLOADSINK_UNSPECIFIED | Işi indir         | İndirme Havuzu (yerel dosya veya akış arabirimi) belirtilmediğinden indirme başlatılamadı |
 | 0x80D02200L | DO_E_DOWNLOAD_NO_URI               | Idodownload arabirimi| İndirme, URI sağlamadan başlatıldı |
 | 0x80D03805L | DO_E_BLOCKED_BY_NO_NETWORK         | Geçici koşullar | Ağ bağlantısı kaybı nedeniyle indirme duraklatıldı |
-| 0x80D05001L | DO_E_HTTP_BLOCKSIZE_MISMATCH       | HTTP                 | HTTP sunucusu, istenmiş olan değere eşit olmayan veri boyutuyla bir yanıt döndürdü |
-| 0x80D05002L | DO_E_HTTP_CERT_VALIDATION          | HTTP                 | HTTP sunucusu sertifikası doğrulaması başarısız oldu |
-| 0x80D05010L | DO_E_INVALID_RANGE                 | HTTP                 | Belirtilen bayt aralığı geçersiz |
-| 0x80D05011L | DO_E_INSUFFICIENT_RANGE_SUPPORT    | HTTP                 | Sunucu, gerekli HTTP protokolünü desteklemiyor. Teslim Iyileştirme (DO), sunucunun Aralık protokol üstbilgisini desteklemesini gerektirir |
-| 0x80D05012L | DO_E_OVERLAPPING_RANGES            | HTTP                 | Bayt aralıklarının listesi, desteklenmeyen bazı çakışan aralıklar içeriyor |
+
 ## <a name="device-update-content-service"></a>Cihaz güncelleştirme içerik hizmeti
 Aşağıdaki tabloda, cihaz güncelleştirme hizmetinin içerik hizmeti bileşeni ile ilgili hata kodları listelenmektedir. İçerik hizmeti bileşeni, güncelleştirme içeriğinin içeri aktarılmasını işlemekten sorumludur.
 

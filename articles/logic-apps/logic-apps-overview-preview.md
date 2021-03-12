@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: estfan, logicappspm, az-logic-apps-dev
 ms.topic: conceptual
-ms.date: 03/08/2021
-ms.openlocfilehash: d53a36d99c9a54fdfef7baceb50edb4e8f5ae4c8
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.date: 03/10/2021
+ms.openlocfilehash: 7120b6ff17657232c0e614f49b75bb24263712b7
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102561866"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102636344"
 ---
 # <a name="overview-azure-logic-apps-preview"></a>Genel Bakış: Azure Logic Apps Önizleme
 
@@ -59,7 +59,7 @@ Aşağıdaki tabloda, çalıştığı ortama göre iş akışlarının kaynaklar
 | Azure Logic Apps (çok kiracılı) | *Birden çok kiracının içindeki müşterilerden alınan* iş akışları aynı işleme (işlem), depolama, ağ vb. paylaşır. |
 | Azure Logic Apps (Önizleme, tek kiracılı) | *Aynı mantıksal uygulamadaki iş akışları ve tek bir kiracı* aynı işleme (işlem), depolama, ağ ve benzeri bir şekilde paylaşır. |
 | Tümleştirme hizmeti ortamı (önizlemede kullanılamaz) | *Aynı ortamdaki* iş akışları aynı işleme (işlem), depolama, ağ vb. paylaşır. |
-||||
+|||
 
 Bu arada, Azure portal çok kiracılı mantıksal uygulama türünü ve Visual Studio Code çok kiracılı Azure Logic Apps uzantısını kullanarak de oluşturabilirsiniz. Geliştirme deneyimleri, çok kiracılı ve tek kiracılı mantıksal uygulama türleri arasında farklılık gösterir, ancak Azure aboneliğiniz her iki türü de içerebilir. Azure aboneliğinizde dağıtılan tüm mantıksal uygulamaları görüntüleyebilir ve bunlara erişebilirsiniz, ancak uygulamalar kendi kategorileriyle ve bölümlerinde düzenlenir.
 
@@ -122,7 +122,10 @@ Azure Logic Apps önizleme birçok geçerli ve ek özellik içerir, örneğin:
 
 * Hizmet olarak yazılım (SaaS) ve hizmet olarak platform (PaaS) uygulamaları ve hizmetleri için [400 + bağlayıcılarından](/connectors/connector-reference/connector-reference-logicapps-connectors) Logic Apps ve iş akışları oluşturun ve şirket içi sistemler için bağlayıcı oluşturun.
 
-  * Azure Service Bus, Azure Event Hubs, SQL Server ve MQ gibi bazı yönetilen bağlayıcılar, Azure Logic Apps Önizleme çalışma zamanına yerel olan yerleşik Tetikleyiciler ve eylemler (örneğin, Istek tetikleyicisi ve HTTP eylemi) için benzer şekilde çalışır.
+  * Bazı yönetilen bağlayıcılar artık Azure Logic Apps Preview çalışma zamanında yerel olarak çalıştırılan Istek tetikleyicisi ve HTTP eylemi gibi yerleşik Tetikleyiciler ve eylemlere benzer şekilde çalışan yerleşik sürümler olarak sunulmaktadır. Örneğin, bu yeni yerleşik bağlayıcılar Azure Service Bus, Azure Event Hubs, SQL Server ve MQ ' i içerir.
+
+    > [!NOTE]
+    > Yerleşik SQL Server Bağlayıcısı için, yalnızca **sorgu yürütme** eylemi, Şirket [içi veri ağ geçidine](logic-apps-gateway-connection.md)gerek duymadan doğrudan Azure sanal ağlarına bağlanabilir.
 
   * [Önizleme sürümünün genişletilebilirlik çerçevesini](https://techcommunity.microsoft.com/t5/integrations-on-azure/azure-logic-apps-running-anywhere-built-in-connector/ba-p/1921272)kullanarak ihtiyacınız olan herhangi bir hizmet için kendi yerleşik bağlayıcılarınızı oluşturun. Azure Service Bus ve SQL Server gibi yerleşik bağlayıcılara benzer ancak önizleme için şu anda desteklenmeyen [özel bağlayıcıların](../connectors/apis-list.md#custom-apis-and-connectors) aksine, bu bağlayıcılar daha yüksek aktarım hızı, düşük gecikme süresi, yerel bağlantı sağlar ve Önizleme çalışma zamanı ile aynı işlemde yerel olarak çalışır.
 

@@ -308,6 +308,48 @@
       href: partner-center-portal/downloads-dashboard.md
     - name: Derecelendirme ve incelemeler panosu
       href: partner-center-portal/ratings-reviews.md
+    - name: Analiz için programlı erişim
+      items:
+        - name: başlarken
+          href: analytics-get-started.md
+        - name: Programlı erişim önkoşulları
+          href: analytics-prerequisites.md
+        - name: Programlı erişim paradigması
+          href: analytics-programmatic-access.md
+        - name: İlk API çağrısını yapın
+          href: analytics-make-your-first-api-call.md
+        - name: Sistem sorgularının listesi
+          href: analytics-system-queries.md
+        - name: Örnek sorgular
+          href: analytics-sample-queries.md
+        - name: Örnek uygulama
+          href: analytics-sample-application.md
+        - name: Özel sorgu belirtimi
+          href: analytics-custom-query-specification.md
+        - name: Programlı analiz SSS
+          href: analytics-programmatic-faq.md
+        - name: Analytics API başvurusu
+          items:
+            - name: API listesi
+              href: analytics-available-apis.md
+            - name: Tüm veri kümelerini al
+              href: analytics-api-get-all-datasets.md
+            - name: Rapor sorguları al API 'SI
+              href: analytics-api-get-report-queries.md
+            - name: Rapor sorguları API 'sini Sil
+              href: analytics-api-delete-report-queries.md
+            - name: Rapor sorguları API 'sini deneyin
+              href: analytics-api-try-report-queries.md
+            - name: Rapor API 'SI al
+              href: analytics-api-get-report.md
+            - name: Rapor API 'sini Güncelleştir
+              href: analytics-api-update-report.md
+            - name: Rapor API 'sini Sil
+              href: analytics-api-delete-report.md
+            - name: Rapor yürütmeleri API 'sini Duraklat
+              href: analytics-api-pause-report-executions.md
+            - name: Rapor yürütmeleri API 'sini sürdürür
+              href: analytics-api-resume-report-executions.md
     - name: Tarifeli faturalandırma anormalilerini yönetin
       href: anomaly-detection.md
     - name: Analiz hakkındaki yaygın sorular

@@ -4,14 +4,14 @@ description: .NET 5,0 kullanarak C# işlevleri oluşturup hata ayıklamanın yan
 ms.date: 03/03/2021
 ms.topic: how-to
 zone_pivot_groups: development-environment-functions
-ms.openlocfilehash: 70eacc5ec7f6adb65ba6e01c55acc6c6e3075ca9
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.openlocfilehash: 9751d5d354d738a64d6b02e8153464491d78ec14
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102584248"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103201357"
 ---
-# <a name="develop-and-publish-net-5-function-using-azure-functions"></a>Azure Işlevleri 'ni kullanarak .NET 5 işlevini geliştirme ve yayımlama 
+# <a name="develop-and-publish-net-5-functions-using-azure-functions"></a>Azure Işlevleri 'ni kullanarak .NET 5 işlevleri geliştirme ve yayımlama 
 
 Bu makalede, Azure Işlevleri çalışma zamanındaki işlem dışı çalışan .NET 5,0 kullanarak C# işlevleriyle nasıl çalışacağınızı gösterilmektedir. Oluşturma, yerel olarak hata ayıklama ve bu .NET yalıtılmış işlem işlevlerini Azure 'da yayımlama hakkında bilgi edineceksiniz. Azure 'da bu işlevler, .NET 5,0 'yi destekleyen yalıtılmış bir işlemde çalışır. Daha fazla bilgi edinmek için bkz. [Azure 'da .net 5,0 üzerinde işlev çalıştırmaya yönelik kılavuz](dotnet-isolated-process-guide.md).
 
@@ -152,7 +152,7 @@ Bu noktada, `func start` C# yalıtılmış işlevler projesini derlemek ve çal�
  
 1. Azure Işlevleri çalışma zamanı çıktısında, bir hata ayıklayıcı ekleyebileceğiniz ana bilgisayar işleminin işlem KIMLIĞINI bir yere unutmayın. Ayrıca yerel işlevinizin URL 'sini de göz önünde bulabilirsiniz.
 
-1. Visual Studio 'da **Hata Ayıkla** menüsünde, **işleme iliştir...**' i seçin, işlem kimliğiyle eşleşen dotnet.exe işlemini bulun ve **Ekle**' yi seçin. 
+1. Visual Studio 'da **Hata Ayıkla** menüsünde, **işleme iliştir...**' i seçin, işlem kimliğiyle eşleşen işlemi bulun ve **Ekle**' yi seçin. 
     
     :::image type="content" source="media/dotnet-isolated-process-developer-howtos/attach-to-process.png" alt-text="Işlev ana bilgisayar işlemine hata ayıklayıcıyı iliştirme":::    
 

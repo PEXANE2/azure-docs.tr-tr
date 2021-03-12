@@ -7,12 +7,12 @@ services: firewall
 ms.topic: conceptual
 ms.date: 03/09/2021
 ms.author: victorh
-ms.openlocfilehash: 621bf6138e4336c63ca137a6a8c54f77a4a99d61
-ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
+ms.openlocfilehash: 47ebc752dedd72bbdedc02908911f1686584acda
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102520294"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102615508"
 ---
 # <a name="azure-firewall-premium-preview-certificates"></a>Azure Güvenlik Duvarı Premium önizleme sertifikaları 
 
@@ -111,7 +111,8 @@ Betikler aşağıdaki dosyaları oluşturur:
 
 > [!IMPORTANT]
 > rootCA. Key güvenli bir çevrimdışı konumda depolanmalıdır. Betikler 1024 günlük geçerliliği olan bir sertifika oluşturur.
-
+> Betikler yerel makinenizde OpenSSL ikili dosyalarının yüklü olmasını gerektirir. Daha fazla bilgi için bkz. https://www.openssl.org/
+> 
 Sertifikalar oluşturulduktan sonra, bunları aşağıdaki konumlara dağıtın:
 - rootCA. CRT-uç nokta makinelerinde dağıtma (yalnızca ortak sertifika).
 - ınterca. pfx-Key Vault bir sertifika olarak Içeri aktarın ve güvenlik duvarı ilkesine atayın.

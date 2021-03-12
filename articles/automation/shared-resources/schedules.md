@@ -5,12 +5,12 @@ services: automation
 ms.subservice: shared-capabilities
 ms.date: 09/10/2020
 ms.topic: conceptual
-ms.openlocfilehash: 844a45c9b596522b949443b6edc311308da7806c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f40e3d555d6e1472b9d2368a114ee27d588f6383
+ms.sourcegitcommit: 6776f0a27e2000fb1acb34a8dddc67af01ac14ac
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90004621"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103149486"
 ---
 # <a name="manage-schedules-in-azure-automation"></a>Azure Otomasyonu 'nda zamanlamaları yönetme
 
@@ -26,7 +26,7 @@ Azure Otomasyonu 'nda bir runbook 'u belirli bir zamanda başlayacak şekilde za
 
 Aşağıdaki tablodaki cmdlet 'ler, PowerShell ile otomasyon zamanlamaları oluşturur ve yönetir. Bunlar [az modüllerin](modules.md#az-modules)bir parçası olarak sevk ederler.
 
-| Cmdlet’ler | Açıklama |
+| Cmdlet’ler | Description |
 |:--- |:--- |
 | [Get-AzAutomationSchedule](/powershell/module/Az.Automation/Get-AzAutomationSchedule) |Bir zamanlama alır. |
 | [Get-AzAutomationScheduledRunbook](/powershell/module/az.automation/get-azautomationscheduledrunbook) |Zamanlanan runbook 'ları alır. |
@@ -45,7 +45,7 @@ Runbook 'larınız için Azure portal veya PowerShell ile yeni bir zamanlama olu
 
 ### <a name="create-a-new-schedule-in-the-azure-portal"></a>Azure portal yeni bir zamanlama oluşturun
 
-1. Otomasyon hesabınızdan, sol taraftaki bölmede **paylaşılan kaynaklar**altında **zamanlamalar** ' ı seçin.
+1. Otomasyon hesabınızdan, sol taraftaki bölmede **paylaşılan kaynaklar** altında **zamanlamalar** ' ı seçin.
 2. **Zamanlamalar** sayfasında **zamanlama Ekle**' yi seçin.
 3. **Yeni zamanlama** sayfasında, bir ad girin ve isteğe bağlı olarak yeni zamanlama için bir açıklama girin.
 
@@ -53,13 +53,13 @@ Runbook 'larınız için Azure portal veya PowerShell ile yeni bir zamanlama olu
     >Otomasyon zamanlamaları Şu anda zamanlama adında özel karakterler kullanmayı desteklememektedir.
     >
 
-4. Zamanlamanın bir **kez veya tekrarlı seçerek bir** **kez veya yeniden**oluşup oluşmadığını seçin. Bir **kez**seçerseniz, bir başlangıç saati belirtip **Oluştur**' u seçin. **Yinelenen**seçeneğini belirlerseniz, bir başlangıç saati belirtin. **Her**zaman yineleme için, runbook 'un ne sıklıkta yinelenmesini istediğinizi seçin. Saatlik, gün, hafta veya aya göre seçin.
+4. Zamanlamanın bir **kez veya tekrarlı seçerek bir** **kez veya yeniden** oluşup oluşmadığını seçin. Bir **kez** seçerseniz, bir başlangıç saati belirtip **Oluştur**' u seçin. **Yinelenen** seçeneğini belirlerseniz, bir başlangıç saati belirtin. **Her** zaman yineleme için, runbook 'un ne sıklıkta yinelenmesini istediğinizi seçin. Saatlik, gün, hafta veya aya göre seçin.
 
     * **Hafta**' yı seçerseniz, haftanın günleri arasından seçim yapmanız için sunulur. İstediğiniz kadar gün seçin. Zamanlamalarınızın ilk çalışması başlangıç zamanından sonra seçilen ilk günde olur. Örneğin, bir hafta sonu zamanlaması seçmek için Cumartesi ve Pazar ' ı seçin.
 
     ![Hafta sonu yinelenen zamanlama ayarlanıyor](../media/schedules/week-end-weekly-recurrence.png)
 
-    * **Ay**' yı seçerseniz, farklı seçenekler sunulur. **Aylık yineleme** seçeneği Için, **ay günler** veya **hafta günü**seçeneklerinden birini belirleyin. **Ay günler**' i seçerseniz, istediğiniz kadar gün seçim yapabilmeniz için bir takvim belirir. Geçerli ay içinde gerçekleşmeyen 31 gibi bir tarih seçerseniz, zamanlama çalıştırılmaz. Zamanlamanın son gün üzerinde çalışmasını istiyorsanız, **ayın son gününde Çalıştır**' ın altında **Evet** ' i seçin. **Hafta günleri**' ni seçerseniz, **yineleme her** seçeneği görüntülenir. **Birinci**, **ikinci**, **üçüncü**, **dördüncü**veya **son**' u seçin. Son olarak, tekrarlanacak bir gün seçin.
+    * **Ay**' yı seçerseniz, farklı seçenekler sunulur. **Aylık yineleme** seçeneği Için, **ay günler** veya **hafta günü** seçeneklerinden birini belirleyin. **Ay günler**' i seçerseniz, istediğiniz kadar gün seçim yapabilmeniz için bir takvim belirir. Geçerli ay içinde gerçekleşmeyen 31 gibi bir tarih seçerseniz, zamanlama çalıştırılmaz. Zamanlamanın son gün üzerinde çalışmasını istiyorsanız, **ayın son gününde Çalıştır**' ın altında **Evet** ' i seçin. **Hafta günleri**' ni seçerseniz, **yineleme her** seçeneği görüntülenir. **Birinci**, **ikinci**, **üçüncü**, **dördüncü** veya **son**' u seçin. Son olarak, tekrarlanacak bir gün seçin.
 
     ![Ayın ilk, on beşinci ve son gününde aylık zamanlama](../media/schedules/monthly-first-fifteenth-last.png)
 
@@ -121,13 +121,54 @@ $StartTime = (Get-Date "18:00:00").AddDays(1)
 New-AzAutomationSchedule -AutomationAccountName "TestAzureAuto" -Name "1st, 15th and Last" -StartTime $StartTime -DaysOfMonth @("One", "Fifteenth", "Last") -ResourceGroupName "TestAzureAuto" -MonthInterval 1
 ```
 
+## <a name="create-a-schedule-with-a-resource-manager-template"></a>Kaynak Yöneticisi şablonuyla zamanlama oluşturma
+
+Bu örnekte, yeni bir iş zamanlaması oluşturan bir Otomasyon Kaynak Yöneticisi (ARM) şablonu kullanıyoruz. Otomasyon iş zamanlamalarını yönetmek için bu şablonla ilgili genel bilgiler için, bkz. [Microsoft. Automation automationAccounts/Jobzamanlamaları şablon başvurusu](/templates/microsoft.automation/automationaccounts/jobschedules#quickstart-templates).
+
+Bu şablon dosyasını bir metin düzenleyicisine kopyalayın:
+
+```json
+{
+  "name": "5d5f3a05-111d-4892-8dcc-9064fa591b96",
+  "type": "Microsoft.Automation/automationAccounts/jobSchedules",
+  "apiVersion": "2015-10-31",
+  "properties": {
+    "schedule": {
+      "name": "scheduleName"
+    },
+    "runbook": {
+      "name": "runbookName"
+    },
+    "runOn": "hybridWorkerGroup",
+    "parameters": {}
+  }
+}
+```
+
+Aşağıdaki parametre değerlerini düzenleyin ve şablonu bir JSON dosyası olarak kaydedin:
+
+* İş zamanlaması nesne adı: iş zamanlaması nesnesinin adı olarak bir GUID (genel benzersiz tanımlayıcı) kullanılır.
+
+   >[!IMPORTANT]
+   > ARM şablonuyla dağıtılan her iş zamanlaması için GUID 'nin benzersiz olması gerekir. Var olan bir zamanlamayı yeniden zamanlasanız bile GUID 'yi değiştirmeniz gerekir. Bu, daha önce aynı şablonla oluşturulmuş mevcut bir iş zamanlamasını sildiyseniz bile geçerlidir. Aynı GUID 'YI yeniden kullanmak başarısız bir dağıtımla sonuçlanır.</br></br>
+   > Bu [ücretsiz ÇEVRIMIÇI GUID Oluşturucu](https://guidgenerator.com/)gibi, sizin için yenı bir GUID üretebilirler.
+
+* Zamanlama adı: belirtilen runbook 'a bağlanacak Otomasyon iş zamanlamasının adını temsil eder.
+* Runbook adı: iş çizelgesinin ilişkilendirileceği Otomasyon Runbook 'unun adını temsil eder.
+
+Dosya kaydedildikten sonra, aşağıdaki PowerShell komutuyla runbook işi zamanlamasını oluşturabilirsiniz. Komutu, `TemplateFile` şablonun yolunu ve dosya adını belirtmek için parametresini kullanır.
+
+```powershell
+New-AzResourceGroupDeployment -ResourceGroupName "ContosoEngineering" -TemplateFile "<path>\RunbookJobSchedule.json"
+```
+
 ## <a name="link-a-schedule-to-a-runbook"></a>Bir runbook 'a zamanlama bağlama
 
 Bir runbook, birden çok zaman çizelgesine bağlanabilir ve bir zaman çizelgesine birden çok runbook bağlı olabilir. Bir runbook 'un parametreleri varsa, bunlar için değer sağlayabilirsiniz. Zorunlu parametrelerin değerlerini sağlamanız gerekir ve isteğe bağlı parametrelerin değerlerini de sağlayabilirsiniz. Bu değerler, runbook 'un bu zamanlamaya göre başlatıldığı her seferinde kullanılır. Aynı runbook 'u başka bir zamanlamaya ekleyebilir ve farklı parametre değerleri belirtebilirsiniz.
 
 ### <a name="link-a-schedule-to-a-runbook-with-the-azure-portal"></a>Azure portal ile bir zamanlamayı runbook 'a bağlama
 
-1. Otomasyon hesabınızdan Azure portal, **Işlem Otomasyonu**altında **runbook 'lar** ' ı seçin.
+1. Otomasyon hesabınızdan Azure portal, **Işlem Otomasyonu** altında **runbook 'lar** ' ı seçin.
 1. Zamanlanacak runbook 'un adını seçin.
 1. Runbook Şu anda bir zamanlamaya bağlı değilse, yeni bir zamanlama oluşturma veya var olan bir zamanlamaya bağlanma seçeneği sunulur.
 1. Runbook 'un parametreleri varsa, **çalışma ayarlarını değiştir (varsayılan: Azure)** ve **Parametreler** bölmesi görüntülenir seçeneğini belirleyebilirsiniz. Burada parametre bilgilerini girebilirsiniz.
@@ -161,9 +202,9 @@ Bir zamanlamayı devre dışı bıraktığınızda, onunla bağlantılı tüm ru
 
 ### <a name="disable-a-schedule-from-the-azure-portal"></a>Azure portal bir zamanlamayı devre dışı bırakma
 
-1. Otomasyon hesabınızda, sol taraftaki bölmede, **paylaşılan kaynaklar**altında **zamanlamalar** ' ı seçin.
+1. Otomasyon hesabınızda, sol taraftaki bölmede, **paylaşılan kaynaklar** altında **zamanlamalar** ' ı seçin.
 1. Ayrıntılar bölmesini açmak için bir zamanlamanın adını seçin.
-1. **Etkin özelliği** **Hayır**olarak değiştirin.
+1. **Etkin özelliği** **Hayır** olarak değiştirin.
 
 > [!NOTE]
 > Başlangıç zamanı geçmişte olan bir zamanlamayı devre dışı bırakmak istiyorsanız, kaydetmeden önce başlangıç tarihini gelecekte bir zaman olarak değiştirmeniz gerekir.
@@ -187,7 +228,7 @@ Zamanlamalarınızı kaldırmaya hazırsanız Azure portal veya PowerShell kulla
 
 ### <a name="remove-a-schedule-using-the-azure-portal"></a>Azure portal kullanarak bir zamanlamayı kaldırma
 
-1. Otomasyon hesabınızda, sol taraftaki bölmede, **paylaşılan kaynaklar**altında **zamanlamalar** ' ı seçin.
+1. Otomasyon hesabınızda, sol taraftaki bölmede, **paylaşılan kaynaklar** altında **zamanlamalar** ' ı seçin.
 2. Ayrıntılar bölmesini açmak için bir zamanlamanın adını seçin.
 3. **Sil**'e tıklayın.
 

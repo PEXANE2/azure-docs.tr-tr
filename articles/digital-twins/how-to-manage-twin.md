@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 10/21/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: e20cd09ce3d9eb1937819da79cea17bdd14a07dc
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: 98b50673b464044af2a038fa93c3b6a022fa2899
+ms.sourcegitcommit: 6776f0a27e2000fb1acb34a8dddc67af01ac14ac
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102433276"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103149712"
 ---
 # <a name="manage-digital-twins"></a>Dijital ikizleri yönetme
 
@@ -127,13 +127,15 @@ Bir *ay* tanımlayan aşağıdaki modeli ( [dijital TWINS tanım dili (dtdl)](ht
 }
 ```
 
-Dijital ikizi tanımlı özellikleri, Digital ikizi üzerinde en üst düzey özellikler olarak döndürülür. DTDL tanımının parçası olmayan meta veriler veya sistem bilgileri bir `$` ön ek ile döndürülür. Meta veri özellikleri şunları içerir:
-* Bu Azure dijital TWINS örneğindeki dijital ikizi KIMLIĞI (as) `$dtId` .
-* `$etag`, Web sunucusu tarafından atanan standart bir HTTP alanı.
-* Bir bölümdeki diğer özellikler `$metadata` . Bu modüller şunlardır:
-    - Dijital ikizi modelinin DTMı 'ı.
-    - Her yazılabilir özellik için eşitleme durumu. Bu, hizmetin ve cihazın ayrılan durumlar (örneğin, bir cihaz çevrimdışı olduğunda) olduğu durumlarda, cihazlar için en yararlı seçenektir. Şu anda bu özellik yalnızca IoT Hub bağlı fiziksel cihazlara uygulanır. Meta veriler bölümündeki verilerle, bir özelliğin tam durumunun yanı sıra son değiştirilme zaman damgalarını anlamak mümkündür. Eşitleme durumu hakkında daha fazla bilgi için bkz. cihaz durumunu eşitlemeye yönelik [bu IoT Hub öğreticisi](../iot-hub/tutorial-device-twins.md) .
-    - IoT Hub veya Azure dijital TWINS gibi hizmete özgü meta veriler. 
+Dijital ikizi tanımlı özellikleri, Digital ikizi üzerinde en üst düzey özellikler olarak döndürülür. DTDL tanımının parçası olmayan meta veriler veya sistem bilgileri bir `$` ön ek ile döndürülür. Meta veri özellikleri aşağıdaki değerleri içerir:
+* `$dtId`: Bu Azure Digital TWINS örneğindeki dijital ikizi KIMLIĞI
+* `$etag`: Web sunucusu tarafından atanan standart bir HTTP alanı. Bu, ikizi her güncelleştirildiği sırada yeni bir değere güncelleştirilir ve bu, önceki bir denetim sonrasında ikizi verisinin sunucuda güncelleştirilip güncelleştirilmediğini belirlemekte yararlı olabilir. Ayrıca, HTTP üstbilgilerinde şu yollarla da kullanılabilir:
+  - değişiklik olmayan içeriği getirmeyi önlemek için okuma işlemleri ile
+  - iyimser eşzamanlılığı desteklemek için yazma işlemleri ile
+* `$metadata`: Aşağıdakiler de dahil olmak üzere diğer özellikler kümesi:
+  - Dijital ikizi modelinin DTMı 'ı.
+  - Her yazılabilir özellik için eşitleme durumu. Bu, hizmetin ve cihazın ayrılan durumlar (örneğin, bir cihaz çevrimdışı olduğunda) olduğu durumlarda, cihazlar için en yararlı seçenektir. Şu anda bu özellik yalnızca IoT Hub bağlı fiziksel cihazlara uygulanır. Meta veriler bölümündeki verilerle, bir özelliğin tam durumunun yanı sıra son değiştirilme zaman damgalarını anlamak mümkündür. Eşitleme durumu hakkında daha fazla bilgi için bkz. cihaz durumunu eşitlemeye yönelik [bu IoT Hub öğreticisi](../iot-hub/tutorial-device-twins.md) .
+  - IoT Hub veya Azure dijital TWINS gibi hizmete özgü meta veriler. 
 
 `BasicDigitalTwin` [*Nasıl yapılır: Azure dijital TWINS API 'Leri ve SDK 'larını kullanma*](how-to-use-apis-sdks.md)gibi serileştirme yardımcı sınıfları hakkında daha fazla bilgi edinebilirsiniz.
 

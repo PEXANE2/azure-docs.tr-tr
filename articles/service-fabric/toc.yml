@@ -106,8 +106,6 @@
           href: service-fabric-tutorial-standalone-clean-up.md
 - name: En iyi uygulamalar
   items:
-    - name: Service Fabric için en iyi yöntemlere genel bakış
-      href: service-fabric-best-practices-overview.md
     - name: Güvenlik
       href: service-fabric-best-practices-security.md
     - name: Ağ

@@ -136,8 +136,10 @@
       items:
         - name: AKS kümesini ölçeklendirme
           href: scale-cluster.md
-        - name: AKS kümesini durdurma (önizleme)
+        - name: AKS kümesini durdurma
           href: start-stop-cluster.md
+        - name: Planlı bakım kullanma (Önizleme)
+          href: planned-maintenance.md
         - name: AKS kümesini yükseltme
           href: upgrade-cluster.md
         - name: Çalışma Süresi SLA’sını kullanma

@@ -10,12 +10,12 @@ ms.date: 03/12/2020
 ms.author: santoshc
 ms.reviewer: santoshc
 ms.subservice: common
-ms.openlocfilehash: 4ee0b71b63735d8417c11cba8d2a551c8da8b47f
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.openlocfilehash: 16d3d50d5ade298e2ca22f271466c70e74724381
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 03/10/2021
-ms.locfileid: "102564297"
+ms.locfileid: "102613570"
 ---
 # <a name="use-private-endpoints-for-azure-storage"></a>Azure depolama için özel uç noktaları kullanma
 
@@ -55,7 +55,9 @@ Depolama hesabınızı, varsayılan olarak genel bitiş noktası üzerinden eri�
 
 Özel bir uç nokta oluşturduğunuzda, bağlandığı depolama hesabı ve depolama hizmetini belirtmeniz gerekir. 
 
-Erişmeniz gereken her depolama kaynağı için [BLOB](../blobs/storage-blobs-overview.md), [Data Lake Storage 2.](../blobs/data-lake-storage-introduction.md), [Dosya](../files/storage-files-introduction.md), [kuyruk](../queues/storage-queues-introduction.md), [tablo](../tables/table-storage-overview.md)veya [statik Web siteleri](../blobs/storage-blob-static-website.md)için ayrı bir özel uç nokta gerekir. Data Lake Storage 2. depolama kaynağı için özel bir uç nokta oluşturursanız, blob Storage kaynağı için de bir tane oluşturmanız gerekir. Bunun nedeni, Data Lake Storage 2. uç noktasını hedefleyen işlemler blob uç noktasına yeniden yönlendirilebilir. Her iki kaynak için de özel bir uç nokta oluşturarak işlemlerin başarıyla tamamlanmasını sağlayabilirsiniz.
+Erişmeniz gereken her depolama kaynağı için [BLOB](../blobs/storage-blobs-overview.md), [Data Lake Storage 2.](../blobs/data-lake-storage-introduction.md), [Dosya](../files/storage-files-introduction.md), [kuyruk](../queues/storage-queues-introduction.md), [tablo](../tables/table-storage-overview.md)veya [statik Web siteleri](../blobs/storage-blob-static-website.md)için ayrı bir özel uç nokta gerekir. Özel uç noktada, bu depolama hizmetleri ilişkili depolama hesabının **hedef alt kaynağı** olarak tanımlanmıştır. 
+
+Data Lake Storage 2. depolama kaynağı için özel bir uç nokta oluşturursanız, blob Storage kaynağı için de bir tane oluşturmanız gerekir. Bunun nedeni, Data Lake Storage 2. uç noktasını hedefleyen işlemler blob uç noktasına yeniden yönlendirilebilir. Her iki kaynak için de özel bir uç nokta oluşturarak işlemlerin başarıyla tamamlanmasını sağlayabilirsiniz.
 
 > [!TIP]
 > RA-GRS hesaplarında daha iyi okuma performansı için depolama hizmetinin ikincil örneği için ayrı bir özel uç nokta oluşturun.
@@ -111,16 +113,16 @@ Ağınızda özel bir DNS sunucusu kullanıyorsanız, istemciler depolama hesab�
 > [!TIP]
 > Özel veya şirket içi bir DNS sunucusu kullanırken, DNS sunucunuzu, alt etki alanındaki depolama hesabı adını `privatelink` Özel uç nokta IP adresine çözümlemek üzere yapılandırmalısınız. Bunu, alt `privatelink` etki alanını VNET 'in özel DNS bölgesine devredererek veya DNS SUNUCUNUZDA DNS bölgesini yapılandırarak ve DNS A kayıtlarını ekleyerek yapabilirsiniz.
 
-Depolama Hizmetleri için özel uç noktalar için önerilen DNS bölge adları şunlardır:
+Depolama Hizmetleri için özel uç noktalar için önerilen DNS bölge adları ve ilişkili uç nokta hedefi alt kaynakları şunlardır:
 
-| Depolama hizmeti        | Bölge adı                            |
-| :--------------------- | :----------------------------------- |
-| Blob hizmeti           | `privatelink.blob.core.windows.net`  |
-| Data Lake Storage 2. Nesil | `privatelink.dfs.core.windows.net`   |
-| Dosya hizmeti           | `privatelink.file.core.windows.net`  |
-| Kuyruk hizmeti          | `privatelink.queue.core.windows.net` |
-| Tablo hizmeti          | `privatelink.table.core.windows.net` |
-| Statik Web siteleri        | `privatelink.web.core.windows.net`   |
+| Depolama hizmeti        | Hedef alt kaynak | Bölge adı                            |
+| :--------------------- | :------------------ | :----------------------------------- |
+| Blob hizmeti           | blob                | `privatelink.blob.core.windows.net`  |
+| Data Lake Storage 2. Nesil | f                 | `privatelink.dfs.core.windows.net`   |
+| Dosya hizmeti           |  dosyası                | `privatelink.file.core.windows.net`  |
+| Kuyruk hizmeti          | kuyruk               | `privatelink.queue.core.windows.net` |
+| Tablo hizmeti          | tablo               | `privatelink.table.core.windows.net` |
+| Statik Web siteleri        | web                 | `privatelink.web.core.windows.net`   |
 
 Kendi DNS sunucunuzu özel uç noktaları destekleyecek şekilde yapılandırma hakkında daha fazla bilgi için aşağıdaki makalelere bakın:
 

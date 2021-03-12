@@ -9,16 +9,16 @@ ms.subservice: sql
 ms.date: 04/19/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: 855765648d68756598f2942e0c994fa939bcbda0
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 679df881e928825496a03b2fef7c9374d61593f7
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101695677"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103199978"
 ---
 # <a name="access-external-storage-using-serverless-sql-pool-in-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'te sunucusuz SQL havuzu kullanarak dış depolamaya erişme
 
-Bu belgede, kullanıcıların sunucusuz SQL havuzunda Azure Storage 'da depolanan dosyalardan verileri nasıl okuyaabileceği açıklanır. Kullanıcılar depolamaya erişmek için aşağıdaki seçeneklere sahiptir:
+Bu makalede, kullanıcıların sunucusuz SQL havuzunda Azure Storage 'da depolanan dosyalardaki verileri nasıl okuyaabileceği açıklanır. Kullanıcılar depolamaya erişmek için aşağıdaki seçeneklere sahiptir:
 
 - Azure depolama 'daki dosyalar üzerinde geçici sorgular sağlayan [OPENROWSET](develop-openrowset.md) işlevi.
 - Dış dosyalar kümesinin üzerine inşa edilen önceden tanımlanmış bir veri yapısı olan [dış tablo](develop-tables-external-tables.md) .

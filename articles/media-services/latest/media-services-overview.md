@@ -2,7 +2,7 @@
 Başlık: Azure Media Services v3 genel bakış: Azure Media Services Açıklama: hızlı başlangıçlar, öğreticiler ve kod örnekleri bağlantılarıyla Azure Media Services v3 'e yönelik üst düzey bir genel bakış.
 Hizmetler: Media-Services belge\merkez: na Yazar: ınridatmicrosoft Manager: femıla Düzenleyicisi: ' ' Etiketleri: ' ' anahtar sözcükleri: Azure Media Services, Stream, Broadcast, Live, OFFLINE
 
-MS. Service: Media-Services MS. devlang: birden çok MS. Topic: genel bakış ms.tgt_pltfrm: birden çok MS. Workload: Media MS. Date: 08/31/2020 MS. Author: inhenkel MS. Custom: Mvc
+MS. Service: Media-Services MS. devlang: birden çok MS. Topic: genel bakış ms.tgt_pltfrm: birden çok MS. Workload: Media MS. Date: 3/10/2021 MS. Author: inhenkel MS. Custom: Mvc
 #<a name="customer-intent-as-a-developer-or-a-content-provider-i-want-to-encode-stream-on-demand-or-live-analyze-my-media-content-so-that-my-customers-can-view-the-content-on-a-wide-variety-of-browsers-and-devices-gain-valuable-insights-from-recorded-content"></a>Müşteri amacı: bir geliştirici veya bir içerik sağlayıcı olarak, bir veri akışı (isteğe bağlı veya canlı) kodlamak istiyorum, Cihazlarım çok çeşitli tarayıcılarda ve cihazlarda görüntülemek için, kayıtlı içerikten değerli içgörüler elde edin.
 ---
 
@@ -13,9 +13,6 @@ MS. Service: Media-Services MS. devlang: birden çok MS. Topic: genel bakış ms
 Azure Media Services, yayın kalitesinde video akışı elde etmenizi, erişilebilirlik ve dağıtımı iyileştirmenizi, içerikleri analiz etmenizi ve daha fazlasını yapmanızı sağlayan çözümler derlemenize olanak tanıyan bulut tabanlı bir platformdur. Bir uygulama geliştiricisi, bir çağrı merkezi, devlet kurumu veya eğlence şirketi olsun, Media Services günümüzün en popüler mobil cihaz ve tarayıcılarındaki büyük kitlelere kadar üstün kalitede medya deneyimleri sunan uygulamalar oluşturmanıza yardımcı olur.
 
 Media Services v3 SDK 'Ları, [Media Services v3 Openapı belirtimini (Swagger)](https://aka.ms/ams-v3-rest-sdk)temel alır.
-
-> [!NOTE]
-> Şu anda [Azure Portal](https://portal.azure.com/) kullanabilirsiniz: Media Services v3 [canlı olaylarını](live-events-outputs-concept.md)yönetmek, (yönetmiyorsanız) v3 [varlıklarını](assets-concept.md)görüntülemek, [API 'lere erişme hakkında bilgi almak](./access-api-howto.md). Diğer tüm yönetim görevleri (örneğin, [dönüşümler ve işler](transforms-jobs-concept.md) ve [içerik koruması](content-protection-overview.md)) için [REST API](/rest/api/media/), [CLI](/cli/azure/ams)veya desteklenen [SDK 'lardan](media-services-apis-overview.md#sdks)birini kullanın.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 

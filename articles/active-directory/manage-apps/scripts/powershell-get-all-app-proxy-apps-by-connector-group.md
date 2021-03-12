@@ -11,12 +11,12 @@ ms.topic: sample
 ms.date: 12/05/2019
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: 2b093c97c595f6fe7fc8d0802b61a85d840b159c
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.openlocfilehash: de4177917beafd05295bab0379eadc718428c24a
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99254838"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102565674"
 ---
 # <a name="get-all-application-proxy-apps-and-list-by-connector-group"></a>Tüm uygulama proxy uygulamalarını ve bağlayıcı grubuna göre listeyi al
 
@@ -28,7 +28,7 @@ Bu PowerShell betiği örneği, atanan uygulamalarla tüm Azure Active Directory
 
 [!INCLUDE [cloud-shell-try-it.md](../../../../includes/cloud-shell-try-it.md)]
 
-Bu örnek, Graf modülü (azuread) [Için Azuread v2 PowerShell](/powershell/azure/active-directory/install-adv2) 'ı veya Graf modülü önizleme sürümü (azureadpreview) [Için Azuread v2 PowerShell](/powershell/azure/active-directory/install-adv2?view=azureadps-2.0-preview) 'i gerektirir.
+Bu örnek, Graf modülü (azuread) [Için Azuread v2 PowerShell](/powershell/azure/active-directory/install-adv2) 'ı veya Graf modülü önizleme sürümü (azureadpreview) [Için Azuread v2 PowerShell](/powershell/azure/active-directory/install-adv2?view=azureadps-2.0-preview&preserve-view=true) 'i gerektirir.
 
 ## <a name="sample-script"></a>Örnek betik
 

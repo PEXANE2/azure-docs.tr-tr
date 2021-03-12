@@ -5,14 +5,14 @@ author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: reference
-ms.date: 03/04/2021
+ms.date: 03/10/2021
 ms.author: memildin
-ms.openlocfilehash: da2201931c92939029724b1086589803845109a7
-ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
+ms.openlocfilehash: 7080f79ca85a401ddcd3d421bb4a0292994508dd
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102439638"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102636683"
 ---
 # <a name="whats-new-in-azure-security-center"></a>Azure Güvenlik Merkezi 'ndeki yenilikler nelerdir?
 
@@ -36,6 +36,7 @@ Mart 'taki güncelleştirmeler şunları içerir:
 - [Güvenlik Merkezi ile tümleştirilmiş Azure Izleyici çalışma kitapları ve üç şablon sağlanmaktadır](#azure-monitor-workbooks-integrated-into-security-center-and-three-templates-provided)
 - [Mevzuat uyumluluk panosu artık Azure Denetim raporlarını içerir (Önizleme)](#regulatory-compliance-dashboard-now-includes-azure-audit-reports-preview)
 - [İş akışı Otomasyonu dağıtmaya yönelik ilkelere yönelik güncelleştirmeler](#updates-to-the-policies-for-deploying-workflow-automation)
+- [Artık doğrudan Azure etkinlik günlüğüne veri yazmayan iki eski öneri](#two-legacy-recommendations-no-longer-write-data-directly-to-azure-activity-log)
 
 
 ### <a name="azure-firewall-management-integrated-into-security-center"></a>Güvenlik Merkezi ile tümleştirilmiş Azure Güvenlik Duvarı yönetimi
@@ -113,6 +114,19 @@ Bu ilkelerin özelliklerine iki güncelleştirme vardır:
 [İş akışı Otomasyonu şablonları](https://github.com/Azure/Azure-Security-Center/tree/master/Workflow%20automation)ile çalışmaya başlayın.
 
 [Güvenlik Merkezi tetikleyicilerine yapılan yanıtları otomatikleştirme](workflow-automation.md)hakkında daha fazla bilgi edinin.
+
+
+### <a name="two-legacy-recommendations-no-longer-write-data-directly-to-azure-activity-log"></a>Artık doğrudan Azure etkinlik günlüğüne veri yazmayan iki eski öneri 
+
+Güvenlik Merkezi, Azure Advisor 'a neredeyse tüm güvenlik önerileri için verileri geçirir, bu da [Azure etkinlik günlüğüne](../azure-monitor/essentials/activity-log.md)yazar.
+
+İki öneri için, veriler eşzamanlı olarak doğrudan Azure etkinlik günlüğüne yazılır. Bu değişiklik ile, güvenlik merkezi bu eski güvenlik önerileri için verileri doğrudan etkinlik günlüğüne yazmayı durduruyor. Bunun yerine, diğer tüm önerilerin yaptığımız gibi verileri Azure Advisor 'a dışarı aktaracağız.
+
+Bu iki eski öneri şunlardır:
+- Endpoint Protection sistem durumu sorunları makinelerinizde çözümlenmelidir
+- Makinelerinizdeki güvenlik yapılandırmasındaki güvenlik açıkları düzeltilmelidir
+
+Bu iki öneriye ilişkin bilgilere, Etkinlik günlüğünün "TaskDiscovery türü önerisi" kategorisinin bilgilerine erişiyorsanız, artık kullanılamaz.
 
 
 

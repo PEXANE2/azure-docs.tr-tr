@@ -11,15 +11,15 @@ ms.topic: sample
 ms.date: 03/09/2021
 ms.author: kenwith
 ms.reviewer: mifarca
-ms.openlocfilehash: 5c0b661f80bf7100215b25a66e5b5337af01ba75
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.openlocfilehash: 20caefe74a7c047fb8690bb1d9e6f4eb9da7e9b7
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102584506"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102635204"
 ---
 # <a name="export-secrets-and-certificates-for-enterprise-apps"></a>Kurumsal uygulamalar için gizli dizileri ve sertifikaları dışa aktarma
-Bu PowerShell betiği örneği, belirtilen kurumsal uygulamalar için tüm gizli dizileri ve sertifikaları dizininizden bir CSV dosyasına dışarı aktarır.
+Bu PowerShell betiği örneği, belirtilen kurumsal uygulamalara ait tüm gizli dizileri, sertifikaları ve sahipleri dizininizden bir CSV dosyasına dışarı aktarır.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../../includes/quickstarts-free-trial-note.md)]
 
@@ -36,8 +36,9 @@ Bu örnek, Graf modülü (azuread) [Için Azuread v2 PowerShell](/powershell/azu
 
 | Komut | Notlar |
 |---|---|
-| [Get-AzureADApplication](/powershell/module/azuread/get-azureadapplication?view=azureadps-2.0&preserve-view=true) | Dizininizden bir uygulama alır. |
-| [Get-AzureADApplicationOwner](/powershell/module/azuread/Get-AzureADApplicationOwner?view=azureadps-2.0&preserve-view=true) | Bir uygulamanın sahiplerini dizininizden alır. |
+| [Get-AzureADServicePrincipal](/powershell/module/azuread/Get-azureADServicePrincipal?view=azureadps-2.0&preserve-view=true) | Dizininizden bir kurumsal uygulama alır. |
+| [Get-AzureADServicePrincipalOwner](/powershell/module/azuread/Get-AzureADServicePrincipalOwner?view=azureadps-2.0&preserve-view=true) | Bir kuruluş uygulamasının sahiplerini dizininizden alır. |
+
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

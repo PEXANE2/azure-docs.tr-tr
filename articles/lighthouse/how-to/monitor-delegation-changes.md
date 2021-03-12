@@ -1,20 +1,20 @@
 ---
 title: Yönettiğiniz kiracınızdaki yetkilendirme değişikliklerini izleme
 description: Müşteri kiracılarından yönetilen kiracınıza olan yetkilendirme etkinliğini izlemeyi öğrenin.
-ms.date: 01/27/2021
+ms.date: 02/18/2021
 ms.topic: how-to
-ms.openlocfilehash: 3bf6cc044d807d0c830b15c6d9c9a6d507f1a54f
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 8bd9e89039c114f3d1088df44198fe00c69bbf82
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100593132"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103199051"
 ---
 # <a name="monitor-delegation-changes-in-your-managing-tenant"></a>Yönettiğiniz kiracınızdaki yetkilendirme değişikliklerini izleme
 
 Hizmet sağlayıcı olarak, müşteri abonelikleri veya kaynak grupları, kiracınıza [Azure ınthouse](../overview.md)aracılığıyla veya daha önce atanmış kaynaklar kaldırıldığında farkında olmak isteyebilirsiniz.
 
-Yönetim kiracısında [Azure etkinlik günlüğü](../../azure-monitor/essentials/platform-logs-overview.md) , yetkilendirme etkinliğini kiracı düzeyinde izler. Günlüğe kaydedilen bu etkinlik, tüm müşteri kiracılarından eklenen veya kaldırılan temsilcileri içerir.
+Yönetim kiracısında [Azure etkinlik günlüğü](../../azure-monitor/essentials/platform-logs-overview.md) , yetkilendirme etkinliğini kiracı düzeyinde izler. Günlüğe kaydedilen bu etkinlik, müşteri kiracılarından eklenen veya kaldırılan temsilcileri içerir.
 
 Bu konuda, kiracınıza (tüm müşterileriniz genelinde), yetkilendirme etkinliğini izlemek için gereken izinler açıklanmaktadır. Ayrıca, bu verileri sorgulamak ve raporlamak için bir yöntem gösteren bir örnek komut dosyası da içerir.
 

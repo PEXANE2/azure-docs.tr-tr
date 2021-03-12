@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/31/2020
-ms.openlocfilehash: 9b2466bbe061dc147d020104b13da197840fe40a
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 07a959d4e8ba41652ba4e31ad59cf852659a5926
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102030792"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103199759"
 ---
 # <a name="using-functions-in-azure-monitor-log-queries"></a>Azure Izleyici günlük sorgularındaki işlevleri kullanma
 
@@ -27,7 +27,7 @@ Başka bir sorguyla bir günlük sorgusu kullanmak için, bunu bir işlev olarak
 | İşlev diğer adı | Diğer sorgularda işlevi kullanmak için kısa ad. Boşluk içeremez ve benzersiz olmalıdır. |
 | Kategori       | **Sorgu Gezgini**'nde Kaydedilmiş sorguları ve işlevleri düzenlemek için bir kategori. |
 
-
+Ayrıca, [REST API](/rest/api/loganalytics/savedsearches/createorupdate) veya [PowerShell](/powershell/module/az.operationalinsights/new-azoperationalinsightssavedsearch)kullanarak işlevler de oluşturabilirsiniz.
 
 
 ## <a name="use-a-function"></a>Bir işlev kullanın

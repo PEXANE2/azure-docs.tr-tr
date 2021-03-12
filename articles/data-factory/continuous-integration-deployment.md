@@ -6,13 +6,13 @@ author: dcstwh
 ms.author: weetok
 ms.reviewer: maghan
 ms.topic: conceptual
-ms.date: 02/18/2021
-ms.openlocfilehash: 2fd8911ca11ee6dfcf795347e1fe7f2c36a2b636
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.date: 03/11/2021
+ms.openlocfilehash: 4f03236176acea14bed2dfaac53b1a1e6cf7a1e2
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101716537"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103197862"
 ---
 # <a name="continuous-integration-and-delivery-in-azure-data-factory"></a>Azure Data Factory’de sürekli tümleştirme ve teslim
 
@@ -204,7 +204,7 @@ Geliştirme fabrikasında ilişkili bir git deposu varsa, şablonu yayımlayarak
 * Otomatik CI/CD kullanıyorsunuz ve Kaynak Yöneticisi dağıtımı sırasında bazı özellikleri değiştirmek istiyorsunuz, ancak özellikler varsayılan olarak parametreleştirimez.
 * Fabrikanızın izin verilen en fazla sayıda parametreye (256) sahip olduğu için varsayılan Kaynak Yöneticisi şablonunun geçersiz olması çok büyük.
 
-    Özel parametre 256 sınırını işlemek için 3 seçenek vardır:    
+    Özel parametre 256 sınırını işlemek için üç seçenek vardır:    
   
     * Özel parametre dosyasını kullanın ve Parametreleştirme gerektirmeyen özellikleri kaldırın, yani, varsayılan değeri tutan ve bu nedenle parametre sayısını azaltan Özellikler.
     * Parametreleri azaltmak için veri akışındaki mantığı yeniden düzenleyin, örneğin, işlem hattı parametrelerinin hepsi aynı değere sahiptir, bunun yerine yalnızca genel parametreleri kullanabilirsiniz.
@@ -333,6 +333,10 @@ Yukarıdaki şablonun nasıl oluşturulduğu ve kaynak türüne göre nasıl bö
 #### <a name="datasets"></a>Veri kümeleri
 
 * Veri kümeleri için türe özgü özelleştirme kullanılabilir olsa da, açıkça bir düzeyi yapılandırması olmadan yapılandırma sağlayabilirsiniz \* . Yukarıdaki örnekte, altındaki tüm veri kümesi özellikleri `typeProperties` parametrelenir.
+
+> [!NOTE]
+> İşlem hattı için yapılandırılmışsa **Azure uyarıları ve matrisleri** , ARM dağıtımları için parametre olarak şu anda desteklenmemektedir. Yeni ortamdaki uyarıları ve matrisleri yeniden uygulamak için lütfen [izleme, uyarılar ve matrisleri Data Factory izleyin.](https://docs.microsoft.com/azure/data-factory/monitor-using-azure-monitor#data-factory-metrics)
+> 
 
 ### <a name="default-parameterization-template"></a>Varsayılan parameterleştirme şablonu
 
@@ -678,6 +682,8 @@ Veri fabrikanınızla git tümleştirmesi kullanıyorsanız ve değişikliklerin
 -   Özel dallardan yayımlayamazsınız.
 
 -   Şu anda Bitbucket üzerinde projeler barındıramıyoruz.
+
+-   Şu anda uyarıları ve matrisleri parametre olarak dışarı ve içeri aktaramazsınız. 
 
 ## <a name="sample-pre--and-post-deployment-script"></a><a name="script"></a> Örnek ön ve dağıtım sonrası betiği
 

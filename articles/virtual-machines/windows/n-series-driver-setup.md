@@ -3,19 +3,21 @@ title: Windows için Azure N serisi NVıDıA GPU sürücü kurulumu
 description: Azure 'da Windows Server veya Windows çalıştıran N serisi VM 'Ler için NVıDıA GPU sürücülerini ayarlama
 author: vikancha-MSFT
 manager: jkabat
-ms.service: virtual-machines-windows
+ms.service: virtual-machines
+ms.subservice: vm-sizes-gpu
+ms.collection: windows
 ms.topic: how-to
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 09/24/2018
 ms.author: vikancha
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 38d9727cadd925b944809956eaee51103499a2df
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 05487db1d0522634eda606dcb2ba22876fc341db
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98200915"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102557446"
 ---
 # <a name="install-nvidia-gpu-drivers-on-n-series-vms-running-windows"></a>Windows çalıştıran N serisi VM 'Lere NVıDıA GPU sürücülerini yükler 
 
@@ -39,7 +41,7 @@ Bir VM 'de KıLAVUZ sürücüsü yüklemesinden sonra yeniden başlatma gerekir.
 
 Lütfen NVIDIA Denetim Masası 'nın yalnızca KıLAVUZ sürücüsü yüklemesiyle erişilebilir olduğunu unutmayın. CUDA sürücülerini yüklediyseniz, NVIDIA Denetim Masası görünür olmayacaktır.
 
-Aygıt Yöneticisi ' de sürücü yüklemeyi doğrulayabilirsiniz. Aşağıdaki örnek, bir Azure NC VM üzerinde Tesla K80 kartının başarıyla yapılandırılmasını gösterir.
+Device Manager ' de sürücü yüklemeyi doğrulayabilirsiniz. Aşağıdaki örnek, bir Azure NC VM üzerinde Tesla K80 kartının başarıyla yapılandırılmasını gösterir.
 
 ![GPU sürücüsü özellikleri](./media/n-series-driver-setup/GPU_driver_properties.png)
 

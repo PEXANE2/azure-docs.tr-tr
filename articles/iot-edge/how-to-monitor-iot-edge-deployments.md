@@ -10,14 +10,16 @@ ms.reviewer: veyalla
 ms.service: iot-edge
 ms.custom: devx-track-azurecli
 services: iot-edge
-ms.openlocfilehash: 45df700cc1772250e42a0e007fb4ea91b49471ba
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: f4f2f8522f6d3d1039673803d946323deb485db9
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98684212"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103200258"
 ---
 # <a name="monitor-iot-edge-deployments"></a>IoT Edge dağıtımlarını izleme
+
+[!INCLUDE [iot-edge-version-all-supported](../../includes/iot-edge-version-all-supported.md)]
 
 Azure IoT Edge, IoT Edge cihazlarınıza dağıtılan modüllerle ilgili gerçek zamanlı bilgileri izlemenize olanak sağlayan raporlama sağlar. IoT Hub hizmeti cihazlardan durumu alır ve işletmen için kullanılabilir hale getirir. İzleme, otomatik dağıtımlar ve katmanlı dağıtımlar içeren [ölçekte yapılan dağıtımlar](module-deployment-monitoring.md) için de önemlidir.
 

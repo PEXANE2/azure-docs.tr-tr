@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 02/17/2021
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: d8ef616ef059424846d5c42a91262881b8f6d30b
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 4d75e60d0e497dcdd2aa121f8da73f11a7e2af5b
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101701816"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103015225"
 ---
 # <a name="access-control-lists-acls-in-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage 2. 'de erişim denetim listeleri (ACL 'Ler)
 
@@ -41,7 +41,7 @@ Dosya ve dizin düzeyindeki izinleri ayarlamak için aşağıdaki makalelerden b
 |Java|[Azure Data Lake Storage 2. ACL 'Leri ayarlamak için Java kullanma](data-lake-storage-acl-java.md)|
 |Python|[Azure Data Lake Storage 2. ACL 'Leri ayarlamak için Python kullanma](data-lake-storage-acl-python.md)|
 |PowerShell|[Azure Data Lake Storage 2. ACL 'Leri ayarlamak için PowerShell kullanma](data-lake-storage-acl-powershell.md)|
-|Azure CLI|[Azure Data Lake Storage 2. ACL 'Leri ayarlamak için Azure CLı 'yi kullanma](data-lake-storage-acl-cli.md)|
+|Azure CLI’si|[Azure Data Lake Storage 2. ACL 'Leri ayarlamak için Azure CLı 'yi kullanma](data-lake-storage-acl-cli.md)|
 |REST API |[Yol-Güncelleştir](/rest/api/storageservices/datalakestoragegen2/path/update)|
 
 > [!IMPORTANT]
@@ -285,7 +285,7 @@ Azure rol atamaları devralınır. Atamalar abonelik, kaynak grubu ve depolama h
 
 ### <a name="does-data-lake-storage-gen2-support-inheritance-of-acls"></a>Data Lake Storage 2. ACL 'Leri devralmayı destekliyor mu?
 
-Varsayılan ACL 'ler, üst dizin altında oluşturulan yeni alt dizinler ve dosyalar için ACL 'Ler ayarlamak üzere kullanılabilir. Mevcut alt öğelerin ACL 'Lerini güncelleştirmek için, istenen dizin hiyerarşisi için ACL 'Leri yinelemeli olarak eklemeniz, güncelleştirmeniz veya kaldırmanız gerekecektir. Daha fazla bilgi için bkz. [Azure Data Lake Storage 2. için erişim denetim listelerini (ACL 'ler) yinelemeli olarak ayarlama](#set-access-control-lists). 
+Varsayılan ACL 'ler, üst dizin altında oluşturulan yeni alt dizinler ve dosyalar için ACL 'Ler ayarlamak üzere kullanılabilir. Mevcut alt öğelerin ACL 'Lerini güncelleştirmek için, istenen dizin hiyerarşisi için ACL 'Leri yinelemeli olarak eklemeniz, güncelleştirmeniz veya kaldırmanız gerekecektir. Yönergeler için, bu makalenin [ACL 'leri ayarlama](#set-access-control-lists) bölümüne bakın. 
 
 ### <a name="which-permissions-are-required-to-recursively-delete-a-directory-and-its-contents"></a>Bir dizini ve içeriğini yinelemeli olarak silmek için hangi izinler gereklidir?
 

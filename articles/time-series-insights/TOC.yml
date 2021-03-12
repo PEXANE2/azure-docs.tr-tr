@@ -180,7 +180,7 @@
 - name: Kaynaklar
   items:
     - name: Destek ve yardım seçenekleri
-      href: ../iot-fundamentals/iot-support-help.md
+      href: ../iot-fundamentals/iot-support-help.md?toc=/azure/time-series-insights/toc.json&bc=/azure/time-series-insights/breadcrumb/toc.json
     - name: Müşteri verisi istekleri
       href: time-series-insights-customer-data-requests.md
     - name: Geliştirici kaynakları

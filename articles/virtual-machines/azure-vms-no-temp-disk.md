@@ -4,15 +4,16 @@ description: Bu makalede, yerel geçici diski olmayan Microsoft Azure VM boyutla
 author: brbell
 ms.service: virtual-machines
 ms.topic: conceptual
+ms.subservice: sizes
 ms.author: brbell
 ms.reviewer: mimckitt
 ms.date: 06/15/2020
-ms.openlocfilehash: 4dd078205989872179b0b2474974a29cf6b88dad
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.openlocfilehash: 1937b8392ee3a73ed7c268897c532c643a9151eb
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102507849"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102565470"
 ---
 # <a name="azure-vm-sizes-with-no-local-temporary-disk"></a>Azure VM boyutları yerel geçici disk yok 
 Bu makalede, yerel geçici disk (yerel geçici disk yok) olmayan Azure VM boyutları hakkında sık sorulan soruların (SSS) yanıtları sağlanmaktadır. Bu VM boyutları hakkında daha fazla bilgi için bkz. [dv4 and Dsv4-Series (genel amaçlı Iş yükleri) Için belirtimler](dv4-dsv4-series.md) veya [Ev4 ve Esv4 serisi (bellek Için iyileştirilmiş Iş yükleri) özellikleri](ev4-esv4-series.md).

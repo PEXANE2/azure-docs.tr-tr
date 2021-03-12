@@ -1,18 +1,18 @@
 ---
 title: Azure Uygulama yapılandırması için Azure Ilke mevzuat uyumluluk denetimleri
 description: Azure Uygulama yapılandırması için kullanılabilen Azure Ilke mevzuat uyumluluk denetimlerini listeler. Bu yerleşik ilke tanımları, Azure kaynaklarınızın uyumluluğunu yönetmek için yaygın yaklaşımlar sağlar.
-ms.date: 03/05/2021
+ms.date: 03/10/2021
 ms.topic: sample
 author: AlexandraKemperMS
 ms.author: alkemper
 ms.service: azure-app-configuration
 ms.custom: subject-policy-compliancecontrols
-ms.openlocfilehash: c95fe658d64cce6247282194538853b19b6569f2
-ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
+ms.openlocfilehash: 54166e5a830298cedb6153d56c6819f762e3b033
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102441830"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102635115"
 ---
 # <a name="azure-policy-regulatory-compliance-controls-for-azure-app-configuration"></a>Azure Uygulama yapılandırması için Azure Ilke mevzuat uyumluluk denetimleri
 

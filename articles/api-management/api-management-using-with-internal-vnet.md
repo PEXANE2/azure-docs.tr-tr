@@ -12,14 +12,14 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 07/31/2019
+ms.date: 03/09/2021
 ms.author: apimpm
-ms.openlocfilehash: 0832c975ecb410b97a24c975f9fc0f4799120abd
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.openlocfilehash: 10154f496d76ce6b9eb19d610fdff8d7a4023c2d
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/01/2020
-ms.locfileid: "93145523"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102565963"
 ---
 # <a name="using-azure-api-management-service-with-an-internal-virtual-network"></a>Azure API Management hizmetini iç sanal ağ ile kullanma
 Azure API Management, Azure sanal ağları ile internet 'te erişilemeyen API 'Leri yönetebilir. Bağlantıyı yapmak için bir dizi VPN teknolojisi mevcuttur. API Management, bir sanal ağ içindeki iki ana modda dağıtılabilir:
@@ -43,11 +43,11 @@ API Management kullanarak, iç modda aşağıdaki senaryolar elde edebilirsiniz:
 
 Bu makalede açıklanan adımları gerçekleştirmek için şunları yapmanız gerekir:
 
-+ **Etkin bir Azure aboneliği** .
++ **Etkin bir Azure aboneliği**.
 
     [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-+ **Azure API Management örneği** . Daha fazla bilgi için bkz. [Azure API Management örneği oluşturma](get-started-create-service-instance.md).
++ **Azure API Management örneği**. Daha fazla bilgi için bkz. [Azure API Management örneği oluşturma](get-started-create-service-instance.md).
 + Bir sanal ağda API Management hizmeti dağıtıldığında, [bağlantı noktalarının listesi](./api-management-using-with-vnet.md#required-ports) kullanılır ve açılması gerekir. 
 
 ## <a name="creating-an-api-management-in-an-internal-virtual-network"></a><a name="enable-vpn"> </a>İç sanal ağda API Management oluşturma
@@ -56,12 +56,12 @@ Dahili bir sanal ağdaki API Management hizmeti, [iç yük dengeleyici (klasik)]
 ### <a name="enable-a-virtual-network-connection-using-the-azure-portal"></a>Azure portal kullanarak bir sanal ağ bağlantısını etkinleştirme
 
 1. [Azure Portal](https://portal.azure.com/)Azure API Management örneğinizi inceleyin.
-2. **Sanal ağ** ' ı seçin.
+2. **Sanal ağ**' ı seçin.
 3. API Management örneğini sanal ağın içine dağıtılacak şekilde yapılandırın.
 
     ![İç sanal ağda Azure API Management ayarlama menüsü][api-management-using-internal-vnet-menu]
 
-4. **Kaydet** ’i seçin.
+4. **Kaydet**’i seçin.
 
 Dağıtım başarılı olduktan sonra, genel bakış dikey penceresinde API Management hizmetinizin **özel** sanal IP adresini ve **genel** sanal IP adresini görmeniz gerekir. **Özel** sanal IP adresi,, `gateway` `portal` `management` ve `scm` bitiş noktalarına erişilebilen API Management alt ağ içinden gelen yük dengeli bir IP adresidir. **Ortak** sanal IP adresi **yalnızca** , `management` 3443 numaralı bağlantı noktası üzerinden uç noktaya giden denetim düzlemi trafiği Için kullanılır ve [apimana,][ServiceTags] servicetag öğesine kilitlenebilir.
 
@@ -74,7 +74,7 @@ Dağıtım başarılı olduktan sonra, genel bakış dikey penceresinde API Mana
 
 [![Azure’a dağıtın](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-api-management-create-with-internal-vnet%2Fazuredeploy.json)
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)] 
 
 Ayrıca, PowerShell cmdlet 'lerini kullanarak sanal ağ bağlantısını etkinleştirebilirsiniz.
 
@@ -83,7 +83,7 @@ Ayrıca, PowerShell cmdlet 'lerini kullanarak sanal ağ bağlantısını etkinle
 * Bir sanal ağ içinde API Management hizmetinin mevcut bir dağıtımını güncelleştirme: var olan bir API Management hizmetini bir sanal ağ içinde taşımak ve dahili sanal ağ türünü kullanmak üzere yapılandırmak için [Update-AzApiManagementRegion](/powershell/module/az.apimanagement/update-azapimanagementregion) cmdlet 'ini kullanın.
 
 ## <a name="dns-configuration"></a><a name="apim-dns-configuration"></a>DNS yapılandırması
-API Management dış sanal ağ modundayken DNS, Azure tarafından yönetilir. İç sanal ağ modunda, kendi DNS 'nizi yönetmeniz gerekir.
+API Management dış sanal ağ modundayken DNS, Azure tarafından yönetilir. İç sanal ağ modunda, kendi DNS 'nizi yönetmeniz gerekir. Azure DNS özel bir bölgeyi yapılandırma ve sanal ağa bağlama API Management hizmeti, önerilen seçenektir.  Azure DNS bir özel bölge ayarlamayı öğrenmek için [buraya](../dns/private-dns-getstarted-portal.md) tıklayın.
 
 > [!NOTE]
 > API Management hizmet, IP adreslerinden gelen istekleri dinlemez. Yalnızca hizmet uç noktalarında yapılandırılan ana bilgisayar adına yapılan isteklere yanıt verir. Bu uç noktalar; ağ geçidi, Azure portal ve geliştirici portalı, doğrudan yönetim uç noktası ve git içerir.
@@ -124,7 +124,7 @@ Bir sanal ağda özel bir DNS sunucusu kullanıyorsanız, DNS kayıtları oluşt
 
 2. Daha sonra, yalnızca sanal ağınızdan erişilebilen uç noktalara erişmek için DNS sunucunuzda kayıtlar oluşturabilirsiniz.
 
-## <a name="routing"></a><a name="routing"> </a> Yönlendirme
+## <a name="routing"></a><a name="routing"></a> Yönlendirme
 
 * Alt ağ aralığından yük dengeli bir *özel* sanal IP adresi ayrılır ve sanal ağ içinden API Management hizmet uç noktalarına erişmek için kullanılır. Bu *özel* IP adresi, Azure Portal hizmetin genel bakış dikey penceresinde bulunabilir. Bu adresin, sanal ağ tarafından kullanılan DNS sunucularına kayıtlı olması gerekir.
 * 3443 numaralı bağlantı noktası üzerinden yönetim hizmeti uç noktasına erişim sağlamak için yük dengeli bir *genel* IP adresı (VIP) de ayrılmış olur. Bu *genel* IP adresi, Azure Portal hizmetin genel bakış dikey penceresinde bulunabilir. *Genel* IP adresi yalnızca `management` bağlantı noktası 3443 üzerinden uç noktaya yönelik denetim düzlemi trafiği Için kullanılır ve [apimana,][ServiceTags] servicetag öğesine kilitlenebilir.

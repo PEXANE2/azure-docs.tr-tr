@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: conceptual
 ms.date: 02/03/2021
-ms.openlocfilehash: 39a1400bfe642672ba276686851d4f0edebbeb00
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: cbf070dce056795ad8e4a5f3e4d609e7d36d631e
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100387861"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103200826"
 ---
 # <a name="understanding-resource-sets"></a>Kaynak kümelerini anlama
 
@@ -21,7 +21,7 @@ Bu makale, Azure purview 'ın veri varlıklarını mantıksal kaynaklarla eşlem
 
 Ölçekli veri işleme sistemleri genellikle birden çok dosya olarak bir diskte tek bir tabloyu depolar. Bu kavram, kaynak kümeleri kullanılarak Azure purview 'da temsil edilir. Kaynak kümesi, katalogdaki çok sayıda varlığı temsil eden katalogdaki tek bir nesnedir.
 
-Örneğin, Spark kümenizin bir veri çerçevesini bir Azure ıntal Lake Storage (ADLS) Gen2 veri kaynağına kalıcı olduğunu varsayalım. Spark 'da tablo tek bir mantıksal kaynak gibi görünse de, her biri toplam veri çerçevesinin içeriğinin bir bölümünü temsil eden binlerce Parquet dosyası vardır. IoT verileri ve Web günlüğü verilerinde aynı zorluk vardır. Günlük dosyalarını birkaç kez veren bir sensör olduğunu düşünün. Bu tek sensörden yüzlerce binlerce günlük dosyası olana kadar uzun sürmez.
+Örneğin, Spark kümenizin bir veri çerçevesini Azure Data Lake Storage (ADLS) Gen2 veri kaynağına kalıcı olduğunu varsayalım. Spark 'da tablo tek bir mantıksal kaynak gibi görünse de, her biri toplam veri çerçevesinin içeriğinin bir bölümünü temsil eden binlerce Parquet dosyası vardır. IoT verileri ve Web günlüğü verilerinde aynı zorluk vardır. Günlük dosyalarını birkaç kez veren bir sensör olduğunu düşünün. Bu tek sensörden yüzlerce binlerce günlük dosyası olana kadar uzun sürmez.
 
 Çok sayıda veri varlığını tek bir mantıksal kaynağa eşlemenin zorluğuyla ele almak için Azure purview kaynak kümelerini kullanır.
 

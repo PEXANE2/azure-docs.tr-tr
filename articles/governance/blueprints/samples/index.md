@@ -1,14 +1,14 @@
 ---
 title: Şema örnekleri dizini
 description: Azure Blueprints ile ortamlar, ilkeler ve Bulut Benimseme Çerçevesi temelleri dağıtmak için uyumluluk ve standart örnek dizini.
-ms.date: 02/08/2020
+ms.date: 03/11/2021
 ms.topic: sample
-ms.openlocfilehash: c64bc02c1dea4e2c53d4ff195add2ac7fa57874f
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 0873de5879a40b13bea03c97e0b78d146f0d6696
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100370963"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103200985"
 ---
 # <a name="azure-blueprints-samples"></a>Azure Blueprints örnekleri
 
@@ -22,7 +22,8 @@ Aşağıdaki tabloda Azure Blueprints'e ait örneklerin bağlantıları yer alı
 | [Azure Güvenlik Karşılaştırması](./azure-security-benchmark.md) | [Azure Güvenlik Karşılaştırması](../../../security/benchmarks/overview.md) uyumluluğu için koruma sağlar. |
 | [Azure güvenliği kıyaslama temeli](./azure-security-benchmark-foundation/index.md) | Azure Security kıyaslama Foundation 'ı dağıtır ve yapılandırır. |
 | [Kanada Federal PBMM](./canada-federal-pbmm/index.md) | Kanada Federal Tarafından Korunan B, Orta Düzeyde Bütünlük, Orta Düzeyde Kullanılabilirlik (PBMM) için uyumluluğa yönelik koruma sağlar. |
-| [CIS Microsoft Azure Foundations Benchmark](./cis-azure-1-1-0.md)| CIS Microsoft Azure Foundations Benchmark önerileriyle uyumlu olmaya yardımcı olan bir dizi ilke sağlar. |
+| [CIS Microsoft Azure temel geçişleri kıyaslama v 1.3.0](./cis-azure-1-3-0.md)| , Yönetim ve kıyaslama v 1.3.0 önerilerini temel alarak Microsoft Azure CIS ile uyumlu olmanıza yardımcı olacak bir ilke kümesi sağlar. |
+| [CIS Microsoft Azure Yönetim Temelleri Kıyaslama v1.1.0](./cis-azure-1-1-0.md)| , Yönetim ve kıyaslama v 1.1.0 önerilerini temel alarak Microsoft Azure CIS ile uyumlu olmanıza yardımcı olacak bir ilke kümesi sağlar. |
 | [DoD Etki Düzeyi 4](./dod-impact-level-4/index.md) | DoD Etki Düzeyi 4 ile uyumluluk sağlamaya yardımcı olmak için bir dizi ilke sağlar. |
 | [DoD Etki Düzeyi 5](./dod-impact-level-5/index.md) | DoD Etki Düzeyi 5 ile uyumluluk sağlamaya yardımcı olmak için bir dizi ilke sağlar. |
 | [FedRAMP Moderate](./fedramp-m/index.md) | FedRAMP Moderate ile uyumluluk sağlamaya yardımcı olmak için bir dizi ilke sağlar. |

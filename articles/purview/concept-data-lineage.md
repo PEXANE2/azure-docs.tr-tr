@@ -7,16 +7,16 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: conceptual
 ms.date: 11/30/2020
-ms.openlocfilehash: ceb30cee194994e5b31db312f191194932c937b4
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 476355f41de5e0e6aaffdedea8947cab5221767a
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96554103"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103200741"
 ---
 # <a name="data-lineage-in-azure-purview-data-catalog-client"></a>Azure purview Veri Kataloğu istemcisinde veri kökenini
 
-Bu makalede, Azure purview Veri Kataloğu 'nda Data kökenini 'a genel bakış sunulmaktadır. Ayrıca, veri sistemlerinin kökenini verileri yakalamak için katalog ile nasıl tümleştirebileceğinizi ayrıntılarıyla açıklamaktadır. Purview, kuruluşların verilerinin farklı kısımlarında bulunan veriler için kökenini ve aşağıdakiler dahil farklı hazırlık düzeylerinde bulunabilir:
+Bu makalede, Azure purview Veri Kataloğu 'nda Data kökenini 'a genel bakış sunulmaktadır. Ayrıca, veri sistemlerinin kökenini verileri yakalamak için katalog ile nasıl tümleştirebileceğinizi ayrıntılarıyla açıklamaktadır. Takip, kuruluşunuzun veri kuruluşlarının farklı bölümlerinde bulunan veriler için kökenini ve aşağıdakiler dahil farklı hazırlık düzeylerinde bulunabilir:
 
 - Çeşitli platformlardan hazırlanan tamamen ham veri
 - Dönüştürülen ve hazırlanan veriler

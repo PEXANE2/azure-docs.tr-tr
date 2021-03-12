@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 09/02/2020
 ms.author: kirpas
 ms.subservice: disks
-ms.openlocfilehash: 2f991dd93549cf73005127569af496df541eecde
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.openlocfilehash: af57bc396349286c3edcaefc8385ddbaec066226
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102549609"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103199454"
 ---
 # <a name="how-to-expand-the-os-drive-of-a-virtual-machine"></a>Bir sanal makinenin işletim sistemi sürücüsünü genişletme
 
@@ -49,21 +49,21 @@ ms.locfileid: "102549609"
 
     :::image type="content" source="./media/expand-os-disk/disk-name.png" alt-text="Bir disk adı seçili olan diskler bölmesini gösteren ekran görüntüsü.":::
 
-4. **Ayarlar** altındaki sol menüde **yapılandırma**' yı seçin.
+4. **Ayarlar** altındaki sol menüde **Boyut + performans**' ı seçin.
 
-    :::image type="content" source="./media/expand-os-disk/configuration.png" alt-text="Menünün ayarlar bölümünde seçilen yapılandırma seçeneğini gösteren ekran görüntüsü.":::
+    :::image type="content" source="./media/expand-os-disk/configuration.png" alt-text="Menünün ayarlar bölümünde seçilen boyut ve performans seçeneğinin gösterildiği ekran görüntüsü.":::
 
-5. **Boyut (GiB)**' de istediğiniz disk boyutunu seçin.
+5. **Boyut ve performans**' da istediğiniz disk boyutunu seçin.
    
    > [!WARNING]
    > Yeni boyut mevcut disk boyutundan büyük olmalıdır. İşletim sistemi diskleri için izin verilen en yüksek 2.048 GB 'dir. (VHD blobunun boyutunu bu boyuttan büyük bir şekilde genişletmek mümkündür, ancak işletim sistemi yalnızca ilk 2.048 GB alan ile çalışabilir.)
    > 
 
-    :::image type="content" source="./media/expand-os-disk/size.png" alt-text="Yapılandırma bölmesini seçilen disk boyutuyla gösteren ekran görüntüsü.":::
+    :::image type="content" source="./media/expand-os-disk/size.png" alt-text="Boyut ve performans bölmesini seçilen disk boyutuyla gösteren ekran görüntüsü.":::
 
-6. **Kaydet**’i seçin.
+6. Sayfanın alt kısmındaki **yeniden boyutlandır** ' ı seçin.
 
-    :::image type="content" source="./media/expand-os-disk/save.png" alt-text="Kaydet düğmesinin seçili olduğu yapılandırma bölmesini gösteren ekran görüntüsü.":::
+    :::image type="content" source="./media/expand-os-disk/save.png" alt-text="Boyutlandır düğmesinin seçili olduğu boyut ve performans bölmesini gösteren ekran görüntüsü.":::
 
 
 ## <a name="resize-a-managed-disk-by-using-powershell"></a>PowerShell kullanarak yönetilen bir diski yeniden boyutlandırma
