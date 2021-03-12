@@ -6,22 +6,22 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 3/27/2020
-ms.openlocfilehash: a124f576b2540399d27fcd97e0e58476dba4ba4b
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 883b76929ac3310dd3089ecb088a4691adbb4ca1
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96492820"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103010363"
 ---
 # <a name="backup-and-restore-in-azure-database-for-mysql"></a>MySQL için Azure veritabanı 'nda yedekleme ve geri yükleme
 
-MySQL için Azure veritabanı otomatik olarak sunucu yedeklemeleri oluşturur ve bunları Kullanıcı tarafından yerel olarak yedekli veya coğrafi olarak yedekli depolama olarak yapılandırılmış şekilde depolar. Sunucunuzu belirli bir noktaya geri yüklemek için yedeklemeler kullanılabilir. Yedekleme ve geri yükleme, verilerinizi yanlışlıkla bozulmasından veya silmekten koruyan bir iş sürekliliği stratejisinin önemli bir parçasıdır.
+MySQL için Azure Veritabanı otomatik olarak sunucu yedeklemeleri oluşturur ve bunları kullanıcı tarafından yapılandırılmış yerel olarak yedekli veya coğrafi olarak yedekli depolama alanlarında depolar. Sunucunuzu belirli bir noktaya geri yüklemek için yedeklemeler kullanılabilir. Yedekleme ve geri yükleme her iş sürekliliği stratejisinin temel parçalarıdır çünkü bunlar verilerinizi yanlışlıkla bozulmalara veya silmelere karşı korur.
 
 ## <a name="backups"></a>Yedeklemeler
 
 MySQL için Azure veritabanı, veri dosyalarının ve işlem günlüğünün yedeklerini alır. Bu yedeklemeler, yapılandırılmış yedekleme saklama döneminizin içindeki herhangi bir zamanda bir sunucuyu geri yüklemenize olanak tanır. Varsayılan yedekleme saklama süresi yedi gündür. [İsteğe bağlı olarak](howto-restore-server-portal.md#set-backup-configuration) 35 güne kadar yapılandırma yapabilirsiniz. Tüm yedeklemeler AES 256 bit şifreleme kullanılarak şifrelenir.
 
-Bu yedekleme dosyaları Kullanıcı tarafından sunulmamış ve verilemez. Bu yedeklemeler, yalnızca MySQL için Azure veritabanı 'nda geri yükleme işlemleri için kullanılabilir. Bir veritabanını kopyalamak için [mysqldump](concepts-migrate-dump-restore.md) kullanabilirsiniz.
+Bu yedekleme dosyaları kullanıcılar kullanımına sunulmaz ve dışarı aktarılamaz. Bu yedeklemeler, yalnızca MySQL için Azure veritabanı 'nda geri yükleme işlemleri için kullanılabilir. Bir veritabanını kopyalamak için [mysqldump](concepts-migrate-dump-restore.md) kullanabilirsiniz.
 
 Yedekleme türü ve sıklığı, sunucular için arka uç depolamaya bağlıdır.
 
@@ -86,7 +86,17 @@ MySQL için Azure veritabanı 'nda, geri yükleme gerçekleştirmek özgün sunu
 - Bir **noktaya geri yükleme** , yedekleme artıklığı seçeneğiyle kullanılabilir ve tam ve işlem günlüğü yedeklemelerinin birleşimini kullanan özgün sunucunuz ile aynı bölgede yeni bir sunucu oluşturur.
 - **Coğrafi geri yükleme** yalnızca, sunucunuzu coğrafi olarak yedekli depolama için yapılandırdıysanız kullanılabilir ve sunucunuzu en son yedeklemenin kullanıldığı farklı bir bölgeye geri yüklemenize olanak tanır.
 
-Tahmini kurtarma süresi, veritabanı boyutları, işlem günlüğü boyutu, ağ bant genişliği ve aynı bölgedeki aynı bölgede Kurtarılan toplam veritabanı sayısı gibi çeşitli faktörlere bağlıdır. Kurtarma zamanı genellikle 12 saatten düşüktür.
+Sunucunun kurtarılmasına yönelik tahmini süre, çeşitli faktörlere bağlıdır:
+* Veritabanlarının boyutu
+* Dahil edilen işlem günlüğü sayısı
+* Geri yükleme noktasına kurtarmak için yeniden yürütülmesi gereken etkinliğin miktarı
+* Geri yükleme farklı bir bölgeye ise ağ bant genişliği
+* Hedef bölgede işlenmekte olan eşzamanlı geri yükleme isteklerinin sayısı
+* Veritabanındaki tablolarda birincil anahtar var. Daha hızlı kurtarma için, veritabanınızdaki tüm tablolar için birincil anahtar eklemeyi düşünün. Tablolarınızın birincil anahtarı olup olmadığını denetlemek için aşağıdaki sorguyu kullanabilirsiniz:
+```sql
+select tab.table_schema as database_name, tab.table_name from information_schema.tables tab left join information_schema.table_constraints tco on tab.table_schema = tco.table_schema and tab.table_name = tco.table_name and tco.constraint_type = 'PRIMARY KEY' where tco.constraint_type is null and tab.table_schema not in('mysql', 'information_schema', 'performance_schema', 'sys') and tab.table_type = 'BASE TABLE' order by tab.table_schema, tab.table_name;
+```
+Büyük veya çok etkin bir veritabanı için geri yükleme birkaç saat sürebilir. Bir bölgede uzun süren bir kesinti varsa, olağanüstü durum kurtarma için yüksek sayıda coğrafi geri yükleme isteği başlatılabilir. Çok sayıda istek olduğunda, bireysel veritabanlarının kurtarma süresi artabilir. Çoğu veritabanı son geri yükleme işlemi 12 saatten az sürer.
 
 > [!IMPORTANT]
 > Silinen sunucular yalnızca, yedeklemelerin silinmesinden sonra **beş gün** içinde geri yüklenebilir. Veritabanı yedeklemesine yalnızca sunucuyu barındıran Azure aboneliğinden erişilebilir ve geri yüklenebilir. Bırakılan bir sunucuyu geri yüklemek için [belgelenen adımlara](howto-restore-dropped-server.md)bakın. Sunucu kaynaklarını korumak için dağıtım sonrası, yanlışlıkla silme veya beklenmeyen değişikliklerden, Yöneticiler [Yönetim kilitlerinin](../azure-resource-manager/management/lock-resources.md)faydalanabilir.

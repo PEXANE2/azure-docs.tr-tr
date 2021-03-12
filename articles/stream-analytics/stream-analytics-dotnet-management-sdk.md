@@ -5,14 +5,14 @@ author: jseb225
 ms.author: jeanb
 ms.service: stream-analytics
 ms.topic: how-to
-ms.date: 12/06/2018
+ms.date: 3/12/2021
 ms.custom: seodec18, devx-track-csharp
-ms.openlocfilehash: 633885bb1062edac8226c073768ffdeba84fcb55
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 9adc4c92e3e637b9d3e18249b5de00782a94baab
+ms.sourcegitcommit: ec39209c5cbef28ade0badfffe59665631611199
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98012640"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103232894"
 ---
 # <a name="management-net-sdk-set-up-and-run-analytics-jobs-using-the-azure-stream-analytics-api-for-net"></a>Yönetim .NET SDK: .NET için Azure Stream Analytics API 'sini kullanarak analiz işlerini ayarlama ve çalıştırma
 Yönetim .NET SDK 'sını kullanarak .NET için Stream Analytics API 'sini kullanarak analiz işlerini ayarlamayı ve çalıştırmayı öğrenin. Bir proje kurun, giriş ve çıkış kaynakları, dönüşümler ve işleri başlatın ve durdurun. Analiz işleriniz için blob depolamadan veya bir olay hub 'ından veri akışı yapabilirsiniz.
@@ -207,6 +207,12 @@ BLOB depolama veya bir olay hub 'ından gelen giriş kaynakları, belirli bir i�
    // Test the connection to the input
    ResourceTestStatus testInputResult = streamAnalyticsManagementClient.Inputs.Test(resourceGroupName, streamingJobName, inputName);
    ```
+TestConnection çağrısının sonucu, iki özellik içeren bir *Resourcetestresult* nesnesidir:
+
+- *durum*: Şu dizelerden biri olabilir: ["Testnotatmey", "testsucceeded", "testfailed"]
+- *hata*: aşağıdaki özellikleri Içeren errorResponse türünde.
+   - *kod*: dize türünde gerekli bir özellik. Değer, test sırasında alınan standart sistem .net. HttpStatusCode değeridir.
+   - *ileti*: hatayı temsil eden String türünde gerekli bir özellik. 
 
 ## <a name="create-a-stream-analytics-output-target"></a>Stream Analytics çıkış hedefi oluşturma
 Çıkış hedefi oluşturmak, Stream Analytics giriş kaynağı oluşturmaya benzer. Giriş kaynakları gibi, çıkış hedefleri de belirli bir işe bağlıdır. Farklı işler için aynı çıkış hedefini kullanmak üzere, yöntemi yeniden çağırmanız ve farklı bir iş adı belirtmeniz gerekir.

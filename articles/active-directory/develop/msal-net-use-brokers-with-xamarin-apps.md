@@ -12,12 +12,12 @@ ms.date: 09/08/2019
 ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: devx-track-csharp, aaddev
-ms.openlocfilehash: 6958302a429fd88d4e26087b860b7f473bf4a1f9
-ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
+ms.openlocfilehash: 226e94510709b37a7e6b1aae90a7e0ec5b4222b9
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100104000"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103199569"
 ---
 # <a name="use-microsoft-authenticator-or-intune-company-portal-on-xamarin-applications"></a>Xamarin uygulamalarında Microsoft Authenticator veya Intune Şirket Portalı kullanma
 
@@ -239,7 +239,7 @@ result = await app.AcquireTokenInteractive(scopes)
 
 MSAL, aracıyı çağırmak ve sonra uygulamanıza geri dönmek için URL 'Ler kullanır. Bu gidiş dönüş işleminin tamamlanabilmesi için [Azure Portal](https://portal.azure.com)kullanarak uygulamanız Için bir **yeniden yönlendirme URI 'si** kaydedin.
 
-Uygulamanızın yeniden yönlendirme URI 'sinin biçimi APK 'yi imzalamak için kullanılan sertifikaya bağlıdır. Örneğin:
+Uygulamanızın yeniden yönlendirme URI 'sinin biçimi APK 'yi imzalamak için kullanılan sertifikaya bağlıdır. Örnek:
 
 ```
 msauth://com.microsoft.xforms.testApp/hgbUYHVBYUTvuvT&Y6tr554365466=
@@ -326,6 +326,8 @@ Amaç filtresi eklemek için uygulamanızın bildirimini değiştirin:
                     android:path="/hgbUYHVBYUTvuvT&Y6tr554365466="/>
 ```
 
+Uygulamanızı Sistem tarayıcısı ve Android 11 desteği için yapılandırma hakkında daha fazla bilgi için bkz. [Sistem tarayıcı desteği Için Android bildirimini güncelleştirme](msal-net-xamarin-android-considerations.md#update-the-android-manifest-for-system-webview-support).
+
 Alternatif olarak, MSAL 'yi, yeniden yönlendirme URI 'sine bağlı olmayan gömülü tarayıcıya geri dönecek şekilde yapılandırabilirsiniz:
 
 ```csharp
@@ -344,22 +346,22 @@ Android 'de aracılı kimlik doğrulaması uyguladığınızda sorunları önlem
 
     Örnek: Microsoft Authenticator önce yükleyip Intune Şirket Portalı yüklerseniz aracılı kimlik doğrulaması *yalnızca* Microsoft Authenticator olur.
 - **Günlükler** -aracılı kimlik doğrulamasıyla ilgili bir sorunla karşılaşırsanız, aracının günlüklerini görüntülemek nedeni tanılamanıza yardımcı olabilir.
-  - Microsoft Authenticator günlüklerini görüntüle:
+  - Microsoft Authenticator günlüklerini al:
 
     1. Uygulamanın sağ üst köşesindeki menü düğmesini seçin.
-    1. **Yardım**  >  **günlüklerini**  >  **görüntüleme günlüklerini** seçin.
-    1. Aracı günlüklerini cihazın panosuna kopyalamak için **Tümünü Kopyala** ' yı seçin.
+    1. Sorun **yaşayan geri bildirim gönder** seçeneğini belirleyin  >  .
+    1. **Ne yapmak istiyorsunuz?** altında bir seçenek belirleyin ve bir açıklama ekleyin.
+    1. Günlükleri göndermek için uygulamanın sağ üst köşesindeki oku seçin.
 
-    Bu günlüklerle hata ayıklamanın en iyi yolu, bunları kendinize e-posta ile ve geliştirme makinenizde görüntülemenizi sağlar. Bilgisayarınızdaki günlükleri cihazın kendisi yerine ayrıştırmayı daha kolay bulabilirsiniz. Ayrıca, Android 'de bir Test Düzenleyicisi kullanarak günlükleri bir metin dosyası olarak kaydedebilir ve ardından bir USB kablosu kullanarak dosyayı bir bilgisayara kopyalayabilirsiniz.
+    Günlükleri gönderdikten sonra, olay KIMLIĞINI görüntüleyen bir iletişim kutusu görüntülenir. Olay KIMLIĞINI kaydedin ve yardım istediğinizde ekleyin.
 
-  - Intune Şirket Portalı günlüklerini görüntüle:
+  - Intune Şirket Portalı günlüklerini al:
 
-    1. Uygulamanın sol üst köşesindeki menü düğmesini seçin
-    1. **Ayarlar**  >  **tanılama verilerini** seçin
-    1. Aracı günlüklerini cihazın SD kartına kopyalamak için **günlükleri Kopyala** ' yı seçin.
-    1. Geliştirme makinenizdeki günlükleri görüntülemek için USB kablosu kullanarak cihazı bir bilgisayara bağlayın.
+    1. Uygulamanın sol üst köşesindeki menü düğmesini seçin.
+    1. **Yardım**  >  **e-posta desteği**' ni seçin.
+    1. Günlükleri göndermek için **yalnızca günlükleri karşıya yükle**' yi seçin.
 
-    Günlüklere sahip olduktan sonra, bağıntı KIMLIĞI aracılığıyla kimlik doğrulama denemelerinde arama yapabilirsiniz. Bağıntı KIMLIĞI her kimlik doğrulama isteğine iliştirilir. Microsoft Identity platform kimlik doğrulama uç noktası tarafından döndürülen hataları bulmak için arama yapın `AADSTS` .
+    Günlükleri gönderdikten sonra, olay KIMLIĞINI görüntüleyen bir iletişim kutusu görüntülenir. Olay KIMLIĞINI kaydedin ve yardım istediğinizde ekleyin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -7,22 +7,22 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 03/05/2021
-ms.openlocfilehash: 7f7a09b9e20b461a8a1e448bf4a7b0747a35fbb1
-ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
+ms.date: 03/12/2021
+ms.openlocfilehash: 621cfa8977d4d0ed987b7d38407bbf5bbb370950
+ms.sourcegitcommit: ec39209c5cbef28ade0badfffe59665631611199
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102487160"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103232757"
 ---
 # <a name="create-a-semantic-query-in-cognitive-search"></a>Bilişsel Arama anlam sorgusu oluşturma
 
 > [!IMPORTANT]
-> Anlam sorgu türü, önizleme REST API ve Azure portal aracılığıyla kullanılabilen genel önizlemede bulunur. Önizleme özellikleri, olduğu gibi, [ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)altında sunulur. İlk önizleme başlatma sırasında, semantik arama için ücret alınmaz. Daha fazla bilgi için bkz. [kullanılabilirlik ve fiyatlandırma](semantic-search-overview.md#availability-and-pricing).
+> Anlam sorgu türü, önizleme REST API ve Azure portal aracılığıyla kullanılabilen genel önizlemede bulunur. Önizleme özellikleri, olduğu gibi, [ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)altında sunulur. Daha fazla bilgi için bkz. [kullanılabilirlik ve fiyatlandırma](semantic-search-overview.md#availability-and-pricing).
 
-Bu makalede, anlam derecelendirmesi kullanan bir arama isteğini nasıl formülleyeceğinizi ve anlam başlıkları ve yanıtları üretir.
+Bu makalede anlam derecelendirmesi kullanan bir arama isteğini nasıl formülleyeceğinizi öğrenin. İstek, en ilgili hüküm ve tümceciklere göre önemli olan anlam başlıklarını ve isteğe bağlı olarak [anlamsal yanıtları](semantic-answers.md)döndürecek.
 
-Anlamsal sorgular, PDF 'Ler veya büyük parçalar içeren belgeler gibi metin açısından ağır içerikten oluşturulan arama dizinlerinde en iyi şekilde çalışır.
+Hem açıklamalı alt yazılar hem de yanıtlar, arama belgesinde metinden bir bütün olarak ayıklanır. Anlam alt sistemi, bir başlık veya yanıtın özelliklerine sahip olan içeriği belirler, ancak yeni tümceler veya ifadeler oluşturmaz. Bu nedenle, açıklamaları veya tanımları içeren içerik anlamsal arama için en iyi şekilde çalışır.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -36,13 +36,13 @@ Anlamsal sorgular, PDF 'Ler veya büyük parçalar içeren belgeler gibi metin a
 
   Arama istemcisinin, sorgu isteğinde önizleme REST API 'Leri desteklemesi gerekir. Önizleme API 'Lerine GERI çağrı yapmak için değiştirdiğiniz [Postman](search-get-started-rest.md), [Visual Studio Code](search-get-started-vs-code.md)veya kodu kullanabilirsiniz. Bir anlamsal sorgu göndermek için Azure portal [Arama Gezgini](search-explorer.md) 'ni de kullanabilirsiniz.
 
-+ Bir [Arama belgesi](/rest/api/searchservice/preview-api/search-documents) , bu makalede açıklanan anlam seçeneği ve diğer parametrelerle istek ister.
++ Bir [sorgu isteği](/rest/api/searchservice/preview-api/search-documents) , bu makalede açıklanan anlam seçeneğini ve diğer parametreleri içermelidir.
 
 ## <a name="whats-a-semantic-query"></a>Anlamsal sorgu nedir?
 
 Bilişsel Arama bir sorgu, sorgu işlemeyi ve yanıtın şeklini belirleyen parametreli bir istek olur. Bir *anlam sorgusu* , eşleşen sonuçların kapsamını ve anlamını değerlendirebilen, daha fazla ilgili eşleştirmeyi en üst düzeye yükseltebilen ve anlam yanıtlarını ve açıklamalı alt yazıları döndüren anlam yeniden yönlendirme modelini çağıran parametreler ekler.
 
-Aşağıdaki istek, temel bir anlam sorgusunun temsilcisidir (yanıt olmadan).
+Aşağıdaki istek, en az anlamsal bir sorgu (yanıt olmadan) temsilcisidir.
 
 ```http
 POST https://[service name].search.windows.net/indexes/[index name]/docs/search?api-version=2020-06-30-Preview      
@@ -54,15 +54,25 @@ POST https://[service name].search.windows.net/indexes/[index name]/docs/search?
 }
 ```
 
-Bilişsel Arama tüm sorgularda olduğu gibi, istek tek bir dizinin belgeler koleksiyonunu hedefler. Ayrıca, semantik bir sorgu, semantik olmayan bir sorgu olarak aynı ayrıştırma, analiz ve tarama sırasıyla aynı sırada gider. Fark, ilgiye göre hesaplanır. Bu önizleme sürümünde tanımlandığı gibi, anlam sorgusu, varsayılan benzerlik derecelendirmesi algoritması tarafından atanan puanlar yerine anlam derecelendirmesiyle ilgili en iyi sonucu veren bir yol sağlayarak, gelişmiş algoritmalar kullanılarak *sonuçlar* yeniden işlenir. 
+Bilişsel Arama tüm sorgularda olduğu gibi, istek tek bir dizinin belgeler koleksiyonunu hedefler. Ayrıca, anlamsal bir sorgu semantik olmayan bir sorgu olarak aynı ayrıştırma, analiz, tarama ve Puanlama dizisine sahiptir. 
 
-Başlangıçtaki sonuçlardan yalnızca ilk 50 eşleşme anlam olarak derecelendirilir ve yanıtta tüm başlıklar dahil edilebilir. İsteğe bağlı olarak, olası bir **`answer`** yanıtı ayıklamak için istekte bir parametre belirtebilirsiniz. Bu model, arama sayfasının en üstünde işlemeyi seçebileceğiniz, sorguya yönelik beş olası yanıtı ifade edebilir.
+Fark, ilgi ve Puanlama ' de yer alır. Bu önizleme sürümünde tanımlandığı gibi anlamsal bir sorgu, sonuçları anlamsal dil modeli kullanılarak tekrar tekrar eden, varsayılan benzerlik derecelendirmesi algoritması tarafından atanan puanlar yerine anlam derecelendirmesiyle ilgili en iyi *sonucu* verilen eşleşmeleri sunmanın bir yolunu sağlayan bir anlam sorgusu olur.
 
-## <a name="query-using-rest-apis"></a>REST API 'Leri kullanarak sorgulama
+Başlangıçtaki sonuçlardan yalnızca ilk 50 eşleşme anlam olarak derecelendirilir ve yanıtta tüm başlıklar dahil edilebilir. İsteğe bağlı olarak, olası bir **`answer`** yanıtı ayıklamak için istekte bir parametre belirtebilirsiniz. Daha fazla bilgi için bkz. [anlam yanıtları](semantic-answers.md).
 
-REST API tam belirtimi, [Arama belgelerinde (REST önizlemesi)](/rest/api/searchservice/preview-api/search-documents)bulunabilir.
+## <a name="query-with-search-explorer"></a>Arama gezgini ile sorgulama
 
-Anlamsal sorgular, otomatik olarak açıklamalı alt yazılar ve vurgulama sağlar. Yanıtın yanıt içermesini istiyorsanız, isteğe isteğe bağlı bir **`answer`** parametre ekleyebilirsiniz. Bu parametre ve sorgu dizesinin oluşturulması, yanıtta bir yanıt oluşturacak.
+[Arama Gezgini](search-explorer.md) anlam sorgularının seçeneklerini içerecek şekilde güncelleştirilmiştir. Önizlemeye erişim verdikten sonra bu seçenekler portalda görünür hale gelir. Sorgu seçenekleri anlam sorguları, searchFields ve yazım düzeltmesini etkinleştirebilir.
+
+Gerekli sorgu parametrelerini sorgu dizesine de yapıştırabilirsiniz.
+
+:::image type="content" source="./media/semantic-search-overview/search-explorer-semantic-query-options.png" alt-text="Arama Gezgininde sorgu seçenekleri" border="true":::
+
+## <a name="query-using-rest"></a>REST kullanarak sorgulama
+
+İsteği programlı bir şekilde oluşturmak için [arama belgelerini (REST Önizleme)](/rest/api/searchservice/preview-api/search-documents) kullanın.
+
+Yanıt, otomatik olarak açıklamalı alt yazılar ve vurgulama içerir. Yanıtın yazım denetimi düzeltmesini veya yanıtlarını içermesini istiyorsanız, isteğe bağlı veya bir parametre ekleyin **`speller`** **`answers`** .
 
 Aşağıdaki örnek, semantik yanıtlar ve açıklamalı alt yazılar ile anlamsal bir sorgu isteği oluşturmak için oteller-Sample-Index ' i kullanır:
 
@@ -81,6 +91,16 @@ POST https://[service name].search.windows.net/indexes/hotels-sample-index/docs/
     "count": true
 }
 ```
+
+Aşağıdaki tablo, bir anlamsal sorgu için kullanılan sorgu parametrelerini özetler, böylece onları holistik olarak görebilirsiniz. Tüm parametrelerin listesi için bkz. [arama belgeleri (REST önizlemesi)](/rest/api/searchservice/preview-api/search-documents)
+
+| Parametre | Tür | Description |
+|-----------|-------|-------------|
+| queryType | Dize | Geçerli değerler basit, tam ve anlam içerir. Anlam sorguları için "anlam" değeri gereklidir. |
+| Sorgu dili | Dize | Anlam sorguları için gereklidir. Şu anda yalnızca "en-US" uygulandı. |
+| searchFields | Dize | Aranabilir alanların virgülle ayrılmış listesi. İsteğe bağlı ancak önerilir. Anlam derecelendirmenin gerçekleştiği alanları belirtir. </br></br>Basit ve tam sorgu türlerinin aksine, alanların listelenme sırası öncelik belirler. Daha fazla kullanım yönergeleri için bkz. [2. Adım: searchFields ayarlama](#searchfields). |
+| güncelleştirin | Dize | Anlam sorgularına özgü olmayan isteğe bağlı parametre, arama altyapısına ulaşmadan önce yanlış yazılmış koşulları düzeltir. Daha fazla bilgi için bkz. [sorgulara yazım denetimi ekleme](speller-how-to-add.md). |
+| acağınız |Dize | Anlam yanıtlarının sonuca dahil edilip edilmeyeceğini belirten isteğe bağlı parametreler. Şu anda yalnızca "extractive" uygulandı. Yanıtlar en fazla beş olacak şekilde yapılandırılabilir. Varsayılan değer bir. Bu örnek, üç yanıt sayısını gösterir: "extractive \| count3" '. Daha fazla bilgi için bkz. [anlam yanıtları döndürme](semantic-answers.md).|
 
 ### <a name="formulate-the-request"></a>İsteği formül altına yaz
 
@@ -109,7 +129,7 @@ Bu parametre, bu parametreyi dışarıda bıraktığınızda bir hata olmadığ�
 
 Searchfields parametresi, sorguya "anlamsal benzerlik" için değerlendirilecek olan metinlerin belirlemek için kullanılır. Önizleme için, modelin işlemek için en önemli olan alanlar için bir ipucu gerektirdiğinden, searchFields 'in boş bırakılması önerilmez.
 
-SearchFields sırası kritik öneme sahiptir. Zaten var olan basit veya tam Lucene sorgularında searchFields kullanıyorsanız, anlamsal bir sorgu türüne geçiş yaparken bu parametreyi geri ziyaret ettiğinizden emin olun.
+SearchFields sırası kritik öneme sahiptir. Zaten var olan basit veya tam Lucene sorgularında searchFields kullanıyorsanız, bir anlamsal sorgu türüne geçiş yaparken alan sırasını denetlemek için bu parametreyi geri ziyaret ettiğinizden emin olun.
 
 İki veya daha fazla searchFields belirtildiğinde en iyi sonuçları sağlamak için bu yönergeleri izleyin:
 
@@ -117,11 +137,11 @@ SearchFields sırası kritik öneme sahiptir. Zaten var olan basit veya tam Luce
 
 + İlk alan, ideal olarak 25 kelimeyle, her zaman kısa (bir başlık veya ad gibi) olmalıdır.
 
-+ Dizinde metin olan bir URL alanı (örneğin, gibi `www.domain.com/name-of-the-document-and-other-details` makine odaklı gibi okunabilir `www.domain.com/?id=23463&param=eis` ) varsa, bunu bir yere yerleştirin (veya bir kısa başlık alanı yoksa önce).
++ Dizinde metin olan bir URL alanı (örneğin `www.domain.com/name-of-the-document-and-other-details` , gibi makine odaklı şekilde okunabilir) varsa `www.domain.com/?id=23463&param=eis` , bunu bir yere yerleştirin (veya kısa başlık alanı yoksa önce).
 
 + Bir belgenin ana içeriği gibi anlam sorgularının yanıtının bulunabileceği açıklayıcı alanlarla bu alanları izleyin.
 
-Yalnızca bir alan belirtilmişse, anlam sorgularının yanıtının bulunduğu bir belgenin ana içeriği gibi açıklayıcı bir alan kullanın. Yeterli içerik sağlayan bir alan seçin.
+Yalnızca bir alan belirtilmişse, anlam sorgularının yanıtının bulunduğu bir belgenin ana içeriği gibi açıklayıcı bir alan kullanın. Yeterli içerik sağlayan bir alan seçin. Zamanında işleme sağlamak için, searchFields 'in toplu içeriğinin yalnızca ilk 20.000 belirteçleri, anlamsal değerlendirme ve sıralamaya sahiptir.
 
 #### <a name="step-3-remove-orderby-clauses"></a>3. Adım: orderBy yan tümcelerini kaldırma
 
@@ -129,15 +149,7 @@ Mevcut bir istekte varsa, herhangi bir orderBy yan tümcesini kaldırın. Anlams
 
 #### <a name="step-4-add-answers"></a>4. Adım: Yanıt ekleme
 
-İsteğe bağlı olarak, yanıt sağlayan ek işlemleri eklemek istiyorsanız "yanıtlar" ı ekleyin. Yanıtlar (ve açıklamalı alt yazılar), searchfields bölümünde listelenen alanlarda bulunan metinlerin 'lerden alınmıştır. Bir yanıtta en iyi yanıtları ve açıklamalı alt yazıları almak için, searchFields içeriğine zengin içerik alanları eklediğinizden emin olun.
-
-Yanıtları üreten açık ve örtük koşullar vardır. 
-
-+ Açık koşullara "cevaplar = extractive" eklenmesi dahildir. Ayrıca, genel yanıtta döndürülen yanıt sayısını belirtmek için, "Count" sözcüğünü ve ardından bir sayıyı ekleyin: `"answers=extractive|count=3"` .  Varsayılan değer bir. En fazla beş.
-
-+ Örtülü koşullar bir yanıt için kendisini hedefleyen bir sorgu dizesi oluşturmayı içerir. ' Hangi otel 'nin yeşil odasının bulunduğu bir sorgu daha büyük olasılıkla "Cevaplanan iç" gibi bir deyimden oluşan bir sorgudan "yanıtlanır". Bekleneceğiniz gibi sorgu belirtilmemiş veya null olamaz.
-
-Dikkat edilmesi gereken önemli nokta, sorgu bir soru gibi görünmüyorsa, "yanıtlar" parametresi ayarlanmış olsa bile yanıt işleme atlanır.
+İsteğe bağlı olarak, yanıt sağlayan ek işlemleri eklemek istiyorsanız "yanıtlar" ı ekleyin. Yanıtlar (ve açıklamalı alt yazılar), searchfields bölümünde listelenen alanlarda bulunan metinlerin 'lerden ayıklanır. Yanıt olarak en iyi yanıtları almak için, searchFields 'e içerik açısından zengin alanlar eklediğinizden emin olun. Daha fazla bilgi için bkz. [anlam yanıtları döndürme](semantic-answers.md).
 
 #### <a name="step-5-add-other-parameters"></a>5. Adım: başka parametreler ekleme
 
@@ -145,129 +157,33 @@ Dikkat edilmesi gereken önemli nokta, sorgu bir soru gibi görünmüyorsa, "yan
 
 İsteğe bağlı olarak, açıklamalı alt yazıların uygulanan vurgu stilini özelleştirebilirsiniz. Açıklamalı alt yazılar, yanıtı özetleyen belgedeki anahtar paslar üzerinde vurgu biçimlendirme uygular. Varsayılan değer: `<em>`. Biçimlendirme türünü (örneğin, sarı arka plan) belirtmek istiyorsanız, highlightPreTag ve highlightPostTag ' i ayarlayabilirsiniz.
 
-### <a name="review-the-response"></a>Yanıtı gözden geçirin
+## <a name="evaluate-the-response"></a>Yanıtı değerlendirme
 
-Yukarıdaki sorgu için yanıt, en üstteki seçim olarak aşağıdaki eşleşmeyi döndürür. Açıklamalı alt yazılar, düz metin ve vurgulanmış sürümlerle otomatik olarak döndürülür. Anlam yanıtları hakkında daha fazla bilgi için bkz. [anlam derecelendirmesi ve yanıtlar](semantic-how-to-query-response.md).
+Tüm sorgularda olduğu gibi, yanıt alınabilir olarak işaretlenmiş tüm alanlardan veya yalnızca select parametresinde listelenen alanlarla oluşur. Özgün ilgi Puanını içerir ve ayrıca, isteği nasıl formüllerinize bağlı olarak bir sayı veya toplu sonuçlar içerebilir.
+
+Bir anlam sorgusunda, yanıtın ek öğeleri vardır: yeni bir anlamsal olarak sıralanmış bir ilgi puanı, düz metin ve Vurgulamalar ve isteğe bağlı olarak bir yanıt.
+
+Bir istemci uygulamasında, belirli bir alanın tüm içeriği yerine, eşleştirme açıklaması olarak bir resim yazısı eklemek için arama sayfasını yapılandırabilirsiniz. Bu, tek tek alanlar arama sonuçları sayfası için çok yoğun olduğunda faydalıdır.
+
+Yukarıdaki örnek sorgusunun yanıtı, en üstteki seçim olarak aşağıdaki eşleşmeyi döndürür. Açıklamalı alt yazılar, düz metin ve vurgulanmış sürümlerle otomatik olarak döndürülür. Bu belirli sorgu ve Corpus için bir tane belirlenemediği için, örnekte yanıt çıkarılır.
 
 ```json
-"@odata.count": 29,
+"@odata.count": 35,
+"@search.answers": [],
 "value": [
     {
-        "@search.score": 1.8920634,
-        "@search.rerankerScore": 1.1091284966096282,
+        "@search.score": 1.8810667,
+        "@search.rerankerScore": 1.1446577133610845,
         "@search.captions": [
             {
-                "text": "Oceanside Resort. Budget. New Luxury Hotel. Be the first to stay. Bay views from every room, location near the pier, rooftop pool, waterfront dining & more.",
-                "highlights": "<strong>Oceanside Resort.</strong> Budget. New Luxury Hotel. Be the first to stay.<strong> Bay views</strong> from every room, location near the pier, rooftop pool, waterfront dining & more."
+                "text": "Oceanside Resort. Luxury. New Luxury Hotel. Be the first to stay. Bay views from every room, location near the pier, rooftop pool, waterfront dining & more.",
+                "highlights": "<strong>Oceanside Resort.</strong> Luxury. New Luxury Hotel. Be the first to stay.<strong> Bay</strong> views from every room, location near the pier, rooftop pool, waterfront dining & more."
             }
         ],
-        "HotelId": "18",
         "HotelName": "Oceanside Resort",
-        "Description": "New Luxury Hotel.  Be the first to stay. Bay views from every room, location near the pier, rooftop pool, waterfront dining & more.",
-        "Category": "Budget"
+        "Description": "New Luxury Hotel. Be the first to stay. Bay views from every room, location near the pier, rooftop pool, waterfront dining & more.",
+        "Category": "Luxury"
     },
-```
-
-### <a name="parameters-used-in-a-semantic-query"></a>Anlam sorgusunda kullanılan parametreler
-
-Aşağıdaki tablo, bir anlamsal sorgu için kullanılan sorgu parametrelerini özetler, böylece onları holistik olarak görebilirsiniz. Tüm parametrelerin listesi için bkz. [arama belgeleri (REST önizlemesi)](/rest/api/searchservice/preview-api/search-documents)
-
-| Parametre | Tür | Açıklama |
-|-----------|-------|-------------|
-| queryType | Dize | Geçerli değerler basit, tam ve anlam içerir. Anlam sorguları için "anlam" değeri gereklidir. |
-| Sorgu dili | Dize | Anlam sorguları için gereklidir. Şu anda yalnızca "en-US" uygulandı. |
-| searchFields | Dize | Aranabilir alanların virgülle ayrılmış listesi. İsteğe bağlı ancak önerilir. Anlam derecelendirmenin gerçekleştiği alanları belirtir. </br></br>Basit ve tam sorgu türlerinin aksine, alanların listelenme sırası öncelik belirler.|
-| acağınız |Dize | Anlam yanıtlarının sonuca dahil edilip edilmeyeceğini belirtmek için isteğe bağlı alan. Şu anda yalnızca "extractive" uygulandı. Yanıtlar en fazla beş olacak şekilde yapılandırılabilir. Varsayılan değer bir. Bu örnek, üç yanıt sayısını gösterir: "extractive \| count3" '. |
-
-## <a name="query-with-search-explorer"></a>Arama gezgini ile sorgulama
-
-Aşağıdaki sorgu yerleşik oteller örnek dizinini, API sürüm 2020-06-30-önizleme kullanarak ve arama Gezgini 'nde çalışır durumda hedefler. `$select`Yan tümce, sonuçları yalnızca birkaç alana kısıtlar ve bu, arama Gezgini 'nde AYRıNTıLı JSON 'da taramayı kolaylaştırır.
-
-### <a name="with-querytypesemantic"></a>QueryType = anlam ile
-
-```json
-search=nice hotel on water with a great restaurant&$select=HotelId,HotelName,Description,Tags&queryType=semantic&queryLanguage=english&searchFields=Description,Tags
-```
-
-İlk birkaç sonuç aşağıdaki gibidir.
-
-```json
-{
-    "@search.score": 0.38330218,
-    "@search.rerankerScore": 0.9754053303040564,
-    "HotelId": "18",
-    "HotelName": "Oceanside Resort",
-    "Description": "New Luxury Hotel. Be the first to stay. Bay views from every room, location near the pier, rooftop pool, waterfront dining & more.",
-    "Tags": [
-        "view",
-        "laundry service",
-        "air conditioning"
-    ]
-},
-{
-    "@search.score": 1.8920634,
-    "@search.rerankerScore": 0.8829904259182513,
-    "HotelId": "36",
-    "HotelName": "Pelham Hotel",
-    "Description": "Stunning Downtown Hotel with indoor Pool. Ideally located close to theatres, museums and the convention center. Indoor Pool and Sauna and fitness centre. Popular Bar & Restaurant",
-    "Tags": [
-        "view",
-        "pool",
-        "24-hour front desk service"
-    ]
-},
-{
-    "@search.score": 0.95706713,
-    "@search.rerankerScore": 0.8538530203513801,
-    "HotelId": "22",
-    "HotelName": "Stone Lion Inn",
-    "Description": "Full breakfast buffet for 2 for only $1.  Excited to show off our room upgrades, faster high speed WiFi, updated corridors & meeting space. Come relax and enjoy your stay.",
-    "Tags": [
-        "laundry service",
-        "air conditioning",
-        "restaurant"
-    ]
-},
-```
-
-### <a name="with-querytype-default"></a>QueryType ile (varsayılan)
-
-Karşılaştırma için, öğesini kaldırarak aynı sorguyu çalıştırın `&queryType=semantic&queryLanguage=english&searchFields=Description,Tags` . `"@search.rerankerScore"`Bu sonuçlarda Hayır olduğuna ve farklı otelların ilk üç konumda göründüğünü unutmayın.
-
-```json
-{
-    "@search.score": 8.633856,
-    "HotelId": "3",
-    "HotelName": "Triple Landscape Hotel",
-    "Description": "The Hotel stands out for its gastronomic excellence under the management of William Dough, who advises on and oversees all of the Hotel’s restaurant services.",
-    "Tags": [
-        "air conditioning",
-        "bar",
-        "continental breakfast"
-    ]
-},
-{
-    "@search.score": 6.407289,
-    "HotelId": "40",
-    "HotelName": "Trails End Motel",
-    "Description": "Only 8 miles from Downtown.  On-site bar/restaurant, Free hot breakfast buffet, Free wireless internet, All non-smoking hotel. Only 15 miles from airport.",
-    "Tags": [
-        "continental breakfast",
-        "view",
-        "view"
-    ]
-},
-{
-    "@search.score": 5.843788,
-    "HotelId": "14",
-    "HotelName": "Twin Vertex Hotel",
-    "Description": "New experience in the Making.  Be the first to experience the luxury of the Twin Vertex. Reserve one of our newly-renovated guest rooms today.",
-    "Tags": [
-        "bar",
-        "restaurant",
-        "air conditioning"
-    ]
-},
 ```
 
 ## <a name="next-steps"></a>Sonraki adımlar

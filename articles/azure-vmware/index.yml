@@ -6,15 +6,15 @@ metadata:
   description: Azure VMware Çözümü’nü kullanarak Azure’a VMware özel bulutunu dağıtmayı öğrenin
   ms.service: azure-vmware
   ms.topic: landing-page
-  author: dikamath
-  ms.author: dikamath
-  ms.date: 11/19/2020
-  ms.openlocfilehash: 7bff439db0b9567292707efeac085f8537de33a5
-  ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
+  author: shortpatti
+  ms.author: v-patsho
+  ms.date: 03/12/2021
+  ms.openlocfilehash: 9014dbbfdb9d1f0ef4af975da917abdcf71d8b2a
+  ms.sourcegitcommit: ec39209c5cbef28ade0badfffe59665631611199
   ms.translationtype: MT
   ms.contentlocale: tr-TR
-  ms.lasthandoff: 03/10/2021
-  ms.locfileid: "102612142"
+  ms.lasthandoff: 03/12/2021
+  ms.locfileid: "103232962"
 landingContent:
 - title: Azure VMware Çözümü hakkında
   linkLists:
@@ -140,11 +140,11 @@ landingContent:
     links:
     - text: Ekler
       url: https://youtube.com/playlist?list=PL1NLwHeM6ewbZu0dC0guj-OSpIoZnnJin
-    - text: Önce açığa çıkar DNS ve güvenli Iletişim
+    - text: Azure hizmeti ile tümleştirme
       url: https://youtu.be/m26iLu6DHbU
-    - text: Azure Application Gateway ile tümleştirin
+    - text: Azure Application Gateway ile tümleştirme
       url: https://youtu.be/BoQYvqzb6Y8
-    - text: Taşıma ve kapasite planlama
+    - text: Geçiş ve kapasite planlaması
       url: https://youtu.be/NoNG-hkksrA
 - title: Sorun giderme
   linkLists:

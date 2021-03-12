@@ -1,5 +1,5 @@
 ---
-title: 'Nasıl yapılır: kapsamlı kaynak kümesi yapılandırması oluşturma'
+title: Kapsamlı kaynak kümesi yapılandırması oluşturma
 description: Varlıkların kaynak kümelerine nasıl gruplandığını üzerine yazmak için kapsamlı kaynak kümesi yapılandırma kuralı oluşturmayı öğrenin
 author: djpmsft
 ms.author: daperlov
@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 02/17/2021
-ms.openlocfilehash: 8d7d482f38d58c8d6a8959acb51c94c0fb814697
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 10e925a84dbe187ccdf5e444cb8b3dd4b7bb4676
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101668444"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102608011"
 ---
 # <a name="create-scoped-resource-set-configuration-rules"></a>Kapsamlı kaynak kümesi yapılandırma kuralları oluşturma
 
@@ -24,20 +24,29 @@ Bir depolama hesabı taranırken, Azure purview bir varlık grubunun bir kaynak 
 
 Yeni bir kapsamlı kaynak kümesi yapılandırması oluşturmak için aşağıdaki adımları izleyin:
 
-1. Yönetim merkezine gidin. Menüden **kapsamlı kaynak kümeleri** ' ni seçin. Yeni bir yapılandırma kuralı kümesi oluşturmak için **+ Yeni** ' ye tıklayın.
-        :::image type="content" source="media/how-to-scoped-resource-sets/create-new-scoped-resource-set-rule.png" alt-text="Yeni kapsamlı kaynak kümesi kuralı oluştur" border="true":::
+1. Yönetim merkezine gidin. Menüden **kapsamlı kaynak kümeleri** ' ni seçin. Yeni bir yapılandırma kuralı kümesi oluşturmak için **+ Yeni** ' yi seçin.
 
-1. Kapsamlı kaynak kümesi yapılandırmanızın kapsamını girin. Depolama hesabı türünü ve bir kural kümesi oluşturmak istediğiniz depolama hesabının adını seçin. Her kural kümesi, **klasör yolu** alanında belirtilen bir klasör yolu kapsamına göre uygulanır. 
-        :::image type="content" source="media/how-to-scoped-resource-sets/create-new-scoped-resource-set-scope.png" alt-text="Yeni kapsamlı kaynak kümesi kuralı oluştur" border="true":::
+   :::image type="content" source="media/how-to-scoped-resource-sets/create-new-scoped-resource-set-rule.png" alt-text="Yeni kapsamlı kaynak kümesi kuralı oluştur" border="true":::
+
+1. Kapsamlı kaynak kümesi yapılandırmanızın kapsamını girin. Depolama hesabı türünü ve bir kural kümesi oluşturmak istediğiniz depolama hesabının adını seçin. Her kural kümesi, **klasör yolu** alanında belirtilen bir klasör yolu kapsamına göre uygulanır.
+
+   :::image type="content" source="media/how-to-scoped-resource-sets/create-new-scoped-resource-set-scope.png" alt-text="Kapsamlı kaynak kümesi yapılandırması oluşturma" border="true":::
 
 1. Yapılandırma kapsamının bir kuralını girmek için **+ Yeni kural**' ı seçin.
+
 1. Bir kural oluşturmak için aşağıdaki alanlara girin:
-    1. **Kural adı:** Yapılandırma kuralının adı. Bu alanın, kuralın uygulandığı varlıkları üzerinde hiçbir etkisi yoktur.
-    1. **Tam ad:** Varlıkları yapılandırma kuralıyla eşleştirmek için metin, dinamik replacers ve statik replacers birleşimini kullanan nitelikli bir yol. Bu yol, yapılandırma kuralının kapsamına göredir. Nitelikli adları belirtme hakkında ayrıntılı yönergeler için aşağıdaki [söz dizimi](#syntax) bölümüne bakın. 
-    1. **Görünen ad:** Varlığın görünen adı. Bu alan isteğe bağlıdır. Bir varlığın katalogda nasıl görüntülendiğini özelleştirmek için düz metin ve statik replacers kullanın. Daha ayrıntılı yönergeler için aşağıdaki [söz dizimi](#syntax) bölümüne bakın.
-    1. **Kaynak kümesi olarak gruplandırma:** Etkinleştirilirse, eşleşen kaynak bir kaynak kümesi olarak gruplandırılmaz. 
-        :::image type="content" source="media/how-to-scoped-resource-sets/scoped-resource-set-rule-example.png" alt-text="Yeni kapsamlı kaynak kümesi kuralı oluştur" border="true"::: 
-1. **Ekle**' ye tıklayarak Kuralı kaydedin. 
+
+   1. **Kural adı:** Yapılandırma kuralının adı. Bu alanın, kuralın uygulandığı varlıkları üzerinde hiçbir etkisi yoktur.
+
+   1. **Tam ad:** Varlıkları yapılandırma kuralıyla eşleştirmek için metin, dinamik replacers ve statik replacers birleşimini kullanan nitelikli bir yol. Bu yol, yapılandırma kuralının kapsamına göredir. Nitelikli adları belirtme hakkında ayrıntılı yönergeler için aşağıdaki [söz dizimi](#syntax) bölümüne bakın.
+
+   1. **Görünen ad:** Varlığın görünen adı. Bu alan isteğe bağlıdır. Bir varlığın katalogda nasıl görüntülendiğini özelleştirmek için düz metin ve statik replacers kullanın. Daha ayrıntılı yönergeler için aşağıdaki [söz dizimi](#syntax) bölümüne bakın.
+
+   1. **Kaynak kümesi olarak gruplandırma:** Etkinleştirilirse, eşleşen kaynak bir kaynak kümesi olarak gruplandırılmaz.
+
+      :::image type="content" source="media/how-to-scoped-resource-sets/scoped-resource-set-rule-example.png" alt-text="Yeni yapılandırma kuralı oluştur." border="true":::
+
+1. **Ekle**' ye tıklayarak Kuralı kaydedin.
 
 ## <a name="scoped-resource-set-syntax"></a><a name="syntax"></a> Kapsamlı kaynak kümesi sözdizimi
 
@@ -69,21 +78,23 @@ Statik ve dinamik replacers 'da kullanılabilecek kullanılabilir türler aşağ
 | ---- | --------- |
 | string | Boşluk gibi sınırlayıcılar dahil olmak üzere 1 veya daha fazla Unicode karakter serisi. |
 | int | 1 veya daha fazla 0-9 ASCII karakter serisi, 0 önekli (ör. 0001) olabilir. |
-| guid | Defineddefa içinde bir UUID 'nin 32 veya 8-4-4-4-12 dizi gösterimi https://tools.ietf.org/html/rfc4122 |
-| date | İsteğe bağlı ayırıcıları olan 6 veya 8 0-9 ASCII karakter serisi: YYYYMMDD, yyyy-aa-gg, YGG, yy-aa-gg, içinde belirtilen https://tools.ietf.org/html/rfc3339 |
-| time | İsteğe bağlı ayırıcıları olan 4 veya 6 0-9 ASCII karakter serisi: ssmm, HH: mm, Ssmmss, ss: DD: ss belirtildi https://tools.ietf.org/html/rfc3339 |
-| timestamp | İsteğe bağlı ayırıcıları olan 12 veya 14 0-9 ASCII karakter serisi: yyyy-mm-ddTHH: mm, yyyyMMddhhmm, yyyy-mm-ddTHH: mm: ss, yyyyaaggssddss belirtilen https://tools.ietf.org/html/rfc3339 |
+| guid | [RFC 4122](https://tools.ietf.org/html/rfc4122)' de defineddefa olarak bir UUID 'nin bir dizi 32 veya 8-4-4-4-12 dize temsili. |
+| date | İsteğe bağlı ayırıcıları olan 6 veya 8 0-9 ASCII karakter serisi: YYYYMMDD, yyyy-aa-gg, YGG, yy-aa-gg, [RFC 3339](https://tools.ietf.org/html/rfc3339)' de belirtildi. |
+| time | İsteğe bağlı ayırıcıları olan 4 veya 6 0-9 ASCII karakter serisi: ssmm, HH: mm, Ssmmss, HH: mm: ss, [RFC 3339](https://tools.ietf.org/html/rfc3339)' de belirtildi. |
+| timestamp | İsteğe bağlı ayırıcıları olan 12 veya 14 0-9 ASCII karakter serisi: yyyy-mm-ddTHH: mm, yyyyMMddhhmm, yyyy-mm-ddTHH: mm: ss, yyyyaaggssddss, [RFC 3339](https://tools.ietf.org/html/rfc3339)' de belirtildi. |
 | boolean | ' True ' veya ' false ' içerebilir, büyük/küçük harfe duyarsız olur. |
-| sayı | 0 veya daha fazla 0-9 ASCII karakter serisi, 0 ön eki (ör. 0001) ve ardından isteğe bağlı olarak bir nokta '. ' olabilir. ve 1 veya daha fazla 0-9 ASCII karakter serisi, 0 postfixed (ör. 100) olabilir | 
+| sayı | 0 veya daha fazla 0-9 ASCII karakter serisi, 0 ön eki (ör. 0001) ve ardından isteğe bağlı olarak bir nokta '. ' ve bir dizi 1 veya daha fazla 0-9 ASCII karakteri olabilir, bu 0 postfixed (ör. 100) olabilir. |
 | Onaltılık | 0-1 ve A-F kümesinden 1 veya daha fazla ASCII karakter serisi, değer 0 ön eki olabilir |
-| locale | İçinde belirtilen sözdizimiyle eşleşen bir dize https://tools.ietf.org/html/rfc5646 |
+| locale | [RFC 5646](https://tools.ietf.org/html/rfc5646)' de belirtilen sözdizimiyle eşleşen bir dize. |
 
-## <a name="order-of-scoped-resource-set-rules-getting-applied"></a>Kapsanan kaynak kümesi kurallarının uygulanma sırası.
+## <a name="order-of-scoped-resource-set-rules-getting-applied"></a>Uygulanan kapsamlı kaynak kümesi kuralları sırası
 
 Kapsamı belirlenmiş kaynak kümesi kurallarını uygulamak için işlemlerin sırası aşağıda verilmiştir:
 
-1. Bir varlık iki kuralla eşleşiyorsa, daha belirli kapsamlar öncelikli olur. Örneğin, bir kapsamdaki kurallar `container/folder` kapsamdaki kuralların önüne uygulanacaktır `container` . 
+1. Bir varlık iki kuralla eşleşiyorsa, daha belirli kapsamlar öncelikli olur. Örneğin, bir kapsamdaki kurallar `container/folder` kapsamdaki kuralların önüne uygulanacaktır `container` .
+
 1. Belirli bir kapsamdaki kuralların sırası. Bu, UX içinde düzenlenebilir.
+
 1. Bir varlık belirtilen herhangi bir kuralla eşleşmezse varsayılan kaynak kümesi buluşsal yöntemler geçerlidir.
 
 ## <a name="examples"></a>Örnekler
@@ -95,16 +106,16 @@ Tam ve Delta yüklere SAP veri ayıklama
 #### <a name="inputs"></a>Girişler
 
 Dosyalarý
--   `https://myazureblob.blob.core.windows.net/bar/customer/full/2020/01/13/saptable_customer_20200101_20200102_01.txt`
--   `https://myazureblob.blob.core.windows.net/bar/customer/full/2020/01/13/saptable_customer_20200101_20200102_02.txt`
--   `https://myazureblob.blob.core.windows.net/bar/customer/delta/2020/01/15/saptable_customer_20200101_20200102_01.txt`
--   `https://myazureblob.blob.core.windows.net/bar/customer/full/2020/01/17/saptable_customer_20200101_20200102_01.txt`
--   `https://myazureblob.blob.core.windows.net/bar/customer/full/2020/01/17/saptable_customer_20200101_20200102_02.txt`
 
+- `https://myazureblob.blob.core.windows.net/bar/customer/full/2020/01/13/saptable_customer_20200101_20200102_01.txt`
+- `https://myazureblob.blob.core.windows.net/bar/customer/full/2020/01/13/saptable_customer_20200101_20200102_02.txt`
+- `https://myazureblob.blob.core.windows.net/bar/customer/delta/2020/01/15/saptable_customer_20200101_20200102_01.txt`
+- `https://myazureblob.blob.core.windows.net/bar/customer/full/2020/01/17/saptable_customer_20200101_20200102_01.txt`
+- `https://myazureblob.blob.core.windows.net/bar/customer/full/2020/01/17/saptable_customer_20200101_20200102_02.txt`
 
-#### <a name="scoped-resource-set-rule"></a>Kapsamlı kaynak kümesi kuralı 
+#### <a name="scoped-resource-set-rule"></a>Kapsamlı kaynak kümesi kuralı
 
-**Kapsam:**https://myazureblob.blob.core.windows.net/bar/
+**Kapsam:**`https://myazureblob.blob.core.windows.net/bar/`
 
 **Görünen ad:** ' Dış müşteri '
 
@@ -112,7 +123,7 @@ Dosyalarý
 
 **Kaynak kümesi:** doğru
 
-#### <a name="output"></a>Çıktı 
+#### <a name="output"></a>Çıktı
 
 Bir kaynak kümesi varlığı
 
@@ -124,17 +135,18 @@ Bir kaynak kümesi varlığı
 
 Avro biçiminde IoT verileri
 
-#### <a name="inputs"></a>Girişler 
+#### <a name="inputs"></a>Girişler
 
 Dosyalarý
--   `https://myazureblob.blob.core.windows.net/bar/raw/machinename-89/01-01-2020/22:33:22-001.avro`
--   `https://myazureblob.blob.core.windows.net/bar/raw/machinename-89/01-01-2020/22:33:22-002.avro`
--   `https://myazureblob.blob.core.windows.net/bar/raw/machinename-89/02-01-2020/22:33:22-001.avro`
--   `https://myazureblob.blob.core.windows.net/bar/raw/machinename-90/01-01-2020/22:33:22-001.avro`
 
-#### <a name="scoped-resource-set-rules"></a>Kapsamlı kaynak kümesi kuralları 
+- `https://myazureblob.blob.core.windows.net/bar/raw/machinename-89/01-01-2020/22:33:22-001.avro`
+- `https://myazureblob.blob.core.windows.net/bar/raw/machinename-89/01-01-2020/22:33:22-002.avro`
+- `https://myazureblob.blob.core.windows.net/bar/raw/machinename-89/02-01-2020/22:33:22-001.avro`
+- `https://myazureblob.blob.core.windows.net/bar/raw/machinename-90/01-01-2020/22:33:22-001.avro`
 
-**Kapsam:**https://myazureblob.blob.core.windows.net/bar/
+#### <a name="scoped-resource-set-rules"></a>Kapsamlı kaynak kümesi kuralları
+
+**Kapsam:**`https://myazureblob.blob.core.windows.net/bar/`
 
 Kural 1
 
@@ -150,11 +162,11 @@ Kural 2
 
 **Tam ad:**`raw/machinename-90/{date:date}/{time:time}-{id:int}.avro`
 
-#### <a name="resource-set-true"></a>*Kaynak kümesi: doğru* 
+#### <a name="resource-set-true"></a>*Kaynak kümesi: doğru*
 
-#### <a name="outputs"></a>Çıkışlar 
+#### <a name="outputs"></a>Çıkışlar
 
-2 kaynak kümesi 
+2 kaynak kümesi
 
 Kaynak kümesi 1
 
@@ -172,17 +184,18 @@ Kaynak kümesi 2
 
 Avro biçiminde IoT verileri
 
-#### <a name="inputs"></a>Girişler 
+#### <a name="inputs"></a>Girişler
 
 Dosyalarý
--   `https://myazureblob.blob.core.windows.net/bar/raw/machinename-89/01-01-2020/22:33:22-001.avro`
--   `https://myazureblob.blob.core.windows.net/bar/raw/machinename-89/01-01-2020/22:33:22-002.avro`
--   `https://myazureblob.blob.core.windows.netbar/raw/machinename-89/02-01-2020/22:33:22-001.avro`
--   `https://myazureblob.blob.core.windows.net/bar/raw/machinename-90/01-01-2020/22:33:22-001.avro`
 
-#### <a name="scoped-resource-set-rule"></a>Kapsamlı kaynak kümesi kuralı 
+- `https://myazureblob.blob.core.windows.net/bar/raw/machinename-89/01-01-2020/22:33:22-001.avro`
+- `https://myazureblob.blob.core.windows.net/bar/raw/machinename-89/01-01-2020/22:33:22-002.avro`
+- `https://myazureblob.blob.core.windows.netbar/raw/machinename-89/02-01-2020/22:33:22-001.avro`
+- `https://myazureblob.blob.core.windows.net/bar/raw/machinename-90/01-01-2020/22:33:22-001.avro`
 
-**Kapsam:**https://myazureblob.blob.core.windows.net/bar/
+#### <a name="scoped-resource-set-rule"></a>Kapsamlı kaynak kümesi kuralı
+
+**Kapsam:**`https://myazureblob.blob.core.windows.net/bar/`
 
 **Görünen ad:** ' Makine-{{MachineID}} '
 
@@ -190,7 +203,7 @@ Dosyalarý
 
 **Kaynak kümesi:** doğru
 
-#### <a name="outputs"></a>Çıkışlar 
+#### <a name="outputs"></a>Çıkışlar
 
 Kaynak kümesi 1
 
@@ -208,25 +221,26 @@ Kaynak kümesi 2
 
 Kaynak kümelerine gruplandırma
 
-#### <a name="inputs"></a>Girişler 
+#### <a name="inputs"></a>Girişler
 
 Dosyalarý
--   `https://myazureblob.blob.core.windows.net/bar/raw/machinename-89/01-01-2020/22:33:22-001.avro`
--   `https://myazureblob.blob.core.windows.net/bar/raw/machinename-89/01-01-2020/22:33:22-002.avro`
--   `https://myazureblob.blob.core.windows.net/bar/raw/machinename-89/02-01-2020/22:33:22-001.avro`
--   `https://myazureblob.blob.core.windows.net/bar/raw/machinename-90/01-01-2020/22:33:22-001.avro`
 
-#### <a name="scoped-resource-set-rule"></a>Kapsamlı kaynak kümesi kuralı 
+- `https://myazureblob.blob.core.windows.net/bar/raw/machinename-89/01-01-2020/22:33:22-001.avro`
+- `https://myazureblob.blob.core.windows.net/bar/raw/machinename-89/01-01-2020/22:33:22-002.avro`
+- `https://myazureblob.blob.core.windows.net/bar/raw/machinename-89/02-01-2020/22:33:22-001.avro`
+- `https://myazureblob.blob.core.windows.net/bar/raw/machinename-90/01-01-2020/22:33:22-001.avro`
 
-**Kapsam:**https://myazureblob.blob.core.windows.net/bar/
+#### <a name="scoped-resource-set-rule"></a>Kapsamlı kaynak kümesi kuralı
 
-**Görünen ad:** ' Makine-{{MachineID}} '
+**Kapsam:**`https://myazureblob.blob.core.windows.net/bar/`
+
+**Görünen ad:**`Machine-{{machineid}}`
 
 **Tam ad:**`raw/machinename-{{machineid:int}}/{{:date}}/{{:time}}-{{:int}}.avro`
 
 **Kaynak kümesi:** false
 
-#### <a name="outputs"></a>Çıkışlar 
+#### <a name="outputs"></a>Çıkışlar
 
 4 bireysel varlık
 

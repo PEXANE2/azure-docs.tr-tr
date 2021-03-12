@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 02/22/2021
+ms.date: 03/09/2021
 ms.author: alkohli
-ms.openlocfilehash: 51c4a873ca0f4d8c3013e77399f0f9b948875fb6
-ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
+ms.openlocfilehash: 01ba8e1f22deb376fd461be24d3f66f0a7f5e1ae
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102520719"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102610493"
 ---
 # <a name="use-kubectl-to-run-a-kubernetes-stateful-application-with-a-persistentvolume-on-your-azure-stack-edge-pro-device"></a>Kubectl 'yi, Azure Stack Edge Pro cihazınızda bir PersistentVolume ile bir Kubernetes durum bilgisi olan uygulama çalıştırmak için kullanın
 
@@ -21,7 +21,7 @@ ms.locfileid: "102520719"
 
 Bu makalede, bir PersistentVolume (BD) ve dağıtım kullanarak Kubernetes 'te tek örnekli bir durum bilgisi olan uygulamanın nasıl dağıtılacağı gösterilir. Dağıtım, `kubectl` var olan bir Kubernetes kümesinde komutlar kullanır ve MySQL uygulamasını dağıtır. 
 
-Bu yordam, [Azure Stack Edge Pro cihazındaki Kubernetes depolamayı](azure-stack-edge-gpu-kubernetes-storage.md) Inceleyen ve [Kubernetes depolama](https://kubernetes.io/docs/concepts/storage/)kavramlarını bildiğiniz kullanıcılara yöneliktir.
+Bu yordam, [Azure Stack Edge Pro cihazındaki Kubernetes depolamayı](azure-stack-edge-gpu-kubernetes-storage.md) Inceleyen ve [Kubernetes depolama](https://kubernetes.io/docs/concepts/storage/)kavramlarını bildiğiniz kullanıcılara yöneliktir. 
 
 Azure Stack Edge Pro, Azure SQL Edge kapsayıcılarını çalıştırmayı da destekler ve bu, MySQL için burada ayrıntılı şekilde dağıtılabilir. Daha fazla bilgi için bkz. [Azure SQL Edge](../azure-sql-edge/overview.md).
 
@@ -62,7 +62,8 @@ Azure Stack Edge Pro cihazınızda durum bilgisi olan bir uygulamayı dağıtmay
 Statik olarak bir BD sağlamak için cihazınızda bir paylaşma oluşturmanız gerekir. SMB paylaşımınızda bir BD sağlamak için bu adımları izleyin. 
 
 > [!NOTE]
-> Bu nasıl yapılır makalesinde kullanılan belirli örnek NFS paylaşımları ile çalışmaz. Genellikle, NFS paylaşımları, veritabanı olmayan uygulamalarla Azure Stack Edge cihazınızda sağlanabilir.
+> - Bu nasıl yapılır makalesinde kullanılan belirli örnek NFS paylaşımları ile çalışmaz. Genellikle, NFS paylaşımları, veritabanı olmayan uygulamalarla Azure Stack Edge cihazınızda sağlanabilir.
+> - Kalıcı depolama sağlamak için depolama birimleri kullanan durum bilgisi olan uygulamaları dağıtmak için kullanmanızı öneririz `StatefulSet` . Bu örnek `Deployment` yalnızca bir çoğaltmayla birlikte kullanır ve geliştirme ve test için uygundur. 
 
 1. Kenar paylaşma veya kenar yerel paylaşma oluşturmak isteyip istemediğinizi seçin. Paylaşma oluşturmak için [paylaşma ekleme](azure-stack-edge-manage-shares.md#add-a-share) bölümündeki yönergeleri izleyin. **Edge COMPUTE ile paylaşma kullan** onay kutusunu seçtiğinizden emin olun.
 

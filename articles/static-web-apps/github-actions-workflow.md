@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: conceptual
 ms.date: 02/05/2021
 ms.author: cshoe
-ms.openlocfilehash: 785fd535c46b67cfd631cd18560f396a6901e5c0
-ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
+ms.openlocfilehash: 57c83a94925e94088085efacf1192416f63e6383
+ms.sourcegitcommit: ec39209c5cbef28ade0badfffe59665631611199
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99593968"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103232048"
 ---
 # <a name="github-actions-workflows-for-azure-static-web-apps-preview"></a>Azure statik Web Apps önizlemesi için GitHub eylemleri iş akışları
 
@@ -152,7 +152,7 @@ Dağıtım her zaman `npm install` özel bir komuttan önce çağırır.
 
 | Komut            | Açıklama |
 |---------------------|-------------|
-| `app_build_command` | Statik içerik uygulamasının dağıtımı sırasında çalışacak özel bir komut tanımlar.<br><br>Örneğin, angular uygulamasına yönelik bir üretim yapısını yapılandırmak için, çalıştırmak üzere adlı bir NPM betiği oluşturun `build-prod` `ng build --prod` ve `npm run build-prod` özel komut olarak girin. Boş bırakılırsa, iş akışı `npm run build` veya komutlarını çalıştırmayı dener `npm run build:Azure` .  |
+| `app_build_command` | Statik içerik uygulamasının dağıtımı sırasında çalışacak özel bir komut tanımlar.<br><br>Örneğin, angular uygulamasına yönelik bir üretim yapısını yapılandırmak için, çalıştırmak üzere adlı bir NPM betiği oluşturun `build-prod` `ng build --prod` ve `npm run build-prod` özel komut olarak girin. Boş bırakılırsa, iş akışı `npm run build` veya komutlarını çalıştırmayı dener `npm run build:azure` .  |
 | `api_build_command` | Azure Işlevleri API uygulaması dağıtımı sırasında çalışacak özel bir komut tanımlar. |
 
 ## <a name="route-file-location"></a>Yol dosyası konumu

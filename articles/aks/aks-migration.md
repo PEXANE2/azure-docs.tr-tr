@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 02/25/2020
 ms.custom: mvc
-ms.openlocfilehash: 5881d03603002cc8d5bef1680083f6b4145bc77f
-ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
+ms.openlocfilehash: 19de94db517afb2a8eeb855e76f2381096f8d7c0
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99526696"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102609116"
 ---
 # <a name="migrate-to-azure-kubernetes-service-aks"></a>Azure Kubernetes Service 'e (AKS) geçiş
 
@@ -114,7 +114,7 @@ Durum bilgisiz uygulama geçişi en kolay durumdur. Kaynak tanımlarınızı (YA
 Veri kaybını veya beklenmedik kapalı kalma süresini önlemek için durum bilgisi olan uygulamaların geçişini dikkatle planlayın.
 
 Azure dosyaları kullanıyorsanız, dosya payını yeni kümeye bir birim olarak bağlayabilirsiniz:
-* [Statik Azure dosyalarını birim olarak bağlama](./azure-files-volume.md#mount-the-file-share-as-a-volume)
+* [Statik Azure dosyalarını birim olarak bağlama](./azure-files-volume.md#mount-file-share-as-an-persistent-volume)
 
 Azure yönetilen diskler kullanıyorsanız, diski yalnızca herhangi bir VM 'ye bağlı değilse bağlayabilirsiniz:
 * [Statik Azure diskini birim olarak bağlama](./azure-disk-volume.md#mount-disk-as-volume)

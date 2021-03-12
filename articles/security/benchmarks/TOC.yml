@@ -191,6 +191,8 @@
       href: ../../iot-hub/security-baseline.md
     - name: Key Vault güvenlik temeli
       href: ../../key-vault/general/security-baseline.md
+    - name: Linux işlem güvenliği temeli
+      href: ../../governance/policy/samples/guest-configuration-baseline-linux.md?toc=/azure/security/benchmarks/toc.json
     - name: Logic Apps güvenlik temeli
       href: ../../logic-apps/security-baseline.md
     - name: Microsoft Cloud App Security temeli
@@ -229,6 +231,8 @@
       href: ../../virtual-wan/security-baseline.md
     - name: VPN Gateway güvenlik temeli
       href: ../../vpn-gateway/security-baseline.md
+    - name: Windows işlem güvenliği temeli
+      href: ../../governance/policy/samples/guest-configuration-baseline-windows.md?toc=/azure/security/benchmarks/toc.json
     - name: Windows sanal masaüstü güvenlik temeli
       href: ../../virtual-desktop/security-baseline.md
 - name: Kaynaklar

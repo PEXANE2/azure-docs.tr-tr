@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: troubleshooting
 ms.date: 07/06/2020
 ms.author: justinha
-ms.openlocfilehash: 7967347fa63c657ba6211328bdd1d55512358521
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.openlocfilehash: 3341f290a5a5bb169b6e70ea22459a2afafedbbc
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/05/2020
-ms.locfileid: "96618782"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103198955"
 ---
 # <a name="troubleshoot-account-lockout-problems-with-an-azure-active-directory-domain-services-managed-domain"></a>Azure Active Directory Domain Services yönetilen bir etki alanıyla hesap kilitleme sorunlarını giderme
 
@@ -83,6 +83,23 @@ AADDomainServicesAccountManagement
 | where OperationName has "4740"
 | sort by TimeGenerated asc
 ```
+
+**Not**
+
+"Kaynak Iş Istasyonu:" ile ilgili 4776 ve 4740 olay ayrıntılarında bulunabilir. Bunun nedeni, hatalı parolanın başka bazı cihazlar aracılığıyla ağ oturum açma üzerinden gerçekleşmektir.
+Örneğin: RADIUS sunucusuna sahipseniz, kimlik doğrulamasını AAD 'ler 'e iletebilirler. DC 'nin arka uca RDP 'yi etkinleştirdiğini doğrulamak için Netlogon günlüklerini yapılandırın.
+
+03/04 19:07:29 [oturum açma] [10752] contoso: SamLogon: Contoso\nagappan,veerappa 'dan (LOB11-RADIUS aracılığıyla) bir geçişli ağ oturumu girildi 
+
+03/04 19:07:29 [oturum açma] [10752] contoso: SamLogon: Contoso\nagappan.exe 'ten gelen geçişli ağ oturumu açma (LOB11-RADIUS aracılığıyla), 0xC000006A döndürür
+
+03/04 19:07:35 [oturum açma] [10753] contoso: SamLogon: Contoso\nagappan,veerappa 'dan (LOB11-RADIUS aracılığıyla) bir geçişli ağ oturumu girildi 
+
+03/04 19:07:35 [oturum açma] [10753] contoso: SamLogon: Contoso\nagappan.exe 'ten gelen geçişli ağ oturumu açma (LOB11-RADIUS aracılığıyla), 0xC000006A döndürür
+
+Tanılama yakalamayı yapılandırmak için NSG ile arka uca olan DC 'larınız için RDP 'yi etkinleştirin (ör. Netlogon) https://docs.microsoft.com/azure/active-directory-domain-services/alert-nsg#inbound-security-rules varsayılan NSG 'yi zaten değiştirdiyseniz, lütfen etkinleştirmek Için PSlet yolunu izleyin https://docs.microsoft.com/azure/active-directory-domain-services/network-considerations#port-3389---management-using-remote-desktop
+
+Herhangi bir sunucuda Netlogon günlüğünü etkinleştirmek için https://docs.microsoft.com/troubleshoot/windows-client/windows-security/enable-debug-logging-netlogon-service
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

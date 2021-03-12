@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/04/2021
 ms.author: genli
-ms.openlocfilehash: 518b8e33ac9adfdd1aa121e0cb8d1558545980e7
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: c28790b2ef423a3d0f996d7c6030b04198756eb1
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99054864"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102607620"
 ---
 # <a name="troubleshoot-outbound-smtp-connectivity-problems-in-azure"></a>Azure 'da giden SMTP bağlantısı sorunlarını giderme
 
@@ -76,6 +76,10 @@ Azure kaynaklarını bir bulut çözümü sağlayıcısı aracılığıyla kulla
 Azure VM 'lerinden doğrudan dış e-posta sağlayıcılarına (kimliği doğrulanmış SMTP geçişi kullanmadan) e-posta gönderebilmek istiyorsanız, aşağıdaki sorun türünü kullanarak bir destek talebi açarak bir istek yapabilirsiniz: **Teknik**  >  **sanal ağ**  >  **bağlantısı**  >  **e-posta gönderemez (SMTP/bağlantı noktası 25)**. Dağıtımınızın, kimliği doğrulanmış bir geçiş kullanmak yerine doğrudan posta sağlayıcılarına e-posta göndermek zorunda olduğuna ilişkin ayrıntıları eklediğinizden emin olun. İstekler, Microsoft 'un yanı sıra incelenip onaylanacaktır. İstekler, yalnızca ek antılanrat denetimleri tamamlandıktan sonra verilecek. 
 
 Bir abonelik dışlandıktan ve VM 'Ler Azure portal durdurulduğunda ve yeniden başlatıldıktan sonra, Bu abonelikteki tüm VM 'Ler ileride tutulur. Muafiyet yalnızca, istenen abonelik ve yalnızca doğrudan internet 'e yönlendirilen VM trafiği için geçerlidir.
+
+## <a name="changing-subscription-type"></a>Abonelik türü değiştiriliyor
+
+Abonelik türünü veya bulut çözümü sağlayıcınızı veya kullandıkça öde aboneliğiniz onaylanmışsa, yeni ilkenin etkili olması için sanal makineyi durdurmanız, serbest bırakma ve sonra yeniden başlatmanız gerekir. Benzer şekilde, varsayılan olarak izin verilen bir abonelik türüne sahipseniz ve izin verilmeyen bir abonelik türüne geçiş yaparsanız, dağıtımdaki değişiklikler nedeniyle bağlantı noktası 25 daha sonra engellenebilir.
 
 ## <a name="need-help-contact-support"></a>Yardıma mı ihtiyacınız var? Desteğe başvurun
 

@@ -7,12 +7,12 @@ ms.topic: how-to
 author: vamahtan
 ms.author: vamahtan
 ms.date: 3/08/2021
-ms.openlocfilehash: d3759590cdd926b5e144cdc11761630a0aba4e29
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.openlocfilehash: 7d1d4a1a89931e3ded8274a4731aa3606695771b
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102563787"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103199878"
 ---
 # <a name="co-sell-with-microsoft-sales-teams-and-partners-overview"></a>Microsoft satış ekiplerine ve iş ortaklarına genel bakış ile ortak satış
 
@@ -46,8 +46,8 @@ Azure için ortak satış durumları:
 - Azure IP ortak satışı incentivized
 
 İş uygulamaları için ortak satış durumları
-- Biz ISV Apps ISV Connect standart
-- Biz uygulama ISV Connect Premium  
+- Biz ISV Apps ISV bağlama standart veya Premium teşvik standardı
+- Biz ISV Apps ISV bağlama standart veya Premium teşvik Premium  
 
 Bu ortak satış durumlarını elde etme gereksinimleriyle ilgili ayrıntılı bilgi için bkz. [ortak satış gereksinimleri](co-sell-requirements.md).
 
@@ -74,12 +74,12 @@ Biz ISV Apps ISV Connect standart veya Premium teşvik durumu, bu teklif türler
 - PowerApps & müşteri katılımı için Dynamics 365
 - İşlemler için Dynamics 365
 
-_Azure IP ortak satış incentivized_ veya biz uygulamalarına YÖNELIK teklifler _ISV Connect Standard veya Premium özeniyileri_ , bu ticari Market avantajlarına ulaşın:
+_Azure IP ortak satış incentivized_ durumu elde eden teklifler bu ticari Market avantajlarına ulaşın:
 
 - Market hizmeti ücreti %20 ile %10 arasında azaltılır. Bu indirim, ticari Market aracılığıyla satılan hizmet olarak altyapı (IaaS) çözümü veya hizmet olarak yazılım (SaaS) çözümü için geçerlidir. Daha fazla bilgi için bkz. [ticari Market hizmet ücretleri](marketplace-commercial-transaction-capabilities-and-considerations.md#commercial-marketplace-service-fees).
 - Bulut çözümü sağlayıcısı (CSP) iş ortakları, IaaS çözümünüzü veya SaaS teklifinizi satmaya yönelik %10 bir teşvik alır. CSP programı hakkında daha fazla bilgi edinmek için bkz. [bulut çözümü sağlayıcısı programı](cloud-solution-providers.md).
 - Ticari Market aracılığıyla teklifinizin satışları, müşterilerin Azure tüketim taahhütlerine katkıda bulunur. Uygun müşteriler, Azure portal için **uygun olan Azure avantajı** olarak işaretlenmiş teklifi görür. Daha fazla bilgi için bkz. [Azure tüketim taahhüt avantajı](azure-consumption-commitment-benefit.md).
-- _Azure IP ortak satış incentivized_ veya biz uygulamaları elde eden teklifler _ISV Connect Standard veya Premium_ önerir durumu, çevrimiçi mağazalardaki teklif listesi sayfasında **Microsoft Tercihli çözümler** rozet alır. Rozet, belirli bir sektör dikey veya çözüm alanında müşteri ihtiyaçlarını ele almak için bir teklifin kalitesini, performansını ve özelliklerini yükseltir.
+- _Azure IP ortak satışı incentivized_ veya _biz ISV Connect Standard veya Premium özenileri_ sağlayan teklifler. durum, çevrimiçi mağazalarda teklif listesi sayfasında **Microsoft tarafından tercih edilen çözümler** rozet alır. Rozet, belirli bir sektör dikey veya çözüm alanında müşteri ihtiyaçlarını ele almak için bir teklifin kalitesini, performansını ve özelliklerini yükseltir.
 
 Ortak satış için hazırlanma ve ortak satış incentivized durumuna nasıl ulaştığımızı öğrenmek için bkz. [ortak satış için hazırlanın ve ortak satış incentivized gereksinimleri](co-sell-requirements.md).
 

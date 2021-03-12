@@ -1,7 +1,7 @@
 ---
 title: DASH.js bir HTML5 uygulamasına MPEG-DASH uyarlamalı akış videosu ekleme | Microsoft Docs
 description: Bu konu, DASH.js bir HTML5 uygulamasına MPEG-DASH Uyarlamalı Akış videosunu nasıl katıştırabileceğinizi gösterir.
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 services: media-services
@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/18/2019
-ms.author: juliako
-ms.openlocfilehash: 55c22a58ea76c268c40894c0ea64d43312b1ba27
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 03/10/2021
+ms.author: inhenkel
+ms.openlocfilehash: 820c10a2f5bb43ff931027954b7ecf10c5b4c59f
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89269106"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103013576"
 ---
 # <a name="embedding-an-mpeg-dash-adaptive-streaming-video-in-an-html5-application-with-dashjs"></a>DASH.js ile MPEG-DASH Uyarlamalı Akış Videosunu bir HTML5 Uygulamasına ekleme
 
@@ -111,7 +111,7 @@ Videoyu oynatmak için, tarayıcınızı basicPlayback.html dosyasına getirin v
 ## <a name="media-services-learning-paths"></a>Media Services’i öğrenme yolları
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Geri bildirimde bulunma
+## <a name="provide-feedback"></a>Geribildirim gönderme
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="see-also"></a>Ayrıca Bkz.

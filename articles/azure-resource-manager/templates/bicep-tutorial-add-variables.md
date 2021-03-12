@@ -2,16 +2,16 @@
 title: Öğretici-Azure Resource Manager bicep dosyasına değişken ekleme
 description: Sözdizimini basitleştirmek için Bıcep dosyanıza değişkenler ekleyin.
 author: mumian
-ms.date: 03/01/2021
+ms.date: 03/10/2021
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: ''
-ms.openlocfilehash: 1706bafb85834cfd3abae1f5d6a0090da9041bb5
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: da2755c1f2c0f9fa891fe1a99b1fed21f64492c8
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101748274"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102632484"
 ---
 # <a name="tutorial-add-variables-to-azure-resource-manager-bicep-file"></a>Öğretici: Azure Resource Manager bicep dosyasına değişken ekleme
 
@@ -35,7 +35,7 @@ Benzersiz bir ad sağlamanız gerektiğinden, depolama hesabı adı için parame
 
 ## <a name="use-variable"></a>Değişken kullan
 
-Aşağıdaki örnek, Bıcep dosyanıza benzersiz bir depolama hesabı adı oluşturan bir değişken ekleme değişikliklerini vurgular. Tüm dosyayı kopyalayın ve Bıcep dosyanızı içeriğiyle değiştirin.
+Aşağıdaki örnek, Bıcep dosyanıza benzersiz bir depolama hesabı adı oluşturan bir değişken ekleme değişikliklerini gösterir. Tüm dosyayı kopyalayın ve Bıcep dosyanızı içeriğiyle değiştirin.
 
 :::code language="bicep" source="~/resourcemanager-templates/get-started-with-templates/add-variable/azuredeploy.bicep" range="1-31" highlight="1-3,19,22":::
 

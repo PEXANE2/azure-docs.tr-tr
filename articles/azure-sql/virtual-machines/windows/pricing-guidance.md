@@ -16,12 +16,12 @@ ms.date: 08/09/2018
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: bd58f18959df3aa290083f907be8ab703366a7c6
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: d980b92bc4effc58ef84ef6ec70c3908f575e484
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97360112"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102615610"
 ---
 # <a name="pricing-guidance-for-sql-server-on-azure-vms"></a>Azure VM 'lerinde SQL Server için fiyatlandırma Kılavuzu
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -60,7 +60,7 @@ Hafif olmayan bir üretim iş yükünüz varsa, aşağıdaki SQL Server sürüml
 |-----|-----|
 | Web | Küçük Web siteleri |
 | Standart | Küçük ve orta ölçekli iş yükleri |
-| Enterprise | Büyük veya görev açısından kritik iş yükleri|
+| Kurumsal | Büyük veya görev açısından kritik iş yükleri|
 
 Bu sürümler için SQL Server Lisanslama için ödeme yapmak üzere iki seçeneğiniz vardır: *kullanım başına ödeme* *yapın veya kendi LISANSıNıZı getirin (KLG)*.
 
@@ -97,10 +97,7 @@ Bu Kullandıkça Öde görüntülerinden biriyle SQL Server 2017 çalıştıran 
 
 ## <a name="bring-your-own-license-byol"></a><a id="byol"></a> Kendi lisansınızı getirin (KLG)
 
-**Kendi SQL Server lisansınızı** **KLG** olarak da adlandırılan lisans taşınabilirliği üzerinden GETIRME, bir Azure VM 'de yazılım güvencesi Ile mevcut bir SQL Server toplu lisansın kullanılması anlamına gelir. KLG kullanarak yalnızca bir toplu lisanslama programı aracılığıyla lisans ve yazılım güvencesi almış olmanız durumunda, SQL Server Lisanslama için değil, yalnızca VM 'nin çalıştırılmasına yönelik ücret ücretleri SQL Server VM.
-
-> [!IMPORTANT]
-> KLG görüntüleri yazılım güvencesi içeren bir Kurumsal Anlaşma gerektirir. Azure bulut çözümü ortağı 'nın (CSP) bir parçası olarak şu anda kullanılamaz. CSP müşterileri, Kullandıkça Öde görüntüsünü dağıtarak ve sonra [Azure hibrit avantajı](licensing-model-azure-hybrid-benefit-ahb-change.md)etkinleştirerek kendi lisansını getirebilir.
+**Kendi SQL Server lisansınızı** **KLG** olarak da adlandırılan lisans taşınabilirliği üzerinden GETIRME, bir Azure VM 'de yazılım güvencesi Ile mevcut bir SQL Server toplu lisansın kullanılması anlamına gelir. Bir toplu lisanslama programı aracılığıyla veya bir bulut çözümü ortağı (CSP) aracılığıyla lisans ve yazılım güvencesi almış olmanız durumunda, KLG kullanarak yalnızca SQL Server VM 'nin çalıştırılmasına yönelik ücret ücretlendirildiği bir SQL Server VM.
 
 > [!NOTE]
 > KLG görüntüleri şu anda yalnızca Windows sanal makineler için kullanılabilir. Ancak, yalnızca Linux VM 'ye SQL Server el ile yükleyebilirsiniz. [Bir LINUX VM hakkında SSS üzerinde SQL Server](../linux/frequently-asked-questions-faq.md)yönergelere bakın.
@@ -113,7 +110,7 @@ Kendi SQL Server lisanslarınızın Lisans Taşınabilirliği üzerinden getiril
 
 Bir SQL Server VM ile KLG kullanmak için, bazı toplu lisanslama programları ve diğer kişilerle isteğe bağlı satın alma işlemleri aracılığıyla gerekli bir seçenek olan SQL Server Standard veya kuruluş ve [yazılım güvencesi](https://www.microsoft.com/licensing/licensing-programs/software-assurance-default.aspx#tab=1)lisansına sahip olmanız gerekir. Toplu Lisanslama programları aracılığıyla belirtilen fiyatlandırma düzeyi, sözleşmenin türüne ve miktarına ve SQL Server taahhütüne göre değişir. Ancak, bir Thumb kuralı olarak, sürekli üretim iş yükleri için kendi lisansınızı getirmek aşağıdaki avantajlara sahiptir:
 
-| KLG avantajı | Açıklama |
+| KLG avantajı | Description |
 |-----|-----|
 | **Maliyet tasarrufları** | [Azure hibrit avantajı](https://azure.microsoft.com/pricing/hybrid-benefit/) %55 tasarruf sağlar. Daha fazla bilgi için bkz. [Lisans modelini değiştirme](licensing-model-azure-hybrid-benefit-ahb-change.md) |
 | **Ücretsiz pasif ikincil çoğaltma** | Kendi lisansınızı kullanmanın bir diğer avantajı da, yüksek kullanılabilirlik amaçlarıyla SQL Server başına [bir pasif ikincil çoğaltmanın ücretsiz lisanslaması](https://azure.microsoft.com/pricing/licensing-faq/) olur. Bu, yüksek oranda kullanılabilir SQL Server dağıtımının lisanslama maliyetinin yarısını keser (örneğin, Always on kullanılabilirlik grupları kullanılarak). Pasif ikincil çalıştırma hakları, Fail-Over sunucuları yazılım güvencesi avantajı aracılığıyla sağlanır. |

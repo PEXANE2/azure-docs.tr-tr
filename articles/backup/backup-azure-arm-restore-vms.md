@@ -4,12 +4,12 @@ description: Çapraz bölge geri yükleme özelliği de dahil olmak üzere Azure
 ms.reviewer: geg
 ms.topic: conceptual
 ms.date: 08/02/2020
-ms.openlocfilehash: c15b2dc39202c6f8386031bcf055688aa2d279df
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 506c764250347bfccc3f80dcb055f1203583748c
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101722696"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103016534"
 ---
 # <a name="how-to-restore-azure-vm-data-in-azure-portal"></a>Azure portal Azure VM verilerini geri yükleme
 
@@ -181,7 +181,7 @@ CRR etkinse, yedekleme öğelerini ikincil bölgede görüntüleyebilirsiniz.
 
 [Azure Zone sabitlenmiş VM 'ler](../virtual-machines/windows/create-portal-availability-zone.md) , aynı bölgenin tüm [kullanılabilirlik bölgelerinde](../availability-zones/az-overview.md) geri yüklenebilir.
 
-Geri yükleme sürecinde, seçenek **kullanılabilirlik bölgesi** ' ni görürsünüz. Önce varsayılan bölgeyi görürsünüz. Farklı bir bölge seçmek için istediğiniz bölgenin numarasını seçin. Sabitlenmiş bölge kullanılamıyorsa, yedeklenen veriler bölge dışı olarak çoğaltılmadığından verileri başka bir bölgeye geri yükleyemezsiniz.
+Geri yükleme sürecinde, seçenek **kullanılabilirlik bölgesi** ' ni görürsünüz. Önce varsayılan bölgeyi görürsünüz. Farklı bir bölge seçmek için istediğiniz bölgenin numarasını seçin. Sabitlenmiş bölge kullanılamıyorsa, yedeklenen veriler bölge dışı olarak çoğaltılmadığından verileri başka bir bölgeye geri yükleyemezsiniz. Kullanılabilirlik bölgelerinde geri yükleme yalnızca kasa katmanındaki kurtarma noktalarından mümkündür.
 
 ![Kullanılabilirlik alanı seç](./media/backup-azure-arm-restore-vms/cross-zonal-restore.png)
 

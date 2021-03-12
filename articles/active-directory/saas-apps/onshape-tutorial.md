@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/03/2021
 ms.author: jeedes
-ms.openlocfilehash: 5d1c4d05748fd9efdc51e18396c8df14e12df63d
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: 2ead9bd72691dc120afb60c025ce563684716038
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102185433"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103199328"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-onshape"></a>Öğretici: OnShape ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -74,26 +74,12 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
 1. Azure portal, **OnShape** uygulama tümleştirmesi sayfasında, **Yönet** bölümünü bulun ve **Çoklu oturum açma**' yı seçin.
 1. **Çoklu oturum açma yöntemi seçin** sayfasında **SAML**' yi seçin.
-1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, ayarları düzenlemek IÇIN **temel SAML yapılandırması** kalem simgesine tıklayın.
-
-   ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
-
-1. **Temel SAML yapılandırması** bölümünde, uygulama zaten Azure ile önceden tümleştirildiği için kullanıcının herhangi bir adım yapması gerekmez.
-
-1. Uygulamayı **SP** tarafından başlatılan modda yapılandırmak Istiyorsanız **ek URL 'ler ayarla** ' ya tıklayın ve aşağıdaki adımı gerçekleştirin:
-
-    **Oturum açma URL 'si** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:`https://<SUBDOMAIN>.onshape.com`
-
-    > [!NOTE]
-    > Değer gerçek değil. Değeri, gerçek oturum açma URL 'SI ile güncelleştirin. Değeri almak için [OnShape istemci destek ekibine](mailto:support@onshape.com) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
-
-1. **Kaydet**’e tıklayın.
-
+1. Çoklu oturum açma ayarınızı kaydetmeniz istenirse **Evet**' i seçin. 
 1. OnShape uygulaması, SAML belirteci öznitelikleri yapılandırmanıza özel öznitelik eşlemeleri eklemenizi gerektiren belirli bir biçimde SAML onayları bekler. Aşağıdaki ekran görüntüsünde varsayılan özniteliklerin listesi gösterilmektedir.
 
     ![image](common/default-attributes.png)
 
-1. Yukarıdakine ek olarak, OnShape uygulaması aşağıda gösterilen SAML yanıtında birkaç özniteliğin daha fazla özniteliğe geri geçirilmesini bekler. Bu öznitelikler de önceden doldurulur, ancak gereksinimlerinize göre bunları gözden geçirebilirsiniz.
+1. Yukarıdakine ek olarak, OnShape uygulaması aşağıda gösterildiği gibi daha fazla özniteliği SAML yanıtında buna geçirilmesini bekler. Bu öznitelikler de önceden doldurulur, ancak gereksinimlerinize göre bunları gözden geçirebilirsiniz.
     
     | Name |  Kaynak özniteliği|
     | --------------- | --------- |
@@ -102,7 +88,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
     | Tadı | <COMPANY_NAME> |
 
     > [!NOTE]
-    > "CompanyName" talebinin değerini "etki alanı ön eki" ile düzenleyin. Örneğin, müşteri, gibi bir URL kullanarak OnShape uygulamasına erişirse https://acme.onshape.com , etki alanı ön eki "Acme" olur. Öznitelik değeri, tüm DNS adı değil yalnızca önek olmalıdır.
+    > **CompanyName** özniteliğinin değerini, OnShape kuruluşunuzun *etki alanı ön ekine* göre değiştirmeniz _gerekir_ . Örneğin, gibi bir URL kullanarak OnShape uygulamasına eriştiğinizde `https://acme.onshape.com` , etki alanı ön eki *Acme* olur. Öznitelik değeri, tüm DNS adı değil yalnızca önek olmalıdır.
 
 1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, **Federasyon meta verileri XML** 'i bulun ve sertifikayı indirip bilgisayarınıza kaydetmek için **İndir** ' i seçin.
 
@@ -137,7 +123,7 @@ Bu bölümde, OnShape 'e erişim vererek Azure çoklu oturum açma özelliğini 
 
 ## <a name="configure-onshape-sso"></a>OnShape SSO 'yu yapılandırma
 
-**OnShape** tarafında çoklu oturum açmayı yapılandırmak için, Indirilen **Federasyon meta veri XML** 'Sini ve uygun kopyalanmış URL 'Leri Azure Portal ' den [onşekil destek ekibine](mailto:support@onshape.com)göndermeniz gerekir. Bu ayar, SAML SSO bağlantısının her iki tarafında da düzgün bir şekilde ayarlanmasını sağlamak üzere ayarlanmıştır.
+**OnShape** tarafında çoklu oturum açmayı yapılandırma hakkında daha fazla bilgi için, bkz. [Microsoft Azure AD tümleştirme](https://cad.onshape.com/help/Content/MS_AzureAD.htm).
 
 ### <a name="create-onshape-test-user"></a>OnShape test kullanıcısı oluştur
 

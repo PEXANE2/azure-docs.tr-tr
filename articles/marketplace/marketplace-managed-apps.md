@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: msjogarrig
 ms.author: jogarrig
 ms.date: 09/04/2020
-ms.openlocfilehash: d4fb3354b7035149b80191528b2f5335b593b764
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.openlocfilehash: 09badebab86da8e4fd8d35307aa6648a26e91821
+ms.sourcegitcommit: ec39209c5cbef28ade0badfffe59665631611199
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96433541"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103232265"
 ---
 # <a name="publishing-guide-for-azure-managed-applications"></a>Azure yönetilen uygulamalar için Yayımlama Kılavuzu
 
@@ -33,8 +33,8 @@ Aşağıdaki koşullarda yönetilen uygulama teklifi türünü kullanın:
 |Gereksinimler |Ayrıntılar  |
 |---------|---------|
 |Bir Azure aboneliği | Yönetilen uygulamalar bir müşterinin aboneliğine dağıtılmalıdır, ancak üçüncü taraf tarafından yönetilebilir. |
-|Faturalandırma ve ölçüm    |  Kaynaklar bir müşterinin Azure aboneliğinde sağlanır. Kullandıkça Öde ödeme modelini kullanan VM 'Ler, müşteri ile Microsoft aracılığıyla işlem yapar ve müşterinin Azure aboneliği aracılığıyla faturalandırılır. <br><br> Kendi lisansını getir VM 'Leri için, Microsoft, müşteri aboneliğinde oluşan tüm altyapı maliyetlerini faturalandırır, ancak müşteriyle doğrudan Transact yazılım lisanslama ücretleri.        |
-|Azure ile uyumlu bir sanal sabit disk (VHD)    |   VM 'Ler Windows veya Linux üzerinde oluşturulmalıdır.<br><br>Linux VHD oluşturma hakkında daha fazla bilgi için bkz. [Azure 'da desteklenen Linux dağıtımları](../virtual-machines/linux/endorsed-distros.md).<br><br>Windows VHD oluşturma hakkında daha fazla bilgi için bkz. [Azure Uygulama teklifi oluşturma](./create-new-azure-apps-offer.md). |
+|Faturalandırma ve ölçüm    |  Kaynaklar bir müşterinin Azure aboneliğinde sağlanır. Kullandıkça Öde ödeme modelini kullanan Azure kaynakları, müşteriyle Microsoft üzerinden ve müşterinin Azure aboneliği aracılığıyla faturalandırılır. <br><br> Microsoft, kendi lisansını getir Azure kaynakları için müşteri aboneliğinde oluşan tüm altyapı maliyetlerini faturalandırır, ancak müşteriyle doğrudan Transact yazılım lisanslama ücretleri de vardır.        |
+|Azure yönetilen uygulama paketi    |   Yapılandırılmış Azure Resource Manager şablonu ve uygulamanızı müşterinin aboneliğine dağıtmak için kullanılacak kullanıcı arabirimi tanımını oluşturun.<br><br>Yönetilen uygulama oluşturma hakkında daha fazla bilgi için bkz. [yönetilen uygulamaya genel bakış](../azure-resource-manager/managed-applications/publish-service-catalog-app.md).|
 
 ---
 

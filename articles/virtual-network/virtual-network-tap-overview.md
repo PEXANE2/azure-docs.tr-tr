@@ -15,16 +15,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/14/2019
 ms.author: kaanan
-ms.openlocfilehash: 8347dcd60dcdfbf03f52e25eb24744909c69465a
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.openlocfilehash: 6160dd09edc57f2f52306d4dad0dde413fff0616
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99804879"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102617191"
 ---
 # <a name="virtual-network-tap"></a>Sanal ağ TAP
 > [!IMPORTANT]
-> Sanal ağ dokunma önizlemesi Şu anda tüm Azure bölgelerinde tutuluyor. Abonelik KIMLIĞINIZLE bize e-posta gönderebilirsiniz <azurevnettap@microsoft.com> ve önizleme hakkında gelecekteki güncelleştirmeler hakkında sizi bilgilendireceğiz. Geçici olarak, [Azure Marketi tekliflerinizde](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/category/networking?page=1&subcategories=appliances%3Ball&search=Network%20Traffic&filters=partners)bulunan [paket Aracısı iş ortağı ÇÖZÜMLERIMIZ](#virtual-network-tap-partner-solutions) aracılığıyla dokunma/ağ görünürlük işlevselliği sağlayan aracı tabanlı veya NVA çözümlerini kullanabilirsiniz.
+> Sanal ağ dokunma önizlemesi Şu anda tüm Azure bölgelerinde tutuluyor. Abonelik KIMLIĞINIZLE bize e-posta gönderebilirsiniz <azurevnettap@microsoft.com> ve önizleme hakkında gelecekteki güncelleştirmeler hakkında sizi bilgilendireceğiz. Geçici olarak, [Azure Marketi tekliflerinizde](https://azuremarketplace.microsoft.com/marketplace/apps/category/networking?page=1&subcategories=appliances%3Ball&search=Network%20Traffic&filters=partners)bulunan [paket Aracısı iş ortağı ÇÖZÜMLERIMIZ](#virtual-network-tap-partner-solutions) aracılığıyla dokunma/ağ görünürlük işlevselliği sağlayan aracı tabanlı veya NVA çözümlerini kullanabilirsiniz.
 
 Azure sanal ağ TAP (Terminal erişim noktası), sanal makine ağ trafiğinizi bir ağ paketi toplayıcısına veya analiz aracına sürekli olarak akışla kullanmanıza olanak sağlar. Toplayıcı veya Analiz Aracı bir [ağ sanal gereç](https://azure.microsoft.com/solutions/network-appliances/) ortağı tarafından sağlanır. Sanal ağ dokunarak çalışmak üzere doğrulanan iş ortağı çözümlerinin listesi için bkz. [iş ortağı çözümleri](#virtual-network-tap-partner-solutions).
 Aşağıdaki resimde, sanal ağ TAP 'ın nasıl çalıştığı gösterilmektedir. Sanal ağınızda dağıtılan bir sanal makineye bağlı bir [ağ arabirimine](virtual-network-network-interface.md) bir dokunma yapılandırması ekleyebilirsiniz. Hedef, izlenen ağ arabirimiyle veya eşlenmiş bir [sanal](virtual-network-peering-overview.md) ağla aynı sanal ağdaki bir sanal ağ IP adresidir. Sanal ağ TAP 'ın toplayıcı çözümü, yüksek kullanılabilirlik için bir Azure Iç yük dengeleyicinin arkasına dağıtılabilir.
@@ -64,6 +64,7 @@ Ağ arabirimlerinde yapılandırma uygulamak için kullandığınız hesapların
 - [Flowmon](https://www.flowmon.com/blog/azure-vtap)
 - [NetFort LANGuardian](https://www.netfort.com/languardian/solutions/visibility-in-azure-network-tap/)
 - [Netscout vSTREAM]( https://www.netscout.com/marketplace-azure)
+- [Noname güvenliği](https://nonamesecurity.com/)
 - [Riveryatak Steelmerkezi AppResponse]( https://www.riverbed.com/products/steelcentral/steelcentral-appresponse-11.html)
 - [RSA Nettanık® platformu](https://www.rsa.com/content/dam/en/solution-brief/rsa-netwitness-platform-overview-for-federal-agencies.pdf)
 - [Vectra Cognito](https://vectra.ai/microsoftazure)

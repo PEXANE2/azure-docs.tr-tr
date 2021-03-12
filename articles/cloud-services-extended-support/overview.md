@@ -8,12 +8,12 @@ ms.author: gachandw
 ms.reviewer: mimckitt
 ms.date: 10/13/2020
 ms.custom: ''
-ms.openlocfilehash: 8ed21d8689bf5340c1bde0a7f782bb8614f7cf11
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: ecf115b7ce902fcd8b50f0eca32ffda6ef47e068
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101700210"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102618483"
 ---
 # <a name="about-azure-cloud-services-extended-support"></a>Azure Cloud Services hakkında (genişletilmiş destek)
 
@@ -57,7 +57,7 @@ Dağıtıma göre Cloud Services (klasik) ve Cloud Services (genişletilmiş des
 
 ## <a name="migration-to-azure-resource-manager"></a>Azure Resource Manager geçiş
 
-Cloud Services (genişletilmiş destek), [Azure Service Manager](/powershell/azure/servicemanagement/overview?preserve-view=true&view=azuresmps-4.0.0) 'den [Azure Resource Manager](../azure-resource-manager/management/overview.md)'e geçiş yapmanız için iki yol sağlar. 
+Cloud Services (genişletilmiş destek), [Azure Service Manager](/powershell/azure/servicemanagement/overview) 'den [Azure Resource Manager](../azure-resource-manager/management/overview.md)'e geçiş yapmanız için iki yol sağlar. 
 1) Müşteriler Cloud Services 'ı doğrudan Azure Resource Manager ' de dağıtır ve ardından Azure Service Manager eski bulut hizmetini siler. 
 2) Yerinde geçiş Cloud Services (klasik) Cloud Services (genişletilmiş destek) kesinti süresi olmadan en düşük düzeyde geçiş yeteneğini destekler. 
 

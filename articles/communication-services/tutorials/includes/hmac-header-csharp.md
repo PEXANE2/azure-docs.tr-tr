@@ -1,6 +1,6 @@
 ---
 title: 'Bir HTTP isteğini C ile imzala #'
-description: Bu, Iletişim Hizmetleri için HMAC imzasıyla bir HTTP isteği imzalama C# sürümüdür.
+description: Bu öğreticide, Azure Iletişim Hizmetleri için HMAC imzasıyla bir HTTP isteğini imzalama C# sürümü açıklanmaktadır.
 author: alexandra142
 manager: soricos
 services: azure-communication-services
@@ -8,49 +8,50 @@ ms.author: apistrak
 ms.date: 01/15/2021
 ms.topic: include
 ms.service: azure-communication-services
-ms.openlocfilehash: 3c1b56f81e5164bbdfa94fdaeca5f5f1f55b3b51
-ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
+ms.openlocfilehash: c8cf2eb091aa7ab70fa6dba1a8b1f56bea1a00bf
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/16/2021
-ms.locfileid: "100551548"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102631358"
 ---
 ## <a name="prerequisites"></a>Önkoşullar
 
 Başlamadan önce şunları yaptığınızdan emin olun:
-- Etkin abonelikle bir Azure hesabı oluşturun. Ayrıntılar için bkz. [ücretsiz hesap oluşturma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F). 
-- [Visual Studio 'yu](https://visualstudio.microsoft.com/downloads/) yükler 
-- Bir Azure Iletişim Hizmetleri kaynağı oluşturun. Ayrıntılar için bkz. [Azure Iletişim kaynağı oluşturma](../../quickstarts/create-communication-resource.md). Bu öğretici için **Resourceendpoint** ve  **resourceaccesskey** dosyanızı kaydetmeniz gerekir.
 
-
+- Etkin abonelikle bir Azure hesabı oluşturun. Ayrıntılar için bkz. [ücretsiz hesap oluşturma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+- [Visual Studio 'yu](https://visualstudio.microsoft.com/downloads/)yükler.
+- Bir Azure Iletişim Hizmetleri kaynağı oluşturun. Ayrıntılar için bkz. [Azure Communication Services kaynağı oluşturma](../../quickstarts/create-communication-resource.md). Bu öğretici için **Resourceendpoint** ve **resourceaccesskey** dosyanızı kaydetmeniz gerekir.
 
 ## <a name="sign-an-http-request-with-c"></a>Bir HTTP isteğini C ile imzala #
-Erişim anahtarı kimlik doğrulaması, her HTTP isteği için HMAC imzası oluşturmak üzere paylaşılan bir gizli anahtar kullanır. Bu imza SHA256 algoritması ile oluşturulur ve `Authorization` şema kullanılarak üst bilgide gönderilir `HMAC-SHA256` . Örneğin:
+
+Erişim anahtarı kimlik doğrulaması, her HTTP isteği için HMAC imzası oluşturmak üzere paylaşılan bir gizli anahtar kullanır. Bu imza, SHA256 algoritması ile oluşturulur ve `Authorization` şema kullanılarak üst bilgide gönderilir `HMAC-SHA256` . Örnek:
 
 ```
 Authorization: "HMAC-SHA256 SignedHeaders=date;host;x-ms-content-sha256&Signature=<hmac-sha256-signature>"
 ```
 
-`hmac-sha256-signature`Aşağıdakilerden oluşur: 
+`hmac-sha256-signature`Aşağıdakilerden oluşur:
 
-- HTTP fiili (ör. `GET` veya `PUT` )
+- HTTP fiili (örneğin, `GET` veya `PUT` )
 - HTTP istek yolu
 - Tarih
 - Ana bilgisayar
 - x-MS-Content-SHA256
 
-## <a name="setting-up"></a>Ayarlanıyor
-Aşağıdaki adımlarda yetkilendirme üst bilgisinin nasıl oluşturulacağı açıklanır:
+## <a name="setup"></a>Kurulum
+
+Aşağıdaki adımlarda yetkilendirme üst bilgisinin nasıl oluşturulacağı açıklanır.
 
 ### <a name="create-a-new-c-application"></a>Yeni bir C# uygulaması oluşturma
 
-Konsol penceresinde (cmd, PowerShell veya Bash gibi), `dotnet new` adıyla yeni bir konsol uygulaması oluşturmak için komutunu kullanın `SignHmacTutorial` . Bu komut, tek bir kaynak dosyası olan basit bir "Merhaba Dünya" C# projesi oluşturur: **program.cs**.
+Cmd, PowerShell veya Bash gibi bir konsol penceresinde, `dotnet new` adıyla yeni bir konsol uygulaması oluşturmak için komutunu kullanın `SignHmacTutorial` . Bu komut, tek bir kaynak dosyası olan basit bir "Merhaba Dünya" C# projesi oluşturur: **program.cs**.
 
 ```console
 dotnet new console -o SignHmacTutorial
 ```
 
-Dizininizi yeni oluşturulan uygulama klasörüyle değiştirin ve `dotnet build` uygulamanızı derlemek için komutunu kullanın.
+Dizininizi yeni oluşturulan uygulama klasörüyle değiştirin. `dotnet build`Uygulamanızı derlemek için komutunu kullanın.
 
 ```console
 cd SignHmacTutorial
@@ -59,13 +60,13 @@ dotnet build
 
 ## <a name="install-the-package"></a>Paketi yükler
 
-`Newtonsoft.Json`Gövde serileştirme için kullanılan paketi yükler:
+`Newtonsoft.Json`Gövde serileştirme için kullanılan paketi yükler.
 
 ```console
 dotnet add package Newtonsoft.Json
 ```
 
-`Main`Zaman uyumsuz kodu desteklemek için yöntem bildirimini güncelleştirin. Başlamak için aşağıdaki kodu kullanın:
+`Main`Zaman uyumsuz kodu desteklemek için yöntem bildirimini güncelleştirin. Başlamak için aşağıdaki kodu kullanın.
 
 ```csharp
 using System;
@@ -82,21 +83,22 @@ namespace SignHmacTutorial
         static async Task Main(string[] args)
         {
             Console.WriteLine("Azure Communication Services - Sign an HTTP request Tutorial");
-            // Tutorial code goes here
+            // Tutorial code goes here.
         }
     }
 }
 
 ```
+
 ## <a name="create-a-request-message"></a>İstek iletisi oluştur
 
-Bu örnekte, Iletişim Hizmetleri kimlik doğrulama API 'sini (sürüm) kullanarak yeni bir kimlik oluşturma isteğini imzalayacağız `2021-03-07`
+Bu örnekte, Iletişim Hizmetleri kimlik doğrulama API 'sini (sürüm) kullanarak yeni bir kimlik oluşturma isteğini imzalayacağız `2021-03-07` .
 
-Yöntemine aşağıdaki kodu ekleyin `Main` :
+`Main` yöntemine aşağıdaki kodu ekleyin.
 
 ```csharp
 string resourceEndpoint = "resourceEndpoint";
-//Create an uri you are going to call
+//Create a uri you are going to call.
 var requestUri = new Uri($"{resourceEndpoint}/identities?api-version=2021-03-07");
 //Endpoint identities?api-version=2021-03-07 accepts list of scopes as a body
 var body = new[] { "chat" }; 
@@ -109,7 +111,7 @@ var requestMessage = new HttpRequestMessage(HttpMethod.Post, requestUri)
 
 `resourceEndpoint`Gerçek kaynak uç nokta değeri ile değiştirin.
 
-## <a name="create-content-hash"></a>İçerik karması oluştur
+## <a name="create-a-content-hash"></a>İçerik karması oluşturma
 
 İçerik karması, HMAC imzanızın bir parçasıdır. İçerik karmasını hesaplamak için aşağıdaki kodu kullanın. Bu yöntemi `Progam.cs` yöntemi altına ekleyebilirsiniz `Main` .
 
@@ -125,6 +127,7 @@ static string ComputeContentHash(string content)
 ```
 
 ## <a name="compute-a-signature"></a>İmza hesaplama
+
 HMAC imzanızı hesaplama yöntemi oluşturmak için aşağıdaki kodu kullanın.
 
 ```csharp
@@ -140,47 +143,48 @@ HMAC imzanızı hesaplama yöntemi oluşturmak için aşağıdaki kodu kullanın
 }
 ```
 
-`resourceAccessKey`Gerçek Azure Iletişim Hizmetleri kaynağınızın erişim anahtarıyla değiştirin.
+`resourceAccessKey`Gerçek Iletişim Hizmetleri kaynağınızın erişim anahtarıyla değiştirin.
 
 ## <a name="create-an-authorization-header-string"></a>Yetkilendirme üst bilgisi dizesi oluşturma
 
-Şimdi yetkilendirme üst bilgisine ekleyeceğiniz dizeyi oluşturacağız:
+Şimdi yetkilendirme üst bilgisine ekleyeceğiniz dizeyi oluşturacağız.
 
-1. İçerik karmasını hesaplama
-2. Eşgüdümlü Evrensel Saat (UTC) zaman damgasını belirtin
-3. İmza için bir dize hazırlama
-4. İmzayı hesaplama
-5. Kimlik doğrulama üstbilgisinde kullanılacak dizeyi Birleştir
+1. Bir içerik karmasını hesaplama.
+1. Eşgüdümlü Evrensel Saat (UTC) zaman damgasını belirtin.
+1. İmzalamak için bir dize hazırlayın.
+1. İmzayı hesaplama.
+1. Kimlik doğrulama üstbilgisinde kullanılacak olan dizeyi birleştirir.
  
-Yöntemine aşağıdaki kodu ekleyin `Main` :
+`Main` yöntemine aşağıdaki kodu ekleyin.
 
 ```csharp
-// Compute a content hash
+// Compute a content hash.
 var contentHash = ComputeContentHash(serializedBody);
-//Specify the Coordinated Universal Time (UTC) timestamp
+//Specify the Coordinated Universal Time (UTC) timestamp.
 var date = DateTimeOffset.UtcNow.ToString("r", CultureInfo.InvariantCulture);
-//Prepare a string to sign
+//Prepare a string to sign.
 var stringToSign = $"POST\n{requestUri.PathAndQuery}\n{date};{requestUri.Authority};{contentHash}";
-//Compute the signature
+//Compute the signature.
 var signature = ComputeSignature(stringToSign);
-//Concatenate the string, which will be used in authorization header
+//Concatenate the string, which will be used in the authorization header.
 var authorizationHeader = $"HMAC-SHA256 SignedHeaders=date;host;x-ms-content-sha256&Signature={signature}";
 ```
 
 ## <a name="add-headers-to-requestmessage"></a>Istek Iletisine üstbilgiler ekleyin
 
-Gereken üst bilgileri eklemek için aşağıdaki kodu kullanın `requestMessage` :
+Gerekli üst bilgileri verilerinize eklemek için aşağıdaki kodu kullanın `requestMessage` .
 
 ```csharp
-//Add content hash header
+//Add a content hash header.
 requestMessage.Headers.Add("x-ms-content-sha256", contentHash);
-//add date header
+//Add a date header.
 requestMessage.Headers.Add("Date", date);
-//add Authorization header
+//Add an authorization header.
 requestMessage.Headers.Add("Authorization", authorizationHeader);
 ```
 
 ## <a name="test-the-client"></a>İstemciyi test etme
+
 Kullanarak uç noktayı çağırın `HttpClient` ve yanıtı denetleyin.
 
 ```csharp

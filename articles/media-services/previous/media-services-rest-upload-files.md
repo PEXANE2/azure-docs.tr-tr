@@ -3,7 +3,7 @@ title: REST kullanarak bir Azure Media Services hesabına dosya yükleme | Micro
 description: REST kullanarak varlık oluşturup karşıya yükleyerek Media Services medya içeriğini nasıl alabileceğinizi öğrenin.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/20/2019
-ms.author: juliako
-ms.openlocfilehash: 49863bec4cbd367b6b309ef5a79e7287cb53ee5b
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.date: 3/10/2021
+ms.author: inhenkel
+ms.openlocfilehash: 9f27a427df07302840ce719d35c7876f9dc17dbf
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93042975"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103012947"
 ---
 # <a name="upload-files-into-a-media-services-account-using-rest"></a>REST kullanarak Media Services hesabına dosya yükleme
 
@@ -90,13 +90,13 @@ Bu öğretici için Postman 'ı ayarlama adımları için bkz. [Postman 'ı yap�
         ]
     }
     ```
-4. **Postman** penceresinin sol tarafında 1 ' e tıklayın **. AAD kimlik doğrulama belirteci al**  ->  **hizmet sorumlusu için Azure AD belirteci alın** .
+4. **Postman** penceresinin sol tarafında 1 ' e tıklayın **. AAD kimlik doğrulama belirteci al**  ->  **hizmet sorumlusu için Azure AD belirteci alın**.
 
     URL bölümü **Azureadstsendpoint** ortam değişkeniyle doldurulmuştur (öğreticide daha önce, koleksiyonu destekleyen ortam değişkenlerinin değerlerini ayarlarsınız).
 
     !["1" gösteren ekran görüntüsü. D kimlik doğrulama belirteci alın-"Postman" penceresinden ve "Gönder" düğmesine seçili bir hizmet sorumlusu için Azure A D belirteci alın.](./media/media-services-rest-upload-files/postment-get-token.png)
 
-5. **Gönder** ’e basın.
+5. **Gönder**’e basın.
 
     "Access_token" içeren yanıtı görebilirsiniz. "Test" betiği bu değeri alır ve **accesstoken** ortam değişkenini (yukarıda açıklandığı gibi) ayarlar. Ortam değişkenlerinizi incelerseniz, bu değişkenin artık işlemlerin geri kalanında kullanılan erişim belirteci (taşıyıcı belirteci) değerini içerdiğini görürsünüz. 
 
@@ -107,14 +107,14 @@ Bu öğretici için Postman 'ı ayarlama adımları için bkz. [Postman 'ı yap�
 ### <a name="overview"></a>Genel Bakış 
 
 >[!NOTE]
->Farklı AMS ilkeleri için sınır 1.000.000 ilkedir (örneğin, Bulucu ilkesi veya ContentKeyAuthorizationPolicy için). Uzun süre boyunca kullanılmak için oluşturulan bulucu ilkeleri gibi aynı günleri / erişim izinlerini sürekli olarak kullanıyorsanız, aynı ilke kimliğini kullanmalısınız (karşıya yükleme olmayan ilkeler için). Daha fazla bilgi için [bu makaleye](media-services-dotnet-manage-entities.md#limit-access-policies) bakın.
+>Farklı AMS ilkeleri için sınır 1.000.000 ilkedir (örneğin, Bulucu ilkesi veya ContentKeyAuthorizationPolicy için). Uzun süre boyunca kullanılmak için oluşturulan bulucu ilkeleri gibi aynı günleri / erişim izinlerini sürekli olarak kullanıyorsanız, aynı ilke kimliğini kullanmalısınız (karşıya yükleme olmayan ilkeler için). Daha fazla bilgi için [Bu](media-services-dotnet-manage-entities.md#limit-access-policies) makaleye bakın.
 
 Blob depolamaya herhangi bir dosyayı yüklemeden önce, bir varlığa yazma için erişim ilkesi haklarını ayarlayın. Bunu yapmak için AccessPolicies varlık kümesine bir HTTP isteği GÖNDERIN. Oluşturma sonrasında bir DurationInMinutes değeri tanımlayın veya yanıt olarak 500 Iç sunucu hatası iletisi alırsınız. AccessPolicies hakkında daha fazla bilgi için bkz. [AccessPolicy](/rest/api/media/operations/accesspolicy).
 
 ### <a name="create-an-access-policy"></a>Erişim ilkesi oluşturma
 
-1. **AccessPolicy**  ->  **Karşıya yüklemek için AccessPolicy oluştur AccessPolicy** öğesini seçin.
-2. **Gönder** ’e basın.
+1.   ->  **Karşıya yüklemek için AccessPolicy oluştur AccessPolicy** öğesini seçin.
+2. **Gönder**’e basın.
 
     ![Sol taraftaki menüden ve "Gönder" düğmesinin seçili olduğu "AccessPolicy-Create AccessPolicy for upload" seçeneğini gösteren ekran görüntüsü.](./media/media-services-rest-upload-files/postman-access-policy.png)
 
@@ -126,7 +126,7 @@ Blob depolamaya herhangi bir dosyayı yüklemeden önce, bir varlığa yazma iç
 
 [Varlık](/rest/api/media/operations/asset) , video, ses, görüntüler, küçük resim koleksiyonları, metin parçaları ve kapalı açıklamalı altyazı dosyaları dahil olmak üzere Media Services birden çok tür veya nesne kümesi için bir kapsayıcıdır. REST API bir varlık oluşturmak için POST isteğinin Media Services gönderilmesi ve istek gövdesine varlığınızın herhangi bir özellik bilgisini yerleştirilmesi gerekir.
 
-Bir varlık oluştururken ekleyebileceğiniz özelliklerden biri **Seçenekler** . Şu şifreleme seçeneklerinden birini belirtebilirsiniz: **hiçbiri** (varsayılan, şifreleme yok), **storageşifrelenmiştir** (istemci tarafı depolama şifrelemesi ile önceden şifrelenmiş Içerik Için), **CommonEncryptionProtected** veya **EnvelopeEncryptionProtected** . Şifrelenmiş bir varlığınız olduğunda, bir teslim İlkesi yapılandırmanız gerekir. Daha fazla bilgi için bkz. [varlık teslim Ilkelerini yapılandırma](media-services-rest-configure-asset-delivery-policy.md).
+Bir varlık oluştururken ekleyebileceğiniz özelliklerden biri **Seçenekler**. Şu şifreleme seçeneklerinden birini belirtebilirsiniz: **hiçbiri** (varsayılan, şifreleme yok), **storageşifrelenmiştir** (istemci tarafı depolama şifrelemesi ile önceden şifrelenmiş Içerik Için), **CommonEncryptionProtected** veya **EnvelopeEncryptionProtected**. Şifrelenmiş bir varlığınız olduğunda, bir teslim İlkesi yapılandırmanız gerekir. Daha fazla bilgi için bkz. [varlık teslim Ilkelerini yapılandırma](media-services-rest-configure-asset-delivery-policy.md).
 
 Varlığınız şifrelendiyse, bir **contentkey** oluşturmanız ve bunu aşağıdaki makalede açıklandığı gibi varlığınızla bağlamanız gerekir: [nasıl bir contentkey oluşturulur](media-services-rest-create-contentkey.md). Dosyaları varlığa yükledikten sonra, **Assetfile** varlığındaki şifreleme özelliklerini **varlık** şifrelemesi sırasında aldığınız değerlerle güncelleştirmeniz gerekir. Bunu, **birleştirme** http isteğini kullanarak yapın. 
 
@@ -134,8 +134,8 @@ Bu örnekte, şifrelenmemiş bir varlık oluşturuyoruz.
 
 ### <a name="create-an-asset"></a>Varlık oluşturma
 
-1. **Assets**  ->  **Varlık oluştur varlık** ' ı seçin.
-2. **Gönder** ’e basın.
+1.   ->  **Varlık oluştur varlık**' ı seçin.
+2. **Gönder**’e basın.
 
     !["Koleksiyonlar" menüsünden Seçili "varlıklar-varlık oluştur" u ve "Gönder" düğmesinin seçili olduğunu gösteren ekran görüntüsü.](./media/media-services-rest-upload-files/postman-create-asset.png)
 
@@ -166,7 +166,7 @@ Bazı dikkate alınması gereken noktalar vardır:
 ### <a name="create-a-sas-locator"></a>SAS Bulucu oluşturma
 
 1. **Bulucu**  ->  **oluşturma SAS Bulucu** seçin.
-2. **Gönder** ’e basın.
+2. **Gönder**’e basın.
 
     "Test" betiği, belirttiğiniz medya dosyası adına ve SAS Bulucu bilgilerine göre "karşıya yükleme URL 'sini" oluşturur ve uygun ortam değişkenini ayarlar.
 
@@ -176,7 +176,7 @@ Bazı dikkate alınması gereken noktalar vardır:
 
 ### <a name="overview"></a>Genel Bakış
 
-Karşıya yükleme URL 'sine sahip olduğunuza göre, artık dosyanızı SAS kapsayıcısına yüklemek için Azure Blob API 'Lerini kullanarak bazı kodlar yazmanız gerekir. Daha fazla bilgi için aşağıdaki makalelere bakın:
+Karşıya yükleme URL 'sine sahip olduğunuza göre, artık dosyanızı SAS kapsayıcısına yüklemek için Azure Blob API 'Lerini kullanarak bazı kodlar yazmanız gerekir. Daha fazla bilgi için aşağıdaki makaleleri inceleyin:
 
 - [Azure Depolama REST API’sini kullanma](../../storage/common/storage-rest-api-auth.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
 - [Blobu koy](/rest/api/storageservices/put-blob)
@@ -192,10 +192,10 @@ Yeni bir istek oluşturun ve ayarlayın:
 1. **+** Yeni bir istek sekmesi oluşturmak için ' a basın.
 2. **{{Uploadurl}}** **öğesini seçerek URL** 'ye yapıştırın.
 2. **Yetkilendirme** sekmesini olduğu gibi bırakın (bunu **taşıyıcı belirtece** ayarlamayın).
-3. **Üstbilgiler** sekmesinde, şunu belirtin: **anahtar** : "x-MS-blob-türü" ve **değer** : "blockblob".
-2. **Gövde** sekmesinde **ikili** ' ya tıklayın.
+3. **Üstbilgiler** sekmesinde, şunu belirtin: **anahtar**: "x-MS-blob-türü" ve **değer**: "blockblob".
+2. **Gövde** sekmesinde **ikili**' ya tıklayın.
 4. **Mediafilename** ortam değişkeninde belirttiğiniz adı taşıyan dosyayı seçin.
-5. **Gönder** ’e basın.
+5. **Gönder**’e basın.
 
     !["(UploadU R L)" sekmesinin seçili olduğunu gösteren ekran görüntüsü.](./media/media-services-rest-upload-files/postman-upload-file.png)
 
@@ -204,7 +204,7 @@ Yeni bir istek oluşturun ve ayarlayın:
 Dosya karşıya yüklendikten sonra, varlığınızdan ilişkili BLOB depolama alanına yüklediğiniz medya dosyası için varlık içinde bir meta veri oluşturmanız gerekir.
 
 1. **Assetfiles**  ->  **createfileınfos** öğesini seçin.
-2. **Gönder** ’e basın.
+2. **Gönder**’e basın.
 
     ![Dosyayı karşıya yükleme](./media/media-services-rest-upload-files/postman-create-file-info.png)
 
