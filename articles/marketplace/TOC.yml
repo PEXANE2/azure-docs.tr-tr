@@ -41,7 +41,7 @@
           href: test-drive-hosted-detailed-config.md
         - name: Barındırılan test sürüşleri için Azure aboneliğini ayarlama
           href: test-drive-azure-subscription-setup.md
-    - name: Azure iş ortağı müşteri kullanımı ilişkilendirmesi
+    - name: Azure müşteri kullanım atısyonu
       href: azure-partner-customer-usage-attribution.md
     - name: Markete sunma seçenekleri
       items:

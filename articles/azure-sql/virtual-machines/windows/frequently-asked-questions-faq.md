@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 08/05/2019
 ms.author: mathoma
-ms.openlocfilehash: 91f93faded7c18a1bc24f17053231f9011080c57
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 014bbe4421bf00f35b2d80505cea288e75f8ca94
+ms.sourcegitcommit: 94c3c1be6bc17403adbb2bab6bbaf4a717a66009
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102036257"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103224682"
 ---
 # <a name="frequently-asked-questions-for-sql-server-on-azure-vms"></a>Azure VM 'lerinde SQL Server için sık sorulan sorular
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -244,6 +244,10 @@ Bu makalede, [Windows Azure sanal makinelerinde (VM) SQL Server](https://azure.m
 1. **SQL Server VM 'lerde desteklenen MSDTC ile dağıtılmış işlemler mi var?**
    
     Evet. SQL Server 2016 SP2 ve üzeri için Yerel DTC desteklenir. Ancak, bir yük devretme sırasında hareket durumunda olan işlemler başarısız olur ve yeniden denenmek zorunda olduğundan uygulamalar her zaman açık kullanılabilirlik grupları kullanılırken test edilmiş olmalıdır. Kümelenmiş DTC, Windows Server 2019 ile başlayarak kullanılabilir. 
+    
+1. **Azure SQL sanal makinesi müşteri verilerinin bölge dışına taşınmasını veya depolanmasını ister misiniz?**
+
+   Hayır. Aslında, Azure SQL sanal makinesi ve SQL IaaS Aracısı uzantısı hiçbir müşteri verisini depolamaz.
 
 ## <a name="sql-server-iaas-agent-extension"></a>SQL Server IaaS Aracısı uzantısı
 

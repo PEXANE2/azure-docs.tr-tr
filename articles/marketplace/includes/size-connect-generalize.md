@@ -7,12 +7,12 @@ ms.topic: include
 author: mingshen-ms
 ms.author: krsh
 ms.date: 10/20/2020
-ms.openlocfilehash: addc18a0ebf9e49d3474d3f40cb1e2a6e0f0b272
-ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
+ms.openlocfilehash: c60d2a9b13cce9251ff0f730081a9d677206770d
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97826569"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102630121"
 ---
 ## <a name="generalize-the-image"></a>Görüntüyü genelleştirin
 
@@ -38,60 +38,31 @@ Aşağıdaki işlem bir Linux sanal makinesini genelleştirir ve ayrı bir VM ol
     1. Azure portal, kaynak grubunuzu (RG) seçin ve VM 'yi serbest olarak ayırın.
     2. VM 'niz artık genelleştirilmiştir ve bu VM diskini kullanarak yeni bir VM oluşturabilirsiniz.
 
-### <a name="take-a-snapshot-of-the-vm-disk"></a>VM diskinin anlık görüntüsünü alın
+### <a name="capture-image"></a>Görüntü yakala
 
-1. [Azure portalında](https://ms.portal.azure.com/) oturum açın.
-2. Sol üst taraftan başlayarak, **kaynak oluştur**' u seçin, sonra da arama yapın ve **anlık görüntü**' i seçin.
-3. Anlık görüntü dikey penceresinde  **Oluştur**' u seçin.
-4. Anlık görüntü için bir **ad** girin.
-5. Var olan bir kaynak grubunu seçin veya yeni bir kaynak grubu adı girin.
-6. **Kaynak disk** için, anlık görüntü yapılacak yönetilen diski seçin.
-7. Anlık görüntüyü depolamak için kullanılacak **hesap türünü** seçin. Yüksek performanslı bir SSD üzerinde depolanmış olması gerekmedikçe **Standart HDD** kullanın.
-8. **Oluştur**’u seçin.
+VM 'niz çalışmaya başladıktan sonra Azure Paylaşılan görüntü galerisinde bu dosyayı yakalayabilirsiniz. Yakalamak için aşağıdaki adımları izleyin:
 
-#### <a name="extract-the-vhd"></a>VHD 'YI Ayıkla
+1. [Azure Portal](https://ms.portal.azure.com/), sanal makinenizin sayfasına gidin.
+2. **Yakala**' yı seçin.
+3. **Görüntüyü paylaşılan görüntüye paylaşma** bölümünde **Evet ' i seçin, görüntü sürümü olarak Galeri ile paylaşabilirsiniz**.
+4. **İşletim sistemi durumu** altında Genelleştirilmiş öğesini seçin.
+5. Bir hedef görüntü Galerisi seçin veya **Yeni oluştur**.
+6. Bir hedef görüntü tanımı seçin veya **Yeni oluştur**.
+7. Görüntü için bir **sürüm numarası** belirtin.
+8. Seçimlerinizi gözden geçirmek için **gözden geçir + oluştur** ' u seçin.
+9. Doğrulama başarılı olduktan sonra **Oluştur**' u seçin.
 
-Anlık görüntüyü Depolama hesabınızdaki bir VHD 'ye aktarmak için aşağıdaki betiği kullanın.
+Yayımlamak için yayımcı hesabının, SıG öğesine sahip erişimi olması gerekir. Erişim vermek için:
 
-```azurecli-interactive
-#Provide the subscription Id where the snapshot is created
-$subscriptionId=yourSubscriptionId
+1. Paylaşılan görüntü galerisine gidin.
+2. Sol panelde **erişim denetimi** (IAM) seçeneğini belirleyin.
+3. **Ekle** ' yi ve ardından **rol ataması Ekle**' yi seçin.
+4. Bir **rol** veya **sahip** seçin.
+5. **Kullanıcı, Grup veya hizmet sorumlusu** seçmek **için erişim ata** altında.
+6. Görüntüyü yayımlayan kişinin Azure e-postasını seçin.
+7. **Kaydet**’i seçin.
 
-#Provide the name of your resource group where the snapshot is created
-$resourceGroupName=myResourceGroupName
+:::image type="content" source="../media/create-vm/add-role-assignment.png" alt-text="Rol ataması Ekle penceresini görüntüler.":::
 
-#Provide the snapshot name
-$snapshotName=mySnapshot
-
-#Provide Shared Access Signature (SAS) expiry duration in seconds (such as 3600)
-#Know more about SAS here: https://docs.microsoft.com/en-us/azure/storage/storage-dotnet-shared-access-signature-part-1
-$sasExpiryDuration=3600
-
-#Provide storage account name where you want to copy the underlying VHD file. 
-$storageAccountName=mystorageaccountname
-
-#Name of the storage container where the downloaded VHD will be stored.
-$storageContainerName=mystoragecontainername
-
-#Provide the key of the storage account where you want to copy the VHD 
-$storageAccountKey=mystorageaccountkey
-
-#Give a name to the destination VHD file to which the VHD will be copied.
-$destinationVHDFileName=myvhdfilename.vhd
-
-az account set --subscription $subscriptionId
-
-sas=$(az snapshot grant-access --resource-group $resourceGroupName --name $snapshotName --duration-in-seconds $sasExpiryDuration --query [accessSas] -o tsv)
-
-az storage blob copy start --destination-blob $destinationVHDFileName --destination-container $storageContainerName --account-name $storageAccountName --account-key $storageAccountKey --source-uri $sas
-```
-
-#### <a name="script-explanation"></a>Betik açıklaması
-
-Bu betik, bir anlık görüntünün SAS URI 'sini oluşturmak için aşağıdaki komutları kullanır ve SAS URI 'sini kullanarak temel VHD 'YI bir depolama hesabına kopyalar. Tablodaki her komut, komuta özgü belgelere yönlendirir.
-
-| Komut | Notlar |
-| --- | --- |
-| az disk grant-access | Temel alınan VHD dosyasını bir depolama hesabına kopyalamak veya şirket içine indirmek üzere kullanılan salt okunur SAS oluşturur
-| az storage blob copy start | Bir blobu bir depolama hesabından diğerine zaman uyumsuz olarak kopyalar. `az storage blob show`Yeni Blobun durumunu denetlemek için kullanın. |
-|
+> [!NOTE]
+> Artık Iş Ortağı Merkezi 'nde bir SıG görüntüsü yayımlayabilmeniz için SAS URI 'Leri oluşturmanız gerekmez. Ancak yine de SAS URI 'SI oluşturma adımlarına başvurmanız gerekirse, bkz. [sanal makine görüntüsü IÇIN SAS URI 'si oluşturma](../azure-vm-get-sas-uri.md).

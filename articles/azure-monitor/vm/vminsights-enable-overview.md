@@ -6,12 +6,12 @@ author: bwren
 ms.author: bwren
 ms.date: 12/22/2020
 ms.custom: references_regions
-ms.openlocfilehash: 7aa8221c960685149a5d475665be105acaf7aa15
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: bb2e12082b80c397eec27409b1177379a92fdd7d
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102046678"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102634167"
 ---
 # <a name="enable-vm-insights-overview"></a>VM öngörülerini etkinleştir genel bakış
 
@@ -41,11 +41,11 @@ VM öngörüleri aşağıdaki makineleri destekler:
 ## <a name="supported-azure-arc-machines"></a>Desteklenen Azure yay makineleri
 Sanal makine öngörüleri, Arc uzantı hizmetinin kullanılabildiği bölgelerde Azure Arc etkin sunucuları için kullanılabilir. Arc aracısının 0,9 veya sonraki bir sürümünü çalıştırıyor olmanız gerekir.
 
-| Bağlı kaynak | Desteklenir | Açıklama |
+| Bağlı kaynak | Desteklenir | Description |
 |:--|:--|:--|
 | Windows aracıları | Yes | [Windows aracıların Log Analytics aracı](../agents/log-analytics-agent.md)Ile birlikte bağımlılık aracısına ihtiyacı vardır. Daha fazla bilgi için bkz. [desteklenen işletim sistemleri](../agents/agents-overview.md#supported-operating-systems). |
 | Linux aracıları | Yes | Linux aracısının [Log Analytics aracısıyla](../agents/log-analytics-agent.md)birlikte, Linux aracılarının bağımlılık aracısına ihtiyacı vardır. Daha fazla bilgi için bkz. [desteklenen işletim sistemleri](#supported-operating-systems). |
-| System Center Operations Manager yönetim grubu | Hayır | |
+| System Center Operations Manager yönetim grubu | No | |
 
 ## <a name="supported-operating-systems"></a>Desteklenen işletim sistemleri
 
@@ -54,6 +54,7 @@ VM öngörüleri, Log Analytics Aracısı ve bağımlılık aracısını destekl
 > [!IMPORTANT]
 > VM öngörüleri Konuk sistem durumu özelliği, genel önizlemede olduğu sürece daha sınırlı işletim sistemi desteğine sahiptir. Ayrıntılı bir liste için bkz. [VM Insights Konuk durumunu etkinleştirme (Önizleme)](../vm/vminsights-health-enable.md) .
 
+### <a name="linux-considerations"></a>Linux konuları
 VM öngörülerini destekleyen bağımlılık aracısının Linux desteğiyle ilgili konular listesine bakın:
 
 - Yalnızca varsayılan ve SMP Linux çekirdek sürümleri desteklenir.
@@ -61,7 +62,22 @@ VM öngörülerini destekleyen bağımlılık aracısının Linux desteğiyle il
 - Standart kernels 'lerin yeniden derlemesi dahil olmak üzere özel kernels desteklenmez.
 - Sürüm 9,4 ' den başka bir deyişle, harita özelliği desteklenmez ve performans özelliği yalnızca Azure Izleyici menüsünden kullanılabilir. Doğrudan Azure VM 'nin sol bölmesinden kullanılamaz.
 - CentOSPlus Kernel destekleniyor.
-- Linux çekirdeğinin Spectre güvenlik açığı için düzeltme eki uygulanmış olması gerekir. Daha fazla ayrıntı için lütfen Linux dağıtım satıcınıza başvurun.
+
+Linux çekirdeğinin Spectre ve Meltters güvenlik açıkları için düzeltme eki uygulanmış olması gerekir. Daha fazla ayrıntı için lütfen Linux dağıtım satıcınıza başvurun. Spectre/Meltazaltma azaltıldığında kullanılabilir olup olmadığını denetlemek için aşağıdaki komutu çalıştırın:
+
+```
+$ grep . /sys/devices/system/cpu/vulnerabilities/*
+```
+
+Bu komutun çıktısı aşağıdakine benzer şekilde görünür ve bir makinenin soruna karşı savunmasız olup olmadığını belirtir. Bu dosyalar eksikse, makine Düzeltme Eki.
+
+```
+/sys/devices/system/cpu/vulnerabilities/meltdown:Mitigation: PTI
+/sys/devices/system/cpu/vulnerabilities/spectre_v1:Vulnerable
+/sys/devices/system/cpu/vulnerabilities/spectre_v2:Vulnerable: Minimal generic ASM retpoline
+```
+
+
 ## <a name="log-analytics-workspace"></a>Log Analytics çalışma alanı
 VM öngörüleri bir Log Analytics çalışma alanı gerektirir. Bu çalışma alanının ayrıntıları ve gereksinimleri için bkz. [VM öngörüleri için Log Analytics çalışma alanını yapılandırma](vminsights-configure-workspace.md) .
 ## <a name="agents"></a>Aracılar

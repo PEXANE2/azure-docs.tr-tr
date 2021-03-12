@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/20/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: 56d9c621579e19cf2c32562560e40fe42ff3989b
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 5fcf688bbe8a5be2fc10b70950990b7b6ca71df8
+ms.sourcegitcommit: 94c3c1be6bc17403adbb2bab6bbaf4a717a66009
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101677519"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103225600"
 ---
 # <a name="query-json-files-using-serverless-sql-pool-in-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'te sunucusuz SQL havuzunu kullanarak JSON dosyalarını sorgulama
 
@@ -126,12 +126,13 @@ Sorgu örnekleri aşağıdaki yapıyla belge içeren *JSON* dosyalarını okur:
 
 ### <a name="query-json-files-using-json_value"></a>JSON_VALUE kullanarak JSON dosyalarını sorgulama
 
-Aşağıdaki sorgu, bir JSON belgelerinden skaler değerler (başlık, yayımcı) almak için [JSON_VALUE](/sql/t-sql/functions/json-value-transact-sql?view=azure-sqldw-latest&preserve-view=true) nasıl kullanacağınızı gösterir:
+Aşağıdaki sorgu, bir JSON belgelerinden skaler değerler [](/sql/t-sql/functions/json-value-transact-sql?view=azure-sqldw-latest&preserve-view=true) ( `date_rep` ,,) almak için JSON_VALUE nasıl kullanacağınızı gösterir `countries_and_territories` `cases` :
 
 ```sql
 select
     JSON_VALUE(doc, '$.date_rep') AS date_reported,
     JSON_VALUE(doc, '$.countries_and_territories') AS country,
+    CAST(JSON_VALUE(doc, '$.deaths') AS INT) as fatal,
     JSON_VALUE(doc, '$.cases') as cases,
     doc
 from openrowset(
@@ -143,6 +144,8 @@ from openrowset(
     ) with (doc nvarchar(max)) as rows
 order by JSON_VALUE(doc, '$.geo_id') desc
 ```
+
+JSON belgesinden JSON özelliklerini ayıkladıktan sonra, sütun diğer adlarını tanımlayabilir ve isteğe bağlı olarak metinsel değerini bir tür olarak çevirebilirsiniz.
 
 ### <a name="query-json-files-using-openjson"></a>OPENJSON kullanarak JSON dosyalarını sorgulama
 
@@ -166,6 +169,10 @@ from openrowset(
 where country = 'Serbia'
 order by country, date_rep desc;
 ```
+Sonuçlar işlev kullanılarak döndürülen sonuçlarla aynıdır `JSON_VALUE` . Bazı durumlarda, bundan `OPENJSON` faydalanabilir `JSON_VALUE` :
+- `WITH`Yan tümcesinde, her özellik için sütun diğer adlarını ve türlerini açıkça ayarlayabilirsiniz. `CAST`İşlevi, listedeki her sütuna yerleştirmeniz gerekmez `SELECT` .
+- `OPENJSON` çok sayıda özellik döndürüuyorsanız daha hızlı olabilir. Yalnızca 1-2 özellikleri `OPENJSON` döndürülülüğünüz, işlev ek yük olabilir.
+- `OPENJSON`Her belgeden diziyi ayrıştırabilmeniz ve üst satırla birleştirmek istiyorsanız işlevini kullanmanız gerekir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

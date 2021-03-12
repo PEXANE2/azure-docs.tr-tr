@@ -11,18 +11,16 @@ ms.workload: na
 ms.topic: article
 ms.date: 10/21/2020
 ms.author: inhenkel
-ms.openlocfilehash: 98310f65767efc6081451d9931c4ea9772df5f3b
-ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
+ms.openlocfilehash: fc48c9b8a0a7510dd8792c959c1f63a0340f89ce
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102609405"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103011215"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>Azure Media Services v3 sürüm notları
 
 [!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
-
->Bu URL 'YI kopyalayarak ve yapıştırarak bu sayfanın ne zaman yeniden ziyaret ettikleridir hakkında bildirim alın: `https://docs.microsoft.com/api/search/rss?search=%22Azure+Media+Services+v3+release+notes%22&locale=en-us` RSS akışı okuyucusuna.
 
 En son gelişmelerden haberdar olmak için, bu makalede hakkında bilgi verilmektedir:
 
@@ -32,12 +30,6 @@ En son gelişmelerden haberdar olmak için, bu makalede hakkında bilgi verilmek
 * Kullanım dışı işlevsellik
 
 ## <a name="known-issues"></a>Bilinen sorunlar
-
-> [!NOTE]
-> V3 [canlı olaylarını](live-events-outputs-concept.md)yönetmek, v3 [varlıklarını](assets-concept.md) ve Işleri görüntülemek, API 'lere erişme hakkında bilgi almak, içeriği şifrelemek için [Azure Portal](https://portal.azure.com/) kullanabilirsiniz. Diğer tüm yönetim görevleri için (örneğin, dönüşümleri ve işleri yönetme) [REST API](/rest/api/media/accountfilters), [CLI](/cli/azure/ams)veya desteklenen [SDK 'lardan](media-services-apis-overview.md#sdks)birini kullanın.
->
-> Ayrıntılar için bkz.: [Media Services v3 için Azure Portal sınırlamaları](frequently-asked-questions.md#what-are-the-azure-portal-limitations-for-media-services-v3).
-
 
 ## <a name="february-2021"></a>Şubat 2021
 
@@ -54,20 +46,22 @@ Standart kodlayıcı artık 8 bit HEVC (H. 265) kodlama desteğini desteklemekte
 - H265SingleBitrate1080p
 - H265SingleBitrate4K
 
-
 V2 API 'sindeki Premium Encoder 'da daha önce HEVC kullanan müşterilerin standart Kodlayıcıdaki yeni HEVC kodlama desteğini kullanmak için geçirilmesi gerekir.
 
 ### <a name="azure-media-services-v2-api-and-sdks-deprecation-announcement"></a>Azure Media Services V2 API ve SDK 'Ları kullanımdan kaldırma duyurusu
 
 #### <a name="update-your-azure-media-services-rest-api-and-sdks-to-v3-by-29-february-2024"></a>Azure Media Services REST API'si ve SDK 'larınızı, 29 Şubat 2024 ile v3 'e güncelleştirin
 
-.NET ve Java için Azure Media Services REST API'si sürüm 3 ve istemci SDK 'Ları sürüm 2 ' den daha fazla özellik sağladığından, .NET ve Java için Azure Media Services REST API'si ve istemci SDK 'larının 2. sürümünü devre dışı sunuyoruz. .NET ve Java için Azure Media Services REST API'si sürüm 3 ' ün ve istemci SDK 'larının daha zengin avantajlarından faydalanmak için anahtarı daha önce daha erken avantajlarına geçirmenizi öneririz. Sürüm 3 şunları sağlar: 
+.NET ve Java için Azure Media Services REST API'si sürüm 3 ve istemci SDK 'Ları sürüm 2 ' den daha fazla özellik sağladığından, .NET ve Java için Azure Media Services REST API'si ve istemci SDK 'larının 2. sürümünü devre dışı sunuyoruz.
+
+.NET ve Java için Azure Media Services REST API'si sürüm 3 ' ün ve istemci SDK 'larının daha zengin avantajlarından faydalanmak için anahtarı daha önce daha erken avantajlarına geçirmenizi öneririz.
+Sürüm 3 şunları sağlar:
  
 - 7/24 canlı olay desteği
 - ARM REST API 'Leri, .NET Core için istemci SDK 'Ları, Node.js, Python, Java, Go ve Ruby.
-- Müşteri tarafından yönetilen anahtarlar, güvenilen depolama tümleştirmesi, özel bağlantı desteği ve [daha fazlası](https://review.docs.microsoft.com/en-us/azure/media-services/latest/migrate-v-2-v-3-migration-benefits)
+- Müşteri tarafından yönetilen anahtarlar, güvenilen depolama tümleştirmesi, özel bağlantı desteği ve [daha fazlası](https://review.docs.microsoft.com/azure/media-services/latest/migrate-v-2-v-3-migration-benefits)
 
-#### <a name="action-required"></a>Eylem gerekiyor:
+#### <a name="action-required"></a>Eylem gerekiyor
 
 İş yüklerinizde kesinti olasılığını en aza indirmek için, sürüm 2 API 'SI ve SDK 'Ları sürüm 3 API 'sine ve SDK 'sına 2024 Şubat ' den önce olan [geçiş kılavuzunu](https://go.microsoft.com/fwlink/?linkid=2149150&clcid=0x409) gözden geçirin.
 **29 şubat 2024**' den sonra, Azure Media Services sürüm 2 REST API, ARM hesap yönetimi apı sürümü 2015-10-01 veya sürüm 2 .NET istemci SDK 'larından trafiği kabul etmez. Buna sürüm 2 API 'sini çağırabilen 3. taraf açık kaynaklı istemci SDK 'LARı dahildir.  
@@ -76,9 +70,9 @@ Bkz. resmi [Azure güncelleştirmeleri duyurusu](https://azure.microsoft.com/upd
 
 ### <a name="standard-encoder-support-for-v2-api-features"></a>V2 API özellikleri için standart kodlayıcı desteği
 
-Yeni bir HEVC (H. 265) için destek desteği 'ne ek olarak, aşağıdaki özellikler kodlama API 'sinin 2020-05-01 sürümünde de mevcuttur. 
+Yeni bir HEVC (H. 265) için destek desteği 'ne ek olarak, aşağıdaki özellikler kodlama API 'sinin 2020-05-01 sürümünde de mevcuttur.
 
-- Yeni **Jobınputclip** desteği kullanılarak birden çok giriş dosyası kullanımı desteklenmektedir. 
+- Yeni **Jobınputclip** desteği kullanılarak birden çok giriş dosyası kullanımı desteklenmektedir.
     - .NET için [iki varlığı birlikte nasıl birleştirileneceğini](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/main/VideoEncoding/EncodingWithMESCustomStitchTwoAssets)gösteren bir örnek vardır.
 - Ses izleme seçimi, müşterilerin gelen ses izlerini seçmesini ve eşlemesini ve kodlama için bunları çıkışa yönlendirmesini sağlar
     - **Audiotrackdescriptor** hakkındaki ayrıntılar ve seçimi izlemek için bkz. [REST API openapı](https://github.com/Azure/azure-rest-api-specs/blob/8d15dc681b081cca983e4d67fbf6441841d94ce4/specification/mediaservices/resource-manager/Microsoft.Media/stable/2020-05-01/Encoding.json#L385)
@@ -96,6 +90,15 @@ Lütfen Paket Yöneticisi 'ni kullanarak kod tabanlarınızın en son istemci SD
 - [Node.js TypeScript sürüm 8.1.0](https://www.npmjs.com/package/@azure/arm-mediaservices)
 - [Python Azure-MGMT-Media 3.1.0](https://pypi.org/project/azure-mgmt-media/)
 - [Java SDK 1.0.0-Beta. 2](https://search.maven.org/artifact/com.azure.resourcemanager/azure-resourcemanager-mediaservices/1.0.0-beta.2/jar)
+
+### <a name="new-security-features-available-in-the-2020-05-01-version-of-the-azure-media-services-api"></a>Azure Media Services API 'sinin 2020-05-01 sürümünde kullanılabilen yeni güvenlik özellikleri
+
+- **[Müşteri tarafından yönetilen anahtarlar](concept-use-customer-managed-keys-byok.md)**: "2020-05-01" sürümü API 'si ile oluşturulan hesaplarda depolanan içerik anahtarları ve diğer veriler, bir hesap anahtarıyla şifrelenir. Müşteriler, hesap anahtarını şifrelemek için bir anahtar sağlayabilir.
+
+- **[Güvenilen depolama](concept-trusted-storage.md)**: Media Services Media Services hesabıyla ilişkili yönetilen bir kimlik kullanılarak Azure depolama 'ya erişecek şekilde yapılandırılabilir. Depolama hesaplarına yönetilen bir kimlik kullanılarak erişildiğinde müşteriler Media Services senaryolarını engellemeden depolama hesabında daha kısıtlayıcı ağ ACL 'Leri yapılandırabilir.
+
+- **[Yönetilen kimlikler](concept-managed-identities.md)**: müşteriler, anahtar kasalarına (müşteri tarafından yönetilen anahtarlar için) ve depolama hesaplarına (güvenilen depolama için) erişim sağlamak amacıyla bir Media Services hesabı Için sistem tarafından atanan yönetilen kimliği etkinleştirebilir.
+
 
 ### <a name="updated-typescript-nodejs-samples-using-isomorphic-sdk-for-javascript"></a>JavaScript için isomorphic SDK kullanılarak TypeScript Node.js örnekleri güncelleştirildi
 
@@ -143,7 +146,8 @@ Canlı kodlama artık 0,5 ile 20 saniye arasında sabit anahtar kare aralığı 
 ## <a name="august-2020"></a>Ağustos 2020
 
 ### <a name="dynamic-encryption"></a>Dinamik şifreleme
-Eski PlayReady korumalı birlikte çalışabilen dosya biçimi (pff 1,1) şifrelemesi için destek artık dinamik Paketçde kullanılabilir. Bu, Microsoft tarafından yayımlanan Common Encryption standardının (CENC) erken taslaklarını uygulayan Samsung ve LG 'den eski akıllı TV kümelerine yönelik destek sağlar.  PFF 1,1 biçimi, daha önce Silverlight istemci kitaplığı tarafından desteklenen şifreleme biçimi olarak da bilinir. Bugün, bu şifreleme biçimi için yalnızca kullanım örneği senaryosu, yalnızca pff 1,1 şifrelemesiyle Kesintisiz Akış destekleyen bazı bölgelerde çok sayıda akıllı TV 'nin kaldığı eski akıllı TV pazarını hedeflemelidir. 
+
+Eski PlayReady korumalı birlikte çalışabilen dosya biçimi (pff 1,1) şifrelemesi için destek artık dinamik Paketçde kullanılabilir. Bu, Microsoft tarafından yayımlanan Common Encryption standardının (CENC) erken taslaklarını uygulayan Samsung ve LG 'den eski akıllı TV kümelerine yönelik destek sağlar.  PFF 1,1 biçimi, daha önce Silverlight istemci kitaplığı tarafından desteklenen şifreleme biçimi olarak da bilinir. Bugün, bu şifreleme biçimi için yalnızca kullanım örneği senaryosu, yalnızca pff 1,1 şifrelemesiyle Kesintisiz Akış destekleyen bazı bölgelerde çok sayıda akıllı TV 'nin kaldığı eski akıllı TV pazarını hedeflemelidir.
 
 Yeni pff 1,1 şifreleme desteğini kullanmak için, akış bulucunun URL yolundaki şifreleme değerini ' pff ' olarak değiştirin. Daha fazla ayrıntı için [Content Protection genel bakış](content-protection-overview.md) bölümüne bakın.
 Örneğin: `https://amsv3account-usw22.streaming.media.azure.net/00000000-0000-0000-0000-000000000000/ignite.ism/manifest(encryption=piff)`|

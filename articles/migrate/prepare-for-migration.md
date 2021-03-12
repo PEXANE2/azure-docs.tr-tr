@@ -6,12 +6,12 @@ ms.author: anvar
 ms.manager: bsiva
 ms.topic: how-to
 ms.date: 06/08/2020
-ms.openlocfilehash: 543fb7474c0a9efc41667945c89489054a44d657
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 8083b9edd49f65f29fe9c9b2cfa30edfacf89507
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101724498"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102614896"
 ---
 # <a name="prepare-on-premises-machines-for-migration-to-azure"></a>Azure 'a geçiş için şirket içi makineleri hazırlama
 
@@ -111,11 +111,12 @@ Bu ayarı aşağıdaki şekilde el ile yapılandırın:
 
 Azure geçişi bu işlemleri bu sürümler için otomatik olarak tamamlar
 
-- Red Hat Enterprise Linux 7,8, 7,7, 7,6, 7,5, 7,4, 7,0, 6. x
-- Sent OS 7,7, 7,6, 7,5, 7,4, 6. x
+- Red Hat Enterprise Linux 7,8, 7,7, 7,6, 7,5, 7,4, 7,0, 6. x (Azure Linux VM Aracısı da geçiş sırasında otomatik olarak yüklenir)
+- Sent OS 7,7, 7,6, 7,5, 7,4, 6. x (Azure Linux VM Aracısı geçiş sırasında da otomatik olarak yüklenir)
 - SUSE Linux Enterprise Server 12 SP1 +
 - SUSE Linux Enterprise Server 15 SP1
-- Ubuntu 19,04, 19,10, 18.04 LTS, 16.04 LTS, 14.04 LTS
+- Ubuntu 19,04, 19,10, 18.04 LTS, 16.04 LTS, 14.04 LTS (geçiş sırasında Azure Linux VM Aracısı da otomatik olarak yüklenir)
+- Ubuntu 18.04 LTS, 16.04 LTS
 - 9, 8, 7
 - Oracle Linux 7,7, 7,7-CI
 
@@ -147,6 +148,7 @@ Aşağıdaki tabloda, yukarıda listelenen işletim sistemleri için otomatik ol
 
 [Azure 'Da LINUX VM çalıştırma](../virtual-machines/linux/create-upload-generic.md)adımları hakkında daha fazla bilgi edinin ve popüler Linux dağıtımlarından bazılarına yönelik yönergeler edinin.
 
+Linux VM Aracısı 'nı yüklemek için [gerekli paketlerin](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-linux#requirements) listesini gözden geçirin. Azure geçişi, VMware geçiş 'nin aracısız yöntemi kullanılırken RHEL6 için Linux VM aracısını otomatik olarak, RHEL7, CentOS7 (6 ' da RHEL 'ye benzer şekilde desteklenmelidir), Ubuntu 14,04, Ubuntu 16,04, Ubuntu 18.04 ' yi otomatik olarak yüklüyor.
 
 ## <a name="check-azure-vm-requirements"></a>Azure VM gereksinimlerini denetleme
 

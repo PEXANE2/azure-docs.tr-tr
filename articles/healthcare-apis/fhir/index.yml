@@ -1,0 +1,59 @@
+### YamlMime:Landing
+title: FHIR için Azure API Belgeleri
+summary: FHIR için Azure API, eyleme dönüştürülebilir analiz ve makine öğrenmesi çözümlerine olanak sağlayan, klinik sağlık verilerine yönelik, yönetilen, standartlara dayalı ve uyumlu bir API’dir.
+metadata:
+  title: FHIR için Azure API Belgeleri - öğreticiler, nasıl yapılır kılavuzları
+  description: FHIR için Azure API, eyleme dönüştürülebilir analiz ve makine öğrenmesi çözümlerine olanak sağlayan, klinik sağlık verilerine yönelik, yönetilen, standartlara dayalı ve uyumlu bir API’dir.
+  services: healthcare-apis
+  ms.service: healthcare-apis
+  ms.subservice: fhir
+  ms.topic: landing-page
+  ms.collection: collection
+  author: matjazl
+  ms.author: matjazl
+  ms.date: 08/13/2020
+  ms.openlocfilehash: d633b5376832672ecc7c917e24728666b889e16c
+  ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
+  ms.translationtype: MT
+  ms.contentlocale: tr-TR
+  ms.lasthandoff: 03/11/2021
+  ms.locfileid: "103017459"
+landingContent:
+- title: FHIR için Azure API ile çalışmaya başlama
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: FHIR için Azure API nedir?
+      url: overview.md
+    - text: FHIR için Azure IoT Bağlayıcısı (önizleme) nedir?
+      url: overview.md#azure-iot-connector-for-fhir-preview
+  - linkListType: quickstart
+    links:
+    - text: FHIR için API Sunucusu dağıtma
+      url: fhir-paas-portal-quickstart.md
+    - text: FHIR için Azure IoT Bağlayıcısı dağıtma (önizleme)
+      url: iot-fhir-portal-quickstart.md
+- title: Ayarlama öğreticileri
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: FHIR hizmetinden veri okumak için javascript uygulaması dağıtma
+      url: tutorial-web-app-fhir-server.md
+    - text: Postman ile FHIR API'ye erişme
+      url: access-fhir-postman-tutorial.md
+    - text: Üçüncü taraf uygulamalar ve tıbbi kayıtlar için SMART tümleştirmesi
+      url: use-smart-on-fhir-proxy.md
+    - text: Azure IoT Hub aracılığıyla cihaz verilerini alma
+      url: device-data-through-iot-hub.md
+- title: AD kimlik doğrulaması için uygulamaları kaydetme
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Kaynak uygulamasını kaydetme
+      url: register-resource-azure-ad-client-app.md
+    - text: Gizli istemci uygulamasını kaydetme
+      url: register-confidential-azure-ad-client-app.md
+    - text: Genel istemci uygulamasını kaydetme
+      url: register-public-azure-ad-client-app.md
+    - text: Hizmet istemci uygulamasını kaydetme
+      url: register-service-azure-ad-client-app.md

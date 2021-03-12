@@ -7,12 +7,12 @@ ms.manager: bsiva
 ms.topic: tutorial
 ms.date: 06/09/2020
 ms.custom: mvc
-ms.openlocfilehash: 17d9d3bf787b67716fb2270cd055e30a4fefbe0f
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: bebc2e629193944c840948c9c573462a43e3032e
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101702207"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103201698"
 ---
 # <a name="migrate-vmware-vms-to-azure-agentless"></a>VMware VM 'lerini Azure 'a geçirme (aracısız)
 
@@ -111,7 +111,7 @@ Aşağıda belirtilen şekilde çoğaltmayı etkinleştirin:
     > Bir sanal makine kümesi için farklı bir kullanılabilirlik seçeneği seçmek istiyorsanız 1. adıma gidin ve tek bir sanal makine kümesi için çoğaltma başlattıktan sonra farklı kullanılabilirlik seçeneklerini belirleyerek adımları yineleyin.
 
 
- ![VM işlem ayarları](./media/tutorial-migrate-vmware/compute-settings.png)
+
 
 12. **Diskler** bölümünde, VM disklerinin Azure’a çoğaltılıp çoğaltılmayacağını belirtin ve Azure’da disk türünü (Standart SSD/HDD veya premium yönetilen diskler) seçin. Ardından **İleri**'ye tıklayın.
    
@@ -189,7 +189,7 @@ Test geçişinin beklendiği gibi çalışıp çalışmadığını doğruladıkt
 ## <a name="complete-the-migration"></a>Geçişi tamamlamayı
 
 1. Geçiş yapıldıktan sonra, **çoğaltmayı durdurmak**> VM 'ye sağ tıklayın. Bu, şirket içi makine için çoğaltmayı durduruyor ve VM için çoğaltma durumu bilgilerini temizler.
-2. Makinede Linux OS varsa, geçirilen makinelere Azure VM [Linux](../virtual-machines/extensions/agent-linux.md) Aracısı 'nı yükler. Geçiş sırasında Windows VM 'Leri için VM aracısını otomatik olarak yükledik.
+2. Geçiş sırasında Windows VM 'Leri ve Linux için VM aracısını otomatik olarak yükledik. Linux VM Aracısı yüklemesinin düzgün şekilde çalışmasını sağlamak için makinede Linux OS varsa, geçirilen makinelerde Azure VM Linux Aracısı [gereksinimlerini](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-linux#requirements) gözden geçirin. 
 3. Veritabanı bağlantısı dizelerini ve web sunucusu yapılandırmalarını güncelleştirme gibi herhangi bir geçiş sonrası uygulama ayarı gerçekleştirin.
 4. Geçirilen uygulamada son uygulama ve geçiş kabul testi gerçekleştirme işlemi şimdi Azure’da çalıştırılmaktadır.
 5. Geçirilen Azure VM örneğine giden trafiği kesin.

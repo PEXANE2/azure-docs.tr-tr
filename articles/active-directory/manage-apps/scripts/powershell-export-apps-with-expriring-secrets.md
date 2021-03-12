@@ -11,16 +11,16 @@ ms.topic: sample
 ms.date: 03/09/2021
 ms.author: kenwith
 ms.reviewer: mifarca
-ms.openlocfilehash: 7123c87d8883d9ac309797255152611fb9fb81d2
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.openlocfilehash: c8a37b08db5cdb35bc9328cbc29caa04a5cdf412
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102584390"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103010846"
 ---
 # <a name="export-apps-with-expiring-secrets-and-certificates"></a>Süresi dolan gizlilikler ve sertifikalarla uygulamaları dışa aktarma
 
-Bu PowerShell betiği örneği, belirli uygulamalar için süresi dolan gizli dizileri ve sertifikaları bir CSV dosyasında dizininizden dışarı aktarır.
+Bu PowerShell betiği örneği, bir CSV dosyasındaki dizininizden belirtilen uygulamalar için süresi dolan gizli dizileri, sertifikaları ve onların sahiplerini içeren tüm uygulama kayıtlarını dışa aktarır.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../../includes/quickstarts-free-trial-note.md)]
 
@@ -33,6 +33,7 @@ Bu örnek, Graf modülü (azuread) [Için Azuread v2 PowerShell](/powershell/azu
 ## <a name="script-explanation"></a>Betik açıklaması
 
 "Add-Member" komutu CSV dosyasındaki sütunları oluşturmaktan sorumludur.
+"New-Object" komutu CSV dosyası dışarı aktarma içindeki sütunlarda kullanılacak bir nesne oluşturur.
 "$Path" değişkenini doğrudan PowerShell 'de bir CSV dosyası yoluyla değiştirebilirsiniz, böylece dışa aktarma işlemini etkileşimli olmayan şekilde tercih edebilirsiniz.
 
 | Komut | Notlar |

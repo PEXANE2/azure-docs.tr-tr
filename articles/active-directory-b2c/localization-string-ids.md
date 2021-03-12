@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 03/08/2021
+ms.date: 03/10/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: e867fee753fb9db530db2b2015c3aea9280bc16f
-ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
+ms.openlocfilehash: b60b447d8302b89813ca462c3220603ef926eb26
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "102448653"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102631192"
 ---
 # <a name="localization-string-ids"></a>Yerelleştirme dizesi kimlikleri
 
@@ -170,7 +170,7 @@ Aşağıdakiler, `api.localaccountsignup` ve gibi, ile başlayan bir içerik TAN
 | **ver_incorrect_format** | Hatalı biçim. |
 | **ver_but_edit** | E-postayı değiştir |
 | **ver_but_verify** | Kodu doğrula |
-| **alert_no** | Hayır |
+| **alert_no** | No |
 | **ver_info_msg** | Doğrulama kodu gelen kutunuza gönderildi. Lütfen aşağıdaki giriş kutusuna kopyalayın. |
 | **günündeki** | Gün |
 | **ver_fail_throttled** | Bu e-posta adresini doğrulamak için çok fazla istek vardı. Lütfen bekleyin, sonra yeniden deneyin. |
@@ -356,7 +356,7 @@ Aşağıda, [sayfa düzeni sürüm](page-layout.md) 2.1.0 veya üzeri bir [doğr
 
 | ID | Varsayılan değer |
 | -- | ------------- |
-|intro_msg| Doğrulama gereklidir. Lütfen gönder düğmesine tıklayın.|
+|intro_msg <sup>*</sup>| Doğrulama gereklidir. Lütfen gönder düğmesine tıklayın.|
 |success_send_code_msg | Doğrulama kodu gönderildi. Lütfen aşağıdaki giriş kutusuna kopyalayın.|
 |failure_send_code_msg | E-posta adresinizi doğrularken sorun yaşıyoruz. Lütfen geçerli bir e-posta adresi girin ve yeniden deneyin.|
 |success_verify_code_msg | E-posta adresi doğrulandı. Artık devam edebilirsiniz.|
@@ -365,6 +365,12 @@ Aşağıda, [sayfa düzeni sürüm](page-layout.md) 2.1.0 veya üzeri bir [doğr
 |but_verify_code | Kodu doğrula|
 |but_send_new_code | Yeni kod gönder|
 |but_change_claims | E-postayı değiştir|
+
+Not: `intro_msg` öğe gizlenir ve kendiliğinden onaylanan sayfada gösterilmez. Görünmesini sağlamak için, Geçişli Stil Sayfaları [HTML customiztion](customize-ui-with-html.md) kullanın. Örnek:
+    
+```css
+.verificationInfoText div{display: block!important}
+```
 
 ### <a name="verification-display-control-example"></a>Doğrulama görüntüleme denetimi örneği
 

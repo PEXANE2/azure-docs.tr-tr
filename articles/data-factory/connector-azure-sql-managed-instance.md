@@ -6,13 +6,13 @@ ms.topic: conceptual
 ms.author: jingwang
 author: linda33wj
 ms.custom: seo-lt-2019
-ms.date: 12/18/2020
-ms.openlocfilehash: 5c2023ffa4446760c85b07659f13e421e62e6020
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.date: 03/12/2021
+ms.openlocfilehash: 91e383b746509000cef74e96c08d1b70316a0527
+ms.sourcegitcommit: 94c3c1be6bc17403adbb2bab6bbaf4a717a66009
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100383798"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103225260"
 ---
 # <a name="copy-and-transform-data-in-azure-sql-managed-instance-by-using-azure-data-factory"></a>Azure Data Factory kullanarak Azure SQL yönetilen örneğindeki verileri kopyalama ve dönüştürme
 
@@ -20,7 +20,7 @@ ms.locfileid: "100383798"
 
 Bu makalede, Azure SQL yönetilen örneği 'nden ve bu örnekten veri kopyalamak için Azure Data Factory kopyalama etkinliğinin nasıl kullanılacağı özetlenmektedir ve veri akışı kullanarak Azure SQL yönetilen örneğindeki verileri dönüştürebilirsiniz. Azure Data Factory hakkında bilgi edinmek için [tanıtım makalesini](introduction.md)okuyun.
 
-## <a name="supported-capabilities"></a>Desteklenen yetenekler
+## <a name="supported-capabilities"></a>Desteklenen özellikler
 
 Bu SQL yönetilen örnek Bağlayıcısı aşağıdaki etkinlikler için desteklenir:
 
@@ -761,7 +761,7 @@ Daha ayrıntılı belirtmek gerekirse:
         Driver={ODBC Driver 17 for SQL Server};Server=<serverName>;Database=<databaseName>;ColumnEncryption=Enabled;KeyStoreAuthentication=KeyVaultClientSecret;KeyStorePrincipalId=<servicePrincipalKey>;KeyStoreSecret=<servicePrincipalKey>
         ```
 
-    - **Data Factory yönetilen kimlik doğrulamasını** kullanmak için: 
+    - Azure sanal makinesinde şirket içinde barındırılan Integration Runtime çalıştırırsanız, Azure VM 'nin kimliğiyle **yönetilen kimlik kimlik doğrulamasını** kullanabilirsiniz: 
 
         1. Yönetilen kimlik için veritabanı kullanıcısı oluşturmak ve veritabanınıza uygun rolü vermek için aynı [önkoşulları](#managed-identity) izleyin.
         2. Bağlı hizmet ' de, aşağıdaki gibi ODBC bağlantı dizesini belirtin ve bağlantı dizesinin kendisi gösterdiği şekilde **anonim** kimlik doğrulaması ' nı seçin `Authentication=ActiveDirectoryMsi` .

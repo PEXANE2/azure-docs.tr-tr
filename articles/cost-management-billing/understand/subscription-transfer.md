@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: banders
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: 163bd7dbdac4de7b7d9c1657ac3debf45382a27a
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
-ms.translationtype: HT
+ms.openlocfilehash: 746845004a7a1baf1cafb872aae9322177879b6b
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97027280"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103011111"
 ---
 # <a name="about-transferring-billing-ownership-for-an-azure-subscription"></a>Azure aboneliğimin fatura sahipliğini aktarma hakkında
 
@@ -30,16 +30,30 @@ Kurumsal Anlaşma (EA) müşterisiyseniz kurumsal yöneticileriniz aboneliklerin
 
 Aboneliğin sahipliğini yalnızca hesabın faturalama yöneticisi aktarabilir.
 
-## <a name="determine-account-billing-administrator"></a>Hesap faturalama yöneticisini belirleme
+## <a name="determine-if-you-are-a-billing-administrator"></a>Faturalama yöneticisi olup olmadığınızı belirleme
 
 <a name="whoisaa"></a>
 
-Faturalama yöneticisi bir hesabın faturalandırmasını yönetme iznine sahip olan kişidir. [Azure portalında](https://portal.azure.com) faturalandırma işlemine erişmek ve abonelik oluşturma, faturaları görüntüleme ve ödeme ya da ödeme yöntemlerini güncelleştirme gibi çeşitli faturalama görevlerini gerçekleştirmek için yetkilidir.
+Aktarımı yapmak için, bir hesap için faturalandırmayı yönetmek üzere erişimi olan kişiyi bulun. [Azure portalında](https://portal.azure.com) faturalandırma işlemine erişmek ve abonelik oluşturma, faturaları görüntüleme ve ödeme ya da ödeme yöntemlerini güncelleştirme gibi çeşitli faturalama görevlerini gerçekleştirmek için yetkilidir.
 
-Faturalama yöneticisi olduğunuz hesapları belirlemek için [Azure portalda Azure Maliyet Yönetimi + Faturalama](https://portal.azure.com/#blade/Microsoft_Azure_Billing/ModernBillingMenuBlade/Overview)'yı ziyaret edin. Sonra sol bölmeden **Tüm faturalama kapsamları**’nı seçin. Abonelikler sayfasında faturalama yöneticisi olduğunuz üç abonelik de gösterilir.
+### <a name="check-if-you-have-billing-access"></a>Faturalandırma erişimi olup olmadığını denetleyin
 
-Bir aboneliğin hesap yöneticisinin kim olduğunu bilmiyorsanız [Azure portalda Abonelikler sayfasını](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) ziyaret edin. Ardından denetlemek istediğiniz aboneliği seçin ve **Ayarlar** bölümüne bakın. **Özellikler**'i seçin; aboneliğin hesap yöneticisi **Hesap Yöneticisi** kutusunda gösterilir.
+1. Faturalandırma erişimi olan hesapları belirlemek için [Azure Portal 'de maliyet yönetimi + faturalandırma sayfasını](https://portal.azure.com/#blade/Microsoft_Azure_Billing/ModernBillingMenuBlade/Overview)ziyaret edin.
 
+2. Sol taraftaki menüden **faturalandırma hesapları** ' nı seçin.
+
+3. **Faturalandırma kapsamı** listeleme sayfası, faturalandırma ayrıntılarına erişiminizin olduğu tüm abonelikleri gösterir.
+
+### <a name="check-by-subscription"></a>Aboneliğe göre denetle
+
+1. Bir aboneliğin hesap yöneticisinin kim olduğunu bilmiyorsanız [Azure portalda Abonelikler sayfasını](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) ziyaret edin. 
+
+2. Denetlemek istediğiniz aboneliği seçin.
+
+3. **Ayarlar** başlığı altında **Özellikler**' i seçin. Aboneliğin hesap yöneticisi kim olduğunu anlamak için **hesap yönetici** kutusunu inceleyin.
+
+   > [!NOTE]
+   > Tüm Abonelik türleri özellikleri göstermez.
 
 ## <a name="supported-subscription-types"></a>Desteklenen abonelik türleri
 

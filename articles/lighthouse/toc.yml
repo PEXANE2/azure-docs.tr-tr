@@ -53,48 +53,50 @@
         - name: Hizmet sağlayıcısı etkinliğini görüntüleme
           displayName: 'monitor, log, customer, visibility, transparency, control'
           href: ./how-to/view-service-provider-activity.md
-    - name: Bir müşteriyi Azure Lighthouse’a ekleme
-      displayName: resource management
-      href: ./how-to/onboard-customer.md
-    - name: Yönetilen Hizmet tekliflerini Azure Market’te yayımlama
-      displayName: 'managed services offer, azure marketplace, publish, marketplace'
-      href: ./how-to/publish-managed-services-offers.md
+    - name: Ekleme ve temsili yönetimi
+      items:
+        - name: Müşteri ekleme
+          displayName: 'ARM, template, delegation, authorization, resource management'
+          href: ./how-to/onboard-customer.md
+        - name: Yönetilen Hizmet tekliflerini Azure Market’te yayımlama
+          displayName: 'managed services offer, azure marketplace, publish, marketplace'
+          href: ./how-to/publish-managed-services-offers.md
+        - name: Temsilcileri Güncelleştir
+          displayName: upgrade
+          href: ./how-to/update-delegation.md
+        - name: Temsilci erişimi kaldırma
+          displayName: 'delete, undelegate'
+          href: ./how-to/remove-delegation.md
+        - name: Temsilci değişikliklerini izleme
+          displayName: activity log
+          href: ./how-to/monitor-delegation-changes.md
     - name: Müşterileri görüntüleme ve yönetme
       displayName: my customers
       href: ./how-to/view-manage-customers.md
     - name: İş ortağı kimliğinizi bağlama
       displayName: 'partner earned credit, pec, mpn'
       href: ./how-to/partner-earned-credit.md
-    - name: Temsilciyi güncelleştirme
-      displayName: upgrade
-      href: ./how-to/update-delegation.md
-    - name: Temsilci erişimini kaldırma
-      displayName: 'delete, undelegate'
-      href: ./how-to/remove-delegation.md
-    - name: Azure Arc tümleştirmesi
-      displayName: 'server, kubernetes, hybrid, infrastructure'
-      href: ./how-to/manage-hybrid-infrastructure-arc.md
-    - name: Azure Geçişi tümleştirmesi
-      displayName: 'migration, project, on-prem'
-      href: ./how-to/migration-at-scale.md
-    - name: Azure İzleyici tümleştirmesi
+    - name: Azure hizmet tümleştirmesi
       items:
-        - name: Büyük ölçekte Azure İzleyici Günlükleri’ni kullanma
+        - name: Azure Arc tümleştirmesi
+          displayName: 'server, kubernetes, hybrid, infrastructure'
+          href: ./how-to/manage-hybrid-infrastructure-arc.md
+        - name: Azure Geçişi tümleştirmesi
+          displayName: 'migration, project, on-prem'
+          href: ./how-to/migration-at-scale.md
+        - name: Azure İzleyici tümleştirmesi
           displayName: 'log, analytics, analyze, activity'
           href: ./how-to/monitor-at-scale.md
-        - name: Temsilci değişikliklerini izleme
-          displayName: activity log
-          href: ./how-to/monitor-delegation-changes.md
-    - name: Azure İlkesi tümleştirmesi
-      items:
-        - name: İlkeyi uygun ölçekte dağıtma
-          displayName: storage
-          href: ./how-to/policy-at-scale.md
-        - name: Düzeltilebilir bir ilke dağıtma
-          displayName: 'deployIfNotExists, modify, managed identities, managed identity'
-          href: ./how-to/deploy-policy-remediation.md
-    - name: Azure Sentinel tümleştirmesi
-      href: ./how-to/manage-sentinel-workspaces.md
+        - name: Azure İlkesi tümleştirmesi
+          items:
+            - name: İlkeyi uygun ölçekte dağıtma
+              displayName: storage
+              href: ./how-to/policy-at-scale.md
+            - name: Düzeltilebilir bir ilke dağıtma
+              displayName: 'deployIfNotExists, modify, managed identities, managed identity'
+              href: ./how-to/deploy-policy-remediation.md
+        - name: Azure Sentinel tümleştirmesi
+          href: ./how-to/manage-sentinel-workspaces.md
 - name: Başvuru
   items:
     - name: Azure CLI’si

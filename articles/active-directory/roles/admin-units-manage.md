@@ -14,12 +14,12 @@ ms.author: rolyon
 ms.reviewer: anandy
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 44faaa6f05a325c2c64040938a1c9d0eb3e864e7
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 0706fad1e5340625c32eab691ac3e4d58eeafc9f
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100574164"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103012130"
 ---
 # <a name="manage-administrative-units-in-azure-active-directory"></a>Azure Active Directory Yönetim birimlerini yönetme
 
@@ -69,10 +69,15 @@ Gerektiğinde, tırnak işaretleri içine alınmış değerleri değiştirebilir
 
 ### <a name="use-microsoft-graph"></a>Microsoft Graph kullan
 
+İstek
+
 ```http
-Http Request
 POST /administrativeUnits
-Request body
+```
+
+Gövde
+
+```http
 {
   "displayName": "North America Operations",
   "description": "North America Operations administration"
@@ -94,18 +99,23 @@ Azure AD 'de, artık yönetici rolleri için bir kapsam birimi olarak ihtiyacın
 ### <a name="use-powershell"></a>PowerShell kullanma
 
 ```powershell
-$delau = Get-AzureADMSAdministrativeUnit -Filter "displayname eq 'DeleteMe Admin Unit'"
-Remove-AzureADMSAdministrativeUnit -ObjectId $delau.ObjectId
+$adminUnitObj = Get-AzureADMSAdministrativeUnit -Filter "displayname eq 'DeleteMe Admin Unit'"
+Remove-AzureADMSAdministrativeUnit -ObjectId $adminUnitObj.ObjectId
 ```
 
 Belirli bir ortam için gereken şekilde, tırnak işaretleri içine alınmış değerleri değiştirebilirsiniz.
 
 ### <a name="use-the-graph-api"></a>Graph API’sini kullanma
 
+İstek
+
 ```http
-HTTP request
-DELETE /administrativeUnits/{Admin id}
-Request body
+DELETE /administrativeUnits/{admin-unit-id}
+```
+
+Gövde
+
+```http
 {}
 ```
 

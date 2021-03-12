@@ -1,31 +1,26 @@
 ---
-title: Azure AD Uygulama Ara Sunucusu için ağ topolojisi konuları
-description: Azure AD Uygulama Ara Sunucusu kullanırken ağ topolojisi konularını ele alır.
+title: Azure Active Directory Uygulama Ara Sunucusu için ağ topolojisi konuları
+description: Azure Active Directory Uygulama Ara Sunucusu kullanırken ağ topolojisi konularını ele alır.
 services: active-directory
-documentationcenter: ''
 author: kenwith
 manager: daveba
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/22/2019
+ms.date: 02/22/2021
 ms.author: kenwith
-ms.reviewer: harshja
-ms.custom: it-pro
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: d67505e7112c41b21b2ae5e8acc834ff047a470d
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.reviewer: japere
+ms.openlocfilehash: bbab5463f0d022cb9bf155c7d33e2d81c8bdd448
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99254814"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103199700"
 ---
-# <a name="network-topology-considerations-when-using-azure-active-directory-application-proxy"></a>Azure Active Directory Uygulama Ara Sunucusu kullanırken ağ topolojisi konuları
+# <a name="optimize-traffic-flow-with-azure-active-directory-application-proxy"></a>Trafik akışını Azure Active Directory Uygulama Ara Sunucusu iyileştirin
 
-Bu makalede, uygulamalarınızı uzaktan yayımlamak ve bunlara erişmek için Azure Active Directory (Azure AD) uygulama proxy 'Si kullanılırken ağ topolojisi konuları açıklanmaktadır.
+Bu makalede, uygulamalarınızı uzaktan yayımlamak ve bunlara erişmek için Azure Active Directory (Azure AD) uygulama proxy 'Si kullanılırken trafik akışını ve ağ topolojisi ile ilgili önemli noktaların nasıl iyileştirileceği açıklanır.
 
 ## <a name="traffic-flow"></a>Trafik akışı
 
@@ -35,13 +30,32 @@ Bir uygulama Azure AD Uygulama Ara Sunucusu aracılığıyla yayımlandığında
 1. Uygulama proxy 'si hizmeti, uygulama proxy 'Si bağlayıcısına bağlanır
 1. Uygulama proxy Bağlayıcısı, hedef uygulamaya bağlanır
 
-![Kullanıcıdan hedef uygulamaya trafik akışını gösteren diyagram](./media/application-proxy-network-topology/application-proxy-three-hops.png)
+:::image type="content" source="./media/application-proxy-network-topology/application-proxy-three-hops.png" alt-text="Kullanıcıdan hedef uygulamaya trafik akışını gösteren diyagram." lightbox="./media/application-proxy-network-topology/application-proxy-three-hops.png":::
 
-## <a name="tenant-location-and-application-proxy-service"></a>Kiracı konumu ve uygulama proxy hizmeti
+## <a name="optimize-connector-groups-to-use-closest-application-proxy-cloud-service-preview"></a>En yakın uygulama proxy 'Si bulut hizmetini kullanmak için bağlayıcı gruplarını iyileştirin (Önizleme)
 
-Bir Azure AD kiracısına kaydolduğunuzda, kiracınızın bölgesi belirttiğiniz ülke/bölge tarafından belirlenir. Uygulama proxy 'Si etkinleştirdiğinizde, kiracınız için uygulama proxy 'Si hizmet örnekleri, Azure AD kiracınızla aynı bölgede veya en yakın bölgede oluşturulur.
+Bir Azure AD kiracısına kaydolduğunuzda, kiracınızın bölgesi belirttiğiniz ülke/bölge tarafından belirlenir. Uygulama proxy 'Sini etkinleştirdiğinizde, kiracınız için **varsayılan** uygulama proxy 'si bulut hizmeti örnekleri, Azure AD kiracınızla aynı bölgede veya en yakın bölgede seçilir.
 
-Örneğin, Azure AD kiracınızın ülkesi veya Bölgesi Birleşik Krallık ise, tüm uygulama ara sunucu bağlayıcıları Avrupa veri merkezlerinde hizmet örnekleri kullanır. Kullanıcılarınız yayımlanmış uygulamalara erişirken, trafiği bu konumdaki uygulama proxy 'Si hizmet örneklerinden geçer.
+Örneğin, Azure AD kiracınızın ülkesi veya Bölgesi Birleşik Krallık ise, **varsayılan** olarak tüm uygulama proxy Bağlayıcılarınız Avrupa veri merkezlerinde hizmet örnekleri kullanmak üzere atanır. Kullanıcılarınız yayımlanmış uygulamalara erişirken, trafiği bu konumdaki uygulama proxy 'Si bulut hizmeti örneklerinden geçer.
+
+Varsayılan bölgenizde farklı olan bölgelerde bağlayıcılar yüklüyse, bu uygulamalara erişim performansını artırmak için bağlayıcı grubunuzun en iyi hale getirildiği bölgeyi değiştirmek faydalı olabilir. Bağlayıcı grubu için bir bölge belirtildiğinde, belirtilen bölgedeki uygulama proxy 'Si bulut hizmetlerine bağlanır.
+
+Trafik akışını iyileştirmek ve bağlayıcı grubuna gecikme süresini azaltmak için bağlayıcı grubunu en yakın bölgeye atayın. Bir bölge atamak için:
+
+1. Uygulama proxy 'Si kullanan dizinin uygulama Yöneticisi olarak [Azure Portal](https://portal.azure.com/) oturum açın. Örneğin, kiracı etki alanı contoso.com ise yönetici admin@contoso.com ya da bu etki alanında başka bir yönetici diğer adı olmalıdır.
+1. Sağ üst köşedeki Kullanıcı adınızı seçin. Uygulama proxy 'Si kullanan bir dizine oturum açtığınızdan emin olun. Dizinleri değiştirmeniz gerekiyorsa, **dizini** Değiştir ' i seçin ve uygulama proxy 'si kullanan bir dizin seçin.
+1. Sol gezinti panelinde **Azure Active Directory**' yi seçin.
+1. **Yönet** altında **uygulama proxy 'si**' ni seçin.
+1. **Yeni bağlayıcı grubu**' nu seçin, bağlayıcı grubu Için bir **ad** sağlayın.
+1. Ardından, **Gelişmiş ayarlar** ' ın altında, belirli bir bölge için iyileştirin ' in altındaki açılan seçimi seçin ve bağlayıcılara en yakın bölgeyi seçin.
+1. **Oluştur**’u seçin.
+    
+    :::image type="content" source="./media/application-proxy-network-topology/geo-routing.png" alt-text="Yeni bir bağlayıcı grubu yapılandırın." lightbox="./media/application-proxy-network-topology/geo-routing.png":::
+
+1. Yeni bağlayıcı grubu oluşturulduktan sonra, bu bağlayıcı grubuna atanacak bağlayıcıları seçebilirsiniz. 
+   - Bağlayıcıları yalnızca varsayılan bölgeyi kullanan bir bağlayıcı grubununununbağlayıcı grubunuza taşıyabilirsiniz. En iyi yaklaşım, "varsayılan gruba" yerleştirilmiş bağlayıcılarınız ile her zaman başlamak ve uygun bağlayıcı grubuna taşımadır.
+   - Bir bağlayıcı grubunun bölgesini, kendisine atanmış bir **bağlayıcı yoksa veya** kendisine atanan uygulamalar yoksa değiştirebilirsiniz.
+1. Ardından bağlayıcı grubunu uygulamalarınıza atayın. Uygulamalara erişirken, trafik artık bağlayıcı grubunun en iyi duruma getirildiği bölgedeki uygulama proxy 'Si bulut hizmetine gitmelidir.
 
 ## <a name="considerations-for-reducing-latency"></a>Gecikme süresini azaltma konuları
 
@@ -96,7 +110,7 @@ Azure ile kurumsal ağınız arasında özel eşleme ile ayrılmış bir VPN vey
 
 Trafik adanmış bir bağlantı üzerinden akdığı için gecikme süresi aşılmış değildir. Ayrıca bağlayıcı, Azure AD kiracı konumunuza yakın bir Azure veri merkezinde yüklü olduğundan, geliştirilmiş uygulama proxy 'Si hizmetten bağlayıcıya gecikme süresi de alırsınız.
 
-![Bir Azure veri merkezinde yüklü bağlayıcıyı gösteren diyagram](./media/application-proxy-network-topology/application-proxy-expressroute-private.png)
+:::image type="content" source="./media/application-proxy-network-topology/application-proxy-expressroute-private.png" alt-text="Bir Azure veri merkezinde yüklü bağlayıcıyı gösteren diyagram" lightbox="./media/application-proxy-network-topology/application-proxy-expressroute-private.png":::
 
 ### <a name="other-approaches"></a>Diğer yaklaşımlar
 
@@ -124,7 +138,7 @@ Bu senaryolarda, her bağlantıyı bir "atlama" olarak çağırıyoruz ve daha k
 
 Bu basit bir modeldir. Bağlayıcıyı uygulamanın yanına yerleştirerek atlama 3 ' ü iyileştirebilirsiniz. Bağlayıcı genellikle uygulamaya ve veri merkezine KCD işlemleri gerçekleştirmeye yönelik bir görüş satırı ile yüklendiği için bu da doğal bir seçimdir.
 
-![Kullanıcıları, proxy, bağlayıcıyı ve uygulamayı gösteren diyagram BIZIMLE](./media/application-proxy-network-topology/application-proxy-pattern1.png)
+:::image type="content" source="./media/application-proxy-network-topology/application-proxy-pattern1.png" alt-text="Kullanıcıları, proxy, bağlayıcıyı ve uygulamayı gösteren diyagram, bızım için de kullanılır." lightbox="./media/application-proxy-network-topology/application-proxy-pattern1.png":::
 
 ### <a name="use-case-2"></a>Kullanım durumu 2
 
@@ -134,7 +148,7 @@ Bu basit bir modeldir. Bağlayıcıyı uygulamanın yanına yerleştirerek atlam
 
 Daha sonra, bağlayıcıyı uygulamanın yanına yerleştirdiğiniz atlama 3 ' ü optimize etmek de yaygın bir modeldir. Atlama 3 genellikle aynı bölgedeyse pahalı değildir. Ancak, 1. atlama, kullanıcının olduğu yere bağlı olarak daha pahalı olabilir, çünkü dünyanın içindeki kullanıcılar, ABD 'deki uygulama proxy örneğine erişebilmelidir. Tüm proxy çözümünün, kullanıcılar tarafından genel olarak yayılmakta olduğu benzer özelliklere sahip olduğunu belirtmekte de dikkat edin.
 
-![Kullanıcılar Global olarak yayılırlar, ancak diğer her şey ABD 'de](./media/application-proxy-network-topology/application-proxy-pattern2.png)
+:::image type="content" source="./media/application-proxy-network-topology/application-proxy-pattern2.png" alt-text="Kullanıcılar Global olarak yayılırlar, ancak diğer her şey ABD 'de" lightbox="./media/application-proxy-network-topology/application-proxy-pattern2.png":::
 
 ### <a name="use-case-3"></a>Kullanım durumu 3
 
@@ -146,7 +160,7 @@ Daha sonra, bağlayıcıyı uygulamanın yanına yerleştirdiğiniz atlama 3 ' �
 
 ExpressRoute bağlantısı Microsoft eşlemesi kullanıyorsa, proxy ve bağlayıcı arasındaki trafik o bağlantının üzerinden akar. Atlama 2 ' nin en iyi duruma getirilmiş gecikmesi.
 
-![Proxy ve bağlayıcı arasında ExpressRoute gösteren diyagram](./media/application-proxy-network-topology/application-proxy-pattern3.png)
+:::image type="content" source="./media/application-proxy-network-topology/application-proxy-pattern3.png" alt-text="Proxy ve bağlayıcı arasında ExpressRoute gösteren diyagram" lightbox="./media/application-proxy-network-topology/application-proxy-pattern3.png":::
 
 ### <a name="use-case-4"></a>Kullanım durumu 4
 
@@ -158,19 +172,25 @@ Bağlayıcıyı, ExpressRoute özel eşlemesi aracılığıyla kurumsal ağa ba�
 
 Bağlayıcı, Azure veri merkezinde yer alabilir. Bağlayıcının uygulama ve veri merkezinde özel ağ aracılığıyla hala bir görüş satırı olduğundan, atlama 3 en iyi şekilde kalır. Ayrıca, atlama 2 daha fazla iyileştirilmiştir.
 
-![Azure veri merkezinde bağlayıcı, bağlayıcı ve uygulama arasında ExpressRoute](./media/application-proxy-network-topology/application-proxy-pattern4.png)
+:::image type="content" source="./media/application-proxy-network-topology/application-proxy-pattern4.png" alt-text="Azure veri merkezinde bağlayıcı, bağlayıcı ve uygulama arasında ExpressRoute" lightbox="./media/application-proxy-network-topology/application-proxy-pattern4.png":::
 
 ### <a name="use-case-5"></a>Kullanım durumu 5
 
-**Senaryo:** Uygulama, uygulama proxy 'Si örneği ve ABD 'deki çoğu kullanıcı ile Avrupa 'daki bir kuruluşun ağında bulunur.
+**Senaryo:** Uygulama, Avrupa 'daki bir kuruluşun ağında, Avrupa 'daki çoğu kullanıcı ile varsayılan kiracı bölgesi ABD
 
-**Öneri:** Bağlayıcıyı uygulamanın yanına yerleştirin. ABD kullanıcıları aynı bölgede yer alan bir uygulama proxy örneğine eriştiğinden, atlama 1 çok pahalı değildir. Atlama 3 en iyi duruma getirilmiştir. Atlama 2 ' i iyileştirmek için ExpressRoute kullanmayı düşünün.
+**Öneri:** Bağlayıcıyı uygulamanın yanına yerleştirin. Avrupa uygulama proxy 'Si hizmet örnekleri kullanmak için en iyi duruma getirilmesi için bağlayıcı grubunu güncelleştirin. Adımlar için bkz. [en yakın uygulama proxy 'si bulut hizmetini kullanmak için bağlayıcı gruplarını iyileştirin](application-proxy-network-topology#Optimize connector-groups-to-use-closest-Application-Proxy-cloud-service).
 
-![Diyagram, Avrupa 'daki ABD, bağlayıcı ve uygulamadaki kullanıcıları ve proxy 'yi gösterir](./media/application-proxy-network-topology/application-proxy-pattern5b.png)
+Avrupa kullanıcıları aynı bölgede yer alan bir uygulama proxy örneğine eriştiği için, atlama 1 pahalı değildir. Atlama 3 en iyi duruma getirilmiştir. Atlama 2 ' i iyileştirmek için ExpressRoute kullanmayı düşünün.
 
-Ayrıca, bu durumda başka bir değişken kullanmayı da düşünebilirsiniz. Kuruluştaki çoğu kullanıcı ABD 'de yer alıyorsa, ağınız da bıze genişlemektedir. Bağlayıcıyı ABD 'ye yerleştirin ve şirket içi kurumsal ağ hattını Avrupa 'daki uygulamaya kullanın. Bu şekilde atlama 2 ve 3 en iyi duruma getirilmiştir.
+### <a name="use-case-6"></a>Kullanım durumu 6
 
-![Diyagramda, Avrupa 'daki uygulamalar, ABD 'deki kullanıcılar, proxy ve bağlayıcı gösterilmektedir](./media/application-proxy-network-topology/application-proxy-pattern5c.png)
+**Senaryo:** Uygulama, Avrupa 'daki bir kuruluşun ağında, ABD 'deki çoğu kullanıcı ile varsayılan kiracı bölgesi bızım için.
+
+**Öneri:** Bağlayıcıyı uygulamanın yanına yerleştirin. Avrupa uygulama proxy 'Si hizmet örnekleri kullanmak için en iyi duruma getirilmesi için bağlayıcı grubunu güncelleştirin. Adımlar için bkz. [en yakın uygulama proxy 'si bulut hizmetini kullanmak için bağlayıcı gruplarını iyileştirin](/application-proxy-network-topology#Optimize connector-groups-to-use-closest-Application-Proxy-cloud-service). Tüm ABD kullanıcıları Avrupa 'daki uygulama proxy 'Si örneğine erişmesi gerektiğinden atlama 1 daha pahalı olabilir.
+
+Ayrıca, bu durumda başka bir değişken kullanmayı da düşünebilirsiniz. Kuruluştaki çoğu kullanıcı ABD 'de yer alıyorsa, ağınız da bıze genişlemektedir. Bağlayıcıyı bıze yerleştirin, bağlayıcı gruplarınız için varsayılan ABD bölgesini kullanmaya devam edin ve şirket içi kurumsal ağ hattını Avrupa 'daki uygulamaya kullanın. Bu şekilde atlama 2 ve 3 en iyi duruma getirilmiştir.
+
+:::image type="content" source="./media/application-proxy-network-topology/application-proxy-pattern5c.png" alt-text="Diyagramda, Avrupa 'daki ABD 'deki kullanıcılar, proxy ve bağlayıcı gösterilmektedir." lightbox="./media/application-proxy-network-topology/application-proxy-pattern5c.png":::
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

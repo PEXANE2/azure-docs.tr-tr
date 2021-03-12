@@ -12,26 +12,22 @@ ms.workload: identity
 ms.date: 02/11/2020
 ms.author: nacanuma
 ms.custom: aaddev
-ms.openlocfilehash: 5cbb576a7fcfb2daf492a149130aa7c99fe10ac5
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: fe73832ec5eaee62a2dc2d397c12f82334e2efd8
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98753611"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103010720"
 ---
 # <a name="single-page-application-code-configuration"></a>Tek sayfalı uygulama: kod yapılandırma
 
 Tek sayfalı uygulamanız (SPA) için kodu yapılandırmayı öğrenin.
 
-## <a name="msal-libraries-for-spas-and-supported-authentication-flows"></a>Maça ve desteklenen kimlik doğrulama akışları için MSAL kitaplıkları
+## <a name="microsoft-libraries-supporting-single-page-apps"></a>Tek sayfalı uygulamaları destekleyen Microsoft kitaplıkları 
 
-Microsoft Identity platformu, sektörde önerilen güvenlik uygulamalarını kullanarak PKCE ile örtük akış ve yetkilendirme kodu akışını desteklemek için JavaScript (MSAL.js) için aşağıdaki Microsoft kimlik doğrulama kitaplığını sağlar:
+Aşağıdaki Microsoft kitaplıkları tek sayfalı uygulamaları destekler:
 
-| MSAL kitaplığı | Akış | Açıklama |
-|--------------|------|-------------|
-| ![MSAL.js](media/sample-v2-code/logo_js.png) <br/> [MSAL.js (2. x)](https://github.com/AzureAD/microsoft-authentication-library-for-js/tree/dev/lib/msal-browser) | Yetkilendirme kodu akışı (PKCE) | JavaScript veya SPA çerçeveleri aracılığıyla oluşturulmuş herhangi bir istemci tarafı Web uygulamasında kullanmak için, angular, Vue.js ve React.js gibi basit JavaScript kitaplığı. |
-| ![MSAL.js](media/sample-v2-code/logo_js.png) <br/> [MSAL.js (1. x)](https://github.com/AzureAD/microsoft-authentication-library-for-js/tree/dev/lib/msal-core) | Örtük akış | JavaScript veya SPA çerçeveleri aracılığıyla oluşturulmuş herhangi bir istemci tarafı Web uygulamasında kullanmak için, angular, Vue.js ve React.js gibi basit JavaScript kitaplığı. |
-| ![MSAL angular](media/sample-v2-code/logo_angular.png) <br/> [MSAL angular](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-angular/README.md) | Örtük akış | Angular çerçevesi aracılığıyla oluşturulan tek sayfalı uygulamalarda kullanımı basitleştirecek çekirdek MSAL.js kitaplığı sarmalayıcısı. |
+[!INCLUDE [active-directory-develop-libraries-spa](../../../includes/active-directory-develop-libraries-spa.md)]
 
 ## <a name="application-code-configuration"></a>Uygulama kodu yapılandırması
 

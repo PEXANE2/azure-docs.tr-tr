@@ -11,19 +11,16 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 02/23/2021
 ms.custom: seodec18, has-adal-ref
-ms.openlocfilehash: 02d9edd555566f86fd8bb09cf4acef4956ae53e4
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 88fd575d40cc31f12f052158bda0aed9a5335555
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102041221"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103009275"
 ---
 # <a name="authentication-and-authorization-for-azure-time-series-insights-api"></a>Azure Time Series Insights API’si için kimlik doğrulaması ve yetkilendirme
 
-İş gereksinimlerinize bağlı olarak, çözümünüz Azure Time Series Insights ortamınızın [API 'leriyle](/rest/api/time-series-insights/reference-data-access-overview)etkileşim kurmak için kullandığınız bir veya daha fazla istemci uygulaması içerebilir. Azure Time Series Insights, [OAUTH 2,0 tabanlı Azure AD güvenlik belirteçlerini](../active-directory/develop/security-tokens.md#json-web-tokens-and-claims)kullanarak kimlik doğrulaması gerçekleştirir. İstemcilerinizdeki kimlik doğrulaması için doğru izinlere sahip bir taşıyıcı belirteç almanız ve API çağrılarınızla birlikte geçireceğiz. Bu belgede, bir taşıyıcı belirteci almak ve kimlik doğrulamak için kullanabileceğiniz çeşitli kimlik bilgileri alma yöntemleri açıklanmaktadır.
-
-
-  yeni Azure Active Directory dikey penceresini kullanarak Azure Active Directory bir uygulamayı kaydetme. Azure Active Directory kayıtlı uygulamalar, kullanıcıların kimlik doğrulaması yapmasını ve bir Azure Time Series Insights ortamıyla ilişkili Azure zaman serisi Insight API 'sini kullanma yetkisine sahip olmasını sağlar.
+İş gereksinimlerinize bağlı olarak, çözümünüz Azure Time Series Insights ortamınızın [API 'leriyle](/rest/api/time-series-insights/reference-data-access-overview)etkileşim kurmak için kullandığınız bir veya daha fazla istemci uygulaması içerebilir. Azure Time Series Insights, [OAUTH 2,0 tabanlı Azure AD güvenlik belirteçlerini](../active-directory/develop/security-tokens.md#json-web-tokens-and-claims)kullanarak kimlik doğrulaması gerçekleştirir. İstemcilerinizdeki kimlik doğrulaması için doğru izinlere sahip bir taşıyıcı belirteç almanız ve API çağrılarınızla birlikte geçireceğiz. Bu belge, yönetilen kimlik ve Azure Active Directory uygulama kaydı dahil olmak üzere bir taşıyıcı belirteci almak için kullanabileceğiniz kimlik bilgilerini almak için çeşitli yöntemler açıklar.
 
 ## <a name="managed-identities"></a>Yönetilen kimlikler
 
@@ -108,10 +105,7 @@ Yönetilen kimliğiniz veya uygulama kaydınız sağlandıktan ve bir rol atand�
 
 Azure App Service veya Işlevlerden erişirken, [Azure kaynakları için belirteçlerin alınması](../app-service/overview-managed-identity.md)bölümündeki yönergeleri izleyin.
 
-> [!TIP]
-> .NET uygulamaları ve işlevleri için, yönetilen bir kimlikle çalışmanın en kolay yolu, .NET için [Azure Identity Client Library](/dotnet/api/overview/azure/identity-readme) kullanmaktır. 
-
-.NET uygulamaları ve işlevleri için, yönetilen bir kimlikle çalışmanın en kolay yolu Microsoft. Azure. Services. AppAuthentication paketi aracılığıyla yapılır. Bu paket, basitliği ve güvenlik avantajları nedeniyle popüler. Geliştiriciler bir kez kod yazabilir ve istemci kitaplığı 'nın, geliştirici hesabı kullanan bir geliştirici iş istasyonunda veya yönetilen hizmet kimliği kullanılarak Azure 'da dağıtılan bir uygulama ortamına göre kimlik doğrulaması yapıp yapmadığını belirlemesine izin verebilir. Öncül AppAuthentication kitaplığındaki geçiş kılavuzu için [Appauthentication ' i Azure 'a okuyun. kimlik geçiş kılavuzu](/dotnet/api/overview/azure/app-auth-migration).
+.NET uygulamaları ve işlevleri için, yönetilen bir kimlikle çalışmanın en kolay yolu, .NET için [Azure Identity Client Library](/dotnet/api/overview/azure/identity-readme) kullanmaktır. Bu istemci kitaplığı, basitliği ve güvenlik avantajları nedeniyle popüler. Geliştiriciler bir kez kod yazabilir ve istemci kitaplığı 'nın, geliştirici hesabı kullanan bir geliştirici iş istasyonunda veya yönetilen hizmet kimliği kullanılarak Azure 'da dağıtılan bir uygulama ortamına göre kimlik doğrulaması yapıp yapmadığını belirlemesine izin verebilir. Öncül AppAuthentication kitaplığındaki geçiş kılavuzu için [Appauthentication ' i Azure 'a okuyun. kimlik geçiş kılavuzu](/dotnet/api/overview/azure/app-auth-migration).
 
 C# kullanarak Azure Time Series Insights için bir belirteç isteyin ve .NET için Azure Identity istemci kitaplığı:
 
@@ -154,7 +148,7 @@ Bu bölümde, Azure Time Series Insights gen1 ve Gen2 API 'Lerinde sorgu yapmak 
 
 Gerekli istek üstbilgileri aşağıda açıklanmıştır.
 
-| Gerekli istek üst bilgisi | Açıklama |
+| Gerekli istek üst bilgisi | Description |
 | --- | --- |
 | Yetkilendirme | Azure Time Series Insights kimlik doğrulaması yapmak için, [Yetkilendirme üst bilgisinde](/rest/api/apimanagement/2019-12-01/authorizationserver/createorupdate)geçerli bir OAuth 2,0 taşıyıcı belirtecinin geçirilmesi gerekir. |
 
@@ -163,7 +157,7 @@ Gerekli istek üstbilgileri aşağıda açıklanmıştır.
 
 İsteğe bağlı istek üstbilgileri aşağıda açıklanmıştır.
 
-| İsteğe bağlı istek üst bilgisi | Açıklama |
+| İsteğe bağlı istek üst bilgisi | Description |
 | --- | --- |
 | İçerik türü | yalnızca `application/json` desteklenir. |
 | x-MS-Client-Request-ID | İstemci istek KIMLIĞI. Hizmet bu değeri kaydeder. Hizmetin işlemleri hizmetler arasında izlemesini sağlar. |
@@ -172,7 +166,7 @@ Gerekli istek üstbilgileri aşağıda açıklanmıştır.
 
 İsteğe bağlı ancak önerilen yanıt üstbilgileri aşağıda açıklanmıştır.
 
-| Yanıt üst bilgisi | Açıklama |
+| Yanıt üst bilgisi | Description |
 | --- | --- |
 | İçerik türü | Yalnızca `application/json` desteklenir. |
 | x-MS-istek kimliği | Sunucu tarafından oluşturulan istek KIMLIĞI. , Bir isteği araştırmak üzere Microsoft 'a başvurmak için kullanılabilir. |

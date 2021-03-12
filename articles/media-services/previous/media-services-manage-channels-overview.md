@@ -3,7 +3,7 @@ title: Azure Media Services kullanarak canlı akışa genel bakış | Microsoft 
 description: Bu makalede, Microsoft Azure Media Services kullanarak canlı akışa genel bakış sunulmaktadır.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.assetid: fb63502e-914d-4c1f-853c-4a7831bb08e8
@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 03/18/2019
-ms.author: juliako
-ms.openlocfilehash: 77c68b3c17b8815c4858e1d73251975a7e00e6eb
-ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
+ms.date: 03/10/2021
+ms.author: inhenkel
+ms.openlocfilehash: 195333f5f06145a1dfa84f0de2c5984190e3d7ca
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98695713"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103014834"
 ---
 # <a name="overview-of-live-streaming-using-media-services"></a>Media Services kullanarak canlı akışa genel bakış
 
@@ -74,19 +74,19 @@ Media Services 2,10 sürümü ile başlayarak, bir kanal oluşturduğunuzda, kan
 
 Aşağıdaki tabloda, Media Services desteklenen iki kanal türünü Karşılaştırma Kılavuzu sunulmaktadır
 
-| Öne çıkan özelliği | Doğrudan geçiş kanalı | Standart Kanal |
+| Özellik | Doğrudan geçiş kanalı | Standart Kanal |
 | --- | --- | --- |
-| Tek bit hızı girişi, bulutta birden çok bit hızında kodlanır |Hayır |Evet |
+| Tek bit hızı girişi, bulutta birden çok bit hızında kodlanır |Hayır |Yes |
 | Maksimum çözünürlük, katman sayısı |1080p, 8 katman, 60 + fps |720p, 6 katman, 30 fps |
 | Giriş protokolleri |RTMP, Kesintisiz Akış |RTMP, Kesintisiz Akış |
 | Fiyat |[Fiyatlandırma sayfasına](https://azure.microsoft.com/pricing/details/media-services/) bakın ve "canlı video" sekmesine tıklayın |[Fiyatlandırma sayfasına](https://azure.microsoft.com/pricing/details/media-services/) bakın |
 | En fazla çalışma süresi |7x24 |8 saat |
-| SLA ekleme desteği |Hayır |Evet |
-| Ad sinyali için destek |Hayır |Evet |
-| Geçiş CEA 608/708 açıklamalı alt yazılar |Evet |Evet |
-| Tekdüzen olmayan giriş GOPs desteği |Evet |Hayır – giriş sabit 2sec GOPs olmalıdır |
-| Değişken çerçeve hızı girişi desteği |Evet |Hayır – giriş sabit kare oranı olmalıdır.<br/>Küçük çeşitlemeler, örneğin, yüksek hareket sahneleri sırasında toleranslı olarak dağıtılır. Ancak kodlayıcı 10 kare/sn 'ye bırakamıyor. |
-| Giriş akışı kaybedildiği zaman kanalların otomatik olarak kaybolması |Hayır |12 saat sonra, çalışan bir program yoksa |
+| SLA ekleme desteği |Hayır |Yes |
+| Ad sinyali için destek |Hayır |Yes |
+| Geçiş CEA 608/708 açıklamalı alt yazılar |Yes |Yes |
+| Tekdüzen olmayan giriş GOPs desteği |Yes |Hayır – giriş sabit 2sec GOPs olmalıdır |
+| Değişken çerçeve hızı girişi desteği |Yes |Hayır – giriş sabit kare oranı olmalıdır.<br/>Küçük çeşitlemeler, örneğin, yüksek hareket sahneleri sırasında toleranslı olarak dağıtılır. Ancak kodlayıcı 10 kare/sn 'ye bırakamıyor. |
+| Giriş akışı kaybedildiği zaman kanalların otomatik olarak kaybolması |No |12 saat sonra, çalışan bir program yoksa |
 
 ## <a name="working-with-channels-that-receive-multi-bitrate-live-stream-from-on-premises-encoders-pass-through"></a>Şirket içi kodlayıcılardan çoklu bit hızlı canlı akış alan Kanallar ile çalışma (doğrudan geçiş)
 
@@ -155,7 +155,7 @@ Aşağıdaki tabloda, kanal durumlarının faturalandırma moduna nasıl eşlenm
 | Başlatılıyor |Başlatılıyor |Hayır (geçici durum) |
 | Çalışma |Ready (çalışan program yok)<br/>veya<br/>Akış (en az bir çalışan program) |EVET |
 | Durduruluyor |Durduruluyor |Hayır (geçici durum) |
-| Durduruldu |Durduruldu |Hayır |
+| Durduruldu |Durduruldu |No |
 
 ## <a name="media-services-learning-paths"></a>Media Services’i öğrenme yolları
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]

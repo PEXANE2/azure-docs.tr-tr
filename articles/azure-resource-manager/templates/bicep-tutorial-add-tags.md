@@ -2,16 +2,16 @@
 title: Öğretici-Azure Resource Manager Bıcep dosyasındaki kaynaklara etiket ekleme
 description: Bicep dosyalarınıza dağıttığınız kaynaklara Etiketler ekleyin. Etiketler, kaynakları mantıksal olarak düzenlemenizi sağlar.
 author: mumian
-ms.date: 03/01/2021
+ms.date: 03/10/2021
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: ''
-ms.openlocfilehash: 05bb68609705ac4c13ad77d2c74db7c105ba23fb
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: ea5e078eb692d002b3f86cd43663dd042d692611
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101748271"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102632616"
 ---
 # <a name="tutorial-add-tags-in-azure-resource-manager-bicep-files"></a>Öğretici: Azure Resource Manager bicep dosyalarına etiket ekleme
 
@@ -37,7 +37,7 @@ Bu kaynakları dağıttıktan sonra, maliyetleri izlemeniz ve bir kategoriye ait
 
 Kaynakların kullanım amacını daha kolay belirlemek için değerler ekleyebilirsiniz. Örneğin, ortamı ve projeyi listelemek için Etiketler ekleyebilirsiniz. Bir maliyet merkezini veya kaynağa sahip olan takımı tanımlayan etiketler ekleyebilirsiniz. Kuruluşunuz için anlamlı olan tüm değerleri kullanabilirsiniz.
 
-Aşağıdaki örnek, bicep dosyasındaki değişiklikleri vurgular. Tüm dosyayı kopyalayın ve Bıcep dosyanızı içeriğiyle değiştirin.
+Aşağıdaki örnek, Bıcep dosyasındaki değişiklikleri gösterir. Tüm dosyayı kopyalayın ve Bıcep dosyanızı içeriğiyle değiştirin.
 
 :::code language="bicep" source="~/resourcemanager-templates/get-started-with-templates/add-tags/azuredeploy.bicep" range="1-81" highlight="27-30,38,51,71":::
 
