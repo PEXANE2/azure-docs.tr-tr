@@ -6,14 +6,14 @@ ms.reviewer: adwise
 ms.service: cost-management-billing
 ms.subservice: common
 ms.topic: reference
-ms.date: 11/19/2020
+ms.date: 03/10/2021
 ms.author: banders
-ms.openlocfilehash: 93dda4fc3a152b0a07a95ff327c9ea619f25787c
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
-ms.translationtype: HT
+ms.openlocfilehash: 24fbf52c8fd0338537862a54e15e8a249541a701
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96355837"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102635799"
 ---
 # <a name="migrate-from-enterprise-reporting-to-azure-resource-manager-apis"></a>Kurumsal Raporlamadan Azure Resource Manager API’lerine geçiş
 
@@ -51,28 +51,7 @@ Azure Resource Manager API'lerini program aracılığıyla çağırmak için Hiz
 
 ### <a name="azure-billing-hierarchy-access"></a>Azure Faturalama Hiyerarşisi Erişimi
 
-Kurumsal Fatura Hesabınızın, Departmanlarınızın veya Kayıt Hesabınızın kapsamlarına Hizmet Sorumlusu izinleri atamak için [Faturalama İzinleri](/rest/api/billing/2019-10-01-preview/billingpermissions), [Faturalama Rolü Tanımları](/rest/api/billing/2019-10-01-preview/billingroledefinitions) ve [Faturalama Rolü Atamaları](/rest/api/billing/2019-10-01-preview/billingroleassignments) API'lerini kullanın.
-
-- Hizmet Sorumlusunun Fatura Hesabı veya Departman gibi belirli bir kapsam üzerinde zaten mevcut olan izinlerini belirlemek için Faturalama İzinleri API'lerini kullanın.
-- Hizmet Sorumlunuza atanabilecek kullanılabilir rolleri listelemek için Faturalama Rolü Tanımları API'lerini kullanın.
-  - Şu anda Hizmet Sorumlularına yalnızca Salt Okunur EA Yöneticisi ve Salt Okunur Departman Yöneticisi rolleri atanabilir.
-- Hizmet Sorumlunuza rol atamak için Faturalama Rolü Atamaları API'lerini kullanın.
-
-Aşağıdaki örnekte, Hizmet Sorumlusuna fatura hesabınız üzerinde erişim izni vermek için Rol Atamaları API'sinin nasıl çağrılacağı gösterilir. Bu tek seferlik izin yapılandırmalarını gerçekleştirmek için [PostMan](https://postman.com) kullanmanızı öneririz.
-
-```json
-POST https://management.azure.com/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/createBillingRoleAssignment?api-version=2019-10-01-preview
-```
-
-#### <a name="request-body"></a>İstek Gövdesi
-
-```json
-{
-  "principalId": "00000000-0000-0000-0000-000000000000",
-  "billingRoleDefinitionId": "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/providers/Microsoft.Billing/billingRoleDefinition/10000000-aaaa-bbbb-cccc-100000000000"
-}
-
-```
+Kurumsal faturalandırma hesabınız, departmanlar veya kayıt hesabı kapsamlarınızla hizmet sorumlusu izinleri atamak için bkz. [Azure Kurumsal Anlaşma hizmet sorumlusu adlarına rol atama](../manage/assign-roles-azure-service-principals.md).
 
 ### <a name="azure-role-based-access-control"></a>Azure rol tabanlı erişim denetimi
 

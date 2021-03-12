@@ -5,18 +5,18 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
 ms.date: 05/05/2020
-ms.openlocfilehash: 398324099f923a5141b172d61f9fd41a69dbf069
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 04ba7dc79deef2dbad12c3f65a324201d3e9f598
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95025302"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102612771"
 ---
 # <a name="tutorial-build-a-luis-app-to-determine-user-intentions"></a>Öğretici: Kullanıcı amaçları 'nı öğrenmek için bir LUSıS uygulaması derleme
 
 Bu öğreticide, bir kullanıcının, söylenişi (metin) temelinde bir amaç tahmin eden özel bir uygulama oluşturacaksınız.
 
-**Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:**
+**Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:**
 
 > [!div class="checklist"]
 > * Yeni uygulama oluşturma
@@ -51,7 +51,7 @@ Amaç, kullanıcının doğal dil metinden belirlenen amaç temelinde sınıflan
 
 Bir utterance sınıflandırmak için, amaç bu amaca göre sınıflandırılması gereken Kullanıcı arasları örneklerine ihtiyaç duyuyor.
 
-1. **Oluşturma** bölümünde, **amaçlar** sayfasında, yeni bir amaç oluşturmak için **+ Oluştur** ' u seçin. Yeni amaç adını girip bitti ' yi `OrderPizza` seçin. **Done**
+1. **Oluşturma** bölümünde, **amaçlar** sayfasında, yeni bir amaç oluşturmak için **+ Oluştur** ' u seçin. Yeni amaç adını girip bitti ' yi `OrderPizza` seçin. 
 
     `OrderPizza`Amaç, bir Kullanıcı bir pizza siparişi vermek istediğinde tahmin edilir.
 
@@ -193,7 +193,7 @@ JSON yanıtı döndürdükten sonra LUIS’in istekle işi biter. LUIS kullanıc
 * [Eğitme](luis-how-to-train.md)
 * [Yayımlama](luis-how-to-publish-app.md)
 * [LUSıS portalında test etme](luis-interactive-test.md)
-* [Azure bot](/azure/bot-service/?view=azure-bot-service-4.0)
+* [Azure bot](/azure/bot-service/)
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

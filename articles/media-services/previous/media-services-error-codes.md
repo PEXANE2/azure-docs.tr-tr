@@ -1,7 +1,7 @@
 ---
 title: Azure Media Services hata kodları | Microsoft Docs
 description: Media Services ' de desteklenmeyen eylemlere yönelik kimlik doğrulama belirteçleri süresi dolan sorunlara bağlı olarak hizmetten HTTP hata kodları alabilirsiniz. Bu makale, Azure Media Services V2 API hata kodlarına genel bir bakış sunar.
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 services: media-services
@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/18/2019
-ms.author: juliako
-ms.openlocfilehash: c30808a46b5cecfaf2e761b3f7a611020cd2cdfb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 03/10/2021
+ms.author: inhenkel
+ms.openlocfilehash: 10ade5c8f34d806ca5706ccaaf4b7ff2e05ba657
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89263686"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103013423"
 ---
 # <a name="azure-media-services-error-codes"></a>Azure Media Services hata kodları
 
@@ -125,5 +125,5 @@ Bu hatayı işlemek için üstel geri deneme mantığını kullanmanızı öneri
 ## <a name="next-steps"></a>Sonraki adımlar
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Geri bildirimde bulunma
+## <a name="provide-feedback"></a>Geribildirim gönderme
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]

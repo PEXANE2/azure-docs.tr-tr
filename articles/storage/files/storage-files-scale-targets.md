@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/12/2021
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: ffc5f49e357591b41a18ae15c5551c1f447095fb
-ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
+ms.openlocfilehash: aa24989103cca5bb7031a21ca106b93ada0c3904
+ms.sourcegitcommit: 6776f0a27e2000fb1acb34a8dddc67af01ac14ac
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102440318"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103149469"
 ---
 # <a name="azure-files-scalability-and-performance-targets"></a>Azure Dosyaları ölçeklenebilirlik ve performans hedefleri
 [Azure dosyaları](storage-files-introduction.md) , BULUTTA, SMB ve NFS dosya sistemi protokolleri aracılığıyla erişilebilen tam olarak yönetilen dosya paylaşımları sunar. Bu makalede, Azure dosyaları ve Azure Dosya Eşitleme için ölçeklenebilirlik ve performans hedefleri ele alınmaktadır.
@@ -89,10 +89,10 @@ Aşağıdaki tabloda Microsoft 'un test olan sınırları ve hangi hedeflerin sa
 | Eşitleme grubu başına bulut uç noktaları | 1 bulut uç noktası | Yes |
 | Eşitleme grubu başına sunucu uç noktaları | 100 sunucu uç noktaları | Yes |
 | Sunucu başına sunucu uç noktaları | 30 sunucu uç noktası | Yes |
-| Eşitleme grubu başına dosya sistemi nesneleri (dizinler ve dosyalar) | 100.000.000 nesneleri | Hayır |
+| Eşitleme grubu başına dosya sistemi nesneleri (dizinler ve dosyalar) | 100.000.000 nesneleri | No |
 | Bir dizindeki en fazla dosya sistemi nesnesi (Dizin ve dosya) sayısı | 5.000.000 nesneleri | Yes |
 | En fazla nesne (dizinler ve dosyalar) güvenlik tanımlayıcısı boyutu | 64 KiB | Yes |
-| Dosya boyutu | 100 GiB | Hayır |
+| Dosya boyutu | 100 GiB | No |
 | Katman oluşturulacak bir dosya için en küçük dosya boyutu | V9 ve daha yeni: dosya sistemi kümesi boyutuna (çift dosya sistemi kümesi boyutu) göre. Örneğin, dosya sistemi kümesi boyutu 4 KiB ise, en küçük dosya boyutu 8 kıb olacaktır.<br> V8 ve üzeri: 64 KiB  | Yes |
 
 > [!Note]  
@@ -138,9 +138,9 @@ Eşitleme, verileri Azure dosya paylaşımında karşıya yüklerken yerel dosya
 
 İlk eşitleme genellikle eşitleme grubu başına saniyede 20 dosyanın ilk karşıya yükleme oranıyla sınırlandırılır. Müşteriler, gün içinde zaman almak için aşağıdaki formül ile tüm verilerini Azure 'a yükleme süresini tahmin edebilir:  
 
-   **Eşitleme grubuna dosya yüklemek için geçen süre (gün cinsinden)/(bulut uç noktasındaki nesne sayısı)/(20 * 60 * 60 * 24)**
+   **Eşitleme grubuna dosya yüklemek için geçen süre (gün cinsinden)/(sunucu uç noktasındaki nesne sayısı)/(20 * 60 * 60 * 24)**
 
-Verilerinizi birden çok sunucu uç noktasına bölmek ve eşitleme grupları bu ilk verileri karşıya yüklemeyi hızlandırabilir. çünkü karşıya yükleme, birden fazla eşitleme grubu için saniyede 20 öğe hızında bir hızda paralel olarak yapılabilir. Bu nedenle, iki eşitleme grubu saniyede 40 öğe oranında Birleşik bir hızda çalışır. Toplam tamamlanma süresi, eşitleme grubu için en fazla dosya eşitlenecek süre tahmini olur
+Verilerinizi birden çok sunucu uç noktasına bölmek ve eşitleme grupları bu ilk verileri karşıya yüklemeyi hızlandırabilir. çünkü karşıya yükleme, birden fazla eşitleme grubu için saniyede 20 öğe hızında bir hızda paralel olarak yapılabilir. Bu nedenle, iki eşitleme grubu saniyede 40 öğe oranında Birleşik bir hızda çalışır. Toplam tamamlanma süresi, eşitleme grubu için en fazla dosya eşitlenecek süre tahmini olur.
 
 **Ad alanı indirme üretilen işi** Var olan bir eşitleme grubuna yeni bir sunucu uç noktası eklendiğinde Azure Dosya Eşitleme Aracısı, bulut uç noktasındaki dosya içeriğini indirmez. Önce tam ad alanını eşitler ve sonra, dosyaları tamamen veya bulut katmanlaması etkinse, sunucu uç noktasında ayarlanan bulut katmanlaması ilkesi için arka plan geri yüklemeyi tetikler.
 

@@ -11,12 +11,12 @@ ms.custom:
 ms.author: timlt
 author: timlt
 ms.date: 11/12/2019
-ms.openlocfilehash: 112039b9227d5ff34e68b6dc6643597f335fbdb5
-ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
+ms.openlocfilehash: caa61170504c3ee4b7162cc06db4df16d1232395
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99832241"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103014375"
 ---
 # <a name="tutorial-create-an-in-store-analytics-application-in-azure-iot-central"></a>Öğretici: Azure 'da bir mağaza Analytics uygulaması oluşturma IoT Central
 
@@ -228,8 +228,8 @@ Bu öğreticide, uygulamayı derlemek için aşağıdaki gerçek ve sanal cihaz 
 
 Gerçek bir Rigado ağ geçidini ve RuuviTag sensörleriyle bağlantı kurmak için aşağıdaki iki makalede bulunan adımları izleyin. İşiniz bittiğinde Bu öğreticiye geri dönün. Bu öğreticide zaten cihaz şablonları oluşturmuş olduğunuzdan, bunları aşağıdaki yönergeler kümesinde yeniden oluşturmanız gerekmez.
 
-- Bir Rigado ağ geçidini bağlamak için bkz. [Azure IoT Central uygulamanıza bir Rigado basamakla 500 bağlama](../core/howto-connect-rigado-cascade-500.md?toc=/azure/iot-central/retail/toc.json&bc=/azure/iot-central/retail/breadcrumb/toc.json).
-- RuuviTag sensörlerinden bağlantı kurmak için bkz. [Azure IoT Central uygulamanıza bir ruuvitag algılayıcısı bağlama](../core/howto-connect-ruuvi.md?toc=/azure/iot-central/retail/toc.json&bc=/azure/iot-central/retail/breadcrumb/toc.json). Gerekirse iki sanal algılayıcı oluşturmak için bu yönergeleri de kullanabilirsiniz.
+- Bir Rigado ağ geçidini bağlamak için bkz. [Azure IoT Central uygulamanıza bir Rigado basamakla 500 bağlama](../core/howto-connect-rigado-cascade-500.md).
+- RuuviTag sensörlerinden bağlantı kurmak için bkz. [Azure IoT Central uygulamanıza bir ruuvitag algılayıcısı bağlama](../core/howto-connect-ruuvi.md). Gerekirse iki sanal algılayıcı oluşturmak için bu yönergeleri de kullanabilirsiniz.
 
 ## <a name="add-rules-and-actions"></a>Kural ve eylem ekleme
 Koşulları izlemek için Azure IoT Central uygulamanızda sensörler kullanmanın bir parçası olarak, belirli koşullar karşılandığında eylemleri çalıştırmak için kurallar oluşturabilirsiniz. Bir kural bir cihaz şablonuyla ve bir veya daha fazla cihazla ilişkilendirilir ve cihaz telemetri veya olaylarına göre karşılanması gereken koşulları içerir. Bir kuralda bir veya daha fazla ilişkili eylem de vardır. Eylemler e-posta bildirimleri göndermeyi veya diğer hizmetlere veri göndermek için bir Web kancası eylemi tetiklemesini içerebilir. **Mağaza içi analiz-kullanıma alma** uygulama şablonu, uygulamadaki cihazlar için önceden tanımlanmış bazı kurallar içerir.

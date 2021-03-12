@@ -7,12 +7,12 @@ ms.topic: how-to
 author: mingshen-ms
 ms.author: mingshen
 ms.date: 10/20/2020
-ms.openlocfilehash: 2ef80d26336ddbe3c015dfcde0c5ed29b762f39b
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.openlocfilehash: 5c01b1965c38811e78909f27ca4ab65614bc7f0e
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94629725"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102629985"
 ---
 # <a name="how-to-create-a-virtual-machine-offer-on-azure-marketplace"></a>Azure Marketi 'nde sanal makine teklifi oluşturma
 
@@ -27,8 +27,8 @@ Henüz yapmadıysanız, [bir sanal makine teklifi planı](marketplace-virtual-ma
 ## <a name="create-a-new-offer"></a>Yeni teklif oluşturma
 
 1. [Iş Ortağı Merkezi](https://partner.microsoft.com/dashboard/home)' nde oturum açın.
-2. Sol bölmede, **ticari Market**  >  **genel bakış** ' ı seçin.
-3. **Genel bakış** sayfasında **+ yeni teklif**  >  **Azure sanal makinesi** ' ni seçin.
+2. Sol bölmede, **ticari Market**  >  **genel bakış**' ı seçin.
+3. **Genel bakış** sayfasında **+ yeni teklif**  >  **Azure sanal makinesi**' ni seçin.
 
     ![Sol bölme menü seçeneklerini ve "yeni teklif" düğmesini gösteren ekran görüntüsü.](./media/create-vm/new-offer-azure-virtual-machine.png)
 
@@ -39,7 +39,7 @@ Bir **TEKLIF kimliği** girin. Bu, hesabınızdaki her teklif için benzersiz bi
 
 - Bu KIMLIK, Azure Marketi teklifinin Web adresindeki müşterilere ve varsa Azure PowerShell ve Azure CLı 'ye yönelik olarak görünür.
 - Yalnızca küçük harfleri ve rakamları kullanın. KIMLIK, kısa çizgi ve alt çizgi içerebilir, ancak boşluk içeremez ve 50 karakterle sınırlıdır. Örneğin, **Test-teklif-1** girerseniz, teklif Web adresi olacaktır `https://azuremarketplace.microsoft.com/marketplace/../test-offer-1` .
-- Teklif KIMLIĞI, **Oluştur** ' u seçtikten sonra değiştirilemez.
+- Teklif KIMLIĞI, **Oluştur**' u seçtikten sonra değiştirilemez.
 
 Bir **teklif diğer adı** girin. Teklif diğer adı, Iş Ortağı Merkezi 'nde teklif için kullanılan addır.
 
@@ -71,9 +71,9 @@ Iş Ortağı Merkezi ile ticari Market 'e bir teklif yayımladığınızda, bunu
    - [Teklifinizi Salesforce 'a göndermek için teklifinizi yapılandırma](./partner-center-portal/commercial-marketplace-lead-management-instructions-salesforce.md#configure-your-offer-to-send-leads-to-salesforce)
 
 1. Verdiğiniz yapılandırmayı doğrulamak için **Doğrula** bağlantısını seçin.
-1. **Bağlan** ’ı seçin.
+1. **Bağlan**’ı seçin.
 
-Sol gezinti menüsündeki **Özellikler** ' in sonraki sekmesine geçmeden önce **Taslağı kaydet** ' i seçin.
+Sol gezinti menüsündeki **Özellikler**' in sonraki sekmesine geçmeden önce **Taslağı kaydet** ' i seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 01/20/2021
 ms.author: v-tcassi
 monikerRange: =iotedge-2018-06
-ms.openlocfilehash: c12dbeb81fd2b3d67863b5b84fa30cf77e165549
-ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
+ms.openlocfilehash: 812bfcc8d82c08600bd7391cdf70661585ceaf2f
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102123199"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103015191"
 ---
 # <a name="install-and-provision-azure-iot-edge-for-linux-on-a-windows-device-preview"></a>Windows cihazı üzerinde Linux için Azure IoT Edge'i yükleme ve sağlama (Önizleme)
 
@@ -43,18 +43,11 @@ Bu makalede, bir Windows cihazında IoT Edge ayarlama adımları listelenir. Bu 
   * En düşük RAM: 4 GB (8 GB önerilir)
   * Minimum depolama alanı: 10 GB
 
-* Windows Yönetim Merkezi için Azure IoT Edge uzantısı yüklü Windows Yönetim Merkezi Insider derlemesi 'ne erişim:  <!-- The link below needs the language localization to work; otherwise broken -->
-   1. [Windows Insider Preview](https://www.microsoft.com/en-us/software-download/windowsinsiderpreviewserver)' i ziyaret edin.
+* Windows Yönetim Merkezi için Azure IoT Edge uzantısı yüklü Windows Yönetim merkezine erişim:
 
-   1. Önizlemeler açılan menüsünde **Windows Yönetim Merkezi önizleme-derleme 2012**' i seçin ve **Onayla**' yı seçin.
+   1. [Windows Yönetim Merkezi Yükleyicisi 'ni](https://aka.ms/wacdownload)indirin.
 
-      ![Kullanılabilir önizlemelerde açılan menüden Windows Yönetim Merkezi önizlemesi-derleme 2012 ' ı seçin.](./media/how-to-install-iot-edge-on-windows/select-windows-admin-center-preview-build.png)
-
-   1. **Dil Seç** açılan menüsünde, **İngilizce**' yi seçin ve **Onayla**' yı seçin.
-
-   1. *WindowsAdminCenterPreview2012.msi* Indirmek Için **Şimdi İndir** ' i seçin.
-
-   1. *WindowsAdminCenterPreview2012.msi* çalıştırın ve Windows Yönetim Merkezi 'ni yüklemek için Install Wizard istemlerini izleyin. Yüklendikten sonra Windows Yönetim Merkezi 'ni açın.
+   1. İndirilen yükleyiciyi çalıştırın ve Windows Yönetim Merkezi 'Ni yüklemek için Yükleme Sihirbazı istemlerini izleyin. Yüklendikten sonra Windows Yönetim Merkezi 'ni açın.
 
    1. Windows Yönetim Merkezi 'nin ilk sürümünde kullanılacak bir sertifika seçmeniz istenir. Sertifikanız olarak **Windows Yönetim Merkezi istemcisi** ' ni seçin.
 
@@ -143,7 +136,7 @@ Henüz yoksa, Windows üzerinde Linux için IoT Edge 'i hedef cihazınıza yükl
    ```azurepowershell-interactive
    $msiPath = $([io.Path]::Combine($env:TEMP, 'AzureIoTEdge.msi'))
    $ProgressPreference = 'SilentlyContinue'
-   Invoke-WebRequest "https://aka.ms/AzureEdgeForLinuxOnWindowsMSI" -OutFile $msiPath
+   Invoke-WebRequest "https://aka.ms/AzEflowMSI" -OutFile $msiPath
    ```
 
 1. Cihazınıza Windows üzerinde Linux için IoT Edge yüklersiniz.

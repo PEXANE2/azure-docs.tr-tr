@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 02/19/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 24d27859aad7642392a5702ab7ddbb727b538d51
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: d76fd3b30d823efbf85e84a74a21c694f5a0e6fb
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95025019"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102565572"
 ---
 # <a name="windows-10-enterprise-multi-session-faq"></a>Windows 10 Enterprise çoklu oturum hakkında SSS
 
@@ -81,7 +81,7 @@ En çok sanallaştırılmış ortamlar, kullanıcıların profillerine ek uygula
 
 - [Windows sanal masaüstünde yerleşik uygulamaları yayımlama](publish-apps.md)
 - [DıSM uygulama paketi hizmet komut satırı seçenekleri](/windows-hardware/manufacture/desktop/dism-app-package--appx-or-appxbundle--servicing-command-line-options)
-- [Add-AppxProvisionedPackage](/powershell/module/dism/add-appxprovisionedpackage?view=win10-ps)
+- [Add-AppxProvisionedPackage](/powershell/module/dism/add-appxprovisionedpackage)
 
 ## <a name="how-do-i-make-sure-users-dont-download-and-install-apps-from-the-microsoft-store"></a>Nasıl yaparım? kullanıcıların Microsoft Store uygulamaları indirmeyin ve yüklememelerini sağlayın mi?
 
@@ -90,11 +90,11 @@ Kullanıcıların daha önce sağladığınız uygulamaların ötesinde ek uygul
 Mağaza uygulamasını devre dışı bırakmak için:
 
 1. Yeni bir grup ilkesi oluşturun.
-2. **Computer Configuration**  >  **Administrative Templates**  >  **Windows bileşenleri** Yönetim Şablonları bilgisayar yapılandırması ' nı seçin.
+2.   >    >  **Windows bileşenleri** Yönetim Şablonları bilgisayar yapılandırması ' nı seçin.
 3. **Mağaza**' ı seçin.
 4. **Mağaza uygulamasını** seçin.
 5. **Devre dışı** seçeneğini belirleyip **Tamam**' ı seçin.
-6. **Apply** (Uygula) seçeneğini belirleyin.
+6. **Uygula**’yı seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

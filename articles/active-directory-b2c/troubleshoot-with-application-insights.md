@@ -8,20 +8,20 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: troubleshooting
-ms.date: 10/16/2020
+ms.date: 03/10/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: d4a68b492bad4ac091b4600c9ec81ac0de27cc05
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 435a0b85d205328d10f8762498c7a981d7ee45f5
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100572897"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102611836"
 ---
 # <a name="collect-azure-active-directory-b2c-logs-with-application-insights"></a>Application Insights ile Azure Active Directory B2C günlüklerini toplayın
 
-Bu makalede, özel ilkelerinizle ilgili sorunları tanılamanıza olanak tanımak için Active Directory B2C (Azure AD B2C) günlüklerini toplama adımları sunulmaktadır. Application Insights, özel durumları tanılamanıza ve uygulama performansı sorunlarını görselleştirebileceğiniz bir yol sağlar. Azure AD B2C, Application Insights veri gönderme özelliği içerir.
+Bu makalede, özel ilkelerinizle ilgili sorunları tanılamanıza olanak tanımak için Active Directory B2C (Azure AD B2C) günlüklerini toplama adımları sunulmaktadır. Application Insights özel durumları tanılamak ve uygulama performansı sorunlarını görselleştirmek için bir yol sağlar. Azure AD B2C'nin Application Insights'a veri göndermek için bir özelliği vardır.
 
 Burada açıklanan ayrıntılı etkinlik günlükleri **yalnızca** özel ilkelerinizin geliştirilmesi sırasında etkinleştirilmelidir.
 
@@ -51,7 +51,7 @@ Henüz bir tane yoksa, aboneliğinizde bir Application Insights örneği oluştu
    UserJourneyRecorderEndpoint="urn:journeyrecorder:applicationinsights"
    ```
 
-1. Zaten mevcut değilse, `<UserJourneyBehaviors>` düğüme bir alt düğüm ekleyin `<RelyingParty>` . Hemen sonrasında konumlandırmalıdır `<DefaultUserJourney ReferenceId="UserJourney Id" from your extensions policy, or equivalent (for example:SignUpOrSigninWithAAD" />` .
+1. Zaten mevcut değilse, `<UserJourneyBehaviors>` düğüme bir alt düğüm ekleyin `<RelyingParty>` . Bu, öğesinden sonra yerleştirilmelidir `<DefaultUserJourney ReferenceId="UserJourney Id" from your extensions policy, or equivalent (for example:SignUpOrSigninWithAAD" />` .
 1. Aşağıdaki düğümü öğesinin alt öğesi olarak ekleyin `<UserJourneyBehaviors>` . ' İ `{Your Application Insights Key}` daha önce kaydettiğiniz Application Insights **izleme anahtarıyla** değiştirdiğinizden emin olun.
 
     ```xml
@@ -62,7 +62,7 @@ Henüz bir tane yoksa, aboneliğinizde bir Application Insights örneği oluştu
     * `ClientEnabled="true"` İzleme sayfası görünümü ve istemci tarafı hataları için ApplicationInsights istemci tarafı betiği gönderir. Bunları, Application Insights portalındaki **Browserzamanlamalar** tablosunda görüntüleyebilirsiniz. Ayar olarak `ClientEnabled= "true"` , sayfa betiklerine Application Insights ekler ve sayfa yüklerinin ve Ajax çağrılarının, sayımların, tarayıcı özel durumlarının ve Ajax hatalarının ayrıntılarının yanı sıra Kullanıcı ve oturum sayımlarının zamanlamalarını alırsınız. Bu alan **isteğe bağlıdır** ve varsayılan olarak olarak ayarlanır `false` .
     * `ServerEnabled="true"` Application Insights için, var olan Kullanıcıgünneyıkaydedicisi JSON 'sini özel bir olay olarak gönderir.
 
-    Örneğin:
+    Örnek:
 
     ```xml
     <TrustFrameworkPolicy
@@ -130,7 +130,7 @@ Sorgulama hakkında daha fazla bilgi için bkz. [Azure izleyici 'de günlük sor
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Topluluk, kimlik geliştiricilerine yardımcı olmak için bir Kullanıcı yolculuğu Görüntüleyicisi geliştirmiştir. Application Insights örneğinden okur ve Kullanıcı yolculuğu olaylarının iyi yapılandırılmış bir görünümünü sağlar. Kaynak kodu elde edersiniz ve kendi çözümünüze dağıtırsınız.
+Topluluk kimlik geliştiricilerine yardımcı olmak için bir kullanıcı yolculuğu izleyicisi geliştirmiştir. Application Insights örneğinizden okur ve kullanıcı yolculuğu olayları içi iyi yapılandırılmış bir görünüm sağlar. Kaynak kodunu elde edersiniz ve kendi çözümünüze dağıtırsınız.
 
 Kullanıcı yolculuğu oyuncusu Microsoft tarafından desteklenmez ve tamamen olduğu gibi kullanılabilir hale getirilir.
 

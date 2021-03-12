@@ -8,12 +8,12 @@ ms.author: tagore
 author: tanmaygore
 ms.reviewer: mimckitt
 ms.custom: ''
-ms.openlocfilehash: 04a30a2446061df75d133bdbd088b7e71c59cade
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 31659f4e8e4f9e25a997be54223b8856edfa8abe
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100578228"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102612992"
 ---
 # <a name="configuration-and-management-issues-for-azure-cloud-services-classic-frequently-asked-questions-faqs"></a>Azure Cloud Services için yapılandırma ve yönetim sorunları (klasik): sık sorulan sorular (SSS)
 
@@ -124,7 +124,7 @@ $cert = New-SelfSignedCertificate -DnsName yourdomain.cloudapp.net -CertStoreLoc
 $password = ConvertTo-SecureString -String "your-password" -Force -AsPlainText
 Export-PfxCertificate -Cert $cert -FilePath ".\my-cert-file.pfx" -Password $password
 ```
-Yalnızca bir blob veya yerel olarak, csdef ve cscfg karşıya yükleme konumunuz için yerel ' i seçebilme. [New-AzureDeployment](/powershell/module/servicemanagement/azure.service/new-azuredeployment?view=azuresmps-4.0.0&preserve-view=true)kullanarak her bir konum değerini belirleyebilirsiniz.
+Yalnızca bir blob veya yerel olarak, csdef ve cscfg karşıya yükleme konumunuz için yerel ' i seçebilme. [New-AzureDeployment](/powershell/module/servicemanagement/azure.service/new-azuredeployment)kullanarak her bir konum değerini belirleyebilirsiniz.
 
 Örnek düzeyinde ölçümleri izleme özelliği. Ek izleme özellikleri [Cloud Services izleme](cloud-services-how-to-monitor.md)bölümünde bulunur.
 
@@ -293,7 +293,7 @@ Günlük ayarları yapılandırılamaz, bu nedenle devre dışı bırakabilirsin
 Başlatma görevinde PowerShell betiği kullanarak kötü amaçlı yazılımdan koruma uzantısını etkinleştirebilirsiniz. Uygulamak için bu makalelerdeki adımları izleyin: 
  
 - [PowerShell başlangıç görevi oluşturma](cloud-services-startup-tasks-common.md#create-a-powershell-startup-task)
-- [Set-AzureServiceAntimalwareExtension](/powershell/module/servicemanagement/azure.service/Set-AzureServiceAntimalwareExtension?view=azuresmps-4.0.0&preserve-view=true)
+- [Set-AzureServiceAntimalwareExtension](/powershell/module/servicemanagement/azure.service/Set-AzureServiceAntimalwareExtension)
 
 Kötü amaçlı yazılımdan koruma senaryoları ve portaldan nasıl etkinleştirileceği hakkında daha fazla bilgi için bkz. [kötü amaçlı yazılımdan koruma senaryoları](../security/fundamentals/antimalware.md#antimalware-deployment-scenarios).
 

@@ -6,17 +6,18 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 author: iqshahmicrosoft
 ms.author: krsh
-ms.date: 1/5/2021
-ms.openlocfilehash: 560699296b8cae83413c36820106eedf7fef7414
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.date: 02/19/2021
+ms.openlocfilehash: 870482ca7894c5e260a78270fb036d6a6b22ee41
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97914170"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102630070"
 ---
 # <a name="how-to-generate-a-sas-uri-for-a-vm-image"></a>VM görüntüsü için SAS URI 'SI oluşturma
 
-Yayımlama işlemi sırasında, planlarınızla ilişkili her VHD için bir SAS (paylaşılan erişim Imzası) URI 'SI sağlamanız gerekir (daha önce SKU 'Lar adı verilir). Sertifika işlemi sırasında Microsoft 'un bu VHD 'lere erişmesi gerekir. Bu URI 'yi Iş Ortağı Merkezi 'ndeki **planlar** sekmesinde girersiniz.
+> [!NOTE]
+> VM 'nizi yayımlamak için SAS URI 'sine ihtiyacınız yoktur. Yalnızca bir görüntüyü parter merkezinde paylaşabilirsiniz. Onaylanan bir [temel kullanarak sanal makine oluşturma](https://docs.microsoft.com/azure/marketplace/azure-vm-create-using-approved-base) veya [kendi görüntü yönergelerinizi kullanarak bir sanal makine oluşturma](https://docs.microsoft.com/azure/marketplace/azure-vm-create-using-own-image) bölümüne bakın.
 
 VHD 'niz için SAS URI 'Lerinin oluşturulması şu gereksinimlere sahiptir:
 
@@ -24,6 +25,71 @@ VHD 'niz için SAS URI 'Lerinin oluşturulması şu gereksinimlere sahiptir:
 - Yalnızca liste ve okuma izinleri gereklidir. Yazma veya silme erişimi sağlamaz.
 - SAS URI 'sinin oluşturulduğu erişim süresi (bitiş tarihi), en az üç hafta olmalıdır.
 - UTC saat değişikliklerine karşı koruma sağlamak için, başlangıç tarihini geçerli tarihten bir güne ayarlayın. Örneğin, geçerli tarih 16 Haziran 2020, 6/15/2020 ' i seçin.
+
+## <a name="extract-vhd-from-a-vm"></a>VM 'den VHD 'yi ayıklama
+
+> [!NOTE]
+> Depolama hesabında karşıya yüklenmiş bir VHD zaten varsa, bu adımı atlayabilirsiniz.
+
+VHD 'yi VM 'nizden ayıklamak için, VM diskinizin bir anlık görüntüsünü alıp anlık görüntüden ayıklayın.
+
+VM diskinin anlık görüntüsünü alarak başlayın:
+
+1. Azure Portal’da oturum açın.
+2. Sol üst taraftan başlayarak, kaynak oluştur ' u seçin, sonra da arama yapın ve anlık görüntü ' i seçin.
+3. Anlık görüntü dikey penceresinde Oluştur ' u seçin.
+4. Anlık görüntü için bir ad girin.
+5. Var olan bir kaynak grubunu seçin veya yeni bir kaynak grubu adı girin.
+6. Kaynak disk için, anlık görüntü yapılacak yönetilen diski seçin.
+7. Anlık görüntüyü depolamak için kullanılacak hesap türünü seçin. Yüksek performanslı bir SSD üzerinde depolanmış olması gerekmedikçe Standart HDD kullanın.
+8. Oluştur’u seçin.
+
+### <a name="extract-the-vhd"></a>VHD 'YI Ayıkla
+
+Anlık görüntüyü Depolama hesabınızdaki bir VHD 'ye aktarmak için aşağıdaki betiği kullanın.
+
+```azurecli
+#Provide the subscription Id where the snapshot is created
+$subscriptionId=yourSubscriptionId
+
+#Provide the name of your resource group where the snapshot is created
+$resourceGroupName=myResourceGroupName
+
+#Provide the snapshot name
+$snapshotName=mySnapshot
+
+#Provide Shared Access Signature (SAS) expiry duration in seconds (such as 3600)
+#Know more about SAS here: https://docs.microsoft.com/en-us/azure/storage/storage-dotnet-shared-access-signature-part-1
+$sasExpiryDuration=3600
+
+#Provide storage account name where you want to copy the underlying VHD file. 
+$storageAccountName=mystorageaccountname
+
+#Name of the storage container where the downloaded VHD will be stored.
+$storageContainerName=mystoragecontainername
+
+#Provide the key of the storage account where you want to copy the VHD 
+$storageAccountKey=mystorageaccountkey
+
+#Give a name to the destination VHD file to which the VHD will be copied.
+$destinationVHDFileName=myvhdfilename.vhd
+
+az account set --subscription $subscriptionId
+
+sas=$(az snapshot grant-access --resource-group $resourceGroupName --name $snapshotName --duration-in-seconds $sasExpiryDuration --query [accessSas] -o tsv)
+
+az storage blob copy start --destination-blob $destinationVHDFileName --destination-container $storageContainerName --account-name $storageAccountName --account-key $storageAccountKey --source-uri $sas
+```
+
+### <a name="script-explanation"></a>Betik açıklaması
+Bu betik, bir anlık görüntünün SAS URI 'sini oluşturmak için aşağıdaki komutları kullanır ve SAS URI 'sini kullanarak temel VHD 'YI bir depolama hesabına kopyalar. Tablodaki her komut, komuta özgü belgelere yönlendirir.
+
+
+|Komut  |Notlar  |
+|---------|---------|
+| az disk grant-access    |     Temel alınan VHD dosyasını bir depolama hesabına kopyalamak veya şirket içine indirmek üzere kullanılan salt okunur SAS oluşturur    |
+|  az storage blob copy start   |    Bir blobu bir depolama hesabından diğerine zaman uyumsuz olarak kopyalar. Yeni Blobun durumunu denetlemek için az Storage blob Show ' i kullanın.     |
+|
 
 ## <a name="generate-the-sas-address"></a>SAS adresini oluşturma
 

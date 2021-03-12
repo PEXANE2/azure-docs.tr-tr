@@ -3,7 +3,7 @@ title: Kodlama birimleri ekleyerek Medya işlemeyi ölçeklendirme-Azure |  Micr
 description: Bu makalede, .NET Azure Media Services kodlama birimlerinin nasıl ekleneceği gösterilmektedir.
 services: media-services
 documentationcenter: ''
-author: juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.assetid: 33f7625a-966a-4f06-bc09-bccd6e2a42b5
@@ -12,16 +12,16 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/18/2019
-ms.author: juliako
+ms.date: 03/10/2021
+ms.author: inhenkel
 ms.reviewer: milangada
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 2d5e6305de1852dad3a08c110cb2fc5a58a31049
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 6feb28858271f11bef0933a352f86d7545ee5bd3
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "96009206"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103014086"
 ---
 # <a name="how-to-scale-encoding-with-net-sdk"></a>.NET SDK ile kodlama ölçeklendirme
 
@@ -63,5 +63,5 @@ Varsayılan olarak, her Media Services hesabı en fazla 10 S2 veya S3 medya ayr�
 ## <a name="media-services-learning-paths"></a>Media Services’i öğrenme yolları
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Geri bildirimde bulunma
+## <a name="provide-feedback"></a>Geribildirim gönderme
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]

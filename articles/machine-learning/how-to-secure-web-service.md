@@ -7,15 +7,15 @@ ms.service: machine-learning
 ms.subservice: core
 ms.author: aashishb
 author: aashishb
-ms.date: 01/04/2021
+ms.date: 03/11/2021
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: e0e25a804ac66ca33715906ce4d397b80887037d
-ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
+ms.openlocfilehash: 71cb2e9e112c49d77a2a0b47c24c49cabfa86589
+ms.sourcegitcommit: 6776f0a27e2000fb1acb34a8dddc67af01ac14ac
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102518560"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103149027"
 ---
 # <a name="use-tls-to-secure-a-web-service-through-azure-machine-learning"></a>TLS kullanarak Azure Machine Learning aracılığıyla web hizmetinin güvenliğini sağlama
 
@@ -97,7 +97,7 @@ Microsoft sertifikası veya CA 'dan satın alınan özel bir sertifika ile TLS '
     provisioning_config = AksCompute.provisioning_configuration()
 
     # Leaf domain label generates a name using the formula
-    #  "<leaf-domain-label>######.<azure-region>.cloudapp.azure.net"
+    #  "<leaf-domain-label>######.<azure-region>.cloudapp.azure.com"
     #  where "######" is a random series of characters
     provisioning_config.enable_ssl(leaf_domain_label = "contoso")
 
@@ -107,7 +107,7 @@ Microsoft sertifikası veya CA 'dan satın alınan özel bir sertifika ile TLS '
                                           cluster_name = cluster_name)
 
     # Leaf domain label generates a name using the formula
-    #  "<leaf-domain-label>######.<azure-region>.cloudapp.azure.net"
+    #  "<leaf-domain-label>######.<azure-region>.cloudapp.azure.com"
     #  where "######" is a random series of characters
     attach_config.enable_ssl(leaf_domain_label = "contoso")
     ```
@@ -173,7 +173,7 @@ Sertifika ilk olarak Microsoft tarafından oluşturulduysa (hizmeti oluşturmak 
 
 > [!IMPORTANT]
 > * Mevcut sertifika hala geçerliyse, `renew=True` yapılandırmayı yenilemeye zorlamak için (SDK) veya `--ssl-renew` (CLI) kullanın. Örneğin, var olan sertifika 10 gün boyunca hala geçerliyse ve kullanmıyorsanız `renew=True` , sertifika yenilenmeyebilir.
-> * Hizmet ilk kez dağıtıldığında, `leaf_domain_label` modelini kullanarak BIR DNS adı oluşturmak için kullanılır `<leaf-domain-label>######.<azure-region>.cloudapp.azure.net` . Var olan adı (başlangıçta oluşturulan 6 basamak dahil) korumak için özgün `leaf_domain_label` değeri kullanın. Oluşturulan 6 basamağı eklemeyin.
+> * Hizmet ilk kez dağıtıldığında, `leaf_domain_label` modelini kullanarak BIR DNS adı oluşturmak için kullanılır `<leaf-domain-label>######.<azure-region>.cloudapp.azure.com` . Var olan adı (başlangıçta oluşturulan 6 basamak dahil) korumak için özgün `leaf_domain_label` değeri kullanın. Oluşturulan 6 basamağı eklemeyin.
 
 **SDK 'Yı kullanma**
 

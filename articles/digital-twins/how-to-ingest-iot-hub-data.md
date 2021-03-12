@@ -7,12 +7,12 @@ ms.author: alkarche
 ms.date: 9/15/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 9ecc14aa9591d6e62dccd9899a80de44411928a1
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: 3223a1c8e20d8b0caced5d940132c32fa0aba97c
+ms.sourcegitcommit: 6776f0a27e2000fb1acb34a8dddc67af01ac14ac
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98051097"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103149101"
 ---
 # <a name="ingest-iot-hub-telemetry-into-azure-digital-twins"></a>Azure dijital TWINS 'e alma IoT Hub telemetrisi
 
@@ -26,13 +26,12 @@ Bu nasıl yapılır belgesi, IoT Hub telemetri alabilen bir işlev yazma işlemi
 
 Bu örneğe devam etmeden önce aşağıdaki kaynakları önkoşul olarak ayarlamanız gerekir:
 * **IoT Hub 'ı**. Yönergeler için, [bu IoT Hub hızlı başlangıç](../iot-hub/quickstart-send-telemetry-cli.md)konusunun *IoT Hub oluşturma* bölümüne bakın.
-* Dijital ikizi örneğinizi çağırmak için doğru izinlere sahip **bir işlev** . Yönergeler için bkz. [*nasıl yapılır: Azure 'da veri işleme için bir Işlev ayarlama*](how-to-create-azure-function.md). 
 * Cihaz telemetrinizi alacak **bir Azure dijital TWINS örneği** . Yönergeler için bkz. [*nasıl yapılır: Azure dijital TWINS örneği ve kimlik doğrulaması ayarlama*](./how-to-set-up-instance-portal.md).
 
 ### <a name="example-telemetry-scenario"></a>Örnek telemetri senaryosu
 
 Bu nasıl yapılır, Azure 'da bir işlev kullanarak IoT Hub 'den Azure dijital TWINS 'e ileti gönderme hakkında özetlenmektedir. İleti göndermek için kullanabileceğiniz birçok olası yapılandırma ve eşleşen strateji vardır, ancak bu makaleye yönelik örnek aşağıdaki bölümleri içerir:
-* Bilinen bir cihaz KIMLIĞIYLE IoT Hub bir termometre cihazı
+* Bilinen bir cihaz KIMLIĞIYLE IoT Hub bir termostat cihazı
 * Eşleşen bir KIMLIK ile cihazı temsil eden dijital ikizi
 
 > [!NOTE]
@@ -42,26 +41,41 @@ Termostat cihazı tarafından bir sıcaklık telemetri olayı gönderildiğinde,
 
 :::image type="content" source="media/how-to-ingest-iot-hub-data/events.png" alt-text="Akış grafiğini gösteren diyagram. Grafikte, bir IoT Hub cihaz, Azure dijital TWINS 'teki bir ikizi üzerinde sıcaklık özelliğini güncelleştiren Azure 'daki bir işleve sıcaklık IoT Hub telemetri gönderir." border="false":::
 
-## <a name="add-a-model-and-twin"></a>Model ve ikizi ekleme
+## <a name="add-a-model-and-twin"></a>Model ve ikiz ekleme
 
-Aşağıdaki CLı komutunu kullanarak bir model ekleyebilir/karşıya yükleyebilir ve sonra bu modeli kullanarak IoT Hub bilgiler ile güncelleştirilecektir.
+Bu bölümde, Azure dijital TWINS 'de, termostat cihazını temsil edecek bir [dijital ikizi](concepts-twins-graph.md) ayarlayacaksınız ve IoT Hub bilgiler ile güncelleştirilecektir.
 
-Model şöyle görünür:
+Bir termostat türü ikizi oluşturmak için önce, bir termostat 'nın özelliklerini açıklayan ve daha sonra ikizi oluşturmak için kullanılacak olan termostat [modelini](concepts-models.md) örneğinizi yüklemeniz gerekir. 
+
+Model şuna benzer:
 :::code language="json" source="~/digital-twins-docs-samples/models/Thermostat.json":::
 
-**Bu modeli TWINS örneğinizle karşıya yüklemek** IÇIN Azure CLI 'yı açın ve şu komutu çalıştırın:
+**Bu modeli TWINS örneğinizi karşıya yüklemek** Için AŞAĞıDAKI Azure CLI komutunu çalıştırın, bu, yukarıdaki modeli satır içi JSON olarak yükler. Komutunu tarayıcınızda [Azure Cloud Shell](/cloud-shell/overview.md) veya CLI 'niz [yerel olarak yüklüyse](/cli/azure/install-azure-cli.md)makinenizde çalıştırabilirsiniz.
 
 ```azurecli-interactive
 az dt model create --models '{  "@id": "dtmi:contosocom:DigitalTwins:Thermostat;1",  "@type": "Interface",  "@context": "dtmi:dtdl:context;2",  "contents": [    {      "@type": "Property",      "name": "Temperature",      "schema": "double"    }  ]}' -n {digital_twins_instance_name}
 ```
 
-Daha sonra **Bu modeli kullanarak bir ikizi oluşturmanız** gerekecektir. Bir ikizi oluşturmak ve ilk sıcaklık değeri olarak 0,0 ayarlamak için aşağıdaki komutu kullanın.
+Daha sonra **Bu modeli kullanarak bir ikizi oluşturmanız** gerekecektir. **Thermostat67** adlı bir termostat ikizi oluşturmak ve ilk sıcaklık değeri olarak 0,0 ayarlamak için aşağıdaki komutu kullanın.
 
 ```azurecli-interactive
 az dt twin create --dtmi "dtmi:contosocom:DigitalTwins:Thermostat;1" --twin-id thermostat67 --properties '{"Temperature": 0.0,}' --dt-name {digital_twins_instance_name}
 ```
 
-Başarılı bir ikizi Create komutunun çıkışı şöyle görünmelidir:
+>[!NOTE]
+> PowerShell ortamında Cloud Shell kullanıyorsanız, değerlerinin doğru ayrıştırılabilmesi için satır içi JSON alanlarındaki tırnak işareti karakterlerini atlamanız gerekebilir. Bu değişiklik ile modeli karşıya yükleme ve ikizi oluşturma komutları aşağıda verilmiştir:
+>
+> Modeli karşıya yükle:
+> ```azurecli-interactive
+> az dt model create --models '{  \"@id\": \"dtmi:contosocom:DigitalTwins:Thermostat;1\",  \"@type\": \"Interface\",  \"@context\": \"dtmi:dtdl:context;2\",  \"contents\": [    {      \"@type\": \"Property\",      \"name\": \"Temperature\",      \"schema\": \"double\"    }  ]}' -n {digital_twins_instance_name}
+> ```
+>
+> İkizi oluştur:
+> ```azurecli-interactive
+> az dt twin create --dtmi "dtmi:contosocom:DigitalTwins:Thermostat;1" --twin-id thermostat67 --properties '{\"Temperature\": 0.0,}' --dt-name {digital_twins_instance_name}
+> ```
+
+İkizi başarıyla oluşturulduğunda, komuttan gelen CLı çıktısı şuna benzer görünmelidir:
 ```json
 {
   "$dtId": "thermostat67",
@@ -82,74 +96,61 @@ Başarılı bir ikizi Create komutunun çıkışı şöyle görünmelidir:
 
 ## <a name="create-a-function"></a>İşlev oluşturma
 
-Bu bölüm, [*nasıl yapılır: verileri işlemek için bir Işlev ayarlama*](how-to-create-azure-function.md)Ile aynı Visual Studio başlangıç adımlarını ve işlev iskelet 'i kullanır. Çatı, kimlik doğrulamasını işler ve Azure dijital TWINS API 'Leri yanıt olarak çağırabilmeniz için bir hizmet istemcisi oluşturur. 
+Bu bölümde, Azure dijital TWINS 'e erişmek ve aldığı IoT telemetri olaylarına göre TWINS 'yi güncelleştirmek için bir Azure işlevi oluşturacaksınız. İşlevi oluşturmak ve yayımlamak için aşağıdaki adımları izleyin.
 
-İzleyen adımlarda, IoT Hub IoT telemetri olaylarını işlemek için buna özel kod ekleyeceksiniz.  
+#### <a name="step-1-create-a-function-app-project"></a>1. Adım: işlev uygulaması projesi oluşturma
 
-### <a name="add-telemetry-processing"></a>Telemetri işleme ekleme
-    
-Telemetri olayları cihazdan iletiler biçiminde gelir. Telemetri işleme kodu eklemenin ilk adımı, bu cihaz iletisinin ilgili bölümünün Event Grid olayından ayıklanarak oluşur. 
+İlk olarak, Visual Studio 'da yeni bir işlev uygulama projesi oluşturun. Bunun nasıl yapılacağı hakkında yönergeler için bkz. *nasıl yapılır: verileri işlemek için bir Işlev ayarlama* makalesine yönelik [**Visual Studio 'Da işlev uygulaması oluşturma**](how-to-create-azure-function.md#create-a-function-app-in-visual-studio) başlıklı Bölüm.
 
-Farklı cihazlar, iletilerini farklı şekilde yapılandırabileceği için, **Bu adımın kodu bağlı cihaza bağlıdır.** 
+#### <a name="step-2-fill-in-function-code"></a>2. Adım: işlev kodunu doldur
 
-Aşağıdaki kod, telemetri olarak JSON gönderen basit bir cihaz için bir örnek gösterir. Bu örnek, [*öğretici: uçtan uca çözümü bağlama*](./tutorial-end-to-end.md)konusunda tam olarak araştırılmış. Aşağıdaki kod, iletiyi gönderen cihazın ve sıcaklık değerinin cihaz KIMLIĞINI bulur.
+Aşağıdaki paketleri projenize ekleyin:
+* [Azure. DigitalTwins. Core](https://www.nuget.org/packages/Azure.DigitalTwins.Core/)
+* [Azure. Identity](https://www.nuget.org/packages/Azure.Identity/)
+* [Microsoft. Azure. WebJobs. Extensions. EventGrid](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.EventGrid/)
 
-:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/IoTHubToTwins.cs" id="Find_device_ID_and_temperature":::
-
-Sonraki kod örneği, KIMLIĞI ve sıcaklık değerini alır ve bu ikizi "Patch" (güncelleştirme yap) için kullanır.
-
-:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/IoTHubToTwins.cs" id="Update_twin_with_device_temperature":::
-
-### <a name="update-your-function-code"></a>İşlev kodunuzu güncelleştirme
-
-Önceki örneklerden kodu anladığınıza göre, Visual Studio 'daki [*Önkoşullar*](#prerequisites) bölümünde işlevinizi açın. (Azure 'da oluşturulmuş bir işleviniz yoksa, şimdi bir tane oluşturmak için önkoşullara ait bağlantıyı ziyaret edin).
-
-İşlevinizin kodunu bu örnek kodla değiştirin.
+Visual Studio 'Nun *IoTHubtoTwins.cs*'e yeni projeyle oluşturduğu *function1.cs* örnek işlevini yeniden adlandırın. Dosyadaki kodu aşağıdaki kodla değiştirin:
 
 :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/IoTHubToTwins.cs":::
 
-İşlev kodunuzu kaydedin ve işlev uygulamasını Azure 'da yayımlayın. Nasıl yapılacağını öğrenmek için bkz. [*Azure 'da veri işlemek için bir işlev ayarlama*](how-to-create-azure-function.md)bölümünde [*işlev uygulamasını yayımlama*](./how-to-create-azure-function.md#publish-the-function-app-to-azure) .
+İşlev kodunuzu kaydedin.
 
-Başarılı bir yayımladıktan sonra çıktıyı aşağıda gösterildiği gibi Visual Studio komut penceresinde görürsünüz:
+#### <a name="step-3-publish-the-function-app-to-azure"></a>3. Adım: işlev uygulamasını Azure 'da yayımlama
 
-```cmd
-1>------ Build started: Project: adtIngestFunctionSample, Configuration: Release Any CPU ------
-1>adtIngestFunctionSample -> C:\Users\source\repos\Others\adtIngestFunctionSample\adtIngestFunctionSample\bin\Release\netcoreapp3.1\bin\adtIngestFunctionSample.dll
-2>------ Publish started: Project: adtIngestFunctionSample, Configuration: Release Any CPU ------
-2>adtIngestFunctionSample -> C:\Users\source\repos\Others\adtIngestFunctionSample\adtIngestFunctionSample\bin\Release\netcoreapp3.1\bin\adtIngestFunctionSample.dll
-2>adtIngestFunctionSample -> C:\Users\source\repos\Others\adtIngestFunctionSample\adtIngestFunctionSample\obj\Release\netcoreapp3.1\PubTmp\Out\
-2>Publishing C:\Users\source\repos\Others\adtIngestFunctionSample\adtIngestFunctionSample\obj\Release\netcoreapp3.1\PubTmp\adtIngestFunctionSample - 20200911112545669.zip to https://adtingestfunctionsample20200818134346.scm.azurewebsites.net/api/zipdeploy...
-========== Build: 1 succeeded, 0 failed, 0 up-to-date, 0 skipped ==========
-========== Publish: 1 succeeded, 0 failed, 0 skipped ==========
-```
-[Azure Portal](https://portal.azure.com/)yayımlama işleminin durumunuzu da doğrulayabilirsiniz. _Kaynak grubunuzu_ arayın ve _etkinlik günlüğü_ ' ne gidin ve listede _Web uygulaması yayımlama profili al_ ' a gidin ve durumun başarılı olduğunu doğrulayın.
+Projeyi Azure 'da bir işlev uygulamasında yayımlayın.
 
-:::image type="content" source="media/how-to-ingest-iot-hub-data/azure-function-publish-activity-log.png" alt-text="Yayımla işleminin durumunu gösteren Azure portal ekran görüntüsü.":::
+Bunun nasıl yapılacağı hakkında yönergeler için bkz. *nasıl yapılır: verileri işlemek için bir Işlev ayarlama* makalesini [**Azure 'Da işlev uygulamasını yayımlama**](how-to-create-azure-function.md#publish-the-function-app-to-azure)
+
+#### <a name="step-4-configure-the-function-app"></a>4. Adım: işlev uygulamasını yapılandırma
+
+Sonra, işlev için **bir erişim rolü atayın** ve **uygulama ayarlarını** Azure dijital TWINS örneğinizi erişebilecek şekilde yapılandırın. Bunun nasıl yapılacağı hakkında yönergeler için bkz. *nasıl yapılır: verileri işlemek için bir Işlev ayarlama* makalesine [**yönelik güvenlik erişimini ayarlama**](how-to-create-azure-function.md#set-up-security-access-for-the-function-app) bölümüne bakın.
 
 ## <a name="connect-your-function-to-iot-hub"></a>İşlevinizi IoT Hub bağlama
 
-Hub verileri için bir olay hedefi ayarlayın.
+Bu bölümde, IoT Hub cihaz verileri için işlevinizi bir olay hedefi olarak ayarlayacaksınız. Bu, IoT Hub 'daki termostat cihazındaki verilerin işlenmek üzere Azure işlevine gönderilmesini sağlar.
+
 [Azure Portal](https://portal.azure.com/), [*önkoşullar*](#prerequisites) bölümünde oluşturduğunuz IoT Hub örneğine gidin. **Olaylar**' ın altında, işleviniz için bir abonelik oluşturun.
 
 :::image type="content" source="media/how-to-ingest-iot-hub-data/add-event-subscription.png" alt-text="Olay aboneliği eklemeyi gösteren Azure portal ekran görüntüsü.":::
 
 **Olay aboneliği oluştur** sayfasında, alanları aşağıdaki gibi girin:
-  1. **Ad**' ın altında, aboneliği istediğiniz şekilde adlandırın.
-  2. **Olay şeması** altında _Event Grid şeması_' nı seçin.
-  3. **Olay türleri** altında _cihaz telemetri_ onay kutusunu seçin ve diğer olay türlerinin işaretini kaldırın.
-  4. **Uç nokta türü** altında _Azure işlevi_' ni seçin.
-  5. Uç **nokta ' ın** altında bir uç nokta oluşturmak için _uç nokta bağlantısını seçin_ öğesini seçin.
+  1. **Ad** için, olay aboneliği için istediğiniz adı seçin.
+  2. **Olay şeması** Için _Event Grid şeması_' nı seçin.
+  3. **Sistem konu adı** için istediğiniz adı seçin.
+  1. **Olay türlerine filtre uygulamak** Için _cihaz telemetri_ onay kutusunu seçin ve diğer olay türlerinin işaretini kaldırın.
+  1. **Uç nokta türü** Için _Azure işlevi_' ni seçin.
+  1. Uç **nokta için, uç** nokta Için kullanılacak Azure işlevini seçmek üzere uç nokta _Seç_ bağlantısını kullanın.
     
 :::image type="content" source="media/how-to-ingest-iot-hub-data/create-event-subscription.png" alt-text="Olay aboneliği ayrıntılarını oluşturmak için Azure portal ekran görüntüsü":::
 
-Açılan _Azure Işlevi Seç_ sayfasında, aşağıdaki ayrıntıları doğrulayın.
- 1. **Abonelik**: Azure aboneliğiniz
- 2. **Kaynak grubu**: kaynak grubunuz
- 3. **İşlev uygulaması**: işlev uygulamanızın adı
- 4. **Yuva**: _Üretim_
- 5. **İşlev**: açılan listeden işlevinizi seçin.
+Açılan _Azure Işlevi Seç_ sayfasında, aşağıdaki ayrıntıları doğrulayın veya girin.
+ 1. **Abonelik**: Azure aboneliğiniz.
+ 2. **Kaynak grubu**: kaynak grubunuz.
+ 3. **İşlev uygulaması**: işlev uygulamanızın adı.
+ 4. **Yuva**: _Üretim_.
+ 5. **İşlev**: açılan listeden daha önce, *IoTHubtoTwins* öğesinden işlevi seçin.
 
-_Seçim onaylama_ düğmesini seçerek ayrıntılarınızı kaydedin.            
+_Seçimi Onayla_ düğmesini kullanarak ayrıntılarınızı kaydedin.            
       
 :::image type="content" source="media/how-to-ingest-iot-hub-data/select-azure-function.png" alt-text="İşlevi seçmek için Azure portal ekran görüntüsü.":::
 

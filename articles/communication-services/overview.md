@@ -8,12 +8,12 @@ ms.author: mikben
 ms.date: 07/20/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 30b075cfbd7d38ff81cdf79a05a3a95b87b0bc13
-ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
+ms.openlocfilehash: c84bea660b5d4408e399c471d6dd08d849f5e842
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102488554"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102635867"
 ---
 # <a name="what-is-azure-communication-services"></a>Azure İletişim Hizmetleri nedir?
 
@@ -48,8 +48,8 @@ Azure Iletişim Hizmetleri ile yeni başladıysanız, aşağıdaki kaynaklar ba�
 | Kaynak                               |Açıklama                           |
 |---                                    |---                                   |
 |**[Arama uygulamanızla bir Teams toplantısına katılma](./quickstarts/voice-video-calling/get-started-teams-interop.md)**|Azure Iletişim Hizmetleri, Microsoft ekipleriyle etkileşime geçen özel toplantı deneyimleri oluşturmak için kullanılabilir. Iletişim Hizmetleri çözümünüzün kullanıcıları ses, video, sohbet ve ekran paylaşımı üzerinde takımlar katılımcıları ile etkileşime geçebilir.|
-|**[İletişim Hizmetleri kaynağı oluşturma](./quickstarts/create-communication-resource.md)**|İlk Iletişim Hizmetleri kaynağınızı sağlamak için Azure portal veya Iletişim Hizmetleri Yönetimi istemci kitaplığını kullanarak Azure Iletişim hizmetlerini kullanmaya başlayabilirsiniz. Iletişim Hizmetleri kaynak bağlantı dizeniz olduktan sonra, ilk Kullanıcı erişim belirteçlerinizi sağlayabilirsiniz.|
-|**[İlk Kullanıcı erişim belirtecinizi oluşturma](./quickstarts/access-tokens.md)**|Kullanıcı erişim belirteçleri, hizmetlerinizin kimlik doğrulaması için Azure Iletişim Hizmetleri kaynağına karşı kullanılır. Bu belirteçler, Iletişim Hizmetleri Yönetimi istemci kitaplığı kullanılarak sağlanır ve yeniden yayımlandı.|
+|**[İletişim Hizmetleri kaynağı oluşturma](./quickstarts/create-communication-resource.md)**|İlk Iletişim Hizmetleri kaynağınızı sağlamak için Azure portal veya Iletişim Hizmetleri istemci kitaplığını kullanarak Azure Iletişim hizmetlerini kullanmaya başlayabilirsiniz. Iletişim Hizmetleri kaynak bağlantı dizeniz olduktan sonra, ilk Kullanıcı erişim belirteçlerinizi sağlayabilirsiniz.|
+|**[İlk Kullanıcı erişim belirtecinizi oluşturma](./quickstarts/access-tokens.md)**|Kullanıcı erişim belirteçleri, hizmetlerinizin kimlik doğrulaması için Azure Iletişim Hizmetleri kaynağına karşı kullanılır. Bu belirteçler, Iletişim Hizmetleri istemci kitaplığı kullanılarak sağlanır ve yeniden yayımlandı.|
 |**[Telefon numarası alın](./quickstarts/telephony-sms/get-phone-number.md)**|Azure Iletişim hizmetlerini kullanarak telefon numaralarını temin edebilir ve serbest bırakabilirsiniz. Bu telefon numaraları, giden çağrıları başlatmak ve SMS iletişim çözümleri oluşturmak için kullanılabilir.|
 |**[Uygulamanızdan SMS gönderin](./quickstarts/telephony-sms/send.md)**|Azure Iletişim Hizmetleri SMS istemci kitaplığı, .NET ve JavaScript uygulamalarınızdan SMS mesajları göndermenizi ve almanızı sağlar.|
 |**[Ses ve video çağırma ile çalışmaya başlama](./quickstarts/voice-video-calling/getting-started-with-calling.md)**| Azure Iletişim Hizmetleri, çağıran istemci kitaplığını kullanarak uygulamalarınıza ses ve video çağrısı eklemenize olanak tanır. Bu kitaplık WebRTC tarafından desteklenmektedir ve uygulamalarınızda eşler arası, çoklu ortam, gerçek zamanlı iletişim kurmanızı sağlar.|
@@ -61,7 +61,7 @@ Azure Iletişim Hizmetleri ile yeni başladıysanız, aşağıdaki kaynaklar ba�
 Aşağıdaki örneklerde, Azure Iletişim Hizmetleri istemci kitaplıklarının uçtan uca kullanımı gösterilmektedir. Bu örnekleri kullanarak kendi Iletişim Hizmetleri çözümlerinizi önyükleyebilirsiniz.
 <br>
 
-| Örnek adı                               | Açıklama                           |
+| Örnek adı                               | Description                           |
 |---                                    |---                                   |
 |**[Hero örneğini çağıran Grup](./samples/calling-hero-sample.md)**|Iletişim Hizmetleri istemci kitaplıklarının bir grup çağırma deneyimi oluşturmak için nasıl kullanılabileceğini öğrenin.|
 |**[Grup sohbeti Hero örneği](./samples/chat-hero-sample.md)**|Bkz. Iletişim Hizmetleri istemci kitaplıklarının grup sohbeti deneyimi oluşturmak için nasıl kullanılabileceğini öğrenin.|

@@ -1,5 +1,5 @@
 ---
-title: 'Hızlı başlangıç: Visual Studio Code kullanmaya başlayın'
+title: 'Hızlı başlangıç: Visual Studio Code kullanarak Azure Bilişsel Arama kullanmaya başlama'
 titleSuffix: Azure Cognitive Search
 description: Azure Bilişsel Arama için Visual Studio Code uzantısını yüklemeyi ve kullanmayı öğrenin.
 author: dereklegenzoff
@@ -7,26 +7,24 @@ manager: luisca
 ms.author: delegenz
 ms.service: cognitive-search
 ms.topic: quickstart
-ms.date: 01/12/2021
-ms.openlocfilehash: 7a613dd6cba55831b02a60f833088b6c34bfc4a7
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.date: 03/10/2021
+ms.openlocfilehash: 3237a32a90e3964644ff84958a065656cdf7f3ab
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98122711"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103015854"
 ---
-# <a name="get-started-with-visual-studio-code-and-azure-cognitive-search"></a>Visual Studio Code ve Azure Bilişsel Arama kullanmaya başlama
+# <a name="get-started-with-azure-cognitive-search-using-visual-studio-code"></a>Visual Studio Code kullanarak Azure Bilişsel Arama kullanmaya başlama
 
-Bu makalede, istekleri göndermek ve almak için [Azure BILIŞSEL arama REST API 'lerini](/rest/api/searchservice) ve API istemcisini kullanarak REST API isteklerini etkileşimli olarak nasıl ifade edeceğinizi açıklanmaktadır. Bir API istemcisiyle bu yönergelerle, herhangi bir kod yazmadan önce istek gönderebilir ve yanıtları görüntüleyebilirsiniz.
+Bu makalede, [Azure BILIŞSEL arama REST API 'leri](/rest/api/searchservice) ve [Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurecognitivesearch)kullanarak REST API isteklerini etkileşimli olarak nasıl ifade edeceğinizi açıklanmaktadır. [Azure bilişsel arama (Önizleme) Için Visual Studio Code uzantısı](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurecognitivesearch) ve bu yönergeler ile, herhangi bir kod yazmadan önce istek gönderebilir ve yanıtları görüntüleyebilirsiniz.
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
-
-Makale, Azure Bilişsel Arama REST API 'Leri için bir Visual Studio kod uzantısı (Önizleme) kullanır.
 
 > [!IMPORTANT] 
 > Bu özellik şu anda genel önizleme aşamasındadır. Önizleme işlevselliği, bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yükleri için önerilmez. Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu hızlı başlangıç için aşağıdaki hizmetler ve araçlar gereklidir. 
 
@@ -35,18 +33,6 @@ Bu hızlı başlangıç için aşağıdaki hizmetler ve araçlar gereklidir.
 + [Visual Studio Code için Azure Bilişsel Arama (Önizleme)](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurecognitivesearch)
 
 + Geçerli aboneliğinizde [bir Azure bilişsel arama hizmeti oluşturun](search-create-service-portal.md) veya [var olan bir hizmeti bulun](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) . Bu hızlı başlangıç için ücretsiz bir hizmet kullanabilirsiniz. 
-
-## <a name="copy-a-key-and-url"></a>Anahtar ve URL 'YI kopyalama
-
-REST çağrıları için her istekte hizmet URL'sinin ve bir erişim anahtarının iletilmesi gerekir. Her ikisiyle de bir arama hizmeti oluşturulur. bu nedenle, aboneliğinize Azure Bilişsel Arama eklediyseniz, gerekli bilgileri almak için aşağıdaki adımları izleyin:
-
-1. [Azure Portal oturum açın](https://portal.azure.com/)ve arama hizmetine **genel bakış** sayfasında URL 'yi alın. Örnek uç nokta `https://mydemo.search.windows.net` şeklinde görünebilir.
-
-1. **Ayarlar**  >  **anahtarlar**' da, hizmette tam haklar için bir yönetici anahtarı alın. Üzerinde bir tane almanız gereken iş sürekliliği için iki adet değiştirilebilir yönetici anahtarı vardır. Nesneleri eklemek, değiştirmek ve silmek için isteklerde birincil veya ikincil anahtarı kullanabilirsiniz.
-
-![HTTP uç noktası ve erişim anahtarı al](media/search-get-started-rest/get-url-key.png "HTTP uç noktası ve erişim anahtarı al")
-
-Tüm istekler hizmetinize gönderilen her istekte bir API anahtarı gerektirir. İstek başına geçerli bir anahtara sahip olmak, isteği gönderen uygulama ve bunu işleyen hizmet arasında güven oluşturur.
 
 ## <a name="install-the-extension"></a>Uzantıyı yükleme
 

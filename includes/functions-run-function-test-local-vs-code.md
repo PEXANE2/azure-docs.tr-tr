@@ -4,12 +4,12 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 01/28/2021
 ms.author: glenga
-ms.openlocfilehash: 1a0521f76a2cf986f7036d1f701a40a156d16ee7
-ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
+ms.openlocfilehash: 5bc1d2ddb5b9ddb185a8349fb42d5f5db79c1498
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99493491"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103201378"
 ---
 ## <a name="run-the-function-locally"></a>İşlevi yerel olarak çalıştırma
 
@@ -24,8 +24,10 @@ Visual Studio Code, Azure 'da yayımlamadan önce bu projeyi yerel geliştirme b
 1. Temel araçlar çalışırken **Azure: Functions** alanına gidin. **İşlevler** altında **Yerel proje**  >  **işlevleri**' ni genişletin. İşlevi sağ tıklatın (Windows) veya <kbd>CTRL</kbd> + tıklatın (MacOS) `HttpExample` ve **Şimdi işlevi Çalıştır...** seçeneğini belirleyin.
 
     :::image type="content" source="media/functions-run-function-test-local-vs-code/execute-function-now.png" alt-text="İşlevi şimdi Visual Studio Code Çalıştır":::
+    
+1. **İstek gövdesi gir** bölümünde istek iletisi gövdesi değerini görürsünüz `{ "name": "Azure" }` . Bu istek iletisini işlevinizde göndermek için ENTER tuşuna basın. 
 
-1. **İstek gövdesi gir** bölümünde istek iletisi gövdesi değerini görürsünüz `{ "name": "Azure" }` . Bu istek iletisini işlevinizde göndermek için ENTER tuşuna basın.  
+   Bunun yerine, <http://localhost:7071/api/HttpExample> bir Web tarayıcısında adrese BIR http get isteği gönderirsiniz.
 
 1. İşlev yerel olarak yürütüldüğünde ve bir yanıt döndürdüğünde Visual Studio Code bir bildirim tetiklenir. İşlev yürütme hakkında bilgi, **Terminal** panelinde gösterilir.
 

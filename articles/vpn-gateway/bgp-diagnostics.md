@@ -5,20 +5,72 @@ description: Sorun giderme için BGP ile ilgili önemli bilgileri görüntüleyi
 services: vpn-gateway
 author: anzaman
 ms.service: vpn-gateway
-ms.devlang: powershell
 ms.topic: sample
-ms.date: 02/22/2021
+ms.date: 03/10/2021
 ms.author: alzam
-ms.openlocfilehash: 097568dddd5c8568d4523cdeb05ab0c889c31670
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: f97bbccc980705699af822ba2730233239cdfd5f
+ms.sourcegitcommit: 6776f0a27e2000fb1acb34a8dddc67af01ac14ac
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101748237"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103148944"
 ---
-# <a name="view-bgp-metrics-and-status-using-powershell"></a>PowerShell kullanarak BGP ölçümlerini ve durumunu görüntüleme
+# <a name="view-bgp-metrics-and-status"></a>BGP ölçümlerini ve durumunu görüntüleme
 
-Tüm BGP eşlerini ve durumunu görüntülemek için **Get-AzVirtualNetworkGatewayBGPPeerStatus** komutunu kullanın
+Azure portal veya Azure PowerShell kullanarak BGP ölçümlerini ve durumunu görüntüleyebilirsiniz.
+
+## <a name="azure-portal"></a>Azure portalı
+
+Azure portal BGP eşlerini, öğrenilen yolları ve tanıtılan yolları görüntüleyebilirsiniz. Ayrıca, bu verileri içeren. csv dosyalarını da indirebilirsiniz.
+
+1. [Azure Portal](https://portal.azure.com), sanal ağ geçidinize gidin.
+1. **İzleme** altında **BGP eşleri ' nı seçerek BGP** eşleri sayfasını açın.
+
+   :::image type="content" source="./media/bgp-diagnostics/bgp-portal.jpg" alt-text="Azure portal ölçümlerin ekran görüntüsü.":::
+
+### <a name="learned-routes"></a>Öğrenilen rotalar
+
+1. Portalda en fazla 50 öğrenilen yolu görüntüleyebilirsiniz.
+
+   :::image type="content" source="./media/bgp-diagnostics/learned-routes.jpg" alt-text="Öğrenilen yolların ekran görüntüsü.":::
+
+1. Öğrenilmiş rotalar dosyasını da indirebilirsiniz. 50 'den fazla öğrenilen yol varsa, bunların tümünü görüntülemenin tek yolu. csv dosyasını indirip görüntülemektir. İndirmek için, **öğrenilen yolları indir**' i seçin.
+
+   :::image type="content" source="./media/bgp-diagnostics/download-routes.jpg" alt-text="Öğrenilen yolların indirileceğini ekran görüntüsü.":::
+1. Sonra dosyayı görüntüleyin.
+
+   :::image type="content" source="./media/bgp-diagnostics/learned-routes-file.jpg" alt-text="İndirilen öğrenilen yolların ekran görüntüsü.":::
+
+### <a name="advertised-routes"></a>Tanıtılan yollar
+
+1. Tanıtılan yolları görüntülemek için, görüntülemek istediğiniz ağın sonundaki **...** öğesini seçin ve ardından **tanıtılan yolları görüntüle**' ye tıklayın.
+
+   :::image type="content" source="./media/bgp-diagnostics/select-route.png" alt-text="Tanıtılan yolların nasıl görüntüleneceğini gösteren ekran görüntüsü." lightbox="./media/bgp-diagnostics/route-expand.png":::
+1. **Eşe tanıtılan yollar** sayfasında, en fazla 50 yol görüntüleyebilirsiniz.
+
+   :::image type="content" source="./media/bgp-diagnostics/advertised-routes.jpg" alt-text="Tanıtılan yolların ekran görüntüsü.":::
+1. Ayrıca tanıtılan yollar dosyasını da indirebilirsiniz. 50 'den fazla tanıtılan yol varsa, bunların tümünü görüntülemenin tek yolu. csv dosyasını indirip görüntülemektir. İndirmek için **tanıtılan yolları indir**' i seçin.
+
+   :::image type="content" source="./media/bgp-diagnostics/download-advertised.jpg" alt-text="İndirilen tanıtılan rotaları seçme ekran görüntüsü.":::
+1. Sonra dosyayı görüntüleyin.
+
+   :::image type="content" source="./media/bgp-diagnostics/advertised-routes-file.jpg" alt-text="İndirilen tanıtılan yolların ekran görüntüsü.":::
+
+### <a name="bgp-peers"></a>BGP eşleri
+
+1. Portalda en fazla 50 BGP eşi görüntüleyebilirsiniz.
+
+   :::image type="content" source="./media/bgp-diagnostics/peers.jpg" alt-text="BGP eşlerinin ekran görüntüsü.":::
+1. BGP eşleri dosyasını da indirebilirsiniz. 50 ' den fazla BGP eşi varsa, bunların tümünü görüntülemenin tek yolu. csv dosyasını indirip görüntülemektir. İndirmek için portal sayfasında **BGP eşlerini indir** ' i seçin.
+
+   :::image type="content" source="./media/bgp-diagnostics/download-peers.jpg" alt-text="BGP eşlerini indirme ekran görüntüsü.":::
+1. Sonra dosyayı görüntüleyin.
+
+   :::image type="content" source="./media/bgp-diagnostics/peers-file.jpg" alt-text="İndirilen BGP eşlerinin ekran görüntüsü.":::
+
+## <a name="powershell"></a>PowerShell
+
+Tüm BGP eşlerini ve durumunu görüntülemek için **Get-AzVirtualNetworkGatewayBGPPeerStatus** komutunu kullanın.
 
 [!INCLUDE [VPN Gateway PowerShell instructions](../../includes/vpn-gateway-cloud-shell-powershell-about.md)]
 
@@ -71,14 +123,6 @@ Ağ geçidinin BGP üzerinden eşlerine duyurdığı tüm yolları görüntülem
 Get-AzVirtualNetworkGatewayAdvertisedRoute -VirtualNetworkGatewayName gatewayName -ResourceGroupName resourceGroupName -Peer 10.0.0.254
 ```
 
-## <a name="clean-up-resources"></a>Kaynakları temizleme
-
-Oluşturduğunuz kaynaklara artık ihtiyacınız kalmadığında, kaynak grubunu silmek için [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) komutunu kullanın. Bu komut, kaynak grubunu ve içerdiği tüm kaynakları siler.
-
-```azurepowershell-interactive
-Remove-AzResourceGroup -Name ResourceGroupName
-```
-
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure PowerShell modülü hakkında daha fazla bilgi için bkz. [Azure PowerShell belgeleri](/powershell/azure/).
+BGP hakkında daha fazla bilgi için bkz. [VPN Gateway BGP 'Yi yapılandırma](bgp-howto.md).

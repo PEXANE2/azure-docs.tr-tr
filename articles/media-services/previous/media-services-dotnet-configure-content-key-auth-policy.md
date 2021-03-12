@@ -3,7 +3,7 @@ title: Media Services .NET SDK 'sını kullanarak bir içerik anahtarı yetkilen
 description: Media Services .NET SDK kullanarak bir içerik anahtarı için yetkilendirme ilkesi yapılandırmayı öğrenin.
 services: media-services
 documentationcenter: ''
-author: mingfeiy
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.assetid: 1a0aedda-5b87-4436-8193-09fc2f14310c
@@ -12,15 +12,15 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/18/2019
-ms.author: juliako
+ms.date: 03/10/2021
+ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: bdaa823a14d99a16aa0f2e71483086d883b0515f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 63cc20a9d7f6878961519aa28ae6478d9145852d
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89263782"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103014222"
 ---
 # <a name="configure-a-content-key-authorization-policy-by-using-the-media-services-net-sdk"></a>Media Services .NET SDK 'sını kullanarak bir içerik anahtarı yetkilendirme ilkesi yapılandırma
 
@@ -41,7 +41,7 @@ Media Services, anahtar isteğinde bulunan kullanıcıların kimlik doğrulamas�
 
 Media Services STS sağlamıyor. Belirteçleri vermek için özel bir STS oluşturabilir veya Azure Access Control Service kullanabilirsiniz. STS, belirtilen anahtarla imzalanmış bir belirteç oluşturacak ve belirteç kısıtlama yapılandırmasında (Bu makalede açıklandığı gibi) belirttiğiniz talepler verecek şekilde yapılandırılmalıdır. Belirteç geçerliyse ve belirteçteki talepler içerik anahtarı için yapılandırılananlarla eşleşiyorsa, Media Services anahtar teslim hizmeti, istemciye şifreleme anahtarını döndürür.
 
-Daha fazla bilgi için aşağıdaki makalelere bakın:
+Daha fazla bilgi için aşağıdaki makaleleri inceleyin:
 
 - [JWT belirteci kimlik doğrulaması](http://www.gtrifonov.com/2015/01/03/jwt-token-authentication-in-azure-media-services-and-dynamic-encryption/)
 - [Azure Media Services OWIN MVC tabanlı uygulama Azure Active Directory ve JWT taleplerine göre içerik anahtarı teslimini tümleştirin](http://www.gtrifonov.com/2015/01/24/mvc-owin-azure-media-services-ad-integration/)
@@ -437,7 +437,7 @@ Anahtar yetkilendirme ilkesi için kullanılan belirteç kısıtlamasına dayal�
 ## <a name="media-services-learning-paths"></a>Media Services’i öğrenme yolları
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Geri bildirimde bulunma
+## <a name="provide-feedback"></a>Geribildirim gönderme
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="next-steps"></a>Sonraki adımlar

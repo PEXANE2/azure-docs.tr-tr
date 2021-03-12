@@ -3,14 +3,14 @@ title: Karma Runbook Worker üzerinde Azure Otomasyonu runbook 'ları çalışt�
 description: Bu makalede, karma Runbook Worker ile yerel veri merkezinizdeki veya diğer bulut sağlayıcınızdaki makinelerde runbook 'ların nasıl çalıştırılacağı açıklanır.
 services: automation
 ms.subservice: process-automation
-ms.date: 01/29/2021
+ms.date: 03/10/2021
 ms.topic: conceptual
-ms.openlocfilehash: a6827f8629423b9ed3adc362d3d05fd740e25a65
-ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
+ms.openlocfilehash: 6d1f504458aed440464015a34479d75992fe5c45
+ms.sourcegitcommit: 6776f0a27e2000fb1acb34a8dddc67af01ac14ac
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100633317"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103149384"
 ---
 # <a name="run-runbooks-on-a-hybrid-runbook-worker"></a>Karma Runbook Çalışanı üzerinde runbook çalıştırma
 
@@ -56,10 +56,10 @@ Azure sanal makinelerinde karma runbook çalışanları, Azure kaynaklarında ki
 Karma runbook çalışanında Azure kaynakları için yönetilen bir kimlik kullanmak üzere sonraki adımları izleyin:
 
 1. Azure VM oluşturma.
-2. VM 'de Azure kaynakları için yönetilen kimlikleri yapılandırın. Bkz. [Azure Portal kullanarak BIR VM 'de Azure kaynakları için yönetilen kimlikleri yapılandırma](../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md#enable-system-assigned-managed-identity-on-an-existing-vm).
-3. Kaynak Yöneticisi içindeki bir kaynak grubuna VM erişimi verin. [Kaynak Yöneticisi erişmek Için WINDOWS VM sistem tarafından atanan yönetilen kimlik kullanma](../active-directory/managed-identities-azure-resources/tutorial-windows-vm-access-arm.md#grant-your-vm-access-to-a-resource-group-in-resource-manager)bölümüne bakın.
-4. Karma runbook çalışanını VM 'ye yükler. Bkz. [Windows karma Runbook Worker dağıtma](automation-windows-hrw-install.md) veya [Linux karma Runbook Worker dağıtma](automation-linux-hrw-install.md).
-5. Runbook 'u, [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) cmdlet 'ini `Identity` Azure kaynaklarında kimlik doğrulaması için parametresiyle birlikte kullanacak şekilde güncelleştirin. Bu yapılandırma, farklı çalıştır hesabı kullanma gereksinimini azaltır ve ilişkili hesap yönetimini gerçekleştirir.
+1. VM 'de Azure kaynakları için yönetilen kimlikleri yapılandırın. Bkz. [Azure Portal kullanarak BIR VM 'de Azure kaynakları için yönetilen kimlikleri yapılandırma](../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md#enable-system-assigned-managed-identity-on-an-existing-vm).
+1. Kaynak Yöneticisi içindeki bir kaynak grubuna VM erişimi verin. [Kaynak Yöneticisi erişmek Için WINDOWS VM sistem tarafından atanan yönetilen kimlik kullanma](../active-directory/managed-identities-azure-resources/tutorial-windows-vm-access-arm.md#grant-your-vm-access-to-a-resource-group-in-resource-manager)bölümüne bakın.
+1. Karma runbook çalışanını VM 'ye yükler. Bkz. [Windows karma Runbook Worker dağıtma](automation-windows-hrw-install.md) veya [Linux karma Runbook Worker dağıtma](automation-linux-hrw-install.md).
+1. Runbook 'u, [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) cmdlet 'ini `Identity` Azure kaynaklarında kimlik doğrulaması için parametresiyle birlikte kullanacak şekilde güncelleştirin. Bu yapılandırma, farklı çalıştır hesabı kullanma gereksinimini azaltır ve ilişkili hesap yönetimini gerçekleştirir.
 
     ```powershell
     # Connect to Azure using the managed identities for Azure resources identity configured on the Azure VM that is hosting the hybrid runbook worker
@@ -76,20 +76,24 @@ Karma runbook çalışanında Azure kaynakları için yönetilen bir kimlik kull
 
 Runbook 'unuzu yerel kaynaklara kendi kimlik doğrulamasını sağlamak yerine, karma Runbook Worker grubu için bir farklı çalıştır hesabı belirtebilirsiniz. Farklı Çalıştır hesabı belirtmek için, yerel kaynaklara erişimi olan bir [kimlik bilgisi varlığı](./shared-resources/credentials.md) tanımlamanız gerekir. Bu kaynaklar, sertifika depolarını ve tüm runbook 'ların gruptaki bir karma runbook çalışanında bu kimlik bilgileri altında çalışan tüm runbook 'ları içerir.
 
-Kimlik bilgisinin Kullanıcı adı aşağıdaki biçimlerden birinde olmalıdır:
+- Kimlik bilgisinin Kullanıcı adı aşağıdaki biçimlerden birinde olmalıdır:
 
-* ın
-* username@domain
-* Kullanıcı adı (Şirket içi bilgisayarda yerel hesaplar için)
+   * ın
+   * username@domain
+   * Kullanıcı adı (Şirket içi bilgisayarda yerel hesaplar için)
+
+- PowerShell runbook 'unu **dışarı aktarma-Runascercertificate Atetohybridworker**' ı kullanmak için, yerel makineye Azure Otomasyonu için az modüller yüklemeniz gerekir.
+
+#### <a name="use-a-credential-asset-to-specify-a-run-as-account"></a>Farklı Çalıştır hesabı belirtmek için bir kimlik bilgisi varlığı kullanın
 
 Karma Runbook Worker grubu için bir farklı çalıştır hesabı belirtmek için aşağıdaki yordamı kullanın:
 
 1. Yerel kaynaklara erişimi olan bir [kimlik bilgisi varlığı](./shared-resources/credentials.md) oluşturun.
-2. Azure portal Otomasyon hesabını açın.
-3. **Karma çalışanı grupları**' nı seçin ve ardından belirli grubu seçin.
-4. **Tüm ayarlar**' ı ve ardından **karma çalışan grubu ayarları**' nı seçin.
-5. **Farklı Çalıştır** değerini **varsayılan** olarak **özel** olarak değiştirin.
-6. Kimlik bilgilerini seçin ve **Kaydet**' e tıklayın.
+1. Azure portal Otomasyon hesabını açın.
+1. **Karma çalışanı grupları**' nı seçin ve ardından belirli grubu seçin.
+1. **Tüm ayarlar**' ı ve ardından **karma çalışan grubu ayarları**' nı seçin.
+1. **Farklı Çalıştır** değerini **varsayılan** olarak **özel** olarak değiştirin.
+1. Kimlik bilgilerini seçin ve **Kaydet**' e tıklayın.
 
 ## <a name="install-run-as-account-certificate"></a><a name="runas-script"></a>Farklı Çalıştır hesabı sertifikası 'nı yükler
 
@@ -178,11 +182,11 @@ Get-AzAutomationAccount | Select-Object AutomationAccountName
 Farklı Çalıştır hesabını hazırlamayı tamamlayacak:
 
 1. **Export-Runascercertificate Meditohybridworker** runbook 'unu bir **. ps1** uzantısıyla bilgisayarınıza kaydedin.
-2. Otomasyon hesabınıza aktarın.
-3. Değişkenin değerini kendi parolanızla değiştirerek runbook 'u düzenleyin `Password` .
-4. Runbook 'u yayımlayın.
-5. Çalıştıran karma runbook çalışanı grubunu hedefleyerek runbook 'u çalıştırın ve farklı çalıştır hesabını kullanarak runbook 'ların kimliğini doğrular. 
-6. Sertifikayı yerel makine deposuna aktarma girişimini rapor etmek ve ardından birden çok satır izlemek için iş akışını inceleyin. Bu davranış, aboneliğinizde kaç tane Otomasyon hesabı tanımladığınıza ve kimlik doğrulamasının başarı derecesine bağlıdır.
+1. Otomasyon hesabınıza aktarın.
+1. Değişkenin değerini kendi parolanızla değiştirerek runbook 'u düzenleyin `Password` .
+1. Runbook 'u yayımlayın.
+1. Çalıştıran karma runbook çalışanı grubunu hedefleyerek runbook 'u çalıştırın ve farklı çalıştır hesabını kullanarak runbook 'ların kimliğini doğrular. 
+1. Sertifikayı yerel makine deposuna aktarma girişimini rapor etmek ve ardından birden çok satır izlemek için iş akışını inceleyin. Bu davranış, aboneliğinizde kaç tane Otomasyon hesabı tanımladığınıza ve kimlik doğrulamasının başarı derecesine bağlıdır.
 
 ## <a name="work-with-signed-runbooks-on-a-windows-hybrid-runbook-worker"></a>Windows karma Runbook Worker 'da imzalı runbook 'larla çalışma
 
@@ -267,13 +271,13 @@ GPG kimlik anahtarlığı ve KeyPair oluşturmak için karma Runbook Worker [nxa
     sudo su – nxautomation
     ```
 
-2. **Nxautomation**'ı kullanırken GPG KeyPair oluşturun. GPG, adımlarda size rehberlik eder. Ad, e-posta adresi, sona erme saati ve parola sağlamanız gerekir. Daha sonra, makinenin oluşturulması için makinede yeterli entropi olana kadar bekler.
+1. **Nxautomation**'ı kullanırken GPG KeyPair oluşturun. GPG, adımlarda size rehberlik eder. Ad, e-posta adresi, sona erme saati ve parola sağlamanız gerekir. Daha sonra, makinenin oluşturulması için makinede yeterli entropi olana kadar bekler.
 
     ```bash
     sudo gpg --generate-key
     ```
 
-3. GPG dizini sudo ile oluşturulduğundan, aşağıdaki komutu kullanarak sahibini **nxautomation** olarak değiştirmeniz gerekir.
+1. GPG dizini sudo ile oluşturulduğundan, aşağıdaki komutu kullanarak sahibini **nxautomation** olarak değiştirmeniz gerekir.
 
     ```bash
     sudo chown -R nxautomation ~/.gnupg

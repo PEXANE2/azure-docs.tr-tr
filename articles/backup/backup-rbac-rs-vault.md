@@ -4,12 +4,12 @@ description: Kurtarma Hizmetleri kasasındaki yedekleme yönetimi işlemlerine e
 ms.reviewer: utraghuv
 ms.topic: conceptual
 ms.date: 03/09/2021
-ms.openlocfilehash: 179cb6efcff4bcf50a64a6d58f861622e853b02b
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.openlocfilehash: 0b321a5f33bd75ce8615d6d2a90442a83d9fff67
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 03/10/2021
-ms.locfileid: "102553417"
+ms.locfileid: "102613451"
 ---
 # <a name="use-azure-role-based-access-control-to-manage-azure-backup-recovery-points"></a>Azure Backup kurtarma noktalarını yönetmek için Azure rol tabanlı erişim denetimi kullanma
 
@@ -39,7 +39,7 @@ Aşağıdaki tabloda, bu işlemi gerçekleştirmek için gereken yedekleme yöne
 | | Sanal Makine Katılımcısı | VM kaynağı |  Alternatif olarak, yerleşik rol yerine, şu izinlere sahip özel bir rol düşünebilirsiniz: Microsoft. COMPUTE/virtualMachines/Write |
 | VM 'nin isteğe bağlı yedeklemesi | Yedekleme Operatörü | Kurtarma Hizmetleri kasası |   |
 | Sanal makineyi geri yükleme | Yedekleme Operatörü | Kurtarma Hizmetleri kasası |   |
-| | Katılımcı | VM 'nin dağıtılacağı kaynak grubu |   Alternatif olarak, yerleşik rol yerine, aşağıdaki izinlere sahip olan özel bir rol düşünebilirsiniz: Microsoft. resources/abonelikler/resourceGroups/Write Microsoft. DomainRegistration/Domains/Write, Microsoft. Domain/virtualMachines/Write Microsoft. Network/virtualNetworks/Read/ACTION | 
+| | Katılımcı | VM 'nin dağıtılacağı kaynak grubu |   Alternatif olarak, yerleşik rol yerine, aşağıdaki izinlere sahip olan özel bir rol düşünebilirsiniz: Microsoft. resources/abonelikler/resourceGroups/Write Microsoft. DomainRegistration/Domains/Write, Microsoft. Domain/virtualMachines/Write Microsoft. Network/virtualNetworks/Read/ACTION |
 | | Sanal Makine Katılımcısı | Yedeklenen kaynak VM |   Alternatif olarak, yerleşik rol yerine, şu izinlere sahip özel bir rol düşünebilirsiniz: Microsoft. COMPUTE/virtualMachines/Write |
 | Yönetilmeyen diskleri geri yükleme VM yedeklemesi | Yedekleme Operatörü | Kurtarma Hizmetleri kasası |
 | | Sanal Makine Katılımcısı | Yedeklenen kaynak VM | Alternatif olarak, yerleşik rol yerine, şu izinlere sahip özel bir rol düşünebilirsiniz: Microsoft. COMPUTE/virtualMachines/Write |
@@ -50,6 +50,7 @@ Aşağıdaki tabloda, bu işlemi gerçekleştirmek için gereken yedekleme yöne
 | | Katılımcı | Yönetilen disklerin geri yükleneceği kaynak grubu | Alternatif olarak, yerleşik rol yerine, şu izinlere sahip özel bir rol düşünebilirsiniz: Microsoft. resources/abonelikler/resourceGroups/Write|
 | Tek tek dosyaları VM yedeklemesinden geri yükleme | Yedekleme Operatörü | Kurtarma Hizmetleri kasası |
 | | Sanal Makine Katılımcısı | Yedeklenen kaynak VM | Alternatif olarak, yerleşik rol yerine, şu izinlere sahip özel bir rol düşünebilirsiniz: Microsoft. COMPUTE/virtualMachines/Write |
+| Çapraz bölge geri yükleme | Yedekleme Operatörü | Kurtarma Hizmetleri kasasının aboneliği | Bu, yukarıda bahsedilen geri yükleme izinlerinin yanı sıra. Özellikle CRR için yerleşik rol yerine, şu izinlere sahip özel bir rol düşünebilirsiniz: "Microsoft. RecoveryServices/Locations/backupAadProperties/Read" "Microsoft. RecoveryServices/Locations/backupCrrJobs/ACTION" "Microsoft. RecoveryServices/Locations/backupCrrJob/ACTION" "Microsoft. RecoveryServices/Locations/backupCrossRegionRestore/Action" "Microsoft. RecoveryServices/Locations/Backupcrroperationsonuçları/Read" "Microsoft. RecoveryServices/Locations/backupCrrOperationsStatus/Read" |
 | Azure VM yedeklemesi için yedekleme ilkesi oluşturma | Yedek Katılımcısı | Kurtarma Hizmetleri kasası |
 | Azure VM yedeklemesi 'nin yedekleme ilkesini değiştirme | Yedek Katılımcısı | Kurtarma Hizmetleri kasası |
 | Azure VM yedeklemesi 'nin yedekleme ilkesini silme | Yedek Katılımcısı | Kurtarma Hizmetleri kasası |

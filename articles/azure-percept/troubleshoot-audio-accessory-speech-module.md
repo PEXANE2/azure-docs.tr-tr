@@ -1,18 +1,18 @@
 ---
-title: Azure Percept ses ve konuşma modülleriyle ilgili sorunları giderme
-description: Taslak deneyimi sırasında bulunan daha yaygın sorunlardan bazıları için sorun giderme ipuçları alın
+title: Azure Percept Audio ve konuşma modülüyle ilgili sorunları giderme
+description: Azure Percept Audio ve azureearspeechclientmodule için sorun giderme ipuçları alın
 author: mimcco
 ms.author: mimcco
 ms.service: azure-percept
 ms.topic: how-to
 ms.date: 02/18/2021
 ms.custom: template-how-to
-ms.openlocfilehash: a3877ea680e7b4c705f127c54e0fa10c45d3b51d
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.openlocfilehash: f34013bdb14481bfe872a9b3c4234d603bc2d7ec
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102097984"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102635578"
 ---
 # <a name="azure-percept-audio-and-speech-module-troubleshooting"></a>Azure Percept ses ve konuşma modülü sorunlarını giderme
 
@@ -23,13 +23,13 @@ Ses Yardımcısı uygulama sorunlarını gidermek için aşağıdaki yönergeler
 Bu komutları çalıştırmak için, [Azure PERCEPT DK Wi-Fi erişim noktasına bağlanın ve SSH üzerinden Dev Kit 'e bağlanın](./how-to-ssh-into-percept-dk.md) ve SSH terminaline komutları girin.
 
 ```console
- iotedge logs azureearspeechclientmodule
+sudo iotedge logs azureearspeechclientmodule
 ```
 
 Daha fazla analiz için herhangi bir çıktıyı bir. txt dosyasına yönlendirmek için aşağıdaki sözdizimini kullanın:
 
 ```console
-[command] > [file name].txt
+sudo [command] > [file name].txt
 ```
 
 Çıktıyı bir. txt dosyasına yönlendirdikten sonra SCP aracılığıyla dosyayı ana bilgisayara kopyalayın:
@@ -52,18 +52,18 @@ scp [remote username]@[IP address]:[remote file path]/[file name].txt [local hos
 
 Cihazın hangi durumda olduğunu anlamak için LED göstergelerini kullanabilirsiniz. Genellikle modülün *Güç açma* sonrasında tamamen başlatılması 2 dakika sürer. Başlatma adımlarını izleyerek, şunları görürsünüz:
 
-1. 1 merkezden beyaz ışığı-cihaz açık. 
-2. 1 Merkez beyaz yanıp sönen-kimlik doğrulama devam ediyor. 
+1. 1 merkezden beyaz ışığı-cihaz açık.
+2. 1 Merkez beyaz yanıp sönen-kimlik doğrulama devam ediyor.
 3. Cihaz kimlik doğrulamasından ve kullanıma hazırlandıktan sonra, üç LED 'in tümü mavi olarak değişir.
 
-|GELIŞTIRMESINE|   LED durumu|  Ear SoM durumu|
-|---|------------|----------------| 
-|L02|   1x beyaz, statik açık |Açma |
-|L02|   1x beyaz, 0,5 Hz yanıp sönen|  Kimlik doğrulama devam ediyor |
-|L01 & L02 & L03|   3x mavisi, statik|     Anahtar sözcük bekleniyor|
-|L01 & L02 & L03|   LED dizisi yanıp sönme, 20 fps | Dinleme veya konuşuyor|
-|L01 & L02 & L03|   LED dizisi yarış, 20 fps|    Düğün|
-|L01 & L02 & L03|   3x kırmızı, statik | Mikrofon|
+|GELIŞTIRMESINE|LED durumu|Ear SoM durumu|
+|---|---------|--------------|
+|L02|1x beyaz, statik açık|Açma |
+|L02|1x beyaz, 0,5 Hz yanıp sönen|Kimlik doğrulama devam ediyor |
+|L01 & L02 & L03|3x mavisi, statik|Anahtar sözcük bekleniyor|
+|L01 & L02 & L03|LED dizisi yanıp sönme, 20 fps |Dinleme veya konuşuyor|
+|L01 & L02 & L03|LED dizisi yarış, 20 fps|Düğün|
+|L01 & L02 & L03|3x kırmızı, statik |Mikrofon|
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -4,12 +4,12 @@ description: Azure Backup hizmeti için destek ayarlarının ve sınırlamaları
 ms.topic: conceptual
 ms.date: 02/17/2019
 ms.custom: references_regions
-ms.openlocfilehash: 9e20c21694678acf7be13ccbbe9cce9af38c32c5
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.openlocfilehash: d8ffaf2c5aa32e8e0f851510adb58a78167abccb
+ms.sourcegitcommit: 6776f0a27e2000fb1acb34a8dddc67af01ac14ac
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98915718"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103149044"
 ---
 # <a name="support-matrix-for-azure-backup"></a>Azure Backup için destek matrisi
 
@@ -150,10 +150,10 @@ Azure Backup, veri kullanılabilirliğini ve dayanıklılık özelliğini güçl
 
 | Yedekleme yönetimi türü | Desteklenir                                                    | Desteklenen bölgeler |
 | ---------------------- | ------------------------------------------------------------ | ----------------- |
-| Azure VM               | Hem yönetilen hem de yönetilmeyen diskler içeren Azure VM 'Leri için desteklenir. Klasik VM 'Ler için desteklenmez. | Fransa Orta, Avustralya Orta, Güney Afrika Kuzey, BAE Kuzey, İsviçre Kuzey, Almanya Orta Batı, Norveç Doğu dışında tüm Azure genel bölgelerinde kullanılabilir. <br>Bu bölgelerde kullanım hakkında daha fazla bilgi için, iletişim kurun [AskAzureBackupTeam@microsoft.com](mailto:AskAzureBackupTeam@microsoft.com) |
-| SQL/SAP HANA | Önizlemede                                                      | Fransa Orta, Avustralya Orta, Güney Afrika Kuzey, BAE Kuzey, İsviçre Kuzey, Almanya Orta Batı, Norveç Doğu dışında tüm Azure genel bölgelerinde kullanılabilir. <br>Bu bölgelerde kullanım hakkında daha fazla bilgi için, iletişim kurun [AskAzureBackupTeam@microsoft.com](mailto:AskAzureBackupTeam@microsoft.com) |
-| MARS Aracısı/şirket içi  | Hayır                                                           | Yok               |
-| AFS (Azure dosya paylaşımları)                 | Hayır                                                           | Yok               |
+| Azure VM               | Hem yönetilen hem de yönetilmeyen diskler içeren Azure VM 'Leri için desteklenir. Klasik VM 'Ler için desteklenmez. | Fransa Orta, Avustralya Orta, Güney Afrika Kuzey, BAE Kuzey, İsviçre Kuzey, Almanya Orta Batı, Norveç Doğu dışında tüm Azure genel bölgelerinde ve bağımsız bölgelerde kullanılabilir. <br>Bu bölgelerde kullanım hakkında daha fazla bilgi için, iletişim kurun [AskAzureBackupTeam@microsoft.com](mailto:AskAzureBackupTeam@microsoft.com) |
+| SQL/SAP HANA | Önizlemede                                                      | Fransa Orta, Avustralya Orta, Güney Afrika Kuzey, BAE Kuzey, İsviçre Kuzey, Almanya Orta Batı, Norveç Doğu dışında tüm Azure genel bölgelerinde ve bağımsız bölgelerde kullanılabilir. <br>Bu bölgelerde kullanım hakkında daha fazla bilgi için, iletişim kurun [AskAzureBackupTeam@microsoft.com](mailto:AskAzureBackupTeam@microsoft.com) |
+| MARS Aracısı/şirket içi  | No                                                           | Yok               |
+| AFS (Azure dosya paylaşımları)                 | No                                                           | Yok               |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
