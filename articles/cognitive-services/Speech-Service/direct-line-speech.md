@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: trbye
-ms.openlocfilehash: 501a0e954efbdbc9a0396fd94c915efaf0fde9fc
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: 6eb689c2e93b5a9cac932e428245410ba35e77d6
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98601127"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102611802"
 ---
 # <a name="what-is-direct-line-speech"></a>Direct Line Speech nedir?
 
@@ -60,11 +60,11 @@ Ses yardımcıları için doğrudan hat konuşmayı ve ilgili işlevselliği, [s
 ## <a name="reference-docs"></a>Başvuru belgeleri
 
 * [Konuşma SDK'sı](./speech-sdk.md)
-* [Azure Bot Hizmeti](/azure/bot-service/?view=azure-bot-service-4.0)
+* [Azure Bot Hizmeti](/azure/bot-service/)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [Ücretsiz bir konuşma hizmeti abonelik anahtarı alın](overview.md#try-the-speech-service-for-free)
 * [Konuşma SDK 'sını alın](speech-sdk.md)
-* [Temel bot oluşturma ve dağıtma](/azure/bot-service/bot-builder-tutorial-basic-deploy?view=azure-bot-service-4.0)
+* [Temel bot oluşturma ve dağıtma](/azure/bot-service/bot-builder-tutorial-basic-deploy)
 * [Sanal yardımcı çözümü ve kurumsal şablonu al](https://github.com/Microsoft/AI)

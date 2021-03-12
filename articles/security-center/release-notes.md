@@ -5,14 +5,14 @@ author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: reference
-ms.date: 03/10/2021
+ms.date: 03/11/2021
 ms.author: memildin
-ms.openlocfilehash: 7080f79ca85a401ddcd3d421bb4a0292994508dd
-ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
+ms.openlocfilehash: 4f2b31a4760a07779eebdd9492731ffe7e324d37
+ms.sourcegitcommit: 6776f0a27e2000fb1acb34a8dddc67af01ac14ac
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 03/11/2021
-ms.locfileid: "102636683"
+ms.locfileid: "103149651"
 ---
 # <a name="whats-new-in-azure-security-center"></a>Azure Güvenlik Merkezi 'ndeki yenilikler nelerdir?
 
@@ -35,6 +35,7 @@ Mart 'taki güncelleştirmeler şunları içerir:
 - [SQL güvenlik açığı değerlendirmesi artık "kuralı devre dışı bırak" deneyimini (Önizleme) içerir](#sql-vulnerability-assessment-now-includes-the-disable-rule-experience-preview)
 - [Güvenlik Merkezi ile tümleştirilmiş Azure Izleyici çalışma kitapları ve üç şablon sağlanmaktadır](#azure-monitor-workbooks-integrated-into-security-center-and-three-templates-provided)
 - [Mevzuat uyumluluk panosu artık Azure Denetim raporlarını içerir (Önizleme)](#regulatory-compliance-dashboard-now-includes-azure-audit-reports-preview)
+- [Öneri verileri, Azure Kaynak grafiğinde "ARG 'da keşfet" ile görüntülenebilir](#recommendation-data-can-be-viewed-in-azure-resource-graph-with-explore-in-arg)
 - [İş akışı Otomasyonu dağıtmaya yönelik ilkelere yönelik güncelleştirmeler](#updates-to-the-policies-for-deploying-workflow-automation)
 - [Artık doğrudan Azure etkinlik günlüğüne veri yazmayan iki eski öneri](#two-legacy-recommendations-no-longer-write-data-directly-to-azure-activity-log)
 
@@ -91,6 +92,17 @@ Yasal uyumluluk panosunun araç çubuğundan artık Azure ve Dynamics sertifika 
 
 :::image type="content" source="media/release-notes/audit-reports-list-regulatory-compliance-dashboard.png" alt-text="Kullanılabilir Azure denetim raporları listesini filtreleme":::
 
+
+
+### <a name="recommendation-data-can-be-viewed-in-azure-resource-graph-with-explore-in-arg"></a>Öneri verileri, Azure Kaynak grafiğinde "ARG 'da keşfet" ile görüntülenebilir
+
+Öneri ayrıntıları sayfaları artık "ARG 'da keşfet" araç çubuğu düğmesini içerir. Bu düğmeyi kullanarak bir Azure Kaynak Grafiği sorgusu açın ve önerinin verilerini bulun, dışarı aktarın ve paylaşabilirsiniz.
+
+Azure Kaynak Grafiği (ARG), güçlü filtreleme, gruplama ve sıralama özelliklerine sahip bulut ortamlarınızdaki kaynak bilgilerine anında erişim sağlar. Azure aboneliklerindeki bilgileri programlı olarak veya Azure portal içinden sorgulamak için hızlı ve verimli bir yoldur.
+
+[Azure Kaynak Grafiği (arg)](../governance/resource-graph/index.yml)hakkında daha fazla bilgi edinin.
+
+:::image type="content" source="media/release-notes/explore-in-resource-graph.png" alt-text="Azure Kaynak Grafiği 'nde öneri verilerini araştırma.":::
 
 
 ### <a name="updates-to-the-policies-for-deploying-workflow-automation"></a>İş akışı Otomasyonu dağıtmaya yönelik ilkelere yönelik güncelleştirmeler

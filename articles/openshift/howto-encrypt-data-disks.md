@@ -7,12 +7,12 @@ author: stuartatmicrosoft
 ms.author: stkirk
 ms.service: azure-redhat-openshift
 keywords: şifreleme, bYok, Aro, CMK, OpenShift, Red Hat
-ms.openlocfilehash: ca69594952c9fa547390e9a73b48ec8165145378
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.openlocfilehash: fa84096dcc44e668a6cf7ebd0369c6d3631c28d2
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102505231"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102555627"
 ---
 # <a name="encrypt-persistent-volume-claims-with-a-customer-managed-key-cmk-on-azure-red-hat-openshift-aro-preview"></a>Azure Red Hat OpenShift (ARO) ile kalıcı birim taleplerini, müşteri tarafından yönetilen anahtar (CMK) ile şifreleme (Önizleme)
 
@@ -29,7 +29,7 @@ Bu makalede şu şekilde varsayılmaktadır:
 
 * OpenShift sürüm 4,4 (veya üzeri) üzerinde önceden var olan bir ARO kümeniz var.
 
-* **OC** OpenShift komut satırı aracınız, Base64 (temel yardımcı programlar 'ın parçası) ve **az** Azure CLI yüklü.
+* **OC** OpenShift komut satırı aracınız, Base64 (coreutils parçası) ve **az** Azure CLI yüklü.
 
 * Bir genel küme Yönetici kullanıcısı (kubeadmin) olarak **OC** kullanarak Aro kümenizde oturum açarsınız.
 
@@ -43,8 +43,8 @@ Bu makalede şu şekilde varsayılmaktadır:
 ## <a name="declare-cluster--encryption-variables"></a>Küme & şifreleme değişkenlerini bildirme
 Aşağıdaki değişkenleri, müşteri tarafından yönetilen şifreleme anahtarlarını etkinleştirmek istediğiniz ARO kümeniz olduğunuz için uygun olabilecek her türlü şekilde yapılandırmanız gerekir:
 ```
-aroCluster="mycluster"             # The name of the ARO cluster that you wish to enable CMK on. This may be obtained from *az aro list -o table*
-buildRG="mycluster-rg"             # The name of the resource group used when you initially built the ARO cluster. This may be obtained from *az aro list -o table*
+aroCluster="mycluster"             # The name of the ARO cluster that you wish to enable CMK on. This may be obtained from **az aro list -o table**
+buildRG="mycluster-rg"             # The name of the resource group used when you initially built the ARO cluster. This may be obtained from **az aro list -o table**
 desName="aro-des"                  # Your Azure Disk Encryption Set name. This must be unique in your subscription.
 vaultName="aro-keyvault-1"         # Your Azure Key Vault name. This must be unique in your subscription.
 vaultKeyName="myCustomAROKey"      # The name of the key to be used within your Azure Key Vault. This is the name of the key, not the actual value of the key that you will rotate.
@@ -58,11 +58,12 @@ subId="$(az account list -o tsv | grep True | awk '{print $3}')"
 ```
 
 ## <a name="create-an-azure-key-vault-instance"></a>Azure Key Vault örneği oluşturma
-Anahtarlarınızı depolamak için bir Azure Key Vault örneği kullanılmalıdır. Temizleme koruması ve geçici silme etkinken yeni bir Key Vault oluşturun. Ardından, kendi özel anahtarınızı depolamak için kasa içinde yeni bir anahtar oluşturun:
+Anahtarlarınızı depolamak için bir Azure Key Vault örneği kullanılmalıdır. Temizleme koruması etkinken yeni bir Key Vault oluşturun. Ardından, kendi özel anahtarınızı depolamak için kasa içinde yeni bir anahtar oluşturun:
 
 ```azurecli-interactive
 # Create an Azure Key Vault resource in a supported Azure region
 az keyvault create -n $vaultName -g $buildRG --enable-purge-protection true -o table
+
 # Create the actual key within the Azure Key Vault
 az keyvault key create --vault-name $vaultName --name $vaultKeyName --protection software -o jsonc
 ```
@@ -86,20 +87,21 @@ az disk-encryption-set create -n $desName -g $buildRG --source-vault $keyVaultId
 Önceki adımlarda oluşturduğumuz disk şifreleme kümesini kullanın ve disk şifrelemeyi Azure Key Vault için erişim izni verin:
 
 ```azurecli-interactive
-# First, find the disk encryption set's AppId value.
+# First, find the disk encryption set's Azure Application ID value.
 desIdentity="$(az disk-encryption-set show -n $desName -g $buildRG --query [identity.principalId] -o tsv)"
 
 # Next, update the Key Vault security policy settings to allow access to the disk encryption set.
 az keyvault set-policy -n $vaultName -g $buildRG --object-id $desIdentity --key-permissions wrapkey unwrapkey get -o table
 
-# Now, ensure the disk encryption set can read the contents of the Azure Key Vault.
+# Now, ensure the Disk Encryption Set can read the contents of the Azure Key Vault.
 az role assignment create --assignee $desIdentity --role Reader --scope $keyVaultId -o jsonc
 ```
 
 ### <a name="obtain-other-ids-required-for-role-assignments"></a>Rol atamaları için gereken diğer kimlikleri alma
 ARO kümesinin, ARO kümesindeki kalıcı birim taleplerini (PVC) şifrelemek için disk şifreleme kümesini kullanmasına izin vermemiz gerekiyor. Bunu yapmak için yeni bir Yönetilen Hizmet Kimliği (MSI) oluşturacağız. Ayrıca, ARO MSI ve disk şifreleme kümesi için de diğer izinleri ayarlayacağız.
-```
-# First, get the application ID of the service principal used in the ARO cluster.
+
+```azurecli-interactive
+# First, get the Azure Application ID of the service principal used in the ARO cluster.
 aroSPAppId="$(oc get secret azure-credentials -n kube-system -o jsonpath='{.data.azure_client_id}' | base64 --decode)"
 
 # Next, get the object ID of the service principal used in the ARO cluster.
@@ -111,7 +113,7 @@ msiName="$aroCluster-msi"
 # Create the Managed Service Identity (MSI) required for disk encryption.
 az identity create -g $buildRG -n $msiName -o jsonc
 
-# Get the ARO Managed Service Identity application ID.
+# Get the ARO Managed Service Identity Azure Application ID.
 aroMSIAppId="$(az identity show -n $msiName -g $buildRG -o tsv --query [clientId])"
 
 # Get the resource ID for the disk encryption set and the Key Vault resource group.
@@ -132,9 +134,10 @@ az role assignment create --assignee $aroMSIAppId --role Reader --scope $buildRG
 az role assignment create --assignee $aroSPObjId --role Contributor --scope $buildRGResourceId -o jsonc
 ```
 
-## <a name="create-a-k8s-storage-class-for-encrypted-premium--ultra-disks-optional"></a>Şifrelenmiş Premium & Ultra diskler için k8s depolama sınıfı oluşturma (isteğe bağlı)
+## <a name="create-a-k8s-storage-class-for-encrypted-premium--ultra-disks"></a>Şifrelenmiş Premium & Ultra diskler için k8s depolama sınıfı oluşturma
 Premium_LRS ve UltraSSD_LRS diskleri için CMK için kullanılacak depolama sınıflarını oluşturun:
-```
+
+```azurecli-interactive
 # Premium Disks
 cat > managed-premium-encrypted-cmk.yaml<< EOF
 kind: StorageClass
@@ -174,13 +177,15 @@ EOF
 ```
 
 Daha sonra, depolama sınıfı yapılandırmasını uygulamak için bu dağıtımı ARO kümenizde çalıştırın:
-```
+
+```azurecli-interactive
 # Update cluster with the new storage classes
 oc apply -f managed-premium-encrypted-cmk.yaml
 oc apply -f managed-ultra-encrypted-cmk.yaml
 ```
-## <a name="test-encryption-with-customer-managed-keys"></a>Müşteri tarafından yönetilen anahtarlarla şifrelemeyi test etme
-Kümenizin, PVC şifrelemesi için müşteri tarafından yönetilen bir anahtar kullanıp kullanmediğini denetlemek için uygun depolama sınıfını kullanarak kalıcı bir birim talebi oluşturacağız. Aşağıdaki kod parçacığı bir pod oluşturur ve Standart diskler kullanılarak kalıcı bir birim talebi bağlar
+
+## <a name="test-encryption-with-customer-managed-keys-optional"></a>Müşteri tarafından yönetilen anahtarlarla şifrelemeyi test etme (isteğe bağlı)
+Kümenizin, PVC şifrelemesi için müşteri tarafından yönetilen bir anahtar kullanıp kullanmediğini denetlemek için yeni depolama sınıfını kullanarak kalıcı bir birim talebi oluşturacağız. Aşağıdaki kod parçacığı bir pod oluşturur ve Premium diskler kullanılarak kalıcı bir birim talebi bağlar.
 ```
 # Create a pod which uses a persistent volume claim referencing the new storage class
 cat > test-pvc.yaml<< EOF
@@ -220,9 +225,9 @@ spec:
         claimName: mypod-with-cmk-encryption-pvc
 EOF
 ```
-### <a name="apply-the-test-pod-configuration-file"></a>Test Pod yapılandırma dosyasını Uygula
+### <a name="apply-the-test-pod-configuration-file-optional"></a>Test Pod yapılandırma dosyasını Uygula (isteğe bağlı)
 Test Pod yapılandırmasını uygulamak ve yeni kalıcı birim talebinin UID 'sini döndürmek için aşağıdaki komutları yürütün. UID, diskin CMK kullanılarak şifrelendiğini doğrulamak için kullanılacaktır.
-```
+```azurecli-interactive
 # Apply the test pod configuration file and set the PVC UID as a variable to query in Azure later.
 pvcUid="$(oc apply -f test-pvc.yaml -o jsonpath='{.items[0].metadata.uid}')"
 
@@ -230,8 +235,9 @@ pvcUid="$(oc apply -f test-pvc.yaml -o jsonpath='{.items[0].metadata.uid}')"
 pvName="$(oc get pv pvc-$pvcUid -o jsonpath='{.spec.azureDisk.diskName}')"
 ```
 > [!NOTE]
-> Bazen Azure Active Directory içindeki rol atamaları uygulanırken küçük bir gecikme olur. Bu komutların hızına bağlı olarak, "tam Azure disk adını belirleme" komutuna yönelik komut başarısız olabilir. Bu durum oluşursa, diskin başarıyla sağlandığından emin olmak için **OC 'nin PVC MyPod-CMK-Encryption-PVC** çıktısını görüntüleyin. Rol ataması yayılması tamamlandıysa Pod & PVC YAML 'yi *silip* *uygulamanız* gerekir.
-### <a name="verify-pvc-disk-is-configured-with-encryptionatrestwithcustomerkey"></a>PVC diskinin "EncryptionAtRestWithCustomerKey" ile yapılandırıldığını doğrulama 
+> Bazen Azure Active Directory içindeki rol atamaları uygulanırken küçük bir gecikme olabilir. Bu yönergelerin nasıl yürütüldüğü hızına bağlı olarak, "tam Azure disk adını belirleme" komutuna yönelik komut başarısız olabilir. Bu durumda, diskin başarıyla sağlandığından emin olmak için, OC ' ın **-CMK-Encryption-PVC** ' yi tanımlayan çıktıyı gözden geçirin. Rol atama yayılması tamamlanmadıysa, Pod & PVC YAML 'yi *silip* yeniden *uygulamanız* gerekebilir.
+
+### <a name="verify-pvc-disk-is-configured-with-encryptionatrestwithcustomerkey-optional"></a>PVC diskinin "EncryptionAtRestWithCustomerKey" ile yapılandırıldığını doğrulama (Isteğe bağlı)
 Pod, CMK depolama sınıfına başvuran kalıcı bir birim talebi oluşturmalı. Aşağıdaki komutun çalıştırılması, PVC 'nin beklendiği gibi dağıtıldığını doğrular:
 ```azurecli-interactive
 # Describe the OpenShift cluster-wide persistent volume claims

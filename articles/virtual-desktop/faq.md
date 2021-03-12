@@ -3,15 +3,15 @@ title: Windows sanal masaüstü hakkında SSS-Azure
 description: Windows sanal masaüstü için sık sorulan sorular ve en iyi uygulamalar.
 author: Heidilohr
 ms.topic: conceptual
-ms.date: 10/15/2020
+ms.date: 03/09/2021
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 3bdb38b8a9590cf6191c75fdef024543c2b1c190
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 8592b679fcfbb860962bf75b882dc1a0543412c0
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101720282"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102613978"
 ---
 # <a name="windows-virtual-desktop-faq"></a>Windows Sanal Masaüstü hakkında SSS
 
@@ -140,3 +140,22 @@ Son olarak, CSP sahip hesabından kaynak sağlayıcısını etkinleştirdiyseniz
 ## <a name="how-often-should-i-turn-my-vms-on-to-prevent-registration-issues"></a>Kayıt sorunlarını engellemek için VM 'lerimi ne sıklıkta kapatmalıyım?
 
 Bir VM 'yi Windows sanal masaüstü hizmeti içindeki bir konak havuzuna kaydettikten sonra, sanal makine etkin olduğunda aracı sanal makinenin belirtecini düzenli olarak yeniler. Kayıt belirtecinin sertifikası 90 gün için geçerlidir. Bu 90 günlük sınır nedeniyle sanal makinelerinizi her 90 günde bir başlatmanız önerilir. SANAL makinenizin bu süre içinde açık olması, kayıt belirtecinin süresinin dolmasını veya geçersiz hale gelmesini engelleyecek. VM 'nizi 90 gün sonra başlattıysanız ve kayıt sorunları yaşıyorsanız, VM 'yi konak havuzundan kaldırmak için [Windows sanal masaüstü Aracısı sorun giderme kılavuzu](troubleshoot-agent.md#your-issue-isnt-listed-here-or-wasnt-resolved) 'ndaki yönergeleri izleyin, aracıyı yeniden yükleyin ve havuza kaydedin.
+
+## <a name="can-i-set-availability-options-when-creating-host-pools"></a>Konak havuzları oluştururken kullanılabilirlik seçeneklerini ayarlayabilir miyim?
+
+Evet. Windows sanal masaüstü ana bilgisayar havuzlarının, bir VM oluşturduğunuzda kullanılabilirlik kümesi veya kullanılabilirlik bölgelerini seçme seçeneği vardır. Bu kullanılabilirlik seçenekleri Azure Işlem tarafından kullanılan ile aynıdır. Bir konak havuzunda oluşturduğunuz VM için bir bölge seçerseniz, bu ayar otomatik olarak bu bölgede oluşturduğunuz tüm VM 'Ler için geçerli olur. Konak havuzu sanal makinelerinizi birden çok bölgeye yaymayı tercih ediyorsanız, oluşturduğunuz her yeni sanal makine için el ile yeni bir bölge seçmek üzere [Azure Portal ile sanal makineler ekleme](expand-existing-host-pool.md#add-virtual-machines-with-the-azure-portal) bölümündeki yönergeleri izlemeniz gerekir.
+
+## <a name="which-availability-option-is-best-for-me"></a>Benim için en uygun kullanılabilirlik seçeneği hangisi?
+
+VM 'niz için kullanmanız gereken kullanılabilirlik seçeneği, resminizin konumuna ve yönetilen disk alanlarına bağlıdır. Aşağıdaki tabloda, her bir ayarın, dağıtımınız için en uygun seçeneği belirlemenize yardımcı olmak üzere bu değişkenlere sahip olduğu ilişki açıklanmaktadır. 
+
+| Kullanılabilirlik seçeneği | Görüntü konumu | Yönetilen disk seçenek düğmesini kullan (radyo düğmesi) |
+|---|---|---|
+| Yok | Galeri | Varsayılan olarak "Yes" ile devre dışı |
+| Yok | Blob depolama | Varsayılan olarak "Hayır" ile etkinleştirildi |
+| Kullanılabilirlik alanı | Galeri (BLOB depolama seçeneği devre dışı) | Varsayılan olarak "Yes" ile devre dışı |
+| Yönetilen SKU ile kullanılabilirlik kümesi (yönetilen disk) | Galeri | Varsayılan olarak "Yes" ile devre dışı |
+| Yönetilen SKU ile kullanılabilirlik kümesi (yönetilen disk) | Blob depolama | Varsayılan olarak "Hayır" ile etkinleştirildi |
+| Yönetilen SKU ile kullanılabilirlik kümesi (yönetilen disk) | BLOB depolama (Galeri seçeneği devre dışı) | Varsayılan olarak "Hayır" ile devre dışı |
+| Kullanılabilirlik kümesi (Kullanıcı tarafından yeni oluşturulan) | Galeri | Varsayılan olarak "Yes" ile devre dışı |
+| Kullanılabilirlik kümesi (Kullanıcı tarafından yeni oluşturulan) | Blob depolama | Varsayılan olarak "Hayır" ile etkinleştirildi |

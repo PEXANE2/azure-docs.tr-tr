@@ -1,18 +1,18 @@
 ---
 title: Azure Percept DK ve IoT Edge genel sorunlarını giderme
-description: Taslak deneyimi sırasında bulunan daha yaygın sorunlardan bazıları için sorun giderme ipuçları alın
+description: Azure Percept DK ile ilgili daha yaygın sorunlardan bazıları için sorun giderme ipuçları alın
 author: mimcco
 ms.author: mimcco
 ms.service: azure-percept
 ms.topic: how-to
 ms.date: 02/18/2021
 ms.custom: template-how-to
-ms.openlocfilehash: a6d099e8d267c9fe03e0bb676276e7a4ab8157ab
-ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
+ms.openlocfilehash: 93812cf2b0db7fc3557e31c8d9e8053831c7b90f
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102521535"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103011009"
 ---
 # <a name="azure-percept-dk-dev-kit-troubleshooting"></a>Azure Percept DK (geliştirme seti) sorunlarını giderme
 
@@ -28,7 +28,7 @@ Bu komutları çalıştırmak için
 Daha fazla analiz için herhangi bir çıktıyı bir. txt dosyasına yönlendirmek için aşağıdaki sözdizimini kullanın:
 
 ```console
-[command] > [file name].txt
+sudo [command] > [file name].txt
 ```
 
 Çıktıyı bir. txt dosyasına yönlendirdikten sonra SCP aracılığıyla dosyayı ana bilgisayara kopyalayın:
@@ -47,13 +47,13 @@ Azure IoT Edge komutları hakkında daha fazla bilgi için bkz. [Azure IoT Edge 
 |İşletim Sistemi                |```cat /etc/os-subrelease```      |Türev görüntü sürümünü denetle |
 |İşletim Sistemi                |```cat /etc/adu-version```        |ADU sürümünü denetle |
 |Sıcaklık       |```cat /sys/class/thermal/thermal_zone0/temp``` |devkit 'in sıcaklığını denetleyin |
-|Wi-Fi             |```journalctl -u hostapd.service``` |SoftAP günlüklerine bakın|
-|Wi-Fi             |```journalctl -u wpa_supplicant.service``` |Wi-Fi Services günlüklerine bakın |
-|Wi-Fi             |```journalctl -u ztpd.service```  |Wi-Fi sıfır dokunma sağlama hizmeti günlüklerine bakın |
-|Wi-Fi             |```journalctl -u systemd-networkd``` |Mariner ağ yığını günlüklerine bakın |
-|Wi-Fi             |```/data/misc/wifi/hostapd_virtual.conf``` |WiFi erişim noktası yapılandırma ayrıntılarını denetle |
-|OOBE              |```journalctl -u oobe -b```       |OOBE günlüklerini denetleyin |
-|Telemetri         |```azure-device-health-id```      |benzersiz telemetri HW_ID bulun |
+|Wi-Fi             |```sudo journalctl -u hostapd.service``` |SoftAP günlüklerine bakın|
+|Wi-Fi             |```sudo journalctl -u wpa_supplicant.service``` |Wi-Fi Services günlüklerine bakın |
+|Wi-Fi             |```sudo journalctl -u ztpd.service```  |Wi-Fi sıfır dokunma sağlama hizmeti günlüklerine bakın |
+|Wi-Fi             |```sudo journalctl -u systemd-networkd``` |Mariner ağ yığını günlüklerine bakın |
+|Wi-Fi             |```sudo cat /etc/hostapd/hostapd-wlan1.conf``` |WiFi erişim noktası yapılandırma ayrıntılarını denetle |
+|OOBE              |```sudo journalctl -u oobe -b```       |OOBE günlüklerini denetleyin |
+|Telemetri         |```sudo azure-device-health-id```      |benzersiz telemetri HW_ID bulun |
 |Azure IoT Edge          |```sudo iotedge check```          |sık karşılaşılan sorunlar için yapılandırma ve bağlantı denetimlerini çalıştır |
 |Azure IoT Edge          |```sudo iotedge logs [container name]``` |konuşma ve vizyon modülleri gibi kapsayıcı günlüklerini denetleyin |
 |Azure IoT Edge          |```sudo iotedge support-bundle --since 1h``` |Son saatten modül günlüklerini, Azure IoT Edge Güvenlik Yöneticisi günlüklerini, kapsayıcı altyapısı günlüklerini, ```iotedge check``` JSON çıkışını ve diğer yararlı hata ayıklama bilgilerini toplayın |
@@ -61,26 +61,26 @@ Azure IoT Edge komutları hakkında daha fazla bilgi için bkz. [Azure IoT Edge 
 |Azure IoT Edge          |```sudo systemctl restart iotedge``` |Azure IoT Edge güvenlik cini 'nı yeniden başlatın |
 |Azure IoT Edge          |```sudo iotedge list```           |dağıtılan Azure IoT Edge modüllerini listeleyin |
 |Diğer             |```df [option] [file]```          |Belirtilen dosya sistemlerinde kullanılabilir/toplam alan bilgilerini görüntüle |
-|Diğer             |```ip route get 1.1.1.1```        |Cihaz IP ve arabirim bilgilerini görüntüle |
-|Diğer             |```ip route get 1.1.1.1 \| awk '{print $7}'``` <br> ```ifconfig [interface]``` |yalnızca cihaz IP adresini görüntüle |
+|Diğer             |`ip route get 1.1.1.1`        |Cihaz IP ve arabirim bilgilerini görüntüle |
+|Diğer             |<code>ip route get 1.1.1.1 &#124; awk '{print $7}'</code> <br> `ifconfig [interface]` |yalnızca cihaz IP adresini görüntüle |
 
 
 ```journalctl```Wi-Fi komutları aşağıdaki tek komutla birleştirilebilir:
 
 ```console
-journalctl -u hostapd.service -u wpa_supplicant.service -u ztpd.service -u systemd-networkd -b
+sudo journalctl -u hostapd.service -u wpa_supplicant.service -u ztpd.service -u systemd-networkd -b
 ```
 
 ## <a name="docker-troubleshooting-commands"></a>Docker sorun giderme komutları
 
 |Komutundaki                        |Çalışmayacaktır                  |
 |--------------------------------|---------------------------|
-|```docker ps``` |[Hangi kapsayıcıların çalıştığını gösterir](https://docs.docker.com/engine/reference/commandline/ps/) |
-|```docker images``` |[cihazda hangi görüntülerin olduğunu gösterir](https://docs.docker.com/engine/reference/commandline/images/)|
-|```docker rmi [image id] -f``` |[cihazdan bir görüntüyü siler](https://docs.docker.com/engine/reference/commandline/rmi/) |
-|```docker logs -f edgeAgent``` <br> ```docker logs -f [module_name]``` |[Belirtilen modülün kapsayıcı günlüklerini alır](https://docs.docker.com/engine/reference/commandline/logs/) |
-|```docker image prune``` |[Tüm sallaştırılmış görüntüleri kaldırır](https://docs.docker.com/engine/reference/commandline/image_prune/) |
-|```watch docker ps``` <br> ```watch ifconfig [interface]``` |Docker kapsayıcısı indirme durumunu denetle |
+|```sudo docker ps``` |[Hangi kapsayıcıların çalıştığını gösterir](https://docs.docker.com/engine/reference/commandline/ps/) |
+|```sudo docker images``` |[cihazda hangi görüntülerin olduğunu gösterir](https://docs.docker.com/engine/reference/commandline/images/)|
+|```sudo docker rmi [image id] -f``` |[cihazdan bir görüntüyü siler](https://docs.docker.com/engine/reference/commandline/rmi/) |
+|```sudo docker logs -f edgeAgent``` <br> ```sudo docker logs -f [module_name]``` |[Belirtilen modülün kapsayıcı günlüklerini alır](https://docs.docker.com/engine/reference/commandline/logs/) |
+|```sudo docker image prune``` |[Tüm sallaştırılmış görüntüleri kaldırır](https://docs.docker.com/engine/reference/commandline/image_prune/) |
+|```sudo watch docker ps``` <br> ```watch ifconfig [interface]``` |Docker kapsayıcısı indirme durumunu denetle |
 
 ## <a name="usb-updating"></a>USB güncelleştirme
 

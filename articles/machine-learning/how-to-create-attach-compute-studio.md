@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 08/06/2020
 ms.topic: conceptual
 ms.custom: how-to, contperf-fy21q1
-ms.openlocfilehash: ab7a74166e85f2ba9fd73e7323cf9cd200cf32e4
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 4194c71823e1affde1dcae47fd7e64668b57c0cf
+ms.sourcegitcommit: 6776f0a27e2000fb1acb34a8dddc67af01ac14ac
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97031037"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103149367"
 ---
 # <a name="create-compute-targets-for-model-training-and-deployment-in-azure-machine-learning-studio"></a>Azure Machine Learning Studio 'da model eğitimi ve dağıtımı için işlem hedefleri oluşturma
 
@@ -132,7 +132,7 @@ Büyük ölçekli ikinci kullanım için bir Azure Kubernetes hizmeti (AKS) küm
 |---------|---------|
 |İşlem adı     |  <li>Ad gereklidir. Ad, 2 ila 16 karakter arasında olmalıdır. </li><li>Geçerli karakterler büyük ve küçük harfler, rakamlar ve  **-** karakterdir.</li><li>Ad bir harfle başlamalıdır</li><li>Adın, bir Azure bölgesindeki tüm mevcut hesaplar arasında benzersiz olması gerekir. Seçtiğiniz ad benzersiz değilse bir uyarı görürsünüz</li><li>**-** Karakter kullanılıyorsa, daha sonra adının sonunda en az bir harf gelmelidir</li>     |
 |Kubernetes Hizmeti | **Yeni oluştur** ' u seçin ve formun geri kalanını doldurun.  Veya **var olanı kullan** ' ı seçin ve ardından aboneliğinizden mevcut bir aks kümesi seçin.
-|Bölge |  Kümenin oluşturulacağı bölgeyi seçin |
+|Region |  Kümenin oluşturulacağı bölgeyi seçin |
 |Sanal makine boyutu     |  Desteklenen sanal makine boyutları bölgenizde kısıtlanmış olabilir. [Kullanılabilirlik listesini](https://azure.microsoft.com/global-infrastructure/services/?products=virtual-machines) denetleme     |
 |Küme amacı  | **Üretim** veya **geliştirme testi** seçin |
 |Düğüm sayısı | Sanal makinenin çekirdek sayısıyla (vCPU 'Lar) çarpıldığı düğüm sayısı 12 ' den büyük veya buna eşit olmalıdır. |
@@ -147,7 +147,7 @@ Bir işlem eklemek için [Yukarıdaki adımları](#portal-create) kullanın.  Da
 
 1. İşlem hedefi için bir ad girin. 
 1. İliştirilecek işlem türünü seçin. Tüm bilgi işlem türleri Azure Machine Learning Studio 'dan iliştirilemez. Şu anda eğitim için iliştirilebilecek işlem türleri şunlardır:
-    * Uzak VM
+    * Bir Azure sanal makinesi (Veri Bilimi Sanal Makinesi iliştirmek için)
     * Azure Databricks (makine öğrenimi ardışık düzenleri kullanımı için)
     * Azure Data Lake Analytics (makine öğrenimi ardışık düzenleri kullanımı için)
     * Azure HDInsight

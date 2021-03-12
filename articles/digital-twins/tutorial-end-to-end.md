@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 4/15/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: 30b30697750a0b9068cfcde19ea4bf9c474f9ad9
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: aec60218774f3f8e293a5e5ab8c03707d117c2a0
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102424589"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102634983"
 ---
 # <a name="tutorial-build-out-an-end-to-end-solution"></a>Öğretici: uçtan uca bir çözüm oluşturma
 
@@ -120,6 +120,8 @@ Bu, NuGet Paket Yöneticisi 'Ni açar. *Güncelleştirmeler* sekmesini seçin ve
 _**AdtE2ESample**_ projesinin açık olduğu Visual Studio penceresine geri döndüğünüzde, *Çözüm Gezgini* bölmesinde _**samplefunctionsapp**_ projesini bulun.
 
 [!INCLUDE [digital-twins-publish-azure-function.md](../../includes/digital-twins-publish-azure-function.md)]
+
+İşlev uygulamanızın Azure dijital TWINS 'e erişebilmesi için, Azure dijital TWINS örneğinizi erişim izinleri olan sistem tarafından yönetilen bir kimliğe sahip olması gerekir. Bunu daha sonra ayarlayacaksınız.
 
 ### <a name="assign-permissions-to-the-function-app"></a>İşlev uygulamasına izin atama
 

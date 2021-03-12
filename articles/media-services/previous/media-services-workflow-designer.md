@@ -3,7 +3,7 @@ title: İş Akışı Tasarımcısı ile gelişmiş kodlama Iş akışları oluş
 description: İş Akışı Tasarımcısı ile gelişmiş kodlama iş akışları oluşturma hakkında bilgi edinin.
 services: media-services
 documentationcenter: ''
-author: anilmur
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.assetid: 004815f2-0761-4706-87a1-675ba36e0322
@@ -12,22 +12,22 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/20/2019
+ms.date: 3/10/2021
 ms.author: anilmur
 ms.reviewer: juliako;johndeu
-ms.openlocfilehash: a53027ec1f775c240164f67e7ee0473a44690964
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8173da37792948e267aae2078fee9f864bf7bdc9
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89262694"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103011162"
 ---
 # <a name="create-advanced-encoding-workflows-with-workflow-designer"></a>İş Akışı Tasarımcısı ile Gelişmiş Kodlama İş Akışları Oluşturma
 
 [!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 ## <a name="overview"></a>Genel Bakış
-**İş akışı Tasarımcısı** , **Media Encoder Premium Workflow**kodlamaya yönelik özel iş akışlarını tasarlamak ve derlemek için kullanılan bir Windows Masaüstü aracıdır.
+**İş akışı Tasarımcısı** , **Media Encoder Premium Workflow** kodlamaya yönelik özel iş akışlarını tasarlamak ve derlemek için kullanılan bir Windows Masaüstü aracıdır.
 İş akışı Tasarımcısı aracının gücünü kullanarak, **Medya Kodlayıcısı Premium**'da çalışacak karmaşık iş akışları tasarlayabilir ve oluşturabilirsiniz.  
 
 İş akışları, giriş kaynak dosyasının özelliklerine göre müşteri karar mantığını ve dallanmayı içerebilir. En karmaşık kodlama görevlerinin bulutta tekrarlanmasını ve özelleştirmeyi kolay hale getirmek için geçersiz kılınabilir özelliklerle ve dinamik değerlerle iş akışları oluşturabilirsiniz.
@@ -42,7 +42,7 @@ Bu araç, [yayımlanan iş akışlarımızdan](media-services-workflow-designer.
 > [!NOTE]
 > İş Akışı Tasarımcısı aracı kopyanızı almak için lütfen iletişim kurun mepd@microsoft.com .
 
-Bir iş akışı dosyası oluşturulduktan sonra bir varlık olarak karşıya yüklenebilir ve ardından medya dosyalarını kodlamak için kullanılabilir. **.Net**kullanarak **Media Encoder Premium Workflow** ile kodlama hakkında daha fazla bilgi için bkz. [Media Encoder Premium Workflow ile gelişmiş kodlama](media-services-encode-with-premium-workflow.md).
+Bir iş akışı dosyası oluşturulduktan sonra bir varlık olarak karşıya yüklenebilir ve ardından medya dosyalarını kodlamak için kullanılabilir. **.Net** kullanarak **Media Encoder Premium Workflow** ile kodlama hakkında daha fazla bilgi için bkz. [Media Encoder Premium Workflow ile gelişmiş kodlama](media-services-encode-with-premium-workflow.md).
 
 ## <a name="modify-existing-workflows"></a><a id="existing_workflows"></a>Mevcut iş akışlarını değiştirme
 Varsayılan [yayımlanan iş akışları](media-services-workflow-designer.md#existing_workflows) tasarımcı aracı kullanılarak değiştirilebilir. Varsayılan iş akışı dosyalarını [buradan](https://github.com/Azure/azure-media-services-samples/tree/master/Encoding%20Presets/VoD/MediaEncoderPremiumWorkfows)edinebilirsiniz. Klasör Ayrıca bu dosyaların açıklamasını içerir.
@@ -91,7 +91,7 @@ Media Services öğrenme yollarını gözden geçirin.
 
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Geri bildirimde bulunma
+## <a name="provide-feedback"></a>Geribildirim gönderme
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="see-also"></a>Ayrıca Bkz.

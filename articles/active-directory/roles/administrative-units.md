@@ -14,12 +14,12 @@ ms.author: rolyon
 ms.reviewer: anandy
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e82be52cff824c69dd2fe4ea5e7e1c0d7489be1d
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.openlocfilehash: 49f2c290c69fcadd594d6cbd5879e7d9f5304a42
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98740338"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102558024"
 ---
 # <a name="administrative-units-in-azure-active-directory"></a>Azure Active Directory 'de yönetim birimleri
 
@@ -47,8 +47,8 @@ Yönetim birimlerini kullanmak için, her yönetim birimi Yöneticisi için bir 
 Azure portal, PowerShell cmdlet 'leri ve betikleri veya Microsoft Graph kullanarak yönetim birimlerini yönetebilirsiniz. Daha fazla bilgi için bkz.
 
 - [Yönetim birimlerine roller oluşturma, kaldırma, doldurma ve ekleme](admin-units-manage.md): tüm nasıl yapılır yordamlarını içerir.
-- [Yönetim birimleriyle çalışma](/powershell/azure/active-directory/working-with-administrative-units?view=azureadps-2.0&preserve-view=true): PowerShell kullanarak yönetim birimleriyle çalışmayı ele alır.
-- [Yönetim birimi grafik desteği](/graph/api/resources/administrativeunit?view=graph-rest-1.0&preserve-view=true): yönetim birimleri için Microsoft Graph ayrıntılı belgeler sağlar.
+- [Yönetim birimleriyle çalışma](/powershell/azure/active-directory/working-with-administrative-units): PowerShell kullanarak yönetim birimleriyle çalışmayı ele alır.
+- [Yönetim birimi grafik desteği](/graph/api/resources/administrativeunit): yönetim birimleri için Microsoft Graph ayrıntılı belgeler sağlar.
 
 ### <a name="plan-your-administrative-units"></a>Yönetim birimlerinizi planlayın
 
@@ -79,7 +79,7 @@ Aşağıdaki bölümlerde, yönetim birimi senaryoları için geçerli destek a�
 
 ### <a name="administrative-unit-management"></a>Yönetim Birimi Yönetimi
 
-| İzinler |   Grafik/PowerShell   | Azure AD portalı | Microsoft 365 yönetim merkezi |
+| İzinler |   Grafik/PowerShell   | Azure AD portalı | Microsoft 365 yönetici merkezi |
 | --- | --- | --- | --- |
 | Yönetim birimleri oluşturma ve silme   |    Desteklenir    |   Desteklenir   |    Desteklenmez |
 | Yönetim birimi üyelerini tek tek ekleme ve kaldırma    |   Desteklenir    |   Desteklenir   |    Desteklenmez |
@@ -89,7 +89,7 @@ Aşağıdaki bölümlerde, yönetim birimi senaryoları için geçerli destek a�
 
 ### <a name="user-management"></a>Kullanıcı yönetimi
 
-| İzinler |   Grafik/PowerShell   | Azure AD portalı | Microsoft 365 yönetim merkezi |
+| İzinler |   Grafik/PowerShell   | Azure AD portalı | Microsoft 365 yönetici merkezi |
 | --- | --- | --- | --- |
 | Kullanıcı özelliklerinin, parolalarının ve lisansların yönetim birimi kapsamlı yönetimi   |    Desteklenir     |  Desteklenir   |   Desteklenir |
 | Yönetim birimi kapsamlı engelleme ve Kullanıcı oturum açma işlemleri engellemesini kaldırma    |   Desteklenir   |    Desteklenir   |    Desteklenir |
@@ -97,7 +97,7 @@ Aşağıdaki bölümlerde, yönetim birimi senaryoları için geçerli destek a�
 
 ### <a name="group-management"></a>Grup yönetimi
 
-| İzinler |   Grafik/PowerShell   | Azure AD portalı | Microsoft 365 yönetim merkezi |
+| İzinler |   Grafik/PowerShell   | Azure AD portalı | Microsoft 365 yönetici merkezi |
 | --- | --- | --- | --- |
 | Grup özelliklerinin ve üyelerinin yönetim birimi kapsamlı yönetimi     |  Desteklenir   |    Desteklenir    |  Desteklenmez |
 | Grup lisanslamanın yönetim birimi kapsamlı yönetimi   |    Desteklenir  |    Desteklenir   |   Desteklenmez |

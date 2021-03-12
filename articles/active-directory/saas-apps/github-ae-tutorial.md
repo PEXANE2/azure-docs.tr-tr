@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/18/2021
 ms.author: jeedes
-ms.openlocfilehash: 1d66396b2d97a7f33158f91025f5735c7714cd65
-ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
+ms.openlocfilehash: 537378ef11333bd8942a61ab2bbb4e8a251c2b59
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/31/2021
-ms.locfileid: "99221065"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103196844"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-github-ae"></a>Öğretici: GitHub AE ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -101,9 +101,9 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
 1. **Grupları seçin** ' e tıklayın ve bu talebi eklemek istediğiniz **grubu** ARAYıN; burada üyelerinin GHAE için Yöneticiler olması gerekir.
 
-1. **Kaynak** için **özniteliği** seçin ve **değer** için **true** girin. 
+1. **Kaynak** için **öznitelik** ' i seçin ve **değer** için **true** (tırnak işareti olmadan) girin. 
 
-10. **Kaydet**’e tıklayın.
+1. **Kaydet**’e tıklayın.
 
     ![talebi Yönet](./media/github-ae-tutorial/administrator.png)
 
@@ -112,7 +112,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
 1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, **SAML Imzalama sertifikası** bölümünde **sertifika bulun (base64)** ve sertifikayı indirip bilgisayarınıza kaydetmek için **İndir** ' i seçin.
 
-    ![Sertifika indirme bağlantısı](common/certificateBase64.png)
+    ![Sertifika indirme bağlantısı](common/certificatebase64.png)
 
 1. **GITHUB AE 'Yi ayarla** bölümünde, gereksiniminize göre uygun URL 'leri kopyalayın.
 

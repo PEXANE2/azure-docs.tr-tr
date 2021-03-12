@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/07/2021
 ms.author: vinigam
-ms.openlocfilehash: e95f6fdff164a6f5f9d4af4f19b1876d1483a70c
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 998b0cb04d465f675423e2472a7ca8c6441b1fed
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102038722"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103010414"
 ---
 # <a name="migrate-to-connection-monitor-from-network-performance-monitor"></a>Ağ Performansı İzleyicisi bağlantı Izleyicisi 'ne geçir
 
@@ -37,6 +37,9 @@ Geçiş, aşağıdaki sonuçları üretmenize yardımcı olur:
 * Veri izleme:
    * **Log Analytics verileri**: geçişten önce, veriler NPM 'Nin networkmonitoring tablosunda yapılandırıldığı çalışma alanında kalır. Geçişten sonra, veriler NetworkMonitoring tablosuna gider. aynı çalışma alanındaki NWConnectionMonitorTestResult tablosu ve NWConnectionMonitorPathResult tablosu. Test NPM 'de devre dışı bırakıldıktan sonra, veriler yalnızca NWConnectionMonitorTestResult tablosu ve NWConnectionMonitorPathResult tablosunda depolanır.
    * **Günlük tabanlı uyarılar, panolar ve tümleştirmeler**: yeni NWConnectionMonitorTestResult tablosu ve NWConnectionMonitorPathResult tablosuna göre sorguları el ile düzenlemeniz gerekir. Uyarıları ölçümlerde yeniden oluşturmak için, bkz. [Bağlantı İzleyicisi Ile ağ bağlantısı izleme](./connection-monitor-overview.md#metrics-in-azure-monitor).
+* ExpressRoute Izleme için:
+    * **Uçtan uca kayıp ve gecikme**: Bağlantı İzleyicisi bunu güçlendirilecektir ve kullanıcılar, hangi devrelerin ve eşlerin izleneceğini yapılandırmalarına gerek kalmaz NPM 'den daha kolay olacaktır. Yoldaki devre'ler otomatik olarak keşfedilir, veriler ölçümlerde kullanılabilir (NPM 'den daha hızlı). Topoloji da olduğu gibi çalışacaktır.
+    * **Bant genişliği ölçümleri**: bant genişliği ile ilgili ölçümlerin başlatılması sayesinde, NPM 'nin Log Analytics tabanlı yaklaşımı ExpressRoute müşterileri için bant genişliği izlemede etkili değildir. Bu özellik artık bağlantı Izleyicisi 'nde kullanılamaz.
     
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -60,7 +63,7 @@ Geçiş başladıktan sonra aşağıdaki değişiklikler gerçekleşir:
    * Her bölge ve abonelik için bir bağlantı İzleyicisi oluşturulur. Şirket içi aracılarla testler için yeni bağlantı izleyici adı olarak biçimlendirilir `<workspaceName>_"workspace_region_name"` . Azure aracılarıyla testler için yeni bağlantı izleyici adı olarak biçimlendirilir `<workspaceName>_<Azure_region_name>` .
    * İzleme verileri artık NPM 'nin etkinleştirildiği Log Analytics çalışma alanında, NWConnectionMonitorTestResult tablosu ve NWConnectionMonitorPathResult tablosu adlı yeni tablolarda depolanır. 
    * Test adı, test grubu adı olarak ileri taşınır. Test açıklaması geçirilmez.
-   * Kaynak ve hedef uç noktaları yeni test grubunda oluşturulur ve kullanılır. Şirket içi aracılar için uç noktalar olarak biçimlendirilir `<workspaceName>_<FQDN of on-premises machine>` .
+   * Kaynak ve hedef uç noktaları yeni test grubunda oluşturulur ve kullanılır. Şirket içi aracılar için uç noktalar olarak biçimlendirilir `<workspaceName>_<FQDN of on-premises machine>` . Aracı açıklaması geçirilmez.
    * Hedef bağlantı noktası ve yoklama aralığı, ve adlı bir test yapılandırmasına `TC_<protocol>_<port>` taşınır `TC_<protocol>_<port>_AppThresholds` . Protokol, bağlantı noktası değerlerine göre ayarlanır. ICMP için, test yapılandırması ve olarak adlandırılır `TC_<protocol>` `TC_<protocol>_AppThresholds` . Küme geçirilirse başarı eşikleri ve diğer isteğe bağlı özellikler, aksi takdirde boş bırakılır.
    * Geçiş testleri çalıştırmayan aracıları içeriyorsa, aracıları etkinleştirmeniz ve yeniden geçirmeniz gerekir.
 * NPM devre dışı bırakılmazsa, geçirilen testler NetworkMonitoring tablosuna, NWConnectionMonitorTestResult Table ve NWConnectionMonitorPathResult tablosuna veri gönderilmeye devam edebilir. Bu yaklaşım, mevcut günlük tabanlı uyarıların ve tümleştirmelerin etkilenmemesini sağlar.

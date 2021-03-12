@@ -6,14 +6,14 @@ ms.author: sumuth
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 08/11/2020
-ms.openlocfilehash: afe14bc03f0d12e56e1512aeb788a77c64151b58
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 7f98e14c2eae133941f3fc87247a427198ebcdc2
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92547257"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102611972"
 ---
-# <a name="best-practices-for-building-an-application-with-azure-database-for-mysql"></a>MySQL için Azure veritabanı ile uygulama oluşturmak için en iyi uygulamalar 
+# <a name="best-practices-for-building-an-application-with-azure-database-for-mysql"></a>MySQL için Azure Veritabanı ile uygulama oluşturmaya yönelik en iyi yöntemler 
 
 MySQL için Azure veritabanı 'nı kullanarak buluta hazır bir uygulama oluşturmanıza yardımcı olacak bazı en iyi yöntemler aşağıda verilmiştir. Bu en iyi uygulamalar, uygulamanız için geliştirme süresini azaltabilir. 
 
@@ -76,7 +76,7 @@ Yük devretme senaryolarında [gelen verileri çoğaltma](./howto-data-in-replic
 ## <a name="database-deployment"></a>Veritabanı dağıtımı 
 
 ### <a name="configure-an-azure-database-for-mysql-task-in-your-cicd-deployment-pipeline"></a>CI/CD dağıtım işlem hattınızda MySQL için Azure veritabanı görevini yapılandırma
-Bazen değişiklikleri veritabanınıza dağıtmanız gerekir. Bu gibi durumlarda, [Azure Pipelines](https://azure.microsoft.com/services/devops/pipelines/) aracılığıyla sürekli TÜMLEŞTIRME (CI) ve sürekli teslım (CD) kullanabilir ve bir özel betik çalıştırarak veritabanını güncelleştirmek için [MySQL sunucunuzun](/azure/devops/pipelines/tasks/deploy/azure-mysql-deployment?view=azure-devops&preserve-view=true) bir görevini kullanabilirsiniz.
+Bazen değişiklikleri veritabanınıza dağıtmanız gerekir. Bu gibi durumlarda, [Azure Pipelines](https://azure.microsoft.com/services/devops/pipelines/) aracılığıyla sürekli TÜMLEŞTIRME (CI) ve sürekli teslım (CD) kullanabilir ve bir özel betik çalıştırarak veritabanını güncelleştirmek için [MySQL sunucunuzun](/azure/devops/pipelines/tasks/deploy/azure-mysql-deployment) bir görevini kullanabilirsiniz.
 
 ### <a name="use-an-effective-process-for-manual-database-deployment"></a>El ile veritabanı dağıtımı için etkili bir işlem kullanın 
 El ile veritabanı dağıtımı sırasında, kapalı kalma süresini en aza indirmek veya başarısız dağıtım riskini azaltmak için aşağıdaki adımları izleyin: 

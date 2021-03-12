@@ -10,12 +10,12 @@ ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.custom: it-pro
-ms.openlocfilehash: facdb99a49c3778a75e733abf1fc72eed67549ab
-ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
+ms.openlocfilehash: 59246c3739ad4de27e65641cc9d2154b33a6ee5e
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102611628"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103008442"
 ---
 # <a name="add-an-api-connector-to-a-sign-up-user-flow-preview"></a>Kaydolma Kullanıcı akışına API Bağlayıcısı ekleme (Önizleme)
 
@@ -61,9 +61,9 @@ Azure App Service ve Azure Işlevleri için bkz. API [karşılıklı kimlik doğ
 Sertifikanızın kullanım süreleri dolduğunda anımsatıcı uyarılarını ayarlamanız önerilir. Var olan bir API bağlayıcısına yeni bir sertifika yüklemek için **API bağlayıcıları (Önizleme)** altında API bağlayıcısını seçin ve **yeni sertifikayı karşıya yükle**' ye tıklayın. Süresi dolmayan ve geçmiş en son karşıya yüklenen sertifika, Azure AD B2C tarafından otomatik olarak kullanılacaktır.
 
 ### <a name="api-key"></a>API Anahtarı
-Bazı hizmetler, geliştirme sırasında HTTP uç noktalarınıza erişmeyi daha zor hale getirmek için bir "API anahtarı" mekanizması kullanır. [Azure işlevleri](../azure-functions/functions-bindings-http-webhook-trigger.md#authorization-keys)için, bunu `code` **uç nokta URL 'sine** sorgu parametresi olarak ekleyerek yapabilirsiniz. Örneğin, `https://contoso.azurewebsites.net/api/endpoint` <b>`?code=0123456789`</b> ). 
+Bazı hizmetler, geliştirme sırasında HTTP uç noktalarınıza erişimi belirsizetmek için bir "API anahtarı" mekanizması kullanır. [Azure işlevleri](../azure-functions/functions-bindings-http-webhook-trigger.md#authorization-keys)için, bunu `code` **uç nokta URL 'sine** sorgu parametresi olarak ekleyerek yapabilirsiniz. Örneğin, `https://contoso.azurewebsites.net/api/endpoint` <b>`?code=0123456789`</b> ). 
 
-Bu, yalnızca üretimde kullanılması gereken bir mekanizma değildir. Bu nedenle, temel veya sertifika kimlik doğrulaması için yapılandırma her zaman gereklidir. Geliştirme amacıyla herhangi bir kimlik doğrulama yöntemi uygulamak isterseniz, temel kimlik doğrulaması ' nı seçebilir ve için geçici değerleri kullanabilir `username` ve API `password` 'niz, yetkilendirmeyi uyguladığınızda API 'nizin göz ardı edilebilir.
+Bu, yalnızca üretimde kullanılması gereken bir mekanizma değildir. Bu nedenle, temel veya sertifika kimlik doğrulaması için yapılandırma her zaman gereklidir. Geliştirme amacıyla herhangi bir kimlik doğrulama yöntemi uygulamak istemiyorsanız (önerilmez), temel kimlik doğrulaması ' nı seçebilir ve için geçici değerleri kullanabilir `username` ve API `password` 'nizin YETKILENDIRMEYI uygularken API 'niz göz ardı edilebilir.
 
 ## <a name="the-request-sent-to-your-api"></a>API 'nize gönderilen istek
 Bir API Bağlayıcısı, bir JSON gövdesinde anahtar-değer çiftleri olarak Kullanıcı öznitelikleri (' talepler ') gönderen bir **http post** isteği olarak yürütülür. Öznitelikler, [Microsoft Graph](/graph/api/resources/user#properties) Kullanıcı özelliklerine benzer şekilde serileştirilir. 

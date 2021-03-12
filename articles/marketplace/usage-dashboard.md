@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 11/09/2020
 author: sayantanroy83
 ms.author: sroy
-ms.openlocfilehash: d898efb44bb92151a5d044a6699a4efb70fa9390
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.openlocfilehash: 765f4f358d593cd5fcc021fbf4ec2276c422c4d8
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102215740"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102555134"
 ---
 # <a name="usage-dashboard-in-commercial-marketplace-analytics"></a>Ticari market analizinde Kullanım panosu
 
@@ -62,7 +62,7 @@ Kullanım saatlerinin iki temsili vardır: VM normalleştirilmiş kullanımı ve
 
 Bu bölümde, Azure Marketi 'ndeki kullanım tabanlı teklifleriniz için toplam kullanım saatleri ve eğilimi sağlanmaktadır. Tekliflere göre normalleştirilmiş kullanım grafiği aşağıda açıklanmıştır.
 
-- Yığılmış sütun grafiği **sunan tarafından normalleştirilmiş kullanım** , seçilen hesaplama dönemine göre ilk 5 teklif için normalleştirilmiş kullanım saatlerinin dökümünü görüntüler. İlk beş teklif bir grafikte görüntülenir, diğerleri **rest All** kategorisinde gruplandırılır.
+- Yığılmış sütun grafiği **sunan tarafından normalleştirilmiş kullanım** , seçilen hesaplama dönemine göre ilk beş teklif için normalleştirilmiş kullanım saatlerinin dökümünü görüntüler. İlk beş teklif bir grafikte görüntülenir, diğerleri **rest All** kategorisinde gruplandırılır.
 - Yığılmış sütun grafiği, seçilen tarih aralığı için aylık bir büyüme eğilimi gösterir. Month sütunları, ilgili ay için en yüksek kullanım saatlerine sahip tekliflerden kullanım saatlerini temsil eder. Çizgi grafik, ikincil Y ekseni üzerinde çizilen büyüme yüzdesi eğilimini gösterir.
 - Yalnızca grafikteki teklifleri göstermek için göstergede belirli teklifleri seçebilirsiniz.
 
@@ -117,46 +117,45 @@ Seçilen hesaplama dönemi için ısı haritasını, coğrafi boyutun toplam kul
 
 _**Tablo 1: veri koşullarının sözlüğü**_
 
-| Sütun adı | Öznitelik adı | Tanım |
-| ------------ | ------------- | ------------- |
-| Market abonelik kimliği | Market abonelik KIMLIĞI | Ticari Market teklifinizi satın almak için kullanılan müşterinin Azure aboneliğiyle ilişkili benzersiz tanımlayıcı. KIMLIĞI daha önce Azure aboneliği GUID 'iydi. |
-| MonthStartDate | Ay başlangıç tarihi | Ayın başlangıç tarihi, satın alma ayını temsil eder. |
-| Teklif Türü | Teklif Türü | Ticari Market teklifi türü. |
-| Azure lisans türü | Azure lisans türü | Müşteriler tarafından Azure satın alma için kullanılan lisans sözleşmesinin türü. Kanal olarak da bilinir. Olası değerler şunlardır:<ui><li>Bulut çözümü sağlayıcısı</li><li>Kurumsal</li><li>Satıcı aracılığıyla kurumsal</li><li>Kullandıkça öde</li></ul> |
-| Market lisans türü | Market lisans türü | Ticari Market teklifinin faturalandırma yöntemi. Olası değerler şunlardır:<ul><li>Azure üzerinden faturalandırılır</li><li>Kendi lisansınızı getirin</li><li>Ücretsiz</li><li>Satıcı olarak Microsoft</li></ul> |
-| SKU | SKU | Teklifle ilişkili plan. |
-| Müşteri ülkesi | Müşteri ülkesi/bölgesi | Müşterinin sunduğu ülke/bölge adı. Ülke/bölge, müşterinin Azure aboneliğindeki ülke/bölgeden farklı olabilir. |
-| Önizleme SKU 'SU | Önizleme SKU 'SU | Değer, SKU 'YU "Önizleme" olarak etiketlediyseniz görüntülenir. SKU buna uygun şekilde etiketlenmişse değer "Evet" olur ve yalnızca sizin tarafından yetkilendirilen Azure abonelikleri bu görüntüyü dağıtabilir ve kullanabilir. SKU "Önizleme" olarak tanımlanmamışsa, değer "Hayır" olacaktır. |
-| SKU faturalandırma türü | SKU faturalandırma türü | Teklifteki her SKU ile ilişkili faturalandırma türü. Olası değerler şunlardır:<ul><li>Ücretsiz</li><li>Ücretli</li></ul> |
-| IsInternal | Kullanım Dışı | Kullanım Dışı |
-| VM Boyutu | Sanal makine boyutu | VM tabanlı teklif türleri için bu varlık, teklifin SKU 'SU ile ilişkili VM 'nin boyutunu belirtir. |
-| Bulut örneği adı | Bulut örneği adı | Bir VM dağıtımının gerçekleştiği Microsoft Bulut. |
-| ServicePlanName | Kullanım Dışı | Kullanım dışı (SKU ile aynı tanım) |
-| Teklif Adı | Teklif Adı | Ticari Market sunumunun adı. |
-| DeploymentMethod | Kullanım Dışı | Kullanım dışı (teklif türü olarak aynı tanım)
- |
-| Müşteri şirket adı | Müşteri şirket adı | Müşterinin sunduğu şirket adı. Ad, müşterinin Azure aboneliğindeki adından farklı olabilir. |
-| Kullanım Tarihi | Kullanım Tarihi | Kullanım tabanlı varlıklar için kullanım olayı oluşturma tarihi. |
-| Imultisolution | Çok çözüm | Teklifin çok çözüm teklif türü olup olmadığını belirtir. |
-| Yeni müşteri | Kullanım Dışı | Kullanım Dışı |
-| Çekirdek boyutu | Çekirdek boyutu | VM tabanlı teklifle ilişkili çekirdek sayısı. |
-| Kullanım Türü | Kullanım Türü | Teklifle ilişkili kullanım olayının aşağıdakilerden biri olup olmadığını belirtir:<ul><li>Normalleştirilmiş kullanım</li><li>Ham kullanım</li><li>Tarifeli kullanım</li></ul> |
-| Deneme bitiş tarihi | Deneme bitiş tarihi | Bu sipariş için deneme döneminin sona erdiği veya sonlandırmış olacağı tarih. |
-| Müşteri para birimi (CC) | Müşteri para birimi | Ticari Market hareketi için müşterinin kullandığı para birimi. |
-| Fiyat (CC) | Fiyat | Müşteri para birimi cinsinden gösterilen SKU 'nun birim fiyatı. |
-| Ödeme para birimi (PC) | Ödeme para birimi | Yayımcı, yayımcı tarafından yapılandırılan para birimindeki varlıkla ilişkili kullanım olayları için ödeme yapılır. |
-| Tahmini fiyat (PC) | Tahmini fiyat | SKU 'nun yayımcı tarafından yapılandırılan para birimi fiyatı. |
-| Kullanım başvurusu | Kullanım başvurusu | Kullanım raporunu (ticari Market Analytics 'te), ödeyen işlem raporuyla bağlamak için kullanılan birleştirilmiş bir GUID. Kullanım başvurusu, ödeme işlem raporundaki OrderID ve Lineıtemıd ile bağlantılı. |
-| Kullanım birimi | Kullanım birimi | SKU ile ilişkili tüketim birimi. |
-| Müşteri kimliği | Müşteri Kimliği | Müşteriye atanan benzersiz tanımlayıcı. Müşterinin sıfır veya daha fazla Azure Market aboneliği olabilir. |
-| Faturalandırma hesabı kimliği | Faturalandırma hesabı KIMLIĞI | Faturalandırma 'nin oluşturulduğu hesabın tanımlayıcısı. Ödeme Işlem raporunuzu müşteri, sipariş ve kullanım raporlarıyla bağlamak için **faturalandırma HESABı kimliğini** **MüşteriNo** olarak eşleyin. |
-| Kullanım miktarı | Kullanım miktarı | Müşteri tarafından dağıtılan varlık tarafından tüketilen toplam kullanım birimi.<br>Bu, kullanım türü öğesine dayalıdır. Örneğin, kullanım türü normalleştirilmiş kullanım ise, kullanım miktarı normalleştirilmiş kullanım için olur. |
-| NormalizedUsage | Normalleştirilmiş kullanım | Müşteri tarafından dağıtılan varlık tarafından tüketilen toplam normalleştirilmiş kullanım birimi.<br>Normalleştirilmiş kullanım saatleri, sanal makine çekirdekleri ([VM çekirdeği sayısı] x [saat ham kullanım]) için hesaba normalleştirilmiş kullanım saatleri olarak tanımlanır. "SHAREDCORE" olarak belirlenen VM 'Ler [VM çekirdeklerinin sayısı] çarpanı olarak 1/6 (veya 0,1666) kullanır. |
-| MeteredUsage | Tarifeli kullanım | Müşteri tarafından dağıtılan teklifle yapılandırılmış olan ölçümler tarafından tüketilen toplam kullanım birimleri. |
-| RawUsage | Ham kullanım | Müşteri tarafından dağıtılan varlık tarafından tüketilen toplam ham kullanım birimleri.<br>Ham kullanım saatleri, sanal makinelerin kullanım birimi açısından çalıştırıldığı zaman miktarı olarak tanımlanır. |
-| Tahmini genişletilmiş ücret (CC) | Müşteri para birimi cinsinden tahmini genişletilmiş ücret | Kullanımla ilişkili ücretleri belirtir. Bu sütun fiyat (CC) ve ham kullanım ürünüdür. |
-| Tahmini genişletilmiş ücret (PC) | Ödeme para birimi cinsinden tahmini genişletilmiş ücret | Kullanımla ilişkili ücretleri belirtir. Sütun, tahmini fiyat (PC) ve ham kullanım ürünüdür. |
-|
+| İçindeki sütun adı<br>kullanıcı arabirimi | Öznitelik adı | Tanım | Programlı olarak sütun adı<br>erişim raporları |
+| ------------ | ------------- | ------------- | ------------- |
+| Market abonelik KIMLIĞI | Market abonelik KIMLIĞI | Ticari Market teklifinizi satın almak için kullanılan müşterinin Azure aboneliğiyle ilişkili benzersiz tanımlayıcı. KIMLIĞI daha önce Azure aboneliği GUID 'iydi. | Pazar Placesubscriptionıd |
+| MonthStartDate | Ay başlangıç tarihi | Ayın başlangıç tarihi, satın alma ayını temsil eder. | MonthStartDate |
+| Teklif Türü | Teklif Türü | Ticari Market teklifi türü. | OfferType |
+| Azure lisans türü | Azure lisans türü | Müşteriler tarafından Azure satın alma için kullanılan lisans sözleşmesinin türü. Kanal olarak da bilinir. Olası değerler şunlardır:<ui><li>Bulut çözümü sağlayıcısı</li><li>Kurumsal</li><li>Satıcı aracılığıyla kurumsal</li><li>Kullandıkça öde</li></ul> | AzureLicenseType |
+| Market lisans türü | Market lisans türü | Ticari Market teklifinin faturalandırma yöntemi. Olası değerler şunlardır:<ul><li>Azure üzerinden faturalandırılır</li><li>Kendi lisansınızı getirin</li><li>Ücretsiz</li><li>Satıcı olarak Microsoft</li></ul> | MarketplaceLicenseType |
+| SKU | SKU | Teklifle ilişkili plan. | SKU |
+| Müşteri ülkesi | Müşteri ülkesi/bölgesi | Müşterinin sunduğu ülke/bölge adı. Ülke/bölge, müşterinin Azure aboneliğindeki ülke/bölgeden farklı olabilir. | CustomerCountry |
+| Önizleme SKU 'SU | Önizleme SKU 'SU | Değer, SKU 'YU "Önizleme" olarak etiketlediyseniz görüntülenir. SKU buna uygun şekilde etiketlenmişse değer "Evet" olur ve yalnızca sizin tarafından yetkilendirilen Azure abonelikleri bu görüntüyü dağıtabilir ve kullanabilir. SKU "Önizleme" olarak tanımlanmamışsa, değer "Hayır" olacaktır. | Isönizleme SKU 'su |
+| SKU faturalandırma türü | SKU faturalandırma türü | Teklifteki her SKU ile ilişkili faturalandırma türü. Olası değerler şunlardır:<ul><li>Ücretsiz</li><li>Ücretli</li></ul> | SKUBillingType |
+| IsInternal | Kullanım Dışı | Kullanım Dışı | Kullanım Dışı |
+| VM Boyutu | Sanal makine boyutu | VM tabanlı teklif türleri için bu varlık, teklifin SKU 'SU ile ilişkili VM 'nin boyutunu belirtir. | VMSize |
+| Bulut örneği adı | Bulut örneği adı | Bir VM dağıtımının gerçekleştiği Microsoft Bulut. | Cloudınstancename |
+| ServicePlanName | Kullanım Dışı | Kullanım dışı (SKU ile aynı tanım) | ServicePlanName |
+| Teklif Adı | Teklif Adı | Ticari Market sunumunun adı. | OfferName |
+| DeploymentMethod | Kullanım Dışı | Kullanım dışı (teklif türü olarak aynı tanım) | DeploymentMethod |
+| Müşteri şirket adı | Müşteri şirket adı | Müşterinin sunduğu şirket adı. Ad, müşterinin Azure aboneliğindeki adından farklı olabilir. | CustomerCompanyName |
+| Kullanım Tarihi | Kullanım Tarihi | Kullanım tabanlı varlıklar için kullanım olayı oluşturma tarihi. | UsageDate |
+| Imultisolution | Çok çözüm | Teklifin çok çözüm teklif türü olup olmadığını belirtir. | Imultisolution |
+| Yeni müşteri | Kullanım Dışı | Kullanım Dışı | IsNewCustomer |
+| Çekirdek boyutu | Çekirdek boyutu | VM tabanlı teklifle ilişkili çekirdek sayısı. | CoreSize |
+| Kullanım Türü | Kullanım Türü | Teklifle ilişkili kullanım olayının aşağıdakilerden biri olup olmadığını belirtir:<ul><li>Normalleştirilmiş kullanım</li><li>Ham kullanım</li><li>Tarifeli kullanım</li></ul> | UsageType |
+| Deneme bitiş tarihi | Deneme bitiş tarihi | Bu sipariş için deneme döneminin sona erdiği veya sonlandırmış olacağı tarih. | TrialEndDate |
+| Müşteri para birimi (CC) | Müşteri para birimi | Ticari Market hareketi için müşterinin kullandığı para birimi. | CustomerCurrencyCC |
+| Fiyat (CC) | Fiyat | Müşteri para birimi cinsinden gösterilen SKU 'nun birim fiyatı. | PriceCC |
+| Ödeme para birimi (PC) | Ödeme para birimi | Yayımcı, yayımcı tarafından yapılandırılan para birimindeki varlıkla ilişkili kullanım olayları için ödeme yapılır. | PayoutCurrencyPC |
+| Tahmini fiyat (PC) | Tahmini fiyat | SKU 'nun yayımcı tarafından yapılandırılan para birimi fiyatı. | EstimatedPricePC |
+| Kullanım başvurusu | Kullanım başvurusu | Kullanım raporunu (ticari Market Analytics 'te), ödeyen işlem raporuyla bağlamak için kullanılan birleştirilmiş bir GUID. Kullanım başvurusu, ödeme işlem raporundaki OrderID ve Lineıtemıd ile bağlantılı. | UsageReference |
+| Kullanım birimi | Kullanım birimi | SKU ile ilişkili tüketim birimi. | UsageUnit |
+| Müşteri Kimliği | Müşteri Kimliği | Müşteriye atanan benzersiz tanımlayıcı. Müşterinin sıfır veya daha fazla Azure Market aboneliği olabilir. | CustomerId |
+| Faturalandırma hesabı KIMLIĞI | Faturalandırma hesabı KIMLIĞI | Faturalandırma 'nin oluşturulduğu hesabın tanımlayıcısı. Ödeme Işlem raporunuzu müşteri, sipariş ve kullanım raporlarıyla bağlamak için **faturalandırma HESABı kimliğini** **MüşteriNo** olarak eşleyin. | Billingaccountıd |
+| Kullanım miktarı | Kullanım miktarı | Müşteri tarafından dağıtılan varlık tarafından tüketilen toplam kullanım birimi.<br>Bu, kullanım türü öğesine dayalıdır. Örneğin, kullanım türü normalleştirilmiş kullanım ise, kullanım miktarı normalleştirilmiş kullanım için olur. | UsageQuantity |
+| NormalizedUsage | Normalleştirilmiş kullanım | Müşteri tarafından dağıtılan varlık tarafından tüketilen toplam normalleştirilmiş kullanım birimi.<br>Normalleştirilmiş kullanım saatleri, sanal makine çekirdekleri ([VM çekirdeği sayısı] x [saat ham kullanım]) için hesaba normalleştirilmiş kullanım saatleri olarak tanımlanır. "SHAREDCORE" olarak belirlenen VM 'Ler [VM çekirdeklerinin sayısı] çarpanı olarak 1/6 (veya 0,1666) kullanır. | NormalizedUsage |
+| MeteredUsage | Tarifeli kullanım | Müşteri tarafından dağıtılan teklifle yapılandırılmış ölçüm tarafından tüketilen toplam kullanım birimleri. | MeteredUsage |
+| RawUsage | Ham kullanım | Müşteri tarafından dağıtılan varlık tarafından tüketilen toplam ham kullanım birimleri.<br>Ham kullanım saatleri, sanal makinelerin kullanım birimi açısından çalıştırıldığı zaman miktarı olarak tanımlanır. | RawUsage |
+| Tahmini genişletilmiş ücret (CC) | Müşteri para birimi cinsinden tahmini genişletilmiş ücret | Kullanımla ilişkili ücretleri belirtir. Sütun, Fiyat (CC) ve kullanım miktarının ürünüdür. | EstimatedExtendedChargeCC |
+| Tahmini genişletilmiş ücret (PC) | Ödeme para birimi cinsinden tahmini genişletilmiş ücret | Kullanımla ilişkili ücretleri belirtir. Sütun, tahmini fiyat (PC) ve kullanım miktarının ürünüdür. | EstimatedExtended ChargePC |
+|||||
 
 ### <a name="usage-page-filters"></a>Kullanım sayfası filtreleri
 
