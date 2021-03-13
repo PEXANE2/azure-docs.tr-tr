@@ -3,14 +3,14 @@ title: Azure Otomasyonu 'nda kaynak denetimi tümleştirmesini kullanma
 description: Bu makalede, Azure Otomasyonu kaynak denetimini diğer depolarla nasıl eşitleyeceğiniz açıklanmaktadır.
 services: automation
 ms.subservice: process-automation
-ms.date: 11/12/2020
+ms.date: 03/10/2021
 ms.topic: conceptual
-ms.openlocfilehash: e7a6b6d3e753352820cdcb910dcbfa9362793493
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: 281da27ce95649e85dae5d0795bb743f21fdb578
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99050779"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102631753"
 ---
 # <a name="use-source-control-integration"></a>Kaynak denetimi tümleştirmesini kullanma
 
@@ -30,7 +30,7 @@ Azure Otomasyonu üç tür kaynak denetimi destekler:
 
 * Kaynak denetimi deposu (GitHub veya Azure Repos)
 * [Farklı Çalıştır hesabı](automation-security-overview.md#run-as-accounts)
-* Otomasyon hesabınızda modül dahil [en son Azure modülleri](automation-update-azure-modules.md) `Az.Accounts` (az Module eşdeğeri `AzureRM.Profile` )
+* [ `AzureRM.Profile` Modülün](/powershell/module/azurerm.profile/) Otomasyon hesabınıza aktarılması gerekir. Eşdeğer az Module ( `Az.Accounts` ) Otomasyon kaynak denetimi ile çalışmayacaktır.
 
 > [!NOTE]
 > Kaynak denetimi eşitleme işleri, kullanıcının Otomasyon hesabı altında çalışır ve diğer otomasyon işleriyle aynı hızda faturalandırılır.

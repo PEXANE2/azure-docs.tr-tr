@@ -7,12 +7,12 @@ ms.author: andyriv
 ms.date: 2/16/2021
 ms.topic: tutorial
 ms.service: iot-hub-device-update
-ms.openlocfilehash: 1501153b73683081dfac0684d6714eb537c03380
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 0128d0de4f078b62bc9571c8758d80cb26585354
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101665020"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102615389"
 ---
 # <a name="microsoft-connected-cache-preview-deployment-scenario-sample-two-level-nested-azure-iot-edge-gateway-with-outbound-unauthenticated-proxy"></a>Microsoft bağlı önbellek önizleme dağıtım senaryosu örneği: giden kimliği doğrulanmamış proxy ile Iki düzey iç içe Azure IoT Edge Ağ Geçidi
 
@@ -70,7 +70,7 @@ Aşağıdaki diyagramda, bir Azure IoT Edge ağ geçidinin CDN kaynaklarına do�
 ## <a name="child-gateway-configuration"></a>Alt ağ geçidi yapılandırması
 
 >[!Note]
->Kendi özel kayıt defterinizde yapılandırmanızda kullanılan kapsayıcıları çoğaltdıysanız, modül dağıtımınızdaki config. TOML ayarları ve çalışma zamanı ayarları üzerinde bir değişiklik olması gerekir. Daha fazla bilgi için bkz. [öğretici-IoT Edge cihaz hiyerarşisi oluşturma-](https://docs.microsoft.com/azure/iot-edge/tutorial-nested-iot-edge?view=iotedge-2020-11&tabs=azure-portal#deploy-modules-to-the-lower-layer-device&preserve-view=true) daha fazla ayrıntı için Azure IoT Edge.
+>Kendi özel kayıt defterinizde yapılandırmanızda kullanılan kapsayıcıları çoğaltdıysanız, modül dağıtımınızdaki config. TOML ayarları ve çalışma zamanı ayarları üzerinde bir değişiklik olması gerekir. Daha fazla bilgi için bkz. [öğretici-IoT Edge cihaz hiyerarşisi oluşturma-](https://docs.microsoft.com/azure/iot-edge/tutorial-nested-iot-edge?view=iotedge-2020-11&tabs=azure-portal&preserve-view=true#deploy-modules-to-the-lower-layer-device) daha fazla ayrıntı için Azure IoT Edge.
 
 1. Edge aracısının görüntü yolunu aşağıdaki örnekte gösterildiği gibi değiştirin:
 

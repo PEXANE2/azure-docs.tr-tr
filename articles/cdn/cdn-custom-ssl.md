@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 01/27/2021
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: 61ba50f8ec9e1de18238160b23096670753cffd6
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 275afc504a5e7b92ae3274c02372eee6b488c782
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100367512"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102616409"
 ---
 # <a name="tutorial-configure-https-on-an-azure-cdn-custom-domain"></a>Öğretici: Azure CDN özel etki alanı üzerinde HTTPS yapılandırma
 
@@ -356,6 +356,11 @@ Aşağıdaki tabloda, HTTPS’yi devre dışı bıraktığınızda oluşan işle
 7. *Sertifika yenilemesi kendi sertifikanızı getir ile nasıl çalışır?*
 
     Yeni bir sertifikanın, PoP altyapısına dağıtılmasını sağlamak için yeni sertifikanızı Azure Anahtar Kasası 'na yükleyin. Azure CDN üzerindeki TLS ayarlarınızda en yeni sertifika sürümünü seçin ve Kaydet ' i seçin. Azure CDN daha sonra yeni güncelleştirilmiş sertifikayı yayacaktır. 
+
+8. *Uç nokta yeniden başlatıldıktan sonra HTTPS 'yi yeniden etkinleştirmem gerekir mi?*
+
+    Evet. **Akamai ' den Azure CDN** kullanıyorsanız, uç nokta durdurup yeniden başlatılırsa, ayarın etkin olması durumunda https ayarını yeniden etkinleştirmeniz gerekir.
+
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

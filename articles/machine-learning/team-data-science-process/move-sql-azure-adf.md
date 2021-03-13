@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 09/03/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 02fd6c1d4cbd1c2db287a38e086045042b5f220a
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: e477e4bb3b31477f9407e981d4c8da2340411f55
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93309538"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102615746"
 ---
 # <a name="move-data-from-a-sql-server-database-to-sql-database-with-azure-data-factory"></a>SQL Server veritabanından SQL veritabanı 'na veri taşıma Azure Data Factory
 
@@ -87,7 +87,7 @@ Bağlı hizmetler oluşturmak için adım adım yordam, [bağlı hizmetler oluş
 Aşağıdaki komut dosyası tabanlı yordamlarla veri kümelerinin yapısını, konumunu ve kullanılabilirliğini belirten tablolar oluşturun. JSON dosyaları tabloları tanımlamak için kullanılır. Bu dosyaların yapısı hakkında daha fazla bilgi için bkz. [veri kümeleri](../../data-factory/concepts-datasets-linked-services.md).
 
 > [!NOTE]
-> `Add-AzureAccount`Komut yürütmesi için doğru Azure aboneliğinin seçili olduğunu onaylamak üzere [New-AzureDataFactoryTable](/previous-versions/azure/dn835096(v=azure.100)) cmdlet 'ini yürütmeden önce cmdlet 'ini yürütmelisiniz. Bu cmdlet 'in belgeleri için bkz. [Add-AzureAccount](/powershell/module/servicemanagement/azure.service/add-azureaccount?view=azuresmps-3.7.0).
+> `Add-AzureAccount`Komut yürütmesi için doğru Azure aboneliğinin seçili olduğunu onaylamak üzere [New-AzureDataFactoryTable](/previous-versions/azure/dn835096(v=azure.100)) cmdlet 'ini yürütmeden önce cmdlet 'ini yürütmelisiniz. Bu cmdlet 'in belgeleri için bkz. [Add-AzureAccount](/powershell/module/servicemanagement/azure.service/add-azureaccount).
 >
 >
 

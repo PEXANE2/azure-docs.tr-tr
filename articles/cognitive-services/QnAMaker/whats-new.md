@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: overview
 ms.date: 07/16/2020
-ms.openlocfilehash: 5d64ec925e1d88f8143a85393ceb18ae37c2b917
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
+ms.openlocfilehash: 3bb7311a16b71b9bb76f14b4ba7a29dd2dae4a96
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102202289"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103010006"
 ---
 # <a name="whats-new-in-qna-maker"></a>Soru-Cevap Oluşturma yenilikleri
 
@@ -35,7 +35,7 @@ Soru-Cevap Oluşturma yenilikleri öğrenin.
   
 ### <a name="july-2020"></a>Temmuz 2020
 
-* [Meta veri: `OR` birden çok metaveri çiftinin mantıksal birleşimi](how-to/metadata-generateanswer-usage.md#logical-or-using-strictfilterscompoundoperationtype-property)
+* [Meta veri: `OR` birden çok metaveri çiftinin mantıksal birleşimi](how-to/query-knowledge-base-with-metadata.md#logical-or-using-strictfilterscompoundoperationtype-property)
 * Bilişsel Arama uç noktaları özel olacak şekilde yapılandırma [adımları](how-to/network-isolation.md) , ancak yine de soru-cevap oluşturma erişilebilir.
 * Ücretsiz Bilişsel Arama kaynakları, [90 gün sonra etkinliksizden](how-to/set-up-qnamaker-service-azure.md#inactivity-policy-for-free-search-resources)sonra kaldırılır.
 

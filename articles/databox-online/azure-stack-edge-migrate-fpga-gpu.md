@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: tutorial
 ms.date: 02/10/2021
 ms.author: alkohli
-ms.openlocfilehash: 1db6574f8ca22b6fe60899f00700ee19d61eab3b
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 5b68ab545e87035d138558ba1911294ef805af6d
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100382829"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102630750"
 ---
 # <a name="migrate-workloads-from-an-azure-stack-edge-pro-fpga-to-an-azure-stack-edge-pro-gpu"></a>Azure Stack Edge Pro FPGA 'dan iş yüklerini Azure Stack Edge Pro GPU 'suna geçirme
 
@@ -157,10 +157,10 @@ Artık, kaynak cihazdan *hedef* cihazınızdaki uç bulut paylaşımlarına ve u
 
 Hedef cihazınızdaki uç bulut paylaşımlarındaki verileri eşitlemek için aşağıdaki adımları izleyin:
 
-1. Kaynak cihazda oluşturulan paylaşım adlarına karşılık gelen [Paylaşımlar ekleyin](azure-stack-edge-j-series-manage-shares.md#add-a-share) . Paylaşımlar oluştururken, **BLOB kapsayıcısı** ' nın **var olan seçeneği kullanacak** şekilde ayarlandığından emin olun ve ardından önceki cihazla kullanılan kapsayıcıyı seçin.
-1. Önceki cihaza erişimi olan [kullanıcıları ekleyin](azure-stack-edge-j-series-manage-users.md#add-a-user) .
-1. Azure 'daki [Share verilerini yenileyin](azure-stack-edge-j-series-manage-shares.md#refresh-shares) . Bu, mevcut kapsayıcıdan tüm bulut verilerini paylaşımlara çeker.
-1. Paylaşımlarınız ile ilişkilendirilecek bant genişliği zamanlamalarını yeniden oluşturun. Ayrıntılı adımlar için bkz. [bant genişliği zamanlaması ekleme](azure-stack-edge-j-series-manage-bandwidth-schedules.md#add-a-schedule) .
+1. Kaynak cihazda oluşturulan paylaşım adlarına karşılık gelen [Paylaşımlar ekleyin](azure-stack-edge-gpu-manage-shares.md#add-a-share) . Paylaşımlar oluştururken, **BLOB kapsayıcısı** ' nın **var olan seçeneği kullanacak** şekilde ayarlandığından emin olun ve ardından önceki cihazla kullanılan kapsayıcıyı seçin.
+1. Önceki cihaza erişimi olan [kullanıcıları ekleyin](azure-stack-edge-gpu-manage-users.md#add-a-user) .
+1. Azure 'daki [Share verilerini yenileyin](azure-stack-edge-gpu-manage-shares.md#refresh-shares) . Bu, mevcut kapsayıcıdan tüm bulut verilerini paylaşımlara çeker.
+1. Paylaşımlarınız ile ilişkilendirilecek bant genişliği zamanlamalarını yeniden oluşturun. Ayrıntılı adımlar için bkz. [bant genişliği zamanlaması ekleme](azure-stack-edge-gpu-manage-bandwidth-schedules.md#add-a-schedule) .
 
 
 ### <a name="2-from-edge-local-shares"></a>2. Edge Yerel paylaşımlarından
@@ -172,7 +172,7 @@ Değiştirme aygıtı tam olarak yapılandırıldıktan sonra, cihazı yerel dep
 Yerel paylaşımlardaki verileri kurtarmak için şu adımları izleyin:
 
 1. [Cihazda Işlem yapılandırma](azure-stack-edge-gpu-deploy-configure-compute.md).
-1. Hedef cihazdaki tüm yerel paylaşımları ekleyin. [Yerel bir paylaşma ekleme](azure-stack-edge-j-series-manage-shares.md#add-a-local-share)içindeki ayrıntılı adımlara bakın.
+1. Hedef cihazdaki tüm yerel paylaşımları ekleyin. [Yerel bir paylaşma ekleme](azure-stack-edge-gpu-manage-shares.md#add-a-local-share)içindeki ayrıntılı adımlara bakın.
 1. Kaynak aygıttaki SMB paylaşımlarına erişmek, hedef cihazda IP adreslerini kullanır, ancak cihaz adını kullanırsınız. Bkz. [Azure Stack Edge Pro GPU üzerinde BIR SMB paylaşımıyla bağlantı](azure-stack-edge-j-series-deploy-add-shares.md#connect-to-an-smb-share). Hedef cihazdaki NFS paylaşımlarına bağlanmak için cihazla ilişkili yeni IP adreslerini kullanmanız gerekir. Bkz. [Azure Stack Edge Pro GPU ÜZERINDE NFS paylaşımıyla bağlantı](azure-stack-edge-j-series-deploy-add-shares.md#connect-to-an-nfs-share). 
 
     Paylaşım verilerinizin üzerine SMB/NFS üzerinden bir ara sunucuya kopyalandıysanız, bu verileri hedef cihazdaki paylaşımlara kopyalayabilirsiniz. Ayrıca, hem kaynak hem de hedef cihaz *çevrimiçiyse*, verileri doğrudan kaynak cihazdan kopyalayabilirsiniz.

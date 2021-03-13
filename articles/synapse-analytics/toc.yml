@@ -185,6 +185,12 @@
               href: troubleshoot/workspaces-created-by-sdk.md
             - name: UTF-8 metin okuma sorunlarını giderme
               href: troubleshoot/reading-utf8-text.md
+- name: Geçiş kılavuzları
+  items:
+    - name: Azure SYNAPSE Analytics 'e SQL Server
+      href: migration-guides/sql-server-to-synapse-analytics-guide.md
+    - name: Oracle 'dan Azure SYNAPSE Analytics
+      href: migration-guides/oracle-to-synapse-analytics-guide.md
 - name: Synapse SQL
   items:
     - name: Genel Bakış
@@ -559,6 +565,8 @@
       items:
         - name: Apache Spark
           href: ./spark/apache-spark-concepts.md
+        - name: Apache Spark havuzu yapılandırması
+          href: ./spark/apache-spark-pool-configurations.md
         - name: Delta Lake
           href: ./spark/apache-spark-what-is-delta-lake.md
         - name: Apache Spark otomatik ölçeklendirme davranışı

@@ -20,6 +20,8 @@
       href: ../../search/cognitive-search-custom-skill-form.md
     - name: AI Builder ile Form Tanıma kullanma
       href: tutorial-ai-builder.md
+    - name: Azure Işlevleri ile form tanıyıcı kullanma
+      href: tutorial-azure-function.md
     - name: Verileri toplu olarak ayıklama
       href: tutorial-bulk-processing.md
 - name: Kavramlar

@@ -49,8 +49,6 @@
       items:
         - name: ARM ile hesap oluşturma
           href: quickstart-arm-template-account.md
-    - name: Python temel kodlama hızlı başlangıç
-      href: quickstart-basic-encoding-python.md
 - name: Öğreticiler
   items:
     - name: .NET
@@ -86,6 +84,10 @@
       items:
         - name: Uzaktaki bir dosyayı kodlama ve akış ile aktarma Node.js
           href: stream-files-nodejs-quickstart.md
+    - name: Python
+      items:
+        - name: Python temel kodlama hızlı başlangıç
+          href: quickstart-basic-encoding-python.md
     - name: Azure portal
       items:
         - name: Müşteri tarafından yönetilen anahtarlar veya KAG öğreticisi

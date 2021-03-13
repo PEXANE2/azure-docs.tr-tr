@@ -3,7 +3,7 @@ title: Azure Media Services için Wıdevine lisansları teslim etmek üzere Rola
 description: Bu makalede, AMS tarafından hem PlayReady hem de Widevine DRMs ile dinamik olarak şifrelenen bir akış teslim etmek için Azure Media Services (AMS) ' nin nasıl kullanılacağı açıklanır.
 services: media-services
 documentationcenter: ''
-author: Mingfeiy
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.assetid: 2a9a408a-a995-49e1-8d8f-ac5b51e17d40
@@ -12,15 +12,15 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/14/2019
-ms.author: Juliako
+ms.date: 03/10/2021
+ms.author: inhenkel
 ms.reviewer: willzhan
-ms.openlocfilehash: 17b54b2adb21419de61d2309752987f6e4a48e41
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 576ac636f166e2daebbb9919d6666fea913a17be
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89264496"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103017061"
 ---
 # <a name="using-castlabs-to-deliver-widevine-licenses-to-azure-media-services"></a>Azure Media Services’ta Widevine lisansları vermek için castLabs kullanma
 
@@ -40,7 +40,7 @@ CENC (PlayReady ve/veya Widevine) tarafından korunan kayıttan akış içeriği
 
 Aşağıdaki diyagramda, üst düzey bir Azure Media Services ve bir Rolabs tümleştirme mimarisi gösterilmektedir.
 
-![Tümleştirme](./media/media-services-castlabs-integration/media-services-castlabs-integration.png)
+![tümleştirme](./media/media-services-castlabs-integration/media-services-castlabs-integration.png)
 
 ## <a name="typical-system-set-up"></a>Tipik sistem kurulumu
 
@@ -94,7 +94,7 @@ Konsol uygulamasını kullanmak için:
       var Objivarlık = _context. Varlıklar. burada (x => x.Id = = "NB: CID: UUID: dac53a5d-1500-80bd-b864-f1e4b62594cf"). FirstOrDefault ();
 4. AssetId kullanarak, sabit kıymeti sisteminde (Program.cs dosyasında Line 44) varlığı adlandırmak için bir kullanın.
    
-   AssetId **için şunu**ayarlamanız gerekir; benzersiz bir alfasayısal dize olması gerekir.
+   AssetId **için şunu** ayarlamanız gerekir; benzersiz bir alfasayısal dize olması gerekir.
 5. Programı çalıştırın.
 
 Web uygulamasını kullanmak için (STS):
@@ -125,6 +125,6 @@ Ortak şifreleme (PlayReady ve/veya Widevine) ile şifrelenmiş bir videoyu kay�
 ## <a name="media-services-learning-paths"></a>Media Services’i öğrenme yolları
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Geri bildirimde bulunma
+## <a name="provide-feedback"></a>Geribildirim gönderme
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 

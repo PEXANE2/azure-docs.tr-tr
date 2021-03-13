@@ -4,15 +4,15 @@ description: Kendi görüntünüzü kullanarak bir sanal makine teklifini Azure 
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
-author: emuench
+author: krsh
 ms.author: krsh
-ms.date: 10/20/2020
-ms.openlocfilehash: 42022d1204c3b524ee2e9ef2770f616fba89dc8c
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.date: 03/10/2021
+ms.openlocfilehash: 4711ea76af83594ec529cfda13a308fbe6646398
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92284803"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103200455"
 ---
 # <a name="how-to-create-a-virtual-machine-using-your-own-image"></a>Kendi görüntünüzü kullanarak bir sanal makine oluşturma
 
@@ -35,7 +35,7 @@ Bu bölümde bir Azure VM 'nin nasıl boyutlandırılacağını, güncelleştiri
 
 [!INCLUDE [Discussion of most current updates](includes/most-current-updates.md)]
 
-### <a name="perform-additional-security-checks"></a>Ek güvenlik denetimleri gerçekleştirme
+### <a name="perform-more-security-checks"></a>Daha fazla güvenlik denetimi gerçekleştirin
 
 [!INCLUDE [Discussion of addition security checks](includes/additional-security-checks.md)]
 
@@ -43,15 +43,157 @@ Bu bölümde bir Azure VM 'nin nasıl boyutlandırılacağını, güncelleştiri
 
 [!INCLUDE [Discussion of custom configuration and scheduled tasks](includes/custom-config.md)]
 
-## <a name="upload-the-vhd-to-azure"></a>VHD 'yi Azure 'a yükleyin
+### <a name="generalize-the-image"></a>Görüntüyü genelleştirin
+
+Azure Marketi 'ndeki tüm görüntülerin genel bir biçimde yeniden kullanılabilir olması gerekir. Bunu başarmak için, işletim sistemi VHD 'SI, bir VM 'den örneğe özgü tüm tanımlayıcıları ve yazılım sürücülerini kaldıran bir işlem olan genelleştirilmelidir.
+
+## <a name="bring-your-image-into-azure"></a>Görüntünüzü Azure 'a taşıyın
+
+Görüntünüzü Azure 'a getirmenin üç yolu vardır:
+
+1. VHD 'yi paylaşılan bir görüntü galerisine (SıG) yükleyin.
+1. VHD 'yi bir Azure depolama hesabına yükleyin.
+1. Yönetilen görüntüden (görüntü oluşturma hizmetleri kullanılıyorsa) VHD 'yi ayıklayın.
+
+Aşağıdaki üç bölümde bu seçenekler açıklanır.
+
+### <a name="option-1-upload-the-vhd-as-shared-image-gallery"></a>Seçenek 1: VHD 'YI paylaşılan görüntü Galerisi olarak yükleme
+
+1. VHD 'leri depolama hesabına yükleyin.
+2. Azure portal, **özel bir şablon dağıt**' ı arayın.
+3. **Düzenleyicide kendi şablonunuzu oluşturun öğesini** seçin.
+4. Aşağıdaki Azure Resource Manager (ARM) şablonunu kopyalayın.
+
+    ```json
+    {
+      "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "sourceStorageAccountResourceId": {
+          "type": "string",
+          "metadata": {
+            "description": "Resource ID of the source storage account that the blob vhd resides in."
+          }
+        },
+        "sourceBlobUri": {
+          "type": "string",
+          "metadata": {
+            "description": "Blob Uri of the vhd blob (must be in the storage account provided.)"
+          }
+        },
+        "sourceBlobDataDisk0Uri": {
+          "type": "string",
+          "metadata": {
+            "description": "Blob Uri of the vhd blob (must be in the storage account provided.)"
+          }
+        },
+        "sourceBlobDataDisk1Uri": {
+          "type": "string",
+          "metadata": {
+            "description": "Blob Uri of the vhd blob (must be in the storage account provided.)"
+          }
+        },
+        "galleryName": {
+          "type": "string",
+          "metadata": {
+            "description": "Name of the Shared Image Gallery."
+          }
+        },
+        "galleryImageDefinitionName": {
+          "type": "string",
+          "metadata": {
+            "description": "Name of the Image Definition."
+          }
+        },
+        "galleryImageVersionName": {
+          "type": "string",
+          "metadata": {
+            "description": "Name of the Image Version - should follow <MajorVersion>.<MinorVersion>.<Patch>."
+          }
+        }
+      },
+      "resources": [
+        {
+          "type": "Microsoft.Compute/galleries/images/versions",
+          "name": "[concat(parameters('galleryName'), '/', parameters('galleryImageDefinitionName'), '/', parameters('galleryImageVersionName'))]",
+          "apiVersion": "2020-09-30",
+          "location": "[resourceGroup().location]",
+          "properties": {
+            "storageProfile": {
+              "osDiskImage": {
+                "source": {
+                  "id": "[parameters('sourceStorageAccountResourceId')]",
+                  "uri": "[parameters('sourceBlobUri')]"
+                }
+              },
+    
+              "dataDiskImages": [
+                {
+                  "lun": 0,
+                  "source": {
+                    "id": "[parameters('sourceStorageAccountResourceId')]",
+                    "uri": "[parameters('sourceBlobDataDisk0Uri')]"
+                  }
+                },
+                {
+                  "lun": 1,
+                  "source": {
+                    "id": "[parameters('sourceStorageAccountResourceId')]",
+                    "uri": "[parameters('sourceBlobDataDisk1Uri')]"
+                  }
+                }
+              ]
+            }
+          }
+        }
+      ]
+    }
+    
+    ```
+
+5. Şablonu düzenleyiciye yapıştırın.
+
+    :::image type="content" source="media/create-vm/vm-sample-code-screen.png" alt-text="VM için örnek kod ekranı.":::
+
+1. **Kaydet**’i seçin.
+1. Aşağıdaki ekrandaki alanları doldurmak için bu tablodaki parametreleri kullanın.
+
+| Parametreler | Description |
+| --- | --- |
+| Sourcestorampaaccountresourceıd | Blob VHD 'nin bulunduğu kaynak depolama hesabının kaynak KIMLIĞI.<br><br>Kaynak KIMLIĞINI almak için **Azure Portal** **depolama hesabınıza** gidin, **Özellikler**' e gidin ve **RESOURCEID** değerini kopyalayın. |
+| sourceBlobUri | İşletim sistemi diski VHD blobunun blob URI 'Si (belirtilen depolama hesabında olmalıdır).<br><br>Blob URL 'sini almak için **Azure Portal** **depolama hesabınıza** gidin, **bloba** gidin ve **URL** değerini kopyalayın. |
+| sourceBlobDataDisk0Uri | Veri diski VHD blobunun blob URI 'Si (belirtilen depolama hesabında olmalıdır). Bir veri diskiniz yoksa, bu parametreyi şablondan kaldırın.<br><br>Blob URL 'sini almak için **Azure Portal** **depolama hesabınıza** gidin, **bloba** gidin ve **URL** değerini kopyalayın. |
+| sourceBlobDataDisk1Uri | Ek veri diski VHD blobunun blob URI 'Si (belirtilen depolama hesabında olmalıdır). Ek veri diskiniz yoksa, bu parametreyi şablondan kaldırın.<br><br>Blob URL 'sini almak için **Azure Portal** **depolama hesabınıza** gidin, **bloba** gidin ve **URL** değerini kopyalayın. |
+| Gallername | Paylaşılan görüntü galerisinin adı |
+| Gallerımagedefinitionname | Görüntü tanımının adı |
+| Gallerımageversionname | Oluşturulacak görüntü sürümünün adı (Bu biçimde): `<MajorVersion>.<MinorVersion>.<Patch>` |
+|
+
+:::image type="content" source="media/create-vm/custom-deployment-window.png" alt-text="Özel dağıtım penceresini gösterir.":::
+
+8. **Gözden geçir ve oluştur**’u seçin. Doğrulama tamamlandıktan sonra **Oluştur**' u seçin.
+
+> [!TIP]
+> Imza görüntüsünü yayımlamak için yayımcı hesabının "Owner" erişimi olmalıdır. Gerekirse, erişim izni vermek için aşağıdaki adımları izleyin:
+>
+> 1. Paylaşılan görüntü galerisine (SıG) gidin.
+> 2. Sol panelde **erişim denetimi** (IAM) seçeneğini belirleyin.
+> 3. **Ekle**' yi ve ardından **rol ataması Ekle**' yi seçin.
+> 4. **Rol** için **sahip**' i seçin.
+> 5. **Erişim atama** için **Kullanıcı, Grup veya hizmet sorumlusu**' nı seçin.
+> 6. Görüntüyü yayımlayabilecek kişinin Azure e-postasını girin.
+> 7. **Kaydet**’i seçin.<br><br>
+> :::image type="content" source="media/create-vm/add-role-assignment.png" alt-text="Rol ataması Ekle penceresi gösterilir.":::
+
+### <a name="option-2-upload-the-vhd-to-a-storage-account"></a>Seçenek 2: VHD 'YI bir depolama hesabına yükleyin
 
 [Azure 'a yüklemek için bir WINDOWS VHD veya vhdx hazırlama](../virtual-machines/windows/prepare-for-upload-vhd-image.md) veya [bir Linux VHD oluşturma ve karşıya yükleme](../virtual-machines/linux/create-upload-generic.md)konusunda açıklandığı gibi, VM 'yi karşıya yüklenecek şekilde yapılandırın ve hazırlayın.
 
-## <a name="extract-the-vhd-from-image-if-using-image-building-services"></a>Kümeden VHD 'yi ayıklama (görüntü oluşturma Hizmetleri kullanıyorsanız)
+### <a name="option-3-extract-the-vhd-from-managed-image-if-using-image-building-services"></a>Seçenek 3: yönetilen görüntüden VHD 'YI ayıklama (görüntü oluşturma Hizmetleri kullanıyorsanız)
 
 [Packer](https://www.packer.io/)gibi bir görüntü oluşturma hizmeti KULLANıYORSANıZ, VHD 'yi görüntüden ayıklamanız gerekebilir. Bunu yapmanın doğrudan bir yolu yoktur. VM 'yi oluşturmanız ve VHD 'yi VM diskinden ayıklamanız gerekir.
 
-### <a name="create-the-vm-on-the-azure-portal"></a>Azure portal VM 'yi oluşturma
+## <a name="create-the-vm-on-the-azure-portal"></a>Azure portal VM 'yi oluşturma
 
 [Azure Portal](https://ms.portal.azure.com/)temel VM görüntüsünü oluşturmak için aşağıdaki adımları izleyin.
 
@@ -65,14 +207,14 @@ Bu bölümde bir Azure VM 'nin nasıl boyutlandırılacağını, güncelleştiri
 
 6. Dağıtılacak VM 'nin boyutunu seçin.
 
-    :::image type="content" source="media/create-vm/create-virtual-machine-sizes.png" alt-text="Gen 1 veya Gen 2 ' yi seçin.":::
+    :::image type="content" source="media/create-vm/create-virtual-machine-sizes.png" alt-text="Seçilen görüntü için önerilen bir VM boyutu seçin.":::
 
 7. VM oluşturmak için gereken diğer ayrıntıları sağlayın.
 8. Seçimlerinizi gözden geçirmek için **gözden geçir + oluştur** ' u seçin. **Doğrulama başarılı** Iletisi göründüğünde **Oluştur**' u seçin.
 
-Azure, belirttiğiniz sanal makineyi sağlamaya başlar. Sol menüdeki **sanal makineler** sekmesini seçerek ilerleme durumunu izleyin. Oluşturulduktan sonra sanal makinenin **çalışması**için değişiklikler durumu.
+Azure, belirttiğiniz sanal makineyi sağlamaya başlar. Sol menüdeki **sanal makineler** sekmesini seçerek ilerleme durumunu izleyin. Oluşturulduktan sonra sanal makinenin **çalışması** için değişiklikler durumu.
 
-### <a name="connect-to-your-vm"></a>Sanal makinenize bağlanma
+## <a name="connect-to-your-vm"></a>Sanal makinenize bağlanma
 
 [Windows](../virtual-machines/windows/connect-logon.md) veya [Linux](../virtual-machines/linux/ssh-from-windows.md#connect-to-your-vm) VM 'nize bağlanmak için aşağıdaki belgelere bakın.
 
@@ -80,6 +222,7 @@ Azure, belirttiğiniz sanal makineyi sağlamaya başlar. Sol menüdeki **sanal m
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Önerilen sonraki adım: Azure Marketi yayımlama gereksinimlerini karşıladığından emin olmak için [VM görüntünüzü test edin](azure-vm-image-test.md) . Bu isteğe bağlıdır.
-- VM görüntünüzü test etmeyin, [SAS URI 'Si oluşturma](azure-vm-get-sas-uri.md)ile devam edin.
+- Azure Marketi yayımlama gereksinimlerini karşıladığından emin olmak için [VM görüntünüzü test edin](azure-vm-image-test.md) . Bu isteğe bağlıdır.
+- VM görüntünüzü test etmek istemiyorsanız, [Iş Ortağı Merkezi](https://partner.microsoft.com/) ' nde oturum açın ve SIG görüntüsünü yayımlayın (seçenek #1).
+- #2 veya #3 seçeneğini izlediyseniz [SAS URI 'Sini oluşturun](azure-vm-get-sas-uri.md).
 - Yeni Azure tabanlı VHD 'nizi oluştururken zorluk yaşıyorsanız bkz. [Azure Market Için VM SSS](azure-vm-create-faq.md).

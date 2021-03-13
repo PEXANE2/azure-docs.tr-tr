@@ -3,12 +3,12 @@ title: Azure Izleyici uyarıları için eylem kuralları
 description: Azure Izleyici 'deki eylem kurallarının ne olduğunu ve bunların nasıl yapılandırılacağını ve yönetileceğini anlamak.
 ms.topic: conceptual
 ms.date: 04/25/2019
-ms.openlocfilehash: 07d179f557671a515a7933b64a25e6d41f75219b
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 1a86493b4b478e8ebc75545bf80dafa425132fe4
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102045624"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103016007"
 ---
 # <a name="action-rules-preview"></a>Eylem kuralları (Önizleme)
 
@@ -61,19 +61,25 @@ Artık eylem kuralları oluşturmak için akış sayfasını görmeniz gerekir. 
 
 ### <a name="filter-criteria"></a>Filtre ölçütü
 
-Ayrıca, uyarıların belirli bir alt kümesine daraltmak için filtreler tanımlayabilirsiniz.
+İsteğe bağlı olarak, kuralın uyarıların belirli bir alt kümesine veya her uyarıdaki belirli olaylara (örneğin, yalnızca "tetiklenir" veya yalnızca "çözümlendi") uygulanması için filtre tanımlayabilirsiniz.
 
 Kullanılabilir filtreleri şunlardır:
 
-* **Önem derecesi**: bir veya daha fazla uyarı kümesi seçin. **Önem derecesi = Sev1** , eylem kuralının Sev1 olarak ayarlanan tüm uyarılar için geçerli olduğu anlamına gelir.
-* **Izleme hizmeti**: kaynak izleme hizmetini temel alan bir filtre. Bu filtre Ayrıca birden çok seçim olur. Örneğin, **Monitor Service = "Application Insights"** , eylem kuralının tüm Application Insights tabanlı uyarılar için geçerli olduğu anlamına gelir.
-* **Kaynak türü**: belirli bir kaynak türünü temel alan bir filtre. Bu filtre Ayrıca birden çok seçim olur. Örneğin, **kaynak türü = "sanal makineler"** , eylem kuralının tüm sanal makineler için geçerli olduğu anlamına gelir.
-* **Uyarı KURALı kimliği**: uyarı KURALıNıN Kaynak Yöneticisi kimliğini kullanarak belirli uyarı kurallarını filtreleme seçeneği.
-* **Izleme koşulu**: izleme koşulu olarak **tetiklenen** veya **çözümlenen** uyarı örnekleri için bir filtre.
-* **Açıklama**: uyarı kuralının bir parçası olarak tanımlanan, açıklamaya karşı bir dize eşleşmesi tanımlayan bir Regex (normal ifade) eşleşir. Örneğin, **Açıklama ' prod ' içerir** açıklamalarındaki "üretim" dizesini içeren tüm uyarılarla eşleşir.
-* **Uyarı bağlamı (yük)**: bir uyarı yükünün uyarı bağlam alanlarına karşı bir dize eşleşmesi tanımlayan bir Regex eşleşmesi. Örneğin, **Uyarı bağlamı (yük) ' bilgisayar-01 ' içeriyorsa** , yükleri "bilgisayar-01" dizesini içeren tüm uyarılarla eşleşir.
+* **Önem derecesi**: Bu kural yalnızca seçili önem derecesine sahip uyarılar için geçerlidir.  
+Örneğin, **önem derecesi = Sev1** , kuralın yalnızca Sev1 önem derecesine sahip uyarılara uygulanacağını gösterir.
+* **Izleme hizmeti**: Bu kural yalnızca seçili izleme hizmetlerinden gelen uyarılar için geçerlidir.  
+Örneğin, **Monitor Service = "Azure Backup"** , kuralın yalnızca yedekleme uyarıları (Azure Backup geldiği) için uygulanacağı anlamına gelir.
+* **Kaynak türü**: Bu kural yalnızca seçili kaynak türlerindeki uyarılar için geçerlidir.  
+Örneğin, **kaynak türü = "sanal makineler"** , kuralın yalnızca sanal makinelerdeki uyarılar için uygulanacağı anlamına gelir.
+* **Uyarı KURALı kimliği**: Bu kural, yalnızca belirli bir uyarı kuralından gelen uyarılar için geçerlidir. Değer, uyarı kuralının Kaynak Yöneticisi KIMLIĞI olmalıdır.  
+Örneğin, **Uyarı KURALı kimliği = "/Subscriptions/SubId1/resourceGroups/ResourceGroup1/Providers/Microsoft.insights/metricalerts/MyAPI-highLatency"** , bu kuralın yalnızca "Uygulamaı-highlatency" ölçüm uyarısı kuralından gelen uyarılar için uygulanacağını belirtir.
+* **Izleme koşulu**: Bu kural, yalnızca belirtilen izleyici koşuluyla uyarı olayları için geçerlidir- **tetiklenir** veya **çözüldü**.
+* **Açıklama**: Bu kural, yalnızca uyarı açıklaması alanında belirli bir dizeyi içeren uyarılar için geçerlidir. Bu alan, uyarı kuralı açıklamasını içerir.  
+Örneğin, **Açıklama ' prod ' içerdiğinde** , kuralın yalnızca açıklamalarında "üretim" dizesini içeren uyarılarla eşleşeceğini gösterir.
+* **Uyarı bağlamı (yük)**: Bu kural yalnızca uyarı bağlam alanlarında bir veya daha fazla belirli değeri içeren uyarılar için geçerlidir.  
+Örneğin, **Uyarı bağlamı (yük) ' bilgisayar-01 ' içeriyorsa** , kuralın yalnızca yükü "bilgisayar-01" dizesini içeren uyarılara uygulanacağını gösterir.
 
-Bu filtreler bir diğeri ile birlikte uygulanır. Örneğin, **' = sanal makineler** ve **önem derecesi ' = Sev0** kaynak türünü ayarlarsanız, yalnızca sanal makinelerinizdeki tüm **Sev0** uyarılarını filtrelediyseniz.
+Bir kuralda birden çok filtre ayarlarsanız, bunların hepsi geçerlidir. Örneğin, **' = sanal makineler** ve **önem derecesi ' = Sev0** kaynak türünü ayarlarsanız, kural yalnızca sanal makinelerdeki Sev0 uyarıları için geçerlidir.
 
 ![Eylem kuralı filtreleri](media/alerts-action-rules/action-rules-new-rule-creation-flow-filters.png)
 
@@ -104,7 +110,7 @@ Geçiş sırasında **eylem grubu** ' nu seçerseniz, var olan bir eylem grubu e
 Son olarak, eylem kuralı için aşağıdaki ayrıntıları yapılandırın:
 * Name
 * Kaydedildiği kaynak grubu
-* Açıklama
+* Description
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 

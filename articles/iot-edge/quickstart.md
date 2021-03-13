@@ -10,12 +10,12 @@ ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc, devx-track-azurecli
 monikerRange: =iotedge-2018-06
-ms.openlocfilehash: a00e5d262724f4799f8b7b91a54e4b2710f4ce2b
-ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
+ms.openlocfilehash: 6170f91d11b47a43e15488bcbb0e91ff3f7c906e
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "100008086"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102616103"
 ---
 # <a name="quickstart-deploy-your-first-iot-edge-module-to-a-windows-device-preview"></a>Hızlı başlangıç: ilk IoT Edge modülünüzü bir Windows cihazına dağıtma (Önizleme)
 
@@ -51,9 +51,16 @@ Bu hızlı başlangıçta kullanacağınız tüm kaynakları yönetmek için bir
 
 IoT Edge cihazınızın aşağıdaki gereksinimleri karşıladığından emin olun:
 
-* Windows PC veya Server, sürüm 1809 veya üzeri
-* En az 4 GB bellek, önerilen 8 GB bellek
-* 10 GB boş disk alanı
+* Sürümler
+  * Windows 10 sürüm 1809 veya üzeri; derleme 17763 veya üzeri
+    * Professional, Enterprise, IoT Enterprise
+  * Windows Server 2019 derleme 17763 veya üzeri
+
+  
+* Donanım gereksinimleri
+  * Minimum boş bellek: 2 GB
+  * Minimum boş disk alanı: 10 GB
+
 
 >[!NOTE]
 >Bu hızlı başlangıçta Windows 'da Linux için IoT Edge dağıtımı oluşturmak üzere Windows Yönetim Merkezi kullanılır. PowerShell de kullanabilirsiniz. Dağıtımınızı oluşturmak için PowerShell 'i kullanmak istiyorsanız, [bir Windows cihazında Linux için Azure IoT Edge yükleme ve sağlama](how-to-install-iot-edge-on-windows.md)hakkındaki nasıl yapılır kılavuzundaki adımları izleyin.
@@ -108,7 +115,7 @@ Cihazınıza Windows üzerinde Linux için IoT Edge yükleyip cihaz bağlantı d
 
 ![IoT Edge çalışma zamanını başlatma adımını gösteren diyagram.](./media/quickstart/start-runtime.png)
 
-1. [Windows yönetici merkezini indirin](https://aka.ms/WACDownloadEFLOW).
+1. [Windows yönetici merkezini indirin](https://aka.ms/wacdownload).
 
 1. Cihazınızda Windows yönetici merkezini ayarlamak için yükleme sihirbazındaki yönergeleri izleyin.
 

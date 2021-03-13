@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/19/2020
 ms.author: memildin
-ms.openlocfilehash: 7778607b533a836eb5a47a12b73374c2a8299621
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 55f8d37d435aa8adeb4d97246ce7b2c7811140be
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100590575"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102558007"
 ---
 # <a name="security-alerts-schemas"></a>Güvenlik uyarıları şemaları
 
@@ -173,7 +173,7 @@ Uyarı etkinleştir olayını gösterildiği gibi arayarak etkinlik günlüğün
 
 Microsoft Graph, Microsoft 365 veri ve zeka ağ geçidindir. Microsoft 365, Windows 10 ve Enterprise Mobility + Security çok fazla miktarda veriye erişmek için kullanabileceğiniz Birleşik bir programlama modeli sağlar. Milyonlarca kullanıcıyla etkileşime geçen kuruluşlar ve tüketiciler için uygulama derlemek üzere Microsoft Graph içindeki çok sayıda veriyi kullanın.
 
-MS Graph 'e gönderilen güvenlik uyarıları için şema ve JSON temsili [Microsoft Graph belgelerinde](/graph/api/resources/alert?preserve-view=true&view=graph-rest-1.0)bulunabilir.
+MS Graph 'e gönderilen güvenlik uyarıları için şema ve JSON temsili [Microsoft Graph belgelerinde](/graph/api/resources/alert)bulunabilir.
 
 ---
 

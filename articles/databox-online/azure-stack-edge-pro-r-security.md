@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: article
 ms.date: 10/14/2020
 ms.author: alkohli
-ms.openlocfilehash: 922ef24bff7d6e60a3ba3b91113003f8206b8177
-ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
+ms.openlocfilehash: bd90a16c09dce65115cea2f097d18f2e0ced931a
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/16/2021
-ms.locfileid: "100548650"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102632042"
 ---
 # <a name="security-and-data-protection-for-azure-stack-edge-pro-r-and-azure-stack-edge-mini-r"></a>Azure Stack Edge Pro R ve Azure Stack Edge Mini R için güvenlik ve veri koruması
 
@@ -133,7 +133,7 @@ Cihaz sabit bir sıfırlamaya geçtiğinde, cihazda güvenli silme gerçekleşti
 
 [!INCLUDE [azure-stack-edge-gateway-data-rest](../../includes/azure-stack-edge-gateway-protect-data-storage-accounts.md)]
 
-- Depolama hesabınızı yetkisiz kullanıcılara karşı korumaya yardımcı olmak için [depolama hesabı anahtarlarınızı](azure-stack-edge-j-series-manage-storage-accounts.md) düzenli olarak döndürün ve eşitleyin.
+- Depolama hesabınızı yetkisiz kullanıcılara karşı korumaya yardımcı olmak için [depolama hesabı anahtarlarınızı](azure-stack-edge-gpu-manage-storage-accounts.md) düzenli olarak döndürün ve eşitleyin.
 
 ## <a name="manage-personal-information"></a>Kişisel bilgileri yönetme
 
@@ -141,7 +141,7 @@ Azure Stack Edge hizmeti, aşağıdaki senaryolarda kişisel bilgileri toplar:
 
 [!INCLUDE [azure-stack-edge-gateway-data-rest](../../includes/azure-stack-edge-gateway-manage-personal-data.md)]
 
-Bir paylaşıma erişebilen veya silebilen kullanıcıların listesini görüntülemek için [Azure Stack Edge 'de paylaşımları yönetme](azure-stack-edge-j-series-manage-shares.md)bölümündeki adımları izleyin.
+Bir paylaşıma erişebilen veya silebilen kullanıcıların listesini görüntülemek için [Azure Stack Edge 'de paylaşımları yönetme](azure-stack-edge-gpu-manage-shares.md)bölümündeki adımları izleyin.
 
 Daha fazla bilgi için [Güven Merkezi](https://www.microsoft.com/trustcenter)'nde Microsoft gizlilik ilkesini gözden geçirin.
 
