@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 11/25/2020
-ms.openlocfilehash: 7063452d23d2975cf0c26a89e7a08a422de54942
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.date: 03/10/2021
+ms.openlocfilehash: 77927472dae6c8e7e6fddacf9088b479636edd37
+ms.sourcegitcommit: 94c3c1be6bc17403adbb2bab6bbaf4a717a66009
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96751946"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103224353"
 ---
 # <a name="train-model-module"></a>Model modülünü eğitme
 
@@ -60,12 +60,34 @@ Azure Machine Learning, makine öğrenimi modelinin oluşturulması ve kullanıl
     > [!TIP] 
     > Sütun seçiciyi kullanırken sorun yaşıyorsanız, ipuçları için [veri kümesindeki sütunları seçme](./select-columns-in-dataset.md) makalesine bakın. KURALLARıN ve **ad** seçeneklerinin kullanımı **ile** ilgili bazı yaygın senaryolar ve ipuçları açıklanmaktadır.
   
-1.  İşlem hattını gönderme. Çok fazla veriniz varsa bu işlem biraz zaman alabilir.
+1.  İşlem hattını gönderme. Çok fazla veriniz varsa, bu biraz zaman alabilir.
 
     > [!IMPORTANT] 
     > Her satırın KIMLIĞI olan bir KIMLIK sütununuzu veya çok fazla benzersiz değer içeren bir metin sütununu varsa **eğitme modeli** , "sütunda benzersiz değerler sayısı:" {column_name} "izin verilenden daha büyük olabilir.
     >
     > Bunun nedeni, sütunun benzersiz değerler eşiğine isabet ettiğinden ve belleğin yetersiz olmasına neden olabilir. Bu sütunu **açık bir özellik** olarak Işaretlemek Için [meta verileri Düzenle](edit-metadata.md) ' yi kullanabilir ve eğitiminde kullanılmaz veya [metin modülünden N-gram özelliklerini](extract-n-gram-features-from-text.md) Önişle metin sütununa ayıklayın. Daha fazla hata ayrıntısı için [Tasarımcı hata koduna](././designer-error-codes.md) bakın.
+
+## <a name="model-interpretability"></a>Model Yorumlenebilirliği
+
+Model yorumlanma, ML modelini anlarsınız ve karar vermek için, insanların daha fazla anlaşılabilir olmasını sağlamak için temel alınan temeli sunar.
+
+Şu anda **eğitme modeli** modülü, [ml modellerini açıklamak için ıntertability Package kullanımını](https://docs.microsoft.com/azure/machine-learning/how-to-machine-learning-interpretability-aml#generate-feature-importance-values-via-remote-runs)destekler. Aşağıdaki yerleşik algoritmalar desteklenir:
+
+- Çizgisel Regresyon
+- Sinir Ağı Regresyonu
+- Çift Sınıflı Lojistik Regresyon
+- İki Sınıflı Destek Vektör Makinesi
+- Çok sınıf karar ormanı
+
+Model açıklamalarını oluşturmak için model oluşturma modülündeki **model açıklaması** ' nda bulunan açılan listede **doğru** seçeneğini belirleyebilirsiniz. Varsayılan olarak, **model eğitme** modülünde false olarak ayarlanır. Açıklama oluşturmanın ek işlem maliyeti gerektirdiğini lütfen unutmayın.
+
+![Model açıklaması onay kutusunu gösteren ekran görüntüsü](./media/module/train-model-explanation-checkbox.png)
+
+İşlem hattı çalıştırıldıktan sonra **model modülünü eğit** ' in sağ bölmesindeki **açıklamalar** sekmesini ziyaret edebilir ve model performansı, veri kümesi ve özellik önemini keşfedebilirsiniz.
+
+![Model açıklaması grafiklerini gösteren ekran görüntüsü](./media/module/train-model-explanations-tab.gif)
+
+Azure Machine Learning model açıklamalarını kullanma hakkında daha fazla bilgi edinmek için [ml modellerini yorumlama](https://docs.microsoft.com/azure/machine-learning/how-to-machine-learning-interpretability-aml#generate-feature-importance-values-via-remote-runs)hakkında nasıl yapılır makalesine başvurun.
 
 ## <a name="results"></a>Sonuçlar
 

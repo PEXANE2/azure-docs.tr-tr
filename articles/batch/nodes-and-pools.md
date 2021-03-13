@@ -2,13 +2,13 @@
 title: Azure Batch düğümler ve havuzlar
 description: İşlem düğümleri ve havuzlar hakkında bilgi edinin ve bunların bir geliştirme açısından Azure Batch iş akışında nasıl kullanıldığını öğrenin.
 ms.topic: conceptual
-ms.date: 11/20/2020
-ms.openlocfilehash: be38d4f91afcaa1ac31e9b9bbc6d2547da2ee99e
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.date: 03/11/2021
+ms.openlocfilehash: e1edcc805e0e8c59d189a4622e494101fb31bb6d
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102183667"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103200219"
 ---
 # <a name="nodes-and-pools-in-azure-batch"></a>Azure Batch düğümler ve havuzlar
 
@@ -65,7 +65,7 @@ Bir Batch havuzu oluşturduğunuzda, havuzdaki her bir işlem düğümünde çal
 Toplu Işte kullanılabilen iki tür havuz yapılandırması vardır.
 
 > [!IMPORTANT]
-> Havuzlar ' Cloud Services Configuration ' değil ' sanal makine yapılandırması ' kullanılarak yapılandırılmalıdır. Tüm Batch özellikleri ' sanal makine yapılandırması ' havuzları tarafından desteklenir ve yeni özellikler ekleniyor. ' Cloud Services Configuration ' havuzları tüm özellikleri desteklemez ve yeni bir özellik planlanmaz.
+> Şu anda iki yapılandırmayı kullanarak havuzlar oluşturmadığınıza karşın, yeni havuzların yapılandırma Cloud Services değil, sanal makine yapılandırması kullanılarak yapılandırılması gerekir. Tüm geçerli ve yeni toplu Işlem özellikleri, sanal makine yapılandırma havuzları tarafından desteklenecektir. Cloud Services yapılandırma havuzları tüm özellikleri desteklemez ve yeni bir özellik planlanmaz. Yeni ' CloudServiceConfiguration ' havuzları oluşturamaz veya [29 şubat 2024 ' den sonra](https://azure.microsoft.com/updates/azure-batch-cloudserviceconfiguration-pools-will-be-retired-on-29-february-2024/)var olan havuzlara yeni düğümler ekleyemeyeceksiniz.
 
 ### <a name="virtual-machine-configuration"></a>Sanal makine yapılandırması
 
@@ -76,13 +76,13 @@ Toplu Işte kullanılabilen iki tür havuz yapılandırması vardır.
 ### <a name="cloud-services-configuration"></a>Cloud Services yapılandırması
 
 > [!WARNING]
-> Bulut hizmeti yapılandırma havuzları kullanım dışıdır. Lütfen bunun yerine sanal makine yapılandırma havuzlarını kullanın.
+> Cloud Services yapılandırma havuzları [kullanım dışıdır](https://azure.microsoft.com/updates/azure-batch-cloudserviceconfiguration-pools-will-be-retired-on-29-february-2024/). Lütfen bunun yerine sanal makine yapılandırma havuzlarını kullanın. Daha fazla bilgi için bkz. [Cloud Services Batch havuzu yapılandırmasını sanal makineye geçirme](batch-pool-cloud-service-to-virtual-machine-configuration.md).
 
 **Cloud Services yapılandırması** , havuzun Azure Cloud Services düğümlerinden oluştuğunu belirtir. Cloud Services yalnızca Windows işlem düğümleri sağlar.
 
 Cloud Services yapılandırma havuzları için kullanılabilir işletim sistemleri, [Azure Konuk işletim sistemi sürümleri ve SDK uyumluluk matrisi](../cloud-services/cloud-services-guestos-update-matrix.md)' nda listelenir ve kullanılabilir işlem düğümü boyutları, [Cloud Services için Boyutlar](../cloud-services/cloud-services-sizes-specs.md)bölümünde listelenmiştir. Cloud Services düğümleri içeren bir havuz oluşturduğunuzda, düğüm boyutunu ve *Işletim sistemi ailesini* belirtirsiniz (hangi .NET sürümlerinin işletim sistemine yükleneceğini belirler). Cloud Services, Windows çalıştıran sanal makinelerden daha hızlı bir şekilde Azure 'a dağıtılır. Windows işlem düğümlerinden oluşan havuzlar oluşturmak istiyorsanız, Cloud Services'ın dağıtım süresi açısından daha iyi bir performans sunduğunu görebilirsiniz.
 
-Cloud Services dahilindeki çalışan rollerinde olduğu gibi bir *İşletim Sistemi Sürümü* belirtebilirsiniz (çalışan rolleri hakkında daha fazla bilgi için bkz. [Cloud Services’e genel bakış](../cloud-services/cloud-services-choose-me.md)). `Latest (*)`Düğümlerin otomatik olarak yükseltilmesi Için *Işletim sistemi sürümü* için belirtmenizi öneririz ve yeni yayınlanan sürümlere geçmek için gereken bir iş yoktur. Belirli bir işletim sistemi sürümünün seçildiği birincil kullanım durumu, sürümün güncelleştirilmesine izin vermeden önce geriye dönük uyumluluk testinin gerçekleştirilmesine izin vererek uygulama uyumluluğunun sağlandığından emin olmaktır. Doğrulamadan sonra, havuzun *Işletim sistemi sürümü* güncelleştirilemeyebilir ve yeni işletim sistemi görüntüsü yüklenebilirler. Çalışan tüm görevler kesintiye uğrar ve yeniden kuyruğa.
+Cloud Services içindeki çalışan rollerinde olduğu gibi bir *Işletim sistemi sürümü* de belirtebilirsiniz. `Latest (*)`Düğümlerin otomatik olarak yükseltilmesi Için *Işletim sistemi sürümü* için belirtmenizi öneririz ve yeni yayınlanan sürümlere geçmek için gereken bir iş yoktur. Belirli bir işletim sistemi sürümünün seçildiği birincil kullanım durumu, sürümün güncelleştirilmesine izin vermeden önce geriye dönük uyumluluk testinin gerçekleştirilmesine izin vererek uygulama uyumluluğunun sağlandığından emin olmaktır. Doğrulamadan sonra, havuzun *Işletim sistemi sürümü* güncelleştirilemeyebilir ve yeni işletim sistemi görüntüsü yüklenebilirler. Çalışan tüm görevler kesintiye uğrar ve yeniden kuyruğa.
 
 ### <a name="node-agent-skus"></a>Düğüm Aracısı SKU 'Ları
 

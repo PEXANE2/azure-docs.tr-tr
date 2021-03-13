@@ -6,12 +6,12 @@ ms.author: bahusse
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 2/11/2021
-ms.openlocfilehash: 0c8f55b6eeba4319b0ce9e39085912b8c4829235
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 104e6503ba47d17c17cfec2b4e62ec3f69f18330
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101720809"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103200024"
 ---
 # <a name="connectivity-architecture-in-azure-database-for-postgresql"></a>PostgreSQL için Azure veritabanı 'nda bağlantı mimarisi
 Bu makalede PostgreSQL için Azure veritabanı bağlantı mimarisi ve trafiğin Azure 'daki ve dışındaki istemcilerden PostgreSQL için Azure veritabanı örneğine nasıl yönlendirildiği açıklanmaktadır.
@@ -60,7 +60,9 @@ Aşağıdaki tabloda, tüm veri bölgeleri için PostgreSQL için Azure veritaba
 | Orta Fransa | 40.79.137.0, 40.79.129.1  | | |
 | Güney Fransa | 40.79.177.0     | | |
 | Orta Almanya | 51.4.144.100     | | |
+| Almanya Kuzey | 51.116.56.0 | |
 | Almanya Kuzey Doğu | 51.5.144.179  | | |
+| Almanya Orta Batı | 51.116.152.0 | |
 | Hindistan Orta | 104.211.96.159     | | |
 | Hindistan Güney | 104.211.224.146  | | |
 | Hindistan Batı | 104.211.160.80    | | |
@@ -74,6 +76,8 @@ Aşağıdaki tabloda, tüm veri bölgeleri için PostgreSQL için Azure veritaba
 | Güney Afrika - Batı | 102.133.24.0   | | |
 | Orta Güney ABD |104.214.16.39, 20.45.120.0  |13.66.62.124  |23.98.162.75 |
 | Güneydoğu Asya | 40.78.233.2, 23.98.80.12     | 104.43.15.0 | |
+| İsviçre Kuzey | 51.107.56.0 ||
+| İsviçre Batı | 51.107.152.0| ||
 | BAE Orta | 20.37.72.64  | | |
 | BAE Kuzey | 65.52.248.0    | | |
 | Güney Birleşik Krallık | 51.140.184.11   | | |
@@ -83,6 +87,37 @@ Aşağıdaki tabloda, tüm veri bölgeleri için PostgreSQL için Azure veritaba
 | Batı ABD |13.86.216.212, 13.86.217.212 |104.42.238.205  | 23.99.34.75|
 | Batı ABD 2 | 13.66.226.202  | | |
 ||||
+
+## <a name="frequently-asked-questions"></a>Sık sorulan sorular
+
+### <a name="what-you-need-to-know-about-this-planned-maintenance"></a>Bu planlı bakımla ilgili bilmeniz gerekenler nelerdir?
+Bu, yalnızca istemcilere saydam hale getiren bir DNS değişikidir. DNS sunucusunda FQDN için IP adresi değiştirildiğinde, yerel DNS önbelleği 5 dakika içinde yenilenir ve işletim sistemleri tarafından otomatik olarak yapılır. Yerel DNS yenilemesinde, tüm yeni bağlantılar yeni IP adresine bağlanır, eski IP adresleri tamamen kullanımdan kesilene kadar tüm mevcut bağlantılar eski IP adresine bağlı kalır. Kullanımdan kaldırmadan önce eski IP adresi üç-dört hafta boyunca kabaca ele alınacaktır; Bu nedenle, istemci uygulamaları üzerinde hiçbir etkisi olmaması gerekir.
+
+### <a name="what-are-we-decommissioning"></a>Ne açığa aldık?
+Yalnızca ağ geçidi düğümlerinin yetkisi alınacaktır. Kullanıcılar sunucularına bağlandıklarında, bağlantı sunucuya iletilmeden önce bağlantının ilk durağı ağ geçidi düğümüne gönderilir. Eski ağ geçidi halkalarını (sunucunun çalıştırıldığı kiracı halkaları değil) kullanımdan oluşturacağız, daha fazla açıklama için [bağlantı mimarisine](#connectivity-architecture) bakın.
+
+### <a name="how-can-you-validate-if-your-connections-are-going-to-old-gateway-nodes-or-new-gateway-nodes"></a>Bağlantılarınızın eski ağ geçidi düğümlerine veya yeni ağ geçidi düğümlerine gittiğini nasıl doğrulayabileceğiniz?
+Örneğin, sunucunuzun FQDN 'sine ping gönderin  ``ping xxx.postgres.database.azure.com`` . Döndürülen IP adresi, yukarıdaki belgede ağ geçidi IP adresleri (yetki alma) altında listelenen IP 'lerden biri ise, bağlantınızın eski ağ geçidi üzerinden gittiğini gösterir. Yazdığında, döndürülen IP adresi ağ geçidi IP adresleri altında listelenen IP 'lerden biri ise, bağlantınızın yeni ağ geçidi üzerinden gittiğini gösterir.
+
+Ayrıca, bağlantı noktası 3306 ile istemci uygulamanızdan veritabanı sunucusunu [Psping](https://docs.microsoft.com/sysinternals/downloads/psping) veya bir şekilde görüntüleyerek test edebilir ve dönüş IP adresi, YETKI alma IP adreslerinden biri olmadığından emin olabilirsiniz
+
+### <a name="how-do-i-know-when-the-maintenance-is-over-and-will-i-get-another-notification-when-old-ip-addresses-are-decommissioned"></a>Nasıl yaparım?, bakımın ne zaman üzerinde olduğunu ve eski IP adresleri kullanımdan çalıştırıldığında başka bir bildirim alabilirim mi?
+Bakım işini başlatacağız sizi bilgilendirmek için bir e-posta alacaksınız. Bakım, al bölgelerinde geçirilmesi gereken sunucu sayısına bağlı olarak bir aya kadar sürebilir. Lütfen istemcinizi FQDN kullanarak veya yukarıdaki tablodaki yeni IP adresini kullanarak veritabanı sunucusuna bağlanmasını hazırlayın. 
+
+### <a name="what-do-i-do-if-my-client-applications-are-still-connecting-to-old-gateway-server-"></a>İstemci uygulamalarım hala eski ağ geçidi sunucusuna bağlanılıyorsa ne yapmam gerekiyor?
+Bu, uygulamalarınızın FQDN yerine statik IP adresi kullanarak sunucuya bağlandığını gösterir. Bağlantı dizelerini ve bağlantı havuzu ayarını, AKS ayarını veya kaynak kodunda bile gözden geçirin.
+
+### <a name="is-there-any-impact-for-my-application-connections"></a>Uygulama bağlantılarım için herhangi bir etki var mı?
+Bu bakım yalnızca bir DNS değişiki olduğundan, istemciye saydamdır. İstemcide DNS önbelleği yenilendiğinde (işletim sistemi tarafından otomatik olarak yapılır), tüm yeni bağlantı yeni IP adresine bağlanır ve tüm mevcut bağlantı, eski IP adresi tam olarak kullanımdan kaldırılana kadar düzgün çalışmaya devam eder ve bu da genellikle birkaç hafta daha sonra olur. Bu durum için yeniden deneme mantığı gerekli değildir, ancak uygulamanın yeniden deneme mantığının yapılandırıldığını görmek iyi bir durumdur. Lütfen veritabanı sunucusuna bağlanmak veya uygulama bağlantı dizinizdeki yeni ' ağ geçidi IP adresleri ' listesini etkinleştirmek için FQDN 'yi kullanın.
+Bu bakım işlemi var olan bağlantıları düşürülemiyor. Yalnızca yeni bağlantı isteklerinin yeni ağ geçidi çalmasına gitmesini sağlar.
+
+### <a name="can-i-request-for-a-specific-time-window-for-the-maintenance"></a>Bakım için belirli bir zaman penceresi isteyebilir miyim? 
+Geçişin saydam olması ve müşterinin bağlantısına herhangi bir etkisi olmaması nedeniyle, kullanıcıların büyük bölümü için bir sorun olmayacaktır. Uygulamanızı önceden gözden geçirin ve veritabanı sunucusuna bağlanmak veya uygulama bağlantı dizinizdeki yeni ' ağ geçidi IP adresleri ' listesini etkinleştirmek için FQDN 'yi kullandığınızdan emin olun.
+
+### <a name="i-am-using-private-link-will-my-connections-get-affected"></a>Özel bağlantı kullanıyorum, bağlantılarım etkilenecek mi?
+Hayır, bu bir ağ geçidi donanım yetki alma işlemi ve özel bağlantı ya da özel IP adresleriyle herhangi bir ilişki olmaması durumunda yalnızca kullanımdan kaldırma IP adresleri altında belirtilen genel IP adreslerini etkiler.
+
+
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

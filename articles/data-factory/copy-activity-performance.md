@@ -1,18 +1,23 @@
 ---
 title: Kopyalama etkinliği performans ve ölçeklenebilirlik kılavuzu
 description: Kopyalama etkinliğini kullandığınızda Azure Data Factory veri hareketinin performansını etkileyen anahtar faktörleri hakkında bilgi edinin.
+services: data-factory
+documentationcenter: ''
 ms.author: jingwang
 author: linda33wj
+manager: shwang
+ms.reviewer: douglasl
 ms.service: data-factory
+ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/15/2020
-ms.openlocfilehash: 1c166b99243e5a6ee576100b8470aa38b9535c7a
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: cba248d3f254c9bb97c66ff7a3d39275b4b912c4
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100387674"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102616086"
 ---
 # <a name="copy-activity-performance-and-scalability-guide"></a>Kopyalama etkinliği performans ve ölçeklenebilirlik kılavuzu
 
@@ -48,8 +53,8 @@ ADF, farklı düzeylerde paralellik sağlayan sunucusuz bir mimari sağlar.
 
 Bu mimari, ortamınız için veri taşıma aktarım hızını en üst düzeye çıkaran işlem hatları geliştirmenize olanak tanır. Bu işlem hatları aşağıdaki kaynakları tamamen kullanır:
 
-* Ağ bant genişliği
-* Saniye başına depolama giriş/çıkış işlemi (ıOPS) ve bant genişliği
+* Kaynak ve hedef veri depoları arasında ağ bant genişliği
+* Kaynak veya hedef veri deposu saniye başına giriş/çıkış işlemi (ıOPS) ve bant genişliği
 
 Bu tam kullanım, aşağıdaki kaynaklarla kullanılabilen minimum aktarım hızını ölçerek genel aktarım hızını tahmin edebileceğiniz anlamına gelir:
 
@@ -57,7 +62,7 @@ Bu tam kullanım, aşağıdaki kaynaklarla kullanılabilen minimum aktarım hız
 * Hedef veri deposu
 * Kaynak ve hedef veri depoları arasında ağ bant genişliği
 
-Aşağıdaki tabloda kopyalama süresi hesaplanır. Süre, ortamınız için veri boyutuna ve bant genişliği sınırına göre belirlenir.
+Aşağıdaki tabloda kopyalama süresi hesaplanır. Süre, ortamınız için veri boyutuna ve ağ/veri deposu bant genişliği sınırına göre belirlenir.
 
 &nbsp;
 

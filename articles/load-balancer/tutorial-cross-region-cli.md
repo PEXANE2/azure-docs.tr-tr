@@ -7,12 +7,12 @@ ms.author: allensu
 ms.service: load-balancer
 ms.topic: tutorial
 ms.date: 03/04/2021
-ms.openlocfilehash: c41dc65b920c80d25a81a09f4550e76a8fd1095a
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
+ms.openlocfilehash: 83efb428a94d49b77ecd923d4868afe034374b5f
+ms.sourcegitcommit: 94c3c1be6bc17403adbb2bab6bbaf4a717a66009
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102204555"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103225192"
 ---
 # <a name="tutorial-create-a-cross-region-azure-load-balancer-using-azure-cli"></a>Öğretici: Azure CLı kullanarak çapraz bölge Azure Load Balancer oluşturma
 
@@ -81,23 +81,6 @@ Azure kaynak grubu, Azure kaynaklarının dağıtıldığı ve yönetildiği bir
     --backend-pool-name myBackEndPool-CR     
 ```
 
-### <a name="create-the-health-probe"></a>Durum araştırması oluşturma
-
-[Az Network Region lb araştırması Create](/cli/azure/network/cross-region-lb/probe#az_network_cross_region_lb_probe_create)komutuyla bir çapraz bölge yük dengeleyici durum araştırması oluşturun:
-
-* Adlandırılmış **Myhealtharaştırması-CR**.
-* Protokol **TCP**.
-* Bağlantı noktası **80**.
-
-```azurecli-interactive
-  az network cross-region lb probe create \
-    --lb-name myLoadBalancer-CR \
-    --name myHealthProbe-CR \
-    --port 80 \
-    --protocol Tcp \
-    --resource-group myResourceGroupLB-CR
-```
-
 ### <a name="create-the-load-balancer-rule"></a>Yük dengeleyici kuralı oluşturma
 
 Yük dengeleyici kuralı şunları tanımlar:
@@ -122,8 +105,7 @@ Yük dengeleyici kuralı şunları tanımlar:
     --protocol tcp \
     --resource-group myResourceGroupLB-CR \
     --backend-pool-name myBackEndPool-CR \
-    --frontend-ip-name myFrontEnd-CR \
-    --probe-name myHealthProbe-CR
+    --frontend-ip-name myFrontEnd-CR
 ```
 
 ## <a name="create-backend-pool"></a>Arka uç havuzu oluşturma
@@ -204,7 +186,6 @@ Artık gerekli değilse, [az Group Delete](/cli/azure/group#az-group-delete) kom
 Bu öğreticide şunları yaptınız:
 
 * Bir çapraz bölge yük dengeleyici oluşturuldu.
-* Bir sistem durumu araştırması oluşturuldu.
 * Yük Dengeleme kuralı oluşturuldu.
 * Bölgesel yük dengeleyiciler çapraz bölge yük dengeleyicinin arka uç havuzuna eklendi.
 * Yük dengeleyici test edildi.

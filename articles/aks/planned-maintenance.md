@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 03/03/2021
 ms.author: qpetraroia
 author: qpetraroia
-ms.openlocfilehash: f5c85f371dbe0fe3488c1ca6ff806f114153d3a7
-ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
+ms.openlocfilehash: 307183292b60a6556df69a4e5541cbfb5e13098f
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/11/2021
-ms.locfileid: "102639192"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103201571"
 ---
 # <a name="use-planned-maintenance-to-schedule-maintenance-windows-for-your-azure-kubernetes-service-aks-cluster-preview"></a>Azure Kubernetes Service (AKS) kümeniz için bakım pencerelerini zamanlamak üzere planlı bakım kullanma (Önizleme)
 
@@ -28,8 +28,8 @@ Bu makalede, mevcut bir AKS kümeniz olduğunu varsaymaktadır. AKS kümesine ih
 
 Planlı bakım kullanırken aşağıdaki kısıtlamalar geçerlidir:
 
-- AKS, bu pencereleri acil veya kritik düzeltmeler ve düzeltme ekleri için kesme hakkını saklı tutar.
-- Bakım işlemlerinin gerçekleştirilmesi *yalnızca en iyi çaba* olarak değerlendirilir ve belirtilen bir pencerede oluşma garantisi yoktur.
+- AKS, bu pencereleri acil veya kritik olan plansız/reaktif bakım işlemleri için kesme hakkını saklı tutar.
+- Şu anda, bakım işlemlerinin gerçekleştirilmesi *yalnızca en iyi çaba* olarak değerlendirilir ve belirtilen bir pencerede oluşma garantisi yoktur.
 - Güncelleştirmeler yedi günden daha uzun bir süre için engellenemez.
 
 ### <a name="install-aks-preview-cli-extension"></a>aks-preview CLI uzantısını yükleme

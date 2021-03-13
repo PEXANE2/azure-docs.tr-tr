@@ -1,7 +1,7 @@
 ---
 title: H264 tekli bit hızı 4K Media Encoder Standard önayar-Azure | Microsoft Docs
-description: Makale, Media Encoder Standard "H264 tekli bit hızı 4K" görev önayarı hakkında genel bir bakış sunar.
-author: Juliako
+description: Makale, Media Encoder Standard H264 tek bit hızı 4K görev önayarı 'na genel bir bakış sunar.
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 services: media-services
@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/19/2019
-ms.author: juliako
-ms.openlocfilehash: 7e2a2d6f96d4e9c789dd13ae377e219bd943ae24
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 03/10/2021
+ms.author: inhenkel
+ms.openlocfilehash: 62984c938a3db67550b36c731e7a5a27de5df7ad
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89261895"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103012879"
 ---
 # <a name="h264-single-bitrate-4k"></a>H264 Single Bitrate 4K
 

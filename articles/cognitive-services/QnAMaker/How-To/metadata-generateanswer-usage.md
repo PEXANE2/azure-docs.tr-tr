@@ -9,12 +9,12 @@ ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 11/09/2020
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 7e8d1b13dfd802df820bea4015e411dbb85540ba
-ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
+ms.openlocfilehash: 9d2100dbc2c5f24742a949778a1b7450bf303c5f
+ms.sourcegitcommit: ec39209c5cbef28ade0badfffe59665631611199
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/11/2021
-ms.locfileid: "103011434"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103232214"
 ---
 # <a name="get-an-answer-with-the-generateanswer-api"></a>GenerateAnswer API 'SI ile bir yanıt alın
 
@@ -174,9 +174,13 @@ var qnaResults = await this.qnaMaker.getAnswers(stepContext.context, qnaMakerOpt
 
 Önceki JSON yalnızca %30 ' da veya eşik puanı üzerinde olan yanıtları istedi.
 
-## <a name="return-precise-answers"></a>Kesin yanıtlar döndürün
+## <a name="get-precise-answers-with-generateanswer-api"></a>GenerateAnswer API 'SI ile kesin yanıtlar alın
 
-### <a name="generate-answer-api"></a>Yanıt API 'SI oluştur 
+# <a name="qna-maker-ga-stable-release"></a>[Soru-Cevap Oluşturma GA (kararlı sürüm)](#tab/v1)
+
+Yalnızca Soru-Cevap Oluşturma yönetilen sürümü ile kesin yanıt özelliği sunuyoruz.
+
+# <a name="qna-maker-managed-preview-release"></a>[Soru-Cevap Oluşturma Managed (Önizleme sürümü)](#tab/v2)
 
 Kullanıcı Soru-Cevap Oluşturma yönetilen kaynağı kullanırken [kesin yanıtları](../reference-precise-answering.md) etkinleştirebilir. AnswerSpanRequest parametresi aynı şekilde güncellenmelidir.
 
@@ -211,6 +215,8 @@ Bot hizmetiniz için kesin yanıt ayarlarını yapılandırmak istiyorsanız, bo
 |Yalnızca kesin yanıtlar|true|true|
 |Yalnızca uzun yanıtlar|yanlış|yanlış|
 |Hem uzun hem de kesin yanıtlar|true|yanlış|
+
+---
 
 ## <a name="common-http-errors"></a>Ortak HTTP hataları
 

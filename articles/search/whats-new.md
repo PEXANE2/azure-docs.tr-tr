@@ -6,14 +6,14 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: overview
-ms.date: 03/02/2021
+ms.date: 03/12/2021
 ms.custom: references_regions
-ms.openlocfilehash: 36f10bebfc42ae5e9e75206392e8a5f8ccef563a
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: b4dc8ab44d341b293c044843e6dff2a3b6d3102c
+ms.sourcegitcommit: ec39209c5cbef28ade0badfffe59665631611199
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101694606"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103233557"
 ---
 # <a name="whats-new-in-azure-cognitive-search"></a>Azure Bilişsel Arama yenilikleri
 
@@ -21,15 +21,15 @@ Hizmette nelerin yeni olduğunu öğrenin. Hizmette güncel kalmasını sağlama
 
 ## <a name="march-2021"></a>Mart 2021
 
-|Özellik&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  |  Açıklama | Kullanılabilirlik  |
+|Özellik&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  |  Description | Kullanılabilirlik  |
 |------------------------------|---------------|---------------|
-| [Anlamsal arama](semantic-search-overview.md) | Arama sonuçlarının çok az çabayla uygunluğunu artıran sorgu ile ilgili özelliklerin bir koleksiyonu. Arama isteğinde küçük değişikliklerle, mevcut dizinlerde bu özellikleri deneyebilirsiniz.</br></br>[Anlamsal sorgu](semantic-how-to-query-request.md) , derecelendirmeyi geliştirmek için doğal dil işlemede ilerlendirme sağlayan yeni bir sorgu türüdür ve yanıt, açıklamalı alt yazı ve anlam vurgulamaları sağlamak için sorgu hedefini anlayın.</br></br>[Anlamsal derecelendirme ve yanıtlar (yanıtlar, açıklamalı alt yazılar ve vurgular)](semantic-how-to-query-response.md) sonuçları değerlendiren modele ve modelin yanıta yapı eklemesine olanak tanır. | Genel Önizleme ([isteğe göre](https://aka.ms/SemanticSearchPreviewSignup)). </br></br>[Arama belgelerini kullanın (REST)](/rest/api/searchservice/preview-api/search-documents) API-Version = 2020-06 -30-önizleme ve [Arama Gezgini](search-explorer.md) Azure Portal. </br></br>Bölge ve katman kısıtlamaları geçerlidir. |
+| [Anlamsal arama](semantic-search-overview.md) | Arama sonuçlarının çok az çabayla uygunluğunu önemli ölçüde iyileştiren, sorgu ile ilgili özelliklerin bir koleksiyonu. </br></br>[Anlamsal derecelendirme](semantic-ranking.md) , sözcüklerin ve içeriğin arkasındaki anlam anlamını kullanarak uygunluk puanlarını hesaplar. </br></br>[Anlamsal açıklamalı alt yazılar](semantic-how-to-query-request.md) , en önemli hüküm veya tümceciklere göre vurgularla belgeyi en iyi şekilde özetleyen belgeden ilgili yollardır. </br></br>[Anlam yanıtları](semantic-answers.md) , bir arama belgesinden ayıklanan anahtar yollardır. Bu, soru gibi görünen bir sorguya doğrudan yanıt olarak ifade edilir. | Genel Önizleme ([isteğe göre](https://aka.ms/SemanticSearchPreviewSignup)). </br></br>[Arama belgelerini kullanın (REST)](/rest/api/searchservice/preview-api/search-documents) API-Version = 2020-06 -30-önizleme ve [Arama Gezgini](search-explorer.md) Azure Portal. </br></br>Bölge ve katman kısıtlamaları geçerlidir. |
 | [Yazım denetimi sorgu terimleri](speller-how-to-add.md) | Sorgu terimleri arama altyapısına ulaşmadan önce, yazım hatalarını denetlebilirler. `speller`Seçeneği herhangi bir sorgu türü (basit, tam veya anlamsal) ile birlikte kullanılır. |  Genel Önizleme, yalnızca REST, api-Version = 2020-06 -30-Önizleme|
 | [SharePoint Online Dizin Oluşturucu](search-howto-index-sharepoint-online.md) | Bu Dizin Oluşturucu, bir belge kitaplığından içerik dizini oluşturabilmeniz için sizi bir SharePoint Online sitesine bağlar. | Genel Önizleme, yalnızca REST, api-Version = 2020-06 -30-Önizleme |
 
 ## <a name="february-2021"></a>Şubat 2021
 
-|Özellik&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  |  Açıklama | Kullanılabilirlik  |
+|Özellik&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  |  Description | Kullanılabilirlik  |
 |------------------------------|---------------|---------------|
 | [Belgeleri Sıfırla (Önizleme)](search-howto-run-reset-indexers.md) |  Dizin Oluşturucu iş yüklerindeki ayrı ayrı seçili arama belgelerini yeniden işler. | [Arama REST API 2020-06-30-Önizleme](/rest/api/searchservice/index-preview) |
 | [Kullanılabilirlik Alanları](search-performance-optimization.md#availability-zones)| Belirli bölgelerde iki veya daha fazla çoğaltma ile, [performans Için ölçeklendirerek](search-performance-optimization.md#availability-zones), iki veya daha fazla ayrı fiziksel konumda çoğaltmalar bulundurarak dayanıklılık elde edin.  | Arama hizmeti oluşturma 'nin bölgesi ve tarihi kullanılabilirliği belirlenir. Ayrıntılar için bkz. performans için ölçek makalesi. |
@@ -37,7 +37,7 @@ Hizmette nelerin yeni olduğunu öğrenin. Hizmette güncel kalmasını sağlama
 
 ## <a name="january-2021"></a>Ocak 2021
 
-|Özellik&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  |  Açıklama | Kullanılabilirlik  |
+|Özellik&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  |  Description | Kullanılabilirlik  |
 |------------------------------|-------------|---------------|
 | [Azure Bilişsel Arama ve Soru-Cevap Oluşturma için Çözüm Hızlandırıcısı](https://github.com/Azure-Samples/search-qna-maker-accelerator) | Belgedeki soruları ve yanıtları çeker ve en ilgili yanıtları önerin. Live demo uygulaması adresinde bulunabilir [https://aka.ms/qnaWithAzureSearchDemo](https://aka.ms/qnaWithAzureSearchDemo) .  | Açık kaynak proje (SLA yok) |
 

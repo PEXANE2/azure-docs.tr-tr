@@ -12,12 +12,12 @@ ms.custom:
 - amqp
 - mqtt
 - device-developer
-ms.openlocfilehash: 828f0ff81048ca0b6f07b7fdee9ed29c87991db4
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: dc0655aba424d29a4055f0d50a20057f22d084ed
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102032645"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103015464"
 ---
 # <a name="get-connected-to-azure-iot-central"></a>Azure IoT Central'a bağlanma
 
@@ -178,7 +178,7 @@ Bu yaklaşım, IoT Central veya test cihazlarıyla denemeler yaparken faydalıd�
 
 ## <a name="associate-a-device-with-a-device-template"></a>Cihazı cihaz şablonuyla ilişkilendirme
 
-IoT Central cihaz bağlandığı zaman bir cihazı cihaz şablonuyla otomatik olarak ilişkilendirir. Bir cihaz, bağlandığı zaman bir [model kimliği](../../iot-pnp/iot-plug-and-play-glossary.md#model-id) gönderir. IoT Central, bu belirli cihaz modeline ait cihaz şablonunu tanımlamak için model KIMLIĞINI kullanır. Bulma işlemi aşağıdaki gibi kullanılabilir:
+IoT Central cihaz bağlandığı zaman bir cihazı cihaz şablonuyla otomatik olarak ilişkilendirir. Bir cihaz, bağlandığı zaman bir [model kimliği](../../iot-fundamentals/iot-glossary.md?toc=/azure/iot-central/toc.json&bc=/azure/iot-central/breadcrumb/toc.json#model-id) gönderir. IoT Central, bu belirli cihaz modeline ait cihaz şablonunu tanımlamak için model KIMLIĞINI kullanır. Bulma işlemi aşağıdaki gibi kullanılabilir:
 
 1. Cihaz şablonu IoT Central uygulamada zaten yayımlanıyorsa cihaz, cihaz şablonuyla ilişkilendirilir.
 1. Cihaz şablonu IoT Central uygulamada zaten yayınlanmamışsa, IoT Central [ortak model deposundaki](https://github.com/Azure/iot-plugandplay-models)cihaz modelini arar. IoT Central modeli bulursa, temel bir cihaz şablonu oluşturmak için onu kullanır.

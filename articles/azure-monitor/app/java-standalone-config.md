@@ -6,12 +6,12 @@ ms.date: 11/04/2020
 author: MS-jgol
 ms.custom: devx-track-java
 ms.author: jgol
-ms.openlocfilehash: 4ed3b3d60be0e5e4bedcb604ce021f6a64002120
-ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
+ms.openlocfilehash: e58d69634712a9cc640ba9e4785a7bf1effaf88c
+ms.sourcegitcommit: 94c3c1be6bc17403adbb2bab6bbaf4a717a66009
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 03/12/2021
-ms.locfileid: "103201266"
+ms.locfileid: "103224665"
 ---
 # <a name="configuration-options---azure-monitor-application-insights-for-java"></a>Yapılandırma seçenekleri-Java için Azure Izleyici Application Insights
 
@@ -184,9 +184,11 @@ Daha fazla bilgi için [telemetri işlemcisi](./java-standalone-telemetry-proces
 
 Log4J, Logback ve Java. util. Logging otomatik olarak işaretlenir ve bu günlüğe kaydetme çerçeveleri aracılığıyla gerçekleştirilen günlüğe kaydetme otomatik olarak toplanır.
 
-Günlüğe kaydetme işlemi, yalnızca ilk olarak günlüğe kaydetme çerçevelerinin yapılandırılmış eşiğini karşılıyorsa yakalanır ve ikincisi de Application Insights yapılandırılan eşiği karşılar.
+Günlüğe kaydetme yalnızca, günlük çerçevesi için yapılandırılan düzeyi karşılıyorsa yakalanır ve ikincisi de Application Insights için yapılandırılan düzeyi karşılar.
 
-Varsayılan Application Insights eşiği `INFO` . Bu düzeyi değiştirmek istiyorsanız:
+Örneğin, günlük oluşturma çatısı `WARN` paketten (ve üzeri) günlüğe kaydedilecek şekilde yapılandırıldıysa `com.example` ve Application Insights `INFO` , (ve üzerine) yakalanacak şekilde yapılandırıldıysa, Application Insights yalnızca paketten (ve üzeri) yakalama yapılır `WARN` `com.example` .
+
+Application Insights için yapılandırılan varsayılan düzey `INFO` . Bu düzeyi değiştirmek istiyorsanız:
 
 ```json
 {

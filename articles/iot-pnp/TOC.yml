@@ -51,8 +51,6 @@
       href: concepts-model-discovery.md
     - name: Model ayrıştırıcısı
       href: concepts-model-parser.md
-    - name: Sözlük
-      href: iot-plug-and-play-glossary.md
 - name: Nasıl yapılır kılavuzları
   items:
     - name: IoT gezginini yükleme ve kullanma
@@ -83,6 +81,8 @@
   items:
     - name: Destek ve yardım seçenekleri
       href: ../iot-fundamentals/iot-support-help.md?toc=/azure/iot-pnp/toc.json&bc=/azure/iot-pnp/breadcrumb/toc.json
+    - name: IoT sözlüğü
+      href: ../iot-fundamentals/iot-glossary.md?toc=/azure/iot-pnp/toc.json&bc=/azure/iot-pnp/breadcrumb/toc.json
     - name: Azure IoT hizmetleri
       items:
         - name: IoT Hub

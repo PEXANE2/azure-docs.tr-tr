@@ -3,12 +3,12 @@ title: Kaynak türüne göre işlem desteğini taşıma
 description: Yeni bir kaynak grubuna veya aboneliğe taşınabilecek Azure Kaynak türlerini listeler.
 ms.topic: conceptual
 ms.date: 01/11/2021
-ms.openlocfilehash: fe8f6705fdce1a692dd8a969cfc4b3b21d2d2a11
-ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
+ms.openlocfilehash: ae59bcc65f296a10c68b88f5f6a1ecbc923f8856
+ms.sourcegitcommit: ec39209c5cbef28ade0badfffe59665631611199
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98072114"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103232605"
 ---
 # <a name="move-operation-support-for-resources"></a>Kaynaklar için taşıma işlemi desteği
 
@@ -214,8 +214,8 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > | ------------- | ----------- | ---------- |
 > | diagnosticsettings | Hayır | Hayır |
 > | diagnosticsettingscategories | Hayır | Hayır |
-> | privatelinkforazuread | Evet | Evet |
-> | Kira | Evet | Evet |
+> | privatelinkforazuread | Yes | Yes |
+> | Kira | Yes | Yes |
 
 ## <a name="microsoftaddons"></a>Microsoft. addons
 
@@ -255,13 +255,13 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Kaynak grubu | Abonelik |
 > | ------------- | ----------- | ---------- |
-> | actionrules | Evet | Evet |
+> | actionrules | Yes | Yes |
 > | alerts | Hayır | Hayır |
 > | alertslist | Hayır | Hayır |
 > | alertsmetadata | Hayır | Hayır |
 > | alertssummary | Hayır | Hayır |
 > | alertssummarylist | Hayır | Hayır |
-> | smartdetectoralertrules | Evet | Evet |
+> | smartdetectoralertrules | Yes | Yes |
 > | smartgroups | Hayır | Hayır |
 
 ## <a name="microsoftanalysisservices"></a>Microsoft. AnalysisServices
@@ -269,7 +269,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Kaynak grubu | Abonelik |
 > | ------------- | ----------- | ---------- |
-> | larý | Evet | Evet |
+> | larý | Yes | Yes |
 
 ## <a name="microsoftapimanagement"></a>Microsoft. Apimanane
 
@@ -280,14 +280,14 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > | Kaynak türü | Kaynak grubu | Abonelik |
 > | ------------- | ----------- | ---------- |
 > | reportfeedback | Hayır | Hayır |
-> | hizmet | Evet | Evet |
+> | hizmet | Yes | Yes |
 
 ## <a name="microsoftappconfiguration"></a>Microsoft. AppConfiguration
 
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Kaynak grubu | Abonelik |
 > | ------------- | ----------- | ---------- |
-> | configurationmağazaların | Evet | Evet |
+> | configurationmağazaların | Yes | Yes |
 > | configurationmağazaların/eventgridfilters | Hayır | Hayır |
 
 ## <a name="microsoftappplatform"></a>Microsoft. AppPlatform
@@ -295,7 +295,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Kaynak grubu | Abonelik |
 > | ------------- | ----------- | ---------- |
-> | yay | Evet | Evet |
+> | yay | Yes | Yes |
 
 ## <a name="microsoftappservice"></a>Microsoft. AppService
 
@@ -314,7 +314,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Kaynak grubu | Abonelik |
 > | ------------- | ----------- | ---------- |
-> | attestationproviders | Evet | Evet |
+> | attestationproviders | Yes | Yes |
 
 ## <a name="microsoftauthorization"></a>Microsoft.Authorization
 
@@ -347,23 +347,23 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Kaynak grubu | Abonelik |
 > | ------------- | ----------- | ---------- |
-> | automationaccounts | Evet | Evet |
-> | automationaccounts/Configurations | Evet | Evet |
-> | automationaccounts/runbook 'lar | Evet | Evet |
+> | automationaccounts | Yes | Yes |
+> | automationaccounts/Configurations | Yes | Yes |
+> | automationaccounts/runbook 'lar | Yes | Yes |
 
 ## <a name="microsoftavs"></a>Microsoft. AVS
 
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Kaynak grubu | Abonelik |
 > | ------------- | ----------- | ---------- |
-> | privatebulutlar | Evet | Evet |
+> | privatebulutlar | Yes | Yes |
 
 ## <a name="microsoftazureactivedirectory"></a>Microsoft. AzureActiveDirectory
 
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Kaynak grubu | Abonelik |
 > | ------------- | ----------- | ---------- |
-> | b2cdirectories | Evet | Evet |
+> | b2cdirectories | Yes | Yes |
 > | b2ctenants | Hayır | Hayır |
 
 ## <a name="microsoftazuredata"></a>Microsoft. AzureData
@@ -377,7 +377,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > | SQLInstances | Hayır | Hayır |
 > | sqlmanagedınstances | Hayır | Hayır |
 > | sqlserverınstances | Hayır | Hayır |
-> | sqlserverkayıtları | Evet | Evet |
+> | sqlserverkayıtları | Yes | Yes |
 
 ## <a name="microsoftazurestack"></a>Microsoft. AzureStack
 
@@ -385,7 +385,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > | Kaynak türü | Kaynak grubu | Abonelik |
 > | ------------- | ----------- | ---------- |
 > | cloudmanifestfiles | Hayır | Hayır |
-> | kayıtlarında | Evet | Evet |
+> | kayıtlarında | Yes | Yes |
 
 ## <a name="microsoftazurestackhci"></a>Microsoft. Azurestackhcı
 
@@ -399,7 +399,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Kaynak grubu | Abonelik |
 > | ------------- | ----------- | ---------- |
-> | batchaccounts | Evet | Evet |
+> | batchaccounts | Yes | Yes |
 
 ## <a name="microsoftbilling"></a>Microsoft. Faturalandırma
 
@@ -460,7 +460,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Kaynak grubu | Abonelik |
 > | ------------- | ----------- | ---------- |
-> | botservices | Evet | Evet |
+> | botservices | Yes | Yes |
 
 ## <a name="microsoftcache"></a>Microsoft. Cache
 
@@ -470,7 +470,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Kaynak grubu | Abonelik |
 > | ------------- | ----------- | ---------- |
-> | Redis | Evet | Evet |
+> | Redis | Yes | Yes |
 > | redisenterprise | Hayır | Hayır |
 
 ## <a name="microsoftcapacity"></a>Microsoft. Capacity
@@ -496,10 +496,10 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > | Kaynak türü | Kaynak grubu | Abonelik |
 > | ------------- | ----------- | ---------- |
 > | cdnwebapplicationfirewallmanagedrulesets | Hayır | Hayır |
-> | cdnwebapplicationfirewallpolicies | Evet | Evet |
+> | cdnwebapplicationfirewallpolicies | Yes | Yes |
 > | edgenodes | Hayır | Hayır |
-> | lerinize | Evet | Evet |
-> | Profiller/uç noktalar | Evet | Evet |
+> | lerinize | Yes | Yes |
+> | Profiller/uç noktalar | Yes | Yes |
 
 ## <a name="microsoftcertificateregistration"></a>Microsoft. CertificateRegistration
 
@@ -509,7 +509,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Kaynak grubu | Abonelik |
 > | ------------- | ----------- | ---------- |
-> | sertifikadüzenleri | Evet | Evet |
+> | sertifikadüzenleri | Yes | Yes |
 
 ## <a name="microsoftclassiccompute"></a>Microsoft.ClassicCompute
 
@@ -520,11 +520,11 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > | Kaynak türü | Kaynak grubu | Abonelik |
 > | ------------- | ----------- | ---------- |
 > | özellikler | Hayır | Hayır |
-> | DomainNames | Evet | Hayır |
+> | DomainNames | Yes | Hayır |
 > | quotas | Hayır | Hayır |
 > | resourcetypes | Hayır | Hayır |
 > | validatesubscriptionmoveavaılabılıty | Hayır | Hayır |
-> | virtualmachines | Evet | Evet |
+> | virtualmachines | Yes | Yes |
 
 ## <a name="microsoftclassicinfrastructuremigrate"></a>Microsoft. ClassicInfrastructureMigrate
 
@@ -567,7 +567,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > | osplatformımages | Hayır | Hayır |
 > | publicımages | Hayır | Hayır |
 > | quotas | Hayır | Hayır |
-> | storageaccounts | Evet | Hayır |
+> | storageaccounts | Yes | Hayır |
 > | vmımages | Hayır | Hayır |
 
 ## <a name="microsoftclassicsubscription"></a>Microsoft. ClassicSubscription
@@ -585,7 +585,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Kaynak grubu | Abonelik |
 > | ------------- | ----------- | ---------- |
-> | accounts | Evet | Evet |
+> | accounts | Yes | Yes |
 
 ## <a name="microsoftcommerce"></a>Microsoft. Commerce
 
@@ -603,27 +603,27 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Kaynak grubu | Abonelik |
 > | ------------- | ----------- | ---------- |
-> | availabilitysets | Evet | Evet |
+> | availabilitysets | Yes | Yes |
 > | diskeriþler | Hayır | Hayır |
 > | diskencryptionsets | Hayır | Hayır |
-> | disklerinden | Evet | Evet |
+> | disklerinden | Yes | Yes |
 > | Galeriler | Hayır | Hayır |
 > | Galeriler/görüntüler | Hayır | Hayır |
 > | Galeriler/resimler/sürümler | Hayır | Hayır |
 > | hostgroups | Hayır | Hayır |
 > | hostgroups/konaklar | Hayır | Hayır |
-> | images | Evet | Evet |
-> | proximityplacementgroups | Evet | Evet |
+> | images | Yes | Yes |
+> | proximityplacementgroups | Yes | Yes |
 > | restorepointcollections | Hayır | Hayır |
 > | restorepointcollections/restorepoints | Hayır | Hayır |
 > | sharedvmextensions | Hayır | Hayır |
 > | sharedvmımages | Hayır | Hayır |
 > | sharedvmımages/sürümler | Hayır | Hayır |
-> | anlık görüntüler | Evet | Evet |
+> | anlık görüntüler | Yes | Yes |
 > | sshpublickeys | Hayır | Hayır |
-> | virtualmachines | Evet | Evet |
-> | virtualmachines/uzantıları | Evet | Evet |
-> | virtualmachinescalesets | Evet | Evet |
+> | virtualmachines | Yes | Yes |
+> | virtualmachines/uzantıları | Yes | Yes |
+> | virtualmachinescalesets | Yes | Yes |
 
 ## <a name="microsoftconsumption"></a>Microsoft. tüketim
 
@@ -647,7 +647,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > | rezervationönerilere | Hayır | Hayır |
 > | rezervlerin Özeti | Hayır | Hayır |
 > | rezervlik işlemleri | Hayır | Hayır |
-> | tags | Hayır | Hayır |
+> | etiketler | Hayır | Hayır |
 > | Kira | Hayır | Hayır |
 > | larındaki | Hayır | Hayır |
 > | UsageDetails | Hayır | Hayır |
@@ -665,12 +665,12 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Kaynak grubu | Abonelik |
 > | ------------- | ----------- | ---------- |
-> | kayıt | Evet | Evet |
-> | kayıt defterleri/agentpools | Evet | Evet |
-> | kayıt defterleri/BuildTasks | Evet | Evet |
-> | kayıt defterleri/çoğaltmalar | Evet | Evet |
-> | kayıt defterleri/görevler | Evet | Evet |
-> | kayıt defterleri/Web kancaları | Evet | Evet |
+> | kayıt | Yes | Yes |
+> | kayıt defterleri/agentpools | Yes | Yes |
+> | kayıt defterleri/BuildTasks | Yes | Yes |
+> | kayıt defterleri/çoğaltmalar | Yes | Yes |
+> | kayıt defterleri/görevler | Yes | Yes |
+> | kayıt defterleri/Web kancaları | Yes | Yes |
 
 ## <a name="microsoftcontainerservice"></a>Microsoft. ContainerService
 
@@ -704,13 +704,13 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > | billingaccounts | Hayır | Hayır |
 > | bütçelerinin | Hayır | Hayır |
 > | cloudbağlayıcıları | Hayır | Hayır |
-> | bağlayıcılar | Evet | Evet |
+> | bağlayıcılar | Yes | Yes |
 > | bölümlerinin | Hayır | Hayır |
 > | boyutlarına | Hayır | Hayır |
 > | kayıt sayısı | Hayır | Hayır |
 > | aktarımları | Hayır | Hayır |
 > | externalbillingaccounts | Hayır | Hayır |
-> | öngörme | Hayır | Hayır |
+> | tahmin | Hayır | Hayır |
 > | sorgu | Hayır | Hayır |
 > | register | Hayır | Hayır |
 > | reportconfigs | Hayır | Hayır |
@@ -739,7 +739,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > | Kaynak türü | Kaynak grubu | Abonelik |
 > | ------------- | ----------- | ---------- |
 > | içermektedir | Hayır | Hayır |
-> | resourceproviders | Evet | Evet |
+> | resourceproviders | Yes | Yes |
 
 ## <a name="microsoftdatabox"></a>Microsoft. DataBox
 
@@ -768,7 +768,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Kaynak grubu | Abonelik |
 > | ------------- | ----------- | ---------- |
-> | larına | Evet | Evet |
+> | larına | Yes | Yes |
 > | veri katalogları | Hayır | Hayır |
 
 ## <a name="microsoftdataconnect"></a>Microsoft. DataConnect
@@ -791,8 +791,8 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Kaynak grubu | Abonelik |
 > | ------------- | ----------- | ---------- |
-> | veri fabrikaları | Evet | Evet |
-> | larının | Evet | Evet |
+> | veri fabrikaları | Yes | Yes |
+> | larının | Yes | Yes |
 
 ## <a name="microsoftdatalake"></a>Microsoft. DataLake
 
@@ -806,14 +806,14 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Kaynak grubu | Abonelik |
 > | ------------- | ----------- | ---------- |
-> | accounts | Evet | Evet |
+> | accounts | Yes | Yes |
 
 ## <a name="microsoftdatalakestore"></a>Microsoft. DataLakeStore
 
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Kaynak grubu | Abonelik |
 > | ------------- | ----------- | ---------- |
-> | accounts | Evet | Evet |
+> | accounts | Yes | Yes |
 
 ## <a name="microsoftdatamigration"></a>Microsoft. DataMigration
 
@@ -836,54 +836,54 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Kaynak grubu | Abonelik |
 > | ------------- | ----------- | ---------- |
-> | accounts | Evet | Evet |
+> | accounts | Yes | Yes |
 
 ## <a name="microsoftdbformariadb"></a>Microsoft. Dbformarıdb
 
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Kaynak grubu | Abonelik |
 > | ------------- | ----------- | ---------- |
-> | larý | Evet | Evet |
+> | larý | Yes | Yes |
 
 ## <a name="microsoftdbformysql"></a>Microsoft. Dbformyısql
 
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Kaynak grubu | Abonelik |
 > | ------------- | ----------- | ---------- |
-> | Flexibtaservers | Evet | Evet |
-> | larý | Evet | Evet |
+> | Flexibtaservers | Yes | Yes |
+> | larý | Yes | Yes |
 
 ## <a name="microsoftdbforpostgresql"></a>Microsoft. DBforPostgreSQL
 
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Kaynak grubu | Abonelik |
 > | ------------- | ----------- | ---------- |
-> | Flexibtaservers | Evet | Evet |
+> | Flexibtaservers | Hayır | Hayır |
 > | sunucu grupları | Hayır | Hayır |
-> | larý | Evet | Evet |
-> | serversv2 | Evet | Evet |
-> | teksunucular | Evet | Evet |
+> | larý | Yes | Yes |
+> | serversv2 | Yes | Yes |
+> | teksunucular | Yes | Yes |
 
 ## <a name="microsoftdeploymentmanager"></a>Microsoft. DeploymentManager
 
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Kaynak grubu | Abonelik |
 > | ------------- | ----------- | ---------- |
-> | artifactsources | Evet | Evet |
-> | piyasaya çıkarma | Evet | Evet |
-> | servicetopolojileri | Evet | Evet |
-> | servicetopolojileri/hizmetler | Evet | Evet |
-> | servicetopolojileri/hizmetler/serviceunits | Evet | Evet |
-> | adımlar | Evet | Evet |
+> | artifactsources | Yes | Yes |
+> | piyasaya çıkarma | Yes | Yes |
+> | servicetopolojileri | Yes | Yes |
+> | servicetopolojileri/hizmetler | Yes | Yes |
+> | servicetopolojileri/hizmetler/serviceunits | Yes | Yes |
+> | adımlar | Yes | Yes |
 
 ## <a name="microsoftdesktopvirtualization"></a>Microsoft. DesktopVirtualization
 
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Kaynak grubu | Abonelik |
 > | ------------- | ----------- | ---------- |
-> | applicationgroups | Evet | Evet |
-> | Ana bilgisayar havuzları | Evet | Evet |
-> | çalışma alanı | Evet | Evet |
+> | applicationgroups | Yes | Yes |
+> | Ana bilgisayar havuzları | Yes | Yes |
+> | çalışma alanı | Yes | Yes |
 
 ## <a name="microsoftdevices"></a>Microsoft.Devices
 
@@ -892,22 +892,22 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > | ------------- | ----------- | ---------- |
 > | elaun havuzları | Hayır | Hayır |
 > | elaun havuzları/ıothubkiracılar | Hayır | Hayır |
-> | ıothubs | Evet | Evet |
-> | provisioningservices | Evet | Evet |
+> | ıothubs | Yes | Yes |
+> | provisioningservices | Yes | Yes |
 
 ## <a name="microsoftdevops"></a>Microsoft. DevOps
 
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Kaynak grubu | Abonelik |
 > | ------------- | ----------- | ---------- |
-> | düzenler | Evet | Evet |
+> | düzenler | Yes | Yes |
 
 ## <a name="microsoftdevspaces"></a>Microsoft. DevSpaces
 
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Kaynak grubu | Abonelik |
 > | ------------- | ----------- | ---------- |
-> | denetleyiciler | Evet | Evet |
+> | denetleyiciler | Yes | Yes |
 
 ## <a name="microsoftdevtestlab"></a>Microsoft. DevTestLab
 
@@ -915,11 +915,11 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > | Kaynak türü | Kaynak grubu | Abonelik |
 > | ------------- | ----------- | ---------- |
 > | labcenters | Hayır | Hayır |
-> | larda | Evet | Hayır |
-> | Laboratuvarlar/ortamlar | Evet | Evet |
-> | Labs/servicerunanlar | Evet | Evet |
-> | Labs/virtualmachines | Evet | Hayır |
-> | cağını | Evet | Evet |
+> | larda | Yes | Hayır |
+> | Laboratuvarlar/ortamlar | Yes | Yes |
+> | Labs/servicerunanlar | Yes | Yes |
+> | Labs/virtualmachines | Yes | Hayır |
+> | cağını | Yes | Yes |
 
 ## <a name="microsoftdigitaltwins"></a>Microsoft. DigitalTwins
 
@@ -934,14 +934,14 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > | Kaynak türü | Kaynak grubu | Abonelik |
 > | ------------- | ----------- | ---------- |
 > | databaseaccountnames | Hayır | Hayır |
-> | veritabanı hesapları | Evet | Evet |
+> | veritabanı hesapları | Yes | Yes |
 
 ## <a name="microsoftdomainregistration"></a>Microsoft. DomainRegistration
 
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Kaynak grubu | Abonelik |
 > | ------------- | ----------- | ---------- |
-> | etki alanları | Evet | Evet |
+> | etki alanları | Yes | Yes |
 > | generatessorequest | Hayır | Hayır |
 > | topleveldomains | Hayır | Hayır |
 > | validatedomainregistrationınformation | Hayır | Hayır |
@@ -951,21 +951,21 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Kaynak grubu | Abonelik |
 > | ------------- | ----------- | ---------- |
-> | services | Evet | Evet |
+> | services | Yes | Yes |
 
 ## <a name="microsofteventgrid"></a>Microsoft. EventGrid
 
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Kaynak grubu | Abonelik |
 > | ------------- | ----------- | ---------- |
-> | etki alanları | Evet | Evet |
+> | etki alanları | Yes | Yes |
 > | eventabonelikleri | Hayır-bağımsız olarak taşınamaz, ancak otomatik olarak abone olunan kaynakla taşınabilir. | Hayır-bağımsız olarak taşınamaz, ancak otomatik olarak abone olunan kaynakla taşınabilir. |
 > | extensionkonuları | Hayır | Hayır |
-> | partnernamespaces | Evet | Evet |
+> | partnernamespaces | Yes | Yes |
 > | iş ortağı kayıtları | Hayır | Hayır |
-> | iş ortağı konuları | Evet | Evet |
-> | Sistem konuları | Evet | Evet |
-> | konuları | Evet | Evet |
+> | iş ortağı konuları | Yes | Yes |
+> | Sistem konuları | Yes | Yes |
+> | konuları | Yes | Yes |
 > | topictypes | Hayır | Hayır |
 
 ## <a name="microsofteventhub"></a>Microsoft. EventHub
@@ -973,8 +973,8 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Kaynak grubu | Abonelik |
 > | ------------- | ----------- | ---------- |
-> | leriniz | Evet | Evet |
-> | öznitelikleri | Evet | Evet |
+> | leriniz | Yes | Yes |
+> | öznitelikleri | Yes | Yes |
 > | isteyin | Hayır | Hayır |
 
 ## <a name="microsoftexperimentation"></a>Microsoft. deneme
@@ -989,7 +989,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Kaynak grubu | Abonelik |
 > | ------------- | ----------- | ---------- |
-> | öznitelikleri | Evet | Evet |
+> | öznitelikleri | Yes | Yes |
 
 ## <a name="microsoftfeatures"></a>Microsoft. Features
 
@@ -1045,29 +1045,29 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Kaynak grubu | Abonelik |
 > | ------------- | ----------- | ---------- |
-> | leriniz | Evet | Evet |
+> | leriniz | Yes | Yes |
 
 ## <a name="microsofthealthcareapis"></a>Microsoft. Healthgelişme API 'leri
 
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Kaynak grubu | Abonelik |
 > | ------------- | ----------- | ---------- |
-> | services | Evet | Evet |
+> | services | Yes | Yes |
 
 ## <a name="microsofthybridcompute"></a>Microsoft. HybridCompute
 
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Kaynak grubu | Abonelik |
 > | ------------- | ----------- | ---------- |
-> | larla | Evet | Evet |
-> | makineler/uzantılar | Evet | Evet |
+> | larla | Yes | Yes |
+> | makineler/uzantılar | Yes | Yes |
 
 ## <a name="microsofthybriddata"></a>Microsoft. HybridData
 
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Kaynak grubu | Abonelik |
 > | ------------- | ----------- | ---------- |
-> | veri yöneticileri | Evet | Evet |
+> | veri yöneticileri | Yes | Yes |
 
 ## <a name="microsofthybridnetwork"></a>Microsoft. HybridNetwork
 
@@ -1090,7 +1090,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Kaynak grubu | Abonelik |
 > | ------------- | ----------- | ---------- |
-> | Çizelge | Evet | Evet |
+> | Çizelge | Yes | Yes |
 
 ## <a name="microsoftinsights"></a>Microsoft. Insights
 
@@ -1100,12 +1100,12 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Kaynak grubu | Abonelik |
 > | ------------- | ----------- | ---------- |
-> | actiongroups | Evet | Evet |
+> | actiongroups | Yes | Yes |
 > | activitylogalerts | Hayır | Hayır |
-> | alertrules | Evet | Evet |
-> | autoscalesettings | Evet | Evet |
+> | alertrules | Yes | Yes |
+> | autoscalesettings | Yes | Yes |
 > | temel | Hayır | Hayır |
-> | bileşenleri | Evet | Evet |
+> | bileşenleri | Yes | Yes |
 > | datacollectionrules | Hayır | Hayır |
 > | diagnosticsettings | Hayır | Hayır |
 > | diagnosticsettingscategories | Hayır | Hayır |
@@ -1129,14 +1129,14 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > | notificationgroups | Hayır | Hayır |
 > | privatelinkscopes | Hayır | Hayır |
 > | rollbacktolegacypricingmodel | Hayır | Hayır |
-> | scheduledqueryrules | Evet | Evet |
+> | scheduledqueryrules | Yes | Yes |
 > | topology | Hayır | Hayır |
 > | işlemler | Hayır | Hayır |
 > | vminsightsonboardingstatuses | Hayır | Hayır |
-> | Web testleri | Evet | Evet |
+> | Web testleri | Yes | Yes |
 > | Web testleri/gettestresultfile | Hayır | Hayır |
-> | çalışma kitapları | Evet | Evet |
-> | workbooktemplates | Evet | Evet |
+> | çalışma kitapları | Yes | Yes |
+> | workbooktemplates | Yes | Yes |
 
 ## <a name="microsoftiotcentral"></a>Microsoft. ıotcentral
 
@@ -1144,14 +1144,14 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > | Kaynak türü | Kaynak grubu | Abonelik |
 > | ------------- | ----------- | ---------- |
 > | apptemplates | Hayır | Hayır |
-> | ıotapps | Evet | Evet |
+> | ıotapps | Yes | Yes |
 
 ## <a name="microsoftiotspaces"></a>Microsoft. ıotspaces
 
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Kaynak grubu | Abonelik |
 > | ------------- | ----------- | ---------- |
-> | çıkarılamıyor | Evet | Evet |
+> | çıkarılamıyor | Yes | Yes |
 
 ## <a name="microsoftkeyvault"></a>Microsoft. Keykasası
 
@@ -1164,14 +1164,14 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > | silinkaults | Hayır | Hayır |
 > | hsmpools | Hayır | Hayır |
 > | managedhsms | Hayır | Hayır |
-> | kasaları | Evet | Evet |
+> | kasaları | Yes | Yes |
 
 ## <a name="microsoftkubernetes"></a>Microsoft. Kubernetes
 
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Kaynak grubu | Abonelik |
 > | ------------- | ----------- | ---------- |
-> | connectedkümeler | Evet | Evet |
+> | connectedkümeler | Yes | Yes |
 > | registeredsubscriptions | Hayır | Hayır |
 
 ## <a name="microsoftkubernetesconfiguration"></a>Microsoft. KubernetesConfiguration
@@ -1186,7 +1186,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Kaynak grubu | Abonelik |
 > | ------------- | ----------- | ---------- |
-> | leriniz | Evet | Evet |
+> | leriniz | Yes | Yes |
 
 ## <a name="microsoftlabservices"></a>Microsoft. LabServices
 
@@ -1216,11 +1216,11 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > | Kaynak türü | Kaynak grubu | Abonelik |
 > | ------------- | ----------- | ---------- |
 > | hostingenvironments | Hayır | Hayır |
-> | Tümleştirme hesapları | Evet | Evet |
-> | ıntegrationserviceortamortamları | Evet | Hayır |
-> | ıntegrationserviceortamortamları/managedap | Evet | Hayır |
+> | Tümleştirme hesapları | Yes | Yes |
+> | ıntegrationserviceortamortamları | Yes | Hayır |
+> | ıntegrationserviceortamortamları/managedap | Yes | Hayır |
 > | ısotedenvironments | Hayır | Hayır |
-> | sürdürülen | Evet | Evet |
+> | sürdürülen | Yes | Yes |
 
 ## <a name="microsoftmachinelearning"></a>Microsoft. Machinöğrenim
 
@@ -1228,8 +1228,8 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > | Kaynak türü | Kaynak grubu | Abonelik |
 > | ------------- | ----------- | ---------- |
 > | commitmentplanlar | Hayır | Hayır |
-> | Hizmetleri | Evet | Hayır |
-> | çalışma alanı | Evet | Evet |
+> | Hizmetleri | Yes | Hayır |
+> | çalışma alanı | Yes | Yes |
 
 ## <a name="microsoftmachinelearningcompute"></a>Microsoft. MachineLearningCompute
 
@@ -1266,7 +1266,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > | Kaynak türü | Kaynak grubu | Abonelik |
 > | ------------- | ----------- | ---------- |
 > | configurationatamalar | Hayır | Hayır |
-> | maintenanceconfigurations | Evet | Evet |
+> | maintenanceconfigurations | Yes | Yes |
 > | güncelleştirmeler | Hayır | Hayır |
 
 ## <a name="microsoftmanagedidentity"></a>Microsoft. Managedıdentity
@@ -1313,8 +1313,8 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Kaynak grubu | Abonelik |
 > | ------------- | ----------- | ---------- |
-> | accounts | Evet | Evet |
-> | hesaplar/privateatlases | Evet | Evet |
+> | accounts | Yes | Yes |
+> | hesaplar/privateatlases | Yes | Yes |
 
 ## <a name="microsoftmarketplace"></a>Microsoft. Market
 
@@ -1350,9 +1350,9 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Kaynak grubu | Abonelik |
 > | ------------- | ----------- | ---------- |
-> | mediaservices | Evet | Evet |
-> | mediaservices/liveevents | Evet | Evet |
-> | mediaservices/streamingendpoints | Evet | Evet |
+> | mediaservices | Yes | Yes |
+> | mediaservices/liveevents | Yes | Yes |
+> | mediaservices/streamingendpoints | Yes | Yes |
 
 ## <a name="microsoftmicroservices4spring"></a>Microsoft. Microservices4Spring
 
@@ -1378,8 +1378,8 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > | ------------- | ----------- | ---------- |
 > | holographicsbroadcastaccounts | Hayır | Hayır |
 > | objectunderstandingaccounts | Hayır | Hayır |
-> | remoterenderingaccounts | Evet | Evet |
-> | spatialanchorsaccounts | Evet | Evet |
+> | remoterenderingaccounts | Yes | Yes |
+> | spatialanchorsaccounts | Yes | Yes |
 
 ## <a name="microsoftnetapp"></a>Microsoft. NetApp
 
@@ -1400,55 +1400,55 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > | ------------- | ----------- | ---------- |
 > | applicationgateway 'ler | Hayır | Hayır |
 > | applicationgatewaywebapplicationfirewallpolicies | Hayır | Hayır |
-> | applicationsecuritygroups | Evet | Evet |
+> | applicationsecuritygroups | Yes | Yes |
 > | azurefirewalls | Hayır | Hayır |
 > | Savunma Konakları | Hayır | Hayır |
 > | bgpservicecommunities | Hayır | Hayır |
-> | bağlantının | Evet | Evet |
-> | ddoscustompolicies | Evet | Evet |
+> | bağlantının | Yes | Yes |
+> | ddoscustompolicies | Yes | Yes |
 > | ddosprotectionplanlar | Hayır | Hayır |
-> | dnszones | Evet | Evet |
+> | dnszones | Yes | Yes |
 > | expressroutedevreleri | Hayır | Hayır |
 > | expressroutegateway 'ler | Hayır | Hayır |
 > | expressrouteserviceproviders | Hayır | Hayır |
-> | firewallpolicies | Evet | Evet |
+> | firewallpolicies | Yes | Yes |
 > | frontkapıların | Hayır | Hayır |
-> | ipayırmalar | Evet | Evet |
-> | ipgroups | Evet | Evet |
+> | ipayırmalar | Yes | Yes |
+> | ipgroups | Yes | Yes |
 > | loadbalancers | Evet-temel SKU<br> Evet-standart SKU | Evet-temel SKU<br>Standart SKU yok |
-> | localnetworkgateway 'ler | Evet | Evet |
+> | localnetworkgateway 'ler | Yes | Yes |
 > | natgateway 'ler | Hayır | Hayır |
 > | networkexperimentprofiles | Hayır | Hayır |
-> | networkıntpolicies ilkeleri | Evet | Evet |
-> | NetworkInterfaces | Evet | Evet |
+> | networkıntpolicies ilkeleri | Yes | Yes |
+> | NetworkInterfaces | Yes | Yes |
 > | networkprofiles | Hayır | Hayır |
-> | networksecuritygroups | Evet | Evet |
+> | networksecuritygroups | Yes | Yes |
 > | networkwatchers | Hayır | Hayır |
-> | networkwatchers/connectionmonitörleri | Evet | Hayır |
-> | networkwatchers/flowlogs | Evet | Hayır |
-> | networkwatchers/pingkafesler | Evet | Hayır |
+> | networkwatchers/connectionmonitörleri | Yes | Hayır |
+> | networkwatchers/flowlogs | Yes | Hayır |
+> | networkwatchers/pingkafesler | Yes | Hayır |
 > | p2svpngateways | Hayır | Hayır |
-> | privatednszones | Evet | Evet |
-> | privatednszones/virtualnetworklinks | Evet | Evet |
+> | privatednszones | Yes | Yes |
+> | privatednszones/virtualnetworklinks | Yes | Yes |
 > | privatednszonesinternal | Hayır | Hayır |
 > | privateendpointredirectmaps | Hayır | Hayır |
 > | privateendpoints | Hayır | Hayır |
 > | privatelinkservices | Hayır | Hayır |
 > | publicıpaddresses | Evet-temel SKU<br>Evet-standart SKU | Evet-temel SKU<br>Standart SKU yok |
-> | publicıpöneklerini | Evet | Evet |
+> | publicıpöneklerini | Yes | Yes |
 > | routefilters | Hayır | Hayır |
-> | routetables | Evet | Evet |
-> | securitypartnerproviders | Evet | Evet |
-> | serviceendpointpolicies | Evet | Evet |
+> | routetables | Yes | Yes |
+> | securitypartnerproviders | Yes | Yes |
+> | serviceendpointpolicies | Yes | Yes |
 > | trafficmanagergeographichierarchies | Hayır | Hayır |
-> | trafficmanagerprofiles | Evet | Evet |
+> | trafficmanagerprofiles | Yes | Yes |
 > | trafficmanagerprofiles/ısı haritalarını | Hayır | Hayır |
 > | trafficmanagerusermetricskeys | Hayır | Hayır |
 > | virtualhub 'lar | Hayır | Hayır |
-> | virtualnetworkgateways | Evet | Evet |
-> | virtualnetworks | Evet | Evet |
+> | virtualnetworkgateways | Yes | Yes |
+> | virtualnetworks | Yes | Yes |
 > | virtualnetworktaps | Hayır | Hayır |
-> | virtualyönlendiriciler | Evet | Evet |
+> | virtualyönlendiriciler | Yes | Yes |
 > | virtualwan | Hayır | Hayır |
 > | vpngateway (sanal WAN) | Hayır | Hayır |
 > | vpnserverconfigurations | Hayır | Hayır |
@@ -1459,15 +1459,15 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Kaynak grubu | Abonelik |
 > | ------------- | ----------- | ---------- |
-> | öznitelikleri | Evet | Evet |
-> | ad alanları/notificationhub 'lar | Evet | Evet |
+> | öznitelikleri | Yes | Yes |
+> | ad alanları/notificationhub 'lar | Yes | Yes |
 
 ## <a name="microsoftobjectstore"></a>Microsoft. ObjectStore
 
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Kaynak grubu | Abonelik |
 > | ------------- | ----------- | ---------- |
-> | osnamespaces | Evet | Evet |
+> | osnamespaces | Yes | Yes |
 
 ## <a name="microsoftoffazure"></a>Microsoft. OffAzure
 
@@ -1493,7 +1493,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > | deletedworkspaces | Hayır | Hayır |
 > | bağlantı hedefleri | Hayır | Hayır |
 > | storageınsii configs | Hayır | Hayır |
-> | çalışma alanı | Evet | Evet |
+> | çalışma alanı | Yes | Yes |
 
 ## <a name="microsoftoperationsmanagement"></a>Microsoft. OperationsManagement
 
@@ -1501,9 +1501,9 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > | Kaynak türü | Kaynak grubu | Abonelik |
 > | ------------- | ----------- | ---------- |
 > | managementassociations | Hayır | Hayır |
-> | managementconfigurations | Evet | Evet |
-> | çözümler | Evet | Evet |
-> | görünümler | Evet | Evet |
+> | managementconfigurations | Yes | Yes |
+> | çözümler | Yes | Yes |
+> | görünümler | Yes | Yes |
 
 ## <a name="microsoftpeering"></a>Microsoft. eşleme
 
@@ -1535,7 +1535,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > | Kaynak türü | Kaynak grubu | Abonelik |
 > | ------------- | ----------- | ---------- |
 > |  konsolları | Hayır | Hayır |
-> | panolar | Evet | Evet |
+> | panolar | Yes | Yes |
 > | UserSettings | Hayır | Hayır |
 
 ## <a name="microsoftpowerbi"></a>Microsoft. PowerBI
@@ -1543,14 +1543,14 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Kaynak grubu | Abonelik |
 > | ------------- | ----------- | ---------- |
-> | workspacecollections | Evet | Evet |
+> | workspacecollections | Yes | Yes |
 
 ## <a name="microsoftpowerbidedicated"></a>Microsoft. Powerbiadanmış
 
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Kaynak grubu | Abonelik |
 > | ------------- | ----------- | ---------- |
-> | kapasiteler | Evet | Evet |
+> | kapasiteler | Yes | Yes |
 
 ## <a name="microsoftprojectbabylon"></a>Microsoft. ProjectBabylon
 
@@ -1584,7 +1584,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > | Kaynak türü | Kaynak grubu | Abonelik |
 > | ------------- | ----------- | ---------- |
 > | replicationeligibilityresults | Hayır | Hayır |
-> | kasaları | Evet | Evet |
+> | kasaları | Yes | Yes |
 
 ## <a name="microsoftredhatopenshift"></a>Microsoft. RedHatOpenShift
 
@@ -1598,14 +1598,14 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Kaynak grubu | Abonelik |
 > | ------------- | ----------- | ---------- |
-> | öznitelikleri | Evet | Evet |
+> | öznitelikleri | Yes | Yes |
 
 ## <a name="microsoftresourcegraph"></a>Microsoft. ResourceGraph
 
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Kaynak grubu | Abonelik |
 > | ------------- | ----------- | ---------- |
-> | lardır | Evet | Evet |
+> | lardır | Yes | Yes |
 > | resourcechangedetails | Hayır | Hayır |
 > | resourcechanges | Hayır | Hayır |
 > | kaynaklar | Hayır | Hayır |
@@ -1636,7 +1636,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > | ResourceGroups | Hayır | Hayır |
 > | kaynaklar | Hayır | Hayır |
 > | Aboneliklerin | Hayır | Hayır |
-> | tags | Hayır | Hayır |
+> | etiketler | Hayır | Hayır |
 > | templatespec | Hayır | Hayır |
 > | templatespec/sürümler | Hayır | Hayır |
 > | Kira | Hayır | Hayır |
@@ -1646,7 +1646,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Kaynak grubu | Abonelik |
 > | ------------- | ----------- | ---------- |
-> | uygulamalar | Evet | Hayır |
+> | uygulamalar | Yes | Hayır |
 > | saasresources | Hayır | Hayır |
 
 ## <a name="microsoftsearch"></a>Microsoft. Search
@@ -1658,7 +1658,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > | Kaynak türü | Kaynak grubu | Abonelik |
 > | ------------- | ----------- | ---------- |
 > | resourcehealthmetadata | Hayır | Hayır |
-> | searchservices | Evet | Evet |
+> | searchservices | Yes | Yes |
 
 ## <a name="microsoftsecurity"></a>Microsoft.Security
 
@@ -1673,7 +1673,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > | assessmentmetadata | Hayır | Hayır |
 > | değerlendirme | Hayır | Hayır |
 > | Oto dissalertsrules | Hayır | Hayır |
-> | akışlarını otomatikleştirin | Evet | Evet |
+> | akışlarını otomatikleştirin | Yes | Yes |
 > | Oto provisioningsettings | Hayır | Hayır |
 > | karmaşık anceresults | Hayır | Hayır |
 > | uyumluluklarına | Hayır | Hayır |
@@ -1682,7 +1682,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > | discoveredsecuritysolutions | Hayır | Hayır |
 > | externalsecuritysolutions | Hayır | Hayır |
 > | ınformationprotectionpolicies | Hayır | Hayır |
-> | ıotsecuritysolutions | Evet | Evet |
+> | ıotsecuritysolutions | Yes | Yes |
 > | ıotsecuritysolutions/analiz ticsmodeller | Hayır | Hayır |
 > | ıotsecuritysolutions/analticsmodeller/aggreggıt uyarıları | Hayır | Hayır |
 > | ıotsecuritysolutions/analiz ticsmodeller/Aggreg, öneriler | Hayır | Hayır |
@@ -1743,7 +1743,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Kaynak grubu | Abonelik |
 > | ------------- | ----------- | ---------- |
-> | öznitelikleri | Evet | Evet |
+> | öznitelikleri | Yes | Yes |
 > | premiummessagingregions | Hayır | Hayır |
 > | isteyin | Hayır | Hayır |
 
@@ -1753,7 +1753,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > | Kaynak türü | Kaynak grubu | Abonelik |
 > | ------------- | ----------- | ---------- |
 > | uygulamalar | Hayır | Hayır |
-> | leriniz | Evet | Evet |
+> | leriniz | Yes | Yes |
 > | kapsayıcı grupları | Hayır | Hayır |
 > | containergroupsets | Hayır | Hayır |
 > | edgeclusters | Hayır | Hayır |
@@ -1767,12 +1767,12 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Kaynak grubu | Abonelik |
 > | ------------- | ----------- | ---------- |
-> | uygulamalar | Evet | Evet |
+> | uygulamalar | Yes | Yes |
 > | kapsayıcı grupları | Hayır | Hayır |
-> | geçidinin | Evet | Evet |
-> | Mamak | Evet | Evet |
-> | kaynaklanır | Evet | Evet |
-> | volumes | Evet | Evet |
+> | geçidinin | Yes | Yes |
+> | Mamak | Yes | Yes |
+> | kaynaklanır | Yes | Yes |
+> | volumes | Yes | Yes |
 
 ## <a name="microsoftservices"></a>Microsoft. Services
 
@@ -1786,7 +1786,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Kaynak grubu | Abonelik |
 > | ------------- | ----------- | ---------- |
-> | SignalR | Evet | Evet |
+> | SignalR | Yes | Yes |
 
 ## <a name="microsoftsoftwareplan"></a>Microsoft. SoftwarePlan
 
@@ -1813,30 +1813,30 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > | Kaynak türü | Kaynak grubu | Abonelik |
 > | ------------- | ----------- | ---------- |
 > | ınstancepools | Hayır | Hayır |
-> | yerlerini | Evet | Evet |
+> | yerlerini | Yes | Yes |
 > | ManagedInstances | Hayır | Hayır |
-> | larý | Evet | Evet |
-> | sunucular/veritabanları | Evet | Evet |
-> | sunucular/veritabanları/backuplongtermretentionpolicies | Evet | Evet |
-> | sunucular/elaun havuzları | Evet | Evet |
-> | sunucular/jobaccounts | Evet | Evet |
-> | sunucular/jobagents | Evet | Evet |
-> | virtualkümeler | Evet | Evet |
+> | larý | Yes | Yes |
+> | sunucular/veritabanları | Yes | Yes |
+> | sunucular/veritabanları/backuplongtermretentionpolicies | Yes | Yes |
+> | sunucular/elaun havuzları | Yes | Yes |
+> | sunucular/jobaccounts | Yes | Yes |
+> | sunucular/jobagents | Yes | Yes |
+> | virtualkümeler | Yes | Yes |
 
 ## <a name="microsoftsqlvirtualmachine"></a>Microsoft. SqlVirtualMachine
 
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Kaynak grubu | Abonelik |
 > | ------------- | ----------- | ---------- |
-> | sqlvirtualmachinegroups | Evet | Evet |
-> | sqlvirtualmachines | Evet | Evet |
+> | sqlvirtualmachinegroups | Yes | Yes |
+> | sqlvirtualmachines | Yes | Yes |
 
 ## <a name="microsoftstorage"></a>Microsoft.Storage
 
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Kaynak grubu | Abonelik |
 > | ------------- | ----------- | ---------- |
-> | storageaccounts | Evet | Evet |
+> | storageaccounts | Yes | Yes |
 
 ## <a name="microsoftstoragecache"></a>Microsoft. StorageCache
 
@@ -1850,7 +1850,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Kaynak grubu | Abonelik |
 > | ------------- | ----------- | ---------- |
-> | storagesyncservices | Evet | Evet |
+> | storagesyncservices | Yes | Yes |
 
 ## <a name="microsoftstoragesyncdev"></a>Microsoft. StorageSyncDev
 
@@ -1882,7 +1882,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > | Kaynak türü | Kaynak grubu | Abonelik |
 > | ------------- | ----------- | ---------- |
 > | leriniz | Hayır | Hayır |
-> | streammingjobs | Evet | Evet |
+> | streammingjobs | Yes | Yes |
 
 ## <a name="microsoftstreamanalyticsexplorer"></a>Microsoft. StreamAnalyticsExplorer
 
@@ -1921,16 +1921,16 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Kaynak grubu | Abonelik |
 > | ------------- | ----------- | ---------- |
-> | lý | Evet | Evet |
-> | ortamlar/EventSources | Evet | Evet |
-> | ortamlar/referencedataset 'ler | Evet | Evet |
+> | lý | Yes | Yes |
+> | ortamlar/EventSources | Yes | Yes |
+> | ortamlar/referencedataset 'ler | Yes | Yes |
 
 ## <a name="microsofttoken"></a>Microsoft. Token
 
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Kaynak grubu | Abonelik |
 > | ------------- | ----------- | ---------- |
-> | depolaya | Evet | Evet |
+> | depolaya | Yes | Yes |
 
 ## <a name="microsoftvirtualmachineimages"></a>Microsoft. Virtualmachineımages
 
@@ -1999,24 +1999,24 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > | ------------- | ----------- | ---------- |
 > | availableyığınları | Hayır | Hayır |
 > | billingmeters | Hayır | Hayır |
-> | sertifikalar | Hayır | Evet |
-> | connectiongateway 'ler | Evet | Evet |
-> | bağlantının | Evet | Evet |
-> | customapsıs | Evet | Evet |
+> | sertifikalar | Hayır | Yes |
+> | connectiongateway 'ler | Yes | Yes |
+> | bağlantının | Yes | Yes |
+> | customapsıs | Yes | Yes |
 > | silinmi siteleri | Hayır | Hayır |
 > | deploymentlocations | Hayır | Hayır |
 > | coğrafi bölgeler | Hayır | Hayır |
 > | hostingenvironments | Hayır | Hayır |
-> | kubeortamları | Evet | Evet |
+> | kubeortamları | Yes | Yes |
 > | publishingusers | Hayır | Hayır |
 > | Öneriler | Hayır | Hayır |
 > | resourcehealthmetadata | Hayır | Hayır |
 > | zamanları | Hayır | Hayır |
-> | serverfarms | Evet | Evet |
+> | serverfarms | Yes | Yes |
 > | sunucugrupları/eventgridfilters | Hayır | Hayır |
-> | Siteler | Evet | Evet |
-> | siteler/premieraddons | Evet | Evet |
-> | siteler/yuvalar | Evet | Evet |
+> | Siteler | Yes | Yes |
+> | siteler/premieraddons | Yes | Yes |
+> | siteler/yuvalar | Yes | Yes |
 > | sourcecontrols | Hayır | Hayır |
 > | staticsites | Hayır | Hayır |
 

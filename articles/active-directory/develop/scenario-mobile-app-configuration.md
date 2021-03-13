@@ -12,26 +12,22 @@ ms.workload: identity
 ms.date: 06/16/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 1187c768a54dd04d25b6de0e6785ebb81a7dfc24
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
+ms.openlocfilehash: 6f13d789cd63bb568bb8940ce614ebdb2dbcdb83
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99584440"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103199740"
 ---
 # <a name="configure-a-mobile-app-that-calls-web-apis"></a>Web API 'Lerini çağıran bir mobil uygulama yapılandırma
 
 Uygulamanızı oluşturduktan sonra, uygulama kayıt parametrelerini kullanarak kodu nasıl yapılandıracağınızı öğreneceksiniz. Mobil uygulamalar, oluşturma çerçevesiyle ilgili bazı karmaşıklıkları sunar.
 
-## <a name="find-msal-support-for-mobile-apps"></a>Mobil uygulamalar için MSAL desteğini bulun
+## <a name="microsoft-libraries-supporting-mobile-apps"></a>Mobil uygulamaları destekleyen Microsoft kitaplıkları
 
-Aşağıdaki Microsoft kimlik doğrulama kitaplığı (MSAL) türleri mobil uygulamaları destekler.
+Aşağıdaki Microsoft kitaplıkları mobil uygulamaları destekler:
 
-MSAL | Description
------------- | ----------
-![MSAL.NET](media/sample-v2-code/logo_NET.png) <br/> MSAL.NET  | Taşınabilir uygulamalar geliştirmek için kullanılır. MSAL.NET, mobil uygulama oluşturmak için aşağıdaki platformları destekler: Evrensel Windows Platformu (UWP), Xamarin. iOS ve Xamarin. Android.
-![MSAL. iOS](media/sample-v2-code/logo_iOS.png) <br/> MSAL. iOS | Hedef-C veya Swift kullanarak Yerel iOS uygulamaları geliştirmek için kullanılır.
-![MSAL. Android](media/sample-v2-code/logo_android.png) <br/> MSAL. Android | Android için Java 'da yerel Android uygulamaları geliştirmek için kullanılır.
+[!INCLUDE [active-directory-develop-libraries-mobile](../../../includes/active-directory-develop-libraries-mobile.md)]
 
 ## <a name="instantiate-the-application"></a>Uygulamanın örneğini oluşturma
 
@@ -130,7 +126,7 @@ Daha fazla bilgi için bkz. [Xamarin iOS konuları](msal-net-xamarin-ios-conside
 Xamarin. Android kullanıyorsanız aşağıdaki görevleri yapın:
 
 - [Kimlik doğrulama akışının etkileşimli kısmı bittikten sonra denetimin MSAL 'e geri gitmesini sağlama](msal-net-xamarin-android-considerations.md#ensure-that-control-returns-to-msal)
-- [Android bildirimini güncelleştirme](msal-net-xamarin-android-considerations.md#update-the-android-manifest)
+- [Android bildirimini güncelleştirme](msal-net-xamarin-android-considerations.md#update-the-android-manifest-for-system-webview-support)
 - [Katıştırılmış Web görünümünü kullanın (isteğe bağlı)](msal-net-xamarin-android-considerations.md#use-the-embedded-web-view-optional)
 - [Gerektiğinde sorun giderin](msal-net-xamarin-android-considerations.md#troubleshooting)
 

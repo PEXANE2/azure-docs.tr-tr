@@ -2,16 +2,16 @@
 title: Öğretici-Azure Resource Manager bicep dosyasına çıktılar ekleme
 description: Sözdizimini basitleştirmek için Bıcep dosyanıza çıktılar ekleyin.
 author: mumian
-ms.date: 03/01/2021
+ms.date: 03/10/2021
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: ''
-ms.openlocfilehash: 279417f22ded89db21abddad7a91a4cce520c6bd
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: ce2d1044fb0e45a72ce34b14bb654974d29051dc
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101748291"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102636279"
 ---
 # <a name="tutorial-add-outputs-to-azure-resource-manager-bicep-file"></a>Öğretici: Azure Resource Manager bicep dosyasına çıktılar ekleme
 
@@ -37,7 +37,7 @@ Bir depolama hesabı dağıtır, ancak depolama hesabı hakkında herhangi bir b
 
 Dağıtımdan değer döndürmek için çıktıları kullanabilirsiniz. Örneğin, yeni depolama hesabınız için uç noktaları almak faydalı olabilir.
 
-Aşağıdaki örnek, bir çıkış değeri eklemek için Bıcep dosyanızdaki değişikliği vurgular. Tüm dosyayı kopyalayın ve Bıcep dosyanızı içeriğiyle değiştirin.
+Aşağıdaki örnek, bir çıkış değeri eklemek için Bıcep dosyanızdaki değişikliği gösterir. Tüm dosyayı kopyalayın ve Bıcep dosyanızı içeriğiyle değiştirin.
 
 :::code language="bicep" source="~/resourcemanager-templates/get-started-with-templates/add-outputs/azuredeploy.bicep" range="1-33" highlight="33":::
 
@@ -45,7 +45,9 @@ Eklediğiniz çıktı değeri hakkında dikkat etmeniz için bazı önemli öğe
 
 Döndürülen değerin türü olarak ayarlanır `object` , yani bir şablon nesnesi döndürür.
 
-`primaryEndpoints`Depolama hesabından özelliği almak için, depolama hesabı sembolik adını kullanırsınız.
+`primaryEndpoints`Depolama hesabından özelliği almak için, depolama hesabı sembolik adını kullanırsınız. Visual Studio Code otomatik tamamlama özelliği, özelliklerinin tam bir listesini sunar:
+
+   ![Visual Studio Code bicep sembolik ad nesne özellikleri](./media/bicep-tutorial-add-outputs/visual-studio-code-bicep-output-properties.png)
 
 ## <a name="deploy-bicep-file"></a>Bıcep dosyasını dağıtma
 

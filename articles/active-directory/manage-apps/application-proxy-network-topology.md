@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 02/22/2021
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: bbab5463f0d022cb9bf155c7d33e2d81c8bdd448
-ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
+ms.openlocfilehash: a8f1f902b14dda7d95e3643c335e82ed7c7e5a3f
+ms.sourcegitcommit: ec39209c5cbef28ade0badfffe59665631611199
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 03/12/2021
-ms.locfileid: "103199700"
+ms.locfileid: "103232928"
 ---
 # <a name="optimize-traffic-flow-with-azure-active-directory-application-proxy"></a>Trafik akışını Azure Active Directory Uygulama Ara Sunucusu iyileştirin
 
@@ -41,6 +41,9 @@ Bir Azure AD kiracısına kaydolduğunuzda, kiracınızın bölgesi belirttiğin
 Varsayılan bölgenizde farklı olan bölgelerde bağlayıcılar yüklüyse, bu uygulamalara erişim performansını artırmak için bağlayıcı grubunuzun en iyi hale getirildiği bölgeyi değiştirmek faydalı olabilir. Bağlayıcı grubu için bir bölge belirtildiğinde, belirtilen bölgedeki uygulama proxy 'Si bulut hizmetlerine bağlanır.
 
 Trafik akışını iyileştirmek ve bağlayıcı grubuna gecikme süresini azaltmak için bağlayıcı grubunu en yakın bölgeye atayın. Bir bölge atamak için:
+
+> [!IMPORTANT]
+> Bağlayıcılar bu özelliği kullanmak için en az sürüm 1.5.1975.0 kullanıyor olmalıdır.
 
 1. Uygulama proxy 'Si kullanan dizinin uygulama Yöneticisi olarak [Azure Portal](https://portal.azure.com/) oturum açın. Örneğin, kiracı etki alanı contoso.com ise yönetici admin@contoso.com ya da bu etki alanında başka bir yönetici diğer adı olmalıdır.
 1. Sağ üst köşedeki Kullanıcı adınızı seçin. Uygulama proxy 'Si kullanan bir dizine oturum açtığınızdan emin olun. Dizinleri değiştirmeniz gerekiyorsa, **dizini** Değiştir ' i seçin ve uygulama proxy 'si kullanan bir dizin seçin.
