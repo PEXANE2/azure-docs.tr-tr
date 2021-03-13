@@ -3,14 +3,14 @@ title: Şablon dağıtımı
 description: Azure Resource Manager şablonu dağıtılmadan önce kaynaklarınızda hangi değişikliklerin gerçekleşecektir belirleme.
 author: tfitzmac
 ms.topic: conceptual
-ms.date: 02/05/2021
+ms.date: 03/09/2021
 ms.author: tomfitz
-ms.openlocfilehash: 8122fa5c00a61017b5f358a112c94a5299539cee
-ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
+ms.openlocfilehash: 3f35f00e5fcd26c7aa4bb685dc80f48eabb88b6d
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99591633"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102547943"
 ---
 # <a name="arm-template-deployment-what-if-operation"></a>ARM şablonu dağıtımı what-if işlemi
 
@@ -391,8 +391,6 @@ Azure SDK 'Ları aracılığıyla ne yapılır işlemini kullanabilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
+- İşlem hattındaki durum işlemini kullanmak için, bkz. bir işlem hattındaki [What-If test ARM şablonları](https://4bes.nl/2021/03/06/test-arm-templates-with-what-if/).
 - Durum işleminden yanlış sonuçlar fark ederseniz lütfen sorunları bildirin [https://aka.ms/whatifissues](https://aka.ms/whatifissues) .
 - Ne olursa kullanın bir Microsoft Learn modülü için, bkz. [değişiklik önizlemesi ve ARM şablonu test araç seti kullanarak Azure kaynaklarını doğrulama](/learn/modules/arm-template-test/).
-- Şablonları Azure PowerShell dağıtmak için bkz. [ARM şablonlarıyla kaynak dağıtma ve Azure PowerShell](deploy-powershell.md).
-- Şablonları Azure CLı ile dağıtmak için bkz. [ARM şablonları ve Azure CLI ile kaynak dağıtma](deploy-cli.md).
-- Şablonları REST ile dağıtmak için bkz. [ARM şablonlarıyla kaynak dağıtma ve Kaynak Yöneticisi REST API](deploy-rest.md).

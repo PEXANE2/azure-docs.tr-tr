@@ -3,16 +3,17 @@ title: Azure sanal makineler için Azure portal kullanan bakım denetimi
 description: Bakım denetimini ve Azure portal kullanarak Azure VM 'lerinize bakım uygulandığını nasıl denetleyeceğinizi öğrenin.
 author: cynthn
 ms.service: virtual-machines
+ms.subservice: maintenance-control
 ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 04/22/2020
 ms.author: cynthn
-ms.openlocfilehash: b174e2631131e6bf26d7b1cb62442c8a99102e2e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0dea30723a3ebe1598d6304ac3c98bfe1b55b466
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91397292"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102563022"
 ---
 # <a name="control-updates-with-maintenance-control-and-the-azure-portal"></a>Bakım denetimi ve Azure portal güncelleştirmelerini denetleme
 
@@ -22,7 +23,7 @@ Bakım denetimi, yalıtılmış sanal makinelerinize ve Azure adanmış ana bilg
 
 1. Azure Portal’da oturum açın.
 
-1. **Bakım yapılandırması**arayın.
+1. **Bakım yapılandırması** arayın.
 
    ![Bakım yapılandırmalarının nasıl açılacağını gösteren ekran görüntüsü](media/virtual-machines-maintenance-control-portal/maintenance-configurations-search.png)
 
@@ -42,7 +43,7 @@ Bakım denetimi, yalıtılmış sanal makinelerinize ve Azure adanmış ana bilg
 
    ![Bakım yapılandırması oluşturmayı gösteren ekran görüntüsü](media/virtual-machines-maintenance-control-portal/maintenance-configurations-create.png)
 
-1. Dağıtım tamamlandıktan sonra **Kaynağa Git ' e**tıklayın.
+1. Dağıtım tamamlandıktan sonra **Kaynağa Git ' e** tıklayın.
 
    ![Bakım yapılandırması dağıtımının tamamlandığını gösteren ekran görüntüsü](media/virtual-machines-maintenance-control-portal/maintenance-configurations-deployment-complete.png)
 
@@ -60,7 +61,7 @@ Bakım yapılandırmasının atanmasını istediğiniz kaynakları seçin ve **T
 
 ## <a name="check-configuration"></a>Yapılandırmayı denetle
 
-Yapılandırmanın doğru şekilde uygulandığını doğrulayabilirsiniz veya **bakım yapılandırmalarını**kullanarak şu anda atanmış olan tüm bakım yapılandırmalarını görmek için denetleyin. **Tür** sütunu, yapılandırmanın YALıTıLMıŞ bir VM 'ye mi yoksa Azure ayrılmış ana bilgisayarına mi atandığını gösterir. 
+Yapılandırmanın doğru şekilde uygulandığını doğrulayabilirsiniz veya **bakım yapılandırmalarını** kullanarak şu anda atanmış olan tüm bakım yapılandırmalarını görmek için denetleyin. **Tür** sütunu, yapılandırmanın YALıTıLMıŞ bir VM 'ye mi yoksa Azure ayrılmış ana bilgisayarına mi atandığını gösterir. 
 
 ![Bakım yapılandırmasının nasıl kontrol etileceğini gösteren ekran görüntüsü](media/virtual-machines-maintenance-control-portal/maintenance-configurations-host-type.png)
 
@@ -70,7 +71,7 @@ Ayrıca, belirli bir sanal makinenin yapılandırmasını Özellikler sayfasınd
 
 ## <a name="check-for-pending-updates"></a>Bekleyen güncelleştirmeleri denetle
 
-Bakım yapılandırması için güncelleştirmelerin beklenip beklenmediğini denetlemek için iki yol da vardır. **Bakım yapılandırmaları**' nda, yapılandırma ayrıntılarında **atamalar** ' a tıklayın ve **bakım durumunu**denetleyin.
+Bakım yapılandırması için güncelleştirmelerin beklenip beklenmediğini denetlemek için iki yol da vardır. **Bakım yapılandırmaları**' nda, yapılandırma ayrıntılarında **atamalar** ' a tıklayın ve **bakım durumunu** denetleyin.
 
 ![Bekleyen güncelleştirmelerin nasıl kontrol etileceğini gösteren ekran görüntüsü](media/virtual-machines-maintenance-control-portal/maintenance-configurations-pending.png)
 
@@ -80,13 +81,13 @@ Ayrıca, belirli bir konağı, **sanal makineleri** veya adanmış konağın öz
 
 ## <a name="apply-updates"></a>Güncelleştirme uygulama
 
-**Sanal makineler**kullanarak istek üzerine bekleyen güncelleştirmeleri uygulayabilirsiniz. VM ayrıntılarında **bakım** ' a tıklayın ve **Bakımı Şimdi Uygula**' ya tıklayın.
+**Sanal makineler** kullanarak istek üzerine bekleyen güncelleştirmeleri uygulayabilirsiniz. VM ayrıntılarında **bakım** ' a tıklayın ve **Bakımı Şimdi Uygula**' ya tıklayın.
 
 ![Bekleyen güncelleştirmelerin nasıl uygulanacağını gösteren ekran görüntüsü](media/virtual-machines-maintenance-control-portal/maintenance-configurations-apply-updates-now.png)
 
 ## <a name="check-the-status-of-applying-updates"></a>Güncelleştirmelerin uygulama durumunu denetleyin 
 
-**Bakım yapılandırmalarında** veya **sanal makineler**kullanarak yapılandırma için güncelleştirmelerin ilerlemesini denetleyebilirsiniz. VM ayrıntılarında **bakım**' a tıklayın. Aşağıdaki örnekte, **bakım durumu** bir güncelleştirmenin **bekliyor**olduğunu gösterir.
+**Bakım yapılandırmalarında** veya **sanal makineler** kullanarak yapılandırma için güncelleştirmelerin ilerlemesini denetleyebilirsiniz. VM ayrıntılarında **bakım**' a tıklayın. Aşağıdaki örnekte, **bakım durumu** bir güncelleştirmenin **bekliyor** olduğunu gösterir.
 
 ![Bekleyen güncelleştirmelerin durumunun nasıl kontrol etileceğini gösteren ekran görüntüsü](media/virtual-machines-maintenance-control-portal/maintenance-configurations-status.png)
 

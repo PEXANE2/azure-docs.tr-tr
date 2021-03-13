@@ -6,12 +6,12 @@ ms.date: 11/04/2020
 author: MS-jgol
 ms.custom: devx-track-java
 ms.author: jgol
-ms.openlocfilehash: 32b1558bf4af2ee151fef33a8c0cbe7df82f1e84
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
+ms.openlocfilehash: 4ed3b3d60be0e5e4bedcb604ce021f6a64002120
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102201762"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103201266"
 ---
 # <a name="configuration-options---azure-monitor-application-insights-for-java"></a>Yapılandırma seçenekleri-Java için Azure Izleyici Application Insights
 
@@ -61,7 +61,7 @@ Bağlantı dizesi gerekiyor. Bağlantı dizenizi Application Insights kaynağın
 }
 ```
 
-Ayrıca, ortam değişkenini kullanarak bağlantı dizesini de ayarlayabilirsiniz `APPLICATIONINSIGHTS_CONNECTION_STRING` .
+Bağlantı dizesini, ortam değişkenini kullanarak da ayarlayabilirsiniz `APPLICATIONINSIGHTS_CONNECTION_STRING` (Bu, bağlantı dizesi JSON yapılandırmasında de belirtilmişse öncelikli olur).
 
 Bağlantı dizesinin ayarlanması, Java aracısını devre dışı bırakacak.
 
@@ -81,7 +81,7 @@ Bulut rolü adını ayarlamak istiyorsanız:
 
 Bulut rolü adı ayarlanmamışsa, uygulama eşlemesindeki bileşeni etiketlemek için Application Insights kaynağın adı kullanılır.
 
-Ayrıca, ortam değişkenini kullanarak bulut rolü adını da ayarlayabilirsiniz `APPLICATIONINSIGHTS_ROLE_NAME` .
+Ayrıca, ortam değişkenini kullanarak bulut rolü adını da ayarlayabilirsiniz `APPLICATIONINSIGHTS_ROLE_NAME` (Bu, Ayrıca JSON yapılandırmasında bulut rolü adı belirtilmişse öncelikli olur).
 
 ## <a name="cloud-role-instance"></a>Bulut rolü örneği
 
@@ -98,7 +98,7 @@ Bulut rolü örneğini makine adı yerine farklı bir şekilde ayarlamak istiyor
 }
 ```
 
-Ayrıca, ortam değişkenini kullanarak bulut rolü örneğini ayarlayabilirsiniz `APPLICATIONINSIGHTS_ROLE_INSTANCE` .
+Ayrıca, bulut rolü örneğini ortam değişkenini kullanarak ayarlayabilirsiniz `APPLICATIONINSIGHTS_ROLE_INSTANCE` (Bu, daha sonra da JSON yapılandırmasında bulut rolü örneği belirtilmişse öncelikli olur).
 
 ## <a name="sampling"></a>Örnekleme
 
@@ -117,7 +117,7 @@ Maliyeti azaltmanız gerekiyorsa örnekleme yararlı olur.
 }
 ```
 
-Ayrıca, ortam değişkenini kullanarak örnekleme yüzdesini de ayarlayabilirsiniz `APPLICATIONINSIGHTS_SAMPLING_PERCENTAGE` .
+Ayrıca, bir ortam değişkenini kullanarak örnekleme yüzdesini ayarlayabilirsiniz `APPLICATIONINSIGHTS_SAMPLING_PERCENTAGE` (örnekleme yüzdesi de JSON yapılandırmasında belirtilmişse öncelikli olur).
 
 > [!NOTE]
 > Örnekleme yüzdesi için, N 'nin bir tamsayı olduğu, 100/N 'e yakın bir yüzde seçin. Şu anda örnekleme diğer değerleri desteklemiyor.
@@ -150,9 +150,6 @@ Bazı ek JMX ölçümleri toplamak istiyorsanız:
 `attribute` , toplamak istediğiniz JMX MBean içindeki öznitelik adıdır.
 
 Sayısal ve Boole JMX ölçüm değerleri desteklenir. Boolean JMX ölçümleri `0` , false için ve true için ile eşleştirilir `1` .
-
-[//]: # "Not: burada APPLICATIONINSIGHTS_JMX_METRICS belgeleme yok"
-[//]: # "env ' de gömülü JSON Messy 'dir ve yalnızca kodsuz kullanacaksınız iliştirme senaryosu için belgelenmelidir"
 
 ## <a name="custom-dimensions"></a>Özel boyutlar
 
@@ -201,7 +198,7 @@ Varsayılan Application Insights eşiği `INFO` . Bu düzeyi değiştirmek istiy
 }
 ```
 
-Eşiği, ortam değişkenini kullanarak da ayarlayabilirsiniz `APPLICATIONINSIGHTS_INSTRUMENTATION_LOGGING_LEVEL` .
+Ayrıca, ortam değişkenini kullanarak düzeyi ayarlayabilirsiniz `APPLICATIONINSIGHTS_INSTRUMENTATION_LOGGING_LEVEL` (Bu, aynı zamanda, Ayrıca, JSON yapılandırmasında düzey belirtilmişse öncelikli olur).
 
 Bunlar `level` , dosyada belirtebileceğiniz geçerli değerlerdir `applicationinsights.json` ve farklı günlük çerçeveleri içindeki günlük düzeylerine nasıl karşılık gelmektedir:
 
@@ -284,7 +281,7 @@ Application Insights Java 3,0, her 15 dakikada bir sinyal ölçümü gönderir. 
 ```
 
 > [!NOTE]
-> Sinyal verileri de Application Insights kullanımını izlemek için kullanıldığından, sinyal sıklığını azaltamazsınız.
+> Sinyal verileri Application Insights kullanımını izlemek için kullanıldığından, aralığı 15 dakikadan daha uzun bir süre artıramezsiniz.
 
 ## <a name="http-proxy"></a>HTTP proxy 'Si
 
@@ -300,6 +297,30 @@ Uygulamanız bir güvenlik duvarının arkasındaysa ve Application Insights do�
 ```
 
 Application Insights Java 3,0, ayrıca genel `-Dhttps.proxyHost` ve `-Dhttps.proxyPort` bunlar ayarlananlar için de kullanılır.
+
+## <a name="metric-interval"></a>Ölçüm aralığı
+
+Bu özellik önizlemede.
+
+Varsayılan olarak ölçümler her 60 saniyede yakalanır.
+
+Sürüm 3.0.3-BETA sürümünden başlayarak bu aralığı değiştirebilirsiniz:
+
+```json
+{
+  "preview": {
+    "metricIntervalSeconds": 300
+  }
+}
+```
+
+Bu ayar tüm bu ölçümler için geçerlidir:
+
+* Varsayılan performans sayaçları, örn. CPU ve bellek
+* Varsayılan özel ölçümler, ör. çöp toplama zamanlaması
+* Yapılandırılmış JMX ölçümleri ([yukarıya bakın](#jmx-metrics))
+* Mikro ölçüm ölçümleri ([yukarıya bakın](#auto-collected-micrometer-metrics-including-spring-boot-actuator-metrics))
+
 
 [//]: # "Opentelemetri API 'sinin 1,0 'e ulaşması için Opentelemetri desteği özel önizlemede"
 
@@ -349,7 +370,7 @@ Varsayılan olarak, Java 3,0 günlüklerini `INFO` `applicationinsights.log` Bu 
 
 `maxHistory` , tutulan günlük dosyalarının (geçerli günlük dosyasına ek olarak) alınan sayısıdır.
 
-Version 3.0.2 'tan başlayarak, ortam değişkenini kullanarak kendi kendine tanılamayı da ayarlayabilirsiniz `level` `APPLICATIONINSIGHTS_SELF_DIAGNOSTICS_LEVEL` .
+Sürüm 3.0.2 'den başlayarak, ortam değişkenini kullanarak kendi kendine tanılamayı da ayarlayabilirsiniz `level` (Bu, ayrıca `APPLICATIONINSIGHTS_SELF_DIAGNOSTICS_LEVEL` JSON yapılandırmasında kendi kendine tanılama belirtilmişse öncelikli olur `level` ).
 
 ## <a name="an-example"></a>Örnek
 

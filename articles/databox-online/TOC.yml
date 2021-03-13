@@ -55,7 +55,7 @@
     - name: Genel Bakış
       items:
         - name: Azure Stack Edge Pro R nedir?
-          href: azure-stack-edge-j-series-overview.md
+          href: azure-stack-edge-pro-r-overview.md
     - name: Kavramlar
       items:
         - name: Hazır güvenlik
@@ -171,7 +171,7 @@
         - name: IoT Edge örneklerini dağıtma
           items:
             - name: Nvidia galerisinden modül
-              href: azure-stack-edge-j-series-configure-gpu-modules.md
+              href: azure-stack-edge-gpu-configure-gpu-modules.md
             - name: Git deposundan GPU modülü
               href: azure-stack-edge-gpu-deploy-sample-module.md
             - name: Market aracılığıyla GPU modülü
@@ -189,7 +189,7 @@
                 - name: İşlem hızlandırma
                   href: azure-stack-edge-gpu-deploy-compute-acceleration.md
                 - name: Durum bilgisi olmayan uygulama
-                  href: azure-stack-edge-j-series-deploy-stateless-application-kubernetes.md
+                  href: azure-stack-edge-gpu-deploy-stateless-application-kubernetes.md
                 - name: Statik sağlanmış durum bilgisi olan uygulama
                   href: azure-stack-edge-gpu-deploy-stateful-application-static-provision-kubernetes.md
                 - name: Dinamik sağlanmış durum bilgisi olan uygulama
@@ -199,7 +199,7 @@
                 - name: Durum bilgisi olmayan uygulama
                   href: azure-stack-edge-gpu-deploy-stateless-application-iot-edge-module.md
                 - name: C# modülü geliştirme
-                  href: azure-stack-edge-j-series-create-iot-edge-module.md
+                  href: azure-stack-edge-gpu-create-iot-edge-module.md
             - name: Azure Arc aracılığıyla (Önizleme)
               items:
                 - name: Kubernetes kümesinde Arc'ı etkinleştirme
@@ -211,11 +211,11 @@
         - name: Azure Resource Manager’ı yapılandırma (Önizleme)
           items:
             - name: Azure PowerShell yoluyla bağlanma
-              href: azure-stack-edge-j-series-connect-resource-manager.md
+              href: azure-stack-edge-gpu-connect-resource-manager.md
             - name: Azure Resource Manager parolasını ayarlama
-              href: azure-stack-edge-j-series-set-azure-resource-manager-password.md
+              href: azure-stack-edge-gpu-set-azure-resource-manager-password.md
             - name: İstemci TLS ayarlarını yapılandırma
-              href: azure-stack-edge-j-series-configure-tls-settings.md
+              href: azure-stack-edge-gpu-configure-tls-settings.md
         - name: VM’leri dağıtma (Önizleme)
           items:
             - name: VM’leri dağıtma - Azure portal
@@ -229,7 +229,7 @@
             - name: VM'leri dağıtma - Azure PowerShell betiği
               href: azure-stack-edge-gpu-deploy-virtual-machine-powershell-script.md
             - name: VM'leri dağıtma - Azure CLI/Python
-              href: azure-stack-edge-j-series-deploy-virtual-machine-cli-python.md
+              href: azure-stack-edge-gpu-deploy-virtual-machine-cli-python.md
             - name: VM’lerde Özel Betik Uzantısı dağıtma
               href: azure-stack-edge-gpu-deploy-virtual-machine-custom-script-extension.md
             - name: VM görüntüsü oluşturma
@@ -247,23 +247,23 @@
             - name: Sertifika hatalarını giderme
               href: azure-stack-edge-gpu-certificate-troubleshooting.md
         - name: Uç işlemini yönetme
-          href: azure-stack-edge-j-series-manage-compute.md
+          href: azure-stack-edge-gpu-manage-compute.md
         - name: Edge kapsayıcı kayıt defterini yönetme
           href: azure-stack-edge-gpu-edge-container-registry.md
         - name: Depolama ağ geçidini yönetme
           items:
             - name: 'Paylaşıma ekleme, bağlanma'
-              href: azure-stack-edge-j-series-deploy-add-shares.md
+              href: azure-stack-edge-gpu-deploy-add-shares.md
             - name: 'Depolama hesaplarına ekleme, bağlama'
-              href: azure-stack-edge-j-series-deploy-add-storage-accounts.md
+              href: azure-stack-edge-gpu-deploy-add-storage-accounts.md
             - name: Paylaşımlar
-              href: azure-stack-edge-j-series-manage-shares.md
+              href: azure-stack-edge-gpu-manage-shares.md
             - name: Kullanıcılar
-              href: azure-stack-edge-j-series-manage-users.md
+              href: azure-stack-edge-gpu-manage-users.md
             - name: Depolama hesapları
-              href: azure-stack-edge-j-series-manage-storage-accounts.md
+              href: azure-stack-edge-gpu-manage-storage-accounts.md
             - name: Bant genişliği zamanlamaları
-              href: azure-stack-edge-j-series-manage-bandwidth-schedules.md
+              href: azure-stack-edge-gpu-manage-bandwidth-schedules.md
         - name: Cihaz yönetme
           items:
             - name: 'Güç, erişim, bağlantı'
@@ -318,6 +318,9 @@
           href: /rest/api/databoxedgegateway
         - name: .NET SDK
           href: /dotnet/api/overview/azure/databoxedge/databoxgateway
+        - name: Azure İlkesi yerleşik ilkeler
+          displayName: 'samples, policies, definitions'
+          href: ./policy-reference.md
 - name: Azure Stack Edge Pro - FPGA
   items:
     - name: Genel Bakış
@@ -403,23 +406,10 @@
           href: ../databox-gateway/data-box-gateway-1905-release-notes.md?toc=/azure/databox-online/toc.json&bc=/azure/databox-online/breadcrumb/toc.json
         - name: Genel kullanılabilirlik (GA)
           href: ../databox-gateway/data-box-gateway-release-notes.md?toc=/azure/databox-online/toc.json&bc=/azure/databox-online/breadcrumb/toc.json
-    - name: Başvuru
-      items:
-        - name: Azure PowerShell
-          href: /powershell/module/az.stackedge/#stack_edge
-        - name: REST API
-          href: /rest/api/databoxedgegateway
-        - name: .NET SDK
-          href: /dotnet/api/overview/azure/databoxedge/databoxgateway
 - name: Güvenlik
   items:
     - name: Güvenlik temeli
       href: security-baseline.md
-- name: Başvurular
-  items:
-    - name: Azure İlkesi yerleşik ilkeler
-      displayName: 'samples, policies, definitions'
-      href: ./policy-reference.md
 - name: Kaynaklar
   items:
     - name: Azure Stack Edge Pro C# modülü örnekleri (.NET)

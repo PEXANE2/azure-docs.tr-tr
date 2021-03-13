@@ -3,7 +3,7 @@ title: Telestream kablolu dönüştürme kodlayıcısını tek bir bit hızı ca
 description: "Bu konuda, kablolu yayın Live Encoder 'ın canlı kodlama için etkinleştirilmiş AMS kanallarına tek bir bit hızı akışı göndermek üzere nasıl yapılandırılacağı gösterilmektedir. "
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.assetid: 0d2f1e81-51a6-4ca9-894a-6dfa51ce4c70
@@ -12,15 +12,15 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 03/14/2019
-ms.author: juliako
+ms.date: 03/10/2021
+ms.author: inhenkel
 ms.reviewer: cenkdin;anilmur
-ms.openlocfilehash: ecab0ee67dd1d5cee3fd9927c00c9f9d827b2f47
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: a736270919f36cb7d4bbd4e686a98ddc57f402fa
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92910058"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103016840"
 ---
 # <a name="use-the-wirecast-encoder-to-send-a-single-bitrate-live-stream"></a>Tek bit hızlı canlı akış göndermek için kablolu dönüştürme Kodlayıcısı 'nı kullanın
 
@@ -57,7 +57,7 @@ Bu öğreticide, Azure Media Services (AMS) Azure Media Services Explorer (AMSE)
 
     **Yeni kanalı Şimdi Başlat** ' ın seçildiğinden emin olun.
 
-3. **Kanal oluştur** ' a tıklayın.
+3. **Kanal oluştur**' a tıklayın.
 
    ![Ekran görüntüsü canlı kanal oluştur iletişim kutusunu gösterir.](./media/media-services-wirecast-live-encoder/media-services-wirecast2.png)
 
@@ -76,7 +76,7 @@ Kanal Başlarken, [Encoder 'ı yapılandırabilirsiniz](media-services-configure
 ## <a name="configure-the-telestream-wirecast-encoder"></a><a id="configure_wirecast_rtmp" />Telestream kablolu dönüştürme Kodlayıcısı 'nı yapılandırma
 Bu öğreticide, aşağıdaki çıkış ayarları kullanılır. Bu bölümün geri kalanında yapılandırma adımları daha ayrıntılı olarak açıklanmaktadır.
 
-**Video** :
+**Video**:
 
 * Codec: H.264
 * Profil: Yüksek (Seviye 4.0)
@@ -84,7 +84,7 @@ Bu öğreticide, aşağıdaki çıkış ayarları kullanılır. Bu bölümün ge
 * Ana kare: 2 saniye (60 saniye)
 * Kare hızı: 30
 
-**Ses** :
+**Ses**:
 
 * Codec: AAC (LC)
 * Bit hızı: 192 kb/sn
@@ -95,10 +95,10 @@ Bu öğreticide, aşağıdaki çıkış ayarları kullanılır. Bu bölümün ge
 2. **Çıkış sekmesine gidip** çıkış ayarları ' nı seçerek çıktıyı yapılandırın **...**
 
     **Çıktı hedefinin** **RTMP sunucusu** olarak ayarlandığından emin olun.
-3. **Tamam** ’a tıklayın.
+3. **Tamam**'a tıklayın.
 4. Ayarlar sayfasında, **hedef** alanı **Azure Media Services** olarak ayarlayın.
 
-    Kodlama profili **Azure H. ıbu 16:9 (1280x720)** için önceden seçilmiştir. Bu ayarları özelleştirmek için, açılan kutudan sağ tarafındaki dişli simgesini seçin ve ardından **Yeni önayar** ' ı seçin.
+    Kodlama profili **Azure H. ıbu 16:9 (1280x720)** için önceden seçilmiştir. Bu ayarları özelleştirmek için, açılan kutudan sağ tarafındaki dişli simgesini seçin ve ardından **Yeni önayar**' ı seçin.
 
     ![Ekran görüntüsü, BlobTrigger seçiliyken şablon seç iletişim kutusunu gösterir.](./media/media-services-wirecast-live-encoder/media-services-wirecast3.png)
 5. Kodlayıcı ön ayarlarını yapılandırın.
@@ -119,7 +119,7 @@ Bu öğreticide, aşağıdaki çıkış ayarları kullanılır. Bu bölümün ge
    * Örnek hızı: 44,100 kHz
 
      ![Ekran görüntüsü, AzureTest1 için Kodlayıcı ön ayarını gösterir.](./media/media-services-wirecast-live-encoder/media-services-wirecast4.png)
-6. **Kaydet** ’e basın.
+6. **Kaydet**’e basın.
 
     Kodlama alanında artık yeni oluşturulan profil seçilebilir.
 
@@ -135,13 +135,13 @@ Bu öğreticide, aşağıdaki çıkış ayarları kullanılır. Bu bölümün ge
 
     ![Ekran görüntüsü çıkış ayarlarını gösterir.](./media/media-services-wirecast-live-encoder/media-services-wirecast5.png)
 
-1. **Tamam** ’ı seçin.
+1. **Tamam**’ı seçin.
 2. Ana **kablolu yayın** ekranında, video ve ses için giriş kaynaklarını onaylayın ve sonra sol üst köşedeki **akış** ' ı ziyaret edin.
 
     ![Ekran görüntüsü kablolu yayın akışı düğmesini gösterir.](./media/media-services-wirecast-live-encoder/media-services-wirecast7.png)
 
 > [!IMPORTANT]
-> **Stream** ' e tıklamadan önce kanalın Ready olduğundan emin **olmanız gerekir** .
+> **Stream**' e tıklamadan önce kanalın Ready olduğundan emin **olmanız gerekir** .
 > Ayrıca, > 15 dakikadan daha uzun bir süre boyunca girdi katkısı akışı olmadan kanalı, bir giriş katkı akışı olmadan ayrılmadığınızdan emin olun.
 >
 >
@@ -157,17 +157,17 @@ Akış Player 'da görünürse, kodlayıcı AMS 'ye bağlanacak şekilde doğru 
 Bir hata alırsanız, kanalın sıfırlanması ve kodlayıcı ayarlarının ayarlanması gerekir. Rehberlik için [sorun giderme](media-services-troubleshooting-live-streaming.md) makalesine bakın.  
 
 ## <a name="create-a-program"></a>Program oluşturma
-1. Kanal kayıttan yürütme onaylandıktan sonra bir program oluşturun. AMO aracının **canlı** sekmesi altında, program alanının içine sağ tıklayıp **yeni program oluştur** ' u seçin.  
+1. Kanal kayıttan yürütme onaylandıktan sonra bir program oluşturun. AMO aracının **canlı** sekmesi altında, program alanının içine sağ tıklayıp **yeni program oluştur**' u seçin.  
 
     ![Ekran görüntüsü program oluştur seçeneğinin seçili olduğunu gösterir.](./media/media-services-wirecast-live-encoder/media-services-wirecast9.png)
 2. Programı adlandırın ve gerekirse **Arşiv penceresi uzunluğunu** (varsayılan olarak dört saat) ayarlayın. Ayrıca bir depolama konumu belirtebilir veya varsayılan olarak bırakabilirsiniz.  
 3. **Şimdi programa başla** kutusunu işaretleyin.
-4. **Program oluştur** ' a tıklayın.  
+4. **Program oluştur**' a tıklayın.  
 
    >[!NOTE]
    >Program oluşturma, kanal oluşturulduktan daha az zaman alır.
        
-5. Program çalışmaya başladıktan sonra programa sağ tıklayıp **programları kayıttan yürütmeyi** ve sonra **Azure Media Player** ' yi seçerek kayıttan yürütmeyi onaylayın.  
+5. Program çalışmaya başladıktan sonra programa sağ tıklayıp **programları kayıttan yürütmeyi** ve sonra **Azure Media Player**' yi seçerek kayıttan yürütmeyi onaylayın.  
 6. Onaylandıktan sonra programa yeniden sağ tıklayın ve **Çıkış URL 'Sini panoya kopyala** ' yı seçin (veya bu bilgileri menüdeki **Program bilgileri ve ayarlar** seçeneğinden alın).
 
 Akış artık bir yürütücüyü katıştırmaya hazırdır veya canlı görüntüleme için bir hedef kitleye dağıtılır.  
@@ -178,5 +178,5 @@ Rehberlik için [sorun giderme](media-services-troubleshooting-live-streaming.md
 ## <a name="media-services-learning-paths"></a>Media Services’i öğrenme yolları
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Geri bildirimde bulunma
+## <a name="provide-feedback"></a>Geribildirim gönderme
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]

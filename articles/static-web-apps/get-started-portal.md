@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: quickstart
 ms.date: 09/03/2020
 ms.author: cshoe
-ms.openlocfilehash: c54a56843be5121e16449d95fb18c24901a95a8d
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.openlocfilehash: b19c37a45131e3689fdc9726d186f220ab5ba9fe
+ms.sourcegitcommit: 6776f0a27e2000fb1acb34a8dddc67af01ac14ac
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "100650579"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103149537"
 ---
 # <a name="quickstart-building-your-first-static-site-in-the-azure-portal"></a>Hızlı başlangıç: Azure portal ilk statik sitenizi oluşturma
 
@@ -115,9 +115,9 @@ Bu uygulamayı kullanmaya devam edemeyecekinizde, Azure statik Web Apps örneği
 
 1. [Azure portalı](https://portal.azure.com) açın
 1. En üst arama çubuğundan **My-First-Web-static-App** araması yapın
-1. Uygulama adı üzerinde seçin
+1. Uygulama adını seçin
 1. **Sil** düğmesini seçin
-1. Silme eylemini onaylamak için **Evet** ' i seçin
+1. Silme eylemini onaylamak için **Evet** ' i seçin (işlemin tamamlanması birkaç dakika sürebilir)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

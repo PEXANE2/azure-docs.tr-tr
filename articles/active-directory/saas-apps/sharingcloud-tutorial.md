@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 02/09/2021
+ms.date: 03/10/2021
 ms.author: jeedes
-ms.openlocfilehash: 7ae447a9577feba8b43b5b03a757ec4095ee2cb4
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: 3f5c189e63a8be3c9c46c406ab7bd0250dc75ec5
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102177989"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102633504"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-sharingcloud"></a>Öğretici: SharingCloud ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -26,14 +26,13 @@ Bu öğreticide, SharingCloud 'ı Azure Active Directory (Azure AD) ile tümleş
 * Kullanıcılarınızın Azure AD hesaplarıyla otomatik olarak, SharingCloud oturumu açmaya olanak sağlayın.
 * Hesaplarınızı tek bir merkezi konumda yönetin-Azure portal.
 
-Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](../manage-apps/what-is-single-sign-on.md).
-
 ## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
-* Bir Azure AD aboneliği. Aboneliğiniz yoksa, [burada](https://azure.microsoft.com/pricing/free-trial/)bir aylık ücretsiz deneme sürümü edinebilirsiniz.
-* SharingCloud çoklu oturum açma (SSO) etkin aboneliği.
+* Bir Azure AD aboneliği. Aboneliğiniz yoksa [ücretsiz bir hesap](https://azure.microsoft.com/free/)alabilirsiniz.
+* Sapıent çoklu oturum açma (SSO) etkin abonelik.
+
 
 ## <a name="scenario-description"></a>Senaryo açıklaması
 
@@ -46,30 +45,19 @@ Bu öğreticide, Azure AD SSO 'yu bir test ortamında yapılandırıp test eders
 
 SharingCloud 'ın Azure AD 'ye tümleştirilmesini yapılandırmak için, Galeriden yönetilen SaaS uygulamaları listenize SharingCloud 'ı eklemeniz gerekir.
 
-1. [Azure Portal](https://portal.azure.com) iş veya okul hesabı ya da kişisel Microsoft hesabı kullanarak oturum açın.
+1. Azure portal iş veya okul hesabı ya da kişisel Microsoft hesabı kullanarak oturum açın.
 1. Sol gezinti bölmesinde **Azure Active Directory** hizmeti ' ni seçin.
-
-    ![Azure Active Directory düğmesi](common/select-azuread.png)
-    
 1. **Kurumsal uygulamalar** ' a gidin ve **tüm uygulamalar**' ı seçin.
-
-    ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
-    
 1. Yeni uygulama eklemek için **Yeni uygulama**' yı seçin.
-
-    ![Yeni uygulama düğmesi](common/add-new-app.png)
-    
 1. **Galeriden Ekle** bölümünde, arama kutusuna **sharingcloud** yazın.
-
-    ![Sonuçlar listesinde SharingCloud](common/search-new-app.png)
-    
 1. Sonuçlar panelinden **Sharingcloud** ' ı seçin ve ardından uygulamayı ekleyin. Uygulama kiracınıza eklenirken birkaç saniye bekleyin.
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-sharingcloud"></a>SharingCloud için Azure AD çoklu oturum açmayı yapılandırma ve test etme
+
+## <a name="configure-and-test-azure-ad-sso-for-sharingcloud"></a>SharingCloud için Azure AD SSO 'yu yapılandırma ve test etme
 
 **B. Simon** adlı bir test kullanıcısı kullanarak Azure AD SSO 'Yu sharingcloud ile yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ve SharingCloud içindeki ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
 
-Azure AD SSO 'yu SharingCloud ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
+Azure AD SSO 'yu SharingCloud ile yapılandırmak ve test etmek için aşağıdaki adımları gerçekleştirin:
 
 1. **[Azure AD SSO 'Yu yapılandırın](#configure-azure-ad-sso)** -kullanıcılarınızın bu özelliği kullanmasını sağlamak için.
     1. Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -B. Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
@@ -82,15 +70,9 @@ Azure AD SSO 'yu SharingCloud ile yapılandırmak ve test etmek için aşağıda
 
 Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
-1. [Azure Portal](https://portal.azure.com/), **sharingcloud** uygulama tümleştirmesi sayfasında **Yönet** bölümünü bulun ve **Çoklu oturum açma**' yı seçin.
-    
-    ![Çoklu oturum açma bağlantısını yapılandırma](common/select-sso.png)
-    
+1. Azure portal, **Sharingcloud** uygulama tümleştirmesi sayfasında **Yönet** bölümünü bulun ve **Çoklu oturum açma**' yı seçin.
 1. **Çoklu oturum açma yöntemi seçin** sayfasında **SAML**' yi seçin.
-
-    ![Çoklu oturum açma seçme modu](common/select-saml-option.png)
-
-1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, ayarları düzenlemek IÇIN **temel SAML yapılandırması** **düzenleme** simgesine tıklayın.
+1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, ayarları düzenlemek IÇIN **temel SAML yapılandırması** kalem simgesine tıklayın.
 
    ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
 
@@ -98,15 +80,15 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
     SharingCloud tarafından sunulan XML dosyası ile meta veri dosyasını karşıya yükleyin. Dosyayı almak için [Sharingcloud Client destek ekibine](mailto:support@sharingcloud.com) başvurun.
 
-    ![image](common/upload-metadata.png)
+    ![* * Meta veri dosyasını karşıya yükleme * * bağlantısı vurgulanmış şekilde temel SAML yapılandırması Kullanıcı arabiriminin ekran görüntüsü.](common/upload-metadata.png)
     
     Belirtilen meta veri dosyasını seçin ve **karşıya yükle**' ye tıklayın.
 
-    ![image](common/browse-upload-metadata.png)
+    ![Dosya Seç simgesi ve * * Yükle * * düğmesi vurgulanmış şekilde, meta veri dosyası tarafından girilen kullanıcı arabiriminin ekran görüntüsü.](common/browse-upload-metadata.png)
 
 1. SharingCloud uygulaması, SAML belirteci öznitelikleri yapılandırmanıza özel öznitelik eşlemeleri eklemenizi gerektiren belirli bir biçimde SAML onayları bekler. Aşağıdaki ekran görüntüsünde varsayılan özniteliklerin listesi gösterilmektedir.
 
-    ![image](common/edit_attribute.png)
+    ![Düzenleme simgesi vurgulanmış şekilde Kullanıcı öznitelikleri Kullanıcı arabiriminin ekran görüntüsü.](common/edit_attribute.png)
 
 1. SharingCloud uygulaması, yukarıdakine ek olarak aşağıda gösterilen SAML yanıtına daha fazla öznitelik geçirilmesini bekler. Bu öznitelikler de önceden doldurulur, ancak gereksiniminize göre bunları gözden geçirebilirsiniz.
 
@@ -119,10 +101,6 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, **Federasyon meta verileri URL 'sini** gereksiniminize göre verilen seçeneklerden kopyalamak için **Kopyala** simgesine tıklayın.
 
     ![Kopyalanacak meta veri URL 'Si](common/copy_metadataurl.png)
-
-## <a name="configure-sharingcloud-sso"></a>SharingCloud SSO 'yu yapılandırma
-
-**Sharingcloud** tarafında çoklu oturum açmayı yapılandırmak için, Azure Portal kopyalanmış **Federasyon meta veri URL 'sini** [sharingcloud support ekibine](mailto:support@sharingcloud.com)göndermeniz gerekir. Bu ayar, SAML SSO bağlantısının her iki tarafında da düzgün bir şekilde ayarlanmasını sağlamak üzere ayarlanmıştır.
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD test kullanıcısı oluşturma
 
@@ -143,16 +121,14 @@ Bu bölümde, Azure çoklu oturum açmayı kullanarak, SharingCloud 'a erişim v
 1. Azure portal **Kurumsal uygulamalar**' ı seçin ve ardından **tüm uygulamalar**' ı seçin.
 1. Uygulamalar listesinde, **Sharingcloud**' ı seçin.
 1. Uygulamanın genel bakış sayfasında **Yönet** bölümünü bulun ve **Kullanıcılar ve gruplar**' ı seçin.
-
-   !["Kullanıcılar ve gruplar" bağlantısı](common/users-groups-blade.png)
-
 1. **Kullanıcı Ekle**' yi seçin, sonra **atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar** ' ı seçin.
-
-   ![Kullanıcı Ekle bağlantısı](common/add-assign-user.png)
-
 1. **Kullanıcılar ve gruplar** iletişim kutusunda, kullanıcılar listesinden **B. Simon** ' ı seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
-1. SAML assertion 'da herhangi bir rol değeri bekliyorsanız, **Rol Seç** iletişim kutusunda, Kullanıcı için listeden uygun rolü seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
+1. Kullanıcılara bir rolün atanmasını bekliyorsanız, **Rol Seç** açılır listesinden bunu seçebilirsiniz. Bu uygulama için ayarlanmış bir rol yoksa, "varsayılan erişim" rolü seçili olduğunu görürsünüz.
 1. **Atama Ekle** Iletişim kutusunda **ata** düğmesine tıklayın.
+
+## <a name="configure-sharingcloud-sso"></a>SharingCloud SSO 'yu yapılandırma
+
+**Sharingcloud** tarafında çoklu oturum açmayı yapılandırmak için, Azure Portal kopyalanmış **Federasyon meta veri URL 'sini** [sharingcloud support ekibine](mailto:support@sharingcloud.com)göndermeniz gerekir. Bu ayar, SAML SSO bağlantısının her iki tarafında da düzgün bir şekilde ayarlanmasını sağlamak üzere ayarlanmıştır.
 
 ### <a name="create-sharingcloud-test-user"></a>SharingCloud test kullanıcısı oluştur
 
@@ -160,7 +136,20 @@ Bu bölümde,, SharingCloud 'da Britta Simon adlı bir Kullanıcı oluşturulur.
 
 ## <a name="test-sso"></a>Test SSO 'SU 
 
-* Doğrudan SharingCloud URL 'nize gidin ve oturum akışını buradan başlatın.
+Bu bölümde, Azure AD çoklu oturum açma yapılandırmanızı aşağıdaki seçeneklerle test edersiniz. 
+
+#### <a name="sp-initiated"></a>SP başlatıldı:
+
+* Azure portal içinde **Bu uygulamayı test et** ' e tıklayın. Bu, oturum açma akışını başlatabileceğiniz SharingCloud oturum açma URL 'sine yeniden yönlendirilir.  
+
+* Doğrudan SharingCloud oturum açma URL 'sine gidin ve oturum açma akışını buradan başlatın.
+
+#### <a name="idp-initiated"></a>IDP başlatıldı:
+
+* Azure portal **Bu uygulamayı test et** ' e tıklayın ve SSO 'Yu ayarladığınız sharingcloud 'da otomatik olarak oturum açmış olmanız gerekir 
+
+Uygulamayı dilediğiniz modda test etmek için Microsoft My Apps ' i de kullanabilirsiniz. Uygulamalarım içindeki SharingCloud kutucuğuna tıkladığınızda, SP modunda yapılandırılmışsa, oturum açma akışını başlatmak için uygulama oturum açma sayfasına yönlendirilirsiniz ve ıDP modunda yapılandırıldıysa, SSO 'yu ayarladığınız SharingCloud 'da otomatik olarak oturum açmış olmanız gerekir. Uygulamalarım hakkında daha fazla bilgi için bkz. [uygulamalarıma giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

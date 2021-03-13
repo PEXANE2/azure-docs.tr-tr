@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: eliotgra
-ms.openlocfilehash: 093e069fa7a3eab06c61f796421a3253d9b92cb1
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 6f7359b2b2fb0a1ea6ce92ec52bba15fc74fc75a
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101727507"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103017163"
 ---
 # <a name="continuous-patient-monitoring-architecture"></a>Sürekli hasta izleme mimarisi
 
@@ -37,7 +37,7 @@ Cep telefonu uygulamasının birincil işlevi, tıp cihazlarından AYRıLABILIR 
 
 ### <a name="export-to-azure-api-for-fhirreg"></a>FHıR için Azure API 'ye dışarı aktarma&reg;
 
-Azure IoT Central HIPAA uyumludur ve ITRUST &reg; sertifikalı. Ayrıca, [FHıR Için Azure API](../../healthcare-apis/overview.md)kullanarak diğer hizmetlere hasta sistem durumu verileri gönderebilirsiniz. FHıR için Azure API, klinik sağlık verileri için standartlara dayalı bir API 'dir. [Fhır Için Azure IoT Bağlayıcısı](../../healthcare-apis/iot-fhir-portal-quickstart.md) , IoT Central 'den sürekli veri dışa aktarma hedefi olarak fhır için Azure API 'si kullanmanıza olanak sağlar.
+Azure IoT Central HIPAA uyumludur ve ITRUST &reg; sertifikalı. Ayrıca, [FHıR Için Azure API](../../healthcare-apis/fhir/overview.md)kullanarak diğer hizmetlere hasta sistem durumu verileri gönderebilirsiniz. FHıR için Azure API, klinik sağlık verileri için standartlara dayalı bir API 'dir. [Fhır Için Azure IoT Bağlayıcısı](../../healthcare-apis/fhir/iot-fhir-portal-quickstart.md) , IoT Central 'den sürekli veri dışa aktarma hedefi olarak fhır için Azure API 'si kullanmanıza olanak sağlar.
 
 ### <a name="machine-learning"></a>Makine öğrenimi
 

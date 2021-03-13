@@ -4,15 +4,16 @@ description: Senaryolarınızın gizli bilgi işlem kullanımını nasıl kullan
 services: virtual-machines
 author: JBCook
 ms.service: virtual-machines
+ms.subservice: confidential-computing
 ms.topic: overview
 ms.date: 9/22/2020
 ms.author: jencook
-ms.openlocfilehash: e1280ac90032869616830ccb931b367ff22f8bfb
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 47938f3a44c3a47f8b444b59d7e2f0867a274f33
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91001062"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102566626"
 ---
 # <a name="common-scenarios-for-azure-confidential-computing"></a>Azure gizli bilgi işlem için genel senaryolar
 
@@ -33,7 +34,7 @@ Birden çok kaynak, verilerini bir sanal makinedeki tek bir şifreye karşıya y
 Güvenli çok taraflı bilgi işlem ortamında, şifrelenmiş veriler kuşatma ' a gider. şifreleme, bir anahtar kullanarak verilerin şifresini çözer, analiz gerçekleştirir, bir sonuç alır ve bir tarafın belirtilen anahtarla çözebilecekleri şifreli bir sonuç gönderir. 
 
 **Kullanımdaki verileri koruma**: 
-- Azure 'da, Intel SGX desteğiyle DCsv2 serisi bir sanal makine (VM) kullanın. Bu VM 'Ler, uygulama verilerinizin ve kodunuzun bölümlerini güvenli hale getirmek ve yalıtmak için güvenilir yürütme ortamları (TEEs) ile etkinleştirilir.
+- Azure 'da bir DCsv2-Series sanal makinesini (VM), etkin Intel SGX desteğini kullanın. Bu VM 'Ler, uygulama verilerinizin ve kodunuzun bölümlerini güvenli hale getirmek ve yalıtmak için güvenilir yürütme ortamları (TEEs) ile etkinleştirilir.
 - Sanal makine içinde bir şifreleme oluşturmak için bir kuşve duyarlı SDK kullanın. Kuşatma içinde, veri, VM sağlayıcısı bile herhangi bir şekilde gösterilmez. Kuşdaki veriler donanım desteğiyle şifrelenir.
     - Örneğin, sunucu tarafı işleme için [OE SDK 'yı](https://github.com/openenclave/openenclave) kullanabilirsiniz. 
 
@@ -67,9 +68,9 @@ Gizli bilgi işlem üzerinde oluşturulan blok zinciri teknolojileri, veri gizli
 
 ![Düğüm ağı](./media/use-cases-scenarios/ccf.png)
 
-CCF 'de, merkezi olmayan defter, tüm ağ düğümlerinde çoğaltılan anahtar-değer deposuna kaydedilen değişikliklerden oluşur. Bu düğümlerin her biri, TLS üzerinden blok zinciri kullanıcıları tarafından tetiklenebilecek bir işlem altyapısı çalıştırır. Bir uç nokta tetiklemeniz durumunda anahtar-değer deposunu tayin edersiniz. Şifrelenmiş değişiklik, merkezi olmayan bir muhasebeye kaydedilmeden önce, Consensus 'e ulaşmak için belirli sayıda düğüm tarafından kabul edilmelidir. 
+CCF 'de, merkezi olmayan defter, tüm ağ düğümlerinde çoğaltılan bir Key-Value deposuna kaydedilen değişikliklerden oluşur. Bu düğümlerin her biri, TLS üzerinden blok zinciri kullanıcıları tarafından tetiklenebilecek bir işlem altyapısı çalıştırır. Bir uç nokta tetikleytiğinizin Key-Value depoyu zaman içinde oluşturursunuz. Şifrelenmiş değişiklik, merkezi olmayan bir muhasebeye kaydedilmeden önce, Consensus 'e ulaşmak için belirli sayıda düğüm tarafından kabul edilmelidir. 
 
 ## <a name="next-steps"></a>Sonraki Adımlar
-DCsv2 serisi bir sanal makine [dağıtın](quick-create-marketplace.md) .
+DCsv2-Series bir sanal makine [dağıtın](quick-create-marketplace.md) .
 
 

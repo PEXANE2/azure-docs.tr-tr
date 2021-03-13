@@ -10,12 +10,12 @@ author: mokabiru
 ms.author: mokabiru
 ms.reviewer: MashaMSFT
 ms.date: 02/18/2020
-ms.openlocfilehash: 9074480f44e75a90c202f0d0813c43aed1f7ba95
-ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
+ms.openlocfilehash: ac2b535b2e6b7a6b4169d08dd1768d69e685a216
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102488214"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102562036"
 ---
 # <a name="migration-overview-sql-server-to-sql-managed-instance"></a>Geçişe genel bakış: SQL yönetilen örneğine SQL Server
 [!INCLUDE[appliesto--sqlmi](../../includes/appliesto-sqlmi.md)]
@@ -64,6 +64,8 @@ Dağıtım sırasında işlem ve depolama kaynakları ' nı seçebilir ve sonra 
 
 > [!IMPORTANT]
 > [Yönetilen örnek sanal ağ gereksinimlerindeki](../../managed-instance/connectivity-architecture-overview.md#network-requirements) herhangi bir tutarsızlık, yeni örnekler oluşturmanızı veya var olanları kullanmanızı engelleyebilir.  [Yeni oluşturma](../../managed-instance/virtual-network-subnet-create-arm-template.md)   ve [Mevcut ağları yapılandırma](../../managed-instance/vnet-existing-add-subnet.md)hakkında daha fazla bilgi edinin   . 
+
+Azure SQL yönetilen örneği 'nde (Genel Amaçlı vs İş Açısından Kritik) hedef hizmet katmanının seçiminde başka bir anahtar, yalnızca İş Açısından Kritik katmanında bulunan In-Memory OLTP gibi bazı özelliklerin kullanılabilirliğinden oluşur. 
 
 ### <a name="sql-server-vm-alternative"></a>SQL Server VM alternatifi
 
@@ -192,6 +194,26 @@ Alternatif olarak, Microsoft veri geçiş mimarları tarafından özel olarak ta
 
 Sistem veritabanlarının geri yüklenmesi desteklenmiyor. Örnek düzeyi nesneleri (ana veya msdb veritabanlarında depolanır) geçirmek için Transact-SQL (T-SQL) kullanarak bunları betiği ve ardından bunları hedef yönetilen örnekte yeniden oluşturun. 
 
+#### <a name="in-memory-oltp-memory-optimized-tables"></a>In-Memory OLTP (bellek için iyileştirilmiş tablolar)
+
+SQL Server, yüksek aktarım hızı ve düşük gecikmeli işlem işleme gereksinimlerine sahip iş yüklerini çalıştırmak için bellek için iyileştirilmiş tabloların, bellek için iyileştirilmiş tablo türlerinin ve yerel koda derlenmiş SQL modüllerinin kullanılmasına izin veren In-Memory OLTP yeteneği sağlar. 
+
+> [!IMPORTANT]
+> In-Memory OLTP yalnızca Azure SQL yönetilen örneğindeki İş Açısından Kritik katmanında desteklenir (Genel Amaçlı katmanında desteklenmez).
+
+Şirket içi SQL Server bellek için iyileştirilmiş tablolar veya bellek için iyileştirilmiş tablo türleriniz varsa ve Azure SQL yönetilen örneği 'ne geçiş yapmak istiyorsanız şunlardan birini yapmalısınız:
+
+- In-Memory OLTP 'yi destekleyen hedef Azure SQL yönetilen örneğiniz için İş Açısından Kritik katmanını seçin veya
+- Azure SQL yönetilen örneği 'nde Genel Amaçlı katmanına geçiş yapmak istiyorsanız, bellek için iyileştirilmiş tabloları, bellek için iyileştirilmiş tablo türlerini ve veritabanınızı geçirmeden önce bellek için iyileştirilmiş nesnelerle etkileşime geçen yerel koda derlenmiş SQL modüllerini kaldırın. Aşağıdaki T-SQL sorgusu, Genel Amaçlı katmana geçişten önce kaldırılması gereken tüm nesneleri tanımlamak için kullanılabilir:
+
+```tsql
+SELECT * FROM sys.tables WHERE is_memory_optimized=1
+SELECT * FROM sys.table_types WHERE is_memory_optimized=1
+SELECT * FROM sys.sql_modules WHERE uses_native_compilation=1
+```
+
+Bellek içi teknolojiler hakkında daha fazla bilgi edinmek için bkz. [Azure SQL veritabanı ve Azure SQL yönetilen örneği 'nde bellek içi teknolojileri kullanarak performansı iyileştirme](https://docs.microsoft.com/azure/azure-sql/in-memory-oltp-overview)
+
 ## <a name="leverage-advanced-features"></a>Gelişmiş özelliklerden yararlanın 
 
 SQL yönetilen örneği tarafından sunulan gelişmiş bulut tabanlı özelliklerden faydalandığınızdan emin olun. Örneğin, hizmet sizin için yaptığı için yedeklemeleri yönetme konusunda endişelenmenize gerek kalmaz. [Bekletme dönemi içinde](../../database/recovery-using-backups.md#point-in-time-restore)herhangi bir noktaya geri yükleme yapabilirsiniz. Ayrıca, yüksek kullanılabilirlik [yerleşik olarak oluşturulduğu](../../database/high-availability-sla.md)için yüksek kullanılabilirlik ayarlama konusunda endişelenmeniz gerekmez. 
@@ -206,7 +228,7 @@ Bazı özellikler yalnızca [veritabanı uyumluluk düzeyi](/sql/relational-data
 
 Ek Yardım için, gerçek dünya geçiş projeleri için geliştirilen aşağıdaki kaynaklara bakın.
 
-|Varlık  |Açıklama  |
+|Varlık  |Description  |
 |---------|---------|
 |[Veri iş yükü değerlendirmesi modeli ve aracı](https://github.com/Microsoft/DataMigrationTeam/tree/master/Data%20Workload%20Assessment%20Model%20and%20Tool)| Bu araç, belirli bir iş yükü için önerilen "en uygun" hedef platformları, bulut hazırlığı ve uygulama/veritabanı düzeltme düzeyini sağlar. Basit ve tek tıklamayla bir hesaplama ve rapor oluşturma olanağı sunarak, ve otomatikleştirilmiş ve Tekdüzen hedef platformu karar süreci sağlayarak büyük Emlak değerlendirmelerini hızlandırmaya yardımcı olur.|
 |[DBLoader yardımcı programı](https://github.com/microsoft/DataMigrationTeam/tree/master/DBLoader%20Utility)|DBLoader, sınırlandırılmış metin dosyalarından SQL Server içine veri yüklemek için kullanılabilir. Bu Windows konsol yardımcı programı, Azure SQL MI dahil olmak üzere tüm SQL Server sürümlerinde çalışan SQL Server Native Client BulkLoad arabirimini kullanır.|

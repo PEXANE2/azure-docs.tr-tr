@@ -7,16 +7,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 02/19/2019
+ms.date: 03/10/2021
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 10444974cf31b95fccd2d11aef20bfd57fab7939
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: a6a993fdf4fd266afb9459fedd13412d8796e0a5
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92275277"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102611513"
 ---
 # <a name="oauth-20-authorization-code-flow-in-azure-active-directory-b2c"></a>Azure Active Directory B2C 'de OAuth 2,0 yetkilendirme kodu akışı
 
@@ -59,7 +59,7 @@ client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6
 &code_challenge_method=S256
 ```
 
-| Parametre | Gerekli mi? | Açıklama |
+| Parametre | Gerekli mi? | Description |
 | --- | --- | --- |
 |Kiracı| Gerekli | Azure AD B2C kiracınızın adı|
 | ilkesinin | Gerekli | Çalıştırılacak Kullanıcı akışı. Azure AD B2C kiracınızda oluşturduğunuz Kullanıcı akışının adını belirtin. Örneğin: `b2c_1_sign_in` , `b2c_1_sign_up` , veya `b2c_1_edit_profile` . |
@@ -71,7 +71,10 @@ client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6
 | state |Önerilen |İstekte bulunan, kullanmak istediğiniz herhangi bir içerik dizesi olabilecek bir değer. Genellikle, siteler arası istek sahteciliği saldırıları engellemek için rastgele oluşturulmuş benzersiz bir değer kullanılır. Durum Ayrıca, kimlik doğrulama isteği gerçekleştirilmeden önce kullanıcının uygulamasındaki durumu hakkında bilgi kodlamak için de kullanılır. Örneğin, kullanıcının açık olduğu sayfa veya yürütülmekte olan Kullanıcı akışı. |
 | isteme |İsteğe Bağlı |Gerekli Kullanıcı etkileşimi türü. Şu anda geçerli olan tek değer, `login` kullanıcıyı bu istek üzerine kimlik bilgilerini girmeye zorlayan olur. Çoklu oturum açma etkili olmayacaktır. |
 | code_challenge  | Önerilen/gerekli | Kod değişimi (PKCE) için kanıt anahtarı aracılığıyla yetkilendirme kodu yetkisini güvenli hale getirmek için kullanılır. Dahil ise gereklidir `code_challenge_method` . Daha fazla bilgi için bkz. [Pkce RFC](https://tools.ietf.org/html/rfc7636). Bu artık, Web Apps gibi tüm uygulama türleri için yerel uygulamalar, maça 'Lar ve gizli istemciler için önerilir. | 
-| `code_challenge_method` | Önerilen/gerekli | Parametresi için öğesini kodlamak için kullanılan yöntem `code_verifier` `code_challenge` . Bu *SHOULD* olmalıdır `S256` , ancak `plain` BIR nedenden dolayı istemcinin SHA256 destekleyememelidir. <br/><br/>Dışlanmazsa, varsa `code_challenge` düz metin olarak kabul edilir `code_challenge` . Microsoft Identity platform hem hem de destekler `plain` `S256` . Daha fazla bilgi için bkz. [Pkce RFC](https://tools.ietf.org/html/rfc7636). Bu [, yetkilendirme kodu akışını kullanan tek sayfalı uygulamalar](tutorial-register-spa.md)için gereklidir.|
+| `code_challenge_method` | Önerilen/gerekli | Parametresi için öğesini kodlamak için kullanılan yöntem `code_verifier` `code_challenge` . Bu  olmalıdır `S256` , ancak `plain` BIR nedenden dolayı istemcinin SHA256 destekleyememelidir. <br/><br/>Dışlanmazsa, varsa `code_challenge` düz metin olarak kabul edilir `code_challenge` . Microsoft Identity platform hem hem de destekler `plain` `S256` . Daha fazla bilgi için bkz. [Pkce RFC](https://tools.ietf.org/html/rfc7636). Bu [, yetkilendirme kodu akışını kullanan tek sayfalı uygulamalar](tutorial-register-spa.md)için gereklidir.|
+| login_hint | No| , Oturum açma sayfasının oturum açma adı alanını önceden dolduraiçin kullanılabilir. Daha fazla bilgi için bkz. [oturum açma adını önceden girme](direct-signin.md#prepopulate-the-sign-in-name).  |
+| domain_hint | No| Oturum açma için kullanılması gereken sosyal kimlik sağlayıcısı hakkında Azure AD B2C için bir ipucu sağlar. Geçerli bir değer dahil edilse, Kullanıcı doğrudan kimlik sağlayıcısı oturum açma sayfasına gider.  Daha fazla bilgi için bkz. [oturum açma oturumunu bir sosyal sağlayıcıya yeniden yönlendirme](direct-signin.md#redirect-sign-in-to-a-social-provider). |
+| Özel parametreler | No| [Özel ilkelerle](custom-policy-overview.md)kullanılabilecek özel parametreler. Örneğin, [dinamik özel sayfa içerik URI 'si](customize-ui-with-html.md?pivots=b2c-custom-policy#configure-dynamic-custom-page-content-uri)veya [anahtar-değer talep çözücüler](claim-resolver-overview.md#oauth2-key-value-parameters). |
 
 Bu noktada kullanıcıdan Kullanıcı akışının iş akışını tamamlaması istenir. Bu, kullanıcının Kullanıcı adını ve parolasını girmesini, sosyal kimlikle oturum açmasını, dizin için kaydolmasını veya başka birçok adımı de içerebilir. Kullanıcı eylemleri, Kullanıcı akışının nasıl tanımlandığına bağlıdır.
 
@@ -118,7 +121,7 @@ Content-Type: application/x-www-form-urlencoded
 grant_type=authorization_code&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&scope=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6 offline_access&code=AwABAAAAvPM1KaPlrEqdFSBzjqfTGBCmLdgfSTLEMPGYuNHSUYBrq...&redirect_uri=urn:ietf:wg:oauth:2.0:oob&code_verifier=ThisIsntRandomButItNeedsToBe43CharactersLong 
 ```
 
-| Parametre | Gerekli mi? | Açıklama |
+| Parametre | Gerekli mi? | Description |
 | --- | --- | --- |
 |Kiracı| Gerekli | Azure AD B2C kiracınızın adı|
 |ilkesinin| Gerekli| Yetkilendirme kodunu almak için kullanılan Kullanıcı akışı. Bu istekte farklı bir Kullanıcı akışı kullanamazsınız. |
@@ -185,7 +188,7 @@ Content-Type: application/x-www-form-urlencoded
 grant_type=refresh_token&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&scope=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6 offline_access&refresh_token=AwABAAAAvPM1KaPlrEqdFSBzjqfTGBCmLdgfSTLEMPGYuNHSUYBrq...&redirect_uri=urn:ietf:wg:oauth:2.0:oob
 ```
 
-| Parametre | Gerekli mi? | Açıklama |
+| Parametre | Gerekli mi? | Description |
 | --- | --- | --- |
 |Kiracı| Gerekli | Azure AD B2C kiracınızın adı|
 |ilkesinin |Gerekli |Özgün yenileme belirtecini almak için kullanılan Kullanıcı akışı. Bu istekte farklı bir Kullanıcı akışı kullanamazsınız. |

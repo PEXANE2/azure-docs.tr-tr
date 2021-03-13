@@ -7,12 +7,12 @@ ms.service: azure-cdn
 ms.topic: how-to
 ms.date: 11/01/2019
 ms.author: allensu
-ms.openlocfilehash: 1c596bf10d8afbce504b5abf04eacb877989521a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b94798580b2d4ba746c152486c0de753cf64d2c9
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84887542"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102564909"
 ---
 # <a name="set-up-the-standard-rules-engine-for-azure-cdn"></a>Azure CDN için standart kurallar altyapısını ayarlama
 
@@ -46,7 +46,7 @@ HTTP isteklerinin işlenme biçimini özelleştirmek için Azure CDN Standart ku
 1. Kuralın uygulandığı isteklerin türünü belirlemek için bir eşleştirme koşulu oluşturun:
     1. **Koşul Ekle**' yi seçin ve ardından **İstek Protokolü** eşleştirme koşulunu seçin.
     1. **İşleç** olarak **Eşittir**’i seçin.
-    1. **Değer**için **http**' yi seçin.
+    1. **Değer** için **http**' yi seçin.
    
    [![Azure CDN kuralı eşleştirme koşulu](./media/cdn-standard-rules-engine/cdn-match-condition.png)](./media/cdn-standard-rules-engine/cdn-match-condition.png#lightbox)
    
@@ -55,8 +55,8 @@ HTTP isteklerinin işlenme biçimini özelleştirmek için Azure CDN Standart ku
    
 1. Eşleşme koşulunu karşılayan isteklere uygulanacak eylemi seçin:
    1. **Eylem Ekle**' yi ve ardından **URL yeniden yönlendirme**' yi seçin.
-   1. **Tür**için **bulunan (302)** öğesini seçin.
-   1. **Protokol**için **https**' yi seçin.
+   1. **Tür** için **bulunan (302)** öğesini seçin.
+   1. **Protokol** için **https**' yi seçin.
    1. Gelen değerleri kullanmak için diğer tüm alanları boş bırakın.
    
    [![Azure CDN kuralı eylemi](./media/cdn-standard-rules-engine/cdn-action.png)](./media/cdn-standard-rules-engine/cdn-action.png#lightbox)

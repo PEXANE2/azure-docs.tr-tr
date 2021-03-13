@@ -3,7 +3,7 @@ title: .NET ile ContentKeys oluşturma
 description: Bu makalede, .NET kullanarak içerik anahtarlarının nasıl oluşturulacağı gösterilmektedir. Bu anahtarlar varlıklara güvenli erişim sağlar.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.assetid: 225b05e5-7d30-409c-b5b7-3ef0634310c7
@@ -12,15 +12,15 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/18/2019
-ms.author: juliako
+ms.date: 03/10/2021
+ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: d5efbc30c80a0052ed99cb129c2e5f9030482012
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 05bf928490e94f43b755e1958213899e9e1e98e9
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91261252"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103014188"
 ---
 # <a name="create-contentkeys-with-net"></a>.NET ile ContentKeys oluşturma
 
@@ -32,13 +32,13 @@ ms.locfileid: "91261252"
 > 
 > 
 
-Media Services şifrelenmiş varlıklar oluşturmanıza ve sunmanıza olanak sağlar. Bir **Contentkey** , **varlığınıza güvenli**erişim sağlar. 
+Media Services şifrelenmiş varlıklar oluşturmanıza ve sunmanıza olanak sağlar. Bir **Contentkey** , **varlığınıza güvenli** erişim sağlar. 
 
-Yeni bir varlık oluşturduğunuzda (örneğin, [dosyaları karşıya](media-services-dotnet-upload-files.md)yüklemeden önce) aşağıdaki şifreleme seçeneklerini belirtebilirsiniz: **storageencryptıon**, **CommonEncryptionProtected**veya **EnvelopeEncryptionProtected**. 
+Yeni bir varlık oluşturduğunuzda (örneğin, [dosyaları karşıya](media-services-dotnet-upload-files.md)yüklemeden önce) aşağıdaki şifreleme seçeneklerini belirtebilirsiniz: **storageencryptıon**, **CommonEncryptionProtected** veya **EnvelopeEncryptionProtected**. 
 
 İstemcilerinize varlıklar sunışınızda, varlıkların aşağıdaki iki şifreleden biriyle [dinamik olarak şifrelenmesini](media-services-dotnet-configure-asset-delivery-policy.md) sağlayabilirsiniz: **DynamicEnvelopeEncryption** veya **dynamiccommonencryption**.
 
-Şifrelenmiş varlıkların, **Contentkey**s ile ilişkilendirilmesi gerekir. Bu makalede bir içerik anahtarının nasıl oluşturulacağı açıklanır.
+Şifrelenmiş varlıkların, **Contentkey** s ile ilişkilendirilmesi gerekir. Bu makalede bir içerik anahtarının nasıl oluşturulacağı açıklanır.
 
 > [!NOTE]
 > Media Services .NET SDK kullanarak yeni bir **Storageşifrelenen** varlık oluştururken, **contentkey** otomatik olarak oluşturulup varlıkla bağlanır.
@@ -154,6 +154,6 @@ call
 ## <a name="media-services-learning-paths"></a>Media Services’i öğrenme yolları
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Geri bildirimde bulunma
+## <a name="provide-feedback"></a>Geribildirim gönderme
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 

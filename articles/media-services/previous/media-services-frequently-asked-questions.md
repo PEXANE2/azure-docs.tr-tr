@@ -3,7 +3,7 @@ title: Azure Media Services sık sorulan sorular
 description: Bu makalede Azure Media Services hakkında sık sorulan sorulara yanıtlar verilmektedir.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/18/2019
-ms.author: juliako
-ms.openlocfilehash: ff15206e2373ce6481cb65cbbeeb3c88cd2b7154
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 03/10/2021
+ms.author: inhenkel
+ms.openlocfilehash: 220aae64bd9ec493af8c8ee61901e27027dc9798
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89269429"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103013389"
 ---
 # <a name="media-services-v2-frequently-asked-questions"></a>Media Services V2 sık sorulan sorular
 
@@ -87,5 +87,5 @@ Y: [Media Encoder Standard](media-services-dotnet-encode-with-media-encoder-stan
 ## <a name="media-services-learning-paths"></a>Media Services’i öğrenme yolları
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Geri bildirimde bulunma
+## <a name="provide-feedback"></a>Geribildirim gönderme
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]

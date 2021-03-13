@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: estfan, logicappspm, az-logic-apps-dev
 ms.topic: conceptual
-ms.date: 03/05/2021
-ms.openlocfilehash: ab2d7c23e69c73c78c852de722733e8f0d09fcec
-ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
+ms.date: 03/08/2021
+ms.openlocfilehash: f7f8082cc9120345336610d5cb49741140d3b606
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "102449739"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102557021"
 ---
 # <a name="create-stateful-and-stateless-workflows-in-visual-studio-code-with-the-azure-logic-apps-preview-extension"></a>Azure Logic Apps (Önizleme) uzantısıyla Visual Studio Code durum bilgisiz ve durum bilgisi olmayan iş akışları oluşturma
 
@@ -33,6 +33,8 @@ Bu makalede, Azure Logic Apps (Önizleme) uzantısını kullanarak ve bu üst d�
 * Tetikleyici ve eylem ekleyin.
 
 * Çalıştırma geçmişini yerel olarak çalıştırın, test edin, hata ayıklayın ve inceleyin.
+
+* Güvenlik duvarı erişimi için etki alanı adı ayrıntılarını bulun.
 
 * İsteğe bağlı olarak Application Insights etkinleştirmeyi içeren Azure 'a dağıtın.
 
@@ -576,7 +578,7 @@ Kesme noktası eklemek için aşağıdaki adımları izleyin:
 
 1. Kesme noktası isabet edildiğinde kullanılabilir bilgileri gözden geçirmek için, Çalıştır görünümünde, **değişkenler** bölmesini inceleyin.
 
-1. İş akışı yürütmeye devam etmek için, hata ayıklama araç çubuğunda **devam** ' ı (Play Button) seçin. 
+1. İş akışı yürütmeye devam etmek için, hata ayıklama araç çubuğunda **devam** ' ı (Play Button) seçin.
 
 İş akışı çalıştırması sırasında istediğiniz zaman kesme noktaları ekleyebilir ve kaldırabilirsiniz. Ancak, çalıştırma başladıktan sonra dosya **workflow.js** güncelleştirirseniz, kesme noktaları otomatik olarak güncelleştirmez. Kesme noktalarını güncelleştirmek için mantıksal uygulamayı yeniden başlatın.
 
@@ -650,7 +652,7 @@ Mantıksal uygulamanızı test etmek için aşağıdaki adımları izleyerek bir
 
    ![Çalışma durumu ve geçmişi olan iş akışının genel bakış sayfasını gösteren ekran görüntüsü](./media/create-stateful-stateless-workflows-visual-studio-code/post-trigger-call.png)
 
-   | Çalışma durumu | Açıklama |
+   | Çalışma durumu | Description |
    |------------|-------------|
    | **İptal edildi** | Çalıştırma, dış sorunlar nedeniyle durdurulmuş veya bitmedi; Örneğin, bir sistem kesintisi veya bir Azure aboneliği. |
    | **Yürütüldükten** | Çalıştırma tetiklendi ve başlatıldı, ancak bir iptal isteği alındı. |
@@ -674,7 +676,7 @@ Mantıksal uygulamanızı test etmek için aşağıdaki adımları izleyerek bir
 
    İşte iş akışındaki her adımın sahip olduğu olası durumlar şunlardır:
 
-   | Eylem durumu | Simge | Açıklama |
+   | Eylem durumu | Simge | Description |
    |---------------|------|-------------|
    | **İptal edildi** | !["Durdurulan" eylem durumu simgesi][aborted-icon] | Bu eylem, dış sorunlar nedeniyle durdurulmuş veya bitmedi; Örneğin, bir sistem kesintisi veya bir Azure aboneliği. |
    | **Yürütüldükten** | !["Iptal edildi" eylem durumu simgesi][cancelled-icon] | Eylem çalışıyor ancak iptal etmek için bir istek alındı. |
@@ -758,6 +760,55 @@ Mantıksal uygulamanızda güncelleştirme yaptıktan sonra, hata ayıklayıcıy
    ![Güncelleştirilmiş iş akışındaki her adımın durumunu ve genişletilmiş "yanıt" eyleminde giriş ve çıkışları gösteren ekran görüntüsü.](./media/create-stateful-stateless-workflows-visual-studio-code/run-history-details-rerun.png)
 
 1. Hata ayıklama oturumunu durdurmak için, **Çalıştır** menüsünde, **hata ayıklamayı Durdur** (SHIFT + F5) öğesini seçin.
+
+<a name="firewall-setup"></a>
+
+##  <a name="find-domain-names-for-firewall-access"></a>Güvenlik duvarı erişimi için etki alanı adlarını bulma
+
+Mantıksal uygulama iş akışınızı Azure portal dağıtmadan ve çalıştırmadan önce, ortamınızda trafiği sınırlayan katı ağ gereksinimleri veya güvenlik duvarları varsa, iş akışınızda mevcut olan herhangi bir tetikleyici veya eylem bağlantısı için izinleri ayarlamanız gerekir.
+
+Bu bağlantılar için tam etki alanı adlarını (FQDN) bulmak için şu adımları izleyin:
+
+1. Mantıksal uygulama projenizde, iş akışınıza ilk bağlantı tabanlı tetikleyiciyi veya eylemi ekledikten sonra oluşturulan **connections.js** dosyasını açın ve `managedApiConnections` nesneyi bulun.
+
+1. Oluşturduğunuz her bağlantı için, `connectionRuntimeUrl` Bu bilgilerle güvenlik duvarınızı ayarlayabilmeniz için özellik değerini güvenli bir yerde bulun, kopyalayın ve kaydedin.
+
+   Bu örnek **connections.js** dosyada iki bağlantı, bir AS2 bağlantısı ve şu değerlere sahip bir Office 365 bağlantısı bulunmaktadır `connectionRuntimeUrl` :
+
+   * AS2 `"connectionRuntimeUrl": https://9d51d1ffc9f77572.00.common.logic-{Azure-region}.azure-apihub.net/apim/as2/11d3fec26c87435a80737460c85f42ba`
+
+   * Office 365: `"connectionRuntimeUrl": https://9d51d1ffc9f77572.00.common.logic-{Azure-region}.azure-apihub.net/apim/office365/668073340efe481192096ac27e7d467f`
+
+   ```json
+   {
+      "managedApiConnections": {
+         "as2": {
+            "api": {
+               "id": "/subscriptions/{Azure-subscription-ID}/providers/Microsoft.Web/locations/{Azure-region}/managedApis/as2"
+            },
+            "connection": {
+               "id": "/subscriptions/{Azure-subscription-ID}/resourceGroups/{Azure-resource-group}/providers/Microsoft.Web/connections/{connection-resource-name}"
+            },
+            "connectionRuntimeUrl": https://9d51d1ffc9f77572.00.common.logic-{Azure-region}.azure-apihub.net/apim/as2/11d3fec26c87435a80737460c85f42ba,
+            "authentication": {
+               "type":"ManagedServiceIdentity"
+            }
+         },
+         "office365": {
+            "api": {
+               "id": "/subscriptions/{Azure-subscription-ID}/providers/Microsoft.Web/locations/{Azure-region}/managedApis/office365"
+            },
+            "connection": {
+               "id": "/subscriptions/{Azure-subscription-ID}/resourceGroups/{Azure-resource-group}/providers/Microsoft.Web/connections/{connection-resource-name}"
+            },
+            "connectionRuntimeUrl": https://9d51d1ffc9f77572.00.common.logic-{Azure-region}.azure-apihub.net/apim/office365/668073340efe481192096ac27e7d467f,
+            "authentication": {
+               "type":"ManagedServiceIdentity"
+            }
+         }
+      }
+   }
+   ```
 
 <a name="deploy-azure"></a>
 

@@ -4,20 +4,20 @@ description: Bu, Iletişim Hizmetleri için güvenilen bir hizmet oluşturmanın
 author: dademath
 manager: nimag
 services: azure-communication-services
-ms.author: dademath
+ms.author: ddematheu2
 ms.date: 07/28/2020
 ms.topic: include
 ms.service: azure-communication-services
-ms.openlocfilehash: 6790335e5aa63f515cd125f31a8ccd7877132c10
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 06bc28d39043fd0a78aad1bd9778542047d57def
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101661344"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103202905"
 ---
 ## <a name="download-code"></a>Kodu indir
 
-Bu hızlı başlangıç için [GitHub](https://github.com/Azure-Samples/communication-services-javascript-quickstarts/tree/main/Trusted%20Authentication%20Service) 'da son kodu bulun
+Bu hızlı başlangıç için [GitHub](https://github.com/Azure-Samples/communication-services-javascript-quickstarts/tree/main/trusted-authentication-service) 'da son kodu bulun
 
 ## <a name="prerequisites"></a>Önkoşullar
 

@@ -3,7 +3,7 @@ title: Media Services REST API kullanarak varlık teslim ilkelerini yapılandır
 description: Bu konu, Media Services REST API kullanılarak farklı varlık teslim ilkelerinin nasıl yapılandırılacağını gösterir.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: cfowler
 editor: ''
 ms.assetid: 5cb9d32a-e68b-4585-aa82-58dded0691d0
@@ -12,15 +12,15 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/20/2019
-ms.author: juliako
+ms.date: 03/10/2021
+ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 49fc67bcd45d0c364f47276a9b47676a65f6d837
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 65a7b9479dae1826f478ca5e038ef5feb1caefb6
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89268681"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103017333"
 ---
 # <a name="configuring-asset-delivery-policies"></a>Varlık teslim ilkelerini yapılandırma
 
@@ -39,7 +39,7 @@ Bu konuda, varlık teslim ilkelerinin neden ve nasıl oluşturulacağı ve yapı
 
 Aynı kıymete farklı ilkeler uygulayabilirsiniz. Örneğin, MPEG DASH ve HLS 'e Kesintisiz Akış ve AES zarf şifrelemeye PlayReady şifrelemesi uygulayabilirsiniz. Herhangi bir teslim ilkesinde tanımlanmayan tüm protokollerin (örneğin, protokol olarak yalnızca HLS‘yi belirten tek bir ilke ekliyorsunuz) akışla aktarılması engellenir. Bunun tek istisnası, hiçbir varlık teslim ilkesinin tanımlanmadığı durumdur. Bu halde tüm protokollere açık bir şekilde izin verilir.
 
-Depolama ile şifrelenmiş bir varlık sağlamak istiyorsanız, varlığın teslim ilkesini yapılandırmanız gerekir. Varlığınızın akışı için, akış sunucusu depolama şifrelemesini kaldırır ve belirtilen teslim ilkesini kullanarak içeriğinizi akışa çıkarır. Örneğin, varlığınızı Gelişmiş Şifreleme Standardı (AES) zarf şifreleme anahtarıyla şifreli olarak sunmak için, ilke türünü **DynamicEnvelopeEncryption**olarak ayarlayın. Depolama şifrelemesini kaldırmak ve varlığı açık olarak akışa almak için, ilke türünü **Nodynamicencryption**olarak ayarlayın. Bu ilke türlerinin nasıl yapılandırılacağını gösteren örnekler aşağıda verilmiştir.
+Depolama ile şifrelenmiş bir varlık sağlamak istiyorsanız, varlığın teslim ilkesini yapılandırmanız gerekir. Varlığınızın akışı için, akış sunucusu depolama şifrelemesini kaldırır ve belirtilen teslim ilkesini kullanarak içeriğinizi akışa çıkarır. Örneğin, varlığınızı Gelişmiş Şifreleme Standardı (AES) zarf şifreleme anahtarıyla şifreli olarak sunmak için, ilke türünü **DynamicEnvelopeEncryption** olarak ayarlayın. Depolama şifrelemesini kaldırmak ve varlığı açık olarak akışa almak için, ilke türünü **Nodynamicencryption** olarak ayarlayın. Bu ilke türlerinin nasıl yapılandırılacağını gösteren örnekler aşağıda verilmiştir.
 
 Varlık teslim ilkesini nasıl yapılandırdığınıza bağlı olarak, aşağıdaki akış protokollerini dinamik olarak paketleyebilir, dinamik olarak şifreleyebilir ve akışlara alabilirsiniz: Kesintisiz Akış, HLS, MPEG DASH akışları.
 
@@ -282,7 +282,7 @@ Host: media.windows.net
 
 Widevine DRM kullanarak içeriğinizi korumak istiyorsanız, AssetDeliveryConfiguration değerlerini Widevınelicensetanışıtionurl (7 değerine sahiptir) kullanacak şekilde güncelleştirin ve lisans teslimi hizmetinin URL 'sini belirtin. Widevine lisansları teslim etmenize yardımcı olması için aşağıdaki AMS iş ortaklarını kullanabilirsiniz: [Axinom](https://www.axinom.com), [ezdrm](https://ezdrm.com/), [ROI Labs](https://castlabs.com/company/partners/azure/).
 
-Örneğin: 
+Örnek: 
 
 ```console
 {"Name":"AssetDeliveryPolicy","AssetDeliveryProtocol":2,"AssetDeliveryPolicyType":4,"AssetDeliveryConfiguration":"[{\"Key\":7,\"Value\":\"https:\\/\\/example.net\/WidevineLicenseAcquisition\/"}]"}
@@ -461,6 +461,6 @@ public enum AssetDeliveryPolicyConfigurationKey
 ## <a name="media-services-learning-paths"></a>Media Services’i öğrenme yolları
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Geri bildirimde bulunma
+## <a name="provide-feedback"></a>Geribildirim gönderme
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 

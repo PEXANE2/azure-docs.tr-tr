@@ -3,7 +3,7 @@ title: Media Encoder Premium Workflow ile gelişmiş kodlama | Microsoft Docs
 description: Media Encoder Premium Workflow ile kodlama hakkında bilgi edinin. Kod örnekleri C# dilinde yazılır ve .NET için Media Services SDK kullanır.
 services: media-services
 documentationcenter: ''
-author: juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
@@ -11,15 +11,15 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/18/2019
-ms.author: juliako
+ms.date: 03/10/2021
+ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 7f3efa23ad0b5e79e84a2436aaf56b67a805d05f
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: b58a1ae2a20afb357f6363077e70b692256d2ce7
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92017242"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103013508"
 ---
 # <a name="advanced-encoding-with-media-encoder-premium-workflow"></a>Media Encoder Premium Workflow ile gelişmiş kodlama
 
@@ -33,10 +33,10 @@ ms.locfileid: "92017242"
 ## <a name="overview"></a>Genel Bakış
 Microsoft Azure Media Services, **Media Encoder Premium Workflow** medya işlemcisine giriş. Bu işlemci, Premium isteğe bağlı iş akışlarınız için gelişmiş kodlama özellikleri sunar.
 
-Aşağıdaki konularda **Media Encoder Premium Workflow**ile ilgili ayrıntılar ana hatlarıyla verilmiştir:
+Aşağıdaki konularda **Media Encoder Premium Workflow** ile ilgili ayrıntılar ana hatlarıyla verilmiştir:
 
-* [Media Encoder Premium Workflow tarafından desteklenen biçimler](./media-services-encode-asset.md) : **Media Encoder Premium Workflow**tarafından desteklenen dosya biçimlerini ve codec bileşenlerini ele alır.
-* [Azure isteğe bağlı medya kodlayıcılarını genel bakış ve karşılaştırma](media-services-encode-asset.md) , **Media Encoder Premium Workflow** ve **Media Encoder Standard**kodlama yeteneklerini karşılaştırır.
+* [Media Encoder Premium Workflow tarafından desteklenen biçimler](./media-services-encode-asset.md) : **Media Encoder Premium Workflow** tarafından desteklenen dosya biçimlerini ve codec bileşenlerini ele alır.
+* [Azure isteğe bağlı medya kodlayıcılarını genel bakış ve karşılaştırma](media-services-encode-asset.md) , **Media Encoder Premium Workflow** ve **Media Encoder Standard** kodlama yeteneklerini karşılaştırır.
 
 Bu makalede, .NET kullanarak **Media Encoder Premium Workflow** kodlama gösterilmektedir.
 
@@ -52,7 +52,7 @@ Geliştirme ortamınızı kurun ve app.config dosyanızı [.NET ile Media Servic
 
 ## <a name="encoding-example"></a>Kodlama örneği
 
-Aşağıdaki örnek, **Media Encoder Premium Workflow**ile nasıl kodlanacağını göstermektedir.
+Aşağıdaki örnek, **Media Encoder Premium Workflow** ile nasıl kodlanacağını göstermektedir.
 
 Aşağıdaki adımlar gerçekleştirilir:
 
@@ -240,5 +240,5 @@ namespace MediaEncoderPremiumWorkflowSample
 ## <a name="media-services-learning-paths"></a>Media Services’i öğrenme yolları
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Geri bildirimde bulunma
+## <a name="provide-feedback"></a>Geribildirim gönderme
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]

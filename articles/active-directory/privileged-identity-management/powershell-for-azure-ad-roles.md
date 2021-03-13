@@ -16,12 +16,12 @@ ms.date: 09/15/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e7d04a2941888592ffa37acfe6cba52a33fda528
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 2774c63d34de3de951aa8076b56d203b976158ec
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92365519"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102548759"
 ---
 # <a name="powershell-for-azure-ad-roles-in-privileged-identity-management"></a>Privileged Identity Management 'de Azure AD rolleri için PowerShell
 
@@ -54,7 +54,7 @@ Bu makale, Azure AD rollerini Privileged Identity Management (PıM) içinde yön
     ![Azure AD kuruluşunun özelliklerinde kuruluş KIMLIĞINI bulma](./media/powershell-for-azure-ad-roles/tenant-id-for-Azure-ad-org.png)
 
 > [!Note]
-> Aşağıdaki bölümler, çalışmaya başlamanıza yardımcı olabilecek basit örneklerdir. Aşağıdaki cmdlet 'lerle ilgili daha ayrıntılı belgeler bulabilirsiniz [https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview#privileged_role_management&preserve-view=true](/powershell/module/azuread/?view=azureadps-2.0-preview#privileged_role_management&preserve-view=true) . Ancak, ProviderID parametresindeki "azureResources" öğesini "aadRoles" ile değiştirmelisiniz. Ayrıca, Azure AD kuruluşunuz için RESOURCEID parametresi olarak kiracı KIMLIĞINI de kullanmayı unutmayın.
+> Aşağıdaki bölümler, çalışmaya başlamanıza yardımcı olabilecek basit örneklerdir. Aşağıdaki cmdlet 'lerle ilgili daha ayrıntılı belgeler bulabilirsiniz [https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview&preserve-view=true#privileged_role_management](/powershell/module/azuread/?view=azureadps-2.0-preview&preserve-view=true#privileged_role_management) . Ancak, ProviderID parametresindeki "azureResources" öğesini "aadRoles" ile değiştirmelisiniz. Ayrıca, Azure AD kuruluşunuz için RESOURCEID parametresi olarak kiracı KIMLIĞINI de kullanmayı unutmayın.
 
 ## <a name="retrieving-role-definitions"></a>Rol tanımları alınıyor
 

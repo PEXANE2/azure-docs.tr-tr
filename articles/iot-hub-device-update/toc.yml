@@ -56,8 +56,6 @@
       href: create-update-group.md
     - name: Cihaz güncelleştirmesi dağıtma
       href: deploy-update.md
-    - name: Cihaz güncelleştirmesi dağıtma
-      href: deploy-update.md
     - name: Tek düzey Microsoft bağlı önbelleği
       href: connected-cache-single-level.md
     - name: İç içe geçmiş düzey Microsoft bağlı önbelleği
@@ -75,7 +73,7 @@
 - name: Kaynaklar
   items:
     - name: Destek ve yardım seçenekleri
-      href: ../iot-fundamentals/iot-support-help.md
+      href: ../iot-fundamentals/iot-support-help.md?toc=/azure/iot-hub-device-update/toc.json&bc=/azure/iot-hub-device-update/breadcrumb/toc.json
     - name: Azure IoT hizmetleri
       items:
         - name: IoT Hub

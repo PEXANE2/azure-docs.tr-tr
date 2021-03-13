@@ -6,12 +6,12 @@ ms.author: andbrown
 ms.date: 2/11/2021
 ms.topic: how-to
 ms.service: iot-hub-device-update
-ms.openlocfilehash: 6502728a14ea825fadfde107e61f235db5619ae0
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.openlocfilehash: b9d40848abdd85beeca592001b697e3c50b7cd59
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102507288"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103008571"
 ---
 # <a name="import-new-update"></a>Yeni güncelleştirme al
 IoT Hub için yeni bir güncelleştirmeyi cihaz güncelleştirmesine aktarmayı öğrenin. Henüz yapmadıysanız, temel [içeri aktarma kavramlarını öğrendiğinizden](import-concepts.md)emin olun.
@@ -33,9 +33,9 @@ IoT Hub için yeni bir güncelleştirmeyi cihaz güncelleştirmesine aktarmayı 
 
 1. Güncelleştirme görüntü dosyanızın veya APT bildirim dosyasının PowerShell 'den erişilebilen bir dizinde bulunduğundan emin olun.
 
-2. [IoT Hub deposu için cihaz güncelleştirmesini](https://github.com/azure/iot-hub-device-update)kopyalayın veya bir. zip dosyası olarak PowerShell 'den erişilebilen bir konuma indirin (ZIP dosyası indirildikten sonra, `Properties`  >  `General` `Unblock` `Security` PowerShell güvenlik uyarısı istemlerinin önüne geçmek için bölümü tıklatıp > sekmeye bakın).
+2. Güncelleştirme görüntü dosyanızın veya APT bildirim dosyasının bulunduğu dizinde **Aduupdate. psm1** adlı bir metin dosyası oluşturun. Daha sonra [Aduupdate. psm1](https://github.com/Azure/iot-hub-device-update/tree/main/tools/AduCmdlets) PowerShell cmdlet 'ini açın, içeriği metin dosyanıza kopyalayın ve metin dosyasını kaydedin.
 
-3. PowerShell 'de, Dizin ' e gidin `tools/AduCmdlets` ve şunu çalıştırın:
+3. PowerShell 'de adım 2 ' den PowerShell cmdlet 'ini oluşturduğunuz dizine gidin. Ardından şunu çalıştırın:
 
     ```powershell
     Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope Process
@@ -57,11 +57,11 @@ IoT Hub için yeni bir güncelleştirmeyi cihaz güncelleştirmesine aktarmayı 
 
     | Parametre | Açıklama |
     | --------- | ----------- |
-    | deviceManufacturer | Güncelleştirmenin, örneğin contoso ile uyumlu olduğu cihaz üreticisi. _Üretici_ [cihaz özelliği](https://docs.microsoft.com/azure/iot-hub-device-update/device-update-plug-and-play#device-properties) ile eşleşmelidir
-    | deviceModel | Güncelleştirmenin uyumlu olduğu cihazın modeli, örneğin, Toaster. _Model_ [cihaz özelliği](https://docs.microsoft.com/azure/iot-hub-device-update/device-update-plug-and-play#device-properties) ile eşleşmelidir
+    | deviceManufacturer | Güncelleştirmenin, örneğin contoso ile uyumlu olduğu cihaz üreticisi. _Üretici_ [cihaz özelliği](https://docs.microsoft.com/azure/iot-hub-device-update/device-update-plug-and-play#device-properties)ile eşleşmelidir.
+    | deviceModel | Güncelleştirmenin uyumlu olduğu cihazın modeli, örneğin, Toaster. _Model_ [cihaz özelliği](https://docs.microsoft.com/azure/iot-hub-device-update/device-update-plug-and-play#device-properties)ile eşleşmelidir.
     | updateProvider | Güncelleştirme tarafından oluşturulan veya doğrudan sorumlu olan varlık. Genellikle şirket adı olacaktır.
     | updateName | Bir güncelleştirme sınıfının tanımlayıcısı. Sınıf, seçtiğiniz herhangi bir şey olabilir. Genellikle bir cihaz veya model adı olacaktır.
-    | updateVersion | Sürüm numarası, aynı sağlayıcıya ve ada sahip diğer başkalarından bu güncelleştirmeyi ayırt eder. Cihazdaki tek bir yazılım bileşeninin sürümüyle aynı olabilir veya eşleşmeyebilir.
+    | updateVersion | Sürüm numarası, aynı sağlayıcıya ve ada sahip diğer başkalarından bu güncelleştirmeyi ayırt eder. , Cihazdaki bireysel Yazılım bileşenlerinden oluşan bir sürümle eşleşmiyor (ancak seçeneğini belirlerseniz).
     | Güncelleştirme türü | <ul><li>`microsoft/swupdate:1`Görüntü güncelleştirmesi için belirt</li><li>`microsoft/apt:1`Paket güncelleştirmesi için belirtin</li></ul>
     | ınstalınstalbu ölçüt | <ul><li>Güncelleştirme türü için SWVersion değerini belirtin `microsoft/swupdate:1`</li><li>Güncelleştirme türü için önerilen değeri belirtin `microsoft/apt:1` .
     | updateFilePath | Bilgisayarınızdaki güncelleştirme dosyalarının yolu
@@ -111,6 +111,9 @@ IoT Hub için yeni bir güncelleştirmeyi cihaz güncelleştirmesine aktarmayı 
 ```
 
 ## <a name="import-update"></a>Güncelleştirmeyi içeri aktar
+
+[!NOTE]
+Aşağıdaki yönergelerde Azure portal Kullanıcı arabirimi aracılığıyla bir güncelleştirmenin nasıl içeri aktarılacağı gösterilmektedir. Ayrıca, bir güncelleştirmeyi içeri aktarmak için [IoT Hub API 'leri Için cihaz güncelleştirmesini](https://github.com/Azure/iot-hub-device-update/tree/main/docs/publish-api-reference) de kullanabilirsiniz. 
 
 1. [Azure Portal](https://portal.azure.com) oturum açın ve cihaz güncelleştirmesiyle IoT Hub gidin.
 
