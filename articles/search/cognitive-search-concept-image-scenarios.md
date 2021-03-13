@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 56ec893de159f4c8a90c5a229ccf7669856fb066
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2e77bbd6e82d0d4a48b72e13e60b60608f2d7674
+ms.sourcegitcommit: df1930c9fa3d8f6592f812c42ec611043e817b3b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89020227"
+ms.lasthandoff: 03/13/2021
+ms.locfileid: "103419600"
 ---
 # <a name="how-to-process-and-extract-information-from-images-in-ai-enrichment-scenarios"></a>AI zenginleştirme senaryolarında görüntülerden bilgi işleme ve ayıklama
 
@@ -30,7 +30,7 @@ Belge çözme kapsamında, görüntü dosyalarını veya dosyalarda gömülü g�
 
 Resim normalleştirmesini kapatamaz. Görüntüler üzerinde yineleme yapan yetenekler, normalleştirilmiş görüntüler bekler. Bir dizin oluşturucuda görüntü normalleştirmesini etkinleştirmek için, bu dizin oluşturucuya bir beceri eklenmiş olması gerekir.
 
-| Yapılandırma parametresi | Açıklama |
+| Yapılandırma parametresi | Description |
 |--------------------|-------------|
 | ımageaction   | Katıştırılmış görüntüler veya resim dosyaları ile karşılaşıldığında hiçbir işlem yapılması bekleniyorsa "none" olarak ayarlayın. <br/>Belge çözme işleminin bir parçası olarak normalleştirilmiş görüntülerin bir dizisini oluşturmak için "Generatenormalizedileges" olarak ayarlayın.<br/>Veri kaynağınızdaki PDF 'Ler için her sayfa bir çıkış görüntüsüne işlendiğinde, bir dizi normalleştirilmiş görüntü oluşturmak için "generateNormalizedImagePerPage" olarak ayarlayın.  Bu işlevsellik, PDF olmayan dosya türleri için "Generatenormalizediges" ile aynıdır.<br/>"None" olmayan herhangi bir seçenek için, görüntüler *normalized_images* alanında görüntülenir. <br/>Varsayılan değer "none" dır. Bu yapılandırma, "dataToExtract" ayarı "contentAndMetadata" olarak ayarlandığında yalnızca blob veri kaynaklarıyla ilgili olur. <br/>Verilen bir belgeden en fazla 1000 resim ayıklanacaktır. Bir belgede 1000 ' den fazla görüntü varsa, ilk 1000 ayıklanır ve bir uyarı oluşturulur. |
 |  normalizedImageMaxWidth | Oluşturulan normalleştirilmiş görüntülerin en büyük genişliği (piksel cinsinden). Varsayılan değer 2000’dir. İzin verilen en büyük değer 10000 ' dir. | 
@@ -61,7 +61,7 @@ Aşağıdaki şekilde, [Dizin Oluşturucu tanımınızda](/rest/api/searchservic
 
 *Imageaction* , "none" dışındaki bir değere ayarlandığında, yeni *normalized_images* alanı bir görüntü dizisi içerir. Her görüntü, aşağıdaki üyelere sahip karmaşık bir türdür:
 
-| Görüntü üyesi       | Açıklama                             |
+| Görüntü üyesi       | Description                             |
 |--------------------|-----------------------------------------|
 | veriler               | JPEG biçimindeki normalleştirilmiş görüntünün BASE64 kodlamalı dizesi.   |
 | genişlik              | Normalleştirilmiş resmin piksel cinsinden genişliği. |
@@ -72,7 +72,7 @@ Aşağıdaki şekilde, [Dizin Oluşturucu tanımınızda](/rest/api/searchservic
 | Contenentoffset | Görüntünün ayıklandığı içerik alanı içindeki karakter konumu. Bu alan yalnızca katıştırılmış görüntülere sahip dosyalar için geçerlidir. |
 | pageNumber | Görüntü bir PDF 'den ayıklandıysa veya işlendiğinde, bu alan, 1 ' den başlayarak ayıklanan veya işlenen PDF 'deki sayfa numarasını içerir.  Görüntü bir PDF 'den değilse, bu alan 0 olur.  |
 
- *Normalized_images*örnek değeri:
+ *Normalized_images* örnek değeri:
 ```json
 [
   {
@@ -213,6 +213,77 @@ Yardımcı olarak, normalleştirilmiş koordinatları özgün koordinat alanına
             return original;
         }
 ```
+## <a name="passing-images-to-custom-skills"></a>Özel becerilere görüntü geçirme
+
+Görüntülerin üzerinde çalışması için özel bir beceri gerektiren senaryolar için, görüntüleri özel beceriye geçirebilir ve metin ya da görüntü döndürmesini sağlayabilirsiniz. [Python örnek](https://github.com/Azure-Samples/azure-search-python-samples/tree/master/Image-Processing) görüntü işleme iş akışını gösterir. Aşağıdaki Beceri, örnekten yapılır.
+
+Aşağıdaki beceri normalleştirilmiş görüntüyü (belge çözme sırasında elde edilen) alır ve görüntünün dilimlerini verir.
+
+#### <a name="sample-skillset"></a>Örnek beceri
+```json
+{
+  "description": "Extract text from images and merge with content text to produce merged_text",
+  "skills":
+  [
+    {
+          "@odata.type": "#Microsoft.Skills.Custom.WebApiSkill",
+          "name": "ImageSkill",
+          "description": "Segment Images",
+          "context": "/document/normalized_images/*",
+          "uri": "https://your.custom.skill.url",
+          "httpMethod": "POST",
+          "timeout": "PT30S",
+          "batchSize": 100,
+          "degreeOfParallelism": 1,
+          "inputs": [
+            {
+              "name": "image",
+              "source": "/document/normalized_images/*"
+            }
+          ],
+          "outputs": [
+            {
+              "name": "slices",
+              "targetName": "slices"
+            }
+          ],
+          "httpHeaders": {}
+        }
+  ]
+}
+```
+
+#### <a name="custom-skill"></a>Özel beceri
+
+Özel Beceri Beceri dışında. Bu durumda, ilk olarak özel beceri biçimindeki istek kayıtlarının sonuna kapsamlı olarak döngü uygulayan Python kodudur, sonra Base64 kodlamalı dizeyi bir görüntüye dönüştürür.
+
+```python
+# deserialize the request, for each item in the batch
+for value in values:
+  data = value['data']
+  base64String = data["image"]["data"]
+  base64Bytes = base64String.encode('utf-8')
+  inputBytes = base64.b64decode(base64Bytes)
+  # Use numpy to convert the string to an image
+  jpg_as_np = np.frombuffer(inputBytes, dtype=np.uint8)
+  # you now have an image to work with
+```
+Benzer şekilde, bir görüntü döndürmek için, özelliği ile JSON nesnesi içinde Base64 kodlamalı bir dize döndürün `$type` `file` .
+
+```python
+def base64EncodeImage(image):
+    is_success, im_buf_arr = cv2.imencode(".jpg", image)
+    byte_im = im_buf_arr.tobytes()
+    base64Bytes = base64.b64encode(byte_im)
+    base64String = base64Bytes.decode('utf-8')
+    return base64String
+
+ base64String = base64EncodeImage(jpg_as_np)
+ result = { 
+  "$type": "file", 
+  "data": base64String 
+}
+```
 
 ## <a name="see-also"></a>Ayrıca bkz.
 + [Dizin Oluşturucu oluştur (REST)](/rest/api/searchservice/create-indexer)
@@ -221,3 +292,4 @@ Yardımcı olarak, normalleştirilmiş koordinatları özgün koordinat alanına
 + [Metin birleştirme yeteneği](cognitive-search-skill-textmerger.md)
 + [Beceri tanımlama](cognitive-search-defining-skillset.md)
 + [Zenginleştirilmiş alanları eşleme](cognitive-search-output-field-mapping.md)
++ [Resimleri özel becerilere geçirme](https://github.com/Azure-Samples/azure-search-python-samples/tree/master/Image-Processing)

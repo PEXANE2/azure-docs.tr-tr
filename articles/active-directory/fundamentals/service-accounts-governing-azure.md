@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4311d0acc7c417bf31c71f46e6c25c65312b894d
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: ee6ac21d67f32fbc61db19b348fc29cdf3ee9fd7
+ms.sourcegitcommit: df1930c9fa3d8f6592f812c42ec611043e817b3b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102034543"
+ms.lasthandoff: 03/13/2021
+ms.locfileid: "103418190"
 ---
 # <a name="governing-azure-ad-service-accounts"></a>Azure AD hizmet hesaplarını yöneten
 
@@ -32,7 +32,7 @@ Azure Active Directory (Azure AD) içinde üç tür hizmet hesabı vardır: [Yö
 
 Bir hizmet hesabı oluşturmadan veya bir uygulamayı kaydetmeye başlamadan önce, hizmet hesabının anahtar bilgilerini belgeleyin. Belgelenmiş bilgilerin olması, hesabı etkin bir şekilde izlemeyi ve yönetimini kolaylaştırır. Aşağıdaki verileri toplamayı ve merkezi yapılandırma yönetimi veritabanınızda (CMDB) izlemeyi öneririz.
 
-| Veriler| Açıklama| Ayrıntılar |
+| Veriler| Description| Ayrıntılar |
 | - | - | - |
 | Sahip| Hizmet hesabını yönetmek ve izlemek için sorumlu olan kullanıcı veya grup.| Hesabı izlemek ve sorunları azaltmak için bir yol uygulamak için gerekli izinlere sahip sahibi sağlayın. Sorun azaltma, sahip tarafından veya bir istek aracılığıyla yapılabilir. |
 | Amaç| Hesap nasıl kullanılacaktır.| Hizmet hesabını belirli bir hizmet, uygulama veya betiğe eşleyin. Çoklu kullanım hizmet hesapları oluşturmaktan kaçının. |
@@ -172,7 +172,7 @@ Hizmet hesaplarının sahipleri ve güvenlik ya da BT ekibi tarafından düzenli
 
 **Sağlama kaldırma işlemleri aşağıdaki görevleri içermelidir.**
 
-1. İlişkili uygulama veya betiğin sağlaması geri alındıktan sonra, hizmet hesabı tarafından [oturum açma](../reports-monitoring/concept-all-sign-ins.md#sign-ins-report) işlemlerini ve kaynak erişimini izleyin.
+1. İlişkili uygulama veya betiğin sağlaması geri alındıktan sonra, hizmet hesabı tarafından [oturum açma](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-sign-ins#sign-ins-report) işlemlerini ve kaynak erişimini izleyin.
 
    * Hesap hala etkinse, sonraki adımları uygulamadan önce nasıl kullanıldığını saptayın.
  

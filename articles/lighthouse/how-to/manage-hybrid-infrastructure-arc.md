@@ -1,14 +1,14 @@
 ---
 title: Azure Arc ile karma altyapıyı ölçeklendirerek yönetme
 description: Müşterilerinizin makinelerini ve Kubernetes kümelerini Azure dışında etkili bir şekilde yönetmeyi öğrenin.
-ms.date: 09/22/2020
+ms.date: 03/12/2021
 ms.topic: how-to
-ms.openlocfilehash: 66a798265683045d7ff9f3d8d811141800d08f9b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ec32389cd7444405580530a00c8b7c5bc48bcd56
+ms.sourcegitcommit: df1930c9fa3d8f6592f812c42ec611043e817b3b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91336624"
+ms.lasthandoff: 03/13/2021
+ms.locfileid: "103419346"
 ---
 # <a name="manage-hybrid-infrastructure-at-scale-with-azure-arc"></a>Azure Arc ile karma altyapıyı ölçeklendirerek yönetme
 
@@ -18,9 +18,9 @@ Hizmet sağlayıcı olarak, [Azure açık Thouse](../overview.md)için birden fa
 
 [Azure Arc etkin sunucularla](../../azure-arc/servers/overview.md), müşteriler, Azure dışında barındırılan tüm Windows ve Linux makinelerini, yerel Azure sanal makinelerini yönettikleri şekilde kendi kurumsal ağında yönetebilir. Karma makineyi Azure'a bağlama yoluyla Azure'la bağlantılı hale gelir ve bir kaynak olarak kabul edilir. Hizmet sağlayıcıları, bu Azure dışı makineleri müşterilerinin Azure kaynaklarıyla birlikte yönetebilir.
 
-[Azure Arc etkin Kubernetes (Önizleme)](../../azure-arc/kubernetes/overview.md) , müşterilerin Azure içinde veya dışında Kubernetes kümeleri eklemesine ve yapılandırmasına izin verir. Bir Kubernetes kümesi Azure yaya iliştirdiğinde, Azure portal Azure Resource Manager KIMLIĞI ve yönetilen kimlik ile birlikte görüntülenir. Kümeler standart Azure aboneliklerine iliştirilir, bir kaynak grubunda bulunur ve diğer tüm Azure kaynakları gibi etiketleri alabilir.
+[Azure Arc etkin Kubernetes](../../azure-arc/kubernetes/overview.md) , müşterilerin Azure içinde veya dışında Kubernetes kümeleri eklemesine ve yapılandırmasına olanak sağlar. Bir Kubernetes kümesi Azure yaya iliştirdiğinde, Azure portal Azure Resource Manager KIMLIĞI ve yönetilen kimlik ile birlikte görüntülenir. Kümeler standart Azure aboneliklerine iliştirilir, bir kaynak grubunda bulunur ve diğer tüm Azure kaynakları gibi etiketleri alabilir.
 
-Bu konuda, hizmet sağlayıcılarının Azure yay etkin sunucularını ve Azure Arc 'ın, müşterilerin karma ortamını yönetmek için ölçeklenebilir bir şekilde, tüm yönetilen müşteri kiracılarında görünürlüğe sahip olduğu bir genel bakış sunulmaktadır.
+Bu konu, hizmet sağlayıcılarının Azure Arc etkin sunucularını ve Azure Arc 'ın, müşterilerinin karma ortamını yönetmek için ölçeklenebilir bir şekilde nasıl kullanılacağına ilişkin bir genel bakış sağlar.
 
 > [!TIP]
 > Bu konudaki hizmet sağlayıcılarına ve müşterilere başvurduğumuz halde, bu kılavuz [birden çok kiracıyı yönetmek Için Azure açık Thouse kullanan kuruluşlar](../concepts/enterprise.md)için de geçerlidir.
@@ -29,14 +29,11 @@ Bu konuda, hizmet sağlayıcılarının Azure yay etkin sunucularını ve Azure 
 
 Hizmet sağlayıcı olarak, Azure dışındaki şirket içi Windows Server veya Linux makinelerini, müşterilerinizin [Azure bağlı makine Aracısı](../../azure-arc/servers/agent-overview.md)'nı kullanarak aboneliğine bağladığını yönetebilirsiniz.
 
-Azure portal bir temsilci abonelik için kaynakları görüntülerken, **Azure Arc**ile etiketlenmiş bu bağlı makineleri görürsünüz. Bu bağlı makineleri Azure Ilkesi ve etiketleme gibi Azure yapılarını kullanarak, müşterinin Azure kaynaklarını yönettiğiniz şekilde yönetebilirsiniz. Ayrıca, tüm bağlı karma makineleri birlikte yönetmek için müşteri kiracılarında da çalışabilirsiniz.
+Azure portal bir temsilci abonelik için kaynakları görüntülerken, **Azure Arc** ile etiketlenmiş bu bağlı makineleri görürsünüz. Bu bağlı makineleri Azure Ilkesi ve etiketleme gibi Azure yapılarını kullanarak, müşterinin Azure kaynaklarını yönettiğiniz şekilde yönetebilirsiniz. Ayrıca, tüm bağlı karma makineleri birlikte yönetmek için müşteri kiracılarında da çalışabilirsiniz.
 
 Örneğin, [müşterilerin karma makineler arasında aynı ilke kümesinin uygulandığından emin](../../azure-arc/servers/learn/tutorial-assign-policy-portal.md)olabilirsiniz. Ayrıca, Azure Güvenlik Merkezi 'ni kullanarak tüm müşterilerinizin karma ortamlarında uyumluluğu izleyebilir veya [Azure izleyici 'yi kullanarak doğrudan karma makinelerinizden](../../azure-arc/servers/learn/tutorial-enable-vm-insights.md) bir Log Analytics çalışma alanına veri toplayabilirsiniz. [Sanal makine uzantıları](../../azure-arc/servers/manage-vm-extensions.md) , Azure olmayan Windows ve Linux VM 'lerine dağıtılabilir ve müşterinin karma makinelerinin yönetimini basitleştirir.
 
-## <a name="manage-hybrid-kubernetes-clusters-at-scale-with-azure-arc-enabled-kubernetes-preview"></a>Azure Arc etkin Kubernetes (Önizleme) ile karma Kubernetes kümelerini ölçeklendirerek yönetme
-
-> [!NOTE]
-> Azure Arc etkin Kubernetes Şu anda önizleme aşamasındadır. Bunu şu anda üretim iş yükleri için önermiyoruz.
+## <a name="manage-hybrid-kubernetes-clusters-at-scale-with-azure-arc-enabled-kubernetes"></a>Azure Arc etkin Kubernetes ile karma Kubernetes kümelerini ölçekte yönetin
 
 Azure 'da çalıştığı gibi, [bir müşterinin Azure Arc aboneliğine bağlanmış](../../azure-arc/kubernetes/connect-cluster.md)Kubernetes kümelerini yönetebilirsiniz.
 
@@ -48,9 +45,8 @@ Ayrıca, Azure Izleyici ile bağlı kümeleri izleyebilir ve [Azure ilkesi 'ni k
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Azure Arc GitHub deposundaki](https://github.com/microsoft/azure_arc)atlamalı ve örnekleri araştırın. 
+- [Azure Arc GitHub deposundaki](https://github.com/microsoft/azure_arc)atlamalı ve örnekleri araştırın.
 - [Azure Arc etkin sunucuları için desteklenen senaryolar](../../azure-arc/servers/overview.md#supported-scenarios)hakkında bilgi edinin.
 - [Azure Arc tarafından desteklenen Kubernetes dağıtımları](../../azure-arc/kubernetes/overview.md#supported-kubernetes-distributions)hakkında bilgi edinin.
 - [Bir ilkeyi ölçeklendirerek dağıtmayı](policy-at-scale.md)öğrenin.
 - [Azure Izleyici günlüklerini ölçekli](monitor-at-scale.md)olarak nasıl kullanacağınızı öğrenin.
-

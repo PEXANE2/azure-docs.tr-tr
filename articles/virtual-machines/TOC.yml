@@ -259,6 +259,7 @@
           displayName: 'older, retired, expired, deprecated'
           href: sizes-previous-gen.md
         - name: Yalıtılmış boyutlar
+          displayName: 'isolated VM, sole-tenant, sole'
           href: isolation.md
         - name: Azure işlem birimleri (ACU)
           href: acu.md
@@ -850,8 +851,12 @@
               displayName: 'Image builder, images, building, cli, Windows'
               href: ./windows/image-builder.md
         - name: PowerShell
-          displayName: 'Image builder, images, building, PowerShell'
-          href: ./windows/image-builder-powershell.md
+          items:
+            - name: Windows
+              displayName: 'Image builder, images, building, PowerShell'
+              href: ./windows/image-builder-powershell.md
+            - name: Windows Sanal Masaüstü
+              href: ./windows/image-builder-virtual-desktop.md
         - name: Güvenlik
           items:
             - name: Azure İlkesi’ne göre güvenlik denetimleri
@@ -1364,7 +1369,7 @@
     - name: Güvenilir başlatma
       items:
         - name: Genel Bakış
-          DisplayName: Trusted Launch Overview
+          DisplayName: 'Trusted Launch, shielded VM'
           href: trusted-launch.md
         - name: Portalı kullanarak dağıtma
           href: trusted-launch-portal.md

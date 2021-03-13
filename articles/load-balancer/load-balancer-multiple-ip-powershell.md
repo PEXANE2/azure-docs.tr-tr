@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: allensu
-ms.openlocfilehash: 8b10e850fd3ae0282785164596f537652148a716
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: a2916f28be0b45eec6e9c1a85c0b8db3fb611381
+ms.sourcegitcommit: df1930c9fa3d8f6592f812c42ec611043e817b3b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98791012"
+ms.lasthandoff: 03/13/2021
+ms.locfileid: "103417884"
 ---
 # <a name="load-balancing-on-multiple-ip-configurations-using-powershell"></a>PowerShell kullanarak birden çok IP yapılandırmasında Yük Dengeleme
 
@@ -27,14 +27,13 @@ ms.locfileid: "98791012"
 > * [CLI](load-balancer-multiple-ip-cli.md)
 > * [PowerShell](load-balancer-multiple-ip-powershell.md)
 
-
 Bu makalede, bir ikincil ağ arabirimi (NIC) üzerinde birden çok IP adresi ile Azure Load Balancer nasıl kullanılacağı açıklanır. Bu senaryo için, her biri birincil ve ikincil NIC olan Windows çalıştıran iki sanal makine vardır. İkincil NIC 'lerin her birinin iki IP yapılandırması vardır. Her VM, hem contoso.com hem de fabrikam.com Web sitelerini barındırır. Her Web sitesi, ikincil NIC 'deki IP yapılandırmalarından birine bağlıdır. Her Web sitesi için bir tane olmak üzere, bir Web sitesi için ilgili IP yapılandırmasına trafik dağıtmak üzere iki ön uç IP adresini kullanıma sunmak için Azure Load Balancer kullanırız. Bu senaryo, hem ön uç havuzu IP adresleri hem de ön uçlarda aynı bağlantı noktası numarasını kullanır.
 
 ![LB senaryo resmi](./media/load-balancer-multiple-ip/lb-multi-ip.PNG)
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
-
 ## <a name="steps-to-load-balance-on-multiple-ip-configurations"></a>Birden çok IP yapılandırmasında yük dengelemeye yönelik adımlar
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 Bu makalede özetlenen senaryoya ulaşmak için aşağıdaki adımları izleyin:
 

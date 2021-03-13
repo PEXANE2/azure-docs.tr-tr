@@ -9,6 +9,7 @@
     - name: Küme oluşturma-Portal
       href: create-cluster-portal.md
     - name: Küme oluşturma-CLı
+      displayName: 'az managed-cassandra, cluster, datacenter, connect'
       href: create-cluster-cli.md
     - name: Karma küme yapılandırma
       href: configure-hybrid-cluster.md
@@ -17,12 +18,14 @@
 - name: Kavramlar
   items:
     - name: Sık sorulan sorular
+      displayName: 'cost, region, monitor, backup'
       href: faq.md
     - name: Yönetilen örnek-Azure Cosmos DB Cassandra API
       href: compare-cosmosdb-managed-instance.md
 - name: Nasıl yapılır kılavuzları
   items:
     - name: Azure CLI ile yönetme
+      displayName: 'az managed-cassandra, cluster, datacenter'
       href: manage-resources-cli.md
     - name: Grafana ile Prometheus içindeki ölçümleri görselleştirin
       href: visualize-prometheus-grafana.md

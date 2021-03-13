@@ -12,12 +12,12 @@ author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 07/31/2020
-ms.openlocfilehash: a8f1ca1da54c816199a0504eb17fa0a7bbfc441b
-ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
+ms.openlocfilehash: 54b1fd14f97855dd42afde9a4bb34795373ff229
+ms.sourcegitcommit: df1930c9fa3d8f6592f812c42ec611043e817b3b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102522198"
+ms.lasthandoff: 03/13/2021
+ms.locfileid: "103417646"
 ---
 # <a name="create-azure-machine-learning-datasets"></a>Azure Machine Learning veri kümeleri oluşturma
 
@@ -182,9 +182,55 @@ titanic_ds.take(3).to_pandas_dataframe()
 
 Çalışma alanınızdaki denemeleri genelinde veri kümelerini yeniden kullanmak ve paylaşmak için [veri kümenizi kaydedin](#register-datasets).
 
+## <a name="wrangle-data"></a>Wrangle verileri
+Veri kümenizi [oluşturup kaydettikten sonra](#register-datasets) , model eğitimi 'nden önce veri denetimi ve [araştırma](#explore-data) için Not defterinize yükleyebilirsiniz. 
+
+Herhangi bir veri için bir denetimi veya araştırma yapmanız gerekmiyorsa bkz. veri [kümeleriyle eğmek](how-to-train-with-datasets.md)üzere ml denemeleri göndermek için eğitim betiklerinizde veri kümelerini kullanma.
+
+### <a name="filter-datasets-preview"></a>Veri kümelerini filtrele (Önizleme)
+Filtreleme özellikleri, sahip olduğunuz veri kümesinin türüne bağlıdır. 
+> [!IMPORTANT]
+> Veri kümelerini genel önizleme yöntemiyle filtrelemek, [`filter()`](/python/api/azureml-core/azureml.data.tabulardataset#filter-expression-) [deneysel](/python/api/overview/azure/ml/#stable-vs-experimental) önizleme özelliğidir ve herhangi bir zamanda değişebilir. 
+> 
+**Tabulardataset 'Ler için** [keep_columns ()](/python/api/azureml-core/azureml.data.tabulardataset#keep-columns-columns--validate-false-) ve [drop_columns ()](/python/api/azureml-core/azureml.data.tabulardataset#drop-columns-columns-) yöntemleriyle sütunları tutabilir veya kaldırabilirsiniz.
+
+Bir TabularDataset içindeki belirli bir sütun değerine göre satırları filtrelemek için [Filter ()](/python/api/azureml-core/azureml.data.tabulardataset#filter-expression-) yöntemini (Önizleme) kullanın. 
+
+Aşağıdaki örnekler, belirtilen ifadeleri temel alan, kayıtlı olmayan bir veri kümesini döndürür.
+
+```python
+# TabularDataset that only contains records where the age column value is greater than 15
+tabular_dataset = tabular_dataset.filter(tabular_dataset['age'] > 15)
+
+# TabularDataset that contains records where the name column value contains 'Bri' and the age column value is greater than 15
+tabular_dataset = tabular_dataset.filter((tabular_dataset['name'].contains('Bri')) & (tabular_dataset['age'] > 15))
+```
+
+**Filedataset 'lerdeki** her satır bir dosyanın yoluna karşılık gelir, bu nedenle sütun değerine göre filtreleme yararlı değildir. Ancak, verileri, CreationTime, boyut vb. gibi meta verilere göre [filtreleyebilirsiniz](/python/api/azureml-core/azureml.data.filedataset#filter-expression-) .
+
+Aşağıdaki örnekler, belirtilen ifadeleri temel alan, kayıtlı olmayan bir veri kümesini döndürür.
+
+```python
+# FileDataset that only contains files where Size is less than 100000
+file_dataset = file_dataset.filter(file_dataset.file_metadata['Size'] < 100000)
+
+# FileDataset that only contains files that were either created prior to Jan 1, 2020 or where 
+file_dataset = file_dataset.filter((file_dataset.file_metadata['CreatedTime'] < datetime(2020,1,1)) | (file_dataset.file_metadata['CanSeek'] == False))
+```
+
+[Veri etiketleme projelerinden](how-to-create-labeling-projects.md) oluşturulan **etiketlenmiş veri kümeleri** özel bir durumdur. Bu veri kümeleri, görüntü dosyalarından oluşan bir TabularDataset türüdür. Bu tür veri kümeleri için, meta verilere göre ve ve gibi sütun değerlerine göre resimleri [filtreleyebilirsiniz](/python/api/azureml-core/azureml.data.tabulardataset#filter-expression-) `label` `image_details` .
+
+```python
+# Dataset that only contains records where the label column value is dog
+labeled_dataset = labeled_dataset.filter(labeled_dataset['label'] == 'dog')
+
+# Dataset that only contains records where the label and isCrowd columns are True and where the file size is larger than 100000
+labeled_dataset = labeled_dataset.filter((labeled_dataset['label']['isCrowd'] == True) & (labeled_dataset.file_metadata['Size'] > 100000))
+```
+
 ## <a name="explore-data"></a>Verileri inceleme
 
-Veri kümenizi [oluşturup kaydettikten sonra](#register-datasets) , model eğitimi 'nden önce veri araştırması için Not defterinize yükleyebilirsiniz. Herhangi bir veri araştırması yapmanız gerekmiyorsa, veri [kümeleriyle eğmek](how-to-train-with-datasets.md)üzere ml denemeleri göndermek için eğitim betiklerinizde veri kümelerini kullanma konusuna bakın.
+Verilerinizi wrangini tamamladıktan sonra, veri kümenizi [kaydedebilir](#register-datasets) ve model eğitimine başlamadan önce veri araştırması için Not defterinize yükleyebilirsiniz.
 
 Dosya veri kümeleri için, veri kümenizi **bağlayabilir** veya **indirebilir** ve normalde veri araştırması için kullandığınız Python kitaplıklarını uygulayabilirsiniz. [Bağlama vs indirmesi hakkında daha fazla bilgi edinin](how-to-train-with-datasets.md#mount-vs-download).
 
@@ -261,7 +307,7 @@ titanic_ds = titanic_ds.register(workspace=workspace,
 
 ## <a name="create-datasets-using-azure-resource-manager"></a>Azure Resource Manager kullanarak veri kümeleri oluşturma
 
-Üzerinde [https://github.com/Azure/azure-quickstart-templates/tree/master/101-machine-learning-dataset-create-*](https://github.com/Azure/azure-quickstart-templates/tree/master/) veri kümeleri oluşturmak için kullanılabilecek çeşitli şablonlar vardır.
+Üzerinde [https://github.com/Azure/azure-quickstart-templates/tree/master/101-machine-learning-dataset-create-*](https://github.com/Azure/azure-quickstart-templates/tree/master/) veri kümeleri oluşturmak için kullanılabilecek birçok şablon vardır.
 
 Bu şablonları kullanma hakkında daha fazla bilgi için bkz. [Azure Machine Learning için bir çalışma alanı oluşturmak üzere Azure Resource Manager şablonu kullanma](how-to-create-workspace-template.md).
 

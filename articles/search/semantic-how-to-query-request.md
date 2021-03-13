@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 03/12/2021
-ms.openlocfilehash: 621cfa8977d4d0ed987b7d38407bbf5bbb370950
-ms.sourcegitcommit: ec39209c5cbef28ade0badfffe59665631611199
+ms.openlocfilehash: 9ff98a2613143474afd6041ccf52d4eb509d646b
+ms.sourcegitcommit: df1930c9fa3d8f6592f812c42ec611043e817b3b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/12/2021
-ms.locfileid: "103232757"
+ms.lasthandoff: 03/13/2021
+ms.locfileid: "103418887"
 ---
 # <a name="create-a-semantic-query-in-cognitive-search"></a>Bilişsel Arama anlam sorgusu oluşturma
 
@@ -141,7 +141,7 @@ SearchFields sırası kritik öneme sahiptir. Zaten var olan basit veya tam Luce
 
 + Bir belgenin ana içeriği gibi anlam sorgularının yanıtının bulunabileceği açıklayıcı alanlarla bu alanları izleyin.
 
-Yalnızca bir alan belirtilmişse, anlam sorgularının yanıtının bulunduğu bir belgenin ana içeriği gibi açıklayıcı bir alan kullanın. Yeterli içerik sağlayan bir alan seçin. Zamanında işleme sağlamak için, searchFields 'in toplu içeriğinin yalnızca ilk 20.000 belirteçleri, anlamsal değerlendirme ve sıralamaya sahiptir.
+Yalnızca bir alan belirtilmişse, anlam sorgularının yanıtının bulunduğu bir belgenin ana içeriği gibi açıklayıcı bir alan kullanın. Yeterli içerik sağlayan bir alan seçin. İşlem zamanında işleme sağlamak için, yalnızca searchFields 'in toplu içeriklerinin 8.000 belirteçleri hakkında daha fazla anlam değerlendirmesi ve derecelendirmesi vardır.
 
 #### <a name="step-3-remove-orderby-clauses"></a>3. Adım: orderBy yan tümcelerini kaldırma
 

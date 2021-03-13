@@ -328,7 +328,9 @@
       items:
         - name: Bıcep 'yi yükler
           href: bicep-install.md
-        - name: JSON ile Bıcep karşılaştırması
+        - name: JSON ile Bıcep arasında dönüştürme
+          href: bicep-decompile.md
+        - name: JSON ve Bıcep 'yi karşılaştırın
           href: compare-template-syntax.md
     - name: Veri türleri
       href: data-types.md

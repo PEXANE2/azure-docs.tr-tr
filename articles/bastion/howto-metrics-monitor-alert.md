@@ -6,14 +6,14 @@ services: bastion
 author: mialdrid
 ms.service: bastion
 ms.topic: how-to
-ms.date: 03/09/2021
+ms.date: 03/12/2021
 ms.author: mialdrid
-ms.openlocfilehash: dc16b9007c381f1bb0dce9332243842d8d4af9cd
-ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
+ms.openlocfilehash: 3a5beba3938b5a845a378ede155f2f64e6baac7a
+ms.sourcegitcommit: df1930c9fa3d8f6592f812c42ec611043e817b3b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/12/2021
-ms.locfileid: "103202595"
+ms.lasthandoff: 03/13/2021
+ms.locfileid: "103417952"
 ---
 # <a name="how-to-configure-monitoring-and-metrics-for-azure-bastion-using-azure-monitor"></a>Azure Izleyici kullanarak Azure savunma için izleme ve ölçümleri yapılandırma
 
@@ -72,7 +72,7 @@ Her bir savunma örneğine göre bölünen her bir savunma örneği üzerinde be
 
 #### <a name="session-count"></a>Oturum sayısı
 
-Her bir oturum türü (RDP ve SSH) arasında toplanan etkin oturum başına etkin oturum sayısını görüntüleyebilirsiniz. Her bir Azure savunma, etkin RDP ve SSH oturumlarının bir aralığını destekleyebilir. Bu ölçümü izlemek, savunma hizmetini çalıştıran örnek sayısını ayarlamanız gerektiğini anlamanıza yardımcı olur. Azure savunma 'nın destekleyeabileceği oturum sayısı hakkında daha fazla bilgi için [Azure savunma hakkında SSS](bastion-faq.md)bölümüne bakın. Hangi savunma SKU 'Larının örnek ölçeklendirmeyi desteklediği hakkında daha fazla bilgi için bkz. savunma [SKU 'ları](bastion-connect-vm-scale-set.md).
+Her bir oturum türü (RDP ve SSH) arasında toplanan etkin oturum başına etkin oturum sayısını görüntüleyebilirsiniz. Her bir Azure savunma, etkin RDP ve SSH oturumlarının bir aralığını destekleyebilir. Bu ölçümü izlemek, savunma hizmetini çalıştıran örnek sayısını ayarlamanız gerektiğini anlamanıza yardımcı olur. Azure savunma 'nın destekleyeabileceği oturum sayısı hakkında daha fazla bilgi için [Azure savunma hakkında SSS](bastion-faq.md)bölümüne bakın.
 
 :::image type="content" source="./media/metrics-monitor-alert/session-count.png" alt-text="Oturum sayısını gösteren ekran görüntüsü.":::
 

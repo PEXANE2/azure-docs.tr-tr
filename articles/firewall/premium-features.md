@@ -5,14 +5,15 @@ author: vhorne
 ms.service: firewall
 services: firewall
 ms.topic: conceptual
-ms.date: 03/08/2021
+ms.date: 03/12/2021
 ms.author: victorh
-ms.openlocfilehash: a3f72d235d6c52ce91ae351c2606ee6cf4285159
-ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
+ms.custom: references_regions
+ms.openlocfilehash: 22ee920c38a8cacaf37a1e3a6cfc5165dfa0bb44
+ms.sourcegitcommit: df1930c9fa3d8f6592f812c42ec611043e817b3b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "102453436"
+ms.lasthandoff: 03/13/2021
+ms.locfileid: "103419958"
 ---
 # <a name="azure-firewall-premium-preview-features"></a>Azure Güvenlik Duvarı Premium Önizleme özellikleri
 
@@ -100,12 +101,50 @@ veya
 
 ' De bir istek göndermek için hoş geldiniz [https://aka.ms/azfw-webcategories-request](https://aka.ms/azfw-webcategories-request) .
  
+## <a name="supported-regions"></a>Desteklenen bölgeler
+
+Azure Güvenlik Duvarı Premium önizlemesi aşağıdaki bölgelerde desteklenir:
+
+- Batı Avrupa (kamu/Avrupa)
+- Doğu ABD (genel/Birleşik Devletler)
+- Avustralya Doğu (kamu/Avustralya)
+- Güneydoğu Asya (genel/Asya Pasifik)
+- UK Güney (kamu/Birleşik Krallık)
+- Kuzey Avrupa (kamu/Avrupa)
+- Doğu ABD 2 (genel/Birleşik Devletler)
+- Orta Güney ABD (genel/Birleşik Devletler)
+- Batı ABD 2 (genel/Birleşik Devletler)
+- Batı ABD (genel/Birleşik Devletler)
+- Orta ABD (genel/Birleşik Devletler)
+- Orta Kuzey ABD (genel/Birleşik Devletler)
+- Japonya Doğu (kamu/Japonya)
+- Doğu Asya (genel/Asya Pasifik)
+- Kanada Orta (kamu/Kanada)
+- Fransa Orta (kamu/Fransa)
+- Güney Afrika Kuzey (kamu/Güney Afrika)
+- BAE Kuzey (genel/UAE)
+- İsviçre Kuzey (genel/Isviçre)
+- Brezilya Güney (Kamu/Brezilya)
+- Norveç Doğu (genel/Norveç)
+- Avustralya Orta (kamu/Avustralya)
+- Avustralya Orta 2 (kamu/Avustralya)
+- Avustralya Güneydoğu (kamu/Avustralya)
+- Kanada Doğu (kamu/Kanada)
+- Orta ABD EUAP (kamu/Canary (US))
+- Fransa Güney (kamu/Fransa)
+- Japonya Batı (kamu/Japonya)
+- Kore Güney (Genel/Kore)
+- BAE Orta (genel/UAE)
+- UK Batı (kamu/Birleşik Krallık)
+- Orta Batı ABD (genel/Birleşik Devletler)
+- Batı Hindistan (genel/Hindistan)
+
 
 ## <a name="known-issues"></a>Bilinen sorunlar
 
 Azure Güvenlik Duvarı Premium önizleme aşağıdaki bilinen sorunlara sahiptir:
 
-|Sorun  |Açıklama  |Risk azaltma  |
+|Sorun  |Description  |Risk azaltma  |
 |---------|---------|---------|
 |TLS Incelemesi yalnızca HTTPS standart bağlantı noktasında destekleniyor|TLS Incelemesi yalnızca HTTPS/443 ' ü destekler. |Yok. Diğer bağlantı noktaları GA 'de desteklenecektir.|
 |HTTPS 'de FQDN çözümlemesi için ESNı desteği|Şifrelenmiş SNı, HTTPS el sıkışması içinde desteklenmez.|Yalnızca bugün Firefox, özel yapılandırma ile ESNı destekler. Önerilen geçici çözüm bu özelliği devre dışı bırakdır.|

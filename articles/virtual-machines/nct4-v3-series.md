@@ -7,12 +7,12 @@ author: vikancha-MSFT
 ms.topic: conceptual
 ms.date: 01/12/2021
 ms.author: vikancha
-ms.openlocfilehash: b7418825b4f22bfe4fe1941cb1f70ffb9f0a939b
-ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
+ms.openlocfilehash: d73bd81f15263c79e16b574eb961d4ae0ac61175
+ms.sourcegitcommit: df1930c9fa3d8f6592f812c42ec611043e817b3b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102609218"
+ms.lasthandoff: 03/13/2021
+ms.locfileid: "103417816"
 ---
 # <a name="ncast4_v3-series"></a>NCasT4_v3 serisi 
 
@@ -46,6 +46,8 @@ NVIDIA NVLink Interconnect: destekleniyor<br>
 Windows veya Linux çalıştıran Azure NCasT4_v3 serisi VM 'lerin GPU Özellikleri avantajlarından yararlanmak için NVIDIA GPU sürücüleri yüklenmelidir.
 
 NVIDIA GPU sürücülerini el ile yüklemek için desteklenen işletim sistemleri, sürücüler, yükleme ve doğrulama adımları için bkz. [Windows Için N SERISI GPU sürücü kurulumu](./windows/n-series-driver-setup.md) .
+
+Azure NVIDIA GPU sürücü uzantısı, NCasT4_v3 serisi VM 'lerde CUDA sürücülerini dağıtacaktır. Grafik ve görselleştirme iş yükleri için Azure tarafından desteklenen KıLAVUZ sürücülerini el ile yükleyebilirsiniz.
 
 ## <a name="other-sizes"></a>Diğer boyutlar
 

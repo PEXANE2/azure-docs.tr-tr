@@ -2,13 +2,13 @@
 title: Şablonlara genel bakış
 description: Kaynak dağıtımı için Azure Resource Manager şablonları (ARM şablonları) kullanmanın avantajlarını açıklar.
 ms.topic: conceptual
-ms.date: 03/08/2021
-ms.openlocfilehash: 3a144b69f69c90b997b17d9526c9c3e0f259c554
-ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
+ms.date: 03/12/2021
+ms.openlocfilehash: 14bcbbd7a7ae7315dbb8e9d3e7e44ce0ffe0a4b4
+ms.sourcegitcommit: df1930c9fa3d8f6592f812c42ec611043e817b3b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "102455744"
+ms.lasthandoff: 03/13/2021
+ms.locfileid: "103419992"
 ---
 # <a name="what-are-arm-templates"></a>ARM şablonları nelerdir?
 
@@ -19,6 +19,10 @@ Bu güçlükleri karşılamak için dağıtımları otomatik hale getirebilir ve
 Altyapıyı Azure çözümleriniz için kod olarak uygulamak üzere Azure Resource Manager şablonları (ARM şablonları) kullanın. Şablon, projeniz için altyapıyı ve yapılandırmayı tanımlayan bir JavaScript Nesne Gösterimi (JSON) dosyasıdır. Şablon, dağıtmak istediğiniz öğeyi oluşturmaya yönelik programlama komutları dizisini yazmak zorunda kalmadan bu öğeyi belirtmenize imkan tanıyan bildirim temelli söz dizimini kullanır. Şablonda, dağıtılacak kaynakları ve bu kaynakların özelliklerini belirtirsiniz.
 
 ARM şablonları geliştirmek için yeni bir dil sunuyoruz. Dil Bıcep olarak adlandırılır ve şu anda önizlemededir. Bıcep ve JSON şablonları aynı yetenekleri sunar. İki dil arasında şablon dönüştürebilirsiniz. Bıcep, şablon oluşturmak için daha kolay bir sözdizimi sağlar. Daha fazla bilgi için bkz. [Bıcep (Önizleme) nedir?](bicep-overview.md).
+
+ARM şablonlarına nasıl başlabileceğinizi öğrenmek için aşağıdaki videoya bakın.
+
+> [!VIDEO https://channel9.msdn.com/Shows/Azure-Enablement/How-and-why-to-learn-about-ARM-templates/player]
 
 ## <a name="why-choose-arm-templates"></a>ARM şablonlarını neden seçmelisiniz?
 

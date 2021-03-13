@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 03/31/2020
 ms.author: kumud
-ms.openlocfilehash: 86e4bb52f2a97bf36dc4be86289bd513a9f05091
-ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
+ms.openlocfilehash: bb7769298940095900da25e61e13612b92bad00c
+ms.sourcegitcommit: df1930c9fa3d8f6592f812c42ec611043e817b3b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99538264"
+ms.lasthandoff: 03/13/2021
+ms.locfileid: "103419108"
 ---
 # <a name="what-is-ipv6-for-azure-virtual-network"></a>Azure sanal ağ için IPv6 nedir?
 
@@ -77,8 +77,7 @@ Azure sanal ağ sürümü için geçerli IPv6 aşağıdaki sınırlamalara sahip
 - Azure sanal ağ için IPv6, tüm dağıtım yöntemlerini kullanan tüm küresel Azure ticari ve ABD kamu bölgelerinde kullanılabilir.  
 - ExpressRoute ağ geçitleri, IPv6 'nın etkin olduğu bir VNET 'teki yalnızca IPv4 trafiği için kullanılabilir.  IPv6 trafiği desteği yol haritasında bulunur.   
 - VPN ağ geçitleri, doğrudan veya "UseRemoteGateway" ile birlikte IPv6 etkin olan VNET 'te kullanılamaz.
-- Azure platformu (AKS, vb.) kapsayıcılar için IPv6 iletişimini desteklemez.  
-- IPv6, yalnızca Azure VM 'lerinde birincil ağ arabirimine (NIC) yük dengelemesi yapılabilir. İkincil NIC 'lere IPv6 trafiğinin yük dengelemesi desteklenmez.    
+- Azure platformu (AKS, vb.) kapsayıcılar için IPv6 iletişimini desteklemez. 
 - Yalnızca IPv6 sanal makineler veya sanal makine ölçek kümeleri desteklenmez, her NIC en az bir IPv4 IP yapılandırması içermelidir. 
 - IPv6 aralıkları var olan IPv4 dağıtımlarına eklenirken, mevcut kaynak gezinti bağlantılarıyla birlikte bir sanal ağa IPv6 aralıkları eklenemez.  
 - IPv6 için iletme DNS, Azure genel DNS için bugün desteklenir, ancak ters DNS henüz desteklenmiyor.   

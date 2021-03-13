@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/09/2020
 ms.author: trbye
-ms.openlocfilehash: 10e7db521781c21b3fe5feda0880fee7e603afab
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: d555322c0fd4067a4232e53387d811de7b50a8f5
+ms.sourcegitcommit: df1930c9fa3d8f6592f812c42ec611043e817b3b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93128333"
+ms.lasthandoff: 03/13/2021
+ms.locfileid: "103417753"
 ---
 Sıkıştırılmış ses işleme, [GStreamer](https://gstreamer.freedesktop.org)kullanılarak uygulanır. Lisanslama nedeniyle, GStreamer ikili dosyaları derlenmez ve konuşma SDK 'Sı ile bağlantılı değildir. Geliştiricilerin çeşitli bağımlılıklar ve eklentiler yüklemeleri gerekir.
 
@@ -37,10 +37,9 @@ gstreamer1-plugins-ugly-free
 ```
 
 > [!NOTE]
+> - RHEL/CentOS 7 ve RHEL/CentOS 8 ' de, "ANY" ile sıkıştırılmış herhangi bir biçimin kullanılması durumunda daha fazla GStreamer eklentisi yüklü olmalıdır. 
 > - RHEL/CentOS 7 ' de, [konuşma SDK 'sı IÇIN RHEL/CentOS 7](~/articles/cognitive-services/speech-service/how-to-configure-rhel-centos-7.md)' yi yapılandırma yönergelerini izleyin.
 > - RHEL/CentOS 8 ' de, [Linux Için OpenSSL 'yi yapılandırma](~/articles/cognitive-services/speech-service/how-to-configure-openssl-linux.md)yönergelerini izleyin.
 
-> [!IMPORTANT]
-> OPUS ses kodlama biçimi, RHEL/CentOS 7 üzerinde konuşma SDK 'Sı tarafından desteklenmez.
 
 ---

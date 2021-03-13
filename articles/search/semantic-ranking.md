@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 03/12/2021
-ms.openlocfilehash: a008551ac6f149617feedd01e256b637f83e975d
-ms.sourcegitcommit: ec39209c5cbef28ade0badfffe59665631611199
+ms.openlocfilehash: e3078c8f71f8862cacad552bb3176c08530e79bb
+ms.sourcegitcommit: df1930c9fa3d8f6592f812c42ec611043e817b3b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/12/2021
-ms.locfileid: "103235094"
+ms.lasthandoff: 03/13/2021
+ms.locfileid: "103418853"
 ---
 # <a name="semantic-ranking-in-azure-cognitive-search"></a>Azure Bilişsel Arama anlam derecelendirmesi
 
@@ -30,9 +30,9 @@ Anlam derecelendirmesi için model, her birinin sorgu amacına ne kadar iyi eşl
 
 1. Her belge için, semantik derecelendiricisini searchfields parametresindeki alanları, içeriği bir büyük dize halinde birleştirerek değerlendirir.
 
-1. Daha sonra dize, genel uzunluğunun 20.000 belirteçten fazla olmamasını sağlamak için kırpılır. Çok büyük belgeleriniz varsa, içerik alanı veya çok sayfalı içerik içeren merged_content alanı varsa, yalnızca ilk 20.000 belirteç kullanılacaktır.
+1. Daha sonra dize, genel uzunluğunun 8.000 belirteçten fazla olmamasını sağlamak için kırpılır. Çok büyük belgeleriniz varsa, çok sayıda içeriğe sahip bir içerik alanı veya merged_content alanı varsa, belirteç sınırından sonra herhangi bir şey yok sayılır.
 
-1. 50 belgelerinin her biri, en fazla 20.000 belirtece sahip tek bir uzun dizeyle temsil edilir. Bu dize özetleme modeline gönderilir. Özetleme modeli, içeriği özetlemek veya soruyu yanıtlamak için görüntülenen pasları belirlemek için makine okuma kavrama kullanarak açıklamalı alt yazılar (ve yanıtlar) oluşturur. Özetleme modelinin çıktısı, en fazla 128 belirteç olan daha azaltılmış bir dizedir.
+1. 50 belgelerinin her biri artık tek bir Long dizesiyle temsil edilir. Bu dize özetleme modeline gönderilir. Özetleme modeli, içeriği özetlemek veya soruyu yanıtlamak için görüntülenen pasları belirlemek için makine okuma kavrama kullanarak açıklamalı alt yazılar (ve yanıtlar) oluşturur. Özetleme modelinin çıktısı, en fazla 128 belirteç olan daha azaltılmış bir dizedir.
 
 1. Daha küçük dize, belgenin açıklamalı alt yazı haline gelir ve daha büyük dizede bulunan en ilgili pasalleri temsil eder. 50 (veya daha az) açıklamalı alt yazı kümesi daha sonra sipariş ilgisiyle derecelendirilir. 
 

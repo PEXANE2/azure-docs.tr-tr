@@ -3,12 +3,12 @@ title: Azure Event Grid için olay filtreleme
 description: Azure Event Grid aboneliği oluştururken olayların nasıl filtreleneceğini açıklar.
 ms.topic: conceptual
 ms.date: 03/04/2021
-ms.openlocfilehash: 94445341891149d5d02c7f33caef20bf45123e9b
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
+ms.openlocfilehash: fa63296f97bfa888cb0f425d0c03a5e4a7e46525
+ms.sourcegitcommit: df1930c9fa3d8f6592f812c42ec611043e817b3b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102197784"
+ms.lasthandoff: 03/13/2021
+ms.locfileid: "103419856"
 ---
 # <a name="understand-event-filtering-for-event-grid-subscriptions"></a>Event Grid abonelikleri için olay filtrelemeyi anlayın
 
@@ -355,6 +355,7 @@ FOR_EACH filter IN (a, b, c)
         IF key CONTAINS filter
             FAIL_MATCH
 ```
+Bu işlecin geçerli sınırlaması için [sınırlamalar](#limitations) bölümüne bakın.
 
 ## <a name="stringbeginswith"></a>StringBeginsWith
 **Anahtar** değeri belirtilen **filtre** değerlerinden herhangi biriyle **başlıyorsa** , **stringbeginswith** işleci true olarak değerlendirilir. Aşağıdaki örnekte, `key1` bölümündeki öznitelik değerinin `data` veya ile başlayıp başlamamadığını denetler `event` `grid` . Örneğin, `event hubs` ile başlar `event` .  
@@ -634,6 +635,7 @@ Gelişmiş filtreleme aşağıdaki sınırlamalara sahiptir:
 * Her olay Kılavuzu aboneliği için tüm filtrelerdeki 5 Gelişmiş filtre ve 25 filtre değeri
 * dize değeri başına 512 karakter
 * **İçindeki** ve **Not** işleçleri için beş değer
+* `StringNotContains`İşleç Şu anda portalda kullanılamıyor.
 * **`.` (Nokta)** karakterleriyle anahtarlar. Örneğin: `http://schemas.microsoft.com/claims/authnclassreference` veya `john.doe@contoso.com` . Şu anda Anahtarlar içinde kaçış karakterleri için destek yoktur. 
 
 Aynı anahtar birden fazla filtrede kullanılabilir.

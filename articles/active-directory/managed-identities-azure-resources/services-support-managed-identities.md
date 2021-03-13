@@ -11,12 +11,12 @@ ms.subservice: msi
 manager: daveba
 ms.collection: M365-identity-device-management
 ms.custom: references_regions
-ms.openlocfilehash: 7b9ae52a0d62da6a8637f63f15d8680b54aeefd1
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 0531305364b3e6f914a6de00614a3f9af4be3531
+ms.sourcegitcommit: df1930c9fa3d8f6592f812c42ec611043e817b3b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101688578"
+ms.lasthandoff: 03/13/2021
+ms.locfileid: "103418785"
 ---
 # <a name="services-that-support-managed-identities-for-azure-resources"></a>Azure kaynakları için yönetilen kimlikleri destekleyen hizmetler
 
@@ -74,6 +74,18 @@ Azure App Service yönetilen kimliği (varsa) yapılandırmak için aşağıdaki
 | Kullanıcı tarafından atanan | Kullanılamaz | Kullanılamaz | Kullanılamaz | Kullanılamaz |
 
 Azure Arc etkin Kubernetes Şu anda [sistem tarafından atanan kimliği desteklemektedir](../../azure-arc/kubernetes/connect-cluster.md#azure-arc-agents-for-kubernetes). Yönetilen hizmet kimlik sertifikası, Azure ile iletişim kurmak için tüm Azure Arc etkinleştirilmiş Kubernetes aracıları tarafından kullanılır.
+
+### <a name="azure-arc-enabled-servers"></a>Azure Arc özellikli sunucular
+
+| Yönetilen kimlik türü | Tüm genel kullanıma açık<br>Küresel Azure bölgeleri | Azure Kamu | Azure Almanya | Azure China 21Vianet |
+| --- | :-: | :-: | :-: | :-: |
+| Sistem tarafından atanan | ![Kullanılabileceğini][check] | ![Kullanılabilir][check] | Kullanılamaz | Kullanılamaz |
+| Kullanıcı tarafından atanan | Kullanılamaz | Kullanılamaz | Kullanılamaz | Kullanılamaz |
+
+Tüm Azure Arc etkin sunucularının sistem tarafından atanmış bir kimliği vardır. Azure Arc etkin bir sunucusunda sistem tarafından atanan kimliği devre dışı bırakıp değiştiremezsiniz. Azure Arc etkin sunucularında yönetilen kimliklerin nasıl kullanılacağı hakkında daha fazla bilgi edinmek için aşağıdaki kaynaklara bakın:
+
+- [Yay etkin sunucularla Azure kaynaklarında kimlik doğrulama](../../azure-arc/servers/managed-identity-authentication.md)
+- [Bir yönetilen kimliği, Arc etkin sunucularla kullanma](../../azure-arc/servers/security-overview.md#using-a-managed-identity-with-arc-enabled-servers)
 
 ### <a name="azure-automanage"></a>Azure Otomatik Yönetimi
 

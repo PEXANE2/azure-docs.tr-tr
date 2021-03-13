@@ -6,12 +6,12 @@ ms.author: vimeht
 ms.date: 2/16/2021
 ms.topic: tutorial
 ms.service: iot-hub-device-update
-ms.openlocfilehash: 245998fb7229c483fb7f664ea000b62abf07eda9
-ms.sourcegitcommit: 6776f0a27e2000fb1acb34a8dddc67af01ac14ac
+ms.openlocfilehash: f7e12567269304b33a98ff1eb9727cfdf0afbdc4
+ms.sourcegitcommit: df1930c9fa3d8f6592f812c42ec611043e817b3b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/11/2021
-ms.locfileid: "103149792"
+ms.lasthandoff: 03/13/2021
+ms.locfileid: "103418649"
 ---
 # <a name="device-update-for-azure-iot-hub-tutorial-using-the-package-agent-on-ubuntu-server-1804-x64"></a>Ubuntu Server 18,04 x64 üzerinde paket aracısını kullanarak Azure IoT Hub öğreticisi için cihaz güncelleştirmesi
 
@@ -128,9 +128,11 @@ Paket kullanmadan önce lisans koşullarını okuyun. Bir paketi yüklemeniz ve 
 
 ## <a name="import-update"></a>Güncelleştirmeyi içeri aktar
 
-1. Aşağıdaki [apt bildirim dosyasını](https://github.com/Azure/iot-hub-device-update/tree/main/docs/sample-artifacts/libcurl4-doc-apt-manifest.json) indirin ve [bildirim dosyasını içeri aktarın](https://github.com/Azure/iot-hub-device-update/tree/main/docs/sample-artifacts/sample-package-update-1.0.1-importManifest.json). Bu apt bildirimi, en son kullanılabilir sürümünü cihazınıza yükleyecek `libcurl4-doc package` .
+1. GitHub 'daki [cihaz güncelleştirme sürümleri](https://github.com/Azure/iot-hub-device-update/releases) ' ne gidin ve "varlıklar" açılan düğmesine tıklayın.
 
-   Alternatif olarak, bu [apt bildirim dosyasını](https://github.com/Azure/iot-hub-device-update/tree/main/docs/sample-artifacts/libcurl4-doc-7.58-apt-manifest.json) indirebilir ve [bildirim dosyasını içeri aktarabilirsiniz](https://github.com/Azure/iot-hub-device-update/tree/main/docs/sample-artifacts/sample-package-update-2-2.0.1-importManifest.json). Bu işlem, aygıtınıza ait belirli bir v 7.58.0 sürümünü yükler `libcurl4-doc package` .
+3. `apt-update-import-samples.zip`Üzerine tıklayarak indirin.
+
+5. Çeşitli güncelleştirme örneklerini ve bunlara karşılık gelen içeri aktarma bildirimlerini saptamak için klasörün içeriğini ayıklayın. 
 
 2. Azure portal ' de, IoT Hub sol taraftaki Gezinti çubuğundan otomatik cihaz yönetimi altında cihaz güncelleştirmeleri seçeneğini belirleyin.
 
@@ -138,7 +140,10 @@ Paket kullanmadan önce lisans koşullarını okuyun. Bir paketi yüklemeniz ve 
 
 4. "+ Yeni güncelleştirme al" seçeneğini belirleyin.
 
-5. "Içeri aktarma bildirim dosyası seçin" altında klasör simgesini veya metin kutusunu seçin. Bir dosya Seçicisi iletişim kutusu görürsünüz. Daha önce indirdiğiniz Içeri aktarma bildirimini seçin. Sonra, "bir veya daha fazla güncelleştirme dosyası seçin" altında klasör simgesini veya metin kutusunu seçin. Bir dosya Seçicisi iletişim kutusu görürsünüz. Daha önce indirdiğiniz apt bildirim güncelleştirme dosyasını seçin.
+5. "Içeri aktarma bildirim dosyası seçin" altında klasör simgesini veya metin kutusunu seçin. Bir dosya Seçicisi iletişim kutusu görürsünüz. `sample-package-update-1.0.1-importManifest.json`Daha önce indirdiğiniz klasörden içeri aktarma bildirimi ' ni seçin. Sonra, "bir veya daha fazla güncelleştirme dosyası seçin" altında klasör simgesini veya metin kutusunu seçin. Bir dosya Seçicisi iletişim kutusu görürsünüz. `sample-1.0.1-libcurl4-doc-apt-manifest.json`Daha önce indirdiğiniz klasörden apt bildirim güncelleştirme dosyasını seçin.
+Bu güncelleştirme, en son kullanılabilir sürümünü cihazınıza yükleyecek `libcurl4-doc package` .
+
+   Alternatif olarak, `sample-package-update-2-2.0.1-importManifest.json` `sample-2.0.1-libcurl4-doc-7.58-apt-manifest.json` önceden indirdiğiniz klasörden bildirim dosyasını ve apt bildirim güncelleştirme dosyasını da seçebilirsiniz. Bu işlem, aygıtınıza ait belirli bir v 7.58.0 sürümünü yükler `libcurl4-doc package` .
 
    :::image type="content" source="media/import-update/select-update-files.png" alt-text="Güncelleştirme dosyası seçimini gösteren ekran görüntüsü." lightbox="media/import-update/select-update-files.png":::
 
@@ -213,9 +218,9 @@ Bir Ubuntu Server 18,04 x64 cihazında IoT Hub için cihaz güncelleştirmesini 
 
 ## <a name="bonus-steps"></a>Ödül adımları
 
-1. Aşağıdaki [apt bildirim dosyasını](https://github.com/Azure/iot-hub-device-update/tree/main/docs/sample-artifacts/libcurl4-doc-remove-apt-manifest.json) indirin ve [bildirim dosyasını içeri aktarın](https://github.com/Azure/iot-hub-device-update/tree/main/docs/sample-artifacts/sample-package-update-1.0.2-importManifest.json). Bu apt bildirimi cihazınızdan yüklenmiş olarak kaldırılacak `libcurl4-doc package` .
-
 1. "Güncelleştirme Içeri aktarma" ve "güncelleştirme dağıtma" bölümlerini yineleyin
+
+3. "Güncelleştirme Içeri aktar" adımı sırasında `sample-package-update-1.0.2-importManifest.json` daha önce indirdiğiniz klasörden bildirim dosyasını içeri aktar ve `sample-1.0.2-libcurl4-doc-remove-apt-manifest.json` apt bildirim güncelleştirme dosyasını seçin. Bu güncelleştirme cihazınızdan yüklenmiş olarak kaldırılacak `libcurl4-doc package` .
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 

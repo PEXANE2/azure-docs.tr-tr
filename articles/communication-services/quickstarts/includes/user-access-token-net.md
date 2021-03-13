@@ -10,12 +10,12 @@ ms.date: 08/20/2020
 ms.topic: include
 ms.custom: include file
 ms.author: tchladek
-ms.openlocfilehash: a8d2a06f5b0ec7ed9a0ef563d7f65e62ef99f3b6
-ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
+ms.openlocfilehash: e6b92ef17e351c398c958bd7ef4430a002c1ae84
+ms.sourcegitcommit: 94c3c1be6bc17403adbb2bab6bbaf4a717a66009
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102623464"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103439135"
 ---
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -45,7 +45,7 @@ dotnet build
 Hala uygulama dizininde, komutunu kullanarak .NET için Azure Iletişim Hizmetleri kimlik kitaplığı 'nı yükleyebilirsiniz `dotnet add package` .
 
 ```console
-dotnet add package Azure.Communication.Identity --version 1.0.0
+dotnet add package Azure.Communication.Identity --version 1.0.0-beta.5
 ```
 
 ### <a name="set-up-the-app-framework"></a>Uygulama çerçevesini ayarlama
@@ -133,7 +133,7 @@ Erişim belirteçleri yeniden verilmesini gerektiren kısa ömürlü kimlik bilg
 
 `CreateUserAndTokenAsync`Bir Iletişim Hizmetleri kimliği oluşturmak ve bunun için bir erişim belirteci vermek için yöntemini kullanın. Parametresi `scopes` , bu erişim belirtecini yetkilendirecek temel öğeler kümesini tanımlar. [Desteklenen eylemlerin listesine](../../concepts/authentication.md)bakın.
 
-```csharp  
+```csharp
 // Issue an identity and an access token with the "voip" scope for the new identity
 var identityAndTokenResponse = await client.CreateUserAndTokenAsync(scopes: new[] { CommunicationTokenScope.VoIP });
 var identity = identityAndTokenResponse.Value.User;

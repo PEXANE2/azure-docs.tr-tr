@@ -2,13 +2,13 @@
 title: JSON ve Bıcep 'de Azure Resource Manager şablonlarının sözdizimini karşılaştırın
 description: JSON ve Bıcep ile geliştirilen Azure Resource Manager şablonlarını karşılaştırır ve diller arasında nasıl dönüştürme yapılacağını gösterir.
 ms.topic: conceptual
-ms.date: 03/03/2021
-ms.openlocfilehash: 29c2b9948957ebc10a26f22f0fe3daf383dfe5ba
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.date: 03/12/2021
+ms.openlocfilehash: 85f85e66e69eede68bab847e4bc68514e65115eb
+ms.sourcegitcommit: df1930c9fa3d8f6592f812c42ec611043e817b3b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102036223"
+ms.lasthandoff: 03/13/2021
+ms.locfileid: "103418054"
 ---
 # <a name="comparing-json-and-bicep-for-templates"></a>Şablonlar için JSON ve Bıcep karşılaştırması
 
@@ -40,42 +40,7 @@ ARM şablonları geliştirmek için JSON kullanmaya alışdıysanız, Bıcep iç
 * Tanımlayıcılar için tutarlı büyük harf kullanın. Ne tür bir büyük küçük harfe kullanılacağı konusunda emin değilseniz, ortası büyük küçük harf 'i deneyin. Örneğin, `param myCamelCasedParameter string`.
 * Yalnızca açıklama kullanıcılara önemli bilgiler sağlıyorsa parametreye bir açıklama ekleyin. `//`Bazı bilgiler için açıklamaları kullanabilirsiniz.
 
-## <a name="decompile-json-to-bicep"></a>JSON 'ı Bıcep 'ye derlemeyi kaldırma
-
-Bıcep CLı, var olan bir ARM şablonunu bir bicep dosyasına derlemeyi sağlayan bir komut sağlar. Bir JSON dosyasını derlemek için şunu kullanın: `bicep decompile "path/to/file.json"`
-
-Bu komut, Bıcep yazma için bir başlangıç noktası sağlar, ancak komut tüm şablonlar için çalışmaz. Komut başarısız olabilir veya derlemeden sonra sorunları çözmeniz gerekebilir. Şu anda, iç içe geçmiş şablonlar yalnızca ' Inner ' ifade değerlendirme kapsamını kullandıklarında derlenerek parçalanamaz.
-
-Bir kaynak grubu için şablonu dışa aktarabilir ve ardından doğrudan bıcep assembler diline komutuna geçirebilirsiniz. Aşağıdaki örnek, bir aktarılmış şablonun nasıl derlenmeyeceğini gösterir.
-
-# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
-
-```azurecli
-az group export --name "your_resource_group_name" > main.json
-bicep decompile main.json
-```
-
-# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
-
-```azurepowershell
-Export-AzResourceGroup -ResourceGroupName "your_resource_group_name" -Path ./main.json
-bicep decompile main.json
-```
-
-# <a name="portal"></a>[Portal](#tab/azure-portal)
-
-[Şablonu Portal üzerinden dışarı aktarın](export-template-portal.md) . `bicep decompile <filename>`İndirilen dosyada kullanın.
-
----
-
-## <a name="build-json-from-bicep"></a>Bıcep 'den JSON oluştur
-
-Bıcep CLı, Bıcep 'yi JSON 'a dönüştürmek için bir komut de sağlar. JSON dosyası oluşturmak için şunu kullanın: `bicep build "path/to/file.json"`
-
-## <a name="side-by-side-view"></a>Yan yana görünüm
-
-[Bicep playzemin](https://aka.ms/bicepdemo) , eşdeğer JSON ve bicep dosyalarını yan yana görüntülemenize olanak sağlar. Her iki sürümü de görmek için örnek bir şablon seçebilirsiniz. Ya da `Decompile` kendı JSON şablonunuzu karşıya yüklemeyi seçin ve eşdeğer Bıcep dosyasını görüntüleyin.
-
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bıcep hakkında daha fazla bilgi için bkz. [bıcep öğreticisi](./bicep-tutorial-create-first-bicep.md).
+* Bıcep hakkında daha fazla bilgi için bkz. [bıcep öğreticisi](./bicep-tutorial-create-first-bicep.md).
+* Dilleri arasında şablonları dönüştürme hakkında bilgi edinmek için bkz. [JSON ve Bıcep arasında ARM şablonlarını dönüştürme](bicep-decompile.md).

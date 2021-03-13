@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: conceptual
 ms.date: 05/08/2020
 ms.author: cshoe
-ms.openlocfilehash: e95cd313d341844eabf4f5c5feae8a8ca3dc9c2e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ab41a336c32a1827c23f4c4619f47dc294a4d2ea
+ms.sourcegitcommit: df1930c9fa3d8f6592f812c42ec611043e817b3b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91826540"
+ms.lasthandoff: 03/13/2021
+ms.locfileid: "103419295"
 ---
 # <a name="authentication-and-authorization-for-azure-static-web-apps-preview"></a>Azure Static Web Apps Önizlemesi için kimlik doğrulaması ve yetkilendirme
 
@@ -62,7 +62,7 @@ Davetler, bireysel yetkilendirme sağlayıcılarına özgüdür, bu nedenle dest
 | Twitter                | username          |
 
 1. [Azure Portal](https://portal.azure.com)bir statik Web Apps kaynağına gidin.
-1. _Ayarlar_altında **rol yönetimi**' ne tıklayın.
+1. _Ayarlar_ altında **rol yönetimi**' ne tıklayın.
 1. **Davet et** düğmesine tıklayın.
 1. Seçenekler listesinden bir _Yetkilendirme sağlayıcısı_ seçin.
 1. _Davetli Ayrıntılar_ kutusuna alıcının Kullanıcı adı veya e-posta adresini ekleyin.
@@ -84,7 +84,7 @@ Kullanıcı davetteki bağlantıya tıkladığında, bunlara karşılık gelen h
 ### <a name="update-role-assignments"></a>Rol atamalarını Güncelleştir
 
 1. [Azure Portal](https://portal.azure.com)bir statik Web Apps kaynağına gidin.
-1. _Ayarlar_altında **rol yönetimi**' ne tıklayın.
+1. _Ayarlar_ altında **rol yönetimi**' ne tıklayın.
 1. Listede kullanıcıya tıklayın.
 1. _Rol_ kutusundaki rol listesini düzenleyin.
 1. **Güncelleştir** düğmesine tıklayın.
@@ -92,7 +92,7 @@ Kullanıcı davetteki bağlantıya tıkladığında, bunlara karşılık gelen h
 ### <a name="remove-user"></a>Kullanıcı kaldırma
 
 1. [Azure Portal](https://portal.azure.com)bir statik Web Apps kaynağına gidin.
-1. _Ayarlar_altında **rol yönetimi**' ne tıklayın.
+1. _Ayarlar_ altında **rol yönetimi**' ne tıklayın.
 1. Listeden kullanıcıyı bulun.
 1. Kullanıcının satırındaki onay kutusunu işaretleyin.
 1. **Sil** düğmesine tıklayın.
@@ -145,19 +145,18 @@ Sağlayıcıya özgü oturum açma yolunu bulmak için aşağıdaki tabloyu kull
 
 Birden fazla sağlayıcıyı desteklemeyi seçtiyseniz, Web sitenizde her biri için sağlayıcıya özgü bir bağlantı oluşturmanız gerekir.
 
-Varsayılan bir sağlayıcıyı _/login_gibi kolay bir yola eşlemek için bir [yol kuralı](routes.md) kullanabilirsiniz.
+Varsayılan bir sağlayıcıyı _/login_ gibi kolay bir yola eşlemek için bir [yol kuralı](./configuration.md#routes) kullanabilirsiniz.
 
 ```json
 {
   "route": "/login",
-  "serve": "/.auth/login/github"
+  "redirect": "/.auth/login/github"
 }
 ```
 
 ### <a name="post-login-redirect"></a>Oturum açma sonrası yeniden yönlendirme
 
 Bir kullanıcının oturum açtıktan sonra belirli bir sayfaya dönmesini istiyorsanız `post_login_redirect_uri` sorgu dizesi parametresinde BIR URL sağlayın.
-
 
 ## <a name="logout"></a>Oturumu Kapat
 
@@ -167,12 +166,12 @@ Bir kullanıcının oturum açtıktan sonra belirli bir sayfaya dönmesini istiy
 <a href="/.auth/logout">Log out</a>
 ```
 
-_/Logout_gibi kolay bir yol eşlemek için bir [yol kuralı](routes.md) kullanabilirsiniz.
+_/Logout_ gibi kolay bir yol eşlemek için bir [yol kuralı](./configuration.md#routes) kullanabilirsiniz.
 
 ```json
 {
   "route": "/logout",
-  "serve": "/.auth/logout"
+  "redirect": "/.auth/logout"
 }
 ```
 

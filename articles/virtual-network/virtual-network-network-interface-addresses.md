@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/22/2020
 ms.author: allensu
-ms.openlocfilehash: 3fd0cfe644ad78059e25d5386cd1a01f56ad9fba
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 1df132e558421d2ec6e26c3883c89457716dfc42
+ms.sourcegitcommit: df1930c9fa3d8f6592f812c42ec611043e817b3b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98216997"
+ms.lasthandoff: 03/13/2021
+ms.locfileid: "103419023"
 ---
 # <a name="add-change-or-remove-ip-addresses-for-an-azure-network-interface"></a>Azure ağ arabirimleri için IP adresi ekleme, değiştirme veya kaldırma
 
@@ -192,8 +192,6 @@ Bir ağ arabiriminin bir ikincil IP yapılandırmasına sıfır veya bir özel [
 
 > [!NOTE]
 > Portalı kullanarak bir IPv6 adresiyle bir ağ arabirimi oluşturabilirsiniz, ancak portalı kullanarak var olan bir ağ arabirimini yeni veya var olan bir sanal makineye ekleyemezsiniz. PowerShell veya Azure CLı kullanarak özel bir IPv6 adresine sahip bir ağ arabirimi oluşturun ve ardından bir sanal makine oluştururken ağ arabirimini bağlayın. Var olan bir sanal makineye atanmış özel bir IPv6 adresi olan bir ağ arabirimi iliştiremezsiniz. Herhangi bir aracı (portal, CLı veya PowerShell) kullanarak bir sanal makineye bağlı herhangi bir ağ arabirimi için bir IP yapılandırmasına özel bir IPv6 adresi ekleyemezsiniz.
-
-Birincil veya ikincil IP yapılandırmasına ortak bir IPv6 adresi atayamazsınız.
 
 ## <a name="skus"></a>SKU'lar
 

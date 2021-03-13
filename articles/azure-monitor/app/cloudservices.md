@@ -4,12 +4,12 @@ description: Application Insights ile web ve çalışan rollerinizi etkili bir �
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 09/05/2018
-ms.openlocfilehash: 1f9204534fcdfbf7c393eaafdbae62c4c4321f2f
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 264d6d4b0b397a29b5dc1db4bb299297c1e30584
+ms.sourcegitcommit: df1930c9fa3d8f6592f812c42ec611043e817b3b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100573877"
+ms.lasthandoff: 03/13/2021
+ms.locfileid: "103419244"
 ---
 # <a name="application-insights-for-azure-cloud-services"></a>Azure Cloud Services için Application Insights
 [Application Insights][start] , bulut hizmetinizdeki [Azure tanılama](../agents/diagnostics-extension-overview.md) verilerle Application Insights SDK 'lardan verileri birleştirerek kullanılabilirlik, performans, başarısızlık ve kullanım için [Azure bulut hizmeti uygulamalarını](https://azure.microsoft.com/services/cloud-services/) izleyebilir. Uygulamanızın gerçek hayattaki performansı ve etkinliğine ilişkin aldığınız geri bildirimlerden yararlanarak her geliştirme yaşam döngüsünde tasarımın yönü konusunda bilinçli kararlar alabilirsiniz.
@@ -52,9 +52,8 @@ Uygulamanızdaki telemetri, Application Insights türünde bir Azure kaynağınd
 Her kaynak bir kaynak grubuna aittir. Kaynak grupları, maliyetleri yönetmek, takım üyelerine erişim vermek ve güncelleştirmeleri tek bir koordine işleminde dağıtmak için kullanılır. Örneğin, bir Azure bulut hizmetini ve Application Insights izleme kaynaklarını tek bir işlemde [dağıtmak için bir komut dosyası yazabilirsiniz](../../azure-resource-manager/templates/deploy-powershell.md) .
 
 ### <a name="resources-for-components"></a>Bileşenler için kaynaklar
-Uygulamanızın her bileşeni için ayrı bir kaynak oluşturmanız önerilir. Diğer bir deyişle, her bir Web rolü ve çalışan rolü için bir kaynak oluşturursunuz. Her bileşeni ayrı ayrı çözümleyebilirsiniz, ancak her bileşenden anahtar grafikleri bir araya getiren bir [Pano](./overview-dashboard.md) oluşturabilirsiniz, böylece bunları tek bir görünümde karşılaştırabilir ve izleyebilirsiniz. 
 
-Alternatif bir yaklaşım, telemetrinin birden fazla rolden aynı kaynağa gönderilmesi, ancak kaynak rolünü tanımlayan [her bir telemetri öğesine bir boyut özelliği eklemektir](./api-filtering-sampling.md#addmodify-properties-itelemetryinitializer) . Bu yaklaşımda, özel durumlar gibi ölçüm grafikleri, normalde çeşitli rollerden sayımların toplamını gösterir, ancak gerekli olduğu gibi, grafiği rol tanımlayıcısına göre segmentleyebilirsiniz. Aramaları aynı boyuta göre de filtreleyebilirsiniz. Bu alternatif, her şeyi aynı anda görüntülemeyi daha kolay hale getirir, ancak roller arasında bazı karışıklıklara de yol açabilir.
+Kaynak rolünü tanımlayan [her bir telemetri öğesine bir boyut özelliği eklemenizi](./api-filtering-sampling.md#addmodify-properties-itelemetryinitializer) öneririz. Bu yaklaşımda, özel durumlar gibi ölçüm grafikleri, normalde çeşitli rollerden sayımların toplamını gösterir, ancak gerekli olduğu gibi, grafiği rol tanımlayıcısına göre segmentleyebilirsiniz. Aramaları aynı boyuta göre de filtreleyebilirsiniz. Bu alternatif, her şeyi aynı anda görüntülemeyi daha kolay hale getirir, ancak roller arasında bazı karışıklıklara de yol açabilir.
 
 Tarayıcı telemetrisi genellikle ait olduğu sunucu tarafı web rolüyle aynı kaynağa dahil edilir.
 

@@ -4,16 +4,16 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/03/2020
 ms.author: trbye
-ms.openlocfilehash: d0298bcd675b1b94999dab3a1ad1c40a6feb7438
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 2466b9b9b812ae9fb590a6678d840661c74f47bd
+ms.sourcegitcommit: df1930c9fa3d8f6592f812c42ec611043e817b3b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93135748"
+ms.lasthandoff: 03/13/2021
+ms.locfileid: "103439169"
 ---
 :::row:::
     :::column span="3":::
-        Konuşma SDK 'Sı, Linux ile kullanıldığında aşağıdaki hedef mimarilerde yalnızca **Ubuntu 16.04/18.04/20.04** , **de, 9/10** , **Red Hat Enterprise Linux (RHEL) 7/8** ve **CentOS 7/8** destekler:
+        Konuşma SDK 'Sı, Linux ile kullanıldığında aşağıdaki hedef mimarilerde yalnızca **Ubuntu 16.04/18.04/20.04**, **de, 9/10**, **Red Hat Enterprise Linux (RHEL) 7/8** ve **CentOS 7/8** destekler:
     :::column-end:::
     :::column:::
         <br>
@@ -31,7 +31,10 @@ ms.locfileid: "93135748"
 > [!IMPORTANT]
 > Linux ARM64 üzerinde C# için .NET Core 3. x (DotNet-SDK-3. x paketi) gereklidir.
 
-### <a name="system-requirements"></a>Sistem gereksinimleri
+> [!NOTE]
+> Konuşma SDK 'sını alp Linux 'ta kullanmak için, ' de alp Linux wiki ' de belgelendiği gibi bir de, chroot ortamı oluşturun [https://wiki.alpinelinux.org/wiki/Running_glibc_programs](running glibc programs) ve sonra da bu yönergeleri takip edin.
+
+### <a name="system-requirements"></a>Sistem Gereksinimleri
 
 Yerel bir uygulama için konuşma SDK 'Sı kullanır `libMicrosoft.CognitiveServices.Speech.core.so` . Hedef mimarinin (x86, x64) uygulamayla eşleştiğinden emin olun. Linux sürümüne bağlı olarak ek bağımlılıklar de gerekebilir.
 

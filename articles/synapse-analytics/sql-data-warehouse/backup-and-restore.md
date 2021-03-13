@@ -11,12 +11,12 @@ ms.date: 11/13/2020
 ms.author: joanpo
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019"
-ms.openlocfilehash: 8fd64023b9c07e8dd426b2b51916db4515a5405a
-ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
+ms.openlocfilehash: 866fe01e11ee53188cea6ea490304462acc1f6a2
+ms.sourcegitcommit: df1930c9fa3d8f6592f812c42ec611043e817b3b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "102451515"
+ms.lasthandoff: 03/13/2021
+ms.locfileid: "103420009"
 ---
 # <a name="backup-and-restore-in-azure-synapse-dedicated-sql-pool"></a>Azure SYNAPSE adanmış SQL havuzunda yedekleme ve geri yükleme
 
@@ -48,7 +48,7 @@ order by run_id desc
 Bu özellik, büyük değişikliklerden önce ve sonra veri ambarınızın geri yükleme noktalarını oluşturmak için anlık görüntüleri el ile tetiklemenize olanak sağlar. Bu özellik, geri yükleme noktalarının mantıksal olarak tutarlı olmasını sağlar ve bu da hızlı kurtarma süresi için herhangi bir iş yükü kesintileri veya Kullanıcı hataları durumunda ek veri koruması sağlar. Kullanıcı tanımlı geri yükleme noktaları yedi gün için kullanılabilir ve sizin adınıza otomatik olarak silinir. Kullanıcı tanımlı geri yükleme noktalarının saklama süresini değiştiremezsiniz. **42 Kullanıcı tanımlı geri yükleme noktaları** , başka bir geri yükleme noktası oluşturmadan önce [silinmesi](/powershell/module/azurerm.sql/remove-azurermsqldatabaserestorepoint) gereken her zaman bir noktada garanti edilir. Anlık görüntüleri, [PowerShell](/powershell/module/az.sql/new-azsqldatabaserestorepoint?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.jsont#examples) veya Azure Portal aracılığıyla Kullanıcı tanımlı geri yükleme noktaları oluşturacak şekilde tetikleyebilirsiniz.
 
 > [!NOTE]
-> 7 günden daha uzun geri yükleme noktalarına ihtiyacınız varsa lütfen bu özelliği [buraya](https://feedback.azure.com/forums/307516-sql-data-warehouse/suggestions/35114410-user-defined-retention-periods-for-restore-points)oylayın. Ayrıca, Kullanıcı tanımlı geri yükleme noktası oluşturabilir ve yeni oluşturulan geri yükleme noktasından yeni bir veri ambarına geri yükleyebilirsiniz. ' Yi geri yükledikten sonra adanmış SQL havuzunu çevrimiçi olarak kullanabilir ve işlem maliyetlerini kaydetmek için süresiz olarak duraklatırsınız. Duraklatılmış veritabanı, Azure Premium Depolama fiyatı üzerinden depolama ücretleri doğurur. Geri yüklenen veri ambarının etkin bir kopyasına ihtiyacınız varsa, bu işlem yalnızca birkaç dakika sürer.
+> 7 günden daha uzun geri yükleme noktalarına ihtiyacınız varsa lütfen bu özelliği [buraya](https://feedback.azure.com/forums/307516-sql-data-warehouse/suggestions/35114410-user-defined-retention-periods-for-restore-points)oylayın. Ayrıca, Kullanıcı tanımlı geri yükleme noktası oluşturabilir ve yeni oluşturulan geri yükleme noktasından yeni bir veri ambarına geri yükleyebilirsiniz. ' Yi geri yükledikten sonra adanmış SQL havuzunu çevrimiçi olarak kullanabilir ve işlem maliyetlerini kaydetmek için süresiz olarak duraklatırsınız. Duraklatılmış veritabanı, Azure SYNAPSE Storage hızında depolama ücretleri doğurur. Geri yüklenen veri ambarının etkin bir kopyasına ihtiyacınız varsa, bu işlem yalnızca birkaç dakika sürer.
 
 ### <a name="restore-point-retention"></a>Geri yükleme noktası bekletme
 

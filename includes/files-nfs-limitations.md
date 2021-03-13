@@ -1,6 +1,6 @@
 ---
-title: dosya dahil etme
-description: dosya dahil etme
+title: include dosyası
+description: include dosyası
 services: storage
 author: roygara
 ms.service: storage
@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 12/04/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 372342611265640a2a64100f003880a430d61ca0
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.openlocfilehash: 4b708e80bf335ba8bdce074285857a6f8b77b972
+ms.sourcegitcommit: ec39209c5cbef28ade0badfffe59665631611199
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/05/2020
-ms.locfileid: "96620961"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103439222"
 ---
 Önizleme aşamasında, NFS aşağıdaki sınırlamalara sahiptir:
 
@@ -25,6 +25,7 @@ ms.locfileid: "96620961"
 - Yalnızca Premium katmanı için kullanılabilir.
 - NFS paylaşımları yalnızca sayısal UID/GID kabul eder. İstemcilerinizin alfasayısal UID/GID göndermesini önlemek için KIMLIK eşlemeyi devre dışı bırakmanız gerekir.
 - Paylaşımlar, özel bağlantılar kullanılırken yalnızca tek bir VM 'deki bir depolama hesabından bağlanabilir. Diğer depolama hesaplarından paylaşım bağlama girişimi başarısız olur.
+- Birincil gruba atanan izinlere güvenen iyisidir. Bazen, kullanıcının birincil olmayan grubuna ayrılan izinler, bilinen bir hata nedeniyle erişime erişim izni verebilir.
 
 ### <a name="azure-storage-features-not-yet-supported"></a>Azure depolama özellikleri henüz desteklenmiyor
 

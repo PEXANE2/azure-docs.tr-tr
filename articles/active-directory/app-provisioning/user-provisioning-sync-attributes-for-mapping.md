@@ -8,14 +8,14 @@ ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
 ms.topic: troubleshooting
-ms.date: 05/13/2019
+ms.date: 03/12/2021
 ms.author: kenwith
-ms.openlocfilehash: 62d035b85850f8ac455a85fd93e4d081bbd386e1
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.openlocfilehash: 0f8369c80a7a219b159f31aacb7d10a0dd009d00
+ms.sourcegitcommit: df1930c9fa3d8f6592f812c42ec611043e817b3b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99256094"
+ms.lasthandoff: 03/13/2021
+ms.locfileid: "103418683"
 ---
 # <a name="sync-an-attribute-from-your-on-premises-active-directory-to-azure-ad-for-provisioning-to-an-application"></a>Bir uygulamaya sağlamak için şirket içi Active Directory bir özniteliği Azure AD 'ye eşitleyin
 
@@ -23,9 +23,9 @@ Kullanıcı hazırlama için öznitelik eşlemelerini özelleştirirken, eşleme
 
 Azure AD, Azure AD 'den bir SaaS uygulamasına kullanıcı hesapları sağlarken bir kullanıcı profili oluşturmak için gereken tüm verileri içermelidir. Bazı durumlarda, verileri kullanılabilir hale getirmek için şirket içi AD 'nizden Azure AD 'ye yönelik öznitelikleri eşitlemeniz gerekebilir. Azure AD Connect, bazı öznitelikleri otomatik olarak Azure AD 'ye eşitler, ancak tüm özniteliklere vermez. Ayrıca, varsayılan olarak eşitlenen bazı öznitelikler (SAMAccountName gibi) Microsoft Graph API kullanılarak gösterilmeyebilir. Bu durumlarda, özniteliği Azure AD ile eşleştirmek için Azure AD Connect Directory uzantısı özelliğini kullanabilirsiniz. Bu şekilde, öznitelik Microsoft Graph API 'SI ve Azure AD sağlama hizmeti tarafından görünür olur.
 
-Sağlama için ihtiyaç duyduğunuz veriler Active Directory, ancak yukarıda açıklanan nedenlerden dolayı sağlama için kullanılamazsa, aşağıdaki adımları izleyin.
+Sağlama için ihtiyaç duyduğunuz veriler Active Directory, ancak yukarıda açıklanan nedenlerden dolayı sağlama için kullanılamazsa, uzantı öznitelikleri oluşturmak için Azure AD Connect veya PowerShell kullanabilirsiniz. 
  
-## <a name="sync-an-attribute"></a>Bir özniteliği eşitleme 
+## <a name="create-an-extension-attribute-using-azure-ad-connect"></a>Azure AD Connect kullanarak uzantı özniteliği oluşturma
 
 1. Azure AD Connect Sihirbazı 'nı açın, görevler ' i ve ardından **eşitleme seçeneklerini Özelleştir**' i seçin.
 
@@ -51,6 +51,33 @@ Sağlama için ihtiyaç duyduğunuz veriler Active Directory, ancak yukarıda a�
 
 > [!NOTE]
 > **ManagedBy** veya **DN/distinguishedName 'dir** gibi şirket içi ad 'den başvuru öznitelikleri sağlama özelliği bugün desteklenmez. Bu özelliği [Kullanıcı seste](https://feedback.azure.com/forums/169401-azure-active-directory)isteyebilirsiniz. 
+
+## <a name="create-an-extension-attribute-using-powershell"></a>PowerShell kullanarak uzantı özniteliği oluşturma
+PowerShell kullanarak özel bir uzantı oluşturun ve bir kullanıcıya bir değer atayın. 
+
+```
+#Connect to your Azure AD tenant   
+Connect-AzureAD
+
+#Create an application (you can instead use an existing application if you would like)
+$App = New-AzureADApplication -DisplayName “test app name” -IdentifierUris https://testapp
+
+#Create a service principal
+New-AzureADServicePrincipal -AppId $App.AppId
+
+#Create an extension property
+New-AzureADApplicationExtensionProperty -ObjectId $App.ObjectId -Name “TestAttributeName” -DataType “String” -TargetObjects “User”
+
+#List users in your tenant to determine the objectid for your user
+Get-AzureADUser
+
+#Set a value for the extension property on the user. Replace the objectid with the id of the user and the extension name with the value from the previous step
+Set-AzureADUserExtension -objectid 0ccf8df6-62f1-4175-9e55-73da9e742690 -ExtensionName “extension_6552753978624005a48638a778921fan3_TestAttributeName”
+
+#Verify that the attribute was added correctly.
+Get-AzureADUser -ObjectId 0ccf8df6-62f1-4175-9e55-73da9e742690 | Select -ExpandProperty ExtensionProperty
+
+```
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

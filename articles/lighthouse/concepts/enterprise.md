@@ -1,32 +1,34 @@
 ---
 title: Kurumsal senaryolarda Azure Lighthouse
 description: Azure açık Thouse özellikleri, birden çok Azure AD kiracısının kullanıldığı bir kuruluşta çapraz kiracı yönetimini basitleştirmek için kullanılabilir.
-ms.date: 08/12/2020
+ms.date: 03/12/2021
 ms.topic: conceptual
-ms.openlocfilehash: ca3d73a6c5b88f7531c3d76eb3bd348fdfe8fa39
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 97b44f71750bdb533e889546f370a9b36ea5d3b4
+ms.sourcegitcommit: df1930c9fa3d8f6592f812c42ec611043e817b3b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100573012"
+ms.lasthandoff: 03/13/2021
+ms.locfileid: "103419363"
 ---
 # <a name="azure-lighthouse-in-enterprise-scenarios"></a>Kurumsal senaryolarda Azure Lighthouse
 
-[Azure Pthouse](../overview.md) için yaygın bir senaryo, müşterilerinin ' Azure Active Directory (Azure AD) kiracılarındaki kaynakları yöneten bir hizmet sağlayıcıdır. Ancak, Azure ışıklı kullanım özellikleri, birden çok Azure AD kiracısının kullanıldığı bir kuruluşta çapraz kiracı yönetimini basitleştirmek için de kullanılabilir.
+[Azure ıthouse](../overview.md) için yaygın bir senaryo, bir hizmet sağlayıcısı müşterilere ait olan Azure Active Directory (Azure AD) kiracılarındaki kaynakları yönetmektedir. Azure ışıklı kullanım özellikleri, birden çok Azure AD kiracısının kullanıldığı bir kuruluşta çapraz kiracı yönetimini basitleştirmek için de kullanılabilir.
 
 ## <a name="single-vs-multiple-tenants"></a>Tek ve birden çok kiracı
 
-Çoğu kuruluş için, yönetim tek bir Azure AD kiracısıyla daha kolay olur. Tek bir kiracının içindeki tüm kaynakların olması, bu Kiracıdaki kullanıcılara, Kullanıcı gruplarına veya hizmet sorumlularına göre yönetim görevlerinin merkezileşmeyi sağlar. Mümkün olduğunda kuruluşunuz için bir kiracı kullanmanızı öneririz. Ancak, bazı kuruluşların birden çok Azure AD kiracıları olabilir. Bazen bu geçici bir durum olabilir. Bu, alımların gerçekleştiği ve uzun süreli bir kiracı birleştirme stratejisi henüz tanımlanmadığı gibi geçici bir durumdur. Diğer zamanlarda, kuruluşların bağımsız olarak bağımsız yan kuruluşlar, coğrafi veya yasal gereksinimler ya da başka hususlar nedeniyle sürekli olarak birden çok kiracının bakımını yapması gerekebilir.
+Çoğu kuruluş için, yönetim tek bir Azure AD kiracısıyla daha kolay olur. Tek bir kiracının içindeki tüm kaynakların olması, bu Kiracıdaki kullanıcılara, Kullanıcı gruplarına veya hizmet sorumlularına göre yönetim görevlerinin merkezileşmeyi sağlar. Mümkün olduğunda kuruluşunuz için bir kiracı kullanmanızı öneririz.
+
+Bazı kuruluşların birden çok Azure AD kiracıları kullanması gerekebilir. Bu, alımların gerçekleştiği ve uzun süreli bir kiracı birleştirme stratejisi henüz tanımlanmadığı gibi geçici bir durum olabilir. Diğer zamanlarda, kuruluşların bağımsız olarak bağımsız yan kuruluşlar, coğrafi veya yasal gereksinimler ya da başka hususlar nedeniyle sürekli olarak birden çok kiracının bakımını yapması gerekebilir.
 
 Çok kiracılı bir mimarinin gerekli olduğu durumlarda, Azure ışıklı kullanımı yönetim işlemlerini merkezileştirmek ve kolaylaştırmaya yardımcı olabilir. [Azure Temsilcili kaynak yönetimini](azure-delegated-resource-management.md)kullanarak, tek bir yönetim kiracısındaki kullanıcılar [çapraz kiracı yönetim işlevlerini](cross-tenant-management-experience.md) merkezi ve ölçeklenebilir bir şekilde gerçekleştirebilir.
 
 ## <a name="tenant-management-architecture"></a>Kiracı Yönetimi mimarisi
 
-Azure açık Thouse 'ı bir kuruluşta kullanmak için, diğer kiracılarda yönetim işlemlerini gerçekleştiren kullanıcıları hangi kiracının dahil edileceğini belirlemeniz gerekir. Diğer bir deyişle, diğer kiracılar için hangi kiracının yönetim kiracısı olacağını belirlemeniz gerekir.
+Azure açık Thouse 'ı bir kuruluşta kullanmak için, diğer kiracılarda yönetim işlemlerini gerçekleştiren kullanıcıları hangi kiracının dahil edileceğini belirlemeniz gerekir. Diğer bir deyişle, diğer kiracılar için bir kiracıyı yöneten kiracı olarak atamanız gerekecektir.
 
-Örneğin, kuruluşunuzun *kiracı a*'yı çağıracağımız tek bir kiracıya sahip olduğunu varsayalım. Kuruluşunuz daha sonra *B* ve *kiracı* kiracı 'yı alır ve bunları ayrı kiracılar olarak tutmanızı gerektiren iş nedenleriniz vardır.
+Örneğin, kuruluşunuzun *kiracı a*'yı çağıracağımız tek bir kiracıya sahip olduğunu varsayalım. Kuruluşunuz daha sonra *B* ve *kiracı* kiracı 'yı alır ve bunları ayrı kiracılar olarak korumanız gereken iş nedenleriniz vardır. Ancak, aynı ilke tanımlarını, yedekleme uygulamalarını ve bunların tümü için aynı kullanıcı kümesi tarafından gerçekleştirilen yönetim görevleri ile birlikte güvenlik süreçlerini kullanmak istersiniz.
 
-Kuruluşunuz, tüm kiracıların tamamında aynı ilke tanımlarını, yedekleme uygulamalarını ve güvenlik süreçlerini kullanmak istiyor. Kiracıda bu görevlerden sorumlu olan kullanıcıları içerdiğinden, kiracı B ve kiracı C içindeki abonelikleri ekleyebilirsiniz, bu da kiracının A içindeki kullanıcıların bu görevleri gerçekleştirmesini sağlar.
+Kiracıda kuruluşunuzda A kiracısı için bu görevleri gerçekleştiren kullanıcıları zaten içerdiği için, kiracı B ' deki ve kiracı C 'nin içindeki abonelikleri ekleyebilirsiniz ve bu da Kiracıdaki aynı kullanıcıların tüm kiracılar genelinde bu görevleri gerçekleştirmesini sağlar.
 
 ![Kiracıdaki kullanıcıları, B kiracısındaki ve kiracı C 'deki kaynakları yöneten diyagram.](../media/enterprise-azure-lighthouse.jpg)
 
@@ -54,7 +56,7 @@ Kuruluştaki çapraz Kiracı Yönetimi için, Azure açık belgeleri belgelerind
 
 Örneğin, yukarıda açıklanan örnekte, kiracı A, hizmet sağlayıcı kiracısı (yöneten kiracı) ve B kiracısı ile kiracı C 'nin müşteri kiracıları olarak düşünülebilir.
 
-Bu örnekte, uygun izinlere sahip bir Kullanıcı kiracıya, Azure portal **müşteriler** sayfasında, [temsilci kaynakları görüntüleyebilir ve yönetebilir](../how-to/view-manage-customers.md) . Benzer şekilde, B ve uygun izinlere sahip kiracı C kullanıcıları, Azure portal **hizmet sağlayıcıları** sayfasında kiracıya [atanmış kaynakları görüntüleyebilir ve yönetebilir](../how-to/view-manage-service-providers.md) .
+Bu örneğe devam ettiğinizde, uygun izinlere sahip bir Kullanıcı kiracıya, Azure portal **müşteriler** sayfasında, [temsilci kaynakları görüntüleyebilir ve yönetebilir](../how-to/view-manage-customers.md) . Benzer şekilde, B ve uygun izinlere sahip kiracı C kullanıcıları, Azure portal **hizmet sağlayıcıları** sayfasında kiracıya [atanmış kaynakları görüntüleyebilir ve yönetebilir](../how-to/view-manage-service-providers.md) .
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

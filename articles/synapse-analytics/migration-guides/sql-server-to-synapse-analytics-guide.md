@@ -2,26 +2,24 @@
 title: "Azure SYNAPSE Analytics 'e SQL Server: geçiş kılavuzu"
 description: SQL veritabanlarınızı Azure SYNAPSE Analytics SQL havuzuna geçirmek için bu kılavuzu izleyin.
 ms.service: synapse-analytics
-ms.subservice: ''
-ms.custom: ''
-ms.devlang: ''
+ms.subservice: sql
 ms.topic: conceptual
 author: julieMSFT
 ms.author: jrasnick
 ms.reviewer: jrasnick
 ms.date: 03/10/2021
-ms.openlocfilehash: 09914b409c7d8412f6ba30d4412e28e264bd50f6
-ms.sourcegitcommit: 94c3c1be6bc17403adbb2bab6bbaf4a717a66009
+ms.openlocfilehash: 9a7888d3ccf7e033f15f184227c65c746780aa12
+ms.sourcegitcommit: df1930c9fa3d8f6592f812c42ec611043e817b3b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/12/2021
-ms.locfileid: "103225830"
+ms.lasthandoff: 03/13/2021
+ms.locfileid: "103418037"
 ---
 # <a name="migration-guide-sql-server-to-a-dedicated-sql-pool-in-azure-synapse-analytics"></a>Geçiş Kılavuzu: Azure SYNAPSE Analytics 'te adanmış bir SQL havuzuna SQL Server 
-Aşağıdaki bölümlerde, mevcut bir SQL Server Veri Ambarı çözümünü Azure SYNAPSE Analytics SQL havuzuna geçirme ile ilgili yenilikler hakkında genel bir bakış sağlanmaktadır
+Aşağıdaki bölümlerde, mevcut bir SQL Server Veri Ambarı çözümünü Azure SYNAPSE Analytics SQL havuzuna geçirme ile ilgili yenilikler hakkında genel bir bakış sağlanmaktadır.
 
 ## <a name="overview"></a>Genel Bakış
-Geçirmeden önce, Azure SYNAPSE Analytics 'in iş yükünüz için en iyi çözüm olduğunu doğrulamanız gerekir. Azure SYNAPSE Analytics, büyük veriler üzerinde analiz gerçekleştirmek için tasarlanan bir dağıtılmış sistemdir. Azure SYNAPSE Analytics 'e geçiş yapmak, anlaşılması zor olmayan ancak bazı tasarım değişiklikleri gerektirir. Bu işlem biraz zaman alabilir. İşletmeniz bir kurumsal sınıf veri ambarı gerektiriyorsa, avantajlara değer verilir. Ancak, Azure SYNAPSE Analytics 'in gücüne ihtiyacınız yoksa [SQL Server](https://docs.microsoft.com/sql/sql-server/) veya [Azure SQL veritabanı](https://docs.microsoft.com/azure/azure-sql/)kullanmak daha uygun maliyetli bir hale gelir.
+Geçirmeden önce, Azure SYNAPSE Analytics 'in iş yükünüz için en iyi çözüm olduğunu doğrulamanız gerekir. Azure SYNAPSE Analytics, büyük veriler üzerinde analiz gerçekleştirmek için tasarlanan bir dağıtılmış sistemdir. Azure SYNAPSE Analytics 'e geçiş yapmak, anlaşılması zor olmayan bazı tasarım değişiklikleri gerektirir ancak bu işlem biraz zaman alabilir. İşletmeniz bir kurumsal sınıf veri ambarı gerektiriyorsa, avantajlara değer verilir. Bununla birlikte, Azure SYNAPSE Analytics 'in gücüne ihtiyacınız yoksa, [SQL Server](/sql/sql-server/) veya [Azure SQL veritabanı](/azure/azure-sql/database/sql-database-paas-overview)'nı kullanmak daha uygun maliyetli bir hesaplıdır.
 
 Şunları yaptığınızda Azure SYNAPSE Analytics 'i kullanmayı göz önünde bulundurun:
 - Bir veya daha fazla terabayt veri olmalıdır.
@@ -44,10 +42,10 @@ SQL Server Azure SYNAPSE Analytics 'e geçirmek için aşağıdaki önkoşullara
 - Azure SYNAPSE çalışma alanındaki [adanmış BIR SQL havuzu](../get-started-create-workspace.md) . 
 
 ## <a name="pre-migration"></a>Geçiş öncesi
-Mevcut bir çözümü Azure SYNAPSE Analytics 'e geçirme kararı verdikten sonra, başlamadan önce geçiş planlaması önemlidir. Planlamanın birincil amacı, verilerinizin, tablo şemanızın ve kodunuzun Azure SYNAPSE Analytics ile uyumlu olmasını sağlamaktır. Geçerli sisteminiz ile SQL veri ambarınız arasında, geçici çözüm yapmanız gereken bazı uyumluluk farklılıkları vardır. Ayrıca, büyük miktarlarda verilerin Azure 'a geçirilmesi zaman alır. Dikkatli bir planlama, verilerinizi Azure 'a alma sürecini hızlandıracaktır. Planlamanın başka bir temel amacı, çözümünüzün Azure SYNAPSE Analytics 'in sağlamak üzere tasarlandığı yüksek sorgu performansından tam olarak yararlanmasını sağlamak için tasarımınızın ayarlanmasından faydalanır. Ölçek için veri ambarları tasarlamak, benzersiz tasarım desenleri sunarak geleneksel yaklaşımlar her zaman en iyi sonucu vermez. Geçişten sonra bazı tasarım ayarlamaları yapıldığında, işlemden önceki değişiklikleri yapmak zamandan daha sonra zaman kazandırır.
+Mevcut bir çözümü Azure SYNAPSE Analytics 'e geçirme kararı verdikten sonra, başlamadan önce geçişi planlamanız önemlidir. Planlamanın birincil amacı, verilerinizin, tablo şemanızın ve kodunuzun Azure SYNAPSE Analytics ile uyumlu olmasını sağlamaktır. Geçerli sisteminiz ile SQL veri ambarınız arasında, geçici çözüm yapmanız gereken bazı uyumluluk farklılıkları vardır. Ayrıca, büyük miktarlarda verilerin Azure 'a geçirilmesi zaman alır. Dikkatli bir planlama, verilerinizi Azure 'a alma sürecini hızlandıracaktır. Planlamanın başka bir temel amacı, çözümünüzün Azure SYNAPSE Analytics 'in sağlamak üzere tasarlandığı yüksek sorgu performansından tam olarak yararlanmasını sağlamak için tasarımınızın ayarlanmasından faydalanır. Ölçek için veri ambarları tasarlamak, benzersiz tasarım desenleri sunarak geleneksel yaklaşımlar her zaman en iyi sonucu vermez. Geçişten sonra bazı tasarım ayarlamaları yapıldığında, işlemden önceki değişiklikleri yapmak zamandan daha sonra zaman kazandırır.
 
 ## <a name="azure-synapse-pathway"></a>Azure SYNAPSE patika
-Kritik engelleyiciler müşterilerin yüzlerinden biri, bir sistemden diğerine geçiş yaparken SQL kodlarını çevirmektedir. [Azure SYNAPSE patika](https://docs.microsoft.com/sql/tools/synapse-pathway/azure-synapse-pathway-overview) , mevcut veri ambarınızın kod çevirisini otomatikleştirerek modern bir veri ambarı platformuna yükseltmenize yardımcı olur. Azure SYNAPSE Analytics 'e daha hızlı geçiş olanağı sağlayan kod çevirisini otomatikleştiren ücretsiz, sezgisel ve kullanımı kolay bir araçtır.
+Kritik engelleyiciler müşterilerin yüzlerinden biri, bir sistemden diğerine geçiş yaparken SQL kodlarını çevirmektedir. [Azure SYNAPSE patika](/sql/tools/synapse-pathway/azure-synapse-pathway-overview) , mevcut veri ambarınızın kod çevirisini otomatikleştirerek modern bir veri ambarı platformuna yükseltmenize yardımcı olur. Azure SYNAPSE Analytics 'e daha hızlı geçiş olanağı sağlayan kod çevirisini otomatikleştiren ücretsiz, sezgisel ve kullanımı kolay bir araçtır.
 
 ## <a name="migrate"></a>Geçiş
 Başarılı bir geçiş gerçekleştirmek için tablo şemalarınızı, kodunuzu ve verilerinizi geçirmeniz gerekir. Bu konularda daha ayrıntılı yönergeler için bkz.:

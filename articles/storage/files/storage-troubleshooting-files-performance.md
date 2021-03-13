@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 11/16/2020
 ms.author: gunjanj
 ms.subservice: files
-ms.openlocfilehash: 388a4f06d79116c42bf80cb25d0b133474c02192
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 9f858549f36d196c6412aec549d0ab2e2d864145
+ms.sourcegitcommit: df1930c9fa3d8f6592f812c42ec611043e817b3b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101737639"
+ms.lasthandoff: 03/13/2021
+ms.locfileid: "103417680"
 ---
 # <a name="troubleshoot-azure-file-shares-performance-issues"></a>Azure dosya paylaşımları performans sorunlarını giderme
 
@@ -39,7 +39,8 @@ Paylaşımınızın kısıtlanıp kısıtlanmadığını doğrulamak için porta
     Standart dosya paylaşımları için, bir istek kısıtlanmamışsa aşağıdaki yanıt türleri günlüğe kaydedilir:
 
     - Başarılı bir kısıtlama
-    - Clientkısıtlar Lingerror
+    - Başarılı bir şekilde daraltma
+    - Clientshareıopskısıtlar Lingerror
 
     Premium dosya paylaşımları için, bir istek kısıtlanmamışsa aşağıdaki yanıt türleri günlüğe kaydedilir:
 
@@ -244,7 +245,8 @@ Doğrulamak için, portalda Azure ölçümlerini kullanabilirsiniz.
     Standart dosya paylaşımları için aşağıdaki yanıt türlerini seçin:
 
     - Başarılı bir kısıtlama
-    - Clientkısıtlar Lingerror
+    - Başarılı bir şekilde daraltma
+    - Clientshareıopskısıtlar Lingerror
 
     Premium dosya paylaşımları için aşağıdaki yanıt türlerini seçin:
 

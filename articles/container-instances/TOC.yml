@@ -156,6 +156,9 @@
       href: container-instances-reference-yaml.md
     - name: Bağlayıcı
       href: /connectors/aci
+    - name: Azure İlkesi yerleşik ilkeler
+      displayName: 'samples, policies, definitions'
+      href: ./policy-reference.md
 - name: Kaynaklar
   items:
     - name: Microsoft Learn ile becerilerinizi geliştirin

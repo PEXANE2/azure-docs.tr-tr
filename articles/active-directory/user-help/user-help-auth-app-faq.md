@@ -12,12 +12,12 @@ ms.topic: end-user-help
 ms.date: 01/28/2021
 ms.author: curtand
 ms.reviewer: olhaun
-ms.openlocfilehash: 84dde96276414e98cbde05d6e046dce03227f60d
-ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
+ms.openlocfilehash: 8ddc02075d2cdeba4a4fa83a2475ec20c3f18d6e
+ms.sourcegitcommit: df1930c9fa3d8f6592f812c42ec611043e817b3b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/16/2021
-ms.locfileid: "100547868"
+ms.lasthandoff: 03/13/2021
+ms.locfileid: "103418088"
 ---
 # <a name="frequently-asked-questions-faq-about-the-microsoft-authenticator-app"></a>Microsoft Authenticator uygulaması hakkında sık sorulan sorular (SSS)
 
@@ -260,7 +260,7 @@ Y **: Authenticator** uygulaması zaten Multi-Factor Authentication ve hesap yö
 
 **S**: çalışanlar veya öğrenciler kimlik doğrulayıcı uygulamasında parola otomatik doldurma özelliğini kullanacak mı?
 
-Y: Evet, kimlik doğrulayıcı **uygulamasına bir iş** veya okul hesabı eklendiğinde bile, Otomatik Doldur artık kurumsal kullanıcılar için çalışır. Kuruluşunuz için otomatik doldurma yapılandırmak için bir form doldurabilir (izin ver veya Reddet) ve [kimlik doğrulayıcı ekibine gönderebilirsiniz](https://aka.ms/ConfigureAutofillInAuthenticator).
+Y: Evet, kimlik doğrulayıcı **uygulamasına bir iş** veya okul hesabı eklendiğinde bile, [Kişisel Microsoft hesaplarınız](https://go.microsoft.com/fwlink/?linkid=2144423) için otomatik doldurma artık kurumsal kullanıcılar için çalışır. Kuruluşunuz için otomatik doldurmaya izin vermek veya reddetmek ve [Doğrulayıcı ekibine göndermek](https://aka.ms/ConfigureAutofillInAuthenticator)için bir form doldurabilirsiniz. Otomatik doldurma, iş veya okul hesapları için şu anda kullanılamıyor.
 
 **S**: kullanıcılarınızın iş veya okul hesabı parolası otomatik olarak eşitlenir mi?
 

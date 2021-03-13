@@ -6,13 +6,13 @@ ms.author: susabat
 ms.reviewer: susabat
 ms.service: data-factory
 ms.topic: troubleshooting
-ms.date: 12/03/2020
-ms.openlocfilehash: d96c467807af868c07be12f52d913f881b82f732
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.date: 03/12/2021
+ms.openlocfilehash: 4be015b1a8ba4b6fc6ea3acc74318f9a8b298e8e
+ms.sourcegitcommit: df1930c9fa3d8f6592f812c42ec611043e817b3b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102175881"
+ms.lasthandoff: 03/13/2021
+ms.locfileid: "103418105"
 ---
 # <a name="troubleshoot-ci-cd-azure-devops-and-github-issues-in-adf"></a>ADF 'de CI-CD, Azure DevOps ve GitHub sorunlarını giderme 
 
@@ -178,19 +178,21 @@ Azure Resource Manager şablon boyutunu 4mb olarak kısıtlar. Şablonunuzun boy
 
 Küçük ve orta ölçekli çözümler için tek bir şablonun anlaşılması ve bakımının yapılması daha kolay olacaktır. Tüm kaynakları ve değerleri tek bir dosyada görebilirsiniz. Gelişmiş senaryolarda bağlantılı şablonlar çözümü hedeflenen bileşenlere ayırmanıza sağlar. Lütfen [bağlı ve Iç Içe Şablonlar kullanma](../azure-resource-manager/templates/linked-templates.md?tabs=azure-powershell)konusunda en iyi uygulamaları izleyin.
 
-### <a name="cannot-connect-to-git-enterprise"></a>GIT Enterprise 'a bağlanılamıyor 
+### <a name="cannot-connect-to-git-enterprise-cloud"></a>GIT Enterprise buluta bağlanılamıyor 
 
 ##### <a name="issue"></a>Sorun
 
-İzin sorunları nedeniyle GIT Enterprise 'a bağlanamazsınız. **422-Proceslabilen varlık** gibi bir hata görebilirsiniz.
+İzin sorunları nedeniyle GIT Enterprise buluta bağlanamazsınız. **422-Proceslabilen varlık** gibi bir hata görebilirsiniz.
 
 #### <a name="cause"></a>Nedeni
 
-ADF için OAuth yapılandırmadı. URL 'niz yanlış yapılandırılmış.
+* Pred sunucusunda git Enterprise kullanıyorsunuz. 
+* ADF için OAuth yapılandırmadı. 
+* URL 'niz yanlış yapılandırılmış.
 
 ##### <a name="resolution"></a>Çözüm
 
-İlk olarak ADF 'ye OAuth erişimi verirsiniz. Ardından, GIT Enterprise 'a bağlanmak için doğru URL 'yi kullanmanız gerekir. Yapılandırma, müşteri organizasyonları olarak ayarlanmalıdır. Örneğin, ADF önce *https://hostname/api/v3/search/repositories?q=user%3 <customer credential> ..* .. ve başarısız olur. Sonra, *https://hostname/api/v3/orgs/ <org> / <repo> ...* ve başarılı olur. 
+İlk olarak ADF 'ye OAuth erişimi verirsiniz. Ardından, GIT Enterprise 'a bağlanmak için doğru URL 'yi kullanmanız gerekir. Yapılandırma, müşteri organizasyonları olarak ayarlanmalıdır. Örneğin, ADF ilk olarak *https://hostname/api/v3/search/repositories?q=user%3 <customer credential> ....* ve başarısız olur. Sonra, *https://hostname/api/v3/orgs/ <org> / <repo> ...* ve başarılı olur. 
  
 ### <a name="recover-from-a-deleted-data-factory"></a>Silinen bir veri fabrikasından kurtar
 

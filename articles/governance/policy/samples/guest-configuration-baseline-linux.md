@@ -1,19 +1,19 @@
 ---
 title: Başvuru-Linux için Azure Ilkesi Konuk yapılandırma temeli
 description: Azure Ilke Konuk yapılandırması aracılığıyla uygulanan Azure 'da Linux taban çizgisinin ayrıntıları.
-ms.date: 02/26/2021
+ms.date: 03/12/2021
 ms.topic: reference
 ms.custom: generated
-ms.openlocfilehash: 20f589b02f2a43bb3feb954dc4eac2dd6a9c3925
-ms.sourcegitcommit: ec39209c5cbef28ade0badfffe59665631611199
+ms.openlocfilehash: 6b1d3048fdc0945e1ee64e211d2f7b1f9de5e6e6
+ms.sourcegitcommit: df1930c9fa3d8f6592f812c42ec611043e817b3b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/12/2021
-ms.locfileid: "103235035"
+ms.lasthandoff: 03/13/2021
+ms.locfileid: "103419873"
 ---
 # <a name="azure-policy-guest-configuration-baseline-for-linux"></a>Linux için Azure Ilkesi Konuk yapılandırma temeli
 
-Aşağıdaki makalede, **\[ Preview \] Linux makinelerinin Azure Güvenlik temeli** Konuk yapılandırma ilkesi girişim denetimleri için gereksinimleri karşılaması gerekir. Daha fazla bilgi için bkz. Azure [Ilkesi Konuk yapılandırması](../concepts/guest-configuration.md) ve [Azure Güvenlik kıyaslaması (v2) genel bakış](../../../security/benchmarks/overview.md).
+Aşağıdaki makalede, **\[ Preview \] Linux makinelerinin Azure Güvenlik temeli** Konuk yapılandırma ilkesi tanım denetimleri için gereksinimleri karşılaması gerekir. Daha fazla bilgi için bkz. Azure [Ilkesi Konuk yapılandırması](../concepts/guest-configuration.md) ve [Azure Güvenlik kıyaslaması (v2) genel bakış](../../../security/benchmarks/overview.md).
 
 ## <a name="general-security-controls"></a>Genel güvenlik denetimleri
 

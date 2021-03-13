@@ -6,12 +6,12 @@ ms.author: thvankra
 ms.service: managed-instance-apache-cassandra
 ms.topic: quickstart
 ms.date: 03/02/2021
-ms.openlocfilehash: 28599c08f25533e042c03612d035912a8d0f17c0
-ms.sourcegitcommit: 94c3c1be6bc17403adbb2bab6bbaf4a717a66009
+ms.openlocfilehash: 6de2e0f1744b333a830fbe500e2df51e7eaca62d
+ms.sourcegitcommit: df1930c9fa3d8f6592f812c42ec611043e817b3b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/12/2021
-ms.locfileid: "103225379"
+ms.lasthandoff: 03/13/2021
+ms.locfileid: "103419091"
 ---
 # <a name="quickstart-create-an-azure-managed-instance-for-apache-cassandra-cluster-using-azure-cli-preview"></a>Hızlı başlangıç: Azure CLı kullanarak Apache Cassandra kümesi için Azure yönetilen örneği oluşturma (Önizleme)
 
@@ -26,12 +26,12 @@ Bu hızlı başlangıçta Apache Cassandra için Azure yönetilen örneği ile b
 
 [!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-* Bu makale, Azure CLı sürüm 2.12.1 veya üstünü gerektirir. Azure Cloud Shell kullanıyorsanız, en son sürüm zaten yüklüdür.
-
 * Şirket içinde barındırılan veya şirket içi ortamınıza bağlantısı olan [Azure sanal ağı](../virtual-network/virtual-networks-overview.md) . Şirket içi ortamları Azure 'a bağlama hakkında daha fazla bilgi için bkz. Şirket [içi ağı Azure 'A bağlama](https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/) makalesi.
 
 * Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
+> [!IMPORTANT]
+> Bu makale, Azure CLı sürüm 2.12.1 veya üstünü gerektirir. Azure Cloud Shell kullanıyorsanız, en son sürüm zaten yüklüdür.
 
 ## <a name="create-a-managed-instance-cluster"></a><a id="create-cluster"></a>Yönetilen örnek kümesi oluşturma
 

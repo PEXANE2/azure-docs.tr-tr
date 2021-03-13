@@ -4,12 +4,12 @@ description: Kullanımı izlemek ve sorunları tanılamak için cihazınıza vey
 ms.topic: conceptual
 ms.date: 05/11/2020
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 881c657b25d04834d83221c738c578b8281752b7
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: a3fa14dcd406f6372a7fb409b92d9db3e8404ca7
+ms.sourcegitcommit: df1930c9fa3d8f6592f812c42ec611043e817b3b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100593755"
+ms.lasthandoff: 03/13/2021
+ms.locfileid: "103419040"
 ---
 # <a name="application-insights-api-for-custom-events-and-metrics"></a>Özel olaylar ve ölçümler için Application Insights API
 
@@ -439,7 +439,7 @@ exceptions
 | summarize sum(itemCount) by type
 ```
 
-Önemli yığın bilgilerinin çoğu farklı değişkenlere zaten ayıklandı, ancak `details` daha fazla bilgi edinmek için yapıyı ayırabilirsiniz. Bu yapı dinamik olduğundan, sonucu istediğiniz türe atamalısınız. Örneğin:
+Önemli yığın bilgilerinin çoğu farklı değişkenlere zaten ayıklandı, ancak `details` daha fazla bilgi edinmek için yapıyı ayırabilirsiniz. Bu yapı dinamik olduğundan, sonucu istediğiniz türe atamalısınız. Örnek:
 
 ```kusto
 exceptions
@@ -502,7 +502,7 @@ Yöntemi girme veya bir yönteme ayrılma gibi bir tanılama olayını günlüğ
 Boyut sınırı, `message` özellikleri sınırından çok daha yüksek.
 TrackTrace 'in avantajı, oldukça uzun verileri iletiye koyacağınızdır. Örneğin, veri Gönder ' i burada bulabilirsiniz.  
 
-Ayrıca, iletinize önem düzeyi ekleyebilirsiniz. Diğer telemetri gibi, farklı izleme kümelerini filtrelemenize veya aramanıza yardımcı olacak özellik değerleri ekleyebilirsiniz. Örneğin:
+Ayrıca, iletinize önem düzeyi ekleyebilirsiniz. Diğer telemetri gibi, farklı izleme kümelerini filtrelemenize veya aramanıza yardımcı olacak özellik değerleri ekleyebilirsiniz. Örnek:
 
 *C#*
 
@@ -716,21 +716,23 @@ Kullanabileceğiniz özellik [sayısı, özellik değerleri ve ölçümler için
 *JavaScript*
 
 ```javascript
-appInsights.trackEvent
-    ("WinGame",
-        // String properties:
-        {Game: currentGame.name, Difficulty: currentGame.difficulty},
-        // Numeric metrics:
-        {Score: currentGame.score, Opponents: currentGame.opponentCount}
-        );
+appInsights.trackEvent({
+  name: 'some event',
+  properties: { // accepts any type
+    prop1: 'string',
+    prop2: 123.45,
+    prop3: { nested: 'objects are okay too' }
+  }
+});
 
-appInsights.trackPageView
-    ("page name", "http://fabrikam.com/pageurl.html",
-        // String properties:
-        {Game: currentGame.name, Difficulty: currentGame.difficulty},
-        // Numeric metrics:
-        {Score: currentGame.score, Opponents: currentGame.opponentCount}
-        );
+appInsights.trackPageView({
+  name: 'some page',
+  properties: { // accepts any type
+    prop1: 'string',
+    prop2: 123.45,
+    prop3: { nested: 'objects are okay too' }
+  }
+});
 ```
 
 *C#*
@@ -1068,7 +1070,7 @@ var appInsights = window.appInsights || function(config){ ...
 
 ## <a name="telemetrycontext"></a>TelemetryContext
 
-TelemetryClient, tüm telemetri verileriyle birlikte gönderilen değerleri içeren bir Context özelliğine sahiptir. Bunlar normalde standart telemetri modülleri tarafından ayarlanır, ancak bunları kendiniz de ayarlayabilirsiniz. Örneğin:
+TelemetryClient, tüm telemetri verileriyle birlikte gönderilen değerleri içeren bir Context özelliğine sahiptir. Bunlar normalde standart telemetri modülleri tarafından ayarlanır, ancak bunları kendiniz de ayarlayabilirsiniz. Örnek:
 
 ```csharp
 telemetry.Context.Operation.Name = "MyOperationName";

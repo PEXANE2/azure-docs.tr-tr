@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 02/1/2021
 ms.author: miwithro
-ms.openlocfilehash: ca8b9a511de1b71e5d03b8aac7631fc8f524500f
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: 2cf72da8f7ca82c37088cd6456f094ada2580982
+ms.sourcegitcommit: df1930c9fa3d8f6592f812c42ec611043e817b3b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102177945"
+ms.lasthandoff: 03/13/2021
+ms.locfileid: "103418972"
 ---
 # <a name="aks-managed-azure-active-directory-integration"></a>AKS tarafından yönetilen Azure Active Directory tümleştirme
 
@@ -36,7 +36,7 @@ Küme yöneticileri, Kubernetes rol tabanlı erişim denetimini (Kubernetes RBAC
 * Held, en [](https://github.com/helm/helm)düşük held 3,3 sürümünü kullanıyorsanız.
 
 > [!Important]
-> Kubectl 'yi minimum 1.18.1 veya kubelogin sürümü ile kullanmanız gerekir. Doğru sürümü kullanmıyorsanız, kimlik doğrulama sorunları olduğunu fark edeceksiniz.
+> Kubectl 'yi minimum 1.18.1 veya kubelogin sürümü ile kullanmanız gerekir. Kubernetes ve kubectl 'nin ikincil sürümleri arasındaki fark 1 ' den büyük olmalıdır. Doğru sürümü kullanmıyorsanız, kimlik doğrulama sorunları olduğunu fark edeceksiniz.
 
 Kubectl ve kubelogin yüklemek için aşağıdaki komutları kullanın:
 

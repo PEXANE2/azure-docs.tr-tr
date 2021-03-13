@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/28/2020
 ms.author: allensu
-ms.openlocfilehash: f2818965013e44cbbe3202887bf79a737dbbbb58
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.openlocfilehash: ffdd673cc8a357a7156fb3b3e932c524c831db15
+ms.sourcegitcommit: df1930c9fa3d8f6592f812c42ec611043e817b3b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99806978"
+ms.lasthandoff: 03/13/2021
+ms.locfileid: "103418071"
 ---
 # <a name="public-ip-addresses"></a>Genel IP adresleri
 
@@ -54,7 +54,7 @@ Standart SKU genel IP adresleri:
 - 4-30 dakikalık, varsayılan 4 dakikalık, geçersiz giden kaynaklı Flow zaman aşımı süresi 4 dakikadan oluşan, ayarlanabilir bir gelen akış boşta kalma zaman aşımı süresi.
 - Varsayılan olarak güvenli hale getirin ve gelen trafiğe kapalıdır. [Ağ güvenlik grubuyla](./network-security-groups-overview.md#network-security-groups)gelen trafik listesine izin ver.
 - Ağ arabirimlerine, standart genel yük dengeleyicileri veya uygulama ağ geçitlerine atanır. Standart yük dengeleyici hakkında daha fazla bilgi için bkz. [Azure Standart Load Balancer](../load-balancer/load-balancer-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
-- Bölgesel olarak yedekli (tüm 3 bölgeden reklam verebilir), bölgesel (önceden seçilmiş belirli bir kullanılabilirlik bölgesinde garantili) veya bölge olmaması (önceden seçilmiş belirli bir kullanılabilirlik bölgesi ile ilişkilendirilmemiş) olabilir. Kullanılabilirlik alanları hakkında daha fazla bilgi için bkz. [Kullanılabilirlik alanlarına genel bakış](../availability-zones/az-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) ve [Standart Yük Dengeleyici ve Kullanılabilirlik Alanları](../load-balancer/load-balancer-standard-availability-zones.md?toc=%2fazure%2fvirtual-network%2ftoc.json). **Bölgesel olarak yedekli IP 'Ler, yalnızca [3 kullanılabilirlik bölgesinin canlı olduğu bölgelerde](../availability-zones/az-region.md) oluşturulabilir.** Bölgeler etkin olmadan önce oluşturulan IP 'Ler bölge yedekli olmayacaktır.
+- Bölgesel olarak yedekli (tüm 3 bölgeden tanıtılan), bölgesel (önceden seçilmiş belirli bir kullanılabilirlik bölgesinde garantili) veya bölge olmayan (belirli bir önceden seçilmiş kullanılabilirlik bölgesi ile ilişkilendirilmemiş) olabilir. Kullanılabilirlik alanları hakkında daha fazla bilgi için bkz. [Kullanılabilirlik alanlarına genel bakış](../availability-zones/az-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) ve [Standart Yük Dengeleyici ve Kullanılabilirlik Alanları](../load-balancer/load-balancer-standard-availability-zones.md?toc=%2fazure%2fvirtual-network%2ftoc.json). **Bölgesel olarak yedekli IP 'Ler, yalnızca [3 kullanılabilirlik bölgesinin canlı olduğu bölgelerde](../availability-zones/az-region.md) oluşturulabilir.** Bölgeler etkin olmadan önce oluşturulan IP 'Ler bölge yedekli olmayacaktır.
 - [Bölgeler arası yük dengeleyiciler](../load-balancer/cross-region-overview.md) için her noktaya yayın ön uç IP 'si olarak kullanılabilir (Önizleme işlevselliği).
  
 > [!NOTE]
@@ -162,14 +162,17 @@ Azure yük dengeleyici SKU'ları hakkında daha fazla bilgi edinmek için bkz. [
 * Azure sanal ağları
 * Şirket içi ağ (lar). 
 
-Uzak ağla iletişimi etkinleştirmek için VPN Gateway bir genel IP adresi atanır. *Dinamik* genel IP adreslerini yalnızca VPN ağ geçitlerine atayabilirsiniz.
+Uzak ağla iletişimi etkinleştirmek için VPN Gateway bir genel IP adresi atanır. 
+
+* Bir VPNGw 1-5 SKU ön uç yapılandırmasına **dinamik** temel genel IP atayın.
+* VPNGwAZ 1-5 SKU ön uç yapılandırmasına **statik** standart genel IP adresi atayın.
 
 ## <a name="application-gateways"></a>Uygulama ağ geçitleri
 
 Genel bir IP adresini bir Azure **Application Gateway**’in [ön uç](../application-gateway/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) yapılandırmasına atayarak ağ geçidiyle ilişkilendirebilirsiniz. 
 
 * Bir Application Gateway v1 ön uç yapılandırmasına **dinamik** temel genel IP atayın. 
-* Bir v2 ön uç yapılandırmasına **statik** standart SKU adresi atayın.
+* V2 ön uç yapılandırmasına **statik** standart genel IP adresi atayın.
 
 ## <a name="azure-firewall"></a>Azure Güvenlik Duvarı
 

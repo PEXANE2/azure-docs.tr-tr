@@ -4,12 +4,12 @@ ms.service: azure-communication-services
 ms.topic: include
 ms.date: 9/1/2020
 ms.author: mikben
-ms.openlocfilehash: e013765579fd560952172166b24f898b354c1d17
-ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
+ms.openlocfilehash: 195e8fefbf0dbf3ff55e1bd4d043de772000248b
+ms.sourcegitcommit: df1930c9fa3d8f6592f812c42ec611043e817b3b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/11/2021
-ms.locfileid: "103021391"
+ms.lasthandoff: 03/13/2021
+ms.locfileid: "103439078"
 ---
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -26,7 +26,6 @@ ms.locfileid: "103021391"
 > Bu belge, çağıran istemci kitaplığının 1.0.0-Beta. 6 sürümünü kullanır.
 
 `npm install`JavaScript Için Azure Iletişim Hizmetleri 'Ni çağıran ve ortak istemci kitaplıklarını yüklemek için komutunu kullanın.
-Bu belge, çağıran kitaplığın 1.0.0-Beta. 5 sürümündeki türlere başvuru yapabilir.
 
 ```console
 npm install @azure/communication-common --save

@@ -1,14 +1,14 @@
 ---
 title: Önerilen güvenlik uygulamaları
 description: Azure ışıklı kullanımı kullanılırken, güvenlik ve erişim denetimi göz önünde bulundurmanız önemlidir.
-ms.date: 08/12/2020
+ms.date: 03/12/2021
 ms.topic: conceptual
-ms.openlocfilehash: ef2c41cf052e5f79ecf4abf01c8f3fab3dd1de14
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 3aa50833b547882506bfad125992bb1c2f4e85bc
+ms.sourcegitcommit: df1930c9fa3d8f6592f812c42ec611043e817b3b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94843732"
+ms.lasthandoff: 03/13/2021
+ms.locfileid: "103419312"
 ---
 # <a name="recommended-security-practices"></a>Önerilen güvenlik uygulamaları
 
@@ -17,11 +17,11 @@ ms.locfileid: "94843732"
 > [!TIP]
 > Bu öneriler, Azure açık Thouse ile [birden çok kiracıyı yöneten kuruluşlar](enterprise.md) için de geçerlidir.
 
-## <a name="require-azure-ad-multi-factor-authentication"></a>Azure AD Multi-Factor Authentication gerektir
+## <a name="require-azure-ad-multi-factor-authentication"></a>Azure AD Multi-Factor Authentication’ı zorunlu kılma
 
 [Azure AD Multi-Factor Authentication](../../active-directory/authentication/concept-mfa-howitworks.md) (iki adımlı doğrulama olarak da bilinir), saldırganların birden çok kimlik doğrulama adımı gerektirerek bir hesaba erişim sağlamasını önlemeye yardımcı olur. Temsilcili müşteri kaynaklarına erişimi olacak kullanıcılar da dahil olmak üzere, yönettiğiniz kiracınızdaki tüm kullanıcılar için Multi-Factor Authentication gerekir.
 
-Müşterilerinizin kiracılarında Azure AD Multi-Factor Authentication uygulamasını da sağlamasını öneririz.
+Müşterilerinizin kiracılarında Azure AD Multi-Factor Authentication uygulamasını da uygulamasını sormasını öneririz.
 
 ## <a name="assign-permissions-to-groups-using-the-principle-of-least-privilege"></a>En az ayrıcalık ilkesini kullanarak gruplara izin atama
 
@@ -47,5 +47,6 @@ Bu grupları oluşturduktan sonra, gerektiğinde kullanıcıları atayabilirsini
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
+- Azure Güvenlik Kıyaslayıcılarından Azure açık Thouse kılavuzunun nasıl uygulanacağını anlamak için [güvenlik temeli bilgilerini](../security-baseline.md) gözden geçirin.
 - [Azure AD Multi-Factor Authentication dağıtın](../../active-directory/authentication/howto-mfa-getstarted.md).
 - [Çapraz kiracı yönetim deneyimleri](cross-tenant-management-experience.md)hakkında bilgi edinin.

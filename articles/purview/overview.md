@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: overview
 ms.date: 11/30/2020
-ms.openlocfilehash: 77da3406897c31e48d808541f1f9d579eb0a9cb7
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
+ms.openlocfilehash: 3fadfa9d4467209ddbe997afabba27a3752f685d
+ms.sourcegitcommit: df1930c9fa3d8f6592f812c42ec611043e817b3b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97401551"
+ms.lasthandoff: 03/13/2021
+ms.locfileid: "103419941"
 ---
 # <a name="what-is-azure-purview"></a>Azure Purview nedir?
 
@@ -69,6 +69,9 @@ Bir veri kaynağını kaydettikten sonra verileri zenginleştirebilirsiniz. Veri
 Veri kaynaklarını ve bunların kullanımını bulup anlamak, kaynakların kaydedilmesindeki birincil amaçtır. Kurumsal kullanıcıların iş zekası, uygulama geliştirme, veri bilimi veya doğru verilerin gerektiği başka herhangi bir görevde verilere ihtiyacı olabilir. Veri Kataloğu bulma deneyimini, ihtiyaçları ile eşleşen verileri hızlı bir şekilde bulmak, amaca uygunluk durumunu değerlendirmek için verileri anlamak ve veri kaynağını tercih ettiğiniz aracında açarak verileri tüketmek için kullanırlar.
 
 Diğer yandan, kullanıcılar zaten kaydettikleri veri kaynakları için etiketler, belgeler ve ek açıklamalar ekleyerek kataloğa katkıda bulunabilir. Ayrıca, Katalog kullanıcıları topluluğu tarafından bulunan, anlamış ve tüketilen yeni veri kaynaklarını kaydedebilirler.
+
+## <a name="in-region-data-residency"></a>Bölge içi veri yerleşimi
+Azure purview, müşteri verilerini dağıtıldığı bölgenin dışına taşımaz veya depolamaz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

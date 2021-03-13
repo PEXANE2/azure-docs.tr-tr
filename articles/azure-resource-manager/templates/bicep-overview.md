@@ -3,12 +3,12 @@ title: Azure Resource Manager şablonları için bıcep dili
 description: Azure Resource Manager şablonları aracılığıyla Azure 'a altyapı dağıtmak için Bıcep dilini açıklar.
 ms.topic: conceptual
 ms.date: 03/12/2021
-ms.openlocfilehash: 11ba562fa3d91ffc7baeca647ed05e839f9c8013
-ms.sourcegitcommit: ec39209c5cbef28ade0badfffe59665631611199
+ms.openlocfilehash: 599cb378da51c5d13e7db3cf45cacf750c5843cc
+ms.sourcegitcommit: df1930c9fa3d8f6592f812c42ec611043e817b3b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/12/2021
-ms.locfileid: "103232979"
+ms.lasthandoff: 03/13/2021
+ms.locfileid: "103419839"
 ---
 # <a name="what-is-bicep-preview"></a>Bicep (Önizleme) nedir?
 
@@ -24,7 +24,7 @@ Araçları yükledikten sonra [Bıcep öğreticisini](./bicep-tutorial-create-fi
 
 Eşdeğer JSON ve Bıcep dosyalarını yan yana görüntülemek için, [Bıcep PLAYIN](https://aka.ms/bicepdemo)bölümüne bakın.
 
-Bıcep 'ye dönüştürmek istediğiniz var olan bir ARM şablonunuz varsa bkz. [JSON 'U Bıcep 'ye](compare-template-syntax.md#decompile-json-to-bicep)dönüştürme.
+Bıcep 'ye dönüştürmek istediğiniz mevcut bir ARM şablonunuz varsa, bkz. [JSON ve bıcep arasında ARM şablonlarını dönüştürme](bicep-decompile.md).
 
 ## <a name="bicep-improvements"></a>Bıcep geliştirmeleri
 
@@ -89,7 +89,7 @@ Bıcep, tam çözümlerin Azure 'a dağıtılmasıyla ilgili bir DSL. Hedef topl
 
 Her zaman sahip oldukları için tamamen çalışmaya devam ederler. Herhangi bir değişiklik yapmanız gerekmez. Temel alınan ARM şablonu JSON dilini desteklemeye devam edeceğiz. Bıcep dosyaları JSON 'a derlenir ve bu JSON dağıtım için Azure 'a gönderilir.
 
-Hazırsanız, [JSON dosyalarını Bıcep 'ye dönüştürebilirsiniz](compare-template-syntax.md#decompile-json-to-bicep).
+Hazırsanız, [JSON dosyalarını Bıcep 'ye dönüştürebilirsiniz](bicep-decompile.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

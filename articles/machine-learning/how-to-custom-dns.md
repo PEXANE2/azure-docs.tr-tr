@@ -8,15 +8,15 @@ ms.subservice: core
 ms.reviewer: larryfr
 ms.author: jhirono
 author: jhirono
-ms.date: 11/20/2020
+ms.date: 03/12/2021
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 66a709f15191a8142f10f15d825276ea2ba4b83f
-ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
+ms.openlocfilehash: 67341fcc7be21e4fa62c6e52a921fe397c8ffeb6
+ms.sourcegitcommit: df1930c9fa3d8f6592f812c42ec611043e817b3b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102487993"
+ms.lasthandoff: 03/13/2021
+ms.locfileid: "103417629"
 ---
 # <a name="how-to-use-your-workspace-with-a-custom-dns-server"></a>Çalışma alanınızı özel DNS sunucusuyla kullanma
 
@@ -37,23 +37,9 @@ ms.locfileid: "102487993"
 
 - İsteğe bağlı olarak, [Azure CLI](/cli/azure/install-azure-cli) veya [Azure PowerShell](/powershell/azure/install-az-ps).
 
-## <a name="fqdns-in-use"></a>Kullanımdaki FQDN 'Ler
-### <a name="these-fqdns-are-in-use-in-the-following-regions-eastus-southcentralus-and-westus2"></a>Bu FQDN 'Ler şu bölgelerde kullanımda: eastus, Güneydoğu ABD ve westus2.
-Aşağıdaki liste, çalışma alanınız tarafından kullanılan tam etki alanı adlarını (FQDN) içerir:
+## <a name="public-regions"></a>Ortak bölgeler
 
-* `<workspace-GUID>.workspace.<region>.cert.api.azureml.ms`
-* `<workspace-GUID>.workspace.<region>.api.azureml.ms`
-* `<workspace-GUID>.workspace.<region>.experiments.azureml.net`
-* `<workspace-GUID>.workspace.<region>.modelmanagement.azureml.net`
-* `<workspace-GUID>.workspace.<region>.aether.ms`
-* `ml-<workspace-name>-<region>-<workspace-guid>.notebooks.azure.net`
-* Bir işlem örneği oluşturursanız, `<instance-name>.<region>.instances.azureml.ms` çalışma alanı özel uç noktasının özel IP 'si ile için bir giriş de eklemeniz gerekir.
-
-    > [!NOTE]
-    > İşlem örneklerine yalnızca sanal ağ içinden erişilebilir.
-    
-### <a name="these-fqdns-are-in-use-in-all-other-public-regions"></a>Bu FQDN 'Ler diğer tüm genel bölgelerde kullanımda
-Aşağıdaki liste, çalışma alanınız tarafından kullanılan tam etki alanı adlarını (FQDN) içerir:
+Aşağıdaki liste, bir ortak bölgedeyse, çalışma alanınız tarafından kullanılan tam etki alanı adlarını (FQDN) içerir::
 
 * `<workspace-GUID>.workspace.<region>.cert.api.azureml.ms`
 * `<workspace-GUID>.workspace.<region>.api.azureml.ms`
@@ -63,7 +49,7 @@ Aşağıdaki liste, çalışma alanınız tarafından kullanılan tam etki alan�
     > [!NOTE]
     > İşlem örneklerine yalnızca sanal ağ içinden erişilebilir.
 
-### <a name="azure-china-21vianet-regions"></a>Azure Çin 21Vianet bölgeleri
+## <a name="azure-china-21vianet-regions"></a>Azure Çin 21Vianet bölgeleri
 
 Aşağıdaki FQDN 'Ler Azure Çin 21Vianet bölgeleri içindir:
 

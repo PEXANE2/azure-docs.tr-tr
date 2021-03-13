@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 03/12/2021
-ms.openlocfilehash: 1bccfa4d36ad39aec79a50c8a6b6c50260370223
-ms.sourcegitcommit: ec39209c5cbef28ade0badfffe59665631611199
+ms.openlocfilehash: b99cbf91d7fc1c5d90753dfa1461a58eda055180
+ms.sourcegitcommit: df1930c9fa3d8f6592f812c42ec611043e817b3b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/12/2021
-ms.locfileid: "103235097"
+ms.lasthandoff: 03/13/2021
+ms.locfileid: "103418904"
 ---
 # <a name="return-a-semantic-answer-in-azure-cognitive-search"></a>Azure Bilişsel Arama anlam yanıtı döndürme
 
@@ -63,7 +63,7 @@ Anlamsal bir yanıt döndürmek için sorgunun anlam sorgu türü, dili, arama a
 
 + Sorgu dizesi null olmamalı ve soru olarak formüle eklenmelidir. Bu önizlemede, "queryType" ve "queryLanguage" tam olarak örnekte gösterildiği gibi ayarlanmalıdır.
 
-+ "SearchFields" parametresi hangi alanların ayıklama modeline belirteç sağlamasını belirler. Belirteç girişi sırasında en fazla 20.000 belirteç kullanılır, bu nedenle alan listesini kısa alanlarla başlatın ve sonra metin açısından zengin alanlara ilerleme uygulayın. Bu alanı nasıl ayarlayabileceğine ilişkin kesin yönergeler için bkz. [searchFields set](semantic-how-to-query-request.md#searchfields).
++ "SearchFields" parametresi hangi alanların ayıklama modeline belirteç sağlamasını belirler. Bu parametreyi ayarladığınızdan emin olun. En az bir dize alanınız olmalıdır, ancak bir yanıt sağlamak için yararlı olduğunu düşündüğünüz herhangi bir dize alanını dahil etmeniz gerekir. Modele yalnızca belge başına 8.000 belirteç geçirilir. Alan listesini kısa alanlarla başlatın ve metin açısından zengin alanlarla ilerleme durumunu yapın. Bu alanı nasıl ayarlayabileceğine ilişkin kesin yönergeler için bkz. [searchFields set](semantic-how-to-query-request.md#searchfields).
 
 + "Yanıtlar" için, `"answers": "extractive"` döndürülen varsayılan yanıt sayısının bir olması, temel parametre oluşturma ' dır. En fazla beş adede kadar bir sayı ekleyerek yanıt sayısını artırabilirsiniz.  Birden fazla yanıta ihtiyacınız olup olmadığı, uygulamanızın kullanıcı deneyimine ve sonuçları nasıl işlemek istediğinize bağlıdır.
 
