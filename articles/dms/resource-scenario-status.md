@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: troubleshooting
 ms.date: 07/08/2020
-ms.openlocfilehash: 719dcecf3091e03fbcbe6a82d4c618f54243c4e1
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.openlocfilehash: fc2ab86a318086750b11780a7802aa3591065264
+ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102215349"
+ms.lasthandoff: 03/14/2021
+ms.locfileid: "103463519"
 ---
 # <a name="status-of-migration-scenarios-supported-by-azure-database-migration-service"></a>Azure veritabanı geçiş hizmeti tarafından desteklenen geçiş senaryolarının durumu
 
@@ -69,11 +69,11 @@ Aşağıdaki tabloda, çevrimiçi geçişler için Azure veritabanı geçiş hiz
 
 | Hedef  | Kaynak | Destek | Durum |
 | ------------- | ------------- |:-------------:|:-------------:|
-| **Azure SQL DB** | SQL Server | X | GA |
-|   | RDS SQL | X | GA |
+| **Azure SQL DB** | SQL Server | X |  |
+|   | RDS SQL | X |  |
 |   | Oracle | X |  |
 | **Azure SQL DB MI** | SQL Server | ✔ | GA |
-|   | RDS SQL | X | GA |
+|   | RDS SQL | X |  |
 |   | Oracle | X |  |
 | **Azure SQL VM** | SQL Server | X |   |
 |   | Oracle  | X |  |
@@ -88,7 +88,7 @@ Aşağıdaki tabloda, çevrimiçi geçişler için Azure veritabanı geçiş hiz
 |   | RDS PostgreSQL | ✔ | GA |
 
 > [!IMPORTANT]
-> "PostgreSQL için Oracle 'dan Azure veritabanı" geçiş senaryosu (Şu anda önizleme aşamasındadır) 1 Mayıs 2021 ' den sonra kullanılamayacak. Alternatif araç (örneğin, Ora2pg) aracılığıyla destek sağlamaya devam edeceğiz ve Oracle to PostgreSQL geçişleri için en iyi geçiş deneyimini sağlar. En iyi geçiş yöntemleri için bkz. [PostgreSQL için Oracle 'a Azure veritabanı geçiş Kılavuzu] ( https://aka.ms/OracletoPGguide) .
+> "PostgreSQL için Oracle 'dan Azure veritabanı" geçiş senaryosu (Şu anda önizleme aşamasındadır) 1 Mayıs 2021 ' den sonra kullanılamayacak. Alternatif araç (örneğin, Ora2pg) aracılığıyla destek sağlamaya devam edeceğiz ve Oracle to PostgreSQL geçişleri için en iyi geçiş deneyimini sağlar. En iyi geçiş yöntemleri için bkz. [PostgreSQL Için Oracle 'A Azure veritabanı geçiş kılavuzu](https://aka.ms/OracletoPGguide).
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

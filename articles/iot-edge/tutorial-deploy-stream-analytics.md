@@ -7,14 +7,16 @@ ms.date: 07/29/2020
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 61779527d4b855f4327ad4b77a1e22207a94b8c0
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 323973b7646acee07a0c4dbc59834e0aceca75ee
+ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92048381"
+ms.lasthandoff: 03/14/2021
+ms.locfileid: "103462057"
 ---
 # <a name="tutorial-deploy-azure-stream-analytics-as-an-iot-edge-module"></a>Öğretici: Azure Stream Analytics IoT Edge modülü olarak dağıtma
+
+[!INCLUDE [iot-edge-version-all-supported](../../includes/iot-edge-version-all-supported.md)]
 
 Birçok IoT çözümü, IoT cihazlarından buluta ulaşan veriler hakkında bilgi edinmek için analiz hizmetlerini kullanır. Azure IoT Edge ile [Azure Stream Analytics](../stream-analytics/index.yml) mantığını alıp cihazın kendisine aktarabilirsiniz. Telemetri akışlarını uç cihazlarda işleyerek yüklenen veri miktarını ve eyleme dönüştürülebilir içgörülere tepki verme süresini azaltabilirsiniz.
 
@@ -24,7 +26,7 @@ Azure Stream Analytics, veri analizi için hem bulutta hem de IoT Edge cihazlard
 
 Bu öğreticideki Stream Analytics modülü, tekrar eden 30 saniyelik dönemler içindeki ortalama sıcaklığı hesaplar. Bu ortalama değer 70'e ulaştığında modül, eyleme geçmek için cihazla ilgili bir uyarı gönderir. Bu durumda eylem, sıcaklık sensörü simülasyonunu sıfırlamaktır. Bir üretim ortamında bu işlevi kullanarak sıcaklık tehlikeli düzeylere ulaştığında bir makineyi kapatabilir veya önleyici işlemler gerçekleştirebilirsiniz.
 
-Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
+Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > [!div class="checklist"]
 >
 > * Verileri uç cihazlarda işlemek için bir Azure Stream Analytics işi oluşturma.
@@ -60,7 +62,7 @@ Bu bölümde, aşağıdaki adımları sağlayacak bir Azure Stream Analytics iş
 
 IoT Edge cihazında çalıştırmak üzere oluşturduğunuz Azure Stream Analytics işinin cihazdan çağrılabilecek bir şekilde depolanması gerekir. Mevcut bir Azure Depolama hesabını kullanabilir veya şimdi yeni bir tane oluşturabilirsiniz.
 
-1. Azure Portal, **kaynak**  >  **depolama**  >  **depolama hesabı**oluştur ' a gidin.
+1. Azure Portal, **kaynak**  >  **depolama**  >  **depolama hesabı** oluştur ' a gidin.
 
 1. Depolama hesabınızı oluşturmak için aşağıdaki değerleri girin:
 
@@ -68,7 +70,7 @@ IoT Edge cihazında çalıştırmak üzere oluşturduğunuz Azure Stream Analyti
    | ----- | ----- |
    | Abonelik | IoT hub'ınızla aynı aboneliği seçin. |
    | Kaynak grubu | Hızlı başlangıç ve öğreticiler IoT Edge için tüm test kaynaklarınız için aynı kaynak grubunu kullanmanızı öneririz. Örneğin, **IoTEdgeResources**. |
-   | Ad | Depolama hesabınıza benzersiz bir ad verin. |
+   | Name | Depolama hesabınıza benzersiz bir ad verin. |
    | Konum | Size yakın bir konum seçin. |
 
 1. Diğer alanlar için varsayılan değerleri tutun ve **gözden geçir + oluştur**' u seçin.
@@ -119,7 +121,7 @@ Bu bölümde giriş, çıkış ve sorgu öğelerini kullanarak IoT Edge cihazın
 
 1. Diğer alanların varsayılan değerlerini tutun ve **Kaydet**’i seçin.
 
-1. **Iş topolojisi**altında **sorgu**' yı seçin.
+1. **Iş topolojisi** altında **sorgu**' yı seçin.
 
 1. Varsayılan metni aşağıdaki sorguyla değiştirin. 30 saniyelik süre içindeki ortalama makine sıcaklığı 70 dereceye ulaşırsa SQL kodu uyarı çıkışına bir sıfırlama komutu gönderir. Sıfırlama komutu, gerçekleştirilebilecek bir eylem olarak önceden sensöre programlanmıştır.
 
@@ -140,7 +142,7 @@ Bu bölümde giriş, çıkış ve sorgu öğelerini kullanarak IoT Edge cihazın
 
 IoT Edge cihazınıza dağıtılacak Stream Analytics işinizi hazırlamak için işi depolama hesabındaki bir kapsayıcıyla ilişkilendirmeniz gerekir. İşinizi dağıttığınızda iş tanımı depolama kapsayıcısına aktarılır.
 
-1. **Yapılandır**altında **depolama hesabı ayarları** ' nı seçin ve **depolama hesabı ekle**' yi seçin.
+1. **Yapılandır** altında **depolama hesabı ayarları** ' nı seçin ve **depolama hesabı ekle**' yi seçin.
 
    ![Azure Stream Analytics-depolama hesabı ekleme](./media/tutorial-deploy-stream-analytics/add-storage-account.png)
 
@@ -148,7 +150,7 @@ IoT Edge cihazınıza dağıtılacak Stream Analytics işinizi hazırlamak için
 
 1. **Kapsayıcı** alanında **Yeni oluştur**'u seçip depolama kapsayıcısı için bir ad girin.
 
-1. **Kaydet**'i seçin.
+1. **Kaydet**’i seçin.
 
 ## <a name="deploy-the-job"></a>İşi dağıtma
 
@@ -167,7 +169,7 @@ Bu öğreticide iki modül dağıtacaksınız. Birincisi, sıcaklık ve nem sens
 1. SimulatedTemperatureSensor modülünü daha önce bu cihaza dağıttıysanız, bu cihaz için yeniden doldurma olabilir. Aksi takdirde aşağıdaki adımlarla modülü ekleyin:
 
    1. **Ekle**'ye tıklayıp **IoT Edge Modülü**'nü seçin.
-   1. Ad için **SimulatedTemperatureSensor**yazın.
+   1. Ad için **SimulatedTemperatureSensor** yazın.
    1. Görüntü URI'si alanına **mcr.microsoft.com/azureiotedge-simulated-temperature-sensor:1.0** yazın.
    1. Diğer ayarları değiştirmeden bırakın ve **Ekle**' yi seçin.
 
@@ -175,7 +177,7 @@ Bu öğreticide iki modül dağıtacaksınız. Birincisi, sıcaklık ve nem sens
 
    1. **Ekle**'ye tıklayıp **Azure Stream Analytics Modülü**'nü seçin.
    1. Aboneliğinizi ve oluşturduğunuz Azure Stream Analytics Edge işini seçin.
-   1. **Kaydet**'i seçin.
+   1. **Kaydet**’i seçin.
 
    Değişikliklerinizi kaydettikten sonra, Stream Analytics işinizin ayrıntıları oluşturduğunuz depolama kapsayıcısına yayımlanır.
 
@@ -183,7 +185,7 @@ Bu öğreticide iki modül dağıtacaksınız. Birincisi, sıcaklık ve nem sens
 
    **Modül ayarları** sekmesi, standart bir Azure Stream Analytics görüntüsünü işaret eden **görüntü URI 'sine** sahiptir. Bu tek görüntü, bir IoT Edge cihazına dağıtılan her Stream Analytics modülü için kullanılır.
 
-   **Module Ikizi Settings** sekmesi, **asajobınfo**adlı Azure Stream Analytics (ASA) özelliğini tanımlayan JSON 'ı gösterir. Bu özelliğin değeri, depolama kapsayıcınızdaki iş tanımını gösterir. Bu özellik Stream Analytics görüntüsünün belirli iş ayrıntılarınız ile nasıl yapılandırıldığı.
+   **Module Ikizi Settings** sekmesi, **asajobınfo** adlı Azure Stream Analytics (ASA) özelliğini tanımlayan JSON 'ı gösterir. Bu özelliğin değeri, depolama kapsayıcınızdaki iş tanımını gösterir. Bu özellik Stream Analytics görüntüsünün belirli iş ayrıntılarınız ile nasıl yapılandırıldığı.
 
    Varsayılan olarak Stream Analytics modülü, temel aldığı işle aynı adı alır. İsterseniz bu sayfada modül adını değiştirebilirsiniz, ancak gerekli değildir.
 
@@ -193,7 +195,7 @@ Bu öğreticide iki modül dağıtacaksınız. Birincisi, sıcaklık ve nem sens
 
 1. **Rotalar** sekmesinde, iletilerin modüller arasında nasıl geçtiğini tanımlar ve IoT Hub. İletiler ad/değer çiftleri kullanılarak oluşturulur. Default `route` ve `upstream` Name ve Values değerlerini aşağıdaki tabloda gösterilen çiftler ile değiştirin, aşağıdaki ad/değer çiftleri, _{moduleName}_ örneklerini Azure Stream Analytics modülünüzün adıyla değiştirir.
 
-    | Ad | Değer |
+    | Name | Değer |
     | --- | --- |
     | `telemetryToCloud` | `FROM /messages/modules/SimulatedTemperatureSensor/* INTO $upstream` |
     | `alertsToCloud` | `FROM /messages/modules/{moduleName}/* INTO $upstream` |

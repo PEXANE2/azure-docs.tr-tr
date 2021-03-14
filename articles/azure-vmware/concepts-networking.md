@@ -3,24 +3,24 @@ title: Kavramlar-ağ bağlantısı
 description: Azure VMware çözümünde önemli yönleri ve ağ ve bağlantı durumlarını kullanma hakkında bilgi edinin.
 ms.topic: conceptual
 ms.date: 03/11/2021
-ms.openlocfilehash: 9531e08ea4e50ae30058b0630cd12c2383d90fde
-ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
+ms.openlocfilehash: cd62949c13b1f12e635d8d7bf07518a94c4e8d4b
+ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/12/2021
-ms.locfileid: "103197186"
+ms.lasthandoff: 03/14/2021
+ms.locfileid: "103462601"
 ---
 # <a name="azure-vmware-solution-networking-and-interconnectivity-concepts"></a>Azure VMware Çözüm ağı ve karşılıklı bağlantı kavramları
 
 [!INCLUDE [avs-networking-description](includes/azure-vmware-solution-networking-description.md)]
 
-Karşılıklı bağlantı üzerinde yararlı bir bakış, Azure VMware çözümü özel bulut uygulamalarının iki türünü göz önünde bulundurabilmelidir:
+Azure VMware Çözüm özel bulutu 'nda birbirine bağlanmanın iki yolu vardır:
 
 1. [**Temel Azure-yalnızca karşılıklı bağlantı**](#azure-virtual-network-interconnectivity) , özel bulutunuzu yalnızca Azure 'daki tek bir sanal ağla yönetmenizi ve kullanmanızı sağlar. Bu uygulama, Azure VMware Çözüm değerlendirmeleri veya şirket içi ortamlarından erişim gerektirmeyen uygulamalar için idealdir.
 
 1. Şirket içinde [**tam ve özel bulut bağlantısı**](#on-premises-interconnectivity) , şirket Içi ve Azure VMware çözümü özel bulutları arasında karşılıklı bağlantı dahil olmak üzere yalnızca temel Azure uygulamasını genişletir.
  
-Bu makalede, gereksinimler ve sınırlamalar dahil olmak üzere ağ ve bağlantı kurmaya yönelik birkaç temel kavram ele alınacaktır. Ayrıca, Azure VMware çözümü özel bulut bağlantısı uygulamalarının iki türü de daha fazla bilgi ele alınacaktır. Bu makale, ağınızı Azure VMware çözümüyle düzgün şekilde çalışacak şekilde yapılandırmak için bilmeniz gereken bilgileri sağlar.
+Bu makalede, gereksinimler ve sınırlamalar dahil olmak üzere ağ ve bağlantı kurma temel kavramlarını ele alacağız. Bu makale, ağınızı Azure VMware çözümüyle çalışacak şekilde yapılandırmak için bilmeniz gereken bilgileri sağlar.
 
 ## <a name="azure-vmware-solution-private-cloud-use-cases"></a>Azure VMware çözümü özel bulut kullanım örnekleri
 
@@ -36,26 +36,29 @@ Azure VMware çözümü özel bulutları için kullanım örnekleri şunları i�
 
 ## <a name="azure-virtual-network-interconnectivity"></a>Azure sanal ağ bağlantısı
 
-Sanal ağda özel bulut uygulamasına, Azure VMware çözümünüz özel bulutunuzu yönetebilir, özel bulutunuzda iş yüklerini tüketebilir ve ExpressRoute bağlantısı üzerinden Azure hizmetlerine erişebilirsiniz. 
+Azure VMware çözümü özel bulut uygulamasıyla Azure Sanal ağınızı birbirine bağlayabilirsiniz. Azure VMware çözümünüz özel bulutunuzu yönetebilir, özel bulutunuzda iş yüklerini tüketebilir ve diğer Azure hizmetlerine erişebilirsiniz.
 
-Aşağıdaki diyagramda, özel bir bulut dağıtımı sırasında belirlenen temel ağ bağlantısı gösterilmektedir. Azure 'daki bir sanal ağ ile özel bir bulut arasındaki mantıksal, ExpressRoute tabanlı ağı gösterir. Interconnectivity, birincil kullanım örneklerinin üçünü yerine getirir:
-* Azure aboneliğinizdeki VM 'lerden erişilebilen ve şirket içi sistemlerinizden değil, vCenter Server ve NSX-T yöneticisine gelen erişim. 
-* VM 'lerden Azure hizmetlerine giden erişim. 
-* Özel bir bulut çalıştıran iş yüklerinin gelen erişimi ve tüketimi.
+Aşağıdaki diyagramda, özel bir bulut dağıtımı sırasında belirlenen temel ağ bağlantısı gösterilmektedir. Azure 'daki bir sanal ağ ile özel bir bulut arasındaki mantıksal ağı gösterir. Bu bağlantı, Azure VMware çözüm hizmeti 'nin bir parçası olan bir arka uç ExpressRoute aracılığıyla oluşturulur. Interconnectivity aşağıdaki birincil kullanım örneklerini karşılar:
+
+- Azure aboneliğinizdeki VM 'lerden erişilebilen vCenter Server ve NSX-T yöneticisine gelen erişim.
+- Özel buluttaki VM 'lerden Azure hizmetlerine giden erişim.
+- Özel bulutta çalışan iş yüklerinin gelen erişimi.
+
 
 :::image type="content" source="media/concepts/adjacency-overview-drawing-single.png" alt-text="Temel sanal ağdan özel bulut bağlantısına" border="false":::
 
 ## <a name="on-premises-interconnectivity"></a>Şirket içi karşılıklı bağlantı
 
-Sanal ağda ve şirket içinde tam özel bulut uygulamasına, şirket içi ortamlarınızdaki Azure VMware çözümünüz özel bulutlarınıza erişebilirsiniz. Bu uygulama, önceki bölümde açıklanan temel uygulamanın bir uzantısıdır. Temel uygulama gibi, bir ExpressRoute bağlantı hattı gerekir, ancak bu uygulamayla birlikte Şirket içi ortamlarından Azure 'daki özel buluta bağlanmak için kullanılır. 
+Tam bağlantılı senaryoda, Azure sanal ağınızdan ve şirket içi Azure VMware çözümüne erişebilirsiniz. Bu uygulama, önceki bölümde açıklanan temel uygulamanın bir uzantısıdır. Şirket içinden Azure 'da Azure VMware çözümünüz özel bulutuna bağlanmak için bir ExpressRoute bağlantı hattı gereklidir.
 
 Aşağıdaki diyagramda, şirket içi ile özel bulut bağlantısı, aşağıdaki kullanım durumlarını sağlar:
-* Etkin/soğuk çapraz vCenter vMotion
-* Şirket Içinden Azure VMware çözümüne özel bulut yönetimi erişimi
+
+- Şirket içi ve Azure VMware çözümü arasında sık/soğuk vCenter vMotion.
+- Şirket Içinden Azure VMware çözümüne özel bulut yönetimi erişimi.
 
 :::image type="content" source="media/concepts/adjacency-overview-drawing-double.png" alt-text="Sanal ağ ve şirket içi tam özel bulut bağlantısı" border="false":::
 
-Özel bulutunuzun tam bağlantısı için, ExpressRoute Global Reach etkinleştirin ve sonra Azure portal Global Reach için bir yetkilendirme anahtarı ve özel eşleme KIMLIĞI isteyin. Yetkilendirme anahtarı ve eşleme KIMLIĞI, aboneliğinizdeki bir ExpressRoute bağlantı hattı ile yeni özel bulutunuz için ExpressRoute bağlantı hattı arasında Global Reach oluşturmak için kullanılır. Bağlantı kurulduktan sonra, iki ExpressRoute devre dışı, şirket içi ortamlarınızla özel bulutunuz arasında ağ trafiğini yönlendirir.  Yetkilendirme anahtarını ve eşleme KIMLIĞINI isteme ve kullanma yordamları hakkında daha fazla bilgi için, bir [özel buluta eşleme Global Reach ExpressRoute oluşturma öğreticisine](tutorial-expressroute-global-reach-private-cloud.md)bakın.
+Özel bulutunuzun tam bağlantısı için, ExpressRoute Global Reach etkinleştirmeniz ve sonra Azure portal Global Reach için bir yetkilendirme anahtarı ve özel eşleme KIMLIĞI istemeniz gerekir. Yetkilendirme anahtarı ve eşleme KIMLIĞI, aboneliğinizdeki bir ExpressRoute bağlantı hattı ile özel bulutunuzun ExpressRoute bağlantı hattı arasında Global Reach oluşturmak için kullanılır. Bağlantı kurulduktan sonra, iki ExpressRoute devre dışı, şirket içi ortamlarınızla özel bulutunuz arasında ağ trafiğini yönlendirir. Yordamlar hakkında daha fazla bilgi için bkz. [özel buluta eşleme Global Reach ExpressRoute oluşturma öğreticisi](tutorial-expressroute-global-reach-private-cloud.md).
 
 ## <a name="limitations"></a>Sınırlamalar
 [!INCLUDE [azure-vmware-solutions-limits](includes/azure-vmware-solutions-limits.md)]

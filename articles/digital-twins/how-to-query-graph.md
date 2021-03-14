@@ -8,12 +8,12 @@ ms.date: 11/19/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: a38af4c942de280e7b1c094885a1ede6774ead56
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: 3fd504ec36abae3f00cd2a7eb4e1f7b639be0cea
+ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102433225"
+ms.lasthandoff: 03/14/2021
+ms.locfileid: "103462686"
 ---
 # <a name="query-the-azure-digital-twins-twin-graph"></a>Azure Digital TWINS ikizi grafiğini sorgulama
 
@@ -36,8 +36,10 @@ Bu makale, dijital TWINS için sorgu dili yapısını ve ortak sorgu işlemlerin
 
 :::code language="sql" source="~/digital-twins-docs-samples/queries/queries.sql" id="QueryByProperty1":::
 
-> [!NOTE]
-> Dijital ikizin kimliği, `$dtId` meta veri alanı kullanılarak sorgulanır.
+Yukarıdaki sorguda gösterildiği gibi, dijital bir ikizi KIMLIĞI, meta veri alanı kullanılarak sorgulanır `$dtId` .
+
+>[!TIP]
+> İle başlayan meta veri alanlarıyla bir sorgu çalıştırmak için Cloud Shell kullanıyorsanız, `$` `$` bir değişken olmadığını ve sorgu metninde bir sabit değer olarak kullanılması gerektiğini bildirmek Cloud Shell için geri alma ile kaçış yapmalısınız.
 
 Ayrıca, **belirli bir özelliğin tanımlanıp tanımlanmadığına** göre TWINS de alabilirsiniz. Tanımlı bir *konum* özelliği olan TWINS 'i alan bir sorgu aşağıda verilmiştir:
 

@@ -11,26 +11,26 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 09/30/2020
 ms.custom: seodec18
-ms.openlocfilehash: 9a9115b5400cc6d6c1ecc5740af796d831f5dee3
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 8ee2cc5473d83eafc2443f3aea7cab6a2e77727c
+ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95023267"
+ms.lasthandoff: 03/14/2021
+ms.locfileid: "103463570"
 ---
 # <a name="send-events-to-an-azure-time-series-insights-gen1-environment-by-using-an-event-hub"></a>Olay Hub 'ı kullanarak bir Azure Time Series Insights Gen1 ortamına olay gönderme
 
 > [!CAUTION]
 > Bu bir Gen1 makaledir.
 
-Bu makalede, Azure Event Hubs 'da bir olay hub 'ı oluşturma ve yapılandırma açıklanmaktadır. Ayrıca, olayları Event Hubs Azure Time Series Insights göndermek için örnek bir uygulamanın nasıl çalıştırılacağını açıklar. JSON biçiminde olaylar içeren bir olay hub 'ınız varsa, bu öğreticiyi atlayıp [Azure Time Series Insights](./tutorials-set-up-tsi-environment.md)ortamınızı görüntüleyin.
+Bu makalede, Azure Event Hubs 'da bir olay hub 'ı oluşturma ve yapılandırma açıklanmaktadır. Ayrıca, olayları Event Hubs Azure Time Series Insights göndermek için örnek bir uygulamanın nasıl çalıştırılacağını açıklar. JSON biçiminde olaylar içeren bir olay hub 'ınız varsa, bu öğreticiyi atlayıp [Azure Time Series Insights](./tutorial-set-up-environment.md)ortamınızı görüntüleyin.
 
 ## <a name="configure-an-event-hub"></a>Olay hub’ını yapılandırma
 
 1. Bir olay hub 'ı oluşturmayı öğrenmek için [Event Hubs belgelerini](../event-hubs/index.yml)okuyun.
 1. Arama kutusunda **Event Hubs** aratın. Döndürülen listede **Event Hubs**' yi seçin.
 1. Olay Hub 'ınızı seçin.
-1. Bir olay hub 'ı oluşturduğunuzda, bir olay hub 'ı ad alanı oluşturuyorsunuz. Ad alanı içinde henüz bir olay hub 'ı oluşturmadıysanız, menüde, **varlıklar** altında bir olay hub 'ı oluşturun.  
+1. Bir olay hub 'ı oluşturduğunuzda, bir olay hub 'ı ad alanı oluşturuyorsunuz. Ad alanı içinde henüz bir olay hub 'ı oluşturmadıysanız, menüde, **varlıklar** altında bir olay hub 'ı oluşturun.
 
     [![Olay Hub 'ları listesi](media/send-events/tsi-connect-event-hub-namespace.png)](media/send-events/tsi-connect-event-hub-namespace.png#lightbox)
 
@@ -78,7 +78,7 @@ Azure Time Series Insights Gen2 içinde, zaman serisi modelini (TSD) kullanarak 
 
 1. <https://tsiclientsample.azurewebsites.net/windFarmGen.html> öğesine gidin. URL, benzetimli wındmill cihazları oluşturur ve çalıştırır.
 1. Web sayfasındaki **Olay Hub 'ı bağlantı dizesi** kutusunda, [wındmill giriş alanına](#push-events-to-windmills-sample)kopyaladığınız bağlantı dizesini yapıştırın.
-  
+
     [![Birincil anahtar bağlantı dizesini Olay Hub 'ı bağlantı dizesi kutusuna yapıştırın](media/send-events/configure-wind-mill-sim.png)](media/send-events/configure-wind-mill-sim.png#lightbox)
 
 1. **Başlamak Için tıklayın ' ı** seçin.

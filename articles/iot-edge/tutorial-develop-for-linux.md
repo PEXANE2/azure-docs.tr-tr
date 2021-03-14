@@ -9,18 +9,20 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: b352bd92ecc69ca68a6870d3a59ef5e0cdd1daba
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: fea8f52ebf40ba8195de134098693f90315bb384
+ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96920859"
+ms.lasthandoff: 03/14/2021
+ms.locfileid: "103461428"
 ---
-# <a name="tutorial-develop-iot-edge-modules-for-linux-devices"></a>Öğretici: Linux cihazları için IoT Edge modülleri geliştirme
+# <a name="tutorial-develop-iot-edge-modules-with-linux-containers"></a>Öğretici: Linux kapsayıcılarıyla IoT Edge modülleri geliştirme
 
-IoT Edge çalıştıran Linux cihazlara kod geliştirmek ve dağıtmak için Visual Studio Code kullanın.
+[!INCLUDE [iot-edge-version-all-supported](../../includes/iot-edge-version-all-supported.md)]
 
-Hızlı başlangıçta, bir Linux sanal makinesini kullanarak bir IoT Edge cihaz oluşturdunuz ve Azure Marketi 'nden bir modül dağıttınız. Bu öğreticide, bir IoT Edge cihazına kendi kodunuzu geliştirme ve dağıtma işlemi adım adım açıklanmaktadır. Bu makale, belirli programlama dilleri veya Azure hizmetleri hakkında daha ayrıntılı bilgi sağlayan diğer öğreticiler için kullanışlı bir önkoşuldur.
+IoT Edge çalıştıran cihazlara kod geliştirmek ve dağıtmak için Visual Studio Code kullanın.
+
+Hızlı başlangıçta bir IoT Edge cihaz oluşturdunuz ve Azure Marketi 'nden bir modül dağıttınız. Bu öğreticide, bir IoT Edge cihazına kendi kodunuzu geliştirme ve dağıtma işlemi adım adım açıklanmaktadır. Bu makale, belirli programlama dilleri veya Azure hizmetleri hakkında daha ayrıntılı bilgi sağlayan diğer öğreticiler için kullanışlı bir önkoşuldur.
 
 Bu öğretici, **bir Linux cihazına C# modülünü** dağıtma örneğini kullanır. Bu örnek, IoT Edge çözümleri için en yaygın geliştirici senaryosu olduğundan seçilmiştir. Farklı bir dil kullanmayı planlıyor veya bir Azure hizmeti dağıtsanız bile, bu öğretici geliştirme araçları ve kavramlar hakkında bilgi edinmek için hala yararlıdır. Geliştirme sürecine bu girişi tamamladıktan sonra ayrıntıları incelemek için tercih ettiğiniz dili veya Azure hizmetini seçin.
 
@@ -44,7 +46,7 @@ Geliştirme makinesi:
 * [Visual Studio Code için C# (OmniSharp tarafından desteklenen) uzantısı](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp).
 * [.NET Core 2.1 SDK'sı](https://www.microsoft.com/net/download).
 
-Linux üzerinde Azure IoT Edge bir cihaz:
+Bir Azure IoT Edge cihazı:
 
 * Geliştirme makinenizde IoT Edge çalıştırmanızı öneririz, bunun yerine ayrı bir cihaz kullanın. Geliştirme makinesi ve IoT Edge cihaz arasındaki bu ayrım, doğru bir dağıtım senaryosunu daha doğru yansıtmıştır ve farklı kavramları düz tutmaya yardımcı olur.
 * Kullanılabilir ikinci bir cihazınız yoksa, Azure 'da [Linux sanal makinesiyle](quickstart-linux.md)IoT Edge bir cihaz oluşturmak için hızlı başlangıç makalesini kullanın.
@@ -61,7 +63,10 @@ Bu öğreticide IoT Edge modülünün geliştirilmesi gösterilmektedir. Bir *Io
 
 IoT Edge modüller geliştirirken, geliştirme makinesi ve modülün sonunda dağıtıldığı hedef IoT Edge cihaz arasındaki farkı anlamak önemlidir. Modül kodunuzu tutmak için oluşturduğunuz kapsayıcı, *hedef cihazın* işletim SISTEMI (OS) ile aynı olmalıdır. Örneğin, en yaygın senaryo, bir Windows bilgisayarda IoT Edge çalıştıran bir Linux cihazını hedefleyecek bir modül geliştiren kişidir. Bu durumda, kapsayıcı işletim sistemi Linux olur. Bu öğreticiye giderek, *geliştirme MAKINESI işletim* sistemi ve *kapsayıcı işletim sistemi* arasındaki farkı aklınızda bulundurun.
 
-Bu öğretici, IoT Edge çalıştıran Linux cihazlarını hedefler. Geliştirme makineniz Linux kapsayıcıları çalıştırdığı sürece tercih ettiğiniz işletim sistemini kullanabilirsiniz. Bu öğreticinin kullanacağı, Linux cihazları için geliştirme için Visual Studio Code kullanmanızı öneririz. Visual Studio 'Yu da kullanabilirsiniz, ancak iki araç arasındaki DESTEKDE farklılıklar vardır.
+>[!TIP]
+>[Windows üzerinde Linux için IoT Edge](iot-edge-for-linux-on-windows.md)kullanıyorsanız, senaryonuza ait *hedef cihaz* Windows ana bilgisayarı değil, Linux sanal makinedir.
+
+Bu öğretici, Linux kapsayıcılarıyla IoT Edge çalıştıran cihazları hedefler. Geliştirme makineniz Linux kapsayıcıları çalıştırdığı sürece tercih ettiğiniz işletim sistemini kullanabilirsiniz. Bu öğreticinin kullanacağı, Linux kapsayıcılarıyla geliştirme için Visual Studio Code kullanmanızı öneririz. Visual Studio 'Yu da kullanabilirsiniz, ancak iki araç arasındaki DESTEKDE farklılıklar vardır.
 
 Aşağıdaki tabloda Visual Studio Code ve Visual Studio 'da **Linux kapsayıcıları** için desteklenen geliştirme senaryoları listelenmektedir.
 
@@ -97,19 +102,19 @@ IoT Edge modülleri geliştirmek için Visual Studio Code için IoT uzantıları
 
 1. Geliştirme makinenize [Visual Studio Code](https://code.visualstudio.com/) 'yi yükler.
 
-2. Yükleme tamamlandıktan sonra uzantıları **görüntüle**' yi seçin  >  **Extensions**.
+2. Yükleme tamamlandıktan sonra uzantıları **görüntüle**' yi seçin  >  .
 
 3. Aslında IoT Hub ve IoT cihazlarıyla etkileşime başlamanıza yardımcı olan ve IoT Edge modülleri geliştiren bir uzantı koleksiyonu olan **Azure IoT araçları**' nı arayın.
 
-4. **Yükle**’yi seçin. Dahil edilen her uzantı tek tek yüklenir.
+4. **Yükle**'yi seçin. Dahil edilen her uzantı tek tek yüklenir.
 
-5. Uzantılar yükleme tamamlandığında, komut paletini **görüntüle**' yi seçerek komut paleti ' ni açın  >  **Command Palette**.
+5. Uzantılar yükleme tamamlandığında, komut paletini **görüntüle**' yi seçerek komut paleti ' ni açın  >  .
 
 6. Komut paletinde **Azure: oturum aç**' ı arayıp seçin. Azure hesabınızda oturum açmak için yönergeleri izleyin.
 
 7. Komut paletinde, **Azure IoT Hub arayıp seçin: IoT Hub ' i seçin**. Azure aboneliğinizi ve IoT Hub 'ınızı seçmek için istemleri izleyin.
 
-8. Sol taraftaki etkinlik çubuğundaki simgeyi seçerek veya **Görünüm** Gezgini ' ni seçerek Visual Studio Code gezgin bölümünü açın  >  **Explorer**.
+8. Sol taraftaki etkinlik çubuğundaki simgeyi seçerek veya **Görünüm** Gezgini ' ni seçerek Visual Studio Code gezgin bölümünü açın  >  .
 
 9. Gezgin bölümünün en altında, daraltılan **Azure IoT Hub/cihazları** menüsünü genişletin. Komut paleti aracılığıyla seçtiğiniz IoT Hub 'ı ile ilişkili cihazları ve IoT Edge cihazları görmeniz gerekir.
 
@@ -212,7 +217,7 @@ Bazı önemli dağıtım kavramlarını anlamak için modül kodunu ve Dağıtı
 
 Kapsayıcı görüntünüzü kayıt defterinde depolanacak şekilde gönderebilmesi için kapsayıcı kayıt defteri kimlik bilgilerinizi Docker 'a sağlayın.
 
-1. **Görünüm** terminali ' i seçerek Visual Studio Code tümleşik Terminal ' i açın  >  **Terminal**.
+1. **Görünüm** terminali ' i seçerek Visual Studio Code tümleşik Terminal ' i açın  >  .
 
 2. Kayıt defterini oluşturduktan sonra kaydettiğiniz Azure Container Registry kimlik bilgileriyle Docker 'da oturum açın.
 

@@ -2,17 +2,17 @@
 title: Öğretici-Azure VMware çözümünün özel bulutunu silme
 description: Artık ihtiyacınız olmayan bir Azure VMware çözümü özel bulutunu silmeyi öğrenin.
 ms.topic: tutorial
-ms.date: 02/09/2021
-ms.openlocfilehash: b11b8f902691db4bd71fd3f52aaa67d46efea643
-ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
+ms.date: 03/13/2021
+ms.openlocfilehash: 453e7a3316c342cd724a951eafea0ae9fa045506
+ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100101741"
+ms.lasthandoff: 03/14/2021
+ms.locfileid: "103462108"
 ---
 # <a name="tutorial-delete-an-azure-vmware-solution-private-cloud"></a>Öğretici: Azure VMware çözümünü özel bulutu silme
 
-Artık ihtiyacınız olmayan bir Azure VMware çözümü özel bulutunuz varsa, bunu silebilirsiniz. Özel bulut yalıtılmış bir ağ etki alanı, adanmış sunucu konaklarında bir veya daha fazla sağlanan vSphere kümesi ve çeşitli sanal makineler (VM 'Ler) içerir. Özel bir bulutu sildiğinizde, tüm VM 'Ler, verileri ve kümeleri silinir. Adanmış konaklar güvenli bir şekilde temizlenir ve ücretsiz havuza döndürülür. Müşteri için sağlanan ağ etki alanı da silinir.  
+Artık ihtiyacınız olmayan bir Azure VMware çözümü özel bulutunuz varsa, bunu silebilirsiniz. Özel bulut yalıtılmış bir ağ etki alanı, adanmış sunucu konaklarında bir veya daha fazla sağlanan vSphere kümesi ve çeşitli sanal makineler (VM 'Ler) içerir. Özel bir bulutu sildiğinizde, tüm VM 'Ler, verileri ve kümeleri silinir. Adanmış Azure VMware Çözüm Konakları güvenli bir şekilde temizlenir ve ücretsiz havuza döndürülür. Sağlanan ağ adresi alanı da silinir.  
 
 > [!CAUTION]
 > Özel bulutun silinmesi geri alınamaz bir işlemdir. Özel bulut silindikten sonra, tüm çalışan iş yüklerini ve bileşenlerini sonlandırdığı ve genel IP adresleri dahil tüm özel bulut verilerini ve yapılandırma ayarlarını yok etmek için veriler kurtarılamaz.

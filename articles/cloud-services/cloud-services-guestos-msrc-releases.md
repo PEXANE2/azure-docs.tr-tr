@@ -10,17 +10,70 @@ ms.service: cloud-services
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 3/5/2021
+ms.date: 3/12/2021
 ms.author: gunnarc
-ms.openlocfilehash: 518de78d3adc847030c69ef24965d4250d5a4c02
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: 81b3d7ca21699b1e9b0dc91eaae8075f189eecd3
+ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102433208"
+ms.lasthandoff: 03/14/2021
+ms.locfileid: "103461955"
 ---
 # <a name="azure-guest-os"></a>Azure Konuk işletim sistemi
 Aşağıdaki tablolarda, Azure Konuk işletim sistemine uygulanan Microsoft Güvenlik Yanıt Merkezi (MSRC) güncelleştirmeleri gösterilmektedir. Belirli bir güncelleştirmenin kullanmakta olduğunuz Konuk işletim sistemi için geçerli olup olmadığını öğrenmek için bu makaleye arama yapın. Güncelleştirmeler her zaman üzerinde tanıtılan belirli bir [Aile][family-explain] için ileri doğru şekilde devam ederler.
+
+## <a name="march-2021-guest-os"></a>Mart 2021 Konuk işletim sistemi
+
+>[!NOTE] 
+
+>Mart Konuk işletim sistemi, şu anda otomatik güncelleştirmeler için yapılandırılmış bulut hizmeti VM 'lerine alındı. Dağıtım tamamlandığında, bu sürüm Azure portal ve yapılandırma dosyaları aracılığıyla el ile güncelleştirmeler için kullanılabilir hale getirilir. Aşağıdaki düzeltme ekleri Mart Konuk işletim sistemine dahildir. Bu liste değişikliğe tabidir. 
+
+| Ürün Kategorisi | Üst KB makalesi | Güvenlik açığı açıklaması | Konuk işletim sistemi | Ilk tanıtılan Tarih |
+| --- | --- | --- | --- | --- |
+|  Rel 21-03 |  [5000822]  |  En son toplu güncelleştirme (LCU) | 6,29 | 9 Mar, 2021 |
+|  Rel 21-03 |  [4580325]  |  Flash güncelleştirmesi | 3,95, 4,88, 5,53, 6,29 | 13 Ekim 2020 |
+|  Rel 21-03 |  [5000800]  |  IE toplu güncelleştirmeleri | 2,108, 3,95, 4,88 | 9 Mar, 2021 |
+|  Rel 21-03 |  [5000803]  |  En son toplu güncelleştirme (LCU) | 5,53 | 9 Mar, 2021 |
+|  Rel 21-03 |  [4578952]  |  .NET Framework 3,5 güvenlik ve kalite toplaması  | 2,108 | 13 Ekim 2020 |
+|  Rel 21-03 |  [4578955]  |  .NET Framework 4.5.2 güvenlik ve kalite toplaması  | 2,108 | 13 Ekim 2020 |
+|  Rel 21-03 |  [4578953]  |  .NET Framework 3,5 güvenlik ve kalite toplaması  | 4,88 | 13 Ekim 2020 |
+|  Rel 21-03 |  [4578956]  |  .NET Framework 4.5.2 güvenlik ve kalite toplaması  | 4,88 | 13 Ekim 2020 |
+|  Rel 21-03 |  [4578950]  |  .NET Framework 3,5 güvenlik ve kalite toplaması  | 3,95 | 13 Ekim 2020 |
+|  Rel 21-03 |  [4578954]  |  . NET Framework 4.5.2 Security ve Quality ROLLUP  | 3,95 | 13 Ekim 2020 |
+|  Rel 21-03 |  [4601060]  |  . NET Framework 3,5 ve 4.7.2 toplu güncelleştirmesi  | 6,29 | 9 Şubat 2021 |
+|  Rel 21-03 |  [5000841]  |  Aylık toplu  | 2,108 | 9 Mar, 2021 |
+|  Rel 21-03 |  [5000847]  |  Aylık toplu  | 3,95 | 9 Mar, 2021 |
+|  Rel 21-03 |  [5000848]  |  Aylık toplu  | 4,88 | 9 Mar, 2021 |
+|  Rel 21-03 |  [4566426]  |  Hizmet yığını güncelleştirmesi  | 3,95 | 14 Temmuz 2020 |
+|  Rel 21-03 |  [4566425]  |  Hizmet yığını güncelleştirmesi  | 4,88 | 14 Temmuz 2020 |
+|  Rel 21-03 OOB |  [4578013]  |  Tek başına güvenlik güncelleştirmesi  | 4,88 | 19 Ağu 2020 |
+|  Rel 21-03 |  [4592510]  |  Hizmet yığını güncelleştirmesi  | 2,108 | 8. ara, 2020 |
+|  Rel 21-03 |  [5000859]  |  Hizmet yığını güncelleştirmesi  | 6,29 | 9 Mar, 2021 |
+|  Rel 21-03 |  [4494175]  |  Mikro kod  | 5,53 | 1 Eyl, 2020 |
+|  Rel 21-03 |  [4494174]  |  Mikro kod  | 6,29 | 1 Eyl, 2020 |
+
+[5000822]: https://support.microsoft.com/kb/5000822
+[4580325]: https://support.microsoft.com/kb/4580325
+[5000800]: https://support.microsoft.com/kb/5000800
+[5000803]: https://support.microsoft.com/kb/5000803
+[4578952]: https://support.microsoft.com/kb/4578952
+[4578955]: https://support.microsoft.com/kb/4578955
+[4578953]: https://support.microsoft.com/kb/4578953
+[4578956]: https://support.microsoft.com/kb/4578956
+[4578950]: https://support.microsoft.com/kb/4578950
+[4578954]: https://support.microsoft.com/kb/4578954
+[4601060]: https://support.microsoft.com/kb/4601060
+[5000841]: https://support.microsoft.com/kb/5000841
+[5000847]: https://support.microsoft.com/kb/5000847
+[5000848]: https://support.microsoft.com/kb/5000848
+[4566426]: https://support.microsoft.com/kb/4566426
+[4566425]: https://support.microsoft.com/kb/4566425
+[4578013]: https://support.microsoft.com/kb/4578013
+[4592510]: https://support.microsoft.com/kb/4592510
+[5000859]: https://support.microsoft.com/kb/5000859
+[4494175]: https://support.microsoft.com/kb/4494175
+[4494174]: https://support.microsoft.com/kb/4494174
+
 
 ## <a name="february-2021-guest-os"></a>Şubat 2021 Konuk işletim sistemi
 

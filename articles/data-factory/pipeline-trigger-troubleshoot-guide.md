@@ -3,16 +3,16 @@ title: Azure Data Factory 'da işlem hattı düzenleme ve Tetikleyicileri sorunl
 description: Azure Data Factory içinde işlem hattı tetikleme sorunlarını gidermek için farklı yöntemler kullanın.
 author: ssabat
 ms.service: data-factory
-ms.date: 12/15/2020
+ms.date: 03/13/2021
 ms.topic: troubleshooting
 ms.author: susabat
 ms.reviewer: susabat
-ms.openlocfilehash: 2950c175acfdda33394c93649a3e2c41d1264dd2
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: f5039e5a49da202b2dbfa20e56639365ed597c79
+ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101706002"
+ms.lasthandoff: 03/14/2021
+ms.locfileid: "103462006"
 ---
 # <a name="troubleshoot-pipeline-orchestration-and-triggers-in-azure-data-factory"></a>Azure Data Factory 'da işlem hattı düzenleme ve Tetikleyicileri sorunlarını giderme
 
@@ -28,17 +28,27 @@ Azure Data Factory'de işlem hattı çalıştırması, bir işlem hattı yürüt
  
 Data Factory ve özel bir uç noktada çalışan bir Azure işlev uygulamanız var. İşlev uygulamasıyla etkileşime giden bir işlem hattı çalıştırmaya çalışıyorsunuz. Üç farklı yöntem denediniz, ancak biri "Hatalı Istek" hatası döndürüyor ve diğer iki yöntem "103 hatası yasak" döndürüyor.
 
-**Neden**: Data Factory Şu anda işlev uygulamaları için özel bir uç nokta bağlayıcısını desteklememektedir. Azure Işlevleri yalnızca özel bir bağlantıdan gelen bağlantılara izin verecek şekilde yapılandırıldığından çağrıları reddeder.
+**Neden**
 
-**Çözüm**: **privatelinkservice** uç noktası oluşturun ve işlev uygulamanızın DNS ' i belirtin.
+Data Factory Şu anda işlev uygulamaları için özel bir uç nokta bağlayıcısını desteklemez. Azure Işlevleri yalnızca özel bir bağlantıdan gelen bağlantılara izin verecek şekilde yapılandırıldığından çağrıları reddeder.
+
+**Çözünürlük**
+
+Bir **Privatelinkservice** uç noktası oluşturun ve Işlev uygulamanızın DNS ' i belirtin.
 
 ### <a name="a-pipeline-run-is-canceled-but-the-monitor-still-shows-progress-status"></a>İşlem hattı çalıştırması iptal edildi ancak izleyici hala ilerleme durumunu gösteriyor
 
+**Neden**
+
 İşlem hattı çalıştırmasını iptal ettiğinizde, ardışık düzen izlemesi genellikle ilerleme durumunu gösterir. Bu, bir tarayıcı önbelleği sorunu nedeniyle oluşur. Ayrıca, doğru izleme filtrelerine sahip olmayabilirsiniz.
 
-**Çözüm**: Tarayıcıyı yenileyin ve doğru izleme filtrelerini uygulayın.
+**Çözünürlük**
+
+Tarayıcıyı yenileyin ve doğru izleme filtrelerini uygulayın.
  
 ### <a name="you-see-a-delimitedtextmorecolumnsthandefined-error-when-copying-a-pipeline"></a>İşlem hattını kopyalarken bir "Delimitedtextmorecolumnsıısdefined" hatası görürsünüz
+ 
+ **Neden**
  
 Kopyaladığınız bir klasör, değişken sayısı, farklı sınırlayıcılar, quote char ayarları veya bazı veri sorunları gibi farklı şemalarla dosya içeriyorsa Data Factory işlem hattı bu hatayı oluşturabilir:
 
@@ -50,9 +60,13 @@ Message=Error found when processing 'Csv/Tsv Format Text' source '0_2020_11_09_1
 Source=Microsoft.DataTransfer.Common,'
 `
 
-**Çözüm**: kopyalama etkinliğini oluştururken **ikili kopya** seçeneğini belirleyin. Bu şekilde, toplu kopyalar veya verilerinizi bir Data Lake 'ten diğerine geçirmek için Data Factory şemayı okumak için dosyaları açmaz. Bunun yerine, Data Factory her dosyayı ikili olarak değerlendirir ve diğer konuma kopyalar.
+**Çözünürlük**
 
-### <a name="a-pipeline-run-fails-when-you-reach-the-capacity-limit-of-the-integration-runtime"></a>Tümleştirme çalışma zamanının kapasite sınırına ulaştığınızda işlem hattı çalıştırması başarısız olur
+Kopyalama etkinliği oluştururken **Ikili kopya** seçeneğini belirleyin. Bu şekilde, toplu kopyalar veya verilerinizi bir Data Lake 'ten diğerine geçirmek için Data Factory şemayı okumak için dosyaları açmaz. Bunun yerine, Data Factory her dosyayı ikili olarak değerlendirir ve diğer konuma kopyalar.
+
+### <a name="a-pipeline-run-fails-when-you-reach-the-capacity-limit-of-the-integration-runtime-for-data-flow"></a>Veri akışı için tümleştirme çalışma zamanının kapasite sınırına ulaştığınızda işlem hattı çalıştırması başarısız olur
+
+**Konuda**
 
 Hata iletisi:
 
@@ -60,14 +74,18 @@ Hata iletisi:
 Type=Microsoft.DataTransfer.Execution.Core.ExecutionException,Message=There are substantial concurrent MappingDataflow executions which is causing failures due to throttling under Integration Runtime 'AutoResolveIntegrationRuntime'.
 `
 
-**Neden**: Integration Runtime 'ın kapasite sınırına ulaştınız. Aynı tümleştirme çalışma zamanını aynı anda kullanarak büyük miktarda veri akışı çalıştırıyor olabilirsiniz. Ayrıntılar için bkz. [Azure aboneliği ve hizmet limitleri, Kotalar ve kısıtlamalar](../azure-resource-manager/management/azure-subscription-service-limits.md#version-2) .
+**Neden**
 
-**Çözüm**:
+Tümleştirme çalışma zamanının kapasite sınırına ulaştınız. Aynı tümleştirme çalışma zamanını aynı anda kullanarak büyük miktarda veri akışı çalıştırıyor olabilirsiniz. Ayrıntılar için bkz. [Azure aboneliği ve hizmet limitleri, Kotalar ve kısıtlamalar](../azure-resource-manager/management/azure-subscription-service-limits.md#version-2) .
+
+**Çözünürlük**
  
 - İşlem hatlarınızı farklı tetikleyici saatlerinde çalıştırın.
 - Yeni bir tümleştirme çalışma zamanı oluşturun ve işlem hatlarınızı birden çok tümleştirme çalışma zamanına ayırın.
 
-### <a name="you-have-activity-level-errors-and-failures-in-pipelines"></a>İşlem hatlarında etkinlik düzeyindeki hatalar ve hatalar var
+### <a name="how-to-perform-activity-level-errors-and-failures-in-pipelines"></a>İşlem hatlarında etkinlik düzeyindeki hataları ve hataları gerçekleştirme
+
+**Neden**
 
 Azure Data Factory düzenleme koşullu mantığa izin verir ve kullanıcıların önceki bir etkinliğin sonucuna göre farklı yollar almasına olanak tanır. Dört koşullu yol sağlar: **başarılı** olduğunda (varsayılan geçiş), **hatadan** sonra, **tamamlandığında ve atlamada**.  
 
@@ -75,16 +93,19 @@ Azure Data Factory tüm yaprak düzeyindeki etkinliklerin sonucunu değerlendiri
 
 **Çözünürlük**
 
-1. İşlem [hattı hatalarının ve hatalarının nasıl işleneceğini](https://techcommunity.microsoft.com/t5/azure-data-factory/understanding-pipeline-failures-and-error-handling/ba-p/1630459)izleyerek etkinlik düzeyi denetimleri uygulayın.
-1. İşlem hatlarını [fabrika tarafından sorgu](/rest/api/datafactory/pipelineruns/querybyfactory)izleyen düzenli aralıklarla izlemek için Azure Logic Apps kullanın.
+* İşlem [hattı hatalarının ve hatalarının nasıl işleneceğini](https://techcommunity.microsoft.com/t5/azure-data-factory/understanding-pipeline-failures-and-error-handling/ba-p/1630459)izleyerek etkinlik düzeyi denetimleri uygulayın.
+* İşlem hatlarını [fabrika tarafından sorgu](/rest/api/datafactory/pipelineruns/querybyfactory)izleyen düzenli aralıklarla izlemek için Azure Logic Apps kullanın.
+* [Görsel olarak Izleme işlem hattı](https://docs.microsoft.com/azure/data-factory/monitor-visually)
 
 ### <a name="how-to-monitor-pipeline-failures-in-regular-intervals"></a>Düzenli aralıklarla işlem hattı başarısızlıklarını izleme
 
+**Neden**
+
 Başarısız Data Factory işlem hatlarını dakikalar içinde izlemeniz, 5 dakika söylemeniz gerekebilir. Uç noktasını kullanarak bir veri fabrikasında işlem hattı çalıştırmalarını sorgulayabilir ve filtreleyebilirsiniz. 
 
-**Çözüm** Bir Azure mantıksal uygulamasını, [fabrika tarafından sorgu](/rest/api/datafactory/pipelineruns/querybyfactory)bölümünde açıklandığı gibi, 5 dakikada bir tüm başarısız işlem hatlarını sorgulamak için ayarlayabilirsiniz. Daha sonra, olayları bilet sistemine bildirebilirsiniz.
-
-Daha fazla bilgi için [Data Factory, Bölüm 2 ' den bildirim gönder '](https://www.mssqltips.com/sqlservertip/5962/send-notifications-from-an-azure-data-factory-pipeline--part-2/)e gidin.
+**Çözünürlük**
+* Bir Azure mantıksal uygulamasını, [fabrika tarafından sorgu](/rest/api/datafactory/pipelineruns/querybyfactory)bölümünde açıklandığı gibi, 5 dakikada bir tüm başarısız işlem hatlarını sorgulamak için ayarlayabilirsiniz. Daha sonra, olayları bilet sistemine bildirebilirsiniz.
+* [Görsel olarak Izleme işlem hattı](https://docs.microsoft.com/azure/data-factory/monitor-visually)
 
 ### <a name="degree-of-parallelism--increase-does-not-result-in-higher-throughput"></a>Paralellik artışının derecesi daha yüksek verimlilik elde etmez
 
@@ -104,6 +125,52 @@ Daha fazla bilgi için [Data Factory, Bölüm 2 ' den bildirim gönder '](https:
 
  * *Her biri* paralel olarak çalıştırılan her bir Için *SetVariable* etkinliğini kullanmamalısınız.
  * Kuyrukların *oluşturulduğu şekilde* göz önünde bulundurarak, müşteri, her bir foreach 'in benzer işleme süresine sahip olduğu birden çok dikkatli ayarlayarak foreach performansını iyileştirebilirler. Bu, uzun çalıştırmanın ardışık olarak değil paralel olarak işlenmesini güvence altına alacak.
+
+ ### <a name="pipeline-status-is-queued-or-stuck-for-a-long-time"></a>İşlem hattı durumu kuyruğa alındı veya uzun bir süre takıldı
+ 
+ **Neden**
+ 
+ Bu durum eşzamanlılık sınırlarını, hizmet kesintilerini, ağ başarısızlıklarını vb. vurmaları gibi çeşitli nedenlerden kaynaklanabilir.
+ 
+ **Çözünürlük**
+ 
+* Eşzamanlılık sınırı: işlem hattınızda bir eşzamanlılık ilkesi varsa, devam eden eski bir işlem hattı çalıştırması olmadığını doğrulayın. Azure Data Factory izin verilen en fazla ardışık düzen eşzamanlılık 10 işlem hatdır. 
+* Sınırları izleme: ADF yazma tuvaline gidin, işlem hattınızı seçin ve kendisine atanmış bir eşzamanlılık özelliği olup olmadığını belirleyin. Varsa, Izleme görünümüne gidin ve devam eden son 45 gün içinde hiçbir şey olmadığından emin olun. Devam eden bir sorun varsa iptal edebilir ve yeni işlem hattı çalışmasının başlaması gerekir.
+* Geçici sorunlar: çalıştırmalarınızın geçici bir ağ sorunundan, kimlik bilgisi hatalarından, hizmet kesintilerine göre etkilenmesi mümkündür.  Bu durumda Azure Data Factory, tüm çalıştırmaları izleyen ve bir sorun olduğunu fark edildiğinde Başlatan bir iç kurtarma işlemine sahiptir. Bu işlem bir saat sonra gerçekleşir, bu nedenle çalıştırma bir saatten uzun bir süre boyunca takılırsa bir destek talebi oluşturun.
+ 
+### <a name="longer-start-up-times-for-activities-in-adf-copy-and-data-flow"></a>ADF kopyalama ve veri akışı etkinliklerinin daha uzun süre başlangıç zamanı
+
+**Neden**
+
+Bu durum, veri akışı veya iyileştirilmiş KııR için yaşam süresi özelliğini uygulamadıysanız oluşabilir.
+
+**Çözünürlük**
+
+* Her kopyalama etkinliğinin başlaması 2 dakika kadar sürüyorsa ve bu sorun birincil olarak bir sanal ağ birleştirmede ( Azure IR yerine) oluşuyorsa, bu bir kopyalama performansı sorunu olabilir. Sorun giderme adımlarını gözden geçirmek için, [kopyalama performansı geliştirmesi](https://docs.microsoft.com/azure/data-factory/copy-activity-performance-troubleshooting) ' ne gidin.
+* Veri akışı etkinlikleri için küme başlangıç süresini azaltmak üzere yaşam süresi özelliğini kullanabilirsiniz. Lütfen [veri akışı Integration Runtime](https://docs.microsoft.com/azure/data-factory/control-flow-execute-data-flow-activity#data-flow-integration-runtime) gözden geçirin.
+
+ ### <a name="hitting-capacity-issues-in-shirself-hosted-integration-runtime"></a>Shar (Şirket içinde barındırılan Integration Runtime) içindeki kapasite sorunlarını vurun
+ 
+ **Neden**
+ 
+Bu durum, iş yükünüze göre kır ölçeğini ölçeklendirmezseniz meydana gelebilir.
+
+**Çözünürlük**
+
+* SHıR 'den bir kapasite sorunuyla karşılaşırsanız, etkinlikleri dengelemek için düğümü yükseltmek üzere VM 'yi yükseltin. Şirket içinde barındırılan bir IR genel hatası veya hatası, kendinden konak IR yükseltmesi veya şirket içinde barındırılan IR bağlantı sorunları hakkında bir hata iletisi alırsanız, [Şirket içinde barındırılan tümleştirme çalışma zamanına sorun giderme](https://docs.microsoft.com/azure/data-factory/self-hosted-integration-runtime-troubleshoot-guide) bölümüne gidin.
+
+### <a name="error-messages-due-to-long-queues-for-adf-copy-and-data-flow"></a>ADF kopyalama ve veri akışı için uzun kuyruklardan kaynaklanan hata iletileri
+
+**Neden**
+
+Uzun kuyruk ile ilgili hata iletileri çeşitli nedenlerle görünebilir. 
+
+**Çözünürlük**
+* Bağlayıcılar aracılığıyla herhangi bir kaynaktan veya hedefle bir hata iletisi alırsanız, uzun bir kuyruk üretebilir, [bağlayıcı sorun giderme kılavuzu](https://docs.microsoft.com/azure/data-factory/connector-troubleshoot-guide) ' na gidin.
+* Veri akışı eşleme hakkında uzun bir sıra oluşturabilen bir hata iletisi alırsanız, [veri akışları sorun giderme kılavuzu](https://docs.microsoft.com/azure/data-factory/data-flow-troubleshoot-guide) ' na gidin.
+* Databricks, özel etkinlikler veya HDI gibi diğer etkinliklerle ilgili, uzun bir sıra oluşturabilen bir hata iletisi alırsanız, [etkinlik sorun giderme kılavuzu](https://docs.microsoft.com/azure/data-factory/data-factory-troubleshoot-guide) ' na gidin.
+* Uzun bir sıra oluşturabilen SSIS paketlerini çalıştırmaya yönelik bir hata iletisi alırsanız, [Azure-SSIS paketi yürütme sorun giderme kılavuzu](https://docs.microsoft.com/azure/data-factory/ssis-integration-runtime-ssis-activity-faq) ve [Integration Runtime yönetimi sorun giderme kılavuzu](https://docs.microsoft.com/azure/data-factory/ssis-integration-runtime-management-troubleshoot) ' na gidin.
+
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -2,19 +2,19 @@
 title: Azure VMware çözüm dağıtımını planlama
 description: Bu makalede bir Azure VMware Çözüm dağıtımı iş akışı özetlenmektedir.  Nihai sonuç, sanal makine (VM) oluşturma ve geçirme için hazırlanma ortamıdır.
 ms.topic: tutorial
-ms.date: 02/22/2021
-ms.openlocfilehash: f9d49d7ff8109364c9fc1eee4388b30ccc1a61b6
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.date: 03/13/2021
+ms.openlocfilehash: f1895f14361b7121ae0d78950cdf8eca3cf7eb52
+ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101733678"
+ms.lasthandoff: 03/14/2021
+ms.locfileid: "103462431"
 ---
 # <a name="planning-the-azure-vmware-solution-deployment"></a>Azure VMware çözüm dağıtımını planlama
 
-Bu makalede, dağıtım sırasında kullanılan verileri belirleyip toplayacağınız planlama süreci sunulmaktadır. Dağıtımınızı planlarken, dağıtım sırasında kolay başvuru için topladığınız bilgileri belgelediğinizden emin olun.
+Bu makalede, dağıtım sırasında kullanacağınız bilgileri tanımlamak ve toplamak için planlama işlemi sağlanmıştır. Dağıtımınızı planlarken, dağıtım sırasında kolay başvuru için topladığınız bilgileri belgelediğinizden emin olun.
 
-Bu hızlı başlangıç işlemlerine, sanal makineler (VM 'Ler) ve geçiş için üretime hazırlı bir ortam ile sonuçlanır. 
+Bu hızlı başlangıç bölümünde özetlenen adımlar, sanal makineler (VM 'Ler) ve geçiş için üretim için hazırlanmış bir ortam sağlar. 
 
 >[!IMPORTANT]
 >Azure VMware Çözüm kaynağınızı oluşturmadan önce, konaklarınızın ayrılmaları için bir destek bileti göndermek üzere [Azure VMware Çözüm kaynağını etkinleştirme](enable-azure-vmware-solution.md) makalesini izleyin. Destek ekibi isteğinizi aldıktan sonra, isteğinizi doğrulamak ve konaklarınızı ayırmak için beş iş günü sürer. Mevcut bir Azure VMware çözümü özel bulutunuz varsa ve daha fazla ana bilgisayar ayırmak istiyorsanız, aynı işlemden geçmeniz gerekir. 
@@ -46,21 +46,30 @@ Dağıtım sırasında kullanacağınız kaynak adını tanımlayın.  Kaynak ad
 
 Azure VMware çözümünü dağıttığınızda kullanmak istediğiniz boyut konaklarınızı belirler.  Tüm liste için bkz. [Azure VMware çözümü özel bulutlar ve kümeler](concepts-private-clouds-clusters.md#hosts) belgeleri.
 
-## <a name="number-of-hosts"></a>Ana bilgisayar sayısı
+## <a name="number-of-clusters-and-hosts"></a>Küme ve ana bilgisayar sayısı
 
-Azure VMware Çözüm özel bulutuna dağıtmak istediğiniz ana bilgisayar sayısını tanımlayın.  En az sayıda ana bilgisayar vardır ve en yüksek değer, küme başına 16 ' dır.  Daha fazla bilgi için bkz. [Azure VMware çözümü özel bulut ve kümeler](concepts-private-clouds-clusters.md#clusters) belgeleri.
+Azure VMware çözümünde, özel bir bulut dağıtacaksınız ve birden çok küme oluşturacağız. Dağıtımınız için, her kümede dağıtmak istediğiniz küme sayısını ve f Konakları tanımlamanız gerekir. Küme başına en düşük ana bilgisayar sayısı üç, üst sınır 16 ' dır. Özel bulut başına en fazla küme sayısı dördü. Özel bulut başına en fazla düğüm sayısı 64 ' dir.
 
-İlk dağıtım numarasının ötesine gitmeniz gerekiyorsa, her zaman kümeyi genişletebilirsiniz.
+Daha fazla bilgi için bkz. [Azure VMware çözümü özel bulut ve kümeler](concepts-private-clouds-clusters.md#clusters) belgeleri.
 
-## <a name="ip-address-segment"></a>IP adresi segmenti
+>[!TIP]
+>İlk dağıtım numarasının ötesine gitmeniz gerekiyorsa, her zaman kümeyi genişletebilirsiniz.
 
-Dağıtımı planlamada ilk adım, IP segmentlemesini planlıyor.  Azure VMware çözümü sağladığınız a/22 ağı. Daha sonra bu IP segmentlerini daha küçük parçalara ayırır ve vCenter, VMware HCX, NSX-T ve vMotion için bu IP segmentlerini kullanır.
+## <a name="vcenter-admin-password"></a>vCenter yönetici parolası
+VCenter yönetici parolasını tanımlayın. Dağıtım sırasında bir vCenter yönetici parolası oluşturacaksınız. Parola, cloudadmin@vsphere.local vCenter derlemesi sırasında yönetici hesabına atanır. VCenter 'da oturum açmak için bu kimlik bilgilerini kullanacaksınız.
 
-Azure VMware çözümü, bir iç ExpressRoute devresi üzerinden Microsoft Azure Sanal Ağ bağlanır. Çoğu durumda, ExpressRoute Global Reach aracılığıyla veri merkezinize bağlanır. 
+## <a name="nsx-t-admin-password"></a>NSX-T yönetici parolası
+NSX-T yönetici parolasını tanımlayın. Dağıtım sırasında bir NSX-T yönetici parolası oluşturacaksınız. Parola NSX derlemesi sırasında NSX hesabındaki yönetici kullanıcısına atanır. NSX-T Manager 'da oturum açmak için bu kimlik bilgilerini kullanacaksınız.
 
-Azure VMware çözümü, mevcut Azure ortamınız ve şirket içi ortamınız tüm Exchange yolları (genellikle). Bu durumda, bu adımda tanımladığınız/22 CıDR ağ adresi bloğu, şirket içi veya Azure 'da zaten sahip olduğunuz herhangi bir şeyle çakışmamalıdır.
+## <a name="ip-address-segment-for-private-cloud-management"></a>Özel bulut yönetimi için IP adresi segmenti
+
+Dağıtımı planlamada ilk adım, IP segmentlemesini planlıyor. Azure VMware çözümü bir/22 CıDR ağı gerektirir. Bu adres alanı, daha küçük ağ kesimlerine (alt ağlar) sahiptir ve vCenter, VMware HCX, NSX-T ve vMotion işlevselliği için kullanılır.
+
+Bu/22 CıDR ağ adresi bloğunun, şirket içinde veya Azure 'da zaten mevcut olan herhangi bir ağ segmenti ile çakışmamalıdır.
 
 **Örnek:** 10.0.0.0/22
+
+Azure VMware çözümü, bir iç ExpressRoute Global Reach devresi (aşağıdaki görselleştirmede D-MSEE) aracılığıyla Microsoft Azure Sanal Ağ bağlanır. Bu işlevsellik, Azure VMware çözüm hizmeti 'nin bir parçasıdır ve ücretlendirilmeyecek.
 
 Daha fazla bilgi için bkz. [ağ planlama denetim listesi](tutorial-network-checklist.md#routing-and-subnet-considerations).
 
@@ -68,12 +77,12 @@ Daha fazla bilgi için bkz. [ağ planlama denetim listesi](tutorial-network-chec
 
 ## <a name="ip-address-segment-for-virtual-machine-workloads"></a>Sanal makine iş yükleri için IP adresi segmenti
 
-Özel bulutunuzda ilk ağınızı (NSX segmentinizi) oluşturmak için bir IP segmenti belirler.  Diğer bir deyişle, Azure VMware çözümünde VM 'Leri dağıtabilmeniz için Azure VMware çözümünde bir ağ kesimi oluşturmak istersiniz.   
+Özel bulutunuzda iş yükleriniz için ilk ağınızı (NSX segmenti) oluşturmak üzere bir IP segmenti belirler. Diğer bir deyişle, Azure VMware çözümünde VM 'Leri dağıtabilmeniz için Azure VMware çözümünde bir ağ kesimi oluşturmanız gerekir.
 
-Yalnızca L2 ağlarını genişletmeyi planlıyor olsanız bile, ortamı doğrulayacak bir ağ kesimi oluşturun.
+Ağları Şirket içinden Azure VMware çözümüne (L2) genişletmeyi planlıyor olsanız bile, ortamı doğrulayan bir ağ kesimi oluşturmanız gerekir.
 
-Oluşturulan tüm IP segmentlerinin Azure ve şirket içi parmak izinizdeki benzersiz olması gerektiğini unutmayın.  
-
+Oluşturulan tüm IP segmentlerinin Azure ve şirket içi parmak izinizdeki benzersiz olması gerektiğini unutmayın.
+  
 **Örnek:** 10.0.4.0/24
 
 :::image type="content" source="media/pre-deployment/nsx-segment-diagram.png" alt-text="Sanal makine iş yükleri için IP adresi kesimini tanımla" border="false":::     
@@ -87,9 +96,9 @@ Ağ kesimlerini Şirket içinden Azure VMware çözümüne genişletebilirsiniz 
 - Ağları Şirket içinden genişletmeyi planlıyorsanız, bu ağlar şirket içi VMware ortamınızda bir [vSphere dağıtılmış anahtarına (vDS)](https://docs.vmware.com/en/VMware-vSphere/6.7/com.vmware.vsphere.networking.doc/GUID-B15C6A13-797E-4BCB-B9D9-5CBC5A60C3A6.html) bağlanmalıdır.  
 - Bir [vSphere standart anahtarında](https://docs.vmware.com/en/VMware-vSphere/6.7/com.vmware.vsphere.networking.doc/GUID-350344DE-483A-42ED-B0E2-C811EE927D59.html)canlı genişletmek istediğiniz ağ (ler) i yoksa genişletilemez.
 
-## <a name="attach-virtual-network-to-azure-vmware-solution"></a>Azure VMware çözümüne sanal ağ iliştirme
+## <a name="attach-azure-virtual-network-to-azure-vmware-solution"></a>Azure sanal ağını Azure VMware çözümüne ekleyin
 
-Bu adımda, bir ExpressRoute sanal ağ geçidi tanımlayabilir ve Azure VMware Solution ExpressRoute devresine bağlanmak için kullanılan Azure sanal ağını destektireceksiniz.  ExpressRoute bağlantı hattı, Azure VMware çözümü özel bulutuna ve diğer Azure hizmetlerine, Azure kaynaklarına ve şirket içi ortamlara yönelik bağlantıyı kolaylaştırır.
+Bu adımda, bir ExpressRoute sanal ağ geçidi ve Azure VMware çözümü ExpressRoute devresine bağlanmak için kullanılan destekleyici Azure sanal ağını tanımlayacaksınız.  ExpressRoute bağlantı hattı, Azure VMware çözümü özel bulutuna ve diğer Azure hizmetlerine, Azure kaynaklarına ve şirket içi ortamlara yönelik bağlantıyı kolaylaştırır.
 
 *Mevcut* veya *Yeni* bir ExpressRoute sanal ağ geçidi kullanabilirsiniz.
 

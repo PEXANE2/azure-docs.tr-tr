@@ -8,16 +8,21 @@ ms.date: 11/11/2019
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: b23324a7226d4b3de4908bd78a8f19c799e59f06
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: 67cc470b4f7f119b7f5b86bcb82ea284ab662dfe
+ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96932192"
+ms.lasthandoff: 03/14/2021
+ms.locfileid: "103463247"
 ---
 # <a name="tutorial-an-end-to-end-solution-using-azure-machine-learning-and-iot-edge"></a>Öğretici: Azure Machine Learning ve IoT Edge kullanarak uçtan uca bir çözüm
 
+[!INCLUDE [iot-edge-version-201806](../../includes/iot-edge-version-201806.md)]
+
 IoT uygulamaları, genellikle akıllı buluttan ve akıllı kenarından faydalanmak istiyor. Bu öğreticide, bulutta IoT cihazlarından toplanan verilerle bir makine öğrenimi modeline eğitim vererek, bu modeli IoT Edge için dağıtmakta ve modeli düzenli aralıklarla koruyup iyileştirirken size kılavuzluk ederiz.
+
+>[!NOTE]
+>Bu öğretici kümesindeki kavramlar tüm IoT Edge sürümleri için geçerlidir, ancak senaryoyu denemek için oluşturduğunuz örnek cihaz sürüm 1,1 ' i IoT Edge çalışır.
 
 Bu öğreticinin birincil amacı, özellikle de kenarda, Machine Learning ile IoT verilerinin işlenmesini tanıtmaktadır. Genel makine öğrenimi iş akışının pek çok yönüyle iletişime geçtiğimiz için, bu öğretici Machine Learning 'e derinlemesine bir giriş olarak tasarlanmamıştır. Bu noktada, kullanım örneği için yüksek düzeyde iyileştirilmiş bir model oluşturmaya çalışıyoruz; IoT veri işleme için uygun bir model oluşturma ve kullanma sürecini göstermek için yeterlidir.
 
@@ -69,9 +74,9 @@ Bu öğreticide kullanılan veriler, [turbofan altyapısının düşme simülasy
 
 Benioku dosyasından:
 
-***Deneysel senaryo** _
+***Deneysel senaryo***
 
-_Data kümeler birden fazla çok değişkenli zaman serisinden oluşur. Her veri kümesi, eğitim ve test alt kümelerine bölünmüştür. Her bir serinin farklı bir altyapıdan olması, yani verilerin aynı türdeki bir çok sayıda altyapıdan olduğu kabul edilebilir. Her motor, Kullanıcı tarafından bilinmeyen, farklı ilk aşınma ve üretim çeşitlemesi ile başlar. Bu giyme ve değişim normal olarak değerlendirilir, yani bir hata koşulu olarak kabul edilmez. Altyapı performansına önemli bir etkisi olan üç işlemsel ayar vardır. Bu ayarlar verilere da dahildir. Veriler sensör gürültüsü ile kirlü. *
+*Veri kümeleri birden fazla çok değişkenli zaman serisinden oluşur. Her veri kümesi, eğitim ve test alt kümelerine bölünmüştür. Her bir serinin farklı bir altyapıdan olması, yani verilerin aynı türdeki bir çok sayıda altyapıdan olduğu kabul edilebilir. Her motor, Kullanıcı tarafından bilinmeyen, farklı ilk aşınma ve üretim çeşitlemesi ile başlar. Bu giyme ve değişim normal olarak değerlendirilir, yani bir hata koşulu olarak kabul edilmez. Altyapı performansına önemli bir etkisi olan üç işlemsel ayar vardır. Bu ayarlar verilere da dahildir. Veriler sensörle gürültü ile ayrılmış.*
 
 *Motor her bir zaman serisinin başlangıcında normal şekilde çalışır ve seri sırasında bir noktada bir hata geliştirir. Eğitim kümesinde hata, sistem hatasına kadar büyüklüğü artar. Test kümesinde, zaman serisi sistem hatasından önce bir süre sona erer. Yarışmanın amacı, test kümesinde hatadan önce kalan işlem döngülerinin sayısını tahmin etmek, yani, altyapının çalışmaya devam etmesi için son döngüden sonra işlem döngüsü sayısı. Ayrıca, test verileri için doğru kalan kullanım ömrü (RUL) değerlerinin vektörünün sağlanması.*
 

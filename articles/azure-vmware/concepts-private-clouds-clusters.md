@@ -2,13 +2,13 @@
 title: Kavramlar-özel bulutlar ve kümeler
 description: Azure VMware çözümü yazılım tanımlı veri merkezlerinin ve vSphere kümelerinin temel özellikleri hakkında bilgi edinin.
 ms.topic: conceptual
-ms.date: 02/02/2021
-ms.openlocfilehash: 87bd2592da681726227f89b403916a12593a9db8
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.date: 03/13/2021
+ms.openlocfilehash: d1837ae7cf01fcb9642e0cafe4e0430e403b9899
+ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100391397"
+ms.lasthandoff: 03/14/2021
+ms.locfileid: "103462533"
 ---
 #  <a name="azure-vmware-solution-private-cloud-and-cluster-concepts"></a>Azure VMware çözümü özel bulutu ve küme kavramları
 
@@ -20,8 +20,6 @@ Bu makalede bu kavramların hepsi açıklanmaktadır.
 
 ![Bir müşteri aboneliğinde iki özel bulutun görüntüsü](./media/hosts-clusters-private-clouds-final.png)
 
->[!NOTE]
->Geliştirme ortamının en düşük olası ihtiyaçları nedeniyle, daha düşük kapasite Konakları olan daha küçük kümeler kullanın. 
 
 ## <a name="private-clouds"></a>Özel bulutlar
 
@@ -30,7 +28,7 @@ Bu makalede bu kavramların hepsi açıklanmaktadır.
 Diğer kaynaklarda olduğu gibi, özel bulutlar bir Azure aboneliği içinden yüklenir ve yönetilir. Bir abonelik içindeki özel bulutlar sayısı ölçeklenebilir. Başlangıçta, her abonelik için bir özel bulutun sınırı vardır.
 
 ## <a name="clusters"></a>Kümeler
-Oluşturulan her bir özel bulut için varsayılan olarak bir vSAN kümesi vardır. Azure portal kullanarak veya API aracılığıyla kümeleri ekleyebilir, silebilir ve ölçeklendirebilirsiniz.  Tüm kümelerin varsayılan üç ana bilgisayar boyutu vardır ve 16 ' ya kadar ana bilgisayar ölçeklendirebilirler.  Bir kümede kullanılan konaklar aynı ana bilgisayar türünde olmalıdır.
+Oluşturulan her bir özel bulut için varsayılan olarak bir vSAN kümesi vardır. Azure portal kullanarak veya API aracılığıyla kümeleri ekleyebilir, silebilir ve ölçeklendirebilirsiniz.  Tüm kümelerin varsayılan üç ana bilgisayar boyutu vardır ve 16 ' ya kadar ana bilgisayar ölçeklendirebilirler. Özel bulut başına en fazla dört kümeniz olabilir.
 
 Deneme kümeleri değerlendirme için kullanılabilir ve üç ana bilgisayar ile sınırlıdır. Özel bulut başına tek bir deneme kümesi vardır. Değerlendirme süresi boyunca, deneme kümesini tek bir ana bilgisayar ile ölçeklendirebilirsiniz.
 
@@ -38,11 +36,11 @@ Küme yapılandırmasının veya işlemin diğer yönlerini yönetmek için vSph
 
 ## <a name="hosts"></a>Ana bilgisayarlar
 
-Azure VMware çözümü özel bulut kümeleri hiper yakınsama, çıplak altyapı Konakları kullanır. Aşağıdaki tabloda konağın RAM, CPU ve disk kapasiteleri gösterilmektedir. 
+Azure VMware Çözüm kümeleri, hiper yakınsama, çıplak altyapıyı temel alır. Aşağıdaki tabloda konağın RAM, CPU ve disk kapasiteleri gösterilmektedir.
 
 | Ana Bilgisayar Türü              |             CPU             |   RAM (GB)   |  vSAN NVMe önbellek katmanı (TB, RAW)  |  vSAN SSD kapasite katmanı (TB, RAW)  |
 | :---                   |            :---:            |    :---:     |               :---:              |                :---:               |
-| High-End (BT)          |  Çift Intel 18 çekirdek 2,3 GHz  |     576      |                3.2               |                15,20               |
+| AVS36          |  Çift Intel 18 çekirdek 2,3 GHz  |     576      |                3.2               |                15,20               |
 
 Kümeleri derlemek veya ölçeklendirmek için kullanılan konaklar, yalıtılmış bir konaklar havuzundan gelir. Bu konaklar donanım testlerini geçti ve tüm verileri güvenli bir şekilde sildi. 
 
@@ -55,10 +53,7 @@ Kümeleri derlemek veya ölçeklendirmek için kullanılan konaklar, yalıtılm�
 
 Konak bakımı ve yaşam döngüsü yönetimi, özel bulut kümelerinin kapasitesini veya performansını etkilemez.  Otomatik ana bilgisayar bakımı örnekleri, bellenim yükseltmeleri ve donanım onarımı ya da değişikliği içerir.
 
-Microsoft, NSX-T Manager ve NSX-T Edge gibi NSX-T gereçlerinin yaşam döngüsü yönetiminden sorumludur. Ayrıca, katman-0 ağ geçidini oluşturma ve North-South yönlendirmeyi etkinleştirme gibi önyükleme ağ yapılandırmasından de sorumludur. NSX-T SDN yapılandırmasından sorumlu olursunuz. Örneğin, ağ kesimleri, dağıtılmış güvenlik duvarı kuralları, katman 1 ağ geçitleri ve yük dengeleyiciler.
-
-> [!IMPORTANT]
-> NSX-T Edge veya Katman-0 ağ geçidinin yapılandırmasını değiştirmeyin, çünkü bu hizmet kaybına neden olabilir.
+Microsoft, NSX-T Manager ve NSX-T Edge gibi NSX-T gereçlerinin yaşam döngüsü yönetiminden sorumludur. Microsoft, katman-0 ağ geçidini oluşturma ve North-South yönlendirmeyi etkinleştirme gibi önyükleme ağ yapılandırmasından sorumludur. NSX-T SDN yapılandırmasından sorumlu olursunuz. Örneğin, ağ kesimleri, dağıtılmış güvenlik duvarı kuralları, katman 1 ağ geçitleri ve yük dengeleyiciler.
 
 ## <a name="backup-and-restoration"></a>Yedekleme ve geri yükleme
 

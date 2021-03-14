@@ -214,14 +214,18 @@
           href: content-key-policy-concept.md
     - name: İzleme
       items:
-        - name: Event Grid ile olaylar
-          href: reacting-to-media-services-events.md
-        - name: Event Grid şemaları
-          href: media-services-event-schemas.md
-        - name: Ölçümler ve tanılama günlükleri
-          href: media-services-metrics-diagnostic-logs.md
-        - name: Tanılama günlükleri şemaları
-          href: media-services-diagnostic-logs-schema.md
+        - name: Azure İzleyici ile izleme
+          items:
+            - name: İzleyici Media Services
+              href: monitoring/monitor-media-services.md
+            - name: Media Services veri başvurusunu izleme
+              href: monitoring/monitor-media-services-data-reference.md
+        - name: Event Grid ile izleme
+          items:
+            - name: Event Grid ile olaylar
+              href: reacting-to-media-services-events.md
+            - name: Event Grid şemaları
+              href: media-services-event-schemas.md
     - name: Uyumlu oyuncular
       items:
         - name: Media Services için medya yürütücüleri

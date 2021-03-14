@@ -4,12 +4,12 @@ description: Azure VMware çözümü özel bulutu 'nı dağıtmak ve yapılandı
 ms.topic: tutorial
 ms.custom: contperf-fy21q3
 ms.date: 02/17/2021
-ms.openlocfilehash: 6f1e587894d51eae2af4e9f76114f53f27ffefe1
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 48b6927407a95d41603c3032f298ffc28def9693
+ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101703871"
+ms.lasthandoff: 03/14/2021
+ms.locfileid: "103462465"
 ---
 # <a name="deploy-and-configure-azure-vmware-solution"></a>Azure VMware çözümünü dağıtma ve yapılandırma
 
@@ -35,7 +35,7 @@ Azure VMware çözümünü dağıttıktan sonra, sanal ağın vCenter ve NSX 'e 
 
 :::image type="content" source="media/pre-deployment/jump-box-diagram.png" alt-text="Azure VMware çözümü geçiş kutusunu oluşturma" border="false" lightbox="media/pre-deployment/jump-box-diagram.png":::
 
-[Dağıtım işleminin bir parçası olarak tanımladığınız veya oluşturduğunuz](production-ready-deployment-steps.md#attach-virtual-network-to-azure-vmware-solution)sanal ağda bir sanal makıne (VM) oluşturmak için aşağıdaki yönergeleri izleyin: 
+[Dağıtım işleminin bir parçası olarak tanımladığınız veya oluşturduğunuz](production-ready-deployment-steps.md#attach-azure-virtual-network-to-azure-vmware-solution)sanal ağda bir sanal makıne (VM) oluşturmak için aşağıdaki yönergeleri izleyin: 
 
 [!INCLUDE [create-avs-jump-box-steps](includes/create-jump-box-steps.md)]
 
@@ -52,7 +52,7 @@ Dağıtım adımında bir sanal ağ tanımlamadıysanız ve amaç Azure VMware �
 
 Geçiş kutusu, Azure VMware çözümünün ExpressRoute bağlantı hattı üzerinden bağlandığı sanal ağ üzerindedir.  Azure 'da, atbox 'ın ağ arabirimine gidin ve [geçerli yolları görüntüleyin](../virtual-network/manage-route-table.md#view-effective-routes).
 
-Etkin rotalar listesinde, Azure VMware Çözüm dağıtımının bir parçası olarak oluşturulan ağları görmeniz gerekir. [Özel bir bulut oluştururken](#create-an-azure-vmware-solution-private-cloud) [ `/22` tanımladığınız ağdan](production-ready-deployment-steps.md#ip-address-segment) türetilmiş birden çok ağ görürsünüz.  
+Etkin rotalar listesinde, Azure VMware Çözüm dağıtımının bir parçası olarak oluşturulan ağları görmeniz gerekir. [Özel bir bulut oluştururken](#create-an-azure-vmware-solution-private-cloud) [ `/22` tanımladığınız ağdan](production-ready-deployment-steps.md#ip-address-segment-for-private-cloud-management) türetilmiş birden çok ağ görürsünüz.  
 
 :::image type="content" source="media/pre-deployment/azure-vmware-solution-effective-routes.png" alt-text="Azure VMware çözümünden Azure Virtual Network 'e tanıtılan ağ yollarını doğrulama" lightbox="media/pre-deployment/azure-vmware-solution-effective-routes.png":::
 

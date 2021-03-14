@@ -3,12 +3,12 @@ title: Azure Izleyici uyarıları için eylem kuralları
 description: Azure Izleyici 'deki eylem kurallarının ne olduğunu ve bunların nasıl yapılandırılacağını ve yönetileceğini anlamak.
 ms.topic: conceptual
 ms.date: 04/25/2019
-ms.openlocfilehash: 1a86493b4b478e8ebc75545bf80dafa425132fe4
-ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
+ms.openlocfilehash: bf254249f5b347d32255820da370a499c84da212
+ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/11/2021
-ms.locfileid: "103016007"
+ms.lasthandoff: 03/14/2021
+ms.locfileid: "103463077"
 ---
 # <a name="action-rules-preview"></a>Eylem kuralları (Önizleme)
 
@@ -65,18 +65,25 @@ Artık eylem kuralları oluşturmak için akış sayfasını görmeniz gerekir. 
 
 Kullanılabilir filtreleri şunlardır:
 
-* **Önem derecesi**: Bu kural yalnızca seçili önem derecesine sahip uyarılar için geçerlidir.  
+* **Önem Derecesi**  
+Bu kural yalnızca seçili önem derecelerine sahip uyarılar için geçerlidir.  
 Örneğin, **önem derecesi = Sev1** , kuralın yalnızca Sev1 önem derecesine sahip uyarılara uygulanacağını gösterir.
-* **Izleme hizmeti**: Bu kural yalnızca seçili izleme hizmetlerinden gelen uyarılar için geçerlidir.  
+* **Hizmet İzleme**  
+Bu kural, yalnızca seçilen izleme hizmetlerinden gelen uyarılar için geçerlidir.  
 Örneğin, **Monitor Service = "Azure Backup"** , kuralın yalnızca yedekleme uyarıları (Azure Backup geldiği) için uygulanacağı anlamına gelir.
-* **Kaynak türü**: Bu kural yalnızca seçili kaynak türlerindeki uyarılar için geçerlidir.  
+* **Kaynak Türü**  
+Bu kural yalnızca seçili kaynak türlerindeki uyarılar için geçerlidir.  
 Örneğin, **kaynak türü = "sanal makineler"** , kuralın yalnızca sanal makinelerdeki uyarılar için uygulanacağı anlamına gelir.
-* **Uyarı KURALı kimliği**: Bu kural, yalnızca belirli bir uyarı kuralından gelen uyarılar için geçerlidir. Değer, uyarı kuralının Kaynak Yöneticisi KIMLIĞI olmalıdır.  
-Örneğin, **Uyarı KURALı kimliği = "/Subscriptions/SubId1/resourceGroups/ResourceGroup1/Providers/Microsoft.insights/metricalerts/MyAPI-highLatency"** , bu kuralın yalnızca "Uygulamaı-highlatency" ölçüm uyarısı kuralından gelen uyarılar için uygulanacağını belirtir.
-* **Izleme koşulu**: Bu kural, yalnızca belirtilen izleyici koşuluyla uyarı olayları için geçerlidir- **tetiklenir** veya **çözüldü**.
-* **Açıklama**: Bu kural, yalnızca uyarı açıklaması alanında belirli bir dizeyi içeren uyarılar için geçerlidir. Bu alan, uyarı kuralı açıklamasını içerir.  
+* **Uyarı kuralı KIMLIĞI**  
+Bu kural, yalnızca belirli bir uyarı kuralından gelen uyarılar için geçerlidir. Değer, uyarı kuralının Kaynak Yöneticisi KIMLIĞI olmalıdır.  
+Örneğin, **Uyarı KURALı kimliği = "/Subscriptions/SubId1/resourceGroups/ResourceGroup1/Providers/Microsoft.insights/metricalerts/API-Latency"** , bu kuralın yalnızca "API-Latency" ölçümü uyarı kuralından gelen uyarılar için uygulanacağını gösterir.
+* **İzleme koşulu**  
+Bu kural yalnızca belirtilen izleyici koşuluna sahip uyarı olayları için geçerlidir- **tetiklenir** veya **çözüldü**.
+* **Açıklama**  
+Bu kural yalnızca uyarı açıklaması alanında belirli bir dizeyi içeren uyarılar için geçerlidir. Bu alan, uyarı kuralı açıklamasını içerir.  
 Örneğin, **Açıklama ' prod ' içerdiğinde** , kuralın yalnızca açıklamalarında "üretim" dizesini içeren uyarılarla eşleşeceğini gösterir.
-* **Uyarı bağlamı (yük)**: Bu kural yalnızca uyarı bağlam alanlarında bir veya daha fazla belirli değeri içeren uyarılar için geçerlidir.  
+* **Uyarı bağlamı (yük)**  
+Bu kural yalnızca uyarı bağlam alanlarında bir veya daha fazla belirli değeri içeren uyarılar için geçerlidir.  
 Örneğin, **Uyarı bağlamı (yük) ' bilgisayar-01 ' içeriyorsa** , kuralın yalnızca yükü "bilgisayar-01" dizesini içeren uyarılara uygulanacağını gösterir.
 
 Bir kuralda birden çok filtre ayarlarsanız, bunların hepsi geçerlidir. Örneğin, **' = sanal makineler** ve **önem derecesi ' = Sev0** kaynak türünü ayarlarsanız, kural yalnızca sanal makinelerdeki Sev0 uyarıları için geçerlidir.

@@ -2,13 +2,13 @@
 title: Öğretici-VMware HCX 'i dağıtma ve yapılandırma
 description: Azure VMware çözümünüz özel bulutunuz için bir VMware HCX çözümünü dağıtmayı ve yapılandırmayı öğrenin.
 ms.topic: tutorial
-ms.date: 11/25/2020
-ms.openlocfilehash: a8b089ce834d5b49e4ad32081a58e371835e8602
-ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
+ms.date: 03/13/2021
+ms.openlocfilehash: d1b0792ab9b9975edf45ab8addb81410e1da4107
+ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102488314"
+ms.lasthandoff: 03/14/2021
+ms.locfileid: "103462375"
 ---
 # <a name="deploy-and-configure-vmware-hcx"></a>VMware HCX’i dağıtma ve yapılandırma
 
@@ -183,7 +183,7 @@ Azure VMware çözümünde VMware HCX bulut yöneticisini, veri merkezinizdeki V
 
 1. **Altyapı** altında **site eşleştirme**' yi seçin ve ardından **uzak siteye Bağlan** seçeneğini belirleyin (ekranın ortasında). 
 
-1. Daha önce not ettiğiniz Azure VMware Solution HCX Cloud Manager URL 'sini veya IP adresini `https://x.x.x.9` , Azure VMware Çözüm cloudadmin@vsphere.local Kullanıcı adı ' nı ve parolayı girin. Ardından **Bağlan**'ı seçin.
+1. Daha önce not ettiğiniz Azure VMware Solution HCX Cloud Manager URL 'sini veya IP adresini `https://x.x.x.9` , Azure VMware çözümü cloudadmin \@ vSphere. Local Kullanıcı adı ve parolayı girin. Ardından **Bağlan**'ı seçin.
 
    > [!NOTE]
    > Bir site çiftini başarıyla oluşturmak için:

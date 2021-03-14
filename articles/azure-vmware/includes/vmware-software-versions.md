@@ -2,31 +2,28 @@
 title: VMware yazılım sürümleri
 description: Azure VMware çözümü için desteklenen VMware yazılım sürümleri.
 ms.topic: include
-ms.date: 12/29/2020
-ms.openlocfilehash: c6ba2904bab6c6f44001cafed1bd4cbdeb786373
-ms.sourcegitcommit: e7179fa4708c3af01f9246b5c99ab87a6f0df11c
+ms.date: 03/13/2021
+ms.openlocfilehash: 9a1781d163e67c2f9b6a4f756a616e59a969696f
+ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97825088"
+ms.lasthandoff: 03/14/2021
+ms.locfileid: "103462532"
 ---
 <!-- Used in faq.md and concepts-private-clouds-clusters.md -->
 
 
-Azure VMware çözümü özel bulut kümelerinde kullanılan VMware yazılımının geçerli yazılım sürümleri şunlardır:
+Azure VMware çözümü özel bulutlar kümelerinin yeni dağıtımlarında kullanılan VMware yazılım sürümleri şunlardır:
 
 | Yazılım              |    Sürüm   |
 | :---                  |     :---:    |
 | VCSA/vSphere/ESXi |    6,7 U3    | 
 | ESXi                  |    6,7 U3    | 
 | vSAN                  |    6,7 U3    |
-| NSX-T                 |      2.5     |
+| NSX-T <br />**Note:** NSX-T, NSX 'in desteklenen tek sürümüdür.               |      2.5     |
 
 
->[!NOTE]
->NSX-T, NSX 'in desteklenen tek sürümüdür.
-
-Özel buluttaki herhangi bir yeni küme için, yazılım sürümü şu anda çalışmakta olan yenilikle eşleşir. Bir abonelikteki tüm yeni özel bulutta, yazılım yığınının en son sürümü yüklenir. Daha fazla bilgi için bkz. [VMware yazılım sürümü gereksinimleri](https://docs.vmware.com/en/VMware-HCX/services/user-guide/GUID-54E5293B-8707-4D29-BFE8-EE63539CC49B.html).
+Yeni kümeler var olan bir özel buluta eklendi, çalışmakta olan yazılım sürümü uygulandı. Daha fazla bilgi için bkz. [VMware yazılım sürümü gereksinimleri](https://docs.vmware.com/en/VMware-HCX/services/user-guide/GUID-54E5293B-8707-4D29-BFE8-EE63539CC49B.html).
 
 Özel bulut yazılım paketi yükseltmeleri, Yazılımı VMware 'den en son yazılım paketi sürümünün bir sürümü içinde tutar. Özel bulut yazılımı sürümleri, bireysel yazılım bileşenlerinin en son sürümlerinden (ESXi, NSX-T, vCenter, vSAN) farklı olabilir. [Özel bulut güncelleştirmelerinde ve güncelleştirmelerinde](../concepts-upgrades.md)açıklanan Azure VMware çözüm platformu yazılımının genel yükseltme ilkelerini ve işlemlerini bulabilirsiniz.
 

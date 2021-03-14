@@ -1,16 +1,16 @@
 ---
 title: Azure Arc etkin sunucularının ölçekli dağıtımını nasıl planlayacaksanız
 description: Azure 'da önemli güvenlik, yönetim ve izleme özellikleri yapılandırmasını basitleştirmek için Azure Arc etkin sunucularına çok sayıda makinenin nasıl etkinleştirileceğini öğrenin.
-ms.date: 02/23/2021
+ms.date: 03/12/2021
 ms.topic: conceptual
-ms.openlocfilehash: 0e77fc00f94f2f46c60bb2c5dcecc10a4e2e3bc5
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 63e224180cff8cab6e700bc72b8a5c39a7f26857
+ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102032237"
+ms.lasthandoff: 03/14/2021
+ms.locfileid: "103461309"
 ---
-# <a name="planing-for-an-at-scale-deployment-of-azure-arc-enabled-servers"></a>Azure Arc etkin sunucularının ölçekli dağıtımı için planlama
+# <a name="plan-and-deploy-arc-enabled-servers-at-scale"></a>Arc etkin sunucularını ölçekli olarak planlayın ve dağıtın
 
 Bir BT Altyapısı hizmetinin veya iş uygulamasının dağıtımı, tüm şirketler için zorluk sergilemektir. Bunu iyi şekilde yürütmek ve hoş geldiniz sürprizlerini ve planlanmamış maliyetleri önlemek için, mümkün olduğunca uygun olduğundan emin olmak için kapsamlı bir plan yapmanız gerekir. Azure Arc etkin sunucularının ölçeğini ölçeğinde bir şekilde dağıtmak için, bir yerleşik dağıtımı desteklemek üzere görevleri başarıyla tamamlaması için karşılanması gereken tasarım ve dağıtım ölçütlerini kapsamalıdır.
 
@@ -67,7 +67,7 @@ Bu aşamada, sistem mühendisleri veya yöneticileri, makinelerinizi yay özelli
 
 ## <a name="phase-2-deploy-arc-enabled-servers"></a>2. Aşama: yay etkin sunucularını dağıtma
 
-Daha sonra, dağıtımı hazırlarken ve aracının yüklenmesini gerçekleştirerek 1. Aşama ' da bulunan temele ekliyoruz.
+Daha sonra, yay etkin sunucular bağlı makine aracısına hazırlık ve dağıtmaya göre 1. aşamada bulunan temele ekliyoruz.
 
 |Görev |Ayrıntı |Süre |
 |-----|-------|---------|
@@ -77,7 +77,7 @@ Daha sonra, dağıtımı hazırlarken ve aracının yüklenmesini gerçekleştir
 
 ## <a name="phase-3-manage-and-operate"></a>3. Aşama: yönetme ve çalıştırma
 
-3. aşama, yönetici veya sistem mühendislerini, bağlı makine aracısını ve makineyi yaşam döngüsü sırasında yönetmek ve çalıştırmak için el ile gerçekleştirilen görevlerin otomatikleştirilmesini sağlayan şekilde görür.
+3. aşama, Yöneticiler veya sistem mühendisleri, bağlı makine aracısını ve makineyi yaşam döngüsü sırasında yönetmek ve çalıştırmak için el ile gerçekleştirilen görevlerin otomatikleştirilmesini sağlar.
 
 |Görev |Ayrıntı |Süre |
 |-----|-------|---------|

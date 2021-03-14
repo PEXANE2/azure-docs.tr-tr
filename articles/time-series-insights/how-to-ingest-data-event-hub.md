@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 01/21/2021
 ms.custom: seodec18
-ms.openlocfilehash: f4b5d4915cd6520edd7a45af85a836c3360eee32
-ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
+ms.openlocfilehash: ee66e68216933c410092865a1cdb781476a944c6
+ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98696338"
+ms.lasthandoff: 03/14/2021
+ms.locfileid: "103461143"
 ---
 # <a name="add-an-event-hub-event-source-to-your-azure-time-series-insights-environment"></a>Azure Time Series Insights ortamınıza bir olay hub 'ı olay kaynağı ekleme
 
@@ -27,7 +27,7 @@ Bu makalede, Azure Event Hubs verileri Azure Time Series Insights ortamınıza o
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-- [Azure Time Series Insights ortamı oluşturma](./tutorials-set-up-tsi-environment.md)bölümünde açıklandığı gibi bir Azure Time Series Insights ortamı oluşturun.
+- [Azure Time Series Insights ortamı oluşturma](./tutorial-set-up-environment.md)bölümünde açıklandığı gibi bir Azure Time Series Insights ortamı oluşturun.
 - Bir olay hub'ı oluşturun. [Azure Portal kullanarak Event Hubs ad alanı ve Olay Hub 'ı oluşturun](../event-hubs/event-hubs-create.md).
 - Olay Hub 'ına, etkin ileti olayları gönderilmesi gerekir. [.NET Framework kullanarak olayları Azure Event Hubs gönderme](../event-hubs/event-hubs-dotnet-framework-getstarted-send.md)hakkında bilgi edinin.
 - Azure Time Series Insights ortamının tüketebileceği Olay Hub 'ında adanmış bir tüketici grubu oluşturun. Her bir Azure Time Series Insights olay kaynağı, başka bir tüketici ile paylaşılmayan kendi adanmış bir tüketici grubuna sahip olmalıdır. Birden çok okuyucu aynı tüketici grubundan olayları tükettiği takdirde, tüm okuyucular hatalara neden olabilir. Olay Hub 'ı başına 20 Tüketici grubu sınırı vardır. Ayrıntılar için [Event Hubs programlama kılavuzunu](../event-hubs/event-hubs-programming-guide.md)okuyun.

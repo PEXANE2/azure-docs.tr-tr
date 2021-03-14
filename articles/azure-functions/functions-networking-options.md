@@ -5,12 +5,12 @@ author: cachai2
 ms.topic: conceptual
 ms.date: 1/21/2021
 ms.author: cachai
-ms.openlocfilehash: f826c947b1e47c1c996a8e9102492e85adafa326
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.openlocfilehash: 0267184a921c92c3dc092908a09467ef3a090175
+ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102215162"
+ms.lasthandoff: 03/14/2021
+ms.locfileid: "103463043"
 ---
 # <a name="azure-functions-networking-options"></a>Azure İşlevleri ağ seçenekleri
 
@@ -87,7 +87,7 @@ Daha fazla bilgi için bkz. [sanal ağ hizmeti uç noktaları](../virtual-networ
 
 ## <a name="restrict-your-storage-account-to-a-virtual-network"></a>Depolama hesabınızı bir sanal ağla sınırlayın 
 
-Bir işlev uygulaması oluşturduğunuzda, blob, kuyruk ve tablo depolamayı destekleyen genel amaçlı bir Azure depolama hesabı oluşturmanız veya bağlamanız gerekir. Bu depolama hesabını hizmet uç noktaları veya özel uç nokta ile güvenli bir şekilde değiştirebilirsiniz. Bu özellik şu anda, sanal ağların yalnızca Premium SKU için kullanılabildiği esnek damgalar haricinde standart ve Premium içeren tüm sanal ağ desteklenen SKU 'lar için geçerlidir. Özel bir ağla sınırlı bir depolama hesabı ile bir işlev ayarlamak için:
+Bir işlev uygulaması oluşturduğunuzda, blob, kuyruk ve tablo depolamayı destekleyen genel amaçlı bir Azure depolama hesabı oluşturmanız veya bağlamanız gerekir. Bu depolama hesabını hizmet uç noktaları veya özel uç nokta ile güvenli bir şekilde değiştirebilirsiniz. Bu özellik şu anda, sanal ağların yalnızca Premium SKU için kullanılabildiği esnek damgalar haricinde standart ve Premium içeren tüm Windows sanal ağ desteklenen SKU 'ları için geçerlidir. Özel bir ağla sınırlı bir depolama hesabı ile bir işlev ayarlamak için:
 
 1. Hizmet uç noktaları etkin olmayan bir depolama hesabıyla bir işlev oluşturun.
 1. İşlevini sanal ağınıza bağlanacak şekilde yapılandırın.

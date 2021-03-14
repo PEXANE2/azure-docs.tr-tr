@@ -1,18 +1,18 @@
 ---
-title: Öğretici-Azure VMware çözümü özel bulutu oluşturma ve dağıtma
+title: Öğretici-Azure VMware çözümü özel bulutu dağıtma
 description: Azure VMware çözümü özel bulutu oluşturmayı ve dağıtmayı öğrenin
 ms.topic: tutorial
 ms.date: 02/22/2021
-ms.openlocfilehash: 2afd88bca05a9bcab309faff373bedf6a22e9f4b
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: ed916305cd1a67162f07c24e3bf97766e5389b74
+ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101725433"
+ms.lasthandoff: 03/14/2021
+ms.locfileid: "103462176"
 ---
-# <a name="tutorial-create-an-azure-vmware-solution-private-cloud"></a>Öğretici: Azure VMware çözümü özel bulutu oluşturma
+# <a name="tutorial-deploy-an-azure-vmware-solution-private-cloud"></a>Öğretici: Azure VMware çözümü özel bulutu dağıtma
 
-Bu öğreticide, bir Azure VMware çözümü özel bulutu oluşturmayı ve dağıtmayı öğreneceksiniz. En düşük ilk ana bilgisayar dağıtımı üç. Küme başına en fazla 16 ana bilgisayar için, ek konaklar tek seferde eklenebilir. 
+Azure VMware çözümü, Azure 'da bir vSphere kümesi dağıtmanıza olanak tanır. En düşük ilk dağıtım üç ana bilgisayar. Küme başına en fazla 16 ana bilgisayar için, ek konaklar tek seferde eklenebilir.
 
 Azure VMware çözümü, başlatma sırasında özel bulutunuzu şirket içi vCenter 'ünüzle yönetmenize izin vermediğinden ek yapılandırma gerekir. Bu yordamlar ve ilgili Önkoşullar Bu öğreticide ele alınmıştır.
 
@@ -38,7 +38,7 @@ Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 
 [!INCLUDE [create-avs-private-cloud-azure-portal](includes/create-private-cloud-azure-portal-steps.md)]
 
-### <a name="azure-cli"></a>Azure CLI
+### <a name="azure-cli"></a>Azure CLI’si
 
 Azure VMware çözümü özel bulutu oluşturmak için Azure portal yerine Azure Cloud Shell kullanarak Azure CLı 'yi kullanabilirsiniz.  Azure VMware çözümü ile kullanabileceğiniz komutların listesi için bkz. [Azure VMware komutları](/cli/azure/ext/vmware/vmware).
 
@@ -48,7 +48,7 @@ Bir kod bloğunun sağ üst köşesinden **deneyin** öğesini seçin. Ayrıca, 
 
 #### <a name="create-a-resource-group"></a>Kaynak grubu oluşturma
 
-`[az group create](/cli/azure/group)` komutuyla bir kaynak grubu oluşturun. Azure kaynak grubu, Azure kaynaklarının dağıtıldığı ve yönetildiği bir mantıksal kapsayıcıdır. Aşağıdaki örnek *eastus* konumunda *myresourcegroup* adlı bir kaynak grubu oluşturur:
+[' Az Group Create '](/cli/azure/group) komutuyla bir kaynak grubu oluşturun. Azure kaynak grubu, Azure kaynaklarının dağıtıldığı ve yönetildiği bir mantıksal kapsayıcıdır. Aşağıdaki örnek *eastus* konumunda *myresourcegroup* adlı bir kaynak grubu oluşturur:
 
 ```azurecli-interactive
 

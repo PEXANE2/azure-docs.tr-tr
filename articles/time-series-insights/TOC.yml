@@ -14,7 +14,7 @@
 - name: Öğreticiler
   items:
     - name: Time Series Insights 2. Nesil ortamı ayarlama
-      href: tutorials-set-up-tsi-environment.md
+      href: tutorial-set-up-environment.md
     - name: Azure Digital Twins ve Time Series Insights 2. Nesil arasında model eşitlemesi
       href: tutorials-model-sync.md
 - name: Kavramlar
@@ -95,9 +95,13 @@
           items:
             - name: Ortamınızı planlama
               href: how-to-plan-your-environment.md
-        - name: Ortam yönetimi
+        - name: Yönetim
           items:
-            - name: Sağlama ve yönetme
+            - name: Azure CLı kullanarak ortam oluşturma
+              href: how-to-create-environment-using-cli.md
+            - name: Azure portal kullanarak ortam oluşturma
+              href: how-to-create-environment-using-portal.md
+            - name: Bir ortamı yönetme
               href: how-to-provision-manage.md
             - name: TSID seçme
               href: how-to-select-tsid.md

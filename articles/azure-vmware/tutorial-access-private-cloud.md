@@ -2,25 +2,25 @@
 title: Öğretici-özel buluta erişin
 description: Azure VMware çözümüne özel buluta erişmeyi öğrenin
 ms.topic: tutorial
-ms.date: 02/22/2021
-ms.openlocfilehash: 456767a9edd78a70a0aba45c7b44a2150a2217a1
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.date: 03/13/2021
+ms.openlocfilehash: f689a0c706b6427497c80dabb01579ace161d1e2
+ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102045012"
+ms.lasthandoff: 03/14/2021
+ms.locfileid: "103462276"
 ---
 # <a name="tutorial-access-an-azure-vmware-solution-private-cloud"></a>Öğretici: Azure VMware çözümüne özel buluta erişme
 
-Azure VMware çözümü, şirket içi vCenter 'unuzda özel bulutunuzu yönetmenize izin vermez. Bir bağlantı kutusu aracılığıyla ek kurulum ve yerel bir vCenter örneğine bağlantı yapmanız gerekir. 
+Azure VMware çözümü, şirket içi vCenter 'unuzda özel bulutunuzu yönetmenize izin vermez. Bir bağlantı kutusu aracılığıyla Azure VMware Çözüm vCenter örneğine bağlanmanız gerekir. 
 
-Bu öğreticide, [önceki öğreticide](tutorial-configure-networking.md) oluşturduğunuz kaynak grubunda bir sıçrama kutusu oluşturacak ve vCenter 'da oturum açacaksınız. Atma kutusu, oluşturduğunuz aynı sanal ağ üzerinde bir Windows sanal makinedir (VM).  VCenter ve NSX Manager erişimi sağlar. 
+Bu öğreticide, [önceki öğreticide](tutorial-configure-networking.md) oluşturduğunuz kaynak grubunda bir geçiş kutusu oluşturacak ve Azure VMware Çözüm vCenter ' de oturum açacaksınız. Bu sıçrama kutusu, oluşturduğunuz aynı sanal ağ üzerinde bir Windows sanal makinedir (VM).  Hem vCenter hem de NSX Manager erişimi sağlar. 
 
 Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
-> * VCenter 'a bağlanmak için kullanılacak bir Windows sanal makinesi oluşturun
-> * Sanal makinenizden vCenter 'da oturum açın
+> * Azure VMware Çözüm vCenter erişimi için bir Windows sanal makinesi oluşturma
+> * Bu sanal makineden vCenter oturumu aç
 
 ## <a name="create-a-new-windows-virtual-machine"></a>Yeni bir Windows sanal makinesi oluşturma
 
@@ -28,7 +28,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 ## <a name="connect-to-the-local-vcenter-of-your-private-cloud"></a>Özel bulutunuzun yerel vCenter 'a bağlanma
 
-1. Geçiş kutusundan, bir bulut Yöneticisi Kullanıcı adı ve Kullanıcı arabiriminin başarıyla gösterdiği bir ifade kullanarak VMware vCenter SSO ile vSphere Istemcisinde oturum açın.
+1. Sıçrama kutusundan, bir bulut Yöneticisi Kullanıcı adı kullanarak VMware vCenter SSO ile vSphere Istemcisinde oturum açın ve Kullanıcı arabiriminin başarıyla görüntülendiğini doğrulayın.
 
 1. Azure Portal, özel bulutunuzu seçin ve ardından   >  **kimliği** yönetin. 
 
@@ -37,7 +37,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
    >[!TIP]
    >Yeni vCenter ve NSX-T parolaları oluşturmak için **Yeni bir parola oluştur** ' u seçin.
 
-   :::image type="content" source="media/tutorial-access-private-cloud/ss4-display-identity.png" alt-text="Özel bulut vCenter ve NSX Yöneticisi URL 'Leri ve kimlik bilgilerini görüntüleyin." border="true" lightbox="media/tutorial-access-private-cloud/ss4-display-identity.png":::
+   :::image type="content" source="media/tutorial-access-private-cloud/generate-vcenter-nsxt-passwords.png" alt-text="Özel bulut vCenter ve NSX Yöneticisi URL 'Leri ve kimlik bilgilerini görüntüleyin." border="true" lightbox="media/tutorial-access-private-cloud/generate-vcenter-nsxt-passwords.png":::
 
 1. Önceki adımda oluşturduğunuz VM 'ye gidin ve sanal makineye bağlanın. 
 

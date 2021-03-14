@@ -2,13 +2,13 @@
 title: Öğretici-ağ planlama denetim listesi
 description: Azure VMware çözümünde ağ bağlantısı ve ağ bağlantı noktaları için ağ gereksinimleri hakkında bilgi edinin.
 ms.topic: tutorial
-ms.date: 01/27/2021
-ms.openlocfilehash: f493443da617f5f76771e5d1b2b3b190b37f9b5d
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.date: 03/13/2021
+ms.openlocfilehash: 8cee5fa24aab8bd7fe6a9527f9c8e7cdff997511
+ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98918594"
+ms.lasthandoff: 03/14/2021
+ms.locfileid: "103462074"
 ---
 # <a name="networking-planning-checklist-for-azure-vmware-solution"></a>Azure VMware çözümü için ağ planlama denetim listesi 
 
@@ -89,13 +89,12 @@ Alt ağlar:
 
 NSX 'te yerleşik olarak bulunan DHCP hizmetini kullanın veya özel bulutta, WAN üzerinden yayın DHCP trafiğini şirket içine geri yönlendirme yerine yerel bir DHCP sunucusu kullanın.
 
+Daha fazla ayrıntı için bkz. [DHCP HIZMETLERI NSX-T ağ kesimine sağlama](deploy-azure-vmware-solution.md#optional-provide-dhcp-services-to-nsx-t-network-segment) makalesi.
+
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu öğreticide, Azure VMware çözümü özel bulutu dağıtmaya ilişkin önemli noktalar ve gereksinimler hakkında bilgi edindiniz. 
-
-
-Uygun ağa sahip olduğunuzda, Azure VMware çözümü özel bulutunuzu oluşturmak için sonraki öğreticiye geçin.
+Bu öğreticide, Azure VMware çözümü özel bulutu dağıtmaya ilişkin önemli noktalar ve gereksinimler hakkında bilgi edindiniz. Uygun ağa sahip olduğunuzda, Azure VMware çözümü özel bulutunuzu oluşturmak için sonraki öğreticiye geçin.
 
 > [!div class="nextstepaction"]
 > [Azure VMware çözümü özel bulutu oluşturma](tutorial-create-private-cloud.md)

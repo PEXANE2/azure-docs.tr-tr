@@ -1,27 +1,26 @@
 ---
-title: Azure AD uygulama geliştiricileri için destek ve yardım seçenekleri
-description: Microsoft kimlikleri ile tümleştirilen uygulama oluştururken geliştirmeyle ilgili sorular ve sorunlar için nasıl yardım ve destek edineceğimizi öğrenin (Azure Active Directory ve Microsoft hesabı)
+title: Microsoft Identity platform geliştiricileri için destek ve yardım seçenekleri | Mavisi
+description: Azure Active Directory (Azure AD) ve Microsoft Identity platformunun diğer bileşenleriyle tümleştirilen kimlik ve erişim yönetimi (ıAM) çözümlerini oluştururken yardım almak ve sorularınıza cevap bulmak için nereden yanıt bulacağınızı öğrenin.
 services: active-directory
-author: rwike77
+author: mmacy
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 05/23/2019
-ms.author: ryanwi
+ms.date: 03/09/2021
+ms.author: marsma
 ms.reviewer: jmprieur, saeeda
-ms.custom: aaddev
-ms.openlocfilehash: 43990952f6cbe90c729ac2df421c682fe8d42b1b
-ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
+ms.openlocfilehash: 8b0d6ffc00a140073c2dfb5789fbf9760e1767c9
+ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102517964"
+ms.lasthandoff: 03/14/2021
+ms.locfileid: "103462771"
 ---
 # <a name="support-and-help-options-for-developers"></a>Geliştiriciler için destek ve yardım seçenekleri
 
-Azure Active Directory (Azure AD), Microsoft kimlikleri veya Microsoft Graph API ile tümleştirmeye başladıysanız veya uygulamanıza yeni bir özellik uyguladığınızda, topluluktan yardım almanız veya bir geliştirici olarak sahip olduğunuz destek seçeneklerini anlamanız gereken durumlar vardır. Microsoft Identity platform çözümlerinizi geliştirirken yardım alabileceğiniz öneriler aşağıda verilmiştir.
+Bir soruya yanıt almanız veya belgelerimizde kapsanmayan bir sorunu çözmeye yardımcı olmak istiyorsanız, yardım için uzmanlara ulaşmak zaman alabilir. Microsoft Identity platformu ile tümleştirilen uygulamalar geliştirirken sorularınıza yanıt almaya yönelik birkaç öneri aşağıda verilmiştir.
 
 ## <a name="create-an-azure-support-request"></a>Azure destek isteği oluşturma
 
@@ -33,9 +32,10 @@ Azure Active Directory (Azure AD), Microsoft kimlikleri veya Microsoft Graph API
 
 - Zaten bir Azure Destek planınız varsa, [burada bir destek isteği açın](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
 
-- Bir Azure müşterisiyseniz, [ticari destek](https://support.serviceshub.microsoft.com/supportforbusiness)aracılığıyla Microsoft ile bir destek isteği de açabilirsiniz.
+- Bir Azure müşterisi değilseniz, [Microsoft desteği iş için](https://support.serviceshub.microsoft.com/supportforbusiness)bir destek isteği açabilirsiniz.
 
 ## <a name="post-a-question-to-microsoft-qa"></a>Microsoft Q&bir soru gönderin
+
 <div class='icon is-large'>
     <img alt='Microsoft Q&A' src='./media/common/question-mark-icon.png'>
 </div>             

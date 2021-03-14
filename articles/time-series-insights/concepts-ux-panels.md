@@ -10,22 +10,22 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 01/22/2021
 ms.custom: seodec18
-ms.openlocfilehash: 55e102cc7e27cbcd9a65999f590c8264f1ad4434
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 77c6e8790451ef830b37cc5914ce9de8e92174f5
+ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98736861"
+ms.lasthandoff: 03/14/2021
+ms.locfileid: "103464097"
 ---
 # <a name="azure-time-series-insights-explorer"></a>Azure Time Series Insights Gezgini
 
 Bu makalede Azure Time Series Insights Gen2 [demo ortamında](https://insights.timeseries.azure.com/preview/demo)kullanılabilen çeşitli özellikler ve seçenekler açıklanmaktadır.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure Time Series Insights Gezginini kullanmaya başlamak için şunları yapmanız gerekir:
 
-* Sağlanmış bir Azure Time Series Insights Gen2 ortamı vardır. [Azure Time Series Insights Gen2](./tutorials-set-up-tsi-environment.md) öğreticisini okuyarak bir örnek sağlama hakkında daha fazla bilgi edinin.
+* Sağlanmış bir Azure Time Series Insights Gen2 ortamı vardır. [Azure Time Series Insights Gen2](./tutorial-set-up-environment.md) öğreticisini okuyarak bir örnek sağlama hakkında daha fazla bilgi edinin.
 * Hesap için oluşturduğunuz Azure Time Series Insights Gen2 ortamına [veri erişimi sağlar](./concepts-access-policies.md) . Başkalarının yanı sıra kendinize de erişim sağlayabilirsiniz.
 * Ortama veri göndermek için Azure Time Series Insights Gen2 ortamına bir olay kaynağı ekleyin:
   * [Bir olay hub 'ına nasıl bağlanacağınızı](./how-to-ingest-data-event-hub.md) öğrenin
@@ -92,7 +92,7 @@ Arama sonuçları bölmesi, göstermek istediğiniz örnekleri bulmayı kolayla�
 
 Öğenin sol tarafındaki kırmızı **silme** (çöp kutusu) denetimini seçerek, geçerli verilerdeki belirli veri öğelerini kaldırabilirsiniz. Ayrıca, her bir öğenin grafikte nasıl görüntülendiğini denetlemenize de olanak tanır. En az/en yüksek gölgeler, veri noktaları ekleyebilir, öğeyi zamanında kaydırabileceğiniz örnek bir şekilde görselleştirmeyi seçebilirsiniz.
 
-Ayrıca, araştırma denetimi zaman vardiyalarını ve dağılım çizimlerini kolayca oluşturmanızı sağlar.  
+Ayrıca, araştırma denetimi zaman vardiyalarını ve dağılım çizimlerini kolayca oluşturmanızı sağlar.
 
   [![İyi düzen seçenekleri](media/v2-update-explorer/well-layout-options.png)](media/v2-update-explorer/well-layout-options.png#lightbox)
 

@@ -13,8 +13,12 @@
   items:
     - name: Bir istemci uygulaması kodlama
       href: tutorial-code.md
-    - name: Örnek bir istemci uygulamasıyla temel kavramları inceleme
-      href: tutorial-command-line-app.md
+    - name: Grafik oluşturma
+      items:
+        - name: Örnek bir istemci uygulaması kullanma
+          href: tutorial-command-line-app.md
+        - name: Azure CLı komutlarını kullanma
+          href: tutorial-command-line-cli.md
     - name: Uçtan uca çözüme bağlanma
       href: tutorial-end-to-end.md
 - name: Kavramlar

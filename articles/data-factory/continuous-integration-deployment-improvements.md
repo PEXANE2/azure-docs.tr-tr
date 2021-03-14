@@ -7,12 +7,12 @@ ms.author: abnarain
 ms.reviewer: maghan
 ms.topic: conceptual
 ms.date: 02/02/2021
-ms.openlocfilehash: 49ec43e59989f3fdad8f5731867953cc7cbb5757
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 496d2b6b3d669013c8174e9bc961d0a2f640bed3
+ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101699717"
+ms.lasthandoff: 03/14/2021
+ms.locfileid: "103462091"
 ---
 # <a name="automated-publishing-for-continuous-integration-and-delivery"></a>Sürekli tümleştirme ve teslim için otomatik yayımlama
 
@@ -20,98 +20,99 @@ ms.locfileid: "101699717"
 
 ## <a name="overview"></a>Genel Bakış
 
-Sürekli tümleştirme, kod tabanınızda yapılan her değişikliği otomatik olarak test etme ve olası sürekli dağıtım, sürekli tümleştirme sırasında gerçekleşen teste ve bir hazırlama veya üretim sistemine yapılan değişiklikleri geri gönderme yöntemidir.
+Sürekli tümleştirme, kod tabanınızda yapılan her değişikliği otomatik olarak test etme uygulamasıdır. Sürekli teslim, mümkün olduğunca erken sürekli tümleştirme sırasında gerçekleşen testi izler ve değişiklikleri bir hazırlama veya üretim sistemine gönderir.
 
-Azure Data Factory'de sürekli tümleştirme ve sürekli teslim (CI/CD) Data Factory işlem hatlarını bir ortamdan (geliştirme, test, üretim) diğerine taşıma anlamına gelir. Azure Data Factory, çeşitli ADF varlıklarınızın yapılandırmasını depolamak için [Azure Resource Manager şablonlarından](../azure-resource-manager/templates/overview.md) yararlanır (işlem hatları, veri kümeleri, veri akışları vb.). Bir veri fabrikasını başka bir ortama yükseltmek için önerilen iki yöntem vardır:
+Azure Data Factory, sürekli tümleştirme ve sürekli teslim (CI/CD), Data Factory işlem hatlarını geliştirme, test ve üretim gibi bir ortamdan diğerine taşıma anlamına gelir. Data Factory, işlem hatları, veri kümeleri ve veri akışları gibi çeşitli Data Factory varlıklarınızın yapılandırmasını depolamak için [Azure Resource Manager şablonları (ARM şablonları)](../azure-resource-manager/templates/overview.md) kullanır.
 
-- Data Factory [Azure Pipelines](/azure/devops/pipelines/get-started/what-is-azure-pipelines)tümleştirme kullanılarak otomatik dağıtım.
-- Azure Resource Manager ile Data Factory UX tümleştirmesi kullanarak Kaynak Yöneticisi şablonunu el ile karşıya yükleyin.
+Bir veri fabrikasını başka bir ortama yükseltmek için önerilen iki yöntem vardır:
+
+- Data Factory [Azure Pipelines](/azure/devops/pipelines/get-started/what-is-azure-pipelines)tümleştirmesi kullanılarak otomatik dağıtım.
+- Azure Resource Manager ile Data Factory Kullanıcı deneyimi tümleştirmesi kullanarak ARM şablonunu el ile karşıya yükleme.
 
 Daha fazla bilgi için bkz. [Azure Data Factory sürekli tümleştirme ve teslim](continuous-integration-deployment.md).
 
-Bu makalede, sürekli dağıtım geliştirmeleri ve CI/CD için otomatik yayımlama özelliği üzerine odaklanıyoruz.
+Bu makalede, sürekli dağıtım geliştirmeleri ve CI/CD için otomatik yayımlama özelliği ele alınmaktadır.
 
 ## <a name="continuous-deployment-improvements"></a>Sürekli dağıtım geliştirmeleri
 
-"Otomatik yayımlama" özelliği, ADF UX 'den *Tümünü doğrula* ve dışarı aktar *Azure Resource Manager (ARM) şablonu* özelliklerini doğrular ve mantığın genel kullanıma açık bir NPM paketiyle kullanılabilmesini sağlar [@microsoft/azure-data-factory-utilities](https://www.npmjs.com/package/@microsoft/azure-data-factory-utilities) . Bu, ADF Kullanıcı arabirimine gidip bir düğme tıklamasına gerek kalmadan, bu eylemleri programlı bir şekilde tetiklemeniz sağlar. Bu, CI/CD işlem hatlarına bir truer sürekli tümleştirme deneyimi sağlar.
+Otomatik yayımlama özelliği, Data Factory kullanıcı deneyiminin **Tümünü doğrula** ve **dışarı aktarma ARM şablonu** özelliklerini alır ve genel kullanıma açık bir NPM paketiyle mantıksal tüketilebilir hale gelir [@microsoft/azure-data-factory-utilities](https://www.npmjs.com/package/@microsoft/azure-data-factory-utilities) . Bu nedenle, Data Factory Kullanıcı arabirimine gitmek ve bir düğmeyi el ile seçmek yerine bu eylemleri programlı bir şekilde tetikleyebilirsiniz. Bu özellik, CI/CD işlem hatlarınızı bir truer sürekli tümleştirme deneyimi sağlayacak.
 
 ### <a name="current-cicd-flow"></a>Geçerli CI/CD akışı
 
 1. Her kullanıcı özel dallarında değişiklikler yapar.
-2. Ana öğesine gönderim yasak, kullanıcıların değişiklik yapması için ana için bir PR oluşturması gerekir.
-3. Kullanıcılar ADF Kullanıcı arabirimini yükledikten sonra Data Factory değişiklikleri dağıtmak ve Yayımla dalında ARM şablonlarını oluşturmak için Yayımla ' ya tıklamalıdır.
-4. DevOps yayın işlem hattı yeni bir sürüm oluşturmak ve yayınlama dalına her yeni değişiklik gönderildiğinde ARM şablonunu dağıtmak üzere yapılandırılır.
+1. Ana öğesine gönderim yapılamaz. Kullanıcıların değişiklik yapması için bir çekme isteği oluşturması gerekir.
+1. Kullanıcılar Data Factory Kullanıcı arabirimini yükledikten sonra değişiklikleri Data Factory dağıtmak ve Yayımla dalında ARM şablonlarını oluşturmak için **Yayımla** ' yı seçin.
+1. DevOps yayın işlem hattı yeni bir sürüm oluşturmak ve yayınlama dalına her yeni değişiklik gönderildiğinde ARM şablonunu dağıtmak üzere yapılandırılır.
 
-![Geçerli CI/CD akışı](media/continuous-integration-deployment-improvements/current-ci-cd-flow.png)
+![Geçerli CI/CD akışını gösteren diyagram.](media/continuous-integration-deployment-improvements/current-ci-cd-flow.png)
 
 ### <a name="manual-step"></a>El ile adım
 
-Geçerli CI/CD akışında UX, ARM şablonunu oluşturmak için gereken bir ara bu nedenle, bir kullanıcının, ADF şablonu oluşturmayı başlatması ve bunu bir hack 'ın bir bit olan Yayımla dalında bırakması için Yayımla ' ya tıklayın.
+Geçerli CI/CD akışında, Kullanıcı deneyimi ARM şablonunu oluşturmak için aracı olur. Sonuç olarak, bir kullanıcının Data Factory Kullanıcı ARABIRIMINE gitmesi ve el ile **Yayımla** ' yı seçerek ARM şablonu oluşturmayı başlatabilir ve Yayımla dalına bırakmalısınız.
 
 ### <a name="the-new-cicd-flow"></a>Yeni CI/CD akışı
 
 1. Her kullanıcı özel dallarında değişiklikler yapar.
-2. Ana öğesine gönderim yasak, kullanıcıların değişiklik yapması için ana için bir PR oluşturması gerekir.
-3. **Azure DevOps işlem hattı derlemesi, ana öğe üzerinde her yeni bir işleme yapıldığında kaynakları doğrular ve doğrulama başarılı olursa yapıt olarak bir ARM şablonu oluşturur.**
-4. DevOps yayın işlem hattı yeni bir yayın oluşturacak ve yeni bir derleme kullanılabilir her seferinde ARM şablonunu dağıtan şekilde yapılandırılmıştır. 
+1. Ana öğesine gönderim yapılamaz. Kullanıcıların değişiklik yapması için bir çekme isteği oluşturması gerekir.
+1. Azure DevOps işlem hattı derlemesi, ana öğe için her yeni bir işleme yapıldığında tetiklenir. Doğrulama başarılı olursa kaynakları doğrular ve yapı olarak bir ARM şablonu oluşturur.
+1. DevOps yayın işlem hattı yeni bir sürüm oluşturmak ve yeni bir derleme kullanılabilir olduğunda ARM şablonunu dağıtmak üzere yapılandırılır.
 
-![Yeni CI/CD akışı](media/continuous-integration-deployment-improvements/new-ci-cd-flow.png)
+![Yeni CI/CD akışını gösteren diyagram.](media/continuous-integration-deployment-improvements/new-ci-cd-flow.png)
 
 ### <a name="what-changed"></a>Ne değişti?
 
-- Artık bir DevOps derleme işlem hattı kullanan bir yapı sürecimiz var.
-- Derleme işlem hattı ADFUtilities NPM paketini kullanır, bu, tüm kaynakları doğrular ve ARM şablonları (tek ve bağlantılı şablonlar) oluşturur.
-- Derleme işlem hattı ADF kaynaklarını doğrulamadan ve ADF Kullanıcı arabirimi (Yayımla düğmesi) yerine ARM şablonu oluşturmaya sorumludur.
+- Artık DevOps derleme işlem hattı kullanan bir yapı sürecimiz vardır.
+- Derleme işlem hattı ADFUtilities NPM paketini kullanır, bu, tüm kaynakları doğrulayacak ve ARM şablonları oluşturacaktır. Bu şablonlar tek ve bağlantılı olabilir.
+- Derleme işlem hattı, Data Factory kaynaklarını doğrulamadan ve Data Factory UI (**Yayımla** düğmesi) yerine ARM şablonu oluşturmaya sorumludur.
 - DevOps yayın tanımı artık git yapıtı yerine bu yeni derleme işlem hattını kullanacaktır.
 
 > [!NOTE]
-> Mevcut mekanizmayı (adf_publish dalı) kullanmaya devam edebilir veya yeni akışı kullanabilirsiniz. Her ikisi de desteklenir. 
+> Dalı olan mevcut mekanizmayı kullanmaya devam edebilir `adf_publish` veya yeni akışı kullanabilirsiniz. Her ikisi de desteklenir.
 
 ## <a name="package-overview"></a>Pakete genel bakış
 
-Şu anda pakette bulunan iki komut vardır:
+Pakette Şu anda iki komut mevcuttur:
+
 - ARM şablonunu dışarı aktarma
 - Doğrulama
 
 ### <a name="export-arm-template"></a>ARM şablonunu dışarı aktarma
 
-<rootFolder> <factoryId> Belirli bir klasörün kaynaklarını kullanarak ARM şablonunu dışarı aktarmak için NPM Run start Export [outputfolder] öğesini çalıştırın. Bu komut, ARM şablonunu oluşturmadan önce bir doğrulama denetimi ve de çalışır. Aşağıda bir örnek verilmiştir:
+`npm run start export <rootFolder> <factoryId> [outputFolder]`Belirli bir klasörün kaynaklarını kullanarak ARM şablonunu dışarı aktarmak için ' i çalıştırın. Bu komut, ARM şablonunu oluşturmadan önce bir doğrulama denetimi de çalıştırır. Aşağıda bir örnek verilmiştir:
 
 ```
 npm run start export C:\DataFactories\DevDataFactory /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/testResourceGroup/providers/Microsoft.DataFactory/factories/DevDataFactory ArmTemplateOutput
 ```
 
-- RootFolder, Data Factory kaynaklarının nerede bulunduğunu temsil eden zorunlu bir alandır.
-- Factoryıd, Data Factory kaynak KIMLIĞINI şu biçimde temsil eden zorunlu bir alandır: "/Subscriptions/ <subId> /ResourceGroups/ <rgName> /providers/Microsoft.DataFactory/Factories/ <dfName> ".
-- OutputFolder, oluşturulan ARM şablonunu kaydetmek için göreli yolu belirten isteğe bağlı bir parametredir.
+- `RootFolder` , Data Factory kaynaklarının nerede bulunduğunu temsil eden zorunlu bir alandır.
+- `FactoryId` , biçimdeki Data Factory kaynak KIMLIĞINI temsil eden zorunlu bir alandır `/subscriptions/<subId>/resourceGroups/<rgName>/providers/Microsoft.DataFactory/factories/<dfName>` .
+- `OutputFolder` , oluşturulan ARM şablonunu kaydetmek için göreli yolu belirten isteğe bağlı bir parametredir.
  
 > [!NOTE]
-> Oluşturulan ARM şablonu, `Live` fabrika sürümünde yayımlanmaz. Dağıtım bir CI/CD işlem hattı kullanılarak yapılmalıdır. 
+> Oluşturulan ARM şablonu, fabrika 'nin canlı sürümünde yayımlanmaz. Dağıtım bir CI/CD işlem hattı kullanılarak yapılmalıdır.
  
-
 ### <a name="validate"></a>Doğrulama
 
-<rootFolder> <factoryId> Belirli bir klasörün tüm kaynaklarını doğrulamak için NPM çalıştırma başlatma doğrulaması ' nı çalıştırın. Aşağıda bir örnek verilmiştir:
-    
+`npm run start validate <rootFolder> <factoryId>`Belirli bir klasörün tüm kaynaklarını doğrulamak için ' i çalıştırın. Aşağıda bir örnek verilmiştir:
+
 ```
 npm run start validate C:\DataFactories\DevDataFactory /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/testResourceGroup/providers/Microsoft.DataFactory/factories/DevDataFactory
 ```
 
-- RootFolder, Data Factory kaynaklarının nerede bulunduğunu temsil eden zorunlu bir alandır.
-- Factoryıd, Data Factory kaynak KIMLIĞINI şu biçimde temsil eden zorunlu bir alandır: "/Subscriptions/ <subId> /ResourceGroups/ <rgName> /providers/Microsoft.DataFactory/Factories/ <dfName> ".
-
+- `RootFolder` , Data Factory kaynaklarının nerede bulunduğunu temsil eden zorunlu bir alandır.
+- `FactoryId` , biçimdeki Data Factory kaynak KIMLIĞINI temsil eden zorunlu bir alandır `/subscriptions/<subId>/resourceGroups/<rgName>/providers/Microsoft.DataFactory/factories/<dfName>` .
 
 ## <a name="create-an-azure-pipeline"></a>Azure işlem hattı oluşturma
 
-NPM paketleri çeşitli yollarla tüketilirken, birincil avantajlardan biri bir [Azure Işlem hattı](https://nam06.safelinks.protection.outlook.com/?url=https:%2F%2Fdocs.microsoft.com%2F%2Fazure%2Fdevops%2Fpipelines%2Fget-started%2Fwhat-is-azure-pipelines%3Fview%3Dazure-devops%23:~:text%3DAzure%2520Pipelines%2520is%2520a%2520cloud%2Cit%2520available%2520to%2520other%2520users.%26text%3DAzure%2520Pipelines%2520combines%2520continuous%2520integration%2Cship%2520it%2520to%2520any%2520target.&data=04%7C01%7Cabnarain%40microsoft.com%7C5f064c3d5b7049db540708d89564b0bc%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C1%7C637423607000268277%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C1000&sdata=jo%2BkIvSBiz6f%2B7kmgqDN27TUWc6YoDanOxL9oraAbmA%3D&reserved=0)aracılığıyla tüketilecektir. İşbirliği dalınızdaki her bir birleştirmede, önce kodun tümünü doğrulayan ve sonra ARM şablonunu bir yayın işlem hattı tarafından tüketilen bir [Yapı yapıtına](https://nam06.safelinks.protection.outlook.com/?url=https%3A%2F%2Fdocs.microsoft.com%2F%2Fazure%2Fdevops%2Fpipelines%2Fartifacts%2Fbuild-artifacts%3Fview%3Dazure-devops%26tabs%3Dyaml%23how-do-i-consume-artifacts&data=04%7C01%7Cabnarain%40microsoft.com%7C5f064c3d5b7049db540708d89564b0bc%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C1%7C637423607000278113%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C1000&sdata=dN3t%2BF%2Fzbec4F28hJqigGANvvedQoQ6npzegTAwTp1A%3D&reserved=0) dışarı aktaran bir işlem hattı tetiklenebilir. **Geçerli CI/CD işleminden farklı olarak, yayın işlem hattınızı mevcut dal yerine bu yapıta işaret edecek `adf_publish` .**
+NPM paketleri çeşitli yollarla tüketilirken, birincil avantajlardan biri [Azure Işlem hattı](https://nam06.safelinks.protection.outlook.com/?url=https:%2F%2Fdocs.microsoft.com%2F%2Fazure%2Fdevops%2Fpipelines%2Fget-started%2Fwhat-is-azure-pipelines%3Fview%3Dazure-devops%23:~:text%3DAzure%2520Pipelines%2520is%2520a%2520cloud%2Cit%2520available%2520to%2520other%2520users.%26text%3DAzure%2520Pipelines%2520combines%2520continuous%2520integration%2Cship%2520it%2520to%2520any%2520target.&data=04%7C01%7Cabnarain%40microsoft.com%7C5f064c3d5b7049db540708d89564b0bc%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C1%7C637423607000268277%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C1000&sdata=jo%2BkIvSBiz6f%2B7kmgqDN27TUWc6YoDanOxL9oraAbmA%3D&reserved=0)aracılığıyla tüketilecektir. İşbirliği dalınızdaki her bir birleştirmede, önce kodun tümünü doğrulayan ve sonra ARM şablonunu bir yayın işlem hattı tarafından tüketilen bir [Yapı yapıtına](https://nam06.safelinks.protection.outlook.com/?url=https%3A%2F%2Fdocs.microsoft.com%2F%2Fazure%2Fdevops%2Fpipelines%2Fartifacts%2Fbuild-artifacts%3Fview%3Dazure-devops%26tabs%3Dyaml%23how-do-i-consume-artifacts&data=04%7C01%7Cabnarain%40microsoft.com%7C5f064c3d5b7049db540708d89564b0bc%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C1%7C637423607000278113%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C1000&sdata=dN3t%2BF%2Fzbec4F28hJqigGANvvedQoQ6npzegTAwTp1A%3D&reserved=0) dışarı aktaran bir işlem hattı tetiklenebilir. Geçerli CI/CD işleminden farklı olarak, *yayın işlem hattınızı mevcut `adf_publish` dal yerine bu yapıta işaret* edecek.
 
-Başlamak için aşağıdaki adımları izleyin:
+Kullanmaya başlamak için bu adımları izleyin:
 
-1.  Bir Azure DevOps projesi açın ve "işlem hatları" bölümüne gidin. "Yeni işlem hattı" seçeneğini belirleyin.
+1.  Bir Azure DevOps projesi açın ve işlem **hatları**' na gidin. **Yeni İşlem Hattı**’nı seçin.
 
-    ![Yeni İşlem Hattı](media/continuous-integration-deployment-improvements/new-pipeline.png)
+    ![Yeni işlem hattı düğmesini gösteren ekran görüntüsü.](media/continuous-integration-deployment-improvements/new-pipeline.png)
     
-2.  Ardışık düzen YAML betiğinizi kaydetmek istediğiniz depoyu seçin. ADF kaynaklarınızın aynı deposundaki bir *Yapı* klasörüne kaydedilmesini öneririz. Depodaki dosyada **package.js** olduğundan ve paket adının (aşağıdaki örnekte gösterildiği gibi) bulunduğundan emin olun.
+1.  Ardışık düzen YAML betiğinizi kaydetmek istediğiniz depoyu seçin. Bunu, Data Factory kaynaklarınızın aynı deposundaki bir yapı klasörüne kaydetmenizi öneririz. Aşağıdaki örnekte gösterildiği gibi, paket adını içeren depodaki dosyada *package.js* olduğundan emin olun:
 
     ```json
     {
@@ -124,12 +125,12 @@ Başlamak için aşağıdaki adımları izleyin:
     } 
     ```
     
-3.  *Başlatıcı işlem hattı* seçin. YAML dosyasını karşıya yüklediyseniz veya birleştirdiyseniz (aşağıda gösterildiği gibi), doğrudan bu dosyayı da işaret edebilir ve düzenleyebilirsiniz. 
+1.  **Başlatıcı işlem hattı** seçin. YAML dosyasını, aşağıdaki örnekte gösterildiği gibi karşıya yüklediyseniz veya birleştirdiyseniz, doğrudan bu dosyaya da işaret edebilir ve düzenleyebilirsiniz.
 
-    ![Başlatıcı işlem hattı](media/continuous-integration-deployment-improvements/starter-pipeline.png) 
+    ![Başlatıcı işlem hattını gösteren ekran görüntüsü.](media/continuous-integration-deployment-improvements/starter-pipeline.png)
 
     ```yaml
-    # Sample YAML file to validate and export an ARM template into a Build Artifact
+    # Sample YAML file to validate and export an ARM template into a build artifact
     # Requires a package.json file located in the target repository
     
     trigger:
@@ -153,8 +154,8 @@ Başlamak için aşağıdaki adımları izleyin:
         verbose: true
       displayName: 'Install npm package'
     
-    # Validates all of the ADF resources in the repository. You will get the same validation errors as when "Validate All" is clicked
-    # Enter the appropriate subscription and name for the source factory 
+    # Validates all of the Data Factory resources in the repository. You'll get the same validation errors as when "Validate All" is selected.
+    # Enter the appropriate subscription and name for the source factory.
     
     - task: Npm@1
       inputs:
@@ -162,8 +163,8 @@ Başlamak için aşağıdaki adımları izleyin:
         customCommand: 'run build validate $(Build.Repository.LocalPath) /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/testResourceGroup/providers/Microsoft.DataFactory/factories/yourFactoryName'
       displayName: 'Validate'
     
-    # Validate and then generate the ARM template into the destination folder. Same as clicking "Publish" from UX
-    # The ARM template generated is not published to the ‘Live’ version of the factory. Deployment should be done using a CI/CD pipeline. 
+    # Validate and then generate the ARM template into the destination folder, which is the same as selecting "Publish" from the UX.
+    # The ARM template generated isn't published to the live version of the factory. Deployment should be done by using a CI/CD pipeline. 
     
     - task: Npm@1
       inputs:
@@ -171,7 +172,7 @@ Başlamak için aşağıdaki adımları izleyin:
         customCommand: 'run build export $(Build.Repository.LocalPath) /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/testResourceGroup/providers/Microsoft.DataFactory/factories/yourFactoryName "ArmTemplate"'
       displayName: 'Validate and Generate ARM template'
     
-    # Publish the Artifact to be used as a source for a release pipeline
+    # Publish the artifact to be used as a source for a release pipeline.
     
     - task: PublishPipelineArtifact@1
       inputs:
@@ -180,11 +181,11 @@ Başlamak için aşağıdaki adımları izleyin:
         publishLocation: 'pipeline'
     ```
 
-4.  YAML kodunuzu girin. YAML dosyasını ve bir başlangıç noktası olarak kullanmayı öneririz.
-5.  Kaydet ve Çalıştır. YAML kullanılıyorsa, "ana" dal her güncelleştirildiği zaman tetiklenir.
+1.  YAML kodunuzu girin. YAML dosyasını başlangıç noktası olarak kullanmanızı öneririz.
+1.  Kaydet ve Çalıştır. YAML 'yi kullandıysanız, ana dal her güncelleştirilmesinde tetiklenir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Data Factory 'de sürekli tümleştirme ve teslim hakkında daha fazla bilgi edinin: 
+Data Factory 'de sürekli tümleştirme ve teslim hakkında daha fazla bilgi edinin:
 
 - [Azure Data Factory 'de sürekli tümleştirme ve teslim](continuous-integration-deployment.md).

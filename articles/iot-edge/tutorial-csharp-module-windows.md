@@ -9,20 +9,25 @@ ms.date: 08/03/2020
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc, amqp, devx-track-csharp
-ms.openlocfilehash: edbe2b8370b943aa93a1cef425c64e9f11feb735
-ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
+ms.openlocfilehash: 4e01b1ca9a3858ff31ad9b5da1d1159209c44330
+ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/20/2020
-ms.locfileid: "97705600"
+ms.lasthandoff: 03/14/2021
+ms.locfileid: "103464078"
 ---
-# <a name="tutorial-develop-c-iot-edge-modules-for-windows-devices"></a>Öğretici: Windows cihazları için C# IoT Edge modülleri geliştirme
+# <a name="tutorial-develop-c-iot-edge-modules-using-windows-containers"></a>Öğretici: Windows kapsayıcıları kullanarak C# IoT Edge modülleri geliştirme
+
+[!INCLUDE [iot-edge-version-201806](../../includes/iot-edge-version-201806.md)]
 
 Bu makalede C# kodu geliştirmek ve Azure IoT Edge çalıştıran bir Windows cihazına dağıtmak için Visual Studio 'Nun nasıl kullanılacağı gösterilmektedir.
 
-Azure IoT Edge modüllerini, iş mantığınızı doğrudan IoT Edge cihazlarınızda uygulayan kodu dağıtmak için kullanabilirsiniz. Bu öğreticide, algılayıcı verilerini filtreleyen bir IoT Edge modülü oluşturma ve dağıtma işlemlerinin adımları açıklanmaktadır. 
+>[!NOTE]
+>IoT Edge 1,1 LTS, Windows kapsayıcılarını destekleyecek son sürüm kanaldır. Sürüm 1,2 ' den başlayarak Windows kapsayıcıları desteklenmez. Windows cihazlarda IoT Edge çalıştırmak için [Windows 'Ta Linux için IoT Edge](iot-edge-for-linux-on-windows.md) kullanmayı veya taşımayı düşünün.
 
-Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
+Azure IoT Edge modüllerini, iş mantığınızı doğrudan IoT Edge cihazlarınızda uygulayan kodu dağıtmak için kullanabilirsiniz. Bu öğreticide, algılayıcı verilerini filtreleyen bir IoT Edge modülü oluşturma ve dağıtma işlemlerinin adımları açıklanmaktadır.
+
+Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
 >
@@ -37,19 +42,19 @@ Bu öğreticide oluşturacağınız IoT Edge modülü, cihazınız tarafından o
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-Bu öğreticide, Visual Studio 2019 kullanarak C# ' de bir modülün nasıl geliştirilmesi ve sonra bir Windows cihazına dağıtılması gösterilmektedir. Linux cihazları için modüller geliştiriyorsanız bunun yerine [Linux cihazları için C# IoT Edge modülleri geliştirme](tutorial-csharp-module.md) bölümüne gidin.
+Bu öğreticide, Visual Studio 2019 kullanarak C# ' de bir modülün nasıl geliştirilmesi ve sonra bir Windows cihazına dağıtılması gösterilmektedir. Linux kapsayıcıları kullanarak modüller geliştirirseniz bunun yerine [Linux kapsayıcıları kullanarak C# IoT Edge modülleri geliştirme](tutorial-csharp-module.md) bölümüne gidin.
 
-C# modüllerini Windows cihazlarına geliştirme ve dağıtmaya yönelik seçeneklerinizi anlamak için aşağıdaki tabloya bakın:
+Windows kapsayıcıları kullanarak C# modülleri geliştirme ve dağıtmaya yönelik seçeneklerinizi anlamak için aşağıdaki tabloya bakın:
 
 | C# | Visual &nbsp; Studio &nbsp; kodu | Visual Studio 2017 &nbsp; ve &nbsp; 2019 |
 | -- | :------------------: | :------------------: |
 | Windows AMD64 geliştirme | ![Visual Studio Code 'de WinAMD64 için C# modülleri geliştirme](./media/tutorial-c-module/green-check.png) | ![Visual Studio 'da WinAMD64 için C# modülleri geliştirme](./media/tutorial-c-module/green-check.png) |
 | Windows AMD64 hata ayıklama |   | ![Visual Studio 'da WinAMD64 için C# modüllerine hata ayıklama](./media/tutorial-c-module/green-check.png) |
 
-Bu öğreticiye başlamadan önce, [Windows cihazları için IoT Edge modülleri geliştirme](tutorial-develop-for-windows.md) öğreticisindeki yönergeleri izleyerek geliştirme ortamınızı ayarlayın. Bu işlem tamamlandıktan sonra ortamınız aşağıdaki önkoşulları içerir:
+Bu öğreticiye başlamadan önce, [Windows kapsayıcıları kullanarak IoT Edge modülleri](tutorial-develop-for-windows.md) geliştirme öğreticisindeki yönergeleri izleyerek geliştirme ortamınızı ayarlayın. Bu işlem tamamlandıktan sonra ortamınız aşağıdaki önkoşulları içerir:
 
 * Azure 'da ücretsiz veya Standart katmanlı [IoT Hub 'ı](../iot-hub/iot-hub-create-through-portal.md) .
-* [Azure IoT Edge çalıştıran bir Windows cihazı](quickstart.md).
+* [Azure IoT Edge çalıştıran bir Windows cihazı](how-to-install-iot-edge-windows-on-windows.md).
 * [Azure Container Registry](../container-registry/index.yml)gibi bir kapsayıcı kayıt defteri.
 * [Visual Studio 2019](/visualstudio/install/install-visual-studio), [Azure IoT Edge araçları](https://marketplace.visualstudio.com/items?itemName=vsc-iot.vs16iotedgetools) uzantısıyla yapılandırıldı.
 * Windows kapsayıcıları çalıştıracak şekilde yapılandırılmış [Docker Desktop](https://docs.docker.com/docker-for-windows/install/).

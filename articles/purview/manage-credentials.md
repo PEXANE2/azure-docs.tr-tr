@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 02/11/2021
-ms.openlocfilehash: 1857eab485e8651c05959f82cf11e69b6353c575
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 3802d25ebd8f21ab5b8991a66ceb6650f2f276a9
+ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101673520"
+ms.lasthandoff: 03/14/2021
+ms.locfileid: "103461717"
 ---
 # <a name="credentials-for-source-authentication-in-azure-purview"></a>Azure purview 'da kaynak kimlik doğrulaması için kimlik bilgileri
 
@@ -41,7 +41,7 @@ Taramaları ayarlamak için purview yönetilen kimliğini kullanıyorsanız, bu 
 
 Bir kimlik bilgisi oluşturabilmeniz için önce mevcut Azure Key Vault örneklerinden bir veya daha fazlasını Azure purview hesabınızla ilişkilendirin.
 
-1. [Azure Portal](https://portal.azure.com)Azure purview hesabınızı seçin. **Yönetim merkezine** gidin ve **kimlik bilgileri**' ne gidin.
+1. [Azure Portal](https://portal.azure.com)Azure purview hesabınızı seçin ve Azure purview Studio 'yu açın. Azure purview Studio 'daki **yönetim merkezine** gidin ve **kimlik bilgileri**' ne gidin.
 
 2. **Kimlik bilgileri** sayfasında **Yönet Key Vault bağlantıları**' nı seçin.
 

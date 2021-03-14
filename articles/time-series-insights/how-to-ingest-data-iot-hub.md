@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 01/21/2021
 ms.custom: seodec18
-ms.openlocfilehash: bb13df0f87cd10719f33afe4ec080c4c785df720
-ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
+ms.openlocfilehash: 85773ec66dbe567afcfd1afca1d14aa0119fb8f6
+ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98695569"
+ms.lasthandoff: 03/14/2021
+ms.locfileid: "103464029"
 ---
 # <a name="add-an-iot-hub-event-source-to-your-azure-time-series-insight-environment"></a>Azure zaman serisi Insight ortamınıza IoT Hub olay kaynağı ekleme
 
@@ -27,7 +27,7 @@ Bu makalede, Azure IoT Hub verileri Azure Time Series Insights ortamınıza okuy
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-* [Azure Time Series Insights ortamı](./tutorials-set-up-tsi-environment.md)oluşturun.
+* [Azure Time Series Insights ortamı](./tutorial-set-up-environment.md)oluşturun.
 * [Azure Portal kullanarak bir IoT Hub 'ı](../iot-hub/iot-hub-create-through-portal.md)oluşturun.
 * IoT Hub 'ında etkin ileti olayları gönderilmesi gerekir.
 * IoT Hub 'ında tarafından kullanılacak Azure zaman serisi Insight ortamı için adanmış bir tüketici grubu oluşturun. Her Azure zaman serisi Insight olay kaynağı, başka bir tüketici ile paylaşılmayan kendi adanmış bir tüketici grubuna sahip olmalıdır. Birden çok okuyucu aynı tüketici grubundan olayları tükettiği takdirde, tüm okuyucular hatalara neden olabilir. Ayrıntılar için [Azure IoT Hub Geliştirici Kılavuzu](../iot-hub/iot-hub-devguide.md)' nu okuyun.

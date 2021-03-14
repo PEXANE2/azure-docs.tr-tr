@@ -8,14 +8,16 @@ ms.date: 1/20/2020
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: eef5e60b06eedb1fb07c57aa2e369dd3830fcad5
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: d5fdd762834d351119116c5e4854dd4233671c29
+ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96932413"
+ms.lasthandoff: 03/14/2021
+ms.locfileid: "103463138"
 ---
 # <a name="tutorial-generate-simulated-device-data"></a>Öğretici: sanal cihaz verileri oluşturma
+
+[!INCLUDE [iot-edge-version-201806](../../includes/iot-edge-version-201806.md)]
 
 Bu makalede, Azure IoT Hub telemetri gönderen bir cihazın benzetimini yapmak için makine öğrenimi eğitim verilerini kullanırız. Bu öğretici, giriş bölümünde belirtildiği gibi, eğitim ve test için bir uçak motoru kümesinden verilerin benzetimini yapmak için [turbofan motor düşme simülasyonu veri kümesini](https://c3.nasa.gov/dashlink/resources/139/) kullanır.
 
@@ -86,15 +88,15 @@ Bu makale, IoT Edge Azure Machine Learning kullanımı hakkında öğretici içi
 
    ![Derleme başarılı çıkış iletisi](media/tutorial-machine-learning-edge-03-generate-data/build-success.png)
 
-1. Bu derlemeyi varsayılan derleme görevi yap **Terminal**  >  **varsayılan derleme görevini Yapılandır...** seçeneğini belirleyerek ve istemden **Oluştur** seçeneğini belirleyerek yapabilirsiniz.
+1. Bu derlemeyi varsayılan derleme görevi yap   >  **varsayılan derleme görevini Yapılandır...** seçeneğini belirleyerek ve istemden **Oluştur** seçeneğini belirleyerek yapabilirsiniz.
 
 ## <a name="connect-to-iot-hub-and-run-deviceharness"></a>IoT Hub Bağlan ve Devicebir şekilde Çalıştır
 
 Proje binamız olduğuna göre, bağlantı dizesine erişmek ve veri oluşturma işleminin ilerlemesini izlemek için IoT Hub 'ınıza bağlanın.
 
-### <a name="sign-in-to-azure-in-visual-studio-code"></a>Visual Studio Code 'de Azure 'da oturum açın
+### <a name="sign-in-to-azure-in-visual-studio-code"></a>Visual Studio Code’da Azure oturumu açma
 
-1. Komut paletini açarak `Ctrl + Shift + P` veya **View**  >  **komut paletini** görüntüleyerek Visual Studio Code Azure aboneliğinizde oturum açın.
+1. Komut paletini açarak `Ctrl + Shift + P` veya   >  **komut paletini** görüntüleyerek Visual Studio Code Azure aboneliğinizde oturum açın.
 
 1. **Azure: oturum aç** komutunu arayın.
 
@@ -114,7 +116,7 @@ Proje binamız olduğuna göre, bağlantı dizesine erişmek ve veri oluşturma 
 
 ### <a name="run-the-deviceharness-project"></a>Devicebir projeyi Çalıştır
 
-1. **View**  >  Visual Studio Code terminalini açmak için **terminali** görüntüle ' yi seçin.
+1.   >  Visual Studio Code terminalini açmak için **terminali** görüntüle ' yi seçin.
 
    Bir istem görmüyorsanız, ENTER tuşuna basın.
 

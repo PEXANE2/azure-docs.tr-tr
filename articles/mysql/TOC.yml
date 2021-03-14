@@ -9,7 +9,7 @@
       href: select-right-deployment-type.md
     - name: Desteklenen sürümler
       href: concepts-supported-versions.md
-    - name: Sürüm ilkesi
+    - name: Sürüm destek ilkesi
       href: concepts-version-policy.md
       displayName: version policy
 - name: Tek sunucu
@@ -100,7 +100,7 @@
             - name: Azure portal
               href: howto-server-parameters.md
               displayName: server parameters
-            - name: Azure CLI
+            - name: Azure CLI’si
               href: howto-configure-server-parameters-using-cli.md
               displayName: 'server parameters, cli'
             - name: Azure PowerShell
@@ -123,7 +123,7 @@
           items:
             - name: Azure portal
               href: tutorial-design-database-using-portal.md
-            - name: Azure CLI
+            - name: Azure CLI’si
               href: tutorial-design-database-using-cli.md
             - name: Azure PowerShell
               href: tutorial-design-database-using-powershell.md
@@ -266,7 +266,7 @@
             - name: Azure portal
               href: howto-create-manage-server-portal.md
               displayName: 'manage, reset password, scale'
-            - name: Azure CLI
+            - name: Azure CLI’si
               href: how-to-manage-single-server-cli.md
               displayName: 'manage, reset password, scale'
         - name: Sunucuyu Başlatma/Durdurma
@@ -430,7 +430,7 @@
               href: flexible-server/quickstart-create-arm-template.md
         - name: Bağlanma ve sorgulama
           items:
-            - name: Azure CLI
+            - name: Azure CLI’si
               href: flexible-server/connect-azure-cli.md
             - name: PHP
               href: flexible-server/connect-php.md
@@ -449,7 +449,7 @@
             - name: Azure portal
               href: flexible-server/how-to-configure-server-parameters-portal.md
               displayName: server parameters
-            - name: Azure CLI
+            - name: Azure CLI’si
               href: flexible-server/how-to-configure-server-parameters-cli.md
               displayName: 'server parameters, cli'
         - name: Veritabanları ve kullanıcılar oluşturma
@@ -477,7 +477,7 @@
           items:
             - name: Azure portal
               href: flexible-server/how-to-manage-server-portal.md
-            - name: Azure CLI
+            - name: Azure CLI’si
               href: flexible-server/how-to-manage-server-cli.md
         - name: Azure portal kullanarak sunucuyu Durdur/Başlat
           href: flexible-server/how-to-stop-start-server-portal.md
@@ -569,7 +569,7 @@
       displayName: 'SUPER privilege, DBA role, Access is denied'
 - name: Başvuru
   items:
-    - name: Azure CLI
+    - name: Azure CLI’si
       href: /cli/azure/mysql
     - name: REST API
       href: /rest/api/mysql
