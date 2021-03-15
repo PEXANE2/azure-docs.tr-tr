@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: security-center
 manager: rkarlin
 zone_pivot_groups: non-azure-machines
-ms.openlocfilehash: b5dd06c148c53517214b47b39f083c99d0f37e0b
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 68fcf8a8feb046fca2c26041d92264dd8b3a638e
+ms.sourcegitcommit: 33ac5cd254c33659f668a76a2e295fddcd5d194d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101712207"
+ms.lasthandoff: 03/14/2021
+ms.locfileid: "103465506"
 ---
 # <a name="connect-your-non-azure-machines-to-security-center"></a>Azure dışı makinelerinizi Güvenlik Merkezi 'ne bağlama
 
@@ -75,24 +75,24 @@ Ayrıca, Azure Arc etkin sunucular, makinede konuk yapılandırma ilkelerini etk
 
     Buradan, eklediğiniz makinelerin türüne göre aşağıdaki ilgili yordamı seçin:
 
-    - [Azure Stack VM 'lerinizi ekleme](#onboard-your-azure-stack-vms)
+    - [Azure Stack hub sanal makinelerinizi ekleme](#onboard-your-azure-stack-hub-vms)
     - [Linux makinelerinizi ekleme](#onboard-your-linux-machines)
     - [Windows makinelerinizi ekleme](#onboard-your-windows-machines)
 
-### <a name="onboard-your-azure-stack-vms"></a>Azure Stack VM 'lerinizi ekleme
+### <a name="onboard-your-azure-stack-hub-vms"></a>Azure Stack hub sanal makinelerinizi ekleme
 
-Azure Stack VM 'Leri eklemek için, **aracılar yönetim** sayfasındaki bilgilere ve Azure Stack üzerinde çalışan sanal makinelerde **Azure izleyici, güncelleştirme ve yapılandırma yönetimi** sanal makine uzantısı ' nı yapılandırmanız gerekir.
+Azure Stack hub VM 'Leri eklemek için, **aracılar yönetim** sayfasındaki bilgilere ve Azure Stack hub örneğiniz üzerinde çalışan sanal makinelerde **Azure izleyici, güncelleştirme ve yapılandırma yönetimi** sanal makine uzantısı ' nı yapılandırmanız gerekir.
 
 1. **Aracılar yönetim** sayfasından, **çalışma alanı kimliği** ve **birincil anahtarı** Not defteri 'ne kopyalayın.
-1. **Azure Stack** portalınızda oturum açın ve **sanal makineler** sayfasını açın.
+1. **Azure Stack hub** portalında oturum açın ve **sanal makineler** sayfasını açın.
 1. Güvenlik Merkezi ile korumak istediğiniz sanal makineyi seçin.
     >[!TIP]
-    > Azure Stack sanal makine oluşturma hakkında daha fazla bilgi için, [Windows sanal makineler için bu hızlı başlangıç](/azure-stack/user/azure-stack-quick-windows-portal) veya [Linux sanal makineleri için bu hızlı başlangıç](/azure-stack/user/azure-stack-quick-linux-portal)bölümüne bakın.
+    > Azure Stack hub 'da sanal makine oluşturma hakkında daha fazla bilgi için, [Windows sanal makineler için bu hızlı başlangıç](/azure-stack/user/azure-stack-quick-windows-portal) veya [Linux sanal makineleri için bu hızlı başlangıç](/azure-stack/user/azure-stack-quick-linux-portal)bölümüne bakın.
 1. **Uzantılar**'ı seçin. Bu sanal makinede yüklü olan sanal makine uzantılarının listesi gösteriliyor.
 1. **Ekle** sekmesini seçin. **Yeni kaynak** menüsünde, kullanılabilir sanal makine uzantılarının listesi gösterilir.
 1. **Azure izleyici, güncelleştirme ve yapılandırma yönetimi** uzantısı ' nı seçin ve **Oluştur**' u seçin. **Uzantı yapılandırmasını yükler** sayfası açılır.
     >[!NOTE]
-    > Market 'te listelenen **Azure izleyici, güncelleştirme ve yapılandırma yönetimi** uzantısını görmüyorsanız, kullanılabilir hale getirmek için lütfen Azure Stack işletmenine ulaşın.
+    > Market 'te listelenen **Azure izleyici, güncelleştirme ve yapılandırma yönetimi** uzantısını görmüyorsanız, kullanılabilir hale getirmek için lütfen Azure Stack hub işletmenine ulaşın.
 1. Uzantı yapılandırmasını **yükler** sayfasında, önceki adımda not defteri ' ne kopyaladığınız **çalışma alanı kimliğini** ve **çalışma alanı anahtarını (birincil anahtar)** yapıştırın.
 1. Yapılandırmayı tamamladığınızda **Tamam**' ı seçin. Uzantının durumu, **sağlama başarılı** olarak gösterilir. Sanal makinenin güvenlik merkezi 'nde görünmesi bir saate kadar sürebilir.
 

@@ -7,12 +7,12 @@ ms.service: security-center
 ms.topic: overview
 ms.date: 03/31/2020
 ms.author: memildin
-ms.openlocfilehash: 65f383b37b6fb5c89fb987f179d7900eb667d76e
-ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
+ms.openlocfilehash: 88dc0760f320a99b0cbc99b7637dc34dd11dfecc
+ms.sourcegitcommit: 33ac5cd254c33659f668a76a2e295fddcd5d194d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102438293"
+ms.lasthandoff: 03/14/2021
+ms.locfileid: "103465455"
 ---
 # <a name="supported-platforms"></a>Desteklenen platformlar 
 
@@ -51,7 +51,7 @@ Ayrıca, Azure Kubernetes (AKS), Azure Databricks ve daha fazlası gibi Azure ta
 
 Bulut hizmetinde çalışan sanal makineler de desteklenir. Yalnızca üretim yuvalarında çalışan Cloud Services Web ve çalışan rolleri izlenir. Bulut hizmetleri hakkında daha fazla bilgi edinmek için bkz. [Azure Cloud Services 'ye genel bakış](../cloud-services/cloud-services-choose-me.md).
 
-Azure Stack bulunan VM 'Ler için koruma de desteklenir. Güvenlik Merkezi 'nin Azure Stack tümleştirmesi hakkında daha fazla bilgi için, bkz. [Azure Stack sanal makinelerinizi Güvenlik Merkezi 'ne](quickstart-onboard-machines.md)ekleme. 
+Azure Stack hub 'da bulunan VM 'Ler için koruma de desteklenir. Güvenlik Merkezi 'nin Azure Stack hub ile tümleştirmesi hakkında daha fazla bilgi için, bkz. [Azure Stack hub sanal makinelerinizi Güvenlik Merkezi 'ne](quickstart-onboard-machines.md?pivots=azure-portal#onboard-your-azure-stack-hub-vms)ekleme. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
