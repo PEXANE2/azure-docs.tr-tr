@@ -1,17 +1,17 @@
 ---
-title: Windows sanal masaüstü Linux desteği-Azure
-description: Windows sanal masaüstü için kısa bir genel bakış Linux desteği.
+title: Windows sanal masaüstü basit Istemci desteği-Azure
+description: Windows sanal masaüstü için ölçülü istemci desteğine kısa bir genel bakış.
 author: Heidilohr
 ms.topic: conceptual
 ms.date: 01/23/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 502a89c5a2c0384e34ee35346332a4dd6adc38aa
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.openlocfilehash: 90459c3eb171e03b1c28c91e766d3a6b765565b8
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98185436"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103491478"
 ---
 # <a name="linux-support"></a>Linux desteği
 
@@ -23,10 +23,11 @@ Aşağıdaki iş ortakları Linux cihazları için Windows sanal masaüstü iste
 
 |İş Ortağı|İş ortağı belgeleri|İş ortağı desteği|
 |:------|:--------------------|:--------------|
-|![Dell logosu](./media/partners/dell.png)|[Dell istemci belgeleri](https://www.delltechnologies.com/en-us/collaterals/unauth/data-sheets/products/thin-clients/dell-thinos-9-for-microsoft-wvd.pdf)|[Dell desteği](https://www.dell.com/support)|
-|![IGEL logosu](./media/partners/igel.png)|[IGEL istemci belgeleri](https://www.igel.com/igel-solution-family/windows-virtual-desktop/)|[ILEK desteği](https://www.igel.com/support/)|
-|![NComputing logosu](./media/partners/ncomputing.png)|[İstemci belgelerini nİşleme](https://www.ncomputing.com/microsoft)|[NBilgi Işlem desteği](https://www.ncomputing.com/support/support-options)|
-|![Stratodesk logosu](./media/partners/stratodesk.png)|[Stratodesk istemci belgeleri](https://www.stratodesk.com/kb/Microsoft_Windows_Virtual_Desktop_(WVD))|[Stratodesk desteği](https://www.stratodesk.com/support/)|
+|'İn |[Dell istemci belgeleri](https://www.delltechnologies.com/en-us/collaterals/unauth/data-sheets/products/thin-clients/dell-thinos-9-for-microsoft-wvd.pdf)|[Dell desteği](https://www.dell.com/support)|
+|ILEK dili |[IGEL istemci belgeleri](https://www.igel.com/igel-solution-family/windows-virtual-desktop/)|[ILEK desteği](https://www.igel.com/support/)|
+|NComputing |[İstemci belgelerini nİşleme](https://www.ncomputing.com/microsoft)|[NBilgi Işlem desteği](https://www.ncomputing.com/support/support-options)|
+|Stratodesk |[Stratodesk istemci belgeleri](https://www.stratodesk.com/kb/Microsoft_Windows_Virtual_Desktop_(WVD))|[Stratodesk desteği](https://www.stratodesk.com/support/)|
+|HP |[HP İstemci belgeleri](https://h20195.www2.hp.com/v2/GetDocument.aspx?docname=c07051097)|[HP desteği](https://support.hp.com/us-en/products/workstations-thin-clients)|
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

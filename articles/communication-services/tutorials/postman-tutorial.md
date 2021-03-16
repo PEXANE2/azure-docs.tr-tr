@@ -5,15 +5,15 @@ description: Bir SMS mesajı göndermek için Postman ile ACS için nasıl imza 
 author: ProbablePrime
 services: azure-communication-services
 ms.author: rifox
-ms.date: 03/08/2021
+ms.date: 03/10/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 0d98ae1ef537b06858b8c03df65bbcdd27984c4f
-ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
+ms.openlocfilehash: c21d8696c0c4edd743aab6cbe7866d27ce46a314
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/11/2021
-ms.locfileid: "103022377"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103492617"
 ---
 # <a name="tutorial-sign-and-make-requests-with-postman"></a>Öğretici: oturum açma ve istekleri Postman ile yapma
 Bu öğreticide, HTTP kullanarak Azure Communication Services (ACS) hizmetlerine yönelik bir istek oluşturmak için Postman 'ı ayarlamaya ve kullanmaya başlayacağız. Bu öğreticinin sonunda, ACS ve Postman kullanarak başarıyla SMS iletisi gönderdiniz ve ACS içindeki diğer API 'Leri araştırmak için Postman 'ı kullanabilirsiniz.

@@ -1,5 +1,5 @@
 ---
-title: Bir Defender IoT mikro aracı modülü oluşturma ikizi
+title: Bir Defender IoT mikro aracı modülü oluşturma ikizi (Önizleme)
 titleSuffix: Azure Defender for IoT
 description: Yeni cihazlar için bireysel savunma, her bir savunma Aracısı modül TWINS oluşturmayı öğrenin.
 author: shhazam-ms
@@ -8,14 +8,14 @@ ms.author: shhazam
 ms.date: 1/20/2021
 ms.topic: quickstart
 ms.service: azure
-ms.openlocfilehash: ea82fea89a9e81e66be6b3060aad067d3ceb8f5f
-ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
+ms.openlocfilehash: e1c2f4e79b9f0f0ba1ec0da0c5a2a29cdc8bc6d7
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102123012"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103489888"
 ---
-# <a name="create-a-defender-iot-micro-agent-module-twin"></a>Bir Defender IoT mikro aracı modülü oluşturma ikizi 
+# <a name="create-a-defender-iot-micro-agent-module-twin-preview"></a>Bir Defender IoT mikro aracı modülü oluşturma ikizi (Önizleme)
 
 Yeni cihazlar için bireysel **savunma Deriotmikro aracı** modülü TWINS oluşturabilirsiniz. Ayrıca, bir IoT Hub tüm cihazlar için modül TWINS 'i toplu olarak oluşturabilirsiniz. 
 
@@ -27,9 +27,9 @@ IoT için Defender, mevcut IoT cihaz yönetimi Platformunuzla tam olarak tümle�
 
 Azure IoT Hub 'de [cihaz](../iot-hub/iot-hub-devguide-device-twins.md)ikseponları kavramı hakkında daha fazla bilgi edinin   . 
 
-## <a name="security-module-twins"></a>Güvenlik modülü TWINS 
+## <a name="defender-iot-micro-agent-twins"></a>Defender-IoT-Micro-Agent TWINS 
 
-IoT için Defender, her cihaz için bir güvenlik modülü ikizi kullanır. İkizi güvenlik modülü, çözümünüzdeki her bir cihaz için cihaz güvenliği ile ilgili tüm bilgileri barındırır. Cihaz güvenlik özellikleri, daha az kaynak gerektiren güncelleştirmeleri ve bakımı etkinleştirmek üzere daha güvenli iletişim için ikizi özel bir güvenlik modülü aracılığıyla yapılandırılır. 
+IoT için Defender, her cihaz için bir Defender-IoT-mikro-Agent ikizi kullanır. Defender-IoT-Micro-Agent ikizi, çözümünüzdeki her bir cihaz için cihaz güvenliği ile ilgili tüm bilgileri tutar. Cihaz güvenlik özellikleri, daha az kaynak gerektiren güncelleştirmeleri ve bakımı etkinleştirmek üzere daha güvenli iletişim için adanmış bir Defender-IoT-mikro-Agent ikizi aracılığıyla yapılandırılır. 
 
 ## <a name="understanding-defenderiotmicroagent-module-twins"></a>Savunma, Savuntmikro aracı modül TWINS 'i anlama 
 
@@ -39,9 +39,9 @@ IoT için Defender, mevcut IoT cihaz yönetimi platformunuzu tamamen tümleştir
 
 Azure IoT Hub 'de modül TWINS kavramı hakkında daha fazla bilgi edinmek için bkz. [IoT Hub Module TWINS](../iot-hub/iot-hub-devguide-module-twins.md).
 
-IoT için Defender, Module ikizi mekanizmasını kullanır ve `DefenderIotMicroAgent` cihazlarınızın her biri için adlandırılmış bir güvenlik modülünü ikizi. 
+IoT için Defender, Module ikizi mekanizmasını kullanır ve cihazlarınızın her biri için adlandırılmış bir Defender-IoT-mikro-Agent ikizi bulundurur `DefenderIotMicroAgent` . 
 
-IoT özelliğinin tüm Defender özelliklerinden tam anlamıyla yararlanabilmek için, hizmette bulunan her cihaz için güvenlik modülünü TWINS 'i oluşturmanız, yapılandırmanız ve kullanmanız gerekir. 
+IoT özelliğinin tüm Defender özelliklerinden tam anlamıyla yararlanabilmek için, hizmette bulunan her cihaz için Defender-IoT-mikro-Agent TWINS 'i oluşturmanız, yapılandırmanız ve kullanmanız gerekir. 
 
 ## <a name="create-defenderiotmicroagent-module-twin"></a>Savunma Deriotmikro aracı modülü ikizi oluşturma 
 
@@ -49,7 +49,7 @@ IoT özelliğinin tüm Defender özelliklerinden tam anlamıyla yararlanabilmek 
 
 Bir cihaz için el ile yeni bir **savunma Deriotmikro aracı** modülü ikizi oluşturma: 
 
-1. IoT Hub, ikizi güvenlik modülünün oluşturulacağı cihazı bulun ve seçin. 
+1. IoT Hub, üzerinde bir Defender-IoT-mikro-Agent ikizi oluşturmak istediğiniz cihazı bulun ve seçin. 
 
 1.  **Modül kimliği Ekle**' yi seçin. 
 
@@ -59,7 +59,7 @@ Bir cihaz için el ile yeni bir **savunma Deriotmikro aracı** modülü ikizi 
 
 ## <a name="verify-the-creation-of-a-module-twin"></a>Modül ikizi oluşturmayı doğrulama 
 
-Belirli bir cihaz için bir güvenlik modülü ikizi varolup olmadığını doğrulamak için: 
+Bir Defender-IoT-Micro-Agent ikizi 'in belirli bir cihaz için mevcut olup olmadığını doğrulamak için: 
 
 1. Azure IoT Hub, ****    **araştırıcılar** menüsünden IoT cihazları ' nı seçin   . 
 

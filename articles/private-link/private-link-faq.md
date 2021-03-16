@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 10/05/2019
 ms.author: allensu
-ms.openlocfilehash: 4e81d8f88a7c01b6d302bcdaa88559159bed04ea
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: d06e90a691389b99d8f439364203b921f49b2305
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101709419"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103496482"
 ---
 # <a name="azure-private-link-frequently-asked-questions-faq"></a>Azure Özel Bağlantı hakkında sık sorulan sorular (FAQ)
 
@@ -54,6 +54,11 @@ Evet. Özel uç noktalar Azure bölgeleri arasında Azure PaaS kaynaklarına ba�
 
 ### <a name="can-i-modify-my-private-endpoint-network-interface-nic-"></a>Özel uç nokta ağ Arabirimmi (NIC) değiştirebilir miyim?
 Özel bir uç nokta oluşturulduğunda, salt okunurdur bir NIC atanır. Bu değiştirilemez ve özel uç noktanın yaşam döngüsü için kalır.
+
+### <a name="how-do-i-achieve-availability-while-using-private-endpoints-in-case-of-regional-failures-"></a>Bölgesel hatalarda özel uç noktaları kullanırken Nasıl yaparım? kullanılabilirlik elde edilsin mi?
+
+Özel uç noktalar% 99,99 SLA [[Azure özel bağlantısı Için SLA]](https://azure.microsoft.com/support/legal/sla/private-link/v1_0/)olan yüksek oranda kullanılabilir kaynaklardır. Ancak, bölgesel kaynaklar olduklarından, tüm Azure bölge kesintisi kullanılabilirliği etkileyebilir. Bölgesel hatalarda kullanılabilirlik sağlamak için, aynı hedef kaynağa bağlanmış birden çok PEs farklı bölgelerde dağıtılabilir. Bu şekilde, bir bölge, hedef kaynağa erişmek için farklı bir bölgedeki PE aracılığıyla kurtarma senaryolarınız için trafiği yönlendirmeye devam edebilir. Hedef hizmet tarafında bölgesel hataların nasıl işlendiği hakkında bilgi için lütfen yük devretme ve kurtarma hakkındaki hizmet belgelerini gözden geçirin. Özel bağlantı trafiği, hedef uç noktası için Azure DNS çözümlemesini izler. 
+
 
 ## <a name="private-link-service"></a>Özel Bağlantı Hizmeti
  

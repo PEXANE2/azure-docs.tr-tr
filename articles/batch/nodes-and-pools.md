@@ -3,12 +3,12 @@ title: Azure Batch düğümler ve havuzlar
 description: İşlem düğümleri ve havuzlar hakkında bilgi edinin ve bunların bir geliştirme açısından Azure Batch iş akışında nasıl kullanıldığını öğrenin.
 ms.topic: conceptual
 ms.date: 03/11/2021
-ms.openlocfilehash: e1edcc805e0e8c59d189a4622e494101fb31bb6d
-ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
+ms.openlocfilehash: 7d4c2d45849deb011498efe4c8a1ae91724b9acd
+ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/12/2021
-ms.locfileid: "103200219"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103563904"
 ---
 # <a name="nodes-and-pools-in-azure-batch"></a>Azure Batch düğümler ve havuzlar
 
@@ -208,3 +208,4 @@ Mevcut bir havuza bir sertifika eklerseniz, sertifikanın düğümlere uygulanma
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [İşler ve görevler](jobs-and-tasks.md)hakkında bilgi edinin.
+- [Havuz ve düğüm arka plan işlemlerinde oluşan sorunları algılamaya ve önlemenize ](batch-pool-node-error-checking.md)öğrenin.

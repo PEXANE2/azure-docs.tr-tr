@@ -1,5 +1,5 @@
 ---
-title: Kurumsal uygulama erişim atamaları için özel rol izinleri-Azure Active Directory | Microsoft Docs
+title: Azure Active Directory 'de kurumsal uygulamaları yönetmek için özel roller oluşturma
 description: Azure Active Directory 'de kurumsal uygulamalar için özel Azure AD rolleri oluşturma ve atama
 services: active-directory
 author: rolyon
@@ -13,14 +13,14 @@ ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: eb04616fb442f4a6c000e11919638231e3ddf64c
-ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
+ms.openlocfilehash: 1a76e2d37e9dcdd285a8608fdbfd715bfb834eb8
+ms.sourcegitcommit: 3ea12ce4f6c142c5a1a2f04d6e329e3456d2bda5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/11/2021
-ms.locfileid: "103012182"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103467757"
 ---
-# <a name="assign-custom-roles-to-manage-enterprise-apps-in-azure-active-directory"></a>Azure Active Directory 'de kurumsal uygulamaları yönetmek için özel roller atama
+# <a name="create-custom-roles-to-manage-enterprise-apps-in-azure-active-directory"></a>Azure Active Directory 'de kurumsal uygulamaları yönetmek için özel roller oluşturma
 
 Bu makalede, Azure Active Directory (Azure AD) içindeki kullanıcılar ve gruplar için kurumsal uygulama atamalarını yönetme izinleri ile özel bir rolün nasıl oluşturulacağı açıklanmaktadır. Rol atamalarının öğeleri ve alt tür, izin ve özellik kümesi gibi koşulların anlamı için bkz. [özel rollere genel bakış](custom-overview.md).
 

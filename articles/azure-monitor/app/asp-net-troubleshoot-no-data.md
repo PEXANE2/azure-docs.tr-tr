@@ -4,12 +4,12 @@ description: Azure Application Insights verileri görmüyor musunuz? Buradan den
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 05/21/2020
-ms.openlocfilehash: e41b0a9ce1ff86bc6010e12fdf5d3320f303fd87
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: 40fbe4d08676d7cc56478d3740424fccaa7addc0
+ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99092460"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103562204"
 ---
 # <a name="troubleshooting-no-data---application-insights-for-netnet-core"></a>.NET/.NET Core için veri Application Insights sorunlarını giderme
 
@@ -68,11 +68,11 @@ Bu hata hakkında daha fazla bilgi için bkz. [GitHub sorunu 1610] ( https://git
     </TelemetryModules>
     ```
 
-**_Düzgün bir şekilde yükseltilemeyen için beklenmeyen özel durumlar veya telemetri toplanmıyor olabilir._* _
+***Düzgün bir şekilde yükseltilemeyen için beklenmeyen özel durumlar veya telemetri toplanmıyor olabilir.***
 
 
 ## <a name="no-add-application-insights-option-in-visual-studio"></a><a name="q01"></a>Visual Studio 'da ' Add Application Insights ' seçeneği yok
-_When var olan bir projeye sağ tıkladım Çözüm Gezgini Application Insights herhangi bir seçeneği görmüyorum. *
+*Çözüm Gezgini var olan bir projeye sağ tıkladığımda, hiçbir Application Insights seçeneği görmüyorum.*
 
 * Tüm .NET projesi türleri araçlar tarafından desteklenmez. Web ve WCF projeleri desteklenir. Masaüstü veya hizmet uygulamaları gibi diğer proje türleri için de [projenize el ile bir APPLICATION INSIGHTS SDK ekleyebilirsiniz](./windows-desktop.md).
 * [Visual Studio 2013 güncelleştirme 3 veya sonraki bir sürüme](/visualstudio/releasenotes/vs2013-update3-rtm-vs)sahip olduğunuzdan emin olun. Application Insights SDK 'sını sağlayan geliştirici Analizi araçlarıyla önceden yüklenmiş olarak gelir.
@@ -224,7 +224,7 @@ Devre dışı bırakabilirsiniz, ancak bu önerilmez. Örnekleme, tanılama amac
 
     ```xml
     <TelemetryModules>
-      <Add Type="Microsoft.ApplicationInsights.Extensibility.HostingStartup.FileDiagnosticsTelemetryModule, Microsoft.AspNet.ApplicationInsights.HostingStartup">
+      <Add Type="Microsoft.ApplicationInsights.Extensibility.Implementation.Tracing.FileDiagnosticsTelemetryModule, Microsoft.ApplicationInsights">
         <Severity>Verbose</Severity>
         <LogFileName>mylog.txt</LogFileName>
         <LogFilePath>C:\\SDKLOGS</LogFilePath>

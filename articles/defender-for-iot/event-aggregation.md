@@ -1,5 +1,5 @@
 ---
-title: Güvenlik modülü klasik olay toplama
+title: Defender-IoT-Micro-Agent klasik olay toplama
 description: IoT olay toplama için Defender hakkında bilgi edinin.
 services: defender-for-iot
 ms.service: defender-for-iot
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 1/20/2021
 ms.author: shhazam
-ms.openlocfilehash: 0718c2637658e5519760a68f29c7a816b2aa61a1
-ms.sourcegitcommit: 4784fbba18bab59b203734b6e3a4d62d1dadf031
+ms.openlocfilehash: 01333da3041cc93154c46fb45a39bb209fd30f91
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99809227"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103493092"
 ---
-# <a name="security-module-classic-event-aggregation"></a>Güvenlik modülü klasik olay toplama
+# <a name="defender-iot-micro-agent-classic-event-aggregation"></a>Defender-IoT-Micro-Agent klasik olay toplama
 
 IoT güvenlik aracıları için Defender, yerel cihazınızdan veri ve sistem olayları toplar ve bu verileri işleme ve analiz için Azure bulutuna gönderir. Güvenlik Aracısı, yeni işlem ve yeni bağlantı olayları dahil olmak üzere birçok cihaz olayı türünü toplar. Yeni işlem ve yeni bağlantı olaylarının her ikisi de bir cihazda ikinci olarak sıklıkla meydana gelebilir ve güçlü ve kapsamlı güvenlik için önemli olsa da, güvenlik aracılarının göndermeye zorlanacağı ileti sayısı, IoT Hub kotasına ve maliyet sınırlarına hızlı bir şekilde ulaşabilir veya bu sınıra ulaşabilirler. Ancak, bu olaylar, cihazınızı korumak için önemli olan önemli ölçüde önemli güvenlik bilgilerini içerir.
 

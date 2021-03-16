@@ -13,12 +13,12 @@ ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 357ea903ed4bbc87717dfefc1c542722f5bd40c0
-ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
+ms.openlocfilehash: 9e47171fc20ba07823e73f71713307e3a0e37278
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "102448413"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103488933"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-saml-identity-provider-using-azure-active-directory-b2c"></a>Azure Active Directory B2C kullanarak, SAML kimlik sağlayıcısı ile kaydolma ve oturum açma ayarlama
 
@@ -205,9 +205,16 @@ Aşağıdaki örnekte, bir Azure AD B2C teknik profilinin SAML meta verileri iç
 https://<your-tenant-name>.b2clogin.com/<your-tenant-name>.onmicrosoft.com/<your-policy>/samlp/metadata?idptp=<your-technical-profile>
 ```
 
+[Özel bir etki alanı](custom-domain.md)kullanırken aşağıdaki biçimi kullanın:
+
+```
+https://your-domain-name/<your-tenant-name>.onmicrosoft.com/<your-policy>/samlp/metadata?idptp=<your-technical-profile>
+```
+
 Aşağıdaki değerleri değiştirin:
 
-- Kiracı **adınızla kiracınız** , Your-Tenant.onmicrosoft.com gibi.
+- Kiracı **adınız,** örneğin Your-Tenant.onmicrosoft.com gibi.
+- login.contoso.com gibi özel etki alanı adınızla **etki alanı adınız** .
 - ilke adınızla **ilkenize** . Örneğin, B2C_1A_signup_signin_adfs.
 - SAML kimlik sağlayıcısı teknik profilinizin adı ile **Teknik profiliniz** . Örneğin, contoso-SAML2.
 

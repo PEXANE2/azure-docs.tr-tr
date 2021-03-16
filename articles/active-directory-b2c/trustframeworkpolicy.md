@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 01/31/2020
+ms.date: 03/15/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: a87b4c6b845006a9f9f3cf82815277c67c09bef0
-ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
+ms.openlocfilehash: 9bf1cc197a7d6977ccb6ef69e157d9f8a76a58d5
+ms.sourcegitcommit: 66ce33826d77416dc2e4ba5447eeb387705a6ae5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98178849"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103470731"
 ---
 # <a name="trustframeworkpolicy"></a>TrustFrameworkPolicy
 
@@ -29,9 +29,9 @@ ms.locfileid: "98178849"
   xmlns:xsd="https://www.w3.org/2001/XMLSchema"
   xmlns="http://schemas.microsoft.com/online/cpim/schemas/2013/06"
   PolicySchemaVersion="0.3.0.0"
-  TenantId="mytenant.onmicrosoft.com"
+  TenantId="yourtenant.onmicrosoft.com"
   PolicyId="B2C_1A_TrustFrameworkBase"
-  PublicPolicyUri="http://mytenant.onmicrosoft.com/B2C_1A_TrustFrameworkBase">
+  PublicPolicyUri="http://yourtenant.onmicrosoft.com/B2C_1A_TrustFrameworkBase">
   ...
 ```
 
@@ -41,12 +41,12 @@ ms.locfileid: "98178849"
 | Öznitelik | Gerekli | Açıklama |
 |---------- | -------- | ----------- |
 | PolicySchemaVersion | Yes | İlkeyi yürütmek için kullanılacak şema sürümü. Değer şu şekilde olmalıdır `0.3.0.0` |
-| Tenantobjectıd | No | Azure Active Directory B2C (Azure AD B2C) kiracının benzersiz nesne tanımlayıcısı. |
+| Tenantobjectıd | Hayır | Azure Active Directory B2C (Azure AD B2C) kiracının benzersiz nesne tanımlayıcısı. |
 | TenantId | Yes | Bu ilkenin ait olduğu kiracının benzersiz tanımlayıcısı. |
 | PolicyId | Yes | İlke için benzersiz tanımlayıcı. Bu tanımlayıcının önüne *B2C_1A_* gelmelidir |
 | PublicPolicyUri | Yes | İlke için kiracı KIMLIĞI ve ilke KIMLIĞI birleşimi olan URI. |
-| DeploymentMode | No | Olası değerler: `Production` , veya `Development` . `Production` varsayılan değerdir. İlkenizde hata ayıklamak için bu özelliği kullanın. Daha fazla bilgi için bkz. [günlükleri toplama](troubleshoot-with-application-insights.md). |
-| Kullanıcıbağlantısı Neyırecorderendpoint | No | Günlüğe kaydetme için kullanılan uç nokta. Öznitelik varsa değeri olarak ayarlanmalıdır `urn:journeyrecorder:applicationinsights` . Daha fazla bilgi için bkz. [günlükleri toplama](troubleshoot-with-application-insights.md). |
+| DeploymentMode | Hayır | Olası değerler: `Production` , veya `Development` . `Production` varsayılan değerdir. İlkenizde hata ayıklamak için bu özelliği kullanın. Daha fazla bilgi için bkz. [günlükleri toplama](troubleshoot-with-application-insights.md). |
+| Kullanıcıbağlantısı Neyırecorderendpoint | Hayır | Günlüğe kaydetme için kullanılan uç nokta. Öznitelik varsa değeri olarak ayarlanmalıdır `urn:journeyrecorder:applicationinsights` . Daha fazla bilgi için bkz. [günlükleri toplama](troubleshoot-with-application-insights.md). |
 
 
 Aşağıdaki örnek, **TrustFrameworkPolicy** öğesinin nasıl kullanılacağını gösterir:
@@ -57,14 +57,14 @@ Aşağıdaki örnek, **TrustFrameworkPolicy** öğesinin nasıl kullanılacağı
    xmlns:xsd="https://www.w3.org/2001/XMLSchema"
    xmlns="http://schemas.microsoft.com/online/cpim/schemas/2013/06"
    PolicySchemaVersion="0.3.0.0"
-   TenantId="mytenant.onmicrosoft.com"
+   TenantId="yourtenant.onmicrosoft.com"
    PolicyId="B2C_1A_TrustFrameworkBase"
-   PublicPolicyUri="http://mytenant.onmicrosoft.com/B2C_1A_TrustFrameworkBase">
+   PublicPolicyUri="http://yourtenant.onmicrosoft.com/B2C_1A_TrustFrameworkBase">
 ```
 
 **TrustFrameworkPolicy** öğesi aşağıdaki öğeleri içerir:
 
-| Öğe | Öğeleri | Description |
+| Öğe | Öğeleri | Açıklama |
 | ------- | ----------- | ----------- |
 | BasePolicy| 0:1| Temel bir ilkenin tanımlayıcısı. |
 | [BuildingBlocks](buildingblocks.md) | 0:1 | İlkenizin yapı taşları. |
@@ -76,7 +76,7 @@ Bir ilkeyi başka bir ilkeden devralması için bir **Basepolicy** öğesi, Ilke
 
 **Basepolicy** öğesi aşağıdaki öğeleri içerir:
 
-| Öğe | Öğeleri | Description |
+| Öğe | Öğeleri | Açıklama |
 | ------- | ----------- | --------|
 | TenantId | 1:1 | Azure AD B2C kiracınızın tanımlayıcısı. |
 | PolicyId | 1:1 | Üst ilke tanımlayıcısı. |
@@ -90,9 +90,9 @@ Aşağıdaki örnek, temel bir ilkenin nasıl ekleneceğini gösterir. Bu **B2C_
    xmlns:xsd="https://www.w3.org/2001/XMLSchema"
    xmlns="http://schemas.microsoft.com/online/cpim/schemas/2013/06"
    PolicySchemaVersion="0.3.0.0"
-   TenantId="mytenant.onmicrosoft.com"
+   TenantId="yourtenant.onmicrosoft.com"
    PolicyId="B2C_1A_TrustFrameworkExtensions"
-   PublicPolicyUri="http://mytenant.onmicrosoft.com/B2C_1A_TrustFrameworkExtensions">
+   PublicPolicyUri="http://yourtenant.onmicrosoft.com/B2C_1A_TrustFrameworkExtensions">
 
   <BasePolicy>
     <TenantId>yourtenant.onmicrosoft.com</TenantId>
