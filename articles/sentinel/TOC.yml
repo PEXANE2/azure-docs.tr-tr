@@ -47,8 +47,6 @@
       href: microsoft-365-defender-sentinel-integration.md
     - name: İzleme listeleriyle dış veriler kullanma
       href: watchlists.md
-    - name: Rolleri kullanarak izin atama
-      href: roles.md
     - name: Azure Sentinel’i çalışma alanlarına ve kiracılara genişletme
       href: extend-sentinel-across-workspaces-tenants.md
     - name: Tablolardaki verilerinizi normalleştirme

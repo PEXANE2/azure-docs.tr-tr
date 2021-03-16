@@ -13,15 +13,15 @@ ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 08/24/2020
+ms.date: 03/15/2021
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 30f2e0e96f11203633b756a320d3da503686ed9f
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.openlocfilehash: 8b1a29b0f94c5009d0535ca92363c25ad5c6c884
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102504499"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103493501"
 ---
 # <a name="sap-ascsscs-instance-multi-sid-high-availability-with-windows-server-failover-clustering-and-file-share-on-azure"></a>SAP ASCS/SCS örneği Windows Server Yük Devretme Kümelemesi ve dosya paylaşımıyla Azure 'da yüksek oranda kullanılabilirlik
 
@@ -59,6 +59,7 @@ _**Şekil 1:** İki kümede dağıtılan SAP yoks/SCS örneği ve SOFS_
 > Kurulumun aşağıdaki koşullara uyması gerekir:
 > * SAP ASCS/SCS örnekleri aynı WSFC kümesini paylaşmalıdır.
 > * Farklı SAP SID 'Lerine ait farklı SAP Küresel ana bilgisayarları dosya paylaşımları aynı SOFS kümesini paylaşmalıdır.
+> * SAP ASCS/SCS örnekleri ve SOFS paylaşımları aynı kümede birleştirilmemelidir. 
 > * Her veritabanı yönetim sistemi (DBMS) SID 'sinin kendi adanmış WSFC kümesi olmalıdır.
 > * Bir SAP sistem SID 'sine ait SAP uygulama sunucularının kendi ayrılmış VM 'lerine sahip olması gerekir.
 > * Aynı kümedeki sıraya alma çoğaltması sunucusu 1 ve sıraya alma çoğaltma sunucusu 2 ' nin karışımı desteklenmez.  

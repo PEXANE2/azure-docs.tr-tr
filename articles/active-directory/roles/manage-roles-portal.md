@@ -1,6 +1,6 @@
 ---
-title: Yönetici rolü izinlerini görüntüleme ve atama-Azure AD | Microsoft Docs
-description: Artık portalda bir Azure AD yönetici rolünün üyelerini görebilir ve yönetebilirsiniz. Rol atamalarını sıklıkla yönetenler için.
+title: Kullanıcılara Azure AD rolleri atama-Azure Active Directory
+description: Azure AD rolleri atayarak Azure Active Directory kullanıcılara erişim izni verme hakkında bilgi edinin.
 services: active-directory
 author: rolyon
 manager: daveba
@@ -8,41 +8,49 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: roles
 ms.topic: how-to
-ms.date: 11/05/2020
+ms.date: 03/07/2021
 ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 26217930b79b958ae86d976d06a28ba4a4852ab6
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.openlocfilehash: 36ced586db1b4e417e623431c137c43dac8ba56f
+ms.sourcegitcommit: 3ea12ce4f6c142c5a1a2f04d6e329e3456d2bda5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98742038"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103466690"
 ---
-# <a name="view-and-assign-administrator-roles-in-azure-active-directory"></a>Azure Active Directory'de yönetici rollerini görüntüleme ve atama
+# <a name="assign-azure-ad-roles-to-users"></a>Kullanıcılara Azure AD rolleri atama
 
-Artık Azure Active Directory portalında yönetici rollerinin tüm üyelerini görebilir ve yönetebilirsiniz. Rol atamalarını sık sık yönetiyorsanız, büyük olasılıkla bu deneyimi tercih edersiniz. "Bu rollerin ne kadar iyi olduğunu merak edebilir?" seçeneğini aldıysanız, her bir Azure AD yönetici rolü için izinlerin ayrıntılı bir listesini görebilirsiniz.
+Artık Azure AD Yönetim merkezinde Yönetici rollerinin tüm üyelerini görebilir ve yönetebilirsiniz. Rol atamalarını sık sık yönetiyorsanız, büyük olasılıkla bu deneyimi tercih edersiniz. Bu makalede Azure AD Yönetim Merkezi kullanılarak Azure AD rollerinin nasıl atanacağı açıklanır.
 
-## <a name="view-all-roles"></a>Tüm rolleri görüntüle
+## <a name="assign-a-role"></a>Rol atama
 
-1. [Azure Portal](https://portal.azure.com) oturum açın ve **Azure Active Directory**' ı seçin.
+1. Genel yönetici veya ayrıcalıklı rol yöneticisi izinleriyle [Azure AD Yönetim merkezinde](https://aad.portal.azure.com) oturum açın.
+
+1. **Azure Active Directory** seçin.
 
 1. Tüm kullanılabilir rollerin listesini görmek için **Roller ve yöneticiler '** i seçin.
 
-1. Rolün izinlerini görmek için her satırın sağ tarafındaki üç noktayı seçin. Role atanan kullanıcıları görüntülemek için bir rol seçin. Aşağıdaki resimden farklı bir şey görürseniz, Privileged Identity Management (PıM) olup olmadığını doğrulamak için [ayrıcalıklı roller için atamaları görüntüle](#view-assignments-for-privileged-roles) bölümündeki notu okuyun.
+    ![Roller ve yöneticiler sayfasının ekran görüntüsü](./media/manage-roles-portal/roles-and-administrators.png)
 
-    ![Azure AD portalındaki rollerin listesi](./media/manage-roles-portal/view-roles-in-azure-active-directory.png)
+1. Atamalarını görmek için bir rol seçin.
 
-## <a name="view-my-roles"></a>Rollerimi görüntüle
+    İhtiyaç duyduğunuz rolü bulmanıza yardımcı olmak için Azure AD, rol kategorilerine göre rollerin alt kümelerini gösterebilir. Yalnızca seçili türdeki rolleri göstermek için **tür** filtresine göz atın.
 
-Kendi izinlerinizi de kolayca görüntüleyebilirsiniz. Size atanmış olan rolleri görmek için **Roller ve yöneticiler** sayfasında **rolünüzü** seçin.
+1. **Atama Ekle** ' yi seçin ve ardından bu role atamak istediğiniz kullanıcıları seçin.
 
-## <a name="view-assignments-for-privileged-roles"></a>Ayrıcalıklı roller için atamaları görüntüleme
+    Aşağıdaki resimden farklı bir şey görürseniz, PıM kullanıp kullanmadığını doğrulamak için [Privileged Identity Management (PIM)](#privileged-identity-management-pim) içindeki notu okuyun.
 
-Ek yönetim özellikleri için **PIM 'de Yönet '** i seçebilirsiniz. Ayrıcalıklı rol yöneticileri "kalıcı" (rol içinde her zaman etkin) atamalarıyla "uygun" (yalnızca yükseltilmiş olduğunda rol) olarak değişiklik yapabilir. Privileged Identity Management yoksa, denemeye kaydolmak için **PIM 'de Yönet** ' i de seçebilirsiniz. Privileged Identity Management, bir [Azure AD Premium P2 lisans planı](../privileged-identity-management/subscription-requirements.md)gerektirir.
+    ![Yönetici rolü için izin listesi](./media/manage-roles-portal/add-assignments.png)
 
-![Yönetici rolünün üyelerinin listesi](./media/manage-roles-portal/member-list.png)
+1. Rolü atamak için **Ekle** ' yi seçin.
+
+## <a name="privileged-identity-management-pim"></a>Privileged Identity Management (PıM)
+
+[Azure AD Privileged Identity Management (PIM)](../privileged-identity-management/pim-configure.md)kullanarak ek yönetim ÖZELLIKLERI için **PIM 'de Yönet** seçeneğini belirleyebilirsiniz. Ayrıcalıklı rol yöneticileri "kalıcı" (rol içinde her zaman etkin) atamalarıyla "uygun" (yalnızca yükseltilmiş olduğunda rol) olarak değişiklik yapabilir. Privileged Identity Management yoksa, denemeye kaydolmak için **PIM 'de Yönet** ' i de seçebilirsiniz. Privileged Identity Management, bir [Azure AD Premium P2 lisans planı](../privileged-identity-management/subscription-requirements.md)gerektirir.
+
+!["PıM 'de Yönet" eylemi seçiliyken "Kullanıcı Yöneticisi-atamaları" sayfasını gösteren ekran görüntüsü](./media/manage-roles-portal/member-list-pim.png)
 
 Genel yönetici veya ayrıcalıklı rol yöneticisiyseniz, üyeleri kolayca ekleyebilir veya kaldırabilir, listeyi filtreleyebilir veya etkin atanan rollerini görmek için bir üyeyi seçebilirsiniz.
 
@@ -51,34 +59,8 @@ Genel yönetici veya ayrıcalıklı rol yöneticisiyseniz, üyeleri kolayca ekle
 >
 > ![Zaten PıM kullanan ve Premium P2 lisansına sahip olan kullanıcılar için PıM 'de yönetilen Azure AD rolleri](./media/manage-roles-portal/pim-manages-roles-for-p2.png)
 
-## <a name="view-a-users-role-permissions"></a>Kullanıcının rol izinlerini görüntüleme
-
-Rolün üyelerini görüntülerken, rol ataması tarafından verilen izinlerin tüm listesini görmek için **Açıklama** ' yı seçin. Sayfa, Dizin rollerini yönetirken size yol göstermeye yardımcı olacak ilgili belgelerin bağlantılarını içerir.
-
-!["Genel yönetici-açıklama" sayfasını gösteren ekran görüntüsü.](./media/manage-roles-portal/role-description.png)
-
-## <a name="download-role-assignments"></a>Rol atamalarını indir
-
-Belirli bir rolün tüm atamalarını indirmek için, **Roller ve yöneticiler** sayfasında bir rol seçin ve ardından **rol atamalarını indir**' i seçin. Bu rolün tüm kapsamlarındaki atamaları listeleyen bir CSV dosyası indirilir.
-
-![bir rol için tüm atamaları indirin](./media/manage-roles-portal/download-role-assignments.png)
-
-## <a name="assign-a-role"></a>Rol atama
-
-1. [Azure Portal](https://portal.azure.com) genel yönetici veya ayrıcalıklı rol yöneticisi izinleriyle oturum açın ve **Azure Active Directory**' ı seçin.
-
-1. Tüm kullanılabilir rollerin listesini görmek için **Roller ve yöneticiler '** i seçin.
-
-1. Atamalarını görmek için bir rol seçin.
-
-    !["PıM 'de Yönet" eylemi seçiliyken "Kullanıcı Yöneticisi-atamaları" sayfasını gösteren ekran görüntüsü.](./media/manage-roles-portal/member-list.png)
-
-1. Atama **Ekle** ' yi seçin ve atamak istediğiniz rolleri seçin. Ek yönetim özellikleri için **PIM 'de Yönet '** i seçebilirsiniz. Aşağıdaki resimden farklı bir şey görürseniz, PıM içinde olup olmadığını doğrulamak için [ayrıcalıklı roller için atamaları görüntüle](#view-assignments-for-privileged-roles) bölümündeki notu okuyun.
-
-    ![Yönetici rolü için izin listesi](./media/manage-roles-portal/directory-role-select-role.png)
-
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [Azure AD Yönetim rolleri forumundan](https://feedback.azure.com/forums/169401-azure-active-directory?category_id=166032)bizimle paylaşabilirsiniz.
-* Roller ve yönetici rolü atama hakkında daha fazla bilgi için bkz. [yönetici rolleri atama](permissions-reference.md).
+* Roller hakkında daha fazla bilgi için bkz. [Azure AD yerleşik rolleri](permissions-reference.md).
 * Varsayılan Kullanıcı izinleri için bkz. [varsayılan Konuk ve üye Kullanıcı izinlerinin karşılaştırması](../fundamentals/users-default-permissions.md).

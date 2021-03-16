@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/08/2020
 ms.author: v-ekrieg
-ms.openlocfilehash: 13c16407481d4fa6f7d468a73051cc4945e6314e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 14237894a38725ee07deca3b5f46cbe0ecfce4cd
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91851242"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103493229"
 ---
 # <a name="understanding-the-local-configuration-file-c-agent"></a>Yerel yapılandırma dosyasını anlama (C# Aracısı)
 
@@ -84,7 +84,7 @@ Windows için:
 
 | Yapılandırma adı | Olası değerler | Ayrıntılar |
 |:-----------|:---------------|:--------|
-| Ladı | string | Güvenlik modülü kimliğinin adı. Bu ad, cihazdaki modül kimliği adına karşılık gelmelidir. |
+| Ladı | string | Defender-IoT-mikro aracı kimliğinin adı. Bu ad, cihazdaki modül kimliği adına karşılık gelmelidir. |
 | deviceId | string | Cihazın KIMLIĞI (Azure IoT Hub kayıtlı olarak). |
 | schedulerInterval | TimeSpan dizesi | İç Zamanlayıcı aralığı. |
 | gatewayHostname | string | Azure IoT Hub 'ının konak adı. Genellikle <-hub>. azure-devices.net |

@@ -314,16 +314,16 @@
           href: references-work-with-defender-for-iot-cli-commands.md
         - name: Özel protokolleri yönetme (Horizon)
           href: resources-manage-proprietary-protocols.md
+        - name: Sık sorulan sorular - hizmet
+          displayName: 'FAQ, regulation, internet, connection, hardware, appliances, ports, logs'
+          href: resources-frequently-asked-questions.md
     - name: Cihaz Oluşturucular için aracı tabanlı çözüm
       items:
         - name: Azure RTOS için Güvenlik Modülü API’si
           displayNAme: 'prototype, disable'
           href: azure-rtos-security-module-api.md
-        - name: Sık sorulan sorular - hizmet
-          displayName: 'regulation, internet, connection, hardware, appliances, ports, logs'
-          href: resources-frequently-asked-questions.md
         - name: Sık sorulan sorular - aracı
-          displayName: 'embedded, dependencies, data, quota, internet,'
+          displayName: 'FAQ, embedded, dependencies, data, quota, internet,'
           href: resources-agent-frequently-asked-questions.md
         - name: Azure Yol Haritası
           href: 'https://azure.microsoft.com/roadmap/?category=security-identity'

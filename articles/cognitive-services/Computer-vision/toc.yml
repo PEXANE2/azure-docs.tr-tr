@@ -52,78 +52,76 @@
     - name: Okuma 2.x sürümünden Okuma 3.x sürümüne yükseltme
       href: upgrade-api-versions.md
     - name: AAD kimlik doğrulamasını yapılandırma
-      href: /azure/cognitive-services/authentication?tabs=powershell#authenticate-with-azure-active-directory?context=/azure/cognitive-services/computer-vision/context/context
+      href: /azure/cognitive-services/authentication?tabs=powershell?context=/azure/cognitive-services/computer-vision/context/context
     - name: Müşteri tarafından yönetilen anahtarları kullanma
       href: /azure/cognitive-services/encryption/cognitive-services-encryption-keys-portal?context=/azure/cognitive-services/computer-vision/context/context
-- name: Görüntü İşleme dağıt
-  items:
-    - name: Kapsayıcılar
+    - name: Görüntü İşleme dağıt
       items:
-        - name: Bilişsel Hizmetler kapsayıcıları belgeleri
-          href: ../containers/index.yml
-        - name: API kapsayıcısını okuma
+        - name: Kapsayıcılar
           items:
-            - name: Kapsayıcıları yükleme ve çalıştırma
-              href: computer-vision-how-to-install-containers.md
-              displayName: 'docker, container, package, packaged app, swagger, open api, openapi, train, publish, az, acr, cli, tps, core, curl, try it now, import, pull, on-premises'
-            - name: Kapsayıcıları yapılandırma
-              href: computer-vision-resource-container-config.md
-            - name: Okuma kapsayıcısının v3 sürümüne geçiş
-              href: read-container-migration-guide.md
-              displayName: 'docker, container, billing, apikey, pull, logging, on-premises'
-            - name: Kubernetes ve Helm ile kullanma
-              href: deploy-computer-vision-on-premises.md
-              displayName: 'kubectl, docker, helm, kubernetes, K8s, tiller, container, image, on-prem, on-premises'
-            - name: Kapsayıcı örnekleri kullanma
-              maintainContext: true
-              href: ../containers/azure-container-instance-recipe.md
-              displayName: 'container instances, container, containers, images'
-        - name: Uzamsal Analiz kapsayıcısı
-          items:
-            - name: Uzamsal Analize genel bakış
-              href: intro-to-spatial-analysis-public-preview.md
-            - name: Ana bilgisayarı kurma ve kapsayıcıyı çalıştırma
-              href: spatial-analysis-container.md
-            - name: İşlemleri yapılandırma
-              href: spatial-analysis-operations.md
-            - name: Kişi sayma web uygulaması dağıtma
-              href: Spatial-analysis-web-app.md
-            - name: Günlüğe kaydetme ve sorun giderme
-              href: spatial-analysis-logging.md
-            - name: Bölge ve satır yerleşimi
-              href: spatial-analysis-zone-line-placement.md
-            - name: Kamera yerleşimi
-              href: spatial-analysis-camera-placement.md
+            - name: Bilişsel Hizmetler kapsayıcıları belgeleri
+              href: ../containers/index.yml
+            - name: API kapsayıcısını okuma
+              items:
+                - name: Kapsayıcıları yükleme ve çalıştırma
+                  href: computer-vision-how-to-install-containers.md
+                  displayName: 'docker, container, package, packaged app, swagger, open api, openapi, train, publish, az, acr, cli, tps, core, curl, try it now, import, pull, on-premises'
+                - name: Kapsayıcıları yapılandırma
+                  href: computer-vision-resource-container-config.md
+                - name: Okuma kapsayıcısının v3 sürümüne geçiş
+                  href: read-container-migration-guide.md
+                  displayName: 'docker, container, billing, apikey, pull, logging, on-premises'
+                - name: Kubernetes ve Helm ile kullanma
+                  href: deploy-computer-vision-on-premises.md
+                  displayName: 'kubectl, docker, helm, kubernetes, K8s, tiller, container, image, on-prem, on-premises'
+                - name: Kapsayıcı örnekleri kullanma
+                  maintainContext: true
+                  href: ../containers/azure-container-instance-recipe.md
+                  displayName: 'container instances, container, containers, images'
+            - name: Uzamsal Analiz kapsayıcısı
+              items:
+                - name: Uzamsal Analize genel bakış
+                  href: intro-to-spatial-analysis-public-preview.md
+                - name: Ana bilgisayarı kurma ve kapsayıcıyı çalıştırma
+                  href: spatial-analysis-container.md
+                - name: İşlemleri yapılandırma
+                  href: spatial-analysis-operations.md
+                - name: Kişi sayma web uygulaması dağıtma
+                  href: Spatial-analysis-web-app.md
+                - name: Günlüğe kaydetme ve sorun giderme
+                  href: spatial-analysis-logging.md
+                - name: Bölge ve satır yerleşimi
+                  href: spatial-analysis-zone-line-placement.md
+                - name: Kamera yerleşimi
+                  href: spatial-analysis-camera-placement.md
 - name: Kavramlar
   items:
-    - name: Mod
-      items:
-        - name: Optik Karakter Tanıma (OCR)
-          href: concept-recognizing-text.md
-        - name: Nesne algılama
-          href: concept-object-detection.md
-        - name: Marka algılama
-          href: concept-brand-detection.md
-        - name: İçerik etiketleri
-          href: concept-tagging-images.md
-        - name: Görüntü kategorilendirmesi
-          href: concept-categorizing-images.md
-        - name: Kategori sınıflandırma
-          href: Category-Taxonomy.md
-        - name: Görüntü açıklamaları
-          href: concept-describing-images.md
-        - name: Yüz algılama
-          href: concept-detecting-faces.md
-        - name: Görüntü türü algılama
-          href: concept-detecting-image-types.md
-        - name: Alana özgü içerik
-          href: concept-detecting-domain-content.md
-        - name: Renk düzeni algılama
-          href: concept-detecting-color-schemes.md
-        - name: Akıllı kırpılan küçük resimler
-          href: concept-generating-thumbnails.md
-        - name: Yetişkinlere yönelik içeriği algılama
-          href: concept-detecting-adult-content.md
+    - name: Optik Karakter Tanıma (OCR)
+      href: concept-recognizing-text.md
+    - name: Nesne algılama
+      href: concept-object-detection.md
+    - name: Marka algılama
+      href: concept-brand-detection.md
+    - name: İçerik etiketleri
+      href: concept-tagging-images.md
+    - name: Görüntü kategorilendirmesi
+      href: concept-categorizing-images.md
+    - name: Kategori sınıflandırma
+      href: Category-Taxonomy.md
+    - name: Görüntü açıklamaları
+      href: concept-describing-images.md
+    - name: Yüz algılama
+      href: concept-detecting-faces.md
+    - name: Görüntü türü algılama
+      href: concept-detecting-image-types.md
+    - name: Alana özgü içerik
+      href: concept-detecting-domain-content.md
+    - name: Renk düzeni algılama
+      href: concept-detecting-color-schemes.md
+    - name: Akıllı kırpılan küçük resimler
+      href: concept-generating-thumbnails.md
+    - name: Yetişkinlere yönelik içeriği algılama
+      href: concept-detecting-adult-content.md
 - name: Öğreticiler
   items:
     - name: Resimler için meta verileri oluşturma

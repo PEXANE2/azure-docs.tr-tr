@@ -7,12 +7,12 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 11/03/2020
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 9f34e1ff7134788d064a82ec7b646df915dbe24e
-ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
+ms.openlocfilehash: 8ad79f2f27864b4fbc78b7c104828230ff7f93bc
+ms.sourcegitcommit: 3ea12ce4f6c142c5a1a2f04d6e329e3456d2bda5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/14/2021
-ms.locfileid: "103462567"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103465666"
 ---
 # <a name="azure-database-for-mysql-version-support-policy"></a>MySQL için Azure veritabanı sürüm desteği ilkesi
 
@@ -29,10 +29,11 @@ MySQL için Azure veritabanı şu anda MySQL 'in aşağıdaki büyük ve küçü
 
 | Sürüm | Tek sunucu <br/> Geçerli ikincil sürüm |Esnek Sunucu (Önizleme) <br/> Geçerli ikincil sürüm  |
 |:-------------------|:-------------------------------------------|:---------------------------------------------|
-|MySQL sürüm 5,6 |  [5.6.47](https://dev.mysql.com/doc/relnotes/mysql/5.6/en/news-5-6-47.html) | Desteklenmez|
+|MySQL sürüm 5,6 |  [5.6.47](https://dev.mysql.com/doc/relnotes/mysql/5.6/en/news-5-6-47.html)(kullanımdan kaldırıldı) | Desteklenmez|
 |MySQL sürüm 5,7 | [5.7.29](https://dev.mysql.com/doc/relnotes/mysql/5.7/en/news-5-7-29.html) | [5.7.29](https://dev.mysql.com/doc/relnotes/mysql/5.7/en/news-5-7-29.html)|
 |MySQL sürüm 8,0 | [8.0.15](https://dev.mysql.com/doc/relnotes/mysql/8.0/en/news-8-0-15.html) | [8.0.21](https://dev.mysql.com/doc/relnotes/mysql/8.0/en/news-8-0-21.html)|
 
+[Sürüm desteği ilkesi belgelerindeki](concepts-version-policy.md#retired-mysql-engine-versions-not-supported-in-azure-database-for-mysql) kullanımdan kaldırılan sürümler için sürüm desteği ilkesini okuyun.
 
 ## <a name="major-version-support"></a>Ana sürüm desteği
 MySQL için Azure veritabanı, sürüm, sürüm [oluşturma ilkesinde](https://www.mysql.com/support/eol-notice.html)sağlandığı gibi MySQL Community tarafından devre dışı bırakılana kadar, MySQL Için Azure veritabanı tarafından desteklenecek.

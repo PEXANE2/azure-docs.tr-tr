@@ -3,31 +3,29 @@ title: Makbuz formu tanıyıcı
 titleSuffix: Azure Cognitive Services
 description: Tanıma API 'SI kullanımı ve limitleriyle birlikte makbuz analizine ilişkin kavramları öğrenin.
 services: cognitive-services
-author: PatrickFarley
+author: laujan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: conceptual
-ms.date: 08/17/2019
-ms.author: pafarley
-ms.openlocfilehash: 565ba3f7cd02a5ca8a3a858dc29a8fa6c7df16c1
-ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
+ms.date: 03/15/2021
+ms.author: lajanuar
+ms.openlocfilehash: 81e8cd5cf4af8da76ae4eb09bed5a4ee0368da4b
+ms.sourcegitcommit: 3ea12ce4f6c142c5a1a2f04d6e329e3456d2bda5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/16/2021
-ms.locfileid: "100546015"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103467366"
 ---
 # <a name="form-recognizer-prebuilt-receipt-model"></a>Form tanıyıcı önceden oluşturulmuş makbuz modeli
 
-Azure form tanıyıcı, önceden oluşturulmuş giriş modelini kullanarak satış makbuzlarından bilgi çözümleyebilir ve ayıklayabilir. Güçlü [optik karakter tanıma (OCR)](../computer-vision/concept-recognizing-text.md) olanaklarımızı, giriş bilgilerini İngilizce olarak Makbuzlardan ayıklamak için derin öğrenme modellerini anlama ile birleştirir. Makbuz API 'SI, satış makbuzlarından ana bilgileri ticari ad, işlem tarihi, işlem toplamı, satır öğeleri ve daha fazlası gibi Ingilizce olarak ayıklar. 
+Azure form tanıyıcı, önceden oluşturulmuş giriş modelini kullanarak satış makbuzlarından bilgi çözümleyebilir ve ayıklayabilir. Ingilizce olarak yazılmış alındılardan önemli bilgileri ayıklamak için derin öğrenme modelleriyle güçlü [optik karakter tanıma (OCR)](../computer-vision/concept-recognizing-text.md) olanaklarımızı birleştirir.
 
-## <a name="understanding-receipts"></a>Alındıları anlama 
+## <a name="understanding-receipts"></a>Alındıları anlama
 
-Birçok işletme ve bireyler, iş giderleri raporları, reimbursements, denetim, vergi amaçları, bütçeleme, pazarlama veya başka amaçlar için satış alındılarından verileri el ile ayıklamaya devam etmektedir. Genellikle bu senaryolarda, fiziksel girişin görüntüleri doğrulama amaçları için gereklidir.  
+Birçok işletme ve kişi hala satış makbuzlarından el ile ayıklanan verileri kullanır. Bu alındılardan verilerin otomatik olarak ayıklanması karmaşık olabilir. Alındılar kaba olabilir, okunması zor olabilir, elle yazılmış parçalar içerebilir ve düşük kaliteli akıllı telefon görüntüleri içerebilir. Ayrıca, makbuz şablonları ve alanları Pazar, bölge ve satıcı tarafından büyük ölçüde farklılık gösterebilir. Bu veri ayıklama ve alan algılama sorunları, girişin benzersiz bir sorunu işlemesini getirir.  
 
-Bu Alındılardan verilerin otomatik olarak ayıklanması karmaşık olabilir. Alındılar kaba olabilir ve zor bir şekilde okunabilir, yazdırılabilir veya el ile alınabilir parçalar ve akıllı telefonların görüntüleri düşük kalite olabilir. Ayrıca, makbuz şablonları ve alanları Pazar, bölge ve satıcı tarafından büyük ölçüde farklılık gösterebilir. Hem veri ayıklama hem de alan algılamasında bu zorluk, girişin benzersiz bir sorunu işlemesini getirir.  
-
-Giriş API 'SI, optik karakter tanıma (OCR) ve önceden oluşturulmuş alış irsaliyesi modelimizi kullanarak bu makbuz işleme senaryolarına izin verebilir ve girişler, örneğin satıcı adı, ipucu, toplam, satır öğeleri ve daha fazlasını ayıklar. Bu API ile bir modeli eğitmeniz gerekmez, makbuz görüntüsünü analiz alma API 'sine göndermeniz yeterlidir ve veriler ayıklanır.
+Makbuz API 'SI, büyük miktarda alma işlemi senaryolarını etkinleştirmek için optik karakter tanıma (OCR) ve önceden oluşturulmuş modelimizi kullanır. Makbuz API 'SI ile bir modeli eğitme gereksinimi yoktur. Makbuz görüntüsünü analiz alma API 'sine gönderin ve veriler ayıklanır.
 
 ![örnek alındısı](./media/receipts-example.jpg)
 
@@ -73,12 +71,12 @@ Form tanıyıcı alındı hizmetini denemek için çevrimiçi örnek UI aracına
 
 ## <a name="input-requirements"></a>Giriş gereksinimleri
 
-[!INCLUDE [input reqs](./includes/input-requirements-receipts.md)]
+[!INCLUDE [input requirements](./includes/input-requirements-receipts.md)]
 
 ## <a name="supported-locales"></a>Desteklenen yerel ayarlar 
 
 * **Önceden oluşturulmuş makbuz v 2.0** (GA), en-US yerel ayarında satış alındılarını destekler
-* **Önceden oluşturulmuş makbuz v 2.1-Önizleme. 2** (Genel Önizleme) aşağıdaki en fazla ön ek ayarlar için ek destek ekler: 
+* **Önceden oluşturulmuş makbuz v 2.1-Önizleme. 3** (Genel Önizleme) aşağıdaki en fazla ön ek ayarlar için ek destek ekler: 
   * EN-AU 
   * EN-CA 
   * EN-GB 
@@ -87,12 +85,12 @@ Form tanıyıcı alındı hizmetini denemek için çevrimiçi örnek UI aracına
   > [!NOTE]
   > Dil girişi 
   >
-  > Önceden oluşturulmuş makbuz v 2.1-Önizleme. 2, ek Ingilizce pazarlardan bir makbuz yerel ayarı belirtmek için isteğe bağlı bir istek parametresine sahiptir. Avustralya (EN-AU), Kanada (EN-CA), Büyük Britanya (EN-GB) ve Hindistan (EN-ın) ile Ingilizce olan satış alındıları için, iyileştirilmiş sonuçları elde etmek üzere yerel ayarı belirtebilirsiniz. V 2.1-Preview içinde yerel ayar belirtilmemişse, model varsayılan olarak EN-US modeline ayarlanır.
+  > Önceden oluşturulmuş makbuz v 2.1-Preview. 3, ek Ingilizce pazarlardan bir makbuz yerel ayarı belirtmek için isteğe bağlı bir istek parametresine sahiptir. Avustralya (EN-AU), Kanada (EN-CA), Büyük Britanya (EN-GB) ve Hindistan (EN-ın) ile Ingilizce olan satış alındıları için, iyileştirilmiş sonuçları elde etmek üzere yerel ayarı belirtebilirsiniz. V 2.1-Preview içinde yerel ayar belirtilmemişse, model varsayılan olarak EN-US modeline ayarlanır.
 
 
 ## <a name="the-analyze-receipt-operation"></a>Alındısı Analizi işlemi
 
-[Analiz alma alındısı](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-2/operations/AnalyzeReceiptAsync) , giriş olarak bir görüntünün GÖRÜNTÜSÜNÜ veya PDF alır ve ilgilendiğiniz ve metnin değerlerini ayıklar. Çağrı, adlı bir yanıt üst bilgisi alanı döndürüyor `Operation-Location` . `Operation-Location`Değer, bir sonraki adımda kullanılacak sonuç kimliğini içeren BIR URL 'dir.
+[Analiz alma alındısı](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-3/operations/AnalyzeReceiptAsync) , giriş olarak bir görüntünün GÖRÜNTÜSÜNÜ veya PDF alır ve ilgilendiğiniz ve metnin değerlerini ayıklar. Çağrı, adlı bir yanıt üst bilgisi alanı döndürüyor `Operation-Location` . `Operation-Location`Değer, bir sonraki adımda kullanılacak sonuç kimliğini içeren BIR URL 'dir.
 
 |Yanıt üst bilgisi| Sonuç URL 'SI |
 |:-----|:----|
@@ -100,16 +98,16 @@ Form tanıyıcı alındı hizmetini denemek için çevrimiçi örnek UI aracına
 
 ## <a name="the-get-analyze-receipt-result-operation"></a>Analiz alma sonucunu al işlemi
 
-İkinci adım, [analiz alma sonucunu Al işlemini çağıralım](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-2/operations/GetAnalyzeReceiptResult) . Bu işlem, alındı bilgisi çözümleme işlemi tarafından oluşturulan sonuç KIMLIĞINI giriş olarak alır. Aşağıdaki olası değerlere sahip bir **durum** alanı IÇEREN bir JSON yanıtı döndürür. **Başarılı** değerle döndürülünceye kadar bu işlemi tekrarlayarak çağırın. Saniye başına istek (RPS) oranını aşmamak için 3 ile 5 saniye arasında bir Aralık kullanın.
+İkinci adım, [analiz alma sonucunu Al işlemini çağıralım](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-3/operations/GetAnalyzeReceiptResult) . Bu işlem, alındı bilgisi çözümleme işlemi tarafından oluşturulan sonuç KIMLIĞINI giriş olarak alır. Aşağıdaki olası değerlere sahip bir **durum** alanı IÇEREN bir JSON yanıtı döndürür. **Başarılı** değerle döndürülünceye kadar bu işlemi tekrarlayarak çağırın. Saniye başına istek (RPS) oranını aşmamak için 3 ile 5 saniye arasında bir Aralık kullanın.
 
 |Alan| Tür | Olası değerler |
 |:-----|:----:|:----|
-|durum | string | notStarted: analiz işlemi başlatılmamış. |
+|durum | string | notStarted: işlem başlatılmamış. |
 | |  | çalışıyor: analiz işlemi devam ediyor. |
 | |  | başarısız: çözümleme işlemi başarısız oldu. |
 | |  | başarılı: çözümleme işlemi başarılı oldu. |
 
-**Durum** alanı **başarılı** DEĞERINE sahip olduğunda, JSON yanıtı, makbuz anlama ve metin tanıma sonuçlarını içerir. Okundu bilgisi sonucu, her değerin ayıklanan metin, normalleştirilmiş değer, sınırlama kutusu, güvenirlik ve karşılık gelen Word öğelerini içerdiği adlandırılmış alan değerlerinin bir sözlüğü olarak düzenlenir. Metin tanıma sonucu, metin, sınırlayıcı kutusu ve güvenle bilgi içeren bir satır ve sözcük hiyerarşisi olarak düzenlenir.
+**Durum** alanı **başarılı** DEĞERINE sahip olduğunda, JSON yanıtı, makbuz anlama ve metin tanıma sonuçlarını içerir. Okundu bilgisi sonucu, adlandırılmış alan değerlerinin bir sözlüğü olarak düzenlenir. Her bir değer ayıklanan metin, normalleştirilmiş değer, sınırlayıcı kutusu, güvenirlik ve karşılık gelen Word öğelerini içerir. Metin tanıma sonucu, metin, sınırlayıcı kutusu ve güvenle bilgi içeren bir satır ve sözcük hiyerarşisi olarak düzenlenir.
 
 ![örnek alma sonuçları](./media/contoso-receipt-2-information.png)
 
@@ -447,18 +445,17 @@ Başarılı bir JSON yanıtı örneğine bakın:
 }
 ```
 
-
 ## <a name="customer-scenarios"></a>Müşteri senaryoları  
 
-Makbuz API 'SI ile ayıklanan veriler çeşitli görevleri gerçekleştirmek için kullanılabilir. Aşağıda, müşterilerimizin alındı API 'siyle yaptığı işe yönelik birkaç örnek verilmiştir. 
+Makbuz API 'SI ile ayıklanan veriler çeşitli görevleri gerçekleştirmek için kullanılabilir. Aşağıda, müşterilerin alındı API 'SI ile neler yaptığı hakkında birkaç örnek verilmiştir.
 
 ### <a name="business-expense-reporting"></a>İş gider raporlaması  
 
 Genellikle iş giderlerinin dosyalanması, girişlerin görüntülerinden verileri el ile girerek harcama süresini içerir. Alındı API 'SI ile bu işlemi kısmen otomatikleştirebilmek ve alındılarınızı hızlıca analiz etmek için ayıklanan alanları kullanabilirsiniz.  
 
-Makbuz API 'sinin basit bir JSON çıkışı olduğundan, ayıklanan alan değerlerini birden çok şekilde kullanabilirsiniz. Gider raporlarını önceden doldurmak için dahili gider uygulamalarıyla tümleştirin. Bu senaryo hakkında daha fazla bilgi edinmek için Acumatika 'ın alındı API 'sini kullanarak, daha [az bir işleme raporlama yapmasını](https://customers.microsoft.com/story/762684-acumatica-partner-professional-services-azure)öğrenin.  
+Giriş API 'SI, ayıklanan alan değerlerini birden çok şekilde kullanmanıza olanak tanıyan basit bir JSON çıktıdır. Gider raporlarını önceden doldurmak için dahili gider uygulamalarıyla tümleştirin. Bu senaryo hakkında daha fazla bilgi edinmek için Acumatika 'ın alındı API 'sini kullanarak, daha [az bir işleme raporlama yapmasını](https://customers.microsoft.com/story/762684-acumatica-partner-professional-services-azure)öğrenin.  
 
-### <a name="auditing-and-accounting"></a>Denetim ve hesaplama 
+### <a name="auditing-and-accounting"></a>Denetim ve hesaplama
 
 Makbuz API 'SI çıkışı Ayrıca, gider raporlama ve geri ödeme sürecinde çeşitli noktalarda çok sayıda gider analizi gerçekleştirmek için de kullanılabilir. El ile denetim veya hızlı onaylar için bunları önceliklendirme için alındıları işleyebilirsiniz.  
 
@@ -472,9 +469,13 @@ Makbuz API 'SI Ayrıca [AI Oluşturucu alma işlemi özelliğini](/ai-builder/pr
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Form tanıyıcı ile seçtiğiniz geliştirme dilinde bir makbuz işleme uygulaması yazmaya başlamak için [form tanıyıcı hızlı](quickstarts/client-library.md) başlangıcını doldurun.
+ . Seçtiğiniz geliştirme dilinde form tanıyıcı ile bir makbuz işleme uygulaması yazmaya başlayın.
+
+> [!div class="nextstepaction"]
+> [Form tanıyıcı hızlı başlangıcını tamamlar](quickstarts/client-library.md)
 
 ## <a name="see-also"></a>Ayrıca bkz.
 
-* [Form Tanıma nedir?](./overview.md)
-* [REST API başvuru belgeleri](./index.yml)
+* [Form Tanıma nedir?](overview.md)
+* [Form tanıyıcı API başvurusu](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-3/operations/AnalyzeReceiptAsync)
+>

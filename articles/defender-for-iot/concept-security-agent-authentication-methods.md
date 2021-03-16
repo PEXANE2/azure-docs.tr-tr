@@ -13,18 +13,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/24/2021
 ms.author: shhazam
-ms.openlocfilehash: 85a5edc1485cb5a1eeb4428b201380ad9ca89422
-ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
+ms.openlocfilehash: 4aeaa703b5e3203eeb7bc355051e0e8f48f898ac
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "102449178"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103494130"
 ---
 # <a name="security-agent-authentication-methods"></a>Güvenlik Aracısı kimlik doğrulama yöntemleri
 
 Bu makalede, IoT Hub kimlik doğrulaması yapmak için AzureIoTSecurity aracısında kullanabileceğiniz farklı kimlik doğrulama yöntemleri açıklanmaktadır.
 
-IoT Hub IoT için her cihaz eklendi için Defender, bir güvenlik modülü gereklidir. Cihazın kimliğini doğrulamak için, IoT için Defender iki yöntemden birini kullanabilir. Mevcut IoT çözümünüz için en iyi şekilde çalışacak yöntemi seçin.
+IoT Hub IoT için her cihaz eklendi için Defender, bir Defender-IoT-mikro-Agent gereklidir. Cihazın kimliğini doğrulamak için, IoT için Defender iki yöntemden birini kullanabilir. Mevcut IoT çözümünüz için en iyi şekilde çalışacak yöntemi seçin.
 
 - SecurityModule seçeneği
 - Cihaz seçeneği
@@ -33,12 +33,12 @@ IoT Hub IoT için her cihaz eklendi için Defender, bir güvenlik modülü gerek
 
 IoT AzureIoTSecurity aracısının kimlik doğrulaması gerçekleştirmesi için Defender 'ın iki yöntemi:
 
-- **Securitymodule** kimlik doğrulama modu<br>
-Aracının kimliği, cihaz kimliğinden bağımsız olarak güvenlik modülü kimliği kullanılarak doğrulanır.
-Güvenlik aracısının güvenlik modülü aracılığıyla adanmış bir kimlik doğrulama yöntemi kullanmasını istiyorsanız bu kimlik doğrulaması türünü kullanın (yalnızca simetrik anahtar).
+- **Defender-IoT-mikro aracı** kimlik doğrulama modu<br>
+Aracının kimliği, cihaz kimliğinden bağımsız olarak Defender-IoT-mikro-Agent kimliği kullanılarak doğrulanır.
+Güvenlik aracısının Defender-IoT-mikro-Agent (yalnızca simetrik anahtar) aracılığıyla adanmış bir kimlik doğrulama yöntemi kullanmasını istiyorsanız bu kimlik doğrulaması türünü kullanın.
 
 - **Cihaz** kimlik doğrulama modu<br>
-Bu yöntemde, güvenlik aracısının ilk olarak cihaz kimliğiyle kimliğini doğrular. İlk kimlik doğrulamasından sonra, IoT Aracısı için Defender, cihazın kimlik doğrulama verileriyle REST API kullanarak IoT Hub bir **rest** çağrısı gerçekleştirir. IoT Aracısı için Defender, IoT Hub güvenlik modülü kimlik doğrulama yöntemini ve verileri ister. Son adımda, IoT Aracısı için Defender, bir kimlik doğrulamasını için Defender for IoT modülüne uygular.
+Bu yöntemde, güvenlik aracısının ilk olarak cihaz kimliğiyle kimliğini doğrular. İlk kimlik doğrulamasından sonra, IoT Aracısı için Defender, cihazın kimlik doğrulama verileriyle REST API kullanarak IoT Hub bir **rest** çağrısı gerçekleştirir. IoT Aracısı için Defender, IoT Hub Defender-IoT-Micro-Agent kimlik doğrulama yöntemini ve verileri ister. Son adımda, IoT Aracısı için Defender, bir kimlik doğrulamasını için Defender for IoT modülüne uygular.
 
 Güvenlik aracısının mevcut bir cihaz kimlik doğrulama yöntemini (otomatik olarak imzalanan sertifika veya simetrik anahtar) yeniden kullanmasını istiyorsanız bu kimlik doğrulaması türünü kullanın.
 

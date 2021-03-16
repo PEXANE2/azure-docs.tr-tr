@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 09/16/2020
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: 99741a412ae02a2d30293e1aa254245f5ca7b662
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: b1889a693c08ce78a8bd06b6fe348c0c67bf3812
+ms.sourcegitcommit: 3ea12ce4f6c142c5a1a2f04d6e329e3456d2bda5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96171441"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103465683"
 ---
 # <a name="tutorial-for-configuring-saviynt-with-azure-active-directory-b2c"></a>Azure Active Directory B2C ile Saviynt yapılandırma öğreticisi
 
@@ -30,7 +30,7 @@ Bu örnek öğreticide, Azure AD B2C kullanıcılara yönelik ayrıntılı eriş
 
 - Bir kullanıcının belirli bir kullanıcı için belirli bir işlem gerçekleştirip gerçekleştirmediğine yönelik veri düzeyi güvenliği. Örneğin, UK bölgesi için Yardım Masası Yöneticisi yalnızca UK kullanıcılarını yönetebilir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için şunlar gerekir:
 
@@ -69,13 +69,13 @@ Aşağıdaki mimari diyagram uygulamayı gösterir.
 
 1. Saviynt hesabı oluşturmak için [Saviynt](https://saviynt.com/contact-us/) başvurun
 
-2. Temsilcili yönetim ilkeleri oluşturun ve kullanıcıları farklı rollerle [yönetici temsilcileri](../active-directory/roles/concept-delegation.md) olarak atayın.
+2. Temsilcili yönetim ilkeleri oluşturun ve kullanıcıları farklı rollerle yönetici temsilcileri olarak atayın.
 
 ## <a name="configure-azure-ad-b2c-with-saviynt"></a>Saviynt ile Azure AD B2C yapılandırma
 
 ### <a name="create-an-azure-ad-application-for-saviynt"></a>Saviynt için bir Azure AD uygulaması oluşturma
 
-1. [Azure Portal](https://portal.azure.com/#home) oturum açın.
+1. [Azure portalında](https://portal.azure.com/#home) oturum açın.
 
 2. Portal araç çubuğunda **Dizin + abonelik** simgesini seçin ve ardından Azure AD B2C kiracınızı içeren dizini seçin.
 
@@ -95,7 +95,7 @@ Aşağıdaki mimari diyagram uygulamayı gösterir.
 
 10. **Izin Ekle**' yi seçin. Eklenen izinleri gözden geçirin.
 
-11. **Varsayılan dizin kaydetme için yönetici izni ver**' i seçin  >  **Save**.
+11. **Varsayılan dizin kaydetme için yönetici izni ver**' i seçin  >  .
 
 12. **Sertifikalar ve gizlilikler** ' a gidip **+ istemci parolası Ekle**' yi seçin. İstemci gizli anahtarını girin, süre sonu seçeneğini belirleyin ve **Ekle**' yi seçin.
 

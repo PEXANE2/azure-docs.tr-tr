@@ -3,19 +3,19 @@ title: İş kartları-form tanıyıcı
 titleSuffix: Azure Cognitive Services
 description: Tanıyıcı API kullanımı ve limitleriyle iş kartı analizine ilişkin kavramları öğrenin.
 services: cognitive-services
-author: PatrickFarley
+author: laujan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: conceptual
-ms.date: 08/17/2019
-ms.author: pafarley
-ms.openlocfilehash: c2543f74b90205a36d3f5b4481beca35c779f77e
-ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
+ms.date: 03/15/2021
+ms.author: lajanuar
+ms.openlocfilehash: 5211c1263af599eb5fd09ad276545c725ce5c867
+ms.sourcegitcommit: 3ea12ce4f6c142c5a1a2f04d6e329e3456d2bda5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/16/2021
-ms.locfileid: "100546032"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103467004"
 ---
 # <a name="form-recognizer-prebuilt-business-cards-model"></a>Form tanıyıcı önceden oluşturulmuş iş kartları modeli 
 
@@ -52,19 +52,19 @@ Iş kartı API 'SI Ayrıca, Iş kartından tanınan tüm metinleri de döndüreb
 
 ### <a name="input-requirements"></a>Giriş gereksinimleri 
 
-[!INCLUDE [input reqs](./includes/input-requirements-receipts.md)]
+[!INCLUDE [input requirements](./includes/input-requirements-receipts.md)]
 
 ## <a name="the-analyze-business-card-operation"></a>Iş kartını çözümle işlemi
 
-[Çözümle Iş kartı](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-2/operations/AnalyzeBusinessCardAsync) , giriş olarak bir iş kartının GÖRÜNTÜSÜNÜ veya PDF 'sini alır ve ilgilendiğiniz değerleri ayıklar. Çağrı, adlı bir yanıt üst bilgisi alanı döndürüyor `Operation-Location` . `Operation-Location`Değer, bir sonraki adımda kullanılacak sonuç kimliğini içeren BIR URL 'dir.
+[Çözümle Iş kartı](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-3/operations/AnalyzeBusinessCardAsync) , giriş olarak bir iş kartının GÖRÜNTÜSÜNÜ veya PDF 'sini alır ve ilgilendiğiniz değerleri ayıklar. Çağrı, adlı bir yanıt üst bilgisi alanı döndürüyor `Operation-Location` . `Operation-Location`Değer, bir sonraki adımda kullanılacak sonuç kimliğini içeren BIR URL 'dir.
 
 |Yanıt üst bilgisi| Sonuç URL 'SI |
 |:-----|:----|
-|Operation-Location | `https://cognitiveservice/formrecognizer/v2.1-preview.2/prebuilt/businessCard/analyzeResults/49a36324-fc4b-4387-aa06-090cfbf0064f` |
+|Operation-Location | `https://cognitiveservice/formrecognizer/v2.1-preview.3/prebuilt/businessCard/analyzeResults/49a36324-fc4b-4387-aa06-090cfbf0064f` |
 
 ## <a name="the-get-analyze-business-card-result-operation"></a>Iş kartını çözümle sonucu al işlemi
 
-İkinci adım, [Çözümle Iş kartı sonucunu al](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-2/operations/GetAnalyzeBusinessCardResult) işlemini çağırmalıdır. Bu işlem, Iş kartını çözümle işlemi tarafından oluşturulan sonuç KIMLIĞINI giriş olarak alır. Aşağıdaki olası değerlere sahip bir **durum** alanı IÇEREN bir JSON yanıtı döndürür. **Başarılı** değerle döndürülünceye kadar bu işlemi tekrarlayarak çağırın. Saniye başına istek (RPS) oranını aşmamak için 3 ile 5 saniye arasında bir Aralık kullanın.
+İkinci adım, [Çözümle Iş kartı sonucunu al](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-3/operations/GetAnalyzeBusinessCardResult) işlemini çağırmalıdır. Bu işlem, Iş kartını çözümle işlemi tarafından oluşturulan sonuç KIMLIĞINI giriş olarak alır. Aşağıdaki olası değerlere sahip bir **durum** alanı IÇEREN bir JSON yanıtı döndürür. **Başarılı** değerle döndürülünceye kadar bu işlemi tekrarlayarak çağırın. Saniye başına istek (RPS) oranını aşmamak için 3 ile 5 saniye arasında bir Aralık kullanın.
 
 |Alan| Tür | Olası değerler |
 |:-----|:----:|:----|
@@ -386,7 +386,7 @@ Python ve REST API kullanarak iş kartı verilerinin ayıklanmasını uygulamak 
 
 ## <a name="customer-scenarios"></a>Müşteri senaryoları  
 
-Iş kartı API 'siyle ayıklanan veriler, çeşitli görevleri gerçekleştirmek için kullanılabilir. Bu kişi bilgisinin ayıklanması, istemciye yönelik rollerdeki diğer roller için otomatik olarak zaman kazandırır. Müşterilerimizin Iş kartı API 'SI ile yaptığımız örneklere birkaç örnek aşağıda verilmiştir:
+Iş kartı API 'siyle ayıklanan veriler çeşitli görevleri gerçekleştirmek için kullanılabilir. Bu kişi bilgilerinin ayıklanması, istemci temelli rollerdeki kullanıcılar için zamanı otomatik olarak kaydeder. Müşterilerimizin Iş kartı API 'SI ile yaptığımız örneklere birkaç örnek aşağıda verilmiştir:
 
 * Iş kartlarından kişi bilgilerini ayıklayın ve hızla telefon kişileri oluşturun. 
 * İş kartı görüntülerini kullanarak otomatik olarak iletişim oluşturmak için CRM ile tümleştirin. 
@@ -402,4 +402,4 @@ Iş kartı API 'SI aynı zamanda [AI Oluşturucu Iş kartı işleme özelliğini
 ## <a name="see-also"></a>Ayrıca bkz.
 
 * [Form Tanıma nedir?](./overview.md)
-* [REST API başvuru belgeleri](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-2/operations/AnalyzeBusinessCardAsync)
+* [REST API başvuru belgeleri](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-3/operations/AnalyzeBusinessCardAsync)

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/09/2020
 ms.author: mlottner
-ms.openlocfilehash: aa863ce556840903d16238d6afef32136ba2b80d
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: b59d9079b6d0fe0ab3fe61eacf43f3a99eb46686
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92090854"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103495785"
 ---
 # <a name="tutorial-configure-security-agents"></a>Öğretici: güvenlik aracılarını yapılandırma
 
@@ -88,7 +88,7 @@ Varsayılan özellik değerini kullanmak için yapılandırma nesnesinden özell
 
 1. **Modül kimliği ikizi**' na tıklayın.
 
-1. Güvenlik modülünde değiştirmek istediğiniz özellikleri düzenleyin.
+1. Defender-IoT-mikro-Agent içinde değiştirmek istediğiniz özellikleri düzenleyin.
 
    Örneğin, bağlantı olaylarını yüksek öncelikli olarak yapılandırmak ve her 7 dakikada bir yüksek öncelikli olayları toplamak için aşağıdaki yapılandırmayı kullanın.
 
@@ -117,7 +117,7 @@ Aşağıdaki tablo, IoT güvenlik aracıları için Defender 'ın denetlenebilir
 
 Varsayılan değerler [GitHub](https\://aka.ms/iot-security-module-default)'da uygun şemada mevcuttur.
 
-| Name| Durum | Geçerli değerler| Varsayılan değerler| Description |
+| Name| Durum | Geçerli değerler| Varsayılan değerler| Açıklama |
 |----------|--------|--|-------|----|
 |highPriorityMessageFrequency|Gerekli: false |Geçerli değerler: ISO 8601 biçimindeki süre |Varsayılan değer: PT7M |Yüksek öncelikli iletiler gönderilmeden önce en uzun zaman aralığı.|
 |lowPriorityMessageFrequency |Gerekli: false|Geçerli değerler: ISO 8601 biçimindeki süre |Varsayılan değer: PT5H |Düşük öncelikli iletiler gönderilmeden önce geçen en uzun süre.|

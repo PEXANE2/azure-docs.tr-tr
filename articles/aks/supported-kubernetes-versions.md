@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 09/08/2020
 author: palma21
 ms.author: jpalma
-ms.openlocfilehash: 3ed5c2c1c95822717981f7d30b91edd244420c59
-ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
+ms.openlocfilehash: c7d06172abd696e386337e563fa29fdbd2d3cdae
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99427694"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103493671"
 ---
 # <a name="supported-kubernetes-versions-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Hizmeti’nde (AKS) desteklenen Kubernetes sürümleri
 
@@ -151,11 +151,11 @@ Son sürüm geçmişi için bkz. [Kubernetes](https://en.wikipedia.org/wiki/Kube
 
 **Kubernetes sürümlerini desteklemeyi ne sıklıkta desteklemem gerekir?**
 
-Kubernetes 1,19 ile birlikte, [Açık kaynaklı topluluk, 1 yıla kadar destek genişletmiştir](https://kubernetes.io/blog/2020/08/31/kubernetes-1-19-feature-one-year-support/). AKS, en azından yukarı akış taahhütleriyle eşleşen düzeltme eklerini ve desteği etkinleştirir. Bu, 1,19 üzerindeki AKS kümeleriyle başlayarak, desteklenen bir sürümde kalmak için yılda en az bir kez yükselteceksiniz. 1,18 veya altındaki sürümler için, destek penceresi 9 ayda bir kalır ve desteklenen bir sürümde devam etmek için her 9 ayda bir yükseltme gerektirir. Yeni sürümleri düzenli olarak test etmek ve Kubernetes içindeki en son kararlı geliştirmeleri yakalamak için daha yeni sürümlere yükseltmeye hazırlıklı olmak kesinlikle önerilir.
+Kubernetes 1,19 ile başlayarak, [Açık kaynaklı topluluk 1 yıla kadar destek genişletmiştir](https://kubernetes.io/blog/2020/08/31/kubernetes-1-19-feature-one-year-support/). AKS, en azından yukarı akış taahhütleriyle eşleşen düzeltme eklerini ve desteği etkinleştirir. Bu, 1,19 üzerindeki AKS kümeleriyle başlayarak, desteklenen bir sürümde kalmak için yılda en az bir kez yükselteceksiniz. 1,18 veya altındaki sürümler için, destek penceresi 9 ayda bir kalır ve desteklenen bir sürümde devam etmek için her 9 ayda bir yükseltme gerektirir. Yeni sürümleri düzenli olarak test etmek ve Kubernetes içindeki en son kararlı geliştirmeleri yakalamak için daha yeni sürümlere yükseltmeye hazırlıklı olmak kesinlikle önerilir.
 
 **Bir Kullanıcı bir Kubernetes kümesini desteklenmeyen küçük bir sürümle yükseltdiğinde ne olur?**
 
-*N-3* veya daha eski bir sürüm kullanıyorsanız, destek dışında olduğunuz ve yükseltmeniz istenecek demektir. N-3 sürümünden n-2 ' ye yükseltme başarılı olursa, destek ilkeleriniz dahilinde geri dönebilirsiniz. Örneğin:
+*N-3* veya daha eski bir sürüm kullanıyorsanız, destek dışında olduğunuz ve yükseltmeniz istenecek demektir. N-3 sürümünden n-2 ' ye yükseltme başarılı olursa, destek ilkeleriniz dahilinde geri dönebilirsiniz. Örnek:
 
 - Desteklenen en eski AKS sürümü *1.15. a* ise ve *1.14. b* veya daha eski bir sürümdaysanız, destek dışında olursunuz.
 - *1.14. b* 'den 1.15 'e yükseltme yapıldığında, ya da daha yüksek *bir* başarılı olduğunda, destek ilkilerimize geri dönebilirsiniz.

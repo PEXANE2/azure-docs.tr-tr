@@ -4,16 +4,16 @@ description: Bu makale, AzCopy kopyalama komutu için başvuru bilgileri sağlar
 author: normesta
 ms.service: storage
 ms.topic: reference
-ms.date: 12/11/2020
+ms.date: 03/08/2021
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: c4e85195ace0a24aa11d4a03b8f429f2714399b0
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: c676b92fd07c6e444aa22f25c48fdb1b1957ca7a
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98879165"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103493773"
 ---
 # <a name="azcopy-copy"></a>azcopy kopya
 
@@ -31,6 +31,7 @@ Kaynak verileri bir hedef konuma kopyalar. Desteklenen yönergeler şunlardır:
   - Azure dosyaları (SAS)-Azure dosyaları > (SAS)
   - Azure dosyaları (SAS)-> Azure Blob (SAS veya OAuth kimlik doğrulaması)
   - Amazon Web Services (AWS) S3 (erişim anahtarı)-> Azure Blok Blobu (SAS veya OAuth kimlik doğrulaması)
+  - Google Cloud Storage (hizmet hesabı anahtarı)-> Azure Blok Blobu (SAS veya OAuth kimlik doğrulaması) [Önizleme]
 
 Daha fazla bilgi için bu makalenin örnekler bölümüne bakın.
 
@@ -229,6 +230,36 @@ Dosya ve dizinleri Azure depolama hesabına aktarın ve BLOB üzerinde verilen s
 - Anahtarlar ve değerler URL kodlamalı ve anahtar-değer çiftleri bir ve işareti (' & ') ile ayrılır
     
 - Bloblarda Etiketler ayarlanırken, SAS 'de hizmetin yetkilendirme hatası geri vermeksizin ek izinler (yani, Etiketler için 't) vardır.
+
+Bir hizmet hesabı anahtarı ve bir SAS belirteci kullanarak Google bulut depolamadan blob depolamaya tek bir nesne kopyalayın. İlk olarak, Google Cloud Storage kaynağı için GOOGLE_APPLICATION_CREDENTIALS ortam değişkenini ayarlayın.
+  
+```azcopy
+azcopy cp "https://storage.cloud.google.com/[bucket]/[object]" "https://[destaccount].blob.core.windows.net/[container]/[path/to/blob]?[SAS]"
+```
+
+Bir hizmet hesabı anahtarı ve bir SAS belirteci kullanarak bir dizinin tamamını Google Cloud Storage 'dan blob depolamaya kopyalayın. İlk olarak, Google Cloud Storage kaynağı için GOOGLE_APPLICATION_CREDENTIALS ortam değişkenini ayarlayın.
+ 
+```azcopy
+  - azcopy cp "https://storage.cloud.google.com/[bucket]/[folder]" "https://[destaccount].blob.core.windows.net/[container]/[path/to/directory]?[SAS]" --recursive=true
+```
+
+Bir hizmet hesabı anahtarı ve bir SAS belirteci kullanarak, bir demet tamamını Google bulut depolamadan blob depolamaya kopyalayın. İlk olarak, Google Cloud Storage kaynağı için GOOGLE_APPLICATION_CREDENTIALS ortam değişkenini ayarlayın.
+
+```azcopy 
+azcopy cp "https://storage.cloud.google.com/[bucket]" "https://[destaccount].blob.core.windows.net/?[SAS]" --recursive=true
+```
+
+Tüm demetleri, bir hizmet hesabı anahtarı ve bir SAS belirteci kullanarak Google bulut depolamadan blob depolamaya kopyalayın. İlk olarak, GCS kaynağı için GOOGLE_APPLICATION_CREDENTIALS ortam değişkenlerini ve GOOGLE_CLOUD_PROJECT =<proje kimliği> ayarlayın
+
+```azcopy
+  - azcopy cp "https://storage.cloud.google.com/" "https://[destaccount].blob.core.windows.net/?[SAS]" --recursive=true
+```
+
+Bir hizmet hesabı anahtarı ve hedef için bir SAS belirteci kullanarak, bir arama alt kümesini Google Cloud Storage 'dan bir joker karakter simgesi (*) kullanarak kopyalayın. İlk olarak, GOOGLE_APPLICATION_CREDENTIALS ortam değişkenlerini ve GOOGLE_CLOUD_PROJECT =<proje kimliği> Google bulut depolama kaynağı için ayarlayın.
+ 
+```azcopy
+azcopy cp "https://storage.cloud.google.com/[bucket*name]/" "https://[destaccount].blob.core.windows.net/?[SAS]" --recursive=true
+```
 
 ## <a name="options"></a>Seçenekler
 

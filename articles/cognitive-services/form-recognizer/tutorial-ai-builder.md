@@ -2,19 +2,19 @@
 title: 'Öğretici: AI Oluşturucu-form tanıyıcı ile form işleme uygulaması oluşturma'
 titleSuffix: Azure Cognitive Services
 description: Bu öğreticide, bir form işleme uygulaması oluşturmak ve eğitme yapmak için AI oluşturucuyu kullanacaksınız.
-author: PatrickFarley
+author: laujan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: tutorial
 ms.date: 11/23/2020
-ms.author: pafarley
-ms.openlocfilehash: 3ba08f11fb52fc0ffe3acda5e81e21b7e7629628
-ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
+ms.author: lajanuar
+ms.openlocfilehash: 30c44ac60783132344cc018135d2c248f91f46bc
+ms.sourcegitcommit: 3ea12ce4f6c142c5a1a2f04d6e329e3456d2bda5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95757429"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103467128"
 ---
 # <a name="tutorial-create-a-form-processing-app-with-ai-builder"></a>Öğretici: AI Oluşturucu ile form işleme uygulaması oluşturma
 
@@ -23,7 +23,7 @@ ms.locfileid: "95757429"
 > [!NOTE]
 > Bu proje bir [Microsoft Learn modülü](/learn/modules/get-started-with-form-processing/)olarak da kullanılabilir.
 
-Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
+Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * Form işleme AI modeli oluşturma
@@ -120,7 +120,7 @@ Belirli alanlar için hatalı sonuçlar veya düşük güvenilirlik puanları al
 
 - Her alanda farklı değerlere sahip formları kullanarak yeniden eğitme.
 - Daha büyük bir eğitim belgeleri kümesi kullanarak yeniden eğitme. Ne kadar çok belge etiketlerseniz, daha fazla AI Oluşturucusu alanları daha iyi tanımanıza daha fazla bilgi sağlar.
-- PDF dosyalarını yalnızca ile eğitelecek belirli sayfaları seçerek iyileştirebilirsiniz. **Print**  >  Belgenizdeki belirli sayfaları seçmek için **PDF 'ye Yazdır** seçeneğini kullanın.
+- PDF dosyalarını yalnızca ile eğitelecek belirli sayfaları seçerek iyileştirebilirsiniz.   >  Belgenizdeki belirli sayfaları seçmek için **PDF 'ye Yazdır** seçeneğini kullanın.
 
 ## <a name="publish-your-model"></a>Modelinizi yayımlama
 

@@ -6,12 +6,12 @@ ms.date: 02/04/2021
 ms.service: media-services
 ms.author: faneerde
 author: fvneerden
-ms.openlocfilehash: 282ab76c34405f19e7f81b2a8069c178b17ee0c1
-ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
+ms.openlocfilehash: 20a22d11973f5bb01e2c1345538d5d94ce311dc7
+ms.sourcegitcommit: 3ea12ce4f6c142c5a1a2f04d6e329e3456d2bda5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102124423"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103465768"
 ---
 # <a name="tutorial-analyze-live-video-by-using-intel-openvino-dl-streamer--edge-ai-extension"></a>Öğretici: Intel OpenVINO™ DL Streamer – Edge AI uzantısı kullanarak canlı videoyu çözümleme 
 
@@ -128,7 +128,7 @@ Yalnızca dağıtım şablonınızdaki işlem hattı ortam değişkenlerini değ
     Bildirim dosyasındaki *deployment.openvino.grpc.cpu.amd64.js* *src/Edge/config* klasöründe oluşturulur.
 
 > [!NOTE]
-Ayrıca, bir şablon *üzerinde* , Intel OpenVINO DL Streamer-Edge AI uzantı modülü için GPU desteğini sağlayan birdeployment.openvino.grpc.gpu.template.jsde sunuyoruz. Bu şablonlar Intel Docker Hub görüntüsüne işaret.
+> Ayrıca, bir şablon *üzerinde* , Intel OpenVINO DL Streamer-Edge AI uzantı modülü için GPU desteğini sağlayan birdeployment.openvino.grpc.gpu.template.jsde sunuyoruz. Bu şablonlar Intel Docker Hub görüntüsüne işaret.
 
 Yukarıda bahsedilen şablonlar Intel Docker Hub görüntüsüne işaret. Kendi Azure Container Registry bir kopyasını barındırmak istiyorsanız, aşağıdaki 1. ve 2. adımı izleyebilirsiniz:
 1. Docker CLı araçları yüklü bir cihaza (Edge cihazınız) ve çekme/etiketleme/kapsayıcıyı şu adımlarla gönderin:

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/23/2019
 ms.author: mlottner
-ms.openlocfilehash: 6d3f96ed60ca784402b6d24eea7234f37c4fb959
-ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
+ms.openlocfilehash: f7f6b28070600ae53242181934ea903a486c25b4
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "102449790"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103494572"
 ---
 # <a name="deploy-defender-for-iot-c-based-security-agent-for-linux"></a>Linux için IoT C tabanlı güvenlik Aracısı için Defender 'ı dağıtma
 
@@ -35,7 +35,7 @@ Diğer platformlar ve aracı türleri için bkz. [doğru güvenlik aracısını 
 
 1. Güvenlik aracısını dağıtmak için, yüklemek istediğiniz makinede (sudo) yerel yönetici hakları gereklidir.
 
-1. Cihaz için [bir güvenlik modülü oluşturun](quickstart-create-security-twin.md) .
+1. Cihaz için [bir Defender-IoT-mikro aracı oluşturun](quickstart-create-security-twin.md) .
 
 ## <a name="installation"></a>Yükleme
 

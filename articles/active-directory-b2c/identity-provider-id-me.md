@@ -8,16 +8,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/08/2021
+ms.date: 03/15/2021
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 39896d88aeab4c592c74ded2d6edddfb46d2d203
-ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
+ms.openlocfilehash: 3c5df0c4112f07a465d38e789b1401132ed25931
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "102448294"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103488814"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-idme-account-using-azure-active-directory-b2c"></a>Azure Active Directory B2C kullanarak oturum açma ve ID.me hesabı ile oturum açma ayarlama
 
@@ -45,7 +45,7 @@ Azure Active Directory B2C (Azure AD B2C) ' de bir ID.me hesabı olan kullanıc�
 1. **Uygulamalarımı görüntüle**' yi seçin ve **devam**' ı seçin.
 1. **Yeni oluştur**’u seçin
     1. Bir **ad** ve **görünen ad** girin.
-    1. **Yeniden yönlendirme URI 'si** içinde, girin `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp` . `your-tenant-name`Kiracınızın adıyla değiştirin. 
+    1. **Yeniden yönlendirme URI 'si** içinde, girin `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp` . [Özel bir etki alanı](custom-domain.md)kullanıyorsanız, girin `https://your-domain-name/your-tenant-name.onmicrosoft.com/oauth2/authresp` . `your-tenant-name`, Kiracınızın adıyla ve `your-domain-name` özel etki alanınız ile değiştirin. 
 1. **Devam**’a tıklayın.
 1. **ISTEMCI kimliği** ve **istemci parolası** değerlerini kopyalayın. Kimlik sağlayıcısını kiracınıza eklemek için her ikisine de ihtiyacınız vardır.
 

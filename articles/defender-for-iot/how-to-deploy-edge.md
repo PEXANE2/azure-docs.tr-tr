@@ -1,5 +1,5 @@
 ---
-title: IoT Edge güvenlik modülünü dağıt
+title: IoT Edge Defender-IoT-Micro-Agent ' ı dağıtma
 description: IoT Edge 'da IoT güvenlik Aracısı için bir Defender dağıtımı hakkında bilgi edinin.
 services: defender-for-iot
 ms.service: defender-for-iot
@@ -13,24 +13,24 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 1/30/2020
 ms.author: mlottner
-ms.openlocfilehash: cd79c928afdb3563b47374869cff577f9221d360
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: e4117c3c0f1016da616a88a36a1b8c926b790c62
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101705781"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103495122"
 ---
-# <a name="deploy-a-security-module-on-your-iot-edge-device"></a>IoT Edge cihazınızda bir güvenlik modülü dağıtma
+# <a name="deploy-a-defender-iot-micro-agent-on-your-iot-edge-device"></a>IoT Edge cihazınıza bir Defender-IoT-mikro-aracısı dağıtma
 
 **IoT modülü Için Defender** , IoT Edge cihazlarınız için kapsamlı bir güvenlik çözümü sağlar.
-Güvenlik modülü, Işletim sistemi ve kapsayıcı sisteminizdeki ham güvenlik verilerini, uygulanabilir güvenlik önerileri ve uyarılara toplar, toplar ve analiz eder.
-Daha fazla bilgi için bkz. [IoT Edge Için güvenlik modülü](security-edge-architecture.md).
+Defender-IoT-Micro-Agent, ham güvenlik verilerini Işletim sisteminden ve kapsayıcı sisteminden, uygulanabilir güvenlik önerileri ve uyarılara toplar, toplar ve analiz eder.
+Daha fazla bilgi için bkz. [Defender-IoT-Micro-Agent for IoT Edge](security-edge-architecture.md).
 
-Bu makalede, IoT Edge cihazınızda bir güvenlik modülünü dağıtmayı öğreneceksiniz.
+Bu makalede, IoT Edge cihazınıza bir Defender-IoT-mikro-Agent ' ı dağıtmayı öğreneceksiniz.
 
-## <a name="deploy-security-module"></a>Güvenlik modülünü dağıt
+## <a name="deploy-defender-iot-micro-agent"></a>Defender-IoT-mikro-Aracı dağıtma
 
-IoT Edge için bir Defender for IoT güvenlik modülünü dağıtmak üzere aşağıdaki adımları kullanın.
+IoT Defender-IoT-Micro-Agent for IoT Edge için bir Defender dağıtmak üzere aşağıdaki adımları kullanın.
 
 ### <a name="prerequisites"></a>Önkoşullar
 
@@ -169,7 +169,7 @@ IoT için Defender için IoT Edge dağıtımınızı tamamlamaya yönelik her ad
 
 ## <a name="diagnostic-steps"></a>Tanılama adımları
 
-Bir sorunla karşılaşırsanız, kapsayıcı günlükleri IoT Edge bir güvenlik modülü cihazının durumu hakkında bilgi almanın en iyi yoludur. Bilgi toplamak için bu bölümdeki komutları ve araçları kullanın.
+Bir sorunla karşılaşırsanız, kapsayıcı günlükleri IoT Edge Defender-IoT-mikro aracı cihazının durumu hakkında bilgi almanın en iyi yoludur. Bilgi toplamak için bu bölümdeki komutları ve araçları kullanın.
 
 ### <a name="verify-the-required-containers-are-installed-and-functioning-as-expected"></a>Gerekli kapsayıcıların yüklendiğini ve beklendiği gibi çalıştığını doğrulayın
 

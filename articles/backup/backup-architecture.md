@@ -3,12 +3,12 @@ title: Mimariye Genel Bakış
 description: Azure Backup hizmeti tarafından kullanılan mimariye, bileşenlere ve işlemlere genel bir bakış sağlar.
 ms.topic: conceptual
 ms.date: 02/19/2019
-ms.openlocfilehash: 288b073c20b93bf1802f34f5dcd17b12430bb279
-ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
+ms.openlocfilehash: 1e5a61bd4e3287c1100ff1f54fda797c1add438b
+ms.sourcegitcommit: 3ea12ce4f6c142c5a1a2f04d6e329e3456d2bda5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94427743"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103466420"
 ---
 # <a name="azure-backup-architecture-and-components"></a>Azure Backup mimarisi ve bileşenler
 
@@ -22,11 +22,11 @@ Azure Backup, şirket içi makinelerde ve Azure sanal makine (VM) örneklerinde 
 
 Makineleri ve verileri bir dizi yöntemi kullanarak yedekleyebilirsiniz:
 
-- **Şirket içi makineleri yedekleme** :
+- **Şirket içi makineleri yedekleme**:
   - Şirket içi Windows makinelerini, Azure Backup Microsoft Azure Kurtarma Hizmetleri (MARS) Aracısı 'nı kullanarak doğrudan Azure 'a yedekleyebilirsiniz. Linux makineleri desteklenmez.
   - Şirket içi makineleri, System Center Data Protection Manager (DPM) veya Microsoft Azure Backup sunucusu (MABS) olan bir yedekleme sunucusuna yedekleyebilirsiniz. Daha sonra yedekleme sunucusunu Azure 'da bir kurtarma hizmetleri kasasına yedekleyebilirsiniz.
 
-- **Azure VM 'Lerini yedekleme** :
+- **Azure VM 'Lerini yedekleme**:
   - Azure VM 'lerini doğrudan yedekleyebilirsiniz. Azure Backup, VM üzerinde çalışan Azure VM aracısına bir yedekleme uzantısı yüklüyor. Bu uzantı tüm VM 'yi yedekler.
   - MARS Aracısı 'nı çalıştırarak, Azure VM 'de belirli dosya ve klasörleri yedekleyebilirsiniz.
   - Azure VM 'lerini Azure 'da çalışan MABS 'lere yedekleyebilir ve ardından MABS 'yi bir kurtarma hizmetleri kasasına yedekleyebilirsiniz.
@@ -43,9 +43,9 @@ Kasaların aşağıdaki özellikleri vardır:
 - Azure VM 'Leri ve şirket içi makineler dahil olmak üzere bir kasadaki yedeklenen öğeleri izleyebilirsiniz.
 - [Azure rol tabanlı erişim denetimi (Azure RBAC)](../role-based-access-control/role-assignments-portal.md)ile kasa erişimini yönetebilirsiniz.
 - Kasadaki verilerin artıklık için nasıl çoğaltılacağı belirtirsiniz:
-  - **Yerel olarak yedekli depolama (LRS)** : bir veri merkezindeki hataya karşı korumak için LRS kullanabilirsiniz. LRS, verileri bir depolama ölçek birimine çoğaltır. [Daha fazla bilgi edinin](../storage/common/storage-redundancy.md#locally-redundant-storage).
-  - **Coğrafi olarak yedekli depolama (GRS)** : bölge genelinde kesintilere karşı koruma sağlamak için GRS kullanabilirsiniz. GRS, verilerinizi ikincil bir bölgeye çoğaltır. [Daha fazla bilgi edinin](../storage/common/storage-redundancy.md#geo-redundant-storage).
-  - Bölgesel olarak **yedekli depolama (ZRS)** : verileri [kullanılabilirlik bölgelerinde](../availability-zones/az-overview.md#availability-zones)çoğaltır, bu da verileri, aynı bölgedeki veri fazlalığını ve dayanıklılığı garanti altına alır. [Daha fazla bilgi edinin](../storage/common/storage-redundancy.md#zone-redundant-storage)
+  - **Yerel olarak yedekli depolama (LRS)**: bir veri merkezindeki hataya karşı korumak için LRS kullanabilirsiniz. LRS, verileri bir depolama ölçek birimine çoğaltır. [Daha fazla bilgi edinin](../storage/common/storage-redundancy.md#locally-redundant-storage).
+  - **Coğrafi olarak yedekli depolama (GRS)**: bölge genelinde kesintilere karşı koruma sağlamak için GRS kullanabilirsiniz. GRS, verilerinizi ikincil bir bölgeye çoğaltır. [Daha fazla bilgi edinin](../storage/common/storage-redundancy.md#geo-redundant-storage).
+  - Bölgesel olarak **yedekli depolama (ZRS)**: verileri [kullanılabilirlik bölgelerinde](../availability-zones/az-overview.md#availability-zones)çoğaltır, bu da verileri, aynı bölgedeki veri fazlalığını ve dayanıklılığı garanti altına alır. [Daha fazla bilgi edinin](../storage/common/storage-redundancy.md#zone-redundant-storage)
   - Varsayılan olarak, kurtarma hizmetleri kasaları GRS kullanır.
 
 Kurtarma Hizmetleri kasaları aşağıdaki ek özelliklere sahiptir:
@@ -167,7 +167,7 @@ Azure VM 'lerinizi yedeklemek için internet bağlantısına açık bir şekilde
 1. MARS Aracısı, yedekleme için seçilen birimlerin bir noktadan noktaya anlık görüntüsünü almak için VSS 'yi kullanır.
     - MARS Aracısı, anlık görüntüyü yakalamak için yalnızca Windows sistem yazma işlemini kullanır.
     - Aracı herhangi bir uygulama VSS yazıcısını kullanmadığından, uygulamayla tutarlı anlık görüntüleri yakalamaz.
-1. VSS ile anlık görüntüyü aldıktan sonra, MARS Aracısı, yedeklemeyi yapılandırdığınız sırada belirttiğiniz önbellek klasöründe bir sanal sabit disk (VHD) oluşturur. Aracı Ayrıca her veri bloğu için sağlama toplamlarını depolar.
+1. VSS ile anlık görüntüyü aldıktan sonra, MARS Aracısı, yedeklemeyi yapılandırdığınız sırada belirttiğiniz önbellek klasöründe bir sanal sabit disk (VHD) oluşturur. Aracı Ayrıca her veri bloğu için sağlama toplamlarını depolar. Bunlar daha sonra, sonraki artımlı yedeklemeler için değiştirilen blokları tespit etmek üzere kullanılır.
 1. Artımlı yedeklemeler, isteğe bağlı yedekleme çalıştırmadığınız takdirde belirttiğiniz zamanlamaya göre çalışır.
 1. Artımlı yedeklemelerde değiştirilen dosyalar tanımlanır ve yeni bir VHD oluşturulur. VHD sıkıştırılır ve şifrelenir ve ardından kasaya gönderilir.
 1. Artımlı yedekleme bittikten sonra, yeni VHD ilk çoğaltmadan sonra oluşturulan VHD ile birleştirilir. Bu birleştirilmiş VHD, devam eden yedekleme için kullanılmak üzere en son durumu sağlar.

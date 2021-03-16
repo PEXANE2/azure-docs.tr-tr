@@ -4,15 +4,15 @@ description: Sahip olabileceğiniz sorunları ortadan kaldırmak için sensöriz
 author: shhazam-ms
 manager: rkarlin
 ms.author: shhazam
-ms.date: 1/3/2021
+ms.date: 03/14/2021
 ms.topic: article
 ms.service: azure
-ms.openlocfilehash: 624f60441f56646c3633a2afa79d326c92ba1a37
-ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
+ms.openlocfilehash: ba68bc3eee94689236792f0270d779357dffde9f
+ms.sourcegitcommit: 3ea12ce4f6c142c5a1a2f04d6e329e3456d2bda5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/15/2021
-ms.locfileid: "100523728"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103465785"
 ---
 # <a name="troubleshoot-the-sensor-and-on-premises-management-console"></a>Algılayıcı ve şirket içi yönetim konsolunda sorun giderme
 
@@ -54,7 +54,7 @@ Parolanızı kurtarmak için:
 1. **İleri**' yi seçtiğinizde, Kullanıcı ve yönetim konsolunuz için sistem tarafından oluşturulan parolanız görüntülenir.
 
     > [!NOTE]
-    > İlk kez bir sensör veya şirket içi yönetim konsolunda oturum açtığınızda, onu bağladığınız aboneliğe bağlanır. Six veya destek kullanıcısının parolasını sıfırlamanız gerekiyorsa, bu aboneliği seçmeniz gerekir. Bir Six veya destek Kullanıcı parolasını kurtarma hakkında daha fazla bilgi için bkz [. kullanıcının algılayıcısı veya şirket içi yönetim konsolu için Kullanıcı parolasını sıfırlama](how-to-create-and-manage-users.md#resetting-a-users-password-for-the-sensor-or-on-premises-management-console)
+    > İlk kez bir sensör veya şirket içi yönetim konsolunda oturum açtığınızda, onu bağladığınız aboneliğe bağlanır. Six veya destek kullanıcısının parolasını sıfırlamanız gerekiyorsa, bu aboneliği seçmeniz gerekir. Bir Six 'i kurtarma veya Kullanıcı parolasını destekleme hakkında daha fazla bilgi için bkz. [parolaları sıfırlama](how-to-create-and-manage-users.md#resetting-passwords).
 
 ### <a name="investigate-a-lack-of-traffic"></a>Trafik eksikliğinden araştırma
 
@@ -283,7 +283,7 @@ Günlükleri dışarı aktarmak için:
 
 Arşivlenmiş günlüklerin listesi en fazla beş öğe içerebilir. Listedeki öğe sayısı bu sayının ötesine geçtiğinde, en erken öğe silinir.
 
-## <a name="next-steps"></a>Sonraki adımlar
+## <a name="see-also"></a>Ayrıca bkz.
 
 - [Uyarıları görüntüleme](how-to-view-alerts.md)
 

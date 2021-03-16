@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/08/2021
+ms.date: 03/15/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: a3b0be062025681af2b03dfd2e57f1af2d99d701
-ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
+ms.openlocfilehash: 433e44e9998376d0bea57264f3daeaff7499a3cf
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "102448363"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103488848"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-google-account-using-azure-active-directory-b2c"></a>Azure Active Directory B2C kullanarak bir Google hesabı ile kaydolma ve oturum açma ayarlama
 
@@ -47,7 +47,9 @@ Azure Active Directory B2C (Azure AD B2C) içinde Google hesabı olan kullanıc�
 Uygulamanız için bir **ad** girin. **Yetkili etki alanları** bölümüne *B2clogin.com* girin ve **Kaydet**' i seçin.
 1. Sol menüden **kimlik** bilgileri ' ni seçin ve **kimlik bilgileri oluştur**  >  **OAuth istemci kimliği**' ni seçin.
 1. **Uygulama türü** altında **Web uygulaması**' nı seçin.
-1. Uygulamanız için bir **ad** girin, `https://your-tenant-name.b2clogin.com` **yetkili JavaScript kaynakları**' na ve `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp` **yetkili yeniden yönlendirme URI 'lerinde** girin. `your-tenant-name`Kiracınızın adıyla değiştirin. Kiracı, Azure AD B2C büyük harfle tanımlansa bile kiracı adınızı girerken tüm küçük harfleri kullanın.
+    1. Uygulamanız için bir **ad** girin.
+    1. **Yetkilendirilmiş JavaScript kaynakları** için girin `https://your-tenant-name.b2clogin.com` . [Özel bir etki alanı](custom-domain.md)kullanıyorsanız, girin `https://your-domain-name` .
+    1. **Yetkili yeniden yönlendirme URI 'leri** için girin `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp` . [Özel bir etki alanı](custom-domain.md)kullanıyorsanız, girin `https://your-domain-name/your-tenant-name.onmicrosoft.com/oauth2/authresp` . `your-domain-name`Özel etki alanınız ile ve `your-tenant-name` kiracınızın adıyla değiştirin. Kiracı, Azure AD B2C büyük harfle tanımlansa bile kiracı adınızı girerken tüm küçük harfleri kullanın.
 1. **Oluştur**’a tıklayın.
 1. **ISTEMCI kimliği** ve **istemci parolası** değerlerini kopyalayın. Google 'ı kiracınızda bir kimlik sağlayıcısı olarak yapılandırmak için her ikisine de ihtiyacınız olacak. **İstemci parolası** önemli bir güvenlik kimlik bilgileridir.
 

@@ -31,15 +31,6 @@
     - name: Paralel dosya işleme - Python
       displayName: 'tutorial, hpc, high-performance, large'
       href: tutorial-parallel-python.md
-    - name: Arnold ile sahne işlemesi
-      displayName: tutorial
-      href: tutorial-rendering-cli.md
-    - name: Batch Explorer'ı kullanarak işleme
-      displayName: tutorial
-      href: tutorial-rendering-batchexplorer-blender.md
-    - name: Paralel R benzetimi
-      displayName: 'tutorial, doAzureParallel, rstudio'
-      href: tutorial-r-doazureparallel.md
     - name: Batch ve İşlevler ile OCR
       displayName: 'trigger, optical'
       href: tutorial-batch-functions.md
@@ -272,7 +263,7 @@
           href: ../data-factory/transform-data-using-dotnet-custom-activity.md?toc=%2fazure%2fbatch%2ftoc.json
 - name: Başvuru
   items:
-    - name: Azure CLI
+    - name: Azure CLI’si
       href: /cli/azure/batch
     - name: Azure PowerShell
       href: /powershell/module/az.batch
