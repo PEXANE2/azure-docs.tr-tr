@@ -1,14 +1,14 @@
 ---
-title: Bağlı makine Windows aracısına genel bakış
+title: Bağlı makine aracısına genel bakış
 description: Bu makalede, karma ortamlarda barındırılan sanal makinelerin izlenmesini destekleyen Azure Arc etkin sunucu aracısına sunulan ayrıntılı bir genel bakış sunulmaktadır.
-ms.date: 02/18/2021
+ms.date: 03/15/2021
 ms.topic: conceptual
-ms.openlocfilehash: ebd9412849b4a0b3081e892d7472e598ca6e8365
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 1fd863ccacc7768401e35254a98c7bb494b3d358
+ms.sourcegitcommit: 66ce33826d77416dc2e4ba5447eeb387705a6ae5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101651102"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103470498"
 ---
 # <a name="overview-of-azure-arc-enabled-servers-agent"></a>Azure Arc etkin sunucular aracısına genel bakış
 
@@ -90,9 +90,11 @@ Windows ve Linux işletim sisteminin aşağıdaki sürümleri resmi olarak Azure
 
 ### <a name="required-permissions"></a>Gerekli izinler
 
-* Makineleri eklemek için, **Azure bağlı makine ekleme** rolünün bir üyesidir.
+* Makineleri eklemek için kaynak grubundaki **Azure bağlı makine ekleme** veya [katkıda bulunan](../../role-based-access-control/built-in-roles.md#contributor) rolü üyesi olursunuz.
 
-* Bir makineyi okumak, değiştirmek ve silmek için, **Azure bağlı makine kaynak yöneticisi** rolünün bir üyesi olursunuz. 
+* Bir makineyi okumak, değiştirmek ve silmek için kaynak grubundaki **Azure bağlı makine kaynak yöneticisi** rolünün bir üyesi olursunuz.
+
+* **Betik oluştur** metodunu kullanırken aşağı açılan listeden bir kaynak grubu seçmek için, en azından söz konusu kaynak grubu için [okuyucu](../../role-based-access-control/built-in-roles.md#reader) rolünün bir üyesi olursunuz.
 
 ### <a name="azure-subscription-and-service-limits"></a>Azure aboneliği ve hizmet limitleri
 

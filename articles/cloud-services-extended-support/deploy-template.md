@@ -8,12 +8,12 @@ ms.author: gachandw
 ms.reviewer: mimckitt
 ms.date: 10/13/2020
 ms.custom: ''
-ms.openlocfilehash: 71217e6379c02191311f5d93cb439d9da20080bc
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 93f7b8f83d7b864a76eb9f31024ed55a7a1639e9
+ms.sourcegitcommit: 66ce33826d77416dc2e4ba5447eeb387705a6ae5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101706971"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103472286"
 ---
 # <a name="deploy-a-cloud-service-extended-support-using-arm-templates"></a>ARM şablonları kullanarak bir bulut hizmeti (genişletilmiş destek) dağıtma
 
@@ -44,6 +44,9 @@ Bu öğreticide, [ARM şablonları](../azure-resource-manager/templates/overview
 
 ## <a name="deploy-a-cloud-service-extended-support"></a>Bulut hizmeti dağıtma (genişletilmiş destek)
 
+> [!NOTE]
+ Bulut hizmetinizi dağıtmanın alternatif bir yolu (genişletilmiş destek) [Azure Portal](https://portal.azure.com)aracılığıyla yapılır. Oluşturulan ARM şablonunu, gelecekteki dağıtımlarınız için Portal aracılığıyla indirebilirsiniz
+ 
 1. Sanal ağ oluşturun. Sanal ağın adı, hizmet yapılandırma (. cscfg) dosyasındaki başvurularla aynı olmalıdır. Var olan bir sanal ağı kullanıyorsanız, ARM şablonundan bu bölümü atlayın.
 
     ```json

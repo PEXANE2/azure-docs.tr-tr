@@ -1,6 +1,6 @@
 ---
-title: 'Hızlı başlangıç: Azure RTOS için güvenlik modülünü yapılandırma ve etkinleştirme'
-description: Bu hızlı başlangıçta Azure IoT Hub Azure RTOS hizmetine yönelik güvenlik modülünü eklemeyi ve etkinleştirmeyi öğreneceksiniz.
+title: "Hızlı başlangıç: Azure RTOS için Defender-IoT-Micro-Agent 'ı yapılandırma ve etkinleştirme"
+description: Azure IoT Hub Azure RTOS hizmeti için Defender-IoT-mikro-Agent ' ı eklemeyi ve etkinleştirmeyi öğrenin.
 services: defender-for-iot
 ms.service: defender-for-iot
 documentationcenter: na
@@ -13,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/24/2021
 ms.author: shhazam
-ms.openlocfilehash: 19a439ec48d4a8705ffb46db7ca037b51449083d
-ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
+ms.openlocfilehash: 3c1af1128b99cbd3263ddffc834eb27ab9dec564
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "102447308"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103489854"
 ---
-# <a name="quickstart-security-module-for-azure-rtos"></a>Hızlı başlangıç: Azure RTOS için güvenlik modülü 
+# <a name="quickstart-defender-iot-micro-agent-for-azure-rtos-preview"></a>Hızlı başlangıç: Defender-IoT-mikro-aracı Azure RTOS (Önizleme)
 
-Bu makalede, başlamadan önce önkoşulların açıklaması sağlanmaktadır ve bir IoT Hub Azure RTOS hizmeti için güvenlik modülünün nasıl etkinleştirileceği açıklanır. Şu anda bir IoT Hub yoksa, kullanmaya başlamak için [Azure Portal kullanarak IoT Hub oluşturma](../iot-hub/iot-hub-create-through-portal.md) makalesine bakın.
+Bu makalede, başlamadan önce önkoşulların açıklaması sağlanır ve Azure RTOS hizmeti için IoT Hub Defender-IoT-mikro aracısının nasıl etkinleştirileceği açıklanır. Şu anda bir IoT Hub yoksa, kullanmaya başlamak için [Azure Portal kullanarak IoT Hub oluşturma](../iot-hub/iot-hub-create-through-portal.md) makalesine bakın.
 
 ## <a name="prerequisites"></a>Önkoşullar 
 
@@ -32,7 +32,7 @@ Bu makalede, başlamadan önce önkoşulların açıklaması sağlanmaktadır ve
 - NXP i.MX RT1060 EVK
 - Mikro yonga SAM E54 Xplaj Pro EVK
 
-[Azure RTOS GitHub kaynağı Için güvenlik modülündeki](https://github.com/azure-rtos/azure-iot-preview/releases)belirli bir Pano ve araç (IAR, yarı IDE veya bilgisayar) için. zip dosyalarından birini indirin, derleyin ve çalıştırın.
+[Azure RTOS GitHub kaynağı Için Defender-IoT-mikro-Agent](https://github.com/azure-rtos/azure-iot-preview/releases)' den seçtiğiniz belirli bir Pano ve araç (IAR, yarı IDE veya bilgisayar) için. zip dosyalarından birini indirin, derleyin ve çalıştırın.
 
 ### <a name="azure-resources"></a>Azure kaynakları
 
@@ -52,11 +52,11 @@ Başlamak için bir IoT Hub bağlantısı gerekir.
 
 Bağlantı kimlik bilgileri, Kullanıcı uygulama yapılandırmasından **host_name**, **DEVICE_ID** ve **DEVICE_SYMMETRIC_KEY** alınır.
 
-Azure RTOS için güvenlik modülü, **MQTT** protokolüne göre Azure IoT ara yazılım bağlantılarını kullanır.
+Azure RTOS için Defender-IoT-Micro-Agent, **MQTT** protokolüne göre Azure IoT ara yazılım bağlantılarını kullanır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Çözümünüzü yapılandırmayı ve özelleştirmeyi tamamlamak için sonraki makaleye ilerleyin.
 
 > [!div class="nextstepaction"]
-> [Azure RTOS için Güvenlik Modülü’nü yapılandırma](how-to-azure-rtos-security-module.md)
+> [Azure RTOS için Defender-IoT-mikro-Agent 'ı yapılandırma ve özelleştirme (Önizleme)](how-to-azure-rtos-security-module.md)

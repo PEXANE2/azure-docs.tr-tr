@@ -17,12 +17,12 @@ ms.date: 01/04/2021
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1b0771687aa7ccf9b749c107a6b1c507cb3ba08d
-ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
+ms.openlocfilehash: 1f7466931537745fb188a3bdb05646bff19912e8
+ms.sourcegitcommit: 3ea12ce4f6c142c5a1a2f04d6e329e3456d2bda5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97881948"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103466261"
 ---
 # <a name="azure-ad-connect-accounts-and-permissions"></a>Azure AD Connect: Hesaplar ve izinler
 
@@ -44,7 +44,7 @@ Azure AD Connect çalıştırmak için kullanılan bu üç hesaba ek olarak, Azu
 
 - **AD DS Kurumsal Yönetici hesabı**: isteğe bağlı olarak, yukarıdaki "AD DS bağlayıcı hesabı" oluşturmak için kullanılır.
 
-- **Azure AD Genel yönetici hesabı**: Azure ad bağlayıcı hesabı oluşturmak ve Azure AD 'yi yapılandırmak için kullanılır.  Azure portalında genel yönetici hesaplarını görüntüleyebilirsiniz.  Bkz. [rolleri görüntüleme](../../active-directory/roles/manage-roles-portal.md#view-all-roles).
+- **Azure AD Genel yönetici hesabı**: Azure ad bağlayıcı hesabı oluşturmak ve Azure AD 'yi yapılandırmak için kullanılır.  Azure portal genel yönetici hesaplarını görüntüleyebilirsiniz.  Bkz. [Azure AD rol atamalarını listeleme](../../active-directory/roles/view-assignments.md).
 
 - **SQL SA hesabı (isteğe bağlı)**: SQL Server tam sürümü kullanılırken ADSync veritabanını oluşturmak için kullanılır.  Bu SQL Server, Azure AD Connect yüklemesinde yerel veya uzak olabilir.  Bu hesap, kuruluş yöneticisiyle aynı hesap olabilir.  Veritabanının sağlanması artık SQL Yöneticisi tarafından bant dışında gerçekleştirilebilir ve ardından veritabanı sahibi haklarıyla Azure AD Connect Yöneticisi tarafından yüklenebilir.  Bu bilgi için bkz. [SQL yönetici temsilcisi izinlerini kullanarak Azure AD Connect yüklemesi](how-to-connect-install-sql-delegation.md)
 
@@ -175,7 +175,7 @@ Hızlı ayarları kullanıyorsanız, Active Directory eşitleme için kullanıla
 ### <a name="adsync-service-account"></a>AD Eşitleme hizmeti hesabı
 Eşitleme hizmeti farklı hesaplar altında çalıştırılabilir. Bir **sanal hizmet hesabı** (VSA), **Grup tarafından yönetilen hizmet hesabı** (gMSA/sMSA) veya normal bir kullanıcı hesabı altında çalışabilir. Yeni bir yükleme yaptığınızda desteklenen seçenekler, Connect 'in 2017 Nisan sürümü ile değiştirilmiştir. Azure AD Connect önceki bir sürümünden yükseltiyorsanız, bu ek seçenekler kullanılamaz.
 
-| Hesap türü | Yükleme seçeneği | Description |
+| Hesap türü | Yükleme seçeneği | Açıklama |
 | --- | --- | --- |
 | [Sanal hizmet hesabı](#virtual-service-account) | Express ve Custom, 2017 Nisan ve üzeri | Bu, etki alanı denetleyicisindeki yüklemeler hariç tüm Express yüklemeleri için kullanılan seçenektir. Özel için, başka bir seçenek kullanılmadığı takdirde varsayılan seçenektir. |
 | [Grup Yönetilen Hizmet Hesabı](#group-managed-service-account) | Özel, 2017 Nisan ve üzeri | Uzak bir SQL Server kullanıyorsanız, grup tarafından yönetilen bir hizmet hesabı kullanmanızı öneririz. |

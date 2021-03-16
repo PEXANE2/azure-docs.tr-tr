@@ -3,12 +3,12 @@ title: Kavramlar-ağ bağlantısı
 description: Azure VMware çözümünde önemli yönleri ve ağ ve bağlantı durumlarını kullanma hakkında bilgi edinin.
 ms.topic: conceptual
 ms.date: 03/11/2021
-ms.openlocfilehash: cd62949c13b1f12e635d8d7bf07518a94c4e8d4b
-ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
+ms.openlocfilehash: 4c964151c49e2fea56031dd24bacf4655753a18d
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/14/2021
-ms.locfileid: "103462601"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103491818"
 ---
 # <a name="azure-vmware-solution-networking-and-interconnectivity-concepts"></a>Azure VMware Çözüm ağı ve karşılıklı bağlantı kavramları
 
@@ -16,9 +16,9 @@ ms.locfileid: "103462601"
 
 Azure VMware Çözüm özel bulutu 'nda birbirine bağlanmanın iki yolu vardır:
 
-1. [**Temel Azure-yalnızca karşılıklı bağlantı**](#azure-virtual-network-interconnectivity) , özel bulutunuzu yalnızca Azure 'daki tek bir sanal ağla yönetmenizi ve kullanmanızı sağlar. Bu uygulama, Azure VMware Çözüm değerlendirmeleri veya şirket içi ortamlarından erişim gerektirmeyen uygulamalar için idealdir.
+- [**Temel Azure-yalnızca karşılıklı bağlantı**](#azure-virtual-network-interconnectivity) , özel bulutunuzu yalnızca Azure 'daki tek bir sanal ağla yönetmenizi ve kullanmanızı sağlar. Bu uygulama, Azure VMware Çözüm değerlendirmeleri veya şirket içi ortamlarından erişim gerektirmeyen uygulamalar için idealdir.
 
-1. Şirket içinde [**tam ve özel bulut bağlantısı**](#on-premises-interconnectivity) , şirket Içi ve Azure VMware çözümü özel bulutları arasında karşılıklı bağlantı dahil olmak üzere yalnızca temel Azure uygulamasını genişletir.
+- Şirket içinde [**tam ve özel bulut bağlantısı**](#on-premises-interconnectivity) , şirket Içi ve Azure VMware çözümü özel bulutları arasında karşılıklı bağlantı dahil olmak üzere yalnızca temel Azure uygulamasını genişletir.
  
 Bu makalede, gereksinimler ve sınırlamalar dahil olmak üzere ağ ve bağlantı kurma temel kavramlarını ele alacağız. Bu makale, ağınızı Azure VMware çözümüyle çalışacak şekilde yapılandırmak için bilmeniz gereken bilgileri sağlar.
 

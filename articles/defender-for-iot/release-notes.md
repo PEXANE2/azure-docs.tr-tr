@@ -11,33 +11,39 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/08/2021
+ms.date: 03/14/2021
 ms.author: shhazam
-ms.openlocfilehash: f15c4ed6bb7da5cd33eca96c171bfada68092b35
-ms.sourcegitcommit: 2501fe97400e16f4008449abd1dd6e000973a174
+ms.openlocfilehash: ef72be60b6294ad4e1fca2ce9c0e3c66b64ac687
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99820679"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103493976"
 ---
 # <a name="whats-new-in-azure-defender-for-iot"></a>IoT için Azure Defender 'daki yenilikler nelerdir?
 
 Bu makalede, IoT için Defender için yeni özellikler ve özellik geliştirmeleri listelenmektedir.
 
 Belirtilen özellikler ÖNIZLEMEDEDIR. [Azure önizleme ek koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) , Beta, önizleme veya henüz genel kullanıma sunulmayan Azure özelliklerine uygulanan ek yasal koşulları içerir.
-## <a name="february-2021"></a>Şubat 2021
+## <a name="march-2021"></a>Mart 2021
 
-### <a name="sensor---enhanced-custom-alert-rules"></a>Algılayıcı gelişmiş özel uyarı kuralları
+### <a name="sensor---enhanced-custom-alert-rules-public-preview"></a>Algılayıcı gelişmiş özel uyarı kuralları (Genel Önizleme)
 
 Artık güne, gün grubuna ve zaman aralığı ağ etkinliğine göre özel uyarı kuralları oluşturabilirsiniz.  Gün ve saat kuralı koşullarıyla çalışma, örneğin uyarı önem derecesi, uyarı olayının gerçekleştiği zamana göre elde edilen durumlarda faydalıdır. Örneğin, bir hafta sonu veya akşam 'da ağ etkinliği algılandığında yüksek önem derecesine sahip bir uyarı tetikleyen özel bir kural oluşturun.
 
-Bu özellik, sürüm 10,1 sürümü ile sensörde mevcuttur.
+Bu özellik, sürüm 10,2 sürümü ile sensörde mevcuttur.
 
-### <a name="on-premises-management-console---export-alerts"></a>Şirket içi yönetim konsolu-uyarıları dışarı aktarma
+### <a name="on-premises-management-console---export-alerts-public-preview"></a>Şirket içi yönetim konsolu-uyarıları dışarı aktarma (Genel Önizleme)
 
 Uyarı bilgileri artık şirket içi yönetim konsolundan bir. csv dosyasına aktarılabilir. Filtrelenmiş görünüme göre algılanan tüm uyarıların veya dışarı aktarma bilgilerinin bilgilerini dışarı aktarabilirsiniz.
 
-Bu özellik, sürüm 10,1 sürümü ile şirket içi yönetim konsolunda kullanılabilir.
+Bu özellik, sürüm 10,2 sürümü ile şirket içi yönetim konsolunda kullanılabilir.
+
+### <a name="add-second-network-interface-to-on-premises-management-console-public-preview"></a>Şirket içi yönetim konsoluna ikinci ağ arabirimi ekleme (Genel Önizleme)
+
+Artık şirket içi yönetim konsoluna ikinci bir ağ arabirimi ekleyerek dağıtımınızın güvenliğini geliştirebilirsiniz. Bu özellik, şirket içi yönetimin tek bir güvenli ağ üzerinde bağlı algılayıcıların olmasına olanak sağlarken, kullanıcılarınızın şirket içi yönetim konsoluna ikinci ayrı bir ağ arabirimi aracılığıyla erişmesini sağlar.
+
+Bu özellik, sürüm 10,2 sürümü ile şirket içi yönetim konsolunda kullanılabilir.
 ### <a name="device-builder---new-micro-agent-public-preview"></a>Cihaz Oluşturucu-yeni mikro Aracı (Genel Önizleme)
 
 Yeni bir cihaz Oluşturucu modülü var. Mikro aracı olarak adlandırılan modül şunları sağlar:
@@ -48,7 +54,7 @@ Yeni bir cihaz Oluşturucu modülü var. Mikro aracı olarak adlandırılan mod�
 - **Güvenlik durure yönetimi** – IoT cihazlarınızın güvenlik duruşunu önceden izleyin.
 - **Sürekli, gerçek zamanlı IoT/ot tehdit algılama** -botağları, deneme yanılma girişimleri, şifre Miners ve şüpheli ağ etkinliği gibi tehditleri algılayın
 
-Kullanım dışı bırakılan güvenlik modülü belgeleri, *Klasik klasör>cihaz oluşturucular Için aracı tabanlı çözüme* taşınır.
+Kullanım dışı bırakılan Defender-IoT-Micro-Agent belgeleri, *Klasik klasör>cihaz oluşturucular Için aracı tabanlı çözüme* taşınır.
 
 Bu özellik kümesi, geçerli genel önizleme bulutu sürümü ile kullanılabilir.
 

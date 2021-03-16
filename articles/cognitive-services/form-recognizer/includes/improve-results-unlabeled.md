@@ -1,16 +1,16 @@
 ---
-author: PatrickFarley
+author: laujan
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: include
 ms.date: 06/12/2019
-ms.author: pafarley
-ms.openlocfilehash: f0761847c3677b324ef16c5987eb9a1561dbcbe0
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.author: lajanuar
+ms.openlocfilehash: 89b035397ea2050ae7e61f2a19310b6a7fb4192c
+ms.sourcegitcommit: 3ea12ce4f6c142c5a1a2f04d6e329e3456d2bda5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "75379309"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103467236"
 ---
 `"confidence"`Düğüm altındaki her bir anahtar/değer sonucunun değerlerini inceleyin `"pageResults"` . Ayrıca `"readResults"` , düğümdeki, metin okuma işlemine karşılık gelen güven puanlarını de göz atalım. Okuma sonuçlarının güvenilirliği, anahtar/değer ayıklama sonuçlarının güvenini etkilemez, bu nedenle her ikisini de denetlemeniz gerekir.
 * Okuma işleminin güven puanları düşükse, giriş belgelerinizin kalitesini geliştirmeyi deneyin (bkz. [giriş gereksinimleri](../overview.md#input-requirements)).

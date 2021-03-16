@@ -14,12 +14,12 @@ ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fea9662b6f5890c6240e91b26cf641d6166d560a
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: d1e8a0f1919da125a571429e1efff06589c7e85a
+ms.sourcegitcommit: 3ea12ce4f6c142c5a1a2f04d6e329e3456d2bda5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102051200"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103466720"
 ---
 # <a name="delegate-app-registration-permissions-in-azure-active-directory"></a>Azure Active Directory 'de uygulama kayıt izinleri verme
 
@@ -30,7 +30,7 @@ Bu makalede, uygulama yönetimi ihtiyaçlarınızı karşılamak üzere Azure Ac
 - Tüm uygulamalar için Azure AD 'de yapılandırmayı yönetme erişimi veren [yerleşik bir yönetim rolü atama](#assign-built-in-application-admin-roles) . Bu, BT uzmanlarına, Azure AD 'nin uygulama yapılandırmasıyla ilgili olmayan diğer kısımlarını yönetmek için erişim izni vermeden, geniş uygulama yapılandırma izinlerini yönetmek üzere erişim vermek için önerilen yoldur.
 - [Özel bir rol oluşturmak](#create-and-assign-a-custom-role-preview) ve bunu, tek bir uygulamanın sınırlı bir sahip olarak veya dizin kapsamında (tüm uygulamalar) sınırlı yönetici olarak bir kişiye atamak.
 
-Yukarıdaki yöntemlerden birini kullanarak iki nedenden dolayı erişim vermek önemlidir. İlk olarak, yönetim görevlerini gerçekleştirmek için temsilci seçme, genel yönetici ek yükünü azaltır. İkincisi, sınırlı izinleri kullanmak güvenlik duruşunuzu iyileştirir ve yetkisiz erişim potansiyelini azaltır. Temsilci seçme sorunları ve genel yönergeler, [Azure Active Directory sürümünde temsilci yönetimi](concept-delegation.md)bölümünde ele alınmıştır.
+Yukarıdaki yöntemlerden birini kullanarak iki nedenden dolayı erişim vermek önemlidir. İlk olarak, yönetim görevlerini gerçekleştirmek için temsilci seçme, genel yönetici ek yükünü azaltır. İkincisi, sınırlı izinleri kullanmak güvenlik duruşunuzu iyileştirir ve yetkisiz erişim potansiyelini azaltır. Rol güvenliği planlaması hakkında yönergeler için bkz. [Azure AD 'de karma ve bulut dağıtımları için ayrıcalıklı erişimin güvenliğini sağlama](security-planning.md).
 
 ## <a name="restrict-who-can-create-applications"></a>Kimlerin uygulama oluşturacağını kısıtla
 

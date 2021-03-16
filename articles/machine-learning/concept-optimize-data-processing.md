@@ -11,12 +11,12 @@ ms.reviewer: nibaccam
 ms.topic: conceptual
 ms.date: 06/26/2020
 ms.custom: data4ml
-ms.openlocfilehash: 77edac14ef13901725eed656835e1a937d4f4ddf
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: 5ab7bac635a0b670087800212727b0d2e2b96934
+ms.sourcegitcommit: 66ce33826d77416dc2e4ba5447eeb387705a6ae5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93360828"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103472201"
 ---
 # <a name="optimize-data-processing-with-azure-machine-learning"></a>Azure Machine Learning ile veri işlemeyi iyileştirme
 
@@ -38,7 +38,7 @@ CSV dosyaları, Excel 'de düzenleme ve okuma kolaylıdıklarından verileri iç
 
 `Pandas` tek iş parçacıklı olduğundan, tek bir CPU 'da tek seferde bir işlem yapılır. Tek bir Azure Machine Learning işlem örneğinde iş yüklerini, dağıtılmış bir arka uç kullanarak bu [Sardaki modlarda](https://modin.readthedocs.io/en/latest/) bulunan paketlerle birlikte birden çok sanal CPU 'ya paralel hale getirmek `Pandas` .
 
-Görevlerinizi ve Gamze ile paralel hale getirmek `Modin` için [Dask](https://dask.org)Bu kod satırını olarak değiştirmeniz yeterlidir `import pandas as pd` `import modin.pandas as pd` .
+Görevlerinizi ve Gamze ile paralel hale getirmek `Modin` için [](https://dask.org)Bu kod satırını olarak değiştirmeniz yeterlidir `import pandas as pd` `import modin.pandas as pd` .
 
 ## <a name="dataframe-out-of-memory-error"></a>Dataframe: yetersiz bellek hatası 
 
@@ -86,8 +86,6 @@ Hakkında bilginiz varsa `Pandas`| `Modin` veya `Dask` veri çerçevesi
 Tercih ediyorsanız `Spark` | `PySpark`
 1 GB 'tan küçük veriler için | `Pandas` Yerel olarak **veya** bir uzak Azure Machine Learning işlem örneği
 10 GB 'tan büyük veriler için| `Ray`, Veya kullanarak bir kümeye taşıma `Dask``Spark`
-
-`Dask`Azure ML işlem kümesinde, [pask-cloudprovider](https://cloudprovider.dask.org/en/latest/#azure) paketiyle kümeler oluşturabilirsiniz. Ya da `Dask` bir işlem örneğinde yerel olarak çalıştırabilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

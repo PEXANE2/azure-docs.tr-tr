@@ -8,12 +8,12 @@ ms.subservice: fhir
 ms.topic: overview
 ms.date: 01/19/2021
 ms.author: ranku
-ms.openlocfilehash: 7518f5e2984029c087eec1e6697f3237410bda4b
-ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
+ms.openlocfilehash: 2a34cfee57ecc1870c420c4c0f3c9261aa02f192
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/11/2021
-ms.locfileid: "103020420"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103490934"
 ---
 # <a name="how-to-convert-data-to-fhir-preview"></a>Verileri FHıR 'ye dönüştürme (Önizleme)
 
@@ -30,7 +30,7 @@ $convert-veri, aşağıda açıklandığı gibi istek gövdesinde bir [parametre
 
 **Parametre kaynağı:**
 
-| Parametre Adı      | Description | Kabul edilen değerler |
+| Parametre Adı      | Açıklama | Kabul edilen değerler |
 | ----------- | ----------- | ----------- |
 | inputData      | Dönüştürülecek veriler. | JSON dize veri türünün geçerli bir değeri|
 | ınputdatatype   | Girişin veri türü. | ```HL7v2``` |
@@ -125,6 +125,12 @@ FHıR hizmet örneği için Azure API 'nize AcrPull rolü verin.
 
 ### <a name="register-the-acr-servers-in-azure-api-for-fhir"></a>FHıR için Azure API 'ye ACR sunucularını kaydetme
 
+ACR sunucusunu Azure portal kullanarak veya CLı kullanarak kaydedebilirsiniz.
+
+#### <a name="registering-the-acr-server-using-azure-portal"></a>Azure portal kullanarak ACR sunucusunu kaydetme
+FHIR örneği için Azure API 'nizin _veri dönüştürme_ altındaki _yapılar_ dikey penceresine gidin. Kayıtlı olan ACR sunucularının listesini görürsünüz. _Ekle_ ' ye tıklayın ve açılan listeden kayıt defteri sunucunuzu seçin. Kaydın etkili olması için _Kaydet_ ' e tıklamanız gerekir. Değişikliğin uygulanması ve örneğinizi yeniden başlatılması birkaç dakika sürebilir.
+
+#### <a name="registering-the-acr-server-using-cli"></a>CLı kullanarak ACR sunucusunu kaydetme
 FHıR için Azure API 'sinde en fazla yirmi ACR sunucusu kaydedebilirsiniz.
 
 Gerekirse Azure PowerShell healthumapı CLı API 'lerini yükler:
@@ -135,13 +141,13 @@ az extension add -n healthcareapis
 
 Aşağıdaki örnekleri izleyerek ACR sunucularını FHıR için Azure API 'sine kaydedin:
 
-#### <a name="register-a-single-acr-server"></a>Tek bir ACR sunucusunu kaydetme
+##### <a name="register-a-single-acr-server"></a>Tek bir ACR sunucusunu kaydetme
 
 ```powershell
 az healthcareapis acr add --login-servers "fhiracr2021.azurecr.io" --resource-group fhir-test --resource-name fhirtest2021
 ```
 
-#### <a name="register-multiple-acr-servers"></a>Birden çok ACR sunucusunu kaydetme
+##### <a name="register-multiple-acr-servers"></a>Birden çok ACR sunucusunu kaydetme
 
 ```powershell
 az healthcareapis acr add --login-servers "fhiracr2021.azurecr.io fhiracr2020.azurecr.io" --resource-group fhir-test --resource-name fhirtest2021
@@ -152,8 +158,3 @@ az healthcareapis acr add --login-servers "fhiracr2021.azurecr.io fhiracr2020.az
 TemplateCollectionReference parametresinde şablon başvurusunu belirten $convert-Data API 'sine bir çağrı yapın.
 
 `<RegistryServer>/<imageName>@<imageDigest>`
-
-## <a name="known-issues-and-workarounds"></a>Bilinen sorunlar ve geçici çözümler
-
-- Bazı varsayılan şablon dosyaları UTF-8 BOM içerir. Sonuç olarak, oluşturulan KIMLIK değerleri bir BOM karakteri içerir. Bu, FHıR sunucusuyla ilgili bir sorun oluşturabilir. Geçici çözüm, VS Code uzantısı kullanarak Microsoft şablonlarını çekmek ve _ID/_yordamdan. sıvı_, _ID/_provenance. sıvı_ ve __ID/çözüm. sıvı '_ den sonra da kendi ACR 'nize gönderim yapmak.
-

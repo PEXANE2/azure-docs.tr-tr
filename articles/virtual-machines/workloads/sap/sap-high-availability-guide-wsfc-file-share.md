@@ -13,15 +13,15 @@ ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 07/24/2019
+ms.date: 03/15/2021
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 608401858c0119d281ab6ff46156fc7bdccd9d84
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: a51f874d09aebfcb2c0b73e0b484f68042d1bb6d
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101675345"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103496210"
 ---
 # <a name="cluster-an-sap-ascsscs-instance-on-a-windows-failover-cluster-by-using-a-file-share-in-azure"></a>Azure 'da bir dosya paylaşma kullanarak bir Windows Yük devretme kümesinde SAP yoks/SCS örneği oluşturma
 
@@ -147,10 +147,14 @@ Genişleme dosya paylaşımının kullanılması için sisteminizin aşağıdaki
 
 ### <a name="configure-sap-ascsscs-instances-and-a-scale-out-file-share-in-two-clusters"></a>SAP ASCS/SCS örnekleri ve iki kümede genişleme dosya paylaşma yapılandırma
 
-SAP ASCS/SCS örneklerini tek bir kümede, kendi SAP \<SID\> kümesi rolüyle dağıtabilirsiniz. Bu durumda, farklı bir küme rolüyle genişleme dosya paylaşımından başka bir kümede yapılandırırsınız.
+SAP ASCS/SCS örneklerini ayrı bir kümede, kendi SAP \<SID\> kümesi rolüyle dağıtmanız gerekir. Bu durumda, farklı bir küme rolüyle genişleme dosya paylaşımından başka bir kümede yapılandırırsınız.
+
 
 > [!IMPORTANT]
->Bu senaryoda SAP ascs/SCS örneği, SAP Küresel ana bilgisayarına UNC yolu ile erişim için yapılandırılmış \\ \\ &lt; SAP Küresel Ana bilgisayar &gt; \sapmnt \\ &lt; SID &gt; \sys\.
+> Kurulum aşağıdaki gereksinimi karşılamalıdır: SAP ASCS/SCS örnekleri ve SOFS paylaşımının ayrı kümelerde dağıtılması gerekir.    
+>
+> [!IMPORTANT] 
+> Bu senaryoda SAP ascs/SCS örneği, SAP Küresel ana bilgisayarına UNC yolu ile erişim için yapılandırılmış \\ \\ &lt; SAP Küresel Ana bilgisayar &gt; \sapmnt \\ &lt; SID &gt; \sys\.
 >
 
 ![Şekil 5: SAP ASCS/SCS örneği ve iki kümede dağıtılan bir genişleme dosya paylaşma][sap-ha-guide-figure-8007]

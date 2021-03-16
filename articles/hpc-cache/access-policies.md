@@ -4,26 +4,26 @@ description: Azure HPC Cache 'te depolama hedeflerine istemci erişimini sınır
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: how-to
-ms.date: 12/28/2020
+ms.date: 03/11/2021
 ms.author: v-erkel
-ms.openlocfilehash: 795b194eb7cd31e633128c22ddffe808b32e07da
-ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
+ms.openlocfilehash: eb9e71cc8ec463077e3b12b8738203a4945a2eab
+ms.sourcegitcommit: 66ce33826d77416dc2e4ba5447eeb387705a6ae5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/29/2020
-ms.locfileid: "97802430"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103471787"
 ---
-# <a name="use-client-access-policies"></a>İstemci erişim ilkelerini kullanma
+# <a name="control-client-access"></a>İstemci erişimini denetleme
 
 Bu makalede, depolama hedeflerinizin özel istemci erişim ilkelerinin nasıl oluşturulacağı ve uygulanacağı açıklanır.
 
-İstemci erişim ilkeleri, istemcilerin depolama hedefi dışarı aktarmaları için nasıl bağlanabilme şeklini denetler. İstemci konağında veya ağ düzeyinde kök sıkıştırarak ve okuma/yazma erişimi gibi işlemleri denetleyebilirsiniz.
+İstemci erişim ilkeleri, istemcilerin depolama hedefi dışarı aktarmaları için nasıl bağlanmasına izin verildiğini denetler. İstemci konağında veya ağ düzeyinde kök sıkıştırarak ve okuma/yazma erişimi gibi işlemleri denetleyebilirsiniz.
 
 Erişim ilkeleri bir ad alanı yoluna uygulanır, bu da bir NFS depolama sisteminde iki farklı dışarı aktarma için farklı erişim ilkeleri kullanabileceğiniz anlamına gelir.
 
 Bu özellik, farklı istemci gruplarının depolama hedeflerine nasıl erişebileceğini kontrol etmeniz gereken iş akışlarına yöneliktir.
 
-Depolama hedefi erişimi üzerinde ayrıntılı denetime ihtiyacınız yoksa varsayılan ilkeyi kullanabilir veya varsayılan ilkeyi ek kurallarla özelleştirebilirsiniz.
+Depolama hedefi erişimi üzerinde ayrıntılı denetime ihtiyacınız yoksa varsayılan ilkeyi kullanabilir veya varsayılan ilkeyi ek kurallarla özelleştirebilirsiniz. Örneğin, önbellekten bağlanan tüm istemciler için kök squon 'u etkinleştirmek istiyorsanız, kök sıkıştırarak ayarını eklemek için **varsayılan** adlı ilkeyi düzenleyebilirsiniz.
 
 ## <a name="create-a-client-access-policy"></a>İstemci erişim ilkesi oluşturma
 
@@ -81,15 +81,21 @@ Belirtilen istemcilerin bu dışa aktarma alt dizinlerini doğrudan takmasına i
 
 Bu kuralla eşleşen istemciler için kök sıkıştırarak 'in uygulanıp ayarlanamayacağını seçin.
 
-Bu değer, depolama dışarı aktarma düzeyinde kök squsize izin vermenizi sağlar. Ayrıca, [önbellek düzeyinde kök sıkıştırarak](configuration.md#configure-root-squash)'i de ayarlayabilirsiniz.
+Bu ayar, Azure HPC önbelleğinin istemci makinelerdeki kök kullanıcıdan gelen istekleri nasıl ele aldığını denetler. Kök sıkıştırarak etkinleştirildiğinde, bir istemciden gelen kök kullanıcılar, istekleri Azure HPC Cache üzerinden gönderirken ayrıcalıksız bir kullanıcıya otomatik olarak eşlenir. Ayrıca, istemci isteklerinin Set-UID izin bitlerini kullanmasını önler.
 
-Kök squon 'u açarsanız, anonim KIMLIK Kullanıcı değerini şu seçeneklerden birine de ayarlamanız gerekir:
+Kök sıkıştırarak devre dışıysa, istemci kök kullanıcısı (UID 0) isteği, kök olarak bir arka uç NFS depolama sistemine geçirilir. Bu yapılandırma uygunsuz dosya erişimine izin verebilir.
 
-* **-2** (hiç kimse)
-* **65534** (hiç kimse)
-* **-1** (erişim yok)
-* **65535** (erişim yok)
+İstemci istekleri için kök sıkıştırarak ayarlama, ``no_root_squash`` depolama hedefleri olarak kullanılan NAS sistemlerinde gerekli ayar için telafi sağlanmasına yardımcı olabilir. ( [NFS depolama hedefi önkoşulları](hpc-cache-prerequisites.md#nfs-storage-requirements)hakkında daha fazla bilgi edinin.) Ayrıca, Azure Blob depolama hedefleri ile birlikte kullanıldığında güvenliği de iyileştirebilir.
+
+Kök squon 'u açarsanız, anonim KIMLIK Kullanıcı değerini de ayarlamanız gerekir. Portal 0 ile 4294967295 arasında tamsayı değerlerini kabul eder. (Eski değerler-2 ve-1, geriye dönük uyumluluk için desteklenir, ancak yeni yapılandırma için önerilmez.)
+
+Bu değerler belirli kullanıcı değerleriyle eşlenir:
+
+* **-2** veya **65534** (hiç kimse)
+* **-1** veya **65535** (erişim yok)
 * **0** (ayrıcalıksız kök)
+
+Depolama sisteminizin özel anlamlara sahip başka değerleri olabilir.
 
 ## <a name="update-access-policies"></a>Erişim ilkelerini güncelleştirme
 

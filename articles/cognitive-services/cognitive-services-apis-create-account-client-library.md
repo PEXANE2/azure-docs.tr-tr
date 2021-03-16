@@ -8,21 +8,21 @@ author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: quickstart
-ms.date: 09/14/2020
+ms.date: 03/15/2021
 ms.author: pafarley
 zone_pivot_groups: programming-languages-set-ten
-ms.openlocfilehash: 1fd748a0184c1718ac9450aaca3e2db1a185051a
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: e042ac263d3a30a9790ba6a3a3d404e5e9cb9aad
+ms.sourcegitcommit: 66ce33826d77416dc2e4ba5447eeb387705a6ae5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94368959"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103472162"
 ---
 # <a name="quickstart-create-a-cognitive-services-resource-using-the-azure-management-client-library"></a>Hızlı başlangıç: Azure Yönetim istemci kitaplığını kullanarak bilişsel hizmetler kaynağı oluşturma
 
 Azure Yönetim istemci kitaplığını kullanarak Azure bilişsel hizmetler kaynaklarını oluşturmak ve yönetmek için bu hızlı başlangıcı kullanın.
 
-Azure bilişsel hizmetler, REST API 'lerle bulut tabanlı hizmetlerdir ve geliştiricilerin doğrudan yapay zeka (AI) veya veri bilimi becerileri veya bilgi sahibi olmadan uygulamalara bilişsel zeka bilgileri oluşturmalarına yardımcı olacak istemci kitaplığı SDK 'Ları. Azure bilişsel hizmetler, geliştiricilerin kendi uygulamalarına kolayca bilişsel özellikler eklemesine, duymasına, konuşmasına, anlamasına ve hatta başlayabilmesine olanak tanıyan bilişsel çözümler sunar.
+Azure bilişsel hizmetler, geliştiricilerin uygulamalarına bilişsel zeka bilgileri oluşturmalarına yardımcı olacak REST API 'Ler ve istemci kitaplıkları içeren bir bulut tabanlı hizmetler ailesidir. Geliştiricilere, başarılı olmak için doğrudan yapay zeka (AI) veya veri bilimi becerileri veya bilgi gerekmez. Azure bilişsel hizmetler, geliştiricilerin kendi uygulamalarına kolayca bilişsel özellikler eklemesine, duymasına, konuşmasına, anlamasına ve hatta başlayabilmesine olanak tanıyan bilişsel çözümler sunar.
 
 Tekil AI Hizmetleri, Azure aboneliğinizde oluşturduğunuz Azure [kaynakları](../azure-resource-manager/management/manage-resources-portal.md) tarafından temsil edilir. Bir kaynak oluşturduktan sonra, uygulamalarınızın kimliğini doğrulamak için oluşturulan anahtarları ve uç noktayı kullanabilirsiniz.
 

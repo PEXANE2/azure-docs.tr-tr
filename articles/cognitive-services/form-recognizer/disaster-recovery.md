@@ -2,19 +2,19 @@
 title: Azure form tanıyıcı için olağanüstü durum kurtarma Kılavuzu
 titleSuffix: Azure Cognitive Services
 description: Form tanıyıcı kaynaklarınızı yedeklemek için model kopyalama API 'sini nasıl kullanacağınızı öğrenin.
-author: PatrickFarley
+author: laujan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: how-to
-ms.date: 05/27/2020
-ms.author: pafarley
-ms.openlocfilehash: 0343402d92498bff56250027086cbf2ceb258f0f
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.date: 03/15/2021
+ms.author: lajanuar
+ms.openlocfilehash: b5eb776a7807f48ae6c1a0e3c5879da1f6823830
+ms.sourcegitcommit: 3ea12ce4f6c142c5a1a2f04d6e329e3456d2bda5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102427173"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103466924"
 ---
 # <a name="back-up-and-recover-your-form-recognizer-models"></a>Form tanıyıcı modellerinizi yedekleme ve kurtarma
 
@@ -39,9 +39,6 @@ Uygulamanız veya işiniz, form tanıyıcı özel modelinin kullanımına bağı
 1. İlk &mdash; olarak, kopyalanmış modeli alacak kaynak olan hedef kaynağa bir kopya yetkilendirme isteği verirsiniz. Yeni oluşturulan hedef modelin URL 'sini geri alırsınız ve bu, kopyalanmış verileri alır.
 1. Sonra kopyalama isteğini, kopyalanacak modeli içeren kaynağı kaynak kaynağına gönderirsiniz &mdash; . İşlemin ilerlemesini izlemek için Sorgulayabileceğiniz bir URL 'YI geri alacaksınız.
 1. İşlem başarılı olana kadar ilerleme URL 'sini sorgulamak için kaynak kaynak kimlik bilgilerinizi kullanacaksınız. Yeni modelin durumunu almak için hedef kaynaktaki yeni model KIMLIĞINI de sorgulayabilirsiniz.
-
-> [!CAUTION]
-> Copy API 'SI Şu anda [oluşturulmuş özel modeller](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-2/operations/Compose)Için model kimliklerini desteklemiyor. Model oluşturma, v 2.1-Preview. 2 Önizleme sürümünde bir önizleme özelliğidir. 
 
 ## <a name="generate-copy-authorization-request"></a>Kopya yetkilendirme isteği oluştur
 
@@ -165,4 +162,4 @@ curl -i GET "https://<SOURCE_FORM_RECOGNIZER_RESOURCE_ENDPOINT>/formrecognizer/v
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Bu kılavuzda, özel modellerinizi ikincil form tanıyıcı kaynağına yedeklemek için kopyalama API 'sini nasıl kullanacağınızı öğrendiniz. Daha sonra, form tanıyıcı ile neler yapabileceğinizi görmek için API başvuru belgelerini inceleyin.
-* [REST API başvuru belgeleri](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/AnalyzeWithCustomForm)
+* [REST API başvuru belgeleri](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-3/operations/AnalyzeWithCustomForm)

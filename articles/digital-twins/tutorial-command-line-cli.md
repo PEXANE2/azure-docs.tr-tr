@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 2/26/2021
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: 16425c1f15b78e2d0aaa7a8a1f55ff47a44d56dd
-ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
+ms.openlocfilehash: d155d0c4a18b254f66ff5fb58ea91dbee22d2c34
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/14/2021
-ms.locfileid: "103464863"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103496618"
 ---
 # <a name="tutorial-create-an-azure-digital-twins-graph-using-the-azure-cli"></a>Öğretici: Azure CLı kullanarak Azure dijital TWINS grafiği oluşturma
 
@@ -64,7 +64,7 @@ Aşağıdaki Azure CLı komutunun çıkışında örneğiniz için bu değerleri
 az dt show -n <ADT_instance_name>
 ```
 
-:::image type="content" source="media/tutorial-command-line/cli/instance-details.png" alt-text="Az DT Show komutunun çıkışını gösteren Cloud Shell pencere. Ana bilgisayar adı alanı ve abonelik KIMLIĞI (kimlik alanının parçası) vurgulanır.":::
+:::image type="content" source="media/tutorial-command-line/cli/instance-details.png" alt-text="Az DT Show komutunun çıkışını gösteren Cloud Shell tarayıcı penceresinin ekran görüntüsü. Ana bilgisayar adı alanı ve abonelik KIMLIĞI (kimlik alanının parçası) vurgulanır.":::
 
 ## <a name="model-a-physical-environment-with-dtdl"></a>DTDL ile fiziksel ortam modelleme
 
@@ -87,7 +87,7 @@ Modelleri tasarladıktan sonra Azure dijital TWINS örneğinizi yüklemeniz gere
 
 1. Cloud Shell kullanarak modeller eklemek için, dosyaları kullanan Cloud Shell komutunu çalıştırdığınızda dosyaların kullanılabilmesi için model dosyalarınızı Cloud Shell depolamasına yüklemeniz gerekir. Bunu yapmak için "dosyaları karşıya yükle/Indir" simgesini seçin ve "karşıya yükle" yi seçin.
 
-    :::image type="content" source="media/how-to-set-up-instance/cloud-shell/cloud-shell-upload.png" alt-text="Karşıya yükleme simgesinin seçimini gösteren Cloud Shell pencere":::
+    :::image type="content" source="media/how-to-set-up-instance/cloud-shell/cloud-shell-upload.png" alt-text="Karşıya yükleme simgesinin seçimini gösteren Cloud Shell tarayıcı penceresinin ekran görüntüsü.":::
     
     Makinenizde dosya *Room.js* gidin ve "Aç" ı seçin. Daha sonra *Floor.js* için bu adımı tekrarlayın.
 
@@ -111,7 +111,7 @@ Modelleri tasarladıktan sonra Azure dijital TWINS örneğinizi yüklemeniz gere
     
     Sonuçlarda düzenlenmiş *Oda* modelini arayın:
     
-    :::image type="content" source="media/tutorial-command-line/cli/output-get-models.png" alt-text="Güncelleştirilmiş Oda modelini gösteren model listesi komutunun sonuçları" lightbox="media/tutorial-command-line/cli/output-get-models.png":::
+    :::image type="content" source="media/tutorial-command-line/cli/output-get-models.png" alt-text="Güncelleştirilmiş Oda modelini içeren model listesi komutunun sonucunu gösteren Cloud Shell ekran görüntüsü." lightbox="media/tutorial-command-line/cli/output-get-models.png":::
 
 ### <a name="errors"></a>Hatalar
 
@@ -159,7 +159,7 @@ Dijital bir ikizi oluşturmak için [**az DT ikizi Create**](/cli/azure/ext/azur
     
     Sonuçlarda *room0*, *room1*, *floor0* ve *Floor1* TWINS ' i arayın. Bu sorgunun sonucunun bir kısmını gösteren bir alıntı aşağıda verilmiştir.
     
-    :::image type="content" source="media/tutorial-command-line/cli/output-query-all.png" alt-text="İkizi sorgusunun kısmi sonuçları, room0 ve room1 gösteriliyor" lightbox="media/tutorial-command-line/cli/output-query-all.png":::
+    :::image type="content" source="media/tutorial-command-line/cli/output-query-all.png" alt-text="Room0 ve room1 dahil olmak üzere ikizi sorgusunun kısmi sonucunu gösteren Cloud Shell ekran görüntüsü." lightbox="media/tutorial-command-line/cli/output-query-all.png":::
 
 ### <a name="modify-a-digital-twin"></a>Dijital ikizi değiştirme
 
@@ -181,7 +181,7 @@ Ayrıca, oluşturduğunuz bir ikizi özelliklerini de değiştirebilirsiniz.
     
     Bu komutun çıktısı, ikizi 'in geçerli bilgilerini gösterir ve sonucunda için yeni değeri görmeniz gerekir `RoomName` .
 
-    :::image type="content" source="media/tutorial-command-line/cli/output-update-twin.png" alt-text="PresidentialSuite mname 'i gösteren Update komutunun sonuçları" lightbox="media/tutorial-command-line/cli/output-update-twin.png":::
+    :::image type="content" source="media/tutorial-command-line/cli/output-update-twin.png" alt-text="PresidentialSuite mname öğesinin bir RoomName içeren Update komutunun sonucunu gösteren Cloud Shell ekran görüntüsü." lightbox="media/tutorial-command-line/cli/output-update-twin.png":::
 
 1. *Room0*'ın bilgilerini görmek için [**az DT ikizi Show**](/cli/azure/ext/azure-iot/dt/twin?view=azure-cli-latest&preserve-view=true#ext_azure_iot_az_dt_twin_show) komutunu çalıştırarak güncelleştirmeyi başarılı bir şekilde doğrulayabilirsiniz:
 
@@ -236,7 +236,7 @@ Bir ilişki eklemek için [**az DT ikizi Relationship Create**](/cli/azure/ext/a
 
 Bu öğreticide ayarladığınız TWINS ve ilişkiler aşağıdaki kavramsal grafiği oluşturur:
 
-:::image type="content" source="media/tutorial-command-line/app/sample-graph.png" alt-text="Relationship0 ile room0 arasında bağlanan floor0 ve Floor1 ile relationship1 arasında bağlanan bir grafik" border="false" lightbox="media/tutorial-command-line/app/sample-graph.png":::
+:::image type="content" source="media/tutorial-command-line/app/sample-graph.png" alt-text="Kavramsal grafiği gösteren bir diyagram. floor0, relationship0 ile room0 arasında bağlanır ve Floor1 relationship1 ile room1 arasında bağlanır." border="false" lightbox="media/tutorial-command-line/app/sample-graph.png":::
 
 ## <a name="query-the-twin-graph-to-answer-environment-questions"></a>Ortam sorularını yanıtlamak için ikizi grafiğini sorgulama
 
@@ -252,7 +252,7 @@ Azure dijital TWINS 'in ana özelliği, ortamınız hakkında soruları yanıtla
 
     Bu, ortamınızı bir bakışta almanıza olanak sağlar ve her şeyin Azure dijital TWINS 'in içinde olmasını istediğiniz şekilde gösterildiğinden emin olun. Bunun sonucu, her dijital ikizi ayrıntılarını içeren bir çıktıdır. Aşağıda bir alıntı verilmiştir:
 
-    :::image type="content" source="media/tutorial-command-line/cli/output-query-all.png" alt-text="İkizi sorgusunun kısmi sonuçları, room0 ve room1 gösteriliyor" lightbox="media/tutorial-command-line/cli/output-query-all.png":::
+    :::image type="content" source="media/tutorial-command-line/cli/output-query-all.png" alt-text="Room0 ve room1 dahil olmak üzere ikizi sorgusunun kısmi sonucunu gösteren Cloud Shell ekran görüntüsü." lightbox="media/tutorial-command-line/cli/output-query-all.png":::
 
     >[!TIP]
     >Bu, örnekte [*dijital TWINS oluştur*](#create-digital-twins) bölümünde kullandığınız komutun aynısını, örnekteki tüm Azure dijital TWINS sürümlerini bulmak için kullanabilirsiniz.
@@ -265,7 +265,7 @@ Azure dijital TWINS 'in ana özelliği, ortamınız hakkında soruları yanıtla
 
     Hangi bilgilerin temsil edildiği hakkında daha ayrıntılı bilgi edinmek için sorgunuzu belirli bir türden TWINS ile kısıtlayabilirsiniz. Bunun sonucu, *room0* ve *room1* gösterir, ancak *floor0* veya *Floor1* **göstermez (** Odalar, odaların değil, bu nedenle).
     
-    :::image type="content" source="media/tutorial-command-line/cli/output-query-model.png" alt-text="Yalnızca room0 ve room1 gösteren model sorgusunun sonuçları" lightbox="media/tutorial-command-line/cli/output-query-model.png":::
+    :::image type="content" source="media/tutorial-command-line/cli/output-query-model.png" alt-text="Yalnızca room0 ve room1 içeren model sorgusunun sonucunu gösteren Cloud Shell ekran görüntüsü." lightbox="media/tutorial-command-line/cli/output-query-model.png":::
 
 1. ***Floor0* üzerindeki tüm odalar nelerdir?** (ilişkiye göre sorgulama)
 
@@ -275,7 +275,7 @@ Azure dijital TWINS 'in ana özelliği, ortamınız hakkında soruları yanıtla
 
     TWINS 'in nasıl bağlı olduğu hakkında bilgi edinmek veya sorgunuzu belirli bir alanla kısıtlamak için grafiğinizde ilişkiler temelinde sorgulama yapabilirsiniz. Yalnızca *room0* *floor0*, bu nedenle sonuçtaki tek yer.
 
-    :::image type="content" source="media/tutorial-command-line/cli/output-query-relationship.png" alt-text="İlişki sorgusunun sonuçları, room0 gösteriliyor" lightbox="media/tutorial-command-line/cli/output-query-relationship.png":::
+    :::image type="content" source="media/tutorial-command-line/cli/output-query-relationship.png" alt-text="Room0 içeren ilişki sorgusunun sonucunu gösteren Cloud Shell ekran görüntüsü." lightbox="media/tutorial-command-line/cli/output-query-relationship.png":::
 
     > [!NOTE]
     > İkizi 'ın KIMLIĞI (Yukarıdaki sorguda *floor0* gibi), meta veri alanı kullanılarak sorgulandığına dikkat edin `$dtId` . 
@@ -290,7 +290,7 @@ Azure dijital TWINS 'in ana özelliği, ortamınız hakkında soruları yanıtla
 
     Ortamınızda dikkat etmeniz gerekebilecek aykırı değerleri bulma dahil olmak üzere çeşitli soruları yanıtlamak için, özellikleri temel alarak grafik sorgulama yapabilirsiniz. Diğer karşılaştırma işleçleri ( *<* , *>* , *=* veya *! =*) de desteklenir. *room1* , 80 sıcaklığını içerdiğinden burada sonuçlarda görüntülenir.
 
-    :::image type="content" source="media/tutorial-command-line/cli/output-query-property.png" alt-text="Yalnızca room1 gösteren özellik sorgusunun sonuçları" lightbox="media/tutorial-command-line/cli/output-query-property.png":::
+    :::image type="content" source="media/tutorial-command-line/cli/output-query-property.png" alt-text="Yalnızca room1 içeren özellik sorgusunun sonucunu gösteren Cloud Shell ekran görüntüsü." lightbox="media/tutorial-command-line/cli/output-query-property.png":::
 
 1. **75 üzerindeki sıcaklığa sahip *floor0* üzerindeki tüm odalar nelerdir?** (bileşik sorgu)
 
@@ -300,7 +300,7 @@ Azure dijital TWINS 'in ana özelliği, ortamınız hakkında soruları yanıtla
 
     SQL 'de olduğu gibi önceki sorguları,, gibi Birleşik işleçler kullanarak da birleştirebilirsiniz `AND` `OR` `NOT` . Bu sorgu `AND` , önceki ikizi sıcaklıklar hakkında daha belirgin bir sorgu oluşturmak için kullanır. Sonuç artık yalnızca, *floor0* üzerinde olan 75 üzerinde sıcaklık olan odaları (Bu durumda, bunlardan hiçbiri) içerir. Sonuç kümesi boş.
 
-    :::image type="content" source="media/tutorial-command-line/cli/output-query-compound.png" alt-text="Bileşik sorgunun sonuçları, sonuç yok gösteriliyor" lightbox="media/tutorial-command-line/cli/output-query-compound.png":::
+    :::image type="content" source="media/tutorial-command-line/cli/output-query-compound.png" alt-text="Hiçbir öğe içermeyen bileşik sorgunun sonucunu gösteren Cloud Shell ekran görüntüsü." lightbox="media/tutorial-command-line/cli/output-query-compound.png":::
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 

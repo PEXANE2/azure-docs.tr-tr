@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/07/2019
 ms.author: mlottner
-ms.openlocfilehash: 04fe87cd69efc4c064b8fbdc596a5f9e187abbb1
-ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
+ms.openlocfilehash: bced45474a3a851bc5785f662c0b2e50ae3a380c
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100102249"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103491087"
 ---
 # <a name="azure-defender-for-iot-baseline-and-custom-checks"></a>IoT için Azure Defender temel ve özel denetimler
 
@@ -42,7 +42,7 @@ Taban çizgisi özel denetimleri, cihazın **modül kimliği ikizi** kullanarak 
 
 1. Ana **hat özel denetim** dosyasını cihaza yükleyin.
 
-1. Güvenlik modülüne temel özellikler ekleyin ve **Kaydet**' e tıklayın.
+1. Defender-IoT-mikro-Agent öğesine temel özellikler ekleyin ve **Kaydet**' e tıklayın.
 
 ### <a name="baseline-custom-check-file-example"></a>Temel özel denetim dosyası örneği
 
@@ -66,7 +66,7 @@ Temel özel denetimleri yapılandırmak için:
 
 ## <a name="baseline-custom-check-properties"></a>Taban çizgisi özel denetim özellikleri
 
-| Name| Durum | Geçerli değerler| Varsayılan değerler| Description |
+| Name| Durum | Geçerli değerler| Varsayılan değerler| Açıklama |
 |------|-----|------|-----|-----|
 |baselineCustomChecksEnabled|Gerekli: true |Geçerli değerler: **Boolean** |Varsayılan değer: **false** |Yüksek öncelikli iletiler gönderilmeden önce en uzun zaman aralığı.|
 |baselineCustomChecksFilePath |Gerekli: true|Geçerli değerler: **String**, **null** |Varsayılan değer: **null** |Taban çizgisi XML yapılandırmasının tam yolu|

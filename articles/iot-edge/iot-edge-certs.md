@@ -9,14 +9,16 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mqtt
-ms.openlocfilehash: 9b066dfd260a18f35149822b4107ea2c37db931c
-ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
+ms.openlocfilehash: ffe2f2b7f94d546cdfe393170da2fd2ca6ac0149
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/12/2021
-ms.locfileid: "103200246"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103491002"
 ---
 # <a name="understand-how-azure-iot-edge-uses-certificates"></a>Azure IoT Edge sertifikaları nasıl kullandığını anlayın
+
+[!INCLUDE [iot-edge-version-all-supported](../../includes/iot-edge-version-all-supported.md)]
 
 IoT Edge sertifikalar, modüller ve aşağı akış IoT cihazları tarafından, [IoT Edge merkezi](iot-edge-runtime.md#iot-edge-hub) çalışma zamanı modülünün kimliğini ve yasallığını doğrulamak için kullanılır. Bu doğrulamalar, çalışma zamanı, modüller ve IoT cihazları arasında TLS (Aktarım Katmanı Güvenliği) güvenli bağlantısını etkinleştirir. IoT Hub benzer şekilde, IoT Edge IoT aşağı akış (veya yaprak) cihazlarından ve IoT Edge modüllerden güvenli ve şifreli bir bağlantı gerektirir. Güvenli bir TLS bağlantısı kurmak için IoT Edge hub modülü, istemcilerin kimliğini doğrulayabilmesi için bir sunucu sertifika zinciri sunar.
 

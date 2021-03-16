@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/08/2021
+ms.date: 03/15/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: a43551adf8dbe1a03ac7f7b22d58d63aa8c2c503
-ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
+ms.openlocfilehash: 49abd2cc62ff7a2eab3d95265f3db8f5c894ebb6
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "102448430"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103488950"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-facebook-account-using-azure-active-directory-b2c"></a>Azure Active Directory B2C kullanarak kayıt ve Facebook hesabı ile oturum açma ayarlama
 
@@ -55,7 +55,8 @@ Azure Active Directory B2C (Azure AD B2C) ' de Facebook hesabı olan kullanıcı
 1. **Göster** ' i seçin ve **uygulama gizli anahtarı** değerini kopyalayın. Facebook 'ı kiracınızda bir kimlik sağlayıcısı olarak yapılandırmak için her ikisini de kullanabilirsiniz. **Uygulama gizli anahtarı** önemli bir güvenlik kimlik bilgileridir.
 1. Menüden, **Ürünler**' in yanındaki **artı** işaretini seçin. **Uygulamanıza ürün ekleme** altında, **Facebook oturumu** altında **Ayarla** ' yı seçin.
 1. Menüden **Facebook oturum açma**' yı seçin, **Ayarlar**' ı seçin.
-1. **Geçerli OAuth yeniden yönlendirme URI 'lerinde**, girin `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp` . `your-tenant-name`Kiracınızın adıyla değiştirin. Sayfanın alt kısmındaki **Değişiklikleri Kaydet** ' i seçin.
+1. **Geçerli OAuth yeniden yönlendirme URI 'lerinde**, girin `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp` . [Özel bir etki alanı](custom-domain.md)kullanıyorsanız, girin `https://your-domain-name/your-tenant-name.onmicrosoft.com/oauth2/authresp` . `your-tenant-name`, Kiracınızın adıyla ve `your-domain-name` özel etki alanınız ile değiştirin. 
+1. Sayfanın alt kısmındaki **Değişiklikleri Kaydet** ' i seçin.
 1. Facebook uygulamanızı Azure AD B2C için kullanılabilir hale getirmek için sayfanın sağ üst kısmındaki durum seçiciyi seçin ve uygulamayı ortak hale **getirmek için açın** , sonra **Mod Değiştir**' i seçin.  Bu noktada durum, **geliştirme aşamasında** **canlı** olarak değiştirilmelidir.
 
 ::: zone pivot="b2c-user-flow"

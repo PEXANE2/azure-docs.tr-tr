@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/08/2021
+ms.date: 03/15/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: ce5e8cfda4a9f51a90c8f26133a710f4d1c258b6
-ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
+ms.openlocfilehash: dd87b58c604b0bb2141c29d3b2227e9a81668a75
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "102448277"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103488831"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-linkedin-account-using-azure-active-directory-b2c"></a>Azure Active Directory B2C kullanarak bir LinkedIn hesabı ile kaydolma ve oturum açma ayarlama
 
@@ -43,8 +43,8 @@ Azure Active Directory B2C (Azure AD B2C) ' de LinkedIn hesabı olan kullanıcı
 1. **Uygulama adı**, **LinkedIn sayfası**, **Gizlilik ilkesi URL 'si** ve **uygulama logosu** girin.
 1. LinkedIn **API kullanım koşullarını** kabul edin ve **uygulama oluştur**' a tıklayın.
 1. **AUTH** sekmesini seçin. **Kimlik doğrulama anahtarları**' nın altında, **Istemci kimliği** ve **istemci parolası** değerlerini kopyalayın. Bunları kiracınızda bir kimlik sağlayıcısı olarak yapılandırmak için her ikisine de ihtiyacınız olacak. **Istemci parolası** önemli bir güvenlik kimlik bilgileridir.
-1. **Uygulamanızın yetkili yeniden yönlendirme URL 'lerinin** yanındaki Düzenle kalem ' i seçin ve ardından **yeniden yönlendirme URL 'si Ekle**' yi seçin. `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp` `your-tenant-name` Kiracınızın adıyla değiştirin. Kiracı, Azure AD B2C büyük harfle tanımlansa bile kiracı adınızı girerken tüm küçük harfleri kullanmanız gerekir. **Güncelleştir**’i seçin.
-2. Varsayılan olarak, LinkedIn uygulamanız oturum açma ile ilgili kapsamlar için onaylanmamış değildir. Bir gözden geçirme istemek için, **Ürünler** sekmesini seçin ve ardından **LinkedIn ile oturum aç**' ı seçin. İnceleme tamamlandığında, uygulamanıza gereken kapsamlar eklenir.
+1. **Uygulamanızın yetkili yeniden yönlendirme URL 'lerinin** yanındaki Düzenle kalem ' i seçin ve ardından **yeniden yönlendirme URL 'si Ekle**' yi seçin. `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp` yazın. [Özel bir etki alanı](custom-domain.md)kullanıyorsanız, girin `https://your-domain-name/your-tenant-name.onmicrosoft.com/oauth2/authresp` . `your-tenant-name`, Kiracınızın adıyla ve `your-domain-name` özel etki alanınız ile değiştirin. Kiracı, Azure AD B2C büyük harfle tanımlansa bile kiracı adınızı girerken tüm küçük harfleri kullanmanız gerekir. **Güncelleştir**’i seçin.
+1. Varsayılan olarak, LinkedIn uygulamanız oturum açma ile ilgili kapsamlar için onaylanmamış değildir. Bir gözden geçirme istemek için, **Ürünler** sekmesini seçin ve ardından **LinkedIn ile oturum aç**' ı seçin. İnceleme tamamlandığında, uygulamanıza gereken kapsamlar eklenir.
    > [!NOTE]
    > Uygulamanız için şu anda izin verilen kapsamları, **OAuth 2,0 kapsamları** bölümündeki **AUTH** sekmesinde görebilirsiniz.
 

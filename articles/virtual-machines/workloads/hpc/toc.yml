@@ -28,6 +28,12 @@
               href: hbv2-series-overview.md
             - name: Performans
               href: hbv2-performance.md
+        - name: HBv3 serisi
+          items:
+            - name: Genel Bakış
+              href: hbv3-series-overview.md
+            - name: Performans
+              href: hbv3-performance.md
         - name: HC serisi
           items:
             - name: Genel Bakış

@@ -1,6 +1,6 @@
 ---
-title: Azure RTOS için güvenlik modülünü yapılandırma ve özelleştirme
-description: Azure RTOS için güvenlik modülünüzü yapılandırma ve özelleştirme hakkında bilgi edinin.
+title: Azure RTOS için Defender-IoT-Micro-Agent 'ı yapılandırma ve özelleştirme
+description: Azure RTOS için Defender-IoT-mikro-Agent uygulamanızı yapılandırma ve özelleştirme hakkında bilgi edinin.
 services: defender-for-iot
 ms.service: defender-for-iot
 documentationcenter: na
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/07/2021
 ms.author: shhazam
-ms.openlocfilehash: 524286fa7a923485d0085fb63f3ef9669db1a4d5
-ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
+ms.openlocfilehash: 874a783763882a28f2fe7078e3a264d09107808a
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "102449824"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103495105"
 ---
-# <a name="configure-and-customize-defender-iot-micro-agent-for-azure-rtos-ga"></a>Azure RTOS GA için Defender-IoT-Micro-Agent 'ı yapılandırma ve özelleştirme
+# <a name="configure-and-customize-defender-iot-micro-agent-for-azure-rtos-preview"></a>Azure RTOS için Defender-IoT-mikro-Agent 'ı yapılandırma ve özelleştirme (Önizleme)
 
 Bu makalede, Azure RTOS cihazınız için Defender-IoT-mikro-Agent ' ı ağınızı, bant genişliğini ve bellek gereksinimlerinizi karşılayacak şekilde yapılandırma açıklanmaktadır.
 
@@ -89,5 +89,6 @@ Cihaz olaylarını ve etkinliklerini araştırmak için Log Analytics etkinleşt
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Azure RTOS [güvenlik uyarıları ve önerileri](concept-rtos-security-alerts-recommendations.md) Için güvenlik modülünü gözden geçirin ve özelleştirin
-- Gerektiğinde [Azure RTOS API 'Sinin güvenlik modülüne](azure-rtos-security-module-api.md) bakın.
+
+- Azure RTOS [güvenlik uyarıları ve önerileri](concept-rtos-security-alerts-recommendations.md) için Defender-IoT-mikro-Agent ' ı inceleyin ve özelleştirin
+- Gerektiğinde [Azure RTOS API 'si Için Defender-IoT-mikro-Agent](azure-rtos-security-module-api.md) bölümüne bakın.

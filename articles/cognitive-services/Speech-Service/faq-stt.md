@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 02/01/2021
 ms.author: panosper
-ms.openlocfilehash: 1ebba3231a7b3a86b98bcc14d1257412d1557ff3
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: bcb4408df08f3854b067c8b805b78433a3d5075c
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101738200"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103491257"
 ---
 # <a name="speech-to-text-frequently-asked-questions"></a>Konuşmayı metne sık sorulan sorular
 
@@ -57,7 +57,7 @@ Diğer sonuçlar büyük olasılıkla daha kötüdir ve tam büyük harfe ve nok
 
 **S: neden farklı temel modeller var?**
 
-Y **: konuşma** hizmetinde birden fazla temel model arasından seçim yapabilirsiniz. Her model adı, eklendiği tarihi içerir. Özel bir model eğitimi başlattığınızda en iyi doğruluğu elde etmek için en son modeli kullanın. Yeni bir model kullanılabilir hale geldiğinde, daha eski temel modeller hala bir süre için kullanılabilir. Devre dışı bırakılana kadar çalıştığınız modeli kullanmaya devam edebilirsiniz (bkz. [model yaşam döngüsü](custom-speech-overview.md#model-lifecycle)). Daha iyi doğruluk için en son temel modele geçmeniz hala önerilir.
+Y **: konuşma** hizmetinde birden fazla temel model arasından seçim yapabilirsiniz. Her model adı, eklendiği tarihi içerir. Özel bir model eğitimi başlattığınızda en iyi doğruluğu elde etmek için en son modeli kullanın. Yeni bir model kullanılabilir hale geldiğinde, daha eski temel modeller hala bir süre için kullanılabilir. Devre dışı bırakılana kadar çalıştığınız modeli kullanmaya devam edebilirsiniz (bkz. [model ve uç nokta yaşam döngüsü](./how-to-custom-speech-model-and-endpoint-lifecycle.md)). Daha iyi doğruluk için en son temel modele geçmeniz hala önerilir.
 
 **S: var olan modelmi güncelleştirebilir (model yığınlama)?**
 
@@ -71,7 +71,7 @@ Eski veri kümesi ve yeni veri kümesi tek bir. zip dosyasında (akustik veriler
 
 Bir modeli uyardıysanız ve dağıttıysanız, bu dağıtım olduğu gibi kalır. Dağıtılmış modelin yetkisini alabilir ve temel modelin daha yeni sürümünü kullanarak readapt ve daha iyi doğruluk için yeniden dağıtabilirsiniz.
 
-Temel modeller ve özel modeller bir süre sonra kullanımdan kaldırılacaktır (bkz. [model yaşam döngüsü](custom-speech-overview.md#model-lifecycle)).
+Temel modeller ve özel modeller bir süre sonra kullanımdan kaldırılacaktır (bkz. [model ve uç nokta yaşam döngüsü](./how-to-custom-speech-model-and-endpoint-lifecycle.md)).
 
 **S: modelimi indirebilir ve yerel olarak çalıştırabilir miyim?**
 

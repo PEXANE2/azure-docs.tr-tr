@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/08/2021
+ms.date: 03/15/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 36bdda4165c7307eaa7837d6208952da7f1d115f
-ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
+ms.openlocfilehash: e2c82858b9f4b9846ff5371da347be942eed0a4f
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "102448379"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103488865"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-github-account-using-azure-active-directory-b2c"></a>Azure Active Directory B2C kullanarak bir GitHub hesabı ile kaydolma ve oturum açma ayarlama
 
@@ -43,7 +43,7 @@ Azure Active Directory B2C (Azure AD B2C) ' de bir GitHub hesabıyla oturum açm
 1. GitHub kimlik bilgilerinizle [GitHub Developer](https://github.com/settings/developers) 'da oturum açın.
 1. **OAuth uygulamaları** ' nı seçin ve ardından **Yeni OAuth uygulaması**' nı seçin.
 1. Bir **uygulama adı** ve **giriş sayfası URL 'si** girin.
-1. `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp` **Yetkilendirme geri çağırma URL 'sini** girin. `your-tenant-name`Azure AD B2C kiracınızın adıyla değiştirin. Kiracı, Azure AD B2C büyük harfle tanımlansa bile kiracı adınızı girerken tüm küçük harfleri kullanın.
+1. **Yetkilendirme geri çağırma URL 'si** için girin `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp` . [Özel bir etki alanı](custom-domain.md)kullanıyorsanız, girin `https://your-domain-name/your-tenant-name.onmicrosoft.com/oauth2/authresp` . `your-domain-name`Özel etki alanınız ile ve `your-tenant-name` kiracınızın adıyla değiştirin. Kiracı, Azure AD B2C büyük harfle tanımlansa bile kiracı adınızı girerken tüm küçük harfleri kullanın.
 1. **Uygulamayı kaydet**' e tıklayın.
 1. **ISTEMCI kimliği** ve **istemci parolası** değerlerini kopyalayın. Kimlik sağlayıcısını kiracınıza eklemek için her ikisine de ihtiyacınız vardır.
 

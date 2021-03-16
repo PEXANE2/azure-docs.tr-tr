@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 03/31/2020
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: 8d518d540e50d96486fa98eea3c3267685776668
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: c2c2b57ebf4e2a5cd96efce49da87cf42929e96c
+ms.sourcegitcommit: 66ce33826d77416dc2e4ba5447eeb387705a6ae5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101706291"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103472054"
 ---
 # <a name="natural-language-support-for-azure-cognitive-services"></a>Azure bilişsel hizmetler için doğal dil desteği
 
@@ -48,16 +48,6 @@ Bu bilişsel hizmetler dilden bağımsızdır ve insan diline göre sınırlamal
 * [Konuşma hizmeti: konuşmayı metne dönüştürme](./speech-service/language-support.md#speech-to-text)
 * [Konuşma hizmeti: metinden konuşmaya](./speech-service/language-support.md#text-to-speech)
 * [Konuşma hizmeti: konuşma çevirisi](./speech-service/language-support.md#speech-translation)
-
-## <a name="search"></a>Arayın
-
-* [Bing Özel Arama](./bing-custom-search/language-support.md)
-* [Bing Resim Arama](./bing-image-search/language-support.md)
-* [Bing Haber Arama](./bing-news-search/language-support.md)
-* [Bing Otomatik Öneri](./bing-autosuggest/language-support.md)
-* [Bing Yazım Denetimi](./bing-spell-check/language-support.md)
-* [Bing Görsel Arama](./bing-visual-search/language-support.md)
-* [Bing Web Araması](./bing-web-search/language-support.md)
 
 ## <a name="decision"></a>Karar
 

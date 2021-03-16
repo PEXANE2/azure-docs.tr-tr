@@ -2,23 +2,52 @@
 title: Form Tanıma'daki yenilikler
 titleSuffix: Azure Cognitive Services
 description: Form tanıyıcı API 'sindeki en son değişiklikleri anlayın.
-author: PatrickFarley
+author: laujan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 05/19/2020
-ms.author: pafarley
-ms.openlocfilehash: f194f0bc7ec8d0bf2265c0863f93bfd11337b5f4
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.author: lajanuar
+ms.openlocfilehash: 6760194fea71cd97b4d206ccd2ccc281e18ea279
+ms.sourcegitcommit: 3ea12ce4f6c142c5a1a2f04d6e329e3456d2bda5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101703397"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103467058"
 ---
+<!-- markdownlint-disable MD024 -->
 # <a name="whats-new-in-form-recognizer"></a>Form Tanıma'daki yenilikler
 
 Form tanıyıcı hizmeti sürekli olarak güncelleştirilir. Özellik geliştirmeleri, düzeltmeler ve belge güncelleştirmeleriyle güncel kalmak için bu makaleyi kullanın.
+
+## <a name="march-2021"></a>Mart 2021
+
+**Form tanıyıcı v 2.1 Genel Önizleme 3 artık kullanılabilir.** Aşağıdaki özellikler dahil olmak üzere v 2.1-Preview. 3 yayımlandı:
+
+- **Yeni önceden oluşturulmuş kimlik modeli** Yeni önceden oluşturulmuş KIMLIK modeli, müşterilerin kimlik almasını ve yapılandırılmış verileri işlemesini otomatik hale getirmenizi sağlar. Ad, Doğum tarihi, sorun tarihi, sona erme tarihi ve daha fazlası gibi, Passport ve ABD sürücü lisanslarından önemli bilgileri ayıklamak için KIMLIK anlama modellerini kullanarak güçlü optik karakter tanıma (OCR) olanaklarımızı birleştirir.
+
+  [Önceden oluşturulmuş KIMLIK modeli hakkında daha fazla bilgi edinin](concept-identification-cards.md)
+
+   :::image type="content" source="./media/id-canada-passport-example.png" alt-text="Passport örneği" lightbox="./media/id-canada-passport-example.png":::
+
+- **Önceden oluşturulmuş fatura modeli Için satır öğesi ayıklama** , önceden oluşturulmuş fatura modeli artık satır öğesi ayıklamayı destekliyor; Artık tam öğeleri ve bunların parça açıklamalarını, miktarını, miktarını, ürün KIMLIĞINI, tarihi ve daha fazlasını ayıklar. Basit bir API/SDK çağrısıyla, faturalardaki yararlı verileri, metin, tablo, anahtar-değer çiftleri ve satır öğelerinden ayıklayabilirsiniz.
+
+   [Önceden oluşturulmuş fatura modeli hakkında daha fazla bilgi edinin](concept-invoices.md)
+
+- **Denetimli tablo etiketleme ve eğitim, boş değer etiketleme** -form tanıyıcının son teknoloji ürünü [derin öğrenme otomatik tablo ayıklama özelliklerine](https://techcommunity.microsoft.com/t5/azure-ai/enhanced-table-extraction-from-documents-with-form-recognizer/ba-p/2058011)ek olarak, artık müşterilerin tabloları etiketlemesini ve eğmesini sağlar. Bu yeni sürüm, satır öğelerini/tabloları etiketleyip eğitme (dinamik ve sabit) ve anahtar-değer çiftlerini ve satır öğelerini ayıklamak için özel bir model eğitme özelliği içerir. Model eğitilirken, model, documentResults bölümünde JSON çıkışının bir parçası olarak satır öğelerini ayıklar.
+
+    :::image type="content" source="./media/table-labeling.png" alt-text="Tablo etiketleme" lightbox="./media/table-labeling.png":::
+
+    Tabloları etiketlemeye ek olarak, artık boş değerleri ve bölgeleri etiketleyerek. eğitim kümesi içindeki bazı belgeler belirli alanlar için değer yoksa, modelinizin analiz edilecek belgelerden değerleri doğru bir şekilde ayıklamayı bilmesi için bunu kullanabilirsiniz.
+
+- **66 yeni dil desteği** -form tanıyıcısının Düzen API 'Si ve özel modeller artık 73 dillerini destekliyor.
+
+  [Form tanıyıcının dil desteği hakkında daha fazla bilgi edinin](language-support.md)
+
+- **Doğal okuma sırası, el yazısı sınıflandırması ve sayfa seçimi** -Bu güncelleştirmeyle, metin satırı çıkışlarını varsayılan soldan sağa ve yukarıdan aşağıya sıralama yerine doğal okuma sırasıyla almayı seçebilirsiniz. Yeni readingOrder Query parametresini kullanın ve daha kolay bir okuma sırası çıkışı için bunu "doğal" değere ayarlayın. Ayrıca, Latin dilleri için form tanıyıcı metin satırlarını el yazısı stili olarak sınıflandırır veya güvenli bir puan verir.
+
+- **Önceden oluşturulmuş makbuz modeli kalite iyileştirmeleri** Bu güncelleştirme, özellikle satır öğesi ayıklama etrafında, önceden oluşturulmuş makbuz modeli için çeşitli kalite iyileştirmeleri içerir.
 
 ## <a name="november-2020"></a>Kasım 2020
 
@@ -68,36 +97,33 @@ Form tanıyıcı hizmeti sürekli olarak güncelleştirilir. Özellik geliştirm
 - **[Önceden oluşturulmuş alındılar Için yeni yerel ayarlar](concept-receipts.md)** en-US, destek artık en-au, en-CA, en-GB, en-ın için kullanılabilir
 - İçin **kalite iyileştirmeleri** `Layout` , `Train Custom Model`  -  _Etiketler olmadan eğitme_ ve _etiketlerle eğitme_.
 
-
 **v 2.0** aşağıdaki güncelleştirmeyi içerir:
 
 - NET, Python, Java ve JavaScript için [istemci kitaplıkları](quickstarts/client-library.md) genel kullanılabilirliği olarak girilmiş. 
 
-
 GitHub 'da **yeni örnekler** mevcuttur. 
+
 - [Bilgi ayıklama Tarifimlerini-Forms PlayBook](https://github.com/microsoft/knowledge-extraction-recipes-forms) , gerçek form tanıyıcı müşteri görevlendirmelerinden en iyi uygulamaları toplar ve bu projeleri geliştirmede kullanılan kullanılabilir kod örnekleri, Yapılacaklar listeleri ve örnek işlem hatları sağlar. 
 - [Örnek etiketleme aracı](https://github.com/microsoft/OCR-Form-Tools) , yeni v 2.1 işlevlerini destekleyecek şekilde güncelleştirilmiştir. Aracı kullanmaya başlamak için bu [hızlı](quickstarts/label-tool.md) başlangıca bakın. 
 - [Akıllı bilgi noktası](https://github.com/microsoft/Cognitive-Samples-IntelligentKiosk/blob/master/Documentation/FormRecognizer.md) formu tanıyıcı örneği, `Analyze Receipt` Etiketler olmadan tümleştirme ve `Train Custom Model`  -  _eğitme_ yöntemini gösterir.
 
-
-
 ## <a name="july-2020"></a>Temmuz 2020
 
 ### <a name="new-features"></a>Yeni özellikler
-
+<!-- markdownlint-disable MD004 -->
 * **v 2.0 başvurusu kullanılabilir** - [.net](/dotnet/api/overview/azure/ai.formrecognizer-readme), [Python](/python/api/overview/azure/), [Java](/java/api/overview/azure/ai-formrecognizer-readme)ve [JavaScript](/javascript/api/overview/azure/)için [v 2.0 API başvurusunu](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/AnalyzeWithCustomForm) ve güncelleştirilmiş SDK 'ları görüntüleyin.
 * **Tablo geliştirmeleri ve ayıklama geliştirmeleri** -özellikle, _Etiketler olmadan özel eğilelerde_ Tablo üstbilgilerini ve yapıları öğrenme özelliğini içeren doğruluk iyileştirmeleri ve tablo dışlamaları geliştirmeleri içerir. 
 
 * **Para birimi desteği** -genel para birimi simgelerinin algılanması ve ayıklanması.
 * **Azure gov** -form tanıyıcı artık Azure gov 'de de kullanılabilir.
 * **Gelişmiş güvenlik özellikleri**: 
-   * **Kendi anahtar** formu tanıyıcı, buluta kalıcı hale geldiğinde verilerinizi otomatik olarak şifreler ve kuruluşunuzun güvenlik ve uyumluluk taahhütlerinizi karşılamanıza yardımcı olur. Aboneliğiniz varsayılan olarak Microsoft tarafından yönetilen şifreleme anahtarlarını kullanır. Ayrıca, aboneliğinizi kendi şifreleme anahtarlarınız ile yönetebilirsiniz. [Kendi anahtarını getir (BYOK) olarak da bilinen, müşteri tarafından yönetilen anahtarlar](./encrypt-data-at-rest.md), erişim denetimlerini oluşturma, döndürme, devre dışı bırakma ve iptal etme için daha fazla esneklik sunar. Verilerinizi korumak için kullanılan şifreleme anahtarlarını da denetleyebilirsiniz.  
-   * **Özel uç noktalar** – [özel bir bağlantı üzerinden verilerinize güvenli](../../private-link/private-link-overview.md) bir şekilde erişmek için bir sanal ağ (VNet) sağlar.
-
+  * **Kendi anahtar** formu tanıyıcı, buluta kalıcı hale geldiğinde verilerinizi otomatik olarak şifreler ve kuruluşunuzun güvenlik ve uyumluluk taahhütlerinizi karşılamanıza yardımcı olur. Aboneliğiniz varsayılan olarak Microsoft tarafından yönetilen şifreleme anahtarlarını kullanır. Ayrıca, aboneliğinizi kendi şifreleme anahtarlarınız ile yönetebilirsiniz. [Kendi anahtarını getir (BYOK) olarak da bilinen, müşteri tarafından yönetilen anahtarlar](./form-recognizer-encryption-of-data-at-rest.md), erişim denetimlerini oluşturma, döndürme, devre dışı bırakma ve iptal etme için daha fazla esneklik sunar. Verilerinizi korumak için kullanılan şifreleme anahtarlarını da denetleyebilirsiniz.  
+  * **Özel uç noktalar** – [özel bir bağlantı üzerinden verilerinize güvenli](../../private-link/private-link-overview.md) bir şekilde erişmek için bir sanal ağ (VNet) sağlar.
 
 ## <a name="june-2020"></a>Haziran 2020
 
 ### <a name="new-features"></a>Yeni özellikler
+
 * **Istemci SDK 'larına eklenen Copymodel API 'si** -artık bir abonelikten diğerine model kopyalamak Için istemci SDK 'larını kullanabilirsiniz. Bu özellikle ilgili genel bilgiler için bkz. [yedekleme ve kurtarma modelleri](./disaster-recovery.md) .
 * **Azure Active Directory tümleştirme** -artık SDK 'Larda form tanıyıcı istemci nesnelerinizin kimliğini doğrulamak IÇIN Azure AD kimlik bilgilerinizi kullanabilirsiniz.
 * **SDK 'ya özgü değişiklikler** -bu, hem küçük özellik eklemeleri hem de son değişiklikleri içerir. Daha fazla bilgi için bkz. SDK changelog.
@@ -109,24 +135,26 @@ GitHub 'da **yeni örnekler** mevcuttur.
 ## <a name="april-2020"></a>Nisan 2020
 
 ### <a name="new-features"></a>Yeni özellikler
+
 * **Form TANıYıCı API v 2.0 genel önizlemesi Için SDK desteği** -bu ay, form tanıyıcı v 2.0 (Önizleme) sürümü için bir önizleme SDK 'sı eklemek üzere hizmet desteğimizi genişlettik. Seçtiğiniz dille çalışmaya başlamak için aşağıdaki bağlantıları kullanın: 
-   * [.NET SDK](/dotnet/api/overview/azure/ai.formrecognizer-readme)
-   * [Java SDK](/java/api/overview/azure/ai-formrecognizer-readme)
-   * [Python SDK'sı](/python/api/overview/azure/ai-formrecognizer-readme)
-   * [JavaScript SDK'sı](/javascript/api/overview/azure/ai-form-recognizer-readme)
+  * [.NET SDK](/dotnet/api/overview/azure/ai.formrecognizer-readme)
+  * [Java SDK](/java/api/overview/azure/ai-formrecognizer-readme)
+  * [Python SDK'sı](/python/api/overview/azure/ai-formrecognizer-readme)
+  * [JavaScript SDK'sı](/javascript/api/overview/azure/ai-form-recognizer-readme)
 
   Yeni SDK, form tanıyıcı için v 2.0 REST API tüm özelliklerini destekler. Örneğin, etiketlere sahip veya olmayan bir modeli eğitebilir ve formlarınızdaki metin, anahtar değer çiftleri ve tablolar çıkarabilir, önceden oluşturulmuş alındılar hizmeti ile alış irsaliyelerinden verileri ayıklayabilir ve belgelerden düzen hizmetiyle birlikte metin ve tabloları ayıklayabilir. [SDK geri bildirim formu aracılığıyla SDK](https://aka.ms/FR_SDK_v1_feedback)'larda geri bildirimlerinizi paylaşabilirsiniz.
- 
+
 * **Özel modeli Kopyala** Artık yeni özel model Kopyala özelliğini kullanarak bölgeler ve abonelikler arasında modeller kopyalayabilirsiniz. Özel model Kopyala API 'sini çağırmadan önce, hedef kaynak uç noktasına karşı yetkilendirme kopyalama işlemini çağırarak hedef kaynağa kopyalamak için Yetkilendirmeyi edinmeniz gerekir.
-   * [Kopya yetkilendirmesi oluşturma](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/CopyCustomFormModelAuthorization) REST API
-   * [Özel bir modeli kopyalama](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/CopyCustomFormModel) REST API 
+
+  * [Kopya yetkilendirmesi oluşturma](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/CopyCustomFormModelAuthorization) REST API
+  * [Özel bir modeli kopyalama](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/CopyCustomFormModel) REST API 
 
 ### <a name="security-improvements"></a>Güvenlik iyileştirmeleri
 
 * Customer-Managed anahtarlar artık Formtanıyıcı için kullanılabilir. Daha fazla bilgi için bkz. [rest for form tanıyıcı Için veri şifreleme](./encrypt-data-at-rest.md).
 * Azure Active Directory ile Azure kaynaklarına erişim için Yönetilen kimlikler kullanın. Daha fazla bilgi için bkz. [yönetilen kimliklere erişim yetkisi verme](../authentication.md#authorize-access-to-managed-identities).
 
-## <a name="march-2020"></a>Mart 2020 
+## <a name="march-2020"></a>Mart 2020
 
 ### <a name="new-features"></a>Yeni özellikler
 

@@ -8,22 +8,22 @@ ms.author: shhazam
 ms.date: 1/21/2021
 ms.service: azure
 ms.topic: how-to
-ms.openlocfilehash: 2779a73d3a5f77e3a3b144309baf6d2788565443
-ms.sourcegitcommit: 4784fbba18bab59b203734b6e3a4d62d1dadf031
+ms.openlocfilehash: a33e7ff230292d4ceb14610e3cf00935dc1a67a0
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99809973"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103493178"
 ---
 # <a name="feature-support-and-retirement"></a>Özellik desteği ve kullanımdan kaldırma
 
 Bu makalede IoT için Azure Defender özellikleri ve Defender 'daki farklı özellikler için destek açıklanır.
 
-## <a name="defender-for-iot-c-c-and-edge-security-module-deprecation"></a>IoT C, C# ve Edge güvenlik modülü için Defender kullanımdan kaldırıldı
+## <a name="defender-for-iot-c-c-and-edge-defender-iot-micro-agent-deprecation"></a>IoT C, C# ve Edge Defender için Defender-IoT-Micro-Agent kullanımdan kaldırıldı
 
-Yeni mikro aracı geçerli C, C# ve Edge güvenlik modülünün yerini alır.  
+Yeni mikro aracı geçerli C, C# ve Edge Defender-IoT-Micro-Agent ' y i değiştirecek.  
 
-Yeni mikro Aracı, bilgi ve çıkış güvenlik modülü geliştirme, müşteriler ve iş ortakları geri bildirimlerinden toplanan ve dört önemli geliştirmelerden oluşan deneyimle ilgili bilgileri temel alır: 
+Yeni mikro Aracı, bilgi ve çıkış Defender-IoT-mikro aracı geliştirme, müşteriler ve iş ortakları geri bildirimlerinden toplanan ve dört önemli geliştirmelerden oluşan deneyimle ilgili bilgileri temel alır: 
 
 - **Derinlik güvenlik değeri**: yeni aracı, cihazın temel işlemlerine daha fazla görünürlük sağlayan ve daha iyi güvenlik kapsamına izin veren ana bilgisayar düzeyinde çalışır.
 

@@ -7,12 +7,12 @@ ms.date: 02/23/2020
 ms.author: rogarana
 ms.subservice: files
 ms.topic: conceptual
-ms.openlocfilehash: 2d4286cc8bc08eaf7d0b376a8b7789c8c8db183d
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
+ms.openlocfilehash: 81cabe8dea178b2988039640065cb0eabc3287af
+ms.sourcegitcommit: 66ce33826d77416dc2e4ba5447eeb387705a6ae5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102202646"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103470902"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-files"></a>Azure Dosyalar hakkında sık sorulan sorular (SSS)
 [Azure dosyaları](storage-files-introduction.md) , bulutta endüstri standardı [sunucu ILETI bloğu (SMB) protokolü](/windows/win32/fileio/microsoft-smb-protocol-and-cifs-protocol-overview) ve [ağ dosya sistemi (NFS) protokolü](https://en.wikipedia.org/wiki/Network_File_System) (Önizleme) aracılığıyla erişilebilen tam olarak yönetilen dosya paylaşımları sunar. Azure dosya paylaşımlarını bulutta veya Windows, Linux ve macOS 'ın şirket içi dağıtımlarında eşzamanlı olarak bağlayabilirsiniz. Ayrıca, verilerin kullanıldığı yere hızlı erişim için Azure Dosya Eşitleme kullanarak Windows Server makinelerinde Azure dosya paylaşımlarını önbelleğe alabilirsiniz.
@@ -308,6 +308,18 @@ Bu makalede, Azure dosyaları ile Azure Dosya Eşitleme kullanımı dahil olmak 
 **Dizin/dosya Windows ACL 'Lerini al/ayarla/Kopyala desteği için REST API 'Ler var mı?**
 
     Evet, [2019-07-07](/rest/api/storageservices/versioning-for-the-azure-storage-services#version-2019-07-07) (veya üzeri) REST API kullanılırken dizinler veya dosyalar Için NTFS ACL 'LERINI alan REST API 'leri destekliyoruz. Ayrıca REST tabanlı araçlarda kalıcı Windows ACL 'Leri de destekliyoruz: [AzCopy v 10.4 +](https://github.com/Azure/azure-storage-azcopy/releases).
+
+* <a id="ad-support-rest-apis"></a>
+**Azure AD veya AD kimlik bilgileriyle yeni bağlantı başlatmadan önce depolama hesabı anahtarı ile önbelleğe alınmış kimlik bilgilerini kaldırma ve mevcut SMB bağlantılarını silme**
+
+    Depolama hesabı anahtarıyla ilişkili kayıtlı kimlik bilgisini kaldırmak ve SMB bağlantısını kaldırmak için aşağıdaki iki adım işlemi izleyebilirsiniz: 
+    1. Kimlik bilgisini kaldırmak için Windows Cmd.exe 'de aşağıdaki cmdlet 'i çalıştırın. Bir tane bulamıyorsanız, kimlik bilgisini kalıcı etmeyeceğiniz ve bu adımı atlayabileceği anlamına gelir.
+    
+       cmdkey/delete: etki alanı: Target = Storage-Account-name.file.core.windows.net
+    
+    2. Dosya paylaşımıyla var olan bağlantıyı silin. Bağlama yolunu, bağlı sürücü harfi veya storage-account-name.file.core.windows.net yolu olarak belirtebilirsiniz.
+    
+       Net Use <sürücü-harfi/paylaşma-yol>/Delete
 
 ## <a name="network-file-system"></a>Ağ dosya sistemi
 

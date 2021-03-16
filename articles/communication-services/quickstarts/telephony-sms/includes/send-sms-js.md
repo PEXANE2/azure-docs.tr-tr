@@ -1,21 +1,21 @@
 ---
-title: dosya dahil etme
-description: dosya dahil etme
+title: include dosyası
+description: include dosyası
 services: azure-communication-services
 author: dademath
 manager: nimag
 ms.service: azure-communication-services
 ms.subservice: azure-communication-services
-ms.date: 07/28/2020
+ms.date: 03/10/2021
 ms.topic: include
 ms.custom: include file
 ms.author: dademath
-ms.openlocfilehash: ad8266d936c272ee2f6bad254738622c3f81bf03
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.openlocfilehash: fc20396053dee32ac7976139a634b4592389ab5f
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91757172"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103488352"
 ---
 SMS mesajları göndermek için Iletişim Hizmetleri JavaScript SMS istemci Kitaplığı ' nı kullanarak Azure Iletişim Hizmetleri ile çalışmaya başlayın.
 
@@ -25,7 +25,7 @@ Bu hızlı başlangıcı tamamlamak, Azure hesabınızda birkaç ABD Doları vey
 
 [API reference documentation](../../../references/overview.md) | [Library source code](https://github.com/Azure/azure-sdk-for-js-pr/tree/feature/communication/sdk/communication/communication-sms) | [Package (NPM)](https://www.npmjs.com/package/@azure/communication-sms) | [Samples](#todo-samples)-->
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - [Node.js](https://nodejs.org/) Etkin LTS ve bakım LTS sürümleri (8.11.1 ve 10.14.1 önerilir).
@@ -79,7 +79,7 @@ Aşağıdaki sınıflar ve arabirimler, Node.js için Azure Communication Servic
 
 **SmsClient** istemci kitaplığından içeri aktarın ve bağlantı dizeniz ile örneğini oluşturun. Aşağıdaki kod, adlı bir ortam değişkeninden kaynak için bağlantı dizesini alır `COMMUNICATION_SERVICES_CONNECTION_STRING` . [Kaynak bağlantı dizesini yönetme](../../create-communication-resource.md#store-your-connection-string)hakkında bilgi edinin.
 
-Aşağıdaki kodu **send-sms.js**ekleyin:
+Aşağıdaki kodu **send-sms.js** ekleyin:
 
 ```javascript
 const { SmsClient } = require('@azure/communication-sms');
@@ -94,7 +94,7 @@ const smsClient = new SmsClient(connectionString);
 
 ## <a name="send-an-sms-message"></a>SMS iletisi gönderme
 
-Yöntemini çağırarak SMS iletisi gönderin `send` . Bu kodu **send-sms.js**sonuna ekleyin:
+Yöntemini çağırarak SMS iletisi gönderin `send` . Bu kodu **send-sms.js** sonuna ekleyin:
 
 ```javascript
 async function main() {

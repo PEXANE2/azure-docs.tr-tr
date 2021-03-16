@@ -7,16 +7,19 @@ ms.service: azure-percept
 ms.topic: conceptual
 ms.date: 02/18/2021
 ms.custom: template-concept
-ms.openlocfilehash: c93ecdc138e757f84e995a69a6c3d7f1b5460abe
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: ba960465ab0ca8d5124d5882e3578e61fee2cf14
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102179383"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103490152"
 ---
 # <a name="azure-percept-dk-overview"></a>Azure Percept DK genel bakış
 
 Azure Percept DK, kavram ve ses AI kanıtı kavramlarının geliştirilmesi için tasarlanan bir Edge AI ve IoT geliştirme setidir. [Azure Percept Studio](./overview-azure-percept-studio.md) ve [Azure Percept sesiyle](./overview-azure-percept-audio.md)birleştirildiğinde, çok ÇEŞITLI Vision veya Audio AI uygulamaları için Edge AI çözümleri oluşturmaya yönelik güçlü, kullanımı kolay bir platform haline gelir. [Microsoft Online Store](https://go.microsoft.com/fwlink/p/?LinkId=2155270)'da satın alınabilir.
+
+> [!div class="nextstepaction"]
+> [Şimdi satın alın](https://go.microsoft.com/fwlink/p/?LinkId=2155270)
 
 :::image type="content" source="./media/overview-azure-percept-dk/dk-image.png" alt-text="Azure Percept DK cihazı.":::
 
@@ -52,4 +55,5 @@ Azure Percept DK, kavram ve ses AI kanıtı kavramlarının geliştirilmesi içi
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Microsoft Online Mağazası](https://go.microsoft.com/fwlink/p/?LinkId=2155270)'Nda bir Azure Percept dk siparişi.
+> [!div class="nextstepaction"]
+> [Microsoft Online Mağazası 'ndan bir Azure Percept DK satın alma](https://go.microsoft.com/fwlink/p/?LinkId=2155270)

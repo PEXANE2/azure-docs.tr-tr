@@ -6,12 +6,12 @@ ms.service: signalr
 ms.topic: conceptual
 ms.date: 08/05/2020
 ms.author: zhshang
-ms.openlocfilehash: 9d0e94cf2318db777bb44c15037f73531cd969fa
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 3c4d28addac0ecfc9605678582562550a1c96b8d
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100593316"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103491954"
 ---
 # <a name="messages-and-connections-in-azure-signalr-service"></a>Azure SignalR hizmetindeki mesajlar ve bağlantılar
 
@@ -48,9 +48,16 @@ A istemcisi, App Server 'a geçmeden diğer bir istemciye 1 KB 'lik bir ileti g�
 
 Azure SignalR hizmeti ile sunucu bağlantıları ve istemci bağlantıları vardır. Varsayılan olarak, her bir uygulama sunucusu hub başına beş ilk bağlantı ile başlar ve her istemcide bir istemci bağlantısı vardır.
 
-Azure portal gösterilen bağlantı sayısı hem sunucu bağlantılarını hem de istemci bağlantılarını içerir.
-
 Örneğin, iki uygulama sunucunuz olduğunu ve kodda beş hub tanımladığınızı varsayalım. Sunucu bağlantı sayısı 50 olacaktır: 2 App Servers * 5 hub *, hub başına 5 bağlantı.
+
+Azure portal gösterilen bağlantı sayısı sunucu bağlantılarını, istemci bağlantılarını, tanılama bağlantılarını ve canlı izleme bağlantılarını içerir. Bağlantı türleri aşağıdaki listede tanımlanmıştır:
+
+- **Sunucu bağlantısı**: Azure SignalR hizmetini ve uygulama sunucusunu bağlar.
+- **İstemci bağlantısı**: Azure SignalR hizmetini ve istemci uygulamasını bağlar.
+- **Tanılama bağlantısı**: daha ayrıntılı bir günlük üretebilen, performansı etkileyebilecek özel bir istemci bağlantısı türü. Bu tür bir istemci, sorun giderme için tasarlanmıştır.
+- **Canlı izleme bağlantısı**: canlı izleme uç noktasına bağlanır ve Azure SignalR hizmeti 'nin canlı izlemelerini alır. 
+ 
+Canlı izleme bağlantısının, istemci bağlantısı veya sunucu bağlantısı olarak sayılmadığını unutmayın. 
 
 ASP.NET SignalR sunucu bağlantılarını farklı bir şekilde hesaplar. Bu, tanımladığınız hublara ek olarak bir varsayılan Hub içerir. Varsayılan olarak, her uygulama sunucusunun beş daha fazla ilk sunucu bağlantısı olması gerekir. Varsayılan Hub için ilk bağlantı sayısı diğer hub 'larla tutarlı kalır.
 

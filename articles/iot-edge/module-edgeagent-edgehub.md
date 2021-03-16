@@ -8,14 +8,16 @@ ms.date: 08/31/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: fa7a56bcad067176d8f9805b418cca45ad144579
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 951111b217b7ace3f12676edf6febfa7266094df
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91978705"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103489957"
 ---
 # <a name="properties-of-the-iot-edge-agent-and-iot-edge-hub-module-twins"></a>IoT Edge Aracısı ve IoT Edge hub modülünün özellikleri TWINS
+
+[!INCLUDE [iot-edge-version-all-supported](../../includes/iot-edge-version-all-supported.md)]
 
 IoT Edge Aracısı ve IoT Edge hub 'ı IoT Edge çalışma zamanını oluşturan iki modüllerdir. Her çalışma zamanı modülünün sorumlulukları hakkında daha fazla bilgi için bkz. [Azure IoT Edge çalışma zamanını ve mimarisini anlayın](iot-edge-runtime.md).
 
@@ -39,7 +41,7 @@ IoT Edge Aracısı için ikizi modülü çağrılır `$edgeAgent` ve bir cihazda
 | Runtime. Settings. loggingOptions | IoT Edge aracı kapsayıcısı için günlük seçeneklerini içeren bir strıngiingjson. [Docker günlüğü seçenekleri](https://docs.docker.com/engine/admin/logging/overview/) | Hayır |
 | Runtime. Settings. registryCredentials<br>. {Registryıd}. Kullanıcı adı | Kapsayıcı kayıt defterinin Kullanıcı adı. Azure Container Registry için, Kullanıcı adı genellikle kayıt adıdır.<br><br> Tüm özel modül görüntüleri için kayıt defteri kimlik bilgileri gereklidir. | Hayır |
 | Runtime. Settings. registryCredentials<br>. {Registryıd}. parola | Kapsayıcı kayıt defteri için parola. | Hayır |
-| Runtime. Settings. registryCredentials<br>. {Registryıd}. adres | Kapsayıcı kayıt defterinin adresi. Azure Container Registry için, adres genellikle *{Registry Name}. azurecr. IO*olur. | Hayır |  
+| Runtime. Settings. registryCredentials<br>. {Registryıd}. adres | Kapsayıcı kayıt defterinin adresi. Azure Container Registry için, adres genellikle *{Registry Name}. azurecr. IO* olur. | Hayır |  
 | systemModules. edgeAgent. Type | "Docker" olmalıdır | Yes |
 | systemModules. edgeAgent. Settings. Image | IoT Edge aracısının görüntüsünün URI 'SI. Şu anda IoT Edge Aracısı kendisini güncelleştiremeyebilir. | Yes |
 | systemModules. edgeAgent. Settings<br>. createOptions | IoT Edge aracı kapsayıcısının oluşturulmasına yönelik seçenekleri içeren bir strıngiingjson. [Docker oluşturma seçenekleri](https://docs.docker.com/engine/api/v1.32/#operation/ContainerCreate) | Hayır |

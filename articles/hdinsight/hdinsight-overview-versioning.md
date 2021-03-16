@@ -3,14 +3,15 @@ title: Sürüm oluşturma-Azure HDInsight
 description: Azure HDInsight 'ta sürüm oluşturma 'nın nasıl çalıştığını öğrenin.
 ms.service: hdinsight
 ms.topic: conceptual
-ms.custom: deshriva
+author: deshriva
+ms.author: deshriva
 ms.date: 02/08/2021
-ms.openlocfilehash: c4dddeef5daf167eeef92532b61ed986861896e8
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 6db4c7856ebdf75d5bf94de1e3110bb25bc93e69
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101746365"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103493875"
 ---
 # <a name="how-versioning-works-in-hdinsight"></a>HDInsight 'ta sürüm oluşturma nasıl kullanılır
 

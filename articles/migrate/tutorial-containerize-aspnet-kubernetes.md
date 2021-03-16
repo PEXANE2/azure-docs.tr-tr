@@ -1,5 +1,5 @@
 ---
-title: ASP.NET uygulamalarını Azure Kubernetes 'e geçirme & Containerize
+title: Azure Uygulama Kapsayıcılama ASP.NET; ASP.NET uygulamalarının Azure Kubernetes 'e kapsayıcılama ve geçişi.
 description: 'Öğretici: ASP.NET uygulamalarını Azure Kubernetes hizmetine geçirme &.'
 services: ''
 author: rahugup
@@ -7,12 +7,12 @@ manager: bsiva
 ms.topic: tutorial
 ms.date: 3/2/2021
 ms.author: rahugup
-ms.openlocfilehash: 6be6db2048ac5e671d8ab988ac2e15c08e900193
-ms.sourcegitcommit: ec39209c5cbef28ade0badfffe59665631611199
+ms.openlocfilehash: 7c9b4032346e61eb3bfd21c0c4067e2364bc28af
+ms.sourcegitcommit: 3ea12ce4f6c142c5a1a2f04d6e329e3456d2bda5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/12/2021
-ms.locfileid: "103233676"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103466584"
 ---
 # <a name="containerize-aspnet-applications-and-migrate-to-azure-kubernetes-service"></a>ASP.NET uygulamaları Kapsayılaştırır ve Azure Kubernetes hizmetine geçiş yapın
 

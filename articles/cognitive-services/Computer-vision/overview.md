@@ -15,12 +15,12 @@ ms.custom:
 - cog-serv-seo-aug-2020
 - contperf-fy21q2
 keywords: bilgisayar görme, görüntü işleme uygulamaları, görüntü işleme hizmeti
-ms.openlocfilehash: 69edbf558b4bd452c67478bac828bfde26be5a70
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.openlocfilehash: 804dacc4351da9e04ac75b2484b4330901a69271
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99575949"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103488491"
 ---
 # <a name="what-is-computer-vision"></a>Görüntü İşleme nedir?
 
@@ -29,6 +29,12 @@ ms.locfileid: "99575949"
 Azure Görüntü İşleme Hizmeti, resimleri işleyen ve ilgilendiğiniz görsel özelliklere göre bilgileri döndüren gelişmiş algoritmalara erişmenizi sağlar. Örneğin, Görüntü İşleme bir görüntünün yetişkinlere yönelik içerik içerip içermediğini, belirli marka veya nesne bulmasını veya insan yüzlerini bulmanızı sağlayabilir.
 
 [İstemci kitaplığı SDK 'sı](./quickstarts-sdk/client-library.md) aracılığıyla veya [REST API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/5d986960601faab4bf452005) doğrudan çağırarak görüntü işleme uygulamalar oluşturabilirsiniz. Bu sayfa, Görüntü İşleme ile yapabileceklerinizi büyük ölçüde ele alır.
+
+Bu belge aşağıdaki makale türlerini içerir:
+* [Hızlı başlangıç](./quickstarts-sdk/client-library.md) , hizmete çağrı yapmanızı ve sonuçların kısa bir süre içinde elde etmenize olanak tanıyan adım adım yönergelerdir. 
+* [Nasıl yapılır kılavuzlarında](./Vision-API-How-to-Topics/HowToCallVisionAPI.md) , hizmeti daha belirli veya özelleştirilmiş yollarla kullanmaya yönelik yönergeler bulunur.
+* [Kavramsal makaleler](concept-recognizing-text.md) , hizmetin işlevselliği ve özellikleri hakkında ayrıntılı açıklamalar sağlar.
+* [Öğreticiler](./tutorials/storage-lab-tutorial.md) daha fazla iş çözümlerinde bu hizmeti bir bileşen olarak nasıl kullanacağınızı gösteren kılavuzlardır.
 
 ## <a name="optical-character-recognition-ocr"></a>Optik Karakter Tanıma (OCR)
 

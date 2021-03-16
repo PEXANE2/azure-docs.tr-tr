@@ -3,12 +3,12 @@ title: Visual Studio Code-Azure Işlevleri kullanarak Go veya Rust 'da işlev ol
 description: Azure Işlevleri özel işleyicisi olarak go işlevi oluşturmayı öğrenin ve ardından Visual Studio Code içindeki Azure Işlevleri uzantısını kullanarak yerel projeyi Azure Işlevleri 'nde sunucusuz barındırma olarak yayımlayın.
 ms.topic: quickstart
 ms.date: 12/4/2020
-ms.openlocfilehash: 1142ff76425e2e4bff0d3881be1378d9da07806e
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 8b53031315cce3651a2de581d71da6ef6fe909c1
+ms.sourcegitcommit: 66ce33826d77416dc2e4ba5447eeb387705a6ae5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101704744"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103470379"
 ---
 # <a name="quickstart-create-a-go-or-rust-function-in-azure-using-visual-studio-code"></a>Hızlı başlangıç: Visual Studio Code kullanarak Azure 'da Go veya Rust işlevi oluşturma
 
@@ -141,8 +141,8 @@ Bu bölümde, yerel bir Azure Işlevleri özel işleyiciler projesi oluşturmak 
 
     ```toml
     [dependencies]
-    warp = "0.2"
-    tokio = { version = "0.2", features = ["full"] }
+    warp = "0.3"
+    tokio = { version = "1", features = ["rt", "macros", "rt-multi-thread"] }
     ```
 
 1. *Src/main. RS* dosyasında aşağıdaki kodu ekleyin ve dosyayı kaydedin. Bu, Rust özel işleyiciniz.

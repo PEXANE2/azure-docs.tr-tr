@@ -209,6 +209,9 @@
           href: customize-ui-with-html.md
         - name: JavaScript ve sayfa düzenleri
           href: javascript-and-page-layout.md
+        - name: İframe ile Embedded oturum açma
+          displayName: iframe
+          href: embedded-login.md
         - name: Dil özelleştirme
           href: language-customization.md
           displayName: localization
@@ -420,11 +423,13 @@
           href: partner-whoiam.md
         - name: Zscaler
           href: partner-zscaler.md
-    - name: b2clogin.com kullanma
+    - name: Etki alanı adı
       items:
         - name: b2clogin.com genel bakışı
           href: b2clogin.md
-        - name: Web API’yi b2clogin.com’a geçirme
+        - name: Özel etki alanı yapılandırma
+          href: custom-domain.md
+        - name: Web API etki alanlarını yapılandırma
           href: multiple-token-endpoints.md
           displayName: 'migrate, b2clogin, owin'
     - name: Otomasyon

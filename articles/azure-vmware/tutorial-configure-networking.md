@@ -3,12 +3,12 @@ title: Öğretici-Azure 'da VMware özel bulutunuz için ağı yapılandırma
 description: Özel bulutunuzu Azure 'da dağıtmak için gereken ağı oluşturmayı ve yapılandırmayı öğrenin
 ms.topic: tutorial
 ms.date: 03/13/2021
-ms.openlocfilehash: 0fc934cfec17d8d3bb69c21d324f06bee3f9515c
-ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
+ms.openlocfilehash: c609d191191cd9de111e83fe62761b149405cccc
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/14/2021
-ms.locfileid: "103462381"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103494385"
 ---
 # <a name="tutorial-configure-networking-for-your-vmware-private-cloud-in-azure"></a>Öğretici: Azure 'da VMware özel bulutunuz için ağı yapılandırma
 
@@ -94,7 +94,7 @@ VCenter ve NSX Manager 'da oturum açmak için vCenter web istemcisinin ve NSX-T
 
 Azure VMware çözümünüz özel buluta gidin, **Yönet** bölümünde **kimlik**' i seçin, burada gereken bilgileri bulabilirsiniz.
 
-:::image type="content" source="./media/tutorial-access-private-cloud/generate-vcenter-nsxt-passwords.png" alt-text="VCenter ve NSX-T kimlik bilgileri ve Web istemcisi URL 'Lerinin ekran görüntüsü." border="true" lightbox="media/tutorial-access-private-cloud/generate-vcenter-nsxt-passwords.png":::
+:::image type="content" source="./media/tutorial-access-private-cloud/ss4-display-identity.png" alt-text="VCenter ve NSX-T kimlik bilgileri ve Web istemcisi URL 'Lerinin ekran görüntüsü." border="true" lightbox="media/tutorial-access-private-cloud/ss4-display-identity.png":::
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

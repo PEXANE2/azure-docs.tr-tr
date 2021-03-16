@@ -1,6 +1,6 @@
 ---
-title: Azure RTOS için Güvenlik Modülü API’si
-description: Azure RTOS için güvenlik modülü için başvuru API 'SI.
+title: Defender-IoT-mikro-aracı Azure RTOS API 'SI
+description: Azure RTOS için Defender-IoT-Micro-Agent için başvuru API 'SI.
 services: defender-for-iot
 ms.service: defender-for-iot
 documentationcenter: na
@@ -13,18 +13,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/07/2020
 ms.author: mlottner
-ms.openlocfilehash: cec28f9290808836ec2dfd334b23fe8c76df03fc
-ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
+ms.openlocfilehash: 9a285636ba10f7ca0668f597d0e9016cff73494a
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102120071"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103494301"
 ---
-# <a name="security-module-for-azure-rtos-api"></a>Azure RTOS için Güvenlik Modülü API’si 
+# <a name="defender-iot-micro-agent-for-azure-rtos-api-preview"></a>Defender-IoT-mikro-aracı Azure RTOS API (Önizleme)
 
-Bu API yalnızca Azure RTOS için güvenlik modülüyle kullanılmak üzere tasarlanmıştır. Ek kaynaklar için bkz. [Azure RTOS GitHub kaynağı Için güvenlik modülü](https://github.com/azure-rtos/azure-iot-preview/releases). 
+Bu API yalnızca Azure RTOS için Defender-IoT-mikro-Agent ile kullanılmaya yöneliktir. Ek kaynaklar için bkz. [Azure RTOS GitHub kaynağı Için Defender-IoT-Micro-Agent](https://github.com/azure-rtos/azure-iot-preview/releases). 
 
-## <a name="enable-security-module-for-azure-rtos"></a>Azure RTOS için güvenlik modülünü etkinleştir
+## <a name="enable-defender-iot-micro-agent-for-azure-rtos"></a>Azure RTOS için Defender-IoT-Micro-Agent ' ı etkinleştirme
 
 **nx_azure_iot_security_module_enable**
 
@@ -36,7 +36,7 @@ UINT nx_azure_iot_security_module_enable(NX_AZURE_IOT *nx_azure_iot_ptr);
 
 ### <a name="description"></a>Açıklama
 
-Bu yordam, Azure IoT güvenlik modülü alt sistemini sunar. Bir iç durum makinesi güvenlik olaylarının toplanmasını yönetir ve bunları Azure IoT Hub gönderir. Veri toplamayı yönetmek için yalnızca bir NX_AZURE_IOT_SECURITY_MODULE örneği gerekir ve gereklidir.
+Bu yordam, Azure IoT Defender-IoT-mikro-Agent alt sistemini sunar. Bir iç durum makinesi güvenlik olaylarının toplanmasını yönetir ve bunları Azure IoT Hub gönderir. Veri toplamayı yönetmek için yalnızca bir NX_AZURE_IOT_SECURITY_MODULE örneği gerekir ve gereklidir.
 
 ### <a name="parameters"></a>Parametreler
 
@@ -56,7 +56,7 @@ Bu yordam, Azure IoT güvenlik modülü alt sistemini sunar. Bir iç durum makin
 
 İş Parçacıkları
 
-## <a name="disable-azure-iot-security-module"></a>Azure IoT güvenlik modülünü devre dışı bırak
+## <a name="disable-azure-iot-defender-iot-micro-agent"></a>Azure IoT Defender-IoT-mikro-Agent ' ı devre dışı bırakma
 
 **nx_azure_iot_security_module_disable**
 
@@ -69,7 +69,7 @@ UINT nx_azure_iot_security_module_disable(NX_AZURE_IOT *nx_azure_iot_ptr);
 
 ### <a name="description"></a>Açıklama
 
-Bu yordam, Azure IoT güvenlik modülü alt sistemini devre dışı bırakır.
+Bu yordam, Azure IoT Defender-IoT-mikro-Agent alt sistemini devre dışı bırakır.
 
 ### <a name="parameters"></a>Parametreler
 
@@ -92,6 +92,6 @@ Bu yordam, Azure IoT güvenlik modülü alt sistemini devre dışı bırakır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure RTOS güvenlik modülünü kullanmaya başlama hakkında daha fazla bilgi edinmek için aşağıdaki makalelere bakın:
+Azure RTOS Defender-IoT-mikro-Agent ile çalışmaya başlama hakkında daha fazla bilgi edinmek için aşağıdaki makalelere bakın:
 
-- IoT RTOS güvenlik modülüne [genel bakış](iot-security-azure-rtos.md)Için Defender 'ı inceleyin.
+- IoT RTOS Defender-IoT-Micro-Agent [genel bakış](iot-security-azure-rtos.md)Için Defender 'ı inceleyin.

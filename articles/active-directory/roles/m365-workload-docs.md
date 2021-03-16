@@ -14,16 +14,16 @@ ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 310dd82f9a5f7f98fbca720b48212b7963e25a63
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.openlocfilehash: f56f8ac42f0db3d2cd27453cd023a2e869b0cde0
+ms.sourcegitcommit: 3ea12ce4f6c142c5a1a2f04d6e329e3456d2bda5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102551513"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103466091"
 ---
 # <a name="roles-for-microsoft-365-services-in-azure-active-directory"></a>Azure Active Directory Microsoft 365 hizmetleri için roller
 
-Microsoft 365 tüm ürünler, Azure Active Directory (Azure AD) yönetim rolleriyle yönetilebilir. Bazı ürünler Ayrıca bu ürüne özgü ek roller de sağlar. Her ürün tarafından desteklenen roller hakkında daha fazla bilgi için aşağıdaki tabloya bakın. [Azure Active Directory ' de rol temsili planlamada](concept-delegation.md), yetkilendirme sorunlarının Genel tartışmaları bulunabilir.
+Microsoft 365 tüm ürünler, Azure Active Directory (Azure AD) yönetim rolleriyle yönetilebilir. Bazı ürünler Ayrıca bu ürüne özgü ek roller de sağlar. Her ürün tarafından desteklenen roller hakkında daha fazla bilgi için aşağıdaki tabloya bakın. Rol güvenliği planlaması hakkında yönergeler için bkz. [Azure AD 'de karma ve bulut dağıtımları için ayrıcalıklı erişimin güvenliğini sağlama](security-planning.md).
 
 ## <a name="where-to-find-content"></a>İçeriğin nerede bulunacağı
 

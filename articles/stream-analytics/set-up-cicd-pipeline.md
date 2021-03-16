@@ -7,12 +7,12 @@ ms.author: sujie
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 09/10/2020
-ms.openlocfilehash: b601a3586cfa971b2e8337a914f4e10bb0178ba0
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: f62b4c354ffa90bf1a03651fccf8780074344e46
+ms.sourcegitcommit: 3ea12ce4f6c142c5a1a2f04d6e329e3456d2bda5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98014255"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103466431"
 ---
 # <a name="use-azure-devops-to-create-a-cicd-pipeline-for-a-stream-analytics-job"></a>Stream Analytics işi için bir CI/CD işlem hattı oluşturmak için Azure DevOps kullanın
 
@@ -56,6 +56,22 @@ Bu bölümde, derleme işlem hattı oluşturmayı öğreneceksiniz. Azure DevOps
 
    :::image type="content" source="media/set-up-cicd-pipeline/npm-config.png" alt-text="NPM görevi için yapılandırma girin":::
 
+Barındırılan Linux Aracısı kullanmanız gerekiyorsa aşağıdaki adımları kullanın:
+1.  **Aracı belirtiminizi** seçin
+   
+    :::image type="content" source="media/set-up-cicd-pipeline/select-linux-agent.png" alt-text="Aracı belirtimi seçme ekran görüntüsü.":::
+
+2.  **Görevler** sayfasında, **Aracı işi 1**' in yanındaki artı işaretini seçin. Görev aramasına *komut satırı* girin ve **komut satırı**' nı seçin.
+   
+    :::image type="content" source="media/set-up-cicd-pipeline/cmd-search.png" alt-text="CommandLine görevinin aranmasına ilişkin ekran görüntüsü. ":::
+
+3.  Göreve bir **görünen ad** verin. **komut** dosyasında aşağıdaki komutu girin. Kalan varsayılan seçenekleri bırakın.
+
+      ```bash
+      sudo npm install -g azure-streamanalytics-cicd --unsafe-perm=true --allow-root
+      ```
+      :::image type="content" source="media/set-up-cicd-pipeline/cmd-scripts.png" alt-text="Cmd görevi için betik girme ekran görüntüsü.":::
+
 ## <a name="add-a-build-task"></a>Derleme görevi ekleme
 
 1. **Değişkenler** sayfasında, işlem **hattı değişkenlerinde** **+ Ekle** ' yi seçin. Aşağıdaki değişkenleri ekleyin. Tercihinize göre aşağıdaki değerleri ayarlayın:
@@ -84,7 +100,7 @@ Bu bölümde, derleme işlem hattı oluşturmayı öğreneceksiniz. Azure DevOps
 
    |Değişken adı|Değer|
    |-|-|
-   |testPath|Test|
+   |testPath|Test etme|
 
    :::image type="content" source="media/set-up-cicd-pipeline/pipeline-variables-test.png" alt-text="İşlem hattı değişkenleri ekleme":::
 
@@ -106,7 +122,7 @@ Test Özet dosyasını ve Azure Resource Manager şablon dosyalarını yapıt kl
 
 1. **Görevler** sayfasında, **+** **Aracı işi 1**' in yanındaki öğesini seçin. **Kopya dosyalarını** arayın. Ardından aşağıdaki konfigürasyonları girin. Içeriğe atayarak `**` , test sonuçlarının tüm dosyaları kopyalanır.
 
-   |Parametre|Girdi|
+   |Parametre|Giriş|
    |-|-|
    |Görünen ad|Dosyaları kopyala: $ (Build. artifactstagingdirectory)|
    |Kaynak klasör|`$(system.defaultworkingdirectory)/$(outputPath)/`|
@@ -164,7 +180,7 @@ Bir Web tarayıcısı açın ve Azure Stream Analytics Visual Studio Code projen
    |Parametre|Değer|
    |-|-|
    |Görünen ad| *MyASAProject dağıtma*|
-   |Azure aboneliğini| Aboneliğinizi seçin.|
+   |Azure aboneliği| Aboneliğinizi seçin.|
    |Eylem| *Kaynak grubu oluşturma veya güncelleştirme*|
    |Kaynak grubu| Stream Analytics işinizi içerecek test kaynak grubu için bir ad seçin.|
    |Konum|Test kaynak grubunuzun konumunu seçin.|
@@ -181,7 +197,7 @@ Bir Web tarayıcısı açın ve Azure Stream Analytics Visual Studio Code projen
    |Parametre|Değer|
    |-|-|
    |Görünen ad| *MyASAProject dağıtma*|
-   |Azure aboneliğini| Aboneliğinizi seçin.|
+   |Azure aboneliği| Aboneliğinizi seçin.|
    |Eylem| *Kaynak grubu oluşturma veya güncelleştirme*|
    |Kaynak grubu| Stream Analytics işinizi içerecek üretim kaynak grubu için bir ad seçin.|
    |Konum|Üretim kaynağı grubunuzun konumunu seçin.|

@@ -4,14 +4,14 @@ description: Azure HPC önbellek depolama hedeflerini düzenleme
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: how-to
-ms.date: 09/30/2020
+ms.date: 03/10/2021
 ms.author: v-erkel
-ms.openlocfilehash: f97ff1c20b7edbf24e5a2c58e22097f88883ae4f
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
+ms.openlocfilehash: 78010ef2d93b23a12fc7f3e988a536b4993b4dd4
+ms.sourcegitcommit: 66ce33826d77416dc2e4ba5447eeb387705a6ae5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102204040"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103471830"
 ---
 # <a name="edit-storage-targets"></a>Depolama hedeflerini düzenleme
 
@@ -19,13 +19,16 @@ Azure portal veya Azure CLı kullanarak depolama hedeflerini kaldırabilir veya 
 
 Depolama türüne bağlı olarak, şu depolama hedefi değerlerini değiştirebilirsiniz:
 
-* BLOB depolama hedefleri için ad alanı yolunu değiştirebilirsiniz.
+* BLOB depolama hedefleri için ad alanı yolunu ve erişim ilkesini değiştirebilirsiniz.
 
 * NFS depolama hedefleri için şu değerleri değiştirebilirsiniz:
 
   * Ad alanı yolları
+  * Erişim ilkesi
   * Bir ad alanı yoluyla ilişkili depolama dışarı veya dışa aktarma alt dizini
   * Kullanım modeli
+
+* ADLS-NFS depolama hedefleri için ad alanı yolunu, erişim ilkesini ve kullanım modelini değiştirebilirsiniz.
 
 Depolama hedefinin adını, türünü veya arka uç depolama sistemini (blob kapsayıcısı veya NFS ana bilgisayar adı/IP adresi) düzenleyemezsiniz. Bu özellikleri değiştirmeniz gerekiyorsa, depolama hedefini silin ve yeni değerle bir değiştirme oluşturun.
 
@@ -94,10 +97,13 @@ Azure CLı ile bir BLOB depolama hedefinin ad alanını değiştirmek için [az 
 
 NFS depolama hedefleri için, sanal ad alanı yollarını değiştirebilir veya ekleyebilir, bir ad alanı yolunun işaret ettiği NFS dışarı aktarma veya alt dizin değerlerini değiştirebilir ve kullanım modelini değiştirebilirsiniz.
 
+Bazı özel DNS ayarı türlerindeki önbelleklerde bulunan depolama hedefleri, IP adreslerini yenilemeye yönelik bir denetime de sahiptir. (Bu tür bir yapılandırma nadir olarak belirlenir.)
+
 Ayrıntılar aşağıda verilmiştir:
 
-* [Toplanmış ad alanı değerlerini Değiştir](#change-aggregated-namespace-values) (sanal ad alanı yolu, dışarı aktarma ve dışarı aktarma alt dizini)
+* [Toplanmış ad alanı değerlerini Değiştir](#change-aggregated-namespace-values) (sanal ad alanı yolu, erişim ilkesi, dışarı aktarma ve dışarı aktarma alt dizini)
 * [Kullanım modelini değiştirme](#change-the-usage-model)
+* [DNS 'i Yenile](#update-ip-address-custom-dns-configurations-only)
 
 ### <a name="change-aggregated-namespace-values"></a>Toplanmış ad alanı değerlerini Değiştir
 
@@ -112,7 +118,7 @@ Ad alanı değerlerini güncelleştirmek için Azure HPC önbelleğiniz için **
 ![NFS güncelleştirme sayfası sağ tarafta açık olan Portal ad alanı sayfasının ekran görüntüsü](media/update-namespace-nfs.png)
 
 1. Değiştirmek istediğiniz yolun adına tıklayın.
-1. Yeni sanal yol, dışarı aktarma veya alt dizin değerlerini yazmak için düzenleme penceresini kullanın.
+1. Yeni sanal yol, dışarı aktarma veya alt dizin değerlerini yazmak ya da farklı bir erişim ilkesi seçmek için düzenleme penceresini kullanın.
 1. Değişiklik yaptıktan sonra, depolama hedefini güncelleştirmek için **Tamam** ' a veya değişiklikleri atmak için **iptal** ' e tıklayın.
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
@@ -174,6 +180,37 @@ Kullanım modellerinin adlarını doğrulamak istiyorsanız, [az HPC-Cache Usage
 Önbellek durdurulmuşsa veya sağlıklı durumda değilse güncelleştirme, önbellek sağlıklı olduktan sonra uygulanır.
 
 ---
+
+### <a name="update-ip-address-custom-dns-configurations-only"></a>IP adresini güncelleştir (yalnızca özel DNS yapılandırması)
+
+Önbelleğiniz varsayılan olmayan bir DNS yapılandırması kullanıyorsa, arka uç DNS değişiklikleri nedeniyle NFS depolama hedefinin IP adresinin değiştirilmesi mümkündür. DNS sunucunuz arka uç depolama sisteminin IP adresini değiştirirse, Azure HPC önbelleği depolama sistemine erişimi kaybedebilir.
+
+İdeal olarak, tüm güncelleştirmeleri planlamak için önbelleğinizin özel DNS sisteminin yöneticisiyle birlikte çalışmanız gerekir, çünkü bu değişiklikler depolama alanını kullanılamaz hale getirir.
+
+Bir depolama hedefinin DNS tarafından sağlanmış IP adresini güncelleştirmeniz gerekiyorsa, depolama hedefleri listesinde bir düğme vardır. Yeni bir IP adresi için özel DNS sunucusunu sorgulamak üzere **DNS 'ı Yenile** ' ye tıklayın.
+
+![Depolama hedef listesinin ekran görüntüsü. Bir depolama hedefi için "..." en sağdaki sütundaki menü açık ve iki seçenek görünür: Sil ve DNS 'i Yenile.](media/refresh-dns.png)
+
+Başarılı olursa, güncelleştirme iki dakikadan kısa sürer. Tek seferde yalnızca bir depolama hedefini yenileyebilirsiniz; bir önceki işlemin tamamlanmasını denemeden önce tamamlanmasını bekleyin.
+
+## <a name="update-an-adls-nfs-storage-target-preview"></a>ADLS-NFS depolama hedefini güncelleştirme (ÖNIZLEME)
+
+NFS hedeflerine benzer şekilde, ADLS-NFS depolama hedefleri için ad alanı yolunu ve kullanım modelini de değiştirebilirsiniz.
+
+### <a name="change-an-adls-nfs-namespace-path"></a>ADLS-NFS ad alanı yolunu değiştirme
+
+Ad alanı değerlerini güncelleştirmek için Azure HPC önbelleğiniz için **ad alanı** sayfasını kullanın. Bu sayfa, [toplanan ad alanını ayarlama](add-namespace-paths.md)makalesinde daha ayrıntılı olarak açıklanmıştır.
+
+![sağ tarafta bir ADS-NFS güncelleştirme sayfası açık olan Portal ad alanı sayfasının ekran görüntüsü](media/update-namespace-adls.png)
+
+1. Değiştirmek istediğiniz yolun adına tıklayın.
+1. Yeni sanal yol yazmak için düzenleme penceresini kullanın veya erişim ilkesini güncelleştirin.
+1. Değişiklik yaptıktan sonra, depolama hedefini güncelleştirmek için **Tamam** ' a veya değişiklikleri atmak için **iptal** ' e tıklayın.
+
+### <a name="change-adls-nfs-usage-models"></a>ADLS-NFS kullanım modellerini değiştirme
+
+ADLS-NFS kullanım modellerinin yapılandırması, NFS kullanım modeli seçimiyle aynıdır. Yukarıdaki NFS bölümündeki [kullanım modelini değiştirme](#change-the-usage-model) ' de Portal yönergelerini okuyun. ADLS-NFS depolama hedeflerini güncelleştirmek için ek araçlar geliştirme aşamasındadır.
+
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

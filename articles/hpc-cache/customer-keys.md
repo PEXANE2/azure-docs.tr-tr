@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: how-to
 ms.date: 07/20/2020
 ms.author: v-erkel
-ms.openlocfilehash: 90af33a01450002c7d36a4ab4cf4a3da647068c5
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: e8f1b3fffefcdf1d2ec8bd3e9b1aaea93697ca8a
+ms.sourcegitcommit: 66ce33826d77416dc2e4ba5447eeb387705a6ae5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96444567"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103471967"
 ---
 # <a name="use-customer-managed-encryption-keys-for-azure-hpc-cache"></a>Azure HPC Cache için müşteri tarafından yönetilen şifreleme anahtarlarını kullanma
 
@@ -22,7 +22,7 @@ Azure HPC Cache 'te verilerinizi şifrelemek için kullanılan anahtarların sah
 
 Azure HPC önbelleği, önbellek diskleri için bir müşteri anahtarı eklemeseniz bile, önbelleğe alınmış verilerinizi tutan yönetilen disklerde [VM ana bilgisayar şifrelemesi](../virtual-machines/disk-encryption.md#encryption-at-host---end-to-end-encryption-for-your-vm-data) ile de korunur. Çift şifreleme için müşteri tarafından yönetilen bir anahtar eklemek, yüksek güvenlik gereksinimlerine sahip müşteriler için ek bir güvenlik düzeyi sağlar. Ayrıntılar için [Azure disk depolaması 'Nın sunucu tarafı şifrelemesini](../virtual-machines/disk-encryption.md) okuyun.
 
-Bu özellik yalnızca Azure HPC önbelleğinin kullanılabildiği bazı Azure bölgelerinde kullanılabilir. Ayrıntılar için [bölge kullanılabilirliği](hpc-cache-overview.md#region-availability) listesine bakın.
+<!-- This feature is available only in some of the Azure regions where Azure HPC Cache is available. Refer to the [Region availability](hpc-cache-overview.md#region-availability) list for details. -->
 
 Azure HPC Cache için müşteri tarafından yönetilen anahtar şifrelemeyi etkinleştirmek için üç adım vardır:
 
