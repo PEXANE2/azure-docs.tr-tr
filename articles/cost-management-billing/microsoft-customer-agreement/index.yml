@@ -1,0 +1,74 @@
+### YamlMime:Landing
+title: Microsoft Müşteri Sözleşmesi 'ni kullanmaya başlama
+summary: Microsoft Müşteri sözleşmeniz kapsamında faturanızı ve aboneliklerinizi yönetmeye başlayın. Faturalandırma ortamınıza güvenli erişim sağlamaya karşın maliyetlerinizi nasıl anlayacağınızı ve en iyi duruma getirmeyi öğrenin.
+metadata:
+  title: Microsoft Müşteri Sözleşmesi 'ni kullanmaya başlama
+  description: Microsoft Müşteri anlaşmanıza nasıl başlaleyeceğinizi öğrenin.
+  ms.service: cost-management-billing
+  ms.subservice: billing
+  ms.topic: landing-page
+  ms.collection: collection
+  author: bandersmsft
+  ms.author: banders
+  ms.date: 03/01/2021
+  ms.openlocfilehash: f2dcb2687a5a765e674a3dce7ac9016e58056b81
+  ms.sourcegitcommit: 87a6587e1a0e242c2cfbbc51103e19ec47b49910
+  ms.translationtype: MT
+  ms.contentlocale: tr-TR
+  ms.lasthandoff: 03/16/2021
+  ms.locfileid: "103574721"
+landingContent:
+- title: başlarken
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Microsoft Müşteri Sözleşmesi nedir?
+      url: ../understand/mca-overview.md?toc=/azure/cost-management-billing/microsoft-customer-agreement/toc.json
+  - linkListType: how-to-guide
+    links:
+    - text: Kredi kartından faturaya taşıma
+      url: ../manage/mca-request-billing-ownership.md?toc=/azure/cost-management-billing/microsoft-customer-agreement/toc.json
+    - text: Etki alanı KIMLIĞIYLE aboneliğe erişin
+      url: ../manage/mca-setup-account.md?toc=/azure/cost-management-billing/microsoft-customer-agreement/toc.json
+    - text: Abonelik kullanıcılarını yönetmek için yönetici ayarlama
+      url: ../manage/add-change-subscription-administrator.md?toc=/azure/cost-management-billing/microsoft-customer-agreement/toc.json
+    - text: Yeni abonelik oluşturma
+      url: ../manage/create-subscription.md?toc=/azure/cost-management-billing/microsoft-customer-agreement/toc.json
+- title: Faturalandırmayı yönetme
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Faturalandırma döngümi anlayın
+      url: ../understand/mca-understand-your-invoice.md#billing-period
+  - linkListType: tutorial
+    links:
+    - text: Sözleşmenizin altında Fatura alma
+      url: ../understand/review-customer-agreement-bill.md?toc=/azure/cost-management-billing/microsoft-customer-agreement/toc.json
+  - linkListType: how-to-guide
+    links:
+    - text: Faturalandırma profili nedir ve nasıl yönetebilirim?
+      url: ../manage/mca-section-invoice.md?toc=/azure/cost-management-billing/microsoft-customer-agreement/toc.json
+    - text: Faturaya göre fatura öde
+      url: ../manage/pay-by-invoice.md?toc=/azure/cost-management-billing/microsoft-customer-agreement/toc.json
+    - text: Faturayı kredi veya banka kartına veya çek ya da hat aktarımına göre ödeyin
+      url: ../understand/pay-bill.md?toc=/azure/cost-management-billing/microsoft-customer-agreement/toc.json
+    - text: Faturalandırmayı yönetmek için yönetici ayarlama
+      url: ../manage/understand-mca-roles.md?toc=/azure/cost-management-billing/microsoft-customer-agreement/toc.json
+    - text: Anlaşmayla ilgili faturalandırmayı Başlat
+      url: ../manage/mca-request-billing-ownership.md?toc=/azure/cost-management-billing/microsoft-customer-agreement/toc.json
+    - text: Abonelik sahipmi bul
+      url: ../manage/add-change-subscription-administrator.md#assign-a-subscription-administrator
+  - linkListType: video
+    links:
+    - text: Maliyetleri düzenleme
+      url: https://www.youtube.com/watch?v=7RxTfShGHwU
+    - text: Faturalandırma hesabına erişimi yönetin
+      url: https://www.youtube.com/watch?v=9sqglBlKkho
+    - text: Faturanızı anlama
+      url: https://www.youtube.com/watch?v=e2LGZZ7GubA
+- title: Abonelikleri yönetme
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Active Directory nedir?
+      url: ../../active-directory/fundamentals/active-directory-whatis.md?toc=/azure/cost-management-billing/microsoft-customer-agreement/toc.json

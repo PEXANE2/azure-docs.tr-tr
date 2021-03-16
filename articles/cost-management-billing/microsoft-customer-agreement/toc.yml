@@ -1,0 +1,52 @@
+- name: Microsoft müşteri anlaşması belgeleri
+  href: index.yml?toc=/azure/cost-management-billing/microsoft-customer-agreement/toc.json
+- name: Genel Bakış
+  expanded: true
+  items:
+    - name: Microsoft Müşteri sözleşmesine genel bakış
+      href: ../understand/mca-overview.md?toc=/azure/cost-management-billing/microsoft-customer-agreement/toc.json
+- name: Kavramlar
+  items:
+    - name: Kullanım ve faturalandırma döngünüzü anlayın
+      href: ../understand/mca-understand-your-invoice.md?toc=/azure/cost-management-billing/microsoft-customer-agreement/toc.json
+    - name: Kullanım ve ücretler dosya koşulları
+      href: ../understand/mca-understand-your-usage.md?toc=/azure/cost-management-billing/microsoft-customer-agreement/toc.json
+- name: Öğreticiler
+  items:
+    - name: Faturanızı gözden geçirme
+      href: ../understand/review-customer-agreement-bill.md?toc=/azure/cost-management-billing/microsoft-customer-agreement/toc.json
+    - name: Bütçe oluşturma ve yönetme
+      href: ../costs/tutorial-acm-create-budgets.md?toc=/azure/cost-management-billing/microsoft-customer-agreement/toc.json
+- name: Nasıl yapılır kılavuzları
+  expanded: true
+  items:
+    - name: Faturalamayı ayarlama
+      href: ../manage/mca-setup-account.md?toc=/azure/cost-management-billing/microsoft-customer-agreement/toc.json
+    - name: Faturalandırma hesabınızı kullanmaya başlayın
+      href: ../understand/mca-overview.md?toc=/azure/cost-management-billing/microsoft-customer-agreement/toc.json
+    - name: Faturanızı düzenleme
+      href: ../manage/mca-section-invoice.md?toc=/azure/cost-management-billing/microsoft-customer-agreement/toc.json
+    - name: Ödeme hesaplarınızı görüntüleme
+      href: ../manage/view-all-accounts.md?toc=/azure/cost-management-billing/microsoft-customer-agreement/toc.json
+    - name: Faturalandırma rolleri
+      href: ../manage/understand-mca-roles.md?toc=/azure/cost-management-billing/microsoft-customer-agreement/toc.json
+    - name: Faturalandırma erişimini yönetme
+      href: ../manage/manage-billing-access.md?toc=/azure/cost-management-billing/microsoft-customer-agreement/toc.json
+    - name: Abonelik kullanıcılarını yönetmek için yönetici ayarlama
+      href: ../manage/add-change-subscription-administrator.md?toc=/azure/cost-management-billing/microsoft-customer-agreement/toc.json
+    - name: Yeni abonelik oluşturma
+      href: ../manage/create-subscription.md?toc=/azure/cost-management-billing/microsoft-customer-agreement/toc.json
+    - name: Abonelikler için fatura ile ödeme
+      href: ../manage/pay-by-invoice.md?toc=/azure/cost-management-billing/microsoft-customer-agreement/toc.json
+    - name: Faturanızı ödeme
+      href: ../understand/pay-bill.md?toc=/azure/cost-management-billing/microsoft-customer-agreement/toc.json
+    - name: Faturalandırma sahipliğini al
+      href: ../manage/mca-request-billing-ownership.md?toc=/azure/cost-management-billing/microsoft-customer-agreement/toc.json
+    - name: EA 'yı Microsoft Müşteri Sözleşmesi API 'Lerine geçirme
+      href: ../costs/migrate-cost-management-api.md?toc=/azure/cost-management-billing/microsoft-customer-agreement/toc.json
+    - name: Kullanım ve ücretleri görüntüleyin ve indirin
+      href: ../understand/download-azure-daily-usage.md?toc=/azure/cost-management-billing/microsoft-customer-agreement/toc.json
+    - name: Azure fiyatlandırmasını görüntüleyin ve indirin
+      href: ../manage/ea-pricing.md?toc=/azure/cost-management-billing/microsoft-customer-agreement/toc.json
+    - name: Microsoft Müşteri anlaşmasındaki EA görevleri
+      href: ../manage/mca-enterprise-operations.md?toc=/azure/cost-management-billing/microsoft-customer-agreement/toc.json
