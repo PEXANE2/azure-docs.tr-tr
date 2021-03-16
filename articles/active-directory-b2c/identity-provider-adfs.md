@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/08/2021
+ms.date: 03/15/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 3082c249b04b5efc71187dd03515bc8c875b7c2f
-ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
+ms.openlocfilehash: 292a244a4804f97e8622d6841c33b153af373290
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "102448600"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103489177"
 ---
 # <a name="add-ad-fs-as-a-saml-identity-provider-using-custom-policies-in-azure-active-directory-b2c"></a>Azure Active Directory B2C içindeki özel ilkeleri kullanarak SAML kimlik sağlayıcısı olarak AD FS ekleyin
 
@@ -156,9 +156,16 @@ Azure AD B2C bir kimlik sağlayıcısı olarak AD FS kullanmak için, Azure AD B
 https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/your-policy/samlp/metadata?idptp=your-technical-profile
 ```
 
+[Özel bir etki alanı](custom-domain.md)kullanırken aşağıdaki biçimi kullanın:
+
+```
+https://your-domain-name/your-tenant-name.onmicrosoft.com/your-policy/samlp/metadata?idptp=your-technical-profile
+```
+
 Aşağıdaki değerleri değiştirin:
 
-- Kiracı **adınızla kiracınız** , Your-Tenant.onmicrosoft.com gibi.
+- Kiracı **adınız,** örneğin Your-Tenant.onmicrosoft.com gibi.
+- login.contoso.com gibi özel etki alanı adınızla **etki alanı adınız** .
 - ilke adınızla **ilkenize** . Örneğin, B2C_1A_signup_signin_adfs.
 - SAML kimlik sağlayıcısı teknik profilinizin adı ile **Teknik profiliniz** . Örneğin, contoso-SAML2.
 

@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 11/09/2020
-ms.openlocfilehash: 731d94aa76146bf06a03842e8f3907d1762eeca3
-ms.sourcegitcommit: 94c3c1be6bc17403adbb2bab6bbaf4a717a66009
+ms.openlocfilehash: afb396bc364a2fa2db923fbcbe6bfe1b7aedbc26
+ms.sourcegitcommit: 3ea12ce4f6c142c5a1a2f04d6e329e3456d2bda5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/12/2021
-ms.locfileid: "103225617"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103467553"
 ---
 # <a name="recommended-settings-for-network-isolation"></a>Ağ yalıtımı için önerilen ayarlar
 
@@ -22,8 +22,7 @@ App Service 'e, erişimi kısıtlamak veya App Service Ortamı Soru-Cevap Oluşt
 
 #### <a name="add-ips-to-app-service-allow-list"></a>App Service izin verilenler listesine IP ekleme
 
-1. 
-yalnızca bilişsel hizmetler IP 'lerinden trafik. Bunlar zaten hizmet etiketine dahil edilmiştir `CognitiveServicesManagement` . Bu, App Service 'i çağırmak ve Azure Search hizmeti 'ni uygun şekilde güncelleştirmek için API 'Leri yazma (oluşturma/güncelleştirme KB) için gereklidir. [Hizmet etiketleri hakkında daha fazla bilgi edinin.](../../../virtual-network/service-tags-overview.md)
+1. Yalnızca bilişsel hizmetler IP 'lerinden gelen trafiğe izin verin. Bunlar zaten hizmet etiketine dahil edilmiştir `CognitiveServicesManagement` . Bu, App Service 'i çağırmak ve Azure Search hizmeti 'ni uygun şekilde güncelleştirmek için API 'Leri yazma (oluşturma/güncelleştirme KB) için gereklidir. [Hizmet etiketleri hakkında daha fazla bilgi edinin.](../../../virtual-network/service-tags-overview.md)
 2. Azure bot hizmeti, Soru-Cevap Oluşturma portalı vb. gibi diğer giriş noktalarına da izin verdiğinizden emin olun. tahmin için "GenerateAnswer" API erişimi.
 3. IP adresi aralıklarını bir izin verilenler listesine eklemek için lütfen şu adımları izleyin:
 

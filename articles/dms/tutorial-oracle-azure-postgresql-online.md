@@ -8,21 +8,22 @@ ms.author: arthiaga
 manager: craigg
 ms.reviewer: craigg
 ms.service: dms
+ms.subservice: migration-guide
 ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: tutorial
 ms.date: 01/24/2020
-ms.openlocfilehash: 09bcc85c0640bf0061ec0c872161cbc9afe51da6
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 2be824c89ac1e6b900dc9b67e046e2be2c7f8919
+ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101742135"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103562833"
 ---
 # <a name="tutorial-migrate-oracle-to-azure-database-for-postgresql-online-using-dms-preview"></a>Öğretici: DMS kullanarak Azure 'a PostgreSQL için Azure veritabanı 'na geçiş (Önizleme)
 
 > [!IMPORTANT]
-> "PostgreSQL için Oracle 'dan Azure veritabanı" geçiş senaryosu (Şu anda önizleme aşamasındadır) 1 Mayıs 2021 ' den sonra kullanılamayacak. Alternatif araç (örneğin, Ora2pg) aracılığıyla destek sağlamaya devam edeceğiz ve Oracle to PostgreSQL geçişleri için en iyi geçiş deneyimini sağlar. En iyi geçiş yöntemleri için bkz. [PostgreSQL için Oracle 'a Azure veritabanı geçiş Kılavuzu] ( https://aka.ms/OracletoPGguide) . 
+> **Azure 'Dan PostgreSQL Için Azure veritabanı** geçiş senaryosu (Şu anda önizleme aşamasındadır) 1 Mayıs 2021 ' den sonra kullanılamayacak. Alternatif araç (örneğin, Ora2pg) aracılığıyla destek sağlamaya devam edeceğiz ve Oracle to PostgreSQL geçişleri için en iyi geçiş deneyimini sağlar. En iyi geçiş yöntemleri için bkz. [PostgreSQL Için Oracle 'A Azure veritabanı geçiş kılavuzu](https://aka.ms/OracletoPGguide). 
 
 Azure veritabanı geçiş hizmeti 'ni kullanarak veritabanlarını şirket içinde veya sanal makinelerde barındırılan Oracle veritabanlarından, en az kapalı kalma süresine sahip [PostgreSQL Için Azure veritabanı](../postgresql/index.yml) 'na geçirebilirsiniz. Diğer bir deyişle, uygulamayı uygulamanın en az kapalı kalma süresiyle tamamlayabilirsiniz. Bu öğreticide, Azure veritabanı geçiş hizmeti 'ndeki çevrimiçi geçiş etkinliğini kullanarak, Oracle 11g 'nin şirket içi veya sanal makine örneğinden, PostgreSQL için Azure veritabanı 'na **HR** örnek veritabanını geçireceğiniz.
 

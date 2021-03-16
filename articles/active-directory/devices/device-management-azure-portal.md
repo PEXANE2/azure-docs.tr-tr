@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: hafowler
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0aea468c64f70bd7f35dd25206faa9ea33459999
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 23c74a8a35255162c7c9ddee6c917d4d98d83b89
+ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101688918"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103561660"
 ---
 # <a name="manage-device-identities-using-the-azure-portal"></a>Azure portalını kullanarak cihaz kimliklerini yönetme
 
@@ -169,6 +169,10 @@ Azure portal cihaz ayarlarını görüntülemek veya yönetmek için aşağıdak
 
 > [!NOTE]
 > Azure AD **'ye katılmış veya Azure ad kaydı yapılacak cihazların** Azure AD 'ye katılmış (bazı özel durumlar ile) veya Azure AD 'nin kayıtlı olduğu cihazlar için geçerli Multi-Factor Authentication ayarı gereklidir. Bu ayar, karma Azure AD 'ye katılmış cihazlara, Azure ['da Azure AD 'ye katılmış VM](./howto-vm-sign-in-azure-ad-windows.md#enabling-azure-ad-login-in-for-windows-vm-in-azure) 'Lere ve [Windows Autopilot Self-Deployment modunu](/mem/autopilot/self-deploying)kullanarak Azure AD 'ye katılmış cihazlara uygulanmaz.
+
+> [!IMPORTANT]
+> - Bir cihazın katılması veya kaydedilmesi için Multi-Factor Authentication 'ı zorunlu tutmanın koşullu erişim 'teki ["cihazları Kaydet veya katılım" Kullanıcı eyleminin](../conditional-access/concept-conditional-access-cloud-apps.md#user-actions) kullanılması önerilir. 
+> - Multi-Factor authencation gerektirmek için koşullu erişim ilkesi kullanıyorsanız bu ayarı **Hayır** olarak ayarlamanız gerekir. 
 
 - **En fazla cihaz sayısı** -Bu ayar, bir kullanıcının Azure AD 'de sahip olduğu en fazla Azure AD 'ye katılmış veya Azure AD kayıtlı cihaz sayısını seçmenize olanak sağlar. Bir Kullanıcı bu kotaya ulaşırsa, mevcut cihazların bir veya daha fazlası kaldırılana kadar ek cihaz ekleyemeyecektir. Varsayılan değer **50**' dir.
 

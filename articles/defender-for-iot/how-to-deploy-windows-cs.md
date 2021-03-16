@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/09/2020
 ms.author: mlottner
-ms.openlocfilehash: a4223dbc913b7b46cf73c0ed99f607fff67b7e67
-ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
+ms.openlocfilehash: e7c7fdd5874dbde5ca304309d0840724cb3872df
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "102448073"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103494538"
 ---
 # <a name="deploy-a-defender-for-iot-c-based-security-agent-for-windows"></a>Windows için IoT C# tabanlı güvenlik Aracısı için bir Defender dağıtma
 
@@ -38,7 +38,7 @@ Diğer platformlar ve aracı türleri için bkz. [doğru güvenlik aracısını 
 
 1. Yüklemek istediğiniz makinede yerel yönetici hakları.
 
-1. Cihaz için [bir güvenlik modülü oluşturun](quickstart-create-security-twin.md) .
+1. Cihaz için [bir Defender-IoT-mikro aracı oluşturun](quickstart-create-security-twin.md) .
 
 ## <a name="installation"></a>Yükleme
 

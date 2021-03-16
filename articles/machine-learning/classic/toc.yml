@@ -140,6 +140,20 @@
         - name: Galeri verileri
           displayName: export
           href: ai-gallery-control-personal-data-dsr.md
+    - name: Azure Machine Learning’e geçiş
+      items:
+        - name: Geçişe genel bakış
+          href: migrate-overview.md
+        - name: Veri kümelerini geçirme
+          href: migrate-register-dataset.md
+        - name: Yeniden derleme denemeleri
+          href: migrate-rebuild-experiment.md
+        - name: Web hizmetlerini yeniden derle
+          href: migrate-rebuild-web-service.md
+        - name: İstemci uygulamalarını geçirme
+          href: migrate-rebuild-integrate-with-client-app.md
+        - name: R betik modüllerini yürütmeyi yeniden derle
+          href: migrate-execute-r-script.md
 - name: Başvuru
   items:
     - name: Algoritma ve modül başvurusu

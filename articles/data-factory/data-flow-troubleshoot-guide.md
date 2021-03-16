@@ -6,13 +6,13 @@ author: kromerm
 ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: troubleshooting
-ms.date: 09/11/2020
-ms.openlocfilehash: f8a852a8c4197169061a9c7633f4f363ad057337
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.date: 03/15/2021
+ms.openlocfilehash: fe65a9528e35416d537f3aecd3a44f8b4e568afe
+ms.sourcegitcommit: 3ea12ce4f6c142c5a1a2f04d6e329e3456d2bda5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102505809"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103467740"
 ---
 # <a name="troubleshoot-mapping-data-flows-in-azure-data-factory"></a>Azure Data Factory veri akışlarını eşleme sorunlarını giderme
 
@@ -165,36 +165,6 @@ Bu makalede, Azure Data Factory veri akışlarını eşlemek için ortak sorun g
 - **Neden**: belirlenmedi.
 - **Öneri**: işlem hattının parametre değeri atamasını denetleyin. Bir parametre ifadesi geçersiz karakterler içeriyor olabilir.
 
-### <a name="error-code-df-excel-invalidconfiguration"></a>Hata kodu: DF-Excel-ınvalidconfiguration
-- **İleti**: Excel sayfası adı veya dizini gereklidir.
-- **Neden**: belirlenmedi.
-- **Öneri**: parametre değerini denetleyin. Excel verilerini okumak için çalışma sayfası adını veya dizinini belirtin.
-
-- **İleti**: Excel sayfası adı ve dizini aynı anda mevcut olamaz.
-- **Neden**: belirlenmedi.
-- **Öneri**: parametre değerini denetleyin. Excel verilerini okumak için çalışma sayfası adını veya dizinini belirtin.
-
-- **İleti**: geçersiz Aralık belirtildi.
-- **Neden**: belirlenmedi.
-- **Öneri**: parametre değerini denetleyin. Başvuruya göre geçerli bir Aralık belirtin. Daha fazla bilgi için bkz. [Excel özellikleri](./format-excel.md#dataset-properties).
-
-- **İleti**: yalnızca. xlsx ve. xls desteklenirken geçersiz Excel dosyası sağlanıyor
-- **Neden**: belirlenmedi.
-- **Öneri**: Excel dosya uzantısının. xlsx veya. xls olduğundan emin olun.
-
-
- ### <a name="error-code-df-excel-invaliddata"></a>Hata kodu: DF-Excel-ınvaliddata
-- **İleti**: Excel çalışma sayfası yok.
-- **Neden**: belirlenmedi.
-- **Öneri**: parametre değerini denetleyin. Excel verilerini okumak için geçerli bir çalışma sayfası adı veya dizini belirtin.
-
-- **İleti**: Excel dosyalarını farklı şemayla okuma işlemi şu anda desteklenmiyor.
-- **Neden**: belirlenmedi.
-- **Öneri**: desteklenen bir Excel dosyası kullanın.
-
-- **İleti**: veri türü desteklenmiyor.
-- **Neden**: belirlenmedi.
-- **Öneri**: desteklenen Excel dosyası veri türlerini kullanın.
 
 ### <a name="error-code-4502"></a>Hata kodu: 4502
 - **İleti**: Integration Runtime altında azaltma nedeniyle hatalara neden olan çok fazla eşzamanlı MappingDataflow yürütmesi vardır.
@@ -211,6 +181,206 @@ Bu makalede, Azure Data Factory veri akışlarını eşlemek için ortak sorun g
 - **İleti**: etkinlik Azure Integration Runtime çalışıyor ve veri deposunun kimlik bilgilerinin şifresini çözemedi veya şirket içinde barındırılan bir Integration Runtime ile bağlı işlem başarısız oldu. Lütfen bu etkinlikle ilişkili bağlı hizmetlerin yapılandırmasını denetleyin ve uygun tümleştirme çalışma zamanı türünü kullandığınızdan emin olun.
 - **Neden**: veri akışı, şirket içinde barındırılan tümleştirme çalışma zamanları üzerinde bağlı Hizmetleri desteklemez.
 - **Öneri**: veri akışını yönetilen bir sanal ağ tümleştirme çalışma zamanı üzerinde çalışacak şekilde yapılandırın.
+
+### <a name="error-code-df-xml-invalidvalidationmode"></a>Hata kodu: DF-XML-ınvalidvalidationmode
+- **İleti**: geçersiz XML doğrulama modu belirtildi.
+- **Öneri**: parametre değerini denetleyin ve doğru doğrulama modunu belirtin.
+
+### <a name="error-code-df-xml-invaliddatafield"></a>Hata kodu: DF-XML-ınvaliddatafield
+- **İleti**: bozuk kayıtlar alanı dize türü ve null atanabilir olmalıdır.
+- **Öneri**: `\"_corrupt_record\"` kaynak projedeki sütunun bir dize veri türüne sahip olduğundan emin olun.
+
+### <a name="error-code-df-xml-malformedfile"></a>Hata kodu: DF-XML-MalformedFile
+- **İleti**: ' FailFastMode ' içinde hatalı biçimlendirilmiş XML.
+- **Öneri**: XML dosyasının içeriğini doğru biçimde güncelleştirin.
+
+### <a name="error-code-df-xml-invaliddatatype"></a>Hata kodu: DF-XML-ınvaliddatatype
+- **İleti**: XML öğesinde alt öğeler veya öznitelikler bulunur ve bu öğe dönüştürülemez.
+
+### <a name="error-code-df-xml-invalidreferenceresource"></a>Hata kodu: DF-XML-InvalidReferenceResource
+- **İleti**: XML veri dosyasındaki başvuru kaynağı çözümlenemiyor.
+- **Öneri**: XML veri dosyasında başvuru kaynağını denetlemeniz gerekir.
+
+### <a name="error-code-df-xml-invalidschema"></a>Hata kodu: DF-XML-ınvalidschema
+- **İleti**: şema doğrulaması başarısız oldu.
+
+### <a name="error-code-df-xml-unsupportedexternalreferenceresource"></a>Hata kodu: DF-XML-UnsupportedExternalReferenceResource
+- **İleti**: XML veri dosyasında dış başvuru kaynağı desteklenmez.
+- **Öneri**: dış başvuru kaynağı şu anda DESTEKLENMEDIĞINDEN XML dosya içeriğini güncelleştirin.
+
+### <a name="error-code-df-gen2-invalidaccountconfiguration"></a>Hata kodu: DF-GEN2-ınvalidaccountconfiguration
+- **İleti**: Account Key veya Tenant/SpnId/SpnCredential/spnCredentialType ya da Miservıceuri/Miservvoicetoken seçeneklerinden biri belirtilmelidir.
+- **Öneri**: ilgili Gen2 bağlı hizmetinde doğru hesabı yapılandırın.
+
+### <a name="error-code-df-gen2-invalidauthconfiguration"></a>Hata kodu: DF-GEN2-ınvalidauthconfiguration
+- **İleti**: üç auth yönteminden yalnızca biri (anahtar, ServicePrincipal ve mı) belirtilebilir. 
+- **Öneri**: ilgili Gen2 bağlantılı hizmetinde doğru kimlik doğrulama türünü seçin.
+
+### <a name="error-code-df-gen2-invalidserviceprincipalcredentialtype"></a>Hata kodu: DF-GEN2-ınvalidservicesprincipalcredentialtype
+- **İleti**: serviceprincipalcredentialtype geçersiz.
+
+### <a name="error-code-df-gen2-invaliddatatype"></a>Hata kodu: DF-GEN2-ınvaliddatatype
+- **İleti**: bulut türü geçersiz.
+
+### <a name="error-code-df-blob-invalidaccountconfiguration"></a>Hata kodu: DF-blob-ınvalidaccountconfiguration
+- **İleti**: hesap anahtarından biri veya sas_token belirtilmelidir.
+
+### <a name="error-code-df-blob-invalidauthconfiguration"></a>Hata kodu: DF-blob-ınvalidauthconfiguration
+- **İleti**: iki auth yönteminden (anahtar, SAS) yalnızca biri belirtilebilir.
+
+### <a name="error-code-df-blob-invaliddatatype"></a>Hata kodu: DF-blob-ınvaliddatatype
+- **İleti**: bulut türü geçersiz.
+
+### <a name="error-code-df-cosmos-partitionkeymissed"></a>Hata kodu: DF-Cosmos-Partitionkeykaçırılan
+- **İleti**: güncelleştirme ve silme işlemleri için bölüm anahtarı yolu belirtilmelidir.
+- **Öneri**: Cosmos havuz ayarları 'nda bölüm sağlama anahtarını kullanın.
+
+### <a name="error-code-df-cosmos-invalidpartitionkey"></a>Hata kodu: DF-Cosmos-ınvalidpartitionkey
+- **İleti**: güncelleştirme ve silme işlemleri için bölüm anahtarı yolu boş olamaz.
+- **Öneri**: Cosmos havuz ayarları 'nda bölüm sağlama anahtarını kullanın.
+
+### <a name="error-code-df-cosmos-idpropertymissed"></a>Hata kodu: DF-Cosmos-ıdpropertykaçırıldı
+- **İleti**: ' id ' özelliği, silme ve güncelleştirme işlemleri için eşlenmelidir.
+- **Öneri**: giriş verilerinde `id` Cosmos havuz ayarlarında bir sütun bulunduğundan emin olun. Hayır ise, havuza başlamadan önce bu sütunu oluşturmak için **Select veya türeme dönüşümünü** kullanın.
+
+### <a name="error-code-df-cosmos-invalidpartitionkeycontent"></a>Hata kodu: DF-Cosmos-ınvalidpartitionkeycontent
+- **İleti**: bölüm anahtarı/ile başlamalıdır.
+- **Öneri**: Bölüm anahtarını `/` Cosmos havuz ayarları 'nda başlangıç yapın, örneğin: `/movieId` .
+
+### <a name="error-code-df-cosmos-invalidpartitionkey"></a>Hata kodu: DF-Cosmos-ınvalidpartitionkey
+- **İleti**: partitionkey, DELETE ve Update işlemleri için havuzda eşlenmedi.
+- **Öneri**: Cosmos havuz ayarları ' nda, kapsayıcının bölüm anahtarıyla aynı olan bölüm anahtarını kullanın.
+
+### <a name="error-code-df-cosmos-invalidconnectionmode"></a>Hata kodu: DF-Cosmos-ınvalidconnectionmode
+- **İleti**: geçersiz connectionmode.
+- **Öneri**: desteklenen modun, Cosmos ayarlarında **ağ geçidi** ve **DirectHttps** olduğunu doğrulayın.
+
+### <a name="error-code-df-cosmos-invalidaccountconfiguration"></a>Hata kodu: DF-Cosmos-ınvalidaccountconfiguration
+- **İleti**: AccountName ya da accountEndpoint belirtilmelidir.
+
+### <a name="error-code-df-github-writenotsupported"></a>Hata kodu: DF-GitHub-WriteNotSupported
+- **İleti**: GitHub Mağazası yazmaya izin vermez.
+
+### <a name="error-code-df-pgsql-invalidcredential"></a>Hata kodu: DF-PGSQL-ınvalidcredential
+- **İleti**: Kullanıcı/parola belirtilmelidir.
+- **Öneri**: ilgili PostgreSQL bağlı hizmetinde kimlik bilgisi ayarlarının doğru olduğundan emin olun.
+
+### <a name="error-code-df-snowflake-invalidstageconfiguration"></a>Hata kodu: DF-kar ke-ınvalidstageconfiguration
+- **İleti**: yalnızca BLOB depolama türü, kar tanesi okuma/yazma işleminde aşama olarak kullanılabilir.
+
+### <a name="error-code-df-snowflake-invalidstageconfiguration"></a>Hata kodu: DF-kar ke-ınvalidstageconfiguration
+- **İleti**: Azure Blob + SAS kimlik doğrulamasıyla kar tanesi aşama özellikleri belirtilmelidir.
+
+### <a name="error-code-df-snowflake-invaliddatatype"></a>Hata kodu: DF-kar tanesi-ınvaliddatatype
+- **İleti**: Spark türü, kar tanesi içinde desteklenmez.
+- **Öneri**: giriş verilerinin ilgili sütununu, kar havuzundan önce dize türüne dönüştürmek için **türet dönüşümünü** kullanın. 
+
+### <a name="error-code-df-hive-invalidblobstagingconfiguration"></a>Hata kodu: DF-Hive-ınvalidblobstagingconfiguration
+- **İleti**: BLOB depolama hazırlama özellikleri belirtilmelidir.
+
+### <a name="error-code-df-hive-invalidgen2stagingconfiguration"></a>Hata kodu: DF-Hive-InvalidGen2StagingConfiguration
+- **İleti**: ADLS 2. depolama hazırlama yalnızca hizmet sorumlusu anahtar kimlik bilgisini destekler.
+- **Öneri**: hizmet sorumlusu anahtar kimlik bilgisini, hazırlama olarak kullanılan ADLS 2. bağlantılı hizmette uygulacağınızı onaylayın.
+
+### <a name="error-code-df-hive-invalidgen2stagingconfiguration"></a>Hata kodu: DF-Hive-InvalidGen2StagingConfiguration
+- **İleti**: ADLS 2. depolama hazırlama özellikleri belirtilmelidir. Key veya Tenant/spnId/spnKey ya da Miservıceuri/miServiceToken seçeneklerinden biri gereklidir.
+- **Öneri**: ilgili ADLS 2. bağlı hizmetindeki Hive 'de hazırlama olarak kullanılan doğru kimlik bilgisini uygulayın. 
+
+### <a name="error-code-df-hive-invaliddatatype"></a>Hata kodu: DF-Hive-ınvaliddatatype
+- **İleti**: desteklenmeyen sütunlar.
+- **Öneri**: giriş verileri sütununu Hive tarafından desteklenen veri türüyle eşleşecek şekilde güncelleştirin.
+
+### <a name="error-code-df-hive-invalidstoragetype"></a>Hata kodu: DF-Hive-ınvalidstoragetype
+- **İleti**: depolama türü blob veya Gen2 olabilir.
+
+### <a name="error-code-df-delimited-invalidconfiguration"></a>Hata kodu: DF ile ayrılmış-ınvalidconfiguration
+- **İleti**: boş satırlardan biri ya da özel üst bilgi belirtilmelidir.
+- **Öneri**: CSV ayarlarında boş satırlar veya özel üstbilgiler belirtin.
+
+### <a name="error-code-df-delimited-columndelimitermissed"></a>Hata kodu: DF-Delimited-Columnlımıterkaçırılan
+- **İleti**: ayrıştırma için sütun sınırlayıcısı gereklidir.
+- **Öneri**: CSV ayarlarınızda sütun sınırlayıcısı olduğunu onaylayın.
+
+### <a name="error-code-df-mssql-invalidcredential"></a>Hata kodu: DF-MSSQL-ınvalidcredential
+- **İleti**: user/PWD ya da Tenant/SpnId/spnKey ya da Miservıceuri/Miservvoicetoken seçeneklerinden biri belirtilmelidir.
+- **Öneri**: ilgili MSSQL bağlantılı hizmetinde doğru kimlik bilgilerini uygulayın.
+
+### <a name="error-code-df-mssql-invaliddatatype"></a>Hata kodu: DF-MSSQL-ınvaliddatatype
+- **İleti**: desteklenmeyen alan (ler).
+- **Öneri**: giriş VERISI sütununu MSSQL tarafından desteklenen veri türüyle eşleşecek şekilde değiştirin.
+
+### <a name="error-code-df-mssql-invalidauthconfiguration"></a>Hata kodu: DF-MSSQL-ınvalidauthconfiguration
+- **İleti**: üç auth yönteminden yalnızca biri (anahtar, ServicePrincipal ve mı) belirtilebilir.
+- **Öneri**: ilgili MSSQL bağlantılı hizmetinde yalnızca üç auth yönteminden birini (anahtar, ServicePrincipal ve mı) belirtebilirsiniz.
+
+### <a name="error-code-df-mssql-invalidcloudtype"></a>Hata kodu: DF-MSSQL-ınvalidcloudtype
+- **İleti**: bulut türü geçersiz.
+- **Öneri**: ilgili MSSQL bağlantılı hizmetinde bulut türünü denetleyin.
+
+### <a name="error-code-df-sqldw-invalidblobstagingconfiguration"></a>Hata kodu: DF-SQLDW-ınvalidblobstagingconfiguration
+- **İleti**: BLOB depolama hazırlama özellikleri belirtilmelidir.
+
+### <a name="error-code-df-sqldw-invalidstoragetype"></a>Hata kodu: DF-SQLDW-ınvalidstoragetype
+- **İleti**: depolama türü blob veya Gen2 olabilir.
+
+### <a name="error-code-df-sqldw-invalidgen2stagingconfiguration"></a>Hata kodu: DF-SQLDW-InvalidGen2StagingConfiguration
+- **İleti**: ADLS 2. depolama hazırlama yalnızca hizmet sorumlusu anahtar kimlik bilgisini destekler.
+
+### <a name="error-code-df-sqldw-invalidconfiguration"></a>Hata kodu: DF-SQLDW-ınvalidconfiguration
+- **İleti**: ADLS 2. depolama hazırlama özellikleri belirtilmelidir. Key veya Tenant/spnId/spnCredential/spnCredentialType veya Miservıceuri/Miservvoicetoken seçeneklerinden biri gereklidir.
+
+### <a name="error-code-df-delta-invalidconfiguration"></a>Hata kodu: DF-DELTA-ınvalidconfiguration
+- **İleti**: zaman damgası ve sürüm aynı anda ayarlanamaz.
+
+### <a name="error-code-df-delta-keycolumnmissed"></a>Hata kodu: DF-DELTA-Keycolumnkaçırılan
+- **İleti**: insertable olmayan işlemler için anahtar sütun (ler) i belirtilmelidir.
+
+### <a name="error-code-df-delta-invalidtableoperationsettings"></a>Hata kodu: DF-DELTA-ınvalidtableoperationsettings
+- **İleti**: yeniden oluşturma ve kesme seçenekleri her ikisi de belirtilemez.
+
+### <a name="error-code-df-excel-worksheetconfigmissed"></a>Hata kodu: DF-Excel-Worksheetconfigkaçırıldı
+- **İleti**: Excel sayfası adı veya dizini gereklidir.
+- **Öneri**: parametre değerini denetleyin ve Excel verilerini okumak için sayfa adını ya da dizini belirtin.
+
+### <a name="error-code-df-excel-invalidworksheetconfiguration"></a>Hata kodu: DF-Excel-ınvalidworksheetconfiguration
+- **İleti**: Excel sayfası adı ve dizini aynı anda mevcut olamaz.
+- **Öneri**: parametre değerini denetleyin ve Excel verilerini okumak için sayfa adını ya da dizini belirtin.
+
+### <a name="error-code-df-excel-invalidrange"></a>Hata kodu: DF-Excel-ınvalidrange
+- **İleti**: geçersiz Aralık belirtildi.
+- **Öneri**: parametre değerini denetleyin ve şu başvuruya göre geçerli aralığı belirtin: [Azure Data Factory-Dataset Özellikler 'de Excel biçimi](https://docs.microsoft.com/azure/data-factory/format-excel#dataset-properties).
+
+### <a name="error-code-df-excel-worksheetnotexist"></a>Hata kodu: DF-Excel-WorksheetNotExist
+- **İleti**: Excel çalışma sayfası yok.
+- **Öneri**: parametre değerini denetleyin ve Excel verilerini okumak için geçerli sayfa adını ya da dizini belirtin.
+
+### <a name="error-code-df-excel-differentschemanotsupport"></a>Hata kodu: DF-Excel-farklı Entde Manotsupport
+- **İleti**: farklı şemaya sahip Excel dosyalarını okuma işlemi şu anda desteklenmiyor.
+
+### <a name="error-code-df-excel-invaliddatatype"></a>Hata kodu: DF-Excel-ınvaliddatatype
+- **İleti**: veri türü desteklenmiyor.
+
+### <a name="error-code-df-excel-invalidfile"></a>Hata kodu: DF-Excel-ınvalidfile
+- **İleti**: yalnızca. xlsx ve. xls desteklenirken geçersiz Excel dosyası sağlanır.
+
+### <a name="error-code-df-adobeintegration-invalidmaptofilter"></a>Hata kodu: DF-AdobeIntegration-ınvalidmaptofilter
+- **İleti**: özel kaynakta filtreye yalnızca bir anahtar/kimlik eşlenmiş olabilir.
+
+### <a name="error-code-df-adobeintegration-invalidpartitionconfiguration"></a>Hata kodu: DF-AdobeIntegration-ınvalidpartitionconfiguration
+- **İleti**: yalnızca tek bir bölüm desteklenir. Bölüm Şeması RoundRobin veya Hash olabilir.
+- **Öneri**: AdobeIntegration Settings içinde yalnızca tek bölümlerinizin olduğunu onaylayın. Bölüm Şeması RoundRobin veya Hash olabilir.
+
+### <a name="error-code-df-adobeintegration-keycolumnmissed"></a>Hata kodu: DF-AdobeIntegration-Keycolumnkaçırılan
+- **İleti**: Insertable olmayan işlemler için anahtar belirtilmelidir.
+- **Öneri**: insertable olmayan Işlemler için AdobeIntegration Settings içinde anahtar sütunlarınızı belirtin.
+
+### <a name="error-code-df-adobeintegration-invalidpartitiontype"></a>Hata kodu: DF-AdobeIntegration-ınvalidpartitiontype
+- **İleti**: Bölüm türünün roundRobin olması gerekebilir.
+- **Öneri**: AdobeIntegration Settings içinde bölüm türünün roundRobin olduğunu onaylayın.
+
+### <a name="error-code-df-adobeintegration-invalidprivacyregulation"></a>Hata kodu: DF-AdobeIntegration-ınvalidprivacyyönetmeliği
+- **İleti**: Şu anda desteklenen gizlilik düzenlemesi gdpr.
+- **Öneri**: AdobeIntegration Settings 'teki gizlilik Yönetmeliği **' GDPR '** olduğunu onaylayın.
 
 ## <a name="miscellaneous-troubleshooting-tips"></a>Çeşitli sorun giderme ipuçları
 - **Sorun**: beklenmeyen özel durum oluştu ve yürütme başarısız oldu.

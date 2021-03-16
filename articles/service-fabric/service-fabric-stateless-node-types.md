@@ -5,12 +5,12 @@ author: peterpogorski
 ms.topic: conceptual
 ms.date: 09/25/2020
 ms.author: pepogors
-ms.openlocfilehash: 3767a16656ac4d11511c0928be8b2703c4e94c7c
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: eb19005019a6e4e878f6b0bd6a145048d4a2804c
+ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98680612"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103563785"
 ---
 # <a name="deploy-an-azure-service-fabric-cluster-with-stateless-only-node-types-preview"></a>Yalnızca durum bilgisi olan düğüm türleriyle bir Azure Service Fabric kümesi dağıtma (Önizleme)
 Service Fabric düğüm türleri, bazı zaman bir noktada, durum bilgisi olmayan hizmetlerin düğümlere yerleştirilebileceği bir süre ile gelir. Durum bilgisiz düğüm türleri bir düğüm türü için bu varsayımını daha hızlı hale getirme, böylece düğüm türünün daha hızlı genişleme işlemleri gibi diğer özellikleri kullanmasına izin vermek, bu sayede düğüm türünün daha hızlı genişleme işlemleri, en az sayıda düğüm için destek ve tek bir sanal makine ölçek kümesinde 100 ' den fazla düğüme
@@ -72,9 +72,13 @@ Bir küme kaynağında durum bilgisiz olarak bir veya daha fazla düğüm türü
 Durum bilgisiz düğüm türlerini etkinleştirmek için, temel alınan sanal makine ölçek kümesi kaynağını aşağıdaki şekilde yapılandırmalısınız:
 
 * 100 ' den fazla VM 'ye ölçeklendirmeniz gerekiyorsa, **false** olarak ayarlanması gereken **Singleplacementgroup** özelliği.
-* Ölçek kümesinin **Upgradepolicy** ' nin, **sıralı olarak ayarlanması** gereken **modu** .
+* Ölçek kümesinin **Upgradepolicy** **modu** sıralı olarak **ayarlanmalıdır.**
 * Yükseltme modu, uygulama durumu uzantısının veya sistem durumu araştırmalarını gerektirir. Aşağıda önerilen durum bilgisiz düğüm türleri için varsayılan yapılandırmayla sistem durumu araştırmasını yapılandırın. Uygulamalar düğüm türüne dağıtıldıktan sonra, sistem durumu araştırması/sistem durumu uzantısı bağlantı noktaları, uygulama durumunu izlemek için değiştirilebilir.
 
+>[!NOTE]
+> Durum bilgisiz düğüm türü birden çok bölgeye yayılan bir sanal makine ölçek kümesi tarafından desteklendiğinde, platform hatası etki alanı sayısının 5 olarak güncelleştirildiğinden, bu gereklidir. Daha fazla ayrıntı için lütfen bu [şablona](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/15-VM-2-NodeTypes-Windows-Stateless-CrossAZ-Secure) bakın.
+> 
+> **platformFaultDomainCount: 5**
 ```json
 {
     "apiVersion": "2018-10-01",

@@ -3,12 +3,12 @@ title: 800 olmayan kaynaklar sayısı sınırı
 description: Bir kaynak grubunda 800 taneden fazla örneğe sahip olabilir Azure Kaynak türlerini listeler.
 ms.topic: conceptual
 ms.date: 01/08/2021
-ms.openlocfilehash: 6a63fd7e41c03b542f4a43b483243702c5be5f14
-ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
+ms.openlocfilehash: 6736118f0713a27a91618173e06423530e6f10cb
+ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98034943"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103563131"
 ---
 # <a name="resources-not-limited-to-800-instances-per-resource-group"></a>Kaynak grubu başına 800 örneğiyle sınırlı kaynak yok
 
@@ -80,7 +80,6 @@ Bazı kaynak türleri için, 800 örnek sınırının kaldırılmasını sağlam
 
 ## <a name="microsoftdevtestlab"></a>Microsoft. DevTestLab
 
-* Labs/virtualMachines-varsayılan olarak 800 örnek Ile sınırlıdır. 
 * cağını
 
 ## <a name="microsoftenterpriseknowledgegraph"></a>Microsoft. EnterpriseKnowledgeGraph

@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 02/22/2021
+ms.date: 03/15/2021
 ms.author: justinha
 author: justinha
 manager: daveba
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2270ff360c7bb923555c9b4ffb0c35ccd4382d0e
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 568048597f83616ed07954af744c94761250b5c0
+ms.sourcegitcommit: 66ce33826d77416dc2e4ba5447eeb387705a6ae5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101647498"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103471617"
 ---
-# <a name="authentication-methods-in-azure-active-directory---oath-tokens"></a>Azure Active Directory-OATH belirteçlerindeki kimlik doğrulama yöntemleri
+# <a name="authentication-methods-in-azure-active-directory---oath-tokens"></a>Azure Active Directory-OATH belirteçlerindeki kimlik doğrulama yöntemleri 
 
 OATH TOTP (zaman tabanlı bir kerelik parola), bir kerelik parola (OTP) kodlarının nasıl oluşturulduğunu belirten bir açık standarttır. OATH TOTP, kodları oluşturmak için yazılım veya donanım kullanılarak uygulanabilir. Azure AD, farklı bir kod oluşturma standardı olan OATH HOTP 'yi desteklemez.
 
@@ -29,13 +29,15 @@ Kimlik doğrulayıcı uygulaması, bir kullanıcının cihazının bağlantısı
 
 Bazı OATH TOTP Donanım belirteçleri programlanabilir, yani gizli anahtar veya çekirdek önceden programlanabilir olarak gelmeyecektir. Bu programlanabilir donanım belirteçleri, yazılım belirteci kurulum akışından alınan gizli anahtar veya çekirdek kullanılarak ayarlanabilir. Müşteriler bu belirteçleri kendi tercih ettiği satıcıdan satın alabilir ve kendi satıcısının kurulum sürecinde gizli anahtarı veya kaynağı kullanabilir.
 
-## <a name="oath-hardware-tokens"></a>OATH donanım belirteçleri
+## <a name="oath-hardware-tokens-preview"></a>OATH Donanım belirteçleri (Önizleme)
 
 Azure AD, her 30 veya 60 saniyede bir kodu yenileyen OATH-TOTP SHA-1 belirteçleri kullanımını destekler. Müşteriler bu belirteçleri kendi tercih ettiği satıcıdan satın alabilir.
 
 OATH TOTP Donanım belirteçleri genellikle, belirteçte önceden programlanabilir bir gizli anahtar veya çekirdek ile gelir. Bu anahtarların aşağıdaki adımlarda açıklandığı gibi Azure AD 'ye giriş olması gerekir. Gizli anahtarlar 128 karakterle sınırlıdır ve bu, tüm belirteçlerle uyumlu olmayabilir. Gizli anahtar yalnızca *a-z* veya *a-z* karakterleri ve *2-7* rakamları içerebilir ve *Base32* içinde kodlanmalıdır.
 
 Yeniden kullanılabilen programlanabilir OATH TOTP Donanım belirteçleri, yazılım belirteci kurulum akışında Azure AD ile de ayarlanabilir.
+
+OATH Donanım belirteçleri, genel önizlemenin bir parçası olarak desteklenir. Önizlemeler hakkında daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ![OATH belirteçlerini MFA OATH belirteçleri dikey penceresine yükleme](media/concept-authentication-methods/mfa-server-oath-tokens-azure-ad.png)
 

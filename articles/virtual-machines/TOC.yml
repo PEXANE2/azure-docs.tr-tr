@@ -49,6 +49,8 @@
           href: ./linux/tutorial-load-balancer.md
         - name: 8 - Ağı yönetme
           href: ./linux/tutorial-virtual-network.md
+        - name: 9-kaynakları yönetme
+          href: ./linux/tutorial-govern-resources.md
     - name: Windows
       items:
         - name: 1 - VM oluşturma / yönetme
@@ -67,6 +69,8 @@
           href: ./windows/tutorial-load-balancer.md
         - name: 8 - Ağı yönetme
           href: ./windows/tutorial-virtual-network.md
+        - name: 9-kaynakları yönetme
+          href: ./windows/tutorial-govern-resources.md
 - name: İş yükleri
   items:
     - name: Red Hat
@@ -313,99 +317,100 @@
           displayName: 'Azure Hybrid Benefit, Linux, AHB'
           href: ./linux/azure-hybrid-benefit-linux.md
         - name: Windows
-          items:
-            - name: Azure Hibrit Avantajı lisansını kullanma
-              displayName: 'Azure Hybrid Benefit, AHB'
-              href: ./windows/hybrid-use-benefit-licensing.md
-            - name: Windows 10 için Çok Kiracılı Barındırma Kuralları’nı kullanma
-              displayName: 'MTHR, multi-tenant, multitenant, hosting, rights'
-              href: ./windows/windows-desktop-multitenant-hosting-deployment.md
+          displayName: 'Azure Hybrid Benefit, AHB'
+          href: ./windows/hybrid-use-benefit-licensing.md
     - name: Ayrılmış örnekler
       items:
+        - name: Azure ayırmaları nedir?
+          displayName: 'Reserved Instances, RI, prepay, flexibility'
+          href: ../cost-management-billing/reservations/save-compute-costs-reservations.md?context=/azure/virtual-machines/context/context
         - name: VM'ler için ön ödeme yapma
           displayName: 'Reserved Instances, RI, prepay, flexibility'
           href: ./prepay-reserved-vm-instances.md
         - name: Ayrılmış Konaklar için önceden ödeme
           displayName: 'Reserved Instances, RI, prepay, flexibility'
           href: prepay-dedicated-hosts-reserved-instances.md
-        - name: Azure ayırmaları nedir?
-          displayName: 'Reserved Instances, RI, prepay, flexibility'
-          href: ../cost-management-billing/reservations/save-compute-costs-reservations.md?context=/azure/virtual-machines/context/context
         - name: Sanal makine örneği boyut esnekliği
           displayName: 'Reserved Instances, RI, prepay'
           href: reserved-vm-instance-size-flexibility.md
-    - name: Linux VM 'Leri oluşturma
+    - name: Sanal Makineler Oluşturma
       items:
-        - name: Doğrulanan dağıtımlar
-          href: ./linux/endorsed-distros.md
-        - name: CLI kullanma
-          href: ./linux/create-cli-complete.md
-        - name: ARM şablonu kullanma
-          displayName: Azure Resource Manager
-          href: ./linux/create-ssh-secured-vm-from-template.md
-        - name: REST API’yi kullanma
-          href: ./linux/create-vm-rest-api.md
-        - name: CLı kullanarak VM kopyalama
-          href: ./linux/copy-vm.md
-        - name: Jenkins ile derleme
-          href: /azure/developer/jenkins/pipeline-with-github-and-docker
-        - name: Jenkins 'i Azure DevOps ile tümleştirme
-          href: /azure/developer/jenkins/deploy-to-linux-vm-using-azure-devops-services
-        - name: Sıralı dağıtım stratejisini yapılandırma
-          href: ./linux/tutorial-devops-azure-pipelines-classic.md
-        - name: Canary dağıtım stratejisini yapılandırma
-          href: ./linux/tutorial-azure-devops-canary-strategy.md
-        - name: Blue-Green dağıtım stratejisini yapılandırma
-          href: ./linux/tutorial-azure-devops-blue-green-strategy.md
-        - name: Azure Pipelines (YAML) ile CI/CD
-          href: ./linux/tutorial-build-deploy-azure-pipelines.md
-        - name: LAMBA yığını oluşturma
-          href: ./linux/tutorial-lamp-stack.md
-        - name: TLS\SSL ile güvenli Web sunucusu
+        - name: Linux
           items:
-            - name: Linux
+            - name: Onaylı dağıtımlar
+              href: ./linux/endorsed-distros.md
+            - name: CLI
+              displayName: 'Create VM, Create'
+              href: ./linux/create-cli-complete.md
+            - name: ARM şablonu
+              displayName: 'Create VM, Create, ARM'
+              href: ./linux/create-ssh-secured-vm-from-template.md
+            - name: REST
+              displayName: 'Create VM, Create, REST'
+              href: ./linux/create-vm-rest-api.md
+            - name: LAMP yığını
+              href: ./linux/tutorial-lamp-stack.md
+            - name: Sürekli teslim
+              items:
+                - name: Sıralı dağıtım stratejisini yapılandırma
+                  href: ./linux/tutorial-devops-azure-pipelines-classic.md
+                - name: Canary dağıtım stratejisini yapılandırma
+                  href: ./linux/tutorial-azure-devops-canary-strategy.md
+                - name: Blue-Green dağıtım stratejisini yapılandırma
+                  href: ./linux/tutorial-azure-devops-blue-green-strategy.md
+                - name: Azure Pipelines (YAML) ile CI/CD
+                  href: ./linux/tutorial-build-deploy-azure-pipelines.md
+            - name: TLS\SSL ile güvenli Web sunucusu
               href: ./linux/tutorial-secure-web-server.md
-            - name: Windows
-              href: ./windows/tutorial-secure-web-server.md
-          displayname: SSL TLS
-    - name: Linux VM’lere bağlanma
-      items:
-        - name: Linux VM 'Leri için SSH
+        - name: Windows
           items:
-            - name: Linux veya macOS üzerinde
-              href: ./linux/mac-create-ssh-keys.md
-            - name: Windows üzerinde
-              href: ./linux/ssh-from-windows.md
-            - name: Portalda
-              href: ssh-keys-portal.md
-            - name: Ayrıntılı adımlar
-              href: ./linux/create-ssh-keys-detailed.md
-        - name: Linux için Uzak Masaüstü
-          href: ./linux/use-remote-desktop.md
-    - name: Windows VM 'Leri oluşturma
-      items:
-        - name: C# kullanma
-          href: ../azure-resource-manager/templates/deploy-rest.md?context=/azure/virtual-machines/context/context
-        - name: Özelleştirilmiş disk kullanma
-          items:
-            - name: Portal
+            - name: Özel disk-Portal
+              displayName: 'Create VM, Create'
               href: ./windows/create-vm-specialized-portal.md
-            - name: PowerShell
+            - name: Özel disk-PowerShell
+              displayName: 'Create VM, Create'
               href: ./windows/create-vm-specialized.md
-        - name: Chef ile VM oluşturma
-          href: /azure/developer/chef/windows-vm-configure
-        - name: Java kullanma
-          href: ./windows/java.md
-        - name: Python
-          href: /samples/azure-samples/virtual-machines-python-manage/azure-virtual-machines-management-samples---python/?context=%2fazure%2fvirtual-machines%2fcontext%2fcontext
-        - name: ARM şablonu kullanma
-          displayName: Azure Resource Manager template
-          href: ./windows/ps-template.md
-    - name: Windows VM 'lerine bağlanma
-      href: ./windows/connect-logon.md
+            - name: ARM şablonu
+              displayName: 'Create VM, Create, ARM'
+              href: ./windows/ps-template.md
+            - name: TLS\SSL ile güvenli Web sunucusu
+              href: ./windows/tutorial-secure-web-server.md
+    - name: Sanal makinelere bağlanma
       items:
-        - name: WinRM
-          href: ./windows/winrm.md
+        - name: Linux
+          items:
+            - name: SSH anahtarlarını yerel olarak oluşturma ve yönetme
+              href: ./linux/create-ssh-keys-detailed.md
+            - name: Portalda SSH anahtarları oluşturma ve yönetme
+              href: ssh-keys-portal.md
+            - name: Linux veya macOS üzerinde SSH
+              href: ./linux/mac-create-ssh-keys.md
+            - name: Windows üzerinde SSH
+              href: ./linux/ssh-from-windows.md
+            - name: Linux için Uzak Masaüstü
+              href: ./linux/use-remote-desktop.md
+        - name: Windows
+          items:
+            - name: Windows için Uzak Masaüstü
+              href: ./windows/connect-logon.md
+            - name: WinRM
+              href: ./windows/winrm.md
+    - name: Zaman eşitleme
+      items:
+        - name: Linux
+          displayName: Time sync
+          href: ./linux/time-sync.md
+        - name: Windows
+          displayName: Time sync
+          href: ./windows/time-sync.md
+    - name: Çalıştır Komutu
+      items:
+        - name: Linux
+          displayName: Run command
+          href: ./linux/run-command.md
+        - name: Windows
+          displayName: Run command
+          href: ./windows/run-command.md
     - name: Uzantıları
       items:
         - name: Genel Bakış
@@ -554,6 +559,8 @@
           href: ./extensions/troubleshoot.md
         - name: Python 3 özellikli Linux sistemleri ile ilgili sorunlar
           href: ./extensions/issues-using-vm-extensions-python-3.md
+    - name: İç içe sanallaştırma
+      href: ./windows/nested-virtualization.md
     - name: Azure Resource Manager geçir
       items:
         - name: Kullanımdan kaldırma süreci 1 Mart 2023’te başlıyor
@@ -583,54 +590,6 @@
         - name: SSS
           displayName: 'classic, migration, classic to ARM, CSES, Cloud Services'
           href: migration-classic-resource-manager-faq.md
-    - name: Yönetim Temelleri
-      items:
-        - name: Kaynakları yönetme
-          items:
-            - name: Linux
-              href: ./linux/tutorial-govern-resources.md
-            - name: Windows
-              href: ./windows/tutorial-govern-resources.md
-        - name: Zaman eşitleme
-          items:
-            - name: Linux
-              href: ./linux/time-sync.md
-            - name: Windows
-              href: ./windows/time-sync.md
-        - name: Bir VM üzerinde betikleri çalıştırma
-          items:
-            - name: Özel Betik Uzantısı
-              items:
-                - name: Linux
-                  href: ./extensions/custom-script-linux.md
-                - name: Windows
-                  href: ./extensions/custom-script-windows.md
-            - name: Çalıştır Komutu
-              items:
-                - name: Linux
-                  href: ./linux/run-command.md
-                - name: Windows
-                  href: ./windows/run-command.md
-            - name: Karma Runbook Çalışanı
-              href: ../automation/automation-hybrid-runbook-worker.md
-            - name: Seri konsol
-              items:
-                - name: Linux
-                  href: ./troubleshooting/serial-console-linux.md
-                - name: Windows
-                  href: ./troubleshooting/serial-console-windows.md
-        - name: İç içe yerleştirilmiş sanallaştırmayı etkinleştirme
-          href: ./windows/nested-virtualization.md
-        - name: Dosya depolama
-          items:
-            - name: SMB kullanarak Linux bağlama
-              href: ./linux/mount-azure-file-storage-on-linux-using-smb.md
-            - name: Dosyaları bir Linux VM’ye kopyalama
-              href: ./linux/copy-files-to-linux-vm-using-scp.md
-        - name: Güncelleştirmeler ve düzeltme ekleri
-          items:
-            - name: Red Hat Güncelleştirme Altyapısı
-              href: ./workloads/redhat/redhat-rhui.md
 - name: Görüntüler
   items:
     - name: Azure Marketi görüntülerini bulma
@@ -644,6 +603,9 @@
         - name: Windows istemci görüntüleri
           displayName: 'Images, imaging, marketplace, Windows, Client'
           href: ./windows/client-images.md
+        - name: Windows 10 için çok kiracılı barındırma hakları
+          displayName: 'MTHR, multi-tenant, multitenant, hosting, rights'
+          href: ./windows/windows-desktop-multitenant-hosting-deployment.md
     - name: Linux özel görüntüleri
       items:
         - name: Genel Bakış
@@ -1205,6 +1167,8 @@
             - name: PowerShell
               displayName: Unmanaged VM to Managed Disks
               href: ./windows/convert-unmanaged-to-managed-disks.md
+        - name: CLı kullanarak VM kopyalama
+          href: ./linux/copy-vm.md
     - name: Veri diski ekleme
       items:
         - name: Linux
@@ -1274,6 +1238,12 @@
           href: ./linux/azure-to-guest-disk-mapping.md
         - name: Yönetilen diski Konuk disk ile eşleme-Windows
           href: ./windows/azure-to-guest-disk-mapping.md
+        - name: Dosya depolama
+          items:
+            - name: SMB kullanarak Linux bağlama
+              href: ./linux/mount-azure-file-storage-on-linux-using-smb.md
+            - name: Dosyaları bir Linux VM’ye kopyalama
+              href: ./linux/copy-files-to-linux-vm-using-scp.md
         - name: Kullanıma açılmamış diskleri bulma
           items:
             - name: CLI

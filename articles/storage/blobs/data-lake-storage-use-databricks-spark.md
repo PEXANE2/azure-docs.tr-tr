@@ -9,12 +9,12 @@ ms.date: 11/19/2019
 ms.author: normesta
 ms.reviewer: dineshm
 ms.custom: devx-track-python
-ms.openlocfilehash: 5fce5871b4bd6c3e2353f7df04018e88b86ec4c7
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 232e28d3cc8b0bc7427dd035d51743f623e54259
+ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95912527"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103564312"
 ---
 # <a name="tutorial-azure-data-lake-storage-gen2-azure-databricks--spark"></a>Öğretici: Azure Data Lake Storage 2., Azure Databricks & Spark
 
@@ -54,7 +54,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 Bu öğretici, bir ETL işleminin nasıl gerçekleştirileceğini göstermek için, taşıma Istatistikleri bürolarından uçuş verilerini kullanır. Öğreticiyi tamamlayabilmeniz için bu verileri indirmeniz gerekir.
 
-1. [Araştırma ve yenilikçi teknoloji yönetimi, nakliye Istatistikleri Bürosu '](https://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236&DB_Short_Name=On-Time)na gidin.
+1. [Araştırma ve yenilikçi teknoloji yönetimi, nakliye Istatistikleri Bürosu '](https://www.transtats.bts.gov/DL_SelectFields.asp?gnoyr_VQ=FGJ)na gidin.
 
 2. Tüm veri alanlarını seçmek için **önceden daraltılmış dosya** onay kutusunu seçin.
 

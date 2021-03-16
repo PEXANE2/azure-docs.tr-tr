@@ -9,12 +9,12 @@ metadata:
   author: shortpatti
   ms.author: v-patsho
   ms.date: 03/12/2021
-  ms.openlocfilehash: 9014dbbfdb9d1f0ef4af975da917abdcf71d8b2a
-  ms.sourcegitcommit: ec39209c5cbef28ade0badfffe59665631611199
+  ms.openlocfilehash: edf9adfa316407eb0bf1270bae93d7cfa273d50f
+  ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
   ms.translationtype: MT
   ms.contentlocale: tr-TR
-  ms.lasthandoff: 03/12/2021
-  ms.locfileid: "103232962"
+  ms.lasthandoff: 03/16/2021
+  ms.locfileid: "103490099"
 landingContent:
 - title: Azure VMware Çözümü hakkında
   linkLists:
@@ -74,12 +74,6 @@ landingContent:
   linkLists:
   - linkListType: how-to-guide
     links:
-    - text: Konak kotasını isteyin ve Azure VMware çözümünü etkinleştirin
-      url: enable-azure-vmware-solution.md
-    - text: Ayrılmış örnek ile maliyet tasarrufu yapma
-      url: reserved-instance.md
-    - text: Geçiş değerlendirmesi
-      url: ../migrate/how-to-create-azure-vmware-solution-assessment.md?context=/azure/migrate/context/migrate-context.json
     - text: DHCP'yi yönetme
       url: manage-dhcp.md
     - text: NSX ağ bileşenlerini yapılandırma
@@ -94,6 +88,16 @@ landingContent:
       url: public-ip-usage.md
     - text: IPSec tüneli oluşturma
       url: create-ipsec-tunnel.md
+  - linkListType: reference
+    links:
+    - text: Azure VMware çözümü isteği konak kotası
+      url: enable-azure-vmware-solution.md
+    - text: EA ve CSP aboneliklerini taşıma
+      url: move-ea-csp-subscriptions.md
+    - text: Ayrılmış örnek ile maliyet tasarrufu yapma
+      url: reserved-instance.md
+    - text: Geçiş değerlendirmesi
+      url: /azure/migrate/how-to-create-azure-vmware-solution-assessment?context=/azure/azure-vmware/context/context
 - title: Azure’da yerel tümleştirme
   linkLists:
   - linkListType: how-to-guide

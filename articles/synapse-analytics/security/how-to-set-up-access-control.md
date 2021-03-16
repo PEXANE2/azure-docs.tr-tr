@@ -9,12 +9,12 @@ ms.subservice: security
 ms.date: 12/03/2020
 ms.author: ronytho
 ms.reviewer: jrasnick
-ms.openlocfilehash: 513d23de3d7f823ec934af32e5f3776e876f02d8
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 97f9d0e0037090a8c058eb6e2393451d975e79c6
+ms.sourcegitcommit: 66ce33826d77416dc2e4ba5447eeb387705a6ae5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100369008"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103472266"
 ---
 # <a name="how-to-set-up-access-control-for-your-synapse-workspace"></a>SYNAPSE çalışma alanınız için erişim denetimi nasıl ayarlanır 
 
@@ -43,7 +43,7 @@ Bir Synapse çalışma alanının güvenliğini sağlamak için, aşağıdaki ö
 
 Bu belge yönergeleri basitleştirmek için standart adları kullanır. Bunları istediğiniz adlarla değiştirin.
 
-|Ayar | Standart ad | Description |
+|Ayar | Standart ad | Açıklama |
 | :------ | :-------------- | :---------- |
 | **SYNAPSE çalışma alanı** | `workspace1` |  SYNAPSE çalışma alanının sahip olacağı ad. |
 | **ADLSGEN2 hesabı** | `storage1` | Çalışma alanınız ile kullanılacak ADLS hesabı. |
@@ -124,7 +124,7 @@ Azure portal, bir Synapse çalışma alanı oluşturun:
 
 ## <a name="step-5-grant-synapse-administrators-the-azure-contributor-role-on-the-workspace"></a>5. Adım: SYNAPSE yöneticilerine Azure katkıda bulunan rolünü çalışma alanında verme 
 
-SQL havuzları, Apache Spark havuzları ve tümleştirme çalışma zamanları oluşturmak için, kullanıcıların çalışma alanına en az Azure katılımcısı erişimi olması gerekir. Katılımcı rolü de bu kullanıcıların, duraklatma ve ölçekleme dahil olmak üzere kaynakları yönetmesine olanak tanır.
+SQL havuzları, Apache Spark havuzları ve tümleştirme çalışma zamanları oluşturmak için, kullanıcıların çalışma alanında en az Azure katılımcısı rolü olması gerekir. Katılımcı rolü de bu kullanıcıların, duraklatma ve ölçekleme dahil olmak üzere kaynakları yönetmesine olanak tanır. SQL havuzları, Apache Spark havuzlar ve tümleştirme çalışma zamanları oluşturmak için Azure portal veya SYNAPSE Studio kullanıyorsanız, kaynak grubu düzeyinde Azure katılımcısı rolüne ihtiyacınız vardır. 
 
 - Azure portalını açın
 - Çalışma alanını bulun, `workspace1`

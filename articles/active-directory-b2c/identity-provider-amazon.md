@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
 ms.custom: project-no-code
-ms.date: 03/08/2021
+ms.date: 03/15/2021
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 5880b6f44caec053aef292960cecbf64f25c6743
-ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
+ms.openlocfilehash: 3e1eaf4f97b9b04ed02aeb3c6de65b90bf4947e1
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "102448583"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103489160"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-an-amazon-account-using-azure-active-directory-b2c"></a>Azure Active Directory B2C kullanarak bir Amazon hesabı ile kaydolma ve oturum açma ayarlama
 
@@ -38,12 +38,17 @@ ms.locfileid: "102448583"
 
 Azure Active Directory B2C (Azure AD B2C) ' de bir Amazon hesabı olan kullanıcılar için oturum açma 'yı etkinleştirmek üzere, [Amazon Geliştirici Hizmetleri ve teknolojilerinde](https://developer.amazon.com)bir uygulama oluşturmanız gerekir. Daha fazla bilgi için bkz. [Amazon Ile oturum açma Için kaydolma](https://developer.amazon.com/docs/login-with-amazon/register-web.html). Zaten bir Amazon hesabınız yoksa kaydolabilirsiniz [https://www.amazon.com/](https://www.amazon.com/) .
 
-> [!NOTE]  
-> Aşağıdaki **8. adımdaki** URL 'leri kullanarak `your-tenant-name` kiracınızın adıyla değiştirin. Kiracı adınızı girerken, kiracı, Azure AD B2C büyük harfle tanımlansa bile, tüm küçük harfleri kullanın.
-> - **Izin verilen çıkış noktaları** için şunu girin`https://your-tenant-name.b2clogin.com` 
-> - **Izin verilen dönüş URL 'leri** için şunu girin`https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp`
-
-[!INCLUDE [identity-provider-amazon-idp-register.md](../../includes/identity-provider-amazon-idp-register.md)]
+1. Amazon hesabı kimlik bilgilerinizle [Amazon Developer konsolunda](https://developer.amazon.com/dashboard) oturum açın.
+1. Daha önce yapmadıysanız **kaydolun**' ı seçin, geliştirici kayıt adımlarını izleyin ve ardından ilkeyi kabul edin.
+1. Panodan, **Amazon Ile oturum aç**' ı seçin.
+1. **Yeni bir güvenlik profili oluştur**' u seçin.
+1. Bir **güvenlik profili adı**, **güvenlik profili açıklaması** ve **onay gizlilik bildirimi URL 'si** girin, örneğin `https://www.contoso.com/privacy` Gizlilik bildirimi URL 'si, kullanıcılara gizlilik bilgileri sağlayan bir sayfasıdır. Daha sonra **Kaydet**'e tıklayın.
+1. **Amazon Configurations Ile oturum aç** bölümünde, oluşturduğunuz **güvenlik profili adını** seçin, **Yönet** simgesini seçin ve ardından **Web ayarları**' nı seçin.
+1. **Web ayarları** bölümünde, **istemci kimliği** değerlerini kopyalayın. İstemci parolasını almak için **gizli göster** ' i seçin ve sonra kopyalayın. Bir Amazon hesabını kiracınızda kimlik sağlayıcısı olarak yapılandırmak için her iki değere de ihtiyacınız vardır. **Istemci parolası** önemli bir güvenlik kimlik bilgileridir.
+1. **Web ayarları** bölümünde **Düzenle**' yi seçin. 
+    1. **Izin verilen çıkış noktaları**' nda, girin `https://your-tenant-name.b2clogin.com` . `your-tenant-name`Kiracınızın adıyla değiştirin. [Özel bir etki alanı](custom-domain.md)kullanıyorsanız, girin `https://your-domain-name` .
+    1.  **Izin verilen dönüş URL 'leri** girin `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp` .  [Özel bir etki alanı](custom-domain.md)kullanıyorsanız, girin `https://your-domain-name/your-tenant-name.onmicrosoft.com/oauth2/authresp` .  `your-tenant-name`, Kiracınızın adıyla ve `your-domain-name` özel etki alanınız ile değiştirin.
+1. **Kaydet**’i seçin.
 
 ::: zone pivot="b2c-user-flow"
 

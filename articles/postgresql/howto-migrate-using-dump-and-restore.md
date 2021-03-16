@@ -4,21 +4,22 @@ description: Bir PostgreSQL veritabanının bir döküm dosyasına nasıl ayıkl
 author: sr-msft
 ms.author: srranga
 ms.service: postgresql
+ms.subservice: migration-guide
 ms.topic: how-to
 ms.date: 09/22/2020
-ms.openlocfilehash: 4fe15d1bd23f36b7289c54bedf575ae4760600e0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 16166183b56b371fe8338894f83dbacf2e659c53
+ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91710813"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103563564"
 ---
 # <a name="migrate-your-postgresql-database-using-dump-and-restore"></a>PostgreSQL veritabanınızı döküm ve geri yükleme kullanarak geçirme
 [!INCLUDE[applies-to-postgres-single-flexible-server](includes/applies-to-postgres-single-flexible-server.md)]
 
 Bir PostgreSQL veritabanını bir döküm dosyasına ayıklamak ve pg_dump tarafından oluşturulan bir arşiv dosyasından PostgreSQL veritabanını geri yüklemek için [pg_restore](https://www.postgresql.org/docs/current/static/app-pgrestore.html) [pg_dump](https://www.postgresql.org/docs/current/static/app-pgdump.html) kullanabilirsiniz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 Bu nasıl yapılır kılavuzunda ilerlemek için şunlar gerekir:
 - Üzerinde erişime ve veritabanına izin vermek için güvenlik duvarı kuralları içeren bir [PostgreSQL sunucusu Için Azure veritabanı](quickstart-create-server-database-portal.md) .
 - [pg_dump](https://www.postgresql.org/docs/current/static/app-pgdump.html) ve [pg_restore](https://www.postgresql.org/docs/current/static/app-pgrestore.html) komut satırı yardımcı programları yüklendi
@@ -50,14 +51,14 @@ pg_restore -v --no-owner --host=<server name> --port=<port> --username=<user-nam
 > Windows komut satırında, `SET PGSSLMODE=require` pg_restore komutunu çalıştırmadan önce komutunu çalıştırın. Linux veya bash içinde `export PGSSLMODE=require` pg_restore komutunu çalıştırmadan önce komutunu çalıştırın.
 >
 
-Bu örnekte, **TestDB. dump** döküm dosyasındaki verileri, **mydemoserver.Postgres.Database.Azure.com**hedef sunucusundaki **mypgsqldb** veritabanına geri yükleyin.
+Bu örnekte, **TestDB. dump** döküm dosyasındaki verileri, **mydemoserver.Postgres.Database.Azure.com** hedef sunucusundaki **mypgsqldb** veritabanına geri yükleyin.
 
-Bu **Pg_restore** **tek sunucu**için nasıl kullanılacağına ilişkin bir örnek aşağıda verilmiştir:
+Bu **Pg_restore** **tek sunucu** için nasıl kullanılacağına ilişkin bir örnek aşağıda verilmiştir:
 
 ```bash
 pg_restore -v --no-owner --host=mydemoserver.postgres.database.azure.com --port=5432 --username=mylogin@mydemoserver --dbname=mypgsqldb testdb.dump
 ```
-**Esnek sunucu**için bu **pg_restore** kullanmanın bir örneği aşağıda verilmiştir:
+**Esnek sunucu** için bu **pg_restore** kullanmanın bir örneği aşağıda verilmiştir:
 
 ```bash
 pg_restore -v --no-owner --host=mydemoserver.postgres.database.azure.com --port=5432 --username=mylogin --dbname=mypgsqldb testdb.dump
@@ -73,7 +74,7 @@ Mevcut PostgreSQL veritabanınızı PostgreSQL için Azure veritabanı 'na geçi
 >
 
 ### <a name="for-the-backup"></a>Yedekleme için
-- Geri yüklemeyi hızlandırmak üzere paralel olarak gerçekleştirebilmek için-FC anahtarıyla yedeklemeyi gerçekleştirin. Örneğin:
+- Geri yüklemeyi hızlandırmak üzere paralel olarak gerçekleştirebilmek için-FC anahtarıyla yedeklemeyi gerçekleştirin. Örnek:
 
     ```bash
     pg_dump -h my-source-server-name -U source-server-username -Fc -d source-databasename -f Z:\Data\Backups\my-database-backup.dump
@@ -84,13 +85,13 @@ Mevcut PostgreSQL veritabanınızı PostgreSQL için Azure veritabanı 'na geçi
 
 - Varsayılan olarak zaten yapılmalıdır, ancak create INDEX deyimlerinin veri ekleme deyimlerinden sonra olduğunu doğrulamak için döküm dosyasını açın. Böyle değilse, veri eklendikten sonra CREATE INDEX deyimlerini taşıyın.
 
-- Restore ile paralel hale getirmek için-FC ve-j anahtarlarıyla geri yükleyin *#* . *#* , hedef sunucudaki çekirdekler sayısıdır. *#* Etkiyi görmek için hedef sunucunun çekirdek sayısının iki katı olarak ayarlamayı da deneyebilirsiniz. Örneğin:
+- Restore ile paralel hale getirmek için-FC ve-j anahtarlarıyla geri yükleyin *#* . *#* , hedef sunucudaki çekirdekler sayısıdır. *#* Etkiyi görmek için hedef sunucunun çekirdek sayısının iki katı olarak ayarlamayı da deneyebilirsiniz. Örnek:
 
-Bu **Pg_restore** **tek sunucu**için nasıl kullanılacağına ilişkin bir örnek aşağıda verilmiştir:
+Bu **Pg_restore** **tek sunucu** için nasıl kullanılacağına ilişkin bir örnek aşağıda verilmiştir:
 ```bash
  pg_restore -h my-target-server.postgres.database.azure.com -U azure-postgres-username@my-target-server -Fc -j 4 -d my-target-databasename Z:\Data\Backups\my-database-backup.dump
 ```
-**Esnek sunucu**için bu **pg_restore** kullanmanın bir örneği aşağıda verilmiştir:
+**Esnek sunucu** için bu **pg_restore** kullanmanın bir örneği aşağıda verilmiştir:
 ```bash
  pg_restore -h my-target-server.postgres.database.azure.com -U azure-postgres-username@my-target-server -Fc -j 4 -d my-target-databasename Z:\Data\Backups\my-database-backup.dump
  ```

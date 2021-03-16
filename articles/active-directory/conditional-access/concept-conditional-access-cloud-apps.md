@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1b3b4da4e21bca421b76f820c04ba68375be5ca0
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 2895588a5a82ec2b6c69d33ff6cea39bbe3a0372
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93307776"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103492005"
 ---
 # <a name="conditional-access-cloud-apps-or-actions"></a>Koşullu erişim: bulut uygulamaları veya eylemleri
 
@@ -98,7 +98,7 @@ Office 365 istemci uygulamasında bulunan önemli uygulamalar:
 
 Microsoft Azure yönetim uygulaması birden çok temel hizmet içerir. 
 
-   - Azure portal
+   - Azure portalı
    - Azure Resource Manager sağlayıcı
    - Klasik dağıtım modeli API 'Leri
    - Azure PowerShell
@@ -125,8 +125,14 @@ Yöneticiler, Microsoft uygulamalarına ek olarak, koşullu erişim ilkelerine h
 
 ## <a name="user-actions"></a>Kullanıcı eylemleri
 
-Kullanıcı eylemleri, bir kullanıcı tarafından gerçekleştirilebilecek görevlerdir. Şu anda desteklenen tek eylem **güvenlik bilgilerini kaydeder** ve bu, Birleşik kayıt için etkinleştirilen kullanıcılar güvenlik bilgilerini kaydetmeye çalışırken koşullu erişim ilkesinin uygulanmasını sağlar. Daha fazla bilgi için, [Birleşik güvenlik bilgileri kaydı](../authentication/concept-registration-mfa-sspr-combined.md)başlıklı makaleye ulaşabilirsiniz.
+Kullanıcı eylemleri, bir kullanıcı tarafından gerçekleştirilebilecek görevlerdir. Şu anda koşullu erişim iki kullanıcı eylemini destekler: 
 
+- **Güvenlik bilgilerini kaydet**: bu kullanıcı eylemi, Birleşik kayıt için etkinleştirilen kullanıcılar güvenlik bilgilerini kaydetmeye çalışırken koşullu erişim ilkesinin uygulanmasını sağlar. Daha fazla bilgi için, [Birleşik güvenlik bilgileri kaydı](../authentication/concept-registration-mfa-sspr-combined.md)başlıklı makaleye ulaşabilirsiniz.
+
+- **Cihazları Kaydet veya birleştir (Önizleme)**: bu kullanıcı eylemi, [Kullanıcılar cihazları](../devices/concept-azure-ad-join.md) [kaydederken](../devices/concept-azure-ad-register.md) veya Azure AD 'ye eklerken koşullu erişim ilkesi uygulanmasını sağlar. Bu kullanıcı eylemiyle ilgili iki önemli sorun vardır: 
+   - `Require multi-factor authentication` Bu kullanıcı eylemiyle kullanılabilen tek erişim denetimi ve diğerleri devre dışı bırakıldı. Bu kısıtlama, Azure AD cihaz kaydına bağlı olan veya Azure AD cihaz kaydı için geçerli olmayan erişim denetimleriyle ilgili çakışmaları engeller. 
+   - Bu kullanıcı eylemiyle bir koşullu erişim ilkesi etkinleştirildiğinde, **Azure Active Directory**  >  **cihazları**  >  **cihaz ayarlarını**  -  `Devices to be Azure AD joined or Azure AD registered require Multi-Factor Authentication` **Hayır** olarak ayarlamanız gerekir. Aksi takdirde, bu kullanıcı eylemiyle koşullu erişim ilkesi düzgün zorlanmaz. Bu cihaz ayarıyla ilgili daha fazla bilgiyi [cihaz ayarlarını yapılandırma](../device-management-azure-portal.md##configure-device-settings)bölümünde bulabilirsiniz. Bu Kullanıcı eylemi, cihaz ayarlarında kiracı genelinde bir ilkeye sahip olmak yerine belirli kullanıcılar ve gruplar ya da koşullar için cihaz kaydetme veya birleştirme için çok faktörlü kimlik doğrulaması gerektirme esnekliği sağlar. 
+   
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Koşullu erişim: koşullar](concept-conditional-access-conditions.md)

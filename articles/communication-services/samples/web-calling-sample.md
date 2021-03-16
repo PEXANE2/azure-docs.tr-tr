@@ -6,15 +6,15 @@ author: chriswhilar
 manager: mariusu-msft
 services: azure-communication-services
 ms.author: mariusu
-ms.date: 10/15/2020
+ms.date: 03/10/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: c3ceb866d9ca817299929b9a811915b82ccfbd48
-ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
+ms.openlocfilehash: 824fd19e8acfed75ab3d64048a00f579b70286d2
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102614753"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103496244"
 ---
 # <a name="get-started-with-the-web-calling-sample"></a>Web 'i çağıran örnekle çalışmaya başlama
 
@@ -93,7 +93,7 @@ Daha fazla bilgi için aşağıdaki makaleleri inceleyin:
 
 ## <a name="additional-reading"></a>Ek okuma
 
-- [Azure Iletişim GitHub](https://github.com/Azure/communication) -resmi GitHub sayfasında daha fazla örnek ve bilgi bulun
+- [Örnekler](./overview.md) -örneklere genel bakış sayfamızda daha fazla örnek ve örnek bulun.
 - [Redux](https://redux.js.org/) -istemci tarafı durum yönetimi
 - [Floentuı](https://aka.ms/fluent-ui) -MICROSOFT Powered UI kitaplığı
 - Kullanıcı arabirimleri oluşturmak için [tepki](https://reactjs.org/) verme kitaplığı

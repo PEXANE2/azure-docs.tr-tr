@@ -4,18 +4,21 @@ description: Bu makalede, MySQL için Azure veritabanı 'nda MySQL çalışma ek
 author: savjani
 ms.author: pariks
 ms.service: mysql
+ms.subservice: migration-guide
 ms.topic: conceptual
 ms.date: 10/30/2020
-ms.openlocfilehash: af9f0f65e01a786d478fac0adde6174b8f03b2fd
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 391a38cd3d1e2ffb790587b6c60ed54992d14d2d
+ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96019914"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103562000"
 ---
 # <a name="migrate-your-mysql-database-by-using-import-and-export"></a>İçeri ve dışarı aktarma kullanarak MySQL veritabanınızı geçirme
 [!INCLUDE[applies-to-single-flexible-server](includes/applies-to-single-flexible-server.md)]
 Bu makalede MySQL çalışma ekranı kullanarak bir MySQL için Azure veritabanı sunucusuna verileri içeri ve dışarı aktarmaya yönelik iki yaygın yaklaşım açıklanmaktadır.
+
+Ayrıntılı ve kapsamlı bir geçiş kılavuzu için bkz. [MySQL to Azure veritabanı geçiş kılavuzu](https://github.com/Azure/azure-mysql/tree/master/MigrationGuide). 
 
 Ayrıca, [veritabanı geçiş kılavuzu](https://github.com/Azure/azure-mysql/tree/master/MigrationGuide) ' na başvurarak ayrıntılı bilgiler ve veritabanlarını MySQL Için Azure veritabanı 'na geçirme hakkındaki durumları kullanabilirsiniz. Bu kılavuz, Azure 'a bir MySQL geçişinin başarıyla planlanmasını ve yürütülmesini sağlayacak yönergeler sağlar.
 
@@ -40,7 +43,7 @@ Bağlantı bilgilerini MySQL çalışma ekranına ekleyin.
 > [!TIP]
 > Tüm veritabanını dökümünü almak ve geri yüklemek istediğiniz senaryolar için, bunun yerine [döküm ve geri yükleme](concepts-migrate-dump-restore.md) yaklaşımını kullanmanız gerekir.
 
-Aşağıdaki senaryolarda bulunan veritabanlarını Azure MySQL veritabanına içeri ve dışarı aktarmak için MySQL araçlarını kullanın.
+Aşağıdaki senaryolarda bulunan veritabanlarını Azure MySQL veritabanına içeri ve dışarı aktarmak için MySQL araçlarını kullanın. Diğer araçlar için, [MySQL to Azure veritabanı geçiş kılavuzu](https://github.com/Azure/azure-mysql/blob/master/MigrationGuide/MySQL%20Migration%20Guide_v1.1.pdf)sayfasına bakın. 
 
 - Mevcut bir MySQL veritabanından Azure MySQL veritabanına içeri aktarmak için seçmeli olarak birkaç tablo seçmeniz gerektiğinde, bu, içeri ve dışarı aktarma tekniğinin kullanılması en iyisidir.  Bunu yaptığınızda, zaman ve kaynakları kazanmak için geçişten gereksiz tabloları atlayabilirsiniz. Örneğin, `--include-tables` `--exclude-tables` [mysqlpump](https://dev.mysql.com/doc/refman/5.7/en/mysqlpump.html#option_mysqlpump_include-tables) ile veya anahtarını `--tables` [mysqldump](https://dev.mysql.com/doc/refman/5.7/en/mysqldump.html#option_mysqldump_tables)ile anahtarla kullanın.
 - Tablo dışındaki veritabanı nesnelerini taşırken, bu nesneleri açıkça oluşturun. Kısıtlama (birincil anahtar, yabancı anahtar, dizinler), görünümler, işlevler, yordamlar, Tetikleyiciler ve geçirmek istediğiniz diğer veritabanı nesneleri dahil edin.

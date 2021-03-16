@@ -1,6 +1,6 @@
 ---
-title: Azure RTOS için güvenlik modülü genel bakış
-description: IoT için Azure Defender 'ın bir parçası olarak Azure RTOS desteği ve uygulama için güvenlik modülü hakkında daha fazla bilgi edinin.
+title: Defender-IoT-Micro-Agent for Azure RTOS genel bakış
+description: IoT için Azure Defender 'ın bir parçası olarak Azure RTOS desteği ve uygulama için Defender-IoT-Micro-Agent hakkında daha fazla bilgi edinin.
 services: defender-for-iot
 ms.service: defender-for-iot
 documentationcenter: na
@@ -13,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/14/2021
 ms.author: shhazam
-ms.openlocfilehash: 47b2b49a21a82be13c987b95c7c775f5014a532e
-ms.sourcegitcommit: 4784fbba18bab59b203734b6e3a4d62d1dadf031
+ms.openlocfilehash: ae1ae941dcb1af73286a4865089b1be227c484fc
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99809091"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103496057"
 ---
-# <a name="overview-defender-for-iot-security-module-for-azure-rtos-preview"></a>Genel Bakış: Azure RTOS için IoT güvenlik modülü için Defender (Önizleme)
+# <a name="overview-defender-for-iot-defender-iot-micro-agent-for-azure-rtos-preview"></a>Genel Bakış: IoT Defender için Defender-IoT-Micro-Agent for Azure RTOS (Önizleme)
 
-IoT mikro modülü için Azure Defender, Azure RTOS kullanan cihazlar için kapsamlı bir güvenlik çözümü sağlar. Ortak tehditler ve gerçek zamanlı işletim sistemi (RTOS) cihazlarındaki olası kötü amaçlı etkinlikler için kapsam sağlar. Azure RTOS, içinde yerleşik olarak bulunan Azure IoT güvenlik modülü ile birlikte kullanıma sunulmuştur.
+IoT mikro modülü için Azure Defender, Azure RTOS kullanan cihazlar için kapsamlı bir güvenlik çözümü sağlar. Ortak tehditler ve gerçek zamanlı işletim sistemi (RTOS) cihazlarındaki olası kötü amaçlı etkinlikler için kapsam sağlar. Azure RTOS artık içinde yerleşik olarak bulunan Azure IoT Defender-IoT-Micro-Agent ile birlikte sunulur.
 
 :::image type="content" source="./media/architecture/azure-rtos-security-monitoring.png" alt-text="IoT Azure RTOS için Defender görselleştirme.":::
 
@@ -47,11 +47,11 @@ IoT için önerilen altyapı Defender 'ı kullanarak, ortamınızdaki sorunlar h
 
 ## <a name="get-started-protecting-azure-rtos-devices"></a>Azure RTOS cihazlarını korumaya başlama
 
-Azure RTOS için güvenlik modülü, cihazlarınız için ücretsiz bir indirme olarak sunulmaktadır. IoT bulut hizmeti için Defender, Azure aboneliği başına 30 günlük deneme sürümü ile kullanılabilir. Başlamak için [Azure RTOS güvenlik modülünü](https://github.com/MicrosoftDocs/azure-docs/blob/master/articles/defender-for-iot/iot-security-azure-rtos.md)indirin. 
+Defender-IoT-Micro-for Azure RTOS, cihazlarınız için ücretsiz bir indirme olarak sunulmaktadır. IoT bulut hizmeti için Defender, Azure aboneliği başına 30 günlük deneme sürümü ile kullanılabilir. Başlamak için, [Azure RTOS Için Defender-IoT-mikro-Agent](https://github.com/MicrosoftDocs/azure-docs/blob/master/articles/defender-for-iot/iot-security-azure-rtos.md)' ı indirin. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu makalede, Azure RTOS için güvenlik modülü hakkında bilgi edindiniz. Güvenlik modülü hakkında daha fazla bilgi edinmek ve kullanmaya başlamak için aşağıdaki makalelere bakın:
+Bu makalede, Azure RTOS için Defender-IoT-mikro-Agent hakkında bilgi edindiniz. Defender-IoT-Micro-Agent ve Başlarken hakkında daha fazla bilgi edinmek için aşağıdaki makalelere bakın:
 
-- [Azure RTOS IoT güvenlik modülü kavramları](concept-rtos-security-module.md)
-- [Hızlı başlangıç: Azure RTOS IoT güvenlik modülü](quickstart-azure-rtos-security-module.md)
+- [Azure RTOS IoT Defender-IoT-mikro aracı kavramları](concept-rtos-security-module.md)
+- [Hızlı başlangıç: Azure RTOS IoT Defender-IoT-Micro-Agent](quickstart-azure-rtos-security-module.md)

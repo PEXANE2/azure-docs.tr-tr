@@ -10,16 +10,23 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: wellsi
-ms.openlocfilehash: af66f2ec56551a5177cd9323d216e9bf4b0c41be
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 1b2418b248e995b0f64eec82ccb477b15583c81e
+ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95021856"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103562340"
 ---
 # <a name="release-notes-speech-devices-sdk"></a>Sürüm notları: konuşma cihazları SDK 'Sı
 
 Aşağıdaki bölümlerde en son sürümlerde değişiklikler listelenmiştir.
+
+## <a name="speech-devices-sdk-1150"></a>Konuşma cihazları SDK 1.15.0:
+
+- Konuşma için geliştirilmiş beamoluşturan ve gürültü azaltmasıyla yeni Microsoft ses yığınına (MAS) yükseltilir.
+- Hedefe bağlı olarak %70 ' a kadar ikili boyut azalır.
+- [İkili sürüm](https://aka.ms/sdsdk-download-APAudio)Ile [Azure Percept ses](https://docs.microsoft.com/azure/azure-percept/overview-azure-percept-audio) desteği.
+- [Konuşma SDK](./speech-sdk.md) bileşeni 1.15.0 sürümüne güncelleştirildi. Daha fazla bilgi için [sürüm notlarına](./releasenotes.md)bakın.
 
 ## <a name="speech-devices-sdk-1110"></a>Konuşma cihazları SDK 1.11.0:
 

@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/08/2021
+ms.date: 03/15/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 8cb31f57e5403e99e2ef9bfcc5d1042e33516d1d
-ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
+ms.openlocfilehash: 397fff3fafad52b3b989049096fb2d3e1fa2cba1
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "102448158"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103488525"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-twitter-account-using-azure-active-directory-b2c"></a>Azure Active Directory B2C kullanarak bir Twitter hesabıyla kaydolma ve oturum açma ayarlama
 
@@ -45,8 +45,12 @@ Azure AD B2C bir Twitter hesabı olan kullanıcılar için oturum açmayı etkin
 1. **Kimlik doğrulama ayarları** altında **Düzenle** ' yi seçin.
     1. **3-lelenmiş OAuth** onay kutusunu Etkinleştir ' i seçin.
     1. **Kullanıcılardan e-posta adresini iste** onay kutusunu seçin.
-    1. **Geri çağırma URL 'leri** için girin `https://your-tenant.b2clogin.com/your-tenant.onmicrosoft.com/your-user-flow-Id/oauth1/authresp` . Öğesini `your-tenant` kiracı adınızın adıyla ve `your-user-flow-Id` Kullanıcı akışınız tanımlayıcısıyla değiştirin. Örneğin, `b2c_1a_signup_signin_twitter`. Azure AD B2C büyük harfle tanımlansalar bile kiracı adınızı ve Kullanıcı akış kimliğinizi girerken tüm küçük harfleri kullanın.
-    1. **Web sitesi URL 'si** için girin `https://your-tenant.b2clogin.com` . `your-tenant`Kiracınızın adıyla değiştirin. Örneğin, `https://contosob2c.b2clogin.com`.
+    1. **Geri çağırma URL 'leri** için girin `https://your-tenant.b2clogin.com/your-tenant-name.onmicrosoft.com/your-user-flow-Id/oauth1/authresp` .  [Özel bir etki alanı](custom-domain.md)kullanıyorsanız, girin `https://your-domain-name/your-tenant-name.onmicrosoft.com/your-user-flow-Id/oauth1/authresp` . Azure AD B2C büyük harfle tanımlansalar bile kiracı adınızı ve Kullanıcı akış kimliğinizi girerken tüm küçük harfleri kullanın. Değiştir:
+        - `your-tenant-name` , kiracı adınızın adı ile.
+        - `your-domain-name` Özel etki alanınız ile.
+        - `your-user-flow-Id` Kullanıcı akışlarınızın tanımlayıcısıyla. Örneğin, `b2c_1a_signup_signin_twitter`. 
+    
+    1. **Web sitesi URL 'si** için girin `https://your-tenant.b2clogin.com` . `your-tenant`Kiracınızın adıyla değiştirin. Örneğin, `https://contosob2c.b2clogin.com`. [Özel bir etki alanı](custom-domain.md)kullanıyorsanız, girin `https://your-domain-name` .
     1. **Hizmet koşulları** IÇIN bir URL girin (örneğin,) `http://www.contoso.com/tos` . İlke URL 'SI, uygulamanız için hüküm ve koşullar sağlamak üzere tuttuğunuz bir sayfasıdır.
     1. **Gizlilik ilkesi** IÇIN bir URL girin, örneğin `http://www.contoso.com/privacy` . İlke URL 'SI, uygulamanız için gizlilik bilgilerini sağlamak üzere tuttuğunuz bir sayfasıdır.
     1. **Kaydet**’i seçin.

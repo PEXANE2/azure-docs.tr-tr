@@ -162,6 +162,8 @@
               href: azure-stack-edge-gpu-kubernetes-rbac.md
             - name: Kubernetes iş yükleri
               href: azure-stack-edge-gpu-kubernetes-workload-management.md
+        - name: GPU paylaşımı nedir?
+          href: azure-stack-edge-gpu-sharing.md
         - name: Key Vault tümleştirmesini görüntüleme
           href: azure-stack-edge-gpu-activation-key-vault.md
         - name: Proaktif günlüğe kaydetmeyi etkinleştirme
@@ -194,10 +196,14 @@
                   href: azure-stack-edge-gpu-deploy-stateful-application-static-provision-kubernetes.md
                 - name: Dinamik sağlanmış durum bilgisi olan uygulama
                   href: azure-stack-edge-gpu-deploy-stateful-application-dynamic-provision-kubernetes.md
+                - name: GPU paylaşılan iş yükü
+                  href: azure-stack-edge-gpu-deploy-kubernetes-gpu-sharing.md
             - name: IoT Edge yoluyla
               items:
                 - name: Durum bilgisi olmayan uygulama
                   href: azure-stack-edge-gpu-deploy-stateless-application-iot-edge-module.md
+                - name: GPU paylaşılan iş yükü
+                  href: azure-stack-edge-gpu-deploy-iot-edge-gpu-sharing.md
                 - name: C# modülü geliştirme
                   href: azure-stack-edge-gpu-create-iot-edge-module.md
             - name: Azure Arc aracılığıyla (Önizleme)

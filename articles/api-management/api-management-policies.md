@@ -10,14 +10,14 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 11/19/2017
+ms.date: 02/17/2021
 ms.author: apimpm
-ms.openlocfilehash: 312a496a5acda05a6b04a0bb47abb101f4ffcc8e
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: e809efa9da32da5fe9ca296608c602e770f78265
+ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92107598"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103562357"
 ---
 # <a name="api-management-policies"></a>API Management ilkeleri
 Bu bölüm aşağıdaki API Management ilkeleri için bir başvuru sağlar. İlke ekleme ve yapılandırma hakkında daha fazla bilgi için bkz. [API Management ilkeleri](api-management-howto-policies.md).
@@ -81,6 +81,12 @@ Bu bölüm aşağıdaki API Management ilkeleri için bir başvuru sağlar. İlk
     - [Bir hizmete Istek gönder](api-management-dapr-policies.md#invoke) -bir davpr mikro hizmetini bulmak ve güvenilir bir şekilde iletişim kurmak Için davpr çalışma zamanı 'nı kullanır.
     -  Yayın [/alt konuya Ileti gönder](api-management-dapr-policies.md#pubsub) -bir yayımla/abone ol konusuna ileti yayımlamak Için davpr çalışma zamanı kullanır.
     -  [Çıkış bağlamasını Tetikle](api-management-dapr-policies.md#bind) -çıkış bağlaması aracılığıyla bir dış sistem çağırmak Için davpr çalışma zamanı kullanır.
+- [Doğrulama ilkeleri](validation-policies.md)
+    - [Içeriği doğrula](validation-policies.md#validate-content) -API şemasında bir isteğin veya Yanıt gövdesinin boyutunu veya JSON şemasını doğrular.
+. 
+    - [Parametreleri doğrula](validation-policies.md#validate-parameters) -istek üst bilgisini, sorguyu veya yol parametrelerini API şemasına göre doğrular.
+    - [Üstbilgileri doğrula](validation-policies.md#validate-headers) -yanıt üstbilgilerini API şemasına göre doğrular.
+    - [Durum kodunu doğrula](validation-policies.md#validate-status-code) -API şemasına karşı yanıt olarak http durum kodlarını doğrular.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 İlkelerle çalışma hakkında daha fazla bilgi için bkz.

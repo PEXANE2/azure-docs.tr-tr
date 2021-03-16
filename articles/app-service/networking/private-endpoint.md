@@ -9,12 +9,12 @@ ms.author: ericg
 ms.service: app-service
 ms.workload: web
 ms.custom: fasttrack-edit, references_regions
-ms.openlocfilehash: 4534a315429a120af45dfd495df4a8c29b233de7
-ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
+ms.openlocfilehash: 8d471b680a6ff97b4b96a9c5f90f5548488dd35f
+ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98763039"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103563620"
 ---
 # <a name="using-private-endpoints-for-azure-web-app"></a>Azure Web App için Özel Uç Noktaları Kullanma
 
@@ -121,6 +121,8 @@ Belirli bir Web uygulamasına en fazla 100 özel uç nokta bağlayabilirsiniz.
 Yuvalar özel uç nokta kullanamaz.
 
 Web uygulaması için özel uç nokta etkinleştirildiğinde uzaktan hata ayıklama işlevselliği kullanılamaz. Bu öneri, kodu bir yuvaya dağıtmaktır ve burada uzaktan hata ayıklayın.
+
+FTP erişimi, gelen genel IP adresi üzerinden sağlanır. Özel uç nokta Web uygulamasına FTP erişimini desteklemez.
 
 Özel bağlantı özelliğini ve özel uç noktayı düzenli olarak geliştirdik, sınırlamalar hakkında güncel bilgiler için [Bu makaleye][pllimitations] bakın.
 

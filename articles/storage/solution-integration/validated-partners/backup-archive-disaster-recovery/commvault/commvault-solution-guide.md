@@ -1,104 +1,115 @@
 ---
 title: Commkasasıyla verilerinizi Azure 'a yedekleyin
-titleSuffix: Azure Blob Storage Docs
-description: Web sayfası, Azure 'dan bir depolama hedefi ve kurtarma konumu olarak Azure 'dan yararlanmak için göz önünde bulundurulması gereken faktörlere ve İzlenecek adımları sağlar. yedekleme ve kurtarma
-keywords: Commkasakasası, buluta yedekleme, yedekleme, Azure 'a yedekleme, olağanüstü durum kurtarma, Iş sürekliliği
+titleSuffix: Azure Storage
+description: Azure 'un bir depolama hedefi ve kurtarma konumu olarak Azure kullanımı için gereken etkenlere ve izlenecek adımlara genel bir bakış sağlar. yedekleme ve kurtarma
 author: karauten
 ms.author: karauten
-ms.date: 11/11/2020
-ms.topic: article
+ms.date: 03/15/2021
+ms.topic: conceptual
 ms.service: storage
-ms.subservice: blobs
-ms.openlocfilehash: bc5bcca394fa66cea9cbf6bc20ac7d164c671cf7
-ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
+ms.subservice: partner
+ms.openlocfilehash: 29484bee685fcc15073ef255e65a780e05f1200d
+ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/11/2021
-ms.locfileid: "102632960"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103561677"
 ---
-# <a name="back-up-to-azure-with-commvault"></a>Commkasasıyla Azure 'a yedekleme
+# <a name="backup-to-azure-with-commvault"></a>Commkasasıyla Azure 'da yedekleme
 
-Bu makalede, Azure Blob depolama ile bir Commkasa altyapısını tümleştirme Kılavuzu sunulmaktadır. Önkoşulları, Azure depolama ilkelerini, uygulamayı ve operasyonel Kılavuzu içerir. Bu makale yalnızca, birincil sitenizde normal işlemi önleyen bir olağanüstü durum durumunda Azure 'u site dışı bir yedekleme hedefi ve kurtarma sitesi olarak kullanarak adresleyebilirsiniz. Ayrıca, bir Azure üretim ortamındaki kaynakların olağanüstü durum ve koruma durumunda çalışmaya hazır bir VM 'nin önyüklemesinde ve kurtarılmasına daha hızlı bir şekilde kurtarılmasını sağlamak için de bir düşük RTO çözümü, Commkasak canlı eşitlemesi de sunmaktadır. Bu yetenekler, bu belgenin kapsamı dışındadır. 
+Bu makale, Azure Blob depolama ile bir Commkasa altyapısını tümleştirmenize yardımcı olur. Önkoşullar, önemli noktalar, uygulama ve operasyonel kılavuz içerir. Bu makalede, birincil sitenizde normal işlemi önleyen bir olağanüstü durum oluşursa, site dışı bir yedekleme hedefi ve bir kurtarma sitesi olarak Azure kullanımı ele alınmaktadır.
 
-## <a name="reference-architecture-for-on-premises-to-azure-and-in-azure-deployments"></a>Şirket içinden Azure 'a ve In-Azure dağıtıma yönelik başvuru mimarisi
+> [!NOTE]
+> Commkasa, daha düşük bir kurtarma süresi hedefi (RTO) çözümü, Commkasasel canlı eşitleme sağlar. Bu çözüm, bir Azure üretim ortamında olağanüstü bir durum oluşması durumunda daha hızlı kurtarmanıza yardımcı olabilecek bir bekleme sanal makinesine sahip olmanızı sağlar. Bu yetenekler, bu belgenin kapsamı dışındadır.
+
+## <a name="reference-architecture"></a>Başvuru mimarisi
+
+Aşağıdaki diyagramda, şirket içi Azure 'a ve Azure 'da dağıtımlara yönelik bir başvuru mimarisi sunulmaktadır.
 
 ![Azure başvuru mimarisine yönelik commkasadan](../media/commvault-diagram.png)
 
-Mevcut bir Azure depolama hesabı veya birden çok hesap ekleyerek bulut depolama hedefi olarak Azure ile kolayca tümleştirilebilir. Ayrıca, Azure 'da şirket içi kurtarma sitesi sunarak Azure 'daki yedeklemeleri kurtarmanızı sağlar.   
+Mevcut bir Azure depolama hesabı veya birden çok hesap ekleyerek bulut depolama hedefi olarak Azure ile kolayca tümleştirilebilir. Ayrıca, Azure 'da şirket içi kurtarma sitesi sunarak Azure 'daki yedeklemeleri kurtarmanızı sağlar.
 
 ## <a name="commvault-interoperability-matrix"></a>Commkasası birlikte çalışabilirlik matrisi
+
 | İş Yükü | GPv2 ve BLOB depolama | Cool katman desteği | Arşiv katmanı desteği | Data Box aile desteği |
 |-----------------------|--------------------|--------------------|-------------------------|-------------------------|
 | Şirket içi VM 'Ler/veriler | v 11,5 lik | v 11,5 lik | v 11.10 | v 11.10 |
-| Azure VM’leri | v 11,5 lik | v 11,5 lik | v 11,5 lik | NA |
-| Azure Blob | v 6x | v 6x | v 6x | NA |
-| Azure Dosyaları | v 6x | v 6x | v 6x | NA | 
+| Azure VM’leri | v 11,5 lik | v 11,5 lik | v 11,5 lik | Yok |
+| Azure Blob | v 6x | v 6x | v 6x | Yok |
+| Azure Dosyaları | v 6x | v 6x | v 6x | Yok |
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 
-Küçük bir ön planlama, Azure 'u site dışında bir yedekleme hedefi ve kurtarma sitesi olarak kullanan birçok, çok mutlu müşterinin derecelendirmelerinin katılırsanız emin olmanızı sağlayacaktır.
+Küçük bir ön planlama, Azure 'u site dışı yedekleme hedefi ve kurtarma sitesi olarak kullanmanıza yardımcı olur.
 
-### <a name="are-you-new-to-azure"></a>Azure 'da yeni misiniz?
+### <a name="get-started-with-azure"></a>Azure'ı kullanmaya başlayın
 
-Microsoft, Azure kullanmaya başlamanızı sağlamak için izlenecek bir çerçeve sunar. [Bulut benimseme çerçevesi](https://docs.microsoft.com/azure/architecture/cloud-adoption/) \( CAF, \) Kurumsal Dijital dönüştürmeye yönelik ayrıntılı bir yaklaşım ve üretim sınıfı bulutu benimseme planlaması için kapsamlı kılavuz. CAF hızlı ve güvenli bir şekilde çalışmaya başlamanıza ve [Azure portalında](https://portal.azure.com/?feature.quickstart=true#blade/Microsoft_Azure_Resources/QuickstartCenterBlade)etkileşimli bir sürüm bulmanıza yardımcı olmak için Azure 'a yönelik adım adım [Azure kurulum kılavuzunu](https://docs.microsoft.com/azure/cloud-adoption-framework/ready/azure-setup-guide/) içerir. Azure uzmanlığına yol açmak için uygulama dağıtmak ve ücretsiz eğitim kaynakları dağıtmak üzere örnek mimarilere ve belirli en iyi uygulamaları bulacaksınız.
+Microsoft, Azure kullanmaya başlamanızı sağlamak için izlenecek bir çerçeve sunar. [Bulut benimseme çerçevesi](https://docs.microsoft.com/azure/architecture/cloud-adoption/) (CAF), bir üretim sınıfı bulutu benimseme planlaması için kurumsal dijital dönüştürmeye ve kapsamlı kılavuza yönelik ayrıntılı bir yaklaşımdır. CAF, hızlı ve güvenli bir şekilde çalışmaya başlamanıza yardımcı olacak adım adım bir [Azure Kurulum Kılavuzu](https://docs.microsoft.com/azure/cloud-adoption-framework/ready/azure-setup-guide/) içerir. [Azure Portal](https://portal.azure.com/?feature.quickstart=true#blade/Microsoft_Azure_Resources/QuickstartCenterBlade)etkileşimli bir sürüm bulabilirsiniz. Örnek mimarilerin, uygulama dağıtmaya yönelik belirli en iyi uygulamaları ve Azure uzmanlığına yola koymak için ücretsiz eğitim kaynaklarını bulacaksınız.
 
 ### <a name="consider-the-network-between-your-location-and-azure"></a>Konumunuz ile Azure arasında ağı değerlendirin
 
-Bulut kaynaklarından yararlanarak üretim, test ve geliştirme veya yedekleme hedefi ve kurtarma sitesi olarak çalışır hale gelir. ilk yedekleme için bant genişliği ihtiyaçlarınızı ve şirket içi günlük aktarımları anlamak önemlidir. 
+Bulut kaynaklarını üretim, test ve geliştirme çalıştırmak için ya da bir yedekleme hedefi ve kurtarma sitesi olarak kullanıp kullanmayacağınızı, ilk yedekleme dengeli dağıtımı ve devam eden gündelik aktarımlar için bant genişliği ihtiyaçlarınızı anlamak önemlidir.
 
-Azure Data Box, taban çizgisi aktarımının maliyetten daha uzun sürmesini sağlamak için tahmin edilebilir olması gerekmeden, ilk yedekleme temelinizi ek bant genişliği gerektirmeden Azure 'a aktarmaya yönelik bir yol sağlar. İlk yedeklemenizi aktarmak için gereken süreyi tahmin etmek üzere bir depolama hesabı oluşturduğunuzda veri aktarımı tahmin Aracı ' dan yararlanabilirsiniz.
+Azure Data Box, ilk yedekleme temelinizi daha fazla bant genişliği gerekmeden Azure 'a aktarmaya yönelik bir yol sağlar. Taban çizgisi aktarımının tahmin edebileceğinden daha uzun sürme tahmini olması durumunda bu faydalıdır. İlk yedeklemenizi aktarmak için gereken süreyi tahmin etmek üzere bir depolama hesabı oluşturduğunuzda veri aktarımı tahmin aracı 'ı kullanabilirsiniz.
 
-![Azure depolama Veri Aktarımı Estimator](../media/az-storage-transfer.png)
+![Portalda Azure depolama veri aktarımı tahmin Aracı ' i gösterir.](../media/az-storage-transfer.png)
 
-, Üretim uygulamalarını etkilemeden gerekli aktarım penceresinde (yedekleme penceresi) günlük veri aktarımlarını desteklemek için yeterli ağ kapasitesi gerekeceğini unutmayın. Bu bölümde, ağ ihtiyaçlarınızı değerlendirmek için kullanılabilen araçların ve tekniklerin ana hatlarıyla yer alınacaktır.
+, Üretim uygulamalarını etkilemeden gerekli aktarım penceresinde (yedekleme penceresi) günlük veri aktarımlarını desteklemek için yeterli ağ kapasitesi gerekeceğini unutmayın. Bu bölümde, ağ ihtiyaçlarınızı değerlendirmek için kullanılabilen araçlar ve teknikler özetlenmektedir.
 
-#### <a name="how-can-you-determine-how-much-bandwidth-you-will-need"></a>Ne kadar bant genişliğine ihtiyacınız olacağını nasıl belirleyebilirsiniz?
+#### <a name="determine-how-much-bandwidth-youll-need"></a>Ne kadar bant genişliğine ihtiyacınız olacağını belirleme
 
--  Yedekleme yazılımınızdan raporlar. 
-  Commkasa, Azure 'a ilk temel aktarım için [değişiklik oranını](https://documentation.commvault.com/commvault/v11_sp19/article?p=39699.htm) ve [Toplam yedekleme kümesi boyutunu](https://documentation.commvault.com/commvault/v11_sp19/article?p=39621.htm) belirlemede Standart raporlar sağlar.
+Ne kadar bant genişliğine ihtiyacınız olacağını öğrenmek için aşağıdaki kaynakları kullanın:
+
+- Yedekleme yazılımınızdan raporlar.
+- Commkasa, Azure 'a ilk temel aktarım için [değişiklik oranını](https://documentation.commvault.com/commvault/v11_sp19/article?p=39699.htm) ve [Toplam yedekleme kümesi boyutunu](https://documentation.commvault.com/commvault/v11_sp19/article?p=39621.htm) belirlemede Standart raporlar sağlar.
 - Yazılım bağımsız değerlendirmesi ve raporlama araçlarını yedekleme:
   - [MiTrend](https://mitrend.com/)
   - [Aptları](https://www.veritas.com/insights/aptare-it-analytics)
   - [Veri Voss](https://www.datavoss.com/)
 
-#### <a name="how-will-i-know-how-much-headroom-i-have-with-my-current-internet-connection"></a>Geçerli Internet bağlantınızla ne kadar yer olduğunu nasıl anlarım?
+#### <a name="determine-unutilized-internet-bandwidth"></a>Unutilized internet bant genişliğini belirleme
 
-Günde ne kadar fazla yer olduğunu veya genellikle unutilized, bant genişliğini bir gün içinde nasıl kullanacağınızı bilmek önemlidir. Bu, uygulamanızı ilk kez karşıya yüklemek için, çevrimdışı dengeli dağıtım için Azure Data Box kullanmazlarsa ve yukarıda tanımlanan değişiklik hızına ve yedekleme pencerenize göre günlük yedeklemeleri tamamlamaya yönelik olarak değerlendirmenizi sağlar. Aşağıda, Azure 'daki yedeklemelerinizin tükettiği bant genişliği yer odasını belirlemek için kullanabileceğiniz yöntemler yer verilmiştir.
+Günde bir gün içinde (veya *yer* alan) bant genişliğinin ne kadar uygun olduğunu bilmeniz önemlidir. Bu, için hedeflerinizi karşılayıp karşılamadığını değerlendirmenize yardımcı olur:
 
-- Mevcut bir Azure ExpressRoute müşterisi misiniz? Azure portal [devre kullanımınızı](https://docs.microsoft.com/azure/expressroute/expressroute-monitoring-metrics-alerts#circuits-metrics) görüntüleyin.
-- ISS 'nize başvurabilirsiniz. Bunlar, mevcut günlük ve aylık kullanımlarınızı gösteren raporlar içermelidir.
-- Ağ trafiğinizi, yönlendiricinizin/anahtar düzeyinizdeki şu şekilde izleyerek kullanımı ölçebilir birkaç araç vardır:
+- çevrimdışı dengeli dağıtım için Azure Data Box kullanmadığınız ilk karşıya yükleme zamanı
+- daha önce tanımlanan değişiklik hızına ve yedekleme pencerenizi göre günlük yedeklemeler Tamamlanıyor
+
+Azure 'a yedeklemelerinizin tükettiği bant genişliği yer odasını belirlemek için aşağıdaki yöntemleri kullanın.
+
+- Mevcut bir Azure ExpressRoute müşterisiyseniz, [devre kullanımınızı](../../../../../expressroute/expressroute-monitoring-metrics-alerts.md#circuits-metrics) Azure Portal görüntüleyin.
+- ISS 'nize başvurun. Bu kişiler, mevcut günlük ve aylık kullanımlarınızı gösteren raporlar paylaşamazlar.
+- Ağ trafiğinizi yönlendirici/anahtar düzeyinde izleyerek kullanımı ölçebilir çeşitli araçlar vardır. Bu modüller şunlardır:
   - [Solarwinds bant genişliği çözümleyici paketi](https://www.solarwinds.com/network-bandwidth-analyzer-pack?CMP=ORG-BLG-DNS)
   - [Paessler PRTG](https://www.paessler.com/bandwidth_monitoring)
   - [Cisco Ağ Yardımcısı](https://www.cisco.com/c/en/us/products/cloud-systems-management/network-assistant/index.html)
   - [WhatsUp Gold](https://www.whatsupgold.com/network-traffic-monitoring)
 
-### <a name="choosing-the-right-storage-options"></a>Doğru depolama seçeneklerini seçme
+### <a name="choose-the-right-storage-options"></a>Doğru depolama seçeneklerini belirleyin
 
-Azure 'U bir yedekleme hedefi olarak kullanırken, müşteriler [Azure Blob depolama](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-introduction) 'yı kullanır\. Azure Blob depolama, Microsoft 'un nesne depolama çözümüdür. BLOB depolama, herhangi bir veri modeli veya tanımına bağlı olmayan çok büyük miktarlarda yapılandırılmamış verileri depolamak için iyileştirilmiştir. Ayrıca, Azure Storage dayanıklı, yüksek oranda kullanılabilir, güvenli ve ölçeklenebilir. Microsoft 'un platformu, iç SLA 'larınızı karşılamak için [esneklik düzeyi](https://docs.microsoft.com/azure/storage/common/storage-redundancy?toc=/azure/storage/blobs/toc.json) sağlamak üzere doğru iş yükünün doğru depolama alanını seçme esnekliği sunar. BLOB depolama, kullanım başına ödeme hizmetidir. Depolanan veri miktarı, bu verilere erişim ve seyrek erişimli ve arşiv katmanları söz konusu olduğunda, gereken en düşük saklama süresi için [aylık olarak ücretlendirilirsiniz](https://docs.microsoft.com/azure/storage/blobs/storage-blob-storage-tiers?tabs=azure-portal#pricing-and-billing) . Yedekleme verilerine uygulanabilecek dayanıklılık ve katmanlama seçenekleri aşağıdaki tablolarda özetlenmiştir.
+Azure 'U bir yedekleme hedefi olarak kullandığınızda [Azure Blob depolama alanını](../../../../blobs/storage-blobs-introduction.md)kullanacaksınız. BLOB depolama, Microsoft 'un nesne depolama çözümüdür. BLOB depolama, herhangi bir veri modeli veya tanımına bağlı olmayan çok büyük miktarlarda yapılandırılmamış verileri depolamak için iyileştirilmiştir. Ayrıca, Azure Storage dayanıklı, yüksek oranda kullanılabilir, güvenli ve ölçeklenebilir. İş yükünüz için doğru depolamayı, iç SLA 'larınızı karşılamak için [esneklik düzeyi](../../../../common/storage-redundancy.md) sağlamak üzere seçebilirsiniz. BLOB depolama, kullanım başına ödeme hizmetidir. Depolanan veri miktarı, bu verilere erişim ve seyrek erişimli ve arşiv katmanları söz konusu olduğunda, gereken en düşük saklama süresi için [aylık olarak ücretlendirilirsiniz](../../../../blobs/storage-blob-storage-tiers.md#pricing-and-billing) . Yedekleme verileri için geçerli olan dayanıklılık ve katmanlama seçenekleri aşağıdaki tablolarda özetlenmektedir.
 
-**Azure Blob depolama dayanıklılığı seçenekleri:**
+**BLOB depolama dayanıklılığı seçenekleri:**
 
-|  |Yerel Olarak Yedekli  |Bölge yedekli  |Coğrafi olarak yedekli  |Coğrafi bölge yedekli  |
+|  |Yerel olarak yedekli  |Bölge yedekli  |Coğrafi olarak yedekli  |Coğrafi bölge-yedekli  |
 |---------|---------|---------|---------|---------|
-|Geçerli kopya sayısı     | 3         | 3         | 6         | 6 |
-|Kullanılabilirlik Alanları sayısı     | 1         | 3         | 2         | 4 |
-|Bölge sayısı     | 1         | 1         | 2         | 2 |
-|Ikincil bölgeye el ile yük devretme     | NA         | NA         | Yes         | Yes |
+|**Geçerli kopya sayısı**     | 3         | 3         | 6         | 6 |
+|**kullanılabilirlik bölgesi sayısı**     | 1         | 3         | 2         | 4 |
+|**bölge sayısı**     | 1         | 1         | 2         | 2 |
+|**İkincil bölgeye el ile yük devretme**     | Yok         | Yok         | Evet         | Yes |
 
-**Azure Blob depolama katmanları:**
+**BLOB depolama katmanları:**
 
 |  | Etkin katman   |Cool katmanı   | Arşiv katmanı |
 | ----------- | ----------- | -----------  | -----------  |
-| Kullanılabilirlik | %99,9         | %99         | Çevrimdışı      |
-| Kullanım Ücretleri | Daha yüksek depolama maliyetleri, daha düşük erişim ve işlem maliyetleri | Daha düşük depolama maliyetleri, daha yüksek erişim ve işlem maliyetleri | En düşük depolama maliyetleri, en yüksek erişim ve işlem maliyetleri |
-| Gerekli en düşük veri saklama | NA | 30 gün | 180 gün |
-| Gecikme süresi (Ilk bayta kalan süre) | Mayacak | Mayacak | Saat |
+| **Kullanılabilirlik** | %99,9         | %99         | Çevrimdışı      |
+| **Kullanım ücretleri** | Daha yüksek depolama maliyetleri, daha düşük erişim ve işlem maliyetleri | Daha düşük depolama maliyetleri, daha yüksek erişim ve işlem maliyetleri | En düşük depolama maliyetleri, en yüksek erişim ve işlem maliyetleri |
+| **Gerekli en düşük veri saklama**| Yok | 30 gün | 180 gün |
+| **Gecikme süresi (ilk bayta kalan süre)** | Mayacak | Mayacak | Saat |
 
 #### <a name="sample-backup-to-azure-cost-model"></a>Azure maliyet modeline örnek yedekleme
 
-Kullanım başına ödeme kavramı, genel buluta yeni eklenen müşterilerin kullanımına açık olabilir. Yalnızca kullanılan kapasite için ödeme yaparken, Azure Express Route Direct yerel veya Express Route 'a yönelik işlemler (okuma ve yazma) ve [Çıkış](https://azure.microsoft.com/pricing/details/bandwidth/) işlemleri için de ödeme yaparsınız. Ayrıca, Azure [Express Route Direct yerel veya Express Route sınırsız veri planı](https://azure.microsoft.com/pricing/details/expressroute/) dahil değildir. [Azure Fiyatlandırma Hesaplayıcı](https://azure.microsoft.com/pricing/calculator/)'da, liste fiyatlandırmasına göre veya [Azure Storage ayrılmış kapasite fiyatlandırmasına](https://docs.microsoft.com/azure/cost-management-billing/reservations/save-compute-costs-reservations)göre analiz 38 etme işlemini gerçekleştirebilirsiniz. Azure 'a yedekleme için aylık ücretsiz maliyeti modelleyerek örnek bir fiyatlandırma alıştırması aşağıda verilmiştir ve bu örnek yalnızca bir örnektir ve bu durum, ***burada yakalanmayan etkinlikleriniz nedeniyle fiyatlandırma farklılık gösterebilir:***
-
+Kullanım başına ödeme sayesinde, buluta yeni eklenen müşterilere karşı geçiş yapabilirsiniz. Yalnızca kullanılan kapasite için ödeme yaparken, Azure Express Route Direct yerel veya Express Route 'a yönelik işlemler (okuma ve yazma) ve [Çıkış](https://azure.microsoft.com/pricing/details/bandwidth/) işlemleri için de ödeme yaparsınız. Ayrıca, Azure [Express Route Direct yerel veya Express Route sınırsız veri planı](https://azure.microsoft.com/pricing/details/expressroute/) dahil değildir. [Azure Fiyatlandırma Hesaplayıcı](https://azure.microsoft.com/pricing/calculator/) ' nı kullanarak "ne tür" analizlerini gerçekleştirebilirsiniz. Analizi, liste fiyatlandırması veya [Azure Depolama ayrılmış kapasitesi fiyatlandırmasına](../../../../../cost-management-billing/reservations/save-compute-costs-reservations.md)dayandırın %38 tasarruf elde edebilir. Azure 'a yedekleme için aylık maliyet maliyetini modelleyerek örnek bir fiyatlandırma alıştırması aşağıda verilmiştir. Bu yalnızca bir örnektir. *Ücretleriniz, burada yakalanmayan etkinliklerden dolayı farklılık gösterebilir.*
 
 |Maliyet faktörü  |Aylık maliyet  |
 |---------|---------|
@@ -106,135 +117,128 @@ Kullanım başına ödeme kavramı, genel buluta yeni eklenen müşterilerin kul
 |2 TB gün başına yazılan yeni veri x 30 gün     |işlemlerde $39          |
 |Aylık tahmini toplam     |$1595,48         |
 |---------|---------|
-|Ortak Internet üzerinden şirket içi olarak 5 TB 'lık bir kez geri yükleme   | $491,26         |
+|Ortak internet üzerinden şirket içi olarak 5 TB 'lık bir kez geri yükleme   | $491,26         |
 
+> [!NOTE]
+> Bu tahmin, Azure fiyatlandırma hesaplayıcısında Doğu ABD Kullandıkça Öde fiyatlandırması kullanılarak oluşturulmuştur ve günlük 32 MB 'lık alt öbek boyutunu temel alarak, her gün 65.536 PUT Isteği (yazma işlemleri) oluşturur. Bu örnek, gereksinimlerinize uygun olmayabilir.
 
-> [!Note] 
-Bu tahmin, Azure fiyatlandırma hesaplayıcısında Doğu ABD Kullandıkça Öde fiyatlandırması kullanılarak oluşturulmuştur ve 65.536 PUT Isteği üreten 32 MB 'lık alt öbek boyutunun, günde her gün yazma işlemi olan 32MB alt öbek boyutunu temel alır. Bu örnek, gereksinimlerinize uygun olmayabilir.
+## <a name="implementation-guidance"></a>Uygulama Kılavuzu
 
-## <a name="implementation-and-operational-guidance"></a>Uygulama ve işlem kılavuzu
+Bu bölümde, Azure Storage 'ın şirket içi bir iletişim dağıtımına nasıl ekleneceği hakkında kısa bir kılavuz sunulmaktadır. Ayrıntılı yönergeler ve planlama konuları için bkz. [Microsoft Azure Için Commkasa genel bulut mimarisi Kılavuzu](https://documentation.commvault.com/commvault/v11/others/pdf/public-cloud-architecture-guide-for-microsoft-azure11-19.pdf).
 
-Bu bölümde, şirket içi bir iletişim dağıtımına Azure Storage eklemek için kısa bir kılavuz sunulmaktadır. Ayrıntılı kılavuz ve planlama konuları ile ilgileniyorsanız, [Azure mimari Kılavuzu](https://www.commvault.com/resources/public-cloud-architecture-guide-for-microsoft-azure-v11-sp16)' nu gözden geçirmeyi öneririz.
+1. Azure portal açın ve **depolama hesapları** için arama yapın. Varsayılan **depolama hesapları** simgesine de tıklayabilirsiniz.
 
-1. Azure portal açın ve "depolama hesapları" ifadesini arayın veya varsayılan hizmetler simgesine tıklayın.
-    
-    1. ![Azure Portalı](../media/azure-portal.png)
+    ![Azure portal bir depolama hesabı eklemeyi gösterir.](../media/azure-portal.png)
   
-    1. ![Azure portalındaki depolama hesapları](../media/locate-storage-account.png)
+    ![Azure portal arama kutusuna depolamayı yazdığınız yeri gösterir.](../media/locate-storage-account.png)
 
-2. Hesap eklemeyi seçin ve bir kaynak grubu seçin veya oluşturun, benzersiz bir ad sağlayın, bölgeyi seçin, "standart" performans ' ı seçin, her zaman hesap türünü "depolama v2" olarak bırakın, SLA 'larınızı karşılayan çoğaltma düzeyini ve yedekleme yazılımınızın çalıştırılacağı varsayılan katmanı seçin. Azure depolama hesabı, tek bir hesap içinde kullanılabilir sık erişimli, seyrek erişimli ve arşiv katmanları, verilerinizin yaşam döngüsünü verimli bir şekilde yönetmek için birden çok katmandan yararlanmanızı sağlar. Sonraki adıma geçin. 
+2. Hesap eklemek için **Oluştur** ' u seçin. Bir kaynak grubu seçin veya oluşturun, benzersiz bir ad sağlayın, bölgeyi seçin, **Standart** performans ' ı seçin, her zaman hesap türünü **depolama v2** olarak bırakın, SLA 'larınızı karşılayan çoğaltma düzeyini ve yedekleme yazılımınızın uygulanacağı varsayılan katmanı seçin. Azure depolama hesabı, tek bir hesap içinde kullanılabilir sık erişimli, seyrek erişimli ve arşiv katmanlarının yanı sıra, önemli yaşam döngüsünü verimli bir şekilde yönetmek için birden fazla katman kullanmanıza imkan sağlar.
 
-    ![Depolama hesabı oluşturma](../media/account-create-1.png)
+    ![Portalda depolama hesabı ayarlarını gösterir](../media/account-create-1.png)
 
-3. Şimdilik varsayılan ağ seçeneklerini kontrol edin ve "veri koruma" ' ye geçin. Burada, belirlenen saklama döneminde yanlışlıkla silinen bir yedekleme dosyasını kurtarmanıza ve yanlışlıkla ya da kötü amaçlı silmeye karşı koruma sağlamasına olanak sağlayan "geçici silme" seçeneğini belirleyebilirsiniz. 
-    
-    ![Depolama hesabı bölümü oluşturma 2](../media/account-create-2.png)
+3. Varsayılan ağ seçeneklerini şimdilik tutun ve **veri korumasına** geçin. Burada, yanlışlıkla silinen bir yedekleme dosyasını tanımlanan saklama süresi içinde kurtarmanıza ve yanlışlıkla veya kötü amaçlı silmeye karşı koruma sağlamasına olanak sağlayan geçici silme özelliğini etkinleştirebilirsiniz.
 
-4. Daha sonra, Azure kullanım örneklerine yedekleme için "Gelişmiş" ekranından varsayılan ayarları öneririz.
+    ![Portalda veri koruma ayarlarını gösterir.](../media/account-create-2.png)
 
-    ![Depolama hesabı Bölüm 3 oluşturma](../media/account-create-3.png) 
+4. Daha sonra, Azure kullanım örneklerine yedekleme için **Gelişmiş** ekranın varsayılan ayarlarını öneririz.
 
-5. Etiketleyerek ve hesabınızı oluşturduktan sonra kuruluş için Etiketler ekleyin. Artık elden çıkarmada Petabaytlarca depolama alanına sahip olursunuz!
+    ![Portalda Gelişmiş ayarlar sekmesini gösterir.](../media/account-create-3.png)
 
-6. Hesabı Commkasa ortamınıza ekleyebilmeniz için hemen gerekli olan iki hızlı adım vardır. Azure portal oluşturduğunuz hesaba gidin ve Portal dikey penceresinde "blob hizmeti" menüsü altında "kapsayıcılar" seçeneğini belirleyin. Yeni bir kapsayıcı ekleyin ve anlamlı bir ad seçin. Sonra, "Ayarlar" altındaki "erişim tuşları" öğesine gidin ve "depolama hesabı adı" nı ve iki erişim anahtardan birini kopyalayın. Sonraki adımlarımızda kapsayıcı adına, hesap adına ve erişim anahtarına ihtiyacınız olacak.
-    
-    ![Kapsayıcı oluşturma](../media/container.png)
-    
-    ![Bu hesap bilgilerini alın](../media/access-key.png)
+5. Etiketleme kullanırsanız ve hesabınızı oluşturduğunuzda kuruluş için Etiketler ekleyin.
 
-7. ***(Isteğe bağlı)*** Dağıtımınıza ek güvenlik katmanları ekleyebilirsiniz.
-    
-    1. Depolama hesabınızda kimlerin değişiklik yapacağına göre sınırlamak için rol tabanlı erişimi yapılandırın. [Daha fazla bilgi edinin](https://docs.microsoft.com/azure/storage/common/authorization-resource-provider?toc=/azure/storage/blobs/toc.json)
-    1. Şirket ağınızın dışından erişim girişimlerini engellemek için, hesap erişimini [depolama güvenlik duvarıyla](https://docs.microsoft.com/azure/storage/common/storage-network-security?toc=%2Fazure%2Fstorage%2Fblobs%2Ftoc.json&tabs=azure-portal) belirli ağ kesimleriyle kısıtlayın.
+6. Hesabı Commkasa ortamınıza ekleyebilmeniz için hemen gerekli olan iki hızlı adım vardır. Azure portal oluşturduğunuz hesaba gidin ve **BLOB hizmeti** menüsü altında **kapsayıcılar** ' ı seçin. Kapsayıcı ekleyin ve anlamlı bir ad seçin. Ardından **Ayarlar** altındaki **erişim tuşları** öğesine gidin ve **depolama hesabı adını** ve iki erişim tuşlarından birini kopyalayın. Sonraki adımlarda kapsayıcı adı, hesap adı ve erişim anahtarı gerekir.
 
-    ![Depolama güvenlik duvarı](../media/storage-firewall.png) 
+    ![Portalda kapsayıcı oluşturmayı gösterir.](../media/container.png)
 
-    1. Depolama hesabının yanlışlıkla silinmesini engellemek için hesapta bir [silme kilidi](https://docs.microsoft.com/azure/azure-resource-manager/management/lock-resources) ayarlayın.
+    ![Portalda erişim anahtarı ayarlarını gösterir.](../media/access-key.png)
 
-    ![Kaynak kilidi](../media/resource-lock.png)
-    
-    1. Ek [güvenlik en iyi yöntemlerini](https://docs.microsoft.com/azure/storage/blobs/security-recommendations)yapılandırın.
-    
-1. Commkasaal komut merkezinde "Yönet"--> "güvenlik"--> "Credential Manager" bölümüne gidin. "Bulut hesabı", "satıcı türü" nü seçin Microsoft Azure Depolama, Azure 'a ve Azure 'dan veri aktarabileceği "MediaAgent" öğesini seçin, depolama hesabı adını ve erişim anahtarını ekleyin.
-    
-    ![Commkasa kimlik bilgileri](../media/commvault-credential.png)
+7. (*Isteğe bağlı*) Dağıtımınıza ek güvenlik katmanları ekleyebilirsiniz.
 
-9. Sonra, "depolama" a gidin--> "Cloud" (Commkasate "Ekle" yi seçin. Depolama hesabı için kolay bir ad girin ve "tür" listesinden "Microsoft Azure Depolama" öğesini seçin. Yedeklemeleri Azure depolama 'ya aktarmak için kullanılacak bir medya Aracısı sunucusu seçin. Oluşturduğunuz kapsayıcıyı ekleyin, Azure Storage hesabından yararlanmak üzere depolama katmanını seçin ve #8 adımında oluşturulan kimlik bilgilerini seçin. Son olarak, yinelenenleri kaldırılmış yedeklemelerin mi yoksa yinelenenleri kaldırma veritabanı için bir konumun mi aktarılmayacağını seçin.
-    
-     ![Bulut Kullanıcı ekleme arabiriminin ekran görüntüsü. Arşiv açılan menüsünde * * arşiv * * seçilidir.](../media/commvault-add-storage.png)
+    1. Depolama hesabınızda kimlerin değişiklik yapacağına izin vermek için rol tabanlı erişimi yapılandırın. Daha fazla bilgi için bkz. [yönetim işlemleri Için yerleşik roller](../../../../common/authorization-resource-provider.md#built-in-roles-for-management-operations).
+    1. Şirket ağınızın dışından erişim girişimlerini engellemek için, hesap erişimini [depolama Güvenlik Duvarı ayarlarıyla](../../../../common/storage-network-security.md) belirli ağ kesimleriyle kısıtlayın.
 
-10. Son olarak, yeni Azure depolama kaynağınızı "Yönet"--> "planlar" i "yedekleme hedefi" olarak "yönetme"--"planları" aracılığıyla mevcut veya yeni bir plana ekleyin.
+        ![Portalda depolama güvenlik duvarı ayarlarını gösterir.](../media/storage-firewall.png)
 
-    ![COMMKASASıNıN Komut Merkezi Kullanıcı arabiriminin ekran görüntüsü. Sol gezinti bölmesinde, * * Yönet * *, * * planlar * * altında seçilidir.](../media/commvault-plan.png)
+    1. Depolama hesabının yanlışlıkla silinmesini engellemek için hesapta bir [silme kilidi](../../../../../azure-resource-manager/management/lock-resources.md) ayarlayın.
 
-11. ***(Isteğe bağlı)*** Sunucuları ve uygulamaları Azure 'a geçirmek için Azure 'u bir kurtarma sitesi veya Commkasadan yararlanmaya çalışırsanız, Azure 'da bir VSA proxy 'Si dağıtmak en iyi uygulamadır. Ayrıntılı yönergeleri [buradan](https://documentation.commvault.com/commvault/v11/article?p=106208.htm)bulabilirsiniz.  
+        ![Portalda silme kilidi ayarlamayı gösterir.](../media/resource-lock.png)
 
-### <a name="azure-alerting-and-performance-monitoring"></a>Azure uyarı ve performans izleme
+    1. Ek [güvenlik en iyi yöntemlerini](../../../../../storage/blobs/security-recommendations.md)yapılandırın.
+
+1. Commkasaal komut merkezinde   ->  **güvenlik**  ->  **kimlik bilgileri yöneticisini** Yönet ' e gidin. **Bulut hesabı**, **satıcı türü** **Microsoft Azure depolama** seçin, Azure 'a veya Azure 'dan veri aktarımı yapılacak **mediaagent**'ı seçin, depolama hesabı adını ve erişim anahtarını ekleyin.
+
+    ![Commkasası komut merkezindeki kimlik bilgilerini ekleme gösterir.](../media/commvault-credential.png)
+
+9. Ardından,   ->  commkasa komut merkezindeki depolama **bulutu** ' na gidin. **Eklemeyi** seçin. Depolama hesabı için kolay bir ad girin ve ardından **tür** listesinden **Microsoft Azure depolama** ' yi seçin. Yedeklemeleri Azure depolama 'ya aktarmak için kullanılacak bir medya Aracısı sunucusu seçin. Oluşturduğunuz kapsayıcıyı ekleyin, Azure depolama hesabı içinde kullanılacak depolama katmanını seçin ve #8 adımında oluşturulan kimlik bilgilerini seçin. Son olarak, yinelenenleri kaldırılmış yedeklemelerin mi yoksa yinelenenleri kaldırma veritabanı için bir konumun mi aktarılmayacağını seçin.
+
+     ![Commkasasının bulut Kullanıcı ekleme arabiriminin ekran görüntüsü. Arşiv açılan menüsünde * * arşiv * * seçilidir.](../media/commvault-add-storage.png)
+
+10. Son olarak, yeni Azure depolama kaynağınızı,   ->  bir yedekleme hedefi olarak **planları** Yönet aracılığıyla bir commkasasındaki mevcut veya yeni bir plana ekleyin.
+
+    ![Commkasasının Komut Merkezi Kullanıcı arabiriminin ekran görüntüsü. Sol gezinti bölmesinde, * * Yönet * *, * * planlar * * altında seçilidir.](../media/commvault-plan.png)
+
+11. *(Isteğe bağlı)* Sunucu ve uygulamaları Azure 'a geçirmek için Azure 'u bir kurtarma sitesi veya Commkasa olarak kullanmayı planlıyorsanız, Azure 'da bir VSA proxy 'Si dağıtmak en iyi uygulamadır. Ayrıntılı yönergeleri [buradan](https://documentation.commvault.com/commvault/v11/article?p=106208.htm)bulabilirsiniz.
+
+## <a name="operational-guidance"></a>İşletimsel kılavuz
+
+### <a name="azure-alerts-and-performance-monitoring"></a>Azure uyarıları ve performans izleme
 
 Yedeklemelerinizi depolamak için kullandığınız herhangi bir depolama hedefi ile yaptığınız gibi, hem Azure kaynaklarınızın hem de Commkasasının bunlardan faydalanma yeteneğini izlemeniz önerilir. Azure Izleyici ve Commkasası Komut Merkezi izlemenin bir birleşimi ortamınızı sağlıklı tutmanıza yardımcı olur.
 
-#### <a name="microsoft-azure-portal"></a>Microsoft Azure portalı
+#### <a name="azure-portal"></a>Azure portalı
 
-Microsoft Azure, [Azure izleyici](https://docs.microsoft.com/azure/azure-monitor/insights/monitor-azure-resource)biçiminde güçlü bir izleme çözümü sağlar. Azure Izleyici 'yi Azure depolama kapasitesini, işlemleri, kullanılabilirliği, kimlik doğrulamasını ve daha fazlasını izlemek için [yapılandırabilirsiniz](https://docs.microsoft.com/azure/storage/common/monitor-storage?toc=%2Fazure%2Fstorage%2Fblobs%2Ftoc.json&tabs=azure-powershell#configuration) . İzlenen ölçümlerin tam başvurusu [burada](https://docs.microsoft.com/azure/storage/common/monitor-storage-reference)bulunabilir. İzleme için birkaç faydalı ölçüm, BlobCapacity ' dir-en yüksek [depolama hesabı kapasite sınırının](https://docs.microsoft.com/azure/storage/common/scalability-targets-standard-account)altında kalmakta ve Azure depolama hesabınızda okunan veri miktarını Izlemek için çıkış yapın ve Azure Storage ve mediaagent 'a giden ve giden isteklerin gidiş dönüş süresini Izlemek için SuccessE2ELatency. 
+Azure, [Azure izleyici](../../../../../azure-monitor/essentials/monitor-azure-resource.md)biçiminde güçlü bir izleme çözümü sağlar. Azure Izleyici 'yi Azure depolama kapasitesini, işlemleri, kullanılabilirliği, kimlik doğrulamasını ve daha fazlasını izlemek için [yapılandırabilirsiniz](../../../../common/monitor-storage.md) . [Burada](../../../../blobs/monitor-blob-storage-reference.md)toplanan ölçümlerin tam başvurusunu bulabilirsiniz. İzleme için birkaç faydalı ölçüm, BlobCapacity ' dir-en yüksek [depolama hesabı kapasite sınırının](../../../../common/scalability-targets-standard-account.md)altında kalmakta ve Azure depolama hesabınızda okunan veri miktarını Izlemek için çıkış yapın ve Azure Storage ve mediaagent 'a giden ve giden isteklerin gidiş dönüş süresini Izlemek için SuccessE2ELatency.
 
-Azure depolama hizmeti durumunu izlemek ve istediğiniz zaman [Azure durum panosunu](https://status.azure.com/status) görüntülemek için [günlük uyarıları da oluşturabilirsiniz](https://docs.microsoft.com/azure/service-health/alerts-activity-log-service-notifications) .
+Azure depolama hizmeti durumunu izlemek ve istediğiniz zaman [Azure durum panosunu](https://status.azure.com/status) görüntülemek için [günlük uyarıları da oluşturabilirsiniz](../../../../../service-health/alerts-activity-log-service-notifications-portal.md) .
 
 #### <a name="commvault-command-center"></a>Commkasala Komut Merkezi
 
-[Bulut depolama havuzları için uyarı oluşturma](https://documentation.commvault.com/commvault/v11/article?p=100514_3.htm)
-
-[Müşterilerin performans raporlarını görüntülemek, iş tamamlaması ve temel sorun gidermeyi başlatmak için nereden gidebileceği](https://documentation.commvault.com/commvault/v11/article?p=95306_1.htm) 
+- [Bulut depolama havuzları için uyarı oluşturma](https://documentation.commvault.com/commvault/v11/article?p=100514_3.htm)
+- Performans raporlarını görüntüleme, iş tamamlama ve temel sorun gidermeyi başlatma hakkında bilgi için bkz. [panolar](https://documentation.commvault.com/commvault/v11/article?p=95306_1.htm).
 
 ### <a name="how-to-open-support-cases"></a>Destek çalışmalarını açma
 
-Azure çözümüne yönelik yedeklemeyle ilgili yardıma ihtiyacınız olduğunda, destek kuruluşlarımızda ortak olarak işbirliği yapabilmesi için hem Commkasadan hem de Azure ile bir servis talebi açmanız önerilir.
+Azure çözümüne yedeklemeniz için yardıma ihtiyacınız olduğunda, hem Commkasadan hem de Azure ile bir servis talebi açmanız gerekir. Bu, destek kuruluşlarımızın gerektiğinde işbirliği yapmasına yardımcı olur.
 
-#### <a name="how-to-open-a-case-with-commvault"></a>Commkasasıyla bir servis talebi açma
+#### <a name="to-open-a-case-with-commvault"></a>Commkasasıyla bir servis talebi açmak için
 
-[Commkasa destek sitesine](https://www.commvault.com/support)gidin, oturum açın ve bir servis talebi açın.
+[Commkasa destek sitesinde](https://www.commvault.com/support)oturum açın ve bir servis talebi açın.
 
-Size sunulan destek sözleşmesi seçeneklerini anlamanız gerekiyorsa lütfen bkz. [Commkasa destek seçenekleri](https://ma.commvault.com/support)
+Size sunulan destek sözleşmesi seçeneklerini anlamak için bkz. [Commkasa destek seçenekleri](https://ma.commvault.com/support)
 
 Ayrıca, bir servis talebi açmak veya e-posta yoluyla Commkasa desteğine ulaşmak için ' de çağrı yapabilirsiniz:
 
-Ücretsiz: + 1 877-780-3077
+- Ücretsiz: + 1 877-780-3077
+- [Dünya genelindeki destek numaraları](https://ma.commvault.com/Support/TelephoneSupport)
+- [E-posta Commkasası desteği](mailto:support@commvault.com)
 
-[Dünya genelindeki destek numaraları](https://ma.commvault.com/Support/TelephoneSupport)
+#### <a name="to-open-a-case-with-azure"></a>Azure ile bir servis talebi açmak için
 
-[E-posta Commkasası desteği](mailto:support@commvault.com)
+[Azure Portal](https://portal.azure.com) en üstteki arama çubuğunda **destek** için arama yapın. **Yardım ve destek**  ->  **Yeni destek isteği ' ni** seçin.
 
-#### <a name="how-to-open-a-case-with-the-azure-support-team"></a>Azure destek ekibi ile bir servis talebi açma
-
-[Azure Portal](https://portal.azure.com) içinde portalın en üstündeki arama çubuğunda "destek" araması yapın ve "+ yeni destek Isteği" ni seçin. 
-> [!Note]
-Bir servis talebi açılırken, "Azure Backup" **değil** , "Azure Storage" veya "Azure Networking" ile ilgili yardıma ihtiyacınız olduğundan emin olun. Azure Backup, Microsoft Azure yerel bir hizmettir ve servis talebi yanlış yönlendirilir.
+> [!NOTE]
+> Bir servis talebi açtığınızda, Azure depolama veya Azure ağı ile ilgili yardıma ihtiyacınız olduğundan emin olun. Azure Backup belirtmeyin. Azure Backup bir Azure hizmeti adıdır ve servis talebi yanlış yönlendirilir.
 
 ### <a name="links-to-relevant-commvault-documentation"></a>İlgili Commkasası belgelerinin bağlantıları
 
-Daha ayrıntılı bilgi sağlayan commkasa belgeleri:
+Daha ayrıntılı bilgi için aşağıdaki Commkasası belgelerine bakın:
 
-[Commkasakasası Kullanıcı Kılavuzu](https://documentation.commvault.com/commvault/v11/article?p=37684_1.htm)
+- [Commkasakasası Kullanıcı Kılavuzu](https://documentation.commvault.com/commvault/v11/article?p=37684_1.htm)
+- [Commkasakasası Azure mimari Kılavuzu](https://www.commvault.com/resources/public-cloud-architecture-guide-for-microsoft-azure-v11-sp16)
 
-[Commkasakasası Azure mimari Kılavuzu](https://www.commvault.com/resources/public-cloud-architecture-guide-for-microsoft-azure-v11-sp16) 
+### <a name="marketplace-offerings"></a>Market teklifleri
 
-### <a name="link-to-marketplace-offering"></a>Market sunumuna bağlantı
+Azure sanal makinelerini ve diğer birçok Azure hizmetini korumak için commkasa, çözümlerini Azure 'a dağıtmayı kolaylaştırdı. Daha fazla bilgi için aşağıdaki başvuruları inceleyin:
 
-Ayrıca, Azure üzerinde çalışan iş yüklerinizi korumak için bildiğiniz ve güvendiğiniz Commkasası çözümünü kullanmaya devam edebilirsiniz. Commkasa, çözümlerini Azure 'da dağıtmayı ve Azure sanal makinelerini ve diğer birçok Azure hizmetini korumayı kolaylaştırır.
-
-[Azure Marketi aracılığıyla Commkasasını dağıtma](https://azuremarketplace.microsoft.com/marketplace/apps/commvault.commvault?tab=Overview)
-
-[Azure veri sayfası](https://www.commvault.com/resources/microsoft-azure-cloud-platform-datasheet)
-
-[Desteklenen Azure özelliklerinin ve hizmetlerinin kapsamlı listesi](https://documentation.commvault.com/commvault/v11/article?p=109795_1.htm)
-
-[Azure 'da SAP HANA korumak için Commkasasını kullanma](https://azure.microsoft.com/resources/protecting-sap-hana-in-azure/)
+- [Azure Marketi aracılığıyla Commkasasını dağıtma](https://azuremarketplace.microsoft.com/marketplace/apps/commvault.commvault?tab=Overview)
+- [Azure veri sayfası için commkasakasası](https://www.commvault.com/resources/microsoft-azure-cloud-platform-datasheet)
+- [Commkasasının desteklenen Azure özellikleri ve hizmetleri listesi](https://documentation.commvault.com/commvault/v11/article?p=109795_1.htm)
+- [Azure 'da SAP HANA korumak için Commkasasını kullanma](https://azure.microsoft.com/resources/protecting-sap-hana-in-azure/)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Özel kullanım senaryoları hakkında bilgi almak için bu dış Web sitelerindeki ek kaynakları keşfet:
+Özelleştirilmiş kullanım senaryoları hakkında bilgi için bu ek Commkasa kaynaklarına bakın.
 
-[Sunucularınızı ve uygulamalarınızı Azure 'a geçirmek için Commkasasını kullanın](https://www.commvault.com/resources/demonstration-vmware-to-azure-migrations-with-commvault)
-
-[Azure 'da SAP 'yi Commkasala koruma](https://www.youtube.com/watch?v=4ZGGE53mGVI)
-
-[Office365 ile Commkasasıyla koruma](https://www.youtube.com/watch?v=dl3nvAacxZU)
+- [Sunucularınızı ve uygulamalarınızı Azure 'a geçirmek için Commkasasını kullanın](https://www.commvault.com/resources/demonstration-vmware-to-azure-migrations-with-commvault)
+- [Azure 'da SAP 'yi Commkasala koruma](https://www.youtube.com/watch?v=4ZGGE53mGVI)
+- [Office365 ile Commkasasıyla koruma](https://www.youtube.com/watch?v=dl3nvAacxZU)

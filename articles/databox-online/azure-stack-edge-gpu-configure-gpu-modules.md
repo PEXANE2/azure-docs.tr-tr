@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 03/08/2021
+ms.date: 03/12/2021
 ms.author: alkohli
-ms.openlocfilehash: 8be0a444dca4cae9b8f7a1e7c04be8a3046e56be
-ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
+ms.openlocfilehash: 348ddff56ed61cd608d6b9f28417e7cd4c4e6b13
+ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/11/2021
-ms.locfileid: "102639080"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103563972"
 ---
 # <a name="configure-and-run-a-module-on-gpu-on-azure-stack-edge-pro-device"></a>Azure Stack Edge Pro cihazında GPU 'da modül yapılandırma ve çalıştırma
 
@@ -50,7 +50,7 @@ Bir modülü, bir modülü çalıştırmak için Azure Stack Edge Pro cihazını
    |--------|---------|
    |Abonelik      | Azure Stack Edge kaynağı tarafından kullanılan abonelik. |
    |Kaynak grubu    | Azure Stack Edge kaynağı tarafından kullanılan kaynak grubu. |
-   |IoT Hub           | **Yeni oluştur** veya **var olanı kullan** seçeneklerinden birini belirleyin. <br> Varsayılan olarak IoT kaynağı oluşturulurken Standart katmanı (S1) kullanılır. Bir ücretsiz katman IoT kaynağı kullanmak için kaynağı oluşturun ve sonra da mevcut kaynağı seçin. <br> Her durumda IoT Hub kaynak, Azure Stack Edge kaynağı tarafından kullanılan aynı abonelik ve kaynak grubunu kullanır.     |
+   |IoT Hub           | **Yeni oluştur** veya **var olanı kullan** seçeneklerinden birini belirleyin. <br> Varsayılan olarak IoT kaynağı oluşturulurken Standart katmanı (S1) kullanılır. Bir ücretsiz katman IoT kaynağı kullanmak için kaynağı oluşturun ve sonra da mevcut kaynağı seçin. <br> Her durumda IoT Hub kaynağı, Azure Stack Edge kaynağıyla aynı aboneliği ve kaynak grubunu kullanır.     |
    |Name              | Yeni bir IoT Hub kaynağı için belirtilen varsayılan adı kullanmak istemiyorsanız, farklı bir ad girin. |
 
    Ayarları tamamladığınızda, **gözden geçir + oluştur**' u seçin. IoT Hub kaynağınız için ayarları gözden geçirin ve **Oluştur**' u seçin.
@@ -104,7 +104,7 @@ Bir modülü, bir modülü çalıştırmak için Azure Stack Edge Pro cihazını
        NVIDIA GPU ile kullanabileceğiniz ortam değişkenleri hakkında daha fazla bilgi için, [NVIDIA kapsayıcı çalışma zamanına](https://github.com/NVIDIA/nvidia-container-runtime#environment-variables-oci-spec)gidin.
 
     > [!NOTE]
-    > GPU tek bir modüle eşlenebilir. Modül, her ikisini de veya hiçbir GPU 'yu kullanabilir.
+    > Modül, her ikisini de veya GPU 'yu kullanabilir.
 
 12. Modülünüzün adını girin. Bu noktada kapsayıcı oluşturma seçeneği sağlayıp modül ikizi ayarlarını değiştirebilir veya işiniz bittiğinde **Ekle**' yi seçin. 
 

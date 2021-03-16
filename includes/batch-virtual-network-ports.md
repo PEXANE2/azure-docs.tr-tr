@@ -10,15 +10,15 @@ ms.service: batch
 ms.devlang: na
 ms.topic: include
 ms.tgt_pltfrm: na
-ms.date: 01/13/2021
+ms.date: 02/16/2021
 ms.author: jenhayes
 ms.custom: include file
-ms.openlocfilehash: c625253585cc99c035852b8b9042f939284bad19
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: baf146bdd89d45c5d7e1ed359822a35d383b7b6c
+ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101750111"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103561927"
 ---
 ### <a name="general-requirements"></a>Genel gereksinimler
 
@@ -42,10 +42,10 @@ Batch havuzunun Sanal Makine yapılandırmasında veya Cloud Services yapıland�
 
 **İzinler** - Sanal ağ aboneliği veya kaynak grubu güvenlik ilkelerinin veya kilitlerinin belirli bir kullanıcının sanal ağ yönetim izinlerini kısıtlayıp kısıtlamadığını kontrol edin.
 
-**Ek ağ kaynakları** - Batch, sanal ağı içeren kaynak grubuna otomatik olarak ek ağ kaynakları atar.
+**Ek ağ kaynakları** -Batch, VNET 'i içeren kaynak grubunda ek ağ kaynakları otomatik olarak oluşturur.
 
 > [!IMPORTANT]
-> Her 100 adanmış veya düşük öncelikli düğüm için Batch ayırır: bir ağ güvenlik grubu (NSG), bir genel IP adresi ve bir yük dengeleyici. Bu kaynaklar, aboneliğin [kaynak kotalarıyla](../articles/azure-resource-manager/management/azure-subscription-service-limits.md) sınırlıdır. Büyük havuzlar için bu kaynaklardan birinde veya daha fazlasında kota artışı istemeniz gerekebilir.
+> Her 100 adanmış veya düşük öncelikli düğümler için Batch oluşturulur: bir ağ güvenlik grubu (NSG), bir genel IP adresi ve bir yük dengeleyici. Bu kaynaklar, aboneliğin [kaynak kotalarıyla](../articles/azure-resource-manager/management/azure-subscription-service-limits.md) sınırlıdır. Büyük havuzlar için bu kaynaklardan birinde veya daha fazlasında kota artışı istemeniz gerekebilir.
 
 #### <a name="network-security-groups-batch-default"></a>Ağ güvenlik grupları: Batch varsayılanı
 

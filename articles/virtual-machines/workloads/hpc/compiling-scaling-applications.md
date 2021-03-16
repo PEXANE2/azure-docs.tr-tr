@@ -5,19 +5,47 @@ author: vermagit
 ms.service: virtual-machines
 ms.subservice: hpc
 ms.topic: article
-ms.date: 05/15/2019
+ms.date: 03/12/2021
 ms.author: amverma
 ms.reviewer: cynthn
-ms.openlocfilehash: d560b261e058d01040616f3c59ede60e5986c672
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 9185f502a7d9dd7ab00a149fb2f3365372b350cc
+ms.sourcegitcommit: 66ce33826d77416dc2e4ba5447eeb387705a6ae5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101666974"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103470745"
 ---
 # <a name="scaling-hpc-applications"></a>HPC uygulamalarını ölçeklendirme
 
 Azure üzerinde HPC uygulamalarının en iyi ölçeği artırma ve genişleme performansı, belirli bir iş yükü için performans ayarlama ve iyileştirme denemeleri gerektirir. Bu bölüm ve VM dizisine özgü sayfalar, uygulamalarınızın ölçeklendirilmesine yönelik genel rehberlik sunar.
+
+## <a name="optimally-scaling-mpi"></a>MPı en iyi şekilde ölçeklendirme 
+
+En iyi uygulama ölçeklendirme verimliliği, performansı ve tutarlılığı için aşağıdaki öneriler geçerlidir:
+
+- Daha küçük ölçekli işler (yani < 256K bağlantı) için seçeneğini kullanın:
+   ```bash
+   UCX_TLS=rc,sm
+   ```
+
+- Daha büyük ölçekli işler (yani > 256K bağlantı) için seçeneğini kullanın:
+   ```bash
+   UCX_TLS=dc,sm
+   ```
+
+- Yukarıdaki ' de, MPı işinizin bağlantı sayısını hesaplamak için şunu kullanın:
+   ```bash
+   Max Connections = (processes per node) x (number of nodes per job) x (number of nodes per job) 
+   ```
+
+## <a name="process-pinning"></a>İşlem sabitleme
+
+- Sıralı sabitleme yaklaşımını (bir oto Dengeleme yaklaşımına karşılık olarak) kullanarak süreçler çekirdekleri sabitleyin. 
+- NUMA/çekirdek/HwThread 'e göre bağlama varsayılan bağlamadan daha iyidir.
+- Karma paralel uygulamalar (OpenMP + MPı) için, HB ve HBv2 VM boyutlarında 4 iş parçacığı ve CCX başına 1 MPı derecelendirmesi kullanın.
+- Saf MPı uygulamaları için, HB ve HBv2 VM boyutlarında en iyi performans için, CCX başına 1-4 MPı derecelendirimiyle denemeler yapın.
+- Bellek bant genişliğine karşı çok fazla duyarlılık içeren bazı uygulamalar, CCX başına azaltılmış sayıda çekirdek kullanmaktan faydalanabilir. Bu uygulamalar için, CCX başına 3 veya 2 çekirdek kullanılması, bellek bant genişliği çekişmesini azaltabilir ve gerçek zamanlı performansı veya daha tutarlı ölçeklenebilirlik elde edebilir. Bu yaklaşımda, özellikle de MPı 'yi azaltabilirsiniz.
+- Önemli ölçüde daha büyük ölçek çalıştırmaları için, UD veya hibrit RC + UD taşımalarını kullanmanız önerilir. Birçok MPı Kitaplığı/çalışma zamanı kitaplığı bunu dahili olarak (UCX veya MVAPICH2 gibi) ister. Büyük ölçekli çalıştırmalar için aktarım yapılandırmalarınızı denetleyin.
 
 ## <a name="compiling-applications"></a>Uygulamaları derleme
 
@@ -25,7 +53,7 @@ Gerekli olmasa da, uygun iyileştirme bayraklarıyla uygulamaları derlemek, HB 
 
 ### <a name="amd-optimizing-cc-compiler"></a>AMD Iyileştirmeli C/C++ derleyicisi
 
-AMD Iyileştirmeli C/C++ derleyicisi (AOCC) derleyicisi sistemi, genel iyileştirme, vektörleştirme, işlem tabanlı çözümlemeler, döngü dönüştürmeleri ve kod oluşturma içeren yüksek düzeyde gelişmiş iyileştirmeler, çok iş parçacıklı ve işlemci desteği sunar. AOCC derleyicisi ikili dosyaları, GNU C Kitaplığı (OCBC) sürüm 2,17 ve üzeri olan Linux sistemleri için uygundur. Derleyici paketi bir C/C++ derleyicisi (Clang), bir FORTRAN derleyicisi (FLANG) ve FORTRAN ön ucu ile Clang (Ejegg) oluşur.
+AMD Iyileştirmeli C/C++ derleyicisi (AOCC) derleyicisi sistemi, genel iyileştirme, vektörleştirme, işlem tabanlı çözümlemeler, döngü dönüştürmeleri ve kod oluşturma içeren yüksek düzeyde gelişmiş iyileştirmeler, çok iş parçacıklı ve işlemci desteği sunar. AOCC derleyicisi ikili dosyaları, GNU C Kitaplığı (OCBC) sürüm 2,17 ve üzeri olan Linux sistemleri için uygundur. Derleyici paketi bir C/C++ derleyicisi (Clang), bir FORTRAN derleyicisi (FLANG) ve bir FORTRAN ön ucu ile Clang (Ejyumurg) oluşur.
 
 ### <a name="clang"></a>Clang
 
@@ -37,7 +65,7 @@ FLANG derleyicisi, AOCC Suite 'e son eklenen bir ektir (2018 Nisan 'a eklenmişt
 
 ### <a name="dragonegg"></a>DragonEgg
 
-DragonEgg, GCC 'nin en iyi hale icilerini ve kod oluşturucularını LLVM projesinden değiştiren bir GCC eklentisidir. AOCC ile birlikte gelen DragonEgg, GCC-4.8. x ile birlikte çalışarak, x86-32/x86-64 hedefleri için test edilmiştir ve bu, çeşitli Linux platformlarında başarıyla kullanıldı.
+DragonEgg, GCC 'nin en iyi hale icilerini ve kod oluşturucularını LLVM projesinden değiştiren bir GCC eklentisidir. AOCC ile birlikte gelen DragonEgg, GCC-4.8. x ile birlikte çalışarak, x86-32/x86-64 hedefleri için test edilmiştir ve çeşitli Linux platformlarında başarıyla kullanıldı.
 
 GFortran, GCC GIMPLE ara gösterimini (IR) oluşturan ön işleme, ayrıştırma ve anlam analizinden sorumlu olan FORTRAN programlarının gerçek ön ucunda. DragonEgg, GFortran derleme akışına takmak üzere bir GNU eklentisidir. GNU eklentisi API 'sini uygular. Eklenti mimarisi sayesinde, DragonEgg derleyici sürücüsü haline gelir ve bu da derlemenin farklı aşamalarını kullanır.  İndirme ve yükleme yönergelerinden sonra, aşağıdaki kullanılarak bir Ejpg çağrılabilir: 
 
@@ -68,17 +96,6 @@ HPC için AMD, GCC derleyicisi 7,3 veya daha yeni bir sürümü önerir. RHEL/Ce
 ```bash
 gcc $(OPTIMIZATIONS) $(OMP) $(STACK) $(STREAM_PARAMETERS) stream.c -o stream.gcc
 ```
-
-## <a name="scaling-applications"></a>Ölçeklendirme uygulamaları 
-
-En iyi uygulama ölçeklendirme verimliliği, performansı ve tutarlılığı için aşağıdaki öneriler geçerlidir:
-
-* Sıralı sabitleme yaklaşımını (bir otomatik dengeleme yaklaşımına karşılık olarak) kullanarak işlem çekirdekleri 0-59. 
-* NUMA/çekirdek/HwThread 'e göre bağlama varsayılan bağlamadan daha iyidir.
-* Karma paralel uygulamalar (OpenMP + MPı) için, 4 iş parçacığı ve CCX başına 1 MPı derecesi kullanın.
-* Saf MPı uygulamaları için en iyi performans için her CCX için 1-4 MPı derecelendirimiyle deneyin.
-* Bellek bant genişliğine karşı çok fazla duyarlılık içeren bazı uygulamalar, CCX başına azaltılmış sayıda çekirdek kullanmaktan faydalanabilir. Bu uygulamalar için, CCX başına 3 veya 2 çekirdek kullanılması, bellek bant genişliği çekişmesini azaltabilir ve gerçek zamanlı performansı veya daha tutarlı ölçeklenebilirlik elde edebilir. Özellikle de bu durum bundan faydalanabilir.
-* Önemli ölçüde daha büyük ölçek çalıştırmaları için, UD veya hibrit RC + UD taşımalarını kullanmanız önerilir. Birçok MPı Kitaplığı/çalışma zamanı kitaplığı bunu dahili olarak (UCX veya MVAPICH2 gibi) ister. Büyük ölçekli çalıştırmalar için aktarım yapılandırmalarınızı denetleyin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

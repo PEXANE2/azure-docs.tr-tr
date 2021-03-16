@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/09/2021
+ms.date: 03/15/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: cc385c3a7ceb0245e3a4acbedb037b1b28bde7b3
-ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
+ms.openlocfilehash: 24377cf02b30a550043ee63267229039d680cd1c
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102518118"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103489143"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-an-apple-id--using-azure-active-directory-b2c-preview"></a>Azure Active Directory B2C kullanarak bir Apple KIMLIĞIYLE kaydolma ve oturum açma ayarlama (Önizleme)
 
@@ -57,8 +57,8 @@ Azure Active Directory B2C (Azure AD B2C) Apple KIMLIĞI olan kullanıcılar iç
 1. **Tanımlayıcılardan** oluşturduğunuz tanımlayıcıyı seçin.
 1. **Apple Ile oturum aç**' ı seçin ve ardından **Yapılandır**' ı seçin.
     1. Apple ile oturum açmayı yapılandırmak istediğiniz **birincil uygulama kimliğini** seçin.
-    1. **Etki alanları ve alt etki** alanlarında, girin `your-tenant-name.b2clogin.com` . Kiracı adınızı kiracınızın adıyla değiştirin.
-    1. **Dönüş URL 'lerinde**, girin `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp` . Kiracı adınızı kiracınızın adıyla değiştirin.
+    1. **Etki alanları ve alt etki** alanlarında, girin `your-tenant-name.b2clogin.com` . Kiracı adınızı kiracınızın adıyla değiştirin. [Özel bir etki alanı](custom-domain.md)kullanıyorsanız, girin `https://your-domain-name` .
+    1. **Dönüş URL 'lerinde**, girin `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp` . [Özel bir etki alanı](custom-domain.md)kullanıyorsanız, girin `https://your-domain-name/your-tenant-name.onmicrosoft.com/oauth2/authresp` . `your-tenant-name`, Kiracınızın adıyla ve `your-domain-name` özel etki alanınız ile değiştirin.
     1. **İleri**' yi ve ardından **bitti**' yi seçin.
     1. Açılır pencere kapalıyken **devam**' ı seçin ve ardından **Kaydet**' i seçin.
 

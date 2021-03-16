@@ -9,31 +9,45 @@ ms.author: mikben
 ms.date: 03/10/2021
 ms.topic: conceptual
 ms.service: azure-communication-services
-ms.openlocfilehash: b3cd0643a74ccadb8390ce906eb391420de15a29
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.openlocfilehash: 83976ed9d6f80b6c785cb84e74a0755472f9579f
+ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 03/16/2021
-ms.locfileid: "103490798"
+ms.locfileid: "103561813"
 ---
 # <a name="authenticate-to-azure-communication-services"></a>Azure Iletişim hizmetlerinde kimlik doğrulama
 
-Azure Iletişim Hizmetleri ile her istemci etkileşiminin kimliğinin doğrulanması gerekir. Tipik bir mimaride, Kullanıcı ve sorun belirteçleri oluşturmak için, güvenilir Kullanıcı erişimi hizmetinde [istemci ve sunucu mimarisi](./client-and-server-architecture.md), *erişim anahtarları* veya *yönetilen kimlik* ' e bakın. Ve Güvenilen Kullanıcı erişimi hizmeti tarafından verilen *Kullanıcı erişim belirteci* , istemci uygulamalarının diğer iletişim hizmetlerine erişmesi için kullanılır, örneğin sohbet veya arama hizmeti.
+Azure Iletişim Hizmetleri ile her istemci etkileşiminin kimliğinin doğrulanması gerekir. Tipik bir mimaride, bkz. [istemci ve sunucu mimarisi](./client-and-server-architecture.md), *erişim anahtarları* veya *Yönetilen kimlikler* kimlik doğrulaması için kullanılır.
 
-Azure Iletişim Hizmetleri SMS hizmeti, kimlik doğrulaması için *erişim anahtarlarını* veya *yönetilen kimliği* de kabul eder. Bu genellikle güvenilen bir hizmet ortamında çalışan bir hizmet uygulamasında gerçekleşir.
+Başka bir kimlik doğrulama türü, Kullanıcı katılımı gerektiren hizmetlerde kimlik doğrulaması yapmak için *Kullanıcı erişim belirteçlerini* kullanır. Örneğin, sohbet veya çağırma hizmeti, kullanıcıların bir iş parçacığına eklenmesine ve birbirleriyle konuşmalar yapmasına izin vermek için *Kullanıcı erişim belirteçlerini* kullanır.
+
+## <a name="authentication-options"></a>Kimlik doğrulama seçenekleri:
+
+Aşağıdaki tabloda, Azure Iletişim Hizmetleri istemci kitaplıkları ve kimlik doğrulama seçenekleri gösterilmektedir:
+
+| İstemci kitaplığı    | Kimlik doğrulama seçeneği                               |
+| ----------------- | ----------------------------------------------------|
+| Kimlik          | Erişim anahtarı veya yönetilen kimlik                      |
+| SMS               | Erişim anahtarı veya yönetilen kimlik                      |
+| Telefon numaraları     | Erişim anahtarı veya yönetilen kimlik                      |
+| Events           | Kullanıcı erişim belirteci                                   |
+| Sohbet              | Kullanıcı erişim belirteci                                   |
 
 Her yetkilendirme seçeneği kısaca aşağıda açıklanmıştır:
 
-- SMS ve kimlik işlemlerine yönelik anahtar kimlik doğrulamasına **erişin** . Erişim anahtarı kimlik doğrulaması, güvenilir bir hizmet ortamında çalışan hizmet uygulamaları için uygundur. Erişim anahtarı, Azure Iletişim Hizmetleri portalında bulunabilir. Bir hizmet uygulaması, erişim anahtarı ile kimlik doğrulamak için, ilgili SMS veya kimlik istemci kitaplıklarını başlatmak üzere erişim anahtarını kimlik bilgisi olarak kullanır, bkz. [erişim belirteçleri oluşturma ve yönetme](../quickstarts/access-tokens.md). Erişim anahtarı, kaynağınızın bağlantı dizesinin bir parçası olduğundan, bkz. [Iletişim Hizmetleri kaynaklarını oluşturma ve yönetme](../quickstarts/create-communication-resource.md), bağlantı dizesiyle kimlik doğrulama, erişim anahtarı ile kimlik doğrulamaya eşdeğerdir.
-- SMS ve kimlik işlemleri için **yönetilen kimlik** kimlik doğrulaması. Yönetilen kimlik, bkz. [yönetilen kimlik](../quickstarts/managed-identity.md), güvenilir bir hizmet ortamında çalışan hizmet uygulamaları için uygundur. Bir hizmet uygulaması yönetilen bir kimlikle kimlik doğrulaması yapmak için, yönetilen kimliğin KIMLIĞI ve gizli anahtarı ile bir kimlik bilgisi oluşturur, ardından karşılık gelen SMS veya Identity istemci kitaplıklarını başlatır, bkz. [erişim belirteçleri oluşturma ve yönetme](../quickstarts/access-tokens.md).
-- Sohbet için **Kullanıcı erişim belirteci** kimlik doğrulaması ve çağırma. Kullanıcı erişimi belirteçleri, istemci uygulamalarınızın Azure Iletişim sohbeti ve çağrı Hizmetleri ile kimlik doğrulamasını sağlar. Bu belirteçler, oluşturduğunuz bir "Güvenilen Kullanıcı erişimi hizmeti" içinde oluşturulur. Daha sonra, sohbeti başlatmak ve istemci kitaplıklarını çağırmak için belirteci kullanan istemci cihazlara sağlanırlar. Daha fazla bilgi için bkz. [uygulamanıza sohbet ekleme](../quickstarts/chat/get-started.md) örneğin.
+- **Erişim anahtarı** kimlik doğrulaması, güvenilir bir hizmet ortamında çalışan hizmet uygulamaları için uygundur. Erişim anahtarı Azure Iletişim Hizmetleri portalında bulunabilir ve hizmet uygulaması bunu ilgili istemci kitaplıklarını başlatmak için kimlik bilgisi olarak kullanır. [Kimlik istemci kitaplığında](../quickstarts/access-tokens.md)nasıl kullanıldığına ilişkin bir örnek görüntüleyin. Erişim anahtarı, kaynağınızın bağlantı dizesinin bir parçası olduğundan, bir bağlantı dizesiyle kimlik doğrulaması bir erişim anahtarı ile kimlik doğrulamaya eşdeğerdir.
+
+- **Yönetilen kimlik** kimlik doğrulaması, diğer yetkilendirme seçenekleri üzerinde üstün güvenlik ve kullanım kolaylığı sağlar. Örneğin, Azure AD 'yi kullanarak hesap erişim anahtarınızı, erişim anahtarı yetkilendirmesi ile yaptığınız gibi kodunuza depolamak zorunda kalmaktan kaçının. İletişim Hizmetleri uygulamalarıyla erişim anahtarı yetkilendirmesini kullanmaya devam edebilirsiniz, Microsoft, mümkün olduğunda Azure AD 'ye geçmeyi önerir. Yönetilen bir kimlik ayarlamak için [Azure CLI 'dan kayıtlı bir uygulama oluşturun](../quickstarts/managed-identity-from-cli.md). Ardından, uç nokta ve kimlik bilgileri istemci kitaplıklarının kimliğini doğrulamak için kullanılabilir. [Yönetilen kimliğin](../quickstarts/managed-identity.md) nasıl kullanıldığına ilişkin örneklere bakın.
+
+- **Kullanıcı erişim belirteçleri** kimlik istemci kitaplığı kullanılarak oluşturulur ve kimlik istemci kitaplığı 'nda oluşturulan kullanıcılarla ilişkilendirilir. [Kullanıcı oluşturma ve belirteç oluşturma](../quickstarts/access-tokens.md)hakkında bir örnek görüntüleyin. Daha sonra Kullanıcı erişim belirteçleri, sohbet veya çağrı SDK 'sında konuşmaları doğrulamak için kullanılır. Daha fazla bilgi için bkz. [uygulamanıza sohbet ekleme](../quickstarts/chat/get-started.md). Kullanıcı erişim belirteci kimlik doğrulaması, erişim anahtarı ve yönetilen kimlik doğrulamasına kıyasla, güvenli bir Azure kaynağı yerine bir kullanıcının kimliğini doğrulamak için kullanılır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
 > [Iletişim Hizmetleri kaynaklarını](../quickstarts/create-communication-resource.md) 
 >  oluşturma ve yönetme [Azure CLI](../quickstarts/managed-identity-from-cli.md) 
->  'dan Azure Active Directory yönetilen bir kimlik uygulaması oluşturma [Kullanıcı erişim belirteçleri oluşturma](../quickstarts/access-tokens.md)
+>  'dan Azure Active Directory yönetilen bir kimlik uygulaması oluşturma [Kullanıcı erişim belirteçleri oluştur](../quickstarts/access-tokens.md)
 
 Daha fazla bilgi için aşağıdaki makaleleri inceleyin:
 - [İstemci ve sunucu mimarisi hakkında bilgi edinin](../concepts/client-and-server-architecture.md)

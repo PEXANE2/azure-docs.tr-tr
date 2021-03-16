@@ -36,7 +36,7 @@
           href: connect-ios.md
         - name: Microsoft Store istemcisiyle bağlanma
           href: connect-microsoft-store.md
-        - name: Linux cihazlarıyla bağlanma
+        - name: Ölçülü istemcilerle bağlantı
           href: linux-overview.md
     - name: Cihaz yeniden yönlendirmelerini yapılandırma
       href: configure-device-redirections.md

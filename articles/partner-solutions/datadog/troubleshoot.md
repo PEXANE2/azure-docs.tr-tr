@@ -6,16 +6,26 @@ ms.topic: conceptual
 ms.date: 02/19/2021
 author: tfitzmac
 ms.author: tomfitz
-ms.openlocfilehash: a8bb28892fe42215876b5cc8771ae73c7d2aab7f
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 0e3c82f711de4cd9710c9aafe798a986e3403ed4
+ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101747114"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103563717"
 ---
-# <a name="troubleshooting-datadog-on-azure"></a>Azure 'da veri köpei sorunlarını giderme
+# <a name="troubleshooting-datadog-on-azure"></a>Azure'da Datadog Sorunlarını Giderme
 
 Bu belge, Dataköpek kullanan çözümlerinizde sorun giderme hakkında bilgiler içerir.
+
+## <a name="purchase-errors"></a>Satın alma hataları
+
+* Geçerli bir kredi kartı Azure aboneliğine bağlı olmadığından veya bir ödeme yöntemi abonelikle ilişkili olmadığından satın alma başarısız olur.
+
+  Farklı bir Azure aboneliği kullanın. Ya da, abonelik için kredi kartı veya ödeme yöntemi ekleyebilir veya güncelleştirebilirsiniz. Daha fazla bilgi için bkz. [kredi ve ödeme yöntemini güncelleştirme](../../cost-management-billing/manage/change-credit-card.md).
+
+* EA aboneliği Market satın alımlara izin vermez.
+
+  Farklı bir abonelik kullanın. Ya da EA aboneliğinizin Market satın alma için etkinleştirilip etkinleştirilmediğini denetleyin. Daha fazla bilgi için bkz. [Market satın alımlarını etkinleştirme](../../cost-management-billing/manage/ea-azure-marketplace.md#enabling-azure-marketplace-purchases). Bu seçenekler sorunu çözmezse, [veri köpek desteğiyle](https://www.datadoghq.com/support)iletişime geçin.
 
 ## <a name="unable-to-create-datadog-resource"></a>Dataköpek kaynağı oluşturulamıyor
 
