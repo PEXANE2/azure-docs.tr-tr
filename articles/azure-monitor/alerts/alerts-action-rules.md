@@ -2,13 +2,13 @@
 title: Azure Izleyici uyarıları için eylem kuralları
 description: Azure Izleyici 'deki eylem kurallarının ne olduğunu ve bunların nasıl yapılandırılacağını ve yönetileceğini anlamak.
 ms.topic: conceptual
-ms.date: 04/25/2019
-ms.openlocfilehash: bf254249f5b347d32255820da370a499c84da212
-ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
+ms.date: 03/15/2021
+ms.openlocfilehash: 2ad87cce668555ece0eba6479bf9d21db312bfcf
+ms.sourcegitcommit: 3ea12ce4f6c142c5a1a2f04d6e329e3456d2bda5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/14/2021
-ms.locfileid: "103463077"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103466737"
 ---
 # <a name="action-rules-preview"></a>Eylem kuralları (Önizleme)
 
@@ -68,15 +68,16 @@ Kullanılabilir filtreleri şunlardır:
 * **Önem Derecesi**  
 Bu kural yalnızca seçili önem derecelerine sahip uyarılar için geçerlidir.  
 Örneğin, **önem derecesi = Sev1** , kuralın yalnızca Sev1 önem derecesine sahip uyarılara uygulanacağını gösterir.
-* **Hizmet İzleme**  
+* **Hizmeti izle**  
 Bu kural, yalnızca seçilen izleme hizmetlerinden gelen uyarılar için geçerlidir.  
 Örneğin, **Monitor Service = "Azure Backup"** , kuralın yalnızca yedekleme uyarıları (Azure Backup geldiği) için uygulanacağı anlamına gelir.
-* **Kaynak Türü**  
+* **Kaynak türü**  
 Bu kural yalnızca seçili kaynak türlerindeki uyarılar için geçerlidir.  
 Örneğin, **kaynak türü = "sanal makineler"** , kuralın yalnızca sanal makinelerdeki uyarılar için uygulanacağı anlamına gelir.
 * **Uyarı kuralı KIMLIĞI**  
 Bu kural, yalnızca belirli bir uyarı kuralından gelen uyarılar için geçerlidir. Değer, uyarı kuralının Kaynak Yöneticisi KIMLIĞI olmalıdır.  
-Örneğin, **Uyarı KURALı kimliği = "/Subscriptions/SubId1/resourceGroups/ResourceGroup1/Providers/Microsoft.insights/metricalerts/API-Latency"** , bu kuralın yalnızca "API-Latency" ölçümü uyarı kuralından gelen uyarılar için uygulanacağını gösterir.
+Örneğin, **Uyarı KURALı kimliği = "/Subscriptions/SubId1/resourceGroups/RG1/Providers/Microsoft.insights/metricalerts/API-Latency"** , bu kuralın yalnızca "API-Latency" ölçümü uyarı kuralından gelen uyarılar için uygulanacağını gösterir.
+CLı 'dan uyarı kurallarınızı listeleyerek veya portalda belirli bir uyarı kuralını açıp "Özellikler" ' i tıklatarak ve "kaynak KIMLIĞI" değerini kopyalayarak doğru uyarı kuralı KIMLIĞINI alabilirsiniz.
 * **İzleme koşulu**  
 Bu kural yalnızca belirtilen izleyici koşuluna sahip uyarı olayları için geçerlidir- **tetiklenir** veya **çözüldü**.
 * **Açıklama**  
@@ -117,7 +118,7 @@ Geçiş sırasında **eylem grubu** ' nu seçerseniz, var olan bir eylem grubu e
 Son olarak, eylem kuralı için aşağıdaki ayrıntıları yapılandırın:
 * Name
 * Kaydedildiği kaynak grubu
-* Description
+* Açıklama
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 

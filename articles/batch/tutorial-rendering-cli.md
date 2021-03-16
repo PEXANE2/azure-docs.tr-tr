@@ -4,12 +4,13 @@ description: Toplu Işleme hizmeti ve Azure Command-Line arabirimini kullanarak 
 ms.topic: tutorial
 ms.date: 12/30/2020
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 3518e074589284e6d6cd7432dc77ba8bdd457045
-ms.sourcegitcommit: 42922af070f7edf3639a79b1a60565d90bb801c0
+ROBOTS: NOINDEX
+ms.openlocfilehash: 5165e5feb566a4b9081f40b681b92aafa143869f
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97827538"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103491761"
 ---
 # <a name="tutorial-render-a-scene-with-azure-batch"></a>Öğretici: Azure Batch ile sahne işleme
 
@@ -186,7 +187,7 @@ Komut tarafından döndürülen belirteci not alın; aşağıdakine benzer olaca
 
 ## <a name="render-a-single-frame-scene"></a>Tek kareli bir sahneyi işleme
 
-### <a name="create-a-job"></a>İş oluşturma
+### <a name="create-a-job"></a>Bir iş oluşturma
 
 [az batch job create](/cli/azure/batch/job#az-batch-job-create) komutunu kullanarak havuzda çalıştırılacak bir işleme işi oluşturun. Başlangıçta, işin hiç görevi yok.
 

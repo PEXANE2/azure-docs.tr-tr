@@ -4,15 +4,15 @@ description: Algılayıcıların kullanıcılarını ve şirket içi yönetim ko
 author: shhazam-ms
 manager: rkarlin
 ms.author: shhazam
-ms.date: 1/3/2021
+ms.date: 03/03/2021
 ms.topic: article
 ms.service: azure
-ms.openlocfilehash: fd0c7b74bea979737644824f93b4dce7a2364b99
-ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
+ms.openlocfilehash: dff379c99fa7383c7f7844cf8d195a345e88a335
+ms.sourcegitcommit: 3ea12ce4f6c142c5a1a2f04d6e329e3456d2bda5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/15/2021
-ms.locfileid: "100522351"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103466278"
 ---
 # <a name="about-defender-for-iot-console-users"></a>IoT konsol kullanıcıları için Defender hakkında
 
@@ -162,7 +162,7 @@ Algılayıcıyı veya şirket içi yönetim konsolunu Active Directory ile çal�
 
 ### <a name="active-directory-and-defender-for-iot-permissions"></a>IoT izinleri için Active Directory ve Defender
 
-Burada tanımlanan Active Directory gruplarını belirli izin düzeyleriyle ilişkilendirebilirsiniz. Örneğin, belirli bir Active Directory grubunu yapılandırın ve gruptaki tüm kullanıcılara RO izinleri atayın. Ayrıntılar için bkz. [Kullanıcı oluşturma ve yönetme](how-to-create-and-manage-users.md) .
+Burada tanımlanan Active Directory gruplarını belirli izin düzeyleriyle ilişkilendirebilirsiniz. Örneğin, belirli bir Active Directory grubunu yapılandırın ve gruptaki tüm kullanıcılara salt okuma izinleri atayın.
 
 Active Directory yapılandırmak için:
 
@@ -170,11 +170,11 @@ Active Directory yapılandırmak için:
 
     :::image type="content" source="media/how-to-setup-active-directory/ad-system-settings-v2.png" alt-text="Active Directory sistem ayarlarınızı görüntüleyin.":::
 
-1. **Sistem ayarları** bölmesinde **Active Directory**' yi seçin.
+2. **Sistem ayarları** bölmesinde **Active Directory**' yi seçin.
 
     :::image type="content" source="media/how-to-setup-active-directory/ad-configurations-v2.png" alt-text="Active Directory yapılandırmalarınızı düzenleyin.":::
 
-1. **Active Directory yapılandırmayı Düzenle** iletişim kutusunda **Active Directory tümleştirme etkin**  >  **Kaydet**' i seçin. **Active Directory yapılandırmayı Düzenle** iletişim kutusu genişletilir ve artık Active Directory yapılandırılacak parametreleri girebilirsiniz.
+3. **Active Directory yapılandırmayı Düzenle** iletişim kutusunda **Active Directory tümleştirme etkin**  >  **Kaydet**' i seçin. **Active Directory yapılandırmayı Düzenle** iletişim kutusu genişletilir ve artık Active Directory yapılandırılacak parametreleri girebilirsiniz.
 
     :::image type="content" source="media/how-to-setup-active-directory/ad-integration-enabled-v2.png" alt-text="Active Directory yapılandırılacak parametreleri girin.":::
 
@@ -183,7 +183,7 @@ Active Directory yapılandırmak için:
     > - Tüm Active Directory parametreleri için yalnızca küçük harf kullanın. Active Directory ' deki yapılandırmaların büyük harfle kullanıldığı durumlarda bile küçük harf kullanın.
     > - Aynı etki alanı için hem LDAP hem de LDAPS yapılandıramazsınız. Ancak, aynı anda farklı etki alanları için her ikisini de kullanabilirsiniz.
 
-1. Active Directory sunucusu parametrelerini aşağıdaki şekilde ayarlayın:
+4. Active Directory sunucusu parametrelerini aşağıdaki şekilde ayarlayın:
 
    | Sunucu parametresi | Açıklama |
    |--|--|
@@ -193,11 +193,15 @@ Active Directory yapılandırmak için:
    | Active Directory grupları | LDAP sunucusundaki Active Directory yapılandırmanızda tanımlanan grup adlarını girin. |
    | Güvenilen etki alanları | Güvenilen bir etki alanı eklemek için, etki alanı adını ve güvenilen bir etki alanının bağlantı türünü ekleyin. <br />Güvenilen etki alanlarını yalnızca kullanıcılar altında tanımlı kullanıcılar için yapılandırabilirsiniz. |
 
+#### <a name="activedirectory-groups-for-the-on-premises-management-console"></a>Şirket içi yönetim konsolu için ActiveDirectory grupları
+
+Şirket içi yönetim konsolu kullanıcıları için Active Directory grupları oluşturuyorsanız, her bir Active Directory grubu için bir erişim grubu kuralı oluşturmanız gerekir. Active Directory Kullanıcı grubu için bir erişim grubu kuralı yoksa, şirket içi yönetim konsolu Active Directory kimlik bilgileri çalışmayacaktır. Bkz. [genel erişim denetimi tanımlama](how-to-define-global-user-access-control.md).
+
 1. **Kaydet**’i seçin.
 
-1. Güvenilen bir sunucu eklemek için **Sunucu Ekle** ve başka bir sunucu Yapılandır ' ı seçin.
+2. Güvenilen bir sunucu eklemek için **Sunucu Ekle** ve başka bir sunucu Yapılandır ' ı seçin.
 
-## <a name="resetting-a-users-password-for-the-sensor-or-on-premises-management-console"></a>Kullanıcının algılayıcısı veya şirket içi yönetim konsolu için parolasını sıfırlama
+## <a name="resetting-passwords"></a>Parolaları sıfırlama
 
 ### <a name="cyberx-or-support-user"></a>Six veya destek kullanıcısı
 
@@ -265,7 +269,7 @@ Kullanıcının algılayıcıdaki parolasını sıfırlamak için:
 
 1. **Güncelleştir**’i seçin.
 
-## <a name="next-steps"></a>Sonraki adımlar
+## <a name="see-also"></a>Ayrıca bkz.
 
 Algılayıcıyı etkinleştirme ve [ayarlama](how-to-activate-and-set-up-your-sensor.md) 
  Şirket [içi yönetim konsolunuzu](how-to-activate-and-set-up-your-on-premises-management-console.md) 

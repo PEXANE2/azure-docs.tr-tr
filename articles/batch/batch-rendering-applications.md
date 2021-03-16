@@ -1,22 +1,25 @@
 ---
 title: Uygulamaları işleme
 description: Azure Batch ile herhangi bir işleme uygulaması kullanmak mümkündür. Ancak, Azure Market VM görüntüleri önceden yüklenmiş ortak uygulamalar ile kullanılabilir.
-ms.date: 02/12/2021
+ms.date: 03/12/2021
 ms.topic: how-to
-ms.openlocfilehash: 18fc142d2fa9c819b9872c64ef7aae4c73cc2428
-ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
+ms.openlocfilehash: c98e2e0a81051dad47c201de9eda9f89cc311cf2
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100635345"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103496652"
 ---
 # <a name="pre-installed-applications-on-batch-rendering-vm-images"></a>Toplu işleme VM görüntülerinde önceden yüklenmiş uygulamalar
 
 Azure Batch ile herhangi bir işleme uygulaması kullanmak mümkündür. Ancak, Azure Market VM görüntüleri önceden yüklenmiş ortak uygulamalar ile kullanılabilir.
 
-Uygun olduğunda, önceden yüklenmiş işleme uygulamaları için kullanım başına ödeme lisansı kullanılabilir. Bir Batch havuzu oluşturulduğunda, gerekli uygulamalar belirtilebilir ve her iki VM ve uygulama maliyeti de dakika başına faturalandırılır. Uygulama fiyatları [Azure Batch fiyatlandırma sayfasında](https://azure.microsoft.com/pricing/details/batch/#graphic-rendering)listelenir.
+Uygun olduğunda, önceden yüklenmiş işleme uygulamaları için kullanım için ödeme lisansı kullanılabilir. Bir Batch havuzu oluşturulduğunda, gerekli uygulamalar belirtilebilir ve her iki VM ve uygulama maliyeti de dakika başına faturalandırılır. Uygulama fiyatları [Azure Batch fiyatlandırma sayfasında](https://azure.microsoft.com/pricing/details/batch/#graphic-rendering)listelenir.
 
 Bazı uygulamalar yalnızca Windows 'u destekler, ancak çoğu hem Windows hem de Linux üzerinde desteklenir.
+
+> [!IMPORTANT]
+> İşlenen VM görüntüleri ve kullanım için ödeme lisansı [kullanım dışı bırakılmıştır ve 29 şubat 2024 tarihinde kullanımdan](https://azure.microsoft.com/updates/azure-batch-rendering-vm-images-licensing-will-be-retired-on-29-february-2024/)kaldırılacaktır. Toplu Işi işlemek için kullanmak üzere [Özel BIR VM görüntüsü ve standart uygulama lisanslama kullanılmalıdır.](batch-rendering-functionality.md#batch-pools-using-custom-vm-images-and-standard-application-licensing)
 
 ## <a name="applications-on-latest-centos-7-rendering-image"></a>En son CentOS 7 işleme görüntüsündeki uygulamalar
 

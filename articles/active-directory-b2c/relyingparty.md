@@ -7,21 +7,21 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 03/04/2021
+ms.date: 03/15/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: bcdc8c448a348bf067995bf92615ceab1ac19fb4
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
+ms.openlocfilehash: 5374ce59d3a599e243684c168a8d84a6434059ee
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102198452"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103492022"
 ---
 # <a name="relyingparty"></a>RelyingParty
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-**RelyingParty** öğesi Azure Active Directory B2C (Azure AD B2C) için geçerli istek için zorlamak üzere Kullanıcı yolculuğunu belirtir. Ayrıca, bağlı olan taraf (RP) uygulamasının verilen belirtecin bir parçası olarak ihtiyacı olan taleplerin listesini de belirtir. Web, mobil veya masaüstü uygulaması gibi bir RP uygulaması, RP ilke dosyasını çağırır. RP ilke dosyası, oturum açma, parola sıfırlama veya bir profili düzenlemeyle ilgili belirli bir görevi yürütür. Birden çok uygulama aynı RP ilkesini kullanabilir ve tek bir uygulama birden çok ilke kullanabilir. Tüm RP uygulamaları taleplerle aynı belirteci alır ve Kullanıcı aynı kullanıcı yolculuğuna gider.
+**Bağlı Olan Taraf** öğesi Azure Active Directory B2C'ye (Azure AD B2C) yönelik geçerli istek için zorlanacak kullanıcı yolculuğunu belirtir. Ayrıca verilen belirtecin bir parçası olarak, bağlı olan taraf (RP) uygulamasına gereken taleplerin listesini de belirtir. Web, mobil veya masaüstü uygulaması gibi bir RP uygulaması, RP ilke dosyasını çağırır. RP ilke dosyası, oturum açma, parola sıfırlama veya bir profili düzenlemeyle ilgili belirli bir görevi yürütür. Birden çok uygulama aynı RP ilkesini kullanabilir ve tek bir uygulama birden çok ilke kullanabilir. Tüm RP uygulamaları taleplerle aynı belirteci alır ve Kullanıcı aynı kullanıcı yolculuğuna gider.
 
 Aşağıdaki örnek *B2C_1A_signup_signin* ilke dosyasında bir **RelyingParty** öğesi gösterir:
 
@@ -145,10 +145,11 @@ Aşağıdaki örnekte, [UserInfo uç noktası](userinfo-endpoint.md)ile bağlı 
 | Bağlantı, Neyelik | 0:1 | Kullanılacak Azure Application Insights izleme anahtarı. |
 | ContentDefinitionParameters | 0:1 | İçerik tanımı yük URI 'sine eklenecek anahtar değer çiftlerinin listesi. |
 |ScriptExecution| 0:1| Desteklenen [JavaScript](javascript-and-page-layout.md) yürütme modları. Olası değerler: `Allow` veya `Disallow` (varsayılan).
+| Bağlantı, Neyıçerçeveleme | 0:1| Bu ilkenin Kullanıcı arabiriminin bir iframe 'e yüklenmesine izin verir. |
 
 ### <a name="singlesignon"></a>SingleSignOn
 
-**SingleSignon** öğesi aşağıdaki öznitelikte yer alır:
+**SingleSignon** öğesi aşağıdaki öznitelikleri içerir:
 
 | Öznitelik | Gerekli | Açıklama |
 | --------- | -------- | ----------- |
@@ -165,7 +166,7 @@ I, **Newınghts** öğesi aşağıdaki öznitelikleri içerir:
 | --------- | -------- | ----------- |
 | TelemetryEngine | Yes | Değer olmalıdır `ApplicationInsights` . |
 | Instrumentationkey | Yes | Application Insights öğesi için izleme anahtarını içeren dize. |
-| DeveloperMode | Yes | Olası değerler: `true` veya `false` . `true`Application Insights, işlem hattı aracılığıyla Telemetriyi bir şekilde yükseltir. Bu ayar geliştirme için uygundur, ancak yüksek birimlerde kısıtlanmıştır. Ayrıntılı etkinlik günlükleri yalnızca özel ilkelerin geliştirilmesine yardımcı olmak için tasarlanmıştır. Üretim ortamında geliştirme modunu kullanmayın. Günlükler, geliştirme sırasında kimlik sağlayıcılardan gelen ve giden tüm talepleri toplar. Üretimde kullanılıyorsa, geliştirici, sahip oldukları App Insights günlüğünde toplanan PII (özel olarak tanımlanabilen bilgiler) için sorumluluğu kabul eder. Bu ayrıntılı Günlükler yalnızca bu değer olarak ayarlandığında toplanır `true` .|
+| DeveloperMode | Yes | Olası değerler: `true` veya `false` . `true`Application Insights, işlem hattı aracılığıyla Telemetriyi bir şekilde yükseltir. Bu ayar geliştirme için uygundur, ancak yüksek birimlerde kısıtlanmıştır. Ayrıntılı etkinlik günlükleri yalnızca özel ilkelerin geliştirilmesine yardımcı olmak için tasarlanmıştır. Üretim ortamında geliştirme modunu kullanmayın. Günlükler, geliştirme sırasında kimlik sağlayıcılardan gelen ve giden tüm talepleri toplar. Üretimde kullanılıyorsa, geliştirici, sahip oldukları App Insights günlüğünde toplanan kişisel verilerin sorumluluğunu kabul eder. Bu ayrıntılı Günlükler yalnızca bu değer olarak ayarlandığında toplanır `true` .|
 | ClientEnabled | Yes | Olası değerler: `true` veya `false` . `true`, İzleme sayfası görünümü ve istemci tarafı hataları için Application Insights istemci tarafı betiği gönderir. |
 | Sunucuetkin | Yes | Olası değerler: `true` veya `false` . Varsa `true` , Application Insights için var olan Kullanıcıgünneyıkaydedicisi JSON 'sini özel bir olay olarak gönderir. |
 | TelemetryVersion | Yes | Değer olmalıdır `1.0.0` . |
@@ -193,6 +194,15 @@ Aşağıdaki örnek, `campaignId` sorgu dizesinde değeri olan adlı bir paramet
 | Ad | Yes | Anahtar değer çiftinin adı. |
 
 Daha fazla bilgi için bkz [. özel ilkeler kullanarak dinamik içerikle Kullanıcı arabirimini yapılandırma](customize-ui-with-html.md#configure-dynamic-custom-page-content-uri)
+
+### <a name="journeyframing"></a>Bağlantı, Neyıçerçeveleme
+
+Giden **Neyçerçeveleme** öğesi aşağıdaki öznitelikleri içerir:
+
+| Öznitelik | Gerekli | Açıklama |
+| --------- | -------- | ----------- |
+| Etkin | Yes | Bu ilkenin bir iframe içinde yüklenmesine olanak sağlar. Olası değerler: `false` (varsayılan) veya `true` . |
+| Kaynaklar | Yes | İframe 'i barındıracak olan etki alanlarını içerir. Daha fazla bilgi için bkz. [Azure B2C 'yi bir iframe 'e yükleme](embedded-login.md). |
 
 ## <a name="technicalprofile"></a>Teknisyen
 

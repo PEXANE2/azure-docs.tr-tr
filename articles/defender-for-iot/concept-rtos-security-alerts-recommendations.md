@@ -1,6 +1,6 @@
 ---
-title: Azure RTOS için güvenlik modülü yerleşik & özelleştirilebilir uyarılar ve öneriler
-description: Azure IoT güvenlik modülünü-RTOS kullanarak güvenlik uyarıları ve önerilen düzeltme hakkında bilgi edinin.
+title: Defender-IoT-mikro-aracı Azure RTOS için yerleşik & özelleştirilebilir uyarılar ve öneriler
+description: Azure IoT Defender-IoT-Micro-Agent-RTOS ' ı kullanarak güvenlik uyarıları ve önerilen düzeltme hakkında bilgi edinin.
 services: defender-for-iot
 ms.service: defender-for-iot
 documentationcenter: na
@@ -13,30 +13,30 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/07/2020
 ms.author: mlottner
-ms.openlocfilehash: cf4924f8a9b97487e64e12ab80df92f2b2a81de2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d6dfeb01e174d71c926e9fcf7f5f1ee078524cf9
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90941719"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103494283"
 ---
-# <a name="security-module-for-azure-rtos-security-alerts-and-recommendations-preview"></a>Azure RTOS güvenlik uyarıları ve önerileri için güvenlik modülü (Önizleme)
+# <a name="defender-iot-micro-agent-for-azure-rtos-security-alerts-and-recommendations-preview"></a>Defender-IoT-Micro-Agent for Azure RTOS güvenlik uyarıları ve önerileri (Önizleme)
 
-Azure RTOS için güvenlik modülü, olası kötü amaçlı etkinlikler ve şüpheli sistem değişiklikleri konusunda sizi uyarmak için gelişmiş analiz ve tehdit bilgilerini kullanarak IoT çözümünüzü sürekli olarak analiz eder. Ayrıca, beklenen cihaz davranışı ve temelleri hakkında bilginiz temelinde özel uyarılar da oluşturabilirsiniz.
+Defender-IoT-Micro-Service for Azure RTOS, olası kötü amaçlı etkinlikler ve şüpheli sistem değişiklikleri konusunda sizi uyarmak için gelişmiş analiz ve tehdit bilgilerini kullanarak IoT çözümünüzü sürekli olarak analiz eder. Ayrıca, beklenen cihaz davranışı ve temelleri hakkında bilginiz temelinde özel uyarılar da oluşturabilirsiniz.
 
-Azure RTOS uyarısı için bir güvenlik modülü olası bir uzlaşmaya ilişkin bir gösterge olarak davranır ve araştırılması ve düzeltilmelidir. Azure RTOS önerisi için bir güvenlik modülü, düzeltilen ve güncellenen zayıf güvenlik duruşunu belirler. 
+Azure RTOS uyarısı için bir Defender-IoT-Micro-Agent olası bir uzlaşmaya yönelik gösterge olarak davranır ve araştırılması ve düzeltilmelidir. Azure RTOS önerisi için bir Defender-IoT-Micro-Agent, düzeltilen ve güncellenen zayıf güvenlik duruşunu belirler. 
 
 Bu makalede, varsayılan aralıklara göre tetiklenen yerleşik uyarıların ve önerilerin bir listesini, beklenen veya temel davranışa göre kendi değerlerinizle özelleştirilebilir bir liste bulacaksınız. 
 
-IoT hizmeti için Defender 'da uyarı özelleştirmenin nasıl çalıştığı hakkında daha fazla bilgi için bkz. [özelleştirilebilir uyarılar](concept-customizable-security-alerts.md). Azure RTOS için güvenlik modülünü kullanırken özelleştirme için kullanılabilen belirli uyarılar ve öneriler aşağıdaki tablolarda ayrıntılıdır. 
+IoT hizmeti için Defender 'da uyarı özelleştirmenin nasıl çalıştığı hakkında daha fazla bilgi için bkz. [özelleştirilebilir uyarılar](concept-customizable-security-alerts.md). Azure RTOS için Defender-IoT-Micro-Agent kullanılırken özelleştirme için kullanılabilen belirli uyarılar ve öneriler aşağıdaki tablolarda ayrıntılıdır. 
 
-## <a name="security-module-for-azure-rtos-supported-security-alerts"></a>Azure RTOS tarafından desteklenen güvenlik uyarıları için güvenlik modülü
+## <a name="defender-iot-micro-agent-for-azure-rtos-supported-security-alerts"></a>Defender-IoT-Micro-Agent for Azure RTOS desteklenen güvenlik uyarıları
 
 ### <a name="device-related-security-alerts"></a>Cihazla ilgili güvenlik uyarıları
 
 |Cihazla ilgili güvenlik uyarısı etkinliği  |Uyarı adı  |
 |---------|---------|
-|IP adresi| Şüpheli bir IP adresi ile iletişim algılandı|
+|IP Adresi| Şüpheli bir IP adresi ile iletişim algılandı|
 |X. 509.440 cihaz sertifikası parmak izi|X. 509.440 cihaz sertifikası parmak izi uyuşmazlığı|
 |X. 509.440 sertifikası| X. 509.440 sertifikasının geçerliliği geçildi|
 |SAS belirteci| Süre dolsa belirteci|
@@ -53,7 +53,7 @@ IoT hizmeti için Defender 'da uyarı özelleştirmenin nasıl çalıştığı h
 |Sertifika silindi    | IoT Hub bir sertifikayı silme algılandı        |
 |Yeni sertifika     |  Yeni sertifikanın bir IoT Hub eklenmesi algılandı       |
 
-## <a name="security-module-for-azure-rtos-supported-customizable-alerts"></a>Azure RTOS tarafından desteklenen özelleştirilebilir uyarılar için güvenlik modülü
+## <a name="defender-iot-micro-agent-for-azure-rtos-supported-customizable-alerts"></a>Defender-IoT-mikro-aracı Azure RTOS tarafından desteklenen özelleştirilebilir uyarılar
 
 ### <a name="device-related-customizable-alerts"></a>Cihazla ilgili özelleştirilebilir uyarılar
 
@@ -75,7 +75,7 @@ IoT hizmeti için Defender 'da uyarı özelleştirmenin nasıl çalıştığı h
 |İkizi modülleri güncelleştirmeleri     |  İzin verilen Aralık dışında ikizi modüllerine yönelik güncelleştirme sayısı       |
 |Yetkisiz işlemler    |  İzin verilen aralığın dışında yetkisiz işlem sayısı       |
 
-## <a name="security-module-for-azure-rtos-supported-recommendations"></a>Azure RTOS tarafından desteklenen öneriler için güvenlik modülü
+## <a name="defender-iot-micro-agent-for-azure-rtos-supported-recommendations"></a>Defender-IoT-Micro-Agent for Azure RTOS desteklenen öneriler
 
 ### <a name="device-related-recommendations"></a>Cihazla ilgili öneriler
 
@@ -97,6 +97,6 @@ IoT hizmeti ile ilgili uyarılar ve öneriler için tüm Defender 'ın tüm list
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Hızlı başlangıç: Azure RTOS için güvenlik modülü](quickstart-azure-rtos-security-module.md)
-- [Azure RTOS için güvenlik modülünü yapılandırma ve özelleştirme](how-to-azure-rtos-security-module.md)
-- [Azure RTOS API 'Sinin güvenlik modülüne](azure-rtos-security-module-api.md) bakın
+- [Hızlı başlangıç: Defender-IoT-mikro-aracı Azure RTOS](quickstart-azure-rtos-security-module.md)
+- [Azure RTOS için Defender-IoT-Micro-Agent 'ı yapılandırma ve özelleştirme](how-to-azure-rtos-security-module.md)
+- [Azure RTOS API 'si Için Defender-IoT-mikro-Agent](azure-rtos-security-module-api.md) bölümüne bakın

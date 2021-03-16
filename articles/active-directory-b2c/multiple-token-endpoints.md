@@ -1,5 +1,5 @@
 ---
-title: OWıN tabanlı Web API 'Lerini b2clogin.com 'e geçirme
+title: OWıN tabanlı Web API 'Lerini b2clogin.com veya özel bir etki alanına geçirme
 titleSuffix: Azure AD B2C
 description: Uygulamalarınızı b2clogin.com 'e geçirirken birden çok belirteç verenler tarafından verilen belirteçleri desteklemek için bir .NET Web API 'sini nasıl etkinleştirebileceğinizi öğrenin.
 services: active-directory-b2c
@@ -8,28 +8,25 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 07/31/2019
+ms.date: 03/15/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: c362ce256259606c85af0a7e13ccde1715bb012b
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 860f167913211ee7c511e515937f29ba5bf954cf
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94953942"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103491581"
 ---
-# <a name="migrate-an-owin-based-web-api-to-b2clogincom"></a>OWıN tabanlı bir Web API 'sini b2clogin.com 'e geçirme
+# <a name="migrate-an-owin-based-web-api-to-b2clogincom-or-a-custom-domain"></a>OWıN tabanlı Web API 'sini b2clogin.com veya özel bir etki alanına geçirme
 
-Bu makalede, [.net Için açık Web arabirimi (OWıN)](http://owin.org/)uygulayan Web API 'lerinde birden çok belirteç verenler desteğini etkinleştirme tekniği açıklanmaktadır. Birden çok belirteç uç noktasını desteklemek, Azure Active Directory B2C (Azure AD B2C) API 'Lerini ve uygulamalarını *login.microsoftonline.com* ' den *b2clogin.com*' ye geçirirken yararlıdır.
+Bu makalede, [.net Için açık Web arabirimi (OWıN)](http://owin.org/)uygulayan Web API 'lerinde birden çok belirteç verenler desteğini etkinleştirme tekniği açıklanmaktadır. Birden çok belirteç uç noktasını desteklemek, Azure Active Directory B2C (Azure AD B2C) API 'Lerini ve uygulamalarını bir etki alanından diğerine geçirirken faydalıdır. Örneğin, *login.microsoftonline.com* ile *b2clogin.com* veya [özel bir etki alanı](custom-domain.md).
 
-Hem b2clogin.com hem de login.microsoftonline.com tarafından verilen belirteçleri kabul etmek için API 'nize destek ekleyerek, API 'den login.microsoftonline.com tarafından verilen belirteçler desteğini kaldırmadan önce Web uygulamalarınızı aşamalı bir şekilde geçirebilirsiniz.
+API 'nize b2clogin.com, login.microsoftonline.com veya özel bir etki alanı tarafından verilen belirteçleri kabul etmek için destek ekleyerek, API 'den login.microsoftonline.com tarafından verilen belirteçler desteğini kaldırmadan önce Web uygulamalarınızı aşamalı bir şekilde geçirebilirsiniz.
 
 Aşağıdaki bölümler, [Microsoft OWIN][katana] ara yazılım bileşenleri (Katana) kullanan BIR Web API 'sinde birden çok veren 'in nasıl etkinleşeceği hakkında bir örnek sunar. Kod örnekleri Microsoft OWıN ara yazılımı 'na özgü olsa da, genel teknik diğer OWIN kitaplıkları için geçerli olmalıdır.
 
-> [!NOTE]
-> Bu makale, şu anda dağıtılmış olan API 'Ler ve uygulama `login.microsoftonline.com` ve önerilen uç noktaya geçirmek isteyen uygulamalarla Azure AD B2C müşterilere yöneliktir `b2clogin.com` . Yeni bir uygulama ayarlıyorsanız, [b2clogin.com](b2clogin.md) kullanın.
-
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu makaledeki adımlarla devam etmeden önce aşağıdaki Azure AD B2C kaynaklara sahip olmanız gerekir:
 
@@ -88,7 +85,7 @@ git clone https://github.com/Azure-Samples/active-directory-b2c-dotnet-webapp-an
 Bu bölümde, her iki belirteç verenin bitiş noktalarının geçerli olduğunu belirtmek için kodu güncelleştirin.
 
 1. Visual Studio 'da **B2C-WebAPI-DotNet. sln** çözümünü açın
-1. **Taskservice** projesinde, Düzenleyicinizde * taskservice \\ App_Start \\ **Startup.auth.cs** _ dosyasını açın
+1. **Taskservice** projesinde, Düzenleyicinizde *taskservice \\ App_Start \\ * * Startup.auth.cs** * dosyasını açın
 1. Aşağıdaki `using` yönergeyi dosyanın en üstüne ekleyin:
 
     `using System.Collections.Generic;`
@@ -102,12 +99,13 @@ Bu bölümde, her iki belirteç verenin bitiş noktalarının geçerli olduğunu
         AuthenticationType = Startup.DefaultPolicy,
         ValidIssuers = new List<string> {
             "https://login.microsoftonline.com/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/v2.0/",
-            "https://{your-b2c-tenant}.b2clogin.com/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/v2.0/"
+            "https://{your-b2c-tenant}.b2clogin.com/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/v2.0/"//,
+            //"https://your-custom-domain/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/v2.0/"
         }
     };
     ```
 
-`TokenValidationParameters` , MSAL.NET tarafından sağlanır ve _Startup. auth. cs * içindeki kodun sonraki bölümünde OWıN ara yazılımı tarafından kullanılır. Birden çok geçerli veren belirtildiğinde, OWıN uygulama işlem hattı, her iki belirteç uç hattının de geçerli verenler olduğunu fark eder.
+`TokenValidationParameters` , MSAL.NET tarafından sağlanır ve *Startup.auth.cs* içindeki kodun sonraki bölümünde owın ara yazılımı tarafından kullanılır. Birden çok geçerli veren belirtildiğinde, OWıN uygulama işlem hattı, her iki belirteç uç hattının de geçerli verenler olduğunu fark eder.
 
 ```csharp
 app.UseOAuthBearerAuthentication(new OAuthBearerAuthenticationOptions
@@ -142,6 +140,13 @@ Sonra ( `{your-b2c-tenant}` B2C kiracınızın adıyla değiştirin):
 ```
 
 Uç nokta dizeleri Web uygulamasının yürütülmesi sırasında oluşturulduğunda, b2clogin.com tabanlı uç noktalar belirteçleri istediğinde kullanılır.
+
+Özel etki alanı kullanılırken:
+
+```xml
+<!-- Custom domain -->
+<add key="ida:AadInstance" value="https://custom-domain/{0}/{1}" />
+```
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

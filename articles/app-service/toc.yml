@@ -90,7 +90,7 @@
       href: tutorial-troubleshoot-monitor.md
 - name: Örnekler
   items:
-    - name: Azure CLI
+    - name: Azure CLI’si
       href: samples-cli.md
     - name: Azure PowerShell
       href: samples-powershell.md
@@ -187,8 +187,6 @@
               href: deploy-ci-cd-custom-container.md
             - name: Yerel Git’ten dağıtım
               href: deploy-local-git.md
-            - name: Kapsayıcılar için GitHub Action
-              href: deploy-container-github-action.md
             - name: Şablon ile dağıtım
               href: deploy-complex-application-predictably.md
         - name: Dağıtım kimlik bilgilerini ayarlama
@@ -295,7 +293,7 @@
           href: webjobs-sdk-how-to.md
 - name: Başvuru
   items:
-    - name: Azure CLI
+    - name: Azure CLI’si
       href: /cli/azure/appservice
     - name: Azure PowerShell
       href: /powershell/module/az.websites/#app_service

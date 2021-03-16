@@ -7,12 +7,12 @@ ms.subservice: files
 ms.topic: how-to
 ms.date: 09/16/2020
 ms.author: rogarana
-ms.openlocfilehash: 02b8d72ab88f9eca2e1fac4858c14826dae57dbe
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.openlocfilehash: 698b4ebedfc9b41e8c5732a0a81226a971d65585
+ms.sourcegitcommit: 66ce33826d77416dc2e4ba5447eeb387705a6ae5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94629181"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103470769"
 ---
 # <a name="part-three-configure-directory-and-file-level-permissions-over-smb"></a>Üçüncü kısım: SMB üzerinden dizin ve dosya düzeyi izinleri yapılandırma 
 
@@ -93,19 +93,6 @@ Dosya paylaşımınız depolama hesabı anahtarıyla bağlandıktan sonra, Windo
 
 AD DS kimliklerine göre yapılandırılmış Windows DACL 'Leri olan şirket içi dosya sunucularında dizinleriniz veya dosyalarınız varsa, ACL 'Leri Robocopy veya [Azure AzCopy v 10.4 +](https://github.com/Azure/azure-storage-azcopy/releases)gibi geleneksel dosya kopyalama araçları ile kalıcı olarak Azure dosyalarına kopyalayabilirsiniz. Dizinleriniz ve dosyalarınız Azure Dosya Eşitleme aracılığıyla Azure dosyaları ile katmanlandıysanız, ACL 'leriniz yerel biçimlerinde taşınır ve kalıcı hale getirilir.
 
-### <a name="configure-windows-acls-with-windows-file-explorer"></a>Windows Dosya Gezgini ile Windows ACL 'Lerini yapılandırma
-
-Kök dizin dahil olmak üzere dosya paylaşımındaki tüm dizinlere ve dosyalara tam izin vermek için Windows Dosya Gezgini 'ni kullanın.
-
-1. Windows Dosya Gezgini 'ni açın ve dosya/dizine sağ tıklayıp **Özellikler** ' i seçin.
-1. **Güvenlik** sekmesini seçin.
-1. Düzenle 'yi seçin **.** izinleri değiştirmek için.
-1. Mevcut kullanıcıların izinlerini değiştirebilir veya yeni kullanıcılara izin vermek için **Ekle..** . seçeneğini belirleyebilirsiniz.
-1. Yeni Kullanıcı eklemek için istem penceresinde, **Seçilecek nesne adlarını girin** kutusuna izin vermek istediğiniz hedef Kullanıcı adını girin ve hedef kullanıcının tam UPN adını bulmak Için **adları denetle** ' yi seçin.
-1.    **Tamam** ’ı seçin.
-1.    **Güvenlik** sekmesinde, yeni kullanıcıya vermek istediğiniz tüm izinleri seçin.
-1.    **Apply** (Uygula) seçeneğini belirleyin.
-
 ### <a name="configure-windows-acls-with-icacls"></a>Windows ACL 'lerini Icacls ile yapılandırma
 
 Kök dizin dahil olmak üzere, dosya paylaşımındaki tüm dizin ve dosyalara tam izinler vermek için aşağıdaki Windows komutunu kullanın. Örnekteki yer tutucu değerlerini kendi değerlerinizle değiştirmeyi unutmayın.
@@ -115,6 +102,20 @@ icacls <mounted-drive-letter>: /grant <user-email>:(f)
 ```
 
 Windows ACL 'lerini ve farklı türlerdeki desteklenen izinleri ayarlamak için ıacl 'leri kullanma hakkında daha fazla bilgi için bkz. [ıacl 'ler için komut satırı başvurusu](/windows-server/administration/windows-commands/icacls).
+
+### <a name="configure-windows-acls-with-windows-file-explorer"></a>Windows Dosya Gezgini ile Windows ACL 'Lerini yapılandırma
+
+Kök dizin dahil olmak üzere dosya paylaşımındaki tüm dizinlere ve dosyalara tam izin vermek için Windows Dosya Gezgini 'ni kullanın. Windows Dosya Gezgini 'ne AD etki alanı bilgilerini doğru bir şekilde yükleyemeyebilirsiniz, bunun nedeni şirket içi AD ortamınızda güven yapılandırmasından kaynaklanıyor olabilir. İstemci makine, Azure dosyaları kimlik doğrulaması için kayıtlı AD etki alanı denetleyicisine ulaşamayacak. Bu durumda, Windows ACL 'Leri yapılandırma için ıacl 'leri kullanın.
+
+1. Windows Dosya Gezgini 'ni açın ve dosya/dizine sağ tıklayıp **Özellikler**' i seçin.
+1. **Güvenlik** sekmesini seçin.
+1. Düzenle 'yi seçin **.** izinleri değiştirmek için.
+1. Mevcut kullanıcıların izinlerini değiştirebilir veya yeni kullanıcılara izin vermek için **Ekle..** . seçeneğini belirleyebilirsiniz.
+1. Yeni Kullanıcı eklemek için istem penceresinde, **Seçilecek nesne adlarını girin** kutusuna izin vermek istediğiniz hedef Kullanıcı adını girin ve hedef kullanıcının tam UPN adını bulmak Için **adları denetle** ' yi seçin.
+1.    **Tamam**’ı seçin.
+1.    **Güvenlik** sekmesinde, yeni kullanıcıya vermek istediğiniz tüm izinleri seçin.
+1.    **Uygula**’yı seçin.
+
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

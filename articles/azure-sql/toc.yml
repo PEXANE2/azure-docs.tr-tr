@@ -157,6 +157,22 @@
           href: database/job-automation-overview.md
         - name: SQL aracısıyla iş Otomasyonu
           href: database/job-automation-managed-instances.md
+        - name: Uygulamalardan bağlanma ve sorgu yürütme
+          items:
+            - name: Visual Studio ile .NET
+              href: database/connect-query-dotnet-visual-studio.md
+            - name: .NET Core
+              href: database/connect-query-dotnet-core.md
+            - name: Başlayın
+              href: database/connect-query-go.md
+            - name: Node.js
+              href: database/connect-query-nodejs.md
+            - name: PHP
+              href: database/connect-query-php.md
+            - name: Python
+              href: database/connect-query-python.md
+            - name: Ruby
+              href: database/connect-query-ruby.md
         - name: İş sürekliliği
           items:
             - name: Yük devretme grubu yapılandırma
@@ -452,14 +468,8 @@
                   href: database/connect-query-vscode.md
             - name: Uygulamalardan bağlanma ve sorgu yürütme
               items:
-                - name: Visual Studio ile .NET
-                  href: database/connect-query-dotnet-visual-studio.md
-                - name: .NET Core
-                  href: database/connect-query-dotnet-core.md
                 - name: Active Directory MFA ile .NET
                   href: database/active-directory-interactive-connect-azure-sql-db.md
-                - name: Başlayın
-                  href: database/connect-query-go.md
                 - name: Java
                   href: database/connect-query-java.md
                 - name: Spring Data JDBC ile Java
@@ -468,14 +478,6 @@
                   href: /azure/developer/java/spring-framework/configure-spring-data-jpa-with-azure-sql-server?toc=/azure/azure-sql/toc.json&bc=/azure/bread/toc.json
                 - name: Spring Data R2DBC ile Java
                   href: /azure/developer/java/spring-framework/configure-spring-data-r2dbc-with-azure-sql-server?toc=/azure/azure-sql/toc.json&bc=/azure/bread/toc.json
-                - name: Node.js
-                  href: database/connect-query-nodejs.md
-                - name: PHP
-                  href: database/connect-query-php.md
-                - name: Python
-                  href: database/connect-query-python.md
-                - name: Ruby
-                  href: database/connect-query-ruby.md
                 - name: R
                   href: database/connect-query-r.md
         - name: Yönetme
@@ -676,7 +678,7 @@
                       href: database/saas-multitenantdb-tenant-analytics.md
     - name: Örnekler
       items:
-        - name: Azure CLI
+        - name: Azure CLI’si
           href: database/az-cli-script-samples-content-guide.md?tabs=single-database
         - name: Azure PowerShell
           href: database/powershell-script-content-guide.md?tabs=single-database
@@ -1009,7 +1011,7 @@
           href: managed-instance/log-replay-service-migrate.md
     - name: Örnekler
       items:
-        - name: Azure CLI
+        - name: Azure CLI’si
           href: database/az-cli-script-samples-content-guide.md?tabs=managed-instance
         - name: Azure PowerShell
           href: database/powershell-script-content-guide.md?tabs=managed-instance

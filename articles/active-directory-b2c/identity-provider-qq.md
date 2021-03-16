@@ -7,17 +7,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/08/2021
+ms.date: 03/15/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 2fa8c2ea990644fa82ae79114322fa087259378b
-ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
+ms.openlocfilehash: 0f09b4557f9bbf2f074948bd7c8dbd349cd397bc
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "102448204"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103488678"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-qq-account-using-azure-active-directory-b2c"></a>Azure Active Directory B2C kullanarak bir QQ hesabı ile kaydolma ve oturum açma ayarlama
 
@@ -46,7 +46,7 @@ Azure Active Directory B2C (Azure AD B2C) ' de QQ hesabı olan kullanıcılar i�
 1. Adresine gidin [https://connect.qq.com/index.html](https://connect.qq.com/index.html) .
 1. **应用管理**(uygulama yönetimi) öğesini seçin.
 1. **创建应用**(uygulama oluştur) seçeneğini belirleyin ve gerekli bilgileri girin.
-1. `https://your-tenant-name.b2clogin.com/your-tenant-name}.onmicrosoft.com/oauth2/authresp`**授权回调域**(geri arama URL) girin. Örneğin, `tenant_name` contoso ise, URL 'yi olarak ayarlayın `https://contoso.b2clogin.com/contoso.onmicrosoft.com/oauth2/authresp` .
+1. **授权回调域**(geri arama URL 'si) için girin `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp` . [Özel bir etki alanı](custom-domain.md)kullanıyorsanız, girin `https://your-domain-name/your-tenant-name.onmicrosoft.com/oauth2/authresp` . `your-tenant-name`, Kiracınızın adıyla ve `your-domain-name` özel etki alanınız ile değiştirin.
 1. **创建应用**(uygulama oluştur) seçeneğini belirleyin.
 1. Onay sayfasında, uygulama yönetimi sayfasına dönmek için **应用管理** (uygulama yönetimi) öğesini seçin.
 1. Oluşturduğunuz uygulamanın yanındaki **查看** (görünüm) seçeneğini belirleyin.

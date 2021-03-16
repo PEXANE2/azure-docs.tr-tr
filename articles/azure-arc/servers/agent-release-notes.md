@@ -2,13 +2,13 @@
 title: Azure Arc etkin sunucular aracısındaki yenilikler
 description: Bu makalede, Azure Arc etkin sunucular aracısına yönelik sürüm notları bulunur. Özetlenen birçok sorun için daha fazla ayrıntı bağlantısı vardır.
 ms.topic: conceptual
-ms.date: 12/21/2020
-ms.openlocfilehash: 4b7fd97d5b7e1cddc1d78e0d24205890e74c45c1
-ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
+ms.date: 03/15/2021
+ms.openlocfilehash: acf606ed1ad0f54c983b14a0141d0dc11e2c45d9
+ms.sourcegitcommit: 66ce33826d77416dc2e4ba5447eeb387705a6ae5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97722530"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103470515"
 ---
 # <a name="whats-new-with-azure-arc-enabled-servers-agent"></a>Azure Arc etkin sunucular aracısındaki yenilikler
 
@@ -18,13 +18,27 @@ Azure Arc etkin sunucular bağlı makine Aracısı, iyileştirmeleri sürekli ol
 - Bilinen sorunlar
 - Hata düzeltmeleri
 
+## <a name="march-2021"></a>Mart 2021
+
+Sürüm 1,4
+
+## <a name="new-feature"></a>Yeni Özellik
+
+- Özel uç noktalar için destek eklendi.
+- Azcmagent çıkış kodlarının genişletilmiş listesi.
+- Aracı yapılandırma parametreleri artık--config parametresi ile bir dosyadan okunabilir.
+
+## <a name="fixed"></a>Sabit
+
+Ağ uç noktası denetimleri artık daha hızlıdır.
+
 ## <a name="december-2020"></a>Aralık 2020
 
 Sürüm: 1,3
 
 ### <a name="new-feature"></a>Yeni Özellik
 
-Windows Server 2008 R2 için destek eklendi
+Windows Server 2008 R2 için destek eklendi.
 
 ### <a name="fixed"></a>Sabit
 
@@ -47,7 +61,7 @@ Sürüm: 1.1
 - Alternatif GC Daemon birimi dosya konumunu işlemek için sabit proxy betiği.
 - GuestConfig Aracısı güvenilirlik değişiklikleri.
 - US Gov Virginia bölge için GuestConfig Aracısı desteği.
-- GuestConfig Aracısı uzantısı, hatalara karşı daha ayrıntılı olması için iletileri rapor ediyor.
+- Bir hata oluşursa, GuestConfig Aracısı uzantısı iletileri daha ayrıntılı olacak şekilde rapor edin.
 
 ## <a name="september-2020"></a>Eylül 2020
 

@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/25/2019
-ms.openlocfilehash: d2d501206dcb1fc6b9bb545f9dcf4d5c61af994e
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 216410d423a70037588a6fb596771a702a13c003
+ms.sourcegitcommit: 66ce33826d77416dc2e4ba5447eeb387705a6ae5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92777886"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103472245"
 ---
 # <a name="load-data-from-csv-into-azure-sql-database-or-sql-managed-instance-flat-files"></a>CSV 'den Azure SQL veritabanı 'na veya SQL yönetilen örneği 'ne (düz dosyalar) veri yükleme
 [!INCLUDE[appliesto-sqldb-sqlmi](includes/appliesto-sqldb-sqlmi.md)]
@@ -25,7 +25,7 @@ Bir CSV dosyasından Azure SQL veritabanı veya Azure SQL yönetilen örneği 'n
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 
-### <a name="prerequisites"></a>Ön koşullar
+### <a name="prerequisites"></a>Önkoşullar
 
 Bu makaledeki adımları tamamlayabilmeniz için şunlar gerekir:
 
@@ -33,7 +33,7 @@ Bu makaledeki adımları tamamlayabilmeniz için şunlar gerekir:
 * bcp komut satırı yardımcı programının yüklü olması
 * sqlcmd komut satırı yardımcı programının yüklü olması
 
-bcp ve sqlcmd yardımcı programlarını [Microsoft İndirme Merkezi][Microsoft Download Center]'nden indirebilirsiniz.
+Bcp ve sqlcmd yardımcı programlarını [Microsoft sqlcmd belgeleri] [] konumundan indirebilirsiniz https://docs.microsoft.com/sql/tools/sqlcmd-utility?view=sql-server-ver15 .
 
 ### <a name="data-in-ascii-or-utf-16-format"></a>ASCII veya UTF-16 biçimindeki veriler
 

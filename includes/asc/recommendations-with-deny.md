@@ -2,18 +2,18 @@
 author: memildin
 ms.service: security-center
 ms.topic: include
-ms.date: 02/16/2021
+ms.date: 03/14/2021
 ms.author: memildin
 ms.custom: generated
-ms.openlocfilehash: fce7ba090d5aa86c85452ca41ce606d2fa52a6ee
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: c142f6a00275b4b21b6bbc64e51a5c4d7d957258
+ms.sourcegitcommit: 3ea12ce4f6c142c5a1a2f04d6e329e3456d2bda5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100645534"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103467993"
 ---
-- Güvenlik Duvarı ve sanal ağ yapılandırmalarına sahip depolama hesaplarına erişim kısıtlı olmalıdır
-- Otomasyon hesabı değişkenleri şifrelenmelidir
+- Güvenlik Duvarı ve sanal ağ yapılandırmalarına sahip depolama hesaplarına erişim kısıtlı depolama hesapları ile ağ erişimini kısıtlamaları gerekir
+- Otomasyon hesabı değişkenleri şifreli Otomasyon hesabı değişkenleri şifrelenmelidir
 - Redo için Azure önbelleği bir sanal ağ içinde yer almalıdır
 - Azure Cosmos DB hesaplar, bekleyen verileri şifrelemek için müşteri tarafından yönetilen anahtarları kullanmalıdır
 - Azure Machine Learning çalışma alanları, müşteri tarafından yönetilen bir anahtarla şifrelenmelidir (CMK)
@@ -31,21 +31,21 @@ ms.locfileid: "100645534"
 - Anahtar kasaları Temizleme koruması etkin olmalıdır
 - Anahtar kasaları geçici silme etkin olmalıdır
 - Kapsayıcılar için en az ayrıcalıklı Linux özellikleri zorlanmalıdır
-- Yalnızca Redis Cache güvenli bağlantılar etkinleştirilmelidir
+- Yalnızca Redis Cache güvenli bağlantılar etkinleştirilmelidir ve yalnızca redo için Azure önbelleğinize güvenli bağlantılar etkinleştirilmelidir
 - Kapsayıcılar AppArmor profilinin geçersiz kılınması veya devre dışı bırakılması kısıtlanıyor
 - Ayrıcalıklı kapsayıcılar kaçınılmalıdır
 - Kök kullanıcı olarak çalışan kapsayıcılar önlenebilir olmalıdır
-- Depolama hesaplarına güvenli aktarım etkinleştirilmelidir
-- Service Fabric kümelerinde ClusterProtectionLevel özelliği EncryptAndSign olarak ayarlanmalıdır
-- Service Fabric kümeler yalnızca istemci kimlik doğrulaması için Azure Active Directory kullanmalıdır
+- Depolama hesaplarına Güvenli aktarım özelliğinin etkinleştirilmesi gerekir depolama hesaplarına Güvenli aktarım etkinleştirilmelidir
+- Service Fabric kümelerinde ClusterProtectionLevel özelliği EncryptAndSign olarak ayarlanmalıdır Service Fabric kümeler Kümeprotectionlevel özelliğinin EncryptAndSign olarak ayarlanmış olması gerekir
+- Service Fabric kümeler yalnızca istemci kimlik doğrulaması için Azure Active Directory kullanmalıdır Service Fabric kümeler yalnızca istemci kimlik doğrulaması için Azure Active Directory kullanmalıdır
 - Hizmetlerin yalnızca izin verilen bağlantı noktalarını dinlemesi gerekir
 - Depolama hesabı genel erişimine izin verilmemelidir
-- Depolama hesaplarının yeni Azure Resource Manager kaynaklarına geçirilmesi gerekir
+- Depolama hesaplarının yeni Azure Resource Manager kaynak depolama hesaplarına geçirilmesi gerekir Azure Resource Manager
 - Depolama hesapları, sanal ağ kurallarını kullanarak ağ erişimini kısıtlamalı
 - Konak ağ ve bağlantı noktalarının kullanımı sınırlandırılmalıdır
 - , Güvenliği aşılmış kapsayıcılardan düğüm erişimini kısıtlamak için pod HostPath birimi takiciler, bilinen bir listeyle sınırlandırılmalıdır
 - Azure Key Vault depolanan sertifikaların geçerlilik süresi 12 ayı aşmamalıdır
-- Sanal makinelerin yeni Azure Resource Manager kaynaklara geçirilmesi gerekir
+- Sanal makinelerin yeni Azure Resource Manager kaynaklara geçirilmesi gerekir sanal makineler yeni Azure Resource Manager kaynaklarına geçirilmelidir
 - Web uygulaması güvenlik duvarı (WAF) Application Gateway için etkinleştirilmelidir
 - Azure ön kapı hizmeti hizmeti için Web uygulaması güvenlik duvarı (WAF) etkinleştirilmelidir
 

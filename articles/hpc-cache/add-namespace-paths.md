@@ -4,14 +4,14 @@ description: Azure HPC Cache ile arka uç depolaması için istemciye yönelik y
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: how-to
-ms.date: 12/22/2020
+ms.date: 03/11/2021
 ms.author: v-erkel
-ms.openlocfilehash: 5549670dbd1f302bdb17b8b94cbd1fb5c4c1a1d9
-ms.sourcegitcommit: 6cca6698e98e61c1eea2afea681442bd306487a4
+ms.openlocfilehash: f45d5710f6feb8af2347ca298e07e8a4870d3d4f
+ms.sourcegitcommit: 66ce33826d77416dc2e4ba5447eeb387705a6ae5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/24/2020
-ms.locfileid: "97760549"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103470480"
 ---
 # <a name="set-up-the-aggregated-namespace"></a>Toplanan ad alanını ayarlama
 
@@ -132,6 +132,30 @@ Hedefin ad alanı yolunu güncelleştirmek veya ek yollar eklemek için [az HPC-
 Güncelleştirme komutu için kullanılan seçenekler, depolama sistemi bilgilerini (IP adresi veya ana bilgisayar adı) geçirmezseniz ve kullanım modelinin isteğe bağlı olması dışında "Oluştur" komutuna benzer. Seçeneğin sözdizimi hakkında daha fazla bilgi için [yenı NFS depolama hedefi ekleme](hpc-cache-add-storage.md?tabs=azure-cli#add-a-new-nfs-storage-target) makalesini okuyun ``--junction`` .
 
 ---
+
+### <a name="adls-nfs-namespace-paths-preview"></a>ADLS-NFS ad alanı yolları (ÖNIZLEME)
+
+Normal bir BLOB depolama hedefi gibi, ADLS-NFS depolama hedefinin yalnızca bir dışarı aktarma işlemi bulunur, bu nedenle yalnızca bir ad alanı yolu olabilir.
+
+Yolu Azure portal ayarlamak veya değiştirmek için aşağıdaki yönergeleri izleyin.
+
+**Ad alanı** ayarları sayfasını yükleyin.
+
+* **Yeni bir yol ekleyin:** Üstteki **+ Ekle** düğmesine tıklayın ve düzenleme panelinde bilgileri girin.
+
+  ![Ad alanı Ekle ' nin ekran görüntüsü bir ADLS-NFS depolama hedefi seçiliyken düzenleme alanları. Dışarı aktarma ve alt dizin yolları düzenlenemez olarak ayarlanır.](media/namespace-add-adls.png)
+
+  * İstemcilerin bu depolama hedefine erişmek için kullanacağı yolu girin.
+
+  * Bu yol için kullanılacak erişim ilkesini seçin. İstemci erişim [Ilkelerini kullan](access-policies.md)bölümünde istemci erişimini özelleştirme hakkında daha fazla bilgi edinin.
+
+  * Açılan listeden depolama hedefini seçin. Bir ADLS-NFS depolama hedefinin zaten bir ad alanı yolu varsa, bu seçilemez.
+
+  * Bir ADLS-NFS depolama hedefi için, dışa aktarma ve alt dizin yolları otomatik olarak olarak ayarlanır ``/`` .
+
+* **Mevcut bir yolu değiştirin:** Ad alanı yoluna tıklayın. Düzenleme paneli açılır. Yolu ve erişim ilkesini değiştirebilirsiniz, ancak farklı bir depolama hedefine geçiş yapamazsınız.
+
+* **Ad alanı yolunu silme:** Yolun solundaki onay kutusunu seçin ve **Sil** düğmesine tıklayın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

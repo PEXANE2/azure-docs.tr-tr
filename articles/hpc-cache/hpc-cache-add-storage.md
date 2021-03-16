@@ -4,20 +4,20 @@ description: Azure HPC önbelleğinizin, uzun süreli dosya depolaması için ş
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: how-to
-ms.date: 01/28/2021
+ms.date: 03/11/2021
 ms.author: v-erkel
-ms.openlocfilehash: b4df5863cc746490f13685a8d412232217af3bc8
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: 4e6c5b5ea69c55c09887528f1723414f53fcb0f9
+ms.sourcegitcommit: 66ce33826d77416dc2e4ba5447eeb387705a6ae5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99054374"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103471954"
 ---
 # <a name="add-storage-targets"></a>Depolama hedefleri ekleme
 
 *Depolama hedefleri* , BIR Azure HPC önbelleğinden erişilen dosyalar için arka uç depolardır. NFS depolama (Şirket içi donanım sistemi gibi) ekleyebilir veya Azure Blob 'da verileri saklayabilirsiniz.
 
-Tek bir önbellek için en fazla on farklı depolama hedefi tanımlayabilirsiniz. Önbellek, tüm depolama hedeflerini toplanmış bir ad alanında gösterir.
+Tek bir önbellek için 20 ' ye kadar farklı depolama hedefi tanımlayabilirsiniz. Önbellek, tüm depolama hedeflerini toplanmış bir ad alanında gösterir.
 
 Ad alanı yolları, depolama hedeflerini ekledikten sonra ayrı olarak yapılandırılır. Genel olarak, bir NFS depolama hedefi en fazla on ad alanı yoluna sahip olabilir veya bazı büyük yapılandırmalarda daha fazla bulunabilir. Ayrıntılar için [NFS ad alanı yollarını](add-namespace-paths.md#nfs-namespace-paths) okuyun.
 
@@ -29,7 +29,7 @@ Depolama dışarı aktarımlarının, önbelleğinizin sanal ağından erişileb
 1. Depolama hedefi tanımlama (Bu makaledeki bilgiler)
 1. [İstemciye yönelik yolları oluşturma](add-namespace-paths.md) ( [toplanan ad alanı](hpc-cache-namespace.md)için)
 
-Depolama hedefi ekleme yordamı, Azure Blob depolama veya NFS dışarı aktarma eklemenize bağlı olarak biraz farklıdır. Her biri için Ayrıntılar aşağıda verilmiştir.
+Depolama hedefi ekleme yordamı, kullandığı depolama türüne bağlı olarak biraz farklıdır. Her biri için Ayrıntılar aşağıda verilmiştir.
 
 Bir önbellek oluşturma ve Azure portal bir depolama hedefi ekleme hakkında [video tanıtımı](https://azure.microsoft.com/resources/videos/set-up-hpc-cache/) izlemek için aşağıdaki görüntüye tıklayın.
 
@@ -40,6 +40,9 @@ Bir önbellek oluşturma ve Azure portal bir depolama hedefi ekleme hakkında [v
 Yeni bir BLOB depolama hedefi boş bir blob kapsayıcısına veya Azure HPC önbellek bulut dosya sistemi biçimindeki verilerle doldurulmuş bir kapsayıcıya ihtiyaç duyuyor. [Verileri Azure Blob depolamaya taşıma](hpc-cache-ingest.md)bölümünde bir blob kapsayıcısını önceden yükleme hakkında daha fazla bilgi edinin.
 
 Azure portal **depolama hedefi ekleme** sayfası, eklemeden hemen önce yeni bir blob kapsayıcısı oluşturma seçeneğini içerir.
+
+> [!NOTE]
+> NFS bağlı blob depolaması için [ADLS-NFS depolama hedefi](#) türünü kullanın.
 
 ### <a name="portal"></a>[Portal](#tab/azure-portal)
 
@@ -161,38 +164,48 @@ Bir NFS depolama hedefi, bir BLOB depolama hedefinden farklı ayarlara sahiptir.
 > Bir NFS depolama hedefi oluşturmadan önce, depolama sisteminizin Azure HPC önbelleğinden erişilebilir olduğundan ve izin gereksinimlerini karşıladığından emin olun. Önbellek depolama sistemine erişemeyecektir depolama hedefi oluşturma işlemi başarısız olur. Ayrıntılar için [NFS depolama gereksinimlerini](hpc-cache-prerequisites.md#nfs-storage-requirements) okuyun ve [NAS yapılandırma ve NFS depolama hedefi sorunlarını giderin](troubleshoot-nas.md) .
 
 ### <a name="choose-a-usage-model"></a>Kullanım modeli seçin
-<!-- referenced from GUI - update aka.ms link if you change this heading -->
+<!-- referenced from GUI - update aka.ms link to point at new article when published -->
 
-Bir NFS depolama sistemine işaret eden bir depolama hedefi oluşturduğunuzda, bu hedefin kullanım modelini seçmeniz gerekir. Bu model, verilerinizin nasıl önbelleğe alınacağını belirler.
+Depolama sistemine ulaşmak için NFS kullanan bir depolama hedefi oluşturduğunuzda, bu hedef için bir kullanım modeli seçmeniz gerekir. Bu model, verilerinizin nasıl önbelleğe alınacağını belirler.
 
-Yerleşik kullanım modelleri, eski verileri alma riskiyle hızlı yanıt dengelemeye olanak tanır. Dosya okuma hızını iyileştirmek istiyorsanız, önbellekteki dosyaların arka uç dosyalarına karşı kontrol edilip edilmeyeceğini önemsemeyebilirsiniz. Diğer taraftan, her zaman uzak depolama ile dosyalarınızın güncel olduğundan emin olmak istiyorsanız, sık denetleyen bir model seçin.
+Bu ayarların tümü hakkında daha fazla ayrıntı için bkz. [kullanım modellerini anlayın](cache-usage-models.md) .
 
-Üç seçenek vardır:
+Yerleşik kullanım modelleri, eski verileri alma riskiyle hızlı yanıt dengelemeye olanak tanır. Dosya okuma hızını iyileştirmek isterseniz, önbellekteki dosyaların arka uç dosyalarına karşı kontrol edilip edilmeyeceğini önemsemeyebilirsiniz. Diğer taraftan, her zaman uzak depolama ile dosyalarınızın güncel olduğundan emin olmak istiyorsanız, sık denetleyen bir model seçin.
 
-* **Ağır, seyrek erişimli yazmaları okuma** -statik veya nadiren değiştirilen dosyalara okuma erişimini hızlandırmak istiyorsanız bu seçeneği kullanın.
+Bu üç seçenek çoğu durum kapsar:
 
-  Bu seçenek, istemcilerin okuyan dosyaları önbelleğe alır, ancak yazma işlemlerini hemen arka uç depolamaya geçirir. Önbellekte depolanan dosyalar, NFS depolama birimindeki dosyalarla otomatik olarak karşılaştırılmaz. (Daha fazla bilgi edinmek için arka uç doğrulama hakkında aşağıdaki nota göz okuyun.)
+* **Yoğun, seyrek erişimli yazmaları okuma** -statik veya nadiren değiştirilen dosyalara okuma erişimini hızlandırır.
+
+  Bu seçenek, dosyaları istemci okumalarından önbelleğe alır, ancak istemci yazma işlemlerini doğrudan arka uç depolamaya geçirir. Önbellekte depolanan dosyalar, NFS depolama birimindeki dosyalarla otomatik olarak karşılaştırılmaz.
 
   Bir dosyanın doğrudan depolama sisteminde önbellekte yazılmadan değiştirilebilmesi için bir risk varsa bu seçeneği kullanmayın. Bu durumda, dosyanın önbelleğe alınmış sürümü arka uç dosyasıyla eşitlenmemiş olur.
 
-* **%15 ' ten fazla yazma** -Bu seçenek hem okuma hem de yazma performansını hızlandırır. Bu seçeneği kullanırken, tüm istemcilerin arka uç depolamayı doğrudan bağlamak yerine Azure HPC Cache aracılığıyla dosyalara erişmesi gerekir. Önbelleğe alınan dosyalar arka uçta depolanmayan son değişikliklere sahip olur.
+* **%15 ' ten fazla yazma** -Bu seçenek hem okuma hem de yazma performansını hızlandırır.
 
-  Bu kullanım modelinde, önbellekteki dosyalar yalnızca her sekiz saatte bir arka uç depolamada bulunan dosyalara karşı denetlenir. Dosyanın önbelleğe alınan sürümünün daha güncel olduğu varsayılır. Önbellekte değiştirilen bir dosya, önbellekte olduktan sonra, ek değişiklik yapmadan bir saat için arka uç depolama sistemine yazılır.
+  İstemci okuma ve istemci yazmaları her ikisi de önbelleğe alınır. Önbellekteki dosyaların arka uç depolama sistemindeki dosyalardan daha yeni olduğu varsayılır. Önbelleğe alınan dosyalar yalnızca her sekiz saatte bir arka uç depolamada bulunan dosyalar için otomatik olarak denetlenir. Önbellekte değiştirilen dosyalar ek değişiklik olmadan 20 dakika boyunca önbellekte olduktan sonra arka uç depolama sistemine yazılır.
 
-* **İstemciler, önbelleği ATLAYARAK NFS hedefine yazar** -iş akışlarınızdan herhangi bir istemci, önce önbelleğe yazmadan veya veri tutarlılığını iyileştirmek istiyorsanız bu seçeneği belirleyin. İstemcilerin istediği dosyalar önbelleğe alınır, ancak istemciden bu dosyalardaki tüm değişiklikler arka uç depolama sistemine hemen geçirilir.
+  Herhangi bir istemci arka uç depolama birimini doğrudan bağlamadığı takdirde bu seçeneği kullanmayın, çünkü bir risk eski dosyalar olur.
 
-  Bu kullanım modeliyle, önbellekteki dosyalar güncelleştirmeler için arka uç sürümlerine göre sıklıkla denetlenir. Bu doğrulama, verilerin tutarlılığın korunmasında önbelleğin dışında değiştirilmesine izin verir.
+* **İstemciler, önbelleği ATLAYARAK NFS hedefine yazar** -iş akışlarınızdan herhangi bir istemci, önce önbelleğe yazmadan veya veri tutarlılığını iyileştirmek istiyorsanız bu seçeneği belirleyin.
 
-Bu tablo, kullanım modeli farklarını özetler:
+  İstemcilerin istediği dosyalar önbelleğe alınır, ancak istemciden bu dosyalardaki tüm değişiklikler arka uç depolama sistemine hemen geçirilir. Önbellekteki dosyalar güncelleştirmeler için arka uç sürümlerine göre sıklıkla denetlenir. Bu doğrulama, dosyalar önbellek yerine doğrudan depolama sisteminde değiştirildiğinde veri tutarlılığını korur.
 
-| Kullanım modeli                   | Önbelleğe alma modu | Arka uç doğrulaması | En fazla geri yazma gecikmesi |
-|-------------------------------|--------------|-----------------------|--------------------------|
-| Yoğun, seyrek okunan yazma işlemleri | Okuma         | Asla                 | Yok                     |
-| %15 yazma boyutundan büyük       | Okuma/yazma   | 8 saat               | 1 saat                   |
-| İstemcileri önbelleği atlar      | Okuma         | 30 saniye            | Yok                     |
+Diğer seçeneklerle ilgili ayrıntılar için bkz. [kullanım modellerini anlayın](cache-usage-models.md).
+
+Bu tablo tüm kullanım modelleri arasındaki farkları özetler:
+
+| Kullanım modeli | Önbelleğe alma modu | Arka uç doğrulaması | En fazla geri yazma gecikmesi |
+|--|--|--|--|
+| Yoğun, seyrek okunan yazma işlemleri | Okuma | Asla | Yok |
+| %15 yazma boyutundan büyük | Okuma/yazma | 8 saat | 20 dakika |
+| İstemcileri önbelleği atlar | Okuma | 30 saniye | Yok |
+| %15 yazma boyutundan büyük, sık kullanılan arka uç denetimi (30 saniye) | Okuma/yazma | 30 saniye | 20 dakika |
+| %15 yazma daha fazla, sık kullanılan arka uç denetimi (60 saniye) | Okuma/yazma | 60 saniye | 20 dakika |
+| %15 yazma boyutundan büyük, sık geri yazma | Okuma/yazma | 30 saniye | 30 saniye |
+| Yoğun okuma, her 3 saatte bir yedekleme sunucusu denetleniyor | Okuma | 3 saat | Yok |
 
 > [!NOTE]
-> **Arka uç doğrulama** değeri, önbelleğin, dosyalarını uzak depolamadaki kaynak dosyalarla otomatik olarak karşılaştırdığı zamanı gösterir. Ancak, bir readdirplus isteği içeren bir dizin işlemi gerçekleştirerek Azure HPC önbelleğini dosyaları karşılaştırmaya zorlayabilirsiniz. Readdirplus, dizin meta verileri döndüren standart bir NFS API 'sidir (genişletilmiş okuma olarak da bilinir). Bu, önbelleğin dosyaları karşılaştırmasına ve güncelleştirmesine neden olur.
+> **Arka uç doğrulama** değeri, önbelleğin, dosyalarını uzak depolamadaki kaynak dosyalarla otomatik olarak karşılaştırdığı zamanı gösterir. Ancak, arka uç depolama sisteminde readdirplus işlemini içeren bir istemci isteği göndererek karşılaştırmayı tetikleyebilirsiniz. Readdirplus, dizin meta verileri döndüren standart bir NFS API 'sidir (genişletilmiş okuma olarak da bilinir). Bu, önbelleğin dosyaları karşılaştırmasına ve güncelleştirmesine neden olur.
 
 ### <a name="create-an-nfs-storage-target"></a>NFS depolama hedefi oluşturma
 
@@ -291,6 +304,43 @@ az hpc-cache nfs-storage-target add --resource-group "hpc-cache-group" --cache-n
 ```
 
 ---
+
+## <a name="add-a-new-adls-nfs-storage-target-preview"></a>Yeni bir ADLS-NFS depolama hedefi ekleme (ÖNIZLEME)
+
+ADLS-NFS depolama hedefleri, ağ dosya sistemi (NFS) 3,0 protokolünü destekleyen Azure Blob kapsayıcıları kullanır.
+
+> [!NOTE]
+> Azure Blob depolama için NFS 3,0 protokol desteği genel önizlemeye sunuldu. Kullanılabilirlik kısıtlıdır ve özellik genel kullanıma sunulduğunda özellikler sınırlı olur. Üretim sistemlerinde önizleme teknolojisini kullanmayın.
+>
+> En son bilgiler için [NFS 3,0 protokol desteğini](../storage/blobs/network-file-system-protocol-support.md) okuyun.
+
+ADLS-NFS depolama hedefleri, BLOB depolama hedefleri ve bazı NFS depolama hedefleri ile benzerlikler vardır. Örnek:
+
+* BLOB depolama hedefi gibi, [depolama hesabınıza erişmek](#add-the-access-control-roles-to-your-account)IÇIN Azure HPC önbelleği izni vermeniz gerekir.
+* NFS depolama hedefi gibi bir önbellek [kullanım modeli](#choose-a-usage-model)ayarlamanız gerekir.
+* NFS özellikli blob kapsayıcıları, NFS uyumlu bir hiyerarşik yapıya sahip olduğundan, verileri almak için önbelleği kullanmanız gerekmez ve kapsayıcılar diğer NFS sistemleri tarafından okunabilir. Bir ADLS-NFS kapsayıcısında verileri önceden yükleyebilir, ardından bir depolama hedefi olarak HPC önbelleğine ekleyebilir ve sonra verileri HPC önbelleğinin dışından daha sonra erişebilirsiniz. HPC önbellek depolama hedefi olarak standart bir blob kapsayıcısı kullandığınızda, veriler özel bir biçimde yazılır ve yalnızca diğer Azure HPC Cache ile uyumlu ürünlerden erişilebilir.
+
+Bir ADLS-NFS depolama hedefi oluşturabilmeniz için önce NFS özellikli bir depolama hesabı oluşturmanız gerekir. [Azure HPC Cache önkoşulları](hpc-cache-prerequisites.md#nfs-mounted-blob-adls-nfs-storage-requirements-preview) ve [NFS kullanarak blob Storage bağlama](../storage/blobs/network-file-system-protocol-support-how-to.md)bölümündeki yönergeleri izleyin. Depolama hesabınızı ayarladıktan sonra, depolama hedefini oluştururken yeni bir kapsayıcı oluşturabilirsiniz.
+
+Bir ADLS-NFS depolama hedefi oluşturmak için Azure portal **depolama hedefi Ekle** sayfasını açın. (Ek yöntemler geliştirmektedir.)
+
+![ADLS-NFS hedefi tanımlı depolama hedefi ekleme sayfasının ekran görüntüsü](media/add-adls-target.png)
+
+Bu bilgileri girin.
+
+* **Depolama hedefi adı** -Azure HPC önbelleğinde bu depolama hedefini tanımlayan bir ad ayarlayın.
+* **Hedef türü** - **ADLS-NFS**' i seçin.
+* **Depolama hesabı** -kullanmak istediğiniz hesabı seçin. NFS etkinleştirilmiş depolama hesabınız listede görünmezse, önkoşullara uygun olduğunu ve önbelleğin buna erişip erişemediğinden emin olun.
+
+  [Erişim rolleri ekleme](#add-the-access-control-roles-to-your-account)bölümünde açıklandığı gibi, depolama hesabına erişmek için önbellek örneğini yetkilendirmeniz gerekecektir.
+
+* **Depolama kapsayıcısı** -bu hedef için NFS etkin blob kapsayıcısını seçin veya **Yeni oluştur**' a tıklayın.
+
+* **Kullanım modeli** -yukarıda [bir kullanım modeli seçin](#choose-a-usage-model) bölümünde açıklanan iş akışınızı temel alan veri önbelleğe alma profillerinden birini seçin.
+
+İşiniz bittiğinde, depolama hedefini eklemek için **Tamam** ' ı tıklatın.
+
+<!-- **** -->
 
 ## <a name="view-storage-targets"></a>Depolama hedeflerini görüntüleme
 

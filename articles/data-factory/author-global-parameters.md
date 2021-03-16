@@ -5,13 +5,13 @@ ms.service: data-factory
 ms.topic: conceptual
 author: dcstwh
 ms.author: weetok
-ms.date: 03/04/2021
-ms.openlocfilehash: 06d04eb8679b4484f330b69a8cffb263d353bdcd
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
+ms.date: 03/15/2021
+ms.openlocfilehash: 3110ce8cb97379fd4690903ec769cc1dfc7f1326
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102197909"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103492772"
 ---
 # <a name="global-parameters-in-azure-data-factory"></a>Azure Data Factory genel parametreler
 
@@ -49,7 +49,10 @@ Sürekli tümleştirme ve dağıtım çözümünüzde genel parametreleri tümle
 Çoğu kullanım durumu için, ARM şablonuna genel parametreleri eklemeniz önerilir. Bu, yerel olarak [CI/CD belgesi](continuous-integration-deployment.md)içinde özetlenen çözümle tümleştirilir. Genel parametreler, genellikle ortamdan ortama geçiş yaparken varsayılan olarak ARM şablon parametresi olarak eklenecektir. **Yönetim** hub 'ından ARM şablonunda genel parametrelerin dahil edilmesini sağlayabilirsiniz.
 
 > [!NOTE]
-> **ARM şablonu yapılandırmasına dahil etme** yalnızca "git modunda" bulunabilir. Şu anda "canlı modda" veya "Data Factory" modunda devre dışı bırakılmıştır.
+> **ARM şablonu yapılandırmasına dahil etme** yalnızca "git modunda" bulunabilir. Şu anda "canlı modda" veya "Data Factory" modunda devre dışı bırakılmıştır. 
+
+> [!WARNING]
+>Parametre adında '-' kullanılamaz. Bir hata kodu "{" Code ":" BadRequest "," Message ":" ErrorCode = ınvalidtemplate, ErrorMessage = > ifadesi ' Pipeline (). globalParameters. myParam-dbtest-URL ' geçerli değil:.....} ". Ancak, parametre adında ' _ ' kullanabilirsiniz.
 
 ![ARM şablonuna Ekle](media/author-global-parameters/include-arm-template.png)
 

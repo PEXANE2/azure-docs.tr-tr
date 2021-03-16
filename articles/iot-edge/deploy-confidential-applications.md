@@ -7,14 +7,16 @@ services: iot-edge
 ms.topic: conceptual
 ms.date: 01/27/2021
 ms.author: kgremban
-ms.openlocfilehash: e63397176cae87178cfc5cc343aeed6f76099be2
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.openlocfilehash: f9dff1b4c6b2489edd3cd685e3546618961d9757
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98956578"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103487726"
 ---
 # <a name="confidential-computing-at-the-edge"></a>Kenarda gizli bilgi işlem
+
+[!INCLUDE [iot-edge-version-all-supported](../../includes/iot-edge-version-all-supported.md)]
 
 Azure IoT Edge, cihazda güvenli şifreleme kapsamında çalışan gizli uygulamaları destekler. Şifreleme, aktarım sırasında veya bekleyen sırada veriler için güvenlik sağlar, ancak şifreleme, kullanımda olan veriler ve iş yükleri için güvenlik sağlar. IoT Edge, gizli uygulamalar geliştirmek için standart olarak açık şifreleme desteği destekler.
 

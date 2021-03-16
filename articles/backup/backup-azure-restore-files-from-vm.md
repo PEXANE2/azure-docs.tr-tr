@@ -4,12 +4,12 @@ description: Bu makalede, Azure sanal makine kurtarma noktasından dosya ve klas
 ms.topic: conceptual
 ms.date: 03/12/2020
 ms.custom: references_regions
-ms.openlocfilehash: c5a027773a55347b71c1e6a66d24d7fdb99220d0
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 63714773d1b6f84b88bd2207aca4196fa16f1a94
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101725518"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103493535"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>Azure sanal makine yedeklemesinden dosyaları kurtarma
 
@@ -60,18 +60,18 @@ Kurtarma noktasından dosya veya klasörleri geri yüklemek için sanal makineye
 
 ## <a name="step-2-ensure-the-machine-meets-the-requirements-before-executing-the-script"></a>2. Adım: betiği yürütmeden önce makinenin gereksinimleri karşıladığından emin olun
 
-Betik başarıyla indirildikten sonra, bu betiği yürütmek için doğru makineye sahip olduğunuzdan emin olun. Betiği yürütmeyi planladığınız sanal makine, aşağıdaki desteklenmeyen yapılandırmalardan birini içermemelidir. Varsa, gereksinimleri karşılayan aynı bölgeden tercihen alternatif bir makine seçin.  
+Betik başarıyla indirildikten sonra, bu betiği yürütmek için doğru makineye sahip olduğunuzdan emin olun. Betiği yürütmeyi planladığınız sanal makine, aşağıdaki desteklenmeyen yapılandırmalardan birini içermemelidir. **Varsa, gereksinimleri karşılayan aynı bölgeden tercihen alternatif bir makine seçin**.  
 
 ### <a name="dynamic-disks"></a>Dinamik diskler
 
-Çalıştırılabilir betiği sanal makinede aşağıdaki özelliklerden biriyle çalıştıramazsınız:
+Şu özelliklerden herhangi biriyle çalıştırılabilir betiği sanal makinede çalıştıramazsınız: alternatif bir makine seçin
 
 - Birden çok diske yayılan birimler (yayılmış ve şeritli birimler).
 - Dinamik disklerde hataya dayanıklı birimler (yansıtılmış ve RAID-5 birimleri).
 
 ### <a name="windows-storage-spaces"></a>Windows Depolama Alanları
 
-İndirilen yürütülebilir dosyayı Windows depolama alanları için yapılandırılmış VM üzerinde çalıştıramazsınız.
+Yedeklenen sanal makinede Windows depolama alanları varsa, indirilen yürütülebilir dosyayı aynı yedeklenen VM üzerinde çalıştıramazsınız. Alternatif bir makine seçin.
 
 ### <a name="virtual-machine-backups-having-large-disks"></a>Büyük disklere sahip sanal makine yedeklemeleri
 

@@ -124,6 +124,8 @@
           href: reservation-renew.md?toc=/azure/cost-management-billing/reservations/toc.json
     - name: Sorun giderme
       items:
+        - name: Azure günlüklerinden bir rezervasyon Satınalmacı bulma
+          href: find-reservation-purchaser-from-logs.md?toc=/azure/cost-management-billing/reservations/toc.json
         - name: Kiracılar arasında aktarımların sorunlarını giderme
           href: troubleshoot-reservation-transfers-between-tenants.md?toc=/azure/cost-management-billing/reservations/toc.json
         - name: Koşullara uygun abonelik yok

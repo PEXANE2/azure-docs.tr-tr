@@ -11,12 +11,12 @@ author: aamalvea
 ms.author: aamalvea
 ms.reviewer: wiassaf, sstein
 ms.date: 02/26/2019
-ms.openlocfilehash: a51840daa2c8b19c323ad761ff6e6d1dcef15f75
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 1a74a2f44ac9b03e39e9fea48a3428b82111a48c
+ms.sourcegitcommit: 66ce33826d77416dc2e4ba5447eeb387705a6ae5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96497971"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103472007"
 ---
 # <a name="use-resource-health-to-troubleshoot-connectivity-for-azure-sql-database-and-azure-sql-managed-instance"></a>Azure SQL veritabanı ve Azure SQL yönetilen örneği ile ilgili bağlantı sorunlarını gidermek için Kaynak Durumu kullanma
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -61,7 +61,7 @@ Kaynak Durumu sistem durumu geçmişi bölümünde 14 güne kadar sistem durumu 
 
 ### <a name="downtime-reasons"></a>Kesinti süresi nedenleri
 
-Veritabanınız kesinti yaşandığında, bir neden belirlenmesi için analiz gerçekleştirilir. Kullanılabilir olduğunda, Kaynak Durumu sistem durumu geçmişi bölümünde kesinti süresi nedeni raporlanır. Kapalı kalma süresinin nedenleri genellikle bir olaydan 30 dakika sonra yayımlanır.
+Veritabanınız kesinti yaşandığında, bir neden belirlenmesi için analiz gerçekleştirilir. Kullanılabilir olduğunda, Kaynak Durumu sistem durumu geçmişi bölümünde kesinti süresi nedeni raporlanır. Kesinti nedenleri genellikle bir olay sonrasında 45 dakika içinde yayımlanır.
 
 #### <a name="planned-maintenance"></a>Planlı bakım
 

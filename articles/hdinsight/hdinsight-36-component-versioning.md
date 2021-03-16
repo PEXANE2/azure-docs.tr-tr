@@ -3,14 +3,15 @@ title: Apache Hadoop bileşenleri ve sürümleri-Azure HDInsight 3,6
 description: Azure HDInsight 3,6 ' de Apache Hadoop bileşenleri ve sürümleri hakkında bilgi edinin.
 ms.service: hdinsight
 ms.topic: conceptual
-ms.custom: deshriva
+author: deshriva
+ms.author: deshriva
 ms.date: 02/08/2021
-ms.openlocfilehash: ee4ae5e0b92fb0627143f2d2f998747f7e956b6d
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 0180f94109d01443390da363d9e09c5ad0b26d18
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101746172"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103496125"
 ---
 # <a name="hdinsight-36-component-versions"></a>HDInsight 3,6 bileşen sürümleri
 

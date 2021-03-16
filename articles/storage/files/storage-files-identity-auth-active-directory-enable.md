@@ -5,14 +5,14 @@ author: roygara
 ms.service: storage
 ms.subservice: files
 ms.topic: how-to
-ms.date: 09/13/2020
+ms.date: 03/15/2021
 ms.author: rogarana
-ms.openlocfilehash: 6098497e89ad66fad7659aa64c9a7849380f8c43
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.openlocfilehash: 26932d05cd3d2ef7704b48463c895e05524d87f1
+ms.sourcegitcommit: 66ce33826d77416dc2e4ba5447eeb387705a6ae5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102547530"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103472146"
 ---
 # <a name="overview---on-premises-active-directory-domain-services-authentication-over-smb-for-azure-file-shares"></a>Azure dosya paylaşımları için SMB üzerinden genel bakış-şirket içi Active Directory Domain Services kimlik doğrulaması
 
@@ -66,7 +66,7 @@ Azure dosya paylaşımları için AD DS kimlik doğrulamasını etkinleştirmede
 
 ## <a name="regional-availability"></a>Bölgesel kullanılabilirlik
 
-AD DS ile Azure dosyaları kimlik doğrulaması, [tüm Azure ortak ve gov bölgelerinde](https://azure.microsoft.com/global-infrastructure/locations/)kullanılabilir.
+AD DS ile Azure dosyaları kimlik doğrulaması, [tüm Azure genel, Çin ve gov bölgelerinde](https://azure.microsoft.com/global-infrastructure/locations/)kullanılabilir.
 
 ## <a name="overview"></a>Genel Bakış
 
