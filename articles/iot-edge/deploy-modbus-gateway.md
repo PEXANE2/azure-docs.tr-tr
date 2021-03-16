@@ -8,14 +8,16 @@ services: iot-edge
 ms.topic: conceptual
 ms.date: 11/19/2019
 ms.author: kgremban
-ms.openlocfilehash: d07a1d1ab0d3b1f4315c09f1c403126139b34612
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 0388520903e208b3225375d5cee81e8321740a1b
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92043910"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103487743"
 ---
 # <a name="connect-modbus-tcp-devices-through-an-iot-edge-device-gateway"></a>IoT Edge cihaz ağ geçidi aracılığıyla Modbus TCP cihazlarını bağlama
+
+[!INCLUDE [iot-edge-version-all-supported](../../includes/iot-edge-version-all-supported.md)]
 
 Modbus TCP veya RTU protokollerini kullanan IoT cihazlarını bir Azure IoT Hub 'ına bağlamak istiyorsanız, ağ geçidi olarak bir IoT Edge cihazı kullanabilirsiniz. Ağ geçidi cihazı Modbus cihazlarınızdan verileri okur, sonra desteklenen bir protokolü kullanarak bu verileri buluta iletir.
 
@@ -51,7 +53,7 @@ Bu bölümde Microsoft 'un örnek Modbus modülünün IoT Edge cihazınıza dağ
 
    1. Açılan menü **Ekle** ' ye tıklayın ve **Market modülü**' nü seçin.
    2. `Modbus`Microsoft tarafından **Modbus TCP modülünü** arayın ve seçin.
-   3. Modül, IoT Hub için otomatik olarak yapılandırılır ve IoT Edge modülleri listesinde görünür. Yollar da otomatik olarak yapılandırılır. **Gözden geçir + oluştur**’u seçin.
+   3. Modül, IoT Hub için otomatik olarak yapılandırılır ve IoT Edge modülleri listesinde görünür. Yollar da otomatik olarak yapılandırılır. **Gözden geçir ve oluştur**’u seçin.
    4. Dağıtım bildirimini gözden geçirin ve **Oluştur**' u seçin.
 
 5. Listeden Modbus modülünü seçin `ModbusTCPModule` ve **Modül ikizi ayarları** sekmesini seçin. Module ikizi istenen özellikler için gerekli JSON otomatik olarak doldurulur.

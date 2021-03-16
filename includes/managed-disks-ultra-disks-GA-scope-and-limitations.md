@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/28/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: e94b14584f8eece3d772f67b680df4a2ffb8b5cd
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.openlocfilehash: aafeb7ebd939805ae18e29670f359660db12e2e1
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102603218"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103555915"
 ---
 Şimdilik, Ultra diskler ek sınırlamalara sahiptir ve bunlar şu şekildedir:
 
@@ -65,11 +65,11 @@ Aşağıdaki tabloda, Ultra disklerin ' de kullanılabildiği bölgeler ve bunla
     - [Mv2](../articles/virtual-machines/workloads/sap/hana-vm-operations-storage.md)
 - Her VM boyutu, Ultra disklerle desteklenen her bölgede kullanılabilir değildir.
 - Yalnızca veri diskleri olarak kullanılabilir. 
-- Varsayılan olarak 4k fiziksel sektör boyutunu destekler. 512E sektör boyutu genel kullanıma açık bir teklif olarak kullanılabilir (kaydolma gerekmez), ancak şu anda yalnızca CLı veya PowerShell kullanılarak kullanılabilir. Çoğu uygulama 4k kesim boyutlarına sahiptir ancak bazıları 512 bayt kesim boyutu gerektirir. Bir örnek Oracle Database, 4k yerel disklerini desteklemek için Release 12,2 veya üzeri bir sürümü gerektirir. Daha eski Oracle DB sürümleri için 512 baytlık sektör boyutu gereklidir.
+- Varsayılan olarak 4k fiziksel sektör boyutunu destekler. 512E sektör boyutu genel kullanıma açık bir teklif olarak kullanılabilir (kaydolma gerekmez). Çoğu uygulama 4k kesim boyutlarına sahiptir ancak bazıları 512 bayt kesim boyutu gerektirir. Bir örnek Oracle Database, 4k yerel disklerini desteklemek için Release 12,2 veya üzeri bir sürümü gerektirir. Daha eski Oracle DB sürümleri için 512 baytlık sektör boyutu gereklidir.
 - Yalnızca boş disk olarak oluşturulabilir.
 - Şu anda disk anlık görüntülerini, VM görüntülerini, kullanılabilirlik kümelerini, Azure adanmış Konakları veya Azure disk şifrelemesini desteklememektedir.
 - Şu anda Azure Backup veya Azure Site Recovery tümleştirmeyi desteklemez.
 - Yalnızca önbelleğe alınmamış okuma ve önbelleğe alınmamış yazmaları destekler.
 - GA VM 'lerde ıOPS için geçerli en büyük sınır 80.000 ' dir.
 
-Azure Ultra diskler, varsayılan olarak her abonelik için her bölge için en fazla 16 TiB sunar, ancak Ultra diskler isteğe göre daha yüksek kapasiteyi destekler. Kapasiteden artış istemek için Azure desteğine başvurun.
+Azure Ultra diskler, varsayılan olarak abonelik başına en fazla 32 TiB sunar, ancak Ultra diskler isteğe göre daha yüksek kapasiteyi destekler. Kapasitede bir artış istemek için kota artışı isteyin veya Azure desteği ile iletişime geçin.

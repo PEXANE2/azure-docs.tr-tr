@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 02/22/2021
+ms.date: 03/15/2021
 ms.author: justinha
 author: justinha
 manager: daveba
 ms.collection: M365-identity-device-management
 ms.custom: contperf-fy20q4
-ms.openlocfilehash: 0bbaf5fa4f3404b0e4fdb4dc016b703c58910457
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: ee10aa7c461aca65f385c735f6e9aaa28af7f9e5
+ms.sourcegitcommit: 66ce33826d77416dc2e4ba5447eeb387705a6ae5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101652088"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103471705"
 ---
 # <a name="what-authentication-and-verification-methods-are-available-in-azure-active-directory"></a>Azure Active Directory'de mevcut olan kimlik doğrulaması ve doğrulama yöntemleri
 
@@ -43,7 +43,7 @@ Aşağıdaki tabloda, kullanılabilir kimlik doğrulama yöntemlerine yönelik g
 | İş İçin Windows Hello     | Yüksek     | Yüksek      | Yüksek         |
 | Microsoft Authenticator uygulaması    | Yüksek     | Yüksek      | Yüksek         |
 | FIDO2 güvenlik anahtarı             | Yüksek     | Yüksek      | Yüksek         |
-| OATH donanım belirteçleri           | Orta   | Orta    | Yüksek         |
+| OATH Donanım belirteçleri (Önizleme) | Orta   | Orta    | Yüksek         |
 | OATH yazılım belirteçleri           | Orta   | Orta    | Yüksek         |
 | SMS                            | Orta   | Yüksek      | Orta       |
 | Ses                          | Orta   | Orta    | Orta       |
@@ -68,7 +68,7 @@ Aşağıdaki tabloda, bir oturum açma olayı sırasında bir kimlik doğrulama 
 | İş İçin Windows Hello     | Yes                    | Çok faktörlü kimlik doğrulaması                       |
 | Microsoft Authenticator uygulaması    | Yes                    | MFA ve SSPR              |
 | FIDO2 güvenlik anahtarı             | Yes                    | Çok faktörlü kimlik doğrulaması                       |
-| OATH donanım belirteçleri           | Hayır                     | Çok faktörlü kimlik doğrulaması                       |
+| OATH Donanım belirteçleri (Önizleme) | Hayır                     | Çok faktörlü kimlik doğrulaması                       |
 | OATH yazılım belirteçleri           | Hayır                     | Çok faktörlü kimlik doğrulaması                       |
 | SMS                            | Yes                    | MFA ve SSPR              |
 | Sesli arama                     | Hayır                     | MFA ve SSPR              |
@@ -81,7 +81,7 @@ Her bir kimlik doğrulama yönteminin nasıl çalıştığı hakkında daha fazl
 * [İş İçin Windows Hello](/windows/security/identity-protection/hello-for-business/hello-overview)
 * [Microsoft Authenticator uygulaması](concept-authentication-authenticator-app.md)
 * [FIDO2 güvenlik anahtarı](concept-authentication-passwordless.md#fido2-security-keys)
-* [OATH donanım belirteçleri](concept-authentication-oath-tokens.md#oath-hardware-tokens)
+* [OATH Donanım belirteçleri (Önizleme)](concept-authentication-oath-tokens.md#oath-hardware-tokens-preview)
 * [OATH yazılım belirteçleri](concept-authentication-oath-tokens.md#oath-software-tokens)
 * [SMS oturum açma](howto-authentication-sms-signin.md) ve [doğrulama](concept-authentication-phone-options.md#mobile-phone-verification)
 * [Sesli arama doğrulaması](concept-authentication-phone-options.md)

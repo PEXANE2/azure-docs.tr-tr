@@ -2,23 +2,23 @@
 title: Özel model formu tanıyıcı için eğitim verileri kümesi oluşturma
 titleSuffix: Azure Cognitive Services
 description: Eğitim veri kümesinin, form tanıyıcı modeli eğitimi için iyileştirildiğini nasıl sağlayacağınızı öğrenin.
-author: PatrickFarley
+author: laujan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 06/19/2019
-ms.author: pafarley
-ms.openlocfilehash: ee57ccb82e771ee8ab93b09e476a94df32278069
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
+ms.author: lajanuar
+ms.openlocfilehash: b33ac3cb710a2d2a9d92efadf14dc829cb5da6e8
+ms.sourcegitcommit: 3ea12ce4f6c142c5a1a2f04d6e329e3456d2bda5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99585118"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103467502"
 ---
 # <a name="build-a-training-data-set-for-a-custom-model"></a>Özel model için eğitim veri kümesi oluşturma
 
-Form tanıyıcı özel modelini kullandığınızda, modelin sektöre özgü formlarınıza eğmesi için kendi eğitim verilerinizi [özel modeli eğitme](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/TrainCustomModelAsync) işlemine sağlarsınız. Modeli verimli bir şekilde eğitme amacıyla verileri nasıl toplayacağınızı ve hazırlanacağınızı öğrenmek için bu kılavuzu izleyin.
+Form tanıyıcı özel modelini kullandığınızda, modelin sektöre özgü formlarınıza eğmesi için kendi eğitim verilerinizi [özel modeli eğitme](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-3/operations/TrainCustomModelAsync) işlemine sağlarsınız. Modeli verimli bir şekilde eğitme amacıyla verileri nasıl toplayacağınızı ve hazırlanacağınızı öğrenmek için bu kılavuzu izleyin.
 
 Aynı türde en az beş doldurulmuş form olması gerekir.
 
@@ -47,7 +47,7 @@ El ile etiketlenmiş verileri kullanmak istiyorsanız eğitim belgelerinize kar�
 
 ### <a name="organize-your-data-in-subfolders-optional"></a>Verilerinizi alt klasörlerde düzenleme (isteğe bağlı)
 
-Varsayılan olarak, [özel model eğitme](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/TrainCustomModelAsync) API 'si yalnızca depolama kapsayıcının kökünde bulunan form belgelerini kullanacaktır. Ancak, API çağrısında belirtirseniz, alt klasörlerdeki verilerle eğitebilirsiniz. Normal olarak, [eğitme özel model](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/TrainCustomModelAsync) çağrısının gövdesi aşağıdaki biçime sahiptir; burada, `<SAS URL>` kapsayıcının paylaşılan erişim imzası URL 'sidir:
+Varsayılan olarak, [özel model eğitme](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-3/operations/TrainCustomModelAsync) API 'si yalnızca depolama kapsayıcının kökünde bulunan form belgelerini kullanacaktır. Ancak, API çağrısında belirtirseniz, alt klasörlerdeki verilerle eğitebilirsiniz. Normal olarak, [eğitme özel model](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-3/operations/TrainCustomModelAsync) çağrısının gövdesi aşağıdaki biçime sahiptir; burada, `<SAS URL>` kapsayıcının paylaşılan erişim imzası URL 'sidir:
 
 ```json
 {

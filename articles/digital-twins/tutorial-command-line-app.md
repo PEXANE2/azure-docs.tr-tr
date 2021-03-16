@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 5/8/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: 54f3004c190c104f2f869b2878b50f5b6c88856b
-ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
+ms.openlocfilehash: c18366fd4bc510f32ac0ef255b27709797a3b626
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/14/2021
-ms.locfileid: "103463941"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103493722"
 ---
 # <a name="tutorial-create-an-azure-digital-twins-graph-using-a-sample-client-app"></a>Öğretici: örnek bir istemci uygulaması kullanarak Azure dijital TWINS grafiği oluşturma
 
@@ -37,18 +37,17 @@ Bu öğreticide,...
 
 Artık uygulama ve kimlik doğrulaması ayarlanmış olduğuna göre, araç çubuğunda bu düğmeyi kullanarak projeyi çalıştırın:
 
-:::image type="content" source="media/tutorial-command-line/app/start-button-sample.png" alt-text="Visual Studio Başlangıç düğmesi (SampleClientApp Projesi)":::
+:::image type="content" source="media/tutorial-command-line/app/start-button-sample.png" alt-text="Visual Studio başlangıç düğmesinin (SampleClientApp Projesi) ekran görüntüsü." lightbox="media/tutorial-command-line/app/start-button-sample.png":::
 
 Bir konsol penceresi açılır, kimlik doğrulama işlemi gerçekleştirebilir ve bir komut için bekler. 
 * Kimlik doğrulaması tarayıcı aracılığıyla gerçekleştirilir: varsayılan Web tarayıcınız, bir kimlik doğrulama istemiyle açılır. Azure kimlik bilgilerinizle oturum açmak için bu istemi kullanın. Ardından tarayıcı sekmesini veya penceresini kapatabilirsiniz.
 
 Proje konsolunun neye benzediğinin ekran görüntüsü aşağıda verilmiştir:
 
-:::image type="content" source="media/tutorial-command-line/app/command-line-app.png" alt-text="Komut satırı uygulamasından hoş geldiniz iletisi":::
+:::image type="content" source="media/tutorial-command-line/app/command-line-app.png" alt-text="Komut satırı uygulamasındaki hoş geldiniz iletisinin ekran görüntüsü." lightbox="media/tutorial-command-line/app/command-line-app.png":::
 
 > [!TIP]
 > Bu projeyle kullanabileceğiniz tüm olası komutların listesi için, `help` Proje konsoluna girip Return tuşuna basın.
-> :::image type="content" source="media/tutorial-command-line/app/command-line-app-help.png" alt-text="Yardım komutunun çıkışı":::
 
 Bu öğreticideki adımların geri kalanında proje konsolunu çalışır durumda tutun.
 
@@ -83,7 +82,7 @@ Modelleri tasarladıktan sonra Azure dijital TWINS örneğinizi yüklemeniz gere
 
 1. Komutu çalıştırarak modellerin oluşturulduğunu doğrulayın `GetModels true` . Bu, karşıya yüklenen tüm modeller için Azure dijital TWINS örneğini sorgular ve tam bilgilerini yazdırır. Sonuçlarda düzenlenmiş *Oda* modelini arayın:
 
-    :::image type="content" source="media/tutorial-command-line/app/output-get-models.png" alt-text="Güncelleştirilmiş Oda modelini gösteren GetModel sonuçları":::
+    :::image type="content" source="media/tutorial-command-line/app/output-get-models.png" alt-text="Güncelleştirilmiş Oda modelini gösteren Getmodellerden elde edilen sonucun ekran görüntüsü." lightbox="media/tutorial-command-line/app/output-get-models.png":::
 
 ### <a name="errors"></a>Hatalar
 
@@ -128,7 +127,7 @@ Dijital bir ikizi oluşturmak için `CreateDigitalTwin` komutunu kullanın. İki
 
     Bu komutların çıktısı, TWINS 'nin başarıyla oluşturulduğunu göstermelidir. 
     
-    :::image type="content" source="media/tutorial-command-line/app/output-create-digital-twin.png" alt-text="Floor0, Floor1, room0 ve room1 gösteren CreateDigitalTwin komutlarının sonuçlarından alıntı yapın":::
+    :::image type="content" source="media/tutorial-command-line/app/output-create-digital-twin.png" alt-text="Floor0, Floor1, room0 ve room1 içeren CreateDigitalTwin komutlarının sonuçlarından bir alıntı gösteren ekran görüntüsü." lightbox="media/tutorial-command-line/app/output-create-digital-twin.png":::
 
 1. Komutu çalıştırarak TWINS 'nin oluşturulduğunu doğrulayabilirsiniz `Query` . Bu komut, içerdiği tüm dijital TWINS için Azure dijital TWINS örneğinizi sorgular. Sonuçlarda *room0*, *room1*, *floor0* ve *Floor1* TWINS ' i arayın.
 
@@ -180,7 +179,7 @@ Bir ilişki eklemek için `CreateRelationship` komutunu kullanın. İlişkinin g
     
     Bu komutların çıktısı, ilişkilerin başarıyla oluşturulduğunu onaylar:
     
-    :::image type="content" source="media/tutorial-command-line/app/output-create-relationship.png" alt-text="Relationship0 ve relationship1 gösteren CreateRelationship komutlarının sonuçlarından alıntı":::
+    :::image type="content" source="media/tutorial-command-line/app/output-create-relationship.png" alt-text="Relationship0 ve relationship1 içeren CreateRelationship komutlarının sonuçlarından elde edilen bir alıntı ekran görüntüsü." lightbox="media/tutorial-command-line/app/output-create-relationship.png":::
 
 1. Azure dijital TWINS örneğinizdeki ilişkileri sorgulayan aşağıdaki komutlardan herhangi biriyle ilişkileri doğrulayabilirsiniz.
     * Her bir tabandan gelen tüm ilişkileri görmek için (ilişkiyi bir taraftan görüntüleme):
@@ -201,7 +200,7 @@ Bir ilişki eklemek için `CreateRelationship` komutunu kullanın. İlişkinin g
 
 Bu öğreticide ayarladığınız TWINS ve ilişkiler aşağıdaki kavramsal grafiği oluşturur:
 
-:::image type="content" source="media/tutorial-command-line/app/sample-graph.png" alt-text="Relationship0 ile room0 arasında bağlanan floor0 ve Floor1 ile relationship1 arasında bağlanan bir grafik" border="false":::
+:::image type="content" source="media/tutorial-command-line/app/sample-graph.png" alt-text="Kavramsal grafiği gösteren bir diyagram. floor0, relationship0 ile room0 arasında bağlanır ve Floor1 relationship1 ile room1 arasında bağlanır." border="false" lightbox="media/tutorial-command-line/app/sample-graph.png":::
 
 ## <a name="query-the-twin-graph-to-answer-environment-questions"></a>Ortam sorularını yanıtlamak için ikizi grafiğini sorgulama
 
@@ -217,7 +216,7 @@ Azure dijital TWINS 'in ana özelliği, ortamınız hakkında soruları yanıtla
 
     Bu, ortamınızı bir bakışta almanıza olanak sağlar ve her şeyin Azure dijital TWINS 'in içinde olmasını istediğiniz şekilde gösterildiğinden emin olun. Bunun sonucu, her dijital ikizi ayrıntılarını içeren bir çıktıdır. Aşağıda bir alıntı verilmiştir:
 
-    :::image type="content" source="media/tutorial-command-line/app/output-query-all.png" alt-text="İkizi sorgusunun kısmi sonuçları, room0 ve Floor1 gösteriliyor":::
+    :::image type="content" source="media/tutorial-command-line/app/output-query-all.png" alt-text="Room0 ve Floor1 de dahil olmak üzere ikizi sorgusundan kısmi bir sonuç gösteren ekran görüntüsü.":::
 
     >[!NOTE]
     >Örnek projede, `Query` ek bağımsız değişken içermeyen komutu ' nin eşdeğeridir `Query SELECT * FROM DIGITALTWINS` . [Sorgu API 'lerini](/rest/api/digital-twins/dataplane/query) veya [CLI komutlarını](how-to-use-cli.md)kullanarak örneğinizdeki tüm TWINS 'leri sorgulamak için, daha uzun (tamamlanmış) sorguyu kullanın.
@@ -230,7 +229,7 @@ Azure dijital TWINS 'in ana özelliği, ortamınız hakkında soruları yanıtla
 
     Hangi bilgilerin temsil edildiği hakkında daha ayrıntılı bilgi edinmek için sorgunuzu belirli bir türden TWINS ile kısıtlayabilirsiniz. Bunun sonucu, *room0* ve *room1* gösterir, ancak *floor0* veya *Floor1* **göstermez (** Odalar, odaların değil, bu nedenle).
     
-    :::image type="content" source="media/tutorial-command-line/app/output-query-model.png" alt-text="Yalnızca room0 ve room1 gösteren model sorgusunun sonuçları":::
+    :::image type="content" source="media/tutorial-command-line/app/output-query-model.png" alt-text="Yalnızca room0 ve room1 gösteren model sorgusundan elde edilen sonucun ekran görüntüsü.":::
 
 1. ***Floor0* üzerindeki tüm odalar nelerdir?** (ilişkiye göre sorgulama)
 
@@ -240,7 +239,7 @@ Azure dijital TWINS 'in ana özelliği, ortamınız hakkında soruları yanıtla
 
     TWINS 'in nasıl bağlı olduğu hakkında bilgi edinmek veya sorgunuzu belirli bir alanla kısıtlamak için grafiğinizde ilişkiler temelinde sorgulama yapabilirsiniz. Yalnızca *room0* *floor0*, bu nedenle sonuçtaki tek yer.
 
-    :::image type="content" source="media/tutorial-command-line/app/output-query-relationship.png" alt-text="İlişki sorgusunun sonuçları, room0 gösteriliyor":::
+    :::image type="content" source="media/tutorial-command-line/app/output-query-relationship.png" alt-text="İlişki sorgusundan elde edilen room0 gösteren sonucun ekran görüntüsü.":::
 
 1. **75 üzerinde sıcaklık olan ortammdaki tüm TWINS nedir?** (özelliğe göre sorgu)
 
@@ -250,7 +249,7 @@ Azure dijital TWINS 'in ana özelliği, ortamınız hakkında soruları yanıtla
 
     Ortamınızda dikkat etmeniz gerekebilecek aykırı değerleri bulma dahil olmak üzere çeşitli soruları yanıtlamak için, özellikleri temel alarak grafik sorgulama yapabilirsiniz. Diğer karşılaştırma işleçleri ( *<* , *>* , *=* veya *! =*) de desteklenir. *room1* , 80 sıcaklığını içerdiğinden burada sonuçlarda görüntülenir.
 
-    :::image type="content" source="media/tutorial-command-line/app/output-query-property.png" alt-text="Yalnızca room1 gösteren özellik sorgusunun sonuçları":::
+    :::image type="content" source="media/tutorial-command-line/app/output-query-property.png" alt-text="Yalnızca room1 gösteren özellik sorgusundan elde edilen sonucun ekran görüntüsü.":::
 
 1. **75 üzerindeki sıcaklığa sahip *floor0* üzerindeki tüm odalar nelerdir?** (bileşik sorgu)
 
@@ -260,7 +259,7 @@ Azure dijital TWINS 'in ana özelliği, ortamınız hakkında soruları yanıtla
 
     SQL 'de olduğu gibi önceki sorguları,, gibi Birleşik işleçler kullanarak da birleştirebilirsiniz `AND` `OR` `NOT` . Bu sorgu `AND` , önceki ikizi sıcaklıklar hakkında daha belirgin bir sorgu oluşturmak için kullanır. Sonuç artık yalnızca, *floor0* üzerinde olan 75 üzerinde sıcaklık olan odaları (Bu durumda, bunlardan hiçbiri) içerir. Sonuç kümesi boş.
 
-    :::image type="content" source="media/tutorial-command-line/app/output-query-compound.png" alt-text="Bileşik sorgunun sonuçları, sonuç yok gösteriliyor":::
+    :::image type="content" source="media/tutorial-command-line/app/output-query-compound.png" alt-text="Bileşik sorgudan elde edilen sonuç gösteren sonucun ekran görüntüsü." lightbox="media/tutorial-command-line/app/output-query-compound.png":::
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 

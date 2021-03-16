@@ -8,12 +8,12 @@ ms.service: load-balancer
 ms.topic: how-to
 ms.date: 01/28/2021
 ms.author: allensu
-ms.openlocfilehash: 0218bfef66e779a31d999c8d58bc1ce2691f46d4
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: ac21e1f00dc2a5580b90a1a5eb43da05288e800a
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102179230"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103489432"
 ---
 # <a name="backend-pool-management"></a>Arka uç havuzu yönetimi
 Arka uç havuzu, yük dengeleyicinin kritik bir bileşenidir. Arka uç havuzu, belirli bir yük dengeleme kuralı için trafik sunacak kaynak grubunu tanımlar.
@@ -250,7 +250,11 @@ JSON istek gövdesi:
 ```
 
 ### <a name="resource-manager-template"></a>Resource Manager Şablonu
+
 Yük dengeleyici ve sanal makineler dağıtmak ve ağ arabirimi aracılığıyla sanal makineleri arka uç havuzuna eklemek için bu [hızlı başlangıç Kaynak Yöneticisi şablonunu](https://github.com/Azure/azure-quickstart-templates/tree/master/101-load-balancer-standard-create/) izleyin.
+
+Yük dengeleyici ve sanal makineler dağıtmak ve sanal makineleri IP adresi aracılığıyla arka uç havuzuna eklemek için bu [hızlı başlangıç Kaynak Yöneticisi şablonunu](https://github.com/Azure/azure-quickstart-templates/tree/master/101-load-balancer-ip-configured-backend-pool) izleyin.
+
 
 ## <a name="configure-backend-pool-by-ip-address-and-virtual-network"></a>IP adresi ve sanal ağ ile arka uç havuzunu yapılandırma
 Önceden doldurulmuş arka uç havuzlarıyla birlikte IP ve sanal ağ kullanın.

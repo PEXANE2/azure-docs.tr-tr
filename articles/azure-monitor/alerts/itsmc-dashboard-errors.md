@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: nolavime
 ms.author: nolavime
 ms.date: 01/18/2021
-ms.openlocfilehash: 5cc3c4a07cc698f3592a2ff2fd76e9f4bbef441b
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 727e744c59d0a8d90cf320e1ee2e2a17e10ff847
+ms.sourcegitcommit: 66ce33826d77416dc2e4ba5447eeb387705a6ae5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102036461"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103471529"
 ---
 # <a name="connector-status-errors-in-the-itsmc-dashboard"></a>ISMC panosundaki bağlayıcı durumu hataları
 
@@ -88,3 +88,11 @@ Aşağıdaki bölümlerde, panonun bağlayıcı durumu bölümünde görünen ya
 
 * Yeni bir ıSMC örneği oluşturulduğunda, çalışma öğesi şablonları ve iş öğeleri gibi ıTSM sisteminden bilgi eşitlemeye başlar. [Yeni bir yenileme belirteci oluşturmak IÇIN ITSMC eşitlemesini](./itsmc-resync-servicenow.md)yapın.
 * [Ismc 'daki bağlantı ayrıntılarınızı gözden geçirin](./itsmc-connections-servicenow.md#create-a-connection) ve ısmc 'ın başarıyla [eşitleme](./itsmc-resync-servicenow.md)yapabilir olup olmadığını denetleyin.
+
+
+## <a name="ip-restrictions"></a>IP kısıtlamaları
+**Hata**: "Hatalı istek nedenıyle" xxx "adlı ITSM bağlantısı eklenemedi. Hata: Hatalı istek. Bağlantı için geçersiz parametreler belirtildi. Http özel durumu: durum kodu yasak. "
+
+**Neden**: ıTSM uygulamasının IP adresi Iş ortakları ITSM araçlarından ITSM bağlantılarına izin vermiyor.
+
+**Çözüm**: ortak IP adreslerini Iş ortaklarının ITSM araçlarından izin verecek şekilde listelemek Için, Azure bölgesinin tüm genel IP aralığını, loganalytics çalışma alanının ait olduğu yere Listelemenizin önerilir. [Ayrıntılar burada](https://www.microsoft.com/download/details.aspx?id=56519) EUS/WEU/EUS2/WUS2/ABD Orta Güney bölgeleri için müşteri yalnızca ActionGroup ağ etiketini listeleyebilir.

@@ -8,6 +8,8 @@
   items:
     - name: Toplanan ad alanını planlama
       href: hpc-cache-namespace.md
+    - name: Önbellek kullanım modellerini anlama
+      href: cache-usage-models.md
     - name: Güvenlik
       items:
         - name: Güvenlik temeli
@@ -52,7 +54,7 @@
           href: directory-services.md
 - name: Başvuru
   items:
-    - name: Azure CLI
+    - name: Azure CLI’si
       href: /cli/azure/ext/hpc-cache/hpc-cache
     - name: Azure PowerShell
       href: /powershell/module/Az.HPCCache

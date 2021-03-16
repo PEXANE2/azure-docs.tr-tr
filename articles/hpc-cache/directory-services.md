@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: how-to
 ms.date: 12/22/2020
 ms.author: v-erkel
-ms.openlocfilehash: 28265861c98cceaedf7d2662f6526a9f62fe68de
-ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
+ms.openlocfilehash: 4f1499c9a86999bac86fb7bf185f195e9ba5f690
+ms.sourcegitcommit: 66ce33826d77416dc2e4ba5447eeb387705a6ae5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/29/2020
-ms.locfileid: "97803774"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103472077"
 ---
 # <a name="configure-directory-services"></a>Dizin hizmetlerini yapılandırma
 
@@ -75,7 +75,7 @@ Sunucu ve Temel DN, LDAP işi yapmak için gereken tek ayardır, ancak ek seçen
 
 **Güvenli erişim** bölümünde LDAP bağlantısı için şifrelemeyi ve sertifika doğrulamayı etkinleştirebilirsiniz. Şifrelemeyi etkinleştirmek için **Evet** ' e tıkladıktan sonra şu seçeneklere sahipsiniz:
 
-* **Geçerli sertifika gerektir** -bu AYARLANDıĞıNDA, LDAP sunucusunun SERTIFIKASı aşağıdaki URI alanındaki sertifika yetkilisine göre doğrulanır.
+* **Sertifikayı doğrula** -bu AYARLANDıĞıNDA, LDAP sunucusunun SERTIFIKASı aşağıdaki URI alanındaki sertifika yetkilisine göre doğrulanır.
 
 * **CA sertifikası URI 'si** -yetkili sertifikanın yolunu belirtin. Bu, CA tarafından doğrulanan bir sertifikanın veya otomatik olarak imzalanan bir sertifikanın bağlantısı olabilir. Bu alan, dışarıdan doğrulanan sertifikalar ayarını kullanmak için gereklidir.
 

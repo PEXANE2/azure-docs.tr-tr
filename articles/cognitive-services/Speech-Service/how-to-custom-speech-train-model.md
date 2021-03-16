@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 02/12/2021
 ms.author: trbye
-ms.openlocfilehash: 4da93503c32e380adb82028e7c5e11dddb247d6f
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 166fb94f5a3aea505c0d20df861b8bc4de9ad8aa
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100373377"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103491121"
 ---
 # <a name="train-and-deploy-a-custom-speech-model"></a>Özel Konuşma Tanıma modeli eğitme ve dağıtma
 
@@ -61,7 +61,7 @@ Bir modeli eğiten ilk adım eğitim verilerini karşıya yüklemedir. Bkz. insa
 Özel Konuşma Tanıma modeli doğruluğunu değerlendirmek ve iyileştirmek için bkz. [nasıl yapılır](how-to-custom-speech-evaluate-data.md) . Doğruluk sınamasını tercih ederseniz, modelin performansını gerçekçi bir şekilde anlamak için modelinizle birlikte kullandığınız bir akustik veri kümesini seçmeniz önemlidir.
 
 > [!NOTE]
-> Hem temel modeller hem de özel modeller yalnızca belirli bir tarihe kadar kullanılabilir (bkz. [model yaşam döngüsü](custom-speech-overview.md#model-lifecycle)). Konuşma Studio, bu tarihi her model ve uç nokta için **süre sonu** sütununda gösterir. Bu tarih isteği bir uç noktaya veya toplu iş dökümden sonra başarısız olabilir veya temel modele geri dönemez.
+> Hem temel modeller hem de özel modeller yalnızca belirli bir tarihe kadar kullanılabilir (bkz. [model ve uç nokta yaşam döngüsü](./how-to-custom-speech-model-and-endpoint-lifecycle.md)). Konuşma Studio, bu tarihi her model ve uç nokta için **süre sonu** sütununda gösterir. Bu tarih isteği bir uç noktaya veya toplu iş dökümden sonra başarısız olabilir veya temel modele geri dönemez.
 >
 > Doğruluk geliştirmelerinden faydalanmak ve modelinizin süresinin dolmasını önlemek için en son temel modeli kullanarak modelinize yeniden eğitme.
 

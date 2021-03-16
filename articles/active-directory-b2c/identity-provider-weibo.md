@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/08/2021
+ms.date: 03/15/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: eb97ed6e43f70db4cce6a6f8013c8669a6a62a78
-ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
+ms.openlocfilehash: 272abef5adfbcceebe82ab703152e2a8fde86d9b
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "102448090"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103488574"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-weibo-account-using-azure-active-directory-b2c"></a>Azure Active Directory B2C kullanarak oturum açma ve Weibo hesabı ile oturum açma ayarlama
 
@@ -52,7 +52,7 @@ Azure Active Directory B2C (Azure AD B2C) ' de bir Weibo hesabı olan kullanıc�
 1. **保存以上信息**(Kaydet) seçeneğini belirleyin.
 1. **高级信息**(gelişmiş bilgiler) seçeneğini belirleyin.
 1. OAuth 2.0 **授权设置**(YENIDEN yönlendirme URL) alanının yanındaki **编辑**(Düzenle) öğesini seçin.
-1. `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp`OAuth 2.0 **授权设置**(Redirect URL) için girin. Örneğin, kiracı adınız contoso ise, URL 'YI olarak ayarlayın `https://contoso.b2clogin.com/contoso.onmicrosoft.com/oauth2/authresp` .
+1. OAuth 2.0 **授权设置** (Redirect URL) için girin `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp` . [Özel bir etki alanı](custom-domain.md)kullanıyorsanız, girin `https://your-domain-name/your-tenant-name.onmicrosoft.com/oauth2/authresp` . `your-tenant-name`, Kiracınızın adıyla ve `your-domain-name` özel etki alanınız ile değiştirin.
 1. **提交**(Gönder) seçeneğini belirleyin.
 
 ::: zone pivot="b2c-user-flow"

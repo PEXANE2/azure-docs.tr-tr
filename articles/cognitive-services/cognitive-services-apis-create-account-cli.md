@@ -10,12 +10,12 @@ keywords: bilişsel hizmetler, bilişsel zeka, bilişsel çözümler, AI Hizmetl
 ms.topic: quickstart
 ms.date: 09/14/2020
 ms.author: aahi
-ms.openlocfilehash: 95d74601ca912647eadd1bd4e1045108be6b2adb
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: c1e8b260f6c06d8f26f5ba99b4fb02edfa5e8656
+ms.sourcegitcommit: 66ce33826d77416dc2e4ba5447eeb387705a6ae5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102050078"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103472098"
 ---
 # <a name="quickstart-create-a-cognitive-services-resource-using-the-azure-command-line-interfacecli"></a>Hızlı başlangıç: Azure Command-Line arabirimini (CLı) kullanarak bilişsel hizmetler kaynağı oluşturma
 
@@ -99,16 +99,6 @@ Yeni bir kaynak oluştururken, kullanmak istediğiniz hizmetin "tür" i ve isted
 | Form Tanıma            | `FormRecognizer`          |
 | Mürekkep Tanıma             | `InkRecognizer`           |
 
-### <a name="search"></a>Arayın
-
-| Hizmet            | Tip                  |
-|--------------------|-----------------------|
-| Bing Otomatik Öneri   | `Bing.Autosuggest.v7` |
-| Bing Özel Arama | `Bing.CustomSearch`   |
-| Bing Varlık Arama | `Bing.EntitySearch`   |
-| Bing Arama        | `Bing.Search.v7`      |
-| Bing Yazım Denetimi   | `Bing.SpellCheck.v7`  |
-
 ### <a name="speech"></a>Konuşma
 
 | Hizmet            | Tip                 |
@@ -181,7 +171,7 @@ Bilişsel hizmet kaynağınızın anahtarlarını almak için [az biliveservices
 Fiyatlandırma katmanları (ve faturalandırılan miktar), kimlik doğrulama bilgilerinizi kullanarak göndereceğiniz işlem sayısına bağlıdır. Her fiyatlandırma katmanı şunları belirtir:
 * saniye başına izin verilen en fazla işlem sayısı (TPS).
 * fiyatlandırma katmanında etkinleştirilen hizmet özellikleri.
-* Önceden tanımlanmış işlem miktarının maliyeti. Bu tutarın üzerine gitmek, hizmetinize ilişkin [fiyatlandırma ayrıntılarında](https://azure.microsoft.com/pricing/details/cognitive-services/custom-vision-service/) belirtilen ek bir ücretden oluşmasına neden olur.
+* Önceden tanımlı işlem sayısının maliyeti. Bu tutarın üzerine gitmek, hizmetinize ilişkin [fiyatlandırma ayrıntılarında](https://azure.microsoft.com/pricing/details/cognitive-services/custom-vision-service/) belirtilen ek bir ücretden oluşmasına neden olur.
 
 ## <a name="get-current-quota-usage-for-your-resource"></a>Kaynağınız için geçerli kota kullanımını alın
 

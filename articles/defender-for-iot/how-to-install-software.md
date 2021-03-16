@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 12/2/2020
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: 49a0129ff26d4a12392066aa6304317d71fdb0f1
-ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
+ms.openlocfilehash: 1e361ad14f79ea32d83e8cff9dd9bb8607b7c766
+ms.sourcegitcommit: 66ce33826d77416dc2e4ba5447eeb387705a6ae5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98247599"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103470694"
 ---
 # <a name="defender-for-iot-installation"></a>IoT yüklemesi için Defender
 
@@ -42,12 +42,12 @@ IoT gereç algılayıcısı için Defender, bir SPAN bağlantı noktasına veya 
 
 Aşağıdaki raf bağlama gereçlerine erişilebilir:
 
-| **Dağıtım türü** | **Kurumsal** | **Kurumsal** | **SMB** |  |
+| **Dağıtım türü** | **Kurumsal** | **Kurumsal** | **SMB** | **Çizgi** |
 |--|--|--|--|--|
 | **Modelleme** | HPE ProLiant DL360 | Dell PowerEdge R340 XL | HPE ProLiant DL20 | HPE ProLiant DL20 |
 | **İzleme bağlantı noktaları** | en fazla 15 RJ45 veya 8 OPT | 9 RJ45 veya 6 OPT 'a kadar | en fazla 8 RJ45 veya 6 OPT | 4 RJ45 |
-| **Maksimum bant \* genişliği* _ | 3 GB/sn | 1 GB/sn | 1 GB/sn | 100 MB/sn |
-| _ *En fazla korumalı cihaz** | 30.000 | 10,000 | 15.000 | 1.000 |
+| **Maksimum bant genişliği\*** | 3 GB/sn | 1 GB/sn | 1 GB/sn | 100 MB/sn |
+| **En fazla korumalı cihaz** | 30.000 | 10,000 | 15.000 | 1.000 |
 
 * En yüksek bant genişliği kapasitesi, protokol dağıtımına bağlı olarak farklılık gösterebilir.
 
@@ -58,8 +58,8 @@ Aşağıdaki sanal gereçler mevcuttur:
 | **Dağıtım türü** | **Kurumsal** | **SMB** | **Çizgi** |
 |--|--|--|--|
 | **Açıklama** | Kurumsal dağıtımlar için Sanal Gereç | SMB dağıtımları için Sanal Gereç | Hat dağıtımları için Sanal Gereç |
-| **Maksimum bant \* genişliği* _ | 150 MB/sn | 15 MB/sn | 3 MB/sn |
-| _ *En fazla korumalı cihaz** | 3.000 | 300 | 100 |
+| **Maksimum bant genişliği\*** | 150 MB/sn | 15 MB/sn | 3 MB/sn |
+| **En fazla korumalı cihaz** | 3.000 | 300 | 100 |
 | **Dağıtım türü** | Kurumsal | SMB | Çizgi |
 | **Açıklama** | Kurumsal dağıtımlar için Sanal Gereç | SMB dağıtımları için Sanal Gereç | Hat dağıtımları için Sanal Gereç |
 
@@ -84,7 +84,7 @@ Dosyaya erişmek için:
 
 1. IoT hesabınız için Defender ' da oturum açın.
 
-2. **Ağ algılayıcısı** veya **Şirket içi yönetim konsolu** sayfasına gidin ve indirilecek bir sürüm seçin.
+1. **Ağ algılayıcısı** veya **Şirket içi yönetim konsolu** sayfasına gidin ve indirilecek bir sürüm seçin.
 
 ### <a name="install-from-dvd"></a>DVD 'den yüklensin
 
@@ -116,9 +116,9 @@ Bir anahtara disk hazırlamak için:
 
 1. Rufus ' i çalıştırın ve **ALGıLAYıCı ISO**' yı seçin.
 
-2. Bir anahtardaki diski ön panele bağlayın.
+1. Bir anahtardaki diski ön panele bağlayın.
 
-3. Sunucunun BIOS 'UNU USB 'den önyüklenecek şekilde ayarlayın.
+1. Sunucunun BIOS 'UNU USB 'den önyüklenecek şekilde ayarlayın.
 
 ## <a name="dell-poweredger340xl-installation"></a>Dell PowerEdgeR340XL yüklemesi
 
@@ -149,27 +149,27 @@ Dell PowerEdge R340XL gerecini yüklemek için şunlar gerekir:
 :::image type="content" source="media/tutorial-install-components/view-of-dell-poweredge-r340-front-panel.jpg" alt-text="Dell PowerEdge R340 ön paneli.":::
 
  1. Sol Denetim bölmesi 
- 2. Optik sürücü (isteğe bağlı) 
- 3. Sağ Denetim Masası 
- 4. Bilgi etiketi 
- 5. Sürücüler  
+ 1. Optik sürücü (isteğe bağlı) 
+ 1. Sağ Denetim Masası 
+ 1. Bilgi etiketi 
+ 1. Sürücüler  
 
 ### <a name="dell-poweredge-r340-back-panel"></a>Dell PowerEdge R340 geri paneli
 
 :::image type="content" source="media/tutorial-install-components/view-of-dell-poweredge-r340-back-panel.jpg" alt-text="Dell PowerEdge R340 geri paneli.":::
 
 1. Seri bağlantı noktası 
-2. NIC bağlantı noktası (GB 1) 
-3. NIC bağlantı noktası (GB 1) 
-4. Yarım yükseklikte PCIe 
-5. Tam yükseklikte PCIe genişletme kartı yuvası 
-6. Güç kaynağı birimi 1 
-7. Güç kaynağı birimi 2 
-8. Sistem kimliği 
-9. Sistem durumu göstergesi kablosu bağlantı noktası (CMA) düğmesi 
-10. USB 3,0 bağlantı noktası (2) 
-11. iDRAC9 adanmış ağ bağlantı noktası 
-12. VGA bağlantı noktası 
+1. NIC bağlantı noktası (GB 1) 
+1. NIC bağlantı noktası (GB 1) 
+1. Yarım yükseklikte PCIe 
+1. Tam yükseklikte PCIe genişletme kartı yuvası 
+1. Güç kaynağı birimi 1 
+1. Güç kaynağı birimi 2 
+1. Sistem kimliği 
+1. Sistem durumu göstergesi kablosu bağlantı noktası (CMA) düğmesi 
+1. USB 3,0 bağlantı noktası (2) 
+1. iDRAC9 adanmış ağ bağlantı noktası 
+1. VGA bağlantı noktası 
 
 ### <a name="dell-bios-configuration"></a>Dell BIOS yapılandırması
 
@@ -189,28 +189,28 @@ Dell BIOS 'UNU yapılandırmak için:
 
 1. [Idrac IP adresini yapılandırma](#configure-idrac-ip-address)
 
-2. [BIOS yapılandırma dosyasını içeri aktarma](#import-the-bios-configuration-file)
+1. [BIOS yapılandırma dosyasını içeri aktarma](#import-the-bios-configuration-file)
 
 #### <a name="configure-idrac-ip-address"></a>Idrac IP adresini yapılandır
 
 1. Algılayıcısı güçlendirin.
 
-2. İşletim sistemi zaten yüklüyse, BIOS yapılandırmasını girmek için F2 tuşunu seçin.
+1. İşletim sistemi zaten yüklüyse, BIOS yapılandırmasını girmek için F2 tuşunu seçin.
 
-3. **Idrac ayarları**' nı seçin.
+1. **Idrac ayarları**' nı seçin.
 
-4. **Ağ**' ı seçin.
+1. **Ağ**' ı seçin.
 
    > [!NOTE]
    > Yükleme sırasında, aşağıdaki adımlarda bahsedilen varsayılan Idrac IP adresini ve parolasını yapılandırmanız gerekir. Yükleme sonrasında, bu tanımları değiştirirsiniz.
 
-5. Statik IPv4 adresini **10.100.100.250** olarak değiştirin.
+1. Statik IPv4 adresini **10.100.100.250** olarak değiştirin.
 
-6. Statik alt ağ maskesini **255.255.255.0** olarak değiştirin.
+1. Statik alt ağ maskesini **255.255.255.0** olarak değiştirin.
 
    :::image type="content" source="media/tutorial-install-components/idrac-network-settings-screen-v2.png" alt-text="Statik alt ağ maskesini gösteren ekran görüntüsü.":::
 
-7. **Arka**  >  **son**' u seçin.
+1. **Arka**  >  **son**' u seçin.
 
 #### <a name="import-the-bios-configuration-file"></a>BIOS yapılandırma dosyasını içeri aktarma
 
@@ -220,15 +220,15 @@ Bu makalede yapılandırma dosyası kullanılarak BIOS 'un nasıl yapılandırı
 
    :::image type="content" source="media/tutorial-install-components/idrac-port.png" alt-text="Önceden yapılandırılmış IP adresi bağlantı noktasının ekran görüntüsü.":::
 
-2. Bir tarayıcı açın ve Idrac Web arabirimine bağlanmak için **10.100.100.250** girin.
+1. Bir tarayıcı açın ve Idrac Web arabirimine bağlanmak için **10.100.100.250** girin.
 
-3. Dell varsayılan yönetici ayrıcalıklarıyla oturum açın:
+1. Dell varsayılan yönetici ayrıcalıklarıyla oturum açın:
 
    - Kullanıcı adı: **kök**
 
    - Parola: **Calvin**
 
-4. Gereç kimlik bilgileri şunlardır:
+1. Gereç kimlik bilgileri şunlardır:
 
    - Kullanıcı adı: **XXX**
 
@@ -241,7 +241,7 @@ Bu makalede yapılandırma dosyası kullanılarak BIOS 'un nasıl yapılandırı
      > - Şu anda Idrac 'ye bağlı olan tek kullanıcı olursunuz.
      > - Sistem BIOS menüsünde değil.
 
-5. **Yapılandırma**  >  **sunucusu yapılandırma profiline** gidin. Aşağıdaki parametreleri ayarlayın:
+1. **Yapılandırma**  >  **sunucusu yapılandırma profiline** gidin. Aşağıdaki parametreleri ayarlayın:
 
    :::image type="content" source="media/tutorial-install-components/configuration-screen.png" alt-text="Sunucu profilinizin yapılandırmasını gösteren ekran görüntüsü.":::
 
@@ -252,9 +252,9 @@ Bu makalede yapılandırma dosyası kullanılarak BIOS 'un nasıl yapılandırı
    | Bileşenleri içeri aktar | **BIOS, NIC, RAID '** i seçin. |
    | En fazla bekleme süresi | **20 dakika** seçin. |
 
-6. **İçeri aktar**'ı seçin.
+1. **İçeri aktar**'ı seçin.
 
-7. İşlemi izlemek için **bakım**  >  **işi kuyruğu**' na gidin.
+1. İşlemi izlemek için **bakım**  >  **işi kuyruğu**' na gidin.
 
    :::image type="content" source="media/tutorial-install-components/view-the-job-queue.png" alt-text="Iş kuyruğunu gösteren ekran görüntüsü.":::
 
@@ -276,33 +276,33 @@ El ile yapılandırmak için:
 
    - Gereç, IoT gereci için bir Defender ise Kullanıcı adı için **XXX** ve parola için **XXX** kullanarak oturum açın.
 
-2. BIOS 'a erişduktan sonra **cihaz ayarları**' na gidin.
+1. BIOS 'a erişduktan sonra **cihaz ayarları**' na gidin.
 
-3. **TÜMLEŞIK RAID denetleyicisi 1: Dell PERC \<PERC H330 Adapter\> Configuration yardımcı programını** seçerek RAID denetimli yapılandırmayı seçin.
+1. **TÜMLEŞIK RAID denetleyicisi 1: Dell PERC \<PERC H330 Adapter\> Configuration yardımcı programını** seçerek RAID denetimli yapılandırmayı seçin.
 
-4. **Yapılandırma yönetimi**' ni seçin.
+1. **Yapılandırma yönetimi**' ni seçin.
 
-5. **Sanal disk oluştur**' u seçin.
+1. **Sanal disk oluştur**' u seçin.
 
-6. **RAID düzeyi seç** alanında **RAID5**' yi seçin. **Sanal disk adı** alanında **kök** girin ve **fiziksel diskler**' i seçin.
+1. **RAID düzeyi seç** alanında **RAID5**' yi seçin. **Sanal disk adı** alanında **kök** girin ve **fiziksel diskler**' i seçin.
 
-7. **Tümünü işaretle** ' yi seçin ve sonra **Değişiklikleri Uygula** ' yı seçin
+1. **Tümünü işaretle** ' yi seçin ve sonra **Değişiklikleri Uygula** ' yı seçin
 
-8. **Tamam**'ı seçin.
+1. **Tamam**'ı seçin.
 
-9. Aşağı kaydırın ve **sanal disk oluştur**' u seçin.
+1. Aşağı kaydırın ve **sanal disk oluştur**' u seçin.
 
-10. **Onayla** onay kutusunu seçin ve **Evet**' i seçin.
+1. **Onayla** onay kutusunu seçin ve **Evet**' i seçin.
 
-11. **Tamam**’ı seçin.
+1. **Tamam**’ı seçin.
 
-12. Ana ekrana dönün ve **SISTEM BIOS**' u seçin.
+1. Ana ekrana dönün ve **SISTEM BIOS**' u seçin.
 
-13. **Önyükleme ayarları**' nı seçin.
+1. **Önyükleme ayarları**' nı seçin.
 
-14. **Önyükleme modu** seçeneği için **BIOS**' u seçin.
+1. **Önyükleme modu** seçeneği için **BIOS**' u seçin.
 
-15. **Geri**'yi seçin ve ardından **son** ' u seçerek BIOS ayarlarından çıkın.
+1. **Geri**'yi seçin ve ardından **son** ' u seçerek BIOS ayarlarından çıkın.
 
 ### <a name="software-installation-dell-r340"></a>Yazılım yükleme (Dell R340)
 
@@ -316,25 +316,25 @@ Yüklemek için:
 
    - Idrac kullanarak ISO görüntüsünü bağlayın. Idrac 'de oturum açtıktan sonra sanal konsolu seçin ve ardından **sanal medya**' yı seçin.
 
-2. **CD/DVD eşleme** bölümünde **Dosya Seç**' i seçin.
+1. **CD/DVD eşleme** bölümünde **Dosya Seç**' i seçin.
 
-3. Açılan iletişim kutusundan bu sürüm için sürüm ISO görüntü dosyasını seçin.
+1. Açılan iletişim kutusundan bu sürüm için sürüm ISO görüntü dosyasını seçin.
 
-4. **Cihazı eşle** düğmesini seçin.
+1. **Cihazı eşle** düğmesini seçin.
 
    :::image type="content" source="media/tutorial-install-components/mapped-device-on-virtual-media-screen-v2.png" alt-text="Eşlenmiş bir cihazı gösteren ekran görüntüsü.":::
 
-5. Medya bağlandı. **Kapat**’ı seçin.
+1. Medya bağlandı. **Kapat**’ı seçin.
 
-6. Gereci başlatın. Idrac 'yi kullanırken, **Tüketil denetim** düğmesini seçerek sunucuları yeniden başlatabilirsiniz. Ardından, **klavye makrolarında**, CTRL + ALT + DELETE dizisini başlatacak olan **Uygula** düğmesini seçin.
+1. Gereci başlatın. Idrac 'yi kullanırken, **Tüketil denetim** düğmesini seçerek sunucuları yeniden başlatabilirsiniz. Ardından, **klavye makrolarında**, CTRL + ALT + DELETE dizisini başlatacak olan **Uygula** düğmesini seçin.
 
-7. **İngilizce**'yi seçin.
+1. **İngilizce**'yi seçin.
 
-8. **Algılayıcı-yayın- \<version\> kuruluş**' u seçin.
+1. **Algılayıcı-yayın- \<version\> kuruluş**' u seçin.
 
    :::image type="content" source="media/tutorial-install-components/sensor-version-select-screen-v2.png" alt-text="Sürüm seçimini gösteren ekran görüntüsü.":::   
 
-9. Gereç profilini ve ağ özelliklerini tanımlayın:
+1. Gereç profilini ve ağ özelliklerini tanımlayın:
 
    :::image type="content" source="media/tutorial-install-components/appliance-profile-screen-v2.png" alt-text="Gereç profilini gösteren ekran görüntüsü.":::   
 
@@ -348,13 +348,13 @@ Yüklemek için:
    | **Gereç konak adı:** | - |
    | **BKZ** | - |
    | **Varsayılan ağ geçidi IP adresi:** | - |
-   | **Giriş arabirimleri:** |  Sistem sizin için giriş arabirimleri listesini oluşturur. Giriş arabirimlerini yansıtmak için, listede sunulan tüm öğeleri bir virgül ayırıcısıyla kopyalayın. Köprü arabirimini yapılandırmaya gerek olmadığını unutmayın. Bu seçenek yalnızca özel kullanım durumları için kullanılır. |
+   | **Giriş arabirimleri:** |  Sistem sizin için giriş arabirimleri listesini oluşturur. Giriş arabirimlerini yansıtmak için, listede sunulan tüm öğeleri bir virgül ayırıcısıyla kopyalayın. Köprü arabirimini yapılandırmak zorunda değilsiniz. Bu seçenek yalnızca özel kullanım durumları için kullanılır. |
 
-10. 10 dakika sonra, iki kimlik bilgileri kümesi görüntülenir. Biri bir **Six** kullanıcısına, diğeri ise **destek** kullanıcısına yöneliktir.  
+1. 10 dakika sonra, iki kimlik bilgileri kümesi görüntülenir. Biri bir **Six** kullanıcısına, diğeri ise **destek** kullanıcısına yöneliktir.  
 
-11. Gereç KIMLIĞI ve parolaları 'nı kaydedin. Bu kimlik bilgilerine, ilk kez kullandığınızda platforma erişmeniz gerekir.
+1. Gereç KIMLIĞI ve parolaları 'nı kaydedin. Bu kimlik bilgilerine, ilk kez kullandığınızda platforma erişmeniz gerekir.
 
-12. Devam etmek için **ENTER** ' u seçin.
+1. Devam etmek için **ENTER** ' u seçin.
 
 ## <a name="hpe-proliant-dl20-installation"></a>HPE ProLiant DL20 yüklemesi
 
@@ -389,7 +389,7 @@ Parolayı etkinleştirmek ve güncelleştirmek için:
 
     :::image type="content" source="media/tutorial-install-components/hpe-proliant-screen-v2.png" alt-text="HPE ProLiant penceresini gösteren ekran görüntüsü.":::
 
-2. **Sistem yardımcı programları**  >  **sistem yapılandırması**  >  **ILO 5 yapılandırma yardımcı programı**  >  **ağ seçenekleri**' ne gidin.
+1. **Sistem yardımcı programları**  >  **sistem yapılandırması**  >  **ILO 5 yapılandırma yardımcı programı**  >  **ağ seçenekleri**' ne gidin.
 
     :::image type="content" source="media/tutorial-install-components/system-configuration-window-v2.png" alt-text="Sistem yapılandırma penceresini gösteren ekran görüntüsü.":::
 
@@ -399,13 +399,13 @@ Parolayı etkinleştirmek ve güncelleştirmek için:
     
     1.  IP adresi, alt ağ maskesi ve ağ geçidi IP adresini girin.
 
-3. **F10: Kaydet**' i seçin.
+1. **F10: Kaydet**' i seçin.
 
-4. **ILO 5 yapılandırma yardımcı programına** dönmek için **ESC** 'Yi seçin ve ardından **Kullanıcı yönetimi**'ni seçin.
+1. **ILO 5 yapılandırma yardımcı programına** dönmek için **ESC** 'Yi seçin ve ardından **Kullanıcı yönetimi**'ni seçin.
 
-5. **Kullanıcı Düzenle/kaldır**' ı seçin. Yönetici varsayılan kullanıcı tanımlı ' dır. 
+1. **Kullanıcı Düzenle/kaldır**' ı seçin. Yönetici varsayılan kullanıcı tanımlı ' dır. 
 
-6. Varsayılan parolayı değiştirin ve **F10: Kaydet**' i seçin.
+1. Varsayılan parolayı değiştirin ve **F10: Kaydet**' i seçin.
 
 ### <a name="configure-the-hpe-bios"></a>HPE BIOS 'UNU yapılandırma
 
@@ -415,41 +415,41 @@ HPE BIOS 'UNU yapılandırmak için:
 
 1. **Sistem yardımcı programları**  >  **sistem yapılandırması**  >  **BIOS/platform yapılandırması (rbsu)** seçeneğini belirleyin.
 
-2. **BIOS/platform yapılandırması (RBSU)** formunda **önyükleme seçenekleri**' ni seçin.
+1. **BIOS/platform yapılandırması (RBSU)** formunda **önyükleme seçenekleri**' ni seçin.
 
-3. **Önyükleme modunu** **Eski BIOS moduna** değiştirin ve ardından **F10: Kaydet**' i seçin.
+1. **Önyükleme modunu** **Eski BIOS moduna** değiştirin ve ardından **F10: Kaydet**' i seçin.
 
-4. **Sistem yapılandırma** formunu kapatmak Için **ESC tuşuna** iki kez seçin.
+1. **Sistem yapılandırma** formunu kapatmak Için **ESC tuşuna** iki kez seçin.
 
 #### <a name="for-the-enterprise-appliance"></a>Kurumsal gereç için
 
 1. **Gömülü RAID 1: HPE akıllı dizi P408i-bir SR gen 10**  >  **dizi yapılandırması**  >  **dizisi oluştur**' u seçin.
 
-2. **Dizi oluştur** formunda, tüm seçenekleri seçin. **Kurumsal** gereç için üç seçenek mevcuttur.
+1. **Dizi oluştur** formunda, tüm seçenekleri seçin. **Kurumsal** gereç için üç seçenek mevcuttur.
 
 #### <a name="for-the-smb-appliance"></a>SMB gereci için
 
 1. **Gömülü RAID 1: HPE akıllı dizi P208i-bir SR gen 10**  >  **dizi yapılandırması**  >  **dizisi oluştur**' u seçin.
 
-2. **Sonraki forma devam et**' i seçin.
+1. **Sonraki forma devam et**' i seçin.
 
-3. **RAID düzeyini ayarla** formunda, kurumsal dağıtımlar Için düzeyi **RAID 5** ve SMB dağıtımları için **RAID 1** olarak ayarlayın.
+1. **RAID düzeyini ayarla** formunda, kurumsal dağıtımlar Için düzeyi **RAID 5** ve SMB dağıtımları için **RAID 1** olarak ayarlayın.
 
-4. **Sonraki forma devam et**' i seçin.
+1. **Sonraki forma devam et**' i seçin.
 
-5. **Mantıksal sürücü etiketi** formunda, **mantıksal sürücü 1** girin.
+1. **Mantıksal sürücü etiketi** formunda, **mantıksal sürücü 1** girin.
 
-6. **Değişiklikleri Gönder**' i seçin.
+1. **Değişiklikleri Gönder**' i seçin.
 
-7. **Gönder** formunda, **ana menüye dön**' ü seçin.
+1. **Gönder** formunda, **ana menüye dön**' ü seçin.
 
-8. **F10: Kaydet** ' i seçin ve ardından **ESC** tuşuna iki kez basın.
+1. **F10: Kaydet** ' i seçin ve ardından **ESC** tuşuna iki kez basın.
 
-9. **Sistem yardımcı programları** penceresinde, **bir kerelik önyükleme menüsü**' nü seçin.
+1. **Sistem yardımcı programları** penceresinde, **bir kerelik önyükleme menüsü**' nü seçin.
 
-10. **Tek seferlik önyükleme menüsü** formunda **Eski BIOS One-Time önyükleme menüsü**' nü seçin.
+1. **Tek seferlik önyükleme menüsü** formunda **Eski BIOS One-Time önyükleme menüsü**' nü seçin.
 
-11. Eski ve **önyükleme geçersiz kılma** pencerelerinin **önyüklemesi** görüntülenir. Önyükleme geçersiz kılma seçeneğini belirleyin; Örneğin, bir CD-ROM, USB, HDD veya UEFı kabuğu.
+1. Eski ve **önyükleme geçersiz kılma** pencerelerinin **önyüklemesi** görüntülenir. Önyükleme geçersiz kılma seçeneğini belirleyin; Örneğin, bir CD-ROM, USB, HDD veya UEFı kabuğu.
 
     :::image type="content" source="media/tutorial-install-components/boot-override-window-one-v2.png" alt-text="İlk önyükleme geçersiz kılma penceresini gösteren ekran görüntüsü.":::
 
@@ -462,19 +462,19 @@ Yazılımı yüklemek için:
 
 1. Ekran ve klavyeyi gereç 'ya bağlayın ve ardından CLı 'ya bağlanın.
 
-2. IoT portalı için Defender 'daki **güncelleştirmeler** SAYFASıNDAN indirdiğiniz ISO görüntüsüyle anahtardaki BIR dış CD veya diski bağlayın.
+1. IoT portalı için Defender 'daki **güncelleştirmeler** SAYFASıNDAN indirdiğiniz ISO görüntüsüyle anahtardaki BIR dış CD veya diski bağlayın.
 
-3. Gereci başlatın.
+1. Gereci başlatın.
 
-4. **İngilizce**'yi seçin.
+1. **İngilizce**'yi seçin.
 
     :::image type="content" source="media/tutorial-install-components/select-english-screen.png" alt-text="CLı penceresinde Ingilizce seçimi.":::
 
-5. **Algılayıcı-yayın- <version> kuruluş**' u seçin.
+1. **Algılayıcı-yayın- <version> kuruluş**' u seçin.
 
     :::image type="content" source="media/tutorial-install-components/sensor-version-select-screen-v2.png" alt-text="Sürüm seçme ekranının ekran görüntüsü.":::
 
-6. Yükleme sihirbazında, Gereç profilini ve ağ özelliklerini tanımlayın:
+1. Yükleme sihirbazında, Gereç profilini ve ağ özelliklerini tanımlayın:
 
     :::image type="content" source="media/tutorial-install-components/installation-wizard-screen-v2.png" alt-text="Yükleme Sihirbazı 'nı gösteren ekran görüntüsü.":::
 
@@ -485,11 +485,11 @@ Yazılımı yüklemek için:
     | **Varsayılan ağ parametreleri (genellikle parametreler müşteri tarafından sağlanır)** | **Yönetim ağı IP adresi:** <br/> <br/>**Gereç konak adı:** <br/>**BKZ** <br/>**Varsayılan ağ geçidi IP adresi:**|
     | **Giriş arabirimleri:** | Sistem sizin için giriş arabirimleri listesini oluşturur.<br/><br/>Giriş arabirimlerini yansıtmak için, listede sunulan tüm öğeleri bir virgül ayırıcısıyla kopyalayın: **eno5, eno3, eno1, eno6, eno4**<br/><br/>**HPE DL20 için: eno1, enp1s0f4u4 (ILO arabirimlerini) listeleme**<br/><br/>**Köprü**: köprü arabirimini yapılandırmaya gerek yoktur. Bu seçenek yalnızca özel kullanım durumları için kullanılır. Devam etmek için **Enter** tuşuna basın. |
 
-7. 10 dakika sonra, iki kimlik bilgileri kümesi görüntülenir. Biri bir **Six** kullanıcısına, diğeri ise **destek** kullanıcısına yöneliktir.
+1. 10 dakika sonra, iki kimlik bilgileri kümesi görüntülenir. Biri bir **Six** kullanıcısına, diğeri ise **destek** kullanıcısına yöneliktir.
 
-8. Gereç KIMLIĞINI ve parolalarını kaydedin. Platforma ilk kez erişmek için kimlik bilgileri gerekir.
+1. Gereç KIMLIĞINI ve parolalarını kaydedin. Platforma ilk kez erişmek için kimlik bilgileri gerekir.
 
-9. Devam etmek için **ENTER** ' u seçin.
+1. Devam etmek için **ENTER** ' u seçin.
 
 ## <a name="hpe-proliant-dl360-installation"></a>HPE ProLiant DL360 yüklemesi
 
@@ -528,17 +528,17 @@ Yüklemek için:
 
 1. ILO konsolunda oturum açın ve sonra sunucular ekranına sağ tıklayın.
 
-2. **HTML5 konsolunu** seçin.
+1. **HTML5 konsolunu** seçin.
 
-3. Konsolunda, CD simgesini seçin ve CD/DVD seçeneğini belirleyin.
+1. Konsolunda, CD simgesini seçin ve CD/DVD seçeneğini belirleyin.
 
-4. **Yerel ISO dosyası**' nı seçin.
+1. **Yerel ISO dosyası**' nı seçin.
 
-5. İletişim kutusunda ilgili ISO dosyasını seçin.
+1. İletişim kutusunda ilgili ISO dosyasını seçin.
 
-6. Sol simgesine gidin, **Güç**' i ve **sıfırlama** Seç ' i seçin.
+1. Sol simgesine gidin, **Güç**' i ve **sıfırlama** Seç ' i seçin.
 
-7. Gereç yeniden başlatılır ve algılayıcı yükleme işlemini çalıştırır.
+1. Gereç yeniden başlatılır ve algılayıcı yükleme işlemini çalıştırır.
 
 ### <a name="software-installation-hpe-dl360"></a>Yazılım yükleme (HPE DL360)
 
@@ -548,17 +548,17 @@ Yüklemek için:
 
 1. Ekran ve klavyeyi gereç 'ya bağlayın ve ardından CLı 'ya bağlanın.
 
-2. IoT portalı için Defender 'daki **güncelleştirmeler** SAYFASıNDAN indirdiğiniz ISO görüntüsünü içeren bir anahtara harici CD veya disk bağlayın.
+1. IoT portalı için Defender 'daki **güncelleştirmeler** SAYFASıNDAN indirdiğiniz ISO görüntüsünü içeren bir anahtara harici CD veya disk bağlayın.
 
-3. Gereci başlatın.
+1. Gereci başlatın.
 
-4. **İngilizce**'yi seçin.
+1. **İngilizce**'yi seçin.
 
-5. **Algılayıcı-yayın- <version> kuruluş**' u seçin.
+1. **Algılayıcı-yayın- <version> kuruluş**' u seçin.
 
     :::image type="content" source="media/tutorial-install-components/sensor-version-select-screen-v2.png" alt-text="Sürümün seçildiğinin gösterildiği ekran görüntüsü.":::
 
-6. Yükleme sihirbazında, Gereç profilini ve ağ özelliklerini tanımlayın.
+1. Yükleme sihirbazında, Gereç profilini ve ağ özelliklerini tanımlayın.
 
     :::image type="content" source="media/tutorial-install-components/installation-wizard-screen-v2.png" alt-text="Yükleme Sihirbazı 'nı gösteren ekran görüntüsü.":::
 
@@ -567,13 +567,13 @@ Yüklemek için:
     | **Donanım profili** | **Şirket**' i seçin. |
     | **Yönetim arabirimi** | **eno2** |
     | **Varsayılan ağ parametreleri (müşteri tarafından verilir)** | **Yönetim ağı IP adresi:** <br/>**alt ağ maskesi:** <br/>**Gereç konak adı:** <br/>**BKZ** <br/>**Varsayılan ağ geçidi IP adresi:**|
-    | **Giriş arabirimleri:**  | Sistem sizin için giriş arabirimlerinin bir listesini oluşturur.<br/><br/>Giriş arabirimlerini yansıtmak için, listede sunulan tüm öğeleri bir virgül ayırıcısıyla kopyalayın.<br/><br/>Köprü arabirimini yapılandırmaya gerek olmadığını unutmayın. Bu seçenek yalnızca özel kullanım durumları için kullanılır. |
+    | **Giriş arabirimleri:**  | Sistem sizin için giriş arabirimlerinin bir listesini oluşturur.<br/><br/>Giriş arabirimlerini yansıtmak için, listede sunulan tüm öğeleri bir virgül ayırıcısıyla kopyalayın.<br/><br/> Köprü arabirimini yapılandırmanız gerekmez. Bu seçenek yalnızca özel kullanım durumları için kullanılır. |
 
-7. 10 dakika sonra, iki kimlik bilgileri kümesi görüntülenir. Biri bir **Six** kullanıcısına, diğeri ise **destek** kullanıcısına yöneliktir.
+1. 10 dakika sonra, iki kimlik bilgileri kümesi görüntülenir. Biri bir **Six** kullanıcısına, diğeri ise **destek** kullanıcısına yöneliktir.
 
-8. Gereç KIMLIĞINI ve parolalarını kaydedin. Platforma ilk kez erişmek için bu kimlik bilgilerine ihtiyacınız olacak.
+1. Gereç KIMLIĞINI ve parolalarını kaydedin. Platforma ilk kez erişmek için bu kimlik bilgilerine ihtiyacınız olacak.
 
-9. Devam etmek için **ENTER** ' u seçin.
+1. Devam etmek için **ENTER** ' u seçin.
 
 ## <a name="sensor-installation-for-the-virtual-appliance"></a>Sanal Gereç için algılayıcı yüklemesi
 
@@ -586,7 +586,7 @@ Aşağıdaki mimarilerde IoT için Defender algılayıcısı için sanal makiney
 | **Küçük Işletme** | CPU: 4 <br/>Bellek: 8G RAM<br/>HDD: 500 GB | Test veya küçük üretim ortamları | -  |
 | **Office** | CPU: 4<br/>Bellek: 8G RAM<br/>HDD: 100 GB | Küçük test ortamları | -  |
 
-### <a name="prerequisites"></a>Ön koşullar
+### <a name="prerequisites"></a>Önkoşullar
 
 Şirket içi yönetim konsolu hem VMware hem de Hyper-V dağıtım seçeneklerini destekler. Yüklemeye başlamadan önce aşağıdaki öğelere sahip olduğunuzdan emin olun:
 
@@ -602,13 +602,13 @@ Hiper yöneticinin çalıştığından emin olun.
 
 1. ESXi 'de oturum açın, ilgili **veri deposunu** seçin ve **veri deposu tarayıcısı**' nı seçin.
 
-2. Resmi **karşıya yükleyin** ve **Kapat**' ı seçin.
+1. Resmi **karşıya yükleyin** ve **Kapat**' ı seçin.
 
-3. **Sanal makineler**' e gidin ve ardından **VM oluştur/kaydol**' u seçin.
+1. **Sanal makineler**' e gidin ve ardından **VM oluştur/kaydol**' u seçin.
 
-4. **Yeni sanal makine oluştur**' u seçin ve ardından **İleri**' yi seçin.
+1. **Yeni sanal makine oluştur**' u seçin ve ardından **İleri**' yi seçin.
 
-5. Bir algılayıcı adı ekleyin ve şunları seçin:
+1. Bir algılayıcı adı ekleyin ve şunları seçin:
 
    - Uyumluluk: **&lt; en son ESXi &gt; sürümü**
 
@@ -616,15 +616,15 @@ Hiper yöneticinin çalıştığından emin olun.
 
    - Konuk işletim sistemi sürümü: **Ubuntu Linux (64-bit)**
 
-6. **İleri**’yi seçin.
+1. **İleri**’yi seçin.
 
-7. İlgili veri deposunu seçin ve **İleri ' yi** seçin.
+1. İlgili veri deposunu seçin ve **İleri ' yi** seçin.
 
-8. Sanal donanım parametrelerini gereken mimariye göre değiştirin.
+1. Sanal donanım parametrelerini gereken mimariye göre değiştirin.
 
-9. **CD/DVD sürücüsü 1** Için, **veri deposu ISO dosyası** ' nı seçin ve daha önce karşıya yüklediğiniz ISO dosyasını seçin.
+1. **CD/DVD sürücüsü 1** Için, **veri deposu ISO dosyası** ' nı seçin ve daha önce karşıya yüklediğiniz ISO dosyasını seçin.
 
-10. **Sonraki** > **Son** seçeneğini belirleyin.
+1. **Sonraki** > **Son** seçeneğini belirleyin.
 
 ### <a name="create-the-virtual-machine-hyper-v"></a>Sanal makineyi (Hyper-V) oluşturma
 
@@ -634,43 +634,43 @@ Bir sanal makine oluşturmak için:
 
 1. Hyper-V Yöneticisi 'nde sanal disk oluşturun.
 
-2. **Format = VHDX** seçin.
+1. **Format = VHDX** seçin.
 
-3. **Tür = dinamik genişleyen** öğesini seçin.
+1. **Tür = dinamik genişleyen** öğesini seçin.
 
-4. VHD için ad ve konum girin.
+1. VHD için ad ve konum girin.
 
-5. Gerekli boyutu girin (mimariye göre).   
+1. Gerekli boyutu girin (mimariye göre).   
 
-6. Özeti gözden geçirin ve **son**' u seçin.
+1. Özeti gözden geçirin ve **son**' u seçin.
 
-7. **Eylemler** menüsünde Yeni bir sanal makine oluşturun.
+1. **Eylemler** menüsünde Yeni bir sanal makine oluşturun.
 
-8. Sanal makine için bir ad girin.
+1. Sanal makine için bir ad girin.
 
-9. **Kuşak** üretimi 1 belirtin ' i seçin  >  .
+1. **Kuşak** üretimi 1 belirtin ' i seçin  >  .
 
-10. Bellek ayırmayı (mimariye göre) belirtin ve dinamik bellek onay kutusunu seçin.
+1. Bellek ayırmayı (mimariye göre) belirtin ve dinamik bellek onay kutusunu seçin.
 
-11. Ağ bağdaştırıcısını sunucu ağ topolojinize göre yapılandırın.
+1. Ağ bağdaştırıcısını sunucu ağ topolojinize göre yapılandırın.
 
-12. Daha önce oluşturulan VHDX 'i sanal makineye bağlayın.
+1. Daha önce oluşturulan VHDX 'i sanal makineye bağlayın.
 
-13. Özeti gözden geçirin ve **son**' u seçin.
+1. Özeti gözden geçirin ve **son**' u seçin.
 
-14. Yeni sanal makineye sağ tıklayın ve **Ayarlar**' ı seçin.
+1. Yeni sanal makineye sağ tıklayın ve **Ayarlar**' ı seçin.
 
-15. **Donanım Ekle** ' yi seçin ve yeni bir ağ bağdaştırıcısı ekleyin.
+1. **Donanım Ekle** ' yi seçin ve yeni bir ağ bağdaştırıcısı ekleyin.
 
-16. Algılayıcı yönetim ağına bağlanacak sanal anahtarı seçin.
+1. Algılayıcı yönetim ağına bağlanacak sanal anahtarı seçin.
 
-17. CPU kaynaklarını ayırır (mimariye göre).
+1. CPU kaynaklarını ayırır (mimariye göre).
 
-18. Yönetim konsolunun ISO görüntüsünü bir sanal DVD sürücüsüne bağlayın.
+1. Yönetim konsolunun ISO görüntüsünü bir sanal DVD sürücüsüne bağlayın.
 
-19. Sanal makineyi başlatın.
+1. Sanal makineyi başlatın.
 
-20. **Eylemler** menüsünde, yazılım yüklemesine devam etmek için **Bağlan** ' ı seçin.
+2. **Eylemler** menüsünde, yazılım yüklemesine devam etmek için **Bağlan** ' ı seçin.
 
 ### <a name="software-installation-esxi-and-hyper-v"></a>Yazılım yükleme (ESXi ve Hyper-V)
 
@@ -680,11 +680,11 @@ Yüklemek için:
 
 1. Sanal makine konsolunu açın.
 
-2. VM ISO görüntüsünden başlayacaktır ve dil seçimi ekranı görünür. **İngilizce**'yi seçin.
+1. VM ISO görüntüsünden başlayacaktır ve dil seçimi ekranı görünür. **İngilizce**'yi seçin.
 
-3. Gerekli mimariyi seçin.
+1. Gerekli mimariyi seçin.
 
-4. Gereç profilini ve ağ özelliklerini tanımlayın:
+1. Gereç profilini ve ağ özelliklerini tanımlayın:
 
     | Parametre | Yapılandırma |
     | ----------| ------------- |
@@ -693,17 +693,17 @@ Yüklemek için:
     | **Ağ parametreleri (müşteri tarafından verilir)** | **Yönetim ağı IP adresi:** <br/>**alt ağ maskesi:** <br/>**Gereç konak adı:** <br/>**BKZ** <br/>**Varsayılan ağ geçidi:** <br/>**Giriş arabirimleri:**|
     | **Köprü arabirimleri:** | Köprü arabirimini yapılandırmaya gerek yoktur. Bu seçenek yalnızca özel kullanım durumlarına yöneliktir. |
 
-5. Ayarları kabul etmek için **Y** girin.
+1. Ayarları kabul etmek için **Y** girin.
 
-6. Oturum açma kimlik bilgileri otomatik olarak oluşturulup sunulur. Oturum açma ve yönetim için gerekli olduklarından, Kullanıcı adını ve parolayı güvenli bir yere kopyalayın.
+1. Oturum açma kimlik bilgileri otomatik olarak oluşturulup sunulur. Oturum açma ve yönetim için gerekli olduklarından, Kullanıcı adını ve parolayı güvenli bir yere kopyalayın.
 
-   - **Destek**: Kullanıcı yönetimi için yönetici kullanıcı.
+    - **Destek**: Kullanıcı yönetimi için yönetici kullanıcı.
 
-   - **Six**: gerecle erişmek için kökün eşdeğeri.
+    - **Six**: gerecle erişmek için kökün eşdeğeri.
 
-7. Gereç yeniden başlatılır.
+1. Gereç yeniden başlatılır.
 
-8. Yönetim konsoluna daha önce yapılandırılan IP adresi aracılığıyla erişin: `https://ip_address` .
+1. Yönetim konsoluna daha önce yapılandırılan IP adresi aracılığıyla erişin: `https://ip_address` .
 
     :::image type="content" source="media/tutorial-install-components/defender-for-iot-sign-in-screen.png" alt-text="Yönetim konsoluna erişimi gösteren ekran görüntüsü.":::
 
@@ -717,7 +717,7 @@ Yüklemek için:
 | Kurumsal | CPU: 4 <br/> Bellek: 8G RAM<br/> HDD: 500 GB | Büyük üretim ortamları |
 | Kurumsal | CPU: 4 <br/>Bellek: 8G RAM <br/> HDD: 100 GB | Küçük test ortamları | 
    
-### <a name="prerequisites"></a>Ön koşullar
+### <a name="prerequisites"></a>Önkoşullar
 
 Şirket içi yönetim konsolu hem VMware hem de Hyper-V dağıtım seçeneklerini destekler. Yüklemeye başlamadan önce aşağıdakileri doğrulayın:
 
@@ -735,15 +735,15 @@ Bir sanal makineye (ESXi) oluştur:
 
 1. ESXi 'de oturum açın, ilgili **veri deposunu** seçin ve **veri deposu tarayıcısı**' nı seçin.
 
-2. Resmi karşıya yükleyin ve **Kapat**' ı seçin.
+1. Resmi karşıya yükleyin ve **Kapat**' ı seçin.
 
-3. **Sanal makinelere** gidin.
+1. **Sanal makinelere** gidin.
 
-4. **VM oluştur/kaydol**' u seçin.
+1. **VM oluştur/kaydol**' u seçin.
 
-5. **Yeni sanal makine oluştur** ' u seçin ve **İleri ' yi** seçin.
+1. **Yeni sanal makine oluştur** ' u seçin ve **İleri ' yi** seçin.
 
-6. Bir algılayıcı adı ekleyin ve şunları seçin:
+1. Bir algılayıcı adı ekleyin ve şunları seçin:
 
    - Kları \<latest ESXi version>
 
@@ -751,15 +751,15 @@ Bir sanal makineye (ESXi) oluştur:
 
    - Konuk işletim sistemi sürümü: Ubuntu Linux (64-bit)
 
-7. **İleri**’yi seçin.
+1. **İleri**’yi seçin.
 
-8. İlgili veri deposunu seçin ve **İleri ' yi** seçin.
+1. İlgili veri deposunu seçin ve **İleri ' yi** seçin.
 
-9. Sanal donanım parametrelerini gereken mimariye göre değiştirin.
+1. Sanal donanım parametrelerini gereken mimariye göre değiştirin.
 
-10. **CD/DVD sürücüsü 1** Için, **veri deposu ISO dosyası** ' nı seçin ve daha önce karşıya yüklediğiniz ISO dosyasını seçin.
+1. **CD/DVD sürücüsü 1** Için, **veri deposu ISO dosyası** ' nı seçin ve daha önce karşıya yüklediğiniz ISO dosyasını seçin.
 
-11. **Sonraki** > **Son** seçeneğini belirleyin.
+1. **Sonraki** > **Son** seçeneğini belirleyin.
 
 ### <a name="create-the-virtual-machine-hyper-v"></a>Sanal makineyi (Hyper-V) oluşturma
 
@@ -767,91 +767,103 @@ Hyper-V kullanarak bir sanal makine oluşturmak için:
 
 1. Hyper-V Yöneticisi 'nde sanal disk oluşturun.
 
-2. **VHDX** biçimini seçin.
+1. **VHDX** biçimini seçin.
 
-3. **İleri**’yi seçin.
+1. **İleri**’yi seçin.
 
-4. **Dinamik genişleyen** türü seçin.
+1. **Dinamik genişleyen** türü seçin.
 
-5. **İleri**’yi seçin.
+1. **İleri**’yi seçin.
 
-6. VHD için ad ve konum girin.
+1. VHD için ad ve konum girin.
 
-7. **İleri**’yi seçin.
+1. **İleri**’yi seçin.
 
-8. Gerekli boyutu girin (mimariye göre).
+1. Gerekli boyutu girin (mimariye göre).
 
-9. **İleri**’yi seçin.
+1. **İleri**’yi seçin.
 
-10. Özeti gözden geçirin ve **son**' u seçin.
+1. Özeti gözden geçirin ve **son**' u seçin.
 
-11. **Eylemler** menüsünde Yeni bir sanal makine oluşturun.
+1. **Eylemler** menüsünde Yeni bir sanal makine oluşturun.
 
-12. **İleri**’yi seçin.
+1. **İleri**’yi seçin.
 
-13. Sanal makine için bir ad girin.
+1. Sanal makine için bir ad girin.
 
-14. **İleri**’yi seçin.
+1. **İleri**’yi seçin.
 
-15. **Oluştur** ' u seçin ve **1. nesil** olarak ayarlayın.
+1. **Oluştur** ' u seçin ve **1. nesil** olarak ayarlayın.
 
-16. **İleri**’yi seçin.
+1. **İleri**’yi seçin.
 
-17. Bellek ayırmayı (mimariye göre) belirtin ve dinamik bellek onay kutusunu seçin.
+1. Bellek ayırmayı (mimariye göre) belirtin ve dinamik bellek onay kutusunu seçin.
 
-18. **İleri**’yi seçin.
+1. **İleri**’yi seçin.
 
-19. Ağ bağdaştırıcısını sunucu ağ topolojinize göre yapılandırın.
+1. Ağ bağdaştırıcısını sunucu ağ topolojinize göre yapılandırın.
 
-20. **İleri**’yi seçin.
+1. **İleri**’yi seçin.
 
-21. Daha önce oluşturulan VHDX 'i sanal makineye bağlayın.
+1. Daha önce oluşturulan VHDX 'i sanal makineye bağlayın.
 
-22. **İleri**’yi seçin.
+1. **İleri**’yi seçin.
 
-23. Özeti gözden geçirin ve **son**' u seçin.
+1. Özeti gözden geçirin ve **son**' u seçin.
 
-24. Yeni sanal makineye sağ tıklayın ve ardından **Ayarlar**' ı seçin.
+1. Yeni sanal makineye sağ tıklayın ve ardından **Ayarlar**' ı seçin.
 
-25. **Donanım Ekle** ' yi seçin ve **ağ bağdaştırıcısı** için yeni bir bağdaştırıcı ekleyin.
+1. **Donanım Ekle** ' yi seçin ve **ağ bağdaştırıcısı** için yeni bir bağdaştırıcı ekleyin.
 
-26. **Sanal anahtar** için, algılayıcı yönetim ağına bağlanacak anahtarı seçin.
+1. **Sanal anahtar** için, algılayıcı yönetim ağına bağlanacak anahtarı seçin.
 
-27. CPU kaynaklarını ayırır (mimariye göre).
+1. CPU kaynaklarını ayırır (mimariye göre).
 
-28. Yönetim konsolunun ISO görüntüsünü bir sanal DVD sürücüsüne bağlayın.
+1. Yönetim konsolunun ISO görüntüsünü bir sanal DVD sürücüsüne bağlayın.
 
-29. Sanal makineyi başlatın.
+1. Sanal makineyi başlatın.
 
-30. **Eylemler** menüsünde, yazılım yüklemesine devam etmek için **Bağlan** ' ı seçin.
+1. **Eylemler** menüsünde, yazılım yüklemesine devam etmek için **Bağlan** ' ı seçin.
 
 ### <a name="software-installation-esxi-and-hyper-v"></a>Yazılım yükleme (ESXi ve Hyper-V)
 
-Sanal makineyi başlatmak, yükleme işlemini ISO görüntüsünden başlatacak.
+Sanal makineyi başlatmak, yükleme işlemini ISO görüntüsünden başlatacak. Güvenliği artırmak için, şirket içi yönetim konsolunuzun ikinci bir ağ arabirimini oluşturabilirsiniz. Tek bir ağ arabirimi kullanıcılarınız için ayrılmıştır ve yönlendirilen ağlar için bir ağ geçidinin yapılandırılmasını destekleyebilir. İkinci ağ arabirimi, bir IP adresi aralığı içindeki tüm eklenmiş sensörlerden ayrılmıştır.
+
+Her iki ağ arabirimine de Kullanıcı arabirimi (UI) etkinleştirilmiştir ve UI tarafından desteklenen tüm özellikler, yönlendirme gerekmiyorsa ikincil ağ arabiriminde kullanılabilir olur. Yüksek kullanılabilirlik ikincil ağ arabiriminde çalışır.
+
+İkincil bir ağ arabirimi dağıtmayacak seçeneğini belirlerseniz, tüm özellikler birincil ağ arabirimi aracılığıyla kullanılabilir olacaktır. 
 
 Yazılımı yüklemek için:
 
 1. **İngilizce**'yi seçin.
 
-2. Dağıtımınız için gerekli mimariyi seçin.
+1. Dağıtımınız için gerekli mimariyi seçin.
 
-3. Algılayıcı yönetimi ağı için ağ arabirimini tanımlayın: arabirim, IP, alt ağ, DNS sunucusu ve varsayılan ağ geçidi.
+1. Algılayıcı yönetimi ağı için ağ arabirimini tanımlayın: arabirim, IP, alt ağ, DNS sunucusu ve varsayılan ağ geçidi.
 
-4. Oturum açma kimlik bilgileri otomatik olarak oluşturulup sunulur. Oturum açma ve yönetim için gerekli olduklarından, bu kimlik bilgilerini güvenli bir yerde saklayın.
+1. Seçim Şirket içi yönetim konsoluna ikinci bir ağ arabirimi ekleyin.
+
+    1. `Please type sensor monitoring interface (Optional. Applicable when sensors are on a different network segment. For more information see the Installation instructions): <name of interface>`
+    
+    1. `Please type an IP address for the sensor monitoring interface (accessible by the sensors): <ip address>`
+    
+    1. `Please type a subnet mask for the sensor monitoring interface (accessible by the sensors): <subnet>`
+
+1. Oturum açma kimlik bilgileri otomatik olarak oluşturulup sunulur. Oturum açma ve yönetim için gerekli olduklarından, bu kimlik bilgilerini güvenli bir yerde saklayın.
 
   - **Destek**: Kullanıcı yönetimi için yönetici kullanıcı.
 
   - **Six**: gerecle erişmek için kökün eşdeğeri.
 
-5. Gereç yeniden başlatılır.
+1. Gereç yeniden başlatılır.
 
-6. Yönetim konsoluna daha önce yapılandırılan IP adresi aracılığıyla erişin: `<https://ip_address>` .
+1. Yönetim konsoluna daha önce yapılandırılan IP adresi aracılığıyla erişin: `<https://ip_address>` .
 
     :::image type="content" source="media/tutorial-install-components/defender-for-iot-management-console-sign-in-screen.png" alt-text="Yönetim konsolunun oturum açma ekranını gösteren ekran görüntüsü.":::
 
 ## <a name="post-installation-validation"></a>Yükleme sonrası doğrulama
 
-Fiziksel bir gerecin yüklenmesini doğrulamak için bir dizi test gerçekleştirmeniz gerekir. Aynı doğrulama işlemi, tüm gereç türleri için geçerlidir.
+Fiziksel bir gerecin yüklenmesini doğrulamak için birçok test gerçekleştirmeniz gerekir. Aynı doğrulama işlemi, tüm gereç türleri için geçerlidir.
 
 GUI veya CLı kullanarak doğrulama gerçekleştirin. Doğrulama Kullanıcı **desteği** ve Kullanıcı **Six** için kullanılabilir.
 
@@ -911,7 +923,7 @@ Araca erişmek için:
 
 1. **Destek** kullanıcısı kimlik bilgileriyle sensörde oturum açın.
 
-2. Sistem **ayarları** penceresinden **sistem istatistiklerini** seçin.
+1. Sistem **ayarları** penceresinden **sistem istatistiklerini** seçin.
 
     :::image type="icon" source="media/tutorial-install-components/system-statistics-icon.png" border="false":::
 
@@ -923,13 +935,13 @@ Sistemin çalışır ve çalışıyor olduğundan emin olun:
 
 1. Linux terminali (örneğin, PuTTY) ve Kullanıcı **desteği** ile CLI 'ya bağlanın.
 
-2. `system sanity` yazın.
+1. `system sanity` yazın.
 
-3. Tüm hizmetlerin yeşil (çalışıyor) olup olmadığını denetleyin.
+1. Tüm hizmetlerin yeşil (çalışıyor) olup olmadığını denetleyin.
 
     :::image type="content" source="media/tutorial-install-components/support-screen.png" alt-text="Çalışan hizmetleri gösteren ekran görüntüsü.":::
 
-4. **SISTEMIN çalışır olduğunu doğrulayın! (üretim)** En altta görünür.
+1. **SISTEMIN çalışır olduğunu doğrulayın! (üretim)** En altta görünür.
 
 **Test 2: sürüm denetimi**
 
@@ -937,9 +949,9 @@ Doğru sürümün kullanıldığını doğrulayın:
 
 1. Linux terminali (örneğin, PuTTY) ve Kullanıcı **desteği** ile CLI 'ya bağlanın.
 
-2. `system version` yazın.
+1. `system version` yazın.
 
-3. Doğru sürümün göründüğünden emin olun.
+1. Doğru sürümün göründüğünden emin olun.
 
 **Test 3: ağ doğrulama**
 
@@ -947,9 +959,9 @@ Yükleme işlemi sırasında yapılandırılan tüm giriş arabirimlerinin çal�
 
 1. Linux terminali (örneğin, PuTTY) ve Kullanıcı **desteği** ile CLI 'ya bağlanın.
 
-2. Girin `network list` (Linux komutunun eşdeğeri `ifconfig` ).
+1. Girin `network list` (Linux komutunun eşdeğeri `ifconfig` ).
 
-3. Gerekli giriş arabirimlerinin göründüğünü doğrulayın. Örneğin, iki adet dört bakır NIC yüklüyse, listede 10 arabirim olmalıdır.
+1. Gerekli giriş arabirimlerinin göründüğünü doğrulayın. Örneğin, iki adet dört bakır NIC yüklüyse, listede 10 arabirim olmalıdır.
 
     :::image type="content" source="media/tutorial-install-components/interface-list-screen.png" alt-text="Arabirimlerin listesini gösteren ekran görüntüsü.":::
 
@@ -959,17 +971,17 @@ Konsol Web GUI 'ye erişebildiğinizi doğrulayın:
 
 1. Ethernet kablosu olan bir dizüstü bilgisayarı yönetim bağlantı noktasına (**GB1**) bağlayın.
 
-2. Dizüstü bilgisayar NIC adresini gereç ile aynı aralıkta olacak şekilde tanımlayın.
+1. Dizüstü bilgisayar NIC adresini gereç ile aynı aralıkta olacak şekilde tanımlayın.
 
     :::image type="content" source="media/tutorial-install-components/access-to-ui.png" alt-text="Kullanıcı arabirimine yönetim erişimini gösteren ekran görüntüsü.":::
 
-3. Bağlantıyı doğrulamak için gereç 'nin IP adresine ping gönderin (varsayılan: 10.100.10.1).
+1. Bağlantıyı doğrulamak için gereç 'nin IP adresine ping gönderin (varsayılan: 10.100.10.1).
 
-4. Dizüstü bilgisayarda Chrome tarayıcısını açın ve gerecin IP adresini girin.
+1. Dizüstü bilgisayarda Chrome tarayıcısını açın ve gerecin IP adresini girin.
 
-5. **Bağlantınızda özel pencere olmadığından** , **Gelişmiş** ' i seçin ve devam edin.
+1. **Bağlantınızda özel pencere olmadığından** , **Gelişmiş** ' i seçin ve devam edin.
 
-6. IoT için Defender oturum açma ekranı göründüğünde test başarılı olur.
+1. IoT için Defender oturum açma ekranı göründüğünde test başarılı olur.
 
    :::image type="content" source="media/tutorial-install-components/defender-for-iot-sign-in-screen.png" alt-text="Yönetim konsoluna erişimi gösteren ekran görüntüsü.":::
 
@@ -979,9 +991,9 @@ Konsol Web GUI 'ye erişebildiğinizi doğrulayın:
 
 1. Bağlanmaya çalıştığınız bilgisayarın gereç ile aynı ağ üzerinde olduğundan emin olun.
 
-2. GUI ağının yönetim bağlantı noktasına bağlı olduğunu doğrulayın.
+1. GUI ağının yönetim bağlantı noktasına bağlı olduğunu doğrulayın.
 
-3. Gereç IP adresine ping gönderin. Ping işlemi yoksa:
+1. Gereç IP adresine ping gönderin. Ping işlemi yoksa:
 
    1. Bir izleyiciyi ve klavyeyi gereç ile bağlayın.
 
@@ -991,7 +1003,7 @@ Konsol Web GUI 'ye erişebildiğinizi doğrulayın:
 
       :::image type="content" source="media/tutorial-install-components/network-list.png" alt-text="Ağ listesini gösteren ekran görüntüsü.":::
 
-4. Ağ parametreleri yanlış yapılandırılmış ise, bunları değiştirmek için aşağıdaki yordamı kullanın:
+1. Ağ parametreleri yanlış yapılandırılmış ise, bunları değiştirmek için aşağıdaki yordamı kullanın:
 
    1. Komutunu kullanın `network edit-settings` .
 
@@ -1007,17 +1019,17 @@ Konsol Web GUI 'ye erişebildiğinizi doğrulayın:
 
    1. Ayarları uygulamak için **Y**' yi seçin.
 
-5. Yeniden başlattıktan sonra, destek Kullanıcı kimlik bilgileriyle bağlanın ve `network list` parametrelerin değiştirildiğini doğrulamak için komutunu kullanın.
+1. Yeniden başlattıktan sonra, destek Kullanıcı kimlik bilgileriyle bağlanın ve `network list` parametrelerin değiştirildiğini doğrulamak için komutunu kullanın.
 
-6. PING ve GUI 'den yeniden bağlanmayı deneyin.
+1. PING ve GUI 'den yeniden bağlanmayı deneyin.
 
 ### <a name="the-appliance-isnt-responding"></a>Gereç yanıt vermiyor
 
 1. Bir izleyiciyi bir izleyici ve klavye bağlayın veya CLı 'ya uzaktan bağlanmak için PuTTY kullanın.
 
-2. Oturum açmak için **destek** kullanıcısının kimlik bilgilerini kullanın.
+1. Oturum açmak için **destek** kullanıcısının kimlik bilgilerini kullanın.
 
-3. Komutunu kullanın `system sanity` ve tüm işlemlerin çalıştığını denetleyin.
+1. Komutunu kullanın `system sanity` ve tüm işlemlerin çalıştığını denetleyin.
 
     :::image type="content" source="media/tutorial-install-components/system-sanity-screen.png" alt-text="Sistem sağlamlık komutunu gösteren ekran görüntüsü.":::
 
@@ -1027,33 +1039,33 @@ Diğer herhangi bir sorun için [Microsoft desteği](https://support.microsoft.c
 
 ### <a name="configure-a-span-port-on-an-existing-vswitch"></a>Mevcut bir vSwitch üzerinde bir SPAN bağlantı noktası yapılandırma
 
-Bir vSwitch, yansıtma özelliklerine sahip değildir, ancak bir YAYıLMA bağlantı noktası uygulamak için basit bir geçici çözüm kullanabilirsiniz.
+Bir vSwitch, yansıtma özelliklerine sahip değildir, ancak bir yuva bağlantı noktası uygulamak için geçici çözüm kullanabilirsiniz.
 
 Bir SPAN bağlantı noktasını yapılandırmak için:
 
 1. VSwitch özelliklerini açın.
 
-2. **Ekle**’yi seçin.
+1. **Add (Ekle)** seçeneğini belirleyin.
 
-3. Sonraki **sanal makineyi** seçin  >  .
+1. Sonraki **sanal makineyi** seçin  >  .
 
-4. Ağ etiketi **yayılma ağı** ekleyin, **VLAN ID**  >  **All**' ı seçin ve ardından **İleri**' yi seçin.
+1. Ağ etiketi **yayılma ağı** ekleyin, **VLAN ID**  >  **All**' ı seçin ve ardından **İleri**' yi seçin.
 
-5. **Son**'u seçin.
+1. **Son**'u seçin.
 
-6. **Yayılma ağ** > **Düzenle*' yi seçin.
+1. **Yayılma ağ** > **Düzenle*' yi seçin.
 
-7. **Güvenlik**' i seçin ve **karışık mod** ilkesinin **kabul** modu olarak ayarlandığını doğrulayın.
+1. **Güvenlik**' i seçin ve **karışık mod** ilkesinin **kabul** modu olarak ayarlandığını doğrulayın.
 
-8. **Tamam**' ı seçin ve ardından vSwitch özelliklerini kapatmak için **Kapat** ' ı seçin.
+1. **Tamam**' ı seçin ve ardından vSwitch özelliklerini kapatmak için **Kapat** ' ı seçin.
 
-9. **Xsense VM** özelliklerini açın.
+1. **Xsense VM** özelliklerini açın.
 
-10. **Ağ bağdaştırıcısı 2** için **yayılma** ağını seçin.
+1. **Ağ bağdaştırıcısı 2** için **yayılma** ağını seçin.
 
-11. **Tamam**’ı seçin.
+1. **Tamam**’ı seçin.
 
-12. Sensöre bağlanın ve yansıtmanın çalıştığını doğrulayın.
+1. Sensöre bağlanın ve yansıtmanın çalıştığını doğrulayın.
 
 ## <a name="appendix-b-access-sensors-from-the-on-premises-management-console"></a>Ek B: şirket içi yönetim konsolundan sensörlerden erişin
 
@@ -1065,11 +1077,11 @@ Tünelleme özelliğini etkinleştirmek için:
 
 1. **Six** ile şirket içi YÖNETIM konsolunun CLI veya Kullanıcı kimlik bilgilerini **destekleme** ' de oturum açın.
 
-2. `sudo cyberx-management-tunnel-enable` yazın.
+1. `sudo cyberx-management-tunnel-enable` yazın.
 
-3. **Enter** tuşunu seçin.
+1. **Enter** tuşunu seçin.
 
-4. `--port 10000` yazın.
+1. `--port 10000` yazın.
 
 ### <a name="next-steps"></a>Sonraki adımlar
 

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 02/12/2021
 ms.author: trbye
 ms.custom: contperf-fy21q2; references_regions
-ms.openlocfilehash: 39370659e71a7d281914b360eea83eb0b68b25ba
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 13bf0f2430e0d58dd9ef28061aad897acf94ac3f
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101716576"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103493059"
 ---
 # <a name="what-is-custom-speech"></a>Özel Konuşma Tanıma nedir?
 
@@ -79,43 +79,9 @@ Veriler, modeller, testler ve uç noktalar gibi içerikler, [konuşma Studio](ht
 > [!IMPORTANT]
 > Daha önce "Özel Konuşma Tanıma Portal" olarak bilinen [konuşma Studio](https://aka.ms/custom-speech) yakın zamanda güncelleştirildi! CRIS.ai portalında veya API 'lerle önceki veriler, modeller, testler ve yayımlanmış uç noktalar oluşturduysanız, bu eski varlıklara bağlanmak için yeni portalda yeni bir proje oluşturmanız gerekir.
 
-## <a name="model-lifecycle"></a>Model yaşam döngüsü
+## <a name="model-and-endpoint-lifecycle"></a>Model ve uç nokta yaşam döngüsü
 
-Özel Konuşma Tanıma hem *temel modelleri* hem de *özel modelleri* kullanır. Her dilin bir veya daha fazla temel modeli vardır. Genellikle, normal konuşma hizmetine yeni bir konuşma modeli sunulduğunda, yeni bir temel model olarak Özel Konuşma Tanıma hizmetine de aktarılır. Her 3 ayda bir güncelleştirilir. En yeni model genellikle daha fazla doğruluk sağladığından, eski modeller genellikle zaman içinde daha az yararlı hale gelir.
-
-Buna karşılık, özel modeller seçilen bir temel modeli belirli bir müşteri senaryosuna uyarlayarak oluşturulur. Gereksinimlerinizi karşıladıktan sonra, belirli bir özel modeli uzun bir süre kullanmaya devam edebilirsiniz. Ancak, en son temel modele düzenli olarak güncelleştirmeniz ve ek verilerle zaman içinde yeniden eğitmeniz önerilir. 
-
-Model yaşam döngüsüyle ilgili diğer önemli terimler şunlardır:
-
-* **Uyarlama**: bir temel model alma ve metin verileri ve/veya ses verilerini kullanarak etki alanı/senaryonuz ile özelleştirme.
-* **Kod çözme**: model kullanma ve konuşma tanımayı gerçekleştirme (sesin metin olarak kodunu çözme).
-* **Uç noktası**: bir temel modelin veya *yalnızca* belirli bir kullanıcıya erişilebilen özel bir modelin kullanıcıya özgü bir dağıtımı.
-
-### <a name="expiration-timeline"></a>Süre sonu zaman çizelgesi
-
-Yeni modeller ve yeni işlevler kullanılabilir hale gelir ve daha eski, daha az doğru modeller kullanımdan kalkmışsa model ve uç nokta süre sonu için aşağıdaki zaman çizelgelerine bakın:
-
-**Taban modeller** 
-
-* Uyarlama: bir yıl boyunca kullanılabilir. Model alındıktan sonra, özel modeller oluşturmak için bir yıl kullanılabilir. Bir yıldan sonra, yeni özel modellerin daha yeni bir temel model sürümünden oluşturulması gerekir.  
-* Kod çözme: içeri aktarma işleminden sonraki iki yıl boyunca kullanılabilir. Bu nedenle, bir uç nokta oluşturabilir ve bu modelle iki yıl boyunca toplu iş dökümü kullanabilirsiniz. 
-* Uç noktalar: kod çözme ile aynı zaman çizelgesinde kullanılabilir.
-
-**Özel modeller**
-
-* Kod çözme: model oluşturulduktan iki yıl sonra kullanılabilir. Bu nedenle, özel modeli oluşturulduktan sonra iki yıl (Batch/gerçek zamanlı/test) kullanabilirsiniz. İki yıl sonra, temel model genellikle uyarlama için kullanım dışı bırakıldığı için *modelinize yeniden eğmelisiniz* .  
-* Uç noktalar: kod çözme ile aynı zaman çizelgesinde kullanılabilir.
-
-Bir temel model veya özel modelin süresi dolmuşsa, her zaman *en yeni temel model sürümüne* geri döner. Bu nedenle, uygulamanız hiçbir zaman kesintiye uğramayacaktır, ancak özel modellerin süresi dolduktan sonra *belirli verileriniz* için daha az doğru olabilir. Bir modelin kullanım süresini, konuşma Studio 'nun Özel Konuşma Tanıma alanında aşağıdaki konumlarda görebilirsiniz:
-
-* Model Eğitimi Özeti
-* Model eğitimi ayrıntısı
-* Dağıtım özeti
-* Dağıtım ayrıntısı
-
-Ayrıca, [`GetModel`](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/GetModel) [`GetBaseModel`](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/GetBaseModel) JSON yanıtında özelliği altındaki ve özel konuşma API 'leri aracılığıyla sona erme tarihlerini de denetleyebilirsiniz `deprecationDates` .
-
-Bir özel konuşma uç noktasındaki modeli, konuşma Studio 'nun dağıtım bölümünde uç nokta tarafından kullanılan modeli değiştirerek veya özel konuşma API 'SI aracılığıyla yükseltebileceğinizi unutmayın.
+En yeni model genellikle daha fazla doğruluk sağladığından, eski modeller genellikle zaman içinde daha az yararlı hale gelir. Bu nedenle, ana modellerin yanı sıra Portal üzerinden oluşturulan özel modeller ve uç noktalar, uyarlama için 1 yıl ve kod çözme için 2 yıl sonra sona ermesine tabidir. [Model ve uç nokta yaşam döngüsü](./how-to-custom-speech-model-and-endpoint-lifecycle.md) makalesindeki ayrıntılı bir açıklamaya bakın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

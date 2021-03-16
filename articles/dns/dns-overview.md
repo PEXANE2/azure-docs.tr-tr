@@ -4,14 +4,14 @@ description: Microsoft Azure'deki DNS barındırma hizmetine genel bakış. Etki
 author: rohinkoul
 ms.service: dns
 ms.topic: overview
-ms.date: 3/21/2019
+ms.date: 3/15/2021
 ms.author: rohink
-ms.openlocfilehash: 7c3aa5505ca15238b2f9e84069de58ab6b700521
-ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
+ms.openlocfilehash: 5d81e24d344d04ea59bc6c9e6141109bf66da3c3
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96608498"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103491104"
 ---
 # <a name="what-is-azure-dns"></a>Azure DNS nedir?
 
@@ -39,7 +39,7 @@ Daha fazla bilgi için bkz. [DNS bölgelerini ve kayıtlarını koruma](dns-prot
 
 ## <a name="dnssec"></a>DNSSEC
 
-Azure DNS şu anda DNSSEC 'yi desteklemiyor. Çoğu durumda, uygulamalarınızda HTTPS/TLS kullanarak DNSSEC gereksinimini sürekli olarak azaltabilirsiniz. DNSSEC, DNS bölgeleriniz için kritik bir gereksinimle karşılaşırsanız, üçüncü taraf DNS barındırma sağlayıcılarıyla bu bölgeleri barındırabilirsiniz.
+Azure DNS şu anda DNSSEC 'yi desteklemiyor. Çoğu durumda, uygulamalarınızda HTTPS/TLS kullanarak DNSSEC gereksinimini sürekli olarak azaltabilirsiniz. DNSSEC, DNS bölgeleriniz için kritik bir gereksinimle karşılaşırsanız, bu bölgeleri üçüncü taraf DNS barındırma sağlayıcılarıyla barındırabilirsiniz.
 
 ## <a name="ease-of-use"></a>Kullanım kolaylığı
 

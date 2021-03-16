@@ -4,14 +4,14 @@ description: Azure HPC önbelleğini kullanma önkoşulları
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: how-to
-ms.date: 11/05/2020
+ms.date: 03/11/2021
 ms.author: v-erkel
-ms.openlocfilehash: a31aee3f4548d3137fa1241aaa3a0f6171cf6895
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 7a91cf5f9341d2b42f1c8f242d288b4ee59b632d
+ms.sourcegitcommit: 66ce33826d77416dc2e4ba5447eeb387705a6ae5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94412519"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103471802"
 ---
 # <a name="prerequisites-for-azure-hpc-cache"></a>Azure HPC önbelleği önkoşulları
 
@@ -91,14 +91,18 @@ Azure sanal ağları ve DNS sunucusu konfigürasyonları hakkında daha fazla bi
   Rolleri eklemek için [depolama hedefleri ekleme](hpc-cache-add-storage.md#add-the-access-control-roles-to-your-account) bölümündeki yönergeleri izleyin.
 
 ## <a name="storage-infrastructure"></a>Depolama altyapısı
+<!-- heading is linked in create storage target GUI as aka.ms/hpc-cache-prereq#storage-infrastructure - make sure to fix that if you change the wording of this heading -->
 
-Önbellek, Azure Blob kapsayıcılarını veya NFS donanım depolama dışarı aktarmaları destekler. Önbelleği oluşturduktan sonra depolama hedefleri ekleyin.
+Önbellek, Azure Blob kapsayıcılarını, NFS donanım depolama dışarı aktarmaları ve NFS bağlı ADLS blob kapsayıcılarını (Şu anda önizlemede) destekler. Önbelleği oluşturduktan sonra depolama hedefleri ekleyin.
 
 Her depolama türünün belirli önkoşulları vardır.
 
 ### <a name="blob-storage-requirements"></a>BLOB depolama gereksinimleri
 
 Önbelleğiniz ile Azure Blob depolama 'yı kullanmak istiyorsanız, uyumlu bir depolama hesabı ve boş bir blob kapsayıcısı ya da [verileri Azure Blob depolamaya taşıma](hpc-cache-ingest.md)bölümünde açıklandığı gıbı Azure HPC önbellek biçimli verilerle doldurulmuş bir kapsayıcı gerekir.
+
+> [!NOTE]
+> NFS 'e bağlı BLOB depolama için farklı gereksinimler geçerlidir. Ayrıntılar için [ADLS-NFS depolama gereksinimlerini](#nfs-mounted-blob-adls-nfs-storage-requirements-preview) okuyun.
 
 Depolama hedefi eklemeyi denemeden önce hesabı oluşturun. Hedefi eklediğinizde yeni bir kapsayıcı oluşturabilirsiniz.
 
@@ -169,6 +173,37 @@ Daha fazla bilgi için [bkz. NAS yapılandırması ve NFS depolama hedefi sorunl
   * Depolama ortamınızda başka bir dışarı aktarmanın alt dizinleri olan dışarı aktarımlar varsa, önbelleğin yolun en düşük kesimine kök erişimi olduğundan emin olun. Ayrıntılar için NFS depolama hedefi sorun giderme makalesindeki [Dizin yollarında kök erişimi](troubleshoot-nas.md#allow-root-access-on-directory-paths) okuyun.
 
 * NFS arka uç depolaması, uyumlu bir donanım/yazılım platformu olmalıdır. Ayrıntılar için Azure HPC önbellek ekibine başvurun.
+
+### <a name="nfs-mounted-blob-adls-nfs-storage-requirements-preview"></a>NFS bağlı blob (ADLS-NFS) depolama gereksinimleri (ÖNIZLEME)
+
+Azure HPC Cache Ayrıca, NFS protokolüyle bağlanmış bir blob kapsayıcısını depolama hedefi olarak kullanabilir.
+
+> [!NOTE]
+> Azure Blob depolama için NFS 3,0 protokol desteği genel önizlemeye sunuldu. Kullanılabilirlik kısıtlıdır ve özellik genel kullanıma sunulduğunda özellikler sınırlı olur. Üretim sistemlerinde önizleme teknolojisini kullanmayın.
+>
+> Bu önizleme özelliği hakkında daha fazla bilgi için bkz. [NFS 3,0 protokol desteği Azure Blob depolamada](../storage/blobs/network-file-system-protocol-support.md).
+
+Depolama hesabı gereksinimleri, bir ADLS-NFS BLOB depolama hedefi ve standart BLOB depolama hedefi için farklıdır. NFS özellikli depolama hesabı oluşturmak ve yapılandırmak için [ağ dosya sistemi (NFS) 3,0 protokolünü dikkatle kullanarak blob Storage 'ı bağlama](../storage/blobs/network-file-system-protocol-support-how-to.md) bölümündeki yönergeleri izleyin.
+
+Bu, adımlara genel bir bakış sunulmaktadır:
+
+1. İhtiyacınız olan özelliklerin çalışmayı planladığınız bölgelerde kullanılabildiğinden emin olun.
+
+1. Aboneliğiniz için NFS Protokolü özelliğini etkinleştirin. Depolama hesabını oluşturmadan *önce* bunu yapın.
+
+1. Depolama hesabı için güvenli bir sanal ağ (VNet) oluşturun. NFS etkinleştirilmiş depolama hesabınız ve Azure HPC önbelleğiniz için aynı sanal ağı kullanmanız gerekir.
+
+1. Depolama hesabı oluşturun.
+
+   * Standart BLOB depolama hesabı için depolama hesabı ayarlarını kullanmak yerine, [nasıl yapılır belgesindeki](../storage/blobs/network-file-system-protocol-support-how-to.md)yönergeleri izleyin. Desteklenen depolama hesabı türü, Azure bölgesine göre farklılık gösterebilir.
+
+   * **Ağ** bölümünde, oluşturduğunuz güvenli sanal ağda özel bir uç nokta seçin (önerilir) veya güvenli VNET 'ten kısıtlı erişimi olan bir genel uç nokta seçin.
+
+   * NFS erişimini etkinleştirdiğiniz **Gelişmiş** bölümünü tamamlamayı unutmayın.
+
+   * Yukarıdaki [izinlerle](#permissions)belirtilen şekilde, önbellek uygulamasına Azure depolama hesabınıza erişim izni verin. Bunu ilk kez bir depolama hedefi oluşturduğunuzda yapabilirsiniz. Önbelleğe gerekli erişim rollerini sağlamak için [depolama hedefleri ekleme](hpc-cache-add-storage.md#add-the-access-control-roles-to-your-account) bölümündeki yordamı izleyin.
+
+     Depolama hesabı sahibi değilseniz, sahibi bu adımı izleyin.
 
 ## <a name="set-up-azure-cli-access-optional"></a>Azure CLı erişimi ayarlama (isteğe bağlı)
 

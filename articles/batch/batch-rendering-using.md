@@ -3,16 +3,19 @@ title: İşleme yeteneklerini kullanma
 description: Azure Batch işleme özelliklerini kullanma. Doğrudan veya bir istemci uygulama eklentisinden çağrılan Batch Explorer uygulamasını kullanmayı deneyin.
 author: mscurrell
 ms.author: markscu
-ms.date: 03/05/2020
+ms.date: 03/12/2020
 ms.topic: how-to
-ms.openlocfilehash: a5bf4d0ed2173d048d968f60dea72a1a0c25ab05
-ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
+ms.openlocfilehash: dc3d2cc53b478b1ec955d8f4b3717b0407772849
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99429794"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103496635"
 ---
 # <a name="using-azure-batch-rendering"></a>Azure Batch işleme kullanma
+
+> [!IMPORTANT]
+> İşlenen VM görüntüleri ve kullanım için ödeme lisansı [kullanım dışı bırakılmıştır ve 29 şubat 2024 tarihinde kullanımdan](https://azure.microsoft.com/updates/azure-batch-rendering-vm-images-licensing-will-be-retired-on-29-february-2024/)kaldırılacaktır. Toplu Işi işlemek için kullanmak üzere [Özel BIR VM görüntüsü ve standart uygulama lisanslama kullanılmalıdır.](batch-rendering-functionality.md#batch-pools-using-custom-vm-images-and-standard-application-licensing)
 
 Azure Batch işleme kullanmanın birkaç yolu vardır:
 

@@ -35,7 +35,7 @@
         - name: Kaynak kodundan IoT mikro Aracısı için Defender 'ı derleme (Önizleme)
           displayName: 'baseline, configuration, customize, distribution'
           href: quickstart-building-the-defender-micro-agent-from-source.md
-        - name: Azure RTOS için güvenlik modülünü yapılandırma
+        - name: Azure RTOS için Defender-IoT-Micro-Agent 'ı yapılandırma
           href: quickstart-azure-rtos-security-module.md
         - name: IoT çözümünüze Azure kaynakları ekleme
           displayName: 'resources, monitored, resource'
@@ -79,10 +79,10 @@
           href: concept-recommendations.md
         - name: Klasik
           items:
-            - name: Güvenlik modülü
-              displayName: 'device twins, security module twin'
+            - name: Defender-IoT-Micro-Agent
+              displayName: 'device twins, Defender-IoT-micro-agent twin'
               href: concept-security-module.md
-            - name: Microsoft Edge güvenlik modülü
+            - name: Edge Defender-IoT-Micro-Agent
               href: security-edge-architecture.md
             - name: Güvenlik aracıları
               href: overview-security-agents.md
@@ -95,7 +95,7 @@
             - name: IoT için Azure Defender için Azure Güvenlik temeli
               displayName: 'identity management, active directory, privileged access, data protection, asset management, incident response, posture, vulnerability, governance'
               href: security-baseline.md
-            - name: Güvenlik modülü klasik olay toplama
+            - name: Defender-IoT-Micro-Agent klasik olay toplama
               displayName: 'twin, default, configuration, alerts'
               href: event-aggregation.md
             - name: Aracı tabanlı güvenlik uyarıları
@@ -253,14 +253,14 @@
         - name: Özel uyarılar oluşturma
           displayName: security group
           href: quickstart-create-custom-alerts.md
-        - name: Azure RTOS için Güvenlik Modülü
+        - name: Defender-IoT-Micro-Azure RTOS için aracı
           href: iot-security-azure-rtos.md
           items:
-            - name: Azure RTOS için Güvenlik Modülü ile çalışma
+            - name: Azure RTOS için Defender-IoT-Micro-Agent ile çalışma
               href: how-to-azure-rtos-security-module.md
-            - name: Azure RTOS için Güvenlik Modülü’nü anlama
+            - name: Azure RTOS için Defender-IoT-Micro-Agent ' ı anlayın
               href: concept-rtos-security-module.md
-            - name: Azure RTOS için Güvenlik Modülü uyarıları ve önerileri
+            - name: Defender-IoT-Micro-Agent for Azure RTOS uyarıları ve önerileri
               href: concept-rtos-security-alerts-recommendations.md
         - name: Klasik
           items:
@@ -282,7 +282,7 @@
                   href: azure-iot-security-local-configuration-c.md
                 - name: Yerel yapılandırma C#
                   href: azure-iot-security-local-configuration-csharp.md
-            - name: Microsoft Edge güvenlik modülünü dağıtma
+            - name: Edge dağıtım Defender-IoT-Micro-Agent
               href: how-to-deploy-edge.md
             - name: Güvenlik aracılarını yapılandırma
               displayName: property
@@ -319,7 +319,7 @@
           href: resources-frequently-asked-questions.md
     - name: Cihaz Oluşturucular için aracı tabanlı çözüm
       items:
-        - name: Azure RTOS için Güvenlik Modülü API’si
+        - name: Defender-IoT-mikro-aracı Azure RTOS API 'SI
           displayNAme: 'prototype, disable'
           href: azure-rtos-security-module-api.md
         - name: Sık sorulan sorular - aracı
@@ -344,7 +344,7 @@
           href: ../security-center/
         - name: Azure güvenlik belgeleri
           href: ../security/index.yml
-        - name: Stack Overflow’da Azure RTOS güvenlik modülü
+        - name: Azure RTOS Defender-IoT-Micro-Agent Stack Overflow
           href: 'https://stackoverflow.com/questions/tagged/azure-rtos+azure-iot-security-module'
         - name: 'Azure IoT Güvenlik, Gizlilik ve Uyumluluk blogu'
           href: 'https://techcommunity.microsoft.com/t5/iot-security/bd-p/IoTSecurity'

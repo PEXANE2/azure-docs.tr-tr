@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 2/1/2021
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: f54156ed8cc4c049e10bada77a66eee084f7c5fb
-ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
+ms.openlocfilehash: 4439346a065f17f5b2136f51fd5e8b990fa1b914
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "102453283"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103491308"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>Azure Dosya Eşitleme ile ilgili sorunları giderme
 Şirket içi bir dosya sunucusunun esnekliğini, performansını ve uyumluluğunu koruyarak kuruluşunuzun dosya paylaşımlarını Azure dosyalarında merkezileştirmek için Azure Dosya Eşitleme kullanın. Azure Dosya Eşitleme, Windows Server’ı Azure dosya paylaşımınızın hızlı bir önbelleğine dönüştürür. Verilere yerel olarak erişmek için Windows Server üzerinde kullanılabilen tüm protokolleri (SMB, NFS ve FTPS gibi) kullanabilirsiniz. Dünyanın dört bir yanında ihtiyacınız olan sayıda önbellekler olabilir.
@@ -113,7 +113,7 @@ Azure dosya paylaşımı zaten başka bir bulut uç noktasının kullanımında 
 Bu iletiyi görürseniz ve Azure dosya paylaşma Şu anda bir bulut uç noktası tarafından kullanımda değilse, Azure dosya paylaşımında Azure Dosya Eşitleme meta verileri temizlemek için aşağıdaki adımları izleyin:
 
 > [!Warning]  
-> Şu anda bir bulut uç noktası tarafından kullanılan bir Azure dosya paylaşımındaki meta verilerin silinmesi Azure Dosya Eşitleme işlemlerin başarısız olmasına neden olur. 
+> Şu anda bir bulut uç noktası tarafından kullanılan bir Azure dosya paylaşımındaki meta verilerin silinmesi Azure Dosya Eşitleme işlemlerin başarısız olmasına neden olur. Daha sonra bu dosya paylaşımından farklı bir eşitleme grubunda eşitleme için kullanıyorsanız, eski eşitleme grubundaki dosyalar için veri kaybı neredeyse belli olur.
 
 1. Azure portal Azure dosya paylaşımınıza gidin.  
 2. Azure dosya paylaşımında sağ tıklayın ve ardından **meta verileri Düzenle**' yi seçin.

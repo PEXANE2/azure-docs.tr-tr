@@ -3,12 +3,12 @@ title: Yaygın soruların yanıtları
 description: 'Kurtarma Hizmetleri kasaları, neleri yedekleyebilir, nasıl çalışır, şifreleme ve limitlerin dahil olduğu Azure Backup özellikleriyle ilgili yaygın soruların yanıtları. '
 ms.topic: conceptual
 ms.date: 07/07/2019
-ms.openlocfilehash: f819440001180a3c446f366e61e3ac0f983fa67f
-ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
+ms.openlocfilehash: ac58cee66aa2a89efb7194a051801b068628d3bc
+ms.sourcegitcommit: 3ea12ce4f6c142c5a1a2f04d6e329e3456d2bda5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98806637"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103467638"
 ---
 # <a name="azure-backup---frequently-asked-questions"></a>Azure Backup - Sık sorulan sorular
 
@@ -65,6 +65,13 @@ Data Box kullanarak doğrudan kurtarma hizmetleri kasasından şirket içine ver
 ### <a name="what-is-the-difference-between-a-geo-redundant-storage-grs-vault-with-and-without-the-cross-region-restore-crr-capability-enabled"></a>Bölgeler arası geri yükleme (CRR) özelliği etkin olan ve olmayan coğrafi olarak yedekli depolama (GRS) Kasası arasındaki fark nedir?
 
 [CRR](azure-backup-glossary.md#cross-region-restore-crr) özelliği etkin olmayan bir [GRS](azure-backup-glossary.md#grs) Kasası söz konusu olduğunda, Azure birincil bölgede bir olağanüstü durum bildirene kadar ikincil bölgedeki verilere erişilemez. Böyle bir senaryoda geri yükleme ikincil bölgeden yapılır. CRR etkinleştirildiğinde, birincil bölge çalışıyor olsa bile, ikincil bölgede geri yükleme tetikleyebilirsiniz.
+
+### <a name="can-i-move-a-subscription-that-contains-a-vault-to-a-different-azure-active-directory"></a>Kasayı içeren bir aboneliği farklı bir Azure Active Directory taşıyabilir miyim?
+
+Evet. Bir aboneliği (bir kasa içeren) farklı bir Azure Active Directory (AD) taşımak için bkz. [aboneliği farklı bir dizine aktarma](../role-based-access-control/transfer-subscription.md).
+
+>[!IMPORTANT]
+>Aboneliği taşıdıktan sonra aşağıdaki eylemleri gerçekleştirdiğinizden emin olun:<ul><li>Rol tabanlı erişim denetimi izinleri ve özel roller aktarılamaz. Yeni Azure AD 'de izinleri ve rolleri yeniden oluşturmanız gerekir.</li><li>Yeniden devre dışı bırakıp etkinleştirerek, kasanın yönetilen kimliğini (mı) yeniden oluşturmanız gerekir. Ayrıca, mı izinlerini değerlendirmeniz ve yeniden oluşturmanız gerekir.</li><li>Kasa, [Özel uç noktalar](private-endpoints.md#before-you-start) ve [müşteri tarafından YÖNETILEN anahtarlar](encryption-at-rest-with-cmk.md#before-you-start)gibi mı 'den yararlanan Özellikler kullanıyorsa, özellikleri yeniden yapılandırmanız gerekir.</li></ul>
 
 ## <a name="azure-backup-agent"></a>Azure Backup aracısı
 

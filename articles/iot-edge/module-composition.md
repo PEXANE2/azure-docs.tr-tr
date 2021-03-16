@@ -8,14 +8,16 @@ ms.date: 10/08/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 406420fcd517ceda8ea6eedfc955f54b15541f74
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 2e3f1891a786751365a0bea58097e03bd41f85bb
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100366611"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103489938"
 ---
 # <a name="learn-how-to-deploy-modules-and-establish-routes-in-iot-edge"></a>IoT Edge'de modülleri dağıtmayı ve yolları oluşturmayı öğrenin
+
+[!INCLUDE [iot-edge-version-all-supported](../../includes/iot-edge-version-all-supported.md)]
 
 Her IoT Edge cihaz en az iki modülle çalışır: IoT Edge çalışma zamanının parçası olan $edgeAgent ve $edgeHub. IoT Edge cihaz, herhangi bir sayıda işlem için birden fazla ek modül çalıştırabilir. Cihaza hangi modüllerin yükleneceğini ve birlikte çalışmak üzere nasıl yapılandırılacağını bildirmek için bir dağıtım bildirimi kullanın.
 
@@ -126,7 +128,7 @@ IoT Edge Agent istenen özellikler listesi, hangi modüllerin bir IoT Edge cihaz
 
 Dahil edilen veya dahil olması gereken özelliklerin tamamı listesi için bkz. [IoT Edge Aracısı ve IoT Edge hub özellikleri](module-edgeagent-edgehub.md).
 
-Örneğin:
+Örnek:
 
 ```json
 {
@@ -256,7 +258,7 @@ Havuz, iletilerin nereye gönderileceğini tanımlar. Yalnızca modüller ve IoT
 
 Sink özelliği aşağıdaki değerlerden herhangi biri olabilir:
 
-| Havuz | Description |
+| Havuz | Açıklama |
 | ---- | ----------- |
 | `$upstream` | İletiyi IoT Hub gönder |
 | `BrokeredEndpoint("/modules/<moduleId>/inputs/<input>")` | İletiyi belirli bir modülün belirli bir girdisine gönder |

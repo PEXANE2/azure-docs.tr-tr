@@ -6,19 +6,21 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
 author: keferna
 ms.author: keferna
-ms.date: 12/07/2020
-ms.openlocfilehash: c71c13701d064110be0ef976920c0cc01f2fa308
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.date: 03/08/2021
+ms.openlocfilehash: e583d39e2eed1b08dfeb17cafc1e12c583176d7b
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98879773"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103493042"
 ---
 # <a name="geographic-availability-and-currency-support-for-the-commercial-marketplace"></a>Ticari Market için coğrafi kullanılabilirlik ve para birimi desteği
 
 ## <a name="supported-geographic-locations"></a>Desteklenen coğrafi konumlar
 
 Ticari Market teklifleri, müşterinin fatura adresi tarafından tanımlanan 141 coğrafi yalarda satın alınabilir ve işlemler 17 para biriminde tamamlanabilir. Aşağıdaki tabloda desteklenen her coğrafi konum, [ıso 3166 2 basamaklı alfa kodu](https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes)ve atanan para birimi listelenmektedir.
+
+CSP, Iş Ortağı Merkezi 'nin son müşterilerinin para birimiyle, bunları aynı para birimiyle faturalandırabilmeleri için bir teklif satın alabilir. Bunun hakkında daha fazla bilgi için [Bu SSS](https://partner.microsoft.com/resources/detail/eu-efta-change-of-partner-billing-currency-faq-pdf)bölümüne bakın.
 
 |   Ülke/bölge adı               |   ISO-2   |   Para Birimi</br>(Tüm teklif türleri)  |    Para Birimi</br>(Yalnızca danışmanlık hizmeti teklifleri)    |
 |-------------------------------------|-----------|--------------|---------------------------------------------|

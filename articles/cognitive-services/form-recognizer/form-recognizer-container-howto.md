@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 02/04/2021
 ms.author: aahi
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 53334dfdcdb917c754c9bc4205b0918c6d207da8
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
+ms.openlocfilehash: 1be8afb58b22435f4f43b2d6884332a38b7f1e11
+ms.sourcegitcommit: 3ea12ce4f6c142c5a1a2f04d6e329e3456d2bda5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99584796"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103467485"
 ---
 # <a name="install-and-run-form-recognizer-containers-retiring"></a>Form tanıyıcı kapsayıcıları (devre dışı bırakma) yükleyip çalıştırın
 
@@ -264,7 +264,7 @@ formrecognizer_config =
 
 ### <a name="form-recognizer"></a>Form Tanıma
 
-Kapsayıcı, [form TANıYıCı API](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api/operations/AnalyzeWithCustomModel) SAYFASıNDA bulabileceğiniz REST uç nokta API 'leri sağlar.
+Kapsayıcı, [form tanıyıcı API] başvuru sayfasında bulabileceğiniz REST uç nokta API 'Leri sağlar https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-3/operations/AnalyzeWithCustomForm) .
 
 
 [!INCLUDE [Validate container is running - Container's API documentation](../../../includes/cognitive-services-containers-api-documentation.md)]

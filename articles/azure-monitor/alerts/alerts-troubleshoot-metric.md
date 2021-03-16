@@ -4,13 +4,13 @@ description: Azure Izleyici ölçüm uyarıları ve olası çözümlerle ilgili 
 author: harelbr
 ms.author: harelbr
 ms.topic: troubleshooting
-ms.date: 01/21/2021
-ms.openlocfilehash: 2bd82d18d6647e47d9838702af45cff68f2bc6cd
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.date: 03/15/2021
+ms.openlocfilehash: f14142632f6ded9f598d6e94fd1e91ec17f6d0a7
+ms.sourcegitcommit: 3ea12ce4f6c142c5a1a2f04d6e329e3456d2bda5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102037872"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103466506"
 ---
 # <a name="troubleshooting-problems-in-azure-monitor-metric-alerts"></a>Azure İzleyici ölçüm uyarılarındaki sorunları giderme 
 
@@ -138,11 +138,9 @@ Bir Azure kaynağını sildiğinizde o kaynakla ilişkilendirilmiş olan ölçü
 ## <a name="export-the-azure-resource-manager-template-of-a-metric-alert-rule-via-the-azure-portal"></a>Ölçüm uyarısı kuralının Azure Resource Manager şablonunu Azure portal aracılığıyla dışarı aktarın
 
 Ölçüm uyarısı kuralının Kaynak Yöneticisi şablonunu dışarı aktarmak, JSON sözdizimi ve özelliklerini anlamanıza yardımcı olur ve gelecekteki dağıtımları otomatikleştirmek için kullanılabilir.
-1. Portalda **kaynak grupları** bölümüne gidin ve kuralı içeren kaynak grubunu seçin.
-2. Genel bakış bölümünde **gizli türleri göster** onay kutusunu işaretleyin.
-3. **Tür** filtresinde *Microsoft. Insights/metricalerts*' i seçin.
-4. Ayrıntılarını görüntülemek için ilgili uyarı kuralını seçin.
-5. **Ayarlar** altında, **şablonu dışarı aktar**' ı seçin.
+1. Azure portal, ayrıntılarını görüntülemek için uyarı kuralını açın.
+2. **Özellikler**'e tıklayın.
+3. **Otomasyon** altında **şablonu dışarı aktar**' ı seçin.
 
 ## <a name="metric-alert-rules-quota-too-small"></a>Ölçüm uyarı kuralları kotası çok küçük
 
@@ -198,7 +196,7 @@ Tüm parametreleri doğru şekilde geçirdiğinizi doğrulamak için [REST API k
 - Ölçüm uyarılarına yönelik PowerShell cmdlet’leri [Az.Monitor modülünde](/powershell/module/az.monitor/) de sunulur
 - Yeni (klasik olmayan) ölçüm uyarıları için ' v2 ' ile biten cmdlet 'leri kullandığınızdan emin olun (örneğin, [Add-AzMetricAlertRuleV2](/powershell/module/az.monitor/add-azmetricalertrulev2))
 
-### <a name="azure-cli"></a>Azure CLI
+### <a name="azure-cli"></a>Azure CLI’si
 
 Ölçüm uyarıları için doğru CLı komutlarını kullandığınızdan emin olun:
 

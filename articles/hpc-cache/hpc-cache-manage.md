@@ -4,14 +4,14 @@ description: Azure portal veya Azure CLı kullanarak Azure HPC önbelleğini yö
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: how-to
-ms.date: 08/31/2020
+ms.date: 03/08/2021
 ms.author: v-erkel
-ms.openlocfilehash: 40d091782f37a32b75659cd274e49798dbe527cb
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: b34beb65bb8c4136887651d8365c937b17718572
+ms.sourcegitcommit: 66ce33826d77416dc2e4ba5447eeb387705a6ae5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100590796"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103471893"
 ---
 # <a name="manage-your-cache"></a>Önbelleğinizi yönetme
 
@@ -254,6 +254,20 @@ Genel Bakış sayfasında bazı temel önbellek istatistikleri için grafikler, 
 ![Örnek önbellek için yukarıda bahsedilen istatistikleri gösteren üç satırlık grafiklerin ekran görüntüsü](media/hpc-cache-overview-stats.png)
 
 Bu grafikler, Azure 'un yerleşik izleme ve analiz araçlarının bir parçasıdır. Ek araçlar ve uyarılar, Portal kenar çubuğu 'ndaki **izleme** başlığı altındaki sayfalardan kullanılabilir. [Azure izleme belgelerinin](../azure-monitor/essentials/monitor-azure-resource.md#monitoring-in-the-azure-portal)Portal bölümünde daha fazla bilgi edinin.
+
+## <a name="view-warnings"></a>Uyarıları görüntüle
+
+Önbellek sağlıksız bir duruma geçtiğinde, **Uyarılar** sayfasını kontrol edin. Bu sayfada, durumunu anlamanıza yardımcı olabilecek önbellek yazılımının bildirimleri gösterilir.
+
+Bu bildirimler Azure portal tarafından denetlenmediğinden etkinlik günlüğünde görünmez. Bunlar genellikle yapmış olabileceğiniz özel ayarlarla ilişkilendirilir.
+
+Burada görebileceğiniz Uyarı türleri şunlardır:
+
+* Önbellek, NTP sunucusuna erişemiyor
+* Önbellek, genişletilmiş gruplar Kullanıcı adı bilgilerini indiremedi
+* Bir depolama hedefinde özel DNS ayarları değiştirildi
+
+![Genişletilmiş gruplar Kullanıcı adlarının indirilebileceğini belirten bir ileti gösteren Izleme > uyarıları sayfasının ekran görüntüsü](media/warnings-page.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

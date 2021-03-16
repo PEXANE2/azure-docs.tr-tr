@@ -6,12 +6,12 @@ services: azure-monitor
 ms.topic: conceptual
 ms.date: 02/25/2019
 ms.author: vitalyg
-ms.openlocfilehash: e3d8d6529eb943566118cc67eab549cb32891cd8
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: fee71f9ebfc69c19adc026fce5cd78b6a8b5240b
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102037243"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103490320"
 ---
 # <a name="getting-started-with-azure-metrics-explorer"></a>Azure Ölçüm Gezgini'ni kullanmaya başlama
 
@@ -63,6 +63,20 @@ Varsayılan olarak, grafik en son 24 saat ölçüm verilerini gösterir. Zaman a
 - Grafiğe, grafiğin her bir boyutun değeri için ayrı satırlar görüntüleyip görüntülemediğini veya değerleri tek bir satıra toplamayacağını **denetler.** Örneğin, tüm sunucu örneklerinde ortalama yanıt süresi için bir satır görebilir veya her bir sunucu için ayrı satırlara bakabilirsiniz. Ayrı satırları görmek için *sunucu örneği* boyutunda bölme uygulamanız gerekir.
 
 Filtreleme ve bölme uygulanmış [grafiklerin örneklerine](../essentials/metric-chart-samples.md) bakın. Makale, grafikleri yapılandırmak için kullanılan adımları gösterir.
+
+## <a name="share-your-metric-chart"></a>Ölçüm grafiğinizi paylaşma
+Şu anda ölçüm grafiğinizi paylaşmanın iki yolu vardır. Aşağıda, ölçüm grafiklerinizde Excel ve bir bağlantı aracılığıyla bilgi paylaşma yönergeleri verilmiştir.
+ 
+### <a name="download-to-excel"></a>Excel 'e indir
+"Paylaşıma" tıklayın ve "Excel 'e Indir" i seçin. İndirmeniz hemen başlamalıdır.
+
+![ölçüm grafiğinin Excel aracılığıyla nasıl paylaşılacağını gösteren ekran görüntüsü](./media/metrics-getting-started/share-excel.png)
+
+### <a name="share-a-link"></a>Bağlantı paylaşma
+"Paylaşıma" tıklayın ve "Bağlantıyı Kopyala" yı seçin. Bağlantının başarıyla kopyalandığını belirten bir bildirim almanız gerekir.
+
+![ölçüm grafiğinin bağlantı aracılığıyla nasıl paylaşılacağını gösteren ekran görüntüsü](./media/metrics-getting-started/share-link.png)
+
 
 ## <a name="advanced-chart-settings"></a>Gelişmiş grafik ayarları
 

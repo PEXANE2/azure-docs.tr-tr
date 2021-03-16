@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: troubleshooting
 ms.date: 03/18/2020
 ms.author: v-erkel
-ms.openlocfilehash: efa163a2c10a7dc93bf5d26865a0e7eb43f11dea
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d2a5ffa337f789c4edc3a34b3be81285337473e2
+ms.sourcegitcommit: 66ce33826d77416dc2e4ba5447eeb387705a6ae5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87082775"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103471708"
 ---
 # <a name="troubleshoot-nas-configuration-and-nfs-storage-target-issues"></a>NAS yapılandırma ve NFS depolama hedefi sorunlarını giderme
 
@@ -64,7 +64,7 @@ Farklı depolama sistemleri bu erişimi etkinleştirmek için farklı yöntemler
 Dışarı aktarma kuralları kullanılıyorsa, önbelleğin önbellek alt ağından birden çok farklı IP adresi kullandığını unutmayın. Olası alt ağ IP adreslerinden oluşan tam aralıktan erişime izin verin.
 
 > [!NOTE]
-> Varsayılan olarak, Azure HPC Cache squashes kök erişimi. Ayrıntılar için [ek önbellek ayarlarını yapılandırma](configuration.md#configure-root-squash) makalesini okuyun.
+> Önbelleğin arka uç depolama sistemine kök erişimi olması gerekir, ancak önbellekten bağlanan istemciler için erişimi kısıtlayabilirsiniz. Ayrıntılar için [istemci erişiminin denetimini](access-policies.md#root-squash) okuyun.
 
 Önbellek için doğru erişim düzeyini etkinleştirmek üzere, NAS depolama satıcınızla birlikte çalışın.
 

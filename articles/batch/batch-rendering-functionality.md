@@ -3,14 +3,14 @@ title: İşleme özellikleri
 description: Standart Azure Batch özellikleri, işleme iş yüklerini ve uygulamaları çalıştırmak için kullanılır. Batch, iş yüklerini işlemeyi desteklemek için belirli özellikler içerir.
 author: mscurrell
 ms.author: markscu
-ms.date: 02/01/2021
+ms.date: 03/12/2021
 ms.topic: how-to
-ms.openlocfilehash: c748c51311a70cd3b4fc6d435e97a33d709467b9
-ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
+ms.openlocfilehash: a2e2cfb71999bd5ab83591448342d4bac1dabdd5
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99429811"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103496346"
 ---
 # <a name="azure-batch-rendering-capabilities"></a>Azure Batch işleme özellikleri
 
@@ -27,6 +27,9 @@ Görev komut satırı dizelerinin, özel VM görüntüsü oluşturulurken kullan
 Çoğu işleme uygulaması, lisans sunucusundan alınan lisanslar gerektirir. Mevcut bir şirket içi lisans sunucusu varsa, hem havuz hem de lisans sunucusunun aynı [sanal ağ](../virtual-network/virtual-networks-overview.md)üzerinde olması gerekir. Ayrıca, Batch havuzu ve lisans sunucusu VM 'si aynı sanal ağ üzerinde olan bir Azure VM 'de bir lisans sunucusu çalıştırmak mümkündür.
 
 ## <a name="batch-pools-using-rendering-vm-images"></a>VM görüntülerini işleme kullanan Batch havuzları
+
+> [!IMPORTANT]
+> İşlenen VM görüntüleri ve kullanım için ödeme lisansı [kullanım dışı bırakılmıştır ve 29 şubat 2024 tarihinde kullanımdan](https://azure.microsoft.com/updates/azure-batch-rendering-vm-images-licensing-will-be-retired-on-29-february-2024/)kaldırılacaktır. Toplu Işi işlemek için kullanmak üzere [Özel BIR VM görüntüsü ve standart uygulama lisanslama kullanılmalıdır.](batch-rendering-functionality.md#batch-pools-using-custom-vm-images-and-standard-application-licensing)
 
 ### <a name="rendering-application-installation"></a>Uygulama yükleme işleme
 

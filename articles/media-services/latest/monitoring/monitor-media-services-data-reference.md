@@ -7,12 +7,12 @@ manager: femila
 ms.topic: reference
 ms.service: media-services
 ms.date: 03/11/2021
-ms.openlocfilehash: c5545ead3e4d40c7a0642aee6273c4df241bd394
-ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
+ms.openlocfilehash: 461c998aa85d70d69cb267fdbeabd7eabcfb5854
+ms.sourcegitcommit: 66ce33826d77416dc2e4ba5447eeb387705a6ae5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/14/2021
-ms.locfileid: "103464532"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103471538"
 ---
 # <a name="monitoring-media-services-data-reference"></a>Media Services veri başvurusunu izleme
 
@@ -31,7 +31,7 @@ Media Services aşağıdaki kaynaklar için izleme ölçümlerini destekler:
 
 Aşağıdaki hesap ölçümlerini izleyebilirsiniz.
 
-|Ölçüm adı|Görünen ad|Description|
+|Ölçüm adı|Görünen ad|Açıklama|
 |---|---|---|
 |AssetCount|Varlık sayısı|Hesabınızdaki varlıklar.|
 |AssetQuota|Varlık kotası|Hesabınızdaki varlık kotası.|
@@ -49,7 +49,7 @@ Aşağıdaki hesap ölçümlerini izleyebilirsiniz.
 
 Aşağıdaki Media Services [akış uç noktası](/rest/api/media/streamingendpoints) ölçümleri desteklenir:
 
-|Ölçüm adı|Görünen ad|Description|
+|Ölçüm adı|Görünen ad|Açıklama|
 |---|---|---|
 |İstekler|İstekler|Akış uç noktası tarafından hizmet verilen toplam HTTP isteği sayısını sağlar.|
 |Çıkış|Çıkış|Akış uç noktası başına dakika başına toplam çıkış baytı.|
@@ -61,7 +61,7 @@ Aşağıdaki Media Services [akış uç noktası](/rest/api/media/streamingendpo
 
 Ölçüm boyutları hakkında daha fazla bilgi için bkz. [çok boyutlu ölçümler](https://docs.microsoft.com/azure/azure-monitor/platform/data-platform-metrics#multi-dimensional-metrics).
 
-Boyutlar tablosu için **yer tutucu** .
+<!--**PLACEHOLDER** for dimensions table.-->
 
 ## <a name="resource-logs"></a>Kaynak günlükleri
 

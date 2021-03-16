@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/07/2020
+ms.date: 03/02/2021
 ms.author: rkarlin
-ms.openlocfilehash: 678b50ffb2df2cd16312548109b93f6f1a7f08ff
-ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
+ms.openlocfilehash: 89da9ed378118875f0c09d3c23799349a4d093b0
+ms.sourcegitcommit: 3ea12ce4f6c142c5a1a2f04d6e329e3456d2bda5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98247474"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103467706"
 ---
 # <a name="azure-defender-for-iot-frequently-asked-questions"></a>IoT için Azure Defender hakkında sık sorulan sorular
 
@@ -51,29 +51,23 @@ Evet! IoT Platformu için Azure Defender çözümü, ağ trafiğini (SPAN, RSPAN
 
 IoT için Azure Defender algılayıcısı, bir SPAN bağlantı noktasına veya ağa DOKUNMASıNA bağlanır ve doğrudan pasif (aracısız) izleme aracılığıyla ICS ağ trafiğini toplamaya başlar. Bu, veri yoluna yerleştirilmediğinden ve cihazları etkin bir şekilde taramazsa OT ağları üzerinde sıfır etkiye sahiptir.
 
-Örneğin:
+Örnek:
 - Tek bir gereç (fiziksel sanal), atölye DMZ katmanında bulunabilir ve bu katmana tüm atölye hücre trafiği yönlendirilir.
 - Alternatif olarak, atölye DMZ katmanında yer alacak bulut ya da yerel yönetim ile her bir mağaza zemin hücresindeki küçük mini sensörlerini bulun. Başka bir gereç (sanal veya fiziksel), atölye DMZ katmanındaki trafiği izleyebilir (SCADA, Histora veya MES için).
 
 ## <a name="how-does-defender-for-iot-compare-to-the-competition"></a>IoT için Defender, yarışmaya nasıl Karşılaştır?
 
-Diğer çözümler müşterilerin kendi çözümlerini oluşturmalarına izin veren bir dizi özellik sağlarken, IoT için Defender, ilgili tüm Azure kaynaklarınızın güvenliği genelinde geniş bir görünüm sağlayan benzersiz bir uçtan uca IoT güvenlik çözümü sağlar. Azure, mevcut cihaz yönetim araçlarıyla kolay tümleştirme için IoT Hub Module TWINS ile hızlı dağıtım ve tam tümleştirme imkanı sunar.
+IoT için Azure Defender, tüm IoT/OT cihazlarınızın genelinde kapsamlı güvenlik sunar. **Son Kullanıcı kurumları** Için, IoT Için Azure Defender, hızlı bir şekilde dağıtılan, farklı mülkiyet ve eski Windows sistemleriyle çalışan ve Azure Sentinel ve diğer SOC araçlarıyla birlikte çalışan aracısız, ağ katmanı güvenliği sağlar. Şirket içinde veya Azure 'a bağlı ortamlarda dağıtılabilir. **IoT cihaz oluşturucuları** Için, IoT Için Azure Defender, cihaz katmanı güvenliğini yeni ıOT/ot girişimlerine eklemek için basit aracılar sunmaktadır.
 
+## <a name="do-i-have-to-be-an-azure-customer"></a>Azure müşterisi olmam gerekiyor mu?
 
-## <a name="do-i-have-to-be-an-azure-iot-customer"></a>Azure IoT müşterisi olmam gerekiyor mu?
+Hayır, IoT için Azure Defender 'ın aracısız sürümü için bir Azure müşterisi olmanız gerekmez. Ancak, Azure Sentinel 'e uyarı göndermek istiyorsanız; Ağ sensörleri sağlayın ve buluttan sistem durumlarını izleyin; ve otomatik yazılım ve tehdit bilgileri güncelleştirmelerinden faydalanabilirsiniz, Azure IoT Hub aracılığıyla algılayıcıyı Azure 'a bağlamanız gerekecektir.
 
-Evet. Bulut bağlantılı dağıtımlar için IoT için Azure Defender, Azure IoT bağlantısı ve altyapısına bağımlıdır.
+IoT için Azure Defender 'ın aracı tabanlı sürümü için bir Azure müşterisi olmanız gerekir.
+
 ## <a name="can-i-create-my-own-alerts"></a>Kendi uyarılarımı oluşturabilir miyim?
 
-Evet. IP adresi ve açık bağlantı noktaları gibi, önceden belirlenmiş davranış kümesinde özelleştirilmiş bir uyarı ayarlayabilirsiniz. Özel uyarılar ve bunların nasıl yapılacağı hakkında daha fazla bilgi edinmek için bkz. [özel uyarılar oluşturma](quickstart-create-custom-alerts.md) .
-
-## <a name="where-can-i-see-logs-can-i-customize-logs"></a>Günlükleri nereden görebilirim? Günlükleri özelleştirebilir miyim?
-
-- Bağlı Log Analytics çalışma alanınızı kullanarak uyarıları ve önerileri görüntüleyin. Çalışma alanındaki depolama boyutunu ve süreyi yapılandırın.
-
-- Güvenlik aracılarınızın ham verileri de Log Analytics hesabınızda depolanabilir. Bu seçeneğin yapılandırmasını değiştirmeden önce boyut, süre, depolama gereksinimleri ve ilişkili maliyetleri göz önünde bulundurun.
-
-
+Evet, IP/MAC adresi, protokol türü, sınıf, hizmet, işlev, komut, vb. dahil olmak üzere birden çok parametreye göre özel uyarılar oluşturabilir ve yüklerdeki özel etiketlerin değerlerini de kullanabilirsiniz.  Özel uyarılar ve bunların nasıl oluşturulacağı hakkında daha fazla bilgi edinmek için bkz. [özel uyarılar oluşturma](quickstart-create-custom-alerts.md) .
 
 ## <a name="what-happens-when-the-internet-connection-stops-working"></a>Internet bağlantısı çalışmayı kestiğinde ne olur?
 

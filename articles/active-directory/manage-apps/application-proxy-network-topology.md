@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 02/22/2021
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: a8f1f902b14dda7d95e3643c335e82ed7c7e5a3f
-ms.sourcegitcommit: ec39209c5cbef28ade0badfffe59665631611199
+ms.openlocfilehash: 2873bd9668bfba887ad9add061e68f36a747d5b8
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/12/2021
-ms.locfileid: "103232928"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103492328"
 ---
 # <a name="optimize-traffic-flow-with-azure-active-directory-application-proxy"></a>Trafik akışını Azure Active Directory Uygulama Ara Sunucusu iyileştirin
 
@@ -181,7 +181,7 @@ Bağlayıcı, Azure veri merkezinde yer alabilir. Bağlayıcının uygulama ve v
 
 **Senaryo:** Uygulama, Avrupa 'daki bir kuruluşun ağında, Avrupa 'daki çoğu kullanıcı ile varsayılan kiracı bölgesi ABD
 
-**Öneri:** Bağlayıcıyı uygulamanın yanına yerleştirin. Avrupa uygulama proxy 'Si hizmet örnekleri kullanmak için en iyi duruma getirilmesi için bağlayıcı grubunu güncelleştirin. Adımlar için bkz. [en yakın uygulama proxy 'si bulut hizmetini kullanmak için bağlayıcı gruplarını iyileştirin](application-proxy-network-topology#Optimize connector-groups-to-use-closest-Application-Proxy-cloud-service).
+**Öneri:** Bağlayıcıyı uygulamanın yanına yerleştirin. Avrupa uygulama proxy 'Si hizmet örnekleri kullanmak için en iyi duruma getirilmesi için bağlayıcı grubunu güncelleştirin. Adımlar için bkz. [en yakın uygulama proxy 'si bulut hizmetini kullanmak için bağlayıcı gruplarını iyileştirin](application-proxy-network-topology.md#optimize-connector-groups-to-use-closest-application-proxy-cloud-service-preview).
 
 Avrupa kullanıcıları aynı bölgede yer alan bir uygulama proxy örneğine eriştiği için, atlama 1 pahalı değildir. Atlama 3 en iyi duruma getirilmiştir. Atlama 2 ' i iyileştirmek için ExpressRoute kullanmayı düşünün.
 
@@ -189,7 +189,7 @@ Avrupa kullanıcıları aynı bölgede yer alan bir uygulama proxy örneğine er
 
 **Senaryo:** Uygulama, Avrupa 'daki bir kuruluşun ağında, ABD 'deki çoğu kullanıcı ile varsayılan kiracı bölgesi bızım için.
 
-**Öneri:** Bağlayıcıyı uygulamanın yanına yerleştirin. Avrupa uygulama proxy 'Si hizmet örnekleri kullanmak için en iyi duruma getirilmesi için bağlayıcı grubunu güncelleştirin. Adımlar için bkz. [en yakın uygulama proxy 'si bulut hizmetini kullanmak için bağlayıcı gruplarını iyileştirin](/application-proxy-network-topology#Optimize connector-groups-to-use-closest-Application-Proxy-cloud-service). Tüm ABD kullanıcıları Avrupa 'daki uygulama proxy 'Si örneğine erişmesi gerektiğinden atlama 1 daha pahalı olabilir.
+**Öneri:** Bağlayıcıyı uygulamanın yanına yerleştirin. Avrupa uygulama proxy 'Si hizmet örnekleri kullanmak için en iyi duruma getirilmesi için bağlayıcı grubunu güncelleştirin. Adımlar için bkz. [en yakın uygulama proxy 'si bulut hizmetini kullanmak için bağlayıcı gruplarını iyileştirin](application-proxy-network-topology.md#optimize-connector-groups-to-use-closest-application-proxy-cloud-service-preview). Tüm ABD kullanıcıları Avrupa 'daki uygulama proxy 'Si örneğine erişmesi gerektiğinden atlama 1 daha pahalı olabilir.
 
 Ayrıca, bu durumda başka bir değişken kullanmayı da düşünebilirsiniz. Kuruluştaki çoğu kullanıcı ABD 'de yer alıyorsa, ağınız da bıze genişlemektedir. Bağlayıcıyı bıze yerleştirin, bağlayıcı gruplarınız için varsayılan ABD bölgesini kullanmaya devam edin ve şirket içi kurumsal ağ hattını Avrupa 'daki uygulamaya kullanın. Bu şekilde atlama 2 ve 3 en iyi duruma getirilmiştir.
 

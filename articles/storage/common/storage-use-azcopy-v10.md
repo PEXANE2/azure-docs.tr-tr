@@ -8,12 +8,12 @@ ms.date: 12/08/2020
 ms.author: normesta
 ms.subservice: common
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: a1651ef1b49ecedb8070f32c56e9d23a0f8fd0da
-ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
+ms.openlocfilehash: 826effb152d3f069e0a7c5b8e169f7083117ed22
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/12/2021
-ms.locfileid: "103201584"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103494504"
 ---
 # <a name="get-started-with-azcopy"></a>AzCopy’yi kullanmaya başlama
 
@@ -110,7 +110,8 @@ Kimliğinizi yetkilendirdikten veya bir SAS belirteci elde ettikten sonra, veri 
 |--------|-----------|
 |Azure Blob Depolama |[Azure Blob depolama alanına dosya yükleme](storage-use-azcopy-blobs-upload.md)<br><br>[Blob 'ları Azure Blob depolamadan indirin](storage-use-azcopy-blobs-download.md)<br><br>[Blob 'ları Azure depolama hesapları arasında kopyalama](storage-use-azcopy-blobs-copy.md)<br><br>[Azure Blob depolama ile eşitlemeyi](storage-use-azcopy-blobs-synchronize.md)|
 |Azure Dosyaları |[AzCopy ve dosya depolama ile verileri aktarma](storage-use-azcopy-files.md)|
-|Amazon S3|[AzCopy ve Amazon S3 demetleri ile veri aktarma](storage-use-azcopy-s3.md)|
+|Amazon S3|[Amazon S3 'ten Azure Storage 'a veri kopyalama](storage-use-azcopy-s3.md)|
+|Google Cloud Storage|[Google Cloud Storage 'daki verileri Azure depolama 'ya kopyalama (Önizleme)](storage-use-azcopy-google-cloud.md)|
 |Azure Stack depolama|[AzCopy ve Azure Stack Storage ile veri aktarımı](/azure-stack/user/azure-stack-storage-transfer#azcopy)|
 
 ## <a name="use-in-a-script"></a>Betikte kullanma

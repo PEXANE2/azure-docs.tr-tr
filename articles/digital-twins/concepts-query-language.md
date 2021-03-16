@@ -8,12 +8,12 @@ ms.date: 11/19/2020
 ms.topic: conceptual
 ms.service: digital-twins
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 9549e6ea30be0cd9eb1a8c200a5af4a4721793a6
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: fc9cd95063f84a9af7f989af9a65ce8f99852dc1
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102034685"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103490985"
 ---
 # <a name="about-the-query-language-for-azure-digital-twins"></a>Azure dijital TWINS için sorgu dili hakkında
 
@@ -85,7 +85,7 @@ Bu bölümde sorgu dilinin kısıtlamaları açıklanmaktadır.
 * İfadesinde hiçbir alt sorgu desteklenmez `FROM` .
 * `OUTER JOIN` semantikler desteklenmez, yani ilişkinin sıfır sıralaması varsa, tüm "satır" çıkış sonuç kümesinden kaldırılır.
 * Grafik çapraz geçiş derinliği `JOIN` sorgu başına beş düzey ile sınırlıdır.
-* `JOIN`İşlem kaynağı kısıtlanmış: sorgu, sorgunun başladığı TWINS 'i bildirmelidir.
+* Azure dijital TWINS 'deki ilişkiler bağımsız varlıklar olarak sorgulanamaz; Ayrıca, ilişkinin geldiği kaynak ikizi hakkında bilgi sağlamanız gerekir. Bu, sorgunun, sorgunun `JOIN` başladığı ikizi (ler) i bildirdiğinden emin olmak için, bu işlem üzerinde ilişkileri sorgulamak için kullanılan bazı kısıtlamalar olduğu anlamına gelir. Bunun örnekleri için bkz. *nasıl yapılır: sorgu ikizi grafiğini sorgulama* makalesinde [*ilişkiye göre sorgulama*](how-to-query-graph.md#query-by-relationship) .
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

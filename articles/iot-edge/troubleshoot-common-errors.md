@@ -11,14 +11,16 @@ services: iot-edge
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: a3e646f44978e8897c22d579639efcef0fcd2205
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: cc6d7491d9c38f1ddf4aba2adecad4aaee3c344b
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102045981"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103489589"
 ---
 # <a name="common-issues-and-resolutions-for-azure-iot-edge"></a>Azure IoT Edge için genel sorunlar ve çözümler
+
+[!INCLUDE [iot-edge-version-201806-or-202011](../../includes/iot-edge-version-201806-or-202011.md)]
 
 IoT Edge çözümlerini dağıttığınızda karşılaşabileceğiniz yaygın sorunları gidermeye yönelik adımları bulmak için bu makaleyi kullanın. IoT Edge cihazınızdan günlükleri ve hataları bulma hakkında bilgi almanız gerekiyorsa, bkz. [IoT Edge cihazınızda sorun giderme](troubleshoot.md).
 
@@ -43,7 +45,7 @@ Konak ağındaki bir ağ yapılandırması, IoT Edge aracısının ağa ulaşmas
 
 IoT Edge çalışma zamanı, her bir modül için iletişim kurulacak bir ağ ayarlar. Linux’ta bu ağ bir köprü ağıdır. Windows’da NAT kullanır. Bu sorun, NAT ağını kullanan Windows kapsayıcılarının kullanıldığı Windows cihazlarında daha yaygın olarak görülür.
 
-**Çözünürlüğüne**
+**Çözüm:**
 
 Bu köprüye/NAT ağına atanan IP adresleri için bir İnternet rotası olduğundan emin olun. Bazen konaktaki VPN yapılandırması, IoT Edge ağını geçersiz kılar.
 
@@ -57,7 +59,7 @@ Bir kapsayıcı çalıştırılamaz ve edgeAgent günlükleri bir 403 hatası g�
 
 IoT Edge aracısının bir modülün görüntüsüne erişme izni yok.
 
-**Çözünürlüğüne**
+**Çözüm:**
 
 Kayıt defteri kimlik bilgilerinizin dağıtım bildiriminizde doğru belirtildiğinden emin olun.
 
@@ -71,7 +73,7 @@ Cihazda dağıtımda tanımlanan modüller başlatılırken sorun yaşanıyor. Y
 
 Varsayılan olarak, IoT Edge kendi yalıtılmış kapsayıcı ağında modüller başlatır. Bu özel ağ içinde, bu cihaz DNS ad çözümlemesi ile ilgili sorun yaşıyor olabilir.
 
-**Çözünürlüğüne**
+**Çözüm:**
 
 **Seçenek 1: kapsayıcı altyapısı ayarlarındaki DNS sunucusunu ayarlama**
 
@@ -143,7 +145,7 @@ warn: edgelet_utils::logging --     caused by: failed to create endpoint edgeHub
 
 Ana makinedeki diğer bazı işlemler, edgeHub modülünün bağlamaya çalıştığı bir bağlantı noktasını bağlamıştır. IoT Edge hub, ağ geçidi senaryolarında kullanılmak üzere 443, 5671 ve 8883 bağlantı noktalarını eşler. Başka bir işlem bu bağlantı noktalarından birini zaten bağlamışsa modül başlayamaz.
 
-**Çözünürlüğüne**
+**Çözüm:**
 
 Bu sorunu iki şekilde çözebilirsiniz:
 
@@ -212,7 +214,7 @@ Error parsing user input data: invalid hostname. Hostname cannot be empty or gre
 
 IoT Edge çalışma zamanı yalnızca 64 karakterden kısa olan ana bilgisayar adlarını destekleyebilir. Fiziksel makinelerde genellikle uzun ana bilgisayar adları yoktur, ancak sorun bir sanal makinede daha yaygındır. Azure 'da barındırılan Windows sanal makineleri için otomatik olarak oluşturulan ana bilgisayar adları, özellikle de uzun olur.
 
-**Çözünürlüğüne**
+**Çözüm:**
 
 Bu hatayı gördüğünüzde, sanal makinenizin DNS adını yapılandırarak ve sonra DNS adını Kurulum komutunda ana bilgisayar adı olarak ayarlayarak bu sorunu çözebilirsiniz.
 
@@ -283,7 +285,7 @@ Windows 'da kullanırken bir EventLogException alırsınız `Get-WinEvent` .
 
 `Get-WinEvent`PowerShell komutu, belirli bir günlük bulmak için bir kayıt defteri girdisini temel alır `ProviderName` .
 
-**Çözünürlüğüne**
+**Çözüm:**
 
 IoT Edge Daemon için bir kayıt defteri girişi ayarlayın. Aşağıdaki içerikle bir **ıotedge. reg** dosyası oluşturun ve çift tıklayarak veya komutunu kullanarak Windows kayıt defterine aktarın `reg import iotedge.reg` :
 
@@ -306,7 +308,7 @@ Windows Registry Editor Version 5.00
 
 IoT Edge çalışma zamanının parçası olan IoT Edge hub, varsayılan olarak performans için en iyi duruma getirilmiştir ve büyük bellek öbeklerini ayırmaya çalışır. Bu iyileştirme kısıtlı sınır cihazları için ideal değildir ve kararlılık sorunlarına neden olabilir.
 
-**Çözünürlüğüne**
+**Çözüm:**
 
 IoT Edge hub 'ı için **Optimizeforperformance** ortam değişkenini **false** olarak ayarlayın. Ortam değişkenlerini ayarlamak için iki yol vardır:
 
@@ -346,7 +348,7 @@ Error: Time:Thu Jun  4 19:44:58 2018 File:/usr/sdk/src/c/provisioning_client/ada
 
 IoT Edge Daemon, güvenlik nedenleriyle edgeHub 'a bağlanan tüm modüller için işlem tanımlamayı zorlar. Modül tarafından gönderilen tüm iletilerin, modülün ana işlem KIMLIĞINDEN geldiğini doğrular. Bir ileti, başlangıçta kurulduğu farklı bir işlem KIMLIĞINDEN bir modül tarafından gönderiliyorsa, iletiyi 404 hata iletisiyle reddeder.
 
-**Çözünürlüğüne**
+**Çözüm:**
 
 Sürüm 1.0.7 itibariyle, tüm modül işlemlerinin bağlanmasına izin verilir. Daha fazla bilgi için bkz. [1.0.7 Release changelog](https://github.com/Azure/iotedge/blob/master/CHANGELOG.md#iotedged-1).
 
@@ -362,7 +364,7 @@ Bir IoT Edge cihaz için modüller ayarladıktan sonra, modüller başarıyla da
 
 Otomatik dağıtım, bir cihazı hedefliyorsa, tek bir cihaz için modülleri el ile ayarlayarak öncelik kazanır. Visual Studio Code tek bir cihaz işlevselliği için Azure portal veya **dağıtım oluşturma** Içindeki **modülleri ayarlama** işlevselliği bir süre içinde geçerli olacaktır. Cihazda başlangıç olarak tanımladığınız modülleri görürsünüz. Sonra otomatik dağıtımın öncelikli noktaları, cihazın istenen özelliklerinin üzerine yazar.
 
-**Çözünürlüğüne**
+**Çözüm:**
 
 Her cihaz için bir otomatik dağıtım veya tek cihaz dağıtımı olmak üzere yalnızca bir tür dağıtım mekanizması kullanın. Bir cihazı hedefleyen birden fazla otomatik dağıtımınız varsa, belirli bir cihaza doğru bir uygulama olduğundan emin olmak için öncelik veya hedef açıklamalarını değiştirebilirsiniz. Ayrıca, ikizi cihazını otomatik dağıtımın hedef açıklamasıyla artık eşleşmesiz şekilde güncelleştirebilirsiniz.
 
@@ -381,7 +383,7 @@ IoT Edge Daemon geçerli bir yapılandırma dosyası ile etkin, ancak edgeAgent 
 
 Bir ağ geçidinin arkasındaki cihazların IoT Edge, yapılandırma dosyasının alanında belirtilen üst IoT Edge cihazdan modül görüntülerini alır `parent_hostname` . `Could not perform HTTP request`Hata, alt CIHAZıN http aracılığıyla üst cihazına erişemeyeceği anlamına gelir.
 
-**Çözünürlüğüne**
+**Çözüm:**
 
 Üst IoT Edge cihazın alt IoT Edge cihazdan gelen istekleri aldığından emin olun. Alt cihazdan gelen istekler için 443 ve 6617 bağlantı noktalarında ağ trafiğini açın.
 

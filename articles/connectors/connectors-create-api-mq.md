@@ -7,26 +7,26 @@ author: ChristopherHouser
 ms.author: chrishou
 ms.reviewer: valthom, estfan, logicappspm
 ms.topic: article
-ms.date: 05/14/2020
+ms.date: 03/10/2021
 tags: connectors
-ms.openlocfilehash: e9e554fdc092e49f5a87049de0e3dc3163105f58
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a07eb6e592c68794f0e4038a7cf9a42bd396b47a
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85609512"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103495241"
 ---
 # <a name="connect-to-an-ibm-mq-server-from-azure-logic-apps"></a>Azure Logic Apps'ten IBM MQ sunucusuna bağlanma
 
-IBM MQ Bağlayıcısı, şirket içinde veya Azure 'da bir IBM MQ sunucusunda depolanan iletileri gönderir ve alır. Bu bağlayıcı bir TCP/IP ağı üzerinde uzak IBM MQ sunucusuyla iletişim kuran bir Microsoft MQ istemcisi içerir. Bu makale, MQ bağlayıcısını kullanmak için bir başlangıç kılavuzu sağlar. Bir kuyruktaki tek bir iletiye göz atarak başlayabilir ve ardından diğer eylemleri deneyebilirsiniz.
+MQ Bağlayıcısı, şirket içinde veya Azure 'da bir MQ sunucusunda depolanan iletileri gönderir ve alır. Bu bağlayıcı bir TCP/IP ağı üzerinde uzak IBM MQ sunucusuyla iletişim kuran bir Microsoft MQ istemcisi içerir. Bu makale, MQ bağlayıcısını kullanmak için bir başlangıç kılavuzu sağlar. Bir kuyruktaki tek bir iletiye göz atarak başlayabilir ve ardından diğer eylemleri deneyebilirsiniz.
 
-IBM MQ Bağlayıcısı bu eylemleri içerir, ancak hiçbir tetikleyici sağlamaz:
+MQ Bağlayıcısı bu eylemleri içerir, ancak hiçbir tetikleyici sağlamaz:
 
-- IBM MQ sunucusundan iletiyi silmeden tek bir iletiye gözatın.
-- IBM MQ sunucusundan iletileri silmeden bir toplu işe gözatamazsınız.
-- Tek bir ileti alın ve IBM MQ sunucusundan iletiyi silin.
-- Bir toplu ileti alın ve IBM MQ sunucusundan iletileri silin.
-- IBM MQ sunucusuna tek bir ileti gönderin.
+- MQ sunucusundan iletiyi silmeden tek bir iletiye gözatın.
+- MQ sunucusundan iletileri silmeden bir toplu işe gözatamazsınız.
+- Tek bir ileti alın ve MQ sunucusundan iletiyi silin.
+- Bir toplu ileti alın ve MQ sunucusundan iletileri silin.
+- MQ sunucusuna tek bir ileti gönderin.
 
 Resmi olarak desteklenen IBM WebSphere MQ sürümleri aşağıda verilmiştir:
 
@@ -37,15 +37,20 @@ Resmi olarak desteklenen IBM WebSphere MQ sürümleri aşağıda verilmiştir:
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-* Şirket içi MQ sunucusu kullanıyorsanız, Şirket [içi veri ağ geçidini](../logic-apps/logic-apps-gateway-install.md) ağınız içindeki bir sunucuya yükleyebilirsiniz. Şirket içi veri ağ geçidinin yüklü olduğu sunucuda, MQ bağlayıcısının çalışması için .NET Framework 4,6 yüklü olmalıdır.
+* Şirket içi MQ sunucusu kullanıyorsanız, Şirket [içi veri ağ geçidini](../logic-apps/logic-apps-gateway-install.md) ağınız içindeki bir sunucuya yüklemeniz gerekir.
 
-  Ağ geçidini yüklemeyi bitirdikten sonra, Azure 'da şirket içi veri ağ geçidi için de bir kaynak oluşturmanız gerekir. Daha fazla bilgi için bkz. [Data Gateway bağlantısını ayarlama](../logic-apps/logic-apps-gateway-connection.md).
+  > [!NOTE]
+  > MQ sunucunuz herkese açık veya Azure 'da kullanılabiliyorsa, veri ağ geçidini kullanmanız gerekmez.
 
-  MQ sunucunuz herkese açık veya Azure 'da kullanılabiliyorsa, veri ağ geçidini kullanmanız gerekmez.
+  * MQ bağlayıcısının çalışması için, şirket içi veri ağ geçidini yüklediğiniz sunucuda .NET Framework 4,6 yüklü olması gerekir.
+  
+  * Şirket içi veri ağ geçidini yükledikten sonra, MQ Bağlayıcısı 'nın şirket içi MQ sunucunuza erişmek için kullandığı [Şirket içi veri ağ geçidi için bir Azure ağ geçidi kaynağı oluşturmanız](../logic-apps/logic-apps-gateway-connection.md) da gerekir.
 
-* MQ eylemini eklemek istediğiniz mantıksal uygulama. Bu mantıksal uygulama, şirket içi veri ağ geçidi bağlantınızla aynı konumu kullanmalıdır ve iş akışınızı Başlatan bir tetikleyicisine sahip olmalıdır.
+* MQ bağlayıcısını kullanmak istediğiniz mantıksal uygulama. MQ bağlayıcısının hiçbir tetikleyicisi yoktur, bu nedenle önce mantıksal uygulamanıza bir tetikleyici eklemeniz gerekir. Örneğin, [yinelenme tetikleyicisini](../connectors/connectors-native-recurrence.md)kullanabilirsiniz. Logic Apps 'e yeni başladıysanız, [ilk mantıksal uygulamanızı oluşturmak için bu hızlı](../logic-apps/quickstart-create-first-logic-app-workflow.md)başlangıcı deneyin.
 
-  MQ bağlayıcısının hiçbir tetikleyicisi yoktur, bu nedenle önce mantıksal uygulamanıza bir tetikleyici eklemeniz gerekir. Örneğin, yinelenme tetikleyicisini kullanabilirsiniz. Logic Apps 'e yeni başladıysanız, [ilk mantıksal uygulamanızı oluşturmak için bu hızlı](../logic-apps/quickstart-create-first-logic-app-workflow.md)başlangıcı deneyin.
+## <a name="limitations"></a>Sınırlamalar
+
+MQ Bağlayıcısı, iletinin **Biçim** alanını desteklemez veya kullanmaz ve herhangi bir karakter kümesi dönüştürmesi gerçekleştirmez. Bağlayıcı, ileti alanında her türlü verinin bir JSON iletisine görünmesini ve iletiyi birlikte göndereceğini ekler.
 
 <a name="create-connection"></a>
 
@@ -59,9 +64,9 @@ Bir MQ eylemi eklediğinizde henüz MQ bağlantınız yoksa, bağlantıyı oluş
 
 1. MQ sunucunuz için bağlantı bilgilerini sağlayın.
 
-   * **Sunucu**için MQ sunucu adını gırebılır veya IP adresini, ardından iki nokta üst üste ve bağlantı noktası numarası ile girebilirsiniz.
+   * **Sunucu** için MQ sunucu adını gırebılır veya IP adresini, ardından iki nokta üst üste ve bağlantı noktası numarası ile girebilirsiniz.
 
-   * Güvenli Yuva Katmanı (SSL) kullanmak için SSL 'yi **Etkinleştir**' i seçin.
+   * Aktarım Katmanı Güvenliği (TLS) veya Güvenli Yuva Katmanı (SSL) kullanmak için SSL 'yi **Etkinleştir**' i seçin.
 
      MQ Bağlayıcısı Şu anda yalnızca sunucu kimlik doğrulamasını destekler, istemci kimlik doğrulamasını desteklememektedir. Daha fazla bilgi için bkz. [bağlantı ve kimlik doğrulama sorunları](#connection-problems).
 
@@ -113,12 +118,12 @@ Mantıksal uygulamanız şirket içi MQ sunucunuza bağlanmayı denediğinde şu
    | Özellik | Açıklama |
    |----------|-------------|
    | **Kuyruk** | Bağlantıda belirtilen kuyruktan farklıysa, bu kuyruğu belirtin. |
-   | **MessageID**, **bağıntıkimliği**, **GroupID**ve diğer özellikler | Farklı MQ İleti özelliklerine dayalı bir iletiye gözatın |
-   | **Includeınfo** | Çıkışa ek ileti bilgilerini eklemek için **doğru**öğesini seçin. Çıktıda ek ileti bilgisini atlamak için, **false**' ı seçin. |
+   | **MessageID**, **bağıntıkimliği**, **GroupID** ve diğer özellikler | Farklı MQ İleti özelliklerine dayalı bir iletiye gözatın |
+   | **Includeınfo** | Çıkışa ek ileti bilgilerini eklemek için **doğru** öğesini seçin. Çıktıda ek ileti bilgisini atlamak için, **false**' ı seçin. |
    | **Aş** | Bir iletinin boş bir sıraya gelmesi için ne kadar bekleneceğini öğrenmek için bir değer girin. Hiçbir şey girilmişse, sıradaki ilk ileti alınır ve bir iletinin görünmesini beklerken zaman harcanması beklenmez. |
    |||
 
-   Örneğin:
+   Örnek:
 
    !["İletiye gözatamıyorum" eylemi için Özellikler](media/connectors-create-api-mq/browse-message-properties.png)
 
@@ -134,7 +139,7 @@ Mantıksal uygulamanız şirket içi MQ sunucunuza bağlanmayı denediğinde şu
 
    ![İletiye yönelik ham çıkışa gözatıp](media/connectors-create-api-mq/browse-message-raw-output.png)
 
-1. **Includeınfo** **değerini true**olarak ayarlarsanız ek çıktı gösterilir:
+1. **Includeınfo** **değerini true** olarak ayarlarsanız ek çıktı gösterilir:
 
    ![İleti ekleme bilgisini görüntüle](media/connectors-create-api-mq/browse-message-include-info.png)
 
@@ -173,7 +178,7 @@ Mantıksal uygulamanız şirket içi MQ sunucunuza bağlanmayı denediğinde şu
 
 1. Henüz bir MQ bağlantısı oluşturmadıysanız [Bu bağlantıyı oluşturmanız](#create-connection)istenir. Aksi takdirde, varsayılan olarak, önceden yapılandırılmış ilk bağlantı kullanılır. Yeni bir bağlantı oluşturmak için **Bağlantıyı Değiştir**' i seçin. Ya da farklı bir bağlantı seçin.
 
-1. Eyleme ilişkin bilgileri belirtin. **MessageType**için geçerli bir ileti türü seçin: **veri birimi**, **Yanıt**veya **istek**
+1. Eyleme ilişkin bilgileri belirtin. **MessageType** için geçerli bir ileti türü seçin: **veri birimi**, **Yanıt** veya **istek**
 
    !["İleti gönder eylemi" özellikleri](media/connectors-create-api-mq/send-message-properties.png)
 
@@ -185,7 +190,7 @@ Mantıksal uygulamanız şirket içi MQ sunucunuza bağlanmayı denediğinde şu
 
 ## <a name="connector-reference"></a>Bağlayıcı başvurusu
 
-Bağlayıcının Swagger açıklaması tarafından tanımlanan eylemler ve sınırlar hakkında teknik ayrıntılar için bağlayıcının [başvuru sayfasını](/connectors/mq/)gözden geçirin.
+Bağlayıcının Swagger dosyasında açıklanan eylemler ve sınırlar gibi teknik ayrıntılar için [bağlayıcının başvuru sayfasını](/connectors/mq/)gözden geçirin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -13,12 +13,12 @@ ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b66b004a0371b76f82d525972feefab9c89efb2d
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.openlocfilehash: 3fad2c683890776908afbfbf15ee91d46d564783
+ms.sourcegitcommit: 3ea12ce4f6c142c5a1a2f04d6e329e3456d2bda5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98742055"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103466771"
 ---
 # <a name="overview-of-role-based-access-control-in-azure-active-directory"></a>Azure Active Directory içindeki rol tabanlı erişim denetimine genel bakış
 
@@ -60,7 +60,7 @@ Rol ataması, Azure AD kaynaklarına erişim izni vermek için belirli bir *kaps
 - Rol tanımı
 - Kaynak kapsamı
 
-Azure portal, Azure AD PowerShell veya Graph API kullanarak [rol atamaları oluşturabilirsiniz](custom-create.md) . [Özel bir rol için atamaları da görüntüleyebilirsiniz](custom-view-assignments.md#view-the-assignments-of-a-role).
+Azure portal, Azure AD PowerShell veya Graph API kullanarak [rol atamaları oluşturabilirsiniz](custom-create.md) . [Rol atamalarını da listeleyebilirsiniz](view-assignments.md).
 
 Aşağıdaki diyagramda rol ataması örneği gösterilmektedir. Bu örnekte, Chris Green, contoso pencere öğesi Oluşturucu uygulama kaydı kapsamında uygulama kayıt yöneticisi özel rolü atandı. Atama, kemal 'e uygulama kayıt yöneticisi rolünün yalnızca bu belirli uygulama kaydı için izin verir.
 
@@ -89,4 +89,4 @@ Azure AD 'de yerleşik roller kullanmak ücretsizdir, özel roller Azure AD Prem
 
 - [Azure AD rollerini anlama](concept-understand-roles.md)
 - [Azure Portal, Azure AD PowerShell ve Graph API](custom-create.md) kullanarak özel rol atamaları oluşturun
-- [Özel bir rol için atamaları görüntüleme](custom-view-assignments.md)
+- [Rol atamalarını listeleme](view-assignments.md)

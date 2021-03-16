@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/04/2021
+ms.date: 03/15/2021
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: adfe5318949ffa624ebe3548944b558bd0dda9e1
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
+ms.openlocfilehash: 09cfdd026105a34db976118f38b011e2c4578a24
+ms.sourcegitcommit: 66ce33826d77416dc2e4ba5447eeb387705a6ae5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102198481"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103470784"
 ---
 # <a name="options-for-registering-a-saml-application-in-azure-ad-b2c"></a>Azure AD B2C SAML uygulaması kaydetme seçenekleri
 
@@ -278,6 +278,19 @@ Farklı değerlere bağlı birden çok SAML uygulamanız varsa `entityID` , `iss
 ## <a name="session-management"></a>Oturum yönetimi
 
 `UseTechnicalProfileForSessionManagement`Öğesini ve [Samlssosessionprovider](custom-policy-reference-sso.md#samlssosessionprovider)öğesini kullanarak Azure AD B2C ve SAML bağlı olan taraf uygulaması arasındaki oturumu yönetebilirsiniz.
+
+## <a name="force-users-to-re-authenticate"></a>Kullanıcıları yeniden kimlik doğrulamaya zorla 
+
+Kullanıcıları yeniden kimlik doğrulamaya zorlamak için, uygulama `ForceAuthn` SAML kimlik doğrulama isteğine özniteliğini içerebilir. `ForceAuthn`Özniteliği bir Boole değeridir. True olarak ayarlandığında, kullanıcılar oturumu Azure AD B2C geçersiz kılınır ve Kullanıcı yeniden kimlik doğrulamaya zorlanır. Aşağıdaki SAML kimlik doğrulama isteği, `ForceAuthn` özniteliği true olarak ayarlamayı gösterir. 
+
+
+```xml
+<samlp:AuthnRequest 
+       Destination="https://contoso.b2clogin.com/contoso.onmicrosoft.com/B2C_1A_SAML2_signup_signin/samlp/sso/login"
+       ForceAuthn="true" ...>
+    ...
+</samlp:AuthnRequest>
+```
 
 ## <a name="debug-the-saml-protocol"></a>SAML protokolünde hata ayıklama
 

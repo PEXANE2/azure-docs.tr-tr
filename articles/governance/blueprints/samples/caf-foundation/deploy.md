@@ -1,14 +1,14 @@
 ---
 title: CAF Foundation şema örneğini dağıtma
 description: Şema yapıt parametresi ayrıntıları dahil olmak üzere CAF Foundation şema örneği için adımları dağıtın.
-ms.date: 05/06/2020
+ms.date: 03/12/2021
 ms.topic: sample
-ms.openlocfilehash: a2d3090e5e9fe265683c077d7056ebf2b108352d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a8d41364451bf2ebf1e48b90fad74f4b24c804e1
+ms.sourcegitcommit: 66ce33826d77416dc2e4ba5447eeb387705a6ae5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "82871630"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103470158"
 ---
 # <a name="deploy-the-microsoft-cloud-adoption-framework-for-azure-foundation-blueprint-sample"></a>Azure Foundation şema örneği için Microsoft bulut benimseme çerçevesini dağıtma
 
@@ -52,7 +52,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 ## <a name="assign-the-sample-copy"></a>Örnek kopyayı atama
 
-Şema örneğinin kopyası başarıyla **yayımlandıktan**sonra, kaydedildiği yönetim grubu içindeki bir aboneliğe atanabilir. Bu adımda, şema örneği kopyasının her bir dağıtımını benzersiz hale getirmek için parametreler sağlanır.
+Şema örneğinin kopyası başarıyla **yayımlandıktan** sonra, kaydedildiği yönetim grubu içindeki bir aboneliğe atanabilir. Bu adımda, şema örneği kopyasının her bir dağıtımını benzersiz hale getirmek için parametreler sağlanır.
 
 1. Sol bölmede **Tüm hizmetler**'i seçin. **Şemalar**’ı arayıp seçin.
 
@@ -106,7 +106,7 @@ Aşağıdaki tabloda, şema yapıtı parametrelerinin bir listesi verilmiştir:
 |İzin verilen sanal makine SKU 'Ları|İlke ataması|Policy_Allowed-VM-SKU 'Lar|İzin verilen sanal makine SKU 'Ları|
 |Kaynak gruplarına CostCenter etıketı Ekle|İlke ataması|Policy_CostCenter_Tag|Maliyetmerkezi etıketını ve değerini kaynak grubundan ekleyin|
 |Ortamınızda izin vermek istemediğiniz kaynak türleri|İlke ataması|İlke _Allowed-kaynak türleri|Ortamınızda izin vermek istediğiniz Azure kaynakları|
-|Key Vault’u dağıt|Resource Manager şablonu|KV-AccessPolicy|**Locked** <Object ID> Key Vault için Izin vermek üzere KILITLI-Azure AD grubu veya Kullanıcı|
+|Key Vault’u dağıt|Resource Manager şablonu|KV-AccessPolicy| <Object ID> Key Vault için Izin vermek üzere KILITLI-Azure AD grubu veya Kullanıcı|
 |Log Analytics’i dağıt|Resource Manager şablonu|LogAnalytics_DataRetention|**Kilitli** -Log Analytics verilerin tutulacağı gün sayısı|
 |Log Analytics’i dağıt|Resource Manager şablonu|LogAnalytics_Location|**Kilitli** - Çalışma alanı oluşturulurken kullanılan bölge|
 

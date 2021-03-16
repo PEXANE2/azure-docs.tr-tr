@@ -10,12 +10,12 @@ ms.date: 03/12/2020
 ms.author: santoshc
 ms.reviewer: santoshc
 ms.subservice: common
-ms.openlocfilehash: 16d3d50d5ade298e2ca22f271466c70e74724381
-ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
+ms.openlocfilehash: 67480786e963235d4d3c010bea72e551a8be7bbc
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102613570"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103493807"
 ---
 # <a name="use-private-endpoints-for-azure-storage"></a>Azure depolama için özel uç noktaları kullanma
 
@@ -146,6 +146,12 @@ Bu kısıtlama, a2 hesabı özel bir uç nokta oluşturduğunda yapılan DNS de�
 ### <a name="network-security-group-rules-for-subnets-with-private-endpoints"></a>Özel uç noktaları olan alt ağlar için Ağ Güvenlik Grubu kuralları
 
 Şu anda, [ağ güvenlik grubu](../../virtual-network/network-security-groups-overview.md) (NSG) kurallarını ve özel uç noktalar için Kullanıcı tanımlı yolları yapılandıramazsınız. Özel uç noktasını barındıran alt ağa uygulanan NSG kuralları özel uç noktaya uygulanmaz. Bunlar yalnızca diğer uç noktalara uygulanır (örneğin: ağ arabirim denetleyicileri). Bu sorun için sınırlı bir geçici çözüm, kaynak alt ağlardaki özel uç noktalar için erişim kurallarınızı uygulamaktır, ancak bu yaklaşım daha yüksek bir yönetim yükü gerektirebilir.
+
+### <a name="copying-blobs-between-storage-accounts"></a>Blob 'ları depolama hesapları arasında kopyalama
+
+Yalnızca Azure REST API veya REST API kullanan araçları kullandığınızda özel uç noktaları kullanarak Blobları depolama hesapları arasında kopyalayabilirsiniz. Bu araçlar AzCopy, Depolama Gezgini, Azure PowerShell, Azure CLı ve Azure Blob Storage SDK 'larını içerir. 
+
+Yalnızca BLOB depolama kaynağını hedefleyen özel uç noktalar desteklenir. Data Lake Storage 2. veya dosya kaynağını hedefleyen özel uç noktalar henüz desteklenmiyor. Ayrıca, ağ dosya sistemi (NFS) protokolü kullanılarak depolama hesapları arasında kopyalama henüz desteklenmemektedir. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

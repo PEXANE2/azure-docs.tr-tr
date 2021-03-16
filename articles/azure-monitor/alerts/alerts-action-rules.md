@@ -3,12 +3,12 @@ title: Azure Izleyici uyarıları için eylem kuralları
 description: Azure Izleyici 'deki eylem kurallarının ne olduğunu ve bunların nasıl yapılandırılacağını ve yönetileceğini anlamak.
 ms.topic: conceptual
 ms.date: 03/15/2021
-ms.openlocfilehash: 2ad87cce668555ece0eba6479bf9d21db312bfcf
-ms.sourcegitcommit: 3ea12ce4f6c142c5a1a2f04d6e329e3456d2bda5
+ms.openlocfilehash: f70d798270ad82193f7ae5935d34f8f418d35e05
+ms.sourcegitcommit: 66ce33826d77416dc2e4ba5447eeb387705a6ae5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 03/15/2021
-ms.locfileid: "103466737"
+ms.locfileid: "103471684"
 ---
 # <a name="action-rules-preview"></a>Eylem kuralları (Önizleme)
 
@@ -76,8 +76,8 @@ Bu kural yalnızca seçili kaynak türlerindeki uyarılar için geçerlidir.
 Örneğin, **kaynak türü = "sanal makineler"** , kuralın yalnızca sanal makinelerdeki uyarılar için uygulanacağı anlamına gelir.
 * **Uyarı kuralı KIMLIĞI**  
 Bu kural, yalnızca belirli bir uyarı kuralından gelen uyarılar için geçerlidir. Değer, uyarı kuralının Kaynak Yöneticisi KIMLIĞI olmalıdır.  
-Örneğin, **Uyarı KURALı kimliği = "/Subscriptions/SubId1/resourceGroups/RG1/Providers/Microsoft.insights/metricalerts/API-Latency"** , bu kuralın yalnızca "API-Latency" ölçümü uyarı kuralından gelen uyarılar için uygulanacağını gösterir.
-CLı 'dan uyarı kurallarınızı listeleyerek veya portalda belirli bir uyarı kuralını açıp "Özellikler" ' i tıklatarak ve "kaynak KIMLIĞI" değerini kopyalayarak doğru uyarı kuralı KIMLIĞINI alabilirsiniz.
+Örneğin, **Uyarı KURALı kimliği = "/Subscriptions/SubId1/resourceGroups/RG1/Providers/Microsoft.insights/metricalerts/API-Latency"** , bu kuralın yalnızca "API-Latency" ölçümü uyarı kuralından gelen uyarılar için uygulanacağını gösterir.  
+_Burada, CLı 'dan uyarı kurallarınızı listeleyerek veya portalda belirli bir uyarı kuralını açıp "Özellikler" ' i tıklatarak ve "kaynak KIMLIĞI" değerini kopyalayarak doğru uyarı kuralı KIMLIĞINI alabilirsiniz._
 * **İzleme koşulu**  
 Bu kural yalnızca belirtilen izleyici koşuluna sahip uyarı olayları için geçerlidir- **tetiklenir** veya **çözüldü**.
 * **Açıklama**  

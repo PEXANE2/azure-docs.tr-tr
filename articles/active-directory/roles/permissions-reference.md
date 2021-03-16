@@ -14,39 +14,24 @@ ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a65b91e3dff3ef412dad8bbe57383a9dbf8c7765
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: b7a0f50a7f84b89d7c048e57eadc85635df10f77
+ms.sourcegitcommit: 3ea12ce4f6c142c5a1a2f04d6e329e3456d2bda5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102032254"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103467689"
 ---
 # <a name="azure-ad-built-in-roles"></a>Azure AD yerleşik rolleri
 
-Azure Active Directory (Azure AD) kullanarak, daha az ayrıcalıklı rollerdeki kimlik görevlerini yönetmek için sınırlı yöneticiler atayabilirsiniz. Yöneticiler, Kullanıcı ekleme veya değiştirme, yönetici rolleri atama, Kullanıcı parolalarını sıfırlama, kullanıcı lisanslarını yönetme ve etki alanı adlarını yönetme gibi amaçlar için atanabilir. [Varsayılan Kullanıcı izinleri](../fundamentals/users-default-permissions.md) yalnızca Azure AD 'deki Kullanıcı ayarları ' nda değiştirilebilir.
+Azure Active Directory (Azure AD) içinde, başka bir yönetici veya yönetici olmayan Azure AD kaynaklarını yönetmesi gerekiyorsa, bunlara gereken izinleri sağlayan bir Azure AD rolü atarsınız. Örneğin, Kullanıcı ekleme veya değiştirme, Kullanıcı parolalarını sıfırlama, kullanıcı lisanslarını yönetme veya etki alanı adlarını yönetme izni vermek için roller atayabilirsiniz.
+
+Bu makalede, Azure AD kaynaklarının yönetimine izin vermek için atayabileceğiniz Azure AD yerleşik rolleri listelenir. Rol atama hakkında daha fazla bilgi için bkz. [kullanıcılara Azure AD rolleri atama](manage-roles-portal.md).
 
 ## <a name="limit-use-of-global-administrator"></a>Genel yönetici kullanımını sınırla
 
 Genel yönetici rolüne atanan kullanıcılar, Azure AD kuruluşunuzda her yönetim ayarını okuyabilir ve değiştirebilir. Varsayılan olarak, bir Kullanıcı bir Microsoft bulut hizmetine kaydolduğunda, bir Azure AD kiracısı oluşturulur ve Kullanıcı genel Yöneticiler rolünün bir üyesi yapılır. Mevcut bir kiracıya bir abonelik eklediğinizde, genel yönetici rolüne atanmamıştır. Yalnızca genel Yöneticiler ve ayrıcalıklı rol yöneticileri yönetici rollerini temsil edebilir. İşletmenize yönelik riski azaltmak için, bu rolü kuruluşunuzdaki en az olası kişilere atamanızı öneririz.
 
 En iyi uygulama olarak, bu rolü kuruluşunuzda beşten az kişiden fazlasına atamanız önerilir. Kuruluşunuzda genel yönetici rolüne atanmış beş taneden fazla yönetici varsa, bunun kullanımını azaltmanın bazı yolları aşağıda verilmiştir.
-
-### <a name="find-the-role-you-need"></a>İhtiyaç duyduğunuz rolü bulun
-
-Birçok rolün bir listesini almanız gereken rolü bulmak için, Azure AD rol kategorilerine göre rollerin alt kümelerini gösterebilir. [Azure AD rolleri ve yöneticileri](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RolesAndAdministrators) Için yeni **tür** filtreimize göz atın ve yalnızca seçili türdeki rolleri gösterin.
-
-### <a name="a-role-exists-now-that-didnt-exist-when-you-assigned-the-global-administrator-role"></a>Genel yönetici rolünü atadığınızda artık mevcut olmayan bir rol var
-
-Azure AD 'ye, bazı kullanıcıları küresel yöneticiye yükseltmiş bir seçenek olmayan daha ayrıntılı izinler sağlayan bir rol veya rol eklenmiş olabilir. Zaman içinde, yalnızca genel yönetici rolünün gerçekleştirebileceği görevleri gerçekleştiren ek roller sunuyoruz. Bu, aşağıdaki [tüm rollere](#all-roles)yansıtıldığını görebilirsiniz.
-
-## <a name="assign-or-remove-administrator-roles"></a>Yönetici rolleri atama veya kaldırma
-
-Azure Active Directory ' de bir kullanıcıya yönetim rolleri atamayı öğrenmek için, bkz. [Azure Active Directory yönetici rollerini görüntüleme ve atama](manage-roles-portal.md).
-
-> [!Note]
-> Bir Azure AD Premium P2 lisansınız varsa ve zaten bir Privileged Identity Management (PıM) kullanıcısı varsa, tüm rol yönetimi görevleri Azure AD 'de değil, ayrıcalık kimlik yönetimi 'nde gerçekleştirilir.
->
-> ![Zaten PıM kullanan ve Premium P2 lisansına sahip olan kullanıcılar için PıM 'de yönetilen Azure AD rolleri](./media/permissions-reference/pim-manages-roles-for-p2.png)
 
 ## <a name="all-roles"></a>Tüm roller
 
@@ -1879,6 +1864,6 @@ Kullanım Özeti raporları okuyucusu | &nbsp; | :heavy_check_mark: | :heavy_che
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Bir kullanıcıyı Azure aboneliğinin Yöneticisi olarak atama hakkında daha fazla bilgi edinmek için bkz. [Azure aboneliğinin Yöneticisi olarak kullanıcı atama](../../role-based-access-control/role-assignments-portal-subscription-admin.md)
-* Microsoft Azure içinde kaynak erişiminin nasıl denetlendiği hakkında daha fazla bilgi için bkz [. farklı rolleri anlama](../../role-based-access-control/rbac-and-directory-admin-roles.md)
-* Abonelikler ve bir Azure AD kiracısı arasındaki ilişki hakkında daha fazla bilgi için veya bir aboneliği ilişkilendirme veya ekleme yönergeleri için bkz. [Azure Active Directory Kiracınıza Azure aboneliği ilişkilendirme veya ekleme](../fundamentals/active-directory-how-subscriptions-associated-directory.md)
+- [Azure AD rollerini gruplara atama](groups-assign-role.md)
+- [Farklı rolleri anlama](../../role-based-access-control/rbac-and-directory-admin-roles.md)
+- [Kullanıcıyı Azure aboneliğinin yöneticisi olarak atama](../../role-based-access-control/role-assignments-portal-subscription-admin.md)

@@ -4,12 +4,12 @@ description: Kurtarma Hizmetleri kasasını Azure abonelikleri ve kaynak gruplar
 ms.topic: conceptual
 ms.date: 04/08/2019
 ms.custom: references_regions
-ms.openlocfilehash: 12c276b861e7db8e93e60eea7e9cd7f3aba04860
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+ms.openlocfilehash: 4f75bec533181b29625fb0a10cc26d03f2875036
+ms.sourcegitcommit: 3ea12ce4f6c142c5a1a2f04d6e329e3456d2bda5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96325783"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103466380"
 ---
 # <a name="move-a-recovery-services-vault-across-azure-subscriptions-and-resource-groups"></a>Kurtarma Hizmetleri kasasını Azure abonelikleri ve kaynak grupları arasında taşıma
 
@@ -23,7 +23,7 @@ Fransa Orta, Fransa Güney, Almanya Kuzeydoğu, Almanya Orta, Çin Kuzey, Çin N
 
 - Kaynak grupları arasında kasa taşıma sırasında, hem kaynak hem de hedef kaynak grupları, yazma ve silme işlemlerini önleyecek şekilde kilitlidir. Daha fazla bilgi için bu [makaleye](../azure-resource-manager/management/move-resource-group-and-subscription.md)bakın.
 - Yalnızca yönetici aboneliğinin bir kasayı taşıma izinleri vardır.
-- Kasaların abonelikler arasında taşınması için, hedef aboneliğin kaynak abonelikle aynı kiracıda bulunması ve durumunun etkinleştirilmesi gerekir.
+- Kasaların abonelikler arasında taşınması için, hedef aboneliğin kaynak abonelikle aynı kiracıda bulunması ve durumunun etkinleştirilmesi gerekir. Bir kasayı farklı bir Azure AD dizinine taşımak için bkz. [aboneliği farklı bir dizin](../role-based-access-control/transfer-subscription.md) ve [kurtarma hizmeti Kasası SSS](backup-azure-backup-faq.md#recovery-services-vault)'ye aktarma.
 - Hedef kaynak grubunda yazma işlemleri gerçekleştirmek için izninizin olması gerekir.
 - Kasanın taşınması yalnızca kaynak grubunu değiştirir. Kurtarma Hizmetleri Kasası aynı konumda yer alacak ve değiştirilemez.
 - Tek seferde her bölge için yalnızca bir kurtarma hizmetleri Kasası taşıyabilirsiniz.
@@ -65,7 +65,7 @@ Kurtarma Hizmetleri kasasını ve ilişkili kaynaklarını farklı kaynak grubun
 
    ![Aboneliği taşı](./media/backup-azure-move-recovery-services/move-resource.png)
 
-5. Hedef kaynak grubunu eklemek için, **kaynak grubu** aşağı açılan listesinde var olan bir kaynak grubunu seçin veya **Yeni grup oluştur** seçeneğini belirleyin.
+5. Hedef kaynak grubunu eklemek için, **kaynak grubu** açılır listesinde, var olan bir kaynak grubunu seçin veya **Yeni grup oluştur** seçeneğini belirleyin.
 
    ![Kaynak oluştur](./media/backup-azure-move-recovery-services/create-a-new-resource.png)
 
@@ -95,7 +95,7 @@ Kurtarma Hizmetleri kasasını ve ilişkili kaynaklarını farklı bir aboneliğ
    ![kaynağı taşı](./media/backup-azure-move-recovery-services/move-resource-source-subscription.png)
 
 5. Kasanın taşınmasını istediğiniz **abonelik** açılır listesinden hedef aboneliği seçin.
-6. Hedef kaynak grubunu eklemek için, **kaynak grubu** aşağı açılan listesinde var olan bir kaynak grubunu seçin veya **Yeni grup oluştur** seçeneğini belirleyin.
+6. Hedef kaynak grubunu eklemek için, **kaynak grubu** açılır listesinde, var olan bir kaynak grubunu seçin veya **Yeni grup oluştur** seçeneğini belirleyin.
 
    ![Azure](./media/backup-azure-move-recovery-services/add-subscription.png)
 

@@ -7,12 +7,12 @@ ms.subservice: files
 ms.topic: how-to
 ms.date: 06/22/2020
 ms.author: rogarana
-ms.openlocfilehash: 9807563c768b82c823ff754aaa679ddc917bf62d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3aa7ab2fd3217377e9c56c8c71a1c1acc959bcd9
+ms.sourcegitcommit: 66ce33826d77416dc2e4ba5447eeb387705a6ae5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87535068"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103472271"
 ---
 # <a name="part-four-mount-a-file-share-from-a-domain-joined-vm"></a>Dördüncü kısım: etki alanına katılmış bir VM 'den bir dosya paylaşma bağlama
 
@@ -28,10 +28,10 @@ Aşağıdaki görüntüde gösterildiği gibi, izinleri verilen kimlik bilgileri
 
 Dosya payını bağlayabilmeniz için önce aşağıdaki önkoşulların yerine geldiğinden emin olun:
 
-- Depolama hesabı anahtarınızı kullanarak daha önce dosya paylaşımının bağlandığından bir istemciden dosya paylaşımından bağlama yapıyorsanız, paylaşımın bağlantısını kesdiğinizden, depolama hesabı anahtarının kalıcı kimlik bilgilerini kaldırmış olduğunuzdan ve şu anda kimlik doğrulaması için AD DS kimlik bilgileri kullandığınızdan emin olun.
+- Depolama hesabı anahtarınızı kullanarak daha önce dosya paylaşımının bağlandığından bir istemciden dosya paylaşımından bağlama yapıyorsanız, paylaşımın bağlantısını kesdiğinizden, depolama hesabı anahtarının kalıcı kimlik bilgilerini kaldırmış olduğunuzdan ve şu anda kimlik doğrulaması için AD DS kimlik bilgileri kullandığınızdan emin olun. Bağlanmış paylaşımın depolama hesabı anahtarıyla temizlenme yönergeleri için [SSS sayfasına](https://docs.microsoft.com/azure/storage/files/storage-files-faq#ad-ds--azure-ad-ds-authentication)bakın.
 - İstemciniz AD DS bir görüş satırı içermelidir. Makinenizin veya sanal makinenizin AD DS tarafından yönetilen ağ tükeniyorsa, kimlik doğrulaması için AD DS ulaşmak üzere VPN 'yi etkinleştirmeniz gerekir.
 
-Yer tutucu değerlerini kendi değerlerinizle değiştirin, ardından Azure dosya paylaşımından bağlama için aşağıdaki komutu kullanın:
+Yer tutucu değerlerini kendi değerlerinizle değiştirin, ardından Azure dosya paylaşımından bağlama yapmak için aşağıdaki komutu kullanın. Aşağıda gösterilen yolu kullanarak her zaman bağlamanız gerekir. Dosya bağlama için CNAME kullanmak kimlik tabanlı kimlik doğrulaması (AD DS veya Azure AD DS) için desteklenmez.
 
 ```PSH
 # Always mount your share using.file.core.windows.net, even if you setup a private endpoint for your share.

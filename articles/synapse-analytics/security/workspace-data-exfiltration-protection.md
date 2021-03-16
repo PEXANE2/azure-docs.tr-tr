@@ -1,19 +1,19 @@
 ---
 title: Azure SYNAPSE Analytics çalışma alanları için veri ayıklanma koruması
 description: Bu makalede, Azure SYNAPSE Analytics 'te veri alma koruması açıklanmaktadır
-author: NanditaV
+author: nanditavalsan
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: security
 ms.date: 12/01/2020
 ms.author: NanditaV
 ms.reviewer: jrasnick
-ms.openlocfilehash: 71210cdcc2b3758a59a1b41816e6468556e94808
-ms.sourcegitcommit: 84e3db454ad2bccf529dabba518558bd28e2a4e6
+ms.openlocfilehash: e4067d5acf55f94cd46e629792312af1547c5901
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96518269"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103489382"
 ---
 # <a name="data-exfiltration-protection-for-azure-synapse-analytics-workspaces"></a>Azure SYNAPSE Analytics çalışma alanları için veri ayıklanma koruması
 Bu makalede, Azure SYNAPSE Analytics 'te veri alma koruması açıklanmaktadır
@@ -25,7 +25,7 @@ Azure SYNAPSE Analytics çalışma alanları, çalışma alanları için veri ş
 >Çalışma alanı oluşturulduktan sonra yönetilen sanal ağ ve veri savunma koruması için çalışma alanı yapılandırmasını değiştiremezsiniz.
 
 ## <a name="managing-synapse-workspace-data-egress-to-approved-targets"></a>SYNAPSE çalışma alanı veri çıkışı 'nı onaylanan hedeflere yönetme
-Çalışma alanı veri ayıklanma etkinken oluşturulduktan sonra, çalışma alanı kaynağının sahipleri, çalışma alanı için onaylanan Azure AD kiracılarının listesini yönetebilir. Çalışma alanı üzerinde [doğru izinlere](./synapse-workspace-access-control-overview.md) sahip kullanıcılar, çalışma alanının onaylanan Azure AD kiracılarındaki kaynaklara yönetilen özel uç nokta bağlantı istekleri oluşturmak Için SYNAPSE Studio 'yu kullanabilir. Kullanıcı onaylanmamış bir Kiracıdaki bir kaynağa özel bir uç nokta bağlantısı oluşturmayı denerse yönetilen özel uç nokta oluşturma engellenir.
+Çalışma alanı veri ayıklanma koruması etkinken oluşturulduktan sonra çalışma alanı kaynağının sahipleri, çalışma alanı için onaylanan Azure AD kiracılarının listesini yönetebilir. Çalışma alanı üzerinde [doğru izinlere](./synapse-workspace-access-control-overview.md) sahip kullanıcılar, çalışma alanının onaylanan Azure AD kiracılarındaki kaynaklara yönetilen özel uç nokta bağlantı istekleri oluşturmak Için SYNAPSE Studio 'yu kullanabilir. Kullanıcı onaylanmamış bir Kiracıdaki bir kaynağa özel bir uç nokta bağlantısı oluşturmayı denerse yönetilen özel uç nokta oluşturma engellenir.
 
 ## <a name="sample-workspace-with-data-exfiltration-protection-enabled"></a>Veri dışlanan koruma özellikli örnek çalışma alanı
 SYNAPSE çalışma alanları için veri dışlanan korumasını göstermek üzere bir örnek kullanalım. Contoso, kiracı A ve B kiracısında Azure kaynaklarına sahiptir ve bu kaynakların güvenli bir şekilde bağlanmasına gerek vardır. Kiracıda bir Synapse çalışma alanı, onaylı bir Azure AD kiracısı olarak B kiracısı eklenmiş şekilde oluşturulmuştur. Diyagramda, kiracı A ve kiracı B 'de depolama hesabı sahipleri tarafından onaylanan Azure depolama hesaplarına yönelik özel uç nokta bağlantıları gösterilmektedir. Diyagram ayrıca engellenen özel uç nokta oluşturmayı gösterir. Bu özel uç noktanın oluşturulması, contoso çalışma alanı için onaylanan bir Azure AD kiracısı olmayan fabrikam Azure AD kiracısında bir Azure Depolama hesabını hedeflediğinden engellendi. 

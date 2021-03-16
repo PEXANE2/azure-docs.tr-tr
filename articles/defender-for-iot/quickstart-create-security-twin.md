@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 1/21/2021
 ms.author: shhazam
-ms.openlocfilehash: 832c8e426b57e6b447ef805f2868a6d42abe3d9d
-ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
+ms.openlocfilehash: cfd5192a78c34caf5acbe4576f5a00ab314acb61
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "102449705"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103489905"
 ---
 # <a name="quickstart-create-an-azureiotsecurity-module-twin"></a>Hızlı başlangıç: azureiotsecurity modülü oluşturma ikizi
 
@@ -39,9 +39,9 @@ Azure IoT Hub modül TWINS 'in genel kavramı hakkında daha fazla bilgi edinmek
 
 IoT için Defender, Module ikizi mekanizmasını kullanır ve cihazlarınızın her biri için _azureiotsecurity_ adlı bir güvenlik modülünü ikizi.
 
-İkizi güvenlik modülü, cihazlarınızın her biri için cihaz güvenliğiyle ilgili tüm bilgileri tutar.
+Defender-IoT-Micro-Agent ikizi, cihazlarınızın her biri için cihaz güvenliğiyle ilgili tüm bilgileri tutar.
 
-IoT özellikleri için Defender 'ın tam kullanımını yapmak üzere bu güvenlik modülü ikl hizmetini hizmette her cihaz için oluşturmanız, yapılandırmanız ve kullanmanız gerekir.
+IoT özellikleri için Defender 'ın tam kullanımını yapmak üzere bu Defender-IoT-Micro-Agent TWINS hizmetini hizmette her cihaz için oluşturmanız, yapılandırmanız ve kullanmanız gerekir.
 
 ## <a name="create-azureiotsecurity-module-twin"></a>Azureiotsecurity modülü oluşturma ikizi
 

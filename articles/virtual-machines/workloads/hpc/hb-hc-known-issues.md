@@ -5,23 +5,27 @@ author: vermagit
 ms.service: virtual-machines
 ms.subservice: hpc
 ms.topic: article
-ms.date: 1/19/2021
+ms.date: 03/12/2021
 ms.author: amverma
 ms.reviewer: cynthn
-ms.openlocfilehash: 83f9778da91cebb651d98e2e85748cda7435230a
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 0a0eaa18f5b120fcc9cbf0e4da470ee46772c925
+ms.sourcegitcommit: 66ce33826d77416dc2e4ba5447eeb387705a6ae5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101674676"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103470413"
 ---
 # <a name="known-issues-with-h-series-and-n-series-vms"></a>H serisi ve N serisi VM’lerdeki bilinen sorunlar
 
 Bu makalede, [H serisi](../../sizes-hpc.md) ve [N SERISI](../../sizes-gpu.md) HPC ve GPU VM 'leri kullanılırken en yaygın sorunlar ve çözümler sağlanmaktadır.
 
+## <a name="known-issues-on-hbv3"></a>HBv3 ile ilgili bilinen sorunlar
+- InfiniBand Şu anda yalnızca 120 çekirdekli VM 'de desteklenir (Standard_HB120rs_v3). Diğer VM boyutları üzerinde destek yakında etkinleştirilecek.
+- Azure hızlandırılmış ağ, tüm bölgelerde HBv3-Series üzerinde desteklenmez. Bu özellik yakında etkinleştirilecek.
+
 ## <a name="accelerated-networking-on-hb-hc-hbv2-and-ndv2"></a>HB, HC, HBv2 ve NDv2 üzerinde hızlandırılmış ağ
 
-[Azure hızlandırılmış ağ](https://azure.microsoft.com/blog/maximize-your-vm-s-performance-with-accelerated-networking-now-generally-available-for-both-windows-and-linux/) , artık RDMA ve InfiniBand özellıklı ve SR-ıOV etkinleştirilmiş VM boyutları [HB](../../hb-series.md), [HC](../../hc-series.md), [HBv2](../../hbv2-series.md) ve [NDv2](../../ndv2-series.md)' de kullanılabilir. Bu özellik artık, Azure Ethernet ağı üzerinden Gelişmiş (en fazla 30 Gbps) ve gecikme süreleriyle geliştirilmiştir. Bu, InfiniBand ağı üzerinden RDMA özelliğinden ayrı olsa da, bu özellik için bazı platform değişiklikleri, InfiniBand üzerinde işleri çalıştırırken belirli MPı uygulamalarının davranışlarını etkileyebilir. Özellikle, bazı sanal makinelerdeki InfiniBand arabiriminin adı biraz farklı olabilir (mlx5_1 önceki mlx5_0 aksine) ve bu, özellikle UCX arabirimi (genellikle OpenMPI ve HPC-X ile) kullanılırken MPı komut satırları için kullanılabilir olmasını gerektirebilir.
+[Azure hızlandırılmış ağ](https://azure.microsoft.com/blog/maximize-your-vm-s-performance-with-accelerated-networking-now-generally-available-for-both-windows-and-linux/) , artık RDMA ve InfiniBand özellıklı ve SR-ıOV etkinleştirilmiş VM boyutları [HB](../../hb-series.md), [HC](../../hc-series.md), [HBv2](../../hbv2-series.md)ve [NDv2](../../ndv2-series.md)' de kullanılabilir. Bu özellik artık, Azure Ethernet ağı üzerinden Gelişmiş (en fazla 30 Gbps) ve gecikme süreleriyle geliştirilmiştir. Bu, InfiniBand ağı üzerinden RDMA özelliğinden ayrı olsa da, bu özellik için bazı platform değişiklikleri InfiniBand üzerinde iş çalıştırırken belirli MPı uygulamalarının davranışlarını etkileyebilir. Özellikle, bazı sanal makinelerdeki InfiniBand arabiriminin adı biraz farklı olabilir (mlx5_1 önceki mlx5_0 aksine) ve bu, özellikle UCX arabirimi (genellikle OpenMPI ve HPC-X ile) kullanılırken MPı komut satırları için kullanılabilir olmasını gerektirebilir.
 Bu konuda daha fazla bilgi edinmek için bu [blog makalesinde](https://techcommunity.microsoft.com/t5/azure-compute/accelerated-networking-on-hb-hc-and-hbv2/ba-p/2067965) , gözlemlenen sorunları nasıl ele alan hakkında yönergeler bulabilirsiniz.
 
 ## <a name="infiniband-driver-installation-on-n-series-vms"></a>N serisi VM 'lerde InfiniBand sürücü yüklemesi
@@ -54,11 +58,7 @@ Bu ' Cloud-init on Ubuntu ile yinelenen MAC, bilinen bir sorundur. Geçici çöz
 
 ## <a name="dram-on-hb-series"></a>DRAM on HB Serisi
 
-HB Serisi VM 'Ler Şu anda Konuk VM 'lere yalnızca 228 GB RAM kullanıma sunabilir. Bunun nedeni, sayfaların Konuk sanal makine için ayrılmış olan (NUMA etki alanları) yerel DRAM 'ye atanmasını engellemek için Azure hiper yöneticisinin bilinen bir sınırlamasıdır.
-
-## <a name="accelerated-networking"></a>Hızlandırılmış Ağ
-
-IB etkin HPC ve GPU VM 'lerinde Azure hızlandırılmış ağ hizmeti şu anda etkin değil. Bu özellik desteklenmiş olduğunda müşterileri bilgilendireceğiz.
+HB Serisi VM 'Ler Şu anda Konuk VM 'lere yalnızca 228 GB RAM kullanıma sunabilir. Benzer şekilde, HBv2 üzerinde 458 GB ve HBv3 VM 'lerinde 448 GB. Bunun nedeni, sayfaların Konuk sanal makine için ayrılmış olan (NUMA etki alanları) yerel DRAM 'ye atanmasını engellemek için Azure hiper yöneticisinin bilinen bir sınırlamasıdır.
 
 ## <a name="qp0-access-restriction"></a>qp0 erişim kısıtlaması
 
@@ -114,5 +114,5 @@ Linux altında bir HB Serisi VM 'yi önyüklerken aşağıdaki çekirdek uyarıs
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - Performans ve ölçeklenebilirlik için iş yüklerini en iyi şekilde yapılandırma hakkında bilgi edinmek için [HB Serisi genel bakış](hb-series-overview.md) ve [HC Serisi genel bakışı](hc-series-overview.md) gözden geçirin.
-- En son duyurular ve bazı HPC örnekleri hakkında bilgi edinin ve [Azure Işlem teknik topluluk bloglarında](https://techcommunity.microsoft.com/t5/azure-compute/bg-p/AzureCompute)bu sonuçları elde edin.
+- [Azure Işlem Tech Community bloglarında](https://techcommunity.microsoft.com/t5/azure-compute/bg-p/AzureCompute)en son Duyurular, HPC iş yükü örnekleri ve performans sonuçları hakkında bilgi edinin.
 - HPC iş yüklerini çalıştırmanın daha üst düzey mimari görünümü için bkz. [Azure 'Da yüksek performanslı bilgi işlem (HPC)](/azure/architecture/topics/high-performance-computing/).

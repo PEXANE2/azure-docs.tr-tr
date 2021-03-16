@@ -3,12 +3,12 @@ title: En iyi uygulamalar
 description: Azure Batch çözümlerinizi geliştirmek için en iyi uygulamaları ve yararlı ipuçlarını öğrenin.
 ms.date: 03/11/2020
 ms.topic: conceptual
-ms.openlocfilehash: 0b3dfe6d974f2cc2449faf54c4549589e0baa7cf
-ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
+ms.openlocfilehash: 15ff46ad74c4c48c6b5f320622bc364adf59d4cc
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/12/2021
-ms.locfileid: "103199841"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103496295"
 ---
 # <a name="azure-batch-best-practices"></a>En iyi Azure Batch uygulamalar
 
@@ -25,8 +25,8 @@ Bu makalede, Batch ile gerçek yaşam deneyimlerine bağlı olarak Azure Batch h
 
 - **Havuz ayırma modu** Batch hesabı oluştururken iki havuz ayırma modu arasından seçim yapabilirsiniz: **Batch hizmeti** veya **Kullanıcı aboneliği**. Çoğu durumda, toplu yönetilen aboneliklerde havuzların arkasında ayrıldığı varsayılan Batch hizmeti modunu kullanmanız gerekir. Alternatif Kullanıcı aboneliği modunda, bir havuz oluşturulduğunda Batch VM'leri ve diğer kaynaklar doğrudan aboneliğinizde oluşturulur. Kullanıcı aboneliği hesapları, önemli, ancak küçük bir senaryo alt kümesini etkinleştirmek için öncelikli olarak kullanılır. Kullanıcı aboneliği modu hakkında daha fazla bilgi için kullanıcı aboneliği [modu Için ek yapılandırma](batch-account-create-portal.md#additional-configuration-for-user-subscription-mode)makalesini okuyun.
 
-- **' virtualMachineConfiguration ' veya ' virtualMachineConfiguration '.**
-    Şu anda iki yapılandırmayı kullanarak havuzlar oluşturabilirsiniz, ancak ' virtualMachineConfiguration ' değil, yeni havuzlar ' virtualMachineConfiguration ' kullanılarak yapılandırılmalıdır. Tüm geçerli ve yeni toplu Işlem özellikleri, sanal makine yapılandırma havuzları tarafından desteklenecektir. Cloud Services yapılandırma havuzları tüm özellikleri desteklemez ve yeni bir özellik planlanmaz. Yeni ' CloudServiceConfiguration ' havuzları oluşturamaz veya [29 şubat 2024 ' den sonra](https://azure.microsoft.com/updates/azure-batch-cloudserviceconfiguration-pools-will-be-retired-on-29-february-2024/)var olan havuzlara yeni düğümler ekleyemeyeceksiniz. Daha fazla bilgi için bkz. [Cloud Services Batch havuzu yapılandırmasını sanal makineye geçirme](batch-pool-cloud-service-to-virtual-machine-configuration.md).
+- **' virtualMachineConfiguration ' veya ' cloudServiceConfiguration '.**
+    Şu anda iki yapılandırmayı kullanarak havuzlar oluşturabilirsiniz, ancak ' cloudServiceConfiguration ' değil, yeni havuzlar ' virtualMachineConfiguration ' kullanılarak yapılandırılmalıdır. Tüm geçerli ve yeni toplu Işlem özellikleri, sanal makine yapılandırma havuzları tarafından desteklenecektir. Cloud Services yapılandırma havuzları tüm özellikleri desteklemez ve yeni bir özellik planlanmaz. Yeni ' cloudServiceConfiguration ' havuzları oluşturamaz veya [29 şubat 2024 ' den sonra](https://azure.microsoft.com/updates/azure-batch-cloudserviceconfiguration-pools-will-be-retired-on-29-february-2024/)var olan havuzlara yeni düğümler ekleyemeyeceksiniz. Daha fazla bilgi için bkz. [Cloud Services Batch havuzu yapılandırmasını sanal makineye geçirme](batch-pool-cloud-service-to-virtual-machine-configuration.md).
 
 - **İş ve görev çalışma süresini, havuzdan eşleme işi belirlenirken göz önünde bulundurun.**
     Öncelikle kısa süreli görevlerden oluşan işleriniz varsa ve beklenen toplam görev sayısı küçük olduğundan, işin genel beklenen çalışma zamanının uzun olmaması ve her iş için yeni bir havuz ayrılmaması gerekir. Düğümlerin ayırma süresi, işin çalışma süresini azaledecektir.

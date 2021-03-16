@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 01/07/2021
 ms.author: trbye
 ms.custom: references_regions
-ms.openlocfilehash: ebdb6a44a1f20ce0835fc5d7358d99c8224d3d77
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 43456655d057ee79ed347e4a94c008d825bfa639
+ms.sourcegitcommit: 66ce33826d77416dc2e4ba5447eeb387705a6ae5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102044944"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103470243"
 ---
 # <a name="language-and-voice-support-for-the-speech-service"></a>Konuşma hizmeti için dil ve ses desteği
 
@@ -194,8 +194,8 @@ Sinir sesleri, chatbots ve ses yardımcılarıyla daha doğal ve etkileyici bir 
 | İngilizce (İngiltere) | `en-GB` | Kadın | `en-GB-MiaNeural` | Genel |
 | İngilizce (İngiltere) | `en-GB` | Erkek | `en-GB-RyanNeural` | Genel |
 | İngilizce (ABD) | `en-US` | Kadın | `en-US-AriaNeural` | Genel, [SSML kullanarak](speech-synthesis-markup.md#adjust-speaking-styles) birden çok ses stili mevcuttur  |
-| İngilizce (ABD) | `en-US` | Kadın | `en-US-JennyNeural` | Genel |
-| İngilizce (ABD) | `en-US` | Erkek | `en-US-GuyNeural` | Genel |
+| İngilizce (ABD) | `en-US` | Kadın | `en-US-JennyNeural` | Genel, [SSML kullanarak](speech-synthesis-markup.md#adjust-speaking-styles) birden çok ses stili mevcuttur  |
+| İngilizce (ABD) | `en-US` | Erkek | `en-US-GuyNeural` | Genel, [SSML kullanarak](speech-synthesis-markup.md#adjust-speaking-styles) birden çok ses stili mevcuttur  |
 | Fince (Finlandiya) | `fi-FI` | Kadın | `fi-FI-NooraNeural` | Genel |
 | Fince (Finlandiya) | `fi-FI` | Kadın | `fi-FI-SelmaNeural` <sup>Yeni</sup> | Genel |
 | Fince (Finlandiya) | `fi-FI` | Erkek | `fi-FI-HarriNeural` <sup>Yeni</sup> | Genel |
