@@ -1,6 +1,6 @@
 ---
-title: Azure VM 'lerinde SQL Server için DB2 (Geçiş Kılavuzu)
-description: DB2 sunucunuzu Azure VM 'lerinde SQL Server geçirmek için bu kılavuzu izleyin.
+title: "Azure VM 'lerinde SQL Server için DB2: geçiş kılavuzu"
+description: Bu kılavuz, DB2 SQL Server Geçiş Yardımcısı for DB2 kullanarak DB2 veritabanınızı Azure VM 'lerinde SQL Server geçirmenize öğretir.
 ms.custom: ''
 ms.service: virtual-machines-sql
 ms.subservice: migration-guide
@@ -10,12 +10,12 @@ author: markjones-msft
 ms.author: markjon
 ms.reviewer: mathoma
 ms.date: 11/06/2020
-ms.openlocfilehash: c3f3af6a1c114d6587992f79e95dcc0c1ccb41e6
-ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
+ms.openlocfilehash: aadfd2d96e2ed610ee1e3eaaec9276212e912b0d
+ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98797464"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103562238"
 ---
 # <a name="migration-guide-db2-to-sql-server-on-azure-vms"></a>Geçiş Kılavuzu: DB2 Azure VM 'lerinde SQL Server
 [!INCLUDE[appliesto--sqlmi](../../includes/appliesto-sqlvm.md)]
@@ -144,14 +144,12 @@ Veritabanı geçişi için test yaklaşımı aşağıdaki etkinliklerden oluşur
 1. **Doğrulama testlerini Çalıştır**: doğrulama testlerini kaynak ve hedefe göre çalıştırın ve ardından sonuçları çözümleyin.
 1. **Performans testlerini Çalıştır**: kaynak ve hedefte performans testi çalıştırın ve ardından sonuçları çözümleyip karşılaştırın.
 
-   > [!NOTE]
-   > Geçiş sonrası doğrulama testlerini geliştirmeye ve çalıştırmaya yönelik yardım için iş ortağı [Querysurge](https://www.querysurge.com/company/partners/microsoft)tarafından kullanılabilen veri kalitesi çözümünü göz önünde bulundurun. 
 
 ## <a name="migration-assets"></a>Geçiş varlıkları 
 
 Ek Yardım için, gerçek dünyada geçiş projesi katılımı desteğiyle geliştirilen aşağıdaki kaynaklara bakın:
 
-|Varlık  |Description  |
+|Varlık  |Açıklama  |
 |---------|---------|
 |[Veri iş yükü değerlendirmesi modeli ve aracı](https://github.com/Microsoft/DataMigrationTeam/tree/master/Data%20Workload%20Assessment%20Model%20and%20Tool)| Bu araç, belirli bir iş yükü için önerilen "en uygun" hedef platformları, bulut hazırlığı ve uygulama/veritabanı düzeltme düzeyini sağlar. Basit ve tek tıklamayla bir hesaplama ve rapor oluşturma olanağı sunarak, ve otomatikleştirilmiş ve Tekdüzen hedef platformu karar süreci sağlayarak büyük Emlak değerlendirmelerini hızlandırmaya yardımcı olur.|
 |[DB2 zOS veri varlıkları bulma ve değerlendirme paketi](https://github.com/Microsoft/DataMigrationTeam/tree/master/DB2%20zOS%20Data%20Assets%20Discovery%20and%20Assessment%20Package)|SQL betiğini bir veritabanında çalıştırdıktan sonra, sonuçları dosya sistemindeki bir dosyaya dışarı aktarabilirsiniz. Bazı dosya biçimleri, *. csv dahil olmak üzere desteklenir, böylece sonuçları elektronik tablolar gibi dış araçlarla yakalayabilirsiniz. Bu yöntem, çalışma ekranı yüklü olmayan ekiplerle sonuçları kolayca paylaşmak istiyorsanız yararlı olabilir.|
@@ -169,5 +167,4 @@ Geçişten sonra, [geçiş sonrası doğrulama ve iyileştirme kılavuzunu](/sql
 Diğer geçiş kılavuzlarında, bkz. [Veritabanı geçişi](https://datamigration.microsoft.com/). 
 
 Video içeriği için bkz.:
-- [Veritabanı geçiş kılavuzunu kullanma](https://azure.microsoft.com/resources/videos/how-to-use-the-azure-database-migration-guide/)
 - [Geçiş yolculuğuna genel bakış](https://azure.microsoft.com/resources/videos/overview-of-migration-and-recommended-tools-services/)

@@ -3,19 +3,19 @@ title: Azure Dayanıklı İşlevler birim testi
 description: Birim testi Dayanıklı İşlevler nasıl yapılacağını öğrenin.
 ms.topic: conceptual
 ms.date: 11/03/2019
-ms.openlocfilehash: 7786a0a2e2d31086e1938b70e63fe2374e16fe7f
-ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
+ms.openlocfilehash: 89b6419e95b3971b0d272490e19354f300204e1e
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96601365"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103491053"
 ---
 # <a name="durable-functions-unit-testing"></a>Dayanıklı İşlevler birim testi
 
 Birim testi modern yazılım geliştirme uygulamalarının önemli bir parçasıdır. Birim testleri, iş mantığı davranışını doğrular ve gelecekte önemli değişikliklerden kaçınmadan korur. Dayanıklı İşlevler, birim testlerinin önemli değişikliklerden kaçınmanıza yardımcı olacak şekilde karmaşıklığa kolayca büyüyebilir. Aşağıdaki bölümlerde,-Orchestration Client, Orchestrator ve Activity işlevlerinin üç işlev türünü test etme işlemi açıklanmaktadır.
 
 > [!NOTE]
-> Bu makalede, Dayanıklı İşlevler 1. x ' i hedefleyen Dayanıklı İşlevler uygulamalar için birim testi Kılavuzu sağlanmıştır. Henüz Dayanıklı İşlevler 2. x sürümünde tanıtılan değişiklikler için hesaba güncelleştirilmedi. Sürümler arasındaki farklılıklar hakkında daha fazla bilgi için [dayanıklı işlevler sürümler](durable-functions-versions.md) makalesine bakın.
+> Bu makalede, Dayanıklı İşlevler 2. x ' i hedefleyen Dayanıklı İşlevler uygulamalar için birim testi Kılavuzu sağlanmıştır. Sürümler arasındaki farklılıklar hakkında daha fazla bilgi için [dayanıklı işlevler sürümler](durable-functions-versions.md) makalesine bakın.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -31,20 +31,17 @@ Bu makaledeki örneklerde aşağıdaki kavramlar ve çerçeveler hakkında bilgi
 
 ## <a name="base-classes-for-mocking"></a>Sahte işlem için temel sınıflar
 
-Mocking Dayanıklı İşlevler 1. x içinde üç soyut sınıf aracılığıyla desteklenir:
+Mocking aşağıdaki arabirim aracılığıyla desteklenir:
 
-* `DurableOrchestrationClientBase`
+* [Idurableorchestrationclient](/dotnet/api/microsoft.azure.webjobs.IDurableOrchestrationClient), [ıdurableentityclient](/dotnet/api/microsoft.azure.webjobs.IDurableEntityClient) ve [ıdurableclient](/dotnet/api/microsoft.azure.webjobs.IDurableClient)
 
-* `DurableOrchestrationContextBase`
+* [Idurableorchestrationcontext](/dotnet/api/microsoft.azure.webjobs.IDurableOrchestrationContext)
 
-* `DurableActivityContextBase`
+* [Idurableactivitycontext](/dotnet/api/microsoft.azure.webjobs.IDurableActivityContext)
+  
+* [Idurableentitycontext](/dotnet/api/microsoft.azure.webjobs.IDurableEntityContext)
 
-Bu sınıflar,, `DurableOrchestrationClient` `DurableOrchestrationContext` ve `DurableActivityContext` düzenleme istemcisi, Orchestrator ve etkinlik yöntemlerini tanımlayan temel sınıflardır. Birim testin iş mantığını doğrulayabilmesi için, bu, taban sınıf yöntemleri için beklenen davranışı ayarlar. Orchestration Istemcisinde ve Orchestrator 'da iş mantığını birim testi için iki adımlı bir iş akışı vardır:
-
-1. Orchestration Client ve Orchestrator işlev imzalarını tanımlarken somut uygulama yerine temel sınıfları kullanın.
-2. Birim testlerinde, temel sınıfların davranışını ve iş mantığını doğrular.
-
-Orchestration istemci bağlamasını ve Orchestrator tetikleyicisi bağlamasını kullanan işlevleri test etmek için aşağıdaki paragraflarda daha fazla ayrıntı bulabilirsiniz.
+Bu arabirimler, Dayanıklı İşlevler tarafından desteklenen çeşitli tetikleyici ve bağlamalarla birlikte kullanılabilir. Azure Işlevlerinizi yürütürken, işlevler çalışma zamanı, işlev kodunuzu bu arabirimlerin somut bir uygulamasıyla çalıştırır. Birim testi için, iş mantığınızı test etmek üzere bu arabirimlerin bir moclenmiş sürümünü geçirebilirsiniz.
 
 ## <a name="unit-testing-trigger-functions"></a>Birim testi tetikleme işlevleri
 
@@ -52,71 +49,77 @@ Bu bölümde, birim testi yeni düzenlemeleri başlatmak için aşağıdaki HTTP
 
 [!code-csharp[Main](~/samples-durable-functions/samples/precompiled/HttpStart.cs)]
 
-Birim testi görevi, `Retry-After` Yanıt yükünde belirtilen üstbilginin değerini doğrulamak olacaktır. Bu nedenle, birim testi `DurableOrchestrationClientBase` tahmin edilebilir davranış sağlamak için bazı yöntemleri sahte hale getirebilir.
+Birim testi görevi, `Retry-After` Yanıt yükünde belirtilen üstbilginin değerini doğrulamak olacaktır. Bu nedenle, birim testi `IDurableClient` tahmin edilebilir davranış sağlamak için bazı yöntemleri sahte hale getirebilir.
 
-İlk olarak, temel sınıfın bir sahte olması gerekir `DurableOrchestrationClientBase` . Sahte, uygulayan yeni bir sınıf olabilir `DurableOrchestrationClientBase` . Ancak [moq](https://github.com/moq/moq4) gibi bir sahte işlem çerçevesinin kullanılması işlemi basitleştirir:
+İlk olarak, şu şekilde bir sahte işlem çerçevesi (Bu durumda[moq](https://github.com/moq/moq4) ) kullanıyoruz `IDurableClient` :
 
 ```csharp
-    // Mock DurableOrchestrationClientBase
-    var durableOrchestrationClientBaseMock = new Mock<DurableOrchestrationClientBase>();
+// Mock IDurableClient
+var durableClientMock = new Mock<IDurableClient>();
 ```
+
+> [!NOTE]
+> Arabirimi doğrudan arabirimini bir sınıf olarak uygulayarak, sahte işlem çerçeveleri, işlemi çeşitli yollarla basitleştirir. Örneğin, alt sürümler arasında arabirime yeni bir yöntem eklenirse, moq somut uygulamalardan farklı olarak herhangi bir kod değişikliği gerektirmeyecektir.
 
 Daha sonra `StartNewAsync` Yöntem, iyi bilinen bir örnek kimliği döndürecek şekilde yapılır.
 
 ```csharp
-    // Mock StartNewAsync method
-    durableOrchestrationClientBaseMock.
-        Setup(x => x.StartNewAsync(functionName, It.IsAny<object>())).
-        ReturnsAsync(instanceId);
+// Mock StartNewAsync method
+durableClientMock.
+    Setup(x => x.StartNewAsync(functionName, It.IsAny<object>())).
+    ReturnsAsync(instanceId);
 ```
 
 Sonraki adımda `CreateCheckStatusResponse` her zaman boş BIR HTTP 200 yanıtı döndürülür.
 
 ```csharp
-    // Mock CreateCheckStatusResponse method
-    durableOrchestrationClientBaseMock
-        .Setup(x => x.CreateCheckStatusResponse(It.IsAny<HttpRequestMessage>(), instanceId))
-        .Returns(new HttpResponseMessage
+// Mock CreateCheckStatusResponse method
+durableClientMock
+    // Notice that even though the HttpStart function does not call IDurableClient.CreateCheckStatusResponse() 
+    // with the optional parameter returnInternalServerErrorOnFailure, moq requires the method to be set up
+    // with each of the optional parameters provided. Simply use It.IsAny<> for each optional parameter
+    .Setup(x => x.CreateCheckStatusResponse(It.IsAny<HttpRequestMessage>(), instanceId, returnInternalServerErrorOnFailure: It.IsAny<bool>())
+    .Returns(new HttpResponseMessage
+    {
+        StatusCode = HttpStatusCode.OK,
+        Content = new StringContent(string.Empty),
+        Headers =
         {
-            StatusCode = HttpStatusCode.OK,
-            Content = new StringContent(string.Empty),
-            Headers =
-            {
-                RetryAfter = new RetryConditionHeaderValue(TimeSpan.FromSeconds(10))
-            }
-        });
+            RetryAfter = new RetryConditionHeaderValue(TimeSpan.FromSeconds(10))
+        }
+    });
 ```
 
 `ILogger` Ayrıca şu şekilde olur:
 
 ```csharp
-    // Mock ILogger
-    var loggerMock = new Mock<ILogger>();
+// Mock ILogger
+var loggerMock = new Mock<ILogger>();
 ```  
 
 Artık, `Run` yöntemi birim testten çağrılır:
 
 ```csharp
-    // Call Orchestration trigger function
-    var result = await HttpStart.Run(
-        new HttpRequestMessage()
-        {
-            Content = new StringContent("{}", Encoding.UTF8, "application/json"),
-            RequestUri = new Uri("http://localhost:7071/orchestrators/E1_HelloSequence"),
-        },
-        durableOrchestrationClientBaseMock.Object,
-        functionName,
-        loggerMock.Object);
+// Call Orchestration trigger function
+var result = await HttpStart.Run(
+    new HttpRequestMessage()
+    {
+        Content = new StringContent("{}", Encoding.UTF8, "application/json"),
+        RequestUri = new Uri("http://localhost:7071/orchestrators/E1_HelloSequence"),
+    },
+    durableClientMock.Object,
+    functionName,
+    loggerMock.Object);
  ```
 
  Son adım, çıktıyı beklenen değerle karşılaştırmaktır:
 
 ```csharp
-    // Validate that output is not null
-    Assert.NotNull(result.Headers.RetryAfter);
+// Validate that output is not null
+Assert.NotNull(result.Headers.RetryAfter);
 
-    // Validate output's Retry-After header value
-    Assert.Equal(TimeSpan.FromSeconds(10), result.Headers.RetryAfter.Delta);
+// Validate output's Retry-After header value
+Assert.Equal(TimeSpan.FromSeconds(10), result.Headers.RetryAfter.Delta);
 ```
 
 Tüm adımları birleştirdikten sonra birim testi aşağıdaki koda sahip olur:
@@ -134,30 +137,30 @@ Bu bölümde, birim testleri `E1_HelloSequence` Orchestrator işlevinin çıkı�
 Birim test kodu, bir sahte oluşturmaya başlayacaktır:
 
 ```csharp
-    var durableOrchestrationContextMock = new Mock<DurableOrchestrationContextBase>();
+var durableOrchestrationContextMock = new Mock<IDurableOrchestrationContext>();
 ```
 
 Ardından etkinlik yöntemi çağrıları yeniden yapılır:
 
 ```csharp
-    durableOrchestrationContextMock.Setup(x => x.CallActivityAsync<string>("E1_SayHello", "Tokyo")).ReturnsAsync("Hello Tokyo!");
-    durableOrchestrationContextMock.Setup(x => x.CallActivityAsync<string>("E1_SayHello", "Seattle")).ReturnsAsync("Hello Seattle!");
-    durableOrchestrationContextMock.Setup(x => x.CallActivityAsync<string>("E1_SayHello", "London")).ReturnsAsync("Hello London!");
+durableOrchestrationContextMock.Setup(x => x.CallActivityAsync<string>("E1_SayHello", "Tokyo")).ReturnsAsync("Hello Tokyo!");
+durableOrchestrationContextMock.Setup(x => x.CallActivityAsync<string>("E1_SayHello", "Seattle")).ReturnsAsync("Hello Seattle!");
+durableOrchestrationContextMock.Setup(x => x.CallActivityAsync<string>("E1_SayHello", "London")).ReturnsAsync("Hello London!");
 ```
 
 Birim testi daha sonra yöntemi çağıracaktır `HelloSequence.Run` :
 
 ```csharp
-    var result = await HelloSequence.Run(durableOrchestrationContextMock.Object);
+var result = await HelloSequence.Run(durableOrchestrationContextMock.Object);
 ```
 
 Son olarak çıktının doğrulanması gerekir:
 
 ```csharp
-    Assert.Equal(3, result.Count);
-    Assert.Equal("Hello Tokyo!", result[0]);
-    Assert.Equal("Hello Seattle!", result[1]);
-    Assert.Equal("Hello London!", result[2]);
+Assert.Equal(3, result.Count);
+Assert.Equal("Hello Tokyo!", result[0]);
+Assert.Equal("Hello Seattle!", result[1]);
+Assert.Equal("Hello London!", result[2]);
 ```
 
 Tüm adımları birleştirdikten sonra birim testi aşağıdaki koda sahip olur:
@@ -172,7 +175,7 @@ Bu bölümde, birim testi etkinlik işlevinin davranışını doğrulayacaktır 
 
 [!code-csharp[Main](~/samples-durable-functions/samples/precompiled/HelloSequence.cs)]
 
-Ve birim testleri çıktının biçimini doğrular. Birim testleri doğrudan veya sahte sınıf parametre türlerini kullanabilir `DurableActivityContextBase` :
+Ve birim testleri çıktının biçimini doğrular. Birim testleri doğrudan veya sahte sınıf parametre türlerini kullanabilir `IDurableActivityContext` :
 
 [!code-csharp[Main](~/samples-durable-functions/samples/VSSample.Tests/HelloSequenceActivityTests.cs)]
 

@@ -1,6 +1,6 @@
 ---
-title: Azure VM 'lerinde SQL Server SQL Server (Geçiş Kılavuzu)
-description: Bireysel SQL Server veritabanlarınızı Azure sanal makinelerinde (VM) SQL Server geçirmek için bu kılavuzu izleyin.
+title: "Azure VM 'lerinde SQL Server SQL Server: geçiş kılavuzu"
+description: Bu kılavuz, bireysel SQL Server veritabanlarınızı Azure VM 'lerine SQL Server geçirmeye öğretir.
 ms.custom: ''
 ms.service: virtual-machines-sql
 ms.subservice: migration-guide
@@ -9,13 +9,13 @@ ms.topic: how-to
 author: markjones-msft
 ms.author: markjon
 ms.reviewer: mathoma
-ms.date: 11/06/2020
-ms.openlocfilehash: d95da29b732e2d520b3413628c9b4a1c403abed6
-ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
+ms.date: 03/19/2021
+ms.openlocfilehash: 0e1b44667a5ff42978b22ab9450d6a8e9870960b
+ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102488260"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103563224"
 ---
 # <a name="migration-guide-sql-server-to-sql-server-on-azure-vms"></a>Geçiş Kılavuzu: Azure VM 'lerinde SQL Server SQL Server 
 [!INCLUDE[appliesto--sqlmi](../../includes/appliesto-sqlvm.md)]
@@ -111,7 +111,7 @@ Tüm DMA düzeltmelerinin, [geçiş sonrası](#post-migration)için komut dosyas
 > Tüm SQL Server sürümleri tüm uyumluluk modlarını desteklemez. [Hedef SQL Server sürümünüzün](/sql/t-sql/statements/alter-database-transact-sql-compatibility-level) seçtiğiniz veritabanı uyumluluğunu desteklediğinden emin olun. Örneğin, SQL Server 2019, düzey 90 uyumluluğu olan veritabanlarını desteklemez (SQL Server 2005). Bu veritabanları, en azından uyumluluk düzeyi 100 ' e yükseltme yapılmasını gerektirir.
 >
 
-## <a name="migrate"></a>MongoDB v3.6 için Azure Cosmos DB API'sinin en son sürümünden yararlanmak için
+## <a name="migrate"></a>Geçiş
 
 Geçiş öncesi adımları tamamladıktan sonra, Kullanıcı veritabanlarını ve bileşenlerini geçirmeye hazırlanın. Tercih ettiğiniz [geçiş yönteminizi](sql-server-to-sql-on-azure-vm-migration-overview.md#migrate)kullanarak veritabanlarınızı geçirin.  
 
@@ -195,7 +195,7 @@ Veritabanı geçişi için test yaklaşımı aşağıdaki etkinlikleri gerçekle
 
 > [!TIP]
 > Hedef SQL Server performansını değerlendirmeye yardımcı olması için [veritabanı yükseltme deneyimi Yardımcısı (DEA)](/sql/dea/database-experimentation-assistant-overview) kullanın.
->
+
 
 ### <a name="optimize"></a>İyileştirme
 

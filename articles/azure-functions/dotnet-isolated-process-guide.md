@@ -5,12 +5,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 03/01/2021
 ms.custom: template-concept
-ms.openlocfilehash: cfef510646489e65f5cbc5d0d3e14c468301f48e
-ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
+ms.openlocfilehash: 5ee38fa4b005cf053890c223dfec9244c637bd00
+ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/12/2021
-ms.locfileid: "103199949"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103561830"
 ---
 # <a name="guide-for-running-functions-on-net-50-in-azure"></a>Azure 'da .NET 5,0 üzerinde işlev çalıştırmaya yönelik kılavuz
 
@@ -122,7 +122,7 @@ While the full middleware registration set of APIs is not yet exposed, we do sup
 
 Bağlamalar yöntemleri, parametreleri ve dönüş türleri üzerinde öznitelikler kullanılarak tanımlanır. Bir işlev yöntemi, `Function` Aşağıdaki örnekte gösterildiği gibi bir giriş parametresine uygulanan ve bir tetikleyici özniteliği olan bir yöntemdir:
 
-:::code language="csharp" source="~/azure-functions-dotnet-worker/samples/SampleApp/Queue/QueueFunction.cs" id="docsnippet_queue_trigger" :::
+:::code language="csharp" source="~/azure-functions-dotnet-worker/samples/Extensions/Queue/QueueFunction.cs" id="docsnippet_queue_trigger" :::
 
 Tetikleyici özniteliği Tetikleyici türünü belirtir ve giriş verilerini bir yöntem parametresine bağlar. Önceki örnek işlev bir kuyruk iletisi tarafından tetiklenir ve kuyruk iletisi parametresindeki yöntemine geçirilir `myQueueItem` .
 
@@ -140,7 +140,7 @@ Bir işlev, bir işleve veri geçiresağlayan sıfır veya daha fazla giriş ba�
 
 Bir çıkış bağlamasına yazmak için, işlev yöntemine bir çıkış bağlama özniteliği uygulamanız gerekir ve bu, bağlama hizmetine nasıl yazılacağını tanımlamış. Yöntemi tarafından döndürülen değer çıkış bağlamasına yazılır. Örneğin, aşağıdaki örnek, bir çıkış bağlaması kullanarak adlı bir ileti kuyruğuna bir String değeri yazar `functiontesting2` :
 
-:::code language="csharp" source="~/azure-functions-dotnet-worker/samples/SampleApp/Queue/QueueFunction.cs" id="docsnippet_queue_output_binding" :::
+:::code language="csharp" source="~/azure-functions-dotnet-worker/samples/Extensions/Queue/QueueFunction.cs" id="docsnippet_queue_output_binding" :::
 
 ### <a name="multiple-output-bindings"></a>Birden çok çıkış bağlaması
 
@@ -156,7 +156,7 @@ Benzer şekilde, işlev, `HttpReponseData` ileti `StatusCode` , `Headers` ve ist
 
 Aşağıdaki kod bir HTTP tetikleyicisine sahiptir 
 
-:::code language="csharp" source="~/azure-functions-dotnet-worker/samples/SampleApp/Http/HttpFunction.cs" id="docsnippet_http_trigger" :::
+:::code language="csharp" source="~/azure-functions-dotnet-worker/samples/Extensions/Http/HttpFunction.cs" id="docsnippet_http_trigger" :::
 
 ## <a name="logging"></a>Günlüğe Kaydetme
 
@@ -164,7 +164,7 @@ Aşağıdaki kod bir HTTP tetikleyicisine sahiptir
 
 Aşağıdaki örnek, `ILogger` bir işlev içindeki bir ve yazma günlüklerinin nasıl alınacağını gösterir:
 
-:::code language="csharp" source="~/azure-functions-dotnet-worker/samples/SampleApp/Http/HttpFunction.cs" id="docsnippet_logging" ::: 
+:::code language="csharp" source="~/azure-functions-dotnet-worker/samples/Extensions/Http/HttpFunction.cs" id="docsnippet_logging" ::: 
 
 `ILogger`Veya gibi çeşitli günlük düzeylerini yazmak için çeşitli yöntemler kullanın `LogWarning` `LogError` . Günlük düzeyleri hakkında daha fazla bilgi için [İzleme makalesine](functions-monitoring.md#log-levels-and-categories)bakın.
 

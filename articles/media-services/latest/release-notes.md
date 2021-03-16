@@ -11,12 +11,12 @@ ms.workload: na
 ms.topic: article
 ms.date: 10/21/2020
 ms.author: inhenkel
-ms.openlocfilehash: 5a36b5c8b0c8f24d093d887ad788c4ce9857d355
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.openlocfilehash: d7cfb4cf9b6b061f5fb53667e968cb0403f22bfc
+ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 03/16/2021
-ms.locfileid: "103492685"
+ms.locfileid: "103562578"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>Azure Media Services v3 sürüm notları
 
@@ -29,7 +29,32 @@ En son gelişmelerden haberdar olmak için, bu makalede hakkında bilgi verilmek
 * Hata düzeltmeleri
 * Kullanım dışı işlevsellik
 
-## <a name="known-issues"></a>Bilinen sorunlar
+## <a name="march-2021"></a>Mart 2021
+
+### <a name="new-language-support-added-to-the-audioanalyzer-preset"></a>AudioAnalyzer önayara yeni dil desteği eklendi
+
+Video dökümü ve alt yazı için ek diller artık AudioAnalyzer ön ayarı 'nda (hem temel hem de standart modlar) kullanılabilir.
+
+* İngilizce (Avustralya), ' en-AU '
+* Fransızca (Kanada), ' fr-CA '
+* Arapça (Bahreyn) modern standart, ' ar-BH '
+* Arapça (Mısır), ' ar-EG '
+* Arapça (Irak), ' ar-IQ '
+* Arapça (Israil), ' ar-IL '
+* Arapça (Ürdün), ' ar-JO '
+* Arapça (Kuveyt), ' ar-KW '
+* Arapça (Lübnan), ' ar-LB '
+* Arapça (Umman), ' ar-OM '
+* Arapça (Qtor), ' ar-QA '
+* Arapça (Suudi Arabistan), ' ar-SA '
+* Danca, ' da-DK '
+* Norveç dili, ' NB-NO '
+* İsveççe, ' SV-o '
+* Fince, ' fi-FI '
+* Tay dili, ' th '
+* Türkçe, ' tr-TR '
+
+[Video ve ses dosyalarını çözümleme kavramı makalesindeki](analyzing-video-audio-files-concept.md) kullanılabilir en son dillere bakın.
 
 ## <a name="february-2021"></a>Şubat 2021
 

@@ -1,6 +1,6 @@
 ---
 title: "SQL yönetilen örneği 'ne SQL Server: geçiş kılavuzu"
-description: SQL Server veritabanlarınızı Azure SQL yönetilen örneği 'ne geçirmek için bu kılavuzu izleyin.
+description: Bu kılavuz, SQL Server veritabanlarınızı Azure SQL yönetilen örneği 'ne geçirmenize öğretir.
 ms.service: sql-managed-instance
 ms.subservice: migration-guide
 ms.custom: ''
@@ -10,12 +10,12 @@ author: mokabiru
 ms.author: mokabiru
 ms.reviewer: MashaMSFT
 ms.date: 11/06/2020
-ms.openlocfilehash: 67f5665225bc1297d0eb1b1e1da954fb47660dee
-ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
+ms.openlocfilehash: 6dcbf4a570fb5cdb58c914ea5e4b1164ed6a76ca
+ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102488979"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103564499"
 ---
 # <a name="migration-guide-sql-server-to-sql-managed-instance"></a>Geçiş Kılavuzu: SQL yönetilen örneğine SQL Server
 [!INCLUDE[appliesto-sqldb-sqlmi](../../includes/appliesto-sqlmi.md)]
@@ -104,7 +104,7 @@ Bir SQL yönetilen örneği üzerinde iş yükünüzün performansını SQL Serv
 Bulma ve değerlendirme aşamasındaki bilgilere bağlı olarak, uygun boyutta bir hedef SQL yönetilen örneği oluşturun. [Azure Portal](../../managed-instance/instance-create-quickstart.md), [PowerShell](../../managed-instance/scripts/create-configure-managed-instance-powershell.md)veya bir [Azure Resource Manager (ARM) şablonu](../../managed-instance/create-template-quickstart.md)kullanarak bunu yapabilirsiniz. 
 
 
-## <a name="migrate"></a>MongoDB v3.6 için Azure Cosmos DB API'sinin en son sürümünden yararlanmak için
+## <a name="migrate"></a>Geçiş
 
 Geçiş öncesi aşamalarla ilişkili görevleri tamamladıktan sonra şema ve veri geçişini gerçekleştirmeye hazırlanın. 
 
@@ -197,10 +197,6 @@ Veritabanı geçişi için test yaklaşımı aşağıdaki etkinliklerden oluşur
 1. **Test ortamını ayarlama**: test ortamı, kaynak veritabanının ve hedef veritabanının bir kopyasını içermelidir. Test ortamını yalıtdığınızdan emin olun.
 1. **Doğrulama testlerini Çalıştır**: doğrulama testlerini kaynak ve hedefe göre çalıştırın ve ardından sonuçları çözümleyin.
 1. **Performans testlerini Çalıştır**: kaynak ve hedefte performans testi çalıştırın ve ardından sonuçları çözümleyip karşılaştırın.
-
-   > [!NOTE]
-   > Geçiş sonrası doğrulama testlerini geliştirmeye ve çalıştırmaya yönelik yardım için iş ortağı [Querysurge](https://www.querysurge.com/company/partners/microsoft)tarafından kullanılabilen veri kalitesi çözümünü göz önünde bulundurun. 
-
 
 
 ## <a name="leverage-advanced-features"></a>Gelişmiş özelliklerden yararlanın 

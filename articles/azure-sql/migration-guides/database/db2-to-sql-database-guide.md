@@ -1,6 +1,6 @@
 ---
 title: "DB2 'den SQL veritabanı: geçiş kılavuzu"
-description: DB2 veritabanlarınızı Azure SQL veritabanı 'na geçirmek için bu kılavuzu izleyin.
+description: Bu kılavuz, DB2 (DB2 için SıMMA) SQL Server Geçiş Yardımcısı kullanarak DB2 veritabanlarınızı Azure SQL veritabanı 'na geçirmenize öğretir.
 ms.service: sql-database
 ms.subservice: migration-guide
 ms.custom: ''
@@ -10,12 +10,12 @@ author: mokabiru
 ms.author: mokabiru
 ms.reviewer: MashaMSFT
 ms.date: 11/06/2020
-ms.openlocfilehash: 3e216c4aeb8d1206011ff9cca2d80900c23b2399
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: 917390b43a772cbb9374c560fc3a65cfa7278839
+ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97356353"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103563955"
 ---
 # <a name="migration-guide-db2-to-sql-database"></a>Geçiş Kılavuzu: DB2 'den SQL veritabanına
 [!INCLUDE[appliesto-sqldb-sqlmi](../../includes/appliesto-sqldb.md)]
@@ -142,9 +142,6 @@ Veritabanı geçişi için test yaklaşımı aşağıdaki etkinliklerden oluşur
 1. **Test ortamını ayarlama**: test ortamı, kaynak veritabanının ve hedef veritabanının bir kopyasını içermelidir. Test ortamını yalıtdığınızdan emin olun.
 1. **Doğrulama testlerini Çalıştır**: doğrulama testlerini kaynak ve hedefe göre çalıştırın ve ardından sonuçları çözümleyin.
 1. **Performans testlerini Çalıştır**: kaynak ve hedefte performans testi çalıştırın ve ardından sonuçları çözümleyip karşılaştırın.
-
-   > [!NOTE]
-   > Geçiş sonrası doğrulama testlerini geliştirmeye ve çalıştırmaya yönelik yardım için iş ortağı [Querysurge](https://www.querysurge.com/company/partners/microsoft)tarafından kullanılabilen veri kalitesi çözümünü göz önünde bulundurun. 
 
 
 ## <a name="leverage-advanced-features"></a>Gelişmiş özelliklerden yararlanın 

@@ -7,12 +7,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 03/10/2021
-ms.openlocfilehash: 78a17ad6599e1ac4f455f2806a5f944675198b4b
-ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
+ms.openlocfilehash: 0e60ac6da55c11d45e8b691b4883b0f5f93a2498
+ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/11/2021
-ms.locfileid: "102631498"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103563947"
 ---
 # <a name="data-transformation-expressions-in-mapping-data-flow"></a>Eşleme veri akışındaki veri dönüştürme ifadeleri
 
@@ -152,14 +152,13 @@ Toplanan gruptaki ifadenin tüm değerlerini bir dizi olarak toplar. Bu işlem s
 ___
 ### <code>columnNames</code>
 <code><b>columnNames(<i>&lt;value1&gt;</i> : string) => array</b></code><br/><br/>
-Bir akış için tüm çıkış sütunlarını alır. İkinci bağımsız değişken olarak isteğe bağlı bir akış adı geçirebilirsiniz.  
+Bir akışın tüm çıktı sütunlarının adlarını alır. İkinci bağımsız değişken olarak isteğe bağlı bir akış adı geçirebilirsiniz.  
 * ``columnNames()``
 * ``columnNames('DeriveStream')``
-
 ___
 ### <code>columns</code>
 <code><b>columns([<i>&lt;stream name&gt;</i> : string]) => any</b></code><br/><br/>
-Bir akış için tüm çıkış sütunlarını alır. İkinci bağımsız değişken olarak isteğe bağlı bir akış adı geçirebilirsiniz.   
+Bir akışın tüm çıktı sütunlarının değerlerini alır. İkinci bağımsız değişken olarak isteğe bağlı bir akış adı geçirebilirsiniz.   
 * ``columns()``
 * ``columns('DeriveStream')``
 ___

@@ -11,12 +11,12 @@ ms.reviewer: nibaccam
 ms.date: 12/20/2020
 ms.topic: conceptual
 ms.custom: how-to, automl
-ms.openlocfilehash: a91a4f3a2e686c8d502093dc41520df32b313209
-ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
+ms.openlocfilehash: 2e06375441d6540d6630cfe9d4d8c3beec558879
+ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102520651"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103562731"
 ---
 # <a name="create-review-and-deploy-automated-machine-learning-models-with-azure-machine-learning"></a>Azure Machine Learning ile otomatik makine öğrenimi modelleri oluşturun, gözden geçirin ve dağıtın
 
@@ -37,7 +37,7 @@ Python kod tabanlı bir deneyim için [otomatik makine öğrenimi denemeleri](ho
 
 ## <a name="get-started"></a>başlarken
 
-1. Azure Machine Learning için oturum açın https://ml.azure.com . 
+1. [Azure Machine Learning Studio](https://ml.azure.com)'da oturum açın. 
 
 1. Aboneliğinizi ve çalışma alanınızı seçin. 
 
@@ -132,7 +132,7 @@ Aksi takdirde, SDK ile oluşturulanlar da dahil olmak üzere, son otomatik makin
 
 1. Seçim Ek yapılandırma ayarlarını görüntüle: eğitim işini daha iyi denetleyebilmeniz için kullanabileceğiniz ek ayarlar. Aksi takdirde, denemeler seçimine ve verilerine göre varsayılan ayarlar uygulanır. 
 
-    Ek yapılandırmalar|Description
+    Ek yapılandırmalar|Açıklama
     ------|------
     Birincil ölçüm| Modelinize Puanlama için kullanılan ana ölçüm. [Model ölçümleri hakkında daha fazla bilgi edinin](how-to-configure-auto-train.md#primary-metric).
     En iyi modeli açıkla | Önerilen en iyi modelin açıklamalarını göstermek için etkinleştirmek veya devre dışı bırakmak için seçin. <br> Bu işlev, [belirli tahmin algoritmaları](how-to-machine-learning-interpretability-automl.md#interpretability-during-training-for-the-best-model)için şu anda kullanılamıyor. 
@@ -199,6 +199,11 @@ Belirli bir modelin açıklamalarını almak için
 
 En iyi modeli belirledikten sonra yeni verilerle ilgili tahminde bulunmak için web hizmeti olarak dağıtabilirsiniz.
 
+>[!TIP]
+> Python SDK ile paket aracılığıyla oluşturulmuş bir modeli dağıtmak istiyorsanız `automl` , modelinizi çalışma alanına [kaydetmeniz](how-to-deploy-and-where.md?tabs=python#register-a-model-from-an-azure-ml-training-run-1) gerekir. 
+>
+> Model kaydedildikten sonra sol bölmedeki **modeller** ' i seçerek bu dosyayı Studio 'da bulabilirsiniz. Modelinizi açtığınızda, ekranın üst kısmındaki **Dağıt** düğmesini seçebilir ve sonra **modelinizi dağıtma** bölümünün **2. adımında** açıklandığı gibi yönergeleri izleyebilirsiniz.
+
 Otomatik ML, modeli kod yazmadan dağıtmanıza yardımcı olur:
 
 1. Dağıtım için birkaç seçeneğiniz vardır. 
@@ -217,7 +222,7 @@ Otomatik ML, modeli kod yazmadan dağıtmanıza yardımcı olur:
     Alan| Değer
     ----|----
     Ad| Dağıtımınız için benzersiz bir ad girin.
-    Description| Bu dağıtımın ne için olduğunu daha iyi tanımlamak için bir açıklama girin.
+    Açıklama| Bu dağıtımın ne için olduğunu daha iyi tanımlamak için bir açıklama girin.
     İşlem türü| Dağıtmak istediğiniz uç nokta türünü seçin: *Azure Kubernetes hizmeti (AKS)* veya *Azure Container Instance (acı)*.
     İşlem adı| *Yalnızca AKS Için geçerlidir:* Dağıtmak istediğiniz AKS kümesinin adını seçin.
     Kimlik doğrulamayı etkinleştir | Belirteç tabanlı veya anahtar tabanlı kimlik doğrulamasına izin vermek için seçin.

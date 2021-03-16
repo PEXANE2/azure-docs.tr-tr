@@ -4,14 +4,14 @@ description: Azure HPC önbelleğinde depolama hedeflerine istemci erişimi içi
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: how-to
-ms.date: 12/22/2020
+ms.date: 03/15/2021
 ms.author: v-erkel
-ms.openlocfilehash: 4f1499c9a86999bac86fb7bf185f195e9ba5f690
-ms.sourcegitcommit: 66ce33826d77416dc2e4ba5447eeb387705a6ae5
+ms.openlocfilehash: fd5dce0760953bf19c72e1a1062a9c03ffe861e7
+ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/15/2021
-ms.locfileid: "103472077"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103563393"
 ---
 # <a name="configure-directory-services"></a>Dizin hizmetlerini yapılandırma
 
@@ -81,7 +81,7 @@ Sunucu ve Temel DN, LDAP işi yapmak için gereken tek ayardır, ancak ek seçen
 
 * **Sertifikayı otomatik indir** -bu ayarları gönderdikten hemen sonra bir sertifika indirmeyi denemek istiyorsanız **Evet** ' i seçin.
 
-LDAP güvenliği için statik kimlik bilgileri kullanmak istiyorsanız **kimlik bilgileri** bölümünü girin.
+LDAP güvenliği için statik kimlik bilgileri kullanmak istiyorsanız **kimlik bilgileri** bölümünü girin. Bu bilgiler depolandığında şifrelenir ve sorgulanamaz.
 
 * **Bağlama DN** -LDAP sunucusunda kimlik doğrulamak için kullanılacak bağlama ayırt edici adını girin. (DN biçimini kullanın.)
 * **Bağlama parolası** -BIND DN için parola sağlayın.

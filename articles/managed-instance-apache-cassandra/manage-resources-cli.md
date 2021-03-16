@@ -4,14 +4,14 @@ description: Azure CLı kullanarak Apache Cassandra için Azure yönetilen örne
 author: TheovanKraay
 ms.service: managed-instance-apache-cassandra
 ms.topic: how-to
-ms.date: 03/02/2021
+ms.date: 03/15/2021
 ms.author: thvankra
-ms.openlocfilehash: 68b1ca625b5c8bd7ec195b89de63485c542e6691
-ms.sourcegitcommit: df1930c9fa3d8f6592f812c42ec611043e817b3b
+ms.openlocfilehash: 3e44625d23a302c58ea065a4fc3ecec5605e60b9
+ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2021
-ms.locfileid: "103419083"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103564533"
 ---
 # <a name="manage-azure-managed-instance-for-apache-cassandra-resources-using-azure-cli-preview"></a>Azure CLı kullanarak Apache Cassandra kaynakları için Azure yönetilen örneğini yönetme (Önizleme)
 
@@ -25,7 +25,7 @@ Bu makalede, Azure CLı kullanarak Apache Cassandra kümeleri için Azure yönet
 [!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
 > [!IMPORTANT]
-> Bu makale, Azure CLı sürüm 2.12.1 veya üstünü gerektirir. Azure Cloud Shell kullanıyorsanız, en son sürüm zaten yüklüdür.
+> Bu makale, Azure CLı sürüm 2.17.1 veya üstünü gerektirir. Azure Cloud Shell kullanıyorsanız, en son sürüm zaten yüklüdür.
 >
 > Apache Cassandra kaynakları için Azure yönetilen örneğini yönetme, Azure Resource Manager kaynak URI 'leriyle nasıl çalıştığını ihlal ettiğinden yeniden adlandırılamaz.
 
@@ -42,7 +42,7 @@ Aşağıdaki bölümlerde aşağıdakiler de dahil olmak üzere Apache Cassandra
 
 ### <a name="create-a-managed-instance-cluster"></a><a id="create-cluster"></a>Yönetilen örnek kümesi oluşturma
 
-Apache Cassandra kümesi için Azure yönetilen örneği oluşturma:
+[Az Managed-Cassandra kümesi Create](/cli/azure/ext/cosmosdb-preview/managed-cassandra/cluster?view=azure-cli-latest&preserve-view=true#ext_cosmosdb_preview_az_managed_cassandra_cluster_create) komutunu kullanarak Apache Cassandra kümesi Için bir Azure yönetilen örneği oluşturun:
 
 ```azurecli-interactive
 resourceGroupName='MyResourceGroup'
@@ -65,7 +65,7 @@ az managed-cassandra cluster create \
 
 ### <a name="delete-a-managed-instance-cluster"></a><a id="delete-cluster"></a>Yönetilen örnek kümesini silme
 
-Kümeyi silme:
+[Az Managed-Cassandra Cluster Delete](/cli/azure/ext/cosmosdb-preview/managed-cassandra/cluster?view=azure-cli-latest&preserve-view=true#ext_cosmosdb_preview_az_managed_cassandra_cluster_delete) komutunu kullanarak bir kümeyi silme:
 
 ```azurecli-interactive
 resourceGroupName='MyResourceGroup'
@@ -78,7 +78,7 @@ az managed-cassandra cluster delete \
 
 ### <a name="get-the-cluster-details"></a><a id="get-cluster-details"></a>Küme ayrıntılarını al
 
-Küme ayrıntılarını al:
+[Az Managed-Cassandra Cluster Show](/cli/azure/ext/cosmosdb-preview/managed-cassandra/cluster?view=azure-cli-latest&preserve-view=true#ext_cosmosdb_preview_az_managed_cassandra_cluster_show) komutunu kullanarak küme ayrıntılarını alın:
 
 ```azurecli-interactive
 resourceGroupName='MyResourceGroup'
@@ -91,7 +91,7 @@ az managed-cassandra cluster show \
 
 ### <a name="get-the-cluster-node-status"></a><a id="get-cluster-status"></a>Küme düğümü durumunu al
 
-Küme ayrıntılarını al:
+[Az Managed-Cassandra küme düğümü-Status](/cli/azure/ext/cosmosdb-preview/managed-cassandra/cluster?view=azure-cli-latest&preserve-view=true#ext_cosmosdb_preview_az_managed_cassandra_cluster_node_status) komutunu kullanarak küme ayrıntılarını alın:
 
 ```azurecli-interactive
 clusterName='cassandra-hybrid-cluster'
@@ -104,7 +104,7 @@ az managed-cassandra cluster node-status \
 
 ### <a name="list-the-clusters-by-resource-group"></a><a id="list-clusters-resource-group"></a>Kümeleri kaynak grubuna göre listeleme
 
-Grupları kaynak grubuna göre listele:
+[Az Managed-Cassandra Cluster List](/cli/azure/ext/cosmosdb-preview/managed-cassandra/cluster?view=azure-cli-latest&preserve-view=true#ext_cosmosdb_preview_az_managed_cassandra_cluster_list) komutunu kullanarak kümeleri kaynak grubuna göre listeleyin:
 
 ```azurecli-interactive
 subscriptionId='MySubscriptionId'
@@ -116,7 +116,7 @@ az managed-cassandra cluster list\
 
 ### <a name="list-clusters-by-subscription-id"></a><a id="list-clusters-subscription"></a>Kümeleri abonelik KIMLIĞINE göre Listele
 
-Kümeleri abonelik KIMLIĞINE göre listele:
+[Az Managed-Cassandra küme listesi](/cli/azure/ext/cosmosdb-preview/managed-cassandra?view=azure-cli-latest&preserve-view=true) komutunu kullanarak KÜMELERI abonelik kimliğine göre listeleyin:
 
 ```azurecli-interactive
 # set your subscription id
@@ -137,7 +137,7 @@ Aşağıdaki bölümlerde aşağıdakiler de dahil olmak üzere Apache Cassandra
 
 ### <a name="create-a-datacenter"></a><a id="create-datacenter"></a>Veri merkezi oluşturma
 
-Veri merkezi oluşturma:
+[Az Managed-Cassandra Datacenter Create](/cli/azure/ext/cosmosdb-preview/managed-cassandra/datacenter?view=azure-cli-latest&preserve-view=true#ext_cosmosdb_preview_az_managed_cassandra_datacenter_create) komutunu kullanarak bir veri merkezi oluşturun:
 
 ```azurecli-interactive
 resourceGroupName='MyResourceGroup'
@@ -157,7 +157,7 @@ az managed-cassandra datacenter create \
 
 ### <a name="delete-a-datacenter"></a><a id="delete-datacenter"></a>Veri merkezini silme
 
-Veri merkezini silme:
+[Az Managed-Cassandra Datacenter Delete](/cli/azure/ext/cosmosdb-preview/managed-cassandra/datacenter?view=azure-cli-latest&preserve-view=true#ext_cosmosdb_preview_az_managed_cassandra_datacenter_delete) komutunu kullanarak bir veri merkezini silme:
 
 ```azurecli-interactive
 resourceGroupName='MyResourceGroup'
@@ -172,7 +172,7 @@ az managed-cassandra datacenter delete \
 
 ### <a name="get-datacenter-details"></a><a id="get-datacenter-details"></a>Veri merkezi ayrıntılarını al
 
-Veri merkezi ayrıntılarını al:
+[Az Managed-Cassandra Datacenter Show](/cli/azure/ext/cosmosdb-preview/managed-cassandra/datacenter?view=azure-cli-latest&preserve-view=true#ext_cosmosdb_preview_az_managed_cassandra_datacenter_show) komutunu kullanarak veri merkezi ayrıntılarını alın:
 
 ```azurecli-interactive
 resourceGroupName='MyResourceGroup'
@@ -187,7 +187,7 @@ az managed-cassandra datacenter show \
 
 ### <a name="update-or-scale-a-datacenter"></a><a id="update-datacenter"></a>Veri merkezini güncelleştirme veya ölçeklendirme
 
-Veri merkezini güncelleştirme veya ölçeklendirme (değişiklik nodeCount değerini ölçeklendirmek için):
+[Az Managed-Cassandra Datacenter Update](/cli/azure/ext/cosmosdb-preview/managed-cassandra/datacenter?view=azure-cli-latest&preserve-view=true#ext_cosmosdb_preview_az_managed_cassandra_datacenter_update) komutunu kullanarak bir veri merkezini (değişiklik nodeCount değerini ölçeklendirmek için) güncelleştirin veya ölçeklendirin:
 
 ```azurecli-interactive
 resourceGroupName='MyResourceGroup'
@@ -205,7 +205,7 @@ az managed-cassandra datacenter update \
 
 ### <a name="get-the-datacenters-in-a-cluster"></a><a id="get-datacenters-cluster"></a>Küme içindeki veri merkezlerini al
 
-Kümede veri merkezlerini al:
+[Az Managed-Cassandra Datacenter List](/cli/azure/ext/cosmosdb-preview/managed-cassandra/datacenter?view=azure-cli-latest&preserve-view=true#ext_cosmosdb_preview_az_managed_cassandra_datacenter_list) komutunu kullanarak bir kümede veri merkezleri alın:
 
 ```azurecli-interactive
 resourceGroupName='MyResourceGroup'

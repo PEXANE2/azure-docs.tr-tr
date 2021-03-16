@@ -2,14 +2,14 @@
 title: Azure portalına genel bakış
 description: Azure portal, Azure hizmetlerinizi yönetmek için kullanabileceğiniz bir grafik kullanıcı arabirimidir. Azure portal nasıl gezineceğinizi ve kaynakların nasıl bulunacağını öğrenin.
 keywords: portal
-ms.date: 12/20/2019
+ms.date: 03/12/2021
 ms.topic: overview
-ms.openlocfilehash: 1e9cf1a9609b9d4f30e51094f1d0542335ead0e2
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: 8f61934e6af150c18d1331c2b28e2686641967d1
+ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96745936"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103564003"
 ---
 # <a name="azure-portal-overview"></a>Azure portalına genel bakış
 
@@ -75,7 +75,7 @@ Aşağıdaki şekilde, her biri aşağıdaki tabloda açıklanan Azure portal te
 
 ## <a name="get-started-with-services"></a>Hizmetleri kullanmaya başlayın
 
-Yeni bir abonesiyseniz, yönetilecek bir şey yapmadan önce bir kaynak oluşturmanız gerekecektir. Azure Marketi 'nde bulunan hizmetleri görüntülemek için **+ kaynak oluştur** ' u seçin. Burada yüzlerce sağlayıcıdan oluşan uygulamaları ve Hizmetleri Azure 'da çalıştırmak üzere burada bulabilirsiniz.
+Yeni bir abonesiyseniz, yönetilecek bir şey yapmadan önce bir kaynak oluşturmanız gerekecektir. Azure Marketi 'nde bulunan hizmetleri görüntülemek için **+ kaynak oluştur** ' u seçin. Burada pek çok sağlayıcıdan yüzlerce uygulama ve hizmeti, tüm sertifikalı Azure 'da çalışmak üzere bulacaksınız.
 
 Sık kullanılanları, yaygın olarak kullanılan hizmetlerin bağlantılarıyla birlikte kenar çubuğundan önceden doldurduk.  Tüm kullanılabilir hizmetleri görüntülemek için kenar çubuğundan **tüm hizmetler** ' i seçin.
 

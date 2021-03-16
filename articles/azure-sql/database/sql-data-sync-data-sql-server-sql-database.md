@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 08/20/2019
-ms.openlocfilehash: 55fa106f0515405dcad969f05d28e0bc7b975b40
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: c38e4681c76fb0dd52d77c7dc1438b87a9571a80
+ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96922300"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103562068"
 ---
 # <a name="what-is-sql-data-sync-for-azure"></a>Azure için SQL Data Sync nedir?
 
@@ -101,6 +101,9 @@ Yeni özel bağlantı (Önizleme) özelliği, veri eşitleme işlemi sırasında
 - [Azure SQL veritabanı 'nda birden çok veritabanı arasında eşitleme yapmak için PowerShell 'i kullanma](scripts/sql-data-sync-sync-data-between-sql-databases.md)
 - [PowerShell kullanarak Azure SQL veritabanındaki bir veritabanı ile bir SQL Server örneğindeki veritabanları arasında eşitleme](scripts/sql-data-sync-sync-data-between-azure-onprem.md)
 
+### <a name="set-up-data-sync-with-rest-api"></a>REST API veri eşitlemesini ayarlama
+- [Azure SQL veritabanı 'nda birden çok veritabanı arasında eşitleme yapmak için REST API kullanma](scripts/sql-data-sync-sync-data-between-sql-databases-rest-api.md)
+
 ### <a name="review-the-best-practices-for-data-sync"></a>Veri eşitleme için en iyi uygulamaları gözden geçirin
 
 - [Azure SQL Data Sync için en iyi yöntemler](sql-data-sync-best-practices.md)
@@ -165,7 +168,7 @@ Veri eşitleme, salt okuma veya sistem tarafından oluşturulmuş sütunları e�
 
 #### <a name="limitations-on-service-and-database-dimensions"></a>Hizmet ve veritabanı boyutlarına ilişkin sınırlamalar
 
-| **Boyutlarına**                                                  | **Sınır**              | **Geçici çözüm**              |
+| **Boyutlarına**                                                  | **Sınırlı**              | **Geçici çözüm**              |
 |-----------------------------------------------------------------|------------------------|-----------------------------|
 | Herhangi bir veritabanının ait olduğu en fazla eşitleme grubu sayısı.       | 5                      |                             |
 | Tek bir eşitleme grubundaki en fazla uç nokta sayısı              | 30                     |                             |

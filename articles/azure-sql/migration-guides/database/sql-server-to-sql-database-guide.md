@@ -9,13 +9,13 @@ ms.topic: how-to
 author: mokabiru
 ms.author: mokabiru
 ms.reviewer: MashaMSFT
-ms.date: 11/06/2020
-ms.openlocfilehash: 2d43eda404a5257c0ec28a884b6ebf182330ba51
-ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
+ms.date: 03/19/2021
+ms.openlocfilehash: 9205301cb77941e4ea7ca026710d44ba82f6a937
+ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102488424"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103563853"
 ---
 # <a name="migration-guide-sql-server-to-sql-database"></a>Geçiş Kılavuzu: SQL veritabanı 'na SQL Server
 [!INCLUDE[appliesto--sqldb](../../includes/appliesto-sqldb.md)]
@@ -102,7 +102,7 @@ Verilerin daha geniş bir görünümünü sağlamak üzere ölçek halinde değe
 > [!IMPORTANT]
 > Birden çok veritabanı için ölçekte değerlendirme çalıştırmak, özellikle de büyük bir deyişle, [DMA komut satırı yardımcı programı](/sql/dma/dma-commandline) kullanılarak otomatik hale getirilebilir ve daha fazla analiz ve hedef hazırlığı Için [Azure geçişi](/sql/dma/dma-assess-sql-data-estate-to-sqldb#view-target-readiness-assessment-results) 'ne yüklenebilir.
 
-## <a name="migrate"></a>MongoDB v3.6 için Azure Cosmos DB API'sinin en son sürümünden yararlanmak için
+## <a name="migrate"></a>Geçiş
 
 Geçiş öncesi aşamalarla ilişkili görevleri tamamladıktan sonra şema ve veri geçişini gerçekleştirmeye hazırlanın. 
 
@@ -183,9 +183,6 @@ Veritabanı geçişi için test yaklaşımı aşağıdaki etkinliklerden oluşur
 1. **Test ortamını ayarlama**: test ortamı, kaynak veritabanının ve hedef veritabanının bir kopyasını içermelidir. Test ortamını yalıtdığınızdan emin olun.
 1. **Doğrulama testlerini Çalıştır**: doğrulama testlerini kaynak ve hedefe göre çalıştırın ve ardından sonuçları çözümleyin.
 1. **Performans testlerini Çalıştır**: kaynak ve hedefte performans testi çalıştırın ve ardından sonuçları çözümleyip karşılaştırın.
-
-   > [!NOTE]
-   > Geçiş sonrası doğrulama testlerini geliştirmeye ve çalıştırmaya yönelik yardım için iş ortağı [Querysurge](https://www.querysurge.com/company/partners/microsoft)tarafından kullanılabilen veri kalitesi çözümünü göz önünde bulundurun. 
 
 
 ## <a name="leverage-advanced-features"></a>Gelişmiş özelliklerden yararlanın 

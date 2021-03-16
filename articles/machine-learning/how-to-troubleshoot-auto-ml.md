@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 03/08/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, automl, references_regions
-ms.openlocfilehash: b66c768011c05e1105f1351ebe4ed7c3c9700b70
-ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
+ms.openlocfilehash: 28aac830326d60161f54d7ad5fa03326c1d66462
+ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102519172"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103563683"
 ---
 # <a name="troubleshoot-automated-ml-experiments-in-python"></a>Python 'da otomatik ML denemeleri sorunlarını giderme
 
@@ -166,6 +166,10 @@ Zaman seriniz içinde bu kalıp bekleniyorsa, birincil ölçümünüzün **norma
   1. Model paketini indirin
   1. Paketi unzip
   1. Daraltılmış varlıkları kullanarak dağıtma
+
+## <a name="azure-functions-application"></a>Azure Işlevleri uygulaması
+  
+  Otomatik ML Şu anda Azure Işlevleri uygulamalarını desteklemez. 
 
 ## <a name="sample-notebook-failures"></a>Örnek Not defteri sorunları
 

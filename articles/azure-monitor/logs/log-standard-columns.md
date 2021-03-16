@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/25/2021
-ms.openlocfilehash: 3e12bef7569110084cd059b0dfde8562bd914823
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 5b906bdbd07d59d2acc88f6b30f0db6b6cbc961a
+ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102030775"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103562255"
 ---
 # <a name="standard-columns-in-azure-monitor-logs"></a>Azure Izleyici günlüklerinde standart sütunlar
 Azure Izleyici günlüklerindeki veriler, her biri benzersiz bir sütun kümesine sahip belirli bir veri türüne sahip bir [Log Analytics çalışma alanında veya Application Insights uygulamasında bir kayıt kümesi olarak depolanır](../logs/data-platform-logs.md). Birçok veri türü, birden çok tür genelinde ortak olan standart sütunlara sahip olacaktır. Bu makale, bu sütunları açıklar ve bunları sorgularda nasıl kullanabileceğinizi gösteren örnekler sağlar.
@@ -132,7 +132,7 @@ union withsource = tt *
 
 \_ResourceID sütununu ayrıştırarak SubscriptionID sütununun ayıklanması her zaman daha etkilidir \_ .
 
-## <a name="_substriptionid"></a>\_SubstriptionId
+## <a name="_subscriptionid"></a>\_SubscriptionID
 **\_ SubscriptionID** sütunu, kaydın ILIŞKILENDIRILDIĞI kaynağın abonelik kimliğini içerir. Bu, sorgunuzu yalnızca belirli bir aboneliğin kayıtlarına veya farklı aboneliklerin karşılaştırılacağı şekilde kapsamını atamak için kullanabileceğiniz standart bir sütun sağlar.
 
 Azure kaynakları için **__SubscriptionId** değeri, [Azure kaynak kimliği URL](../../azure-resource-manager/templates/template-functions-resource.md)'sinin abonelik bölümüdür. Sütun, [Azure Arc](../../azure-arc/overview.md) kaynakları dahil olmak üzere Azure kaynaklarıyla veya alma SıRASıNDA kaynak kimliğini belirten özel günlüklere sınırlıdır.

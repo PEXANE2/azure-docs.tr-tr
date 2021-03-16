@@ -1053,6 +1053,8 @@
                     - name: Azure portal
                       displayname: 'Azure disk encryption, encryption, ADE'
                       href: ./linux/disk-encryption-portal-quickstart.md
+                - name: Linux için disk şifreleme senaryoları
+                  href: ./linux/disk-encryption-linux.md
                 - name: Azure Disk Şifrelemesi için anahtar kasası
                   displayname: 'Azure disk encryption, encryption, ADE, Key vault'
                   href: ./linux/disk-encryption-key-vault.md
@@ -1081,8 +1083,8 @@
                       href: ./linux/disk-encryption-linux-aad.md
             - name: Windows
               items:
-                - name: Windows için disk şifreleme senaryoları
-                  href: ./windows/disk-encryption-windows.md
+                - name: Genel Bakış
+                  href: ./windows/disk-encryption-overview.md
                 - name: Hızlı Başlangıçlar
                   items:
                     - name: Azure CLI’si
@@ -1091,6 +1093,8 @@
                       href: ./windows/disk-encryption-powershell-quickstart.md
                     - name: Azure portal
                       href: ./windows/disk-encryption-portal-quickstart.md
+                - name: Windows için disk şifreleme senaryoları
+                  href: ./windows/disk-encryption-windows.md
                 - name: Azure Disk Şifrelemesi için anahtar kasası
                   href: ./windows/disk-encryption-key-vault.md
                 - name: Disk şifrelemesi örnek betikleri

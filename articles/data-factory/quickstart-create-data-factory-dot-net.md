@@ -5,14 +5,14 @@ author: linda33wj
 ms.service: data-factory
 ms.devlang: dotnet
 ms.topic: quickstart
-ms.date: 12/18/2020
+ms.date: 03/16/2021
 ms.author: jingwang
-ms.openlocfilehash: 821f64c46e0ae813e7dcd437bb0d4af848647185
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 12f7a87ce166be516d070b66b069f7a584a386c7
+ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100372697"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103563513"
 ---
 # <a name="quickstart-create-a-data-factory-and-pipeline-using-net-sdk"></a>Hızlı Başlangıç: .NET SDK’sını kullanarak veri fabrikası ve işlem hattı oluşturma
 
@@ -32,10 +32,6 @@ Bu hızlı başlangıçta Azure Data Factory oluşturmak için .NET SDK 'nın na
 ### <a name="visual-studio"></a>Visual Studio
 
 Bu makaledeki izlenecek yol, Visual Studio 2019 kullanır. Visual Studio 2013, 2015 veya 2017 yordamları biraz farklı.
-
-### <a name="azure-net-sdk"></a>Azure .NET SDK’sı
-
-[Azure .NET SDK’sını](https://azure.microsoft.com/downloads/) indirip makinenize yükleyin.
 
 ## <a name="create-an-application-in-azure-active-directory"></a>Azure Active Directory’de uygulama oluşturma
 

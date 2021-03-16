@@ -1,30 +1,33 @@
 ---
 title: Azure HPC önbellek ayarlarını yapılandırma
-description: MTU ve kök sıkıştırma gibi önbellek için ek ayarların nasıl yapılandırılacağını ve Azure Blob depolama hedeflerinden hızlı anlık görüntülere nasıl erişebileceğinizi açıklar.
+description: MTU, özel NTP ve DNS yapılandırması gibi önbellek için ek ayarların nasıl yapılandırılacağını ve Azure Blob depolama hedeflerinden hızlı anlık görüntülere nasıl erişebileceğinizi açıklar.
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: how-to
-ms.date: 12/21/2020
+ms.date: 03/15/2021
 ms.author: v-erkel
-ms.openlocfilehash: 02bf862cdc3b20ef3e5fdb024f474267efa0c70d
-ms.sourcegitcommit: 6cca6698e98e61c1eea2afea681442bd306487a4
+ms.openlocfilehash: 06feefe3a934d1ee02793fab442852e5ef40899a
+ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/24/2020
-ms.locfileid: "97760512"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103563394"
 ---
 # <a name="configure-additional-azure-hpc-cache-settings"></a>Ek Azure HPC önbellek ayarlarını yapılandırma
 
-Azure portal **yapılandırma** sayfasında, çeşitli ayarların özelleştirilmesi için seçenekler vardır. Çoğu kullanıcının bu ayarları varsayılan değerlerinden değiştirmesi gerekmez.
+Azure portal **ağ** sayfasında çeşitli ayarları özelleştirmeye yönelik seçenekler vardır. Çoğu kullanıcının bu ayarları varsayılan değerlerinden değiştirmesi gerekmez.
 
 Bu makalede ayrıca Azure Blob depolama hedefleri için anlık görüntü özelliğinin nasıl kullanılacağı açıklanır. Anlık görüntü özelliğinin yapılandırılabilir ayarları yok.
 
-Ayarları görmek için, önbelleğin **yapılandırma** sayfasını Azure Portal açın.
+Ayarları görmek için, önbelleğin **ağ** sayfasını Azure Portal açın.
 
-![Azure portal 'de yapılandırma sayfasının ekran görüntüsü](media/configuration.png)
+![Azure portal ağ sayfasının ekran görüntüsü](media/networking-page.png)
 
-> [!TIP]
-> [Azure HPC Cache videosunu yönetme videosu](https://azure.microsoft.com/resources/videos/managing-hpc-cache/) , yapılandırma sayfasını ve ayarlarını gösterir.
+> [!NOTE]
+> Bu sayfanın önceki bir sürümü, önbellek düzeyinde bir kök sıkıştırma ayarı içeriyordu, ancak bu ayar [istemci erişim ilkelerine](access-policies.md)taşındı.
+
+<!-- >> [!TIP]
+> The [Managing Azure HPC Cache video](https://azure.microsoft.com/resources/videos/managing-hpc-cache/) shows the networking page and its settings. -->
 
 ## <a name="adjust-mtu-value"></a>MTU değerini ayarla
 <!-- linked from troubleshoot-nas article -->
@@ -42,21 +45,39 @@ Diğer sistem bileşenlerinde MTU ayarlarını değiştirmek istemiyorsanız, ö
 
 Azure [VM 'leri Için TCP/IP performans ayarlamayı](../virtual-network/virtual-network-tcpip-performance-tuning.md)okuyarak Azure sanal ağlarında MTU ayarları hakkında daha fazla bilgi edinin.
 
-## <a name="configure-root-squash"></a>Kök sıkıştırarak 'i yapılandırma
-<!-- linked from troubleshoot and from access policies -->
+## <a name="customize-ntp"></a>NTP 'yi özelleştirme
 
-Kök sıkıştırma ayarını **Etkinleştir** ayarı, Azure HPC önbelleğinin istemci makinelerdeki kök kullanıcıdan gelen istekleri nasıl ele aldığını denetler.
+Önbelleğiniz, varsayılan olarak Azure tabanlı saat sunucusu time.microsoft.com kullanır. Önbelleğinizin farklı bir NTP sunucusu kullanmasını istiyorsanız, bunu **NTP yapılandırma** bölümünde belirtin. Tam etki alanı adı veya IP adresi kullanın.
 
-Kök sıkıştırarak etkinleştirildiğinde, istemciden gelen kök kullanıcılar Azure HPC Cache aracılığıyla istek gönderdiklerinde "hiçbir zaman" kullanıcısına otomatik olarak eşlenir. Ayrıca, istemci isteklerinin Set-UID izin bitlerini kullanmasını önler.
+## <a name="set-a-custom-dns-configuration"></a>Özel bir DNS yapılandırması ayarlama
 
-Kök sıkıştırarak devre dışıysa, istemci kök kullanıcısı (UID 0) isteği, kök olarak bir arka uç NFS depolama sistemine geçirilir. Bu yapılandırma uygunsuz dosya erişimine izin verebilir.
+> [!CAUTION]
+> İhtiyacınız yoksa önbellek DNS yapılandırmanızı değiştirmeyin. Yapılandırma hataları d sonuçlara sahip olabilir. Yapılandırmanız Azure hizmet adlarını çözümleyemezse, HPC önbellek örneğine kalıcı olarak ulaşılamayan olur.
 
-Önbellek üzerinde kök sıkıştırma ayarlama, ``no_root_squash`` depolama hedefleri olarak kullanılan NAS sistemlerinde gerekli ayar için telafi sağlanmasına yardımcı olabilir. ( [NFS depolama hedefi önkoşulları](hpc-cache-prerequisites.md#nfs-storage-requirements)hakkında daha fazla bilgi edinin.) Ayrıca, Azure Blob depolama hedefleri ile birlikte kullanıldığında güvenliği de iyileştirebilir.
+Azure HPC önbelleği, güvenli ve kullanışlı Azure DNS sistemi kullanacak şekilde otomatik olarak yapılandırılır. Ancak, birkaç olağandışı yapılandırma önbelleğin Azure sistemi yerine ayrı, şirket içi bir DNS sistemi kullanmasını gerektirir. **Ağ** sayfasının **DNS yapılandırması** bölümü, bu tür bir sistem belirtmek için kullanılır.
 
-Varsayılan ayar **Evet**' tir. (Nisan 2020 ' den önce oluşturulan önbellekler varsayılan ayar **No** olabilir.)
+Azure temsilcileriniz ile görüşün veya özel bir önbellek DNS yapılandırması kullanıp kullanmayacağınızı öğrenmek için Microsoft hizmet ve destek 'e başvurun.
 
-> [!TIP]
-> Ayrıca, [istemci erişim ilkelerini](access-policies.md#root-squash)özelleştirerek belirli depolama dışarı aktarmaları için kök sıkıştırarak 'i ayarlayabilirsiniz.
+Azure HPC önbelleğinin kullanması için kendi şirket içi DNS sisteminizi yapılandırırsanız, yapılandırmanın Azure hizmetleri için Azure uç nokta adlarını çözümleyebiliyorsanız emin olmanız gerekir. Özel DNS ortamınızı, belirli ad çözümleme isteklerini Azure DNS veya başka bir sunucuya gerektiği gibi iletecek şekilde yapılandırmanız gerekir.
+
+DNS yapılandırmanızın bir Azure HPC önbelleği için kullanmadan önce bu öğeleri başarıyla çözümleyediğinden emin olun:
+
+* ``*.core.windows.net``
+* Sertifika iptal listesi (CRL) indirme ve çevrimiçi sertifika durumu Protokolü (OCSP) doğrulama hizmetleri. Bu [Azure TLS makalesinin](../security/fundamentals/tls-certificate-changes.md)sonundaki [güvenlik duvarı kuralları öğesinde](../security/fundamentals/tls-certificate-changes.md#will-this-change-affect-me) kısmi bir liste sağlanır, ancak tüm gereksinimleri anlamak için bir Microsoft Teknik temsilcisine danışmanız gerekir.
+* NTP sunucunuzun tam etki alanı adı (time.microsoft.com veya özel bir sunucu)
+
+Önbelleğiniz için özel bir DNS sunucusu ayarlamanız gerekiyorsa, belirtilen alanları kullanın:
+
+* **DNS arama etki alanı** (isteğe bağlı)-arama etki alanınızı girin, örneğin ``contoso.com`` . Tek bir değere izin verilir veya boş bırakabilirsiniz.
+* **DNS** sunucuları-en fazla üç DNS sunucusu girin. Bunları IP adresine göre belirtin.
+
+<!-- 
+  > [!NOTE]
+  > The cache will use only the first DNS server it successfully finds. -->
+
+### <a name="refresh-storage-target-dns"></a>Depolama hedefi DNS 'yi Yenile
+
+DNS sunucunuz IP adreslerini güncelleştirirse, ilişkili NFS depolama hedefleri geçici olarak kullanılamıyor olur. [Depolama hedefleri düzenleme](hpc-cache-edit-storage.md#update-ip-address-custom-dns-configurations-only)bölümünde özel DNS sistem IP adreslerinizi güncelleştirme hakkında bilgi edinin.
 
 ## <a name="view-snapshots-for-blob-storage-targets"></a>BLOB depolama hedeflerinin anlık görüntülerini görüntüleme
 
@@ -75,8 +96,8 @@ Anlık görüntüler, UTC 0:00, 08:00 ve 16:00 ' de sekiz saatte bir alınır.
 
 Azure HPC Cache, günlük, haftalık ve aylık anlık görüntüleri yeni olanlar tarafından değiştirilene kadar depolar. Sınırlar şunlardır:
 
-* en fazla 20 günlük anlık görüntü
+* En fazla 20 günlük anlık görüntü
 * 8 haftalık anlık görüntüye kadar
-* en fazla 3 aylık anlık görüntü
+* En fazla 3 aylık anlık görüntü
 
 `.snapshot`BLOB depolama hedefinin ad alanındaki dizindeki anlık görüntülere erişin.

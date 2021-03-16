@@ -8,12 +8,12 @@ ms.author: gachandw
 ms.reviewer: mimckitt
 ms.date: 10/13/2020
 ms.custom: ''
-ms.openlocfilehash: 6e5994f05187cd25996bcc007d27a7e10eb76427
-ms.sourcegitcommit: ec39209c5cbef28ade0badfffe59665631611199
+ms.openlocfilehash: 79d6fecddf060909a74664ff29e08301f45d7042
+ms.sourcegitcommit: 66ce33826d77416dc2e4ba5447eeb387705a6ae5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/12/2021
-ms.locfileid: "103232537"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103472311"
 ---
 # <a name="prerequisites-for-deploying-azure-cloud-services-extended-support"></a>Azure Cloud Services dağıtımı önkoşulları (genişletilmiş destek)
 
@@ -78,6 +78,11 @@ Eski uzak masaüstü ayarlarını hizmet yapılandırma (. cscfg) dosyasından k
 <Setting name="Microsoft.WindowsAzure.Plugins.RemoteAccess.AccountExpiration" value="2021-12-17T23:59:59.0000000+05:30" /> 
 <Setting name="Microsoft.WindowsAzure.Plugins.RemoteForwarder.Enabled" value="true" /> 
 ```
+Hizmet yapılandırma (. cscfg) dosyasındaki her bir rol için eski tanılama ayarlarını kaldırın.
+
+```xml
+<Setting name="Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString" value="UseDevelopmentStorage=true" />
+```
 
 ## <a name="required-service-definition-file-csdef-updates"></a>Gerekli hizmet tanımı dosyası (. csdef) güncelleştirmeleri
 
@@ -116,6 +121,11 @@ Eski uzak masaüstü eklentilerini kullanan dağıtımlar, modüllerin hizmet ta
 <Import moduleName="RemoteAccess" /> 
 <Import moduleName="RemoteForwarder" /> 
 </Imports> 
+```
+Eski tanılama eklentilerini kullanan dağıtımlar, hizmet tanımı (. csdef) dosyasındaki her bir rol için kaldırılan ayarlara sahip olmalıdır
+
+```xml
+<Setting name="Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString" />
 ```
 
 ## <a name="key-vault-creation"></a>Key Vault oluşturma 

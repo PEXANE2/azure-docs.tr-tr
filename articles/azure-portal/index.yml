@@ -7,13 +7,13 @@ metadata:
   services: Azure portal
   ms.topic: landing-page
   ms.collection: collection
-  ms.date: 08/05/2020
-  ms.openlocfilehash: c1617f295a101ae645743d60fdbe82a09d936ea2
-  ms.sourcegitcommit: 003ac3b45abcdb05dc4406661aca067ece84389f
-  ms.translationtype: HT
+  ms.date: 03/15/2021
+  ms.openlocfilehash: 7b7727d1fdf550b3ab3341bd0dc852f343b00791
+  ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
+  ms.translationtype: MT
   ms.contentlocale: tr-TR
-  ms.lasthandoff: 12/07/2020
-  ms.locfileid: "96749020"
+  ms.lasthandoff: 03/16/2021
+  ms.locfileid: "103563921"
 landingContent:
 - title: Azure portalı hakkında
   linkLists:
@@ -21,18 +21,44 @@ landingContent:
     links:
     - text: Azure portal nedir?
       url: azure-portal-overview.md
+    - text: Azure Hızlı Başlangıç Merkezi'nde çalışmaya başlama
+      url: azure-portal-quickstart-center.md
     - text: Desteklenen tarayıcılar ve cihazlar
       url: azure-portal-supported-browsers-devices.md
-- title: Azure portalını özelleştirme
+- title: başlarken
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Portalda VM oluşturma
+      url: ../virtual-machines/windows/quick-create-portal.md?toc=/azure/azure-portal/toc.json&bc=/azure/azure-portal/breadcrumb/toc.json
+    - text: Pano oluşturma-Azure CLı
+      url: quickstart-portal-dashboard-azure-cli.md
+    - text: Pano oluşturma-Azure PowerShell
+      url: quickstart-portal-dashboard-powershell.md
+    - text: Pano oluşturma - ARM şablonu
+      url: quick-create-template.md
+  - linkListType: how-to-guide
+    links:
+    - text: Azure portalı nasıl yapılır video serisi
+      url: azure-portal-video-series.md
+- title: Destek isteklerini oluşturma ve yönetme
   linkLists:
   - linkListType: how-to-guide
     links:
-    - text: Portal tercihlerinizi ayarlama
-      url: set-preferences.md
-    - text: Özel panoları oluşturma ve paylaşma
-      url: azure-portal-dashboards.md
-    - text: Sık kullanılanlarınızı yönetme
-      url: azure-portal-add-remove-sort-favorites.md
+    - text: Azure destek isteği oluşturma
+      url: supportability/how-to-create-azure-support-request.md
+    - text: Azure destek isteğini yönetme
+      url: supportability/how-to-manage-azure-support-request.md
+- title: Erişilebilirlik seçeneklerini kullanma
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Klavye kısayolları
+      url: azure-portal-keyboard-shortcuts.md
+  - linkListType: how-to-guide
+    links:
+    - text: Yüksek karşıtlığı açma
+      url: set-preferences.md#choose-a-theme-or-enable-high-contrast
 - title: Azure portalına erişimi yönetme
   linkLists:
   - linkListType: reference
@@ -45,39 +71,17 @@ landingContent:
     links:
     - text: Azure’da kaynakları yönetme
       url: /learn/paths/manage-resources-in-azure/
-    - text: Azure rol tabanlı erişim denetimi (Azure RBAC) ile Azure kaynaklarınızın güvenliğini sağlama
-      url: /learn//modules/secure-azure-resources-with-rbac/
-- title: başlarken
-  linkLists:
-  - linkListType: quickstart
-    links:
-    - text: Azure Hızlı Başlangıç Merkezi'nde çalışmaya başlama
-      url: azure-portal-quickstart-center.md
-  - linkListType: how-to-guide
-    links:
-    - text: Azure portalı nasıl yapılır video serisi
-      url: azure-portal-video-series.md
-  - linkListType: learn
-    links:
-    - text: Azure ile ilgili temel bilgiler
-      url: /learn/paths/azure-fundamentals/
-    - text: Bulut Kavramları - Bulut bilişim prensipleri
-      url: /learn/modules/principles-cloud-computing/
-- title: Erişilebilirlik seçeneklerini kullanma
-  linkLists:
-  - linkListType: reference
-    links:
-    - text: Klavye kısayolları
-      url: azure-portal-keyboard-shortcuts.md
-  - linkListType: how-to-guide
-    links:
-    - text: Yüksek karşıtlığı açma
-      url: set-preferences.md#choose-a-theme-or-enable-high-contrast
-- title: Destek isteklerini oluşturma ve yönetme
+    - text: Azure rol tabanlı erişim denetimi (Azure RBAC) ile kaynaklarınızın güvenliğini sağlama
+      url: /learn/modules/secure-azure-resources-with-rbac
+- title: Azure portalını özelleştirme
   linkLists:
   - linkListType: how-to-guide
     links:
-    - text: Azure destek isteği oluşturma
-      url: ../azure-portal/supportability/how-to-create-azure-support-request.md
-    - text: Bölge veya SKU abonelik sorunlarını giderme
-      url: ../azure-portal/supportability/sku-series-unavailable.md
+    - text: Azure portal ayarlarını ve tercihlerini yönetme
+      url: set-preferences.md
+    - text: Kaynak bilgilerini görüntüleme ve filtreleme
+      url: manage-filter-resource-views.md
+    - text: Pano oluşturma-Azure portal Kullanıcı arabirimi
+      url: azure-portal-dashboards.md
+    - text: Ekleme, kaldırma ve sık kullanılanları sıralama
+      url: azure-portal-add-remove-sort-favorites.md

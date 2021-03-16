@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 09/29/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python,contperf-fy21q1, automl
-ms.openlocfilehash: e8e904511178f494890b25764a84df8ca64a6b6c
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.openlocfilehash: 24c0d57490ecd039039992310f93ca3e21c47b3b
+ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102498873"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103563496"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>Python’da otomatik ML denemelerini yapılandırma
 
@@ -396,9 +396,29 @@ Bir Özet Özeti almak ve belirli bir modele hangi özelliklerin eklendiğini an
 > Otomatik ML algoritmaları, önerilen bir modelin nihai ölçüm puanından, doğruluk gibi hafif çeşitçine neden olabilecek, rastgele bir açıklık elde ediyor. Otomatikleştirilmiş ML, gerektiğinde tren-test Split, tren-doğrulama bölme veya çapraz doğrulama gibi veriler üzerinde işlemler de gerçekleştirir. Bu nedenle, aynı yapılandırma ayarları ve birincil ölçüm ile bir denemeyi birden çok kez çalıştırırsanız, bu faktörlere bağlı olarak her bir denemeleri son ölçüm puanı için çeşitleme görürsünüz. 
 
 ## <a name="register-and-deploy-models"></a>Modelleri kaydetme ve dağıtma
+Bir modeli kaydedebilirsiniz, böylece daha sonra kullanmak üzere buna geri dönebilirsiniz. 
 
-Bir Web hizmetine dağıtım için bir modeli indirme veya kaydetme hakkında daha fazla bilgi için bkz. [bir modelin nasıl ve ne şekilde dağıtılacağı](how-to-deploy-and-where.md).
+Bir modeli otomatik ML çalıştırağından kaydetmek için [`register_model()`](/python/api/azureml-train-automl-client/azureml.train.automl.run.automlrun#register-model-model-name-none--description-none--tags-none--iteration-none--metric-none-) yöntemini kullanın. 
 
+```Python
+
+best_run, fitted_model = run.get_output()
+print(fitted_model.steps)
+
+model_name = best_run.properties['model_name']
+description = 'AutoML forecast example'
+tags = None
+
+model = remote_run.register_model(model_name = model_name, 
+                                  description = description, 
+                                  tags = tags)
+```
+
+
+Bir dağıtım yapılandırması oluşturma ve bir Web hizmetine kayıtlı bir model dağıtma hakkında ayrıntılı bilgi için bkz. [bir modelin nasıl ve ne şekilde dağıtılacağı](how-to-deploy-and-where.md?tabs=python#define-a-deployment-configuration).
+
+> [!TIP]
+> Kayıtlı modeller için, tek tıklamayla dağıtım [Azure Machine Learning Studio](https://ml.azure.com)aracılığıyla kullanılabilir. Bkz. [Studio 'dan kayıtlı modelleri dağıtma](how-to-use-automated-ml-for-ml-models.md#deploy-your-model). 
 <a name="explain"></a>
 
 ## <a name="model-interpretability"></a>Model yorumlanabilirliği

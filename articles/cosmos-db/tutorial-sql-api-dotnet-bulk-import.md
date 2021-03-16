@@ -6,15 +6,15 @@ ms.author: maquaran
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: tutorial
-ms.date: 09/21/2020
+ms.date: 03/15/2021
 ms.reviewer: sngun
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 6cf0e77657175449b126eeca02a12c164478e568
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 1c178f57a31e02b3dac712a5425db226720200c5
+ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96548078"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103563632"
 ---
 # <a name="bulk-import-data-to-azure-cosmos-db-sql-api-account-by-using-the-net-sdk"></a>.NET SDK kullanarak verileri Azure Cosmos DB SQL API hesabına toplu olarak içeri aktarma
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -30,7 +30,7 @@ Bu öğreticinin içindekiler:
 > * Toplu destek etkin olan bir Azure Cosmos hesabına bağlanma
 > * Eşzamanlı oluşturma işlemleri aracılığıyla veri içeri aktarma gerçekleştirme
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu makaledeki yönergeleri izleyerek önce aşağıdaki kaynaklara sahip olduğunuzdan emin olun:
 
@@ -112,7 +112,7 @@ Varsayılan metodun üzerine yazarak `Main` ve genel değişkenleri tanımlayara
         private const string AuthorizationKey = "<your-account-key>";
         private const string DatabaseName = "bulk-tutorial";
         private const string ContainerName = "items";
-        private const int ItemsToInsert = 300000;
+        private const int AmountToInsert = 300000;
 
         static async Task Main(string[] args)
         {
@@ -150,14 +150,11 @@ Sonra, sınıfı içinde bir yardımcı işlevi oluşturun `Program` . Bu yardı
 
 [!code-csharp[Main](~/cosmos-dotnet-bulk-import/src/Program.cs?name=Bogus)]
 
-Öğeleri okuyun ve sınıfını kullanarak akış örneklerine serileştirin `System.Text.Json` . Otomatik olarak oluşturulan verilerin doğası nedeniyle, verileri akışlar olarak serileştirdide olursunuz. Öğe örneğini doğrudan da kullanabilirsiniz, ancak bunları akışlara dönüştürerek CosmosClient içinde Stream API 'lerinin performansından yararlanabilirsiniz. Genellikle, verileri Bölüm anahtarını bildiğiniz sürece doğrudan kullanabilirsiniz. 
-
-
-Verileri akış örneklerine dönüştürmek için, yöntemi içinde, `Main` kapsayıcıyı oluşturduktan hemen sonra aşağıdaki kodu ekleyin:
+Birlikte çalışmak için bir belge listesini başlatmak üzere yardımcı işlevini kullanın:
 
 [!code-csharp[Main](~/cosmos-dotnet-bulk-import/src/Program.cs?name=Operations)]
 
-Ardından, eşzamanlı görevler oluşturmak için veri akışlarını kullanın ve öğeleri kapsayıcıya eklemek için görev listesini doldurun. Bu işlemi gerçekleştirmek için aşağıdaki kodu `Program` sınıfına ekleyin:
+Ardından, eşzamanlı görevler oluşturmak için belge listesini kullanın ve öğeleri kapsayıcıya eklemek için görev listesini doldurun. Bu işlemi gerçekleştirmek için aşağıdaki kodu `Program` sınıfına ekleyin:
 
 [!code-csharp[Main](~/cosmos-dotnet-bulk-import/src/Program.cs?name=ConcurrentTasks)]
 

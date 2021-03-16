@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/20/2020
 ms.author: liud
 ms.reviewer: pimorano
-ms.openlocfilehash: 5f82e8b7359b90d5127e2c20a2b89cc5ad739a56
-ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
+ms.openlocfilehash: de3738573bb9bb6f045a45d290c74ba9e6902a5e
+ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/06/2021
-ms.locfileid: "99624784"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103561966"
 ---
 # <a name="continuous-integration-and-delivery-for-azure-synapse-workspace"></a>Azure SYNAPSE çalışma alanı için sürekli tümleştirme ve teslim
 
@@ -125,6 +125,140 @@ SYNAPSE çalışma alanı, SQL betiği, Not defteri, Spark iş tanımı, dataflo
 Tüm değişiklikleri kaydettikten sonra bir yayını el ile oluşturmak için **yayın oluştur** ' u seçebilirsiniz. Yayınların oluşturulmasını otomatikleştirmek için bkz. [Azure DevOps yayın Tetikleyicileri](/azure/devops/pipelines/release/triggers)
 
    ![Yayın oluştur ' u seçin](media/release-creation-manually.png)
+
+## <a name="use-custom-parameters-of-the-workspace-template"></a>Çalışma alanı şablonunun özel parametrelerini kullan 
+
+Otomatik CI/CD kullanıyorsunuz ve dağıtım sırasında bazı özellikleri değiştirmek istiyorsunuz, ancak özellikler varsayılan olarak parametreli değildir. Bu durumda, varsayılan parametre şablonunu geçersiz kılabilirsiniz.
+
+Varsayılan parametre şablonunu geçersiz kılmak için, git işbirliği dalınızın kök klasöründetemplate-parameters-definition.jsadlı bir dosya **olan** özel bir parametre şablonu oluşturmanız gerekir. Bu tam dosya adını kullanmanız gerekir. SYNAPSE çalışma alanı, işbirliği dalından yayımlarken, bu dosyayı okur ve parametrelerini oluşturmak için yapılandırmasını kullanır. Dosya bulunamazsa, varsayılan parametre şablonu kullanılır.
+
+### <a name="custom-parameter-syntax"></a>Özel parametre sözdizimi
+
+Özel parametreler dosyası oluşturmaya yönelik bazı yönergeler aşağıda verilmiştir:
+
+* İlgili varlık türünün altında özellik yolunu girin.
+* İçin bir özellik adının ayarlanması `*` , altındaki tüm özellikleri parametreleştirmek istediğinizi (özyinelemeli değil, yalnızca ilk düzeye doğru değil) gösterir. Bu yapılandırmaya özel durumlar da sağlayabilirsiniz.
+* Bir özelliğin değerini dize olarak ayarlamak, özelliği parametreleştirmek istediğinizi gösterir. `<action>:<name>:<stype>` biçimini kullanın.
+   *  `<action>` Şu karakterlerden biri olabilir:
+      * `=` , geçerli değeri parametresi için varsayılan değer olarak tutacağı anlamına gelir.
+      * `-` parametresi için varsayılan değeri saklama anlamına gelir.
+      * `|` , bağlantı dizeleri veya anahtarlar için Azure Key Vault parolalar için özel bir durumdur.
+   * `<name>` parametrenin adıdır. Boşsa, özelliğin adını alır. Değer bir `-` karakterle başlıyorsa, ad kısaltılmıştır. Örneğin, `AzureStorage1_properties_typeProperties_connectionString` olarak kısaltılacak `AzureStorage1_connectionString` .
+   * `<stype>` parametrenin türüdür. `<stype>`Boşsa, varsayılan tür olur `string` . Desteklenen değerler: `string` , `securestring` , `int` , `bool` , `object` `secureobject` ve `array` .
+* Dosyada bir dizi belirtilmesi, şablondaki eşleşen özelliğin bir dizi olduğunu gösterir. SYNAPSE, belirtilen tanımı kullanarak dizideki tüm nesneler arasında yinelenir. İkinci nesne, bir dize, her yineleme için parametresinin adı olarak kullanılan özelliğin adı olur.
+* Bir tanım, kaynak örneğine özgü olamaz. Herhangi bir tanım, bu türdeki tüm kaynaklar için geçerlidir.
+* Varsayılan olarak, Key Vault gizli dizileri ve bağlantı dizeleri, anahtarlar ve belirteçler gibi güvenli dizeler gibi tüm güvenli dizeler parametrelenir.
+
+### <a name="parameter-template-definition-samples"></a>Parametre şablonu tanım örnekleri 
+
+Aşağıda bir parametre şablonu tanımının neye benzediklerine bir örnek verilmiştir:
+
+```json
+{
+"Microsoft.Synapse/workspaces/notebooks": {
+        "properties":{
+            "bigDataPool":{
+                "referenceName": "="
+            }
+        }
+    },
+    "Microsoft.Synapse/workspaces/sqlscripts": {
+     "properties": {
+         "content":{
+             "currentConnection":{
+                    "*":"-"
+                 }
+            } 
+        }
+    },
+    "Microsoft.Synapse/workspaces/pipelines": {
+        "properties": {
+            "activities": [{
+                 "typeProperties": {
+                    "waitTimeInSeconds": "-::int",
+                    "headers": "=::object"
+                }
+            }]
+        }
+    },
+    "Microsoft.Synapse/workspaces/integrationRuntimes": {
+        "properties": {
+            "typeProperties": {
+                "*": "="
+            }
+        }
+    },
+    "Microsoft.Synapse/workspaces/triggers": {
+        "properties": {
+            "typeProperties": {
+                "recurrence": {
+                    "*": "=",
+                    "interval": "=:triggerSuffix:int",
+                    "frequency": "=:-freq"
+                },
+                "maxConcurrency": "="
+            }
+        }
+    },
+    "Microsoft.Synapse/workspaces/linkedServices": {
+        "*": {
+            "properties": {
+                "typeProperties": {
+                     "*": "="
+                }
+            }
+        },
+        "AzureDataLakeStore": {
+            "properties": {
+                "typeProperties": {
+                    "dataLakeStoreUri": "="
+                }
+            }
+        }
+    },
+    "Microsoft.Synapse/workspaces/datasets": {
+        "properties": {
+            "typeProperties": {
+                "*": "="
+            }
+        }
+    }
+}
+```
+Yukarıdaki şablonun nasıl oluşturulduğu ve kaynak türüne göre nasıl bölündüğü hakkında bir açıklama aşağıda verilmiştir.
+
+#### <a name="notebooks"></a>Notebooks 
+
+* Yoldaki herhangi bir özellik `properties/bigDataPool/referenceName` varsayılan değeri ile parametrelenir. Her bir not defteri dosyası için ekli Spark havuzunu parametreleştirebilirsiniz. 
+
+#### <a name="sql-scripts"></a>SQL betikleri 
+
+* Yoldaki Özellikler (poolName ve databaseName), `properties/content/currentConnection` şablondaki varsayılan değerler olmadan dize olarak parametrelenir. 
+
+#### <a name="pipelines"></a>Pipelines
+
+* Yoldaki herhangi bir özellik `activities/typeProperties/waitTimeInSeconds` parametrelenir. Bir işlem hattındaki (örneğin, etkinlik) bir kod düzeyi özelliği olan herhangi bir etkinlik, `waitTimeInSeconds` `Wait` varsayılan bir ada sahip bir sayı olarak parametrelendirilir. Ancak Kaynak Yöneticisi şablonunda varsayılan bir değere sahip olmaz. Kaynak Yöneticisi dağıtımı sırasında zorunlu bir giriş olacaktır.
+* Benzer şekilde, adlı bir özellik `headers` (örneğin, bir `Web` etkinlikte) türü `object` (nesne) ile parametrelenir. Kaynak fabrikasının değeriyle aynı değer olan varsayılan bir değere sahiptir.
+
+#### <a name="integrationruntimes"></a>Tümleştirme çalışma zamanları
+
+* Yolun altındaki tüm özellikler, kendi `typeProperties` varsayılan değerleriyle parametrelenir. Örneğin, tür özellikleri altında iki özellik vardır `IntegrationRuntimes` : `computeProperties` ve `ssisProperties` . Her iki özellik türü de ilgili varsayılan değerleri ve türleri (nesne) ile oluşturulur.
+
+#### <a name="triggers"></a>Tetikleyiciler
+
+* Altında `typeProperties` iki özellik parametrelenir. Birincisi, `maxConcurrency` varsayılan bir değere sahip ve türünde olan bir ' dır `string` . Varsayılan parametre adı vardır `<entityName>_properties_typeProperties_maxConcurrency` .
+* `recurrence`Özelliği de parametrelenir. Bu düzeyin altında, bu düzeydeki tüm özellikler, varsayılan değerler ve parametre adlarıyla dize olarak parametreleştirime olarak belirtilir. Özel durum `interval` , tür olarak parametreleştirilen özelliktir `int` . Parametre adı ile sondüzeltildi `<entityName>_properties_typeProperties_recurrence_triggerSuffix` . Benzer şekilde, `freq` özelliği bir dizedir ve dize olarak parametrelenir. Ancak, `freq` özelliği varsayılan değer olmadan parametrelenir. Ad kısaltılmıştır ve Sonya düzeltildi. Örneğin, `<entityName>_freq`.
+
+#### <a name="linkedservices"></a>LinkedServices
+
+* Bağlı hizmetler benzersizdir. Bağlı hizmetler ve veri kümelerinin çok sayıda türü olduğundan, türe özgü özelleştirme sağlayabilirsiniz. Bu örnekte, türündeki tüm bağlı hizmetler için `AzureDataLakeStore` belirli bir şablon uygulanır. Tüm diğerleri için (aracılığıyla `*` ), farklı bir şablon uygulanır.
+* `connectionString`Özelliği bir değer olarak parametrelendirilecektir `securestring` . Varsayılan bir değere sahip olmayacaktır. Bu, ile Sonekli bir kısaltılmış parametre adı olacaktır `connectionString` .
+* Özelliği `secretAccessKey` bir `AzureKeyVaultSecret` (örneğin, bir Amazon S3 bağlantılı hizmetinde) olur. Otomatik olarak Azure Key Vault gizli dizi olarak parametrelenir ve yapılandırılan anahtar kasasından alınır. Ayrıca, anahtar kasasının kendisini parametreleştirebilirsiniz.
+
+#### <a name="datasets"></a>Veri kümeleri
+
+* Veri kümeleri için türe özgü özelleştirme kullanılabilir olsa da, açıkça bir düzeyi yapılandırması olmadan yapılandırma sağlayabilirsiniz \* . Yukarıdaki örnekte, altındaki tüm veri kümesi özellikleri `typeProperties` parametrelenir.
+
 
 ## <a name="best-practices-for-cicd"></a>CI/CD için en iyi yöntemler
 

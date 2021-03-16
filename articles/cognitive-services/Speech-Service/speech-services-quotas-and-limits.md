@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 02/24/2021
+ms.date: 03/15/2021
 ms.author: alexeyo
-ms.openlocfilehash: f6c7ec3f66d0ab9186645654adf3c062c241e5d0
-ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
+ms.openlocfilehash: 78e40250710c133cbed53c05137971247663b0df
+ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "102449858"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103564431"
 ---
 # <a name="speech-services-quotas-and-limits"></a>Konuşma Hizmet Kotaları ve Sınırları
 
@@ -27,6 +27,7 @@ Bu makalede, Azure bilişsel konuşma Hizmetleri kotaları ve tüm [fiyatlandır
 Aşağıdaki tablolarda, "ayarlanamaz" satırı olmayan parametreler, tüm fiyat katmanları **için ayarlanamaz.**
 
 #### <a name="online-transcription"></a>Çevrimiçi döküm
+[Konuşma SDK](speech-sdk.md) ile kullanım ve/veya [kısa ses için konuşmaya metin REST API](rest-speech-to-text.md#speech-to-text-rest-api-for-short-audio).
 
 | Kota | Ücretsiz (F0)<sup>1</sup> | Standart (S0) |
 |--|--|--|
@@ -74,7 +75,7 @@ Aşağıdaki tablolarda, "ayarlanamaz" satırı olmayan parametreler, tüm fiyat
 | **WebSocket 'e özgü kotalar** |  |  |
 |Her açma için üretilen maksimum ses uzunluğu | 10 dakika | 10 dakika |
 |Her açma için en fazla SSML Ileti boyutu |64 KB |64 KB |
-| **REST API sınırı** | dakikada 20 istek | 5 saniye başına 25 istek |
+| **REST API sınırı** | dakikada 20 istek | dakikada 300 istek |
 
 
 <sup>3</sup> **ücretsiz (F0)** fiyatlandırma katmanı için bkz. [fiyatlandırma sayfasında](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/)Ayrıca aylık allowsuyum.<br/>

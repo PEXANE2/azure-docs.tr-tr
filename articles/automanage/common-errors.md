@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.topic: conceptual
 ms.date: 01/14/2021
 ms.author: alsin
-ms.openlocfilehash: df5133ad4bb3155afdc9d43e595591d9cfda4ea0
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 2bdf04143121e1286ffc7bfa86b4a9ee291ae6ef
+ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101644451"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103561875"
 ---
 # <a name="troubleshoot-common-automanage-onboarding-errors"></a>Ortak oto yönetimi ekleme hatalarını giderme
 Oto yönetimi, bir makineyi hizmete eklemek için başarısız olabilir. Bu belgede dağıtım hatalarının nasıl giderileceği, dağıtımların başarısız olmasının bazı yaygın nedenlerini nasıl paylaştığı ve hafifletme konusunda olası bir sonraki adım açıklanmaktadır.
@@ -21,7 +21,7 @@ Oto yönetimi, bir makineyi hizmete eklemek için başarısız olabilir. Bu belg
 ## <a name="troubleshooting-deployment-failures"></a>Dağıtım hatalarıyla ilgili sorunları giderme
 Bir makineyi tekrar yönetmeye eklemek Azure Resource Manager dağıtımının oluşturulmasını sağlar. Ekleme başarısız olursa, neden başarısız olduğuna ilişkin daha fazla ayrıntı için dağıtıma danışmanız yararlı olabilir. Hata ayrıntısı açılır penceresinde, aşağıda yer alarak dağıtımların bağlantıları vardır.
 
-:::image type="content" source="media\automanage-common-errors\failure-flyout.png" alt-text="Hata ayrıntısı açılır öğesini oto Yönet.":::
+:::image type="content" source="media\common-errors\failure-flyout.png" alt-text="Hata ayrıntısı açılır öğesini oto Yönet.":::
 
 ### <a name="check-the-deployments-for-the-resource-group-containing-the-failed-vm"></a>Başarısız VM 'yi içeren kaynak grubunun dağıtımlarını denetleyin
 Hata açılır öğesi, kaynak grubu içinde, başarısız olan makineyi içeren ve dağıtımları filtrelemek için kullanabileceğiniz bir önek adı olan dağıtımlar için bir bağlantı içerir. Bağlantıya tıklamak sizi dağıtım dikey penceresine götürür. bu noktada, makinenize yönelik dağıtımları görmek için dağıtımları filtreleyebilirsiniz. Birden çok bölgeye dağıtıyorsanız, doğru bölgede dağıtıma tıklatığınızdan emin olun.
@@ -38,6 +38,7 @@ Hata |  Risk azaltma
 :-----|:-------------|
 Hesap yetersiz izin hatası | Bu durum, yeni bir oto Yönet hesabı içeren bir aboneliği yeni bir kiracıya yakın zamanda taşıdıysanız meydana gelebilir. Bu sorunu çözmeye yönelik adımlar [burada](./repair-automanage-account.md)yer alır.
 Bölge eşleme gereksinimleriyle eşleşmeyen çalışma alanı bölgesi | Otomatik Yönet, makinenizi ekleyemedi, ancak makinenin Şu anda bağlı olduğu Log Analytics çalışma alanı desteklenen bir Otomasyon bölgesine eşlenmemiş. Mevcut Log Analytics çalışma alanınızın ve otomasyon hesabınızın [desteklenen bir bölge eşlemesinde](../automation/how-to/region-mappings.md)bulunduğundan emin olun.
+"' Yönetilen uygulama tarafından oluşturulan ' sistem reddetme ataması '" adlı reddetme ataması nedeniyle erişim engellendi " | Kaynağınızın, kaynağına erişimini engelleyen bir [denyAssignment](https://docs.microsoft.com/azure/role-based-access-control/deny-assignments) oluşturuldu. Bunun nedeni, bir [Blueprint](https://docs.microsoft.com/azure/governance/blueprints/concepts/resource-locking) veya [yönetilen bir uygulamadır](https://docs.microsoft.com/azure/azure-resource-manager/managed-applications/overview).
 "Atama başarısız oldu; kullanılabilir ek bilgi yok " | Lütfen Microsoft Azure desteğiyle bir servis talebi açın.
 
 ## <a name="next-steps"></a>Sonraki adımlar

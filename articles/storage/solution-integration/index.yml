@@ -1,54 +1,55 @@
 ### YamlMime:Landing
 title: Azure depolama tarafından doğrulanan iş ortağı çözümleri belgeleri
-summary: Azure depolama tarafından doğrulanan iş ortağı çözümleri, Azure depolama platformunun en üstünde gelişmiş senaryoları etkinleştirir.
+summary: Azure depolama tarafından doğrulanan iş ortağı çözümleri, Azure depolama 'nın en üstünde gelişmiş senaryoları etkinleştirir.
 metadata:
   title: Azure depolama tarafından doğrulanan iş ortağı çözümleri
-  description: Azure depolama tarafından doğrulanan iş ortağı çözümleri, Azure depolama platformunun en üstünde gelişmiş senaryoları etkinleştirir.
+  description: Azure depolama tarafından doğrulanan iş ortağı çözümleri, Azure depolama 'nın en üstünde gelişmiş senaryoları etkinleştirir.
   services: storage
   ms.service: storage
+  ms.subservice: partner
   ms.topic: landing-page
   ms.collection: collection
   author: beber-msft
   ms.author: beber
-  ms.date: 12/08/2020
-  ms.openlocfilehash: 2e9a2ac1e8d33020a94c2c783d3d695a459fcea5
-  ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+  ms.date: 03/15/2021
+  ms.openlocfilehash: 5d2c7d767fd678867175481c0b837c1aa11ecf33
+  ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
   ms.translationtype: MT
   ms.contentlocale: tr-TR
-  ms.lasthandoff: 03/03/2021
-  ms.locfileid: "101749153"
+  ms.lasthandoff: 03/16/2021
+  ms.locfileid: "103562459"
 landingContent:
-- title: Azure Depolama Analizi ve büyük veri iş ortakları
+- title: Analiz ve büyük veri iş ortakları
   linkLists:
   - linkListType: overview
     links:
-    - text: Azure Depolama Analizi iş ortakları onaylandı
+    - text: Doğrulanan analiz iş ortakları
       url: .\validated-partners\analytics\partner-overview.md
-- title: Azure depolama arşivi, yedekleme ve BCDR iş ortakları
+- title: Arşiv, yedekleme ve BCDR iş ortakları
   linkLists:
   - linkListType: overview
     links:
-    - text: Doğrulanan Azure depolama arşivi ve BCDR iş ortakları
+    - text: Doğrulanan arşiv ve BCDR iş ortakları
       url: .\validated-partners\backup-archive-disaster-recovery\partner-overview.md
-  - linkListType: quickstart
+  - linkListType: get-started
     links:
-    - text: Commkasa hızlı başlangıç kılavuzu
+    - text: Commkasa Başlangıç Kılavuzu
       url: .\validated-partners\backup-archive-disaster-recovery\commvault\commvault-solution-guide.md
-    - text: Veeab hızlı başlangıç kılavuzu
+    - text: Veeab Başlarken Kılavuzu
       url: .\validated-partners\backup-archive-disaster-recovery\veeam\veeam-solution-guide.md
-- title: Azure depolama kapsayıcısı çözüm iş ortakları
+- title: Kapsayıcı çözüm iş ortakları
   linkLists:
   - linkListType: overview
     links:
-    - text: Azure depolama kapsayıcısı çözüm iş ortakları doğrulanmadı
+    - text: Doğrulanan kapsayıcı çözüm iş ortakları
       url: .\validated-partners\container-solutions\partner-overview.md
-- title: Azure depolama veri yönetimi ve geçiş iş ortakları
+- title: Veri yönetimi ve geçiş iş ortakları
   linkLists:
   - linkListType: overview
     links:
-    - text: Doğrulanan Azure depolama veri yönetimi ve geçiş iş ortakları
+    - text: Doğrulanan veri yönetimi ve geçiş iş ortakları
       url: .\validated-partners\data-management\partner-overview.md
-- title: Azure depolama birincil ve ikincil depolama iş ortakları
+- title: Birincil ve ikincil depolama iş ortakları
   linkLists:
   - linkListType: overview
     links:

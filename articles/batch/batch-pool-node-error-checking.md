@@ -3,14 +3,14 @@ title: Havuz ve düğüm hatalarını denetle
 description: Bu makalede, ve havuzları ve düğümleri oluştururken bunların nasıl önleneceğini denetlemek için hatalarla birlikte gerçekleşebileceğini gösteren arka plan işlemleri ele alınmaktadır.
 author: mscurrell
 ms.author: markscu
-ms.date: 02/03/2020
+ms.date: 03/15/2021
 ms.topic: how-to
-ms.openlocfilehash: 2b67eada5dfa89f95e2c9ae045c6bbe3fa0bb1ce
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.openlocfilehash: 4a0d3e017f36f580024b77fbd23145d7447f336d
+ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99576321"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103564414"
 ---
 # <a name="check-for-pool-and-node-errors"></a>Havuz ve düğüm hatalarını denetle
 
@@ -62,6 +62,13 @@ Düğüm içeren bir havuzu sildiğinizde, ilk toplu Işlem düğümleri siler. 
 
 Toplu işlem **, silme işlemi sırasında** [havuzun durumunu](/rest/api/batchservice/pool/get#poolstate) silinmek üzere ayarlar. Çağıran uygulama, **durum** ve **Stateattiontime** özelliklerini kullanarak havuz silmenin çok uzun sürdüğünü algılayabilir.
 
+Havuz beklenenden uzun sürüyorsa, havuz başarıyla silinene kadar Işlem düzenli aralıklarla yeniden dener. Bazı durumlarda, gecikme bir Azure hizmet kesintisi veya diğer geçici sorunlardan kaynaklanır. Bir havuzun başarıyla silinmesini engelleyebilen diğer faktörler, sorunu gidermek için işlem yapmanız gerekebilir. Bu etkenler şunları içerir:
+
+- Kaynak kilitleri toplu olarak oluşturulan kaynaklara veya toplu Işlem tarafından kullanılan ağ kaynaklarına yerleştirildi.
+- Oluşturduğunuz kaynakların, toplu olarak oluşturulan bir kaynağa bağımlılığı vardır. Örneğin, bir [Sanal ağda havuz oluşturursanız](batch-virtual-network.md)Batch bir ağ güvenlik grubu (NSG), genel bir IP adresi ve bir yük dengeleyici oluşturur. Bu kaynakları havuz dışında kullanırsanız, havuz bu bağımlılık kaldırılana kadar silinemez.
+- Microsoft.Batch kaynak sağlayıcısı, havuzunuzu içeren abonelikte kaydı silindi.
+- "Microsoft Azure Batch" artık, havuzunuzu içeren aboneliğe [katkıda bulunan veya sahip rolü](batch-account-create-portal.md#allow-azure-batch-to-access-the-subscription-one-time-operation) yok (Kullanıcı aboneliği modu Batch hesapları için).
+
 ## <a name="node-errors"></a>Düğüm hataları
 
 Toplu Işlem, bir havuzdaki düğümleri başarıyla ayırdığında bile çeşitli sorunlar bazı düğümlerin sağlıksız olmasına ve görevleri çalıştıramamasına neden olabilir. Bu düğümler ücretlendirmeye devam etmektedir, bu nedenle kullanılamayan düğümler için ödeme yapmaktan kaçınmak için sorunları tespit etmek önemlidir. Yaygın düğüm hatalarına ek olarak, geçerli [iş durumunu](/rest/api/batchservice/job/get#jobstate) bilmek sorun giderme için yararlıdır.
@@ -105,15 +112,10 @@ Batch, nedeni tespit edebilir, düğüm [hataları](/rest/api/batchservice/compu
 **Kullanılamayan** düğümlere yönelik ek örneklere örnek olarak şunlar verilebilir:
 
 - Özel bir VM görüntüsü geçersiz. Örneğin, düzgün şekilde hazırlanmayan bir görüntü.
-
 - Bir altyapı arızası veya alt düzey yükseltme nedeniyle VM taşınır. Batch, düğümü kurtarır.
-
 - Bir VM görüntüsü onu desteklemeyen bir donanımda dağıtıldı. Örneğin, bir [Standard_D1_v2](../virtual-machines/dv2-dsv2-series.md) VM 'de CENTOS HPC görüntüsü çalıştırmaya çalışılıyor.
-
 - VM 'Ler bir [Azure sanal ağında](batch-virtual-network.md)ve trafik anahtar bağlantı noktalarına engellenmiştir.
-
 - VM 'Ler bir sanal ağda bulunur, ancak Azure depolama 'ya giden trafik engellenir.
-
 - VM 'Ler, müşteri DNS yapılandırmasına sahip bir sanal ağda ve DNS sunucusu Azure Storage 'ı çözümleyemiyor.
 
 ### <a name="node-agent-log-files"></a>Düğüm Aracısı günlük dosyaları

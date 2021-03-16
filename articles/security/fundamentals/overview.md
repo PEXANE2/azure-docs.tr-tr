@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/03/2021
 ms.author: TomSh
-ms.openlocfilehash: a62326d99eee8407b65c0c640b4db8a6f051c758
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.openlocfilehash: 1159736d59e15fa36c0feb7e5d5b5553953fb6b9
+ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102101197"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103564520"
 ---
 # <a name="introduction-to-azure-security"></a>Azure güvenliğe giriş
 
@@ -201,6 +201,14 @@ Azure ağ iletişimi, çeşitli güvenli uzaktan erişim senaryolarını destekl
 - [Şirket içi ağı adanmış WAN bağlantısıyla bir Azure sanal ağına bağlama](../../expressroute/expressroute-introduction.md)
 
 - [Azure sanal ağlarını birbirlerine bağlama](../../vpn-gateway/vpn-gateway-vnet-vnet-rm-ps.md)
+
+### <a name="azure-private-link"></a>Azure Özel Bağlantı
+
+[Azure özel bağlantısı](https://azure.microsoft.com/services/private-link/) , Azure PaaS hizmetlerine (örneğin, Azure depolama ve SQL veritabanı) ve Azure 'da barındırılan, müşteriye ait/iş ortağı hizmetlerinin [özel bir uç nokta](https://docs.microsoft.com/azure/private-link/private-endpoint-overview)üzerinden özel olarak bir şekilde erişmenizi sağlar. Azure özel bağlantısını kullanarak kurulum ve tüketim, Azure PaaS, müşteriye ait ve paylaşılan iş ortağı hizmetleri arasında tutarlıdır. Sanal ağınızdan Azure hizmetine giden trafik her zaman Microsoft Azure omurga ağında kalır.
+
+[Özel uç noktalar](https://docs.microsoft.com/azure/private-link/private-endpoint-overview) , kritik Azure hizmeti kaynaklarınızı yalnızca sanal ağlarınızla korumanıza olanak sağlar. Azure özel uç noktası, Azure özel bağlantısı tarafından desteklenen bir hizmete özel olarak ve güvenli bir şekilde bağlanmak için sanal ağınızdan özel bir IP adresi kullanır ve hizmeti sanal ağınıza etkin bir şekilde geri getiriyor. Azure 'da hizmetleri kullanmak için Sanal ağınızı genel İnternet 'e sunma işlemi artık gerekli değildir. 
+
+Ayrıca, sanal ağınızda kendi özel bağlantı hizmetinizi de oluşturabilirsiniz. [Azure özel bağlantı hizmeti](https://docs.microsoft.com/azure/private-link/private-link-service-overview) , Azure özel bağlantısı tarafından desteklenen kendi hizmetinize yapılan başvurudur. Azure Standart Load Balancer arkasında çalışan hizmetiniz, özel bağlantı erişimi için etkinleştirilebilir ve böylece hizmetinize ait tüketiciler kendi sanal ağlarından özel olarak erişebilir. Müşterileriniz, sanal ağı içinde özel bir uç nokta oluşturabilir ve bu hizmetle eşlenir. Hizmetinizi genel İnternet 'e açmak artık Azure 'da Hizmetleri işlemek için gerekli değildir. 
 
 ### <a name="vpn-gateway"></a>VPN Gateway
 

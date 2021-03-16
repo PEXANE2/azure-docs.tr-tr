@@ -4,14 +4,14 @@ description: Farklı önbellek kullanım modellerini ve bunların arasından sal
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: how-to
-ms.date: 03/08/2021
+ms.date: 03/15/2021
 ms.author: v-erkel
-ms.openlocfilehash: 856f2c15d2bd0b39212e8962a92b1df50cada29e
-ms.sourcegitcommit: 66ce33826d77416dc2e4ba5447eeb387705a6ae5
+ms.openlocfilehash: b23afb17b9b7152e82049ca4f6127e2811913296
+ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/15/2021
-ms.locfileid: "103472890"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103563462"
 ---
 # <a name="understand-cache-usage-models"></a>Önbellek kullanım modellerini anlama
 
@@ -29,7 +29,7 @@ Dosya önbelleğe alma, Azure HPC önbelleğinin istemci isteklerini nasıl hız
 
   Yazma önbelleği devre dışıysa, önbellek değiştirilen dosyayı depolamaz ve hemen arka uç depolama sistemine yazar.
 
-* **Geri yazma gecikmesi** -yazma önbelleği açık olan bir önbellek için geri yazma gecikmesi, dosyanın arka uç depolama sistemine taşınmadan önce önbelleğin ek dosya değişiklikleri için bekleyeceği süre miktarıdır.
+* **Geri yazma gecikmesi** -yazma önbelleği açık olan bir önbellek için, geri yazma gecikmesi önbelleğin dosyayı arka uç depolama sistemine kopyalamadan önce ek dosya değişiklikleri için bekleyeceği süre miktarıdır.
 
 * **Arka uç doğrulaması** -arka uç doğrulama ayarı, önbelleğin arka uç depolama sistemindeki uzak sürümle bir dosyanın yerel kopyasını ne sıklıkta karşılaştırdığını belirler. Arka uç kopyası önbelleğe alınmış kopyadan daha yeniyse, önbellek uzak kopyayı getirir ve gelecekteki istekler için depolar.
 
@@ -43,7 +43,7 @@ Kullandığınız her NFS bağlı depolama hedefi için bir kullanım modeli se�
 
 HPC önbelleği kullanım modelleri, eski verileri alma riskiyle hızlı yanıt dengelemeye olanak tanır. Dosya okuma hızını iyileştirmek isterseniz, önbellekteki dosyaların arka uç dosyalarına karşı kontrol edilip edilmeyeceğini önemsemeyebilirsiniz. Diğer taraftan, her zaman uzak depolama ile dosyalarınızın güncel olduğundan emin olmak istiyorsanız, sık denetleyen bir model seçin.
 
-Birkaç seçenek vardır:
+Kullanım modeli seçenekleri şunlardır:
 
 * **Ağır, seyrek erişimli yazmaları okuma** -statik veya nadiren değiştirilen dosyalara okuma erişimini hızlandırmak istiyorsanız bu seçeneği kullanın.
 
@@ -53,13 +53,16 @@ Birkaç seçenek vardır:
 
   Bir dosyanın doğrudan depolama sisteminde önbellekte yazılmadan değiştirilebilmesi için bir risk varsa bu seçeneği kullanmayın. Bu durumda, dosyanın önbelleğe alınmış sürümü arka uç dosyasıyla eşitlenmemiş olur.
 
-* **%15 ' ten fazla yazma** -Bu seçenek hem okuma hem de yazma performansını hızlandırır. Bu seçeneği kullanırken, tüm istemcilerin arka uç depolamayı doğrudan bağlamak yerine Azure HPC Cache aracılığıyla dosyalara erişmesi gerekir. Önbelleğe alınan dosyalar arka uçta depolanmayan son değişikliklere sahip olur.
+* **%15 ' ten fazla yazma** -Bu seçenek hem okuma hem de yazma performansını hızlandırır. Bu seçeneği kullanırken, tüm istemcilerin arka uç depolamayı doğrudan bağlamak yerine Azure HPC Cache aracılığıyla dosyalara erişmesi gerekir. Önbelleğe alınan dosyalar henüz arka uca kopyalanmamış son değişikliklere sahip olacaktır.
 
   Bu kullanım modelinde, önbellekteki dosyalar yalnızca her sekiz saatte bir arka uç depolamada bulunan dosyalara karşı denetlenir. Dosyanın önbelleğe alınan sürümünün daha güncel olduğu varsayılır. Önbellekte değiştirilen bir dosya, önbellekte 20 dakika geçtikten sonra arka uç depolama sistemine yazılır<!-- an hour --> ek değişiklik yok.
 
 * **İstemciler, önbelleği ATLAYARAK NFS hedefine yazar** -iş akışlarınızdan herhangi bir istemci, önce önbelleğe yazmadan veya veri tutarlılığını iyileştirmek istiyorsanız bu seçeneği belirleyin. İstemcilerin istediği dosyalar önbelleğe alınır (okur), ancak istemciden (yazma) bu dosyalardaki değişiklikler önbelleğe alınmaz. Bunlar doğrudan arka uç depolama sistemine geçirilir.
 
-  Bu kullanım modeliyle, önbellekteki dosyalar güncelleştirmeler için arka uç sürümlerine göre sıklıkla denetlenir. Bu doğrulama, verilerin tutarlılığın korunmasında önbelleğin dışında değiştirilmesine izin verir.
+  Bu kullanım modeliyle, önbellekteki dosyalar genellikle güncelleştirmeler için arka uç sürümlerine karşı, her 30 saniyede denetlenir. Bu doğrulama, verilerin tutarlılığın korunmasında önbelleğin dışında değiştirilmesine izin verir.
+
+  > [!TIP]
+  > Bu ilk üç temel kullanım modeli, Azure HPC Cache iş akışlarının çoğunu idare etmek için kullanılabilir. Sonraki seçenekler daha az yaygın senaryolar içindir.
 
 * **%15 ' ten fazla yazma, her 30 saniyede** bir ve 15 ' ten fazla yazma için yedekleme sunucusu denetleniyor **, her 60 saniyede bir yedekleme sunucusu denetleniyor** ; bu seçenekler, hem okuma hem de yazma işlemlerini hızlandırmak istediğiniz iş akışları için tasarlanmıştır, ancak başka bir kullanıcının doğrudan arka uç depolama sistemine yazacağı bir şansınız vardır. Örneğin, birden çok istemci kümesi farklı konumlardan aynı dosyalar üzerinde çalışıyorsa, bu kullanım modelleri kaynaktaki eski içerik için düşük toleranslı olan hızlı dosya erişimi gereksinimini dengelemek açısından anlamlı hale gelebilir.
 
@@ -71,16 +74,18 @@ Birkaç seçenek vardır:
 
 Bu tablo, kullanım modeli farklarını özetler:
 
-| Kullanım modeli                   | Önbelleğe alma modu | Arka uç doğrulaması | En fazla geri yazma gecikmesi |
-|-------------------------------|--------------|-----------------------|--------------------------|
-| Yoğun, seyrek okunan yazma işlemleri | Okuma         | Asla                 | Yok                     |
-| %15 yazma boyutundan büyük       | Okuma/yazma   | 8 saat               | 20 dakika               |
-| İstemcileri önbelleği atlar      | Okuma         | 30 saniye            | Yok                     |
-| %15 yazma boyutundan büyük, sık kullanılan arka uç denetimi (30 saniye) | Okuma/yazma | 30 saniye | 20 dakika |
-| %15 yazma daha fazla, sık kullanılan arka uç denetimi (60 saniye) | Okuma/yazma | 60 saniye | 20 dakika |
-| %15 yazma boyutundan büyük, sık geri yazma | Okuma/yazma | 30 saniye | 30 saniye |
-| Yoğun okuma, her 3 saatte bir yedekleme sunucusu denetleniyor | Okuma | 3 saat | Yok |
+[!INCLUDE [usage-models-table.md](includes/usage-models-table.md)]
 
+<!-- | Usage model                   | Caching mode | Back-end verification | Maximum write-back delay |
+|-------------------------------|--------------|-----------------------|--------------------------|
+| Read heavy, infrequent writes | Read         | Never                 | None                     |
+| Greater than 15% writes       | Read/write   | 8 hours               | 20 minutes               |
+| Clients bypass the cache      | Read         | 30 seconds            | None                     |
+| Greater than 15% writes, frequent back-end checking (30 seconds) | Read/write | 30 seconds | 20 minutes |
+| Greater than 15% writes, frequent back-end checking (60 seconds) | Read/write | 60 seconds | 20 minutes |
+| Greater than 15% writes, frequent write-back | Read/write | 30 seconds | 30 seconds |
+| Read heavy, checking the backing server every 3 hours | Read | 3 hours | None |
+-->
 Azure HPC Cache iş akışınız için en iyi kullanım modeliyle ilgili sorularınız varsa, Azure temsilcinizle konuşun veya yardım için bir destek isteği açın.
 
 ## <a name="next-steps"></a>Sonraki adımlar

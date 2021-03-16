@@ -6,13 +6,13 @@ ms.topic: conceptual
 ms.author: makromer
 ms.service: data-factory
 ms.custom: seo-lt-2019
-ms.date: 01/29/2021
-ms.openlocfilehash: 01c448165e6d1f4d6103c61387298f2d9eb40254
-ms.sourcegitcommit: 8c8c71a38b6ab2e8622698d4df60cb8a77aa9685
+ms.date: 03/15/2021
+ms.openlocfilehash: dd5b857c274e757f70920f244786df61c2770085
+ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/01/2021
-ms.locfileid: "99222958"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103561694"
 ---
 # <a name="mapping-data-flows-performance-and-tuning-guide"></a>Veri akışlarını eşleme performansı ve ayarlama Kılavuzu
 
@@ -41,7 +41,7 @@ Veri akışı performansını izlerken, göz atmak için dört olası performans
 * Dönüştürme saati
 * Bir havuza yazma 
 
-![Veri akışı Izleme](media/data-flow/monitoring-performance.png "Veri akışı Izleyicisi 3")
+![Veri Akışını İzleme](media/data-flow/monitoring-performance.png "Veri akışı Izleyicisi 3")
 
 Küme başlangıç zamanı, bir Apache Spark kümesi çalıştırmak için gereken süredir. Bu değer, izleme ekranının sağ üst köşesinde bulunur. Veri akışları, her işin yalıtılmış bir küme kullandığı tam zamanında bir modelde çalışır. Bu başlangıç zamanı genellikle 3-5 dakika sürer. Sıralı işler için, bu değer bir yaşam süresi değeri etkinleştirilerek azaltılabilir. Daha fazla bilgi için bkz. [Azure Integration Runtime iyileştirme](#ir).
 
@@ -250,7 +250,7 @@ CosmosDB 'ye yazarken, veri akışı yürütmesi sırasında aktarım hızını 
 
 **Yazma aktarım hızı bütçesi:** Dakikada toplam ru 'dan küçük olan bir değer kullanın. Çok sayıda Spark bölümünün bulunduğu bir veri akışınız varsa, bir bütçe üretilen işinin ayarlanması bu bölümlerde daha fazla bakiyeye izin verir.
 
-## <a name="optimizing-transformations"></a>Dönüşümleri iyileştirme
+## <a name="optimizing-transformations"></a>Dönüştürmeleri iyileştirme
 
 ### <a name="optimizing-joins-exists-and-lookups"></a>Birleştirmeleri, mevcut ve aramaları iyileştirme
 
@@ -259,6 +259,8 @@ CosmosDB 'ye yazarken, veri akışı yürütmesi sırasında aktarım hızını 
 Birleşimler, aramalar ve mevcut dönüştürmelerde, bir veya iki veri akışı çalışan düğümü belleğine sığacak kadar küçükse, **yayını** etkinleştirerek performansı iyileştirebilirsiniz. Yayın, kümedeki tüm düğümlere küçük veri çerçeveleri gönderdiğinizde olur. Bu, Spark altyapısının büyük akıştaki verileri reshuffling olmadan bir JOIN gerçekleştirmesini sağlar. Varsayılan olarak, Spark altyapısı, birleştirmenin bir tarafını yayınlamayacağınıza otomatik olarak karar verir. Gelen verileriniz hakkında bilginiz varsa ve bir akışın diğerine göre önemli ölçüde daha küçük olacağını biliyorsanız, **sabit** yayınlama seçeneğini belirleyebilirsiniz. Sabit yayınlama, Spark 'ın seçili akışı yayınlamasını zorlar. 
 
 Verileri bulunan verilerin boyutu Spark düğümü için çok büyükse bellek yetersiz hatası alabilirsiniz. Bellek yetersiz hatalarından kaçınmak için **bellek için iyileştirilmiş** kümeleri kullanın. Veri akışı yürütmeleri sırasında yayın zaman aşımları yaşarsanız, yayın iyileştirmesini kapatabilirsiniz. Ancak bu, veri akışlarının daha yavaş gerçekleştirilmesine neden olur.
+
+Büyük veritabanı sorguları gibi sorgu daha uzun süretabilecek veri kaynaklarıyla çalışırken, birleştirme için yayının kapalı olması önerilir. Uzun sorgu süreleriyle kaynak, küme işlem düğümlerine yayın yapmayı denediğinde Spark zaman aşımları oluşmasına neden olabilir. Yayını kapatmak için başka bir iyi seçenek de, daha sonra bir arama dönüşümünde kullanılacak değerleri toplayarak veri akışınızda bir akışa sahip olduğunuzda olur. Bu model Spark İyileştiriciyi şaşırtabilir ve zaman aşımlarını neden olabilir.
 
 ![Dönüştürme iyileştirmelerine Birleştir](media/data-flow/joinoptimize.png "Birleştirmeyi En Iyi duruma getirme")
 

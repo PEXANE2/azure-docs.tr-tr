@@ -966,8 +966,6 @@
           items:
             - name: F5 öngörüleri
               href: app/visual-studio.md
-            - name: Eğilimler
-              href: app/visual-studio-trends.md
             - name: CodeLens
               href: app/visual-studio-codelens.md
         - name: Diğer platformlar
@@ -1038,6 +1036,8 @@
           href: vm/vminsights-workbooks.md
         - name: İzlemeyi devre dışı bırakma
           href: vm/vminsights-optout.md
+        - name: Sorun giderme
+          href: vm/vminsights-troubleshoot.md
     - name: Kapsayıcı öngörüleri
       items:
         - name: Genel Bakış

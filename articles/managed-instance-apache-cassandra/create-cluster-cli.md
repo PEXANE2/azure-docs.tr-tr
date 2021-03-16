@@ -5,13 +5,13 @@ author: TheovanKraay
 ms.author: thvankra
 ms.service: managed-instance-apache-cassandra
 ms.topic: quickstart
-ms.date: 03/02/2021
-ms.openlocfilehash: 6de2e0f1744b333a830fbe500e2df51e7eaca62d
-ms.sourcegitcommit: df1930c9fa3d8f6592f812c42ec611043e817b3b
+ms.date: 03/15/2021
+ms.openlocfilehash: 3890b06b2d085cea57b59cfe34d8b961918471c5
+ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2021
-ms.locfileid: "103419091"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103562408"
 ---
 # <a name="quickstart-create-an-azure-managed-instance-for-apache-cassandra-cluster-using-azure-cli-preview"></a>Hızlı başlangıç: Azure CLı kullanarak Apache Cassandra kümesi için Azure yönetilen örneği oluşturma (Önizleme)
 
@@ -31,7 +31,7 @@ Bu hızlı başlangıçta Apache Cassandra için Azure yönetilen örneği ile b
 * Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
 > [!IMPORTANT]
-> Bu makale, Azure CLı sürüm 2.12.1 veya üstünü gerektirir. Azure Cloud Shell kullanıyorsanız, en son sürüm zaten yüklüdür.
+> Bu makale, Azure CLı sürüm 2.17.1 veya üstünü gerektirir. Azure Cloud Shell kullanıyorsanız, en son sürüm zaten yüklüdür.
 
 ## <a name="create-a-managed-instance-cluster"></a><a id="create-cluster"></a>Yönetilen örnek kümesi oluşturma
 
@@ -58,7 +58,7 @@ Bu hızlı başlangıçta Apache Cassandra için Azure yönetilen örneği ile b
    > [!NOTE]
    > `assignee` `role` Önceki komutta ve değerleri sabit değerlerdir, bu değerleri tam olarak komutta belirtildiği gibi girin. Bunu yapmadığınızda, küme oluşturulurken hatalara neden olur. Bu komutu yürütürken herhangi bir hatayla karşılaşırsanız, çalıştırma izniniz olmayabilir, lütfen izinler için yöneticinize ulaşın.
 
-1. Daha sonra yeni oluşturduğunuz sanal ağınızda kümeyi oluşturun. Aşağıdaki komutu çalıştırın ve `Resource ID` önceki komutta alınan değeri değişkenin değeri olarak kullandığınızdan emin olun `delegatedManagementSubnetId` :
+1. Daha sonra [az Managed-Cassandra cluster create](/cli/azure/ext/cosmosdb-preview/managed-cassandra/cluster?view=azure-cli-latest&preserve-view=true#ext_cosmosdb_preview_az_managed_cassandra_cluster_create) komutunu kullanarak kümeyi yeni oluşturduğunuz sanal ağınızda oluşturun. Aşağıdaki komutu çalıştırın ve `Resource ID` önceki komutta alınan değeri değişkenin değeri olarak kullandığınızdan emin olun `delegatedManagementSubnetId` :
 
    ```azurecli-interactive
    resourceGroupName='<Resource_Group_Name>'
@@ -76,7 +76,7 @@ Bu hızlı başlangıçta Apache Cassandra için Azure yönetilen örneği ile b
       --debug
    ```
 
-1. Son olarak, üç düğüm ile küme için bir veri merkezi oluşturun:
+1. Son olarak, [az Managed-Cassandra Datacenter Create](/cli/azure/ext/cosmosdb-preview/managed-cassandra/datacenter?view=azure-cli-latest&preserve-view=true#ext_cosmosdb_preview_az_managed_cassandra_datacenter_create) komutunu kullanarak, üç düğüm ile küme için bir veri merkezi oluşturun:
 
    ```azurecli-interactive
    dataCenterName='dc1'
@@ -92,7 +92,7 @@ Bu hızlı başlangıçta Apache Cassandra için Azure yönetilen örneği ile b
       --node-count 3 
    ```
 
-1. Veri merkezi oluşturulduktan sonra, veri merkezindeki düğümleri ölçeklendirmek veya ölçeği ölçeklendirmek istiyorsanız aşağıdaki komutu çalıştırın. `node-count`Parametresinin değerini istenen değerle değiştirin:
+1. Veri merkezi oluşturulduktan sonra, veri merkezindeki düğümleri ölçeklendirmek veya ölçeği daraltmak istiyorsanız [az Managed-Cassandra Datacenter Update](/cli/azure/ext/cosmosdb-preview/managed-cassandra/datacenter?view=azure-cli-latest&preserve-view=true#ext_cosmosdb_preview_az_managed_cassandra_datacenter_update) komutunu çalıştırın. `node-count`Parametresinin değerini istenen değerle değiştirin:
 
    ```azurecli-interactive
    resourceGroupName='<Resource_Group_Name>'

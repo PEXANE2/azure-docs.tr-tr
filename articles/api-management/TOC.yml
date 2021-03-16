@@ -245,6 +245,8 @@
           href: api-management-transformation-policies.md
         - name: Distributed Application Runtime (Dapr) tümleştirme ilkeleri
           href: api-management-dapr-policies.md
+        - name: Doğrulama ilkeleri
+          href: validation-policies.md
     - name: Üretimi yönetin
       items:
         - name: API’leri Power Platform’a dışarı aktarma

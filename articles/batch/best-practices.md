@@ -3,12 +3,12 @@ title: En iyi uygulamalar
 description: Azure Batch çözümlerinizi geliştirmek için en iyi uygulamaları ve yararlı ipuçlarını öğrenin.
 ms.date: 03/11/2020
 ms.topic: conceptual
-ms.openlocfilehash: 15ff46ad74c4c48c6b5f320622bc364adf59d4cc
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.openlocfilehash: d1040762c171af486c7f5d66daca44ec65602aff
+ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 03/16/2021
-ms.locfileid: "103496295"
+ms.locfileid: "103561847"
 ---
 # <a name="azure-batch-best-practices"></a>En iyi Azure Batch uygulamalar
 
@@ -238,6 +238,6 @@ Windows üzerinde bir hizmeti, startTask çalışma dizininden hala kullanımda 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Azure Portal kullanarak bir Azure Batch hesabı oluşturun](batch-account-create-portal.md).
 - [Batch hizmeti iş akışı ve](batch-service-workflow-features.md) havuzlar, düğümler, işler ve görevler gibi birincil kaynaklar hakkında bilgi edinin.
 - [Varsayılan Azure Batch kotaları, sınırları ve kısıtlamaları hakkında bilgi edinin ve kota artışlarının nasıl isteneceğini](batch-quota-limit.md)öğrenin.
+- [Havuz ve düğüm arka plan işlemlerinde oluşan sorunları algılamaya ve önlemenize ](batch-pool-node-error-checking.md)öğrenin.

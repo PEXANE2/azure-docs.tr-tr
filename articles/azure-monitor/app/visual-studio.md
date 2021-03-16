@@ -4,12 +4,12 @@ description: Hata ayıklama ve üretim sırasında wen uygulaması performans an
 ms.topic: conceptual
 ms.date: 03/17/2017
 ms.custom: vs-azure
-ms.openlocfilehash: d2de29d897c84496fd44d74d88d58decbc64b7f8
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 2507dbf7bb8294c949f434d5fa96ccc0af9a7eb3
+ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94532911"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103563547"
 ---
 # <a name="debug-your-applications-with-azure-application-insights-in-visual-studio"></a>Visual Studio 'da Azure Application Insights ile uygulamalarınızın hatalarını ayıklama
 Visual Studio’da (2015 ve sonraki sürümler) hem hata ayıklama hem de üretim sırasında [Azure Application Insights](./app-insights-overview.md)’tan alınan telemetri verilerini kullanarak, ASP.NET web uygulamanızdaki performansı çözümleyebilir ve sorunları tanılayabilirsiniz.
@@ -65,17 +65,6 @@ Her işleyici yönteminin üzerindeki kod lens satırında, son 24 h 'de Applica
 >
 
 [Kod Odağı’nda Application Insights hakkında daha fazla bilgi](./visual-studio-codelens.md)
-
-## <a name="trends"></a>Eğilimler
-Eğilimler, uygulamanızın zaman içinde nasıl davrandığını görselleştirmeye yönelik bir araçtır. 
-
-Application Insights araç çubuğu düğmesinden veya Application Insights Arama penceresinden **Telemetri Eğilimlerini Keşfet** ’i seçin. Başlamak için beş genel sorgudan birini seçin. Telemetri türleri, zaman aralıkları ve diğer özelliklere göre farklı veri kümelerini çözümleyebilirsiniz. 
-
-Verilerinizdeki anormallikleri bulmak için "Görünüm Türü" açılır listesi altındaki anormallik seçeneklerinden birini belirleyin. Pencerenin altındaki filtreleme seçenekleri, telemetrinizdeki belirli alt kümelere odaklanmayı kolaylaştırır.
-
-![Eğilimler](./media/visual-studio/51.png)
-
-[Eğilimler hakkında daha fazla bilgi](./visual-studio-trends.md).
 
 ## <a name="local-monitoring"></a>Yerel izleme
 (Visual Studio 2015 güncelleştirme 2 ' den) SDK 'Yı Application Insights portalına telemetri gönderecek şekilde yapılandırmadıysanız (ApplicationInsights.config ' de bir izleme anahtarı yoksa), tanılama penceresinde en son hata ayıklama oturumlarınızdan telemetri görüntülenir. 

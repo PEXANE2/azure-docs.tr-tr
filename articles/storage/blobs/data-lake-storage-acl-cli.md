@@ -10,12 +10,12 @@ ms.date: 02/17/2021
 ms.author: normesta
 ms.reviewer: prishet
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 9814dc06e7e570a923ba3ea5b3b0df7ade99bb28
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.openlocfilehash: 5ec7d2b243a5eadab2d22dea14ebeac8eabb1722
+ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "100654486"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103563173"
 ---
 # <a name="use-azure-cli-to-manage-acls-in-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage 2. ACL 'Leri yönetmek için Azure CLı kullanma
 
@@ -31,7 +31,7 @@ ACL devralma, bir üst dizin altında oluşturulan yeni alt öğeler için zaten
 
 - Hiyerarşik ad alanı etkin olan bir depolama hesabı. Bir tane oluşturmak için [Bu](create-data-lake-storage-account.md) yönergeleri izleyin.
 
-- Azure CLı sürümü `2.6.0` veya üzeri.
+- Azure CLı sürümü `2.14.0` veya üzeri.
 
 - Aşağıdaki güvenlik izinlerinden biri:
 
@@ -137,6 +137,9 @@ Bu örnek, sahip olan Kullanıcı, sahip olan grup veya diğer kullanıcılar i�
 az storage fs access set --acl "user::rw-,group::rw-,other::-wx" -p my-directory/upload.txt -f my-file-system --account-name mystorageaccount --auth-mode login
 ```
 
+> [!NOTE]
+> Belirli bir grubun veya kullanıcının ACL 'sini ayarlamak için ilgili nesne kimliklerini kullanın. Örneğin `group:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx` veya `user:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx` olabilir.
+
 Aşağıdaki görüntüde, bir dosyanın ACL 'sini ayarlamadıktan sonra çıkış gösterilmektedir.
 
 ![ACL çıkışı al 2](./media/data-lake-storage-directory-file-acl-cli/set-acl-file.png)
@@ -184,6 +187,9 @@ Bu örnek, bir **DOSYANıN** ACL 'sini günceller.
 ```azurecli
 az storage fs access set --permissions rwxrwxrwx -p my-directory/upload.txt -f my-file-system --account-name mystorageaccount --auth-mode login
 ```
+
+> [!NOTE]
+> Belirli bir grubun veya kullanıcının ACL 'sini güncelleştirmek için ilgili nesne kimliklerini kullanın. Örneğin `group:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx` veya `user:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx` olabilir.
 
 Ayrıca, `--owner` `group` bir kullanıcının varlık kimliğine veya Kullanıcı asıl ADıNA (UPN) veya parametrelerini ayarlayarak bir dizin ya da dosya için sahip olan Kullanıcı ve grubu güncelleştirebilirsiniz.
 
