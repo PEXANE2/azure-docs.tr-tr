@@ -11,16 +11,18 @@ ms.topic: how-to
 ms.date: 03/16/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: fd4724fc19814a5ffd35380c0b326e035a340ef2
-ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
+ms.openlocfilehash: 9e248c10c15ba0318c6b23fcbf88be04dd9896a2
+ms.sourcegitcommit: 87a6587e1a0e242c2cfbbc51103e19ec47b49910
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 03/16/2021
-ms.locfileid: "103561524"
+ms.locfileid: "103573073"
 ---
 # <a name="embedded-sign-in-experience"></a>Ekli oturum açma deneyimi
 
 Daha basit bir oturum açma deneyimi için, kullanıcıların ayrı bir oturum açma sayfasına veya bir açılır pencere oluşturmaya yönelik olarak yeniden yönlendirilmekten kaçınabilirsiniz. Satır içi çerçeve öğesini kullanarak `<iframe>` , Azure AD B2C oturum açma kullanıcı arabirimini doğrudan Web uygulamanıza ekleyebilirsiniz.
+
+[!INCLUDE [b2c-public-preview-feature](../../includes/active-directory-b2c-public-preview.md)]
 
 ## <a name="web-application-embedded-sign-in"></a>Web uygulaması Embedded oturum açma
 
@@ -32,7 +34,12 @@ Daha basit bir oturum açma deneyimi için, kullanıcıların ayrı bir oturum a
 
 - Yerleşik oturum açma yalnızca yerel hesapları destekler. Çoğu sosyal kimlik sağlayıcısı (örneğin, Google ve Facebook), oturum açma sayfalarının satır içi çerçevelerde işlenmesini engeller.
 - Bir iframe içindeki Azure AD B2C oturum tanımlama bilgileri üçüncü taraf tanımlama bilgileri olarak kabul edildiğinden, bazı tarayıcılar (ör. ınbilito modunda Safari veya Chrome) Bu tanımlama bilgilerini engeller ya da temizler, böylece istenmeyen bir kullanıcı deneyimi elde edilir. Bu sorunu engellemek için, uygulama etki alanı adınızın ve Azure AD B2C etki alanının *aynı kaynağa* sahip olduğundan emin olun. Aynı kaynağı kullanmak için, Azure AD B2C kiracı için [özel etki alanlarını etkinleştirin](custom-domain.md) ve sonra Web uygulamanızı aynı kaynaktan yapılandırın. Örneğin, üzerinde barındırılan bir uygulama https://app.contoso.com üzerinde çalışan Azure AD B2C aynı kaynağa sahiptir https://login.contoso.com .
- 
+
+## <a name="perquisites"></a>Önkoşulları denetle
+
+* [Active Directory B2C içindeki özel ilkeleri kullanmaya başlama](custom-policy-get-started.md)adımlarını izleyin.
+* İlkeleriniz için [özel etki alanlarını etkinleştirin](custom-domain.md) .
+
 ## <a name="configure-your-policy"></a>İlkenizi yapılandırma
 
 Azure AD B2C Kullanıcı arayüzün iframe 'e katıştırılması için, `Content-Security-Policy` `X-Frame-Options` Azure AD B2C http yanıt üst bilgilerine bir içerik güvenlik ilkesi ve çerçeve seçenekleri eklenmelidir. Bu üstbilgiler Azure AD B2C Kullanıcı arabiriminin uygulama etki alanı adınızın altında çalışmasına izin verir.

@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 9/24/2020
 ms.topic: quickstart
 ms.service: digital-twins
-ms.openlocfilehash: c1c1b5f58aa0e760ff626af4607cf8e2d1e13910
-ms.sourcegitcommit: ec39209c5cbef28ade0badfffe59665631611199
+ms.openlocfilehash: feeb3e63375e918498e704add6dac672d6a46de3
+ms.sourcegitcommit: 87a6587e1a0e242c2cfbbc51103e19ec47b49910
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/12/2021
-ms.locfileid: "103232430"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103574586"
 ---
 # <a name="quickstart---explore-a-sample-azure-digital-twins-scenario-using-azure-digital-twins-explorer"></a>Hızlı başlangıç-Azure Digital TWINS gezginini kullanarak örnek bir Azure dijital TWINS senaryosunu araştırma
 
@@ -95,9 +95,8 @@ Ardından, Azure Digital TWINS gezgin uygulamasını çalıştırın ve Azure di
 
 > [!TIP]
 > Bağlandığınızda bir `SignalRService.subscribe` hata iletisi görünürse, Azure Digital TWINS URL 'nizin *https://* ile başladığından emin olun.
-
-> [!TIP]
-> Bir kimlik doğrulama hatası görünürse, Azure dijital TWINS için geçerli olduğundan emin olmak üzere ortam değişkenlerinizi kontrol etmek isteyebilirsiniz. DefaultAzureCredential, [kimlik bilgileri türlerine](/dotnet/api/overview/azure/identity-readme#defaultazurecredential) karşı belirli bir sırada kimlik doğrulaması yapmayı dener ve ortam değişkenleri önce değerlendirilir.
+>
+> Bir kimlik doğrulama hatası görünürse, Azure dijital TWINS için geçerli olduğundan emin olmak üzere **ortam değişkenlerinizi** kontrol etmek isteyebilirsiniz. `DefaultAzureCredential`Kimlik bilgileri türlerinde [belirli bir sırada](/dotnet/api/overview/azure/identity-readme#defaultazurecredential)kimlik doğrulaması yapmaya çalışır ve ortam değişkenleri önce değerlendirilir.
 
 Microsoft 'tan bir **izin** iste açılan pencere görürseniz, bu uygulamaya izin verin ve devam etmek için kabul edin.
 

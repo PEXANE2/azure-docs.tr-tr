@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 03/12/2021
 ms.author: duau
-ms.openlocfilehash: 89c754c0fc70273a81eb047d695b1cae20f99376
-ms.sourcegitcommit: df1930c9fa3d8f6592f812c42ec611043e817b3b
+ms.openlocfilehash: 417a6a55f0114ec35554e598b456f4fb67eb1c1b
+ms.sourcegitcommit: 87a6587e1a0e242c2cfbbc51103e19ec47b49910
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2021
-ms.locfileid: "103418700"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103574467"
 ---
 # <a name="expressroute-faq"></a>ExpressRoute SSS
 
@@ -60,7 +60,7 @@ ExpressRoute ağ geçidi, Azure VNet 'in *Adres alanları* duyurur, alt ağ düz
 
 ### <a name="how-many-prefixes-can-be-advertised-from-a-vnet-to-on-premises-on-expressroute-private-peering"></a>ExpressRoute özel eşlemesindeki VNet 'ten şirket içine kaç önek tanıtılabilir?
 
-Tek bir ExpressRoute bağlantısında tanıtılan en fazla 1000 ön ek veya ağ geçidi geçişi kullanan VNet eşlemesi vardır. Örneğin, bir ExpressRoute bağlantı hattına bağlı tek bir VNet üzerinde 199 adres alanları varsa, bu ön eklerin 199 ' i şirket içi olarak tanıtılabilir. Alternatif olarak, "uzaktan ağ geçidine Izin ver" seçeneği kullanılarak 1 adres alanı ve 150 bağlı ağ VNET 'leri ile ağ geçidi aktarımına izin veren bir VNet 'iniz varsa, ağ geçidiyle dağıtılan VNet, 151 ön eklerini şirket içine duyuracaktır.
+Tek bir ExpressRoute bağlantısında tanıtılan en fazla 1000 ön ek veya ağ geçidi geçişi kullanan VNet eşlemesi vardır. Örneğin, bir ExpressRoute bağlantı hattına bağlı tek bir VNet üzerinde 999 adres alanları varsa, bu ön eklerin 999 ' i şirket içi olarak tanıtılabilir. Alternatif olarak, "uzaktan ağ geçidine Izin ver" seçeneği kullanılarak 1 adres alanı ve 500 bağlı ağ VNET 'leri ile ağ geçidi aktarımına izin veren bir VNet 'iniz varsa, ağ geçidiyle dağıtılan VNet, 501 ön eklerini şirket içine duyuracaktır.
 
 ### <a name="what-happens-if-i-exceed-the-prefix-limit-on-an-expressroute-connection"></a>Bir ExpressRoute bağlantısında önek sınırını aşarsam ne olur?
 

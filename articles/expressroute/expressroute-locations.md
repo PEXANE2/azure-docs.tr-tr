@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 02/10/2021
 ms.author: duau
-ms.openlocfilehash: 5fedb9d09e61540d0ee8a1fe21fbd25f31390f5d
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 0133d6cc54038a56847556a83242114c78e09321
+ms.sourcegitcommit: 87a6587e1a0e242c2cfbbc51103e19ec47b49910
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101742458"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103574417"
 ---
 # <a name="expressroute-connectivity-partners-and-peering-locations"></a>ExpressRoute bağlantı iş ortakları ve eşleme konumları
 
@@ -115,6 +115,7 @@ Aşağıdaki tabloda hizmet sağlayıcısına göre konumlar gösterilmektedir. 
 | **[GlobalConnect]()** | Desteklenir |Desteklenir | Oslo, Stavanger | 
 | **GTT** |Desteklenir |Desteklenir |London2 |
 | **[Genel Bulut Değişimi (GCX)](https://globalcloudxchange.com/cloud-platform/cloud-x-fusion/)** | Desteklenir| Desteklenir | Chennai, Mumbai |
+| **[ıadvantage](https://www.scx.sunevision.com/)** | Desteklenir | Desteklenir | Hong Kong2 |
 | **Intelsat** | Desteklenir | Desteklenir | Washington DC2 |
 | **[InterCloud](https://www.intercloud.com/)** |Desteklenir |Desteklenir |Amsterdam, Chicago, Frankfurt, Hong Kong, Londra, New York, Paris, Silicon Valley, Singapur, Washington DC, Zurich |
 | **[Internet2](https://internet2.edu/services/cloud-connect/#service-cloud-connect)** |Desteklenir |Desteklenir |Chicago, Dallas, Silicon Valley, Washington DC |

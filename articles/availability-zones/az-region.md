@@ -4,16 +4,16 @@ description: Azure 'da yüksek oranda kullanılabilir ve dayanıklı uygulamalar
 author: prsandhu
 ms.service: azure
 ms.topic: conceptual
-ms.date: 01/26/2021
+ms.date: 03/16/2021
 ms.author: prsandhu
 ms.reviewer: cynthn
 ms.custom: fasttrack-edit, mvc, references_regions
-ms.openlocfilehash: fee000009be90a083406725fe7f1e8c4382af3e9
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 7aff8320186ada53772fc4ff2232e8cf55585a77
+ms.sourcegitcommit: 87a6587e1a0e242c2cfbbc51103e19ec47b49910
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101701459"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103573039"
 ---
 # <a name="azure-services-that-support-availability-zones"></a>Kullanılabilirlik Alanlarını destekleyen Azure Hizmetleri
 
@@ -50,12 +50,13 @@ Azure 'da kapsamlı iş sürekliliği elde etmek için Azure bölge çiftleriyle
 | Kuzey ve Güney Amerika           | Avrupa               | Afrika              | Asya Pasifik   |
 |--------------------|----------------------|---------------------|----------------|
 |                    |                      |                     |                |
-| Orta Kanada     | Orta Fransa       | Güney Afrika Kuzey * | Doğu Japonya     |
-| Central US         | Almanya Orta Batı |                     | Güneydoğu Asya |
-| Doğu ABD            | Kuzey Avrupa         |                     | Doğu Avustralya |
-| Doğu ABD 2          | Güney Birleşik Krallık             |                     |                |
-| Orta Güney ABD | West Europe          |                     |                |
-| US Gov Virginia    |                      |                     |                |
+| Güney Brezilya       | Orta Fransa       | Güney Afrika Kuzey * | Doğu Japonya     |
+| Orta Kanada     | Almanya Orta Batı |                     | Güneydoğu Asya |
+| Central US         | Kuzey Avrupa         |                     | Doğu Avustralya |
+| Doğu ABD            | Güney Birleşik Krallık             |                     |                |
+| Doğu ABD 2          | West Europe          |                     |                |
+| Orta Güney ABD |                      |                     |                |
+| US Gov Virginia     |                      |                     |                |
 | Batı ABD 2        |                      |                     |                |
 
 
@@ -125,6 +126,7 @@ Azure 'da kapsamlı iş sürekliliği elde etmek için Azure bölge çiftleriyle
 | MySQL için Azure veritabanı – esnek sunucu      |      : large_blue_diamond:  |
 | PostgreSQL için Azure veritabanı – esnek sunucu |      : large_blue_diamond:  |
 | Azure DDoS Koruması                           |      : large_blue_diamond:  |
+| Azure Disk Şifrelemesi                           |      : large_blue_diamond:  |
 | Azure Güvenlik Duvarı                                  |      : large_blue_diamond:  |
 | Azure Güvenlik Duvarı Yöneticisi                          |      : large_blue_diamond:  |
 | Azure Kubernetes Service (AKS)                  |      : large_blue_diamond:  |
@@ -169,6 +171,7 @@ Azure 'da kapsamlı iş sürekliliği elde etmek için Azure bölge çiftleriyle
 |     Azure Danışmanı                             |     : globe_with_meridians:             |
 |     Azure Blueprints                          |     : globe_with_meridians:             |
 |     Azure Bot Hizmetleri                        |     : globe_with_meridians:             |
+|     Azure Front Door                          |     : globe_with_meridians:             |
 |     IoT için Azure Defender                  |     : globe_with_meridians:             |
 |     Azure Front Door                           |     : globe_with_meridians:             |
 |     Azure Information Protection            |     : globe_with_meridians:             |

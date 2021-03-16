@@ -1,15 +1,15 @@
 ---
 title: Azure blok zinciri hizmetine genel bakış
 description: Azure blok zinciri hizmeti 'ne genel bakış
-ms.date: 01/04/2021
+ms.date: 03/15/2021
 ms.topic: overview
-ms.reviewer: ravastra
-ms.openlocfilehash: 15d1126a98a4d3194a256ed07de3918cb066a4e2
-ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
+ms.reviewer: patricka
+ms.openlocfilehash: 035e2c1df5912f291ad241ade25361f9cc098b22
+ms.sourcegitcommit: 87a6587e1a0e242c2cfbbc51103e19ec47b49910
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97963887"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103573634"
 ---
 # <a name="what-is-azure-blockchain-service"></a>Azure Blok Zinciri Hizmeti nedir?
 
@@ -19,7 +19,7 @@ Azure blok zinciri hizmeti, kullanıcılara blok zinciri ağlarını Azure 'da b
 * Yerleşik konsorsiyum yönetimi
 * Tanıdık geliştirme araçlarıyla akıllı sözleşmeler geliştirin
 
-Azure blok zinciri hizmeti birden çok defter protokolünü destekleyecek şekilde tasarlanmıştır. Şu anda, [Istanbul Byzantine hata toleransı (iBFT)](https://github.com/jpmorganchase/quorum/wiki/Quorum-Consensus) konsensus mekanizmasını kullanarak Ethereum [çekirdek](https://www.goquorum.com/) defterine yönelik destek sağlar.
+Azure blok zinciri hizmeti birden çok defter protokolünü destekleyecek şekilde tasarlanmıştır. Şu anda, [Istanbul Byzantine hata toleransı (iBFT)](https://docs.goquorum.consensys.net/en/stable/Concepts/Consensus/IBFT/) konsensus mekanizmasını kullanarak Ethereum [çekirdek](https://www.goquorum.com/) defterine yönelik destek sağlar.
 
 Bu özellikler neredeyse hiç yönetim gerektirmez ve tümüyle ek ücret ödemeden sağlanır. Sanal makineleri ve altyapıyı yönetmek için zaman ve kaynak ayırmak yerine, uygulama geliştirme ve iş mantığına odaklanırsınız. Ayrıca, yeni beceriler öğrenmek zorunda kalmadan çözümlerinizi teslim etmek için seçtiğiniz açık kaynak araçları ve platformuyla uygulamanızı geliştirmeye devam edebilirsiniz.
 

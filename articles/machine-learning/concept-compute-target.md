@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 09/29/2020
-ms.openlocfilehash: 3b1e102385f43dd9a1ba6996e657f49d435038a2
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.openlocfilehash: b4422c664071087ccae73a5b6f642b53dcca74bf
+ms.sourcegitcommit: 87a6587e1a0e242c2cfbbc51103e19ec47b49910
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102503627"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103574654"
 ---
 # <a name="what-are-compute-targets-in-azure-machine-learning"></a>Azure Machine Learning'deki işlem hedefleri nelerdir?
 
@@ -98,30 +98,30 @@ VM boyutu seçmenin bazı özel durumları ve sınırlamaları vardır:
 
 Desteklenen seriler ve kısıtlamalar hakkında daha fazla bilgi edinmek için aşağıdaki tabloya bakın.
 
-| **Desteklenen VM Serisi**  | **Kısıtlamalar** |
-|------------|------------|
-| D | Yok. |
-| DDSv4 | Yok. |
-| Dv2 | Yok. |  
-| Dv3 | Yok.|
-| DSv2 | Yok. | 
-| DSv3 | Yok.|
-| EAv4 | Yok. |
-| Ev3 | Yok. |
-| FSv2 | Yok. | 
-| H | Yok. |
-| HB | Onay gerektirir. |
-| HBv2 | Onay gerektirir. |  
-| HCS | Onay gerektirir. |  
-| M | Onay gerektirir. |
-| NC | Yok. |  
-| NC promosyon | Yok. |
-| NCsv2 | Onay gerektirir. |
-| NCsv3 | Onay gerektirir. |  
-| Üstündeki | Onay gerektirir. |
-| NDv2 | Onay gerektirir. |
-| NV | Yok. |
-| NVv3 | Onay gerektirir. | 
+| **Desteklenen VM Serisi**  | **Kısıtlamalar** | **Kategori** | **Desteklediği** |
+|------------|------------|------------|------------|
+| D | Yok. | Genel amaçlı | İşlem kümeleri ve örnek |
+| DDSv4 | Yok. | Genel amaçlı | İşlem kümeleri ve örnek |
+| Dv2 | Yok. | Genel amaçlı | İşlem kümeleri ve örnek |
+| Dv3 | Yok.| Genel amaçlı | İşlem kümeleri ve örnek |
+| DSv2 | Yok. | Genel amaçlı | İşlem kümeleri ve örnek |
+| DSv3 | Yok.| Genel amaçlı | İşlem kümeleri ve örnek |
+| EAv4 | Yok. | Bellek için iyileştirilmiş | İşlem kümeleri ve örnek |
+| Ev3 | Yok. | Bellek için iyileştirilmiş | İşlem kümeleri ve örnek |
+| FSv2 | Yok. | İşlem için iyileştirilmiş | İşlem kümeleri ve örnek |
+| H | Yok. | Yüksek performanslı işlem | İşlem kümeleri ve örnek |
+| HB | Onay gerektirir. | Yüksek performanslı işlem | İşlem kümeleri ve örnek |
+| HBv2 | Onay gerektirir. |  Yüksek performanslı işlem | İşlem kümeleri ve örnek |
+| HCS | Onay gerektirir. |  Yüksek performanslı işlem | İşlem kümeleri ve örnek |
+| M | Onay gerektirir. | Bellek için iyileştirilmiş | İşlem kümeleri ve örnek |
+| NC | Yok. |  GPU | İşlem kümeleri ve örnek |
+| NC promosyon | Yok. | GPU | İşlem kümeleri ve örnek |
+| NCsv2 | Onay gerektirir. | GPU | İşlem kümeleri ve örnek |
+| NCsv3 | Onay gerektirir. | GPU | İşlem kümeleri ve örnek |  
+| Üstündeki | Onay gerektirir. | GPU | İşlem kümeleri ve örnek | 
+| NDv2 | Onay gerektirir. | GPU | İşlem kümeleri ve örnek | 
+| NV | Yok. | GPU | İşlem kümeleri ve örnek | 
+| NVv3 | Onay gerektirir. | GPU | İşlem kümeleri ve örnek | 
 
 
 Azure Machine Learning bu VM serisini desteklese de, tüm Azure bölgelerinde kullanılamayabilir. VM serisinin kullanılabilir olup olmadığını denetlemek için bkz. [bölgelere göre kullanılabilir ürünler](https://azure.microsoft.com/global-infrastructure/services/?products=virtual-machines).

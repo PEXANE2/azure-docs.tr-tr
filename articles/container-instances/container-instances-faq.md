@@ -5,12 +5,12 @@ author: macolso
 ms.author: macolso
 ms.topic: article
 ms.date: 06/02/2020
-ms.openlocfilehash: 5de1188ee018e796f918d7559c0e2c24c77834f4
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.openlocfilehash: 2645c3f183e2217dff28a96c9c0d376eb82a6476
+ms.sourcegitcommit: 87a6587e1a0e242c2cfbbc51103e19ec47b49910
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98186201"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103573141"
 ---
 # <a name="frequently-asked-questions-about-azure-container-instances"></a>Azure Container Instances hakkında sık sorulan sorular
 
@@ -45,7 +45,7 @@ Kapsayıcı başlatma süresini azaltmak için daha [ayrıntılı rehberlik](con
 > [!NOTE]
 > Semi-Annual kanal sürümü 1709 veya 1803 tabanlı Windows görüntüleri desteklenmez.
 
-#### <a name="windows-server-2019-and-client-base-images-preview"></a>Windows Server 2019 ve istemci temel görüntüleri (Önizleme)
+#### <a name="windows-server-2019-and-client-base-images"></a>Windows Server 2019 ve istemci temel görüntüleri
 
 * [Nano sunucu](https://hub.docker.com/_/microsoft-windows-nanoserver): `1809` `10.0.17763.1040` veya daha yeni
 * [Windows Server çekirdeği](https://hub.docker.com/_/microsoft-windows-servercore): `ltsc2019` , `1809` `10.0.17763.1040` veya daha yeni
@@ -55,9 +55,12 @@ Kapsayıcı başlatma süresini azaltmak için daha [ayrıntılı rehberlik](con
 
 Gereksinimlerinizi karşılayan en küçük görüntüyü kullanın. Linux için .NET Core 2,1 sürümünden bu yana desteklenen bir *Runtime-alçam* .NET Core görüntüsü kullanabilirsiniz. Windows için, tam .NET Framework kullanıyorsanız, bir Windows Server çekirdek görüntüsü (yalnızca çalışma zamanı görüntüsü, örneğin  *4.7.2-windowsservercore-ltsc2016*) kullanmanız gerekir. Yalnızca çalışma zamanı görüntüleri küçüktür, ancak .NET SDK gerektiren iş yüklerini desteklemez.
 
+> [!NOTE]
+> ACI OCı uyumlu olmayan kayıt defterlerinden görüntü çekemiyorum.
+
 ### <a name="what-types-of-container-registries-are-compatible-with-aci"></a>Ne tür kapsayıcı kayıt defterleri ACI ile uyumludur?
 
-ACR 'den ve DockerHub gibi diğer üçüncü taraf kapsayıcı kayıt defterlerinden görüntü çekini destekler. ACı Ayrıca, OCR uyumlu oldukları ve internet 'e açık bir uç noktaya sahip olduğu sürece Şirket içi kayıt defterlerinden görüntü çekmeleri de destekler.
+ACR 'den ve DockerHub gibi diğer üçüncü taraf kapsayıcı kayıt defterlerinden görüntü çekini destekler. ACM, ACR 'den ve DockerHub gibi diğer üçüncü taraf OCı ile uyumlu kapsayıcı kayıt defterlerinden, internet 'e genel kullanıma açık bir uç nokta ile görüntü çekini destekler.
 
 ## <a name="availability-and-quotas"></a>Kullanılabilirlik ve Kotalar
 

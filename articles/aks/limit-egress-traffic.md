@@ -4,14 +4,14 @@ description: Azure Kubernetes Service (AKS) ' de çıkış trafiğini denetlemek
 services: container-service
 ms.topic: article
 ms.author: jpalma
-ms.date: 11/09/2020
+ms.date: 01/12/2021
 author: palma21
-ms.openlocfilehash: 93c8d1392de8f502a829276287a4687476dd36de
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.openlocfilehash: 9e65e2736578ce04dfa79d5a7827e190d47fb312
+ms.sourcegitcommit: 87a6587e1a0e242c2cfbbc51103e19ec47b49910
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102505067"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103573838"
 ---
 # <a name="control-egress-traffic-for-cluster-nodes-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) içindeki küme düğümleri için çıkış trafiğini denetleme
 
@@ -214,6 +214,24 @@ Azure Ilkesi etkinleştirilmiş AKS kümeleri için aşağıdaki FQDN/uygulama k
 | **`gov-prod-policy-data.trafficmanager.net`** | **`HTTPS:443`** | Bu adres, Azure Ilkesi 'nin doğru çalışması için kullanılır.  |
 | **`raw.githubusercontent.com`**               | **`HTTPS:443`** | Bu adres, Azure Ilkesinde doğru işlem yapıldığından emin olmak için yerleşik ilkeleri GitHub 'dan çekmek için kullanılır. |
 | **`dc.services.visualstudio.com`**            | **`HTTPS:443`** | Uygulama öngörüleri uç noktasına telemetri verileri gönderen Azure Ilke eklentisi. |
+
+#### <a name="azure-china-21vianet-required-fqdn--application-rules"></a>Azure Çin 21Vianet gerekli FQDN/uygulama kuralları 
+
+Azure Ilkesi etkinleştirilmiş AKS kümeleri için aşağıdaki FQDN/uygulama kuralları gereklidir.
+
+| FQDN                                          | Bağlantı noktası      | Kullanın      |
+|-----------------------------------------------|-----------|----------|
+| **`data.policy.azure.cn`** | **`HTTPS:443`** | Bu adres, Kubernetes ilkelerini çekmek ve küme uyumluluk durumunu ilke hizmetine bildirmek için kullanılır. |
+| **`store.policy.azure.cn`** | **`HTTPS:443`** | Bu adres, yerleşik ilkelerin geçit Denetçi yapılarını çekmek için kullanılır. |
+
+#### <a name="azure-us-government-required-fqdn--application-rules"></a>Azure ABD kamu gerekli FQDN/uygulama kuralları
+
+Azure Ilkesi etkinleştirilmiş AKS kümeleri için aşağıdaki FQDN/uygulama kuralları gereklidir.
+
+| FQDN                                          | Bağlantı noktası      | Kullanın      |
+|-----------------------------------------------|-----------|----------|
+| **`data.policy.azure.us`** | **`HTTPS:443`** | Bu adres, Kubernetes ilkelerini çekmek ve küme uyumluluk durumunu ilke hizmetine bildirmek için kullanılır. |
+| **`store.policy.azure.us`** | **`HTTPS:443`** | Bu adres, yerleşik ilkelerin geçit Denetçi yapılarını çekmek için kullanılır. |
 
 ## <a name="restrict-egress-traffic-using-azure-firewall"></a>Azure Güvenlik Duvarı 'nı kullanarak çıkış trafiğini kısıtlama
 

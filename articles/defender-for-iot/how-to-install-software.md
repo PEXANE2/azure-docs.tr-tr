@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 12/2/2020
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: 1e361ad14f79ea32d83e8cff9dd9bb8607b7c766
-ms.sourcegitcommit: 66ce33826d77416dc2e4ba5447eeb387705a6ae5
+ms.openlocfilehash: 175f006adbc18d21e0f0c5d859737aedb00bc457
+ms.sourcegitcommit: 87a6587e1a0e242c2cfbbc51103e19ec47b49910
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/15/2021
-ms.locfileid: "103470694"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103574671"
 ---
 # <a name="defender-for-iot-installation"></a>IoT yüklemesi için Defender
 
@@ -697,9 +697,9 @@ Yüklemek için:
 
 1. Oturum açma kimlik bilgileri otomatik olarak oluşturulup sunulur. Oturum açma ve yönetim için gerekli olduklarından, Kullanıcı adını ve parolayı güvenli bir yere kopyalayın.
 
-    - **Destek**: Kullanıcı yönetimi için yönetici kullanıcı.
+      - **Destek**: Kullanıcı yönetimi için yönetici kullanıcı.
 
-    - **Six**: gerecle erişmek için kökün eşdeğeri.
+      - **Six**: gerecle erişmek için kökün eşdeğeri.
 
 1. Gereç yeniden başlatılır.
 
@@ -851,9 +851,10 @@ Yazılımı yüklemek için:
 
 1. Oturum açma kimlik bilgileri otomatik olarak oluşturulup sunulur. Oturum açma ve yönetim için gerekli olduklarından, bu kimlik bilgilerini güvenli bir yerde saklayın.
 
-  - **Destek**: Kullanıcı yönetimi için yönetici kullanıcı.
-
-  - **Six**: gerecle erişmek için kökün eşdeğeri.
+    | Kullanıcı adı | Description |
+    |--|--|
+    | Destek | Kullanıcı yönetimi için yönetici kullanıcı. |
+    | Six | Gerecle erişmek için kökün eşdeğeri. |
 
 1. Gereç yeniden başlatılır.
 

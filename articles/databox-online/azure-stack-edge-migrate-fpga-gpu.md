@@ -6,36 +6,36 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 02/10/2021
+ms.date: 03/11/2021
 ms.author: alkohli
-ms.openlocfilehash: 5b68ab545e87035d138558ba1911294ef805af6d
-ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
+ms.openlocfilehash: 24d6528a105d593d1cb4c9c66d981c8787f85633
+ms.sourcegitcommit: 87a6587e1a0e242c2cfbbc51103e19ec47b49910
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/11/2021
-ms.locfileid: "102630750"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103573294"
 ---
 # <a name="migrate-workloads-from-an-azure-stack-edge-pro-fpga-to-an-azure-stack-edge-pro-gpu"></a>Azure Stack Edge Pro FPGA 'dan iş yüklerini Azure Stack Edge Pro GPU 'suna geçirme
 
-Bu makalede, Azure Stack Edge Pro FPGA cihazındaki iş yüklerinin ve verilerin bir Azure Stack Edge Pro GPU cihazına nasıl geçirileceği açıklanır. Geçiş yordamı, iki cihaz, geçiş konuları, ayrıntılı adımlar ve doğrulama sonrasında temizleme işlemi de dahil olmak üzere geçişe bir genel bakış içerir.
+Bu makalede, Azure Stack Edge Pro FPGA cihazındaki iş yüklerinin ve verilerin bir Azure Stack Edge Pro GPU cihazına nasıl geçirileceği açıklanır. Geçiş işlemi, iki cihazın karşılaştırması, bir geçiş planı ve geçiş konularının incelenmesi ile başlar. Geçiş yordamı, doğrulama ve cihaz Temizleme ile biten ayrıntılı adımları sağlar.
 
-<!--Azure Stack Edge Pro FPGA devices will reach end-of-life in February 2024. If you are considering new deployments, we recommend that you explore Azure Stack Edge Pro GPU devices for your workloads.-->
+[!INCLUDE [Azure Stack Edge Pro FPGA end-of-life](../../includes/azure-stack-edge-fpga-eol.md)]
 
 ## <a name="about-migration"></a>Geçiş hakkında
 
 Geçiş, iş yüklerini ve uygulama verilerini bir depolama konumundan diğerine taşıma işlemidir. Bu, bir kuruluşun geçerli verilerinin bir depolama cihazından başka bir depolama cihazına (tercihen etkin uygulamaları kesintiye uğratmadan veya devre dışı bırakmadan) ve ardından tüm giriş/çıkış (g/ç) etkinliğini yeni cihaza yeniden yönlendirmeksizin tam bir kopyasını oluşturmak gerektirir. 
 
-Bu geçiş kılavuzu, Azure Stack Edge Pro FPGA cihazından Azure Stack Edge Pro GPU cihazına veri geçirmek için gereken adımlara adım adım yönergeler sağlar. Bu belge, veri merkezindeki Azure Stack Edge cihazlarını çalıştırma, dağıtma ve yönetme konusunda sorumlu olan bilgi teknolojisi (BT) uzmanlarına ve bilgi çalışanlarına yöneliktir. 
+Bu geçiş kılavuzu, Azure Stack Edge Pro FPGA cihazından Azure Stack Edge Pro GPU cihazına veri geçirmek için gereken adımlara adım adım yönergeler sağlar. Bu belge, veri merkezindeki Azure Stack Edge cihazlarını çalıştırma, dağıtma ve yönetme konusunda sorumlu olan bilgi teknolojisi (BT) uzmanlarına ve bilgi çalışanlarına yöneliktir.
 
 Bu makalede, Azure Stack Edge Pro FPGA cihazı *kaynak* cihaz olarak adlandırılır ve *hedef* cihaz, Azure Stack Edge Pro GPU aygıtıdır. 
 
 ## <a name="comparison-summary"></a>Karşılaştırma Özeti
 
-Bu bölüm, Azure Stack Edge Pro GPU 'SU ile Azure Stack Edge Pro FPGA cihazları arasındaki yeteneklerin karşılaştırılma özetini sağlar. Hem kaynak hem de hedef cihazdaki donanım büyük ölçüde aynıdır ve yalnızca donanım hızlandırma kartına ve depolama kapasitesine göre farklılık gösterir. 
+Bu bölüm, Azure Stack Edge Pro GPU 'SU ile Azure Stack Edge Pro FPGA cihazları arasındaki yeteneklerin karşılaştırılma özetini sağlar. Hem kaynak hem de hedef cihazdaki donanım büyük ölçüde aynıdır; yalnızca donanım hızlandırma kartı ve depolama kapasitesi farklı olabilir.<!--Please verify: These components MAY, but need not necessarily, differ?-->
 
 |    Özellik  | Azure Stack Edge Pro GPU (hedef cihaz)  | Azure Stack Edge Pro FPGA (kaynak cihaz)|
 |----------------|-----------------------|------------------------|
-| Donanım       | Donanım hızlandırma: 1 veya 2 NVIDIA T4 GPU 'ları <br> İşlem, bellek, ağ arabirimi, güç kaynağı birimi, güç kablosu belirtimleri, cihazla FPGA ile aynıdır.  | Donanım hızlandırma: Intel varış a 10 FPGA <br> İşlem, bellek, ağ arabirimi, güç kaynağı birimi, güç kablosu belirtimleri, cihaz ile GPU ile aynıdır.          |
+| Donanım       | Donanım hızlandırma: 1 veya 2 NVIDIA T4 GPU 'ları <br> İşlem, bellek, ağ arabirimi, güç kaynağı birimi ve güç kablosu belirtimleri, cihazla FPGA ile aynıdır.  | Donanım hızlandırma: Intel varış a 10 FPGA <br> İşlem, bellek, ağ arabirimi, güç kaynağı birimi ve güç kablosu belirtimleri, cihaz ile GPU ile aynıdır.          |
 | Kullanılabilir depolama alanı | 4,19 TB <br> Eşlik dayanıklılığı ve dahili kullanım için alan ayırdıktan sonra | 12,5 TB <br> Dahili kullanım için alan ayırdıktan sonra |
 | Güvenlik       | Sertifikalar |                                                     |
 | İş yükleri      | IoT Edge iş yükleri <br> VM iş yükleri <br> Kubernetes iş yükleri| IoT Edge iş yükleri |
@@ -55,9 +55,9 @@ Geçiş planınızı oluşturmak için aşağıdaki bilgileri göz önünde bulu
 
 Geçişe devam etmeden önce aşağıdaki bilgileri göz önünde bulundurun: 
 
-- Bir Azure Stack Edge Pro GPU cihazı, bir Azure Stack Edge Pro FPGA kaynağına karşı etkinleştirilemez. [Azure Stack Edge Pro GPU 'Su oluşturma sırasında](azure-stack-edge-gpu-deploy-prep.md#create-a-new-resource)açıklandığı gibi Azure Stack Edge Pro GPU cihazı için yeni bir kaynak oluşturulmalıdır.
+- Bir Azure Stack Edge Pro GPU cihazı, bir Azure Stack Edge Pro FPGA kaynağına karşı etkinleştirilemez. Azure Stack Edge Pro GPU cihazı için [Azure Stack Edge Pro GPU siparişi oluşturma](azure-stack-edge-gpu-deploy-prep.md#create-a-new-resource)bölümünde açıklandığı gibi yeni bir kaynak oluşturmanız gerekir.
 - FPGA kullanan kaynak cihazda dağıtılan Machine Learning modellerinin GPU ile hedef cihaz için değiştirilmesi gerekir. Modellerle ilgili yardım için Microsoft Desteği başvurabilirsiniz. Kaynak cihaza dağıtılan özel modeller, FPGA kullanmayan (yalnızca kullanılan CPU), hedef cihazda (CPU kullanılarak) olduğu gibi çalışır.
-- Kaynak cihaza dağıtılan IoT Edge modüller, hedef cihaza başarıyla dağıtılabilmesi için değişiklikler gerektirebilir. 
+- Kaynak cihaza dağıtılan IoT Edge modüller, hedef cihazda modüller başarıyla dağıtılmadan önce değişiklik gerektirebilir. 
 - Kaynak cihaz, NFS 3,0 ve 4,1 protokollerini destekler. Hedef cihaz yalnızca NFS 3,0 protokolünü destekler.
 - Kaynak cihaz SMB ve NFS protokollerini destekler. Hedef cihaz, paylaşımlar için SMB ve NFS protokollerine ek olarak depolama hesaplarını kullanan REST protokolü aracılığıyla depolamayı destekler.
 - Kaynak aygıttaki paylaşma erişimi IP adresidir, ancak hedef cihazdaki paylaşma erişimi cihaz adı üzerinden yapılır.
@@ -99,15 +99,15 @@ Edge bulutu, cihazınızdan Azure 'a katman verileri paylaşır. Azure portal ar
 
 - Tüm uç bulut paylaşımlarının ve kaynak cihazda bulunan kullanıcıların bir listesini oluşturun.
 - Sahip olduğunuz tüm bant genişliği zamanlamalarının bir listesini oluşturun. Bu bant genişliği zamanlamalarını hedef cihazınızda yeniden oluşturacaksınız.
-- Kullanılabilir ağ bant genişliğine bağlı olarak, cihazınızdaki bant genişliği zamanlamalarını yapılandırarak buluta veri katmanlı verileri en üst düzeye çıkarın. Bu, cihazdaki yerel verileri en aza indirir.
-- Paylaşımların buluta tamamen katmanlantığından emin olun. Bu, Azure portal paylaşma durumu denetlenerek onaylanır.  
+- Kullanılabilir ağ bant genişliğine bağlı olarak, buluta veri katmanlı verileri en üst düzeye çıkarmak için cihazınızda bant genişliği zamanlamalarını yapılandırın. Bu, cihazdaki yerel verileri en aza indirir.
+- Paylaşımların buluta tamamen katmanlantığından emin olun. Katmanlama, Azure portal paylaşma durumu denetlenerek onaylanır.  
 
 #### <a name="data-in-edge-local-shares"></a>Edge Yerel paylaşımlarında veri
 
 Edge Yerel paylaşımlarında bulunan veriler cihazda kalır. Azure portal aracılığıyla *kaynak* cihazınızda bu adımları uygulayın. 
 
-- Cihazda bulunan Edge Yerel paylaşımlarının bir listesini oluşturun.
-- Bu, verilerin tek seferlik geçişini yaparken, uç yerel paylaşma verilerinin bir kopyasını başka bir şirket içi sunucuda oluşturur. `robocopy`Verileri kopyalamak için (SMB) veya `rsync` (NFS) gibi kopyalama araçlarını kullanabilirsiniz. İsteğe bağlı olarak, yerel paylaşımlardaki verileri yedeklemek için bir üçüncü taraf veri koruma çözümünü zaten dağıtmış olabilirsiniz. Aşağıdaki üçüncü taraf çözümler Azure Stack Edge Pro FPGA cihazlarıyla kullanım için desteklenir:
+- Cihazdaki Edge Yerel paylaşımlarının bir listesini oluşturun.
+- Verilerin tek seferlik geçişini yapacağından, uç yerel paylaşma verilerinin bir kopyasını başka bir şirket içi sunucuya oluşturun. `robocopy`Verileri kopyalamak için (SMB) veya `rsync` (NFS) gibi kopyalama araçlarını kullanabilirsiniz. İsteğe bağlı olarak, yerel paylaşımlardaki verileri yedeklemek için bir üçüncü taraf veri koruma çözümünü zaten dağıtmış olabilirsiniz. Aşağıdaki üçüncü taraf çözümler Azure Stack Edge Pro FPGA cihazlarıyla kullanım için desteklenir:
 
     | Üçüncü taraf yazılım           | Çözüme başvuru                               |
     |--------------------------------|---------------------------------------------------------|
@@ -157,10 +157,10 @@ Artık, kaynak cihazdan *hedef* cihazınızdaki uç bulut paylaşımlarına ve u
 
 Hedef cihazınızdaki uç bulut paylaşımlarındaki verileri eşitlemek için aşağıdaki adımları izleyin:
 
-1. Kaynak cihazda oluşturulan paylaşım adlarına karşılık gelen [Paylaşımlar ekleyin](azure-stack-edge-gpu-manage-shares.md#add-a-share) . Paylaşımlar oluştururken, **BLOB kapsayıcısı** ' nın **var olan seçeneği kullanacak** şekilde ayarlandığından emin olun ve ardından önceki cihazla kullanılan kapsayıcıyı seçin.
-1. Önceki cihaza erişimi olan [kullanıcıları ekleyin](azure-stack-edge-gpu-manage-users.md#add-a-user) .
-1. Azure 'daki [Share verilerini yenileyin](azure-stack-edge-gpu-manage-shares.md#refresh-shares) . Bu, mevcut kapsayıcıdan tüm bulut verilerini paylaşımlara çeker.
-1. Paylaşımlarınız ile ilişkilendirilecek bant genişliği zamanlamalarını yeniden oluşturun. Ayrıntılı adımlar için bkz. [bant genişliği zamanlaması ekleme](azure-stack-edge-gpu-manage-bandwidth-schedules.md#add-a-schedule) .
+1. Kaynak cihazda oluşturulan paylaşım adlarına karşılık gelen [Paylaşımlar ekleyin](azure-stack-edge-j-series-manage-shares.md#add-a-share) . Paylaşımları oluşturduğunuzda, **BLOB kapsayıcısı Seç** ' ın **Varolanı kullan**' ı seçin ve ardından önceki cihazla kullanılan kapsayıcıyı seçin.
+1. Önceki cihaza erişimi olan [kullanıcıları ekleyin](azure-stack-edge-j-series-manage-users.md#add-a-user) .
+1. Azure 'daki [Share verilerini yenileyin](azure-stack-edge-j-series-manage-shares.md#refresh-shares) . Paylaşımın yenilenmesi, var olan kapsayıcıdan tüm bulut verilerini paylaşımlara alacak.
+1. Paylaşımlarınız ile ilişkilendirilecek bant genişliği zamanlamalarını yeniden oluşturun. Ayrıntılı adımlar için bkz. [bant genişliği zamanlaması ekleme](azure-stack-edge-j-series-manage-bandwidth-schedules.md#add-a-schedule) .
 
 
 ### <a name="2-from-edge-local-shares"></a>2. Edge Yerel paylaşımlarından
@@ -175,9 +175,9 @@ Yerel paylaşımlardaki verileri kurtarmak için şu adımları izleyin:
 1. Hedef cihazdaki tüm yerel paylaşımları ekleyin. [Yerel bir paylaşma ekleme](azure-stack-edge-gpu-manage-shares.md#add-a-local-share)içindeki ayrıntılı adımlara bakın.
 1. Kaynak aygıttaki SMB paylaşımlarına erişmek, hedef cihazda IP adreslerini kullanır, ancak cihaz adını kullanırsınız. Bkz. [Azure Stack Edge Pro GPU üzerinde BIR SMB paylaşımıyla bağlantı](azure-stack-edge-j-series-deploy-add-shares.md#connect-to-an-smb-share). Hedef cihazdaki NFS paylaşımlarına bağlanmak için cihazla ilişkili yeni IP adreslerini kullanmanız gerekir. Bkz. [Azure Stack Edge Pro GPU ÜZERINDE NFS paylaşımıyla bağlantı](azure-stack-edge-j-series-deploy-add-shares.md#connect-to-an-nfs-share). 
 
-    Paylaşım verilerinizin üzerine SMB/NFS üzerinden bir ara sunucuya kopyalandıysanız, bu verileri hedef cihazdaki paylaşımlara kopyalayabilirsiniz. Ayrıca, hem kaynak hem de hedef cihaz *çevrimiçiyse*, verileri doğrudan kaynak cihazdan kopyalayabilirsiniz.
+    Paylaşım verilerinizi SMB veya NFS üzerinden bir ara sunucuya kopyaladıysanız, verileri ara sunucudan hedef cihazdaki paylaşımlara kopyalayabilirsiniz. Hem kaynak hem de hedef cihaz *çevrimiçiyse*, verileri doğrudan kaynak cihazdan da kopyalayabilirsiniz.
 
-    Yerel paylaşımlardaki verileri yedeklemek için bir üçüncü taraf yazılımı kullandıysanız, tercih ettiğiniz veri koruma çözümü tarafından sağlanmış olan kurtarma yordamını çalıştırmanız gerekir. Aşağıdaki tablodaki başvurulara bakın.
+    Yerel paylaşımlardaki verileri yedeklemek için üçüncü taraf yazılım kullandıysanız, tercih ettiğiniz veri koruma çözümü tarafından sunulan kurtarma yordamını çalıştırmanız gerekir. Aşağıdaki tablodaki başvurulara bakın.
 
     | Üçüncü taraf yazılım           | Çözüme başvuru                               |
     |--------------------------------|---------------------------------------------------------|

@@ -7,18 +7,18 @@ ms.date: 09/25/2020
 ms.service: key-vault
 ms.subservice: general
 ms.topic: conceptual
-ms.openlocfilehash: a75ecac20c553f697585648c5654d375b85e5183
-ms.sourcegitcommit: b513b0becf878eb9a1554c26da53aa48d580bb22
+ms.openlocfilehash: 25f00024fb7371fd08bf6c4ceec3177cfaca029b
+ms.sourcegitcommit: 87a6587e1a0e242c2cfbbc51103e19ec47b49910
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/16/2021
-ms.locfileid: "100535204"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103572817"
 ---
 # <a name="key-vault-authentication-fundamentals"></a>Key Vault Kimlik Doğrulamasının temelleri
 
 Azure Key Vault, merkezi ve güvenli bir bulut deposundaki gizli diziler, anahtarlar ve sertifikalar gibi uygulama kimlik bilgilerini güvenli bir şekilde depolamanıza ve yönetmenize olanak sağlar. Key Vault, uygulamalarınızda kimlik bilgilerini depolama gereksinimini ortadan kaldırır. Uygulamalarınız, kimlik bilgilerini almak için çalışma zamanında Key Vault kimlik doğrulaması yapabilir.
 
-Yönetici olarak, hangi kullanıcıların ve uygulamaların anahtar kasanıza erişebileceğini sıkı bir şekilde kontrol edebilir ve gerçekleştirdikleri işlemleri sınırlayabilir ve denetleyebilirsiniz. Bu belgede, Anahtar Kasası erişim modelinin temel kavramları açıklanmaktadır. Bu, size bir giriş düzeyi sağlar ve bir Kullanıcı ya da uygulamanın başlangıçtan sonuna anahtar kasasında nasıl kimlik doğrulayacağınızı gösterir.
+Yönetici olarak, hangi kullanıcıların ve uygulamaların anahtar kasanıza erişebileceğini sıkı bir şekilde kontrol edebilir ve gerçekleştirdikleri işlemleri sınırlayabilir ve denetleyebilirsiniz. Bu belgede, Anahtar Kasası erişim modelinin temel kavramları açıklanmaktadır. Bu, size tanıtım düzeyi bilgileri sağlar ve baştan sona kadar bir kullanıcı veya uygulamanın anahtar kasasında nasıl kimlik doğrulayacağınızı gösterir.
 
 ## <a name="required-knowledge"></a>Gerekli bilgi
 

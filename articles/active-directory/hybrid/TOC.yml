@@ -254,6 +254,8 @@
           href: how-to-connect-health-adfs.md
         - name: AD FS ile Azure AD Connect Health için riskli IP raporları
           href: how-to-connect-health-adfs-risky-ip.md
+        - name: Azure AD 'de Connect Health ile Sign-Ins AD FS
+          href: how-to-connect-health-ad-fs-sign-in.md
         - name: Azure AD Connect Health’i eşitleme için kullanma
           href: how-to-connect-health-sync.md
         - name: Azure AD Connect Health’i AD DS ile Kullanma

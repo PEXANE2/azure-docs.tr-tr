@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/11/2021
 ms.author: trbye
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 86c8943531171094600bc7d93b8694bdd1c6e051
-ms.sourcegitcommit: 94c3c1be6bc17403adbb2bab6bbaf4a717a66009
+ms.openlocfilehash: 16158b4ecfb46ea9092fe9eeb31cc4dee259b1ab
+ms.sourcegitcommit: 87a6587e1a0e242c2cfbbc51103e19ec47b49910
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/12/2021
-ms.locfileid: "103225839"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103573753"
 ---
 # <a name="speech-service-containers-frequently-asked-questions-faq"></a>Konuşma hizmeti kapsayıcıları hakkında sık sorulan sorular (SSS)
 
@@ -344,20 +344,6 @@ Etkileşimli, konuşmaya ve dikte etmeyi açıklığa kavuşturun; Bu, hizmetimi
 - MIC için, bu, 1x gerçek zamanlı olarak olacaktır. Tek bir tanıma için genel kullanım yaklaşık 1 çekirdekle olmalıdır.
 
 Bu, Docker günlüklerinden tüm bunların doğrulanması olabilir. Aslında, oturum ve tümcecik/utterance istatistikleriyle satırın dökümünü aldık ve bu, RTF numaralarını içerir.
-
-
-<br>
-</details>
-
-<details>
-<summary>
-<b>Ses dosyalarını konuşma kapsayıcısı kullanımı için chucks 'e bölmek yaygın mi?</b>
-</summary>
-
-Geçerli planım, var olan bir ses dosyasını alıp 10 saniyelik parçalara bölmek ve bunları kapsayıcı aracılığıyla göndermek için kullanılır. Kabul edilebilir bir senaryoya mi?  Kapsayıcıda daha büyük ses dosyalarını işlemek için daha iyi bir yol var mı?
-
-**Cevap:** Konuşma SDK 'sını kullanmanız yeterlidir ve dosyayı vermeniz, doğru şeyi yapar. Dosyayı neden öbek için yapmanız gerekiyor?
-
 
 <br>
 </details>

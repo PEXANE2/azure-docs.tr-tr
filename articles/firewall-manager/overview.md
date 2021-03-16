@@ -5,14 +5,14 @@ author: vhorne
 ms.service: firewall-manager
 services: firewall-manager
 ms.topic: overview
-ms.date: 01/12/2021
+ms.date: 03/16/2021
 ms.author: victorh
-ms.openlocfilehash: 63e2aac4c12ecc5d832cb037fda91bd2c6ad0bf1
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: 506799f94676be007cf94320e3958bd305ce85f0
+ms.sourcegitcommit: 87a6587e1a0e242c2cfbbc51103e19ec47b49910
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98132452"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103573464"
 ---
 # <a name="what-is-azure-firewall-manager"></a>Azure Güvenlik Duvarı Yöneticisi nedir?
 
@@ -88,7 +88,6 @@ Azure Güvenlik Duvarı Yöneticisi aşağıdaki bilinen sorunlara sahiptir:
 |Toplu IP adresi ekleme başarısız oluyor|Birden çok genel IP adresi eklerseniz, güvenli Merkez güvenlik duvarı başarısız durumuna geçer.|Daha küçük genel IP adresi artışlarını ekleyin. Örneğin, bir seferde 10 ekleyin.|
 |DDoS koruma standardı, güvenli sanal hub 'lar ile desteklenmiyor|DDoS koruma standardı Vwan ile tümleştirilmiştir.|Araştırılıyor|
 |Etkinlik günlükleri tam olarak desteklenmiyor|Güvenlik duvarı ilkesi Şu anda etkinlik günlüklerini desteklemiyor.|Araştırılıyor|
-|SNAT özel IP adresi aralıklarını yapılandırma|Azure Güvenlik duvarı ilkesi yapılandırılmışsa [özel IP aralığı ayarları](../firewall/snat-private-range.md) yoksayılır. Varsayılan Azure Güvenlik Duvarı davranışı, hedef IP adresi [ıANA RFC 1918](https://tools.ietf.org/html/rfc1918)başına özel bir IP adresi aralığında olduğunda, SNAT ağ kuralları olmadığı durumlarda kullanılır.|Araştırılıyor|
 |Güvenlik Duvarı güvenlik duvarı Ilkesi kullanacak şekilde geçirildiğinde bazı güvenlik duvarı ayarları geçirilmez|Azure Güvenlik Duvarı Ilkesine geçiş yaptığınızda Kullanılabilirlik Alanları ve SNAT özel adresler geçirilmez.|Araştırılıyor| 
 
 ## <a name="next-steps"></a>Sonraki adımlar

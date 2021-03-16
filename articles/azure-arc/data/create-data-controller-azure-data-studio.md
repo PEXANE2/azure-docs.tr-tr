@@ -9,12 +9,12 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 12/09/2020
 ms.topic: how-to
-ms.openlocfilehash: 2b35abf7f318d4db6166dd48c4f7bd35aaf4d98a
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: f2d44cc769e9673eeb75828126f806d2b2308a17
+ms.sourcegitcommit: 87a6587e1a0e242c2cfbbc51103e19ec47b49910
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101644417"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103573889"
 ---
 # <a name="create-data-controller-in-azure-data-studio"></a>Azure Data Studio veri denetleyicisi oluşturma
 
@@ -47,7 +47,7 @@ Dağıtım sihirbazını kullanarak bir Azure Arc veri denetleyicisi oluşturmak
 1. İstediğiniz aboneliği ve kaynak grubunu seçin.
 1. Bir Azure konumu seçin.
    
-   Burada seçilen Azure konumu, veri denetleyicisi ve yönettiği veritabanı örnekleri hakkındaki *meta verilerin* depolanacağı Azure konumudur. Veri denetleyicisi ve veritabanı örnekleri, Kubernetes kümenizde olduğu her yerde fiili olarak sunulacaktır.
+   Burada seçilen Azure konumu, veri denetleyicisi ve yönettiği veritabanı örnekleri hakkındaki *meta verilerin* depolanacağı Azure konumudur. Veri denetleyicisi ve veritabanı örnekleri, aslında Kubernetes kümenizde oluşturulacak her yerde oluşturulur.
 
 10. Uygun bağlantı modunu seçin. [Bağlantı modları](./connectivity.md)hakkında daha fazla bilgi edinin. **Ileri ' ye tıklayın**.
 

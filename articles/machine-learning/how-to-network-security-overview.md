@@ -11,12 +11,12 @@ author: peterclu
 ms.date: 03/02/2021
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, references_regions, contperf-fy21q1
-ms.openlocfilehash: fcb678efe29178784c9233e79b307f705c40e3f7
-ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
+ms.openlocfilehash: 1c3d9b286a8262efa126ba9c661c50dd88e78b64
+ms.sourcegitcommit: 87a6587e1a0e242c2cfbbc51103e19ec47b49910
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102518695"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103573481"
 ---
 # <a name="virtual-network-isolation-and-privacy-overview"></a>Sanal ağ yalıtımı ve gizliliği genel bakış
 
@@ -36,7 +36,6 @@ Bu makalede, aşağıdaki konularda bilginiz olduğunu varsaymaktadır:
 + [Azure Özel Bağlantı](how-to-configure-private-link.md)
 + [Ağ güvenlik grupları (NSG)](../virtual-network/network-security-groups-overview.md)
 + [Ağ güvenlik duvarları](../firewall/overview.md)
-
 ## <a name="example-scenario"></a>Örnek senaryo
 
 Bu bölümde, ortak bir ağ senaryosunun özel IP adresleriyle iletişim Azure Machine Learning güvenli hale getirmek için nasıl ayarlandığını öğrenirsiniz.
@@ -62,8 +61,8 @@ Sonraki beş bölümde yukarıda açıklanan ağ senaryosunun güvenliğini sağ
 1. [**Eğitim ortamının**](#secure-the-training-environment)güvenliğini sağlama.
 1. [**İkinci dereceden sınırlama ortamının**](#secure-the-inferencing-environment)güvenliğini sağlama.
 1. İsteğe bağlı: [**Studio işlevselliğini etkinleştirin**](#optional-enable-studio-functionality).
-1. [ **Güvenlik Duvarı ayarlarını** yapılandırma](#configure-firewall-settings)
-
+1. [**Güvenlik Duvarı ayarlarını**](#configure-firewall-settings)yapılandırın.
+1. [DNS adı çözümlemesini](#custom-dns)yapılandırın.
 ## <a name="secure-the-workspace-and-associated-resources"></a>Çalışma alanının ve ilişkili kaynakların güvenliğini sağlama
 
 Çalışma alanınızı ve ilişkili kaynaklarınızı güvenli hale getirmek için aşağıdaki adımları kullanın. Bu adımlar, hizmetlerinizin sanal ağda iletişim kurmasına izin verir.
@@ -186,3 +185,5 @@ Bu makale, beş bölümlü bir sanal ağ serisinin bir parçasıdır. Bir sanal 
 * [3. kısım: eğitim ortamının güvenliğini sağlama](how-to-secure-training-vnet.md)
 * [4. Bölüm: ikinci dereceden sınırlama ortamının güvenliğini sağlama](how-to-secure-inferencing-vnet.md)
 * [5. Bölüm: Studio işlevselliğini etkinleştirme](how-to-enable-studio-virtual-network.md)
+
+Ayrıca, ad çözümlemesi için [özel DNS](how-to-custom-dns.md) kullanma makalesine bakın.

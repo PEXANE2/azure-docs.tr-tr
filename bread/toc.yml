@@ -924,6 +924,9 @@
         - name: Rezervasyonlar
           tocHref: /azure/cost-management-billing/reservations/
           topicHref: /azure/cost-management-billing/reservations/
+        - name: Microsoft Müşteri Sözleşmesi
+          tocHref: /azure/cost-management-billing/microsoft-customer-agreement/
+          topicHref: /azure/cost-management-billing/microsoft-customer-agreement/
     - name: Kapsam
       tocHref: /azure/purview/
       topicHref: /azure/purview/

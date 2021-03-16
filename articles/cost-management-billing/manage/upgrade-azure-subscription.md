@@ -3,26 +3,28 @@ title: Azure hesabınızı yükseltme
 description: Ücretsiz Azure veya Öğrenciler için Microsoft Azure Başlangıç Paketi hesabınızı nasıl yükselteceğinizi öğrenin. Azure destek planları hakkındaki ek bilgilere bakın.
 keywords: kullandıkça öde yükseltmesi
 author: bandersmsft
-ms.reviewer: sasrin
+ms.reviewer: amberb
 tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: conceptual
-ms.date: 12/04/2020
+ms.date: 03/11/2021
 ms.author: banders
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8d348c6a26404f7adbf89cd107a1f0ad0a1cacd5
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
-ms.translationtype: HT
+ms.openlocfilehash: 432330ae06b2e1c19401456dc05f87d0dd908f2d
+ms.sourcegitcommit: 87a6587e1a0e242c2cfbbc51103e19ec47b49910
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97590843"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103574159"
 ---
 # <a name="upgrade-your-azure-free-account-or-azure-for-students-starter-account"></a>Ücretsiz Azure hesabını veya Öğrenciler için Microsoft Azure Başlangıç Paketi hesabını yükseltme
 
-[Ücretsiz Azure hesabını](https://azure.microsoft.com/free/) veya [Öğrenciler için Microsoft Azure Başlangıç Paketi hesabınızı](https://azure.microsoft.com/offers/ms-azr-0144p/) Azure portalından [kullandıkça öde tarifesine](https://azure.microsoft.com/offers/ms-azr-0003p/) yükseltebilirsiniz.
+[Azure ücretsiz hesabınızı](https://azure.microsoft.com/free/) Azure Portal [Kullandıkça Öde tarifesine](https://azure.microsoft.com/offers/ms-azr-0003p/) yükseltebilirsiniz.
 
-[Öğrenciler için Microsoft Azure Başlangıç Paketi hesabına](https://azure.microsoft.com/offers/ms-azr-0144p/) kaydolduysanız ve bir [ücretsiz Azure hesabı](https://azure.microsoft.com/free/) için uygunsanız ücretsiz bir hesaba yükseltme yapabilirsiniz. Yükseltme ile birlikte 200 USD Azure kredisi ve 12 ay ücretsiz hizmetler alacaksınız.
+[Öğrenciler Için Azure başlangıç hesabınız](https://azure.microsoft.com/offers/ms-azr-0144p/) varsa ve [ücretsiz bir Azure hesabı](https://azure.microsoft.com/free/)Için uygun ise, [Azure Ücretsiz hesabına](https://azure.microsoft.com/free/)yükseltebilirsiniz. Yükseltme ile birlikte 200 USD Azure kredisi ve 12 ay ücretsiz hizmetler alacaksınız. Ücretsiz bir hesaba hak duymuyorsanız, bir [destek isteği](https://go.microsoft.com/fwlink/?linkid=2083458)ile [Kullandıkça Öde tarifesine](https://azure.microsoft.com/offers/ms-azr-0003p/) yükseltebilirsiniz.
+
+[Öğrenciler Için Azure](https://azure.microsoft.com/offers/ms-azr-0170p/) hesabınız varsa, [destek isteği](https://go.microsoft.com/fwlink/?linkid=2083458) ile [Kullandıkça Öde tarifesine](https://azure.microsoft.com/offers/ms-azr-0003p/) yükseltebilirsiniz
 
 <a id="freetrial"></a>
 
@@ -32,14 +34,14 @@ ms.locfileid: "97590843"
 
 1. [Azure Portal](https://portal.azure.com) oturum açın.
 1. **Abonelikler** araması yapın.  
-    ![Aramayı gösteren ekran görüntüsü](./media/upgrade-azure-subscription/search-subscriptions-ibiza.png)
+    :::image type="content" source="./media/upgrade-azure-subscription/search-subscriptions.png" alt-text="Aramayı gösteren ekran görüntüsü." lightbox="./media/upgrade-azure-subscription/search-subscriptions.png" :::
 1. Ücretsiz Azure hesabına kaydolduğunuzda oluşturulan aboneliği seçin.
-1. Aboneliğe genel bakış kısmındaki komut çubuğunda **Aboneliği yükselt**’i seçin. Aboneliği yükselt düğmesini görmüyorsanız sayfanın üst kısmındaki yükseltme başlığını seçin.  
-    ![Yükselt düğmesini gösteren ekran görüntüsü](./media/upgrade-azure-subscription/free-upgrade-button.png)
-1. Hesabınız için bir ödeme yöntemi belirlemediyseniz bir tane eklemeniz istenir.
+1. Aboneliğe genel bakış kısmındaki komut çubuğunda **Aboneliği yükselt**’i seçin. Aboneliği Yükselt seçeneğini görmüyorsanız sayfanın en üstündeki yükseltme başlığını seçin.  
+    :::image type="content" source="./media/upgrade-azure-subscription/free-upgrade-button.png" alt-text="Yükseltme seçeneğini gösteren ekran görüntüsü." lightbox="./media/upgrade-azure-subscription/free-upgrade-button.png" :::
+1. Hesabınız için bir ödeme yönteminiz yoksa bir tane eklemeniz istenir.
 1. Kimliğinizi doğrulamak için bir telefon numarası girmeniz gerekebilir.
 1. Aboneliğiniz için bir ad yazın.  
-     ![Adı gösteren ekran görüntüsü](./media/upgrade-azure-subscription/free-upgrade-name.png)
+     :::image type="content" source="./media/upgrade-azure-subscription/free-upgrade-name.png" alt-text="Abonelik adını gösteren Altekran görüntüsü. METINLERI" lightbox="./media/upgrade-azure-subscription/free-upgrade-name.png" :::
 1. Aboneliğiniz için bir destek planı seçin. Destek planları hakkında daha fazla bilgi edinmek için [Azure destek planları](https://azure.microsoft.com/us/support/plans/).
 1. **Yükselt**’i seçin.
 
@@ -55,19 +57,11 @@ Uygunsanız bir ücretsiz Azure hesabına yükseltmek için aşağıdaki adımla
 
 1. [Azure Portal](https://portal.azure.com) oturum açın.
 1. **Abonelikler** araması yapın.  
-    ![Aramayı gösteren ekran görüntüsü](./media/upgrade-azure-subscription/search-subscriptions-ibiza.png)
+    :::image type="content" source="./media/upgrade-azure-subscription/search-subscriptions.png" alt-text="Aramayı gösteren ekran görüntüsü." lightbox="./media/upgrade-azure-subscription/search-subscriptions.png" :::
 1. Öğrenciler için Microsoft Azure Başlangıç hesabınıza kaydolduğunuzda oluşturulan aboneliği seçin.
-1. Aboneliğe genel bakış kısmındaki komut çubuğunda **Aboneliği yükselt**’i seçin.  
-    ![Öğrenciler için yükselt düğmesini gösteren ekran görüntüsü](./media/upgrade-azure-subscription/student-upgrade-ibiza.png)
-
-### <a name="upgrade-to-pay-as-you-go-rates"></a>Kullandıkça öde tarifesine yükseltme
-
-1. Kullandıkça öde tarifesine yükseltme yapıyorsanız ve aboneliğiniz için mevcut bir ödeme yönteminiz yoksa bir ödeme yöntemi eklemeniz istenir.
-1. Kimliğinizi doğrulamak için bir telefon numarası girmeniz gerekebilir.
-1. Aboneliğiniz için bir ad yazın.
-1. Aboneliğiniz için bir destek planı seçin. Destek planları hakkında daha fazla bilgi edinmek için [Azure destek planları](https://azure.microsoft.com/us/support/plans/).
-1. **Yükselt**’i seçin.
+1. Abonelik genel görünümünde, komut çubuğunda **Yükselt** ' i seçin.  
+    :::image type="content" source="./media/upgrade-azure-subscription/student-upgrade.png" alt-text="Öğrenciler için yükseltme seçeneğini gösteren ekran görüntüsü." lightbox="./media/upgrade-azure-subscription/student-upgrade.png" :::
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Artık hesabınızı yükselttiğinize göre, [Azure maliyetlerini yönetmeyi planlama](../understand/plan-manage-costs.md) konusuna bakın.
+- Artık hesabınızı yükselttiğinize göre, [Azure maliyetlerini yönetmeyi planlama](../understand/plan-manage-costs.md) konusuna bakın.

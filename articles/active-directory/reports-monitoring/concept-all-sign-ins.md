@@ -13,16 +13,16 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 09/23/2020
+ms.date: 03/16/2021
 ms.author: markvi
 ms.reviewer: besiler
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 36e6642e230fa809630751e224ff9384ea8524d1
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 185638d683699403c304603d968cfe84e32a55b5
+ms.sourcegitcommit: 87a6587e1a0e242c2cfbbc51103e19ec47b49910
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92319773"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103574569"
 ---
 # <a name="azure-active-directory-sign-in-activity-reports---preview"></a>Azure Active Directory oturum açma etkinlik raporları-önizleme
 
@@ -47,7 +47,7 @@ Bu makalede, Azure kaynakları oturum açma işlemleri için etkileşimli olmaya
 
 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu özelliği kullanmaya başlayabilmeniz için şu yanıtları bilmeniz gerekir:
 
@@ -125,7 +125,12 @@ Oturum açma dikey penceresindeki her sekme aşağıdaki varsayılan sütunları
 
 Etkileşimli kullanıcı oturum açma işlemleri, kullanıcının Azure AD 'ye bir kimlik doğrulama faktörü sağladığı veya Microsoft Authenticator uygulaması gibi bir yardımcı uygulamayla doğrudan etkileşimde bulunduğu oturum açma yöntemlerdir. Kullanıcıların Azure AD 'ye veya bir yardımcı uygulamaya sağladığı bir kullanıcı tarafından sağlanan, MFA zorlukları, biyometrik faktörleri veya QR kodlarına yönelik parola ekleme faktörleri.
 
-Bu rapor ayrıca Azure AD 'ye federe kimlik sağlayıcılarından gelen Federasyon oturum açma işlemlerini içerir.  
+> [!NOTE]
+> Bu rapor ayrıca Azure AD 'ye federe kimlik sağlayıcılarından gelen Federasyon oturum açma işlemlerini içerir.  
+
+
+
+Note: etkileşimli kullanıcı oturum açma işlemleri raporu, Microsoft Exchange istemcilerinden etkileşimli olmayan bazı oturum açma işlemleri için kullanılır. Bu oturum açma işlemleri etkileşimsiz olsa da, ek görünürlük için etkileşimli kullanıcı oturum açma raporuna dahil edilmiştir. Etkileşimli olmayan kullanıcı oturum açma işlemleri raporu Kasım 2020 ' de genel önizlemeye sunulduktan sonra, bu etkileşimli olmayan oturum açma olay günlükleri, daha fazla doğruluk için etkileşimli olmayan kullanıcı oturum açma raporuna taşınmıştır. 
 
 
 **Rapor boyutu:** küçük <br> 
@@ -207,7 +212,7 @@ Verilerin özetleşebilmesini sağlamak için etkileşimli olmayan oturum açma 
 
 - Kullanıcı
 
-- IP adresi
+- IP Adresi
 
 - Durum
 
@@ -249,7 +254,7 @@ Bu rapor, şunu gösteren bir varsayılan liste görünümüne sahiptir:
 
 - Durum
 
-- IP adresi
+- IP Adresi
 
 - Kaynak adı
 
@@ -267,7 +272,7 @@ Hizmet sorumlusu oturum açma günlüklerinde verilerin özetlanmasını kolayla
 
 - Durum
 
-- IP adresi
+- IP Adresi
 
 - Kaynak adı veya KIMLIĞI
 
@@ -314,7 +319,7 @@ Verilerin özetlanmasını kolaylaştırmak için Azure kaynakları için Yönet
 
 - Durum
 
-- IP adresi
+- IP Adresi
 
 - Kaynak adı veya KIMLIĞI
 
@@ -360,11 +365,11 @@ Azure portal oturum açma Etkinliği raporu, önizleme raporunu değiştirmek ve
 
 Etkileşimli olmayan ve uygulama oturum açma bilgileriyle yeni oturum açma raporlarına erişmek için: 
 
-1. [Azure portalda](https://portal.azure.com) **Azure Active Directory**'yi seçin.
+1. [Azure portalda](https://portal.azure.com)**Azure Active Directory**'yi seçin.
 
     ![Azure AD 'yi seçin](./media/concept-all-sign-ins/azure-services.png)
 
-2. **İzleme** bölümünde **oturum açma**işlemleri ' ne tıklayın.
+2. **İzleme** bölümünde **oturum açma** işlemleri ' ne tıklayın.
 
     ![Oturum açma işlemlerini seçin](./media/concept-all-sign-ins/sign-ins.png)
 

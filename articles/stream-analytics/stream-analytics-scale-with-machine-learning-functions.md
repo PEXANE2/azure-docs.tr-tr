@@ -5,13 +5,13 @@ author: jseb225
 ms.author: jeanb
 ms.service: stream-analytics
 ms.topic: how-to
-ms.date: 03/16/2020
-ms.openlocfilehash: b9768bacf8d29b37f479ea080afddd494b506262
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.date: 01/15/2021
+ms.openlocfilehash: 1ee1411aba7724d76ed8626de9b8b038d02339dc
+ms.sourcegitcommit: 87a6587e1a0e242c2cfbbc51103e19ec47b49910
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98013949"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103574263"
 ---
 # <a name="scale-your-stream-analytics-job-with-azure-machine-learning-studio-classic-functions"></a>Stream Analytics işinizi Azure Machine Learning Studio (klasik) işlevlerle ölçeklendirin
 
@@ -24,7 +24,7 @@ Bu makalede Azure Machine Learning Studio (klasik) işlevleri kullanan Azure Str
 
 Stream Analytics bir Machine Learning Studio (klasik) işlevi Stream Analytics sorgu dilinde normal işlev çağrısı gibi kullanılabilir. Ancak, arka planda bu işlev çağrıları aslında Studio (klasik) Web hizmeti isteklerdir.
 
-Studio (klasik) Web hizmeti isteklerinin performansını "toplu olarak" birden çok satırı aynı Web hizmeti API çağrısıyla birlikte artırabilirsiniz. Bu gruplandırma bir mini toplu iş olarak adlandırılır. Daha fazla bilgi için bkz. [Azure Machine Learning Studio (klasik) Web Hizmetleri](../machine-learning/classic/consume-web-services.md). Stream Analytics 'de Studio (klasik) desteği önizleme aşamasındadır.
+Studio (klasik) Web hizmeti isteklerinin performansını "toplu olarak" birden çok satırı aynı Web hizmeti API çağrısıyla birlikte artırabilirsiniz. Bu gruplandırma bir mini toplu iş olarak adlandırılır. Daha fazla bilgi için bkz. [Azure Machine Learning Studio (klasik) Web Hizmetleri](../machine-learning/classic/consume-web-services.md). Stream Analytics 'de Studio (klasik) için destek.
 
 ## <a name="configure-a-stream-analytics-job-with-studio-classic-functions"></a>Studio (klasik) işlevleriyle Stream Analytics işi yapılandırma
 
@@ -51,7 +51,7 @@ Saniyede 200.000 olay işlemek için, Stream Analytics işi 12 ' ye kadar olan 4
 
 ![Studio (klasik) Işlevleri ile Stream Analytics ölçeklendirme iki iş örneği](./media/stream-analytics-scale-with-ml-functions/stream-analytics-scale-with-ml-functions-00.png "Studio (klasik) Işlevleri ile Stream Analytics ölçeklendirme iki iş örneği")
 
-Genel olarak, toplu iş boyutu için **_b_* _, toplu Iş boyutu b 'de Web hizmeti gecikmesi için _*_L_*_ , _*_N_*_ SUs ile bir Stream Analytics işinin aktarım hızı:
+Genel olarak, toplu iş boyutu için ***b** _, toplu Iş boyutu b 'de Web hizmeti gecikmesi için _*_L_*_ , _ *_N_** SUs ile bir Stream Analytics işinin aktarım hızı:
 
 ![Studio (klasik) Işlevleri formülüyle Stream Analytics ölçeklendirme](./media/stream-analytics-scale-with-ml-functions/stream-analytics-scale-with-ml-functions-02.png "Studio (klasik) Işlevleri formülüyle Stream Analytics ölçeklendirme")
 
@@ -62,7 +62,7 @@ Bu ayar hakkında daha fazla bilgi için, [Machine Learning Studio (klasik) Web 
 ## <a name="example--sentiment-analysis"></a>Örnek: Yaklaşım Analizi
 Aşağıdaki örnek, [Stream Analytics Machine Learning Studio (klasik) tümleştirme öğreticisinde](stream-analytics-machine-learning-integration-tutorial.md)açıklandığı gibi, yaklaşım Analizi Studio (klasik) işleviyle bir Stream Analytics işi içerir.
 
-Sorgu, aşağıdaki örnekte gösterildiği gibi _ *yaklaşım** işlevi tarafından izlenen, basit bir tam bölümlenmiş sorgudur:
+Sorgu, aşağıdaki örnekte gösterildiği **gibi, sonra yaklaşım işlevinin gösterdiği** basit bir tamamen bölümlenmiş sorgudur:
 
 ```SQL
     WITH subquery AS (

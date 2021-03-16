@@ -6,22 +6,24 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: overview
-ms.date: 09/09/2020
+ms.date: 03/15/2021
 ms.author: alkohli
-ms.openlocfilehash: 51469c23574f55c102f0c6fb98e5aa5178b59a4a
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 3973235991a16d118b47d7289f3a1825621a9023
+ms.sourcegitcommit: 87a6587e1a0e242c2cfbbc51103e19ec47b49910
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96455749"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103574688"
 ---
 # <a name="what-is-azure-stack-edge-pro-with-fpga"></a>FPGA ile Azure Stack Edge Pro nedir?
 
-[!INCLUDE [data-box-edge-gateway-rename-note](../../includes/data-box-edge-gateway-rename-note.md)]
+[!INCLUDE [Azure Stack Edge Pro FPGA end-of-life](../../includes/azure-stack-edge-fpga-eol.md)]
 
-FPGA ile Azure Stack Edge Pro, ağ veri aktarımı özelliklerine sahip bir AI özellikli Edge bilgi işlem aygıtıdır. Bu makale, Azure Stack Edge Pro 'Yu FPGA çözümü, avantajları, önemli özellikler ve bu cihazı dağıtabileceğiniz senaryolar hakkında bir genel bakış sağlar.
+FPGA ile Azure Stack Edge Pro, ağ veri aktarımı özelliklerine sahip bir AI özellikli Edge bilgi işlem aygıtıdır. Bu makalede, Azure Stack Edge Pro 'Yu FPGA çözümü, avantajları, önemli özellikler ve dağıtım senaryolarıyla ilgili bir genel bakış sunulmaktadır.
 
-Azure Stack Edge Pro, FPGA ile bir hizmet olarak donanım çözümüdür. Microsoft, hızlandırılmış AI-ınlili sağlayan ve bir ağ depolama ağ geçidi 'nin tüm özelliklerine sahip olan yerleşik bir alan programlanabilir geçit dizisi (FPGA) ile birlikte bulut tarafından yönetilen bir cihaz sunar. 
+Azure Stack Edge Pro, FPGA ile bir hizmet olarak donanım çözümüdür. Microsoft, hızlandırılmış AI-ınlili sağlayan ve bir ağ depolama ağ geçidi 'nin tüm özelliklerine sahip olan yerleşik bir alan programlanabilir geçit dizisi (FPGA) ile birlikte bulut tarafından yönetilen bir cihaz sunar.
+
+Azure Data Box Edge Azure Stack Edge olarak yeniden markalı.
 
 ## <a name="use-cases"></a>Uygulama alanları
 
@@ -46,7 +48,7 @@ Azure Stack Edge Pro aşağıdaki yeteneklere sahiptir:
 |---------|---------|
 |Hızlandırılmış AI ınkrii| Yerleşik FPGA tarafından etkinleştirildi.|
 |Bilgi İşlem       |Verilerin analizine, işlenmesine, filtrelenmesine olanak tanır.|
-|Yüksek performans | Yüksek performanslı işlem ve veri aktarımları.|
+|Yüksek performans | Yüksek performanslı bilgi işlem ve veri aktarımları.|
 |Veri erişimi     | Bulutta ek veri işleme için bulut API'lerini kullanarak Azure Depolama Blobları ve Azure Dosyaları'ndan doğrudan veri erişimi. Cihazdaki yerel önbellek, en son kullanılan dosyalara hızlı erişim için kullanılır.|
 |Bulutta yönetilen     |Cihaz ve hizmet, Azure portal aracılığıyla yönetilir.  |
 |Çevrimdışı karşıya yükleme     | Bağlantısız mod, çevrimdışı karşıya yükleme senaryolarını destekler.|
@@ -60,13 +62,15 @@ Azure Stack Edge Pro aşağıdaki yeteneklere sahiptir:
 
 Azure Stack Edge Pro çözümü, Azure Stack Edge kaynağı, Azure Stack Edge Pro fiziksel cihazından ve yerel bir Web kullanıcı arabiriminden oluşur.
 
-* **Azure Stack Edge Pro fiziksel cihazı** -Azure 'a veri gönderecek şekilde yapılandırılabilen, Microsoft tarafından sağlanan bir 1U takılabilir sunucu.
+* **Azure Stack Edge Pro fiziksel cihazı**: Microsoft tarafından sağlanan ve Azure 'a veri gönderecek şekilde yapılandırılabilen bir 1U takılabilir sunucu.
     
-* **Azure Stack Edge kaynağı** : bir Azure Stack Edge Pro cihazını, farklı coğrafi konumlardan erişebileceğiniz bir web arabiriminden yönetmenizi sağlayan Azure Portal bir kaynaktır. Kaynak oluşturmak ve yönetmek, cihazları ve uyarıları görüntülemek ve yönetmek ve paylaşımları yönetmek için Azure Stack Edge kaynağını kullanın.  
+* **Azure Stack Edge kaynağı**: bir Azure Stack Edge Pro cihazını, farklı coğrafi konumlardan erişebileceğiniz bir web arabiriminden yönetmenizi sağlayan Azure Portal bir kaynaktır. Kaynakları oluşturmak ve yönetmek, paylaşımları yönetmek ve cihazları ve uyarıları görüntülemek ve yönetmek için Azure Stack Edge kaynağını kullanın.
+  
+   <!--[The Azure Stack Edge service in Azure portal](media/data-box-overview/data-box-Edge-service1.png)-->
 
-    <!--![The Azure Stack Edge service in Azure portal](media/data-box-overview/data-box-Edge-service1.png)-->
+   Azure Stack Edge Pro yaşam sonuna yaklaşırsa, yeni Azure Stack Edge Pro cihazlarının hiçbir siparişi doldurulamaz. Yeni bir müşteriyseniz, iş yükleriniz için Azure Stack Edge Pro GPU cihazlarını kullanarak araştırmanızı öneririz. Daha fazla bilgi için [GPU ile Azure Stack Edge Pro](azure-stack-edge-gpu-overview.md)'ya gidin. Azure Stack Edge Pro 'yu GPU cihazı ile sıralama hakkında daha fazla bilgi için, [Azure Stack Edge Pro-GPU için yeni kaynak oluşturma](azure-stack-edge-gpu-deploy-prep.md?tabs=azure-portal#create-a-new-resource)bölümüne gidin.
 
-    Daha fazla bilgi için [Azure Stack Edge Pro cihazınız için sipariş oluşturma](azure-stack-edge-deploy-prep.md#create-a-new-resource)bölümüne gidin.
+   Mevcut bir müşteriyseniz, mevcut Azure Stack Edge Pro cihazınızı değiştirmeniz veya sıfırlamanız gerekiyorsa yeni bir Azure Stack Edge Pro kaynağı oluşturabilirsiniz. Yönergeler için [Azure Stack Edge Pro cihazınız için sipariş oluşturma](azure-stack-edge-deploy-prep.md#create-new-resource-for-existing-device)bölümüne gidin.
 
 * **Azure Stack Edge Pro yerel Web Kullanıcı arabirimi** -tanılamayı çalıştırmak için yerel Web Kullanıcı arabirimini kullanın, Azure Stack Edge Pro cihazını kapatıp yeniden başlatın, kopyalama günlüklerini görüntüleyin ve hizmet isteği dosyasını dosya dosyasına Microsoft desteği başvurun.
 

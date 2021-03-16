@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 09/17/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 960c00f516aac0c804718e439ae3ed9691759329
-ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
+ms.openlocfilehash: dbd4923dd2843ab2c043da69f1b72efd8e1eb701
+ms.sourcegitcommit: 87a6587e1a0e242c2cfbbc51103e19ec47b49910
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/11/2021
-ms.locfileid: "103010686"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103573056"
 ---
 # <a name="scenario-web-app-that-signs-in-users"></a>Senaryo: kullanıcılarda oturum açan Web uygulaması
 
@@ -55,7 +55,7 @@ Python ile geliştirirseniz, aşağıdaki hızlı başlangıcı deneyin:
 
 Web uygulamanıza, kullanıcıların oturum açmasını sağlamak için kimlik doğrulaması eklersiniz. Kimlik doğrulaması eklemek, Web uygulamanızın, Kullanıcı deneyimini özelleştirmek için sınırlı profil bilgilerine erişmesini sağlar.
 
-Web Apps bir kullanıcının kimliğini bir Web tarayıcısında doğrular. Bu senaryoda, Web uygulaması, kullanıcının tarayıcısını Azure Active Directory (Azure AD) içinde oturum açmak üzere yönlendirir. Azure AD, kullanıcının tarayıcısı aracılığıyla bir güvenlik belirtecinde Kullanıcı hakkında talepler içeren bir oturum açma yanıtı döndürür. Kullanıcıların oturum açması, ara yazılım [kitaplıkları](scenario-web-app-sign-user-app-configuration.md#microsoft libraries supporting web apps)kullanılarak Basitleştirilen [Açık kimlik Connect](./v2-protocols-oidc.md) standart protokolünden yararlanır.
+Web Apps bir kullanıcının kimliğini bir Web tarayıcısında doğrular. Bu senaryoda, Web uygulaması, kullanıcının tarayıcısını Azure Active Directory (Azure AD) içinde oturum açmak üzere yönlendirir. Azure AD, kullanıcının tarayıcısı aracılığıyla bir güvenlik belirtecinde Kullanıcı hakkında talepler içeren bir oturum açma yanıtı döndürür. Kullanıcıların oturum açması, ara yazılım [kitaplıkları](scenario-web-app-sign-user-app-configuration.md#microsoft-libraries-supporting-web-apps)kullanılarak Basitleştirilen [Açık kimlik Connect](./v2-protocols-oidc.md) standart protokolünden yararlanır.
 
 ![Kullanıcılarda Web uygulaması işaretleri](./media/scenario-webapp/scenario-webapp-signs-in-users.svg)
 

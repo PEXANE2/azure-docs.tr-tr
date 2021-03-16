@@ -4,12 +4,12 @@ description: Azure Container Instances hizmeti, sanal makinelerin yönetilmesi g
 ms.topic: overview
 ms.date: 08/10/2020
 ms.custom: seodec18, mvc
-ms.openlocfilehash: bd68fab380754eca38eebf3fd52634508f282cf6
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 873f7cc51d1b369503a72501ae000000ff06f805
+ms.sourcegitcommit: 87a6587e1a0e242c2cfbbc51103e19ec47b49910
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88121672"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103573022"
 ---
 # <a name="what-is-azure-container-instances"></a>Azure Container Instances nedir?
 
@@ -21,10 +21,7 @@ Yalıtılmış kapsayıcılarda çalışabileceğiniz senaryolar (basit uygulama
 
 Kapsayıcılar, sanal makinelerde (VM) önemli başlangıç süresi avantajları sunar. Azure Container Instances, sanal makineleri sağlamaya ve yönetmeye gerek kalmadan saniyeler içinde Azure’da kapsayıcıları başlatabilir.
 
-Linux veya Windows kapsayıcı görüntülerini Docker Hub 'dan, özel bir [Azure Container Registry](../container-registry/index.yml)'den veya başka bir bulut tabanlı Docker kayıt defterinden taşıyın. Azure Container Instances, özel uygulama görüntülerinin dağıtımını hızlandırmaya yardımcı olan birkaç ortak temel işletim sistemi görüntüsünü önbelleğe alır.
-
-> [!NOTE]
-> Şu anda, şirket içi bir kayıt defterinden Azure Container Instances için bir görüntü dağıtamazsınız.
+Linux veya Windows kapsayıcı görüntülerini Docker Hub 'dan, özel bir [Azure Container Registry](../container-registry/index.yml)'den veya başka bir bulut tabanlı Docker kayıt defterinden taşıyın. ACI tarafından hangi kayıt defterlerinin desteklendiğini öğrenmek için [SSS](container-instances-faq.md) 'yi ziyaret edin. Azure Container Instances, özel uygulama görüntülerinin dağıtımını hızlandırmaya yardımcı olan birkaç ortak temel işletim sistemi görüntüsünü önbelleğe alır.
 
 ## <a name="container-access"></a>Kapsayıcı erişimi
 
@@ -43,7 +40,7 @@ Geçmişte kapsayıcılar, uygulama bağımlılığı yalıtımı ve kaynak idar
 
 ### <a name="customer-data"></a>Müşteri verileri
 
-ACı hizmeti, kapsayıcı gruplarınızın beklendiği gibi çalıştığından emin olmak için gereken en düşük müşteri verilerini depolar. Müşteri verilerinin tek bir bölgede depolanması Şu anda yalnızca Asya Pasifik coğrafi bölgenin Güneydoğu Asya bölgesinde (Singapur) kullanılabilir. Diğer tüm bölgeler için müşteri verileri [coğrafi](https://azure.microsoft.com/global-infrastructure/geographies/)olarak depolanır. Daha fazla bilgi için lütfen Azure desteği ile iletişime geçin.
+ACı hizmeti, kapsayıcı gruplarınızın beklendiği gibi çalıştığından emin olmak için gereken en düşük müşteri verilerini depolar. Müşteri verilerinin tek bir bölgede depolanması, Brezilya coğrafi bölge 'nin Asya Pasifik coğrafi ve Brezilya Güney (Sao Paulo Eyaleti) bölgesinin Güneydoğu Asya bölgesinde (Singapur) Şu anda kullanılabilir. Diğer tüm bölgeler için müşteri verileri [coğrafi](https://azure.microsoft.com/global-infrastructure/geographies/)olarak depolanır. Daha fazla bilgi için lütfen Azure desteği ile iletişime geçin.
 
 ## <a name="custom-sizes"></a>Özel boyutlar
 
@@ -68,9 +65,6 @@ Bazı özellikler Şu anda Linux kapsayıcılarıyla kısıtlıdır:
 * [GPU kaynakları](container-instances-gpu.md) (Önizleme)
 
 Windows kapsayıcı dağıtımları için, yaygın [Windows temel görüntülerine](container-instances-faq.md#what-windows-base-os-images-are-supported)göre görüntüleri kullanın.
-
-> [!NOTE]
-> Azure Container Instances 'da Windows Server 2019 tabanlı görüntülerin kullanımı önizlemededir.
 
 ## <a name="co-scheduled-groups"></a>Birlikte zamanlanmış gruplar
 

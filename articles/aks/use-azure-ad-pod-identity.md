@@ -4,12 +4,12 @@ description: Azure Kubernetes Service 'te (AKS) AAD Pod tarafından yönetilen Y
 services: container-service
 ms.topic: article
 ms.date: 3/12/2021
-ms.openlocfilehash: 8b94c859800c3757842ad56df6e20f215bb13a7d
-ms.sourcegitcommit: ec39209c5cbef28ade0badfffe59665631611199
+ms.openlocfilehash: f3d0db5b085fcdb9a24310cb2fe310d390b1790a
+ms.sourcegitcommit: 87a6587e1a0e242c2cfbbc51103e19ec47b49910
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/12/2021
-ms.locfileid: "103233505"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103574382"
 ---
 # <a name="use-azure-active-directory-pod-managed-identities-in-azure-kubernetes-service-preview"></a>Azure Kubernetes hizmetinde Azure Active Directory Pod tarafından yönetilen kimlikler kullanma (Önizleme)
 
@@ -53,13 +53,16 @@ az extension add --name aks-preview
 az extension update --name aks-preview
 ```
 
-## <a name="create-an-aks-cluster-with-managed-identities"></a>Yönetilen kimliklerle bir AKS kümesi oluşturma
+## <a name="create-an-aks-cluster-with-azure-cni"></a>Azure CNı ile AKS kümesi oluşturma
 
-Yönetilen bir kimlik ve pod ile yönetilen kimlik özellikli bir AKS kümesi oluşturun. Aşağıdaki komutlar *myresourcegroup adlı* bir kaynak grubu oluşturmak için [az Group Create][az-group-create] komutunu ve *Myresourcegroup* kaynak grubunda *myakscluster* adlı bir aks kümesi oluşturmak için [az aks Create][az-aks-create] komutunu kullanır.
+> [!NOTE]
+> Bu, önerilen varsayılan yapılandırmadır
+
+Azure CNı ve pod ile yönetilen kimlik özellikli bir AKS kümesi oluşturun. Aşağıdaki komutlar *myresourcegroup adlı* bir kaynak grubu oluşturmak için [az Group Create][az-group-create] komutunu ve *Myresourcegroup* kaynak grubunda *myakscluster* adlı bir aks kümesi oluşturmak için [az aks Create][az-aks-create] komutunu kullanır.
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus
-az aks create -g myResourceGroup -n myAKSCluster --enable-managed-identity --enable-pod-identity --network-plugin azure
+az aks create -g myResourceGroup -n myAKSCluster --enable-pod-identity --network-plugin azure
 ```
 
 AKS kümenizde oturum açmak için [az aks Get-Credentials][az-aks-get-credentials] kullanın. Bu komut ayrıca `kubectl` geliştirme bilgisayarınızda istemci sertifikasını indirir ve yapılandırır.
@@ -67,6 +70,44 @@ AKS kümenizde oturum açmak için [az aks Get-Credentials][az-aks-get-credentia
 ```azurecli-interactive
 az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
 ```
+
+## <a name="update-an-existing-aks-cluster-with-azure-cni"></a>Mevcut bir AKS kümesini Azure CNı ile güncelleştirme
+
+Azure CNı ile mevcut bir AKS kümesini Pod tarafından yönetilen kimliği içerecek şekilde güncelleştirin.
+
+```azurecli-interactive
+az aks update -g $MY_RESOURCE_GROUP -n $MY_CLUSTER --enable-pod-identity --network-plugin azure
+```
+## <a name="using-kubenet-network-plugin-with-azure-active-directory-pod-managed-identities"></a>Kubenet Network eklentisini Azure Active Directory Pod tarafından yönetilen kimliklerle kullanma 
+
+> [!IMPORTANT]
+> Kubenet ile bir kümede AAD-Pod kimliği çalıştırmak, güvenlik yapılandırması nedeniyle önerilen bir yapılandırma değildir. Lütfen azaltma adımlarını izleyin ve Kubenet ile bir kümede AAD-Pod kimlik kimliğini etkinleştirmeden önce ilkeleri yapılandırın.
+
+## <a name="mitigation"></a>Risk azaltma
+
+Küme düzeyindeki güvenlik açığını azaltmak için, Web kancasını doğrulayan ağ geçidi denetleyicisi ile OpenPolicyAgent giriş denetleyicisini birlikte kullanabilirsiniz. Kümenizde zaten ağ geçidi denetleyicisi yüklü olduğundan, K8sPSPCapabilities türünde ConstraintTemplate ekleyin:
+
+```
+kubectl apply -f https://raw.githubusercontent.com/open-policy-agent/gatekeeper-library/master/library/pod-security-policy/capabilities/template.yaml
+```
+NET_RAW özelliğiyle, pods 'nin birlikte kullanımını sınırlamak için bir şablon ekleyin:
+
+```
+apiVersion: constraints.gatekeeper.sh/v1beta1
+kind: K8sPSPCapabilities
+metadata:
+  name: prevent-net-raw
+spec:
+  match:
+    kinds:
+      - apiGroups: [""]
+        kinds: ["Pod"]
+    excludedNamespaces:
+      - "kube-system"
+  parameters:
+    requiredDropCapabilities: ["NET_RAW"]
+```
+
 ## <a name="create-an-aks-cluster-with-kubenet-network-plugin"></a>Kubenet Network eklentisi ile AKS kümesi oluşturma
 
 Kubenet Network eklentisi ve pod ile yönetilen kimlik etkin bir AKS kümesi oluşturun.
