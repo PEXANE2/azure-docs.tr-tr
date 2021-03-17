@@ -10,25 +10,27 @@ ms.collection: linux
 ms.topic: article
 ms.date: 12/02/2019
 ms.author: mbaldwin
-ms.openlocfilehash: a674f4a2a31fd217307ff373cba2b883a4d129f8
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.openlocfilehash: 23a0d7cd45ceef8f97bb56d65f4807f8d60735dc
+ms.sourcegitcommit: 27cd3e515fee7821807c03e64ce8ac2dd2dd82d2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102557072"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103601058"
 ---
 # <a name="key-vault-virtual-machine-extension-for-linux"></a>Linux için sanal makine uzantısı Key Vault
 
-Key Vault VM uzantısı, Azure Anahtar Kasası 'nda depolanan sertifikaların otomatik olarak yenilenmesini sağlar. Özellikle uzantı, anahtar kasalarında depolanan gözlemlenen sertifikaların listesini izler.  Bir değişiklik algılandıktan sonra uzantı ilgili sertifikaları alır ve kurar. Key Vault VM uzantısı, şu anda Linux VM 'lerinde Microsoft tarafından yayımlanır ve desteklenir. Bu belgede, Linux için Key Vault VM uzantısı için desteklenen platformlar, konfigürasyonlar ve dağıtım seçenekleri ayrıntılı olarak bulunmaktadır. 
+Key Vault VM uzantısı, Azure Anahtar Kasası 'nda depolanan sertifikaların otomatik olarak yenilenmesini sağlar. Özellikle uzantı, anahtar kasalarında depolanan gözlemlenen sertifikaların listesini izler.  Bir değişiklik algılandıktan sonra uzantı ilgili sertifikaları alır ve kurar. Uzantı, tam sertifika zincirini VM 'ye yükler. Key Vault VM uzantısı, şu anda Linux VM 'lerinde Microsoft tarafından yayımlanır ve desteklenir. Bu belgede, Linux için Key Vault VM uzantısı için desteklenen platformlar, konfigürasyonlar ve dağıtım seçenekleri ayrıntılı olarak bulunmaktadır. 
 
 ### <a name="operating-system"></a>İşletim sistemi
 
 Key Vault VM Uzantısı şu Linux dağıtımlarını destekler:
 
-- Ubuntu-1604
 - Ubuntu-1804
-- Detem-9
 - SUSE-15 
+
+> [!NOTE]
+> Genişletilmiş güvenlik özellikleri almak için, bu sürümler belirlenen destek döneminin sonuna ulaşmakta olduğundan Ubuntu-1604 ve detem-9 sistemlerini yükseltmeye hazırlanın.
+> 
 
 ### <a name="supported-certificate-content-types"></a>Desteklenen sertifika içerik türleri
 

@@ -5,14 +5,14 @@ author: yashesvi
 ms.service: cost-management-billing
 ms.subservice: reservations
 ms.topic: how-to
-ms.date: 02/24/2021
+ms.date: 03/16/2021
 ms.author: banders
-ms.openlocfilehash: 9015cbcd669665467d3836112b152aa504176f2b
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: bd16bbbe33876a3c44b20c5d1756b83814f9b17d
+ms.sourcegitcommit: 27cd3e515fee7821807c03e64ce8ac2dd2dd82d2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102036002"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103601959"
 ---
 # <a name="self-service-exchanges-and-refunds-for-azure-reservations"></a>Azure Rezervasyonları için self servis değişimler ve para iadeleri
 
@@ -105,6 +105,7 @@ Azure, iptaller, değişimler ve para iadeleri için aşağıdaki ilkelere sahip
 - Şu anda erken sonlandırma ücreti almıyoruz ama gelecekte iptaller için %12 erken sonlandırma ücreti uygulanabilir.
 - Faturalama profili veya tek bir kayıt için iptal edilen toplam taahhüt son 12 aylık hareketli zaman penceresinde 50.000 ABD Dolarını aşamaz. Örneğin aylık 100 ABD Doları tutarında olan ve 18. ayda para iadesi yapılan üç yıllık bir rezervasyon için, iptal edilen taahhüt 1.800 ABD Dolarıdır. Para iadesinden sonra, yeni kullanılabilir para iadesi limitiniz 48.200 ABD Doları olur. Para iadesinden 365 gün sonra 48.200 ABD Doları tutarındaki limit 1.800 ABD Doları daha artırılarak yeni havuzunuz 50.000 ABD Doları olur. Faturalama profili veya EA kaydı için diğer tüm rezervasyon iptalleri aynı havuzdan düşülür ve aynı yenileme mantığı uygulanır.
 - Azure bir faturalama profili veya EA kaydı için son 12 aylık sürede 50.000 ABD Doları sınırını aşan hiçbir para iadesini işlemez.
+    - Bir Exchange 'in sonucu olan para iadesi, geri ödeme limitine karşı sayılmaz.
 - Para iadeleri, satın aldığınız fiyattan veya geçerli rezervasyon fiyatından düşük olana göre hesaplanır.
 - Yalnızca rezervasyon siparişi sahipleri para iadesini işleme alabilir. [Rezervasyonu yönetebilecek kullanıcıları ekleme veya değiştirme hakkında bilgi edinin](manage-reserved-vm-instance.md#who-can-manage-a-reservation-by-default).
 

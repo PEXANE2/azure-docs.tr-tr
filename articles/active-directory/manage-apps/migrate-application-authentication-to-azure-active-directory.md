@@ -14,12 +14,12 @@ ms.date: 02/05/2021
 ms.author: kenwith
 ms.reviewer: baselden
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ac3ea7ea6b3ed0bb8e1e9f7575b34f9dbf116a04
-ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
+ms.openlocfilehash: db695b55fbef16cb67dce6dc2d3c81ad177c9db6
+ms.sourcegitcommit: 27cd3e515fee7821807c03e64ce8ac2dd2dd82d2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "102453264"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103601806"
 ---
 # <a name="migrate-application-authentication-to-azure-active-directory"></a>Uygulama kimlik doğrulamasını Azure Active Directory geçir
 
@@ -45,7 +45,7 @@ Uygulamalarınız büyük olasılıkla aşağıdaki kimlik doğrulama türlerini
 
 - Şirket içi Federasyon çözümleri (Active Directory Federasyon Hizmetleri (AD FS) (ADFS) ve ping gibi)
 
-- Active Directory (Kerberos kimlik doğrulaması ve Windows tümleşik kimlik doğrulaması gibi)
+- Active Directory (Kerberos kimlik doğrulaması ve Windows-Integrated kimlik doğrulaması gibi)
 
 - Diğer bulut tabanlı kimlik ve erişim yönetimi (ıAM) çözümleri (okta veya Oracle gibi)
 
@@ -61,7 +61,7 @@ Uygulamalarınız büyük olasılıkla aşağıdaki kimlik doğrulama türlerini
 
 Azure AD ['nin eksiksiz bir kimlik yönetimi özellikleri paketi](../fundamentals/active-directory-whatis.md#which-features-work-in-azure-ad)vardır. Uygulama kimlik doğrulaması ve Azure AD yetkilendirmesi için standartlaştırın, bu yeteneklerin sağladığı avantajları elde etmenizi sağlar.
 
-Diğer geçiş kaynaklarına bakın: [https://aka.ms/migrateapps](./migration-resources.md)
+Daha fazla geçiş kaynağını şurada bulabilirsiniz: [https://aka.ms/migrateapps](./migration-resources.md)
 
 ## <a name="benefits-of-migrating-app-authentication-to-azure-ad"></a>Uygulama kimlik doğrulamasını Azure AD 'ye geçirme avantajları
 
@@ -81,7 +81,7 @@ Uygulamalarınızın güvenliğini sağlamak, tüm risk faktörlerinin tam gör�
 
 ### <a name="manage-cost"></a>Maliyeti yönetme
 
-Kuruluşunuzun yerinde birden fazla kimlik erişim yönetimi (ıAM) çözümü olabilir. Tek bir Azure AD altyapısına geçiş yapmak, ıAM lisanslarındaki bağımlılıkları (Şirket içi veya bulutta) ve altyapı maliyetlerini azaltmaya yönelik bir fırsattır. Azure AD için M365 lisansları aracılığıyla zaten ücretli olabilecek durumlarda, başka bir ıAM çözümünün ek maliyetini ödemenizi gerektirmez.
+Kuruluşunuzun yerinde birden fazla kimlik erişim yönetimi (ıAM) çözümü olabilir. Tek bir Azure AD altyapısına geçiş yapmak, ıAM lisanslarındaki bağımlılıkları (Şirket içi veya bulutta) ve altyapı maliyetlerini azaltmaya yönelik bir fırsattır. Microsoft 365 lisansları aracılığıyla Azure AD için zaten ödeme yapmış olduğunuz durumlarda, başka bir ıAM çözümünün ek maliyetini ödemek için bir neden yoktur.
 
 **Azure AD ile altyapı maliyetlerini şu şekilde azaltabilirsiniz:**
 
@@ -95,7 +95,7 @@ Ekonomikler ve güvenlik avantajları, kuruluşların Azure AD 'yi benimsemesini
 
 - Herhangi bir cihazdan ve herhangi bir yerden herhangi bir uygulamaya sorunsuz ve güvenli erişim yoluyla Son Kullanıcı [tek Sign-On (SSO)](./what-is-single-sign-on.md) deneyimini geliştirebilirsiniz.
 
-- Self Servis [parola sıfırlama](../authentication/concept-sspr-howitworks.md) ve [selfservice Grup Yönetimi](../enterprise-users/groups-self-service-management.md)gibi self servis IAM özelliklerinden yararlanın.
+- Self Servis [parola sıfırlama](../authentication/concept-sspr-howitworks.md) ve [selfservice Grup Yönetimi](../enterprise-users/groups-self-service-management.md)gibi self servis IAM yeteneklerini kullanın.
 
 - Bulut ve şirket içi ortamlar genelinde her bir kullanıcı için yalnızca tek bir kimliği yöneterek yönetim yükünü azaltın:
 
@@ -104,11 +104,11 @@ Ekonomikler ve güvenlik avantajları, kuruluşların Azure AD 'yi benimsemesini
 
 - Geliştiricilere Microsoft kimlik doğrulama kitaplığı (MSAL) ile [Microsoft Identity platformunu](../develop/v2-overview.md) kullanarak uygulamalarına erişimi güvenli hale getirme ve son kullanıcı deneyimini geliştirme olanağı tanıyın.
 
-- [Azure AD B2B işbirliğini](../external-identities/what-is-b2b.md)kullanarak iş ortaklarınızı bulut kaynaklarına erişimle güçlendirin. Bu, iş ortaklarınız ile noktadan noktaya Federasyonu yapılandırma yükünü ortadan kaldırır.
+- [Azure AD B2B işbirliğini](../external-identities/what-is-b2b.md)kullanarak iş ortaklarınızı bulut kaynaklarına erişimle güçlendirin. Bulut kaynakları, iş ortaklarınızla noktadan noktaya Federasyonu yapılandırma yükünü ortadan kaldırır.
 
 ### <a name="address-compliance-and-governance"></a>Adres uyumluluğu ve idare
 
-Kurumsal erişim ilkelerini zorlayarak ve tümleşik denetim araçları ve API 'Leri kullanarak kullanıcılara ve ilişkili verilere yönelik Kullanıcı erişimini izleyerek, mevzuat gereksinimleriyle uyumluluğu sağlayın. Azure AD ile uygulama oturum açma işlemlerini [güvenlik olayı ve olay izleme (SıEM) araçlarından](../reports-monitoring/plan-monitoring-and-reporting.md)yararlanan raporlar aracılığıyla izleyebilirsiniz. Portala veya API 'lerden raporlara erişebilir ve uygulamalarınıza erişimi olan kişileri programlı bir şekilde denetleyebilir ve erişim gözden geçirmeleri aracılığıyla etkin olmayan kullanıcılara erişimi kaldırabilirler.
+Kurumsal erişim ilkelerini zorlayarak ve tümleşik denetim araçları ve API 'Leri kullanarak kullanıcılara ve ilişkili verilere yönelik Kullanıcı erişimini izleyerek, mevzuat gereksinimleriyle uyumluluğu sağlayın. Azure AD ile uygulama oturum açma işlemlerini [güvenlik olayı ve olay izleme (SıEM) araçları](../reports-monitoring/plan-monitoring-and-reporting.md)kullanan raporlar aracılığıyla izleyebilirsiniz. Portala veya API 'lerden raporlara erişebilir ve uygulamalarınıza erişimi olan kişileri programlı bir şekilde denetleyebilir ve erişim gözden geçirmeleri aracılığıyla etkin olmayan kullanıcılara erişimi kaldırabilirler.
 
 ## <a name="plan-your-migration-phases-and-project-strategy"></a>Geçiş aşamalarınızı ve proje stratejinizi planlayın
 
@@ -151,7 +151,7 @@ Aşağıdaki tabloda, paydaşlarınızı bilgilendirmek için önerilen en düş
 
 | İletişim      | Hedef kitle                                          |
 | ------------------ | ------------------------------------------------- |
-| Projenin tanıma ve iş/teknik değeri | Son kullanıcılar hariç hepsi |
+| Projenin tanıma ve iş/teknik değeri | Son kullanıcılar hariç tümü |
 | Pilot uygulamalar için isteme | -Uygulama iş sahipleri<br />-Uygulama teknik sahipleri<br />-Mimarlar ve kimlik ekibi |
 
 **1. aşama-bulma ve kapsam**:
@@ -276,7 +276,7 @@ Modernleştirin için seçtiğiniz eski uygulamalar
 
 Modernleştirin etmek istediğiniz eski uygulamalar için, çekirdek kimlik doğrulaması ve yetkilendirme için Azure AD 'ye taşımak [Microsoft Graph](https://developer.microsoft.com/graph/gallery/?filterBy=Samples,SDKs) ve [Intelligent Security Graph](https://www.microsoft.com/security/operations/intelligence?rtc=1) 'nin sunabileceği tüm güç ve veri zenginliğini kaldırır.
 
-Bu uygulamalar için **kimlik doğrulama yığını kodunu** eski protokolden (Windows tümleşik kimlik doğrulaması, Kerberos kısıtlı temsılcısı, http üstbilgileri tabanlı kimlik doğrulaması gibi) modern bir PROTOKOLE (SAML veya OpenID Connect gibi) güncelleştirmenizi öneririz.
+Bu uygulamalar için **kimlik doğrulama yığını kodunu** eski protokolden (Windows-Integrated kimlik doğrulaması, Kerberos kısıtlanmış TEMSILI, http üst bilgileri tabanlı kimlik doğrulaması gibi) modern bir PROTOKOLE (SAML veya OpenID Connect gibi) güncelleştirmenizi öneririz.
 
 ### <a name="legacy-apps-that-you-choose-not-to-modernize"></a>Modernleştirin için tercih ettiğiniz eski uygulamalar
 
@@ -304,7 +304,7 @@ Açık sahipleri olmayan uygulamalar ve bakım ve izleme, kuruluşunuz için bir
 
 - açıkça **kullanım** yoktur.
 
-Kuşkusuz, **iş açısından kritik uygulamaları yüksek ölçüde etkilemez**. Bu durumlarda, doğru stratejiyi öğrenmek için iş sahipleriyle birlikte çalışın.
+**Yüksek düzeyde etkili, iş açısından kritik uygulamaları kullanımdan** kaldırabilmeniz önerilir. Bu durumlarda, doğru stratejiyi öğrenmek için iş sahipleriyle birlikte çalışın.
 
 ### <a name="exit-criteria"></a>Çıkış kriterleri
 
@@ -314,8 +314,8 @@ Kuşkusuz, **iş açısından kritik uygulamaları yüksek ölçüde etkilemez**
 
 - Şunları içeren uygulamaların listesi:
 
-  - Bu uygulamaların hangi sistemler tarafından, hangi cihazlarda ve kullanıcıların bunlara erişebileceğini
-
+  - Bu uygulamaların bağlanacağı sistemler
+  - Kullanıcıların bunlara ve hangi cihazlarda erişebileceğini
   - [Azure AD Connect](../hybrid/whatis-azure-ad-connect.md)geçirilip geçirilmeyeceğini, kullanımdan kalkmı veya bağlanmayacağını belirtir.
 
 > [!NOTE]
@@ -365,13 +365,13 @@ Geçiş kararlarınızı oluşturmak için önemli olan bilgiler şunları içer
 
 - **Uygulama adı** : Bu uygulama iş olarak bilinen nedir?
 
-- **Uygulama türü** : Bu bir üçüncü taraf SaaS uygulaması mı? Özel bir iş kolu Web uygulaması API mi?
+- **Uygulama türü** : Bu bir üçüncü taraf SaaS uygulaması mı? Özel bir iş kolu Web uygulaması mı? API mi?
 
 - **İş önemi** : yüksek önem derecesine sahip mi? Zayıf? Ya da aralarında bir yerde mi?
 
 - **Kullanıcı erişimi birimi** – herkes bu uygulamaya mı, yoksa yalnızca birkaç kişiye mı erişebilsin mi?
 
-- **Planlanmış** kullanım ömrü: Bu uygulama ne kadar süreyle olacaktır? 6 aydan daha az mı? 2 yıldan daha fazla mı?
+- **Planlanmış** kullanım ömrü: Bu uygulama ne kadar süreyle olacaktır? Altı aydan az mı? İkiden fazla yıl var mı?
 
 - **Geçerli kimlik sağlayıcısı** : Bu uygulama Için birincil IDP nedir? Ya da yerel depolama alanını kullanıyor mu?
 
@@ -379,7 +379,7 @@ Geçiş kararlarınızı oluşturmak için önemli olan bilgiler şunları içer
 
 - **Uygulama kodunu güncelleştirmek Isteyip istemediğinizi planlıyor** musunuz – planlanmış veya etkin geliştirme kapsamında uygulama mi?
 
-- **Uygulamayı şirket içinde tutmayı planladığınızdan** bağımsız olarak, uygulamayı veri merkezinizde uzun süreli tutmak mı istiyorsunuz?
+- **Uygulamayı şirket içinde tutmayı planlayın** ; uygulamayı veri merkezinizde uzun vadede tutmak istiyor musunuz?
 
 - **Uygulamanın diğer uygulamalara veya API 'lere bağlı olup olmadığı** – uygulama şu anda diğer uygulamalara veya API 'lere çağrı yapmaz mı?
 
@@ -401,7 +401,7 @@ Uygulamanızı sınıflandırdıktan ve ayrıntıları belgeledikten sonra, plan
 
 Pilot için seçtiğiniz uygulamalar, kuruluşunuzun anahtar kimliğini ve güvenlik gereksinimlerini temsil etmelidir ve uygulama sahiplerinden açık satın alma yapmanız gerekir. Pilots genellikle ayrı bir test ortamında çalışır. Dağıtım planları sayfasında, bkz. [pilot uygulamalar için en iyi yöntemler](../fundamentals/active-directory-deployment-plans.md#best-practices-for-a-pilot) .
 
-**Dış iş ortaklarınız hakkında unutmayın.** Geçiş zamanlamalarına ve teste katıldıklarından emin olun. Son olarak, sorun olması durumunda yardım masasına erişmek için bir yol olduğundan emin olun.
+**Dış iş ortaklarınız hakkında unutmayın.** Geçiş zamanlamalarına ve teste katıldıklarından emin olun. Son olarak, sorun oluşursa yardım masasına erişmek için bir yol olduğundan emin olun.
 
 ### <a name="plan-for-limitations"></a>Sınırlamalar için plan
 
@@ -417,13 +417,13 @@ Ayrıca, Azure AD 'nin farkında olmanız gereken [hizmet sınırları ve kısı
 
 ### <a name="plan-the-security-posture"></a>Güvenlik duruşunu planlayın
 
-Geçiş işlemini çalıştırmadan önce, kurumsal kimlik sisteminiz için geliştirmek istediğiniz güvenlik duruşunu tam olarak göz önüne alın. Bu, bu değerli bilgi kümelerini toplamaya dayalıdır: verilerinize ve verilerinize, **verilerinize ve konumlarına erişen kimlik**.
+Geçiş işlemini çalıştırmadan önce, kurumsal kimlik sisteminiz için geliştirmek istediğiniz güvenlik duruşunu tam olarak göz önüne alın. Bu, bu değerli bilgi kümelerini toplamaya dayalıdır: **kimlikler, cihazlar ve verilerinize erişen konumlar.**
 
 ### <a name="identities-and-data"></a>Kimlikler ve veriler
 
 Çoğu kuruluş, sektör segmentine ve kuruluşlardaki iş işlevlerine göre farklılık gösteren kimlikler ve veri koruması hakkında belirli gereksinimlere sahiptir. Önceden tanımlanmış [koşullu erişim ilkeleri](../conditional-access/overview.md) ve ilgili yetenekler kümesi de dahil olmak üzere önerilerin [kimlik ve cihaz erişim yapılandırmalarına](/microsoft-365/enterprise/microsoft-365-policies-configurations) bakın.
 
-Bu bilgileri, Azure AD ile tümleştirilen tüm hizmetlere erişimi korumak için kullanabilirsiniz. Bu öneriler, Microsoft güvenli puanı ile ve [Azure AD 'de kimlik puanı](../fundamentals/identity-secure-score.md)ile hizalanır. Puanın yardımıyla:
+Bu bilgileri, Azure AD ile tümleştirilen tüm hizmetlere erişimi korumak için kullanabilirsiniz. Bu öneriler, Microsoft güvenli puanı ve [Azure AD 'de kimlik puanı](../fundamentals/identity-secure-score.md)ile hizalanır. Puanın yardımıyla:
 
 - Kimlik güvenliği duruşunuzu nesnel olarak ölçebilirsiniz
 
@@ -443,7 +443,7 @@ Azure AD 'nin desteklediği uygulamalarınızın ve kaynaklarınızın iki ana k
 
 Bu kullanıcılar için gruplar tanımlayabilir ve bu grupları farklı şekillerde doldurabilirsiniz. Bir yöneticinin bir gruba el ile üye eklemesi gerektiğini seçebilir veya selfserviceportal grup üyeliğini etkinleştirebilirsiniz. [Dinamik grupları](../enterprise-users/groups-dynamic-membership.md)kullanarak belirtilen ölçütlere göre otomatik olarak gruplara üye ekleyen kurallar oluşturulabilir.
 
-Dış kullanıcılar ayrıca, özel bir değerlendirme gerektiren müşterilere de başvurabilir. [Azure AD B2C](../../active-directory-b2c/overview.md), ayrı bir ürün müşteri kimlik doğrulamasını destekler. Ancak, bu kağıdın kapsamı dışındadır.
+Dış kullanıcılar ayrıca müşterilere de başvurabilir. [Azure AD B2C](../../active-directory-b2c/overview.md), ayrı bir ürün müşteri kimlik doğrulamasını destekler. Ancak, bu kağıdın kapsamı dışındadır.
 
 ### <a name="devicelocation-used-to-access-data"></a>Verilere erişmek için kullanılan cihaz/konum
 
@@ -491,7 +491,7 @@ Geçiş işlemi sırasında, uygulamanız düzenli dağıtımlar sırasında kul
 
 Her uygulamayı test kullanıcısı ile oturum açarak test edebilir ve tüm işlevlerin geçişten önceki ile aynı olduğundan emin olun. Kullanıcıların [MFA](/active-directory/authentication/howto-mfa-userstates) veya [SSPR](../authentication/tutorial-enable-sspr.md)ayarlarını güncelleştirmesi gereken testi sırasında veya bu işlevselliği geçiş sırasında ekliyorsanız, bunu Son Kullanıcı iletişim planınıza eklediğinizden emin olun. Bkz. [MFA](https://aka.ms/mfatemplates) ve [SSPR](https://aka.ms/ssprtemplates) Son Kullanıcı iletişim şablonları.
 
-Uygulamaları geçirdikten sonra, geçişin başarılı olup olmadığını test etmek için [Azure portalına](https://aad.portal.azure.com/) gidin. Aşağıdaki yönergeleri izleyin:
+Uygulamaları geçirdikten sonra, geçişin başarılı olup olmadığını test etmek için [Azure Portal](https://aad.portal.azure.com/) gidin. Aşağıdaki yönergeleri izleyin:
 
 - **Kurumsal uygulamalar &gt; tüm uygulamalar** ' ı seçin ve listeden uygulamanızı bulun.
 
@@ -511,7 +511,7 @@ Uygulamanızı nasıl yapılandırdığınıza bağlı olarak, SSO 'nun düzgün
 
 ### <a name="troubleshoot"></a>Sorun giderme
 
-Sorunlarla karşılaşırsanız, yardım almak için [uygulamalar sorun giderme kılavuzumuzu](../app-provisioning/isv-automatic-provisioning-multi-tenant-apps.md) inceleyin. Ayrıca bkz. [özel olarak geliştirilmiş bir uygulamada oturum açma sorunları](./application-sign-in-problem-federated-sso-gallery.md).
+Sorunlarla karşılaşırsanız, yardım almak için [uygulamalar sorun giderme kılavuzumuzu](../app-provisioning/isv-automatic-provisioning-multi-tenant-apps.md) inceleyin. Sorun giderme makalelerimizi de gözden geçirin, bkz. [SAML tabanlı çoklu oturum açma özellikli uygulamalarda oturum açma sorunları](/troubleshoot/azure/active-directory/troubleshoot-sign-in-saml-based-apps).
 
 ### <a name="plan-rollback"></a>Planı geri alma
 
@@ -519,13 +519,13 @@ Geçişiniz başarısız olursa en iyi strateji geri alma ve test etme. Geçiş 
 
 - Uygulamanızın mevcut yapılandırmasının **ekran görüntülerini alın** . Uygulamayı bir kez daha yeniden yapılandırmanız gerekiyorsa geri dönebilirsiniz.
 
-- Ayrıca, bulut kimlik doğrulamasıyla ilgili sorunlar söz konusu olduğunda **eski kimlik doğrulamasına bağlantılar sağlamayı** da düşünebilirsiniz.
+- Ayrıca, bulut kimlik doğrulamasıyla ilgili sorunlar varsa **eski kimlik doğrulamasına bağlantılar sağlamayı** düşünebilirsiniz.
 
 - Geçişinizi tamamlamadan önce, **mevcut yapılandırmanızı** önceki kimlik sağlayıcısıyla değiştirmeyin.
 
 - **Birden çok IDP 'yi destekleyen uygulamaları** geçirerek başlayın. Bir sorun varsa, her zaman tercih edilen IDP yapılandırmasına geçiş yapabilirsiniz.
 
-- Uygulama deneyiminizin sorun olması durumunda **yardım masasına** bir **geri bildirim düğmesine** veya işaretçilerine sahip olduğundan emin olun.
+- Uygulama deneyiminizin, **Yardım Masası** sorunlarından bir **geri bildirim düğmesine** veya işaretçilerine sahip olduğundan emin olun.
 
 ### <a name="exit-criteria"></a>Çıkış kriterleri
 
@@ -605,13 +605,13 @@ Azure AD, geçirilen uygulamalarınızı yönetmek için merkezi bir erişim kon
 
 Ayrıca, tüm uygulamalarınızı merkezi bir konumdan denetlemek için [Azure Portal](https://portal.azure.com/) de kullanabilirsiniz.
 
-- **Kurumsal uygulamaları** kullanarak **uygulamanızı denetleyin** , en sevdiğiniz araçlarla tümleştirilecek [Azure AD Raporlama API](../reports-monitoring/concept-reporting-api.md) 'sindeki bilgileri denetleyin veya aynı bilgilere erişin.
+- En sevdiğiniz araçlarla tümleştirilecek, * * kurumsal uygulamalar, denetim veya [Azure AD Raporlama API](../reports-monitoring/concept-reporting-api.md) 'sindeki aynı bilgilere erişmek Için **uygulamanızı denetleyin** .
 
 - **Kurumsal uygulamalar,** OAuth/OpenID Connect kullanan uygulamalar için izinler ' i kullanarak **bir uygulama için izinleri görüntüleyin** .
 
 - **Kurumsal uygulamalar, oturum açma** bilgileri ile **oturum açma öngörülerini alın** . [Azure AD Raporlama API](../reports-monitoring/concept-reporting-api.md) 'sinden aynı bilgilere erişin.
 
-- [Azure AD PowerBI içerik paketi](../reports-monitoring/howto-use-azure-monitor-workbooks.md) 'nden **uygulamanızın kullanımını görselleştirin**
+- [Azure AD Power BI içerik paketindeki](../reports-monitoring/howto-use-azure-monitor-workbooks.md) **uygulamanızın kullanımını görselleştirin**
 
 ### <a name="exit-criteria"></a>Çıkış kriterleri
 

@@ -1,6 +1,6 @@
 ---
 title: Adanmış SQL havuzu için işlem kaynağını Yönet (eski adıyla SQL DW)
-description: Azure SYNAPSE Analytics 'te adanmış SQL Havuzu (eski adıyla SQL DW) için performans ölçeği genişletme özellikleri hakkında bilgi edinin. Özel SQL havuzunu duraklatarak DWUs veya daha düşük maliyetler ayarlayarak ölçeği ölçeklendirin.
+description: Azure SYNAPSE Analytics 'te adanmış SQL Havuzu (eski adıyla SQL DW) için performans ölçeği genişletme özellikleri hakkında bilgi edinin. Özel SQL havuzunu (eski adıyla SQL DW) duraklatarak DWUs 'ı ayarlayarak veya daha düşük maliyetlerle ölçeği azaltın.
 services: synapse-analytics
 author: ronortloff
 manager: craigg
@@ -11,12 +11,12 @@ ms.date: 11/12/2019
 ms.author: rortloff
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 4a2ce18f4a02ccaadf66a96049b00f3837b927e4
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 20087fbf4d5c37f1501df08cc294a10ddb9118e1
+ms.sourcegitcommit: 27cd3e515fee7821807c03e64ce8ac2dd2dd82d2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98677047"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103601823"
 ---
 # <a name="manage-compute-for-dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'te adanmış SQL Havuzu (eski adıyla SQL DW) için işlem yönetme
 

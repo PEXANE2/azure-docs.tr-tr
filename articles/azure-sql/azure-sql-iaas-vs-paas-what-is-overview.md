@@ -12,12 +12,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 07/27/2020
-ms.openlocfilehash: 7f267b4909817e89444883403bef6662771332ad
-ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
+ms.openlocfilehash: 6961c0ffc0d5b9c6559d20b00bfb5510f7247adb
+ms.sourcegitcommit: 27cd3e515fee7821807c03e64ce8ac2dd2dd82d2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99550887"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103600990"
 ---
 # <a name="what-is-azure-sql"></a>Azure SQL nedir? 
 [!INCLUDE[appliesto-asf](includes/appliesto-asf.md)]
@@ -32,11 +32,11 @@ Azure SQL tanıdık SQL Server altyapısından oluşturulmuştur. böylece uygul
 
 Her bir ürünün, iş gereksinimleriniz için doğru seçeneği karşılamak üzere Microsoft 'un Azure SQL veri platformuna nasıl uyduğunu öğrenin. Maliyet tasarruflarının veya en düşük yönetimin önceliklendirmenize bakılmaksızın, bu makale, en çok ilgilendiğiniz iş gereksinimlerine göre hangi yaklaşımın elde eteceğine karar vermenize yardımcı olabilir.
 
-
 Azure SQL 'e yeni başladıysanız, derinlemesine Azure SQL [video serimizin](https://channel9.msdn.com/Series/Azure-SQL-for-Beginners?WT.mc_id=azuresql4beg_azuresql-ch9-niner) *Azure SQL* videosunu inceleyin:
 > [!VIDEO https://channel9.msdn.com/Series/Azure-SQL-for-Beginners/What-is-Azure-SQL-3-of-61/player]
 
-
+> [!TIP]
+> Azure SQL nasıl daha iyi hale getirebiliriz? [Ankete katılın](https://aka.ms/AzureSQLSurvey).
 
 ## <a name="overview"></a>Genel Bakış
 
@@ -144,7 +144,7 @@ Fiyatlandırma konusunda daha fazla bilgi için aşağıdaki kaynaklara bakın:
 
 - [SQL veritabanı & SQL yönetilen örnek fiyatlandırması](https://azure.microsoft.com/pricing/details/sql-database/)
 - [SQL](https://azure.microsoft.com/pricing/details/virtual-machines/#sql) ve [Windows](https://azure.microsoft.com/pricing/details/virtual-machines/#windows) için [sanal makine fiyatlandırması](https://azure.microsoft.com/pricing/details/virtual-machines/)
-- [Azure Fiyatlandırma Hesaplayıcı](https://azure.microsoft.com/pricing/calculator/)
+- [Azure Fiyatlandırma Hesaplayıcısı](https://azure.microsoft.com/pricing/calculator/)
 
 ## <a name="administration"></a>Yönetim
 

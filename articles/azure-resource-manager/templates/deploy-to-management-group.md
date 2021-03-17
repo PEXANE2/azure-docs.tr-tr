@@ -2,13 +2,13 @@
 title: Kaynakları yönetim grubuna dağıtma
 description: Azure Resource Manager şablonundaki yönetim grubu kapsamındaki kaynakların nasıl dağıtılacağını açıklar.
 ms.topic: conceptual
-ms.date: 01/13/2021
-ms.openlocfilehash: a203dd2c52bdc889452a6755fb025c7ed5721a59
-ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
+ms.date: 03/16/2021
+ms.openlocfilehash: b14dc3622a6ad6519968bd2998aa354a850f2515
+ms.sourcegitcommit: 27cd3e515fee7821807c03e64ce8ac2dd2dd82d2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99491614"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103601602"
 ---
 # <a name="management-group-deployments-with-arm-templates"></a>ARM şablonlarıyla yönetim grubu dağıtımları
 
@@ -219,6 +219,8 @@ Sonraki örnek, üst öğe olarak belirtilen yönetim grubunda yeni bir yönetim
     }
 }
 ```
+
+Mevcut bir Azure aboneliğini yeni bir yönetim grubuna taşınan bir şablonu dağıtmak için, bkz. [ABONELIKLERI ARM şablonunda taşıma](../../governance/management-groups/manage.md#move-subscriptions-in-arm-template)
 
 ## <a name="azure-policy"></a>Azure İlkesi
 

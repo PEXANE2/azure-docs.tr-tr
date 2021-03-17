@@ -2,20 +2,20 @@
 title: include dosyası
 description: include dosyası
 services: azure-communication-services
-author: dademath
-manager: nimag
+author: peiliu
+manager: rejooyan
 ms.service: azure-communication-services
 ms.subservice: azure-communication-services
-ms.date: 03/10/2021
+ms.date: 03/11/2021
 ms.topic: include
 ms.custom: include file
-ms.author: dademath
-ms.openlocfilehash: a118dfceb73aca0897ba0f116ce3c5462368f6c3
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.author: peiliu
+ms.openlocfilehash: 96cdeb7c35cd1ccd503f7ce01e1098a6b83884c3
+ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 03/16/2021
-ms.locfileid: "103488367"
+ms.locfileid: "103622251"
 ---
 SMS mesajları göndermek için Iletişim Hizmetleri C# SMS istemci Kitaplığı ' nı kullanarak Azure Iletişim Hizmetleri ile çalışmaya başlayın.
 
@@ -27,7 +27,7 @@ Bu hızlı başlangıcı tamamlamak, Azure hesabınızda birkaç ABD Doları vey
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-- Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F). 
+- Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - İşletim sisteminiz için en son sürüm [.NET Core istemci kitaplığı](https://dotnet.microsoft.com/download/dotnet-core) .
 - Etkin bir Iletişim Hizmetleri kaynağı ve bağlantı dizesi. [Iletişim Hizmetleri kaynağı oluşturun](../../create-communication-resource.md).
 - SMS etkin telefon numarası. [Telefon numarası alın](../get-phone-number.md).
@@ -59,13 +59,17 @@ dotnet build
 Hala uygulama dizininde, komutunu kullanarak .NET için Azure Iletişim Hizmetleri SMS istemci Kitaplığı ' nı yükleyebilirsiniz `dotnet add package` .
 
 ```console
-dotnet add package Azure.Communication.Sms --version 1.0.0-beta.3
+dotnet add package Azure.Communication.Sms --version 1.0.0-beta.4
 ```
 
 `using`Ad alanını eklemek için **program.cs** üst kısmına bir yönerge ekleyin `Azure.Communication` .
 
 ```csharp
 
+using System;
+using System.Collections.Generic;
+
+using Azure;
 using Azure.Communication;
 using Azure.Communication.Sms;
 
@@ -78,7 +82,8 @@ Aşağıdaki sınıflar ve arabirimler, C# için Azure Iletişim Hizmetleri SMS 
 | Ad                                       | Açıklama                                                                                                                                                       |
 | ------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | SmsClient     | Bu sınıf tüm SMS işlevleri için gereklidir. Bunu Abonelik bilgileriniz ile birlikte başlatır ve SMS mesajları göndermek için kullanabilirsiniz.                           |
-| SendSmsOptions | Bu sınıf, teslim raporlamayı yapılandırmak için seçenekler sağlar. Enable_delivery_report true olarak ayarlanırsa, teslim başarılı olduğunda bir olay yayınlanır |
+| SmsSendResult               | Bu sınıf, SMS hizmetinden elde edilen sonucu içerir.                                          |
+| Smssendoseçenekleri | Bu sınıf, teslim raporlamayı yapılandırmak için seçenekler sağlar. Enable_delivery_report true olarak ayarlanırsa, teslim başarılı olduğunda bir olay yayınlanır |
 
 ## <a name="authenticate-the-client"></a>İstemcinin kimliğini doğrulama
 
@@ -93,22 +98,43 @@ string connectionString = Environment.GetEnvironmentVariable("COMMUNICATION_SERV
 SmsClient smsClient = new SmsClient(connectionString);
 ```
 
-## <a name="send-an-sms-message"></a>SMS iletisi gönderme
+## <a name="send-a-11-sms-message"></a>1:1 SMS iletisi gönder
 
-Send yöntemini çağırarak SMS iletisi gönderin. Bu kodu `Main` **program.cs** içindeki End yöntemine ekleyin:
+Tek bir alıcıya SMS iletisi göndermek için, `Send` `SendAsync` SmsClient ' dan or işlevini çağırın. Bu kodu `Main` **program.cs** içindeki End yöntemine ekleyin:
 
 ```csharp
-smsClient.Send(
-    from: new PhoneNumber("<leased-phone-number>"),
-    to: new PhoneNumber("<to-phone-number>"),
-    message: "Hello World via SMS",
-    new SendSmsOptions { EnableDeliveryReport = true } // optional
+SmsSendResult sendResult = smsClient.Send(
+    from: "<from-phone-number>", // Your E.164 formatted from phone number used to send SMS
+    to: "<to-phone-number>", // E.164 formatted recipient phone number
+    message: "Hello World via SMS"
 );
+
+Console.WriteLine($"Sms id: {sendResult.MessageId}");
+```
+`<from-phone-number>`Iletişim Hizmetleri kaynağınız ile ILIŞKILI SMS özellikli telefon numarasıyla ve `<to-phone-number>` ileti göndermek istediğiniz telefon numarasıyla değiştirmelisiniz.
+
+## <a name="send-a-1n-sms-message-with-options"></a>Seçeneklerle 1: N SMS ileti gönderin
+Bir alıcı listesine SMS iletisi göndermek için `Send` `SendAsync` alıcının telefon numaralarının bir listesiyle birlikte SmsClient 'deki veya işlevini çağırın. Ayrıca, teslim raporunun etkinleştirilip etkinleştirilmeyeceğini ve özel Etiketler ayarlayamayacağını belirtmek için isteğe bağlı parametreleri de geçirebilirsiniz.
+
+```csharp
+Response<IEnumerable<SmsSendResult>> response = smsClient.Send(
+    from: "<from-phone-number>", // Your E.164 formatted from phone number used to send SMS
+    to: new string[] { "<to-phone-number-1>", "<to-phone-number-2>" }, // E.164 formatted recipient phone numbers
+    message: "Weekly Promotion!",
+    options: new SmsSendOptions(enableDeliveryReport: true) // OPTIONAL
+    {
+        Tag = "marketing", // custom tags
+    });
+
+IEnumerable<SmsSendResult> results = response.Value;
+foreach (SmsSendResult result in results)
+{
+    Console.WriteLine($"Sms id: {result.MessageId}");
+    Console.WriteLine($"Send Result Successful: {result.Successful}");
+}
 ```
 
-`<leased-phone-number>`Iletişim Hizmetleri kaynağınız ile ILIŞKILI SMS özellikli telefon numarasıyla ve `<to-phone-number>` ileti göndermek istediğiniz telefon numarasıyla değiştirmelisiniz.
-
-`EnableDeliveryReport`Parametresi, teslim raporlamayı yapılandırmak için kullanabileceğiniz isteğe bağlı bir parametredir. Bu, SMS iletileri teslim edildiğinde olayları yayma isteyebileceğiniz senaryolar için yararlıdır. SMS iletilerinize yönelik teslim raporlamayı yapılandırmak için [SMS olayları](../handle-sms-events.md) Hızlı Başlangıç Kılavuzu ' na bakın.
+`enableDeliveryReport`Parametresi, teslim raporlamayı yapılandırmak için kullanabileceğiniz isteğe bağlı bir parametredir. Bu, SMS iletileri teslim edildiğinde olayları yayma isteyebileceğiniz senaryolar için yararlıdır. SMS iletilerinize yönelik teslim raporlamayı yapılandırmak için [SMS olayları](../handle-sms-events.md) Hızlı Başlangıç Kılavuzu ' na bakın.
 
 ## <a name="run-the-code"></a>Kodu çalıştırma
 

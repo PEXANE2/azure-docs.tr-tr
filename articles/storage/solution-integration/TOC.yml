@@ -1,30 +1,30 @@
 - name: Azure depolama tarafından doğrulanan iş ortağı çözümleri
   href: /azure/storage/solution-integration
-- name: Azure Depolama Analizi ve büyük veri iş ortakları
+- name: Analiz ve büyük veri iş ortakları
   items:
     - name: Doğrulanan iş ortaklarına genel bakış
       href: .\validated-partners\analytics\partner-overview.md
   expanded: false
-- name: 'Azure depolama arşivi, yedekleme ve BCDR iş ortakları'
+- name: 'Arşiv, yedekleme ve BCDR iş ortakları'
   items:
     - name: Doğrulanan iş ortaklarına genel bakış
       href: .\validated-partners\backup-archive-disaster-recovery\partner-overview.md
-    - name: Commkasa hızlı başlangıç kılavuzu
+    - name: Commkasa Başlangıç Kılavuzu
       href: .\validated-partners\backup-archive-disaster-recovery\commvault\commvault-solution-guide.md
-    - name: Veeab hızlı başlangıç kılavuzu
+    - name: Veeab Başlarken Kılavuzu
       href: .\validated-partners\backup-archive-disaster-recovery\veeam\veeam-solution-guide.md
   expanded: false
-- name: Azure depolama kapsayıcısı çözüm iş ortakları
+- name: Kapsayıcı çözüm iş ortakları
   items:
     - name: Doğrulanan iş ortaklarına genel bakış
       href: .\validated-partners\container-solutions\partner-overview.md
   expanded: false
-- name: Azure depolama veri yönetimi ve geçiş iş ortakları
+- name: Veri yönetimi ve geçiş iş ortakları
   items:
     - name: Doğrulanan iş ortaklarına genel bakış
       href: .\validated-partners\data-management\partner-overview.md
   expanded: false
-- name: Azure depolama birincil ve ikincil depolama iş ortakları
+- name: Birincil ve ikincil depolama iş ortakları
   items:
     - name: Doğrulanan iş ortaklarına genel bakış
       href: .\validated-partners\primary-secondary-storage\partner-overview.md

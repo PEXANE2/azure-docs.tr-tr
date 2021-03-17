@@ -2,13 +2,13 @@
 title: Azure VMware Çözüm sınırları
 description: Azure VMware Çözüm sınırlamaları.
 ms.topic: include
-ms.date: 03/04/2021
-ms.openlocfilehash: 99c27694a300284cfd99b8411306c90ad4d8a12e
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.date: 03/16/2021
+ms.openlocfilehash: 0e2359d951f5348b69e95ab7fa046981b2b7b32d
+ms.sourcegitcommit: 27cd3e515fee7821807c03e64ce8ac2dd2dd82d2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102194062"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103622240"
 ---
 <!-- Used in /azure/azure-resource-manager/management/azure-subscription-service-limits.md -->
 
@@ -16,14 +16,14 @@ Aşağıdaki tabloda, Azure VMware çözümü için en fazla sınır açıklanma
 
 | **Kaynak** | **Sınırlı** |
 | :-- | :-- |
-| Özel bulut başına kümeler | 4 |
+| Özel bulut başına kümeler | 12 |
 | Küme başına en az düğüm sayısı | 3 |
 | Küme başına en fazla düğüm sayısı | 16 |
 | Özel bulut başına düğümler | 64 |
 | özel bulut başına vCenter | 1  |
 | HCX site eşleştirmeleri | 3 Advanced Edition ile 10 Enterprise Edition |
 | AVS ExpressRoute maksimum bağlı SDDC | 4 |
-| AVS ExpressRoute portspeed | 10 Gbps | 
+| AVS ExpressRoute portspeed | 10 Gbps<br />Kullanılan sanal ağ geçidi, gerçek bant genişliğini belirler. Daha ayrıntılı bilgi için bkz. [ExpressRoute sanal ağ geçitleri hakkında](../../expressroute/expressroute-about-virtual-network-gateways.md) | 
 | VWAN aracılığıyla kullanıma sunulan genel IP 'Ler | 100 |
 | vSAN kapasite sınırları | Toplam kullanılabilir %75 (SLA için %25 oranında kullanılabilir)  |
 

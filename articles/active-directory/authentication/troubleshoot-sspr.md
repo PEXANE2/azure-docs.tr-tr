@@ -11,18 +11,20 @@ author: justinha
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7099de23b825fa7af203dff9696bb53e23a099c8
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: a1dee21182349108c44f9d498417d3b760ac4913
+ms.sourcegitcommit: 27cd3e515fee7821807c03e64ce8ac2dd2dd82d2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96741125"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103600871"
 ---
 # <a name="troubleshoot-self-service-password-reset-in-azure-active-directory"></a>Azure Active Directory içinde self servis parola sıfırlama sorunlarını giderme
 
 Azure Active Directory (Azure AD) self servis parola sıfırlama (SSPR), kullanıcıların buluttaki parolalarını sıfırlamasına olanak sağlar.
 
-SSPR ile ilgili sorunlar yaşıyorsanız, aşağıdaki sorun giderme adımları ve sık karşılaşılan hatalar yardımcı olabilir. Sorununuz için yanıt bulamazsanız, destek ekiplerimiz size daha fazla yardımcı olmak için [her zaman kullanılabilir](#contact-microsoft-support) .
+SSPR ile ilgili sorunlar yaşıyorsanız, aşağıdaki sorun giderme adımları ve sık karşılaşılan hatalar yardımcı olabilir. Bu kısa videoyu, [en yaygın altı SSPR Son Kullanıcı hata Iletisini nasıl çözebileceği](https://www.youtube.com/watch?v=9RPrNVLzT8I&list=PL3ZTgFEc7LyuS8615yo39LtXR7j1GCerW&index=1)hakkında da izleyebilirsiniz.
+
+Sorununuz için yanıt bulamazsanız, destek ekiplerimiz size daha fazla yardımcı olmak için [her zaman kullanılabilir](#contact-microsoft-support) .
 
 ## <a name="sspr-configuration-in-the-azure-portal"></a>Azure portal SSPR yapılandırması
 

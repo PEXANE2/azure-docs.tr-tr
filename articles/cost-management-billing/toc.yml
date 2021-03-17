@@ -148,6 +148,8 @@
               href: manage/understand-mca-roles.md
             - name: İş ortağı kimliğini bağlama
               href: manage/link-partner-id.md
+            - name: İş ortağı KIMLIĞINI Power Apps hesaplarına bağlama
+              href: manage/link-partner-id-power-apps-accounts.md
         - name: Abonelikleri yönetme
           items:
             - name: Maliyet yönetimi verilerine erişim atama
