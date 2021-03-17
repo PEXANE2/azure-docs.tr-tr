@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: jeedes
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: 89f234ece2f7437e4a9d4092334e3dd3690e288d
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.openlocfilehash: a7949324cd4ad0459aa5ba111037b2f580da9cf8
+ms.sourcegitcommit: 27cd3e515fee7821807c03e64ce8ac2dd2dd82d2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99258108"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103601721"
 ---
 # <a name="plan-a-single-sign-on-deployment"></a>Çoklu oturum açma dağıtımını planlama
 
@@ -291,17 +291,12 @@ Aşağıdaki bağlantılar sorun giderme senaryolarını sunar. Destek personeli
 
 - [Microsoft uygulamasında oturum açma sorunu](./application-sign-in-problem-first-party-microsoft.md)
 
-#### <a name="sso-issues-for-applications-listed-in-the-azure-application-gallery"></a>Azure Uygulama galerisinde listelenen uygulamalar için SSO sorunları
+#### <a name="sso-issues-for-applications"></a>Uygulamalar için SSO sorunları
 
-- [Azure Uygulama galerisinde listelenen uygulamalar için parola SSO 'SU ile ilgili sorun](./troubleshoot-password-based-sso.md) 
+- [Uygulamalar için parola SSO 'SU ile ilgili sorun](./troubleshoot-password-based-sso.md) 
 
-- [Azure Uygulama galerisinde listelenen uygulamalar için Federasyon SSO 'SU ile ilgili sorun](./application-sign-in-problem-federated-sso-gallery.md)   
+- [SAML tabanlı çoklu oturum açma ile yapılandırılmış uygulamalarda oturum açma sorunları](/troubleshoot/azure/active-directory/troubleshoot-sign-in-saml-based-apps)   
 
-#### <a name="sso-issues-for-applications-not-listed-in-the-azure-application-gallery"></a>Azure Uygulama galerisinde listelenmeyen uygulamalar için SSO sorunları
-
-- [Azure Uygulama galerisinde listelenmeyen uygulamalar için parola SSO 'SU ile ilgili sorun](./troubleshoot-password-based-sso.md) 
-
-- [Azure Uygulama galerisinde listelenmeyen uygulamalar için Federasyon SSO 'SU ile ilgili sorun](./application-sign-in-problem-federated-sso-gallery.md)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

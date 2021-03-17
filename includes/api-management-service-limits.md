@@ -6,15 +6,15 @@ author: vladvino
 ms.assetid: 1b813833-39c8-46be-8666-fd0960cfbf04
 ms.service: api-management
 ms.topic: include
-ms.date: 01/11/2021
+ms.date: 02/19/2021
 ms.author: vlvinogr
 ms.custom: include file
-ms.openlocfilehash: 78890c0596642b629482a6d24d17d83fb8ebc9a0
-ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
+ms.openlocfilehash: ebaca1f39b16e4a06b5dcaa4e5f1de07122c6c89
+ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98147470"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103622316"
 ---
 | Kaynak | Sınır |
 | ---------------------------------------------------------------------- | -------------------------- |
@@ -34,6 +34,8 @@ ms.locfileid: "98147470"
 | En fazla arabelleğe alınmış yük boyutu<sup>8</sup> | 2 MIB |
 | En yüksek istek URL 'SI boyutu<sup>9</sup> | 4096 bayt |
 | URL yol kesiminin en fazla uzunluğu<sup>10</sup> | 260 karakter |
+| [Doğrulama ilkesi](../articles/api-management/validation-policies.md)tarafından kullanılan en büyük API şeması boyutu<sup>10</sup> | 4 MB |
+| [Doğrulama-içerik ilkesinde](../articles/api-management/validation-policies.md#validate-content) istek veya Yanıt gövdesinin en büyük boyutu | 100 KB |
 | Şirket içinde barındırılan ağ geçitlerinin maksimum sayısı<sup>11</sup> | 25 |
 
 <sup>1</sup> Ölçek sınırları, fiyatlandırma katmanına bağlıdır. Fiyatlandırma katmanları ve ölçek limitleriyle ilgili ayrıntılar için bkz. [API Management fiyatlandırması](https://azure.microsoft.com/pricing/details/api-management/).<br/>
@@ -45,5 +47,5 @@ ms.locfileid: "98147470"
 <sup>7</sup> CA sertifikaları, tüketim katmanında desteklenmez.<br/>
 <sup>8</sup> Bu sınır yalnızca tüketim katmanı için geçerlidir. Bu kategorilerde diğer katmanlara yönelik bir sınır yoktur.<br/>
 <sup>9</sup> Yalnızca tüketim katmanı için geçerlidir. En fazla 2048 bayt uzunluğunda sorgu dizesi içerir.<br/>
-<sup>10</sup> bu sınırı yükseltmek için lütfen [desteğe](https://azure.microsoft.com/support/options/)başvurun.<br/>
+<sup>10</sup> bu sınırı artırmak için lütfen [desteğe](https://azure.microsoft.com/support/options/)başvurun.<br/>
 <sup>11</sup> Şirket içinde barındırılan ağ geçitleri yalnızca geliştirici ve Premium katmanlarda desteklenir. Sınır, [kendinden konak ağ geçidi kaynaklarının](/rest/api/apimanagement/2019-12-01/gateway)sayısı için geçerlidir. Bu sınırı artırmak için lütfen [desteğe](https://azure.microsoft.com/support/options/)başvurun. Şirket içinde barındırılan bir ağ geçidi kaynağıyla ilişkili düğümlerin (veya çoğaltmaların) sayısının Premium katmanda sınırsız olduğunu ve geliştirici katmanındaki tek bir düğümde bulunduğunu unutmayın.

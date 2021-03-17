@@ -12,12 +12,12 @@ ms.date: 02/01/2021
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: b82d3963ed12e0d5dc6acd75555a3a7e8f20eeb0
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: 606704621a4904dd0fb7b6f55e753dbe77e39cb5
+ms.sourcegitcommit: 27cd3e515fee7821807c03e64ce8ac2dd2dd82d2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102175354"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103601024"
 ---
 # <a name="azure-ad-authentication-and-authorization-error-codes"></a>Azure AD Kimlik Doğrulaması ve yetkilendirme hata kodları
 
@@ -60,7 +60,7 @@ Azure Active Directory (Azure AD) güvenlik belirteci hizmeti 'nden (STS) dönd�
 
 `error`Alanda birkaç olası değer vardır. belirli hatalar (örneğin, `authorization_pending` [cihaz kodu akışında](v2-oauth2-device-code.md)) hakkında daha fazla bilgi edinmek ve bunlara tepki vermek için protokol belge bağlantılarını ve OAuth 2,0 özelliklerini gözden geçirin.  Bazı yaygın olanlar aşağıda listelenmiştir:
 
-| Hata Kodu         | Açıklama        | İstemci eylemi    |
+| Hata Kodu         | Description        | İstemci eylemi    |
 |--------------------|--------------------|------------------|
 | `invalid_request`  | Eksik gerekli bir parametre gibi protokol hatası. | İsteği onarın ve yeniden gönderin.|
 | `invalid_grant`    | Bazı kimlik doğrulama malzemeleri (auth kodu, yenileme belirteci, erişim belirteci, PKCE çekişmesi) geçersiz, çözümlenemez, yok veya başka bir şekilde kullanılamıyor | `/authorize`Yeni bir yetkilendirme kodu almak için uç noktaya yeni bir istek deneyin.  Uygulamanın protokollerin kullanımını gözden geçirmeyi ve doğrulamayı düşünün. |
@@ -96,13 +96,13 @@ Hata kodları ve mesajlar değiştirilebilir.  En güncel bilgiler için, [https
 | AADSTS50001 | Invalidresource-kaynak devre dışı veya yok. Erişmeye çalıştığınız kaynağın tam kaynak URL 'sini belirttiğinizden emin olmak için uygulamanızın kodunu kontrol edin.  |
 | AADSTS50002 | NotAllowedTenant-kiracı üzerinde kısıtlanmış bir ara sunucu erişimi nedeniyle oturum açma başarısız oldu. Bu sizin kendi kiracı ilkenizse kısıtlanmış kiracı ayarlarınızı değiştirerek bu sorunu çözebilirsiniz. |
 | AADSTS500021 | ' {Tenant} ' kiracısına erişim reddedildi. AADSTS500021, kiracı kısıtlama özelliğinin yapılandırıldığını ve kullanıcının üst bilgide belirtilen izin verilen kiracılar listesinde olmayan bir kiracıya erişmeye çalıştığı anlamına gelir `Restrict-Access-To-Tenant` . Daha fazla bilgi için bkz. [SaaS bulut uygulamalarına erişimi yönetmek için kiracı kısıtlamalarını kullanma](../manage-apps/tenant-restrictions.md).|
-| AADSTS50003 | Eksik bir imzalama anahtarı veya sertifikası nedeniyle MissingSigningKey-oturum açma başarısız oldu. Bu, uygulamada bir imzalama anahtarı yapılandırılmadığı için olabilir. Bölümünde özetlenen çözünürlüğe göz atın [. /Manage-Apps/Application-Sign-in-problem-Federated-SSO-Galler.exe # Certificate-veya-Key-configured](../manage-apps/application-sign-in-problem-federated-sso-gallery.md#certificate-or-key-not-configured). Sorun yaşamaya devam ederseniz uygulama sahibine veya bir uygulama yöneticisine başvurun. |
+| AADSTS50003 | Eksik bir imzalama anahtarı veya sertifikası nedeniyle MissingSigningKey-oturum açma başarısız oldu. Bu, uygulamada bir imzalama anahtarı yapılandırılmadığı için olabilir. Daha fazla bilgi için bkz. [AADSTS50003](/troubleshoot/azure/active-directory/error-code-aadsts50003-cert-or-key-not-configured)için sorun giderme makalesi. Sorun yaşamaya devam ederseniz uygulama sahibine veya bir uygulama yöneticisine başvurun. |
 | AADSTS50005 | DevicePolicyError-Kullanıcı, şu anda koşullu erişim ilkesi aracılığıyla desteklenmeyen bir platformdan cihazda oturum açmaya çalıştı. |
 | AADSTS50006 | Invalidsignature-geçersiz bir imza nedeniyle Imza doğrulaması başarısız oldu. |
 | AADSTS50007 | PartnerEncryptionCertificateMissing-bu uygulama için iş ortağı şifreleme sertifikası bulunamadı. Bunu sağlamak için Microsoft ile [bir destek bileti açın](../fundamentals/active-directory-troubleshooting-support-howto.md) . |
 | AADSTS50008 | Invalidsamltoken-bir belirteçte SAML onaylama işlemi eksik veya yanlış yapılandırılmış. Federasyon sağlayıcınıza başvurun. |
 | AADSTS50010 | AudienceUriValidationFailed-belirteç izleyicileri yapılandırılmadığından uygulama için hedef kitle URI doğrulaması başarısız oldu. |
-| AADSTS50011 | Invalidreplyto-yanıt adresi eksik, yanlış yapılandırılmış veya uygulama için yapılandırılan yanıt adresleriyle eşleşmiyor.  Bir çözüm olarak, bu eksik yanıt adresini Azure Active Directory uygulamasına eklemeyi veya bir kişiye Active Directory ' de Uygulamanızı yönetme izinlerine sahip olmasını sağlayın.|
+| AADSTS50011 | Invalidreplyto-yanıt adresi eksik, yanlış yapılandırılmış veya uygulama için yapılandırılan yanıt adresleriyle eşleşmiyor.  Bir çözüm olarak, bu eksik yanıt adresini Azure Active Directory uygulamasına eklemeyi veya bir kişiye Active Directory ' de Uygulamanızı yönetme izinlerine sahip olmasını sağlayın. Daha fazla bilgi için bkz. [AADSTS50011](/troubleshoot/azure/active-directory/error-code-aadsts50011-reply-url-mismatch)için sorun giderme makalesi.|
 | AADSTS50012 | AuthenticationFailed-aşağıdaki nedenlerden biri için kimlik doğrulama başarısız oldu:<ul><li>İmza sertifikasının konu adı yetkilendirilmemiş</li><li>Yetkili konu adı için eşleşen bir güvenilen yetkili ilkesi bulunamadı</li><li>Sertifika zinciri geçerli değil</li><li>İmza sertifikası geçerli değil</li><li>İlke kiracı üzerinde yapılandırılmadı</li><li>İmza sertifikasının parmak izi yetkilendirilmemiş</li><li>İstemci onaylama işlemi geçersiz bir imza içeriyor</li></ul> |
 | AADSTS50013 | Farklı nedenlerden dolayı ınvalidassertion-assertion geçersiz; belirteç verenin geçerli zaman aralığı içindeki API sürümüyle eşleşmiyor-zaman aşımına uğradı-hatalı oluşturulmuş-bir birincil yenileme belirteci değildir. |
 | AADSTS50014 | Guestuserınpendingstate-kullanıcının kullanım alanı bekleme durumunda. Konuk Kullanıcı hesabı henüz tam olarak oluşturulmamış. |
@@ -140,7 +140,7 @@ Hata kodları ve mesajlar değiştirilebilir.  En güncel bilgiler için, [https
 | AADSTS50089 | Akış belirtecinin süresi doldu - Kimlik Doğrulaması Başarısız Oldu. Kullanıcının Kullanıcı adı-parolasıyla yeniden oturum açmayı denemesini sağlayabilirsiniz. |
 | AADSTS50097 | DeviceAuthenticationRequired-cihaz kimlik doğrulaması gerekiyor. |
 | AADSTS50099 | Pkeyauthınvalidjwtunyetkilendirme-JWT imzası geçersiz. |
-| AADSTS50105 | EntitlementGrantsNotFound-oturum açmış olan Kullanıcı, oturum açmış olan uygulama için bir role atanmaz. Kullanıcıyı uygulamaya atayın. Daha fazla bilgi için:[.. /Manage-Apps/Application-Sign-in-problem-Federated-SSO-Galler.asp MD # User-atanmadı-a-role](../manage-apps/application-sign-in-problem-federated-sso-gallery.md#user-not-assigned-a-role). |
+| AADSTS50105 | EntitlementGrantsNotFound-oturum açmış olan Kullanıcı, oturum açmış olan uygulama için bir role atanmaz. Kullanıcıyı uygulamaya atayın. Daha fazla bilgi için bkz. [AADSTS50105](/troubleshoot/azure/active-directory/error-code-aadsts50105-user-not-assigned-role)için sorun giderme makalesi. |
 | AADSTS50107 | Invalidrealmuri-istenen Federasyon Bölgesi nesnesi yok. Kiracı yöneticisine başvurun. |
 | AADSTS50120 | ThresholdJwtInvalidJwtFormat-JWT üstbilgisiyle sorun. Kiracı yöneticisine başvurun. |
 | AADSTS50124 | Claimstransformationınvalidınputparameter-talep dönüştürmesi geçersiz giriş parametresi içeriyor. İlke güncelleştirmek için kiracı yöneticisine başvurun. |
@@ -191,11 +191,11 @@ Hata kodları ve mesajlar değiştirilebilir.  En güncel bilgiler için, [https
 | AADSTS54000 | MinorUserBlockedLegalAgeGroupRule |
 | AADSTS65001 | Delegationsuz notexist-Kullanıcı veya yönetici, KIMLIĞI X olan uygulamayı kullanmaya Medi. bu kullanıcı ve kaynak için etkileşimli bir yetkilendirme isteği gönderin. |
 | AADSTS65004 | Userdeclinedonay-Kullanıcı uygulamaya erişim iznini reddetti. Kullanıcıdan oturum açmayı yeniden denemesini ve uygulamaya izin vermesini isteyin|
-| AADSTS65005 | Hatalı Configuredapplication-uygulama gerekli kaynak erişim listesi, kaynak tarafından bulunabilecek uygulamaları içermiyor veya istemci uygulaması, gerekli kaynak erişimi listesinde veya grafik hizmetinde belirtilmeyen bir istek ya da kaynak bulunamamıştır ve kaynak erişimi istedi. Uygulama SAML destekliyorsa, uygulamayı yanlış tanımlayıcıyla (varlık) yapılandırmış olabilirsiniz. Aşağıdaki bağlantıyı kullanarak SAML için listelenen çözümlemeyi deneyin: [https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery#no-resource-in-requiredresourceaccess-list](../manage-apps/application-sign-in-problem-federated-sso-gallery.md?/?WT.mc_id=DMC_AAD_Manage_Apps_Troubleshooting_Nav) |
+| AADSTS65005 | Hatalı Configuredapplication-uygulama gerekli kaynak erişim listesi, kaynak tarafından bulunabilecek uygulamaları içermiyor veya istemci uygulaması, gerekli kaynak erişimi listesinde veya grafik hizmetinde belirtilmeyen bir istek ya da kaynak bulunamamıştır ve kaynak erişimi istedi. Uygulama SAML destekliyorsa, uygulamayı yanlış tanımlayıcıyla (varlık) yapılandırmış olabilirsiniz. Daha fazla bilgi için bkz. [AADSTS650056](/troubleshoot/azure/active-directory/error-code-aadsts650056-misconfigured-app)için sorun giderme makalesi. |
 | AADSTS650052 | Uygulamanın, `(\"{name}\")` kuruluşunuzun `\"{organization}\"` abone olmadığı veya etkinleştirilmediği bir hizmete erişmesi gerekir. Hizmet aboneliklerinizin yapılandırmasını gözden geçirmek için BT yöneticinize başvurun. |
 | AADSTS67003 | Actornotvalidserviceıdentity |
 | AADSTS70000 | Invalidgrant-kimlik doğrulaması başarısız oldu. Yenileme belirteci geçerli değil. Hatanın nedeni aşağıdakilerden biri olabilir:<ul><li>Belirteç bağlama üst bilgisi boş</li><li>Belirteç bağlama karması eşleşmiyor</li></ul> |
-| AADSTS70001 | UnauthorizedClient-uygulama devre dışı bırakıldı. |
+| AADSTS70001 | UnauthorizedClient-uygulama devre dışı bırakıldı. Daha fazla bilgi için bkz. [AADSTS70001](/troubleshoot/azure/active-directory/error-code-aadsts70001-app-not-found-in-directory)için sorun giderme makalesi. |
 | AADSTS70002 | Invalidclient-kimlik bilgileri doğrulanırken hata oluştu. Belirtilen client_secret, bu istemci için beklenen değerle eşleşmiyor. Client_secret düzeltip yeniden deneyin. Daha fazla bilgi için bkz. [erişim belirteci istemek için yetkilendirme kodunu kullanma](v2-oauth2-auth-code-flow.md#request-an-access-token). |
 | AADSTS70003 | UnsupportedGrantType-uygulama, desteklenmeyen bir izin türü döndürdü. |
 | AADSTS70004 | Invalidredirecturi-uygulama geçersiz bir yeniden yönlendirme URI 'SI döndürdü. İstemci tarafından belirtilen yeniden yönlendirme adresi, yapılandırılmış bir adresle veya OIDC onay listesindeki herhangi bir adresle eşleşmiyor. |
@@ -209,10 +209,11 @@ Hata kodları ve mesajlar değiştirilebilir.  En güncel bilgiler için, [https
 | AADSTS70019 | Codesüre sonu-doğrulama kodu zaman aşımına uğradı. Kullanıcının oturum açmayı yeniden denemesini sağlayın. |
 | AADSTS75001 | BindingSerializationError-SAML ileti bağlama sırasında bir hata oluştu. |
 | AADSTS75003 | UnsupportedBindingError-uygulama desteklenmeyen bağlama ile ilgili bir hata döndürdü (SAML protokol yanıtı HTTP POST dışında bağlamalar aracılığıyla gönderilemez). |
-| AADSTS75005 | Saml2MessageInvalid-Azure AD, SSO için uygulama tarafından gönderilen SAML isteğini desteklemez. |
+| AADSTS75005 | Saml2MessageInvalid-Azure AD, SSO için uygulama tarafından gönderilen SAML isteğini desteklemez. Daha fazla bilgi için bkz. [AADSTS75005](/troubleshoot/azure/active-directory/error-code-aadsts75005-not-a-valid-saml-request)için sorun giderme makalesi. |
 | AADSTS7500514 | Desteklenen bir SAML yanıtı türü bulunamadı. Desteklenen yanıt türleri: ' Response ' (XML ad alanı ' urn: oassıs: ad: TC: SAML: 2.0: protokol ') veya ' assertion ' (XML ad alanı ' urn: oassıs: adlar: TC: SAML: 2.0: assertion '). Uygulama hatası-geliştirici bu hatayı işleymeyecektir.|
+| AADSTS750054 | SAML yeniden yönlendirme bağlaması için HTTP isteğinde bir sorgu dizesi parametreleri olarak SAMLRequest veya SAMLResponse mevcut olmalıdır. Daha fazla bilgi için bkz. [AADSTS750054](/troubleshoot/azure/active-directory/error-code-aadsts750054-saml-request-not-present)için sorun giderme makalesi. |
 | AADSTS75008 | RequestDeniedError-SAML isteğinde beklenmeyen bir hedef bulunduğundan, uygulamadan gelen istek reddedildi. |
-| AADSTS75011 | Nomatchedauthncontexınoutputclaim-hizmet ile kimliği doğrulanmış kullanıcı tarafından istenen kimlik doğrulama yöntemiyle eşleşmeyen kimlik doğrulama yöntemi. |
+| AADSTS75011 | Nomatchedauthncontexınoutputclaim-hizmet ile kimliği doğrulanmış kullanıcı tarafından istenen kimlik doğrulama yöntemiyle eşleşmeyen kimlik doğrulama yöntemi. Daha fazla bilgi için bkz. [AADSTS75011](/troubleshoot/azure/active-directory/error-code-aadsts75011-auth-method-mismatch)için sorun giderme makalesi. |
 | AADSTS75016 | Saml2AuthenticationRequestInvalidNameIDPolicy-SAML2 kimlik doğrulama Isteğinde geçersiz Nameıdpolicy yok. |
 | AADSTS80001 | OnPremiseStoreIsNotAvailable-kimlik doğrulama Aracısı Active Directory bağlanamıyor. Aracı sunucularının, parolalarının doğrulanması gereken kullanıcılarla aynı AD ormanının üyesi olduğundan ve Active Directory bağlanabildiklerinden emin olun. |
 | AADSTS80002 | OnPremisePasswordValidatorRequestTimedout-parola doğrulama isteği zaman aşımına uğradı. Active Directory kullanılabilir olduğundan ve aracılardan gelen isteklere yanıt verdiğinden emin olun. |

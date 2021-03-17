@@ -4,12 +4,12 @@ description: Kaynakları yeni bir kaynak grubuna veya aboneliğe taşımak için
 ms.topic: conceptual
 ms.date: 09/15/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: aca1e5255c89e99a2c996e072e5106da8dc3eef9
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+ms.openlocfilehash: 1218df618f7f5fa0787505cb4fcee67dd264ea76
+ms.sourcegitcommit: 27cd3e515fee7821807c03e64ce8ac2dd2dd82d2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "101093626"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103601398"
 ---
 # <a name="move-resources-to-a-new-resource-group-or-subscription"></a>Kaynakları yeni bir kaynak grubuna veya aboneliğe taşıma
 
@@ -34,6 +34,7 @@ Bir kaynağı taşımadan önce gerçekleştirmeniz gereken bazı önemli adıml
    * [Ağ taşıma Kılavuzu](./move-limitations/networking-move-limitations.md)
    * [Kurtarma Hizmetleri taşıma Kılavuzu](../../backup/backup-azure-move-recovery-services-vault.md?toc=/azure/azure-resource-manager/toc.json)
    * [Sanal makineler taşıma Kılavuzu](./move-limitations/virtual-machines-move-limitations.md)
+   * Bir Azure aboneliğini yeni bir yönetim grubuna taşımak için bkz. [abonelikleri taşıma](../../governance/management-groups/manage.md#move-subscriptions).
 
 1. Doğrudan kaynağa (veya bir alt kaynağa) atanmış bir Azure rolü olan bir kaynağı taşırsanız, rol ataması taşınmaz ve yalnız bırakılmış olur. Taşıma işleminden sonra, rol atamasını yeniden oluşturmanız gerekir. Sonuç olarak, yalnız bırakılmış rol ataması otomatik olarak kaldırılır, ancak kaynak taşınmadan önce rol atamasını kaldırmak en iyi uygulamadır.
 

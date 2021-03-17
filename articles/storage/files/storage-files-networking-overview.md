@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 02/22/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 7164c3dd5c98544f3cb2944cb33cfd0e9703e36d
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: cec386b798b843a5badc9d52d9c71bd7df54b59a
+ms.sourcegitcommit: 27cd3e515fee7821807c03e64ce8ac2dd2dd82d2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90563344"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103601942"
 ---
 # <a name="azure-files-networking-considerations"></a>Azure dosyaları ağ iletişimi konuları 
 Bir Azure dosya paylaşımının bağlantısını iki şekilde yapabilirsiniz:
@@ -25,6 +25,15 @@ Bu makalede, kullanım örneği Azure Dosya Eşitleme kullanmak yerine doğrudan
 Azure dosya paylaşımları için ağ yapılandırması, Azure depolama hesabında yapılır. Depolama hesabı, birden çok dosya paylaşımını ve BLOB kapsayıcıları ya da kuyrukları gibi diğer depolama kaynaklarını dağıtabileceğiniz, paylaşılan bir depolama havuzunu temsil eden bir yönetim yapısıdır. Depolama hesapları, dosya paylaşımlarınıza ağ erişimini güvenli hale getirmenize yardımcı olan birden çok ayarı sunar: ağ uç noktaları, depolama hesabı güvenlik duvarı ayarları ve aktarım sırasında şifreleme. 
 
 Bu kavramsal kılavuzu okumadan önce [bir Azure dosyaları dağıtımı Için planlamayı](storage-files-planning.md) okumanız önerilir.
+
+:::row:::
+    :::column:::
+        <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/jd49W33DxkQ" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    :::column-end:::
+    :::column:::
+        Bu video, Azure dosya paylaşımlarını doğrudan bilgi çalışanları ve uygulamaları için beş basit adımda güvenli bir şekilde kullanıma sunma kılavuzudur. Aşağıdaki bölümler, videoda başvurulan belgelere bağlantılar ve ek bağlam sağlar.
+   :::column-end:::
+:::row-end:::
 
 ## <a name="accessing-your-azure-file-shares"></a>Azure dosya paylaşımlarınız ile erişme
 Bir depolama hesabı içinde bir Azure dosya paylaşımından dağıtırken, dosya paylaşımınıza depolama hesabının genel uç noktası aracılığıyla hemen erişilebilir. Bu, bir kullanıcının oturum açma kimliği tarafından yetkilendirilmiş istekler gibi kimliği doğrulanmış isteklerin Azure içinden veya dışından güvenli bir şekilde kaynaklanabilmesi anlamına gelir. 
@@ -137,7 +146,7 @@ Bir güvenlik duvarı, bir depolama hesabı için genel uç noktaya hangi istekl
 
 Bir depolama hesabına erişimi bir sanal ağla kısıtlamak için iki yaklaşım vardır:
 - Depolama hesabı için bir veya daha fazla özel uç nokta oluşturun ve tüm erişimi genel uç noktaya sınırlayın. Bu, yalnızca istenen sanal ağlardan gelen trafiğin depolama hesabı içindeki Azure dosya paylaşımlarına erişebilmesini sağlar.
-- Genel uç noktayı bir veya daha fazla sanal ağla sınırlayın. Bu, *hizmet uç noktaları*adlı sanal ağın bir özelliği kullanılarak işe yarar. Bir hizmet uç noktası aracılığıyla bir depolama hesabıyla trafiği kısıtladığınızda, hala genel IP adresi aracılığıyla depolama hesabına erişmeye devam edersiniz.
+- Genel uç noktayı bir veya daha fazla sanal ağla sınırlayın. Bu, *hizmet uç noktaları* adlı sanal ağın bir özelliği kullanılarak işe yarar. Bir hizmet uç noktası aracılığıyla bir depolama hesabıyla trafiği kısıtladığınızda, hala genel IP adresi aracılığıyla depolama hesabına erişmeye devam edersiniz.
 
 > [!NOTE]
 > NFS paylaşımları, genel IP adresi aracılığıyla depolama hesabının genel uç noktasına erişemez, yalnızca sanal ağları kullanarak depolama hesabının genel uç noktasına erişebilirler. NFS paylaşımları ayrıca, Özel uç noktaları kullanarak depolama hesabına erişebilir.

@@ -3,12 +3,12 @@ title: Azure VMware çözümünde Web uygulamalarınızı korumak için Azure Ap
 description: Azure VMware çözümünde çalışan Web uygulamalarınızı güvenli bir şekilde sunmak için Azure Application Gateway 'i yapılandırın.
 ms.topic: how-to
 ms.date: 02/10/2021
-ms.openlocfilehash: 1ad615efe0de86a49714914507227b7cc1dca4cb
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: f92027ee46fdaae275939acaea10e144b6bde101
+ms.sourcegitcommit: 27cd3e515fee7821807c03e64ce8ac2dd2dd82d2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101733593"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103601925"
 ---
 # <a name="use-azure-application-gateway-to-protect-your-web-apps-on-azure-vmware-solution"></a>Azure VMware çözümünde Web uygulamalarınızı korumak için Azure Application Gateway kullanma
 
@@ -193,4 +193,4 @@ Azure VMware çözümünde çalışan bir Web uygulamasını korumak için Appli
 - [Azure Application Gateway farklı senaryolar Için yapılandırma](../application-gateway/configuration-overview.md).
 - [Azure VMware Çözüm iş yüklerini dengelemek için Traffic Manager dağıtma](deploy-traffic-manager-balance-workloads.md).
 - [Azure NetApp Files Azure VMware Çözüm tabanlı iş yükleri Ile tümleştirme](netapp-files-with-azure-vmware-solution.md).
-- [Sanal ağlarda Azure kaynaklarını koruma](../ddos-protection/ddos-protection-overview.md)
+- [Sanal ağlarda Azure kaynaklarını koruma](../ddos-protection/ddos-protection-overview.md).

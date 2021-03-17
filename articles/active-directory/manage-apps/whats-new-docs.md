@@ -9,12 +9,12 @@ ms.workload: identity
 ms.author: kenwith
 author: kenwith
 manager: daveba
-ms.openlocfilehash: ebd8839fd17f79bc53b5093af83d457bb23712d9
-ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
+ms.openlocfilehash: cd46bb1c6905747ffb98c7e950f66e648c541534
+ms.sourcegitcommit: 27cd3e515fee7821807c03e64ce8ac2dd2dd82d2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "102452059"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103601772"
 ---
 # <a name="azure-active-directory-application-management-whats-new"></a>Uygulama yönetimi Azure Active Directory: yenilikler
 
@@ -33,7 +33,6 @@ Azure Active Directory Uygulama yönetimi belgelerindeki yenilikler ' e hoş gel
 - [Uygulamaya kiracı genelinde yönetici onayı verme](grant-admin-consent.md)
 - [Uygulama kimlik doğrulamasını Active Directory Federasyon Hizmetleri’nden Azure Active Directory’ye taşıma](migrate-adfs-apps-to-azure.md)
 - [Öğretici: Azure Active Directory içindeki uygulama proxy 'Si aracılığıyla uzaktan erişim için şirket içi uygulama ekleme](application-proxy-add-on-premises-application.md)
-- [SAML tabanlı çoklu oturum açma ile yapılandırılmış uygulamalarda oturum açma sorunları](application-sign-in-problem-federated-sso-gallery.md)
 - [SaaS bulut uygulamalarına erişimi yönetmek için kiracı kısıtlamalarını kullanın](tenant-restrictions.md)
 
 ## <a name="january-2021"></a>Ocak 2021
@@ -84,7 +83,6 @@ Azure Active Directory Uygulama yönetimi belgelerindeki yenilikler ' e hoş gel
 
 ### <a name="updated-articles"></a>Güncelleştirilmiş makaleler
 - [Uygulama yönetimi Azure Active Directory: yenilikler](whats-new-docs.md)
-- [SAML tabanlı çoklu oturum açma ile yapılandırılmış uygulamalarda oturum açma sorunları](application-sign-in-problem-federated-sso-gallery.md)
 
 
 ## <a name="october-2020"></a>Ekim 2020
@@ -99,7 +97,6 @@ Azure Active Directory Uygulama yönetimi belgelerindeki yenilikler ' e hoş gel
 
 ### <a name="updated-articles"></a>Güncelleştirilmiş makaleler
 
-- [SAML tabanlı çoklu oturum açma ile yapılandırılmış uygulamalarda oturum açma sorunları](application-sign-in-problem-federated-sso-gallery.md)
 - [Uygulama Ara Sunucusu Aracı Bağlayıcısı’nı yüklerken sorun oluşuyor](application-proxy-connector-installation-problem.md)
 - [Uygulama kimlik doğrulamasını Active Directory Federasyon Hizmetleri’nden Azure Active Directory’ye taşıma](migrate-adfs-apps-to-azure.md)
 - [Son kullanıcıların uygulamalara onay verme şeklini yapılandırma](configure-user-consent.md)

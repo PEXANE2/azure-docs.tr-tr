@@ -2,20 +2,20 @@
 title: include dosyası
 description: include dosyası
 services: azure-communication-services
-author: dademath
-manager: nimag
+author: bertong
+manager: ankita
 ms.service: azure-communication-services
 ms.subservice: azure-communication-services
-ms.date: 03/10/2021
+ms.date: 03/11/2021
 ms.topic: include
 ms.custom: include file
-ms.author: dademath
-ms.openlocfilehash: fc20396053dee32ac7976139a634b4592389ab5f
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.author: bertong
+ms.openlocfilehash: 0d142c477e1de2a2a34a8abfd948800cc0b607ee
+ms.sourcegitcommit: 27cd3e515fee7821807c03e64ce8ac2dd2dd82d2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 03/16/2021
-ms.locfileid: "103488352"
+ms.locfileid: "103622148"
 ---
 SMS mesajları göndermek için Iletişim Hizmetleri JavaScript SMS istemci Kitaplığı ' nı kullanarak Azure Iletişim Hizmetleri ile çalışmaya başlayın.
 
@@ -72,8 +72,9 @@ Aşağıdaki sınıflar ve arabirimler, Node.js için Azure Communication Servic
 | Ad                                  | Açıklama                                                  |
 | ------------------------------------- | ------------------------------------------------------------ |
 | SmsClient | Bu sınıf tüm SMS işlevleri için gereklidir. Bunu Abonelik bilgileriniz ile birlikte başlatır ve SMS mesajları göndermek için kullanabilirsiniz. |
-| SendSmsOptions | Bu arabirim, teslim raporlamayı yapılandırmak için seçenekler sağlar. `enable_delivery_report`Olarak ayarlanırsa `true` , teslim başarılı olduğunda bir olay yayınlanır. |
-| SendMessageRequest | Bu arabirim, SMS isteği oluşturmaya yönelik modeldir (örn. telefon numaralarını ve SMS içeriğini yapılandırın. |
+| SmsSendResult               | Bu sınıf, SMS hizmetinden elde edilen sonucu içerir.                                          |
+| Smssendoseçenekleri | Bu arabirim, teslim raporlamayı yapılandırmak için seçenekler sağlar. `enableDeliveryReport`Olarak ayarlanırsa `true` , teslim başarılı olduğunda bir olay yayınlanır. |
+| SmsSendRequest | Bu arabirim, SMS isteği oluşturmaya yönelik modeldir (örn. telefon numaralarını ve SMS içeriğini yapılandırın. |
 
 ## <a name="authenticate-the-client"></a>İstemcinin kimliğini doğrulama
 
@@ -92,27 +93,66 @@ const connectionString = process.env['COMMUNICATION_SERVICES_CONNECTION_STRING']
 const smsClient = new SmsClient(connectionString);
 ```
 
-## <a name="send-an-sms-message"></a>SMS iletisi gönderme
+## <a name="send-a-1n-sms-message"></a>1: N SMS iletisi gönder
 
-Yöntemini çağırarak SMS iletisi gönderin `send` . Bu kodu **send-sms.js** sonuna ekleyin:
+Bir alıcı listesine SMS iletisi göndermek için, `send` alıcı telefon numaralarının bir listesi Ile SmsClient 'deki işlevi çağırın (tek bir alıcıya bir ileti göndermek istiyorsanız, yalnızca bir sayıyı listeye ekleyin). Bu kodu **send-sms.js** sonuna ekleyin:
 
 ```javascript
 async function main() {
-  await smsClient.send({
-    from: "<leased-phone-number>",
-    to: ["<to-phone-number>"],
-    message: "Hello World 👋🏻 via Sms"
-  }, {
-    enableDeliveryReport: true //Optional parameter
+  const sendResults = await smsClient.send({
+    from: "<from-phone-number>",
+    to: ["<to-phone-number-1>", "<to-phone-number-2>"],
+    message: "Hello World 👋🏻 via SMS"
   });
+
+  // individual messages can encounter errors during sending
+  // use the "successful" property to verify
+  for (const sendResult of sendResults) {
+    if (sendResult.successful) {
+      console.log("Success: ", sendResult);
+    } else {
+      console.error("Something went wrong when trying to send this message: ", sendResult);
+    }
+  }
+}
+
+main();
+```
+`<from-phone-number>`Iletişim Hizmetleri kaynağınız ile ILIŞKILI SMS özellikli telefon numarasıyla ve `<to-phone-number>` ileti göndermek istediğiniz telefon numarasıyla değiştirmelisiniz.
+
+## <a name="send-a-1n-sms-message-with-options"></a>Seçeneklerle 1: N SMS ileti gönderin
+
+Ayrıca, teslim raporunun etkinleştirilip etkinleştirilmeyeceğini ve özel Etiketler ayarlayamayacağını belirtmek için bir seçenekler nesnesini geçirebilirsiniz.
+
+```javascript
+
+async function main() {
+  await smsClient.send({
+    from: "<from-phone-number>",
+    to: ["<to-phone-number-1>", "<to-phone-number-2>"],
+    message: "Weekly Promotion!"
+  }, {
+    //Optional parameter
+    enableDeliveryReport: true,
+    tag: "marketing"
+  });
+
+  // individual messages can encounter errors during sending
+  // use the "successful" property to verify
+  for (const sendResult of sendResults) {
+    if (sendResult.successful) {
+      console.log("Success: ", sendResult);
+    } else {
+      console.error("Something went wrong when trying to send this message: ", sendResult);
+    }
+  }
 }
 
 main();
 ```
 
-`<leased-phone-number>`Iletişim Hizmetleri kaynağınız ile ILIŞKILI SMS özellikli telefon numarasıyla ve `<to-phone-number>` ileti göndermek istediğiniz telefon numarasıyla değiştirmelisiniz.
-
 `enableDeliveryReport`Parametresi, teslim raporlamayı yapılandırmak için kullanabileceğiniz isteğe bağlı bir parametredir. Bu, SMS iletileri teslim edildiğinde olayları yayma isteyebileceğiniz senaryolar için yararlıdır. SMS iletilerinize yönelik teslim raporlamayı yapılandırmak için [SMS olayları](../handle-sms-events.md) Hızlı Başlangıç Kılavuzu ' na bakın.
+`tag` , teslim raporuna bir etiket uygulamak için kullanabileceğiniz isteğe bağlı bir parametredir.
 
 ## <a name="run-the-code"></a>Kodu çalıştırma
 

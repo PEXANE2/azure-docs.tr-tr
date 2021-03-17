@@ -78,6 +78,8 @@
       href: create-ipsec-tunnel.md
     - name: Windows Server yük devretme kümesi
       href: windows-server-failover-cluster.md
+    - name: VSphere kimlik bilgilerini Sıfırla
+      href: reset-vsphere-credentials.md
     - name: Azure’da yerel tümleştirme
       items:
         - name: API Management
