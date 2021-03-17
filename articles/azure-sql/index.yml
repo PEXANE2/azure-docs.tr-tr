@@ -1,6 +1,6 @@
 ### YamlMime:Landing
 title: Azure SQL belgeleri
-summary: 'Buluttaki SQL Server veritabanı altyapısı ürünlerinin Azure SQL ailesi hakkındaki belgeleri bulabilirsiniz: Azure SQL Veritabanı, Azure SQL Yönetilen Örnek ve Azure VM’de SQL Server. '
+summary: 'Buluttaki SQL Server veritabanı altyapısı ürünlerinin Azure SQL ailesi hakkındaki belgeleri bulabilirsiniz: Azure SQL Veritabanı, Azure SQL Yönetilen Örnek ve Azure VM’de SQL Server.'
 metadata:
   title: Azure SQL belgeleri
   description: Azure SQL Veritabanı’ndaki tam olarak yönetilen veritabanı, Azure SQL Yönetilen Örneği’ndeki tam olarak yönetilen örnek veya yüklü SQL Server’dan Azure’daki bir sanal makineye, Azure SQL buluttaki SQL Server veritabanı altyapısı ürünlerinin bir ailesidir.
@@ -14,19 +14,23 @@ metadata:
   ms.author: sstein
   ms.reviewer: 
   ms.date: 10/30/2019
-  ms.openlocfilehash: 91221735001f55974f6aba4b6fcae39a92834da8
-  ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
-  ms.translationtype: HT
+  ms.openlocfilehash: 13fcc3b41777a6b198ad9a8b12d93877adae75ca
+  ms.sourcegitcommit: 27cd3e515fee7821807c03e64ce8ac2dd2dd82d2
+  ms.translationtype: MT
   ms.contentlocale: tr-TR
-  ms.lasthandoff: 11/13/2020
-  ms.locfileid: "94593901"
+  ms.lasthandoff: 03/16/2021
+  ms.locfileid: "103601432"
 landingContent:
 - title: Azure SQL Veritabanı
   linkLists:
-  - linkListType: overview
+  - linkListType: whats-new
     links:
     - text: Yenilikler
       url: database/doc-changes-updates-release-notes.md?tabs=single-database
+    - text: Geri bildirimde bulunmak ister misiniz? Ankete katılın!
+      url: https://aka.ms/AzureSQLSurvey
+  - linkListType: overview
+    links:
     - text: SQL Database nedir?
       url: database/sql-database-paas-overview.md
     - text: Elastik havuzlar nedir?
@@ -55,6 +59,12 @@ landingContent:
       url: database/transact-sql-tsql-differences-sql-server.md
 - title: Azure SQL Yönetilen Örnek
   linkLists:
+  - linkListType: whats-new
+    links:
+    - text: Yenilikler
+      url: database/doc-changes-updates-release-notes.md?tabs=managed-instance
+    - text: Geri bildirimde bulunmak ister misiniz? Ankete katılın!
+      url: https://aka.ms/AzureSQLSurvey
   - linkListType: overview
     links:
     - text: Yenilikler
