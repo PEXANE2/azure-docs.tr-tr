@@ -9,14 +9,14 @@ ms.topic: reference
 author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, bonova, danil
-ms.date: 3/5/2021
+ms.date: 3/16/2021
 ms.custom: seoapril2019, sqldbrb=1
-ms.openlocfilehash: 014140b9b9832bab3de4f71c0b5f164b564b3fe5
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.openlocfilehash: 1afd5a0e24e144169280e683321b5843e9766136
+ms.sourcegitcommit: 27cd3e515fee7821807c03e64ce8ac2dd2dd82d2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102212731"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103601381"
 ---
 # <a name="t-sql-differences-between-sql-server--azure-sql-managed-instance"></a>SQL Server & Azure SQL yönetilen örneği arasındaki T-SQL farklılıkları
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -104,7 +104,7 @@ Daha fazla bilgi için bkz.
 
 - [SUNUCU DENETIMI OLUŞTUR](/sql/t-sql/statements/create-server-audit-transact-sql) 
 - [SUNUCU DENETIMINI DEĞIŞTIR](/sql/t-sql/statements/alter-server-audit-transact-sql)
-- [Girdilerini](/sql/relational-databases/security/auditing/sql-server-audit-database-engine)
+- [Denetim](/sql/relational-databases/security/auditing/sql-server-audit-database-engine)
 
 ### <a name="certificates"></a>Sertifikalar
 
@@ -466,11 +466,13 @@ Restore deyimleri hakkında daha fazla bilgi için bkz. [restore deyimleri](/sql
 
 ### <a name="service-broker"></a>Hizmet Aracısı
 
-Çapraz örnek hizmet Aracısı desteklenmez:
+Çapraz örnek hizmet Aracısı ileti değişimi yalnızca Azure SQL yönetilen örnekleri arasında desteklenir:
 
-- `sys.routes`: Bir önkoşul olarak sys. Routes adresini seçmeniz gerekir. Adresin her rotada yerel olması gerekir. Bkz. [sys. Routes](/sql/relational-databases/system-catalog-views/sys-routes-transact-sql).
-- `CREATE ROUTE`: `CREATE ROUTE` İle kullanamazsınız `ADDRESS` `LOCAL` . Bkz. [yol oluşturma](/sql/t-sql/statements/create-route-transact-sql).
-- `ALTER ROUTE`: `ALTER ROUTE` İle kullanamazsınız `ADDRESS` `LOCAL` . Bkz. [yol değiştirme](/sql/t-sql/statements/alter-route-transact-sql). 
+- `CREATE ROUTE`: `CREATE ROUTE` `ADDRESS` `LOCAL` Başka bir SQL YÖNETILEN örneğinin veya DNS adı ile kullanamazsınız.
+- `ALTER ROUTE`: `ALTER ROUTE` `ADDRESS` `LOCAL` Başka bir SQL YÖNETILEN örneğinin veya DNS adı ile kullanamazsınız.
+
+Aktarım güvenliği desteklenir, iletişim kutusu güvenliği şu değildir:
+- `CREATE REMOTE SERVICE BINDING`desteklenmez.
 
 Hizmet Aracısı varsayılan olarak etkindir ve devre dışı bırakılamaz. Aşağıdaki ALTER DATABI seçenekleri desteklenmez:
 - `ENABLE_BROKER`

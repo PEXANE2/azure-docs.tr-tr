@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 02/28/2018
 ms.author: allensu
-ms.openlocfilehash: 7c84d8129e1d0d88601495dec41883077784bb71
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 11a2dbfc9c6da60e4dd96f65d2a20165a3663e8c
+ms.sourcegitcommit: 27cd3e515fee7821807c03e64ce8ac2dd2dd82d2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101728204"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103601551"
 ---
 # <a name="improve-performance-by-compressing-files-in-azure-cdn"></a>Azure CDN’de dosyaları sıkıştırarak performansı geliştirme
 Dosya sıkıştırma, dosya aktarım hızını artırmak için basit ve etkili bir yöntemdir ve bir dosyanın boyutunu sunucudan gönderilmeden önce azaltarak sayfa yükleme performansını artırır. Dosya sıkıştırma, bant genişliği maliyetlerini azaltabilir ve kullanıcılarınız için daha fazla yanıt veren bir deneyim sağlayabilir.
@@ -63,10 +63,6 @@ Standart ve Premium CDN katmanları aynı sıkıştırma işlevselliğine sahipt
 
    > [!TIP]
    > Mümkün olsa da, sıkıştırılan biçimlere sıkıştırma uygulanması önerilmez. Örneğin, ZIP, MP3, MP4 veya JPG.
-   > 
-
-   > [!NOTE]
-   > Varsayılan MIME türleri listesini değiştirme işlemi şu anda Microsoft 'tan Azure CDN Standard sürümünde desteklenmemektedir.
    > 
 
 5. Değişikliklerinizi yaptıktan sonra **Kaydet**' i seçin.

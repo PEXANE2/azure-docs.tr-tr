@@ -6,12 +6,12 @@ author: nolavime
 ms.author: v-jysur
 ms.date: 05/24/2018
 ms.custom: references_regions
-ms.openlocfilehash: 30be0343b7c3282e3ce4da165225ab8209d07f4a
-ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
+ms.openlocfilehash: 98f53ec1b6506a6d47146377e837576254f445e2
+ms.sourcegitcommit: 27cd3e515fee7821807c03e64ce8ac2dd2dd82d2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "102452416"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103601075"
 ---
 # <a name="connect-azure-to-itsm-tools-by-using-it-service-management-solution"></a>BT hizmet yönetimi çözümünü kullanarak Azure 'ı ıTSM araçlarına bağlama
 
@@ -90,7 +90,7 @@ Eylem grupları, Azure uyarılarınız için eylemleri tetiklemenin modüler ve 
 
 ## <a name="define-a-template"></a>Şablon tanımlama
 
-Belirli iş öğesi türleri ıTSM aracında tanımladığınız şablonları kullanabilir. Şablonları kullanarak, bir eylem grubu için sabit değerlere göre otomatik olarak doldurulacak alanları tanımlayabilirsiniz. Bir eylem grubu tanımının bir parçası olarak kullanmak istediğiniz şablonu tanımlayabilirsiniz.
+Belirli iş öğesi türleri ıTSM aracında tanımladığınız şablonları kullanabilir. Şablonları kullanarak, bir eylem grubu için sabit değerlere göre otomatik olarak doldurulacak alanları tanımlayabilirsiniz. Bir eylem grubu tanımının bir parçası olarak kullanmak istediğiniz şablonu tanımlayabilirsiniz. ServiceNow belgeleri oluşturma hakkında bilgi edinmek için (burada) [ https://docs.servicenow.com/bundle/paris-platform-administration/page/administer/form-administration/task/t_CreateATemplateUsingTheTmplForm.html ].
 
 Bir eylem grubu oluşturmak için:
 
