@@ -2,13 +2,13 @@
 title: Ölçeklenebilirlik-Azure Event Hubs | Microsoft Docs
 description: Bu makalede, Azure Event Hubs bölümler ve üretilen iş birimleri kullanarak ölçeklendirmeye yönelik bilgiler sağlanmaktadır.
 ms.topic: article
-ms.date: 06/23/2020
-ms.openlocfilehash: 4dacb24ace2332f590db54959cbf1f06694b982b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 03/16/2021
+ms.openlocfilehash: f258ee2a3b4162dabf7a8e615db82b9b889d628b
+ms.sourcegitcommit: 27cd3e515fee7821807c03e64ce8ac2dd2dd82d2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86521964"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103601291"
 ---
 # <a name="scaling-with-event-hubs"></a>Event Hubs ile ölçeklendirme
 
@@ -39,11 +39,7 @@ Otomatik Şişir özelliği hakkında daha fazla bilgi için bkz. [üretilen iş
 ## <a name="partitions"></a>Bölümler
 [!INCLUDE [event-hubs-partitions](../../includes/event-hubs-partitions.md)]
 
-### <a name="partition-key"></a>Bölüm anahtarı
 
-Gelen olay verilerini veri düzenleme amacıyla belirli bölümlere eşlemek için [bölüm anahtarı](event-hubs-programming-guide.md#partition-key) kullanabilirsiniz. Bölüm anahtarı, gönderen tarafından belirtilip bir olay hub'ına geçirilen değerdir. Statik karma işlevi ile işlenir ve sonuçta bölüm ataması oluşturulur. Bir olayı yayımlarken bölüm anahtarı belirtmezseniz hepsini bir kez deneme ataması kullanılır.
-
-Olay yayımcısı yalnızca bölüm anahtarını bilir, olayların yayımlandığı bölümü bilmez. Anahtar ile bölümün bu şekilde ayrılması göndereni aşağı akış işleme hakkında çok fazla bilgi sahibi olma gereksiniminden kurtarır. Cihaz veya kullanıcı başına benzersiz bir kimlik iyi bir bölüm anahtarı oluşturur, ancak ilgili olayları tek bir bölümde gruplandırmak için coğrafi bölge gibi diğer öznitelikler de kullanılabilir.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

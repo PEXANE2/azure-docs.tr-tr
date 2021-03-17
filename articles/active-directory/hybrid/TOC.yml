@@ -40,6 +40,8 @@
           href: whatis-phs.md
         - name: Parola karması eşitleme nasıl çalışır?
           href: how-to-connect-password-hash-synchronization.md
+        - name: Seçmeli Parola karması eşitleme
+          href: how-to-connect-selective-password-hash-synchronization.md
     - name: Doğrudan kimlik doğrulama
       items:
         - name: Geçişli kimlik doğrulaması nedir?
