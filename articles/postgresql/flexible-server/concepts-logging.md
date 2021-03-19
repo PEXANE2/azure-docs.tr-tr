@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: how-to
 ms.date: 09/22/2020
 ms.openlocfilehash: 852bce26e348c817b609d5ff837641741afe4461
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90942014"
 ---
 # <a name="logs-in-azure-database-for-postgresql---flexible-server"></a>PostgreSQL için Azure veritabanı 'ndaki Günlükler-esnek sunucu
@@ -45,7 +45,7 @@ Aşağıdaki tablo, **Postgrestablogs** türü için alanları açıklar. Seçti
 | SourceSystem | `Azure` |
 | TimeGenerated [UTC] | Günlük kaydedildiği zaman damgası (UTC) |
 | Tür | Günlüğün türü. Her `AzureDiagnostics` |
-| kaynak grubundaki | Sunucunun ait olduğu abonelik için GUID |
+| SubscriptionId | Sunucunun ait olduğu abonelik için GUID |
 | adlı yönetilen örnek, | Sunucunun ait olduğu kaynak grubunun adı |
 | ResourceProvider | Kaynak sağlayıcının adı. Her `MICROSOFT.DBFORPOSTGRESQL` |
 | ResourceType | `Servers` |

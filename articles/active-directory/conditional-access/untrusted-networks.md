@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e4c020a9be7683bf045dbcc747dad3cb45058dd7
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93077685"
 ---
 # <a name="how-to-require-mfa-for-access-from-untrusted-networks-with-conditional-access"></a>Nasıl yapılır: koşullu erişimi olan güvenilmeyen ağlardan erişim için MFA gerektirme   
@@ -58,7 +58,7 @@ Güvenilir olmayan tüm konumların ne olduğunu tanımlamaya çalışmak yerine
 
 - Tüm güvenilen konumları Dışla 
 
-   :::image type="content" source="./media/untrusted-networks/01.png" alt-text="Azure A D konumları bölmesinin, Yapılandır 'ı Evet olarak ayarlanmış, ekleme sekmesi görünür ve herhangi bir konum seçeneği seçili ve vurgulanmış olan ekran görüntüsü." border="false":::
+   :::image type="content" source="./media/untrusted-networks/01.png" alt-text="Azure A D konumları bölmesinin, Yapılandır ayarı Evet, hariç tutma sekmesi görünür ve tüm güvenilir konumlar seçeneği belirlenmiş ekran görüntüsü." border="false":::
 
 ## <a name="policy-deployment"></a>İlke dağıtımı
 

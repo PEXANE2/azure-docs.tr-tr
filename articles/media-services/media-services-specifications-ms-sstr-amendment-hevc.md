@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 08/19/2019
 ms.author: johndeu
 ms.openlocfilehash: 6454bc863cb5fd628d581fff380c5ab61354f762
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87053049"
 ---
 # <a name="smooth-streaming-protocol-ms-sstr-amendment-for-hevc"></a>HEVC için Kesintisiz Akış Protocol (MS-SSTR) Düzeltme 
@@ -46,11 +46,11 @@ Aşağıdaki terimler bu belgeye özeldir:
 > 
 >   **kod çözme Zamanı:** Örneğin,   [[ISO/ıec 14496-12:2008]](https://go.microsoft.com/fwlink/?LinkId=183695)bölümünde tanımlandığı gibi, istemcide kodu çözülecek zaman.
 
-**parça:** Bir veya daha fazla **örnek**içeren, karşıdan yüklenebilen bir **medya** birimi.
+**parça:** Bir veya daha fazla **örnek** içeren, karşıdan yüklenebilen bir **medya** birimi.
 
 >   **HEVC:** Yüksek verimlilik video kodlama, [ISO/ıEC 23008-2] içinde tanımlandığı şekilde
 > 
->   **bildirim:** Bir istemcinin **medya**isteği yapmasına izin veren **sunuyla** ilgili meta veriler. **medya:** Bir **sunuyu**oynatmak için istemci tarafından kullanılan sıkıştırılmış ses, video ve metin verileri. **medya biçimi:** Ses veya videoyu sıkıştırılmış bir **örnek**olarak göstermek için iyi tanımlanmış bir biçim.
+>   **bildirim:** Bir istemcinin **medya** isteği yapmasına izin veren **sunuyla** ilgili meta veriler. **medya:** Bir **sunuyu** oynatmak için istemci tarafından kullanılan sıkıştırılmış ses, video ve metin verileri. **medya biçimi:** Ses veya videoyu sıkıştırılmış bir **örnek** olarak göstermek için iyi tanımlanmış bir biçim.
 > 
 >   **sunum:** Tek bir filmi oynatmak için gereken tüm **akışlar** ve ilgili meta veriler kümesi. **istek:** [[RFC2616]](https://go.microsoft.com/fwlink/?LinkId=90372) **yanıtında** tanımlandığı şekılde istemciden sunucuya gönderilen HTTP iletisi: [[RFC2616]](https://go.microsoft.com/fwlink/?LinkId=90372) IÇINDE tanımlandığı gibi sunucudan istemciye gönderilen HTTP iletisi
 > 
@@ -107,7 +107,7 @@ Aşağıdaki terimler bu belgeye özeldir:
 
 >   Aşağıdaki yöntem, HEVC video biçimini kullanarak akışları tanımlamak için kullanılır:
 > 
->   * **Medya biçimleri Için özel açıklayıcı kodlar:** Bu özellik, *2.2.2.5*bölümünde belirtildiği gibi **FourCC** alanı tarafından sağlanır.
+>   * **Medya biçimleri Için özel açıklayıcı kodlar:** Bu özellik, *2.2.2.5* bölümünde belirtildiği gibi **FourCC** alanı tarafından sağlanır.
 >   Uygulayıcılar, uzantı kodlarını MPEG4-RA ile kaydederek ( [ISO/IEC-14496-12]](https://go.microsoft.com/fwlink/?LinkId=183695) içinde belirtilen) uzantıların çakışmadığından emin olabilir
 
 ## <a name="19-standards-assignments"></a>1,9 standartları atamaları 
@@ -278,7 +278,7 @@ CompatibleBrands = "ccff" "iso8" 0\*(STRING_UINT32)
 
 >   Sunum açıklaması veri öğesi sununun tüm meta verilerini saklar.
 > 
->   Sunum meta verileri: sunudaki tüm akışlar için ortak olan meta veri kümesi. Sunum meta verileri, bölüm *2.2.2.1*içinde belirtilen aşağıdaki alanları içerir:
+>   Sunum meta verileri: sunudaki tüm akışlar için ortak olan meta veri kümesi. Sunum meta verileri, bölüm *2.2.2.1* içinde belirtilen aşağıdaki alanları içerir:
 > 
 > * **MajorVersion**
 > * **MinorVersion**
@@ -303,7 +303,7 @@ MinorVersion = 2
 TimeScale = 90000
 ```
 
->   Stream Collection: *3.1.1.1.2*bölümünde belirtildiği gibi Stream Description veri öğelerinin bir koleksiyonu.
+>   Stream Collection: *3.1.1.1.2* bölümünde belirtildiği gibi Stream Description veri öğelerinin bir koleksiyonu.
 > 
 >   Koruma açıklaması: bölüm *3.1.1.1.1*' de belirtildiği gibi, koruma sistemi meta verileri açıklama verisi öğeleri koleksiyonu.
 
@@ -311,7 +311,7 @@ TimeScale = 90000
 
 >   Koruma sistemi meta verileri açıklama verisi öğesi, tek bir Content Protection sistemine özgü meta verileri saklar. (Değişiklik yok)
 > 
->   Koruma üst bilgisi açıklaması: tek bir Content Protection sistemiyle ilgili Içerik koruma meta verileri. Koruma üst bilgisi açıklaması, bölüm *2.2.2.2*içinde belirtilen aşağıdaki alanları içerir:
+>   Koruma üst bilgisi açıklaması: tek bir Content Protection sistemiyle ilgili Içerik koruma meta verileri. Koruma üst bilgisi açıklaması, bölüm *2.2.2.2* içinde belirtilen aşağıdaki alanları içerir:
 > 
 >   * **SystemId**
 >   * **ProtectionHeaderContent**
@@ -391,7 +391,7 @@ Common Encryption uygulandığında ve [ISO/ıEC 23001-7] veya [ISO/ıEC 14496-1
 ## <a name="media-services-learning-paths"></a>Media Services’i öğrenme yolları
 [!INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Geri bildirimde bulunma
+## <a name="provide-feedback"></a>Geribildirim gönderme
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
 [image1]: ./media/media-services-fmp4-live-ingest-overview/media-services-image1.png

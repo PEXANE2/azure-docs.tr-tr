@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 06/28/2018
 ms.author: tomfitz
 ms.openlocfilehash: fe70c42387e9dedea8943b5dcce04a1f9ded5190
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87033316"
 ---
 # <a name="microsoftstoragestorageaccountselector-ui-element"></a>Microsoft. Storage. StorageAccountSelector Kullanıcı arabirimi öğesi
@@ -65,7 +65,7 @@ Denetim, kullanıcının yeni bir depolama hesabı oluşturmasını veya var ola
 - Belirtilmişse `defaultValue.name` benzersizlik için otomatik olarak onaylanır. Depolama hesabı adı benzersiz değilse, kullanıcının farklı bir ad belirtmesi veya var olan bir depolama hesabını seçmesi gerekir.
 - İçin varsayılan değer `defaultValue.type` **Premium_LRS**.
 - İçinde belirtilmeyen herhangi bir tür `constraints.allowedTypes` gizlidir ve içinde belirtilmeyen herhangi bir tür `constraints.excludedTypes` gösterilir. `constraints.allowedTypes` ve `constraints.excludedTypes` her ikisi de isteğe bağlıdır, ancak aynı anda kullanılamaz.
-- `options.hideExisting` **Doğru**ise, Kullanıcı var olan bir depolama hesabını seçemezsiniz. Varsayılan değer **false** şeklindedir.
+- `options.hideExisting` **Doğru** ise, Kullanıcı var olan bir depolama hesabını seçemezsiniz. Varsayılan değer **false** şeklindedir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 * UI tanımları oluşturmaya giriş için bkz. [Createuıdefinition ile çalışmaya başlama](create-uidefinition-overview.md).

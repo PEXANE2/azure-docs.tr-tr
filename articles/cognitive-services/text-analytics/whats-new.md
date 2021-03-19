@@ -8,19 +8,57 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 02/23/2021
+ms.date: 03/18/2021
 ms.author: aahi
 ms.custom: references_regions
-ms.openlocfilehash: 629b40567ad9a1126413f5a97d1dc6264b4b10ca
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: a2b001d34d265c8e7246b03875c32168f2c5c962
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101736653"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104598907"
 ---
 # <a name="whats-new-in-the-text-analytics-api"></a>Metin Analizi API’sindeki yenilikler
 
 Metin Analizi API'si, sürekli olarak güncelleştirilir. Son geliştirmelerin güncel kalması için, bu makalede yeni yayınlar ve özellikler hakkında bilgi verilmektedir.
+
+## <a name="march-2021"></a>Mart 2021
+
+### <a name="general-api-updates"></a>Genel API güncelleştirmeleri
+* Yeni API v 3.1-Önizleme. 4 öğesini içeren sürümü 
+   * Görüşleriniz araştırma JSON yanıtı gövdesinde değişiklikler: 
+      * `aspects` Şimdi `targets` `opinions` `assessments` . 
+   * Barındırılan Web API 'sinin JSON yanıt gövdesinde sistem durumu için Metin Analizi değişiklikler: 
+      * `isNegated`Algılanan bir varlık nesnesinin olumsuzlama için Boole adı kullanım dışıdır ve onaylama Işlemi algılama ile değiştirilmiştir.
+      * Adlı yeni bir özellik `role` artık bir öznitelik ile bir varlık ve varlıklar arasındaki ilişki arasındaki ayıklanan ilişkinin bir parçasıdır.  Bu, algılanan ilişki türüne ayrıntısıyla ekler.
+   * Varlık bağlama artık uç noktada zaman uyumsuz bir görev olarak kullanılabilir `/analyze` .
+   * `pii-categories`Artık uç noktada yeni bir parametre kullanılabilir `/pii` .
+      * Bu parametre, select PII varlıklarının yanı sıra giriş dili için varsayılan olarak desteklenenlerden istediğinizi belirtmenize olanak tanır.
+* Zaman uyumsuz analiz ve sistem durumu işlemleri için Metin Analizi içeren güncelleştirilmiş istemci kitaplıkları. GitHub 'da örnekleri bulabilirsiniz:
+
+    * [C#](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/textanalytics/Azure.AI.TextAnalytics)
+    * [Python](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/textanalytics/azure-ai-textanalytics/)
+    * [Java](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/textanalytics/azure-ai-textanalytics)
+    * [JavaScript](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/textanalytics/ai-text-analytics/samples/javascript)
+    
+> [!div class="nextstepaction"]
+> [Metin Analizi API'si v 3.1-önizleme hakkında daha fazla bilgi edinin. 4](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-preview-4/operations/Languages)
+
+### <a name="text-analytics-for-health-updates"></a>Sistem durumu güncelleştirmeleri için Metin Analizi
+
+* `2021-03-01` `/health` Uç nokta ve şirket içi kapsayıcı için yeni bir model sürümü sağlar
+    * Varlık türünün yeniden adlandırılması `Gene` `GeneOrProtein` .
+    * Yeni bir `Date` varlık türü.
+    * Değilleme algılamayı değiştiren onaylama işlemi algılama (yalnızca API v 3.1-Preview. 4).
+    * `name`Çeşitli ontolobir ve kodlama sistemlerinden normalleştirilmiş (yalnızca API v 3.1-Preview. 4 ' te mevcuttur) bağlantılı varlıklar için yeni bir tercih edilen özellik. 
+* Kapsayıcı önizleme deposuna etiketli yeni bir kapsayıcı görüntüsü `3.0.015370001-onprem-amd64` ve yeni model sürümü `2021-03-01` yayımlandı. 
+* Sistem durumu kapsayıcısı görüntüsü için Metin Analizi sonraki ay yeni bir depoya taşınır.  Lütfen yeni evin bulunduğu konumda bir e-posta iletişimini izleyin.
+> [!div class="nextstepaction"]
+> [Sistem durumu Metin Analizi hakkında daha fazla bilgi edinin](how-tos/text-analytics-for-health.md)
+>
+
+### <a name="text-analytics-resource-portal-update"></a>Metin Analizi kaynak portalı güncelleştirmesi
+* **Işlenen metin kayıtları** artık Azure Portal metin analizi kaynağınız için **izleme** bölümünde bir ölçüm olarak sunulmaktadır.  
 
 ## <a name="february-2021"></a>Şubat 2021
 
@@ -46,7 +84,7 @@ Bu model sürümleri, Doğu ABD bölgesinde şu anda kullanılamıyor.
 
 ## <a name="december-2020"></a>Aralık 2020
 
-* Metin Analizi API'si için [güncelleştirilmiş fiyatlandırma](https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics/) ayrıntıları
+* Metin Analizi API'si için [fiyatlandırma ayrıntıları güncelleştirildi](https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics/) .
 
 ## <a name="november-2020"></a>Kasım 2020
 
@@ -59,8 +97,7 @@ Bu model sürümleri, Doğu ABD bölgesinde şu anda kullanılamıyor.
     * [C#](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/textanalytics/Azure.AI.TextAnalytics)
     * [Python](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/textanalytics/azure-ai-textanalytics/)
     * [Java](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/textanalytics/azure-ai-textanalytics)
-
-
+    * 
 > [!div class="nextstepaction"]
 > [Metin Analizi API'si v 3.1-önizleme hakkında daha fazla bilgi edinin. 3](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-preview-3/operations/Languages)
 

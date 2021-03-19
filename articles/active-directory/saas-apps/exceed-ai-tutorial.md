@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/03/2021
 ms.author: jeedes
-ms.openlocfilehash: 16d1547b81f48b0525c667262a7a903d747a40dc
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: 5db18b36464e51d8832e0879e55cfe6f0f73eab5
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102435721"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104597806"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-exceedai"></a>Öğretici: Exceed.ai ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -125,11 +125,9 @@ Bu bölümde, Azure AD çoklu oturum açma yapılandırmanızı aşağıdaki se�
 
 * Doğrudan Exceed.ai oturum açma URL 'sine gidin ve oturum açma akışını buradan başlatın.
 
-* Microsoft My Apps ' i kullanabilirsiniz. Uygulamalarım içindeki Exceed.ai kutucuğuna tıkladığınızda bu, Exceed.ai oturum açma URL 'sine yeniden yönlendirilir. Uygulamalarım hakkında daha fazla bilgi için bkz. [uygulamalarıma giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+* Microsoft My Apps ' i kullanabilirsiniz. Uygulamalarım içindeki Exceed.ai kutucuğuna tıkladığınızda bu, Exceed.ai oturum açma URL 'sine yeniden yönlendirilir. Uygulamalarım hakkında daha fazla bilgi için bkz. [uygulamalarıma giriş](../user-help/my-apps-portal-end-user-access.md).
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Exceed.ai yapılandırıldıktan sonra, kuruluşunuzun hassas verilerinin gerçek zamanlı olarak ayıklanmasını ve zaman korumasını koruyan oturum denetimini zorunlu kılabilirsiniz. Oturum denetimi koşullu erişimden genişletiliyor. [Microsoft Cloud App Security ile oturum denetimini nasıl zorlayacağınızı öğrenin](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
-
-
+Exceed.ai yapılandırıldıktan sonra, kuruluşunuzun hassas verilerinin gerçek zamanlı olarak ayıklanmasını ve zaman korumasını koruyan oturum denetimini zorunlu kılabilirsiniz. Oturum denetimi koşullu erişimden genişletiliyor. [Microsoft Cloud App Security ile oturum denetimini nasıl zorlayacağınızı öğrenin](/cloud-app-security/proxy-deployment-any-app).

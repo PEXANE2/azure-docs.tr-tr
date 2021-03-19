@@ -8,16 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: overview
-ms.date: 02/09/2021
+ms.date: 03/09/2021
 ms.author: aahi
 keywords: metin araştırma, yaklaşım analizi, metin analizi
 ms.custom: cog-serv-seo-aug-2020
-ms.openlocfilehash: cb7bdeb379ee753424d9c975a8c030b0f7890552
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 7fcc030e3c63c24fa255e578c2d8aaf1b466e99c
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101722288"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104598975"
 ---
 # <a name="what-is-the-text-analytics-api"></a>Metin Analizi API'si nedir?
 
@@ -33,7 +33,7 @@ Yaklaşım [analizini](how-tos/text-analytics-how-to-sentiment-analysis.md) kull
 
 Özelliği, bir tümce ve belge düzeyinde hizmet tarafından bulunan en yüksek güvenilirlik puanına bağlı olarak yaklaşım etiketleri ("negatif", "nötr" ve "pozitif" gibi) sağlar. Bu özellik aynı zamanda, her belge için 0 ile 1 arasında, pozitif, nötr ve negatif yaklaşım için, içindeki her bir bir tümce &. Ayrıca, hizmetini [bir kapsayıcı kullanarak](how-tos/text-analytics-how-to-install-containers.md)şirket içinde de çalıştırabilirsiniz.
 
-V 3.1 önizlemeden başlayarak, görüşme madenciliği bir Yaklaşım Analizi özelliğidir. Doğal dil Işlemede (NLP) en boy tabanlı Yaklaşım Analizi olarak da bilinen bu özellik, metinle ilgili, özelliklerle (ürünlerin veya hizmetlerin öznitelikleri gibi) ilgili daha ayrıntılı bilgiler sağlar.
+V 3.1 önizlemeden başlayarak, görüşme madenciliği bir Yaklaşım Analizi özelliğidir. Doğal dil Işlemede (NLP) en boy tabanlı Yaklaşım Analizi olarak da bilinen bu özellik, kelimeyle ilgili (ürünlerin veya hizmetlerin öznitelikleri gibi) metinde daha ayrıntılı bilgi sağlar.
 
 ## <a name="key-phrase-extraction"></a>Anahtar ifade ayıklama
 

@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: how-to
 ms.date: 09/22/2020
 ms.openlocfilehash: 952bd6dddf9f276ed1a4a18f03799147f1902198
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90941007"
 ---
 # <a name="restart-azure-database-for-postgresql---flexible-server"></a>PostgreSQL için Azure veritabanı 'nı yeniden başlatın-esnek sunucu
@@ -33,7 +33,7 @@ Bu nasıl yapılır kılavuzunu tamamlayabilmeniz için şunlar gerekir:
 
 Esnek sunucunuzu yeniden başlatmak için aşağıdaki adımları izleyin.
 
-1.   [Azure Portal](https://portal.azure.com/), yeniden başlatmak istediğiniz esnek sunucunuzu seçin.
+1.  [Azure Portal](https://portal.azure.com/), yeniden başlatmak istediğiniz esnek sunucunuzu seçin.
 
 2.  Sol panelde **Genel Bakış ' a** tıklayın ve **Yeniden Başlat**' a tıklayın.
    
@@ -43,11 +43,11 @@ Esnek sunucunuzu yeniden başlatmak için aşağıdaki adımları izleyin.
 
 4.  Devam etmek istiyorsanız **Evet** ' e tıklayın.
    
-     :::image type="content" source="./media/how-to-restart-server-portal/restart-pop-up.png" alt-text="Seçimi yeniden Başlat":::
+     :::image type="content" source="./media/how-to-restart-server-portal/restart-pop-up.png" alt-text="Yeniden başlatma Onayla":::
  
 6.  Yeniden başlatma işleminin başlatıldığı bir bildirim gösterilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 -   [İş sürekliliği](./concepts-business-continuity.md) hakkında bilgi edinin
--    [Bölge yedekli yüksek kullanılabilirlik](./concepts-high-availability.md) hakkında bilgi edinin
+-   [Bölge yedekli yüksek kullanılabilirlik](./concepts-high-availability.md) hakkında bilgi edinin

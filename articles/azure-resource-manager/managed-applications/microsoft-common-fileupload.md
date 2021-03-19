@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 09/05/2018
 ms.author: tomfitz
 ms.openlocfilehash: c4eb3972be85ac7e291380f64127c20424b0d0f0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87004298"
 ---
 # <a name="microsoftcommonfileupload-ui-element"></a>Microsoft. Common. FileUpload Kullanıcı arabirimi öğesi
@@ -81,12 +81,12 @@ Bir Createuıdefinition test edilirken, bazı tarayıcılar (Google Chrome gibi)
 ## <a name="remarks"></a>Açıklamalar
 
 - `constraints.accept` tarayıcının dosya iletişim kutusunda gösterilen dosya türlerini belirtir. İzin verilen değerler için [HTML5 belirtimine](https://html.spec.whatwg.org/multipage/input.html#attr-input-accept) bakın. Varsayılan değer **null**.
-- `options.multiple` **True**olarak ayarlanırsa, kullanıcının tarayıcının dosya iletişim kutusunda birden fazla dosya seçmesini sağlar. Varsayılan değer **false** şeklindedir.
+- `options.multiple` **True** olarak ayarlanırsa, kullanıcının tarayıcının dosya iletişim kutusunda birden fazla dosya seçmesini sağlar. Varsayılan değer **false** şeklindedir.
 - Bu öğe, ' nin değerine göre iki modda dosya yüklemeyi destekler `options.uploadMode` . **Dosya** belirtilmişse, çıkış dosyanın içeriğini blob olarak içerir. **URL** belirtilmişse, dosya geçici bir konuma yüklenir ve çıktının blob URL 'si vardır. Geçici Bloblar 24 saat sonra temizlenir. Varsayılan değer **Dosya**' dır.
 - Karşıya yüklenen bir dosya korunuyor. Çıkış URL 'SI, dağıtım sırasında dosyaya erişmek için bir [SAS belirteci](../../storage/common/storage-sas-overview.md?toc=/azure/storage/blobs/toc.json) içerir.
-- Değeri, `options.openMode` dosyanın nasıl okunacağını belirler. Dosyanın düz metin olması bekleniyorsa, **metin**belirtin; Aksi takdirde, **ikili**belirtin. Varsayılan değer **metindir**.
-- `options.uploadMode` **Dosya** olarak ayarlanmışsa ve `options.openMode` **ikili**olarak ayarlandıysa, çıkış Base64 kodlamalı olur.
-- `options.encoding` Dosya okunurken kullanılacak kodlamayı belirtir. Varsayılan değer **UTF-8**' dir ve yalnızca `options.openMode` **Text**olarak ayarlandığında kullanılır.
+- Değeri, `options.openMode` dosyanın nasıl okunacağını belirler. Dosyanın düz metin olması bekleniyorsa, **metin** belirtin; Aksi takdirde, **ikili** belirtin. Varsayılan değer **metindir**.
+- `options.uploadMode` **Dosya** olarak ayarlanmışsa ve `options.openMode` **ikili** olarak ayarlandıysa, çıkış Base64 kodlamalı olur.
+- `options.encoding` Dosya okunurken kullanılacak kodlamayı belirtir. Varsayılan değer **UTF-8**' dir ve yalnızca `options.openMode` **Text** olarak ayarlandığında kullanılır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

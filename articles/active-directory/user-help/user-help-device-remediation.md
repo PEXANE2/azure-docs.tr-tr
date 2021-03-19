@@ -14,15 +14,15 @@ ms.author: curtand
 ms.reviewer: jairoc
 ms.custom: user-help, seo-update-azuread-jan
 ms.openlocfilehash: df3941c895ce67862eb53b8e96bc7a6d53c1ed02
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88799426"
 ---
 # <a name="possible-fixes-for-the-you-cant-get-there-from-here-error-message"></a>"Buradan alamazsınız" hata iletisiyle ilgili olası düzeltmeler
 
-Kuruluşunuzun iç Web uygulamalarına veya hizmetlerine erişirken, **burada**bir hata iletisi alabilirsiniz. Bu ileti, kuruluşunuzun cihazın kuruluşunuzun kaynaklarına erişmesini engelleyen bir ilke yerleştirmediği anlamına gelir. Bu sorunu gidermek için yardım masanızla iletişim kurmaya gerek duyabilirsiniz, ancak öncelikle deneyebileceğiniz birkaç şey vardır.
+Kuruluşunuzun iç Web uygulamalarına veya hizmetlerine erişirken, **burada** bir hata iletisi alabilirsiniz. Bu ileti, kuruluşunuzun cihazın kuruluşunuzun kaynaklarına erişmesini engelleyen bir ilke yerleştirmediği anlamına gelir. Bu sorunu gidermek için yardım masanızla iletişim kurmaya gerek duyabilirsiniz, ancak öncelikle deneyebileceğiniz birkaç şey vardır.
 
 ## <a name="make-sure-youre-using-a-supported-browser"></a>Desteklenen bir tarayıcı kullandığınızdan emin olun
 Burada, kuruluşunuzun sitelerine desteklenmeyen bir tarayıcıdan erişmeye çalıştığınızın ne olduğunu bildiren bir iletiyle **karşılaşamıyoruz** , çalıştırmakta olduğunuz tarayıcıyı kontrol edin.

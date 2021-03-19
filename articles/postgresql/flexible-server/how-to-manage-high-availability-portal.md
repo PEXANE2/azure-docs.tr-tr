@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: how-to
 ms.date: 09/22/2020
 ms.openlocfilehash: fc1bca1265139a438fad86bfce770026866d9a2f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90941019"
 ---
 # <a name="manage-zone-redundant-high-availability-in-flexible-server"></a>Esnek sunucuda bölge yedekli yüksek kullanılabilirliği yönetme
@@ -30,29 +30,29 @@ Bölgesel olarak yedekli yüksek kullanılabilirlik yalnızca birden fazla bölg
 
 Bu bölüm, özellikle de HA ile ilgili alanlar için ayrıntılar sağlar. Esnek sunucunuzu oluştururken yüksek kullanılabilirlik dağıtmak için bu adımları izleyebilirsiniz.
 
-1.   [Azure Portal](https://portal.azure.com/)esnek sunucu ' yı seçin ve Oluştur ' a tıklayın.  **Abonelik**, **kaynak grubu**, **sunucu adı**, **bölge**ve diğer alanlar gibi ayrıntıların nasıl doldurulması gerektiği hakkında ayrıntılı bilgi için bkz. sunucu oluşturma için nasıl yapılır belgeleri.
+1.  [Azure Portal](https://portal.azure.com/)esnek sunucu ' yı seçin ve Oluştur ' a tıklayın.  **Abonelik**, **kaynak grubu**, **sunucu adı**, **bölge** ve diğer alanlar gibi ayrıntıların nasıl doldurulması gerektiği hakkında ayrıntılı bilgi için bkz. sunucu oluşturma için nasıl yapılır belgeleri.
    
     :::image type="content" source="./media/how-to-manage-high-availability-portal/subscription-region.png" alt-text="Aboneliği ve bölgeyi görüntüle":::
 
-2.  **Kullanılabilirlik**bölgenizi seçin. Bu, gecikme süresini azaltmak için uygulamanızı veritabanı ile aynı Kullanılabilirlik bölgesinde birlikte konumlandırmak istiyorsanız yararlıdır. Esnek sunucunun herhangi bir kullanılabilirlik alanına dağıtılmasını istiyorsanız **tercih yok** ' ı seçin.
-    ![AZ seçim ]() :::image type="content" source="./media/how-to-manage-high-availability-portal/zone-selection.png" alt-text="Aboneliği ve bölgeyi görüntüle":::  
+2.  **Kullanılabilirlik** bölgenizi seçin. Bu, gecikme süresini azaltmak için uygulamanızı veritabanı ile aynı Kullanılabilirlik bölgesinde birlikte konumlandırmak istiyorsanız yararlıdır. Esnek sunucunun herhangi bir kullanılabilirlik alanına dağıtılmasını istiyorsanız **tercih yok** ' ı seçin.
+    ![AZ seçim ]() :::image type="content" source="./media/how-to-manage-high-availability-portal/zone-selection.png" alt-text="kullanılabilirlik alanı seçimi":::  
 
 3.  Kullanılabilirlik seçeneğinde **bölge yedekli yüksek kullanılabilirlik** onay kutusuna tıklayın.
 
-    :::image type="content" source="./media/how-to-manage-high-availability-portal/high-availability-checkbox.png" alt-text="Aboneliği ve bölgeyi görüntüle":::
+    :::image type="content" source="./media/how-to-manage-high-availability-portal/high-availability-checkbox.png" alt-text="Yüksek kullanılabilirlik onay kutusu":::
 
 4.  Varsayılan işlem ve depolamayı değiştirmek istiyorsanız,  **sunucuyu Yapılandır**' a tıklayın.
  
-    :::image type="content" source="./media/how-to-manage-high-availability-portal/configure-server.png" alt-text="Aboneliği ve bölgeyi görüntüle":::  
+    :::image type="content" source="./media/how-to-manage-high-availability-portal/configure-server.png" alt-text="sunucu-işlem + depolamayı yapılandırma":::  
 
 5.  Yüksek kullanılabilirlik seçeneği işaretliyse, Burstable katman seçim için kullanılamaz. **Genel amaçlı** ya da **bellek için iyileştirilmiş** işlem katmanları seçebilirsiniz. Ardından, açılır menüden istediğiniz **işlem boyutunu** seçebilirsiniz.
 
-    :::image type="content" source="./media/how-to-manage-high-availability-portal/select-compute.png" alt-text="Aboneliği ve bölgeyi görüntüle":::  
+    :::image type="content" source="./media/how-to-manage-high-availability-portal/select-compute.png" alt-text="İşlem Katmanı seçimi":::  
 
 
 6.  Kayan çubuğu kullanarak GiB 'de **depolama boyutu** ' nu seçin ve **yedekleme saklama süresini** 7 gün ile 35 gün arasında seçin.
    
-    :::image type="content" source="./media/how-to-manage-high-availability-portal/storage-backup.png" alt-text="Aboneliği ve bölgeyi görüntüle"::: 
+    :::image type="content" source="./media/how-to-manage-high-availability-portal/storage-backup.png" alt-text="Depolama yedekleme"::: 
 
 7. **Kaydet**’e tıklayın. 
 
@@ -60,15 +60,15 @@ Bu bölüm, özellikle de HA ile ilgili alanlar için ayrıntılar sağlar. Esne
 
 Mevcut esnek sunucunuz için yüksek kullanılabilirliği etkinleştirmek üzere aşağıdaki adımları izleyin.
 
-1.   [Azure Portal](https://portal.azure.com/), mevcut PostgreSQL esnek sunucunuzu seçin.
+1.  [Azure Portal](https://portal.azure.com/), mevcut PostgreSQL esnek sunucunuzu seçin.
 
-2.  Esnek sunucu sayfasında, yüksek kullanılabilirlik sayfasını açmak için sol panelde **yüksek kullanılabilirlik** ' e tıklayın.
+2.  Esnek sunucu sayfasında, yüksek kullanılabilirlik sayfasını açmak için sol panelde **yüksek kullanılabilirlik** ' e tıklayın.
    
-     :::image type="content" source="./media/how-to-manage-high-availability-portal/high-availability-left-panel.png" alt-text="Aboneliği ve bölgeyi görüntüle"::: 
+     :::image type="content" source="./media/how-to-manage-high-availability-portal/high-availability-left-panel.png" alt-text="Sol panel seçimi"::: 
 
-3.  Seçeneği **etkinleştirmek** için **bölge yedekli yüksek kullanılabilirlik** onay kutusuna tıklayın ve değişikliği kaydetmek için **Kaydet**' e tıklayın   .
+3.  Seçeneği **etkinleştirmek** için **bölge yedekli yüksek kullanılabilirlik** onay kutusuna tıklayın ve değişikliği kaydetmek için **Kaydet** ' e tıklayın.
 
-     :::image type="content" source="./media/how-to-manage-high-availability-portal/enable-high-availability.png" alt-text="Aboneliği ve bölgeyi görüntüle"::: 
+     :::image type="content" source="./media/how-to-manage-high-availability-portal/enable-high-availability.png" alt-text="Yüksek kullanılabilirliği etkinleştir"::: 
 
 4.  Bir onay iletişim kutusu, yüksek kullanılabilirliği etkinleştirerek, ek sunucu ve depolama dağıtımı nedeniyle maliyetlerinizin arttırabileceğini gösterir.
 
@@ -80,15 +80,15 @@ Mevcut esnek sunucunuz için yüksek kullanılabilirliği etkinleştirmek üzere
 
 Zaten bölge yedekliği ile yapılandırılmış esnek sunucunuz için yüksek kullanılabilirliği devre dışı bırakmak üzere bu adımları izleyin.
 
-1.   [Azure Portal](https://portal.azure.com/), mevcut PostgreSQL Için Azure veritabanı-esnek sunucu ' yı seçin.
+1.  [Azure Portal](https://portal.azure.com/), mevcut PostgreSQL Için Azure veritabanı-esnek sunucu ' yı seçin.
 
-2.  Esnek sunucu sayfasında, yüksek kullanılabilirlik sayfasını açmak için ön panelinden **yüksek kullanılabilirlik** ' e tıklayın.
+2.  Esnek sunucu sayfasında, yüksek kullanılabilirlik sayfasını açmak için ön panelinden **yüksek kullanılabilirlik** ' e tıklayın.
    
-    :::image type="content" source="./media/how-to-manage-high-availability-portal/high-availability-left-panel.png" alt-text="Aboneliği ve bölgeyi görüntüle"::: 
+    :::image type="content" source="./media/how-to-manage-high-availability-portal/high-availability-left-panel.png" alt-text="Sol panel seçimi"::: 
 
-3.  Seçeneği **devre dışı bırakmak** için **bölge yedekli yüksek kullanılabilirlik** onay kutusuna tıklayın. Sonra **Save**   değişikliği kaydetmek için Kaydet ' e tıklayın.
+3.  Seçeneği **devre dışı bırakmak** için **bölge yedekli yüksek kullanılabilirlik** onay kutusuna tıklayın. Sonra değişikliği kaydetmek için **Kaydet** ' e tıklayın.
 
-     :::image type="content" source="./media/how-to-manage-high-availability-portal/disable-high-availability.png" alt-text="Aboneliği ve bölgeyi görüntüle"::: 
+     :::image type="content" source="./media/how-to-manage-high-availability-portal/disable-high-availability.png" alt-text="Yüksek kullanılabilirliği devre dışı bırak"::: 
 
 4.  Yüksek kullanılabilirliği devre dışı bırakmayı doğrulayabileceğiniz bir onay iletişim kutusu gösterilir.
 
@@ -99,4 +99,4 @@ Zaten bölge yedekliği ile yapılandırılmış esnek sunucunuz için yüksek k
 ## <a name="next-steps"></a>Sonraki adımlar
 
 -   [İş sürekliliği](./concepts-business-continuity.md) hakkında bilgi edinin
--    [Bölge yedekli yüksek kullanılabilirlik](./concepts-high-availability.md) hakkında bilgi edinin
+-   [Bölge yedekli yüksek kullanılabilirlik](./concepts-high-availability.md) hakkında bilgi edinin

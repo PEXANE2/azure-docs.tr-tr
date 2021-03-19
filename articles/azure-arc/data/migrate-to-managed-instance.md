@@ -10,10 +10,10 @@ ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
 ms.openlocfilehash: 86563b0a44bade2cedaf76af3c247821756111fe
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90941759"
 ---
 # <a name="migrate-sql-server-to-azure-arc-enabled-sql-managed-instance"></a>Geçirme: Azure Arc etkin SQL yönetilen örneği 'ne SQL Server
@@ -28,7 +28,7 @@ Azure Arc etkin SQL yönetilen örneği 'ne geçiş için Azure Blob Storage 'ı
 
 Bu yöntem, Azure Blob Storage 'ı yedekleyebilir ve sonra geri yükleme yapmak için geçici bir depolama konumu olarak kullanır.
 
-### <a name="prerequisites"></a>Ön koşullar
+### <a name="prerequisites"></a>Önkoşullar
 
 - [Azure Data Studio yüklensin](install-client-tools.md)
 - [Azure Depolama Gezgini yüklensin](https://azure.microsoft.com/features/storage-explorer/)
@@ -82,7 +82,7 @@ Bu adımda, kaynak SQL Server bağlanacağız ve SQL yönetilen örneği-Azure y
 ### <a name="step-4-restore-the-database-from-azure-blob-storage-to-sql-managed-instance---azure-arc"></a>4. Adım: veritabanını Azure Blob depolama 'dan SQL yönetilen örneği-Azure yaya geri yükleme
 
 1. Azure Data Studio, oturum açın ve SQL yönetilen örneği-Azure yaya bağlanın.
-1. **Sistem veritabanlarını**genişletin, **ana** veritabanına sağ tıklayın ve **Yeni sorgu**' yı seçin.
+1. **Sistem veritabanlarını** genişletin, **ana** veritabanına sağ tıklayın ve **Yeni sorgu**' yı seçin.
 1. Sorgu Düzenleyicisi penceresinde, kimlik bilgilerini oluşturmak için önceki adımdan aynı sorguyu hazırlayın ve çalıştırın.
 
    ```sql
@@ -124,7 +124,7 @@ URL 'ye yedekleme hakkında daha fazla bilgi edinin:
 
 Bu yöntem, herhangi bir yöntem aracılığıyla oluşturduğunuz bir yedekleme dosyasını nasıl kullanacağınızı ve sonra Windows veya Linux 'ta tipik bir dosya sisteminde yaptığınız gibi daha fazla geri yükleme yapabilmeniz için Azure SQL yönetilen örneği Pod içindeki yerel depolama alanına kopyalamanız gerektiğini gösterir. Bu senaryoda, `kubectl cp` dosyayı Pod 'un dosya sistemine bir yerden kopyalamak için komutunu kullanacaksınız.
 
-### <a name="prerequisites"></a>Ön koşullar
+### <a name="prerequisites"></a>Önkoşullar
 
 - Kubectl 'yi, Azure Arc veri Hizmetleri 'nin dağıtıldığı Kubernetes kümenizi işaret etmek üzere yükleyip yapılandırın
 - Azure Data Studio veya SQL Server Management Server 'ın yüklü olduğu ve yedek dosyayı oluşturmak istediğiniz SQL Server bağlı olduğundan ya da yerel dosya sisteminizde zaten oluşturulmuş bir. bak dosyasının olması gibi bir araç vardır.

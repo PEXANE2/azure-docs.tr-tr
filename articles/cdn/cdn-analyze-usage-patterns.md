@@ -15,10 +15,10 @@ ms.topic: how-to
 ms.date: 01/23/2017
 ms.author: mazha
 ms.openlocfilehash: 5353fa70be4705b28dab9350fcdf7819b22faf54
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90985538"
 ---
 # <a name="core-reports-from-verizon"></a>Verizon Çekirdek Raporları
@@ -44,7 +44,7 @@ Verizon profilleri için portalı Yönet aracılığıyla Verizon Core raporlar�
    
     ![CDN yönetim portalı-çekirdek raporlar menüsü](./media/cdn-reports/cdn-core-reports.png)
 
-3. Her rapor için, **Tarih aralığı** listesinden bir tarih aralığı seçin. **Bugün** veya **Bu hafta**gibi önceden tanımlanmış bir tarih aralığı seçebilir ya da **özel** ' i seçip takvim simgeleri ' ne tıklayarak bir tarih aralığını el ile girebilirsiniz. 
+3. Her rapor için, **Tarih aralığı** listesinden bir tarih aralığı seçin. **Bugün** veya **Bu hafta** gibi önceden tanımlanmış bir tarih aralığı seçebilir ya da **özel** ' i seçip takvim simgeleri ' ne tıklayarak bir tarih aralığını el ile girebilirsiniz. 
 
 4. Bir tarih aralığı seçtikten sonra, raporu oluşturmak için **Git** ' e tıklayın. 
 

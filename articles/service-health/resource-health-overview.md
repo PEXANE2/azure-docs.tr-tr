@@ -4,10 +4,10 @@ description: Azure Kaynak Durumu Azure kaynaklarınızı etkileyen hizmet sorunl
 ms.topic: conceptual
 ms.date: 05/10/2019
 ms.openlocfilehash: 25425eadfaf54ba56cde3b377a44cd85c2b68959
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90967878"
 ---
 # <a name="resource-health-overview"></a>Kaynak Durumu genel bakış
@@ -84,7 +84,7 @@ Kaynak Durumu **sistem durumu geçmişi** bölümünde en fazla 30 güne kadar g
 
 Bir kaynak için Kaynak Durumu açmak için:
 
-1. Azure Portal’da oturum açın.
+1. Azure portalında oturum açın.
 2. Kaynağınızı bulun.
 3. Sol bölmedeki kaynak menüsünde **kaynak durumu**' nu seçin.
 

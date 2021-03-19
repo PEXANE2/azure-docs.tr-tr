@@ -5,10 +5,10 @@ ms.assetid: 361daf37-598c-4703-8d78-c77dbef91643
 ms.topic: conceptual
 ms.date: 09/25/2019
 ms.openlocfilehash: e49c235e11eea17fdd1a7ff7751cc0493934d725
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "83123709"
 ---
 # <a name="continuous-deployment-for-azure-functions"></a>Azure İşlevleri için sürekli dağıtım
@@ -32,7 +32,7 @@ Sürekli dağıtımın başarılı olması için dizin yapınız, Azure Işlevle
 >[!NOTE]  
 > Sürekli dağıtım henüz bir tüketim planında çalışan Linux uygulamaları için desteklenmemektedir. 
 
-## <a name="set-up-continuous-deployment"></a><a name="credentials"></a>Sürekli dağıtımı ayarlama
+## <a name="set-up-continuous-deployment"></a><a name="credentials"></a>Sürekli dağıtım ayarlama
 
 Mevcut bir işlev uygulaması için sürekli dağıtımı yapılandırmak üzere, bu adımları izleyin. Adımlarda bir GitHub deposu ile tümleştirme gösterilmektedir, ancak Azure Repos veya diğer kaynak kodu depoları için de benzer adımlar geçerlidir.
 
@@ -42,7 +42,7 @@ Mevcut bir işlev uygulaması için sürekli dağıtımı yapılandırmak üzere
 
 3. GitHub 'da **Yetkilendir azureuygulamahizmeti**' ı seçin.
 
-    :::image type="content" source="./media/functions-continuous-deployment/authorize.png" alt-text="Azure App Service dağıtım merkezi":::
+    :::image type="content" source="./media/functions-continuous-deployment/authorize.png" alt-text="Azure App Service yetkilendir":::
 
     GitHub parolanızı girip **devam**' ı seçin.
 
@@ -53,9 +53,9 @@ Mevcut bir işlev uygulaması için sürekli dağıtımı yapılandırmak üzere
 
     **Devam**’ı seçin.
 
-5. Belirttiğiniz kaynak denetimi seçeneğine özgü bilgileri yapılandırın. GitHub için **kuruluş**, **Depo**ve **dal**değerlerini girmeniz veya seçmeniz gerekir. Değerler, kodunuzun konumunu temel alır. Sonra **devam**' ı seçin.
+5. Belirttiğiniz kaynak denetimi seçeneğine özgü bilgileri yapılandırın. GitHub için **kuruluş**, **Depo** ve **dal** değerlerini girmeniz veya seçmeniz gerekir. Değerler, kodunuzun konumunu temel alır. Sonra **devam**' ı seçin.
 
-    :::image type="content" source="./media/functions-continuous-deployment/github-specifics.png" alt-text="Azure App Service dağıtım merkezi":::
+    :::image type="content" source="./media/functions-continuous-deployment/github-specifics.png" alt-text="GitHub’ı yapılandırma":::
 
 6. Tüm ayrıntıları gözden geçirin ve ardından **son** ' u seçerek dağıtım yapılandırmanızı doldurun.
 

@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 04/10/2020
 ms.reviewer: azfuncdf
 ms.openlocfilehash: b029fa246977dfe4210f6e8df242415f7e4103f1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87081925"
 ---
 # <a name="create-durable-functions-using-the-azure-portal"></a>Azure portal kullanarak Dayanıklı İşlevler oluşturun
@@ -38,14 +38,21 @@ JavaScript Dayanıklı İşlevler oluşturuyorsanız [ `durable-functions` NPM p
 
 2. **Gelişmiş Araçlar** sayfasında **Git**' i seçin.
 
-3. Kudu konsolunun içinde **Hata Ayıkla Konsolu**ve sonra **cmd**' yi seçin.
+3. Kudu konsolunun içinde **Hata Ayıkla Konsolu** ve sonra **cmd**' yi seçin.
 
-   :::image type="content" source="./media/durable-functions-create-portal/kudu-choose-debug-console.png" alt-text="İşlevler platform özellikleri kudu seçme"
+   :::image type="content" source="./media/durable-functions-create-portal/kudu-choose-debug-console.png" alt-text="Kudu hata ayıklama konsolu":::
+
+3. İşlev uygulamanızın dosya dizini yapısı görüntülenmelidir. `site/wwwroot` klasörüne gidin. Buradan dosya `package.json` dizini penceresine sürükleyip bırakarak bir dosyayı karşıya yükleyebilirsiniz. Örnek `package.json` aşağıda verilmiştir:
+
+    ```json
+    {
+      "dependencies": {
+        "durable-functions": "^1.3.1"
       }
     }
     ```
 
-   :::image type="content" source="./media/durable-functions-create-portal/kudu-choose-debug-console.png" alt-text="İşlevler platform özellikleri kudu seçme":::
+   :::image type="content" source="./media/durable-functions-create-portal/kudu-choose-debug-console.png" alt-text="Kudu karşıya yükleme package.js":::
 
 4. Karşıya yüklendikten sonra `package.json` `npm install` kudu uzaktan yürütme konsolundan komutunu çalıştırın.
 
@@ -57,7 +64,7 @@ JavaScript Dayanıklı İşlevler oluşturuyorsanız [ `durable-functions` NPM p
 
 1. **Yeni işlev** sayfasının arama alanına girin `durable` ve ardından **dayanıklı işlevler http başlangıç** şablonu ' nu seçin.
 
-   :::image type="content" source="./media/durable-functions-create-portal/durable-functions-http-starter-template.png" alt-text="İşlevler platform özellikleri kudu seçme":::
+   :::image type="content" source="./media/durable-functions-create-portal/durable-functions-http-starter-template.png" alt-text="Dayanıklı İşlevler HTTP Starter 'ı seçin":::
 
 1. **Yeni işlev** adı için girin `HttpStart` ve ardından **işlev oluştur**' u seçin.
 
@@ -101,7 +108,7 @@ JavaScript Dayanıklı İşlevler oluşturuyorsanız [ `durable-functions` NPM p
         }
     ```
 
-1. `statusQueryGetUri`Durum **tamamlanana**kadar, bitiş noktasını çağırmaya devam edin ve aşağıdaki örnekte olduğu gibi bir yanıt görürsünüz:
+1. `statusQueryGetUri`Durum **tamamlanana** kadar, bitiş noktasını çağırmaya devam edin ve aşağıdaki örnekte olduğu gibi bir yanıt görürsünüz:
 
     ```json
     {

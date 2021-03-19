@@ -7,10 +7,10 @@ ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 07/26/2019
 ms.openlocfilehash: 4535e6bf11f8c2abf20b1b323925c3fc3299d362
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90971781"
 ---
 # <a name="create-azure-resource-manager-templates-to-automate-deployment-for-azure-logic-apps"></a>Azure Logic Apps dağıtımını otomatikleştirmek için Azure Resource Manager şablonu oluşturma
@@ -34,7 +34,7 @@ Azure Resource Manager şablonları hakkında daha fazla bilgi için şu konular
 
 Dağıtım için en kolay geçerli parametreli mantıksal uygulama şablonları oluşturmanın en kolay yolu için Visual Studio 'Yu (ücretsiz Community Edition veya üzeri) ve Visual Studio için Azure Logic Apps araçları 'nı kullanın. Daha sonra [Visual Studio 'da mantıksal uygulamanızı oluşturabilir](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md) veya [var olan bir mantıksal uygulamayı visual Studio 'ya Azure Portal bulup indirebilirsiniz](../logic-apps/manage-logic-apps-with-visual-studio.md).
 
-Mantıksal uygulamanızı indirerek, mantıksal uygulamanızın tanımlarını ve bağlantılar gibi diğer kaynakları içeren bir şablon alırsınız. Şablon, mantıksal uygulamanızı ve diğer kaynaklarınızı dağıtmak için kullanılan değerleri de *parametreleştirir*veya parametrelerini tanımlar. Bu parametrelerin değerlerini ayrı Parametreler dosyasında sağlayabilirsiniz. Bu şekilde, bu değerleri dağıtım gereksinimlerinize göre daha kolay bir şekilde değiştirebilirsiniz. Daha fazla bilgi için şu konulara bakın:
+Mantıksal uygulamanızı indirerek, mantıksal uygulamanızın tanımlarını ve bağlantılar gibi diğer kaynakları içeren bir şablon alırsınız. Şablon, mantıksal uygulamanızı ve diğer kaynaklarınızı dağıtmak için kullanılan değerleri de *parametreleştirir* veya parametrelerini tanımlar. Bu parametrelerin değerlerini ayrı Parametreler dosyasında sağlayabilirsiniz. Bu şekilde, bu değerleri dağıtım gereksinimlerinize göre daha kolay bir şekilde değiştirebilirsiniz. Daha fazla bilgi için şu konulara bakın:
 
 * [Visual Studio ile mantıksal uygulamalar oluşturma](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md)
 * [Visual Studio ile mantıksal uygulamaları yönetme](../logic-apps/manage-logic-apps-with-visual-studio.md)
@@ -121,8 +121,8 @@ Get-ParameterTemplate -TemplateFile $filename -KeyVault Static | Out-File $fileN
 
 | Parametreler | Gerekli | Açıklama |
 |------------|----------|-------------|
-| TemplateFile | Evet | Şablon dosyanızın dosya yolu |
-| KeyVault | Hayır | Olası Anahtar Kasası değerlerini nasıl işleyeceğinizi açıklayan bir sabit listesi. Varsayılan değer: `None`. |
+| TemplateFile | Yes | Şablon dosyanızın dosya yolu |
+| KeyVault | No | Olası Anahtar Kasası değerlerini nasıl işleyeceğinizi açıklayan bir sabit listesi. Varsayılan değer: `None`. |
 ||||
 
 ## <a name="next-steps"></a>Sonraki adımlar

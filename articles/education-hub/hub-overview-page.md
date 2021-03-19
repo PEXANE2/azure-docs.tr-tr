@@ -8,17 +8,17 @@ ms.service: azure-education
 ms.subservice: education-hub
 ms.date: 06/30/2020
 ms.openlocfilehash: 5a29fa8d60d3c581a502cded1a7e04026f768667
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86540703"
 ---
 # <a name="managing-your-academic-grant"></a>Akademik yetki hesabınızı yönetme
 
 Azure Eğitim Merkezi Ana giriş sayfanız genel bakış sayfasıdır. Bu sayfa, sizin oluşturduğunuz sınıfların sayısı ve bu sınıflardan ayrılan toplam çalışan krediniz gibi akademik vereceğiniz tüm ilgili bilgileri içerir. Ayrıca Eğitim Merkezi, yazılım, öğrenme ve hızlı başlangıç şablonları tarafından sunulan diğer avantajların kısayollarını da görüntüler.
 
-## <a name="overview-page"></a>Genel Bakış sayfası
+## <a name="overview-page"></a>Genel bakış sayfası
 :::image type="content" source="media/hub-overview-page/overview.png" alt-text="Oturum açma hata iletisi." border="false":::
 
 1. **Kurslar** , eğitmenin hesabındaki toplam etkin kurslar sayısını gösterir.

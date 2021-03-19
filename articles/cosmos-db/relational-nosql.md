@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 12/16/2019
 ms.reviewer: sngun
 ms.openlocfilehash: d986106337eb1ede2f6d61303d8a4c487bbed276
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93088480"
 ---
 # <a name="understanding-the-differences-between-nosql-and-relational-databases"></a>NoSQL ve ilişkisel veritabanları arasındaki farkları anlama
@@ -40,7 +40,7 @@ Ancak, bugün belge stili veritabanlarının popülerliği önemli ölçüde art
 
 [Nesne yönelimli tasarımın](https://en.wikipedia.org/wiki/Object-oriented_design)ortaya çıkması ve ilişkisel modellerle birleştirilirken ortaya çıkan [Impedance uyuşmazlığının](https://en.wikipedia.org/wiki/Object-relational_impedance_mismatch) yanı sıra, belirli kullanım durumları için ilişkisel veritabanlarında de bir kenar yumuşatma vurgulanıyor. Gizli ancak genellikle önemli bakım maliyetleri sonuç olarak ortaya çıkabilir. Bu, [ORM yaklaşımlarının](https://en.wikipedia.org/wiki/Object-relational_mapping) büyük ölçüde hafifletmek için geliştirilmiştir, ancak nesne odaklı yaklaşımlar sayesinde belge odaklı veritabanları Nonetheless. Bu yaklaşımda, geliştiriciler ORM sürücülerine veya Bespoke dile özgü Oo 'e özgü bir özel [veritabanı altyapısına](https://en.wikipedia.org/wiki/Object_database)kaydedilmesine zorlanmaz. Verileriniz çok sayıda üst-alt ilişkisi ve derinlemesine hiyerarşi düzeyleri içeriyorsa, [SQL API 'si](./introduction.md)gibi bir NoSQL belge Azure Cosmos DB veritabanı kullanmayı düşünmek isteyebilirsiniz.
 
-:::image type="content" source="./media/relational-or-nosql/order-orderdetails.jpg" alt-text="Sunucusundan":::
+:::image type="content" source="./media/relational-or-nosql/order-orderdetails.jpg" alt-text="OrderDetails":::
 
 ## <a name="complex-networks-and-relationships"></a>Karmaşık ağlar ve ilişkiler
 
@@ -50,7 +50,7 @@ Kendi adı verildiğinde ilişkisel veritabanları, ayrıntılı ve karmaşık i
 
 Veritabanınızda karmaşık bir ilişki ağı bulundururken, bu verileri yönetmek için [Azure Cosmos DB Gremlin API 'si](./graph-introduction.md) gibi bir grafik veritabanını göz önünde bulundurmanız gerekebilir.
 
-:::image type="content" source="./media/relational-or-nosql/graph.png" alt-text="Sunucusundan":::
+:::image type="content" source="./media/relational-or-nosql/graph.png" alt-text="Veritabanı diyagramı, birbirine bağlı çeşitli çalışanları ve departmanları gösterir.":::
 
 Azure Cosmos DB, tüm ana NoSQL model türleri için bir API projeksiyonu sunan çok modelli bir veritabanı hizmetidir; Sütun ailesi, belge, grafik ve anahtar değeri. [Gremlin (grafik)](./gremlin-support.md) ve SQL (çekirdek) belge API 'si katmanları tamamen birlikte kullanılabilir. Bu, programlama düzeyinde farklı modeller arasında geçiş avantajlarına sahiptir. Grafik depoları hem karmaşık ağ traversals hem de aynı depodaki belge kayıtları olarak modellenen işlemler bakımından sorgulanabilir.
 
@@ -77,7 +77,9 @@ NoSQL veritabanlarını uygularken bazı avantajlar olsa da, dikkate almanız is
 
 İlk sınamayı inceledikten sonra, NoSQL veritabanlarındaki parmak izi, daha önce bahsedilen ve dağıtılmış bir sistemde daha verimli okumalar üreten bir şekilde genel kullanıma sunulmuştur. Ancak, bu yaklaşımla birlikte oynatacak bazı tasarım zorlukları vardır. Tek bir kategori ve birden çok etiketle ilgili bir ürüne örnek alalım:
 
-:::image type="content" source="./media/relational-or-nosql/many-joins.png" alt-text="Sunucusundan" ilişkisinde basit bir güncelleştirme olması yerine ürün içindeki birden çok kayıtta yinelendiği ve verileri almak için bir JOIN olduğundan, bu işlemi kolaylaştırmak için tasarım seçenekleri, bakım karmaşıklığı ekledi. 
+:::image type="content" source="./media/relational-or-nosql/many-joins.png" alt-text="Birleştirmeler":::
+
+NoSQL belge veritabanında en iyi yöntem yaklaşımı, kategori adı ve etiket adlarını doğrudan bir "ürün belgesi" içinde kabul etmek olacaktır. Ancak, kategorileri, etiketleri ve ürünleri eşitlenmiş halde tutmak için, verilerin bir "bire çok" ilişkisinde basit bir güncelleştirme olması yerine ürün içindeki birden çok kayıtta yinelendiği ve verileri almak için bir JOIN olduğundan, bu işlemi kolaylaştırmak için tasarım seçenekleri, bakım karmaşıklığı ekledi. 
 
 Bir denge, yoğun olarak kullanılan kayıt sırasında okumaların daha verimlidir ve kavramsal olarak katılmış varlıkların sayısı arttıkça giderek daha verimli hale gelir. Ancak, artan bir kayıttaki birleştirilmiş varlıkların sayısını artırarak okuma verimliliği arttıkça, varlıkların eşitlenmiş durumda tutulması için de bakım karmaşıklığı da artar. Bu ticareti azaltıcı bir yol, [karma veri modeli](./modeling-data.md#hybrid-data-models)oluşturmaktır.
 

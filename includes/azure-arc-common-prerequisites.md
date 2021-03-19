@@ -5,13 +5,13 @@ ms.topic: include
 ms.date: 09/05/2020
 ms.author: mikeray
 ms.openlocfilehash: 929a2775ab678d37b20865a6d6edc1cf17230b06
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90941851"
 ---
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu makaledeki görevlere devam edebilmeniz için, şunları yapmanız gerekir:
 
@@ -19,6 +19,6 @@ Bu makaledeki görevlere devam edebilmeniz için, şunları yapmanız gerekir:
 
    Araçlar dahildir `azdata` , Azure Data Studio ve Azure CLI.
 
-   Azure Data Studio için, **Azure Data CLI**, **Azure Arc**ve **PostgreSQL** için uzantıları yükleme (veri hizmetlerine bağlı olarak)
+   Azure Data Studio için, **Azure Data CLI**, **Azure Arc** ve **PostgreSQL** için uzantıları yükleme (veri hizmetlerine bağlı olarak)
 
 - [Bir Azure Arc veri denetleyicisi yüklendi](../articles/azure-arc/data/create-data-controller.md)

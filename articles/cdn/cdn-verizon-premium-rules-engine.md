@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 05/31/2019
 ms.author: allensu
 ms.openlocfilehash: a49912bc2275e478d657f06587c4ddc830210d3a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87040215"
 ---
 # <a name="override-http-behavior-using-the-azure-cdn-from-verizon-premium-rules-engine"></a>Verizon Premium kural altyapısından Azure CDN kullanarak HTTP davranışını geçersiz kılın
@@ -60,7 +60,7 @@ Kural altyapısına erişmek için, önce Azure CDN yönetim sayfasına erişmek
 
 3. **Ad/açıklama** metin kutusuna bir ad girin.
 
-4. Kuralın geçerli olduğu isteklerin türünü belirler. **Her zaman**varsayılan eşleşme koşulunu kullanın.
+4. Kuralın geçerli olduğu isteklerin türünü belirler. **Her zaman** varsayılan eşleşme koşulunu kullanın.
    
    ![CDN kuralı eşleşme koşulu](./media/cdn-rules-engine/cdn-request-type.png)
    
@@ -73,14 +73,14 @@ Kural altyapısına erişmek için, önce Azure CDN yönetim sayfasına erişmek
    >
    >
 
-5. Yeni bir özellik eklemek için Özellikler ' in **+** yanındaki düğmeyi seçin **Features**.  Sol taraftaki açılan listede, **en yüksek kullanım süresini zorla**' yı seçin.  Görüntülenen metin kutusuna **300**girin. Kalan varsayılan değerleri değiştirmeyin.
+5. Yeni bir özellik eklemek için Özellikler ' in **+** yanındaki düğmeyi seçin .  Sol taraftaki açılan listede, **en yüksek kullanım süresini zorla**' yı seçin.  Görüntülenen metin kutusuna **300** girin. Kalan varsayılan değerleri değiştirmeyin.
    
    ![CDN kural özelliği](./media/cdn-rules-engine/cdn-new-feature.png)
    
    > [!NOTE]
    > Açılan listede birden çok özellik bulunur. Şu anda seçili olan özellik hakkında daha fazla bilgi için, sol tarafında mavi bilgilendirici simgesini seçin.
    >
-   > **Zorlamalı Iç maksimum yaş**IÇIN, `Cache-Control` `Expires` CDN kenar düğümünün varlığı kaynaktan ne zaman yenilediğine göre denetlemek için varlık ve üstbilgiler geçersiz kılınır. Bu örnekte, CDN Edge düğümü, varlığı kaynağın kaynağından yenilemelerinden önce 300 saniye veya 5 dakika boyunca varlığını önbelleğe alır.
+   > **Zorlamalı Iç maksimum yaş** IÇIN, `Cache-Control` `Expires` CDN kenar düğümünün varlığı kaynaktan ne zaman yenilediğine göre denetlemek için varlık ve üstbilgiler geçersiz kılınır. Bu örnekte, CDN Edge düğümü, varlığı kaynağın kaynağından yenilemelerinden önce 300 saniye veya 5 dakika boyunca varlığını önbelleğe alır.
    >
    > Özelliklerin ayrıntılı bir listesi için bkz. [Rules Engine özellikleri](cdn-verizon-premium-rules-engine-reference-features.md).
    >

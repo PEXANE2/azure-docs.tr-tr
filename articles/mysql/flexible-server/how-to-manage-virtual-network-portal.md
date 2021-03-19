@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: how-to
 ms.date: 9/21/2020
 ms.openlocfilehash: 28506ea5afe085e9f52e40495d9931ae0aeddf32
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90941070"
 ---
 # <a name="create-and-manage-virtual-networks-for-azure-database-for-mysql---flexible-server-using-the-azure-portal"></a>Azure portal kullanarak MySQL için Azure veritabanı için sanal ağlar oluşturma ve yönetme-esnek sunucu
@@ -27,7 +27,7 @@ Bu makalede, Azure portal kullanarak **özel erişim (VNET tümleştirmesi)** il
 
 Sunucu oluşturma işlemi sırasında esnek sunucunuzu bir sanal ağa ve alt ağa dağıtabilirsiniz. Esnek sunucu dağıtıldıktan sonra başka bir sanal ağa, alt ağa veya *Genel erişime (izin verilen IP adresleri)* taşıyamazsınız.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 Bir sanal ağda esnek sunucu oluşturmak için şunlar gerekir:
 - Bir [sanal ağ](../../virtual-network/quick-create-portal.md#create-a-virtual-network)
     > [!Note]

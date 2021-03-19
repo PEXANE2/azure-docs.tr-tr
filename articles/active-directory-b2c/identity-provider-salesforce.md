@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/15/2021
+ms.date: 03/17/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: d445a4e1d0fd39788c18f80b25ce02a7c5d0a243
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.openlocfilehash: f87ef03a3af110ec17b7d907d4c2eac1bc1ca58b
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103488695"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104579935"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-salesforce-account-using-azure-active-directory-b2c"></a>Azure Active Directory B2C kullanarak bir Salesforce hesabı ile kaydolma ve oturum açma ayarlama
 
@@ -87,6 +87,8 @@ Azure Active Directory B2C (Azure AD B2C) ' de Salesforce hesabı olan kullanıc
 1. **Kaydet**’i seçin.
 
 ## <a name="add-salesforce-identity-provider-to-a-user-flow"></a>Bir Kullanıcı akışına Salesforce kimlik sağlayıcısı ekleme 
+
+Bu noktada Salesforce kimlik sağlayıcısı ayarlanmıştır, ancak oturum açma sayfalarında henüz mevcut değildir. Salesforce kimlik sağlayıcısını bir Kullanıcı akışına eklemek için:
 
 1. Azure AD B2C kiracınızda **Kullanıcı akışları**' nı seçin.
 1. Salesforce kimlik sağlayıcısı eklemek istediğiniz kullanıcı akışına tıklayın.

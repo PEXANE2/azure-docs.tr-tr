@@ -15,17 +15,17 @@ ms.workload: na
 ms.date: 07/17/2020
 ms.author: yelevin
 ms.openlocfilehash: ea7953be25473357f7ed572fa8b76076edc6f75a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87038126"
 ---
 # <a name="connect-your-illusive-attack-management-system-to-azure-sentinel"></a>Illusive saldırı yönetim sisteminizi Azure Sentinel 'e bağlama
 
 > [!IMPORTANT]
 > Azure Sentinel 'deki Illusive saldırı yönetimi sistem verileri Bağlayıcısı Şu anda genel önizlemededir.
-> Bu özellik, bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yükleri için önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Bu özellik, bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yükleri için önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Bu makalede, [Illusive saldırı yönetim sisteminizin](https://www.illusivenetworks.com/technology/platform/attack-detection-system) Azure Sentinel 'e nasıl bağlanacağı açıklanır. Illusive saldırı yönetimi sistem verileri Bağlayıcısı, Azure Sentinel ile Illusive 'ın saldırı yüzeyi analizi verilerini ve olay günlüklerini paylaşmanıza ve bu bilgileri, kuruluşunuzun saldırı yüzeyi riski (ASM Panosu) ile ilgili bilgiler sunan ve kuruluşunuzun ağında (ADS Panosu) yetkisiz bir yan yana izlemeyi sağlayan özel panolar halinde görüntülemenize olanak sağlar.
 

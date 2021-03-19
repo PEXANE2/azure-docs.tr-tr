@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.openlocfilehash: 5cd4454d5b77d18940f6693a25a691a01f4fedec
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90942011"
 ---
 # <a name="servers---azure-database-for-postgresql---flexible-server"></a>Sunucular-PostgreSQL için Azure veritabanı-esnek sunucu
@@ -71,5 +71,5 @@ Postgres için yönetilen bir hizmet olarak, PostgreSQL için Azure veritabanı 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - Hizmete genel bakış için bkz. [PostgreSQL Için Azure veritabanı genel bakış](overview.md).
-- **Yapılandırmanıza**bağlı olarak belirli kaynak kotaları ve sınırlamalar hakkında bilgi için bkz. [işlem ve depolama seçenekleri](concepts-compute-storage.md).
+- **Yapılandırmanıza** bağlı olarak belirli kaynak kotaları ve sınırlamalar hakkında bilgi için bkz. [işlem ve depolama seçenekleri](concepts-compute-storage.md).
 - [Azure Portal](howto-configure-server-parameters-using-portal.md) veya [Azure CLI](howto-configure-server-parameters-using-cli.md)aracılığıyla sunucu parametrelerini görüntüleyin ve düzenleyin.

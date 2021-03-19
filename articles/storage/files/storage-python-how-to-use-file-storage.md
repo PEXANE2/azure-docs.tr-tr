@@ -9,10 +9,10 @@ ms.author: rogarana
 ms.subservice: files
 ms.custom: devx-track-python
 ms.openlocfilehash: 8bef69037fad8bf8ee9537e90f26ca967560b9d2
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91876106"
 ---
 # <a name="develop-for-azure-files-with-python"></a>Python ile Azure Dosyaları için geliştirme
@@ -205,7 +205,7 @@ Aşağıdaki örnek, `download_file` belirtilen dosyanın içeriğini almak içi
 
 Bir dosyadaki verileri indirmek için [get_file_to_path](/python/api/azure-storage-file/azure.storage.file.fileservice.fileservice?view=azure-python-previous&preserve-view=true#get-file-to-path-share-name--directory-name--file-name--file-path--open-mode--wb---start-range-none--end-range-none--validate-content-false--progress-callback-none--max-connections-2--timeout-none--snapshot-none-), [get_file_to_stream](/python/api/azure-storage-file/azure.storage.file.fileservice.fileservice?view=azure-python-previous&preserve-view=true#get-file-to-stream-share-name--directory-name--file-name--stream--start-range-none--end-range-none--validate-content-false--progress-callback-none--max-connections-2--timeout-none--snapshot-none-), [get_file_to_bytes](/python/api/azure-storage-file/azure.storage.file.fileservice.fileservice?view=azure-python-previous&preserve-view=true#get-file-to-bytes-share-name--directory-name--file-name--start-range-none--end-range-none--validate-content-false--progress-callback-none--max-connections-2--timeout-none--snapshot-none-)veya [get_file_to_text](/python/api/azure-storage-file/azure.storage.file.fileservice.fileservice?view=azure-python-previous&preserve-view=true#get-file-to-text-share-name--directory-name--file-name--encoding--utf-8---start-range-none--end-range-none--validate-content-false--progress-callback-none--max-connections-2--timeout-none--snapshot-none-)kullanın. Verilerin boyutu 64 MB 'ı aştığında, gereken parçalama gerçekleştiren yüksek düzeyli yöntemlerdir.
 
-Aşağıdaki örnek, `get_file_to_path` Dosya dosyasının içeriğini indirmek ve *out-sunset.png* dosyasına depolamak **myfile** için kullanımını gösterir.
+Aşağıdaki örnek, `get_file_to_path` Dosya dosyasının içeriğini indirmek ve *out-sunset.png* dosyasına depolamak  için kullanımını gösterir.
 
 ```python
 file_service.get_file_to_path('myshare', None, 'myfile', 'out-sunset.png')

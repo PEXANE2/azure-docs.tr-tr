@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 04/01/2020
 ms.author: aahi
 ms.openlocfilehash: f6a1bc652125990a7daf3414895f34b95c544912
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "83590563"
 ---
 # <a name="configure-text-analytics-docker-containers"></a>Metin Analizi Docker kapsayıcılarını yapılandırma
@@ -43,7 +43,7 @@ Bu ayar aşağıdaki yerde bulunabilir:
 
 ## <a name="billing-configuration-setting"></a>Faturalandırma yapılandırma ayarı
 
-Bu `Billing` ayar, Azure 'da kapsayıcının fatura bilgilerini ölçmek için kullanılan _metin analizi_ KAYNAĞıNıN uç nokta URI 'sini belirtir. Bu yapılandırma ayarı için bir değer belirtmeniz gerekir ve Azure 'da bir __metin analizi_ kaynağı için değer geçerli bir uç nokta URI 'si olmalıdır. Kapsayıcı her 10 ila 15 dakikada bir kullanım raporu sağlar.
+Bu `Billing` ayar, Azure 'da kapsayıcının fatura bilgilerini ölçmek için kullanılan _metin analizi_ KAYNAĞıNıN uç nokta URI 'sini belirtir. Bu yapılandırma ayarı için bir değer belirtmeniz gerekir ve Azure 'da bir _ _metin analizi_ kaynağı için değer geçerli bir uç nokta URI 'si olmalıdır. Kapsayıcı her 10 ila 15 dakikada bir kullanım raporu sağlar.
 
 Bu ayar aşağıdaki yerde bulunabilir:
 
@@ -80,7 +80,7 @@ Konak bağlama konumunun tam sözdizimi, ana bilgisayar işletim sistemine bağl
 |İsteğe Bağlı| Name | Veri türü | Açıklama |
 |-------|------|-----------|-------------|
 |İzin verilmiyor| `Input` | Dize | Metin Analizi kapsayıcılar bunu kullanmaz.|
-|İsteğe Bağlı| `Output` | Dize | Çıkış bağlama hedefi. Varsayılan değer: `/output`. Bu, günlüklerin konumudur. Bu, kapsayıcı günlüklerini içerir. <br><br>Örnek:<br>`--mount type=bind,src=c:\output,target=/output`|
+|İsteğe Bağlı| `Output` | Dize | Çıkış bağlama hedefi. `/output` varsayılan değerdir. Bu, günlüklerin konumudur. Bu, kapsayıcı günlüklerini içerir. <br><br>Örnek:<br>`--mount type=bind,src=c:\output,target=/output`|
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

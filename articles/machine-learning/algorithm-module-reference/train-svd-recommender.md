@@ -8,19 +8,19 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 02/22/2020
-ms.openlocfilehash: a5740e851fbd8f7ba82e179f7e5299d6c7090596
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 03/17/2021
+ms.openlocfilehash: 77407f253bb347160ea331bd7384d8085f21b040
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90890246"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104654467"
 ---
 # <a name="train-svd-recommender"></a>SVD Önerenini Eğitme
 
 Bu makalede, Azure Machine Learning tasarımcısında eğitme SVD öneren modülünün nasıl kullanılacağı açıklanır. Tek değer ayrıştırma (SVD) algoritmasına dayalı bir öneri modeli geliştirmek için bu modülü kullanın.  
 
-Tren SVD öneren modülü kullanıcı-öğe derecelendirme üçlü veri kümesini okur. Eğitilen bir SVD öneren döndürür. Daha sonra eğitilen modeli kullanarak, Puanlama tahmin edebilir veya öneriler oluşturabilir ve bu da [SVD öneren](score-svd-recommender.md) modülünü kullanabilirsiniz.  
+Tren SVD öneren modülü kullanıcı-öğe derecelendirme üçlü veri kümesini okur. Eğitilen bir SVD öneren döndürür. Daha sonra eğitilen modeli, Puanlama tahmin etmek veya öneri oluşturmak için, bir [SVD öneren](score-svd-recommender.md) modülünü bağlayarak kullanabilirsiniz.  
 
 
   
@@ -58,18 +58,21 @@ Bu örnekten, tek bir kullanıcının birçok film derecelendirip derecelendiril
 
 1.  Tasarımcıda SVD öneren modülünü eğit hale ekleyin ve eğitim verilerine bağlayın.  
    
-2.  **Faktörlerin sayısı**için öneren ile kullanılacak faktörlerin sayısını belirtin.  
+2.  **Faktörlerin sayısı** için öneren ile kullanılacak faktörlerin sayısını belirtin.  
     
     Her faktörün, kullanıcının öğeyle ne kadar ilgili olduğunu ölçer. Faktörlerin sayısı Ayrıca, görünmeyen faktör alanının boyutaldır. Artan Kullanıcı ve öğe sayısı sayesinde daha fazla sayıda etmen ayarlamanız daha iyidir. Ancak sayı çok büyükse performans kaybolabilir.
     
 3.  **Öneri algoritması yinelemesi sayısı** , algoritmanın giriş verilerini kaç kez işlemesi gerektiğini gösterir. Bu sayı arttıkça, tahmine göre daha kesin olur. Ancak, daha yüksek bir sayı daha yavaş eğitim anlamına gelir. Varsayılan değer 30’dur.
 
-4.  **Öğrenme oranı**için, öğrenme için adım boyutunu tanımlayan 0,0 ile 2,0 arasında bir sayı girin.
+4.  **Öğrenme oranı** için, öğrenme için adım boyutunu tanımlayan 0,0 ile 2,0 arasında bir sayı girin.
 
     Öğrenme oranı her yinelemede adımın boyutunu belirler. Adım boyutu çok büyükse en iyi çözümü fazla gerçekleştirebilirsiniz. Adım boyutu çok küçükse, eğitim en iyi çözümü bulmayı daha uzun sürer. 
   
 5.  İşlem hattını gönderme.  
 
+## <a name="results"></a>Sonuçlar
+
+İşlem hattı çalıştırması tamamlandıktan sonra, puanlama modelini kullanmak için, yeni giriş örneklerine yönelik değerleri tahmin etmek [üzere SVD](score-svd-recommender.md) [öneren 'i eğit](train-svd-recommender.md) .
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

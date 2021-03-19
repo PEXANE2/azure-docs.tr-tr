@@ -7,10 +7,10 @@ ms.date: 10/09/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: ec26f021ffa581b0713973904c97349df83a08ef
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91930280"
 ---
 # <a name="tutorial-manage-app-groups-with-the-azure-portal"></a>Öğretici: Azure portal ile uygulama gruplarını yönetme
@@ -35,7 +35,7 @@ Azure portal veya PowerShell 'i kullanarak bir konak havuzu ve oturum ana bilgis
     >[!NOTE]
     > US Gov portalında oturum açıyorsanız, [https://portal.azure.us/](https://portal.azure.us/) bunun yerine öğesine gidin.
 
-2.  **Windows sanal masaüstü**araması yapın ve seçin.
+2.  **Windows sanal masaüstü** araması yapın ve seçin.
 
 3. Doğrudan bir uygulama grubu ekleyebilir veya mevcut bir konak havuzundan ekleyebilirsiniz. Aşağıdan bir seçenek belirleyin:
 
@@ -53,7 +53,7 @@ Azure portal veya PowerShell 'i kullanarak bir konak havuzu ve oturum ana bilgis
     > [!div class="mx-imgBorder"]
     > ![Azure portal temel bilgiler sekmesinin ekran görüntüsü.](media/basics-tab.png)
 
-6. **Uygulama grubu türü**altında **RemoteApp** ' i seçin ve ardından RemoteApp 'niz için bir ad girin.
+6. **Uygulama grubu türü** altında **RemoteApp** ' i seçin ve ardından RemoteApp 'niz için bir ad girin.
 
       > [!div class="mx-imgBorder"]
       > ![Uygulama grubu türü alanlarının ekran görüntüsü. "RemoteApp" vurgulanır.](media/remoteapp-button.png)
@@ -73,12 +73,12 @@ Azure portal veya PowerShell 'i kullanarak bir konak havuzu ve oturum ana bilgis
 
 12.  Başlangıç menüsünden bir uygulama eklemek için:
 
-      - **Uygulama kaynağı**' nın altında, açılır menüden **Başlat menüsü** ' nü seçin. Ardından, **uygulama**altında, açılır menüden uygulamayı seçin.
+      - **Uygulama kaynağı**' nın altında, açılır menüden **Başlat menüsü** ' nü seçin. Ardından, **uygulama** altında, açılır menüden uygulamayı seçin.
 
      > [!div class="mx-imgBorder"]
      > ![Başlangıç menüsü seçili olan uygulama ekleme ekranının ekran görüntüsü.](media/add-app-start.png)
 
-      - **Görünen ad**alanında, kullanıcının istemcisinde gösterilecek uygulamanın adını girin.
+      - **Görünen ad** alanında, kullanıcının istemcisinde gösterilecek uygulamanın adını girin.
 
       - Diğer seçenekleri olduğu gibi bırakın ve **Kaydet**' i seçin.
 
@@ -88,7 +88,7 @@ Azure portal veya PowerShell 'i kullanarak bir konak havuzu ve oturum ana bilgis
 
       - **Uygulama yolu**' nda, ilgili konak havuzuna kayıtlı oturum ana bilgisayarında uygulamanın yolunu girin.
 
-      - Uygulama **adı**, **görünen ad**, **simge yolu**ve **simge dizini** alanlarında uygulamanın ayrıntılarını girin.
+      - Uygulama **adı**, **görünen ad**, **simge yolu** ve **simge dizini** alanlarında uygulamanın ayrıntılarını girin.
 
       - **Kaydet**’i seçin.
 
@@ -99,7 +99,7 @@ Azure portal veya PowerShell 'i kullanarak bir konak havuzu ve oturum ana bilgis
 
 15.  Sonra, Ileri ' yi seçin **: çalışma alanı >**.
 
-16.  Uygulama grubunu bir çalışma alanına kaydetmek istiyorsanız, **uygulama grubunu kaydet**için **Evet** ' i seçin. Uygulama grubunu daha sonra kaydetmeyi tercih ediyorsanız **Hayır**' ı seçin.
+16.  Uygulama grubunu bir çalışma alanına kaydetmek istiyorsanız, **uygulama grubunu kaydet** için **Evet** ' i seçin. Uygulama grubunu daha sonra kaydetmeyi tercih ediyorsanız **Hayır**' ı seçin.
 
 17.  **Evet**' i seçerseniz, uygulama grubunuzu kaydetmek için var olan bir çalışma alanı seçebilirsiniz.
 

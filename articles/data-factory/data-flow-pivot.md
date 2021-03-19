@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 07/17/2020
 ms.openlocfilehash: e098182c000cbe05df533434a41c55b797ef876f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87086685"
 ---
 # <a name="pivot-transformation-in-mapping-data-flow"></a>Eşleme veri akışında Özet dönüştürme
@@ -41,7 +41,7 @@ Bu bölüm isteğe bağlıdır. Hiçbir gruplandırma sütunu seçilmezse, tüm 
 
 Pivot tuşu, satır değerlerinin yeni sütunlara göre özetlenen sütunundir. Varsayılan olarak, Özet dönüştürme her benzersiz satır değeri için yeni bir sütun oluşturur.
 
-**Değer**etiketli bölümünde, özetlenecek belirli satır değerlerini girebilirsiniz. Yalnızca bu bölüme girilen satır değerleri özetlendirilecektir. **Null değeri** etkinleştirmek sütunundaki null değerler için bir özetleme sütunu oluşturacak.
+**Değer** etiketli bölümünde, özetlenecek belirli satır değerlerini girebilirsiniz. Yalnızca bu bölüme girilen satır değerleri özetlendirilecektir. **Null değeri** etkinleştirmek sütunundaki null değerler için bir özetleme sütunu oluşturacak.
 
 ### <a name="pivoted-columns"></a>Özetleme sütunları
 
@@ -83,7 +83,7 @@ Pivot, satır değerlerine göre dinamik olarak yeni sütun adları oluşturur. 
 
 ## <a name="data-flow-script"></a>Veri akışı betiği
 
-### <a name="syntax"></a>Sözdizimi
+### <a name="syntax"></a>Syntax
 
 ```
 <incomingStreamName>

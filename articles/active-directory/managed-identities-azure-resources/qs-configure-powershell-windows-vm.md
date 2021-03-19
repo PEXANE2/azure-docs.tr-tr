@@ -16,10 +16,10 @@ ms.date: 08/19/2020
 ms.author: barclayn
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4b4209ce159c9d0bbee01dd422b98832f6bb5713
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90968992"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-an-azure-vm-using-powershell"></a>PowerShell kullanarak Azure VM 'de Azure kaynakları için Yönetilen kimlikler yapılandırma
@@ -34,7 +34,7 @@ Bu makalede, PowerShell 'i kullanarak Azure VM 'de Azure kaynakları işlemleri 
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-- Azure kaynakları için Yönetilen kimlikler hakkında bilginiz varsa [genel bakış bölümüne](overview.md)bakın. ** [Sistem tarafından atanan ve Kullanıcı tarafından atanan yönetilen kimlik arasındaki farkı](overview.md#managed-identity-types)gözden geçirdiğinizden emin**olun.
+- Azure kaynakları için Yönetilen kimlikler hakkında bilginiz varsa [genel bakış bölümüne](overview.md)bakın. **[Sistem tarafından atanan ve Kullanıcı tarafından atanan yönetilen kimlik arasındaki farkı](overview.md#managed-identity-types)gözden geçirdiğinizden emin** olun.
 - Henüz bir Azure hesabınız yoksa, devam etmeden önce [ücretsiz bir hesaba kaydolun](https://azure.microsoft.com/free/).
 - Örnek betikleri çalıştırmak için iki seçeneğiniz vardır:
     - Kod bloklarının sağ üst köşesindeki **It TRY** düğmesini kullanarak açabileceğiniz [Azure Cloud Shell](../../cloud-shell/overview.md)kullanın.

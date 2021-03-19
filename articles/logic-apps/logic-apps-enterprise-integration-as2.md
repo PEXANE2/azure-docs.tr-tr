@@ -9,10 +9,10 @@ ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 10/08/2020
 ms.openlocfilehash: 1845de8332287f85e96b4e29c40caa66cb8704d9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91856679"
 ---
 # <a name="exchange-as2-messages-for-b2b-enterprise-integration-in-azure-logic-apps-with-enterprise-integration-pack"></a>Enterprise Integration Pack ile Azure Logic Apps'te AS2 kurumsal tümleştirme için AS2 iletilerini gönderme ve alma
@@ -22,7 +22,7 @@ ms.locfileid: "91856679"
 
 Azure Logic Apps 'de AS2 iletilerle çalışmak için, AS2 (sürüm 1,2) iletişimini destekleyen ve yöneten Tetikleyiciler ve eylemler sağlayan AS2 bağlayıcısını kullanabilirsiniz. Örneğin, iletileri aktarırken güvenlik ve güvenilirlik sağlamak için şu işlemleri kullanabilirsiniz:
 
-* [ **AS2 kodlama** ](#encode) , dijital Imzalama ve ileti değerlendirme bildirimleri (MDN) aracılığıyla, geçiş dışı desteği sağlamaya yardımcı olan bir kodlama eylemi. Örneğin, bu eylem AS2/HTTP üstbilgilerini uygular ve yapılandırıldığında bu görevleri gerçekleştirir:
+* [ **AS2 kodlama**](#encode) , dijital Imzalama ve ileti değerlendirme bildirimleri (MDN) aracılığıyla, geçiş dışı desteği sağlamaya yardımcı olan bir kodlama eylemi. Örneğin, bu eylem AS2/HTTP üstbilgilerini uygular ve yapılandırıldığında bu görevleri gerçekleştirir:
 
   * Giden iletileri imzalar.
   * Giden iletileri şifreler.
@@ -63,7 +63,7 @@ Bu makalede, AS2 Encoding ve kod çözme eylemlerinin mevcut bir mantıksal uygu
 
 * Sertifika yönetimi için [Azure Key Vault](../key-vault/general/overview.md) kullanıyorsanız, kasa anahtarlarınızın **şifreleme** ve **şifre çözme** işlemlerine izin verdiğinden emin olun. Aksi takdirde, kodlama ve kod çözme eylemleri başarısız olur.
 
-  Azure portal, anahtar kasasındaki anahtara gidin, anahtarın **Izin verilen işlemlerini**gözden geçirin ve **şifreleme** ve **şifre çözme** işlemlerinin seçili olduğunu onaylayın, örneğin:
+  Azure portal, anahtar kasasındaki anahtara gidin, anahtarın **Izin verilen işlemlerini** gözden geçirin ve **şifreleme** ve **şifre çözme** işlemlerinin seçili olduğunu onaylayın, örneğin:
 
   ![Kasa anahtarı işlemlerini denetleme](media/logic-apps-enterprise-integration-as2/key-vault-permitted-operations.png)
 
@@ -88,7 +88,7 @@ Bu makalede, AS2 Encoding ve kod çözme eylemlerinin mevcut bir mantıksal uygu
    | **AS2** | İleti alıcısının AS2 anlaşmanız tarafından belirtilen tanımlayıcısı |
    |||
 
-   Örneğin:
+   Örnek:
 
    ![İleti kodlama özellikleri](./media/logic-apps-enterprise-integration-as2/as2-message-encoding-details.png)
 

@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 09/21/2020
 ms.openlocfilehash: 24a8dd4d21cb6ab6edeb985db4e6e6a1349a758d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90942046"
 ---
 # <a name="encrypted-connectivity-using-transport-layer-security-tls-12-in-azure-database-for-mysql---flexible-server"></a>MySQL için Azure veritabanı 'nda Aktarım Katmanı Güvenliği (TLS 1,2) kullanılarak şifrelenmiş bağlantı-esnek sunucu
@@ -23,7 +23,7 @@ MySQL için Azure veritabanı esnek sunucu, istemci uygulamalarınızı, daha ö
 MySQL için Azure veritabanı esnek sunucu, yalnızca Aktarım Katmanı Güvenliği (TLS 1,2) kullanılarak şifrelenmiş bağlantıları destekler ve TLS 1,0 ve TLS 1,1 tüm gelen bağlantıları reddedilir. Tüm esnek sunucular için TLS bağlantıları zorlaması etkinleştirilmiştir ve esnek sunucuya bağlanmak için TLS/SSL 'yi devre dışı bırakayükleyemezsiniz.
 
 ## <a name="applications-that-require-certificate-verification-for-tlsssl-connectivity"></a>TLS/SSL bağlantısı için sertifika doğrulaması gerektiren uygulamalar
-Bazı durumlarda, uygulamalar güvenli bir şekilde bağlanmak için güvenilir bir sertifika yetkilisi (CA) sertifika dosyasından oluşturulan yerel bir sertifika dosyası gerektirir. MySQL için Azure veritabanı esnek sunucu, *DigiCert genel kök CA 'sını*kullanır. [DigiCert küresel kök CA](https://dl.cacerts.digicert.com/DigiCertGlobalRootCA.crt.pem) 'dan SSL üzerinden iletişim kurmak için gereken bu sertifikayı indirin ve sertifika dosyasını tercih ettiğiniz konuma kaydedin. Örneğin, bu öğretici kullanır `c:\ssl` .
+Bazı durumlarda, uygulamalar güvenli bir şekilde bağlanmak için güvenilir bir sertifika yetkilisi (CA) sertifika dosyasından oluşturulan yerel bir sertifika dosyası gerektirir. MySQL için Azure veritabanı esnek sunucu, *DigiCert genel kök CA 'sını* kullanır. [DigiCert küresel kök CA](https://dl.cacerts.digicert.com/DigiCertGlobalRootCA.crt.pem) 'dan SSL üzerinden iletişim kurmak için gereken bu sertifikayı indirin ve sertifika dosyasını tercih ettiğiniz konuma kaydedin. Örneğin, bu öğretici kullanır `c:\ssl` .
 
 ### <a name="connect-using-mysql-command-line-client-with-tlsssl"></a>MySQL komut satırı istemcisini TLS/SSL ile bağlama
 

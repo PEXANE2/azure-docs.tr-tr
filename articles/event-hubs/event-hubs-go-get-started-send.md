@@ -4,10 +4,10 @@ description: 'Hızlı başlangıç: Bu makale, Azure Event Hubs olayları gönde
 ms.topic: quickstart
 ms.date: 06/23/2020
 ms.openlocfilehash: 59cd0d757108e7579ce389d216b0ee4d569e12fd
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87002463"
 ---
 # <a name="quickstart-send-events-to-or-receive-events-from-event-hubs-using-go"></a>Hızlı başlangıç: go kullanarak Event Hubs olay gönderme veya olayları alma
@@ -209,7 +209,7 @@ if err != nil {
 
 ### <a name="create-a-check-pointer-and-a-leaser"></a>Bir denetim işaretçisi ve Leaser oluşturma 
 
-Belirli bir alıcıya bölüm kiralamadan sorumlu bir **Leaser**oluşturun ve diğer alıcıların doğru sapmayı okumaya başlayabilmesi için ileti akışı için denetim noktaları yazmaktan sorumlu bir **Denetim işaretçisi**oluşturun.
+Belirli bir alıcıya bölüm kiralamadan sorumlu bir **Leaser** oluşturun ve diğer alıcıların doğru sapmayı okumaya başlayabilmesi için ileti akışı için denetim noktaları yazmaktan sorumlu bir **Denetim işaretçisi** oluşturun.
 
 Şu anda, hem kiralamaları hem de kontrol noktalarını yönetmek için aynı depolama kapsayıcısını kullanan tek bir **Storageleasercheckpointer** vardır. Depolama hesabı ve kapsayıcı adlarına ek olarak, **Storageleasercheckpointer** , önceki adımda oluşturulan kimlik bilgilerini ve kapsayıcıya doğru şekilde erişmek için Azure ortam yapısını gerektirir.
 

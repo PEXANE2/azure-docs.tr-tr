@@ -17,17 +17,17 @@ ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 18bc7ca9e108a35fd27f7b3155f186221a8caae3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90980069"
 ---
 # <a name="view-add-and-remove-assignments-for-an-access-package-in-azure-ad-entitlement-management"></a>Azure AD yetkilendirme yönetiminde bir erişim paketi için atamaları görüntüleme, ekleme ve kaldırma
 
 Azure AD Yetkilendirme Yönetimi 'nde, paketlere kimlerin atandığını, ilkelerini ve durumunu görebilirsiniz. Bir erişim paketinin uygun bir ilkesi varsa, kullanıcıyı da bir erişim paketine doğrudan atayabilirsiniz. Bu makalede erişim paketleri için atamaları görüntüleme, ekleme ve kaldırma işlemlerinin nasıl yapılacağı açıklanır.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure AD yetkilendirme yönetimini kullanmak ve kullanıcılara paketlere erişim atamak için aşağıdaki lisanslardan birine sahip olmanız gerekir:
 
@@ -38,7 +38,7 @@ Azure AD yetkilendirme yönetimini kullanmak ve kullanıcılara paketlere erişi
 
 **Önkoşul rolü:** Genel yönetici, Kullanıcı Yöneticisi, Katalog sahibi, Paket Yöneticisi veya erişim paketi atama Yöneticisi
 
-1. Azure portal, **Azure Active Directory** ' a ve ardından **kimlik**Yönetimi ' ne tıklayın.
+1. Azure portal, **Azure Active Directory** ' a ve ardından **kimlik** Yönetimi ' ne tıklayın.
 
 1. Sol menüde, **erişim paketleri** ' ne tıklayın ve ardından erişim paketini açın.
 
@@ -66,7 +66,7 @@ Bazı durumlarda, kullanıcıların erişim paketini isteme işlemini istememele
 
 **Önkoşul rolü:** Genel yönetici, Kullanıcı Yöneticisi, Katalog sahibi, Paket Yöneticisi veya erişim paketi atama Yöneticisi
 
-1. Azure portal, **Azure Active Directory** ' a ve ardından **kimlik**Yönetimi ' ne tıklayın.
+1. Azure portal, **Azure Active Directory** ' a ve ardından **kimlik** Yönetimi ' ne tıklayın.
 
 1. Sol menüde, **erişim paketleri** ' ne tıklayın ve ardından erişim paketini açın.
 
@@ -96,7 +96,7 @@ Ayrıca, Microsoft Graph kullanarak bir kullanıcıyı doğrudan bir erişim pak
 
 **Önkoşul rolü:** Genel yönetici, Kullanıcı Yöneticisi, Katalog sahibi, Paket Yöneticisi veya erişim paketi atama Yöneticisi
 
-1. Azure portal, **Azure Active Directory** ' a ve ardından **kimlik**Yönetimi ' ne tıklayın.
+1. Azure portal, **Azure Active Directory** ' a ve ardından **kimlik** Yönetimi ' ne tıklayın.
 
 1. Sol menüde, **erişim paketleri** ' ne tıklayın ve ardından erişim paketini açın.
 

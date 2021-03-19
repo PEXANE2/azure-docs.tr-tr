@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: how-to
 ms.date: 09/22/2020
 ms.openlocfilehash: 8c107b88f964d8e657d6833fc3a2e8425d9053ce
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90941005"
 ---
 # <a name="create-and-manage-firewall-rules-for-azure-database-for-postgresql---flexible-server-using-the-azure-portal"></a>PostgreSQL için Azure veritabanı için güvenlik duvarı kuralları oluşturma ve yönetme-Azure portal kullanarak esnek sunucu
@@ -32,7 +32,7 @@ Bu makalede, Azure portal kullanarak **genel erişim (izin VERILEN IP adresleri)
 3. Dağıtım seçeneği olarak **esnek sunucu** ' yı seçin.
 4. **Temel bilgiler** formunu doldurun.
 5. Sunucunuza nasıl bağlanmak istediğinizi yapılandırmak için **ağ** sekmesine gidin.
-6. **Bağlantı yönteminde**, *genel erişim (izin verilen IP adresleri)* öğesini seçin. **Güvenlik duvarı kuralları**oluşturmak Için, güvenlik duvarı kuralı adını ve tek IP adresini veya bir adres aralığını belirtin. Kuralı tek bir IP adresiyle sınırlandırmak istiyorsanız, başlangıç IP adresi ve bitiş IP adresi alanına aynı adresi yazın. Güvenlik duvarının açılması, yöneticilerin, kullanıcıların ve uygulamaların geçerli kimlik bilgilerine sahip oldukları PostgreSQL sunucusundaki herhangi bir veritabanına erişmesine olanak sağlar.
+6. **Bağlantı yönteminde**, *genel erişim (izin verilen IP adresleri)* öğesini seçin. **Güvenlik duvarı kuralları** oluşturmak Için, güvenlik duvarı kuralı adını ve tek IP adresini veya bir adres aralığını belirtin. Kuralı tek bir IP adresiyle sınırlandırmak istiyorsanız, başlangıç IP adresi ve bitiş IP adresi alanına aynı adresi yazın. Güvenlik duvarının açılması, yöneticilerin, kullanıcıların ve uygulamaların geçerli kimlik bilgilerine sahip oldukları PostgreSQL sunucusundaki herhangi bir veritabanına erişmesine olanak sağlar.
    > [!Note]
    > PostgreSQL için Azure veritabanı-esnek sunucu, sunucu düzeyinde bir güvenlik duvarı oluşturur. Bu güvenlik duvarı, belirli IP adresleri için güvenlik duvarını açmak üzere bir kural oluşturmadığınız sürece, dış uygulama ve araçların sunucuya ve sunucu üzerindeki herhangi bir veritabanına bağlanmasını engeller.
 7. Esnek sunucu yapılandırmanızı gözden geçirmek için **gözden geçir + oluştur** ' u seçin.

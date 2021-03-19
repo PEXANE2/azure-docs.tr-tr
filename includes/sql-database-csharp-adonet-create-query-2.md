@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 12/10/2018
 ms.author: genemi
 ms.openlocfilehash: bca885f9b19086302fd91d29b8ff6553b7205f28
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86544458"
 ---
 ## <a name="c-program-example"></a>C# program örneği
@@ -24,7 +24,7 @@ Bu makalenin sonraki bölümlerinde Transact-SQL (T-SQL) deyimlerini SQL veritab
 
 ### <a name="entity-relationship-diagram-erd"></a>Varlık Ilişkisi diyagramı (ERD)
 
-`CREATE TABLE`Deyimler iki tablo arasında *yabancı anahtar* (FK) Ilişkisi oluşturmak için **Başvurular** anahtar sözcüğünü içerir. *Tempdb*kullanıyorsanız, `--REFERENCES` bir dizi baştaki tire kullanarak anahtar sözcüğü not edin.
+`CREATE TABLE`Deyimler iki tablo arasında *yabancı anahtar* (FK) Ilişkisi oluşturmak için **Başvurular** anahtar sözcüğünü içerir. *Tempdb* kullanıyorsanız, `--REFERENCES` bir dizi baştaki tire kullanarak anahtar sözcüğü not edin.
 
 ERD iki tablo arasındaki ilişkiyi görüntüler. **TabEmployee. DepartmentCode** *alt* sütunundaki değerler, **tabdepartment. DepartmentCode** *üst* sütunundaki değerlerle sınırlıdır.
 
@@ -37,9 +37,9 @@ ERD iki tablo arasındaki ilişkiyi görüntüler. **TabEmployee. DepartmentCode
 
 C# programı mantıksal olarak bir. cs dosyasıdır ve her bir bloğun anlaşılması daha kolay anlamak için fiziksel olarak birçok kod bloğuna bölünmüştür. Programı derlemek ve çalıştırmak için aşağıdaki adımları uygulayın:
 
-1. Visual Studio 'da bir C# projesi oluşturun. Proje türü *Console* **Şablonlar**  >  **Visual C#**  >  **Windows Masaüstü**  >  **konsol uygulaması (.NET Framework)** altında bulunan bir konsol olmalıdır.
+1. Visual Studio 'da bir C# projesi oluşturun. Proje türü  **Şablonlar**  >  **Visual C#**  >  **Windows Masaüstü**  >  **konsol uygulaması (.NET Framework)** altında bulunan bir konsol olmalıdır.
 
-1. *Program.cs*dosyasında, kod başlangıç satırları ' nı aşağıdaki adımlarla değiştirin:
+1. *Program. cs* dosyasında, kod başlangıç satırları ' nı aşağıdaki adımlarla değiştirin:
 
     1. Aşağıdaki kod bloklarını kopyalayıp, sunulan aynı sırada kopyalayıp yapıştırın, bkz. [veritabanına Bağlan](#cs_1_connect), [T-SQL oluştur](#cs_2_return)ve [veritabanına gönder](#cs_3_submit).
 
@@ -48,7 +48,7 @@ C# programı mantıksal olarak bir. cs dosyasıdır ve her bir bloğun anlaşıl
         - *CB. DataSource*
         - *CB. UserID*
         - *CB. Parolayı*
-        - * TialCatalogcb.Ini*
+        - *TialCatalogcb.Ini*
 
 1. *System.Data.dll* bütünleştirilmiş koda başvurulduğunu doğrulayın. Doğrulamak için **Çözüm Gezgini** bölmesinde **Başvurular** düğümünü genişletin.
 

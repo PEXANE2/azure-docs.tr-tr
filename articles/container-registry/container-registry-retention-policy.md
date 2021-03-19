@@ -4,10 +4,10 @@ description: Tanımlı bir dönemden sonra etiketlenmemiş bildirimlerin otomati
 ms.topic: article
 ms.date: 10/02/2019
 ms.openlocfilehash: 5dda85934bb10cf16fd90381539b892df4f5445c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "83683448"
 ---
 # <a name="set-a-retention-policy-for-untagged-manifests"></a>Etiketlenmemiş bildirimler için bekletme ilkesi ayarlama
@@ -43,7 +43,7 @@ Aşağıdaki örnekte, bir kayıt defterindeki etiketlenmemiş bildirimler için
 
 Varsayılan olarak, bir kapsayıcı kayıt defterinde hiçbir bekletme ilkesi ayarlanmadı. Bir bekletme ilkesi ayarlamak veya güncelleştirmek için, Azure CLı 'de [az ACR config bekletme güncelleştirme][az-acr-config-retention-update] komutunu çalıştırın. Etiketlenmemiş bildirimleri sürdürmek için 0 ile 365 arasında bir gün sayısı belirtebilirsiniz. Gün sayısı belirtmezseniz, komut varsayılan olarak 7 gün ayarlar. Saklama süresinden sonra, kayıt defterindeki etiketlenmemiş tüm bildirimler otomatik olarak silinir.
 
-Aşağıdaki örnek, kayıt defteri *myregistry*içindeki etiketlenmemiş bildirimler için 30 günlük bir bekletme ilkesi ayarlar:
+Aşağıdaki örnek, kayıt defteri *myregistry* içindeki etiketlenmemiş bildirimler için 30 günlük bir bekletme ilkesi ayarlar:
 
 ```azurecli
 az acr config retention update --registry myregistry --status enabled --days 30 --type UntaggedManifests
@@ -86,7 +86,7 @@ Ayrıca, [Azure Portal](https://portal.azure.com)bir kayıt defterinin bekletme 
 
 ### <a name="enable-a-retention-policy"></a>Bekletme ilkesini etkinleştirme
 
-1. Azure Container Registry 'nize gidin. **İlkeler**altında, **bekletme** (Önizleme) öğesini seçin.
+1. Azure Container Registry 'nize gidin. **İlkeler** altında, **bekletme** (Önizleme) öğesini seçin.
 1. **Durum**' da **etkin**' i seçin.
 1. Etiketlenmemiş bildirimleri sürdürmek için 0 ile 365 arasında bir gün sayısı seçin. **Kaydet**’i seçin.
 
@@ -94,7 +94,7 @@ Ayrıca, [Azure Portal](https://portal.azure.com)bir kayıt defterinin bekletme 
 
 ### <a name="disable-a-retention-policy"></a>Bekletme ilkesini devre dışı bırakma
 
-1. Azure Container Registry 'nize gidin. **İlkeler**altında, **bekletme** (Önizleme) öğesini seçin.
+1. Azure Container Registry 'nize gidin. **İlkeler** altında, **bekletme** (Önizleme) öğesini seçin.
 1. **Durum**' da **devre dışı**' yı seçin. **Kaydet**’i seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar

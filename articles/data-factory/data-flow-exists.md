@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 05/07/2020
 ms.openlocfilehash: 805b51bf4e6d8feab9539f660dfc72ca78b82d5c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "82982641"
 ---
 # <a name="exists-transformation-in-mapping-data-flow"></a>Eşleme veri akışında dönüştürme var
@@ -27,7 +27,7 @@ Var olan dönüştürme, verilerinizin başka bir kaynakta veya akışta bulunup
 
 1. **Sağ Akış** açılan menüsünde var olan veri akışını kontrol ettiğiniz verileri seçin.
 1. Mevcut **tür** ayarında verilerin mevcut olup olmadığını mı yoksa mevcut mi olduğunu belirtin.
-1. **Özel bir ifade**isteyip istemediğinizi seçin.
+1. **Özel bir ifade** isteyip istemediğinizi seçin.
 1. Mevcut koşullarınız olarak karşılaştırmak istediğiniz anahtar sütunları seçin. Varsayılan olarak, veri akışı her akıştaki bir sütun arasında eşitlik arar. Hesaplanan bir değer ile karşılaştırmak için, sütun açılan listesinin üzerine gelin ve **hesaplanan sütun**' u seçin.
 
 ![Mevcut ayarlar](media/data-flow/exists.png "1 var")
@@ -48,13 +48,13 @@ Her akıştaki birden çok sütunu karşılaştırmak için var olan bir satır�
 
 ![Yayın katılımı](media/data-flow/broadcast.png "Yayın katılımı")
 
-Birleşimler, aramalar ve mevcut dönüşümde, bir veya her iki veri akışı çalışan düğümü belleğine sığması halinde **yayını**etkinleştirerek performansı iyileştirebilirsiniz. Spark altyapısı, varsayılan olarak bir kenar yayınlanıp yayınlanmayacağını otomatik olarak karar verir. Hangi tarafın yayınlanmak üzere el ile seçmek için, **sabit**' i seçin.
+Birleşimler, aramalar ve mevcut dönüşümde, bir veya her iki veri akışı çalışan düğümü belleğine sığması halinde **yayını** etkinleştirerek performansı iyileştirebilirsiniz. Spark altyapısı, varsayılan olarak bir kenar yayınlanıp yayınlanmayacağını otomatik olarak karar verir. Hangi tarafın yayınlanmak üzere el ile seçmek için, **sabit**' i seçin.
 
 Birleşimlerinizin zaman aşımı hatalarıyla çalışmadığı **durumlar dışında yayınlamayı** devre dışı bırakmanız önerilmez.
 
 ## <a name="data-flow-script"></a>Veri akışı betiği
 
-### <a name="syntax"></a>Sözdizimi
+### <a name="syntax"></a>Syntax
 
 ```
 <leftStream>, <rightStream>

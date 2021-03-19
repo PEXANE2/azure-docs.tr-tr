@@ -5,10 +5,10 @@ services: container-service
 ms.topic: article
 ms.date: 09/18/2020
 ms.openlocfilehash: 86b1c0bba30b41a2ee17cfbdf05286c4d2b3fb8a
-ms.sourcegitcommit: b437bd3b9c9802ec6430d9f078c372c2a411f11f
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91892719"
 ---
 # <a name="support-policies-for-azure-kubernetes-service"></a>Azure Kubernetes hizmeti için destek ilkeleri
@@ -24,7 +24,7 @@ Bu makalede, Azure Kubernetes Service (AKS) için teknik destek ilkeleri ve sın
 
 İşlem veya ağ bileşenleri gibi temel altyapı hizmet olarak altyapı (IaaS) bulut bileşenleri, alt düzey denetimlere ve özelleştirme seçeneklerine erişmenize izin verir. Buna karşılık, AKS, kümeniz için ihtiyaç duyduğunuz ortak yapılandırma ve özellik kümesini sağlayan bir anahtar oluşturma Kubernetes dağıtımı sağlar. Bir AKS kullanıcısı olarak, özelleştirme ve dağıtım seçenekleriniz sınırlı olacaktır. Exchange 'de, Kubernetes kümelerini doğrudan veya yönetmeniz gerekmez.
 
-AKS ile tam olarak yönetilen bir *Denetim düzlemi*alırsınız. Denetim düzlemi, çalıştırmak ve son kullanıcılara Kubernetes kümeleri sağlamak için ihtiyacınız olan tüm bileşenleri ve hizmetleri içerir. Tüm Kubernetes bileşenleri Microsoft tarafından korunur ve çalıştırılır.
+AKS ile tam olarak yönetilen bir *Denetim düzlemi* alırsınız. Denetim düzlemi, çalıştırmak ve son kullanıcılara Kubernetes kümeleri sağlamak için ihtiyacınız olan tüm bileşenleri ve hizmetleri içerir. Tüm Kubernetes bileşenleri Microsoft tarafından korunur ve çalıştırılır.
 
 Microsoft, Denetim bölmesi aracılığıyla aşağıdaki bileşenleri yönetir ve izler:
 
@@ -34,7 +34,7 @@ Microsoft, Denetim bölmesi aracılığıyla aşağıdaki bileşenleri yönetir 
 * Kubernetes proxy veya ağ
 * Kuin-System ad alanında çalışan ek eklenti veya sistem bileşeni
 
-AKS, bir hizmet olarak platform (PaaS) çözümü değildir. Aracı düğümleri gibi bazı bileşenlerin, kullanıcıların AKS kümesini sürdürmeleri gereken *paylaşılan sorumluluğu*vardır. Kullanıcı girişi, örneğin, bir aracı düğümü işletim sistemi (OS) güvenlik düzeltme eki uygulamak için gereklidir.
+AKS, bir hizmet olarak platform (PaaS) çözümü değildir. Aracı düğümleri gibi bazı bileşenlerin, kullanıcıların AKS kümesini sürdürmeleri gereken *paylaşılan sorumluluğu* vardır. Kullanıcı girişi, örneğin, bir aracı düğümü işletim sistemi (OS) güvenlik düzeltme eki uygulamak için gereklidir.
 
 Hizmetler, Microsoft 'un ve AKS ekibinin hizmet kullanılabilirliği ve işlevleri dağıttığı, çalıştığı ve sorumlu olduğu konusunda bir şekilde *yönetilir* . Müşteriler bu yönetilen bileşenleri değiştiremezler. Microsoft, tutarlı ve ölçeklenebilir bir kullanıcı deneyimi sağlamak için özelleştirmeyi kısıtlar. Tamamen özelleştirilebilir bir çözüm için bkz. [aks motoru](https://github.com/Azure/aks-engine).
 

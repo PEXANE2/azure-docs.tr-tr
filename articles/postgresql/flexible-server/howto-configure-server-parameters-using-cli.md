@@ -9,17 +9,17 @@ ms.topic: how-to
 ms.date: 9/22/2020
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: 43b14858cc99cac41e277b03171fd4cac4d6eafa
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90942127"
 ---
 # <a name="customize-server-parameters-for-azure-database-for-postgresql---flexible-server-using-azure-cli"></a>Azure CLı kullanarak PostgreSQL için Azure veritabanı için sunucu parametrelerini özelleştirme-esnek sunucu
 
 Komut satırı arabirimi (Azure CLı) kullanarak bir Azure PostgreSQL sunucusu için yapılandırma parametrelerini listeleyebilir, gösterebilir ve güncelleştirebilirsiniz. Altyapı parametrelerinin bir alt kümesi sunucu düzeyinde sunulur ve değiştirilebilir. 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu nasıl yapılır kılavuzunda ilerlemek için şunlar gerekir:
 - PostgreSQL için [Azure veritabanı oluşturma](quickstart-create-server-cli.md) sunucusuna ve veritabanı için Azure veritabanı oluşturma
@@ -29,7 +29,7 @@ Bu nasıl yapılır kılavuzunda ilerlemek için şunlar gerekir:
 
 Bir sunucudaki tüm değiştirilebilir parametreleri ve değerlerini listelemek için [az Postgres esnek-sunucu parametre listesi](/cli/azure/postgres/flexible-server/parameter) komutunu çalıştırın.
 
-Sunucu **mydemoserver.Postgres.Database.Azure.com** sunucu parametrelerini, **myresourcegroup**kaynak grubu altında listeleyebilirsiniz.
+Sunucu **mydemoserver.Postgres.Database.Azure.com** sunucu parametrelerini, **myresourcegroup** kaynak grubu altında listeleyebilirsiniz.
 
 ```azurecli-interactive
 az postgres flexible-server parameter list --resource-group myresourcegroup --server-name mydemoserver
@@ -61,7 +61,7 @@ Bir parametrenin değerini sıfırlamak istiyorsanız, isteğe bağlı parametre
 az postgres flexible-server parameter set --name log_min_messages --resource-group myresourcegroup --server-name mydemoserver
 ```
 
-Bu komut **günlük \_ Min \_ iletileri** parametresini varsayılan değer **uyarısı**olarak sıfırlar. Sunucu parametreleri ve izin verilen değerler hakkında daha fazla bilgi için bkz. [ayar parametreleri](https://www.postgresql.org/docs/12/config-setting.html)üzerinde PostgreSQL belgeleri.
+Bu komut **günlük \_ Min \_ iletileri** parametresini varsayılan değer **uyarısı** olarak sıfırlar. Sunucu parametreleri ve izin verilen değerler hakkında daha fazla bilgi için bkz. [ayar parametreleri](https://www.postgresql.org/docs/12/config-setting.html)üzerinde PostgreSQL belgeleri.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -5,10 +5,10 @@ ms.reviewer: dcurwin
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.openlocfilehash: a50b9ee05be48113221f2a12f968540bd3a00b3b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88824421"
 ---
 # <a name="monitor-your-backups-with-backup-explorer"></a>Yedekleme Gezgini ile yedeklemelerinizi izleme
@@ -54,19 +54,19 @@ Yedekleme Gezgini, her biri belirli bir yedekleme yapıtı (örneğin, bir yedek
 
 ### <a name="the-backup-items-tab"></a>Yedekleme öğeleri sekmesi
 
-Her yedekleme öğelerinizi abonelik, kasa ve diğer özelliklere göre filtreleyebilir ve görüntüleyebilirsiniz. Bir yedekleme öğesinin adını seçerek söz konusu öğe için Azure bölmesini açabilirsiniz. Örneğin, tablosundan, son yedeklemenin *X*öğesi için başarısız olduğunu gözlemleyebilirsiniz. *X*' i seçerek öğenin **yedekleme** bölmesini açabilirsiniz, burada isteğe bağlı yedekleme işlemini tetikleyebilirsiniz.
+Her yedekleme öğelerinizi abonelik, kasa ve diğer özelliklere göre filtreleyebilir ve görüntüleyebilirsiniz. Bir yedekleme öğesinin adını seçerek söz konusu öğe için Azure bölmesini açabilirsiniz. Örneğin, tablosundan, son yedeklemenin *X* öğesi için başarısız olduğunu gözlemleyebilirsiniz. *X*' i seçerek öğenin **yedekleme** bölmesini açabilirsiniz, burada isteğe bağlı yedekleme işlemini tetikleyebilirsiniz.
 
 > [!VIDEO https://www.microsoft.com/videoplayer/embed/RE4nQYc]
 
 ### <a name="the-jobs-tab"></a>Işler sekmesi
 
-Son 7 gün içinde tetiklenen tüm işlerin ayrıntılarını görüntülemek için **işler** sekmesini seçin. Burada *Iş işlemine*, *Iş durumuna*ve *hata koduna* göre filtreleyebilirsiniz (başarısız işler için).
+Son 7 gün içinde tetiklenen tüm işlerin ayrıntılarını görüntülemek için **işler** sekmesini seçin. Burada *Iş işlemine*, *Iş durumuna* ve *hata koduna* göre filtreleyebilirsiniz (başarısız işler için).
 
 > [!VIDEO https://www.microsoft.com/videoplayer/embed/RE4nOrh]
 
 ### <a name="the-alerts-tab"></a>Uyarılar sekmesi
 
-Son 7 gün içinde kasalarınızda oluşturulan tüm uyarıların ayrıntılarını görüntülemek için **Uyarılar** sekmesini seçin. Uyarıları türe (*Yedekleme hatası* veya *geri yükleme hatası*), geçerli durum (*etkin* veya *Çözümlenmiş*) ve önem derecesi (*kritik*, *Uyarı*veya *bilgi*) göre filtreleyebilirsiniz. Ayrıca, Azure VM 'ye gidip tüm gerekli işlemleri gerçekleştirmeniz için bir bağlantı seçebilirsiniz.
+Son 7 gün içinde kasalarınızda oluşturulan tüm uyarıların ayrıntılarını görüntülemek için **Uyarılar** sekmesini seçin. Uyarıları türe (*Yedekleme hatası* veya *geri yükleme hatası*), geçerli durum (*etkin* veya *Çözümlenmiş*) ve önem derecesi (*kritik*, *Uyarı* veya *bilgi*) göre filtreleyebilirsiniz. Ayrıca, Azure VM 'ye gidip tüm gerekli işlemleri gerçekleştirmeniz için bir bağlantı seçebilirsiniz.
 
 > [!VIDEO https://www.microsoft.com/videoplayer/embed/RE4nTxe]
 

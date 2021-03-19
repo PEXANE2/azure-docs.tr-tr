@@ -5,24 +5,24 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 03/04/2021
+ms.date: 03/17/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7f316b17096e1241fe23cbf2c965122fd8966522
-ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
+ms.openlocfilehash: b878abbead68b3268891e1f35087e5942969730c
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/11/2021
-ms.locfileid: "102630886"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104579068"
 ---
 # <a name="conditional-access-users-and-groups"></a>Koşullu erişim: kullanıcılar ve gruplar
 
-Koşullu erişim ilkesi, karar işlemindeki sinyallerden biri olarak bir kullanıcı ataması içermelidir. Kullanıcılar koşullu erişim ilkelerine dahil edilebilir veya dışlanıyor olabilir. Azure Active Directory tüm ilkeleri değerlendirir ve kullanıcıya erişim vermeden önce tüm gereksinimlerin karşılanmasını sağlar. Bu makaleye ek olarak, aşağıda özetlenen işlem boyunca size yol gösteren [koşullu erişim ilkelerinin kullanıcılarını nasıl dahil ettireceğiz veya hariç bırakacağınız](https://www.youtube.com/watch?v=5DsW1hB3Jqs) hakkında bir video sunuyoruz. 
+Koşullu erişim ilkesi, karar işlemindeki sinyallerden biri olarak bir kullanıcı ataması içermelidir. Kullanıcılar koşullu erişim ilkelerine dahil edilebilir veya dışlanıyor olabilir. Azure Active Directory tüm ilkeleri değerlendirir ve kullanıcıya erişim vermeden önce tüm gereksinimlerin karşılanmasını sağlar. 
 
-![Koşullu erişim tarafından yapılan kararlara sinyal olarak Kullanıcı](./media/concept-conditional-access-users-groups/conditional-access-users-and-groups.png)
+> [!VIDEO https://www.youtube.com/embed/5DsW1hB3Jqs]
 
 ## <a name="include-users"></a>Kullanıcıları dahil et
 
@@ -77,7 +77,7 @@ Varsayılan olarak, ilke geçerli kullanıcıyı ilkeden hariç tutmak için bir
 
 ![Uyarı, kendinizi kilitlemeyin!](./media/concept-conditional-access-users-groups/conditional-access-users-and-groups-lockout-warning.png)
 
-[Azure portal kilitlediyseniz ne yapmanız gerekir?](troubleshoot-conditional-access.md#what-to-do-if-you-are-locked-out-of-the-azure-portal)
+[Azure Portal kilitlendiyseniz](troubleshoot-conditional-access.md#what-to-do-if-you-are-locked-out-of-the-azure-portal) , kendinizi bulursanız ne yapmanız gerekir?
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

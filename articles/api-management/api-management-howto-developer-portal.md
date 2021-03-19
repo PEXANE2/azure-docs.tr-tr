@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 10/15/2020
 ms.author: apimpm
 ms.openlocfilehash: 30487218fc95be75d22b5a9ea5a6dbc224ffd025
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93074806"
 ---
 # <a name="overview-of-the-developer-portal"></a>Geliştirici portalına genel bakış
@@ -62,7 +62,7 @@ Geliştirici portalının önizleme sürümünü ilk kez başlattığınızda, A
 
 Portalınızı içeriğin önizleme sürümüne göre büyük ölçüde özelleştirdiyseniz, bunu olduğu gibi kullanmaya devam edebilir ve yeni pencere öğelerini portalın sayfalarına el ile yerleştirebilirsiniz. Aksi takdirde, portalınızın içeriğini yeni varsayılan içerikle değiştirmeniz önerilir.
 
-Yönetilen bir portaldaki içeriği sıfırlamak için, **işlemler** menüsü bölümünde **içeriği Sıfırla** ' yı seçin. Bu işlem portalın tüm içeriğini kaldıracak ve yeni varsayılan içerik sağlayacak. Tüm geliştirici portalı özelleştirmelerini ve değişikliklerini kaybedersiniz. **Bu eylemi geri alamazsınız** .
+Yönetilen bir portaldaki içeriği sıfırlamak için, **işlemler** menüsü bölümünde **içeriği Sıfırla** ' yı seçin. Bu işlem portalın tüm içeriğini kaldıracak ve yeni varsayılan içerik sağlayacak. Tüm geliştirici portalı özelleştirmelerini ve değişikliklerini kaybedersiniz. **Bu eylemi geri alamazsınız**.
 
 ![Portal içeriğini sıfırlama](media/api-management-howto-developer-portal/reset-content.png)
 
@@ -196,7 +196,7 @@ API Management hizmetiniz VNet 'deyse, yukarıdaki VNet bağlantı sorusuna baş
 | Apple Safari                | Evet<sup>1</sup> |
 | Google Chrome               | Evet<sup>1</sup> |
 | Microsoft Edge              | Evet<sup>1</sup> |
-| Microsoft Internet Explorer | Hayır              |
+| Microsoft Internet Explorer | No              |
 | Mozilla Firefox             | Evet<sup>1</sup> |
 
  <small><sup>1</sup> en son iki üretim sürümünde desteklenir.</small>

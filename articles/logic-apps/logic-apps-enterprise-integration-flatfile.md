@@ -9,10 +9,10 @@ ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 05/09/2020
 ms.openlocfilehash: aebce8f284ed4bb21d99efffc8dd6d0c51b39533
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87001494"
 ---
 # <a name="encode-and-decode-flat-files-in-azure-logic-apps-by-using-the-enterprise-integration-pack"></a>Enterprise Integration Pack'i kullanarak Azure Logic Apps'te düz dosyaları kodlama ve kodunu çözme
@@ -35,12 +35,12 @@ ms.locfileid: "87001494"
 
 1. [Azure Portal](https://portal.azure.com)mantıksal uygulama tasarımcısında mantıksal uygulamanızı açın.
 
-1. Mantıksal uygulamanızdaki tetikleyici veya eylem altında **yeni adım**  >  **Eylem Ekle**' yi seçin. Bu örnek, **BIR http isteği alındığında**adlandırılan istek tetikleyicisini kullanır ve mantıksal uygulamanın dışından gelen istekleri işler.
+1. Mantıksal uygulamanızdaki tetikleyici veya eylem altında **yeni adım**  >  **Eylem Ekle**' yi seçin. Bu örnek, **BIR http isteği alındığında** adlandırılan istek tetikleyicisini kullanır ve mantıksal uygulamanın dışından gelen istekleri işler.
 
    > [!TIP]
    > JSON şeması sağlamak isteğe bağlıdır. Gelen istekten bir örnek yüküyle karşılaşırsanız, **şema oluşturmak için örnek yük kullan**' ı seçin, örnek yükü girin ve **bitti**' yi seçin. Şema, **Istek GÖVDESI JSON şeması** kutusunda görünür.
 
-1. **Eylem seçin**altında girin `flat file` . Eylemler listesinden şu eylemi seçin: **düz dosya kodlama**
+1. **Eylem seçin** altında girin `flat file` . Eylemler listesinden şu eylemi seçin: **düz dosya kodlama**
 
    !["Düz dosya kodlaması" eylemini seçin](./media/logic-apps-enterprise-integration-flatfile/select-flat-file-encoding.png)
 
@@ -67,12 +67,12 @@ Artık düz dosya kodlama eyleminizi ayarlamaya hazırsınız. Gerçek bir düny
 
 1. [Azure Portal](https://portal.azure.com)mantıksal uygulama tasarımcısında mantıksal uygulamanızı açın.
 
-1. Mantıksal uygulamanızdaki tetikleyici veya eylem altında **yeni adım**  >  **Eylem Ekle**' yi seçin. Bu örnek, **BIR http isteği alındığında**adlandırılan istek tetikleyicisini kullanır ve mantıksal uygulamanın dışından gelen istekleri işler.
+1. Mantıksal uygulamanızdaki tetikleyici veya eylem altında **yeni adım**  >  **Eylem Ekle**' yi seçin. Bu örnek, **BIR http isteği alındığında** adlandırılan istek tetikleyicisini kullanır ve mantıksal uygulamanın dışından gelen istekleri işler.
 
    > [!TIP]
    > JSON şeması sağlamak isteğe bağlıdır. Gelen istekten bir örnek yüküyle karşılaşırsanız, **şema oluşturmak için örnek yük kullan**' ı seçin, örnek yükü girin ve **bitti**' yi seçin. Şema, **Istek GÖVDESI JSON şeması** kutusunda görünür.
 
-1. **Eylem seçin**altında girin `flat file` . Eylemler listesinden şu eylemi seçin: **düz dosya kod çözme**
+1. **Eylem seçin** altında girin `flat file` . Eylemler listesinden şu eylemi seçin: **düz dosya kod çözme**
 
    !["Düz dosya kod çözme" eylemini seçin](./media/logic-apps-enterprise-integration-flatfile/select-flat-file-decoding.png)
 

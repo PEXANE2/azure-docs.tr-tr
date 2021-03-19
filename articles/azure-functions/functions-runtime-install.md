@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 11/28/2017
 ms.author: anwestg
 ms.openlocfilehash: 73b9533fa00c783e1cfb85270198f5c00c66afd5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86540392"
 ---
 # <a name="install-the-azure-functions-runtime-preview-2"></a>Azure İşlevleri Çalışma Zamanı Preview 2 ' i yükler
@@ -75,7 +75,7 @@ Azure İşlevleri Çalışma Zamanı yüklemesini gerçekleştirmek için, yapı
 
     ![Azure İşlevleri Çalışma Zamanı Preview veritabanı yapılandırması][8]
 
-1. **Kimlik bilgileri** sekmesine tıklayın.  Burada, tüm işlev uygulamalarınızı barındırmak için bir dosya paylaşımıyla birlikte kullanmak üzere iki yeni kimlik bilgisi oluşturmalısınız.  **Dosya paylaşımının sahibi** ve **dosya paylaşma kullanıcısı**Için **Kullanıcı adı** ve **parola** birleşimlerini belirtip **Uygula**' ya tıklayın.
+1. **Kimlik bilgileri** sekmesine tıklayın.  Burada, tüm işlev uygulamalarınızı barındırmak için bir dosya paylaşımıyla birlikte kullanmak üzere iki yeni kimlik bilgisi oluşturmalısınız.  **Dosya paylaşımının sahibi** ve **dosya paylaşma kullanıcısı** Için **Kullanıcı adı** ve **parola** birleşimlerini belirtip **Uygula**' ya tıklayın.
 
     ![Azure İşlevleri Çalışma Zamanı Preview kimlik bilgileri][9]
 
@@ -101,7 +101,7 @@ Azure İşlevleri Çalışma Zamanı önizlemede ilk işlevinizi oluşturmak iç
 
 1. Örneğin **Azure işlevleri çalışma zamanı portalına** gidin `https://<machinename>.<domain>` `https://mycomputer.mydomain.com` .
 
-1. Bir etki alanında dağıtılmışsa etki alanı hesabınızın Kullanıcı adı ve parolasını kullanıyorsanız **oturum açmanız**istenir, aksi takdirde portalda oturum açmak için yerel hesap Kullanıcı adınızı ve parolanızı kullanın.
+1. Bir etki alanında dağıtılmışsa etki alanı hesabınızın Kullanıcı adı ve parolasını kullanıyorsanız **oturum açmanız** istenir, aksi takdirde portalda oturum açmak için yerel hesap Kullanıcı adınızı ve parolanızı kullanın.
 
     ![Azure İşlevleri Çalışma Zamanı Preview Portal oturum açma][14]
 

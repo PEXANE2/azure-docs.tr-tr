@@ -9,10 +9,10 @@ ms.devlang: go
 ms.topic: quickstart
 ms.date: 07/14/2020
 ms.openlocfilehash: 595ec1aaa4aedc3916d1b4d46986dcabae887aaf
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93076411"
 ---
 # <a name="quickstart-build-a-go-app-with-the-gocql-client-to-manage-azure-cosmos-db-cassandra-api-data"></a>Hızlı başlangıç: `gocql` Azure Cosmos DB Cassandra API verileri yönetmek için istemciyle bir go uygulaması derleme
@@ -226,7 +226,7 @@ func mapToUser(m map[string]interface{}) model.User {
 
 Daha önce belirtildiği gibi, uygulama, ortam değişkenleri biçiminde bağlantı ve kimlik bilgilerini kabul eder. 
 
-1. [Azure portal](https://portal.azure.com/)Azure Cosmos DB hesabınızda **bağlantı dizesi** ' ni seçin. 
+1. [Azure portal](https://portal.azure.com/)Azure Cosmos DB hesabınızda **bağlantı dizesi**' ni seçin. 
 
     :::image type="content" source="./media/create-cassandra-go/copy-username-connection-string-azure-portal.png" alt-text="Azure portal bağlantı dizesi sayfasından ayrıntıları görüntüleyin ve kopyalayın":::
 
@@ -239,7 +239,7 @@ set COSMOSDB_CASSANDRA_USER=<value for "USERNAME">
 set COSMOSDB_CASSANDRA_PASSWORD=<value for "PRIMARY PASSWORD">
 ```
 
-Terminal penceresinde, doğru klasöre geçin. Örneğin:
+Terminal penceresinde, doğru klasöre geçin. Örnek:
 
 ```shell
 cd "C:\git-samples\azure-cosmosdb-cassandra-go-getting-started"
@@ -253,9 +253,9 @@ go run main.go
 
 3. Terminal penceresi, anahtar alanı ve tablo kurulumu, Kullanıcı oluşturma vb. gibi çeşitli işlemlere yönelik bildirimleri görüntüler.
 
-4. Azure portalında bu yeni verileri sorgulamak, değiştirmek ve birlikte çalışmak için **Veri Gezgini** 'ni açın. 
+4. Azure portalında bu yeni verileri sorgulamak, değiştirmek ve birlikte çalışmak için **Veri Gezgini**'ni açın. 
 
-    :::image type="content" source="./media/create-cassandra-go/view-data-explorer-go-app.png" alt-text="Azure portal bağlantı dizesi sayfasından ayrıntıları görüntüleyin ve kopyalayın":::
+    :::image type="content" source="./media/create-cassandra-go/view-data-explorer-go-app.png" alt-text="Veri Gezgini Azure Cosmos DB verileri görüntüleme":::
 
 ## <a name="review-slas-in-the-azure-portal"></a>Azure portalında SLA'ları gözden geçirme
 

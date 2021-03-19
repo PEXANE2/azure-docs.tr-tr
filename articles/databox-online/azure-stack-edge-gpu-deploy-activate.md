@@ -10,10 +10,10 @@ ms.date: 10/07/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to activate Azure Stack Edge Pro so I can use it to transfer data to Azure.
 ms.openlocfilehash: a767f6f877ae22a311afdb00417efb9f28fdc8f0
-ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/11/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91938364"
 ---
 # <a name="tutorial-activate-azure-stack-edge-pro-with-gpu"></a>Öğretici: Azure Stack Edge Pro 'YU GPU ile etkinleştirme
@@ -25,10 +25,10 @@ Etkinleştirme işleminin tamamlanması 5 dakika sürebilir.
 Bu öğreticide hakkında bilgi edindiniz:
 
 > [!div class="checklist"]
-> * Ön koşullar
+> * Önkoşullar
 > * Fiziksel cihazı etkinleştirin
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure Stack Edge Pro cihazınızı GPU ile yapılandırmadan ve ayarlamadan önce şunları yaptığınızdan emin olun:
 
@@ -86,7 +86,7 @@ Azure Stack Edge Pro cihazınızı GPU ile yapılandırmadan ve ayarlamadan önc
     |`SystemVolumeBitLockerRecoveryKey`| Bu, sistem birimi için BitLocker anahtarıdır. Bu anahtar, cihazınızın sistem yapılandırma ve Sistem verilerinin kurtarılmasına yardımcı olur. |
     |`ServiceEncryptionKey`| Bu anahtar, Azure hizmeti üzerinden akan verileri korur. Bu anahtar, Azure hizmeti güvenliğinin tehlikeye girmesi, depolanan bilgilerin güvenliğinin aşılmasına neden olmaz. |
 
-6. **Genel bakış** sayfasına gidin. Cihaz durumu, **etkinleştirilmiş**olarak gösterilmelidir.
+6. **Genel bakış** sayfasına gidin. Cihaz durumu, **etkinleştirilmiş** olarak gösterilmelidir.
 
     ![Yerel Web Kullanıcı arabirimi "bulut ayrıntıları" sayfa 4](./media/azure-stack-edge-gpu-deploy-activate/activate-4.png)
  
@@ -99,7 +99,7 @@ Etkinleştirme sırasında herhangi bir sorunla karşılaşırsanız, [etkinleş
 Bu öğreticide hakkında bilgi edindiniz:
 
 > [!div class="checklist"]
-> * Ön koşullar
+> * Önkoşullar
 > * Fiziksel cihazı etkinleştirin
 
 Azure Stack Edge Pro cihazınızla veri aktarmayı öğrenmek için bkz.:
