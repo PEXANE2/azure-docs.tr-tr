@@ -3,7 +3,7 @@
 Başlık: Media Services dönüşümler ve Işler: Azure Media Services Açıklama: Azure Media Services videolarınızı işlemek için kuralları betimleyen dönüşümler oluşturmayı öğrenin.
 Hizmetler: Media-Services belgetationcenter: ' ' Yazar: ınridatmicrosoft Manager: femila Düzenleyicisi: ' '
 
-MS. Service: Media-Services MS. Workload: MS. Topic: kavramsal MS. Date: 08/19/2019 MS. Author: inhenkel
+MS. Service: Media-Services MS. Workload: MS. Topic: kavramsal MS. Date: 03/17/2021 MS. Author: inhenkel
 ---
 
 # <a name="transforms-and-jobs-in-media-services"></a>Media Services dönüşümler ve Işler
@@ -77,7 +77,7 @@ Giriş içeriği zaten bir varlık içinde veya içerik yerel dosyada depolanıy
 
 ### <a name="checking-job-progress"></a>Iş ilerleme durumu denetleniyor
 
-İşlerin ilerleme durumu ve durumu, Event Grid ile olayları izleyerek elde edilebilir. Daha fazla bilgi için bkz. [EventGrid kullanarak olayları izleme](job-state-events-cli-how-to.md).
+İşlerin ilerleme durumu ve durumu, Event Grid ile olayları izleyerek elde edilebilir. Daha fazla bilgi için bkz. [EventGrid kullanarak olayları izleme](monitoring/job-state-events-cli-how-to.md).
 
 ### <a name="updating-jobs"></a>Işler güncelleştiriliyor
 

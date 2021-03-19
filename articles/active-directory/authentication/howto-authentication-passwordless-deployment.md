@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: baselden, librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dc5916cf4277935f6d7d7f453fd4dd76d7909ef2
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 8d4ff717a49ba9c9b4d66e54e5eae1248af3fcea
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101651136"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104579374"
 ---
 # <a name="plan-a-passwordless-authentication-deployment-in-azure-active-directory"></a>Azure Active Directory bir passwordless kimlik doğrulama dağıtımı planlayın
 
@@ -93,10 +93,10 @@ Her kimlik doğrulama yöntemi için iş gereksinimlerinizi ve kullanım örnekl
 
 Aşağıdaki tabloda bu proje sırasında uygulanacak kullanım durumları özetlenmektedir.
 
-| Alan | Açıklama |
+| Alan | Description |
 | --- | --- |
 | **Erişim** | Passwordless oturum açma, şirket ağı içindeki veya dışındaki bir kurumsal veya kişisel cihazdan kullanılabilir. |
-| **Girdilerini** | Kullanım verileri, yöneticilere neredeyse gerçek zamanlı olarak denetim sağlamak için kullanılabilir. <br> Kullanım verileri en az 29 günde bir veya SıEM aracı kullanıldığında şirket sistemlerine indirilir. |
+| **Denetim** | Kullanım verileri, yöneticilere neredeyse gerçek zamanlı olarak denetim sağlamak için kullanılabilir. <br> Kullanım verileri en az 29 günde bir veya SıEM aracı kullanıldığında şirket sistemlerine indirilir. |
 | **İdare** | Uygun kimlik doğrulama yöntemine ve ilişkili gruplara yönelik Kullanıcı atamalarının yaşam döngüsü tanımlanmıştır ve izlenir. |
 | **Güvenlik** | Uygun kimlik doğrulama yöntemine erişim, Kullanıcı ve Grup atamaları aracılığıyla denetlenir. <br> Yalnızca yetkili kullanıcılar, passwordless oturum açma kullanabilir. |
 | **Performans** | Erişim atama yayma zaman çizelgeleri belgelenmiştir ve izlenir. <br> Oturum açma süreleri kullanım kolaylığı açısından ölçülür. |
@@ -292,7 +292,7 @@ Aşağıdaki seçtiğiniz metoda hizalanmış adımları izleyin.
 
 ### <a name="required-administrative-roles"></a>Gerekli yönetim rolleri
 
-| Azure AD rolü | Açıklama |
+| Azure AD rolü | Description |
 | --- | --- |
 | Genel Yönetici|Birleşik kayıt deneyimi uygulayabilecek en az ayrıcalıklı rol. |
 | Kimlik doğrulama Yöneticisi | Kimlik doğrulama yöntemlerini uygulayabilir ve yönetebilecek en az ayrıcalıklı rol. |
@@ -330,4 +330,4 @@ Microsoft Authenticator uygulamayı kuruluşunuzda bir passwordless kimlik doğr
 
 - [Azure AD 'de oturum açma için passwordless güvenlik anahtarlarını etkinleştirin](howto-authentication-passwordless-security-key.md)
 - [Microsoft Authenticator uygulamayla passwordless oturum açmayı etkinleştirme](howto-authentication-passwordless-phone.md)
-- [Kimlik doğrulama yöntemleri kullanımı & Öngörüler hakkında daha fazla bilgi edinin](howto-authentication-methods-usage-insights.md)
+- [Kimlik doğrulama yöntemleri kullanımı & Öngörüler hakkında daha fazla bilgi edinin](./howto-authentication-methods-activity.md)

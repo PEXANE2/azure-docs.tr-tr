@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: article
-ms.date: 02/17/2021
+ms.date: 03/15/2021
 ms.author: aahi
-ms.openlocfilehash: 3fd3695490331a1f599db71bf5cafb25e957bf08
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 0876dd00933203c943417d87978567cf555a3e4f
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101710354"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104599009"
 ---
 # <a name="how-to-use-named-entity-recognition-in-text-analytics"></a>Metin Analizi içinde adlandırılmış varlık tanımayı kullanma
 
@@ -35,7 +35,7 @@ PII özelliği, NER 'in bir parçasıdır ve gizli varlıkları, telefon numaras
 
 ## <a name="named-entity-recognition-features-and-versions"></a>Adlandırılmış varlık tanıma özellikleri ve sürümleri
 
-| Özellik                                                         | NER v 3.0 | NER v 3.1-Önizleme. 3 |
+| Özellik                                                         | NER v 3.0 | NER v 3.1-Önizleme. 4 |
 |-----------------------------------------------------------------|--------|----------|
 | Tek ve toplu istekler için Yöntemler                          | X      | X        |
 | Çeşitli kategoriler genelinde Genişletilmiş varlık tanıma           | X      | X        |
@@ -47,8 +47,8 @@ Bilgi için bkz. [dil desteği](../language-support.md) .
 
 Adlandırılmış varlık tanıma v3, birden çok tür genelinde genişletilmiş algılama sağlar. Şu anda NER v 3.0, [genel varlık kategorisindeki](../named-entity-types.md)varlıkları tanıyabilir.
 
-Adlandırılmış varlık tanıma v 3.1-Önizleme. 3, v 3.0 'ın algılama yeteneklerini ve şunları içerir: 
-* Uç noktasını kullanarak kişisel bilgileri () algılama özelliği `PII` `v3.1-preview.3/entities/recognition/pii` . 
+Adlandırılmış varlık tanıma v 3.1-Önizleme. 4, v 3.0 'ın algılama yeteneklerini içerir ve: 
+* Uç noktasını kullanarak kişisel bilgileri () algılama özelliği `PII` `v3.1-preview.4/entities/recognition/pii` . 
 * `domain=phi`Gizli durum bilgilerini () algılamak için isteğe bağlı bir parametre `PHI` .
 * Uç nokta kullanan [zaman uyumsuz işlem](text-analytics-how-to-call-api.md) `/analyze` .
 
@@ -72,36 +72,40 @@ Bir POST isteği oluşturun. Hızlı bir şekilde yapılandırmak ve göndermek 
 
 ### <a name="request-endpoints"></a>İstek uç noktaları
 
-#### <a name="version-31-preview3"></a>[Sürüm 3,1-Önizleme. 3](#tab/version-3-preview)
+#### <a name="version-31-preview"></a>[Sürüm 3,1-Önizleme](#tab/version-3-preview)
 
-Adlandırılmış varlık tanıma `v3.1-preview.3` , ner, PII ve varlık bağlama istekleri için ayrı uç noktalar kullanır. İsteğinize göre aşağıdan bir URL biçimi kullanın.
+Adlandırılmış varlık tanıma `v3.1-preview.4` , ner, PII ve varlık bağlama istekleri için ayrı uç noktalar kullanır. İsteğinize göre aşağıdan bir URL biçimi kullanın.
 
 **Varlık bağlama**
-* `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.3/entities/linking`
+* `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.4/entities/linking`
 
-[Adlandırılmış varlık tanıma sürüm 3,1-Önizleme başvurusu `Linking`](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-Preview-3/operations/EntitiesLinking)
+[Adlandırılmış varlık tanıma sürüm 3,1-Önizleme başvurusu `Linking`](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-Preview-4/operations/EntitiesLinking)
 
 **Adlandırılmış Varlık Tanıma**
-* Genel varlıklar- `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.3/entities/recognition/general`
+* Genel varlıklar- `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.4/entities/recognition/general`
 
-[Adlandırılmış varlık tanıma sürüm 3,1-Önizleme başvurusu `General`](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-Preview-3/operations/EntitiesRecognitionGeneral)
+[Adlandırılmış varlık tanıma sürüm 3,1-Önizleme başvurusu `General`](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-Preview-4/operations/EntitiesRecognitionGeneral)
 
 **Kişisel olarak tanımlanabilen bilgiler (PII)**
-* Kişisel ( `PII` ) bilgileri- `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.3/entities/recognition/pii`
+* Kişisel ( `PII` ) bilgileri- `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.4/entities/recognition/pii`
 
 Ayrıca, `domain=phi` metindeki sağlık () bilgilerini algılamak için isteğe bağlı parametresini de kullanabilirsiniz `PHI` . 
 
-`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.3/entities/recognition/pii?domain=phi`
+`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.4/entities/recognition/pii?domain=phi`
 
-' Den itibaren `v3.1-preview.3` , JSON yanıtı, `redactedText` algılanan PII varlıklarının `*` varlıklardaki her karakter için bir ile değiştirildiği değiştirilmiş giriş metnini içeren bir özelliği içerir.
+' Den itibaren `v3.1-preview.4` , JSON yanıtı, `redactedText` algılanan PII varlıklarının `*` varlıklardaki her karakter için bir ile değiştirildiği değiştirilmiş giriş metnini içeren bir özelliği içerir.
 
-[Adlandırılmış varlık tanıma sürüm 3,1-Önizleme başvurusu `PII`](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-Preview-3/operations/EntitiesRecognitionPii)
+[Adlandırılmış varlık tanıma sürüm 3,1-Önizleme başvurusu `PII`](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-Preview-4/operations/EntitiesRecognitionPii)
+
+API, belirli bir belge dili için [listelenen varlık kategorilerini](../named-entity-types.md?tabs=personal) algılamaya çalışır. Hangi varlıkların algılanacağını ve döndürüleceğini belirtmek istiyorsanız, uygun varlık kategorileri ile isteğe bağlı PII-Categories parametresini kullanın. Bu parametre, belge diliniz için varsayılan olarak etkinleştirilmemiş varlıkları tespit etmenize de olanak sağlayabilir. Örneğin, Ingilizce metinde gerçekleşebilecek bir Fransızca sürücünün lisans numarası.
+
+`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.4/entities/recognition/pii?piiCategories=[FRDriversLicenseNumber]`
 
 **Zaman uyumsuz işlem**
 
-' Den itibaren `v3.1-preview.3` , uç noktayı kullanarak ner isteklerini zaman uyumsuz olarak gönderebilirsiniz `/analyze` .
+' Den itibaren `v3.1-preview.4` , uç noktayı kullanarak zaman uyumsuz olarak ner ve varlık bağlama istekleri gönderebilirsiniz `/analyze` .
 
-* Zaman uyumsuz işlem- `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.3/analyze`
+* Zaman uyumsuz işlem- `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.4/analyze`
 
 Zaman uyumsuz istekleri gönderme hakkında bilgi için bkz. [Metin Analizi API'si çağırma](text-analytics-how-to-call-api.md) .
 

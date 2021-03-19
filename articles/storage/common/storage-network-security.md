@@ -5,16 +5,16 @@ services: storage
 author: normesta
 ms.service: storage
 ms.topic: how-to
-ms.date: 03/05/2021
+ms.date: 03/16/2021
 ms.author: normesta
 ms.reviewer: santoshc
 ms.subservice: common
-ms.openlocfilehash: 62f61549ffd6312b94589b9cabbc347edafd0ff2
-ms.sourcegitcommit: 27cd3e515fee7821807c03e64ce8ac2dd2dd82d2
+ms.openlocfilehash: 3d71a7ad2507909dacf54e7f1c49b6e768033113
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103601976"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104600488"
 ---
 # <a name="configure-azure-storage-firewalls-and-virtual-networks"></a>Azure Depolama güvenlik duvarlarını ve sanal ağları yapılandırma
 
@@ -244,24 +244,31 @@ Azure portal, PowerShell veya CLIv2 aracılığıyla depolama hesapları için s
 
 ## <a name="grant-access-from-an-internet-ip-range"></a>İnternet IP aralığından erişim izni verme
 
-Depolama hesaplarını, belirli genel İnternet IP adresi aralıklarından erişime izin verecek şekilde yapılandırabilirsiniz. Bu yapılandırma, belirli Internet tabanlı hizmetlere ve şirket içi ağlara erişim verir ve genel İnternet trafiğini engeller.
+IP ağ kuralları oluşturarak, belirli genel İnternet IP adresi aralıklarından erişime izin vermek için IP ağ kurallarını kullanabilirsiniz. Her depolama hesabı en fazla 200 kuralı destekler. Bu kurallar, belirli internet tabanlı hizmetlere ve şirket içi ağlara erişim verir ve genel İnternet trafiğini engeller.
 
-*16.17.18.0/24* biçiminde veya *16.17.18.19* gibi ayrı IP adresleri olarak [CIDR gösterimini](https://tools.ietf.org/html/rfc4632) kullanarak izin verilen internet adres aralıklarını sağlayın.
+Aşağıdaki kısıtlamalar IP adres aralıkları için geçerlidir.
 
-   > [!NOTE]
-   > "/31" veya "/32" önek boyutları kullanılarak küçük adres aralıkları desteklenmez. Bu aralıklar tek tek IP adresi kuralları kullanılarak yapılandırılmalıdır.
+- IP ağ kurallarına yalnızca **genel İnternet** IP adresleri için izin verilir. 
 
-IP ağ kurallarına yalnızca **genel İnternet** IP adresleri için izin verilir. Özel ağlar için ayrılan IP adresi aralıklarına ( [RFC 1918](https://tools.ietf.org/html/rfc1918#section-3)' de tanımlandığı gıbı) IP kurallarında izin verilmez. Özel ağlarda, _10. *_, _172,16. *_  -  _172,31. *_ ve _192,168. *_ ile başlayan adresler bulunur.
+  Özel ağlar için ayrılan IP adresi aralıklarına ( [RFC 1918](https://tools.ietf.org/html/rfc1918#section-3)' de tanımlandığı gıbı) IP kurallarında izin verilmez. Özel ağlarda, _10. *_, _172,16. *_  -  _172,31. *_ ve _192,168. *_ ile başlayan adresler bulunur.
 
-   > [!NOTE]
-   > IP ağ kurallarının, depolama hesabıyla aynı Azure bölgesinden kaynaklanan isteklere etkisi yoktur. Aynı bölge isteklerine izin vermek için [sanal ağ kurallarını](#grant-access-from-a-virtual-network) kullanın.
+- *16.17.18.0/24* biçiminde veya *16.17.18.19* gibi ayrı IP adresleri olarak [CIDR gösterimini](https://tools.ietf.org/html/rfc4632) kullanarak izin verilen internet adres aralıklarını sağlamanız gerekir. 
 
-  > [!NOTE]
-  > Depolama hesabı ile aynı bölgede dağıtılan hizmetler, iletişim için özel Azure IP adreslerini kullanır. Bu nedenle, belirli Azure hizmetlerine erişimi, genel giden IP adresi aralığına göre kısıtlayamazsınız.
+- "/31" veya "/32" önek boyutları kullanılarak küçük adres aralıkları desteklenmez. Bu aralıklar tek tek IP adresi kuralları kullanılarak yapılandırılmalıdır. 
 
-Depolama Güvenlik Duvarı kurallarının yapılandırılması için yalnızca ıPV4 adresleri desteklenir.
+- Depolama Güvenlik Duvarı kurallarının yapılandırılması için yalnızca ıPV4 adresleri desteklenir.
 
-Her depolama hesabı en fazla 200 IP ağ kuralını destekler.
+IP ağ kuralları aşağıdaki durumlarda kullanılamaz:
+
+- Depolama hesabı ile aynı Azure bölgesindeki istemcilerle erişimi kısıtlamak için.
+  
+  IP ağ kurallarının, depolama hesabıyla aynı Azure bölgesinden kaynaklanan isteklere etkisi yoktur. Aynı bölge isteklerine izin vermek için [sanal ağ kurallarını](#grant-access-from-a-virtual-network) kullanın. 
+
+- Bir hizmet uç noktası olan VNet 'te bulunan [eşleştirilmiş bir bölgedeki](../../best-practices-availability-paired-regions.md) istemcilere erişimi kısıtlamak için.
+
+- Depolama hesabıyla aynı bölgede dağıtılan Azure hizmetlerine erişimi kısıtlamak için.
+
+  Depolama hesabı ile aynı bölgede dağıtılan hizmetler, iletişim için özel Azure IP adreslerini kullanır. Bu nedenle, belirli Azure hizmetlerine erişimi, genel giden IP adresi aralığına göre kısıtlayamazsınız.
 
 ### <a name="configuring-access-from-on-premises-networks"></a>Şirket içi ağlardan erişimi yapılandırma
 

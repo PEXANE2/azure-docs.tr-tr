@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 02/18/2021
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: 46f117b13909c2d9624b88e9f5d9a62c4c646e51
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.openlocfilehash: c2aceedd57bcc7cd88c4e822c7b696e36b28bd8f
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102500301"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104579799"
 ---
 # <a name="tutorial-configure-arkose-labs-with-azure-active-directory-b2c"></a>Öğretici: Azure Active Directory B2C ile Arkoo Labs yapılandırma
 
@@ -81,13 +81,13 @@ Aşağıdaki diyagramda, Arkoo Labs Azure AD B2C ile nasıl tümleşildiği aç�
 
 5. **Oluştur**’u seçin
 
-[Özel öznitelikler](https://docs.microsoft.com/azure/active-directory-b2c/user-flow-custom-attributes?pivots=b2c-user-flow)hakkında daha fazla bilgi edinin.
+[Özel öznitelikler](./user-flow-custom-attributes.md?pivots=b2c-user-flow)hakkında daha fazla bilgi edinin.
 
 ### <a name="part-2---create-a-user-flow"></a>Bölüm 2-Kullanıcı akışı oluşturma
 
 Kullanıcı akışı, **kaydolma** ve **oturum açma** ya da yalnızca **kaydolma** için olabilir. Arkode Labs Kullanıcı akışı yalnızca kayıt sırasında gösterilir.
 
-1. Kullanıcı akışı oluşturma [yönergelerine](https://docs.microsoft.com/azure/active-directory-b2c/tutorial-create-user-flows) bakın. Mevcut bir Kullanıcı akışı kullanılıyorsa, **Önerilen (yeni nesil Önizleme)** sürüm türünde olması gerekir.
+1. Kullanıcı akışı oluşturma [yönergelerine](./tutorial-create-user-flows.md) bakın. Mevcut bir Kullanıcı akışı kullanılıyorsa, **Önerilen (yeni nesil Önizleme)** sürüm türünde olması gerekir.
 
 2. Kullanıcı akış ayarları ' nda, **Kullanıcı öznitelikleri** ' ne gidin ve **Arkosesessiontoken** talebini seçin.
 
@@ -109,7 +109,7 @@ Kullanıcı akışınız için özel HTML ve JavaScript 'ı kullanmak için bahs
 
 1. [selfAsserted.html](https://github.com/Azure-Samples/active-directory-b2c-node-sign-up-user-flow-arkose/blob/main/Assets/selfAsserted.html) dosyasını `<ARKOSE_PUBLIC_KEY>` , istemci tarafı doğrulaması için oluşturduğunuz değerle eşleşecek şekilde değiştirin ve hesabınız Için arkose Labs betiğini yüklemek üzere kullanılır.
 
-2. HTML sayfasını, bir çıkış noktaları arası kaynak paylaşımı (CORS) etkin Web uç noktası üzerinde barındırın. [Azure Blob depolama hesabı oluşturun](https://docs.microsoft.com/azure/storage/common/storage-account-create?toc=%2Fazure%2Fstorage%2Fblobs%2Ftoc.json&tabs=azure-portal) ve [CORS 'yi yapılandırın](https://docs.microsoft.com/rest/api/storageservices/cross-origin-resource-sharing--cors--support-for-the-azure-storage-services).
+2. HTML sayfasını, bir çıkış noktaları arası kaynak paylaşımı (CORS) etkin Web uç noktası üzerinde barındırın. [Azure Blob depolama hesabı oluşturun](../storage/common/storage-account-create.md?tabs=azure-portal&toc=%2fazure%2fstorage%2fblobs%2ftoc.json) ve [CORS 'yi yapılandırın](/rest/api/storageservices/cross-origin-resource-sharing--cors--support-for-the-azure-storage-services).
 
   >[!NOTE]
   >Kendi özel HTML 'niz varsa, `<script>` öğeleri KOPYALAYıP HTML sayfanıza yapıştırın.
@@ -132,7 +132,7 @@ Kullanıcı akışınız için özel HTML ve JavaScript 'ı kullanmak için bahs
 
    ![sayfa düzenlerini gösteren resim](media/partner-arkose-labs/page-layouts.png)
 
-4. Kullanıcı akışınızdan **Özellikler** ' e gidin ve sayfa düzeni (Önizleme) uygulayan **JavaScript 'i etkinleştir** ' i seçin. Daha fazla bilgi için bu [makaleye](https://docs.microsoft.com/azure/active-directory-b2c/javascript-and-page-layout?pivots=b2c-user-flow) bakın.
+4. Kullanıcı akışınızdan **Özellikler** ' e gidin ve sayfa düzeni (Önizleme) uygulayan **JavaScript 'i etkinleştir** ' i seçin. Daha fazla bilgi için bu [makaleye](./javascript-and-page-layout.md?pivots=b2c-user-flow) bakın.
 
 ### <a name="part-4---create-and-deploy-your-api"></a>4. Bölüm-API 'nizi oluşturma ve dağıtma
 
@@ -157,7 +157,7 @@ Test sırasında yerel örneği yeniden dağıtmak için 1 ile 4 arasındaki ad�
 
 Bu örnek, [http temel kimlik doğrulaması](https://tools.ietf.org/html/rfc7617)kullanarak Web API uç noktasını korur.
 
-Kullanıcı adı ve parola, deponun bir parçası olarak değil, ortam değişkenleri olarak depolanır. Daha fazla bilgi için bkz. [local.settings.js](https://docs.microsoft.com/azure/azure-functions/functions-run-local?tabs=macos%2Ccsharp%2Cbash#local-settings-file) .
+Kullanıcı adı ve parola, deponun bir parçası olarak değil, ortam değişkenleri olarak depolanır. Daha fazla bilgi için bkz. [local.settings.js](../azure-functions/functions-run-local.md?tabs=macos%2ccsharp%2cbash#local-settings-file) .
 
 1. Kök klasörünüzdeki dosyada local.settings.jsoluşturma
 
@@ -186,15 +186,15 @@ Kullanıcı adı ve parola, deponun bir parçası olarak değil, ortam değişke
 
 #### <a name="deploy-the-application-to-the-web"></a>Uygulamayı Web 'e dağıtma
 
-1. Azure işlevinizi buluta dağıtmak için [Bu](https://docs.microsoft.com/azure/javascript/tutorial-vscode-serverless-node-04) kılavuzda bahsedilen adımları izleyin. Azure işlevinizin Endpoint Web URL 'sini kopyalayın.
+1. Azure işlevinizi buluta dağıtmak için [Bu](/azure/javascript/tutorial-vscode-serverless-node-04) kılavuzda bahsedilen adımları izleyin. Azure işlevinizin Endpoint Web URL 'sini kopyalayın.
 
-2. Dağıtıldıktan sonra **ayarları karşıya yükle** seçeneğini belirleyin. Ortam değişkenlerinizi App Service 'in [uygulama ayarlarına](https://docs.microsoft.com/azure/azure-functions/functions-develop-vs-code?tabs=csharp#application-settings-in-azure) yükler. Bu uygulama ayarları Azure portal aracılığıyla da yapılandırılabilir veya [yönetilebilir.](https://docs.microsoft.com/azure/azure-functions/functions-how-to-use-azure-function-app-settings)
+2. Dağıtıldıktan sonra **ayarları karşıya yükle** seçeneğini belirleyin. Ortam değişkenlerinizi App Service 'in [uygulama ayarlarına](../azure-functions/functions-develop-vs-code.md?tabs=csharp#application-settings-in-azure) yükler. Bu uygulama ayarları Azure portal aracılığıyla da yapılandırılabilir veya [yönetilebilir.](../azure-functions/functions-how-to-use-azure-function-app-settings.md)
 
-Azure Işlevleri için Visual Studio Code geliştirme hakkında daha fazla bilgi edinmek için [Bu makaleye](https://docs.microsoft.com/azure/azure-functions/functions-develop-vs-code?tabs=csharp#republish-project-files) bakın.
+Azure Işlevleri için Visual Studio Code geliştirme hakkında daha fazla bilgi edinmek için [Bu makaleye](../azure-functions/functions-develop-vs-code.md?tabs=csharp#republish-project-files) bakın.
 
 #### <a name="configure-and-enable-the-api-connector"></a>API bağlayıcısını yapılandırma ve etkinleştirme
 
-[BIR API Bağlayıcısı oluşturun](https://docs.microsoft.com/azure/active-directory-b2c/add-api-connector) ve Kullanıcı akışınız için etkinleştirin. API Bağlayıcısı yapılandırmanız şöyle görünmelidir:
+[BIR API Bağlayıcısı oluşturun](./add-api-connector.md) ve Kullanıcı akışınız için etkinleştirin. API Bağlayıcısı yapılandırmanız şöyle görünmelidir:
 
 ![Görüntü, API bağlayıcısının nasıl yapılandırılacağını gösterir](media/partner-arkose-labs/configure-api-connector.png)
 
@@ -232,6 +232,6 @@ API bağlayıcısını etkinleştirmek için Kullanıcı akışınız için **AP
 
 - Azure AD B2C kaydolma Kullanıcı akışı için [örnek kodlar](https://github.com/Azure-Samples/active-directory-b2c-node-sign-up-user-flow-arkose)
 
-- [Azure AD B2C'deki özel ilkeler](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-overview)
+- [Azure AD B2C'deki özel ilkeler](./custom-policy-overview.md)
 
-- [Azure AD B2C özel ilkeleri kullanmaya başlama](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-get-started?tabs=applications)
+- [Azure AD B2C özel ilkeleri kullanmaya başlama](./custom-policy-get-started.md?tabs=applications)

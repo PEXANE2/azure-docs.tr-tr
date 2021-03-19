@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 03/10/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 110607e9da68cf131a43651b97c599873ce33cb8
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.openlocfilehash: e154e43f9e9378d6cccd23e2e5892f2a8ccf9a1e
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103495275"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104598890"
 ---
 # <a name="calling-client-library-overview"></a>Arama istemci kitaplığına genel bakış
 
@@ -120,8 +120,8 @@ Uygulamanın bir parçasını farklı bir etki alanından barındırmak için bi
 
 |           |Web | Android/iOS|
 |-----------|----|------------|
-|**aynı anda gönderilebilecek giden akış sayısı** |1 video + 1 ekran paylaşımı | 1 video + 1 ekran paylaşımı|
-|**aynı anda işlenebilen gelen akış sayısı** |1 video + 1 ekran paylaşımı| 6 video + 1 ekran paylaşımı |
+|**aynı anda gönderilebilecek giden akış sayısı** |1 video veya 1 ekran paylaşımı | 1 video + 1 ekran paylaşımı|
+|**aynı anda işlenebilen gelen akış sayısı** |1 video veya 1 ekran paylaşımı| 6 video + 1 ekran paylaşımı |
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

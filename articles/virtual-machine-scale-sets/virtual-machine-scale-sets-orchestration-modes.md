@@ -9,12 +9,12 @@ ms.subservice: extensions
 ms.date: 02/12/2021
 ms.reviewer: jushiman
 ms.custom: mimckitt
-ms.openlocfilehash: d1290b1dcc1e97d63dd41d5be8ca19b81e32f838
-ms.sourcegitcommit: 94c3c1be6bc17403adbb2bab6bbaf4a717a66009
+ms.openlocfilehash: cc862759ce28c4d23dbc2197f63311e29ba82709
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/12/2021
-ms.locfileid: "103225039"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104607512"
 ---
 # <a name="preview-orchestration-modes-for-virtual-machine-scale-sets-in-azure"></a>Önizleme: Azure 'da sanal makine ölçek kümeleri için düzenleme modları 
 
@@ -85,7 +85,7 @@ Sanal makine ölçek kümesi VM API 'Leri yerine örnekleri başlatmak, durdurma
 Uygulama durumu izleme, uygulamanızın, uygulamanızın sağlıklı veya sağlıklı olup olmadığını belirlemede bir sinyal ile Azure sağlamasına izin verir. Azure, sağlıksız olan sanal makine örneklerini otomatik olarak değiştirebilir. Esnek ölçek kümesi örnekleri için, sanal makinede uygulama durumu uzantısını yükleyip yapılandırmanız gerekir. Tekdüzen ölçek kümesi örnekleri için, uygulama durumu uzantısını kullanabilir veya Azure Load Balancer özel durum araştırmasıyla sistem durumunu ölçebilirsiniz. 
 
 ### <a name="list-scale-sets-vm-api-changes"></a>Ölçek Kümeleri VM API değişikliklerini listeleme 
-Sanal Makine Ölçek Kümeleri, ölçek kümesine ait örnekleri listelemenize izin verir. Esnek düzenleme ile sanal makine ölçek kümeleri VM komutu, ölçek kümeleri VM kimliklerinin bir listesini sağlar. Daha sonra ölçek kümesinin VM örneğiyle nasıl çalıştığı hakkında daha fazla bilgi edinmek için sanal makine ölçek kümelerini Al VM komutlarını çağırabilirsiniz. VM 'nin tüm ayrıntılarını almak için standart VM Al komutlarını veya [Azure Kaynak grafiğini](https://docs.microsoft.com/azure/governance/resource-graph/overview)kullanın. 
+Sanal Makine Ölçek Kümeleri, ölçek kümesine ait örnekleri listelemenize izin verir. Esnek düzenleme ile sanal makine ölçek kümeleri VM komutu, ölçek kümeleri VM kimliklerinin bir listesini sağlar. Daha sonra ölçek kümesinin VM örneğiyle nasıl çalıştığı hakkında daha fazla bilgi edinmek için sanal makine ölçek kümelerini Al VM komutlarını çağırabilirsiniz. VM 'nin tüm ayrıntılarını almak için standart VM Al komutlarını veya [Azure Kaynak grafiğini](../governance/resource-graph/overview.md)kullanın. 
 
 ### <a name="retrieve-boot-diagnostics-data"></a>Önyükleme tanılama verilerini al 
 Örnek önyükleme tanılama verilerini ve ekran görüntülerini almak için standart VM API 'Lerini ve komutlarını kullanın. Sanal Makine Ölçek Kümeleri VM önyükleme tanılaması API 'Leri ve komutları esnek düzenleme modu örnekleriyle kullanılmaz.
@@ -269,7 +269,7 @@ zones = ["1"]
 
 2. Ölçek kümesine sanal makine ekleyin.
     1. `virtualMachineScaleSet`Özelliği daha önce oluşturduğunuz ölçek kümesine atayın. VM oluşturma sırasında özelliğini belirtmeniz gerekir `virtualMachineScaleSet` . 
-    1. Aynı anda birden çok VM oluşturmak için **Copy ()** Azure Resource Manager şablon işlevini kullanabilirsiniz. Azure Resource Manager şablonlarda [kaynak yinelemesine](https://docs.microsoft.com/azure/azure-resource-manager/templates/copy-resources#iteration-for-a-child-resource) bakın. 
+    1. Aynı anda birden çok VM oluşturmak için **Copy ()** Azure Resource Manager şablon işlevini kullanabilirsiniz. Azure Resource Manager şablonlarda [kaynak yinelemesine](../azure-resource-manager/templates/copy-resources.md#iteration-for-a-child-resource) bakın. 
 
     ```json
     {

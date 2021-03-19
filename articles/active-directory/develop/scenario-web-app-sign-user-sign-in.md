@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 07/14/2020
 ms.author: jmprieur
 ms.custom: aaddev, devx-track-python
-ms.openlocfilehash: f8fa5532a5664741c9ddb9b78b35d5eed8e2e4e0
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 10ddee404de21c5bc04672fdb6dd32c30f481ba3
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98937838"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104578252"
 ---
 # <a name="web-app-that-signs-in-users-sign-in-and-sign-out"></a>Kullanıcı oturumu açan Web uygulaması: oturum açma ve oturum kapatma
 
@@ -95,6 +95,16 @@ Java hızlı başlangıç bölümünde, oturum açma düğmesi [ana/kaynak/şabl
 </html>
 ```
 
+# <a name="nodejs"></a>[Node.js](#tab/nodejs)
+
+Node.js hızlı başlangıçta oturum açma düğmesi yok. Arka plan kodu, kullanıcıya Web uygulamasının köküne ulaşıldığında oturum açma için otomatik olarak sorar.
+
+```javascript
+app.get('/', (req, res) => {
+    // authentication logic
+});
+```
+
 # <a name="python"></a>[Python](#tab/python)
 
 Python hızlı başlangıçta oturum açma düğmesi yok. Arka plan kodu, kullanıcıya Web uygulamasının köküne ulaşıldığında oturum açma için otomatik olarak sorar. Bkz. [app. Sip # L14-L18](https://github.com/Azure-Samples/ms-identity-python-webapp/blob/0.1.0/app.py#L14-L18).
@@ -113,7 +123,7 @@ def index():
 
 # <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
-ASP.NET ' de, Web uygulamasındaki **oturum açma** düğmesinin seçilmesi, `SignIn` `AccountController` denetleyiciyi denetleyiciye tetikler. ASP.NET Core şablonlarının önceki sürümlerinde, `Account` Denetleyici Web uygulamasıyla katıştırılmıştır. Denetleyici artık **Microsoft. Identity. Web. UI** NuGet paketinin bir parçası olduğundan bu durum artık böyle değildir. Ayrıntılar için bkz. [accountcontroller.cs](https://github.com/AzureAD/microsoft-identity-web/blob/master/src/Microsoft.Identity.Web.UI/Areas/MicrosoftIdentity/Controllers/AccountController.cs) .
+ASP.NET ' de, Web uygulamasındaki **oturum açma** düğmesinin seçilmesi, `SignIn` `AccountController` denetleyiciyi denetleyiciye tetikler. ASP.NET Core şablonlarının önceki sürümlerinde, `Account` Denetleyici Web uygulamasıyla katıştırılmıştır. Denetleyici artık **Microsoft. Identity. Web. UI** NuGet paketinin bir parçası olduğundan bu durum artık böyle değildir. Ayrıntılar için bkz. [accountcontroller. cs](https://github.com/AzureAD/microsoft-identity-web/blob/master/src/Microsoft.Identity.Web.UI/Areas/MicrosoftIdentity/Controllers/AccountController.cs) .
 
 Bu denetleyici Ayrıca Azure AD B2C uygulamalarını da işler.
 
@@ -158,6 +168,43 @@ public class AuthPageController {
     }
 
     // More code omitted for simplicity
+```
+
+# <a name="nodejs"></a>[Node.js](#tab/nodejs)
+
+Diğer platformlardan farklı olarak, MSAL düğümü Kullanıcı oturum açma sayfasından oturum açmaya izin verme işlemini gerçekleştirir.
+
+```javascript
+
+// 1st leg of auth code flow: acquire a code
+app.get('/', (req, res) => {
+    const authCodeUrlParameters = {
+        scopes: ["user.read"],
+        redirectUri: REDIRECT_URI,
+    };
+
+    // get url to sign user in and consent to scopes needed for application
+    pca.getAuthCodeUrl(authCodeUrlParameters).then((response) => {
+        res.redirect(response);
+    }).catch((error) => console.log(JSON.stringify(error)));
+});
+
+// 2nd leg of auth code flow: exchange code for token
+app.get('/redirect', (req, res) => {
+    const tokenRequest = {
+        code: req.query.code,
+        scopes: ["user.read"],
+        redirectUri: REDIRECT_URI,
+    };
+
+    pca.acquireTokenByCode(tokenRequest).then((response) => {
+        console.log("\nResponse: \n:", response);
+        res.sendStatus(200);
+    }).catch((error) => {
+        console.log(error);
+        res.status(500).send(error);
+    });
+});
 ```
 
 # <a name="python"></a>[Python](#tab/python)
@@ -229,6 +276,10 @@ Uygulama kaydı sırasında ön kanal oturum kapatma URL 'sini kaydedersiniz. Ö
 Uygulama kaydı sırasında, ek bir ön kanal oturum kapatma URL 'sini kaydetmeniz gerekmez. Uygulama, ana URL 'sinde geri çağrılacaktır. 
 
 # <a name="java"></a>[Java](#tab/java)
+
+Uygulama kaydında ön kanal oturum kapatma URL 'SI gerekli değildir.
+
+# <a name="nodejs"></a>[Node.js](#tab/nodejs)
 
 Uygulama kaydında ön kanal oturum kapatma URL 'SI gerekli değildir.
 
@@ -305,6 +356,10 @@ Java hızlı başlangıç bölümünde, oturum kapatma düğmesi ana/kaynak/şab
 ...
 ```
 
+# <a name="nodejs"></a>[Node.js](#tab/nodejs)
+
+Bu örnek uygulama, oturum kapatma uygulamaz.
+
 # <a name="python"></a>[Python](#tab/python)
 
 Python hızlı başlangıçta, oturum kapatma düğmesi [Templates/index.html # L10](https://github.com/Azure-Samples/ms-identity-python-webapp/blob/e03be352914bfbd58be0d4170eba1fb7a4951d84/templates/index.html#L10) dosyasında bulunur.
@@ -330,13 +385,13 @@ Python hızlı başlangıçta, oturum kapatma düğmesi [Templates/index.html # 
 
 # <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
-ASP.NET Core şablonlarının önceki sürümlerinde, `Account` Denetleyici Web uygulamasıyla katıştırılmıştır. Denetleyici artık **Microsoft. Identity. Web. UI** NuGet paketinin bir parçası olduğundan bu durum artık böyle değildir. Ayrıntılar için bkz. [accountcontroller.cs](https://github.com/AzureAD/microsoft-identity-web/blob/master/src/Microsoft.Identity.Web.UI/Areas/MicrosoftIdentity/Controllers/AccountController.cs) .
+ASP.NET Core şablonlarının önceki sürümlerinde, `Account` Denetleyici Web uygulamasıyla katıştırılmıştır. Denetleyici artık **Microsoft. Identity. Web. UI** NuGet paketinin bir parçası olduğundan bu durum artık böyle değildir. Ayrıntılar için bkz. [accountcontroller. cs](https://github.com/AzureAD/microsoft-identity-web/blob/master/src/Microsoft.Identity.Web.UI/Areas/MicrosoftIdentity/Controllers/AccountController.cs) .
 
 - `/Account/SignedOut`Azure AD oturum kapatma işlemini tamamladığında denetleyicinin geri çağrılması için bir OpenID yeniden yönlendirme URI 'si olarak ayarlar.
 - Çağrı `Signout()` , OpenID Connect ara yazılım Microsoft Identity platform uç noktasıyla bağlantı sağlar `logout` . Bitiş noktası bundan sonra:
 
   - Oturum tanımlama bilgisini tarayıcıdan temizler.
-  - Kapatma sonrası yeniden yönlendirme URI 'sini geri çağırır. Varsayılan olarak, kapatma sonrası yeniden yönlendirme URI 'SI, imzalanmış görünüm sayfasını [SignedOut.cshtml.cs](https://github.com/AzureAD/microsoft-identity-web/blob/master/src/Microsoft.Identity.Web.UI/Areas/MicrosoftIdentity/Pages/Account/SignedOut.cshtml.cs)görüntüler. Bu sayfa Microsoft. Identity. Web 'in bir parçası olarak da sağlanır.
+  - Kapatma sonrası yeniden yönlendirme URI 'sini geri çağırır. Varsayılan olarak, oturum kapatma sonrası yeniden yönlendirme URI 'SI, imzalanmış görünüm sayfasını [Signeout. cshtml. cs](https://github.com/AzureAD/microsoft-identity-web/blob/master/src/Microsoft.Identity.Web.UI/Areas/MicrosoftIdentity/Pages/Account/SignedOut.cshtml.cs)görüntüler. Bu sayfa Microsoft. Identity. Web 'in bir parçası olarak da sağlanır.
 
 # <a name="aspnet"></a>[ASP.NET](#tab/aspnet)
 
@@ -376,6 +431,10 @@ Java 'da, oturum kapatma doğrudan Microsoft Identity Platform `logout` uç nokt
                 URLEncoder.encode(redirectUrl, "UTF-8"));
     }
 ```
+
+# <a name="nodejs"></a>[Node.js](#tab/nodejs)
+
+Bu örnek uygulama, oturum kapatma uygulamaz.
 
 # <a name="python"></a>[Python](#tab/python)
 
@@ -420,6 +479,10 @@ public class AccountController : Controller
 # <a name="java"></a>[Java](#tab/java)
 
 Java hızlı penceresinde, kapatma sonrası yeniden yönlendirme URI 'SI yalnızca index.html sayfasını görüntüler.
+
+# <a name="nodejs"></a>[Node.js](#tab/nodejs)
+
+Bu örnek uygulama, oturum kapatma uygulamaz.
 
 # <a name="python"></a>[Python](#tab/python)
 

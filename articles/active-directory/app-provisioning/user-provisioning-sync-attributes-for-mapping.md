@@ -1,6 +1,6 @@
 ---
 title: Eşleme için öznitelikleri Azure AD 'ye eşitler
-description: Şirket içi Active Directory özniteliklerini Azure AD 'ye eşitlemeyi öğrenin. SaaS uygulamalarına Kullanıcı sağlamayı yapılandırırken, varsayılan olarak eşitlenmemiş kaynak özniteliklerini eklemek için dizin uzantısı özelliğini kullanın.
+description: SaaS uygulamalarına Kullanıcı sağlamayı yapılandırırken, varsayılan olarak eşitlenmemiş kaynak özniteliklerini eklemek için dizin uzantısı özelliğini kullanın.
 services: active-directory
 author: kenwith
 manager: daveba
@@ -8,23 +8,23 @@ ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
 ms.topic: troubleshooting
-ms.date: 03/12/2021
+ms.date: 03/17/2021
 ms.author: kenwith
-ms.openlocfilehash: 0f8369c80a7a219b159f31aacb7d10a0dd009d00
-ms.sourcegitcommit: df1930c9fa3d8f6592f812c42ec611043e817b3b
+ms.openlocfilehash: 52f34cdafac76a9bca2b4ff0b00e0b3efaa63f5d
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2021
-ms.locfileid: "103418683"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104579442"
 ---
-# <a name="sync-an-attribute-from-your-on-premises-active-directory-to-azure-ad-for-provisioning-to-an-application"></a>Bir uygulamaya sağlamak için şirket içi Active Directory bir özniteliği Azure AD 'ye eşitleyin
+# <a name="syncing-extension-attributes-attributes"></a>Uzantı öznitelikleri öznitelikleri eşitleniyor
 
-Kullanıcı hazırlama için öznitelik eşlemelerini özelleştirirken, eşlemek istediğiniz özniteliğin **kaynak öznitelik** listesinde görünmediğini fark edebilirsiniz. Bu makalede, şirket içi Active Directory (AD) ile Azure Active Directory (Azure AD) arasında eşitleme yaparak eksik özniteliği nasıl ekleyeceğiniz gösterilmektedir.
+Kullanıcı hazırlama için öznitelik eşlemelerini özelleştirirken, eşlemek istediğiniz özniteliğin **kaynak öznitelik** listesinde görünmediğini fark edebilirsiniz. Bu makalede, şirket içi Active Directory (AD) ile Azure Active Directory (Azure AD) arasında eşitleme yaparak veya yalnızca bulut kullanıcısı için Azure AD 'de uzantı öznitelikleri oluşturarak eksik özniteliği nasıl ekleyeceğiniz gösterilmektedir. 
 
-Azure AD, Azure AD 'den bir SaaS uygulamasına kullanıcı hesapları sağlarken bir kullanıcı profili oluşturmak için gereken tüm verileri içermelidir. Bazı durumlarda, verileri kullanılabilir hale getirmek için şirket içi AD 'nizden Azure AD 'ye yönelik öznitelikleri eşitlemeniz gerekebilir. Azure AD Connect, bazı öznitelikleri otomatik olarak Azure AD 'ye eşitler, ancak tüm özniteliklere vermez. Ayrıca, varsayılan olarak eşitlenen bazı öznitelikler (SAMAccountName gibi) Microsoft Graph API kullanılarak gösterilmeyebilir. Bu durumlarda, özniteliği Azure AD ile eşleştirmek için Azure AD Connect Directory uzantısı özelliğini kullanabilirsiniz. Bu şekilde, öznitelik Microsoft Graph API 'SI ve Azure AD sağlama hizmeti tarafından görünür olur.
+Azure AD, Azure AD 'den bir SaaS uygulamasına kullanıcı hesapları sağlarken bir kullanıcı profili oluşturmak için gereken tüm verileri içermelidir. Bazı durumlarda, verileri kullanılabilir hale getirmek için şirket içi AD 'nizden Azure AD 'ye yönelik öznitelikleri eşitlemeniz gerekebilir. Azure AD Connect, bazı öznitelikleri otomatik olarak Azure AD 'ye eşitler, ancak tüm özniteliklere vermez. Ayrıca, varsayılan olarak eşitlenen bazı öznitelikler (SAMAccountName gibi) Azure AD Graph API kullanılarak sunulmayabilir. Bu durumlarda, özniteliği Azure AD ile eşleştirmek için Azure AD Connect Directory uzantısı özelliğini kullanabilirsiniz. Bu şekilde, öznitelik Azure AD Graph API ve Azure AD sağlama hizmeti tarafından görünür olur. Sağlama için ihtiyaç duyduğunuz veriler Active Directory, ancak yukarıda açıklanan nedenlerden dolayı sağlama için kullanılamazsa, uzantı öznitelikleri oluşturmak için Azure AD Connect kullanabilirsiniz. 
 
-Sağlama için ihtiyaç duyduğunuz veriler Active Directory, ancak yukarıda açıklanan nedenlerden dolayı sağlama için kullanılamazsa, uzantı öznitelikleri oluşturmak için Azure AD Connect veya PowerShell kullanabilirsiniz. 
- 
+Çoğu kullanıcı büyük olasılıkla Active Directory eşitlenen karma kullanıcılardır, ancak Azure AD Connect kullanmadan yalnızca bulutta bulunan kullanıcılar için de uzantılar oluşturabilirsiniz. PowerShell veya Microsoft Graph kullanarak yalnızca bulut kullanıcısının şemasını genişletebilirsiniz. 
+
 ## <a name="create-an-extension-attribute-using-azure-ad-connect"></a>Azure AD Connect kullanarak uzantı özniteliği oluşturma
 
 1. Azure AD Connect Sihirbazı 'nı açın, görevler ' i ve ardından **eşitleme seçeneklerini Özelleştir**' i seçin.
@@ -52,7 +52,47 @@ Sağlama için ihtiyaç duyduğunuz veriler Active Directory, ancak yukarıda a�
 > [!NOTE]
 > **ManagedBy** veya **DN/distinguishedName 'dir** gibi şirket içi ad 'den başvuru öznitelikleri sağlama özelliği bugün desteklenmez. Bu özelliği [Kullanıcı seste](https://feedback.azure.com/forums/169401-azure-active-directory)isteyebilirsiniz. 
 
-## <a name="create-an-extension-attribute-using-powershell"></a>PowerShell kullanarak uzantı özniteliği oluşturma
+## <a name="create-an-extension-attribute-on-a-cloud-only-user"></a>Yalnızca bulut kullanıcısı üzerinde uzantı özniteliği oluşturma
+Müşteriler Kullanıcı şemasını genişletmek için Microsoft Graph ve PowerShell 'i kullanabilir. Bu uzantı öznitelikleri çoğu durumda otomatik olarak bulunur, ancak 1000 ' den fazla hizmet sorumlusu olan müşteriler kaynak öznitelik listesinde eksik olan uzantıları bulabilir. Aşağıdaki adımları kullanarak oluşturduğunuz bir öznitelik, kaynak öznitelik listesinde otomatik olarak görünmezse lütfen uzantı özniteliğinin başarıyla oluşturulduğu grafiği kullanmayı doğrulayın ve sonra şemaya [el ile](https://docs.microsoft.com/azure/active-directory/app-provisioning/customize-application-attributes#editing-the-list-of-supported-attributes)ekleyin. Aşağıdaki grafik isteklerini yaparken, istekleri yapmak için gereken izinleri doğrulamak için lütfen daha fazla bilgi ' ye tıklayın. Bir [grafik Gezginini](https://docs.microsoft.com/graph/graph-explorer/graph-explorer-overview) kullanarak istekleri yapabilirsiniz. 
+
+### <a name="create-an-extension-attribute-on-a-cloud-only-user-using-microsoft-graph"></a>Microsoft Graph kullanarak yalnızca bulutta bulunan bir kullanıcı üzerinde uzantı özniteliği oluşturma
+Kullanıcılarınızın şemasını genişletmek için bir uygulama kullanmanız gerekir. Kullanıcı şemasını genişletmek için kullanmak istediğiniz uygulamanın kimliğini belirlemek üzere kiracınızdaki uygulamaları listeleyin. [Daha fazla bilgi edinin.](https://docs.microsoft.com/graph/api/application-list?view=graph-rest-1.0&tabs=http)
+
+```json
+GET https://graph.microsoft.com/v1.0/applications
+```
+
+Uzantı özniteliğini oluşturun. Aşağıdaki **ID** özelliğini, önceki adımda alınan **kimlik** ile değiştirin. "AppID" değil, **"ID"** özniteliğini kullanmanız gerekir. [Daha fazla bilgi edinin.](https://docs.microsoft.com/graph/api/application-post-extensionproperty?view=graph-rest-1.0&tabs=http)
+```json
+POST https://graph.microsoft.com/v1.0/applications/{id}/extensionProperties
+Content-type: application/json
+
+{
+    "name": "extensionName",
+    "dataType": "string",
+    "targetObjects": [
+        "User"
+    ]
+}
+```
+
+Önceki istek, "extension_appID_extensionName" biçimiyle bir uzantı özniteliği oluşturdu. Bir kullanıcıyı uzantı özniteliğiyle güncelleştirin. [Daha fazla bilgi edinin.](https://docs.microsoft.com/graph/api/user-update?view=graph-rest-1.0&tabs=http)
+```json
+PATCH https://graph.microsoft.com/v1.0/users/{id}
+Content-type: application/json
+
+{
+  "extension_inputAppId_extensionName": "extensionValue"
+}
+```
+Özniteliğin başarıyla güncelleştirildiğinden emin olmak için kullanıcıyı denetleyin. [Daha fazla bilgi edinin.](https://docs.microsoft.com/graph/api/user-get?view=graph-rest-1.0&tabs=http#example-3-users-request-using-select)
+
+```json
+GET https://graph.microsoft.com/v1.0/users/{id}?$select=displayName,extension_inputAppId_extensionName
+```
+
+
+### <a name="create-an-extension-attribute-on-a-cloud-only-user-using-powershell"></a>PowerShell kullanarak yalnızca bulutta yer alan bir kullanıcı için uzantı özniteliği oluşturma
 PowerShell kullanarak özel bir uzantı oluşturun ve bir kullanıcıya bir değer atayın. 
 
 ```

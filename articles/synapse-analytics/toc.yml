@@ -20,14 +20,14 @@
     - name: 1 Synapse çalışma alanı oluşturma
       href: get-started-create-workspace.md
       displayName: 'get, started'
-    - name: 2 Ayrılmış SQL Havuzu kullanarak analiz etme
-      href: get-started-analyze-sql-pool.md
+    - name: 2 sunucusuz SQL havuzu kullanarak çözümle
+      href: get-started-analyze-sql-on-demand.md
       displayName: 'get, started'
     - name: 3 Spark kullanarak analiz etme
       href: get-started-analyze-spark.md
       displayName: 'get, started'
-    - name: 4 Sunucusuz SQL Havuzu kullanarak analiz etme
-      href: get-started-analyze-sql-on-demand.md
+    - name: 4 adanmış bir SQL havuzu kullanarak çözümleme
+      href: get-started-analyze-sql-pool.md
       displayName: 'get, started'
     - name: 5 Depolama hesabındaki verileri analiz etme
       href: get-started-analyze-storage.md
@@ -187,6 +187,10 @@
               href: troubleshoot/workspaces-created-by-sdk.md
             - name: UTF-8 metin okuma sorunlarını giderme
               href: troubleshoot/reading-utf8-text.md
+- name: Geçiş kılavuzları
+  items:
+    - name: Adanmış bir SQL havuzuna geçiş
+      href: migration-guides/migrate-to-synapse-analytics-guide.md
 - name: Synapse SQL
   items:
     - name: Genel Bakış
@@ -211,9 +215,9 @@
         - name: Sunucusuz SQL havuzu için maliyet yönetimi
           href: sql/data-processed.md
         - name: Sunucusuz SQL havuzu için en iyi yöntemler
-          href: sql/best-practices-sql-on-demand.md
+          href: sql/best-practices-serverless-sql-pool.md
         - name: Ayrılmış SQL havuzu için en iyi yöntemler
-          href: sql/best-practices-sql-pool.md
+          href: sql/best-practices-dedicated-sql-pool.md
     - name: Hızlı Başlangıçlar
       items:
         - name: Sunucusuz SQL havuzu kullanma

@@ -53,11 +53,11 @@
         - name: Microsoft ile ortak satış yapma
           items:
             - name: Ortak satış genel bakış
-              href: marketplace-co-sell.md
+              href: co-sell-overview.md
             - name: Ortak satış gereksinimleri
               href: co-sell-requirements.md
             - name: Ortak satışı yapılandırma
-              href: commercial-marketplace-co-sell.md
+              href: co-sell-configure.md
             - name: Ortak satışın durumunu doğrulama
               href: co-sell-status.md
             - name: OCP GTM’den ortak satış çözümlerini geçirme

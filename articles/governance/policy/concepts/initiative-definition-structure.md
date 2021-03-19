@@ -1,14 +1,14 @@
 ---
 title: Girişim tanımı yapısının ayrıntıları
 description: Kuruluşunuzdaki Azure kaynaklarına dağıtım için ilke tanımlarını gruplamak üzere ilke girişim tanımlarının nasıl kullanıldığını açıklar.
-ms.date: 10/07/2020
+ms.date: 03/16/2021
 ms.topic: conceptual
-ms.openlocfilehash: 8f9c6146e1dde5b5a7f6595c61638319de60a82d
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: edd3f25dd528d1a718c9287c9f30988b87fb73e2
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91876184"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104587228"
 ---
 # <a name="azure-policy-initiative-definition-structure"></a>Azure Ilke girişimi tanım yapısı
 
@@ -113,13 +113,13 @@ Müşteriler, ' de kuruluşları için yararlı olan özellikleri ve değerleri 
 - `category` (dize): ilke tanımının Azure portal hangi kategori altında görüntülendiğini belirler.
 
   > [!NOTE]
-  > [Mevzuat uyumluluk](./regulatory-compliance.md) girişimi Için, `category` **mevzuat uyumluluğu**olmalıdır.
+  > [Mevzuat uyumluluk](./regulatory-compliance.md) girişimi Için, `category` **mevzuat uyumluluğu** olmalıdır.
 
-- `preview` (Boolean): ilke girişim tanımı _Önizleme_Ise, true veya false bayrağı.
-- `deprecated` (Boolean): ilke girişim tanımı _kullanım dışı_olarak işaretlenmişse true veya false bayrağı.
+- `preview` (Boolean): ilke girişim tanımı _Önizleme_ Ise, true veya false bayrağı.
+- `deprecated` (Boolean): ilke girişim tanımı _kullanım dışı_ olarak işaretlenmişse true veya false bayrağı.
 
 > [!NOTE]
-> Azure Ilke hizmeti `version` , `preview` `deprecated` bir yerleşik ilke tanımına veya girişim ve duruma yapılan değişiklik düzeyini iletmek için, ve özelliklerini kullanır. Biçimi `version` : `{Major}.{Minor}.{Patch}` . _Kullanım dışı_ veya _Önizleme_gibi belirli durumlar, `version` özelliğe veya başka bir özellikte **Boole**olarak eklenir. Azure Ilke sürümlerinin yerleşik yolu hakkında daha fazla bilgi için bkz. [yerleşik sürüm oluşturma](https://github.com/Azure/azure-policy/blob/master/built-in-policies/README.md).
+> Azure Ilke hizmeti `version` , `preview` `deprecated` bir yerleşik ilke tanımına veya girişim ve duruma yapılan değişiklik düzeyini iletmek için, ve özelliklerini kullanır. Biçimi `version` : `{Major}.{Minor}.{Patch}` . _Kullanım dışı_ veya _Önizleme_ gibi belirli durumlar, `version` özelliğe veya başka bir özellikte **Boole** olarak eklenir. Azure Ilke sürümlerinin yerleşik yolu hakkında daha fazla bilgi için bkz. [yerleşik sürüm oluşturma](https://github.com/Azure/azure-policy/blob/master/built-in-policies/README.md).
 
 ## <a name="parameters"></a>Parametreler
 
@@ -134,7 +134,7 @@ Parametreler, ilke girişimlerini oluştururken de aynı şekilde çalışır. B
 Bir parametre, ilke girişim tanımında kullanılan aşağıdaki özelliklere sahiptir:
 
 - `name`: Parametresinin adı. `parameters`İlke kuralı içindeki dağıtım işlevi tarafından kullanılır. Daha fazla bilgi için bkz. [parametre değeri kullanma](#passing-a-parameter-value-to-a-policy-definition).
-- `type`: Parametrenin **dize**, **dizi**, **nesne**, **Boole**, **tamsayı**, **float**veya **TarihSaat**olduğunu belirler.
+- `type`: Parametrenin **dize**, **dizi**, **nesne**, **Boole**, **tamsayı**, **float** veya **TarihSaat** olduğunu belirler.
 - `metadata`: Kullanıcı dostu bilgileri göstermek için öncelikle Azure portal tarafından kullanılan alt özellikleri tanımlar:
   - `description`: Parametresinin hangi amaçla kullanıldığına ilişkin açıklama. , Kabul edilebilir değer örnekleri sağlamak için kullanılabilir.
   - `displayName`: Parametre için portalda gösterilen kolay ad.
@@ -142,7 +142,7 @@ Bir parametre, ilke girişim tanımında kullanılan aşağıdaki özelliklere s
 - `defaultValue`: (İsteğe bağlı) değer verilmezse bir atamadaki parametresinin değerini ayarlar.
 - `allowedValues`: (İsteğe bağlı), atama sırasında parametrenin kabul ettiği bir değer dizisi sağlar.
 
-Örnek olarak, dahil edilen çeşitli ilke tanımlarında kaynakların konumlarını sınırlamak için bir ilke girişim tanımı tanımlayabilirsiniz. Bu ilke girişim tanımı için bir parametre **Allowedlocations**olabilir. Daha sonra parametresi dahil edilen her ilke tanımı için kullanılabilir ve ilke girişiminin atanması sırasında tanımlanır.
+Örnek olarak, dahil edilen çeşitli ilke tanımlarında kaynakların konumlarını sınırlamak için bir ilke girişim tanımı tanımlayabilirsiniz. Bu ilke girişim tanımı için bir parametre **Allowedlocations** olabilir. Daha sonra parametresi dahil edilen her ilke tanımı için kullanılabilir ve ilke girişiminin atanması sırasında tanımlanır.
 
 ```json
 "parameters": {
@@ -167,7 +167,7 @@ Bir parametre, ilke girişim tanımında kullanılan aşağıdaki özelliklere s
 
 Girişim tanımının [PolicyDefinitions](#policy-definitions) dizisinde dahil edilen ilke tanımlarına hangi girişim parametrelerini geçireceğiniz bildirirsiniz. Parametre adı aynı olsa da, girişimlerin ilke tanımlarındaki farklı adları kullanmak kod okunabilirliğini basitleştirir.
 
-Örneğin, daha önce tanımlanan **init_allowedLocations** girişim parametresi, dahil edilen birkaç ilke tanımına ve bunlara **sql_locations** ve **vm_locations**parametrelere geçirilebilir:
+Örneğin, daha önce tanımlanan **init_allowedLocations** girişim parametresi, dahil edilen birkaç ilke tanımına ve bunlara **sql_locations** ve **vm_locations** parametrelere geçirilebilir:
 
 ```json
 "policyDefinitions": [
@@ -196,7 +196,7 @@ Bu örnek, [parametre özelliklerinde](#parameter-properties)gösterilen **init_
 
 ### <a name="strongtype"></a>strongType
 
-Özelliği içinde `metadata` , Azure Portal içinde çoklu seçim listesi sağlamak Için **strongtype** kullanabilirsiniz. **strongtype** desteklenen bir _kaynak türü_ veya izin verilen bir değer olabilir. Bir _kaynak türünün_ **strongtype**için geçerli olup olmadığını anlamak Için [Get-azresourceprovider](/powershell/module/az.resources/get-azresourceprovider)' ı kullanın.
+Özelliği içinde `metadata` , Azure Portal içinde çoklu seçim listesi sağlamak Için **strongtype** kullanabilirsiniz. **strongtype** desteklenen bir _kaynak türü_ veya izin verilen bir değer olabilir. Bir _kaynak türünün_ **strongtype** için geçerli olup olmadığını anlamak Için [Get-azresourceprovider](/powershell/module/az.resources/get-azresourceprovider)' ı kullanın.
 
 **Get-AzResourceProvider** tarafından döndürülen bazı kaynak türleri desteklenir. Bu kaynak türleri şunlardır:
 
@@ -250,17 +250,17 @@ Bir ilke tanımını temsil eden her _dizi_ öğesi aşağıdaki özelliklere sa
 
 ## <a name="policy-definition-groups"></a>İlke Tanım grupları
 
-Bir girişim tanımındaki ilke tanımları gruplandırılabilir ve kategorilere ayrılır. Azure Ilkesinin [mevzuat uyumluluğu](./regulatory-compliance.md) (Önizleme) **özelliği, bu** özelliği tanımlar ve **Uyumluluk etki alanlarına**tanımları gruplamak için kullanır. Bu bilgiler, `policyDefinitionGroups` _dizi_ özelliğinde tanımlanmıştır. Ek gruplandırma ayrıntıları, Microsoft tarafından oluşturulan **Policymetadata** nesnesinde bulunabilir. Bilgi için bkz. [meta veri nesneleri](#metadata-objects).
+Bir girişim tanımındaki ilke tanımları gruplandırılabilir ve kategorilere ayrılır. Azure Ilkesinin [mevzuat uyumluluğu](./regulatory-compliance.md) (Önizleme) **özelliği, bu** özelliği tanımlar ve **Uyumluluk etki alanlarına** tanımları gruplamak için kullanır. Bu bilgiler, `policyDefinitionGroups` _dizi_ özelliğinde tanımlanmıştır. Ek gruplandırma ayrıntıları, Microsoft tarafından oluşturulan **Policymetadata** nesnesinde bulunabilir. Bilgi için bkz. [meta veri nesneleri](#metadata-objects).
 
 ### <a name="policy-definition-groups-parameters"></a>İlke Tanım grupları parametreleri
 
 İçindeki her _dizi_ öğesi `policyDefinitionGroups` aşağıdaki özelliklerden her ikisine de sahip olmalıdır:
 
-- `name` (dize) \[ gerekli \] : **grubun**kısa adı. Mevzuat uyumluluğu, **Denetim**. Bu özelliğin değeri içinde tarafından kullanılır `groupNames` `policyDefinitions` .
+- `name` (dize) \[ gerekli \] : **grubun** kısa adı. Mevzuat uyumluluğu, **Denetim**. Bu özelliğin değeri içinde tarafından kullanılır `groupNames` `policyDefinitions` .
 - `category` (dize): grubun ait olduğu hiyerarşi. Yasal uyumluluk bölümünde, denetimin **Uyumluluk etki alanı** .
-- `displayName` (dize): **Grup** veya **denetimin**kolay adı. Portal tarafından kullanılır.
+- `displayName` (dize): **Grup** veya **denetimin** kolay adı. Portal tarafından kullanılır.
 - `description` (dize): **grubun** veya **denetimin** neleri kapsadığından bir açıklama.
-- `additionalMetadataId`(dize): **Denetim** ve **Uyumluluk etki alanı**hakkında ek ayrıntılara sahip [policymetadata](#metadata-objects) nesnesinin konumu.
+- `additionalMetadataId`(dize): **Denetim** ve **Uyumluluk etki alanı** hakkında ek ayrıntılara sahip [policymetadata](#metadata-objects) nesnesinin konumu.
 
   > [!NOTE]
   > Müşteriler var olan bir [Policymetadata](#metadata-objects) nesnesine işaret edebilir. Ancak, bu nesneler _salt okunurdur_ ve yalnızca Microsoft tarafından oluşturulur.
@@ -282,7 +282,7 @@ Microsoft tarafından oluşturulan mevzuat uyumluluğu, her denetim hakkında ek
 Bu bilgiler şunlardır:
 
 - Yasal bir uyumluluk girişimi üzerindeki bir **denetime** genel bakış Azure Portal gösterilir.
-- REST API yoluyla kullanılabilir. `Microsoft.PolicyInsights`Kaynak sağlayıcısına ve [policymetadata işlem grubuna](/rest/api/policy-insights/policymetadata/getresource)bakın.
+- REST API yoluyla kullanılabilir. `Microsoft.PolicyInsights`Kaynak sağlayıcısına ve [policymetadata işlem grubuna](/rest/api/policy/policymetadata/getresource)bakın.
 - Azure CLı aracılığıyla kullanılabilir. [Az Policy Metadata](/cli/azure/policy/metadata) komutuna bakın.
 
 > [!IMPORTANT]
@@ -292,7 +292,7 @@ Bir ilke gruplandırması için meta veriler, düğümde aşağıdaki bilgilere 
 
 - `metadataId`: Gruplandırmanın ilişkili olduğu **DENETIM kimliği** .
 - `category`(gerekli): **denetimin** ait olduğu **Uyumluluk etki alanı** .
-- `title` (gerekli): **DENETIM kimliğinin**kolay adı.
+- `title` (gerekli): **DENETIM kimliğinin** kolay adı.
 - `owner` (gerekli): Azure 'da denetim sorumluluğunu kim olduğunu tanımlar: _Müşteri_, _Microsoft_, _paylaşılan_.
 - `description`: Denetimle ilgili ek bilgiler.
 - `requirements`: Denetim uygulamasının sorumluluğuyla ilgili ayrıntılar.

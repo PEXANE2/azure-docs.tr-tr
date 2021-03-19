@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 12/16/2020
 ms.author: sefriend
 manager: clarkn
-ms.openlocfilehash: 325502255e84e38a39ca5b90ee4126354c0d425b
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: ecc4a5a17186eddd4223715462b14399bdf702df
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98601232"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104601899"
 ---
 # <a name="get-started-with-the-windows-virtual-desktop-agent"></a>Windows sanal masaüstü Aracısı 'nı kullanmaya başlama
 
@@ -32,7 +32,10 @@ Windows sanal masaüstü Aracısı, başlangıçta iki şekilde yüklenir. Azure
 
 ## <a name="agent-update-process"></a>Aracı güncelleştirme işlemi
 
-Windows sanal masaüstü hizmeti, bir güncelleştirme kullanılabilir olduğunda aracıyı otomatik olarak güncelleştirir. Aracı güncelleştirmeleri, yeni işlevsellik içerebilir veya önceki sorunları giderebilir. Windows sanal masaüstü aracısının ilk sürümü yüklendikten sonra, aracı, aracının daha yeni bir sürümü ve bileşenleri kullanılabilir olup olmadığını anlamak için Windows Sanal Masaüstü hizmetini düzenli aralıklarla sorgular. Yeni bir sürüm varsa, aracı önyükleme yükleyicisi aracının en son sürümünü, yan yana yığını ve Geneva Izleme aracısını otomatik olarak indirir.
+Windows sanal masaüstü hizmeti, bir güncelleştirme kullanılabilir olduğunda aracıyı günceller. Aracı güncelleştirmeleri, önceki sorunlara yönelik yeni işlevselliği veya düzeltmeleri içerebilir. Windows sanal masaüstü aracısının ilk sürümü yüklendikten sonra, aracı, aracı, yığın veya izleme bileşeninin daha yeni bir sürümü olup olmadığını anlamak için Windows Sanal Masaüstü hizmetini düzenli aralıklarla sorgular. Bileşenlerden birinin daha yeni bir sürümü zaten dağıtılmışsa, güncelleştirilmiş bileşen otomatik olarak yüklenir.
+
+Aracının yeni sürümleri, tüm Azure aboneliklerine weeklong dönemdeki düzenli aralıklarla dağıtılır. Bu güncelleştirme dönemlerinde "fışıkları" adı verilir. Bir uçuş gerçekleştiğinde, konak havuzunuzdaki sanal makineler, farklı zamanlarda aracı güncelleştirmesini alabilir. Tüm aboneliklerdeki tüm VM aracıları dağıtım döneminin sonuna göre güncelleştirilir. Windows sanal masaüstü fışıklandırma sistemi, aracı güncelleştirmesinin kararlılığını ve kalitesini sağlayarak hizmetin güvenilirliğini geliştirir.
+
 
 >[!NOTE]
 >- Geneva Izleme Aracısı en son sürüme güncelleştirdiğinde, yeni izleme Aracısı için yeni bir görev oluşturmadan önce eski GenevaTask görevi bulunur ve devre dışı bırakılır. İzleme aracısının en son sürümünün düzeltilmesi için önceki sürüme geri dönülmesini gerektiren bir sorun olması durumunda izleme aracısının önceki sürümü silinmez. En son sürümde bir sorun varsa, izleme verilerini sunmaya devam etmek için eski izleme Aracısı yeniden etkinleştirilecek. Güncelleştirmeden önce yüklediğiniz son olandan önceki tüm sürümleri, sanal makinenizde silinmeden silinecek.

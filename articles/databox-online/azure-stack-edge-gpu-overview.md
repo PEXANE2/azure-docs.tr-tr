@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: overview
 ms.date: 01/18/2021
 ms.author: alkohli
-ms.openlocfilehash: 31947ca4d5eb632998f5c50257c12ef9a52dfc66
-ms.sourcegitcommit: 9d9221ba4bfdf8d8294cf56e12344ed05be82843
+ms.openlocfilehash: 8e829d149e96cf658c7a5aaf37291e84def2061e
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98570108"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104602664"
 ---
 # <a name="what-is-azure-stack-edge-pro-with-gpu"></a>GPU ile Azure Stack Edge Pro nedir?
 
@@ -76,6 +76,8 @@ Azure Stack Edge Pro fiziksel cihazı, Azure kaynağı ve veri aktarımı yaptı
 - **Cihaz kullanılabilirliği** -Azure Stack Edge Pro cihazının kullanılabildiği tüm ülkelerin/bölgelerin listesi için, [Azure Stack Edge pro fiyatlandırması](https://azure.microsoft.com/pricing/details/azure-stack/edge/#azureStackEdgePro)için **Azure Stack Edge Pro** sekmesinde **kullanılabilirlik** bölümüne gidin.
     
 - **Hedef Depolama hesapları**: Verilerin depolandığı depolama hesapları, tüm Azure bölgelerinde sağlanır. Depolama hesaplarının Azure Stack Edge Pro verilerini depolayan bölgeler, cihazın en iyi performans için bulunduğu yere yakın yerleştirilmelidir. Cihazdan uzağa konumlandırılan depolama hesabı uzun gecikme sürelerine ve daha yavaş bir performansa yol açar.
+
+Azure Stack Edge hizmeti bölgesel olmayan bir hizmettir. Daha fazla bilgi için bkz. [Azure 'Da bölgeler ve kullanılabilirlik alanları](https://docs.microsoft.com/azure/availability-zones/az-overview). Azure Stack Edge hizmetinin belirli bir Azure bölgesine bağımlılığı yoktur, bu da bölge genelinde kesintiler ve bölge genelinde kesintiler için dayanıklı hale gelir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

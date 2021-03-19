@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/05/2021
 ms.author: jeedes
-ms.openlocfilehash: f217a13ce68b42d3f9ee2dec4bfae47a0b64b0ca
-ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
+ms.openlocfilehash: e390eb62f64c9ec55605525828790f15633e5f14
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/12/2021
-ms.locfileid: "103200028"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104589557"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-aws-single-account-access"></a>Öğretici: AWS Single-Account erişimiyle çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -31,11 +31,11 @@ Azure AD uygulama galerisinde AWS tek Sign-On ve AWS Single-Account erişim uygu
 
 **AWS çoklu oturum açma**
 
-[AWS çoklu oturum açma](https://docs.microsoft.com/azure/active-directory/saas-apps/aws-single-sign-on-tutorial) , Şubat 2021 ' DEKI Azure AD uygulama galerisine eklenmiştir. Microsoft Azure AD aracılığıyla oturum açma işlemiyle, birden fazla AWS hesabına ve AWS uygulamalarına merkezi olarak erişimi yönetmeyi kolaylaştırır. AWS SSO ile bir kez Microsoft Azure AD ve AWS SSO 'yu kullanarak AWS hesaplarınızın tamamında izinleri tek bir yerden yönetin. AWS SSO, izinleri otomatik olarak sağlar ve ilkeleri güncelleştirmiş ve atamalara erişim sağlarken bunları güncel tutar. Son kullanıcılar AWS konsoluna, komut satırı arabirimine ve AWS SSO tümleşik uygulamalarına erişmek için Azure AD kimlik bilgileriyle kimlik doğrulaması yapabilir.
+[AWS çoklu oturum açma](./aws-single-sign-on-tutorial.md) , Şubat 2021 ' DEKI Azure AD uygulama galerisine eklenmiştir. Microsoft Azure AD aracılığıyla oturum açma işlemiyle, birden fazla AWS hesabına ve AWS uygulamalarına merkezi olarak erişimi yönetmeyi kolaylaştırır. AWS SSO ile bir kez Microsoft Azure AD ve AWS SSO 'yu kullanarak AWS hesaplarınızın tamamında izinleri tek bir yerden yönetin. AWS SSO, izinleri otomatik olarak sağlar ve ilkeleri güncelleştirmiş ve atamalara erişim sağlarken bunları güncel tutar. Son kullanıcılar AWS konsoluna, komut satırı arabirimine ve AWS SSO tümleşik uygulamalarına erişmek için Azure AD kimlik bilgileriyle kimlik doğrulaması yapabilir.
 
 **AWS Single-Account erişimi**
 
-[Aws Single-Account erişimi](https://docs.microsoft.com/azure/active-directory/saas-apps/amazon-web-service-tutorial) , son birkaç yıl içinde müşteriler tarafından kullanılmış ve Azure AD 'yi tek BIR AWS hesabına federasyona ekleyerek Azure AD 'yi kullanarak AWS IAM rollerine erişimi yönetmenizi sağlar. AWS ıAM yöneticileri, her bir AWS hesabında rol ve ilke tanımlar. Her bir AWS hesabı için, Azure AD yöneticileri AWS ıAM 'e Federasyon yapar, hesaba Kullanıcı veya grup atayabilir ve rol erişimine yetki veren onayları göndermek için Azure AD 'yi yapılandırır.  
+[Aws Single-Account erişimi]() , son birkaç yıl içinde müşteriler tarafından kullanılmış ve Azure AD 'yi tek BIR AWS hesabına federasyona ekleyerek Azure AD 'yi kullanarak AWS IAM rollerine erişimi yönetmenizi sağlar. AWS ıAM yöneticileri, her bir AWS hesabında rol ve ilke tanımlar. Her bir AWS hesabı için, Azure AD yöneticileri AWS ıAM 'e Federasyon yapar, hesaba Kullanıcı veya grup atayabilir ve rol erişimine yetki veren onayları göndermek için Azure AD 'yi yapılandırır.  
 
 | Özellik | AWS tek Sign-On | AWS Single-Account erişimi |
 |:--- |:---:|:---:|

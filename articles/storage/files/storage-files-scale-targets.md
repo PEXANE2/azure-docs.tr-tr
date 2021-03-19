@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/12/2021
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: aa24989103cca5bb7031a21ca106b93ada0c3904
-ms.sourcegitcommit: 6776f0a27e2000fb1acb34a8dddc67af01ac14ac
+ms.openlocfilehash: 0ecfbb9053fde4ff332cbbcb6e14a84a5bbeb99a
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/11/2021
-ms.locfileid: "103149469"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104593161"
 ---
 # <a name="azure-files-scalability-and-performance-targets"></a>Azure Dosyaları ölçeklenebilirlik ve performans hedefleri
 [Azure dosyaları](storage-files-introduction.md) , BULUTTA, SMB ve NFS dosya sistemi protokolleri aracılığıyla erişilebilen tam olarak yönetilen dosya paylaşımları sunar. Bu makalede, Azure dosyaları ve Azure Dosya Eşitleme için ölçeklenebilirlik ve performans hedefleri ele alınmaktadır.
@@ -134,7 +134,7 @@ Performans hızı saniyede 20 nesne olur. Müşteriler, bulut paylaşımındaki 
 
 **Windows Server 'Dan Azure dosya paylaşımında ilk veri eşitlemesi**: pek çok Azure dosya eşitleme dağıtımı, tüm veriler Windows Server üzerinde olduğundan boş bir Azure dosya paylaşımıyla başlar. Bu durumlarda, ilk bulut değişikliği numaralandırması hızlıdır ve çoğu zaman, değişiklikleri Windows Server 'dan Azure dosya paylaşımıyla eşitlemeye harcanacaktır. 
 
-Eşitleme, verileri Azure dosya paylaşımında karşıya yüklerken yerel dosya sunucusunda kapalı kalma süresi yoktur ve Yöneticiler, arka planda karşıya yükleme için kullanılan bant genişliği miktarını kısıtlamak için [ağ sınırları](https://docs.microsoft.com/azure/storage/files/storage-sync-files-server-registration#set-azure-file-sync-network-limits) ayarlayabilir.
+Eşitleme, verileri Azure dosya paylaşımında karşıya yüklerken yerel dosya sunucusunda kapalı kalma süresi yoktur ve Yöneticiler, arka planda karşıya yükleme için kullanılan bant genişliği miktarını kısıtlamak için [ağ sınırları](./storage-sync-files-server-registration.md#set-azure-file-sync-network-limits) ayarlayabilir.
 
 İlk eşitleme genellikle eşitleme grubu başına saniyede 20 dosyanın ilk karşıya yükleme oranıyla sınırlandırılır. Müşteriler, gün içinde zaman almak için aşağıdaki formül ile tüm verilerini Azure 'a yükleme süresini tahmin edebilir:  
 

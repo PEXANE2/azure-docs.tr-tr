@@ -12,12 +12,12 @@ ms.date: 09/01/2020
 ms.author: trbye
 ms.custom: cog-serv-seo-aug-2020
 keywords: Metinden konuşmaya
-ms.openlocfilehash: 54db794d4e9cf0cd2a049a865f2e7bb52698a4bd
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: fec90b3257ffafaf2919d2f0a41c2ade6fbc1f64
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98599532"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104597683"
 ---
 # <a name="what-is-text-to-speech"></a>Metin okuma nedir?
 
@@ -40,6 +40,8 @@ Bu genel bakışta, uygulamanızın, araçların veya cihazların metni insan be
 * Sinir seslerde, geleneksel konuşma senillerinin sınırlarını aşmak için derin sinir ağları, konuşulan dilde stres ve kullanım gibi Prosody tahmini ve ses birleştirmesinin eşzamanlı olarak gerçekleştirilmesi, daha akıcı ve doğal bir çıkış ile sonuçlanır. Sinir sesleri, chatbots ve ses yardımcılarıyla daha doğal ve etkileyici bir şekilde etkileşim kurmak, e-kitaplar gibi dijital metinleri audiobooks 'a dönüştürmek ve oto içi gezinti sistemlerini geliştirmek için kullanılabilir. İnsan benzeri doğal Prosody ve sözcüklerin bir kısmını temizleyerek, AI sistemleriyle etkileşime geçerek sinir seslileri büyük ölçüde dinlemeyi azaltır. Sinir sesin tam listesi için bkz. [desteklenen diller](language-support.md#text-to-speech).
 
 * SSML ile konuşma stillerini ayarlama-konuşma Sensleme dili (SSML), konuşmadan metne çıktıları özelleştirmek için kullanılan XML tabanlı bir biçimlendirme dilidir. SSML ile, aralığı ayarlayabilir, duraklamalar ekleyebilir, söylenişi artırabilir veya yavaşlatır, konuşma hızını artırabilir veya azaltabilir, hacmi artırabilir veya azaltabilirsiniz ve tek bir belgeye birden çok ses özniteliği ekleyebilirsiniz. Konuşma stillerini [ayarlama için bkz](speech-synthesis-markup.md) ..
+
+* Visemes- [visemes](how-to-speech-synthesis-viseme.md) , gözetmekte olan konuşmayla ilgili önemli pozları (örneğin, LIP 'ler, Jaw ve belirli bir phoneme üretilirken dil) göstermek için kullanılır. Sesler ve phonemes ile güçlü bir bağıntı vardır. Konuşma SDK 'sında viseme 'yi kullanarak, genellikle animasyonlu LIP okuma iletişim, eğitim, eğlence ve müşteri hizmeti için kullanılan yüz animasyon verileri oluşturabilirsiniz. 
 
 ## <a name="get-started"></a>başlarken
 

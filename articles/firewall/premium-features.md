@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 03/12/2021
 ms.author: victorh
 ms.custom: references_regions
-ms.openlocfilehash: 22ee920c38a8cacaf37a1e3a6cfc5165dfa0bb44
-ms.sourcegitcommit: df1930c9fa3d8f6592f812c42ec611043e817b3b
+ms.openlocfilehash: 4a8efff7ef53753e15a47e87a2bb82d0124ae997
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2021
-ms.locfileid: "103419958"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104590458"
 ---
 # <a name="azure-firewall-premium-preview-features"></a>Azure Güvenlik Duvarı Premium Önizleme özellikleri
 
@@ -157,8 +157,7 @@ Güvenilmeyen müşteri tarafından imzalanan sertifikalar|Bir intranet tabanlı
 |Sertifika yayma|Güvenlik duvarında bir CA sertifikası uygulandıktan sonra, sertifikanın etkili olması 5-10 dakika sürebilir.|GA için zamanlanan düzelme.|
 |IDPS atlama|IDPS atlama, TLS ile sonlandırılan trafik için çalışmaz ve kaynak IP adresi ve kaynak IP grupları desteklenmez.|GA için zamanlanan düzelme.|
 |TLS 1,3 desteği|TLS 1,3 kısmen desteklenir. İstemciden güvenlik duvarına olan TLS tüneli, TLS 1,2 ' i temel alır ve güvenlik duvarındaki dış Web sunucusuna TLS 1,3 ' i temel alır.|Güncelleştirmeler araştırılmaktadır.|
-
-
+|Anahtar Kasası özel uç noktası|Anahtar Kasası, ağ pozlamasını sınırlamak için özel uç nokta erişimini destekler. Güvenilen Azure Hizmetleri, bir özel durum [Keykasası belgelerinde](../key-vault/general/overview-vnet-service-endpoints.md#trusted-services)açıklandığı şekilde yapılandırıldıysa bu sınırlamayı atlayabilir. Azure Güvenlik Duvarı şu anda güvenilir bir hizmet olarak listelenmemiştir ve Key Vault erişemez.|GA için zamanlanan düzelme.|
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

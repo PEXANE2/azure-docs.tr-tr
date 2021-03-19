@@ -718,12 +718,16 @@
                       href: app/java-in-process-agent.md
                     - name: Yapılandırma seçenekleri
                       href: app/java-standalone-config.md
-                    - name: Telemetri işlemcileri
+                    - name: Gelişmiş yapılandırmalar
                       items:
-                        - name: Genel Bakış
-                          href: app/java-standalone-telemetry-processors.md
-                        - name: Örnekler
-                          href: app/java-standalone-telemetry-processors-examples.md
+                        - name: JMX ölçümleri
+                          href: app/java-jmx-metrics-configuration.md
+                        - name: Telemetri işlemcileri
+                          items:
+                            - name: Genel Bakış
+                              href: app/java-standalone-telemetry-processors.md
+                            - name: Örnekler
+                              href: app/java-standalone-telemetry-processors-examples.md
                     - name: JVM bağımsız değişkenleri kurulumu
                       href: app/java-standalone-arguments.md
                     - name: 2.x SDK sürümünden yükseltme
@@ -1126,6 +1130,18 @@
           href: insights/network-insights-overview.md
         - name: Key Vault
           href: insights/key-vault-insights-overview.md
+        - name: SQL Insights (Önizleme)
+          items:
+            - name: Genel Bakış
+              href: insights/sql-insights-overview.md
+            - name: SSS
+              href: faq.md#sql-insights-preview
+            - name: Etkinleştir
+              href: insights/sql-insights-enable.md
+            - name: Uyarılar
+              href: insights/sql-insights-alerts.md
+            - name: Sorun giderme
+              href: insights/sql-insights-troubleshoot.md
         - name: Depolama
           displayname: 'storage, monitor, insights, storage accounts, azure storage'
           href: insights/storage-insights-overview.md

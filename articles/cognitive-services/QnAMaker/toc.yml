@@ -14,8 +14,6 @@
           href: Quickstarts/create-publish-knowledge-base.md
         - name: İstemci kitaplıkları veya REST API
           href: Quickstarts/quickstart-sdk.md
-    - name: Bir Bilgi Bankası 'nı REST API 'lerle sorgulama
-      href: Quickstarts/get-answer-from-knowledge-base-using-url-tool.md
 - name: Öğreticiler
   items:
     - name: Power Virtual Agent ile tümleştirme
@@ -84,6 +82,8 @@
           href: How-To/change-default-answer.md
     - name: Bilgi bankasında sorgu yapma
       items:
+        - name: REST API 'Leri ile sorgulama
+          href: Quickstarts/get-answer-from-knowledge-base-using-url-tool.md
         - name: GenerateAnswer API 'sini kullanma
           href: How-To/metadata-generateanswer-usage.md
           displayName: 'isTest, test, route, request, http, post, body, header, json, metadata, top, strictFilters, GenerateAnswer, API, answer, RankerType, id, text, question, context, 200, 2xx, 400, 401, 403, 404'

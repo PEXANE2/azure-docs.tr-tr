@@ -10,12 +10,13 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 01/16/2020
 ms.author: jhakulin
-ms.openlocfilehash: 42960c25c4124203b64646fdc5cbca833b246e21
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+zone_pivot_groups: programming-languages-set-two
+ms.openlocfilehash: a6225fec30a87ca0bbe57e414733bc21489f87ad
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81683157"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104577453"
 ---
 # <a name="configure-openssl-for-linux"></a>Linux için OpenSSL’yi yapılandırma
 
@@ -40,16 +41,107 @@ OPENSSLDIR: "/usr/lib/ssl"
 ## <a name="examples"></a>Örnekler
 
 - OPENSSLDIR `/opt/ssl` . `certs`Çok veya dosyaları olan alt dizin vardır `.crt` `.pem` .
-Ortam değişkenini `SSL_CERT_DIR` `/opt/ssl/certs` , konuşma SDK 'sını kullanan bir programı çalıştırmadan önce işaret etmek üzere ayarlayın. Örneğin:
+Ortam değişkenini `SSL_CERT_DIR` `/opt/ssl/certs` , konuşma SDK 'sını kullanan bir programı çalıştırmadan önce işaret etmek üzere ayarlayın. Örnek:
 ```bash
 export SSL_CERT_DIR=/opt/ssl/certs
 ```
 
 - OPENSSLDIR, `/etc/pki/tls` (RHEL/CentOS tabanlı sistemlerde olduğu gibi). `certs`Örneğin, bir sertifika paketi dosyası olan alt dizin bulunur `ca-bundle.crt` .
-`SSL_CERT_FILE`Konuşma SDK 'sını kullanan bir programı çalıştırmadan önce bu dosyaya işaret etmek için ortam değişkenini ayarlayın. Örneğin:
+`SSL_CERT_FILE`Konuşma SDK 'sını kullanan bir programı çalıştırmadan önce bu dosyaya işaret etmek için ortam değişkenini ayarlayın. Örnek:
 ```bash
 export SSL_CERT_FILE=/etc/pki/tls/certs/ca-bundle.crt
 ```
+
+## <a name="certificate-revocation-checks"></a>Sertifika Iptal denetimleri
+Konuşma hizmetine bağlanırken, konuşma SDK 'Sı, konuşma hizmeti tarafından kullanılan TLS sertifikasının iptal edilmediğini doğrular. Bu denetimi gerçekleştirmek için, konuşma SDK 'sının Azure tarafından kullanılan sertifika yetkilileri için CRL dağıtım noktalarına erişmesi gerekir. [Bu belgede](https://docs.microsoft.com/azure/security/fundamentals/tls-certificate-changes)olası CRL indirme konumlarının listesi bulunabilir. Bir sertifika iptal edildiyse veya CRL indirilemez konuşma SDK 'Sı bağlantıyı iptal eder ve Iptal edilen olayı yükseltir.
+
+Konuşma SDK 'sının kullanıldığı ağ, CRL indirme konumlarına erişime izin vermeyen bir biçimde yapılandırıldığında, CRL denetimi devre dışı bırakılabilir veya CRL alınamadığından başarısız olarak ayarlanabilir. Bu yapılandırma, bir tanıyıcı nesnesi oluşturmak için kullanılan yapılandırma nesnesi aracılığıyla yapılır.
+
+CRL alınamadığından bağlantı ile devam etmek için OPENSSL_CONTINUE_ON_CRL_DOWNLOAD_FAILURE özelliğini ayarlayın.
+
+::: zone pivot="programming-language-csharp"
+
+```csharp
+config.SetProperty("OPENSSL_CONTINUE_ON_CRL_DOWNLOAD_FAILURE", "true");
+```
+
+::: zone-end
+
+::: zone pivot="programming-language-cpp"
+
+```C++
+config->SetProperty("OPENSSL_CONTINUE_ON_CRL_DOWNLOAD_FAILURE", "true");
+```
+
+::: zone-end
+
+::: zone pivot="programming-language-java"
+
+```java
+config.setProperty("OPENSSL_CONTINUE_ON_CRL_DOWNLOAD_FAILURE", "true");
+```
+
+::: zone-end
+
+::: zone pivot="programming-language-python"
+
+```Python
+speech_config.set_property_by_name("OPENSSL_CONTINUE_ON_CRL_DOWNLOAD_FAILURE", "true")?
+```
+
+::: zone-end
+
+::: zone pivot="programming-language-more"
+
+```ObjectiveC
+[config setPropertyTo:@"true" byName:"OPENSSL_CONTINUE_ON_CRL_DOWNLOAD_FAILURE"];
+```
+
+::: zone-end
+"True" olarak ayarlandığında CRL 'YI almak için bir deneme yapılır ve alma başarılı olursa sertifika iptal edilmek üzere denetlenir, bu, alma işlemi başarısız olursa bağlantının devam etmesine izin verilir.
+
+Sertifika iptal denetimlerini tamamen devre dışı bırakmak için OPENSSL_DISABLE_CRL_CHECK özelliğini "true" olarak ayarlayın.
+::: zone pivot="programming-language-csharp"
+
+```csharp
+config.SetProperty("OPENSSL_DISABLE_CRL_CHECK", "true");
+```
+
+::: zone-end
+
+::: zone pivot="programming-language-cpp"
+
+```C++
+config->SetProperty("OPENSSL_DISABLE_CRL_CHECK", "true");
+```
+
+::: zone-end
+
+::: zone pivot="programming-language-java"
+
+```java
+config.setProperty("OPENSSL_DISABLE_CRL_CHECK", "true");
+```
+
+::: zone-end
+
+::: zone pivot="programming-language-python"
+
+```Python
+speech_config.set_property_by_name("OPENSSL_DISABLE_CRL_CHECK", "true")?
+```
+
+::: zone-end
+
+::: zone pivot="programming-language-more"
+
+```ObjectiveC
+[config setPropertyTo:@"true" byName:"OPENSSL_DISABLE_CRL_CHECK"];
+```
+
+::: zone-end
+
+
 > [!NOTE]
 > Ayrıca, bazı Linux dağıtımlarının tanımlı bir TMP veya TMPDIR ortam değişkeni olmadığından da buna dikkat edin. Bu, konuşma SDK 'sının, sertifika Iptal listesini (CRL) her seferinde karşıdan indirmesini, ancak süreleri dolana kadar yeniden kullanmak üzere CRL 'yi diske almasını sağlar. İlk bağlantı performansını geliştirmek için, [TMPDIR adlı bir ortam değişkeni oluşturabilir ve bunu seçtiğiniz geçici dizininizin yoluna ayarlayabilirsiniz.](https://help.ubuntu.com/community/EnvironmentVariables)
 

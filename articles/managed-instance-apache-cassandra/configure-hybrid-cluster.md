@@ -6,12 +6,12 @@ ms.author: thvankra
 ms.service: managed-instance-apache-cassandra
 ms.topic: quickstart
 ms.date: 03/02/2021
-ms.openlocfilehash: 11daa548e90aa1906ba87e081fa1e0be6fe6aff8
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: 6c6bbdefe666cf0dd2f1c96d783917e1874ae93d
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102430777"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104588707"
 ---
 # <a name="quickstart-configure-a-hybrid-cluster-with-azure-managed-instance-for-apache-cassandra-preview"></a>Hızlı başlangıç: Apache Cassandra için Azure yönetilen örneği ile karma küme yapılandırma (Önizleme)
 
@@ -48,16 +48,17 @@ Bu hızlı başlangıçta, Azure CLı komutlarının karma bir kümeyi yapıland
    > [!NOTE]
    > `assignee` `role` Önceki komutta ve değerleri sırasıyla sabit hizmet ilkesi ve rol tanımlayıcılarıdır.
 
-1. Daha sonra, karma kümeimiz için kaynakları yapılandıracağız. Zaten bir kümeniz olduğundan, buradaki küme adı yalnızca mevcut kümenizin adını belirlemek için bir mantıksal kaynak olacak. Aşağıdaki komut dosyasında tanımlarken ve değişkenlerinde mevcut kümenizin adını kullandığınızdan emin olun `clusterName` `clusterNameOverride` .
+1. Daha sonra, karma kümeimiz için kaynakları yapılandıracağız. Zaten bir kümeniz olduğundan, buradaki küme adı yalnızca mevcut kümenizin adını belirlemek için bir mantıksal kaynak olacak. Aşağıdaki komut dosyasında tanımlarken ve değişkenlerinde mevcut kümenizin adını kullandığınızdan emin olun `clusterName` `clusterNameOverride` . Ayrıca, çekirdek düğümlerine, genel istemci sertifikalarına (Cassandra uç noktanıza ortak/özel bir anahtar yapılandırdıysanız) ve mevcut kümenizin GOSSIP sertifikalarına ihtiyacınız vardır.
 
-   Ayrıca, çekirdek düğümlerine, genel istemci sertifikalarına (Cassandra uç noktanıza ortak/özel bir anahtar yapılandırdıysanız) ve mevcut kümenizin GOSSIP sertifikalarına ihtiyacınız vardır. Değişkeni tanımlamak için yukarıda kopyaladığınız kaynak KIMLIĞINI de kullanmanız gerekir `delegatedManagementSubnetId` .
+   > [!NOTE]
+   > `delegatedManagementSubnetId`Aşağıda sağlayacaksınız değişkeninin değeri, `--scope` Yukarıdaki komutta sağladığınız değerle tamamen aynıdır:
 
    ```azurecli-interactive
    resourceGroupName='MyResourceGroup'
    clusterName='cassandra-hybrid-cluster-legal-name'
    clusterNameOverride='cassandra-hybrid-cluster-illegal-name'
    location='eastus2'
-   delegatedManagementSubnetId='<Resource ID>'
+   delegatedManagementSubnetId='/subscriptions/<subscription ID>/resourceGroups/<resource group name>/providers/Microsoft.Network/virtualNetworks/<VNet name>/subnets/<subnet name>'
     
    # You can override the cluster name if the original name is not legal for an Azure resource:
    # overrideClusterName='ClusterNameIllegalForAzureResource'
@@ -99,14 +100,13 @@ Bu hızlı başlangıçta, Azure CLı komutlarının karma bir kümeyi yapıland
    clusterName='cassandra-hybrid-cluster'
    dataCenterName='dc1'
    dataCenterLocation='eastus2'
-   delegatedSubnetId= '<Resource ID>'
     
    az managed-cassandra datacenter create \
        --resource-group $resourceGroupName \
        --cluster-name $clusterName \
        --data-center-name $dataCenterName \
        --data-center-location $dataCenterLocation \
-       --delegated-subnet-id $delegatedSubnetId \
+       --delegated-subnet-id $delegatedManagementSubnetId \
        --node-count 9 
    ```
 
@@ -141,6 +141,15 @@ Bu hızlı başlangıçta, Azure CLı komutlarının karma bir kümeyi yapıland
    ```bash
     ALTER KEYSPACE "system_auth" WITH REPLICATION = {'class': 'NetworkTopologyStrategy', ‘on-premise-dc': 3, ‘managed-instance-dc': 3}
    ```
+
+## <a name="troubleshooting"></a>Sorun giderme
+
+Sanal ağınıza izin uygularken bir hatayla karşılaşırsanız (örneğin, *' e5007d2c-4b13-4a74-9b6a-605d99f03501 ' için grafik veritabanında kullanıcı veya hizmet sorumlusu bulunamıyor*), Azure Portal aynı izni el ile uygulayabilirsiniz. Portaldan izinleri uygulamak için, var olan sanal ağınızın **erişim denetimi (IAM)** bölmesine gidin ve "Azure Cosmos DB" Için "Ağ Yöneticisi" rolüne bir rol ataması ekleyin. "Azure Cosmos DB" araması yaptığınızda iki giriş görünürse, aşağıdaki görüntüde gösterildiği gibi her iki girdiyi de ekleyin: 
+
+   :::image type="content" source="./media/create-cluster-cli/apply-permissions.png" alt-text="İzinleri Uygula" lightbox="./media/create-cluster-cli/apply-permissions.png" border="true":::
+
+> [!NOTE] 
+> Azure Cosmos DB rol ataması yalnızca dağıtım amacıyla kullanılır. Apache Cassandra için Azure yönetilen ınstanced Azure Cosmos DB için arka uç bağımlılığı yok.  
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
