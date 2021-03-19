@@ -16,10 +16,10 @@ ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: ''
 ms.openlocfilehash: a5f17f009caa9306631debf511f2c890f8f2a450
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "82733784"
 ---
 # <a name="understand-azure-deny-assignments"></a>Azure reddetme atamalarını anlama
@@ -59,16 +59,16 @@ Atamaları Reddet, benzer bir kalıbı rol atamaları olarak izler, ancak bazı 
 > | `DenyAssignmentName` | Evet | Dize | Reddetme atamasının görünen adı. Adlar, belirli bir kapsam için benzersiz olmalıdır. |
 > | `Description` | Hayır | Dize | Reddetme atamasının açıklaması. |
 > | `Permissions.Actions` | En az bir eylem veya bir veri eylemi | String [] | Reddetme atamasının erişimi engellediği yönetim işlemlerini belirten dizeler dizisi. |
-> | `Permissions.NotActions` | Hayır | String [] | Reddetme atamasından dışlanacak yönetim işlemlerini belirten dizeler dizisi. |
+> | `Permissions.NotActions` | No | String [] | Reddetme atamasından dışlanacak yönetim işlemlerini belirten dizeler dizisi. |
 > | `Permissions.DataActions` | En az bir eylem veya bir veri eylemi | String [] | Reddetme atamasının erişimi engellediği veri işlemlerini belirten dizeler dizisi. |
-> | `Permissions.NotDataActions` | Hayır | String [] | Reddetme atamasından çıkarılacak veri işlemlerini belirten dizeler dizisi. |
+> | `Permissions.NotDataActions` | No | String [] | Reddetme atamasından çıkarılacak veri işlemlerini belirten dizeler dizisi. |
 > | `Scope` | Hayır | Dize | Reddetme atamasının geçerli olduğu kapsamı belirten bir dize. |
-> | `DoNotApplyToChildScopes` | Hayır | Boole | Reddetme atamasının alt kapsamlar için geçerli olup olmadığını belirtir. Varsayılan değer false 'dur. |
-> | `Principals[i].Id` | Evet | String [] | Reddetme atamasının uygulandığı Azure AD Principal nesne kimliklerinin (Kullanıcı, Grup, hizmet sorumlusu veya yönetilen kimlik) bir dizisi. `00000000-0000-0000-0000-000000000000`Tüm sorumluları temsil etmek için boş BIR GUID olarak ayarlayın. |
-> | `Principals[i].Type` | Hayır | String [] | Sorumlular tarafından temsil edilen nesne türleri dizisi [i]. ID. `SystemDefined` tüm sorumluları temsil edecek şekilde ayarlanır. |
-> | `ExcludePrincipals[i].Id` | Hayır | String [] | Reddetme atamasının uygulanmadığından, Azure AD sorumlusu nesne kimliklerinin (Kullanıcı, Grup, hizmet sorumlusu veya yönetilen kimlik) bir dizisi. |
-> | `ExcludePrincipals[i].Type` | Hayır | String [] | Excludesorumlularını [i]. ID tarafından temsil edilen nesne türleri dizisi. |
-> | `IsSystemProtected` | Hayır | Boole | Bu reddetme atamasının Azure tarafından oluşturulup oluşturulmayacağını veya silinemeyeceğini belirtir. Şu anda tüm reddetme atamaları sistem korumalıdır. |
+> | `DoNotApplyToChildScopes` | No | Boole | Reddetme atamasının alt kapsamlar için geçerli olup olmadığını belirtir. Varsayılan değer false 'dur. |
+> | `Principals[i].Id` | Yes | String [] | Reddetme atamasının uygulandığı Azure AD Principal nesne kimliklerinin (Kullanıcı, Grup, hizmet sorumlusu veya yönetilen kimlik) bir dizisi. `00000000-0000-0000-0000-000000000000`Tüm sorumluları temsil etmek için boş BIR GUID olarak ayarlayın. |
+> | `Principals[i].Type` | No | String [] | Sorumlular tarafından temsil edilen nesne türleri dizisi [i]. ID. `SystemDefined` tüm sorumluları temsil edecek şekilde ayarlanır. |
+> | `ExcludePrincipals[i].Id` | No | String [] | Reddetme atamasının uygulanmadığından, Azure AD sorumlusu nesne kimliklerinin (Kullanıcı, Grup, hizmet sorumlusu veya yönetilen kimlik) bir dizisi. |
+> | `ExcludePrincipals[i].Type` | No | String [] | Excludesorumlularını [i]. ID tarafından temsil edilen nesne türleri dizisi. |
+> | `IsSystemProtected` | No | Boole | Bu reddetme atamasının Azure tarafından oluşturulup oluşturulmayacağını veya silinemeyeceğini belirtir. Şu anda tüm reddetme atamaları sistem korumalıdır. |
 
 ## <a name="the-all-principals-principal"></a>Tüm asıl adlar
 

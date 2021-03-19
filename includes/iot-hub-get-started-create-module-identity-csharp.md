@@ -1,6 +1,6 @@
 ---
-title: dosya dahil etme
-description: dosya dahil etme
+title: include dosyası
+description: include dosyası
 services: iot-hub
 author: chrissie926
 ms.service: iot-hub
@@ -9,10 +9,10 @@ ms.date: 08/07/2019
 ms.author: menchi
 ms.custom: include file
 ms.openlocfilehash: a5c1ddd085ae65b9920d73f50f993f4646785a69
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "68883814"
 ---
 ## <a name="create-a-module-identity"></a>Modül kimliği oluşturma
@@ -102,9 +102,9 @@ Bu konsol uygulamasını çalıştırdığınızda, hem cihaz hem de modül içi
     }
     ```
 
-    `AddDeviceAsync`Yöntemi, **myfirstdevice**kimliğiyle bir cihaz kimliği oluşturur. Bu cihaz KIMLIĞI kimlik kayıt defterinde zaten varsa, kod yalnızca mevcut cihaz bilgilerini alır. Bu durumda uygulama, bu kimliğin birincil anahtarını görüntüler. Bu anahtarı, sanal cihaz uygulamasında hub 'ınıza bağlanmak için kullanırsınız.
+    `AddDeviceAsync`Yöntemi, **myfirstdevice** kimliğiyle bir cihaz kimliği oluşturur. Bu cihaz KIMLIĞI kimlik kayıt defterinde zaten varsa, kod yalnızca mevcut cihaz bilgilerini alır. Bu durumda uygulama, bu kimliğin birincil anahtarını görüntüler. Bu anahtarı, sanal cihaz uygulamasında hub 'ınıza bağlanmak için kullanırsınız.
 
-    Bu `AddModuleAsync` Yöntem, **myfirstdevice**adlı cihaz altında **myfirstmodule** kimliğiyle bir modül kimliği oluşturur. Bu modül KIMLIĞI kimlik kayıt defterinde zaten varsa, kod yalnızca var olan modül bilgilerini alır. Bu durumda uygulama, bu kimliğin birincil anahtarını görüntüler. Bu anahtarı, hub 'ınıza bağlanmak için sanal modül uygulamasında kullanırsınız.
+    Bu `AddModuleAsync` Yöntem, **myfirstdevice** adlı cihaz altında **myfirstmodule** kimliğiyle bir modül kimliği oluşturur. Bu modül KIMLIĞI kimlik kayıt defterinde zaten varsa, kod yalnızca var olan modül bilgilerini alır. Bu durumda uygulama, bu kimliğin birincil anahtarını görüntüler. Bu anahtarı, hub 'ınıza bağlanmak için sanal modül uygulamasında kullanırsınız.
 
    [!INCLUDE [iot-hub-pii-note-naming-device](iot-hub-pii-note-naming-device.md)]
 

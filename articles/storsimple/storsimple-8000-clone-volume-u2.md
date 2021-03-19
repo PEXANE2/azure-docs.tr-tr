@@ -11,10 +11,10 @@ ms.topic: how-to
 ms.date: 07/15/2020
 ms.author: alkohli
 ms.openlocfilehash: 5ebb7f1d9440bc7a8b75afe64403762532213c1d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91767574"
 ---
 # <a name="use-the-storsimple-device-manager-service-in-azure-portal-to-clone-a-volume"></a>Azure portalında StorSimple Cihaz Yöneticisi'ni kullanarak bir birimi kopyalama
@@ -23,7 +23,7 @@ ms.locfileid: "91767574"
 
 Bu öğreticide, yedekleme **kataloğu** dikey penceresi aracılığıyla tek bir birimi kopyalamak için bir yedekleme kümesini nasıl kullanabileceğiniz açıklanmaktadır. Ayrıca *geçici* ve *kalıcı* kopyalar arasındaki farkı açıklar. Bu öğreticideki kılavuz, güncelleştirme 3 veya sonraki sürümleri çalıştıran tüm StorSimple 8000 serisi cihazlar için geçerlidir.
 
-StorSimple Aygıt Yöneticisi hizmeti **Yedekleme kataloğu** dikey penceresi, el ile veya otomatik yedeklemeler çekilirken oluşturulan tüm yedekleme kümelerini görüntüler. Ardından, kopyalamak üzere bir yedekleme kümesindeki bir birimi seçebilirsiniz.
+StorSimple Device Manager hizmeti **Yedekleme kataloğu** dikey penceresi, el ile veya otomatik yedeklemeler çekilirken oluşturulan tüm yedekleme kümelerini görüntüler. Ardından, kopyalamak üzere bir yedekleme kümesindeki bir birimi seçebilirsiniz.
 
  ![Yedekleme kümesi listesi](./media/storsimple-8000-clone-volume-u2/bucatalog.png)
 
@@ -53,7 +53,7 @@ Yedekleme kataloğundan biriminizin bir kopyasını oluşturmak için aşağıda
 
 #### <a name="to-clone-a-volume"></a>Bir birimi kopyalamak için
 
-1. StorSimple Aygıt Yöneticisi hizmetinize gidin ve ardından **Yedekleme kataloğu**' na tıklayın.
+1. StorSimple Device Manager hizmetinize gidin ve ardından **Yedekleme kataloğu**' na tıklayın.
 
 2. Aşağıdaki şekilde bir yedekleme kümesi seçin:
    
@@ -100,7 +100,7 @@ Bu şekilde oluşturulan bir kopya, geçici bir kopyadır. Kopya türleri hakkı
 
 
 ## <a name="transient-vs-permanent-clones"></a>Geçici ve kalıcı kopyalar
-Geçici kopyalar yalnızca başka bir cihaza kopyaladığınızda oluşturulur. Belirli bir birimi bir yedekleme kümesinden, StorSimple Aygıt Yöneticisi tarafından yönetilen farklı bir cihaza kopyalayabilirsiniz. Geçici kopya, orijinal birimdeki verilere başvuru içerir ve bu verileri hedef cihazda yerel olarak okumak ve yazmak için kullanır.
+Geçici kopyalar yalnızca başka bir cihaza kopyaladığınızda oluşturulur. Belirli bir birimi bir yedekleme kümesinden, StorSimple Device Manager tarafından yönetilen farklı bir cihaza kopyalayabilirsiniz. Geçici kopya, orijinal birimdeki verilere başvuru içerir ve bu verileri hedef cihazda yerel olarak okumak ve yazmak için kullanır.
 
 Geçici bir kopyanın bulut anlık görüntüsünü aldıktan sonra, sonuçta elde edilen kopya *kalıcı* bir kopyadır. Bu işlem sırasında, verilerin bir kopyası bulutta oluşturulur ve bu verileri kopyalama süresi verilerin boyutuna ve Azure gecikmeleri 'na göre belirlenir (Bu bir Azure-Azure kopyasıdır). Bu işlem, haftalara kadar gün sürebilir. Geçici kopya kalıcı bir kopya haline gelir ve kopyalandığı orijinal birim verilerine başvuru içermez.
 
@@ -115,5 +115,5 @@ Bir yıllık eski Microsoft PowerPoint sunu dosyasını kurtarmanız gerekir. BT
 
 ## <a name="next-steps"></a>Sonraki adımlar
 * Bir [StorSimple birimini bir yedekleme kümesinden geri yüklemeyi](storsimple-8000-restore-from-backup-set-u2.md)öğrenin.
-* StorSimple [cihazınızı yönetmek Için storsimple Aygıt Yöneticisi hizmetini nasıl kullanacağınızı](storsimple-8000-manager-service-administration.md)öğrenin.
+* StorSimple [cihazınızı yönetmek Için storsimple Device Manager hizmetini nasıl kullanacağınızı](storsimple-8000-manager-service-administration.md)öğrenin.
 

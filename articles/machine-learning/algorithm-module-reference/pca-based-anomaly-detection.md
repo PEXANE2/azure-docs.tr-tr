@@ -10,10 +10,10 @@ author: likebupt
 ms.author: keli19
 ms.date: 02/22/2020
 ms.openlocfilehash: fa90fcb9ebc17be9a658b08873234eada98b0fba
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90898454"
 ---
 # <a name="pca-based-anomaly-detection-module"></a>PCA-Based anomali algılama modülü
@@ -28,7 +28,7 @@ Bu modül, geçerli işlemler gibi bir sınıftan eğitim verilerini almanın ve
 
 PCA, Machine Learning 'de belirlenmiş bir tekniktir. Verilerin iç yapısını açığa çıkardığından ve verilerdeki varyansı açıkladığından, keşif verileri analizinde sıklıkla kullanılır.
 
-PCA birden çok değişken içeren verileri analiz ederek işe yarar. Değişkenler arasında bağıntılar arar ve sonuçların farklarını en iyi şekilde yakalayan değerlerin birleşimini belirler. Bu Birleşik özellik değerleri, *sorumlu bileşenleri*olarak adlandırılan daha kompakt bir özellik alanı oluşturmak için kullanılır.
+PCA birden çok değişken içeren verileri analiz ederek işe yarar. Değişkenler arasında bağıntılar arar ve sonuçların farklarını en iyi şekilde yakalayan değerlerin birleşimini belirler. Bu Birleşik özellik değerleri, *sorumlu bileşenleri* olarak adlandırılan daha kompakt bir özellik alanı oluşturmak için kullanılır.
 
 Anomali algılama için, her yeni giriş çözümlenir. Anomali algılama algoritması, bir normalleştirilmiş yeniden oluşturma hatasıyla birlikte eigenvektörlerin projeksiyonunu hesaplar. Normalleştirilmiş hata, anomali puanı olarak kullanılır. Hatanın ne kadar yüksekse, örnek de o kadar fazla olur.
 
@@ -46,7 +46,7 @@ PCA 'nın nasıl çalıştığı hakkında daha fazla bilgi edinmek ve anomali a
 
     Modeli nasıl yapılandırmak istediğinizi biliyorsanız, **tek parametre** seçeneğini belirleyin ve bağımsız değişken olarak belirli bir değer kümesi sağlayın.
 
-3. **PCA 'da kullanılacak bileşen sayısı**için, istediğiniz çıkış özelliklerinin veya bileşenlerinin sayısını belirtin.
+3. **PCA 'da kullanılacak bileşen sayısı** için, istediğiniz çıkış özelliklerinin veya bileşenlerinin sayısını belirtin.
 
     Kaç bileşen ekleneceğini gösteren karar, PCA kullanan deneme tasarımının önemli bir parçasıdır. Genel rehberlik, değişkenlerle aynı sayıda PCA bileşenini içermemelidir. Bunun yerine, daha az sayıda bileşen ile başlamalı ve bazı kriterler karşılanana kadar bunları artırmanız gerekir.
 
@@ -54,7 +54,7 @@ PCA 'nın nasıl çalıştığı hakkında daha fazla bilgi edinmek ve anomali a
 
 4. Rastgele PCA eğitimi sırasında gerçekleştirilecek fazla örnekleme miktarını belirtin. Anomali algılama sorunlarında, imdengeli veriler standart PCA tekniklerini uygulamayı zorlaştırır. Bir miktar fazla örnekleme belirterek, hedef örneklerin sayısını artırabilirsiniz.
 
-    **1**belirtirseniz, aşırı örnekleme yapılmaz. **1**' den yüksek bir değer belirtirseniz, modele eğitim içinde kullanmak için ek örnekler üretilir.
+    **1** belirtirseniz, aşırı örnekleme yapılmaz. **1**' den yüksek bir değer belirtirseniz, modele eğitim içinde kullanmak için ek örnekler üretilir.
 
     Bir parametre süpürme kullanılmasına bağlı olarak iki seçenek vardır:
 
@@ -69,7 +69,7 @@ PCA 'nın nasıl çalıştığı hakkında daha fazla bilgi edinmek ve anomali a
 
 6. Etiketli eğitim veri kümesini ve eğitim modülleriyle bir tane bağlayın.
 
-   **Tek parametre**olarak bir Itme **modu oluştur** seçeneğini ayarlarsanız, [anomali algılama modeli](train-anomaly-detection-model.md) modülünü kullanın.
+   **Tek parametre** olarak bir Itme **modu oluştur** seçeneğini ayarlarsanız, [anomali algılama modeli](train-anomaly-detection-model.md) modülünü kullanın.
 
 7. İşlem hattını gönderme.
 

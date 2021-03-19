@@ -5,12 +5,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 03/01/2021
 ms.custom: template-concept
-ms.openlocfilehash: 5ee38fa4b005cf053890c223dfec9244c637bd00
-ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
+ms.openlocfilehash: b4cf3699243e990b5e7b7478ba643067ac456020
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103561830"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104584712"
 ---
 # <a name="guide-for-running-functions-on-net-50-in-azure"></a>Azure 'da .NET 5,0 üzerinde işlev çalıştırmaya yönelik kılavuz
 
@@ -47,7 +47,7 @@ Bu işlevler ayrı bir işlemde çalıştığından, .NET yalıtılmış işlev 
 + Dosyada [host.js](functions-host-json.md) .
 + Dosyada [local.settings.js](functions-run-local.md#local-settings-file) .
 + Projeyi ve bağımlılıkları tanımlayan C# proje dosyası (. csproj).
-+ Uygulamanın giriş noktası olan Program.cs dosyası.
++ Uygulamanın giriş noktası olan program. cs dosyası.
 
 ## <a name="package-references"></a>Paket başvuruları
 
@@ -68,7 +68,7 @@ Bu uzantı paketlerini [Microsoft. Azure. Functions. Worker. Extensions](https:/
 
 ## <a name="start-up-and-configuration"></a>Başlatma ve yapılandırma 
 
-.NET yalıtılmış işlevleri kullanılırken, genellikle Program.cs içinde olan işlev uygulamanızın başlangıcına erişebilirsiniz. Kendi konak örneğinizi oluşturup başlatmaktan siz sorumlusunuz. Bu nedenle, uygulamanız için yapılandırma ardışık düzenine doğrudan erişiminiz de vardır. Bağımlılıkları çok daha kolay bir şekilde ekleyebilir ve işlem dışı çalıştırırken ara yazılım çalıştırabilirsiniz. 
+.NET yalıtılmış işlevleri kullanılırken, genellikle program. cs ' de olan işlev uygulamanızın başlangıcına erişebilirsiniz. Kendi konak örneğinizi oluşturup başlatmaktan siz sorumlusunuz. Bu nedenle, uygulamanız için yapılandırma ardışık düzenine doğrudan erişiminiz de vardır. Bağımlılıkları çok daha kolay bir şekilde ekleyebilir ve işlem dışı çalıştırırken ara yazılım çalıştırabilirsiniz. 
 
 Aşağıdaki kodda bir işlem hattının örneği gösterilmektedir `HostBuilder` :
 

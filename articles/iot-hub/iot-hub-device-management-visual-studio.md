@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 08/20/2019
 ms.author: xshi
 ms.openlocfilehash: 6fe5a45dda6632c56b3c6714827950e25e7d26af
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "73953193"
 ---
 # <a name="use-cloud-explorer-for-visual-studio-for-azure-iot-hub-device-management"></a>Azure için Visual Studio IoT Hub cihaz yönetimi için Cloud Explorer 'ı kullanma
@@ -59,7 +59,7 @@ Visual Studio 2017 için Visual Studio Yükleyicisi bulut Gezgini bileşeni yaln
 
 ## <a name="sign-in-to-access-your-hub"></a>Hub 'ınıza erişmek için oturum açın
 
-1. Visual Studio 'da bulut Gezgini **View**'ni  >  açmak için**bulut Gezginini** görüntüle ' yi seçin.
+1. Visual Studio 'da bulut Gezgini 'ni  >  açmak için **bulut Gezginini** görüntüle ' yi seçin.
 
 1. Aboneliklerinizi göstermek için hesap yönetimi simgesini seçin.
 
@@ -79,9 +79,9 @@ Doğrudan yöntemler kullanmak için aşağıdaki adımları uygulayın:
 
 1. Cihazınıza sağ tıklayıp **Cihaz doğrudan yöntemini çağır**' ı seçin.
 
-1. Yöntem adını ve yükünü **doğrudan çağırma yöntemine**girip **Tamam**' ı seçin.
+1. Yöntem adını ve yükünü **doğrudan çağırma yöntemine** girip **Tamam**' ı seçin.
 
-    Sonuçlar **çıktıda**görüntülenir.
+    Sonuçlar **çıktıda** görüntülenir.
 
 ## <a name="update-device-twin"></a>Cihaz ikizi Güncelleştir
 
@@ -95,7 +95,7 @@ Bir cihaz ikizi düzenlemek için aşağıdaki adımları uygulayın:
 
 1. Cihaz ikizi güncelleştirmek için **CTRL + S** tuşlarına basın.
 
-   Sonuçlar **çıktıda**görüntülenir.
+   Sonuçlar **çıktıda** görüntülenir.
 
 ## <a name="send-cloud-to-device-messages"></a>Buluttan cihaza iletileri gönderme
 
@@ -105,7 +105,7 @@ IoT Hub cihazınıza bir ileti göndermek için şu adımları izleyin:
 
 1. **C2D Iletisi gönder** ' de iletiyi girin ve **Tamam**' ı seçin.
 
-   Sonuçlar **çıktıda**görüntülenir.
+   Sonuçlar **çıktıda** görüntülenir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

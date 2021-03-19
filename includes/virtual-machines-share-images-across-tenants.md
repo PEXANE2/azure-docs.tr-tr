@@ -1,6 +1,6 @@
 ---
-title: dosya dahil etme
-description: dosya dahil etme
+title: include dosyası
+description: include dosyası
 services: virtual-machines
 author: cynthn
 ms.service: virtual-machines
@@ -9,10 +9,10 @@ ms.date: 04/25/2019
 ms.author: cynthn
 ms.custom: include file
 ms.openlocfilehash: f74d4cbc17e49345534a37e9e6612a36e19be295
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "73903694"
 ---
 Ancak, Azure kiracınızın dışındaki görüntüleri, ölçeklendirerek paylaşmak istiyorsanız, paylaşmayı kolaylaştırmak için bir uygulama kaydı oluşturmanız gerekir.  Bir uygulama kaydının kullanılması, şunun gibi daha karmaşık paylaşım senaryolarına olanak sağlayabilir: 
@@ -26,12 +26,12 @@ Ancak, Azure kiracınızın dışındaki görüntüleri, ölçeklendirerek payla
 Görüntü Galerisi kaynaklarını paylaşmak için her iki kiracı tarafından kullanılacak bir uygulama kaydı oluşturun.
 1. [Azure portal uygulama kayıtları (Önizleme)](https://ms.portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade/quickStartType//sourceType/)öğesini açın.    
 1. Sayfanın üst kısmındaki menüden **Yeni kayıt** ' ı seçin.
-1. **Ad**alanına *myGalleryApp*yazın.
+1. **Ad** alanına *myGalleryApp* yazın.
 1. **Desteklenen hesap türleri**' nde, **herhangi bir kurumsal dizin ve kişisel Microsoft hesabında hesaplar**' ı seçin.
-1. **Yeniden yönlendirme URI 'si**içinde yazın *https://www.microsoft.com* ve ardından **Kaydet**' i seçin. Uygulama kaydı oluşturulduktan sonra genel bakış sayfası açılır.
+1. **Yeniden yönlendirme URI 'si** içinde yazın *https://www.microsoft.com* ve ardından **Kaydet**' i seçin. Uygulama kaydı oluşturulduktan sonra genel bakış sayfası açılır.
 1. Genel Bakış sayfasında, **uygulama (istemci) kimliğini** kopyalayın ve daha sonra kullanmak üzere kaydedin.   
 1. **Sertifikalar & sertifikalar**' ı seçin ve ardından **yeni istemci parolası**' nı seçin.
-1. **Açıklama**' da *paylaşılan görüntü Galerisi çapraz kiracı uygulama gizli*dizisi yazın.
+1. **Açıklama**' da *paylaşılan görüntü Galerisi çapraz kiracı uygulama gizli* dizisi yazın.
 1. **Süre sonu**' nde, varsayılan değeri **1 yıl olarak** bırakın ve ardından **Ekle**' yi seçin.
 1. Gizli dizi değerini kopyalayın ve güvenli bir yere kaydedin. Sayfadan ayrıldıktan sonra bunu alamazsınız.
 
@@ -39,8 +39,8 @@ Görüntü Galerisi kaynaklarını paylaşmak için her iki kiracı tarafından 
 Paylaşılan görüntü galerisini kullanmak için uygulama kaydı iznini verin.
 1. Azure portal, başka bir kiracıyla paylaşmak istediğiniz paylaşılan görüntü Galerisi ' ni seçin.
 1. **Erişim denetimi Seç (IAM)** seçeneğini belirleyin ve **rol ataması Ekle** altında *Ekle*' yi seçin. 
-1. **Rol**altında **okuyucu**' yı seçin.
-1. **Erişime ata:**' nın altında, bunu **Azure AD kullanıcısı, Grup veya hizmet sorumlusu**olarak bırakın.
+1. **Rol** altında **okuyucu**' yı seçin.
+1. **Erişime ata:**' nın altında, bunu **Azure AD kullanıcısı, Grup veya hizmet sorumlusu** olarak bırakın.
 1. **Seç**' ın altında *myGalleryApp* yazın ve listede gösterdiği zaman seçin. İşiniz bittiğinde **Kaydet**‘i seçin.
 
 
@@ -55,8 +55,8 @@ https://login.microsoftonline.com/<Tenant 2 ID>/oauth2/authorize?client_id=<Appl
 [Azure Portal](https://portal.azure.com) kiracı 2 olarak oturum açın ve uygulama kaydını VM oluşturmak istediğiniz kaynak grubuna erişim izni verin.
 
 1. Kaynak grubunu seçin ve ardından **erişim denetimi (IAM)** seçeneğini belirleyin. **Rol ataması Ekle** altında **Ekle**' yi seçin. 
-1. **Rol**altında **katkıda bulunan**yazın.
-1. **Erişime ata:**' nın altında, bunu **Azure AD kullanıcısı, Grup veya hizmet sorumlusu**olarak bırakın.
+1. **Rol** altında **katkıda bulunan** yazın.
+1. **Erişime ata:**' nın altında, bunu **Azure AD kullanıcısı, Grup veya hizmet sorumlusu** olarak bırakın.
 1. Tür *MyGalleryApp* **seçin** altında, listede gösterildiği zaman seçin. İşiniz bittiğinde **Kaydet**‘i seçin.
 
 > [!NOTE]

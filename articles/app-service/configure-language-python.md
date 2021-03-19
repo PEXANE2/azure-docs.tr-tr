@@ -2,15 +2,15 @@
 title: Linux Python uygulamalarını yapılandırma
 description: Hem Azure portal hem de Azure CLı kullanarak Web uygulamalarının çalıştırıldığı Python kapsayıcısını nasıl yapılandıracağınızı öğrenin.
 ms.topic: quickstart
-ms.date: 02/01/2021
+ms.date: 03/16/2021
 ms.reviewer: astay; kraigb
 ms.custom: mvc, seodec18, devx-track-python, devx-track-azurecli
-ms.openlocfilehash: cfbbb7064fcadc06714b237066bb6a009246baac
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 11b9ab8e954827cfcc73e440bee1023504e14057
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101709096"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104577621"
 ---
 # <a name="configure-a-linux-python-app-for-azure-app-service"></a>Azure App Service için bir Linux Python uygulaması yapılandırma
 
@@ -69,7 +69,7 @@ App Service, Oryx olarak adlandırılan yapı sistemi, git veya ZIP paketleri ku
 
 1. Bu ayar tarafından belirtilmişse özel bir ön derleme betiği çalıştırın `PRE_BUILD_COMMAND` . (Komut dosyası, diğer Python ve Node.js betikleri, PI ve NPM komutlarını ve Yarn gibi düğüm tabanlı araçları ve örneğin, `yarn install` ve `yarn build` .) çalıştırabilir.
 
-1. Şu komutu çalıştırın: `pip install -r requirements.txt`. *requirements.txt* dosya projenin kök klasöründe bulunmalıdır. Aksi takdirde, yapı işlemi şu hatayı raporlar: "setup.py bulunamadı veya requirements.txt; Pınstall çalışmıyor. "
+1. `pip install -r requirements.txt` öğesini çalıştırın. *requirements.txt* dosya projenin kök klasöründe bulunmalıdır. Aksi takdirde, yapı işlemi şu hatayı raporlar: "setup.py bulunamadı veya requirements.txt; Pınstall çalışmıyor. "
 
 1. Depo kökünde *Manage.py* bulunursa (bir Docgo uygulaması olduğunu), *Manage.py collectstatic* komutunu çalıştırın. Ancak, `DISABLE_COLLECTSTATIC` ayar ise, `true` Bu adım atlanır.
 
@@ -373,6 +373,7 @@ Aşağıdaki bölümler, belirli sorunlar için ek rehberlik sağlar.
 - [Uygulama görünmüyor-"hizmet kullanılamıyor" iletisi](#service-unavailable)
 - [Setup.py veya requirements.txtbulunamadı ](#could-not-find-setuppy-or-requirementstxt)
 - [Modulenotfounbir başlangıç](#modulenotfounderror-when-app-starts)
+- [Veritabanı kilitli](#database-is-locked)
 - [Parola yazıldığında SSH oturumunda görünmez](#other-issues)
 - [SSH oturumundaki komutlar kesilmiş görünüyor](#other-issues)
 - [Statik varlıklar bir Docgo uygulamasında görünmüyor](#other-issues)
@@ -409,6 +410,14 @@ Aşağıdaki bölümler, belirli sorunlar için ek rehberlik sağlar.
 #### <a name="modulenotfounderror-when-app-starts"></a>Uygulama başladığında Modulenotfoun,
 
 Gibi bir hata görürseniz `ModuleNotFoundError: No module named 'example'` , bu, Python 'un uygulama başladığında bir veya daha fazla modülden fazlasını bulamamasıdır. Bu en sık, sanal ortamınızı kodunuzla dağıtırsanız oluşur. Sanal ortamlar taşınabilir değildir, bu nedenle bir sanal ortam, uygulama kodunuzla birlikte dağıtılmamalıdır. Bunun yerine, bir uygulama ayarı oluşturup, ve olarak ayarlayarak, sanal ortam oluşturma ve paketlerinizi web uygulamasına yüklemeye izin verin `SCM_DO_BUILD_DURING_DEPLOYMENT` `1` . Bu, App Service ' a dağıtırken paketlerinizi yüklemeye zorlaştıracaktır. Daha fazla bilgi için lütfen [sanal ortam taşınabilirliği ' nde bu makaleye](https://azure.github.io/AppService/2020/12/11/cicd-for-python-apps.html)bakın.
+
+### <a name="database-is-locked"></a>Veritabanı kilitli
+
+Bir Docgo uygulamasıyla veritabanı geçişlerini çalıştırmaya çalışırken, "SQLite3" görebilirsiniz. OperationalError: veritabanı kilitli. " Hata, uygulamanızın, Azure için PostgreSQL gibi bir bulut veritabanı kullanmak yerine, Docgo 'nun varsayılan olarak yapılandırıldığı bir SQLite veritabanı kullandığını gösterir.
+
+Uygulamanızın `DATABASES` SQLite yerine bir bulut veritabanı kullandığından emin olmak için uygulamanın *Settings.py* dosyasındaki değişkeni denetleyin.
+
+Öğreticide örnekle ilgili bu hatayla karşılaşırsanız, [PostgreSQL Ile Docgo Web uygulaması dağıtma](tutorial-python-postgresql-app.md)bölümünde, [veritabanını bağlamak Için ortam değişkenlerini yapılandırma](tutorial-python-postgresql-app.md#42-configure-environment-variables-to-connect-the-database)bölümündeki adımları tamamladığınızdan emin olun.
 
 #### <a name="other-issues"></a>Diğer sorunlar
 

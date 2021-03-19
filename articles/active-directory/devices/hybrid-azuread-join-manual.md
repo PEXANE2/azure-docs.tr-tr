@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f346b997b5e0c785d066ce3a1edaab8cbea10212
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 28cc8a858d1779e17c893d64eda5f907bb4c808e
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101644128"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104577997"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-joined-devices-manually"></a>Öğretici: Hibrit Azure Active Directory'ye katılmış cihazları elle yapılandırma
 
@@ -74,6 +74,9 @@ Kuruluşunuz şirket içi Active Directory ile yönetilen (Federe olmayan) kurul
 Sürüm 1703 veya önceki sürümlerde Windows 10 cihazlarında, kuruluşunuz giden bir ara sunucu üzerinden internet erişimi gerektiriyorsa, Windows 10 bilgisayarlarının Azure AD 'ye kaydolmasının etkinleştirilmesi için Web proxy otomatik bulma (WPAD) uygulamanız gerekir.
 
 Windows 10 1803 ile başlayarak, Federasyon etki alanındaki bir cihaz tarafından AD FS aracılığıyla bir karma Azure AD katılımı denemesi başarısız olur ve Azure AD Connect bilgisayar/cihaz nesnelerini Azure AD 'ye eşitlemek üzere yapılandırılmışsa, cihaz, eşitlenen bilgisayarı/cihazı kullanarak karma Azure AD JOIN 'i tamamlamaya çalışır.
+
+> [!NOTE]
+> Cihaz kaydı eşitleme işleminin başarılı olması için, cihaz kayıt yapılandırması kapsamında, varsayılan cihaz özniteliklerini Azure AD Connect eşitleme yapılandırmanızla hariç tutmayın. Azure AD ile eşitlenen varsayılan cihaz öznitelikleri hakkında daha fazla bilgi için bkz. [Azure AD Connect tarafından eşitlenen öznitelikler](https://docs.microsoft.com/azure/active-directory/hybrid/reference-connect-sync-attributes-synchronized#windows-10).
 
 Cihazın sistem hesabı altında yukarıdaki Microsoft kaynaklarına erişip erişemediğinizi doğrulamak için, [test cihazı kayıt bağlantı](/samples/azure-samples/testdeviceregconnectivity/testdeviceregconnectivity/) betiği ' ni kullanabilirsiniz.
 

@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 12/16/2019
 ms.author: rohogue
 ms.openlocfilehash: 44a4e1293bc4c5a54e1e345d5cf95ba307a7b120
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88272580"
 ---
 # <a name="mount-the-avere-vfxt-cluster"></a>Avere vFXT kümesini takma
@@ -74,7 +74,7 @@ Mount komutunun üç öğesi vardır:
 
 ### <a name="junction-and-ip"></a>Kavşak ve IP
 
-VServer yolu, *IP adresinin* bir birleşimidir ve bir *ad alanı birleşiminin*yoludur. Ad alanı birleşimi, depolama sistemi eklendiğinde tanımlanan bir sanal yoldur.
+VServer yolu, *IP adresinin* bir birleşimidir ve bir *ad alanı birleşiminin* yoludur. Ad alanı birleşimi, depolama sistemi eklendiğinde tanımlanan bir sanal yoldur.
 
 Kümeniz BLOB depolama ile oluşturulduysa, bu kapsayıcının ad alanı yolu `/msazure`
 
@@ -102,7 +102,7 @@ Sorunsuz bir istemci bağlama sağlamak için, bu ayarları ve bağımsız deği
 
 ``mount -o hard,proto=tcp,mountproto=tcp,retry=30 ${VSERVER_IP_ADDRESS}:/${NAMESPACE_PATH} ${LOCAL_FILESYSTEM_MOUNT_POINT}``
 
-| Gerekli ayarlar | Açıklama |
+| Gerekli ayarlar | Description |
 --- | ---
 ``hard`` | VFXT kümesine yönelik hafif bağlar, uygulama hatalarıyla ve olası veri kaybı ile ilişkilendirilir.
 ``proto=netid`` | Bu seçenek NFS ağ hatalarının uygun işlenmesini destekler.

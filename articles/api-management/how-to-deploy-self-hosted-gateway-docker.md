@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 04/26/2020
 ms.author: apimpm
 ms.openlocfilehash: b9e990988770e8aca015ae8b1159bb4f5e50df57
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "82205098"
 ---
 # <a name="deploy-an-azure-api-management-self-hosted-gateway-to-docker"></a>Azure API Management şirket içinde barındırılan bir ağ geçidini Docker 'a dağıtma
@@ -35,11 +35,11 @@ Bu makalede, Azure API Management şirket içinde barındırılan ağ geçidi bi
 
 ## <a name="deploy-the-self-hosted-gateway-to-docker"></a>Şirket içinde barındırılan ağ geçidini Docker 'a dağıtma
 
-1. **Dağıtım ve altyapı**altında **ağ geçitleri** ' ni seçin.
+1. **Dağıtım ve altyapı** altında **ağ geçitleri** ' ni seçin.
 2. Dağıtmayı düşündüğünüz ağ geçidi kaynağını seçin.
 3. **Dağıtım**' ı seçin.
 4. **Belirteç** metin kutusundaki bir erişim belirtecinin, varsayılan **süre sonu** ve **gizli anahtar** değerleri kullanılarak sizin için otomatik olarak oluşturulduğunu unutmayın. Gerekirse, yeni bir belirteç oluşturmak için, ya da her iki denetimin içindeki istenen değerleri seçin.
-4. **Dağıtım betikleri**altında **Docker** ' ın seçildiğinden emin olun.
+4. **Dağıtım betikleri** altında **Docker** ' ın seçildiğinden emin olun.
 5. Dosyayı indirmek için **ortamın** yanındaki **env. conf** dosya bağlantısını seçin.
 6. Docker komutunu panoya kopyalamak için **Çalıştır** metin kutusunun sağ ucunda bulunan **Kopyala** simgesini seçin.
 7. Komutu Terminal (veya komut) penceresine yapıştırın. Bağlantı noktası eşlemelerini ve kapsayıcı adını gereken şekilde ayarlayın. Komutun, indirilen ortam dosyasının geçerli dizinde bulunduğunu varsaydığını unutmayın.

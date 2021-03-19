@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 10/07/2020
 ms.author: cherylmc
 ms.openlocfilehash: 0b9b8ba555cddd56c49c750709e69ec180291c95
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91827169"
 ---
 # <a name="about-point-to-site-vpn-routing"></a>Noktadan Siteye VPN yönlendirme hakkında
@@ -56,7 +56,7 @@ Bu örnekte, Noktadan siteye VPN Ağ Geçidi bağlantısı VNet1 içindir. VNet1
 
 Windows kullanan istemciler doğrudan eşlenmiş sanal ağlara erişebilir, ancak VNet eşlemesi veya ağ topolojisi üzerinde herhangi bir değişiklik yapılırsa VPN istemcisinin yeniden indirilmesi gerekir. Windows dışı istemciler, doğrudan eşlenmiş sanal ağlara erişebilir. Erişim geçişli değildir ve yalnızca doğrudan eşlenmiş VNET 'ler ile sınırlıdır.
 
-:::image type="content" source="./media/vpn-gateway-about-point-to-site-routing/multiple.jpg" alt-text="Yalıtılmış VNet yönlendirmesi" lightbox="./media/vpn-gateway-about-point-to-site-routing/multiple.jpg":::
+:::image type="content" source="./media/vpn-gateway-about-point-to-site-routing/multiple.jpg" alt-text="Birden çok eşlenen sanal ağlar" lightbox="./media/vpn-gateway-about-point-to-site-routing/multiple.jpg":::
 
 ### <a name="address-space"></a>Adres alanı:
 
@@ -86,7 +86,7 @@ Bu örnekte, Noktadan siteye VPN Ağ Geçidi bağlantısı VNet1 içindir. VNet1
 
 Windows veya desteklenen başka bir işletim sistemi kullanan istemciler yalnızca VNet1 erişebilir. Ek VNET 'lere erişmek için BGP kullanılmalıdır.
 
-:::image type="content" source="./media/vpn-gateway-about-point-to-site-routing/multiple-s2s.jpg" alt-text="Yalıtılmış VNet yönlendirmesi" lightbox="./media/vpn-gateway-about-point-to-site-routing/multiple-s2s.jpg":::
+:::image type="content" source="./media/vpn-gateway-about-point-to-site-routing/multiple-s2s.jpg" alt-text="Birden çok VNET ve S2S" lightbox="./media/vpn-gateway-about-point-to-site-routing/multiple-s2s.jpg":::
 
 ### <a name="address-space"></a>Adres alanı
 
@@ -114,7 +114,7 @@ Bu örnekte, Noktadan siteye VPN Ağ Geçidi bağlantısı VNet1 içindir. VNet1
 
 Windows veya desteklenen başka bir işletim sistemi kullanan istemciler, siteden siteye VPN bağlantısı kullanılarak bağlı olan tüm sanal ağlara erişebilir, ancak bağlı VNET 'lere olan yolların Windows istemcilerine el ile eklenmesi gerekir.
 
-:::image type="content" source="./media/vpn-gateway-about-point-to-site-routing/multiple-bgp.jpg" alt-text="Yalıtılmış VNet yönlendirmesi" lightbox="./media/vpn-gateway-about-point-to-site-routing/multiple-bgp.jpg":::
+:::image type="content" source="./media/vpn-gateway-about-point-to-site-routing/multiple-bgp.jpg" alt-text="Birden çok VNET ve S2S (BGP)" lightbox="./media/vpn-gateway-about-point-to-site-routing/multiple-bgp.jpg":::
 
 ### <a name="address-space"></a>Adres alanı
 
@@ -142,7 +142,7 @@ Bu örnekte, Noktadan siteye VPN Ağ Geçidi bağlantısı VNet1 içindir. VNet1
 
 Windows ve Windows dışı istemciler yalnızca VNet1 'e erişebilir.
 
-:::image type="content" source="./media/vpn-gateway-about-point-to-site-routing/branch-office.jpg" alt-text="Yalıtılmış VNet yönlendirmesi" lightbox="./media/vpn-gateway-about-point-to-site-routing/branch-office.jpg":::
+:::image type="content" source="./media/vpn-gateway-about-point-to-site-routing/branch-office.jpg" alt-text="VNet ve şube ofisi ile yönlendirme" lightbox="./media/vpn-gateway-about-point-to-site-routing/branch-office.jpg":::
 
 ### <a name="address-space"></a>Adres alanı
 
@@ -168,7 +168,7 @@ Bu örnekte, Noktadan siteye VPN Ağ Geçidi bağlantısı VNet1 içindir. VNet1
 
 Windows istemcileri VNet 'e ve şube ofise (site1) erişebilir, ancak site1 'e giden yolların el ile istemciye eklenmesi gerekir. Windows dışı istemciler, VNet 'e ve şirket içi şube ofisine erişebilir.
 
-:::image type="content" source="./media/vpn-gateway-about-point-to-site-routing/branch-bgp.jpg" alt-text="Yalıtılmış VNet yönlendirmesi" lightbox="./media/vpn-gateway-about-point-to-site-routing/branch-bgp.jpg":::
+:::image type="content" source="./media/vpn-gateway-about-point-to-site-routing/branch-bgp.jpg" alt-text="VNet ve şube ofisi ile yönlendirme" lightbox="./media/vpn-gateway-about-point-to-site-routing/branch-bgp.jpg":::
 
 ### <a name="address-space"></a>Adres alanı
 
@@ -195,7 +195,7 @@ Bu örnekte, Noktadan siteye VPN Ağ Geçidi bağlantısı VNet1 içindir. VNet1
 
 Tüm istemciler yalnızca VNet1 erişim sağlayabilir.
 
-:::image type="content" source="./media/vpn-gateway-about-point-to-site-routing/multi-branch.jpg" alt-text="Yalıtılmış VNet yönlendirmesi" lightbox="./media/vpn-gateway-about-point-to-site-routing/multi-branch.jpg":::
+:::image type="content" source="./media/vpn-gateway-about-point-to-site-routing/multi-branch.jpg" alt-text="Çoklu VNet S2S ve şube ofisi gösteren diyagram" lightbox="./media/vpn-gateway-about-point-to-site-routing/multi-branch.jpg":::
 
 ### <a name="address-space"></a>Adres alanı
 
@@ -225,7 +225,7 @@ Bu örnekte, Noktadan siteye VPN Ağ Geçidi bağlantısı VNet1 içindir. VNet1
 
 Windows kullanan istemciler, siteden siteye VPN bağlantısı kullanılarak bağlanan sanal ağlara ve sitelere erişebilir, ancak VNet2, VNet3 ve site1 yollarının istemciye el ile eklenmesi gerekir. Windows dışı istemcileri, bir siteden siteye VPN bağlantısı kullanılarak bağlı olan sanal ağlara ve sitelere el ile müdahale olmadan erişebilirler. Erişim geçişlidir ve istemciler tüm bağlı sanal ağlarda ve sitelerde (Şirket içi) kaynaklara erişebilir.
 
-:::image type="content" source="./media/vpn-gateway-about-point-to-site-routing/multi-branch-bgp.jpg" alt-text="Yalıtılmış VNet yönlendirmesi" lightbox="./media/vpn-gateway-about-point-to-site-routing/multi-branch-bgp.jpg":::
+:::image type="content" source="./media/vpn-gateway-about-point-to-site-routing/multi-branch-bgp.jpg" alt-text="Çoklu VNet S2S ve şube ofisi" lightbox="./media/vpn-gateway-about-point-to-site-routing/multi-branch-bgp.jpg":::
 
 ### <a name="address-space"></a>Adres alanı
 

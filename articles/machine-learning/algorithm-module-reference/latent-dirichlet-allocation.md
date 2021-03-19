@@ -10,10 +10,10 @@ author: likebupt
 ms.author: keli19
 ms.date: 06/05/2020
 ms.openlocfilehash: f9f239ea69aaf71e591a447feb300c13a45ba1a4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90907854"
 ---
 # <a name="latent-dirichlet-allocation-module"></a>Latent Dirichlet ayırma modülü
@@ -30,7 +30,7 @@ Bu modül bir metin sütunu alır ve bu çıktıları oluşturur:
 
 + Giriş olarak kullanılan yeni metinlere kaydedip yeniden uygulayabilmeniz için bir dönüşüm
 
-Bu modül, scikit-öğren kitaplığını kullanır. Scikit-öğrenme hakkında daha fazla bilgi için bkz. öğretici ve algoritmaların açıklaması içeren [GitHub deposu](https://github.com/scikit-learn/scikit-learn).
+Bu modül, scikit-öğren kitaplığını kullanır. Scikit-öğrenme hakkında daha fazla bilgi için bkz. öğretici ve algoritmaların açıklaması içeren [GitHub deposu](https://github.com/scikit-learn/scikit-learn).
 
 ## <a name="more-about-latent-dirichlet-allocation"></a>Görünmeyen Dirichlet ayırması hakkında daha fazla bilgi
 
@@ -52,17 +52,17 @@ Bu modül, ham veya önceden işlenmiş bir metin sütunu içeren bir veri küme
 
 2. Modülün girişi olarak, bir veya daha fazla metin sütunu içeren bir veri kümesi sağlayın.
 
-3. **Hedef sütunlar**için, çözümlenecek metni içeren bir veya daha fazla sütun seçin.
+3. **Hedef sütunlar** için, çözümlenecek metni içeren bir veya daha fazla sütun seçin.
 
     Birden çok sütun seçebilirsiniz, ancak **dize** veri türünde olmaları gerekir.
 
     LDA metinden büyük bir özellik matrisi oluşturduğundan, genellikle tek bir metin sütunu analiz edersiniz.
 
-4. **Model oluşturma konuları**için, giriş metninde kaç kategori veya konu türediğini belirten 1 ile 1000 arasında bir tamsayı girin.
+4. **Model oluşturma konuları** için, giriş metninde kaç kategori veya konu türediğini belirten 1 ile 1000 arasında bir tamsayı girin.
 
     Varsayılan olarak, 5 konu oluşturulur.
 
-5. **N-gram**için, karma oluşturma sırasında oluşturulan n-gram maksimum uzunluğunu belirtin.
+5. **N-gram** için, karma oluşturma sırasında oluşturulan n-gram maksimum uzunluğunu belirtin.
 
     Varsayılan değer 2 ' dir, yani hem bigram hem de unigram oluşturulur.
 
@@ -77,7 +77,7 @@ Bu modül, ham veya önceden işlenmiş bir metin sütunu içeren bir veri küme
     > [!NOTE] 
     > Azure Machine Learning tasarımcısında, scikit-öğren kitaplığı artık 0,19 sürümünden normalleştirilmiş olmayan *doc_topic_distr* çıktıyı desteklememektedir. Bu modülde, **normalize** parametresi yalnızca *özellik konu matrisi* çıktısına uygulanabilir. *Dönüştürülmüş veri kümesi* çıkışı her zaman normalleştirilmelidir.
 
-7. **Tüm seçenekleri göster**seçeneğini belirleyin ve ardından aşağıdaki Gelişmiş parametreleri ayarlamak Istiyorsanız bunu **true** olarak ayarlayın.
+7. **Tüm seçenekleri göster** seçeneğini belirleyin ve ardından aşağıdaki Gelişmiş parametreleri ayarlamak Istiyorsanız bunu **true** olarak ayarlayın.
 
     Bu parametreler LDA 'nın scikit-öğrenme uygulamasına özgüdür. Scikit-öğrenme konusunda ve resmi [scikit-öğrenme belgesi](https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.LatentDirichletAllocation.html)hakkında bazı iyi öğreticiler vardır.
 
@@ -95,11 +95,11 @@ Bu modül, ham veya önceden işlenmiş bir metin sütunu içeren bir veri küme
 
     + **Veri üzerinden geçen geçiş sayısı**. Algoritmanın verilerin üzerinde kaç kez dolacaktır için en fazla sayıyı belirtin. Bu parametre, `max_iter` scikit-öğren içindeki parametreye karşılık gelir.
 
-8. Metni sınıflandırmadan önce bir ilk geçişte n-gram listesini oluşturmak istiyorsanız, **Ngram** 'lar veya **lda öncesinde Ngram 'lar için**derleme sözlüğü seçeneğini belirleyin.
+8. Metni sınıflandırmadan önce bir ilk geçişte n-gram listesini oluşturmak istiyorsanız, **Ngram** 'lar veya **lda öncesinde Ngram 'lar için** derleme sözlüğü seçeneğini belirleyin.
 
     Başlangıç sözlüğünü önceden oluşturursanız, daha sonra modeli gözden geçirirken sözlüğü kullanabilirsiniz. Sonuçları sayısal dizinler yerine metne eşleyebilir, yorum için genellikle daha kolay olur. Ancak, sözlüğün kaydedilmesi daha uzun sürer ve ek depolama alanı kullanacaktır.
 
-9. **En büyük Ngram sözlüğü boyutu**için, n-gram sözlüğünde oluşturulabilen toplam satır sayısını girin.
+9. **En büyük Ngram sözlüğü boyutu** için, n-gram sözlüğünde oluşturulabilen toplam satır sayısını girin.
 
     Bu seçenek, sözlüğün boyutunu denetlemek için faydalıdır. Ancak, girişte Ngram sayısı bu boyutu aşarsa, çakışmalar meydana gelebilir.
 
@@ -169,7 +169,7 @@ Varsayılan olarak, dönüştürülmüş bir veri kümesi ve özellik konu matri
 
 ### <a name="lda-and-topic-modeling"></a>LDA ve konu modelleme
 
-Görünmeyen metinden daha fazla bilgi edinmek için, bu durum genellikle *içerik tabanlı konu modelleme*için kullanılır. İçerik tabanlı konu modellemesinde, bir konu, sözcüklerden bir dağıtım olur.
+Görünmeyen metinden daha fazla bilgi edinmek için, bu durum genellikle *içerik tabanlı konu modelleme* için kullanılır. İçerik tabanlı konu modellemesinde, bir konu, sözcüklerden bir dağıtım olur.
 
 Örneğin, çok sayıda ürün içeren müşteri incelemelerinin bir CorpU sağladığınızı varsayalım. Zaman içinde müşteriler tarafından gönderilen incelemelerin metni, bazıları birden çok konuda kullanılan birçok terim içerir.
 
@@ -181,19 +181,19 @@ Dizin terimi hesaplandıktan sonra, uzaklık tabanlı bir benzerlik ölçüsü, 
 
 ###  <a name="module-parameters"></a>Modül parametreleri
 
-|Ad|Tür|Aralık|İsteğe Bağlı|Varsayılan|Açıklama|  
+|Ad|Tür|Aralık|İsteğe Bağlı|Varsayılan|Description|  
 |----------|----------|-----------|--------------|-------------|-----------------|  
 |Hedef sütun (ler)|Sütun seçimi||Gerekli|StringFeature|Hedef sütun adı veya dizini.|  
 |Modeledilecek Konu sayısı|Tamsayı|[1; 1000]|Gerekli|5|Belge dağıtımını N konu başlıklarına göre modelleyin.|  
 |N-gram|Tamsayı|[1; 10]|Gerekli|2|Karma oluşturma sırasında oluşturulan N-gram sırası.|  
 |Normalleştir|Boole|True veya false|Gerekli|true|Çıktıyı olasılıklara normalleştirin.  Dönüştürülmüş veri kümesi P (konu&#124;belge) olur ve özellik konu matrisi P (Word&#124;konu başlığı) olur.|  
 |Tüm seçenekleri göster|Boole|True veya false|Gerekli|Yanlış|, Scikit 'e özgü ek parametreler sunar ve çevrimiçi LDA öğrenin.|  
-|Ro parametresi|Kayan|[0.00001; 1.0]|**Tüm seçenekleri göster** onay kutusu seçildiğinde geçerlidir|0.01|Önceki dağıtım konu başlığı.|  
-|Alpha parametresi|Kayan|[0.00001; 1.0]|**Tüm seçenekleri göster** onay kutusu seçildiğinde geçerlidir|0.01|Dağıtım öncesi belge konusu.|  
+|Ro parametresi|Float|[0.00001; 1.0]|**Tüm seçenekleri göster** onay kutusu seçildiğinde geçerlidir|0.01|Önceki dağıtım konu başlığı.|  
+|Alpha parametresi|Float|[0.00001; 1.0]|**Tüm seçenekleri göster** onay kutusu seçildiğinde geçerlidir|0.01|Dağıtım öncesi belge konusu.|  
 |Tahmini belge sayısı|Tamsayı|[1; int. Değerini|**Tüm seçenekleri göster** onay kutusu seçildiğinde geçerlidir|1000|Tahmini belge sayısı. Parametresine karşılık gelir `total_samples` .|  
 |Toplu işin boyutu|Tamsayı|[1; 1024]|**Tüm seçenekleri göster** onay kutusu seçildiğinde geçerlidir|32|Toplu işin boyutu.|  
 |Öğrenme oranı güncelleştirme zamanlaması 'nda kullanılan yinelemenin başlangıç değeri|Tamsayı|[0; int. Değerini|**Tüm seçenekleri göster** onay kutusu seçildiğinde geçerlidir|0|Erken yinelemeler için öğrenme oranını aşağı doğru örneklerdeki ilk değer. Parametresine karşılık gelir `learning_offset` .|  
-|Güncelleştirmeler sırasında yinelemeye uygulanan güç|Kayan|[0.0; 1.0]|**Tüm seçenekleri göster** onay kutusu seçildiğinde geçerlidir|0,5|Öğrenme oranını denetlemek için yineleme sayısına güç uygulandı. Parametresine karşılık gelir `learning_decay` . |  
+|Güncelleştirmeler sırasında yinelemeye uygulanan güç|Float|[0.0; 1.0]|**Tüm seçenekleri göster** onay kutusu seçildiğinde geçerlidir|0,5|Öğrenme oranını denetlemek için yineleme sayısına güç uygulandı. Parametresine karşılık gelir `learning_decay` . |  
 |Eğitim yinelemesi sayısı|Tamsayı|[1; 1024]|**Tüm seçenekleri göster** onay kutusu seçildiğinde geçerlidir|25|Eğitim yinelemesi sayısı.|  
 |Ngram sözlüğü oluşturma|Boole|True veya false|**Tüm seçenekleri göster** onay *kutusu seçili olmadığında* geçerlidir|Doğru|Bilgi işlem bilmesinden önce Ngram sözlüğü oluşturur. Model İnceleme ve yorumu için faydalıdır.|  
 |Ngram sözlüğünün en büyük boyutu|Tamsayı|[1; int. Değerini|**Ngram 'ın derleme sözlüğü** seçeneği **doğru** olduğunda geçerlidir|20000|Ngram sözlüğünün en büyük boyutu. Giriş içindeki belirteçlerin sayısı bu boyutu aşarsa, çakışmalar meydana gelebilir.|  

@@ -10,10 +10,10 @@ ms.service: genomics
 ms.topic: conceptual
 ms.date: 12/07/2017
 ms.openlocfilehash: 5145aa0ffdc4095f178a214f63433e5bcece83b6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "72249158"
 ---
 # <a name="submit-a-workflow-using-a-bam-file-input"></a>BAM dosyası girişini kullanarak iş akışı gönderme
@@ -21,7 +21,7 @@ ms.locfileid: "72249158"
 Bu makalede, giriş dosyanız tek bir Bad dosyası ise Microsoft Genomiks hizmetine bir iş akışı gönderme işlemi gösterilmektedir. Bu konu başlığında `msgen` istemcisini yükleyip çalıştırdığınız ve Azure Depolama konusunda bilgi sahibi olduğunuz kabul edilmektedir. Belirtilen örnek verileri kullanarak bir iş akışını başarıyla gönderdiyseniz, bu makaleye devam etmeye hazırsınızdır. 
 
 ## <a name="set-up-upload-your-bam-file-to-azure-storage"></a>Kurulum: BAM dosyanızı Azure depolamaya yükleme
-*reads.bam* adlı tek bir BAM dosyasına sahip olduğunuzu ve bu dosyayı *myaccount* adlı Azure depolama hesabınıza **https://<span></span>myaccount.blob.core<span></span>.windows<span></span>.net<span></span>/inputs/reads<span></span>.bam<span></span>** olarak yüklediğinizi düşünelim. API URL'sine ve erişim anahtarına sahipsiniz. **https://<span></span>myaccount.blob.core<span></span>.windows<span></span>.net<span></span>/outputs<span></span>** içinde iki çıkış olmasını istiyorsunuz.
+*reads.bam* adlı tek bir BAM dosyasına sahip olduğunuzu ve bu dosyayı *myaccount* adlı Azure depolama hesabınıza **https://<span></span>myaccount.blob.core <span></span>.windows <span></span>.net <span></span>/inputs/reads <span></span>.bam <span></span>** olarak yüklediğinizi düşünelim. API URL'sine ve erişim anahtarına sahipsiniz. **https://<span></span>myaccount.blob.core <span></span>.windows <span></span>.net <span></span>/outputs <span></span>** içinde iki çıkış olmasını istiyorsunuz.
 
 
 

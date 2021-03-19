@@ -3,14 +3,14 @@ title: Azure Kubernetes hizmetlerinde (AKS) portalı kullanarak sanal düğümle
 description: Bir Azure Kubernetes hizmeti (AKS) kümesi oluşturmak için Azure portal kullanarak pods 'yi çalıştırmak için sanal düğümleri kullanan bir Azure
 services: container-service
 ms.topic: conceptual
-ms.date: 05/06/2019
+ms.date: 03/15/2021
 ms.custom: references_regions, devx-track-azurecli
-ms.openlocfilehash: 06a3e7263b2e03cfc37f7ba3c733e07536b5d473
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.openlocfilehash: c1ecaa88dd5329d86818565983a6ba891a6d8424
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102501813"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104577843"
 ---
 # <a name="create-and-configure-an-azure-kubernetes-services-aks-cluster-to-use-virtual-nodes-in-the-azure-portal"></a>Azure portal sanal düğümleri kullanmak için bir Azure Kubernetes hizmeti (AKS) kümesi oluşturma ve yapılandırma
 
@@ -54,15 +54,15 @@ Azure Portal sol üst köşesinde **kaynak oluştur**  >  **Kubernetes hizmeti**
 **Temel Bilgiler** sayfasında aşağıdaki seçenekleri yapılandırın:
 
 - *PROJE AYRINTILARI*: Bir Azure aboneliği seçtikten sonra bir Azure kaynak grubu seçin veya *myResourceGroup* adıyla yeni bir tane oluşturun. **Kubernetes kümesi adı** alanına *myAKSCluster* gibi bir ad girin.
-- *KÜME AYRINTILARI*: AKS kümesi için bölge, Kubernetes sürümü ve DNS adı ön eki seçin.
+- *Küme ayrıntıları*: aks kümesi için bir bölge ve Kubernetes sürümü seçin.
 - *BIRINCIL düğüm havuzu*: aks düğümleri IÇIN bir VM boyutu seçin. AKS kümesi dağıtıldıktan sonra, sanal makine boyutu **değiştirilemez**.
      - Kümeye dağıtılacak düğüm sayısını seçin. Bu makalede, **düğüm sayısını** *1* olarak ayarlayın. Küme dağıtıldıktan sonra düğüm sayısı **ayarlanabilir**.
 
-**İleri: ölçek** öğesine tıklayın.
+**İleri: düğüm havuzları**' na tıklayın.
 
-**Ölçek** sayfasında, **sanal düğümler** altında *etkin* ' i seçin.
+**Düğüm havuzları** sayfasında, *sanal düğümleri etkinleştir*' i seçin.
 
-![AKS kümesi oluşturma ve sanal düğümleri etkinleştirme](media/virtual-nodes-portal/enable-virtual-nodes.png)
+:::image type="content" source="media/virtual-nodes-portal/enable-virtual-nodes.png" alt-text="Bir tarayıcıda, Azure portal sanal düğümleri etkinleştirilmiş bir küme oluşturmayı gösterir. ' Sanal düğümleri etkinleştir ' seçeneği vurgulanır.":::
 
 Varsayılan olarak, bir küme kimliği oluşturulur. Bu küme kimliği, küme iletişimi ve diğer Azure hizmetleriyle tümleştirme için kullanılır. Varsayılan olarak, bu küme kimliği yönetilen bir kimliktir. Daha fazla bilgi için bkz. [yönetilen kimlikleri kullanma](use-managed-identity.md). Ayrıca, bir hizmet sorumlusunu küme kimliğiniz olarak kullanabilirsiniz.
 
@@ -158,7 +158,7 @@ Pod 'a sanal düğümlerle kullanılmak üzere atanan Azure sanal ağ alt ağın
 Sanal düğümde çalışan Pod 'u test etmek için, bir web istemcisiyle tanıtım uygulamasına gidin. Pod 'a bir iç IP adresi atandığında, bu bağlantıyı AKS kümesindeki başka bir pod 'tan hızlıca test edebilirsiniz. Bir test Pod oluşturun ve buna bir terminal oturumu ekleyin:
 
 ```console
-kubectl run -it --rm virtual-node-test --image=debian
+kubectl run -it --rm virtual-node-test --image=mcr.microsoft.com/aks/fundamental/base-ubuntu:v0.0.11
 ```
 
 Şunu `curl` kullanarak Pod 'a yüklensin `apt-get` :

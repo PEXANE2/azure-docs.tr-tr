@@ -6,18 +6,19 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: conceptual
-ms.date: 02/05/2021
+ms.date: 03/17/2021
 ms.author: alkohli
-ms.openlocfilehash: e72ad50b495dec7e3a647bb7bcbdeafd53f5de7b
-ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
+ms.custom: contperf-fy21q3
+ms.openlocfilehash: 67de5cce3bd5a4ca2b383e2809eb237a6e753bf5
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/11/2021
-ms.locfileid: "102636632"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104577112"
 ---
 # <a name="system-requirements-for-azure-stack-edge-pro-with-gpu"></a>GPU ile Azure Stack Edge Pro için sistem gereksinimleri 
 
-Bu makalede Microsoft Azure Stack Edge Pro çözümünüz ve Azure Stack Edge Pro 'ya bağlanan istemciler için önemli sistem gereksinimleri açıklanmaktadır. Azure Stack Edge Pro 'Yu dağıtmadan önce bilgileri dikkatlice incelemenizi öneririz. Dağıtım ve sonraki işlemler sırasında gerektiğinde bu bilgilere geri başvurabilirsiniz.
+Bu makalede Microsoft Azure Stack Edge Pro GPU çözümünüz ve Azure Stack Edge Pro 'ya bağlanan istemciler için önemli sistem gereksinimleri açıklanmaktadır. Azure Stack Edge Pro 'Yu dağıtmadan önce bilgileri dikkatlice incelemenizi öneririz. Dağıtım ve sonraki işlemler sırasında gerektiğinde bu bilgilere geri başvurabilirsiniz.
 
 Azure Stack Edge Pro için sistem gereksinimleri şunlardır:
 

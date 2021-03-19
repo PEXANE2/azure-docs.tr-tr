@@ -2,20 +2,20 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 03/10/2021
+ms.date: 03/17/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: 8291089d40ada02adfa011beedf18e90766d3a26
-ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
+ms.openlocfilehash: 82cb3119330a9a392b5fa7410e90e891ab7e2100
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102613829"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104604956"
 ---
 |Ad |Açıklama |İlkeler |Sürüm |
 |---|---|---|---|
 |[\[Önizleme \] : Avustralya kamu İzmi korumalı](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/IRAP_Audit.json) |Bu girişim, Avustralya devlet bilgi güvenliği El Ile (ıSM) denetimlerinin bir alt kümesini ele alan denetim ve sanal makine uzantısı dağıtım ilkelerini içerir. Gelecek sürümlerde ek ilkeler eklenecektir. Daha fazla bilgi için, adresini ziyaret edin [https://aka.ms/AustralianGovernmentISM-blueprint](https://aka.ms/AustralianGovernmentISM-blueprint) . |61 |4.0.1-Önizleme |
-|[Kanada Federal PBMM](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/CanadaFederalPBMM_audit.json) |Bu girişim, Kanada Federal PBMM denetimlerinin bir alt kümesini ele alan denetim ve sanal makine uzantısı dağıtım ilkelerini içerir. Gelecek sürümlerde ek ilkeler eklenecektir. Daha fazla bilgi için, adresini ziyaret edin [https://aka.ms/canadafederalpbmm-blueprint](https://aka.ms/canadafederalpbmm-blueprint) . |60 |4.0.1 |
+|[Kanada Federal PBMM](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/CanadaFederalPBMM_audit.json) |Bu girişim, Kanada Federal PBMM denetimlerinin bir alt kümesini ele alan denetim ve sanal makine uzantısı dağıtım ilkelerini içerir. Gelecek sürümlerde ek ilkeler eklenecektir. Daha fazla bilgi için, adresini ziyaret edin [https://aka.ms/canadafederalpbmm-blueprint](https://aka.ms/canadafederalpbmm-blueprint) . |59 |5.0.0 |
 |[CIS Microsoft Azure Foundations Benchmark 1.1.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/CISv1_1_0.json) |Bu girişim, bir CIS alt kümesini ele alan, kıyaslama önerilerini temel alan ilkeler içerir Microsoft Azure. Gelecek sürümlerde ek ilkeler eklenecektir. Daha fazla bilgi için, adresini ziyaret edin [https://aka.ms/cisazure110-initiative](https://aka.ms/cisazure110-initiative) . |92 |9.0.0 |
 |[\[Önizleme \] : cıs Microsoft Azure temelleri kıyaslama 1.3.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/CISv1_3_0.json) |Bu girişim, bir CIS alt kümesini ele alan, kıyaslama önerilerini temel alan ilkeler içerir Microsoft Azure. Gelecek sürümlerde ek ilkeler eklenecektir. Daha fazla bilgi için, adresini ziyaret edin [https://aka.ms/cisazure130-initiative](https://aka.ms/cisazure130-initiative) . |104 |1.0.0-Önizleme |
 |[\[Önizleme \] : cmmc düzey 3](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/CMMC_L3.json) |Bu girişim, bir siber güvenlik vade Model sertifikası (CMMC) düzey 3 gereksinimlerinin bir alt kümesini ele alan ilkeleri içerir. Gelecek sürümlerde ek ilkeler eklenecektir. Daha fazla bilgi için, adresini ziyaret edin [https://aka.ms/cmmc-initiative](https://aka.ms/cmmc-initiative) . |183 |3.0.0-Önizleme |
@@ -30,4 +30,4 @@ ms.locfileid: "102613829"
 |[NIST SP 800-53 R4](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/NIST80053_audit.json) |Bu girişim, NıST SP 800-53 R4 denetimlerinin bir alt kümesini ele alan denetim ve sanal makine uzantısı dağıtım ilkelerini içerir. Gelecek sürümlerde ek ilkeler eklenecektir. Daha fazla bilgi için, adresini ziyaret edin [https://aka.ms/nist80053-blueprint](https://aka.ms/nist80053-blueprint) . |790 |4.0.1 |
 |[PCI v 3.2.1:2018](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/PCIv3_2_1_2018_audit.json) |Bu girişim, PCI v 3.2.1:2018 denetimlerinin bir alt kümesini ele alan denetim ve sanal makine uzantısı dağıtım ilkelerini içerir. Gelecek sürümlerde ek ilkeler eklenecektir. Daha fazla bilgi için, adresini ziyaret edin [https://aka.ms/pciv321-init](https://aka.ms/pciv321-init) . |39 |3.0.2 |
 |[\[Önizleme \] : SWIFT CSP-CSCF V2020](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/SWIFTv2020_audit.json) |Bu girişim, SWIFT CSP-CSCF V2020 denetimlerinin bir alt kümesini ele alan denetim ve sanal makine uzantısı dağıtım ilkelerini içerir. Gelecek sürümlerde ek ilkeler eklenecektir. Daha fazla bilgi için, adresini ziyaret edin [https://aka.ms/swift-blueprint](https://aka.ms/swift-blueprint) . |61 |3.0.1-Önizleme |
-|[UK OFFICIAL ve UK NHS](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/ukofficial_audit.json) |Bu girişim, UK RESMI ve UK NHS denetimlerinin bir alt kümesini ele alan denetim ve sanal makine uzantısı dağıtım ilkelerini içerir. Gelecek sürümlerde ek ilkeler eklenecektir. Daha fazla bilgi için, ve ' ı ziyaret edin [https://aka.ms/ukofficial-blueprint](https://aka.ms/ukofficial-blueprint) [https://aka.ms/uknhs-blueprint](https://aka.ms/uknhs-blueprint) . |59 |5.0.1 |
+|[UK OFFICIAL ve UK NHS](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/ukofficial_audit.json) |Bu girişim, UK RESMI ve UK NHS denetimlerinin bir alt kümesini ele alan denetim ve sanal makine uzantısı dağıtım ilkelerini içerir. Gelecek sürümlerde ek ilkeler eklenecektir. Daha fazla bilgi için, ve ' ı ziyaret edin [https://aka.ms/ukofficial-blueprint](https://aka.ms/ukofficial-blueprint) [https://aka.ms/uknhs-blueprint](https://aka.ms/uknhs-blueprint) . |59 |6.0.0 |

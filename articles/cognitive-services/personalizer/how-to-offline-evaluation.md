@@ -9,10 +9,10 @@ ms.subservice: personalizer
 ms.topic: how-to
 ms.date: 02/20/2020
 ms.openlocfilehash: a473085f9c94ca42a75d01b342d60cc33836b096
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88244849"
 ---
 # <a name="analyze-your-learning-loop-with-an-offline-evaluation"></a>Çevrimdışı değerlendirmede öğrenme döngünüzü çözümleyin
@@ -23,7 +23,7 @@ ms.locfileid: "88244849"
 
 Daha fazla bilgi edinmek için [çevrimdışı değerlendirmeler](concepts-offline-evaluation.md) hakkında bölümünü okuyun.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Yapılandırılmış bir kişiselleştirici döngüsü
 * Kişiselleştirme döngüsünün temsili bir veri miktarına sahip olması gerekir. bunun için, en az 50.000 olay üzerinde anlamlı değerlendirme sonuçları elde etmenizi öneririz. İsteğe bağlı olarak, aynı değerlendirmede karşılaştırmak ve test yapmak için daha önce de daha önce _öğrendiğiniz öğrenme ilkesi_ dosyalarını vermiş olabilirsiniz.
@@ -37,12 +37,12 @@ Daha fazla bilgi edinmek için [çevrimdışı değerlendirmeler](concepts-offli
 
     * Değerlendirme adı.
     * Başlangıç ve bitiş tarihi-Bunlar, değerlendirmede kullanılacak veri aralığını belirten tarihlerdir. [Veri saklama](how-to-settings.md) değerinde belirtildiği gibi bu verilerin günlüklerde bulunması gerekir.
-    * İyileştirme bulma, **Evet**olarak ayarlandı.
+    * İyileştirme bulma, **Evet** olarak ayarlandı.
 
     > [!div class="mx-imgBorder"]
     > ![Çevrimdışı değerlendirme ayarlarını seçin](./media/offline-evaluation/create-an-evaluation-form.png)
 
-1. **Tamam ' ı**seçerek değerlendirmeyi başlatın.
+1. **Tamam ' ı** seçerek değerlendirmeyi başlatın.
 
 ## <a name="review-the-evaluation-results"></a>Değerlendirme sonuçlarını gözden geçirme
 

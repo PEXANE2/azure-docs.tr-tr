@@ -4,13 +4,13 @@ titleSuffix: Azure Kubernetes Service
 description: Azure Kubernetes Service 'te (AKS) Kubernetes ağ ilkelerini kullanarak, düğüm içinde ve dışında akan trafiği güvenli hale getirme hakkında bilgi edinin
 services: container-service
 ms.topic: article
-ms.date: 05/06/2019
-ms.openlocfilehash: 4b72c5551d6ed33deb4df40a60215aed8071141d
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.date: 03/16/2021
+ms.openlocfilehash: 17e14859ecdfe11872d5b0526d755d01bc1b034a
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102178907"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104577861"
 ---
 # <a name="secure-traffic-between-pods-using-network-policies-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (aks) içindeki ağ ilkelerini kullanarak Pod arasındaki trafiği güvenli hale getirme
 
@@ -181,9 +181,13 @@ Windows düğümleri ile calıco ağ ilkeleri Şu anda önizlemededir.
 
 [!INCLUDE [preview features callout](./includes/preview/preview-callout.md)]
 
-```azurecli
-PASSWORD_WIN="P@ssw0rd1234"
+Kümenizdeki Windows Server kapsayıcılarınız için yönetici kimlik bilgileri olarak kullanılacak bir Kullanıcı adı oluşturun. Aşağıdaki komutlar bir Kullanıcı adı ister ve daha sonraki bir komutta kullanılmak üzere WINDOWS_USERNAME ayarlamanız gerekir (Bu makaledeki komutların BASH kabuğu 'na girildiğini unutmayın).
 
+```azurecli-interactive
+echo "Please enter the username to use as administrator credentials for Windows Server containers on your cluster: " && read WINDOWS_USERNAME
+```
+
+```azurecli
 az aks create \
     --resource-group $RESOURCE_GROUP_NAME \
     --name $CLUSTER_NAME \
@@ -195,8 +199,7 @@ az aks create \
     --vnet-subnet-id $SUBNET_ID \
     --service-principal $SP_ID \
     --client-secret $SP_PASSWORD \
-    --windows-admin-password $PASSWORD_WIN \
-    --windows-admin-username azureuser \
+    --windows-admin-username $WINDOWS_USERNAME \
     --vm-set-type VirtualMachineScaleSets \
     --kubernetes-version 1.20.2 \
     --network-plugin azure \
@@ -222,7 +225,7 @@ az aks get-credentials --resource-group $RESOURCE_GROUP_NAME --name $CLUSTER_NAM
 
 ## <a name="deny-all-inbound-traffic-to-a-pod"></a>Pod 'a gelen tüm trafiği reddetme
 
-Belirli ağ trafiğine izin vermek için kurallar tanımladıktan önce, ilk olarak tüm trafiği reddetmek için bir ağ ilkesi oluşturun. Bu ilke, yalnızca istenen trafik için bir izin verilenler listesi oluşturmaya başlayabilmeniz için bir başlangıç noktası sağlar. Ayrıca, ağ ilkesi uygulandığında trafiğin bırakıldığının açıkça görebilirsiniz.
+Belirli ağ trafiğine izin vermek için kurallar tanımladıktan önce, ilk olarak tüm trafiği reddetmek için bir ağ ilkesi oluşturun. Bu ilke, yalnızca istenen trafik için bir izin oluşturmaya başlamak üzere başlangıç noktası sağlar. Ayrıca, ağ ilkesi uygulandığında trafiğin bırakıldığının açıkça görebilirsiniz.
 
 Örnek uygulama ortamı ve trafik kuralları için öncelikle örnek pods 'yi çalıştırmak üzere *geliştirme* adlı bir ad alanı oluşturalım:
 
@@ -234,13 +237,13 @@ kubectl label namespace/development purpose=development
 NGıNX çalıştıran örnek bir arka uç Pod oluşturun. Bu arka uç Pod, örnek arka uç Web tabanlı bir uygulamanın benzetimini yapmak için kullanılabilir. Bu Pod 'ı *geliştirme* ad alanında oluşturun ve *80* numaralı bağlantı noktasını Web trafiğini sunacak şekilde açın. Bir sonraki bölümde bir ağ ilkesiyle hedeflemenize olanak sağlamak için pod *öğesini App = WebApp, role = arka uç* ile etiketleyin:
 
 ```console
-kubectl run backend --image=nginx --labels app=webapp,role=backend --namespace development --expose --port 80
+kubectl run backend --image=mcr.microsoft.com/oss/nginx/nginx:1.15.5-alpine --labels app=webapp,role=backend --namespace development --expose --port 80
 ```
 
 Farklı bir pod oluşturun ve varsayılan NGıNX Web sayfasına başarıyla ulaşabilmeyi test etmek için bir terminal oturumu ekleyin:
 
 ```console
-kubectl run --rm -it --image=alpine network-policy --namespace development
+kubectl run --rm -it --image=mcr.microsoft.com/aks/fundamental/base-ubuntu:v0.0.11 network-policy --namespace development
 ```
 
 Kabuk isteminde, `wget` varsayılan NGINX web sayfasına erişebildiğinizden emin olmak için kullanın:
@@ -296,7 +299,7 @@ kubectl apply -f backend-policy.yaml
 Arka uç pod üzerinde NGıNX Web sayfasını yeniden kullanıp kullanabileceizin görelim. Başka bir test Pod oluşturun ve bir terminal oturumu ekleyin:
 
 ```console
-kubectl run --rm -it --image=alpine network-policy --namespace development
+kubectl run --rm -it --image=mcr.microsoft.com/aks/fundamental/base-ubuntu:v0.0.11 network-policy --namespace development
 ```
 
 Kabuk isteminde `wget` varsayılan NGINX web sayfasına erişip erişemayabilmeniz için öğesini kullanın. Bu kez, zaman aşımı değerini *2* saniyeye ayarlayın. Ağ ilkesi artık tüm gelen trafiği engeller, bu nedenle aşağıdaki örnekte gösterildiği gibi sayfa yüklenemez:
@@ -353,7 +356,7 @@ kubectl apply -f backend-policy.yaml
 *App = WebApp, role = ön uç* ve bir terminal oturumu iliştirme olarak etiketlenmiş bir pod zamanlayın:
 
 ```console
-kubectl run --rm -it frontend --image=alpine --labels app=webapp,role=frontend --namespace development
+kubectl run --rm -it frontend --image=mcr.microsoft.com/aks/fundamental/base-ubuntu:v0.0.11 --labels app=webapp,role=frontend --namespace development
 ```
 
 Kabuk isteminde, `wget` varsayılan NGINX web sayfasına erişip erişemayabilmeniz için kullanın:
@@ -383,7 +386,7 @@ exit
 Ağ ilkesi, Pod etiketli *Uygulama: WebApp, rol: ön uç* için trafiğe izin verir, ancak diğer tüm trafiği reddetmelidir. Bu etiketlerin olmadığı başka bir pod 'ın arka uç NGıNX Pod 'a erişip erişemeyeceğini görmek için test edelim. Başka bir test Pod oluşturun ve bir terminal oturumu ekleyin:
 
 ```console
-kubectl run --rm -it --image=alpine network-policy --namespace development
+kubectl run --rm -it --image=mcr.microsoft.com/aks/fundamental/base-ubuntu:v0.0.11 network-policy --namespace development
 ```
 
 Kabuk isteminde `wget` varsayılan NGINX web sayfasına erişip erişemayabilmeniz için öğesini kullanın. Ağ ilkesi gelen trafiği engeller, bu nedenle aşağıdaki örnekte gösterildiği gibi sayfa yüklenemez:
@@ -416,7 +419,7 @@ kubectl label namespace/production purpose=production
 *App = WebApp, role = ön uç* olarak etiketlenmiş *Üretim* ad alanında bir test Pod 'u zamanlayın. Terminal oturumu ekleyin:
 
 ```console
-kubectl run --rm -it frontend --image=alpine --labels app=webapp,role=frontend --namespace production
+kubectl run --rm -it frontend --image=mcr.microsoft.com/aks/fundamental/base-ubuntu:v0.0.11 --labels app=webapp,role=frontend --namespace production
 ```
 
 Kabuk isteminde, `wget` varsayılan NGINX web sayfasına erişebildiğinizden emin olmak için kullanın:
@@ -480,7 +483,7 @@ kubectl apply -f backend-policy.yaml
 *Üretim* ad alanında başka bir pod zamanlayın ve bir terminal oturumu ekleyin:
 
 ```console
-kubectl run --rm -it frontend --image=alpine --labels app=webapp,role=frontend --namespace production
+kubectl run --rm -it frontend --image=mcr.microsoft.com/aks/fundamental/base-ubuntu:v0.0.11 --labels app=webapp,role=frontend --namespace production
 ```
 
 Kabuk isteminde, `wget` ağ ilkesinin trafiği reddetmeye yönelik olduğunu görmek için kullanın:
@@ -502,7 +505,7 @@ exit
 *Üretim* ad alanından gelen trafik reddedildiğinde, *geliştirme* ad alanında bir test Pod 'u yeniden zamanlayın ve bir terminal oturumu ekleyin:
 
 ```console
-kubectl run --rm -it frontend --image=alpine --labels app=webapp,role=frontend --namespace development
+kubectl run --rm -it frontend --image=mcr.microsoft.com/aks/fundamental/base-ubuntu:v0.0.11 --labels app=webapp,role=frontend --namespace development
 ```
 
 Kabuk isteminde `wget` ağ ilkesinin trafiğe izin verdiğini görmek için kullanın:

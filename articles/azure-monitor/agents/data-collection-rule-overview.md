@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/19/2021
-ms.openlocfilehash: a0c5e9f89b983871224e79c2fc4f518a15d42a6f
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: a52d6dca423565e7b5e4b6ac059bcf21b637c87c
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102039623"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104586344"
 ---
 # <a name="data-collection-rules-in-azure-monitor-preview"></a>Azure Izleyici 'de veri toplama kuralları (Önizleme)
 Veri toplama kuralları (DCR), Azure Izleyici 'ye gelen verileri tanımlar ve verilerin nereye gönderileceğini veya depolanacağını belirtir. Bu makalede, içerik ve yapısı ve bunlarla nasıl oluşturabileceğiniz ve bunlarla çalışma gibi veri toplama kurallarına genel bir bakış sunulmaktadır.
@@ -39,7 +39,7 @@ Aşağıdaki diyagramda bir veri toplama kuralının ve bunların ilişkilerinin
 ### <a name="data-source-types"></a>Veri kaynağı türleri
 Her veri kaynağının bir veri kaynağı türü vardır. Her tür, her veri kaynağı için belirtilmesi gereken benzersiz bir özellikler kümesi tanımlar. Şu anda kullanılabilir veri kaynağı türleri aşağıdaki tabloda gösterilmiştir.
 
-| Veri kaynağı türü | Açıklama | 
+| Veri kaynağı türü | Description | 
 |:---|:---|
 | uzantı | VM Uzantısı tabanlı veri kaynağı |
 | performanceCounters | Hem Windows hem de Linux için performans sayaçları |
@@ -81,6 +81,10 @@ Aşağıdaki örnek veri toplama kuralı, Azure Yönetim aracısına sahip sanal
   - Syslog tesisinden uyarı, kritik ve acil durum olaylarını toplar.
 - Hedefler
   - Tüm verileri, merkezileştirme çalışma alanı adlı bir Log Analytics çalışma alanına gönderir.
+
+> [!NOTE]
+> Veri toplama kurallarında olay koleksiyonunu belirtmek için kullanılan XPaths hakkında bir açıklama için bkz. [özel XPath sorgularıyla veri toplamayı sınırlandırma](data-collection-rule-azure-monitor-agent.md#limit-data-collection-with-custom-xpath-queries)
+
 
 ```json
 {

@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 09/09/2020
 ms.author: cherylmc
 ms.openlocfilehash: a77a870304e20c179e22b4a4ffe404315894d8a0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91743701"
 ---
 # <a name="create-and-set-custom-ipsec-policies-for-point-to-site-preview"></a>Noktadan siteye (Önizleme) yönelik özel IPSec ilkeleri oluşturma ve ayarlama
@@ -21,7 +21,7 @@ Ortamınız şifreleme için özel bir IPSec ilkesi gerektiriyorsa, gerekli ayar
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 
-### <a name="prerequisites"></a>Ön koşullar
+### <a name="prerequisites"></a>Önkoşullar
 
 Ortamınızın aşağıdaki önkoşulları karşıladığından emin olun:
 

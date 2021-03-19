@@ -4,15 +4,15 @@ description: Yedekleme tarafından sunulan yerleşik Azure Ilkeleri için destek
 ms.topic: conceptual
 ms.date: 11/08/2019
 ms.openlocfilehash: 4658d1beffe707682e173491edea1eac0db9c811
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "82183628"
 ---
 # <a name="supported-vm-skus-for-azure-policy"></a>Azure İlkesi için desteklenen VM SKU’ları
 
-Azure Backup, **bir abonelik veya kaynak grubu içindeki belirli bir konumdaki tüm Azure VM**'lerine atanabilecek yerleşik bir Ilke (Azure ilkesi kullanarak) sağlar. Bu ilke belirli bir kapsama atandığında, bu kapsamda oluşturulan tüm yeni VM 'Ler, **aynı konum ve abonelik içindeki mevcut bir kasaya**yedekleme için otomatik olarak yapılandırılır. Aşağıdaki tabloda, bu ilke tarafından desteklenen tüm VM SKU 'Ları listelenmiştir.
+Azure Backup, **bir abonelik veya kaynak grubu içindeki belirli bir konumdaki tüm Azure VM**'lerine atanabilecek yerleşik bir Ilke (Azure ilkesi kullanarak) sağlar. Bu ilke belirli bir kapsama atandığında, bu kapsamda oluşturulan tüm yeni VM 'Ler, **aynı konum ve abonelik içindeki mevcut bir kasaya** yedekleme için otomatik olarak yapılandırılır. Aşağıdaki tabloda, bu ilke tarafından desteklenen tüm VM SKU 'Ları listelenmiştir.
 
 ## <a name="supported-vms"></a>Desteklenen VM 'Ler *
 

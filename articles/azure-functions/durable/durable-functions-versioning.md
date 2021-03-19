@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 11/03/2019
 ms.author: azfuncdf
 ms.openlocfilehash: 87cbb94dbab241630dc7585bdf4314d858d5b4da
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "74232750"
 ---
 # <a name="versioning-in-durable-functions-azure-functions"></a>Dayanıklı İşlevler sürüm oluşturma (Azure Işlevleri)
@@ -35,7 +35,7 @@ public static Task Run([OrchestrationTrigger] IDurableOrchestrationContext conte
 }
 ```
 
-Bu uyarlaması işlevi, **foo** 'ın sonuçlarını alır ve **çubuğa**geçirir. **Foo** `bool` `int` Daha geniş bir sonuç değerini desteklemek için foo öğesinin dönüş değerini olarak değiştirmemiz gerektiğini varsayalım. Sonuç şuna benzer:
+Bu uyarlaması işlevi, **foo** 'ın sonuçlarını alır ve **çubuğa** geçirir.  `bool` `int` Daha geniş bir sonuç değerini desteklemek için foo öğesinin dönüş değerini olarak değiştirmemiz gerektiğini varsayalım. Sonuç şuna benzer:
 
 ```csharp
 [FunctionName("FooBar")]
@@ -87,7 +87,7 @@ public static Task Run([OrchestrationTrigger] IDurableOrchestrationContext conte
 > [!NOTE]
 > Önceki C# örnekleri Dayanıklı İşlevler 2. x ' tir. Dayanıklı İşlevler 1. x için yerine kullanmanız gerekir `DurableOrchestrationContext` `IDurableOrchestrationContext` . Sürümler arasındaki farklılıklar hakkında daha fazla bilgi için [dayanıklı işlevler sürümler](durable-functions-versions.md) makalesine bakın.
 
-Bu değişiklik, **foo** ve **Bar**arasında **SendNotification** öğesine yeni bir işlev çağrısı ekler. İmza değişikliği yok. Bu sorun, var olan bir örnek, **çubuğa**yapılan çağrıdan devam ettiğinde ortaya çıkar. Yeniden yürütme sırasında, **foo** öğesine yapılan özgün çağrı döndürülürse `true` , Orchestrator Replay, yürütme geçmişinde olmayan **SendNotification**öğesine çağrı yapılır. Sonuç olarak, dayanıklı görev çerçevesi, bir `NonDeterministicOrchestrationException` **çubuğa**çağrı görmediğinde **SendNotification** çağrısıyla karşılaştığından bir ile başarısız olur. , Vb. dahil olmak üzere "dayanıklı" API 'Lerine çağrı eklenirken aynı tür bir sorun oluşabilir `CreateTimer` `WaitForExternalEvent` .
+Bu değişiklik, **foo** ve **Bar** arasında **SendNotification** öğesine yeni bir işlev çağrısı ekler. İmza değişikliği yok. Bu sorun, var olan bir örnek, **çubuğa** yapılan çağrıdan devam ettiğinde ortaya çıkar. Yeniden yürütme sırasında, **foo** öğesine yapılan özgün çağrı döndürülürse `true` , Orchestrator Replay, yürütme geçmişinde olmayan **SendNotification** öğesine çağrı yapılır. Sonuç olarak, dayanıklı görev çerçevesi, bir `NonDeterministicOrchestrationException` **çubuğa** çağrı görmediğinde **SendNotification** çağrısıyla karşılaştığından bir ile başarısız olur. , Vb. dahil olmak üzere "dayanıklı" API 'Lerine çağrı eklenirken aynı tür bir sorun oluşabilir `CreateTimer` `WaitForExternalEvent` .
 
 ## <a name="mitigation-strategies"></a>Risk azaltma stratejileri
 

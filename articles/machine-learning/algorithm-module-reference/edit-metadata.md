@@ -10,10 +10,10 @@ author: likebupt
 ms.author: keli19
 ms.date: 06/10/2020
 ms.openlocfilehash: e279a7c9f6810ece482b043284f0be0719a3dafe
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90908045"
 ---
 # <a name="edit-metadata-module"></a>Meta veri modülünü Düzenle
@@ -46,7 +46,7 @@ Tipik meta veri değişiklikleri şunları içerebilir:
   
 1. Seçili sütunlara farklı bir veri türü atamanız gerekiyorsa **veri türü** seçeneğini belirleyin. Belirli işlemler için veri türünü değiştirmeniz gerekebilir. Örneğin, kaynak veri kümeniz metin olarak işlenen sayılar içeriyorsa, matematik işlemlerini kullanmadan önce bunları sayısal bir veri türü olarak değiştirmeniz gerekir.
 
-    + Desteklenen veri türleri **String**, **Integer**, **Double**, **Boolean**ve **DateTime**.
+    + Desteklenen veri türleri **String**, **Integer**, **Double**, **Boolean** ve **DateTime**.
 
     + Birden çok sütun seçerseniz, meta veri değişikliklerini seçili *Tüm* sütunlara uygulamanız gerekir. Örneğin, iki veya üç sayısal sütun seçtiğinizi varsayalım. Tümünü bir dize veri türü olarak değiştirebilir ve bunları tek bir işlemde yeniden adlandırabilirsiniz. Ancak, bir sütunu dize veri türüne ve kayan bir sayının başka bir sütununu tamsayı olarak değiştiremezsiniz.
   
@@ -87,7 +87,7 @@ Tipik meta veri değişiklikleri şunları içerebilir:
   
          Şu anda bir sütunu Azure Machine Learning puan olarak açıkça işaretleyemezsiniz. Ancak, bazı işlemler dahili olarak bir puan olarak işaretlenmekte olan bir sütuna neden olacak. Ayrıca, özel bir R modülü çıkış puanı değerlerini de alabilir.
 
-1. **Yeni sütun adları**için, seçilen sütun veya sütunların yeni adını girin.  
+1. **Yeni sütun adları** için, seçilen sütun veya sütunların yeni adını girin.  
   
     + Sütun adları yalnızca UTF-8 kodlaması tarafından desteklenen karakterleri kullanabilir. Boş dizeler, null değerlere veya tamamen boşluklardan oluşan adlara izin verilmez.  
   

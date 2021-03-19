@@ -11,10 +11,10 @@ ms.topic: reference
 ms.date: 05/29/2019
 ms.author: pafarley
 ms.openlocfilehash: 7fc46d06b68dca074da060b4866186a6242ffad2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "72757371"
 ---
 # <a name="content-moderator-api-reference"></a>Content Moderator API başvurusu
@@ -28,7 +28,7 @@ Azure Content Moderator API 'Leri ile aşağıdaki yollarla çalışmaya ulaşab
 
 Denetleme sonrası iş akışlarınızı ayarlamak için aşağıdaki Content Moderator API 'Lerini kullanabilirsiniz.
 
-| Açıklama | Başvuru |
+| Description | Başvuru |
 | -------------------- |-------------|
 | **Görüntü Moderasyonu API’si**<br /><br />Etiketleri, güvenirlik puanlarını ve diğer ayıklanan bilgileri kullanarak görüntüleri tarayın ve olası yetişkin ve akıllı içeriği tespit edin. <br /><br />Denetleme sonrası iş akışınızda içerik yayımlamak, reddetmek veya gözden geçirmek için bu bilgileri kullanın. <br /><br />| [Görüntü denetleme API 'SI başvurusu](https://westus.dev.cognitive.microsoft.com/docs/services/57cf753a3f9b070c105bd2c1/operations/57cf753a3f9b070868a1f66c "Görüntü denetleme API 'SI başvurusu")   |
 | **Metin Moderasyonu API’si**<br /><br />Metin içeriğini tarayın. Küfür terimleri ve kişisel veriler döndürülür. <br /><br />Denetleme sonrası iş akışınızda içerik yayımlamak, reddetmek veya gözden geçirmek için bu bilgileri kullanın.<br /><br /> | [Metin denetleme API başvurusu](https://westus.dev.cognitive.microsoft.com/docs/services/57cf753a3f9b070c105bd2c1/operations/57cf753a3f9b070868a1f66f "Metin denetleme API başvurusu")   |
@@ -39,8 +39,8 @@ Denetleme sonrası iş akışlarınızı ayarlamak için aşağıdaki Content Mo
 
 Inceleme API 'Leri aşağıdaki bileşenlere sahiptir:
 
-| Açıklama | Başvuru |
+| Description | Başvuru |
 | -------------------- |-------------|
 | **İşler**<br /><br /> Tarama yapın ve hem görüntü hem de metin içeriği için denetleme iş akışlarını gözden geçirin. Bir denetleme işi, görüntü denetleme API 'sini ve metin denetleme API 'sini kullanarak içeriğinizi tarar. Denetleme işleri, gözden geçirmeler oluşturmak için tanımlı ve varsayılan iş akışlarını kullanır. <br /><br />Bir insan aracı otomatik olarak atanan etiketleri ve tahmin verilerini inceledikten ve bir içerik denetleme kararı gönderdikten sonra, gözden geçirme API 'SI tüm bilgileri API uç noktanıza gönderir.<br /><br /> | [İş başvurusu](https://westus.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/580519483f9b0709fc47f9c5 "İş başvurusu")   |
 | **İncelemeler**<br /><br />İnsan moderatör için doğrudan görüntü veya metin incelemesi oluşturmak için Inceleme aracını kullanın.<br /><br /> Bir insan aracı otomatik olarak atanan etiketleri ve tahmin verilerini inceledikten ve bir içerik denetleme kararı gönderdikten sonra, gözden geçirme API 'SI tüm bilgileri API uç noktanıza gönderir.<br /><br /> | [Başvuruyu gözden geçir](https://westus.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/580519483f9b0709fc47f9c4 "Başvuruyu gözden geçir")   |
-| **İş akışları**<br /><br />Takımınızın oluşturduğu özel iş akışlarıyla ilgili ayrıntıları oluşturun, güncelleştirin ve alın. İş akışlarını gözden geçirme aracını kullanarak tanımlarsınız. <br /> <br />İş akışları genellikle Content Moderator kullanır, ancak Inceleme aracında bağlayıcı olarak kullanılabilen diğer API 'Leri de kullanabilir.<br /><br /> | [İş akışı başvurusu](https://westus.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/5813b46b3f9b0711b43c4c59 "İş akışı başvurusu")   |
+| **İş Akışları**<br /><br />Takımınızın oluşturduğu özel iş akışlarıyla ilgili ayrıntıları oluşturun, güncelleştirin ve alın. İş akışlarını gözden geçirme aracını kullanarak tanımlarsınız. <br /> <br />İş akışları genellikle Content Moderator kullanır, ancak Inceleme aracında bağlayıcı olarak kullanılabilen diğer API 'Leri de kullanabilir.<br /><br /> | [İş akışı başvurusu](https://westus.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/5813b46b3f9b0711b43c4c59 "İş akışı başvurusu")   |

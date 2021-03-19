@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 04/15/2020
 ms.author: travisw
 ms.openlocfilehash: a9fe083818c5850ad05556b18911c19fe19e0e72
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90987403"
 ---
 # <a name="privacy-guidelines-for-voice-assistants-on-windows"></a>Windows 'da sesli Yardımcılar için Gizlilik yönergeleri
@@ -50,7 +50,7 @@ Yukarıdakilerden herhangi biri bulunursa, Microsoft, sorunlar çözülene kadar
 
 Kullanıcıların ses etkinleştirmesine izin vermesini kolaylaştırmak ve daha sorunsuz hale getirmek isteyen yardım yazarları, ayarlar sayfasına fazladan bir yolculuğa gerek kalmadan açıklama ve onayı yeterince karşılamak üzere ek gereksinimler karşılaarak bunu yapabilir. Onaylandığında, Kullanıcı yardımcı uygulamasına mikrofon izni verdiğinde ses etkinleştirme hemen kullanılabilir hale gelir. Buna hak kazanmak için, bir yardımcı uygulamanın mikrofon onayı **sorulmadan önce** aşağıdakileri yapması gerekir (örneğin, API 'yi kullanarak `AppCapability.RequestAccessAsync` ):
 
-1. Uygulamanın, *uygulamanın çalışmadığı*ve kullanıcının onayını beğenmesinin yanı sıra bir anahtar sözcük için kullanıcının sesini dinlemek istediğinizin açık ve belirgin bir gösterge sağlayın
+1. Uygulamanın, *uygulamanın çalışmadığı* ve kullanıcının onayını beğenmesinin yanı sıra bir anahtar sözcük için kullanıcının sesini dinlemek istediğinizin açık ve belirgin bir gösterge sağlayın
 1. Veri kullanımı ve gizlilik ilkeleri hakkında, resmi gizlilik bildirimine bağlantı gibi ilgili bilgileri ekleyin
 1. Her türlü yönergeden veya önde gelen bir ifade kullanmaktan kaçının (örneğin, "aşağıdaki komut isteminde Evet 'e tıklayın") ses yakalama davranışını kapatan deneyim akışında
 

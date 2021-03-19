@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 09/09/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 8a1a2d7f5272def78cd162da1f6ac0265d4fb30b
-ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
+ms.openlocfilehash: 66f11b7a5124f0b9b834b79368d57443ab33e850
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102517745"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104578354"
 ---
 # <a name="desktop-app-that-calls-web-apis-app-registration"></a>Web API 'Lerini çağıran masaüstü uygulaması: uygulama kaydı
 
@@ -40,10 +40,14 @@ Masaüstü uygulamanız etkileşimli kimlik doğrulaması kullanıyorsa, kullan�
 
 Bir masaüstü uygulamasında kullanılacak yeniden yönlendirme URI 'Leri, kullanmak istediğiniz akışa göre değişir.
 
-- Etkileşimli kimlik doğrulama veya cihaz kod akışı kullanıyorsanız, kullanın `https://login.microsoftonline.com/common/oauth2/nativeclient` . Bu yapılandırmayı başarmak için, uygulamanız için **kimlik doğrulama** bölümünde karşılık gelen URL 'yi seçin.
+Azure portal **uygulama kayıtları** içindeki uygulama için [Platform ayarlarını yapılandırarak](quickstart-register-app.md#add-a-redirect-uri) UYGULAMANıZ için yeniden yönlendirme URI 'sini belirtin.
+
+- Etkileşimli kimlik doğrulaması kullanan uygulamalar için:
+  - Katıştırılmış tarayıcıları kullanan uygulamalar: `https://login.microsoftonline.com/common/oauth2/nativeclient`
+  - Sistem tarayıcıları kullanan uygulamalar: `http://localhost`
 
   > [!IMPORTANT]
-  > `https://login.microsoftonline.com/common/oauth2/nativeclient`Yeniden yönlendirme URI 'si olarak kullanılması en iyi güvenlik uygulaması olarak önerilir.  Yeniden yönlendirme URI 'SI belirtilmemişse, MSAL.NET `urn:ietf:wg:oauth:2.0:oob` Varsayılan olarak kullanılması önerilmez.  Bu varsayılan, sonraki büyük sürümde bir son değişiklik olarak güncelleştirilir.
+  > En iyi güvenlik uygulaması olarak, `https://login.microsoftonline.com/common/oauth2/nativeclient` `http://localhost` yeniden yönlendirme URI 'si olarak veya öğesini açıkça ayarlamayı öneririz. MSAL.NET gibi bazı kimlik doğrulama kitaplıkları `urn:ietf:wg:oauth:2.0:oob` , başka bir yeniden yönlendirme URI 'si belirtilmediğinde varsayılan bir değeri kullanır; bu önerilmez. Bu varsayılan, sonraki büyük sürümde bir son değişiklik olarak güncelleştirilir.
 
 - MacOS için yerel bir amaç-C veya Swift uygulaması oluşturuyorsanız, yeniden yönlendirme URI 'sini uygulamanızın paket tanımlayıcısına göre aşağıdaki biçimde kaydedin: `msauth.<your.app.bundle.id>://auth` . `<your.app.bundle.id>`Uygulamanızın paket tanımlayıcısı ile değiştirin.
 - Uygulamanız yalnızca tümleşik Windows kimlik doğrulaması veya Kullanıcı adı ve parola kullanıyorsa, uygulamanız için bir yeniden yönlendirme URI 'SI kaydetmeniz gerekmez. Bu akışlar Microsoft Identity platform v 2.0 uç noktasına gidiş dönüş yapılır. Uygulamanız belirli bir URI üzerinde geri çağrılmayacaktır.

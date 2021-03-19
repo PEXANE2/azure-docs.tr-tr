@@ -1,6 +1,6 @@
 ---
-title: dosya dahil etme
-description: dosya dahil etme
+title: include dosyası
+description: include dosyası
 services: notification-hubs
 author: spelluru
 ms.service: notification-hubs
@@ -9,10 +9,10 @@ ms.date: 09/11/2019
 ms.author: spelluru
 ms.custom: include file
 ms.openlocfilehash: ccb5e40738680181e7339b8652d029597c7d0bd4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "70935153"
 ---
 1. [Firebase konsolunda](https://firebase.google.com/console/) oturum açın. Henüz bir tane yoksa yeni bir Firebase projesi oluşturun.
@@ -20,7 +20,7 @@ ms.locfileid: "70935153"
 
     ![Firebase’i Android uygulamanıza ekleyin](./media/notification-hubs-enable-firebase-cloud-messaging/notification-hubs-add-firebase-to-android-app.png)
 3. **Android uygulamanıza Firebase ekleme** sayfasında, aşağıdaki adımları uygulayın: 
-    1. **Android paket adı**için uygulamanızın Build. Gradle dosyasına **ApplicationId** değerini kopyalayın. Bu örnekte, `com.fabrikam.fcmtutorial1app` . 
+    1. **Android paket adı** için uygulamanızın Build. Gradle dosyasına **ApplicationId** değerini kopyalayın. Bu örnekte, `com.fabrikam.fcmtutorial1app` . 
 
         ![Paket adını belirtin](./media/notification-hubs-enable-firebase-cloud-messaging/specify-package-name-fcm-settings.png)
     2. **Uygulamayı kaydet**' i seçin. 

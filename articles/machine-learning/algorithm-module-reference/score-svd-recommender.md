@@ -10,10 +10,10 @@ author: likebupt
 ms.author: keli19
 ms.date: 08/10/2020
 ms.openlocfilehash: bf62fa995724b8e1fff757e89945cc39db3d9842
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90893708"
 ---
 # <a name="score-svd-recommender"></a>SVD Önerenini Puanlama
@@ -45,9 +45,9 @@ Derecelendirmeleri tahmin ettiğinizde, model kullanıcının eğitim verileri v
 
 1. İşlem hattınızı eğitimli bir öneri modeli ekleyin ve **eğitilen SVD öneren**'e bağlayın. Modeli, [tren SVD öneren](train-SVD-recommender.md) modülünü kullanarak oluşturmanız gerekir.
 
-2. **Öneren tahmin türü**Için, **Derecelendirme tahmini**' ni seçin. Başka parametre gerekmez.
+2. **Öneren tahmin türü** Için, **Derecelendirme tahmini**' ni seçin. Başka parametre gerekmez.
 
-3. Tahmine dayalı hale getirmek istediğiniz verileri ekleyin ve **skor olarak veri kümesine**bağlayın.
+3. Tahmine dayalı hale getirmek istediğiniz verileri ekleyin ve **skor olarak veri kümesine** bağlayın.
 
    Modelin derecelendirmeleri tahmin edebilmesi için, giriş veri kümesinin Kullanıcı-öğe çiftleri içermesi gerekir.
 
@@ -65,19 +65,19 @@ Kullanıcılara yönelik öğeleri önermek için, giriş olarak Kullanıcı ve 
 
 1. İşlem hattınızı eğitimli bir öneri modeli ekleyin ve **eğitilen SVD öneren**'e bağlayın.  Modeli, [tren SVD öneren](train-svd-recommender.md) modülünü kullanarak oluşturmanız gerekir.
 
-2. Bir kullanıcı listesi için öğeleri önermek için, **öneren tahmin türünü** **öğe önerisine**ayarlayın.
+2. Bir kullanıcı listesi için öğeleri önermek için, **öneren tahmin türünü** **öğe önerisine** ayarlayın.
 
-3. **Önerilen öğe seçimi**için üretimde veya model değerlendirmesi için Puanlama modülünü kullanıp kullanmayacağınızı belirtin. Şu değerlerden birini seçin:
+3. **Önerilen öğe seçimi** için üretimde veya model değerlendirmesi için Puanlama modülünü kullanıp kullanmayacağınızı belirtin. Şu değerlerden birini seçin:
 
-    - **Tüm öğeler**: bir Web hizmetinde veya üretimde kullanmak üzere bir işlem hattı ayarlıyorsanız bu seçeneği belirleyin.  Bu seçenek *üretim moduna*izin vermez. Modül, eğitim sırasında görülen tüm öğelerden öneriler sağlar.
+    - **Tüm öğeler**: bir Web hizmetinde veya üretimde kullanmak üzere bir işlem hattı ayarlıyorsanız bu seçeneği belirleyin.  Bu seçenek *üretim moduna* izin vermez. Modül, eğitim sırasında görülen tüm öğelerden öneriler sağlar.
 
-    - **Derecelendirilen öğelerden (model değerlendirmesi için)**: bir modeli geliştirmekte veya test ediyorsanız bu seçeneği belirleyin. Bu seçenek *değerlendirme modunu*sunar. Modül, yalnızca giriş veri kümesindeki öğelerin derecelendirilmesine yönelik öneriler sağlar.
+    - **Derecelendirilen öğelerden (model değerlendirmesi için)**: bir modeli geliştirmekte veya test ediyorsanız bu seçeneği belirleyin. Bu seçenek *değerlendirme modunu* sunar. Modül, yalnızca giriş veri kümesindeki öğelerin derecelendirilmesine yönelik öneriler sağlar.
     
     - **Derecelendirilmemiş öğelerden (kullanıcılara yeni öğeler önermek için)**: modülün yalnızca eğitim veri kümesindeki öğelerin derecelendirilmemiş olan öğelerden öneriler yapmasını istiyorsanız bu seçeneği belirleyin. 
 
-4. Tahmin yapmak istediğiniz veri kümesini ekleyin ve **skor Için veri kümesine**bağlayın.
+4. Tahmin yapmak istediğiniz veri kümesini ekleyin ve **skor Için veri kümesine** bağlayın.
 
-    - **Tüm öğeler**için, giriş veri kümesi bir sütundan oluşmalıdır. Önerilerde bulunan kullanıcıların tanımlayıcılarını içerir.
+    - **Tüm öğeler** için, giriş veri kümesi bir sütundan oluşmalıdır. Önerilerde bulunan kullanıcıların tanımlayıcılarını içerir.
 
       Veri kümesi, öğe tanımlayıcılarının ve derecelendirmelerin fazladan iki sütununu içerebilir, ancak bu iki sütun yok sayılır. 
 
@@ -95,7 +95,7 @@ Kullanıcılara yönelik öğeleri önermek için, giriş olarak Kullanıcı ve 
 
    Bu seçeneği yalnızca değerlendirme modunda puansanız kullanın. **Tüm öğeler** veya **derecelendirilmemiş öğelerden (kullanıcılara yeni öğeler önermek için)** seçeneğini belirlerseniz seçeneği kullanılamaz.
 
-7.  **Derecelendirilmemiş öğelerin (kullanıcılara yeni öğeler önermek için)** için, tahmin sonuçlarından zaten derecelendirilmiş öğeleri kaldırmak Için **eğitim verileri**adlı üçüncü giriş bağlantı noktasını kullanın.
+7.  **Derecelendirilmemiş öğelerin (kullanıcılara yeni öğeler önermek için)** için, tahmin sonuçlarından zaten derecelendirilmiş öğeleri kaldırmak Için **eğitim verileri** adlı üçüncü giriş bağlantı noktasını kullanın.
 
     Bu filtreyi uygulamak için, özgün eğitim veri kümesini giriş bağlantı noktasına bağlayın.
 
@@ -106,7 +106,7 @@ Kullanıcılara yönelik öğeleri önermek için, giriş olarak Kullanıcı ve 
 Skor SVD öneren tarafından döndürülen puanlanmış veri kümesi, her kullanıcı için önerilen öğeleri listeler:
 
 - İlk sütunda kullanıcı tanımlayıcıları bulunur.
-- **Bir kullanıcı için önerilen en fazla öğe sayısı**için ayarladığınız değere bağlı olarak, bir dizi ek sütun oluşturulur. Her sütunda önerilen bir öğe (tanımlayıcıya göre) bulunur. Öneriler, Kullanıcı öğesi benzeşimi tarafından sıralanır. En yüksek benzeşimi olan öğe, sütun **öğesi 1**' de konur.
+- **Bir kullanıcı için önerilen en fazla öğe sayısı** için ayarladığınız değere bağlı olarak, bir dizi ek sütun oluşturulur. Her sütunda önerilen bir öğe (tanımlayıcıya göre) bulunur. Öneriler, Kullanıcı öğesi benzeşimi tarafından sıralanır. En yüksek benzeşimi olan öğe, sütun **öğesi 1**' de konur.
 
 
 ##  <a name="technical-notes"></a>Teknik notlar

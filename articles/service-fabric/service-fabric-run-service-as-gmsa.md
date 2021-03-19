@@ -4,10 +4,10 @@ description: Bir hizmeti Service Fabric Windows tek başına kümesi üzerinde g
 ms.topic: how-to
 ms.date: 03/29/2018
 ms.openlocfilehash: 9750042764306c5df7a391429cc6926704db05ab
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91838917"
 ---
 # <a name="run-a-service-as-a-group-managed-service-account"></a>Grup tarafından Yönetilen Hizmet Hesabı olarak hizmet çalıştırma
@@ -59,7 +59,7 @@ Aşağıdaki örnek, *svc-test $* adlı bir gMSA hesabı oluşturmayı, bu yöne
     ```
 
 > [!NOTE]
-> Bir hizmete RunAs ilkesi uygularsanız ve hizmet bildirimi uç nokta kaynaklarını HTTP protokolüyle bildirirse, bir **Securityaccesspolicy**belirtmeniz gerekir.  Daha fazla bilgi için bkz. [http ve HTTPS uç noktaları için güvenlik erişimi Ilkesi atama](service-fabric-assign-policy-to-endpoint.md).
+> Bir hizmete RunAs ilkesi uygularsanız ve hizmet bildirimi uç nokta kaynaklarını HTTP protokolüyle bildirirse, bir **Securityaccesspolicy** belirtmeniz gerekir.  Daha fazla bilgi için bkz. [http ve HTTPS uç noktaları için güvenlik erişimi Ilkesi atama](service-fabric-assign-policy-to-endpoint.md).
 >
 
 Aşağıdaki makaleler sonraki adımlarda size kılavuzluk eder:

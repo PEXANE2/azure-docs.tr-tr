@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 07/03/2017
 ms.author: alkohli
 ms.openlocfilehash: 18b34ff466f3935cb5cd18d46e6d26e36e756a9b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91774469"
 ---
 # <a name="fail-over-to-your-storsimple-cloud-appliance"></a>StorSimple Cloud Appliance yük devretme
@@ -31,7 +31,7 @@ Cihaz yük devretmesi ve bir olağanüstü durumdan kurtarmak için nasıl kulla
 
 StorSimple fiziksel cihazını başka bir fiziksel cihaza devretmek için, [StorSimple fiziksel cihazına yük devretme](storsimple-8000-device-failover-physical-device.md)sayfasına gidin. Bir cihazın üzerine yük devretmek için [aynı StorSimple fiziksel cihazına yük devretmek](storsimple-8000-device-failover-same-device.md)üzere gidin.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Cihaz yük devretmesi ile ilgili dikkat edilmesi gereken noktaları gözden geçirdiğinizden emin olun. Daha fazla bilgi için [cihaz yük devretmesi Için sık karşılaşılan hususlar](storsimple-8000-device-failover-disaster-recovery.md)bölümüne bakın.
 
@@ -41,7 +41,7 @@ StorSimple fiziksel cihazını başka bir fiziksel cihaza devretmek için, [Stor
 
 Bir hedef StorSimple Cloud Appliance cihazı geri yüklemek için aşağıdaki adımları gerçekleştirin.
 
-1.  Yük devretmek istediğiniz birim kapsayıcısının ilişkili bulut anlık görüntülerinin olduğunu doğrulayın. Daha fazla bilgi için bkz. [yedek oluşturmak Için StorSimple Aygıt Yöneticisi hizmetini kullanma](storsimple-8000-manage-backup-policies-u2.md).
+1.  Yük devretmek istediğiniz birim kapsayıcısının ilişkili bulut anlık görüntülerinin olduğunu doğrulayın. Daha fazla bilgi için bkz. [yedek oluşturmak Için StorSimple Device Manager hizmetini kullanma](storsimple-8000-manage-backup-policies-u2.md).
 2. StorSimple Cihaz Yöneticisi hizmetinize gidin ve **Cihazlar**’a tıklayın. **Cihazlar** dikey penceresinde hizmetinize bağlı cihazların listesine gidin.
     ![Cihaz Seç](./media/storsimple-8000-device-failover-disaster-recovery/failover-cloud-dev1.png)
 3. Kaynak cihazınızı seçin ve tıklayın. Kaynak cihazda yük devretmek istediğiniz birim kapsayıcıları vardır. **Ayarlar > birim kapsayıcıları**' na gidin.
@@ -63,7 +63,7 @@ Bir hedef StorSimple Cloud Appliance cihazı geri yüklemek için aşağıdaki a
     ![Yük devretme ' ye tıklayın](./media/storsimple-8000-device-failover-disaster-recovery/failover-cloud-dev8.png)
 8. Yük **devretme** dikey penceresinde aşağıdaki adımları uygulayın:
    
-    1. **Kaynak**seçeneğine tıklayın. Yük devredilecek birim kapsayıcılarını seçin. **Yalnızca ilişkili bulut anlık görüntüleri ve çevrimdışı birimlere sahip birim kapsayıcıları görüntülenir.**
+    1. **Kaynak** seçeneğine tıklayın. Yük devredilecek birim kapsayıcılarını seçin. **Yalnızca ilişkili bulut anlık görüntüleri ve çevrimdışı birimlere sahip birim kapsayıcıları görüntülenir.**
         ![Kaynak seçme](./media/storsimple-8000-device-failover-disaster-recovery/failover-cloud-dev11.png)
     2. **Hedef**' e tıklayın. Kullanılabilir cihazların açılan listesinden bir hedef bulut gereci seçin. **Yalnızca kaynak birim kapsayıcılarını barındırmak için yeterli kapasiteye sahip cihazlar listede görüntülenir.**
 
@@ -94,5 +94,5 @@ Bir hedef StorSimple Cloud Appliance cihazı geri yüklemek için aşağıdaki a
 
 * Yük devretme gerçekleştirdikten sonra [StorSimple cihazınızı devre dışı bırakmanız veya silmeniz](storsimple-8000-deactivate-and-delete-device.md)gerekebilir.
 
-* StorSimple Aygıt Yöneticisi hizmetini kullanma hakkında daha fazla bilgi için, StorSimple [cihazınızı yönetmek Için storsimple Aygıt Yöneticisi hizmetini kullanma](storsimple-8000-manager-service-administration.md)bölümüne gidin.
+* StorSimple Device Manager hizmetini kullanma hakkında daha fazla bilgi için, StorSimple [cihazınızı yönetmek Için storsimple Device Manager hizmetini kullanma](storsimple-8000-manager-service-administration.md)bölümüne gidin.
 

@@ -5,12 +5,12 @@ services: automation
 ms.subservice: change-inventory-management
 ms.date: 10/15/2020
 ms.topic: conceptual
-ms.openlocfilehash: 4faa7837a75bab6dfab651862754cd92394c5137
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 91be2f8641a061d009962cdcd03a8d56048594da
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100585910"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104594514"
 ---
 # <a name="how-to-create-alerts-for-change-tracking-and-inventory"></a>Değişiklik İzleme ve envanter için uyarı oluşturma
 
@@ -50,11 +50,11 @@ Uyarılarınız yapılandırıldıktan sonra, birden çok uyarı arasında kulla
 
 3. **Eylemler**' in altında, eylemi belirten bir ad girin, örneğin **e-posta bildirimi**.
 
-4. **Eylem türü** için uygun türü seçin (örneğin, **e-posta/SMS/Push/Voice**).
+4. **Eylem türü** için uygun türü seçin (örneğin, **e-posta/SMS ileti/gönderim/ses**).
 
-5. **Ayrıntıları düzenle** seçeneğini belirleyin.
+5. Eylem ayrıntılarını düzenlemek için kalem simgesini seçin.
 
-6. Eylem türü için bölmeyi girin. Örneğin, **e-posta/SMS/Push/seskullanacaksanız**, bir eylem adı girin, **e-posta** kutusunu seçin, geçerli bir e-posta adresi girin ve **Tamam**' ı seçin.
+6. Eylem türü için bölmeyi girin. Örneğin, e-posta göndermek için **e-posta/SMS iletisi/gönderim/ses** kullanılıyorsa, bir eylem adı girin, **e-posta** kutusunu seçin, geçerli bir e-posta adresi girin ve ardından **Tamam**' ı seçin.
 
     ![E-posta eylem grubu yapılandırma](./media/configure-alerts/configure-email-action-group.png)
 

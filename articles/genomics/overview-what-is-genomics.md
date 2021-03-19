@@ -1,7 +1,7 @@
 ---
 title: Microsoft Genomiks nedir?
 titleSuffix: Microsoft Genomics
-description: Burrows-Wheeler Aligner (BWA) ve genom Analysis Toolkit 'in (GATK) bulut uygulamasını kullanarak Microsoft Genomiks sıralamasını nasıl kullanabileceğinizi öğrenin.
+description: Burrows-Wheeler Aligner (BWA) ve genom Analysis Toolkit (GATK) bulut uygulamasını kullanarak Microsoft Genomiks sıralamasını nasıl kullanabileceğinizi öğrenin.
 services: genomics
 author: grhuynh
 manager: cgronlun
@@ -10,14 +10,14 @@ ms.service: genomics
 ms.topic: overview
 ms.date: 12/07/2017
 ms.openlocfilehash: 04ecab58db822aa80ca2abba1bebaa39598498bd
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "73498810"
 ---
 # <a name="what-is-microsoft-genomics"></a>Microsoft Genomiks nedir?
-Microsoft Genomikler, ikincil analizler için Burrows-Wheeler Aligner (BWA) ve Genome çözümleme araç seti 'nin (GATK) bulut uygulamasını sunmaktadır. Hizmet ISO sertifikalı ve HIPAA yönetmelikleriyle uyumludur ve genom sıralama gereksinimleriniz için fiyat öngörülebilirlik sağlar. Microsoft Genomiks hizmetini kullanmayı ve hızlı başlangıçlarımızı, öğreticilerimizi ve belgelerinizi okuyarak API 'ümüzle tümleştirmeyi öğrenin.
+Microsoft Genomiks, ikincil analize yönelik Burrows-Wheeler Aligner (BWA) ve Genome Analysis Toolkit (GATK) bulut uygulamasını sunmaktadır. Hizmet ISO sertifikalı ve HIPAA yönetmelikleriyle uyumludur ve genom sıralama gereksinimleriniz için fiyat öngörülebilirlik sağlar. Microsoft Genomiks hizmetini kullanmayı ve hızlı başlangıçlarımızı, öğreticilerimizi ve belgelerinizi okuyarak API 'ümüzle tümleştirmeyi öğrenin.
 
 ## <a name="support-your-most-demanding-sequencing-needs"></a>En zorlu sıralama ihtiyaçlarınızı destekleme
 Kendi veri merkezlerinizi yönetmek yerine, Microsoft 'un ölçek ölçeğinde iş yüklerini çalıştırma konusunda Microsoft 'un ölçeklendirilmesi ve deneyiminden yararlanın. BWA-GATK 'ın bulut uygulamamız, geniş bir kuruluşun en iyi yöntemler işlem hattı ile yüksek concordant.

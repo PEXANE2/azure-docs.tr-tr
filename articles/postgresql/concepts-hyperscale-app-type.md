@@ -8,10 +8,10 @@ ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 07/17/2020
 ms.openlocfilehash: 92333857177d33307d6997bfcbdf79787d3ab127
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90895947"
 ---
 # <a name="determining-application-type"></a>Uygulama türünü belirleme
@@ -22,12 +22,12 @@ Hiperscale üzerinde iyi çalışan çok sayıda uygulama vardır (Citus). Veri 
 
 ## <a name="at-a-glance"></a>Bir bakışta
 
-| Çok kiracılı uygulamalar                                 | Real-Time uygulamalar                                |
+| Çok kiracılı uygulamalar                                 | Gerçek Zamanlı Uygulamalar                                |
 |-----------------------------------------------------------|-------------------------------------------------------|
-| Bazen şemada düzinelerce veya yüzlerce tablo          | Az sayıda tablo                                |
-| Tek seferde bir kiracıyla (Şirket/mağaza) ilgili sorgular | Toplamalara sahip görece basit analiz sorguları |
-| Web istemcilerine hizmet vermeye yönelik OLTP iş yükleri                    | Çoğunlukla sabit verilerin yüksek alım hacmi           |
-| Kiracı başına analitik sorguları sunan OLAP iş yükleri   | Büyük olaylar tablosu etrafında genellikle ortalama            |
+| Bazen şemada onlarca veya yüzlerce tablo          | Az sayıda tablo                                |
+| Tek seferde bir kiracıyla (Şirket/mağaza) ilgili sorgular | Toplamalar içeren görece basit analiz sorguları |
+| Web istemcilerine hizmet vermek için OLTP iş yükleri                    | Büyük ölçüde sabit olan verileri büyük miktarlarda alma           |
+| Kiracı başına çalıştırılan analiz sorgularına hizmet veren OLAP iş yükleri   | Sıklıkla büyük olay tablolarına odaklanma            |
 
 ## <a name="examples-and-characteristics"></a>Örnekler ve Özellikler
 

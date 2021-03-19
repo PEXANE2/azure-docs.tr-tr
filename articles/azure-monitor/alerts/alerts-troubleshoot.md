@@ -5,12 +5,12 @@ author: ofirmanor
 ms.author: ofmanor
 ms.topic: reference
 ms.date: 03/16/2020
-ms.openlocfilehash: d65fa03a183c15022535debee6476844192ec6bf
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 08ac23fbb29829bf2a7a46e41f9a7f646ad97915
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102037855"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104586327"
 ---
 # <a name="troubleshooting-problems-in-azure-monitor-alerts"></a>Azure Izleyici uyarıları sorunlarını giderme
 
@@ -21,7 +21,7 @@ Bu makalede, Azure Izleyici uyarı ve bildirimlerinde yaygın sorunlar ele alın
 Uyarı tetiklenmesi veya beklendiğinde tetiklemeden sorun yaşıyorsanız, aşağıdaki makalelere bakın. Azure portal "harekete geçirilir" uyarıları görebilirsiniz.
 
 - [Microsoft Azure 'de Azure Izleyici ölçüm uyarıları sorunlarını giderme](alerts-troubleshoot-metric.md)  
-- [Microsoft Azure 'de Azure Izleyici günlüğü uyarıları sorunlarını giderme](alerts-troubleshoot-metric.md)
+- [Microsoft Azure 'de Azure Izleyici günlüğü uyarıları sorunlarını giderme](alerts-troubleshoot-log.md)
 
 Uyarı Azure portal göre istendiği şekilde tetiklenmiştir, ancak uygun bildirimler gerçekleşmediğinden, sorunu gidermek için bu makalenin geri kalanında yer alan bilgileri kullanın.
 

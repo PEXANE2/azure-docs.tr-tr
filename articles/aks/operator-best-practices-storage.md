@@ -6,10 +6,10 @@ services: container-service
 ms.topic: conceptual
 ms.date: 5/6/2019
 ms.openlocfilehash: 722fe393ad7637be20360463a4c3b6234224a036
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88653979"
 ---
 # <a name="best-practices-for-storage-and-backups-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) içinde depolama ve yedeklemeler için en iyi uygulamalar
@@ -34,9 +34,9 @@ Aşağıdaki tabloda kullanılabilir depolama türleri ve bunların özellikleri
 
 | Kullanım örneği | Birim eklentisi | Bir kez oku/yaz | Salt okunurdur | Okuma/yazma çok | Windows Server kapsayıcısı desteği |
 |----------|---------------|-----------------|----------------|-----------------|--------------------|
-| Paylaşılan yapılandırma       | Azure Dosyaları   | Evet | Evet | Evet | Evet |
-| Yapılandırılmış uygulama verileri        | Azure Diskleri   | Evet | Hayır  | Hayır  | Evet |
-| Yapılandırılmamış veriler, dosya sistemi işlemleri | [Blobsigortası][blobfuse] | Evet | Evet | Evet | Hayır |
+| Paylaşılan yapılandırma       | Azure Dosyaları   | Yes | Yes | Yes | Yes |
+| Yapılandırılmış uygulama verileri        | Azure Diskleri   | Yes | Hayır  | Hayır  | Yes |
+| Yapılandırılmamış veriler, dosya sistemi işlemleri | [Blobsigortası][blobfuse] | Yes | Yes | Yes | Hayır |
 
 AKS 'teki birimler için belirtilen iki birincil depolama türü, Azure diskleri veya Azure dosyaları tarafından desteklenir. Güvenliği artırmak için her iki depolama türü de, bekleyen verileri şifreleyen varsayılan olarak Azure Depolama Hizmeti Şifrelemesi (SSE) kullanır. Diskler Şu anda AKS düğüm düzeyinde Azure disk şifrelemesi kullanılarak şifrelenemez.
 
@@ -49,7 +49,7 @@ Uygun depolama katmanını seçmek için uygulama performansı ihtiyaçlarını 
 
 ### <a name="create-and-use-storage-classes-to-define-application-needs"></a>Uygulama gereksinimlerini tanımlamak için depolama sınıfları oluşturma ve kullanma
 
-Kullandığınız depolamanın türü, Kubernetes *Depolama sınıfları*kullanılarak tanımlanır. Depolama sınıfına daha sonra Pod veya Deployment belirtiminde başvurulur. Bu tanımlar, uygun depolamayı oluşturmak ve onları pods 'ye bağlamak için birlikte çalışır. Daha fazla bilgi için bkz. [AKS 'de Depolama sınıfları][aks-concepts-storage-classes].
+Kullandığınız depolamanın türü, Kubernetes *Depolama sınıfları* kullanılarak tanımlanır. Depolama sınıfına daha sonra Pod veya Deployment belirtiminde başvurulur. Bu tanımlar, uygun depolamayı oluşturmak ve onları pods 'ye bağlamak için birlikte çalışır. Daha fazla bilgi için bkz. [AKS 'de Depolama sınıfları][aks-concepts-storage-classes].
 
 ## <a name="size-the-nodes-for-storage-needs"></a>Depolama ihtiyaçlarına yönelik düğümleri Boyutlandır
 
@@ -61,7 +61,7 @@ Uygulamalarınız depolama çözümü olarak Azure diskleri gerektiriyorsa, uygu
 
 | Düğüm türü ve boyutu | Sanal işlemci | Bellek (GiB) | Maksimum veri diskleri | Önbelleğe alınmamış disk ıOPS üst sınırı | Önbelleğe alınmamış maksimum üretilen iş (MBps) |
 |--------------------|------|--------------|----------------|------------------------|--------------------------------|
-| Standard_B2ms      | 2    | 8            | 4              | 1.920                  | 22,5                           |
+| Standard_B2ms      | 2    | 8            | 4              | 1.920                  | 22.5                           |
 | Standard_DS2_v2    | 2    | 7            | 8              | 6.400                  | 96                             |
 
 *Standard_DS2_v2* , eklenen disklerin sayısının iki katına izin verır ve IOPS ve disk aktarım hızı için üç-dört kat sağlar. Yalnızca temel işlem kaynaklarına bakıyordu ve maliyetleri karşılaştırdıysanız, *Standard_B2ms* VM boyutunu seçebilir ve yetersiz depolama performansına ve sınırlamalara sahip olabilirsiniz. Depolama kapasitesini ve performans ihtiyaçlarını anlamak için uygulama geliştirme ekibinizle birlikte çalışın. AKS düğümleri için, performans ihtiyaçlarını karşılayacak veya aşacak uygun VM boyutunu seçin. VM boyutunu gerektiği şekilde ayarlamak için düzenli olarak temel uygulamalar.
@@ -82,7 +82,7 @@ Birimlerin dinamik olarak oluşturulması ve kullanılması hakkındaki kavramla
 
 Bu birimleri eylemde görmek için bkz. [Azure diskleri][dynamic-disks] veya [Azure dosyaları][dynamic-files]ile kalıcı bir birimi dinamik olarak oluşturma ve kullanma.
 
-Depolama sınıfı tanımlarınızın bir parçası olarak, uygun *reclaimPolicy*ayarlayın. Bu reclaimPolicy, Pod silindiğinde ve kalıcı birim artık gerekmiyorsa, temel alınan Azure depolama kaynağının davranışını denetler. Temel alınan depolama kaynağı silinebilir veya gelecekteki bir pod ile kullanım için korunabilir. ReclaimPolicy, *sakla* veya *Sil*olarak ayarlanabilir. Uygulama gereksinimlerinizi anlayın ve kullanılan ve faturalandırılmamış kullanılmayan depolama miktarını en aza indirmek için saklanan depolama için düzenli denetimler uygulayın.
+Depolama sınıfı tanımlarınızın bir parçası olarak, uygun *reclaimPolicy* ayarlayın. Bu reclaimPolicy, Pod silindiğinde ve kalıcı birim artık gerekmiyorsa, temel alınan Azure depolama kaynağının davranışını denetler. Temel alınan depolama kaynağı silinebilir veya gelecekteki bir pod ile kullanım için korunabilir. ReclaimPolicy, *sakla* veya *Sil* olarak ayarlanabilir. Uygulama gereksinimlerinizi anlayın ve kullanılan ve faturalandırılmamış kullanılmayan depolama miktarını en aza indirmek için saklanan depolama için düzenli denetimler uygulayın.
 
 Depolama sınıfı seçenekleri hakkında daha fazla bilgi için bkz. [depolama geri kazanma ilkeleri][reclaim-policy].
 

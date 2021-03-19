@@ -4,10 +4,10 @@ description: VMware vCenter/ESXi sunucusunda çalışan VMware VM 'lerini geri y
 ms.topic: conceptual
 ms.date: 08/18/2019
 ms.openlocfilehash: b3f61aa828db39aeb11b1ce46a850d9a5b868653
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88263529"
 ---
 # <a name="restore-vmware-virtual-machines"></a>VMware sanal makinelerini geri yükleme
@@ -36,13 +36,13 @@ Bu makalede, VMware VM kurtarma noktalarını geri yüklemek için Microsoft Azu
 
 5. **Kurtarma seçeneklerini belirtin** ekranına Ilerlemek için **İleri ' yi** seçin.
 
-6. **Kurtarma seçeneklerini belirtin** ekranında, ağ bant genişliği azaltmayı etkinleştirmek istiyorsanız **Değiştir**' i seçin. Ağ azaltmayı devre dışı bırakmak için **İleri**'yi seçin. Bu sihirbaz ekranında, VMware VM 'Leri için başka bir seçenek bulunmamaktadır. Ağ bant genişliği kısıtlaması ' nı değiştirmeyi seçerseniz, kısıtlama iletişim kutusunda **ağ bant genişliği kullanımını azaltmayı etkinleştir** ' i seçerek açın. Etkinleştirildikten sonra **ayarları** ve **iş zamanlamasını**yapılandırın.
+6. **Kurtarma seçeneklerini belirtin** ekranında, ağ bant genişliği azaltmayı etkinleştirmek istiyorsanız **Değiştir**' i seçin. Ağ azaltmayı devre dışı bırakmak için **İleri**'yi seçin. Bu sihirbaz ekranında, VMware VM 'Leri için başka bir seçenek bulunmamaktadır. Ağ bant genişliği kısıtlaması ' nı değiştirmeyi seçerseniz, kısıtlama iletişim kutusunda **ağ bant genişliği kullanımını azaltmayı etkinleştir** ' i seçerek açın. Etkinleştirildikten sonra **ayarları** ve **iş zamanlamasını** yapılandırın.
 
 7. **Kurtarma türü seçin** ekranında, özgün örneğe veya yeni bir konuma kurtarma yapılıp yapılmayacağını seçin. Sonra **İleri**’yi seçin.
 
      * **Özgün örneğe kurtar**' ı seçerseniz, sihirbazda başka seçimler yapmanıza gerek kalmaz. Özgün örnek için veriler kullanılır.
 
-     * **Herhangi bir konakta sanal makine olarak kurtar**' ı seçerseniz, **hedef belirtin** ekranında **ESXi Konağı, kaynak havuzu, klasör** ve **yol**bilgilerini girin.
+     * **Herhangi bir konakta sanal makine olarak kurtar**' ı seçerseniz, **hedef belirtin** ekranında **ESXi Konağı, kaynak havuzu, klasör** ve **yol** bilgilerini girin.
 
       ![Kurtarma türünü seçin](./media/restore-azure-backup-server-vmware/recovery-type.png)
 
@@ -61,7 +61,7 @@ Korunan bir VM kurtarma noktasından tek tek dosyaları geri yükleyebilirsiniz.
 
     !["İçin kurtarma noktaları" bölmesi](./media/restore-azure-backup-server-vmware/vmware-rp-disk.png)
 
-3. **Için kurtarma noktaları:** bölmesinde, istenen kurtarma noktası (ler) i içeren tarihi seçmek için takvimi kullanın. Yedekleme ilkesinin nasıl yapılandırıldığına bağlı olarak, tarihler birden fazla kurtarma noktasına sahip olabilir. Kurtarma noktasının alındığı günü seçtikten sonra, doğru **kurtarma süresini**seçtiğinizden emin olun. Seçilen tarihin birden çok kurtarma noktası varsa, kurtarma zamanı açılır menüsünde bunu seçerek kurtarma noktanızı seçin. Kurtarma noktasını seçtikten sonra kurtarılabilir öğelerin listesi **yol:** bölmesinde görünür.
+3. **Için kurtarma noktaları:** bölmesinde, istenen kurtarma noktası (ler) i içeren tarihi seçmek için takvimi kullanın. Yedekleme ilkesinin nasıl yapılandırıldığına bağlı olarak, tarihler birden fazla kurtarma noktasına sahip olabilir. Kurtarma noktasının alındığı günü seçtikten sonra, doğru **kurtarma süresini** seçtiğinizden emin olun. Seçilen tarihin birden çok kurtarma noktası varsa, kurtarma zamanı açılır menüsünde bunu seçerek kurtarma noktanızı seçin. Kurtarma noktasını seçtikten sonra kurtarılabilir öğelerin listesi **yol:** bölmesinde görünür.
 
 4. Kurtarmak istediğiniz dosyaları bulmak için, **yol** bölmesinde **kurtarılabilir öğe** sütunundaki öğeye çift tıklayarak açın. Kurtarmak istediğiniz dosya, dosya veya klasörleri seçin. Birden çok öğe seçmek için, her öğeyi seçerken **CTRL** tuşuna basın. **Kurtarılabilir öğe** sütununda görünen dosya veya klasör listesinde arama yapmak için **yol** bölmesini kullanın. **Aşağıdaki arama listesi** alt klasörlerde arama yapmaz. Alt klasörlerde arama yapmak için klasörü çift tıklayın. Alt bir klasörden üst klasöre geçmek için **yukarı** düğmesini kullanın. Birden çok öğe (dosya ve klasör) seçebilirsiniz, ancak aynı ana klasörde olmaları gerekir. Aynı kurtarma işinde birden çok klasörden öğeleri kurtaramazsınız.
 
@@ -69,7 +69,7 @@ Korunan bir VM kurtarma noktasından tek tek dosyaları geri yükleyebilirsiniz.
 
 5. Kurtarma için öğe (ler) i seçtikten sonra, Yönetici Konsolu araç şeridinde **Kurtarma Sihirbazı**'nı açmak için **kurtar** ' ı seçin. Kurtarma Sihirbazı 'nda, **Kurtarma seçimini İncele** ekranı, kurtarılacak seçili öğeleri gösterir.
 
-6. **Kurtarma seçeneklerini belirtin** ekranında, ağ bant genişliği azaltmayı etkinleştirmek istiyorsanız **Değiştir**' i seçin. Ağ azaltmayı devre dışı bırakmak için **İleri**'yi seçin. Bu sihirbaz ekranında, VMware VM 'Leri için başka bir seçenek bulunmamaktadır. Ağ bant genişliği kısıtlaması ' nı değiştirmeyi seçerseniz, kısıtlama iletişim kutusunda **ağ bant genişliği kullanımını azaltmayı etkinleştir** ' i seçerek açın. Etkinleştirildikten sonra **ayarları** ve **iş zamanlamasını**yapılandırın.
+6. **Kurtarma seçeneklerini belirtin** ekranında, ağ bant genişliği azaltmayı etkinleştirmek istiyorsanız **Değiştir**' i seçin. Ağ azaltmayı devre dışı bırakmak için **İleri**'yi seçin. Bu sihirbaz ekranında, VMware VM 'Leri için başka bir seçenek bulunmamaktadır. Ağ bant genişliği kısıtlaması ' nı değiştirmeyi seçerseniz, kısıtlama iletişim kutusunda **ağ bant genişliği kullanımını azaltmayı etkinleştir** ' i seçerek açın. Etkinleştirildikten sonra **ayarları** ve **iş zamanlamasını** yapılandırın.
 7. **Kurtarma türü seçin** ekranında, **İleri**' yi seçin. Yalnızca dosya veya klasör (ler) i bir ağ klasörüne kurtarabilirsiniz.
 8. **Hedef belirtin** ekranında, dosyalarınız veya klasörleriniz için bir ağ konumu bulmak üzere **Araştır** ' ı seçin. MABS, kurtarılan tüm öğelerin kopyalandığı bir klasör oluşturur. Klasör adı, MABS_day-ay-yıl ön ekine sahiptir. Kurtarılan dosyalar veya klasör için bir konum seçtiğinizde, bu konumun (hedef, hedef yol ve kullanılabilir alan) ayrıntıları sağlanır.
 

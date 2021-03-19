@@ -1,7 +1,7 @@
 ---
 title: 'Verileri Normalleştir: modül başvurusu'
 titleSuffix: Azure Machine Learning
-description: Bir veri kümesini *normalleştirmede*dönüştürmek Için Azure Machine Learning Normalleştir modülünü nasıl kullanacağınızı öğrenin.
+description: Bir veri kümesini *normalleştirmede* dönüştürmek Için Azure Machine Learning Normalleştir modülünü nasıl kullanacağınızı öğrenin.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,17 +10,17 @@ author: likebupt
 ms.author: keli19
 ms.date: 02/22/2020
 ms.openlocfilehash: de0a23ca9dea210d91fe259b06622226549ba3b2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90890445"
 ---
 # <a name="normalize-data-module"></a>Veri modülünü Normalleştir
 
 Bu makalede Azure Machine Learning tasarımcısında bir modül açıklanmaktadır.
 
-Bir veri kümesini *normalleştirme*yoluyla dönüştürmek için bu modülü kullanın.
+Bir veri kümesini *normalleştirme* yoluyla dönüştürmek için bu modülü kullanın.
 
 Normalleştirme, makine öğrenimine yönelik veri hazırlama kapsamında genellikle uygulanan bir tekniktir. Normalleştirme hedefi, veri kümesindeki sayısal sütunların değerlerini, değerlerin aralıklarına ilişkin farklılıkları deforme etmeden veya bilgi kaybına gerek kalmadan, ortak bir ölçek kullanacak şekilde değiştirmektir. Ayrıca, bazı algoritmaların verileri doğru şekilde modelmesi için normalleştirme de gereklidir.
 
@@ -39,9 +39,9 @@ Bu modül, sayısal verileri dönüştürmek için çeşitli seçenekler sunar:
 
 ##  <a name="configure-normalize-data"></a>Normalleştir verileri yapılandırma
 
-Bu modülü kullanarak tek seferde yalnızca bir normalleştirme yöntemi uygulayabilirsiniz. Bu nedenle, seçtiğiniz tüm sütunlara aynı normalleştirme yöntemi uygulanır. Farklı normalleştirme yöntemleri kullanmak için, **verileri normalleştirmek**için ikinci bir örnek kullanın.
+Bu modülü kullanarak tek seferde yalnızca bir normalleştirme yöntemi uygulayabilirsiniz. Bu nedenle, seçtiğiniz tüm sütunlara aynı normalleştirme yöntemi uygulanır. Farklı normalleştirme yöntemleri kullanmak için, **verileri normalleştirmek** için ikinci bir örnek kullanın.
 
-1. İşlem hattınızı **normalleştirmek Için veri** modülünü ekleyin. Modülü, **veri dönüştürme**altında, **ölçek ve azalt** kategorisinde Azure Machine Learning bulabilirsiniz.
+1. İşlem hattınızı **normalleştirmek Için veri** modülünü ekleyin. Modülü, **veri dönüştürme** altında, **ölçek ve azalt** kategorisinde Azure Machine Learning bulabilirsiniz.
 
 2. Tüm sayıların en az bir sütununu içeren bir veri kümesini bağlayın.
 
@@ -52,7 +52,7 @@ Bu modülü kullanarak tek seferde yalnızca bir normalleştirme yöntemi uygula
     Sayısal sütun algılanmazsa, sütunun veri türünün desteklenen bir sayısal tür olduğunu doğrulamak için sütun meta verilerini denetleyin.
 
     > [!TIP]
-    > Belirli bir türdeki sütunların giriş olarak sağlandığından emin olmak için, **verileri normalleştirmek**Için veri [kümesinde sütunları seç](./select-columns-in-dataset.md) modülünü kullanmayı deneyin.
+    > Belirli bir türdeki sütunların giriş olarak sağlandığından emin olmak için, **verileri normalleştirmek** Için veri [kümesinde sütunları seç](./select-columns-in-dataset.md) modülünü kullanmayı deneyin.
 
 4. **İşaretlendiğinde sabit sütunlar için 0 kullanın**: herhangi bir sayısal sütun, tek bir değişmeyen değer içerdiğinde bu seçeneği belirleyin. Bu, bu tür sütunların normalleştirme işlemlerinde kullanılmamasını sağlar.
 
