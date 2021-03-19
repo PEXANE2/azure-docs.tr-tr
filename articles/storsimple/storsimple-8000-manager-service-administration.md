@@ -1,6 +1,6 @@
 ---
-title: StorSimple Aygıt Yöneticisi hizmet yönetimi | Microsoft Docs
-description: Azure portal StorSimple Aygıt Yöneticisi hizmetini kullanarak StorSimple cihazınızı nasıl yöneteceğinizi öğrenin.
+title: StorSimple Device Manager hizmet yönetimi | Microsoft Docs
+description: Azure portal StorSimple Device Manager hizmetini kullanarak StorSimple cihazınızı nasıl yöneteceğinizi öğrenin.
 services: storsimple
 documentationcenter: ''
 author: alkohli
@@ -12,49 +12,51 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/12/2017
+ms.date: 03/17/2021
 ms.author: alkohli
-ms.openlocfilehash: 69a36f38cc76693f596b45d4df6e232bc01584d5
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 0e25d41fbf6a9683f178cbfd1b07fde1b6796509
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94967984"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104656830"
 ---
-# <a name="use-the-storsimple-device-manager-service-to-administer-your-storsimple-device"></a>StorSimple cihazınızı yönetmek için StorSimple Aygıt Yöneticisi hizmetini kullanın
+# <a name="use-the-storsimple-device-manager-service-to-administer-your-storsimple-device"></a>StorSimple cihazınızı yönetmek için StorSimple Device Manager hizmetini kullanın
 
 ## <a name="overview"></a>Genel Bakış
 
-Bu makalede, bu kullanıcı arabirimi aracılığıyla gerçekleştirilebilecek belirli iş akışlarına nasıl bağlanabileceği, kullanılabilir çeşitli seçenekler ve bu kullanıcı arabirimine giden bağlantılar dahil olmak üzere StorSimple Aygıt Yöneticisi hizmet arabirimi açıklanmaktadır. Bu kılavuz her ikisi için de geçerlidir; StorSimple fiziksel cihazı ve bulut gereci.
+Bu makalede, bu kullanıcı arabirimi aracılığıyla gerçekleştirilebilecek belirli iş akışlarına nasıl bağlanabileceği, kullanılabilir çeşitli seçenekler ve bu kullanıcı arabirimine giden bağlantılar dahil olmak üzere StorSimple Device Manager hizmet arabirimi açıklanmaktadır. Bu kılavuz her ikisi için de geçerlidir; StorSimple fiziksel cihazı ve bulut gereci.
 
 Bu makaleyi okuduktan sonra şunları öğreneceksiniz:
 
-* StorSimple Aygıt Yöneticisi hizmetine bağlanma
-* StorSimple cihazınızı StorSimple Aygıt Yöneticisi hizmeti aracılığıyla yönetin
+* StorSimple Device Manager hizmetine bağlanma
+* StorSimple cihazınızı StorSimple Device Manager hizmeti aracılığıyla yönetin
 
-## <a name="connect-to-storsimple-device-manager-service"></a>StorSimple Aygıt Yöneticisi hizmetine bağlanma
+## <a name="connect-to-storsimple-device-manager-service"></a>StorSimple Device Manager hizmetine bağlanma
 
-StorSimple Aygıt Yöneticisi hizmeti Microsoft Azure ' de çalışır ve birden çok StorSimple cihaza bağlanır. Bu cihazları yönetmek için tarayıcıda çalışan Merkezi Microsoft Azure portal kullanırsınız. StorSimple Aygıt Yöneticisi hizmetine bağlanmak için aşağıdakileri yapın.
+StorSimple Device Manager hizmeti Microsoft Azure ' de çalışır ve birden çok StorSimple cihaza bağlanır. Bu cihazları yönetmek için tarayıcıda çalışan Merkezi Microsoft Azure portal kullanırsınız. StorSimple Device Manager hizmetine bağlanmak için aşağıdakileri yapın.
 
 #### <a name="to-connect-to-the-service"></a>Hizmete bağlanmak için
 1. Öğesine gidin [https://portal.azure.com/](https://portal.azure.com/) .
 2. Microsoft hesabı kimlik bilgilerinizi kullanarak Microsoft Azure portal oturum açın (bölmenin sağ üst kısmında bulunur).
-3. StorSimple Aygıt Yöneticisi hizmetine erişmek için sol gezinti bölmesini aşağı kaydırın.
+3. StorSimple Device Manager hizmetine erişmek için sol gezinti bölmesini aşağı kaydırın.
 
 
-## <a name="administer-storsimple-device-using-storsimple-device-manager-service"></a>StorSimple Aygıt Yöneticisi hizmetini kullanarak StorSimple cihazını yönetme
+## <a name="administer-storsimple-device-using-storsimple-device-manager-service"></a>StorSimple Device Manager hizmetini kullanarak StorSimple cihazını yönetme
 
-Aşağıdaki tabloda, StorSimple Aygıt Yöneticisi hizmeti kullanıcı arabirimi içinde gerçekleştirilebilecek tüm ortak yönetim görevlerinin ve karmaşık iş akışlarının özeti gösterilmektedir. Bu görevler, başlatıldığı Kullanıcı arabirimi dikey pencerelerine göre düzenlenmiştir.
+Aşağıdaki tabloda, StorSimple Device Manager hizmeti kullanıcı arabirimi içinde gerçekleştirilebilecek tüm ortak yönetim görevlerinin ve karmaşık iş akışlarının özeti gösterilmektedir. Bu görevler, başlatıldığı Kullanıcı arabirimi dikey pencerelerine göre düzenlenmiştir.
 
 Her iş akışı hakkında daha fazla bilgi için, tabloda ilgili yordama tıklayın.
 
-#### <a name="storsimple-device-manager-workflows"></a>StorSimple Aygıt Yöneticisi iş akışları
+[!INCLUDE [StorSimple software warning](../../includes/storsimple-update-software-warning.md)]
+
+#### <a name="storsimple-device-manager-workflows"></a>StorSimple Device Manager iş akışları
 
 | Bunu yapmak istiyorsanız... | Bu yordamı kullanın. |
 | --- | --- |
-| Hizmet oluşturma</br>Hizmet silme</br>Hizmet kayıt anahtarını al</br>Hizmet kayıt anahtarını yeniden üret |[StorSimple Aygıt Yöneticisi hizmeti dağıtma](storsimple-8000-manage-service.md) |
-| Etkinlik günlüklerini görüntüleme |[StorSimple Aygıt Yöneticisi hizmeti özetini kullanın](storsimple-8000-service-dashboard.md) |
-| Hizmet veri şifreleme anahtarını değiştirme</br>İşlem günlüklerini görüntüleme |[StorSimple Aygıt Yöneticisi hizmeti panosunu kullanma](storsimple-8000-service-dashboard.md) |
+| Hizmet oluşturma</br>Hizmet silme</br>Hizmet kayıt anahtarını al</br>Hizmet kayıt anahtarını yeniden üret |[StorSimple Device Manager hizmeti dağıtma](storsimple-8000-manage-service.md) |
+| Etkinlik günlüklerini görüntüleme |[StorSimple Device Manager hizmeti özetini kullanın](storsimple-8000-service-dashboard.md) |
+| Hizmet veri şifreleme anahtarını değiştirme</br>İşlem günlüklerini görüntüleme |[StorSimple Device Manager hizmeti panosunu kullanma](storsimple-8000-service-dashboard.md) |
 | Cihazı devre dışı bırakma</br>Cihazı silme |[Bir cihazı devre dışı bırakma veya silme](storsimple-8000-deactivate-and-delete-device.md) |
 | Olağanüstü durum kurtarma ve cihaz yük devretmesi hakkında bilgi edinin</br>Fiziksel bir cihaza yük devretme</br>Sanal cihaza yük devretme</br>İş sürekliliği olağanüstü durum kurtarma (BCDR) |[StorSimple cihazınız için yük devretme ve olağanüstü durum kurtarma](storsimple-8000-device-failover-disaster-recovery.md) |
 | Bir birim için yedeklemeleri listeleme</br>Bir yedekleme kümesi seçin</br>Bir yedekleme kümesini silme |[Yedekleri yönetme](storsimple-8000-manage-backup-catalog.md) |

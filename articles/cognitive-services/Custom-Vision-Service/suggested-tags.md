@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 10/29/2019
 ms.author: pafarley
 ms.openlocfilehash: 94ca47e6114e4f8c3485f6072facd07c25e4b96a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "73647762"
 ---
 # <a name="label-images-faster-with-smart-labeler"></a>Akıllı etiketleyici ile görüntüleri daha hızlı etiketleme
@@ -47,7 +47,7 @@ Aşağıdaki adımlarda akıllı etiketleyici 'nin nasıl kullanılacağı göst
 1. Görüntülenen açılan pencerede, önerileri istediğiniz görüntü sayısını ayarlayın. Etiketlenmemiş görüntülerin bir bölümü için yalnızca başlangıç etiketi önerilerini almalısınız. Bu işlem boyunca yineleme yaparken daha iyi etiket önerileri alacaksınız.
 1. Önerilen etiketleri doğrulayın ve düzeltme doğru değil.
     > [!TIP]
-    > Önerilen etiketlere sahip görüntüler, kendi tahmine göre sıralanır (düşük değerler daha yüksek güvenilirliğe işaret ediyor). Sıralama düzenini, **belirsizlik Ile Sırala** seçeneğiyle değiştirebilirsiniz. Sıralamayı **yüksek-düşük**olarak ayarlarsanız, önce yüksek belirsizlik tahminlerini düzeltebilir, sonra da düşük belirsizlik ' ı hızla doğrulayabilirsiniz.
+    > Önerilen etiketlere sahip görüntüler, kendi tahmine göre sıralanır (düşük değerler daha yüksek güvenilirliğe işaret ediyor). Sıralama düzenini, **belirsizlik Ile Sırala** seçeneğiyle değiştirebilirsiniz. Sıralamayı **yüksek-düşük** olarak ayarlarsanız, önce yüksek belirsizlik tahminlerini düzeltebilir, sonra da düşük belirsizlik ' ı hızla doğrulayabilirsiniz.
     * Görüntü sınıflandırma projelerinde, toplu işlemler içindeki etiketleri seçebilir ve doğrulayabilirsiniz. Görünümü belirtilen önerilen bir etikete göre filtreleyin, yanlış etiketlenmiş görüntülerin seçimini kaldırın ve ardından bir toplu işte geri kalanı onaylayın.
         > [!div class="mx-imgBorder"]
         > ![Önerilen Etiketler, filtre içeren c için Batch modunda görüntülenir.](./media/suggested-tags/ic-batch-mode.png)

@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: 7cff009d5d1e187e8d0330fadca530b57b3e3d21
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88935220"
 ---
 # <a name="import-data-wizard-for-azure-cognitive-search"></a>Azure Bilişsel Arama için veri içeri aktarma Sihirbazı
@@ -69,13 +69,13 @@ Sihirbazı çalıştırmadan önce bu tek tablo veya görünüm oluşturmanız g
 | **Azure VM’lerde SQL Server** |Tam hizmet adını, kullanıcı KIMLIĞINI ve parolayı ve bir bağlantı dizesi olarak veritabanını belirtin. Bu veri kaynağını kullanmak için bağlantıyı şifreleyen yerel depoya daha önce bir sertifika yüklemiş olmanız gerekir. Yönergeler için bkz. [Azure bilişsel arama SQL VM bağlantısı](search-howto-connecting-azure-sql-iaas-to-azure-search-using-indexers.md). <br/><br/>Sayfada satır kümesini sağlayan tablo veya görünüm belirtilmelidir. Bu seçenek bağlantı başarılı olduktan sonra görünür ve bir seçim yapmanızı sağlayan açılır listeyi gösterir. |
 | [**Azure Cosmos DB**](search-howto-index-cosmosdb.md)|Hesap, veritabanı ve bağlantı gereklidir. Koleksiyondaki tüm belgeler dizine dahil edilir. Satır kümesini düzleştirmek veya filtrelemek için bir sorgu tanımlayabilir veya sorguyu boş bırakabilirsiniz. Bu sihirbazda bir sorgu gerekli değildir.|
 | [**Azure Blob depolama**](search-howto-indexing-azure-blob-storage.md) |Depolama hesabı ve bir kapsayıcı gereklidir. İsteğe bağlı olarak, gruplandırma amacıyla blob adlarından önce bir sanal adlandırma kuralı varsa adın sanal dizin kısmını kapsayıcı altındaki bir klasör olarak belirtebilirsiniz. Daha fazla bilgi için bkz. [Blob Depolama Dizini Oluşturma](search-howto-indexing-azure-blob-storage.md). |
-| [**Azure Table Storage**](search-howto-indexing-azure-tables.md) |Depolama hesabı ve bir tablo adı gereklidir. İsteğe bağlı olarak, tabloların bir alt kümesini almak için sorgu belirtebilirsiniz. Daha fazla bilgi için bkz. [Tablo Depolama Dizini Oluşturma](search-howto-indexing-azure-tables.md). |
+| [**Azure Tablo depolama**](search-howto-indexing-azure-tables.md) |Depolama hesabı ve bir tablo adı gereklidir. İsteğe bağlı olarak, tabloların bir alt kümesini almak için sorgu belirtebilirsiniz. Daha fazla bilgi için bkz. [Tablo Depolama Dizini Oluşturma](search-howto-indexing-azure-tables.md). |
 
 ## <a name="wizard-output"></a>Sihirbaz çıkışı
 
 Sihirbaz, arka planda aşağıdaki nesneleri oluşturur, yapılandırır ve çağırır. Sihirbaz çalıştıktan sonra, çıktısını Portal sayfalarında bulabilirsiniz. Hizmetinizin Genel Bakış sayfasında Dizin, Dizin oluşturucular, veri kaynakları ve becerileri listeleri vardır. Dizin tanımları portalda tam JSON olarak görüntülenebilir. Diğer tanımlarda, belirli nesneleri almak için [REST API](/rest/api/searchservice/) kullanabilirsiniz.
 
-| Nesne | Açıklama | 
+| Nesne | Description | 
 |--------|-------------|
 | [Veri Kaynağı](/rest/api/searchservice/create-data-source)  | Bağlantı bilgilerini, kimlik bilgileri de dahil olmak üzere kaynak verilere devam ettirir. Veri kaynağı nesnesi yalnızca dizin oluşturucular ile kullanılır. | 
 | [Dizin oluşturma](/rest/api/searchservice/create-index) | Tam metin araması ve diğer sorgular için kullanılan fiziksel veri yapısı. | 
@@ -105,23 +105,23 @@ Sihirbaz, giriş veri kaynağından elde edilen belgelerle doldurulacak tamamlan
 
 1. Veri türü gelen veriler için uygun mu? Azure Bilişsel Arama, [varlık veri modeli (EDM) veri türlerini](/rest/api/searchservice/supported-data-types)destekler. Azure SQL verileri için eşdeğer değerleri oluşturan [eşleme grafiği](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md#TypeMapping) vardır. Daha fazla arka plan için bkz. [alan eşlemeleri ve dönüştürmeleri](search-indexer-field-mappings.md).
 
-1. *Anahtar*olarak kullanılabilecek bir alanınız var mı? Bu alan Edm. String olmalı ve bir belgeyi benzersiz şekilde tanımlamalıdır. İlişkisel veriler için bir birincil anahtarla eşlenmiş olabilir. Blob 'lar için olabilir `metadata-storage-path` . Alan değerleri boşluk veya tire içeriyorsa, bu karakterlerin doğrulama denetimini bastırmak için, **Dizin Oluşturucu oluştur** adımında, **Gelişmiş Seçenekler**altında **Base-64 kodlama anahtarı** seçeneğini ayarlamanız gerekir.
+1. *Anahtar* olarak kullanılabilecek bir alanınız var mı? Bu alan Edm. String olmalı ve bir belgeyi benzersiz şekilde tanımlamalıdır. İlişkisel veriler için bir birincil anahtarla eşlenmiş olabilir. Blob 'lar için olabilir `metadata-storage-path` . Alan değerleri boşluk veya tire içeriyorsa, bu karakterlerin doğrulama denetimini bastırmak için, **Dizin Oluşturucu oluştur** adımında, **Gelişmiş Seçenekler** altında **Base-64 kodlama anahtarı** seçeneğini ayarlamanız gerekir.
 
 1. Bu alanın bir dizinde nasıl kullanıldığını belirleme özniteliklerini belirleyin. 
 
    Öznitelikteki alanların fiziksel ifadesini belirlerken, bu adımla zamandan yararlanın. Öznitelikleri daha sonra, programlama yoluyla da değiştirmek istiyorsanız, neredeyse her zaman dizini bırakıp yeniden oluşturmanız gerekir. **Aranabilir** ve **alınabilir** gibi temel özniteliklerin [depolama alanı üzerinde daha okunaklı bir etkisi](search-what-is-an-index.md#index-size)vardır. Filtreleri etkinleştirme ve öneri araçları kullanma depolama gereksinimlerini artırma. 
    
-   + **Aranabilir** tam metin aramasını sunar. Serbest form sorgularında veya sorgu ifadelerinde kullanılan her alan bu özniteliğe sahip olmalıdır. Ters çevrilen dizinler, **aranabilir**olarak işaretlediğiniz her alan için oluşturulur.
+   + **Aranabilir** tam metin aramasını sunar. Serbest form sorgularında veya sorgu ifadelerinde kullanılan her alan bu özniteliğe sahip olmalıdır. Ters çevrilen dizinler, **aranabilir** olarak işaretlediğiniz her alan için oluşturulur.
 
    + **Alınabilir** , arama sonuçlarında alanı geri döndürür. Arama sonuçlarına içerik sağlayan her alan bu özniteliğe sahip olmalıdır. Bu alanın ayarlanması, etkin dizin boyutunu etkilemez.
 
    + **Filtrelenebilir** , alana filtre ifadelerinde başvurulmak için izin verir. **$Filter** ifadesinde kullanılan her alan bu özniteliğe sahip olmalıdır. Filtre ifadeleri tam eşleşmeler içindir. Metin dizeleri değişmeden kaldığı için, tam içeriğe uyum sağlamak için ek depolama alanı gereklidir.
 
-   + Çok **yönlü tablo** , çok yönlü gezinme için alanı sunar. Yalnızca **Filterable** olarak işaretlenen alanlar, çok **yönlü tablo**olarak işaretlenebilir.
+   + Çok **yönlü tablo** , çok yönlü gezinme için alanı sunar. Yalnızca **Filterable** olarak işaretlenen alanlar, çok **yönlü tablo** olarak işaretlenebilir.
 
    + **Sıralanabilir** , alanın bir sıralama içinde kullanılmasına izin verir. **$OrderBy** ifadesinde kullanılan her alan bu özniteliğe sahip olmalıdır.
 
-1. [Sözlü Analize](search-lucene-query-architecture.md#stage-2-lexical-analysis)ihtiyacınız var mı? **Aranabilir**olan Edm. String alanları için, dil ile Gelişmiş dizin oluşturma ve sorgulama Istiyorsanız bir **çözümleyici** ayarlayabilirsiniz. 
+1. [Sözlü Analize](search-lucene-query-architecture.md#stage-2-lexical-analysis)ihtiyacınız var mı? **Aranabilir** olan Edm. String alanları için, dil ile Gelişmiş dizin oluşturma ve sorgulama Istiyorsanız bir **çözümleyici** ayarlayabilirsiniz. 
 
    Varsayılan değer *Standart Lucene* ' dir, ancak düzensiz ad ve fiil formlarını çözme gibi gelişmiş sözcük Işleme için Microsoft 'un çözümleyicisini kullanmak Istiyorsanız *Microsoft English* ' i seçebilirsiniz. Portalda yalnızca dil Çözümleyicileri belirtilebilir. Özel bir çözümleyici veya anahtar sözcük, model, vb. gibi dil olmayan bir çözümleyici kullanmak programlı olarak yapılmalıdır. Çözümleyiciler hakkında daha fazla bilgi için bkz. [dil Çözümleyicileri ekleme](search-language-support.md).
 

@@ -10,14 +10,14 @@ ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 10/16/2020
+ms.date: 03/16/2021
 ms.author: radeltch
-ms.openlocfilehash: 817a17de240ee10966a6cd20d758def7c2ab9c87
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 42a4c4a41f6c8bdf9d4a8e78f634893722c8f389
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101669677"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104576415"
 ---
 # <a name="high-availability-of-sap-hana-on-azure-vms-on-suse-linux-enterprise-server"></a>SUSE Linux Enterprise Server üzerinde Azure VM 'lerinde SAP HANA yüksek kullanılabilirliği
 
@@ -592,6 +592,115 @@ Küme durumunun tamam olduğundan ve tüm kaynakların başlatıldığından emi
 #     rsc_ip_HN1_HDB03   (ocf::heartbeat:IPaddr2):       Started hn1-db-0
 #     rsc_nc_HN1_HDB03   (ocf::heartbeat:azure-lb):      Started hn1-db-0
 </code></pre>
+
+## <a name="configure-hana-activeread-enabled-system-replication-in-pacemaker-cluster"></a>Pacemaker kümesinde HANA etkin/Read özellikli sistem çoğaltmasını yapılandırma
+
+SAP HANA 2,0 ' den başlayarak, SAP HANA sistem çoğaltması için etkin/okuma özellikli kuruluma izin verir; burada SAP HANA sistem çoğaltmasının ikincil sistemleri, okuma açısından yoğun iş yükleri için etkin bir şekilde kullanılabilir. Bir küme içinde bu tür kurulumu desteklemek için, istemcilerin ikincil okuma özellikli SAP HANA veritabanına erişmesini sağlayan ikinci bir sanal IP adresi gereklidir. Yük devralındıktan sonra ikincil çoğaltma sitesine hala erişilebildiğinden emin olmak için, kümenin sanal IP adresini SAPHana kaynağının ikincili ile taşıması gerekir.
+
+Bu bölümde, ikinci sanal IP 'ye sahip SUSE yüksek kullanılabilirlik kümesinde HANA etkin/Read özellikli sistem çoğaltmasını yönetmek için gereken ek adımlar açıklanmaktadır.    
+Devam etmeden önce, belgelerin yukarıdaki kesimlerinde anlatıldığı gibi SAP HANA veritabanını yöneten SUSE yüksek kullanılabilirlik kümesini tam olarak yapılandırdığınızdan emin olun.  
+
+![Okuma etkin ikincil ile yüksek kullanılabilirlik SAP HANA](./media/sap-hana-high-availability/ha-hana-read-enabled-secondary.png)
+
+### <a name="additional-setup-in-azure-load-balancer-for-activeread-enabled-setup"></a>Etkin/Read özellikli kurulum için Azure Yük dengeleyicisinde ek kurulum
+
+İkinci sanal IP sağlamaya yönelik ek adımlara devam etmek için Azure Load Balancer [El Ile dağıtım](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-high-availability#manual-deployment) bölümünde açıklanan şekilde yapılandırdığınızdan emin olun.
+
+1. **Standart** yük dengeleyici için, önceki bölümde oluşturduğunuz yük dengeleyicide aşağıdaki ek adımları izleyin.
+
+   a. İkinci bir ön uç IP havuzu oluşturun: 
+
+   - Yük dengeleyiciyi açın, **ön uç IP havuzu**' nu seçin ve **Ekle**' yi seçin.
+   - İkinci ön uç IP havuzunun adını girin (örneğin, **Hana-secondaryıp**).
+   - **Atamayı** **statik** olarak ayarlayın ve IP adresini (örneğin, **10.0.0.14**) girin.
+   - **Tamam**’ı seçin.
+   - Yeni ön uç IP havuzu oluşturulduktan sonra ön uç IP adresini aklınızda edin.
+
+   b. Sonra, bir sistem durumu araştırması oluşturun:
+
+   - Yük dengeleyiciyi açın, **sistem durumu araştırmaları**' nı seçin ve **Ekle**' yi seçin.
+   - Yeni sistem durumu araştırmasının adını girin (örneğin, **Hana-secondaryhp**).
+   - Protokol ve bağlantı noktası **62603** olarak **TCP** ' yi seçin. **Aralık** değerini 5 olarak ve **sağlıksız eşik** değerini 2 olarak ayarlayın.
+   - **Tamam**’ı seçin.
+
+   c. Sonra, Yük Dengeleme kurallarını oluşturun:
+
+   - Yük dengeleyiciyi açın, **Yük Dengeleme kuralları**' nı seçin ve **Ekle**' yi seçin.
+   - Yeni yük dengeleyici kuralının adını girin (örneğin, **Hana-secondarylb**).
+   - Ön uç IP adresini, arka uç havuzunu ve daha önce oluşturduğunuz sistem durumu araştırmasını (örneğin, **Hana-Secondaryıp**, **Hana-arka uç** ve **Hana-secondaryhp**) seçin.
+   - **Ha bağlantı noktalarını** seçin.
+   - **Boşta kalma zaman aşımını** 30 dakikaya yükseltin.
+   - **Kayan IP**'yi etkinleştirdiğinizden emin olun.
+   - **Tamam**’ı seçin.
+
+### <a name="configure-hana-activeread-enabled-system-replication"></a>HANA etkin/Read özellikli sistem çoğaltmasını yapılandırma
+
+HANA sistem çoğaltmasını yapılandırma adımları [SAP HANA 2,0 sistem çoğaltmasını yapılandırma](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-high-availability#configure-sap-hana-20-system-replication) bölümünde açıklanmaktadır. Okuma etkin ikincil senaryo dağıtıyorsanız, ikinci düğümde sistem çoğaltmasını yapılandırırken, **hanasıd** adm olarak aşağıdaki komutu yürütün:
+
+```
+sapcontrol -nr 03 -function StopWait 600 10 
+
+hdbnsutil -sr_register --remoteHost=hn1-db-0 --remoteInstance=03 --replicationMode=sync --name=SITE2 --operationMode=logreplay_readaccess 
+```
+
+### <a name="adding-a-secondary-virtual-ip-address-resource-for-an-activeread-enabled-setup"></a>Etkin/Read özellikli bir kurulum için ikincil sanal IP adresi kaynağı ekleme
+
+İkinci sanal IP ve uygun birlikte bulundurma kısıtlaması aşağıdaki komutlarla yapılandırılabilir:
+
+```
+crm configure property maintenance-mode=true
+
+crm configure primitive rsc_secip_HN1_HDB03 ocf:heartbeat:IPaddr2 \
+ meta target-role="Started" \
+ operations \$id="rsc_secip_HN1_HDB03-operations" \
+ op monitor interval="10s" timeout="20s" \
+ params ip="10.0.0.14"
+
+crm configure primitive rsc_secnc_HN1_HDB03 azure-lb port=62603 \
+ meta resource-stickiness=0
+
+crm configure group g_secip_HN1_HDB03 rsc_secip_HN1_HDB03 rsc_secnc_HN1_HDB03
+
+crm configure colocation col_saphana_secip_HN1_HDB03 4000: g_secip_HN1_HDB03:Started \
+ msl_SAPHana_HN1_HDB03:Slave 
+
+crm configure property maintenance-mode=false
+```
+Küme durumunun tamam olduğundan ve tüm kaynakların başlatıldığından emin olun. İkinci sanal IP, SAPHana ikincil kaynağıyla birlikte ikincil sitede çalıştırılır.
+
+```
+sudo crm_mon -r
+
+# Online: [ hn1-db-0 hn1-db-1 ]
+#
+# Full list of resources:
+#
+# stonith-sbd     (stonith:external/sbd): Started hn1-db-0
+# Clone Set: cln_SAPHanaTopology_HN1_HDB03 [rsc_SAPHanaTopology_HN1_HDB03]
+#     Started: [ hn1-db-0 hn1-db-1 ]
+# Master/Slave Set: msl_SAPHana_HN1_HDB03 [rsc_SAPHana_HN1_HDB03]
+#     Masters: [ hn1-db-0 ]
+#     Slaves: [ hn1-db-1 ]
+# Resource Group: g_ip_HN1_HDB03
+#     rsc_ip_HN1_HDB03   (ocf::heartbeat:IPaddr2):       Started hn1-db-0
+#     rsc_nc_HN1_HDB03   (ocf::heartbeat:azure-lb):      Started hn1-db-0
+# Resource Group: g_secip_HN1_HDB03:
+#     rsc_secip_HN1_HDB03       (ocf::heartbeat:IPaddr2):        Started hn1-db-1
+#     rsc_secnc_HN1_HDB03       (ocf::heartbeat:azure-lb):       Started hn1-db-1
+
+```
+
+Sonraki bölümde, yürütülmesi için tipik yük devretme testi kümesini bulabilirsiniz.
+
+İkinci sanal IP davranışının farkında olun, Read özellikli ikincil ile yapılandırılmış bir HANA kümesini test ederken:
+
+1. **SAPHana_HN1_HDB03** küme kaynağını **HN1-DB-1**' e geçirdiğinizde ikinci sanal IP, **HN1-DB-0** diğer sunucusuna taşınır. AUTOMATED_REGISTER = "false" ve HANA sistem çoğaltması otomatik olarak kaydettirilmemişse, sunucu kullanılabilir olduğunda ve Küme Hizmetleri çevrimiçi olduğu için ikinci sanal IP **hn1-DB-0** üzerinde çalışır.  
+
+2. Sunucu kilitlenmesinin test edilirken ikinci sanal IP kaynakları (**rsc_secip_HN1_HDB03**) ve Azure yük dengeleyici bağlantı noktası kaynağı (**rsc_secnc_HN1_HDB03**) birincil sanal IP kaynaklarıyla birlikte birincil sunucuda çalıştırılır. İkincil sunucu devre dışı olsa da, okuma etkin HANA veritabanına bağlı olan uygulamalar, birincil HANA veritabanına bağlanır. İkincil sunucu kullanılamadığında, okuma etkin HANA veritabanına bağlı uygulamaların erişilemez olmasını istemediğiniz için davranış beklenmektedir.
+  
+3. İkincil sunucu kullanılabilir olduğunda ve Küme Hizmetleri çevrimiçi olduğunda, HANA sistem çoğaltması ikincil olarak kaydedilmemesine rağmen ikinci sanal IP ve bağlantı noktası kaynakları otomatik olarak ikincil sunucuya taşınır. Bu sunucuda küme hizmetleri 'ni başlatmak için ikincil HANA veritabanını okuma etkin olarak kaydettiğinizden emin olmanız gerekir. HANA örnek kümesi kaynağını, parametre AUTOMATED_REGISTER = true olarak ayarlayarak ikincili otomatik olarak kaydedecek şekilde yapılandırabilirsiniz.       
+
+4. Yük devretme ve geri dönüş sırasında, HANA veritabanına bağlanmak için ikinci sanal IP 'yi kullanan uygulamalar için mevcut bağlantılar kesintiye uğramış olabilir.  
 
 ## <a name="test-the-cluster-setup"></a>Küme kurulumunu test etme
 

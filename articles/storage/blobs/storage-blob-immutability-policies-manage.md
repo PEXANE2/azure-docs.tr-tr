@@ -9,10 +9,10 @@ ms.date: 11/26/2019
 ms.author: tamram
 ms.subservice: blobs
 ms.openlocfilehash: a09dbd7d778a4f7ea2a9aac9ca07b9e6d06bc1ae
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "84463646"
 ---
 # <a name="set-and-manage-immutability-policies-for-blob-storage"></a>BLOB depolama için dengesde kullanılabilirlik ilkelerini ayarlama ve yönetme
@@ -27,7 +27,7 @@ Bu makalede, Azure portal, PowerShell veya Azure CLı kullanarak blob depolamada
 
 1. Sabit durumda tutulması gereken blobların depolanması için yeni bir kapsayıcı oluşturun veya mevcut bir kapsayıcıyı seçin. Kapsayıcı, genel amaçlı bir v2 veya blob depolama hesabında olmalıdır.
 
-2. Kapsayıcı ayarları ' nda **erişim ilkesi** ' ni seçin. Ardından, **sabit blob depolaması**altında **ilke Ekle** ' yi seçin.
+2. Kapsayıcı ayarları ' nda **erişim ilkesi** ' ni seçin. Ardından, **sabit blob depolaması** altında **ilke Ekle** ' yi seçin.
 
     ![Portalda kapsayıcı ayarları](media/storage-blob-immutability-policies-manage/portal-image-1.png)
 
@@ -188,4 +188,4 @@ Set-AzRmStorageContainerImmutabilityPolicy -ResourceGroupName $resourceGroup `
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Sabit depolamayla iş açısından kritik blob verilerini depolayın](storage-blob-immutable-storage.md)
+[İş açısından kritik blob verilerini sabit depolama alanıyla depolama](storage-blob-immutable-storage.md)

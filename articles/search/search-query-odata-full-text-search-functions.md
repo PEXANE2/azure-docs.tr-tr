@@ -20,10 +20,10 @@ translation.priority.mt:
 - zh-cn
 - zh-tw
 ms.openlocfilehash: 78f9e4d8fa80fdf74bdb5cd79f4489d12696fcc2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88935798"
 ---
 # <a name="odata-full-text-search-functions-in-azure-cognitive-search---searchismatch-and-searchismatchscoring"></a>Azure Bilişsel Arama OData tam metin arama işlevleri- `search.ismatch` ve `search.ismatchscoring`
@@ -33,7 +33,7 @@ Azure Bilişsel Arama, ve işlevleri aracılığıyla [OData filtre ifadeleri](q
 > [!NOTE]
 > `search.ismatch`Ve `search.ismatchscoring` Işlevleri yalnızca [Arama API 'sindeki](/rest/api/searchservice/search-documents)filtrelerde desteklenir. Bunlar, [öneri](/rest/api/searchservice/suggestions) veya [otomatik tamamlama](/rest/api/searchservice/autocomplete) API 'lerinde desteklenmez.
 
-## <a name="syntax"></a>Sözdizimi
+## <a name="syntax"></a>Syntax
 
 Aşağıdaki EBNF ([genişletilmiş Backus-Naur formu](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) `search.ismatch` ve işlevlerinin dilbilgisini tanımlar `search.ismatchscoring` :
 
@@ -69,10 +69,10 @@ Etkileşimli bir sözdizimi diyagramı da kullanılabilir:
 
 Parametreler aşağıdaki tabloda tanımlanmıştır:
 
-| Parametre adı | Tür | Açıklama |
+| Parametre adı | Tür | Description |
 | --- | --- | --- |
 | `search` | `Edm.String` | Arama sorgusu ( [basit](query-simple-syntax.md) veya [tam](query-lucene-syntax.md) Lucene sorgu sözdiziminde). |
-| `searchFields` | `Edm.String` | Arama yapılacak aranabilir alanların virgülle ayrılmış listesi; dizindeki tüm aranabilir alanları varsayılan olarak belirler. [fielded search](query-lucene-syntax.md#bkmk_fields) `search` Parametresinde, alan araması kullanılırken, Lucene sorgusunda alan belirticileri bu parametrede belirtilen tüm alanları geçersiz kılar. |
+| `searchFields` | `Edm.String` | Arama yapılacak aranabilir alanların virgülle ayrılmış listesi; dizindeki tüm aranabilir alanları varsayılan olarak belirler. [](query-lucene-syntax.md#bkmk_fields) `search` Parametresinde, alan araması kullanılırken, Lucene sorgusunda alan belirticileri bu parametrede belirtilen tüm alanları geçersiz kılar. |
 | `queryType` | `Edm.String` | `'simple'` veya `'full'` ; Varsayılan olarak olur `'simple'` . Parametrede hangi sorgu dilinin kullanıldığını belirtir `search` . |
 | `searchMode` | `Edm.String` | `'any'` ya `'all'` da varsayılan olarak olur `'any'` . `search`Belgeyi eşleşme olarak saymak için parametresindeki arama terimlerinin herhangi birinin veya tümünün eşleşmesi gerekip gerekmediğini gösterir. Parametresindeki [Lucene Boolean işleçleri](query-lucene-syntax.md#bkmk_boolean) kullanıldığında `search` , bu parametre üzerinden öncelikli olur. |
 

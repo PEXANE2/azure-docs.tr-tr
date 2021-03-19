@@ -6,12 +6,12 @@ ms.author: bahusse
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 2/11/2021
-ms.openlocfilehash: 263d27f4236ba43f6514f6a084e58cfe0a13a9d2
-ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
+ms.openlocfilehash: 0197b533f80ccb1524de2bbb9fc5c642f2626bbc
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/12/2021
-ms.locfileid: "103199523"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104655266"
 ---
 # <a name="connectivity-architecture-in-azure-database-for-mysql"></a>MySQL için Azure veritabanı 'nda bağlantı mimarisi
 Bu makalede, MySQL için Azure veritabanı bağlantı mimarisinin yanı sıra trafiğin Azure 'daki ve dışındaki istemcilerden gelen MySQL için Azure veritabanı örneğine nasıl yönlendirildiği açıklanmaktadır.
@@ -84,7 +84,7 @@ Aşağıdaki tabloda, tüm veri bölgeleri için MySQL için Azure veritabanı a
 | Orta Batı ABD | 13.78.145.25     | | |
 | West Europe |13.69.105.208, 104.40.169.187 | 40.68.37.158 | 191.237.232.75 |
 | Batı ABD |13.86.216.212, 13.86.217.212 |104.42.238.205  | 23.99.34.75|
-| Batı ABD 2 | 13.66.226.202  | | |
+| Batı ABD 2 | 13.66.136.192 | 13.66.226.202  | | 
 ||||
 
 ## <a name="connection-redirection"></a>Bağlantı yeniden yönlendirme

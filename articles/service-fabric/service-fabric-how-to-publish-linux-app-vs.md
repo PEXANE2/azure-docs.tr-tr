@@ -6,10 +6,10 @@ ms.topic: troubleshooting
 ms.date: 5/20/2019
 ms.author: pepogors
 ms.openlocfilehash: c30eedb6782e4172d677f16e27441f28c78cdd89
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "75614358"
 ---
 # <a name="use-visual-studio-to-create-and-publish-net-core-applications-targeting-a-remote-linux-service-fabric-cluster"></a>Uzak bir Linux Service Fabric kümesini hedefleyen .Net Core uygulamalar oluşturmak ve yayımlamak için Visual Studio 'Yu kullanma
@@ -21,19 +21,19 @@ Visual Studio Araçları ile bir Linux Service Fabric kümesini hedefleyen Servi
 
 ## <a name="create-a-service-fabric-application-targeting-net-core"></a>Service Fabric uygulama hedefleme .Net Core oluşturma
 1. Visual Studio'yu **yönetici** olarak başlatın.
-2. **File->New->Project**ile bir proje oluşturun.
+2. **File->New->Project** ile bir proje oluşturun.
 3. **Yeni proje** Iletişim kutusunda **Cloud-> Service Fabric uygulaması**' nı seçin.
 ![oluşturma-uygulama]
 4. Uygulamayı adlandırın ve **Tamam**' a tıklayın.
-5. **Yeni Service Fabric hizmeti** sayfasında, **.NET Core bölümünde**oluşturmak istediğiniz hizmet türünü seçin.
+5. **Yeni Service Fabric hizmeti** sayfasında, **.NET Core bölümünde** oluşturmak istediğiniz hizmet türünü seçin.
 ![hizmet oluştur]
 
 ## <a name="deploy-to-a-remote-linux-cluster"></a>Uzak bir Linux kümesine dağıtma
 1. Çözüm Gezgini 'nde uygulamaya sağ tıklayın ve **Oluştur**' u seçin.
 ![yapı-uygulama]
-2. Uygulama için derleme işlemi tamamlandıktan sonra, hizmete sağ tıklayın ve **csproj dosyasını**Düzenle ' yi seçin.
+2. Uygulama için derleme işlemi tamamlandıktan sonra, hizmete sağ tıklayın ve **csproj dosyasını** Düzenle ' yi seçin.
 ![Düzenle-csproj]
-3. Hizmet bir **aktör proje türü**Ise, UpdateServiceFabricManifestEnabled özelliğini true değerinden **false** olarak düzenleyin. Uygulamanızda bir aktör hizmeti yoksa 4. adıma atlayın.
+3. Hizmet bir **aktör proje türü** Ise, UpdateServiceFabricManifestEnabled özelliğini true değerinden **false** olarak düzenleyin. Uygulamanızda bir aktör hizmeti yoksa 4. adıma atlayın.
 ```xml
     <UpdateServiceFabricManifestEnabled>False</UpdateServiceFabricManifestEnabled>
 ```

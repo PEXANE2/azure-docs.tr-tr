@@ -4,10 +4,10 @@ description: Mikro hizmet uygulamalarını dağıtmak için Service Fabric ve ka
 ms.topic: conceptual
 ms.date: 7/9/2020
 ms.openlocfilehash: cd0ec7dd2247fdd791df362fa34542178c17df4d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87091666"
 ---
 # <a name="service-fabric-and-containers"></a>Service Fabric ve kapsayıcılar
@@ -40,7 +40,7 @@ Sanal makinelerle karşılaştırıldığında kapsayıcılar aşağıdaki avant
 * **Küçük**: kapsayıcılar, verimliliği artırmak için tek bir depolama alanı ve katman sürümü ve güncelleştirme kullanır.
 * **Hızlı**: kapsayıcıların bir işletim sisteminin tamamını önyüklemesine gerek yoktur, bu sayede genellikle Saniyeler içinde çok daha hızlı başlayabilirler.
 * **Taşınabilirlik**: kapsayıcılı bir uygulama görüntüsü bulutta, şirket içinde, sanal makinelerde veya doğrudan fiziksel makinelerde çalışmak üzere olabilir.
-* **Kaynak**İdaresi: bir kapsayıcı, ana bilgisayarında tüketebileceği fiziksel kaynakları sınırlayabilir.
+* **Kaynak** İdaresi: bir kapsayıcı, ana bilgisayarında tüketebileceği fiziksel kaynakları sınırlayabilir.
 
 ### <a name="container-types-and-supported-environments"></a>Kapsayıcı türleri ve desteklenen ortamlar
 

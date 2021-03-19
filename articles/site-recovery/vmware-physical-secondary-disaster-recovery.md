@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: raynew
 ms.openlocfilehash: 71d230c9fea25edfbf0ca4ea40f15b69779ad060
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "84711910"
 ---
 # <a name="set-up-disaster-recovery-of-on-premises-vmware-virtual-machines-or-physical-servers-to-a-secondary-site"></a>Şirket içi VMware sanal makinelerinde veya fiziksel sunucularda ikincil siteye olağanüstü durum kurtarmayı ayarlama
@@ -198,7 +198,7 @@ Güncelleştirmeleri şu şekilde yükler:
   Güncelleştirme, en son değişikliklerle yeni bir GA yükleyicidir olduğundan, güncelleştirmenin **InMage_Scout_vContinuum_MT_8.0.1.0_Windows_GA_10Oct2017_release.exe** hazırlanan ana hedefe uygulanması gerekmez.
   6. **Linux ana hedef sunucusu**: Birleşik aracıyı güncelleştirmek için **UA_RHEL6-64_8.0.4.0_GA_Update_4_9035261_26Sep16. tar. gz** dosyasını ana hedef sunucuya kopyalayın ve ayıklayın. Ayıklanan klasörde, **/install**' i çalıştırın.
   7. **Windows kaynak sunucusu**: Birleşik aracıyı güncelleştirmek için **UA_Windows_8.0.5.0_GA_Update_5_11525802_20Apr17.exe** kaynak sunucuya kopyalayın. Dosyayı çalıştırmak için çift tıklayın. 
-  Güncelleştirme 5 aracısını güncelleştirme 4 ' e zaten güncelleştirilmiş veya kaynak Aracısı en son temel yükleyici **InMage_UA_8.0.1.0_Windows_GA_28Sep2017_release.exe**yüklüyse kaynak sunucuya yüklemeniz gerekmez.
+  Güncelleştirme 5 aracısını güncelleştirme 4 ' e zaten güncelleştirilmiş veya kaynak Aracısı en son temel yükleyici **InMage_UA_8.0.1.0_Windows_GA_28Sep2017_release.exe** yüklüyse kaynak sunucuya yüklemeniz gerekmez.
   8. **Linux kaynak sunucusu**: Birleşik aracıyı güncelleştirmek için, Birleşik aracı dosyasının Ilgili sürümünü Linux sunucusuna kopyalayın ve ayıklayın. Ayıklanan klasörde, **/install**' i çalıştırın.  Örnek: RHEL 6,7 64-bit sunucu Için **UA_RHEL6-64_8.0.4.0_GA_Update_4_9035261_26Sep16. tar. gz** dosyasını sunucuya kopyalayın ve ayıklayın. Ayıklanan klasörde, **/install**' i çalıştırın.
 
 
@@ -236,7 +236,7 @@ Scout güncelleştirme 5, toplu bir güncelleştirmedir. Güncelleştirme 1 ' de
 > [!NOTE]
 > * P2V küme düzeltmeleri yalnızca Site Recovery Scout güncelleştirme 5 ile yeni korunan fiziksel MSCS kümeleri için geçerlidir. Daha eski güncelleştirmelerle korunan P2V MSCS kümelerine küme düzeltmeleri yüklemek için [Site Recovery Scout sürüm notlarının](https://aka.ms/asr-scout-release-notes)12. bölümünde bahsedilen yükseltme adımlarını izleyin.
 > * yeniden koruma sırasında, her bir küme düğümünün başlangıçta korunduğu sırada aynı disk kümesi etkindir, ardından fiziksel bir MSCS kümesinin yeniden korunması yalnızca var olan hedef diskleri yeniden kullanabilir. Aksi takdirde, yeniden koruma sırasında yeniden kullanmak üzere hedef tarafı diskleri doğru veri deposu yoluna taşımak için [Site Recovery Scout sürüm notlarındaki](https://aka.ms/asr-scout-release-notes)12. bölümde el ile gerçekleştirilen adımları kullanın. Yükseltme adımlarını izleyerek MSCS kümesini P2V modunda yeniden koruyorduğunuzda, hedef ESXi sunucusunda yeni bir disk oluşturur. Eski diskleri veri deposundan el ile silmeniz gerekir.
-> * Bir kaynak SLES11 veya SLES11 (herhangi bir hizmet paketi ile) sunucusu düzgün şekilde yeniden başlatıldığında, yeniden eşitleme için **kök** disk çoğaltma çiftlerini el ile işaretleyin. CX arabiriminde bildirim yok.Kök diski yeniden eşitleme için işaretlememezseniz, veri bütünlüğü sorunları fark edebilirsiniz.
+> * Bir kaynak SLES11 veya SLES11 (herhangi bir hizmet paketi ile) sunucusu düzgün şekilde yeniden başlatıldığında, yeniden eşitleme için **kök** disk çoğaltma çiftlerini el ile işaretleyin. CX arabiriminde bildirim yok. Kök diski yeniden eşitleme için işaretlememezseniz, veri bütünlüğü sorunları fark edebilirsiniz.
 
 
 ### <a name="azure-site-recovery-scout-801-update-4"></a>Azure Site Recovery Scout 8.0.1 güncelleştirme 4
@@ -252,7 +252,7 @@ Scout Update 4, toplu bir güncelleştirmedir. Güncelleştirme 1 ' den güncell
   * CentOS 6,8
 
 > [!NOTE]
-> RHEL/CentOS 7 64 bit  **InMage_UA_8.0.1.0_RHEL7-64_GA_06Oct2016_release. tar. gz** , temel Scout GA paketi **InMage_Scout_Standard_8.0.1 GA.zip**paketlenmiştir. Kasa oluşturma bölümünde açıklandığı şekilde portaldan Scout GA paketini indirin.
+> RHEL/CentOS 7 64 bit  **InMage_UA_8.0.1.0_RHEL7-64_GA_06Oct2016_release. tar. gz** , temel Scout GA paketi **InMage_Scout_Standard_8.0.1 GA.zip** paketlenmiştir. Kasa oluşturma bölümünde açıklandığı şekilde portaldan Scout GA paketini indirin.
 
 #### <a name="bug-fixes-and-enhancements"></a>Hata düzeltmeleri ve geliştirmeleri
 

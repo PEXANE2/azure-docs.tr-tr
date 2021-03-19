@@ -8,12 +8,12 @@ ms.service: load-balancer
 ms.topic: how-to
 ms.date: 01/28/2021
 ms.author: allensu
-ms.openlocfilehash: ac21e1f00dc2a5580b90a1a5eb43da05288e800a
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.openlocfilehash: c49a721a4db758965c9cf8d71f5d73b5754b6088
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103489432"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104654484"
 ---
 # <a name="backend-pool-management"></a>Arka uç havuzu yönetimi
 Arka uç havuzu, yük dengeleyicinin kritik bir bileşenidir. Arka uç havuzu, belirli bir yük dengeleme kuralı için trafik sunacak kaynak grubunu tanımlar.
@@ -156,99 +156,6 @@ az vm create \
 --generate-ssh-keys
 ```
 
-### <a name="rest-api"></a>REST API
-Arka uç havuzunu oluşturma:
-
-```
-PUT https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.Network/loadBalancers/{load-balancer-name}/backendAddressPools/{backend-pool-name}?api-version=2020-05-01
-```
-
-Ağ arabirimi oluşturun ve ağ arabiriminin IP yapılandırması özelliği aracılığıyla oluşturduğunuz arka uç havuzuna ekleyin:
-
-```
-PUT https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.Network/networkInterfaces/{nic-name}?api-version=2020-05-01
-```
-
-JSON istek gövdesi:
-```json
-{
-  "properties": {
-    "enableAcceleratedNetworking": true,
-    "ipConfigurations": [
-      {
-        "name": "ipconfig1",
-        "properties": {
-          "subnet": {
-            "id": "/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.Network/virtualNetworks/{vnet-name}/subnets/{subnet-name}"
-          },
-          "loadBalancerBackendAddressPools": [
-            {
-              "id": "/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.Network/loadBalancers/{load-balancer-name}/backendAddressPools/{backend-pool-name}"
-            }
-          ]
-        }
-      }
-    ]
-  },
-  "location": "eastus"
-}
-```
-
-Bu ağ arabiriminin arka uç havuzuna eklendiğini onaylamak için yük dengeleyicinin arka uç havuzu bilgilerini alın:
-
-```
-GET https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group-name/providers/Microsoft.Network/loadBalancers/{load-balancer-name/backendAddressPools/{backend-pool-name}?api-version=2020-05-01
-```
-
-Bir VM oluşturun ve arka uç havuzuna başvuran NIC 'yi iliştirin:
-
-```
-PUT https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.Compute/virtualMachines/{vm-name}?api-version=2019-12-01
-```
-
-JSON istek gövdesi:
-```JSON
-{
-  "location": "easttus",
-  "properties": {
-    "hardwareProfile": {
-      "vmSize": "Standard_D1_v2"
-    },
-    "storageProfile": {
-      "imageReference": {
-        "sku": "2016-Datacenter",
-        "publisher": "MicrosoftWindowsServer",
-        "version": "latest",
-        "offer": "WindowsServer"
-      },
-      "osDisk": {
-        "caching": "ReadWrite",
-        "managedDisk": {
-          "storageAccountType": "Standard_LRS"
-        },
-        "name": "myVMosdisk",
-        "createOption": "FromImage"
-      }
-    },
-    "networkProfile": {
-      "networkInterfaces": [
-        {
-          "id": "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/networkInterfaces/{nic-name}",
-          "properties": {
-            "primary": true
-          }
-        }
-      ]
-    },
-    "osProfile": {
-      "adminUsername": "{your-username}",
-      "computerName": "myVM",
-      "adminPassword": "{your-password}"
-    }
-  }
-}
-```
-
 ### <a name="resource-manager-template"></a>Resource Manager Şablonu
 
 Yük dengeleyici ve sanal makineler dağıtmak ve ağ arabirimi aracılığıyla sanal makineleri arka uç havuzuna eklemek için bu [hızlı başlangıç Kaynak Yöneticisi şablonunu](https://github.com/Azure/azure-quickstart-templates/tree/master/101-load-balancer-standard-create/) izleyin.
@@ -260,17 +167,6 @@ Yük dengeleyici ve sanal makineler dağıtmak ve sanal makineleri IP adresi ara
 Önceden doldurulmuş arka uç havuzlarıyla birlikte IP ve sanal ağ kullanın.
 
 Tüm arka uç havuzu yönetimi, aşağıdaki örneklerde vurgulanan şekilde doğrudan arka uç havuzu nesnesi üzerinde yapılır.
-
-### <a name="limitations"></a>Sınırlamalar
-IP adresi tarafından yapılandırılan bir arka uç havuzu aşağıdaki sınırlamalara sahiptir:
-  * Yalnızca standart yük dengeleyiciler için kullanılabilir
-  * Arka uç havuzunda 100 IP adresi sınırı
-  * Arka uç kaynakları, yük dengeleyici ile aynı sanal ağda olmalıdır
-  * IP tabanlı arka uç havuzundaki bir Load Balancer özel bağlantı hizmeti olarak çalışamaz
-  * Bu özellik şu anda Azure portal desteklenmiyor
-  * ACI kapsayıcıları Şu anda bu özellik tarafından desteklenmiyor
-  * Yük dengeleyiciler tarafından konulan yük dengeleyiciler veya hizmetler yük dengeleyicinin arka uç havuzuna yerleştirilemez
-  * Gelen NAT kuralları IP adresi ile belirtilemiyor
 
 ### <a name="powershell"></a>PowerShell
 Yeni arka uç havuzu oluştur:
@@ -411,128 +307,21 @@ az vm create \
   --admin-username azureuser \
   --generate-ssh-keys
 ```
+ 
+### <a name="limitations"></a>Sınırlamalar
+IP adresi tarafından yapılandırılan bir arka uç havuzu aşağıdaki sınırlamalara sahiptir:
+  * Yalnızca standart yük dengeleyiciler için kullanılabilir
+  * Arka uç havuzunda 100 IP adresi sınırı
+  * Arka uç kaynakları, yük dengeleyici ile aynı sanal ağda olmalıdır
+  * IP tabanlı arka uç havuzundaki bir Load Balancer özel bağlantı hizmeti olarak çalışamaz
+  * Bu özellik şu anda Azure portal desteklenmiyor
+  * ACI kapsayıcıları Şu anda bu özellik tarafından desteklenmiyor
+  * Yük dengeleyiciler veya Application Gateway gibi hizmetler yük dengeleyicinin arka uç havuzunda yerleştirilemez
+  * Gelen NAT kuralları IP adresi ile belirtilemiyor
 
-### <a name="rest-api"></a>REST API
-
-Bir arka uç havuzu isteği ile arka uç havuzu oluşturun ve arka uç adreslerini tanımlayın. PUT isteğinin JSON gövdesinde arka uç adreslerini şu şekilde yapılandırın:
-
-* Adres adı
-* IP Adresi
-* Sanal ağ KIMLIĞI 
-
-```
-PUT https://management.azure.com/subscriptions/subid/resourceGroups/testrg/providers/Microsoft.Network/loadBalancers/lb/backendAddressPools/backend?api-version=2020-05-01
-```
-
-JSON Istek gövdesi:
-```JSON
-{
-  "properties": {
-    "loadBalancerBackendAddresses": [
-      {
-        "name": "address1",
-        "properties": {
-          "virtualNetwork": {
-            "id": "/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.Network/virtualNetworks/{vnet-name}"
-          },
-          "ipAddress": "10.0.0.4"
-        }
-      },
-      {
-        "name": "address2",
-        "properties": {
-          "virtualNetwork": {
-            "id": "/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.Network/virtualNetworks/{vnet-name}"
-          },
-          "ipAddress": "10.0.0.5"
-        }
-      }
-    ]
-  }
-}
-```
-
-Arka uç adreslerinin arka uç havuzuna eklendiğini onaylamak için yük dengeleyicinin arka uç havuzu bilgilerini alın:
-```
-GET https://management.azure.com/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.Network/loadBalancers/{load-balancer-name}/backendAddressPools/{backend-pool-name}?api-version=2020-05-01
-```
-
-Bir ağ arabirimi oluşturun ve arka uç havuzuna ekleyin. IP adresini arka uç adreslerinden birine ayarlayın:
-```
-PUT https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.Network/networkInterfaces/{nic-name}?api-version=2020-05-01
-```
-
-JSON Istek gövdesi:
-```JSON
-{
-  "properties": {
-    "enableAcceleratedNetworking": true,
-    "ipConfigurations": [
-      {
-        "name": "ipconfig1",
-        "properties": {
-          "privateIPAddress": "10.0.0.4",
-          "subnet": {
-            "id": "/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.Network/virtualNetworks/{vnet-name}/subnets/{subnet-name}"
-          }
-        }
-      }
-    ]
-  },
-  "location": "eastus"
-}
-```
-
-Bir VM oluşturun ve NIC 'yi arka uç havuzunda bir IP adresi ile ekleyin:
-
-```
-PUT https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.Compute/virtualMachines/{vm-name}?api-version=2019-12-01
-```
-
-JSON Istek gövdesi:
-```JSON
-{
-  "location": "eastus",
-  "properties": {
-    "hardwareProfile": {
-      "vmSize": "Standard_D1_v2"
-    },
-    "storageProfile": {
-      "imageReference": {
-        "sku": "2016-Datacenter",
-        "publisher": "MicrosoftWindowsServer",
-        "version": "latest",
-        "offer": "WindowsServer"
-      },
-      "osDisk": {
-        "caching": "ReadWrite",
-        "managedDisk": {
-          "storageAccountType": "Standard_LRS"
-        },
-        "name": "myVMosdisk",
-        "createOption": "FromImage"
-      }
-    },
-    "networkProfile": {
-      "networkInterfaces": [
-        {
-          "id": "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/networkInterfaces/{nic-name}",
-          "properties": {
-            "primary": true
-          }
-        }
-      ]
-    },
-    "osProfile": {
-      "adminUsername": "{your-username}",
-      "computerName": "myVM",
-      "adminPassword": "{your-password}"
-    }
-  }
-}
-```
-  
 ## <a name="next-steps"></a>Sonraki adımlar
 Bu makalede Azure Load Balancer arka uç havuzu yönetimi ve IP adresi ve sanal ağ ile arka uç havuzu yapılandırma hakkında bilgi edindiniz.
 
 [Azure Load Balancer](load-balancer-overview.md)hakkında daha fazla bilgi edinin.
+
+IP tabanlı backendpool yönetimi için [REST API](https://docs.microsoft.com/rest/api/load-balancer/loadbalancerbackendaddresspools/createorupdate) gözden geçirin.

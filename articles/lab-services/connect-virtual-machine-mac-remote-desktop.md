@@ -4,17 +4,17 @@ description: Azure Lab Services bir Mac 'ten bir sanal makineye nasıl bağlanac
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 674bea13093e185ae991148c2cf96599a273d0bc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85444633"
 ---
 # <a name="connect-to-a-vm-using-remote-desktop-protocol-on-a-mac"></a>Mac üzerinde Uzak Masaüstü Protokolü kullanarak bir VM 'ye bağlanma
 Bu bölümde, bir öğrencinin RDP kullanarak Mac 'ten bir derslik laboratuvar VM 'sine nasıl bağlanabildiği gösterilmektedir.
 
 ## <a name="install-microsoft-remote-desktop-on-a-mac"></a>Mac 'e Microsoft Uzak Masaüstü yüklemesi
-1. Mac 'inizde App Store ' u açın ve **Microsoft Uzak Masaüstü**arayın.
+1. Mac 'inizde App Store ' u açın ve **Microsoft Uzak Masaüstü** arayın.
 
     ![Microsoft Uzak Masaüstü](./media/how-to-use-classroom-lab/install-ms-remote-desktop.png)
 1. En son Microsoft Uzak Masaüstü sürümünü yükler. 

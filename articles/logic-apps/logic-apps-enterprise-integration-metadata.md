@@ -9,10 +9,10 @@ ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 01/17/2019
 ms.openlocfilehash: bc119f1ce8efb821781dabfb9dd259cc5c8d9c23
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "74792477"
 ---
 # <a name="manage-artifact-metadata-in-integration-accounts-with-azure-logic-apps-and-enterprise-integration-pack"></a>Azure Logic Apps ve Enterprise Integration Pack ile tümleştirme hesaplarındaki yapıt meta verilerini yönetme
@@ -63,8 +63,8 @@ Tümleştirme hesaplarında yapıtlar için özel meta veriler tanımlayabilir v
 
    | Özellik | Gerekli | Değer | Açıklama | 
    |----------|---------|-------|-------------| 
-   | **Yapıt türü** | Evet | **Şema**, **eşleme**, **iş ortağı**, **anlaşma**veya özel bir tür | İstediğiniz yapıtın türü | 
-   | **Yapıt adı** | Evet | <*yapıt-adı*> | İstediğiniz yapıt adı | 
+   | **Yapıt türü** | Yes | **Şema**, **eşleme**, **iş ortağı**, **anlaşma** veya özel bir tür | İstediğiniz yapıtın türü | 
+   | **Yapıt adı** | Yes | <*yapıt-adı*> | İstediğiniz yapıt adı | 
    ||| 
 
    Örneğin, bir ticaret ortağı yapıtı için meta verileri almak istediğinizi varsayalım:
@@ -85,13 +85,13 @@ Tümleştirme hesaplarında yapıtlar için özel meta veriler tanımlayabilir v
 
       | Özellik | Gerekli | Değer | Açıklama | 
       |----------|----------|-------|-------------| 
-      | **Yöntem** | Evet | <*işlem-çalıştırma*> | Yapıtın üzerinde çalıştırılacak HTTP işlemi. Örneğin, bu HTTP eylemi **Get** yöntemini kullanır. | 
-      | **URI** | Evet | <*meta veri-konum*> | `routingUrl`Alınan yapıtın meta veri değerine erişmek için bir ifade kullanabilirsiniz, örneğin: <p>`@{outputs('Integration_Account_Artifact_Lookup')['properties']['metadata']['routingUrl']}` | 
-      | **Üst bilgiler** | Hayır | <*üst bilgi-değerler*> | HTTP eylemine geçirmek istediğiniz tetikleyiciden gelen üst bilgi çıkışları. Örneğin, tetikleyicinin `headers` özellik değerini geçirmek için: bir ifade kullanabilirsiniz, örneğin: <p>`@triggeroutputs()['headers']` | 
-      | **Gövde** | Hayır | <*gövde-içerik*> | HTTP eyleminin özelliğinden geçmesini istediğiniz diğer içerikler `body` . Bu örnek, yapıt `properties` DEğERLERINI HTTP eylemine geçirir: <p>1. **gövde** özelliğinin içine tıklayarak dinamik içerik listesi belirir. Hiçbir özellik görünmezse, **daha fazla göster**' i seçin. <br>2. dinamik içerik listesinden, **tümleştirme hesabı yapıt araması**altında **Özellikler**' i seçin. | 
+      | **Yöntem** | Yes | <*işlem-çalıştırma*> | Yapıtın üzerinde çalıştırılacak HTTP işlemi. Örneğin, bu HTTP eylemi **Get** yöntemini kullanır. | 
+      | **URI** | Yes | <*meta veri-konum*> | `routingUrl`Alınan yapıtın meta veri değerine erişmek için bir ifade kullanabilirsiniz, örneğin: <p>`@{outputs('Integration_Account_Artifact_Lookup')['properties']['metadata']['routingUrl']}` | 
+      | **Üst Bilgiler** | No | <*üst bilgi-değerler*> | HTTP eylemine geçirmek istediğiniz tetikleyiciden gelen üst bilgi çıkışları. Örneğin, tetikleyicinin `headers` özellik değerini geçirmek için: bir ifade kullanabilirsiniz, örneğin: <p>`@triggeroutputs()['headers']` | 
+      | **Gövde** | No | <*gövde-içerik*> | HTTP eyleminin özelliğinden geçmesini istediğiniz diğer içerikler `body` . Bu örnek, yapıt `properties` DEğERLERINI HTTP eylemine geçirir: <p>1. **gövde** özelliğinin içine tıklayarak dinamik içerik listesi belirir. Hiçbir özellik görünmezse, **daha fazla göster**' i seçin. <br>2. dinamik içerik listesinden, **tümleştirme hesabı yapıt araması** altında **Özellikler**' i seçin. | 
       |||| 
 
-      Örneğin:
+      Örnek:
 
       ![HTTP eylemi için değerleri ve ifadeleri belirtin](media/logic-apps-enterprise-integration-metadata/add-http-action-values.png)
 

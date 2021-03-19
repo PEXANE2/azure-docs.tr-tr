@@ -4,10 +4,10 @@ description: Bu makalede, Azure Backup hizmetini ve PowerShell 'i kullanarak bir
 ms.topic: conceptual
 ms.date: 08/20/2019
 ms.openlocfilehash: 948931764769bc967b88e7942b7e8384b0f93dff
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87077010"
 ---
 # <a name="back-up-an-azure-file-share-by-using-powershell"></a>PowerShell kullanarak bir Azure dosya paylaşımının yedeklenmesi
@@ -56,10 +56,10 @@ PowerShell 'i aşağıdaki şekilde ayarlayın:
 
     ![Kurtarma Hizmetleri cmdlet 'lerinin listesi](./media/backup-azure-afs-automation/list-of-recoveryservices-ps-az.png)
 
-4. **Connect-AzAccount**komutunu kullanarak Azure hesabınızda oturum açın.
+4. **Connect-AzAccount** komutunu kullanarak Azure hesabınızda oturum açın.
 5. Görüntülenen Web sayfasında hesap kimlik bilgilerinizi girmeniz istenir.
 
-    Alternatif olarak, **-Credential**kullanarak hesap kimlik bilgilerinizi **Connect-azaccount** cmdlet 'ine bir parametre olarak dahil edebilirsiniz.
+    Alternatif olarak, **-Credential** kullanarak hesap kimlik bilgilerinizi **Connect-azaccount** cmdlet 'ine bir parametre olarak dahil edebilirsiniz.
 
     Bir kiracı adına çalışan bir CSP iş ortağıysanız, müşteriyi kiracı olarak belirtin. Kiracı KIMLIKLERINI veya kiracı birincil etki alanı adını kullanın. **Connect-AzAccount-Tenant "fabrikam.com"** bir örnektir.
 
@@ -81,7 +81,7 @@ PowerShell 'i aşağıdaki şekilde ayarlayın:
     Get-AzResourceProvider -ProviderNamespace "Microsoft.RecoveryServices"
     ```
 
-9. Komut çıkışında, **Registrationstate** ' ın **kayıtlı**olarak değiştiğini doğrulayın. Değilse, **register-AzResourceProvider** cmdlet 'ini tekrar çalıştırın.
+9. Komut çıkışında, **Registrationstate** ' ın **kayıtlı** olarak değiştiğini doğrulayın. Değilse, **register-AzResourceProvider** cmdlet 'ini tekrar çalıştırın.
 
 ## <a name="create-a-recovery-services-vault"></a>Kurtarma Hizmetleri kasası oluşturma
 
@@ -129,7 +129,7 @@ Birçok Azure Backup cmdlet 'i, giriş olarak kurtarma hizmetleri Kasası nesnes
 
 Kasa bağlamı, kasada korunan veri türüdür. [Set-AzRecoveryServicesVaultContext](/powershell/module/az.recoveryservices/set-azrecoveryservicesvaultcontext)kullanarak ayarlayın. Bağlam ayarlandıktan sonra, sonraki tüm cmdlet 'ler için geçerli olur.
 
-Aşağıdaki örnek, **testkasası**için kasa bağlamını ayarlar:
+Aşağıdaki örnek, **testkasası** için kasa bağlamını ayarlar:
 
 ```powershell
 Get-AzRecoveryServicesVault -Name "testvault" | Set-AzRecoveryServicesVaultContext
@@ -194,7 +194,7 @@ Yedekleme ilkesini tanımladıktan sonra, ilkeyi kullanarak Azure dosya paylaş�
 
 #### <a name="retrieve-a-policy-for-a-workload-type"></a>İş yükü türü için ilke alma
 
-Aşağıdaki örnek, **AzureFiles**iş yükü türü için ilkeleri alır:
+Aşağıdaki örnek, **AzureFiles** iş yükü türü için ilkeleri alır:
 
 ```powershell
 Get-AzRecoveryServicesBackupProtectionPolicy -WorkloadType "AzureFiles"
@@ -213,7 +213,7 @@ dailyafs             AzureFiles         AzureStorage         1/10/2018 12:30:00 
 
 #### <a name="retrieve-a-specific-policy"></a>Belirli bir ilkeyi alma
 
-Aşağıdaki ilke, **dadilyafs**adlı yedekleme ilkesini alır:
+Aşağıdaki ilke, **dadilyafs** adlı yedekleme ilkesini alır:
 
 ```powershell
 $afsPol =  Get-AzRecoveryServicesBackupProtectionPolicy -Name "dailyafs"
@@ -223,7 +223,7 @@ $afsPol =  Get-AzRecoveryServicesBackupProtectionPolicy -Name "dailyafs"
 
 [Enable-AzRecoveryServicesBackupProtection](/powershell/module/az.recoveryservices/enable-azrecoveryservicesbackupprotection)kullanarak korumayı etkinleştirin. İlke kasayla ilişkilendirildikten sonra, yedeklemeler ilke zamanlamasına uygun olarak tetiklenir.
 
-Aşağıdaki örnek, **Teststorageacct**depolama hesabındaki Azure dosya paylaşımı **Testazurefileshare** için korumayı, **Bu ilkeyle birlikte**etkinleştirilir:
+Aşağıdaki örnek, **Teststorageacct** depolama hesabındaki Azure dosya paylaşımı **Testazurefileshare** için korumayı, **Bu ilkeyle birlikte** etkinleştirilir:
 
 ```powershell
 Enable-AzRecoveryServicesBackupProtection -StorageAccountName "testStorageAcct" -Name "testAzureFS" -Policy $afsPol

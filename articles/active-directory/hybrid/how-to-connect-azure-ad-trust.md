@@ -19,10 +19,10 @@ author: billmath
 ms.custom: ''
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 13d56ec321cd257412c2b0abbe0be655c6cb4dbf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85360104"
 ---
 # <a name="manage-ad-fs-trust-with-azure-ad-using-azure-ad-connect"></a>Azure AD Connect kullanarak Azure AD ile AD FS güvenini yönetme
@@ -103,7 +103,7 @@ Azure AD Connect, Azure AD güveninin her zaman önerilen talep kuralları küme
 
 ## <a name="restore-issuance-transform-rules"></a>Verme dönüştürme kurallarını geri yükleme
 
-Azure AD Connect Version 1.1.873.0 veya sonraki sürümleri, Azure AD güven ayarlarında bir güncelleştirme yapıldığında Azure AD güven ayarlarının yedeklenmesini sağlar. Azure AD güven ayarları, **%ProgramData%\aadconnect\adfs**konumunda yedeklenir. Dosya adı, aadtrust- &lt; date &gt; - &lt; Time &gt; . txt dosyasında, örneğin-AadTrust-20180710-150216.txt biçimindedir
+Azure AD Connect Version 1.1.873.0 veya sonraki sürümleri, Azure AD güven ayarlarında bir güncelleştirme yapıldığında Azure AD güven ayarlarının yedeklenmesini sağlar. Azure AD güven ayarları, **%ProgramData%\aadconnect\adfs** konumunda yedeklenir. Dosya adı, aadtrust- &lt; date &gt; - &lt; Time &gt; . txt dosyasında, örneğin-AadTrust-20180710-150216.txt biçimindedir
 
 ![Azure AD güveninin örnek bir ekran görüntüsü](./media/how-to-connect-azure-ad-trust/backup.png)
 

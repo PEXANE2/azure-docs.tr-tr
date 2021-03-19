@@ -7,10 +7,10 @@ ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 09/01/2019
 ms.openlocfilehash: c56c31bb6f56efb10808ce25b6b232089391e831
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "84712454"
 ---
 # <a name="data-operation-code-samples-for-azure-logic-apps"></a>Azure Logic Apps için veri işlemi kod örnekleri
@@ -322,7 +322,7 @@ JavaScript Nesne Gösterimi (JSON) standartlarına dayalı olarak, bu eylem tan�
 
 <a name="select-action-example"></a>
 
-## <a name="select"></a>Seç
+## <a name="select"></a>Şunu seçin:
 
 [ **Seçim** eylemi örneğini](../logic-apps/logic-apps-perform-data-operations.md#select-action)denemek için kullanabileceğiniz eylem tanımları aşağıda verilmiştir:
 

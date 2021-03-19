@@ -5,10 +5,10 @@ ms.topic: sample
 ms.date: 1/28/2020
 ms.custom: devx-track-azurepowershell
 ms.openlocfilehash: 40859c1ea05210d27fcdcf33ba9d4f961965ea22
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89075707"
 ---
 # <a name="powershell-script-to-find-the-recovery-services-vault-where-a-storage-account-is-registered"></a>Bir depolama hesabının kaydedildiği kurtarma hizmetleri kasasını bulmak için PowerShell betiği
@@ -50,7 +50,7 @@ if(!$found)
 
 ## <a name="how-to-execute-the-script"></a>Betiği yürütme
 
-1. Yukarıdaki betiği, seçtiğiniz bir adla makinenize kaydedin. Bu örnekte, onu *FindRegisteredStorageAccount.ps1*olarak kaydettik.
+1. Yukarıdaki betiği, seçtiğiniz bir adla makinenize kaydedin. Bu örnekte, onu *FindRegisteredStorageAccount.ps1* olarak kaydettik.
 2. Aşağıdaki parametreleri sağlayarak betiği yürütün:
 
     * **-Resourcegroupname** -depolama hesabının kaynak grubu

@@ -16,10 +16,10 @@ ms.date: 07/25/2019
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: d6dfc95820e911781ffa88e2207601703f165839
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87070595"
 ---
 # <a name="deploy-storsimple-virtual-array---provision-in-hyper-v"></a>StorSimple Sanal dizisi dağıtma-Hyper-V içinde sağlama
@@ -43,7 +43,7 @@ Başlamadan önce aşağıdakilerden emin olun:
 * Hyper-V için sanal dizi görüntüsünü Azure portal indirdiniz. Daha fazla bilgi için bkz. 3. Adım: [Portal 'ı StorSimple Sanal dizisi Için hazırlama adlı](storsimple-virtual-array-deploy1-portal-prep.md) **Sanal dizi görüntüsünü indirme** .
 
   > [!IMPORTANT]
-  > StorSimple Sanal dizisinde çalışan yazılım yalnızca StorSimple Aygıt Yöneticisi hizmeti ile birlikte kullanılabilir.
+  > StorSimple Sanal dizisinde çalışan yazılım yalnızca StorSimple Device Manager hizmeti ile birlikte kullanılabilir.
   >
   >
 

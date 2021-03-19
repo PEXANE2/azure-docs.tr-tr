@@ -15,10 +15,10 @@ ms.date: 06/10/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.openlocfilehash: 92046b3a944a747ce76d2426855eec7b6bc2cd70
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "84790255"
 ---
 # <a name="list-azure-deny-assignments-using-the-azure-portal"></a>Azure portal kullanarak Azure reddetme atamalarını listeleyin
@@ -59,7 +59,7 @@ Abonelik veya yönetim grubu kapsamındaki atamaları Reddet ' i listelemek içi
     | **Ad** | Reddetme atamasının adı. |
     | **Sorumlu türü** | Kullanıcı, Grup, sistem tanımlı grup veya hizmet sorumlusu. |
     | **Reddedildi**  | Reddetme atamasında bulunan güvenlik sorumlusunun adı. |
-    | **Id** | Reddetme ataması için benzersiz tanımlayıcı. |
+    | **Numarasını** | Reddetme ataması için benzersiz tanımlayıcı. |
     | **Dışlanan sorumlular** | Reddetme atamasından dışlanan güvenlik sorumluları olup olmadığı. |
     | **Alt öğeler için uygulanmıyor** | Reddetme atamasının alt kapsamlara devralınıp alınmayacağını belirtir. |
     | **Korunan sistem** | Reddetme atamasının Azure tarafından yönetilip yönetilmediği. Şu anda her zaman Evet. |
@@ -90,7 +90,7 @@ Reddetme atama hakkında ek ayrıntıları listelemek için aşağıdaki adımla
 
     ![Atama reddi Izinlerini Reddet](./media/deny-assignments-portal/deny-assignment-denied-permissions.png)
 
-    | Eylem türü | Açıklama |
+    | Eylem türü | Description |
     | --- | --- |
     | **Eylemler**  | Yönetim işlemleri reddedildi. |
     | **NotActions** | Yönetim işlemleri Reddedilenler yönetim işleminden dışlandı. |

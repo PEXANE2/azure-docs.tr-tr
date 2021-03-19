@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: tutorial
 ms.date: 10/02/2020
-ms.openlocfilehash: 62f4b6c76cafab5c6cc46a73851abce1e38551a1
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 11ce7b3da0d33fbe7f1229cbc00246da00858ec5
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101677754"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104598227"
 ---
 # <a name="register-and-scan-an-azure-sql-database"></a>Azure SQL veritabanını kaydetme ve tarama
 
@@ -158,6 +158,7 @@ Veri kataloğunuza yeni bir Azure SQL veritabanı kaydetmek için aşağıdakile
 
 > [!NOTE]
 > Taramanızı silmek, varlıklarınızı önceki Azure SQL veritabanı taramalarından silmez.
+> Kaynak tablonuz değiştirilirse varlık artık şema değişiklikleriyle güncelleştirilmeyecek ve takip görünümü şema sekmesinden açıklama düzenledikten sonra kaynak tabloyu yeniden taramayacaktır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

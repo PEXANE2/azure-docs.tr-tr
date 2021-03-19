@@ -8,17 +8,17 @@ ms.topic: article
 ms.date: 07/30/2020
 ms.author: victorh
 ms.openlocfilehash: 28cd26532ca5bdf83902854b7910f7d6c18a4eab
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87460159"
 ---
 # <a name="fqdn-filtering-in-network-rules-preview"></a>Ağ kurallarında FQDN filtrelemesi (Önizleme)
 
 > [!IMPORTANT]
 > Ağ kurallarında FQDN filtrelemesi Şu anda genel önizlemededir.
-> Önizleme sürümü bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yüklerinde kullanılması önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Önizleme sürümü bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yüklerinde kullanılması önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Tam etki alanı adı (FQDN), bir konağın veya IP adresinin etki alanı adını temsil eder. Azure Güvenlik Duvarı ve güvenlik duvarı ilkesinde DNS çözümüne bağlı olarak ağ kurallarında FQDN 'leri kullanabilirsiniz. Bu özellik, giden trafiği herhangi bir TCP/UDP protokolüyle (NTP, SSH, RDP ve daha fazlası dahil) filtrelemenizi sağlar. Ağ kurallarınızın FQDN 'lerini kullanması için DNS proxy 'yi etkinleştirmelisiniz. Daha fazla bilgi için bkz. [Azure Güvenlik Duvarı ILKESI DNS ayarları (Önizleme)](dns-settings.md).
 

@@ -12,12 +12,12 @@ ms.topic: how-to
 ms.custom: devx-track-csharp
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: 5174cb584f2e8df236725f7427b423fda1a02c88
-ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
+ms.openlocfilehash: 01854e7636f53ec1faab157b51cc84f3539582b4
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/11/2021
-ms.locfileid: "102630869"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104596731"
 ---
 # <a name="signal-descriptive-audio-tracks"></a>Sinyal açıklayıcı ses parçaları
 
@@ -80,7 +80,7 @@ Aşağıdaki işlev bir iş gönderir.
 
 İş, genellikle şu durumlardan geçer: **Zamanlanmış**, **sıraya alınmış**, **işleme**, **tamamlandı** (son durum). İş bir hatayla karşılaştıysa **Hata** durumunu alırsınız. İş iptal edilme sürecindeyse **İptal Ediliyor** ve **İptal Edildi** durumunu alırsınız.
 
-Daha fazla bilgi için bkz. [Event Grid olaylarını işleme](reacting-to-media-services-events.md).
+Daha fazla bilgi için bkz. [Event Grid olaylarını işleme](monitoring/reacting-to-media-services-events.md).
 
 ## <a name="upload-the-audio-only-mp4-file"></a>Yalnızca ses MP4 dosyasını karşıya yükle
 

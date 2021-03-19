@@ -6,13 +6,13 @@ author: linda33wj
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 02/02/2021
-ms.openlocfilehash: 4590129b8d0d7a63ef4291a023ea4d980c89368c
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.date: 03/17/2021
+ms.openlocfilehash: b86559422b6efeed666a3ae35022563a66d9c7e6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100386654"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104597341"
 ---
 # <a name="copy-data-from-sap-cloud-for-customer-c4c-using-azure-data-factory"></a>Azure Data Factory kullanarak müşteri için SAP bulutlarından (C4C) veri kopyalama
 
@@ -23,7 +23,7 @@ Bu makalede, müşteri için SAP buluttan (C4C) verileri kopyalamak için Azure 
 >[!TIP]
 >ADF 'nin SAP veri tümleştirme senaryosunda genel desteğini öğrenmek için, her SAP Bağlayıcısı, karşılaştırma ve kılavuza ayrıntılı giriş ile [Azure Data Factory Teknik İnceleme kullanarak SAP veri tümleştirme](https://github.com/Azure/Azure-DataFactory/blob/master/whitepaper/SAP%20Data%20Integration%20using%20Azure%20Data%20Factory.pdf) konusuna bakın.
 
-## <a name="supported-capabilities"></a>Desteklenen yetenekler
+## <a name="supported-capabilities"></a>Desteklenen özellikler
 
 Bu SAP bulutu for Customer Connector, aşağıdaki etkinlikler için desteklenir:
 
@@ -34,7 +34,7 @@ Müşteri için SAP buluttan verileri desteklenen herhangi bir havuz veri deposu
 
 Özellikle, bu bağlayıcı Sales için SAP bulutu, hizmet için SAP bulutu ve sosyal katılım çözümleri için SAP bulutu dahil olmak üzere, müşteri için SAP buluttan veri kopyalamasını Azure Data Factory sağlar.
 
-## <a name="getting-started"></a>Kullanmaya başlama
+## <a name="getting-started"></a>Başlarken
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
@@ -162,6 +162,7 @@ Müşteri için SAP bulutuna veri kopyalamak için kopyalama etkinliğindeki hav
 | tür | Type özelliği: **Sapcloudforcustomersink** olarak ayarlanmalıdır  | Yes |
 | writeBehavior | İşlemin yazma davranışı. "INSERT", "Update" olabilir. | Hayır. Varsayılan "Ekle". |
 | writeBatchSize | Yazma işleminin toplu iş boyutu. En iyi performansı elde etmek için toplu iş boyutu, farklı tablo veya sunucu için farklı olabilir. | Hayır. Varsayılan 10. |
+| maxConcurrentConnections |Etkinlik çalışması sırasında veri deposuna kurulan eşzamanlı bağlantıların üst sınırı. Yalnızca eş zamanlı bağlantıları sınırlandırmak istediğinizde bir değer belirtin.| No |
 
 **Örnek:**
 

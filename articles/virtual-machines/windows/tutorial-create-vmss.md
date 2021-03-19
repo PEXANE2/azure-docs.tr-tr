@@ -10,10 +10,10 @@ ms.date: 11/30/2018
 ms.reviewer: mimckitt
 ms.custom: mimckitt, devx-track-azurepowershell
 ms.openlocfilehash: b3853ddc71d1a9be26b2492764a9b341446e0eeb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89078750"
 ---
 # <a name="tutorial-create-a-virtual-machine-scale-set-and-deploy-a-highly-available-app-on-windows-with-azure-powershell"></a>Öğretici: Azure PowerShell ile sanal makine ölçek kümesi oluşturma ve Windows üzerinde yüksek oranda kullanılabilir bir uygulama dağıtma
@@ -188,7 +188,7 @@ Get-AzVmssVM `
 
 
 ### <a name="increase-or-decrease-vm-instances"></a>VM örneklerinin sayısını artırma veya azaltma
-Ölçek kümesinde Şu anda sahip olduğunuz örneklerin sayısını görmek için, [Get-AzVmss](/powershell/module/az.compute/get-azvmss) ve *SKU. Capacity*üzerinde sorgu kullanın:
+Ölçek kümesinde Şu anda sahip olduğunuz örneklerin sayısını görmek için, [Get-AzVmss](/powershell/module/az.compute/get-azvmss) ve *SKU. Capacity* üzerinde sorgu kullanın:
 
 ```azurepowershell-interactive
 Get-AzVmss -ResourceGroupName "myResourceGroupScaleSet" `

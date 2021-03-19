@@ -4,10 +4,10 @@ description: Mevcut Azure Service Bus standart ad alanlarının Premium 'a geçi
 ms.topic: article
 ms.date: 06/23/2020
 ms.openlocfilehash: 1ed09a077f086390c658e6650171c552b361008d
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/14/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85340743"
 ---
 # <a name="migrate-existing-azure-service-bus-standard-namespaces-to-the-premium-tier"></a>Mevcut Azure Service Bus standart ad alanlarını Premium katmanına geçirin
@@ -89,7 +89,7 @@ Azure CLı veya PowerShell aracını kullanarak Service Bus standart ad alanın�
 
 Azure portal kullanılarak geçiş, komutları kullanılarak geçişle aynı mantıksal akışa sahiptir. Azure portal kullanarak geçiş yapmak için aşağıdaki adımları izleyin.
 
-1. Sol bölmedeki **Gezinti** menüsünde, **Premium 'a geçir** ' i seçin. Sonraki sayfaya devam etmek için **Başlarken** düğmesine tıklayın.
+1. Sol bölmedeki **Gezinti** menüsünde, **Premium 'a geçir**' i seçin. Sonraki sayfaya devam etmek için **Başlarken** düğmesine tıklayın.
     ![Geçiş giriş sayfası][]
 
 1. **Kurulumu** tamamladıktan sonra.
@@ -176,7 +176,7 @@ Geçiş, `Abort` komutu kullanılarak veya Azure Portal kullanılarak iptal edil
 az servicebus migration abort --resource-group $resourceGroup --name $standardNamespace
 ```
 
-#### <a name="azure-portal"></a>Azure portal
+#### <a name="azure-portal"></a>Azure portalı
 
 ![Akışı durdur-eşitleme iptali ][]
  ![ akışını durdur-iptali Tamam][]

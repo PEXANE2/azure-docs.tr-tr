@@ -4,10 +4,10 @@ description: Azure Backup hizmeti tarafından yedeklenen Azure dosya paylaşıml
 ms.topic: conceptual
 ms.date: 1/27/2020
 ms.openlocfilehash: e2f07e56fb9a8715b1b53165ab5f4b45b4e20ccb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89000235"
 ---
 # <a name="manage-azure-file-share-backups-with-powershell"></a>Azure dosya paylaşma yedeklemelerini PowerShell ile yönetme
@@ -21,7 +21,7 @@ Bu makalede, Azure Backup hizmeti tarafından yedeklenen Azure dosya paylaşıml
 
 Azure dosya paylaşımının yedeklenmesi için kullanılan ilkeyi değiştirmek için [Enable-AzRecoveryServicesBackupProtection](/powershell/module/az.recoveryservices/enable-azrecoveryservicesbackupprotection)kullanın. İlgili yedekleme öğesini ve yeni yedekleme ilkesini belirtin.
 
-Aşağıdaki örnek, **Testazurefs** koruma ilkesini, **davilyafs** 'den **monthlyafs**olarak değiştirir.
+Aşağıdaki örnek, **Testazurefs** koruma ilkesini, **davilyafs** 'den **monthlyafs** olarak değiştirir.
 
 ```powershell
 $monthlyafsPol =  Get-AzRecoveryServicesBackupProtectionPolicy -Name "monthlyafs"

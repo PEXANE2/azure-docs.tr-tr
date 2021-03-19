@@ -19,10 +19,10 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
 ms.openlocfilehash: e91d250b8cc9b80f2c97910c7fa972af32fa9104
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88998348"
 ---
 # <a name="tutorial-send-push-notifications-to-windows-phone-apps-using-notification-hubs"></a>Öğretici: Notification Hubs kullanarak Windows Phone uygulamalara anında iletme bildirimleri gönderin
@@ -145,7 +145,7 @@ Bu bölümde, bildirim hub’ınıza kendi kendine kaydolan bir Windows Phone uy
     1. **Platformlar** için **Windows Phone**’u seçin.
     2. **Bildirim Türü** için **Bildirim**’i seçin.
     3. **Gönder** 'i seçin
-    4. Pencerenin en altındaki listede**sonucu** görürsünüz.
+    4. Pencerenin en altındaki listede **sonucu** görürsünüz.
 
         ![Test Gönderimi penceresi](./media/notification-hubs-windows-phone-get-started/test-send-window.png)
 4. Windows Phone öykünücüsünde veya Windows Phone üzerinde bildirim iletisini gördüğünüzü onaylayın.

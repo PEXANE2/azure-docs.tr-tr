@@ -9,12 +9,12 @@ ms.subservice: spot
 ms.date: 02/26/2021
 ms.reviewer: cynthn
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: b20a5bd9c06c3948097389d5439defa219a7931b
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: a176a30a1e21ec03c2da329785ab895ec67a4faf
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101694997"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104596425"
 ---
 # <a name="azure-spot-virtual-machines-for-virtual-machine-scale-sets"></a>Sanal Makine Ölçek Kümeleri için Azure spot sanal makineleri 
 
@@ -46,7 +46,7 @@ Azure spot sanal makinesi, Microsoft Azure Çin 21Vianet dışında herhangi bir
 -   Kurumsal Anlaşma
 -   Kullandıkça Öde teklifi kodu 003P
 -   Sponsorlu
-- Bulut hizmeti sağlayıcısı (CSP) için [Iş Ortağı Merkezi](https://docs.microsoft.com/partner-center/azure-plan-get-started) 'ne bakın veya doğrudan iş ortağınızla iletişim kurun.
+- Bulut hizmeti sağlayıcısı (CSP) için [Iş Ortağı Merkezi](/partner-center/azure-plan-get-started) 'ne bakın veya doğrudan iş ortağınızla iletişim kurun.
 
 ## <a name="eviction-policy"></a>Çıkarma ilkesi
 
@@ -139,7 +139,7 @@ Yerleştirme grubu, kendi hata etki alanları ve yükseltme etki alanları ile A
 Azure spot sanal makineleri kullanan bir ölçek kümesi oluşturma işlemi Başlarken [makalesinde](quick-create-portal.md)ayrıntılı olarak aynıdır. Bir ölçek kümesi dağıttığınızda, nokta bayrağını ve çıkarma ilkesini ayarlamayı seçebilirsiniz: ![ Azure spot sanal makineler ile ölçek kümesi oluşturma](media/virtual-machine-scale-sets-use-spot/vmss-spot-portal-max-price.png)
 
 
-## <a name="azure-cli"></a>Azure CLI
+## <a name="azure-cli"></a>Azure CLI’si
 
 Azure spot sanal makineler ile bir ölçek kümesi oluşturma işlemi Başlarken [makalesinde](quick-create-cli.md)ayrıntılı olarak aynıdır. '--Priority noktası ' ve Ekle ' yi eklemeniz yeterlidir `--max-price` . Bu örnekte, `-1` Örneğin `--max-price` fiyata göre çıkarılamadığı için kullanırız.
 
@@ -202,7 +202,7 @@ Azure spot sanal makine şablonu dağıtımları için `"apiVersion": "2019-03-0
 
 ## <a name="simulate-an-eviction"></a>Çıkargı benzetimi yap
 
-Uygulamanızın ani bir çıkarmasına ne kadar iyi yanıt vereceğini test etmek için bir Azure spot sanal makinesinin [çıkarması benzetimi](https://docs.microsoft.com/rest/api/compute/virtualmachines/simulateeviction) yapabilirsiniz. 
+Uygulamanızın ani bir çıkarmasına ne kadar iyi yanıt vereceğini test etmek için bir Azure spot sanal makinesinin [çıkarması benzetimi](/rest/api/compute/virtualmachines/simulateeviction) yapabilirsiniz. 
 
 Aşağıdaki bilgilerinizi ile değiştirin: 
 

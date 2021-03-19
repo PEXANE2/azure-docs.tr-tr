@@ -3,18 +3,18 @@ title: Node.js için Azure Batch istemci kitaplığını kullanın
 description: Temel Azure Batch kavramlarını öğrenin ve Node.js kullanarak basit bir çözüm derleyin.
 ms.topic: how-to
 ms.date: 10/08/2020
-ms.openlocfilehash: 36a127a20014e87554f0d3e3927b05679b6f72f1
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: a2d86582c94804a20a3a9e952bc64d60414e25a5
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98737295"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104656031"
 ---
 # <a name="get-started-with-batch-sdk-for-nodejs"></a>Node.js için Batch SDK'sını kullanmaya başlama
 
 [Azure Batch Node.js SDK'sını](/javascript/api/overview/azure/batch) kullanarak Node.js’de Batch istemcisi oluşturma hakkında temel bilgileri öğrenin. Batch uygulaması için bir senaryoyu anlayıp ardından bir Node.js istemcisi kullanarak bu senaryoyu ayarlama adımlarından oluşan bir yaklaşım uyguluyoruz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu makalede, Node.js hakkında bilgi sahibi olduğunuz ve Linux kullanmaya alışkın olduğunuz varsayılmaktadır. Ayrıca, Batch ve Depolama hizmetleri oluşturmak için erişim haklarına sahip bir Azure hesabınız olduğu varsayılmıştır.
 
@@ -32,9 +32,9 @@ Aşağıdaki diyagram, Azure Batch ve bir Node.js istemcisini kullanarak Python 
 
 Node.js istemcisi, toplu işi bir hazırlama göreviyle (daha sonra ayrıntılı olarak açıklanacaktır) ve depolama hesabında kapsayıcıların sayısına bağlı olarak bir dizi görevle dağıtır. Dosyaları GitHub deposundan indirebilirsiniz.
 
-- [Node.js istemcisi](https://github.com/Azure/azure-batch-samples/blob/master/Node.js/GettingStarted/nodejs_batch_client_sample.js)
-- [Hazırlık görevi kabuk betikleri](https://github.com/Azure/azure-batch-samples/blob/master/Node.js/GettingStarted/startup_prereq.sh)
-- [JSON işlemcisine giden Python csv’si](https://github.com/Azure/azure-batch-samples/blob/master/Node.js/GettingStarted/processcsv.py)
+- [Node.js istemcisi](https://github.com/Azure-Samples/azure-batch-samples/blob/master/JavaScript/Node.js/sample.js)
+- [Hazırlık görevi kabuk betikleri](https://github.com/Azure-Samples/azure-batch-samples/blob/master/JavaScript/Node.js/startup_prereq.sh)
+- [JSON işlemcisine giden Python csv’si](https://github.com/Azure-Samples/azure-batch-samples/blob/master/JavaScript/Node.js/processcsv.py)
 
 > [!TIP]
 > Belirtilen bağlantıdaki Node.js istemcisi, Azure işlev uygulaması olarak dağıtılmasını sağlayacak ilgili kodu içermiyor. Bu kodu oluşturmak için aşağıdaki bağlantılardan yararlanabilirsiniz.

@@ -4,17 +4,17 @@ description: Azure özel uç noktasını kullanarak bir Web uygulamasına özel 
 author: ericgre
 ms.assetid: 2dceac28-1ba6-4904-a15d-9e91d5ee162c
 ms.topic: article
-ms.date: 10/09/2020
+ms.date: 03/16/2021
 ms.author: ericg
 ms.service: app-service
 ms.workload: web
 ms.custom: fasttrack-edit, references_regions
-ms.openlocfilehash: 8d471b680a6ff97b4b96a9c5f90f5548488dd35f
-ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
+ms.openlocfilehash: 4de405e07a9ae9d1efb33f2cee3630a1eefdef33
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103563620"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104655912"
 ---
 # <a name="using-private-endpoints-for-azure-web-app"></a>Azure Web App için Özel Uç Noktaları Kullanma
 
@@ -117,8 +117,6 @@ Fiyatlandırma ayrıntıları için bkz. [Azure özel bağlantı fiyatlandırmas
 Azure Işlevi 'ni özel uç nokta ile elastik Premium planda kullandığınızda, işlevi Azure Web portalında çalıştırmak veya yürütmek için doğrudan ağ erişiminizin olması gerekir veya bir HTTP 403 hatası alırsınız. Diğer bir deyişle, tarayıcınızın Azure Web portalından işlevi yürütmek için özel uç noktaya erişebilmesi gerekir. 
 
 Belirli bir Web uygulamasına en fazla 100 özel uç nokta bağlayabilirsiniz.
-
-Yuvalar özel uç nokta kullanamaz.
 
 Web uygulaması için özel uç nokta etkinleştirildiğinde uzaktan hata ayıklama işlevselliği kullanılamaz. Bu öneri, kodu bir yuvaya dağıtmaktır ve burada uzaktan hata ayıklayın.
 

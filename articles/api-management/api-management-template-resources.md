@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
 ms.openlocfilehash: c3b6123c63bf530463379a175745ef86baf2c5a3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "84689996"
 ---
 # <a name="azure-api-management-template-resources"></a>Azure API Management şablonu kaynakları
@@ -381,7 +381,7 @@ Aşağıdaki yerelleştirme seçenekleri desteklenir:
 |----------|----------|  
 |WebProductsAgreement|Ürününe abone olarak, {0} kabul ediyorum `<a data-toggle='modal' href='#legal-terms'\>Terms of Use</a\>` .|  
 |WebProductsLegalTermsLink|Kullanım Koşulları|  
-|WebProductsSubscribeButton|Abone olma|  
+|WebProductsSubscribeButton|Abonelik|  
 |WebProductsUsageLimitsHeader|Kullanım sınırları|  
 |Webproductsyouarenotabone|Bu ürüne abone oldunuz.|  
 |WebProductsYouRequestedSubscription|Bu ürüne abonelik istediniz.|  
@@ -516,7 +516,7 @@ Aşağıdaki yerelleştirme seçenekleri desteklenir:
 |WebAuthenticationNotAMember|Henüz üye değil misiniz? `<a href="/signup"\>Sign up now</a\>`|  
 |WebAuthenticationRemember|Bu bilgisayarda beni anımsa|  
 |WebAuthenticationSigininWithPassword|Kullanıcı adınızla ve parolanızla oturum açın|  
-|WebAuthenticationSigninTitle|Oturum aç|  
+|WebAuthenticationSigninTitle|Oturum açın|  
 |WebAuthenticationSignUpNow|Hemen kaydolun|  
   
 ###  <a name="signupstrings"></a><a name="SignupStrings"></a> SignupStrings  

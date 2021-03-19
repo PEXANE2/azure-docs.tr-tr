@@ -4,13 +4,13 @@ description: Azure portal bulut ve şirket içi ortamlarınızdaki yönetim çö
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 05/26/2020
-ms.openlocfilehash: 3c5df095cccec7509084f122c9a42f3b113d1c95
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.date: 03/18/2021
+ms.openlocfilehash: 27eac9cefe645087cae43c34cb6503b562fb7c07
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102047324"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104656315"
 ---
 # <a name="create-a-log-analytics-workspace-in-the-azure-portal"></a>Azure portalında Log Analytics çalışma alanı oluşturma
 Azure portal kullanarak Log Analytics çalışma alanı oluşturmak için **Log Analytics çalışma alanları** menüsünü kullanın. Log Analytics çalışma alanı, Azure Izleyici günlük verileri için benzersiz bir ortamdır. Her çalışma alanının kendi veri deposu ve yapılandırması vardır ve veri kaynakları ve çözümleri verilerini belirli bir çalışma alanında depolamak üzere yapılandırılır. Aşağıdaki kaynaklardan veri toplamayı planlıyorsanız bir Log Analytics çalışma alanı gerekir:
@@ -32,23 +32,24 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 [https://portal.azure.com](https://portal.azure.com) adresinden Azure portalında oturum açın. 
 
 ## <a name="create-a-workspace"></a>Çalışma alanı oluşturma
-1. Azure portalında **Tüm hizmetler**’e tıklayın. Kaynak listesinde **Log Analytics** yazın. Yazmaya başladığınızda liste, girişinize göre filtrelenir. **Log Analytics çalışma alanlarını** seçin.
+Azure portalında **Tüm hizmetler**’e tıklayın. Kaynak listesinde **Log Analytics** yazın. Yazmaya başladığınızda liste, girişinize göre filtrelenir. **Log Analytics çalışma alanlarını** seçin.
 
-    ![Azure portalı](media/quick-create-workspace/azure-portal-01.png)
+![Azure portalı](media/quick-create-workspace/azure-portal-01.png)
   
-2. **Ekle**' ye tıklayın ve ardından aşağıdaki öğeler için Seçenekler ' i seçin:
+**Ekle**' ye tıklayın ve ardından aşağıdaki seçenekler için değerler girin:
 
-   * Yeni **Log Analytics çalışma alanı** Için *defaultlaworkspace* gibi bir ad sağlayın. Bu ad tüm Azure Izleyici abonelikleri genelinde genel olarak benzersiz olmalıdır.
    * Varsayılan seçili abonelik uygun değilse açılan listeden bağlanacak bir **Abonelik** seçin.
    * **Kaynak grubu** için, zaten kurulumu veya yeni bir kaynak grubu oluşturmayı seçin.  
-   * Kullanılabilir bir **konum** seçin.  Daha fazla bilgi için, [' de hangi bölgelerin kullanılabildiği Log Analytics](https://azure.microsoft.com/regions/services/) ve **bir ürün Için aramadan** Azure izleyici araması ' nı inceleyin.  
-   * 2 Nisan 2018 tarihinden sonra oluşturulan yeni bir abonelikte çalışma alanı oluşturuyorsanız bu, otomatik olarak *GB başına* fiyatlandırma planını kullanır ve fiyatlandırma katmanı seçme seçeneği kullanılamaz.  2 Nisan 'dan önce oluşturulmuş mevcut bir abonelik için veya mevcut bir Kurumsal Anlaşma (EA) kaydına bağlı olan abonelik için bir çalışma alanı oluşturuyorsanız, tercih ettiğiniz fiyatlandırma katmanını seçin.  Belirli katmanlar hakkında daha fazla bilgi için bkz. [Log Analytics fiyatlandırma ayrıntıları](https://azure.microsoft.com/pricing/details/log-analytics/).
+   * Yeni **Log Analytics çalışma alanı** Için *defaultlaworkspace* gibi bir ad sağlayın. Bu ad tüm Azure Izleyici abonelikleri genelinde genel olarak benzersiz olmalıdır.
+   * Kullanılabilir bir **bölge** seçin.  Daha fazla bilgi için, [' de hangi bölgelerin kullanılabildiği Log Analytics](https://azure.microsoft.com/regions/services/) ve **bir ürün Için aramadan** Azure izleyici araması ' nı inceleyin.  
 
-        ![Log Analytics kaynak dikey penceresi oluşturma](media/quick-create-workspace/create-loganalytics-workspace-02.png)  
 
-3. **Log Analytics Çalışma Alanı** bölmesinde gerekli bilgileri girdikten sonra **Tamam**’a tıklayın.  
+        ![Log Analytics kaynak dikey penceresi oluşturma](media/quick-create-workspace/create-workspace.png)  
 
-Bilgilerin doğrulanıp çalışma alanının oluşturulması sırasında işlemin ilerleme durumunu menüdeki **Bildirimler**’in altından izleyebilirsiniz. 
+
+Ayarları gözden geçirmek için **gözden geçir + oluştur** ' a tıklayın ve ardından çalışma alanını oluşturmak için **oluşturun** . Bu, yeterli miktarda veri toplamaya başlamadan önce bir değişiklik yapmayacak şekilde Kullandıkça Öde varsayılan fiyatlandırma katmanını seçer. Diğer fiyatlandırma katmanları hakkında daha fazla bilgi için bkz. [Log Analytics fiyatlandırma ayrıntıları](https://azure.microsoft.com/pricing/details/log-analytics/).
+
+
 
 ## <a name="troubleshooting"></a>Sorun giderme
 Son 14 gün içinde silinen bir çalışma alanı oluşturduğunuzda ve [geçici silme durumunda](../logs/delete-workspace.md#soft-delete-behavior)işlem, çalışma alanı yapılandırmanıza bağlı olarak farklı bir sonuca sahip olabilir:

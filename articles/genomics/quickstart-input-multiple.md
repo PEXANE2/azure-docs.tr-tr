@@ -10,15 +10,15 @@ ms.author: grhuynh
 ms.topic: conceptual
 ms.date: 02/05/2018
 ms.openlocfilehash: b426015906a8e17674123c0c3ad2fccb9c43798f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "72248561"
 ---
 # <a name="submit-a-workflow-using-multiple-inputs-from-the-same-sample"></a>Aynı örnekten birden fazla giriş kullanarak iş akışı gönderme
 
-Bu makalede, giriş dosyanız **aynı örnekten gelen**bırden çok fastq veya Baa dosyası olduğunda Microsoft Genomiks hizmetine bir iş akışı gönderme işlemi gösterilmektedir. Örneğin, sıralayıcı üzerinde birden çok şeritte **aynı örneği** çalıştırdıysanız, sıralayıcı her şerit için bir çift FASTQ dosyası çıkarabilir. Hizalama ve varyant aramadan önce bu FASTQ dosyalarını birleştirmek yerine, bu girişlerin tümünü `msgen` istemcisine doğrudan gönderebilirsiniz. `msgen` istemcisinin çıktıları, .bam, .bai, .vcf dosyalarından oluşan **tek bir küme** olur. 
+Bu makalede, giriş dosyanız **aynı örnekten gelen** bırden çok fastq veya Baa dosyası olduğunda Microsoft Genomiks hizmetine bir iş akışı gönderme işlemi gösterilmektedir. Örneğin, sıralayıcı üzerinde birden çok şeritte **aynı örneği** çalıştırdıysanız, sıralayıcı her şerit için bir çift FASTQ dosyası çıkarabilir. Hizalama ve varyant aramadan önce bu FASTQ dosyalarını birleştirmek yerine, bu girişlerin tümünü `msgen` istemcisine doğrudan gönderebilirsiniz. `msgen` istemcisinin çıktıları, .bam, .bai, .vcf dosyalarından oluşan **tek bir küme** olur. 
 
 Ancak aynı gönderide FASTQ ve BAM dosyalarını bir arada **kullanamayacağınızı** unutmayın. Ayrıca, birden çok kişiden birden çok FASTQ veya BAM dosyası **gönderemezsiniz**. 
 
@@ -28,7 +28,7 @@ Bu makalede `msgen` istemcisini yükleyip çalıştırdığınız ve Azure Depol
 ## <a name="multiple-bam-files"></a>Birden fazla BAM dosyası
 
 ### <a name="upload-your-input-files-to-azure-storage"></a>Giriş dosyalarınızı Azure depolamaya yükleme
-Giriş olarak *reads.bam*, *additional_reads.bam* ve *yet_more_reads.bam* olmak üzere birden fazla BAM dosyasına sahip olduğunuzu ve bunları *myaccount* adlı Azure depolama hesabınıza yüklediğinizi düşünelim. API URL'sine ve erişim anahtarına sahipsiniz. **https://<span></span>myaccount.blob.core<span></span>.windows<span></span>.net<span></span>/outputs<span></span>** içinde iki çıkış olmasını istiyorsunuz.
+Giriş olarak *reads.bam*, *additional_reads.bam* ve *yet_more_reads.bam* olmak üzere birden fazla BAM dosyasına sahip olduğunuzu ve bunları *myaccount* adlı Azure depolama hesabınıza yüklediğinizi düşünelim. API URL'sine ve erişim anahtarına sahipsiniz. **https://<span></span>myaccount.blob.core <span></span>.windows <span></span>.net <span></span>/outputs <span></span>** içinde iki çıkış olmasını istiyorsunuz.
 
 
 ### <a name="submit-your-job-to-the-msgen-client"></a>İşinizi `msgen` istemcisine gönderme 
@@ -91,7 +91,7 @@ output_storage_account_container: outputs
 ## <a name="multiple-paired-fastq-files"></a>Birden fazla eşleştirilmiş FASTQ dosyası
 
 ### <a name="upload-your-input-files-to-azure-storage"></a>Giriş dosyalarınızı Azure depolamaya yükleme
-Giriş olarak *reads_1.fq.gz* ve *reads_2.fq.gz*, *additional_reads_1.fq.gz* ve *additional_reads_2.fq.gz* ile *yet_more_reads_1.fq.gz* ve *yet_more_reads_2.fq.gz* olmak üzere birden fazla eşleştirilmiş FASTQ dosyasına sahip olduğunuzu düşünelim. Bunları *myaccount* adlı Azure depolama hesabınıza yüklediniz. API URL'sine ve erişim anahtarına sahipsiniz. **https://<span></span>myaccount.blob.core<span></span>.windows<span></span>.net<span></span>/outputs<span></span>** içinde iki çıkış olmasını istiyorsunuz.
+Giriş olarak *reads_1.fq.gz* ve *reads_2.fq.gz*, *additional_reads_1.fq.gz* ve *additional_reads_2.fq.gz* ile *yet_more_reads_1.fq.gz* ve *yet_more_reads_2.fq.gz* olmak üzere birden fazla eşleştirilmiş FASTQ dosyasına sahip olduğunuzu düşünelim. Bunları *myaccount* adlı Azure depolama hesabınıza yüklediniz. API URL'sine ve erişim anahtarına sahipsiniz. **https://<span></span>myaccount.blob.core <span></span>.windows <span></span>.net <span></span>/outputs <span></span>** içinde iki çıkış olmasını istiyorsunuz.
 
 
 ### <a name="submit-your-job-to-the-msgen-client"></a>İşinizi `msgen` istemcisine gönderme 

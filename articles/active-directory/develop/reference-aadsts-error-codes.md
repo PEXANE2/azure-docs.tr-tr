@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: reference
-ms.date: 02/01/2021
+ms.date: 03/17/2021
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 606704621a4904dd0fb7b6f55e753dbe77e39cb5
-ms.sourcegitcommit: 27cd3e515fee7821807c03e64ce8ac2dd2dd82d2
+ms.openlocfilehash: 56ffa8c33c409e274318407a70f33edaabb5073d
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103601024"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104578507"
 ---
 # <a name="azure-ad-authentication-and-authorization-error-codes"></a>Azure AD Kimlik Doğrulaması ve yetkilendirme hata kodları
 
@@ -269,6 +269,7 @@ Hata kodları ve mesajlar değiştirilebilir.  En güncel bilgiler için, [https
 | AADSTS90094 | AdminConsentRequired-yönetici onayı gerekiyor. |
 | AADSTS900382 | Çapraz bulut isteğinde gizli Istemci desteklenmez. |
 | AADSTS90099 | ' {AppID} ' ({appName}) uygulamasının ' {Tenant} ' kiracısında yetkisi yok. İş ortaklarının yönetici temsilcileri tarafından kullanabilmesi için, uygulamaların müşteri kiracısına erişmesi gerekir. Uygulamayı yetkilendirmek için ön onay sağlayın veya uygun Iş Ortağı Merkezi API 'sini yürütün. |
+| AADSTS900971| Yanıt adresi belirtilmedi.|
 | AADSTS90100 | Invalidrequestparameter-parametre boş veya geçerli değil. |
 | AADSTS901002 | AADSTS901002: ' Resource ' istek parametresi desteklenmiyor. |
 | AADSTS90101 | Invalidemapostano-sağlanan veriler geçerli bir e-posta adresi değil. E-posta adresi biçiminde olmalıdır `someone@example.com` . |

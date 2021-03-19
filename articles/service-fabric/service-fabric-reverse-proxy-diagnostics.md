@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 08/08/2017
 ms.author: kavyako
 ms.openlocfilehash: bbc1fe5a76ecb5720bc49e0a082d5e9151b403d8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "75645472"
 ---
 # <a name="monitor-and-diagnose-request-processing-at-the-reverse-proxy"></a>İstek işlemesini ters ara sunucuda izleme ve tanılama
@@ -77,8 +77,8 @@ Aşağıda, bir birinin karşılaşabileceği ortak hata günlüklerini yorumlam
     
     Bu, eşleşen hizmet uç noktasını bulamadığı için ters proxy 'nin 404 döndürdüğü örnek bir olay aşağıda verilmiştir.
     İlgilendiğiniz yük girişleri şunlardır:
-   * **Processrequestphase**: hata oluştuğunda istek işleme sırasındaki aşamayı gösterir, ***trygetendpoint*** ör iletmek için hizmet uç noktası getirilmeye çalışılırken. 
-   * **ErrorDetails**: uç nokta arama ölçütlerini listeler. Burada listenerName belirtilen = **Frontendlistener** olduğunu ve çoğaltma uç noktası listesinin yalnızca **oldlistener**adlı bir dinleyici içerdiğini görebilirsiniz.
+   * **Processrequestphase**: hata oluştuğunda istek işleme sırasındaki aşamayı gösterir, **_trygetendpoint_** ör iletmek için hizmet uç noktası getirilmeye çalışılırken. 
+   * **ErrorDetails**: uç nokta arama ölçütlerini listeler. Burada listenerName belirtilen = **Frontendlistener** olduğunu ve çoğaltma uç noktası listesinin yalnızca **oldlistener** adlı bir dinleyici içerdiğini görebilirsiniz.
     
      ```
      {
@@ -96,7 +96,7 @@ Aşağıda, bir birinin karşılaşabileceği ortak hata günlüklerini yorumlam
      }
      }
      ```
-     Ters proxy 'nin 404 döndürdüğü başka bir örnek: ApplicationGateway\Http yapılandırma parametresi **Secureonlymode** , **https**üzerinde dinleme yapan ters proxy ile true olarak ayarlanır, ancak tüm çoğaltma uç noktaları güvenli değildir (http üzerinde dinleme).
+     Ters proxy 'nin 404 döndürdüğü başka bir örnek: ApplicationGateway\Http yapılandırma parametresi **Secureonlymode** , **https** üzerinde dinleme yapan ters proxy ile true olarak ayarlanır, ancak tüm çoğaltma uç noktaları güvenli değildir (http üzerinde dinleme).
      Ters proxy, isteği iletmek için HTTPS üzerinde dinleme yapan bir uç nokta bulamadığı için 404 döndürür. Olay yükünde parametreleri çözümlemek sorunu daraltmaya yardımcı olur:
     
      ```

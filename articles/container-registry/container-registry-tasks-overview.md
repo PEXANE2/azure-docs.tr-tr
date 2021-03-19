@@ -3,12 +3,12 @@ title: ACR Görevlerine genel bakış
 description: Bulutta güvenli, otomatik kapsayıcı görüntüsü oluşturma, yönetim ve düzeltme eki uygulama sağlayan bir Azure Container Registry özellik paketi olan ACR görevlerine giriş.
 ms.topic: article
 ms.date: 08/12/2020
-ms.openlocfilehash: b6df415bd55979ef00f6921321dbc254ef7a7e59
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: 1cf9faf934cebfb5abe0d2e1b26ffd7da2d6c549
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97562863"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104606795"
 ---
 # <a name="automate-container-image-builds-and-maintenance-with-acr-tasks"></a>ACR görevleriyle kapsayıcı görüntüsü derlemelerini ve bakımını otomatikleştirin
 
@@ -39,7 +39,7 @@ Kaynak denetimine işlemeden önce uygulamanızı kod yazma, oluşturma ve test 
 
 İlk kod satırlarınızı işlemeden önce, ACR görevlerinin [hızlı görev](container-registry-tutorial-quick-task.md) özelliği, kapsayıcı görüntüsü derlemelerinizi Azure 'a devrederek bir tümleşik geliştirme deneyimi sağlayabilir. Hızlı görevlerle, kodunuzu işlemeden önce otomatik derleme tanımlarınızı doğrulayabilirsiniz ve olası sorunları yakalayabilin.
 
-Tanıdık biçimi kullanarak `docker build` , Azure CLI 'deki [az ACR Build][az-acr-build] komutu bir [bağlam](#context-locations) alır (oluşturulacak dosya kümesi), ACR görevlerini gönderir ve varsayılan olarak, oluşturulan görüntüyü tamamlandıktan sonra kayıt defterine gönderir.
+Tanıdık biçimi kullanarak `docker build` , Azure CLI 'deki [az ACR Build][az-acr-build] komutu bir [bağlam](#context-locations) alır (oluşturulacak dosya kümesi), ACR görevlerine gönderilir ve varsayılan olarak, oluşturulan görüntüyü tamamlandığında kayıt defterine gönderir.
 
 Giriş için bkz. Azure Container Registry [bir kapsayıcı görüntüsü oluşturma ve çalıştırma](container-registry-quickstart-task-cli.md) hızlı başlangıcı.  
 

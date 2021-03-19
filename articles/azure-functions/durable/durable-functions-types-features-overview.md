@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 08/22/2019
 ms.author: azfuncdf
 ms.openlocfilehash: 35ef9d8731e169e890f5985ce01215fec5d6e3de
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "84697716"
 ---
 # <a name="durable-functions-types-and-features"></a>Türler ve Özellikler Dayanıklı İşlevler
@@ -23,7 +23,7 @@ Dayanıklı İşlevler, [Azure işlevleri](../functions-overview.md)'nin bir uza
 Orchestrator işlevleri, eylemlerin nasıl yürütüleceğini ve eylemlerin yürütülme sırasını açıklamaktadır. Orchestrator işlevleri [dayanıklı işlevler uygulama desenlerinde](durable-functions-overview.md#application-patterns)gösterildiği gibi kodda düzenleme (C# veya JavaScript) açıklanır. Bir düzenleme, [etkinlik işlevleri](#activity-functions), [alt](durable-functions-orchestrations.md#sub-orchestrations)düzenlemeler dahil olmak üzere çok sayıda farklı eylem türüne sahip olabilir, [dış olaylar](durable-functions-orchestrations.md#external-events), [http](durable-functions-http-features.md)ve [zamanlayıcılar](durable-functions-orchestrations.md#durable-timers)bekleniyor. Orchestrator işlevleri de [varlık işlevleriyle](#entity-functions)etkileşime geçebilir.
 
 > [!NOTE]
-> Orchestrator işlevleri sıradan kod kullanılarak yazılır, ancak kodun nasıl yazılacağı konusunda katı gereksinimler vardır. Özellikle, Orchestrator işlev kodu *belirleyici*olmalıdır. Bu belirleyici gereksinimlerin izlenmesi başarısız olursa, Orchestrator işlevlerinin düzgün şekilde çalışmamasına neden olabilir. Bu gereksinimlerle ilgili ayrıntılı bilgiler ve bunların çevresinde nasıl çalışılacağı [kod kısıtlamaları](durable-functions-code-constraints.md) konusunda bulunabilir.
+> Orchestrator işlevleri sıradan kod kullanılarak yazılır, ancak kodun nasıl yazılacağı konusunda katı gereksinimler vardır. Özellikle, Orchestrator işlev kodu *belirleyici* olmalıdır. Bu belirleyici gereksinimlerin izlenmesi başarısız olursa, Orchestrator işlevlerinin düzgün şekilde çalışmamasına neden olabilir. Bu gereksinimlerle ilgili ayrıntılı bilgiler ve bunların çevresinde nasıl çalışılacağı [kod kısıtlamaları](durable-functions-code-constraints.md) konusunda bulunabilir.
 
 Orchestrator işlevleri ve özellikleri hakkında daha ayrıntılı bilgi için bkz. [dayanıklı](durable-functions-orchestrations.md) düzenleme makalesi.
 
@@ -43,7 +43,7 @@ Etkinlik işlevi tanımlamak için bir [etkinlik tetikleyicisi](durable-function
 
 ## <a name="entity-functions"></a>Varlık işlevleri
 
-Varlık işlevleri, küçük durum parçalarını okumak ve güncelleştirmek için işlemleri tanımlar. Genellikle bu durum bilgisi olan varlıklara *dayanıklı varlıklar*olarak başvurduk. Orchestrator işlevleri gibi, varlık işlevleri de özel tetikleyici türü, *varlık tetikleyicisi*olan işlevlerdir. Bunlar, istemci işlevlerinden veya Orchestrator işlevlerinden de çağrılabilir. Orchestrator işlevlerinin aksine, varlık işlevlerinin belirli kod kısıtlamaları yoktur. Varlık işlevleri, durumu denetim akışı aracılığıyla örtük olarak temsil etmek yerine, durumu açıkça da yönetir.
+Varlık işlevleri, küçük durum parçalarını okumak ve güncelleştirmek için işlemleri tanımlar. Genellikle bu durum bilgisi olan varlıklara *dayanıklı varlıklar* olarak başvurduk. Orchestrator işlevleri gibi, varlık işlevleri de özel tetikleyici türü, *varlık tetikleyicisi* olan işlevlerdir. Bunlar, istemci işlevlerinden veya Orchestrator işlevlerinden de çağrılabilir. Orchestrator işlevlerinin aksine, varlık işlevlerinin belirli kod kısıtlamaları yoktur. Varlık işlevleri, durumu denetim akışı aracılığıyla örtük olarak temsil etmek yerine, durumu açıkça da yönetir.
 
 > [!NOTE]
 > Varlık işlevleri ve ilgili işlevler yalnızca Dayanıklı İşlevler 2,0 ve üzeri sürümlerde kullanılabilir.
@@ -52,7 +52,7 @@ Varlık işlevleri hakkında daha fazla bilgi için bkz. [dayanıklı varlıklar
 
 ## <a name="client-functions"></a>İstemci işlevleri
 
-Orchestrator işlevleri bir [düzenleme tetikleyicisi bağlaması](durable-functions-bindings.md#orchestration-trigger) tarafından tetiklenir ve varlık işlevleri bir [varlık tetikleyicisi bağlaması](durable-functions-bindings.md#entity-trigger)tarafından tetiklenir. Bu tetikleyicilerin her ikisi de bir [görev hub 'ında](durable-functions-task-hubs.md)sıraya alınmış iletilere tepki vererek çalışır. Bu iletileri sunmanýn birincil yolu, bir [Orchestrator istemci bağlaması](durable-functions-bindings.md#orchestration-client) veya bir *istemci işlevinin*içinden bir [varlık istemci bağlaması](durable-functions-bindings.md#entity-client) kullanmaktır. Orchestrator olmayan herhangi bir işlev bir *istemci işlevi*olabilir. Örneğin, bir HTTP ile tetiklenen bir işlevden Orchestrator 'ı tetikleyebilirsiniz, bir Azure Olay Hub 'ı tetiklenen işlev vb. Bir işlevi bir *istemci işlevi* yapan, dayanıklı istemci çıkış bağlamasının kullanımı.
+Orchestrator işlevleri bir [düzenleme tetikleyicisi bağlaması](durable-functions-bindings.md#orchestration-trigger) tarafından tetiklenir ve varlık işlevleri bir [varlık tetikleyicisi bağlaması](durable-functions-bindings.md#entity-trigger)tarafından tetiklenir. Bu tetikleyicilerin her ikisi de bir [görev hub 'ında](durable-functions-task-hubs.md)sıraya alınmış iletilere tepki vererek çalışır. Bu iletileri sunmanýn birincil yolu, bir [Orchestrator istemci bağlaması](durable-functions-bindings.md#orchestration-client) veya bir *istemci işlevinin* içinden bir [varlık istemci bağlaması](durable-functions-bindings.md#entity-client) kullanmaktır. Orchestrator olmayan herhangi bir işlev bir *istemci işlevi* olabilir. Örneğin, bir HTTP ile tetiklenen bir işlevden Orchestrator 'ı tetikleyebilirsiniz, bir Azure Olay Hub 'ı tetiklenen işlev vb. Bir işlevi bir *istemci işlevi* yapan, dayanıklı istemci çıkış bağlamasının kullanımı.
 
 > [!NOTE]
 > Diğer işlev türlerinden farklı olarak, Orchestrator ve varlık işlevleri doğrudan Azure portalındaki düğmeler kullanılarak tetiklenemez. Azure portalında bir Orchestrator veya varlık işlevini test etmek istiyorsanız, bunun yerine uygulamasının bir Orchestrator veya Entity işlevi Başlatan bir *istemci işlevi* çalıştırmalısınız. En basit test deneyimi için *el ile tetikleyici* işlevi önerilir.

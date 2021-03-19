@@ -4,10 +4,10 @@ description: Azure DevTest Labs Azure Pipelines sürekli tümleştirme ve teslim
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 96f99d41d0a7ea07bf3854292f9c3bd6245414b3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87288935"
 ---
 # <a name="integrate-azure-devtest-labs-into-your-azure-pipelines-cicd-pipeline"></a>Azure DevTest Labs Azure Pipelines CI/CD işlem hattınızla tümleştirin
@@ -31,7 +31,7 @@ Bu makalede, bir VM oluşturup dağıtmak, özel bir görüntü oluşturmak ve a
 - Visual Studio Market Azure DevTest Labs görevleri uzantısını yükler.
   
   1. [Azure DevTest Labs görevler](https://marketplace.visualstudio.com/items?itemName=ms-azuredevtestlabs.tasks)' e gidin.
-  1. **Ücretsiz Al**seçeneğini belirleyin.
+  1. **Ücretsiz Al** seçeneğini belirleyin.
   1. Açılan listeden Azure DevOps kuruluşunuzu seçin ve ardından **Install**' ı seçin. 
   
 ## <a name="create-the-template-to-build-an-azure-vm"></a>Azure VM oluşturmak için şablon oluşturma 
@@ -46,7 +46,7 @@ Bu bölümde, isteğe bağlı olarak bir Azure VM oluşturmak için kullandığ�
    > WinRM 'yi paylaşılan bir IP adresi ile birlikte kullandığınızda, bir dış bağlantı noktasını WinRM bağlantı noktasına eşlemek için bir NAT kuralı eklemeniz gerekir. VM 'yi genel bir IP adresi ile oluşturursanız, NAT kuralına gerek kalmaz.
    
    
-1. Şablonu bilgisayarınıza *CreateVMTemplate.js*adlı bir dosya olarak kaydedin.
+1. Şablonu bilgisayarınıza *CreateVMTemplate.js* adlı bir dosya olarak kaydedin.
    
 1. Şablonu kaynak denetim sisteminize iade edin.
 
@@ -89,7 +89,7 @@ Betik dosyasını oluşturmak için:
    Write-Host "##vso[task.setvariable variable=labVMFqdn;]$labVMFqdn"
    ```
 
-1. Dosyayı *GetLabVMParams.ps1*gibi bir adla kaydedin ve kaynak denetim sisteminize iade edin. 
+1. Dosyayı *GetLabVMParams.ps1* gibi bir adla kaydedin ve kaynak denetim sisteminize iade edin. 
 
 ## <a name="create-a-release-pipeline-in-azure-pipelines"></a>Azure Pipelines’da yayın işlem hattı oluşturma
 
@@ -97,7 +97,7 @@ Yeni bir yayın işlem hattı oluşturmak için:
 
 1. Azure DevOps proje sayfasından sol gezinmede işlem **hattı**  >  **yayınları** ' nı seçin.
 1. **Yeni İşlem Hattı**’nı seçin.
-1. **Şablon seçin**altında aşağı kaydırın ve **boş iş**' ı seçin ve ardından **Uygula**' yı seçin.
+1. **Şablon seçin** altında aşağı kaydırın ve **boş iş**' ı seçin ve ardından **Uygula**' yı seçin.
 
 ### <a name="add-and-set-variables"></a>Değişkenleri ekleme ve ayarlama
 
@@ -121,7 +121,7 @@ Sonraki adımda, gelecekteki dağıtımlar için kullanılacak altın görüntü
 
 1. Yayın ardışık düzen işlem **hattı** sekmesinde, aşama **görevleri**' ni görüntülemek için **1. aşamada** köprü metni seçin ve ardından **+** **Aracı işi**' nin yanındaki artı işaretini seçin. 
    
-1. **Görev Ekle**altında **VM oluştur Azure DevTest Labs**seçin ve **Ekle**' yi seçin. 
+1. **Görev Ekle** altında **VM oluştur Azure DevTest Labs** seçin ve **Ekle**' yi seçin. 
    
 1. Sol bölmede **Azure DEVTEST Labs VM oluştur** ' u seçin. 
 
@@ -133,7 +133,7 @@ Sonraki adımda, gelecekteki dağıtımlar için kullanılacak altın görüntü
    |**Laboratuvar adı**|Laboratuvar VM 'sinin oluşturulacağı mevcut bir laboratuvarın adını seçin.|
    |**Şablon adı**|Kaynak kodu deponuza kaydettiğiniz şablon dosyasının tam yolunu ve adını girin. Yolu basitleştirmek için yerleşik özellikleri kullanabilirsiniz, örneğin:<br /><br />`$(System.DefaultWorkingDirectory)/Templates/CreateVMTemplate.json`|
    |**Şablon parametreleri**|Daha önce tanımladığınız değişkenlerin parametrelerini girin:<br /><br />`-newVMName '$(vmName)' -userName '$(userName)' -password (ConvertTo-SecureString -String '$(password)' -AsPlainText -Force)`|
-   |**Çıkış değişkenleri**  >  **Laboratuvar VM kimliği**|Oluşturulan laboratuvar VM KIMLIĞI için değişkeni girin. Varsayılan **Labvmıd**kullanırsanız, sonraki görevlerdeki değişkenine *$ (labvmıd)* olarak başvurabilirsiniz.<br /><br />Varsayılan dışında bir ad oluşturabilirsiniz, ancak sonraki görevlerde doğru adı kullanmayı unutmayın. Laboratuvar VM KIMLIĞINI aşağıdaki biçimde yazabilirsiniz:<br /><br />`/subscriptions/{subscription Id}/resourceGroups/{resource group Name}/providers/Microsoft.DevTestLab/labs/{lab name}/virtualMachines/{vmName}`|
+   |**Çıkış değişkenleri**  >  **Laboratuvar VM kimliği**|Oluşturulan laboratuvar VM KIMLIĞI için değişkeni girin. Varsayılan **Labvmıd** kullanırsanız, sonraki görevlerdeki değişkenine *$ (labvmıd)* olarak başvurabilirsiniz.<br /><br />Varsayılan dışında bir ad oluşturabilirsiniz, ancak sonraki görevlerde doğru adı kullanmayı unutmayın. Laboratuvar VM KIMLIĞINI aşağıdaki biçimde yazabilirsiniz:<br /><br />`/subscriptions/{subscription Id}/resourceGroups/{resource group Name}/providers/Microsoft.DevTestLab/labs/{lab name}/virtualMachines/{vmName}`|
 
 ### <a name="collect-the-details-of-the-devtest-labs-vm"></a>DevTest Labs VM 'sinin ayrıntılarını toplayın
 
@@ -149,9 +149,9 @@ Daha önce oluşturduğunuz betiği, DevTest Labs VM 'nin ayrıntılarını topl
    
    |Alan|Değer|
    |---|---|
-   |**Azure bağlantı türü**|**Azure Resource Manager**seçin.|
+   |**Azure bağlantı türü**|**Azure Resource Manager** seçin.|
    |**Azure Aboneliği**|Hizmet bağlantınızı veya aboneliğinizi seçin.| 
-   |**Betik türü**|**Betik dosyası yolunu**seçin.|
+   |**Betik türü**|**Betik dosyası yolunu** seçin.|
    |**Betik yolu**|Kaynak kodu deponuza kaydettiğiniz PowerShell betiğinin tam yolunu ve adını girin. Yolu basitleştirmek için yerleşik özellikleri kullanabilirsiniz, örneğin:<br /><br />`$(System.DefaultWorkingDirectory/Scripts/GetLabVMParams.ps1`|
    |**Betik bağımsız değişkenleri**|Önceki görev tarafından doldurulmuş olan *Labvmıd* değişkeninin adını girin, örneğin:<br /><br />`-labVmId '$(labVMId)'`|
 
@@ -180,7 +180,7 @@ Sonraki görev, Azure DevTest Labs Örneğinizde yeni dağıtılan VM 'nin bir g
 
 Uygulamanızı yeni DevTest Labs sanal makinesine dağıtmak için görev ekleyebilirsiniz. Uygulamayı dağıtmak için genellikle kullandığınız görevler, hedef makinelerde *Azure dosya kopyalama* ve *PowerShell '* tir.
 
-Bu görevlerin parametreleri için ihtiyaç duyduğunuz VM bilgileri, yayın ardışık düzeninde bulunan **Labvmrgname**, **labvmı adresi**ve **labvmfqdn** adlı üç yapılandırma değişkenine depolanır. Yalnızca bir DevTest Labs sanal makinesi ve özel bir görüntü oluşturmak için bir uygulama dağıtmadan denemek istiyorsanız, bu adımı atlayabilirsiniz.
+Bu görevlerin parametreleri için ihtiyaç duyduğunuz VM bilgileri, yayın ardışık düzeninde bulunan **Labvmrgname**, **labvmı adresi** ve **labvmfqdn** adlı üç yapılandırma değişkenine depolanır. Yalnızca bir DevTest Labs sanal makinesi ve özel bir görüntü oluşturmak için bir uygulama dağıtmadan denemek istiyorsanız, bu adımı atlayabilirsiniz.
 
 ### <a name="delete-the-vm"></a>VM’yi silin
 
@@ -188,12 +188,12 @@ Son görev, Azure DevTest Labs örneğinize dağıttığınız sanal makineyi si
 
 1. Yayın ardışık düzen işlem **hattı** sekmesinde, aşama **görevleri**' ni görüntülemek için **1. aşamada** köprü metni seçin ve ardından **+** **Aracı işi**' nin yanındaki artı işaretini seçin. 
    
-1. **Görev Ekle**' nin altında, **VM 'yi Sil Azure DevTest Labs**seçin ve **Ekle**' yi seçin. 
+1. **Görev Ekle**' nin altında, **VM 'yi Sil Azure DevTest Labs** seçin ve **Ekle**' yi seçin. 
    
 1. Görevi şu şekilde yapılandırın:
    
-   - **Azure RM aboneliği**altında hizmet bağlantınızı veya aboneliğinizi seçin. 
-   - **Laboratuvar VM 'si kimliği**Için, labvmıd değişkeninin varsayılan adını değiştirdiyseniz buraya girin. Varsayılan değer **$ (Labvmıd)** değeridir.
+   - **Azure RM aboneliği** altında hizmet bağlantınızı veya aboneliğinizi seçin. 
+   - **Laboratuvar VM 'si kimliği** Için, labvmıd değişkeninin varsayılan adını değiştirdiyseniz buraya girin. Varsayılan değer **$ (Labvmıd)** değeridir.
    
 ### <a name="save-the-release-pipeline"></a>Yayın ardışık düzenini kaydetme
 
@@ -209,7 +209,7 @@ Yeni işlem hattını kullanarak bir yayın oluşturmak ve çalıştırmak için
 
 1. Yayın ardışık düzeni sayfasında sağ üstteki **yayın oluştur** ' u seçin. 
    
-1. **Yapıtlar**altında, en son yapıyı seçin ve ardından **Oluştur**' u seçin.
+1. **Yapıtlar** altında, en son yapıyı seçin ve ardından **Oluştur**' u seçin.
    
 1. Her sürüm aşamasında, sanal makine oluşturma, görüntü oluşturma ve VM silme işlemini görüntülemek için Azure portal DevTest Labs örneğinizin görünümünü yenileyin.
 

@@ -10,12 +10,12 @@ author: mokabiru
 ms.author: mokabiru
 ms.reviewer: MashaMSFT
 ms.date: 11/06/2020
-ms.openlocfilehash: f9b6dea216e05bb645daf5fdd041cec692821af8
-ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
+ms.openlocfilehash: 1767f1f990326e513393b8ce47e1ed8485f73849
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103565286"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104656654"
 ---
 # <a name="migration-guide-oracle-to-sql-server-on-azure-vm"></a>Geçiş Kılavuzu: Azure VM 'de SQL Server için Oracle
 [!INCLUDE[appliesto-sqldb-sqlmi](../../includes/appliesto-sqldb.md)]
@@ -47,15 +47,48 @@ Bir envanter taraması gerçekleştirmek için harıta araç setini kullanmak i�
 
 1. [Harita araç setini](https://go.microsoft.com/fwlink/?LinkID=316883)açın.
 1. **Veritabanı oluştur/Seç**' i seçin.
+
+   ![Veritabanı seçin](./media/oracle-to-sql-on-azure-vm-guide/select-database.png)
+
 1. **Envanter veritabanı oluştur**' u seçin, oluşturmakta olduğunuz yeni envanter veritabanı için bir ad girin, kısa bir açıklama sağlayın ve **Tamam**' ı seçin. 
+
+   :::image type="content" source="media/oracle-to-sql-on-azure-vm-guide/create-inventory-database.png" alt-text="Envanter veritabanı oluşturma":::
+
 1. Envanter **ve değerlendirme Sihirbazı**'nı açmak için **Envanter verilerini topla** ' yı seçin. 
+
+   :::image type="content" source="media/oracle-to-sql-on-azure-vm-guide/collect-inventory-data.png" alt-text="Stok verilerini toplama":::
+
 1. **Envanter ve değerlendirme sihirbazında** **Oracle** ' ı seçin ve ardından **İleri**' yi seçin. 
+
+   ![Oracle 'ı seçin](./media/oracle-to-sql-on-azure-vm-guide/choose-oracle.png)
+
 1. İş gereksinimlerinize ve ortamınıza en uygun bilgisayar arama seçeneğini belirleyin ve ardından **İleri**' yi seçin: 
+
+   ![İş gereksinimlerinize en uygun bilgisayar arama seçeneğini belirleyin](./media/oracle-to-sql-on-azure-vm-guide/choose-search-option.png)
+
 1. Araştırmak istediğiniz sistemler için kimlik bilgilerini girin veya yeni kimlik bilgileri oluşturun ve ardından **İleri**' yi seçin.
+
+    ![Kimlik bilgilerini girin](./media/oracle-to-sql-on-azure-vm-guide/choose-credentials.png)
+
 1. Kimlik bilgilerinin sırasını ayarlayın ve ardından **İleri**' yi seçin. 
+
+   ![Kimlik bilgisi sırasını ayarla](./media/oracle-to-sql-on-azure-vm-guide/set-credential-order.png)  
+
 1. Keşif yapmak istediğiniz her bilgisayar için kimlik bilgilerini belirtin. Her bilgisayar/makine için benzersiz kimlik bilgileri kullanabilir veya **tüm bilgisayar kimlik bilgileri** listesini kullanmayı tercih edebilirsiniz.  
+
+
+   ![Keşif yapmak istediğiniz her bilgisayar için kimlik bilgilerini belirtin](./media/oracle-to-sql-on-azure-vm-guide/specify-credentials-for-each-computer.png)
+
+
 1. Seçim özetinizi doğrulayıp **son**' u seçin.
-1. Tarama tamamlandıktan sonra, **veri koleksiyonu** özet raporunu görüntüleyin. Tarama birkaç dakika sürer ve veritabanlarının sayısına bağlıdır. Bittiğinde **Kapat** ' ı seçin. 
+
+   ![Özeti gözden geçirin](./media/oracle-to-sql-on-azure-vm-guide/review-summary.png)
+
+1. Tarama tamamlandıktan sonra, **veri koleksiyonu** özet raporunu görüntüleyin. Tarama birkaç dakika sürebilir ve veritabanlarının sayısına bağlıdır. Bittiğinde **Kapat** ' ı seçin. 
+
+   ![Koleksiyon özet raporu](./media/oracle-to-sql-on-azure-vm-guide/collection-summary-report.png)
+
+
 1. Oracle değerlendirmesi ve veritabanı ayrıntıları hakkında bir rapor oluşturmak için **Seçenekler** ' i seçin. Raporu oluşturmak için her iki seçeneği de (tek tek) seçin.
 
 
@@ -68,8 +101,20 @@ Bir değerlendirme oluşturmak için aşağıdaki adımları izleyin:
 1. [Oracle için SQL Server Geçiş Yardımcısı (SSMA)](https://www.microsoft.com/en-us/download/details.aspx?id=54258)açın. 
 1. **Dosya** ' yı ve ardından **Yeni proje**' yi seçin. 
 1. Projenizin kaydedileceği bir konum belirtin ve ardından açılır listeden bir SQL Server geçiş hedefi seçin. **Tamam**’ı seçin. 
-1. Oracle **'A Bağlan** Iletişim kutusunda Oracle bağlantı ayrıntıları için değerler girin.
+
+   ![Yeni proje](./media/oracle-to-sql-on-azure-vm-guide/new-project.png)
+
+1. **Oracle 'A Bağlan**' ı seçin. Oracle **'A Bağlan** Iletişim kutusunda Oracle bağlantı ayrıntıları için değerler girin.
+
+   ![Oracle 'a Bağlan](./media/oracle-to-sql-on-azure-vm-guide/connect-to-oracle.png)
+
+   Geçirmek istediğiniz Oracle şemalarını seçin: 
+
+   ![Oracle şeması Seç](./media/oracle-to-sql-on-azure-vm-guide/select-schema.png)
+
 1. **Oracle meta veri Gezgini**'nde geçirmek istediğiniz Oracle şemasına sağ tıklayıp **rapor oluştur**' u seçin. Bu, bir HTML raporu oluşturur. Alternatif olarak, veritabanını seçtikten sonra gezinti çubuğundan **rapor oluştur** ' u seçebilirsiniz.
+
+   ![Rapor oluştur](./media/oracle-to-sql-on-azure-vm-guide/create-report.png)
 
 1. **Oracle meta veri Gezgini**' nde Oracle şemasını seçin ve ardından dönüştürme istatistikleri ve hata/uyarılar IÇEREN bir HTML raporu oluşturmak Için **rapor oluştur** ' u seçin.
 1. Hata ve uyarıların yanı sıra dönüştürme istatistiklerinin HTML raporunu gözden geçirin. Dönüştürme sorunlarını ve çözümlerini anlamak için bunu çözümleyin.
@@ -80,6 +125,9 @@ Bir değerlendirme oluşturmak için aşağıdaki adımları izleyin:
 
     ardından, Oracle nesnelerinin envanterini ve şema dönüştürmeleri gerçekleştirmek için gereken çabayı almak üzere Excel 'de açın.
 
+   ![Dönüştürme raporu](./media/oracle-to-sql-on-azure-vm-guide/conversion-report.png)
+
+
 
 ### <a name="validate-data-types"></a>Veri türlerini doğrula
 
@@ -88,6 +136,9 @@ Varsayılan veri türü eşlemelerini doğrulayın ve gerekirse gereksinimlere g
 1. Menüden **Araçlar** ' ı seçin. 
 1. **Proje ayarları**' nı seçin. 
 1. **Tür eşlemeleri** sekmesini seçin. 
+
+   ![Tür eşlemeleri](./media/oracle-to-sql-on-azure-vm-guide/type-mappings.png)
+
 1. **Oracle meta veri Gezgini**' nde tabloyu seçerek her tablo için tür eşlemesini değiştirebilirsiniz. 
 
 
@@ -98,8 +149,20 @@ Varsayılan veri türü eşlemelerini doğrulayın ve gerekirse gereksinimlere g
 
 1. Seçim Dinamik veya geçici sorguları dönüştürmek için, düğümüne sağ tıklayın ve **Ekstre Ekle**' yi seçin.
 1. Üst çizgi gezinti çubuğundan **SQL Server Bağlan** ' ı seçin ve Azure VM 'de SQL Server için bağlantı ayrıntılarını sağlayın. Mevcut bir veritabanına bağlanmayı veya yeni bir ad sağlamayı seçebilirsiniz; Bu durumda hedef sunucuda bir veritabanı oluşturulur.
-1. Şemaya sağ tıklayıp **Şemayı Dönüştür**' ü seçin.
+
+   ![SQL 'e Bağlan](./media/oracle-to-sql-on-azure-vm-guide/connect-to-sql-vm.png)
+
+1. **Oracle meta veri Gezgini** 'nde Oracle şemasına sağ tıklayıp **Şemayı Dönüştür**' ü seçin.
+
+   ![Şemayı Dönüştür](./media/oracle-to-sql-on-azure-vm-guide/convert-schema.png)
+
 1. Şema dönüştürme işlemi tamamlandıktan sonra olası sorunları belirlemek için şemanın yapısını karşılaştırın ve gözden geçirin.
+
+   ![Önerileri gözden geçirin](./media/oracle-to-sql-on-azure-vm-guide/table-mapping.png)
+
+   Dönüştürülmüş Transact-SQL metnini özgün Saklı yordamlarla karşılaştırın ve önerileri gözden geçirin: 
+
+   ![Öneri kodunu gözden geçirin](./media/oracle-to-sql-on-azure-vm-guide/procedure-comparison.png)
 
    Çevrimdışı şema düzeltme alıştırması için projeyi yerel olarak kaydedebilirsiniz. Bunu, **Dosya** menüsünden **projeyi kaydet** ' i seçerek yapabilirsiniz. Bu, şemayı SQL Server için yayımlamadan önce kaynak ve hedef şemaları çevrimdışına almak ve düzeltmeyi gerçekleştirmek için bir fırsat sağlar.
 
@@ -112,10 +175,28 @@ Gerekli önkoşullara sahip olduktan ve **geçiş öncesi** aşamalandırmayla i
 Şemayı yayımlamak ve verileri geçirmek için şu adımları izleyin: 
 
 1. **SQL Server meta veri Gezgini** ' nden veritabanına sağ tıklayın ve **veritabanıyla Synchronize**' ı seçin. Bu eylem, Oracle şemasını Azure VM 'de SQL Server yayımlar. 
+
+   ![Veritabanıyla Synchronize](./media/oracle-to-sql-on-azure-vm-guide/synchronize-database.png)
+
+   Eşitleme durumunu gözden geçirin: 
+
+   ![Eşitleme durumunu gözden geçirme](./media/oracle-to-sql-on-azure-vm-guide/synchronize-database-review.png)
+
+
 1. **Oracle meta veri Gezgini** ' nden Oracle şemasına sağ tıklayın ve **veri geçişi**' ni seçin. Alternatif olarak, üst çizgi gezintiden veri geçişini seçebilirsiniz.
+
+   ![Verileri geçirme](./media/oracle-to-sql-on-azure-vm-guide/migrate-data.png)
+
 1. İletişim kutusunda Oracle ve SQL Server için Azure VM 'ye yönelik bağlantı ayrıntılarını girin.
 1. Geçiş tamamlandıktan sonra, veri geçiş raporunu görüntüleyin:
+
+    ![Veri geçiş raporu](./media/oracle-to-sql-on-azure-vm-guide/data-migration-report.png)
+
 1. SQL Server örneğindeki verileri ve şemayı gözden geçirmek için [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) kullanarak Azure VM 'de SQL Server bağlanın. 
+
+   ![SSMA 'da doğrula](./media/oracle-to-sql-on-azure-vm-guide/validate-in-ssms.png)
+
+
 
 
 SSMA kullanmanın yanı sıra, verileri geçirmek için SQL Server Integration Services (SSIS) de kullanabilirsiniz. Daha fazla bilgi edinmek için şu makalelere bakın: 
@@ -164,7 +245,7 @@ Bu geçiş senaryosunu tamamlamaya yönelik ek yardım için, lütfen gerçek d�
 | [Oracle envanter betiği yapıtları](https://github.com/Microsoft/DataMigrationTeam/tree/master/Oracle%20Inventory%20Script%20Artifacts)                 | Bu varlık, Oracle sistem tabloları ' nı ziyaret eden bir PL/SQL sorgusu içerir ve şema türüne, nesne türüne ve duruma göre nesne sayısını sağlar. Ayrıca, her şemada ' ham veriler ' ' in kabaca bir tahminini ve her şemadaki tabloların, bir CSV biçiminde depolanmış sonuçlarla birlikte boyutlandırılmasını sağlar.                                                                                                               |
 | [SSMA Oracle değerlendirmesi toplama & birleştirme işlemini otomatikleştirin](https://github.com/microsoft/DataMigrationTeam/tree/master/IP%20and%20Scripts/Automate%20SSMA%20Oracle%20Assessment%20Collection%20%26%20Consolidation)                                             | Bu kaynak kümesi, konsol modunda SSMA değerlendirmesi çalıştırmak için gereken XML dosyalarını oluşturmak için bir. csv dosyasını girdi olarak (proje klasörlerinde sources.csv) kullanır. source.csv, müşteri tarafından mevcut Oracle örneklerinin envanterini temel alarak sağlanır. Çıktı dosyaları AssessmentReportGeneration_source_1.xml, ServersConnectionFile.xml ve VariableValueFile.xml.|
 | [Oracle ortak hataları ve bunların nasıl düzeltileceğini gösteren SSMA](https://aka.ms/dmj-wp-ssma-oracle-errors)                                                           | Oracle ile WHERE yan tümcesinde skalar olmayan bir koşul atayabilirsiniz. Ancak SQL Server bu tür bir koşulu desteklemez. Sonuç olarak, Oracle için SQL Server Geçiş Yardımcısı (SSMA), bir hata O2SS0001 oluşturmak yerine WHERE yan tümcesinde skalar olmayan bir koşula sahip sorguları dönüştürmez. Bu Teknik İnceleme, sorun hakkında daha fazla ayrıntı ve sorunu çözmeye yönelik yolları sağlar.          |
-| [SQL Server geçiş el kitabı için Oracle](https://github.com/microsoft/DataMigrationTeam/blob/master/Whitepapers/Oracle%20to%20SQL%20Server%20Migration%20Handbook.pdf)                | Bu belge, bir Oracle şemasının en son SQL Server sürümüne geçirilmesi ile ilişkili görevlere odaklanır. Geçiş, özelliklerde/işlevlerde değişiklikler gerektiriyorsa, veritabanını kullanan uygulamalardaki her bir değişikliğin olası etkisi dikkatle düşünülmelidir.                                                     |
+| [SQL Server geçiş el kitabı için Oracle](https://github.com/microsoft/DataMigrationTeam/blob/master/Whitepapers/Oracle%20to%20SQL%20Server%20Migration%20Handbook.pdf)                | Bu belge, bir Oracle şemasını SQL Server en son sürümüne geçirme ile ilişkili görevlere odaklanır. Geçiş, özelliklerde/işlevlerde değişiklikler gerektiriyorsa, veritabanını kullanan uygulamalardaki her bir değişikliğin olası etkisi dikkatle düşünülmelidir.                                                     |
 
 Bu kaynaklar, Azure veri grubu Mühendisliği ekibi tarafından sponsorlu Data SQL Dokja programının bir parçası olarak geliştirilmiştir. Data SQL Dokja programının temel kreter, Microsoft 'un Azure veri platformuna yönelik karmaşık modernleştirme ve rekabet veri platformu geçiş fırsatlarını engellemeyi ve hızlandırmanızı sağlar. Kuruluşunuzun Data SQL Dokja programına katılım ile ilgilenmesini düşünüyorsanız, lütfen hesap ekibinize başvurarak bir aday göndermesini isteyin.
 

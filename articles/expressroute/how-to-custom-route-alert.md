@@ -1,22 +1,22 @@
 ---
 title: 'ExpressRoute: tanıtılan yollar için özel uyarıları yapılandırma'
-description: Bu makalede, 200 yol sınırına vurmasını engellemek amacıyla ExpressRoute Gateway 'ten şirket içi ağlara tanıtılan yolların sayısını izlemek için Azure Otomasyonu ve Logic Apps nasıl kullanılacağı gösterilmektedir.
+description: Bu makalede, 1000 yol sınırına vurmasını engellemek amacıyla ExpressRoute Gateway 'ten şirket içi ağlara tanıtılan yolların sayısını izlemek için Azure Otomasyonu ve Logic Apps nasıl kullanılacağı gösterilmektedir.
 services: expressroute
 author: duongau
 ms.service: expressroute
 ms.topic: how-to
 ms.date: 05/29/2020
 ms.author: duau
-ms.openlocfilehash: fed7663e2342a708aee70b9a54e6e0a6b6f97e8c
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.openlocfilehash: 2291d1fa7f890296c59661060f5a823d8eb194ba
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102504410"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104654399"
 ---
 # <a name="configure-custom-alerts-to-monitor-advertised-routes"></a>Kullanıma sunulan yolları izlemek için özel uyarılar yapılandırma
 
-Bu makale, ExpressRoute ağ geçidinden şirket içi ağlara tanıtılan yolların sayısını sürekli izlemek için Azure Otomasyonu 'nu ve Logic Apps kullanmanıza yardımcı olur. İzleme, [200 yol sınırının](expressroute-faqs.md#how-many-prefixes-can-be-advertised-from-a-vnet-to-on-premises-on-expressroute-private-peering)vurmasını önlemeye yardımcı olabilir.
+Bu makale, ExpressRoute ağ geçidinden şirket içi ağlara tanıtılan yolların sayısını sürekli izlemek için Azure Otomasyonu 'nu ve Logic Apps kullanmanıza yardımcı olur. İzleme, 1000 yol sınırının (ExpressRoute-FAQ. MD # nasıl-çok-önekleri------------------------------------------
 
 **Azure Otomasyonu** , bir *runbook*'ta depolanan özel PowerShell betiğinin yürütülmesini otomatik hale getirmenizi sağlar. Bu makalede yapılandırma kullanılırken, runbook bir veya daha fazla ExpressRoute ağ geçidini sorgulayan bir PowerShell betiği içerir. Kaynak grubu, ExpressRoute ağ geçidi adı ve şirket içinde tanıtılan ağ ön ekleri sayısını içeren bir veri kümesi toplar.
 
@@ -48,7 +48,7 @@ Yapılandırmanıza başlamadan önce aşağıdaki ölçütleri karşıladığı
 
 * Bu makalede ele alınan özel uyarı, daha iyi işlem ve denetim elde etmek için bir eklentidir. ExpressRoute 'daki yerel uyarıların yerini almaz.
 * ExpressRoute ağ geçitleri için veri toplama, arka planda çalışır. Çalışma zamanı beklenenden uzun olabilir. İş sıraya alma işlemini önlemek için iş akışı tekrarının doğru şekilde ayarlanması gerekir.
-* Betiklerine veya ARM şablonlarına göre dağıtımlar özel alarm tetikleyicisinden daha hızlı gerçekleşebilir. Bu, 200 yol sınırının üzerindeki ExpressRoute ağ geçidinde bulunan ağ ön ekleri sayısının artmaya neden olabilir.
+* Betiklerine veya ARM şablonlarına göre dağıtımlar özel alarm tetikleyicisinden daha hızlı gerçekleşebilir. Bu, 1000 yol sınırının üzerindeki ExpressRoute ağ geçidinde bulunan ağ ön ekleri sayısının artmaya neden olabilir.
 
 ## <a name="create-and-configure-accounts"></a><a name="accounts"></a>Hesapları oluşturma ve yapılandırma
 
@@ -409,7 +409,7 @@ JSON bir kez ayrıştırıldıktan sonra **JSON veri Işlemini Ayrıştır** eyl
 
    :::image type="content" source="./media/custom-route-alert-portal/peer-2.png" alt-text="numRoutesPeer2":::
 
-9. NumRoute1 veya numRoute2 gibi iki dinamik değişkenden biri eşikten büyük olduğunda Logic Condition değeri true 'dur. Bu örnekte, eşik 160 80 (en büyük değer olan 200) ' e sabitlenmiştir. Eşik değerini gereksinimlerinize uyacak şekilde değiştirebilirsiniz. Tutarlılık için, bu değer runbook PowerShell betiğinde kullanılan değer olmalıdır.
+9. NumRoute1 veya numRoute2 gibi iki dinamik değişkenden biri eşikten büyük olduğunda Logic Condition değeri true 'dur. Bu örnekte, eşik 800 80 (en büyük değer olan 1000) ' e sabitlenmiştir. Eşik değerini gereksinimlerinize uyacak şekilde değiştirebilirsiniz. Tutarlılık için, bu değer runbook PowerShell betiğinde kullanılan değer olmalıdır.
 
    :::image type="content" source="./media/custom-route-alert-portal/logic-condition.png" alt-text="Mantıksal koşul":::
 

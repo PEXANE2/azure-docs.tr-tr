@@ -4,10 +4,10 @@ description: Azure Service Bus iletilerini önceden getirerek performansı artı
 ms.topic: article
 ms.date: 06/23/2020
 ms.openlocfilehash: 05e23b0590f0c04171efda8fb561b4c2664ed096
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85341056"
 ---
 # <a name="prefetch-azure-service-bus-messages"></a>Önceden getirme Azure Service Bus iletileri
@@ -18,7 +18,7 @@ Tek bir başlangıç [alma](/dotnet/api/microsoft.servicebus.messaging.queueclie
 
 ## <a name="enable-prefetch"></a>Önceden getirmeyi etkinleştir
 
-.NET ile, bir **MessageReceiver**, **Queueclient**veya **Subscriptionclient** öğesinin [prefetchcount](/dotnet/api/microsoft.azure.servicebus.queueclient.prefetchcount#Microsoft_Azure_ServiceBus_QueueClient_PrefetchCount) özelliğini sıfırdan büyük bir sayıya ayarlayarak önceden getirme özelliğini etkinleştirirsiniz. Değerin sıfır olarak ayarlanması, önceden getirme özelliğini devre dışı bırakır.
+.NET ile, bir **MessageReceiver**, **Queueclient** veya **Subscriptionclient** öğesinin [prefetchcount](/dotnet/api/microsoft.azure.servicebus.queueclient.prefetchcount#Microsoft_Azure_ServiceBus_QueueClient_PrefetchCount) özelliğini sıfırdan büyük bir sayıya ayarlayarak önceden getirme özelliğini etkinleştirirsiniz. Değerin sıfır olarak ayarlanması, önceden getirme özelliğini devre dışı bırakır.
 
 Bu bağlamlarda etkisini görmek için, bu ayarı [Queuesgettingstarted](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/QueuesGettingStarted) veya [ReceiveLoop](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/ReceiveLoop) Samples ' ayarlarının alma tarafına kolayca ekleyebilirsiniz.
 
@@ -30,7 +30,7 @@ Bu bağlamlarda etkisini görmek için, bu ayarı [Queuesgettingstarted](https:/
 
 Önceden getirme, uygulamanın bir kullanıcıdan önce ve öncesinde yerel olarak alımı için hazır bir ileti sunarak ileti akışını hızlandırır. Bu aktarım hızı, uygulama yazarının açıkça yapması gereken bir denge sonucudur:
 
-[Receiveanddelete](/dotnet/api/microsoft.servicebus.messaging.receivemode) alma moduyla birlikte, önceden getirme arabelleğine alınan tüm iletiler kuyrukta kullanılamaz ve yalnızca, **Receive** / **ReceiveAsync** veya **OnMessage** / **onmessageasync** API 'leri aracılığıyla uygulamaya alınana kadar bellek içi önceden getirme arabelleğinde yer alır. Uygulama, iletiler uygulamaya alınmadan önce sonlanmışsa, bu iletiler kurtarılamayacak şekilde kaybedilir.
+[Receiveanddelete](/dotnet/api/microsoft.servicebus.messaging.receivemode) alma moduyla birlikte, önceden getirme arabelleğine alınan tüm iletiler kuyrukta kullanılamaz ve yalnızca,  / **ReceiveAsync** veya **OnMessage** / **onmessageasync** API 'leri aracılığıyla uygulamaya alınana kadar bellek içi önceden getirme arabelleğinde yer alır. Uygulama, iletiler uygulamaya alınmadan önce sonlanmışsa, bu iletiler kurtarılamayacak şekilde kaybedilir.
 
 [PeekLock](/dotnet/api/microsoft.servicebus.messaging.receivemode#Microsoft_ServiceBus_Messaging_ReceiveMode_PeekLock) alma modunda, önceden getirme arabelleğine getirilen iletiler, ön belleğe kilitli durumda alınır ve kilit için zaman aşımı saatine sahiptir. Önceden getirme arabelleği büyükse ve işleme, önceden getirme arabelleğinde veya uygulama iletiyi işlerken bile ileti kilitlerinin süresinin dolacağı zaman alıyorsa, uygulamanın işlemesi için bazı kafa karıştırıcı olaylar olabilir.
 
