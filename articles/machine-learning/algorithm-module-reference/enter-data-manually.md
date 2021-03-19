@@ -10,10 +10,10 @@ author: likebupt
 ms.author: keli19
 ms.date: 02/22/2020
 ms.openlocfilehash: 3bff9a91f06649487560faef3ab554b2a3d56af3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90908067"
 ---
 # <a name="enter-data-manually-module"></a>Verileri el Ile gir modülü
@@ -32,7 +32,7 @@ Bu modül, aşağıdaki senaryolarda yararlı olabilir:
   
 1. [Verileri el Ile gir](./enter-data-manually.md) modülünü ardışık düzene ekleyin. Bu modülü, Azure Machine Learning **veri girişi ve çıkış** kategorisinde bulabilirsiniz. 
   
-1. **DataFormat**için aşağıdaki seçeneklerden birini seçin. Bu seçenekler, sağladığınız verilerin nasıl ayrıştırılaceğini belirlemektir. Her biçimin gereksinimleri önemli ölçüde farklılık gösterir, bu nedenle ilgili konuları okuduğunuzdan emin olun.  
+1. **DataFormat** için aşağıdaki seçeneklerden birini seçin. Bu seçenekler, sağladığınız verilerin nasıl ayrıştırılaceğini belirlemektir. Her biçimin gereksinimleri önemli ölçüde farklılık gösterir, bu nedenle ilgili konuları okuduğunuzdan emin olun.  
   
    - **Arff**: WEKA tarafından kullanılan öznitelik ilişkisi dosya biçimi.   
    - **CSV**: virgülle ayrılmış değerler biçimi. Daha fazla bilgi için bkz. [CSV 'ye dönüştürme](./convert-to-csv.md).    

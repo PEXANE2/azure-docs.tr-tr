@@ -12,10 +12,10 @@ manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 5b820b8b9606795709d03414fa14ec29a1b5c519
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92441564"
 ---
 # <a name="dynamic-groups-and-azure-active-directory-b2b-collaboration"></a>Dinamik Gruplar ve Azure Active Directory B2B işbirliği
@@ -29,10 +29,10 @@ Dinamik gruplar oluşturmak ve kullanmak için uygun [Azure AD Premium P1 veya P
 Bir üyelik kuralı kullanarak bir kiracının içindeki tüm kullanıcıları içeren bir grup oluşturabilirsiniz. Kullanıcılar gelecekte kiracıya eklendiğinde veya kiracıdan çıkarıldığında grubun üyeliği otomatik olarak ayarlanır.
 
 1. Kiracıda genel yönetici veya Kullanıcı Yöneticisi rolünün atandığı bir hesapla [Azure Portal](https://portal.azure.com) oturum açın.
-1. **Azure Active Directory**seçin.
-2. **Yönet**altında **gruplar**' ı seçin ve ardından **Yeni Grup**' u seçin.
-1. **Yeni Grup** sayfasında, **Grup türü**altında **güvenlik**' i seçin. Yeni grup için bir **Grup adı** ve **Grup açıklaması** girin. 
-2. **Üyelik türü**altında **Dinamik Kullanıcı**' yı seçin ve ardından **Dinamik sorgu Ekle**' yi seçin. 
+1. **Azure Active Directory** seçin.
+2. **Yönet** altında **gruplar**' ı seçin ve ardından **Yeni Grup**' u seçin.
+1. **Yeni Grup** sayfasında, **Grup türü** altında **güvenlik**' i seçin. Yeni grup için bir **Grup adı** ve **Grup açıklaması** girin. 
+2. **Üyelik türü** altında **Dinamik Kullanıcı**' yı seçin ve ardından **Dinamik sorgu Ekle**' yi seçin. 
 4. **Kural sözdizimi** metin kutusunun üstünde **Düzenle**' yi seçin. **Kural sözdizimini Düzenle** sayfasında, metin kutusuna aşağıdaki ifadeyi yazın:
 
    ```

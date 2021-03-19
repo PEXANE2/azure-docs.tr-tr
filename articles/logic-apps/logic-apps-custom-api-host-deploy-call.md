@@ -7,13 +7,13 @@ ms.reviewer: jonfan, logicappspm
 ms.topic: article
 ms.date: 05/13/2020
 ms.openlocfilehash: 7b4d00e8c0366d10fddafa66db699c1a59fd9ad7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "83659780"
 ---
-# <a name="deploy-and-call-custom-apis-from-workflows-in-azure-logic-apps"></a>Azure Logic Apps iş akışlarından özel API 'Leri dağıtma ve çağırma
+# <a name="deploy-and-call-custom-apis-from-workflows-in-azure-logic-apps"></a>Azure Logic Apps'teki iş akışlarından özel API'leri dağıtma ve çağırma
 
 Mantıksal uygulama iş akışlarınızda kullanmak üzere [kendi API 'lerinizi](./logic-apps-create-api-app.md) oluşturduktan sonra, bu API 'leri çağırabilmeniz için önce bunları dağıtmanız gerekir. API 'lerinizi [Web Apps](../app-service/overview.md)olarak dağıtabilir, ancak API 'lerinizi bulutta ve şirket Içinde API 'ler oluştururken, barındırdığınızda ve kullandığınızda işinizi kolaylaştırmak için [API Apps](../app-service/app-service-web-tutorial-rest-api.md)olarak dağıtmayı düşünebilirsiniz. API 'lerinizin herhangi bir kodunu değiştirmeniz gerekmez; kodunuzu bir API uygulamasına dağıtmanız yeterlidir. API 'lerinizi, yüksek düzeyde ölçeklenebilir ve kolay API barındırma sağlayan bir hizmet olarak platform (PaaS) teklifi olan [Azure App Service](../app-service/overview.md)barındırabilirsiniz.
 
@@ -25,13 +25,13 @@ Bir mantıksal uygulamadan özel API 'nizi çağırabilmeniz için, API 'nizi bi
 
 1. [Azure Portal](https://portal.azure.com)Web UYGULAMANıZı veya API uygulamanızı seçin.
 
-2. Açılan uygulama menüsünde, **API**altında **API tanımı**' nı seçin. **API tanımı konumunu** , dosyadaki swagger.jsURL 'si olarak ayarlayın.
+2. Açılan uygulama menüsünde, **API** altında **API tanımı**' nı seçin. **API tanımı konumunu** , dosyadaki swagger.jsURL 'si olarak ayarlayın.
 
    Genellikle, URL şu biçimde görünür: `https://{name}.azurewebsites.net/swagger/docs/v1)`
 
    ![Özel API 'niz için Swagger belgesine bağlantı](./media/logic-apps-custom-api-deploy-call/custom-api-swagger-url.png)
 
-3. **API**altında **CORS**' yi seçin. **Izin verilen çıkış noktaları** için CORS ilkesini **' * '** olarak ayarlayın (tümüne izin ver).
+3. **API** altında **CORS**' yi seçin. **Izin verilen çıkış noktaları** için CORS ilkesini **' * '** olarak ayarlayın (tümüne izin ver).
 
    Bu ayar Logic App Designer 'daki isteklere izin verir.
 

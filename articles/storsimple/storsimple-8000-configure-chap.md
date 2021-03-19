@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 05/09/2018
 ms.author: alkohli
 ms.openlocfilehash: 694d63dacedd8ffcd075e73bb91b5ab0a089b58c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91766497"
 ---
 # <a name="configure-chap-for-your-storsimple-device"></a>StorSimple cihazınız için CHAP yapılandırma
@@ -45,7 +45,7 @@ Tek yönlü kimlik doğrulamasında hedef, başlatıcısının kimliğini doğru
 
 #### <a name="to-configure-your-device-for-one-way-authentication"></a>Cihazınızı tek yönlü kimlik doğrulama için yapılandırmak için
 
-1. Azure portal, StorSimple Aygıt Yöneticisi hizmetinize gidin. **Cihazlar** ' a tıklayın ve CHAP yapılandırmak istediğiniz bir cihazı seçin ve tıklatın. **Cihaz ayarları > güvenlik**' e gidin. **Güvenlik ayarları** dikey penceresinde **CHAP**' ye tıklayın.
+1. Azure portal, StorSimple Device Manager hizmetinize gidin. **Cihazlar** ' a tıklayın ve CHAP yapılandırmak istediğiniz bir cihazı seçin ve tıklatın. **Cihaz ayarları > güvenlik**' e gidin. **Güvenlik ayarları** dikey penceresinde **CHAP**' ye tıklayın.
    
     ![CHAP başlatıcısı](./media/storsimple-8000-configure-chap/configure-chap5.png)
 2. **CHAP** dikey penceresinde ve **CHAP başlatıcısı** bölümünde:
@@ -83,7 +83,7 @@ Tek yönlü kimlik doğrulamasında hedef, başlatıcısının kimliğini doğru
    4. **Tamam**'a tıklayın.
       
        ![Gelişmiş ayarlar genel](./media/storsimple-configure-chap/IC740946.png)
-5. **Iscsı Başlatıcısı özellikleri** penceresinin **hedefler** sekmesinde cihaz durumu **bağlı**olarak görünmelidir. StorSimple 1200 cihazı kullanıyorsanız, her birim bir Iscsı hedefi olarak bağlanır. Bu nedenle, her birim için 3-4 adımlarının tekrarlanması gerekecektir.
+5. **Iscsı Başlatıcısı özellikleri** penceresinin **hedefler** sekmesinde cihaz durumu **bağlı** olarak görünmelidir. StorSimple 1200 cihazı kullanıyorsanız, her birim bir Iscsı hedefi olarak bağlanır. Bu nedenle, her birim için 3-4 adımlarının tekrarlanması gerekecektir.
    
     ![Ayrı hedefler olarak bağlanmış birimler](./media/storsimple-configure-chap/chap4.png)
    
@@ -98,7 +98,7 @@ Windows konak sunucusunda CHAP yapılandırma hakkında daha fazla bilgi için, 
 
 #### <a name="to-configure-your-device-for-mutual-authentication"></a>Cihazınızı karşılıklı kimlik doğrulaması için yapılandırmak için
 
-1. Azure portal, StorSimple Aygıt Yöneticisi hizmetinize gidin. **Cihazlar** ' a tıklayın ve CHAP yapılandırmak istediğiniz bir cihazı seçin ve tıklatın. **Cihaz ayarları > güvenlik**' e gidin. **Güvenlik ayarları** dikey penceresinde **CHAP**' ye tıklayın.
+1. Azure portal, StorSimple Device Manager hizmetinize gidin. **Cihazlar** ' a tıklayın ve CHAP yapılandırmak istediğiniz bir cihazı seçin ve tıklatın. **Cihaz ayarları > güvenlik**' e gidin. **Güvenlik ayarları** dikey penceresinde **CHAP**' ye tıklayın.
    
     ![CHAP hedefi](./media/storsimple-8000-configure-chap/configure-chap5.png)
 2. Bu sayfada ve **CHAP hedefi** bölümünde aşağı kaydırın:
@@ -163,12 +163,12 @@ Aşağıdaki adımları tamamlayarak CHAP 'nin kullanıldığını doğrulayabil
 3. **Ayrıntılar**' a tıklayın.
    
     ![Iscsı başlatıcı özellikleri sık kullanılan hedefler](./media/storsimple-configure-chap/IC740951.png)
-4. **Sık kullanılan hedef ayrıntıları** Iletişim kutusunda **kimlik doğrulaması** alanındaki girişi aklınızda edin. Yapılandırma başarılı olduysa, **CHAP**deyin.
+4. **Sık kullanılan hedef ayrıntıları** Iletişim kutusunda **kimlik doğrulaması** alanındaki girişi aklınızda edin. Yapılandırma başarılı olduysa, **CHAP** deyin.
    
     ![Sık kullanılan hedef ayrıntıları](./media/storsimple-configure-chap/IC740952.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [StorSimple güvenliği](storsimple-8000-security.md)hakkında daha fazla bilgi edinin.
-* StorSimple [cihazınızı yönetmek Için storsimple Aygıt Yöneticisi hizmetini kullanma](storsimple-8000-manager-service-administration.md)hakkında daha fazla bilgi edinin.
+* StorSimple [cihazınızı yönetmek Için storsimple Device Manager hizmetini kullanma](storsimple-8000-manager-service-administration.md)hakkında daha fazla bilgi edinin.
 

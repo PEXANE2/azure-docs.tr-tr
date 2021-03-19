@@ -16,10 +16,10 @@ ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 011b50449f0a02b128bc000535f93e1809fd9777
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92673889"
 ---
 # <a name="assign-azure-resource-roles-in-privileged-identity-management"></a>Privileged Identity Management Azure Kaynak rolleri atama
@@ -45,7 +45,7 @@ Bir kullanıcıyı Azure Kaynak rolüne uygun hale getirmek için aşağıdaki a
 
 1. **Azure AD Privileged Identity Management** açın.
 
-1. **Azure kaynakları** ' nı seçin.
+1. **Azure kaynakları**' nı seçin.
 
 1. Aradığınız yönetilen kaynakları bulmak için kaynak filtresini kullanın.
 
@@ -63,15 +63,15 @@ Bir kullanıcıyı Azure Kaynak rolüne uygun hale getirmek için aşağıdaki a
 
     ![Yeni atama bölmesi](./media/pim-resource-roles-assign-roles/resources-select-role.png)
 
-1. Atamak istediğiniz bir rol seçin ve ardından **Seç** ' e tıklayın.
+1. Atamak istediğiniz bir rol seçin ve ardından **Seç**' e tıklayın.
 
     **Üye Seç veya grup** bölmesi açılır.
 
-1. Role atamak istediğiniz üye veya grubu seçin ve ardından **Seç** ' e tıklayın.
+1. Role atamak istediğiniz üye veya grubu seçin ve ardından **Seç**' e tıklayın.
 
     ![Üye veya grup bölmesi seçin](./media/pim-resource-roles-assign-roles/resources-select-member-or-group.png)
 
-1. **Ayarlar** sekmesinde, **atama türü** listesinde **uygun** veya **etkin** ' i seçin.
+1. **Ayarlar** sekmesinde, **atama türü** listesinde **uygun** veya **etkin**' i seçin.
 
     ![Üyelik ayarları bölmesi](./media/pim-resource-roles-assign-roles/resources-membership-settings-type.png)
 
@@ -83,7 +83,7 @@ Bir kullanıcıyı Azure Kaynak rolüne uygun hale getirmek için aşağıdaki a
 
 1. Belirli bir atama süresi belirtmek için başlangıç ve bitiş tarihlerini ve saatlerini değiştirin.
 
-1. İşiniz bittiğinde **ata** ' yı seçin.
+1. İşiniz bittiğinde **ata**' yı seçin.
 
 1. Yeni rol ataması oluşturulduktan sonra bir durum bildirimi görüntülenir.
 
@@ -95,7 +95,7 @@ Varolan bir rol atamasını güncelleştirmek veya kaldırmak için bu adımlar�
 
 1. **Azure AD Privileged Identity Management** açın.
 
-1. **Azure kaynakları** ' nı seçin.
+1. **Azure kaynakları**' nı seçin.
 
 1. Yönetmek istediğiniz kaynağı seçerek genel bakış sayfasını açın.
 

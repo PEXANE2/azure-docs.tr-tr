@@ -4,15 +4,15 @@ description: Windows veya Linux 'ta Azure Kinect algılayıcı SDK 'sının her 
 author: qm13
 ms.author: quentinm
 ms.prod: kinect-dk
-ms.date: 06/26/2019
+ms.date: 03/18/2021
 ms.topic: conceptual
 keywords: Azure, Kinect, SDK, indirme güncelleştirme, en son, kullanılabilir, yükleme, gövde, izleme
-ms.openlocfilehash: 0ac0598d893617f341b9e1fd4d45c0c3e3f3c619
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: 60018df56433785f3cb723dd54cc96a8e5289b67
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94359604"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104654501"
 ---
 # <a name="download-azure-kinect-body-tracking-sdk"></a>Azure Kinect gövde Izleme SDK 'sını indirin
 
@@ -28,18 +28,13 @@ Bu belge, Azure Kinect gövde Izleme SDK 'sının her bir sürümünü yüklemek
 
 Sürüm       | İndir
 --------------|----------
+1.1.0 | [defteri](https://www.microsoft.com/en-us/download/details.aspx?id=102901)
 1.0.1 | [MSI](https://www.microsoft.com/en-us/download/details.aspx?id=100942) [NuGet](https://www.nuget.org/packages/Microsoft.Azure.Kinect.BodyTracking/1.0.1)
 1.0.0 | [MSI](https://www.microsoft.com/en-us/download/details.aspx?id=100848) [NuGet](https://www.nuget.org/packages/Microsoft.Azure.Kinect.BodyTracking/1.0.0)
-0.9.5 | [MSI](https://www.microsoft.com/en-us/download/details.aspx?id=100636) [NuGet](https://www.nuget.org/packages/Microsoft.Azure.Kinect.BodyTracking/0.9.5)
-0.9.4 | [MSI](https://www.microsoft.com/en-us/download/details.aspx?id=100415) [NuGet](https://www.nuget.org/packages/Microsoft.Azure.Kinect.BodyTracking/0.9.4)
-0.9.3 | [MSI](https://www.microsoft.com/en-us/download/details.aspx?id=100307) [NuGet](https://www.nuget.org/packages/Microsoft.Azure.Kinect.BodyTracking/0.9.3)
-0.9.2 | [MSI](https://www.microsoft.com/en-us/download/details.aspx?id=100128) [NuGet](https://www.nuget.org/packages/Microsoft.Azure.Kinect.BodyTracking/0.9.2)
-0.9.1 | [MSI](https://www.microsoft.com/en-us/download/details.aspx?id=100063) [NuGet](https://www.nuget.org/packages/Microsoft.Azure.Kinect.BodyTracking/0.9.1)
-0.9.0 | [MSI](https://www.microsoft.com/en-us/download/details.aspx?id=58402) [NuGet](https://www.nuget.org/packages/Microsoft.Azure.Kinect.BodyTracking/0.9.0)
 
 ## <a name="linux-installation-instructions"></a>Linux yükleme yönergeleri
 
-Şu anda desteklenen tek dağıtım Ubuntu 18,04 ' dir. Diğer dağıtımlar için destek istemek için [Bu sayfaya](https://aka.ms/azurekinectfeedback)bakın.
+Şu anda desteklenen tek dağıtım Ubuntu 18,04 ve 20,04 ' dir. Diğer dağıtımlar için destek istemek için [Bu sayfaya](https://aka.ms/azurekinectfeedback)bakın.
 
 İlk olarak, [buradaki](/windows-server/administration/linux-package-repository-for-microsoft-software)yönergeleri izleyerek [Microsoft 'un paket deposunu](https://packages.microsoft.com/)yapılandırmanız gerekecektir.
 
@@ -48,7 +43,7 @@ Sürüm       | İndir
 
 Temel öğreticiler `libk4abt<major>.<minor>-dev` paketini gerektirir. Yüklemek için şunu çalıştırın
 
-`sudo apt install libk4abt1.0-dev`
+`sudo apt install libk4abt<major>.<minor>-dev`
 
 Komut başarılı olursa SDK kullanıma hazırlanmaya devam edilir.
 
@@ -58,6 +53,18 @@ Komut başarılı olursa SDK kullanıma hazırlanmaya devam edilir.
 
 ## <a name="change-log"></a>Değişiklik günlüğü
 
+### <a name="v110"></a>v 1.1.0
+* Özellik Poz tahmini modelinin DirectML (yalnızca Windows) ve TensorRT yürütmesi için destek ekleyin. Yeni yürütme ortamlarında SSS bölümüne bakın.
+* Özellik `model_path` Struct öğesine ekleyin `k4abt_tracker_configuration_t` . Kullanıcıların, poz tahmini modeli için yol adını belirlemesine izin verir. `dnn_model_2_0_op11.onnx`Geçerli dizinde bulunan standart poz tahmin modelinin varsayılan değeri.
+* Özellik `dnn_model_2_0_lite_op11.onnx` Lite poz tahmin modelini dahil edin. Bu model, yaklaşık %5 doğruluk azalması için 2x performans artışı.
+* Özellik Doğrulanan örnekler Visual Studio 2019 ile derleyin ve bu sürümü kullanmak için güncelleştirmeler örnekleri.
+* [Son değişiklik] CPU, CUDA 11,1, DirectML (yalnızca Windows) ve TensorRT 7.2.1 yürütme ortamları desteğiyle ONNX Runtime 1,6 ' a güncelleştirin. R455 veya daha iyi bir NVıDıA sürücü güncelleştirmesi gerektirir.
+* [Son değişiklik] NuGet yüklemesi yok.
+* [Hata düzeltildi] NVıDıA RTX 30xx serisi GPU [bağlantısı](https://github.com/microsoft/Azure-Kinect-Sensor-SDK/issues/1481) desteği ekleme
+* [Hata düzeltildi] AMD ve Intel ile tümleşik GPU 'Lar (yalnızca Windows) [bağlantısı](https://github.com/microsoft/Azure-Kinect-Sensor-SDK/issues/1481) için destek ekleme
+* [Hata düzeltildi] CUDA 11,1 [bağlantısına](https://github.com/microsoft/Azure-Kinect-Sensor-SDK/issues/1125) Güncelleştir
+* [Hata düzeltildi] Algılayıcı SDK 1.4.1 [bağlantısına](https://github.com/microsoft/Azure-Kinect-Sensor-SDK/issues/1248) Güncelleştir
+
 ### <a name="v101"></a>v 1.0.1
 * [Hata düzeltildi] Windows Build 19025 veya sonraki sürümlerde yolundan onnxruntime.dll yüklüyorsanız SDK 'nın çöktüğü sorunu çözme: [bağlantı](https://github.com/microsoft/Azure-Kinect-Sensor-SDK/issues/932)
 
@@ -66,53 +73,6 @@ Komut başarılı olursa SDK kullanıma hazırlanmaya devam edilir.
 * [Hata düzeltildi] Baş dönüşün doğru algılanamadığından sorunu çözme: [bağlantı](https://github.com/microsoft/Azure-Kinect-Sensor-SDK/issues/997)
 * [Hata düzeltildi] CPU kullanımının Linux makinesinde %100 ' e varan bir sorunu giderme: [bağlantı](https://github.com/microsoft/Azure-Kinect-Sensor-SDK/issues/1007)
 * Lerinizi Örnek depoya iki örnek ekleyin. Örnek 1 ' de, gövde izleme sonuçlarının derinlik alanından renk alanı [bağlantısına](https://github.com/microsoft/Azure-Kinect-Samples/tree/master/body-tracking-samples/camera_space_transform_sample)nasıl dönüştürülebileceğiniz gösterilmektedir; Örnek 2 ' de zemin düzlemi [bağlantısının](https://github.com/microsoft/Azure-Kinect-Samples/tree/master/body-tracking-samples/floor_detector_sample) nasıl algılanması gösterilmektedir
-
-### <a name="v095"></a>v 0.9.5
-* Özellik C# desteği. C# sarmalayıcı, NuGet paketinde paketlenmiştir.
-* Özellik Çoklu izleyici desteği. Birden çok trackingsize oluşturulmasına izin verilir. Artık Kullanıcı, farklı Azure Kinect cihazlarından gövdeler izlemek için birden çok izleme oluşturabilir.
-* Özellik CPU modu için çoklu iş parçacığı işleme desteği. CPU modunda çalışırken, tüm çekirdekler hızı en üst düzeye çıkarmak için kullanılacaktır.
-* Özellik `gpu_device_id` Struct öğesine ekleyin `k4abt_tracker_configuration_t` . Kullanıcıların gövde izleme algoritmasını çalıştırmak için varsayılan olandan başka bir GPU aygıtı belirtmesini sağlar.
-* [Hata düzeltildi/Son değişiklik] Bir Birleşik adda yazım hatası 'ı düzeltir. Birleşik adı ' dan ' a değiştirin `K4ABT_JOINT_SPINE_NAVAL` `K4ABT_JOINT_SPINE_NAVEL` .
-
-### <a name="v094"></a>v 0.9.4
-* Özellik El ile destek ekleme. SDK her bir el için üç ek bilgi sağlar: el, el tıp, parmak izi.
-* Özellik Algılanan her bir neşeli için tahmin güven düzeyi ekleyin.
-* Özellik CPU modu desteği ekleyin. `cpu_only_mode`İçindeki değeri değiştirerek `k4abt_tracker_configuration_t` , artık SDK, kullanıcının güçlü bir grafik kartına sahip olmasını gerektirmeyen CPU modunda çalışabilir.
-
-### <a name="v093"></a>v 0.9.3
-* Özellik Büyük ölçüde gövde izlemenin sağlamlığını artıran yeni bir DNN modeli dnn_model_2_0. onnx yayımlayın.
-* Özellik Varsayılan olarak zamana yumuşatmaya devre dışı bırakın. İzlenen eklemler daha hızlı yanıt verir.
-* Özellik Gövde dizini eşlemesinin doğruluğunu geliştirir.
-* [Hata düzeltildi] Algılayıcı yönü ayarının etkili olmadığı hatayı düzeltir.
-* [Hata düzeltildi] Body_index_map türünü K4A_IMAGE_FORMAT_CUSTOM K4A_IMAGE_FORMAT_CUSTOM8 olarak değiştirin.
-* [Bilinen sorun] İki yakın gövde tek örnekli kesimiyle birleştirilebilir.
-
-### <a name="v092"></a>v 0.9.2
-* [Son değişiklik] Güncelleştirme, en son Azure Kinect algılayıcı SDK 1.2.0 bağımlıdır.
-* [API değişikliği] `k4abt_tracker_create` işlevi bir girişi alacak şekilde başlayacaktır `k4abt_tracker_configuration_t` . 
-* [API değişikliği] `k4abt_frame_get_timestamp_usec` API 'yi `k4abt_frame_get_device_timestamp_usec` , algılayıcı SDK 1.2.0 ile daha belirli ve tutarlı olacak şekilde değiştirin.
-* Özellik Farklı açılardan bağlama sırasında daha doğru gövde izleme sonuçları elde etmek üzere izleyici oluştururken kullanıcıların algılayıcı bağlama yönlendirmesini belirtmesini sağlar.
-* Özellik `k4abt_tracker_set_temporal_smoothing` Kullanıcının uygulamak istediği zamana bağlı yumuşatma miktarını değiştirmek için yenı API sağlayın.
-* Özellik C++ sarmalayıcı K4ABT. hpp ekleyin.
-* Özellik Sürüm tanımı üst bilgisi k4abtversion. h ekleyin.
-* [Hata düzeltildi] Son derece yüksek CPU kullanımına neden olan hatayı düzeltir.
-* [Hata düzeltildi] Günlükçü kilitlenme hatasını düzeltir.
-
-### <a name="v091"></a>v 0.9.1
-* [Hata düzeltildi] İzleyici yok edilirken Bellek sızıntısını çözme
-* [Hata düzeltildi] Eksik bağımlılıklara yönelik daha iyi hata iletileri
-* [Hata düzeltildi] İkinci bir izleyici örneği oluşturulurken kilitlenme olmadan başarısız oldu
-* [Hata düzeltildi] Günlükçü ortam değişkenleri artık düzgün çalışıyor
-* Linux desteği
-
-### <a name="v090"></a>v 0.9.0
-
-* [Son değişiklik] SDK bağımlılığını CUDA 10,0 (CUDA 10,1) olarak düşürülemez. ONNX Runtime resmi yalnızca CUDA 10,0 ' i destekler.
-* [Son değişiklik] TensorFlow çalışma zamanı yerine ONNX çalışma zamanına geçti. İlk çerçeveyi, zaman ve bellek kullanımını Başlatan şekilde azaltır. Ayrıca SDK ikili boyutunu da azaltır.
-* [API değişikliği] Yeniden `k4abt_tracker_queue_capture()` adlandırıldı `k4abt_tracker_enqueue_capture()`
-* [API değişikliği] `k4abt_frame_get_body()` İki ayrı işleve sahiptir: `k4abt_frame_get_body_skeleton()` ve `k4abt_frame_get_body_id()` . Artık tüm iskelet yapısını kopyalamaya gerek kalmadan gövde KIMLIĞINI sorgulayabilirsiniz.
-* [API değişikliği]  `k4abt_frame_get_timestamp_usec()` Kullanıcıların gövde çerçevesi zaman damgasını sorgulayabilecek adımları basitleştirmek için işlevi eklenmiştir.
-* Gövde izleme algoritması doğruluğu ve izleme güvenilirliği daha da geliştirildi
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -4,10 +4,10 @@ description: 'Hızlı başlangıç: Bu makalede, Azure Event Hubs Apache Storm k
 ms.topic: quickstart
 ms.date: 06/23/2020
 ms.openlocfilehash: 099a3ff1ad57616de0d7929d787b82e9d55c9e00
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87087586"
 ---
 # <a name="quickstart-receive-events-from-event-hubs-using-apache-storm"></a>Hızlı başlangıç: Event Hubs Apache Storm kullanarak olay alma
@@ -30,12 +30,12 @@ Bu öğretici, zaten kullanılabilir Event Hubs Spout ile birlikte gelen bir [HD
     ```shell
     mvn install:install-file -Dfile=target\eventhubs-storm-spout-0.9-jar-with-dependencies.jar -DgroupId=com.microsoft.eventhubs -DartifactId=eventhubs-storm-spout -Dversion=0.9 -Dpackaging=jar
     ```
-4. Çakışan Küreler, yeni bir Maven projesi oluşturun ( **Dosya**, sonra **Yeni**ve **Proje**).
+4. Çakışan Küreler, yeni bir Maven projesi oluşturun ( **Dosya**, sonra **Yeni** ve **Proje**).
    
     ![Dosya-> yeni > projesi][12]
-5. **Varsayılan çalışma alanı konumunu kullan**öğesini seçin ve ardından **İleri** ' ye tıklayın
+5. **Varsayılan çalışma alanı konumunu kullan** öğesini seçin ve ardından **İleri** ' ye tıklayın
 6. **Maven-arşiv ETYPE-hızlı başlangıç** arşiv ETYPE ' ı seçin ve **İleri** ' ye tıklayın.
-7. Bir **GroupID** ve **ArtifactId**yerleştirip **son** ' a tıklayın.
+7. Bir **GroupID** ve **ArtifactId** yerleştirip **son** ' a tıklayın.
 8. **pom.xml**, düğümüne aşağıdaki bağımlılıkları ekleyin `<dependency>` .
 
     ```xml  
@@ -234,7 +234,7 @@ Bu öğretici, zaten kullanılabilir Event Hubs Spout ile birlikte gelen bir [HD
 Aşağıdaki bağlantıları inceleyerek Event Hubs hakkında daha fazla bilgi edinebilirsiniz:
 
 * [Event Hubs genel bakış][Event Hubs overview]
-* [Olay hub’ı oluşturma](event-hubs-create.md)
+* [Olay Hub 'ı oluşturma](event-hubs-create.md)
 * [Event Hubs ile ilgili SSS](event-hubs-faq.md)
 
 <!-- Links -->

@@ -3,18 +3,18 @@ title: Blob dizini etiketleriyle Azure blob verilerini yönetme ve bulma (Önizl
 description: Blob nesnelerini kategorilere ayırmak, yönetmek ve sorgulamak için blob dizini etiketlerini nasıl kullanacağınızı öğrenin.
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 03/05/2021
+ms.date: 03/18/2021
 ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
 ms.reviewer: klaasl
 ms.custom: references_regions
-ms.openlocfilehash: be2ff9d6ed908bdc0645fc713717a08674354096
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 540f6ca165c80dd90f5004fb53e1577cdc35d770
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 03/19/2021
-ms.locfileid: "104593229"
+ms.locfileid: "104656048"
 ---
 # <a name="manage-and-find-azure-blob-data-with-blob-index-tags-preview"></a>Blob dizini etiketleriyle Azure blob verilerini yönetme ve bulma (Önizleme)
 
@@ -30,7 +30,7 @@ Blob dizini etiketleri şunları yapmanızı sağlar:
 Depolama hesabınızda birçok farklı uygulama tarafından erişilen milyonlarca blob 'un bulunduğu bir senaryoyu düşünün. Tek bir projeden ilgili tüm verileri bulmak istiyorsunuz. Veriler farklı adlandırma kurallarıyla birden çok kapsayıcıya yayılabilecek kapsamda ne olduğundan emin değilsiniz. Ancak, uygulamalarınız tüm verileri, projelerini temel alarak, Etiketler ile karşıya yükler. Milyonlarca blob 'u aramak ve adları ve özellikleri karşılaştırmak yerine, `Project = Contoso` bulma ölçütleriniz olarak kullanabilirsiniz. Blob dizini, tüm depolama hesabınızdaki tüm kapsayıcıları filtreleyecek ve yalnızca 50 Blobları kümesini hızlı bir şekilde bulup döndürecek `Project = Contoso` .
 
 > [!IMPORTANT]
-> Blob dizini etiketleri şu anda **Önizleme** aşamasındadır. Beta, önizleme veya henüz genel kullanıma sunulmayan Azure özelliklerine uygulanan yasal koşullara yönelik [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) 'na bakın.
+> Blob dizini etiketleri şu anda **Önizleme** aşamasındadır ve tüm genel bölgelerde kullanılabilir. Beta, önizleme veya henüz genel kullanıma sunulmayan Azure özelliklerine uygulanan yasal koşullara yönelik [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) 'na bakın.
 
 Blob dizininin nasıl kullanılacağına ilişkin örneklere başlamak için bkz. [verileri yönetmek ve bulmak için blob dizini etiketlerini kullanma](storage-blob-index-how-to.md).
 

@@ -4,24 +4,24 @@ description: Kurtarma Hizmetleri kasasındaki Azure dosya paylaşımlarını yed
 ms.topic: conceptual
 ms.date: 01/20/2020
 ms.openlocfilehash: ca49f1ad48ab0534b27b91ad6a5a50b393cda782
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88890357"
 ---
 # <a name="back-up-azure-file-shares"></a>Azure dosya paylaşımlarını yedekleme
 
 Bu makalede, [Azure dosya paylaşımlarının](../storage/files/storage-files-introduction.md) Azure Portal nasıl yedekleneceği açıklanır.
 
-Bu makalede aşağıdakileri nasıl yapacağınızı öğreneceksiniz:
+Bu makalede şunları yapmayı öğreneceksiniz:
 
 * Kurtarma Hizmetleri kasası oluşturun.
 * Kurtarma Hizmetleri kasasından yedeklemeyi yapılandırma
 * Dosya paylaşma bölmesinden yedeklemeyi yapılandırma
 * Geri yükleme noktası oluşturmak için isteğe bağlı yedekleme işini çalıştırma
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Azure dosya paylaşma anlık görüntü tabanlı yedekleme çözümü hakkında [bilgi edinin](azure-file-share-backup-overview.md) .
 * Dosya paylaşımının [Desteklenen depolama hesabı türlerinden](azure-file-share-support-matrix.md)birinde bulunduğundan emin olun.
@@ -109,7 +109,7 @@ Aşağıdaki adımlarda, ilgili dosya paylaşımı bölmesinden ayrı dosya payl
 
 1. [Azure Portal](https://portal.azure.com/), yedeklemek istediğiniz dosya paylaşımının barındırıldığı depolama hesabını açın.
 
-1. Depolama hesabında bir kez, **dosya paylaşımları**etiketli kutucuğu seçin. Ayrıca, depolama hesabı için içindekiler tablosu aracılığıyla **dosya paylaşımlarına** gidebilirsiniz.
+1. Depolama hesabında bir kez, **dosya paylaşımları** etiketli kutucuğu seçin. Ayrıca, depolama hesabı için içindekiler tablosu aracılığıyla **dosya paylaşımlarına** gidebilirsiniz.
 
    ![Depolama hesabı](./media/backup-afs/storage-account.png)
 
@@ -192,7 +192,7 @@ Bazen yedekleme ilkesinde zamanlanan saatlerin dışında bir yedekleme anlık g
 
 1. Çalışan isteğe bağlı yedekleme işini onaylamak için **Tamam ' ı** seçin.
 
-1. Yedekleme işi çalıştırma işleminin tamamlanmasını izlemek için Portal bildirimlerini izleyin. İş ilerlemesini kasa panosunda izleyebilirsiniz. **Backup Jobs**  >  **Devam eden**yedekleme işleri seçin.
+1. Yedekleme işi çalıştırma işleminin tamamlanmasını izlemek için Portal bildirimlerini izleyin. İş ilerlemesini kasa panosunda izleyebilirsiniz.   >  **Devam eden** yedekleme işleri seçin.
 
 ### <a name="from-the-file-share-pane"></a>Dosya paylaşma bölmesinden
 
@@ -211,7 +211,7 @@ Bazen yedekleme ilkesinde zamanlanan saatlerin dışında bir yedekleme anlık g
 >[!NOTE]
 >Azure Backup, karşılık gelen hesaptaki herhangi bir dosya paylaşımının korumasını yapılandırırken depolama hesabını kilitler. Bu, yedeklenen dosya paylaşımlarına sahip bir depolama hesabının yanlışlıkla silinmesine karşı koruma sağlar.
 
-## <a name="best-practices"></a>Önerilen uygulamalar
+## <a name="best-practices"></a>En iyi uygulamalar
 
 * Azure Backup tarafından oluşturulan anlık görüntüleri silmeyin. Anlık görüntülerin silinmesi, kurtarma noktalarının kaybolması ve/veya geri yükleme işlemlerinin başarısız olmasıyla sonuçlanabilir
 

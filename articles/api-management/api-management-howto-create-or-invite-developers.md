@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 02/13/2018
 ms.author: apimpm
 ms.openlocfilehash: 92e032eb104835788f515cc7800fe5dacfa8adaa
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88566140"
 ---
 # <a name="how-to-manage-user-accounts-in-azure-api-management"></a>Azure API Management'ta kullanıcı hesaplarını yönetme
@@ -25,7 +25,7 @@ API Management, geliştiriciler API Management kullanarak kullanıma sunabilece�
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu makaledeki görevleri tamamlar: [Azure API Management örneği oluşturma](get-started-create-service-instance.md).
 
@@ -36,13 +36,13 @@ Bu makaledeki görevleri tamamlar: [Azure API Management örneği oluşturma](ge
 Yeni bir kullanıcı eklemek için bu bölümdeki adımları izleyin:
 
 1. Ekranın solundaki **Kullanıcılar** sekmesini seçin.
-2. **+ Ekle**tuşuna basın.
+2. **+ Ekle** tuşuna basın.
 3. Kullanıcı için uygun bilgileri girin.
 4. **Ekle**’ye basın.
 
     ![Yeni kullanıcı ekleme](./media/api-management-howto-create-or-invite-developers/api-management-create-developer.png)
 
-Varsayılan olarak, yeni oluşturulan geliştirici hesapları **etkindir**ve **geliştiriciler** grubuyla ilişkilendirilir. **Etkin** durumda olan geliştirici hesapları, aboneliklerine sahip oldukları tüm API 'lere erişmek için kullanılabilir. Yeni oluşturulan geliştiriciyi ek gruplarla ilişkilendirmek için bkz. [grupları geliştiricilerle ilişkilendirme][How to associate groups with developers].
+Varsayılan olarak, yeni oluşturulan geliştirici hesapları **etkindir** ve **geliştiriciler** grubuyla ilişkilendirilir. **Etkin** durumda olan geliştirici hesapları, aboneliklerine sahip oldukları tüm API 'lere erişmek için kullanılabilir. Yeni oluşturulan geliştiriciyi ek gruplarla ilişkilendirmek için bkz. [grupları geliştiricilerle ilişkilendirme][How to associate groups with developers].
 
 ## <a name="invite-a-developer"></a><a name="invite-developer"> </a>Geliştirici davet etme
 Bir geliştiriciyi davet etmek için bu bölümdeki adımları izleyin:
@@ -56,7 +56,7 @@ Bir geliştirici davet edildiğinde, geliştiriciye bir e-posta gönderilir. Bu 
 
 Davet kabul edildiğinde, hesap etkin hale gelir.
 
-## <a name="deactivate-or-reactivate-a-developer-account"></a><a name="block-developer"> </a> Geliştirici hesabını devre dışı bırakma veya yeniden etkinleştirme
+## <a name="deactivate-or-reactivate-a-developer-account"></a><a name="block-developer"></a> Geliştirici hesabını devre dışı bırakma veya yeniden etkinleştirme
 
 Varsayılan olarak, yeni oluşturulan veya davet edilen geliştirici hesapları **etkindir**. Bir geliştirici hesabını devre dışı bırakmak için **Engelle**' ye tıklayın. Engellenen bir geliştirici hesabını yeniden etkinleştirmek için **Etkinleştir**' e tıklayın. Engellenen bir geliştirici hesabı geliştirici portalına erişemez veya API 'Leri çağırabilir. Bir kullanıcı hesabını silmek için **Sil**' e tıklayın.
 

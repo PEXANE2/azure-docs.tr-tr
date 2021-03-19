@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/14/2020
 ms.openlocfilehash: 2e90a8779322cf8967ca9a194c6cc760f7c8b8f5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90532090"
 ---
 # <a name="derived-column-transformation-in-mapping-data-flow"></a>Eşleme veri akışında türetilmiş sütun dönüşümü
@@ -26,7 +26,7 @@ Türetilmiş bir sütun oluştururken yeni bir sütun oluşturabilir veya var ol
 
 ![Türetilmiş sütun ayarları](media/data-flow/create-derive-column.png "Türetilmiş sütun ayarları")
 
-Daha fazla türetilmiş sütun eklemek için sütun listesini yukarıya **Ekle** ' ye veya varolan bir türetilmiş sütunun yanındaki artı simgesine tıklayın. **Sütun Ekle** veya **sütun Ekle düzenlerini**seçin.
+Daha fazla türetilmiş sütun eklemek için sütun listesini yukarıya **Ekle** ' ye veya varolan bir türetilmiş sütunun yanındaki artı simgesine tıklayın. **Sütun Ekle** veya **sütun Ekle düzenlerini** seçin.
 
 ![Yeni türetilmiş sütun seçimi](media/data-flow/add-derived-column.png "Yeni türetilmiş sütun seçimi")
 
@@ -52,7 +52,7 @@ Veri akışındaki karmaşık türleri işleme hakkında daha fazla bilgi için 
 
 ### <a name="locals"></a>Ayarlanmalıdır
 
-Mantığı birden çok sütunda paylaşıyorsanız veya mantığınızı eklemek istiyorsanız, türetilmiş bir sütun dönüştürmesi içinde yerel bir oluşturabilirsiniz. Yerel, aşağıdaki dönüşüme aşağı yönde yayılmamış bir mantık kümesidir. Locals, ifade **öğelerine** gidip **Yereller**seçilerek ifade Oluşturucu içinde oluşturulabilir. **Yeni oluştur**' a tıklayarak yeni bir tane oluşturun.
+Mantığı birden çok sütunda paylaşıyorsanız veya mantığınızı eklemek istiyorsanız, türetilmiş bir sütun dönüştürmesi içinde yerel bir oluşturabilirsiniz. Yerel, aşağıdaki dönüşüme aşağı yönde yayılmamış bir mantık kümesidir. Locals, ifade **öğelerine** gidip **Yereller** seçilerek ifade Oluşturucu içinde oluşturulabilir. **Yeni oluştur**' a tıklayarak yeni bir tane oluşturun.
 
 ![Yerel oluştur](media/data-flow/create-local.png "Yerel oluştur")
 
@@ -66,7 +66,7 @@ Türetilmiş bir sütunda bir yerel öğeye başvurmak için, **ifade öğeleri*
 
 ## <a name="data-flow-script"></a>Veri akışı betiği
 
-### <a name="syntax"></a>Sözdizimi
+### <a name="syntax"></a>Syntax
 
 ```
 <incomingStream>

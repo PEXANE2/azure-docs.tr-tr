@@ -6,10 +6,10 @@ ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 09/01/2020
 ms.openlocfilehash: e52e7151bc30a19bd6f6041d52effdd799a87c99
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91776978"
 ---
 # <a name="knowledge-base-lifecycle-in-qna-maker"></a>Soru-Cevap Oluşturma Bilgi Bankası yaşam döngüsü
@@ -36,7 +36,7 @@ Bilgi Bankası, içeriğe göre veya otomatik ayıklama yoluyla doldurulduktan s
 
 Bu sıkı test-güncelleştirme döngüsü, sonuçlardan memnun olana kadar devam eder. [Bilgi Bankalarınızı test](../How-To/test-knowledge-base.md)etme hakkında bilgi edinin.
 
-Büyük KBs için, [generateAnswer API](../how-to/metadata-generateanswer-usage.md#get-answer-predictions-with-the-generateanswer-api) `isTest` `test` yayımlanan bilgi tabanı yerine Bilgi Bankası yanıtını sorgulayan generateanswer API 'si ve Body özelliği ile otomatikleştirilmiş test kullanın.
+Büyük KBs için, [](../how-to/metadata-generateanswer-usage.md#get-answer-predictions-with-the-generateanswer-api) `isTest` `test` yayımlanan bilgi tabanı yerine Bilgi Bankası yanıtını sorgulayan generateanswer API 'si ve Body özelliği ile otomatikleştirilmiş test kullanın.
 
 ```json
 {

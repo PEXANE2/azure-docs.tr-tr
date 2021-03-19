@@ -10,10 +10,10 @@ ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
 ms.openlocfilehash: abd27e15ccf5b421e69e78b2b726d192ffdecacb
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92372370"
 ---
 # <a name="connect-to-azure-arc-enabled-sql-managed-instance"></a>Azure Arc etkin SQL yönetilen örneğine bağlanma
@@ -43,13 +43,13 @@ AKS veya kubeadm veya OpenShift vb. kullanıyorsanız, dış IP ve bağlantı no
 > [!NOTE]
 > Şirket ilkeleriniz, özellikle genel bulutta oluşturulduysa IP ve bağlantı noktasına erişimi engelleyebilir.
 
-## <a name="connect"></a>Bağlan 
+## <a name="connect"></a>Bağlanma 
 
 Azure Data Studio, SQL Server Management Studio veya SQLCMD ile bağlanma
 
 Azure Data Studio açın ve yukarıdaki dış uç nokta IP adresini ve bağlantı noktası numarasını kullanarak örneğinize bağlanın. Azure VM kullanıyorsanız, [Azure sanal makine dağıtımları hakkında özel notlardan](#special-note-about-azure-virtual-machine-deployments)yararlanarak _genel_ IP adresi gerekir.
 
-Örneğin:
+Örnek:
 
 - Sunucu: 52.229.9.30, 30913
 - Kullanıcı adı: SA

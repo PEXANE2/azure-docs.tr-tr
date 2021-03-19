@@ -9,12 +9,12 @@ ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
 ms.custom: monitoring, devx-track-csharp
-ms.openlocfilehash: d28cfd533caaef3fb80a63aea932e6418dff7e55
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 5943a65d61dee4fcf610b8cc45139674362995cb
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101724260"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104600726"
 ---
 # <a name="monitor-diagnose-and-troubleshoot-microsoft-azure-storage"></a>Microsoft Azure Storage izleme, tanılama ve sorun giderme
 [!INCLUDE [storage-selector-portal-monitoring-diagnosing-troubleshooting](../../../includes/storage-selector-portal-monitoring-diagnosing-troubleshooting.md)]
@@ -59,8 +59,8 @@ Bu tür uygulamaları başarılı bir şekilde yönetmek için bunları önceden
   * [Sorununuz geliştirme veya test için depolama öykünücüsünün kullanılması durumunda]
   * [.NET için Azure SDK 'Yı yüklerken sorunlarla karşılaşdığınızda]
   * [Depolama hizmeti ile farklı bir sorununuz var]
-  * [Windows sanal makinelerinde VHD 'ler sorunlarını giderme](../../virtual-machines/troubleshooting/index.yml)   
-  * [Linux sanal makinelerinde VHD 'Lerde sorun giderme](../../virtual-machines/troubleshooting/index.yml)
+  * [Windows sanal makinelerinde VHD 'ler sorunlarını giderme](/troubleshoot/azure/virtual-machines/welcome-virtual-machines)   
+  * [Linux sanal makinelerinde VHD 'Lerde sorun giderme](/troubleshoot/azure/virtual-machines/welcome-virtual-machines)
   * [Windows ile Azure dosyaları sorunlarını giderme](../files/storage-troubleshoot-windows-file-connection-problems.md)   
   * [Linux ile Azure dosyaları sorunlarını giderme](../files/storage-troubleshoot-linux-file-connection-problems.md)
 * [Ekler]

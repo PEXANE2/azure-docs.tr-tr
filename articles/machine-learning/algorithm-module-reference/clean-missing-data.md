@@ -10,10 +10,10 @@ author: likebupt
 ms.author: keli19
 ms.date: 02/11/2020
 ms.openlocfilehash: 5b7943b2026d640ae7e5d119e165bd752ae2fe7f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90898825"
 ---
 # <a name="clean-missing-data-module"></a>Eksik veri modülünü temizle
@@ -58,11 +58,11 @@ Bir veri kümesine  [Temizleme eksik veri](./clean-missing-data.md) modülünü 
 
     1. **Eksik verileri temizle** modülünü seçin ve modülün sağ panelindeki **sütunu Düzenle** ' ye tıklayın.
 
-    3. **Ekle**için, açılan listeden **sütun türleri** ' ni seçin ve ardından **sayısal**' i seçin. 
+    3. **Ekle** için, açılan listeden **sütun türleri** ' ni seçin ve ardından **sayısal**' i seçin. 
   
     Seçtiğiniz Temizleme veya değiştirme yöntemi, seçimdeki **Tüm** sütunlara uygulanabilir olmalıdır. Herhangi bir sütundaki veriler belirtilen işlemle uyumsuzsa, modül bir hata döndürür ve işlem hattını sonlandırır.
   
-3.  **Minimum eksik değer oranı**için, işlemin gerçekleştirilmesi için gereken eksik değer sayısı alt sınırını belirtin.  
+3.  **Minimum eksik değer oranı** için, işlemin gerçekleştirilmesi için gereken eksik değer sayısı alt sınırını belirtin.  
   
     Bu seçeneği, veri kümesinde bir temizleme işleminin gerçekleştirildiği koşulları tanımlamak için **Maksimum eksik değer oranıyla** birlikte kullanır. Eksik değer olan çok sayıda veya çok az satır varsa, işlem gerçekleştirilemez. 
   
@@ -71,9 +71,9 @@ Bir veri kümesine  [Temizleme eksik veri](./clean-missing-data.md) modülünü 
     > [!WARNING]
     > Belirtilen işlemin uygulanabilmesi için bu koşulun her bir sütun ve her sütun tarafından karşılanması gerekir. Örneğin, üç sütun seçtiğinizi ve eksik değerlerin minimum oranını .2 (%20) olarak ayarlayadığınızı varsayalım, ancak yalnızca bir sütunda gerçekten %20 eksik değer vardır. Bu durumda, temizleme işlemi yalnızca %20 eksik değeri olan sütun için geçerlidir. Bu nedenle, diğer sütunlar değiştirilmez.
     > 
-    > Eksik değerlerin değiştirilip değiştirilmediğini şüpheliyse, **eksik değer göstergesi sütununu oluştur**seçeneğini belirleyin. Her sütunun en düşük ve en büyük aralıklar için belirtilen ölçütlere uygun olup olmadığını belirtmek için veri kümesine bir sütun eklenir.  
+    > Eksik değerlerin değiştirilip değiştirilmediğini şüpheliyse, **eksik değer göstergesi sütununu oluştur** seçeneğini belirleyin. Her sütunun en düşük ve en büyük aralıklar için belirtilen ölçütlere uygun olup olmadığını belirtmek için veri kümesine bir sütun eklenir.  
   
-4. **Eksik değer oranı üst sınırı**için, işlemin gerçekleştirilmesi için mevcut olabilecek maksimum değer sayısını belirtin.   
+4. **Eksik değer oranı üst sınırı** için, işlemin gerçekleştirilmesi için mevcut olabilecek maksimum değer sayısını belirtin.   
   
     Örneğin, eksik değer değiştirme işlemini yalnızca %30 veya daha az satır eksik değerler içeriyorsa, ancak satırların %30 ' ından fazla değeri eksik ise-olduğu gibi bırakmak isteyebilirsiniz.  
   
@@ -81,7 +81,7 @@ Bir veri kümesine  [Temizleme eksik veri](./clean-missing-data.md) modülünü 
   
    
   
-5. **Temizleme modu**için eksik değerleri değiştirmek veya kaldırmak için aşağıdaki seçeneklerden birini belirleyin:  
+5. **Temizleme modu** için eksik değerleri değiştirmek veya kaldırmak için aşağıdaki seçeneklerden birini belirleyin:  
   
   
     + **Özel değiştirme değeri**: tüm eksik değerler için geçerli olan bir yer tutucu değeri (0 veya yok gibi) belirtmek için bu seçeneği kullanın. Değiştirme olarak belirttiğiniz değer, sütunun veri türüyle uyumlu olmalıdır.
@@ -104,7 +104,7 @@ Bir veri kümesine  [Temizleme eksik veri](./clean-missing-data.md) modülünü 
   
     
   
-6. Seçenek **değiştirme değeri** , **özel değiştirme değeri**seçeneğini belirlediyseniz kullanılabilir. Sütundaki tüm eksik değerler için değiştirme değeri olarak kullanılacak yeni bir değer yazın.  
+6. Seçenek **değiştirme değeri** , **özel değiştirme değeri** seçeneğini belirlediyseniz kullanılabilir. Sütundaki tüm eksik değerler için değiştirme değeri olarak kullanılacak yeni bir değer yazın.  
   
     Bu seçeneği yalnızca Integer, Double, Boolean veya String olan sütunlarda kullanabileceğinizi unutmayın.
   
@@ -124,7 +124,7 @@ Modül iki çıkış döndürüyor:
 
 ### <a name="apply-a-saved-cleaning-operation-to-new-data"></a>Yeni verilere kaydedilmiş bir temizleme işlemi uygulama  
 
-Temizleme işlemlerini sıklıkla tekrarlamanız gerekiyorsa, aynı veri kümesiyle yeniden kullanmak için, bir *dönüştürme*olarak veri temizleme tariflerini kaydetmenizi öneririz. Temizleme dönüşümünü kaydetme, özellikle de aynı şemaya sahip verileri daha sonra yeniden içe aktarmanız ve temizlemeniz gerekiyorsa yararlıdır.  
+Temizleme işlemlerini sıklıkla tekrarlamanız gerekiyorsa, aynı veri kümesiyle yeniden kullanmak için, bir *dönüştürme* olarak veri temizleme tariflerini kaydetmenizi öneririz. Temizleme dönüşümünü kaydetme, özellikle de aynı şemaya sahip verileri daha sonra yeniden içe aktarmanız ve temizlemeniz gerekiyorsa yararlıdır.  
       
 1.  İşlem hattınızda [dönüştürme modülünü Uygula](./apply-transformation.md) ' yı ekleyin.  
   

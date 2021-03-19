@@ -4,10 +4,10 @@ description: Azure Backup tarafından yedeklenen Azure dosya paylaşımlarını 
 ms.topic: conceptual
 ms.date: 02/17/2020
 ms.openlocfilehash: 5e2823472c6a7bdd6b3f9819db3079d7efa78c4e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88892856"
 ---
 # <a name="manage-azure-file-share-backup-with-rest-api"></a>Azure dosya paylaşma yedeklemesini REST API ile yönetme
@@ -54,7 +54,7 @@ GET https://management.azure.com/Subscriptions/ef4ab5a7-c2c0-4304-af80-af49f48af
 
 #### <a name="response"></a>Yanıt
 
-Ad  | Tür  |  Açıklama
+Ad  | Tür  |  Description
 --- | --- | ----
 200 TAMAM |  JobResource  | Tamam
 
@@ -198,7 +198,7 @@ DELETE https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroup
 
 {ContainerName} ve {Koruyucuteditemname} parametreleri [burada](restore-azure-file-share-rest-api.md#fetch-containername-and-protecteditemname)ayarlanmış.
 
-Aşağıdaki örnek, *azurefilesvault*ile korunan *TestShare* dosya paylaşımının korumasını durdurmak için bir işlemi tetikler.
+Aşağıdaki örnek, *azurefilesvault* ile korunan *TestShare* dosya paylaşımının korumasını durdurmak için bir işlemi tetikler.
 
 ```http
 DELETE https://management.azure.com/Subscriptions/ef4ab5a7-c2c0-4304-af80-af49f48af3d1/resourceGroups/azurefiles/providers/Microsoft.RecoveryServices/vaults/azurefilesvault/backupFabrics/Azure/protectionContainers/StorageContainer;Storage;AzureFiles;testvault2/protectedItems/azurefileshare;testshare?api-version=2016-12-01

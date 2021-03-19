@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b27055ce84bbb073045b69b942fd13f4fde4e3b3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90563871"
 ---
 # <a name="azure-ad-connect-sync-understanding-the-architecture"></a>Azure AD Connect eşitleme: mimariyi anlama
@@ -32,7 +32,7 @@ Eşitleme altyapısı, birden fazla bağlı veri kaynağında depolanan nesneler
 ### <a name="connected-data-sources-and-connectors"></a>Bağlı veri kaynakları ve bağlayıcılar
 Eşitleme altyapısı, Active Directory veya bir SQL Server veritabanı gibi farklı veri depolarından kimlik bilgilerini işler. Verilerini veritabanı benzeri biçimde düzenleyen ve standart veri erişim yöntemleri sağlayan her veri deposu, eşitleme altyapısı için olası bir veri kaynağı adaysıdır. Eşitleme altyapısı tarafından eşitlenen veri depolarında **bağlı veri kaynakları** veya **bağlı dizinler** (CD) adı verilir.
 
-Eşitleme altyapısı, **bağlayıcı**adı verilen bir modül içindeki bağlı bir veri kaynağıyla etkileşimi kapsüller. Her bağlantılı veri kaynağı türü için belirli bir bağlayıcı bulunur. Bağlayıcı gerekli bir işlemi bağlantılı veri kaynağının anladığı biçime çevirir.
+Eşitleme altyapısı, **bağlayıcı** adı verilen bir modül içindeki bağlı bir veri kaynağıyla etkileşimi kapsüller. Her bağlantılı veri kaynağı türü için belirli bir bağlayıcı bulunur. Bağlayıcı gerekli bir işlemi bağlantılı veri kaynağının anladığı biçime çevirir.
 
 Bağlayıcılar, bağlı bir veri kaynağıyla Exchange kimlik bilgileri (hem okuma hem de yazma) için API çağrıları yapar. Genişletilebilir bağlantı çerçevesini kullanarak özel bir bağlayıcı eklemek de mümkündür. Aşağıdaki çizim, bir bağlayıcının bir bağlantı veri kaynağını eşitleme altyapısına nasıl bağladığını gösterir.
 
@@ -91,7 +91,7 @@ Hazırlama nesnesi, bağlı veri kaynağından belirlenen nesne türlerinin bir 
 
 İçeri aktarılan hazırlama nesnelerinin her zaman tutturucu özniteliği için bir değeri vardır. Eşitleme altyapısı tarafından yeni sağlanmış olan ve bağlı veri kaynağında oluşturulma sürecinde olan hazırlama nesneleri, tutturucu özniteliği için bir değere sahip değil.
 
-Hazırlama nesneleri aynı zamanda iş özniteliklerinin geçerli değerlerini ve eşitleme altyapısı ile eşitleme işlemini gerçekleştirmek için gereken işletimsel bilgileri de taşır. İşletimsel bilgiler, hazırlama nesnesinde hazırlanan güncelleştirmelerin türünü belirten bayraklar içerir. Hazırlama nesnesi henüz işlenmemiş bağlı veri kaynağından yeni kimlik bilgileri aldıysa, nesne **bekleyen içeri aktarma**olarak işaretlenir. Hazırlama nesnesi henüz bağlı veri kaynağına dışarı aktarılmamış yeni kimlik bilgilerine sahipse, bu, **bekleyen dışarı aktarma**olarak işaretlenir.
+Hazırlama nesneleri aynı zamanda iş özniteliklerinin geçerli değerlerini ve eşitleme altyapısı ile eşitleme işlemini gerçekleştirmek için gereken işletimsel bilgileri de taşır. İşletimsel bilgiler, hazırlama nesnesinde hazırlanan güncelleştirmelerin türünü belirten bayraklar içerir. Hazırlama nesnesi henüz işlenmemiş bağlı veri kaynağından yeni kimlik bilgileri aldıysa, nesne **bekleyen içeri aktarma** olarak işaretlenir. Hazırlama nesnesi henüz bağlı veri kaynağına dışarı aktarılmamış yeni kimlik bilgilerine sahipse, bu, **bekleyen dışarı aktarma** olarak işaretlenir.
 
 Hazırlama nesnesi bir içeri aktarma nesnesi veya dışa aktarma nesnesi olabilir. Eşitleme altyapısı, bağlı veri kaynağından alınan nesne bilgilerini kullanarak bir içeri aktarma nesnesi oluşturur. Eşitleme altyapısı, bağlayıcının seçtiği nesne türlerinden biriyle eşleşen yeni bir nesnenin varlığı hakkında bilgi aldığında, bağlayıcı alanında bağlı veri kaynağındaki nesnenin temsili olarak bir içeri aktarma nesnesi oluşturur.
 
@@ -107,7 +107,7 @@ Aşağıdaki çizim, meta veri deposundaki kimlik bilgileri kullanılarak dışa
 
 Eşitleme altyapısı, nesneyi bağlı veri kaynağından yeniden içe aktararak nesnenin dışarı aktarılmasını onaylar. Dışarı aktarma nesneleri, eşitleme altyapısı bu bağlı veri kaynağından bir sonraki içeri aktarma işlemi sırasında aldığında içeri aktarma nesneleri haline gelir.
 
-### <a name="placeholders"></a>Yer Tutucular
+### <a name="placeholders"></a>Yer tutucular
 Eşitleme altyapısı, nesneleri depolamak için düz bir ad alanı kullanır. Ancak, Active Directory gibi bazı bağlı veri kaynakları hiyerarşik bir ad alanı kullanır. Hiyerarşik bir ad alanından düz bir ad alanına bilgi dönüştürmek için, eşitleme altyapısı hiyerarşiyi korumak için yer tutucuları kullanır.
 
 Her yer tutucu, bir nesnenin, eşitleme altyapısına aktarılmamış ancak hiyerarşik ad oluşturmak için gerekli olan hiyerarşik adının bir bileşenini (örneğin, bir kuruluş birimi) temsil eder. Bağlantılı veri kaynağındaki başvurular tarafından oluşturulan boşlukları, bağlayıcı alanında hazırlama nesneleri olmayan nesnelere doldurur.
@@ -145,7 +145,7 @@ Bağlantılı nesneleri kullanarak, kimlik bilgilerini eşitleme altyapısında 
 ## <a name="sync-engine-identity-management-process"></a>Eşitleme altyapısı kimlik yönetimi işlemi
 Kimlik Yönetimi işlemi, farklı bağlı veri kaynakları arasında kimlik bilgilerinin nasıl güncelleştirileceğini denetler. Kimlik yönetimi üç işlem halinde gerçekleşir:
 
-* İçeri Aktarma
+* İçeri Aktar
 * Eşitleme
 * Dışarı Aktarma
 
@@ -172,8 +172,8 @@ Bağlayıcıda belirtilen her nesne için, eşitleme altyapısı ilk olarak bağ
 
 Eşitleme altyapısı ayırt edici ad ile eşleşen bir hazırlama nesnesi bulduğunda, ancak tutturucu tarafından eşleşmez, aşağıdaki özel davranış oluşur:
 
-* Bağlayıcı alanında bulunan nesnenin bağlantısı yoksa, Sync Engine bu nesneyi bağlayıcı alanından kaldırır ve bir **sonraki eşitleme çalıştırmasında yeniden deneme sağlama**olarak bağlı olduğu metadize nesnesini işaretler. Ardından, yeni içeri aktarma nesnesini oluşturur.
-* Bağlayıcı alanında bulunan nesnenin bir Bağlayıcısı varsa, eşitleme altyapısı bu nesnenin bağlı dizinde yeniden adlandırılmış veya silinmiş olduğunu varsayar. Bu, bağlayıcı alanı nesnesi için geçici ve yeni bir ayırt edici ad atar ve böylece gelen nesneyi hazırbir hale getirebilirsiniz. Eski nesne daha sonra **geçici**hale gelir ve durumu çözmek için bağlayıcının yeniden adlandırma veya silme işlemini içeri aktarması bekleniyor.
+* Bağlayıcı alanında bulunan nesnenin bağlantısı yoksa, Sync Engine bu nesneyi bağlayıcı alanından kaldırır ve bir **sonraki eşitleme çalıştırmasında yeniden deneme sağlama** olarak bağlı olduğu metadize nesnesini işaretler. Ardından, yeni içeri aktarma nesnesini oluşturur.
+* Bağlayıcı alanında bulunan nesnenin bir Bağlayıcısı varsa, eşitleme altyapısı bu nesnenin bağlı dizinde yeniden adlandırılmış veya silinmiş olduğunu varsayar. Bu, bağlayıcı alanı nesnesi için geçici ve yeni bir ayırt edici ad atar ve böylece gelen nesneyi hazırbir hale getirebilirsiniz. Eski nesne daha sonra **geçici** hale gelir ve durumu çözmek için bağlayıcının yeniden adlandırma veya silme işlemini içeri aktarması bekleniyor.
 
 Eşitleme altyapısı, bağlayıcıda belirtilen nesneye karşılık gelen bir hazırlama nesnesi bulduktan sonra, ne tür değişiklikler uygulanacağını belirler. Örneğin, eşitleme altyapısı bağlı veri kaynağındaki nesneyi yeniden adlandırabilir veya silebilir ya da yalnızca nesnenin öznitelik değerlerini güncelleştirebilir.
 
@@ -182,7 +182,7 @@ Güncelleştirilmiş verilerle hazırlama nesneleri, bekleyen içeri aktarma ola
 * **Yok**. Hazırlama nesnesinin özniteliklerinin hiçbirinde hiçbir değişiklik yok. Sync Engine, bu türe bekleyen içeri aktarma olarak bayrak eklemez.
 * **Ekleyin**. Hazırlama nesnesi, bağlayıcı alanındaki yeni bir içeri aktarma nesnesidir. Sync Engine bu türü, meta veri deposundaki ek işleme için bekleyen içeri aktarma olarak işaretler.
 * **Güncelleştirin**. Eşitleme altyapısı bağlayıcı alanında karşılık gelen bir hazırlama nesnesi bulur ve özniteliklerde yapılan güncelleştirmelerin meta veri deposunda işlenebilmesi için bu türü bekleyen içeri aktarma olarak işaretler. Güncelleştirmeler, nesne yeniden adlandırmayı içerir.
-* **Silin**. Sync Engine, bağlayıcı alanında karşılık gelen bir hazırlama nesnesi bulur ve birleştirilmiş nesne silinebilmesi için bu türü bekleyen içeri aktarma olarak işaretler.
+* **Silme**. Sync Engine, bağlayıcı alanında karşılık gelen bir hazırlama nesnesi bulur ve birleştirilmiş nesne silinebilmesi için bu türü bekleyen içeri aktarma olarak işaretler.
 * **Sil/Ekle**. Eşitleme altyapısı bağlayıcı alanında karşılık gelen bir hazırlama nesnesi bulur, ancak nesne türleri eşleşmiyor. Bu durumda, silme-ekleme değişikliği hazırlanacaktır. Silme-ekleme değişikliği, eşitleme altyapısına, nesne türü değiştiğinde bu nesneye farklı kural kümeleri uygulandığı için, bu nesnenin tam bir yeniden eşitleme işleminin gerçekleşmesi gerektiğini gösterir.
 
 Hazırlama nesnesinin bekleyen içeri aktarma durumunu ayarlayarak, eşitleme sırasında işlenen veri miktarını azaltmak mümkündür çünkü bu, sistemin yalnızca güncelleştirilmiş verileri olan nesneleri işlemesini sağlar.
@@ -239,7 +239,7 @@ Hazırlama, yeni bir bağlayıcı nesnesi oluşturmak için eşitleme altyapıs�
 
 Sağlama, eşitleme altyapısının birleştirilmiş bir nesneye katılmasını gerektiriyorsa, bağlantısı kesilen bir nesne oluşturmak için, kaldırma işlemi tetiklenir. Sağlamayı kaldırma işlemi nesneyi siler.
 
-Sağlama kaldırma sırasında, bir dışa aktarma nesnesinin silinmesi nesneyi fiziksel olarak silmez. Nesne **Silinmiş**olarak işaretlenir, bu, silme işleminin nesne üzerinde hazırlanması anlamına gelir.
+Sağlama kaldırma sırasında, bir dışa aktarma nesnesinin silinmesi nesneyi fiziksel olarak silmez. Nesne **Silinmiş** olarak işaretlenir, bu, silme işleminin nesne üzerinde hazırlanması anlamına gelir.
 
 Dışarı aktarma öznitelik akışı, giden eşitleme işlemi sırasında da meydana gelen eşitleme sırasında öznitelik akışını içeri aktarma yöntemine benzer şekilde gerçekleşir. Dışarı aktarma öznitelik akışı yalnızca meta veri deposu ve birleştirilmiş nesneler arasında gerçekleşir.
 

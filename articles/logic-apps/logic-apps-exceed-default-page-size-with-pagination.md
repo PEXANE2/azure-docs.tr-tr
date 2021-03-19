@@ -7,10 +7,10 @@ ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 04/11/2019
 ms.openlocfilehash: d46bf711a46e27b81a1284b5fc55cf403b7da048
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87090272"
 ---
 # <a name="get-more-data-items-or-records-by-using-pagination-in-azure-logic-apps"></a>Azure Logic Apps ' de sayfalandırma kullanarak daha fazla veri, öğe veya kayıt alın
@@ -33,7 +33,7 @@ Aşağıda, belirli eylemler için varsayılan sayfa boyutunu aştığınız baz
 * [HTTP](../connectors/connectors-native-http.md)
 * [IBM DB2](/connectors/db2/)
 * [Microsoft Teams](/connectors/teams/)
-* [Oracle Veritabanı](/connectors/oracle/)
+* [Oracle Database](/connectors/oracle/)
 * [Salesforce](/connectors/salesforce/)
 * [SharePoint](/connectors/sharepointonline/)
 * [SQL Server](/connectors/sql/)

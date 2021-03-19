@@ -4,10 +4,10 @@ description: Bu makalede, Azure Backup tarafından yedeklenen Azure dosya payla�
 ms.topic: conceptual
 ms.date: 01/07/2020
 ms.openlocfilehash: 784b22f11b57fb025f6d9401e10d527c83751898
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88757634"
 ---
 # <a name="manage-azure-file-share-backups"></a>Azure dosya paylaşımı yedeklemelerini yönetme
@@ -38,7 +38,7 @@ Mevcut yedekleme ilkelerini görüntülemek için:
 
    ![Tüm yedekleme ilkeleri](./media/manage-afs-backup/all-backup-policies.png)
 
-1. **Azure dosya paylaşımıyla**ilgili ilkeleri görüntülemek için sağ üst köşedeki açılan listeden **Azure dosya paylaşma** ' yı seçin.
+1. **Azure dosya paylaşımıyla** ilgili ilkeleri görüntülemek için sağ üst köşedeki açılan listeden **Azure dosya paylaşma** ' yı seçin.
 
    ![Azure dosya paylaşma seçin](./media/manage-afs-backup/azure-file-share.png)
 
@@ -48,7 +48,7 @@ Yeni bir yedekleme ilkesi oluşturmak için:
 
    ![Yeni yedekleme ilkesi](./media/manage-afs-backup/new-backup-policy.png)
 
-1. **Ekle** bölmesinde, **Ilke türü**olarak **Azure dosya paylaşma** ' yı seçin. **Azure dosya paylaşımının** **yedekleme ilkesi** bölmesi açılır. Kurtarma noktaları için ilke adı, yedekleme sıklığı ve bekletme aralığını belirtin. İlkeyi tanımladıktan sonra **Tamam**' ı seçin.
+1. **Ekle** bölmesinde, **Ilke türü** olarak **Azure dosya paylaşma** ' yı seçin. **Azure dosya paylaşımının** **yedekleme ilkesi** bölmesi açılır. Kurtarma noktaları için ilke adı, yedekleme sıklığı ve bekletme aralığını belirtin. İlkeyi tanımladıktan sonra **Tamam**' ı seçin.
 
    ![Yedekleme ilkesini tanımlama](./media/manage-afs-backup/define-backup-policy.png)
 

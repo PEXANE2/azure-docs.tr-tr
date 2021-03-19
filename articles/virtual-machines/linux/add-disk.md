@@ -8,12 +8,12 @@ ms.collection: linux
 ms.topic: how-to
 ms.date: 08/20/2020
 ms.author: cynthn
-ms.openlocfilehash: a4e0cee7a46e3f61f95e87f7cba1fb3595ace3c5
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.openlocfilehash: adf6198cf12011c77fcf3f93d4b595ea433ddefd
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102556817"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104580394"
 ---
 # <a name="add-a-disk-to-a-linux-vm"></a>Linux VM'ye disk ekleme
 
@@ -148,7 +148,7 @@ Bu örnekte, nano düzenleyicisini kullanıyoruz, bu yüzden dosyayı düzenleme
 >
 > *NOFAIL* seçeneği, dosya sistemi bozuk olsa da veya önyükleme zamanında disk mevcut olmasa bile VM 'nin başlamasını sağlar. Bu seçenek olmadan, [FSTAB hataları nedeniyle LINUX sanal MAKINESINE SSH yapılamıyor](/archive/blogs/linuxonazure/cannot-ssh-to-linux-vm-after-adding-data-disk-to-etcfstab-and-rebooting) bölümünde açıklandığı gibi davranışla karşılaşabilirsiniz
 >
-> Azure VM seri konsolu, fstab değiştirme bir önyükleme hatası ile sonuçlanmışsa sanal makinenize konsol erişimi için kullanılabilir. [Seri konsol belgelerinde](../troubleshooting/serial-console-linux.md)daha fazla ayrıntı bulunabilir.
+> Azure VM seri konsolu, fstab değiştirme bir önyükleme hatası ile sonuçlanmışsa sanal makinenize konsol erişimi için kullanılabilir. [Seri konsol belgelerinde](/troubleshoot/azure/virtual-machines/serial-console-linux)daha fazla ayrıntı bulunabilir.
 
 ### <a name="trimunmap-support-for-linux-in-azure"></a>Azure 'da Linux için KıRPMA/eşlemeyi kaldır
 Bazı Linux çekirdekler, diskteki kullanılmayan blokları atmak için kesme/eşlemeyi Kaldır işlemlerini destekler. Bu özellik, Azure 'un silinen sayfaların artık geçerli olmadığını ve atılamayacağını, daha sonra da büyük dosyalar oluşturup bunları silerek paradan tasarruf etmesini bildirmek için standart depolamada yararlıdır.

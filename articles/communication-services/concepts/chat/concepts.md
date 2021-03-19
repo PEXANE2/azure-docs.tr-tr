@@ -6,150 +6,154 @@ author: mikben
 manager: jken
 services: azure-communication-services
 ms.author: mikben
-ms.date: 03/10/2021
+ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 22ffa59339d85af80a7398e581862d19eef17222
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.openlocfilehash: e71917d917491037100b4ee666cbeb030b0a4786
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103490662"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104656150"
 ---
-# <a name="chat-concepts"></a>Sohbet kavramları
+# <a name="chat-concepts"></a>Sohbet kavramları 
 
-[!INCLUDE [Public Preview Notice](../../includes/public-preview-include.md)]
+[!INCLUDE [Public Preview Notice](../../includes/public-preview-include.md)]    
+
+Azure Iletişim Hizmetleri sohbet istemci kitaplıkları, uygulamalarınıza gerçek zamanlı metin sohbeti eklemek için kullanılabilir. Bu sayfa, önemli sohbet kavramlarını ve yeteneklerini özetler.    
+
+Belirli istemci kitaplığı dilleri ve özellikleri hakkında daha fazla bilgi edinmek için [Iletişim Hizmetleri sohbeti istemci kitaplığına genel bakış](./sdk-features.md) bölümüne bakın.    
+
+## <a name="chat-overview"></a>Sohbete genel bakış    
+
+Sohbet iş parçacıkları içinde sohbet görüşmeleri gerçekleşir. Sohbet iş parçacığı birçok ileti ve çok sayıda kullanıcı içerebilir. Her ileti tek bir iş parçacığına aittir ve bir Kullanıcı bir veya daha fazla iş parçacığının parçası olabilir. Sohbet iş parçacığındaki her kullanıcıya katılımcı denir. Yalnızca iş parçacığı katılımcıları, ileti alıp alabilir ve sohbet iş parçacığında başka kullanıcılar ekleyebilir veya kaldırabilir. İletişim Hizmetleri, sohbet iş parçacığı veya iletisinde silme işlemini yürütmeden veya sohbet iş parçacığında hiçbir katılımcı kalana kadar sohbet geçmişini depolar, bu noktada sohbet iş parçacığı yalnız bırakılmış ve silinmek üzere sıraya alınır. 
+    
+## <a name="service-limits"></a>Hizmet sınırlamaları   
+
+- Sohbet iş parçacığında izin verilen en fazla katılımcı sayısı 250 ' dir.   
+- İzin verilen en büyük ileti boyutu yaklaşık 28 KB 'dir.  
+- 20 ' den fazla katılımcı içeren sohbet iş parçacıkları için okundu bilgisi ve yazma göstergesi özellikleri desteklenmez.    
+- 
+## <a name="chat-architecture"></a>Sohbet mimarisi    
+
+Sohbet mimarisinin iki temel bölümü vardır: 1) Güvenilen hizmet ve 2) Istemci uygulaması.    
+
+:::image type="content" source="../../media/chat-architecture.png" alt-text="Iletişim hizmetlerinin sohbet mimarisini gösteren diyagram."::: 
+
+ - **Güvenilen hizmet:** Bir sohbet oturumunu doğru şekilde yönetmek için, kaynak Bağlantı dizenizi kullanarak Iletişim hizmetlerine bağlanmanıza yardımcı olan bir hizmete ihtiyacınız vardır. Bu hizmet, sohbet iş parçacıkları oluşturmaktan, iş parçacığı katılımcısı listelerinin yönetilmesine ve kullanıcılara erişim belirteçleri sağlamaya sorumludur. Erişim belirteçleri hakkında daha fazla bilgi [erişim belirteçlerimiz](../../quickstarts/access-tokens.md) hızlı başlangıç bölümünde bulunabilir.   
+ - **İstemci uygulaması:**  İstemci uygulaması, güvenilen hizmetinize bağlanır ve Iletişim hizmetlerine doğrudan bağlanmak için kullanılan erişim belirteçlerini alır. Bu bağlantı yapıldıktan sonra istemci uygulamanız ileti gönderebilir ve alabilir.   
+Güvenilen hizmet katmanını kullanarak erişim belirteçleri oluşturmamız önerilir. Bu senaryoda, sunucu tarafı kullanıcıları oluşturup yönetmekten ve belirteçlerini yayınmaktan sorumludur.   
+        
+## <a name="message-types"></a>İleti türleri    
+
+İletişim Hizmetleri sohbeti, Kullanıcı tarafından üretilen iletileri ve **Iş parçacığı etkinlikleri** adlı sistem tarafından oluşturulan iletileri paylaşır. İş parçacığı etkinlikleri, bir sohbet iş parçacığı güncelleştirildiği zaman üretilir. `List Messages` `Get Messages` Bir sohbet iş parçacığı çağırdığınızda, sonuç Kullanıcı tarafından oluşturulan metin iletilerini ve sistem iletilerini kronolojik sırada içerecektir. Bu, bir katılımcının ne zaman eklendiğini veya kaldırıldığını veya sohbet iş parçacığı konusunun ne zaman güncelleştirildiğini belirlemenize yardımcı olur. Desteklenen ileti türleri şunlardır:  
+    
+ - `Text`: Bir sohbet görüşmesinin parçası olarak bir kullanıcı tarafından oluşturulan ve gönderilen düz metin iletisi. 
+ - `RichText/HTML`: Biçimli bir SMS mesajı. Iletişim Hizmetleri kullanıcılarının şu anda zengin metin iletileri gönderemediğini unutmayın. Bu ileti türü, takımlar tarafından kullanıcılara, takımlar birlikte çalışma senaryolarında Iletişim Hizmetleri kullanıcılarına gönderilen iletiler tarafından desteklenir.   
+ - `ThreadActivity/ParticipantAdded`: Sohbet iş parçacığına bir veya daha fazla katılımcı eklendiğini belirten bir sistem iletisi. Örnek: 
 
 
-Azure Iletişim Hizmetleri sohbet istemci kitaplıkları, uygulamalarınıza gerçek zamanlı metin sohbeti eklemek için kullanılabilir. Bu sayfa, önemli sohbet kavramlarını ve yeteneklerini özetler.
+``` 
+{   
+            "id": "1613589626560",  
+            "type": "participantAdded", 
+            "sequenceId": "7",  
+            "version": "1613589626560", 
+            "content":  
+            {   
+                "participants": 
+                [   
+                    {   
+                        "id": "8:acs:d2a829bc-8523-4404-b727-022345e48ca6_00000008-511c-4df6-f40f-343a0d003226",    
+                        "displayName": "Jane",  
+                        "shareHistoryTime": "1970-01-01T00:00:00Z"  
+                    }   
+                ],  
+                "initiator": "8:acs:d2a829bc-8523-4404-b727-022345e48ca6_00000008-511c-4ce0-f40f-343a0d003224"  
+            },  
+            "createdOn": "2021-02-17T19:20:26Z" 
+        }   
+``` 
 
-Belirli istemci kitaplığı dilleri ve özellikleri hakkında daha fazla bilgi edinmek için [Iletişim Hizmetleri sohbeti istemci kitaplığına genel bakış](./sdk-features.md) bölümüne bakın.
+- `ThreadActivity/ParticipantRemoved`: Bir katılımcının sohbet iş parçacığından kaldırıldığını belirten sistem iletisi. Örnek:  
 
-## <a name="chat-overview"></a>Sohbete genel bakış
+``` 
+{   
+            "id": "1613589627603",  
+            "type": "participantRemoved",   
+            "sequenceId": "8",  
+            "version": "1613589627603", 
+            "content":  
+            {   
+                "participants": 
+                [   
+                    {   
+                        "id": "8:acs:d2a829bc-8523-4404-b727-022345e48ca6_00000008-511c-4df6-f40f-343a0d003226",    
+                        "displayName": "Jane",  
+                        "shareHistoryTime": "1970-01-01T00:00:00Z"  
+                    }   
+                ],  
+                "initiator": "8:acs:d2a829bc-8523-4404-b727-022345e48ca6_00000008-511c-4ce0-f40f-343a0d003224"  
+            },  
+            "createdOn": "2021-02-17T19:20:27Z" 
+        }   
+``` 
 
-Sohbet iş parçacıkları içinde sohbet görüşmeleri gerçekleşir. Sohbet iş parçacığı birçok ileti ve çok sayıda kullanıcı içerebilir. Her ileti tek bir iş parçacığına aittir ve bir Kullanıcı bir veya daha fazla iş parçacığının parçası olabilir.
+- `ThreadActivity/TopicUpdate`: İş parçacığı konusunun güncelleştirildiğini belirten sistem iletisi. Örnek:   
+``` 
+{   
+            "id": "1613589623037",  
+            "type": "topicUpdated", 
+            "sequenceId": "2",  
+            "version": "1613589623037", 
+            "content":  
+            {   
+                "topic": "New topic",   
+                "initiator": "8:acs:d2a829bc-8523-4404-b727-022345e48ca6_00000008-511c-4ce0-f40f-343a0d003224"  
+            },  
+            "createdOn": "2021-02-17T19:20:23Z" 
+        }   
+``` 
 
-Sohbet iş parçacığındaki her kullanıcıya üye denir. Bir sohbet iş parçacığında en fazla 250 üye olabilir. Yalnızca iş parçacığı üyeleri bir sohbet iş parçacığına ileti gönderebilir ve alabilir ya da üye ekleyebilir/kaldırabilir. İzin verilen en büyük ileti boyutu yaklaşık 28KB 'dir. İşlem kullanarak bir sohbet iş parçacığındaki tüm iletileri alabilirsiniz `List/Get Messages` . İletişim Hizmetleri, sohbet iş parçacığı veya iletisi üzerinde silme işlemi yürütülene veya sohbet iş parçacığında kalan ve silinmek üzere işlendiği bir üye kalmayana kadar sohbet geçmişini depolar.
-
-20 ' den fazla üye içeren sohbet iş parçacıkları için okundu bilgisi ve yazma göstergesi özellikleri devre dışı bırakılır.
-
-## <a name="chat-architecture"></a>Sohbet mimarisi
-
-Sohbet mimarisinin iki temel bölümü vardır: 1) Güvenilen hizmet ve 2) Istemci uygulaması.
-
-:::image type="content" source="../../media/chat-architecture.png" alt-text="Iletişim hizmetlerinin sohbet mimarisini gösteren diyagram.":::
-
- - **Güvenilen hizmet:** Bir sohbet oturumunu doğru şekilde yönetmek için, kaynak Bağlantı dizenizi kullanarak Iletişim hizmetlerine bağlanmanıza yardımcı olan bir hizmete ihtiyacınız vardır. Bu hizmet, sohbet iş parçacıkları oluşturmaktan, iş parçacığı üyeliklerini yönetmeye ve kullanıcılara erişim belirteçleri sağlamaya sorumludur. Erişim belirteçleri hakkında daha fazla bilgi [erişim belirteçlerimiz](../../quickstarts/access-tokens.md) hızlı başlangıç bölümünde bulunabilir.
-
- - **İstemci uygulaması:**  İstemci uygulaması, güvenilen hizmetinize bağlanır ve Iletişim hizmetlerine doğrudan bağlanmak için kullanılan erişim belirteçlerini alır. Bu bağlantı yapıldıktan sonra istemci uygulamanız ileti gönderebilir ve alabilir.
-
-Güvenilen hizmet katmanını kullanarak erişim belirteçleri oluşturmamız önerilir. Bu senaryoda, sunucu tarafı kullanıcıları oluşturup yönetmekten ve belirteçlerini yayınmaktan sorumludur.
-
-## <a name="message-types"></a>İleti türleri
-
-İletişim Hizmetleri sohbeti, Kullanıcı tarafından üretilen iletileri ve **Iş parçacığı etkinlikleri** adlı sistem tarafından oluşturulan iletileri paylaşır. İş parçacığı etkinlikleri, bir sohbet iş parçacığı güncelleştirildiği zaman üretilir. `List Messages` `Get Messages` Bir sohbet iş parçacığı çağırdığınızda, sonuç Kullanıcı tarafından oluşturulan metin iletilerini ve sistem iletilerini kronolojik sırada içerecektir. Bu, bir üyenin ne zaman eklendiğini veya kaldırıldığını veya sohbet iş parçacığı konusunun ne zaman güncelleştirildiğini tanımlamanızı sağlar. Desteklenen ileti türleri şunlardır:
-
- - `Text`: Bir sohbet görüşmesinin parçası olarak bir kullanıcı tarafından oluşturulan ve gönderilen düz metin iletisi.
- - `RichText/HTML`: Biçimli bir SMS mesajı. Iletişim Hizmetleri kullanıcılarının şu anda zengin metin iletileri gönderemediğini unutmayın. Bu ileti türü, takımlar tarafından kullanıcılara, takımlar birlikte çalışma senaryolarında Iletişim Hizmetleri kullanıcılarına gönderilen iletiler tarafından desteklenir.
-
- - `ThreadActivity/ParticipantAdded`: Sohbet iş parçacığına bir veya daha fazla katılımcı eklendiğini belirten bir sistem iletisi. Örnek:
-
-```
-{
-            "id": "1613589626560",
-            "type": "participantAdded",
-            "sequenceId": "7",
-            "version": "1613589626560",
-            "content":
-            {
-                "participants":
-                [
-                    {
-                        "id": "8:acs:d2a829bc-8523-4404-b727-022345e48ca6_00000008-511c-4df6-f40f-343a0d003226",
-                        "displayName": "Jane",
-                        "shareHistoryTime": "1970-01-01T00:00:00Z"
-                    }
-                ],
-                "initiator": "8:acs:d2a829bc-8523-4404-b727-022345e48ca6_00000008-511c-4ce0-f40f-343a0d003224"
-            },
-            "createdOn": "2021-02-17T19:20:26Z"
-        }
-```
-
-- `ThreadActivity/ParticipantRemoved`: Bir katılımcının sohbet iş parçacığından kaldırıldığını belirten sistem iletisi. Örnek:
-
-```
-{
-            "id": "1613589627603",
-            "type": "participantRemoved",
-            "sequenceId": "8",
-            "version": "1613589627603",
-            "content":
-            {
-                "participants":
-                [
-                    {
-                        "id": "8:acs:d2a829bc-8523-4404-b727-022345e48ca6_00000008-511c-4df6-f40f-343a0d003226",
-                        "displayName": "Jane",
-                        "shareHistoryTime": "1970-01-01T00:00:00Z"
-                    }
-                ],
-                "initiator": "8:acs:d2a829bc-8523-4404-b727-022345e48ca6_00000008-511c-4ce0-f40f-343a0d003224"
-            },
-            "createdOn": "2021-02-17T19:20:27Z"
-        }
-```
-
-- `ThreadActivity/TopicUpdate`: İş parçacığı konusunun güncelleştirildiğini belirten sistem iletisi. Örnek:
-
-```
-{
-            "id": "1613589623037",
-            "type": "topicUpdated",
-            "sequenceId": "2",
-            "version": "1613589623037",
-            "content":
-            {
-                "topic": "New topic",
-                "initiator": "8:acs:d2a829bc-8523-4404-b727-022345e48ca6_00000008-511c-4ce0-f40f-343a0d003224"
-            },
-            "createdOn": "2021-02-17T19:20:23Z"
-        }
-```
-
-## <a name="real-time-signaling"></a>Gerçek zamanlı sinyal
+## <a name="real-time-signaling"></a>Gerçek zamanlı sinyal  
 
 Sohbet JavaScript istemci kitaplığı gerçek zamanlı sinyal içerir. Bu, istemcilerin API 'Leri yoklamaya gerek kalmadan bir sohbet iş parçacığına gerçek zamanlı güncelleştirmeleri ve gelen iletileri dinlemesine olanak tanır. Kullanılabilir olaylar şunlardır:
 
- - `ChatMessageReceived` -kullanıcının üyesi olduğu bir sohbet iş parçacığına yeni bir ileti gönderildiğinde. Bu olay, önceki konu başlığında açıklandığımız otomatik oluşturulan sistem iletileri için gönderilmez.
- - `ChatMessageEdited` -kullanıcının üyesi olduğu bir sohbet iş parçacığında bir ileti düzenlendiğinde.
- - `ChatMessageDeleted` -kullanıcının üyesi olduğu bir sohbet iş parçacığında bir ileti silindiğinde.
- - `TypingIndicatorReceived` -başka bir üye, kullanıcının üyesi olduğu bir sohbet iş parçacığına ileti yazarken.
- - `ReadReceiptReceived` -başka bir üye kullanıcının sohbet iş parçacığında gönderdiği iletiyi okumalıdır.
+ - `ChatMessageReceived` -bir sohbet iş parçacığına yeni bir ileti gönderildiğinde. Bu olay, önceki konu başlığında ele alınan otomatik oluşturulan sistem iletileri için gönderilmez.   
+ - `ChatMessageEdited` -bir sohbet iş parçacığında bir ileti düzenlendiğinde. 
+ - `ChatMessageDeleted` -bir sohbet iş parçacığında bir ileti silindiğinde.   
+ - `TypingIndicatorReceived` -başka bir katılımcı sohbet iş parçacığında bir ileti yazarken.   
+ - `ReadReceiptReceived` -başka bir katılımcı bir kullanıcının sohbet iş parçacığında gönderdiği iletiyi okumıştır.     
+ - `ChatThreadCreated` -bir iletişim kullanıcısı tarafından bir sohbet iş parçacığı oluşturulduğunda. 
+ - `ChatThreadDeleted` -bir sohbet iş parçacığı bir iletişim kullanıcısı tarafından silindiğinde. 
+ - `ChatThreadPropertiesUpdated` -sohbet iş parçacığı özellikleri güncelleniyorsa; Şu anda, iş parçacığı için yalnızca konuyu güncelleştirmeyi destekliyoruz.   
+ - `ParticipantsAdded` -bir Kullanıcı bir sohbet iş parçacığına katılımcı olarak eklendiğinde.  
+ - `ParticipantsRemoved` -Mevcut bir katılımcı sohbet iş parçacığından kaldırıldığında.
 
-## <a name="chat-events"></a>Sohbet etkinlikleri
 
-Gerçek zamanlı sinyal, kullanıcılarınızın gerçek zamanlı olarak sohbet etmesine olanak tanır. Hizmetleriniz, sohbet ile ilgili olaylara abone olmak için Azure Event Grid kullanabilir. Daha ayrıntılı bilgi için bkz. [olay işleme kavramsal](../event-handling.md).
+## <a name="chat-events"></a>Sohbet etkinlikleri  
 
-## <a name="using-cognitive-services-with-chat-client-library-to-enable-intelligent-features"></a>Akıllı özellikleri etkinleştirmek için öğretici hizmetlerini sohbet istemci kitaplığı ile kullanma
+Gerçek zamanlı sinyal, kullanıcılarınızın gerçek zamanlı olarak sohbet etmesine olanak tanır. Hizmetleriniz, sohbet ile ilgili olaylara abone olmak için Azure Event Grid kullanabilir. Daha ayrıntılı bilgi için bkz. [olay işleme kavramsal](https://docs.microsoft.com/azure/event-grid/event-schema-communication-services?tabs=event-grid-event-schema).
 
-Uygulamalarınıza akıllı özellikler eklemek için sohbet istemci kitaplığıyla Azure bilişsel [API 'leri](../../../cognitive-services/index.yml) kullanabilirsiniz. Örneğin, şunları yapabilirsiniz:
 
-- Kullanıcıların farklı dillerde birbirleriyle sohbet kurmasını sağlar.
-- Bir müşterinin gelen bir sorunun olumsuz bir yaklaşımını algılayarak, destek aracısına bilet önceliklendirmesine yardımcı olun.
+## <a name="using-cognitive-services-with-chat-client-library-to-enable-intelligent-features"></a>Akıllı özellikleri etkinleştirmek için öğretici hizmetlerini sohbet istemci kitaplığı ile kullanma 
+
+Uygulamalarınıza akıllı özellikler eklemek için sohbet istemci kitaplığıyla Azure bilişsel [API 'leri](../../../cognitive-services/index.yml) kullanabilirsiniz. Örneğin, şunları yapabilirsiniz:  
+
+- Kullanıcıların farklı dillerde birbirleriyle sohbet kurmasını sağlar.  
+- Bir müşterinin gelen bir sorunun olumsuz bir yaklaşımını algılayarak, destek aracısına bilet önceliklendirmesine yardımcı olun.   
 - Anahtar algılama ve varlık tanıma için gelen iletileri çözümleyin ve ileti içeriğine göre uygulamanızdaki kullanıcıya ilgili bilgileri yazın.
 
-Bunu başarmanın bir yolu, güvenilen hizmetinizin sohbet iş parçacığı üyesi olarak davranmasından biridir. Dil çevirisini etkinleştirmek istediğinizi varsayalım. Bu hizmet, diğer üyelerin [1] tarafından düzenlenmekte olan iletileri dinlemeden, bilişsel API 'Leri çağırarak içeriği istenen dile [2, 3] dönüştürmek ve [4] sohbet iş parçacığında çevrilmiş sonucu bir ileti olarak göndermek için sorumlu olacaktır.
+Bunu başarmanın bir yolu, güvenilen hizmetinizin sohbet iş parçacığı katılımcısı olarak davranmasından biridir. Dil çevirisini etkinleştirmek istediğinizi varsayalım. Bu hizmet, diğer katılımcılar tarafından düzenlenmekte olan iletilere dinleme yapmaktan sorumlu olacaktır. [1], içeriği istenen dile dönüştürmek için bilişsel API 'Ler çağrılıyor [2, 3] ve çevrilmiş sonucu [4] sohbet iş parçacığında ileti olarak gönderiyor.
 
-Bu şekilde, ileti geçmişi hem özgün hem de çevrilmiş iletileri içerir. İstemci uygulamasında, orijinal veya çevrilmiş iletiyi göstermek için Logic ekleyebilirsiniz. Bilişsel API 'Leri kullanarak metni farklı dillere çevirme hakkında bilgi edinmek için [Bu hızlı](../../../cognitive-services/translator/quickstart-translator.md) başlangıca bakın.
+Bu şekilde, ileti geçmişi hem özgün hem de çevrilmiş iletileri içerir. İstemci uygulamasında, orijinal veya çevrilmiş iletiyi göstermek için Logic ekleyebilirsiniz. Bilişsel API 'Leri kullanarak metni farklı dillere çevirme hakkında bilgi edinmek için [Bu hızlı](../../../cognitive-services/translator/quickstart-translator.md) başlangıca bakın. 
+    
+:::image type="content" source="../media/chat/cognitive-services.png" alt-text="Iletişim hizmetleriyle etkileşime geçen bilişsel hizmetler 'i gösteren diyagram."::: 
 
-:::image type="content" source="../media/chat/cognitive-services.png" alt-text="Iletişim hizmetleriyle etkileşime geçen bilişsel hizmetler 'i gösteren diyagram.":::
+## <a name="next-steps"></a>Sonraki adımlar   
 
-## <a name="next-steps"></a>Sonraki adımlar
+> [!div class="nextstepaction"] 
+> [Sohbetle çalışmaya başlama](../../quickstarts/chat/get-started.md)    
 
-> [!div class="nextstepaction"]
-> [Sohbetle çalışmaya başlama](../../quickstarts/chat/get-started.md)
-
-Aşağıdaki belgeler sizin için ilginç olabilir:
-
+Aşağıdaki belgeler sizin için ilginç olabilir:  
 - [Sohbet istemci kitaplığı](sdk-features.md) hakkında bilgi edinin

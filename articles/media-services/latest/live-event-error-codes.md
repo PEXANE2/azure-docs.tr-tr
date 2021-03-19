@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: error-reference
 ms.date: 02/12/2020
 ms.author: inhenkel
-ms.openlocfilehash: b3be465c488bdd3c5dbd62f757733939d1bee393
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 5463f1d8376cbe1a6e81d17c1f95a84e67f3b418
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100393522"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104581091"
 ---
 # <a name="media-services-live-event-error-codes"></a>Media Services canlı olay hata kodları
 
@@ -28,7 +28,7 @@ Aşağıdaki tablolarda [canlı olay](live-events-outputs-concept.md) hata kodla
 
 ## <a name="liveeventconnectionrejected"></a>Liveeventconnectionreddedildi
 
-Canlı bir olay için [Event Grid](../../event-grid/index.yml) olaylarına abone olduğunuzda, [Liveeventconnectionreddedildi](media-services-event-schemas.md\#liveeventconnectionrejected) olayından aşağıdaki hatalardan birini görebilirsiniz.
+Canlı bir olay için [Event Grid](../../event-grid/index.yml) olaylarına abone olduğunuzda, [Liveeventconnectionreddedildi](monitoring/media-services-event-schemas.md\#liveeventconnectionrejected) olayından aşağıdaki hatalardan birini görebilirsiniz.
 > [!div class="mx-tdCol2BreakAll"]
 >| Hata | Bilgi |
 >|--|--|
@@ -68,7 +68,7 @@ Canlı bir olay için [Event Grid](../../event-grid/index.yml) olaylarına abone
 
 ## <a name="liveeventencoderdisconnected"></a>Liveeventencoderconnected bağlantısı kesildi
 
-[Liveeventencoderconnected](media-services-event-schemas.md\#liveeventencoderdisconnected) olayında aşağıdaki hatalardan birini görebilirsiniz.
+[Liveeventencoderconnected](monitoring/media-services-event-schemas.md\#liveeventencoderdisconnected) olayında aşağıdaki hatalardan birini görebilirsiniz.
 
 > [!div class="mx-tdCol2BreakAll"]
 >| Hata | Bilgi |

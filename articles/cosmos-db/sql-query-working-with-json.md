@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 09/19/2020
 ms.author: tisande
 ms.openlocfilehash: 9a9300db1adc3ff238c44887012400702690b0e8
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93337838"
 ---
 # <a name="working-with-json-in-azure-cosmos-db"></a>Azure Cosmos DB'de JSON ile çalışma
@@ -293,7 +293,7 @@ Sonuçlar:
 
 Bir değeri boşluk, özel karakter veya ayrılmış sözcük olan bir özellik adı olarak proje için diğer adları kullanamazsınız. Bir değerin projeksiyonunu olarak değiştirmek istiyorsanız, örneğin bir boşluk içeren bir özellik adına sahip olmak için bir [JSON ifadesi](#json-expressions)kullanabilirsiniz.
 
-İşte bir örnek:
+Aşağıda bir örnek verilmiştir:
 
 ```sql
     SELECT

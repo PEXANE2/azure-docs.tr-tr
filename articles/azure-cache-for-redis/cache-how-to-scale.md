@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 02/08/2021
-ms.openlocfilehash: 2913869067ff138922ebb7ea1483a1132e360d29
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: d91b62afacad31d78feb7d4743cd4050fcc1bd4e
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100382404"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104581652"
 ---
 # <a name="scale-an-azure-cache-for-redis-instance"></a>Redsıs örneği için Azure önbelleğini ölçeklendirme
 Redin için Azure önbelleğinde, önbellek boyutu ve özellikleri seçiminde esneklik sağlayan farklı önbellek teklifleri vardır. Temel, standart veya Premium bir önbellek için, oluşturulduktan sonra, uygulama gereksinimlerinize devam etmek için boyutunu ve katmanını değiştirebilirsiniz. Bu makalede, Azure portal ve Azure PowerShell ve Azure CLı gibi araçları kullanarak önbelleğinizi nasıl ölçekleyebilirsiniz.
@@ -45,7 +45,7 @@ Aşağıdaki kısıtlamalara sahip farklı bir fiyatlandırma katmanına ölçek
   * **Standart** bir önbellekten, **temel** bir önbellekten ölçeklendiremez.
 * **Temel** bir önbellekten **Standart** bir önbelleğe ölçeklendirebilirsiniz, ancak aynı anda boyutu değiştiremezsiniz. Farklı bir boyuta ihtiyacınız varsa, sonraki ölçekleme işlemini istenen boyuta getirebilirsiniz.
 * **Temel** önbellekten doğrudan **Premium** önbelleğe ölçeklendiremez. İlk olarak, bir ölçeklendirme işleminde **temel** olarak **Standart** ve sonra da sonraki ölçekleme işleminde **Standart** 'den **Premium** 'a ölçeklendirin.
-* Daha büyük bir boyuttan **C0 (250 MB)** boyutuna kadar ölçeklendiremez.
+* Daha büyük bir boyuttan **C0 (250 MB)** boyutuna kadar ölçeklendiremez. Ancak, aynı fiyatlandırma katmanındaki diğer boyuta göre ölçeği azaltabilirsiniz. Örneğin, C5 standart 'dan C1 standardına kadar ölçeği azaltabilirsiniz.
  
 Önbellek yeni fiyatlandırma katmanına ölçeklendirilirken, **redsıs dikey penceresinde Azure önbelleğinde** **ölçekleme** durumu görüntülenir.
 

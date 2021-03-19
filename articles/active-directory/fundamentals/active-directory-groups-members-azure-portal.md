@@ -14,10 +14,10 @@ ms.custom: it-pro, seodec18
 ms.reviewer: krbain
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: af5a85bad1e7b2a6bf645084d6b78f77e6c0d8b2
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92371843"
 ---
 # <a name="add-or-remove-group-members-using-azure-active-directory"></a>Azure Active Directory kullanarak Grup üyelerini ekleme veya kaldırma
@@ -47,7 +47,7 @@ Azure Active Directory kullanarak Grup üyelerini ekleme ve kaldırma işlemine 
 
 ## <a name="to-remove-group-members"></a>Grup üyelerini kaldırmak için
 
-1. **Gruplar-tüm gruplar** sayfasında, üyeyi kaldırmak istediğiniz grubu bulun ve seçin. **MDM ilkesi-Batı**kullanacağız.
+1. **Gruplar-tüm gruplar** sayfasında, üyeyi kaldırmak istediğiniz grubu bulun ve seçin. **MDM ilkesi-Batı** kullanacağız.
 
 2. **Yönet** alanından **Üyeler** ' i seçin, kaldırılacak üyenin adını arayıp seçin ve ardından **Kaldır**' ı seçin.
 

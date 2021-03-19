@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 06/10/2019
 ms.author: dobett
 ms.openlocfilehash: e492ebf70f69c985691852a1c1f2351d1e09578e
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92425021"
 ---
 # <a name="what-is-connected-factory-iot-solution-accelerator"></a>Bağlı fabrika IoT Çözüm Hızlandırıcısı nedir?
@@ -47,7 +47,7 @@ Bağlı fabrika aşağıdaki özellikleri içerir:
 - Endüstriyel varlık hiyerarşilerini bir ağaç topolojisinde ve etkileşimli bir haritada görüntüleyin.
 - Bir bulut panosundan uyarıları görüntüleyin, kabul edin ve kapatın.
 
-## <a name="azure-time-series-insights"></a>Azure Zaman Serisi Görüşleri
+## <a name="azure-time-series-insights"></a>Azure Time Series Insights
 
 - [Azure Time Series Insights](../time-series-insights/time-series-insights-overview.md) , büyük miktarlarda zaman serisi verilerinin depolanması, görselleştirilmesi ve sorgulanması için oluşturulmuştur. Bağlı fabrika bu hizmetten yararlanır.
 - Bağlı fabrika bu hizmetle tümleşerek cihaz verilerinizin derin ve gerçek zamanlı analizini gerçekleştirmenize olanak tanır.

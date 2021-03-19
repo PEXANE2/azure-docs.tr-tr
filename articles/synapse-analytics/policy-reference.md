@@ -1,18 +1,18 @@
 ---
 title: Yerleşik ilke tanımları
 description: Azure SYNAPSE Analytics için Azure Ilkesi yerleşik ilke tanımlarını listeler. Bu yerleşik ilke tanımları, Azure kaynaklarınızı yönetmek için yaygın yaklaşımlar sağlar.
-ms.date: 03/10/2021
+ms.date: 03/17/2021
 ms.topic: reference
 author: julieMSFT
 ms.author: jrasnick
 ms.service: synapse-analytics
 ms.custom: subject-policy-reference
-ms.openlocfilehash: f913179072786da73df39fe34c26b707d0073bbd
-ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
+ms.openlocfilehash: 06e42f5a3dd83d534ea4c87b6e148629b8c66b28
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102611560"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104600193"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-synapse-analytics"></a>Azure SYNAPSE Analytics için Azure Ilkesi yerleşik tanımları 
 

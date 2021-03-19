@@ -5,10 +5,10 @@ ms.topic: tutorial
 ms.date: 08/22/2018
 ms.custom: mvc
 ms.openlocfilehash: d2990b5950cf8812367c3a59c6cace39e4085e2a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88261914"
 ---
 # <a name="back-up-windows-server-to-azure"></a>Windows Server’ı Azure’da Yedekleme
@@ -29,7 +29,7 @@ Windows Server'ınızı bozulmalara, saldırılara ve olağanüstü durumlara ka
 
 Windows Server’ı yedekleyebilmeniz için önce yedeklemelerin veya geri yükleme noktalarının depolanacağı bir yer oluşturmanız gerekir. [Kurtarma Hizmetleri kasası](backup-azure-recovery-services-vault-overview.md), Windows Server’ınızdan yedeklemeleri depolayan Azure’daki bir kapsayıcıdır. Azure portalında Kurtarma Hizmetleri kasası oluşturmak için aşağıdaki adımları izleyin.
 
-1. Sol taraftaki menüden **Tüm hizmetler**’i seçin ve hizmet listesinde **Kurtarma Hizmetleri** yazın. **Kurtarma Hizmetleri kasalarını**seçin.
+1. Sol taraftaki menüden **Tüm hizmetler**’i seçin ve hizmet listesinde **Kurtarma Hizmetleri** yazın. **Kurtarma Hizmetleri kasalarını** seçin.
 
    ![Kurtarma Hizmetleri kasasını aç](./media/tutorial-backup-windows-server-to-azure/full-browser-open-rs-vault_2.png)
 
@@ -41,7 +41,7 @@ Windows Server’ı yedekleyebilmeniz için önce yedeklemelerin veya geri yükl
 
     * **Ad** alanına *myRecoveryServicesVault* yazın.
     * **Abonelik** bölümünde geçerli abonelik kimliği görüntülenir.
-    * **Kaynak grubu**için **var olanı kullan** ' ı seçin ve *myresourcegroup*öğesini seçin. *Myresourcegroup* yoksa, **Yeni oluştur** ' u seçin ve *myresourcegroup*yazın.
+    * **Kaynak grubu** için **var olanı kullan** ' ı seçin ve *myresourcegroup* öğesini seçin. *Myresourcegroup* yoksa, **Yeni oluştur** ' u seçin ve *myresourcegroup* yazın.
     * **Konum** açılan menüsünden *Batı Avrupa*’yı seçin.
     * Kurtarma Hizmetleri kasanızı oluşturmak için **Oluştur** ' u seçin.
 
@@ -66,7 +66,7 @@ Microsoft Azure Kurtarma Hizmetleri (MARS) aracısı, Windows Server ile Kurtarm
 
 4. **Altyapıyı hazırla menüsünü açmak** Için **altyapıyı hazırla** ' yı seçin.
 
-5. **Altyapıyı hazırla** menüsünde, *MARSAgentInstaller.exe*indirmek Için **Windows Server veya Windows istemcisi için aracıyı indir** ' i seçin.
+5. **Altyapıyı hazırla** menüsünde, *MARSAgentInstaller.exe* indirmek Için **Windows Server veya Windows istemcisi için aracıyı indir** ' i seçin.
 
     ![Windows Server veya Windows Istemcisi için aracıyı indirin](./media/tutorial-backup-windows-server-to-azure/prepare-infrastructure.png)
 
@@ -90,7 +90,7 @@ Microsoft Azure Kurtarma Hizmetleri (MARS) aracısı, Windows Server ile Kurtarm
 
 4. İstendiğinde, Windows Server’dan yedeklemeleri şifrelemek için bir şifreleme parolası sağlayın. Microsoft parola kaybolursa parolayı kurtaramasından bu yana parolayı güvenli bir konuma kaydedin.
 
-5. **Son**’u seçin.
+5. **Son**'u seçin.
 
 ## <a name="configure-backup-and-retention"></a>Yedekleme ve Bekletmeyi Yapılandırma
 
@@ -98,19 +98,19 @@ Windows Server’da, Azure’daki yedeklemelerin ne zaman gerçekleşeceğini za
 
 1. Microsoft Azure Kurtarma Hizmetleri aracısını açın. Bunu, makinenizde **Microsoft Azure Backup** aramasını yaparak bulabilirsiniz.
 
-2. Kurtarma Hizmetleri Aracısı konsolunda, **Eylemler bölmesi**altında **yedeklemeyi zamanla** ' yı seçin.
+2. Kurtarma Hizmetleri Aracısı konsolunda, **Eylemler bölmesi** altında **yedeklemeyi zamanla** ' yı seçin.
 
     ![Yedeklemeyi Zamanla](./media/tutorial-backup-windows-server-to-azure/mars-schedule-backup.png)
 
 3. **İleri ' yi** seçerek **yedeklenecek öğeleri seçin** sayfasına gidin.
 
-4. **Öğe Ekle** ' yi seçin ve açılan Iletişim kutusundan **sistem durumu** ve yedeklemek istediğiniz dosyalar veya klasörler ' i seçin. Ardından **Tamam**'ı seçin.
+4. **Öğe Ekle** ' yi seçin ve açılan Iletişim kutusundan **sistem durumu** ve yedeklemek istediğiniz dosyalar veya klasörler ' i seçin. Ardından **Tamam**’ı seçin.
 
 5. **İleri**’yi seçin.
 
-6. **Yedekleme zamanlamasını belirtin (sistem durumu)** sayfasında, sistem durumu için yedeklemelerin tetiklenmesi gereken gün veya haftanın saatini belirtin ve **İleri ' yi**seçin.
+6. **Yedekleme zamanlamasını belirtin (sistem durumu)** sayfasında, sistem durumu için yedeklemelerin tetiklenmesi gereken gün veya haftanın saatini belirtin ve **İleri ' yi** seçin.
 
-7. **Bekletme Ilkesi Seç (sistem durumu)** sayfasında, sistem durumu için yedekleme kopyası Için bekletme ilkesini seçin ve **İleri ' yi**seçin.
+7. **Bekletme Ilkesi Seç (sistem durumu)** sayfasında, sistem durumu için yedekleme kopyası Için bekletme ilkesini seçin ve **İleri ' yi** seçin.
 
 8. Benzer şekilde, seçilen dosyalar ve klasörler için yedekleme zamanlamasını ve bekletme ilkesini seçin.
 

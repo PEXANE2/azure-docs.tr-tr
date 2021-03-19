@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 04/20/2020
 ms.author: yelevin
 ms.openlocfilehash: 448998328ff15b74b0aa0b17e2435a7ff55c54a5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "83124202"
 ---
 # <a name="work-with-incidents-in-many-workspaces-at-once"></a>Aynı anda birçok çalışma alanındaki olaylarla çalışma 
@@ -44,7 +44,7 @@ Azure Sentinel 'i açtığınızda, tüm seçili kiracılar ve aboneliklerde eri
 
    ![Birden çok çalışma alanındaki olayları görüntüleme](./media/multiple-workspace-view/incidents.png)
 
-- Sayfanın üst kısmındaki *Sayaçlar,* *yeni olaylar*, *devam ediyor*vb.-tüm seçili çalışma alanları için sayıları toplu olarak gösterir.
+- Sayfanın üst kısmındaki *Sayaçlar,* *yeni olaylar*, *devam ediyor* vb.-tüm seçili çalışma alanları için sayıları toplu olarak gösterir.
 
 - Tüm seçili çalışma alanları ve dizinlerden (kiracılar) gelen olayları tek bir Birleşik listede görürsünüz. Normal **Olaylar** ekranındaki filtrelere ek olarak, listeyi çalışma alanına ve dizine göre filtreleyebilirsiniz.
 

@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 07/09/2020
 ms.author: tomfitz
 ms.openlocfilehash: 9f40f223cca34df58d2af7373d8f60fd7f383162
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87100050"
 ---
 # <a name="microsoftcommoncheckbox-ui-element"></a>Microsoft. Common. CheckBox UI öğesi
@@ -42,7 +42,7 @@ true
 
 ## <a name="remarks"></a>Açıklamalar
 
-**Gerekli** ayarı **true**olarak belirlediğinizde, Kullanıcı onay kutusunu seçmelidir. Kullanıcı onay kutusunu seçmezseniz, doğrulama iletisi görüntülenir.
+**Gerekli** ayarı **true** olarak belirlediğinizde, Kullanıcı onay kutusunu seçmelidir. Kullanıcı onay kutusunu seçmezseniz, doğrulama iletisi görüntülenir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -8,12 +8,12 @@ ms.date: 03/15/2021
 ms.topic: conceptual
 ms.service: storage
 ms.subservice: partner
-ms.openlocfilehash: 29484bee685fcc15073ef255e65a780e05f1200d
-ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
+ms.openlocfilehash: ce321574ce2878f51864f55bf5618df2c96d1068
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103561677"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104589897"
 ---
 # <a name="backup-to-azure-with-commvault"></a>Commkasasıyla Azure 'da yedekleme
 
@@ -45,7 +45,7 @@ Küçük bir ön planlama, Azure 'u site dışı yedekleme hedefi ve kurtarma si
 
 ### <a name="get-started-with-azure"></a>Azure'ı kullanmaya başlayın
 
-Microsoft, Azure kullanmaya başlamanızı sağlamak için izlenecek bir çerçeve sunar. [Bulut benimseme çerçevesi](https://docs.microsoft.com/azure/architecture/cloud-adoption/) (CAF), bir üretim sınıfı bulutu benimseme planlaması için kurumsal dijital dönüştürmeye ve kapsamlı kılavuza yönelik ayrıntılı bir yaklaşımdır. CAF, hızlı ve güvenli bir şekilde çalışmaya başlamanıza yardımcı olacak adım adım bir [Azure Kurulum Kılavuzu](https://docs.microsoft.com/azure/cloud-adoption-framework/ready/azure-setup-guide/) içerir. [Azure Portal](https://portal.azure.com/?feature.quickstart=true#blade/Microsoft_Azure_Resources/QuickstartCenterBlade)etkileşimli bir sürüm bulabilirsiniz. Örnek mimarilerin, uygulama dağıtmaya yönelik belirli en iyi uygulamaları ve Azure uzmanlığına yola koymak için ücretsiz eğitim kaynaklarını bulacaksınız.
+Microsoft, Azure kullanmaya başlamanızı sağlamak için izlenecek bir çerçeve sunar. [Bulut benimseme çerçevesi](/azure/architecture/cloud-adoption/) (CAF), bir üretim sınıfı bulutu benimseme planlaması için kurumsal dijital dönüştürmeye ve kapsamlı kılavuza yönelik ayrıntılı bir yaklaşımdır. CAF, hızlı ve güvenli bir şekilde çalışmaya başlamanıza yardımcı olacak adım adım bir [Azure Kurulum Kılavuzu](/azure/cloud-adoption-framework/ready/azure-setup-guide/) içerir. [Azure Portal](https://portal.azure.com/?feature.quickstart=true#blade/Microsoft_Azure_Resources/QuickstartCenterBlade)etkileşimli bir sürüm bulabilirsiniz. Örnek mimarilerin, uygulama dağıtmaya yönelik belirli en iyi uygulamaları ve Azure uzmanlığına yola koymak için ücretsiz eğitim kaynaklarını bulacaksınız.
 
 ### <a name="consider-the-network-between-your-location-and-azure"></a>Konumunuz ile Azure arasında ağı değerlendirin
 
@@ -187,7 +187,7 @@ Yedeklemelerinizi depolamak için kullandığınız herhangi bir depolama hedefi
 
 #### <a name="azure-portal"></a>Azure portalı
 
-Azure, [Azure izleyici](../../../../../azure-monitor/essentials/monitor-azure-resource.md)biçiminde güçlü bir izleme çözümü sağlar. Azure Izleyici 'yi Azure depolama kapasitesini, işlemleri, kullanılabilirliği, kimlik doğrulamasını ve daha fazlasını izlemek için [yapılandırabilirsiniz](../../../../common/monitor-storage.md) . [Burada](../../../../blobs/monitor-blob-storage-reference.md)toplanan ölçümlerin tam başvurusunu bulabilirsiniz. İzleme için birkaç faydalı ölçüm, BlobCapacity ' dir-en yüksek [depolama hesabı kapasite sınırının](../../../../common/scalability-targets-standard-account.md)altında kalmakta ve Azure depolama hesabınızda okunan veri miktarını Izlemek için çıkış yapın ve Azure Storage ve mediaagent 'a giden ve giden isteklerin gidiş dönüş süresini Izlemek için SuccessE2ELatency.
+Azure, [Azure izleyici](../../../../../azure-monitor/essentials/monitor-azure-resource.md)biçiminde güçlü bir izleme çözümü sağlar. Azure Izleyici 'yi Azure depolama kapasitesini, işlemleri, kullanılabilirliği, kimlik doğrulamasını ve daha fazlasını izlemek için [yapılandırabilirsiniz](../../../../blobs/monitor-blob-storage.md) . [Burada](../../../../blobs/monitor-blob-storage-reference.md)toplanan ölçümlerin tam başvurusunu bulabilirsiniz. İzleme için birkaç faydalı ölçüm, BlobCapacity ' dir-en yüksek [depolama hesabı kapasite sınırının](../../../../common/scalability-targets-standard-account.md)altında kalmakta ve Azure depolama hesabınızda okunan veri miktarını Izlemek için çıkış yapın ve Azure Storage ve mediaagent 'a giden ve giden isteklerin gidiş dönüş süresini Izlemek için SuccessE2ELatency.
 
 Azure depolama hizmeti durumunu izlemek ve istediğiniz zaman [Azure durum panosunu](https://status.azure.com/status) görüntülemek için [günlük uyarıları da oluşturabilirsiniz](../../../../../service-health/alerts-activity-log-service-notifications-portal.md) .
 

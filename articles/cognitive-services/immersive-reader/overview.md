@@ -12,16 +12,21 @@ ms.date: 01/4/2020
 ms.author: metang
 ms.custom: cog-serv-seo-aug-2020
 keywords: okuyucular, dil öğrenenler, resim görüntüleme, okuma, okuma içeriği, çeviri
-ms.openlocfilehash: 0661bd5f917a2bf071f11393ad8ac9af53ddfe97
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 6affc0a2b94c7ea950a8995981d63470722d981f
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92631249"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104599536"
 ---
 # <a name="what-is-immersive-reader"></a>Tam Ekran Okuyucu nedir?
 
 [Modern okuyucu](https://www.onenote.com/learningtools) , yeni okuyucular, dil öğrenimi ve öğrenimi gibi öğrenme farklılığı olan kişiler için okuma kavramasını geliştirmek üzere kanıtlanmış teknikler uygulayan, benzer şekilde tasarlanmış bir araçtır. Modern okuyucu istemci kitaplığı ile, Web uygulamalarınızı geliştirmek için Microsoft Word ve Microsoft One notunda kullanılan teknolojinin aynısını kullanabilirsiniz. 
+
+Bu belge aşağıdaki makale türlerini içerir:  
+
+* **[Hızlı başlangıç](quickstarts/client-libraries.md)** , hizmete çağrı yapıp sonuçları elde etmeniz için adım adım yönergeler sağlar.
+* **[Nasıl yapılır kılavuzlarında](how-to-create-immersive-reader.md)** , hizmetin daha belirli veya özelleştirilmiş yollarla kullanılmasına ilişkin yönergeler bulunur.  
 
 ## <a name="use-immersive-reader-to-improve-reading-accessibility"></a>Modern okuyucu kullanarak okuma erişilebilirliği geliştirme 
 
@@ -72,10 +77,3 @@ Modern okuyucu, tek başına bir Web uygulamasıdır. Modern okuyucu istemci kit
 Tam ekran okuyucu istemci kitaplığı C#, JavaScript, Java (Android), Kotlin (Android) ve Swift (iOS) ile kullanılabilir. Kullanmaya başlayın:
 
 * [Hızlı başlangıç: tam ekran okuyucusu istemci kitaplığını kullanma](quickstarts/client-libraries.md)
-
-## <a name="next-steps"></a>Sonraki adımlar
-
-Tam Ekran Okuyucu’yu kullanmaya başlama:
-
-* [Tam ekran okuyucusu istemci kitaplığı başvurusunu](./reference.md) okuyun
-* [GitHub 'Da modern okuyucu istemci kitaplığını](https://github.com/microsoft/immersive-reader-sdk) keşfet

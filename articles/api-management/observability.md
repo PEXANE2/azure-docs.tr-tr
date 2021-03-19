@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 06/01/2020
 ms.author: apimpm
 ms.openlocfilehash: 1ebebed465952bbb5d3e8f82ae1c7776c441c6b0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87099778"
 ---
 # <a name="observability-in-azure-api-management"></a>Azure API Management 'de Observability
@@ -33,7 +33,7 @@ Aşağıdaki tablo, API 'Leri izlemek için API Management tarafından desteklen
 |:------------- |:-------------|:---- |:----|:---- |:--- |:---- 
 | **[API denetçisi](api-management-howto-api-inspector.md)** | Test etme ve hata ayıklama | Anında | Son 100 izlemeler | İstek başına açık | İstek izlemeleri | Her zaman
 | **Yerleşik analiz** | Raporlama ve izleme | Dakika | Ömür | %100 | Raporlar ve Günlükler | Her zaman |
-| **[Azure Izleyici ölçümleri](api-management-howto-use-azure-monitor.md)** | Raporlama ve izleme | Dakika | 93 gün (genişletmeye Yükselt) | %100 | Ölçümler | Her zaman |
+| **[Azure İzleyici Ölçümleri](api-management-howto-use-azure-monitor.md)** | Raporlama ve izleme | Dakika | 93 gün (genişletmeye Yükselt) | %100 | Ölçümler | Her zaman |
 | **[Azure İzleyici Günlükleri](api-management-howto-use-azure-monitor.md)** | Raporlama, izleme ve hata ayıklama | Dakika | 31 gün/5GB (genişletmeye Yükselt) | %100 (ayarlanabilir) | Günlükler | İsteğe Bağlı |
 | **[Azure Application Insights](api-management-howto-app-insights.md)** | Raporlama, izleme ve hata ayıklama | Saniye | 90 gün/5GB (genişletmeye Yükselt) | Özel | Günlükler, ölçümler | İsteğe Bağlı |
 | **[Azure Olay Hub 'ı üzerinden günlüğe kaydetme](api-management-howto-log-event-hubs.md)** | Özel senaryolar | Saniye | Kullanıcı tarafından yönetilir | Özel | Özel | İsteğe Bağlı |

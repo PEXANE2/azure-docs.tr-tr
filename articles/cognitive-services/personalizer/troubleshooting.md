@@ -6,10 +6,10 @@ ms.subservice: personalizer
 ms.topic: troubleshooting
 ms.date: 02/26/2020
 ms.openlocfilehash: b5f7ed1f2ded8f6ec0320d417b59bab016d75028
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91777284"
 ---
 # <a name="personalizer-troubleshooting"></a>Kişiselleştirici sorunlarını giderme
@@ -18,11 +18,11 @@ Bu makale, kişiselleştirici hakkında sık sorulan sorun giderme sorularına y
 
 ## <a name="configuration-issues"></a>Yapılandırma sorunları
 
-### <a name="i-changed-a-configuration-setting-and-now-my-loop-isnt-performing-at-the-same-learning-level-what-happened"></a>Bir yapılandırma ayarını değiştirdim ve şimdi döngüm aynı öğrenme düzeyinde gerçekleştirmiyor. Ne oldu?
+### <a name="i-changed-a-configuration-setting-and-now-my-loop-isnt-performing-at-the-same-learning-level-what-happened"></a>Bir yapılandırma ayarını değiştirdim ve şimdi döngüm aynı öğrenme düzeyinde gerçekleştirmiyor. Neler oldu?
 
 Bazı yapılandırma ayarları [modelinizi sıfırladı](how-to-settings.md#settings-that-include-resetting-the-model). Yapılandırma değişiklikleri dikkatle planlanmalıdır.
 
-### <a name="when-configuring-personalizer-with-the-api-i-received-an-error-what-happened"></a>API ile kişiselleştirici yapılandırılırken bir hata aldım. Ne oldu?
+### <a name="when-configuring-personalizer-with-the-api-i-received-an-error-what-happened"></a>API ile kişiselleştirici yapılandırılırken bir hata aldım. Neler oldu?
 
 Hizmetinizi yapılandırmak ve öğrenme davranışınızı değiştirmek için tek bir API isteği kullanıyorsanız bir hata alırsınız. İki ayrı API çağrısı yapmanız gerekir: öncelikle hizmetinizi yapılandırmak ve ardından öğrenme davranışını değiştirmek için.
 
@@ -66,11 +66,11 @@ Yeni güncelleştirme dönemi başladığında, güncelleştirilmiş model kulla
 
 ### <a name="how-do-i-know-that-the-learning-loop-is-getting-updated-regularly-and-is-used-to-score-my-data"></a>Nasıl yaparım? öğrenme döngüsünün düzenli olarak güncelleştirildiğini ve verilerime puan vermek için kullanıldığını öğrenmek mi istiyorsunuz?
 
-Modelin en son ne zaman güncelleştirildiğini Azure portal **model ve öğrenme ayarları** sayfasında bulabilirsiniz. Eski bir zaman damgası görürseniz, bu durum büyük olasılıkla derecelendirme ve yeniden çağrıları göndermemelidir. Hizmetin gelen verileri yoksa Öğrenimini güncelleştirmez. Öğrenme döngüsünün yeterince sık güncelleştirilmediğinden, döngünün **model güncelleştirme sıklığını**düzenleyebilirsiniz.
+Modelin en son ne zaman güncelleştirildiğini Azure portal **model ve öğrenme ayarları** sayfasında bulabilirsiniz. Eski bir zaman damgası görürseniz, bu durum büyük olasılıkla derecelendirme ve yeniden çağrıları göndermemelidir. Hizmetin gelen verileri yoksa Öğrenimini güncelleştirmez. Öğrenme döngüsünün yeterince sık güncelleştirilmediğinden, döngünün **model güncelleştirme sıklığını** düzenleyebilirsiniz.
 
 ## <a name="offline-evaluations"></a>Çevrimdışı değerlendirmeler
 
-### <a name="an-offline-evaluations-feature-importance-returns-a-long-list-with-hundreds-or-thousands-of-items-what-happened"></a>Çevrimdışı değerlendirme özelliğinin önem derecesi yüzlerce veya binlerce öğe içeren uzun bir liste döndürür. Ne oldu?
+### <a name="an-offline-evaluations-feature-importance-returns-a-long-list-with-hundreds-or-thousands-of-items-what-happened"></a>Çevrimdışı değerlendirme özelliğinin önem derecesi yüzlerce veya binlerce öğe içeren uzun bir liste döndürür. Neler oldu?
 
 Bu, genellikle zaman damgalarının, kullanıcı kimliklerinin veya diğer bazı ayrıntılı özelliklerin gönderilmesi nedeniyle yapılır.
 

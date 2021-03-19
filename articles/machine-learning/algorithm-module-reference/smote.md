@@ -10,23 +10,23 @@ author: likebupt
 ms.author: keli19
 ms.date: 10/16/2019
 ms.openlocfilehash: 501f3e8946023d28d67a33fbbfca661afbc6306d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90898268"
 ---
 # <a name="smote"></a>SMOTE
 
 Bu makalede, makine öğrenimi için kullanılan bir veri kümesindeki eksik temsil edilen durumların sayısını artırmak için Azure Machine Learning tasarımcısında SMOTE modülünün nasıl kullanılacağı açıklanır. IÇGÖRÜME, yalnızca mevcut durumları çoğaltmaktan nadir durum sayısını artırmanın daha iyi bir yoludur.  
 
-SMOTE modülünü *imdengeli*bir veri kümesine bağlayabilirsiniz. Bir veri kümesinin dengesde olmasının pek çok nedeni olabilir. Örneğin, hedeflediğiniz kategori nüfusda nadir olabilir veya verilerin toplanması zor olabilir. Genellikle, analiz etmek istediğiniz *sınıf* daha fazla temsil edildiğinde Smote kullanırsınız. 
+SMOTE modülünü *imdengeli* bir veri kümesine bağlayabilirsiniz. Bir veri kümesinin dengesde olmasının pek çok nedeni olabilir. Örneğin, hedeflediğiniz kategori nüfusda nadir olabilir veya verilerin toplanması zor olabilir. Genellikle, analiz etmek istediğiniz *sınıf* daha fazla temsil edildiğinde Smote kullanırsınız. 
   
 Modül, özgün örnekleri içeren bir veri kümesi döndürür. Ayrıca, Belirttiğiniz yüzdeye bağlı olarak bir dizi yapay minınlık örneği de döndürür.  
   
 ## <a name="more-about-smote"></a>SMOTE hakkında daha fazla bilgi
 
-Yapay Minınlık fazla örnekleme tekniği (SMOTE), veri kümenizdeki durum sayısını dengeli bir şekilde artırmak için istatistiksel bir tekniktir. Modül, giriş olarak sağladığınız mevcut minınlık çalışmalarından yeni örnekler oluşturarak işe yarar. Bu duman uygulamasının çoğunluğu büyük/ *not* veya büyük/büyük
+Yapay Minınlık fazla örnekleme tekniği (SMOTE), veri kümenizdeki durum sayısını dengeli bir şekilde artırmak için istatistiksel bir tekniktir. Modül, giriş olarak sağladığınız mevcut minınlık çalışmalarından yeni örnekler oluşturarak işe yarar. Bu duman uygulamasının çoğunluğu büyük/  veya büyük/büyük
 
 Yeni örnekler yalnızca mevcut minlık durumlarının kopyaları değildir. Bunun yerine, algoritma her bir hedef sınıf ve en yakın komşuları için *özellik alanının* örneklerini alır. Daha sonra algoritma, hedef durumunun özelliklerini komşular özellikleriyle birleştiren yeni örnekler oluşturur. Bu yaklaşım her sınıf için kullanılabilen özellikleri artırır ve örnekleri daha genel hale getirir.
   
@@ -38,7 +38,7 @@ Nasıl çalıştığını görmek için küçük bir veri kümesiyle SMOTE kulla
   
 Veri kümesini bir işlem hattına ekler ve veri kümesinin çıktısında **Görselleştir** ' i seçerseniz, 748 satır veya veri kümesindeki satırın veya durumların, 570 servis taleplerinin (yüzde 76) 0 sınıfında olduğunu ve 178 Cases (%24) sınıfının 1 olduğunu görebilirsiniz. Bu sonuç, korsansız olmasa da, 1. sınıf, kanlı olan kişileri temsil ettiğinden, bu satırlar, modellemek istediğiniz *özellik alanını* içerir.
  
-Durum sayısını artırmak için, aşağıdaki gibi 100 katları kullanarak **Smote yüzdesi**değerini ayarlayabilirsiniz:
+Durum sayısını artırmak için, aşağıdaki gibi 100 katları kullanarak **Smote yüzdesi** değerini ayarlayabilirsiniz:
 
 ||Sınıf 0|Sınıf 1|toplam|  
 |-|-------------|-------------|-----------|  
@@ -52,7 +52,7 @@ Durum sayısını artırmak için, aşağıdaki gibi 100 katları kullanarak **S
   
 ## <a name="how-to-configure-smote"></a>SMOTE yapılandırma
   
-1.  Ardışık düzene SMOTE modülünü ekleyin. Modül, **veri dönüştürme modülleri**altında, **düzenleme** kategorisinde bulunabilir.
+1.  Ardışık düzene SMOTE modülünü ekleyin. Modül, **veri dönüştürme modülleri** altında, **düzenleme** kategorisinde bulunabilir.
 
 2. Artırmak istediğiniz veri kümesini bağlayın. Yeni durumları oluşturmak için veya yalnızca belirli sütunları kullanarak ya da bazılarını dışlayarak özellik alanını belirtmek istiyorsanız, [veri kümesinde sütunları seç](select-columns-in-dataset.md) modülünü kullanın. Daha sonra, SMOTE kullanmadan önce kullanmak istediğiniz sütunları ayırabilirsiniz.
   
@@ -62,13 +62,13 @@ Durum sayısını artırmak için, aşağıdaki gibi 100 katları kullanarak **S
   
 4.  SMOTE modülü etiket sütunundaki minınlık sınıfını otomatik olarak tanımlar ve ardından minınlık sınıfı için tüm örnekleri alır. Tüm sütunlarda NaN değer bulunamaz.
   
-5.  **Smote yüzdesi** seçeneğinde, çıkış veri kümesindeki minınlık durumlarının hedef yüzdesini gösteren bir tamsayı girin. Örneğin:  
+5.  **Smote yüzdesi** seçeneğinde, çıkış veri kümesindeki minınlık durumlarının hedef yüzdesini gösteren bir tamsayı girin. Örnek:  
   
-    - **0**girersiniz. SMOTE modülü, giriş olarak belirttiğiniz veri kümesini tam olarak döndürür. Yeni bir minınlık durumu ekler. Bu veri kümesinde, sınıf oranı değişmemiştir.  
+    - **0** girersiniz. SMOTE modülü, giriş olarak belirttiğiniz veri kümesini tam olarak döndürür. Yeni bir minınlık durumu ekler. Bu veri kümesinde, sınıf oranı değişmemiştir.  
   
-    - **100**girersiniz. SMOTE modülü yeni minlık durumları oluşturur. Özgün veri kümesindeki aynı sayıda minınlık durumunu ekler. SMOTE, büyük/büyük/büyük/büyük/veya her bir sınıfın servis taleplerinin oranını değiştirmediği için.  
+    - **100** girersiniz. SMOTE modülü yeni minlık durumları oluşturur. Özgün veri kümesindeki aynı sayıda minınlık durumunu ekler. SMOTE, büyük/büyük/büyük/büyük/veya her bir sınıfın servis taleplerinin oranını değiştirmediği için.  
   
-    - **200**girersiniz. Modül, özgün veri kümesiyle karşılaştırıldığında minınlık durumlarının yüzdesini iki katına çıkarır. Bu *,* daha önce olduğu gibi birçok minlık durumuna iki kez sahip olmaya neden olmaz. Bunun yerine, veri kümesinin boyutu, çok sayıda büyük bir durumda kalacak şekilde artar. Minınlık durumlarının sayısı, istenen yüzde değeri ile eşleşene kadar artar.  
+    - **200** girersiniz. Modül, özgün veri kümesiyle karşılaştırıldığında minınlık durumlarının yüzdesini iki katına çıkarır. Bu *,* daha önce olduğu gibi birçok minlık durumuna iki kez sahip olmaya neden olmaz. Bunun yerine, veri kümesinin boyutu, çok sayıda büyük bir durumda kalacak şekilde artar. Minınlık durumlarının sayısı, istenen yüzde değeri ile eşleşene kadar artar.  
   
     > [!NOTE]
     > SMOTE yüzdesi için yalnızca 100 katları kullanın.

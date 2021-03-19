@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.author: mimart
 ms.subservice: B2C
 ms.date: 01/29/2021
-ms.openlocfilehash: 712a933276393890bf017a2517196031306233ad
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: bc1dea8121d7986b8394adf6545a0b2c30afb133
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100573002"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104580190"
 ---
 # <a name="monitor-azure-ad-b2c-with-azure-monitor"></a>Azure Izleyici ile Azure AD B2C izleme
 
@@ -46,7 +46,7 @@ Aşağıdaki diyagramda Azure AD ve Azure AD B2C kiracılarınız için yapılan
 
 ![Kaynak grubu projeksiyonu](./media/azure-monitor/resource-group-projection.png)
 
-Bu dağıtım sırasında, hem Azure AD B2C kiracınızı hem de Azure AD kiracınızı Log Analytics çalışma alanının barındırılacak şekilde yapılandıracaksınız. Dağıtımı çalıştırmak için kullanılan hesaba Bu kiracıların her ikisinde de [genel yönetici](../active-directory/roles/permissions-reference.md#limit-use-of-global-administrator) rolü atanmalıdır. Ayrıca, açıklanan her adımı tamamlayarak doğru dizinde oturum açtığınızdan emin olmak da önemlidir.
+Bu dağıtım sırasında, hem Azure AD B2C kiracınızı hem de Azure AD kiracınızı Log Analytics çalışma alanının barındırılacak şekilde yapılandıracaksınız. Azure AD B2C hesaba Azure AD B2C kiracısında [genel yönetici](../active-directory/roles/permissions-reference.md#limit-use-of-global-administrator) rolü atanmalıdır. Dağıtımı çalıştırmak için kullanılan Azure AD hesabına Azure AD aboneliğinde [sahip](../role-based-access-control/built-in-roles.md#owner) rolü atanmalıdır. Ayrıca, açıklanan her adımı tamamlayarak doğru dizinde oturum açtığınızdan emin olmak da önemlidir.
 
 ## <a name="1-create-or-choose-resource-group"></a>1. kaynak grubu oluşturun veya seçin
 
@@ -97,7 +97,7 @@ Daha sonra, daha önce oluşturduğunuz Azure AD kaynak grubuna Azure AD B2C eri
 2. Portal araç çubuğunda **Dizin + abonelik** simgesini seçin ve ardından **Azure AD** kiracınızı içeren dizini seçin.
 3. Azure portal açmak ve şablonu doğrudan portalda dağıtmak için **Azure 'A dağıt** düğmesini kullanın. Daha fazla bilgi için bkz. [Azure Resource Manager şablonu oluşturma](../lighthouse/how-to/onboard-customer.md#create-an-azure-resource-manager-template).
 
-   [![Azure’a dağıtın](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2FAzure-Lighthouse-samples%2Fmaster%2Ftemplates%2Frg-delegated-resource-management%2FrgDelegatedResourceManagement.json)
+   [![Azure’a dağıtın](https://aka.ms/deploytoazurebutton)](   https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fazure-ad-b2c%2Fsiem%2Fmaster%2Ftemplates%2FrgDelegatedResourceManagement.json)
 
 5. **Özel dağıtım** sayfasında, aşağıdaki bilgileri girin:
 

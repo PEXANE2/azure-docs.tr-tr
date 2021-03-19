@@ -7,10 +7,10 @@ ms.reviewer: estfan, logicappspm
 ms.topic: conceptual
 ms.date: 10/05/2020
 ms.openlocfilehash: b402dab4c6e94a7634e11f0330b5379315e43abf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91762507"
 ---
 # <a name="call-logic-apps-from-power-automate-and-power-apps"></a>Power Automate ve Power Apps’ten mantıksal uygulama çağırma
@@ -50,9 +50,9 @@ Mantıksal uygulamanızı Power otomatikleştirin veya Power Apps 'ten çağıra
 
     :::image type="content" source="./media/call-logic-apps-from-power-automate-power-apps/export-logic-app.png" alt-text="Azure portal ' deki Logic App 'in sayfasının ekran görüntüsü, ' Export ' düğmesi seçili olan menüyü gösterir.":::
 
-1. **Dışarı aktarma** bölmesinde, **ad**için, mantıksal uygulamanıza özel bağlayıcı için bir ad girin. **Ortam** listesinden, mantıksal uygulamanızı çağırmak Istediğiniz güç otomatikleştir veya Power Apps ortamını seçin. İşiniz bittiğinde **Tamam**’ı seçin.
+1. **Dışarı aktarma** bölmesinde, **ad** için, mantıksal uygulamanıza özel bağlayıcı için bir ad girin. **Ortam** listesinden, mantıksal uygulamanızı çağırmak Istediğiniz güç otomatikleştir veya Power Apps ortamını seçin. İşiniz bittiğinde **Tamam**’ı seçin.
 
-    :::image type="content" source="./media/call-logic-apps-from-power-automate-power-apps/export-logic-app2.png" alt-text="Azure portal ' deki Logic App 'in sayfasının ekran görüntüsü, ' Export ' düğmesi seçili olan menüyü gösterir.":::
+    :::image type="content" source="./media/call-logic-apps-from-power-automate-power-apps/export-logic-app2.png" alt-text="Özel bağlayıcı adı ve ortamı için gerekli alanları gösteren mantıksal uygulamanın dışa aktarma bölmesinin ekran görüntüsü.":::
 
 1. Mantıksal uygulamanızın başarıyla verildiğini onaylamak için bildirimler bölmesini kontrol edin.
 
@@ -76,11 +76,11 @@ Güç otomatikleştirme akışınız ile verdiğiniz mantıksal uygulamaya bağl
 
 1. Flow sayfanızın menüsünden **Düzenle**' yi seçin.
 
-1. Akış Düzenleyicisi 'nde ** yeni&#43; adımı**' nı seçin.
+1. Akış Düzenleyicisi 'nde **yeni&#43; adımı**' nı seçin.
 
-1. **Eylem seçin**altında, ara kutusuna mantıksal uygulama bağlayıcınızın adını girin. İsteğe bağlı olarak, ortamınızda yalnızca özel bağlayıcıları göstermek için, **özel** sekmesini seçerek sonuçları filtreleyin.
+1. **Eylem seçin** altında, ara kutusuna mantıksal uygulama bağlayıcınızın adını girin. İsteğe bağlı olarak, ortamınızda yalnızca özel bağlayıcıları göstermek için, **özel** sekmesini seçerek sonuçları filtreleyin.
 
-    :::image type="content" source="./media/call-logic-apps-from-power-automate-power-apps/power-automate-custom-connector-action.png" alt-text="Azure portal ' deki Logic App 'in sayfasının ekran görüntüsü, ' Export ' düğmesi seçili olan menüyü gösterir.":::
+    :::image type="content" source="./media/call-logic-apps-from-power-automate-power-apps/power-automate-custom-connector-action.png" alt-text="Özel bağlayıcı ve kullanılabilir eylemler için yeni bir adım eklendiğini gösteren Power otomatikleştiren akış Düzenleyicisi 'nin ekran görüntüsü.":::
 
 1. Mantıksal uygulama bağlayıcınızla almak istediğiniz eylemi seçin. 
 
@@ -100,9 +100,9 @@ Güç otomatikleştirme akışınız ile verdiğiniz mantıksal uygulamaya bağl
 
 1. **Power otomatikleştir** giriş sayfasında, menüdeki **veri** &gt; **özel bağlayıcıları** ' nı seçin.
 
-1. Listeden özel bağlayıcınızı bulun ve üç nokta (**...**) düğmesini Sil ' i seçin &gt; **Delete**.
+1. Listeden özel bağlayıcınızı bulun ve üç nokta (**...**) düğmesini Sil ' i seçin &gt; .
 
-    :::image type="content" source="./media/call-logic-apps-from-power-automate-power-apps/delete-custom-connector.png" alt-text="Azure portal ' deki Logic App 'in sayfasının ekran görüntüsü, ' Export ' düğmesi seçili olan menüyü gösterir.":::
+    :::image type="content" source="./media/call-logic-apps-from-power-automate-power-apps/delete-custom-connector.png" alt-text="Mantıksal uygulamanın özel bağlayıcı yönetim düğmelerini gösteren Power otomatikleştirmek ' Özel Bağlayıcılar ' sayfasının ekran görüntüsü.":::
 
 1. Silmeyi onaylamak için **Tamam**' ı seçin.
 
@@ -122,7 +122,7 @@ Power Apps akışınızla birlikte verdiğiniz mantıksal uygulamaya bağlanmak 
 
 1. Yeni adımda **bir eylem seçin** altında, arama kutusuna mantıksal uygulama bağlayıcınızın adını girin. İsteğe bağlı olarak, ortamınızda yalnızca özel bağlayıcılar görmek için sonuçları **özel** sekmeye filtreleyin.
 
-    :::image type="content" source="./media/call-logic-apps-from-power-automate-power-apps/power-apps-custom-connector-action.png" alt-text="Azure portal ' deki Logic App 'in sayfasının ekran görüntüsü, ' Export ' düğmesi seçili olan menüyü gösterir.":::
+    :::image type="content" source="./media/call-logic-apps-from-power-automate-power-apps/power-apps-custom-connector-action.png" alt-text="Özel bağlayıcı ve kullanılabilir eylemler için yeni bir adım eklendiğini gösteren Power Apps akış Düzenleyicisi 'nin ekran görüntüsü.":::
 
 1. Bağlayıcıyla almak istediğiniz eylemi seçin. 
 
@@ -142,9 +142,9 @@ Power Apps akışınızla birlikte verdiğiniz mantıksal uygulamaya bağlanmak 
 
 1. **Power Apps** giriş sayfasında, menüdeki **veri** &gt; **özel bağlayıcıları** ' nı seçin.
 
-1. Listeden özel bağlayıcınızı bulun ve üç nokta (**...**) düğmesini Sil ' i seçin &gt; **Delete**.
+1. Listeden özel bağlayıcınızı bulun ve üç nokta (**...**) düğmesini Sil ' i seçin &gt; .
 
-    :::image type="content" source="./media/call-logic-apps-from-power-automate-power-apps/delete-custom-connector.png" alt-text="Azure portal ' deki Logic App 'in sayfasının ekran görüntüsü, ' Export ' düğmesi seçili olan menüyü gösterir.":::
+    :::image type="content" source="./media/call-logic-apps-from-power-automate-power-apps/delete-custom-connector.png" alt-text="Mantıksal uygulamanın özel bağlayıcı yönetim düğmelerini gösteren, Power Apps ' Özel Bağlayıcılar ' sayfasının ekran görüntüsü.":::
 
 1. Silmeyi onaylamak için **Tamam**' ı seçin.
 

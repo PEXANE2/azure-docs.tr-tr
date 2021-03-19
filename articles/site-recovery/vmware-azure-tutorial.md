@@ -9,10 +9,10 @@ ms.date: 11/12/2019
 ms.author: raynew
 ms.custom: MVC
 ms.openlocfilehash: bd87265140a0bfaeb7ef4dada6dd76be1269654b
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92369378"
 ---
 # <a name="set-up-disaster-recovery-to-azure-for-on-premises-vmware-vms"></a>Şirket içi VMware VM’leri için Azure’da olağanüstü durum kurtarmayı ayarlama
@@ -48,11 +48,11 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 ## <a name="select-a-protection-goal"></a>Koruma hedefi seçme
 
-1. **Kurtarma Hizmetleri kasaları** bölümünde kasa adını seçin. Bu senaryo için**ContosoVMVault**’u kullanıyoruz.
+1. **Kurtarma Hizmetleri kasaları** bölümünde kasa adını seçin. Bu senaryo için **ContosoVMVault**’u kullanıyoruz.
 2. **Başlarken** bölümünde Site Recovery’yi seçin. Daha sonra **Altyapıyı Hazırlama**’yı seçin.
-3. Makinelerinizin bulunduğu **koruma hedefi**bölümünde  >  **Where are your machines located** **Şirket içi**' ı seçin.
+3. Makinelerinizin bulunduğu **koruma hedefi** bölümünde  >   **Şirket içi**' ı seçin.
 4. **Makinelerinizi nereye çoğaltmak istiyorsunuz** bölümünde **Azure’a** seçeneğini belirleyin.
-5. **Makineleriniz sanallaştırıldı mı** bölümünde **Evet, VMware vSphere Hypervisor ile** seçeneğini belirleyin. Ardından **Tamam**'ı seçin.
+5. **Makineleriniz sanallaştırıldı mı** bölümünde **Evet, VMware vSphere Hypervisor ile** seçeneğini belirleyin. Ardından **Tamam**’ı seçin.
 
 
 
@@ -65,7 +65,7 @@ Kaynak ortamınızda, bu şirket içi Site Recovery bileşenlerini barındırmak
 - **Ana hedef sunucu**: Ana hedef sunucu, Azure 'dan yeniden çalışma sırasında çoğaltma verilerini işler.
 
 
-Bu bileşenlerin tümü, *yapılandırma sunucusu*olarak bilinen tek şirket içi makinelerde birlikte yüklenir. Varsayılan olarak, VMware olağanüstü durum kurtarma için yapılandırma sunucusunu yüksek oranda kullanılabilir bir VMware VM 'si olarak ayarladık. Bunu yapmak için, hazırlanan bir açık sanallaştırma uygulaması (OVA) şablonunu indirir ve VM 'yi oluşturmak için şablonu VMware 'ye içeri aktarabilirsiniz.
+Bu bileşenlerin tümü, *yapılandırma sunucusu* olarak bilinen tek şirket içi makinelerde birlikte yüklenir. Varsayılan olarak, VMware olağanüstü durum kurtarma için yapılandırma sunucusunu yüksek oranda kullanılabilir bir VMware VM 'si olarak ayarladık. Bunu yapmak için, hazırlanan bir açık sanallaştırma uygulaması (OVA) şablonunu indirir ve VM 'yi oluşturmak için şablonu VMware 'ye içeri aktarabilirsiniz.
 
 - Configuration Server 'ın en son sürümü portalda kullanılabilir. Doğrudan [Microsoft Indirme merkezi](https://aka.ms/asrconfigurationserver)' nden de indirebilirsiniz.
 - Bir sanal makine kurmak için bir OVA şablonu kullanmıyorsanız, yapılandırma sunucusunu el ile ayarlamak için [Bu yönergeleri](physical-manage-configuration-server.md) izleyin.
@@ -74,7 +74,7 @@ Bu bileşenlerin tümü, *yapılandırma sunucusu*olarak bilinen tek şirket iç
 
 ### <a name="download-the-vm-template"></a>VM şablonunu indirme
 
-1. Kasada, **altyapı kaynağı hazırlama**' ya gidin  >  **Source**.
+1. Kasada, **altyapı kaynağı hazırlama**' ya gidin  >  .
 2. **Kaynağı hazırla** bölümünde **+Yapılandırma sunucusu**’nu seçin.
 3. **Sunucu Ekle** bölümünde **Sunucu türü**’nde **VMware için yapılandırma sunucusu**’nun görüntülenip görüntülenmediğini kontrol edin.
 4. Yapılandırma sunucusu için OVA şablonunu indirin.
@@ -97,7 +97,7 @@ Bu bileşenlerin tümü, *yapılandırma sunucusu*olarak bilinen tek şirket iç
 8. **Tamamlanmak için hazır** durumunda, VM’yi varsayılan ayarlarla kurmak için **Dağıtımdan sonra aç** > **Son** seçeneğini belirleyin.
 
    > [!TIP]
-   > Ek bir NIC eklemek istiyorsanız, dağıtım bittikten sonra açma **Power on after deployment**  >  **işini**kaldırın. Varsayılan olarak, şablon tek bir NIC içerir. Dağıtımdan sonra daha fazla NIC ekleyebilirsiniz.
+   > Ek bir NIC eklemek istiyorsanız, dağıtım bittikten sonra açma   >  **işini** kaldırın. Varsayılan olarak, şablon tek bir NIC içerir. Dağıtımdan sonra daha fazla NIC ekleyebilirsiniz.
 
 ## <a name="add-an-additional-adapter"></a>Ek bağdaştırıcı ekleme
 
@@ -106,7 +106,7 @@ Yapılandırma sunucusuna ek bir NIC eklemek istiyorsanız, sunucuyu kasaya kayd
 1. vSphere Client envanterinde VM’ye sağ tıklayın ve **Ayarları Düzenle**’yi seçin.
 2. **Donanım** bölümünde **Ekle** > **Ethernet Bağdaştırıcısı** seçeneğini belirleyin. Sonra **İleri**’yi seçin.
 3. Bir bağdaştırıcı türü ve ağ seçin.
-4. VM açıldığında sanal NIC’ye bağlanmak için **Açıldığında bağlan**’ı seçin. **Sonraki** > **Son** seçeneğini belirleyin. Ardından **Tamam**'ı seçin.
+4. VM açıldığında sanal NIC’ye bağlanmak için **Açıldığında bağlan**’ı seçin. **Sonraki** > **Son** seçeneğini belirleyin. Ardından **Tamam**’ı seçin.
 
 
 ## <a name="register-the-configuration-server"></a>Yapılandırma sunucusunu kaydetme
@@ -130,7 +130,7 @@ Yapılandırma sunucusunu ayarlamayı ve kaydetmeyi tamamlayın. Devam etmeden �
 
 1. Yapılandırma sunucusu Yönetim Sihirbazı 'nda, **Kurulum bağlantısı**' nı seçin. Açılan kutudan önce, yerleşik işlem sunucusunun kaynak makinelere Mobility hizmetinin bulunması ve anında yüklenmesi için kullandığı NIC 'i seçin ve ardından yapılandırma sunucusunun Azure ile bağlantı için kullanacağı NIC 'yi seçin. Sonra **Kaydet**'i seçin. Yapılandırıldıktan sonra bu ayarı değiştiremezsiniz.
 2. **Recovery Services kasasını seçin** bölümünde Azure aboneliğinizi, ilgili kaynak grubunu ve kasayı seçin.
-3. **Üçüncü taraf yazılımı yükleyin** bölümünde lisans sözleşmesini kabul edin. MySQL Server’ı yüklemek için **İndir ve Yükle** seçeneğini belirleyin. MySQL 'i yola yerleştirdiyseniz, bu adım atlanabilir. [Daha fazla](vmware-azure-deploy-configuration-server.md#configure-settings) bilgi
+3. **Üçüncü taraf yazılımı yükleyin** bölümünde lisans sözleşmesini kabul edin. MySQL Server’ı yüklemek için **İndir ve Yükle** seçeneğini belirleyin. MySQL 'i yola yerleştirdiyseniz, bu adım atlanabilir. [Daha fazla bilgi](vmware-azure-deploy-configuration-server.md#configure-settings) edinin
 4. **Gereç yapılandırmasını doğrulama** bölümünde ön koşullar, siz devam etmeden önce doğrulanır.
 5. **vCenter Server/vSphere ESXi sunucusu yapılandırma** bölümünde, çoğaltmak istediğiniz VM’lerin bulunduğu vCenter sunucusunun veya vSphere konağının FQDN’sini ya da IP adresini girin. Sunucunun dinleme gerçekleştirdiği bağlantı noktasını girin. Kasadaki VMware sunucusu için kullanılacak bir kolay ad girin.
 6. VMware sunucusu ile bağlantı için yapılandırma sunucusu tarafından kullanılacak kullanıcı kimlik bilgilerini girin. Girdiğiniz kullanıcı adı ve parola bilgilerinin doğru ve korunacak sanal makinenin Yöneticiler grubuna ait olduğuna emin olun. Site Recovery, bu kimlik bilgilerini çoğaltma için kullanılabilen VMware VM’lerini otomatik olarak bulmak üzere kullanır. **Ekle** seçeneğini ve sonra **Devam** seçeneğini belirleyin.
@@ -138,7 +138,7 @@ Yapılandırma sunucusunu ayarlamayı ve kaydetmeyi tamamlayın. Devam etmeden �
     - Windows makinelerinde hesap için, çoğaltmak istediğiniz makinelerde yerel yönetici ayrıcalıkları gerekir.
     - Linux’ta kök hesap için bilgileri sağlayın.
 8. Kaydı tamamlamak için **Yapılandırmayı son haline getir** seçeneğini belirleyin.
-9. Kayıt tamamlandıktan sonra, Azure Portal açın ve yapılandırma sunucusunun ve VMware sunucusunun **Kurtarma Hizmetleri Kasası**'nda  >  **Manage**  >  **Site Recovery altyapı**  >  **yapılandırma sunucuları**' nı yönetme ' de listelendiğini doğrulayın.
+9. Kayıt tamamlandıktan sonra, Azure Portal açın ve yapılandırma sunucusunun ve VMware sunucusunun **Kurtarma Hizmetleri Kasası**'nda  >    >  **Site Recovery altyapı**  >  **yapılandırma sunucuları**' nı yönetme ' de listelendiğini doğrulayın.
 
 
 Yapılandırma sunucusu kaydedildikten sonra, Site Recovery, belirtilen ayarları kullanarak VMware sunucularına bağlanır ve VM 'Leri bulur.
@@ -150,14 +150,14 @@ Yapılandırma sunucusu kaydedildikten sonra, Site Recovery, belirtilen ayarlar�
 
 Hedef kaynaklarını seçin ve doğrulayın.
 
-1. **Altyapı hedefini hazırla**' yı seçin  >  **Target**. Kullanmak istediğiniz Azure aboneliğini seçin. Bir Kaynak Yöneticisi modeli kullanıyoruz.
+1. **Altyapı hedefini hazırla**' yı seçin  >  . Kullanmak istediğiniz Azure aboneliğini seçin. Bir Kaynak Yöneticisi modeli kullanıyoruz.
 2. Site Recovery bir veya daha fazla sanal ağınız olduğunu denetler. Bu öğretici serisindeki [ilk öğreticide](tutorial-prepare-azure.md) Azure bileşenlerini ayarladığınızda bunları edinmeniz gerekir.
 
    ![Altyapıyı hazırlama > hedef seçeneklerinin ekran görüntüsü.](./media/vmware-azure-tutorial/storage-network.png)
 
 ## <a name="create-a-replication-policy"></a>Çoğaltma ilkesi oluşturma
 
-1. [Azure portalını](https://portal.azure.com) açın. **Kurtarma Hizmetleri kasalarını**arayın ve seçin.
+1. [Azure portalını](https://portal.azure.com) açın. **Kurtarma Hizmetleri kasalarını** arayın ve seçin.
 2. Kurtarma Hizmetleri kasasını (bu öğreticide **ContosoVMVault**) seçin.
 3. Çoğaltma ilkesi oluşturmak için **Site Recovery altyapı**  >  **çoğaltma ilkeleri**  >  **+ Çoğaltma İlkesi**' ni seçin.
 4. **Çoğaltma ilkesi oluştur** seçeneğinde, ilke adını girin. **VMwareRepPolicy** ilkesini kullanıyoruz.
@@ -176,21 +176,21 @@ Note: VMware 'den Azure senaryosunda çökme ile tutarlı anlık görüntü 5 da
 
 VM 'Ler için çoğaltmayı şu şekilde etkinleştirin:
 
-1. **Uygulama kaynağını Çoğalt**' ı seçin  >  **Source**.
+1. **Uygulama kaynağını Çoğalt**' ı seçin  >  .
 2. **Kaynak** içinde, **Şirket içi**’ni seçin ve **Kaynak konumu** içinde yapılandırma sunucusunu seçin.
 3. **Makine türü** bölümünde **Sanal Makineler**’i seçin.
 4. **vCenter/vSphere Hypervisor** bölümünde vSphere konağını veya konağı yöneten vCenter sunucusunu seçin.
-5. İşlem sunucusunu seçin (varsayılan olarak yapılandırma sunucusu VM’sine yüklenir). Ardından **Tamam**'ı seçin. Her işlem sunucusunun sistem durumu, önerilen sınırlara ve diğer parametrelere göre belirtilir. Sağlıklı bir işlem sunucusu seçin. [Kritik](vmware-physical-azure-monitor-process-server.md#process-server-alerts) bir işlem sunucusu seçilemez. Hataları [giderebilir ve çözümleyebilir](vmware-physical-azure-troubleshoot-process-server.md) **ya** da bir [genişleme işlem sunucusu](vmware-azure-set-up-process-server-scale.md)ayarlayabilirsiniz.
+5. İşlem sunucusunu seçin (varsayılan olarak yapılandırma sunucusu VM’sine yüklenir). Ardından **Tamam**’ı seçin. Her işlem sunucusunun sistem durumu, önerilen sınırlara ve diğer parametrelere göre belirtilir. Sağlıklı bir işlem sunucusu seçin. [Kritik](vmware-physical-azure-monitor-process-server.md#process-server-alerts) bir işlem sunucusu seçilemez. Hataları [giderebilir ve çözümleyebilir](vmware-physical-azure-troubleshoot-process-server.md) **ya** da bir [genişleme işlem sunucusu](vmware-azure-set-up-process-server-scale.md)ayarlayabilirsiniz.
 6. **Hedef** bölümünde, yükü devredilen VM’leri oluşturmak istediğiniz aboneliği ve kaynak grubunu seçin. Kaynak Yöneticisi dağıtım modelini kullanacağız.
 7. Yük devretme işleminden sonra oluşturulan Azure VM’lerin bağlandığı Azure ağını ve alt ağını seçin.
 8. Çoğaltmayı etkinleştirdiğiniz tüm VM’lere ağ ayarını uygulamak için **Seçili makineler için şimdi yapılandır**’ı seçin. Makineler için Azure ağını ayrı ayrı seçmek için **Daha sonra yapılandır**'ı seçin.
-9. Sanal **makineler**  >  ' de**sanal makineler**' i seçin, çoğaltmak istediğiniz her bir makineyi seçin. Yalnızca çoğaltmanın etkinleştirildiği makineleri seçebilirsiniz. Ardından **Tamam**'ı seçin. Belirli bir sanal makineyi görüntüleyemez/seçebiliyorsanız, sorunu çözme hakkında [daha fazla bilgi edinin](./vmware-azure-troubleshoot-replication.md) .
-10. **Özellikler**  >  **yapılandırma özellikleri**bölümünde, Mobility hizmetini makineye otomatik olarak yüklemek için işlem sunucusu tarafından kullanılacak hesabı seçin.
-11. **Çoğaltma ayarları**  >  **çoğaltma ayarlarını yapılandır**bölümünde doğru çoğaltma ilkesinin seçildiğini doğrulayın.
+9. Sanal **makineler**  >  ' de **sanal makineler**' i seçin, çoğaltmak istediğiniz her bir makineyi seçin. Yalnızca çoğaltmanın etkinleştirildiği makineleri seçebilirsiniz. Ardından **Tamam**’ı seçin. Belirli bir sanal makineyi görüntüleyemez/seçebiliyorsanız, sorunu çözme hakkında [daha fazla bilgi edinin](./vmware-azure-troubleshoot-replication.md) .
+10. **Özellikler**  >  **yapılandırma özellikleri** bölümünde, Mobility hizmetini makineye otomatik olarak yüklemek için işlem sunucusu tarafından kullanılacak hesabı seçin.
+11. **Çoğaltma ayarları**  >  **çoğaltma ayarlarını yapılandır** bölümünde doğru çoğaltma ilkesinin seçildiğini doğrulayın.
 12. **Çoğaltmayı etkinleştir**' i seçin. Bir VM için çoğaltma etkinleştirildiğinde Site Recovery, Mobility Hizmeti’ni yükler.
 13. **Ayarlar** > **İşler** > **Site Recovery İşleri** bölümünden **Korumayı Etkinleştir** işinin ilerleme durumunu izleyebilirsiniz. **Korumayı Sonlandır** işi çalıştırıldıktan ve bir kurtarma noktası oluşturma işlemi tamamlandıktan sonra, makine yük devretmeye hazırsa.
 14. Değişikliklerin geçerli olması ve portalda görüntülenmesi 15 dakika veya daha uzun sürebilir.
-15. Eklediğiniz VM 'leri izlemek için **yapılandırma sunucularındaki**  >  **son iletişim adresindeki**VM 'ler için son keşfedilen zamanı kontrol edin. Zamanlanan bulma işlemini beklemeden VM’leri eklemek için yapılandırma sunucusunu vurgulayın (seçmeyin) ve **Yenile**’yi seçin.
+15. Eklediğiniz VM 'leri izlemek için **yapılandırma sunucularındaki**  >  **son iletişim adresindeki** VM 'ler için son keşfedilen zamanı kontrol edin. Zamanlanan bulma işlemini beklemeden VM’leri eklemek için yapılandırma sunucusunu vurgulayın (seçmeyin) ve **Yenile**’yi seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Çoğaltmayı etkinleştirdikten sonra her şeyin beklendiği gibi çalıştığından emin olmak için bir detaya gitme çalıştırın.

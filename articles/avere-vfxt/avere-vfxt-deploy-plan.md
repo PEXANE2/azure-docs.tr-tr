@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 01/21/2020
 ms.author: rohogue
 ms.openlocfilehash: 9f852ec056f3252005bba0bc142c05a9cfbe6c20
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92342408"
 ---
 # <a name="plan-your-avere-vfxt-system"></a>Avere vFXT sisteminizi planlama
@@ -86,7 +86,7 @@ Avere vFXT kümesi aşağıdaki IP adreslerini kullanır:
 
 * Tek bir küme yönetimi IP adresi. Bu adres, her zaman kullanılabilir olması için düğüm üzerinde kümedeki düğüme taşınabilir. Avere Denetim Masası yapılandırma aracına bağlanmak için bu adresi kullanın.
 * Her küme düğümü için:
-  * En az bir istemciye yönelik IP adresi. (İstemciye yönelik tüm adresler kümenin *vServer*tarafından yönetilir ve bu, IP adreslerini gerektiği gibi düğümler arasında taşıyabilirler.)
+  * En az bir istemciye yönelik IP adresi. (İstemciye yönelik tüm adresler kümenin *vServer* tarafından yönetilir ve bu, IP adreslerini gerektiği gibi düğümler arasında taşıyabilirler.)
   * Küme iletişimi için bir IP adresi
   * Bir örnek IP adresi (VM 'ye atandı)
 
@@ -117,7 +117,7 @@ Aboneliğinizin avere vFXT kümesini çalıştırma kapasitesine ve kullanılan 
 
 ## <a name="back-end-data-storage"></a>Arka uç veri depolama
 
-Arka uç depolama sistemleri, her iki dosyayı da kümenin önbelleğine sağlar ve aynı zamanda önbellekten değiştirilen verileri alır. Çalışma kümesi 'nin, yeni bir blob kapsayıcısında veya var olan bir depolama sisteminde (bulut veya donanım) uzun vadede saklanıp saklanmayacağına karar verin. Bu arka uç depolama sistemlerine *çekirdek dosyasıları*denir.
+Arka uç depolama sistemleri, her iki dosyayı da kümenin önbelleğine sağlar ve aynı zamanda önbellekten değiştirilen verileri alır. Çalışma kümesi 'nin, yeni bir blob kapsayıcısında veya var olan bir depolama sisteminde (bulut veya donanım) uzun vadede saklanıp saklanmayacağına karar verin. Bu arka uç depolama sistemlerine *çekirdek dosyasıları* denir.
 
 ### <a name="hardware-core-filers"></a>Donanım çekirdeği dosyasıları
 
@@ -161,7 +161,7 @@ Genel IP adresi olan bir denetleyicinin güvenliğini artırmak için, dağıtı
 
 Kümeyi oluştururken, küme denetleyicisinde genel IP adresi oluşturulup oluşturulmayacağını seçebilirsiniz.
 
-* **Yeni bir sanal ağ** veya **Yeni bir alt ağ**oluşturursanız, küme denetleyicisine bir **genel** IP adresi atanır.
+* **Yeni bir sanal ağ** veya **Yeni bir alt ağ** oluşturursanız, küme denetleyicisine bir **genel** IP adresi atanır.
 * Var olan bir sanal ağı ve alt ağı seçerseniz, küme denetleyicisi yalnızca **özel** IP adreslerine sahip olur.
 
 ## <a name="vm-access-roles"></a>VM erişim rolleri

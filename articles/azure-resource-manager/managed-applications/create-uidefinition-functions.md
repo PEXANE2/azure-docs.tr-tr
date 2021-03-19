@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 07/13/2020
 ms.author: tomfitz
 ms.openlocfilehash: e4255f0d42e28a72ad55d9b7f81d0dc49b2950cb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87040988"
 ---
 # <a name="createuidefinition-functions"></a>Createuıdefinition işlevleri
@@ -18,19 +18,19 @@ Bu makalede Createuıdefinition için desteklenen işlevlere genel bir bakış s
 
 ## <a name="function-syntax"></a>İşlev sözdizimi
 
-Bir işlevi kullanmak için, çağrıyı köşeli ayraçla çevreleyin. Örneğin:
+Bir işlevi kullanmak için, çağrıyı köşeli ayraçla çevreleyin. Örnek:
 
 ```json
 "[function()]"
 ```
 
-Dizeler ve diğer işlevlere bir işlev için parametre olarak başvurulabilir, ancak dizeler tek tırnak işaretleri içine alınmalıdır. Örneğin:
+Dizeler ve diğer işlevlere bir işlev için parametre olarak başvurulabilir, ancak dizeler tek tırnak işaretleri içine alınmalıdır. Örnek:
 
 ```json
 "[fn1(fn2(), 'demo text')]"
 ```
 
-Uygun olduğunda, nokta işlecini kullanarak bir işlevin çıktısının özelliklerine başvurabilirsiniz. Örneğin:
+Uygun olduğunda, nokta işlecini kullanarak bir işlevin çıktısının özelliklerine başvurabilirsiniz. Örnek:
 
 ```json
 "[func().prop1]"
@@ -49,7 +49,7 @@ Bu işlevler, JSON dizeleri, diziler ve nesneler gibi koleksiyonlarla birlikte k
 * [harita](create-ui-definition-collection-functions.md#map)
 * [Şimdilik](create-ui-definition-collection-functions.md#skip)
 * [ayırmayı](create-ui-definition-collection-functions.md#split)
-* [take](create-ui-definition-collection-functions.md#take)
+* [almanız](create-ui-definition-collection-functions.md#take)
 
 ## <a name="conversion-functions"></a>Dönüşüm işlevleri
 
@@ -62,8 +62,8 @@ Bu işlevler, JSON veri türleri ve kodlamaları arasındaki değerleri dönüş
 * [encodeURIComponent](create-ui-definition-conversion-functions.md#encodeuricomponent)
 * [float](create-ui-definition-conversion-functions.md#float)
 * [int](create-ui-definition-conversion-functions.md#int)
-* [MAZ](create-ui-definition-conversion-functions.md#parse)
-* [dizisinde](create-ui-definition-conversion-functions.md#string)
+* [parse](create-ui-definition-conversion-functions.md#parse)
+* [string](create-ui-definition-conversion-functions.md#string)
 
 ## <a name="date-functions"></a>Tarih işlevleri
 
@@ -78,7 +78,7 @@ Bu işlevler, conditionals içinde kullanılabilir. Bazı işlevler tüm JSON ve
 
 * [and](create-ui-definition-logical-functions.md#and)
 * [Coalesce](create-ui-definition-logical-functions.md#coalesce)
-* [equals](create-ui-definition-logical-functions.md#equals)
+* [eşittir](create-ui-definition-logical-functions.md#equals)
 * [büyüktür](create-ui-definition-logical-functions.md#greater)
 * [greaterOrEquals](create-ui-definition-logical-functions.md#greaterorequals)
 * [if](create-ui-definition-logical-functions.md#if)
@@ -94,7 +94,7 @@ Bu işlevler, conditionals içinde kullanılabilir. Bazı işlevler tüm JSON ve
 * [div](create-ui-definition-math-functions.md#div)
 * [sını](create-ui-definition-math-functions.md#floor)
 * [Biçimlendir](create-ui-definition-math-functions.md#max)
-* [Min](create-ui-definition-math-functions.md#min)
+* [dk](create-ui-definition-math-functions.md#min)
 * [alma](create-ui-definition-math-functions.md#mod)
 * [MUL](create-ui-definition-math-functions.md#mul)
 * [ran](create-ui-definition-math-functions.md#rand)

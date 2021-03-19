@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/14/2020
 ms.openlocfilehash: 71f5488b1f689e8892155b013730bcbb3c8e0e35
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90531985"
 ---
 # <a name="aggregate-transformation-in-mapping-data-flow"></a>Eşleme veri akışında toplama dönüştürmesi
@@ -31,7 +31,7 @@ Toplama dönüşümünde Group by yan tümcesi isteğe bağlıdır.
 
 ## <a name="aggregate-columns"></a>Toplam sütunları
 
-Toplama ifadeleri oluşturmak için **Toplamlar** sekmesine gidin. Bir toplama ile var olan bir sütunun üzerine yazabilir ya da yeni bir adla yeni bir alan oluşturabilirsiniz. Toplama ifadesi, sütun adı seçicisinin yanındaki sağ kutuya girilir. İfadeyi düzenlemek için metin kutusuna tıklayın ve deyim Oluşturucu 'yu açın. Daha fazla toplama sütunu eklemek için sütun listesini yukarıya **Ekle** ' ye veya varolan bir toplama sütununun yanındaki artı simgesine tıklayın. **Sütun Ekle** veya **sütun Ekle düzenlerini**seçin. Her toplama ifadesi en az bir toplama işlevi içermelidir.
+Toplama ifadeleri oluşturmak için **Toplamlar** sekmesine gidin. Bir toplama ile var olan bir sütunun üzerine yazabilir ya da yeni bir adla yeni bir alan oluşturabilirsiniz. Toplama ifadesi, sütun adı seçicisinin yanındaki sağ kutuya girilir. İfadeyi düzenlemek için metin kutusuna tıklayın ve deyim Oluşturucu 'yu açın. Daha fazla toplama sütunu eklemek için sütun listesini yukarıya **Ekle** ' ye veya varolan bir toplama sütununun yanındaki artı simgesine tıklayın. **Sütun Ekle** veya **sütun Ekle düzenlerini** seçin. Her toplama ifadesi en az bir toplama işlevi içermelidir.
 
 ![Toplama ayarları](media/data-flow/aggregate-columns.png "Toplama ayarları")
 
@@ -61,7 +61,7 @@ Veri doğrulama senaryolarında, `count()` işlevi kaç tane yineleme olduğunu 
 
 ## <a name="data-flow-script"></a>Veri akışı betiği
 
-### <a name="syntax"></a>Sözdizimi
+### <a name="syntax"></a>Syntax
 
 ```
 <incomingStream>

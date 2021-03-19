@@ -6,11 +6,11 @@ ms.author: inhenkel
 ms.service: media-services
 ms.topic: overview
 ms.date: 09/23/2020
-ms.openlocfilehash: 9d126f591da1bffebbfd29119c56927cfbb21dcd
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: c63a8efc4bbcf6e5a124d439e6f9f91397e2fa53
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92370585"
 ---
 # <a name="changelog"></a>Değişiklik günlüğü
@@ -198,7 +198,7 @@ Uygulamaları çağırmak için anlamlı bir KeyDelivery hatası döndürün
 
 ### <a name="changes"></a>Değişiklikler ###
 
-- Değişebilir [Canlı açıklamalı alt yazı] 608 ile 708 arasındaki CEA açıklamalı alt yazılar için API adı değiştirildi. Daha fazla bilgi için bkz. [CEA708 açıklamalı altyazı ayarları](/javascript/api/azuremediaplayer/cea708captionssettings)-->
+- Değişebilir [Canlı açıklamalı alt yazı] 608 ile 708 arasındaki CEA açıklamalı alt yazılar için API adı değiştirildi. Daha fazla bilgi için bkz. [CEA708 açıklamalı altyazı ayarları](/javascript/api/azuremediaplayer/amp.player.cea708captionssettings)-->
 
 ## <a name="220-official-release"></a>2.2.0 (resmi sürüm) ##
 

@@ -10,10 +10,10 @@ ms.suite: infrastructure-services
 ms.topic: article
 ms.date: 11/14/2018
 ms.openlocfilehash: 5a74240e3f116121c0aaddd11c186e6e674ea26a
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92368188"
 ---
 # <a name="build-advanced-schedules-and-recurrences-for-jobs-in-azure-scheduler"></a>Azure Scheduler 'da işler için gelişmiş zamanlamalar ve Yinelenmeler oluşturma
@@ -66,13 +66,13 @@ Bu tablo, işler için Yinelenmeler ve zamanlamalar ayarlarken kullanabileceğin
 
 | Öğe | Gerekli | Açıklama | 
 |---------|----------|-------------|
-| **startTime** | No | [Iso 8601 biçiminde](https://en.wikipedia.org/wiki/ISO_8601) , işin ilk olarak temel bir zamanlamaya göre ne zaman başlayacağını belirten bir tarih saat dizesi değeri. <p>Karmaşık zamanlamalar için iş **StartTime**değerinden önce başlamaz. | 
-| **yinelemeyi** | No | İşin çalıştığı zaman için yineleme kuralları. **Yinelenme** nesnesi şu öğeleri destekler: **Sıklık**, **Interval**, **zamanlama**, **sayı**ve **bitişsaati**. <p>**Yineleme** öğesini kullanırsanız **Sıklık** öğesini de kullanmanız gerekir, diğer **yineleme** öğeleri isteğe bağlıdır. |
+| **startTime** | No | [Iso 8601 biçiminde](https://en.wikipedia.org/wiki/ISO_8601) , işin ilk olarak temel bir zamanlamaya göre ne zaman başlayacağını belirten bir tarih saat dizesi değeri. <p>Karmaşık zamanlamalar için iş **StartTime** değerinden önce başlamaz. | 
+| **yinelemeyi** | No | İşin çalıştığı zaman için yineleme kuralları. **Yinelenme** nesnesi şu öğeleri destekler: **Sıklık**, **Interval**, **zamanlama**, **sayı** ve **bitişsaati**. <p>**Yineleme** öğesini kullanırsanız **Sıklık** öğesini de kullanmanız gerekir, diğer **yineleme** öğeleri isteğe bağlıdır. |
 | **frequency** | Evet, **yinelenme** kullandığınızda | Oluşum arasındaki zaman birimi ve bu değerleri destekler: "Minute", "Hour", "Day", "Week", "month" ve "Year" | 
-| **interval** | No | **Sıklık**temelinde oluşum arasındaki zaman birimi sayısını belirleyen pozitif bir tamsayı. <p>Örneğin, **Aralık** 10, **Sıklık** ise "Week" ise, iş her 10 haftada bir yinelenir. <p>Her bir sıklık için en fazla Aralık sayısı aşağıda verilmiştir: <p>-18 ay <br>-78 hafta <br>-548 gün <br>-Saat ve dakika için Aralık 1 <= <*aralığı*> <= 1000 olur. | 
+| **aralığında** | No | **Sıklık** temelinde oluşum arasındaki zaman birimi sayısını belirleyen pozitif bir tamsayı. <p>Örneğin, **Aralık** 10, **Sıklık** ise "Week" ise, iş her 10 haftada bir yinelenir. <p>Her bir sıklık için en fazla Aralık sayısı aşağıda verilmiştir: <p>-18 ay <br>-78 hafta <br>-548 gün <br>-Saat ve dakika için Aralık 1 <= <*aralığı*> <= 1000 olur. | 
 | **çizelgesini** | No | Belirtilen dakika işaretleri, saat işaretleri, haftanın günleri ve ayın günleri temelinde tekrardaki değişiklikleri tanımlar | 
-| **biriktirme** | No | İşin bitmeden önce kaç kez çalışacağını belirten pozitif bir tamsayı. <p>Örneğin, günlük iş **sayısı** 7 olarak ayarlandığında ve başlangıç tarihi Pazartesi ise, iş Pazar günü çalışmayı sonlandırır. Başlangıç tarihi zaten geçmişse, ilk çalıştırma oluşturma zamanından hesaplanır. <p>İş, **bitişsaati** veya **sayı**olmadan sonsuz çalışır. Aynı işte hem **Count** hem de **bitişsaati** kullanamazsınız, ancak önce sona erme kuralı kabul edilir. | 
-| **endTime** | No | [Iso 8601 biçiminde](https://en.wikipedia.org/wiki/ISO_8601) , işin çalışmayı ne zaman durdurduğunu belirten bir tarih veya tarih saat dizesi değeri. Geçmişte olan **bitişsaati** için bir değer ayarlayabilirsiniz. <p>İş, **bitişsaati** veya **sayı**olmadan sonsuz çalışır. Aynı işte hem **Count** hem de **bitişsaati** kullanamazsınız, ancak önce sona erme kuralı kabul edilir. |
+| **count** | No | İşin bitmeden önce kaç kez çalışacağını belirten pozitif bir tamsayı. <p>Örneğin, günlük iş **sayısı** 7 olarak ayarlandığında ve başlangıç tarihi Pazartesi ise, iş Pazar günü çalışmayı sonlandırır. Başlangıç tarihi zaten geçmişse, ilk çalıştırma oluşturma zamanından hesaplanır. <p>İş, **bitişsaati** veya **sayı** olmadan sonsuz çalışır. Aynı işte hem **Count** hem de **bitişsaati** kullanamazsınız, ancak önce sona erme kuralı kabul edilir. | 
+| **endTime** | No | [Iso 8601 biçiminde](https://en.wikipedia.org/wiki/ISO_8601) , işin çalışmayı ne zaman durdurduğunu belirten bir tarih veya tarih saat dizesi değeri. Geçmişte olan **bitişsaati** için bir değer ayarlayabilirsiniz. <p>İş, **bitişsaati** veya **sayı** olmadan sonsuz çalışır. Aynı işte hem **Count** hem de **bitişsaati** kullanamazsınız, ancak önce sona erme kuralı kabul edilir. |
 |||| 
 
 Örneğin, bu JSON şeması bir iş için temel bir zamanlamayı ve yinelemeyi açıklar: 
@@ -172,7 +172,7 @@ Aşağıdaki tabloda schedule öğeleri ayrıntılı bir şekilde açıklanmış
 
 Aşağıdaki örneklerde çeşitli yinelenme zamanlamaları gösterilmektedir. Örnekler zamanlama nesnesine ve alt öğelerine odaklanmaktadır.
 
-Bu zamanlamalar, **aralığın** 1 olarak ayarlandığını varsayar\. Örnekler Ayrıca **zamanlamaya**göre değerler için doğru **Sıklık** değerlerini de varsayar. Örneğin, "gün" **sıklığını** kullanamazsınız ve **zamanlamaya**göre bir **monthdays** değişikliği yapamazsınız. Bu kısıtlamaları makalenin önceki kısımlarında anlatmaktadır.
+Bu zamanlamalar, **aralığın** 1 olarak ayarlandığını varsayar\. Örnekler Ayrıca **zamanlamaya** göre değerler için doğru **Sıklık** değerlerini de varsayar. Örneğin, "gün" **sıklığını** kullanamazsınız ve **zamanlamaya** göre bir **monthdays** değişikliği yapamazsınız. Bu kısıtlamaları makalenin önceki kısımlarında anlatmaktadır.
 
 | Örnek | Description |
 |:--- |:--- |
@@ -181,8 +181,8 @@ Bu zamanlamalar, **aralığın** 1 olarak ayarlandığını varsayar\. Örnekler
 | `{"minutes":[15], "hours":[5,17]}` |Her gün 05.15 ve 17.15’te çalıştır. |
 | `{"minutes":[15,45], "hours":[5,17]}` |Her gün 05.15, 05.45, 17.15 ve 17.45’te çalıştır. |
 | `{"minutes":[0,15,30,45]}` |15 dakikada bir çalıştır. |
-| `{hours":[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23]}` |Saatte bir çalıştır.<br /><br />Bu iş her saat çalışır. Belirtilen dakika, belirtilmişse **StartTime**değeri ile denetlenir. **StartTime** değeri belirtilmemişse, dakika oluşturma zamanı tarafından denetlenir. Örneğin, başlangıç saati veya oluşturma saati (hangisi geçerlidir) 12:25 PM ise, iş 00:25, 01:25, 02:25,..., 23:25 üzerinde çalışır.<br /><br />Zamanlama, **sıklığı** "saat", **Aralık** 1 olan ve **zamanlama** değeri olmayan bir işle aynıdır. Fark, bu zamanlamayı başka işler oluşturmak için farklı **Sıklık** ve **Aralık** değerleriyle birlikte kullanmanıza olanak sağlar. Örneğin **Sıklık** "month" ise, zamanlama her gün yerine yalnızca ayda bir kez çalışır ( **Sıklık** "gün" ise). |
-| `{minutes:[0]}` |Her saat başı çalıştır.<br /><br />Bu iş aynı zamanda saatte bir çalışır, ancak saat üzerinde (12 har, 1 har, 2, vb.). Bu zamanlama **, sıklığı "** saat", **StartTime** değeri sıfır dakika ve sıklığı "gün" ise **zamanlama**olmadan aynıdır. Ancak **Sıklık** "Week" veya "month" ise, zamanlama sırasıyla yalnızca bir gün veya ayda bir gün yürütülür. |
+| `{hours":[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23]}` |Saatte bir çalıştır.<br /><br />Bu iş her saat çalışır. Belirtilen dakika, belirtilmişse **StartTime** değeri ile denetlenir. **StartTime** değeri belirtilmemişse, dakika oluşturma zamanı tarafından denetlenir. Örneğin, başlangıç saati veya oluşturma saati (hangisi geçerlidir) 12:25 PM ise, iş 00:25, 01:25, 02:25,..., 23:25 üzerinde çalışır.<br /><br />Zamanlama, **sıklığı** "saat", **Aralık** 1 olan ve **zamanlama** değeri olmayan bir işle aynıdır. Fark, bu zamanlamayı başka işler oluşturmak için farklı **Sıklık** ve **Aralık** değerleriyle birlikte kullanmanıza olanak sağlar. Örneğin **Sıklık** "month" ise, zamanlama her gün yerine yalnızca ayda bir kez çalışır ( **Sıklık** "gün" ise). |
+| `{minutes:[0]}` |Her saat başı çalıştır.<br /><br />Bu iş aynı zamanda saatte bir çalışır, ancak saat üzerinde (12 har, 1 har, 2, vb.). Bu zamanlama **, sıklığı "** saat", **StartTime** değeri sıfır dakika ve sıklığı "gün" ise **zamanlama** olmadan aynıdır. Ancak **Sıklık** "Week" veya "month" ise, zamanlama sırasıyla yalnızca bir gün veya ayda bir gün yürütülür. |
 | `{"minutes":[15]}` |Saatte bir saat sonra 15 dakikada bir çalıştırın.<br /><br />Her saat, 00:15, 1:15, 2:15, vb. ile başlayarak çalışır. 11:15 PM tarihinde sona erer. |
 | `{"hours":[17], "weekDays":["saturday"]}` |Her hafta Cumartesi tarihinde 5 saat sonra çalıştırın. |
 | `{hours":[17], "weekDays":["monday", "wednesday", "friday"]}` |Her hafta Pazartesi, Çarşamba ve Cuma günleri üzerinden 5 saat içinde çalıştırın. |
