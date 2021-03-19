@@ -6,17 +6,17 @@ ms.author: robinsh
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 08/08/2019
+ms.date: 03/18/2021
 ms.custom:
 - 'Role: Cloud Development'
 - 'Role: Operations'
 - 'Role: Technical Support'
-ms.openlocfilehash: 5a5b20efbf804c2ea1097f905da1cfd62727ff15
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 3de9eccd001e421ef3255f83630716df12b7a2ee
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94410700"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104595269"
 ---
 # <a name="reference---iot-hub-quotas-and-throttling"></a>Başvuru IoT Hub kotaları ve azaltma
 
@@ -73,7 +73,7 @@ Aşağıdaki tabloda zorlanan kısıtlar gösterilmektedir. Değerler tek bir hu
 
 *  **Kota** , *her gün* hub 'ınızda gönderebilmeniz için toplam ileti sayısıdır. Hub 'ın kota sınırını [IoT Hub fiyatlandırma sayfasında](https://azure.microsoft.com/pricing/details/iot-hub/) **toplam ileti sayısı/gün** sütununda bulabilirsiniz.
 
-*  Buluttan cihaza ve cihazdan buluta, iletileri gönderebilmeniz için, 4 KB 'lık öbekten bağımsız *rate* olarak ileti sayısını belirleme. Her ileti en fazla 256 KB olabilir ve bu [en fazla ileti boyutudur](iot-hub-devguide-quotas-throttling.md#other-limits).
+*  Buluttan cihaza ve cihazdan buluta, iletileri gönderebilmeniz için, 4 KB 'lık öbekten bağımsız  olarak ileti sayısını belirleme. Her ileti en fazla 256 KB olabilir ve bu [en fazla ileti boyutudur](iot-hub-devguide-quotas-throttling.md#other-limits).
 
 *  Azaltma sınırlarını vurmadan/aşmamak için aramalarınızı kısıtlamak iyi bir uygulamadır. Sınıra ulaşırsanız, IoT Hub 429 hata koduyla yanıt verir ve istemci yeniden denenmelidir. Bu sınırlar hub başına (veya hub/birim başına bazı durumlarda). Daha fazla bilgi için bkz. [bağlantı ve güvenilir mesajlaşma/yeniden deneme düzenlerini yönetme](iot-hub-reliability-features-in-sdks.md#retry-patterns).
 
@@ -86,6 +86,8 @@ IoT Hub, aşırı ara trafiğe uyum sağlamak için, sınırlı bir süre için 
 ### <a name="identity-registry-operations-throttle"></a>Kimlik kayıt defteri işlemleri kısıtlama
 
 Cihaz kimliği kayıt defteri işlemleri, cihaz yönetimi ve sağlama senaryolarında çalışma zamanı kullanımı için tasarlanmıştır. Çok sayıda cihaz kimliği okumak veya güncelleştirmek, [içeri ve dışarı aktarma işleri](iot-hub-devguide-identity-registry.md#import-and-export-device-identities)aracılığıyla desteklenir.
+
+[Toplu cihaz işlemleri](iot-hub-bulk-identity-mgmt.md)aracılığıyla kimlik işlemlerini başlatırken aynı kısıtlama limitleri de geçerlidir. Örneğin, 50 cihaz oluşturmak için toplu işlem göndermek istiyorsanız ve 1 birimiyle bir S1 IoT Hub varsa, bu toplu isteklerin yalnızca ikisi dakikada bir kabul edilir. Bunun nedeni, 1 birimiyle bir S1 IoT Hub için kimlik işlemi kısıtlaması 100/dak/Unit ' dir. Bu durumda, sınıra zaten ulaşıldığı için aynı dakikalık üçüncü bir istek (ve daha fazlası) reddedilir. 
 
 ### <a name="device-connections-throttle"></a>Cihaz bağlantıları kısıtlaması
 

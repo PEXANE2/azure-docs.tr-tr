@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/15/2021
+ms.date: 03/17/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: e2c82858b9f4b9846ff5371da347be942eed0a4f
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.openlocfilehash: 0c0507f9206ebe69662090d7a00da6d5c9d0b90a
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103488865"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104580020"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-github-account-using-azure-active-directory-b2c"></a>Azure Active Directory B2C kullanarak bir GitHub hesabı ile kaydolma ve oturum açma ayarlama
 
@@ -61,6 +61,9 @@ Azure Active Directory B2C (Azure AD B2C) ' de bir GitHub hesabıyla oturum açm
 1. **Kaydet**’i seçin.
 
 ## <a name="add-github-identity-provider-to-a-user-flow"></a>Bir Kullanıcı akışına GitHub kimlik sağlayıcısı ekleme 
+
+Bu noktada GitHub kimlik sağlayıcısı ayarlanmıştır, ancak oturum açma sayfalarında henüz mevcut değildir. GitHub kimlik sağlayıcısını bir Kullanıcı akışına eklemek için:
+
 
 1. Azure AD B2C kiracınızda **Kullanıcı akışları**' nı seçin.
 1. GitHub kimlik sağlayıcısı eklemek istediğiniz kullanıcı akışına tıklayın.

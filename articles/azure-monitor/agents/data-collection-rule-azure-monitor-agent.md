@@ -4,13 +4,13 @@ description: Azure Izleyici aracısını kullanarak sanal makinelerden veri topl
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 08/19/2020
-ms.openlocfilehash: 93e244706d6d478155ac001d20fa3ce74fa6a887
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.date: 03/16/2021
+ms.openlocfilehash: 73f7ab83ea15d223b76b9f71fde2f8a6a37bdacf
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101723648"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104586378"
 ---
 # <a name="configure-data-collection-for-the-azure-monitor-agent-preview"></a>Azure Izleyici Aracısı için veri toplamayı yapılandırma (Önizleme)
 
@@ -68,6 +68,32 @@ Veri toplama kuralının ayrıntılarını ve VM kümesiyle ilişkilendirmeyi g�
 > [!NOTE]
 > Veri toplama kuralı ve ilişkilendirmeleri oluşturulduktan sonra, verilerin hedeflere gönderilmesi 5 dakikaya kadar sürebilir.
 
+## <a name="limit-data-collection-with-custom-xpath-queries"></a>Özel XPath sorgularıyla veri toplamayı sınırlayın
+Log Analytics çalışma alanında toplanan veriler için ücretlendirildiğiniz için, yalnızca gerekli verileri toplamalısınız. Azure portal temel yapılandırmayı kullanarak, yalnızca toplanacak olayları filtrelemek için sınırlı bir becerisine sahip olursunuz. Uygulama ve sistem günlükleri için bu, belirli bir önem derecesine sahip tüm günlüklerle kaydedilir. Güvenlik günlükleri için tüm denetim başarısı veya tüm denetim hatası günlükleri budur.
+
+Ek filtre belirtmek için özel yapılandırma kullanmanız ve istemediğiniz olayları filtreleyen bir XPath belirtmeniz gerekir. XPath girdileri biçiminde yazılır `LogName!XPathQuery` . Örneğin, olay KIMLIĞI 1035 olan uygulama olay günlüğünden yalnızca olayları geri döndürmek isteyebilirsiniz. Bu olaylar için XPathQuery olacaktır `*[System[EventID=1035]]` . Olayları uygulama olay günlüğünden almak istediğinizden dolayı XPath `Application!*[System[EventID=1035]]`
+
+> [!TIP]
+> `Get-WinEvent` `FilterXPath` Bir xpathquery 'nin geçerliliğini sınamak Için parametresiyle PowerShell cmdlet 'ini kullanın. Aşağıdaki betik bir örnek gösterir.
+> 
+> ```powershell
+> $XPath = '*[System[EventID=1035]]'
+> Get-WinEvent -LogName 'Application' -FilterXPath $XPath
+> ```
+>
+> - Olaylar döndürülürse, sorgu geçerli olur.
+> - *Belirtilen seçim ölçütleriyle eşleşen hiçbir olay bulunamadıysanız* iletiyi alırsanız. sorgu geçerli olabilir, ancak yerel makinede eşleşen olay yok.
+> - *Belirtilen sorgu geçersiz olduğunda* iletiyi alırsanız sorgu söz dizimi geçersizdir. 
+
+Aşağıdaki tabloda özel bir XPath kullanılarak olayların filtrelenmesi için örnekler gösterilmektedir.
+
+| Description |  XPath |
+|:---|:---|
+| Yalnızca olay KIMLIĞI = 4648 olan sistem olaylarını topla |  `System!*[System[EventID=4648]]`
+| Yalnızca olay KIMLIĞI = 4648 olan sistem olaylarını ve consent.exe işlem adını toplayın |  `System!*[System[(EventID=4648) and (EventData[@Name='ProcessName']='C:\Windows\System32\consent.exe')]]`
+| Olay KIMLIĞI = 6 dışında tüm kritik, hata, uyarı ve bilgi olaylarını sistem olay günlüğünden toplayın (sürücü yüklendi) |  `System!*[System[(Level=1 or Level=2 or Level=3) and (EventID != 6)]]` |
+| Olay KIMLIĞI 4624 (başarılı oturum açma) dışında tüm başarı ve başarısızlık güvenlik olaylarını toplayın |  `Security!*[System[(band(Keywords,13510798882111488)) and (EventID != 4624)]]` |
+
 
 ## <a name="create-rule-and-association-using-rest-api"></a>REST API kullanarak kural ve ilişkilendirme oluşturma
 
@@ -83,6 +109,8 @@ REST API kullanarak bir veri toplama kuralı ve ilişkilendirmeleri oluşturmak 
 ## <a name="create-association-using-resource-manager-template"></a>Kaynak Yöneticisi şablonu kullanarak ilişkilendirme oluşturma
 
 Bir Kaynak Yöneticisi şablonu kullanarak bir veri toplama kuralı oluşturamazsınız, ancak bir Azure sanal makinesi veya Azure Arc etkin sunucusu arasında Kaynak Yöneticisi şablonu kullanarak bir ilişki oluşturabilirsiniz. Örnek şablonlar için bkz. [Azure izleyici 'de veri toplama kuralları için Kaynak Yöneticisi şablon örnekleri](./resource-manager-data-collection-rules.md) .
+
+
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

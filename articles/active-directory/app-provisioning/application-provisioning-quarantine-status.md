@@ -8,15 +8,15 @@ ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
 ms.topic: troubleshooting
-ms.date: 09/24/2020
+ms.date: 03/18/2021
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: d997c85f96fa9f87ca6d017cb555b3732007e21c
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.openlocfilehash: 49590c46588ad0d0f1c1b7b095679a3c3fce96eb
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99256314"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104579510"
 ---
 # <a name="application-provisioning-in-quarantine-status"></a>Karantina durumunda uygulama sağlama
 
@@ -52,7 +52,7 @@ Bir uygulamanın karantinada olup olmadığını denetlemek için üç yol vard�
 
 ## <a name="why-is-my-application-in-quarantine"></a>Uygulamamın neden karantinaya alınsın?
 
-|Açıklama|Önerilen Eylem|
+|Description|Önerilen Eylem|
 |---|---|
 |**SCIM uyumluluk sorunu:** Beklenen HTTP/200 Tamam yanıtı yerine bir HTTP/404 bulunamadı yanıtı döndürüldü. Bu durumda, Azure AD sağlama hizmeti hedef uygulamaya bir istek yaptı ve beklenmeyen bir yanıt aldı.|Yönetici kimlik bilgileri bölümünü denetleyin. Uygulamanın kiracı URL 'sini belirtmesini gerektirip gerektirmediğini ve URL 'nin doğru olup olmadığını görün. Bir sorun görmüyorsanız, hizmetinin SCıM uyumlu olduğundan emin olmak için uygulama geliştiricisine başvurun. https://tools.ietf.org/html/rfc7644#section-3.4.2 |
 |**Geçersiz kimlik bilgileri:** Hedef uygulamaya erişim izni verirken, hedef uygulamadan, belirtilen kimlik bilgilerinin geçersiz olduğunu belirten bir yanıt aldık.|Sağlama yapılandırma Kullanıcı arabiriminin yönetici kimlik bilgileri bölümüne gidin ve geçerli kimlik bilgileriyle erişimi yeniden Yetkilendir. Uygulama Galeri 'de ise, artık gerekli adımlar için uygulama yapılandırma öğreticisini gözden geçirin.|
@@ -85,7 +85,7 @@ Bir iş, yönetici kimlik bilgileri veya SCıM uyumluluğu gibi sorunlar nedeniy
 
 Sorunu çözdükten sonra, sağlama işini yeniden başlatın. Uygulamanın sağlama ayarlarında öznitelik eşlemeleri veya kapsam filtreleri gibi bazı değişiklikler, sağlamayı sizin için otomatik olarak yeniden başlatacak. Uygulamanın **sağlama** sayfasındaki ilerleme çubuğu, sağlamanın en son ne zaman başlatıldığını gösterir. Sağlama işini el ile yeniden başlatmanız gerekiyorsa aşağıdaki yöntemlerden birini kullanın:  
 
-- Sağlama işini yeniden başlatmak için Azure portal kullanın. Uygulamanın **sağlama** sayfasında, **Ayarlar**' ın altında, **durumu temizle ve eşitlemeyi yeniden Başlat** ' ı seçin ve **sağlama durumunu** **Açık** olarak ayarlayın. Bu eylem, sağlama hizmetini tamamen yeniden başlatır ve bu işlem biraz zaman alabilir. Tam bir başlangıç döngüsünün yeniden çalışması için, escrows 'yi temizler, uygulamayı karantinadan kaldırır ve tüm filigranları temizler.
+- Sağlama işini yeniden başlatmak için Azure portal kullanın. Uygulamanın **sağlama** sayfasında, **sağlamayı yeniden Başlat**' ı seçin. Bu eylem, sağlama hizmetini tamamen yeniden başlatır ve bu işlem biraz zaman alabilir. Tam bir başlangıç döngüsünün yeniden çalışması için, escrows 'yi temizler, uygulamayı karantinadan kaldırır ve tüm filigranları temizler. Daha sonra hizmet, kaynak sistemdeki tüm kullanıcıları yeniden değerlendirir ve sağlama kapsamında olup olmadıklarını saptacaktır. Bu makalede açıklandığı gibi, uygulamanız Şu anda karantinaya alınır veya öznitelik eşlemelerinizde bir değişiklik yapmanız gerekiyorsa, bu yararlı olabilir. İlk döngüsünün değerlendirilmesi gereken nesne sayısı nedeniyle, tipik artımlı döngüden daha uzun sürdüğüne göz önünde unutmayın. [Burada](application-provisioning-when-will-provisioning-finish-specific-user.md)ilk ve artımlı döngülerin performansı hakkında daha fazla bilgi edinebilirsiniz.
 
 - [Sağlama işini yeniden başlatmak](/graph/api/synchronization-synchronizationjob-restart?tabs=http&view=graph-rest-beta&preserve-view=true)için Microsoft Graph kullanın. Yeniden başlatdıklarınız üzerinde tam denetime sahip olacaksınız. Et 'ları kaldırmayı seçebilirsiniz (karantina durumuna göre tahakkuk eden Emanet sayacını yeniden başlatmak için), karantinayı temizleyebilir (uygulamayı karantinadan kaldırmak için) veya filigranları temizleyebilirsiniz. Aşağıdaki isteği kullanın:
  

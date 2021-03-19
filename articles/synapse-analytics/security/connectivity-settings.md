@@ -8,12 +8,12 @@ ms.subservice: security
 ms.date: 03/15/2021
 ms.author: ronytho
 ms.reviewer: jrasnick
-ms.openlocfilehash: ce1a4808833cbd897da17f9ad75af346538d23d1
-ms.sourcegitcommit: 66ce33826d77416dc2e4ba5447eeb387705a6ae5
+ms.openlocfilehash: e0d8a8e3320b49b6fbe3e8ab66c0b4569fac9afd
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/15/2021
-ms.locfileid: "103473096"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104587942"
 ---
 # <a name="azure-synapse-analytics-connectivity-settings"></a>Azure SYNAPSE Analytics bağlantı ayarları
 
@@ -21,7 +21,7 @@ Bu makale, Azure SYNAPSE Analytics 'teki bağlantı ayarlarını ve bunların uy
 
 
 ## <a name="connection-policy"></a>Bağlantı ilkesi
-Azure SYNAPSE Analytics 'te SYNAPSE SQL bağlantı ilkesi *varsayılan* olarak ayarlanır. Bunu Azure SYNAPSE Analytics 'te değiştiremezsiniz. Bunun Azure [SYNAPSE Analytics 'Te](https://docs.microsoft.com/azure/azure-sql/database/connectivity-architecture#connection-policy)SYNAPSE SQL bağlantılarını nasıl etkilediği hakkında daha fazla bilgi edinebilirsiniz. 
+Azure SYNAPSE Analytics 'te SYNAPSE SQL bağlantı ilkesi *varsayılan* olarak ayarlanır. Bunu Azure SYNAPSE Analytics 'te değiştiremezsiniz. Bunun Azure [SYNAPSE Analytics 'Te](../../azure-sql/database/connectivity-architecture.md#connection-policy)SYNAPSE SQL bağlantılarını nasıl etkilediği hakkında daha fazla bilgi edinebilirsiniz. 
 
 ## <a name="minimal-tls-version"></a>En düşük TLS sürümü
 Azure SYNAPSE Analytics 'te SYNAPSE SQL, tüm TLS sürümlerini kullanarak bağlantılara izin verir. Azure SYNAPSE Analytics 'te SYNAPSE SQL için en düşük TLS sürümünü ayarlayamazsınız.

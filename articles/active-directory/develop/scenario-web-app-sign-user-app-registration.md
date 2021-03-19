@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 07/14/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 96fbe676d4b929d2c1ee2efce0d10f3b5dc7c6ab
-ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
+ms.openlocfilehash: 920249aa252469c3db2be284fc010d775d04c921
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100103201"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104578286"
 ---
 # <a name="web-app-that-signs-in-users-app-registration"></a>Kullanıcılarda oturum açan Web uygulaması: uygulama kaydı
 
@@ -94,6 +94,21 @@ Varsayılan olarak, örnek şunları kullanır:
    1. **1 yılda** anahtar süresini seçin.
    1. **Add (Ekle)** seçeneğini belirleyin.
    1. Anahtar değeri göründüğünde, daha sonra için kopyalayın. Bu değer, bir daha görüntülenmez veya başka yollarla alınabilir.
+
+# <a name="nodejs"></a>[Node.js](#tab/nodejs)
+
+1. **Uygulama kaydet** sayfası göründüğünde uygulamanızın kayıt bilgilerini girin:
+   1. Uygulamanız için bir **ad** girin (örneğin,) `node-webapp` . Uygulamanızın kullanıcıları bu adı görebilir ve daha sonra değiştirebilirsiniz.
+   1. **Desteklenen hesap türlerini** **Tüm Kurumsal dizin ve kişisel Microsoft hesaplarında (ör. Skype, Xbox, Outlook.com) hesaplar** olarak değiştirin.
+   1. **Yeniden yönlendirme URI 'si (isteğe bağlı)** bölümünde, açılan kutuda **Web** ' i seçin ve aşağıdaki yeniden yönlendirme URI 'sini girin: `http://localhost:3000/redirect` .
+   1. Uygulamayı kaydetmek için **Kaydet**'i seçin.
+1. Uygulamanın **genel bakış** sayfasında, **uygulama (istemci) kimlik** değerini bulun ve daha sonra için kaydedin. Bu proje için yapılandırma dosyasını yapılandırmak üzere buna ihtiyacınız olacak.
+1. **Yönet**’in altında **Sertifikalar ve gizli diziler**’i seçin.
+1. **Istemci gizli** dizileri bölümünde **yeni istemci parolası**' nı seçin ve ardından:
+   1. Bir anahtar açıklaması girin.
+   1. **1 yılda** bir anahtar süresi seçin.
+   1. **Add (Ekle)** seçeneğini belirleyin.
+   1. Anahtar değeri göründüğünde kopyalayın. Buna daha sonra ihtiyacınız olacak.
 
 # <a name="python"></a>[Python](#tab/python)
 

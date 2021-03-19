@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: fb81960b573b5b7d28f44f7a7482c28b4ef284be
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.openlocfilehash: 81c026893c3185c6c9f960cdb6acb2d0c2d49cc4
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103496465"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104580360"
 ---
 # <a name="azure-disk-encryption-for-linux-vms"></a>Linux VM'leri için Azure Disk Şifrelemesi 
 
@@ -108,7 +108,7 @@ Azure tarafından onaylanan Linux sunucu dağıtımları, Azure disk şifrelemes
 
 Azure disk şifrelemesi, sistemde dm-crypt ve VFAT modüllerinin bulunmasını gerektirir. VFAT 'i varsayılan görüntüden kaldırmak veya devre dışı bırakmak, sistemin anahtar birimini okumasını ve sonraki yeniden başlatmalarda disklerin kilidini açmak için gereken anahtarı almasını engeller. VFAT modülünü sistemden kaldırmak veya veri sürücülerindeki işletim sistemi bağlama noktalarını/klasörlerini genişletmeyi zorlamak için sistem sağlamlaştırma adımları Azure disk şifrelemesi ile uyumlu değildir. 
 
-Şifrelemeyi etkinleştirmeden önce, şifrelenecek veri disklerinin/etc/fstabnda doğru şekilde listelenmesi gerekir. Giriş oluştururken "NOFAIL" seçeneğini kullanın ve kalıcı bir cihaz adı seçin ("/dev/sdX" biçimindeki cihaz adları yeniden başlatmalar genelinde aynı disk ile ilişkilendirilemeyebilir, özellikle şifrelemeden sonra, bu davranış hakkında daha fazla bilgi için bkz.: [LINUX VM cihaz adı değişiklikleri sorunlarını giderme](../troubleshooting/troubleshoot-device-names-problems.md)).
+Şifrelemeyi etkinleştirmeden önce, şifrelenecek veri disklerinin/etc/fstabnda doğru şekilde listelenmesi gerekir. Giriş oluştururken "NOFAIL" seçeneğini kullanın ve kalıcı bir cihaz adı seçin ("/dev/sdX" biçimindeki cihaz adları yeniden başlatmalar genelinde aynı disk ile ilişkilendirilemeyebilir, özellikle şifrelemeden sonra, bu davranış hakkında daha fazla bilgi için bkz.: [LINUX VM cihaz adı değişiklikleri sorunlarını giderme](/troubleshoot/azure/virtual-machines/troubleshoot-device-names-problems)).
 
 /Etc/fstab ayarlarının bağlama için doğru yapılandırıldığından emin olun. Bu ayarları yapılandırmak için, Mount-a komutunu çalıştırın veya VM 'yi yeniden başlatın ve bu şekilde uzak yeniden bağlama 'yı tetikleyin. Bu tamamlandıktan sonra, sürücünün hala bağlı olduğunu doğrulamak için lsblk komutunun çıkışını kontrol edin. 
 

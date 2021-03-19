@@ -16,12 +16,12 @@ ms.date: 04/16/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e49ed356f294baca6e339faeebe92ca02b2723df
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: c320c8497506a0269e65cd79e18aea1972354729
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101644791"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104589531"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-quickstart"></a>Kesintisiz çoklu oturum açma Azure Active Directory: hızlı başlangıç
 
@@ -41,6 +41,9 @@ Aşağıdaki önkoşulların yerinde olduğundan emin olun:
 
     >[!NOTE]
     >Azure AD Connect sürümleri 1.1.557.0, 1.1.558.0, 1.1.561.0 ve 1.1.614.0, Parola karması eşitlemeyle ilgili bir sorun var. Parola karması eşitlemesini doğrudan kimlik doğrulamasıyla birlikte _kullanmayı düşünmüyorsanız,_ daha fazla bilgi edinmek için [Azure AD Connect sürüm notlarını](./reference-connect-version-history.md) okuyun.
+    
+    >[!NOTE]
+    >Giden bir HTTP proxy 'si varsa, bu URL 'nin autologon.microsoftazuread-sso.com olduğundan emin olun. Joker karakter kabul edilmedikleri için bu URL 'YI açıkça belirtmeniz gerekir. 
 
 * **Desteklenen bir Azure AD Connect topolojisi kullanın**: [burada](plan-connect-topologies.md)açıklanan Azure AD Connect desteklenen topolojilerden birini kullandığınızdan emin olun.
 

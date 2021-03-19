@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 03/12/2021
-ms.openlocfilehash: b99cbf91d7fc1c5d90753dfa1461a58eda055180
-ms.sourcegitcommit: df1930c9fa3d8f6592f812c42ec611043e817b3b
+ms.openlocfilehash: e467affd3ba1b839ce3323e3689d7f5134a0686f
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2021
-ms.locfileid: "103418904"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104604313"
 ---
 # <a name="return-a-semantic-answer-in-azure-cognitive-search"></a>Azure Bilişsel Arama anlam yanıtı döndürme
 
@@ -63,7 +63,7 @@ Anlamsal bir yanıt döndürmek için sorgunun anlam sorgu türü, dili, arama a
 
 + Sorgu dizesi null olmamalı ve soru olarak formüle eklenmelidir. Bu önizlemede, "queryType" ve "queryLanguage" tam olarak örnekte gösterildiği gibi ayarlanmalıdır.
 
-+ "SearchFields" parametresi hangi alanların ayıklama modeline belirteç sağlamasını belirler. Bu parametreyi ayarladığınızdan emin olun. En az bir dize alanınız olmalıdır, ancak bir yanıt sağlamak için yararlı olduğunu düşündüğünüz herhangi bir dize alanını dahil etmeniz gerekir. Modele yalnızca belge başına 8.000 belirteç geçirilir. Alan listesini kısa alanlarla başlatın ve metin açısından zengin alanlarla ilerleme durumunu yapın. Bu alanı nasıl ayarlayabileceğine ilişkin kesin yönergeler için bkz. [searchFields set](semantic-how-to-query-request.md#searchfields).
++ "SearchFields" parametresi hangi alanların ayıklama modeline belirteç sağlamasını belirler. Bu parametreyi ayarladığınızdan emin olun. En az bir dize alanınız olmalıdır, ancak bir yanıt sağlamak için yararlı olduğunu düşündüğünüz herhangi bir dize alanını dahil etmeniz gerekir. Her toplu olarak searchFields içindeki tüm alanlar arasında, modele yalnızca belge başına 8.000 belirteç geçirilir. Alan listesini kısa alanlarla başlatın ve metin açısından zengin alanlarla ilerleme durumunu yapın. Bu alanı nasıl ayarlayabileceğine ilişkin kesin yönergeler için bkz. [searchFields set](semantic-how-to-query-request.md#searchfields).
 
 + "Yanıtlar" için, `"answers": "extractive"` döndürülen varsayılan yanıt sayısının bir olması, temel parametre oluşturma ' dır. En fazla beş adede kadar bir sayı ekleyerek yanıt sayısını artırabilirsiniz.  Birden fazla yanıta ihtiyacınız olup olmadığı, uygulamanızın kullanıcı deneyimine ve sonuçları nasıl işlemek istediğinize bağlıdır.
 
@@ -115,15 +115,15 @@ Yanıt, her zaman puanlarını, açıklamalı alt yazıları ve varsayılan olar
 
 En iyi sonuçlar için, aşağıdaki özelliklere sahip bir belge corpile anlam yanıtları döndürün:
 
-+ "searchFields", bir yanıtın bulunma olasılığı olan yeterli metin sağlayan bir veya daha fazla alan içermelidir.
-
-+ Anlamsal ayıklama ve özetleme, zamanında ne kadar içerik çözümlenebileceğini sınırlar. Toplu olarak, yalnızca ilk 20.000 belirteçleri çözümlenir. Bunun dışında bir şey yok sayılır. Pratik koşullarda, yüzlerce sayfada çalışan büyük belgeleriniz varsa, ilk olarak içeriği yönetilebilir parçalar halinde kesmeyi denemeniz gerekir.
++ "searchFields", bir yanıtın bulunma olasılığı olan yeterli metin sunan alanlar sağlamalıdır. Yalnızca bir belgedeki tam metin yanıt olarak görünebilir.
 
 + sorgu dizeleri null olmamalı (Search = `*` ) ve dize, anahtar sözcük aramasının aksine (rastgele terimlerin veya deyimlerin sıralı bir listesi) bir sorunun özelliklerine sahip olmalıdır. Sorgu dizesi yanıt olarak görünmezse, istek bir sorgu parametresi olarak "yanıtlar" belirtse bile yanıt işleme atlanır.
+
++ Anlamsal ayıklama ve özetleme, her belge için kaç belirtece zamanında çözümlenebilecek sınırlara sahiptir. Pratik koşullarda, yüzlerce sayfada çalışan büyük belgeleriniz varsa, önce içeriği daha küçük belgelere kesmeyi denemelisiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 + [Anlamsal aramaya genel bakış](semantic-search-overview.md)
 + [Anlam derecelendirmesi algoritması](semantic-ranking.md)
-+ [Benzerlik algoritması](index-ranking-similarity.md)
++ [Benzerlik derecelendirme algoritması](index-ranking-similarity.md)
 + [Anlamsal sorgu oluşturma](semantic-how-to-query-request.md)

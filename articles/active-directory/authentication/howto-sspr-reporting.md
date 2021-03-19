@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6a764538ebc73927b1d274b2538e123ec90ce60e
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: 5ad1b8318e261c7dfef7fc125716736087a84bdc
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96741567"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104579187"
 ---
 # <a name="reporting-options-for-azure-ad-password-management"></a>Azure AD parola yönetimi için raporlama seçenekleri
 
@@ -171,7 +171,7 @@ Aşağıdaki listede bu etkinlik ayrıntılı olarak açıklanmaktadır:
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [SSPR ve MFA kullanımı ve öngörüleri raporlama](howto-authentication-methods-usage-insights.md)
+* [SSPR ve MFA kullanımı ve öngörüleri raporlama](./howto-authentication-methods-activity.md)
 * [SSPR’yi başarılı bir şekilde nasıl piyasaya çıkarabilirim?](howto-sspr-deployment.md)
 * [Parolanızı sıfırlayın veya değiştirin](../user-help/active-directory-passwords-update-your-own-password.md).
 * [Self servis parola sıfırlama Için kaydolun](../user-help/active-directory-passwords-reset-register.md).

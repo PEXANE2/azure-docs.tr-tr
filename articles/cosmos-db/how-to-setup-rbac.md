@@ -4,14 +4,14 @@ description: Rol tabanlı erişim denetimini Azure Cosmos DB hesabınız için A
 author: ThomasWeiss
 ms.service: cosmos-db
 ms.topic: how-to
-ms.date: 03/03/2021
+ms.date: 03/17/2021
 ms.author: thweiss
-ms.openlocfilehash: 7c5497615ce71d0be713ef9ae28ab1e0f85b7ddb
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: efde86eac3e0830b36eabfc9e80df09daeed9f6f
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102177258"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104586072"
 ---
 # <a name="configure-role-based-access-control-with-azure-active-directory-for-your-azure-cosmos-db-account-preview"></a>Rol tabanlı erişim denetimini Azure Cosmos DB hesabınız için Azure Active Directory yapılandırma (Önizleme)
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -325,13 +325,13 @@ Uygulamanızda Azure Cosmos DB RBAC 'yi kullanmak için, Azure Cosmos DB SDK 's�
 
 - [.NET 'te](https://docs.microsoft.com/dotnet/api/overview/azure/identity-readme#credential-classes)
 - [Java 'da](https://docs.microsoft.com/java/api/overview/azure/identity-readme#credential-classes)
+- [JavaScript 'te](https://docs.microsoft.com/javascript/api/overview/azure/identity-readme#credential-classes)
 
 Aşağıdaki örneklerde bir örneği olan bir hizmet sorumlusu kullanılmaktadır `ClientSecretCredential` .
 
 ### <a name="in-net"></a>.NET 'te
 
-> [!NOTE]
-> `preview`Bu özelliğe erişmek için Azure Cosmos DB .NET SDK sürümü kullanmanız gerekir.
+Azure Cosmos DB RBAC, şu anda `preview` [.NET SDK V3](sql-api-sdk-dotnet-standard.md)sürümünde desteklenmektedir.
 
 ```csharp
 TokenCredential servicePrincipal = new ClientSecretCredential(
@@ -342,6 +342,8 @@ CosmosClient client = new CosmosClient("<account-endpoint>", servicePrincipal);
 ```
 
 ### <a name="in-java"></a>Java üzerinde
+
+Azure Cosmos DB RBAC, [Java SDK v4](sql-api-sdk-java-v4.md)'de Şu anda destekleniyor.
 
 ```java
 TokenCredential ServicePrincipal = new ClientSecretCredentialBuilder()
@@ -354,6 +356,21 @@ CosmosAsyncClient Client = new CosmosClientBuilder()
     .endpoint("<account-endpoint>")
     .credential(ServicePrincipal)
     .build();
+```
+
+### <a name="in-javascript"></a>JavaScript 'te
+
+Azure Cosmos DB RBAC, [JAVASCRIPT SDK V3](sql-api-sdk-node.md)'de Şu anda destekleniyor.
+
+```javascript
+const servicePrincipal = new ClientSecretCredential(
+    "<azure-ad-tenant-id>",
+    "<client-application-id>",
+    "<client-application-secret>");
+const client = new CosmosClient({
+    "<account-endpoint>",
+    aadCredentials: servicePrincipal
+});
 ```
 
 ## <a name="auditing-data-requests"></a>Veri isteklerini denetleme
@@ -374,25 +391,25 @@ Bu ek bilgiler **Dataplanerequests** günlük kategorisinde akar ve iki ek sütu
 
 ## <a name="frequently-asked-questions"></a>Sık sorulan sorular
 
-### <a name="which-azure-cosmos-db-apis-are-supported-by-rbac"></a>RBAC tarafından desteklenen Azure Cosmos DB API 'Leri nelerdir?
+### <a name="which-azure-cosmos-db-apis-are-supported-by-rbac"></a>RBAC tarafından desteklenen Azure Cosmos DB API'leri hangileridir?
 
-Şu anda yalnızca SQL API 'SI destekleniyor.
+Şu anda yalnızca SQL API'si desteklenmektedir.
 
-### <a name="is-it-possible-to-manage-role-definitions-and-role-assignments-from-the-azure-portal"></a>Azure portal rol tanımlarını ve rol atamalarını yönetmek mümkün mü?
+### <a name="is-it-possible-to-manage-role-definitions-and-role-assignments-from-the-azure-portal"></a>Rol tanımları ve rol atamaları Azure portaldan yönetilebilir mi?
 
-Rol yönetimi için Azure portal desteği henüz kullanılamıyor.
+Rol yönetimi için Azure portal desteği henüz sağlanmamıştır.
 
 ### <a name="which-sdks-in-azure-cosmos-db-sql-api-support-rbac"></a>Azure Cosmos DB SQL API 'sindeki SDK 'lar RBAC 'yi destekliyor mu?
 
 [.Net v3](sql-api-sdk-dotnet-standard.md) ve [Java v4](sql-api-sdk-java-v4.md) SDK 'ları Şu anda desteklenmektedir.
 
-### <a name="is-the-azure-ad-token-automatically-refreshed-by-the-azure-cosmos-db-sdks-when-it-expires"></a>Azure AD belirteci, süresi sona erdiğinde Azure Cosmos DB SDK 'lar tarafından otomatik olarak yenilenir mi?
+### <a name="is-the-azure-ad-token-automatically-refreshed-by-the-azure-cosmos-db-sdks-when-it-expires"></a>Süresi dolan Azure AD belirteci Azure Cosmos DB SDK'ları tarafından otomatik olarak yenilenir mi?
 
 Evet.
 
-### <a name="is-it-possible-to-disable-the-usage-of-the-account-primary-key-when-using-rbac"></a>RBAC kullanılırken hesabın birincil anahtarının kullanımını devre dışı bırakmak mümkün mü?
+### <a name="is-it-possible-to-disable-the-usage-of-the-account-primary-key-when-using-rbac"></a>RBAC kullanılırken hesap birincil anahtarının kullanımı devre dışı bırakılabilir mi?
 
-Hesap birincil anahtarını devre dışı bırakmak Şu anda mümkün değildir.
+Şu anda hesap birincil anahtarını devre dışı bırakmak mümkün değildir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -7,12 +7,12 @@ ms.date: 07/10/2020
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 86c6ea9dded423e7bd513faf73adfd293f2bd38f
-ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
+ms.openlocfilehash: a8dfb3cacf798559273361ec75cab4570a8a5228
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/27/2020
-ms.locfileid: "96302613"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104582689"
 ---
 # <a name="iot-plug-and-play-conventions"></a>IoT Tak Çalıştır kuralları
 
@@ -25,7 +25,7 @@ IoT Tak ve Kullan cihazının [dijital bir TWINS tanım dili v2 (DTDL)](https://
 - **Bileşen yok** -bileşeni olmayan bir model. Model, ana arabirimin içerikler bölümünde telemetri, özellik ve komutları en üst düzey özellikler olarak bildirir. Azure IoT gezgin aracında, bu model tek bir _varsayılan bileşen_ olarak görünür.
 - **Birden çok bileşen** -iki veya daha fazla arabirimden oluşan bir model. Telemetri, Özellikler ve komutlarla _varsayılan bileşen_ olarak görünen ana arabirim. Ek telemetri, özellik ve komutlarla bileşen olarak belirtilen bir veya daha fazla arabirim.
 
-Daha fazla bilgi için bkz. [modellerdeki ıot Tak ve kullan bileşenleri](concepts-components.md).
+Daha fazla bilgi için bkz. [ıot Tak ve kullan modelleme Kılavuzu](concepts-modeling-guide.md).
 
 ## <a name="identify-the-model"></a>Modeli tanımla
 
@@ -136,7 +136,7 @@ Cihaz veya modül bildirilen bir özellik göndererek özelliği aldığını on
 
 Bir cihaz başlatıldığında cihaz ikizi istemeli ve yazılabilir Özellik güncelleştirmelerini denetlemelidir. Cihaz çevrimdışıyken yazılabilir bir özelliğin sürümü artmışsa, cihazın güncelleştirmeyi aldığını onaylamak için bildirilen bir özellik yanıtı göndermelidir.
 
-Bir cihaz ilk kez başlatıldığında, bundan sonra bildirilen bir özellik için bir başlangıç değeri gönderebilir ve bu, hub 'dan istenen bir özelliği almaz. Bu durumda, cihaz `av` olarak ayarlanmalıdır `1` . Örneğin:
+Bir cihaz ilk kez başlatıldığında, bundan sonra bildirilen bir özellik için bir başlangıç değeri gönderebilir ve bu, hub 'dan istenen bir özelliği almaz. Bu durumda, cihaz `av` olarak ayarlanmalıdır `1` . Örnek:
 
 ```json
 "reported": {
@@ -350,7 +350,7 @@ Bir cihazda veya modülde, birden çok bileşen arabirimi komut adlarını aşa�
 
 IoT Tak ve Kullan kuralları hakkında bilgi edindiğinize göre artık bazı ek kaynaklar verilmiştir:
 
-- [Dijital TWINS tanım dili (DTDL)](https://github.com/Azure/opendigitaltwins-dtdl)
+- [Dijital İkiz Tanımlama Dili (DTDL)](https://github.com/Azure/opendigitaltwins-dtdl)
 - [C cihaz SDK’sı](/azure/iot-hub/iot-c-sdk-ref/)
 - [IoT REST API](/rest/api/iothub/device)
-- [Model bileşenleri](./concepts-components.md)
+- [IoT Tak ve Kullan modelleme Kılavuzu](concepts-modeling-guide.md)

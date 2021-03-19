@@ -44,7 +44,7 @@
 - name: Örnekler
   items:
     - name: Kod örnekleri
-      href: 'https://docs.microsoft.com/en-us/samples/browse/?products=azure-stream-analytics'
+      href: /samples/browse/?products=azure-stream-analytics
 - name: Kavramlar
   items:
     - name: Uçtan uca çözüm desenleri
@@ -316,13 +316,13 @@
               href: external-error-codes.md
             - name: İç hatalar
               href: internal-error-codes.md
-    - name: Makine öğrenimiyle tümleştirme
+    - name: Machine Learning ile tümleştirin
       items:
         - name: ML modelleriyle yaklaşım analizi
           href: stream-analytics-machine-learning-integration-tutorial.md
         - name: Anormallik algılama
           href: stream-analytics-machine-learning-anomaly-detection.md
-        - name: REST API'lerini kullanma
+        - name: ML REST API 'Lerini kullanma
           href: stream-analytics-how-to-configure-azure-machine-learning-endpoints-in-stream-analytics.md
     - name: İş diyagramını kullanarak hata ayıklama
       href: stream-analytics-job-diagram-with-metrics.md

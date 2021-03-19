@@ -1,7 +1,7 @@
 ---
 title: iOS cihazlar için paylaşılan cihaz modu
 titleSuffix: Microsoft identity platform | Azure
-description: Firstline çalışanlarının bir iOS cihazını paylaşmasına izin vermek için paylaşılan cihaz modunu etkinleştirmeyi öğrenin
+description: Frontline çalışanlarının bir iOS cihazını paylaşmasına izin vermek için paylaşılan cihaz modunu etkinleştirmeyi öğrenin
 services: active-directory
 author: brandwe
 manager: CelesteDG
@@ -13,19 +13,19 @@ ms.date: 03/31/2020
 ms.author: brandwe
 ms.reviewer: brandwe
 ms.custom: aaddev
-ms.openlocfilehash: a97e14bcb68629f5f175a4913146187949af08be
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: c67c5d7b46c04e7f1aea020127ee798878c43d60
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94561072"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104578796"
 ---
 # <a name="shared-device-mode-for-ios-devices"></a>iOS cihazlar için paylaşılan cihaz modu
 
 >[!IMPORTANT]
 > Bu özellik [!INCLUDE [PREVIEW BOILERPLATE](../../../includes/active-directory-develop-preview.md)]
 
-Retail Associates, uçuş ekibi üyeleri ve alan hizmeti çalışanları gibi Firstline çalışanları, işlerini gerçekleştirmek için genellikle paylaşılan bir mobil cihaz kullanır. Bu paylaşılan cihazlar, kullanıcılarınızın parolalarını veya PIN 'lerini paylaşılan cihazdaki müşteri ve iş verilerine erişmek üzere kasıtlı veya olmayan bir şekilde paylaşıyorsa güvenlik riskleri sunabilir.
+Retail Associates, uçuş ekibi üyeleri ve alan hizmeti çalışanları gibi Frontline çalışanları genellikle işlerini gerçekleştirmek için paylaşılan bir mobil cihaz kullanır. Bu paylaşılan cihazlar, kullanıcılarınızın parolalarını veya PIN 'lerini paylaşılan cihazdaki müşteri ve iş verilerine erişmek üzere kasıtlı veya olmayan bir şekilde paylaşıyorsa güvenlik riskleri sunabilir.
 
 Paylaşılan cihaz modu, iOS 13 veya daha yüksek bir cihazı, çalışanlar tarafından daha kolay ve güvenli bir şekilde paylaşılabilecek şekilde yapılandırmanıza olanak tanır. Çalışanlar oturum açabilir ve müşteri bilgilerine hızlıca erişebilir. Bunlar, vardiyası veya göreviyle bitdiklerinde, cihazın oturumunu kapatıp bir sonraki çalışan tarafından kullanıma hazır olabilir.
 
@@ -41,7 +41,7 @@ Bir paylaşılan cihaz modu uygulaması oluşturmak için, geliştiriciler ve bu
 
 1. **Cihaz yöneticileri** , kuruluşlarındaki cihazları yönetmek için Microsoft Intune gibi bir mobil cihaz YÖNETIMI (MDM) sağlayıcısı kullanarak cihazı paylaştırmaya hazırlar. MDM, Microsoft Authenticator uygulamayı cihazlara gönderir ve cihaza bir profil güncelleştirmesi aracılığıyla her bir cihaz için "paylaşılan mod" öğesini açar. Bu paylaşılan mod ayarı, cihazdaki desteklenen uygulamaların davranışının değiştiği şeydir. MDM sağlayıcısından bu yapılandırma, cihazın paylaşılan cihaz modunu ayarlar ve paylaşılan cihaz modu için gerekli olan [Apple cihazları Için Microsoft ENTERPRISE SSO eklentisini](apple-sso-plugin.md) etkinleştirilir.
 
-1. [ **Yalnızca genel önizleme sırasında gereklidir** ] [Bulut Cihaz Yöneticisi](../roles/permissions-reference.md#cloud-device-administrator) rolüne sahip bir kullanıcının [Microsoft Authenticator uygulamasını](../user-help/user-help-auth-app-overview.md) başlatması ve cihazını kuruluşa katılması gerekir.
+1. [**Yalnızca genel önizleme sırasında gereklidir**] [Bulut Cihaz Yöneticisi](../roles/permissions-reference.md#cloud-device-administrator) rolüne sahip bir kullanıcının [Microsoft Authenticator uygulamasını](../user-help/user-help-auth-app-overview.md) başlatması ve cihazını kuruluşa katılması gerekir.
 
     Azure Portal kurumsal rollerinizin üyeliğini yapılandırmak için: **Azure Active Directory**  >  **Roller ve yöneticiler**  >  **bulut Cihaz Yöneticisi**
 
@@ -56,10 +56,10 @@ Cihazınızın paylaşılan cihaz modunu destekleyecek şekilde yapılandırılm
 
 1. Intune yapılandırma portalında, cihaza aşağıdaki yapılandırmaya sahip [Apple cihazları Için Microsoft ENTERPRISE SSO eklentisini](apple-sso-plugin.md) etkinleştirmesini söyleyin:
 
-    - **Tür** : Redirect
-    - **UZANTı kimliği** : com. Microsoft. azuyeniden kimlik doğrulayıcısının. ssoextension
-    - **Takım Kimliği** : (Bu alan iOS için gerekli değildir)
-    - **URL 'ler** :   
+    - **Tür**: Redirect
+    - **UZANTı kimliği**: com. Microsoft. azuyeniden kimlik doğrulayıcısının. ssoextension
+    - **Takım Kimliği**: (Bu alan iOS için gerekli değildir)
+    - **URL 'ler**:   
         - `https://login.microsoftonline.com`
         - `https://login.microsoft.com`
         - `https://sts.windows.net`
@@ -69,7 +69,7 @@ Cihazınızın paylaşılan cihaz modunu destekleyecek şekilde yapılandırılm
         - `https://login.microsoftonline.us`
         - `https://login.usgovcloudapi.net`
         - `https://login-us.microsoftonline.com`
-    - **Yapılandırılacak ek veriler** :
+    - **Yapılandırılacak ek veriler**:
       - Anahtar: sharedDeviceMode
       - Tür: Boolean
       - Değer: true
@@ -95,7 +95,7 @@ Kullanıcı değişikliği üzerinde, hem önceki Kullanıcı verilerinin temizl
 
 ### <a name="detect-shared-device-mode"></a>Paylaşılan cihaz modunu Algıla
 
-Paylaşılan cihaz modunun algılanmasının nedeni, uygulamanız için önemlidir. Uygulama paylaşılan bir cihazda kullanıldığında, birçok uygulamanın kullanıcı deneyiminde (UX) bir değişikliği olması gerekir. Örneğin, uygulamanız zaten bir hesabı olduğundan, Firstline Worker için uygun olmayan bir "kaydolma" özelliğine sahip olabilir. Ayrıca, paylaşılan cihaz modundaysa uygulamanızın verileri işlemeye ek güvenlik eklemek isteyebilirsiniz.
+Paylaşılan cihaz modunun algılanmasının nedeni, uygulamanız için önemlidir. Uygulama paylaşılan bir cihazda kullanıldığında, birçok uygulamanın kullanıcı deneyiminde (UX) bir değişikliği olması gerekir. Örneğin, uygulamanız zaten bir hesabı olduğundan, en düşük bir çalışan için uygun olmayan bir "kaydolma" özelliğine sahip olabilir. Ayrıca, paylaşılan cihaz modundaysa uygulamanızın verileri işlemeye ek güvenlik eklemek isteyebilirsiniz.
 
 `getDeviceInformationWithParameters:completionBlock:` `MSALPublicClientApplication` Uygulamasının paylaşılan cihaz modundaki bir cihazda çalışıp çalışmadığını öğrenmek için içindeki API 'yi kullanın.
 
@@ -230,6 +230,6 @@ signoutParameters.signoutFromBrowser = YES; // Only needed for Public Preview.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Paylaşılan cihaz modunu çalışırken görmek için GitHub 'da aşağıdaki kod örneği, paylaşılan cihaz modundaki bir iOS cihazında Firstline çalışan uygulaması çalıştırmaya ilişkin bir örnek içerir:
+Paylaşılan cihaz modunu çalışırken görmek için GitHub 'daki aşağıdaki kod örneği, paylaşılan cihaz modundaki bir iOS cihazında Frontline çalışan uygulaması çalıştırmaya ilişkin bir örnek içerir:
 
 [MSAL iOS Swift Microsoft Graph API örneği](https://github.com/Azure-Samples/ms-identity-mobile-apple-swift-objc)

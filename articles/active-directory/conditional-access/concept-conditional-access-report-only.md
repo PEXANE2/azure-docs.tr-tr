@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: dawoo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: deced953089fcbb2640cbf3e402db24cb511e769
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: c6f4e4851d406b14ed38665274401b96446ac6a0
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97935895"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104579085"
 ---
 # <a name="what-is-conditional-access-report-only-mode"></a>Koşullu erişim yalnızca rapor modu nedir?
 
@@ -28,6 +28,8 @@ Yalnızca rapor modu, yöneticilerin koşullu erişim ilkelerinin ortamlarında 
 - Oturum açma sırasında yalnızca rapor modundaki ilkeler değerlendirilir, ancak zorlanmaz.
 - Sonuçlar, oturum açma günlüğü ayrıntılarının **koşullu erişim** ve **yalnızca rapor** sekmelerinde günlüğe kaydedilir.
 - Azure Izleyici aboneliğine sahip müşteriler, koşullu erişim öngörüleri çalışma kitabını kullanarak koşullu erişim ilkelerinin etkilerini izleyebilir.
+
+> [!VIDEO https://www.youtube.com/embed/NZbPYfhb5Kc]
 
 > [!WARNING]
 > Yalnızca rapor modundaki, uyumlu cihazlar gerektiren ilkeler, cihaz uyumluluğu zorlanmasa da, ilke değerlendirmesi sırasında bir cihaz sertifikası seçmesini, Mac, iOS ve Android 'de kullanıcılara istem verebilir. Bu istemler, cihaz uyumlu hale gelene kadar yinelenir. Son kullanıcıların oturum açma sırasında istemler almasını engellemek için cihaz platformları Mac, iOS ve Android cihaz uyumluluk denetimleri yapan yalnızca rapor ilkelerinden hariç tutun. Yalnızca rapor modunun "Kullanıcı eylemleri" kapsamına sahip koşullu erişim ilkeleri için geçerli olmadığına unutmayın.

@@ -8,12 +8,12 @@ ms.subservice: sizes
 ms.author: brbell
 ms.reviewer: mimckitt
 ms.date: 06/15/2020
-ms.openlocfilehash: 1937b8392ee3a73ed7c268897c532c643a9151eb
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.openlocfilehash: bd4dcbdc7ab13d18ef7f2d7102c56d1bd8d8758d
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102565470"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104582111"
 ---
 # <a name="azure-vm-sizes-with-no-local-temporary-disk"></a>Azure VM boyutları yerel geçici disk yok 
 Bu makalede, yerel geçici disk (yerel geçici disk yok) olmayan Azure VM boyutları hakkında sık sorulan soruların (SSS) yanıtları sağlanmaktadır. Bu VM boyutları hakkında daha fazla bilgi için bkz. [dv4 and Dsv4-Series (genel amaçlı Iş yükleri) Için belirtimler](dv4-dsv4-series.md) veya [Ev4 ve Esv4 serisi (bellek Için iyileştirilmiş Iş yükleri) özellikleri](ev4-esv4-series.md).
@@ -56,7 +56,7 @@ Aşağıdaki adımları izleyerek geçiş yapabilirsiniz:
    > Sayfa dosyasını yerel geçici diskten (D: sürücü) C: Drive ' a taşımak için bir Windows sanal makinesinde veri sürücüsü olarak D: sürücüsünü kullanın ' ın "C sürücüsüne geçici olarak pagefile.sys taşıma" bölümünde yer alan yönergeleri izleyin. **Özetlenen adımlardan sapma şu hata iletisine neden olur-"kaynak diskinden kaynak olmayan disk VM boyutuna ve tam tersi izin verilmediğinden VM yeniden boyutlandırılamıyor.**
 
 3. [Portal veya Azure CLI kullanarak anlık görüntü oluşturma](./linux/snapshot-copy-managed-disk.md)bölümünde özetlenen ADıMLARı izleyerek VM 'nin anlık görüntüsünü alın. 
-4. [CLI ile anlık görüntüden sanal makine oluşturma](./scripts/virtual-machines-linux-cli-sample-create-vm-from-snapshot.md)bölümünde özetlenen adımları izleyerek yeni bir disksiz VM (örneğin, dv4, Dsv4, Ev4, Esv4 serisi) oluşturmak için anlık görüntüyü kullanın. 
+4. [CLI ile anlık görüntüden sanal makine oluşturma](/previous-versions/azure/virtual-machines/scripts/virtual-machines-linux-cli-sample-create-vm-from-snapshot)bölümünde özetlenen adımları izleyerek yeni bir disksiz VM (örneğin, dv4, Dsv4, Ev4, Esv4 serisi) oluşturmak için anlık görüntüyü kullanın. 
 
 ## <a name="do-these-vm-sizes-support-both-linux-and-windows-operating-systems-os"></a>Bu sanal makine boyutları hem Linux hem de Windows Işletim sistemlerini (OS) destekler mi?
 Evet.

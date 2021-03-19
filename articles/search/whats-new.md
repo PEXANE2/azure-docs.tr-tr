@@ -8,12 +8,12 @@ ms.service: cognitive-search
 ms.topic: overview
 ms.date: 03/12/2021
 ms.custom: references_regions
-ms.openlocfilehash: b4dc8ab44d341b293c044843e6dff2a3b6d3102c
-ms.sourcegitcommit: ec39209c5cbef28ade0badfffe59665631611199
+ms.openlocfilehash: 8e78fa46125b8aca378598c673ba76829e11d70e
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/12/2021
-ms.locfileid: "103233557"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104600437"
 ---
 # <a name="whats-new-in-azure-cognitive-search"></a>Azure Bilişsel Arama yenilikleri
 
@@ -26,6 +26,7 @@ Hizmette nelerin yeni olduğunu öğrenin. Hizmette güncel kalmasını sağlama
 | [Anlamsal arama](semantic-search-overview.md) | Arama sonuçlarının çok az çabayla uygunluğunu önemli ölçüde iyileştiren, sorgu ile ilgili özelliklerin bir koleksiyonu. </br></br>[Anlamsal derecelendirme](semantic-ranking.md) , sözcüklerin ve içeriğin arkasındaki anlam anlamını kullanarak uygunluk puanlarını hesaplar. </br></br>[Anlamsal açıklamalı alt yazılar](semantic-how-to-query-request.md) , en önemli hüküm veya tümceciklere göre vurgularla belgeyi en iyi şekilde özetleyen belgeden ilgili yollardır. </br></br>[Anlam yanıtları](semantic-answers.md) , bir arama belgesinden ayıklanan anahtar yollardır. Bu, soru gibi görünen bir sorguya doğrudan yanıt olarak ifade edilir. | Genel Önizleme ([isteğe göre](https://aka.ms/SemanticSearchPreviewSignup)). </br></br>[Arama belgelerini kullanın (REST)](/rest/api/searchservice/preview-api/search-documents) API-Version = 2020-06 -30-önizleme ve [Arama Gezgini](search-explorer.md) Azure Portal. </br></br>Bölge ve katman kısıtlamaları geçerlidir. |
 | [Yazım denetimi sorgu terimleri](speller-how-to-add.md) | Sorgu terimleri arama altyapısına ulaşmadan önce, yazım hatalarını denetlebilirler. `speller`Seçeneği herhangi bir sorgu türü (basit, tam veya anlamsal) ile birlikte kullanılır. |  Genel Önizleme, yalnızca REST, api-Version = 2020-06 -30-Önizleme|
 | [SharePoint Online Dizin Oluşturucu](search-howto-index-sharepoint-online.md) | Bu Dizin Oluşturucu, bir belge kitaplığından içerik dizini oluşturabilmeniz için sizi bir SharePoint Online sitesine bağlar. | Genel Önizleme, yalnızca REST, api-Version = 2020-06 -30-Önizleme |
+| [Normalleyiciler](search-normalizers.md) | Normalleştiriciler, tüm analiz zincirinin tamamında büyük küçük harf, aksan kaldırma, yokıifolding gibi basit metin ön işlemesi sağlar.| Genel Önizleme, yalnızca REST, api-Version = 2020-06 -30-Önizleme |
 
 ## <a name="february-2021"></a>Şubat 2021
 

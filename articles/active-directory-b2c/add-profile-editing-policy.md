@@ -9,15 +9,16 @@ ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
 ms.date: 12/16/2020
+ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 1cf66918d8b5211dcc03be944dbcb92cdf6e0773
-ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
+ms.openlocfilehash: a0f4f785feed022226ed533d378a8fa52080b9ac
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97618938"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104581907"
 ---
 # <a name="set-up-a-profile-editing-flow-in-azure-active-directory-b2c"></a>Azure Active Directory B2C profil düzenlemesi oluşturma akışı ayarlama
 
@@ -33,7 +34,7 @@ Profil düzenlemesi ilkesi, kullanıcıların, görünen ad, soyadı, verilen ad
 ![Profil düzenlemesi akışı](./media/add-profile-editing-policy/profile-editing-flow.png)
 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Henüz yapmadıysanız, [bir Web uygulamasını Azure Active Directory B2C kaydedin](tutorial-register-applications.md).
 
@@ -48,7 +49,7 @@ Kullanıcıların uygulamanızdaki profilini düzenlemesini etkinleştirmek isti
 1. **Sürüm seçin** altında **Önerilen**' i seçin ve ardından **Oluştur**' u seçin.
 1. Kullanıcı akışı için bir **ad** girin. Örneğin, *profileediting1*.
 1. **Kimlik sağlayıcıları** Için **e-posta oturum açma** seçeneğini belirleyin.
-1. **Kullanıcı öznitelikleri** için, müşterinin profilinde düzenleyebilmesini istediğiniz öznitelikleri seçin. Örneğin, **daha fazla göster**' i seçin ve **görünen ad** ve **iş unvanı** için her iki özniteliği ve talebi seçin. **Tamam** düğmesine tıklayın.
+1. **Kullanıcı öznitelikleri** için, müşterinin profilinde düzenleyebilmesini istediğiniz öznitelikleri seçin. Örneğin, **daha fazla göster**' i seçin ve **görünen ad** ve **iş unvanı** için her iki özniteliği ve talebi seçin. **Tamam**'a tıklayın.
 1. Kullanıcı akışını eklemek için **Oluştur** ' a tıklayın. *B2C_1* bir ön eki otomatik olarak ada eklenir.
 
 ### <a name="test-the-user-flow"></a>Kullanıcı akışını test etme

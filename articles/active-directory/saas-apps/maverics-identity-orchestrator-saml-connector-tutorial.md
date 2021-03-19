@@ -9,67 +9,60 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 08/12/2020
+ms.date: 03/17/2021
 ms.author: jeedes
-ms.openlocfilehash: 31392c1fa3d14d6f1e01a8b302575e9b592e42cd
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.openlocfilehash: 19f6b0601afe9ad84f02c93d7f6e1ae3a71a06a4
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98183158"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104585103"
 ---
-# <a name="tutorial-integrate-azure-ad-single-sign-on-with-maverics-identity-orchestrator-saml-connector"></a>Öğretici: Azure AD çoklu oturum açmayı Maverics Identity Orchestrator SAML Bağlayıcısı ile tümleştirme
+# <a name="integrate-azure-ad-single-sign-on-with-maverics-identity-orchestrator-saml-connector"></a>Azure AD çoklu oturum açmayı Maverics Identity Orchestrator SAML Bağlayıcısı ile tümleştirme
 
-Strata, kimlik doğrulama ve erişim denetimi için şirket içi uygulamaları Azure Active Directory (Azure AD) ile tümleştirmenin basit bir yolunu sunar.
+Strata 'nın Maverics kimlik Orchestrator, kimlik doğrulama ve erişim denetimi için şirket içi uygulamaları Azure Active Directory (Azure AD) ile tümleştirmenin basit bir yolunu sunar. Maverics Orchestrator, şu anda üst bilgileri, tanımlama bilgilerini ve diğer özel kimlik doğrulama yöntemlerini kullanan uygulamalar için kimlik doğrulama ve yetkilendirme işlemlerini modernleştirmektedir. Maverics Orchestrator örnekleri şirket içinde veya bulutta dağıtılabilir. 
 
-Bu makalede, Maverics kimlik Orchestrator 'ın nasıl yapılandırılacağı anlatılmaktadır:
-* Şirket içi bir kimlik sisteminden, eski şirket içi bir uygulamada oturum açma sırasında Kullanıcı aracılığıyla Azure AD 'ye artımlı olarak geçiş yapın.
-* CA Sitedefteri veya Oracle Erişim Yöneticisi gibi eski bir Web erişimi yönetim ürününden oturum açma isteklerini Azure AD 'ye yönlendirin.
-* Kullanıcının kimlik doğrulamasını Azure AD 'ye göre doğruladıktan sonra HTTP üstbilgileri veya özel oturum tanımlama bilgileri kullanılarak korunan şirket içi uygulamalarda kullanıcıların kimliğini doğrulayın.
+Bu karma erişim öğreticisinde, kimlik doğrulama ve erişim denetimi için Azure AD 'yi kullanmak üzere eski bir Web erişimi yönetim ürünüyle korunan şirket içi bir Web uygulamasının nasıl geçirileceğini gösterilmektedir. Temel adımlar şunlardır:
 
-Strata, şirket içinde veya bulutta dağıtabileceğiniz yazılımlar sağlar. Karma ve çok kiracılı kuruluşlar için dağıtılmış kimlik yönetimi oluşturmak üzere kimlik sağlayıcılarını keşfetmenizi, bağlanmanızı ve düzenlemenizi sağlar.
+1. Maverics Orchestrator 'ı ayarlama
+1. Proxy uygulama
+1. Azure AD 'de bir kurumsal uygulamayı kaydetme
+1. Azure aracılığıyla kimlik doğrulaması yapın ve uygulamaya erişim yetkisi verin
+1. Sorunsuz uygulama erişimi için üst bilgiler ekleyin
+1. Birden çok uygulamayla çalışma
 
-Bu öğreticide, kimlik doğrulama ve erişim denetimi için Azure AD kullanmak üzere eski bir Web erişim yönetimi ürünü (CA Sitedefteri) tarafından korunan şirket içi bir Web uygulamasının nasıl geçirileceği gösterilmektedir. Temel adımlar şunlardır:
-1. Maverics Identity Orchestrator 'ı yükler.
-2. Kurumsal uygulamanızı Azure AD 'ye kaydedin ve SAML tabanlı çoklu oturum açma (SSO) için Maverics Azure AD SAML sıfır kod bağlayıcısını kullanacak şekilde yapılandırın.
-3. Maverics 'Yi Sitedefteri ve Basit Dizin Erişim Protokolü (LDAP) Kullanıcı deposu ile tümleştirin.
-4. Azure Anahtar Kasası kurun ve Maverics 'yı gizli dizi yönetim sağlayıcısı olarak kullanmak üzere yapılandırın.
-5. Şirket içi bir Java Web uygulamasına erişim sağlamak için Maverics kullanarak Kullanıcı geçişi ve oturum soyutlama gösterir.
+## <a name="prerequisites"></a>Önkoşullar
 
-Ek yükleme ve yapılandırma yönergeleri için [Strata Web sitesine](https://www.strata.io)gidin.
+* Bir Azure AD aboneliği. Aboneliğiniz yoksa [ücretsiz bir hesap](https://azure.microsoft.com/free/)alabilirsiniz.
+* Maverics Identity Orchestrator SAML Bağlayıcısı SSO özellikli aboneliği. Maverics yazılımını almak için [Strata satışları](mailto:sales@strata.io)ile iletişim kurun.
+* Üst bilgi tabanlı kimlik doğrulaması kullanan en az bir uygulama. Örnekler, adresinde barındırılan sonar adlı bir uygulamaya https://app.sonarsystems.com ve adresinde barındırılan Connectulum adlı bir uygulamaya karşı çalışır https://app.connectulum.com .
+* Maverics Orchestrator 'ı barındıracak bir Linux makinesi
+  * İşletim sistemi: RHEL 7,7 veya üzeri, CentOS 7 +
+  * Disk: >= 10 GB
+  * Bellek: >= 4 GB
+  * Bağlantı noktaları: 22 (SSH/SCP), 443, 7474
+  * Yükler/yönetim görevleri için kök erişimi
+  * Maverics kimlik Orchestrator 'ı barındıran sunucudan korumalı uygulamanıza giden ağ çıkışı
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="step-1-set-up-the-maverics-orchestrator"></a>1. Adım: Maverics Orchestrator 'ı ayarlama
 
-- Bir Azure AD aboneliği. Aboneliğiniz yoksa [ücretsiz bir hesap](https://azure.microsoft.com/free/)alabilirsiniz.
-- Maverics Identity Orchestrator SAML Bağlayıcısı SSO özellikli aboneliği. Maverics yazılımını edinmek için [Strata satışları](mailto:sales@strata.io)ile görüşün.
+### <a name="install-maverics"></a>Maverics 'yi yükler
 
-## <a name="install-maverics-identity-orchestrator"></a>Maverics kimlik Orchestrator 'ı yükler
+1. En son Maverics RPM 'Yi alın. Paketi, Maverics yazılımını yüklemek istediğiniz sisteme kopyalayın.
 
-Maverics kimlik Orchestrator yüklemesini kullanmaya başlamak için bkz. [yükleme yönergeleri](https://www.strata.io).
+1. Maverics paketini yükleyerek dosya adınızı yerine koyun `maverics.rpm` .
 
-### <a name="system-requirements"></a>Sistem Gereksinimleri
-* Desteklenen işletim sistemleri
-  * RHEL 7+
-  * CentOS 7+
+   `sudo rpm -Uvf maverics.rpm`
 
-* Bağımlılıklar
-  * Systemd
+   Maverics 'yı yükledikten sonra, altında bir hizmet olarak çalışacaktır `systemd` . Hizmetin çalıştığını doğrulamak için aşağıdaki komutu yürütün:
 
-### <a name="installation"></a>Yükleme
+   `sudo systemctl status maverics`
 
-1. En son Maverics RedHat Paket Yöneticisi (RPM) paketini edinin. Paketi, Maverics yazılımını yüklemek istediğiniz sisteme kopyalayın.
+1. Orchestrator 'ı yeniden başlatmak ve günlükleri izlemek için aşağıdaki komutu çalıştırabilirsiniz:
 
-2. Maverics paketini yükleyerek dosya adınızı yerine koyun `maverics.rpm` .
+   `sudo service maverics restart; sudo journalctl --identifier=maverics -f`
 
-    `sudo rpm -Uvf maverics.rpm`
-
-3. Maverics 'yı yükledikten sonra, altında bir hizmet olarak çalışacaktır `systemd` . Hizmetin çalıştığını doğrulamak için aşağıdaki komutu yürütün:
-
-    `sudo systemctl status maverics`
-
-Varsayılan olarak, Maverics */usr/local/bin* dizinine yüklenir.
-
-Maverics yükledikten sonra, */etc/Maverics* dizininde varsayılan *Maverics. YAML* dosyası oluşturulur. Ve dahil olmak üzere yapılandırmanızı düzenlemeden önce `workflows` `connectors` yapılandırma dosyanız şöyle görünür:
+Maverics yükledikten sonra, varsayılan `maverics.yaml` Dosya `/etc/maverics` dizininde oluşturulur. Yapılandırmanızı ve dahil etmek üzere düzenlemeden önce `appgateways` `connectors` yapılandırma dosyanız şu z gibi görünür:
 
 ```yaml
 # © Strata Identity Inc. 2020. All Rights Reserved. Patents Pending.
@@ -77,133 +70,81 @@ Maverics yükledikten sonra, */etc/Maverics* dizininde varsayılan *Maverics. YA
 version: 0.1
 listenAddress: ":7474"
 ```
-## <a name="configuration-options"></a>Yapılandırma seçenekleri
-### <a name="version"></a>Sürüm
-`version`Bu alan, yapılandırma dosyasının hangi sürümünün kullanıldığını bildirir. Sürüm belirtilmemişse, en son yapılandırma sürümü kullanılacaktır.
+
+### <a name="configure-dns"></a>DNS yapılandırma
+
+DNS, Orchestrator sunucusunun IP 'sini hatırlamanız gerekmiyorsa yararlı olacaktır.
+
+12.34.56.78 'ın kuramsal Orchestrator IP 'sini kullanarak tarayıcı makinesinin (dizüstü bilgisayarınızın) ana bilgisayar dosyasını düzenleyin. Linux tabanlı işletim sistemlerinde bu dosya içinde bulunur `/etc/hosts` . Windows 'da konumunda bulunur `C:\windows\system32\drivers\etc` .
+
+```
+12.34.56.78 sonar.maverics.com
+12.34.56.78 connectulum.maverics.com
+```
+
+DNS 'in beklenen şekilde yapılandırıldığını doğrulamak için, Orchestrator 'ın durum uç noktasına bir istek yapabilirsiniz. Tarayıcınızdan, ister http://sonar.maverics.com:7474/status .
+
+### <a name="configure-tls"></a>TLS’yi yapılandırma
+
+Güvenlik sağlamak için güvenli kanallar üzerinden iletişim kurmak üzere Orchestrator ile iletişim kurun. Bunu başarmak için, bölümıza bir sertifika/anahtar çifti ekleyebilirsiniz `tls` .
+
+Orchestrator sunucusu için otomatik olarak imzalanan bir sertifika ve anahtar oluşturmak için, aşağıdaki komutu Dizin içinden çalıştırın `/etc/maverics` :
+
+`openssl req -new -newkey rsa:4096 -x509 -sha256 -days 365 -nodes -out maverics.crt -keyout maverics.key`
+
+> [!NOTE]
+> Üretim ortamlarında, tarayıcıdaki uyarıları önlemek için büyük olasılıkla bilinen bir CA tarafından imzalanmış bir sertifika kullanmak isteyeceksiniz. Güvenilir bir CA arıyorsanız, [şifrelemem](https://letsencrypt.org/) iyi ve ücretsiz bir seçenektir.
+
+Şimdi, Orchestrator için yeni oluşturulan sertifikayı ve anahtarı kullanın. Yapılandırma dosyanız şu kodu içermelidir:
 
 ```yaml
 version: 0.1
-```
-### <a name="listenaddress"></a>listenAddress
-`listenAddress` hangi adres Orchestrator 'ın dinleneceğini bildirir. Adresin ana bilgisayar bölümü boşsa, Orchestrator tüm kullanılabilir tek noktaya yayın ve yerel sistemin IP adreslerini dinler. Adresin bağlantı noktası bölümü boşsa, bir bağlantı noktası numarası otomatik olarak seçilir.
+listenAddress: ":443"
 
-```yaml
-listenAddress: ":453"
-```
-### <a name="tls"></a>TLS
-
-`tls`Alan, Aktarım Katmanı Güvenliği (TLS) nesnelerinin haritasını bildirir. TLS nesneleri bağlayıcılar ve Orchestrator sunucusu tarafından kullanılabilir. Tüm kullanılabilir TLS seçenekleri için `transport` paket belgelerine bakın.
-
-Microsoft Azure SAML tabanlı SSO kullandığınızda TLS üzerinden iletişim gerektirir. Sertifika oluşturma hakkında daha fazla bilgi için bkz. [şifreme Web sitesine](https://letsencrypt.org/getting-started/)gidin.
-
-`maverics`Anahtar, Orchestrator sunucusu için ayrılmıştır. Diğer tüm anahtarlar kullanılabilir ve belirli bir bağlayıcıya bir TLS nesnesi eklemek için kullanılabilir.
-
-```yaml
 tls:
   maverics:
-    certFile: /etc/maverics/maverics.cert
+    certFile: /etc/maverics/maverics.crt
     keyFile: /etc/maverics/maverics.key
-```  
-### <a name="include-files"></a>Dosyaları dahil etme
-
-`connectors` `workflows` Aşağıdaki örneğe göre kendi kendi kendine ayrı yapılandırma dosyalarını tanımlayabilir ve bunları kullanarak *Maverics. YAML* dosyasında başvurabilirsiniz `includeFiles` :
-
-```yaml
-includeFiles:
-  - workflow/sessionAbstraction.yaml
-  - connector/AzureAD-saml.yaml
-  - connector/siteminder.yaml
-  ```
-
-Bu öğreticide tek bir *Maverics. YAML* yapılandırma dosyası kullanılmaktadır.
-
-## <a name="use-azure-key-vault-as-your-secrets-provider"></a>Gizli dizi sağlayıcınız olarak Azure Key Vault kullanın
-
-### <a name="manage-secrets"></a>Gizli dizileri yönetme
-
-Gizli dizileri yüklemek için Maverics çeşitli gizli yönetim çözümleriyle tümleştirilebilir. Geçerli tümleştirmeler bir dosya, HashiCorp kasası ve Azure Key Vault içerir. Gizli bir yönetim çözümü belirtilmemişse, Maverics varsayılan değerleri *Maverics. YAML* dosyasının dışında düz metin olarak yüklemeyi sağlar.
-
-Bir *Maverics. YAML* yapılandırma dosyasında bir değeri gizli olarak bildirmek için, parolayı açılı ayraç içine alın:
-
-  ```yaml
-  connectors:
-  - name: AzureAD
-    type: AzureAD
-    apiToken: <AzureADAPIToken>
-    oauthClientID: <AzureADOAuthClientID>
-    oauthClientSecret: <AzureADOAuthClientSecret>
-  ```
-
-### <a name="load-secrets-from-a-file"></a>Bir dosyadan gizli dizileri yükle
-
-1. Bir dosyadan gizli dizileri yüklemek için, şunu kullanarak ortam değişkenini `MAVERICS_SECRET_PROVIDER` */etc/Maverics/Maverics.env* dosyasına ekleyin:
-
-   `MAVERICS_SECRET_PROVIDER=secretfile:///<PATH TO SECRETS FILE>`
-
-2. Şunu çalıştırarak Maverics hizmetini yeniden başlatın:
-
-   `sudo systemctl restart maverics`
-
-*Gizli dizileri. YAML* dosya içerikleri herhangi bir sayıda olabilir `secrets` .
-
-```yaml
-secrets:
-  AzureADAPIToken: aReallyGoodToken
-  AzureADOAuthClientID: aReallyUniqueID
-  AzureADOAuthClientSecret: aReallyGoodSecret
 ```
-### <a name="set-up-an-azure-key-vault"></a>Azure Anahtar Kasası ayarlama
 
-Azure portal veya Azure CLı kullanarak bir Azure Anahtar Kasası ayarlayabilirsiniz.
+TLS 'nin beklendiği gibi yapılandırıldığını doğrulamak için, Maverics hizmetini yeniden başlatın ve durum uç noktasına bir istek yapın. Tarayıcınızdan, ister https://sonar.maverics.com/status .
 
-**Azure portalını kullanma**
-1. [Azure portalında](https://portal.azure.com) oturum açın.
-1. [Yeni bir Anahtar Kasası oluşturun](../../key-vault/general/quick-create-portal.md).
-1. [Gizli dizileri anahtar kasasına ekleyin](../../key-vault/secrets/quick-create-portal.md#add-a-secret-to-key-vault).
-1. [Bir uygulamayı Azure AD 'ye kaydedin](../develop/howto-create-service-principal-portal.md#register-an-application-with-azure-ad-and-create-a-service-principal).
-1. [Bir uygulamayı gizli anahtar kullanması Için yetkilendirin](../../key-vault/secrets/quick-create-portal.md#add-a-secret-to-key-vault).
+## <a name="step-2-proxy-an-application"></a>2. Adım: uygulama proxy 'Si
 
-**Azure CLI kullanma**
+Ardından, kullanarak Orchestrator 'da temel proxy yapılandırın `appgateways` . Bu adım, Orchestrator 'ın korumalı uygulama için gerekli bağlantıyı içerdiğini doğrulamanıza yardımcı olur.
 
-1. [Azure CLI](/cli/azure/install-azure-cli)'yi açın ve aşağıdaki komutu girin:
+Yapılandırma dosyanız şu kodu içermelidir:
 
-    ```azurecli
-    az login
-    ```
+```yaml
+version: 0.1
+listenAddress: ":443"
 
-1. Aşağıdaki komutu çalıştırarak yeni bir Anahtar Kasası oluşturun:
-    ```azurecli
-    az keyvault create --name "[VAULT_NAME]" --resource-group "[RESOURCE_GROUP]" --location "[REGION]"
-    ```
+tls:
+  maverics:
+    certFile: /etc/maverics/maverics.crt
+    keyFile: /etc/maverics/maverics.key
 
-1. Aşağıdaki komutu çalıştırarak gizli dizileri anahtar kasasına ekleyin:
-    ```azurecli
-    az keyvault secret set --vault-name "[VAULT_NAME]" --name "[SECRET_NAME]" --value "[SECRET_VALUE]"
-    ```
+appgateways:
+  - name: sonar
+    location: /
+    # Replace https://app.sonarsystems.com with the address of your protected application
+    upstream: https://app.sonarsystems.com
+```
 
-1. Aşağıdaki komutu çalıştırarak bir uygulamayı Azure AD 'ye kaydedin:
-    ```azurecli
-    az ad sp create-for-rbac -n "MavericsKeyVault" --skip-assignment > azure-credentials.json
-    ```
+Proxy 'nin beklendiği gibi çalıştığını doğrulamak için Maverics hizmetini yeniden başlatın ve Maverics proxy 'si aracılığıyla uygulamaya bir istek yapın. Tarayıcınızdan, ister https://sonar.maverics.com . İsteğe bağlı olarak, örneğin, `https://sonar.maverics.com/RESOURCE` `RESOURCE` korumalı yukarı akış uygulamasının geçerli bir uygulama kaynağı olan belirli uygulama kaynaklarına bir istek yapabilirsiniz.
 
-1. Aşağıdaki komutu çalıştırarak bir uygulamayı gizli dizi kullanacak şekilde yetkilendirin:
-    ```azurecli
-    az keyvault set-policy --name "[VAULT_NAME]" --spn [APPID] --secret-permissions list get
-    #APPID can be found in the azure-credentials.json
-    generated in the previous step
-    ```
+## <a name="step-3-register-an-enterprise-application-in-azure-ad"></a>3. Adım: Kurumsal uygulamayı Azure AD 'ye kaydetme
 
-1. Azure anahtar kasaınızdan gizli dizileri yüklemek için,/etc/Maverics/Maverics.env dosyasındaki ortam değişkenini `MAVERICS_SECRET_PROVIDER` aşağıdaki biçimde  *azure-credentials.js* dosyasında bulunan kimlik bilgilerini kullanarak ayarlayın:
- 
-   `MAVERICS_SECRET_PROVIDER='azurekeyvault://<KEYVAULT NAME>.vault.azure.net?clientID=<APPID>&clientSecret=<PASSWORD>&tenantID=<TENANT>'`
+Şimdi, Azure AD 'de son kullanıcıların kimliğini doğrulamak için kullanılacak yeni bir kurumsal uygulama oluşturun.
 
-1. Maverics hizmetini yeniden başlatın: `sudo systemctl restart maverics`
+> [!NOTE]
+> Koşullu erişim gibi Azure AD özelliklerini kullandığınızda, şirket içi uygulama başına bir kurumsal uygulama oluşturmak önemlidir. Bu, uygulama başına koşullu erişim, uygulama başına risk değerlendirmesi, uygulama başına atanan izinler vb. için izin verir. Genel olarak, Azure AD 'deki bir kurumsal uygulama Maverics içindeki bir Azure Bağlayıcısı ile eşlenir.
 
-## <a name="configure-your-application-in-azure-ad-for-saml-based-sso"></a>Azure AD 'de SAML tabanlı SSO için uygulamanızı yapılandırma
+Azure AD 'de bir kurumsal uygulamayı kaydetmek için:
 
-1. Azure AD kiracınızda **Kurumsal uygulamalar**' a gidin, **Maverics kimlik Orchestrator SAML bağlayıcısını** arayın ve ardından seçin.
+1. Azure AD kiracınızda **Kurumsal uygulamalar**' a gidin ve ardından **Yeni uygulama**' yı seçin. Azure AD galerisinde, **Maverics Identity Orchestrator SAML bağlayıcısını** arayın ve ardından seçin.
 
-1. Uygulamanın yeni geçirilmiş kullanıcılar için çalışmasını sağlamak için, Maverics Identity Orchestrator SAML Bağlayıcısı **Özellikler** bölmesinde, **gereken Kullanıcı atamasını** **Hayır** olarak ayarlayın.
+1. Uygulamanın dizininizdeki tüm kullanıcılar için çalışmasını sağlamak için, Maverics Identity Orchestrator SAML Bağlayıcısı **Özellikler** bölmesinde, **gereken Kullanıcı atamasını** **Hayır** olarak ayarlayın.
 
 1. Maverics kimlik Orchestrator SAML bağlayıcısına **genel bakış** bölmesinde, **Tekli oturum açmayı ayarla**' yı seçin ve ardından **SAML**' yi seçin.
 
@@ -211,246 +152,196 @@ Azure portal veya Azure CLı kullanarak bir Azure Anahtar Kasası ayarlayabilirs
 
    !["Temel SAML yapılandırması" düzenleme düğmesinin ekran görüntüsü.](common/edit-urls.png)
 
-1. Aşağıdaki biçimde bir URL yazarak **VARLıK kimliğini** girin: `https://<SUBDOMAIN>.maverics.org` . Varlık KIMLIĞI, Kiracıdaki uygulamalar arasında benzersiz olmalıdır. Maverics yapılandırmasına dahil etmek için buraya girilen değeri kaydedin.
+1. Bir **VARLıK kimliği** girin `https://sonar.maverics.com` . Varlık KIMLIĞI, Kiracıdaki uygulamalar arasında benzersiz olmalıdır ve rastgele bir değer olabilir. Bu değeri, `samlEntityID` sonraki bölümde Azure Bağlayıcınız için alan tanımladığınızda kullanacaksınız.
 
-1. **Yanıt URL** 'sini şu biçimde girin: `https://<AZURECOMPANY.COM>/<MY_APP>/` . 
+1. **Yanıt URL 'si** girin `https://sonar.maverics.com/acs` . Bu değeri, `samlConsumerServiceURL` sonraki bölümde Azure Bağlayıcınız için alan tanımladığınızda kullanacaksınız.
 
-1. **Oturum açma URL 'sini** şu biçimde girin: `https://<AZURE-COMPANY.COM>/<MY_APP>/<LOGIN PAGE>` . 
+1. Bir **oturum açma URL 'si** girin `https://sonar.maverics.com/` . Bu alan Maverics tarafından kullanılmaz, ancak kullanıcıların Azure AD My Apps portalından uygulamaya erişimini sağlamak için Azure AD 'de kullanılması gerekir.
 
 1. **Kaydet**’i seçin.
 
-1. **SAML Imzalama sertifikası** bölümünde, **uygulama Federasyon meta verileri URL 'Sini** kopyalamak için **Kopyala** düğmesini seçin ve bilgisayarınıza kaydedin.
+1. **SAML Imzalama sertifikası** bölümünde, **Kopyala** düğmesini seçerek **uygulama Federasyon meta verileri URL 'si** değerini kopyalayın ve ardından bilgisayarınıza kaydedin.
 
-    !["SAML Imzalama sertifikası" kopyalama düğmesinin ekran görüntüsü.](common/copy-metadataurl.png)
+   !["SAML Imzalama sertifikası" kopyalama düğmesinin ekran görüntüsü.](common/copy-metadataurl.png)
 
-## <a name="configure-maverics-identity-orchestrator-azure-ad-saml-connector"></a>Maverics kimlik Orchestrator Azure AD SAML bağlayıcısını yapılandırma
+## <a name="step-4-authenticate-via-azure-and-authorize-access-to-the-application"></a>4. Adım: Azure aracılığıyla kimlik doğrulama ve uygulamaya erişim yetkisi verme
 
-Maverics kimlik Orchestrator Azure AD Bağlayıcısı, OpenID Connect ve SAML Connect 'i destekler. Bağlayıcıyı yapılandırmak için aşağıdakileri yapın: 
+Ardından, yeni oluşturduğunuz kurumsal uygulamayı Maverics içindeki Azure bağlayıcısını yapılandırarak kullanın. `connectors`Blokla eşleştirilmiş bu yapılandırma, `idps` Orchestrator 'ın kullanıcıların kimliğini doğrulamasına izin verir.
 
-1. SAML tabanlı SSO 'yu etkinleştirmek için, ayarlayın `authType: saml` .
-
-1. Değerini `samlMetadataURL` aşağıdaki biçimde oluşturun: `samlMetadataURL:https://login.microsoftonline.com/<TENANT ID>/federationmetadata/2007-06/federationmetadata.xml?appid=<APP ID>` .
-
-1. Kullanıcılar Azure kimlik bilgileriyle oturum açtıktan sonra, Azure 'un uygulamanızda yeniden yönlendirileceği URL 'YI tanımlayın. Şu biçimi kullanın: `samlRedirectURL: https://<AZURECOMPANY.COM>/<MY_APP>` .
-
-1. Değeri, daha önce yapılandırılan EntityId 'den kopyalayın: `samlEntityID: https://<SUBDOMAIN>.maverics.org` .
-
-1. SAML yanıtını göndermek için Azure AD 'nin kullanacağı yanıt URL 'sinden değeri kopyalayın: `samlConsumerServiceURL: https://<AZURE-COMPANY.COM>/<MY_APP>` .
-
-1. [OpenSSL aracını](https://www.openssl.org/source/)kullanarak Maverics kimlik Orchestrator oturum bilgilerini korumak için kullanılan bir JSON Web token (JWT) imzalama anahtarı oluşturun:
-
-    ```console 
-    openssl rand 64 | base64
-    ```
-1. Yanıtı `jwtSigningKey` yapılandırma özelliğine kopyalayın: `jwtSigningKey: TBHPvTtu6NUqU84H3Q45grcv9WDJLHgTioqRhB8QGiVzghKlu1mHgP1QHVTAZZjzLlTBmQwgsSoWxGHRcT4Bcw==` .
-
-## <a name="attributes-and-attribute-mapping"></a>Öznitelikler ve öznitelik eşleme
-Öznitelik eşleme, Kullanıcı oluşturulduktan sonra bir kaynak şirket içi Kullanıcı dizininden bir Azure AD kiracısına kullanıcı özniteliklerinin eşlemesini tanımlamak için kullanılır.
-
-Öznitelikler, bir talepteki uygulamaya hangi kullanıcı verilerinin döndürüleceğini, oturum tanımlama bilgilerine geçirilebileceğini veya HTTP üst bilgi değişkenlerinde uygulamaya geçirilmesini sağlar.
-
-## <a name="configure-the-maverics-identity-orchestrator-azure-ad-saml-connector-yaml-file"></a>Maverics kimlik Orchestrator Azure AD SAML Bağlayıcısı YAML dosyasını yapılandırma
-
-Maverics kimlik Orchestrator Azure AD Bağlayıcısı yapılandırmanız şuna benzeyecektir:
+Yapılandırma dosyanız artık aşağıdaki kodu içermelidir. `METADATA_URL`Önceki adımda bulunan uygulama Federasyon meta verileri URL 'si değeriyle değiştirdiğinizden emin olun.
 
 ```yaml
-- name: AzureAD
-  type: azure
-  authType: saml
-  samlMetadataURL: https://login.microsoftonline.com/<TENANT ID>/federationmetadata/2007-06/federationmetadata.xml?appid=<APP ID>
-  samlRedirectURL: https://<AZURECOMPANY.COM>/<MY_APP>
-  samlConsumerServiceURL: https://<AZURE-COMPANY.COM>/<MY_APP>
-  jwtSigningKey: <SIGNING KEY>
-  samlEntityID: https://<SUBDOMAIN>.maverics.org
-  attributeMapping:
-    displayName: username
-    mailNickname: givenName
-    givenName: givenName
-    surname: sn
-    userPrincipalName: mail
-    password: password
-```
+version: 0.1
+listenAddress: ":443"
 
-## <a name="migrate-users-to-an-azure-ad-tenant"></a>Kullanıcıları bir Azure AD kiracısına geçirme
+tls:
+  maverics:
+    certFile: /etc/maverics/maverics.crt
+    keyFile: /etc/maverics/maverics.key
 
-Kullanıcıları CA Sitedefteri, Oracle Access Manager veya IBM Tivoli gibi bir Web erişimi yönetim ürününden artımlı olarak geçirmek için bu yapılandırmayı izleyin. Ayrıca, bunları bir Basit Dizin Erişim Protokolü (LDAP) dizininden veya bir SQL veritabanından geçirebilirsiniz.
+idps:
+  - name: azureSonarApp
 
-### <a name="configure-your-application-permissions-in-azure-ad-to-create-users"></a>Kullanıcı oluşturmak için Azure AD 'de uygulama izinlerinizi yapılandırma
+appgateways:
+  - name: sonar
+    location: /
+    # Replace https://app.sonarsystems.com with the address of your protected application
+    upstream: https://app.sonarsystems.com
 
-1. Azure AD kiracınızda adresine gidin `App registrations` ve **Maverics ıDENTITY Orchestrator SAML bağlayıcı** uygulamasını seçin.
+    policies:
+      - resource: /
+        allowIf:
+          - equal: ["{{azureSonarApp.authenticated}}", "true"]
 
-1. **Maverics Identity Orchestrator SAML Bağlayıcısı | Sertifikalar & gizlilikler** Bölmesi ' ni seçin `New client secret` ve ardından süre sonu seçeneğini belirleyin. Gizli dizi kopyalamak için **Kopyala** düğmesini seçin ve bilgisayarınıza kaydedin.
-
-1. **Maverics Identity Orchestrator SAML Bağlayıcısı | API izinleri** bölmesi, **izin Ekle** ' yi SEÇIN ve ardından **apı izinleri ıste** bölmesinde **Microsoft Graph** ve **Uygulama izinleri**' ni seçin. 
-
-1. Sonraki ekranda **User. ReadWrite. All**' ı seçin ve ardından **izin Ekle**' yi seçin. 
-
-1. **API izinleri** bölmesine dönün, **yönetici izni ver**' i seçin.
-
-### <a name="configure-the-maverics-identity-orchestrator-saml-connector-yaml-file-for-user-migration"></a>Maverics Identity Orchestrator SAML Bağlayıcısı YAML dosyasını Kullanıcı geçişi için yapılandırma
-
-Kullanıcı geçişi iş akışını etkinleştirmek için bu ek özellikleri yapılandırma dosyasına ekleyin:
-1. **Azure Graph URL 'sini** şu biçimde girin: `graphURL: https://graph.microsoft.com` .
-1. **OAuth belirteci URL 'sini** şu biçimde girin: `oauthTokenURL: https://login.microsoftonline.com/<TENANT ID>/federationmetadata/2007-06/federationmetadata.xml?appid=<APP ID>` .
-1. Önceden oluşturulan istemci parolasını şu biçimde girin: `oauthClientSecret: <CLIENT SECRET>` .
-
-
-Son Maverics kimlik Orchestrator Azure AD Bağlayıcısı yapılandırma dosyanız şuna benzeyecektir:
-
-```yaml
-- name: AzureAD
-  type: azure
-  authType: saml
-  samlMetadataURL: https://login.microsoftonline.com/<TENANT ID>/federationmetadata/2007-06/federationmetadata.xml?appid=<APP ID>
-  samlRedirectURL: https://<AZURECOMPANY.COM>/<MY_APP>
-  samlConsumerServiceURL: https://<AZURE-COMPANY.COM>/<MY_APP>
-  jwtSigningKey: TBHPvTtu6NUqU84H3Q45grcv9WDJLHgTioqRhB8QGiVzghKlu1mHgP1QHVTAZZjzLlTBmQwgsSoWxGHRcT4Bcw==
-  samlEntityID: https://<SUBDOMAIN>.maverics.org
-  graphURL: https://graph.microsoft.com
-  oauthTokenURL: https://login.microsoftonline.com/<TENANT ID>/oauth2/v2.0/token
-  oauthClientID: <APP ID>
-  oauthClientSecret: <NEW CLIENT SECRET>
-  attributeMapping:
-    displayName: username
-    mailNickname: givenName
-    givenName: givenName
-    surname: sn
-    userPrincipalName: mail
-    password: password
-```
-
-### <a name="configure-maverics-zero-code-connector-for-siteminder"></a>Site, Sitedefteri için Maverics sıfır kod bağlayıcısını yapılandırma
-
-Kullanıcıları bir Azure AD kiracısına geçirmek için Sitedefteri bağlayıcısını kullanın. Yeni oluşturulan Azure AD kimliklerini ve kimlik bilgilerini kullanarak, içindeki kullanıcıları Sitedefteri tarafından korunan eski şirket içi uygulamalarda günlüğe kaydedin.
-
-Bu öğreticide, Sitedefteri, form tabanlı kimlik doğrulaması ve tanımlama bilgisini kullanarak eski uygulamayı korumak üzere yapılandırılmıştır `SMSESSION` . HTTP üstbilgileri aracılığıyla kimlik doğrulaması ve oturum bilgilerini tüketen bir uygulamayla tümleşmek için, üst bilgi öykünme yapılandırmasını bağlayıcıya eklemeniz gerekir.
-
-Bu örnekte, `username` özniteliği `SM_USER` http üstbilgisiyle eşlenir:
-
-```yaml
-  headers:
-    SM_USER: username
-```
-
-`proxyPass`İsteklerin proxy olarak ayarlandığı konuma ayarlayın. Genellikle, bu konum korunan uygulamanın ana bilgisayarı olur.
-
-`loginPage` kullanıcıları kimlik doğrulaması için yeniden yönlendirirse Sitedefteri tarafından şu anda kullanılan oturum açma formunun URL 'siyle eşleşmelidir.
-
-```yaml
 connectors:
-- name: siteminder-login-form
-  type: siteminder
-  loginType: form
-  loginPage: /siteminderagent/forms/login.fcc
-  proxyPass: http://host.company.com
+  - name: azureSonarApp
+    type: azure
+    authType: saml
+    # Replace METADATA_URL with the App Federation Metadata URL
+    samlMetadataURL: METADATA_URL
+    samlConsumerServiceURL: https://sonar.maverics.com/acs
+    samlEntityID: https://sonar.maverics.com
 ```
 
-### <a name="configure-maverics-zero-code-connector-for-ldap"></a>LDAP için Maverics sıfır kod bağlayıcısını yapılandırma
+Kimlik doğrulamanın beklendiği gibi çalıştığını doğrulamak için Maverics hizmetini yeniden başlatın ve Maverics proxy 'si aracılığıyla bir uygulama kaynağına istek yapın. Kaynağa erişmeden önce kimlik doğrulaması için Azure 'a yönlendirilmelisiniz.
 
-Uygulamalar Sitedefteri gibi bir Web erişim yönetimi (WAM) ürünü tarafından korunduğunda, Kullanıcı kimlikleri ve öznitelikleri genellikle bir LDAP dizininde depolanır.
+## <a name="step-5-add-headers-for-seamless-application-access"></a>5. Adım: sorunsuz uygulama erişimi için üst bilgiler ekleme
 
-Bu bağlayıcı yapılandırması, LDAP dizinine bağlanmayı gösterir. Bağlayıcı, geçiş iş akışı sırasında doğru Kullanıcı profili bilgilerinin toplanabilmesi ve Azure AD 'de buna karşılık gelen bir kullanıcının oluşturulabilmesi için Sitedefteri için Kullanıcı Mağazası olarak yapılandırılır.
+Yukarı akış uygulamasına henüz üst bilgi göndermiyorsunuz. `headers`Ayrıca, yukarı akış uygulamasının kullanıcıyı belirlemesine olanak tanımak Için Maverics ara sunucusu üzerinden geçerken isteğe ekleyelim.
 
-* `baseDN` dizinde LDAP aramasının gerçekleştirileceği konumu belirtir.
-
-* `url` , bağlanılacak LDAP sunucusunun adresi ve bağlantı noktasıdır.
-
-* `serviceAccountUsername` , genellikle bir BIND DN (örneğin,) olarak ifade edilen LDAP sunucusuna bağlanmak için kullanılan kullanıcı adıdır `CN=Directory Manager` .
-
-* `serviceAccountPassword` , LDAP sunucusuna bağlanmak için kullanılan paroladır. Bu değer, daha önce yapılandırılmış Azure Anahtar Kasası örneğinde depolanır.  
-
-* `userAttributes` sorgusuna yönelik kullanıcı ile ilgili özniteliklerin listesini tanımlar. Bu öznitelikler daha sonra karşılık gelen Azure AD özniteliklerine eşlenir.
+Yapılandırma dosyanız şu kodu içermelidir:
 
 ```yaml
-- name: company-ldap
-  type: ldap
-  url: "ldap://ldap.company.com:389"
-  baseDN: ou=People,o=company,c=US
-  serviceAccountUsername: uid=admin,ou=Admins,o=company,c=US
-  serviceAccountPassword: <vaulted-password>
-  userAttributes:
-    - uid
-    - cn
-    - givenName
-    - sn
-    - mail
-    - mobile
+version: 0.1
+listenAddress: ":443"
+
+tls:
+  maverics:
+    certFile: /etc/maverics/maverics.crt
+    keyFile: /etc/maverics/maverics.key
+
+idps:
+  - name: azureSonarApp
+
+appgateways:
+  - name: sonar
+    location: /
+    # Replace https://app.sonarsystems.com with the address of your protected application
+    upstream: https://app.sonarsystems.com
+
+    policies:
+      - resource: /
+        allowIf:
+          - equal: ["{{azureSonarApp.authenticated}}", "true"]
+
+    headers:
+      email: azureSonarApp.name
+      firstname: azureSonarApp.givenname
+      lastname: azureSonarApp.surname
+
+connectors:
+  - name: azureSonarApp
+    type: azure
+    authType: saml
+    # Replace METADATA_URL with the App Federation Metadata URL
+    samlMetadataURL: METADATA_URL
+    samlConsumerServiceURL: https://sonar.maverics.com/acs
+    samlEntityID: https://sonar.maverics.com
 ```
 
-### <a name="configure-the-migration-workflow"></a>Geçiş iş akışını yapılandırma
+Kimlik doğrulamasının beklenen şekilde çalıştığını onaylamak için, Maverics proxy 'si aracılığıyla bir uygulama kaynağına bir istek oluşturun. Korumalı uygulama artık, istek üzerine üstbilgiler alıyor olmalıdır. 
 
-Geçiş iş akışı yapılandırması, Maverics kullanıcıları Sitedefteri veya LDAP 'den Azure AD 'ye nasıl geçirdiğini belirler.
+Uygulamanız farklı üstbilgiler bekliyorsa başlık anahtarlarını düzenleyebilirsiniz. SAML akışının bir parçası olarak Azure AD 'den geri gelen tüm talepler, üst bilgilerde kullanılabilir. Örneğin, uygulamasının `secondary_email: azureSonarApp.email` `azureSonarApp` bağlayıcı adı olduğu ve `email` Azure AD 'den döndürülen bir talep olduğu başka bir üst bilgisini dahil edebilirsiniz. 
 
-Bu iş akışı:
-- Sitedefteri bağlayıcısını kullanarak Sitebir oturum açma kimliğini ara. Kullanıcı kimlik bilgileri, Sitedefteri kimlik doğrulaması ile onaylanır ve sonra iş akışının sonraki adımlarına geçirilir.
-- Sitedefteri kullanıcı deposundan Kullanıcı profili özniteliklerini alır.
-- Azure AD kiracınızda Kullanıcı oluşturmak için Microsoft Graph API 'sine bir istek yapar.
+## <a name="step-6-work-with-multiple-applications"></a>6. Adım: birden çok uygulamayla çalışma
 
-Geçiş iş akışını yapılandırmak için aşağıdakileri yapın:
+Şimdi, farklı konaklardaki birden çok uygulama için ara sunucu için gereklere göz atalım. Bu adımı gerçekleştirmek için başka bir uygulama ağ geçidi, Azure AD 'de başka bir kurumsal uygulama ve başka bir bağlayıcı yapılandırın.
 
-1. İş akışına bir ad verin (örneğin, **Sitedefteri 'Ni Azure AD geçişine**).
-1. İş akışının `endpoint` açığa alındığı, `actions` Bu iş akışının isteklere yanıt olarak tetikleneceği bir http yolu olan öğesini belirtin. `endpoint`Genellikle, proxy kullanan uygulamaya karşılık gelir (örneğin, `/my_app` ). Değer hem baştaki hem de sondaki eğik çizgileri içermelidir.
-1. `actions`İş akışına uygun şekilde ekleyin.
+Yapılandırma dosyanız şu kodu içermelidir:
 
-   a. `login`Sitedefteri Bağlayıcısı için yöntemi tanımlayın. Bağlayıcı değeri, bağlayıcı yapılandırmasındaki ad değeriyle eşleşmelidir.
+```yaml
+version: 0.1
+listenAddress: ":443"
 
-   b. `getprofile`LDAP bağlayıcısının yöntemini tanımlayın.
+tls:
+  maverics:
+    certFile: /etc/maverics/maverics.crt
+    keyFile: /etc/maverics/maverics.key
 
-   c.  `createuser`AzureAD Connector için yöntemi tanımlayın.
+idps:
+  - name: azureSonarApp
+  - name: azureConnectulumApp
 
-    ```yaml
-      workflows:
-      - name: SiteMinder to Azure AD Migration
-        endpoint: /my_app/
-        actions:
-        - connector: siteminder-login-form
-          method: login
-        - connector: company-ldap
-          method: getprofile
-        - connector: AzureAD
-          method: createuser
-    ```
-### <a name="verify-the-migration-workflow"></a>Geçiş iş akışını doğrulama
+appgateways:
+  - name: sonar
+    host: sonar.maverics.com
+    location: /
+    # Replace https://app.sonarsystems.com with the address of your protected application
+    upstream: https://app.sonarsystems.com
 
-1. Maverics hizmeti zaten çalışmıyorsa, aşağıdaki komutu yürüterek başlatın: 
+    policies:
+      - resource: /
+        allowIf:
+          - equal: ["{{azureSonarApp.authenticated}}", "true"]
 
-   `sudo systemctl start maverics`
+    headers:
+      email: azureSonarApp.name
+      firstname: azureSonarApp.givenname
+      lastname: azureSonarApp.surname
 
-1. Proxy kullanan oturum açma URL 'sine gidin `http://host.company.com/my_app` .
-1. Uygulamada oturum açmak için kullanılan Kullanıcı kimlik bilgilerini, Sitedefteri tarafından korunurken sağlayın.
-4. **Ev**  >  **kullanıcılarına git |** Kullanıcının Azure AD kiracısında oluşturulduğunu doğrulamak için tüm kullanıcılar.  
+  - name: connectulum
+    host: connectulum.maverics.com
+    location: /
+    # Replace https://app.connectulum.com with the address of your protected application
+    upstream: https://app.connectulum.com
 
-### <a name="configure-the-session-abstraction-workflow"></a>Oturum soyutlama iş akışını yapılandırma
+    policies:
+      - resource: /
+        allowIf:
+          - equal: ["{{azureConnectulumApp.authenticated}}", "true"]
 
-Oturum soyutlama iş akışı, eski şirket içi Web uygulaması için kimlik doğrulama ve erişim denetimini Azure AD kiracısına taşıdır.
+    headers:
+      email: azureConnectulumApp.name
+      firstname: azureConnectulumApp.givenname
+      lastname: azureConnectulumApp.surname
 
-Azure Bağlayıcısı, `login` bir oturumun mevcut olmadığı varsayılarak kullanıcıyı oturum açma URL 'sine yeniden yönlendirmek için yöntemini kullanır.
+connectors:
+  - name: azureSonarApp
+    type: azure
+    authType: saml
+    # Replace METADATA_URL with the App Federation Metadata URL
+    samlMetadataURL: METADATA_URL
+    samlConsumerServiceURL: https://sonar.maverics.com/acs
+    samlEntityID: https://sonar.maverics.com
 
-Kimliği doğrulandıktan sonra, sonuç olarak oluşturulan oturum belirteci Maverics 'a geçirilir. Sitedefteri bağlayıcısının yöntemi, `emulate` tanımlama bilgisi tabanlı oturuma veya üst bilgi tabanlı oturuma öykünmek için kullanılır ve sonra, isteği uygulamanın gerektirdiği ek özniteliklerle süsleyerek.
+  - name: azureConnectulumApp
+    type: azure
+    authType: saml
+    # Replace METADATA_URL with the App Federation Metadata URL
+    samlMetadataURL: METADATA_URL
+    samlConsumerServiceURL: https://connectulum.maverics.com/acs
+    samlEntityID: https://connectulum.maverics.com
+```
 
-1. İş akışına bir ad verin (örneğin, **Sitedefteri oturum soyutlama**).
-1. Proxy olan `endpoint` uygulamaya karşılık gelen öğesini belirtin. Değer hem baştaki hem de sondaki eğik çizgi içermelidir (örneğin, `/my_app/` ).
-1. `actions`İş akışına uygun şekilde ekleyin.
+Kodun `host` App Gateway tanımlarınıza bir alan ekleyeceğini fark etmiş olabilirsiniz. `host`Alan, Maverics Orchestrator 'ın hangi yukarı akış konağını proxy trafiğine ayırabilmesini sağlar.
 
-   a. `login`Azure Bağlayıcısı için yöntemi tanımlayın. `connector`Değerin `name` bağlayıcı yapılandırmasındaki değerle eşleşmesi gerekir.
+Yeni eklenen uygulama ağ geçidinin beklenen şekilde çalıştığını onaylamak için, ' a bir istek yapın https://connectulum.maverics.com .
 
-   b. `emulate`Sitedefteri Bağlayıcısı için yöntemi tanımlayın.
+## <a name="advanced-scenarios"></a>Gelişmiş senaryolar
 
-     ```yaml
-      - name: SiteMinder Session Abstraction
-        endpoint: /my_app/
-        actions:
-      - connector: azure
-        method: login
-      - connector: siteminder-login-form
-        method: emulate
-     ```
-### <a name="verify-the-session-abstraction-workflow"></a>Oturum soyutlama iş akışını doğrulama
+### <a name="identity-migration"></a>Kimlik geçişi
 
-1. Proxy kullanan uygulama URL 'sine gidin `https://<AZURECOMPANY.COM>/<MY_APP>` . 
-    
-    Proxy oturum açma sayfasına yönlendirilirsiniz.
+Son kullanım için Web erişimi yönetim aracınız olamaz, ancak toplu parola sıfırlama olmadan kullanıcılarınızı geçirmek için bir yol yok mu? Maverics Orchestrator, kullanarak kimlik geçişini destekler `migrationgateways` .
 
-1. Azure AD Kullanıcı kimlik bilgilerini girin.
+### <a name="web-server-gateways"></a>Web sunucusu ağ geçitleri
 
-   Doğrudan Sitedefteri tarafından kimliğiniz doğrulanmış olsanız da uygulamaya yönlendirilmelisiniz.
+Maverics Orchestrator aracılığıyla ağ ve proxy trafiğinizi yeniden kullanmak istemiyor musunuz? Sorun değil. Maverics Orchestrator, proxy olmadan aynı çözümleri sunmak için Web sunucusu ağ geçitleri (modüller) ile eşleştirilebilir.
+
+## <a name="wrap-up"></a>Yukarı kaydırın
+
+Bu noktada, Maverics Orchestrator 'ı yüklediniz, Azure AD 'de bir kurumsal uygulama oluşturup yapılandırdık ve bir kimlik doğrulaması ve ilkeyi zorunlu tutarken, Orchestrator 'ı korumalı bir uygulamaya yapılandırmış olarak yapılandırdınız. Maverics Orchestrator 'ın dağıtılmış kimlik yönetimi kullanım durumları için nasıl kullanılabileceği hakkında daha fazla bilgi edinmek için, [Strata ile iletişim kurun](mailto:sales@strata.io).
+
+## <a name="next-steps"></a>Sonraki adımlar
+
+- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](../manage-apps/what-is-single-sign-on.md)
+- [Azure Active Directory'de koşullu erişim nedir?](../conditional-access/overview.md)

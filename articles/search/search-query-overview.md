@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 03/03/2021
-ms.openlocfilehash: 97b0a4ca3e4fb94a21cbd30a27a3037f45fed782
-ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
+ms.openlocfilehash: c088625528190ad116676fbb51cec9f8de4b1578
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102487126"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104600811"
 ---
 # <a name="querying-in-azure-cognitive-search"></a>Azure Bilişsel Arama sorgulama
 
@@ -71,7 +71,7 @@ Bilişsel Arama, tam metin araması Apache Lucene sorgu altyapısında oluşturu
 
 Eşleşen terimler bulunduğunda sorgu altyapısı, alan değerlerini birleştirmek için belge anahtarını veya KIMLIĞINI kullanarak eşleştirmeyi içeren bir arama belgesi reconstitutes, belgeleri ilgi sırasına göre derecelendirir ve belirtilmişse en üstteki 50 (varsayılan olarak) değerini döndürür **`top`** .
 
-Tam metin araması gerçekleştiriyorsanız, içeriğinizin nasıl simgeleştirilmiş olduğunu anlamak, tüm sorgu anormallarını hata ayıklamanıza yardımcı olur. Hecelenmiş dizeler veya özel karakterler üzerinde sorgular, dizinin doğru belirteçleri içerdiğinden emin olmak için varsayılan standart Lucene dışında bir çözümleyici kullanmayı gerekli olabilir. Varsayılan ayarı, [dil Çözümleyicileri](index-add-language-analyzers.md#language-analyzer-list) veya sözcük temelli analizleri değiştiren [özelleştirilmiş çözümleyiciler](index-add-custom-analyzers.md#AnalyzerTable) ile geçersiz kılabilirsiniz. Bir örnek, bir alanın tüm içeriğini tek bir belirteç olarak ele alan [anahtar sözcüktür](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/core/KeywordAnalyzer.html) . Bu, ZIP kodları, kimlikler ve bazı ürün adları gibi veriler için yararlıdır. Daha fazla bilgi için bkz. [özel karakterlerle kısmi terim arama ve desenleri](search-query-partial-matching.md).
+Tam metin araması gerçekleştiriyorsanız, içeriğinizin nasıl simgeleştirilmiş olduğunu anlamak, tüm sorgu anormallarını hata ayıklamanıza yardımcı olur. Hecelenmiş dizeler veya özel karakterler üzerinde sorgular, dizinin doğru belirteçleri içerdiğinden emin olmak için varsayılan standart Lucene dışında bir çözümleyici kullanmayı gerekli olabilir. Varsayılan ayarı, [dil Çözümleyicileri](index-add-language-analyzers.md#language-analyzer-list) veya sözcük temelli analizleri değiştiren [özelleştirilmiş çözümleyiciler](index-add-custom-analyzers.md#built-in-analyzers) ile geçersiz kılabilirsiniz. Bir örnek, bir alanın tüm içeriğini tek bir belirteç olarak ele alan [anahtar sözcüktür](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/core/KeywordAnalyzer.html) . Bu, ZIP kodları, kimlikler ve bazı ürün adları gibi veriler için yararlıdır. Daha fazla bilgi için bkz. [özel karakterlerle kısmi terim arama ve desenleri](search-query-partial-matching.md).
 
 Büyük metin blokları (bir içerik alanı veya uzun açıklamalar) içeren dizinlerde daha büyük olasılıkla, Boolean operatörlerinin ağır kullanımını düşünüyorsanız, **`searchMode=Any|All`** Bu ayarın Boole aramasında etkisini değerlendirmek için sorguları parametresiyle test ettiğinizden emin olun.
 
@@ -85,7 +85,7 @@ Filtreler Bilişsel Arama içeren uygulamalarda yaygın olarak kullanılır. Uyg
 
 Ayrıca, aşağıdaki tabloda açıklandığı gibi özelleştirilmiş bir sorgu formunu çağırmak için filtreler de gerekebilir. Belirtilmemiş bir aramayla ( **`search=*`** ) veya terimleri, tümceleri, işleçleri ve desenleri içeren bir sorgu dizesiyle bir filtre kullanabilirsiniz.
 
-| Filtre senaryosu | Açıklama |
+| Filtre senaryosu | Description |
 |-----------------|-------------|
 | Aralık filtreleri | Azure Bilişsel Arama 'de, Aralık sorguları filtre parametresi kullanılarak oluşturulur. Daha fazla bilgi ve örnek için bkz. [Aralık filtresi örneği](search-query-simple-examples.md#example-5-range-filters). |
 | Coğrafi konum arama | Aranabilir bir alan [Edm. Geographyıpoint türünde](/rest/api/searchservice/supported-data-types)ise, "yakın beni bul" veya harita tabanlı arama denetimleri için bir filtre ifadesi oluşturabilirsiniz. Coğrafi arama 'nın bulunduğu alanlar koordinatları içerir. Daha fazla bilgi ve örnek için bkz. [coğrafi arama örneği](search-query-simple-examples.md#example-6-geo-search). |

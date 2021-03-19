@@ -8,12 +8,12 @@ ms.author: amjads
 author: amjads1
 ms.collection: windows
 ms.date: 07/20/2019
-ms.openlocfilehash: 1b1766c0385303993af436911391a1c858bbff61
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.openlocfilehash: 33db214013111b0dd4540a1b1d2947b7d1854db9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102547467"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104607492"
 ---
 # <a name="azure-virtual-machine-agent-overview"></a>Azure sanal makine aracısına genel bakış
 Microsoft Azure sanal makine Aracısı (VM Aracısı), Azure yapı denetleyicisi ile sanal makine (VM) etkileşimini yöneten güvenli ve hafif bir işlemdir. VM aracısının Azure sanal makine uzantıları 'nı etkinleştirmek ve yürütmek için birincil bir rolü vardır. VM uzantıları, yazılım yükleme ve yapılandırma gibi VM 'nin dağıtım sonrası yapılandırmasını etkinleştirir. VM uzantıları, bir VM 'nin yönetici parolasını sıfırlama gibi kurtarma özelliklerini de etkinleştirir. Azure VM Aracısı olmadan VM uzantıları çalıştırılamaz.
@@ -53,7 +53,7 @@ Bir VM 'yi önyüklemek için VM 'de PA yüklü olmalıdır, ancak WinGA 'nin y�
 Yüklü aracılar yoksa, Azure Backup veya Azure güvenliği gibi bazı Azure hizmetlerini kullanamazsınız. Bu hizmetler için bir uzantı yüklenmesi gerekir. WinGA olmadan bir VM dağıttıysanız, daha sonra aracının en son sürümünü yükleyebilirsiniz.
 
 ### <a name="manual-installation"></a>El ile yükleme
-Windows VM Aracısı bir Windows Installer paketiyle el ile yüklenebilir. Azure 'a dağıtılan özel bir VM görüntüsü oluşturduğunuzda el ile yükleme gerekli olabilir. Windows VM aracısını el ile yüklemek için [VM Aracısı yükleyicisini indirin](https://go.microsoft.com/fwlink/?LinkID=394789). VM Aracısı Windows Server 2008 (64 bit) ve sonraki sürümlerde desteklenir.
+Windows VM Aracısı bir Windows Installer paketiyle el ile yüklenebilir. Azure 'a dağıtılan özel bir VM görüntüsü oluşturduğunuzda el ile yükleme gerekli olabilir. Windows VM aracısını el ile yüklemek için [VM Aracısı yükleyicisini indirin](https://go.microsoft.com/fwlink/?LinkID=394789). [GitHub Windows IaaS VM Aracısı sürümlerindeki](https://github.com/Azure/WindowsVMAgent/releases)belirli bir sürümü de arayabilirsiniz. VM Aracısı Windows Server 2008 (64 bit) ve sonraki sürümlerde desteklenir.
 
 > [!NOTE]
 > VMAgent 'ı, ProvisionVMAgent Enable olmadan görüntüden dağıtılan bir VM 'ye el ile yükledikten sonra AllowExtensionOperations seçeneğinin güncelleştirilmesi önemlidir.

@@ -4,15 +4,15 @@ description: Azure Cosmos DB işlemsel (satır tabanlı) ve analitik (sütun tab
 author: Rodrigossz
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 11/30/2020
+ms.date: 03/16/2021
 ms.author: rosouz
 ms.custom: seo-nov-2020
-ms.openlocfilehash: 5dc233348188791404f826870b235d2bdfa4c202
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: bca4eb7f5f266a639916c0f8e520f025d259c39b
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96452847"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104577368"
 ---
 # <a name="what-is-azure-cosmos-db-analytical-store"></a>Analitik depo Azure Cosmos DB nedir?
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
@@ -65,32 +65,60 @@ Otomatik eşitleme, işletimsel verileri ekleme, güncelleştirme ve silme işle
 
 Otomatik eşitleme özelliği analitik depolarla birlikte aşağıdaki başlıca avantajları sağlar:
 
-#### <a name="scalability--elasticity"></a>Ölçeklenebilirlik & ölçeklenebilirlik
+### <a name="scalability--elasticity"></a>Ölçeklenebilirlik & ölçeklenebilirlik
 
 Azure Cosmos DB işlem deposu, yatay bölümleme kullanarak depolama ve aktarım hızını herhangi bir kesinti olmadan ölçeklendirebilir esnek olabilir. İşlemsel depodaki yatay bölümlendirme, verilerin neredeyse gerçek zamanlı olarak analitik depola eşitlendiğinden emin olmak için otomatik eşitlemede ölçeklenebilirlik & ölçeklenebilirlik sağlar. Veri eşitleme, işlem trafiği aktarım hızına bakılmaksızın, 1000 işlem/sn veya 1.000.000 işlem/sn olmasına bakılmaksızın gerçekleşir ve işlem deposunda sağlanan aktarım hızını etkilemez. 
 
-#### <a name="automatically-handle-schema-updates"></a><a id="analytical-schema"></a>Şema güncelleştirmelerini otomatik olarak işle
+### <a name="automatically-handle-schema-updates"></a><a id="analytical-schema"></a>Şema güncelleştirmelerini otomatik olarak işle
 
 Azure Cosmos DB işlemsel depolama şeması belirsiz ve şema veya dizin yönetimiyle uğraşmak zorunda kalmadan işlem uygulamalarınızda yineleme yapmanızı sağlar. Bunun aksine, analitik depolamanın, analitik sorgu performansını iyileştirmek için şema Azure Cosmos DB. Otomatik eşitleme özelliğiyle, Azure Cosmos DB işlem deposundan en son güncelleştirmeler için şema çıkarımını yönetir.  Ayrıca, iç içe geçmiş veri türlerini işlemeyi içeren analitik depodaki şema gösterimini de yönetir.
 
 Şemanız geliştikçe ve zaman içinde yeni özellikler eklendikçe, analitik depo otomatik olarak, işlem deposundaki tüm geçmiş şemalar genelinde bir birleştirilmiş şema sunar.
 
-##### <a name="schema-constraints"></a>Şema kısıtlamaları
+#### <a name="schema-constraints"></a>Şema kısıtlamaları
 
 Aşağıdaki kısıtlamalar, analitik depolamayı otomatik olarak göstermek ve şemayı doğru temsil etmek üzere etkinleştirdiğinizde Azure Cosmos DB işletimsel veriler üzerinde geçerlidir:
 
-* Şemada herhangi bir iç içe geçme düzeyinde en fazla 200 özellik ve en fazla iç içe geçme derinliği 5 ' i kullanabilirsiniz.
+* Şemada herhangi bir iç içe geçme düzeyinde en fazla 1000 özellik ve en fazla iç içe geçme derinliği 127 olabilir.
+  * Analitik depoda yalnızca ilk 1000 özellikleri temsil edilir.
+  * Analitik depoda yalnızca ilk 127 iç içe geçmiş düzeyler temsil edilir.
+
+* JSON belgeleri (ve Cosmos DB koleksiyonları/kapsayıcıları) benzersizlik perspektifinden büyük küçük harfe duyarlı olsa da analitik depo değildir.
+
+  * **Aynı belgede:** Aynı düzeydeki Özellikler adları, Case insensitively ile karşılaştırıldığında benzersiz olmalıdır. Örneğin, aşağıdaki JSON belgesinde aynı düzeyde "Name" ve "Name" vardır. Geçerli bir JSON belgesi olsa da, benzersizlik kısıtlamasını karşılamaz ve bu nedenle analitik depoda tam olarak gösterilmeyecektir. Bu örnekte, "ad" ve "ad", büyük/küçük harfe duyarsız bir şekilde karşılaştırıldığında aynıdır. `"Name": "fred"`İlk oluşum olduğu için yalnızca analitik depoda temsil edilir. Ve hiç `"name": "john"` gösterilmeyecektir.
   
-  * En üst düzeydeki 201 özelliklerine sahip bir öğe bu kısıtlamayı karşılamıyor ve bu nedenle analitik depoda temsil edilmez.
-  * Şemada beşten fazla iç içe geçmiş düzeyi olan bir öğe Ayrıca bu kısıtlamayı karşılamaz ve bu nedenle analitik depoda temsil edilmez. Örneğin, aşağıdaki öğe gereksinimini karşılamıyor:
+  
+  ```json
+  {"id": 1, "Name": "fred", "name": "john"}
+  ```
+  
+  * **Farklı belgelerde:** Aynı düzeydeki ve aynı ada sahip olan özellikler, ancak farklı durumlarda, ilk oluşumun ad biçimi kullanılarak aynı sütun içinde temsil edilir. Örneğin, aşağıdaki JSON belgeleri `"Name"` aynı düzeyde ve ' `"name"` dir. İlk belge biçimi olduğundan `"Name"` , bu, analitik depodaki özellik adını temsil etmek için kullanılır. Diğer bir deyişle, analitik depodaki sütun adı olacaktır `"Name"` . Her ikisi de `"fred"` `"john"` sütununda temsil edilir `"Name"` .
 
-     `{"level1": {"level2":{"level3":{"level4":{"level5":{"too many":12}}}}}}`
 
-* Durum insensitively karşılaştırılan Özellik adları benzersiz olmalıdır. Örneğin, aşağıdaki öğeler bu kısıtlamayı karşılamaz ve bu nedenle analitik deposunda gösterilmeyecektir:
+  ```json
+  {"id": 1, "Name": "fred"}
+  {"id": 2, "name": "john"}
+  ```
 
-  `{"Name": "fred"} {"name": "john"}` – "Ad" ve "ad", büyük/küçük harfe duyarsız bir şekilde karşılaştırıldığında aynıdır.
 
-##### <a name="schema-representation"></a>Şema gösterimi
+* Koleksiyonun ilk belgesi ilk analitik depo şemasını tanımlar.
+  * Belgenin ilk düzeyindeki Özellikler sütun olarak temsil edilir.
+  * İlk şemadan daha fazla özelliği olan belgeler, analitik depoda yeni sütunlar oluşturacak.
+  * Sütunlar kaldırılamaz.
+  * Bir koleksiyondaki tüm belgelerin silinmesi analitik depo şemasını sıfırlayamaz.
+  * Şema sürümü oluşturma yok. İşlemsel depodan çıkarılan son sürüm, analitik depoda göreceğiniz şeydir.
+
+* Şu anda boşluklar (boşluk) içeren Azure SYNAPSE Spark okuma sütun adlarını desteklemiyoruz.
+
+* Değerlere göre farklı davranış beklenir `NULL` :
+  * Azure SYNAPSE 'daki Spark havuzları bu değerleri 0 (sıfır) olarak okur.
+  * Azure SYNAPSE ' deki SQL sunucusuz havuzlar, bu değerleri olarak okur `NULL` .
+
+* Eksik sütunlara göre farklı davranış bekliyor:
+  * Azure SYNAPSE 'daki Spark havuzları bu sütunları olarak temsil eder `undefined` .
+  * Azure SYNAPSE 'deki SQL sunucusuz havuzlar, bu sütunları olarak temsil eder `NULL` .
+
+#### <a name="schema-representation"></a>Şema gösterimi
 
 Analiz deposunda iki şema gösterimi modu var. Bu modlarda sütunlu gösterimin basitliği, polimorfik şemaları işleme ve sorgu deneyiminin basitliği arasında denge kuruluyor:
 
@@ -106,7 +134,7 @@ Analiz deposunda iki şema gösterimi modu var. Bu modlarda sütunlu gösterimin
 
 * Bir özellik, birden çok öğe arasında her zaman aynı türe sahiptir.
 
-  * Örneğin, `{"a":123} {"a": "str"}` `"a"` bazen bir dize ve bazen bir sayı olduğundan, iyi tanımlanmış bir şemaya sahip değildir. Bu durumda, analitik depo veri türünü `“a”` `“a”` kapsayıcının kullanım ömrü içinde ilk oluşan öğede veri türü olarak kaydeder. Veri türünün farklı olduğu öğeler `“a”` analitik depoya dahil edilmez.
+  * Örneğin, `{"a":123} {"a": "str"}` `"a"` bazen bir dize ve bazen bir sayı olduğundan, iyi tanımlanmış bir şemaya sahip değildir. Bu durumda, analitik depo veri türünü `"a"` `“a”` kapsayıcının kullanım ömrü içinde ilk oluşan öğede veri türü olarak kaydeder. Belge yine analitik depoya dahil edilecek, ancak veri türünün farklı olduğu öğeler `"a"` Bu şekilde olmayacaktır.
   
     Bu koşul, null özellikler için uygulanmaz. Örneğin, `{"a":123} {"a":null}` hala iyi tanımlanmış.
 
@@ -155,7 +183,7 @@ Bu, tüm özellik veri türlerinin ve bunların son ek temsillerini analitik dep
 |Int64  | ". Int64"  |255486129307|
 |Null   | ". null"   | null|
 |Dize|    ". String" | "ABC"|
-|Zaman damgası |    ". Timestamp" |  Zaman damgası (0, 0)|
+|Timestamp |    ". Timestamp" |  Zaman damgası (0, 0)|
 |DateTime   |". Date"    | Iztarihi ("2020-08-21T07:43:07.375 Z")|
 |ObjectId   |". ObjectID"    | ObjectID ("5f3f7b59330ec25c132623a2")|
 |Belge   |". Object" |    {"a": "a"}|
@@ -230,7 +258,7 @@ Daha fazla bilgi için bkz. [bir kapsayıcıda ANALITIK TTL yapılandırma](conf
 
 Daha fazla bilgi için aşağıdaki belgelere bakın:
 
-* [Azure Cosmos DB için Azure SYNAPSE bağlantısı](synapse-link.md)
+* [Azure Cosmos DB için Azure Synapse Link](synapse-link.md)
 
 * [Azure Cosmos DB için Azure Synapse Link'i kullanmaya başlama](configure-synapse-link.md)
 

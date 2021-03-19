@@ -11,12 +11,12 @@ author: barbaraselden
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 94187f2f94581b4ff48ddb0cd014dc26268fcf15
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.openlocfilehash: 55fc4c0b5f3e2bbf57c972ad4a7fd2c9bdd3810e
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102500521"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104579204"
 ---
 # <a name="plan-an-azure-active-directory-self-service-password-reset-deployment"></a>Azure Active Directory self servis parola sıfırlama dağıtımını planlayın
 
@@ -255,7 +255,7 @@ SSPR genellikle kullanıcı sorunları oluşturmadığından, oluşabilecek soru
 
 Destek takımınızın başarısını etkinleştirmek için, kullanıcılarınızın aldığınız sorulara dayalı bir SSS oluşturabilirsiniz. İşte birkaç örnek:
 
-| Senaryolar| Açıklama |
+| Senaryolar| Description |
 | - | - |
 | Kullanıcının kayıtlı bir kimlik doğrulama yöntemi yok| Kullanıcı parolasını sıfırlamaya çalışıyor ancak kaydoldukları kimlik doğrulama yöntemlerinden hiçbirine sahip değil (örnek: kendi cep telefonlarını evde ve e-postaya erişemez) |
 | Kullanıcı Office veya cep telefonunda bir metin veya çağrı almıyor| Kullanıcı, kimliğini metin veya çağrı yoluyla doğrulamaya çalışıyor ancak bir metin/çağrı almıyor. |
@@ -322,7 +322,7 @@ Kayıt ve parola sıfırlama için denetim günlükleri 30 gün boyunca kullanı
 
 ### <a name="authentication-methods--usage-and-insights"></a>Kimlik doğrulama yöntemleri-kullanım ve Öngörüler
 
-[Kullanım ve Öngörüler](./howto-authentication-methods-usage-insights.md) , Azure AD MFA ve SSPR gibi özelliklerin kimlik doğrulama yöntemlerinin kuruluşunuzda nasıl çalıştığını anlamanıza olanak tanır. Bu raporlama özelliği, kuruluşunuzun hangi yöntemlerin kayıt yaptığını ve bunların nasıl kullanılacağını anlamak için gerekenleri sağlar.
+[Kullanım ve Öngörüler](./howto-authentication-methods-activity.md) , Azure AD MFA ve SSPR gibi özelliklerin kimlik doğrulama yöntemlerinin kuruluşunuzda nasıl çalıştığını anlamanıza olanak tanır. Bu raporlama özelliği, kuruluşunuzun hangi yöntemlerin kayıt yaptığını ve bunların nasıl kullanılacağını anlamak için gerekenleri sağlar.
 
 ### <a name="troubleshoot"></a>Sorun giderme
 

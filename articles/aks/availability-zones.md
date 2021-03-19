@@ -4,13 +4,13 @@ description: Azure Kubernetes Service (AKS) içindeki kullanılabilirlik bölgel
 services: container-service
 ms.custom: fasttrack-edit, references_regions, devx-track-azurecli
 ms.topic: article
-ms.date: 09/04/2020
-ms.openlocfilehash: 3eec8a6c331227d9d6298c46b272a5784080d342
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.date: 03/16/2021
+ms.openlocfilehash: 4c5b0ceb3f8e0b96f18a67ed0c7dbf1b56ac30da
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102180335"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104583556"
 ---
 # <a name="create-an-azure-kubernetes-service-aks-cluster-that-uses-availability-zones"></a>Kullanılabilirlik alanlarını kullanan bir Azure Kubernetes hizmeti (AKS) kümesi oluşturma
 
@@ -29,6 +29,7 @@ Azure CLı sürüm 2.0.76 veya sonraki bir sürümün yüklü ve yapılandırıl
 AKS kümeleri Şu anda şu bölgelerde kullanılabilirlik alanları kullanılarak oluşturulabilir:
 
 * Doğu Avustralya
+* Güney Brezilya
 * Orta Kanada
 * Central US
 * Doğu ABD 
@@ -167,7 +168,7 @@ Name:       aks-nodepool1-28993262-vmss000004
 Artık 1 ve 2. bölgelerde iki ek düğüm vardır. Üç çoğaltmalardan oluşan bir uygulamayı dağıtabilirsiniz. Örnek olarak NGıNX kullanacağız:
 
 ```console
-kubectl create deployment nginx --image=nginx
+kubectl create deployment nginx --image=mcr.microsoft.com/oss/nginx/nginx:1.15.5-alpine
 kubectl scale deployment nginx --replicas=3
 ```
 

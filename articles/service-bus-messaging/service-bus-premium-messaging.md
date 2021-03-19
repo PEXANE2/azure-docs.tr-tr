@@ -3,12 +3,12 @@ title: Azure Service Bus Premium ve Standart katmanlar
 description: Bu makalede, Azure Service Bus standart ve Premium katmanları açıklanmaktadır. Bu katmanları karşılaştırır ve teknik farklılıklar sağlar.
 ms.topic: conceptual
 ms.date: 02/17/2021
-ms.openlocfilehash: 0385526560e6aafaab66d9212ff54caff2362ebd
-ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
+ms.openlocfilehash: aa08a99009ef3d20e831e214ae5811059817d13c
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100636518"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104607560"
 ---
 # <a name="service-bus-premium-and-standard-messaging-tiers"></a>Service Bus Premium ve Standart Mesajlaşma katmanları
 
@@ -26,7 +26,7 @@ Aşağıdaki tabloda bazı üst düzey farklılıklar vurgulanmıştır.
 | İş yükünün ölçeğini artırma veya azaltma |Yok |
 | İleti boyutu 1 MB 'a kadar. Bu sınır gelecekte oluşturulabilir. Hizmette en son önemli güncelleştirmeler için bkz. [Azure blogda mesajlaşma](https://techcommunity.microsoft.com/t5/messaging-on-azure/bg-p/MessagingonAzureBlog). |İleti boyutu 256 KB’a kadar |
 
-**Service Bus Premium Mesajlaşma Hizmeti**, CPU'da ve bellek düzeyinde kaynak yalıtımına olanak sağladığından her müşterinin iş yükü yalıtımlı şekilde çalışır. Bu kaynak kapsayıcısı *mesajlaşma birimi* olarak adlandırılır. Her premium ad alanı, en az bir mesajlaşma birimi için ayrılmıştır. Her Service Bus Premium ad alanı için 1, 2, 4 veya 8 mesajlaşma birimi satın alabilirsiniz. Tek bir iş yükü veya varlık birden çok mesajlaşma birimini kapsayabilir ve mesaj birimlerinin sayısı her zaman değiştirilebilir. Sonuç olarak, Service Bus tabanlı çözümünüz için tahmin edilebilir ve tekrarlanabilir bir performans elde edersiniz.
+**Service Bus Premium Mesajlaşma Hizmeti**, CPU'da ve bellek düzeyinde kaynak yalıtımına olanak sağladığından her müşterinin iş yükü yalıtımlı şekilde çalışır. Bu kaynak kapsayıcısı *mesajlaşma birimi* olarak adlandırılır. Her premium ad alanı, en az bir mesajlaşma birimi için ayrılmıştır. Her Service Bus Premium ad alanı için 1, 2, 4, 8 veya 16 mesajlaşma birimi satın alabilirsiniz. Tek bir iş yükü veya varlık birden çok mesajlaşma birimini kapsayabilir ve mesaj birimlerinin sayısı her zaman değiştirilebilir. Sonuç olarak, Service Bus tabanlı çözümünüz için tahmin edilebilir ve tekrarlanabilir bir performans elde edersiniz.
 
 Daha tahmin edilebilir ve kullanılabilir olmasının yanı sıra bu performans, daha hızlıdır. Premium Mesajlaşma sayesinde, en yüksek performans Standart katmanda olduğundan daha hızlıdır.
 

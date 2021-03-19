@@ -12,12 +12,12 @@ ms.date: 09/03/2020
 ms.author: marsma
 ms.custom: aaddev, identityplatformtop40, contperf-fy21q1, contperf-fy21q2
 ms.reviewer: aragra, lenalepa, sureshja
-ms.openlocfilehash: c72ae2a2e6dbd2278bdd78f26c145386be22764e
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: 413f0be32b54ee6da39934cf3f8753246fbce924
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102175439"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104578813"
 ---
 # <a name="quickstart-register-an-application-with-the-microsoft-identity-platform"></a>Hızlı başlangıç: Microsoft Identity platformu ile uygulama kaydetme
 
@@ -44,7 +44,7 @@ Uygulama kaydını oluşturmak için aşağıdaki adımları izleyin:
     Görünen adı dilediğiniz zaman değiştirebilir ve birden çok uygulama kaydı aynı adı paylaşabilir. Uygulama kaydının, görüntüleme adı değil, otomatik olarak oluşturulan uygulama (istemci) KIMLIĞI, uygulamanızı kimlik platformunda benzersiz bir şekilde tanımlar.
 1. Bazen *oturum açma kiti* olarak adlandırılan, uygulamayı ne şekilde kullanacağınızı belirtin.
 
-    | Desteklenen hesap türleri | Açıklama |
+    | Desteklenen hesap türleri | Description |
     |-------------------------|-------------|
     | **Yalnızca bu kuruluş dizinindeki hesaplar** | *Kiracınızda* yalnızca kullanıcılar (veya konuklar) tarafından kullanılacak bir uygulama oluşturuyorsanız bu seçeneği belirleyin.<br><br>Genellikle, *iş kolu* (LOB) uygulaması olarak adlandırılan bu uygulama, Microsoft Identity platformunda *tek kiracılı* bir uygulamadır. |
     | **Herhangi bir kuruluş dizinindeki hesaplar** | *Herhangi bir* Azure Active Directory (Azure AD) kiracısındaki kullanıcıların uygulamanızı kullanabilbilmesini istiyorsanız bu seçeneği belirleyin. Örneğin, birden çok kuruluşa sağlamak istediğiniz bir hizmet olarak yazılım (SaaS) uygulaması oluşturuyorsanız, bu seçenek uygundur.<br><br>Bu tür bir uygulama, Microsoft Identity platformunda *çok kiracılı* bir uygulama olarak bilinir. |
@@ -89,7 +89,7 @@ Hedeflediğiniz platformu veya cihazı temel alan uygulama ayarlarını yapılan
     | **Tek sayfalı uygulama** | Uygulamanız için bir **yeniden yönlendirme URI 'si** girin. Bu URI, Microsoft Identity platformunun bir kullanıcının istemcisini yeniden yönlendirdiği ve kimlik doğrulamasından sonra güvenlik belirteçleri gönderdiği konumdur.<br/><br/>JavaScript veya angular, Vue.js, React.js veya Blazor WebAssembly gibi bir çatı kullanarak istemci tarafı Web uygulaması oluşturuyorsanız bu platformu seçin. |
     | **iOS/macOS** | Uygulama **paket kimliğini** girin. **Derleme ayarları** 'Nda veya *Info. plist* içinde Xcode içinde bulun.<br/><br/>Bir **paket kimliği** belirttiğinizde sizin için bir yeniden yönlendirme URI 'si oluşturulur. |
     | **Android** | Uygulama **paketi adını** girin. *AndroidManifest.xml* dosyasında bulun. Ayrıca **imza karmasını** oluşturun ve girin.<br/><br/>Bu ayarları belirttiğinizde sizin için bir yeniden yönlendirme URI 'SI oluşturulur. |
-    | **Mobil ve Masaüstü uygulamaları** | **Önerilen yeniden yönlendirme URI**'lerinden birini seçin. Veya özel bir **yeniden yönlendirme URI 'si** belirtin.<br/><br/>Masaüstü uygulamaları için şunu yapmanızı öneririz<br/>`https://login.microsoftonline.com/common/oauth2/nativeclient`<br/><br/>En son Microsoft kimlik doğrulama kitaplığı 'nı (MSAL) kullanmayan veya bir aracı kullanmayan mobil uygulamalar için bu platformu seçin. Masaüstü uygulamaları için de bu platformu seçin. |
+    | **Mobil ve Masaüstü uygulamaları** | **Önerilen yeniden yönlendirme URI**'lerinden birini seçin. Veya özel bir **yeniden yönlendirme URI 'si** belirtin.<br/><br/>Katıştırılmış tarayıcı kullanan masaüstü uygulamaları için<br/>`https://login.microsoftonline.com/common/oauth2/nativeclient`<br/><br/>Sistem tarayıcısı kullanan masaüstü uygulamaları için<br/>`http://localhost`<br/><br/>En son Microsoft kimlik doğrulama kitaplığı 'nı (MSAL) kullanmayan veya bir aracı kullanmayan mobil uygulamalar için bu platformu seçin. Masaüstü uygulamaları için de bu platformu seçin. |
 1. Platform yapılandırmasını gerçekleştirmek için **Yapılandır** ' ı seçin.
 
 ### <a name="redirect-uri-restrictions"></a>Yeniden yönlendirme URI kısıtlamaları

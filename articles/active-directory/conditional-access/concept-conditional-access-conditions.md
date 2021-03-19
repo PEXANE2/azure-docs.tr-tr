@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 02/10/2021
+ms.date: 03/17/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fecf3f1a302a6734d92335bc15722df4d5288a56
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: ab840b46503aed1a318e3b39a4e8fe3e4d11735c
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100362429"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104579136"
 ---
 # <a name="conditional-access-conditions"></a>Koşullu erişim: koşullar
 
@@ -174,11 +174,11 @@ Bu ayar, aşağıdaki mobil uygulamalardan ve Masaüstü istemcilerinden yapıla
 
 ### <a name="exchange-activesync-clients"></a>Exchange ActiveSync istemcileri
 
-- Kuruluşlar kullanıcılara veya gruplara ilke atarken yalnızca Exchange ActiveSync istemcileri seçebilir. Tüm **Kullanıcılar**, tüm **Konuk ve dış kullanıcılar** ya da **Dizin rolleri** , tüm kullanıcıların engellenmesine neden olur.
+- Kuruluşlar kullanıcılara veya gruplara ilke atarken yalnızca Exchange ActiveSync istemcileri seçebilir. Tüm **Kullanıcılar**, tüm **Konuk ve dış kullanıcılar** ya da **Dizin rolleri** seçildiğinde, tüm kullanıcıların ilke konusu olmasına neden olur.
 - Exchange ActiveSync istemcilerine atanan bir ilke oluştururken, **Exchange Online** , ilkeye atanmış tek bulut uygulaması olmalıdır. 
 - Kuruluşlar, cihaz platformları koşulunu kullanarak bu ilkenin kapsamını belirli platformlara **daraltabilirler** .
 
-İlkeye atanan erişim denetimi **onaylanan istemci uygulaması gerektir**' i kullanıyorsa, Kullanıcı Outlook Mobil istemcisini yüklemek ve kullanmak üzere yönlendirilir. **Multi-Factor Authentication** gerekli olduğunda, temel kimlik doğrulaması çok faktörlü kimlik doğrulamasını desteklemediğinden, etkilenen kullanıcılar engellenir.
+İlkeye atanan erişim denetimi **onaylanan istemci uygulaması gerektir**' i kullanıyorsa, Kullanıcı Outlook Mobil istemcisini yüklemek ve kullanmak üzere yönlendirilir. **Multi-Factor Authentication**, **kullanım koşulları** veya **Özel denetimlerin** gerekli olduğu durumlarda, temel kimlik doğrulaması bu denetimleri desteklemediğinden, etkilenen kullanıcılar engellenir.
 
 Daha fazla bilgi için aşağıdaki makaleleri inceleyin:
 

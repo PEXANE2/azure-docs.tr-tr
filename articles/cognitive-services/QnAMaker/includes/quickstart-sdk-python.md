@@ -3,12 +3,12 @@ title: 'Hızlı başlangıç: Python için Soru-Cevap Oluşturma istemci kitapl�
 description: Bu hızlı başlangıçta, Python için Soru-Cevap Oluşturma istemci kitaplığı ile çalışmaya başlama gösterilmektedir.
 ms.topic: include
 ms.date: 06/18/2020
-ms.openlocfilehash: c5a0beeed5d508e174b42c1525768e724f91d083
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 86d0be672b92178703b77b0f34d3d92cffdc1c19
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101730981"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104583213"
 ---
 # <a name="qna-maker-ga-stable-release"></a>[Soru-Cevap Oluşturma GA (kararlı sürüm)](#tab/version-1)
 
@@ -107,9 +107,11 @@ Kaynağınızın Azure uç noktası ve anahtarı için değişkenler oluşturun.
 > [!IMPORTANT]
 > Azure portal gidin ve önkoşullarda oluşturduğunuz Soru-Cevap Oluşturma kaynak için anahtar ve uç noktayı bulun. Kaynak **yönetimi** altında kaynağın **anahtar ve uç nokta** sayfasında yer alır.
 
-- Bu değerleri depolamak için QNA_MAKER_SUBSCRIPTION_KEY, QNA_MAKER_ENDPOINT ve QNA_MAKER_RUNTIME_ENDPOINT adlı ortam değişkenleri oluşturun.
 - QNA_MAKER_ENDPOINT değeri biçimindedir `https://YOUR-RESOURCE-NAME.cognitiveservices.azure.com` . 
-- QNA_MAKER_RUNTIME_ENDPOINT değeri biçimindedir `https://YOUR-RESOURCE-NAME.azurewebsites.net` .
+- QNA_MAKER_RUNTIME_ENDPOINT değeri biçimindedir `https://YOUR-RESOURCE-NAME.azurewebsites.net` . Soru-Cevap Oluşturma portalında Bilgi Bankası 'nı yayımladıktan sonra, çalışma zamanı uç noktasını aşağıda gösterildiği gibi bulabilirsiniz.
+
+  ![Soru-Cevap Oluşturma çalışma zamanı uç noktası](../media/endpoint.png)
+   
 - Üretim için, kimlik bilgilerinizi depolamak ve bunlara erişmek için güvenli bir yol kullanmayı düşünün. Örneğin, [Azure Anahtar Kasası](../../../key-vault/general/overview.md) güvenli anahtar depolama alanı sağlar.
 
 [!code-python[Resource variables](~/cognitive-services-quickstart-code/python/QnAMaker/sdk/quickstart.py?name=Resourcevariables)]
@@ -119,7 +121,6 @@ Kaynağınızın Azure uç noktası ve anahtarı için değişkenler oluşturun.
 > [!IMPORTANT]
 > Azure portal gidin ve önkoşullarda oluşturduğunuz Soru-Cevap Oluşturma kaynak için anahtar ve uç noktayı bulun. Kaynak **yönetimi** altında kaynağın **anahtar ve uç nokta** sayfasında yer alır.
 
-- Bu değerleri depolamak için QNA_MAKER_SUBSCRIPTION_KEY ve QNA_MAKER_ENDPOINT adlı ortam değişkenleri oluşturun.
 - QNA_MAKER_ENDPOINT değeri biçimindedir `https://YOUR-RESOURCE-NAME.cognitiveservices.azure.com` . 
 - Üretim için, kimlik bilgilerinizi depolamak ve bunlara erişmek için güvenli bir yol kullanmayı düşünün. Örneğin, [Azure Anahtar Kasası](../../../key-vault/general/overview.md) güvenli anahtar depolama alanı sağlar.
 

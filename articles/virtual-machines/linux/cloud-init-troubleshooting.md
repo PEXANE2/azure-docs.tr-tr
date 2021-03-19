@@ -8,12 +8,12 @@ ms.topic: troubleshooting
 ms.date: 07/06/2020
 ms.author: danis
 ms.reviewer: cynthn
-ms.openlocfilehash: 6c5922137b5d3ee14461adb88fba2e8b2cf41e16
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.openlocfilehash: 842107245fe26155d53866bf95e11b08d7593ad1
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102558976"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104582162"
 ---
 # <a name="troubleshooting-vm-provisioning-with-cloud-init"></a>Cloud-init ile VM sağlama sorunlarını giderme
 
@@ -56,11 +56,11 @@ VM sağlamadığında, Azure, 20 dakika boyunca ' oluşturma ' durumu gösterir 
 
 VM çalışırken, sağlanmasının neden başarısız olduğunu anlamak için VM 'deki günlüklere ihtiyacınız olacak.  VM sağlamasının neden başarısız olduğunu anlamak için VM 'yi durdurmayın. VM 'yi çalışır durumda tutun. Günlükleri toplamak için, başarısız VM 'yi çalışır durumda tutmanız gerekir. Günlükleri toplamak için aşağıdaki yöntemlerden birini kullanın:
 
-- [Seri Konsol](../troubleshooting/serial-console-grub-single-user-mode.md)
+- [Seri Konsol](/troubleshoot/azure/virtual-machines/serial-console-grub-single-user-mode)
 
 - VM oluşturmadan önce [önyükleme tanılamayı etkinleştirin](/previous-versions/azure/virtual-machines/linux/tutorial-monitor#enable-boot-diagnostics) ve önyükleme sırasında bunları [görüntüleyin](/previous-versions/azure/virtual-machines/linux/tutorial-monitor#view-boot-diagnostics) .
 
-- İşletim sistemi diskini eklemek ve bağlamak için [az VM Repair çalıştırın](../troubleshooting/repair-linux-vm-using-azure-virtual-machine-repair-commands.md) , bu da bu günlükleri toplamanıza olanak tanır:
+- İşletim sistemi diskini eklemek ve bağlamak için [az VM Repair çalıştırın](/troubleshoot/azure/virtual-machines/repair-linux-vm-using-azure-virtual-machine-repair-commands) , bu da bu günlükleri toplamanıza olanak tanır:
 ```bash
 /var/log/cloud-init*
 /var/log/waagent*
@@ -108,7 +108,7 @@ Bir hata veya uyarı bulduktan sonra, Cloud-init ' in hata veya uyarı vermeden 
 2019-10-10 04:51:24,010 - util.py[DEBUG]: Running command ['mount', '-o', 'ro,sync', '-t', 'auto', u'/dev/sr0', '/run/cloud-init/tmp/tmpXXXXX'] with allowed return codes [0] (shell=False, capture=True)
 ```
 
-[Seri konsoluna](../troubleshooting/serial-console-grub-single-user-mode.md)erişiminiz varsa, Cloud-init ' nin çalıştırmaya çalıştığı komutu yeniden çalıştırmayı deneyebilirsiniz.
+[Seri konsoluna](/troubleshoot/azure/virtual-machines/serial-console-grub-single-user-mode)erişiminiz varsa, Cloud-init ' nin çalıştırmaya çalıştığı komutu yeniden çalıştırmayı deneyebilirsiniz.
 
 Günlüğe kaydetme, `/var/log/cloud-init.log` /etc/Cloud/Cloud.exe içinde de yeniden yapılandırılabilir ve 05_logging. cfg. Cloud-init günlüğü hakkında daha fazla bilgi için [Cloud-init belgelerine](https://cloudinit.readthedocs.io/en/latest/topics/logging.html)bakın. 
 

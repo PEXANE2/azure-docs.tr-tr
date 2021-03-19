@@ -1,18 +1,18 @@
 ---
 title: Azure Backup için Azure Ilke mevzuat uyumluluk denetimleri
 description: Azure Backup için kullanılabilen Azure Ilke mevzuat uyumluluk denetimlerini listeler. Bu yerleşik ilke tanımları, Azure kaynaklarınızın uyumluluğunu yönetmek için yaygın yaklaşımlar sağlar.
-ms.date: 03/10/2021
+ms.date: 03/17/2021
 ms.topic: sample
 author: dcurwin
 ms.author: dacurwin
 ms.service: backup
 ms.custom: subject-policy-compliancecontrols
-ms.openlocfilehash: 6254d55979ead68036898654363d8a9eaad5221b
-ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
+ms.openlocfilehash: 101964669bc7acbb5708ceb0b8f909c3b517b7f5
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/11/2021
-ms.locfileid: "102635081"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104587613"
 ---
 # <a name="azure-policy-regulatory-compliance-controls-for-azure-backup"></a>Azure Backup için Azure Ilke mevzuat uyumluluk denetimleri
 

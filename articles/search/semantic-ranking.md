@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 03/12/2021
-ms.openlocfilehash: e3078c8f71f8862cacad552bb3176c08530e79bb
-ms.sourcegitcommit: df1930c9fa3d8f6592f812c42ec611043e817b3b
+ms.openlocfilehash: 01c4d6475ec23b8a55d91e18f49cab27760aa907
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2021
-ms.locfileid: "103418853"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104604296"
 ---
 # <a name="semantic-ranking-in-azure-cognitive-search"></a>Azure Bilişsel Arama anlam derecelendirmesi
 
@@ -28,25 +28,35 @@ Anlamsal sıralama, kaynak ve zaman yoğunluğu olur. Bir sorgu işleminin bekle
 
 Anlam derecelendirmesi için model, her birinin sorgu amacına ne kadar iyi eşleştiğini temel alarak belgeleri yeniden Puanlama için hem makine okuma kavrama hem de aktarım öğrenimini kullanır.
 
-1. Her belge için, semantik derecelendiricisini searchfields parametresindeki alanları, içeriği bir büyük dize halinde birleştirerek değerlendirir.
+### <a name="preparation-passage-extraction-phase"></a>Hazırlık (paszu ayıklama) aşaması
 
-1. Daha sonra dize, genel uzunluğunun 8.000 belirteçten fazla olmamasını sağlamak için kırpılır. Çok büyük belgeleriniz varsa, çok sayıda içeriğe sahip bir içerik alanı veya merged_content alanı varsa, belirteç sınırından sonra herhangi bir şey yok sayılır.
+İlk sonuçlardaki her belge için, anahtar paslarını tanımlayan bir paszu ayıklama alıştırması vardır. Bu, içeriğe hafif bir şekilde işlenebilirler.
 
-1. 50 belgelerinin her biri artık tek bir Long dizesiyle temsil edilir. Bu dize özetleme modeline gönderilir. Özetleme modeli, içeriği özetlemek veya soruyu yanıtlamak için görüntülenen pasları belirlemek için makine okuma kavrama kullanarak açıklamalı alt yazılar (ve yanıtlar) oluşturur. Özetleme modelinin çıktısı, en fazla 128 belirteç olan daha azaltılmış bir dizedir.
+1. 50 belgelerinin her biri için, searchFields parametresindeki her bir alan ardışık sırayla değerlendirilir. Her bir alandan içerik tek bir Long dize halinde birleştirilir. 
 
-1. Daha küçük dize, belgenin açıklamalı alt yazı haline gelir ve daha büyük dizede bulunan en ilgili pasalleri temsil eder. 50 (veya daha az) açıklamalı alt yazı kümesi daha sonra sipariş ilgisiyle derecelendirilir. 
+1. Uzun dize daha sonra, genel uzunluğun 8.000 belirteçten fazla olmamasını sağlamak için kırpılır. Bu nedenle, dize içine dahil olmaları için önce kısa alanları konumlandırmanızın kullanılması önerilir. Metin ağır alanları olan çok büyük belgeleriniz varsa, belirteç limitinin ardından herhangi bir şey yok sayılır.
 
-Kavramsal ve anlam ilgisi vektör temsili ve terim kümeleri aracılığıyla oluşturulur. Anahtar sözcük benzerliği algoritması, sorgudaki herhangi bir terime eşit ağırlığa izin verebilir, anlam modeli, başka bir şekilde yüzeyinde bulunmayan sözcükler arasındaki bağımlılıkları ve ilişkileri tanımak üzere eğitilmiştir. Sonuç olarak, bir sorgu dizesi aynı kümeden terimler içeriyorsa, her ikisini de içeren bir belge, bunlardan daha yüksek bir değere sahip olur.
+1. Her belge artık 8.000 belirtece kadar olan tek bir Long dizesiyle temsil edilir. Bu dizeler özetleme modeline gönderilir, bu da dizeyi daha da azaltır. Özetleme modeli, belgeyi en iyi şekilde özetleyen veya soruyu yanıtlayan önemli tümceler veya paslar için uzun dizeyi değerlendirir.
 
-:::image type="content" source="media/semantic-search-overview/semantic-vector-representation.png" alt-text="Bağlam için vektör temsili" border="true":::
+1. Bu aşamanın çıktısı bir başlık (ve isteğe bağlı olarak bir yanıt). Başlık, belge başına en çok 128 belirtece sahiptir ve belgenin en fazla temsilcisi olarak kabul edilir.
+
+### <a name="scoring-and-ranking-phases"></a>Puanlama ve derecelendirme aşamaları
+
+Bu aşamada, ilgiyi değerlendirmek için tüm 50 açıklamalı alt yazılar değerlendirilir.
+
+1. Puanlama, girilen sorguya göre kavramsal ve anlamsal ilgi için her bir açıklamalı alt yazı hesaplanarak belirlenir.
+
+   Aşağıdaki diyagramda "anlam uygunluğu" ne anlama geldiğini gösteren bir çizim sunulmaktadır. Finans, hukuk, Coğrafya veya dilbilgisi bağlamında kullanılabilecek "sermaye" terimini göz önünde bulundurun. Bir sorgu aynı vektör alanından terimler içeriyorsa (örneğin, "sermaye" ve "yatırım"), aynı küme içindeki belirteçleri de içeren bir belge, bunlardan daha yüksek puan verir.
+
+   :::image type="content" source="media/semantic-search-overview/semantic-vector-representation.png" alt-text="Bağlam için vektör temsili" border="true":::
+
+1. Bu aşamanın çıktısı @search.rerankerScore her belgeye atanır. Tüm belgeler puanlandıktan sonra, Bunlar azalan sırada listelenir ve sorgu yanıt yüküne dahil edilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Anlamsal sıralama, belirli bölgelerde Standart katmanlarda sunulur. Daha fazla bilgi edinmek ve kaydolmak için bkz. [kullanılabilirlik ve fiyatlandırma](semantic-search-overview.md#availability-and-pricing).
-
-Yeni bir sorgu türü, anlamsal aramanın ilgi derecesini ve yanıt yapılarını mümkün bir şekilde sunar. Başlamak için [bir anlam sorgusu oluşturun](semantic-how-to-query-request.md) .
+Anlamsal sıralama, belirli bölgelerde Standart katmanlarda sunulur. Daha fazla bilgi edinmek ve kaydolmak için bkz. [kullanılabilirlik ve fiyatlandırma](semantic-search-overview.md#availability-and-pricing). Yeni bir sorgu türü, anlamsal aramanın ilgi derecesini ve yanıt yapılarını mümkün bir şekilde sunar. Başlamak için [bir anlam sorgusu oluşturun](semantic-how-to-query-request.md).
 
 Alternatif olarak, ilgili bilgiler için aşağıdaki makalelerden birini gözden geçirin.
 
-+ [Sorgu koşullarına yazım denetimi Ekle](speller-how-to-add.md)
++ [Anlamsal aramaya genel bakış](semantic-search-overview.md)
 + [Anlam yanıtı döndürme](semantic-answers.md)

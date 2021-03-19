@@ -3,12 +3,12 @@ title: Azure İşlevleri için uygulama ayarları başvurusu
 description: Azure Işlevleri uygulama ayarları veya ortam değişkenleri için başvuru belgeleri.
 ms.topic: conceptual
 ms.date: 09/22/2018
-ms.openlocfilehash: 6fa8e2d9fb2270d53d8c0419ac7b4d88d79f30fd
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: fb00f0fe16342bf603d534c34a860278dc21deac
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102425711"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104595988"
 ---
 # <a name="app-settings-reference-for-azure-functions"></a>Azure İşlevleri için uygulama ayarları başvurusu
 
@@ -257,9 +257,17 @@ Yalnızca Premium planına veya Windows üzerinde çalışan bir tüketim planı
 
 Dağıtım sırasında bir işlev uygulaması oluşturmak için bir Azure Resource Manager kullanırken, şablonda WEBSITE_CONTENTSHARE eklemeyin. Bu uygulama ayarı dağıtım sırasında oluşturulur. Daha fazla bilgi için bkz. [işlev uygulamanız için kaynak dağıtımını otomatikleştirme](functions-infrastructure-as-code.md#windows).   
 
+## <a name="website_dns_server"></a>Web sItesI \_ DNS \_ sunucusu
+
+IP adreslerini çözümlerken bir uygulama tarafından kullanılan DNS sunucusunu ayarlar. Bu ayar genellikle [Azure DNS özel bölgeler](functions-networking-options.md#azure-dns-private-zones) ve [Özel uç noktalar](functions-networking-options.md#restrict-your-storage-account-to-a-virtual-network)gibi belirli ağ işlevleri kullanılırken gereklidir.   
+
+|Anahtar|Örnek değer|
+|---|------------|
+|Web sItesI \_ DNS \_ sunucusu|168.63.129.16|
+
 ## <a name="website_max_dynamic_application_scale_out"></a>Web sItesI \_ en büyük \_ dinamik \_ uygulama \_ ölçeği \_ genişletme
 
-İşlev uygulamasının ölçeklenebilen en fazla örnek sayısı. Varsayılan sınır yoktur.
+Uygulamanın ölçeklenebilen en fazla örnek sayısı. Varsayılan sınır yoktur.
 
 > [!IMPORTANT]
 > Bu ayar önizlemededir.  [İşlev için en fazla ölçek genişletme için bir uygulama özelliği](./event-driven-scaling.md#limit-scale-out) eklenmiştir ve ölçeği ölçeğini sınırlamak için önerilen yoldur.
@@ -297,6 +305,14 @@ Geçerli değerler, bir dağıtım paketi dosyasının konumunu çözen bir URL 
 |Web sItesI \_ Saat \_ dilimi|Linux|Amerika/New_York|
 
 [!INCLUDE [functions-timezone](../../includes/functions-timezone.md)]
+
+## <a name="website_vnet_route_all"></a>Web sItesI \_ VNET \_ yönlendirme \_ Tümü
+
+Uygulamadaki tüm giden trafiğin sanal ağ üzerinden yönlendirilip yönlendirilmeyeceğini gösterir. Ayar değeri `1` , tüm trafiğin sanal ağ üzerinden yönlendirildiğini gösterir. [Bölgesel sanal ağ tümleştirmesinin](functions-networking-options.md#regional-virtual-network-integration)özelliklerini kullanarak kullanırken bu ayarı kullanmanız gerekir. [Statik bir gıden IP adresi tanımlamak için bir sanal ağ NAT ağ geçidi kullanıldığında](functions-how-to-use-nat-gateway.md)da kullanılır. 
+
+|Anahtar|Örnek değer|
+|---|------------|
+|Web sItesI \_ VNET \_ yönlendirme \_ Tümü|1|
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

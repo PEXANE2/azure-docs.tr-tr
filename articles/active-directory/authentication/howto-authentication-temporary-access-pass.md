@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 03/03/2021
+ms.date: 03/18/2021
 ms.author: justinha
 author: inbarckms
 manager: daveba
 ms.reviewer: inbarckms
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 101e3ee9279d3560c0b561f0ea7ea695387bee15
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.openlocfilehash: 44b80b9c6847cfdc8402cb3b4983f15873e367d3
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102096471"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104579391"
 ---
 # <a name="configure-temporary-access-pass-in-azure-ad-to-register-passwordless-authentication-methods-preview"></a>Azure AD 'de geçici erişim geçişini, passwordless kimlik doğrulama yöntemlerini (Önizleme) kaydetmek için yapılandırma
 
@@ -127,7 +127,7 @@ Bu sınırlamaları aklınızda bulundurun:
 - Geçici erişim geçişi, ağ Ilkesi sunucusu (NPS) uzantısı ve Active Directory Federasyon Hizmetleri (AD FS) (AD FS) bağdaştırıcısıyla birlikte kullanılamaz.
 - Kiracıya sorunsuz SSO etkinleştirildiğinde, kullanıcılardan bir parola girmesi istenir. **Bunun yerine geçici erişim geçişinizi kullanın** bağlantısı, kullanıcının geçici bir erişim geçişiyle oturum açması için kullanılabilir olacaktır.
 
-![Bunun yerine geçici erişim geçişi kullan ekran görüntüsü](./media/how-to-authentication-temporary-access-pass/alternative.png)
+  ![Bunun yerine geçici erişim geçişi kullan ekran görüntüsü](./media/how-to-authentication-temporary-access-pass/alternative.png)
 
 ## <a name="troubleshooting"></a>Sorun giderme    
 

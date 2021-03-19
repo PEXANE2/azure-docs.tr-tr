@@ -4,12 +4,12 @@ ms.author: dobett
 ms.service: iot-pnp
 ms.topic: include
 ms.date: 11/19/2020
-ms.openlocfilehash: ea136069da73d88174d9d40fe9c60e84982909df
-ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
+ms.openlocfilehash: 51f66a674f9e730670084a43bd7bf059a0742cc3
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99616545"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104582835"
 ---
 ## <a name="model-id-announcement"></a>Model KIMLIĞI duyurusu
 
@@ -41,7 +41,7 @@ deviceClient = new DeviceClient(deviceConnectionString, protocol, options);
 
 ## <a name="implement-telemetry-properties-and-commands"></a>Telemetri, özellik ve komutları uygulama
 
-[Iot Tak ve kullan modellerdeki bileşenleri anlama](../articles/iot-pnp/concepts-components.md)bölümünde açıklandığı gibi, cihaz oluşturucuların cihazlarını açıklamak için bileşenleri kullanmak istemeseler de karar vermelidir. Bileşenler kullanılırken, cihazların bu bölümde açıklanan kurallara uymalıdır.
+[Iot Tak ve kullan modellerdeki bileşenleri anlama](../articles/iot-pnp/concepts-modeling-guide.md)bölümünde açıklandığı gibi, cihaz oluşturucuların cihazlarını açıklamak için bileşenleri kullanmak istemeseler de karar vermelidir. Bileşenler kullanılırken, cihazların bu bölümde açıklanan kurallara uymalıdır.
 
 ### <a name="telemetry"></a>Telemetri
 

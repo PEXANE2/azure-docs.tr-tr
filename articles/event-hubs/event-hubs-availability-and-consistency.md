@@ -4,12 +4,12 @@ description: Bölümler kullanılarak Azure Event Hubs maksimum kullanılabilirl
 ms.topic: article
 ms.date: 03/15/2021
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 62249357f8c6aa8521924dceef26a6f2c1e9e296
-ms.sourcegitcommit: 27cd3e515fee7821807c03e64ce8ac2dd2dd82d2
+ms.openlocfilehash: 6005a51314cff19883fc2a07e4810bd24eb94b24
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103600854"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104600964"
 ---
 # <a name="availability-and-consistency-in-event-hubs"></a>Event Hubs’da kullanılabilirlik ve tutarlılık
 Bu makalede, Azure Event Hubs tarafından desteklenen kullanılabilirlik ve tutarlılık hakkında bilgi sağlanır. 
@@ -43,7 +43,7 @@ Event Hubs hizmetinin bölümler arasında yük dengelenmesi için bölüm bilgi
 Bu bölümde, farklı programlama dilleri kullanarak belirli bir bölüme olay gönderme hakkında bilgi edineceksiniz. 
 
 ### <a name="net"></a>[.NET](#tab/dotnet)
-Olayları belirli bir bölüme göndermek için, [](/dotnet/api/azure.messaging.eventhubs.producer.eventhubproducerclient.createbatchasync#Azure_Messaging_EventHubs_Producer_EventHubProducerClient_CreateBatchAsync_Azure_Messaging_EventHubs_Producer_CreateBatchOptions_System_Threading_CancellationToken_) `PartitionId` `PartitionKey` [createbatchoptions](//dotnet/api/azure.messaging.eventhubs.producer.createbatchoptions)içinde veya ' i belirterek EventHubProducerClient. createbatchasync metodunu kullanarak Batch oluşturun. Aşağıdaki kod, bir bölüm anahtarı belirterek belirli bir bölüme olay toplu işi gönderir. 
+Olayları belirli bir bölüme göndermek için, [](/dotnet/api/azure.messaging.eventhubs.producer.eventhubproducerclient.createbatchasync#Azure_Messaging_EventHubs_Producer_EventHubProducerClient_CreateBatchAsync_Azure_Messaging_EventHubs_Producer_CreateBatchOptions_System_Threading_CancellationToken_) `PartitionId` `PartitionKey` [createbatchoptions](//dotnet/api/azure.messaging.eventhubs.producer.createbatchoptions)içinde veya ' i belirterek EventHubProducerClient. createbatchasync metodunu kullanarak Batch oluşturun. Aşağıdaki kod, bir bölüm anahtarı belirterek belirli bir bölüme olay toplu işi gönderir. Event Hubs, bölüm anahtarı değerini paylaşan tüm olayların birlikte depolanmasını ve varış sırasına göre teslim edilmesini sağlar.
 
 ```csharp
 var batchOptions = new CreateBatchOptions { PartitionKey = "cities" };

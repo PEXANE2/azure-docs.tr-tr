@@ -2,32 +2,32 @@
 title: Kavramlar-vSphere rol tabanlı erişim denetimi (vSphere RBAC)
 description: Azure VMware çözümü için vSphere rol tabanlı erişim denetimi 'nin temel özellikleri hakkında bilgi edinin
 ms.topic: conceptual
-ms.date: 03/16/2021
-ms.openlocfilehash: 1e49f219fba8317040bfa56f6576a7c1f5b1ae22
-ms.sourcegitcommit: 87a6587e1a0e242c2cfbbc51103e19ec47b49910
+ms.date: 03/18/2021
+ms.openlocfilehash: c2d27531f7a0acd36b4047e98aac994668f64a09
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103573344"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104586179"
 ---
 # <a name="vsphere-role-based-access-control-vsphere-rbac-for-azure-vmware-solution"></a>Azure VMware çözümü için vSphere rol tabanlı erişim denetimi (vSphere RBAC)
 
 Azure VMware çözümünde, vCenter cloudadmin adlı yerleşik bir yerel kullanıcıya sahiptir ve yerleşik CloudAdmin rolüne atanır. Yerel cloudadmin kullanıcısı, AD 'de kullanıcıları ayarlamak için kullanılır. Genel olarak, CloudAdmin rolü özel bulutunuzda iş yüklerini oluşturur ve yönetir. Azure VMware çözümünde, CloudAdmin rolünde diğer VMware bulut çözümlerinden farklı vCenter ayrıcalıkları vardır.     
 
 > [!NOTE]
-> Azure VMware çözümü, vCenter üzerinde özel roller sunar, ancak şu anda bunları Azure VMware Çözüm portalı 'nda sunmaz. Daha fazla bilgi için bu makalenin ilerleyen kısımlarında [vCenter üzerinde özel roller oluşturma](#create-custom-roles-on-vcenter) bölümüne bakın. 
+> Azure VMware çözümü, vCenter üzerinde özel roller sunarak bunları Azure VMware Çözüm portalı 'nda sunmaz. Daha fazla bilgi için bu makalenin ilerleyen kısımlarında [vCenter üzerinde özel roller oluşturma](#create-custom-roles-on-vcenter) bölümüne bakın. 
 
 Bir vCenter ve ESXi şirket içi dağıtımda, yöneticinin vCenter hesabına erişimi vardır administrator@vsphere.local . Ayrıca, daha fazla Active Directory (AD) Kullanıcı/Grup atanabilir. 
 
 Azure VMware Çözüm dağıtımında, yöneticinin yönetici kullanıcı hesabına erişimi yok. Ancak, vCenter üzerinde CloudAdmin rolüne AD kullanıcıları ve grupları atayabilir.  
 
-Özel bulut kullanıcısının erişimi yok ve Microsoft tarafından desteklenen ve yönetilen belirli yönetim bileşenlerini yapılandıramıyor. Örneğin, kümeler, konaklar, veri depoları ve dağıtılmış sanal anahtarlar.
+Özel bulut kullanıcısının erişimi yok ve Microsoft tarafından desteklenen ve yönetilen belirli yönetim bileşenlerini yapılandıramıyor. Örneğin kümeler, konaklar, veri depoları ve dağıtılmış sanal anahtarlar.
 
 ## <a name="azure-vmware-solution-cloudadmin-role-on-vcenter"></a>VCenter 'da Azure VMware Çözüm CloudAdmin rolü
 
 Azure VMware Çözüm CloudAdmin rolüne verilen ayrıcalıkları Azure VMware çözümünüz özel bulut vCenter ' da görebilirsiniz.
 
-1. SDDC vSphere istemcisinde oturum açın ve **menü**  >  **yönetimi**' ne gidin.
+1. VCenter 'da oturum açın ve **menü**  >  **yönetimine** gidin.
 1. **Access Control** altında **Roller**' i seçin.
 1. Roller listesinden **CloudAdmin** öğesini seçin ve ardından **ayrıcalıklar**' ı seçin. 
 
@@ -62,7 +62,7 @@ Azure VMware çözümü, CloudAdmin rolünden eşit veya daha düşük ayrıcal�
 
 CloudAdmin rolü, geçerli rollerine eşit veya daha düşük ayrıcalıklara sahip özel roller oluşturabilir, değiştirebilir veya silebilir. CloudAdmin daha büyük ayrıcalıklara sahip roller oluşturabilirsiniz, ancak rolü herhangi bir kullanıcıya veya gruba atayamayacak veya rolü silemeyeceksiniz.
 
-Atanmayan veya silinebilen rollerin oluşturulmasını engellemek için, Azure VMware çözümü, yeni özel roller oluşturmaya yönelik temel olarak CloudAdmin rolünü kopyalamayı önerir.
+Atanmayan veya silinmediği rollerin oluşturulmasını engellemek için, CloudAdmin rolünü yeni özel roller oluşturma temeli olarak klonlamanız önerilir.
 
 ### <a name="create-a-custom-role"></a>Özel rol oluşturma
 1. Cloudadmin \@ vSphere. Local veya cloudadmin rolüne sahip bir Kullanıcı Ile vCenter 'da oturum açın.

@@ -7,12 +7,12 @@ ms.topic: reference
 ms.date: 11/18/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
-ms.openlocfilehash: dbcd6d55ee921c7fabd8e746e0fdcd6f1427733c
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.openlocfilehash: f99f9d240a0a9220d3b7f57cddd0a4f8ba6b6101
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102210715"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104596000"
 ---
 # <a name="timer-trigger-for-azure-functions"></a>Azure Işlevleri için süreölçer tetikleyicisi
 
@@ -256,7 +256,7 @@ public void keepAlive(
 
 Aşağıdaki tabloda, dosyasında ve özniteliğinde *function.js* ayarladığınız bağlama yapılandırma özellikleri açıklanmaktadır `TimerTrigger` .
 
-|function.jsözelliği | Öznitelik özelliği |Açıklama|
+|function.jsözelliği | Öznitelik özelliği |Description|
 |---------|---------|----------------------|
 |**türüyle** | yok | "TimerTrigger" olarak ayarlanmalıdır. Bu özellik, Azure portal tetikleyiciyi oluşturduğunuzda otomatik olarak ayarlanır.|
 |**Görünüm** | yok | "In" olarak ayarlanmalıdır. Bu özellik, Azure portal tetikleyiciyi oluşturduğunuzda otomatik olarak ayarlanır. |
@@ -365,6 +365,16 @@ Zamanlayıcı tetikleyicisi, bir işlev uygulaması birden çok örneğe ölçek
 ## <a name="retry-behavior"></a>Yeniden deneme davranışı
 
 Sıra tetikleyicisinden farklı olarak, bir işlev başarısız olduktan sonra Zamanlayıcı tetikleyicisi yeniden denenmez. Bir işlev başarısız olduğunda, zamanlamaya bir sonraki sefer kadar bir kez çağrılmaz.
+
+## <a name="manually-invoke-a-timer-trigger"></a>El ile bir Zamanlayıcı tetikleyicisi çağırma
+
+Azure Işlevleri için süreölçer tetikleyicisi, işlevi el ile tetiklemek için çağrılabilecek bir HTTP Web kancası sağlar. Bu, aşağıdaki senaryolarda son derece yararlı olabilir.
+
+* Tümleştirme testleri
+* Duman testi veya ısınma etkinliğinin parçası olarak yuva takas
+* Bir veritabanındaki önbelleği veya arama tablosunu hemen doldurmak için bir işlevin ilk dağıtımı
+
+Zamanlayıcı tarafından tetiklenen bir işlevi el ile çağırma hakkındaki ayrıntılar için lütfen [http ile tetiklenen bir işlevi el ile çalıştırma](./functions-manually-run-non-http.md) bölümüne bakın.
 
 ## <a name="troubleshooting"></a>Sorun giderme
 

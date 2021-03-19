@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2895588a5a82ec2b6c69d33ff6cea39bbe3a0372
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.openlocfilehash: 8ff9fe969c90a2bb4aa9f954b984f511fb490ba3
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103492005"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104579153"
 ---
 # <a name="conditional-access-cloud-apps-or-actions"></a>Koşullu erişim: bulut uygulamaları veya eylemleri
 
@@ -131,7 +131,7 @@ Kullanıcı eylemleri, bir kullanıcı tarafından gerçekleştirilebilecek gör
 
 - **Cihazları Kaydet veya birleştir (Önizleme)**: bu kullanıcı eylemi, [Kullanıcılar cihazları](../devices/concept-azure-ad-join.md) [kaydederken](../devices/concept-azure-ad-register.md) veya Azure AD 'ye eklerken koşullu erişim ilkesi uygulanmasını sağlar. Bu kullanıcı eylemiyle ilgili iki önemli sorun vardır: 
    - `Require multi-factor authentication` Bu kullanıcı eylemiyle kullanılabilen tek erişim denetimi ve diğerleri devre dışı bırakıldı. Bu kısıtlama, Azure AD cihaz kaydına bağlı olan veya Azure AD cihaz kaydı için geçerli olmayan erişim denetimleriyle ilgili çakışmaları engeller. 
-   - Bu kullanıcı eylemiyle bir koşullu erişim ilkesi etkinleştirildiğinde, **Azure Active Directory**  >  **cihazları**  >  **cihaz ayarlarını**  -  `Devices to be Azure AD joined or Azure AD registered require Multi-Factor Authentication` **Hayır** olarak ayarlamanız gerekir. Aksi takdirde, bu kullanıcı eylemiyle koşullu erişim ilkesi düzgün zorlanmaz. Bu cihaz ayarıyla ilgili daha fazla bilgiyi [cihaz ayarlarını yapılandırma](../device-management-azure-portal.md##configure-device-settings)bölümünde bulabilirsiniz. Bu Kullanıcı eylemi, cihaz ayarlarında kiracı genelinde bir ilkeye sahip olmak yerine belirli kullanıcılar ve gruplar ya da koşullar için cihaz kaydetme veya birleştirme için çok faktörlü kimlik doğrulaması gerektirme esnekliği sağlar. 
+   - Bu kullanıcı eylemiyle bir koşullu erişim ilkesi etkinleştirildiğinde, **Azure Active Directory**  >  **cihazları**  >  **cihaz ayarlarını**  -  `Devices to be Azure AD joined or Azure AD registered require Multi-Factor Authentication` **Hayır** olarak ayarlamanız gerekir. Aksi takdirde, bu kullanıcı eylemiyle koşullu erişim ilkesi düzgün zorlanmaz. Bu cihaz ayarıyla ilgili daha fazla bilgiyi [cihaz ayarlarını yapılandırma](../devices/device-management-azure-portal.md#configure-device-settings)bölümünde bulabilirsiniz. Bu Kullanıcı eylemi, cihaz ayarlarında kiracı genelinde bir ilkeye sahip olmak yerine belirli kullanıcılar ve gruplar ya da koşullar için cihaz kaydetme veya birleştirme için çok faktörlü kimlik doğrulaması gerektirme esnekliği sağlar. 
    
 ## <a name="next-steps"></a>Sonraki adımlar
 

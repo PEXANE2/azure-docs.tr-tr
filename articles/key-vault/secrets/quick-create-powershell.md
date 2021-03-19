@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.custom: mvc, devx-track-azurepowershell
 ms.date: 01/27/2021
 ms.author: mbaldwin
-ms.openlocfilehash: f3b770a5790d5e9554c7bf5d7d24f1eeccff7662
-ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
+ms.openlocfilehash: 5e3b78dfb8f08f1a596ad12884ec088cd36c4a98
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99072228"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104582464"
 ---
 # <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-using-powershell"></a>Hızlı başlangıç: PowerShell kullanarak Azure Key Vault'tan gizli dizi ayarlama ve alma
 
@@ -57,7 +57,7 @@ Kasaya bir gizli dizi eklemek için birkaç adım uygulamanız gerekir. Bu örne
 $secretvalue = ConvertTo-SecureString "hVFkk965BuUv" -AsPlainText -Force
 ```
 
-Daha sonra, **hVFkk965BuUv** değeriyle **examplepassword** adlı Key Vault bir gizli dizi oluşturmak için aşağıdaki PowerShell komutlarını yazın:
+Ardından, **hVFkk965BuUv** değeriyle **examplepassword** adlı bir Key Vault gizli dizi oluşturmak Için Azure PowerShell [set-azkeyvaultsecret](/powershell/module/az.keyvault/set-azkeyvaultsecret) cmdlet 'ini kullanın:
 
 
 ```azurepowershell-interactive
@@ -96,5 +96,6 @@ Remove-AzResourceGroup -Name ContosoResourceGroup
 Bu hızlı başlangıçta bir Key Vault oluşturup bir gizli dizi depoladınız. Key Vault ve uygulamalarınızla tümleştirme hakkında daha fazla bilgi edinmek için aşağıdaki makalelere ilerleyin.
 
 - [Azure Key Vault genel bakışını](../general/overview.md) okuyun
+- [Çok satırlı gizli dizileri Key Vault nasıl depolayacağınızı](multiline-secrets.md) öğrenin
 - [Azure PowerShell Key Vault cmdlet 'lerine](/powershell/module/az.keyvault/#key_vault) yönelik başvuruya bakın
 - [Key Vault güvenliğine genel bakış](../general/security-overview.md) konusunu gözden geçirin

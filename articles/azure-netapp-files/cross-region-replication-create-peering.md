@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 09/16/2020
+ms.date: 03/10/2021
 ms.author: b-juche
-ms.openlocfilehash: 412724a072bfc03a67bf1005173702f757c6fdf4
-ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
+ms.openlocfilehash: 2a3c788ce50ccc1d537fd2903fe05acffd079b0b
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/22/2020
-ms.locfileid: "95249946"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104591019"
 ---
 # <a name="create-volume-replication-for-azure-netapp-files"></a>Azure NetApp Files için birim çoğaltması oluşturma
 
@@ -67,7 +67,7 @@ Ayrıca, farklı bir bölgede var olan bir NetApp hesabını da seçebilirsiniz.
     * Kapasite havuzu
     * Birim kotası
         > [!NOTE] 
-        > Birim kotası boyutunun, kaynak birim için yansıtılması önerilir.
+        > Hedef birim için birim kotası (boyut) kaynak birimin kaynağını yansıtmalıdır. Kaynak birimden daha küçük bir boyut belirtirseniz, hedef birim otomatik olarak kaynak birim boyutuna yeniden boyutlandırılır. 
     * Sanal ağ 
     * Alt ağ
 
@@ -80,7 +80,7 @@ NFS protokolü için, dışarı aktarma ilkesi kurallarının dışarı aktarmay
 
 8. **Çoğaltma** sekmesinde, [kaynak birim kaynak kimliğini bulun](#locate-the-source-volume-resource-id)bölümünde elde ETTIĞINIZ kaynak birim kaynak kimliğini yapıştırın ve sonra istediğiniz çoğaltma zamanlamasını seçin. Çoğaltma zamanlaması için seçenekler şunlardır: her 10 dakikada bir, saat, haftalık ve aylık.  
 
-    ![Birim çoğaltması oluştur](../media/azure-netapp-files/cross-region-replication-create-volume-replication.png)
+    ![Birim çoğaltması oluşturma](../media/azure-netapp-files/cross-region-replication-create-volume-replication.png)
 
 9. Veri çoğaltma birimini oluşturmak için **gözden geçir + oluştur**' a tıklayın ve **Oluştur** ' a tıklayın.   
 
@@ -113,6 +113,6 @@ NFS protokolü için, dışarı aktarma ilkesi kurallarının dışarı aktarmay
 * [Çoğaltma ilişkisinin uygunluk durumunu görüntüleme](cross-region-replication-display-health-status.md)
 * [Birim çoğaltma ölçümleri](azure-netapp-files-metrics.md#replication)
 * [Olağanüstü durum kurtarmayı yönetme](cross-region-replication-manage-disaster-recovery.md)
-* [Birim çoğaltmaları veya birimleri silme](cross-region-replication-delete.md)
+* [Birim çoğaltmalarını veya birimleri silme](cross-region-replication-delete.md)
 * [Bölgeler arası çoğaltma sorunlarını giderme](troubleshoot-cross-region-replication.md)
 

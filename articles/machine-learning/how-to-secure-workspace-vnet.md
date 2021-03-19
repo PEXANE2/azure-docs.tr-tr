@@ -8,15 +8,15 @@ ms.subservice: core
 ms.reviewer: larryfr
 ms.author: peterlu
 author: peterclu
-ms.date: 10/06/2020
+ms.date: 03/17/2021
 ms.topic: conceptual
 ms.custom: how-to, contperf-fy20q4, tracking-python, contperf-fy21q1
-ms.openlocfilehash: 5031d097b5d1bdef45dd4b653ae7cef06f5daca0
-ms.sourcegitcommit: 87a6587e1a0e242c2cfbbc51103e19ec47b49910
+ms.openlocfilehash: a923f65e5c6183d045f4b7455e0a01edda75d499
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103573668"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104584349"
 ---
 # <a name="secure-an-azure-machine-learning-workspace-with-virtual-networks"></a>Sanal ağlarla Azure Machine Learning çalışma alanının güvenliğini sağlama
 
@@ -56,16 +56,12 @@ Azure özel bağlantısı, özel bir uç nokta kullanarak çalışma alanınıza
 
 Özel bağlantı çalışma alanı ayarlama hakkında daha fazla bilgi için bkz. [özel bağlantı yapılandırma](how-to-configure-private-link.md).
 
+> [!Warning]
+> Çalışma alanını özel uç noktalarla güvenli hale getirmek, kendi kendine uçtan uca güvenlik sağlanması gerekmez. Çözümünüzün tek tek bileşenlerini güvenli hale getirmek için bu makalenin geri kalanında ve VNet serisinde bulunan adımları izlemeniz gerekir.
+
 ## <a name="secure-azure-storage-accounts-with-service-endpoints"></a>Hizmet uç noktaları ile Azure depolama hesaplarını güvenli hale getirme
 
 Azure Machine Learning, hizmet uç noktalarını veya özel uç noktaları kullanmak üzere yapılandırılmış depolama hesaplarını destekler. Bu bölümde, hizmet uç noktalarını kullanarak bir Azure depolama hesabının güvenliğini nasıl sağlayacağınızı öğreneceksiniz. Özel uç noktalar için bir sonraki bölüme bakın.
-
-> [!IMPORTANT]
-> Bir sanal ağda Azure Machine Learning veya _varsayılan olmayan depolama hesapları_ için hem _varsayılan depolama hesabını_ yerleştirebilirsiniz.
->
-> Varsayılan depolama hesabı, bir çalışma alanı oluşturduğunuzda otomatik olarak sağlanır.
->
-> Varsayılan olmayan depolama hesapları için, `storage_account` [ `Workspace.create()` işlevindeki](/python/api/azureml-core/azureml.core.workspace%28class%29#create-name--auth-none--subscription-id-none--resource-group-none--location-none--create-resource-group-true--sku--basic---friendly-name-none--storage-account-none--key-vault-none--app-insights-none--container-registry-none--cmk-keyvault-none--resource-cmk-uri-none--hbi-workspace-false--default-cpu-compute-target-none--default-gpu-compute-target-none--exist-ok-false--show-output-true-) parametresi Azure kaynak kimliği 'ne göre özel bir depolama hesabı belirtmenizi sağlar.
 
 Bir sanal ağdaki çalışma alanı için bir Azure depolama hesabı kullanmak için aşağıdaki adımları kullanın:
 
@@ -73,18 +69,18 @@ Bir sanal ağdaki çalışma alanı için bir Azure depolama hesabı kullanmak i
 
    [![Azure Machine Learning çalışma alanına bağlı depolama alanı](./media/how-to-enable-virtual-network/workspace-storage.png)](./media/how-to-enable-virtual-network/workspace-storage.png#lightbox)
 
-1. Depolama hizmeti hesabı sayfasında __güvenlik duvarları ve sanal ağlar__' ı seçin.
+1. Depolama hizmeti hesabı sayfasında __ağ iletişimi__' ni seçin.
 
-   ![Azure portal Azure Storage sayfasındaki "güvenlik duvarları ve sanal ağlar" alanı](./media/how-to-enable-virtual-network/storage-firewalls-and-virtual-networks.png)
+   ![Azure portal Azure Storage sayfasındaki ağ alanı](./media/how-to-enable-virtual-network/storage-firewalls-and-virtual-networks.png)
 
-1. __Güvenlik duvarları ve sanal ağlar__ sayfasında, aşağıdaki işlemleri yapın:
+1. __Güvenlik duvarları ve sanal ağlar__ sekmesinde, aşağıdaki işlemleri yapın:
     1. __Seçili ağlar__'ı seçin.
     1. __Sanal ağlar__ altında __var olan sanal ağ ekle__ bağlantısını seçin. Bu eylem, işlemin bulunduğu sanal ağı ekler (bkz. 1. adım).
 
         > [!IMPORTANT]
         > Depolama hesabı, eğitim veya çıkarım için kullanılan işlem örnekleri veya kümeler ile aynı sanal ağ ve alt ağ içinde olmalıdır.
 
-    1. __Güvenilen Microsoft hizmetlerinin bu depolama hesabına erişmesine Izin ver__ onay kutusunu seçin. Bu, tüm Azure hizmetlerinin depolama hesabınıza erişmesini sağlamaz.
+    1. __Güvenilen Microsoft hizmetlerinin bu depolama hesabına erişmesine Izin ver__ onay kutusunu seçin. Bu değişiklik, tüm Azure hizmetlerinin depolama hesabınıza erişmesini sağlamaz.
     
         * **Aboneliğinizde kayıtlı** bazı hizmetlerin kaynakları, select işlemleri için **aynı abonelikteki** depolama hesabına erişebilir. Örneğin, Günlükler yazma veya yedeklemeler oluşturma.
         * Bazı hizmetlerin kaynaklarına, sistem tarafından atanan yönetilen kimliğine __bir Azure rolü atayarak__ depolama hesabınıza açık erişim verilebilir.
@@ -118,7 +114,7 @@ SDK 'yı kullanarak verilere erişmek için, verilerin depolandığı tek hizmet
 
 ### <a name="disable-data-validation"></a>Veri doğrulamayı devre dışı bırak
 
-Varsayılan olarak, Azure Machine Learning SDK kullanarak verilere erişmeye çalıştığınızda veri geçerliliği ve kimlik bilgisi denetimleri gerçekleştirir. Veriler bir sanal ağın arkasındaysa Azure Machine Learning bu denetimleri tamamlayamıyor. Bunu önlemek için, doğrulamayı atlayan veri depoları ve veri kümeleri oluşturmanız gerekir.
+Varsayılan olarak, Azure Machine Learning SDK kullanarak verilere erişmeye çalıştığınızda veri geçerliliği ve kimlik bilgisi denetimleri gerçekleştirir. Veriler bir sanal ağın arkasındaysa Azure Machine Learning bu denetimleri tamamlayamıyor. Bu denetimi atlamak için, doğrulamayı atlayan veri depoları ve veri kümeleri oluşturmanız gerekir.
 
 ### <a name="use-datastores"></a>Veri depolarını kullanma
 
@@ -195,7 +191,13 @@ Bir sanal ağ içinde Azure Container Registry kullanmak için aşağıdaki gere
 
     ACR bir sanal ağın arkasındaysa, Azure Machine Learning Docker görüntülerini doğrudan oluşturmak için kullanamaz. Bunun yerine, görüntüleri oluşturmak için işlem kümesi kullanılır.
 
+    > [!IMPORTANT]
+    > Docker görüntülerini oluşturmak için kullanılan işlem kümesi, modellerinizi eğitmek ve dağıtmak için kullanılan paket depolarına erişebilmelidir. Ortak depoya erişime izin veren, [özel Python paketleri kullanan](how-to-use-private-python-packages.md)veya paketleri zaten Içeren [özel Docker görüntülerini](how-to-train-with-custom-image.md) kullanan ağ güvenlik kuralları eklemeniz gerekebilir.
+
 Bu gereksinimler karşılandıktan sonra, Azure Container Registry etkinleştirmek için aşağıdaki adımları kullanın.
+
+> [!TIP]
+> Çalışma alanını oluştururken Mevcut bir Azure Container Registry kullanmıyorsanız, bir tane var olmayabilir. Varsayılan olarak, çalışma alanı bir ACR örneği oluşturana kadar bir örnek oluşturmaz. Bir tane oluşturulmasını zorlamak için, bu bölümdeki adımları kullanmadan önce çalışma alanınızı kullanarak bir modeli eğitme veya dağıtma.
 
 1. Aşağıdaki yöntemlerden birini kullanarak, çalışma alanınızın Azure Container Registry adını bulun:
 
@@ -217,6 +219,8 @@ Bu gereksinimler karşılandıktan sonra, Azure Container Registry etkinleştirm
 
 1. [Kayıt defteri için ağ erişimini yapılandırma](../container-registry/container-registry-vnet.md#configure-network-access-for-registry)bölümündeki adımları kullanarak sanal ağınıza erişimi sınırlayın. Sanal ağ eklenirken Azure Machine Learning kaynaklarınızın sanal ağını ve alt ağını seçin.
 
+1. [Güvenilen hizmetlere erişim izni](../container-registry/allow-access-trusted-services.md)vermek için çalışma alanı için ACR 'yi yapılandırın.
+
 1. Docker görüntülerini derlemek üzere bir işlem kümesi yapılandırmak için Python SDK Azure Machine Learning kullanın. Aşağıdaki kod parçacığı bunun nasıl yapılacağını göstermektedir:
 
     ```python
@@ -225,6 +229,8 @@ Bu gereksinimler karşılandıktan sonra, Azure Container Registry etkinleştirm
     ws = Workspace.from_config()
     # Update the workspace to use an existing compute cluster
     ws.update(image_build_compute = 'mycomputecluster')
+    # To switch back to using ACR to build (if ACR is not in the VNet):
+    # ws.update(image_build_compute = None)
     ```
 
     > [!IMPORTANT]

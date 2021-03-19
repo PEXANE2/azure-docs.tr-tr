@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 07/24/2020
+ms.date: 03/01/2021
 ms.author: jeedes
-ms.openlocfilehash: dbccf38bcb89a6e0715604567be021cc890f209b
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 4ac5bf2756b82361388ab9f2866b80c63395f90d
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92514818"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104591393"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-solarwinds-orion"></a>Öğretici: SolarWinds Orion ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -25,8 +25,6 @@ Bu öğreticide, SolarWinds Orion 'u Azure Active Directory (Azure AD) ile tüml
 * Azure AD 'de SolarWinds Orion 'a erişimi olan denetim.
 * Kullanıcılarınızın Azure AD hesaplarıyla SolarWinds Orion 'a otomatik olarak oturum açmalarına olanak sağlayın.
 * Hesaplarınızı tek bir merkezi konumda yönetin-Azure portal.
-
-Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -39,14 +37,13 @@ Başlamak için aşağıdaki öğeler gereklidir:
 
 Bu öğreticide, Azure AD SSO 'yu bir test ortamında yapılandırıp test edersiniz.
 
-* SolarWinds Orion **, SP ve ıDP** tarafından başlatılan SSO 'yu destekler
-* SolarWinds Orion 'U yapılandırdıktan sonra, kuruluşunuzun hassas verilerinin gerçek zamanlı olarak ayıklanmasını ve zaman korumasını koruyan oturum denetimini zorunlu kılabilirsiniz. Oturum denetimi koşullu erişimden genişletiliyor. [Microsoft Cloud App Security ile oturum denetimini nasıl zorlayacağınızı öğrenin](/cloud-app-security/proxy-deployment-any-app).
+* SolarWinds Orion **, SP ve ıDP** tarafından başlatılan SSO 'yu destekler.
 
-## <a name="adding-solarwinds-orion-from-the-gallery"></a>Galeriden SolarWinds Orion ekleme
+## <a name="add-solarwinds-orion-from-the-gallery"></a>Galeriden SolarWinds Orion ekleme
 
 SolarWinds Orion 'un Azure AD ile tümleştirilmesini yapılandırmak için, Galeriden SolarWinds Orion 'u yönetilen SaaS uygulamaları listenize eklemeniz gerekir.
 
-1. [Azure Portal](https://portal.azure.com) iş veya okul hesabı ya da kişisel Microsoft hesabı kullanarak oturum açın.
+1. Azure portal iş veya okul hesabı ya da kişisel Microsoft hesabı kullanarak oturum açın.
 1. Sol gezinti bölmesinde **Azure Active Directory** hizmeti ' ni seçin.
 1. **Kurumsal uygulamalar** ' a gidin ve **tüm uygulamalar**' ı seçin.
 1. Yeni uygulama eklemek için **Yeni uygulama**' yı seçin.
@@ -56,9 +53,9 @@ SolarWinds Orion 'un Azure AD ile tümleştirilmesini yapılandırmak için, Gal
 
 ## <a name="configure-and-test-azure-ad-sso-for-solarwinds-orion"></a>SolarWinds Orion için Azure AD SSO 'yu yapılandırma ve test etme
 
-**B. Simon**adlı bir test kullanıcısı kullanarak Azure AD SSO 'Yu Solarwinds oriwith ile yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ve SolarWinds Orion içindeki ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
+**B. Simon** adlı bir test kullanıcısı kullanarak Azure AD SSO 'Yu Solarwinds oriwith ile yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ve SolarWinds Orion içindeki ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
 
-Azure AD SSO 'yu SolarWinds Orion ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
+Azure AD SSO 'yu SolarWinds Orion ile yapılandırmak ve test etmek için aşağıdaki adımları gerçekleştirin:
 
 1. **[Azure AD SSO 'Yu yapılandırın](#configure-azure-ad-sso)** -kullanıcılarınızın bu özelliği kullanmasını sağlamak için.
     1. Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -B. Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
@@ -71,9 +68,9 @@ Azure AD SSO 'yu SolarWinds Orion ile yapılandırmak ve test etmek için aşağ
 
 Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
-1. [Azure Portal](https://portal.azure.com/), **Solarwinds Orion** uygulama tümleştirmesi sayfasında **Yönet** bölümünü bulun ve **Çoklu oturum açma**' yı seçin.
+1. Azure portal, **Solarwinds Orion** uygulama tümleştirmesi sayfasında **Yönet** bölümünü bulun ve **Çoklu oturum açma**' yı seçin.
 1. **Çoklu oturum açma yöntemi seçin** sayfasında **SAML**' yi seçin.
-1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, ayarları düzenlemek IÇIN **temel SAML yapılandırması** için Düzenle/kalem simgesine tıklayın.
+1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, ayarları düzenlemek IÇIN **temel SAML yapılandırması** kalem simgesine tıklayın.
 
    ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
 
@@ -96,7 +93,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
 1. SolarWinds Orion uygulamasına ek olarak, aşağıda gösterilen SAML yanıtına birkaç özniteliğin daha fazla öznitelik geçirilmesini bekler. Bu öznitelikler de önceden doldurulur, ancak gereksinimlerinize göre bunları gözden geçirebilirsiniz.
     
-    | Adı |  Kaynak özniteliği|
+    | Name |  Kaynak özniteliği|
     | ----------- | --------- |
     | FirstName | Kullanıcı. |
     | LastName | User. soyadı |
@@ -124,20 +121,14 @@ Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaks�
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
-Bu bölümde, SolarWinds Orion 'a erişim vererek Azure çoklu oturum açma özelliğini kullanmak için B. Simon 'u etkinleştireceksiniz.
+Bu bölümde, her ne kadar yeşil 'e erişim vererek Azure çoklu oturum açma özelliğini kullanmak için B. Simon 'u etkinleştireceksiniz.
 
 1. Azure portal **Kurumsal uygulamalar**' ı seçin ve ardından **tüm uygulamalar**' ı seçin.
-1. Uygulamalar listesinde **Solarwinds Orion**' u seçin.
+1. Uygulamalar listesinde, her **yaprak yeşil**' i seçin.
 1. Uygulamanın genel bakış sayfasında **Yönet** bölümünü bulun ve **Kullanıcılar ve gruplar**' ı seçin.
-
-   !["Kullanıcılar ve gruplar" bağlantısı](common/users-groups-blade.png)
-
 1. **Kullanıcı Ekle**' yi seçin, sonra **atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar** ' ı seçin.
-
-    ![Kullanıcı Ekle bağlantısı](common/add-assign-user.png)
-
 1. **Kullanıcılar ve gruplar** iletişim kutusunda, kullanıcılar listesinden **B. Simon** ' ı seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
-1. SAML assertion 'da herhangi bir rol değeri bekliyorsanız, **Rol Seç** iletişim kutusunda, Kullanıcı için listeden uygun rolü seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
+1. Kullanıcılara bir rolün atanmasını bekliyorsanız, **Rol Seç** açılır listesinden bunu seçebilirsiniz. Bu uygulama için ayarlanmış bir rol yoksa, "varsayılan erişim" rolü seçili olduğunu görürsünüz.
 1. **Atama Ekle** Iletişim kutusunda **ata** düğmesine tıklayın.
 
 ## <a name="configure-solarwinds-orion-sso"></a>SolarWinds Orion SSO 'yu yapılandırma
@@ -196,20 +187,20 @@ Bu bölümde, SolarWinds Orion 'a erişim vererek Azure çoklu oturum açma öze
 
 ## <a name="test-sso"></a>Test SSO 'SU 
 
-Bu bölümde, erişim panelini kullanarak Azure AD çoklu oturum açma yapılandırmanızı test edersiniz.
+Bu bölümde, Azure AD çoklu oturum açma yapılandırmanızı aşağıdaki seçeneklerle test edersiniz. 
 
-Erişim panelinde SolarWinds Orion kutucuğuna tıkladığınızda, SSO 'yu ayarladığınız SolarWinds Orion 'da otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](../user-help/my-apps-portal-end-user-access.md).
+#### <a name="sp-initiated"></a>SP başlatıldı:
 
-## <a name="additional-resources"></a>Ek kaynaklar
+* Azure portal içinde **Bu uygulamayı test et** ' e tıklayın. Bu, oturum açma akışını başlatabileceğiniz SolarWinds Orion oturum açma URL 'sine yönlendirecektir.  
 
-- [ SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi ](./tutorial-list.md)
+* Oturum açma URL 'sine doğrudan SolarWinds Cuma gidin ve oturum akışını buradan başlatın.
 
-- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir? ](../manage-apps/what-is-single-sign-on.md)
+#### <a name="idp-initiated"></a>IDP başlatıldı:
 
-- [Azure Active Directory'de koşullu erişim nedir?](../conditional-access/overview.md)
+* Azure portal **Bu uygulamayı test et** ' e tıklayın ve SSO 'Yu ayarladığınız Solarwinds Orion 'da otomatik olarak oturum açmış olmanız gerekir. 
 
-- [Azure AD ile SolarWinds Orion kullanmayı deneyin](https://aad.portal.azure.com/)
+Uygulamayı dilediğiniz modda test etmek için Microsoft My Apps ' i de kullanabilirsiniz. Uygulamalarım üzerinde SolarWinds Orion kutucuğuna tıkladığınızda, SP modunda yapılandırıldıysa oturum açma akışını başlatmak için uygulama oturum açma sayfasına yönlendirilirsiniz ve ıDP modunda yapılandırıldıysa, SSO 'yu ayarladığınız SolarWinds Orion için otomatik olarak oturum açmış olmanız gerekir. Uygulamalarım hakkında daha fazla bilgi için bkz. [uygulamalarıma giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-- [Microsoft Cloud App Security oturum denetimi nedir?](/cloud-app-security/proxy-intro-aad)
+## <a name="next-steps"></a>Sonraki adımlar
 
-- [Gelişmiş görünürlük ve denetimlerle SolarWinds Orion koruması](/cloud-app-security/proxy-intro-aad)
+SolarWinds Orion 'U yapılandırdıktan sonra, kuruluşunuzun hassas verilerinin gerçek zamanlı olarak ayıklanmasını ve zaman korumasını koruyan oturum denetimini zorunlu kılabilirsiniz. Oturum denetimi koşullu erişimden genişletiliyor. [Microsoft Cloud App Security ile oturum denetimini nasıl zorlayacağınızı öğrenin](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).

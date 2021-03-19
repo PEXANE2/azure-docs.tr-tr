@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: troubleshooting
-ms.date: 11/18/2020
+ms.date: 03/10/2021
 ms.author: b-juche
-ms.openlocfilehash: b30ed0cca680013b85efe064d59fb7cb73d753d2
-ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
+ms.openlocfilehash: d3d944646689e9e6189b0343e8bf67c8fb0abcbd
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/22/2020
-ms.locfileid: "95239559"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104590934"
 ---
 # <a name="troubleshoot-cross-region-replication"></a>Bölgeler arası çoğaltma sorunlarını giderme
 
@@ -71,11 +71,18 @@ Bu makalede, Azure NetApp Files için çapraz bölge çoğaltma sorunlarını gi
 |     `Snapshot   cannot be deleted, parent volume is a Data Protection volume with a   replication object`    |     Bu anlık görüntüyü silmek istiyorsanız birimin çoğaltmasını bozalcağınızı doğrulayın.    |
 |     `Cannot delete   volume replication generated snapshot`    |     Çoğaltma temeli anlık görüntülerinin silinmesine izin verilmiyor.    |
 
+## <a name="errors-resizing-volumes"></a>Birimleri yeniden boyutlandırma hataları
+
+|     Hata İletisi    |     Çözüm    |
+|-|-|
+|   Kaynak birimin yeniden boyutlandırılması girişimi hata ile başarısız oluyor `"PoolSizeTooSmall","message":"Pool size too small for total volume size."`  |  Bölgeler arası çoğaltmanın hem kaynak hem de hedef birimleri için kapasite havuzlarında yeterli sayıda yer bulunduğundan emin olun. Kaynak birimi yeniden boyutlandırdığınızda, hedef birim otomatik olarak yeniden boyutlandırılır. Ancak hedef birimi barındıran kapasite havuzunda yeterli sayıda yer yoksa, hem kaynak hem de hedef birimlerin yeniden boyutlandırılması başarısız olur. Ayrıntılar için bkz. [çapraz bölge çoğaltma hedef birimini yeniden boyutlandırma](azure-netapp-files-resize-capacity-pools-or-volumes.md#resize-a-cross-region-replication-destination-volume) .   |
+
 ## <a name="next-steps"></a>Sonraki adımlar  
 
 * [Bölgeler arası çoğaltma](cross-region-replication-introduction.md)
 * [Bölgeler arası çoğaltmayı kullanma gereksinimleri ve konuları](cross-region-replication-requirements-considerations.md)
-* [Birim çoğaltması oluştur](cross-region-replication-create-peering.md)
+* [Birim çoğaltması oluşturma](cross-region-replication-create-peering.md)
 * [Çoğaltma ilişkisinin uygunluk durumunu görüntüleme](cross-region-replication-display-health-status.md)
 * [Olağanüstü durum kurtarmayı yönetme](cross-region-replication-manage-disaster-recovery.md)
+* [Çapraz bölge çoğaltma hedef birimini yeniden boyutlandırma](azure-netapp-files-resize-capacity-pools-or-volumes.md#resize-a-cross-region-replication-destination-volume)
 * [Bölgeler arası çoğaltma sorunlarını giderme](troubleshoot-cross-region-replication.md)
