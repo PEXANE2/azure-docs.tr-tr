@@ -3,21 +3,21 @@ title: Azure Işlevlerinde IP adresleri
 description: İşlev uygulamaları için gelen ve giden IP adreslerini bulmayı ve bunların değişmesine neden olduğunu öğrenin.
 ms.topic: conceptual
 ms.date: 12/03/2018
-ms.openlocfilehash: fcc92e61e180d25bc67d5ca3f9e2bff4af01fd3f
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 2c248756899459e17082bcab863a4e857b594909
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98726740"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104608240"
 ---
 # <a name="ip-addresses-in-azure-functions"></a>Azure Işlevlerinde IP adresleri
 
-Bu makalede, işlev uygulamalarının IP adresleriyle ilgili aşağıdaki konular açıklanmaktadır:
+Bu makalede, işlev uygulamalarının IP adresleriyle ilgili aşağıdaki kavramlar açıklanmaktadır:
 
 * Bir işlev uygulaması tarafından kullanılmakta olan IP adreslerini bulma.
-* İşlev uygulamasının IP adreslerinin değiştirilmesine neden olan durum.
+* İşlev uygulaması IP adreslerinin değiştirilmesine neden olan koşullar.
 * Bir işlev uygulamasına erişebilen IP adreslerini kısıtlama.
-* İşlev uygulaması için ayrılmış IP adresleri alma.
+* İşlev uygulaması için adanmış IP adresleri tanımlama.
 
 IP adresleri, bağımsız işlevlerle değil işlev uygulamalarıyla ilişkilendirilir. Gelen HTTP istekleri bağımsız işlevleri çağırmak için gelen IP adresini kullanamaz; Varsayılan etki alanı adını (functionappname.azurewebsites.net) veya özel bir etki alanı adını kullanmaları gerekir.
 
@@ -54,9 +54,9 @@ az webapp show --resource-group <group_name> --name <app_name> --query possibleO
 
 ## <a name="data-center-outbound-ip-addresses"></a>Veri merkezi giden IP adresleri
 
-İşlev uygulamalarınız tarafından kullanılan giden IP adreslerini izin verilenler listesine eklemeniz gerekiyorsa, başka bir seçenek de ' veri merkezi (Azure bölgesi) işlevini izin verilenler listesine eklemektir. [Tüm Azure veri MERKEZLERININ IP adreslerini listeleyen BIR JSON dosyası indirebilirsiniz](https://www.microsoft.com/en-us/download/details.aspx?id=56519). Ardından, işlev uygulamanızın çalıştırıldığı bölge için geçerli olan JSON parçasını bulun.
+İşlev uygulamalarınız tarafından kullanılan giden IP adreslerini bir allowlist öğesine eklemeniz gerekiyorsa, ' veri merkezi (Azure bölgesi) işlevini bir allowlist öğesine eklemek başka bir seçenektir. [Tüm Azure veri MERKEZLERININ IP adreslerini listeleyen BIR JSON dosyası indirebilirsiniz](https://www.microsoft.com/en-us/download/details.aspx?id=56519). Ardından, işlev uygulamanızın çalıştırıldığı bölge için geçerli olan JSON parçasını bulun.
 
-Örneğin, Batı Avrupa JSON parçası şöyle görünebilir:
+Örneğin, aşağıdaki JSON parçası Batı Avrupa için izin şöyle görünebilir:
 
 ```
 {
@@ -99,10 +99,12 @@ Bir işlev uygulaması için kullanılabilir giden IP adresleri kümesi şunlar�
 
 İşlev uygulamanız bir [Tüketim planında](consumption-plan.md) veya [Premium bir planda](functions-premium-plan.md)çalıştığında, [Yukarıda listelenenler](#inbound-ip-address-changes)gibi herhangi bir eylem gerçekleştirmemiş olsanız bile giden IP adresi de değişebilir.
 
-Giden IP adresi değişikliğini kasıtlı olarak zorlamak için:
+Giden bir IP adresi değişikliğini kasıtlı olarak zorlamak için aşağıdaki yordamı kullanın:
 
 1. Standart ve Premium v2 fiyatlandırma katmanları arasında App Service planınızı yukarı veya aşağı ölçeklendirin.
+
 2. 10 dakika bekleyin.
+
 3. Başlattığınız yere doğru ölçeklendirin.
 
 ## <a name="ip-address-restrictions"></a>IP adresi kısıtlamaları
@@ -111,7 +113,15 @@ Bir işlev uygulamasına izin vermek veya erişimi reddetmek istediğiniz IP adr
 
 ## <a name="dedicated-ip-addresses"></a>Ayrılmış IP adresleri
 
-Statik, ayrılmış IP adreslerine ihtiyacınız varsa [App Service ortamlar](../app-service/environment/intro.md) (App Service planlarının [yalıtılmış katmanı](https://azure.microsoft.com/pricing/details/app-service/) ) önerilir. Daha fazla bilgi için bkz. [App SERVICE ORTAMı IP adresleri](../app-service/environment/network-info.md#ase-ip-addresses) ve [gelen trafiği bir App Service ortamı denetleme](../app-service/environment/app-service-app-service-environment-control-inbound-traffic.md).
+İşlev uygulamanız statik, ayrılmış IP adresleri gerektirdiğinde keşfetmeye yönelik çeşitli stratejiler vardır. 
+
+### <a name="virtual-network-nat-gateway-for-outbound-static-ip"></a>Giden statik IP için sanal ağ NAT ağ geçidi
+
+Trafiği statik bir genel IP adresi üzerinden yönlendirmek için bir sanal ağ NAT ağ geçidi kullanarak işlevinizden giden trafiğin IP adresini kontrol edebilirsiniz. [Premium bir planda](functions-premium-plan.md)çalışırken bu topolojiyi kullanabilirsiniz. Daha fazla bilgi edinmek için bkz. [öğretici: Azure işlevleri gıden IP 'Yi Azure sanal ağ NAT ağ geçidiyle denetleme](functions-how-to-use-nat-gateway.md).
+
+### <a name="app-service-environments"></a>App Service ortamları
+
+Hem gelen hem de giden IP adresleri üzerinde tam denetim için [App Service ortamlar](../app-service/environment/intro.md) (App Service planlarının [yalıtılmış katmanı](https://azure.microsoft.com/pricing/details/app-service/) ) önerilir. Daha fazla bilgi için bkz. [App SERVICE ORTAMı IP adresleri](../app-service/environment/network-info.md#ase-ip-addresses) ve [gelen trafiği bir App Service ortamı denetleme](../app-service/environment/app-service-app-service-environment-control-inbound-traffic.md).
 
 İşlev uygulamanızın bir App Service Ortamı çalışıp çalışmamasından daha fazla bilgi edinmek için:
 

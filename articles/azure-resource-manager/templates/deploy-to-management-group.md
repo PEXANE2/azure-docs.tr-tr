@@ -2,13 +2,13 @@
 title: Kaynakları yönetim grubuna dağıtma
 description: Azure Resource Manager şablonundaki yönetim grubu kapsamındaki kaynakların nasıl dağıtılacağını açıklar.
 ms.topic: conceptual
-ms.date: 03/16/2021
-ms.openlocfilehash: b14dc3622a6ad6519968bd2998aa354a850f2515
-ms.sourcegitcommit: 27cd3e515fee7821807c03e64ce8ac2dd2dd82d2
+ms.date: 03/18/2021
+ms.openlocfilehash: 79020e8e24cb43697a44ac9accd4e777bffe959e
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103601602"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104594215"
 ---
 # <a name="management-group-deployments-with-arm-templates"></a>ARM şablonlarıyla yönetim grubu dağıtımları
 
@@ -219,6 +219,14 @@ Sonraki örnek, üst öğe olarak belirtilen yönetim grubunda yeni bir yönetim
     }
 }
 ```
+
+## <a name="subscriptions"></a>Abonelikler
+
+Bir yönetim grubunda yeni bir Azure aboneliği oluşturmak üzere ARM şablonu kullanmak için, bkz.:
+
+* [Programlı olarak Azure Kurumsal Anlaşma abonelikleri oluşturma](../../cost-management-billing/manage/programmatically-create-subscription-enterprise-agreement.md)
+* [Bir Microsoft Müşteri Sözleşmesi için programlı olarak Azure abonelikleri oluşturma](../../cost-management-billing/manage/programmatically-create-subscription-microsoft-customer-agreement.md)
+* [Microsoft Iş ortağı sözleşmesi için programlı olarak Azure abonelikleri oluşturma](../../cost-management-billing/manage/programmatically-create-subscription-microsoft-partner-agreement.md)
 
 Mevcut bir Azure aboneliğini yeni bir yönetim grubuna taşınan bir şablonu dağıtmak için, bkz. [ABONELIKLERI ARM şablonunda taşıma](../../governance/management-groups/manage.md#move-subscriptions-in-arm-template)
 

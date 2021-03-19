@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/07/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: d45b2ec8814ec2b7f02da99500aa1e72ec525d65
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 987b850d569c238902f57baaed4a2178f51bd79d
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101695711"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104589625"
 ---
 # <a name="how-to-use-openrowset-using-serverless-sql-pool-in-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'te sunucusuz SQL havuzu kullanarak OPENROWSET kullanma
 
@@ -241,7 +241,7 @@ Kodlamayı belirtir: bir karakter UTF8 için kullanılır, UTF16 dosyaları içi
 
 CODEPAGE = {' ACP ' | ' OEM ' | ' RAW ' | ' code_page '}
 
-Veri dosyasındaki verilerin kod sayfasını belirtir. Varsayılan değer 65001 ' dir (UTF-8 kodlaması). Bu seçenekle ilgili daha fazla ayrıntı için [buradaki](https://docs.microsoft.com/sql/t-sql/functions/openrowset-transact-sql?view=sql-server-ver15#codepage)adımları inceleyin.
+Veri dosyasındaki verilerin kod sayfasını belirtir. Varsayılan değer 65001 ' dir (UTF-8 kodlaması). Bu seçenekle ilgili daha fazla ayrıntı için [buradaki](/sql/t-sql/functions/openrowset-transact-sql?view=sql-server-ver15#codepage)adımları inceleyin.
 
 ## <a name="fast-delimited-text-parsing"></a>Hızlı sınırlandırılmış metin ayrıştırma
 

@@ -11,12 +11,12 @@ ms.author: amsaied
 ms.reviewer: sgilley
 ms.date: 02/11/2021
 ms.custom: tracking-python
-ms.openlocfilehash: bbe28f4fda32ce7d55a437e4ac944dc206f436ee
-ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
+ms.openlocfilehash: ecabfde624ba6d3393bbf6d5480b83dbb5303c5e
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102522368"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104604568"
 ---
 # <a name="tutorial-use-your-own-data-part-4-of-4"></a>Öğretici: kendi verilerinizi kullanın (4. bölüm)
 
@@ -39,7 +39,12 @@ Bu öğreticide şunları yaptınız:
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-* Serinin [3. kısmını](tutorial-1st-experiment-sdk-train.md) tamamlama.
+Önceki öğreticide oluşturulan pytorch ortamının veri ve güncelleştirilmiş bir sürümü gerekir.  Bu adımları tamamladığınızdan emin olun:
+
+1. [Eğitim betiğini oluşturma](tutorial-1st-experiment-sdk-train.md#create-training-scripts)
+1. [Yeni bir Python ortamı oluştur](tutorial-1st-experiment-sdk-train.md#environment)
+1. [Yerel olarak test etme](tutorial-1st-experiment-sdk-train.md#test-local)
+1. [Conda ortam dosyasını güncelleştirme](tutorial-1st-experiment-sdk-train.md#update-the-conda-environment-file)
 
 ## <a name="adjust-the-training-script"></a>Eğitim betiğini ayarlama
 
@@ -75,6 +80,7 @@ optimizer = optim.SGD(
     momentum=args.momentum,    # get momentum from command-line argument
 )
 ```
+
 > [!div class="nextstepaction"]
 > [Bir sorunla karşılaşdığım](https://www.research.net/r/7C6W7BQ?issue=adjust-training-script) [eğitim betiğini ayarladım](?success=adjust-training-script#test-locally)
 
@@ -84,28 +90,27 @@ Komut dosyası artık bir bağımsız değişken olarak _veri yolunu_ kabul eder
 
 :::image type="content" source="media/tutorial-1st-experiment-bring-data/directory-structure.png" alt-text="Dizin yapısı. azureml, veri ve src alt dizinlerini gösterir":::
 
+1. Geçerli ortamdan çıkın.
 
-`train.py`Önceki öğreticide yerel olarak çalıştırmadıysanız, `data/` dizininiz olmayacaktır. Bu durumda, `torchvision.datasets.CIFAR10` yöntemini `download=True` betiğinizdeki ile yerel olarak çalıştırın `train.py` .
+    ```bash
+    conda deactivate
 
-Ayrıca, yerel olarak çalışmak için öğretici ortamından çıkmanız ve yeni Conda ortamını etkinleştirdiğinizden emin olun:
+1. Now create and activate the new environment.  This will rebuild the pytorch-aml-env with the [updated environment file](tutorial-1st-experiment-sdk-train.md#update-the-conda-environment-file)
 
-```bash
-conda deactivate                # If you are still using the tutorial environment, exit it
-```
 
-```bash
-conda env create -f .azureml/pytorch-env.yml    # create the new conda environment with updated dependencies
-```
+    ```bash
+    conda env create -f .azureml/pytorch-env.yml    # create the new conda environment with updated dependencies
+    ```
 
-```bash
-conda activate pytorch-aml-env          # activate new conda environment
-```
+    ```bash
+    conda activate pytorch-aml-env          # activate new conda environment
+    ```
 
-Değiştirilen eğitim betiğini yerel olarak çalıştırmak için şunu çağırın:
+1. Son olarak, değiştirilen eğitim betiğini yerel olarak çalıştırın.
 
-```bash
-python src/train.py --data_path ./data --learning_rate 0.003 --momentum 0.92
-```
+    ```bash
+    python src/train.py --data_path ./data --learning_rate 0.003 --momentum 0.92
+    ```
 
 Verilere yerel bir yol geçirerek CIFAR10 veri kümesini indirmek zorunda kalmaktan kaçının. Eğitim betiğinden, _öğrenme oranı_ ve _itici güç_ ayarlama hiperparametreleri için de farklı değerlerle denemeler yapabilirsiniz.
 

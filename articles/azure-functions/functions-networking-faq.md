@@ -4,12 +4,12 @@ description: Azure Işlevleri ile ağ iletişimi için en yaygın soruların ve 
 ms.topic: troubleshooting
 ms.date: 4/11/2019
 ms.reviewer: glenga
-ms.openlocfilehash: 3e8a992aac95b6c2688cb45aa980bf0b01883a53
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: 24afeeee3207127bb9404156dc390433671dd5da
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94578238"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104592311"
 ---
 # <a name="frequently-asked-questions-about-networking-in-azure-functions"></a>Azure Işlevlerinde ağ hakkında sık sorulan sorular
 
@@ -17,7 +17,9 @@ Bu makalede, Azure Işlevlerinde ağlarla ilgili sık sorulan sorular listelenme
 
 ## <a name="how-do-i-set-a-static-ip-in-functions"></a>Işlevlerde statik IP Nasıl yaparım? mı?
 
-Bir App Service Ortamı işlevin dağıtımı, işleviniz için statik gelen ve giden IP 'nin tek yoludur. App Service Ortamı kullanma hakkında ayrıntılı bilgi için, bir [App Service ortamı ile iç yük dengeleyici oluşturma ve kullanma](../app-service/environment/create-ilb-ase.md)makalesini başlatın.
+Bir App Service Ortamı işlevi dağıtmak, işlevleriniz için statik gelen ve giden IP adresleri sağlamanın birincil yoludur. App Service Ortamı kullanma hakkında ayrıntılı bilgi için, bir [App Service ortamı ile iç yük dengeleyici oluşturma ve kullanma](../app-service/environment/create-ilb-ase.md)makalesini başlatın.
+
+Ayrıca, kontrol ettiğiniz bir genel IP adresi aracılığıyla giden trafiği yönlendirmek için bir sanal ağ NAT ağ geçidi kullanabilirsiniz. Daha fazla bilgi edinmek için bkz. [öğretici: Azure işlevleri gıden IP 'Yi Azure sanal ağ NAT ağ geçidiyle denetleme](functions-how-to-use-nat-gateway.md). 
 
 ## <a name="how-do-i-restrict-internet-access-to-my-function"></a>Nasıl yaparım? Internet erişimini işlevme kısıtlamak istiyor musunuz?
 
@@ -33,7 +35,7 @@ Azure portal düzenleyicisinin çalışan işlevinize doğrudan erişim gerektir
 
 [Hizmet uç noktalarını](./functions-networking-options.md#use-service-endpoints)kullanarak bir işlev uygulaması için **gelen** trafiği bir sanal ağ ile kısıtlayabileceksiniz. Bu yapılandırma, işlev uygulamasının internet 'e giden çağrılar yapmasına hala izin verir.
 
-Tüm trafiğin bir sanal ağ üzerinden akmasını sağlayan bir işlevi tamamen kısıtlamak için, giden sanal ağ tümleştirmesiyle veya bir App Service Ortamı [Özel uç noktalar](./functions-networking-options.md#private-endpoint-connections) kullanabilirsiniz.
+Tüm trafiğin bir sanal ağ üzerinden akmasını sağlayan bir işlevi tamamen kısıtlamak için, giden sanal ağ tümleştirmesiyle veya bir App Service Ortamı [Özel uç noktalar](./functions-networking-options.md#private-endpoint-connections) kullanabilirsiniz. Daha fazla bilgi için bkz. [Özel uç noktaları kullanarak Azure Işlevlerini Azure sanal ağı Ile tümleştirme](functions-create-vnet.md).
 
 ## <a name="how-can-i-access-resources-in-a-virtual-network-from-a-function-app"></a>Bir işlev uygulamasından bir sanal ağdaki kaynaklara nasıl erişebilirim?
 

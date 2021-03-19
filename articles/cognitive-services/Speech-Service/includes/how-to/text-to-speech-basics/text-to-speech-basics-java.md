@@ -5,12 +5,12 @@ ms.topic: include
 ms.date: 03/25/2020
 ms.custom: devx-track-java
 ms.author: trbye
-ms.openlocfilehash: bb2d9b04e6366b17cfb0ee4b8586359035be910d
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: 80384662789e9dad979566715672c15a8648ea9a
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102428256"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104613001"
 ---
 Bu hızlı başlangıçta, konuşma SDK 'sını kullanarak metinden konuşmaya senşlerini kullanmaya yönelik yaygın tasarım düzenlerini öğrenirsiniz. Temel yapılandırma ve birleştirme işlemleri gerçekleştirerek başlar ve aşağıdakiler de dahil olmak üzere özel uygulama geliştirme için daha gelişmiş örneklere geçin:
 
@@ -67,7 +67,7 @@ Konuşma SDK 'sını kullanarak konuşma hizmetini çağırmak için bir oluştu
 Bu örnekte, bir [`SpeechConfig`](/java/api/com.microsoft.cognitiveservices.speech.speechconfig) abonelik anahtarı ve bölgesi kullanarak bir oluşturun. [Konuşma hizmetini ücretsiz deneyin](../../../overview.md#try-the-speech-service-for-free)bölümündeki adımları izleyerek bu kimlik bilgilerini alın. Ayrıca, bu makalenin geri kalanı için kullanabileceğiniz, farklı özelleştirmeler için değiştirdiğiniz bazı temel ortak kod oluşturabilirsiniz.
 
 ```java
-public class Program 
+public class Program
 {
     public static void main(String[] args) {
         SpeechConfig speechConfig = SpeechConfig.fromSubscription("YourSubscriptionKey", "YourServiceRegion");
@@ -124,7 +124,7 @@ Konuşma uygulaması geliştirmede birçok senaryo için, büyük olasılıkla b
 * Sonucu diğer API 'leri veya hizmetleriyle tümleştirin.
 * Ses verilerini değiştirin, özel üstbilgiler yazın `.wav` vb.
 
-Önceki örnekte bu değişikliği yapmak basittir. İlk `AudioConfig` olarak, daha fazla denetim için çıkış davranışını bu noktadan el ile yöneteceği için bloğu kaldırın. Sonra `null` `AudioConfig` Oluşturucu içinde öğesine geçirin `SpeechSynthesizer` . 
+Önceki örnekte bu değişikliği yapmak basittir. İlk `AudioConfig` olarak, daha fazla denetim için çıkış davranışını bu noktadan el ile yöneteceği için bloğu kaldırın. Sonra `null` `AudioConfig` Oluşturucu içinde öğesine geçirin `SpeechSynthesizer` .
 
 > [!NOTE]
 > `null` `AudioConfig` Yukarıdaki konuşmacı çıktısı örneğinde olduğu gibi değil, için geçirme, geçerli etkin çıkış cihazında varsayılan olarak sesi oynamaz.
@@ -135,7 +135,7 @@ Bu kez, sonucu bir [`SpeechSynthesisResult`](/java/api/com.microsoft.cognitivese
 public static void main(String[] args) {
     SpeechConfig speechConfig = SpeechConfig.fromSubscription("YourSubscriptionKey", "YourServiceRegion");
     SpeechSynthesizer synthesizer = new SpeechSynthesizer(speechConfig, null);
-    
+
     SpeechSynthesisResult result = synthesizer.SpeakText("Getting the response as an in-memory stream.");
     AudioDataStream stream = AudioDataStream.fromResult(result);
     System.out.print(stream.getStatus());
@@ -254,3 +254,10 @@ Bir sinir sesinize geçiş yapmak için, `name` [sinir Voice seçeneklerinden](.
   </voice>
 </speak>
 ```
+
+## <a name="visemes"></a>Visemes
+
+Konuşma genellikle yüz ifadelerin animasyonunu sağlamak için iyi bir yöntem olarak değerlendirilir.
+Genellikle, gözlemlenen konuşmayla ilgili önemli pozları (örneğin, LIP 'ler, Jaw ve belirli bir phoneu oluştururken dil) göstermek için, genellikle [visemes](../../../how-to-speech-synthesis-viseme.md) kullanılır.
+Yüz animasyon verileri oluşturmak için konuşma SDK 'sında viseme olayına abone olabilirsiniz. Ardından, yüz animasyonunu gerçekleştirmek için bu tür verileri bir karaktere uygulayabilirsiniz.
+[Viseme çıkışlarını alma hakkında](../../../how-to-speech-synthesis-viseme.md#get-viseme-outputs-with-the-speech-sdk)bilgi edinin.

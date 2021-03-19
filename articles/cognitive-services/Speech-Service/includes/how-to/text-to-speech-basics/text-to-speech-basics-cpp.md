@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/25/2020
 ms.author: trbye
-ms.openlocfilehash: ae2f37cd84904aff33c4752bd54c815b74bb71c8
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: 78639386c9d836055d80566f4b84565c2c3b8e80
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102428246"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104612861"
 ---
 Bu hızlı başlangıçta, konuşma SDK 'sını kullanarak metinden konuşmaya senşlerini kullanmaya yönelik yaygın tasarım düzenlerini öğrenirsiniz. Temel yapılandırma ve birleştirme işlemleri gerçekleştirerek başlar ve aşağıdakiler de dahil olmak üzere özel uygulama geliştirme için daha gelişmiş örneklere geçin:
 
@@ -78,8 +78,8 @@ int wmain()
     }
     return 0;
 }
-    
-void synthesizeSpeech() 
+
+void synthesizeSpeech()
 {
     auto config = SpeechConfig::FromSubscription("YourSubscriptionKey", "YourServiceRegion");
 }
@@ -92,7 +92,7 @@ Sonra, [`SpeechSynthesizer`](/cpp/cognitive-services/speech/speechsynthesizer) m
 Başlamak için, `AudioConfig` işlevini kullanarak çıktıyı otomatik olarak bir dosyaya yazmak üzere bir oluşturun `.wav` `FromWavFileOutput()` .
 
 ```cpp
-void synthesizeSpeech() 
+void synthesizeSpeech()
 {
     auto config = SpeechConfig::FromSubscription("YourSubscriptionKey", "YourServiceRegion");
     auto audioConfig = AudioConfig::FromWavFileOutput("path/to/write/file.wav");
@@ -102,7 +102,7 @@ void synthesizeSpeech()
 Sonra, bir örneği oluşturun `SpeechSynthesizer` , `config` nesne ve `audioConfig` nesneyi params olarak geçirerek. Daha sonra, konuşma birleştirmenin yürütülmesi ve bir dosyaya yazılması, `SpeakTextAsync()` bir metin dizesiyle çalışırken basittir.
 
 ```cpp
-void synthesizeSpeech() 
+void synthesizeSpeech()
 {
     auto config = SpeechConfig::FromSubscription("YourSubscriptionKey", "YourServiceRegion");
     auto audioConfig = AudioConfig::FromWavFileOutput("path/to/write/file.wav");
@@ -118,7 +118,7 @@ Programı çalıştırın ve belirttiğiniz konuma bir sentezlenmiş `.wav` dosy
 Bazı durumlarda, doğrudan sentezlenmiş konuşmayı doğrudan bir konuşmacının çıktısını almak isteyebilirsiniz. Bunu yapmak için `AudioConfig` Yukarıdaki örnekte oluştururken param ' ı atlayın `SpeechSynthesizer` . Bu, geçerli etkin çıkış cihazına çıkış verir.
 
 ```cpp
-void synthesizeSpeech() 
+void synthesizeSpeech()
 {
     auto config = SpeechConfig::FromSubscription("YourSubscriptionKey", "YourServiceRegion");
     auto synthesizer = SpeechSynthesizer::FromConfig(config);
@@ -134,7 +134,7 @@ Konuşma uygulaması geliştirmede birçok senaryo için, büyük olasılıkla b
 * Sonucu diğer API 'leri veya hizmetleriyle tümleştirin.
 * Ses verilerini değiştirin, özel üstbilgiler yazın `.wav` vb.
 
-Önceki örnekte bu değişikliği yapmak basittir. İlk `AudioConfig` olarak, daha fazla denetim için çıkış davranışını bu noktadan el ile yöneteceği için öğesini kaldırın. Sonra `NULL` `AudioConfig` Oluşturucu içinde öğesine geçirin `SpeechSynthesizer` . 
+Önceki örnekte bu değişikliği yapmak basittir. İlk `AudioConfig` olarak, daha fazla denetim için çıkış davranışını bu noktadan el ile yöneteceği için öğesini kaldırın. Sonra `NULL` `AudioConfig` Oluşturucu içinde öğesine geçirin `SpeechSynthesizer` .
 
 > [!NOTE]
 > `NULL` `AudioConfig` Yukarıdaki konuşmacı çıktısı örneğinde olduğu gibi değil, için geçirme, geçerli etkin çıkış cihazında varsayılan olarak sesi oynamaz.
@@ -142,11 +142,11 @@ Konuşma uygulaması geliştirmede birçok senaryo için, büyük olasılıkla b
 Bu kez, sonucu bir [`SpeechSynthesisResult`](/cpp/cognitive-services/speech/speechsynthesisresult) değişkene kaydedersiniz. `GetAudioData`Alıcı, `byte []` Çıkış verilerinden bir döndürür. Bu ile el ile çalışabilirsiniz `byte []` veya [`AudioDataStream`](/cpp/cognitive-services/speech/audiodatastream) bellek içi akışı yönetmek için sınıfını kullanabilirsiniz. Bu örnekte, `AudioDataStream.FromResult()` sonuçtan bir akış almak için static işlevini kullanırsınız.
 
 ```cpp
-void synthesizeSpeech() 
+void synthesizeSpeech()
 {
     auto config = SpeechConfig::FromSubscription("YourSubscriptionKey", "YourServiceRegion");
     auto synthesizer = SpeechSynthesizer::FromConfig(config, NULL);
-    
+
     auto result = synthesizer->SpeakTextAsync("Getting the response as an in-memory stream.").get();
     auto stream = AudioDataStream::FromResult(result);
 }
@@ -172,14 +172,14 @@ Gereksinimlerinize bağlı olarak farklı dosya türleri için çeşitli seçene
 Bu örnekte, `Riff24Khz16BitMonoPcm` nesnesi üzerinde ayarını yaparak Yüksek uygunluğa sahip bir biçim belirtirsiniz `SpeechSynthesisOutputFormat` `SpeechConfig` . Önceki bölümdeki örneğe benzer şekilde, [`AudioDataStream`](/cpp/cognitive-services/speech/audiodatastream) sonucun bellek içi akışını elde etmek ve ardından bir dosyaya yazmak için öğesini kullanırsınız.
 
 ```cpp
-void synthesizeSpeech() 
+void synthesizeSpeech()
 {
     auto config = SpeechConfig::FromSubscription("YourSubscriptionKey", "YourServiceRegion");
     config->SetSpeechSynthesisOutputFormat(SpeechSynthesisOutputFormat::Riff24Khz16BitMonoPcm);
 
     auto synthesizer = SpeechSynthesizer::FromConfig(config, NULL);
     auto result = synthesizer->SpeakTextAsync("A simple test to write to a file.").get();
-    
+
     auto stream = AudioDataStream::FromResult(result);
     stream->SaveToWavFileAsync("path/to/write/file.wav").get();
 }
@@ -205,11 +205,11 @@ Konuşma sen, biçimlendirme dili (SSML), isteklerinizi bir XML şemasından gö
 Ardından, XML dosyanıza başvurmak için konuşma sensıs isteğini değiştirmeniz gerekir. İstek genellikle aynıdır, ancak işlevini kullanmak yerine `SpeakTextAsync()` kullanın `SpeakSsmlAsync()` . Bu işlev bir XML dizesi bekliyor, bu nedenle ilk olarak SSML yapılandırmasını bir dize olarak yüklersiniz. Buradan, sonuç nesnesi önceki örneklerle tamamen aynıdır.
 
 ```cpp
-void synthesizeSpeech() 
+void synthesizeSpeech()
 {
     auto config = SpeechConfig::FromSubscription("YourSubscriptionKey", "YourServiceRegion");
     auto synthesizer = SpeechSynthesizer::FromConfig(config, NULL);
-    
+
     std::ifstream file("./ssml.xml");
     std::string ssml, line;
     while (std::getline(file, line))
@@ -218,7 +218,7 @@ void synthesizeSpeech()
         ssml.push_back('\n');
     }
     auto result = synthesizer->SpeakSsmlAsync(ssml).get();
-    
+
     auto stream = AudioDataStream::FromResult(result);
     stream->SaveToWavFileAsync("path/to/write/file.wav").get();
 }
@@ -254,3 +254,11 @@ Bir sinir sesinize geçiş yapmak için, `name` [sinir Voice seçeneklerinden](.
   </voice>
 </speak>
 ```
+
+## <a name="visemes"></a>Visemes
+
+Konuşma genellikle yüz ifadelerin animasyonunu sağlamak için iyi bir yöntem olarak değerlendirilir.
+Genellikle, gözlemlenen konuşmayla ilgili önemli pozları (örneğin, LIP 'ler, Jaw ve belirli bir phoneu oluştururken dil) göstermek için, genellikle [visemes](../../../how-to-speech-synthesis-viseme.md) kullanılır.
+Yüz animasyon verileri oluşturmak için konuşma SDK 'sında viseme olayına abone olabilirsiniz.
+Ardından, yüz animasyonunu gerçekleştirmek için bu tür verileri bir karaktere uygulayabilirsiniz.
+[Viseme çıkışlarını alma hakkında](../../../how-to-speech-synthesis-viseme.md#get-viseme-outputs-with-the-speech-sdk)bilgi edinin.

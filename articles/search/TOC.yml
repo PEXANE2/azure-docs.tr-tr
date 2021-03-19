@@ -358,6 +358,8 @@
           href: search-query-understand-collection-filters.md
         - name: Dile göre filtrele
           href: search-filters-language.md
+        - name: Metni Normalleştir
+          href: search-normalizers.md
     - name: İlgi düzeyi
       items:
         - name: Benzerlik derecelendirmesi

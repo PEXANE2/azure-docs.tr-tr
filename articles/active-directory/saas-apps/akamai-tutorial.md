@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/04/2021
 ms.author: jeedes
-ms.openlocfilehash: 8838e3c92a2c7ccc77794973b3cb8e67128e3c71
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: a22a214104357b9ad99238a8db157839a1c9fd46
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101655159"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104591954"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-akamai"></a>Öğretici: Akamai ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -478,11 +478,11 @@ Kimlik sağlayıcısını atayın.
 
 1. Dizin oluşturmayı doğrulayın.
 
-    ![Akamai EAA konsol dizinleri penceresinin, superdemo. Live dizininin eklendiğini gösteren ekran görüntüsü.](./media/header-akamai-tutorial/directory-domain.png)
+    ![Dizin superdemo.live eklendiğini gösteren Akamai EAA konsol dizinleri penceresinin ekran görüntüsü.](./media/header-akamai-tutorial/directory-domain.png)
 
 1. Erişim gerektirecek grupları/OU 'Ları ekleyin.
 
-    ![Dizin superdemo. Live için ayarların ekran görüntüsü. Grup veya OU eklemek için seçtiğiniz simge vurgulanır.](./media/header-akamai-tutorial/add-group.png)
+    ![Superdemo.live dizini için ayarların ekran görüntüsü. Grup veya OU eklemek için seçtiğiniz simge vurgulanır.](./media/header-akamai-tutorial/add-group.png)
 
 1. Aşağıdaki grupta EAAGroup adı verilir ve 1 üyesi vardır.
 
@@ -490,7 +490,7 @@ Kimlik sağlayıcısını atayın.
 
 1. **Kimlik**  >  **kimlik sağlayıcıları** ' na tıklayıp **dizinler** sekmesine tıklayın ve **Dizin ata**' ya tıklayın.
 
-    ![Azure AD SSO için Akamai EAA konsol dizinleri sekmesinin ekran görüntüsü, şu anda atanmış olan dizinler listesinde superdemo. canlı ' i gösterir.](./media/header-akamai-tutorial/assign-directory.png)
+    ![Azure AD SSO için Akamai EAA konsol dizinleri sekmesinin ekran görüntüsü, şu anda atanmış olan dizinler listesinde superdemo.live gösterir.](./media/header-akamai-tutorial/assign-directory.png)
 
 ### <a name="configure-kcd-delegation-for-eaa-walkthrough"></a>HER adım için KCD temsilcisini yapılandırma
 
@@ -498,7 +498,7 @@ Kimlik sağlayıcısını atayın.
 
 1. Örnekte **Eaatemsili** adlı bir hesap kullanacağız. Bunu, **Kullanıcı ve bilgisayar** Snappin Active Directory kullanarak yapabilirsiniz.
 
-    ![Azure AD SSO için Akamai EAA konsol dizinleri sekmesinin ekran görüntüsü. Superdemo. Live dizini şu anda atanmış olan dizinler altında listelenir.](./media/header-akamai-tutorial/assign-directory.png)
+    ![Azure AD SSO için Akamai EAA konsol dizinleri sekmesinin ekran görüntüsü. Dizin superdemo.live, atanmış olan dizinler altında listelenir.](./media/header-akamai-tutorial/assign-directory.png)
 
     > [!NOTE]
     > Kullanıcı adının **kimlik kesme adına** göre belirli bir biçimde olması gerekebilir. Şekil 1 ' den **corpapps.Login.go.Akamai-Access.com** olduğunu görtik
@@ -583,8 +583,8 @@ Bu bölümde, Azure AD çoklu oturum açma yapılandırmanızı aşağıdaki se�
 
 * Azure portal bu uygulamayı test et ' e tıklayın ve SSO 'yu ayarladığınız Akamai otomatik olarak oturum açmış olmanız gerekir.
 
-* Microsoft My Apps ' i kullanabilirsiniz. Uygulamalarım içindeki Akamai kutucuğuna tıkladığınızda, SSO 'yu ayarladığınız Akamai için otomatik olarak oturum açmış olmanız gerekir. Uygulamalarım hakkında daha fazla bilgi için bkz. [uygulamalarıma giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+* Microsoft My Apps ' i kullanabilirsiniz. Uygulamalarım içindeki Akamai kutucuğuna tıkladığınızda, SSO 'yu ayarladığınız Akamai için otomatik olarak oturum açmış olmanız gerekir. Uygulamalarım hakkında daha fazla bilgi için bkz. [uygulamalarıma giriş](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Akamai yapılandırıldıktan sonra, kuruluşunuzun hassas verilerinin gerçek zamanlı olarak ayıklanmasını ve zaman korumasını koruyan oturum denetimini zorunlu kılabilirsiniz. Oturum denetimi koşullu erişimden genişletiliyor. [Microsoft Cloud App Security ile oturum denetimini nasıl zorlayacağınızı öğrenin](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
+Akamai yapılandırıldıktan sonra, kuruluşunuzun hassas verilerinin gerçek zamanlı olarak ayıklanmasını ve zaman korumasını koruyan oturum denetimini zorunlu kılabilirsiniz. Oturum denetimi koşullu erişimden genişletiliyor. [Microsoft Cloud App Security ile oturum denetimini nasıl zorlayacağınızı öğrenin](/cloud-app-security/proxy-deployment-any-app).

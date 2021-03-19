@@ -7,10 +7,10 @@ ms.author: joanpo
 ms.topic: conceptual
 ms.date: 07/10/2019
 ms.openlocfilehash: 33532380d8f98df44029eeea998130d1da5fdafd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "73468546"
 ---
 # <a name="azure-data-share-concepts"></a>Azure veri paylaşımında kavramlar 
@@ -27,7 +27,7 @@ Veri tüketicisi, veri sağlayıcısından veri alan kuruluştur. Veri TÜKETİC
 
 ## <a name="data-share"></a>Veri Paylaşımı
 
-Veri paylaşım, tek bir varlık olarak paylaşılan bir veri kümesi grubudur. Veri kümeleri, Azure veri paylaşımında desteklenen bir dizi Azure veri kaynağından olabilir. Şu anda Azure veri paylaşımında Azure Blob depolamayı ve Azure Data Lake Store desteklenir. 
+Veri paylaşımı, tek bir varlık olarak paylaşılan bir veri kümesi grubudur. Veri kümeleri, Azure Veri Paylaşımı tarafından desteklenen çeşitli Azure veri kaynaklarından olabilir. Azure Veri Paylaşımı, şu anda Azure Blob Depolama ve Azure Data Lake Store'u desteklemektedir. 
 
 ## <a name="share-subscription"></a>Abonelik paylaşma 
 

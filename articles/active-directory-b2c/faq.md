@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 03/08/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 722f3158c8eca4cec4dbf23658f9d8d4cb68c3ed
-ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
+ms.openlocfilehash: d84c5fff41a7f00405c29ab4b4921ed2e28bdfde
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102517999"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104580105"
 ---
 # <a name="azure-ad-b2c-frequently-asked-questions-faq"></a>Azure AD B2C: sık sorulan sorular (SSS)
 
@@ -103,7 +103,7 @@ Hayır, Azure AD Connect Azure AD B2C çalışmak üzere tasarlanmamıştır. Ku
 
 ### <a name="can-my-app-open-up-azure-ad-b2c-pages-within-an-iframe"></a>Uygulamam iFrame içindeki Azure AD B2C sayfaları açabilir mi?
 
-Hayır, güvenlik nedenleriyle Azure AD B2C sayfalar iFrame içinde açılamaz. Hizmetimiz, IFRAME 'leri engellemek için tarayıcıyla iletişim kurar. Genel ve OAUTH2 belirtiminde güvenlik topluluğu, tıklama-Jacking riski nedeniyle kimlik deneyimleri için IFRAME 'Ler kullanmayı öneririz.
+Bu özellik genel önizleme aşamasındadır. Ayrıntılar için bkz. [ekli oturum açma deneyimi](https://docs.microsoft.com/azure/active-directory-b2c/embedded-login).
 
 ### <a name="does-azure-ad-b2c-work-with-crm-systems-such-as-microsoft-dynamics"></a>Azure AD B2C, Microsoft Dynamics gibi CRM sistemleriyle birlikte çalışıyor mu?
 
@@ -131,7 +131,7 @@ Evet, bkz. [dil özelleştirmesi](language-customization.md). 36 dil için çevi
 
 ### <a name="can-i-use-my-own-urls-on-my-sign-up-and-sign-in-pages-that-are-served-by-azure-ad-b2c-for-instance-can-i-change-the-url-from-contosob2clogincom-to-logincontosocom"></a>Azure AD B2C tarafından sunulan kaydolma ve oturum açma sayfalarınızda kendi URL 'lerimi kullanabilir miyim? Örneğin, contoso.b2clogin.com URL 'sini login.contoso.com olarak değiştirebilir miyim?
 
-Şu anda hayır. Bu özellik yol haritasında bulunur. Azure portal **etki alanı sekmesinde etki** alanınızı doğrulamak, bu hedefin yerine getirmiyor. Bununla birlikte, b2clogin.com ile [bağımsız bir en üst düzey etki alanı](b2clogin.md)sunuyoruz ve bu nedenle dış görünüm Microsoft 'un bahsetmeden uygulanabilir.
+Bu özellik genel önizlemede kullanılabilir. Ayrıntılar için bkz. [özel etki alanları Azure AD B2C](https://docs.microsoft.com/azure/active-directory-b2c/custom-domain?pivots=b2c-user-flow).
 
 ### <a name="how-do-i-delete-my-azure-ad-b2c-tenant"></a>Azure AD B2C kiracımı Nasıl yaparım? silinsin mi?
 

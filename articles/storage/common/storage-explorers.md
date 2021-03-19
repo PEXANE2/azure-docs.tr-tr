@@ -10,10 +10,10 @@ ms.author: tamram
 ms.reviewer: dineshm
 ms.subservice: common
 ms.openlocfilehash: b02a08b7e8d8b867df820868b72a0ce14b6afa40
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "71670941"
 ---
 # <a name="microsoft-client-tools-for-working-with-azure-storage"></a>Azure depolama ile çalışmaya yönelik Microsoft istemci araçları
@@ -22,8 +22,8 @@ Microsoft, Azure Depolama hesabınızdaki verilerle çalışmaya yönelik çeşi
 
 | Azure depolama istemci aracı                 | Desteklenen platformlar | Blok Blobu | Sayfa Blobu | Blob Ekle | Tablolar | Kuyruklar | Dosyalar |
 |-------------------------------------------|---------------------|------------|-----------|-------------|--------|--------|-------|
-| [Azure portalındaki](https://portal.azure.com)                    | Web                 | Evet          | Evet         | Evet           | Evet      | Evet      | Evet     |
-| [Azure Depolama Gezgini](https://azure.microsoft.com/features/storage-explorer/)          | Windows, OSX        | Evet          | Evet         | Evet           | Evet      | Evet      | Evet     |
-| [Microsoft Visual Studio bulut Gezgini](/visualstudio/azure/vs-azure-tools-resources-managing-with-cloud-explorer) | Windows             | Evet          | Evet         | Evet           | Evet      | Evet      | Hayır      |
+| [Azure portalı](https://portal.azure.com)                    | Web                 | Evet          | Yes         | Yes           | Yes      | Yes      | Yes     |
+| [Azure Depolama Gezgini](https://azure.microsoft.com/features/storage-explorer/)          | Windows, OSX        | Yes          | Yes         | Yes           | Yes      | Yes      | Yes     |
+| [Microsoft Visual Studio bulut Gezgini](/visualstudio/azure/vs-azure-tools-resources-managing-with-cloud-explorer) | Windows             | Yes          | Yes         | Yes           | Yes      | Yes      | Hayır      |
 
 Azure Depolama verileriyle çalışmaya yönelik birçok üçüncü taraf araç da mevcuttur.

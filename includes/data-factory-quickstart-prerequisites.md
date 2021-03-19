@@ -8,12 +8,12 @@ ms.service: data-factory
 ms.topic: include
 ms.custom: include file
 ms.date: 06/27/2019
-ms.openlocfilehash: a979cd0a4c2ee6466edebadf61e8a98b8f17c9f3
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 0c21c576cbb99ccc96bf7edf733769a9b28b9344
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96013386"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104612232"
 ---
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -27,7 +27,7 @@ Data Factory örnekleri oluşturmak için, Azure’da oturum açarken kullandı�
 
 Data Factory için veri kümeleri, bağlı hizmetler, işlem hatları, tetikleyiciler ve tümleştirme çalışma zamanları gibi alt kaynaklar oluşturup yönetmek için aşağıdaki gereksinimlerin karşılanması gerekir:
 
-- Azure portalda alt öğe oluşturup yönetebilmek için kaynak grubu düzeyinde **Data Factory Katılımcısı** rolüne veya daha üst düzey bir role sahip olmanız gerekir.
+- Azure portal alt kaynakları oluşturmak ve yönetmek için, kaynak grubu düzeyinde veya yukarıdaki **Data Factory katkıda bulunan** rolüne ait olmanız gerekir.
 - PowerShell veya SDK ile alt öğe oluşturup yönetebilmek için kaynak düzeyinde **katkıda bulunan** rolü veya daha üst düzey bir rol yeterli olacaktır.
 
 Kullanıcı rolü eklemeye ilişkin örnek yönergeler için [Rol ekleme](../articles/cost-management-billing/manage/add-change-subscription-administrator.md) makalesine bakın.
@@ -59,7 +59,8 @@ Bu bölümde, Azure Blob depolama alanında **adftutorial** adlı bir blob kapsa
 2. *\<Account name>*  -  **Kapsayıcılar** sayfasının araç çubuğunda **kapsayıcı**' yı seçin.
 3. **Yeni kapsayıcı** iletişim kutusunda ad olarak **adftutorial** girin ve ardından **Tamam**’ı seçin. *\<Account name>*  -  **Kapsayıcılar** sayfası, kapsayıcılar listesinde **adföğreticisi** içerecek şekilde güncelleştirilir.
 
-   ![Kapsayıcılar listesi](media/data-factory-quickstart-prerequisites/list-of-containers.png)
+   :::image type="content" source="media/data-factory-quickstart-prerequisites/list-of-containers.png" alt-text="Kapsayıcılar listesi":::
+
 
 #### <a name="add-an-input-folder-and-file-for-the-blob-container"></a>Blob kapsayıcısı için bir giriş klasörü ve dosyası ekleyin
 
@@ -82,7 +83,8 @@ Dosyayı **C:\ADFv2QuickStartPSH** klasörüne kaydedin. (Klasör zaten mevcut d
 3. **Blobu karşıya yükle** sayfasında, **dosyalar** kutusunu seçin ve ardından **emp.txt** dosyasına gidin ve dosyayı seçin.
 4. **Gelişmiş** başlık ' ı genişletin. Sayfa artık gösterildiği gibi görüntülenir:
 
-   ![Gelişmiş bağlantı seçeneğini belirleme](media/data-factory-quickstart-prerequisites/upload-blob-advanced.png)
+   :::image type="content" source="media/data-factory-quickstart-prerequisites/upload-blob-advanced.png" alt-text="Gelişmiş bağlantı seçeneğini belirleme":::
+
 5. **Klasöre yükle** kutusuna **giriş**' i girin.
 6. **Karşıya Yükle** düğmesini seçin. Listede **emp.txt** dosyasını ve karşıya yükleme durumunu görmeniz gerekir.
 7. **BLOB yükle** sayfasını kapatmak için **Kapat** simgesini (bir **X**) seçin.

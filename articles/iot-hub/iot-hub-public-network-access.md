@@ -7,12 +7,12 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 03/12/2021
-ms.openlocfilehash: 539e420cb9085fad10ea3972ba0e9e5ffb9d0622
-ms.sourcegitcommit: df1930c9fa3d8f6592f812c42ec611043e817b3b
+ms.openlocfilehash: b225ad7e12a95b4dcbb8656f54f8a9e9562b2ee8
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2021
-ms.locfileid: "103419771"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104604704"
 ---
 # <a name="managing-public-network-access-for-your-iot-hub"></a>IoT Hub 'ınız için ortak ağ erişimini yönetme
 
@@ -32,7 +32,7 @@ Ortak ağ erişimini açmak için **tüm ağlar**' ı seçtikten sonra **kaydedi
 
 ## <a name="accessing-the-iot-hub-after-disabling-public-network-access"></a>Ortak ağ erişimini devre dışı bıraktıktan sonra IoT Hub erişme
 
-Genel ağ erişimi devre dışı bırakıldıktan sonra, IoT Hub yalnızca [Azure özel bağlantısı kullanılarak VNET özel uç noktası](virtual-network-support.md)aracılığıyla erişilebilir. Bu kısıtlama, IoT Hub hizmetine yönelik API çağrıları kimlik bilgilerinizle doğrudan tarayıcınız kullanılarak yapıldığından, Azure portal 'e erişimi içerir. 
+Genel ağ erişimi devre dışı bırakıldıktan sonra, IoT Hub yalnızca [Azure özel bağlantısı kullanılarak VNET özel uç noktası](virtual-network-support.md)aracılığıyla erişilebilir.
 
 ## <a name="iot-hub-endpoint-ip-address-and-ports-after-disabling-public-network-access"></a>Genel ağ erişimini devre dışı bıraktıktan sonra uç nokta, IP adresi ve bağlantı noktaları IoT Hub
 

@@ -13,18 +13,18 @@ ms.devlang: na
 ms.date: 01/14/2019
 ms.author: kenwith
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3665c5b82095004ddf7dc1f503b54f5164d49c7f
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.openlocfilehash: 88a4d0f108d4e3c27ce17aaa83aafca38063c9ae
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99260071"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104589472"
 ---
-# <a name="use-the-ad-fs-application-activity-report-preview-to-migrate-applications-to-azure-ad"></a>Uygulamaları Azure AD 'ye geçirmek için AD FS uygulama etkinliği raporunu (Önizleme) kullanın
+# <a name="use-the-ad-fs-application-activity-report-to-migrate-applications-to-azure-ad"></a>Uygulamaları Azure AD 'ye geçirmek için AD FS uygulama etkinliği raporunu kullanın
 
 Birçok kuruluş, bulut uygulamalarında çoklu oturum açma sağlamak için Active Directory Federasyon Hizmetleri (AD FS) (AD FS) kullanır. Özellikle maliyet yönetimi, risk yönetimi, üretkenlik, uyumluluk ve idare bakımından AD FS uygulamalarınızı kimlik doğrulaması için Azure AD 'ye taşımaya yönelik önemli yararlar vardır. Ancak hangi uygulamaların Azure AD ile uyumlu olduğunu ve belirli geçiş adımlarının belirlenmesi zaman alabilir.
 
-Azure portal AD FS uygulama etkinliği raporu (Önizleme), uygulamalarınızın Azure AD 'ye geçirilme yeteneğine hızlı bir şekilde yararlanmanızı sağlar. Tüm AD FS uygulamaları Azure AD ile uyumluluk için değerlendirir, herhangi bir sorun olup olmadığını denetler ve tek tek uygulamaları geçişe hazırlamaya yönelik rehberlik sağlar. AD FS uygulama etkinliği raporuyla şunları yapabilirsiniz:
+Azure portal uygulama etkinliği raporu AD FS, uygulamalarınızın Azure AD 'ye geçirilme yeteneğine hızlı bir şekilde yararlanmanızı sağlar. Tüm AD FS uygulamaları Azure AD ile uyumluluk için değerlendirir, herhangi bir sorun olup olmadığını denetler ve tek tek uygulamaları geçişe hazırlamaya yönelik rehberlik sağlar. AD FS uygulama etkinliği raporuyla şunları yapabilirsiniz:
 
 * **AD FS uygulamaları ve geçişinizin kapsamını bulun.** AD FS uygulama etkinliği raporu, kuruluşunuzda son 30 gün içinde etkin bir Kullanıcı oturum açma yapmış olan tüm AD FS uygulamalarını listeler. Rapor, uygulamaların Azure AD 'ye geçiş için hazır olduğunu gösterir. Rapor, Microsoft ile ilgili bağlı tarafları Office 365 gibi AD FS görüntülemez. Örneğin, ' urn: Federation: MicrosoftOnline ' adlı bağlı olan taraflar.
 
@@ -52,7 +52,7 @@ AD FS uygulama etkinliği raporu, Azure AD **kullanımı & Öngörüler** raporl
 
 2. **Azure Active Directory**' yi seçin ve ardından **Kurumsal uygulamalar**' ı seçin.
 
-3. **Etkinlik**' in altında, **kullanım & Öngörüler ' i (Önizleme)** seçin ve sonra kuruluşunuzdaki tüm AD FS uygulamaların bir listesini açmak için **AD FS uygulama etkinliği** ' ni seçin.
+3. **Etkinlik**' in altında, **kullanım & Öngörüler**' i seçin ve kuruluşunuzdaki tüm AD FS uygulamaların bir listesini açmak için **AD FS uygulama etkinliği** ' ni seçin.
 
    ![AD FS uygulama etkinliği](media/migrate-adfs-application-activity/adfs-application-activity.png)
 
@@ -78,7 +78,7 @@ AD FS uygulama etkinliği raporu, Azure AD **kullanımı & Öngörüler** raporl
 
 Aşağıdaki tabloda AD FS uygulamalarda gerçekleştirilen tüm yapılandırma sınamaları listelenmektedir.
 
-|Sonuç  |Geçiş/uyarı/başarısız  |Açıklama  |
+|Sonuç  |Geçiş/uyarı/başarısız  |Description  |
 |---------|---------|---------|
 |Test-ADFSRPAdditionalAuthenticationRules <br> AdditionalAuthentication için en az bir geçirilip geçirilemeyeceğini denetleyin olmayan kural algılandı.       | Geçiş/uyarı          | Bağlı olan taraf, Multi-Factor Authentication (MFA) için sorulacak kurallara sahiptir. Azure AD 'ye geçmek için bu kuralları koşullu erişim ilkelerine çevirin. Şirket içi MFA kullanıyorsanız Azure AD MFA 'ya geçmeniz önerilir. [Koşullu erişim hakkında daha fazla bilgi edinin](../authentication/concept-mfa-howitworks.md).        |
 |Test-ADFSRPAdditionalWSFedEndpoint <br> Bağlı olan tarafın AdditionalWSFedEndpoint değeri true olarak ayarlanmıştır.       | Başarılı/Başarısız          | AD FS bağlı olan taraf, birden çok WS-Fed onay uç noktasına izin verir.Şu anda Azure AD yalnızca bir tane destekler.Bu sonucun geçişi engellediği bir senaryonuz varsa [bize bilgi verin](https://feedback.azure.com/forums/169401-azure-active-directory/suggestions/38695621-allow-multiple-ws-fed-assertion-endpoints).     |

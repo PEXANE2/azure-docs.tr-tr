@@ -9,20 +9,20 @@ ms.reviewer: ''
 ms.date: 03/08/2021
 author: ruxu
 ms.author: ruxu
-ms.openlocfilehash: ad6f0d5ad55716e19e4e0c571056d18641e23d21
-ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
+ms.openlocfilehash: a3899b83133b3f951547fae0b11c044bfa85a5fc
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102620255"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104589608"
 ---
 # <a name="tutorial-build-machine-learning-applications-using-microsoft-machine-learning-for-apache-spark-preview"></a>Öğretici: Apache Spark için Microsoft Machine Learning kullanarak makine öğrenimi uygulamaları oluşturma (Önizleme)
 
-Bu makalede, makine öğrenimi uygulamaları oluşturmak için Apache Spark ([Mmlspark](https://github.com/Azure/mmlspark)) için Microsoft Machine Learning kullanmayı öğreneceksiniz. MMLSpark, Azure bilişsel [Hizmetler](https://docs.microsoft.com/azure/cognitive-services/big-data/cognitive-services-for-big-data), [OpenCV](https://opencv.org/), [lightgbm](https://github.com/Microsoft/LightGBM) ve daha fazlası gibi birçok derin öğrenme ve veri bilimi aracı ekleyerek Apache Spark dağıtılmış makine öğrenimi çözümünü genişletir.  MMLSpark, çeşitli Spark veri kaynaklarından güçlü ve yüksek düzeyde ölçeklenebilir tahmine dayalı ve analitik modeller oluşturmanızı sağlar.
+Bu makalede, makine öğrenimi uygulamaları oluşturmak için Apache Spark ([Mmlspark](https://github.com/Azure/mmlspark)) için Microsoft Machine Learning kullanmayı öğreneceksiniz. MMLSpark, Azure bilişsel [Hizmetler](../../cognitive-services/big-data/cognitive-services-for-big-data.md), [OpenCV](https://opencv.org/), [lightgbm](https://github.com/Microsoft/LightGBM) ve daha fazlası gibi birçok derin öğrenme ve veri bilimi aracı ekleyerek Apache Spark dağıtılmış makine öğrenimi çözümünü genişletir.  MMLSpark, çeşitli Spark veri kaynaklarından güçlü ve yüksek düzeyde ölçeklenebilir tahmine dayalı ve analitik modeller oluşturmanızı sağlar.
 SYNAPSE Spark aşağıdakiler dahil yerleşik MMLSpark kitaplıklarını sağlar:
 
 - [Vowpal Wabbit](https://github.com/VowpalWabbit/vowpal_wabbit) – makine öğrenimi 'nde yaklaşım analizi gibi metin analizlerini etkinleştirmek üzere Machine Learning için Kitaplık Hizmetleri.
-- [Spark üzerinde](https://docs.microsoft.com/azure/cognitive-services/big-data/cognitive-services-for-big-data) bilişsel hizmetler – anomali algılama gibi bilişsel veri modelleme Hizmetleri için çözüm tasarımı elde etmek amacıyla, Azure bilişsel hizmetler 'In, Mini erişimli bir ml işlem hattı içinde özelliklerini birleştirmek için
+- [Spark üzerinde](../../cognitive-services/big-data/cognitive-services-for-big-data.md) bilişsel hizmetler – anomali algılama gibi bilişsel veri modelleme Hizmetleri için çözüm tasarımı elde etmek amacıyla, Azure bilişsel hizmetler 'In, Mini erişimli bir ml işlem hattı içinde özelliklerini birleştirmek için
 - [Lightbgm](https://github.com/Azure/mmlspark/blob/master/docs/lightgbm.md) – BIR yüz kimlik algılaması gibi tahmine dayalı analiz için model eğitimi etkinleştirmek üzere makine öğrenimi modeli.
 - Koşullu KNN-koşullu sorgularla ölçeklenebilir KNN modelleri.
 - [Spark üzerinde http](https://github.com/Azure/mmlspark/blob/master/docs/http.md) – Spark ve http protokol tabanlı erişilebilirliği tümleştirerek dağıtılmış mikro hizmetleri düzenlemeye izin vermez.
@@ -38,9 +38,9 @@ Azure aboneliğiniz yoksa [başlamadan önce ücretsiz bir hesap oluşturun](htt
 
 ## <a name="prerequisites"></a>Önkoşullar 
 
-- Varsayılan depolama alanı olarak yapılandırılmış bir Azure Data Lake Storage 2. depolama hesabıyla [Azure SYNAPSE Analytics çalışma alanı](https://docs.microsoft.com/azure/synapse-analytics/get-started-create-workspace) . Birlikte çalıştığınız Data Lake Storage 2. dosya sisteminin *Depolama Blobu veri katılımcısı* olması gerekir.
-- Azure SYNAPSE Analytics çalışma alanınızdaki Spark Havuzu. Ayrıntılar için bkz. [Azure 'Da Spark havuzu oluşturma SYNAPSE](https://docs.microsoft.com/azure/synapse-analytics/quickstart-create-sql-pool-studio).
-- Öğreticide açıklanan ön yapılandırma adımları [Azure SYNAPSE 'de bilişsel hizmetler 'ı yapılandırın](https://docs.microsoft.com/azure/synapse-analytics/machine-learning/tutorial-configure-cognitive-services-synapse).
+- Varsayılan depolama alanı olarak yapılandırılmış bir Azure Data Lake Storage 2. depolama hesabıyla [Azure SYNAPSE Analytics çalışma alanı](../get-started-create-workspace.md) . Birlikte çalıştığınız Data Lake Storage 2. dosya sisteminin *Depolama Blobu veri katılımcısı* olması gerekir.
+- Azure SYNAPSE Analytics çalışma alanınızdaki Spark Havuzu. Ayrıntılar için bkz. [Azure 'Da Spark havuzu oluşturma SYNAPSE](../quickstart-create-sql-pool-studio.md).
+- Öğreticide açıklanan ön yapılandırma adımları [Azure SYNAPSE 'de bilişsel hizmetler 'ı yapılandırın](./tutorial-configure-cognitive-services-synapse.md).
 
 
 ## <a name="get-started"></a>başlarken
@@ -69,7 +69,7 @@ anomalydetector_key = mssparkutils.credentials.getSecret("keyvaultForSynapse", a
 
 ## <a name="text-analytics-sample"></a>Metin analizi örneği
 
-[Metin analizi](https://docs.microsoft.com/azure/cognitive-services/text-analytics/) hizmeti, metinden akıllı öngörüleri ayıklamak için çeşitli algoritmalar sağlar. Örneğin, verilen giriş metninin yaklaşımını bulabiliriz. Hizmet, 0,0 ile 1,0 arasında bir puan döndürür. bu noktada, düşük puanlar negatif yaklaşım ve yüksek puan pozitif yaklaşım olduğunu gösterir. Bu örnek üç basit cümle kullanır ve her biri için yaklaşımı döndürür.
+[Metin analizi](../../cognitive-services/text-analytics/index.yml) hizmeti, metinden akıllı öngörüleri ayıklamak için çeşitli algoritmalar sağlar. Örneğin, verilen giriş metninin yaklaşımını bulabiliriz. Hizmet, 0,0 ile 1,0 arasında bir puan döndürür. bu noktada, düşük puanlar negatif yaklaşım ve yüksek puan pozitif yaklaşım olduğunu gösterir. Bu örnek üç basit cümle kullanır ve her biri için yaklaşımı döndürür.
 
 ```python
 from pyspark.sql.functions import col
@@ -104,7 +104,7 @@ display(sentiment.transform(df_sentences).select("text", col("sentiment")[0].get
 | Bugün bugün kutlu olsun! | pozitif |
 
 ## <a name="computer-vision-sample"></a>Bilgisayar vizyonu örneği
-[Görüntü işleme](https://docs.microsoft.com/azure/cognitive-services/computer-vision/) , yüzeyleri, nesneleri ve doğal dil açıklamaları gibi yapıyı belirlemek için görüntüleri analiz eder. Bu örnekte, izleme görüntüsünü etiketliyoruz. Etiketler, görüntüde tanınabilir nesneler, kişiler, manzara ve eylemler gibi öğelerin bir sözcüklerdir.
+[Görüntü işleme](../../cognitive-services/computer-vision/index.yml) , yüzeyleri, nesneleri ve doğal dil açıklamaları gibi yapıyı belirlemek için görüntüleri analiz eder. Bu örnekte, izleme görüntüsünü etiketliyoruz. Etiketler, görüntüde tanınabilir nesneler, kişiler, manzara ve eylemler gibi öğelerin bir sözcüklerdir.
 
 
 ![image](https://raw.githubusercontent.com/Azure-Samples/cognitive-services-sample-data-files/master/ComputerVision/Images/objects.jpg)
@@ -134,7 +134,7 @@ display(analysis.transform(df_images).select("image", "analysis_results.descript
 | `https://raw.githubusercontent.com/Azure-Samples/cognitive-services-sample-data-files/master/ComputerVision/Images/objects.jpg` | [skalama, kişi, Man, dış mek, perding, spor, skateboard, Başak, pano, gömlek, hava, Park, Erkek, yüz, atlama, rampa, el, yapma, bekletme] |
 
 ## <a name="bing-image-search-sample"></a>Bing resim arama örneği
-[Bing resim arama](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/overview) , kullanıcının doğal dil sorgusuyla ilgili görüntüleri almak için Web 'de arama yapar. Bu örnekte, tırnak içine alınmış resimleri gösteren bir metin sorgusu kullanıyoruz. Sorgumuzla ilgili fotoğraflar içeren resim URL 'Lerinin bir listesini döndürür.
+[Bing resim arama](../../cognitive-services/bing-image-search/overview.md) , kullanıcının doğal dil sorgusuyla ilgili görüntüleri almak için Web 'de arama yapar. Bu örnekte, tırnak içine alınmış resimleri gösteren bir metin sorgusu kullanıyoruz. Sorgumuzla ilgili fotoğraflar içeren resim URL 'Lerinin bir listesini döndürür.
 
 
 ```python
@@ -185,7 +185,7 @@ display(res_bingsearch.dropDuplicates())
 
 ## <a name="anomaly-detector-sample"></a>Anomali algılayıcı örneği
 
-[Anomali algılayıcısı](https://docs.microsoft.com/azure/cognitive-services/anomaly-detector/) , zaman serisi verilerinizde ırdüzenleyeaykırıluluğunu saptamak için idealdir. Bu örnekte, tüm zaman serisinde bozukluklar bulmak için hizmeti kullanırız.
+[Anomali algılayıcısı](../../cognitive-services/anomaly-detector/index.yml) , zaman serisi verilerinizde ırdüzenleyeaykırıluluğunu saptamak için idealdir. Bu örnekte, tüm zaman serisinde bozukluklar bulmak için hizmeti kullanırız.
 
 ```python
 from pyspark.sql.functions import lit

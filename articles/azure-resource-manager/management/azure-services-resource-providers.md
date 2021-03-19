@@ -2,17 +2,17 @@
 title: Azure hizmetlerine göre kaynak sağlayıcıları
 description: Azure Resource Manager için tüm kaynak sağlayıcısı ad alanlarını listeler ve bu ad alanı için Azure hizmetini gösterir.
 ms.topic: conceptual
-ms.date: 12/01/2020
-ms.openlocfilehash: 65fa6a690f05a61e54bae2d22f4889c3193bcb1a
-ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
+ms.date: 03/16/2021
+ms.openlocfilehash: ee8cb054f3f10c3b33d5235b2b03cdfeac266139
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/11/2021
-ms.locfileid: "103008714"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104592170"
 ---
 # <a name="resource-providers-for-azure-services"></a>Azure hizmetleri için kaynak sağlayıcıları
 
-Bu makalede, kaynak sağlayıcısı ad uzaylarının Azure hizmetleri ile nasıl eşleneceğini gösterir.
+Bu makalede, kaynak sağlayıcısı ad uzaylarının Azure hizmetleri ile nasıl eşleneceğini gösterir. Kaynak sağlayıcısını bilmiyorsanız bkz. [kaynak sağlayıcısını bulma](#find-resource-provider).
 
 ## <a name="match-resource-provider-to-service"></a>Kaynak sağlayıcısını hizmetle Eşleştir
 
@@ -192,6 +192,42 @@ Bu makalede, kaynak sağlayıcısı ad uzaylarının Azure hizmetleri ile nasıl
 
 > [!IMPORTANT]
 > Yalnızca bir kaynak sağlayıcısını kullanmaya hazırsanız kaydolun. Kayıt adımı, aboneliğinizde en az ayrıcalıkları korumanıza olanak sağlar. Kötü amaçlı bir Kullanıcı kayıtlı olmayan kaynak sağlayıcılarını kullanamaz.
+
+## <a name="find-resource-provider"></a>Kaynak sağlayıcısını bul
+
+Azure 'da mevcut altyapıya sahipseniz, ancak hangi kaynak sağlayıcının kullanıldığından emin değilseniz, kaynak sağlayıcısını bulmak için Azure CLı veya PowerShell kullanabilirsiniz. Bulunacak kaynakları içeren kaynak grubunun adını belirtin.
+
+Aşağıdaki örnek Azure CLı kullanır:
+
+```azurecli-interactive
+az resource list -g examplegroup
+```
+
+Sonuçlar kaynak türünü içerir. Kaynak sağlayıcısı ad alanı, kaynak türünün ilk kısmıdır. Aşağıdaki örnekte **Microsoft. Keykasası** kaynak sağlayıcısı gösterilmektedir.
+
+```json
+[
+  {
+    ...
+    "type": "Microsoft.KeyVault/vaults"
+  }
+]
+```
+
+Aşağıdaki örnek PowerShell kullanır:
+
+```azurepowershell-interactive
+Get-AzResource -ResourceGroupName examplegroup
+```
+
+Sonuçlar kaynak türünü içerir. Kaynak sağlayıcısı ad alanı, kaynak türünün ilk kısmıdır. Aşağıdaki örnekte **Microsoft. Keykasası** kaynak sağlayıcısı gösterilmektedir.
+
+```azurepowershell
+Name              : examplekey
+ResourceGroupName : examplegroup
+ResourceType      : Microsoft.KeyVault/vaults
+...
+```
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

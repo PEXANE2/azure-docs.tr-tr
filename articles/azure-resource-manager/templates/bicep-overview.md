@@ -2,19 +2,23 @@
 title: Azure Resource Manager şablonları için bıcep dili
 description: Azure Resource Manager şablonları aracılığıyla Azure 'a altyapı dağıtmak için Bıcep dilini açıklar.
 ms.topic: conceptual
-ms.date: 03/12/2021
-ms.openlocfilehash: 599cb378da51c5d13e7db3cf45cacf750c5843cc
-ms.sourcegitcommit: df1930c9fa3d8f6592f812c42ec611043e817b3b
+ms.date: 03/17/2021
+ms.openlocfilehash: 6f706081d04c5337bb3def8088fe97b08c814ea2
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2021
-ms.locfileid: "103419839"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104594232"
 ---
 # <a name="what-is-bicep-preview"></a>Bicep (Önizleme) nedir?
 
 Bıcep, Azure kaynaklarını bildirimli olarak dağıtmaya yönelik bir dildir. Azure Resource Manager şablonlarınızı geliştirmek için JSON yerine Bıcep kullanabilirsiniz (ARM şablonları). Bıcep, daha kısa bir sözdizimi sağlayarak kod yeniden kullanımı için daha iyi destek ve geliştirilmiş tür güvenliği sunarak yazma deneyimini basitleştirir. Bıcep, etki alanına özgü bir dildir (DSL), bu, belirli bir senaryo veya etki alanı için tasarlanmasıdır. Uygulama yazmak için genel programlama dili olarak tasarlanmamıştır.
 
 Şablon oluşturmak için JSON sözdizimi ayrıntılı olabilir ve karmaşık ifade gerektirebilir. Bıcep, bir JSON şablonunun özelliklerini kaybetmeden bu deneyimi geliştirir. ARM şablonları için JSON üzerinde saydam bir soyutlamadır. Her bicep dosyası standart bir ARM şablonuna derlenir. Bir ARM şablonunda geçerli olan kaynak türleri, API sürümleri ve özellikler bir Bıcep dosyasında geçerlidir. Geçerli sürümde bazı [bilinen sınırlamalar](#known-limitations) vardır.
+
+Bıcep hakkında bilgi edinmek için aşağıdaki videoya bakın.
+
+> [!VIDEO https://mediusprodstatic.studios.ms/asset-cccfdaf2-cdbe-49dd-9c58-91a4fe5ff0fd/OD340_1920x1080_AACAudio_5429.mp4?sv=2018-03-28&sr=b&sig=N3DuBaTrK3nt5TGwIagTbCqjVrzgwiJ9at80MXQJFwg%3D&st=2021-03-02T01%3A22%3A57Z&se=2026-03-02T01%3A27%3A57Z&sp=r&rscd=filename%3DIGFY21Q3-OD340-Learn%2Beverything%2Babout%2Bthe%2Bnext%2Bgeneration%2Bof%2BARM.mp4]
 
 ## <a name="get-started"></a>başlarken
 

@@ -9,12 +9,12 @@ ms.subservice: trusted-launch
 ms.topic: how-to
 ms.date: 03/03/2021
 ms.custom: template-how-to
-ms.openlocfilehash: f5e361d32cf2ab436f92ce2ca86a054a6dd3337e
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.openlocfilehash: dec9c7581bbcf55196b04e0a76e9e61f81a27244
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102553757"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104582077"
 ---
 # <a name="deploy-a-vm-with-trusted-launch-enabled-preview"></a>Güvenilir başlatma etkin bir VM dağıtma (Önizleme)
 
@@ -134,13 +134,13 @@ Azure Güvenlik Merkezi 'ni, güvenilen başlatma sanal makineleriniz hakkında 
 
 Şablonun her abonelik için yalnızca bir kez dağıtılması gerekir. Desteklenen tüm sanal makinelere otomatik olarak yüklenir `GuestAttestation` ve `AzureSecurity` uzantıları. Hata alırsanız, şablonu yeniden dağıtmaya çalışın.
 
-Güvenilen başlatma VM 'Leri için vTPM ve güvenli önyükleme önerilerini almak üzere, [aboneliğinize özel bir girişim ekleme](https://docs.microsoft.com/azure/security-center/custom-security-policies#to-add-a-custom-initiative-to-your-subscription)bölümüne bakın.
+Güvenilen başlatma VM 'Leri için vTPM ve güvenli önyükleme önerilerini almak üzere, [aboneliğinize özel bir girişim ekleme](../security-center/custom-security-policies.md#to-add-a-custom-initiative-to-your-subscription)bölümüne bakın.
  
 ## <a name="sign-things-for-secure-boot-on-linux"></a>Linux 'ta güvenli önyükleme için işlemleri imzala
 
 Bazı durumlarda, UEFı güvenli önyükleme için işlemleri imzalamanız gerekebilir.  Örneğin, Ubuntu için [Güvenli önyükleme için Işlemleri nasıl imzalayabileceğinize](https://ubuntu.com/blog/how-to-sign-things-for-secure-boot) gitmeniz gerekebilir. Bu gibi durumlarda, sanal makinenizin MOK yardımcı program kaydetme anahtarlarını girmeniz gerekir. Bunu yapmak için, MOK yardımcı programına erişmek üzere Azure seri konsolu 'nu kullanmanız gerekir.
 
-1. Linux için Azure seri konsolunu etkinleştirin. Daha fazla bilgi için bkz. [Linux Için seri konsol](https://docs.microsoft.com/troubleshoot/azure/virtual-machines/serial-console-linux).
+1. Linux için Azure seri konsolunu etkinleştirin. Daha fazla bilgi için bkz. [Linux Için seri konsol](/troubleshoot/azure/virtual-machines/serial-console-linux).
 1. [Azure Portal](https://portal.azure.com)oturum açın.
 1. **Sanal makineleri** arayın ve listeden VM 'nizi seçin.
 1. Sol taraftaki menüde, **destek + sorun giderme** altında **seri konsol**' yi seçin. Seri konsol ile sağ tarafta bir sayfa açılır.

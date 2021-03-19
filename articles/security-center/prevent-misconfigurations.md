@@ -5,14 +5,14 @@ author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: how-to
-ms.date: 02/04/2021
+ms.date: 03/17/2021
 ms.author: memildin
-ms.openlocfilehash: 5d172a73674195e7f64f5ef02322e2bd2d6314df
-ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
+ms.openlocfilehash: fabbd255f64e5614ae052c9d7c8d65fc35d45856
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102439536"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104600505"
 ---
 # <a name="prevent-misconfigurations-with-enforcedeny-recommendations"></a>Zorlama/Reddetme önerileriyle yanlış yapılandırmaları önleme
 
@@ -68,6 +68,7 @@ Bu öneriler, **zorla** seçeneğiyle birlikte kullanılabilir:
 - SQL Server üzerinde denetim etkinleştirilmelidir
 - Sanal makineler için Azure Backup etkinleştirilmelidir
 - SQL Server 'larınızdaki SQL için Azure Defender etkinleştirilmelidir
+- Kubernetes için Azure Ilke eklentisi, kümelerinizde yüklü ve etkin olmalıdır
 - Azure Stream Analytics tanılama günlükleri etkinleştirilmelidir
 - Batch hesaplarındaki tanılama günlükleri etkinleştirilmelidir
 - Data Lake Analytics tanılama günlükleri etkinleştirilmelidir

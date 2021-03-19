@@ -2,13 +2,13 @@
 title: Bıcep geliştirme ve dağıtım ortamlarını ayarlama
 description: Bıcep geliştirme ve dağıtım ortamlarını yapılandırma
 ms.topic: conceptual
-ms.date: 03/09/2021
-ms.openlocfilehash: 0434c08a4427d2549a9adf4e4ab1e7e73a465ad8
-ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
+ms.date: 03/17/2021
+ms.openlocfilehash: d665a863affdec2009fc208f76b85a7f25de451d
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102620138"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104594402"
 ---
 # <a name="setup-bicep-development-and-deployment-environment"></a>Bıcep geliştirme ve dağıtım ortamını ayarlama
 
@@ -18,7 +18,7 @@ Bıcep geliştirme ve dağıtım ortamlarını ayarlamayı öğrenin.
 
 En iyi bicep yazma deneyimini almak için iki bileşene ihtiyacınız vardır:
 
-- **Visual Studio Code Için Bıcep uzantısı**. Bicep dosyaları oluşturmak için, iyi bir Bıcep Düzenleyicisi gerekir. [Bıcep uzantısı](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-bicep)ile [Visual Studio Code](https://code.visualstudio.com/) önerilir. Bu araçlar, dil desteği ve kaynak otomatik tamamlama sağlar. Bicep dosyalarını oluşturma ve doğrulamaya yardımcı olurlar. Daha fazla bilgi için bkz. [hızlı başlangıç: Visual Studio Code bicep dosyaları oluşturma](./quickstart-create-bicep-use-visual-studio-code.md).
+- **Visual Studio Code Için Bıcep uzantısı**. Bicep dosyaları oluşturmak için, iyi bir Bıcep Düzenleyicisi gerekir. [Bıcep uzantısı](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-bicep)ile [Visual Studio Code](https://code.visualstudio.com/) önerilir. Bu araçlar, dil desteği ve kaynak otomatik tamamlama sağlar. Bicep dosyalarını oluşturma ve doğrulamaya yardımcı olurlar. Visual Studio Code ve Bıcep uzantısını kullanma hakkında daha fazla bilgi için bkz. [hızlı başlangıç: Visual Studio Code Ile bıcep dosyaları oluşturma](./quickstart-create-bicep-use-visual-studio-code.md).
 - **Bıcep CLI**. Bıcep CLı kullanarak bicep dosyalarını ARM JSON şablonlarına derleyin ve ARM JSON şablonlarını Bıcep dosyalarına derlemeyi bozun. Daha fazla bilgi için bkz. [Bıcep CLI 'Yı yüklemeyin](#install-bicep-cli).
 
 ## <a name="deployment-environment"></a>Dağıtım ortamı

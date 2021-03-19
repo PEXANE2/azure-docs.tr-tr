@@ -3,12 +3,12 @@ title: Öğretici-Azure VM 'lerinde SAP HANA veritabanlarını yedekleme
 description: Bu öğreticide, Azure VM 'de çalışan SAP HANA veritabanlarını Azure Backup kurtarma hizmetleri kasasına nasıl yedekleyeceğinizi öğrenin.
 ms.topic: tutorial
 ms.date: 02/24/2020
-ms.openlocfilehash: 5548717b25ea3ec027ba5f588e5e28faafbb5d6f
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 00109de349c1fdfdbaff9de30d18f64d8b986a59
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101703690"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104587653"
 ---
 # <a name="tutorial-back-up-sap-hana-databases-in-an-azure-vm"></a>Öğretici: Azure VM 'de SAP HANA veritabanlarını yedekleme
 
@@ -167,6 +167,18 @@ Komut çıktısı {SID} {DBNAME} anahtarını, AZUREWLBACKUPHANAUSER olarak gös
 
 >[!NOTE]
 > Altında farklı bir SSFS dosyası kümesine sahip olduğunuzdan emin olun `/usr/sap/{SID}/home/.hdb/` . Bu yolda yalnızca bir klasör olmalıdır.
+
+Kayıt öncesi betik çalıştırmasını tamamlamak için gereken adımların özeti aşağıda verilmiştir.
+
+|Sağlayan  |Kaynak  |Çalışmak için gerekenler  |Yorumlar  |
+|---------|---------|---------|---------|
+|```<sid>```adm (OS)     |  HANA IŞLETIM SISTEMI       |   Öğreticiyi Oku ve kayıt öncesi betiği indir      |   Yukarıdaki ön kayıt betiğini indirme [Yukarıdaki önkoşulları](#prerequisites) okuyun [](https://aka.ms/scriptforpermsonhana)  |
+|```<sid>```adm (OS) ve SISTEM kullanıcısı (HANA)    |      HANA IŞLETIM SISTEMI   |   Hdbuserstore set komutunu çalıştır      |   örn. hdbuserstore kümesi SISTEM ana bilgisayar adı>:3 ```<Instance#>``` 13 sistem ```<password>``` AÇıKLAMASı **:**  IP adresi veya FQDN yerine ana bilgisayar adı kullandığınızdan emin olun      |
+|```<sid>```adm (OS)    |   HANA IŞLETIM SISTEMI      |  Hdbuserstore List komutunu çalıştır       |   Sonucun aşağıdaki gibi varsayılan depoyu içerip içermediğinizi denetleyin: ```KEY SYSTEM  ENV : <hostname>:3<Instance#>13  USER: SYSTEM```      |
+|Kök (işletim sistemi)     |   HANA IŞLETIM SISTEMI        |    Azure Backup HANA ön kayıt betiğini Çalıştır      |    ```./msawb-plugin-config-com-sap-hana.sh -a --sid <SID> -n <Instance#> --system-key SYSTEM```     |
+|```<sid>```adm (OS)    |  HANA IŞLETIM SISTEMI       |   Hdbuserstore List komutunu çalıştır      |    Sonucun yeni satırları aşağıda gösterildiği gibi içerip içerne olduğunu kontrol edin:  ```KEY AZUREWLBACKUPHANAUSER  ENV : localhost: 3<Instance#>13   USER: AZUREWLBACKUPHANAUSER```     |
+
+Ön kayıt betiğini başarıyla çalıştırdıktan ve doğruladıktan sonra, [bağlantı gereksinimlerini](#set-up-network-connectivity) denetlemeye ve sonra yedeklemeyi kurtarma hizmetleri kasasından [yapılandırmanıza](#discover-the-databases) devam edebilirsiniz
 
 ## <a name="create-a-recovery-services-vault"></a>Kurtarma Hizmetleri kasası oluşturma
 

@@ -11,12 +11,12 @@ ms.date: 04/19/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
 ms.custom: ''
-ms.openlocfilehash: 218803d0b7e1f5add2f033a7ce01e0a8f6ffc956
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 450a089c6cc1c77ac26cb0aa339277d5c49b41c8
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101674093"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104594793"
 ---
 # <a name="statistics-in-synapse-sql"></a>SYNAPSE SQL istatistikleri
 
@@ -90,9 +90,9 @@ Değerlerin dağıtılması genellikle değişmediğinden, müşteri tablosundak
 
 Ancak, veri ambarınız yalnızca bir ülke veya bölge içerdiğinde ve yeni bir ülke veya bölgeden veri getirdiyseniz, ülke veya bölge sütununda istatistikleri güncelleştirmeniz gerekir.
 
-Öneriler güncelleştirme istatistikleri aşağıda verilmiştir:
+İstatistikleri güncelleştirme önerileri aşağıda verilmiştir:
 
-|||
+|Tür|Öneri|
 |-|-|
 | **İstatistik güncelleştirme sıklığı**  | Koruyucu: günlük </br> Verilerinizi yükledikten veya dönüştürdükten sonra |
 | **Örnekleme** |  1.000.000.000 satırdan az olan varsayılan örnekleme (yüzde 20) kullanın. </br> 1.000.000.000 ' den fazla satır ile, iki yüzde örnekleme kullanın. |
@@ -443,7 +443,7 @@ Tam sözdizimi için bkz. [güncelleştirme istatistikleri](/sql/t-sql/statement
 
 Bu sistem görünümleri istatistikler hakkında bilgi sağlar:
 
-| Katalog görünümü | Açıklama |
+| Katalog görünümü | Description |
 |:--- |:--- |
 | [sys. Columns](/sql/relational-databases/system-catalog-views/sys-columns-transact-sql?view=azure-sqldw-latest&preserve-view=true) |Her sütun için bir satır. |
 | [sys. Objects](/sql/relational-databases/system-catalog-views/sys-objects-transact-sql?view=azure-sqldw-latest&preserve-view=true) |Veritabanındaki her nesne için bir satır. |
@@ -457,7 +457,7 @@ Bu sistem görünümleri istatistikler hakkında bilgi sağlar:
 
 Bu sistem işlevleri, istatistiklerle çalışmak için faydalıdır:
 
-| Sistem işlevi | Açıklama |
+| Sistem işlevi | Description |
 |:--- |:--- |
 | [STATS_DATE](/sql/t-sql/functions/stats-date-transact-sql?view=azure-sqldw-latest&preserve-view=true) |İstatistik nesnesinin son güncelleştirilme tarihi. |
 | [DBCC SHOW_STATISTICS](/sql/t-sql/database-console-commands/dbcc-show-statistics-transact-sql?view=azure-sqldw-latest&preserve-view=true) |İstatistik nesnesi tarafından anlaşıldıkça değerlerin dağılımı hakkında özet düzeyi ve ayrıntılı bilgiler. |
@@ -825,7 +825,7 @@ CREATE STATISTICS sState
 
 Bu sistem görünümleri istatistikler hakkında bilgi sağlar:
 
-| Katalog görünümü                                                 | Açıklama                                                  |
+| Katalog görünümü                                                 | Description                                                  |
 | :----------------------------------------------------------- | :----------------------------------------------------------- |
 | [sys. Columns](/sql/relational-databases/system-catalog-views/sys-columns-transact-sql?view=azure-sqldw-latest&preserve-view=true) | Her sütun için bir satır.                                     |
 | [sys. Objects](/sql/relational-databases/system-catalog-views/sys-objects-transact-sql?view=azure-sqldw-latest&preserve-view=true) | Veritabanındaki her nesne için bir satır.                     |
@@ -839,7 +839,7 @@ Bu sistem görünümleri istatistikler hakkında bilgi sağlar:
 
 Bu sistem işlevleri, istatistiklerle çalışmak için faydalıdır:
 
-| Sistem işlevi                                              | Açıklama                                  |
+| Sistem işlevi                                              | Description                                  |
 | :----------------------------------------------------------- | :------------------------------------------- |
 | [STATS_DATE](/sql/t-sql/functions/stats-date-transact-sql?view=azure-sqldw-latest&preserve-view=true) | İstatistik nesnesinin son güncelleştirilme tarihi. |
 
@@ -884,6 +884,6 @@ WHERE   st.[user_created] = 1
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Adanmış SQL havuzunun sorgu performansını daha da geliştirmek için bkz. [Özel SQL havuzu için](best-practices-sql-pool.md#maintain-statistics) [iş yükünüzü](../sql-data-warehouse/sql-data-warehouse-manage-monitor.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) ve en iyi uygulamalarınızı izleme.
+Adanmış SQL havuzunun sorgu performansını daha da geliştirmek için bkz. [Özel SQL havuzu için](best-practices-dedicated-sql-pool.md#maintain-statistics) [iş yükünüzü](../sql-data-warehouse/sql-data-warehouse-manage-monitor.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) ve en iyi uygulamalarınızı izleme.
 
-Sunucusuz SQL havuzunun sorgu performansını daha da geliştirmek için bkz. [sunucusuz SQL havuzu Için en iyi yöntemler](best-practices-sql-on-demand.md)
+Sunucusuz SQL havuzunun sorgu performansını daha da geliştirmek için bkz. [sunucusuz SQL havuzu Için en iyi yöntemler](best-practices-serverless-sql-pool.md)

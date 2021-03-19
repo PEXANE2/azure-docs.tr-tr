@@ -10,12 +10,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: ceb242dcd05105b533e365e91afd9601cc550392
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: 8af6802f785718ca6064a34c98d9f6dafc046a2c
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98116737"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104594776"
 ---
 # <a name="use-transactions-with-dedicated-sql-pool-in-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'te adanmış SQL havuzu ile işlemleri kullanma
 
@@ -204,4 +204,4 @@ Adanmış SQL havuzu, işlemlerle ilgili birkaç başka kısıtlama sağlar. Bun
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-İşlemleri iyileştirme hakkında daha fazla bilgi edinmek için bkz. [işlem en iyi uygulamaları](../sql-data-warehouse/sql-data-warehouse-develop-best-practices-transactions.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json). [ADANMıŞ SQL havuzu](best-practices-sql-pool.md) ve [sunucusuz SQL havuzu](best-practices-sql-on-demand.md)için ek en iyi yöntemler kılavuzları da sağlanır.
+İşlemleri iyileştirme hakkında daha fazla bilgi edinmek için bkz. [işlem en iyi uygulamaları](../sql-data-warehouse/sql-data-warehouse-develop-best-practices-transactions.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json). [ADANMıŞ SQL havuzu](best-practices-dedicated-sql-pool.md) ve [sunucusuz SQL havuzu](best-practices-serverless-sql-pool.md)için ek en iyi yöntemler kılavuzları da sağlanır.

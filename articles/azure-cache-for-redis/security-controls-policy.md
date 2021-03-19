@@ -1,18 +1,18 @@
 ---
 title: Redin için Azure önbelleği için Azure Ilkesi mevzuat uyumluluk denetimleri
 description: Redsıs için Azure önbelleği için kullanılabilen Azure Ilke mevzuat uyumluluk denetimlerini listeler. Bu yerleşik ilke tanımları, Azure kaynaklarınızın uyumluluğunu yönetmek için yaygın yaklaşımlar sağlar.
-ms.date: 03/10/2021
+ms.date: 03/17/2021
 ms.topic: sample
 author: yegu-ms
 ms.author: yegu
 ms.service: cache
 ms.custom: subject-policy-compliancecontrols
-ms.openlocfilehash: a3151bf98259f45c392182cf5e23c37c72d8203f
-ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
+ms.openlocfilehash: f6354372651acdec3322c5fdc3c4859302bce8b3
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/11/2021
-ms.locfileid: "102633891"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104584807"
 ---
 # <a name="azure-policy-regulatory-compliance-controls-for-azure-cache-for-redis"></a>Redin için Azure önbelleği için Azure Ilkesi mevzuat uyumluluk denetimleri
 

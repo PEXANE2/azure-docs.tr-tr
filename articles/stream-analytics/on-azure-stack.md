@@ -1,23 +1,20 @@
 ---
-title: Azure Stack üzerinde Azure Stream Analytics Çalıştır (Önizleme)
+title: Azure Stack üzerinde Azure Stream Analytics Çalıştır
 description: Azure Stream Analytics Edge işi oluşturun ve IoT Edge çalışma zamanı aracılığıyla Azure Stack hub 'a dağıtın.
 ms.service: stream-analytics
 author: an-emma
 ms.author: raan
 ms.topic: how-to
-ms.date: 08/21/2020
+ms.date: 03/15/2021
 ms.custom: seodec18
-ms.openlocfilehash: 3463b3eae96c0a65206023ed0f21efe44294d4eb
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 315b2efa042721a19fa779794c4921f9ced1fc83
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98020137"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104589812"
 ---
-# <a name="run-azure-stream-analytics-on-azure-stack-preview"></a>Azure Stack üzerinde Azure Stream Analytics Çalıştır (Önizleme)
-
-> [!IMPORTANT]
-> Bu işlevsellik önizlemededir ve üretimde kullanım için önerilmez.
+# <a name="run-azure-stream-analytics-on-azure-stack"></a>Azure Stack üzerinde Azure Stream Analytics Çalıştır 
 
 Azure Stack hub 'ında Azure Stream Analytics bir IoT Edge modülü olarak çalıştırabilirsiniz. IoT Edge modüle, her Azure Stack hub işte bulunan özel URL 'Ler sayesinde bir Azure Stack hub aboneliğinde çalışan BLOB depolama, Event Hubs ve IoT Hub 'Ları ile etkileşime geçmesini sağlayan yapılandırma eklenmiştir.
 

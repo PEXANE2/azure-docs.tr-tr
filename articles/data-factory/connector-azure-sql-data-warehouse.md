@@ -5,13 +5,13 @@ ms.author: jingwang
 author: linda33wj
 ms.service: data-factory
 ms.topic: conceptual
-ms.date: 02/10/2021
-ms.openlocfilehash: 38306b2fb3c0a51aeedbf1ebd9079dd787783093
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.date: 03/17/2021
+ms.openlocfilehash: 9c843ededd1fa863cc5eb4dc0db3a6da3478466d
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100364299"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104597530"
 ---
 # <a name="copy-and-transform-data-in-azure-synapse-analytics-by-using-azure-data-factory"></a>Azure Data Factory kullanarak Azure SYNAPSE Analytics 'te veri kopyalama ve dönüştürme
 
@@ -24,7 +24,7 @@ ms.locfileid: "100364299"
 
 Bu makalede, Azure SYNAPSE Analytics 'ten verileri kopyalamak için Azure Data Factory kopyalama etkinliğinin nasıl kullanılacağı özetlenmektedir ve Azure Data Lake Storage 2. verileri dönüştürmek için veri akışı kullanılır. Azure Data Factory hakkında bilgi edinmek için [tanıtım makalesini](introduction.md)okuyun.
 
-## <a name="supported-capabilities"></a>Desteklenen yetenekler
+## <a name="supported-capabilities"></a>Desteklenen özellikler
 
 Bu Azure SYNAPSE Analytics Bağlayıcısı aşağıdaki etkinlikler için desteklenir:
 
@@ -390,6 +390,7 @@ Verileri Azure SYNAPSE Analytics 'e kopyalamak için kopyalama etkinliğindeki h
 | Ön Copyscrıpt     | Her çalıştırmada Azure SYNAPSE Analytics 'e veri yazmadan önce çalıştırılacak bir SQL sorgusu belirtin. Önceden yüklenmiş verileri temizlemek için bu özelliği kullanın. | No                                            |
 | tableOption | Kaynak şemasına göre yoksa [Havuz tablosunun otomatik olarak oluşturulup](copy-activity-overview.md#auto-create-sink-tables) oluşturulmayacağını belirtir. İzin verilen değerler: `none` (varsayılan), `autoCreate` . |No |
 | disableMetricsCollection | Data Factory, performansı en iyi duruma getirme ve öneriler için Azure SYNAPSE Analytics DWUs gibi ölçümleri toplar ve bu da ek ana DB erişimi sağlar. Bu davranışla ilgileniyorlarsa, `true` devre dışı bırakmak için belirtin. | Hayır (varsayılan değer `false` ) |
+| maxConcurrentConnections |Etkinlik çalışması sırasında veri deposuna kurulan eşzamanlı bağlantıların üst sınırı. Yalnızca eş zamanlı bağlantıları sınırlandırmak istediğinizde bir değer belirtin.| No |
 
 #### <a name="azure-synapse-analytics-sink-example"></a>Azure SYNAPSE Analytics havuz örneği
 
@@ -520,7 +521,7 @@ Gereksinimler karşılanmazsa, Azure Data Factory ayarları denetler ve veri ta�
    4. `nullValue` Varsayılan olarak bırakılır veya **boş dize** ("") olarak ayarlanır ve `treatEmptyAsNull` Varsayılan olarak bırakılır ya da true olarak ayarlanır.
    5. `encodingName` Varsayılan olarak bırakılır veya **UTF-8** olarak ayarlanır.
    6. `quoteChar`, `escapeChar` ve `skipLineCount` belirtilmedi. PolyBase desteği, ADF 'de olduğu gibi yapılandırılabilen üst bilgi satırını atlar `firstRowAsHeader` .
-   7. `compression`**sıkıştırma**, **gzip** veya **söndür** olamaz.
+   7. `compression`**sıkıştırma**, **``GZip``** veya **söndür** olamaz.
 
 3. Kaynağınız bir klasörse, `recursive` Copy etkinliğinin true olarak ayarlanması gerekir.
 
@@ -615,7 +616,7 @@ Bu özelliği kullanmak için, Azure [BLOB depolama bağlı hizmeti](connector-a
 
 ### <a name="best-practices-for-using-polybase"></a>PolyBase 'i kullanmak için en iyi uygulamalar
 
-Aşağıdaki bölümlerde, [Azure SYNAPSE Analytics Için en iyi yöntemler](../synapse-analytics/sql/best-practices-sql-pool.md)bölümünde bahsedilen uygulamalara ek olarak en iyi uygulamalar sağlanmaktadır.
+Aşağıdaki bölümlerde, [Azure SYNAPSE Analytics Için en iyi yöntemler](../synapse-analytics/sql/best-practices-dedicated-sql-pool.md)bölümünde bahsedilen uygulamalara ek olarak en iyi uygulamalar sağlanmaktadır.
 
 #### <a name="required-database-permission"></a>Gerekli veritabanı izni
 
@@ -709,7 +710,7 @@ COPY ifadesinin kullanılması aşağıdaki yapılandırmayı destekler:
 
 2. Biçim ayarları şunlardır:
 
-   1. **Parquet**: `compression` **Compression**, **Snappy** veya **gzip** olamaz.
+   1. **Parquet**: `compression` **sıkıştırma**, **Snappy** veya olabilir **``GZip``** .
    2. **Orc** için: `compression` **Compression**, **```zlib```** veya **Snappy** olabilir.
    3. **Sınırlandırılmış metin** için:
       1. `rowDelimiter` açık olarak **tek karakter** veya "**\r\n**" olarak ayarlanmıştır, varsayılan değer desteklenmez.
@@ -717,7 +718,7 @@ COPY ifadesinin kullanılması aşağıdaki yapılandırmayı destekler:
       3. `encodingName` Varsayılan olarak bırakılır veya **UTF-8 veya UTF-16** olarak ayarlanır.
       4. `escapeChar` ile aynı olmalı `quoteChar` ve boş olmamalıdır.
       5. `skipLineCount` Varsayılan olarak bırakılır veya 0 olarak ayarlanır.
-      6. `compression`**sıkıştırma** veya **gzip** olamaz.
+      6. `compression` sıkıştırma veya **yok** olabilir **``GZip``** .
 
 3. Kaynağınız bir klasörse, `recursive` kopyalama etkinliği ' nde true olarak ayarlanmalıdır ve `wildcardFilename` olması gerekir `*` . 
 
@@ -821,7 +822,7 @@ Azure SYNAPSE Analytics 'e özgü ayarlar, havuz dönüşümünün **Ayarlar** s
 - Yeniden oluştur: tablo bırakılır ve yeniden oluşturulur. Dinamik olarak yeni bir tablo oluşturuluyoruz gereklidir.
 - Kes: hedef tablodaki tüm satırlar kaldırılacak.
 
-**Hazırlamayı etkinleştir:** Azure SYNAPSE Analytics 'e yazılırken [PolyBase](/sql/relational-databases/polybase/polybase-guide) 'in kullanılıp kullanılmayacağını belirler. Hazırlama depolaması [veri akışını Yürüt etkinliğinde](control-flow-execute-data-flow-activity.md)yapılandırılır. 
+**Hazırlamayı etkinleştir:** Bu, Copy komutu kullanılarak Azure SYNAPSE Analytics SQL havuzlarının yüklenmesine izin verebilir ve çoğu Synpase havuzları için önerilir. Hazırlama depolaması [veri akışını Yürüt etkinliğinde](control-flow-execute-data-flow-activity.md)yapılandırılır. 
 
 - Depolama bağlı hizmetiniz için yönetilen kimlik kimlik doğrulaması kullandığınızda, [Azure Blob](connector-azure-blob-storage.md#managed-identity) için gerekli konfigürasyonları ve [Azure Data Lake Storage 2.](connector-azure-data-lake-storage.md#managed-identity) sırasıyla öğrenin.
 - Azure depolama alanı VNet hizmet uç noktası ile yapılandırıldıysa, depolama hesabında "Güvenilen Microsoft hizmeti 'ne izin ver" özelliği etkinleştirilmiş olarak yönetilen kimlik kimlik doğrulamasını kullanmanız gerekir. [Azure depolama Ile VNET hizmet uç noktaları kullanmanın etkileri](../azure-sql/database/vnet-service-endpoint-rule-overview.md#impact-of-using-virtual-network-service-endpoints-with-azure-storage).

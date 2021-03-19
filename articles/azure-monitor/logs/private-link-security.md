@@ -5,12 +5,12 @@ author: noakup
 ms.author: noakuper
 ms.topic: conceptual
 ms.date: 10/05/2020
-ms.openlocfilehash: 65af5810152034fd7b6014041edd07835eebd194
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.openlocfilehash: 76c6d7caf3c63779e12443304688192f7311720a
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102101486"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104594572"
 ---
 # <a name="use-azure-private-link-to-securely-connect-networks-to-azure-monitor"></a>Ağları Azure İzleyici'ye güvenle bağlamak için Azure Özel Bağlantı'yı kullanma
 
@@ -51,14 +51,16 @@ Bazı Azure Izleyici Hizmetleri Genel uç noktaları kullanır, bu da herhangi b
 Bir özel bağlantı bağlantısı ayarladığınızda DNS 'niz Azure Izleyici uç noktalarını sanal Ağınızın IP aralığından özel IP adresleriyle eşlenecek şekilde güncelleştirilir. Bu değişiklik, bu uç noktaların önceki eşlemesini geçersiz kılar ve bu, aşağıda gözden geçirilmiş anlamlı etkileri olabilir. 
 
 ### <a name="azure-monitor-private-link-applies-to-all-azure-monitor-resources---its-all-or-nothing"></a>Azure Izleyici özel bağlantısı tüm Azure Izleyici kaynakları için geçerlidir; hepsi veya hiçbir şey yoktur
-Bazı Azure Izleyici uç noktaları genel olduğundan, belirli bir bileşen veya çalışma alanı için özel bağlantı bağlantısı oluşturmak olanaksızdır. Bunun yerine, tek bir Application Insights bileşenine özel bir bağlantı ayarladığınızda, DNS kayıtlarınız **tüm** Application Insights bileşenleri için güncelleştirilir. Bir bileşeni alma veya sorgulama girişimi, özel bağlantı üzerinden geçer ve muhtemelen başarısız olur. Benzer şekilde, tek bir çalışma alanına özel bir bağlantı ayarlamak, tüm Log Analytics sorgularının özel bağlantı noktası uç noktasından (ancak çalışma alanına özgü uç noktalara sahip olmayan alım istekleri) geçmesine neden olur.
+Bazı Azure Izleyici uç noktaları genel olduğundan, belirli bir bileşen veya çalışma alanı için özel bağlantı bağlantısı oluşturmak olanaksızdır. Bunun yerine, tek bir Application Insights bileşenine veya Log Analytics çalışma alanına özel bir bağlantı ayarladığınızda, DNS kayıtlarınız **tüm** Application Insights bileşenleri için güncelleştirilir. Bir bileşeni alma veya sorgulama girişimi, özel bağlantı üzerinden geçer ve muhtemelen başarısız olur. Log Analytics, alma ve yapılandırma uç noktaları, çalışma alanına özeldir. Bu, özel bağlantı kurulumunun yalnızca belirtilen çalışma alanları için uygulanacağı anlamına gelir. Diğer çalışma alanlarının alımı ve yapılandırılması, varsayılan genel Log Analytics uç noktalarına yönlendirilir.
 
 ![Tek bir sanal ağda DNS geçersiz kılmaların diyagramı](./media/private-link-security/dns-overrides-single-vnet.png)
 
 Bu doğru yalnızca belirli bir sanal ağ için değil, ancak aynı DNS sunucusunu paylaşan tüm sanal ağlar için ( [DNS geçersiz kılmaların sorununa](#the-issue-of-dns-overrides)bakın). Bu nedenle, örneğin, her bir Application Insights bileşeni için günlük alma isteği, her zaman özel bağlantı rotası aracılığıyla gönderilir. AMPLS 'e bağlı olmayan bileşenler özel bağlantı doğrulama işlemi başarısız olur ve devam etmez.
 
 > [!NOTE]
-> Bu ayarı yapmak için: tek bir kaynağa özel bağlantı kurulduktan sonra, ağınızdaki tüm Azure Izleyici kaynakları için geçerlidir. Bu, hepsi veya hiçbir şey değildir. Bu, etkin bir şekilde ağınızdaki tüm Azure Izleyici kaynaklarını AMPLS 'e eklemeniz veya hiçbirini eklememelisiniz.
+> Bu ayarı yapmak için: tek bir kaynağa özel bağlantı kurulduktan sonra, bu, ağınızdaki Azure Izleyici kaynakları için geçerlidir. Application Insights kaynaklar için, bu ' tümü veya Nothing '. Bu etkili bir şekilde, ağınızdaki tüm Application Insights kaynaklarını AMPLS 'e eklemeniz veya hiçbirini hiç eklememelisiniz.
+> 
+> Veri kaybı risklerini işlemek için, tüm Application Insights ve Log Analytics kaynaklarını AMPLS 'e eklemek ve ağlarınızın trafiği mümkün olduğunca çok engellemek için önerimiz.
 
 ### <a name="azure-monitor-private-link-applies-to-your-entire-network"></a>Azure Izleyici özel bağlantısı, tüm ağınız için geçerlidir
 Bazı ağlar birden çok VNET 'ten oluşur. Sanal ağlar aynı DNS sunucusunu kullanıyorsa, bunların her bir DNS eşlemelerini geçersiz kılar ve Azure Izleyici ile birbirini büyük olasılıkla keser ( [DNS geçersiz kılmalarının sorununa](#the-issue-of-dns-overrides)bakın). Son olarak, DNS Azure Izleyici uç noktalarını bu sanal ağlar aralığından özel IP 'Ler (diğer sanal ağlara ulaşılamayabilir) ile eşleyebildiğinden, Azure izleyici ile yalnızca son VNet iletişim kurabilir.

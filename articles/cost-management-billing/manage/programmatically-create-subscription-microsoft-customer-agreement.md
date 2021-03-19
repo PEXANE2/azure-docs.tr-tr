@@ -1,20 +1,20 @@
 ---
 title: En son API’lerle Microsoft Müşteri Sözleşmesi için program aracılığıyla Azure abonelikleri oluşturma
-description: REST API, Azure CLI ve Azure PowerShell’in en son sürümlerini kullanarak Microsoft Müşteri Sözleşmesi için program aracılığıyla Azure abonelikleri oluşturmayı öğrenin.
+description: REST API, Azure CLı, Azure PowerShell ve Azure Resource Manager şablonlarının en son sürümlerini kullanarak bir Microsoft Müşteri Sözleşmesi için programlı olarak Azure abonelikleri oluşturmayı öğrenin.
 author: bandersmsft
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.date: 11/17/2020
+ms.date: 03/12/2021
 ms.reviewer: andalmia
 ms.author: banders
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: 61a658cc9654a93b4c92fda6cc1f38cd2e77dafa
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.openlocfilehash: 779a1410641f945dc8dbf38aecf65b97d64971b1
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102216097"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104593989"
 ---
 # <a name="programmatically-create-azure-subscriptions-for-a-microsoft-customer-agreement-with-the-latest-apis"></a>En son API’lerle Microsoft Müşteri Sözleşmesi için program aracılığıyla Azure abonelikleri oluşturma
 
@@ -32,13 +32,11 @@ Abonelikleri oluşturmak için bir fatura bölümünde sahip, katkıda bulunan v
 
 Bir Microsoft Müşteri Sözleşmesi hesabına erişiminizin olup olmadığını bilmiyorsanız bkz. [Microsoft Müşteri Sözleşmesi’ne erişimi denetleme](../understand/mca-overview.md#check-access-to-a-microsoft-customer-agreement).
 
-Aşağıdaki örneklerde REST API’leri kullanılmaktadır. Şu anda PowerShell ve Azure CLI desteklenmemektedir.
-
 ## <a name="find-billing-accounts-that-you-have-access-to"></a>Erişiminiz olan fatura hesaplarını bulma
 
 Tüm faturalama hesaplarını listelemek için aşağıdaki isteği gönderin.
 
-### <a name="rest"></a>[REST](#tab/rest-getBillingAccounts)
+### <a name="rest"></a>[REST](#tab/rest)
 
 ```json
 GET https://management.azure.com/providers/Microsoft.Billing/billingaccounts/?api-version=2020-05-01
@@ -70,10 +68,10 @@ API yanıtında erişiminiz olan fatura hesapları listelenir.
 
 Abonelikleri oluşturmak istediğiniz fatura hesabını belirlemek için `displayName` özelliğini kullanın. Hesabın agreementType ayarının *MicrosoftCustomerAgreement* olduğundan emin olun. Hesabın `name` değerini kopyalayın.  Örneğin, `Contoso` faturalama hesabı için bir abonelik oluşturmak amacıyla `5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx` değerini kopyalayın. Bir sonraki adımda kullanabilmeniz için bu değeri bir yere yapıştırın.
 
-### <a name="powershell"></a>[PowerShell](#tab/azure-powershell-getBillingAccounts)
+### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-```azurepowershell-interactive
-PS C:\WINDOWS\system32> Get-AzBillingAccount
+```azurepowershell
+Get-AzBillingAccount
 ```
 Erişiminiz olan tüm faturalandırma hesaplarının bir listesini geri alacaksınız 
 
@@ -88,9 +86,10 @@ HasReadAccess : True
 Abonelikleri oluşturmak istediğiniz fatura hesabını belirlemek için `displayName` özelliğini kullanın. Hesabın agreementType ayarının *MicrosoftCustomerAgreement* olduğundan emin olun. Hesabın `name` değerini kopyalayın.  Örneğin, `Contoso` faturalama hesabı için bir abonelik oluşturmak amacıyla `5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx` değerini kopyalayın. Bir sonraki adımda kullanabilmeniz için bu değeri bir yere yapıştırın.
 
 
-### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli-getBillingAccounts)
+### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
 ```azurecli
-> az billing account list
+az billing account list
 ```
 Erişiminiz olan tüm faturalandırma hesaplarının bir listesini geri alacaksınız 
 
@@ -127,7 +126,8 @@ Aboneliğinizin ücretleri, faturalama profilinin faturasının bir bölümünde
 
 İlk olarak, erişiminiz olan faturalandırma hesabı altında faturalandırma profillerinin listesini alırsınız ( `name` önceki adımdan aldığınız ' i kullanın)
 
-### <a name="rest"></a>[REST](#tab/rest-getBillingProfiles)
+### <a name="rest"></a>[REST](#tab/rest)
+
 ```json
 GET https://management.azure.com/providers/Microsoft.Billing/billingaccounts/5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx/billingprofiles/?api-version=2020-05-01
 ```
@@ -208,10 +208,10 @@ GET https://management.azure.com/providers/Microsoft.Billing/billingAccounts/5e9
 
 Abonelikleri oluşturmak istediğiniz fatura bölümünü belirlemek için `id` özelliğini kullanın. Dizenin tamamını kopyalayın. Örneğin, `/providers/Microsoft.Billing/billingAccounts/5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx/billingProfiles/AW4F-xxxx-xxx-xxx/invoiceSections/SH3V-xxxx-xxx-xxx`. 
 
-### <a name="powershell"></a>[PowerShell](#tab/azure-powershell-getBillingProfiles)
+### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-```powershell-interactive
-PS C:\WINDOWS\system32> Get-AzBillingProfile -BillingAccountName 5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx
+```azurepowershell
+Get-AzBillingProfile -BillingAccountName 5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx
 ```
 
 Yanıtın bir parçası olarak bu hesap altında faturalandırma profillerinin listesini alacaksınız.
@@ -236,10 +236,10 @@ Country           : US
 PostalCode        : 98052
 ```
 
-`name`Yukarıdaki yanıtın fatura profili ' ne göz önünde. Sonraki adımlar, bu fatura profilinin altına erişim sahibi olduğunuz fatura bölümünü almak için kullanılır. `name`Faturalandırma hesabı ve faturalandırma profilinin olması gerekir
+`name`Yukarıdaki yanıtın fatura profili ' ne göz önünde. Sonraki adım, bu fatura profilinin altına erişim sahibi olduğunuz fatura bölümünü edinirsiniz. `name`Faturalandırma hesabı ve faturalandırma profilinin olması gerekir
 
-```powershell-interactive
-PS C:\WINDOWS\system32> Get-AzInvoiceSection -BillingAccountName 5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx -BillingProfileName AW4F-xxxx-xxx-xxx
+```azurepowershell
+Get-AzInvoiceSection -BillingAccountName 5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx -BillingProfileName AW4F-xxxx-xxx-xxx
 ```
 
 Fatura bölümünün geri döndürüldüğünü alacaksınız
@@ -249,13 +249,14 @@ Name        : SH3V-xxxx-xxx-xxx
 DisplayName : Development
 ```
 
-`name`Yukarıdaki, altında bir abonelik oluşturmanız için gereken fatura bölümü adıdır. "/Providers/Microsoft.Billing/billingAccounts/ <BillingAccountName> /Billingprofiles/ <BillingProfileName> /ınvoicesections/" biçimini kullanarak faturalandırma kapsamınızı oluşturun <InvoiceSectionName> . Bu örnekte, bu, ile eşolur `"/providers/Microsoft.Billing/billingAccounts/5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx/billingProfiles/AW4F-xxxx-xxx-xxx/invoiceSections/SH3V-xxxx-xxx-xxx"` .
+`name`Yukarıdaki, altında bir abonelik oluşturmanız için gereken fatura bölümü adıdır. "/Providers/Microsoft.Billing/billingAccounts/ <BillingAccountName> /Billingprofiles/ <BillingProfileName> /ınvoicesections/" biçimini kullanarak faturalandırma kapsamınızı oluşturun <InvoiceSectionName> . Bu örnekte, bu değer ile eşolur `"/providers/Microsoft.Billing/billingAccounts/5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx/billingProfiles/AW4F-xxxx-xxx-xxx/invoiceSections/SH3V-xxxx-xxx-xxx"` .
 
-### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli-getBillingProfiles)
+### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-```azurecli-interactive
-> az billing profile list --account-name "5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx" --expand "InvoiceSections"
+```azurecli
+az billing profile list --account-name "5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx" --expand "InvoiceSections"
 ```
+
 Bu API, belirtilen faturalandırma hesabı altında faturalandırma profilleri ve fatura bölümlerinin listesini döndürür.
 
 ```json
@@ -320,7 +321,7 @@ Bu API, belirtilen faturalandırma hesabı altında faturalandırma profilleri v
   }
 ]
 ```
-Abonelik oluşturmak istediğiniz fatura bölümünü belirlemek için fatura bölüm nesnesi altındaki ID özelliğini kullanın. Dizenin tamamını kopyalayın. Örneğin,/providers/Microsoft.Billing/billingAccounts/5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx/billingProfiles/AW4F-xxxx-xxx-xxx/ınvoicesections/SH3V-xxxx-xxx-xxx.
+`id`Abonelik oluşturmak istediğiniz fatura bölümünü belirlemek için fatura bölüm nesnesi altındaki özelliğini kullanın. Dizenin tamamını kopyalayın. Örneğin,/providers/Microsoft.Billing/billingAccounts/5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx/billingProfiles/AW4F-xxxx-xxx-xxx/ınvoicesections/SH3V-xxxx-xxx-xxx.
 
 ---
 
@@ -328,7 +329,7 @@ Abonelik oluşturmak istediğiniz fatura bölümünü belirlemek için fatura b�
 
 Aşağıdaki örnekte, *Geliştirme* fatura bölümü için *Geliştirme Ekibi aboneliği* adlı bir abonelik oluşturulur. Abonelik *Contoso Faturalama Profiline* faturalanır ve faturanın *Geliştirme* bölümünde görüntülenir. Önceki adımda kopyalanan faturalama kapsamını kullanırsınız: `/providers/Microsoft.Billing/billingAccounts/5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx/billingProfiles/AW4F-xxxx-xxx-xxx/invoiceSections/SH3V-xxxx-xxx-xxx`. 
 
-### <a name="rest"></a>[REST](#tab/rest-MCA)
+### <a name="rest"></a>[REST](#tab/rest)
 
 ```json
 PUT  https://management.azure.com/providers/Microsoft.Subscription/aliases/sampleAlias?api-version=2020-09-01
@@ -385,19 +386,19 @@ GET https://management.azure.com/providers/Microsoft.Subscription/aliases/sample
 
 Sürüyor durumu, `provisioningState` altında `Accepted` durumu olarak döndürülür.
 
-### <a name="powershell"></a>[PowerShell](#tab/azure-powershell-MCA)
+### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 Modülün `New-AzSubscriptionAlias` cmdlet'ini içeren en son sürümünü yüklemek için `Install-Module Az.Subscription` çalıştırın. PowerShellGet'in yeni bir sürümünü yüklemek için [Get PowerShellGet Modülü](/powershell/scripting/gallery/installing-psget)'ne bakın.
 
 `"/providers/Microsoft.Billing/billingAccounts/5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx/billingProfiles/AW4F-xxxx-xxx-xxx/invoiceSections/SH3V-xxxx-xxx-xxx"` faturalama kapsamını ve aşağıdaki [New-AzSubscriptionAlias](/powershell/module/az.subscription/new-azsubscription) komutunu çalıştırın. 
 
-```azurepowershell-interactive
+```azurepowershell
 New-AzSubscriptionAlias -AliasName "sampleAlias" -SubscriptionName "Dev Team Subscription" -BillingScope "/providers/Microsoft.Billing/billingAccounts/5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx/billingProfiles/AW4F-xxxx-xxx-xxx/invoiceSections/SH3V-xxxx-xxx-xxx" -Workload 'Production"
 ```
 
 Komutun yanıtının bir parçası olarak subscriptionId bilgisini alırsınız.
 
-```azurepowershell
+```json
 {
   "id": "/providers/Microsoft.Subscription/aliases/sampleAlias",
   "name": "sampleAlias",
@@ -409,19 +410,19 @@ Komutun yanıtının bir parçası olarak subscriptionId bilgisini alırsınız.
 }
 ```
 
-### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli-MCA)
+### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 İlk olarak, `az extension add --name account` ve `az extension add --name alias` komutlarını çalıştırarak uzantıyı yükleyin.
 
 Aşağıdaki [az account alias create](/cli/azure/ext/account/account/alias#ext_account_az_account_alias_create) komutunu çalıştırın.
 
-```azurecli-interactive
+```azurecli
 az account alias create --name "sampleAlias" --billing-scope "/providers/Microsoft.Billing/billingAccounts/5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx/billingProfiles/AW4F-xxxx-xxx-xxx/invoiceSections/SH3V-xxxx-xxx-xxx" --display-name "Dev Team Subscription" --workload "Production"
 ```
 
 Komutun yanıtının bir parçası olarak subscriptionId bilgisini alırsınız.
 
-```azurecli
+```json
 {
   "id": "/providers/Microsoft.Subscription/aliases/sampleAlias",
   "name": "sampleAlias",
@@ -435,7 +436,115 @@ Komutun yanıtının bir parçası olarak subscriptionId bilgisini alırsınız.
 
 ---
 
+## <a name="use-arm-template"></a>ARM şablonu kullanma
+
+Önceki bölümde PowerShell, CLı veya REST API nasıl bir abonelik oluşturulacağı gösterildi. Abonelik oluşturmayı otomatikleştirmeniz gerekiyorsa Azure Resource Manager şablonu kullanmayı düşünün (ARM şablonu).
+
+Aşağıdaki şablon bir abonelik oluşturur. İçin `billingScope` Fatura bölüm kimliğini belirtin. İçin `targetManagementGroup` , aboneliğini oluşturmak istediğiniz yönetim grubunu belirtin.
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-08-01/managementGroupDeploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "subscriptionAliasName": {
+            "type": "string",
+            "metadata": {
+                "description": "Provide a name for the alias. This name will also be the display name of the subscription."
+            }
+        },
+        "billingScope": {
+            "type": "string",
+            "metadata": {
+                "description": "Provide the full resource ID of billing scope to use for subscription creation."
+            }
+        },
+        "targetManagementGroup": {
+            "type": "string",
+            "metadata": {
+                "description": "Provide the ID of the target management group to place the subscription."
+            }
+        }
+    },
+    "resources": [
+        {
+            "scope": "/", 
+            "name": "[parameters('subscriptionAliasName')]",
+            "type": "Microsoft.Subscription/aliases",
+            "apiVersion": "2020-09-01",
+            "properties": {
+                "workLoad": "Production",
+                "displayName": "[parameters('subscriptionAliasName')]",
+                "billingScope": "[parameters('billingScope')]",
+                "managementGroupId": "[tenantResourceId('Microsoft.Management/managementGroups/', parameters('targetManagementGroup'))]"
+            }
+        }
+    ],
+    "outputs": {}
+}
+```
+
+Şablonu [Yönetim grubu düzeyinde](../../azure-resource-manager/templates/deploy-to-management-group.md)dağıtın.
+
+### <a name="rest"></a>[REST](#tab/rest)
+
+```json
+PUT https://management.azure.com/providers/Microsoft.Management/managementGroups/mg1/providers/Microsoft.Resources/deployments/exampledeployment?api-version=2020-06-01
+```
+
+İstek gövdesi ile:
+
+```json
+{
+  "location": "eastus",
+  "properties": {
+    "templateLink": {
+      "uri": "http://mystorageaccount.blob.core.windows.net/templates/template.json"
+    },
+    "parameters": {
+      "subscriptionAliasName": {
+        "value": "sampleAlias"
+      },
+      "billingScope": {
+        "value": "/providers/Microsoft.Billing/billingAccounts/5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx/billingProfiles/AW4F-xxxx-xxx-xxx/invoiceSections/SH3V-xxxx-xxx-xxx"
+      },
+      "targetManagementGroup": {
+        "value": "mg2"
+      }
+    },
+    "mode": "Incremental"
+  }
+}
+```
+
+### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+
+```azurepowershell
+New-AzManagementGroupDeployment `
+  -Name exampledeployment `
+  -Location eastus `
+  -ManagementGroupId mg1 `
+  -TemplateFile azuredeploy.json `
+  -subscriptionAliasName sampleAlias `
+  -billingScope "/providers/Microsoft.Billing/billingAccounts/5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx/billingProfiles/AW4F-xxxx-xxx-xxx/invoiceSections/SH3V-xxxx-xxx-xxx" `
+  -targetManagementGroup mg2
+```
+
+### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+```azurecli
+az deployment mg create \
+  --name exampledeployment \
+  --location eastus \
+  --management-group-id mg1 \
+  --template-file azuredeploy.json \
+  --parameters subscriptionAliasName='sampleAlias' billingScope='/providers/Microsoft.Billing/billingAccounts/5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx/billingProfiles/AW4F-xxxx-xxx-xxx/invoiceSections/SH3V-xxxx-xxx-xxx' targetManagementGroup=mg2
+```
+
+---
+
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * Artık aboneliği oluşturduğunuza göre, bu beceriyi diğer kullanıcılara ve hizmet sorumlularına verebilirsiniz. Daha fazla bilgi için bkz. [Azure Kurumsal abonelikleri oluşturma erişimi verme (önizlemi)](grant-access-to-create-subscription.md).
 * Yönetim gruplarını kullanarak çok fazla sayıda aboneliği yönetme hakkında daha fazla bilgi için bkz. [Kaynaklarınızı Azure yönetim gruplarıyla düzenleme](../../governance/management-groups/overview.md).
+* Bir aboneliğin yönetim grubunu değiştirmek için bkz. [abonelikleri taşıma](../../governance/management-groups/manage.md#move-subscriptions).

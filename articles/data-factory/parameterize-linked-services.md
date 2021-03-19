@@ -3,15 +3,15 @@ title: Azure Data Factory bağlı hizmetleri Parametreleştir
 description: Azure Data Factory bağlı hizmetleri Parametreleştirme ve çalışma zamanında dinamik değerleri geçirme hakkında bilgi edinin.
 ms.service: data-factory
 ms.topic: conceptual
-ms.date: 01/15/2021
+ms.date: 03/18/2021
 author: dcstwh
 ms.author: weetok
-ms.openlocfilehash: fbb7cb6fd0041ab77e649b14712907d916eaa449
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: df26b77f37100ae41b26c013c57cccbfa0d7e205
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100372935"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104595592"
 ---
 # <a name="parameterize-linked-services-in-azure-data-factory"></a>Azure Data Factory bağlı hizmetleri Parametreleştir
 
@@ -38,18 +38,21 @@ Kullanıcı arabiriminde bağlı hizmet yazarken Data Factory, aşağıdaki bağ
 
 - Amazon Redshift
 - Amazon S3
+- Azure Blob Depolama
 - Azure Cosmos DB (SQL API)
+- Azure Data Lake Storage Gen2
 - MySQL için Azure Veritabanı
 - Azure Databricks
 - Azure Key Vault
 - Azure SQL Veritabanı
 - Azure SQL Yönetilen Örnek
 - Azure Synapse Analytics 
+- Azure Table Storage
+- Genel HTTP
+- Genel REST
 - MySQL
 - Oracle
 - SQL Server
-- Genel HTTP
-- Genel REST
 
 Yukarıdaki listede yer alan diğer bağlı hizmet türleri için, Kullanıcı arabirimindeki JSON 'u düzenleyerek bağlı hizmeti parametreleştirebilirsiniz:
 

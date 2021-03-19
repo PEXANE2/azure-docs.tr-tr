@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 03/8/2021
 ms.author: mimckitt
 ms.reviewer: cynthn
-ms.openlocfilehash: 0325dcf16c8e637a58365311a4ebd37a442d6b8c
-ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
+ms.openlocfilehash: c206cba3b23a0bf41ce32481980aa466e869bcde
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102522479"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104596306"
 ---
 # <a name="states-and-billing-of-azure-virtual-machines"></a>Azure sanal makineleri için durumlar ve faturalandırma
 
@@ -82,6 +82,6 @@ Sağlama durumu, sanal makinede Kullanıcı tarafından başlatılan bir denetim
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-- [Azure maliyet yönetimi ve faturalandırma belgelerini](https://docs.microsoft.com/azure/cost-management-billing/) gözden geçirin
+- [Azure maliyet yönetimi ve faturalandırma belgelerini](../cost-management-billing/index.yml) gözden geçirin
 - Dağıtımlarınızı planlamak için [Azure Fiyatlandırma hesaplayıcısı](https://azure.microsoft.com/pricing/calculator/) ' nı kullanın.
-- VM 'nizi izleme hakkında daha fazla bilgi için bkz. [Azure 'da sanal makineleri izleme](../azure-monitor/insights/monitor-vm-azure.md).
+- VM 'nizi izleme hakkında daha fazla bilgi için bkz. [Azure 'da sanal makineleri izleme](../azure-monitor/vm/monitor-vm-azure.md).

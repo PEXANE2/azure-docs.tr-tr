@@ -7,12 +7,12 @@ ms.service: azure-percept
 ms.topic: conceptual
 ms.date: 02/16/2021
 ms.custom: template-concept
-ms.openlocfilehash: d0cdabb3b22d642a7903810181106b09c549e1a2
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.openlocfilehash: e31a696dfb443c20566f13f5a228eefac7af5ecc
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102218171"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104595932"
 ---
 # <a name="azure-percept-ai-models"></a>Azure Percept AI modelleri
 
@@ -40,6 +40,10 @@ Bir [kişi sayma başvuru çözümü](https://github.com/microsoft/Azure-Percept
 Azure Percept Studio sayesinde, hiçbir kodlama [gerekmeden özel görüntü](./tutorial-nocode-vision.md) ve konuşma çözümleri geliştirebilirsiniz.
 
 Özel görme çözümleri için, hem nesne algılama hem de sınıflandırma AI modelleri kullanılabilir. İsterseniz eğitim görüntülerinizi karşıya yükleyebilir ve etiketleyerek Azure Percept DK 'nin Azure Percept Vision SoM ile doğrudan alınabilir. Model eğitimi ve değerlendirmesi, Azure bilişsel [Hizmetler](https://azure.microsoft.com/services/cognitive-services/#overview)'in bir parçası olan [özel görüntü işleme](https://www.customvision.ai/)kolayca gerçekleştirilir.
+
+</br>
+
+> [!VIDEO https://www.youtube.com/embed/9LvafyazlJM]
 
 Özel konuşma çözümleri için şu anda aşağıdaki uygulamalar için ses Yardımcısı şablonları kullanılabilir:
 

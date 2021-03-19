@@ -12,12 +12,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, sstein
 ms.date: 12/26/2020
-ms.openlocfilehash: 91375f4460b55617ace0b18b60d59d961a762f4c
-ms.sourcegitcommit: 00aa5afaa9fac91f1059cfed3d8dbc954caaabe2
+ms.openlocfilehash: e0b9eea7be97b9b67e75c314c4a1d9e69322e5b5
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/27/2020
-ms.locfileid: "97792509"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104594266"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>Birden çok veritabanının saydam ve koordine edilmiş yük devretmesini etkinleştirmek için otomatik yük devretme gruplarını kullanın
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -33,10 +33,10 @@ Bunlara ek olarak, otomatik yük devretme grupları, yük devretme sırasında d
 
 Otomatik yük devretme grupları otomatik yük devretme ilkesiyle kullanılırken, bir sunucu veya yönetilen örnek üzerinde veritabanlarını etkileyen herhangi bir kesinti otomatik yük devretmeye neden olur. Şunu kullanarak otomatik yük devretme grubunu yönetebilirsiniz:
 
-- [Azure Portal](geo-distributed-application-configure-tutorial.md)
+- [Azure portalı](geo-distributed-application-configure-tutorial.md)
 - [Azure CLı: yük devretme grubu](scripts/add-database-to-failover-group-cli.md)
 - [PowerShell: yük devretme grubu](scripts/add-database-to-failover-group-powershell.md)
-- [REST API: yük devretme grubu](/rest/api/sql/failovergroups).
+- [REST API: yük devretme grubu](/rest/api/sql/failovergroups)
 
 Yük devretmeden sonra veritabanınıza ve sunucunuza yönelik kimlik doğrulama gereksinimlerinin veya örneğin yeni birincil üzerinde yapılandırılmış olduğundan emin olun. Ayrıntılar için bkz. [olağanüstü durum kurtarma sonrasında SQL veritabanı güvenliği](active-geo-replication-security-configure.md).
 
@@ -115,7 +115,7 @@ Gerçek iş sürekliliği sağlamak için, veri merkezleri arasında veritabanı
 
   - Veri kaybı kabul edilebilir olmadığında üretimde olağanüstü durum kurtarma (DR) tatbilar gerçekleştirme
   - Veritabanlarını farklı bir bölgeye yeniden konumlandırma
-  - Kesinti azaltıldıktan sonra veritabanlarını birincil bölgeye döndürün (yeniden çalışma).
+  - Kesinti azaltıldıktan sonra veritabanlarını birincil bölgeye döndürün (yeniden çalışma)
 
 - **Planlanmamış yük devretme**
 
@@ -127,7 +127,7 @@ Gerçek iş sürekliliği sağlamak için, veri merkezleri arasında veritabanı
 
 - **Veri kaybı olan yetkisiz kullanım süresi**
 
-  Birincil ve ikincil veritabanları zaman uyumsuz çoğaltma kullanılarak eşitlendiğinden, yük devretme veri kaybına neden olabilir. Otomatik yük devretme ilkesini, uygulamanızın veri kaybına karşı dayanıklılığını yansıtacak şekilde özelleştirebilirsiniz. Yapılandırarak `GracePeriodWithDataLossHours` , sistemin, sonuç olarak veri kaybına neden olan yük devretmeyi başlatmadan önce ne kadar bekleyeceğini kontrol edebilirsiniz.
+  Birincil ve ikincil veritabanları zaman uyumsuz çoğaltma kullanılarak eşitlendiğinden, yük devretme veri kaybına neden olabilir. Otomatik yük devretme ilkesini, uygulamanızın veri kaybına karşı dayanıklılığını yansıtacak şekilde özelleştirebilirsiniz. Yapılandırarak `GracePeriodWithDataLossHours` , sistemin, veri kaybına neden olma olasılığı olan yük devretmeyi başlatmadan önce ne kadar bekleyeceğini kontrol edebilirsiniz.
 
 - **Çoklu yük devretme grupları**
 
@@ -176,7 +176,7 @@ OLTP işlemlerini gerçekleştirirken `<fog-name>.database.windows.net` sunucu U
 
 ### <a name="using-read-only-listener-for-read-only-workload"></a>Salt okunurdur iş yükü için salt okunurdur dinleyicisi kullanma
 
-Verilerin belirli bir şekilde kullanılması için dayanıklı bir mantıksal olarak yalıtılmış salt okunurdur, uygulamadaki ikincil veritabanını kullanabilirsiniz. Salt okuma oturumları için `<fog-name>.secondary.database.windows.net` sunucu URL 'si olarak kullanın ve bağlantı otomatik olarak ikinciye yönlendirilir. Ayrıca, kullanarak bağlantı dizesi okuma hedefini belirtmeniz önerilir `ApplicationIntent=ReadOnly` .
+Verilerin belirli bir şekilde kullanılması için dayanıklı bir mantıksal olarak yalıtılmış salt okunurdur, uygulamadaki ikincil veritabanını kullanabilirsiniz. Salt okuma oturumları için `<fog-name>.secondary.database.windows.net` sunucu URL 'si olarak kullanın ve bağlantı otomatik olarak ikinciye yönlendirilir. Ayrıca, kullanarak bağlantı dizesinde oku hedefini belirtmeniz önerilir `ApplicationIntent=ReadOnly` .
 
 ### <a name="preparing-for-performance-degradation"></a>Performans düşüşü için hazırlanma
 
