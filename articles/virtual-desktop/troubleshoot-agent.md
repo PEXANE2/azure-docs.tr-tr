@@ -6,12 +6,12 @@ ms.topic: troubleshooting
 ms.date: 12/16/2020
 ms.author: sefriend
 manager: clarkn
-ms.openlocfilehash: b0fc5bd16aaa455ce3f6d634ce35e9a389a6f13b
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 86296385a0e657246e415f326261ce401e3cdeaf
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101732590"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104604194"
 ---
 # <a name="troubleshoot-common-windows-virtual-desktop-agent-issues"></a>Yaygın Windows sanal masaüstü Aracısı sorunlarını giderme
 
@@ -208,7 +208,7 @@ Bu sorunu çözmek için:
 >Tek seferde birden çok VM için **Fsmarconnectmode** veya **Fenablewinstation** modunu değiştirmek için aşağıdaki iki işlemi yapabilirsiniz:
 >
 >- Zaten çalıştığınız makineden kayıt defteri anahtarını dışarı aktarın ve bu değişikliği gerektiren diğer makinelere içeri aktarın.
->- Değişiklik gerektiren makineler için kayıt defteri anahtarı değerini ayarlayan bir genel ilke nesnesi (GPO) oluşturun.
+>- Değişiklik gerektiren makineler için kayıt defteri anahtarı değerini ayarlayan bir Grup İlkesi nesnesi (GPO) oluşturun.
 
 7. **HKEY_LOCAL_MACHINE**  >  **System**  >  **CurrentControlSet**  >  **Control**  >  **Terminal Server**  >  **kümeayarları**' na gidin.
 8. **Clustersettings** altında **sessiondirectorylistener** bulun ve veri değerinin **RDP-sxs olduğundan emin olun...**.

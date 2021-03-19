@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 11/19/2019
-ms.openlocfilehash: 0dfde6fef7cc91edf2101095018bc031d392c4ed
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 03/17/2021
+ms.openlocfilehash: ea6673a04bf9f5f568c660658e51036f2d2712e0
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90898188"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104654739"
 ---
 # <a name="train-clustering-model"></a>Kümeleme Modelini Eğitme
 
@@ -29,17 +29,17 @@ Modül, zaten [K-bit kümeleme](k-means-clustering.md) modülünü kullanarak ya
   
 ## <a name="how-to-use-train-clustering-model"></a>Bir kümeleme modeli eğitimi kullanma  
 
-1.  Tasarımcıdaki işlem hattınızda **kümeleme modeli eğitimi** modülünü ekleyin. Modülü, **eğitme** kategorisinde **Machine Learning modüller**altında bulabilirsiniz.  
+1.  Tasarımcıdaki işlem hattınızda **kümeleme modeli eğitimi** modülünü ekleyin. Modülü, **eğitme** kategorisinde **Machine Learning modüller** altında bulabilirsiniz.  
   
 2. [K-anlamı kümeleme](k-means-clustering.md) modülünü veya uyumlu bir kümeleme modeli oluşturan başka bir özel modülü ekleyin ve kümeleme modelinin parametrelerini ayarlayın.  
     
-3.  Bir eğitim veri kümesini, **kümeleme modeli eğitimi**için sağ girişe iliştirin.
+3.  Bir eğitim veri kümesini, **kümeleme modeli eğitimi** için sağ girişe iliştirin.
   
 5.  **Sütun kümesi**' nde, kümeler oluştururken kullanılacak veri kümesinden sütunları seçin. İyi özellikleri olan sütunları seçtiğinizden emin olun: Örneğin, benzersiz değerlere sahip kimlikleri veya diğer sütunları ya da aynı değere sahip sütunları kullanmaktan kaçının.
 
     Bir etiket varsa, bunu bir özellik olarak kullanabilir ya da kapatabilirsiniz.  
   
-6. Yeni küme etiketiyle eğitim verilerini bir araya getirmek istiyorsanız, **yalnızca sonuç için Ekle veya işaretini kaldır**seçeneğini işaretleyin.
+6. Yeni küme etiketiyle eğitim verilerini bir araya getirmek istiyorsanız, **yalnızca sonuç için Ekle veya işaretini kaldır** seçeneğini işaretleyin.
 
     Bu seçeneğin işaretini kaldırırsanız yalnızca küme atamaları çıkışlardır. 
 
@@ -52,6 +52,9 @@ Eğitim tamamlandıktan sonra:
 + Eğitilen modelin anlık görüntüsünü kaydetmek için **model eğitimi** modülünün sağ panelindeki **çıktılar** sekmesini seçin. Modeli yeniden kullanılabilir bir modül olarak kaydetmek için **veri kümesini kaydet** simgesini seçin.
 
 + Modelden puanlar oluşturmak için [kümelere veri ata](assign-data-to-clusters.md)' yı kullanın.
+
+> [!NOTE]
+> Eğitilen modeli tasarımcıda dağıtmanız gerekiyorsa, **Puanlama modeli** yerine [kümelere veri atama](assign-data-to-clusters.md) , çıkarım ardışık düzeninde [Web hizmeti çıkış modülünün](web-service-input-output.md) girişine bağlı olduğundan emin olun.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -5,10 +5,10 @@ ms.date: 11/22/2019
 ms.topic: how-to
 ms.reviewer: janders
 ms.openlocfilehash: 337d01abc51d310d06aeea3427b770132be4824c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85208782"
 ---
 # <a name="how-to-configure-azure-active-directory-access-for-azure-blockchain-service"></a>Azure blok zinciri hizmeti için Azure Active Directory erişimi yapılandırma
@@ -29,7 +29,7 @@ Hem üye düzeyinde hem de düğüm düzeyinde erişim verebilirsiniz. Üye düz
 
 Üye düzeyinde erişim izni vermek için.
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 1. **Erişim denetimi (IAM) > > rol ataması Ekle**' ye gidin.
 1. **Blok zinciri üye düğümü erişimi (Önizleme)** rolünü seçin ve erişim vermek ISTEDIĞINIZ Azure AD kimlik nesnesini ekleyin. Azure AD KIMLIK nesnesi şu olabilir:
 
@@ -81,7 +81,7 @@ Kaynak kodundan bağlayıcıyı derlemek için **Benioku** dosyasındaki hızlı
 
 Birçok uygulama, Azure AD Kullanıcı hesabı yerine bir uygulama KIMLIĞI kullanarak Azure AD ile kimlik doğrular.
 
-Bir uygulama KIMLIĞI kullanarak düğümünüz ile bağlantı kurmak için **aadauthcode** 'u **aadclient**ile değiştirin.
+Bir uygulama KIMLIĞI kullanarak düğümünüz ile bağlantı kurmak için **aadauthcode** 'u **aadclient** ile değiştirin.
 
 ```
 connector.exe -remote <myBlockchainEndpoint>  -method aadclient -client-id <myClientID> -client-secret "<myClientSecret>" -tenant-id <myAADDirectory>
@@ -99,7 +99,7 @@ Bir uygulamayı Azure AD 'ye kaydetme hakkında daha fazla bilgi için bkz [. na
 
 Azure AD kimlik doğrulaması açılır ekran 'nin mümkün olmadığı bir mobil cihaz veya metin tabanlı tarayıcı için, Azure AD bir kerelik geçiş kodu oluşturur. Geçiş kodunu kopyalayabilir ve başka bir ortamda Azure AD kimlik doğrulaması ile devam edebilirsiniz.
 
-Geçiş kodunu oluşturmak için **aadauthcode** değerini **aaddevice**ile değiştirin. \<myAADDirectory\>Bir Azure AD etki alanı ile değiştirin. Örneğin, `yourdomain.onmicrosoft.com`.
+Geçiş kodunu oluşturmak için **aadauthcode** değerini **aaddevice** ile değiştirin. \<myAADDirectory\>Bir Azure AD etki alanı ile değiştirin. Örneğin, `yourdomain.onmicrosoft.com`.
 
 ```
 connector.exe -remote <myBlockchainEndpoint>  -method aaddevice -tenant-id <myAADDirectory>

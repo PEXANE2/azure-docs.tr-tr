@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 01/28/2020
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 6f48245983898c542197deb7e0b3cd53bd39be33
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c8fa6e108550b1417f736d1caff5cafd3e16f63a
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91707532"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104595014"
 ---
 # <a name="limits-in-azure-database-for-postgresql---single-server"></a>PostgreSQL için Azure veritabanı 'nın sınırları-tek sunucu
 Aşağıdaki bölümlerde, veritabanı hizmetindeki kapasite ve işlevsel sınırlar açıklanır. Kaynak (işlem, bellek, depolama) katmanları hakkında bilgi edinmek istiyorsanız [fiyatlandırma katmanları](concepts-pricing-tiers.md) makalesine bakın.
@@ -68,9 +68,12 @@ Bir PostgreSQL bağlantısı bile boşta, yaklaşık 10 GB bellek içerebilir. A
 - Bazı senaryolarda UTF-8 karakterleri Windows üzerinde açık kaynak PostgreSQL içinde tam olarak desteklenmez. Bu, PostgreSQL için Azure veritabanı 'nı etkiler. Daha fazla bilgi için lütfen [PostgreSQL-Archive hata #15476](https://www.postgresql-archive.org/BUG-15476-Problem-on-show-trgm-with-4-byte-UTF-8-characters-td6056677.html) iş parçacığına bakın.
 
 ### <a name="gss-error"></a>GSS hatası
-**GSS**ile ilgili bir hata görürseniz, büyük olasılıkla Azure Postgres tek sunucusunun henüz tam olarak desteklemediği daha yeni bir istemci/sürücü sürümü kullanıyorsunuz. Bu hata, [42.2.15 ve 42.2.16 JDBC sürücü sürümlerini](https://github.com/pgjdbc/pgjdbc/issues/1868)etkileyecek şekilde bilinmektedir.
-   - Güncelleştirmeyi Kasım 'un sonuna kadar tamamlamayı planlıyoruz. Bu arada çalışan bir sürücü sürümü kullanmayı düşünün.
-   - Ya da GSS isteğini devre dışı bırakmayı düşünün.  Gibi bir bağlantı parametresi kullanın `gssEncMode=disable` .
+**GSS** ile ilgili bir hata görürseniz, büyük olasılıkla Azure Postgres tek sunucusunun henüz tam olarak desteklemediği daha yeni bir istemci/sürücü sürümü kullanıyorsunuzdur. Bu hatanın [JDBC sürücü sürümleri 42.2.15 ve 42.2.16](https://github.com/pgjdbc/pgjdbc/issues/1868)’yı etkilediği bilinmektedir.
+   - Güncelleştirmeyi Kasım sonuna kadar tamamlamayı planlıyoruz. Bu arada çalışan bir sürücü sürümü kullanmayı göz önünde bulundurun.
+   - Ya da GSS isteğini devre dışı bırakmayı düşünün.  `gssEncMode=disable` gibi bir bağlantı parametresi kullanın.
+
+### <a name="storage-size-reduction"></a>Depolama boyutu azaltma
+Depolama boyutu küçültülemez. İstenen depolama boyutuna sahip yeni bir sunucu oluşturmanız, el ile [döküm uygulamanız ve veritabanınızı geri yüklemeniz](./howto-migrate-using-dump-and-restore.md) ve veritabanınızı yeni sunucuya geçirmeniz gerekir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 - [Her fiyatlandırma katmanında nelerin kullanılabildiğini](concepts-pricing-tiers.md) anlayın

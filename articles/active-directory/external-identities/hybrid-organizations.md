@@ -12,10 +12,10 @@ manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 427f7ad4d6a1b9839b1197ef9f7ca15400ea0f59
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87910107"
 ---
 # <a name="azure-active-directory-b2b-collaboration-for-hybrid-organizations"></a>Karma kuruluşlar için B2B işbirliği Azure Active Directory
@@ -47,7 +47,7 @@ Uygulama ayrıntıları için bkz. [Azure AD B2B işbirliğini kullanarak bulut 
  
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Şirket içi uygulamalarınıza Azure AD erişimi için B2B kullanıcıları verme](hybrid-cloud-to-on-premises.md)
-- [Azure AD B2B işbirliğini kullanarak bulut kaynaklarına yerel olarak yönetilen iş ortağı hesapları erişimi verme](hybrid-on-premises-to-cloud.md)
+- [Azure AD’de B2B kullanıcılarına şirket içi uygulamalarınıza erişim verme](hybrid-cloud-to-on-premises.md)
+- [Azure AD B2B işbirliğini kullanarak yerel olarak yönetilen iş ortağı hesaplarına bulut kaynakları için erişim verme](hybrid-on-premises-to-cloud.md)
 
 

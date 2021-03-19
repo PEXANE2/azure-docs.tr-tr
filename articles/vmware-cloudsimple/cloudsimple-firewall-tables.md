@@ -9,10 +9,10 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 8c44c39f66a0a0161eea8a7e9656bbe0e3d1015c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88140879"
 ---
 # <a name="firewall-tables-overview"></a>Güvenlik Duvarı tablolarına genel bakış
@@ -53,12 +53,12 @@ Trafik akışı için ters yönde ek kurallar gerekebilir.  Aşağıdaki noktala
 
 Aşağıdaki varsayılan kurallar her güvenlik duvarı tablosunda oluşturulur.
 
-|Öncelik|Adı|Durum Izleme|Yön|Trafik türü|Protokol|Kaynak|Kaynak Bağlantı Noktası|Hedef|Hedef Bağlantı Noktası|Eylem|
+|Öncelik|Name|Durum Izleme|Yön|Trafik türü|Protokol|Kaynak|Kaynak Bağlantı Noktası|Hedef|Hedef Bağlantı Noktası|Eylem|
 |--------|----|--------------|---------|------------|--------|------|-----------|-----------|----------------|------|
-|65000|Tüm-Internet 'e izin ver|Durum Bilgisi Olan|Outbound|Genel IP veya internet trafiği|Tümü|Herhangi biri|Herhangi biri|Herhangi biri|Herhangi biri|İzin Ver|
-|65001|Reddet-tümü-internet 'ten|Durum Bilgisi Olan|Inbound|Genel IP veya internet trafiği|Tümü|Herhangi biri|Herhangi biri|Herhangi biri|Herhangi biri|Reddet|
-|65002|tümünü-intranete izin ver|Durum bilgisi olmayan|Outbound|Özel bulut iç veya VPN trafiği|Tümü|Herhangi biri|Herhangi biri|Herhangi biri|Herhangi biri|İzin Ver|
-|65003|-All-ıntranetden izin ver|Durum bilgisi olmayan|Inbound|Özel bulut iç veya VPN trafiği|Tümü|Herhangi biri|Herhangi biri|Herhangi biri|Herhangi biri|İzin Ver|
+|65000|Tüm-Internet 'e izin ver|Durum Bilgisi Olan|Giden|Genel IP veya internet trafiği|Tümü|Herhangi biri|Herhangi biri|Herhangi biri|Herhangi biri|İzin Ver|
+|65001|Reddet-tümü-internet 'ten|Durum Bilgisi Olan|Gelen|Genel IP veya internet trafiği|Tümü|Herhangi biri|Herhangi biri|Herhangi biri|Herhangi biri|Reddet|
+|65002|tümünü-intranete izin ver|Durum bilgisi olmayan|Giden|Özel bulut iç veya VPN trafiği|Tümü|Herhangi biri|Herhangi biri|Herhangi biri|Herhangi biri|İzin Ver|
+|65003|-All-ıntranetden izin ver|Durum bilgisi olmayan|Gelen|Özel bulut iç veya VPN trafiği|Tümü|Herhangi biri|Herhangi biri|Herhangi biri|Herhangi biri|İzin Ver|
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -5,10 +5,10 @@ ms.date: 10/14/2019
 ms.topic: tutorial
 ms.reviewer: brendal
 ms.openlocfilehash: 5761bf1294691c2d50e0e389fe69ec286df4a06c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "74324053"
 ---
 # <a name="tutorial-using-applications-in-azure-blockchain-workbench"></a>Öğretici: Azure blok zinciri çalışma ekranı 'nda uygulama kullanma
@@ -23,7 +23,7 @@ Blokları oluşturmak ve sözleşme işlemleri yapmak için blok zinciri çalı�
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Blok zinciri çalışma ekranı dağıtımı. Daha fazla bilgi için bkz. dağıtım ayrıntıları için [Azure blok zinciri çalışma ekranı dağıtımı](deploy.md)
 * Blok zinciri çalışma ekranı 'nda dağıtılan bir blok zinciri uygulaması. Bkz. [Azure blok zinciri üzerinde blok zinciri uygulaması oluşturma çalışma ekranı](create-app.md)
@@ -36,7 +36,7 @@ Blok zinciri çalışma ekranının bir üyesi olarak oturum açmanız gerekir. 
 
 ## <a name="create-new-contract"></a>Yeni sözleşme oluştur
 
-Yeni bir sözleşme oluşturmak için, sözleşme **başlatıcısı**olarak belirtilen bir üye olmanız gerekir. Sözleşmeye yönelik uygulama rollerini ve başlatıcılarını tanımlama hakkında bilgi için bkz. [yapılandırmaya genel bakış](configuration.md#workflows). Uygulama rollerine üye atama hakkında daha fazla bilgi için bkz. [uygulamaya üye ekleme](manage-users.md#add-member-to-application).
+Yeni bir sözleşme oluşturmak için, sözleşme **başlatıcısı** olarak belirtilen bir üye olmanız gerekir. Sözleşmeye yönelik uygulama rollerini ve başlatıcılarını tanımlama hakkında bilgi için bkz. [yapılandırmaya genel bakış](configuration.md#workflows). Uygulama rollerine üye atama hakkında daha fazla bilgi için bkz. [uygulamaya üye ekleme](manage-users.md#add-member-to-application).
 
 1. Blok zinciri çalışma ekranı uygulaması bölümünde, oluşturmak istediğiniz sözleşmeyi içeren uygulama kutucuğunu seçin. Etkin sözleşmelerin bir listesi görüntülenir.
 
@@ -61,7 +61,7 @@ Sözleşmenin bulunduğu duruma bağlı olarak, Üyeler sözleşmenin bir sonrak
 
     ![Sözleşme ayrıntıları](./media/use/contract-details.png)
 
-    | Section  | Açıklama  |
+    | Section  | Description  |
     |---------|---------|
     | Durum | Sözleşme aşamaları dahilinde geçerli ilerlemeyi listeler |
     | Ayrıntılar | Sözleşmenin geçerli değerleri |

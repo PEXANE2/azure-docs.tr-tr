@@ -6,10 +6,10 @@ ms.devlang: ruby
 ms.topic: quickstart
 ms.date: 06/23/2020
 ms.openlocfilehash: 16dda6fc4637f052514a0e78a0804bf4702ed20b
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85336648"
 ---
 # <a name="quickstart-how-to-use-service-bus-queues-with-ruby"></a>Hızlı başlangıç: Ruby ile Service Bus kuyruklarını kullanma
@@ -21,9 +21,9 @@ Bu öğreticide, Service Bus kuyruğuna ileti göndermek ve ileti almak için Ru
 ## <a name="prerequisites"></a>Önkoşullar
 1. Azure aboneliği. Bu öğreticiyi tamamlamak için bir Azure hesabınızın olması gerekir. [MSDN abone avantajlarınızı](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/?WT.mc_id=A85619ABF) etkinleştirebilir veya [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF)için kaydolabilirsiniz.
 2. [Service Bus kuyruğu oluşturmak için Azure Portal kullanma](service-bus-quickstart-portal.md) adımlarını izleyin.
-    1. Service Bus **kuyruklara**hızlı **genel bakış** konusunu okuyun. 
-    2. Service Bus **ad alanı**oluşturun. 
-    3. **Bağlantı dizesini**alın. 
+    1. Service Bus **kuyruklara** hızlı **genel bakış** konusunu okuyun. 
+    2. Service Bus **ad alanı** oluşturun. 
+    3. **Bağlantı dizesini** alın. 
 
         > [!NOTE]
         > Bu öğreticide Ruby kullanarak Service Bus ad alanında bir **sıra** oluşturacaksınız. 
@@ -66,13 +66,13 @@ azure_service_bus_service.send_queue_message("test-queue", message)
 Service Bus kuyrukları, [Standart katmanda](service-bus-premium-messaging.md) maksimum 256 KB ve [Premium katmanda](service-bus-premium-messaging.md) maksimum 1 MB ileti boyutunu destekler. Standart ve özel uygulama özelliklerini içeren üst bilginin maksimum dosya boyutu 64 KB olabilir. Kuyrukta tutulan ileti sayısına ilişkin bir sınır yoktur ancak kuyruk tarafından tutulan iletilerin toplam boyutu için uç sınır vardır. Bu kuyruk boyutu, üst sınır 5 GB olacak şekilde oluşturulma zamanında belirlenir.
 
 ## <a name="how-to-receive-messages-from-a-queue"></a>Kuyruktan ileti alma
-İletiler, `receive_queue_message()` **Azure:: ServiceBusService** nesnesi üzerindeki yöntemi kullanılarak bir kuyruktan alınır. Varsayılan olarak, iletiler kuyruktan silinmeden, salt okunurdur ve kilitlenir. Ancak, bu seçeneği false olarak ayarlayarak kuyruktaki iletileri okurken silebilirsiniz `:peek_lock` . **false**
+İletiler, `receive_queue_message()` **Azure:: ServiceBusService** nesnesi üzerindeki yöntemi kullanılarak bir kuyruktan alınır. Varsayılan olarak, iletiler kuyruktan silinmeden, salt okunurdur ve kilitlenir. Ancak, bu seçeneği false olarak ayarlayarak kuyruktaki iletileri okurken silebilirsiniz `:peek_lock` . 
 
 Varsayılan davranış, iki aşamalı bir işlemi okumayı ve silmeyi, ayrıca eksik iletilere izin verilmeyen uygulamaları desteklemeyi olanaklı hale getirir. Service Bus bir istek aldığında bir sonraki kullanılacak iletiyi bulur, diğer tüketicilerin bu iletiyi almasını engellemek için kilitler ve ardından uygulamaya döndürür. Uygulama iletiyi işlemeyi tamamladıktan (veya gelecekteki işlemler için güvenilir bir şekilde depolar), yöntemi çağırarak alma işleminin ikinci aşamasını tamamlar `delete_queue_message()` ve bir parametre olarak silinecek iletiyi sağlar. `delete_queue_message()`Yöntemi, iletiyi tüketildiği gibi işaretleyecek ve kuyruktan kaldıracak.
 
-`:peek_lock`Parametre **false**olarak ayarlandıysa, iletiyi okumak ve silmek en basit model haline gelir ve bir uygulamanın hata durumunda bir iletiyi işlememesinin kabul edebildiği senaryolar için en iyi sonuç verir. Bu durumu daha iyi anlamak için müşterinin bir alma isteği bildirdiğini ve bu isteğin işlenmeden çöktüğünü varsayın. Service Bus ileti tüketildiği gibi işaretlendiğinden, uygulama yeniden başlatıldığında ve iletileri yeniden kullanmaya başladığında, kilitlenme öncesinde tüketilen ileti kaçırılmış olur.
+`:peek_lock`Parametre **false** olarak ayarlandıysa, iletiyi okumak ve silmek en basit model haline gelir ve bir uygulamanın hata durumunda bir iletiyi işlememesinin kabul edebildiği senaryolar için en iyi sonuç verir. Bu durumu daha iyi anlamak için müşterinin bir alma isteği bildirdiğini ve bu isteğin işlenmeden çöktüğünü varsayın. Service Bus ileti tüketildiği gibi işaretlendiğinden, uygulama yeniden başlatıldığında ve iletileri yeniden kullanmaya başladığında, kilitlenme öncesinde tüketilen ileti kaçırılmış olur.
 
-Aşağıdaki örnek kullanarak iletilerin nasıl alınacağını ve işleyeceğini gösterir `receive_queue_message()` . Örnek, önce false olarak ayarla ' yı kullanarak bir iletiyi alır ve siler `:peek_lock` , daha sonra başka bir ileti alır ve şunu kullanarak iletiyi siler **false** `delete_queue_message()` :
+Aşağıdaki örnek kullanarak iletilerin nasıl alınacağını ve işleyeceğini gösterir `receive_queue_message()` . Örnek, önce false olarak ayarla ' yı kullanarak bir iletiyi alır ve siler `:peek_lock` , daha sonra başka bir ileti alır ve şunu kullanarak iletiyi siler  `delete_queue_message()` :
 
 ```ruby
 message = azure_service_bus_service.receive_queue_message("test-queue",
@@ -86,7 +86,7 @@ Service Bus, uygulamanızda gerçekleşen hataları veya ileti işlenirken oluş
 
 Ayrıca, kuyruk içinde kilitlenen bir iletiyle ilişkili bir zaman aşımı vardır ve uygulamanın kilit zaman aşımı dolmadan önce iletiyi işleyemezse (örneğin, uygulama çökerse) Service Bus, otomatik olarak iletinin kilidini açar ve tekrar alınabilmesini sağlar.
 
-Uygulamanın ileti işlendikten sonra çöktüğü durumda `delete_queue_message()` , ancak yöntem çağrılmadan önce, yeniden başlatıldığında ileti uygulamaya yeniden gönderilir. Bu işlem genellikle *en az bir kez işleme*olarak adlandırılır; diğer bir deyişle, her ileti en az bir kez işlenir ancak belirli durumlarda aynı ileti yeniden teslim edilebilir. Senaryo yinelenen işlemeyi kabul etmiyorsa yinelenen ileti teslimine izin vermek için uygulama geliştiricilerin uygulamaya ilave bir mantık eklemesi gerekir. Bu, genellikle ileti özelliği kullanılarak elde edilir ve bu da `message_id` teslim girişimleri arasında sabit kalır.
+Uygulamanın ileti işlendikten sonra çöktüğü durumda `delete_queue_message()` , ancak yöntem çağrılmadan önce, yeniden başlatıldığında ileti uygulamaya yeniden gönderilir. Bu işlem genellikle *en az bir kez işleme* olarak adlandırılır; diğer bir deyişle, her ileti en az bir kez işlenir ancak belirli durumlarda aynı ileti yeniden teslim edilebilir. Senaryo yinelenen işlemeyi kabul etmiyorsa yinelenen ileti teslimine izin vermek için uygulama geliştiricilerin uygulamaya ilave bir mantık eklemesi gerekir. Bu, genellikle ileti özelliği kullanılarak elde edilir ve bu da `message_id` teslim girişimleri arasında sabit kalır.
 
 > [!NOTE]
 > Service Bus kaynaklarını [Service Bus Explorer](https://github.com/paolosalvatori/ServiceBusExplorer/)ile yönetebilirsiniz. Service Bus gezgin, kullanıcıların bir Service Bus ad alanına bağlanmasına ve mesajlaşma varlıklarını kolay bir şekilde yönetmesine olanak tanır. Araç içeri/dışarı aktarma işlevselliği gibi gelişmiş özellikler ya da konu, kuyruk, abonelik, geçiş Hizmetleri, Bildirim Hub 'ları ve Olay Hub 'larını test etme yeteneği sağlar. 

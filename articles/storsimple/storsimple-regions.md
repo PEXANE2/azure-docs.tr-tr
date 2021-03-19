@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 11/16/2017
 ms.author: alkohli
 ms.openlocfilehash: 5efb87ad674474b2e21b86b5cdc48785753a51dc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90564160"
 ---
 # <a name="available-regions-for-your-storsimple"></a>StorSimple için kullanılabilir bölgeler
@@ -25,29 +25,29 @@ Bir Azure bölgesinin seçilmesi çok önemlidir ve bölge seçimi, veri yerleş
 
 StorSimple çözümü için bölge seçimi özellikle aşağıdaki etkenlere göre belirlenir:
 
-- StorSimple Aygıt Yöneticisi hizmetinin kullanılabildiği bölgeler.
+- StorSimple Device Manager hizmetinin kullanılabildiği bölgeler.
 - StorSimple fiziksel, bulut veya sanal cihazının kullanılabildiği ülkeler/bölgeler.
 - StorSimple verilerini depolayan depolama hesaplarının en iyi performans için bulunması gereken bölgeler.
 
-Bu öğretici, StorSimple Aygıt Yöneticisi hizmeti, şirket içi fiziksel ve bulut cihazlarıyla ilgili bölge kullanılabilirliğini açıklamaktadır. Bu makalede yer alan bilgiler, StorSimple 8000 ve 1200 serisi cihazlar için geçerlidir.
+Bu öğretici, StorSimple Device Manager hizmeti, şirket içi fiziksel ve bulut cihazlarıyla ilgili bölge kullanılabilirliğini açıklamaktadır. Bu makalede yer alan bilgiler, StorSimple 8000 ve 1200 serisi cihazlar için geçerlidir.
 
-## <a name="region-availability-for-storsimple-device-manager-service"></a>StorSimple Aygıt Yöneticisi hizmeti için bölge kullanılabilirliği
+## <a name="region-availability-for-storsimple-device-manager-service"></a>StorSimple Device Manager hizmeti için bölge kullanılabilirliği
 
-StorSimple Aygıt Yöneticisi hizmeti şu anda 12 ortak bölgede ve 2 Azure Kamu bölgelerinde desteklenmektedir.
+StorSimple Device Manager hizmeti şu anda 12 ortak bölgede ve 2 Azure Kamu bölgelerinde desteklenmektedir.
 
-StorSimple Aygıt Yöneticisi hizmetini ilk oluşturduğunuzda bölge veya konum tanımlarsınız. Genel olarak, cihazın dağıtıldığı coğrafi bölgeye en yakın bir konum seçilir. Ancak cihaz ve hizmet farklı konumlara de dağıtılabilir.
+StorSimple Device Manager hizmetini ilk oluşturduğunuzda bölge veya konum tanımlarsınız. Genel olarak, cihazın dağıtıldığı coğrafi bölgeye en yakın bir konum seçilir. Ancak cihaz ve hizmet farklı konumlara de dağıtılabilir.
 
-StorSimple Aygıt Yöneticisi hizmetinin Azure genel bulutu 'nda kullanılabildiği ve dağıtılabileceği bölgelerin listesi aşağıda verilmiştir.
+StorSimple Device Manager hizmetinin Azure genel bulutu 'nda kullanılabildiği ve dağıtılabileceği bölgelerin listesi aşağıda verilmiştir.
 
-![Ekran görüntüsü, konum listesi vurgulanmış şekilde StorSimple Aygıt Yöneticisi gösterir.](./media/storsimple-region/storsimple-device-manager-service-regions.png)
+![Ekran görüntüsü, konum listesi vurgulanmış şekilde StorSimple Device Manager gösterir.](./media/storsimple-region/storsimple-device-manager-service-regions.png)
 
-Azure Kamu Bulutu için, StorSimple Aygıt Yöneticisi hizmeti US Gov Iowa ve US Gov Virginia veri merkezlerinde kullanılabilir.
+Azure Kamu Bulutu için, StorSimple Device Manager hizmeti US Gov Iowa ve US Gov Virginia veri merkezlerinde kullanılabilir.
 
 ## <a name="region-availability-for-data-stored-in-storsimple"></a>StorSimple 'da depolanan veriler için bölge kullanılabilirliği
 
 StorSimple verileri Azure depolama hesaplarında fiziksel olarak depolanır ve bu hesaplar tüm Azure bölgelerinde kullanılabilir. Bir Azure depolama hesabı oluşturduğunuzda, depolama hesabının birincil konumu seçilir ve verilerin bulunduğu bölgeyi belirler.
 
-İlk olarak bir StorSimple Aygıt Yöneticisi hizmeti oluşturup bir depolama hesabını onunla ilişkilendirdiğinizde, StorSimple Aygıt Yöneticisi hizmetiniz ve Azure depolama alanı iki ayrı konumda olabilir. Böyle bir durumda, StorSimple Cihaz Yöneticisi ve Azure Storage hesabını ayrı ayrı oluşturmanız gerekir.
+İlk olarak bir StorSimple Device Manager hizmeti oluşturup bir depolama hesabını onunla ilişkilendirdiğinizde, StorSimple Device Manager hizmetiniz ve Azure depolama alanı iki ayrı konumda olabilir. Böyle bir durumda, StorSimple Cihaz Yöneticisi ve Azure Storage hesabını ayrı ayrı oluşturmanız gerekir.
 
 Genel olarak, depolama hesabınız için hizmetinize en yakın bölgeyi seçin. Ancak en yakın Microsoft Azure bölgesi en düşük gecikme süresine sahip olan bölge olmayabilir. Ağ Hizmeti performansını ve bu nedenle çözümün performansını belirleyen gecikmedir. Bu nedenle, farklı bir bölgede bir depolama hesabı tercih ediyorsanız, gecikme sürelerinin hizmetinize ve depolama hesabınızla ilişkili bölgeden ne kadar gecikdiklerini bilmek önemlidir.
 
@@ -100,4 +100,4 @@ Microsoft, fiziksel donanım sunabilir ve yukarıdaki listede coğrafi olarak St
 
 * [Çeşitli StorSimple modelleriyle ilgili fiyatlandırma](https://azure.microsoft.com/pricing/calculator/#storsimple2)hakkında daha fazla bilgi edinin.
 * [StorSimple depolama hesabınızı yönetme](storsimple-8000-manage-storage-accounts.md)hakkında daha fazla bilgi edinin.
-* StorSimple [cihazınızı yönetmek Için storsimple Aygıt Yöneticisi hizmetini kullanma](storsimple-8000-manager-service-administration.md)hakkında daha fazla bilgi edinin.
+* StorSimple [cihazınızı yönetmek Için storsimple Device Manager hizmetini kullanma](storsimple-8000-manager-service-administration.md)hakkında daha fazla bilgi edinin.

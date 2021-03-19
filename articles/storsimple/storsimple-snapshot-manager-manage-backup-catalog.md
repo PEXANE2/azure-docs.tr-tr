@@ -15,16 +15,16 @@ ms.workload: TBD
 ms.date: 06/05/2017
 ms.author: alkohli
 ms.openlocfilehash: 2efc35e65ca1db2b5241e1d3b2798e068880c87e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90055002"
 ---
 # <a name="use-storsimple-snapshot-manager-to-manage-the-backup-catalog"></a>Yedekleme kataloğunu yönetmek için StorSimple Snapshot Manager kullanma
 
 ## <a name="overview"></a>Genel Bakış
-StorSimple Snapshot Manager 'ın birincil işlevi, anlık görüntü biçiminde StorSimple birimlerinin uygulamayla tutarlı yedek kopyalarını oluşturmanızı sağlar. Anlık görüntüler daha sonra *Yedekleme kataloğu*ADLı bir XML dosyasında listelenir. Yedekleme kataloğu, anlık görüntüleri birim grubuna ve sonra yerel anlık görüntü veya bulut anlık görüntüsüne göre düzenler.
+StorSimple Snapshot Manager 'ın birincil işlevi, anlık görüntü biçiminde StorSimple birimlerinin uygulamayla tutarlı yedek kopyalarını oluşturmanızı sağlar. Anlık görüntüler daha sonra *Yedekleme kataloğu* ADLı bir XML dosyasında listelenir. Yedekleme kataloğu, anlık görüntüleri birim grubuna ve sonra yerel anlık görüntü veya bulut anlık görüntüsüne göre düzenler.
 
 Bu öğreticide, **Yedekleme kataloğu** düğümünü kullanarak aşağıdaki görevleri nasıl tamamlayabileceğinizi açıklanmaktadır:
 
@@ -43,10 +43,10 @@ Bu öğreticide, **Yedekleme kataloğu** düğümünü kullanarak aşağıdaki g
   * **Tür** : bunun yerel bir anlık görüntü veya bir bulut anlık görüntüsü olup olmadığı.
   * **Sahip** – içerik sahibi. 
   * **Kullanılabilir** : anlık görüntünün Şu anda kullanılabilir olup olmadığı. **Doğru** , anlık görüntünün kullanılabildiğini ve geri yüklenebileceğini belirtir; **False** , anlık görüntünün artık kullanılabilir olmadığını gösterir. 
-  * **Içeri aktarıldı** : yedeklemenin içeri aktarıldığına bakılmaksızın. **Doğru** , cihazın storsimple Snapshot Manager içinde yapılandırma sırasında storsimple Aygıt Yöneticisi hizmetinden içeri aktarıldığını belirtir; **False** , içe aktarılmadığını ancak storsimple Snapshot Manager tarafından oluşturulduğunu gösterir. (Birim grubunun içeri aktarıldığı cihazı tanımlayan bir sonek eklendiğinden, içeri aktarılan bir birim grubunu kolayca belirleyebilirsiniz.)
+  * **Içeri aktarıldı** : yedeklemenin içeri aktarıldığına bakılmaksızın. **Doğru** , cihazın storsimple Snapshot Manager içinde yapılandırma sırasında storsimple Device Manager hizmetinden içeri aktarıldığını belirtir; **False** , içe aktarılmadığını ancak storsimple Snapshot Manager tarafından oluşturulduğunu gösterir. (Birim grubunun içeri aktarıldığı cihazı tanımlayan bir sonek eklendiğinden, içeri aktarılan bir birim grubunu kolayca belirleyebilirsiniz.)
     
     ![Yedekleme kataloğu](./media/storsimple-snapshot-manager-manage-backup-catalog/HCS_SSM_Backup_catalog.png)
-* **Yerel anlık görüntü** veya **bulut anlık**görüntüsünü genişlettikten sonra tek bir anlık görüntü adına tıkladığınızda, **sonuçlar** bölmesinde seçtiğiniz anlık görüntüyle ilgili aşağıdaki bilgiler görüntülenir:
+* **Yerel anlık görüntü** veya **bulut anlık** görüntüsünü genişlettikten sonra tek bir anlık görüntü adına tıkladığınızda, **sonuçlar** bölmesinde seçtiğiniz anlık görüntüyle ilgili aşağıdaki bilgiler görüntülenir:
   
   * **Ad** : sürücü harfi tarafından tanımlanan birim. 
   * **Yerel ad** – sürücünün yerel adı (varsa). 
@@ -56,7 +56,7 @@ Bu öğreticide, **Yedekleme kataloğu** düğümünü kullanarak aşağıdaki g
 ## <a name="restore-a-volume"></a>Bir birimi geri yükleme
 Bir birimi yedekten geri yüklemek için aşağıdaki yordamı kullanın.
 
-#### <a name="prerequisites"></a>Ön koşullar
+#### <a name="prerequisites"></a>Önkoşullar
 Daha önce yapmadıysanız, bir birim ve birim grubu oluşturun ve ardından birimi silin. Varsayılan olarak, StorSimple Snapshot Manager, silinmesine izin vermeden önce bir birimi yedekler. Bu önlem, birim istenmeden silinirse veya verilerin herhangi bir nedenle kurtarılması gerekiyorsa veri kaybını engelleyebilir. 
 
 StorSimple Snapshot Manager, önlem amaçlı yedeklemesini oluştururken aşağıdaki iletiyi görüntüler.
@@ -74,7 +74,7 @@ StorSimple Snapshot Manager, önlem amaçlı yedeklemesini oluştururken aşağ�
 3. Geri yüklemek istediğiniz yedeği bulun, sağ tıklayın ve ardından **geri yükle**' ye tıklayın.
    
     ![Yedekleme kataloğunu geri yükleme](./media/storsimple-snapshot-manager-manage-backup-catalog/HCS_SSM_Restore_BU_catalog.png) 
-4. Onay sayfasında, ayrıntıları gözden geçirin, **Onayla**yazın ve ardından **Tamam**' a tıklayın. StorSimple Snapshot Manager, birimi geri yüklemek için yedeklemeyi kullanır.
+4. Onay sayfasında, ayrıntıları gözden geçirin, **Onayla** yazın ve ardından **Tamam**' a tıklayın. StorSimple Snapshot Manager, birimi geri yüklemek için yedeklemeyi kullanır.
    
     ![Geri yükleme onayı iletisi](./media/storsimple-snapshot-manager-manage-backup-catalog/HCS_SSM_Restore_volume_msg.png) 
 5. Geri yükleme eylemini çalışırken izleyebilirsiniz. **Kapsam** bölmesinde, **işler** düğümünü genişletin ve ardından **çalışıyor**' a tıklayın. İş ayrıntıları **sonuçlar** bölmesinde görünür. Geri yükleme işi tamamlandığında, iş ayrıntıları **son 24 saat** listesine aktarılır.
@@ -112,7 +112,7 @@ Yedekleme kataloğundan bir anlık görüntüyü silmek için aşağıdaki yorda
 ## <a name="recover-a-file"></a>Dosyayı kurtarma
 Bir dosya yanlışlıkla bir birimden silinirse, silme işlemini önceden izleyen bir anlık görüntüyü alarak, birimin bir kopyasını oluşturmak için anlık görüntüyü kullanarak ve sonra dosyayı klonlanmış birimden orijinal birime kopyalayarak dosyayı kurtarabilirsiniz.
 
-#### <a name="prerequisites"></a>Ön koşullar
+#### <a name="prerequisites"></a>Önkoşullar
 Başlamadan önce, birim grubunun güncel yedeğine sahip olduğunuzdan emin olun. Daha sonra, o birim grubundaki birimlerden birinde depolanan bir dosyayı silin. Son olarak, Silinen dosyayı yedeklemeinizden geri yüklemek için aşağıdaki adımları kullanın. 
 
 #### <a name="to-recover-a-deleted-file"></a>Silinen bir dosyayı kurtarmak için
@@ -142,7 +142,7 @@ Ana bilgisayarda StorSimple Snapshot Manager veritabanını düzenli olarak yede
    1. Sunucu Yöneticisi'ni başlatın.
    2. Sunucu Yöneticisi panosunda, **Araçlar** menüsünde **Hizmetler**' i seçin.
    3. **Hizmetler** penceresinde **Microsoft StorSimple yönetim hizmeti**' ni seçin.
-   4. Sağ bölmedeki **Microsoft StorSimple yönetim hizmeti**altında **hizmeti Durdur**' a tıklayın.
+   4. Sağ bölmedeki **Microsoft StorSimple yönetim hizmeti** altında **hizmeti Durdur**' a tıklayın.
 2. Ana bilgisayarda C:\programdata\microsoft\storsimple\bacatalogdizinine göz atın. 
    
    > [!NOTE]
@@ -156,7 +156,7 @@ Ana bilgisayarda StorSimple Snapshot Manager veritabanını düzenli olarak yede
    
    1. Sunucu Yöneticisi panosunda, **Araçlar** menüsünde **Hizmetler**' i seçin.
    2. **Hizmetler** penceresinde **Microsoft StorSimple yönetim hizmeti**' ni seçin.
-   3. Sağ bölmedeki **Microsoft StorSimple yönetim hizmeti**altında **hizmeti yeniden Başlat**' a tıklayın.
+   3. Sağ bölmedeki **Microsoft StorSimple yönetim hizmeti** altında **hizmeti yeniden Başlat**' a tıklayın.
 5. Ana bilgisayarda C:\programdata\microsoft\storsimple\bacatalogdizinine göz atın. 
 6. Katalog XML dosyasını silin ve bunu oluşturduğunuz yedek sürümle değiştirin. 
 7. StorSimple Snapshot Manager başlatmak için masaüstü StorSimple Snapshot Manager simgesine tıklayın. 

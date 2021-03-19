@@ -12,10 +12,10 @@ ms.date: 02/13/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 6553b9ec120ca0e1e479b400495b61bc68c88cf3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85201217"
 ---
 # <a name="define-a-claims-transformation-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Azure Active Directory B2C özel ilkesinde talep dönüştürme teknik profili tanımlama
@@ -50,7 +50,7 @@ Aşağıdaki örnekte bir talep dönüştürme teknik profili gösterilmektedir:
 
 ## <a name="output-claims-transformations"></a>Çıkış talepleri dönüşümleri
 
-**Outputclaimstransformations** öğesi, talepleri değiştirmek veya yenilerini oluşturmak için kullanılan bir **outputclaimstransreference** öğeleri koleksiyonu içerebilir. Aşağıdaki teknik profil **Removealternativesecurityıdbyıdentityprovider** talep dönüşümünü çağırır. Bu talep dönüştürmesi, **değişim kimliği**koleksiyonundan bir sosyal kimlik belirlemeyi kaldırır. Bu teknik profilin çıkış talepleri, **identityProvider2** `facebook.com` Facebook.com kimliği kaldırıldıktan sonra bu kullanıcıyla ilişkili sosyal kimliklerin listesini içeren, olarak ayarlanan IdentityProvider2 ve **alternativesecurityıds**' dir.
+**Outputclaimstransformations** öğesi, talepleri değiştirmek veya yenilerini oluşturmak için kullanılan bir **outputclaimstransreference** öğeleri koleksiyonu içerebilir. Aşağıdaki teknik profil **Removealternativesecurityıdbyıdentityprovider** talep dönüşümünü çağırır. Bu talep dönüştürmesi, **değişim kimliği** koleksiyonundan bir sosyal kimlik belirlemeyi kaldırır. Bu teknik profilin çıkış talepleri,  `facebook.com` Facebook.com kimliği kaldırıldıktan sonra bu kullanıcıyla ilişkili sosyal kimliklerin listesini içeren, olarak ayarlanan IdentityProvider2 ve **alternativesecurityıds**' dir.
 
 ```xml
 <ClaimsTransformations>
@@ -82,7 +82,7 @@ TransformationClaimType="collection" />
 </TechnicalProfile>
 ```
 
-Talep dönüştürme teknik profili, herhangi bir Kullanıcı yolculuğunun düzenleme adımından bir talep dönüştürmesi çalıştırmanızı sağlar. Aşağıdaki örnekte, düzenleme adımı, Kaldır **-Facebook-OAUTH**gibi teknik profillerin bağlantısını Kaldır ' ı çağırır. Bu teknik profil, Kullanıcı sosyal kimlik listesini içeren yeni bir **AlternativeSecurityIds2** talebi oluşturan,, Facebook kimliği koleksiyonlarından kaldırılırken, talep dönüştürme teknik profili **Removealternativesecurityıdbyıdentityprovider**' ı çağırır.
+Talep dönüştürme teknik profili, herhangi bir Kullanıcı yolculuğunun düzenleme adımından bir talep dönüştürmesi çalıştırmanızı sağlar. Aşağıdaki örnekte, düzenleme adımı, Kaldır **-Facebook-OAUTH** gibi teknik profillerin bağlantısını Kaldır ' ı çağırır. Bu teknik profil, Kullanıcı sosyal kimlik listesini içeren yeni bir **AlternativeSecurityIds2** talebi oluşturan,, Facebook kimliği koleksiyonlarından kaldırılırken, talep dönüştürme teknik profili **Removealternativesecurityıdbyıdentityprovider**' ı çağırır.
 
 ```xml
 <UserJourney Id="AccountUnLink">
@@ -104,7 +104,7 @@ Talep dönüştürme teknik profili, herhangi bir Kullanıcı yolculuğunun düz
 
 | Öznitelik | Gerekli | Açıklama |
 | --------- | -------- | ----------- |
-| IncludeClaimResolvingInClaimsHandling  | Hayır | Giriş ve çıkış talepleri için, [talep çözümlemenin](claim-resolver-overview.md) teknik profile dahil edilip edilmeyeceğini belirtir. Olası değerler: `true` , veya `false`   (varsayılan). Teknik profilde bir talep çözümleyici kullanmak istiyorsanız, bunu olarak ayarlayın `true` . |
+| IncludeClaimResolvingInClaimsHandling  | No | Giriş ve çıkış talepleri için, [talep çözümlemenin](claim-resolver-overview.md) teknik profile dahil edilip edilmeyeceğini belirtir. Olası değerler: `true` , veya `false` (varsayılan). Teknik profilde bir talep çözümleyici kullanmak istiyorsanız, bunu olarak ayarlayın `true` . |
 
 ## <a name="use-a-validation-technical-profile"></a>Doğrulama teknik profili kullanma
 

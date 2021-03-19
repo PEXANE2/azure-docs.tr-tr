@@ -4,10 +4,10 @@ description: Azure Relay uygulamalarının Azure Active Directory Access Control
 ms.topic: article
 ms.date: 06/23/2020
 ms.openlocfilehash: 3b793173270b0ddf25f0e971dbb2fed97cb10a55
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87532875"
 ---
 # <a name="azure-relay---migrate-from-azure-active-directory-access-control-service-to-shared-access-signature-authorization"></a>Azure Relay-Azure Active Directory Access Control Service, paylaşılan erişim Imzası yetkilendirmesi 'ne geçirme
@@ -22,15 +22,15 @@ ACS 'ye bağlı olan tüm mevcut uygulamalar için, müşterileri uygulamaların
 
 ## <a name="migration-scenarios"></a>Geçiş senaryoları
 
-ACS ve geçiş, bir *İmzalama anahtarının*paylaşılan bilgisi aracılığıyla tümleşiktir. İmzalama anahtarı, bir ACS ad alanı tarafından, yetkilendirme belirteçlerini imzalamak için kullanılır ve belirtecin eşleştirilmiş ACS ad alanı tarafından verildiğini doğrulamak için Azure Relay tarafından kullanılır. ACS ad alanı hizmet kimliklerini ve yetkilendirme kurallarını barındırır. Yetkilendirme kuralları, hangi hizmet kimliğinin veya bir dış kimlik sağlayıcısı tarafından verilen belirtecin, en uzun ön ek eşleşme biçiminde geçiş ad alanı grafiğinin bir bölümüne hangi tür erişimi olduğunu tanımlar.
+ACS ve geçiş, bir *İmzalama anahtarının* paylaşılan bilgisi aracılığıyla tümleşiktir. İmzalama anahtarı, bir ACS ad alanı tarafından, yetkilendirme belirteçlerini imzalamak için kullanılır ve belirtecin eşleştirilmiş ACS ad alanı tarafından verildiğini doğrulamak için Azure Relay tarafından kullanılır. ACS ad alanı hizmet kimliklerini ve yetkilendirme kurallarını barındırır. Yetkilendirme kuralları, hangi hizmet kimliğinin veya bir dış kimlik sağlayıcısı tarafından verilen belirtecin, en uzun ön ek eşleşme biçiminde geçiş ad alanı grafiğinin bir bölümüne hangi tür erişimi olduğunu tanımlar.
 
-Örneğin, bir ACS kuralı, **Send** `/` Bu kurala göre ACS tarafından verilen belirtecin, istemci haklarının ad alanındaki tüm varlıklara gönderilmesini sağlayan bir hizmet kimliğine yol ön eki olan gönderme talebine izin verebilir. Yol ön eki ise `/abc` , kimliğin `abc` Bu ön ek altında adlı veya düzenlenmiş varlıklara gönderilmesi kısıtlanır. Bu geçiş kılavuzunun okuyucularının bu kavramlarla zaten tanıdık olduğu varsayılır.
+Örneğin, bir ACS kuralı,  `/` Bu kurala göre ACS tarafından verilen belirtecin, istemci haklarının ad alanındaki tüm varlıklara gönderilmesini sağlayan bir hizmet kimliğine yol ön eki olan gönderme talebine izin verebilir. Yol ön eki ise `/abc` , kimliğin `abc` Bu ön ek altında adlı veya düzenlenmiş varlıklara gönderilmesi kısıtlanır. Bu geçiş kılavuzunun okuyucularının bu kavramlarla zaten tanıdık olduğu varsayılır.
 
 Geçiş senaryoları üç geniş kategoriye ayrılır:
 
 1.  **Değiştirilmemiş varsayılanlar**. Bazı müşteriler bir [Sharedsecrettokenprovider](/dotnet/api/microsoft.servicebus.sharedsecrettokenprovider) nesnesi kullanarak, otomatik olarak oluşturulan **sahip** hizmet kimliğini ve ACS ad alanı için gizli anahtarını geçirerek, geçiş ad alanıyla eşleştirilmiş ve yeni kurallar eklemez.
 
-2.  **Basit kurallara sahip özel hizmet kimlikleri**. Bazı müşteriler yeni hizmet kimlikleri ekler ve her yeni hizmet kimliğini belirli bir varlık için **gönderme**, **dinleme**ve **yönetme** izinleri verir.
+2.  **Basit kurallara sahip özel hizmet kimlikleri**. Bazı müşteriler yeni hizmet kimlikleri ekler ve her yeni hizmet kimliğini belirli bir varlık için **gönderme**, **dinleme** ve **yönetme** izinleri verir.
 
 3.  **Karmaşık kurallara sahip özel hizmet kimlikleri**. Çok az sayıda müşteri, dışarıdan verilen belirteçlerin geçiş üzerindeki haklara eşlendiği veya tek bir hizmet kimliğinin birden çok kural aracılığıyla çeşitli ad alanı yollarında farklılaştırılan haklar atandığı karmaşık kural kümelerine sahiptir.
 

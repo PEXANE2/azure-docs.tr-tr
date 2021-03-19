@@ -8,10 +8,10 @@ ms.date: 07/20/2020
 ms.author: surmb
 ms.topic: conceptual
 ms.openlocfilehash: 53f6f37454de886934a483b40daad24204958baf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87474334"
 ---
 # <a name="application-gateway-multiple-site-hosting"></a>Application Gateway birden çok site barındırma
@@ -35,7 +35,7 @@ Application Gateway, çok siteli HTTP (ler) dinleyicisi kullanılarak ana bilgis
 
 Ana bilgisayar adında bir joker karakter kullanarak, tek bir dinleyicide birden çok konak adını eşleştirebilirsiniz. Örneğin, `*.contoso.com` ve ile eşleştirebilir `ecom.contoso.com` `b2b.contoso.com` `customer1.b2b.contoso.com` . Bir ana bilgisayar adları dizisi kullanarak, istekleri bir arka uç havuzuna yönlendirmek için bir dinleyici için birden çok konak adı yapılandırabilirsiniz. Örneğin, bir dinleyici, `contoso.com, fabrikam.com` her iki konak adı için istekleri kabul edecek şekilde içerebilir.
 
-:::image type="content" source="./media/multiple-site-overview/wildcard-listener-diag.png" alt-text="Çok siteli Application Gateway":::
+:::image type="content" source="./media/multiple-site-overview/wildcard-listener-diag.png" alt-text="Joker karakter dinleyicisi":::
 
 >[!NOTE]
 > Bu özellik önizleme aşamasındadır ve yalnızca Application Gateway Standard_v2 ve WAF_v2 SKU 'SU için kullanılabilir. Önizlemeler hakkında daha fazla bilgi edinmek için [buradaki kullanım koşullarına](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)bakın.

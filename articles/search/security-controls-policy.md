@@ -1,18 +1,18 @@
 ---
 title: Azure Bilişsel Arama için Azure Ilke mevzuat uyumluluk denetimleri
 description: Azure Bilişsel Arama için kullanılabilen Azure Ilke mevzuat uyumluluk denetimlerini listeler. Bu yerleşik ilke tanımları, Azure kaynaklarınızın uyumluluğunu yönetmek için yaygın yaklaşımlar sağlar.
-ms.date: 03/10/2021
+ms.date: 03/17/2021
 ms.topic: sample
 author: HeidiSteen
 ms.author: heidist
 ms.service: search
 ms.custom: subject-policy-compliancecontrols
-ms.openlocfilehash: 83d448a4d6d784bcf7ed28911a7ddaba8c3989e9
-ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
+ms.openlocfilehash: b94ca010ef8b2ab4d8fb73acf1e686835453d22c
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/11/2021
-ms.locfileid: "102635013"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104604358"
 ---
 # <a name="azure-policy-regulatory-compliance-controls-for-azure-cognitive-search"></a>Azure Bilişsel Arama için Azure Ilke mevzuat uyumluluk denetimleri
 

@@ -7,22 +7,22 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 03/12/2021
-ms.openlocfilehash: 9ff98a2613143474afd6041ccf52d4eb509d646b
-ms.sourcegitcommit: df1930c9fa3d8f6592f812c42ec611043e817b3b
+ms.date: 03/18/2021
+ms.openlocfilehash: c33739124092a17acf0590f00b2f9c3c09bf894e
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2021
-ms.locfileid: "103418887"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104654671"
 ---
-# <a name="create-a-semantic-query-in-cognitive-search"></a>Bilişsel Arama anlam sorgusu oluşturma
+# <a name="create-a-query-for-semantic-captions-in-cognitive-search"></a>Bilişsel Arama anlam başlıkları için bir sorgu oluşturma
 
 > [!IMPORTANT]
-> Anlam sorgu türü, önizleme REST API ve Azure portal aracılığıyla kullanılabilen genel önizlemede bulunur. Önizleme özellikleri, olduğu gibi, [ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)altında sunulur. Daha fazla bilgi için bkz. [kullanılabilirlik ve fiyatlandırma](semantic-search-overview.md#availability-and-pricing).
+> Anlamsal arama, önizleme REST API ve Azure portal aracılığıyla kullanılabilen genel önizlemededir. Önizleme özellikleri, olduğu gibi, [ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)altında sunulur. Bu özellikler faturalandırılabilir. Daha fazla bilgi için bkz. [kullanılabilirlik ve fiyatlandırma](semantic-search-overview.md#availability-and-pricing).
 
-Bu makalede anlam derecelendirmesi kullanan bir arama isteğini nasıl formülleyeceğinizi öğrenin. İstek, en ilgili hüküm ve tümceciklere göre önemli olan anlam başlıklarını ve isteğe bağlı olarak [anlamsal yanıtları](semantic-answers.md)döndürecek.
+Bu makalede, anlam derecelendirmesi kullanan bir arama isteğini nasıl ifade edeceğinizi ve anlamlı açıklamalı alt yazılar (ve isteğe bağlı olarak [anlamsal yanıtlar](semantic-answers.md)), en ilgili hüküm ve tümceciklerin üzerine vurgularla birlikte nasıl ifade edeceğinizi öğrenin. Hem açıklamalı alt yazılar hem de yanıtlar, "anlam" sorgu türü kullanılarak formül oluşturulan sorgularda döndürülür.
 
-Hem açıklamalı alt yazılar hem de yanıtlar, arama belgesinde metinden bir bütün olarak ayıklanır. Anlam alt sistemi, bir başlık veya yanıtın özelliklerine sahip olan içeriği belirler, ancak yeni tümceler veya ifadeler oluşturmaz. Bu nedenle, açıklamaları veya tanımları içeren içerik anlamsal arama için en iyi şekilde çalışır.
+Açıklamalı alt yazılar ve yanıtlar, arama belgesinde metinden yazılır. Anlamsal alt sistem, içeriğinizin bir başlık veya yanıtın özelliklerine sahip olduğunu belirler, ancak yeni tümceler veya ifadeler oluşturmaz. Bu nedenle, açıklamaları veya tanımları içeren içerik anlamsal arama için en iyi şekilde çalışır.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -34,7 +34,7 @@ Hem açıklamalı alt yazılar hem de yanıtlar, arama belgesinde metinden bir b
 
 + Sorgu göndermek için bir arama istemcisi
 
-  Arama istemcisinin, sorgu isteğinde önizleme REST API 'Leri desteklemesi gerekir. Önizleme API 'Lerine GERI çağrı yapmak için değiştirdiğiniz [Postman](search-get-started-rest.md), [Visual Studio Code](search-get-started-vs-code.md)veya kodu kullanabilirsiniz. Bir anlamsal sorgu göndermek için Azure portal [Arama Gezgini](search-explorer.md) 'ni de kullanabilirsiniz.
+  Arama istemcisinin, sorgu isteğinde önizleme REST API 'Leri desteklemesi gerekir. Önizleme API 'Lerine REST çağrıları yapan [Postman](search-get-started-rest.md), [Visual Studio Code](search-get-started-vs-code.md)veya kodu kullanabilirsiniz. Bir anlamsal sorgu göndermek için Azure portal [Arama Gezgini](search-explorer.md) 'ni de kullanabilirsiniz.
 
 + Bir [sorgu isteği](/rest/api/searchservice/preview-api/search-documents) , bu makalede açıklanan anlam seçeneğini ve diğer parametreleri içermelidir.
 
@@ -62,9 +62,13 @@ Başlangıçtaki sonuçlardan yalnızca ilk 50 eşleşme anlam olarak derecelend
 
 ## <a name="query-with-search-explorer"></a>Arama gezgini ile sorgulama
 
-[Arama Gezgini](search-explorer.md) anlam sorgularının seçeneklerini içerecek şekilde güncelleştirilmiştir. Önizlemeye erişim verdikten sonra bu seçenekler portalda görünür hale gelir. Sorgu seçenekleri anlam sorguları, searchFields ve yazım düzeltmesini etkinleştirebilir.
+[Arama Gezgini](search-explorer.md) anlam sorgularının seçeneklerini içerecek şekilde güncelleştirilmiştir. Bu seçenekler, aşağıdaki adımları tamamladıktan sonra portalda görünür hale gelir:
 
-Gerekli sorgu parametrelerini sorgu dizesine de yapıştırabilirsiniz.
+1. Arama hizmetinizin Önizleme programına [kaydolun](https://aka.ms/SemanticSearchPreviewSignup) ve Admittans yapın
+
+1. Bu söz dizimi ile portalı açın: `https://portal.azure.com/?feature.semanticSearch=true`
+
+Sorgu seçenekleri anlam sorguları, searchFields ve yazım düzeltmesini etkinleştirmek için anahtarlar içerir. Gerekli sorgu parametrelerini sorgu dizesine de yapıştırabilirsiniz.
 
 :::image type="content" source="./media/semantic-search-overview/search-explorer-semantic-query-options.png" alt-text="Arama Gezgininde sorgu seçenekleri" border="true":::
 
@@ -98,7 +102,7 @@ Aşağıdaki tablo, bir anlamsal sorgu için kullanılan sorgu parametrelerini �
 |-----------|-------|-------------|
 | queryType | Dize | Geçerli değerler basit, tam ve anlam içerir. Anlam sorguları için "anlam" değeri gereklidir. |
 | Sorgu dili | Dize | Anlam sorguları için gereklidir. Şu anda yalnızca "en-US" uygulandı. |
-| searchFields | Dize | Aranabilir alanların virgülle ayrılmış listesi. İsteğe bağlı ancak önerilir. Anlam derecelendirmenin gerçekleştiği alanları belirtir. </br></br>Basit ve tam sorgu türlerinin aksine, alanların listelenme sırası öncelik belirler. Daha fazla kullanım yönergeleri için bkz. [2. Adım: searchFields ayarlama](#searchfields). |
+| searchFields | Dize | Aranabilir alanların virgülle ayrılmış listesi. Açıklamalı alt yazıların ve yanıtların ayıklandığı anlam derecelendirmenin gerçekleştiği alanları belirtir. </br></br>Basit ve tam sorgu türlerinin aksine, alanların listelenme sırası öncelik belirler. Daha fazla kullanım yönergeleri için bkz. [2. Adım: searchFields ayarlama](#searchfields). |
 | güncelleştirin | Dize | Anlam sorgularına özgü olmayan isteğe bağlı parametre, arama altyapısına ulaşmadan önce yanlış yazılmış koşulları düzeltir. Daha fazla bilgi için bkz. [sorgulara yazım denetimi ekleme](speller-how-to-add.md). |
 | acağınız |Dize | Anlam yanıtlarının sonuca dahil edilip edilmeyeceğini belirten isteğe bağlı parametreler. Şu anda yalnızca "extractive" uygulandı. Yanıtlar en fazla beş olacak şekilde yapılandırılabilir. Varsayılan değer bir. Bu örnek, üç yanıt sayısını gösterir: "extractive \| count3" '. Daha fazla bilgi için bkz. [anlam yanıtları döndürme](semantic-answers.md).|
 
@@ -125,13 +129,11 @@ Bir arama dizinindeki içerik birden çok dilde birleştirileken, sorgu girişi 
 
 #### <a name="step-2-set-searchfields"></a>2. Adım: searchFields ayarlama
 
-Bu parametre, bu parametreyi dışarıda bıraktığınızda bir hata olmadığı için isteğe bağlıdır, ancak her iki başlık ve yanıt için bir dizi alanın Sıralı bir listesini sağlamak kesinlikle önerilir.
-
 Searchfields parametresi, sorguya "anlamsal benzerlik" için değerlendirilecek olan metinlerin belirlemek için kullanılır. Önizleme için, modelin işlemek için en önemli olan alanlar için bir ipucu gerektirdiğinden, searchFields 'in boş bırakılması önerilmez.
 
-SearchFields sırası kritik öneme sahiptir. Zaten var olan basit veya tam Lucene sorgularında searchFields kullanıyorsanız, bir anlamsal sorgu türüne geçiş yaparken alan sırasını denetlemek için bu parametreyi geri ziyaret ettiğinizden emin olun.
+SearchFields sırası kritik öneme sahiptir. Zaten basit veya tam Lucene sorguları için mevcut kodda searchFields kullanıyorsanız, anlamsal bir sorgu türüne geçiş yaparken alan sırasını denetlemek için bu parametreyi yeniden ziyaret edin.
 
-İki veya daha fazla searchFields belirtildiğinde en iyi sonuçları sağlamak için bu yönergeleri izleyin:
+İki veya daha fazla searchFields için:
 
 + Koleksiyonlardaki yalnızca dize alanlarını ve en üst düzey dize alanlarını dahil edin. Bir koleksiyonda dize olmayan alanları veya alt düzey alanları dahil etmek için bir hata yoktur, ancak bu alanlar semantik derecelendirmeden kullanılmaz.
 
@@ -141,7 +143,7 @@ SearchFields sırası kritik öneme sahiptir. Zaten var olan basit veya tam Luce
 
 + Bir belgenin ana içeriği gibi anlam sorgularının yanıtının bulunabileceği açıklayıcı alanlarla bu alanları izleyin.
 
-Yalnızca bir alan belirtilmişse, anlam sorgularının yanıtının bulunduğu bir belgenin ana içeriği gibi açıklayıcı bir alan kullanın. Yeterli içerik sağlayan bir alan seçin. İşlem zamanında işleme sağlamak için, yalnızca searchFields 'in toplu içeriklerinin 8.000 belirteçleri hakkında daha fazla anlam değerlendirmesi ve derecelendirmesi vardır.
+Yalnızca bir alan belirtilmişse, anlam sorgularının yanıtının bulunduğu bir belgenin ana içeriği gibi açıklayıcı bir alan kullanın. 
 
 #### <a name="step-3-remove-orderby-clauses"></a>3. Adım: orderBy yan tümcelerini kaldırma
 
@@ -191,7 +193,7 @@ Yukarıdaki örnek sorgusunun yanıtı, en üstteki seçim olarak aşağıdaki e
 Anlam derecelendirmenin ve yanıtlarının bir ilk sonuç kümesi üzerinden oluşturulup oluşturulabileceğini hatırlayın. İlk sonuçların kalitesini artıran herhangi bir mantık, anlam aramasına ileri doğru ilerlecektir. Sonraki adım olarak, dizelerin nasıl simgeleştirilmiş olduğunu etkileyen çözümleyiciler, sonuçları ayarlayabilen Puanlama profilleri ve varsayılan ilgi algoritması gibi ilk sonuçlara katkıda bulunan özellikleri gözden geçirin.
 
 + [Metin işleme için çözümleyiciler](search-analyzers.md)
-+ [Bilişsel Arama benzerlik ve Puanlama](index-similarity-and-scoring.md)
-+ [Puanlama profili ekleme](index-add-scoring-profiles.md)
++ [Benzerlik derecelendirme algoritması](index-similarity-and-scoring.md)
++ [Puanlama modelleri](index-add-scoring-profiles.md)
 + [Anlamsal aramaya genel bakış](semantic-search-overview.md)
-+ [Sorgu koşullarına yazım denetimi Ekle](speller-how-to-add.md)
++ [Anlam derecelendirmesi algoritması](semantic-ranking.md)

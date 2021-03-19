@@ -7,10 +7,10 @@ ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 09/20/2019
 ms.openlocfilehash: baa6e5732221d120ff71217a3a86a942794c53f4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "84710380"
 ---
 # <a name="perform-data-operations-in-azure-logic-apps"></a>Azure Logic Apps veri işlemlerini gerçekleştirme
@@ -34,8 +34,8 @@ Bu eylemler, dizilerde verilerle çalışmanıza yardımcı olur.
 | [**CSV tablosu oluştur**](#create-csv-table-action) | Bir diziden bir virgülle ayrılmış değer (CSV) tablosu oluşturun. |
 | [**HTML tablosu oluştur**](#create-html-table-action) | Diziden bir HTML tablosu oluşturun. |
 | [**Diziyi filtrele**](#filter-array-action) | Belirtilen filtre veya koşula göre diziden bir dizi alt kümesi oluşturun. |
-| [**Birleştir**](#join-action) | Bir dizideki tüm öğelerden bir dize oluşturun ve her öğeyi belirtilen karakterle ayırın. |
-| [**Seç**](#select-action) | Farklı bir dizideki tüm öğeler için belirtilen özelliklerden bir dizi oluşturun. |
+| [**Ayrılma**](#join-action) | Bir dizideki tüm öğelerden bir dize oluşturun ve her öğeyi belirtilen karakterle ayırın. |
+| [**Şunu seçin:**](#select-action) | Farklı bir dizideki tüm öğeler için belirtilen özelliklerden bir dizi oluşturun. |
 ||| 
 
 **JSON eylemleri**
@@ -44,7 +44,7 @@ Bu eylemler JavaScript Nesne Gösterimi (JSON) biçimindeki verilerle çalışma
 
 | Eylem | Açıklama |
 |--------|-------------|
-| [**Oluştur**](#compose-action) | Çeşitli veri türlerine sahip olan birden fazla girişe bir ileti veya dize oluşturun. Daha sonra bu dizeyi, aynı girdileri tekrar tekrar girmek yerine tek bir girdi olarak kullanabilirsiniz. Örneğin, çeşitli girdilerden tek bir JSON iletisi oluşturabilirsiniz. |
+| [**Compose**](#compose-action) | Çeşitli veri türlerine sahip olan birden fazla girişe bir ileti veya dize oluşturun. Daha sonra bu dizeyi, aynı girdileri tekrar tekrar girmek yerine tek bir girdi olarak kullanabilirsiniz. Örneğin, çeşitli girdilerden tek bir JSON iletisi oluşturabilirsiniz. |
 | [**JSON Ayrıştır**](#parse-json-action) | Mantıksal uygulamalarınızda özellikleri daha kolay kullanabilmek için JSON içeriğindeki özellikler için Kullanıcı dostu veri belirteçleri oluşturun. |
 |||
 
@@ -92,7 +92,7 @@ Bir örnek denemek için, mantıksal uygulama Tasarımcısı ' nı kullanarak bu
 
    * Adımlar arasında bir eylem eklemek için farenizi bağlantı oku üzerine taşıyarak artı işareti ( **+** ) belirir. Artı işaretini seçin ve ardından **Eylem Ekle**' yi seçin.
 
-1. **Eylem seçin**altında, arama kutusuna `compose` filtreniz olarak girin. Eylemler listesinden, **oluşturma** eylemini seçin.
+1. **Eylem seçin** altında, arama kutusuna `compose` filtreniz olarak girin. Eylemler listesinden, **oluşturma** eylemini seçin.
 
    !["Oluştur" eylemini seçin](./media/logic-apps-perform-data-operations/select-compose-action.png)
 
@@ -150,7 +150,7 @@ Kod görünümü Düzenleyicisi 'nde çalışmayı tercih ediyorsanız, örnek *
 
    * Adımlar arasında bir eylem eklemek için farenizi bağlantı oku üzerine taşıyarak artı işareti ( **+** ) belirir. Artı işaretini seçin ve ardından **Eylem Ekle**' yi seçin.
 
-1. **Eylem seçin**altında, arama kutusuna `create csv table` filtreniz olarak girin. Eylemler listesinden **CSV tablosu oluştur** eylemini seçin.
+1. **Eylem seçin** altında, arama kutusuna `create csv table` filtreniz olarak girin. Eylemler listesinden **CSV tablosu oluştur** eylemini seçin.
 
    !["CSV tablosu oluştur" eylemini seçin](./media/logic-apps-perform-data-operations/select-create-csv-table-action.png)
 
@@ -200,7 +200,7 @@ Eylemde **başlık** sütununu boş tutun. **Değer** sütunundaki her satırda,
 
    `item()?['<array-property-name>']`
 
-   Örneğin:
+   Örnek:
 
    * `item()?['Description']`
    * `item()?['Product_ID']`
@@ -232,7 +232,7 @@ Eylemin JSON tanımında, dizi içinde, `columns` `header` özelliği boş bir d
    }
    ```
 
-   Örneğin:
+   Örnek:
 
    ```json
    "Create_CSV_table": {
@@ -301,7 +301,7 @@ Kod görünümü Düzenleyicisi 'nde çalışmayı tercih ediyorsanız, örnek *
 
    * Adımlar arasında bir eylem eklemek için farenizi bağlantı oku üzerine taşıyarak artı işareti ( **+** ) belirir. Artı işaretini seçin ve ardından **Eylem Ekle**' yi seçin.
 
-1. **Eylem seçin**altında, arama kutusuna `create html table` filtreniz olarak girin. Eylemler listesinden **HTML tablosu oluştur** eylemini seçin.
+1. **Eylem seçin** altında, arama kutusuna `create html table` filtreniz olarak girin. Eylemler listesinden **HTML tablosu oluştur** eylemini seçin.
 
    !["HTML tablosu oluştur" eylemini seçin](./media/logic-apps-perform-data-operations/select-create-html-table-action.png)
 
@@ -351,7 +351,7 @@ Eylemde **başlık** sütununu boş tutun. **Değer** sütunundaki her satırda,
 
    `item()?['<array-property-name>']`
 
-   Örneğin:
+   Örnek:
 
    * `item()?['Description']`
    * `item()?['Product_ID']`
@@ -383,7 +383,7 @@ Eylemin JSON tanımında, dizi içinde, `columns` `header` özelliği boş bir d
    }
    ```
 
-   Örneğin:
+   Örnek:
 
    ```json
    "Create_HTML_table": {
@@ -604,7 +604,7 @@ Kod görünümü düzenleyicisinde çalışmayı tercih ediyorsanız, örnek **J
 
    ![Ayrıştırmak istediğiniz JSON nesnesi için JSON şeması sağlayın](./media/logic-apps-perform-data-operations/provide-schema-parse-json-action.png)
 
-   Şemaya sahip değilseniz, bu şemayı, ayrıştırılıyorsunuz JSON içeriğinden veya *yükünde*oluşturabilirsiniz. 
+   Şemaya sahip değilseniz, bu şemayı, ayrıştırılıyorsunuz JSON içeriğinden veya *yükünde* oluşturabilirsiniz. 
    
    1. JSON 'u **Ayrıştır** eyleminde **şema oluşturmak Için örnek yük kullan**' ı seçin.
 
@@ -624,7 +624,7 @@ Temel alınan iş akışı tanımınızda bu eylem hakkında daha fazla bilgi i�
 
 1. Bu eylemde, sonuçların görünmesini istediğiniz herhangi bir yere tıklayın. Dinamik içerik listesi açıldığında, **JSON 'U Ayrıştır** eylemi altında, artık ayrıştırılmış JSON içeriğinden özellikleri seçebilirsiniz.
 
-   Bu örnek, Office 365 Outlook **e-posta gönder** eylemini kullanır ve e-postanın gövdesinde **FirstName**, **LastName**ve **email** alanlarını içerir:
+   Bu örnek, Office 365 Outlook **e-posta gönder** eylemini kullanır ve e-postanın gövdesinde **FirstName**, **LastName** ve **email** alanlarını içerir:
 
    !["E-posta gönder" eyleminde JSON özellikleri](./media/logic-apps-perform-data-operations/send-email-parse-json-action.png)
 
@@ -663,7 +663,7 @@ Kod görünümü Düzenleyicisi 'nde çalışmayı tercih ediyorsanız **, örne
 
    * Adımlar arasında bir eylem eklemek için farenizi bağlantı oku üzerine taşıyarak artı işareti ( **+** ) belirir. Artı işaretini seçin ve ardından **Eylem Ekle**' yi seçin.
 
-1. **Eylem seçin**altında, **yerleşik**' i seçin. Arama kutusuna `select` filtreniz olarak yazın. Eylemler listesinden, **seçme** eylemini seçin.
+1. **Eylem seçin** altında, **yerleşik**' i seçin. Arama kutusuna `select` filtreniz olarak yazın. Eylemler listesinden, **seçme** eylemini seçin.
 
    !["Seç" eylemini seçin](./media/logic-apps-perform-data-operations/select-select-action.png)
 

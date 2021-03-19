@@ -1,6 +1,6 @@
 ---
-title: dosya dahil etme
-description: dosya dahil etme
+title: include dosyası
+description: include dosyası
 services: iot-hub
 author: robinsh
 ms.service: iot-hub
@@ -9,10 +9,10 @@ ms.date: 11/06/2018
 ms.author: robinsh
 ms.custom: include file
 ms.openlocfilehash: 7b022f71e197c5695876f2049ee376c3616afc6d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "70049060"
 ---
 <!-- put the ## header in the file that includes this file -->
@@ -23,7 +23,7 @@ Bu bölümde, IoT Hub 'ınızdaki kimlik kayıt defterinde bir cihaz kimliği ol
 
     ![Portalda cihaz kimliği oluşturma](./media/iot-hub-include-create-device/create-identity-portal-vs2019.png)
 
-1. **Cihaz oluştur**' da, yeni cihazınız Için **mydeviceıd**gibi bir ad girin ve **Kaydet**' i seçin. Bu eylem, IoT Hub 'ınız için bir cihaz kimliği oluşturur.
+1. **Cihaz oluştur**' da, yeni cihazınız Için **mydeviceıd** gibi bir ad girin ve **Kaydet**' i seçin. Bu eylem, IoT Hub 'ınız için bir cihaz kimliği oluşturur.
 
    ![Yeni cihaz ekle](./media/iot-hub-include-create-device/create-a-device-vs2019.png)
 

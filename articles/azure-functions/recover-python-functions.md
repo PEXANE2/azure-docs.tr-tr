@@ -7,13 +7,13 @@ ms.date: 07/29/2020
 ms.author: hazeng
 ms.custom: devx-track-python
 ms.openlocfilehash: 9b9f5d389eda5d74e7e78cfcfa9a46fba7276cbd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87846046"
 ---
-# <a name="troubleshoot-python-errors-in-azure-functions"></a>Azure Işlevlerinde Python hatalarında sorun giderme
+# <a name="troubleshoot-python-errors-in-azure-functions"></a>Azure İşlevleri'nde Python hatalarını giderme
 
 Aşağıda, Python işlevlerinde yaygın sorunlara yönelik sorun giderme kılavuzlarının bir listesi verilmiştir:
 
@@ -59,7 +59,7 @@ Bkz. azaltma için [uzak derlemeyi etkinleştirme](#enable-remote-build) veya [Y
 
 #### <a name="the-package-isnt-resolved-with-proper-linux-wheel"></a>Paket, uygun Linux tekerleği ile çözümlenmiyor
 
-Veya ' a gidin `.python_packages/lib/python3.6/site-packages/<package-name>-<version>-dist-info` `.python_packages/lib/site-packages/<package-name>-<version>-dist-info` . **Tekerlek** dosyasını açmak için en sevdiğiniz metin düzenleyiciyi kullanın ve **etiketi:** bölümünü kontrol edin. Etiketin değeri **Linux**içermiyorsa, bu sorun olabilir.
+Veya ' a gidin `.python_packages/lib/python3.6/site-packages/<package-name>-<version>-dist-info` `.python_packages/lib/site-packages/<package-name>-<version>-dist-info` . **Tekerlek** dosyasını açmak için en sevdiğiniz metin düzenleyiciyi kullanın ve **etiketi:** bölümünü kontrol edin. Etiketin değeri **Linux** içermiyorsa, bu sorun olabilir.
 
 Python işlevleri yalnızca Azure 'da Linux üzerinde çalışır: Işlevler Runtime v2. x, Deuter Esnette ve v3. x çalışma zamanı üzerinde çalışır. Yapıtın doğru Linux ikililerini içermesi beklenir. `--build local`Temel araçlar, üçüncü taraf veya güncel olmayan araçlarda bayrak kullanımı, eski ikililerin kullanılmasına neden olabilir.
 
@@ -114,7 +114,7 @@ Uzak derleme özelliğinin etkinleştirildiğinden emin olun. Bunu yapmanın yol
 
 ## <a name="manual-publishing"></a>[El ile yayımlama](#tab/manual)
 
-Paketinizi uç noktaya el ile yayımlıyorsanız `https://<app-name>.scm.azurewebsites.net/api/zipdeploy` , hem **SCM_DO_BUILD_DURING_DEPLOYMENT** hem de **ENABLE_ORYX_BUILD** **doğru**olarak ayarlandığından emin olun. Daha fazla bilgi için bkz. [uygulama ayarları ile çalışma](functions-how-to-use-azure-function-app-settings.md#settings).
+Paketinizi uç noktaya el ile yayımlıyorsanız `https://<app-name>.scm.azurewebsites.net/api/zipdeploy` , hem **SCM_DO_BUILD_DURING_DEPLOYMENT** hem de **ENABLE_ORYX_BUILD** **doğru** olarak ayarlandığından emin olun. Daha fazla bilgi için bkz. [uygulama ayarları ile çalışma](functions-how-to-use-azure-function-app-settings.md#settings).
 
 ---
 
@@ -124,7 +124,7 @@ Hem **Docker** hem de [Azure Functions Core Tools](https://github.com/Azure/azur
 
 #### <a name="update-your-package-to-the-latest-version"></a>Paketinizi en son sürüme güncelleştirin
 
-' Deki en son paket sürümüne göz atın `https://pypi.org/project/<package-name>` ve **sınıflandırıcılar:** bölümüne bakın. Paketin ya `OS Independent` da `POSIX` `POSIX :: Linux` **işletim sistemi**ile uyumlu olması gerekir. Ayrıca, programlama dili,,, `Python :: 3` `Python :: 3.6` veya içermelidir `Python :: 3.7` `Python :: 3.8` .
+' Deki en son paket sürümüne göz atın `https://pypi.org/project/<package-name>` ve **sınıflandırıcılar:** bölümüne bakın. Paketin ya `OS Independent` da `POSIX` `POSIX :: Linux` **işletim sistemi** ile uyumlu olması gerekir. Ayrıca, programlama dili,,, `Python :: 3` `Python :: 3.6` veya içermelidir `Python :: 3.7` `Python :: 3.8` .
 
 Bunlar doğruysa, requirements.txt satırı değiştirerek paketi en son sürüme güncelleştirebilirsiniz `<package-name>~=<latest-version>` .
 

@@ -12,10 +12,10 @@ manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: fc3ef7d168c17ec10fe64925adbda7044a2a4c82
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87910079"
 ---
 # <a name="leave-an-organization-as-a-guest-user"></a>Kuruluştan konuk kullanıcı olarak ayrılma
@@ -51,7 +51,7 @@ Bir kullanıcı kuruluştan ayrıldığında Kullanıcı hesabı, dizinde "geçi
 
 İsterseniz, bir kiracı yöneticisi, hesabı 30 günlük süre boyunca dilediğiniz zaman kalıcı olarak silebilir. Bunu yapmak için:
 
-1. [Azure portalda](https://portal.azure.com) **Azure Active Directory**'yi seçin.
+1. [Azure portalda](https://portal.azure.com)**Azure Active Directory**'yi seçin.
 2. **Yönet** bölümünde **Kullanıcılar**'ı seçin.
 3. **Silinen kullanıcılar**' ı seçin.
 4. Silinen bir kullanıcının yanındaki onay kutusunu işaretleyin ve **kalıcı olarak sil**' i seçin.

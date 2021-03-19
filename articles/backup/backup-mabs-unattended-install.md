@@ -4,10 +4,10 @@ description: Azure Backup Sunucusu v2 'yi sessizce yüklemek için bir PowerShel
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.openlocfilehash: 1539089e713bcf8e959707c6ff4a608f062a7c00
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "74172238"
 ---
 # <a name="run-an-unattended-installation-of-azure-backup-server"></a>Katılımsız Azure Backup Sunucusu yüklemesi çalıştırma
@@ -60,6 +60,6 @@ Yükleme için bu bayrakları kullanabilirsiniz:</br>
 Yedekleme sunucusunu yükledikten sonra, sunucunuzu nasıl hazırlayacağınızı veya bir iş yükünü korumaya nasıl başlayacağınızı öğrenin.
 
 - [Yedekleme sunucusu iş yüklerini hazırlama](backup-azure-microsoft-azure-backup.md)
-- [Bir VMware sunucusunu yedeklemek için yedekleme sunucusu kullanma](backup-azure-backup-server-vmware.md)
-- [Yedekleme sunucusunu kullanarak yedekleme SQL Server](backup-azure-sql-mabs.md)
-- [Yedekleme sunucusuna Modern Yedekleme Alanı Ekle](backup-mabs-add-storage.md)
+- [VMware sunucusunu yedeklemek için Yedekleme Sunucusu kullanma](backup-azure-backup-server-vmware.md)
+- [SQL Server'ı yedeklemek için Yedekleme Sunucusu kullanma](backup-azure-sql-mabs.md)
+- [Yedekleme Sunucusuna Modern Yedekleme Depolaması Ekleme](backup-mabs-add-storage.md)

@@ -5,12 +5,12 @@ description: Azure Kubernetes Service (AKS) ' de küme güvenliğini ve yükselt
 services: container-service
 ms.topic: conceptual
 ms.date: 11/12/2020
-ms.openlocfilehash: ad1f14fc92433e8d9cb31de165645e4a5731f01a
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: a56cf35fe3780aa53b12581358bd91fe44e8c8a1
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95019475"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104585069"
 ---
 # <a name="best-practices-for-cluster-security-and-upgrades-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) üzerinde küme güvenliği ve yükseltmeleri için en iyi uygulamalar
 
@@ -94,7 +94,7 @@ metadata:
 spec:
   containers:
   - name: hello
-    image: busybox
+    image: mcr.microsoft.com/aks/fundamental/base-ubuntu:v0.0.11
     command: [ "sh", "-c", "echo 'Hello AppArmor!' && sleep 1h" ]
 ```
 
@@ -104,20 +104,21 @@ spec:
 kubectl apply -f aks-apparmor.yaml
 ```
 
-Pod ile dağıtılan bir dosyaya yazmak için [kubectl exec][kubectl-exec] komutunu kullanın. Komut aşağıdaki örnek çıktıda gösterildiği gibi yürütülemez:
+Pod 'un dağıtıldığı ile, *Hello-AppArmor* Pod 'ın *Engellenen* şekilde göründüğünü doğrulama ' yı kullanın:
 
 ```
-$ kubectl exec hello-apparmor touch /tmp/test
+$ kubectl get pods
 
-touch: /tmp/test: Permission denied
-command terminated with exit code 1
+NAME             READY   STATUS    RESTARTS   AGE
+aks-ssh          1/1     Running   0          4m2s
+hello-apparmor   0/1     Blocked   0          50s
 ```
 
 AppArmor hakkında daha fazla bilgi için bkz. [Kubernetes 'Te AppArmor profilleri][k8s-apparmor].
 
 ### <a name="secure-computing"></a>Güvenli bilgi işlem
 
-AppArmor tüm Linux uygulamaları için çalışırken, [seccomp (*San*) işlem *comp*][seccomp] düzeyinde çalışmaktadır. Seccomp Ayrıca bir Linux çekirdek güvenlik modülüdür ve AKS düğümleri tarafından kullanılan Docker çalışma zamanı tarafından yerel olarak desteklenir. Seccomp ile, kapsayıcıların gerçekleştirebileceği işlem çağrıları sınırlıdır. İzin verilecek veya reddedilecek eylemleri tanımlayan filtreler oluşturun ve ardından seccomp filtresiyle ilişkilendirmek üzere Pod YAML bildiriminde ek açıklamaları kullanın. Bu, yalnızca kapsayıcıyı çalıştırmak için gereken en düşük izinleri ve daha fazlasını veren en iyi uygulamaya hizalanır.
+AppArmor tüm Linux uygulamaları için çalışırken, [seccomp (*San*) işlem][seccomp] düzeyinde çalışmaktadır. Seccomp Ayrıca bir Linux çekirdek güvenlik modülüdür ve AKS düğümleri tarafından kullanılan Docker çalışma zamanı tarafından yerel olarak desteklenir. Seccomp ile, kapsayıcıların gerçekleştirebileceği işlem çağrıları sınırlıdır. İzin verilecek veya reddedilecek eylemleri tanımlayan filtreler oluşturun ve ardından seccomp filtresiyle ilişkilendirmek üzere Pod YAML bildiriminde ek açıklamaları kullanın. Bu, yalnızca kapsayıcıyı çalıştırmak için gereken en düşük izinleri ve daha fazlasını veren en iyi uygulamaya hizalanır.
 
 Seccomp eylemini görmek için, bir dosyada izinleri değiştirmeyi önleyen bir filtre oluşturun. Bir AKS düğümüne [SSH][aks-ssh] ekleyin, ardından */var/lib/kubelet/seccomp/prevent-chmod* adlı bir seccomp filtresi oluşturun ve aşağıdaki içeriği yapıştırın:
 
@@ -145,7 +146,7 @@ metadata:
 spec:
   containers:
   - name: chmod
-    image: busybox
+    image: mcr.microsoft.com/aks/fundamental/base-ubuntu:v0.0.11
     command:
       - "chmod"
     args:

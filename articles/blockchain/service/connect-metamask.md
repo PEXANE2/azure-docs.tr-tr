@@ -5,10 +5,10 @@ ms.date: 09/12/2019
 ms.topic: quickstart
 ms.reviewer: janders
 ms.openlocfilehash: 4a45e02a861ff20a4dc774668a4e008f9b42aeea
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90530446"
 ---
 # <a name="quickstart-use-metamask-to-connect-and-deploy-a-smart-contract"></a>Hızlı başlangıç: akıllı bir sözleşmeyi bağlamak ve dağıtmak için MetaMask kullanma
@@ -33,7 +33,7 @@ Blok zinciri ağına bağlanmak için Azure blok zinciri hizmeti uç noktası ad
 
     ![Varsayılan işlem düğümünü seçin](./media/connect-metamask/transaction-nodes.png)
 
-1. **Erişim anahtarlarına > bağlantı dizeleri**seçin.
+1. **Erişim anahtarlarına > bağlantı dizeleri** seçin.
 1. Endpoint adresini **https 'den (erişim anahtarı 1)** kopyalayın.
 
     ![Bağlantı dizesi](./media/connect-metamask/connection-string.png)
@@ -57,7 +57,7 @@ Blok zinciri ağına bağlanmak için Azure blok zinciri hizmeti uç noktası ad
 Yeniden karıştırma, tarayıcı tabanlı bir Solidity geliştirme ortamıdır. MetaMask ve yeniden karıştır kullanarak akıllı sözleşmeleri dağıtabilir ve bunlar üzerinde işlem yapabilirsiniz.
 
 1. Tarayıcınızda `https://remix.ethereum.org` adresine gidin.
-1. **Dosya**altındaki **giriş** sekmesinde **yeni dosya** ' yı seçin.
+1. **Dosya** altındaki **giriş** sekmesinde **yeni dosya** ' yı seçin.
 
     Yeni dosyayı adlandırın `simple.sol` .
 
@@ -86,8 +86,8 @@ Yeniden karıştırma, tarayıcı tabanlı bir Solidity geliştirme ortamıdır.
     }
     ```
 
-    **Basit sözleşme** , **Bakiye**adlı bir durum değişkeni bildirir. Tanımlanmış iki işlev vardır. **Add** işlevi **dengelemek**için bir sayı ekler. **Get** işlevi, **Bakiyenin**değerini döndürür.
-1. Sözleşmeyi derlemek için önce Solidity derleyici bölmesini seçin, sonra  **Simple. Nuevo derlemesini**seçin.
+    **Basit sözleşme** , **Bakiye** adlı bir durum değişkeni bildirir. Tanımlanmış iki işlev vardır. **Add** işlevi **dengelemek** için bir sayı ekler. **Get** işlevi, **Bakiyenin** değerini döndürür.
+1. Sözleşmeyi derlemek için önce Solidity derleyici bölmesini seçin, sonra  **Simple. Nuevo derlemesini** seçin.
 
     ![Ekran yakalama, derlenen bir sözleşmeyi gösterir.](./media/connect-metamask/compile.png)
 
@@ -130,7 +130,7 @@ Remix 'in hata ayıklama bölmesi, blok zincirindeki işlemler hakkındaki ayrı
 
 ![Hata ayıklama geçmişi](./media/connect-metamask/debug.png)
 
-**Basit sözleşme oluşturma** , **basit. Ekle**için işlem ve **basit. Get**öğesine çağrı yapabilirsiniz.
+**Basit sözleşme oluşturma** , **basit. Ekle** için işlem ve **basit. Get** öğesine çağrı yapabilirsiniz.
 
 MetaMask içinde işlem geçmişini görmek için MetaMask Browser uzantısını açın ve dağıtılan sözleşmenin ve işlemlerin günlüğü için **Geçmiş** bölümüne bakın.
 

@@ -9,12 +9,12 @@ ms.subservice: common
 ms.topic: conceptual
 ms.reviewer: klaasl
 ms.custom: references_regions
-ms.openlocfilehash: bfaee493c25f882b8beeed565a155db93efd0083
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: be2ff9d6ed908bdc0645fc713717a08674354096
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102431763"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104593229"
 ---
 # <a name="manage-and-find-azure-blob-data-with-blob-index-tags-preview"></a>Blob dizini etiketleriyle Azure blob verilerini yönetme ve bulma (Önizleme)
 
@@ -289,12 +289,7 @@ Blob dizin etiketleri yalnızca, hiyerarşik ad alanı (HNS) devre dışı olan 
 
 Dizin etiketleri Premium Depolama hesaplarında desteklenmez. Depolama hesapları hakkında daha fazla bilgi için bkz. [Azure depolama hesabına genel bakış](../common/storage-account-overview.md).
 
-Genel önizlemede, blob dizini etiketleri yalnızca aşağıdaki bölgelerde kullanılabilir:
-
-- Orta Kanada
-- Doğu Kanada
-- Orta Fransa
-- Güney Fransa
+Blob dizini etiketleri şu anda tüm genel bölgelerde kullanılabilir.
 
 Başlamak için bkz. [verileri yönetmek ve bulmak için blob dizini etiketlerini kullanma](storage-blob-index-how-to.md).
 

@@ -4,10 +4,10 @@ description: 'Hızlı başlangıç: Bu makale, Azure Event Hubs olayları gönde
 ms.topic: quickstart
 ms.date: 06/23/2020
 ms.openlocfilehash: bfe1ca1a45f7b33d7431aed13446d8d72f79fb90
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85315666"
 ---
 # <a name="quickstart-send-events-to-azure-event-hubs-using-c"></a>Hızlı başlangıç: C kullanarak Azure Event Hubs olayları gönderme
@@ -129,7 +129,7 @@ Bu bölümde, Olay Hub 'ınıza olayları göndermek için bir C uygulamasının
         return 0;
     }
     ```
-6. Dosyayı Derle, **GCC**varsayılıyor:
+6. Dosyayı Derle, **GCC** varsayılıyor:
    
     ```
     gcc sender.c -o sender -lqpid-proton

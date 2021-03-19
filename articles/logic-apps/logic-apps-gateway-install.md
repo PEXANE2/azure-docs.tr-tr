@@ -4,18 +4,18 @@ description: Şirket içindeki verilere Azure Logic Apps erişmeden önce şirke
 services: logic-apps
 ms.suite: integration
 ms.reviewer: arthii, logicappspm
-ms.topic: article
-ms.date: 05/15/2020
-ms.openlocfilehash: 799e879b4d9fd54367d54c17b3d275acfc5f34c1
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.topic: how-to
+ms.date: 03/16/2021
+ms.openlocfilehash: 4b2559ad20036870c6df5c0662bb973f35155bfa
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99054780"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104576807"
 ---
 # <a name="install-on-premises-data-gateway-for-azure-logic-apps"></a>Azure Logic Apps için şirket içi veri ağ geçidi yükleme
 
-[Azure Logic Apps 'den şirket içi veri kaynaklarına bağlanabilmeniz için](../logic-apps/logic-apps-gateway-connection.md), Şirket [içi veri ağ geçidini](https://aka.ms/on-premises-data-gateway-installer) yerel bir bilgisayara indirip yükleyin. Ağ geçidi, şirket içindeki veri kaynaklarıyla mantıksal uygulamalarınız arasında hızlı veri aktarımı ve şifreleme gerçekleştiren bir köprü gibi çalışır. Aynı ağ geçidi yüklemesini Power BI, güç otomatikleştirme, Power Apps ve Azure Analysis Services gibi diğer bulut hizmetleriyle kullanabilirsiniz. Bu hizmetlerle ağ geçidini kullanma hakkında daha fazla bilgi için şu makalelere bakın:
+[Azure Logic Apps 'den şirket içi veri kaynaklarına bağlanabilmeniz için](../logic-apps/logic-apps-gateway-connection.md), Şirket [içi veri ağ geçidini](https://aka.ms/on-premises-data-gateway-installer) yerel bir bilgisayara indirip yükleyin. Ağ geçidi, şirket içindeki veri kaynaklarıyla mantıksal uygulamalarınız arasında hızlı veri aktarımı ve şifreleme gerçekleştiren bir köprü gibi çalışır. Power otomatikleştir, Power BI, Power Apps ve Azure Analysis Services gibi diğer bulut hizmetleriyle aynı ağ geçidi yüklemesini kullanabilirsiniz. Bu hizmetlerle ağ geçidini kullanma hakkında daha fazla bilgi için şu makalelere bakın:
 
 * [Microsoft Power otomatikleştirir şirket içi veri ağ geçidi](/power-automate/gateway-reference)
 * [Microsoft Power BI şirket içi veri ağ geçidi](/power-bi/service-gateway-onprem)
@@ -71,7 +71,12 @@ Bu makalede şirket içi veri ağ geçidinizi indirme, yükleme ve kurma işleml
 
   * Windows kimlik doğrulamasını kullanmayı planlıyorsanız, ağ geçidini, veri kaynaklarınızla aynı Active Directory ortamına üye olan bir bilgisayara yüklediğinizden emin olun.
 
-  * Ağ geçidinizin yüklemeniz için seçtiğiniz bölge, daha sonra mantıksal uygulamanız için Azure Gateway kaynağını oluştururken seçmeniz gereken konumdur. Bu bölge, varsayılan olarak Azure hesabınızı yöneten Azure AD kiracınızla aynı konumdadır. Ancak, ağ geçidi yüklemesi sırasında konumu değiştirebilirsiniz.
+  * Ağ geçidinizin yüklemeniz için seçtiğiniz bölge, daha sonra mantıksal uygulamanız için Azure Gateway kaynağını oluştururken seçmeniz gereken konumdur. Bu bölge, varsayılan olarak Azure kullanıcı hesabınızı yöneten Azure AD kiracınızla aynı konumdadır. Ancak, ağ geçidi yüklemesi sırasında veya daha sonra konumunu değiştirebilirsiniz.
+
+    > [!IMPORTANT]
+    > Ağ geçidi kurulumu sırasında, Azure Kamu [bulutundaki](../azure-government/compare-azure-government-global-azure.md)bir Azure Active Directory (Azure AD) kiracısıyla Ilişkili Azure Kamu hesabınızla oturum açtıysanız **bölge Değiştir** komutu kullanılamaz. Ağ Geçidi, Kullanıcı hesabınızın Azure AD kiracısı ile aynı bölgeyi otomatik olarak kullanır.
+    > 
+    > Azure Kamu hesabınızı kullanmaya devam etmek, ancak bunun yerine genel çok kiracılı Azure ticari bulutunda çalışacak ağ geçidini ayarlamak için, önce Kullanıcı adı ile ağ geçidi yüklemesi sırasında oturum açın `prod@microsoft.com` . Bu çözüm, ağ geçidini genel çok kiracılı Azure bulutunu kullanmaya zorlar, ancak yine de Azure Kamu hesabınızı kullanmaya devam etmenizi sağlar.
 
   * Ağ Geçidi yüklemenizi güncelleştiriyorsanız, temizleyici bir deneyim için önce geçerli ağ geçidinizi kaldırın.
 

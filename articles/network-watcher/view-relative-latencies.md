@@ -13,10 +13,10 @@ ms.date: 12/14/2017
 ms.author: damendo
 ms.custom: ''
 ms.openlocfilehash: 938315dac80ae51984851083753a9cb8f77662b2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "84737912"
 ---
 # <a name="view-relative-latency-to-azure-regions-from-specific-locations"></a>Belirli konumlardan Azure bölgelerine göreli gecikmeyi görün
@@ -132,9 +132,9 @@ Veriler belirli Internet hizmet sağlayıcıları, ülkeler/bölgeler, durumlar 
 Get-AzNetworkWatcherReachabilityProvidersList -NetworkWatcherName NetworkWatcher_eastus -ResourceGroupName NetworkWatcherRG
 ```
 
-Veriler yalnızca önceki komut tarafından döndürülen ülkeler/bölgeler, durumlar ve şehirlerde kullanılabilir. Önceki komut, var olan bir ağ izleyicisi belirtmenizi gerektirir. Örnek, *NetworkWatcherRG*adlı bir kaynak grubunda *NetworkWatcher_eastus* Ağ İzleyicisini belirtti, ancak var olan herhangi bir ağ izleyicisini belirtebilirsiniz. Mevcut bir ağ izleyicisine sahip değilseniz, [ağ Izleyicisi oluşturma](#create-a-network-watcher)' daki görevleri tamamlayarak bir tane oluşturun. 
+Veriler yalnızca önceki komut tarafından döndürülen ülkeler/bölgeler, durumlar ve şehirlerde kullanılabilir. Önceki komut, var olan bir ağ izleyicisi belirtmenizi gerektirir. Örnek, *NetworkWatcherRG* adlı bir kaynak grubunda *NetworkWatcher_eastus* Ağ İzleyicisini belirtti, ancak var olan herhangi bir ağ izleyicisini belirtebilirsiniz. Mevcut bir ağ izleyicisine sahip değilseniz, [ağ Izleyicisi oluşturma](#create-a-network-watcher)' daki görevleri tamamlayarak bir tane oluşturun. 
 
-Önceki komutu çalıştırdıktan sonra, isterseniz **ülke**, **eyalet**ve **şehir**için geçerli değerler belirterek döndürülen çıktıyı filtreleyebilirsiniz.  Örneğin, Seattle, Washington 'da bulunan Internet hizmet sağlayıcılarının listesini görüntülemek için Birleşik Devletler, aşağıdaki komutu girin:
+Önceki komutu çalıştırdıktan sonra, isterseniz **ülke**, **eyalet** ve **şehir** için geçerli değerler belirterek döndürülen çıktıyı filtreleyebilirsiniz.  Örneğin, Seattle, Washington 'da bulunan Internet hizmet sağlayıcılarının listesini görüntülemek için Birleşik Devletler, aşağıdaki komutu girin:
 
 ```powershell
 Get-AzNetworkWatcherReachabilityProvidersList `
@@ -146,4 +146,4 @@ Get-AzNetworkWatcherReachabilityProvidersList `
 ```
 
 > [!WARNING]
-> **Ülke** için belirtilen değer büyük ve küçük harf olmalıdır. **Eyalet** ve **şehir** için belirtilen değerler küçük harfle yazılmalıdır. Değerler **ülke**, **eyalet**ve **şehir**için hiçbir değer olmadan çalıştırıldıktan sonra döndürülen çıktıda listelenmelidir. Yanlış bir durum belirtirseniz veya bir **ülke**, **eyalet**veya **şehir** için, komutu bu özellikler için hiçbir değer olmadan çalıştırıldıktan sonra döndürülen çıktıda olmayan bir değer belirtirseniz, döndürülen çıkış boştur.
+> **Ülke** için belirtilen değer büyük ve küçük harf olmalıdır. **Eyalet** ve **şehir** için belirtilen değerler küçük harfle yazılmalıdır. Değerler **ülke**, **eyalet** ve **şehir** için hiçbir değer olmadan çalıştırıldıktan sonra döndürülen çıktıda listelenmelidir. Yanlış bir durum belirtirseniz veya bir **ülke**, **eyalet** veya **şehir** için, komutu bu özellikler için hiçbir değer olmadan çalıştırıldıktan sonra döndürülen çıktıda olmayan bir değer belirtirseniz, döndürülen çıkış boştur.

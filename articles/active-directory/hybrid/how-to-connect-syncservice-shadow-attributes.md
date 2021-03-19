@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 128303cb51b39db8442fdda71f949db17923bfa2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90088979"
 ---
 # <a name="azure-ad-connect-sync-service-shadow-attributes"></a>Azure AD Connect eşitleme hizmeti gölge öznitelikleri
@@ -58,9 +58,9 @@ Yalnızca doğrulanmış etki alanları da dahil olmak üzere aynı işlem, prox
 | Şirket içi proxyAddresses | SMTP:abbie.spencer@fabrikamonline.com</br>smtp:abbie.spencer@fabrikam.com</br>smtp:abbie@fabrikamonline.com |
 | Exchange Online proxyAddresses | SMTP:abbie.spencer@fabrikamonline.com</br>smtp:abbie@fabrikamonline.com</br>SIP:abbie.spencer@fabrikamonline.com |
 
-Bu durumda, bu etki alanı doğrulanmadığından, **SMTP: Abbie. Spencer \@ fabrikam.com** kaldırılmıştır. Ancak Exchange, **SIP: Abbie. Spencer \@ fabrikamonline.com**öğesini de ekledi. Fabrikam, şirket içi Lync/Skype kullanmadı, ancak Azure AD ve Exchange Online 'ı BT için hazırla.
+Bu durumda, bu etki alanı doğrulanmadığından, **SMTP: Abbie. Spencer \@ fabrikam.com** kaldırılmıştır. Ancak Exchange, **SIP: Abbie. Spencer \@ fabrikamonline.com** öğesini de ekledi. Fabrikam, şirket içi Lync/Skype kullanmadı, ancak Azure AD ve Exchange Online 'ı BT için hazırla.
 
-ProxyAddresses için bu mantık, **Proxycalc**olarak adlandırılır. ProxyCalc, şu durumlarda bir Kullanıcı üzerindeki her değişiklik ile çağrılır:
+ProxyAddresses için bu mantık, **Proxycalc** olarak adlandırılır. ProxyCalc, şu durumlarda bir Kullanıcı üzerindeki her değişiklik ile çağrılır:
 
 - Kullanıcı Exchange için lisanslı olmasa bile Exchange Online 'ı içeren bir hizmet planı atandı. Örneğin, kullanıcıya Office E3 SKU 'SU atanmışsa ancak SharePoint Online atanırsa. Bu, posta kutunuz hala şirket içi olsa bile geçerlidir.
 - MsExchRecipientTypeDetails özniteliği bir değere sahip.

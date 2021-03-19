@@ -16,10 +16,10 @@ ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 1601c9fc750df1f8e18bdaa072ede1b5ee164329
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "84743822"
 ---
 # <a name="complete-an-access-review-of-azure-resource-roles-in-privileged-identity-management"></a>Privileged Identity Management Azure Kaynak rolleri için erişim gözden geçirmesini doldurun
@@ -30,7 +30,7 @@ Erişim gözden geçirme süresi bittikten sonra veya tüm kullanıcılar kendi 
 
 ## <a name="manage-access-reviews"></a>Erişim incelemelerini yönetme
 
-1. [Azure portalına](https://portal.azure.com/) gidin. Panoda **Azure kaynakları** hizmetini seçin.
+1. [Azure Portal](https://portal.azure.com/) gidin. Panoda **Azure kaynakları** hizmetini seçin.
 
 2. Kaynağınızı seçin.
 

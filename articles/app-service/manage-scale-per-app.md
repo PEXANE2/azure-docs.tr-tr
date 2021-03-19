@@ -8,10 +8,10 @@ ms.date: 05/13/2019
 ms.author: byvinyal
 ms.custom: seodec18
 ms.openlocfilehash: f1ca4958fe2608d0c040ef5b93827a7e71a4151c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "74672344"
 ---
 # <a name="high-density-hosting-on-azure-app-service-using-per-app-scaling"></a>Uygulama başına ölçeklendirmeyi kullanarak Azure App Service yüksek yoğunluklu barındırma
@@ -131,11 +131,11 @@ Uygulamalarınız için yüksek yoğunluklu barındırma yapılandırmak için a
 
 1. App Service planını yüksek yoğunluklu plan olarak belirleyin ve istediğiniz kapasiteye göre ölçeklendirin.
 1. `PerSiteScaling`App Service planında bayrağı true olarak ayarlayın.
-1. Yeni uygulamalar oluşturulur ve bu App Service, **numberofworker** özelliği **1**olarak ayarlanan plana atanır.
+1. Yeni uygulamalar oluşturulur ve bu App Service, **numberofworker** özelliği **1** olarak ayarlanan plana atanır.
    - Bu yapılandırmanın kullanılması mümkün olan en yüksek yoğunluğu verir.
-1. Çalışan sayısı, gerektiğinde ek kaynaklar sağlamak için her uygulama için bağımsız olarak yapılandırılabilir. Örneğin:
+1. Çalışan sayısı, gerektiğinde ek kaynaklar sağlamak için her uygulama için bağımsız olarak yapılandırılabilir. Örnek:
    - Yüksek kullanım uygulaması, bu uygulama için daha fazla işlem kapasitesi sağlamak üzere **numberofworker** 'ları **3** olarak ayarlayabilir.
-   - Az kullanılan uygulamalar, **numberofworker** 'ları **1**olarak ayarlar.
+   - Az kullanılan uygulamalar, **numberofworker** 'ları **1** olarak ayarlar.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

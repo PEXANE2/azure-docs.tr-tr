@@ -9,10 +9,10 @@ ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 10/21/2019
 ms.openlocfilehash: ff21b059e712489c1914b2d12c6aa6a3d78d66d3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "74792171"
 ---
 # <a name="validate-xml-for-b2b-enterprise-integration-in-azure-logic-apps-with-enterprise-integration-pack"></a>Enterprise Integration Pack ile Azure Logic Apps’te B2B kurumsal tümleştirme için XML doğrulama
@@ -37,7 +37,7 @@ B2B senaryolarında genellikle, bir anlaşmada bulunan ticari iş ortaklarının
 
    Varolan adımlar arasında bir eylem eklemek için, işaretçinizi, artı işareti () görünecek şekilde bu adımları bağlayan oka taşıyın **+** . Bu artı işaretini seçin ve ardından **Eylem Ekle**' yi seçin.
 
-1. **Eylem seçin**altında, **yerleşik**' i seçin. Arama kutusuna `xml validation` filtreniz olarak yazın. Eylemler listesinden **XML doğrulaması**' nı seçin.
+1. **Eylem seçin** altında, **yerleşik**' i seçin. Arama kutusuna `xml validation` filtreniz olarak yazın. Eylemler listesinden **XML doğrulaması**' nı seçin.
 
    !["XML doğrulaması" eylemini bul ve Seç](./media/logic-apps-enterprise-integration-xml-validation/select-xml-validation-action.png)
 
@@ -45,7 +45,7 @@ B2B senaryolarında genellikle, bir anlaşmada bulunan ticari iş ortaklarının
 
    ![Dinamik içerik listesini aç](./media/logic-apps-enterprise-integration-xml-validation/open-dynamic-content-list.png)
 
-   Dinamik içerik listesi, iş akışında yer alan önceki adımlardan çıkışları temsil eden özellik belirteçlerini gösterir. Listede beklenen bir özellik gösterilmiyorsa, **daha fazla**göster ' i seçebileceğiniz tetikleyiciyi veya eylem başlığını kontrol edin.
+   Dinamik içerik listesi, iş akışında yer alan önceki adımlardan çıkışları temsil eden özellik belirteçlerini gösterir. Listede beklenen bir özellik gösterilmiyorsa, **daha fazla** göster ' i seçebileceğiniz tetikleyiciyi veya eylem başlığını kontrol edin.
 
 1. Dinamik içerik listesinden, doğrulamak istediğiniz içeriğe sahip olan özelliği seçin.
 

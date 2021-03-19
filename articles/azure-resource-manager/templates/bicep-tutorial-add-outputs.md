@@ -2,16 +2,16 @@
 title: Öğretici-Azure Resource Manager bicep dosyasına çıktılar ekleme
 description: Sözdizimini basitleştirmek için Bıcep dosyanıza çıktılar ekleyin.
 author: mumian
-ms.date: 03/10/2021
+ms.date: 03/17/2021
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: ''
-ms.openlocfilehash: ce2d1044fb0e45a72ce34b14bb654974d29051dc
-ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
+ms.openlocfilehash: 4b7d7a1414091c516dba2c474e1681ba357b55a1
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/11/2021
-ms.locfileid: "102636279"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104594317"
 ---
 # <a name="tutorial-add-outputs-to-azure-resource-manager-bicep-file"></a>Öğretici: Azure Resource Manager bicep dosyasına çıktılar ekleme
 

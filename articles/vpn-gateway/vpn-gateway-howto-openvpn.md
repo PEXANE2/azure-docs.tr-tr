@@ -1,20 +1,20 @@
 ---
-title: Azure 'da OpenVPN 'i Yapılandırma VPN Gateway
-description: PowerShell kullanarak noktadan siteye ortamı için Azure VPN Gateway 'da OpenVPN protokolünü nasıl etkinleştirebileceğinizi öğrenin.
+title: Azure VPN Gateway için OpenVPN 'i yapılandırma
+description: Noktadan siteye ortam için Azure VPN Gateway 'da OpenVPN protokolünü etkinleştirmeyi öğrenin.
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 02/05/2021
 ms.author: cherylmc
-ms.openlocfilehash: 4b48e98ab35b620030b15165d4c9341c0f11b440
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 137e4e1372ef1af3319c0b9af7ba965fffcb9e34
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100393284"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104584049"
 ---
-# <a name="configure-openvpn-for-azure-point-to-site-vpn-gateway"></a>Azure Noktadan siteye VPN Gateway için OpenVPN 'yi yapılandırma
+# <a name="configure-openvpn-for-point-to-site-vpn-gateways"></a>Noktadan siteye VPN ağ geçitleri için OpenVPN yapılandırma
 
 Bu makale, Azure VPN Gateway üzerinde **OpenVPN® Protokolü** ayarlamanıza yardımcı olur. Portalı ya da PowerShell yönergelerini kullanabilirsiniz.
 
@@ -36,7 +36,7 @@ Bu makale, Azure VPN Gateway üzerinde **OpenVPN® Protokolü** ayarlamanıza ya
    :::image type="content" source="./media/vpn-gateway-howto-openvpn/portal.png" alt-text="Açılan menüden OpenVPN SSL 'yi seçin":::
 1. Değişikliklerinizi kaydedin ve **sonraki adımlarla** devam edin.
 
-## <a name="enable-openvpn-on-your-gateway-using-powershell"></a>PowerShell kullanarak ağ geçidinizdeki OpenVPN 'i etkinleştirin.
+## <a name="powershell"></a>PowerShell
 
 1. Aşağıdaki örneği kullanarak ağ geçidinizdeki OpenVPN 'i etkinleştirin:
 

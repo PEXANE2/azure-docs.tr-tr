@@ -8,10 +8,10 @@ ms.date: 11/14/2019
 ms.author: victorh
 ms.topic: article
 ms.openlocfilehash: c4635333614ee1c0fd0322c29a659380fb4315c9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "74048370"
 ---
 # <a name="customize-web-application-firewall-rules-using-the-azure-portal"></a>Azure portal kullanarak Web uygulaması güvenlik duvarı kurallarını özelleştirme
@@ -27,7 +27,7 @@ Azure Application Gateway Web uygulaması güvenlik duvarı (WAF), Web uygulamal
 
 **Kural gruplarını ve kuralları görüntülemek için**
 1. Uygulama ağ geçidine gidin ve **Web uygulaması güvenlik duvarı**' nı seçin.  
-2. **WAF ilkenizi**seçin.
+2. **WAF ilkenizi** seçin.
 2. **Yönetilen kurallar**' ı seçin.
 
    Bu görünümde, seçilen kural kümesiyle birlikte sunulan tüm kural gruplarının sayfasındaki bir tablo gösterilir. Kuralın tüm onay kutuları seçilidir.

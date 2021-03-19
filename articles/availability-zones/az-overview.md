@@ -8,12 +8,12 @@ ms.date: 02/23/2021
 ms.author: prsandhu
 ms.reviewer: cynthn
 ms.custom: fasttrack-edit, mvc
-ms.openlocfilehash: 4adfb63ecab72eb42e188af472bb5387a0276a79
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: dad8661de55fc90c9f3d3782c402deb519d16536
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101723784"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104596017"
 ---
 # <a name="regions-and-availability-zones-in-azure"></a>Azure 'da bölgeler ve Kullanılabilirlik Alanları
 
@@ -23,7 +23,7 @@ Microsoft Azure Hizmetleri, bulut işlemlerinizi en uygun düzeyde olacak şekil
 
 Azure 'da bölgeleri ve Kullanılabilirlik Alanları daha iyi anlamak için, temel hüküm veya kavramların anlaşılmasına yardımcı olur.
 
-| Terim veya kavram | Açıklama |
+| Terim veya kavram | Description |
 | --- | --- |
 | region | Gecikme süresi tanımlı bir çevre içinde dağıtılan ve ayrılmış bölgesel düşük gecikmeli bir ağ ile bağlanmış bir veri merkezleri kümesi. |
 | Coğrafya | En az bir Azure bölgesi içeren bir dünya alanı. Geographiler, veri uygunluğunu ve uyumluluk sınırlarını koruyan ayrı bir pazar tanımlar. Coğrafyalar, özel veri yerleşikliği ve uyumluluk gereksinimleri olan müşterilerin verileri ile uygulamalarını yakın tutmasına olanak tanır. Geographiler, adanmış yüksek kapasiteli ağ altyapımıza yönelik bağlantı yoluyla, tam bölge arızalarına karşı dayanıklı bir şekilde hataya dayanıklıdır. |
@@ -82,7 +82,7 @@ Belirli bir bölgede bir hizmet teklifi yoksa, Microsoft satış temsilcinizle i
 | Önerilen | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | Talep odaklı | :heavy_check_mark: | :heavy_check_mark: |
 | Diğer | :heavy_check_mark: | :heavy_check_mark: | Talep odaklı | Talep odaklı | Yok | :heavy_check_mark: |
 
-### <a name="services-by-category-with-availability-zones"></a>Kullanılabilirlik Alanları ile kategoriye göre hizmetler
+### <a name="services-by-category"></a>Kategoriye göre hizmetler
 
 Daha önce belirtildiği gibi, Azure hizmetleri üç kategoride sınıflandırır: temel, genel ve özel. Hizmet kategorileri genel kullanıma sunulduğuna göre atanır. Genellikle, hizmetler yaşam döngüsünü özelleştirilmiş bir hizmet olarak başlatır ve talep ve kullanım artışları, temel veya temel olarak yükseltilebilir. Aşağıdaki tabloda temel olarak hizmetler kategorisi listelenmektedir. Tabloyla ilgili olarak aşağıdakileri göz önünde belirtmelisiniz:
 
@@ -101,7 +101,7 @@ Daha önce belirtildiği gibi, Azure hizmetleri üç kategoride sınıflandırı
 > | Azure ExpressRoute                     | Azure Bastion                                     | 
 > | Azure Genel IP                        | Redis için Azure Önbelleği                             | 
 > | Azure SQL Veritabanı                     | Azure Bilişsel Arama                            | 
-> | Azure SQL: yönetilen örnek           | Azure Bilişsel Hizmetler                          | 
+> | Azure SQL Yönetilen Örnek             | Azure Bilişsel Hizmetler                          | 
 > | Disk Depolama                           | Azure Bilişsel Hizmetler: Görüntü İşleme         | 
 > | Event Hubs                             | Azure bilişsel hizmetler: Content Moderator       | 
 > | Key Vault                              | Azure bilişsel hizmetler: yüz                    | 
@@ -172,7 +172,7 @@ Daha önce belirtildiği gibi, Azure hizmetleri üç kategoride sınıflandırı
 > | Azure Veritabanı Geçiş Hizmeti                     |
 > | Azure Ayrılmış HSM                                  |
 > | Azure Digital Twins                                  |
-> | Azure sistem durumu bot                                     |
+> | Azure Health Bot                                     |
 > | Azure HPC Önbelleği                                      |
 > | Azure Lab Services                                   |
 > | Azure NetApp Files                                   |

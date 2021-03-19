@@ -7,10 +7,10 @@ ms.date: 06/29/2018
 ms.custom: devx-track-java
 ms.author: pepogors
 ms.openlocfilehash: cc65deb924a9f3367c2ea1d7c71544743ccf2697
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87327370"
 ---
 # <a name="develop-java-service-fabric-applications-with-visual-studio-code"></a>Visual Studio Code ile Java Service Fabric uygulamaları geliştirme
@@ -54,7 +54,7 @@ Uygulamayı oluşturduktan sonra yerel kümeye dağıtabilirsiniz.
 > [!IMPORTANT]
 > Java uygulamalarını yerel kümeye dağıtmak Windows makinelerinde desteklenmez.
 
-1. **Komut paletinden** **Service Fabric: Deploy Application (localhost) komutunu**seçin. Install işleminin çıktısı tümleşik terminale gönderilir.
+1. **Komut paletinden** **Service Fabric: Deploy Application (localhost) komutunu** seçin. Install işleminin çıktısı tümleşik terminale gönderilir.
 
    ![Uygulama komutunu VS Code içinde dağıt](./media/service-fabric-develop-java-applications-with-vs-code/sf-deploy-application.png)
 
@@ -93,7 +93,7 @@ VotingDataService ve oylama uygulamasını hata ayıklama için hazırlamak içi
 
    ![VS Code çalışma alanında hata ayıklama simgesi](./media/service-fabric-develop-java-applications-with-vs-code/debug-icon-workspace.png)
 
-3. Dosyadaki launch.js, **Hata Ayıkla (Ekle)** adlı yapılandırmadaki bağlantı noktası değerini **8001**olarak ayarlayın. Dosyayı kaydedin.
+3. Dosyadaki launch.js, **Hata Ayıkla (Ekle)** adlı yapılandırmadaki bağlantı noktası değerini **8001** olarak ayarlayın. Dosyayı kaydedin.
 
    ![Üzerinde launch.jsiçin hata ayıklama yapılandırması](./media/service-fabric-develop-java-applications-with-vs-code/launch-json-java.png)
 
@@ -107,7 +107,7 @@ Bir kesme noktası ayarlamak için aşağıdaki adımları izleyin:
 
    > [!IMPORTANT]
    > Kod noktalarından yürütülebilir satırlarda kesme noktaları ayarladığınızdan emin olun. Örneğin, yöntem bildirimlerinde, `try` ifadelerde veya deyimlerde ayarlanan kesme noktaları, `catch` hata ayıklayıcı tarafından kaçırılacaktır.
-2. Hata ayıklamaya başlamak için **etkinlik çubuğundaki**hata ayıklama simgesine tıklayın, Hata Ayıkla menüsünden **Hata Ayıkla (Ekle)** yapılandırmasını seçin ve Çalıştır düğmesine (yeşil ok) tıklayın.
+2. Hata ayıklamaya başlamak için **etkinlik çubuğundaki** hata ayıklama simgesine tıklayın, Hata Ayıkla menüsünden **Hata Ayıkla (Ekle)** yapılandırmasını seçin ve Çalıştır düğmesine (yeşil ok) tıklayın.
 
    ![Hata ayıklama (Iliştirme) yapılandırması](./media/service-fabric-develop-java-applications-with-vs-code/debug-attach-java.png)
 

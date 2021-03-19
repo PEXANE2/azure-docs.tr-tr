@@ -9,10 +9,10 @@ ms.date: 11/14/2019
 ms.author: victorh
 ms.topic: article
 ms.openlocfilehash: 55eea15da8c3a10b0421ff1576082d6b42fc7c56
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "74048519"
 ---
 # <a name="customize-web-application-firewall-rules-using-powershell"></a>PowerShell kullanarak Web uygulaması güvenlik duvarı kurallarını özelleştirme
@@ -83,7 +83,7 @@ OWASP (Ver. 3.0):
             ...        ...
 ```
 
-## <a name="disable-rules"></a>Kuralları devre dışı bırak
+## <a name="disable-rules"></a>Kuralları devre dışı bırakma
 
 Aşağıdaki örnek, kuralları `911011` ve `911012` bir uygulama ağ geçidi üzerinde devre dışı bırakır:
 

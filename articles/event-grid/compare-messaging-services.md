@@ -4,10 +4,10 @@ description: Azure Event Grid, Event Hubs ve Service Bus olmak üzere üç Azure
 ms.topic: overview
 ms.date: 07/07/2020
 ms.openlocfilehash: 7a3a0cd7f63a67206053ae55f33bd71aee2c19c6
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87460414"
 ---
 # <a name="choose-between-azure-messaging-services---event-grid-event-hubs-and-service-bus"></a>Azure mesajlaşma hizmetleri (Event Grid, Event Hubs ve Service Bus arasında seçim yapın
@@ -92,7 +92,7 @@ Bazı durumlarda ise bir olay ve veri işlem hattı oluşturmak üzere hizmetler
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Aşağıdaki makalelere bakın: 
-- [Azure 'da zaman uyumsuz mesajlaşma seçenekleri](/azure/architecture/guide/technology-choices/messaging)
+- [Azure'da zaman uyumsuz mesajlaşma seçenekleri](/azure/architecture/guide/technology-choices/messaging)
 - [Olaylar, veri noktaları ve mesajlar-verileriniz için doğru Azure Mesajlaşma hizmetini seçme](https://azure.microsoft.com/blog/events-data-points-and-messages-choosing-the-right-azure-messaging-service-for-your-data/).
 - [Depolama kuyrukları ve Service Bus kuyrukları-karşılaştırılan ve değişken maliyetli](../service-bus-messaging/service-bus-azure-and-service-bus-queues-compared-contrasted.md)
 - Event Grid kullanmaya başlamak için bkz. [Azure Event Grid ile özel olaylar oluşturma ve yönlendirme](custom-event-quickstart.md).

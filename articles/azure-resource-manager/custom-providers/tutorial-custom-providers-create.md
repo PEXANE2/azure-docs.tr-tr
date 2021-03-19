@@ -7,10 +7,10 @@ ms.date: 06/19/2019
 ms.author: jobreen
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: 4f425af7681b666b42fbcc70ac0e4c31d9df6d49
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87503761"
 ---
 # <a name="create-and-use-a-custom-provider"></a>Özel bir sağlayıcı oluşturma ve kullanma
@@ -34,9 +34,9 @@ Bir uç nokta oluşturduktan sonra, sağlayıcı ve uç nokta arasında bir söz
 
 Özellik | Gerekli | Açıklama
 ---|---|---
-**ada** | Evet | Uç nokta tanımının adı. Azure, bu adı API aracılığıyla/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomProviders altında kullanıma sunar<br>/resourceProviders/{resourceProviderName}/{endpointDefinitionName}
-**routingType** | Hayır | Uç nokta sözleşme türü. Değer belirtilmezse, varsayılan olarak "proxy" olur.
-**bkz** | Evet | İsteklerin yönlendirileceği uç nokta. Bu uç nokta, isteğin yanıtını ve tüm yan etkilerini işler.
+**ada** | Yes | Uç nokta tanımının adı. Azure, bu adı API aracılığıyla/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomProviders altında kullanıma sunar<br>/resourceProviders/{resourceProviderName}/{endpointDefinitionName}
+**routingType** | No | Uç nokta sözleşme türü. Değer belirtilmezse, varsayılan olarak "proxy" olur.
+**bkz** | Yes | İsteklerin yönlendirileceği uç nokta. Bu uç nokta, isteğin yanıtını ve tüm yan etkilerini işler.
 
 **Uç noktanın** değeri, Azure işlevi uygulamasının tetikleyici URL 'sidir. `<yourapp>`, `<funcname>` , Ve `<functionkey>` yer tutucular, oluşturduğunuz işlev uygulamanızın değerleriyle değiştirilmelidir.
 
@@ -126,9 +126,9 @@ az resource invoke-action --action myCustomAction \
 
 Parametre | Gerekli | Açıklama
 ---|---|---
-*ön* | Evet | Özel sağlayıcıda tanımlanan eylemin adı
-*ayrılacak* | Evet | Özel sağlayıcının kaynak KIMLIĞI
-*İstek gövdesi* | Hayır | Uç noktaya gönderilecek istek gövdesi
+*ön* | Yes | Özel sağlayıcıda tanımlanan eylemin adı
+*ayrılacak* | Yes | Özel sağlayıcının kaynak KIMLIĞI
+*İstek gövdesi* | No | Uç noktaya gönderilecek istek gövdesi
 
 # <a name="template"></a>[Şablon](#tab/template)
 
@@ -159,9 +159,9 @@ az resource create --is-full-object \
 
 Parametre | Gerekli | Açıklama
 ---|---|---
-*-Full-Object* | Evet | Özellikler nesnesinin konum, Etiketler, SKU veya plan gibi diğer seçenekleri içerip içermediğini gösterir.
-*id* | Evet | Özel kaynağın kaynak KIMLIĞI. Bu KIMLIK özel sağlayıcı kaynak KIMLIĞININ bir uzantısıdır.
-*özelliklerinin* | Evet | Uç noktaya gönderilecek istek gövdesi.
+*-Full-Object* | Yes | Özellikler nesnesinin konum, Etiketler, SKU veya plan gibi diğer seçenekleri içerip içermediğini gösterir.
+*id* | Yes | Özel kaynağın kaynak KIMLIĞI. Bu KIMLIK özel sağlayıcı kaynak KIMLIĞININ bir uzantısıdır.
+*özelliklerinin* | Yes | Uç noktaya gönderilecek istek gövdesi.
 
 #### <a name="delete-a-custom-resource"></a>Özel bir kaynağı silme
 
@@ -171,7 +171,7 @@ az resource delete --id /subscriptions/{subscriptionId}/resourceGroups/{resource
 
 Parametre | Gerekli | Açıklama
 ---|---|---
-*id* | Evet | Özel kaynağın kaynak KIMLIĞI. Bu KIMLIK özel sağlayıcı kaynak KIMLIĞININ bir uzantısıdır.
+*id* | Yes | Özel kaynağın kaynak KIMLIĞI. Bu KIMLIK özel sağlayıcı kaynak KIMLIĞININ bir uzantısıdır.
 
 #### <a name="retrieve-a-custom-resource"></a>Özel bir kaynak alma
 
@@ -181,7 +181,7 @@ az resource show --id /subscriptions/{subscriptionId}/resourceGroups/{resourceGr
 
 Parametre | Gerekli | Açıklama
 ---|---|---
-*id* | Evet | Özel kaynağın kaynak KIMLIĞI. Bu KIMLIK özel sağlayıcı kaynak KIMLIĞININ bir uzantısıdır.
+*id* | Yes | Özel kaynağın kaynak KIMLIĞI. Bu KIMLIK özel sağlayıcı kaynak KIMLIĞININ bir uzantısıdır.
 
 # <a name="template"></a>[Şablon](#tab/template)
 
@@ -207,9 +207,9 @@ Parametre | Gerekli | Açıklama
 
 Parametre | Gerekli | Açıklama
 ---|---|---
-*resourceTypeName* | Evet | `name`Özel sağlayıcıda tanımlanan **Resourcetypes** özelliğinin değeri.
-*resourceProviderName* | Evet | Özel sağlayıcı örneği adı.
-*customResourceName* | Evet | Özel kaynak adı.
+*resourceTypeName* | Yes | `name`Özel sağlayıcıda tanımlanan **Resourcetypes** özelliğinin değeri.
+*resourceProviderName* | Yes | Özel sağlayıcı örneği adı.
+*customResourceName* | Yes | Özel kaynak adı.
 
 ---
 

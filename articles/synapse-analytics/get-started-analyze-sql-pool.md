@@ -9,18 +9,34 @@ ms.reviewer: jrasnick
 ms.service: synapse-analytics
 ms.subservice: sql
 ms.topic: tutorial
-ms.date: 12/31/2020
-ms.openlocfilehash: 54b650d598cf19e061465b3a4fa18d50808e7f29
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.date: 03/18/2020
+ms.openlocfilehash: f03fa84c02c4b3894efe069289b0ecbb9e90dfdb
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102426170"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104654637"
 ---
 # <a name="analyze-data-with-dedicated-sql-pools"></a>Adanmış SQL havuzları ile verileri analiz etme
 
-Azure SYNAPSE Analytics, özel bir SQL havuzu ile verileri analiz etme yeteneği sağlar. Bu öğreticide, özel bir SQL havuzunun yeteneklerini araştırmak için NYC TAXI verilerini kullanacaksınız.
+Bu öğreticide, özel bir SQL havuzunun yeteneklerini araştırmak için NYC TAXI verilerini kullanacaksınız.
 
+## <a name="create-a-dedicated-sql-pool"></a>Adanmış bir SQL havuzu oluşturma
+
+1. SYNAPSE Studio 'da, sol taraftaki bölmede   >  **SQL havuzlarını** Yönet ' i seçin.
+1. **Yeni** ' yi seçin
+1. **SQL havuzu adı** için **SQLPOOL1** seçin
+1. **Performans düzeyi** için **DW100C** seçin
+1. **Gözden geçir ve oluştur** > **Oluştur**'u seçin. Adanmış SQL havuzunuz birkaç dakika içinde hazırlanacaktır. 
+
+Adanmış SQL havuzunuz, **SQLPOOL1** olarak da BILINEN bir SQL veritabanı ile ilişkilendirilir.
+1. **Veri**  >  **çalışma alanına** gidin.
+1. **SQLPOOL1** adlı bir veritabanı görmeniz gerekir. Bunu görmüyorsanız **Yenile**' ye tıklayın.
+
+Adanmış bir SQL havuzu, etkin olduğu sürece faturalanabilir kaynakları kullanır. Daha sonra maliyetleri azaltmak için havuzu duraklatabilirsiniz.
+
+> [!NOTE] 
+> Çalışma alanınızda yeni bir adanmış SQL Havuzu (eski adıyla SQL DW) oluştururken, adanmış SQL havuzu sağlama sayfası açılır. Sağlama, mantıksal SQL Server üzerinde gerçekleşir.
 ## <a name="load-the-nyc-taxi-data-into-sqlpool1"></a>NYC TAXI verilerini SQLPOOL1 'e yükleme
 
 1. SYNAPSE Studio 'da **geliştirme** merkezine gidin, **+** Yeni kaynak eklemek için düğmeye tıklayın ve ardından yeni SQL betiği oluşturun.
@@ -77,7 +93,6 @@ Azure SYNAPSE Analytics, özel bir SQL havuzu ile verileri analiz etme yeteneği
 ## <a name="explore-the-nyc-taxi-data-in-the-dedicated-sql-pool"></a>Özel SQL havuzundaki NYC TAXI verilerini keşfet
 
 1. SYNAPSE Studio 'da **veri** merkezine gidin.
-1. **SQLPOOL1** adlı bir veritabanı görmeniz gerekir. Bunu görmüyorsanız **Yenile**' ye tıklayın.
 1. **SQLPOOL1**  >  **Tables** bölümüne gidin. 
 3. Dbo öğesine sağ tıklayın **. Seyahat** tablosu ve **Yeni SQL betiği** Seç  >  **ilk 100 satır seçin**.
 4. Yeni bir SQL betiği oluşturulup çalışırken bekleyin.
@@ -103,4 +118,4 @@ Azure SYNAPSE Analytics, özel bir SQL havuzu ile verileri analiz etme yeteneği
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Spark kullanarak çözümleme](get-started-analyze-spark.md)
+> [Azure depolama hesabındaki verileri analiz etme](get-started-analyze-storage.md)

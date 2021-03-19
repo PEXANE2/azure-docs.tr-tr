@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 07/31/2020
 ms.author: cshoe
 ms.openlocfilehash: 266df5371ff5f47526fa9d6567c62e31d51ebb05
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87810233"
 ---
 # <a name="shifting-from-expressjs-to-azure-functions"></a>Express.js 'den Azure Işlevlerine kaydırma
@@ -22,7 +22,7 @@ Kodu sunucusuz bir mimariye geçirirken Express.js uç noktaları yeniden düzen
 
 - **Farklı API 'ler**: hem istekleri hem de yanıtları işlemek IÇIN kullanılan API, Azure işlevleri ve Express.js arasında farklılık gösterir. Aşağıdaki örnekte gerekli değişiklikler ayrıntılı olarak verilmiştir.
 
-- **Varsayılan yol**: Azure işlevleri uç noktaları, varsayılan olarak yol altında gösterilir `api` . Yönlendirme kuralları [ `routePrefix` dosyadaki _host.js_ ](./functions-bindings-http-webhook-output.md#hostjson-settings)aracılığıyla yapılandırılabilir.
+- **Varsayılan yol**: Azure işlevleri uç noktaları, varsayılan olarak yol altında gösterilir `api` . Yönlendirme kuralları [ `routePrefix` dosyadaki _host.js_](./functions-bindings-http-webhook-output.md#hostjson-settings)aracılığıyla yapılandırılabilir.
 
 - **Yapılandırma ve kurallar**: bir IŞLEVLER uygulaması http fiillerini tanımlamak, güvenlik ilkelerini tanımlamak ve işlevin [giriş ve çıkışını](./functions-triggers-bindings.md)yapılandırmak için dosyadaki _function.js_ kullanır. Varsayılan olarak, işlev dosyalarını içeren klasör adı, uç nokta adını tanımlar, ancak adı `route` dosyadaki [function.js](./functions-bindings-http-webhook-trigger.md#customize-the-http-endpoint) özelliği aracılığıyla değiştirebilirsiniz.
 

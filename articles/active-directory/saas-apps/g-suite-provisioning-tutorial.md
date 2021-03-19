@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 01/06/2020
+ms.date: 03/18/2021
 ms.author: Zhchia
-ms.openlocfilehash: 5243e9490c9de0d6df1520edb970da93fabef85a
-ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
+ms.openlocfilehash: f6ef2f91d178db01e618c19df55705bc9c1209e4
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/24/2021
-ms.locfileid: "98746129"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104583760"
 ---
 # <a name="tutorial-configure-g-suite-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlaması için G Suite 'i yapılandırma
 
@@ -33,7 +33,7 @@ Bu öğretici, otomatik Kullanıcı sağlamayı yapılandırmak için hem G Suit
 > * G Suite 'te grupları ve grup üyeliklerini sağlama
 > * G Suite ['Te çoklu oturum açma](./google-apps-tutorial.md) (önerilir)
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticide özetlenen senaryo, aşağıdaki önkoşulların zaten olduğunu varsayar:
 
@@ -273,6 +273,7 @@ Hazırlama ayarlarını yapılandırdıktan sonra dağıtımınızı izlemek iç
 * 10/17/2020-ek G Suite Kullanıcı ve grup öznitelikleri için destek eklendi.
 * 10/17/2020- [burada](https://developers.google.com/admin-sdk/directory)tanımlananla eşleşecek şekilde, G Suite hedef öznitelik adları güncelleştirildi.
 * 10/17/2020-varsayılan öznitelik eşlemeleri güncelleştirildi.
+* 03/18/2021-yönetici e-postası artık tüm yeni kullanıcılar için KIMLIK yerine eşitleniyor. KIMLIK olarak bir yönetici ile sağlanan mevcut tüm kullanıcılar için, e-postanın sağlandığından emin olmak için "Full" kapsamına sahip [Microsoft Graph](https://docs.microsoft.com/graph/api/synchronization-synchronizationjob-restart?view=graph-rest-beta&tabs=http) aracılığıyla yeniden başlatma yapabilirsiniz. Bu değişiklik yalnızca GSuite sağlama işini etkiler ve Goov2OutDelta ile başlayan eski koruma işini etkilemez. Yönetici e-postası, Kullanıcı ilk oluşturulduğunda veya yönetici değiştiğinde sağlanır. Yönetici e-posta adresini değiştirirse yönetici e-postası sağlanmaz. 
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 

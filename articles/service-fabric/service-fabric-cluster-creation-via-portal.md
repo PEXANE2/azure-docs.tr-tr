@@ -4,16 +4,16 @@ description: Azure 'da Azure portal ve Azure Key Vault kullanarak güvenli Servi
 ms.topic: conceptual
 ms.date: 09/06/2018
 ms.openlocfilehash: c679a804db09b1034f31e9d8da1f7d2ad206f684
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90563735"
 ---
 # <a name="create-a-service-fabric-cluster-in-azure-using-the-azure-portal"></a>Azure 'da Azure portal kullanarak Service Fabric kümesi oluşturma
 > [!div class="op_single_selector"]
 > * [Azure Resource Manager](service-fabric-cluster-creation-via-arm.md)
-> * [Azure portalındaki](service-fabric-cluster-creation-via-portal.md)
+> * [Azure portalı](service-fabric-cluster-creation-via-portal.md)
 > 
 > 
 
@@ -69,7 +69,7 @@ Uygulama gereksinimlerinizi karşılamak için bir üretim kümesi oluşturmak b
 ### <a name="search-for-the-service-fabric-cluster-resource"></a>Service Fabric kümesi kaynağını arayın
 
 [Azure portalında][azure-portal] oturum açın.
-Yeni kaynak şablonu eklemek için **kaynak oluştur** ' a tıklayın. **Market** 'Teki Service Fabric kümesi şablonunu **her şey**için arayın.
+Yeni kaynak şablonu eklemek için **kaynak oluştur** ' a tıklayın. **Market** 'Teki Service Fabric kümesi şablonunu **her şey** için arayın.
 Listeden **Service Fabric kümesi** seçin.
 
 ![Azure portal Service Fabric küme şablonu araması yapın.][SearchforServiceFabricClusterTemplate]
@@ -86,7 +86,7 @@ Temel bilgiler dikey penceresinde, kümenizin temel ayrıntılarını sağlaman�
 1. Kümenizin adını girin.
 2. VM 'Ler için Uzak Masaüstü için bir **Kullanıcı adı** ve **parola** girin.
 3. Özellikle birden fazla aboneliğiniz varsa, kümenizin dağıtılmasını istediğiniz **aboneliği** seçtiğinizden emin olun.
-4. Yeni bir **kaynak grubu**oluşturun. Daha sonra, özellikle dağıtımınızda değişiklik yapmaya veya kümenizi silmeye çalışırken, bunları daha sonra bulmaya yardımcı olduğundan, bu kümeye kümeyle aynı adı vermek en iyisidir.
+4. Yeni bir **kaynak grubu** oluşturun. Daha sonra, özellikle dağıtımınızda değişiklik yapmaya veya kümenizi silmeye çalışırken, bunları daha sonra bulmaya yardımcı olduğundan, bu kümeye kümeyle aynı adı vermek en iyisidir.
    
    > [!NOTE]
    > Var olan bir kaynak grubunu kullanmaya karar verebilirsiniz, ancak yeni bir kaynak grubu oluşturmak iyi bir uygulamadır. Bu, kümelerin ve kullandığı tüm kaynakların silinmesini kolaylaştırır.
@@ -105,14 +105,14 @@ Küme düğümlerinizi yapılandırın. Düğüm türleri, VM boyutlarını, VM 
 
 1. Düğüm türü için bir ad seçin (yalnızca harf ve sayı içeren 1 ile 12 karakter).
 2. Birincil düğüm türü için en düşük sanal makine **boyutu** , küme Için seçtiğiniz **dayanıklılık katmanı** ile çalıştırılır. Dayanıklılık katmanı için varsayılan değer bronz ' dir. Dayanıklılık hakkında daha fazla bilgi için bkz. [Service Fabric kümesi dayanıklılığı seçme][service-fabric-cluster-durability].
-3. **Sanal makine boyutunu**seçin. D serisi VM 'Ler SSD sürücülerine sahiptir ve durum bilgisi olan uygulamalar için önemle önerilir. Kısmi çekirdekleri olan veya 10 GB 'den az kullanılabilir disk kapasitesi olan herhangi bir VM SKU 'SU kullanmayın. VM boyutunu seçerken yardım almak için bkz. [Service Fabric küme planlama değerlendirmesi belgesi][service-fabric-cluster-capacity] .
+3. **Sanal makine boyutunu** seçin. D serisi VM 'Ler SSD sürücülerine sahiptir ve durum bilgisi olan uygulamalar için önemle önerilir. Kısmi çekirdekleri olan veya 10 GB 'den az kullanılabilir disk kapasitesi olan herhangi bir VM SKU 'SU kullanmayın. VM boyutunu seçerken yardım almak için bkz. [Service Fabric küme planlama değerlendirmesi belgesi][service-fabric-cluster-capacity] .
 4.  **Tek düğümlü küme ve üç düğümlü kümeler** yalnızca test kullanımı için tasarlanmıştır. Bunlar çalışan tüm üretim iş yükleri için desteklenmez.
 5. Düğüm türü için **ilk sanal makine ölçek kümesi kapasitesini** seçin. Üzerinde daha sonra bir düğüm türündeki sanal makine sayısını ölçeklendirebilir veya izleyebilirsiniz, ancak birincil düğüm türünde üretim iş yükleri için en az beş olur. Diğer düğüm türlerinde en az bir VM olabilir. Birincil düğüm türü için en az sanal makine **sayısı** , kümenizin **güvenilirliğini artırır** .  
-6. **Özel uç noktaları**yapılandırın. Bu alan, uygulamalarınız için genel Internet 'e Azure Load Balancer göstermek istediğiniz, virgülle ayrılmış bağlantı noktalarının bir listesini girmenize olanak sağlar. Örneğin, kümenize bir Web uygulaması dağıtmayı planlıyorsanız, "80" girerek kümenize bağlantı noktası 80 üzerinde trafiğe izin verin. Uç noktalar hakkında daha fazla bilgi için bkz. [uygulamalarla iletişim kurma][service-fabric-connect-and-communicate-with-services]
+6. **Özel uç noktaları** yapılandırın. Bu alan, uygulamalarınız için genel Internet 'e Azure Load Balancer göstermek istediğiniz, virgülle ayrılmış bağlantı noktalarının bir listesini girmenize olanak sağlar. Örneğin, kümenize bir Web uygulaması dağıtmayı planlıyorsanız, "80" girerek kümenize bağlantı noktası 80 üzerinde trafiğe izin verin. Uç noktalar hakkında daha fazla bilgi için bkz. [uygulamalarla iletişim kurma][service-fabric-connect-and-communicate-with-services]
 7. **Ters proxy 'Yi etkinleştirin**.  [Ters proxy Service Fabric](service-fabric-reverseproxy.md) , bir Service Fabric kümesinde çalışan mikro hizmetlerin, HTTP uç noktalarına sahip diğer hizmetlerle bulmasına ve iletişim kurmasına yardımcı olur.
-8. **Küme yapılandırması** dikey penceresine geri dönün ve **+ Isteğe bağlı ayarları göster**altında küme **tanılamayı**yapılandırın. Varsayılan olarak, tanılama, sorun giderme sorunlarını gidermeye yardımcı olmak için kümenizde etkinleştirilir. Tanılamayı devre dışı bırakmak istiyorsanız, **durumu** **kapalı**olarak değiştirin. Tanılamayı **kapatmak önerilmez.** Zaten Application Insights projesi oluşturduysanız, uygulama izlemelerinin kendisine yönlendirilmesi için anahtarını sağlayın.
+8. **Küme yapılandırması** dikey penceresine geri dönün ve **+ Isteğe bağlı ayarları göster** altında küme **tanılamayı** yapılandırın. Varsayılan olarak, tanılama, sorun giderme sorunlarını gidermeye yardımcı olmak için kümenizde etkinleştirilir. Tanılamayı devre dışı bırakmak istiyorsanız, **durumu** **kapalı** olarak değiştirin. Tanılamayı **kapatmak önerilmez.** Zaten Application Insights projesi oluşturduysanız, uygulama izlemelerinin kendisine yönlendirilmesi için anahtarını sağlayın.
 9. **DNS hizmetini dahil edin**.  [DNS hizmeti](service-fabric-dnsservice.md) , DNS protokolünü kullanarak diğer hizmetleri bulmanızı sağlayan isteğe bağlı bir hizmettir.
-10. Kümenizi ayarlamak istediğiniz **doku yükseltme modunu** seçin. Sistemin kullanılabilir en son sürümü otomatik olarak seçmesini ve kümenizi yükseltmeye denemesini istiyorsanız **Otomatik**' i seçin. Desteklenen bir sürüm seçmek istiyorsanız modu **el ile**olarak ayarlayın. Doku yükseltme modu hakkında daha fazla bilgi için [Service Fabric kümesi yükseltme belgesine bakın.][service-fabric-cluster-upgrade]
+10. Kümenizi ayarlamak istediğiniz **doku yükseltme modunu** seçin. Sistemin kullanılabilir en son sürümü otomatik olarak seçmesini ve kümenizi yükseltmeye denemesini istiyorsanız **Otomatik**' i seçin. Desteklenen bir sürüm seçmek istiyorsanız modu **el ile** olarak ayarlayın. Doku yükseltme modu hakkında daha fazla bilgi için [Service Fabric kümesi yükseltme belgesine bakın.][service-fabric-cluster-upgrade]
 
 > [!NOTE]
 > Yalnızca desteklenen Service Fabric sürümlerini çalıştıran kümeleri destekliyoruz. **El ile** modunu seçtiğinizde, kümenizi desteklenen bir sürüme yükseltme sorumluluğunu alırsınız.
@@ -165,7 +165,7 @@ Güvenlik sayfasını tamamlayabilmeniz için kaynak Anahtar Kasası, sertifika 
 
     ![Ekran görüntüsü, sertifika tanıtıcısını kopyalama seçeneği ile sertifika sürümü iletişim kutusunu gösterir.][CertInfo2]
 
-**Yönetici istemcisi** ve **salt okunurdur istemci**için istemci sertifikaları girmek üzere **Gelişmiş ayarları Yapılandır** kutusunu işaretleyin. Bu alanlarda, varsa, yönetici istemci sertifikanızın parmak izini ve salt okunurdur Kullanıcı istemci sertifikanızın parmak izini girin. Yöneticiler kümeye bağlanmayı denediklerinde, yalnızca buraya girilen parmak izi değerleriyle eşleşen parmak izine sahip bir sertifika varsa erişim izni verilir.  
+**Yönetici istemcisi** ve **salt okunurdur istemci** için istemci sertifikaları girmek üzere **Gelişmiş ayarları Yapılandır** kutusunu işaretleyin. Bu alanlarda, varsa, yönetici istemci sertifikanızın parmak izini ve salt okunurdur Kullanıcı istemci sertifikanızın parmak izini girin. Yöneticiler kümeye bağlanmayı denediklerinde, yalnızca buraya girilen parmak izi değerleriyle eşleşen parmak izine sahip bir sertifika varsa erişim izni verilir.  
 
 ### <a name="4-summary"></a>4. Özet
 

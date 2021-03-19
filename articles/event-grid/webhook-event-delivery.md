@@ -4,10 +4,10 @@ description: Bu makalede Web kancaları kullanılırken Web kancası olay teslim
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.openlocfilehash: e9a52d0cb3e4e880d91e1b748d97ef3041298930
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87461247"
 ---
 # <a name="webhook-event-delivery"></a>Web kancası olay teslimi
@@ -28,7 +28,7 @@ HTTP tetikleyici tabanlı bir Azure işlevi gibi başka herhangi bir uç nokta t
 
    Sürüm 2018-05-01-önizleme ile başlayarak, Event Grid el ile doğrulama anlaşmasını destekler. API sürümü 2018-05-01-Preview veya sonraki bir sürümünü kullanan bir SDK veya araçla bir olay aboneliği oluşturuyorsanız, Event Grid `validationUrl` Abonelik doğrulama olayının veri bölümünde bir özellik gönderir. El sıkışmasını gerçekleştirmek için, bu URL 'YI olay verilerinde bulun ve bir GET isteği yapın. Bir REST istemcisi ya da Web tarayıcınızı kullanabilirsiniz.
 
-   Belirtilen URL **5 dakika**için geçerlidir. Bu süre boyunca, olay aboneliğinin sağlama durumu olur `AwaitingManualAction` . El ile doğrulamayı 5 dakika içinde tamamlamazsanız, sağlama durumu olarak ayarlanır `Failed` . El ile doğrulamayı başlatmadan önce olay aboneliği oluşturmanız gerekir.
+   Belirtilen URL **5 dakika** için geçerlidir. Bu süre boyunca, olay aboneliğinin sağlama durumu olur `AwaitingManualAction` . El ile doğrulamayı 5 dakika içinde tamamlamazsanız, sağlama durumu olarak ayarlanır `Failed` . El ile doğrulamayı başlatmadan önce olay aboneliği oluşturmanız gerekir.
 
    Bu kimlik doğrulama mekanizması Ayrıca, el ile doğrulama moduna alınmadan önce doğrulama olayının GÖNDERISINI kabul ettiğini bilmesi için Web kancası uç noktasının 200 HTTP durum kodunu döndürmesini gerektirir. Diğer bir deyişle, uç nokta 200 döndürürse ancak bir doğrulama yanıtını zaman uyumlu olarak geri döndürmezse mod el ile doğrulama moduna geçirilir. Doğrulama URL 'sinde 5 dakika içinde bir GET varsa, doğrulama el sıkışması başarılı olarak kabul edilir.
 

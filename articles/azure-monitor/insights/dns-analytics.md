@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/20/2018
-ms.openlocfilehash: df9efef1000ab6a824c869e6684ab1424e8462f4
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: f01a1204aefbcaabe0ddac254b24bc014c3d5a64
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101708110"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104654535"
 ---
 # <a name="gather-insights-about-your-dns-infrastructure-with-the-dns-analytics-preview-solution"></a>DNS Analizi Preview çözümüyle DNS altyapınız hakkında Öngörüler toplayın
 
@@ -35,9 +35,9 @@ Aşağıdaki tabloda, bu çözüm tarafından desteklenen bağlı kaynaklar aç�
 | **Bağlı kaynak** | **Destek** | **Açıklama** |
 | --- | --- | --- |
 | [Windows aracıları](../agents/agent-windows.md) | Yes | Bu çözüm, Windows aracılarından DNS bilgilerini toplar. |
-| [Linux aracıları](../vm/quick-collect-linux-computer.md) | Hayır | Çözüm, doğrudan Linux aracılarından DNS bilgileri toplamaz. |
+| [Linux aracıları](../vm/quick-collect-linux-computer.md) | No | Çözüm, doğrudan Linux aracılarından DNS bilgileri toplamaz. |
 | [System Center Operations Manager yönetim grubu](../agents/om-agents.md) | Yes | Çözüm, bağlı bir Operations Manager yönetim grubundaki aracılardan DNS bilgilerini toplar. Operations Manager aracısından Azure Izleyici 'ye doğrudan bağlantı gerekli değildir. Veriler, yönetim grubundan Log Analytics çalışma alanına iletilir. |
-| [Azure depolama hesabı](../essentials/resource-logs.md#send-to-log-analytics-workspace) | Hayır | Azure depolama, çözüm tarafından kullanılmıyor. |
+| [Azure depolama hesabı](../essentials/resource-logs.md#send-to-log-analytics-workspace) | No | Azure depolama, çözüm tarafından kullanılmıyor. |
 
 ### <a name="data-collection-details"></a>Veri toplama ayrıntıları
 
@@ -54,7 +54,7 @@ Aşağıdaki tabloda, bu çözüm tarafından desteklenen bağlı kaynaklar aç�
 
 ### <a name="configure-the-solution"></a>Çözümü yapılandırma
 
-Çözüm panosunda **yapılandırma** ' ya tıklayarak DNS Analizi yapılandırma sayfasını açın. Yapabileceğiniz iki yapılandırma değişikliği türü vardır:
+Azure portal Log Analytics çalışma alanında, **çalışma alanı Özeti** ' ni seçin ve **DNS Analizi** kutucuğuna tıklayın. Çözüm panosunda **yapılandırma** ' ya tıklayarak DNS Analizi yapılandırma sayfasını açın. Yapabileceğiniz iki yapılandırma değişikliği türü vardır:
 
 - **Allowlistelenmiş etki alanı adları**. Çözüm, tüm arama sorgularını işlemez. Etki alanı adı soneklerinin izin değerini tutar. Bu izin içindeki etki alanı adı sonekleri ile eşleşen etki alanı adlarına çözümlenerek arama sorguları çözüm tarafından işlenmez. Allowlistelenmiş etki alanı adlarının işlenmemesi, Azure Izleyici 'ye gönderilen verileri iyileştirmenize yardımcı olur. Varsayılan izin, www.Google.com ve www.facebook.com gibi popüler genel etki alanı adlarını içerir. Kaydırma yaparak, tüm varsayılan listeyi görüntüleyebilirsiniz.
 

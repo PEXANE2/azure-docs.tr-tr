@@ -14,10 +14,10 @@ ms.author: curtand
 ms.reviewer: jairoc
 ms.custom: user-help, seo-update-azuread-jan
 ms.openlocfilehash: 0435b99525c34eb72d7cc5315ccb4359859cd528
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90033056"
 ---
 # <a name="register-your-personal-device-on-your-organizations-network"></a>Kişisel cihazınızı kuruluşunuzun ağına kaydetme
@@ -41,7 +41,7 @@ Cihazınızı kuruluşunuzun ağına kaydederken aşağıdaki eylemler gerçekle
 
 Kişisel cihazınızı ağınıza kaydetmek için aşağıdaki adımları izleyin.
 
-1. **Ayarları**açın ve ardından **hesaplar**' ı seçin.
+1. **Ayarları** açın ve ardından **hesaplar**' ı seçin.
 
     ![Ayarlar ekranındaki hesaplar](./media/user-help-register-device-on-network/register-device-settings-accounts.png)
 
@@ -58,7 +58,7 @@ Kişisel cihazınızı ağınıza kaydetmek için aşağıdaki adımları izleyi
 ## <a name="to-verify-that-youre-registered"></a>Kaydoldığınızı doğrulamak için
 Ayarlarınıza bakarak kaydolduğunuzdan emin olabilirsiniz.
 
-1. **Ayarları**açın ve ardından **hesaplar**' ı seçin.
+1. **Ayarları** açın ve ardından **hesaplar**' ı seçin.
 
     ![Ayarlar ekranındaki hesaplar](./media/user-help-register-device-on-network/register-device-settings-accounts.png)
 

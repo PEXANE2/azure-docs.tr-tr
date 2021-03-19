@@ -8,10 +8,10 @@ ms.date: 11/14/2019
 ms.author: victorh
 ms.topic: article
 ms.openlocfilehash: 8e8aaa9458619bc937c5bb11c450f3197b92f451
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "74048524"
 ---
 # <a name="customize-web-application-firewall-rules-using-the-azure-cli"></a>Azure CLı kullanarak Web uygulaması güvenlik duvarı kurallarını özelleştirme
@@ -114,7 +114,7 @@ Aşağıdaki çıktı, yukarıdaki örnekten kesilen bir yanıt örneğidir:
 ]
 ```
 
-## <a name="disable-rules"></a>Kuralları devre dışı bırak
+## <a name="disable-rules"></a>Kuralları devre dışı bırakma
 
 Aşağıdaki örnek, kuralları `910018` ve `910017` bir uygulama ağ geçidi üzerinde devre dışı bırakır:
 
