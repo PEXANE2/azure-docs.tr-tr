@@ -12,10 +12,10 @@ ms.author: mlandzic
 ms.reviewer: sstein
 ms.date: 01/25/2019
 ms.openlocfilehash: c507a4c618713ba83d25b9defa918092db1a3c8e
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92792098"
 ---
 # <a name="query-across-cloud-databases-with-different-schemas-preview"></a>Farklı şemalarla bulut veritabanları genelinde sorgulama (Önizleme)
@@ -25,7 +25,7 @@ ms.locfileid: "92792098"
 
 Dikey olarak bölümlenmiş veritabanları, farklı veritabanlarındaki farklı tablo kümelerini kullanır. Diğer bir deyişle, şema farklı veritabanlarında farklı olur. Örneğin, tüm envanter tabloları, tüm muhasebe ile ilgili tablolar ikinci bir veritabanı üzerinde olduğunda tek bir veritabanıdır.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Kullanıcı herhangi bir dış VERI kaynağı iznine sahip olmalıdır. Bu izin ALTER DATABASE iznine dahildir.
 * Temel alınan veri kaynağına başvurmak için herhangi bir dış VERI kaynağı izinlerini DEĞIŞTIRME gerekir.
@@ -120,8 +120,8 @@ select * from sys.external_tables;
 
 Elastik sorgu, mevcut dış tablo söz dizimini genişleterek, RDBMS türünde dış veri kaynaklarını kullanan dış tabloları tanımlar. Dikey bölümlendirme için bir dış tablo tanımı aşağıdaki özellikleri içerir:
 
-* **Şema** : dış tablo DDL, sorgularınızın kullanabileceği bir şemayı tanımlar. Dış tablo tanımınızda belirtilen şemanın, asıl verilerin depolandığı uzak veritabanındaki tabloların şemasıyla eşleşmesi gerekir.
-* **Uzak veritabanı başvurusu** : dış tablo DDL, bir dış veri kaynağını ifade eder. Dış veri kaynağı, gerçek tablo verilerinin depolandığı uzak veritabanının sunucu adını ve veritabanı adını belirtir.
+* **Şema**: dış tablo DDL, sorgularınızın kullanabileceği bir şemayı tanımlar. Dış tablo tanımınızda belirtilen şemanın, asıl verilerin depolandığı uzak veritabanındaki tabloların şemasıyla eşleşmesi gerekir.
+* **Uzak veritabanı başvurusu**: dış tablo DDL, bir dış veri kaynağını ifade eder. Dış veri kaynağı, gerçek tablo verilerinin depolandığı uzak veritabanının sunucu adını ve veritabanı adını belirtir.
 
 Bir dış veri kaynağını önceki bölümde özetlenen şekilde kullanarak, dış tablo oluşturma sözdizimi aşağıdaki gibidir:
 
@@ -135,9 +135,9 @@ Aşağıdaki DDL ekstresi, mevcut bir dış tablo tanımını yerel katalogdan b
 DROP EXTERNAL TABLE [ [ schema_name ] . | schema_name. ] table_name[;]  
 ```
 
-**Dış tablo oluşturma/bırakma izinleri** : Ayrıca, temel alınan veri kaynağına başvurmak için gereken dış tablo DDL için HERHANGI BIR dış veri kaynağı izinlerini değiştirme gerekir.  
+**Dış tablo oluşturma/bırakma izinleri**: Ayrıca, temel alınan veri kaynağına başvurmak için gereken dış tablo DDL için HERHANGI BIR dış veri kaynağı izinlerini değiştirme gerekir.  
 
-## <a name="security-considerations"></a>Güvenlikle ilgili dikkat edilmesi gerekenler
+## <a name="security-considerations"></a>Güvenlik konuları
 
 Dış tabloya erişimi olan kullanıcılar, dış veri kaynağı tanımında verilen kimlik bilgileri altındaki temeldeki uzak tablolara otomatik olarak erişim elde edebilir. Dış veri kaynağının kimlik bilgisi aracılığıyla ayrıcalıkların istenmeyen olarak yükseltilmesini önlemek için dış tabloya erişimi dikkatle yönetmeniz gerekir. Normal SQL izinleri, bir dış tabloya normal bir tablo gibi erişim vermek veya erişimi Iptal etmek için kullanılabilir.  
 

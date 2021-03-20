@@ -1,6 +1,6 @@
 ---
-title: dosya dahil etme
-description: dosya dahil etme
+title: include dosyası
+description: include dosyası
 author: HeidiSteen
 ms.service: cognitive-search
 ms.topic: include
@@ -8,10 +8,10 @@ ms.date: 05/06/2019
 ms.author: heidist
 ms.custom: include file
 ms.openlocfilehash: ee430241173a6c19e2a32e176f28411631d9cb19
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "80272960"
 ---
 Bir abonelik içinde birden çok hizmet oluşturabilirsiniz. Her biri, belirli bir katmanda sağlanabilir. Yalnızca her katmanda izin verilen hizmet sayısıyla sınırlı olursunuz. Örneğin, temel katmanda 12 ' ye kadar hizmet ve aynı abonelik içindeki S1 katmanında başka bir 12 hizmet oluşturabilirsiniz. Katmanlar hakkında daha fazla bilgi için bkz. [Azure bilişsel arama için BIR SKU veya katman seçme](../articles/search/search-sku-tier.md).
@@ -25,4 +25,4 @@ Bir abonelik içinde birden çok hizmet oluşturabilirsiniz. Her biri, belirli b
 
 <sup>1</sup> boş, paylaşılan, adanmış olmayan kaynaklara dayalıdır. Paylaşılan kaynaklarda ölçek artırma desteklenmez.
 
-<sup>2</sup> arama birimi, bir *çoğaltma* ya da *bölüm*olarak ayrılan faturalandırma birimleridir. Depolama, dizin oluşturma ve sorgu işlemleri için her iki kaynağa de ihtiyacınız vardır. SU hesaplamaları hakkında daha fazla bilgi edinmek için bkz. [sorgu ve Dizin iş yükleri Için ölçek kaynak düzeyleri](../articles/search/search-capacity-planning.md). 
+<sup>2</sup> arama birimi, bir *çoğaltma* ya da *bölüm* olarak ayrılan faturalandırma birimleridir. Depolama, dizin oluşturma ve sorgu işlemleri için her iki kaynağa de ihtiyacınız vardır. SU hesaplamaları hakkında daha fazla bilgi edinmek için bkz. [sorgu ve Dizin iş yükleri Için ölçek kaynak düzeyleri](../articles/search/search-capacity-planning.md). 

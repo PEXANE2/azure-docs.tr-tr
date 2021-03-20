@@ -4,10 +4,10 @@ description: Azure Active Directory hizmet sorumlusu kullanarak özel kapsayıc�
 ms.topic: article
 ms.date: 10/04/2019
 ms.openlocfilehash: 8d49628576a1c337efaea3e5286fef00e39def17
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86259149"
 ---
 # <a name="azure-container-registry-authentication-with-service-principals"></a>Hizmet sorumluları ile kimlik doğrulamasını Azure Container Registry
@@ -28,7 +28,7 @@ Bir Azure AD hizmet sorumlusu kullanarak özel kapsayıcı Kayıt defterinize ka
 
 ## <a name="when-to-use-a-service-principal"></a>Hizmet sorumlusu ne zaman kullanılır?
 
-**Gözetimsiz senaryolarda**kayıt defteri erişimi sağlamak için bir hizmet sorumlusu kullanmanız gerekir. Diğer bir deyişle, kapsayıcı görüntülerini otomatik olarak veya başka bir şekilde katılımsız bir şekilde iletme veya çekme gerektiren herhangi bir uygulama, hizmet veya komut dosyası. Örneğin:
+**Gözetimsiz senaryolarda** kayıt defteri erişimi sağlamak için bir hizmet sorumlusu kullanmanız gerekir. Diğer bir deyişle, kapsayıcı görüntülerini otomatik olarak veya başka bir şekilde katılımsız bir şekilde iletme veya çekme gerektiren herhangi bir uygulama, hizmet veya komut dosyası. Örnek:
 
   * *Çekme*: bir kayıt defterinden Kubernetes, DC/OS ve Docker sısınma dahil olmak üzere düzenleme sistemlerine kapsayıcı dağıtın. Ayrıca, kapsayıcı kayıt defterlerinden [Azure Kubernetes hizmeti (AKS)](../aks/cluster-container-registry-integration.md), [Azure Container Instances](container-registry-auth-aci.md), [App Service](../app-service/index.yml), [Batch](../batch/index.yml), [Service Fabric](../service-fabric/index.yml)ve diğerleri gibi ilgili Azure hizmetlerine de çekebilirsiniz.
 
@@ -49,8 +49,8 @@ Azure CLı için yukarıdaki örnek betikleri GitHub ' da ve Azure PowerShell s�
 
 Kapsayıcı Kayıt defterinize erişim verdiğiniz bir hizmet sorumlusu olduktan sonra, "gözetimsiz" hizmetlere ve uygulamalarına erişim için kimlik bilgilerini yapılandırabilir veya komutunu kullanarak bunları girebilirsiniz `docker login` . Aşağıdaki değerleri kullanın:
 
-* **Kullanıcı adı** -hizmet sorumlusu uygulama kimliği ( *istemci kimliği*olarak da bilinir)
-* **Parola** -hizmet sorumlusu parolası ( *istemci gizli anahtarı*da denir)
+* **Kullanıcı adı** -hizmet sorumlusu uygulama kimliği ( *istemci kimliği* olarak da bilinir)
+* **Parola** -hizmet sorumlusu parolası ( *istemci gizli anahtarı* da denir)
 
 Her değer, formun bir GUID 'sidir `xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx` . 
 

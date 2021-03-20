@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 08/31/2020
 ms.author: jeedes
 ms.openlocfilehash: ef1ca41f54a15554a04fa3edf608bb13f5fb3398
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96182028"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-workday-mobile-application"></a>Öğretici: Workday mobil uygulamasıyla çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
@@ -28,7 +28,7 @@ Bu öğreticide, Azure Active Directory (Azure AD), koşullu erişim ve Intune '
 * Kullanıcılarınızın Azure AD hesaplarıyla Workday 'de otomatik olarak oturum açmalarına olanak sağlayın.
 * Hesaplarınızı tek bir merkezi konumda yönetin: Azure portal.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için:
 
@@ -94,7 +94,7 @@ Workday 'i yönetilen bir cihaz olarak ayarlamak için aşağıdaki adımları g
 
     c. **Seçim** listesinden **Workday**' i seçin.
 
-    d. **Bitti**'yi seçin.
+    d. **Bitti** seçeneğini belirleyin.
 
 1. İlkeyi **Açık** olarak **etkinleştirin** .
 

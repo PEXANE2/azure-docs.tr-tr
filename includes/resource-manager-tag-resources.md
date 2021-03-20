@@ -1,6 +1,6 @@
 ---
-title: dosya dahil etme
-description: dosya dahil etme
+title: include dosyası
+description: include dosyası
 services: azure-resource-manager
 author: tfitzmac
 ms.service: azure-resource-manager
@@ -9,10 +9,10 @@ ms.date: 03/19/2020
 ms.author: tomfitz
 ms.custom: include file
 ms.openlocfilehash: a00291182059506aeab9cde965fa4cbd5177ecf7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "80132250"
 ---
 Bir Kullanıcı etiketleri uygulamak için gerekli erişime sahip değilse, kullanıcıya **etiketi katkıda bulunan** rolünü atayabilirsiniz. Daha fazla bilgi için bkz. [öğretici: Azure KAYNAKLARıNA RBAC ve Azure Portal kullanarak Kullanıcı erişimi verme](../articles/role-based-access-control/quickstart-assign-role-user-portal.md).
@@ -21,7 +21,7 @@ Bir Kullanıcı etiketleri uygulamak için gerekli erişime sahip değilse, kull
 
    ![Kaynak veya kaynak grubu için etiketleri görüntüle](./media/resource-manager-tag-resources/view-tags.png)
 
-1. Etiket eklemek için, **etiketleri eklemek üzere buraya tıklayın ' ı**seçin.
+1. Etiket eklemek için, **etiketleri eklemek üzere buraya tıklayın ' ı** seçin.
 
 1. Bir ad ve değer belirtin.
 

@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 06/23/2020
 ms.author: victorh
 ms.openlocfilehash: c53b35351108717c7b597e052a66e9902be5ec6c
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93394535"
 ---
 # <a name="create-ip-groups"></a>IP Grupları oluşturma
@@ -22,9 +22,9 @@ IP grupları, Azure Güvenlik duvarı kuralları için IP adreslerini Grupve yö
 
 Azure portal kullanarak bir IP grubu oluşturmak için:
 
-1. Azure portal giriş sayfasında, **kaynak oluştur** ' u seçin.
-1. Arama kutusuna **IP grupları** ' nı girin ve **IP grupları** ' nı seçin.
-1. **Oluştur** ’u seçin.
+1. Azure portal giriş sayfasında, **kaynak oluştur**' u seçin.
+1. Arama kutusuna **IP grupları**' nı girin ve **IP grupları**' nı seçin.
+1. **Oluştur**’u seçin.
 1. Aboneliğinizi seçin.
 1. Bir kaynak grubu seçin veya yeni bir tane oluşturun.
 1. IP grubunuz için benzersiz bir ad girin ve ardından bir bölge seçin.
@@ -35,12 +35,12 @@ Azure portal kullanarak bir IP grubu oluşturmak için:
    - Bunları el ile girebilirsiniz
    - Bunları bir dosyadan içeri aktarabilirsiniz
 
-   Bir dosyadan içeri aktarmak için **bir dosyadan Içeri aktar** ' ı seçin. Dosyanızı kutuya sürükleyebilir veya **dosyalara gözatabiliriz** ' ı seçebilirsiniz. Gerekirse, karşıya yüklenen IP adreslerinizi gözden geçirebilir ve düzenleyebilirsiniz.
+   Bir dosyadan içeri aktarmak için **bir dosyadan Içeri aktar**' ı seçin. Dosyanızı kutuya sürükleyebilir veya **dosyalara gözatabiliriz**' ı seçebilirsiniz. Gerekirse, karşıya yüklenen IP adreslerinizi gözden geçirebilir ve düzenleyebilirsiniz.
 
    Bir IP adresi yazdığınızda, Portal, çakışan, yinelenen ve biçimlendirme sorunlarını kontrol etmek için onu doğrular.
 
-1. İşiniz bittiğinde, **gözden geçir + oluştur** ' u seçin.
-1. **Oluştur** ’u seçin.
+1. İşiniz bittiğinde, **gözden geçir + oluştur**' u seçin.
+1. **Oluştur**’u seçin.
 
 ## <a name="create-an-ip-group---azure-powershell"></a>IP grubu oluşturma-Azure PowerShell
 

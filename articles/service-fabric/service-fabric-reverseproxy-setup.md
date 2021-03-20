@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: pepogors
 ms.openlocfilehash: f8a9025a50b2815f0e6030e7baf317b261c8c462
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86256339"
 ---
 # <a name="set-up-and-configure-reverse-proxy-in-azure-service-fabric"></a>Azure Service Fabric ters proxy ayarlama ve yapılandırma
@@ -20,10 +20,10 @@ Azure portal, yeni bir Service Fabric kümesi oluşturduğunuzda ters proxy 'yi 
 
 [Azure Portal kullanarak bir küme oluşturduğunuzda](./service-fabric-cluster-creation-via-portal.md)ters proxy 'yi yapılandırmak için aşağıdakileri yaptığınızdan emin olun:
 
-1. **2. Adım: küme yapılandırması**altında, **düğüm türü yapılandırması**altında, **ters proxy 'yi etkinleştir**' i seçin.
+1. **2. Adım: küme yapılandırması** altında, **düğüm türü yapılandırması** altında, **ters proxy 'yi etkinleştir**' i seçin.
 
    ![Portalda ters proxy 'yi etkinleştir](./media/service-fabric-reverseproxy-setup/enable-rp-portal.png)
-2. Seçim Güvenli ters proxy 'yi yapılandırmak için bir TLS/SSL sertifikası yapılandırmanız gerekir. **Adım 3: güvenlik**, **küme güvenlik ayarlarını yapılandırma**bölümünde, **yapılandırma türü**altında **özel**' i seçin. Ardından, **ters proxy SSL sertifikası**' nın altında, **ters proxy Için SSL sertifikası Ekle** ' yi seçin ve sertifika ayrıntılarınızı girin.
+2. Seçim Güvenli ters proxy 'yi yapılandırmak için bir TLS/SSL sertifikası yapılandırmanız gerekir. **Adım 3: güvenlik**, **küme güvenlik ayarlarını yapılandırma** bölümünde, **yapılandırma türü** altında **özel**' i seçin. Ardından, **ters proxy SSL sertifikası**' nın altında, **ters proxy Için SSL sertifikası Ekle** ' yi seçin ve sertifika ayrıntılarınızı girin.
 
    ![Portalda güvenli ters proxy 'yi yapılandırma](./media/service-fabric-reverseproxy-setup/configure-rp-certificate-portal.png)
 
@@ -74,7 +74,7 @@ Kaynak Yöneticisi şablonunuz olduktan sonra, ters proxy 'yi aşağıdaki adım
         ...
     }
     ```
-3. Ters proxy 'nin bağlantı noktasında TLS/SSL sertifikalarını yapılandırmak için, sertifikayı **Microsoft. ServiceFabric/kümeler** [kaynak türü bölümündeki](../azure-resource-manager/templates/template-syntax.md) ***smarproxycertificate*** özelliğine ekleyin.
+3. Ters proxy 'nin bağlantı noktasında TLS/SSL sertifikalarını yapılandırmak için, _ *Microsoft. servicefabric/kümeler* kaynak türü bölümündeki ***smarproxycertificate** _ özelliğine sertifikayı ekleyin *  [](../azure-resource-manager/templates/template-syntax.md).
 
     ```json
     {
@@ -174,7 +174,7 @@ Aşağıdaki adımlarda, ters proxy 'yi etkinleştirmek için kullanılacak ayar
           ...
        }
    ```
-2. Seçim Güvenli bir ters proxy için, **Özellikler**altında **güvenlik** bölümünde bir sertifika yapılandırın. 
+2. Seçim Güvenli bir ters proxy için, **Özellikler** altında **güvenlik** bölümünde bir sertifika yapılandırın. 
    - Geliştirme veya test ortamı için, **Smarproxycertificate** ayarını kullanabilirsiniz:
 
       ```json
@@ -246,7 +246,7 @@ Tek başına bir küme için ters proxy 'yi genel kullanıma sunmak istiyorsanı
 2. Ters proxy bağlantı noktası için bir sistem durumu araştırması eklemek üzere, yük dengeleyici penceresinin sol bölmesinde, **Ayarlar**' ın altında, **sistem durumu araştırmaları**' na tıklayın. Sonra, sistem durumu araştırmaları penceresinin en üstündeki **Ekle** ' ye tıklayın ve ters proxy bağlantı noktasının ayrıntılarını girin ve ardından **Tamam**' a tıklayın. Varsayılan olarak, kümeyi oluştururken değiştirmediğiniz müddetçe, ters proxy bağlantı noktası 19081 ' dir.
 
    ![Ters proxy sistem durumu araştırmasını yapılandırma](./media/service-fabric-reverseproxy-setup/lb-rp-probe.png)
-3. Ters proxy bağlantı noktasını kullanıma sunmak için bir Load Balancer kuralı eklemek üzere, yük dengeleyici penceresinin sol bölmesinde, **Ayarlar**altında **Yük Dengeleme kuralları**' na tıklayın. Ardından Yük Dengeleme kuralları penceresinin en üstündeki **Ekle** ' ye tıklayın ve ters proxy bağlantı noktasının ayrıntılarını girin. **Bağlantı noktası** değerini, ters proxy 'nin açık olmasını istediğiniz bağlantı noktasına, **arka uç bağlantı noktası** değerini, ters proxy 'yi etkinleştirdiğinizde ayarladığınız bağlantı noktasına ve **sistem durumu araştırma** değerini, önceki adımda yapılandırdığınız durum araştırmasına ayarladığınızdan emin olun. Diğer alanları uygun şekilde ayarlayın ve **Tamam**' a tıklayın.
+3. Ters proxy bağlantı noktasını kullanıma sunmak için bir Load Balancer kuralı eklemek üzere, yük dengeleyici penceresinin sol bölmesinde, **Ayarlar** altında **Yük Dengeleme kuralları**' na tıklayın. Ardından Yük Dengeleme kuralları penceresinin en üstündeki **Ekle** ' ye tıklayın ve ters proxy bağlantı noktasının ayrıntılarını girin. **Bağlantı noktası** değerini, ters proxy 'nin açık olmasını istediğiniz bağlantı noktasına, **arka uç bağlantı noktası** değerini, ters proxy 'yi etkinleştirdiğinizde ayarladığınız bağlantı noktasına ve **sistem durumu araştırma** değerini, önceki adımda yapılandırdığınız durum araştırmasına ayarladığınızdan emin olun. Diğer alanları uygun şekilde ayarlayın ve **Tamam**' a tıklayın.
 
    ![Ters proxy için yük dengeleyici kuralını yapılandırma](./media/service-fabric-reverseproxy-setup/lb-rp-rule.png)
 

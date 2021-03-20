@@ -10,10 +10,10 @@ ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 09/22/2020
 ms.openlocfilehash: 0c49f5ab9f10456c32f7f8516cba0e851fa80e74
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93392342"
 ---
 # <a name="configure-azure-sql-edge"></a>Azure SQL Edge 'i yapılandırma
@@ -32,7 +32,7 @@ Azure SQL Edge, SQL Edge kapsayıcısını yapılandırmak için kullanılabilec
 
 Aşağıdaki yeni ortam değişkenleri Azure SQL Edge 'e eklenmiştir. 
 
-| Ortam değişkeni | Açıklama | Değerler |     
+| Ortam değişkeni | Description | Değerler |     
 |-----|-----| ---------- | 
 | **PlanID** | Başlatma sırasında kullanılacak Azure SQL Edge SKU 'sunu belirtir. Bu ortam değişkeni yalnızca Azure IoT Edge kullanılarak Azure SQL Edge dağıtılmasında gereklidir. | **asde-geliştirici-IoT-Edge** veya **asde-Premium-IoT-Edge** | 
 | **MSSQL_TELEMETRY_ENABLED** | Kullanım ve tanılama veri toplamayı etkinleştirin veya devre dışı bırakın. | TRUE veya FALSE |  
@@ -42,7 +42,7 @@ Aşağıdaki yeni ortam değişkenleri Azure SQL Edge 'e eklenmiştir.
 
 Şu Linux üzerinde SQL Server ortam değişkeni Azure SQL Edge için desteklenmiyor. Tanımlandıysa, bu ortam değişkeni kapsayıcı başlatma sırasında yok sayılır.
 
-| Ortam değişkeni | Açıklama |
+| Ortam değişkeni | Description |
 |-----|-----|
 | **MSSQL_ENABLE_HADR** | Kullanılabilirlik grubunu etkinleştirin. Örneğin, **1** etkindir ve **0** devre dışıdır. |
 

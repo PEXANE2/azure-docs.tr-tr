@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 3365a58a0c667ca55b74a5120cdd7a78ad0abc79
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95997792"
 ---
 # <a name="azure-ad-connect-user-sign-in-options"></a>Azure AD Connect Kullanıcı oturum açma seçenekleri
@@ -60,7 +60,7 @@ Ayrıca, şirket ağındaki etki alanına katılmış makinelerde bulunan kullan
 
 Daha fazla bilgi için bkz. [Parola karması eşitleme](how-to-connect-password-hash-synchronization.md) makalesi.
 
-### <a name="pass-through-authentication"></a>Doğrudan kimlik doğrulaması
+### <a name="pass-through-authentication"></a>Doğrudan kimlik doğrulama
 Geçişli kimlik doğrulaması ile kullanıcının parolası, şirket içi Active Directory denetleyicisine göre onaylanır. Parolanın herhangi bir biçimde Azure AD 'de mevcut olması gerekmez. Bu, oturum açma saati kısıtlamaları gibi şirket içi ilkelerin, bulut hizmetlerinde kimlik doğrulaması sırasında değerlendirilmesini sağlar.
 
 Geçişli kimlik doğrulaması, şirket içi ortamda Windows Server 2012 R2 etki alanına katılmış bir makinede basit bir aracı kullanır. Bu aracı parola doğrulama isteklerini dinler. Herhangi bir gelen bağlantı noktasının Internet 'e açık olmasını gerektirmez.
@@ -69,7 +69,7 @@ Ayrıca, şirket ağındaki etki alanına katılmış makinelerde bulunan kullan
 ![Doğrudan kimlik doğrulama](./media/plan-connect-user-signin/pta.png)
 
 Daha fazla bilgi için bkz.
-- [Doğrudan kimlik doğrulaması](how-to-connect-pta.md)
+- [Geçişli kimlik doğrulaması](how-to-connect-pta.md)
 - [Çoklu oturum açma](how-to-connect-sso.md)
 
 ### <a name="federation-that-uses-a-new-or-existing-farm-with-ad-fs-in-windows-server-2012-r2"></a>Windows Server 2012 R2 'de AD FS yeni veya var olan bir grubu kullanan federasyon

@@ -15,10 +15,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 3afeadff71bd373354b891bd6690d94d28fc0805
-ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92096411"
 ---
 # <a name="custom-installation-of-azure-active-directory-connect"></a>Azure Active Directory Connect özel yüklemesi
@@ -38,7 +38,7 @@ Bir özelleştirilmiş ayarlar yüklemesi başlatmak için **Hızlı ayarlar** s
 
 - [Gerekli Bileşenler](#install-required-components)
 - [Kullanıcı oturumu açma](#user-sign-in)
-- [Azure AD'ye Bağlanma](#connect-to-azure-ad)
+- [Azure AD 'ye bağlanma](#connect-to-azure-ad)
 - [Eşitle](#sync-pages)
 
 ### <a name="install-required-components"></a>Gerekli bileşenleri yükleme
@@ -49,7 +49,7 @@ Eşitleme hizmetlerini yüklerken isteğe bağlı yapılandırma bölümünü se
 | İsteğe bağlı yapılandırma | Description |
 | --- | --- |
 |Özel bir yükleme konumu belirtin| Azure AD Connect için varsayılan yükleme yolunu değiştirmenize izin verir.|
-| Mevcut bir SQL Server'ı kullanma |SQL Server adı ve örnek adını belirtmenize olanak tanır. Kullanmak istediğiniz bir veritabanı sunucusu zaten varsa bu seçeneği belirleyin. Örnek **adı**için, SQL Server Örneğinizde göz atma özelliği etkinleştirilmemişse örnek adını, bir virgül ve bağlantı noktası numarasını girin.  Sonra Azure AD Connect veritabanının adını belirtin.  SQL ayrıcalıklarınız, yeni bir veritabanının oluşturulup oluşturulmayacağını veya SQL yöneticinizin veritabanını önceden oluşturması gerektiğini belirtir.  SQL Server Yöneticisi (SA) izinleriniz varsa bkz. [var olan bir veritabanını kullanarak Azure AD Connect yüklemesi](how-to-connect-install-existing-database.md).  Temsilci izinleri (DBO) varsa bkz. [SQL temsilcisi yönetici izinleri kullanarak Azure AD Connect yüklemesi](how-to-connect-install-sql-delegation.md). |
+| Mevcut bir SQL Server'ı kullanma |SQL Server adı ve örnek adını belirtmenize olanak tanır. Kullanmak istediğiniz bir veritabanı sunucusu zaten varsa bu seçeneği belirleyin. Örnek **adı** için, SQL Server Örneğinizde göz atma özelliği etkinleştirilmemişse örnek adını, bir virgül ve bağlantı noktası numarasını girin.  Sonra Azure AD Connect veritabanının adını belirtin.  SQL ayrıcalıklarınız, yeni bir veritabanının oluşturulup oluşturulmayacağını veya SQL yöneticinizin veritabanını önceden oluşturması gerektiğini belirtir.  SQL Server Yöneticisi (SA) izinleriniz varsa bkz. [var olan bir veritabanını kullanarak Azure AD Connect yüklemesi](how-to-connect-install-existing-database.md).  Temsilci izinleri (DBO) varsa bkz. [SQL temsilcisi yönetici izinleri kullanarak Azure AD Connect yüklemesi](how-to-connect-install-sql-delegation.md). |
 | Mevcut bir hizmet hesabını kullanma |Varsayılan olarak, Azure AD Connect Eşitleme Hizmetleri için bir sanal hizmet hesabı sağlar. SQL Server uzak bir örneğini kullanıyorsanız veya kimlik doğrulaması gerektiren bir proxy kullanıyorsanız, bir *yönetilen hizmet hesabı* veya etki alanında parola korumalı bir hizmet hesabı kullanabilirsiniz. Bu durumlarda, kullanmak istediğiniz hesabı girin. Yüklemeyi çalıştırmak için, SQL 'de bir SA olmanız gerekir, bu sayede hizmet hesabı için oturum açma kimlik bilgileri oluşturabilirsiniz. Daha fazla bilgi için bkz. [Azure AD Connect hesapları ve izinleri](reference-connect-accounts-permissions.md#adsync-service-account). </br></br>En son derlemeyi kullanarak, SQL Yöneticisi artık veritabanını bant dışı temin edebilir. Azure AD Connect Yöneticisi, veritabanını veritabanı sahibi haklarıyla yükleyebilir.  Daha fazla bilgi için bkz. [SQL Temsilcili yönetici izinleri kullanarak Azure AD Connect yüklemesi](how-to-connect-install-sql-delegation.md).|
 | Özel eşitleme grubu belirtme |Varsayılan olarak, Eşitleme Hizmetleri yüklendiğinde Azure AD Connect sunucuda yerel olan dört grup oluşturur. Bu gruplar Yöneticiler, Işleçler, gözatmak ve parola Sıfırlamalardır. Kendi gruplarınızı burada belirtebilirsiniz. Grupların sunucuda yerel olması gerekir. Etki alanında yer amazlar. |
 |Eşitleme ayarlarını içeri aktar (Önizleme)|Azure AD Connect diğer sürümlerinden ayarları içeri aktarmanıza izin verir.  Daha fazla bilgi için bkz. [Azure AD Connect yapılandırma ayarlarını içeri ve dışarı aktarma](how-to-connect-import-export-config.md).|
@@ -96,8 +96,8 @@ Orman adını girdikten ve  **Dizin Ekle**' yi seçtikten sonra bir pencere gör
 
 | Seçenek | Açıklama |
 | --- | --- |
-| Yeni hesap oluştur | Dizin eşitleme sırasında Active Directory ormana bağlanması için Azure AD Connect gereken Azure AD DS hesabını oluşturun. Bu seçeneği belirledikten sonra, bir kurumsal yönetici hesabının kullanıcı adını ve parolasını girin.  Azure AD Connect, gerekli Azure AD DS hesabını oluşturmak için, belirtilen Kurumsal Yönetici hesabını kullanır. Etki alanı bölümünü NetBIOS biçiminde veya FQDN biçiminde girebilirsiniz. Diğer bir deyişle, *FABRIKAM \ yönetici* veya *FABRIKAM. com\administrator*yazın. |
-| Mevcut hesabı kullan | Azure AD Connect, Dizin eşitleme sırasında Active Directory ormanına bağlanmak için kullanabileceği mevcut bir Azure AD DS hesabı sağlayın. Etki alanı bölümünü NetBIOS biçiminde veya FQDN biçiminde girebilirsiniz. Diğer bir deyişle, *FABRIKAM\syncuser* veya *FABRIKAM. com\syncuser*girin. Bu hesap, yalnızca varsayılan okuma izinlerine ihtiyacı olduğundan normal bir kullanıcı hesabı olabilir. Ancak senaryonuza bağlı olarak daha fazla izne sahip olabilirsiniz. Daha fazla bilgi için bkz. [Azure AD Connect hesapları ve izinleri](reference-connect-accounts-permissions.md#create-the-ad-ds-connector-account). |
+| Yeni hesap oluştur | Dizin eşitleme sırasında Active Directory ormana bağlanması için Azure AD Connect gereken Azure AD DS hesabını oluşturun. Bu seçeneği belirledikten sonra, bir kurumsal yönetici hesabının kullanıcı adını ve parolasını girin.  Azure AD Connect, gerekli Azure AD DS hesabını oluşturmak için, belirtilen Kurumsal Yönetici hesabını kullanır. Etki alanı bölümünü NetBIOS biçiminde veya FQDN biçiminde girebilirsiniz. Diğer bir deyişle, *FABRIKAM \ yönetici* veya *FABRIKAM. com\administrator* yazın. |
+| Mevcut hesabı kullan | Azure AD Connect, Dizin eşitleme sırasında Active Directory ormanına bağlanmak için kullanabileceği mevcut bir Azure AD DS hesabı sağlayın. Etki alanı bölümünü NetBIOS biçiminde veya FQDN biçiminde girebilirsiniz. Diğer bir deyişle, *FABRIKAM\syncuser* veya *FABRIKAM. com\syncuser* girin. Bu hesap, yalnızca varsayılan okuma izinlerine ihtiyacı olduğundan normal bir kullanıcı hesabı olabilir. Ancak senaryonuza bağlı olarak daha fazla izne sahip olabilirsiniz. Daha fazla bilgi için bkz. [Azure AD Connect hesapları ve izinleri](reference-connect-accounts-permissions.md#create-the-ad-ds-connector-account). |
 
 ![Yeni bir hesap oluşturmayı veya mevcut bir hesabı kullanmayı seçebileceğiniz "Dizin bağla" sayfasını ve D orman hesabı penceresini gösteren ekran görüntüsü.](./media/how-to-connect-install-custom/connectdir02.png)
 
@@ -110,11 +110,11 @@ Orman adını girdikten ve  **Dizin Ekle**' yi seçtikten sonra bir pencere gör
 
 !["Azure A D oturum açma yapılandırması" sayfasında doğrulanmamış etki alanlarını gösteren ekran görüntüsü.](./media/how-to-connect-install-custom/aadsigninconfig2.png)  
 
-**Eklenmemiş** veya **doğrulanmadı**olarak işaretlenen her etki alanını gözden geçirin. Kullandığınız etki alanlarının Azure AD 'de doğrulandığından emin olun. Etki alanlarınızı doğruladıktan sonra, dairesel yenileme simgesini seçin. Daha fazla bilgi için bkz. [etki alanı ekleme ve doğrulama](../fundamentals/add-custom-domain.md).
+**Eklenmemiş** veya **doğrulanmadı** olarak işaretlenen her etki alanını gözden geçirin. Kullandığınız etki alanlarının Azure AD 'de doğrulandığından emin olun. Etki alanlarınızı doğruladıktan sonra, dairesel yenileme simgesini seçin. Daha fazla bilgi için bkz. [etki alanı ekleme ve doğrulama](../fundamentals/add-custom-domain.md).
 
 Kullanıcılar, Azure AD 'de oturum açtıklarında veya Microsoft 365, *userPrincipalName* özniteliğini kullanır. Kullanıcılar eşitlenmeden önce Azure AD, UPN soneki olarak da bilinen etki alanlarını doğrulamalıdır. Microsoft varsayılan öznitelik userPrincipalName değerini tutmanızı önerir. 
 
-UserPrincipalName özniteliği yönlendirilemez ve doğrulanamazsa, başka bir öznitelik seçebilirsiniz. Örneğin, oturum açma KIMLIĞINI tutan öznitelik olarak e-posta ' i seçebilirsiniz. UserPrincipalName dışında bir öznitelik kullandığınızda, bu bir *ALTERNATIF kimlik*olarak bilinir. 
+UserPrincipalName özniteliği yönlendirilemez ve doğrulanamazsa, başka bir öznitelik seçebilirsiniz. Örneğin, oturum açma KIMLIĞINI tutan öznitelik olarak e-posta ' i seçebilirsiniz. UserPrincipalName dışında bir öznitelik kullandığınızda, bu bir *ALTERNATIF kimlik* olarak bilinir. 
 
 Alternatif KIMLIK özniteliği değeri, RFC 822 standardına uymalıdır. Parola karması eşitleme, geçişli kimlik doğrulaması ve Federasyon ile alternatif KIMLIK kullanabilirsiniz. Active Directory, özniteliği yalnızca tek bir değere sahip olsa bile çok değerli olarak tanımlanamaz. Alternatif kimlik hakkında daha fazla bilgi için bkz. [geçişli kimlik doğrulaması: sık sorulan sorular](./how-to-connect-pta-faq.md#does-pass-through-authentication-support-alternate-id-as-the-username-instead-of-userprincipalname).
 
@@ -171,7 +171,7 @@ Sourcetutturucu özniteliği değiştirilemediğinden uygun bir öznitelik seçm
 
 At işareti (@) içeren öznitelikleri kullanamazsınız, bu nedenle e-posta ve userPrincipalName kullanamazsınız. Özniteliği de büyük/küçük harfe duyarlıdır, bu nedenle bir nesneyi ormanlar arasında taşıdığınızda büyük ve küçük harfleri koruduğunuzdan emin olun. İkili öznitelikler Base64 kodlardır, ancak diğer öznitelik türleri kodlanmamış durumda kalır. 
 
-Federasyon senaryolarında ve bazı Azure AD arabirimlerinde, Sourcetutturucu özniteliği de *ImmutableID*olarak bilinir. 
+Federasyon senaryolarında ve bazı Azure AD arabirimlerinde, Sourcetutturucu özniteliği de *ImmutableID* olarak bilinir. 
 
 Kaynak Bağlayıcısı hakkında daha fazla bilgi için bkz. [tasarım kavramları](plan-connect-design-concepts.md#sourceanchor).
 
@@ -260,7 +260,7 @@ Grup ilkesi yönetim araçları olan bir bilgisayarda:
 
 1.  Grup ilkesi Yönetim Araçları ' nı açın.
 2.  Tüm kullanıcılara uygulanacak grup ilkesini düzenleyin. Örneğin, varsayılan etki alanı ilkesi.
-3.  **User Configuration**  >  **Administrative Templates**  >  **Windows bileşenleri**  >  **Internet Explorer**  >  **Internet Denetim Masası**  >  **Güvenlik sayfasına**Yönetim Şablonları Kullanıcı Yapılandırması ' na gidin. Ardından **siteden bölgeye atama listesi**' ni seçin.
+3.    >    >  **Windows bileşenleri**  >  **Internet Explorer**  >  **Internet Denetim Masası**  >  **Güvenlik sayfasına** Yönetim Şablonları Kullanıcı Yapılandırması ' na gidin. Ardından **siteden bölgeye atama listesi**' ni seçin.
 4.  İlkeyi etkinleştirin. Ardından, iletişim kutusunda bir değer adı `https://autologon.microsoftazuread-sso.com` ve değeri girin `1` . Kurulumlarınızın aşağıdaki görüntü gibi görünmesi gerekir.
   
     ![İntranet bölgelerini gösteren ekran görüntüsü.](./media/how-to-connect-install-custom/sitezone.png)
@@ -431,7 +431,7 @@ Uçtan uca kimlik doğrulamayı doğrulamak için aşağıdaki testlerin bir vey
 ## <a name="troubleshoot"></a>Sorun giderme
 Bu bölüm, Azure AD Connect yüklenirken bir sorununuz varsa kullanabileceğiniz sorun giderme bilgilerini içerir.
 
-Bir Azure AD Connect yüklemesini özelleştirdiğinizde, **gerekli bileşenleri yükleme** sayfasında, **var olan bir SQL Server kullan**seçeneğini belirleyebilirsiniz. Şu hatayla karşılaşabilirsiniz: "ADSync veritabanı zaten veri içeriyor ve üzerine yazılamaz. Lütfen var olan veritabanını kaldırın ve yeniden deneyin. "
+Bir Azure AD Connect yüklemesini özelleştirdiğinizde, **gerekli bileşenleri yükleme** sayfasında, **var olan bir SQL Server kullan** seçeneğini belirleyebilirsiniz. Şu hatayla karşılaşabilirsiniz: "ADSync veritabanı zaten veri içeriyor ve üzerine yazılamaz. Lütfen var olan veritabanını kaldırın ve yeniden deneyin. "
 
 !["Gerekli bileşenleri yüklensin" sayfasını gösteren ekran görüntüsü. Sayfanın alt kısmında bir hata görünür.](./media/how-to-connect-install-custom/error1.png)
 

@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
 ms.openlocfilehash: 4c8cd4aa3e91c5d69c40e47683818ed8bc9be338
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86249912"
 ---
 # <a name="product-templates-in-azure-api-management"></a>Azure API Management ürün şablonları
@@ -79,7 +79,7 @@ Azure API Management, içeriğini yapılandıran bir dizi şablon kullanarak gel
   
 ### <a name="data-model"></a>Veri modeli  
   
-|Özellik|Tür|Açıklama|  
+|Özellik|Tür|Description|  
 |--------------|----------|-----------------|  
 |Sayfalama|[Sayfalama](api-management-template-data-model-reference.md#Paging) varlığı.|Ürünler koleksiyonu için sayfalama bilgileri.|  
 |Filtreleme|Varlık [filtreleme](api-management-template-data-model-reference.md#Filtering) .|Ürün listesi sayfası için filtreleme bilgileri.|  
@@ -204,11 +204,11 @@ Azure API Management, içeriğini yapılandıran bir dizi şablon kullanarak gel
   
 ### <a name="data-model"></a>Veri modeli  
   
-|Özellik|Tür|Açıklama|  
+|Özellik|Tür|Description|  
 |--------------|----------|-----------------|  
 |Ürün|[Ürün](api-management-template-data-model-reference.md#Product)|Belirtilen ürün.|  
 |IsDeveloperSubscribed|boolean|Geçerli kullanıcının bu ürüne abone olup olmadığı.|  
-|SubscriptionState|number|Aboneliğin durumu. Olası durumlar şunlardır:<br /><br /> -   `0 - suspended` – abonelik engellenir ve abone ürünün herhangi bir API 'sini çağıramaz.<br />-   `1 - active` – Abonelik etkin.<br />-   `2 - expired` – abonelik sona erme tarihine ulaştı ve devre dışı bırakıldı.<br />-   `3 - submitted` – abonelik isteği geliştirici tarafından yapıldı, ancak henüz onaylanmamış veya reddedildi.<br />-   `4 - rejected` – abonelik isteği bir yönetici tarafından reddedildi.<br />-   `5 - cancelled` – abonelik, geliştirici veya yönetici tarafından iptal edildi.|  
+|SubscriptionState|sayı|Aboneliğin durumu. Olası durumlar şunlardır:<br /><br /> -   `0 - suspended` – abonelik engellenir ve abone ürünün herhangi bir API 'sini çağıramaz.<br />-   `1 - active` – Abonelik etkin.<br />-   `2 - expired` – abonelik sona erme tarihine ulaştı ve devre dışı bırakıldı.<br />-   `3 - submitted` – abonelik isteği geliştirici tarafından yapıldı, ancak henüz onaylanmamış veya reddedildi.<br />-   `4 - rejected` – abonelik isteği bir yönetici tarafından reddedildi.<br />-   `5 - cancelled` – abonelik, geliştirici veya yönetici tarafından iptal edildi.|  
 |Sınırlar|array|Bu özellik kullanım dışıdır ve kullanılmamalıdır.|  
 |DelegatedSubscriptionEnabled|boolean|Bu abonelik için [temsilcinin](./api-management-howto-setup-delegation.md) etkin olup olmadığı.|  
 |DelegatedSubscriptionUrl 'Si|string|Temsilci etkin ise, temsil edilen abonelik URL 'SI.|  

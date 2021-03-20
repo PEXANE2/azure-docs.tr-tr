@@ -6,10 +6,10 @@ ms.topic: reference
 ms.date: 1/16/2020
 ms.author: jejarry
 ms.openlocfilehash: fc317345155a6807a20d342e2cefd0701b20f180
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86257062"
 ---
 # <a name="sfctl"></a>sfctl
@@ -18,17 +18,17 @@ Service Fabric kümelerini ve varlıklarını yönetmeye yönelik komutlar. Bu s
 Komutlar, isim-fiil modelini izler. Daha fazla bilgi için bkz. alt gruplar.
 
 ## <a name="subgroups"></a>Alt
-|Atama|Açıklama|
+|Atama|Description|
 | --- | --- |
 | [uygulama](service-fabric-sfctl-application.md) | Uygulamalar ve uygulama türleri oluşturun, silin ve yönetin. |
 | [Chaos](service-fabric-sfctl-chaos.md) | Chaos test hizmetini başlatın, durdurun ve rapor edin. |
 | [içi](service-fabric-sfctl-cluster.md) | Service Fabric kümelerini seçin, yönetin ve çalıştırın. |
 | [iletinizi](service-fabric-sfctl-compose.md) | Docker Compose uygulamalar oluşturun, silin ve yönetin. |
-| [container (kapsayıcı)](service-fabric-sfctl-container.md)  | Kapsayıcı ile ilgili komutları bir küme düğümünde çalıştırın. |
+| [kapsayıcı](service-fabric-sfctl-container.md) | Kapsayıcı ile ilgili komutları bir küme düğümünde çalıştırın. |
 | [olayları](service-fabric-sfctl-events.md) | Olayları olay deposundan al (EventStore hizmeti zaten yüklüyse). |
 | [is](service-fabric-sfctl-is.md) | Altyapı hizmetine komutları sorgulayın ve gönderin. |
 | [ese](service-fabric-sfctl-mesh.md) | Service Fabric kafes uygulamalarını silin ve yönetin. |
-| [düğümüne](service-fabric-sfctl-node.md) | Bir küme oluşturan düğümleri yönetin. |
+| [node](service-fabric-sfctl-node.md) | Bir küme oluşturan düğümleri yönetin. |
 | [bölümünüzün](service-fabric-sfctl-partition.md) | Tüm hizmet için bölümleri sorgulayın ve yönetin. |
 | [özelliði](service-fabric-sfctl-property.md) | Service Fabric adları altında mağaza ve sorgu özellikleri. |
 | [yinelemeden](service-fabric-sfctl-replica.md) | Hizmet bölümlerine ait çoğaltmaları yönetin. |

@@ -7,10 +7,10 @@ ms.author: cweining
 ms.date: 08/06/2018
 ms.reviewer: mbullwin
 ms.openlocfilehash: 9d9cc377ead0c297e8334d34255bd2c7c7cd39fc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86499418"
 ---
 # <a name="configure-application-insights-profiler"></a>Application Insights Profiler Yapılandır
@@ -63,7 +63,7 @@ Sayfanın bu bölümü, son profil oluşturma oturumları hakkında bilgi göste
 Tetikleyen | Oturumun nasıl başlatıldığı, bir tetikleyici, şimdi profil veya varsayılan örnekleme. 
 Uygulama Adı | Profili oluşturulan uygulamanın adı.
 Makine örneği | Profil Oluşturucu aracısının çalıştırıldığı makinenin adı.
-Zaman damgası | Profilin yakalandığı zaman.
+Timestamp | Profilin yakalandığı zaman.
 Tracee | Bireysel isteklere eklenmiş izleme sayısı.
 CPU % | Profil Oluşturucu çalışırken kullanılmakta olan CPU yüzdesi.
 Bellek | Profil Oluşturucu çalışırken kullanılmakta olan bellek yüzdesi.
@@ -78,7 +78,7 @@ Sonraki bölümlerde bu senaryonun nasıl çalıştığı gösterilmektedir:
 
 Web uygulamanızda zaten gelen trafik varsa veya yalnızca el ile trafik oluşturmak istiyorsanız, bu bölümü atlayın ve adım 2 ' ye geçin.
 
-1. Application Insights portalında, **Configure**  >  **performans testini**Yapılandır ' ı seçin. 
+1. Application Insights portalında,   >  **performans testini** Yapılandır ' ı seçin. 
 
 1. Yeni bir performans testi başlatmak için **Yeni** düğmesini seçin.
 
@@ -88,7 +88,7 @@ Web uygulamanızda zaten gelen trafik varsa veya yalnızca el ile trafik oluştu
 
     ![Yük testini yapılandırma][configure-performance-test]
 
-    Yeni test önce kuyruğa alınır ve sonrasında *ilerleme*durumu gelir.
+    Yeni test önce kuyruğa alınır ve sonrasında *ilerleme* durumu gelir.
 
     ![Yük testi gönderildi ve kuyruğa alındı][load-test-queued]
 

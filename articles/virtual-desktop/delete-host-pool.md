@@ -7,10 +7,10 @@ ms.date: 07/11/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: dfc9858bea468389d8ce90677f048e5d1fd3bb82
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88007599"
 ---
 # <a name="delete-a-host-pool"></a>Konak havuzunu silme
@@ -39,7 +39,7 @@ Azure portal bir konak havuzunu silmek için:
 
 1. [Azure portalında](https://portal.azure.com/) oturum açın.
 
-2. **Windows sanal masaüstü**araması yapın ve seçin.
+2. **Windows sanal masaüstü** araması yapın ve seçin.
 
 3. Sayfanın sol tarafındaki menüde **konak havuzları** ' nı seçin, sonra silmek istediğiniz konak havuzunun adını seçin.
 

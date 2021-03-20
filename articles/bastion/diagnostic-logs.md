@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 02/03/2020
 ms.author: charwen
 ms.openlocfilehash: 1e76fffd17ee565d4103ca8a7bf1523bbd16209d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91445384"
 ---
 # <a name="enable-and-work-with-bastion-resource-logs"></a>Bastion kaynağı günlüklerini etkinleştirme ve bunlarla çalışma
@@ -37,7 +37,7 @@ Kullanıcılar Azure savunma kullanarak iş yüklerine bağlandıklarında, uzak
 
 Tanılama günlüklerine erişmek için, tanılama ayarlarını etkinleştirirken belirttiğiniz depolama hesabını doğrudan kullanabilirsiniz.
 
-1. Depolama hesabınızın kaynağına ve ardından **kapsayıcılara**gidin. Depolama hesabı blobu kapsayıcıda oluşturulan **Öngörüler-logs-bastionauditlogs** blob 'unu görürsünüz.
+1. Depolama hesabınızın kaynağına ve ardından **kapsayıcılara** gidin. Depolama hesabı blobu kapsayıcıda oluşturulan **Öngörüler-logs-bastionauditlogs** blob 'unu görürsünüz.
 
    ![Tanılama ayarları](./media/diagnostic-logs/1-navigate-to-logs.png)
 2. Kapsayıcının içinde gezinirken, Blogunuzdaki çeşitli klasörleri görürsünüz. Bu klasörler, Azure savunma kaynağınız için kaynak hiyerarşisini gösterir.

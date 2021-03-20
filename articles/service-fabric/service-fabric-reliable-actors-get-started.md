@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 07/10/2019
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 225ccb67153a33ed47af68ebb1549dce37426278
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96573470"
 ---
 # <a name="getting-started-with-reliable-actors"></a>Reliable Actors kullanmaya başlama
@@ -44,15 +44,15 @@ Oluşturulan proje aşağıdaki yapıyı gösterir:
 
 * **Arabirim projesi (HelloWorld. Interfaces)**. Bu proje aktör için arabirim tanımını içerir. Aktör arabirimleri, herhangi bir ada sahip herhangi bir projede tanımlanabilir.  Arabirim, aktör uygulamasıyla paylaşılan aktör sözleşmesini ve aktör çağıran istemcileri tanımlar.  İstemci projeleri kendisine bağlı olabileceğinden, genellikle onu aktör uygulamasından ayrı bir derlemede tanımlamak mantıklı olur.
 
-* **Aktör hizmeti projesi (HelloWorld)**. Bu proje, aktöri barındıracak Service Fabric hizmetini tanımlar. Aktör, *HelloWorld.cs* uygulamasını içerir. Aktör uygulama, temel türden türetilen `Actor` ve *Myactor. Interfaces* projesinde tanımlanan arabirimleri uygulayan bir sınıftır. Aktör sınıfı ayrıca bir örneği kabul eden bir Oluşturucu ve bir de uygular `ActorService` `ActorId` ve bunları temel `Actor` sınıfa geçirir.
+* **Aktör hizmeti projesi (HelloWorld)**. Bu proje, aktöri barındıracak Service Fabric hizmetini tanımlar. Aktör, *HelloWorld. cs* uygulamasının uygulamasını içerir. Aktör uygulama, temel türden türetilen `Actor` ve *Myactor. Interfaces* projesinde tanımlanan arabirimleri uygulayan bir sınıftır. Aktör sınıfı ayrıca bir örneği kabul eden bir Oluşturucu ve bir de uygular `ActorService` `ActorId` ve bunları temel `Actor` sınıfa geçirir.
     
-    Bu proje Ayrıca, kullanarak aktör sınıflarını Service Fabric çalışma zamanına kaydeden *program.cs* de içerir `ActorRuntime.RegisterActorAsync<T>()` . `HelloWorld`Sınıf zaten kayıtlı. Projeye eklenen diğer aktör uygulamalarının de yönteminde kayıtlı olması gerekir `Main()` .
+    Bu proje Ayrıca, kullanarak aktör sınıflarını Service Fabric çalışma zamanına kaydeden *program. cs* de içerir `ActorRuntime.RegisterActorAsync<T>()` . `HelloWorld`Sınıf zaten kayıtlı. Projeye eklenen diğer aktör uygulamalarının de yönteminde kayıtlı olması gerekir `Main()` .
 
 ## <a name="customize-the-helloworld-actor"></a>HelloWorld aktör 'i özelleştirme
 
 Proje şablonu, arabirimdeki bazı yöntemleri tanımlar `IHelloWorld` ve bunları `HelloWorld` aktör uygulamasında uygular.  Aktör hizmetinin basit bir "Merhaba Dünya" dizesi döndürmesi için bu yöntemleri değiştirin.
 
-*HelloWorld. Interfaces* projesinde, *IHelloWorld.cs* dosyasında, arabirim tanımını aşağıdaki gibi değiştirin:
+*HelloWorld. Interfaces* projesinde, *ıhelloworld. cs* dosyasında, arabirim tanımını aşağıdaki gibi değiştirin:
 
 ```csharp
 public interface IHelloWorld : IActor
@@ -61,7 +61,7 @@ public interface IHelloWorld : IActor
 }
 ```
 
-**HelloWorld** projesinde, **HelloWorld.cs** içinde, tüm sınıf tanımını aşağıdaki gibi değiştirin:
+**HelloWorld** projesinde **HelloWorld. cs**' de, tüm sınıf tanımını aşağıdaki gibi değiştirin:
 
 ```csharp
 [StatePersistence(StatePersistence.Persisted)]
@@ -85,7 +85,7 @@ Projeyi derlemek için **Ctrl-Shift-B** tuşlarına basın ve her şeyin derlend
 
 Aktör hizmetini çağırmak için basit bir konsol uygulaması oluşturun.
 
-1. Çözüm Gezgini > **Add**  >  **Yeni Proje Ekle...** öğesine sağ tıklayın.
+1. Çözüm Gezgini >   >  **Yeni Proje Ekle...** öğesine sağ tıklayın.
 
 2. **.NET Core** proje türleri altında **konsol uygulaması (.NET Core)** öğesini seçin.  Projeyi *Actorclient* olarak adlandırın.
     
@@ -106,11 +106,11 @@ Aktör hizmetini çağırmak için basit bir konsol uygulaması oluşturun.
 
     NuGet paketi ve tüm bağımlılıkları ActorClient projesine yüklenir.
 
-5. İstemci projesi Ayrıca, arabirimler projesine bir başvuru gerektirir.  ActorClient projesinde **Bağımlılıklar** ' a sağ tıklayın ve ardından **proje başvurusu Ekle...** öğesine tıklayın.  **Projeler > çözüm** ' ü seçin (zaten seçili değilse) ve ardından **HelloWorld. Interfaces**' in yanındaki onay kutusunu işaretleyin.  **Tamam** düğmesine tıklayın.
+5. İstemci projesi Ayrıca, arabirimler projesine bir başvuru gerektirir.  ActorClient projesinde **Bağımlılıklar** ' a sağ tıklayın ve ardından **proje başvurusu Ekle...** öğesine tıklayın.  **Projeler > çözüm** ' ü seçin (zaten seçili değilse) ve ardından **HelloWorld. Interfaces**' in yanındaki onay kutusunu işaretleyin.  **Tamam**'a tıklayın.
     
     ![Başvuru Ekle iletişim kutusu][7]
 
-6. ActorClient projesinde, *program.cs* öğesinin tüm içeriğini aşağıdaki kodla değiştirin:
+6. ActorClient projesinde, *program. cs* ' nin tüm içeriğini aşağıdaki kodla değiştirin:
     
     ```csharp
     using System;

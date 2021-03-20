@@ -8,10 +8,10 @@ ms.date: 08/12/2020
 ms.author: owend
 ms.reviewer: minewiskan
 ms.openlocfilehash: e4953137cf939c35c6ac73fe51ca43eca6e99edc
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88192439"
 ---
 # <a name="quickstart-configure-server-firewall---portal"></a>Hızlı başlangıç: Sunucu güvenlik duvarını yapılandırma - Portal
@@ -33,7 +33,7 @@ Bu hızlı başlangıç Azure Analysis Services sunucunuz için güvenlik duvar�
 ## <a name="configure-a-firewall"></a>Güvenlik duvarını yapılandırma
 
 1. Genel Bakış sayfasını açmak için sunucunuza tıklayın. 
-2. **Ayarlar**  >  **güvenlik duvarı**güvenlik  >  **duvarını etkinleştir**bölümünde **Açık**' ı seçin.
+2. **Ayarlar**  >  **güvenlik duvarı** güvenlik  >  **duvarını etkinleştir** bölümünde **Açık**' ı seçin.
 3. Power BI ve Power BI Premium bağlantıları etkinleştirmek için **Power BI erişime Izin ver**' ın içinde **Açık**' ı seçin.  
 4. (İsteğe bağlı) Bir veya birden çok IP adresi aralığı belirtin. Her aralık için bir ad, başlangıç ve bitiş IP adresi girin. Güvenlik duvarı kuralı adı 128 karakterle sınırlı olmalıdır ve yalnızca büyük harf, küçük harf karakter, rakam, alt çizgi ve kısa çizgi karakterlerini içerebilir. Boş boşluklara ve diğer özel karakterlere izin verilmez.
 5. **Kaydet**’e tıklayın.

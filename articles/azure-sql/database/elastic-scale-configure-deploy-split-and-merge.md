@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/04/2018
 ms.openlocfilehash: 71aad7699c5af6ce2a1b9d82a340138200cfb5e1
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92792081"
 ---
 # <a name="deploy-a-split-merge-service-to-move-data-between-sharded-databases"></a>Parçalı veritabanları arasında veri taşımak için bölünmüş birleştirme hizmeti dağıtma
@@ -37,11 +37,11 @@ Bölünmüş birleştirme aracı, verileri parçalı veritabanları arasında ta
 
 Dosyalar, **Microsoft. Azure. SQLDatabase. Elalapscale. Service. SplitMerge. x. x. xxx. x** adlı bir dizine yerleştirilir; burada *x. x. xxx.* x sürüm numarasını yansıtır. **Content\splitmerge\service** alt dizinindeki bölünmüş birleştirme hizmeti dosyalarını ve **content\splitmerge\powershell** alt dizinindeki Split-Merge PowerShell betiklerini (ve gerekli istemci dll 'leri) bulun.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
-1. Bölünmüş birleştirme durum veritabanı olarak kullanılacak bir Azure SQL veritabanı veritabanı oluşturun. [Azure portalına](https://portal.azure.com) gidin. Yeni bir **SQL veritabanı** oluşturun. Veritabanına bir ad verin ve yeni bir yönetici ve parola oluşturun. Daha sonra kullanmak üzere adı ve parolayı kaydettiğinizden emin olun.
+1. Bölünmüş birleştirme durum veritabanı olarak kullanılacak bir Azure SQL veritabanı veritabanı oluşturun. [Azure Portal](https://portal.azure.com) gidin. Yeni bir **SQL veritabanı** oluşturun. Veritabanına bir ad verin ve yeni bir yönetici ve parola oluşturun. Daha sonra kullanmak üzere adı ve parolayı kaydettiğinizden emin olun.
 
-1. Sunucunuzun Azure hizmetlerinin bu sunucuya bağlanmasına izin verdiğinden emin olun. Portalda, **güvenlik duvarı ayarları** ' nda, **Azure hizmetlerine erişime Izin ver** ayarının **Açık** olarak ayarlandığından emin olun. "Kaydet" simgesine tıklayın.
+1. Sunucunuzun Azure hizmetlerinin bu sunucuya bağlanmasına izin verdiğinden emin olun. Portalda, **güvenlik duvarı ayarları**' nda, **Azure hizmetlerine erişime Izin ver** ayarının **Açık** olarak ayarlandığından emin olun. "Kaydet" simgesine tıklayın.
 
 1. Tanılama çıktısı için bir Azure depolama hesabı oluşturun.
 
@@ -100,15 +100,15 @@ MakeCert 'ın yürütüldüğü pencerede aşağıdaki komutu yürütün; sertif
 ### <a name="import-the-client-certificate-into-the-personal-store"></a>İstemci sertifikasını Kişisel depoya aktarma
 
 1. Windows Gezgini 'nde *mycert. pfx* dosyasına çift tıklayın.
-2. **Sertifika Içeri aktarma sihirbazında** **Geçerli Kullanıcı** ' yı seçin ve **İleri** ' ye tıklayın.
-3. Dosya yolunu doğrulayın ve **İleri** ' ye tıklayın.
-4. Parolayı yazın, **Tüm genişletilmiş özellikleri içer** işaretli bırakın ve **İleri** ' ye tıklayın.
-5. **[...] Sertifika deposunu otomatik olarak seçin** ve **İleri** ' ye tıklayın.
-6. **Son** ve **Tamam** ' a tıklayın.
+2. **Sertifika Içeri aktarma sihirbazında** **Geçerli Kullanıcı** ' yı seçin ve **İleri**' ye tıklayın.
+3. Dosya yolunu doğrulayın ve **İleri**' ye tıklayın.
+4. Parolayı yazın, **Tüm genişletilmiş özellikleri içer** işaretli bırakın ve **İleri**' ye tıklayın.
+5. **[...] Sertifika deposunu otomatik olarak seçin** ve **İleri**' ye tıklayın.
+6. **Son** ve **Tamam**' a tıklayın.
 
 ### <a name="upload-the-pfx-file-to-the-cloud-service"></a>PFX dosyasını bulut hizmetine yükle
 
-1. [Azure portalına](https://portal.azure.com) gidin.
+1. [Azure Portal](https://portal.azure.com) gidin.
 2. **Cloud Services** seçin.
 3. Bölünmüş/birleştirme hizmeti için yukarıda oluşturduğunuz bulut hizmetini seçin.
 4. Üst menüdeki **Sertifikalar** ' a tıklayın.
@@ -143,8 +143,8 @@ CA için ayrı sertifikaların üretim dağıtımları, şifreleme, sunucu serti
 
 1. [Azure portal](https://portal.azure.com)'a gidin
 2. Daha önce oluşturduğunuz bulut hizmetini seçin.
-3. **Genel Bakış** 'a tıklayın.
-4. Hazırlama ortamını seçin ve ardından **karşıya yükle** ' ye tıklayın.
+3. **Genel Bakış**'a tıklayın.
+4. Hazırlama ortamını seçin ve ardından **karşıya yükle**' ye tıklayın.
 5. İletişim kutusunda bir dağıtım etiketi girin. Hem ' paket ' hem de ' yapılandırma ' için ' yerelden ' seçeneğine tıklayın ve *Splitmergeservice. cspkg* dosyasını ve daha önce yapılandırdığınız cscfg dosyanızı seçin.
 6. **Bir veya daha fazla rol tek bir örnek içeriyorsa bile dağıt** onay kutusunun işaretli olduğundan emin olun.
 7. Dağıtıma başlamak için sağ alt köşedeki değer düğmesine basın. Tamamlanması için birkaç dakika sürer.
@@ -324,7 +324,7 @@ Bölünmüş birleştirme işlemi gerçekleştirmek için, taşınmasını isted
 1. Parçalı her tablo için, tablonun üst şema adını (isteğe bağlı, varsayılan olarak "dbo"), tablo adını ve parça anahtarını içeren tablodaki sütun adını açıklayan bir **Shardedtableınfo** nesnesi oluşturun.
 2. Her başvuru tablosu için, tablonun üst şema adını (isteğe bağlı, varsayılan olarak "dbo") ve tablo adını açıklayan bir **Referencetableınfo** nesnesi oluşturun.
 3. Yukarıdaki Tableınfo **nesnelerini yeni bir** nesne tablosu nesnesine ekleyin.
-4. Bir **Shardmapmanager** nesnesine bir başvuru alın ve **Getıfermainfocollection** ' ı çağırın.
+4. Bir **Shardmapmanager** nesnesine bir başvuru alın ve **Getıfermainfocollection**' ı çağırın.
 5. Parça eşleme adını sağlayarak, **Fermainınfo** ' ı bir **Fermainfocollection** öğesine ekleyin.
 
 SetupSampleSplitMergeEnvironment.ps1 betiğiyle Bu örnek görünebilir.

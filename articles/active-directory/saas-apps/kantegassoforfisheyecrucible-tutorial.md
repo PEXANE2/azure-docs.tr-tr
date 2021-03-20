@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 04/16/2019
 ms.author: jeedes
 ms.openlocfilehash: 06a4e8aa1ad74f47526f3a39931632953bfaaec2
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92459195"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-kantega-sso-for-fisheyecrucible"></a>Öğretici: Fheye/CRUCIBLE için Kantega SSO ile tümleştirme Azure Active Directory
@@ -30,7 +30,7 @@ Azure AD ile Fheys/CRUCIBLE için Kantega SSO 'yu tümleştirmek aşağıdaki av
 Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](../manage-apps/what-is-single-sign-on.md).
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure AD tümleştirmesini Fheye/CRUCIBLE için Kantega SSO 'SU ile yapılandırmak için aşağıdaki öğelere ihtiyacınız vardır:
 
@@ -61,13 +61,13 @@ Tomheys/CRUCIBLE için Kantega SSO 'SU ile Azure AD arasında tümleştirmeyi ya
 
     ![Yeni uygulama düğmesi](common/add-new-app.png)
 
-4. Ara kutusuna, **fheye/CRUCIBLE Için Kantega SSO**yazın, sonuç panelinde **Kantega/CRUCIBLE Için KANTEGA SSO** ' yı seçin, sonra da uygulamayı eklemek için düğme **Ekle** ' ye tıklayın.
+4. Ara kutusuna, **fheye/CRUCIBLE Için Kantega SSO** yazın, sonuç panelinde **Kantega/CRUCIBLE Için KANTEGA SSO** ' yı seçin, sonra da uygulamayı eklemek için düğme **Ekle** ' ye tıklayın.
 
     ![Sonuçlar listesinde Fheys/CRUCIBLE için Kantega SSO](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-Bu bölümde, **Britta Simon**adlı bir test kullanıcısına bağlı olarak Fheye/crucıya Için Kantega IÇIN Azure AD çoklu oturum açmayı yapılandırıp test edersiniz.
+Bu bölümde, **Britta Simon** adlı bir test kullanıcısına bağlı olarak Fheye/crucıya Için Kantega IÇIN Azure AD çoklu oturum açmayı yapılandırıp test edersiniz.
 Çoklu oturum açma 'nın çalışması için, bir Azure AD kullanıcısı ve Kantega/CRUCIBLE için ilgili Kullanıcı arasındaki bağlantı ilişkisinin oluşturulması gerekir.
 
 Azure AD çoklu oturum açmayı, Fheye/Cruto için Kantega SSO 'SU ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını gerçekleştirmeniz gerekir:
@@ -132,7 +132,7 @@ Fheye/CRUCIBLE için Kantega SSO 'SU ile Azure AD çoklu oturum açmayı yapıla
 
 1. Farklı bir Web tarayıcısı penceresinde, Fheys/CRUCIBLE şirket içi sunucunuzda yönetici olarak oturum açın.
 
-1. Dişli üzerine gelin ve **eklentilere**tıklayın.
+1. Dişli üzerine gelin ve **eklentilere** tıklayın.
 
     !["COG" simgesini ve "eklentileri" seçili olduğunu gösteren ekran görüntüsü.](./media/kantegassoforfisheyecrucible-tutorial/addon1.png)
 
@@ -164,7 +164,7 @@ Fheye/CRUCIBLE için Kantega SSO 'SU ile Azure AD çoklu oturum açmayı yapıla
 
     !["Kimlik sağlayıcısı ekle" açılan ve "Azure Active Directory (Azure AD)" seçiliyken "Eklentiler-Kantega çoklu oturum açma" sayfasını gösteren ekran görüntüsü. ](./media/kantegassoforfisheyecrucible-tutorial/addon4.png)
 
-1. Abonelik düzeyini **temel**olarak seçin.
+1. Abonelik düzeyini **temel** olarak seçin.
 
     !["Temel" seçiliyken "Azure A D 'yi hazırlama" bölümünü gösteren ekran görüntüsü.](./media/kantegassoforfisheyecrucible-tutorial/addon5.png)
 
@@ -180,7 +180,7 @@ Fheye/CRUCIBLE için Kantega SSO 'SU ile Azure AD çoklu oturum açmayı yapıla
 
     !["Bilgisayarımdaki meta veri dosyası" bölümünün seçildiği "meta veri alma" bölümünü gösteren ekran görüntüsü.](./media/kantegassoforfisheyecrucible-tutorial/addon7.png)
 
-    a. Bilgisayarımdaki **meta veri dosyasını**seçin ve Azure Portal 'ten indirdiğiniz meta veri dosyasını karşıya yükleyin.
+    a. Bilgisayarımdaki **meta veri dosyasını** seçin ve Azure Portal 'ten indirdiğiniz meta veri dosyasını karşıya yükleyin.
 
     b. **İleri**’ye tıklayın.
 
@@ -234,7 +234,7 @@ Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı ol
 
     ![Kullanıcı iletişim kutusu](common/user-properties.png)
 
-    a. **Ad** alanına **Brittasıon**girin.
+    a. **Ad** alanına **Brittasıon** girin.
   
     b. **Kullanıcı adı** alanına yazın `brittasimon@yourcompanydomain.extension` . Örneğin, BrittaSimon@contoso.com
 
@@ -276,7 +276,7 @@ Azure AD kullanıcılarının fhete/Crucıya 'da oturum açmasını sağlamak i�
 
 1. Bir yönetici olarak CRUCIBLE şirket içi sunucunuzda oturum açın.
 
-1. Dişli üzerine gelin ve **kullanıcılara**tıklayın.
+1. Dişli üzerine gelin ve **kullanıcılara** tıklayın.
 
     !["COG" simgesinin seçili olduğunu ve açılan listeden "kullanıcılar" seçeneğini gösteren ekran görüntüsü.](./media/kantegassoforfisheyecrucible-tutorial/user1.png)
 

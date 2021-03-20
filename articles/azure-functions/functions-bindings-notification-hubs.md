@@ -7,10 +7,10 @@ ms.custom: devx-track-csharp
 ms.date: 11/21/2017
 ms.author: cshoe
 ms.openlocfilehash: c4198a1b73f76d61e39324befc85b55bd260e363
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88212223"
 ---
 # <a name="notification-hubs-output-binding-for-azure-functions"></a>Azure Işlevleri için çıkış bağlamasını Notification Hubs
@@ -248,7 +248,7 @@ public static async Task Run(string myQueueItem, IAsyncCollector<Notification> n
 
 Aşağıdaki tabloda, dosyasında *function.js* ve özniteliğinde ayarladığınız bağlama yapılandırma özellikleri açıklanmaktadır `NotificationHub` :
 
-|function.jsözelliği | Öznitelik özelliği |Açıklama|
+|function.jsözelliği | Öznitelik özelliği |Description|
 |---------|---------|----------------------|
 |**türüyle** |yok| Olarak ayarlanmalıdır `notificationHub` . |
 |**Görünüm** |yok| Olarak ayarlanmalıdır `out` . | 
@@ -289,7 +289,7 @@ Bağlantı dizesini var olan bir Bildirim Hub 'ına yapılandırmak için:
 
 1. [Azure Portal](https://portal.azure.com)Bildirim Hub 'ınıza gidin, **erişim ilkeleri**' ni seçin ve **Defaultfullsharedaccesssignature** ilkesinin yanındaki Kopyala düğmesini seçin. Bu, *Defaultfullsharedaccesssignature* ilkesinin bağlantı dizesini Notification Hub 'ınıza kopyalar. Bu bağlantı dizesi, işlevinizin hub 'a bildirim iletileri göndermesini sağlar.
     ![Bildirim Hub 'ı bağlantı dizesini Kopyala](./media/functions-bindings-notification-hubs/get-notification-hub-connection.png)
-1. Azure portal işlev uygulamanıza gidin, **uygulama ayarları**' nı seçin, **myhubconnectionstring**gibi bir anahtar ekleyin, Bildirim Hub 'ınızın kopyalanmış *Defaultfullsharedaccesssignature*  değerini değer olarak yapıştırın ve **Kaydet**' e tıklayın.
+1. Azure portal işlev uygulamanıza gidin, **uygulama ayarları**' nı seçin, **myhubconnectionstring** gibi bir anahtar ekleyin, Bildirim Hub 'ınızın kopyalanmış *Defaultfullsharedaccesssignature*  değerini değer olarak yapıştırın ve **Kaydet**' e tıklayın.
 
 Bu uygulama ayarının adı, *function.jsüzerinde* veya .net özniteliğinde çıkış bağlama bağlantısı ayarında yer alır. Bu makalenin önceki bölümlerinde bulunan [yapılandırma bölümüne](#configuration) bakın.
 
@@ -299,7 +299,7 @@ Bu uygulama ayarının adı, *function.jsüzerinde* veya .net özniteliğinde ç
 
 | Bağlama | Başvuru |
 |---|---|
-| Bildirim Hub 'ı | [İşlemler Kılavuzu](/rest/api/notificationhubs/) |
+| Bildirim Hub'ı | [İşlemler Kılavuzu](/rest/api/notificationhubs/) |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

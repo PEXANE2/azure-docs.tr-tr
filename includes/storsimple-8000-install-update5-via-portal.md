@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: 9832a961562930e61e94b28ed78976fd9f8c6f78
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93375866"
 ---
 #### <a name="to-install-an-update-from-the-azure-portal"></a>Azure portalından bir güncelleştirmeyi yüklemek için
@@ -17,15 +17,15 @@ ms.locfileid: "93375866"
 
     ![Cihaz Seç](./media/storsimple-8000-install-update5-via-portal/update1.png)
 
-2. **Cihaz ayarları**  >  **cihaz güncelleştirmeleri** ' ne gidin.
+2. **Cihaz ayarları**  >  **cihaz güncelleştirmeleri**' ne gidin.
 
     ![Cihaz güncelleştirmeleri ' ne tıklayın](./media/storsimple-8000-install-update5-via-portal/update2.png)
 
-2. Yeni güncelleştirmeler varsa bir bildirim görüntülenir. Alternatif olarak, **cihaz güncelleştirmeleri** dikey penceresinde **Güncelleştirmeleri Tara** ' ya tıklayın. Kullanılabilir güncelleştirmeleri taramak için bir iş oluşturulur. İş başarıyla tamamlandığında size bildirilir.
+2. Yeni güncelleştirmeler varsa bir bildirim görüntülenir. Alternatif olarak, **cihaz güncelleştirmeleri** dikey penceresinde **Güncelleştirmeleri Tara**' ya tıklayın. Kullanılabilir güncelleştirmeleri taramak için bir iş oluşturulur. İş başarıyla tamamlandığında size bildirilir.
 
     ![Cihaz güncelleştirmeleri 2 ' ye tıklayın](./media/storsimple-8000-install-update5-via-portal/update3.png)
 
-3. Bir güncelleştirmeyi cihazınıza uygulamadan önce sürüm notlarını gözden geçirmeniz önerilir. Güncelleştirmeleri uygulamak için **güncelleştirmeleri yüklensin** ' e tıklayın. **Düzenli güncelleştirmeleri Onayla** dikey penceresinde, güncelleştirmeleri uygulamadan önce tamamlanacak önkoşulları gözden geçirin. Cihazı güncelleştirmeye hazırız olduğunu göstermek için onay kutusunu işaretleyin ve ardından **Install** ' a tıklayın.
+3. Bir güncelleştirmeyi cihazınıza uygulamadan önce sürüm notlarını gözden geçirmeniz önerilir. Güncelleştirmeleri uygulamak için **güncelleştirmeleri yüklensin**' e tıklayın. **Düzenli güncelleştirmeleri Onayla** dikey penceresinde, güncelleştirmeleri uygulamadan önce tamamlanacak önkoşulları gözden geçirin. Cihazı güncelleştirmeye hazırız olduğunu göstermek için onay kutusunu işaretleyin ve ardından **Install**' a tıklayın.
 
     ![Cihaz güncelleştirmeleri 3 ' e tıklayın](./media/storsimple-8000-install-update5-via-portal/update4.png)
 
@@ -43,7 +43,7 @@ ms.locfileid: "93375866"
    
     Bundan sonra güncelleştirme, cihazınıza uygulanır.
 
-9. Güncelleştirmenin tamamlanması birkaç saat sürer. Güncelleştirme işini seçin ve **Ayrıntılar** ’a tıklayarak dilediğiniz zaman işin ayrıntılarını görüntüleyin.
+9. Güncelleştirmenin tamamlanması birkaç saat sürer. Güncelleştirme işini seçin ve **Ayrıntılar**’a tıklayarak dilediğiniz zaman işin ayrıntılarını görüntüleyin.
 
     ![Güncelleştirme işi oluşturma 2](./media/storsimple-8000-install-update5-via-portal/update8.png)
 
@@ -51,5 +51,5 @@ ms.locfileid: "93375866"
 
      ![Güncelleştirme işi oluşturma 3](./media/storsimple-8000-install-update5-via-portal/update7.png)
 
-10. İş tamamlandıktan sonra cihaz **güncelleştirmeleri > cihaz ayarları** ' na gidin. Yazılım sürümü şimdi güncellenmelidir.
+10. İş tamamlandıktan sonra cihaz **güncelleştirmeleri > cihaz ayarları**' na gidin. Yazılım sürümü şimdi güncellenmelidir.
 

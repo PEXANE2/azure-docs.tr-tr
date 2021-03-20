@@ -5,10 +5,10 @@ ms.devlang: PHP
 ms.topic: quickstart
 ms.date: 06/23/2020
 ms.openlocfilehash: 706f523fdfb3c710bb16b048cfc68ce98875adb1
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88066211"
 ---
 # <a name="quickstart-how-to-use-service-bus-topics-and-subscriptions-with-php"></a>Hızlı başlangıç: PHP ile Service Bus konuları ve abonelikleri kullanma
@@ -25,7 +25,7 @@ Bu makalede, Service Bus konularının ve aboneliklerinin nasıl kullanılacağ�
 
 ## <a name="prerequisites"></a>Önkoşullar
 1. Azure aboneliği. Bu öğreticiyi tamamlamak için bir Azure hesabınızın olması gerekir. [Visual Studio veya MSDN abonesi avantajlarınızı](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A85619ABF) etkinleştirebilir veya [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF)için kaydolabilirsiniz.
-2. Hızlı başlangıç içindeki adımları izleyin: bir Service Bus **ad alanı** oluşturmak ve **bağlantı dizesini**almak için [Azure Portal Service Bus konu başlığı ve abonelikleri oluşturmak üzere kullanın](service-bus-quickstart-topics-subscriptions-portal.md) .
+2. Hızlı başlangıç içindeki adımları izleyin: bir Service Bus **ad alanı** oluşturmak ve **bağlantı dizesini** almak için [Azure Portal Service Bus konu başlığı ve abonelikleri oluşturmak üzere kullanın](service-bus-quickstart-topics-subscriptions-portal.md) .
 
     > [!NOTE]
     > Bu hızlı başlangıçta **php** 'yi kullanarak konu için bir **Konu** ve bir **abonelik** oluşturacaksınız. 
@@ -88,7 +88,7 @@ Endpoint=[yourEndpoint];SharedAccessKeyName=RootManageSharedAccessKey;SharedAcce
 
 Burada `Endpoint` genellikle biçimindedir `https://[yourNamespace].servicebus.windows.net` .
 
-Herhangi bir Azure hizmeti istemcisi oluşturmak için sınıfını kullanmanız gerekir `ServicesBuilder` . Şunları yapabilirsiniz:
+Herhangi bir Azure hizmeti istemcisi oluşturmak için sınıfını kullanmanız gerekir `ServicesBuilder` . Seçenekleriniz şunlardır:
 
 * Bağlantı dizesini doğrudan ona geçirin.
 * Bağlantı dizesinin birden çok dış kaynağını denetlemek için **Cloudconfigurationmanager (CCM)** kullanın:

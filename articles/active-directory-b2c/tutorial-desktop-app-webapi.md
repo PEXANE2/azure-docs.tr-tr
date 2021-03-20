@@ -11,10 +11,10 @@ ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
 ms.openlocfilehash: 12951f25feb6f3710b8d35fbc682caeeb480e788
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100555610"
 ---
 # <a name="tutorial-grant-access-to-a-nodejs-web-api-from-a-desktop-app-using-azure-active-directory-b2c"></a>Öğretici - Azure Active Directory B2C kullanarak bir masaüstü uygulamasından Node.js web API'sine erişim izni verme
@@ -88,7 +88,7 @@ Web API 'SI kayıtlı olduğuna ve kapsamlarınızın ve izinlerinizin yapıland
 Bu makalenin bir önkoşulu içinde, Azure AD B2C kiracınızdaki bir Kullanıcı akışı ile oturum açmayı etkinleştirmek için bir [WPF Masaüstü uygulamasını](https://github.com/Azure-Samples/active-directory-b2c-dotnet-desktop) değiştirdiniz. Bu bölümde, *webapi1* daha önce kaydettiğiniz Web API 'sine başvurmak için aynı uygulamayı güncelleşolursunuz.
 
 1. Visual Studio 'da **Active-Directory-B2C-WPF** çözümünü ( `active-directory-b2c-wpf.sln` ) açın.
-1. **Active-Directory-B2C-WPF** projesinde, *app.xaml.cs* dosyasını açın ve aşağıdaki değişken tanımlarını bulun.
+1. **Active-Directory-B2C-WPF** projesinde *app. xaml. cs* dosyasını açın ve aşağıdaki değişken tanımlarını bulun.
     1. Değişkenin değerini, `ApiScopes` **demo. Read** kapsamını tanımladığınızda daha önce kaydettiğiniz değerle değiştirin.
     1. Değişkenin değerini, `ApiEndpoint` kiracınızdaki Web API 'sini (örneğin, *webapi1*) kaydettiğinizde daha önce KAYDETTIĞINIZ **yeniden yönlendirme URI** 'siyle değiştirin.
 

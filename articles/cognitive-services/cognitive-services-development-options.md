@@ -9,10 +9,10 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 10/22/2020
 ms.openlocfilehash: 975f7eec31839aefcb1782f573d0210df29a4d00
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98873578"
 ---
 # <a name="cognitive-services-development-options"></a>Bilişsel Hizmetler dağıtım seçenekleri
@@ -35,7 +35,7 @@ Bilişsel hizmetler dört kategoride düzenlenmiştir: karar, dil, konuşma ve v
 
 ## <a name="development-options-for-prediction-and-analysis"></a>Tahmin ve analiz için geliştirme seçenekleri 
 
-Modelleri özelleştirmek ve yapılandırmak için kullanacağınız araçlar, bilişsel hizmetler 'i çağırmak için kullanabileenlerden farklıdır. Çoğu bilişsel hizmetler, tüm özelleştirmeler olmadan veri göndermenizi ve Öngörüler almanızı sağlar. Örneğin: 
+Modelleri özelleştirmek ve yapılandırmak için kullanacağınız araçlar, bilişsel hizmetler 'i çağırmak için kullanabileenlerden farklıdır. Çoğu bilişsel hizmetler, tüm özelleştirmeler olmadan veri göndermenizi ve Öngörüler almanızı sağlar. Örnek: 
 
 * Sözcükleri ve tümceleri algılamak veya çerçevedeki kişilerin sayısını saymak için Görüntü İşleme hizmetine görüntü gönderebilirsiniz
 * Konuşma hizmetine bir ses dosyası gönderebilir ve sonra da konuşmayı aynı anda metne çevirebilirsiniz
@@ -114,7 +114,7 @@ Dağıtımlarınızı yönetmek için Azure DevOps ve GitHub eylemlerini kullana
 
 ## <a name="tools-to-customize-and-configure-models"></a>Modelleri özelleştirmeye ve yapılandırmaya yönelik araçlar
 
-Bilişsel hizmetlerle bir uygulama veya iş akışı oluşturan yolculukta ilerlemeniz sayesinde, istenen performansı elde etmek için modeli özelleştirmeniz gerektiğini fark edebilirsiniz. Hizmetlerimizin birçoğu, belirli iş gereksinimlerinizi karşılamak için önceden oluşturulmuş modellerin üzerine derlemenize olanak tanır. Tüm özelleştirilebilir hizmetlerimiz için hem işlem boyunca hem de kod odaklı eğitimlere yönelik API 'Ler için Kullanıcı arabirimi odaklı bir deneyim sağlıyoruz. Örneğin:
+Bilişsel hizmetlerle bir uygulama veya iş akışı oluşturan yolculukta ilerlemeniz sayesinde, istenen performansı elde etmek için modeli özelleştirmeniz gerektiğini fark edebilirsiniz. Hizmetlerimizin birçoğu, belirli iş gereksinimlerinizi karşılamak için önceden oluşturulmuş modellerin üzerine derlemenize olanak tanır. Tüm özelleştirilebilir hizmetlerimiz için hem işlem boyunca hem de kod odaklı eğitimlere yönelik API 'Ler için Kullanıcı arabirimi odaklı bir deneyim sağlıyoruz. Örnek:
 
 * Bir Özel Konuşma Tanıma modelini, bir sözcük hata oranı (WER) ile tıp koşullarını doğru bir şekilde tanıyacak şekilde eğitebilmek istiyorsunuz %3
 * Coniferous ve yaprak döken ağaçlar arasındaki farkı söyleyebilir Özel Görüntü İşleme bir görüntü Sınıflandırıcısı oluşturmak istiyorsunuz

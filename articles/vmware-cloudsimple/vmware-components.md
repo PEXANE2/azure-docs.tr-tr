@@ -10,10 +10,10 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: ff9aec1904be754990958869666e9d67038e4fb3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88142511"
 ---
 # <a name="private-cloud-vmware-components"></a>Özel bulut VMware bileşenleri
@@ -48,13 +48,13 @@ vCenter Server gereci (VCSA), CloudSimple tarafından VMware çözümü için ki
 
 ### <a name="vcenter-single-sign-on"></a>vCenter çoklu oturum açma
 
-VCSA 'daki katıştırılmış platform hizmetleri denetleyicisi bir **vCenter tek Sign-On etki alanı**ile ilişkilendirilir.  Etki alanı adı **cloudsimple. Local**' dir.  VCenter 'a erişmeniz için varsayılan bir Kullanıcı **CloudOwner@cloudsimple.com** oluşturulur.  VCenter için şirket içi/Azure Active Directory [kimlik kaynaklarınızı](set-vcenter-identity.md)ekleyebilirsiniz.
+VCSA 'daki katıştırılmış platform hizmetleri denetleyicisi bir **vCenter tek Sign-On etki alanı** ile ilişkilendirilir.  Etki alanı adı **cloudsimple. Local**' dir.  VCenter 'a erişmeniz için varsayılan bir Kullanıcı **CloudOwner@cloudsimple.com** oluşturulur.  VCenter için şirket içi/Azure Active Directory [kimlik kaynaklarınızı](set-vcenter-identity.md)ekleyebilirsiniz.
 
 ## <a name="vsan-storage"></a>vSAN depolaması
 
 Özel bulutlar tümüyle yapılandırılan tümü-Flash vSAN depolama, küme yereliyle oluşturulur.  VSAN veri deposu ile vSphere kümesi oluşturmak için aynı SKU 'nun en az üç düğümü gereklidir.  Devre dışı bırakma ve sıkıştırma, varsayılan olarak vSAN veri deposunda etkindir.  VSphere kümesinin her bir düğümünde iki disk grubu oluşturulur. Her disk grubu, bir önbellek diski ve üç kapasite diski içerir.
 
-VSphere kümesinde varsayılan bir vSAN depolama ilkesi oluşturulur ve vSAN veri deposuna uygulanır.  Bu ilke, gerekli hizmet düzeyini güvence altına almak için VM depolama nesnelerinin veri deposu içinde nasıl sağlandığını ve ayrılacağını belirler.  Depolama ilkesi, **tolerans (FTT)** ve **hata toleransı yöntemi**hatalarını tanımlar.  Yeni depolama ilkeleri oluşturabilir ve bunları sanal makinelere uygulayabilirsiniz. SLA 'yı sürdürmek için, vSAN veri deposunda %25 yedek kapasitesinin korunması gerekir.  
+VSphere kümesinde varsayılan bir vSAN depolama ilkesi oluşturulur ve vSAN veri deposuna uygulanır.  Bu ilke, gerekli hizmet düzeyini güvence altına almak için VM depolama nesnelerinin veri deposu içinde nasıl sağlandığını ve ayrılacağını belirler.  Depolama ilkesi, **tolerans (FTT)** ve **hata toleransı yöntemi** hatalarını tanımlar.  Yeni depolama ilkeleri oluşturabilir ve bunları sanal makinelere uygulayabilirsiniz. SLA 'yı sürdürmek için, vSAN veri deposunda %25 yedek kapasitesinin korunması gerekir.  
 
 ### <a name="default-vsan-storage-policy"></a>Varsayılan vSAN depolama ilkesi
 
@@ -82,7 +82,7 @@ NSX veri merkezi, özel bulutunuzda ağ sanallaştırma, mikro segmentleme ve a�
 
 ## <a name="vsphere-cluster"></a>vSphere kümesi
 
-ESXi Konakları, özel bulutun yüksek oranda kullanılabilirliğini sağlamak için bir küme olarak yapılandırılır.  Özel bir bulut oluşturduğunuzda, vSphere Yönetim bileşenleri ilk kümede dağıtılır.  Yönetim bileşenleri için bir kaynak havuzu oluşturulur ve tüm yönetim VM 'Leri bu kaynak havuzunda dağıtılır. İlk küme, özel bulutu daraltmak için silinemez.  vSphere kümesi, **VSPHERE ha**kullanan VM 'ler için yüksek kullanılabilirlik sağlar.  Tolerans sorunları, kümedeki kullanılabilir düğümlerin sayısını temel alır.  Kabul ```Number of nodes = 2N+1``` ```N``` edilecek başarısızlık sayısı olan formülünü kullanabilirsiniz.
+ESXi Konakları, özel bulutun yüksek oranda kullanılabilirliğini sağlamak için bir küme olarak yapılandırılır.  Özel bir bulut oluşturduğunuzda, vSphere Yönetim bileşenleri ilk kümede dağıtılır.  Yönetim bileşenleri için bir kaynak havuzu oluşturulur ve tüm yönetim VM 'Leri bu kaynak havuzunda dağıtılır. İlk küme, özel bulutu daraltmak için silinemez.  vSphere kümesi, **VSPHERE ha** kullanan VM 'ler için yüksek kullanılabilirlik sağlar.  Tolerans sorunları, kümedeki kullanılabilir düğümlerin sayısını temel alır.  Kabul ```Number of nodes = 2N+1``` ```N``` edilecek başarısızlık sayısı olan formülünü kullanabilirsiniz.
 
 ### <a name="vsphere-cluster-limits"></a>vSphere kümesi sınırları
 

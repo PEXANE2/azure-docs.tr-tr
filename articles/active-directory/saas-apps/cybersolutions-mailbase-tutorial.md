@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 09/09/2020
 ms.author: jeedes
 ms.openlocfilehash: 9a1bed217f12646687654f37145a4a796d0487a1
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92455009"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-cybersolutions-mailbasecmss"></a>Öğretici: Sisolution MAILBASEΣ \ CMSS ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
@@ -26,7 +26,7 @@ Bu öğreticide, Sibsolution MAILBASEΣ \ CMSS 'yi Azure Active Directory (Azure
 * Kullanıcılarınızın Azure AD hesaplarıyla Sibsolution MAILBASEΣ \ CMSS 'de otomatik olarak oturum açmalarına olanak sağlayın.
 * Hesaplarınızı tek bir merkezi konumda yönetin-Azure portal.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -53,7 +53,7 @@ Sibsolution MAILBASEΣ \ CMSS ' yi Azure AD 'ye tümleştirmeyi yapılandırmak 
 
 ## <a name="configure-and-test-azure-ad-sso-for-cybersolutions-mailbasecmss"></a>CyberSolutions MAILBASEΣ \ CMSS için Azure AD SSO 'yu yapılandırma ve test etme
 
-**B. Simon**adlı bir test kullanıcısı kullanarak Azure AD SSO 'Yu SISOLUTION MAILBASEΣ \ CMSS ile yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ile ilgili Kullanıcı arasında CyberSolutions MAILBASEΣ \ CMSS arasında bir bağlantı ilişkisi oluşturmanız gerekir.
+**B. Simon** adlı bir test kullanıcısı kullanarak Azure AD SSO 'Yu SISOLUTION MAILBASEΣ \ CMSS ile yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ile ilgili Kullanıcı arasında CyberSolutions MAILBASEΣ \ CMSS arasında bir bağlantı ilişkisi oluşturmanız gerekir.
 
 Azure AD SSO 'yu CyberSolutions MAILBASEΣ \ CMSS ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
 

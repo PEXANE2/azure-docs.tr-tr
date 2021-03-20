@@ -5,10 +5,10 @@ ms.topic: how-to
 ms.date: 10/08/2020
 ms.custom: H1Hack27Feb2017, devx-track-csharp
 ms.openlocfilehash: 8bc9f03f05d52df6e400be5c57033ab2a38fa8eb
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92102974"
 ---
 # <a name="run-tasks-concurrently-to-maximize-usage-of-batch-compute-nodes"></a>Toplu işlem düğümlerinin kullanımını en üst düzeye çıkarmak için görevleri eşzamanlı olarak çalıştırın
@@ -46,7 +46,7 @@ Eşzamanlı görevleri etkinleştirirken, bu görevlerin havuzdaki düğümlerde
 
 [Cloudpool. TaskSchedulingPolicy](/dotnet/api/microsoft.azure.batch.cloudpool) özelliğini kullanarak, bu görevlerin havuzdaki tüm düğümlerde eşit olarak atanmasını belirtebilirsiniz ("yayma"). Ya da görevler havuzdaki başka bir düğüme atanmadan önce her düğüme olabildiğince fazla görevin atanması gerektiğini belirtebilirsiniz ("paketleme").
 
-Örnek olarak, bir [Cloudpool. TaskSlotsPerNode](/dotnet/api/microsoft.azure.batch.cloudpool) değeri 16 Ile yapılandırılan [Standart \_ D14](../cloud-services/cloud-services-sizes-specs.md) düğümlerinin havuzunu (Yukarıdaki örnekte) göz önünde bulundurun. [Cloudpool. TaskSchedulingPolicy](/dotnet/api/microsoft.azure.batch.cloudpool) , bir [Computenodefilltype](/dotnet/api/microsoft.azure.batch.common.computenodefilltype) *paketi*ile yapılandırıldıysa, her düğümün 16 çekirdeğin tüm kullanımlarını en üst düzeye çıkarabilir ve bir [Otomatik ölçeklendirme havuzunun](batch-automatic-scaling.md) , havuzdan kullanılmayan düğümleri (atanmış herhangi bir görev olmadan düğümler) kaldırmasına izin verir. Bu, kaynak kullanımını en aza indirir ve para tasarrufu sağlar.
+Örnek olarak, bir [Cloudpool. TaskSlotsPerNode](/dotnet/api/microsoft.azure.batch.cloudpool) değeri 16 Ile yapılandırılan [Standart \_ D14](../cloud-services/cloud-services-sizes-specs.md) düğümlerinin havuzunu (Yukarıdaki örnekte) göz önünde bulundurun. [Cloudpool. TaskSchedulingPolicy](/dotnet/api/microsoft.azure.batch.cloudpool) , bir [Computenodefilltype](/dotnet/api/microsoft.azure.batch.common.computenodefilltype) *paketi* ile yapılandırıldıysa, her düğümün 16 çekirdeğin tüm kullanımlarını en üst düzeye çıkarabilir ve bir [Otomatik ölçeklendirme havuzunun](batch-automatic-scaling.md) , havuzdan kullanılmayan düğümleri (atanmış herhangi bir görev olmadan düğümler) kaldırmasına izin verir. Bu, kaynak kullanımını en aza indirir ve para tasarrufu sağlar.
 
 ## <a name="define-variable-slots-per-task"></a>Görev başına değişken yuvaları tanımlama
 

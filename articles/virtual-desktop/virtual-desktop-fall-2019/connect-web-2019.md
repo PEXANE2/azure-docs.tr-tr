@@ -7,10 +7,10 @@ ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: c8a55e35ba89caefc362024fc871ac5eb800447b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88008432"
 ---
 # <a name="connect-to-windows-virtual-desktop-classic-with-the-web-client"></a>Web istemcisiyle Windows sanal masaüstüne (klasik) bağlanma
@@ -27,11 +27,11 @@ Web istemcisi, Windows sanal masaüstü kaynaklarınıza, uzun yükleme işlemi 
 
 HTML5 özellikli herhangi bir tarayıcı çalışması gerektiği sürece, aşağıdaki işletim sistemlerini ve tarayıcıları resmi olarak destekliyoruz.
 
-| Tarayıcı           | Desteklenen işletim sistemi                     | Notlar               |
+| Tarayıcı           | Desteklenen İşletim Sistemi                     | Notlar               |
 |-------------------|----------------------------------|---------------------|
 | Microsoft Edge    | Windows                          |                     |
 | Internet Explorer | Windows                          |                     |
-| Apple Safari      | macOS                            |                     |
+| Apple Safari      | Mac OS                            |                     |
 | Mozilla Firefox   | Windows, macOS, Linux            | Sürüm 55 veya üzeri |
 | Google Chrome     | Windows, macOS, Linux, Chrome OS |                     |
 

@@ -9,10 +9,10 @@ ms.subservice: common
 ms.topic: sample
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: de587483f5dc15b17fa32e044b569ef9d7f007f7
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92792965"
 ---
 # <a name="azure-storage-samples"></a>Azure depolama örnekleri
@@ -55,7 +55,7 @@ C++ örneklerini araştırmak için GitHub 'dan [c++ Için Azure depolama Istemc
 * [Azure Data Lake kullanmaya başlayın](https://github.com/Azure/azure-sdk-for-cpp/blob/master/sdk/storage/azure-storage-files-datalake/sample/datalake_getting_started.cpp)
 * [Azure dosyaları ile çalışmaya başlama](https://github.com/Azure/azure-sdk-for-cpp/blob/master/sdk/storage/azure-storage-files-shares/sample/file_share_getting_started.cpp)
 
-## <a name="azure-cli"></a>Azure CLI
+## <a name="azure-cli"></a>Azure CLI’si
 
 Azure CLı örneklerini araştırmak için önce [Azure CLI 'Yı yüklemeniz](/cli/azure/install-azure-cli)gerekir.
 
@@ -72,7 +72,7 @@ Azure CLı örneklerini araştırmak için önce [Azure CLI 'Yı yüklemeniz](/c
 | Python | [Python Istemci kitaplığı başvurusu](https://azure-storage.readthedocs.io/) | [Python depolama istemci kitaplığı için kaynak kodu](https://github.com/Azure/azure-storage-python) |
 | Node.js | [Node.js Istemci kitaplığı başvurusu](https://azure.github.io/azure-storage-node) | [Node.js depolama istemci kitaplığı için kaynak kodu](https://github.com/Azure/azure-storage-node) |
 | C++ | [C++ Istemci kitaplığı başvurusu](https://azure.github.io/azure-sdk-for-cpp/) | [C++ depolama istemci kitaplığı için kaynak kodu](https://github.com/Azure/azure-sdk-for-cpp/tree/master/sdk/storage)|
-| Azure CLI | [Azure CLı kitaplığı başvurusu](/cli/azure/storage) | [Azure CLı depolama istemci kitaplığı için kaynak kodu](https://github.com/Azure-Samples/azure-cli-samples/tree/master/storage)
+| Azure CLI’si | [Azure CLı kitaplığı başvurusu](/cli/azure/storage) | [Azure CLı depolama istemci kitaplığı için kaynak kodu](https://github.com/Azure-Samples/azure-cli-samples/tree/master/storage)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

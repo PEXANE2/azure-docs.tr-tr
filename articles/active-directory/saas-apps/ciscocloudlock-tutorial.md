@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 07/18/2019
 ms.author: jeedes
 ms.openlocfilehash: 7025b948615efcf6ace3ca0fb6a2daecdd75c702
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92456046"
 ---
 # <a name="tutorial-integrate-the-cloud-security-fabric-with-azure-active-directory"></a>Öğretici: bulut güvenlik dokusunu Azure Active Directory tümleştirme
@@ -28,7 +28,7 @@ Bu öğreticide, bulut güvenlik dokusunun Azure Active Directory (Azure AD) ile
 
 Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](../manage-apps/what-is-single-sign-on.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -55,7 +55,7 @@ Bulut güvenlik dokusunun tümleştirmesini Azure AD ile yapılandırmak için, 
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-**B. Simon**adlı bir test kullanıcısı kullanarak Azure AD SSO 'Yu bulut güvenlik dokusunda yapılandırın ve test edin. SSO 'nun çalışması için, bulut güvenlik dokusunda bir Azure AD kullanıcısı ve ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
+**B. Simon** adlı bir test kullanıcısı kullanarak Azure AD SSO 'Yu bulut güvenlik dokusunda yapılandırın ve test edin. SSO 'nun çalışması için, bulut güvenlik dokusunda bir Azure AD kullanıcısı ve ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
 
 Azure AD SSO 'yu bulut güvenlik dokusuna göre yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
 
@@ -103,9 +103,9 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
     ![SAML yanıtı](./media/ciscocloudlock-tutorial/saml.png)
 
-    a. **Imzalama seçeneği**için **SAML yanıtı ve onaylama seçeneğini imzala** seçeneğini belirleyin.
+    a. **Imzalama seçeneği** için **SAML yanıtı ve onaylama seçeneğini imzala** seçeneğini belirleyin.
 
-    b. **Imzalama algoritması**için **SHA-256** seçeneğini belirleyin.
+    b. **Imzalama algoritması** için **SHA-256** seçeneğini belirleyin.
 
     c. **Kaydet**’e tıklayın.  
 
@@ -133,7 +133,7 @@ Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaks�
 Bu bölümde, bulut güvenlik dokusuna erişim vererek Azure çoklu oturum açma özelliğini kullanmak için B. Simon 'u etkinleştireceksiniz.
 
 1. Azure portal **Kurumsal uygulamalar**' ı seçin ve ardından **tüm uygulamalar**' ı seçin.
-1. Uygulamalar listesinde, **bulut güvenlik dokusunu**seçin.
+1. Uygulamalar listesinde, **bulut güvenlik dokusunu** seçin.
 1. Uygulamanın genel bakış sayfasında **Yönet** bölümünü bulun ve **Kullanıcılar ve gruplar**' ı seçin.
 
    !["Kullanıcılar ve gruplar" bağlantısı](common/users-groups-blade.png)

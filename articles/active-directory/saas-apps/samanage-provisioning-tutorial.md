@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 01/13/2020
 ms.author: Zhchia
 ms.openlocfilehash: cca46d47003a1611c861986f8df839de57500db6
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96181497"
 ---
 # <a name="tutorial-configure-solarwinds-service-desk-previously-samanage-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlama için SolarWinds Service Desk (daha önce Samanage) yapılandırma
@@ -49,7 +49,7 @@ Uygulamanız geçirildiğinde, yönetici **kimlik bilgileri** bölümünde **Yö
 > * SolarWinds Service Desk 'te grupları ve grup üyeliklerini sağlama
 > * SolarWinds Service Desk ['Te çoklu oturum açma](./samanage-tutorial.md) (önerilir)
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticide özetlenen senaryo, aşağıdaki önkoşulların zaten olduğunu varsayar:
 

@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 02/27/2020
 ms.author: ccompy
 ms.openlocfilehash: cec44bbabdb7d528c30a8d3396b819f2eb3c5386
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95999475"
 ---
 Özelliği kolayca ayarlanabilir, ancak bu deneyim deneyiminizin ücretsiz olacağı anlamına gelmez. İstediğiniz uç noktaya erişmede sorun yaşarsanız, uygulama konsolundan bağlantıyı test etmek için kullanabileceğiniz bazı yardımcı programlar vardır. Kullanabileceğiniz iki konsol vardır. Birisi kudu konsoludur ve diğeri Azure portal konsoludur. Uygulamaınızdan kudu konsoluna ulaşmak için **Araçlar**  >  **kudu**' ye gidin. Ayrıca, Kudo konsoluna [SiteName]. scm. azurewebsites. net adresinden ulaşabilirsiniz. Web sitesi yüklendikten sonra, **hata ayıklama konsolu** sekmesine gidin. Uygulamanızdaki Azure Portal barındırılan konsola ulaşmak için **Araçlar**  >  **konsolu**' na gidin.

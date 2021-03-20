@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 08/08/2019
 ms.author: jeedes
 ms.openlocfilehash: 22753b80931956af6ce448cfee974ae746fff6e6
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92456234"
 ---
 # <a name="tutorial-integrate-chargebee-with-azure-active-directory"></a>Öğretici: Azure Active Directory ile Chargebee 'yi tümleştirin
@@ -28,7 +28,7 @@ Bu öğreticide, Azure Active Directory (Azure AD) ile Chargebee tümleştirmeyi
 
 Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](../manage-apps/what-is-single-sign-on.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -54,7 +54,7 @@ Chargebee 'in Azure AD ile tümleştirilmesini yapılandırmak için Galeri 'den
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-chargebee"></a>Azure AD çoklu oturum açma özelliğini, Chargebee için yapılandırma ve test etme
 
-**B. Simon**adlı bir test kullanıcısı kullanarak Azure AD SSO 'Yu Chargebee ile yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ve bu kullanıcı ile ilgili Kullanıcı arasında bir bağlantı ilişkisi kurmanız gerekir.
+**B. Simon** adlı bir test kullanıcısı kullanarak Azure AD SSO 'Yu Chargebee ile yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ve bu kullanıcı ile ilgili Kullanıcı arasında bir bağlantı ilişkisi kurmanız gerekir.
 
 Azure AD SSO 'yu, Chargebee ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
 
@@ -154,7 +154,7 @@ Azure AD kullanıcılarını etkinleştirmek için, Chargebee 'de oturum açın.
 
 1. Farklı bir Web tarayıcısı penceresinde, bir güvenlik yöneticisi olarak Chargebee 'de oturum açın.
 
-2. Menünün sol tarafında, **müşteriler** ' e tıklayın ve ardından **Yeni Müşteri Oluştur ' a**gidin.
+2. Menünün sol tarafında, **müşteriler** ' e tıklayın ve ardından **Yeni Müşteri Oluştur ' a** gidin.
 
     ![Ekran görüntüsü, müşteriler ile Chargebee sitesini gösterir ve yeni bir müşteri oluşturur.](./media/chargebee-tutorial/config03.png)
 

@@ -4,10 +4,10 @@ description: Azure Resource Manager şablonundan Azure DevTest Labs çoklu VM or
 ms.topic: article
 ms.date: 08/12/2020
 ms.openlocfilehash: 97659d4ab95fdbe75460161d0ceed71a1cb5cf82
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88182417"
 ---
 # <a name="create-multi-vm-environments-and-paas-resources-with-azure-resource-manager-templates"></a>Azure Resource Manager şablonları ile çoklu VM ortamları ve PaaS kaynakları oluşturma
@@ -41,13 +41,13 @@ Kod olarak altyapı ve yapılandırma kodu ile en iyi uygulamalardan biri olarak
 
 Azure Resource Manager şablonlarınızı bir depoda düzenlemek için izlenecek birkaç kural vardır:
 
-- Ana şablon dosyasının *azuredeploy.js*adı vermelisiniz.
+- Ana şablon dosyasının *azuredeploy.js* adı vermelisiniz.
 
-- Parametre dosyasında tanımlanan parametre değerlerini kullanmak istiyorsanız, parametre dosyasının *azuredeploy.parameters.jsolarak*adlandırılması gerekir.
+- Parametre dosyasında tanımlanan parametre değerlerini kullanmak istiyorsanız, parametre dosyasının *azuredeploy.parameters.jsolarak* adlandırılması gerekir.
 
   Parametreleri `_artifactsLocation` ve `_artifactsLocationSasToken` parameterslink URI değerini oluşturmak Için, DevTest Labs 'in iç içe şablonları otomatik olarak yönetmesine izin vermek için kullanabilirsiniz. Daha fazla bilgi için bkz. [test ortamları için iç içe Azure Resource Manager şablonlarını dağıtma](deploy-nested-template-environments.md).
 
-- Şablon görünen adı ve açıklamasını, *metadata.js*adlı bir dosyada, aşağıdaki gibi belirtmek için meta verileri tanımlayabilirsiniz:
+- Şablon görünen adı ve açıklamasını, *metadata.js* adlı bir dosyada, aşağıdaki gibi belirtmek için meta verileri tanımlayabilirsiniz:
 
   ```json
   {
@@ -125,7 +125,7 @@ Laboratuvara bir Azure Resource Manager şablonu ekledikten sonra, laboratuar ku
 
    Azure Resource Manager şablonu, giriş alanlarının geri kalanını tanımlar. Dosyadaki şablon *azuredeploy.parameter.js* varsayılan değerleri tanımlıyorsa, giriş alanları bu değerleri gösterir.
 
-   *Güvenli dize*türündeki parametreler için Azure Key Vault gizli dizileri kullanabilirsiniz. Gizli dizileri bir anahtar kasasında depolama ve laboratuvar kaynakları oluştururken kullanma hakkında bilgi edinmek için bkz. [Azure Key Vault gizli dizileri depolama](devtest-lab-store-secrets-in-key-vault.md).  
+   *Güvenli dize* türündeki parametreler için Azure Key Vault gizli dizileri kullanabilirsiniz. Gizli dizileri bir anahtar kasasında depolama ve laboratuvar kaynakları oluştururken kullanma hakkında bilgi edinmek için bkz. [Azure Key Vault gizli dizileri depolama](devtest-lab-store-secrets-in-key-vault.md).  
 
    ![Bölme Ekle](./media/devtest-lab-create-environment-from-arm/add.png)
 
@@ -162,7 +162,7 @@ Devam etmeden önce, oluşturulacak kaynakları tanımlayan bir Azure Resource M
 
 Aşağıdaki örnek betik laboratuvarınızda bir ortam oluşturur. Açıklamalar, betiği daha iyi anlamanıza yardımcı olur.
 
-1. Aşağıdaki örnek PowerShell betiğini *deployenv.ps1*olarak sabit sürücünüze kaydedin.
+1. Aşağıdaki örnek PowerShell betiğini *deployenv.ps1* olarak sabit sürücünüze kaydedin.
 
    [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 

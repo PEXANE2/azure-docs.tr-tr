@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/26/2019
 ms.author: jeedes
 ms.openlocfilehash: 96ea3423d3c2dff2c8ba8c82b4c26d318c47211f
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92459066"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-kintone"></a>Öğretici: Kintone ile tümleştirme Azure Active Directory
@@ -30,7 +30,7 @@ Kintone 'ı Azure AD ile tümleştirmek aşağıdaki avantajları sağlar:
 Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](../manage-apps/what-is-single-sign-on.md).
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure AD tümleştirmesini Kintone ile yapılandırmak için aşağıdaki öğeler gereklidir:
 
@@ -61,13 +61,13 @@ Kintone 'ın Azure AD ile tümleştirilmesini yapılandırmak için, Galeriden y
 
     ![Yeni uygulama düğmesi](common/add-new-app.png)
 
-4. Arama kutusuna **Kintone**yazın, sonuç panelinden **Kintone** ' ı seçin ve ardından **Ekle** düğmesine tıklayarak uygulamayı ekleyin.
+4. Arama kutusuna **Kintone** yazın, sonuç panelinden **Kintone** ' ı seçin ve ardından **Ekle** düğmesine tıklayarak uygulamayı ekleyin.
 
      ![Sonuç listesinde Kintone](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-Bu bölümde, Azure AD çoklu oturum açmayı, **Britta Simon**adlı bir test kullanıcısına göre Kintone ile yapılandırıp test edersiniz.
+Bu bölümde, Azure AD çoklu oturum açmayı, **Britta Simon** adlı bir test kullanıcısına göre Kintone ile yapılandırıp test edersiniz.
 Çoklu oturum açma için, bir Azure AD kullanıcısı ve Kintone içindeki ilgili Kullanıcı arasındaki bağlantı ilişkisinin kurulması gerekir.
 
 Azure AD çoklu oturum açmayı Kintone ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını gerçekleştirmeniz gerekir:
@@ -131,7 +131,7 @@ Azure AD çoklu oturum açmayı Kintone ile yapılandırmak için aşağıdaki a
 
 1. Farklı bir Web tarayıcısı penceresinde, **Kintone** şirket sitenizde yönetici olarak oturum açın.
 
-1. **Ayarlar simgesine**tıklayın.
+1. **Ayarlar simgesine** tıklayın.
 
     ![Ayarlar](./media/kintone-tutorial/ic785879.png "Ayarlar")
 
@@ -175,7 +175,7 @@ Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı ol
 
     ![Kullanıcı iletişim kutusu](common/user-properties.png)
 
-    a. **Ad** alanına **Brittasıon**girin.
+    a. **Ad** alanına **Brittasıon** girin.
   
     b. **Kullanıcı adı** alan türü`brittasimon@yourcompanydomain.extension`  
     Örneğin, BrittaSimon@contoso.com
@@ -218,7 +218,7 @@ Azure AD kullanıcılarının Kintone 'da oturum açmasını sağlamak için, bu
 
 1. **Kintone** şirket sitenizde yönetici olarak oturum açın.
 
-1. **Ayarlar simgesine**tıklayın.
+1. **Ayarlar simgesine** tıklayın.
 
     ![Ayarlar](./media/kintone-tutorial/ic785879.png "Ayarlar")
 
@@ -226,7 +226,7 @@ Azure AD kullanıcılarının Kintone 'da oturum açmasını sağlamak için, bu
 
     ![Kullanıcı & sistem yönetimi](./media/kintone-tutorial/ic785880.png "Kullanıcı & sistem yönetimi")
 
-1. **Kullanıcı yönetimi**altında, **Kullanıcılar & departmanlar**' a tıklayın.
+1. **Kullanıcı yönetimi** altında, **Kullanıcılar & departmanlar**' a tıklayın.
 
     ![Departman & kullanıcıları](./media/kintone-tutorial/ic785888.png "Departman & kullanıcıları")
 
@@ -238,7 +238,7 @@ Azure AD kullanıcılarının Kintone 'da oturum açmasını sağlamak için, bu
 
     ![Yeni Kullanıcılar](./media/kintone-tutorial/ic785890.png "Yeni Kullanıcılar")
 
-    a. Bir **görünen ad**, **oturum açma adı**, **Yeni parola**, **parolayı onaylayın**, **e-posta adresi**ve ilgili metin kutularına sağlamak istediğiniz geçerli bir Azure AD hesabının diğer ayrıntılarını yazın.
+    a. Bir **görünen ad**, **oturum açma adı**, **Yeni parola**, **parolayı onaylayın**, **e-posta adresi** ve ilgili metin kutularına sağlamak istediğiniz geçerli bir Azure AD hesabının diğer ayrıntılarını yazın.
 
     b. **Kaydet**’e tıklayın.
 

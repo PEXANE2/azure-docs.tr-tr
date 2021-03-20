@@ -9,10 +9,10 @@ ms.date: 10/15/2020
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: c3236f9c60cb359349d96e93f674c3e278e44f1e
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93375901"
 ---
 ## <a name="1-create-the-azure-ad-tenant"></a><a name="tenant"></a>1. Azure AD kiracısı oluşturma
@@ -83,7 +83,7 @@ VPN istemcisini Azure AD kiracısına kaydettirin.
 
     ![Ekran görüntüsünde, kuruluşunuz için kabul edilen ileti Izinlerinin ve istekle ilgili bilgilerin bulunduğu bir pencere görüntülenir.](./media/openvpn-azure-ad-tenant-multi-app/accept.jpg)
 
-7. Azure AD 'nizin altında, **Kurumsal uygulamalarda** , **Azure VPN** ' yi listelenmiş görürsünüz.
+7. Azure AD 'nizin altında, **Kurumsal uygulamalarda**, **Azure VPN** ' yi listelenmiş görürsünüz.
 
      ![Azure VPN](./media/openvpn-azure-ad-tenant-multi-app/azure-vpn.png)
 
@@ -91,34 +91,34 @@ VPN istemcisini Azure AD kiracısına kaydettirin.
 
 Bu adımda, çeşitli kullanıcılar ve gruplar için ek uygulamalar kaydedersiniz.
 
-1. Azure Active Directory altında **uygulama kayıtları** ve sonra **+ Yeni kayıt** ' ye tıklayın.
+1. Azure Active Directory altında **uygulama kayıtları** ve sonra **+ Yeni kayıt**' ye tıklayın.
 
     ![Azure VPN 2](./media/openvpn-azure-ad-tenant-multi-app/app1.png)
 
-2. **Uygulama kaydetme** sayfasında, **adı** girin. İstediğiniz **Desteklenen hesap türlerini** seçin ve **Kaydet** ' e tıklayın.
+2. **Uygulama kaydetme** sayfasında, **adı** girin. İstediğiniz **Desteklenen hesap türlerini** seçin ve **Kaydet**' e tıklayın.
 
     ![Azure VPN 3](./media/openvpn-azure-ad-tenant-multi-app/app2.png)
 
 3. Yeni uygulama kaydedildikten sonra uygulama dikey penceresinde **BIR API 'Yi kullanıma** sunma ' ya tıklayın.
 
-4. **+ Kapsam Ekle** ' ye tıklayın.
+4. **+ Kapsam Ekle**' ye tıklayın.
 
-5. Varsayılan **uygulama KIMLIĞI URI** 'sini bırakın. **Kaydet ve devam et** ' e tıklayın.
+5. Varsayılan **uygulama KIMLIĞI URI**'sini bırakın. **Kaydet ve devam et**' e tıklayın.
 
     ![Azure VPN 4](./media/openvpn-azure-ad-tenant-multi-app/app3.png)
 
-6. Gerekli alanları doldurup **durumunun** **etkinleştirildiğinden** emin olun. **Kapsam Ekle** ' ye tıklayın.
+6. Gerekli alanları doldurup **durumunun** **etkinleştirildiğinden** emin olun. **Kapsam Ekle**' ye tıklayın.
 
     ![Azure VPN 5](./media/openvpn-azure-ad-tenant-multi-app/app4.png)
 
-7. **API 'Yi kullanıma** sunma ve ardından **bir istemci uygulaması ekleme** ' ye tıklayın.  **ISTEMCI kimliği** için buluta bağlı olarak aşağıdaki değerleri girin:
+7. **API 'Yi kullanıma** sunma ve ardından **bir istemci uygulaması ekleme**' ye tıklayın.  **ISTEMCI kimliği** için buluta bağlı olarak aşağıdaki değerleri girin:
 
     - Azure **genel** için **41b23e61-6c1e-4545-b367-cd054e0ed4b4** girin
     - Azure **kamu** için **51bb15d4-3a4f-4EBF-9dca-40096fe32426** girin
     - Azure **Almanya** için **538ee9e6-310A-468d-afef-ea97365856a9** girin
     - Azure **Çin 21Vianet** için **49f817b6-84ae-4cc0-928c-73f27289b3aa** girin
 
-8. **Uygulama Ekle** ' ye tıklayın.
+8. **Uygulama Ekle**' ye tıklayın.
 
     ![Azure VPN 6](./media/openvpn-azure-ad-tenant-multi-app/app5.png)
 
@@ -132,14 +132,14 @@ Bu adımda, çeşitli kullanıcılar ve gruplar için ek uygulamalar kaydedersin
 
 Kullanıcıları uygulamalarınıza atayın.
 
-1. **Azure AD-> kurumsal uygulamalar** altında, yeni kayıtlı uygulamayı seçin ve **Özellikler** ' e tıklayın. **Gerekli Kullanıcı atamasının** **Evet** olarak ayarlandığından emin olun. **Kaydet** ’e tıklayın.
+1. **Azure AD-> kurumsal uygulamalar** altında, yeni kayıtlı uygulamayı seçin ve **Özellikler**' e tıklayın. **Gerekli Kullanıcı atamasının** **Evet** olarak ayarlandığından emin olun. **Kaydet**’e tıklayın.
 
     ![Azure VPN 8](./media/openvpn-azure-ad-tenant-multi-app/user2.png)
 
-2. Uygulama sayfasında, **Kullanıcılar ve gruplar** ' a ve ardından **+ Kullanıcı Ekle** ' ye tıklayın.
+2. Uygulama sayfasında, **Kullanıcılar ve gruplar**' a ve ardından **+ Kullanıcı Ekle**' ye tıklayın.
 
     ![Azure VPN 9](./media/openvpn-azure-ad-tenant-multi-app/user3.png)
 
-3. **Atama Ekle** altında **Kullanıcılar ve gruplar** ' a tıklayın. Bu VPN uygulamasına erişebilmesini istediğiniz kullanıcıları seçin. **Seç** ’e tıklayın.
+3. **Atama Ekle** altında **Kullanıcılar ve gruplar**' a tıklayın. Bu VPN uygulamasına erişebilmesini istediğiniz kullanıcıları seçin. **Seç**’e tıklayın.
 
     ![Azure VPN 10](./media/openvpn-azure-ad-tenant-multi-app/user4.png)

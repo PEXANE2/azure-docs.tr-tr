@@ -11,10 +11,10 @@ ms.workload: identity
 ms.date: 10/14/2020
 ms.author: chmutali
 ms.openlocfilehash: 3260787dec4ae26cd6ef7cc3bd562f39db8e3655
-ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/03/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99526984"
 ---
 # <a name="tutorial-configure-attribute-write-back-from-azure-ad-to-sap-successfactors"></a>Öğretici: Azure AD 'den SAP 'ye geri yazma özelliği yapılandırma başarılı
@@ -324,7 +324,7 @@ Uygulama yapılandırmalarının sağlanması başarılı bir şekilde tamamland
 
 1. **Sağlama** sekmesinde, **sağlama durumunu** **Açık** olarak ayarlayın.
 
-1. **Kapsam** seçin. Aşağıdaki seçeneklerden birini seçebilirsiniz: 
+1. **Kapsam**'ı seçin. Aşağıdaki seçeneklerden birini seçebilirsiniz: 
    * **Tüm kullanıcıları ve grupları Eşitle**: Azure AD 'den başarılı etkenlere, **eşleme**  ->  **kaynak nesne kapsamı** altında tanımlanan kapsam kurallarına tabi olan tüm kullanıcıların yeniden eşlenmiş özniteliklerini yazmayı planlıyorsanız bu seçeneği belirleyin. 
    * **Yalnızca atanmış kullanıcıları ve grupları Eşitle**: yalnızca **uygulama**  ->    ->  **kullanıcıları ve grupları** Yönet menü seçeneğinde bu uygulamaya atadığınız kullanıcıların geri eşlenmiş özniteliklerini yazmayı planlıyorsanız bu seçeneği belirleyin. Bu kullanıcılar ayrıca, **eşlemeler**  ->  **kaynak nesne kapsamı** altında tanımlanan kapsam kurallarına tabidir.
 

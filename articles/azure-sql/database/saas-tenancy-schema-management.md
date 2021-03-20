@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 09/19/2018
 ms.openlocfilehash: e4328be0aade0658dedb034dbbb6980b810f771a
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92793203"
 ---
 # <a name="manage-schema-in-a-saas-application-using-the-database-per-tenant-pattern-with-azure-sql-database"></a>Azure SQL veritabanı ile kiracı başına veritabanı düzenini kullanarak bir SaaS uygulamasında şemayı yönetme
@@ -62,14 +62,14 @@ Uygulama kaynak kodu ve yönetim betikleri [Wingtipbilet ssaas-DbPerTenant](http
 
 Bu öğretici, bir iş Aracısı ve onun yedekleme iş Aracısı veritabanı oluşturmak için PowerShell kullanmanız gerekir. İş Aracısı veritabanı iş tanımlarını, iş durumunu ve geçmişi barındırır. İş Aracısı ve veritabanı oluşturulduktan sonra işleri hemen oluşturabilir ve izleyebilirsiniz.
 
-1. **PowerShell ISE 'de** açın... \\ Öğrenme modülleri \\ şema yönetimi \\ *Demo-SchemaManagement.ps1* .
-1. Betiği çalıştırmak için **F5** 'e basın.
+1. **PowerShell ISE 'de** açın... \\ Öğrenme modülleri \\ şema yönetimi \\ *Demo-SchemaManagement.ps1*.
+1. Betiği çalıştırmak için **F5**'e basın.
 
 *Demo-SchemaManagement.ps1* betiği, katalog sunucusunda *osagent* adlı bir veritabanı oluşturmak için *Deploy-SchemaManagement.ps1* betiğini çağırır. Daha sonra bir parametre olarak veritabanını kullanarak iş aracısını oluşturur.
 
 ## <a name="create-a-job-to-deploy-new-reference-data-to-all-tenants"></a>Tüm kiracılara yeni başvuru verilerini dağıtmak için bir iş oluşturma
 
-Wingtip bilet uygulamasında, her kiracı veritabanı desteklenen bir mekan türleri kümesi içerir. Her bir mekan, barındırılabilecek olayların türünü tanımlayan ve uygulamada kullanılan arka plan resmini belirleyen belirli bir mekan türüdür. Uygulamanın yeni olay türlerini desteklemesi için, bu başvuru verilerinin güncellenmesi ve yeni mekan türlerinin eklenmesi gerekir.  Bu alıştırmada, şu iki ek mekan türünü eklemek için tüm kiracı veritabanlarına yönelik bir güncelleştirmeyi dağıtacaksınız: *Motosiklet Yarışı* ve *Yüzme Kulübü* .
+Wingtip bilet uygulamasında, her kiracı veritabanı desteklenen bir mekan türleri kümesi içerir. Her bir mekan, barındırılabilecek olayların türünü tanımlayan ve uygulamada kullanılan arka plan resmini belirleyen belirli bir mekan türüdür. Uygulamanın yeni olay türlerini desteklemesi için, bu başvuru verilerinin güncellenmesi ve yeni mekan türlerinin eklenmesi gerekir.  Bu alıştırmada, şu iki ek mekan türünü eklemek için tüm kiracı veritabanlarına yönelik bir güncelleştirmeyi dağıtacaksınız: *Motosiklet Yarışı* ve *Yüzme Kulübü*.
 
 İlk olarak, her kiracı veritabanına dahil olan mekan türlerini gözden geçirin. SQL Server Management Studio (SSMS) içindeki kiracı veritabanlarından birine bağlanın ve Venuetype tablosunu inceleyin.  Bu tabloyu, veritabanı sayfasından erişilen Azure portal sorgu düzenleyicisinde da sorgulayabilirsiniz. 
 
@@ -92,7 +92,7 @@ Yeni bir iş oluşturmak için, iş aracısının oluşturulduğu sırada _JobAg
 * **SP \_ Add \_ JobStep** , başvuru tablosu, venuetype 'u GÜNCELLEŞTIRMEK için T-SQL komut metnini içeren iş adımını oluşturur.
 * Betikteki kalan görünümler, nesnelerin varlığını gösterir ve işin yürütülüşünü izler. İşin tüm hedef veritabanlarında ne zaman tamamlandığını öğrenmek için **yaşam döngüsü** sütunundaki durum değerini gözden geçirmek üzere bu sorguları kullanın.
 
-Betik tamamlandıktan sonra, başvuru verilerinin güncelleştirildiğini doğrulayabilirsiniz.  SSMS 'de, *tenants1-DPT- &lt; user &gt;* sunucusundaki *Contosoconcerthall* veritabanına gidin ve *venuetype* tablosunu sorgulayın.  Artık, *Otocycle yarış* ve *yüzme kulübünün* **are** mevcut olduğunu denetleyin.
+Betik tamamlandıktan sonra, başvuru verilerinin güncelleştirildiğini doğrulayabilirsiniz.  SSMS 'de, *tenants1-DPT- &lt; user &gt;* sunucusundaki *Contosoconcerthall* veritabanına gidin ve *venuetype* tablosunu sorgulayın.  Artık, *Otocycle yarış* ve *yüzme kulübünün*  mevcut olduğunu denetleyin.
 
 
 ## <a name="create-a-job-to-manage-the-reference-table-index"></a>Başvuru tablosu dizinini yönetmek için bir iş oluşturma

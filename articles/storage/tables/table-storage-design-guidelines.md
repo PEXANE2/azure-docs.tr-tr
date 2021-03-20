@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 04/23/2018
 ms.subservice: tables
 ms.openlocfilehash: f84707e454a8b1f5d5947478fe65108a142a9757
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88236327"
 ---
 # <a name="guidelines-for-table-design"></a>Tablo tasarımı için yönergeler
@@ -22,10 +22,10 @@ Azure Depolama Tablo hizmeti ile kullanılmak üzere tabloları tasarlamak, ili�
 ## <a name="design-your-table-service-solution-to-be-read-efficient"></a>Tablo hizmeti çözümünüzü, okuma açısından verimli olacak şekilde tasarlama
 
 * ***Okuma ağır uygulamalarda sorgulama için tasarım.*** Tablolarınızı tasarlarken, varlıklarınızı nasıl güncelleşeceğinize ilişkin düşündüğünüzden önce kullanacağınız sorguları (özellikle gecikme süresine duyarlı olanları) düşünün. Bu, genellikle etkili ve performanslı bir çözüme neden olur.  
-* ***Sorgularınızda hem PartitionKey hem de RowKey belirtin.*** Bu gibi *nokta sorguları* en verimli tablo hizmeti sorgulardır.  
+* ***Sorgularınızda hem PartitionKey hem de Rowkey belirtin.** _ _Point sorguları * bunlar gibi en verimli tablo hizmeti sorguları vardır.  
 * ***Varlıkların yinelenen kopyalarını depolamayı göz önünde bulundurun.*** Tablo depolaması, daha verimli sorgular sağlamak için aynı varlığı birden çok kez depolamayı (farklı anahtarlarla) göz önünde bulundurun.  
 * ***Verilerinizi kabul etmeyi düşünün.*** Tablo depolaması, veri izlemeyi düşünün. Örneğin, toplama verileri sorgularının yalnızca tek bir varlığa erişmesi için, Özet varlıkları depolayın.  
-* ***Bileşik anahtar değerlerini kullanın.*** Yalnızca **partitionkey** ve **rowkey**olduğunuz anahtarlar vardır. Örneğin, varlıklara alternatif anahtarlı erişim yolları sağlamak için bileşik anahtar değerlerini kullanın.  
+* ***Bileşik anahtar değerlerini kullanın.** _ Bu anahtarlar yalnızca _ *partitionkey** ve **rowkey**. Örneğin, varlıklara alternatif anahtarlı erişim yolları sağlamak için bileşik anahtar değerlerini kullanın.  
 * ***Sorgu projeksiyonu kullanın.*** Yalnızca ihtiyaç duyduğunuz alanları seçerek ağ üzerinden aktardığınız veri miktarını azaltabilirsiniz.  
 
 ## <a name="design-your-table-service-solution-to-be-write-efficient"></a>Tablo hizmeti çözümünüzü yazma etkin olacak şekilde tasarlama  
