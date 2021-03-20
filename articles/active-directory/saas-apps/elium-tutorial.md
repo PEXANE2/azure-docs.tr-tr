@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 09/09/2020
 ms.author: jeedes
 ms.openlocfilehash: 7f0e9d0c97b9325a30de3cb8c6ce10a3ba8489f4
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92454122"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-elium"></a>Öğretici: Elium ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
@@ -26,7 +26,7 @@ Bu öğreticide, Azure Active Directory (Azure AD) ile Elium 'un nasıl tümleş
 * Kullanıcılarınızın Azure AD hesaplarıyla tam olarak oturum açmalarına olanak sağlar.
 * Hesaplarınızı tek bir merkezi konumda yönetin-Azure portal.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -56,7 +56,7 @@ Azure AD 'de Elium tümleştirmesini yapılandırmak için Galeriden yönetilen 
 
 ## <a name="configure-and-test-azure-ad-sso-for-elium"></a>Azure AD SSO 'yu Elium için yapılandırma ve test etme
 
-**B. Simon**adlı bir test kullanıcısı kullanarak Azure AD SSO 'yu sorunsuz bir şekilde yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ve ilgili Kullanıcı arasında Elium 'da bağlantı ilişkisi oluşturmanız gerekir.
+**B. Simon** adlı bir test kullanıcısı kullanarak Azure AD SSO 'yu sorunsuz bir şekilde yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ve ilgili Kullanıcı arasında Elium 'da bağlantı ilişkisi oluşturmanız gerekir.
 
 Azure AD SSO 'yu sorunsuz bir şekilde yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
 
@@ -141,7 +141,7 @@ Bu bölümde, elim 'ye erişim vererek B. Simon 'u Azure çoklu oturum açma öz
 
 ## <a name="configure-elium-sso"></a>Elium SSO 'yu yapılandırma
 
-1. Yapılandırmayı tam olarak otomatik hale getirmek için, **uzantıyı yüklemek**üzere **uygulamalar güvenli oturum açma tarayıcı uzantısı** ' nı yüklemeniz gerekir.
+1. Yapılandırmayı tam olarak otomatik hale getirmek için, **uzantıyı yüklemek** üzere **uygulamalar güvenli oturum açma tarayıcı uzantısı** ' nı yüklemeniz gerekir.
 
     ![Uygulamalarım uzantısı](common/install-myappssecure-extension.png)
 
@@ -178,7 +178,7 @@ Bu bölümde, elim 'ye erişim vererek B. Simon 'u Azure çoklu oturum açma öz
 
     ![Tek Sign-On Elium 04 yapılandırma](./media/elium-tutorial/elium-04.png)
 
-    f. Azure portal bkz. **The The The** The **The The The** The The The The The The, **SP Metadata** **Reply URL** **Basic SAML Configuration**
+    f. Azure portal bkz. **The The The** The **The The The** The The The The The The, **SP Metadata**  
 
     ![Tek Sign-On Elium 05 ' i yapılandırma](./media/elium-tutorial/elium-05.png)
 
@@ -188,7 +188,7 @@ Bu bölümde, elim 'ye erişim vererek B. Simon 'u Azure çoklu oturum açma öz
 
 ### <a name="create-elium-test-user"></a>Elium test kullanıcısı oluşturma
 
-Bu bölümde, Elium 'da B. Simon adlı bir Kullanıcı oluşturulur. Elium, varsayılan olarak etkinleştirilen **tam zamanında sağlamayı**destekler. Bu bölümde sizin için herhangi bir eylem öğesi yok. Bir Kullanıcı Elium 'da zaten mevcut değilse, Elium 'a erişmeye çalıştığınızda yeni bir tane oluşturulur.
+Bu bölümde, Elium 'da B. Simon adlı bir Kullanıcı oluşturulur. Elium, varsayılan olarak etkinleştirilen **tam zamanında sağlamayı** destekler. Bu bölümde sizin için herhangi bir eylem öğesi yok. Bir Kullanıcı Elium 'da zaten mevcut değilse, Elium 'a erişmeye çalıştığınızda yeni bir tane oluşturulur.
 
 > [!Note]
 > El ile bir kullanıcı oluşturmanız gerekiyorsa, [Elium destek ekibine](mailto:support@elium.com)başvurun.

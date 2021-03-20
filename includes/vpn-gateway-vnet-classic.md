@@ -9,10 +9,10 @@ ms.date: 10/14/2020
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 753c7b4202fb2f113860f95da595e210fb8d499c
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92078281"
 ---
 1. Tarayıcıdan [Azure portalına](https://portal.azure.com) gidin ve gerekiyorsa Azure hesabınızda oturum açın.

@@ -4,10 +4,10 @@ description: Bir Git deposunu kapsayıcı örneklerinizi kopyalamak için gitRep
 ms.topic: article
 ms.date: 06/15/2018
 ms.openlocfilehash: 5f361b0bbd4a02f754e47c8321a664af05036601
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86260722"
 ---
 # <a name="mount-a-gitrepo-volume-in-azure-container-instances"></a>Azure Container Instances bir gitRepo birimi bağlama
@@ -26,8 +26,8 @@ Bir *gitRepo* birimi bağladığınızda, birimi yapılandırmak için üç öze
 | Özellik | Gerekli | Açıklama |
 | -------- | -------- | ----------- |
 | `repository` | Evet | `http://` `https://` Klonlanacak git deposunun dahil olduğu tam URL.|
-| `directory` | Hayır | Deponun klonlanacak dizin. Yol, "" ile içermemelidir veya başlamamalıdır `..` .  " `.` " Belirtirseniz, depo birimin dizinine kopyalanır. Aksi takdirde, git deposu birim dizini içindeki verilen adın alt dizinine kopyalanır. |
-| `revision` | Hayır | Klonlanacak düzeltmenin COMMIT karması. Belirtilmemişse, `HEAD` Düzeltme klonlanır. |
+| `directory` | No | Deponun klonlanacak dizin. Yol, "" ile içermemelidir veya başlamamalıdır `..` .  " `.` " Belirtirseniz, depo birimin dizinine kopyalanır. Aksi takdirde, git deposu birim dizini içindeki verilen adın alt dizinine kopyalanır. |
+| `revision` | No | Klonlanacak düzeltmenin COMMIT karması. Belirtilmemişse, `HEAD` Düzeltme klonlanır. |
 
 ## <a name="mount-gitrepo-volume-azure-cli"></a>GitRepo Volume bağlama: Azure CLı
 

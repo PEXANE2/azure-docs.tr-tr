@@ -12,17 +12,17 @@ ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 043cf83d804803e1b5b47d3ac51bbccaa06e4e87
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87116420"
 ---
 # <a name="custom-policies-in-azure-active-directory-b2c"></a>Azure Active Directory B2C özel ilkeler
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Özel ilkeler, Azure Active Directory B2C (Azure AD B2C) kiracınızın davranışını tanımlayan yapılandırma dosyalarıdır. Kullanıcı akışları, en yaygın kimlik görevlerinin Azure AD B2C portalında önceden tanımlanmıştır. Özel ilkeler, bir kimlik geliştiricisi tarafından birçok farklı görevi tamamlayabilecek şekilde tamamen düzenlenebilir.
+Özel ilkeler, Azure Active Directory B2C (Azure AD B2C) kiracınızın davranışlarını tanımlayan yapılandırma dosyalarıdır. AAD B2C portalında en yaygın kimlik görevleri için kullanıcı akışları önceden tanımlanmıştır. Kimlik geliştiriciler özel ilkeleri tamamen düzenleyerek birçok farklı görevi tamamlamaya uygun hale getirebilirler.
 
 ## <a name="comparing-user-flows-and-custom-policies"></a>Kullanıcı akışlarını ve özel ilkeleri karşılaştırma
 

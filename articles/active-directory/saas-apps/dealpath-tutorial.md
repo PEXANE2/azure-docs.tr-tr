@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 01/25/2019
 ms.author: jeedes
 ms.openlocfilehash: 82fd49f8cb488a77ad379a4bcbffca154cd7610a
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92454907"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-dealpath"></a>Öğretici: satıcılarla yol ile tümleştirme Azure Active Directory
@@ -30,7 +30,7 @@ Satıcılarla yolunu Azure AD ile tümleştirmek aşağıdaki avantajları sağl
 Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](../manage-apps/what-is-single-sign-on.md).
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure AD tümleştirmesini satıcılarla yol ile yapılandırmak için aşağıdaki öğelere ihtiyacınız vardır:
 
@@ -61,13 +61,13 @@ Satıcılarla Path 'in Azure AD ile tümleştirilmesini yapılandırmak için, g
 
     ![Yeni uygulama düğmesi](common/add-new-app.png)
 
-4. Arama kutusuna **satıcılarla yolu**yazın, sonuç panelinden **satıcılarla yolu** seçin ve ardından **Ekle** düğmesine tıklayarak uygulamayı ekleyin.
+4. Arama kutusuna **satıcılarla yolu** yazın, sonuç panelinden **satıcılarla yolu** seçin ve ardından **Ekle** düğmesine tıklayarak uygulamayı ekleyin.
 
      ![Sonuçlar listesindeki satıcılarla yolu](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-Bu bölümde, Azure AD çoklu oturum açmayı, **Britta Simon**adlı bir test kullanıcısına bağlı olarak, satıcıyolu ile yapılandırıp test edersiniz.
+Bu bölümde, Azure AD çoklu oturum açmayı, **Britta Simon** adlı bir test kullanıcısına bağlı olarak, satıcıyolu ile yapılandırıp test edersiniz.
 Çoklu oturum açma için, bir Azure AD kullanıcısı ve satıcılarla yolundaki ilgili Kullanıcı arasındaki bağlantı ilişkisinin oluşturulması gerekir.
 
 Azure AD çoklu oturum açma 'yı, satıcılarla birlikte yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurmanız gerekir:
@@ -126,7 +126,7 @@ Azure AD çoklu oturum açmayı, Satıcıyolu ile yapılandırmak için aşağı
 
 1. Farklı bir Web tarayıcısı penceresinde, yönetici olarak satıcılarla yolunda oturum açın.
 
-2. Sağ üst köşedeki **yönetici araçları** ' na tıklayın ve **tümleştirmelere**gidin **SAML 2,0 kimlik doğrulaması** bölümünde **güncelleştirme ayarları**' na tıklayın:
+2. Sağ üst köşedeki **yönetici araçları** ' na tıklayın ve **tümleştirmelere** gidin **SAML 2,0 kimlik doğrulaması** bölümünde **güncelleştirme ayarları**' na tıklayın:
 
     !["A M L 2,0 kimlik doğrulaması" ve "güncelleştirme ayarları" seçiliyken "yönetici araçları-tümleştirmeler" sayfasını gösteren ekran görüntüsü.](./media/dealpath-tutorial/tutorial_dealpath_admin.png)
 
@@ -134,9 +134,9 @@ Azure AD çoklu oturum açmayı, Satıcıyolu ile yapılandırmak için aşağı
 
     ![Satıcılarla yol yapılandırması](./media/dealpath-tutorial/tutorial_dealpath_saml.png) 
 
-    a. **SAML SSO URL** metin kutusunda, Azure Portal kopyaladığınız **oturum açma URL 'si**değerini yapıştırın.
+    a. **SAML SSO URL** metin kutusunda, Azure Portal kopyaladığınız **oturum açma URL 'si** değerini yapıştırın.
 
-    b. **Kimlik sağlayıcısı veren** metin kutusunda, Azure Portal kopyaladığınız **Azure AD tanımlayıcısının**değerini yapıştırın.
+    b. **Kimlik sağlayıcısı veren** metin kutusunda, Azure Portal kopyaladığınız **Azure AD tanımlayıcısının** değerini yapıştırın.
 
     c. İndirilen **sertifika (base64)** dosyasının içeriğini Not defteri 'nde kopyalayın ve sonra **genel sertifika** metin kutusuna yapıştırın.
 
@@ -158,7 +158,7 @@ Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı ol
 
     ![Kullanıcı iletişim kutusu](common/user-properties.png)
 
-    a. **Ad** alanına **Brittasıon**yazın.
+    a. **Ad** alanına **Brittasıon** yazın.
   
     b. **Kullanıcı adı** alanına **brittasıon \@ yourcompanydomain. Extension** yazın  
     Örneğin, BrittaSimon@contoso.com

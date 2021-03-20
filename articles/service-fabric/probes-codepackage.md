@@ -6,10 +6,10 @@ author: tugup
 ms.author: tugup
 ms.date: 3/12/2020
 ms.openlocfilehash: 07a1b836ca7ea79244e303f54654dfcaa6e5fcb9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "82137595"
 ---
 # <a name="liveness-probe"></a>Lizleştirme araştırması
@@ -34,21 +34,21 @@ Kapsayıcı başına yalnızca bir lizleştirme araştırması belirtebilir ve b
 
 * `successThreshold`: Hatada, araştırmanın başarılı olarak kabul edilmesi için, bu değer için başarıyla çalıştırılması gerekir. Desteklenen değer **int**'tir. Varsayılan değer 1 ' dir ve en az 1 ' dir.
 
-Herhangi bir anda bir kapsayıcıda en çok bir yoklama olabilir. Yoklama, **TimeoutSeconds**'da ayarlanan sürede bitmiyorsa, bekleyin ve **FailureThreshold**değerine doğru süreyi Sayın. 
+Herhangi bir anda bir kapsayıcıda en çok bir yoklama olabilir. Yoklama, **TimeoutSeconds**'da ayarlanan sürede bitmiyorsa, bekleyin ve **FailureThreshold** değerine doğru süreyi Sayın. 
 
-Ayrıca, Service Fabric **Deployedservicepackage**üzerinde aşağıdaki araştırma [sistem durumu raporlarını][health-introduction-link] yükseltir:
+Ayrıca, Service Fabric **Deployedservicepackage** üzerinde aşağıdaki araştırma [sistem durumu raporlarını][health-introduction-link] yükseltir:
 
-* `OK`: Yoklama **, başarılı bir şekilde ayarlanan**değer için başarılı oldu.
+* `OK`: Yoklama **, başarılı bir şekilde ayarlanan** değer için başarılı oldu.
 
 * `Error`: Kapsayıcı yeniden başlatılmadan önce araştırma **FailureCount**  ==   **FailureThreshold**.
 
 * `Warning`: 
-    * Araştırma başarısız olur ve **FailureCount**  <  **FailureThreshold**. Bu sistem durumu raporu, **FailureCount** , **FailureThreshold** veya **başarılı eşikte**ayarlanan değere ulaşıncaya kadar kalır.
+    * Araştırma başarısız olur ve **FailureCount**  <  **FailureThreshold**. Bu sistem durumu raporu, **FailureCount** , **FailureThreshold** veya **başarılı eşikte** ayarlanan değere ulaşıncaya kadar kalır.
     * Hatadan sonra başarılı olduğunda, uyarı, art arda güncelleştirilmiş başarıları ile kalır.
 
 ## <a name="specifying-a-liveness-probe"></a>Bir lizliği araştırması belirtme
 
-**Servicemanifestımport**altındaki ApplicationManifest.xml dosyasında bir araştırma belirtebilirsiniz.
+**Servicemanifestımport** altındaki ApplicationManifest.xml dosyasında bir araştırma belirtebilirsiniz.
 
 Araştırma, aşağıdakilerden herhangi biri olabilir:
 
@@ -119,7 +119,7 @@ Bu araştırma, kapsayıcıda bir **Exec** komutu oluşturacak ve komutun bitmes
 
 > [!NOTE]
 > **Exec** komutu, virgülle ayrılmış bir dize alır. Aşağıdaki örnekteki komut bir Linux kapsayıcısı için çalışacaktır.
-> Bir Windows kapsayıcısını araştırmayı deniyorsanız, **cmd**kullanın.
+> Bir Windows kapsayıcısını araştırmayı deniyorsanız, **cmd** kullanın.
 
 ```xml
   <ServiceManifestImport>

@@ -10,10 +10,10 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 14df0f131aaef8a4c24e2d1eb242a9b440e7c7b0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86507599"
 ---
 # <a name="quickstart---create-azure-vmware-solution-by-cloudsimple-service"></a>Hızlı başlangıç-CloudSimple hizmeti tarafından Azure VMware çözümü oluşturma
@@ -38,8 +38,8 @@ Ağ geçidi alt ağı için bir/28 CıDR bloğu ayırın.  CloudSimple hizmeti b
 
 ## <a name="create-the-service"></a>Hizmeti oluşturma
 
-1. **Tüm hizmetler**’i seçin.
-2. **Cloudsimple hizmeti**için arama yapın.
+1. **Tüm Hizmetler**’i seçin.
+2. **Cloudsimple hizmeti** için arama yapın.
 
     ![CloudSimple hizmeti ara](media/create-cloudsimple-service-search.png)
 
@@ -63,12 +63,12 @@ Hizmet oluşturulur ve hizmetler listesine eklenir.
 
 CloudSimple özel bulut ortamı için Kullandıkça Öde kapasitesini ayarlamak için, önce Azure portal düğümleri sağlayın.
 
-1. **Tüm hizmetler**’i seçin.
-2. **Cloudsimple düğümleri**için arama yapın.
+1. **Tüm Hizmetler**’i seçin.
+2. **Cloudsimple düğümleri** için arama yapın.
 
     ![CloudSimple düğümlerinde arama yapın](media/create-cloudsimple-node-search.png)
 
-3. **Cloudsimple düğümlerini**seçin.
+3. **Cloudsimple düğümlerini** seçin.
 4. Düğüm oluşturmak için **Ekle** ' ye tıklayın.
 
     ![CloudSimple düğümleri ekleme](media/create-cloudsimple-node-add.png)
@@ -80,7 +80,7 @@ CloudSimple özel bulut ortamı için Kullandıkça Öde kapasitesini ayarlamak 
 9. Düğüm kaynaklarını barındıracak ayrılmış konumu seçin.
 10. [Düğüm türünü](cloudsimple-node.md)seçin.
 11. Sağlanacak düğüm sayısını seçin.
-12. **Gözden geçir + oluştur**' u seçin.
+12. **Gözden geçir + Oluştur**’u seçin.
 13. Ayarları gözden geçirin. Ayarları değiştirmek için **önceki**'ni tıklatın.
 14. **Oluştur**’u seçin.
 

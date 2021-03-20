@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/15/2020
 ms.openlocfilehash: b5a893ee1923ba4b2bec53b20fb164337bd65902
-ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96558122"
 ---
 # <a name="skillset-concepts-in-azure-cognitive-search"></a>Azure Bilişsel Arama Beceri kavramları
@@ -193,7 +193,7 @@ Azure Bilişsel Arama, Dizin Oluşturucu oluşturduğu çıktıyı kaydeder. Ç�
 
 İsteğe bağlı olarak, bir Dizin Oluşturucu aynı zamanda çıktıyı diğer araç veya süreçlerdeki tüketim için bir [bilgi deposuna](knowledge-store-concept-intro.md) gönderebilir. Bilgi deposu, beceri bir parçası olarak tanımlanmıştır. Bu tanım, zenginleştirilmiş belgelerinizin tablo veya nesne (dosya veya blob) olarak yansıtıldığını belirler. Tablo projeksiyonları Power BI gibi araçlarla etkileşimli analizler için uygundur, ancak dosyalar ve Bloblar genellikle veri bilimi veya benzer işlemlerde kullanılır. Bu bölümde, Beceri kompozisyonunun proje yapmak istediğiniz tabloları veya nesneleri nasıl şekillendirebileceğinizi öğreneceksiniz.
 
-### <a name="projections"></a>Projeksiyonlar
+### <a name="projections"></a>Yansıtmalar
 
 Bilgi deposunu hedefleyen içerikler için içeriğin nasıl yapılandırıldığını düşünmek isteyeceksiniz. *Projeksiyon* , enzenginleştirme ağacından düğümleri seçme ve bilgi deposunda bunların fiziksel bir ifadesini oluşturma işlemidir. Projeksiyonlar, tablo veya nesne projeksiyonları olarak çıkış olabilecek belgenin (içerik ve zenginler) özel şekillerinden oluşur. Yansıtmalarda çalışma hakkında daha fazla bilgi edinmek için bkz. [projeksiyonlarla çalışma](knowledge-store-projection-overview.md).
 

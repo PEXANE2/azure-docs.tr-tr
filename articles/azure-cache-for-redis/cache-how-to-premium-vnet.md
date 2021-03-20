@@ -7,10 +7,10 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 02/08/2021
 ms.openlocfilehash: 94bbb9bb683f40d44d6649802b66bda6feeee218
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100375281"
 ---
 # <a name="configure-virtual-network-support-for-a-premium-azure-cache-for-redis-instance"></a>Redsıs örneği için Premium Azure önbelleği için sanal ağ desteğini yapılandırma
@@ -185,7 +185,7 @@ Bağlantı noktası gereksinimleri önceki bölümde açıklandığı gibi yapı
 
 - Tüm önbellek düğümlerini [yeniden başlatın](cache-administration.md#reboot) . [Gelen bağlantı noktası gereksinimleri](cache-how-to-premium-vnet.md#inbound-port-requirements) ve [giden bağlantı noktası gereksinimleri](cache-how-to-premium-vnet.md#outbound-port-requirements)bölümünde belirtildiği gibi, tüm gerekli önbellek bağımlılıklarına ulaşılırsa, önbellek başarıyla yeniden başlatılabilir.
 - Önbellek düğümleri yeniden başlatıldıktan sonra, Azure portal önbellek durumu tarafından raporlandıktan sonra, aşağıdaki testleri yapabilirsiniz:
-  - [Tcpıng](https://www.elifulkerson.com/projects/tcping.php)kullanarak önbellek ile aynı sanal ağ içinde olan bir makineden 6380 bağlantı noktasını kullanarak önbellek uç noktasına ping gönderin. Örneğin:
+  - [Tcpıng](https://www.elifulkerson.com/projects/tcping.php)kullanarak önbellek ile aynı sanal ağ içinde olan bir makineden 6380 bağlantı noktasını kullanarak önbellek uç noktasına ping gönderin. Örnek:
     
     `tcping.exe contosocache.redis.cache.windows.net 6380`
     
@@ -208,7 +208,7 @@ Aşağıdaki bağlantı dizesine benzer IP adresini kullanmaktan kaçının:
 
 `10.128.2.84:6380,password=xxxxxxxxxxxxxxxxxxxx,ssl=True,abortConnect=False`
 
-DNS adını çözemezseniz, bazı istemci kitaplıkları, `sslHost` StackExchange. redsıs istemcisi tarafından belirtilen gibi yapılandırma seçeneklerini içerir. Bu seçenek, sertifika doğrulama için kullanılan ana bilgisayar adını geçersiz kılmanıza olanak sağlar. Örneğin:
+DNS adını çözemezseniz, bazı istemci kitaplıkları, `sslHost` StackExchange. redsıs istemcisi tarafından belirtilen gibi yapılandırma seçeneklerini içerir. Bu seçenek, sertifika doğrulama için kullanılan ana bilgisayar adını geçersiz kılmanıza olanak sağlar. Örnek:
 
 `10.128.2.84:6380,password=xxxxxxxxxxxxxxxxxxxx,ssl=True,abortConnect=False;sslHost=[mycachename].redis.windows.net`
 

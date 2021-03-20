@@ -10,10 +10,10 @@ author: likebupt
 ms.author: keli19
 ms.date: 10/22/2019
 ms.openlocfilehash: bf35d08128aa8a3e8f545ed7184866694219f2cb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90905218"
 ---
 # <a name="remove-duplicate-rows-module"></a>Yinelenen satırları kaldır modülü
@@ -42,7 +42,7 @@ Açık olarak, bu örnekte muhtemelen yinelenen verileri olan birden çok sütun
 
 + Alternatif olarak, KIMLIK alanında yinelemelere izin vermeye karar verebilir ve ad, soyadı, yaş ve cinsiyeti gibi benzersiz kayıtları bulmak için başka bir dosya birleşimini kullanabilirsiniz.  
 
-Bir satırın yinelenen olup olmadığına ilişkin ölçütleri ayarlamak için, tek bir sütun veya **anahtar**olarak kullanılacak bir sütun kümesi belirtirsiniz. İki satır yalnızca **Tüm** anahtar sütunlarındaki değerler eşitse yinelenen olarak değerlendirilir. Herhangi bir satırda **anahtarlar**için değer yoksa, bu değerler yinelenen satırlar olarak kabul edilmez. Örneğin, cinsiyet ve Age, yukarıdaki tabloda anahtar olarak ayarlanırsa, 6. ve 7. satır, yaş içinde eksik değere sahip olduklarından yinelenen satırlar değildir.
+Bir satırın yinelenen olup olmadığına ilişkin ölçütleri ayarlamak için, tek bir sütun veya **anahtar** olarak kullanılacak bir sütun kümesi belirtirsiniz. İki satır yalnızca **Tüm** anahtar sütunlarındaki değerler eşitse yinelenen olarak değerlendirilir. Herhangi bir satırda **anahtarlar** için değer yoksa, bu değerler yinelenen satırlar olarak kabul edilmez. Örneğin, cinsiyet ve Age, yukarıdaki tabloda anahtar olarak ayarlanırsa, 6. ve 7. satır, yaş içinde eksik değere sahip olduklarından yinelenen satırlar değildir.
 
 Modülünü çalıştırdığınızda, bir aday veri kümesi oluşturur ve belirttiğiniz sütunlar kümesi içinde tekrarsız bir satır kümesi döndürür.
 
@@ -51,13 +51,13 @@ Modülünü çalıştırdığınızda, bir aday veri kümesi oluşturur ve belir
 
 ## <a name="how-to-use-remove-duplicate-rows"></a>Yinelenen satırları kaldır 'ı kullanma
 
-1. İşlem hattınızı modüle ekleyin. **Veri dönüştürme**, **düzenleme**altında **yinelenen satırları kaldır** modülünü bulabilirsiniz.  
+1. İşlem hattınızı modüle ekleyin. **Veri dönüştürme**, **düzenleme** altında **yinelenen satırları kaldır** modülünü bulabilirsiniz.  
 
 2. Yinelenen satırları denetlemek istediğiniz veri kümesini bağlayın.
 
-3. **Özellikler** bölmesinde, **anahtar sütunu seçim filtresi ifadesi**altında, yinelemeleri tanımlamak için kullanılacak sütunları seçmek üzere **sütun seçiciyi Başlat**' a tıklayın.
+3. **Özellikler** bölmesinde, **anahtar sütunu seçim filtresi ifadesi** altında, yinelemeleri tanımlamak için kullanılacak sütunları seçmek üzere **sütun seçiciyi Başlat**' a tıklayın.
 
-    Bu bağlamda, **anahtar** benzersiz bir tanımlayıcı anlamına gelmez. Sütun seçiciyi kullanarak seçtiğiniz tüm sütunlar, **anahtar sütunları**olarak belirtilir. Tüm seçilmemiş sütunlar, anahtar olmayan sütunlar olarak kabul edilir. Anahtar olarak seçtiğiniz sütunların birleşimi kayıtların benzersizlik düzeyini belirler. (Birden çok equalkatlanmış birleşimler kullanan bir SQL ifadesiyle düşünün.)
+    Bu bağlamda, **anahtar** benzersiz bir tanımlayıcı anlamına gelmez. Sütun seçiciyi kullanarak seçtiğiniz tüm sütunlar, **anahtar sütunları** olarak belirtilir. Tüm seçilmemiş sütunlar, anahtar olmayan sütunlar olarak kabul edilir. Anahtar olarak seçtiğiniz sütunların birleşimi kayıtların benzersizlik düzeyini belirler. (Birden çok equalkatlanmış birleşimler kullanan bir SQL ifadesiyle düşünün.)
 
     Örnekler:
 

@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 09/24/2018
 ms.openlocfilehash: eddb0c8339069025f0742e9bcbc371efbef094ee
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92793339"
 ---
 # <a name="provision-and-catalog-new-tenants-in-a-saas-application-using-a-sharded-multi-tenant-azure-sql-database"></a>Parçalı bir çok kiracılı Azure SQL veritabanı kullanarak bir SaaS uygulamasında yeni kiracılar sağlama ve kataloglandırın
@@ -115,7 +115,7 @@ Kiracı verileri daha sonra, Katalog parça eşlemesinde başlatılır ve kayded
 
 ## <a name="tutorial-begins"></a>Öğretici başladı
 
-Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
+Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * Çok kiracılı bir veritabanına kiracı sağlama
@@ -123,7 +123,7 @@ Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 > * Birden çok kiracılı ve tek kiracılı veritabanlarına kiracı grubu sağlama
 > * Bir katalogda bir veritabanını ve kiracı eşlemesini kaydetme
 
-#### <a name="prerequisites"></a>Ön koşullar
+#### <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticiyi tamamlamak için aşağıdaki ön koşulların karşılandığından emin olun:
 
@@ -143,12 +143,12 @@ Bu bölümde, sağlama için PowerShell betikleri tarafından gerçekleştirilen
 
 Aşağıda adım adım iş akışının temel öğeleri verilmiştir:
 
-- **Yeni kiracı anahtarını hesapla** : kiracı adından kiracı anahtarı oluşturmak için bir karma işlev kullanılır.
-- **Kiracı anahtarının zaten mevcut olup olmadığını denetleyin** : anahtarın zaten kayıtlı olmadığından emin olmak için Katalog denetlenir.
-- **Varsayılan kiracı veritabanında kiracıyı Başlat** : Kiracı veritabanı yeni kiracı bilgilerini eklemek üzere güncelleştirilir.
-- **Kiracıyı katalogda kaydet** : yeni kiracı anahtarı ile mevcut tenants1 veritabanı arasındaki eşleme kataloğa eklenir.
-- **Kiracı adını bir katalog uzantısı tablosuna ekleyin** : mekan adı katalogdaki kiracılar tablosuna eklenir.  Bu ek, Katalog veritabanının uygulamaya özgü ek verileri destekleyecek şekilde nasıl uzatımda olduğunu gösterir.
-- **Yeni kiracı Için olayları aç sayfası** : *Bushsollow maves* olayları sayfası tarayıcıda açılır.
+- **Yeni kiracı anahtarını hesapla**: kiracı adından kiracı anahtarı oluşturmak için bir karma işlev kullanılır.
+- **Kiracı anahtarının zaten mevcut olup olmadığını denetleyin**: anahtarın zaten kayıtlı olmadığından emin olmak için Katalog denetlenir.
+- **Varsayılan kiracı veritabanında kiracıyı Başlat**: Kiracı veritabanı yeni kiracı bilgilerini eklemek üzere güncelleştirilir.
+- **Kiracıyı katalogda kaydet**: yeni kiracı anahtarı ile mevcut tenants1 veritabanı arasındaki eşleme kataloğa eklenir.
+- **Kiracı adını bir katalog uzantısı tablosuna ekleyin**: mekan adı katalogdaki kiracılar tablosuna eklenir.  Bu ek, Katalog veritabanının uygulamaya özgü ek verileri destekleyecek şekilde nasıl uzatımda olduğunu gösterir.
+- **Yeni kiracı Için olayları aç sayfası**: *Bushsollow maves* olayları sayfası tarayıcıda açılır.
 
    ![Yeni bir kiracının Olaylar sayfasını gösteren ekran görüntüsü.](./media/saas-multitenantdb-provision-and-catalog/bushwillow.png)
 
@@ -156,10 +156,10 @@ Aşağıda adım adım iş akışının temel öğeleri verilmiştir:
 
 Wingtip uygulamasının paylaşılan bir veritabanında yeni kiracı sağlamayı nasıl uyguladığını anlamak için, bir kesme noktası ekleyin ve iş akışında adım adım ilerleyin:
 
-1. *PowerShell ISE* 'de açın... \\ Öğrenme modülleri \\ provisionkiracılar \\ *Demo-ProvisionTenants.ps1* ve aşağıdaki parametreleri ayarladı:
-   - **$TenantName**  =  **Bushwillow Maves** , yeni bir mekanın adı.
-   - **$VenueType**  =  **mavilere** , önceden tanımlanmış yer türlerinden biri: maves, classicalmusic, dans, CAI, judo, otobisiklet, çok amaçlı, Opera, rockmusic, futbol (küçük harf, boşluk yok).
-   - **$DemoScenario**  =  **1** , diğer kiracılarla paylaşılan bir veritabanında kiracı sağlamak için.
+1. *PowerShell ISE*'de açın... \\ Öğrenme modülleri \\ provisionkiracılar \\ *Demo-ProvisionTenants.ps1* ve aşağıdaki parametreleri ayarladı:
+   - **$TenantName**  =  **Bushwillow Maves**, yeni bir mekanın adı.
+   - **$VenueType**  =  **mavilere**, önceden tanımlanmış yer türlerinden biri: maves, classicalmusic, dans, CAI, judo, otobisiklet, çok amaçlı, Opera, rockmusic, futbol (küçük harf, boşluk yok).
+   - **$DemoScenario**  =  **1**, diğer kiracılarla paylaşılan bir veritabanında kiracı sağlamak için.
 
 2. İmlecinizi satır 38 ' de istediğiniz yere yerleştirerek bir kesme noktası ekleyin: *New-Tenant '* ve ardından **F9** tuşuna basın.
 
@@ -181,14 +181,14 @@ PowerShell betiklerinde hata ayıklama hakkında daha fazla bilgi için bkz. [Po
 
 Aşağıda, betiği izlerken adım adım iş akışının temel öğeleri verilmiştir:
 
-- **Yeni kiracı anahtarını hesapla** : kiracı adından kiracı anahtarı oluşturmak için bir karma işlev kullanılır.
-- **Kiracı anahtarının zaten mevcut olup olmadığını denetleyin** : anahtarın zaten kayıtlı olmadığından emin olmak için Katalog denetlenir.
-- **Yeni bir kiracı veritabanı oluşturun** : veritabanı, Kaynak Yöneticisi şablonu kullanılarak *basetenantdb* veritabanı kopyalanarak oluşturulur.  Yeni veritabanı adı, kiracının adına göre belirlenir.
-- **Kataloğa veritabanı ekleme** : yeni kiracı veritabanı katalogda parça olarak kaydedilir.
-- **Varsayılan kiracı veritabanında kiracıyı Başlat** : Kiracı veritabanı yeni kiracı bilgilerini eklemek üzere güncelleştirilir.
-- **Kiracıyı katalogda kaydet** : yeni kiracı anahtarı ve *sequoıafutbol* veritabanı arasındaki eşleme kataloğa eklenir.
-- **Kiracı adı kataloğa eklenir** : mekan adı, katalogdaki kiracılar uzantı tablosuna eklenir.
-- **Yeni kiracı Için olayları aç sayfası** : *Sequoia futbol* olayları sayfası tarayıcıda açılır.
+- **Yeni kiracı anahtarını hesapla**: kiracı adından kiracı anahtarı oluşturmak için bir karma işlev kullanılır.
+- **Kiracı anahtarının zaten mevcut olup olmadığını denetleyin**: anahtarın zaten kayıtlı olmadığından emin olmak için Katalog denetlenir.
+- **Yeni bir kiracı veritabanı oluşturun**: veritabanı, Kaynak Yöneticisi şablonu kullanılarak *basetenantdb* veritabanı kopyalanarak oluşturulur.  Yeni veritabanı adı, kiracının adına göre belirlenir.
+- **Kataloğa veritabanı ekleme**: yeni kiracı veritabanı katalogda parça olarak kaydedilir.
+- **Varsayılan kiracı veritabanında kiracıyı Başlat**: Kiracı veritabanı yeni kiracı bilgilerini eklemek üzere güncelleştirilir.
+- **Kiracıyı katalogda kaydet**: yeni kiracı anahtarı ve *sequoıafutbol* veritabanı arasındaki eşleme kataloğa eklenir.
+- **Kiracı adı kataloğa eklenir**: mekan adı, katalogdaki kiracılar uzantı tablosuna eklenir.
+- **Yeni kiracı Için olayları aç sayfası**: *Sequoia futbol* olayları sayfası tarayıcıda açılır.
 
    ![etkinlikler](./media/saas-multitenantdb-provision-and-catalog/sequoiasoccer.png)
 
@@ -197,9 +197,9 @@ Aşağıda, betiği izlerken adım adım iş akışının temel öğeleri verilm
 Şimdi kendi veritabanında bir kiracı oluştururken betik sürecini gözden geçir:
 
 1. Hala devam ediyor... \\ Öğrenme modülleri \\ provisionkiracılar \\ *Demo-ProvisionTenants.ps1* aşağıdaki parametreleri ayarladı:
-   - **$TenantName**  =  **Sequoia futbol** , yeni bir mekanın adı.
-   - **$VenueType**  =  **futbol** , önceden tanımlanmış yer türlerinden biri: maves, classicalmusic, dans, CAI, judo, otobisiklet, çok amaçlı, Opera, rockmusic, futbol (küçük harf, boşluk yok).
-   - **$DemoScenario**  =  **2** , bir kiracıyı kendi veritabanına sağlamak için.
+   - **$TenantName**  =  **Sequoia futbol**, yeni bir mekanın adı.
+   - **$VenueType**  =  **futbol**, önceden tanımlanmış yer türlerinden biri: maves, classicalmusic, dans, CAI, judo, otobisiklet, çok amaçlı, Opera, rockmusic, futbol (küçük harf, boşluk yok).
+   - **$DemoScenario**  =  **2**, bir kiracıyı kendi veritabanına sağlamak için.
 
 2. İmlecinizi satır 57 ' de istediğiniz yere yerleştirerek yeni bir kesme noktası ekleyin: *& &nbsp; $PSScriptRoot \new-tenantanddatabase '* ve **F9** tuşuna basın.
 
@@ -213,8 +213,8 @@ Aşağıda, betiği izlerken adım adım iş akışının temel öğeleri verilm
 
 Bu alıştırma, 17 kiracılar toplu işi sağlar. Diğer Wingtip bilet öğreticilerini başlatmadan önce bu toplu iş topluluğunu sağlamanız önerilir. bu nedenle, birlikte çalışmak için daha fazla veritabanı vardır.
 
-1. *PowerShell ISE* 'de açın... \\ Öğrenme modülleri \\ provisionkiracılar \\ *Demo-ProvisionTenants.ps1* ve *$DemoScenario* parametresini 4 olarak değiştirir:
-   - **$DemoScenario**  =  **4** , paylaşılan bir veritabanına kiracıların bir toplu iş sağlamasını sağlamak.
+1. *PowerShell ISE*'de açın... \\ Öğrenme modülleri \\ provisionkiracılar \\ *Demo-ProvisionTenants.ps1* ve *$DemoScenario* parametresini 4 olarak değiştirir:
+   - **$DemoScenario**  =  **4**, paylaşılan bir veritabanına kiracıların bir toplu iş sağlamasını sağlamak.
 
 2. **F5** tuşuna basıp betiği çalıştırın.
 
@@ -237,13 +237,13 @@ Kiracıların tam listesi ve her biri için karşılık gelen veritabanı katalo
 - Kiracı adı kiracılar tablosunda depolanır.
 - Veritabanı adı parça yönetim tablolarında depolanır.
 
-1. SQL Server Management Studio (SSMS) içinde, Katalog-MT konumundaki kiracılar sunucusuna bağlanın **. \<USER\> database.windows.net** , Login = **Developer** ve Password = **P \@ ssword1**
+1. SQL Server Management Studio (SSMS) içinde, Katalog-MT konumundaki kiracılar sunucusuna bağlanın **. \<USER\> database.windows.net**, Login = **Developer** ve Password = **P \@ ssword1**
 
     ![SSMS bağlantı iletişim kutusu](./media/saas-multitenantdb-provision-and-catalog/SSMSConnection.png)
 
 2. SSMS Nesne Gezgini, *tenantcatalog* veritabanındaki görünümlere gidin.
 
-3. Sık *kullanılan görünüm '* e sağ tıklayın ve **en üstteki 1000 satırı seç** ' i seçin. Farklı kiracılar için kiracı adı ve veritabanı arasındaki eşlemeyi aklınızda yapın.
+3. Sık *kullanılan görünüm '* e sağ tıklayın ve **en üstteki 1000 satırı seç**' i seçin. Farklı kiracılar için kiracı adı ve veritabanı arasındaki eşlemeyi aklınızda yapın.
 
     ![SSMS 'de Extendedkiracılar görünümü](./media/saas-multitenantdb-provision-and-catalog/extendedtenantsview.png)
 

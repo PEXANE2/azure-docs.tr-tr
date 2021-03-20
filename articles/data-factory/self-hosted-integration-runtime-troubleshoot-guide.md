@@ -7,10 +7,10 @@ ms.topic: troubleshooting
 ms.date: 01/25/2021
 ms.author: lle
 ms.openlocfilehash: 2cb0e0870b32270340e37d54dc54a43b22ee014a
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100376471"
 ---
 # <a name="troubleshoot-self-hosted-integration-runtime"></a>Şirket içinde barındırılan tümleştirme çalışma zamanı sorunlarını giderme
@@ -117,14 +117,14 @@ Bir SSL/TLS anlaşması ile ilgili olan durumları işlerken, sertifika zinciri 
         Certutil -verify -urlfetch    <certificate path>   >     <output txt file path> 
         ```
 
-        Örneğin:
+        Örnek:
 
         ```
         Certutil -verify -urlfetch c:\users\test\desktop\servercert02.cer > c:\users\test\desktop\Certinfo.txt
         ```
     4. Çıkış TXT dosyasında hata olup olmadığını denetleyin. Hata özetini TXT dosyasının sonunda bulabilirsiniz.
 
-        Örneğin: 
+        Örnek: 
 
         ![TXT dosyasının sonundaki hata özetinin ekran görüntüsü.](media/self-hosted-integration-runtime-troubleshoot-guide/error-summary.png)
 

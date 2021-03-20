@@ -9,10 +9,10 @@ ms.author: kecheung
 author: kcheeeung
 ms.date: 08/12/2020
 ms.openlocfilehash: d0a0df4791492c1c9f0d600630d723024c46c1b8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88227523"
 ---
 # <a name="scale-hiveserver2-on-azure-hdinsight-clusters-for-high-availability"></a>Yüksek kullanılabilirlik için Azure HDInsight kümelerinde HiveServer2 ölçeklendirin
@@ -22,7 +22,7 @@ Kullanılabilirliği ve yük dağılımını artırmak için kümenize ek bir Hi
 > [!NOTE]
 > Kullanımınıza bağlı olarak, HiveServer2 sayısının artırılması Hive meta veri deposu bağlantı sayısını artırabilir. Ayrıca, Azure SQL veritabanınızın düzgün boyutlandırıldığından emin olun.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu kılavuzu kullanmak için aşağıdaki makaleyi anlamanız gerekir:
 - [HDInsight 'ta Apache Hadoop kümelerinde boş kenar düğümlerini kullanma](hdinsight-apps-use-edge-node.md)
@@ -37,13 +37,13 @@ Bu bölümde, hedef konaklarınıza ek bir HiveServer2 yüklersiniz.
 
 2. Ekle düğmesine tıklayın ve HiveServer2 ' ye tıklayın.
 
-:::image type="content" source="media/hdinsight-apps-install-hiveserver2/hdinsight-install-hiveserver2-b.png" alt-text="Ambarı ana bilgisayarları menüsü.":::
+:::image type="content" source="media/hdinsight-apps-install-hiveserver2/hdinsight-install-hiveserver2-b.png" alt-text="Konağın HiveServer2 bölmesini ekleyin.":::
 
 3. Onayla ve işlemin çalıştırılacağı işlem. İstenen tüm konaklar için 1-3 tekrarlayın.
 
 4. Yüklemeyi bitirdikten sonra, eski yapılandırmalarını ile tüm hizmetleri yeniden başlatın ve HiveServer2 'i başlatın.
 
-:::image type="content" source="media/hdinsight-apps-install-hiveserver2/hdinsight-install-hiveserver2-c.png" alt-text="Ambarı ana bilgisayarları menüsü.":::
+:::image type="content" source="media/hdinsight-apps-install-hiveserver2/hdinsight-install-hiveserver2-c.png" alt-text="HiveServer2 panelini başlatın.":::
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

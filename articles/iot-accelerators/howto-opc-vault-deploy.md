@@ -9,10 +9,10 @@ ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
 ms.openlocfilehash: 98dc9345d2c8b392fd094458b612857d6d454739
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92071498"
 ---
 # <a name="build-and-deploy-the-opc-vault-certificate-management-service"></a>OPC Kasası sertifika yönetimi hizmetini derleme ve dağıtma
@@ -97,7 +97,7 @@ Bunu yapmak için:
 2. Hizmetin dağıtıldığı kaynak grubuna gidin.
 3. **Kaynak grubunu sil**'i seçip onaylayın.
 4. Kısa bir süre sonra dağıtılan tüm hizmet bileşenleri silinir.
-5. **Azure Active Directory**  >  **uygulama kayıtları**gidin.
+5. **Azure Active Directory**  >  **uygulama kayıtları** gidin.
 6. Dağıtılan her kaynak grubu için üç kayıt listelenmiş olmalıdır. Kayıtlar şu adlara sahiptir: `resourcegroup-client` , `resourcegroup-module` , `resourcegroup-service` . Her kaydı ayrı ayrı silin.
 
 Artık dağıtılan tüm bileşenler kaldırılır.

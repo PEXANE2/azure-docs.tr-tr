@@ -5,10 +5,10 @@ ms.topic: how-to
 ms.date: 02/27/2020
 ms.custom: subject-moving-resources
 ms.openlocfilehash: 87a2da31802a8b6858e875c23ef1dbd2d6d006bc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86524863"
 ---
 # <a name="move-an-app-service-resource-to-another-region"></a>App Service kaynağını başka bir bölgeye taşıma
@@ -19,7 +19,7 @@ App Service kaynaklar bölgeye özeldir ve bölgeler arasında taşınamaz. Hede
 
 Uygulamanızı daha kolay bir şekilde kopyalamak için, [tek bir App Service uygulamasını](app-service-web-app-cloning.md) başka bir bölgedeki bir App Service planına kopyalayabilirsiniz, ancak özellikle de Linux uygulamalarını desteklemeyen [kısıtlamalar](app-service-web-app-cloning.md#current-restrictions)vardır.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - App Service uygulamasının taşımak istediğiniz Azure bölgesinde olduğundan emin olun.
 - Hedef bölgenin, kaynaklarını taşımak istediğiniz App Service ve ilgili hizmeti desteklediğinden emin olun.
@@ -27,7 +27,7 @@ Uygulamanızı daha kolay bir şekilde kopyalamak için, [tek bir App Service uy
 
 ## <a name="prepare"></a>Hazırlama
 
-Kullanmakta olduğunuz tüm App Service kaynaklarını belirler. Örneğin:
+Kullanmakta olduğunuz tüm App Service kaynaklarını belirler. Örnek:
 
 - App Service uygulamaları
 - [App Service planları](overview-hosting-plans.md)

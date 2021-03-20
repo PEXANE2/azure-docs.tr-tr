@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/17/2020
 ms.openlocfilehash: 704763e8e6e7c5336d0ed3e1c28791fb96c77aba
-ms.sourcegitcommit: 5ef018fdadd854c8a3c360743245c44d306e470d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/01/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97844946"
 ---
 #     <a name="custom-entity-lookup-cognitive-skill-preview"></a>Özel varlık arama Bilişsel Beceri (Önizleme)
@@ -47,7 +47,7 @@ Parametreler büyük/küçük harfe duyarlıdır.
 
 ## <a name="skill-inputs"></a>Beceri girişleri
 
-| Giriş adı      | Açıklama                   |
+| Giriş adı      | Description                   |
 |---------------|-------------------------------|
 | `text`          | Çözümlenecek metin.          |
 | `languageCode`    | İsteğe bağlı. `"en"` varsayılan değerdir.  |
@@ -56,7 +56,7 @@ Parametreler büyük/küçük harfe duyarlıdır.
 ## <a name="skill-outputs"></a>Yetenek çıkışları
 
 
-| Çıkış adı      | Açıklama                   |
+| Çıkış adı      | Description                   |
 |---------------|-------------------------------|
 | `entities` | Bulunan eşleşmeler ve ilgili meta veriler hakkında bilgi içeren bir nesne dizisi. Tanımlanan varlıkların her biri aşağıdaki alanları içerebilir:  <ul> <li> *ad*: tanımlanan en üst düzey varlık. Varlık "normalleştirilmiş" formunu temsil eder. </li> <li> *ID*: "özel varlık tanımı biçiminde" Kullanıcı tarafından tanımlanan varlık için benzersiz bir tanımlayıcı.</li> <li> *Açıklama*: "özel varlık tanımı biçiminde" Kullanıcı tarafından tanımlanan varlık açıklaması. </li> <li> *şunu yazın:* "Özel varlık tanımı biçiminde" Kullanıcı tarafından tanımlanan varlık türü.</li> <li> *alt tür:* "Özel varlık tanımı biçiminde" Kullanıcı tarafından tanımlanan varlık alt türü.</li>  <li> *eşleşmeler*: kaynak metindeki bu varlık için eşleşmelerin her birini tanımlayan koleksiyon. Her eşleşme aşağıdaki üyelere sahip olacaktır: </li> <ul> <li> *metin*: ham metin, kaynak belgeden eşleşir. </li> <li> *konum*: eşleşmenin metinde bulunduğu konum. </li> <li> *uzunluk*: eşleşen metnin uzunluğu. </li> <li> *eşleşme uzaklığı*: Bu eşleşmenin farklı karakter sayısı, özgün varlık adından veya diğer addan farklıdır.  </li> </ul> </ul>
   |
@@ -145,7 +145,7 @@ JSON tanımının daha karmaşık bir örneği, isteğe bağlı olarak her bir v
 
 Aşağıdaki tablolarda, eşleştirilecek varlıkları tanımlarken ayarlayabileceğiniz farklı yapılandırma parametreleri daha ayrıntılı olarak açıklanır:
 
-|  Alan adı  |        Açıklama  |
+|  Alan adı  |        Description  |
 |--------------|----------------------|
 | `name` | En üst düzey varlık tanımlayıcısı. Yetenek çıkışındaki eşleşmeler bu ada göre gruplandırılır ve bulunan metnin "normalleştirilmiş" biçimini temsil etmelidir.  |
 | `description`  | Seçim Bu alan, eşleşen metinler hakkında özel meta veriler için bir PASSTHROUGH olarak kullanılabilir. Bu alanın değeri, yetenek çıkışında varlığıyla her eşleşimiyle birlikte görüntülenir. |
@@ -160,7 +160,7 @@ Aşağıdaki tablolarda, eşleştirilecek varlıkları tanımlarken ayarlayabile
 | `defaultFuzzyEditDistance` | Seçim Bu varlık için varsayılan benzer düzenleme uzaklığı değerini değiştirir. Tüm diğer adların belirsizlik değerlerini varsayılan değerini değiştirmek için kullanılabilir. |
 | `aliases` | Seçim Kök varlık adının alternatif yazılarını veya eşanlamlı türlerini belirtmek için kullanılabilecek karmaşık nesneler dizisi. |
 
-| Diğer ad özellikleri | Açıklama |
+| Diğer ad özellikleri | Description |
 |------------------|-------------|
 | `text`  | Bir hedef varlık adının alternatif yazımı veya temsili.  |
 | `caseSensitive` | Seçim Yukarıdaki kök varlık "caseSensitive" parametresiyle aynı şekilde davranır, ancak yalnızca bu diğer ad için geçerlidir. |

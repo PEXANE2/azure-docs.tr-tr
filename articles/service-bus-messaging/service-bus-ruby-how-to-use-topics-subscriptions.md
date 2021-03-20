@@ -7,10 +7,10 @@ ms.devlang: ruby
 ms.topic: quickstart
 ms.date: 06/23/2020
 ms.openlocfilehash: aba326a63558632bee3bf0c48d34e471bbe30886
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88067571"
 ---
 # <a name="quickstart-how-to-use-service-bus-topics-and-subscriptions-with-ruby"></a>Hızlı başlangıç: Ruby ile Service Bus konuları ve abonelikleri kullanma
@@ -28,7 +28,7 @@ Bu makalede, Ruby uygulamalarından Service Bus konularının ve aboneliklerinin
 
 ## <a name="prerequisites"></a>Önkoşullar
 1. Azure aboneliği. Bu öğreticiyi tamamlamak için bir Azure hesabınızın olması gerekir. [Visual Studio veya MSDN abonesi avantajlarınızı](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A85619ABF) etkinleştirebilir veya [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF)için kaydolabilirsiniz.
-2. Hızlı başlangıç içindeki adımları izleyin: bir Service Bus **ad alanı** oluşturmak ve **bağlantı dizesini**almak için [Azure Portal Service Bus konu başlığı ve abonelikleri oluşturmak üzere kullanın](service-bus-quickstart-topics-subscriptions-portal.md) . 
+2. Hızlı başlangıç içindeki adımları izleyin: bir Service Bus **ad alanı** oluşturmak ve **bağlantı dizesini** almak için [Azure Portal Service Bus konu başlığı ve abonelikleri oluşturmak üzere kullanın](service-bus-quickstart-topics-subscriptions-portal.md) . 
 
     > [!NOTE]
     > Bu hızlı başlangıçta **Ruby** kullanarak konu için bir **Konu** ve bir **abonelik** oluşturacaksınız. 
@@ -126,13 +126,13 @@ end
 Service Bus konu başlıkları, [Standart katmanda](service-bus-premium-messaging.md) maksimum 256 KB ve [Premium katmanda](service-bus-premium-messaging.md) maksimum 1 MB ileti boyutunu destekler. Standart ve özel uygulama özelliklerini içeren üst bilginin maksimum dosya boyutu 64 KB olabilir. Konu başlığında tutulan ileti sayısına ilişkin bir sınır yoktur ancak konu başlığı tarafından tutulan iletilerin toplam boyutu için uç sınır vardır. Bu konu başlığı boyutu, üst sınır 5 GB olacak şekilde oluşturulma zamanında belirlenir.
 
 ## <a name="receive-messages-from-a-subscription"></a>Bir abonelikten ileti alma
-`receive_subscription_message()` **Azure:: ServiceBusService** nesnesinde yöntemi kullanılarak bir abonelikten iletiler alınır. Varsayılan olarak, iletiler, abonelikten silinmeksizin salt okunurdur (yoğun) ve kilitlidir. `peek_lock`Seçeneğini **yanlış**olarak ayarlayarak iletiyi aboneliğden okuyabilir ve silebilirsiniz.
+`receive_subscription_message()` **Azure:: ServiceBusService** nesnesinde yöntemi kullanılarak bir abonelikten iletiler alınır. Varsayılan olarak, iletiler, abonelikten silinmeksizin salt okunurdur (yoğun) ve kilitlidir. `peek_lock`Seçeneğini **yanlış** olarak ayarlayarak iletiyi aboneliğden okuyabilir ve silebilirsiniz.
 
 Varsayılan davranış, iki aşamalı bir işlemi okumayı ve silmeyi, ayrıca eksik iletilere izin verilmeyen uygulamaları desteklemeyi olanaklı hale getirir. Service Bus bir istek aldığında bir sonraki kullanılacak iletiyi bulur, diğer tüketicilerin bu iletiyi almasını engellemek için kilitler ve ardından uygulamaya döndürür. Uygulama iletiyi işlemeyi tamamladıktan (veya gelecekteki işlemler için güvenilir bir şekilde depolar), yöntemi çağırarak alma işleminin ikinci aşamasını tamamlar `delete_subscription_message()` ve bir parametre olarak silinecek iletiyi sağlar. `delete_subscription_message()`Yöntemi, Tüketilmekte olan iletiyi işaretler ve abonelikten kaldırır.
 
-`:peek_lock`Parametre **false**olarak ayarlandıysa, iletiyi okumak ve silmek en basit model haline gelir ve bir hata oluştuğunda bir uygulamanın bir iletiyi işlememesinin kabul edebildiği senaryolar için en iyi sonuç verir. Tüketicinin alma isteğini yaptığı ve işlemeden önce çöktüğü bir senaryo düşünün. Service Bus ileti tüketildiği gibi işaretlendiğinden, uygulama yeniden başlatıldığında ve iletileri yeniden kullanmaya başladığında, kilitlenme öncesinde tüketilen iletiyi kaçırmıştır.
+`:peek_lock`Parametre **false** olarak ayarlandıysa, iletiyi okumak ve silmek en basit model haline gelir ve bir hata oluştuğunda bir uygulamanın bir iletiyi işlememesinin kabul edebildiği senaryolar için en iyi sonuç verir. Tüketicinin alma isteğini yaptığı ve işlemeden önce çöktüğü bir senaryo düşünün. Service Bus ileti tüketildiği gibi işaretlendiğinden, uygulama yeniden başlatıldığında ve iletileri yeniden kullanmaya başladığında, kilitlenme öncesinde tüketilen iletiyi kaçırmıştır.
 
-Aşağıdaki örnek, iletilerinin kullanılarak nasıl alınıp işlenebileceğinizi gösterir `receive_subscription_message()` . Örnek, önce `low-messages` false olarak ayarla ' yı kullanarak abonelikten bir ileti alır ve siler `:peek_lock` , sonra öğesinden başka bir ileti **false**alır `high-messages` ve kullanarak iletiyi siler `delete_subscription_message()` :
+Aşağıdaki örnek, iletilerinin kullanılarak nasıl alınıp işlenebileceğinizi gösterir `receive_subscription_message()` . Örnek, önce `low-messages` false olarak ayarla ' yı kullanarak abonelikten bir ileti alır ve siler `:peek_lock` , sonra öğesinden başka bir ileti alır `high-messages` ve kullanarak iletiyi siler `delete_subscription_message()` :
 
 ```ruby
 message = azure_service_bus_service.receive_subscription_message(
@@ -147,7 +147,7 @@ Service Bus, uygulamanızda gerçekleşen hataları veya ileti işlenirken oluş
 
 Ayrıca, abonelik içinde kilitlenen bir iletiyle ilişkili bir zaman aşımı vardır. uygulama, kilit zaman aşımı dolmadan önce iletiyi işleyemezse (örneğin, uygulama çökerse) Service Bus, otomatik olarak iletinin kilidini açar ve yeniden alınmak üzere kullanılabilir hale gelir.
 
-Uygulamanın ileti işlendikten sonra çöktüğü durumda `delete_subscription_message()` , ancak yöntem çağrılmadan önce, yeniden başlatıldığında ileti uygulamaya yeniden gönderilir. Genellikle *en az bir kez işleme*olarak adlandırılır; diğer bir deyişle, her ileti en az bir kez işlenir ancak belirli durumlarda aynı ileti yeniden teslim edilebilir. Senaryo yinelenen işlemeyi kabul etmiyorsa yinelenen ileti teslimine izin vermek için uygulama geliştiricilerin uygulamaya ilave bir mantık eklemesi gerekir. Bu mantık genellikle ileti özelliği kullanılarak elde edilir ve bu da `message_id` teslim girişimleri arasında sabit kalır.
+Uygulamanın ileti işlendikten sonra çöktüğü durumda `delete_subscription_message()` , ancak yöntem çağrılmadan önce, yeniden başlatıldığında ileti uygulamaya yeniden gönderilir. Genellikle *en az bir kez işleme* olarak adlandırılır; diğer bir deyişle, her ileti en az bir kez işlenir ancak belirli durumlarda aynı ileti yeniden teslim edilebilir. Senaryo yinelenen işlemeyi kabul etmiyorsa yinelenen ileti teslimine izin vermek için uygulama geliştiricilerin uygulamaya ilave bir mantık eklemesi gerekir. Bu mantık genellikle ileti özelliği kullanılarak elde edilir ve bu da `message_id` teslim girişimleri arasında sabit kalır.
 
 ## <a name="delete-topics-and-subscriptions"></a>Konu başlıklarını ve abonelikleri silme
 [Oto Deleteonıdle özelliği](/dotnet/api/microsoft.servicebus.messaging.subscriptiondescription.autodeleteonidle) ayarlanmadığı için konular ve abonelikler kalıcıdır. [Azure Portal][Azure portal] veya program aracılığıyla silinebilirler. Aşağıdaki örnek, adlı konunun nasıl silineceğini gösterir `test-topic` .

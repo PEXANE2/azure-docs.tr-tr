@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 01/25/2019
 ms.author: jeedes
 ms.openlocfilehash: 3061a4f0b6a41e5057436e15cabd2db0cbec5c00
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92454890"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-deputy"></a>Öğretici: Deputy ile tümleştirme Azure Active Directory
@@ -30,7 +30,7 @@ Azure AD ile Deputy 'yi tümleştirmek aşağıdaki avantajları sağlar:
 Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](../manage-apps/what-is-single-sign-on.md).
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure AD tümleştirmesini Deputy ile yapılandırmak için aşağıdaki öğeler gereklidir:
 
@@ -61,13 +61,13 @@ Depof 'ın Azure AD 'ye tümleştirilmesini yapılandırmak için, Galeriden yö
 
     ![Yeni uygulama düğmesi](common/add-new-app.png)
 
-4. Arama kutusuna **Deputy**yazın, sonuç panelinden **Deputy** ' yi seçin ve ardından **Ekle** düğmesine tıklayarak uygulamayı ekleyin.
+4. Arama kutusuna **Deputy** yazın, sonuç panelinden **Deputy** ' yi seçin ve ardından **Ekle** düğmesine tıklayarak uygulamayı ekleyin.
 
      ![Sonuçlar listesinde depolduğunuz](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-Bu bölümde, Azure AD çoklu oturum açmayı, **Britta Simon**adlı bir test kullanıcısına göre Deputy ile yapılandırıp test edersiniz.
+Bu bölümde, Azure AD çoklu oturum açmayı, **Britta Simon** adlı bir test kullanıcısına göre Deputy ile yapılandırıp test edersiniz.
 Çoklu oturum açma için, bir Azure AD kullanıcısı ve Deputy 'deki ilgili Kullanıcı arasındaki bağlantı ilişkisinin oluşturulması gerekir.
 
 Azure AD çoklu oturum açma 'yı Deputy ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını gerçekleştirmeniz gerekir:
@@ -177,7 +177,7 @@ Azure AD çoklu oturum açma 'yı Deputy ile yapılandırmak için aşağıdaki 
 
     ![Tek Sign-On yapılandırma](./media/deputy-tutorial/tutorial_deputy_005.png)
     
-    a. **Sosyal oturum açmayı**etkinleştirin.
+    a. **Sosyal oturum açmayı** etkinleştirin.
    
     b. Not defteri 'nde Azure portal indirilen base64 kodlu sertifikanızı açın, bu içeriği panonuza kopyalayın ve **OpenSSL sertifikası** metin kutusuna yapıştırın.
    
@@ -205,9 +205,9 @@ Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı ol
 
     ![Kullanıcı iletişim kutusu](common/user-properties.png)
 
-    a. **Ad** alanına **Brittasıon**girin.
+    a. **Ad** alanına **Brittasıon** girin.
   
-    b. **Kullanıcı adı** alanına ** \@ bricompansıon yourcompanydomain. Extension** yazın  
+    b. **Kullanıcı adı** alanına **\@ bricompansıon yourcompanydomain. Extension** yazın  
     Örneğin, BrittaSimon@contoso.com
 
     c. **Parolayı göster** onay kutusunu seçin ve ardından parola kutusunda görüntülenen değeri yazın.
@@ -260,7 +260,7 @@ Azure AD kullanıcılarının Deputy 'de oturum açmasını sağlamak için, bu 
    
     ![Yeni Kullanıcı](./media/deputy-tutorial/tutorial_deputy_003.png "Yeni Kullanıcı")
 
-    a. **Ad** metin kutusuna, **Brittasıon**gibi kullanıcının adını yazın.
+    a. **Ad** metin kutusuna, **Brittasıon** gibi kullanıcının adını yazın.
    
     b. **E-posta** metin kutusuna, sağlamak Istediğiniz BIR Azure AD hesabının e-posta adresini yazın.
    

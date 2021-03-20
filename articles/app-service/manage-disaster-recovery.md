@@ -5,10 +5,10 @@ ms.topic: how-to
 ms.date: 06/09/2020
 ms.custom: subject-moving-resources
 ms.openlocfilehash: 1388dc11254324f74efcbaa55c97cac2ccd0c026
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87073740"
 ---
 # <a name="move-an-app-service-app-to-another-region"></a>App Service uygulamasını başka bir bölgeye taşıma
@@ -23,7 +23,7 @@ App Service kaynaklar bölgeye özeldir ve bölgeler arasında taşınamaz. Uygu
 
 ## <a name="prepare"></a>Hazırlama
 
-Etkilenen uygulamanın Şu anda kullandığı tüm App Service kaynaklarını belirler. Örneğin:
+Etkilenen uygulamanın Şu anda kullandığı tüm App Service kaynaklarını belirler. Örnek:
 
 - App Service uygulamaları
 - [App Service planları](overview-hosting-plans.md)
@@ -67,7 +67,7 @@ Dosyaları yalnızca etkilenen uygulamadan geri yüklemeden kurtarmak isterseniz
 
     ![Etkilenen uygulamanın sayfasının ekran görüntüsü. Bir uyarı bildirimi görünür ancak vurgulanmaz. Bunun yerine yayımlama profili Al öğesi vurgulanır.](media/manage-disaster-recovery/get-publish-profile.png)
 
-1. İndirilen dosyayı açın ve adında bulunduğu yayımlama profilini bulun `ReadOnly - FTP` . Bu, olağanüstü durum kurtarma profilidir. Örneğin:
+1. İndirilen dosyayı açın ve adında bulunduğu yayımlama profilini bulun `ReadOnly - FTP` . Bu, olağanüstü durum kurtarma profilidir. Örnek:
 
     ```xml
     <publishProfile profileName="%app-name% - ReadOnly - FTP" publishMethod="FTP" publishUrl="ftp://%ftp-site%/site/wwwroot" ftpPassiveMode="True" userName="%app-name%\$%app-name%" userPWD="" destinationAppUrl="http://%app-name%.azurewebsites.net" SQLServerDBConnectionString="" mySQLDBConnectionString="" hostingProviderForumLink="" controlPanelLink="http://windows.azure.com" webSystem="WebSites">

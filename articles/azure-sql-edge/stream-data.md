@@ -10,10 +10,10 @@ ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2020
 ms.openlocfilehash: f63ab040e750c0c642c9656a5482529b926e9295
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93392121"
 ---
 # <a name="data-streaming-in-azure-sql-edge"></a>Azure SQL Edge 'de veri akışı
@@ -35,15 +35,15 @@ T-SQL akışı, [Azure Stream Analytics](../stream-analytics/stream-analytics-in
 
 Stream Analytics işi aşağıdakilerden oluşur:
 
-- **Akış girişi** : Bu, veri akışını okumak için bir veri kaynağına bağlantıları tanımlar. Azure SQL Edge Şu anda aşağıdaki akış giriş türlerini desteklemektedir:
+- **Akış girişi**: Bu, veri akışını okumak için bir veri kaynağına bağlantıları tanımlar. Azure SQL Edge Şu anda aşağıdaki akış giriş türlerini desteklemektedir:
     - Edge hub 'ı
     - Kafka (Kafka girdileri desteği şu anda yalnızca Azure SQL Edge 'in Intel/AMD64 sürümlerinde kullanılabilir.)
 
-- **Akış çıkışı** : Bu, veri akışını yazmak için bir veri kaynağına bağlantıları tanımlar. Azure SQL Edge Şu anda aşağıdaki akış çıkış türlerini desteklemektedir
+- **Akış çıkışı**: Bu, veri akışını yazmak için bir veri kaynağına bağlantıları tanımlar. Azure SQL Edge Şu anda aşağıdaki akış çıkış türlerini desteklemektedir
     - Edge hub 'ı
     - SQL (SQL çıktısı, Azure SQL Edge veya uzak SQL Server ya da Azure SQL veritabanı örneği içinde yerel bir veritabanı olabilir.) 
 
-- **Akış sorgusu** : Bu, akış çıktısına yazılmadan önce, giriş akışına uygulanacak dönüştürme, toplamalar, filtre, sıralama ve birleştirmeleri tanımlar. Akış sorgusu, Stream Analytics tarafından kullanılan sorgu dilini temel alır. Daha fazla bilgi için bkz. [Stream Analytics sorgu dili](/stream-analytics-query/stream-analytics-query-language-reference).
+- **Akış sorgusu**: Bu, akış çıktısına yazılmadan önce, giriş akışına uygulanacak dönüştürme, toplamalar, filtre, sıralama ve birleştirmeleri tanımlar. Akış sorgusu, Stream Analytics tarafından kullanılan sorgu dilini temel alır. Daha fazla bilgi için bkz. [Stream Analytics sorgu dili](/stream-analytics-query/stream-analytics-query-language-reference).
 
 > [!IMPORTANT]
 > T-SQL akışı, Stream Analytics aksine, şu anda [aramalar için başvuru verilerini kullanmayı](../stream-analytics/stream-analytics-use-reference-data.md) veya [BIR akış IŞINDE UDF ve uda 'yı kullanmayı](../stream-analytics/streaming-technologies.md#you-want-to-write-udfs-udas-and-custom-deserializers-in-a-language-other-than-javascript-or-c)desteklememektedir.

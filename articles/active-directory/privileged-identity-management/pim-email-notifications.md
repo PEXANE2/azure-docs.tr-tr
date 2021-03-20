@@ -17,10 +17,10 @@ ms.reviewer: hanki
 ms.custom: pim
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: fe57a44a5a6fa9a631604d92419fd8f5ebcce50a
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93394739"
 ---
 # <a name="email-notifications-in-pim"></a>PıM 'de e-posta bildirimleri
@@ -34,7 +34,7 @@ Hem Azure AD hem de Azure Kaynak rolleri için Privileged Identity Management g�
 - E-posta adresi:  **Azure-noreply \@ Microsoft.com**
 - Görünen ad: Microsoft Azure
 
-Bu e-postalar konu satırında bir **PIM** öneki içerir. İşte bir örnek:
+Bu e-postalar konu satırında bir **PIM** öneki içerir. Aşağıda bir örnek verilmiştir:
 
 - PıM: Alain Charon, yedekleme okuyucusu rolüne kalıcı olarak atandı
 
@@ -68,7 +68,7 @@ Azure AD rolleri için haftalık Privileged Identity Management Özet e-postası
 
 E-postada dört kutucuk bulunur:
 
-| Kutucuk | Açıklama |
+| Kutucuk | Description |
 | --- | --- |
 | **Etkinleştirilen kullanıcılar** | Kullanıcıların kuruluş içinde uygun rollerini etkinleştirme sayısı. |
 | **Kullanıcılar kalıcı yaptı** | Uygun atamaya sahip kullanıcıların kalıcı hale getirilme sayısı. |

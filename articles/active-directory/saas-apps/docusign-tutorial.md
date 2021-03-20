@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 09/09/2020
 ms.author: jeedes
 ms.openlocfilehash: 00d4381c7af7fdf82ee1e895072d92d1e641f8c4
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92454703"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-docusign"></a>Öğretici: DocuSign ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
@@ -26,7 +26,7 @@ Bu öğreticide, DocuSign 'ı Microsoft Azure Active Directory (Azure AD) ile t�
 * Kullanıcılarınız için Azure AD hesapları aracılığıyla otomatik oturum açmayı etkinleştirin.
 * Hesaplarınızı tek bir merkezi konumda yönetin: Azure portal.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -62,7 +62,7 @@ DocuSign 'ın Azure AD 'ye tümleştirilmesini yapılandırmak için, Galeriden 
 
 ## <a name="configure-and-test-azure-ad-sso-for-docusign"></a>DocuSign için Azure AD SSO 'yu yapılandırma ve test etme
 
-**B. Simon**adlı bir test kullanıcısı kullanarak Azure AD SSO 'Yu DocuSign ile yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ve DocuSign içindeki ilgili Kullanıcı arasında bir bağlantı ilişkisi kurmanız gerekir.
+**B. Simon** adlı bir test kullanıcısı kullanarak Azure AD SSO 'Yu DocuSign ile yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ve DocuSign içindeki ilgili Kullanıcı arasında bir bağlantı ilişkisi kurmanız gerekir.
 
 Azure AD SSO 'yu DocuSign ile yapılandırmak ve test etmek için aşağıdaki adımları gerçekleştirin:
 
@@ -118,7 +118,7 @@ Bu bölümde, Azure portal B. Simon adlı bir test kullanıcısı oluşturacaks�
 1. Azure portal sol bölmesinde **Azure Active Directory**' i seçin, **Kullanıcılar**' ı seçin ve ardından **tüm kullanıcılar**' ı seçin.
 1. Ekranın üst kısmında **Yeni Kullanıcı**' yı seçin.
 1. **Kullanıcı** özellikleri ' nde şu adımları izleyin:
-   1. **Ad** alanına **B. Simon**girin.  
+   1. **Ad** alanına **B. Simon** girin.  
    1. **Kullanıcı adı** alanına, girin `<username>@<companydomain>.<extension>` . Örneğin: `B.Simon@contoso.com`.
    1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri unutmayın.
    1. **Oluştur**’u seçin.
@@ -181,13 +181,13 @@ Bu bölümde, bu kullanıcının Azure çoklu oturum açmayı kullanabilmesi iç
 
     c. **Kimlik sağlayıcısı oturum açma URL 'si** kutusunda, Azure Portal ' den kopyaladığınız **oturum açma URL 'si** değerini yapıştırın.
 
-    d. **Kimlik sağlayıcısı oturum kapatma URL 'si** kutusunda, Azure Portal ' den kopyaladığınız **oturum kapatma URL 'si**değerini yapıştırın.
+    d. **Kimlik sağlayıcısı oturum kapatma URL 'si** kutusunda, Azure Portal ' den kopyaladığınız **oturum kapatma URL 'si** değerini yapıştırın.
 
-    e. **Imza AuthN isteğini**seçin.
+    e. **Imza AuthN isteğini** seçin.
 
-    f. **Kimlik doğrulama Isteği gönderme**için **gönderi**' ı seçin.
+    f. **Kimlik doğrulama Isteği gönderme** için **gönderi**' ı seçin.
 
-    örneğin: **Oturumu kapatma Isteği gönderme**için **Al**' ı seçin.
+    örneğin: **Oturumu kapatma Isteği gönderme** için **Al**' ı seçin.
 
     h. **Özel öznitelik eşleme** bölümünde **Yeni eşleme Ekle**' yi seçin.
 
@@ -212,9 +212,9 @@ Bu bölümde, bu kullanıcının Azure çoklu oturum açmayı kullanabilmesi iç
 
        ![SAML 2,0 uç noktalarını görüntüle][60]
        
-       1. **Hizmet sağlayıcı verenin URL 'sini**kopyalayın ve ardından Azure Portal **temel SAML yapılandırması** bölümündeki **tanımlayıcı** kutusuna yapıştırın.
+       1. **Hizmet sağlayıcı verenin URL 'sini** kopyalayın ve ardından Azure Portal **temel SAML yapılandırması** bölümündeki **tanımlayıcı** kutusuna yapıştırın.
        
-       1. **Hizmet sağlayıcı onaylama tüketici hizmeti URL 'sini**kopyalayın ve ardından Azure Portal **temel SAML yapılandırması** bölümündeki **yanıt URL 'si** kutusuna yapıştırın.
+       1. **Hizmet sağlayıcı onaylama tüketici hizmeti URL 'sini** kopyalayın ve ardından Azure Portal **temel SAML yapılandırması** bölümündeki **yanıt URL 'si** kutusuna yapıştırın.
        
        1. **Hizmet sağlayıcısı oturum açma URL**'sini kopyalayın ve ardından Azure Portal **temel SAML yapılandırması** bölümündeki **URL 'yi oturum aç** kutusuna yapıştırın. **Hizmet sağlayıcı oturum açma URL** 'sinin sonunda ıdpid değerini alırsınız.
 

@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 08/11/2020
 ms.author: yelevin
 ms.openlocfilehash: 408913fed864ee5f966b96c81afbfee4b2dc8678
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94660738"
 ---
 # <a name="manage-your-soc-better-with-incident-metrics"></a>Olay ölçümleriyle SOC’nizi daha iyi yönetme
@@ -39,7 +39,7 @@ Bir güvenlik Operations Center (SOC) Yöneticisi olarak, takımınızın perfor
 
 Bir olayı her oluşturduğunuzda veya güncelleştirdiğinizde, tabloya yeni bir günlük girdisi eklenir. Bu, olaylara yapılan değişiklikleri izlemenize ve daha fazla güçlü SOC ölçümlerine olanak tanır, ancak bir olay için yinelenen girdileri (çalıştırdığınız sorguya bağlı olarak) kaldırmanız gerekebilse de bu tablo için sorgular oluşturulurken bunun en az olması gerekir. 
 
-Örneğin, olay numaralarına göre sıralanmış tüm olayların bir listesini döndürmek istiyorsanız ancak olay başına en son günlüğü döndürmek istiyorsanız bunu, toplama işleviyle KQL [özetleme işlecini](/azure/data-explorer/kusto/query/summarizeoperator) kullanarak yapabilirsiniz `arg_max()` [aggregation function](/azure/data-explorer/kusto/query/arg-max-aggfunction):
+Örneğin, olay numaralarına göre sıralanmış tüm olayların bir listesini döndürmek istiyorsanız ancak olay başına en son günlüğü döndürmek istiyorsanız bunu, toplama işleviyle KQL [özetleme işlecini](/azure/data-explorer/kusto/query/summarizeoperator) kullanarak yapabilirsiniz `arg_max()` [](/azure/data-explorer/kusto/query/arg-max-aggfunction):
 
 
 ```Kusto

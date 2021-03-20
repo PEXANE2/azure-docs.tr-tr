@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 12/18/2019
 ms.author: jeedes
 ms.openlocfilehash: 4b57b3fbb338774eb8d66fc4d3c0c817e19aff4c
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92458209"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-maxient-conduct-manager-software"></a>Öğretici: Maxdentitytıon Manager yazılımıyla çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
@@ -28,7 +28,7 @@ Bu öğreticide, Maxdentitymanager yazılımını Azure Active Directory (Azure 
 
 Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](../manage-apps/what-is-single-sign-on.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -108,7 +108,7 @@ Bu bölümde, Maxdentitytıon Manager yazılımı için Azure sistemini kullanar
 
 ## <a name="test-with-maxient"></a>Maxbir ile test edin 
 
-Bir destek bileti zaten bir Maxuz uygulama/destek temsilcisiyle açılmadıysa, [support@maxient.com](mailto:support@maxient.com) "kampüs tabanlı kimlik doğrulaması/Azure kurulumu-" konusuna sahip bir e-posta gönderin \<\<School Name\> \> . E-postanın gövdesinde, **uygulama Federasyon meta verileri URL 'sini**sağlayın. Uygun özniteliklerin yayımlanmakta olduğunu doğrulamak için, bir test bağlantısı ile maxıly personeli yanıt verir.  
+Bir destek bileti zaten bir Maxuz uygulama/destek temsilcisiyle açılmadıysa, [support@maxient.com](mailto:support@maxient.com) "kampüs tabanlı kimlik doğrulaması/Azure kurulumu-" konusuna sahip bir e-posta gönderin \<\<School Name\> \> . E-postanın gövdesinde, **uygulama Federasyon meta verileri URL 'sini** sağlayın. Uygun özniteliklerin yayımlanmakta olduğunu doğrulamak için, bir test bağlantısı ile maxıly personeli yanıt verir.  
     
 ## <a name="additional-resources"></a>Ek kaynaklar
 

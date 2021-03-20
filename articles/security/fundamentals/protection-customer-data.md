@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 07/10/2020
 ms.author: terrylan
 ms.openlocfilehash: 14589e4efe22d89468b069bf6ff7e3d9babcc714
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87543801"
 ---
 # <a name="azure-customer-data-protection"></a>Azure müşteri verileri koruması   
@@ -36,7 +36,7 @@ Tüm erişim girişimleri izlenir ve temel bir raporlar kümesi aracılığıyla
 ## <a name="data-protection"></a>Veri koruma
 Azure, müşterilere hem varsayılan hem de müşteri seçenekleri olarak güçlü veri güvenliği sağlar.
 
-**Veri**ayırma: Azure, birden fazla müşteri dağıtımı ve VM 'lerin aynı fiziksel donanımda depolandığı anlamına gelen çok kiracılı bir hizmettir. Azure, her müşterinin verilerini diğerlerinin verilerinden ayırmak için mantıksal yalıtım kullanır. Ayrımı, müşterilerin farklı bir verilere erişmesini zorluklarken, çok kiracılı hizmetlerden oluşan ölçek ve ekonomik avantajlar sağlar.
+**Veri** ayırma: Azure, birden fazla müşteri dağıtımı ve VM 'lerin aynı fiziksel donanımda depolandığı anlamına gelen çok kiracılı bir hizmettir. Azure, her müşterinin verilerini diğerlerinin verilerinden ayırmak için mantıksal yalıtım kullanır. Ayrımı, müşterilerin farklı bir verilere erişmesini zorluklarken, çok kiracılı hizmetlerden oluşan ölçek ve ekonomik avantajlar sağlar.
 
 **REST veri koruması**: müşteriler, Azure 'da depolanan verilerin standartlarına uygun şekilde şifrelendiğinden emin olmanın sorumluluğundadır. Azure, müşterilere ihtiyaçlarını en iyi şekilde karşılayan çözümü seçme esnekliği sunarak çok çeşitli şifreleme özellikleri sunmaktadır. Azure Key Vault, müşterilerin verileri şifrelemek için bulut uygulamaları ve Hizmetleri tarafından kullanılan anahtarların denetimini kolayca korumasına yardımcı olur. Azure disk şifrelemesi, müşterilerin VM 'Leri şifrelemesini sağlar. Azure Depolama Hizmeti Şifrelemesi, bir müşterinin depolama hesabına yerleştirilmiş tüm verileri şifrelemeyi mümkün hale getirir.
 

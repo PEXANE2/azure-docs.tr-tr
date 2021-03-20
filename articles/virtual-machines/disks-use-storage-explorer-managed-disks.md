@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.service: virtual-machines
 ms.subservice: disks
 ms.openlocfilehash: 9dfce7b76eed5bfc9f4979c0e3041b6c65c28422
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88749382"
 ---
 # <a name="use-azure-storage-explorer-to-manage-azure-managed-disks"></a>Azure yönetilen disklerini yönetmek için Azure Depolama Gezgini kullanma
@@ -60,7 +60,7 @@ Depolama Gezgini Azure 'a bağlı değilse, kaynakları yönetmek için kullanam
 
     ![VHD 'yi karşıya yükle iletişim kutusu](media/disks-upload-vhd-to-managed-disk-storage-explorer/upload-vhd-dialog.png)
 
-1. Karşıya yüklemenin durumu artık **etkinliklerde**görüntülenecektir.
+1. Karşıya yüklemenin durumu artık **etkinliklerde** görüntülenecektir.
 
     ![Karşıya yükleme durumu](media/disks-upload-vhd-to-managed-disk-storage-explorer/activity-uploading.png)
 
@@ -79,7 +79,7 @@ Aşağıdaki adımlarda, yönetilen bir diskin şirket içi bir VHD 'ye nasıl i
 
     ![Yönetilen bir disk indirin](media/disks-upload-vhd-to-managed-disk-storage-explorer/download-button.png)
 
-1. **Kaydet** ' i seçin ve diskiniz indirilbaşlayacaktır. İndirmenin durumu **etkinliklerde**görüntülenir.
+1. **Kaydet** ' i seçin ve diskiniz indirilbaşlayacaktır. İndirmenin durumu **etkinliklerde** görüntülenir.
 
     ![İndirme durumu](media/disks-upload-vhd-to-managed-disk-storage-explorer/activity-downloading.png)
 
@@ -107,7 +107,7 @@ Depolama Gezgini, bir sürücü içinde veya bölgeler arasında bir sürücü k
 
     ![Disk Yapıştır iletişim kutusu](media/disks-upload-vhd-to-managed-disk-storage-explorer/paste-disk-dialog.png)
 
-1. **Yapıştır** ' ı seçin ve diskiniz kopyalanmaya başlayacaktır, durum **etkinliklerde**görüntülenir.
+1. **Yapıştır** ' ı seçin ve diskiniz kopyalanmaya başlayacaktır, durum **etkinliklerde** görüntülenir.
 
     ![Yapıştırma durumunu Kopyala](media/disks-upload-vhd-to-managed-disk-storage-explorer/activity-copying.png)
 
