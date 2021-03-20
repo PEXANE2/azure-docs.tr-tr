@@ -19,10 +19,10 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
 ms.openlocfilehash: 51ad23e67a77c28d0ad8a147168a0094f5de1796
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91578011"
 ---
 # <a name="tutorial-send-location-based-push-notifications-with-notification-hubs-and-bing-spatial-data"></a>Öğretici: Notification Hubs ve Bing uzamsal veriler ile konum temelli anında iletme bildirimleri gönderme
@@ -71,14 +71,14 @@ Bu öğreticide, aşağıdaki adımları gerçekleştireceksiniz:
 
       > [!NOTE]
       > **Sorgu Anahtarı**'ndan farklı olan **Ana Anahtar** için yeni bir anahtar belirtmeniz istenebilir. Pano aracılığıyla yeni bir anahtar oluşturun ve veri kaynağını karşıya yükleme sayfasını yenileyin.
-6. Veri dosyasını karşıya yükledikten sonra, veri kaynağını yayımladığınızdan emin olmanız gerekir. Daha **Data sources**  ->  önce yaptığınız gibi**veri kaynaklarını yönet** veri kaynaklarını seçin.
+6. Veri dosyasını karşıya yükledikten sonra, veri kaynağını yayımladığınızdan emin olmanız gerekir. Daha   ->  önce yaptığınız gibi **veri kaynaklarını yönet** veri kaynaklarını seçin.
 7. Listeden veri kaynağınızı seçin ve **Eylemler** sütunundaki **Yayımla** seçeneğini belirleyin.
 
     ![Veri kaynaklarını yönet sayfasında, coğrafi kodlanmış veriler sekmesi seçiliyken ve kırmızı renkle yayımla seçeneği bulunan Bing Haritalar geliştirme merkezi 'nin ekran görüntüsü.](./media/notification-hubs-geofence/publish-button.png)
 8. **Yayımlanmış Veri Kaynakları** sekmesine geçin ve veri kaynağınızı listede gördüğünüzü onaylayın.
 
     ![Yayımlanan veri kaynakları sekmesi seçiliyken veri kaynaklarını yönet sayfasında Bing Haritalar geliştirme merkezi 'nin ekran görüntüsü.](./media/notification-hubs-geofence/bing-maps-published-data.png)
-9. **Düzenle**’yi seçin. Verilerde sunulan konumları (bir bakışta) göreceksiniz.
+9. **Düzenle**'yi seçin. Verilerde sunulan konumları (bir bakışta) göreceksiniz.
 
     ![Batı ABD ve San Francisco 'ın önünde bir Macenta noktanın bir haritasını gösteren varlık verilerini Düzenle sayfasının ekran görüntüsü.](./media/notification-hubs-geofence/bing-maps-data-details.png)
 
@@ -226,7 +226,7 @@ Bu öğreticide, aşağıdaki adımları gerçekleştireceksiniz:
     Proje hedef cihazlara anında iletme bildirimleri göndermek için zaten yapılandırıldı. Bu nedenle yapmanız gereken yalnızca iki şey var: Bildirim hub'ı için doğru bağlantı dizesini belirtin ve sadece kullanıcı bölge sınırı içinde olduğunda bildirim göndermek için sınır kimliği ekleyin.
 
 4. Bağlantı dizesini yapılandırmak için `Models` klasöründe `Notifications.cs` öğesini açın. `NotificationHubClient.CreateClientFromConnectionString` işlevi, [Azure portalından](https://portal.azure.com) alabileceğiniz bildirim hub'ınız hakkındaki bilgileri içermelidir (**Ayarlar**'da, **Erişim İlkeleri** sayfasının içine bakın). Güncelleştirilen yapılandırma dosyasını kaydedin.
-5. Bing Haritalar API'si sonucu için bir model oluşturun. Bunu yapmanın en kolay yolu, `Models` klasörü açmak ve sınıf **Ekle**' yi kullanmaktır  >  **Class**. Bunu, `GeofenceBoundary.cs` olarak adlandırın. Bunu yaptıktan sonra, birinci bölümde elde ettiğiniz API yanıtından JSON dosyasını kopyalayın. Visual Studio 'da **Düzenle**  >  **Yapıştır Özel**  >  **JSON 'ı sınıflar olarak Yapıştır**' ı kullanın.
+5. Bing Haritalar API'si sonucu için bir model oluşturun. Bunu yapmanın en kolay yolu, `Models` klasörü açmak ve sınıf **Ekle**' yi kullanmaktır  >  . Bunu, `GeofenceBoundary.cs` olarak adlandırın. Bunu yaptıktan sonra, birinci bölümde elde ettiğiniz API yanıtından JSON dosyasını kopyalayın. Visual Studio 'da **Düzenle**  >  **Yapıştır Özel**  >  **JSON 'ı sınıflar olarak Yapıştır**' ı kullanın.
 
     Böylece, nesnenin istendiği gibi tamamen seri durumdan çıkarılacağından emin olursunuz. Elde edilen sınıf kümeniz aşağıdaki sınıfa benzemelidir:
 
@@ -353,7 +353,7 @@ Bu öğreticide, aşağıdaki adımları gerçekleştireceksiniz:
 
     ![Çözüme sağ tıklayın ve mağaza ile uygulamayla Ilişkilendir ' i seçin.](./media/notification-hubs-geofence/vs-associate-with-store.png)
 3. Geliştirici hesabınızda oturum açtıktan sonra, mevcut bir uygulamayı seçtiğinizden emin olun veya yeni bir tane oluşturun ve paketi bununla ilişkilendirin.
-4. Geliştirme Merkezi'ne gidin ve oluşturduğunuz uygulamayı açın. **Hizmetler**  >  **anında iletme bildirimleri**  >  **Live Services sitesini**seçin.
+4. Geliştirme Merkezi'ne gidin ve oluşturduğunuz uygulamayı açın. **Hizmetler**  >  **anında iletme bildirimleri**  >  **Live Services sitesini** seçin.
 
     ![Canlı hizmetler sitesi vurgulanmış şekilde anında Iletme bildirimleri sayfasını görüntüleyen Windows Geliştirme Merkezi 'nin ekran görüntüsü.](./media/notification-hubs-geofence/ms-live-services.png)
 5. Sitede, **Uygulama Anahtarı** ve **Paket SID**'sini not edin. Azure Portal her ikisine de ihtiyacınız vardır: Bildirim Hub 'ınızı açın, **Ayarlar**  >  **bildirim hizmetleri**  >  **Windows (WNS)** seçeneğini belirleyin ve gerekli alanlara bilgileri girin.

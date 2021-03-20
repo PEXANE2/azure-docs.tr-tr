@@ -11,10 +11,10 @@ ms.author: jopapa
 ms.custom: seodec18, devx-track-js
 ms.reviewer: sngun
 ms.openlocfilehash: c8e2c707566b08219b495e76be7f6f6130d876ab
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93081323"
 ---
 # <a name="create-an-angular-app-with-azure-cosmos-dbs-api-for-mongodb---add-crud-functions-to-the-app"></a>MongoDB için Azure Cosmos DB API 'SI ile angular uygulaması oluşturma-uygulamaya CRUD işlevleri ekleme
@@ -39,13 +39,13 @@ Bu çok parçalı öğreticide, Express ve angular ile Node.js yazılmış yeni 
 
 1. Visual Studio Code, **bölünmüş düzenleyici** düğmesine basarak **routes.js** açın ve yan yana **hero.service.js** :::image type="icon" source="./media/tutorial-develop-mongodb-nodejs-part6/split-editor-button.png"::: .
 
-    Routes.js’de 7. satırda, **hero.service.js** ’nin 5. satırındaki `getHeroes` işlevinin çağrıldığına dikkat edin.  Post, put ve delete işlevleri için de aynı eşleşmeyi oluşturmamız gerekiyor. 
+    Routes.js’de 7. satırda, **hero.service.js**’nin 5. satırındaki `getHeroes` işlevinin çağrıldığına dikkat edin.  Post, put ve delete işlevleri için de aynı eşleşmeyi oluşturmamız gerekiyor. 
 
     :::image type="content" source="./media/tutorial-develop-mongodb-nodejs-part6/routes-heroservicejs.png" alt-text="Visual Studio Code’da routes.js ve hero.service.js":::
     
     Hero hizmetini kodlayarak başlayalım. 
 
-2. **hero.service.js** ’de `getHeroes` işlevinden sonra, `module.exports` bölümünden önce aşağıdaki kodu kopyalayın. Bu kod:  
+2. **hero.service.js**’de `getHeroes` işlevinden sonra, `module.exports` bölümünden önce aşağıdaki kodu kopyalayın. Bu kod:  
    * Yeni bir hero göndermek için hero modelini kullanır.
    * Bir hata olup olmadığını görmek için yanıtları denetler ve 500 durum değeri döndürür.
 
@@ -68,7 +68,7 @@ Bu çok parçalı öğreticide, Express ve angular ile Node.js yazılmış yeni 
    }
    ```
 
-3. **hero.service.js** ’de, `module.exports` değerini yeni `postHero` işlevini içerecek şekilde güncelleştirin. 
+3. **hero.service.js**’de, `module.exports` değerini yeni `postHero` işlevini içerecek şekilde güncelleştirin. 
 
     ```javascript
     module.exports = {
@@ -77,7 +77,7 @@ Bu çok parçalı öğreticide, Express ve angular ile Node.js yazılmış yeni 
     };
     ```
 
-4. **routes.js** ’de `get` yönlendiricisinden sonra `post` işlevi için bir yönlendirici ekleyin. Bu yönlendirici aynı anda bir hero gönderir. Yönlendirici dosyasını böyle yapılandırdığınızda tüm kullanılabilir API uç noktalarını rahatça görebilirsiniz ve asıl iş **hero.service.js** dosyası tarafından yapılır.
+4. **routes.js**’de `get` yönlendiricisinden sonra `post` işlevi için bir yönlendirici ekleyin. Bu yönlendirici aynı anda bir hero gönderir. Yönlendirici dosyasını böyle yapılandırdığınızda tüm kullanılabilir API uç noktalarını rahatça görebilirsiniz ve asıl iş **hero.service.js** dosyası tarafından yapılır.
 
     ```javascript
     router.post('/hero', (req, res) => {
@@ -89,15 +89,17 @@ Bu çok parçalı öğreticide, Express ve angular ile Node.js yazılmış yeni 
 
 6. Şimdi İnternet tarayıcınıza dönün ve çoğu makinede F12 tuşuna basarak açılan Geliştirici Araçları Ağı sekmesini açın. Ağ üzerinden yapılan çağrıları izlemek için `http://localhost:3000` adresine gidin.
 
-    :::image type="content" source="./media/tutorial-develop-mongodb-nodejs-part6/add-new-hero.png" alt-text="Visual Studio Code’da routes.js ve hero.service.js" ifadesini girin, ardından **Kaydet** ’i seçin. Ağ sekmesinde yeni bir hero için POST isteği gönderdiğinizi görmeniz gerekir. 
+    :::image type="content" source="./media/tutorial-develop-mongodb-nodejs-part6/add-new-hero.png" alt-text="Chrome’da ağ etkinliğini gösteren ağ sekmesi":::
 
-    :::image type="content" source="./media/tutorial-develop-mongodb-nodejs-part6/post-new-hero.png" alt-text="Visual Studio Code’da routes.js ve hero.service.js":::
+7. **Yeni Hero Ekle** düğmesini seçerek yeni bir hero ekleyin. "999" kimliğini, "Fred" adını ve "Hello" ifadesini girin, ardından **Kaydet**’i seçin. Ağ sekmesinde yeni bir hero için POST isteği gönderdiğinizi görmeniz gerekir. 
+
+    :::image type="content" source="./media/tutorial-develop-mongodb-nodejs-part6/post-new-hero.png" alt-text="Get ve Post işlevleri için ağ etkinliğini gösteren Chrome ağ sekmesi":::
 
     Şimdi geri dönüp uygulamaya Put ve Delete işlevlerini ekleyelim.
 
 ## <a name="add-the-put-and-delete-functions"></a>Put ve Delete işlevlerini ekleme
 
-1. **routes.js** ’de gönderme yönlendiricisinden sonra `put` ve `delete` yönlendiricilerini ekleyin.
+1. **routes.js**’de gönderme yönlendiricisinden sonra `put` ve `delete` yönlendiricilerini ekleyin.
 
     ```javascript
     router.put('/hero/:uid', (req, res) => {
@@ -109,7 +111,7 @@ Bu çok parçalı öğreticide, Express ve angular ile Node.js yazılmış yeni 
     });
     ```
 
-2. **hero.service.js** ’de `checkServerError` işlevinden sonra aşağıdaki kodu kopyalayın. Bu kod:
+2. **hero.service.js**’de `checkServerError` işlevinden sonra aşağıdaki kodu kopyalayın. Bu kod:
    * `put` ve `delete` işlevlerini oluşturur
    * Heronun bulunup bulunmadığını denetler
    * Hata işlemeyi gerçekleştirir 
@@ -157,7 +159,7 @@ Bu çok parçalı öğreticide, Express ve angular ile Node.js yazılmış yeni 
    }
    ```
 
-3. **hero.service.js** ’de yeni modülleri dışarı aktarın:
+3. **hero.service.js**’de yeni modülleri dışarı aktarın:
 
    ```javascript
     module.exports = {
@@ -176,9 +178,11 @@ Bu çok parçalı öğreticide, Express ve angular ile Node.js yazılmış yeni 
 
     Artık yükü görmek için ağ sekmesinde kimliği seçebilirsiniz. Yükte ifadenin "Bye" olarak ayarlandığını görebilirsiniz.
 
-    :::image type="content" source="./media/tutorial-develop-mongodb-nodejs-part6/put-hero-function.png" alt-text="Visual Studio Code’da routes.js ve hero.service.js" düğmesini seçerek deneyebilirsiniz.
+    :::image type="content" source="./media/tutorial-develop-mongodb-nodejs-part6/put-hero-function.png" alt-text="Heroes uygulaması ve yükü gösteren Ağ sekmesi"::: 
 
-    :::image type="content" source="./media/tutorial-develop-mongodb-nodejs-part6/times.png" alt-text="Visual Studio Code’da routes.js ve hero.service.js"::: 
+    Kullanıcı arabiriminde herolardan birini silin ve silme işlemini tamamlamak için gereken süreye bakın. Bunu "Fred" adlı hero için "Sil" düğmesini seçerek deneyebilirsiniz.
+
+    :::image type="content" source="./media/tutorial-develop-mongodb-nodejs-part6/times.png" alt-text="Heroes uygulaması ve işlevleri tamamlamak için gereken zamanı gösteren Ağ sekmesi"::: 
 
     Sayfayı yenilerseniz Ağ sekmesi heroları almak için gereken zamanı gösterir. Bu süreler kısa olsa da, büyük ölçüde verilerinizin dünyanın neresinde olduğuna ve kullanıcılarınıza yakın bir konuma coğrafi çoğaltma olanağınıza bağlıdır. Coğrafi çoğaltma hakkında daha fazla bilgiyi, yakında yayınlanacak bir sonraki öğreticide bulabilirsiniz.
 

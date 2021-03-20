@@ -5,17 +5,17 @@ services: automation
 ms.date: 11/05/2020
 ms.topic: conceptual
 ms.openlocfilehash: 70c8892969a3b13175c60a4e20e0cf9086112abe
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93398054"
 ---
 # <a name="manage-office-365-services"></a>Office 365 hizmetlerini yönetme
 
 Microsoft Word ve Microsoft Outlook gibi ürünler için Office 365 abonelik hizmetlerinin yönetimi için Azure Otomasyonu ' nu kullanabilirsiniz. Office 365 etkileşimleri [Azure Active Directory (Azure AD)](../active-directory/fundamentals/active-directory-whatis.md)tarafından etkinleştirilir. Azure ['da kimlik doğrulaması yapmak için bkz. Azure Otomasyonu 'Nda Azure ad kullanma](automation-use-azure-ad.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure Otomasyonu 'nda Office 365 abonelik hizmetlerini yönetmek için aşağıdakiler gerekir.
 
@@ -39,7 +39,7 @@ Bu makaledeki adımları tamamlayabilmeniz için, Azure Otomasyonu 'nda bir hesa
 
 Şimdi, Office 365 işlevselliğini etkinleştirmek için yüklü MSOnline ve MSOnlineExt modüllerini ekleyin. [Azure Automation 'da modülleri yönetme](shared-resources/modules.md)bölümüne bakın.
 
-1. Azure portal **Otomasyon hesapları** ' nı seçin.
+1. Azure portal **Otomasyon hesapları**' nı seçin.
 2. Otomasyon hesabınızı seçin.
 3. **Paylaşılan kaynaklar** altında **modüller Galerisi** ' ni seçin.
 4. MSOnline için arama yapın.
@@ -96,11 +96,11 @@ Komut dosyanızı bir Azure Otomasyonu runbook 'unda kullanabilirsiniz. Örneği
 
 1. Yeni bir PowerShell runbook 'u oluşturun. [Azure Otomasyonu runbook 'U oluşturma](./automation-quickstart-create-runbook.md)bölümüne bakın.
 2. Otomasyon hesabınızdan, **Işlem Otomasyonu** altında **runbook 'lar** ' ı seçin.
-3. Yeni runbook 'u seçin ve **Düzenle** ' ye tıklayın.
+3. Yeni runbook 'u seçin ve **Düzenle**' ye tıklayın.
 4. Betiğinizi kopyalayıp runbook için metin düzenleyicisine yapıştırın.
-5. **Varlıklar** ' ı seçin, ardından **kimlik bilgileri** ' ni genişletin ve Office 365 kimlik bilgisinin orada olduğunu doğrulayın.
-6. **Kaydet** ’e tıklayın.
-7. **Test bölmesi** ' ni seçin ve ardından runbook 'unuzu sınamaya başlamak için **Başlat** ' a tıklayın. Bkz. [Azure Otomasyonu 'nda runbook 'Ları yönetme](./manage-runbooks.md).
+5. **Varlıklar**' ı seçin, ardından **kimlik bilgileri** ' ni genişletin ve Office 365 kimlik bilgisinin orada olduğunu doğrulayın.
+6. **Kaydet**’e tıklayın.
+7. **Test bölmesi**' ni seçin ve ardından runbook 'unuzu sınamaya başlamak için **Başlat** ' a tıklayın. Bkz. [Azure Otomasyonu 'nda runbook 'Ları yönetme](./manage-runbooks.md).
 8. Sınama tamamlandığında, test bölmesinden çıkın.
 
 ## <a name="publish-and-schedule-the-runbook"></a>Runbook 'u yayımlama ve zamanlama

@@ -9,10 +9,10 @@ ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 02/06/2019
 ms.openlocfilehash: 62c3d4533dd04dbb5a2ce0c73afa52b81d433913
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91570785"
 ---
 # <a name="transform-xml-with-maps-in-azure-logic-apps-with-enterprise-integration-pack"></a>Enterprise Integration Pack ile Azure Logic Apps’te haritalarla XML’i dönüştürme
@@ -63,7 +63,7 @@ Haritalar oluştururken ve eklerken bir mantıksal uygulamaya ihtiyacınız yokt
 
    ![Tümleştirme hesabı seçin](./media/logic-apps-enterprise-integration-maps/select-integration-account.png)
 
-1. Tümleştirme hesabınızın **genel bakış** sayfasında, **Bileşenler**altında **derlemeler** kutucuğunu seçin.
+1. Tümleştirme hesabınızın **genel bakış** sayfasında, **Bileşenler** altında **derlemeler** kutucuğunu seçin.
 
    !["Derlemeler" ı seçin](./media/logic-apps-enterprise-integration-maps/select-assemblies.png)
 
@@ -81,7 +81,7 @@ Tümleştirme hesaplarındaki derleme miktarları sınırları için bkz. [Azure
 
 ### <a name="add-assemblies-up-to-2-mb"></a>2 MB 'a kadar derlemeler ekleyin
 
-1. **Derleme Ekle**altında, derlemeniz için bir ad girin. **Küçük dosyayı** seçili tut. **Derleme** kutusunun yanındaki klasör simgesini seçin. Karşıya yüklediğiniz derlemeyi bulun ve seçin, örneğin:
+1. **Derleme Ekle** altında, derlemeniz için bir ad girin. **Küçük dosyayı** seçili tut. **Derleme** kutusunun yanındaki klasör simgesini seçin. Karşıya yüklediğiniz derlemeyi bulun ve seçin, örneğin:
 
    ![Daha küçük derlemeyi karşıya yükle](./media/logic-apps-enterprise-integration-maps/upload-assembly-file.png)
 
@@ -93,7 +93,7 @@ Tümleştirme hesaplarındaki derleme miktarları sınırları için bkz. [Azure
 
    ![Karşıya yüklenen derlemeler listesi](./media/logic-apps-enterprise-integration-maps/uploaded-assemblies-list.png)
 
-   Tümleştirme hesabınızın **genel bakış** sayfasında, **Bileşenler**altında, artık **yüklenen derlemelerin sayısını** gösterir, örneğin:
+   Tümleştirme hesabınızın **genel bakış** sayfasında, **Bileşenler** altında, artık **yüklenen derlemelerin sayısını** gösterir, örneğin:
 
    ![Karşıya yüklenen derlemeler](./media/logic-apps-enterprise-integration-maps/uploaded-assemblies.png)
 
@@ -184,7 +184,7 @@ Haritalarınızın başvurduğu derlemeleri karşıya yükledikten sonra, eşlem
 
    ![Tümleştirme hesabı seçin](./media/logic-apps-enterprise-integration-maps/select-integration-account.png)
 
-1. Tümleştirme hesabınızın **genel bakış** sayfasında, **Bileşenler**altında **haritalar** kutucuğunu seçin.
+1. Tümleştirme hesabınızın **genel bakış** sayfasında, **Bileşenler** altında **haritalar** kutucuğunu seçin.
 
    !["Haritalar" ı seçin](./media/logic-apps-enterprise-integration-maps/select-maps.png)
 
@@ -198,7 +198,7 @@ Haritalarınızın başvurduğu derlemeleri karşıya yükledikten sonra, eşlem
 
 1. **Eşleme Ekle**' nin altında, haritanız için bir ad girin. 
 
-1. **Eşleme türü**altında, türü seçin, örneğin: **sıvı**, **XSLT**, **XSLT 2,0**veya **XSLT 3,0**.
+1. **Eşleme türü** altında, türü seçin, örneğin: **sıvı**, **XSLT**, **XSLT 2,0** veya **XSLT 3,0**.
 
 1. **Küçük dosyayı** seçili tut. **Harita** kutusunun yanındaki klasör simgesini seçin. Karşıya yüklediğiniz eşlemeyi bulun ve seçin, örneğin:
 
@@ -212,7 +212,7 @@ Haritalarınızın başvurduğu derlemeleri karşıya yükledikten sonra, eşlem
 
    ![Karşıya yüklenen haritalar listesi](./media/logic-apps-enterprise-integration-maps/uploaded-maps-list.png)
 
-   Tümleştirme hesabınızın **genel bakış** sayfasında, **Bileşenler**altında, **haritalar** kutucuğu artık yüklenen haritalar sayısını gösterir, örneğin:
+   Tümleştirme hesabınızın **genel bakış** sayfasında, **Bileşenler** altında, **haritalar** kutucuğu artık yüklenen haritalar sayısını gösterir, örneğin:
 
    ![Haritalar karşıya yüklendi](./media/logic-apps-enterprise-integration-maps/uploaded-maps.png)
 
@@ -318,7 +318,7 @@ Mevcut bir eşlemeyi güncelleştirmek için, istediğiniz değişiklikleri içe
 
 1. Eşlemenizi güncelleştirmek istediğiniz tümleştirme hesabını seçin.
 
-1. Tümleştirme hesabınızın **genel bakış** sayfasında, **Bileşenler**altında **haritalar** kutucuğunu seçin.
+1. Tümleştirme hesabınızın **genel bakış** sayfasında, **Bileşenler** altında **haritalar** kutucuğunu seçin.
 
 1. **Haritalar** sayfası açıldıktan sonra haritalarınızı seçin. 
    Önce Haritayı indirmek ve düzenlemek için **İndir**' i seçin ve Haritayı kaydedin.
@@ -338,7 +338,7 @@ Mevcut bir eşlemeyi güncelleştirmek için, istediğiniz değişiklikleri içe
 
 1. Eşlemenizi silmek istediğiniz tümleştirme hesabını seçin.
 
-1. Tümleştirme hesabınızın **genel bakış** sayfasında, **Bileşenler**altında **haritalar** kutucuğunu seçin.
+1. Tümleştirme hesabınızın **genel bakış** sayfasında, **Bileşenler** altında **haritalar** kutucuğunu seçin.
 
 1. **Haritalar** sayfası açıldıktan sonra haritalarınızı seçin ve **Sil**' i seçin.
 

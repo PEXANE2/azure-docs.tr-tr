@@ -13,10 +13,10 @@ ms.custom:
 - 'Role: Cloud Development'
 - devx-track-azurecli
 ms.openlocfilehash: 3e5ab1667ee0cda459785efa624bd7f4fc6818b8
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/16/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97562965"
 ---
 # <a name="connect-iot-devkit-az3166-to-azure-iot-hub"></a>IoT DevKit AZ3166 'i Azure 'a bağlama IoT Hub
@@ -165,7 +165,7 @@ DevKit için geliştirme ortamını hazırlamak üzere aşağıdaki adımları i
 
 1. [Arduino IDE](https://www.arduino.cc/en/Main/Software)'yi yükler. Arduino kodunu derlemek ve karşıya yüklemek için gerekli araç zincirini sağlar.
     * **Windows**: Windows Installer sürümünü kullanın. Uygulama mağazasından yüklemeyin.
-    * **MacOS**: ayıklanan **Arduino. app** ' i klasöre sürükleyip bırakın `/Applications` .
+    * **MacOS**: ayıklanan **Arduino.app** klasörüne sürükleyip bırakın `/Applications` .
     * **Ubuntu**: gibi klasöre sıkıştırmayı açın `$HOME/Downloads/arduino-1.8.8`
 
 2. Güçlü IntelliSense ile platformlar arası kaynak kodu Düzenleyicisi, kod tamamlama ve hata ayıklama desteği, Market 'ten de zengin uzantılar yüklenebilir [Visual Studio Code](https://code.visualstudio.com/)yükleme.

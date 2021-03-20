@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 10/09/2019
 ms.author: jeedes
 ms.openlocfilehash: a8cf58f49cba1bcc77c96a0da2061a037bb62bf2
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92504785"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-teamphoria"></a>Öğretici: Teamphoria ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
@@ -54,7 +54,7 @@ Teamphoria 'nın tümleştirmesini Azure AD ile yapılandırmak için, Galeriden
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-teamphoria"></a>Teamphoria için Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-**B. Simon**adlı bir test kullanıcısı kullanarak Teamphoria Ile Azure AD SSO 'yu yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ve Teamphoria içindeki ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
+**B. Simon** adlı bir test kullanıcısı kullanarak Teamphoria Ile Azure AD SSO 'yu yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ve Teamphoria içindeki ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
 
 Azure AD SSO 'yu Teamphoria ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
 
@@ -122,7 +122,7 @@ Bu bölümde, Teamphoria erişimi vererek Azure çoklu oturum açma özelliğini
 
 ## <a name="configure-teamphoria-sso"></a>Teamphcuma SSO 'yu yapılandırma
 
-1. Teamphoria 'daki yapılandırmayı otomatikleştirmek için, **uzantıyı yüklemek**üzere **uygulamalarımı güvenli oturum açma tarayıcı uzantısı** ' nı yüklemeniz gerekir.
+1. Teamphoria 'daki yapılandırmayı otomatikleştirmek için, **uzantıyı yüklemek** üzere **uygulamalarımı güvenli oturum açma tarayıcı uzantısı** ' nı yüklemeniz gerekir.
 
     ![Uygulamalarım uzantısı](common/install-myappssecure-extension.png)
 
@@ -162,7 +162,7 @@ Azure AD kullanıcılarının Teamphoria 'da oturum açmasını sağlamak için,
 
 1. Teamphcuma şirket sitenizde yönetici olarak oturum açın.
 
-1. Sol araç çubuğunda **yönetici** ayarları ' na tıklayın ve **Yönet** sekmesinde Kullanıcılar ' a tıklayarak **USERS** kullanıcılar için yönetici sayfasını açın.
+1. Sol araç çubuğunda **yönetici** ayarları ' na tıklayın ve **Yönet** sekmesinde Kullanıcılar ' a tıklayarak  kullanıcılar için yönetici sayfasını açın.
 
     ![Çalışan Ekle](./media/teamphoria-tutorial/admin_manage_users.png)
 
@@ -176,7 +176,7 @@ Azure AD kullanıcılarının Teamphoria 'da oturum açmasını sağlamak için,
 
     a. **E-posta adresi** metin kutusuna B. Simon gibi kullanıcının **e-posta adresini** girin.
 
-    b. **Ilk ad** metin kutusuna **B**gibi kullanıcının adını girin.
+    b. **Ilk ad** metin kutusuna **B** gibi kullanıcının adını girin.
 
     c. Soyadı metin kutusunda, **Simon** **adlı** kullanıcının soyadını girin.
 

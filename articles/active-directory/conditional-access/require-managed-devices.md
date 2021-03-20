@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c11b58954eefda67f981d618b04ab2bd69fa6b43
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93077770"
 ---
 # <a name="how-to-require-managed-devices-for-cloud-app-access-with-conditional-access"></a>Nasıl yapılır: koşullu erişimle Cloud App erişimi için yönetilen cihazlar gerektirme
@@ -62,17 +62,17 @@ Bu üç seçenek, [cihaz kimliği](../devices/overview.md) nedir makalesinde aç
 
 Yönetilen bir cihaz olması için, kayıtlı bir cihazın **karma bir Azure AD 'ye katılmış cihaz** ya da **uyumlu olarak işaretlenmiş bir cihaz** olması gerekir.  
 
-:::image type="content" source="./media/require-managed-devices/47.png" alt-text="Azure 'daki cihaz bölmesinin ekran görüntüsü D. etkinleştir ve devre dışı bırak öğeleri vurgulanır." border="false":::
+:::image type="content" source="./media/require-managed-devices/47.png" alt-text="Azure A D Izin bölmesinin ekran görüntüsü. Cihazların uyumlu olması ve Azure 'un D 'ye katılması için onay kutuları olduğu gibi, erişime izin ver seçilidir." border="false":::
  
 ## <a name="require-hybrid-azure-ad-joined-devices"></a>Karma Azure AD 'ye katılmış cihazlar gerektir
 
 Koşullu erişim ilkenizde, seçilen bulut uygulamalarının yalnızca yönetilen bir cihaz kullanılarak erişilebilmesini sağlamak için **karma Azure AD 'ye katılmış cihaz gerektir** seçeneğini belirleyebilirsiniz. 
 
-:::image type="content" source="./media/require-managed-devices/10.png" alt-text="Azure 'daki cihaz bölmesinin ekran görüntüsü D. etkinleştir ve devre dışı bırak öğeleri vurgulanır." border="false":::
+:::image type="content" source="./media/require-managed-devices/10.png" alt-text="Azure A D Izin bölmesinin ekran görüntüsü. Erişim izni verme seçilidir. Cihazların karma olarak Azure 'a katılmış olmasını gerektiren bir onay kutusu da seçilidir." border="false":::
 
 Bu ayar yalnızca, şirket içi bir AD 'ye katılmış Windows 7 veya Windows 8 gibi Windows 10 veya alt düzey cihazlar için geçerlidir. Bu cihazları yalnızca, kayıtlı bir Windows 10 cihazını almak için [otomatik bir işlem](../devices/hybrid-azuread-join-plan.md) olan karma BIR Azure AD JOIN kullanarak Azure AD 'ye kaydedebilirsiniz. 
 
-:::image type="content" source="./media/require-managed-devices/45.png" alt-text="Azure 'daki cihaz bölmesinin ekran görüntüsü D. etkinleştir ve devre dışı bırak öğeleri vurgulanır." border="false":::
+:::image type="content" source="./media/require-managed-devices/45.png" alt-text="Ad, etkin durum, O, sürüm, ekleme türü, sahip, M D M ve bir cihazın uyumlu durumunu listeleme tablo. Uyumlu durum Hayır ' dır." border="false":::
 
 Hibrit Azure AD 'ye katılmış cihaza yönetilen cihaz ne olur?  Şirket içi bir AD 'ye katılmış cihazlar için, bu cihazların üzerindeki denetimin **Configuration Manager** veya **Grup İlkesi (GP)** gibi yönetim çözümleri kullanılarak bunları yönetmek için zorlandığını kabul edilir. Azure AD 'nin bu yöntemlerin bir cihaza uygulanıp uygulanmadığı tespit etmek için bir yöntem olmadığından, karma bir Azure AD 'ye katılmış cihazın gerekli olması, yönetilen bir cihaz gerektiren görece zayıf bir mekanizmadır. Şirket içi etki alanına katılmış cihazlara uygulanan yöntemlerin, bu tür bir cihazın karma Azure AD 'ye katılmış bir cihaz olması halinde yönetilen bir cihaz oluşturması için yeterince güçlü olup olmadığını bir yönetici olarak öğreneceksiniz.
 
@@ -80,14 +80,14 @@ Hibrit Azure AD 'ye katılmış cihaza yönetilen cihaz ne olur?  Şirket içi b
 
 Bir *cihazın uyumlu olarak işaretlenmesini gerektirme* seçeneği, yönetilen bir cihaz istemek için en güçlü formdur.
 
-:::image type="content" source="./media/require-managed-devices/11.png" alt-text="Azure 'daki cihaz bölmesinin ekran görüntüsü D. etkinleştir ve devre dışı bırak öğeleri vurgulanır." border="false":::
+:::image type="content" source="./media/require-managed-devices/11.png" alt-text="Azure A D Izin bölmesinin ekran görüntüsü. Erişim izni verme seçilidir. Bir cihazın uyumlu olarak işaretlenmesini gerektiren onay kutusu da seçilidir." border="false":::
 
 Bu seçenek, bir cihazın Azure AD 'ye kaydedilmesini ve ayrıca, tarafından uyumlu olarak işaretlenmesini gerektirir:
          
 - Intune
 - Windows 10 cihazlarını Azure AD tümleştirmesi aracılığıyla yöneten bir üçüncü taraf mobil cihaz yönetimi (MDM) sistemi. Windows 10 dışındaki cihaz işletim sistemi türleri için üçüncü taraf MDM sistemleri desteklenmez.
  
-:::image type="content" source="./media/require-managed-devices/46.png" alt-text="Azure 'daki cihaz bölmesinin ekran görüntüsü D. etkinleştir ve devre dışı bırak öğeleri vurgulanır." border="false":::
+:::image type="content" source="./media/require-managed-devices/46.png" alt-text="Ad, etkin durum, O, sürüm, ekleme türü, sahip, M D M ve bir cihazın uyumlu durumunu listeleme tablo. Uyumlu durum vurgulanır." border="false":::
 
 Uyumlu olarak işaretlenen bir cihaz için şunları varsayabilirsiniz: 
 
@@ -103,14 +103,14 @@ Bu senaryoda, Contoso tüm mobil erişiminin Microsoft 365 kaynaklara kayıtlı 
 Kuruluşlar, kayıtlı bir mobil cihazın kullanımını gerektirmek için aşağıdaki adımları tamamlamalıdır.
 
 1. **Azure Portal** genel yönetici, güvenlik yöneticisi veya koşullu erişim Yöneticisi olarak oturum açın.
-1. **Azure Active Directory**  >  **güvenlik**  >  **koşullu erişimi** 'ne gidin.
-1. **Yeni ilke** ' yi seçin.
+1. **Azure Active Directory**  >  **güvenlik**  >  **koşullu erişimi**'ne gidin.
+1. **Yeni ilke**' yi seçin.
 1. İlkenize bir ad verin. Kuruluşların ilkelerinin adları için anlamlı bir standart oluşturmasını öneririz.
 1. **Atamalar** altında **Kullanıcılar ve gruplar** ' ı seçin.
-   1. **Ekle** ' nin altında, **tüm kullanıcılar** ' ı veya bu Ilkeyi uygulamak istediğiniz belirli **kullanıcıları ve grupları** seçin. 
-   1. **Bitti** ’yi seçin.
-1. **Bulut uygulamaları veya eylemleri**  >  **dahil** , **Office 365** ' i seçin.
-1. **Koşullar** ' ın altında **cihaz platformları** ' nı seçin.
+   1. **Ekle**' nin altında, **tüm kullanıcılar** ' ı veya bu Ilkeyi uygulamak istediğiniz belirli **kullanıcıları ve grupları** seçin. 
+   1. **Bitti** seçeneğini belirleyin.
+1. **Bulut uygulamaları veya eylemleri**  >  **dahil**, **Office 365**' i seçin.
+1. **Koşullar**' ın altında **cihaz platformları**' nı seçin.
    1. **Yapılandır** 'ı **Evet** olarak ayarlayın.
    1. **Android** ve **iOS** dahil edin.
 1. **Erişim denetimleri**  >  **izni** altında, aşağıdaki seçenekleri belirleyin:

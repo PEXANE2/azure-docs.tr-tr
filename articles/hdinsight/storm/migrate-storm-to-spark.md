@@ -5,10 +5,10 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.date: 01/16/2019
 ms.openlocfilehash: aa57c01558cfdcf069b17fad9e86f7640553dcfd
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98944788"
 ---
 # <a name="migrate-azure-hdinsight-36-apache-storm-to-hdinsight-40-apache-spark"></a>Azure HDInsight 3,6 Apache Storm HDInsight 4,0 Apache Spark geçirin
@@ -36,7 +36,7 @@ Apache Storm farklı düzeylerde garantili ileti işleme sağlayabilir. Örneği
 |---|---|---|---|
 |**Olay işleme garantisi**|En az bir kez <br> Tek bir kez (Trident) |[Tam olarak bir kez](https://spark.apache.org/docs/latest/streaming-programming-guide.html)|[Tam olarak bir kez](https://spark.apache.org/docs/latest/structured-streaming-programming-guide.html)|
 |**İşlem modeli**|Gerçek zamanlı <br> Mikro Batch (Trident) |Mikro Batch |Mikro Batch |
-|**Olay saati desteği**|[Evet](https://storm.apache.org/releases/2.0.0/Windowing.html)|Hayır|[Evet](https://spark.apache.org/docs/latest/structured-streaming-programming-guide.html)|
+|**Olay saati desteği**|[Evet](https://storm.apache.org/releases/2.0.0/Windowing.html)|No|[Evet](https://spark.apache.org/docs/latest/structured-streaming-programming-guide.html)|
 |**Diller**|Java, vb.|Scala, Java, Python|Python, R, Scala, Java, SQL|
 
 ### <a name="spark-streaming-vs-spark-structured-streaming"></a>Spark akışı ile Spark yapılandırılmış akışı

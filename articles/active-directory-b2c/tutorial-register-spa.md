@@ -13,10 +13,10 @@ ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: d2eaf1dce432821dcfc693dc69dcf975a3d8be8d
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92503870"
 ---
 # <a name="tutorial-register-a-single-page-application-spa-in-azure-active-directory-b2c"></a>Öğretici: Azure Active Directory B2C bir tek sayfalı uygulama (SPA) kaydetme
@@ -39,7 +39,7 @@ Bu akıştan faydalanmak için, uygulamanız [MSAL.js 2. x](https://github.com/A
 ![Tek sayfalı uygulamalar-kimlik doğrulama](./media/tutorial-single-page-app/spa-app-auth.svg)
 
 ### <a name="implicit-grant-flow"></a>Örtük verme akışı
-- [OAuth 2,0 örtük akış](implicit-flow-single-page-application.md). [MSAL.js 1. x](https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp)gibi bazı çerçeveler yalnızca örtük izin akışını destekler. Örtük verme akışı, uygulamanın **kimlik** ve **erişim** belirteçleri almasına izin verir. Yetkilendirme kodu akışından farklı olarak, örtük verme akışı bir **yenileme belirteci**döndürmez. 
+- [OAuth 2,0 örtük akış](implicit-flow-single-page-application.md). [MSAL.js 1. x](https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp)gibi bazı çerçeveler yalnızca örtük izin akışını destekler. Örtük verme akışı, uygulamanın **kimlik** ve **erişim** belirteçleri almasına izin verir. Yetkilendirme kodu akışından farklı olarak, örtük verme akışı bir **yenileme belirteci** döndürmez. 
 
 ![Tek sayfalı uygulamalar-örtük](./media/tutorial-single-page-app/spa-app.svg)
 
@@ -55,11 +55,11 @@ Kendi [Azure AD B2C kiracınızı](tutorial-create-tenant.md)önceden oluşturma
 
 1. [Azure portalında](https://portal.azure.com) oturum açın.
 1. Portal araç çubuğunda **Dizin + abonelik** simgesini seçin ve ardından Azure AD B2C kiracınızı içeren dizini seçin.
-1. Azure portal, araması yapın ve **Azure AD B2C**seçin.
-1. **Uygulama kayıtları**öğesini seçin ve ardından **Yeni kayıt**' ı seçin.
+1. Azure portal, araması yapın ve **Azure AD B2C** seçin.
+1. **Uygulama kayıtları** öğesini seçin ve ardından **Yeni kayıt**' ı seçin.
 1. Uygulama için bir **ad** girin. Örneğin, *spaapp1*.
-1. **Desteklenen hesap türleri**altında, **herhangi bir kimlik sağlayıcısı veya kuruluş dizinindeki hesaplar ' ı seçin (Kullanıcı akışları olan kullanıcıların kimliğini doğrulamak için)**
-1. **Yeniden yönlendirme URI 'si**altında, **tek SAYFALı uygulama (Spa)** ÖĞESINI seçin ve ardından `https://jwt.ms` URL metin kutusuna girin.
+1. **Desteklenen hesap türleri** altında, **herhangi bir kimlik sağlayıcısı veya kuruluş dizinindeki hesaplar ' ı seçin (Kullanıcı akışları olan kullanıcıların kimliğini doğrulamak için)**
+1. **Yeniden yönlendirme URI 'si** altında, **tek SAYFALı uygulama (Spa)** ÖĞESINI seçin ve ardından `https://jwt.ms` URL metin kutusuna girin.
 
     Yeniden yönlendirme URI 'SI, kullanıcının kullanıcı etkileşimini tamamladıktan sonra, bir erişim belirteci veya yetkilendirme kodu başarıyla yetkilendirmede gönderildiğinde, kullanıcının yetkilendirme sunucusu tarafından (Bu durumda Azure AD B2C) gönderildiği uç noktadır. Bir üretim uygulamasında, genellikle uygulamanızın çalıştığı, genel olarak erişilebilen bir uç noktasıdır `https://contoso.com/auth-response` . Bu öğreticide olduğu gibi test amacıyla, `https://jwt.ms` bir belirtecin kodu çözülmüş içeriğini görüntüleyen Microsoft 'a ait bir Web uygulaması olarak ayarlayabilirsiniz (belirtecin içeriği hiçbir şekilde tarayıcıdan ayrılmayın). Uygulama geliştirme sırasında, uygulamanızın yerel olarak dinlediği uç noktayı ekleyebilirsiniz, örneğin `http://localhost:5000` . İstediğiniz zaman kayıtlı uygulamalarınıza yeniden yönlendirme URI 'Leri ekleyebilir ve bunları değiştirebilirsiniz.
 
@@ -68,14 +68,14 @@ Kendi [Azure AD B2C kiracınızı](tutorial-create-tenant.md)önceden oluşturma
     * Yanıt URL 'SI, `https` kullanmadıkça, şemayla başlamalıdır `localhost` .
     * Yanıt URL 'SI, büyük/küçük harfe duyarlıdır. Büyük/küçük harf durumu, çalışan uygulamanızın URL yolu ile aynı olmalıdır. Örneğin, uygulamanız yolunun bir parçası olarak içeriyorsa `.../abc/response-oidc` , `.../ABC/response-oidc` yanıt URL 'sinde belirtmeyin. Web tarayıcısı yollara büyük/küçük harfe duyarlı olarak davrandığı için, bununla ilişkili tanımlama bilgileri, `.../abc/response-oidc` büyük/küçük harfe eşleşmeyen URL 'ye yönlendiriliyorsa dışlanamaz `.../ABC/response-oidc` .
 
-1. **İzinler**altında, *openıd ve offline_access izinleri Için yönetici izni ver* onay kutusunu seçin.
+1. **İzinler** altında, *openıd ve offline_access izinleri Için yönetici izni ver* onay kutusunu seçin.
 1. **Kaydet**’i seçin.
 
 
 ## <a name="enable-the-implicit-flow"></a>Örtük akışı etkinleştir
 Örtük akış kullanılıyorsa, uygulama kaydında örtük verme akışını etkinleştirmeniz gerekir.
 
-1. Sol taraftaki menüde, **Yönet**altında **kimlik doğrulaması**' nı seçin.
+1. Sol taraftaki menüde, **Yönet** altında **kimlik doğrulaması**' nı seçin.
 1. **Örtük izin**' ın altında, **erişim belirteçleri** ve **Kimlik belirteçleri** onay kutularını seçin.
 1. **Kaydet**’i seçin.
 
@@ -85,7 +85,7 @@ Kendi [Azure AD B2C kiracınızı](tutorial-create-tenant.md)önceden oluşturma
 
 Uygulama kaydı tarafından temsil edilen tüm üretim tek sayfalı uygulamalarınız yetkilendirme kodu akışını kullanıyorsa, örtük izin verme akış ayarlarını devre dışı bırakın. 
 
-1. Sol taraftaki menüde, **Yönet**altında **kimlik doğrulaması**' nı seçin.
+1. Sol taraftaki menüde, **Yönet** altında **kimlik doğrulaması**' nı seçin.
 1. **Örtük izin**' ın altında, hem **erişim belirteçleri** hem de **Kimlik belirteçleri** onay kutularını işaretleyin.
 1. **Kaydet**’i seçin.
 

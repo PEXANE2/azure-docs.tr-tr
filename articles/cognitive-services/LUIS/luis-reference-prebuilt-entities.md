@@ -10,10 +10,10 @@ ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 07/20/2020
 ms.openlocfilehash: 7a4654b8f389ad18010bb4ad211103f2816a18ee
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91542011"
 ---
 # <a name="entities-per-culture-in-your-luis-model"></a>LUSıS modelinizde kültür başına varlık
@@ -54,7 +54,7 @@ Aşağıdaki varlıklar desteklenir:
 | --------------- | :---: |
 [Yaş](luis-reference-prebuilt-age.md):<br>yıl<br>ay<br>hafta<br>gün   |    V2, V3   |
 [Para birimi (para)](luis-reference-prebuilt-currency.md):<br>Doları<br>kesir birimi (örn: kuruş)  |    V2, V3   |
-[DatetimeV2](luis-reference-prebuilt-datetimev2.md):<br>date<br>dateRange<br>saat<br>timerange   |    V2, V3   |
+[DatetimeV2](luis-reference-prebuilt-datetimev2.md):<br>date<br>dateRange<br>time<br>timerange   |    V2, V3   |
 [Boyut](luis-reference-prebuilt-dimension.md):<br>Ses düzeyi<br>alan<br>ağırlık<br>bilgi (örn: bit/bayt)<br>Uzunluk (örn: ölçüm)<br>Hız (örn. mil/saat)  |    V2, V3   |
 [E-posta](luis-reference-prebuilt-email.md)   |    V2, V3   |
 [GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   |
@@ -94,11 +94,11 @@ Aşağıdaki varlıklar desteklenir:
 
 Aşağıdaki varlıklar desteklenir:
 
-| Önceden oluşturulmuş varlık | tr-TR |
+| Önceden oluşturulmuş varlık | en-US |
 | --------------- | :---: |
 [Yaş](luis-reference-prebuilt-age.md):<br>yıl<br>ay<br>hafta<br>gün   |    V2, V3   |
 [Para birimi (para)](luis-reference-prebuilt-currency.md):<br>Doları<br>kesir birimi (örn: kuruş)  |    V2, V3   |
-[DatetimeV2](luis-reference-prebuilt-datetimev2.md):<br>date<br>dateRange<br>saat<br>timerange   |    V2, V3   |
+[DatetimeV2](luis-reference-prebuilt-datetimev2.md):<br>date<br>dateRange<br>time<br>timerange   |    V2, V3   |
 [Boyut](luis-reference-prebuilt-dimension.md):<br>Ses düzeyi<br>alan<br>ağırlık<br>bilgi (örn: bit/bayt)<br>Uzunluk (örn: ölçüm)<br>Hız (örn. mil/saat)  |    V2, V3   |
 [E-posta](luis-reference-prebuilt-email.md)   |    V2, V3   |
 [GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    V2, V3   |
@@ -120,7 +120,7 @@ Aşağıdaki varlıklar desteklenir:
 | --------------- | :---: |
 [Yaş](luis-reference-prebuilt-age.md):<br>yıl<br>ay<br>hafta<br>gün   |    V2, V3   |
 [Para birimi (para)](luis-reference-prebuilt-currency.md):<br>Doları<br>kesir birimi (örn: kuruş)  |    V2, V3   |
-[DatetimeV2](luis-reference-prebuilt-datetimev2.md):<br>date<br>dateRange<br>saat<br>timerange   |    V2, V3   |
+[DatetimeV2](luis-reference-prebuilt-datetimev2.md):<br>date<br>dateRange<br>time<br>timerange   |    V2, V3   |
 [Boyut](luis-reference-prebuilt-dimension.md):<br>Ses düzeyi<br>alan<br>ağırlık<br>bilgi (örn: bit/bayt)<br>Uzunluk (örn: ölçüm)<br>Hız (örn. mil/saat)  |    V2, V3   |
 [E-posta](luis-reference-prebuilt-email.md)   |    V2, V3   |
 [GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   |
@@ -142,7 +142,7 @@ Aşağıdaki varlıklar desteklenir:
 | --------------- | :---: |
 [Yaş](luis-reference-prebuilt-age.md):<br>yıl<br>ay<br>hafta<br>gün   |    V2, V3   |
 [Para birimi (para)](luis-reference-prebuilt-currency.md):<br>Doları<br>kesir birimi (örn: kuruş)  |    V2, V3   |
-[DatetimeV2](luis-reference-prebuilt-datetimev2.md):<br>date<br>dateRange<br>saat<br>timerange   |    V2, V3   |
+[DatetimeV2](luis-reference-prebuilt-datetimev2.md):<br>date<br>dateRange<br>time<br>timerange   |    V2, V3   |
 [Boyut](luis-reference-prebuilt-dimension.md):<br>Ses düzeyi<br>alan<br>ağırlık<br>bilgi (örn: bit/bayt)<br>Uzunluk (örn: ölçüm)<br>Hız (örn. mil/saat)  |    V2, V3   |
 [E-posta](luis-reference-prebuilt-email.md)   |    V2, V3   |
 [GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   |
@@ -164,7 +164,7 @@ Aşağıdaki varlıklar desteklenir:
 | -------------- | :---: |
 [Yaş](luis-reference-prebuilt-age.md):<br>yıl<br>ay<br>hafta<br>gün   |    V2, V3   |
 [Para birimi (para)](luis-reference-prebuilt-currency.md):<br>Doları<br>kesir birimi (örn: kuruş)  |    V2, V3   |
-[DatetimeV2](luis-reference-prebuilt-datetimev2.md):<br>date<br>dateRange<br>saat<br>timerange   |    V2, V3   |
+[DatetimeV2](luis-reference-prebuilt-datetimev2.md):<br>date<br>dateRange<br>time<br>timerange   |    V2, V3   |
 [Boyut](luis-reference-prebuilt-dimension.md):<br>Ses düzeyi<br>alan<br>ağırlık<br>bilgi (örn: bit/bayt)<br>Uzunluk (örn: ölçüm)<br>Hız (örn. mil/saat)  |    V2, V3   |
 [E-posta](luis-reference-prebuilt-email.md)   |    V2, V3   |
 [GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   |
@@ -254,7 +254,7 @@ Aşağıdaki varlıklar desteklenir:
 | --------------- | :---: |
 [Yaş](luis-reference-prebuilt-age.md):<br>yıl<br>ay<br>hafta<br>gün   |    V2, V3   |
 [Para birimi (para)](luis-reference-prebuilt-currency.md):<br>Doları<br>kesir birimi (örn: kuruş)  |    V2, V3   |
-[DatetimeV2](luis-reference-prebuilt-datetimev2.md):<br>date<br>dateRange<br>saat<br>timerange   |    V2, V3   |
+[DatetimeV2](luis-reference-prebuilt-datetimev2.md):<br>date<br>dateRange<br>time<br>timerange   |    V2, V3   |
 [Boyut](luis-reference-prebuilt-dimension.md):<br>Ses düzeyi<br>alan<br>ağırlık<br>bilgi (örn: bit/bayt)<br>Uzunluk (örn: ölçüm)<br>Hız (örn. mil/saat)  |    V2, V3   |
 [E-posta](luis-reference-prebuilt-email.md)   |    V2, V3   |
 [GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   |
@@ -276,7 +276,7 @@ Aşağıdaki varlıklar desteklenir:
 | --------------- | :---: |
 [Yaş](luis-reference-prebuilt-age.md):<br>yıl<br>ay<br>hafta<br>gün   |    V2, V3   |
 [Para birimi (para)](luis-reference-prebuilt-currency.md):<br>Doları<br>kesir birimi (örn: kuruş)  |    V2, V3   |
-[DatetimeV2](luis-reference-prebuilt-datetimev2.md):<br>date<br>dateRange<br>saat<br>timerange   |    V2, V3   |
+[DatetimeV2](luis-reference-prebuilt-datetimev2.md):<br>date<br>dateRange<br>time<br>timerange   |    V2, V3   |
 [Boyut](luis-reference-prebuilt-dimension.md):<br>Ses düzeyi<br>alan<br>ağırlık<br>bilgi (örn: bit/bayt)<br>Uzunluk (örn: ölçüm)<br>Hız (örn. mil/saat)  |    V2, V3   |
 [E-posta](luis-reference-prebuilt-email.md)   |    V2, V3   |
 [GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   |
@@ -298,7 +298,7 @@ Aşağıdaki varlıklar desteklenir:
 | --------------- | :---: |
 [Yaş](luis-reference-prebuilt-age.md):<br>yıl<br>ay<br>hafta<br>gün   |    -   |
 [Para birimi (para)](luis-reference-prebuilt-currency.md):<br>Doları<br>kesir birimi (örn: kuruş)  |    -   |
-[DatetimeV2](luis-reference-prebuilt-datetimev2.md):<br>date<br>dateRange<br>saat<br>timerange   |    -   |
+[DatetimeV2](luis-reference-prebuilt-datetimev2.md):<br>date<br>dateRange<br>time<br>timerange   |    -   |
 [Boyut](luis-reference-prebuilt-dimension.md):<br>Ses düzeyi<br>alan<br>ağırlık<br>bilgi (örn: bit/bayt)<br>Uzunluk (örn: ölçüm)<br>Hız (örn. mil/saat)  |    -   |
 [E-posta](luis-reference-prebuilt-email.md)   |    V2, V3   |
 [GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   |

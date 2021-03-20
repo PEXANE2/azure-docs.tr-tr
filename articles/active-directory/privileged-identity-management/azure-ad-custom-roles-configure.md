@@ -17,10 +17,10 @@ ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: fb23e60539c704dac457ab6e8706ec0cfe350ed9
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/18/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94835331"
 ---
 # <a name="configure-azure-ad-custom-roles-in-privileged-identity-management"></a>Privileged Identity Management Azure AD özel rollerini yapılandırma
@@ -64,7 +64,7 @@ Ayrıca, şu *etkin* atama süresi seçeneklerinden birini belirleyebilirsiniz:
 - **Kalıcı etkin atamaya Izin ver**: Yöneticiler kalıcı etkin üyelik atayabilir.
 - **Etkin atamanın sona erme** tarihi: Yöneticiler, tüm etkin atamaların belirtilen başlangıç ve bitiş tarihine sahip olmasını gerektirebilir.
 
-### <a name="require-azure-ad-multi-factor-authentication"></a>Azure AD Multi-Factor Authentication gerektir
+### <a name="require-azure-ad-multi-factor-authentication"></a>Azure AD Multi-Factor Authentication’ı zorunlu kılma
 
 Privileged Identity Management, iki ayrı senaryo için isteğe bağlı Azure AD Multi-Factor Authentication zorlaması sağlar.
 

@@ -6,10 +6,10 @@ ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 04/14/2020
 ms.openlocfilehash: 3caccd6766226ce68b371856b081b052c1033f71
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91542198"
 ---
 # <a name="pattern-syntax"></a>Desen söz dizimi
@@ -23,7 +23,7 @@ Desenlerdeki varlıklar, küme ayraçları ile çevrelenmiş `{}` . Desenler var
 
 Model sözdizimi aşağıdaki sözdizimini destekler:
 
-|İşlev|Sözdizimi|İç içe geçme düzeyi|Örnek|
+|İşlev|Syntax|İç içe geçme düzeyi|Örnek|
 |--|--|--|--|
 |varlık| {} -süslü ayraçlar|2|{Entity-Name} formu nerede?|
 |isteğe bağlı|[]-köşeli parantezler<BR><BR>Herhangi bir isteğe bağlı ve gruplandırma birleşiminin iç içe geçme düzeylerinde 3 sınırı vardır |2|Soru işareti isteğe bağlıdır [?]|
@@ -57,8 +57,8 @@ Entity1, Origin (Seattle) ve hedef (Cairo) gibi rollere sahip bir konum ise ve v
 
 |İzin Verildi|Örnek|
 |--|--|
-|Evet|([(test1 &#x7c; test2)] &#x7c; test3)|
-|Hayır|([([test1] &#x7c; test2)] &#x7c; test3)|
+|Yes|([(test1 &#x7c; test2)] &#x7c; test3)|
+|No|([([test1] &#x7c; test2)] &#x7c; test3)|
 
 ## <a name="nesting-limits-for-groups-with-or-ing-syntax"></a>Ya da tabanlı sözdizimi olan gruplar için iç içe sınırları
 
@@ -66,8 +66,8 @@ Entity1, Origin (Seattle) ve hedef (Cairo) gibi rollere sahip bir konum ise ve v
 
 |İzin Verildi|Örnek|
 |--|--|
-|Evet|(test1 &#x7c; test2 &#x7c; (test3 &#x7c; test4))|
-|Hayır|(test1 &#x7c; test2 &#x7c; test3 &#x7c; (test4 &#x7c; test5)) |
+|Yes|(test1 &#x7c; test2 &#x7c; (test3 &#x7c; test4))|
+|No|(test1 &#x7c; test2 &#x7c; test3 &#x7c; (test4 &#x7c; test5)) |
 
 ## <a name="syntax-to-add-an-entity-to-a-pattern-template"></a>Bir model şablonuna varlık eklemek için sözdizimi
 Model şablonuna bir varlık eklemek için, varlık adını gibi küme ayraçları ile çevreleyin `Who does {Employee} manage?` .

@@ -15,17 +15,17 @@ ms.workload: na
 ms.date: 09/29/2020
 ms.author: yelevin
 ms.openlocfilehash: 011ddb883c028a954a8b0683c220bf6341eddb66
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91578164"
 ---
 # <a name="manage-multiple-tenants-in-azure-sentinel-as-an-mssp"></a>Azure Sentinel 'de birden fazla kiracıyı MSSP olarak yönetme
 
 Yönetilen bir güvenlik hizmeti sağlayıcısıysanız (MSSP) ve müşterilerinize güvenlik işlemleri Merkezi (SOC) hizmetleri sunmak için [Azure Mathouse](../lighthouse/overview.md) kullanıyorsanız, müşterilerin kiracısına bağlanabilmek gerekmeden müşterilerinizin Azure Sentinel kaynaklarını doğrudan kendi Azure kiracınızdan yönetebilirsiniz. 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - [Azure ışıklı kullanımı](../lighthouse/how-to/onboard-customer.md)
 
@@ -35,15 +35,15 @@ Yönetilen bir güvenlik hizmeti sağlayıcısıysanız (MSSP) ve müşterilerin
 
     1. Abonelik ekranındaki gezinti menüsünde, **Ayarlar**' ın altında **kaynak sağlayıcıları**' nı seçin.
 
-    1. ** *Abonelik adından* | Kaynak sağlayıcıları** ekranı, *Microsoft. Operationalınsights* ve *Microsoft. securityınsights*'ı arayıp seçin ve **durum** sütununu kontrol edin. Sağlayıcının durumu *Notregistered*Ise, **Kaydet**' i seçin.
+    1. ***Abonelik adından* | Kaynak sağlayıcıları** ekranı, *Microsoft. Operationalınsights* ve *Microsoft. securityınsights*'ı arayıp seçin ve **durum** sütununu kontrol edin. Sağlayıcının durumu *Notregistered* Ise, **Kaydet**' i seçin.
     
         :::image type="content" source="media/multiple-tenants-service-providers/check-resource-provider.png" alt-text="Kaynak sağlayıcılarını denetleme":::
 
 ## <a name="how-to-access-azure-sentinel-in-managed-tenants"></a>Yönetilen kiracılarda Azure Sentinel 'e erişme
 
-1. **Dizin + abonelik**altında, temsilcili dizinler (Dizin = kiracı) ve müşterinizin Azure Sentinel çalışma alanlarının bulunduğu abonelikler ' i seçin.
+1. **Dizin + abonelik** altında, temsilcili dizinler (Dizin = kiracı) ve müşterinizin Azure Sentinel çalışma alanlarının bulunduğu abonelikler ' i seçin.
 
-    :::image type="content" source="media/multiple-tenants-service-providers/directory-subscription.png" alt-text="Kaynak sağlayıcılarını denetleme":::
+    :::image type="content" source="media/multiple-tenants-service-providers/directory-subscription.png" alt-text="Kiracılar ve abonelikler seçin":::
 
 1. Azure Sentinel 'i açın. Seçili aboneliklerdeki tüm çalışma alanlarını görürsünüz ve kendi kiracınızdaki herhangi bir çalışma alanı gibi bunlarla sorunsuz bir şekilde çalışabilirsiniz.
 

@@ -5,22 +5,22 @@ ms.date: 09/30/2020
 ms.topic: quickstart
 ms.custom: devx-track-csharp
 ms.openlocfilehash: c4c8f8e9df544b6fc00b5b7701435f5a606f9764
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91604701"
 ---
 # <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources-with-net-core"></a>Hızlı başlangıç: .NET Core ile uyumlu olmayan kaynakları belirlemek için bir ilke ataması oluşturma
 
-Azure’da uyumluluğu anlamanın ilk adımı, kaynaklarınızın durumunu belirlemektir. Bu hızlı başlangıçta, yönetilen disk kullanmayan sanal makineleri belirlemek için bir ilke ataması oluşturacaksınız. Bu tamamlandığında, _uyumlu olmayan_sanal makineleri tanımlayacaksınız.
+Azure’da uyumluluğu anlamanın ilk adımı, kaynaklarınızın durumunu belirlemektir. Bu hızlı başlangıçta, yönetilen disk kullanmayan sanal makineleri belirlemek için bir ilke ataması oluşturacaksınız. Bu tamamlandığında, _uyumlu olmayan_ sanal makineleri tanımlayacaksınız.
 
 .NET Core kitaplığı, Azure kaynaklarını yönetmek için kullanılır. Bu kılavuzda, bir ilke ataması oluşturmak için Azure Ilkesi için .NET Core kitaplığı 'nın nasıl kullanılacağı açıklanmaktadır.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
 - Azure aboneliği. Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.com/free/) bir hesap oluşturun.
-- _ClientID_ ve _ClientSecret_dahil olmak üzere bir Azure hizmet sorumlusu. Azure Ilkesiyle kullanılmak üzere bir hizmet sorumlusu yoksa veya yeni bir tane oluşturmak istiyorsanız, bkz. [.NET Yönetim kitaplıkları Için Azure kimlik doğrulaması](/dotnet/azure/sdk/authentication#mgmt-auth).
+- _ClientID_ ve _ClientSecret_ dahil olmak üzere bir Azure hizmet sorumlusu. Azure Ilkesiyle kullanılmak üzere bir hizmet sorumlusu yoksa veya yeni bir tane oluşturmak istiyorsanız, bkz. [.NET Yönetim kitaplıkları Için Azure kimlik doğrulaması](/dotnet/azure/sdk/authentication#mgmt-auth).
   Sonraki adımlarda bunu yapacağımız için .NET Core paketlerini yüklemek için adımı atlayın.
 
 ## <a name="create-the-azure-policy-project"></a>Azure Ilke projesi oluşturma
@@ -126,13 +126,13 @@ Yukarıdaki komutlarda aşağıdaki bilgiler kullanılmaktadır:
 - `{clientId}` -Hizmet sorumlunun istemci KIMLIĞIYLE değiştirin
 - `{clientSecret}` -Hizmet sorumlunun istemci gizli anahtarı ile değiştirin
 - `{subscriptionId}` - Abonelik kimliğinizle değiştirin
-- **ad** -ilke atama nesnesinin benzersiz adı. Yukarıdaki örnekte _audit-VM-manageddisks_kullanılır.
-- **DisplayName** -ilke ataması için görünen ad. Bu durumda, _yönetilen disk ataması olmadan VM 'Leri denetleme_kullanıyorsunuz demektir.
+- **ad** -ilke atama nesnesinin benzersiz adı. Yukarıdaki örnekte _audit-VM-manageddisks_ kullanılır.
+- **DisplayName** -ilke ataması için görünen ad. Bu durumda, _yönetilen disk ataması olmadan VM 'Leri denetleme_ kullanıyorsunuz demektir.
 - **Policydeıd** : atamayı oluşturmak için kullandığınız ilke tanım yolu. Bu durumda, _yönetilen diskleri kullanmayan ilke tanımı denetim VM_'lerinin kimliğidir.
 - **Açıklama** -ilkenin ne yaptığını veya neden bu kapsama atandığını daha derin bir açıklama.
 - **kapsam** -bir kapsam, ilke atamasının hangi kaynaklarda veya gruplandırmaya uygulanacağını belirler. Bir yönetim grubundan tek bir kaynağa kadar değişebilir. `{scope}`Aşağıdaki desenlerden biriyle değiştirdiğinizden emin olun:
   - Yönetim grubu: `/providers/Microsoft.Management/managementGroups/{managementGroup}`
-  - Aboneliğiniz `/subscriptions/{subscriptionId}`
+  - Abonelik: `/subscriptions/{subscriptionId}`
   - Kaynak grubu: `/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}`
   - Kaynak `/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/[{parentResourcePath}/]`
 
@@ -229,7 +229,7 @@ Yukarıdaki komutlarda aşağıdaki bilgiler kullanılmaktadır:
 - `{clientId}` -Hizmet sorumlunun istemci KIMLIĞIYLE değiştirin
 - `{clientSecret}` -Hizmet sorumlunun istemci gizli anahtarı ile değiştirin
 - `{subscriptionId}` - Abonelik kimliğinizle değiştirin
-- **ad** -ilke atama nesnesinin benzersiz adı. Yukarıdaki örnekte _audit-VM-manageddisks_kullanılır.
+- **ad** -ilke atama nesnesinin benzersiz adı. Yukarıdaki örnekte _audit-VM-manageddisks_ kullanılır.
 
 ' Deki sonuçlar, `response` Azure Portal görünümündeki bir ilke atamasının **kaynak uyumluluğu** sekmesinde gördüklerinize göre eşleşir.
 

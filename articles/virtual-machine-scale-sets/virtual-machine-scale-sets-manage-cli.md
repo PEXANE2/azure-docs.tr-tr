@@ -10,10 +10,10 @@ ms.date: 05/29/2018
 ms.reviewer: mimckitt
 ms.custom: mimckitt, devx-track-azurecli
 ms.openlocfilehash: d954f7cdda4cae65f822489828226e0364d0fc29
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91570534"
 ---
 # <a name="manage-a-virtual-machine-scale-set-with-the-azure-cli"></a>Azure CLı ile sanal makine ölçek kümesini yönetme
@@ -87,7 +87,7 @@ az vmss show \
     --output table
 ```
 
-Ardından [az vmss scale](/cli/azure/vmss) ile ölçek kümesindeki sanal makinelerin sayısını elle artırabilir veya azaltabilirsiniz. Aşağıdaki örnek, ölçek kümesindeki sanal makinelerin sayısını *5*olarak ayarlar:
+Ardından [az vmss scale](/cli/azure/vmss) ile ölçek kümesindeki sanal makinelerin sayısını elle artırabilir veya azaltabilirsiniz. Aşağıdaki örnek, ölçek kümesindeki sanal makinelerin sayısını *5* olarak ayarlar:
 
 ```azurecli
 az vmss scale \

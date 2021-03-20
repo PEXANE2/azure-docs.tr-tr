@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 04/23/2020
 ms.author: cshoe
 ms.openlocfilehash: 79aebf7ed80fea370ff7a5d5cc40911da4144414
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91537710"
 ---
 # <a name="manually-run-a-non-http-triggered-function"></a>HTTP ile tetiklenmeyen bir işlevi el ile çalıştırma
@@ -27,7 +27,7 @@ HTTP ile tetiklenen bir işlev çalıştırmak için, işlevi çalıştırmak ü
 ![İstek konumunu tanımlayın: Ana bilgisayar adı + klasör yolu + işlev adı](./media/functions-manually-run-non-http/azure-functions-admin-url-anatomy.png)
 
 - **Ana bilgisayar adı:** İşlev uygulamasının adı ve *azurewebsites.net* veya özel etki alanınız öğesinden oluşturulan Genel konum.
-- **Klasör yolu:** Http ile tetiklenen işlevlere HTTP isteği aracılığıyla erişmek için, isteği klasörler *yöneticisi/işlevleri*aracılığıyla göndermeniz gerekir.
+- **Klasör yolu:** Http ile tetiklenen işlevlere HTTP isteği aracılığıyla erişmek için, isteği klasörler *yöneticisi/işlevleri* aracılığıyla göndermeniz gerekir.
 - **İşlev adı:** Çalıştırmak istediğiniz işlevin adı.
 
 Bu istek konumunu, Postman 'da, işlevi çalıştırmak için Azure isteği 'ndeki ana anahtarla birlikte kullanırsınız.
@@ -43,41 +43,41 @@ Bu istek konumunu, Postman 'da, işlevi çalıştırmak için Azure isteği 'nde
 
 1. **Anahtarı Düzenle** bölümünde, anahtar değerini panonuza kopyalayın ve ardından **Tamam**' ı seçin.
 
-    :::image type="content" source="./media/functions-manually-run-non-http/azure-portal-functions-master-key-copy.png" alt-text="Kopyalanacak ana anahtarı bulun." border="true":::
+    :::image type="content" source="./media/functions-manually-run-non-http/azure-portal-functions-master-key-copy.png" alt-text="Ana anahtarı panoya kopyalayın." border="true":::
 
 1. *_Master* anahtarını kopyaladıktan sonra, **kod + test**' i seçin ve ardından **Günlükler**' i seçin. İşlevi Postman 'dan el ile çalıştırdığınızda, bu işlevden iletiler burada günlüğe kaydedilir.
 
-    :::image type="content" source="./media/functions-manually-run-non-http/azure-portal-function-log.png" alt-text="Kopyalanacak ana anahtarı bulun." border="true":::
+    :::image type="content" source="./media/functions-manually-run-non-http/azure-portal-function-log.png" alt-text="Görüntülenen günlüklere ait bir ileti içeren ' Code + test ' sayfasını gösteren ekran görüntüsü." border="true":::
 
 > [!CAUTION]  
 > Ana anahtar tarafından verilen işlev uygulamanızda yükseltilmiş izinler nedeniyle, bu anahtarı üçüncü taraflarla paylaşmamalıdır veya bir uygulamada dağıtmanız gerekir. Anahtar yalnızca bir HTTPS uç noktasına gönderilmelidir.
 
-## <a name="call-the-function"></a>İşlevi çağırın
+## <a name="call-the-function"></a>İşlevi çağırma
 
 Postman 'ı açın ve şu adımları izleyin:
 
-1. **URL metin kutusuna istek konumunu**girin.
-1. HTTP yönteminin **gönderi**olarak ayarlandığından emin olun.
+1. **URL metin kutusuna istek konumunu** girin.
+1. HTTP yönteminin **gönderi** olarak ayarlandığından emin olun.
 1. **Üstbilgiler** sekmesini seçin.
 1. İlk anahtar olarak **x-Functions-Key** yazın ve ana anahtarı (panodan) değer olarak yapıştırın.
 1. İkinci anahtar olarak **Içerik türü** yazın ve değer olarak **Application/JSON** yazın.
 
-    :::image type="content" source="./media/functions-manually-run-non-http/functions-manually-run-non-http-headers.png" alt-text="Kopyalanacak ana anahtarı bulun." border="true":::
+    :::image type="content" source="./media/functions-manually-run-non-http/functions-manually-run-non-http-headers.png" alt-text="Postman üstbilgileri ayarları." border="true":::
 
 1. **Gövde** sekmesini seçin.
 1. İsteğin gövdesi olarak **{"Input": "test"}** yazın.
 
-    :::image type="content" source="./media/functions-manually-run-non-http/functions-manually-run-non-http-body.png" alt-text="Kopyalanacak ana anahtarı bulun." border="true":::
+    :::image type="content" source="./media/functions-manually-run-non-http/functions-manually-run-non-http-body.png" alt-text="Postman gövde ayarları." border="true":::
 
 1. **Gönder**’i seçin.
         
-    :::image type="content" source="./media/functions-manually-run-non-http/functions-manually-run-non-http-send.png" alt-text="Kopyalanacak ana anahtarı bulun." border="true":::
+    :::image type="content" source="./media/functions-manually-run-non-http/functions-manually-run-non-http-send.png" alt-text="Postman ile bir istek gönderin." border="true":::
 
-    Postman daha sonra **202 durumunu kabul etti**olarak bildirir.
+    Postman daha sonra **202 durumunu kabul etti** olarak bildirir.
 
 1. Sonra, Azure portal işlevinizi geri döndürün. Günlükleri gözden geçirin ve işleve el ile yapılan çağrıdan gelen iletiler görürsünüz.
 
-    :::image type="content" source="./media/functions-manually-run-non-http/azure-portal-functions-master-key-logs.png" alt-text="Kopyalanacak ana anahtarı bulun." border="true":::
+    :::image type="content" source="./media/functions-manually-run-non-http/azure-portal-functions-master-key-logs.png" alt-text="Ana anahtar test sonuçlarını görmek için günlükleri görüntüleyin." border="true":::
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

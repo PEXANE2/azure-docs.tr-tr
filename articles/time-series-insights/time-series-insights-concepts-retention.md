@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 09/29/2020
 ms.custom: seodec18
 ms.openlocfilehash: 4f236679d0662df852581a6a8408ed6bc0d4e3fe
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91535698"
 ---
 # <a name="understand-data-retention-in-azure-time-series-insights-gen1"></a>Azure Time Series Insights Gen1 'da veri bekletmeyi anlama
@@ -31,7 +31,7 @@ Bu makalede, Azure Time Series Insights ortamınızda veri bekletmeyi etkileyen 
 
 > [!VIDEO https://www.youtube.com/embed/03x6zKDQ6DU]
 
-Azure Time Series Insights ortamlarınızın her biri, **veri saklama süresini**denetleyen bir ayara sahiptir. Değer 1 ile 400 gün arasında yayılır. Veriler ortam depolama kapasitesi veya Bekletme süresine göre silinir, hangisi önce gelir.
+Azure Time Series Insights ortamlarınızın her biri, **veri saklama süresini** denetleyen bir ayara sahiptir. Değer 1 ile 400 gün arasında yayılır. Veriler ortam depolama kapasitesi veya Bekletme süresine göre silinir, hangisi önce gelir.
 
 Ayrıca, Azure Time Series Insights ortamınızda bir **depolama sınırı aşıldı davranış** ayarı vardır. Bir ortamın en fazla kapasitesine ulaşıldığında giriş ve temizleme davranışını denetler. Yapılandırma sırasında aralarından seçim yapabileceğiniz iki davranış vardır:
 
@@ -39,7 +39,7 @@ Ayrıca, Azure Time Series Insights ortamınızda bir **depolama sınırı aşı
 - **Girişi Duraklat**
 
 > [!NOTE]
-> Varsayılan olarak, yeni bir ortam oluştururken bekletme **eski verileri temizlemek**üzere yapılandırılır. Bu ayar, Azure Time Series Insights ortamının **yapılandırma** sayfasında Azure Portal kullanılarak oluşturulma zamanından sonra gerektiği şekilde değiştirilebilir.
+> Varsayılan olarak, yeni bir ortam oluştururken bekletme **eski verileri temizlemek** üzere yapılandırılır. Bu ayar, Azure Time Series Insights ortamının **yapılandırma** sayfasında Azure Portal kullanılarak oluşturulma zamanından sonra gerektiği şekilde değiştirilebilir.
 >
 > - Bekletme ilkelerini yapılandırma hakkında daha fazla bilgi için [Azure Time Series Insights ' de bekletme yapılandırması](time-series-insights-how-to-configure-retention.md)' nı okuyun.
 
@@ -78,7 +78,7 @@ Bu ortamın günlük giriş oranı günde 0,166 GB 'ı aştığında, bazı veri
 
 ### <a name="example-three"></a>Örnek üç
 
-Girişi **duraklatmak**için yapılandırılan bekletme davranışına sahip bir ortam düşünün. Bu örnekte, **veri saklama süresi** 60 gün olarak yapılandırılır. **Kapasite** , üç (3) S1 birimi olarak ayarlanır. Bu ortamın her gün 2 GB veri aldığını varsayın. Bu ortamda, en yüksek kapasiteye ulaşıldığında giriş duraklatılır.
+Girişi **duraklatmak** için yapılandırılan bekletme davranışına sahip bir ortam düşünün. Bu örnekte, **veri saklama süresi** 60 gün olarak yapılandırılır. **Kapasite** , üç (3) S1 birimi olarak ayarlanır. Bu ortamın her gün 2 GB veri aldığını varsayın. Bu ortamda, en yüksek kapasiteye ulaşıldığında giriş duraklatılır.
 
 Bu sırada, giriş devam etmeden veya **çalışmaya devam** edene kadar ortam aynı veri kümesini gösterir (yeni veriler için yer açmak üzere eski verileri temizler).
 

@@ -5,10 +5,10 @@ ms.assetid: fd6841ea-c1d5-4bb7-86bd-0c708d193b89
 ms.topic: how-to
 ms.date: 06/25/2020
 ms.openlocfilehash: 71aba8f2769a75805f47d90b71a8db4eeb26a97a
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/18/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100652403"
 ---
 # <a name="create-an-azure-support-request"></a>Azure destek isteği oluşturma
@@ -30,7 +30,7 @@ Destek isteği deneyimi üç ana hedefle odaklanır:
 
 Azure, faturalandırma, kota ayarlamaları ve hesap aktarımları dahil olmak üzere abonelik yönetimi için sınırsız destek sağlar. Teknik destek için bir destek planına ihtiyacınız vardır. Daha fazla bilgi için bkz. [Destek planlarını karşılaştırma](https://azure.microsoft.com/support/plans).
 
-## <a name="getting-started"></a>Başlarken
+## <a name="getting-started"></a>Kullanmaya başlama
 
 Azure portal **Yardım + Destek** alabilirsiniz. Bu, bir hizmetin Azure portal menüsünde, genel üst bilgisinde veya kaynak menüsünden kullanılabilir. Bir destek isteğini kaydedebilmeniz için, uygun izinlere sahip olmanız gerekir.
 
@@ -64,7 +64,7 @@ Kaynak bağlamında bir destek talebi başlatmak için şu anda çalışıyorsun
 
 Sorununuz hakkında bilgi toplamak ve çözmenize yardımcı olmak için bazı adımlarda size kılavuzluk ederiz. Her adım aşağıdaki bölümlerde açıklanmıştır.
 
-### <a name="basics"></a>Temel bilgiler
+### <a name="basics"></a>Temel Bilgiler
 
 Destek isteği işleminin ilk adımı, sorununuz ve Destek planınız hakkında temel bilgileri toplar.
 

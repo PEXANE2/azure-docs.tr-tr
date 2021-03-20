@@ -10,10 +10,10 @@ ms.date: 09/22/2020
 ms.author: anfeldma
 ms.custom: devx-track-js
 ms.openlocfilehash: b4ed27e1515e898a71fb503bb0f260c608ef9f6f
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93090214"
 ---
 # <a name="quickstart-use-nodejs-to-connect-and-query-data-from-azure-cosmos-db-sql-api-account"></a>Hızlı başlangıç: Azure Cosmos DB SQL API hesabından bağlanmak ve veri sorgulamak için Node.js kullanma
@@ -48,7 +48,7 @@ Bu hızlı başlangıç amacıyla Azure Cosmos hesabı oluşturmak için [Azure 
 
 1. [Ücretsiz deneme Azure Cosmos DB](https://azure.microsoft.com/try/cosmosdb/) sayfasına gidin.
 
-1. **SQL** API hesabı ' nı seçin ve **Oluştur** ' u seçin. Microsoft hesabı kullanarak oturum açın.
+1. **SQL** API hesabı ' nı seçin ve **Oluştur**' u seçin. Microsoft hesabı kullanarak oturum açın.
 
 1. Oturum açma başarılı olduktan sonra Azure Cosmos hesabınız hazırlanmalıdır. Yeni oluşturulan hesabı açmak için **Azure Portal aç '** ı seçin.
 
@@ -75,7 +75,7 @@ Artık bir veritabanı ve kapsayıcı oluşturmak için Azure portal Veri Gezgin
 
    Önceki ayarlara ek olarak, kapsayıcı için isteğe bağlı olarak **benzersiz anahtarlar** ekleyebilirsiniz. Bu örnekte bu alanı boş bırakalım. Benzersiz anahtarlar sayesinde geliştiriciler veritabanına bir veri bütünlüğü katmanı ekleyebilir. Bir kapsayıcı oluştururken benzersiz bir anahtar ilkesi oluşturarak, bölüm anahtarı başına bir veya daha fazla değerin benzersizliği olduğundan emin olursunuz. Daha fazla bilgi edinmek için [Azure Cosmos DB'de benzersiz anahtarlar](unique-keys.md) makalesine bakın.
 
-   **Tamam** ’ı seçin. Veri Gezgini, yeni veritabanını ve kapsayıcıyı görüntüler.
+   **Tamam**’ı seçin. Veri Gezgini, yeni veritabanını ve kapsayıcıyı görüntüler.
 
 ## <a name="add-sample-data"></a>Örnek verileri ekleme
 
@@ -176,9 +176,9 @@ Aşağıdaki kod parçacıklarının tamamı, _app.js_ dosyasından alınmışt�
 
 Şimdi Azure Cosmos hesabınızın bağlantı dizesi ayrıntılarını almak için Azure portal geri dönün. Veritabanınıza bağlanabilmeleri için bağlantı dizesini uygulamaya kopyalayın.
 
-1. [Azure portal](https://portal.azure.com/)Azure Cosmos DB hesabınızda, sol gezinti bölmesinde **anahtarlar** ' ı seçin ve ardından **okuma-yazma anahtarları** ' nı seçin. Bir sonraki adımda _app.js_ dosyasına URI ve birincil anahtar kopyalamak için ekranın sağ tarafındaki kopyalama düğmelerini kullanın.
+1. [Azure portal](https://portal.azure.com/)Azure Cosmos DB hesabınızda, sol gezinti bölmesinde **anahtarlar** ' ı seçin ve ardından **okuma-yazma anahtarları**' nı seçin. Bir sonraki adımda _app.js_ dosyasına URI ve birincil anahtar kopyalamak için ekranın sağ tarafındaki kopyalama düğmelerini kullanın.
 
-   :::image type="content" source="./media/create-sql-api-dotnet/keys.png" alt-text="Azure portalındaki Veri Gezgini, Kapsayıcı Ekle bölmesi":::
+   :::image type="content" source="./media/create-sql-api-dotnet/keys.png" alt-text="Azure portalında erişim anahtarı görüntüleme ve kopyalama, Anahtarlar dikey penceresi":::
 
 2. İçinde _config.js_ dosyasını açın.
 

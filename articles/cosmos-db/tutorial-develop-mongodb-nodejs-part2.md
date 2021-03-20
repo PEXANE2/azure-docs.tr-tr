@@ -11,10 +11,10 @@ ms.author: jopapa
 ms.custom: seodec18
 ms.reviewer: sngun
 ms.openlocfilehash: e3af713d6e120e66a0cde5116f4556bb8caedf55
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93097864"
 ---
 # <a name="create-an-angular-app-with-azure-cosmos-dbs-api-for-mongodb---create-a-nodejs-express-app"></a>MongoDB için Azure Cosmos DB API 'SI ile angular uygulaması oluşturma-Node.js Express uygulaması oluşturma
@@ -82,9 +82,9 @@ Bu öğretici için aşağıdakiler de gereklidir:
 
 ## <a name="build-the-app-using-the-express-framework"></a>Express framework kullanarak uygulamayı oluşturma
 
-1. Visual Studio Code’da **Gezgin** bölmesinde, **src** klasörüne sağ tıklayın, **Yeni Klasör** ’e tıklayın ve yeni klasöre *sunucu* adını verin.
+1. Visual Studio Code’da **Gezgin** bölmesinde, **src** klasörüne sağ tıklayın, **Yeni Klasör**’e tıklayın ve yeni klasöre *sunucu* adını verin.
 
-2. **Gezgin** bölmesinde, **sunucu** klasörüne sağ tıklayın, **Yeni Dosya** ’ya tıklayın ve yeni dosyaya *index.js* adını verin.
+2. **Gezgin** bölmesinde, **sunucu** klasörüne sağ tıklayın, **Yeni Dosya**’ya tıklayın ve yeni dosyaya *index.js* adını verin.
 
 3. Komut istemine dönün, gövde ayrıştırıcısını yüklemek için aşağıdaki komutu kullanın. Bu, uygulamamızın API'ler aracılığıyla iletilen JSON verilerini ayrıştırmasına yardımcı olur.
 
@@ -126,9 +126,9 @@ Bu öğretici için aşağıdakiler de gereklidir:
    app.listen(port, () => console.log(`API running on localhost:${port}`));
    ```
 
-5. Visual Studio Code’da **Gezgin** bölmesinde, **server** klasörüne sağ tıklayın, ardından **Yeni dosya** ’ya tıklayın. Yeni dosyaya *routes.js* adını verin. 
+5. Visual Studio Code’da **Gezgin** bölmesinde, **server** klasörüne sağ tıklayın, ardından **Yeni dosya**’ya tıklayın. Yeni dosyaya *routes.js* adını verin. 
 
-6. **routes.js** ’ye aşağıdaki kodları kopyalayın: Bu kod:
+6. **routes.js**’ye aşağıdaki kodları kopyalayın: Bu kod:
    * Express yönlendiricisine başvurur
    * Hero’ları alır
    * Tanımlanmış bir kahraman için JSON’u geri gönderir

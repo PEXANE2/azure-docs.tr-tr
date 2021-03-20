@@ -10,10 +10,10 @@ ms.subservice: data-lake-storage-gen2
 ms.reviewer: prishet
 ms.custom: devx-track-python
 ms.openlocfilehash: a143c0aa19241b532cabff95fe6bf85679e4007c
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/18/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100652301"
 ---
 # <a name="use-python-to-manage-directories-and-files-in-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage 2. dizinleri ve dosyaları yönetmek için Python kullanma
@@ -144,4 +144,4 @@ Bu örnek, adlı bir dizinde bulunan her bir alt dizin ve dosyanın yolunu yazd�
 - [Örnekler](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-file-datalake/samples)
 - [Gen1 to Gen2 Mapping](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-file-datalake/GEN1_GEN2_MAPPING.md)
 - [Bilinen sorunlar](data-lake-storage-known-issues.md#api-scope-data-lake-client-library)
-- [Geri bildirimde bulunun](https://github.com/Azure/azure-sdk-for-python/issues)
+- [Görüş Bildirin](https://github.com/Azure/azure-sdk-for-python/issues)

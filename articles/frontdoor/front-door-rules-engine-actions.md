@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 09/29/2020
 ms.author: duau
 ms.openlocfilehash: ff61af192471bcfc9bdb9f1ce3970d5c22f39579
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91569776"
 ---
 # <a name="azure-front-door-rules-engine-actions"></a>Azure Front Door Kural Altyapısı Eylemleri
@@ -35,7 +35,7 @@ Bu eylemi, kaynağına gönderilen isteklerde bulunan üst bilgileri değiştirm
 
 Eylem | HTTP üst bilgi adı | Değer
 -------|------------------|------
-Ekleme | Bu seçenek belirlendiğinde ve kural eşleştiğinde, **üst bilgi adı** 'nda belirtilen üstbilgi belirtilen değere sahip isteğe eklenir. Üst bilgi zaten mevcutsa, değer mevcut değere eklenir. | Dize
+Ekle | Bu seçenek belirlendiğinde ve kural eşleştiğinde, **üst bilgi adı** 'nda belirtilen üstbilgi belirtilen değere sahip isteğe eklenir. Üst bilgi zaten mevcutsa, değer mevcut değere eklenir. | Dize
 Üzerine yaz | Bu seçenek belirlendiğinde ve kural eşleştiğinde, **üstbilgi adı** bölümünde belirtilen üstbilgi belirtilen değere sahip isteğe eklenir. Üst bilgi zaten mevcutsa, belirtilen değer varolan değerin üzerine yazar. | Dize
 Sil | Bu seçenek eşleşen kurallarla seçildiğinde ve kuralda belirtilen üst bilgi varsa, üst bilgi istekten silinir. | Dize
 
@@ -47,8 +47,8 @@ Sil | Bu seçenek eşleşen kurallarla seçildiğinde ve kuralda belirtilen üst
 
 Eylem | HTTP üst bilgi adı | Değer
 -------|------------------|------
-Ekleme | Bu seçenek belirlendiğinde ve kural eşleştiğinde, **üst bilgi adı** 'nda belirtilen üst bilgi yanıta belirtilen **değer**kullanılarak eklenir. Üst bilgi zaten mevcutsa, **değer** var olan değere eklenir. | Dize
-Üzerine yaz | Bu seçenek belirlendiğinde ve kural eşleştiğinde, **üst bilgi adı** 'nda belirtilen üst bilgi yanıta belirtilen **değer**kullanılarak eklenir. Üst bilgi zaten mevcutsa, **değer** varolan değerin üzerine yazar. | Dize
+Ekle | Bu seçenek belirlendiğinde ve kural eşleştiğinde, **üst bilgi adı** 'nda belirtilen üst bilgi yanıta belirtilen **değer** kullanılarak eklenir. Üst bilgi zaten mevcutsa, **değer** var olan değere eklenir. | Dize
+Üzerine yaz | Bu seçenek belirlendiğinde ve kural eşleştiğinde, **üst bilgi adı** 'nda belirtilen üst bilgi yanıta belirtilen **değer** kullanılarak eklenir. Üst bilgi zaten mevcutsa, **değer** varolan değerin üzerine yazar. | Dize
 Sil | Bu seçenek belirlendiğinde ve kural kuralda belirtilen üstbilgiyle eşleşiyorsa, üst bilgi yanıttan silinir. | Dize
 
 ## <a name="route-configuration-overrides"></a>Yol yapılandırması geçersiz kılmaları 
@@ -92,14 +92,14 @@ Alan | Açıklama
 
 Sorgu dizeleri içeren istekler için dosyaların nasıl önbelleğe alınacağını denetlemek için bu ayarları kullanın. İçeriğinizi tüm parametrelere veya seçili parametrelere göre önbelleğe almak isteyip istemediğinizi belirtir. İçeriğin önbellekte ne kadar süreyle kalacağını denetlemek için yaşam süresi (TTL) değerinin üzerine yazmak üzere ek ayarları kullanabilirsiniz. Bir eylem olarak önbelleğe almayı zorlamak için, önbelleğe alma alanını "etkin" olarak ayarlayın. Önbelleğe almayı zorlarsanız, aşağıdaki seçenekler görünür: 
 
-Önbellek davranışı |  Açıklama              
+Önbellek davranışı |  Description              
 ---------------|----------------
 Sorgu dizelerini yoksay | Varlık önbelleğe alındıktan sonra, önbelleğe alınan varlık sona erene kadar tüm istekleri Sorgu dizelerini yoksayar.
 Her benzersiz URL'yi önbelleğe al | Sorgu dizesi dahil olmak üzere benzersiz bir URL 'SI olan her istek kendi önbelleğine sahip benzersiz bir varlık olarak değerlendirilir.
 Belirtilen Sorgu dizelerini yoksay | "Sorgu parametreleri" ayarında listelenen istek URL sorgusu dizeleri önbelleğe alma için yok sayılır.
 Belirtilen Sorgu dizelerini dahil et | "Sorgu parametreleri" ayarında listelenen istek URL sorgusu dizeleri önbelleğe alma için kullanılır.
 
-Ek alanlar |  Açıklama 
+Ek alanlar |  Description 
 ------------------|---------------
 Dinamik sıkıştırma | Ön kapı, kenardaki içeriği dinamik olarak sıkıştırarak daha küçük ve daha hızlı bir yanıt elde edebilir.
 Sorgu parametreleri | Önbelleğe alma için temel olarak kullanılacak izin verilen (veya izin verilmeyen) parametrelerin virgülle ayrılmış listesi.

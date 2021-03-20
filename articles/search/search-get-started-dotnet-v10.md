@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 10/27/2020
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 8dc2eb898c12e374bc503c5a05f00eb20667443b
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94701849"
 ---
 # <a name="quickstart-create-a-search-index-using-the-legacy-microsoftazuresearch-v10-client-library"></a>Hızlı başlangıç: eski Microsoft. Azure. Search ile v10 arasındaki istemci kitaplığını kullanarak bir arama dizini oluşturma
@@ -82,7 +82,7 @@ Bu proje için NuGet paketinin sürüm 10 ' u `Microsoft.Azure.Search` ve en son
 
 ### <a name="add-azure-cognitive-search-service-information"></a>Azure Bilişsel Arama hizmet bilgilerini ekleme
 
-1. Çözüm Gezgini, projeye sağ tıklayıp **Add**  >  **Yeni öğe Ekle...** seçeneğini belirleyin. 
+1. Çözüm Gezgini, projeye sağ tıklayıp   >  **Yeni öğe Ekle...** seçeneğini belirleyin. 
 
 1. Yeni öğe Ekle ' de, "JSON" sözcüğünü, JSON ile ilgili öğe türlerinin bir listesini döndürecek şekilde aratın.
 
@@ -106,19 +106,19 @@ Bu proje için NuGet paketinin sürüm 10 ' u `Microsoft.Azure.Search` ve en son
 
 Bu adım, konsolda anlamlı bir çıktı üretmek için gereklidir. Sonuçlar konsol penceresine yazdırılırken, otel nesnesinden bağımsız alanlar dizeler olarak döndürülmelidir. Bu adım, bu görevi gerçekleştirmek için [ToString ()](/dotnet/api/system.object.tostring) uygular, bu da gerekli kodu iki yeni dosyaya kopyalayarak bunu yapar.
 
-1. Projenize iki boş sınıf tanımı ekleyin: Address.Methods.cs, Hotel.Methods.cs
+1. Projenize iki boş sınıf tanımı ekleyin: Address. Methods. cs, otel. Methods. cs
 
-1. Address.Methods.cs ' de, varsayılan içeriğin üzerine aşağıdaki kodu, 1-25. [satırları](https://github.com/Azure-Samples/azure-search-dotnet-samples/blob/master/quickstart/v10/AzureSearchQuickstart/Address.Methods.cs#L1-L25)yazın.
+1. Address. Methods. cs dosyasında aşağıdaki kod, [satırlar 1-25](https://github.com/Azure-Samples/azure-search-dotnet-samples/blob/master/quickstart/v10/AzureSearchQuickstart/Address.Methods.cs#L1-L25)ile varsayılan içeriklerin üzerine yazın.
 
-1. Hotel.Methods.cs ' de, [1-68 satırlarını](https://github.com/Azure-Samples/azure-search-dotnet-samples/blob/master/quickstart/v10/AzureSearchQuickstart/Hotel.Methods.cs#L1-L68)kopyalayın.
+1. Otel. Methods. cs ' de, [satırları kopyalayın 1-68](https://github.com/Azure-Samples/azure-search-dotnet-samples/blob/master/quickstart/v10/AzureSearchQuickstart/Hotel.Methods.cs#L1-L68).
 
 ## <a name="1---create-index"></a>1-Dizin oluşturma
 
 Oteller dizini basit ve karmaşık alanlardan oluşur; burada basit bir alan "HotelName" veya "Description" ya da karmaşık alanlar alt alanlarla veya bir oda koleksiyonu olan bir adrestir. Bir dizin karmaşık türler içerdiğinde, karmaşık alan tanımlarını ayrı sınıflarda yalıtın.
 
-1. Projenize iki boş sınıf tanımı ekleyin: Address.cs, Hotel.cs
+1. Projenize iki boş sınıf tanımı ekleyin: Address. cs, otel. cs
 
-1. Address.cs ' de, varsayılan içeriklerin üzerine aşağıdaki kodu yazın:
+1. Address. cs dosyasında, varsayılan içeriklerin üzerine aşağıdaki kodu yazın:
 
     ```csharp
     using System;
@@ -148,7 +148,7 @@ Oteller dizini basit ve karmaşık alanlardan oluşur; burada basit bir alan "Ho
     }
     ```
 
-1. Hotel.cs içinde sınıfı, adres sınıfına başvurular da dahil olmak üzere dizinin genel yapısını tanımlar.
+1. Otel. cs ' de, sınıf, adres sınıfına başvurular da dahil olmak üzere dizinin genel yapısını tanımlar.
 
     ```csharp
     namespace AzureSearchQuickstart
@@ -205,7 +205,7 @@ Oteller dizini basit ve karmaşık alanlardan oluşur; burada basit bir alan "Ho
 
     Bu dizinde, açıklama alanları [`analyzer`](/dotnet/api/microsoft.azure.search.models.field.analyzer) varsayılan standart Lucene Çözümleyicisi 'ni geçersiz kılmak istediğinizde belirtilen isteğe bağlı özelliği kullanır. `description_fr`Alan, Fransızca metin depoladığı Için Fransızca Lucene Çözümleyicisi ([frlucene](/dotnet/api/microsoft.azure.search.models.analyzername.frlucene)) kullanıyor. , `description` İsteğe bağlı Microsoft dil Çözümleyicisi 'ni ([enmicrosoft](/dotnet/api/microsoft.azure.search.models.analyzername.enmicrosoft)) kullanıyor.
 
-1. Program.cs ' de, [`SearchServiceClient`](/dotnet/api/microsoft.azure.search.searchserviceclient) uygulamanın yapılandırma dosyasında (appsettings.jsüzerinde) depolanan değerleri kullanarak hizmete bağlanmak için sınıfın bir örneğini oluşturun. 
+1. Program. cs ' de, [`SearchServiceClient`](/dotnet/api/microsoft.azure.search.searchserviceclient) uygulamanın yapılandırma dosyasında (appsettings.jsüzerinde) depolanan değerleri kullanarak hizmete bağlanmak için sınıfın bir örneğini oluşturun. 
 
    `SearchServiceClient` , [`Indexes`](/dotnet/api/microsoft.azure.search.searchserviceclient.indexes) Azure bilişsel arama dizinleri oluşturmak, listelemek, güncelleştirmek veya silmek için ihtiyaç duyduğunuz tüm yöntemleri sağlayan bir özelliğine sahiptir. 
 
@@ -309,7 +309,7 @@ Azure Bilişsel Arama 'de belgeler, sorguların dizin oluşturma ve çıkışlar
 
 Belgeler karşıya yüklenirken bir nesne kullanmanız gerekir [`IndexBatch`](/dotnet/api/microsoft.azure.search.models.indexbatch) . `IndexBatch` [`IndexAction`](/dotnet/api/microsoft.azure.search.models.indexaction) , Her biri bir belge içeren bir nesne ve Azure bilişsel arama hangi eyleme ([karşıya yükleme, birleştirme, silme ve mergeorupload](search-what-is-data-import.md#indexing-actions)) söyleyen bir özelliği içerir.
 
-1. Program.cs içinde bir dizi belge ve Dizin eylemi oluşturun ve sonra diziyi öğesine geçirin `IndexBatch` . Aşağıdaki belgeler, otel ve adres sınıfları tarafından tanımlanan otel-hızlı başlangıç dizinine uygundur.
+1. Program. cs ' de, bir dizi belge ve Dizin eylemi oluşturun ve sonra diziyi öğesine geçirin `IndexBatch` . Aşağıdaki belgeler, otel ve adres sınıfları tarafından tanımlanan otel-hızlı başlangıç dizinine uygundur.
 
     ```csharp
     // Upload documents as a batch
@@ -435,7 +435,7 @@ Belgeler karşıya yüklenirken bir nesne kullanmanız gerekir [`IndexBatch`](/d
 
     2 saniyelik gecikme, zaman uyumsuz olan dizin oluşturma için dengelenir, böylece sorgular yürütülmeden önce tüm belgelerin dizini oluşturulabilir. Yalnızca gösteriler, testler ve örnek uygulamalarda yalnızca bir gecikmeden kodlama gereklidir.
 
-1. Program.cs içinde, ana, "2-yükleme belgeleri" için satırların açıklamasını kaldırın. 
+1. Program. cs ' de ana, "2-yükleme belgeleri" için satırların açıklamasını kaldırın. 
 
     ```csharp
     // Uncomment next 3 lines in "2 - Load documents"
@@ -458,7 +458,7 @@ Bu bölüm iki işlev parçasını ekler: Sorgu mantığı ve sonuçları. Sorgu
 [`DocumentsSearchResult`](/dotnet/api/microsoft.azure.search.models.documentsearchresult-1)Sınıfı sonuçları temsil eder.
 
 
-1. Program.cs içinde, arama sonuçlarını konsola yazdıran bir WriteDocuments yöntemi oluşturun.
+1. Program. cs ' de, arama sonuçlarını konsola yazdıran bir WriteDocuments yöntemi oluşturun.
 
     ```csharp
     private static void WriteDocuments(DocumentSearchResult<Hotel> searchResults)
@@ -540,7 +540,7 @@ Bu bölüm iki işlev parçasını ekler: Sorgu mantığı ve sonuçları. Sorgu
 
     Arama ve filtrelerin her ikisi de `Documents.Search` yöntemi kullanılarak gerçekleştirilir. Bir arama sorgusu `searchText` parametresinde geçirilebilirken bir filtre ifadesi `SearchParameters` sınıfının `Filter` özelliğinden geçirilebilir. Arama yapmadan filtrelemek üzere `searchText` parametresi için `"*"` geçirmeniz yeterlidir. Filtrelemeden arama yapmak için `Filter` özelliğini ayarlamadan bırakmanız veya bir `SearchParameters` örneği geçirmemeniz yeterlidir.
 
-1. Program.cs ' de, ana, "3-arama" satırının açıklamasını kaldırın. 
+1. Program. cs ' de ana, "3-arama" satırının açıklamasını kaldırın. 
 
     ```csharp
     // Uncomment next 2 lines in "3 - Search an index"

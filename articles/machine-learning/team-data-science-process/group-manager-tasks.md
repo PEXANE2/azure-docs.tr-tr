@@ -11,10 +11,10 @@ ms.date: 11/17/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 7ab6d6511d1e2cec82b321003c9d663249ddcf49
-ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/18/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94740235"
 ---
 # <a name="team-data-science-process-group-manager-tasks"></a>Team Data Science Işlem Grubu Yöneticisi görevleri
@@ -105,7 +105,7 @@ Varsayılan **Groupcommon** proje deposunu **groupprojecttemplate** olarak yenid
    
    ![GroupUtilities deposu oluşturma](./media/group-manager-tasks/create-grouputilities-repo-2.png)
    
-1. **Proje ayarları** sayfasında sol gezinmede yer **Repositories** alan depolar **' ı** seçerek Iki grup deposunu görüntüleyin: **groupprojecttemplate** ve **grouputilities**.
+1. **Proje ayarları** sayfasında sol gezinmede yer  alan depolar **' ı** seçerek Iki grup deposunu görüntüleyin: **groupprojecttemplate** ve **grouputilities**.
    
    ![İki grup deposu](./media/group-manager-tasks/two-repositories.png)
 
@@ -213,7 +213,7 @@ git push
 ```
 
 > [!NOTE]
-> Git deposuna ilk kez çalışıyorsanız, komutu çalıştırmadan önce *User.Name* ve *User. email* genel parametrelerini yapılandırmanız gerekebilir `git commit` . Aşağıdaki iki komutu çalıştırın:
+> Git deposuna ilk kez çalışıyorsanız, komutu çalıştırmadan önce *User.Name* ve *User.email* genel parametrelerini yapılandırmanız gerekebilir `git commit` . Aşağıdaki iki komutu çalıştırın:
 > 
 > `git config --global user.name <your name>`
 > 

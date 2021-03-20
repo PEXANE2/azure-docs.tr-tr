@@ -13,10 +13,10 @@ ms.workload: TBD
 ms.date: 03/05/2020
 ms.author: alkohli
 ms.openlocfilehash: 5b9958f3dd497aa612a92947b8d968439ef9d0e4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91575971"
 ---
 # <a name="install-update-51-on-your-storsimple-device"></a>StorSimple cihazınıza güncelleştirme 5,1 ' ü yükler
@@ -88,7 +88,7 @@ Cihazınızı [güncelleştirme 5,1](storsimple-update51-release-notes.md)' ye g
 
     ![Yazılım güncelleştirmelerini Indirme ve yükleme işlemi devam ediyor seçeneği ve güncelleştirmeleri yükle dikey penceresi ile cihaz güncelleştirmeleri dikey penceresinin ekran görüntüsü.](./media/storsimple-8000-install-update-51/update8.png)
 
-     Ayrıca, güncelleştirme işinin ilerlemesini **cihaz ayarları > işlerle**izleyebilirsiniz. **İşler** dikey penceresinde, güncelleştirme ilerlemesini görebilirsiniz.
+     Ayrıca, güncelleştirme işinin ilerlemesini **cihaz ayarları > işlerle** izleyebilirsiniz. **İşler** dikey penceresinde, güncelleştirme ilerlemesini görebilirsiniz.
 
      ![Çağrılan Işler ve güncelleştirme ilerleme durumunu gösteren Işler dikey penceresinde ayarlar dikey penceresinin ekran görüntüsü.](./media/storsimple-8000-install-update-51/update7.png)
 

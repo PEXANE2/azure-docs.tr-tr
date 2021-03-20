@@ -4,10 +4,10 @@ description: Azure Service Fabric kullanarak uygulama ve hizmet geliştirmeye y�
 ms.topic: conceptual
 ms.date: 06/18/2019
 ms.openlocfilehash: ddf846e9e3ac6add7cf3f584b702de5accfb22af
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91538507"
 ---
 # <a name="azure-service-fabric-application-design-best-practices"></a>Azure Service Fabric uygulama tasarımı en iyi uygulamaları
@@ -45,7 +45,7 @@ Düşük gecikme süresi için bir senaryonuz varsa ve verilerin işlem için ka
 Veri saklama zaman dilimine karar verin:
 
 - **Önbelleğe alınmış veriler**. Dış depolara gecikme bir sorun olduğunda önbelleğe alma özelliğini kullanın. Kendi veri önbelleğiniz olarak durum bilgisi olan bir hizmet kullanın veya [Açık kaynaklı SoCreate Service Fabric dağıtılmış önbelleğini](https://github.com/SoCreate/service-fabric-distributed-cache)kullanmayı deneyin. Bu senaryoda, önbellekteki tüm verileri kaybederseniz endişelenmeniz gerekmez.
-- **Zamana sınırlı veriler**. Bu senaryoda, gecikme süresi boyunca verileri daha sonra işlem yapmak için yakın tutmanız gerekir, ancak verileri bir *olağanüstü*durumda kaybetmemek için kullanabilirsiniz. Örneğin, birçok IoT çözümlerinde, son birkaç günün ortalama sıcaklığının hesaplanmakta olduğu, ancak bu veriler kaybediliyorsa, kaydedilen belirli veri noktaları önemli değildir. Ayrıca, bu senaryoda, genellikle bireysel veri noktalarını yedeklemeyi önemli bir şekilde dikkate almanız gerekmez. Yalnızca, düzenli aralıklarla dış depolamaya yazılan hesaplanmış ortalama değerleri yedeklemeniz gerekir.  
+- **Zamana sınırlı veriler**. Bu senaryoda, gecikme süresi boyunca verileri daha sonra işlem yapmak için yakın tutmanız gerekir, ancak verileri bir *olağanüstü* durumda kaybetmemek için kullanabilirsiniz. Örneğin, birçok IoT çözümlerinde, son birkaç günün ortalama sıcaklığının hesaplanmakta olduğu, ancak bu veriler kaybediliyorsa, kaydedilen belirli veri noktaları önemli değildir. Ayrıca, bu senaryoda, genellikle bireysel veri noktalarını yedeklemeyi önemli bir şekilde dikkate almanız gerekmez. Yalnızca, düzenli aralıklarla dış depolamaya yazılan hesaplanmış ortalama değerleri yedeklemeniz gerekir.  
 - **Uzun süreli veriler**. Güvenilir koleksiyonlar, verilerinizi kalıcı olarak saklayabilir. Ancak bu durumda, kümeleriniz için [düzenli yedekleme ilkeleri yapılandırma](./service-fabric-backuprestoreservice-configure-periodic-backup.md) dahil olmak üzere [olağanüstü durum kurtarma için hazırlanmanız](./service-fabric-disaster-recovery.md)gerekir. Aslında, kümeniz bir olağanüstü durumda yok edildiğinde, yeni bir küme oluşturmanız ve yeni uygulama örneklerinin dağıtılması ve en son yedeklemeden kurtarılması için ne olacağını yapılandırırsınız.
 
 Maliyetleri kaydedin ve kullanılabilirliği geliştirebilirsiniz:

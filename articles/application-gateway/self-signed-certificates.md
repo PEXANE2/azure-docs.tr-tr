@@ -9,13 +9,13 @@ ms.topic: how-to
 ms.date: 07/23/2019
 ms.author: victorh
 ms.openlocfilehash: e60aa9f072a447af97aa7cc66534e6e893fdbcf6
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93396949"
 ---
-# <a name="generate-an-azure-application-gateway-self-signed-certificate-with-a-custom-root-ca"></a>Özel kök CA ile otomatik olarak imzalanan bir Azure Application Gateway sertifikası oluşturma
+# <a name="generate-an-azure-application-gateway-self-signed-certificate-with-a-custom-root-ca"></a>Özel kök CA ile Azure Application Gateway otomatik olarak imzalanan sertifika oluşturma
 
 Application Gateway v2 SKU 'SU, arka uç sunucularına izin vermek için güvenilen kök sertifikaların kullanımını tanıtır. Bu, v1 SKU 'sunda gerekli olan kimlik doğrulama sertifikalarını kaldırır. *Kök sertifika* , Base-64 ile kodlanmış bir X. 509.440 (. CER) arka uç sertifika sunucusundan kök sertifikayı biçimlendirin. Sunucu sertifikasını veren kök sertifika yetkilisini (CA) belirler ve daha sonra TLS/SSL iletişimi için kullanılır.
 
@@ -30,7 +30,7 @@ Bu makalede şunları yapmayı öğreneceksiniz:
 - Özel sertifika YETKILINIZ tarafından imzalanan kendinden imzalı bir sertifika oluşturma
 - Arka uç sunucusunun kimliğini doğrulamak için bir Application Gateway otomatik olarak imzalanan kök sertifika yükleme
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - **Windows veya Linux çalıştıran bir bilgisayarda [OpenSSL](https://www.openssl.org/)** 
 

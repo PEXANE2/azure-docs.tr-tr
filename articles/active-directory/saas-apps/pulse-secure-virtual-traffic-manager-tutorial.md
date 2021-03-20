@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 09/11/2020
 ms.author: jeedes
 ms.openlocfilehash: 1e295075a5c1ae8daa6673757770bbef01208c1d
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92505755"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-pulse-secure-virtual-traffic-manager"></a>Öğretici: Pulse Secure sanal Traffic Manager ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
@@ -53,7 +53,7 @@ Pulse Secure sanal Traffic Manager 'ın Azure AD 'ye tümleştirilmesini yapıla
 
 ## <a name="configure-and-test-azure-ad-sso-for-pulse-secure-virtual-traffic-manager"></a>Pulse Secure sanal Traffic Manager için Azure AD SSO 'yu yapılandırma ve test etme
 
-**B. Simon**adlı bir test kullanıcısı kullanarak, Pulse Secure sanal TRAFFIC Manager Azure AD SSO 'yu yapılandırın ve test edin. SSO 'nun çalışması için bir Azure AD kullanıcısı ve Pulse Secure sanal Traffic Manager ile ilgili Kullanıcı arasında bir bağlantı ilişkisi kurmanız gerekir.
+**B. Simon** adlı bir test kullanıcısı kullanarak, Pulse Secure sanal TRAFFIC Manager Azure AD SSO 'yu yapılandırın ve test edin. SSO 'nun çalışması için bir Azure AD kullanıcısı ve Pulse Secure sanal Traffic Manager ile ilgili Kullanıcı arasında bir bağlantı ilişkisi kurmanız gerekir.
 
 Azure AD SSO 'yu darbeli güvenli sanal Traffic Manager yapılandırmak ve test etmek için aşağıdaki adımları gerçekleştirin:
 
@@ -110,7 +110,7 @@ Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaks�
 Bu bölümde, Pulse Secure sanal Traffic Manager erişim vererek Azure çoklu oturum açma özelliğini kullanmak için B. Simon 'u etkinleştireceksiniz.
 
 1. Azure portal **Kurumsal uygulamalar**' ı seçin ve ardından **tüm uygulamalar**' ı seçin.
-1. Uygulamalar listesinde, **Pulse Secure sanal Traffic Manager**öğesini seçin.
+1. Uygulamalar listesinde, **Pulse Secure sanal Traffic Manager** öğesini seçin.
 1. Uygulamanın genel bakış sayfasında **Yönet** bölümünü bulun ve **Kullanıcılar ve gruplar**' ı seçin.
 1. **Kullanıcı Ekle**' yi seçin, sonra **atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar** ' ı seçin.
 1. **Kullanıcılar ve gruplar** iletişim kutusunda, kullanıcılar listesinden **B. Simon** ' ı seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
@@ -161,15 +161,15 @@ c. Sanal sunucu için aşağıdaki kimlik doğrulama ayarlarını yapılandırı
 
     a. **Kimlik doğrulaması! türü**' nde **SAML hizmeti sağlayıcısı** ' nı seçin. 
 
-    b. **AUTH! verbose**içinde herhangi bir kimlik doğrulaması sorununu gidermek Için "Evet" olarak ayarlayın, aksi takdirde, varsayılan olarak "Hayır" olarak bırakın 
+    b. **AUTH! verbose** içinde herhangi bir kimlik doğrulaması sorununu gidermek Için "Evet" olarak ayarlayın, aksi takdirde, varsayılan olarak "Hayır" olarak bırakın 
 
 2. Kimlik doğrulama oturumu yönetimi-
 
     ![Kimlik doğrulama oturumu yönetimi](./media/pulse-secure-virtual-traffic-manager-tutorial/authentication-session.png)
 
-    a. **AUTH! Session! cookie_name**için, varsayılan "VS_SamlSP_Auth" olarak bırakın 
+    a. **AUTH! Session! cookie_name** için, varsayılan "VS_SamlSP_Auth" olarak bırakın 
 
-    b. **AUTH! Session! Timeout**için, varsayılanı "7200" olarak bırakın 
+    b. **AUTH! Session! Timeout** için, varsayılanı "7200" olarak bırakın 
 
     c. Kimlik doğrulaması **! oturumu! log_external_state**, tüm kimlik doğrulama sorunlarını gidermek Için "Evet" olarak ayarlayın; Aksi takdirde, varsayılan olarak "Hayır" olarak bırakın 
 

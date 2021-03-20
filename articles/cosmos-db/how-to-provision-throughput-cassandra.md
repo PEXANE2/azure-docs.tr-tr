@@ -9,10 +9,10 @@ ms.date: 10/15/2020
 ms.author: mjbrown
 ms.custom: devx-track-js, devx-track-azurecli, devx-track-csharp
 ms.openlocfilehash: 63b633ed67c03a006a154bc69a1aafb4cb4aa6d0
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93086287"
 ---
 # <a name="provision-database-container-or-autoscale-throughput-on-azure-cosmos-db-cassandra-api-resources"></a>Azure Cosmos DB Cassandra API kaynaklarında veritabanı, kapsayıcı veya otomatik ölçeklendirme üretilen işi sağlama
@@ -28,13 +28,13 @@ Farklı bir API kullanıyorsanız, üretilen işi sağlamak için bkz. [SQL API]
 
 1. [Yeni bir Azure Cosmos hesabı oluşturun](create-mongodb-dotnet.md#create-a-database-account)veya mevcut bir Azure Cosmos hesabı seçin.
 
-1. **Veri Gezgini** bölmesini açın ve **Yeni tablo** ' yı seçin. Ardından, aşağıdaki ayrıntıları sağlayın:
+1. **Veri Gezgini** bölmesini açın ve **Yeni tablo**' yı seçin. Ardından, aşağıdaki ayrıntıları sağlayın:
 
    * Yeni bir anahtar alanı mi yoksa mevcut bir anahtar alanı mı kullandığınızı belirtin. Anahtar alanı düzeyinde aktarım hızı sağlamak istiyorsanız **Veritabanı aktarım hızı sağla** seçeneğini belirleyin.
    * CQL komutu içinde tablo KIMLIĞINI girin.
    * Birincil anahtar değeri girin (örneğin, `/userrID` ).
    * Sağlamak istediğiniz bir üretilen iş (örneğin, 1000 ru) girin.
-   * **Tamam** ’ı seçin.
+   * **Tamam**’ı seçin.
 
     :::image type="content" source="./media/how-to-provision-throughput-cassandra/provision-table-throughput-portal-cassandra-api.png" alt-text="Veritabanı düzeyinde aktarım hızı ile yeni bir koleksiyon oluştururken Veri Gezgini ekran görüntüsü":::
 
@@ -73,7 +73,7 @@ session.Execute("CREATE KEYSPACE IF NOT EXISTS myKeySpace WITH cosmosdb_provisio
 
 Azure Resource Manager şablonlar, tüm Azure Cosmos DB API 'Leri için veritabanında veya kapsayıcı düzeyindeki kaynaklarda otomatik ölçeklendirme üretilen işi sağlamak için kullanılabilir. Örnekler için [Azure Cosmos DB için bkz. Azure Resource Manager şablonları](templates-samples-cassandra.md) .
 
-## <a name="azure-cli"></a>Azure CLI
+## <a name="azure-cli"></a>Azure CLI’si
 
 Azure CLı, tüm Azure Cosmos DB API 'Leri için bir veritabanı veya kapsayıcı düzeyinde bir kaynak üzerinde otomatik ölçeklendirme üretilen işi sağlamak üzere kullanılabilir. Örnekler için bkz. [Azure CLI örnekleri Azure Cosmos DB](cli-samples-cassandra.md).
 

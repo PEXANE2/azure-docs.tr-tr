@@ -10,10 +10,10 @@ ms.topic: article
 ms.date: 02/03/2021
 tags: connectors
 ms.openlocfilehash: 7873076618125241d9bdf4f225c194572553d060
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/05/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99573441"
 ---
 # <a name="integrate-3270-screen-driven-apps-on-ibm-mainframes-with-azure-by-using-azure-logic-apps-and-ibm-3270-connector"></a>Azure Logic Apps ve IBM 3270 bağlayıcısını kullanarak Azure ile IBM ana bilgisayarları 'nda 3270 ekran odaklı uygulamayı tümleştirin
@@ -367,7 +367,7 @@ Tüm bu adımları tamamladığınızda, IBM ana bilgisayarınıza bağlanmak i�
    | **Ana bilgisayar SSL sertifikası mı doğrula?** | No | Açık veya kapalı | Sunucunun sertifikası için doğrulamayı açın veya devre dışı bırakın. |
    ||||
 
-   Örneğin:
+   Örnek:
 
    ![Bağlantı özellikleri](./media/connectors-create-api-3270/connection-properties.png)
 
@@ -379,7 +379,7 @@ Tüm bu adımları tamamladığınızda, IBM ana bilgisayarınıza bağlanmak i�
    | **Yöntem adı** | Yes | <*Yöntem-adı*> | Kullanmak istediğiniz HIDX dosyasındaki yöntemi seçin. Bir yöntemi seçtikten sonra, bu yöntemle kullanılacak parametreleri seçebilmeniz için **yeni parametre Ekle** listesi görüntülenir. |
    ||||
 
-   Örneğin:
+   Örnek:
 
    **HIDX dosyasını seçin**
 

@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 02/20/2019
 ms.author: jeedes
 ms.openlocfilehash: b76c2e346adb6c2afd146b0d73c8f20165145bac
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92460373"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-image-relay"></a>Öğretici: görüntü geçişiyle Azure Active Directory tümleştirme
@@ -30,7 +30,7 @@ Resim geçişini Azure AD ile tümleştirmek aşağıdaki avantajları sağlar:
 Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](../manage-apps/what-is-single-sign-on.md).
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure AD tümleştirmesini görüntü geçişi ile yapılandırmak için aşağıdaki öğeler gereklidir:
 
@@ -61,13 +61,13 @@ Görüntü geçişinin Azure AD ile tümleştirilmesini yapılandırmak için ga
 
     ![Yeni uygulama düğmesi](common/add-new-app.png)
 
-4. Arama kutusuna **görüntü geçişi**yazın, sonuç panelinden **görüntü geçişi** ' ni seçin, sonra da uygulamayı eklemek için düğme **Ekle** ' ye tıklayın.
+4. Arama kutusuna **görüntü geçişi** yazın, sonuç panelinden **görüntü geçişi** ' ni seçin, sonra da uygulamayı eklemek için düğme **Ekle** ' ye tıklayın.
 
     ![Sonuçlar listesinde görüntü geçişi](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-Bu bölümde, Azure AD çoklu oturum açmayı, **Britta Simon**adlı bir test kullanıcısına göre görüntü geçişi ile yapılandırıp test edersiniz.
+Bu bölümde, Azure AD çoklu oturum açmayı, **Britta Simon** adlı bir test kullanıcısına göre görüntü geçişi ile yapılandırıp test edersiniz.
 Çoklu oturum açma için, bir Azure AD kullanıcısı ve görüntü geçişi 'ndeki ilgili Kullanıcı arasındaki bağlantı ilişkisinin kurulması gerekir.
 
 Azure AD çoklu oturum açma 'yı görüntü geçişi ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurmanız gerekir:
@@ -154,11 +154,11 @@ Azure AD çoklu oturum açmayı görüntü geçişi ile yapılandırmak için a�
 
     b. **Logout URL** metin kutusuna, Azure Portal kopyaladığınız **Logout URL 'si** değerini yapıştırın.
 
-    c. **Ad kimliği biçimi**olarak **urn: oasu: adlar: TC: SAML: 1.1: NameID-Format: emapostaadı**' nı seçin.
+    c. **Ad kimliği biçimi** olarak **urn: oasu: adlar: TC: SAML: 1.1: NameID-Format: emapostaadı**' nı seçin.
 
-    d. **Hizmet sağlayıcısından (görüntü geçişi) gelen istekler Için bağlama seçenekleri**olarak, **bağlamayı gönder**' i seçin.
+    d. **Hizmet sağlayıcısından (görüntü geçişi) gelen istekler Için bağlama seçenekleri** olarak, **bağlamayı gönder**' i seçin.
 
-    e. **X. 509.440 sertifikası**altında **sertifikayı Güncelleştir**' e tıklayın.
+    e. **X. 509.440 sertifikası** altında **sertifikayı Güncelleştir**' e tıklayın.
 
     ![Ekran görüntüsü sertifikayı güncelleştirme seçeneğini gösterir.](./media/imagerelay-tutorial/tutorial_imagerelay_17.png)
 
@@ -192,9 +192,9 @@ Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı ol
 
     ![Kullanıcı iletişim kutusu](common/user-properties.png)
 
-    a. **Ad** alanına **Brittasıon**girin.
+    a. **Ad** alanına **Brittasıon** girin.
   
-    b. **Kullanıcı adı** alanına ** \@ bricompansıon yourcompanydomain. Extension** yazın  
+    b. **Kullanıcı adı** alanına **\@ bricompansıon yourcompanydomain. Extension** yazın  
     Örneğin, BrittaSimon@contoso.com
 
     c. **Parolayı göster** onay kutusunu seçin ve ardından parola kutusunda görüntülenen değeri yazın.
@@ -239,7 +239,7 @@ Bu bölümün amacı, görüntü geçişi 'nde Britta Simon adlı bir Kullanıc�
 
     ![Ekran görüntüsü, menüden seçilen S O Kullanıcı Oluştur ' u gösterir.](./media/imagerelay-tutorial/tutorial_imagerelay_21.png) 
 
-3. Sağlamak istediğiniz kullanıcının **e-postasını**, **adını**, **soyadını**ve **Şirket** adını girin ve yalnızca çoklu oturum açma ile oturum açmak için BIR grup olan izin grubunu (örneğin, SSO temel) seçin.
+3. Sağlamak istediğiniz kullanıcının **e-postasını**, **adını**, **soyadını** ve **Şirket** adını girin ve yalnızca çoklu oturum açma ile oturum açmak için BIR grup olan izin grubunu (örneğin, SSO temel) seçin.
 
     ![Ekran görüntüsü, gerekli bilgileri girebileceğiniz bir S S O Kullanıcı sayfası oluşturur.](./media/imagerelay-tutorial/tutorial_imagerelay_22.png)
 

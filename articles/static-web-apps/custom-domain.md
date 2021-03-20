@@ -8,17 +8,17 @@ ms.topic: conceptual
 ms.date: 05/08/2020
 ms.author: buhollan
 ms.openlocfilehash: 578860883a108bba4b4bcd8cd04e8c08f484d474
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/19/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92173677"
 ---
 # <a name="setup-a-custom-domain-in-azure-static-web-apps-preview"></a>Azure Static Web Apps Önizlemesinde özel etki alanı ayarlama
 
 Varsayılan olarak, Azure statik Web Apps otomatik olarak oluşturulan bir etki alanı adı sağlar. Bu makalede bir Azure statik Web Apps uygulamasına özel bir etki alanı adı eşleme gösterilmektedir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Satın alınan etki alanı adı
 - Etki alanınız için DNS yapılandırma özelliklerine erişim
@@ -57,7 +57,7 @@ Bir CNAME kaydı bir etki alanını diğerine eşler. CNAME kaydını, `www.exam
 
 2. DNS kayıtlarını yönetme sayfasını bulun. Her etki alanı sağlayıcısının kendi DNS kayıtları arabirimi vardır, bu nedenle sağlayıcının belgelerine başvurun. Sitede **Domain Name**, **DNS** veya **Name Server Management** etiketli alanları bulun.
 
-3. Çoğunlukla, hesap bilgilerinizi görüntüleyip ardından **My domains** (Etki alanlarım) gibi bir bağlantı arayarak DNS kayıtları sayfasını bulabilirsiniz. Bu sayfaya gidin ve **bölge dosyasına**, **DNS kayıtlarına**veya **Gelişmiş yapılandırmaya**benzer adlı bir bağlantıyı arayın.
+3. Çoğunlukla, hesap bilgilerinizi görüntüleyip ardından **My domains** (Etki alanlarım) gibi bir bağlantı arayarak DNS kayıtları sayfasını bulabilirsiniz. Bu sayfaya gidin ve **bölge dosyasına**, **DNS kayıtlarına** veya **Gelişmiş yapılandırmaya** benzer adlı bir bağlantıyı arayın.
 
     DNS kayıtları sayfasının bir örneğini aşağıdaki ekran görüntüsünde görebilirsiniz:
 
@@ -102,7 +102,7 @@ Bazen başka bir etki alanına yönlendirmek için bir alt etki alanına gönder
 
 2. DNS kayıtlarını yönetme sayfasını bulun. Her etki alanı sağlayıcısının kendi DNS kayıtları arabirimi vardır, bu nedenle sağlayıcının belgelerine başvurun. Sitede **Domain Name**, **DNS** veya **Name Server Management** etiketli alanları bulun.
 
-3. Çoğunlukla, hesap bilgilerinizi görüntüleyip ardından **My domains** (Etki alanlarım) gibi bir bağlantı arayarak DNS kayıtları sayfasını bulabilirsiniz. Bu sayfaya gidin ve **bölge dosyası**, **DNS kayıtları**veya **Gelişmiş yapılandırma**gibi adlı bir bağlantıyı arayın.
+3. Çoğunlukla, hesap bilgilerinizi görüntüleyip ardından **My domains** (Etki alanlarım) gibi bir bağlantı arayarak DNS kayıtları sayfasını bulabilirsiniz. Bu sayfaya gidin ve **bölge dosyası**, **DNS kayıtları** veya **Gelişmiş yapılandırma** gibi adlı bir bağlantıyı arayın.
 
     DNS kayıtları sayfasının bir örneğini aşağıdaki ekran görüntüsünde görebilirsiniz:
 

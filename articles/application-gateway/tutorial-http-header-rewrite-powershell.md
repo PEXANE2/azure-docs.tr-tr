@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 11/19/2019
 ms.author: absha
 ms.openlocfilehash: 4a1a122eb7b5b0abcc47cd321c74267a1a4aecda
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93396864"
 ---
 # <a name="create-an-application-gateway-and-rewrite-http-headers"></a>Uygulama ağ geçidi oluşturma ve HTTP üstbilgilerini yeniden yazma
@@ -107,11 +107,11 @@ $setting = New-AzApplicationGatewayBackendHttpSettings -Name "BackendHttpSetting
 
 HTTP üstbilgilerini yeniden yazmak için gereken yeni nesneleri yapılandırın:
 
-- **Requestheaderconfiguration** : Bu nesne, yeniden yazmayı düşündüğünüz istek üst bilgisi alanlarını ve özgün üstbilgilerin yeniden yazılması gereken yeni değeri belirtmek için kullanılır.
-- **Responseheaderconfiguration** : Bu nesne, yeniden yazmayı düşündüğünüz yanıt üst bilgisi alanlarını ve özgün üstbilgilerin yeniden yazılması gereken yeni değeri belirtmek için kullanılır.
-- **Actionset** : Bu nesne, yukarıda belirtilen istek ve yanıt üst bilgilerinin yapılandırmasını içerir. 
-- **Yeniden Writerule** : Bu nesne yukarıda belirtilen tüm *actionsets gruplarını* içerir. 
-- **Rewriterutaset** -bu nesne tüm *yeniden writerules* 'leri içerir ve bir istek yönlendirme kuralına (temel veya yol tabanlı) eklenmelidir.
+- **Requestheaderconfiguration**: Bu nesne, yeniden yazmayı düşündüğünüz istek üst bilgisi alanlarını ve özgün üstbilgilerin yeniden yazılması gereken yeni değeri belirtmek için kullanılır.
+- **Responseheaderconfiguration**: Bu nesne, yeniden yazmayı düşündüğünüz yanıt üst bilgisi alanlarını ve özgün üstbilgilerin yeniden yazılması gereken yeni değeri belirtmek için kullanılır.
+- **Actionset**: Bu nesne, yukarıda belirtilen istek ve yanıt üst bilgilerinin yapılandırmasını içerir. 
+- **Yeniden Writerule**: Bu nesne yukarıda belirtilen tüm *actionsets gruplarını* içerir. 
+- **Rewriterutaset**-bu nesne tüm *yeniden writerules* 'leri içerir ve bir istek yönlendirme kuralına (temel veya yol tabanlı) eklenmelidir.
 
    ```azurepowershell
    $requestHeaderConfiguration = New-AzApplicationGatewayRewriteRuleHeaderConfiguration -HeaderName "X-isThroughProxy" -HeaderValue "True"

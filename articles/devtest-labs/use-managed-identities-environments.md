@@ -4,10 +4,10 @@ description: Azure DevTest Labs 'de laboratuarda ortamları dağıtmak için Azu
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 0f3e4b4d7030eb26c25b291e03caaa430d1979c4
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98185793"
 ---
 # <a name="use-azure-managed-identities-to-deploy-environments-in-a-lab"></a>Laboratuvar ortamında ortamları dağıtmak için Azure yönetilen kimliklerini kullanma 
@@ -17,7 +17,7 @@ Laboratuvar sahibi olarak, bir laboratuvarda ortamları dağıtmak için yöneti
 > [!NOTE]
 > Şu anda, laboratuvar başına tek bir kullanıcı tarafından atanan kimlik desteklenir. 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - [Azure Portal kullanarak, Kullanıcı tarafından atanan yönetilen kimlik için rol oluşturma, listeleme, silme veya atama](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md). 
     

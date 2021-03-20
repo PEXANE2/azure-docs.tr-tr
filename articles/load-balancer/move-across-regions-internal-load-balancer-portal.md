@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 09/18/2019
 ms.author: allensu
 ms.openlocfilehash: 68a2cb6926cb41956711a9e3c15d21c250d27f0b
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94698506"
 ---
 # <a name="move-azure-internal-load-balancer-to-another-region-using-the-azure-portal"></a>Azure iç Load Balancer Azure portal kullanarak başka bir bölgeye taşıma
@@ -47,7 +47,7 @@ Aşağıdaki adımlarda, bir Kaynak Yöneticisi şablonu kullanarak taşıma iç
 2. Kaynak sanal ağı içeren kaynak grubunu bulun ve üzerine tıklayın.
 3. > **ayarları**  >  **dışarı aktarma şablonu**' nu seçin.
 4. **Şablonu dışarı aktar** dikey penceresinde **Dağıt** ' ı seçin.
-5. **TEMPLATE**  >  Çevrimiçi düzenleyicide dosya **parameters.js** açmak için şablon **düzenleme parametreleri** ' ne tıklayın.
+5.   >  Çevrimiçi düzenleyicide dosya **parameters.js** açmak için şablon **düzenleme parametreleri** ' ne tıklayın.
 6. Sanal ağ adının parametresini düzenlemek için, **Parametreler** altındaki **değer** özelliğini değiştirin:
 
     ```json
@@ -65,7 +65,7 @@ Aşağıdaki adımlarda, bir Kaynak Yöneticisi şablonu kullanarak taşıma iç
 
 8. Düzenleyicide **Kaydet** ' e tıklayın.
 
-9. **TEMPLATE**  >  Çevrimiçi düzenleyicide dosya **template.js** açmak için şablon **düzenleme** şablonu ' na tıklayın.
+9.   >  Çevrimiçi düzenleyicide dosya **template.js** açmak için şablon **düzenleme** şablonu ' na tıklayın.
 
 10. VNET 'in taşınacağı hedef bölgeyi düzenlemek için kaynaklar altındaki **Location** özelliğini değiştirin:
 
@@ -180,9 +180,9 @@ Aşağıdaki adımlarda, bir Kaynak Yöneticisi şablonu kullanarak taşıma iç
 
 13. Çevrimiçi düzenleyicide **Kaydet** ' e tıklayın.
 
-14. **BASICS**  >  Hedef VNET 'in dağıtılacağı aboneliği seçmek için temel bilgiler **aboneliği** ' ne tıklayın.
+14.   >  Hedef VNET 'in dağıtılacağı aboneliği seçmek için temel bilgiler **aboneliği** ' ne tıklayın.
 
-15. **BASICS**  >  Hedef VNET 'in dağıtılacağı kaynak grubunu seçmek için temel bilgiler **kaynak grubu** ' na tıklayın.  Hedef sanal ağ için yeni bir kaynak grubu oluşturmak için **Yeni oluştur** ' a tıklayabilirsiniz.  Adın mevcut VNET 'in kaynak kaynak grubuyla aynı olmadığından emin olun.
+15.   >  Hedef VNET 'in dağıtılacağı kaynak grubunu seçmek için temel bilgiler **kaynak grubu** ' na tıklayın.  Hedef sanal ağ için yeni bir kaynak grubu oluşturmak için **Yeni oluştur** ' a tıklayabilirsiniz.  Adın mevcut VNET 'in kaynak kaynak grubuyla aynı olmadığından emin olun.
 
 16. **Temel bilgilerin**  >  **,** sanal ağın dağıtılmasını istediğiniz hedef konuma ayarlandığını doğrulayın.
 
@@ -198,7 +198,7 @@ Aşağıdaki adımlarda, bir Kaynak Yöneticisi şablonu kullanarak taşıma iç
 2. Kaynak iç yük dengeleyiciyi içeren kaynak grubunu bulun ve üzerine tıklayın.
 3. > **ayarları**  >  **dışarı aktarma şablonu**' nu seçin.
 4. **Şablonu dışarı aktar** dikey penceresinde **Dağıt** ' ı seçin.
-5. **TEMPLATE**  >  Çevrimiçi düzenleyicide dosya **parameters.js** açmak için şablon **düzenleme parametreleri** ' ne tıklayın.
+5.   >  Çevrimiçi düzenleyicide dosya **parameters.js** açmak için şablon **düzenleme parametreleri** ' ne tıklayın.
 
 6. İç yük dengeleyici adının parametresini düzenlemek için, kaynak iç yük dengeleyici adının **DefaultValue** özelliğini hedef iç yük dengeleyicinizin adına değiştirin, adın tırnak içinde olduğundan emin olun:
 
@@ -218,7 +218,7 @@ Aşağıdaki adımlarda, bir Kaynak Yöneticisi şablonu kullanarak taşıma iç
 
 6. Yukarıda taşınan hedef sanal ağın değerini düzenlemek için öncelikle kaynak KIMLIĞINI edinmeniz ve sonra dosyayı kopyalayıp **parameters.js** dosyaya yapıştırmanız gerekir. KIMLIĞI almak için:
 
-    1. [Azure portal](https://portal.azure.com)  >  Başka bir tarayıcı sekmesi veya penceresinde Azure Portal **kaynak gruplarında** oturum açın.
+    1. [](https://portal.azure.com)  >  Başka bir tarayıcı sekmesi veya penceresinde Azure Portal **kaynak gruplarında** oturum açın.
     2. Yukarıdaki adımlardan taşınan sanal ağı içeren hedef kaynak grubunu bulun ve üzerine tıklayın.
     3. > **ayarları**  >  **özelliklerini** seçin.
     4. Sağ taraftaki dikey pencerede, **kaynak kimliğini** vurgulayın ve panoya kopyalayın.  Alternatif olarak, **kaynak kimliği** yolunun sağ tarafındaki **Panoya Kopyala** düğmesine tıklayabilirsiniz.
@@ -239,7 +239,7 @@ Aşağıdaki adımlarda, bir Kaynak Yöneticisi şablonu kullanarak taşıma iç
         ```
     6. Çevrimiçi düzenleyicide **Kaydet** ' e tıklayın.
 
-7. **TEMPLATE**  >  Çevrimiçi düzenleyicide dosya **template.js** açmak için şablon **düzenleme** şablonu ' na tıklayın.
+7.   >  Çevrimiçi düzenleyicide dosya **template.js** açmak için şablon **düzenleme** şablonu ' na tıklayın.
 8. İç yük dengeleyici yapılandırmasının taşınacağı hedef bölgeyi düzenlemek için, dosyadaki **template.js** içindeki **kaynaklar** altında **Location** özelliğini değiştirin:
 
     ```json
@@ -259,7 +259,7 @@ Aşağıdaki adımlarda, bir Kaynak Yöneticisi şablonu kullanarak taşıma iç
 
 10. Ayrıca, isterseniz şablondaki diğer parametreleri değiştirebilir ve gereksinimlerinize bağlı olarak isteğe bağlıdır:
 
-    * **SKU** - **sku**  >  dosyadaki **template.js** SKU **adı** özelliğini değiştirerek, yapılandırmadaki iç yük dengeleyicinin SKU 'sunu standart iken temel veya temel olarak değiştirebilirsiniz:
+    * **SKU** -   >  dosyadaki **template.js** SKU **adı** özelliğini değiştirerek, yapılandırmadaki iç yük dengeleyicinin SKU 'sunu standart iken temel veya temel olarak değiştirebilirsiniz:
 
         ```json
         "resources": [
@@ -377,9 +377,9 @@ Aşağıdaki adımlarda, bir Kaynak Yöneticisi şablonu kullanarak taşıma iç
 
 12. Çevrimiçi düzenleyicide **Kaydet** ' e tıklayın.
 
-13. **BASICS**  >  Hedef iç yük dengeleyicinin dağıtılacağı aboneliği seçmek için temel bilgiler **aboneliği** ' ne tıklayın.
+13.   >  Hedef iç yük dengeleyicinin dağıtılacağı aboneliği seçmek için temel bilgiler **aboneliği** ' ne tıklayın.
 
-15. **BASICS**  >  Hedef yük dengeleyicinin dağıtılacağı kaynak grubunu seçmek için temel bilgiler **kaynak grubu** ' na tıklayın.  **Yeni oluştur** ' a tıklayarak hedef iç yük dengeleyici için yeni bir kaynak grubu oluşturabilir veya sanal ağ için yukarıda oluşturulan mevcut kaynak grubunu seçebilirsiniz.  Adın mevcut kaynak iç yük dengeleyicinin kaynak kaynak grubuyla aynı olmadığından emin olun.
+15.   >  Hedef yük dengeleyicinin dağıtılacağı kaynak grubunu seçmek için temel bilgiler **kaynak grubu** ' na tıklayın.  **Yeni oluştur** ' a tıklayarak hedef iç yük dengeleyici için yeni bir kaynak grubu oluşturabilir veya sanal ağ için yukarıda oluşturulan mevcut kaynak grubunu seçebilirsiniz.  Adın mevcut kaynak iç yük dengeleyicinin kaynak kaynak grubuyla aynı olmadığından emin olun.
 
 16. **Temel**  >  aldığı **konumun** , iç yük dengeleyicinin dağıtılması için istediğiniz hedef konuma ayarlandığını doğrulayın.
 

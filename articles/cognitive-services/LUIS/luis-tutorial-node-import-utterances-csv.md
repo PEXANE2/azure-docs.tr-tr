@@ -10,10 +10,10 @@ ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 09/05/2019
 ms.openlocfilehash: 58eb92f4d0bc3de4671ca2ece14a178a876e4a6b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91541059"
 ---
 # <a name="build-a-luis-app-programmatically-using-nodejs"></a>Node.js kullanarak bir LUSıS uygulaması programlama yoluyla oluşturma
@@ -22,7 +22,7 @@ LUSıS, [Luo](luis-reference-regions.md) Web sitesinin yaptığı her şeyi yapa
 
 [!INCLUDE [Waiting for LUIS portal refresh](./includes/wait-v3-upgrade.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * [Lusıs](luis-reference-regions.md) Web sitesinde oturum açın ve hesap ayarları ' nda [yazma anahtarınızı](luis-how-to-azure-subscription.md#authoring-key) bulun. Yazma API 'Lerini çağırmak için bu anahtarı kullanırsınız.
 * Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/cognitive-services/) oluşturun.
@@ -82,7 +82,7 @@ CSV 'deki detersliği içeren sütun girdilerinin, LUIN anlayabileceği bir JSON
         }
 ```
 
-Bu örnekte,, `intentName` CSV dosyasındaki **istek** sütunu başlığı altındaki Kullanıcı isteğinden gelir ve `entityName` anahtar bilgileri ile diğer sütunlardan gelir. Örneğin, **işlem** veya **cihaz**için bir giriş varsa ve bu dize gerçek istekte da gerçekleşirse, bir varlık olarak etiketlenebilir. Aşağıdaki kod bu ayrıştırma sürecini gösterir. Kopyalayabilir veya [indirebilir](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/examples/build-app-programmatically-csv/_parse.js) ve kaydedebilirsiniz `_parse.js` .
+Bu örnekte,, `intentName` CSV dosyasındaki **istek** sütunu başlığı altındaki Kullanıcı isteğinden gelir ve `entityName` anahtar bilgileri ile diğer sütunlardan gelir. Örneğin, **işlem** veya **cihaz** için bir giriş varsa ve bu dize gerçek istekte da gerçekleşirse, bir varlık olarak etiketlenebilir. Aşağıdaki kod bu ayrıştırma sürecini gösterir. Kopyalayabilir veya [indirebilir](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/examples/build-app-programmatically-csv/_parse.js) ve kaydedebilirsiniz `_parse.js` .
 
    [!code-javascript[Node.js code for parsing a CSV file to extract intents, entities, and labeled utterances](~/samples-luis/examples/build-app-programmatically-csv/_parse.js)]
 
@@ -179,7 +179,7 @@ upload done
 
 
 ## <a name="open-the-luis-app"></a>LUSıS uygulamasını açın
-Betik tamamlandıktan sonra, [lusıs](luis-reference-regions.md) 'de oturum açabilir ve **UYGULAMALARıM**altında oluşturduğunuz Luo uygulamasını görebilirsiniz. **TurnOn**, **Turnoff**ve **none** hedefleri altına eklediğiniz söyleymeleri görebilmeniz gerekir.
+Betik tamamlandıktan sonra, [lusıs](luis-reference-regions.md) 'de oturum açabilir ve **UYGULAMALARıM** altında oluşturduğunuz Luo uygulamasını görebilirsiniz. **TurnOn**, **Turnoff** ve **none** hedefleri altına eklediğiniz söyleymeleri görebilmeniz gerekir.
 
 ![TurnOn amacı](./media/luis-tutorial-node-import-utterances-csv/imported-utterances-661.png)
 

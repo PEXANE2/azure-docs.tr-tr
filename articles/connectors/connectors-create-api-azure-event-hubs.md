@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 04/23/2019
 tags: connectors
 ms.openlocfilehash: 65da8e07c01561577fe7eff449bfc10348c7f277
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101716610"
 ---
 # <a name="monitor-receive-and-send-events-with-azure-event-hubs-and-azure-logic-apps"></a>Azure Event Hubs ve Azure Logic Apps ile olayları izleme, alma ve gönderme
@@ -80,9 +80,9 @@ Bu örnek, Olay Hub 'ınıza yeni olaylar gönderildiğinde bir mantıksal uygul
    | Özellik | Gerekli | Açıklama |
    |----------|----------|-------------|
    | **Olay Hub'ı adı** | Yes | İzlemek istediğiniz olay hub 'ının adı |
-   | **İçerik türü** | Hayır | Olayın içerik türü. Varsayılan değer: `application/octet-stream`. |
-   | **Tüketici grubu adı** | Hayır | Olayları okumak için kullanılacak [Olay Hub 'ı Tüketici grubu adı](../event-hubs/event-hubs-features.md#consumer-groups) . Belirtilmemişse, varsayılan Tüketici grubu kullanılır. |
-   | **En fazla olay sayısı** | Hayır | En fazla olay sayısı. Tetikleyici, bu özellik tarafından belirtilen bir ve olay sayısı arasında döndürülür. |
+   | **İçerik türü** | No | Olayın içerik türü. Varsayılan değer: `application/octet-stream`. |
+   | **Tüketici grubu adı** | No | Olayları okumak için kullanılacak [Olay Hub 'ı Tüketici grubu adı](../event-hubs/event-hubs-features.md#consumer-groups) . Belirtilmemişse, varsayılan Tüketici grubu kullanılır. |
+   | **En fazla olay sayısı** | No | En fazla olay sayısı. Tetikleyici, bu özellik tarafından belirtilen bir ve olay sayısı arasında döndürülür. |
    | **Aralık** | Yes | İş akışının sıklık temelinde ne sıklıkta çalışacağını açıklayan pozitif bir tamsayı |
    | **Sıklık** | Yes | Yinelenme için zaman birimi |
    ||||
@@ -91,11 +91,11 @@ Bu örnek, Olay Hub 'ınıza yeni olaylar gönderildiğinde bir mantıksal uygul
 
    | Özellik | Gerekli | Açıklama |
    |----------|----------|-------------|
-   | **İçerik şeması** | Hayır | Olay Hub 'ından okunan olaylara yönelik JSON içerik şeması. Örneğin, içerik şemasını belirtirseniz, mantıksal uygulamayı yalnızca şemayla eşleşen olaylar için tetikleyebilirsiniz. |
-   | **Minimum bölüm anahtarı** | Hayır | Okunacak minimum [bölüm](../event-hubs/event-hubs-features.md#partitions) kimliğini girin. Varsayılan olarak, tüm bölümler okunurdur. |
-   | **En büyük bölüm anahtarı** | Hayır | Okunacak [bölüm](../event-hubs/event-hubs-features.md#partitions) kimliği üst sınırını girin. Varsayılan olarak, tüm bölümler okunurdur. |
-   | **Saat dilimi** | Hayır | Yalnızca bir başlangıç saati belirttiğinizde geçerlidir çünkü bu tetikleyici UTC sapmasını kabul etmez. Uygulamak istediğiniz saat dilimini seçin. <p>Daha fazla bilgi için bkz. [Azure Logic Apps ile yinelenen görevler ve iş akışları oluşturma ve çalıştırma](../connectors/connectors-native-recurrence.md). |
-   | **Başlangıç zamanı** | Hayır | Bu biçimde bir başlangıç saati sağlayın: <p>YYYY-MM-DDThh: mm: ss saat dilimi seçerseniz<p>-veya-<p>YYYY-MM-DDThh: mm: ssZ saat dilimi seçme<p>Daha fazla bilgi için bkz. [Azure Logic Apps ile yinelenen görevler ve iş akışları oluşturma ve çalıştırma](../connectors/connectors-native-recurrence.md). |
+   | **İçerik şeması** | No | Olay Hub 'ından okunan olaylara yönelik JSON içerik şeması. Örneğin, içerik şemasını belirtirseniz, mantıksal uygulamayı yalnızca şemayla eşleşen olaylar için tetikleyebilirsiniz. |
+   | **Minimum bölüm anahtarı** | No | Okunacak minimum [bölüm](../event-hubs/event-hubs-features.md#partitions) kimliğini girin. Varsayılan olarak, tüm bölümler okunurdur. |
+   | **En büyük bölüm anahtarı** | No | Okunacak [bölüm](../event-hubs/event-hubs-features.md#partitions) kimliği üst sınırını girin. Varsayılan olarak, tüm bölümler okunurdur. |
+   | **Saat dilimi** | No | Yalnızca bir başlangıç saati belirttiğinizde geçerlidir çünkü bu tetikleyici UTC sapmasını kabul etmez. Uygulamak istediğiniz saat dilimini seçin. <p>Daha fazla bilgi için bkz. [Azure Logic Apps ile yinelenen görevler ve iş akışları oluşturma ve çalıştırma](../connectors/connectors-native-recurrence.md). |
+   | **Başlangıç zamanı** | No | Bu biçimde bir başlangıç saati sağlayın: <p>YYYY-MM-DDThh: mm: ss saat dilimi seçerseniz<p>-veya-<p>YYYY-MM-DDThh: mm: ssZ saat dilimi seçme<p>Daha fazla bilgi için bkz. [Azure Logic Apps ile yinelenen görevler ve iş akışları oluşturma ve çalıştırma](../connectors/connectors-native-recurrence.md). |
    ||||
 
 1. İşiniz bittiğinde, Tasarımcı araç çubuğunda **Kaydet**' i seçin.
@@ -131,9 +131,9 @@ Eylemler listesinden şu eylemi seçin: **olay Gönder-Event Hubs**
    | Özellik | Gerekli | Açıklama |
    |----------|----------|-------------|
    | **Olay Hub'ı adı** | Yes | Olayı göndermek istediğiniz olay hub 'ı |
-   | **İçerik** | Hayır | Göndermek istediğiniz olay için içerik |
-   | **Özellikler** | Hayır | Gönderilen uygulama özellikleri ve değerler |
-   | **Bölüm anahtarı** | Hayır | Olayın gönderileceği [bölüm](../event-hubs/event-hubs-features.md#partitions) kimliği |
+   | **İçerik** | No | Göndermek istediğiniz olay için içerik |
+   | **Özellikler** | No | Gönderilen uygulama özellikleri ve değerler |
+   | **Bölüm anahtarı** | No | Olayın gönderileceği [bölüm](../event-hubs/event-hubs-features.md#partitions) kimliği |
    ||||
 
    Örneğin, Event Hubs tetikleyicinizden çıktıyı başka bir olay hub 'ına gönderebilirsiniz:

@@ -6,10 +6,10 @@ manager: rochakm
 ms.date: 11/03/2019
 ms.topic: conceptual
 ms.openlocfilehash: d4fa7348df647cf699ebd55dd6415a79454ab5f1
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93397974"
 ---
 # <a name="common-questions-azure-to-azure-disaster-recovery"></a>Sık sorulan sorular: Azure'dan Azure'a olağanüstü durum kurtarma
@@ -182,7 +182,7 @@ Kullanabileceğiniz en eski kurtarma noktası 72 saattir.
 
 ### <a name="can-i-change-the-replication-policy-after-replication-is-enabled"></a>Çoğaltma etkinleştirildikten sonra çoğaltma ilkesini değiştirebilir miyim?
 
-Evet. Kasa > **Site Recovery altyapısı**  >  **çoğaltma ilkeleri** ' nde ilkeyi seçin ve düzenleyin. Değişiklikler var olan ilkelere da uygulanır.
+Evet. Kasa > **Site Recovery altyapısı**  >  **çoğaltma ilkeleri**' nde ilkeyi seçin ve düzenleyin. Değişiklikler var olan ilkelere da uygulanır.
 
 ### <a name="are-all-recovery-points-a-complete-vm-copy"></a>Tüm kurtarma noktaları tamamen bir VM kopyalaması mi?
 
@@ -289,7 +289,7 @@ Bir kurtarma planında sıralama için birden çok sanal makine grubu oluşturab
 
 ### <a name="how-can-i-find-the-rto-of-a-recovery-plan"></a>Bir kurtarma planının RTO 'ı nasıl bulabilirim?
 
-Kurtarma planının RTO 'ı denetlemek için kurtarma planı için yük devretme testi yapın. **Site Recovery işler** ' de sınama yük devretmesi süresini denetleyin. Örnek ekran görüntüsünde, **Saptestrecoveryplan** sınama yük devretme işi 8 dakika ve 59 saniye sürdü.
+Kurtarma planının RTO 'ı denetlemek için kurtarma planı için yük devretme testi yapın. **Site Recovery işler**' de sınama yük devretmesi süresini denetleyin. Örnek ekran görüntüsünde, **Saptestrecoveryplan** sınama yük devretme işi 8 dakika ve 59 saniye sürdü.
 
 ![RTO için test yük devretmesi süresini gösteren işleri Listele](./media/azure-to-azure-common-questions/recovery-plan-rto.png)
 

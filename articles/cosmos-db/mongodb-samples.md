@@ -10,10 +10,10 @@ author: sivethe
 ms.author: sivethe
 ms.custom: devx-track-js
 ms.openlocfilehash: c2117c535cca679d3a7a3b75491bf60ab9567ceb
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93098221"
 ---
 # <a name="build-an-app-using-nodejs-and-azure-cosmos-dbs-api-for-mongodb"></a>MongoDB için Node.js ve Azure Cosmos DB API 'sini kullanarak uygulama oluşturma 
@@ -118,7 +118,7 @@ Bu örneği kullanmak için yapmanız gerekenler:
     });
     ```
     
-    **İsteğe bağlı** : **MongoDB Node.js 2.2 sürücüsünü** kullanıyorsanız, aşağıdaki kod parçacığını değiştirin:
+    **İsteğe bağlı**: **MongoDB Node.js 2.2 sürücüsünü** kullanıyorsanız, aşağıdaki kod parçacığını değiştirin:
 
     Özgün:
 
@@ -155,7 +155,7 @@ Bu örneği kullanmak için yapmanız gerekenler:
     });
     ```
     
-2. *app.js* dosyasında aşağıdaki değişkenleri hesap ayarlarınıza göre değiştirin ( [Bağlantı dizenizi](connect-mongodb-account.md) nasıl bulacağınızı öğrenin):
+2. *app.js* dosyasında aşağıdaki değişkenleri hesap ayarlarınıza göre değiştirin ([Bağlantı dizenizi](connect-mongodb-account.md) nasıl bulacağınızı öğrenin):
 
     > [!IMPORTANT]
     > **MongoDB Node.js 3.0 sürücüsü** için Cosmos DB parolasındaki özel karakterlerin kodlanması gerekir. '=' karakterlerini %3D olarak kodladığınızdan emin olun
