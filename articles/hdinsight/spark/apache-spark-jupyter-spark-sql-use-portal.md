@@ -6,10 +6,10 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 02/25/2020
 ms.openlocfilehash: 18225703b2a390f64b4bebd58b0167dd77c454d0
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98930379"
 ---
 # <a name="quickstart-create-apache-spark-cluster-in-azure-hdinsight-using-azure-portal"></a>Hızlı başlangıç: Azure portal kullanarak Azure HDInsight 'ta Apache Spark kümesi oluşturma
@@ -46,7 +46,7 @@ Küme depolama birimi olarak Azure depolama Blobları kullanan bir HDInsight kü
     |Abonelik  | Aşağı açılan listeden, küme için kullanılan Azure aboneliğini seçin. |
     |Kaynak grubu | Aşağı açılan listeden, mevcut kaynak grubunuzu seçin veya **Yeni oluştur**' u seçin.|
     |Küme adı | Genel olarak benzersiz bir ad girin.|
-    |Bölge   | Aşağı açılan listeden, kümenin oluşturulduğu bir bölge seçin. |
+    |Region   | Aşağı açılan listeden, kümenin oluşturulduğu bir bölge seçin. |
     |Küme türü| Liste açmak için küme türünü seç ' i seçin. Listeden **Spark**' ı seçin.|
     |Küme sürümü|Bu alan, küme türü seçildikten sonra otomatik olarak varsayılan sürümle doldurulur.|
     |Küme oturum açma kullanıcı adı| Küme oturum açma kullanıcı adını girin.  Varsayılan ad **admin**' dir. Bu hesabı daha sonra hızlı başlangıçta Jupyter Notebook oturum açmak için kullanırsınız. |

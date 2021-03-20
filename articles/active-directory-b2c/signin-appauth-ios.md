@@ -12,10 +12,10 @@ ms.date: 11/30/2018
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 6064bd2c62922abea44508b8bf6cdfa3e7ecbc92
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94953313"
 ---
 # <a name="azure-ad-b2c-sign-in-using-an-ios-application"></a>Azure AD B2C: iOS uygulaması kullanarak oturum açma
@@ -23,7 +23,7 @@ ms.locfileid: "94953313"
 Microsoft kimlik platformu OAuth2 ve OpenID Connect gibi açık standartlar kullanır. Açık bir standart protokol kullanmak, hizmetlerimizle tümleştirilecek bir kitaplığı seçerken daha fazla geliştirici seçeneği sunar. Geliştiricilere Microsoft Identity platformu 'na bağlanan uygulamalar yazma konusunda yardımcı olmak için bu izlenecek yolu ve diğer diğerlerini sağladık. [RFC6749 OAuth2 spec](https://tools.ietf.org/html/rfc6749) uygulayan çoğu kitaplık Microsoft Identity platformu 'na bağlanabilir.
 
 > [!WARNING]
-> Microsoft üçüncü taraf kitaplıklar için düzeltmeler sağlamaz ve bu kitaplıkların gözden geçirilmesini yapılmamış demektir. Bu örnek, Azure AD B2C ile temel senaryolarda uyumluluk için test edilmiş AppAuth adlı bir üçüncü taraf kitaplığı kullanmaktır. Sorunlar ve özellik istekleri kitaplığın açık kaynaklı projesine yönlendirilmelidir. Daha fazla bilgi için [Bu makaleye](../active-directory/develop/reference-v2-libraries.md)bakın.
+> Microsoft üçüncü taraf kitaplıklar için düzeltmeler sağlamaz ve bu kitaplıkların gözden geçirilmesini yapılmamış demektir. Bu örnek, Azure AD B2C ile temel senaryolarda uyumluluk için test edilmiş AppAuth adlı bir üçüncü taraf kitaplığı kullanmaktır. Sorunlar ve özellik istekleri kitaplığın açık kaynaklı projesine yönlendirilmelidir. Daha fazla bilgi için [bu makaleye](../active-directory/develop/reference-v2-libraries.md) bakın.
 >
 >
 

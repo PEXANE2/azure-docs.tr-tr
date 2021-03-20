@@ -8,10 +8,10 @@ ms.topic: overview
 ms.date: 11/11/2020
 ms.author: sngun
 ms.openlocfilehash: 036338e90a3e7b466924d419400c0dcc692dec5f
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97630760"
 ---
 # <a name="azure-cosmos-db-gremlin-graph-support-and-compatibility-with-tinkerpop-features"></a>Inkerpop özellikleriyle Azure Cosmos DB Gremlin Graph desteği ve uyumluluğu
@@ -25,7 +25,7 @@ Azure Cosmos DB Graph Engine, [Apache TinkerPop](https://tinkerpop.apache.org/do
 
 Aşağıdaki tabloda Azure Cosmos DB’ye karşı kullanabileceğiniz popüler Gremlin sürücüleri gösterilir:
 
-| İndir | Kaynak | Başlarken | Desteklenen bağlayıcı sürümü |
+| İndir | Kaynak | Kullanmaya Başlama | Desteklenen bağlayıcı sürümü |
 | --- | --- | --- | --- |
 | [.NET](https://tinkerpop.apache.org/docs/3.4.6/reference/#gremlin-DotNet) | [GitHub’da Gremlin.NET](https://github.com/apache/tinkerpop/tree/master/gremlin-dotnet) | [.NET kullanarak Grafik oluşturma](create-graph-dotnet.md) | 3.4.6 |
 | [Java](https://mvnrepository.com/artifact/com.tinkerpop.gremlin/gremlin-java) | [Gremlin JavaDoc](https://tinkerpop.apache.org/javadocs/current/full/) | [Java kullanarak Grafik oluşturma](create-graph-java.md) | 3.2.0+ |
@@ -169,31 +169,31 @@ Azure Cosmos DB tarafından sağlanan, yazma için iyileştirilmiş altyapı, k�
 
 ## <a name="behavior-differences"></a>Davranış farklılıkları
 
-* Azure Cosmos DB Graph Engine, ınkerpop Gremlin 'in derinliği ilk kez olduğundan ***enine ilk** _ çapraz geçiş çalışır. Bu davranış, Cosmos DB benzer şekilde yatay ölçeklenebilir sistemde daha iyi performans elde eder.
+* Azure Cosmos DB Graph Engine, ınkerpop Gremlin 'ın derinliği ilk kez olacak şekilde, ***ilk*** çapraz geçişi çalıştırır. Bu davranış, Cosmos DB benzer şekilde yatay ölçeklenebilir sistemde daha iyi performans elde eder.
 
 ## <a name="unsupported-features"></a>Desteklenmeyen özellikler
 
-_ ***[Gremlin bytecode](https://tinkerpop.apache.org/docs/current/tutorials/gremlin-language-variants/)** _, Graph traversals için bir programlama dili belirsiz belirtimidir. Cosmos DB Graph henüz desteklemiyor. `GremlinClient.SubmitAsync()`Geçişi bir metin dizesi olarak kullanın ve geçirin.
+* ***[Gremlin Bytecode](https://tinkerpop.apache.org/docs/current/tutorials/gremlin-language-variants/)*** graf dolaşma işlemlerine yönelik programlama dilinden bağımsız bir belirtimdir. Cosmos DB Graph henüz desteklemiyor. `GremlinClient.SubmitAsync()`Geçişi bir metin dizesi olarak kullanın ve geçirin.
 
-_ * **`property(set, 'xyz', 1)`** _ belirleme kardinalitesi bugün desteklenmiyor. Bunun yerine `property(list, 'xyz', 1)` kullanın. Daha fazla bilgi için bkz. [ınkerpop Ile köşe özellikleri](http://tinkerpop.apache.org/docs/current/reference/#vertex-properties).
+* ***`property(set, 'xyz', 1)`*** kardinalite kümesi bugün desteklenmiyor. Bunun yerine `property(list, 'xyz', 1)` kullanın. Daha fazla bilgi için bkz. [ınkerpop Ile köşe özellikleri](http://tinkerpop.apache.org/docs/current/reference/#vertex-properties).
 
-_ ***`match()` Adım** _ Şu anda kullanılamıyor. Bu adım bildirime dayalı sorgulama özellikleri sağlar.
+* ***`match()` Adım*** Şu anda kullanılamıyor. Bu adım bildirime dayalı sorgulama özellikleri sağlar.
 
-_ * Köşelerin veya kenarlardaki **Özellikler _ olarak nesneler** desteklenmez. Özellikler yalnızca temel türler veya diziler olabilir.
+* Köşelerin veya kenarlardaki ***Özellikler olarak nesneler*** desteklenmez. Özellikler yalnızca temel türler veya diziler olabilir.
 
-_ ***Dizi özelliklerine göre sıralama** _ `order().by(<array property>)` desteklenmez. Yalnızca temel türlere göre sıralama desteklenir.
+* ***Dizi özelliklerine*** `order().by(<array property>)` göre sıralama desteklenmez. Yalnızca temel türlere göre sıralama desteklenir.
 
-_ ***Temel olmayan JSON türleri** _ desteklenmez. `string`, `number` Veya türlerini kullanın `true` / `false` . `null` değerler desteklenmez. 
+* ***Ilkel olmayan JSON türleri*** desteklenmez. `string`, `number` Veya türlerini kullanın `true` / `false` . `null` değerler desteklenmez. 
 
-_ ***GraphSONv3** _ seri hale getirici Şu anda desteklenmiyor. `GraphSONv2`Bağlantı yapılandırmasındaki serileştirici, okuyucu ve yazıcı sınıflarını kullanın. Azure Cosmos DB Gremlin API tarafından döndürülen sonuçlar GraphSON biçimiyle aynı biçimde değil. 
+* ***GraphSONv3*** seri hale getirici Şu anda desteklenmiyor. `GraphSONv2`Bağlantı yapılandırmasındaki serileştirici, okuyucu ve yazıcı sınıflarını kullanın. Azure Cosmos DB Gremlin API tarafından döndürülen sonuçlar GraphSON biçimiyle aynı biçimde değil. 
 
-_ **Lambda ifadeleri ve işlevleri** Şu anda desteklenmemektedir. Bu,, `.map{<expression>}` `.by{<expression>}` ve `.filter{<expression>}` işlevlerini içerir. Daha fazla bilgi edinmek ve Gremlin adımlarını kullanarak bunları yeniden yazmayı öğrenmek için [Lambdalar hakkında bir nota](http://tinkerpop.apache.org/docs/current/reference/#a-note-on-lambdas)bakın.
+* **Lambda ifadeleri ve işlevleri** Şu anda desteklenmemektedir. Bu,, `.map{<expression>}` `.by{<expression>}` ve `.filter{<expression>}` işlevlerini içerir. Daha fazla bilgi edinmek ve Gremlin adımlarını kullanarak bunları yeniden yazmayı öğrenmek için [Lambdalar hakkında bir nota](http://tinkerpop.apache.org/docs/current/reference/#a-note-on-lambdas)bakın.
 
-* *System 'in dağıtılmış doğası nedeniyle **işlemler** _ desteklenmez.  Gremlin hesabında uygun tutarlılık modelini "kendi yazınızla okumak" üzere yapılandırın ve çakışan yazmaları çözümlemek için iyimser eşzamanlılık kullanın.
+* Sistemin dağıtılmış doğası nedeniyle ***işlemler*** desteklenmiyor.  Gremlin hesabında uygun tutarlılık modelini "kendi yazınızla okumak" üzere yapılandırın ve çakışan yazmaları çözümlemek için iyimser eşzamanlılık kullanın.
 
 ## <a name="known-limitations"></a>Bilinen sınırlamalar
 
-_ **Gremlin sorguları için, orta çapraz geçiş `.V()` adımlarıyla dizin kullanımı**: Şu anda, `.V()` bir geçiş geçişinin yalnızca ilk çağrısı, bu dizine iliştirilmiş tüm filtre ve koşullara çözüm sağlamak için dizini kullanır. Sonraki çağrılar dizine danışmayacak, bu da sorgunun gecikmesini ve maliyetini artırabilir.
+* **Orta çapraz geçiş `.V()` adımlarıyla Gremlin sorguları için dizin kullanımı**: Şu anda, `.V()` bir geçiş geçişinin yalnızca ilk çağrısı, bu dizine iliştirilmiş tüm filtre ve koşullara çözüm sağlamak için dizini kullanır. Sonraki çağrılar dizine danışmayacak, bu da sorgunun gecikmesini ve maliyetini artırabilir.
     
 Varsayılan dizin oluşturma varsayılırsa, adımla başlayan tipik bir okunan Gremlin sorgusu, `.V()` `.has()` `.where()` sorgu maliyetini ve performansını iyileştirmek için veya gibi ilgili filtreleme adımlarında parametreleri kullanacaktır. Örnek:
 

@@ -10,10 +10,10 @@ ms.author: vakrishn
 ms.reviewer: sstein
 ms.date: 05/19/2020
 ms.openlocfilehash: 9e5bb037b88b7c370e31d05c2d20fc6f558a8b39
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93422204"
 ---
 # <a name="deploy-ml-model-on-azure-sql-edge-using-onnx"></a>ONNX kullanarak Azure SQL Edge 'de ML modeli dağıtma 
@@ -25,7 +25,7 @@ Azure SQL Edge 'de Iron ve yamallikleri tahmin etmek için üç bölümden oluş
 
 ## <a name="key-components"></a>Anahtar bileşenler
 
-1. Çözüm, Edge hub 'ına gönderilen her ileti arasında varsayılan 500 milisaniye kullanır. Bu, **program.cs** dosyasında değiştirilebilir 
+1. Çözüm, Edge hub 'ına gönderilen her ileti arasında varsayılan 500 milisaniye kullanır. Bu, **program. cs** dosyasında değiştirilebilir 
    ```json
    TimeSpan messageDelay = configuration.GetValue("MessageDelay", TimeSpan.FromMilliseconds(500));
    ```

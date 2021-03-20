@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 02/04/2020
 ms.author: jeedes
 ms.openlocfilehash: 124b53297c04d3c9958a233cf40f56ecda57bbc5
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92460215"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-in-case-of-crisis---online-portal"></a>Öğretici: çapraz çevrimiçi portalda çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
@@ -28,7 +28,7 @@ Bu öğreticide, Azure Active Directory (Azure AD) ile birlikte çevrimiçi port
 
 Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](../manage-apps/what-is-single-sign-on.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -56,7 +56,7 @@ Bu öğreticide, Azure AD SSO 'yu bir test ortamında yapılandırıp test eders
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-in-case-of-crisis---online-portal"></a>Azure AD 'ye yönelik çoklu oturum açmayı yapılandırma ve test etme-çevrimiçi portal
 
-**B. Simon**adlı bir test kullanıcısı kullanarak Azure AD SSO 'Yu, çapraz çevrimiçi portalda birlikte yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ile ilgili Kullanıcı arasında çapraz çevrimiçi portal söz konusu olduğunda bir bağlantı ilişkisi kurmanız gerekir.
+**B. Simon** adlı bir test kullanıcısı kullanarak Azure AD SSO 'Yu, çapraz çevrimiçi portalda birlikte yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ile ilgili Kullanıcı arasında çapraz çevrimiçi portal söz konusu olduğunda bir bağlantı ilişkisi kurmanız gerekir.
 
 Azure AD SSO 'yu, çapraz çevrimiçi portalda birlikte yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
 
@@ -105,7 +105,7 @@ Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaks�
 Bu bölümde, B. Simon 'u, çapraz çevrimiçi portalda erişim izni vererek Azure çoklu oturum açma özelliğini kullanacak şekilde etkinleştireceksiniz.
 
 1. Azure portal **Kurumsal uygulamalar**' ı seçin ve ardından **tüm uygulamalar**' ı seçin.
-1. Uygulamalar listesinde, **Çapraz çevrimiçi portal söz konusu olduğunda**öğesini seçin.
+1. Uygulamalar listesinde, **Çapraz çevrimiçi portal söz konusu olduğunda** öğesini seçin.
 1. Uygulamanın genel bakış sayfasında **Yönet** bölümünü bulun ve **Kullanıcılar ve gruplar**' ı seçin.
 
    !["Kullanıcılar ve gruplar" bağlantısı](common/users-groups-blade.png)

@@ -5,10 +5,10 @@ ms.topic: quickstart
 ms.date: 09/28/2020
 ms.custom: references_regions
 ms.openlocfilehash: 079e8e3e39bd306332abb43fa2ae1f8cc04e305b
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91410516"
 ---
 # <a name="quickstart-deploy-a-service-fabric-managed-cluster-preview-with-an-azure-resource-manager-template"></a>Hızlı başlangıç: Azure Resource Manager şablonuyla Service Fabric yönetilen bir küme (Önizleme) dağıtma
@@ -46,13 +46,13 @@ Bir sonraki adımda şablonu dağıtmak için gerekli olacağı için sertifika 
     Bu hızlı başlangıç için aşağıdaki şablon parametreleri için kendi değerlerinizi sağlayın:
 
     * **Abonelik**: bir Azure aboneliği seçin.
-    * **Kaynak grubu**: **Yeni oluştur**' u seçin. Kaynak grubu için *Myresourcegroup*gibi benzersiz bir ad girin ve ardından **Tamam**' ı seçin.
-    * **Konum**: **eastus2**gibi bir konum seçin. Service Fabric yönetilen kümeler önizlemesi için desteklenen bölgeler,,,, `centraluseuap` `eastus2euap` ve içerir `eastasia` `northeurope` `westcentralus` `eastus2` .
-    * **Küme adı**: kümeniz için, *hayal fcluster*gibi benzersiz bir ad girin.
+    * **Kaynak grubu**: **Yeni oluştur**' u seçin. Kaynak grubu için *Myresourcegroup* gibi benzersiz bir ad girin ve ardından **Tamam**' ı seçin.
+    * **Konum**: **eastus2** gibi bir konum seçin. Service Fabric yönetilen kümeler önizlemesi için desteklenen bölgeler,,,, `centraluseuap` `eastus2euap` ve içerir `eastasia` `northeurope` `westcentralus` `eastus2` .
+    * **Küme adı**: kümeniz için, *hayal fcluster* gibi benzersiz bir ad girin.
     * **Yönetici Kullanıcı adı**: kümedeki temeldeki VM 'lerde RDP için kullanılacak bir ad girin.
     * **Yönetici parolası**: yöneticinin, kümedeki temel alınan VM 'lerde RDP için kullanılacak bir parola girin.
     * **Istemci sertifikası parmak izi**: kümenize erişmek için kullanmak istediğiniz istemci sertifikasının parmak izini sağlayın. Bir sertifikanız yoksa, otomatik olarak imzalanan sertifika oluşturmak için [set ve bir sertifika al](../key-vault/certificates/quick-create-portal.md) ' ı izleyin.
-    * **Düğüm türü adı**: düğüm türü için *NT1*gibi benzersiz bir ad girin.
+    * **Düğüm türü adı**: düğüm türü için *NT1* gibi benzersiz bir ad girin.
     * **Yukarıda belirtilen hüküm ve koşulları kabul ediyorum**: kabul etmek için bu kutuyu işaretleyin. 
 
 3. **Satın al**'ı seçin.

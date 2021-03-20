@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: aakapo
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ca4943293f9474d4089267d05460d6d8766b79e6
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "101646393"
 ---
 # <a name="deployment-frequently-asked-questions-faqs-for-hybrid-fido2-security-keys-in-azure-ad"></a>Azure AD 'de karma FIDO2 güvenlik anahtarları için dağıtım hakkında sık sorulan sorular (SSS) 
@@ -231,7 +231,7 @@ HTTP isteği, standart bir birincil yenileme belirteci (PRT) isteği. Bu PRT ist
 
 Azure AD, şifreli istemci anahtarını ve ileti arabelleğini, ek özellikler olarak PRT yanıtıyla birleştirir. Yük, Azure AD cihaz oturum anahtarı kullanılarak şifrelenir.
 
-| Alan              | Tür   | Açıklama  |
+| Alan              | Tür   | Description  |
 |--------------------|--------|--------------|
 | tgt_client_key     | string | Base64 kodlamalı istemci anahtarı (gizli). Bu anahtar, TGT 'yi korumak için kullanılan istemci sırrı ' dir. Bu passwordless senaryosunda, istemci parolası her TGT isteğinin bir parçası olarak sunucu tarafından oluşturulur ve ardından yanıtta istemciye döndürülür. |
 | tgt_key_type       | int    | KERB_MESSAGE_BUFFER dahil olan istemci anahtarı ve Kerberos oturum anahtarı için kullanılan şirket içi AD DS anahtar türü. |

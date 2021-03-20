@@ -9,10 +9,10 @@ ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 06/02/2017
 ms.openlocfilehash: 6400cfe7e524dcc16e08c2bba7dfba4a62d00b2e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86232568"
 ---
 # <a name="b2b-errors-and-solutions-for-azure-logic-apps"></a>Azure Logic Apps için B2B hataları ve çözümleri
@@ -53,7 +53,7 @@ Bu makale, Logic Apps B2B senaryolarında oluşabilecek hataların giderilmesine
 
 **Kullanıcı eylemi**: @base64ToBinary iş ortağına göndermeden önce AS2Message öğesine ekleyin.
 
-Örneğin:
+Örnek:
 
 ```json
 "HTTP": {
@@ -71,7 +71,7 @@ Bu makale, Logic Apps B2B senaryolarında oluşabilecek hataların giderilmesine
 
 **Kullanıcı eylemi**: @base64ToBinary iş ortağına göndermeden önce MDN 'ye ekleyin.
 
-Örneğin:
+Örnek:
 
 ```json
 "Response": {

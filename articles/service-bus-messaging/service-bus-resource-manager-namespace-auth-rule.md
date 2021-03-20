@@ -8,10 +8,10 @@ ms.date: 06/23/2020
 ms.author: spelluru
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: b0ffe022f6c61cf7d06c510c4f8fa5c764d72b42
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88067197"
 ---
 # <a name="create-a-service-bus-authorization-rule-for-namespace-and-queue-using-an-azure-resource-manager-template"></a>Azure Resource Manager şablonu kullanarak ad alanı ve sıra için Service Bus yetkilendirme kuralı oluşturma
@@ -30,7 +30,7 @@ Tüm şablon için GitHub 'da [Service Bus yetkilendirme kuralı şablonu][Servi
 > * [Konu ve abonelikle bir Service Bus ad alanı oluşturma](service-bus-resource-manager-namespace-topic.md)
 > * [Konu, abonelik ve kuralla Service Bus ad alanı oluşturma](service-bus-resource-manager-namespace-topic-with-rule.md)
 > 
-> En son şablonları denetlemek için [Azure hızlı başlangıç şablonları][Azure Quickstart Templates] Galerisi ' ni ziyaret edin ve **Service Bus**arayın.
+> En son şablonları denetlemek için [Azure hızlı başlangıç şablonları][Azure Quickstart Templates] Galerisi ' ni ziyaret edin ve **Service Bus** arayın.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -95,7 +95,7 @@ Service Bus ad alanındaki kuyruğun adı.
 
 ## <a name="resources-to-deploy"></a>Dağıtılacak kaynaklar
 
-**Mesajlaşma**türünde bir standart Service Bus ad alanı ve ad alanı ve varlık için bir Service Bus yetkilendirme kuralı oluşturur.
+**Mesajlaşma** türünde bir standart Service Bus ad alanı ve ad alanı ve varlık için bir Service Bus yetkilendirme kuralı oluşturur.
 
 ```json
 "resources": [

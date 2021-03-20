@@ -4,10 +4,10 @@ description: Azure Pipelines derleme ve serbest bırakma işlem hatlarında Azur
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: d04ed5dd7bebac0c8f24deb9145c3d2e4b77122e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88080343"
 ---
 # <a name="use-devtest-labs-in-azure-pipelines-build-and-release-pipelines"></a>Azure Pipelines derleme ve yayın işlem hatlarında DevTest Labs’i kullanma
@@ -67,7 +67,7 @@ Kaynak Yöneticisi şablonuna bilgi geçirmek için parametre dosyası ya da par
 ![Azure DevTest Labs ortam görevi oluşturma](./media/use-devtest-labs-build-release-pipelines/create-environment.png)
 
 ### <a name="populate-environment-task"></a>Ortam görevini doldur
-İkinci görev (**Azure DevTest Labs ortamı doldur** görevi), mevcut DevTest Labs ortamını güncelleştirmedir. Ortam oluşturma görevi, bu görevin ortam adını yapılandırmak için kullanılan **Baseenv. Environmentresourceıd** çıktısını verir. Bu örneğin Kaynak Yöneticisi şablonunda, **AdminUserName** ve **adminPassword**olmak üzere iki parametre vardır. 
+İkinci görev (**Azure DevTest Labs ortamı doldur** görevi), mevcut DevTest Labs ortamını güncelleştirmedir. Ortam oluşturma görevi, bu görevin ortam adını yapılandırmak için kullanılan **Baseenv. Environmentresourceıd** çıktısını verir. Bu örneğin Kaynak Yöneticisi şablonunda, **AdminUserName** ve **adminPassword** olmak üzere iki parametre vardır. 
 
 ![Azure DevTest Labs ortamı görevini doldur](./media/use-devtest-labs-build-release-pipelines/populate-environment.png)
 
@@ -81,7 +81,7 @@ Kaynak Yöneticisi şablonuna bilgi geçirmek için parametre dosyası ya da par
 
 İlk görev için kaynak grubunun adını ve konumunu belirtin. Şablon konumu bağlı bir yapıdır. Kaynak Yöneticisi şablonu bağlantılı şablonlar içeriyorsa, özel bir kaynak grubu dağıtımının uygulanması gerekir. Şablon, yayımlanan bırakma yapıtında. Kaynak Yöneticisi şablonu için şablon parametrelerini geçersiz kılın. Kalan ayarları varsayılan değerlerle bırakabilirsiniz. 
 
-İkinci görev **dağıtımı Azure App Service**için Azure aboneliğini belirtin, **uygulama türü**için **Web uygulaması** ' nı ve **App Service adının** **$ (Web sitesi)** seçeneğini belirleyin. Kalan ayarları varsayılan değerlerle bırakabilirsiniz. 
+İkinci görev **dağıtımı Azure App Service** için Azure aboneliğini belirtin, **uygulama türü** için **Web uygulaması** ' nı ve **App Service adının** **$ (Web sitesi)** seçeneğini belirleyin. Kalan ayarları varsayılan değerlerle bırakabilirsiniz. 
 
 ## <a name="test-run"></a>Test çalıştırması
 Her iki işlem hattı da ayarlandığına göre, bir derlemeyi el ile sıraya alın ve çalıştığını görün. Sonraki adım derleme için uygun tetikleyiciyi ayarlamaya ve derlemeyi yayın işlem hattına bağlamaya yöneliktir.

@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 5/6/2019
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: 3a559b8c65ab57b0144b807a3b4cc1faa912d430
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93422748"
 ---
 # <a name="create-and-manage-firewall-rules-in-azure-database-for-postgresql---single-server-using-azure-cli"></a>Azure CLı kullanarak PostgreSQL için Azure veritabanı 'nda güvenlik duvarı kuralları oluşturma ve yönetme-tek sunucu
@@ -20,7 +20,7 @@ Sunucu düzeyinde güvenlik duvarı kuralları, bir PostgreSQL için Azure verit
 
 Sanal ağ (VNet) kuralları, sunucunuza erişimi güvenli hale getirmek için de kullanılabilir. [Azure CLI kullanarak sanal ağ hizmet uç noktaları ve kuralları oluşturma ve yönetme](howto-manage-vnet-using-cli.md)hakkında daha fazla bilgi edinin.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 Bu nasıl yapılır kılavuzunda ilerlemek için şunlar gerekir:
 - [Azure CLI](/cli/azure/install-azure-cli) komut satırı yardımcı programını yükler veya tarayıcıda Azure Cloud Shell kullanın.
 - [PostgreSQL Için Azure veritabanı sunucusu ve veritabanı](quickstart-create-server-database-azure-cli.md).

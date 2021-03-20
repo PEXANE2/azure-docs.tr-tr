@@ -1,6 +1,6 @@
 ---
-title: dosya dahil etme
-description: dosya dahil etme
+title: include dosyası
+description: include dosyası
 services: data-factory
 author: memildin
 ms.service: data-factory
@@ -9,10 +9,10 @@ ms.date: 03/10/2020
 ms.author: memildin
 ms.custom: include file
 ms.openlocfilehash: 55390a3eb2a074729b4a0868416a95e208325b76
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91401114"
 ---
 ```json
@@ -71,7 +71,7 @@ ms.locfileid: "91401114"
 |**Isıncident**|Bool|Bu alan, uyarının bir olay (çeşitli uyarıların bileşik gruplandırması) veya tek bir uyarı olup olmadığını belirler. Alan için varsayılan değer ' false ' (yani tek bir uyarıdır).|
 |**ProcessingEndTime**|DateTime|Uyarının, uyarının tutulduğu orijinal üründeki Son Kullanıcı tarafından erişileme zamanı.|
 |**ProductName**|Dize|Bu uyarıyı yayımlayan ürünün adı (Azure Güvenlik Merkezi, Azure ATP, Microsoft Defender ATP, MCAS, vb.).|
-|**Düzeltme adımları**|Listele<String>|Uyarının düzeltilmesi için gerçekleştirilecek el ile eylem öğeleri.|
+|**Düzeltme adımları**|Liste<String>|Uyarının düzeltilmesi için gerçekleştirilecek el ile eylem öğeleri.|
 |**Resourcetanımlayıcılar**|Liste (kaynak tanımlayıcıları)|Bu uyarının, uyarıyı doğru ürün pozlaması grubuna (kiracı, çalışma alanı, abonelik vb.) yönlendirmek için kullanılabilecek kaynak tanımlayıcıları. Uyarı başına farklı türde birden fazla tanımlayıcı olabilir.|
 |**Önem Derecesi**|Sabit listesi|Uyarının sağlayıcının bildirdiği şekilde önem derecesi. Olası değerler: bilgilendirici, düşük, orta ve yüksek.|
 |**StartTimeUtc**|DateTime|Uyarıya dahil edilen ilk olay veya etkinliğin saati. Alan, UTC saat dilimi bilgileri de dahil olmak üzere ıSO8601 biçimine uygun bir dize olmalıdır.|

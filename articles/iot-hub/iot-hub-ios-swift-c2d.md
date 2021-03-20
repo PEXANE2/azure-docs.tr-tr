@@ -9,10 +9,10 @@ ms.date: 04/19/2018
 ms.author: kgremban
 ms.custom: mqtt
 ms.openlocfilehash: 15c0df33b8f09ec71f2be913d72f0785dc766375
-ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/29/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93027542"
 ---
 # <a name="send-cloud-to-device-messages-with-iot-hub-ios"></a>IoT Hub (iOS) ile buluttan cihaza iletileri gönderme
@@ -27,15 +27,15 @@ Bu öğretici şunların nasıl yapıldığını gösterir:
 
 * Bir cihazda buluttan cihaza iletiler alın.
 
-* Çözüm arka uçta, IoT Hub bir cihaza gönderilen iletiler için teslim bildirimi ( *geri bildirim* ) isteyin.
+* Çözüm arka uçta, IoT Hub bir cihaza gönderilen iletiler için teslim bildirimi (*geri bildirim*) isteyin.
 
 [IoT Hub geliştirici kılavuzunun Mesajlaşma bölümünde](iot-hub-devguide-messaging.md)buluttan cihaza iletiler hakkında daha fazla bilgi edinebilirsiniz.
 
 Bu makalenin sonunda iki Swift iOS projesi çalıştırırsınız:
 
-* **örnek cihaz** , aynı uygulama, IoT Hub 'ınıza bağlanan ve buluttan cihaza iletiler alan [bir cihazdan IoT Hub 'ına telemetri gönderme](quickstart-send-telemetry-ios.md)sırasında oluşturulan aynı uygulamadır.
+* **örnek cihaz**, aynı uygulama, IoT Hub 'ınıza bağlanan ve buluttan cihaza iletiler alan [bir cihazdan IoT Hub 'ına telemetri gönderme](quickstart-send-telemetry-ios.md)sırasında oluşturulan aynı uygulamadır.
 
-* **örnek hizmeti** , sanal cihaz uygulamasına IoT Hub aracılığıyla buluttan cihaza ileti gönderir ve ardından teslim onayını alır.
+* **örnek hizmeti**, sanal cihaz uygulamasına IoT Hub aracılığıyla buluttan cihaza ileti gönderir ve ardından teslim onayını alır.
 
 > [!NOTE]
 > IoT Hub, Azure IoT cihaz SDK 'Ları aracılığıyla birçok cihaz platformu ve dili (C, Java, Python ve JavaScript dahil) için SDK desteğine sahiptir. Cihazınızı Bu öğreticinin koduna bağlama ve genellikle Azure IoT Hub 'e yönelik adım adım yönergeler için bkz. [Azure IoT Geliştirici Merkezi](https://www.azure.com/develop/iot).
@@ -160,13 +160,13 @@ Yükleme komutu, projeniz için gereken podları yüklemeye ek olarak bağımlı
 
 Artık, buluttan cihaza iletileri göndermek ve almak için iki uygulamayı kullanmaya hazırsınız.
 
-1. Sanal IoT cihazında çalıştırılan **IOS uygulama örnek** uygulamasında **Başlat** ' a tıklayın. Uygulama cihazdan buluta iletileri göndermeye başlar, ancak aynı zamanda buluttan cihaza iletileri dinlemeye başlar.
+1. Sanal IoT cihazında çalıştırılan **IOS uygulama örnek** uygulamasında **Başlat**' a tıklayın. Uygulama cihazdan buluta iletileri göndermeye başlar, ancak aynı zamanda buluttan cihaza iletileri dinlemeye başlar.
 
    ![Örnek IoT cihaz uygulamasını görüntüle](media/iot-hub-ios-swift-c2d/view-d2c.png)
 
 2. Sanal hizmet cihazında çalışan **ıothub hizmeti Istemci örnek** uygulamasında, ileti göndermek istediğiniz ıOT cihazının kimliğini girin. 
 
-3. Düz metin iletisi yazıp **Gönder** ' e tıklayın.
+3. Düz metin iletisi yazıp **Gönder**' e tıklayın.
 
     Gönder ' e tıkladığınızda birkaç eylem gerçekleşir. Hizmet örneği, belirttiğiniz hizmet bağlantı dizesi nedeniyle uygulamanın erişimi olan IoT Hub 'ınıza iletiyi gönderir. IoT Hub 'ınız cihaz KIMLIĞINI denetler, iletiyi hedef cihaza gönderir ve kaynak cihaza bir onay alındı bilgisi gönderir. Sanal IoT cihazınızda çalışan uygulama, IoT Hub iletileri denetler ve ekrandaki en son bir metin olan metni yazdırır.
 

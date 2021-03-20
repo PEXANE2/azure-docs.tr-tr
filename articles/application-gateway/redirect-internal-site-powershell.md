@@ -9,15 +9,15 @@ ms.topic: how-to
 ms.date: 09/28/2020
 ms.author: victorh
 ms.openlocfilehash: d838fe1d1015e1913c8aa28a122b06d108fb4676
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91446655"
 ---
 # <a name="create-an-application-gateway-with-internal-redirection-using-azure-powershell"></a>Azure PowerShell kullanarak iç yeniden yönlendirmeye sahip bir uygulama ağ geçidi oluşturma
 
-[Uygulama ağ geçidi](overview.md)oluştururken [Web trafiği yeniden yönlendirmeyi](multiple-site-overview.md) yapılandırmak için Azure PowerShell kullanabilirsiniz. Bu makalede, bir sanal makine ölçek kümesi kullanarak bir arka uç havuzu tanımlarsınız. Daha sonra, Web trafiğinin uygun havuza ulaştığınızdan emin olmak için sahip olduğunuz etki alanlarını temel alan dinleyicileri ve kuralları yapılandırırsınız. Bu makalede, birden çok etki alanına sahip olduğunuz ve *www \. contoso.com* ve *www \. contoso.org*örneklerini kullanan varsayılmaktadır.
+[Uygulama ağ geçidi](overview.md)oluştururken [Web trafiği yeniden yönlendirmeyi](multiple-site-overview.md) yapılandırmak için Azure PowerShell kullanabilirsiniz. Bu makalede, bir sanal makine ölçek kümesi kullanarak bir arka uç havuzu tanımlarsınız. Daha sonra, Web trafiğinin uygun havuza ulaştığınızdan emin olmak için sahip olduğunuz etki alanlarını temel alan dinleyicileri ve kuralları yapılandırırsınız. Bu makalede, birden çok etki alanına sahip olduğunuz ve *www \. contoso.com* ve *www \. contoso.org* örneklerini kullanan varsayılmaktadır.
 
 Bu makalede şunları öğreneceksiniz:
 
@@ -106,7 +106,7 @@ $poolSettings = New-AzApplicationGatewayBackendHttpSettings `
 
 ### <a name="create-the-first-listener-and-rule"></a>İlk dinleyiciyi ve kuralı oluşturma
 
-Uygulama ağ geçidinin trafiği arka uç havuzuna uygun şekilde yönlendirmesini sağlamak içn bir dinleyici gereklidir. Bu makalede, iki etki alanı için iki dinleyici oluşturacaksınız. Bu örnekte, *www \. contoso.com* ve *www \. contoso.org*etki alanları için dinleyiciler oluşturulur.
+Uygulama ağ geçidinin trafiği arka uç havuzuna uygun şekilde yönlendirmesini sağlamak içn bir dinleyici gereklidir. Bu makalede, iki etki alanı için iki dinleyici oluşturacaksınız. Bu örnekte, *www \. contoso.com* ve *www \. contoso.org* etki alanları için dinleyiciler oluşturulur.
 
 [Yeni-AzApplicationGatewayHttpListener](/powershell/module/az.network/new-azapplicationgatewayhttplistener) öğesini kullanarak, daha önce oluşturduğunuz ön uç yapılandırması ve ön uç bağlantı noktasıyla, *contosocomlistener* adlı ilk dinleyiciyi oluşturun. Dinleyicinin gelen trafik için kullanacağı arka uç havuzunu bilmesi için bir kural gerekir. [New-AzApplicationGatewayRequestRoutingRule](/powershell/module/az.network/new-azapplicationgatewayrequestroutingrule)kullanarak *contosocomrule* adlı bir temel kural oluşturun.
 

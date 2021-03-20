@@ -8,10 +8,10 @@ ms.reviewer: spelluru
 ms.date: 07/08/2020
 ms.topic: article
 ms.openlocfilehash: 632227579fd021a0d2ce1d0b1bb0b8a8288c5f47
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86171678"
 ---
 # <a name="event-grid-configuration"></a>Event Grid yapılandırması
@@ -22,7 +22,7 @@ Event Grid, ortam başına değiştirilebilen birçok yapılandırma sağlar. A�
 
 İstemci kimlik doğrulaması hakkında genel bilgi edinmek için bkz. [güvenlik ve kimlik doğrulaması](security-authentication.md). Kullanım örnekleri [Bu makalede](configure-api-protocol.md)bulunabilir.
 
-| Özellik Adı | Açıklama |
+| Özellik Adı | Description |
 | ---------------- | ------------ |
 |`inbound__serverAuth__tlsPolicy`| Event Grid modülünün TLS Ilkesi. Varsayılan değer yalnızca HTTPS 'dir.
 |`inbound__serverAuth__serverCert__source`| Event Grid modülü tarafından TLS yapılandırması için kullanılan sunucu sertifikasının kaynağı. Varsayılan değer IoT Edge.
@@ -31,7 +31,7 @@ Event Grid, ortam başına değiştirilebilen birçok yapılandırma sağlar. A�
 
 İstemci kimlik doğrulaması hakkında genel bilgi edinmek için bkz. [güvenlik ve kimlik doğrulaması](security-authentication.md). [Bu makalede](configure-client-auth.md)örnekleri bulabilirsiniz.
 
-| Özellik Adı | Açıklama |
+| Özellik Adı | Description |
 | ---------------- | ------------ |
 |`inbound__clientAuth__clientCert__enabled`| Sertifika tabanlı istemci kimlik doğrulamasını açmak/devre dışı bırakmak için. True varsayılan değerdir.
 |`inbound__clientAuth__clientCert__source`| İstemci sertifikalarının doğrulanması için kaynak. Varsayılan değer IoT Edge.
@@ -43,7 +43,7 @@ Event Grid, ortam başına değiştirilebilen birçok yapılandırma sağlar. A�
 ## <a name="outgoing-client-authentication"></a>Giden istemci kimlik doğrulaması
 İstemci kimlik doğrulaması hakkında genel bilgi edinmek için bkz. [güvenlik ve kimlik doğrulaması](security-authentication.md). [Bu makalede](configure-identity-auth.md)örnekleri bulabilirsiniz.
 
-| Özellik Adı | Açıklama |
+| Özellik Adı | Description |
 | ---------------- | ------------ |
 |`outbound__clientAuth__clientCert__enabled`| Giden istekler için kimlik sertifikasını ekleme/kapatma. True varsayılan değerdir.
 |`outbound__clientAuth__clientCert__source`| Event Grid modülün giden sertifikasını alma kaynağı. Varsayılan değer IoT Edge.
@@ -52,7 +52,7 @@ Event Grid, ortam başına değiştirilebilen birçok yapılandırma sağlar. A�
 
 İstemci kimlik doğrulaması hakkında genel bilgi edinmek için bkz. [güvenlik ve kimlik doğrulaması](security-authentication.md). [Bu makalede](configure-webhook-subscriber-auth.md)örnekleri bulabilirsiniz.
 
-| Özellik Adı | Açıklama |
+| Özellik Adı | Description |
 | ---------------- | ------------ |
 |`outbound__webhook__httpsOnly`| Yalnızca HTTPS abonelerine izin verilip verilmeyeceğini denetleyen ilke. Varsayılan değer true 'dur (yalnızca HTTPS).
 |`outbound__webhook__skipServerCertValidation`| Abonenin sertifikasının doğrulanıp doğrulanmayacağını denetleyen bayrak. True varsayılan değerdir.
@@ -62,7 +62,7 @@ Event Grid, ortam başına değiştirilebilen birçok yapılandırma sağlar. A�
 
 Bu özellik hakkında genel bilgi edinmek için bkz. [teslim ve yeniden deneme](delivery-retry.md).
 
-| Özellik Adı | Açıklama |
+| Özellik Adı | Description |
 | ---------------- | ------------ |
 | `broker__defaultMaxDeliveryAttempts` | Bir olayı teslim etmeye yönelik deneme sayısı üst sınırı. Varsayılan değer 30’dur.
 | `broker__defaultEventTimeToLiveInSeconds` | Saniyeler içinde, bir olayın teslim edilmeden önce bırakılma yaşam süresi (TTL). Varsayılan değer  **7200** saniyedir
@@ -71,7 +71,7 @@ Bu özellik hakkında genel bilgi edinmek için bkz. [teslim ve yeniden deneme](
 
 Bu özellik hakkında genel bilgi edinmek için bkz. [teslim ve çıkış toplu işleme](delivery-output-batching.md).
 
-| Özellik Adı | Açıklama |
+| Özellik Adı | Description |
 | ---------------- | ------------ |
 | `api__deliveryPolicyLimits__maxBatchSizeInBytes` | Düğme için izin verilen en büyük değer `ApproxBatchSizeInBytes` . Varsayılan değer `1_058_576` olarak belirlenmiştir.
 | `api__deliveryPolicyLimits__maxEventsPerBatch` | Düğme için izin verilen en büyük değer `MaxEventsPerBatch` . Varsayılan değer `50` olarak belirlenmiştir.
@@ -82,6 +82,6 @@ Bu özellik hakkında genel bilgi edinmek için bkz. [teslim ve çıkış toplu 
 
 IoT Edge Event Grid ile ölçümleri kullanma hakkında bilgi edinmek için bkz. [izleme konuları ve abonelikleri](monitor-topics-subscriptions.md)
 
-| Özellik Adı | Açıklama |
+| Özellik Adı | Description |
 | ---------------- | ------------ |
 | `metrics__reporterType` | Ölçüm uç noktası için Raporlayıcı türü. Varsayılan değer, `none` ölçümleri devre dışı bırakır. `prometheus`Prometheus Exposition biçimindeki ölçümleri etkinleştirmeye olanak sağlamak için ayarı.

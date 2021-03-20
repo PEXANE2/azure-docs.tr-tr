@@ -4,10 +4,10 @@ description: Bir şablondan sertifika ortak adını kullanarak Service Fabric k�
 ms.topic: conceptual
 ms.date: 09/06/2019
 ms.openlocfilehash: c852b40d35f936753d3c16420159676da239b6c6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86246444"
 ---
 # <a name="deploy-a-service-fabric-cluster-that-uses-certificate-common-name-instead-of-thumbprint"></a>Parmak izi yerine sertifika ortak adı kullanan bir Service Fabric kümesi dağıtma
@@ -78,7 +78,7 @@ Bu makale, [5 düğümlü güvenli küme örnek](https://github.com/Azure-Sample
 },
 ```
 
-Ardından, *Certificatecommonname*, *Sourcevaultvalue*ve *certificateurlvalue* parametre değerlerini önceki komut dosyası tarafından döndürülen değerlere ayarlayın:
+Ardından, *Certificatecommonname*, *Sourcevaultvalue* ve *certificateurlvalue* parametre değerlerini önceki komut dosyası tarafından döndürülen değerlere ayarlayın:
 ```json
 "certificateCommonName": {
     "value": "myclustername.southcentralus.cloudapp.azure.com"
@@ -113,7 +113,7 @@ Sonra, dosyadaki *azuredeploy.js* bir metin düzenleyicisinde açın ve sertifik
     },
     ```
 
-    Ayrıca, *certificateThumbprint*öğesini kaldırmayı düşünün, artık gerekli olmayabilir.
+    Ayrıca, *certificateThumbprint* öğesini kaldırmayı düşünün, artık gerekli olmayabilir.
 
 2. *SfrpApiVersion* değişkeninin değerini "2018-02-01" olarak ayarlayın:
     ```json

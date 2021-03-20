@@ -5,10 +5,10 @@ ms.topic: tutorial
 ms.date: 07/22/2019
 ms.custom: mvc, devx-track-csharp
 ms.openlocfilehash: c675f8ece8369bcfc0055343221ac82aea59dec1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91326244"
 ---
 # <a name="tutorial-add-an-https-endpoint-to-an-aspnet-core-web-api-front-end-service-using-kestrel"></a>Öğretici: Kestrel kullanarak bir ASP.NET Core Web API’si ön uç hizmetine HTTPS uç noktası ekleme
@@ -68,7 +68,7 @@ Thumbprint                                Subject
 
 ## <a name="define-an-https-endpoint-in-the-service-manifest"></a>Hizmet bildiriminde bir HTTPS uç noktası tanımlama
 
-Visual Studio’yu **yönetici** olarak başlatın ve Oylama çözümünü açın. Çözüm Gezgini, *Votingweb/PackageRoot/ServiceManifest.xml*açın. Hizmet bildirimi, hizmet uç noktalarını tanımlar.  **Uç Noktalar** bölümünü bulun ve var olan "ServiceEndpoint" uç noktasını düzenleyin.  Adı "EndpointHttps" olarak değiştirin, protokolü *https*, türü *Girdi*, bağlantı noktasını ise *443* olarak ayarlayın.  Yaptığınız değişiklikleri kaydedin.
+Visual Studio’yu **yönetici** olarak başlatın ve Oylama çözümünü açın. Çözüm Gezgini, *Votingweb/PackageRoot/ServiceManifest.xml* açın. Hizmet bildirimi, hizmet uç noktalarını tanımlar.  **Uç Noktalar** bölümünü bulun ve var olan "ServiceEndpoint" uç noktasını düzenleyin.  Adı "EndpointHttps" olarak değiştirin, protokolü *https*, türü *Girdi*, bağlantı noktasını ise *443* olarak ayarlayın.  Yaptığınız değişiklikleri kaydedin.
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -195,7 +195,7 @@ private X509Certificate2 FindMatchingCertificateBySubject(string subjectCommonNa
 
 ### <a name="configure-the-service-setup-entry-point"></a>Hizmet kurulumu giriş noktasını yapılandırma
 
-Çözüm Gezgini, *Votingweb/PackageRoot/ServiceManifest.xml*açın.  **CodePackage** bölümünde **SetupEntryPoint** düğümünü ve sonra bir **ExeHost** düğümünü ekleyin.  **ExeHost** düğümünde **Program** ayarını "Setup.bat" ve **WorkingFolder** ayarını "CodePackage" olarak belirleyin.  VotingWeb hizmeti başlatıldığında, VotingWeb.exe başlatılmadan önce CodePackage klasöründe Setup.bat betiği yürütülür.
+Çözüm Gezgini, *Votingweb/PackageRoot/ServiceManifest.xml* açın.  **CodePackage** bölümünde **SetupEntryPoint** düğümünü ve sonra bir **ExeHost** düğümünü ekleyin.  **ExeHost** düğümünde **Program** ayarını "Setup.bat" ve **WorkingFolder** ayarını "CodePackage" olarak belirleyin.  VotingWeb hizmeti başlatıldığında, VotingWeb.exe başlatılmadan önce CodePackage klasöründe Setup.bat betiği yürütülür.
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>

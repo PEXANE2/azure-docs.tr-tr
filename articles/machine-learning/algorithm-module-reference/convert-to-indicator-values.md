@@ -10,10 +10,10 @@ author: likebupt
 ms.author: keli19
 ms.date: 02/11/2020
 ms.openlocfilehash: 81b3c113f46428327842c1555fdd1934e9ae8762
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93420861"
 ---
 # <a name="convert-to-indicator-values"></a>Gösterge Değerlerine dönüştürme
@@ -71,8 +71,8 @@ Artık üç gösterge sütununu bir makine öğrenimi modelinde özellikler olar
 
 Modül iki çıkış döndürüyor:
 
-- **Sonuç veri kümesi** : dönüştürülmüş gösterge değerleri sütunları olan bir veri kümesi. Temizleme için seçilmemiş sütunlar da "geçirilir".
-- **Gösterge değerleri dönüştürmesi** : çalışma alanınıza kaydedilebilecek ve yeni verilere daha sonra uygulanabilen gösterge değerlerine dönüştürmek için kullanılan bir veri dönüştürmesi.
+- **Sonuç veri kümesi**: dönüştürülmüş gösterge değerleri sütunları olan bir veri kümesi. Temizleme için seçilmemiş sütunlar da "geçirilir".
+- **Gösterge değerleri dönüştürmesi**: çalışma alanınıza kaydedilebilecek ve yeni verilere daha sonra uygulanabilen gösterge değerlerine dönüştürmek için kullanılan bir veri dönüştürmesi.
 
 ## <a name="apply-a-saved-indicator-values-operation-to-new-data"></a>Yeni verilere kaydedilmiş bir gösterge değerleri işlemi uygulama
 

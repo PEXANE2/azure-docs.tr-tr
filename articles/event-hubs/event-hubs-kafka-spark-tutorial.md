@@ -4,10 +4,10 @@ description: Bu makalede, Kafka için Azure Event Hubs ile Apache Spark kullanma
 ms.topic: how-to
 ms.date: 06/23/2020
 ms.openlocfilehash: 84184ed3dffee97863b93c592d1cd577df313605
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/29/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92913747"
 ---
 # <a name="connect-your-apache-spark-application-with-azure-event-hubs"></a>Apache Spark uygulamanızı Azure Event Hubs bağlayın
@@ -16,7 +16,7 @@ Bu öğretici, Spark uygulamanızı gerçek zamanlı akış için Event Hubs ba�
 > [!NOTE]
 > Bu örnek [GitHub](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/spark/) 'da kullanılabilir
 
-Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
+Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > [!div class="checklist"]
 > * Event Hubs ad alanı oluşturma
 > * Örnek projeyi kopyalama

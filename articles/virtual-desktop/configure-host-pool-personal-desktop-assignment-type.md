@@ -7,10 +7,10 @@ ms.date: 07/09/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: 446dae3c064f5f23d35cb12b2b24bdfea9e27012
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88007820"
 ---
 # <a name="configure-the-personal-desktop-host-pool-assignment-type"></a>Kişisel masaüstü konak havuzu atama türünü yapılandırma
@@ -23,7 +23,7 @@ Windows sanal masaüstü ortamınızı gereksinimlerinize daha uygun olacak şek
 >[!NOTE]
 > Havuza alınmış konak havuzlarındaki kullanıcılar belirli oturum konaklarına atanmadığından, bu makaledeki yönergeler yalnızca kişisel masaüstü ana bilgisayar havuzları için geçerlidir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu makalede, Windows sanal masaüstü PowerShell modülünü zaten indirdiğiniz ve yüklediğiniz varsayılmaktadır. Yapmadıysanız, [PowerShell modülünü ayarlama](powershell-module.md)bölümündeki yönergeleri izleyin.
 
@@ -71,7 +71,7 @@ Bir kullanıcıyı Azure portal bir oturum konağına doğrudan atamak için:
 
 1. <https://portal.azure.com> adresinden Azure portalında oturum açın.
 2. Arama çubuğuna **Windows sanal masaüstü 'nü** girin.
-3. **Hizmetler**altında **Windows sanal masaüstü**' nü seçin.
+3. **Hizmetler** altında **Windows sanal masaüstü**' nü seçin.
 4. Windows sanal masaüstü sayfasında, pencerenin sol tarafındaki menüye gidin ve **konak havuzları**' nı seçin.
 5. Güncelleştirmek istediğiniz konak havuzunun adını seçin.
 6. Sonra, pencerenin sol tarafındaki menüye gidin ve **uygulama grupları**' nı seçin.

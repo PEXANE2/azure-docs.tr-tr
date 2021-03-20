@@ -10,10 +10,10 @@ author: likebupt
 ms.author: keli19
 ms.date: 04/22/2020
 ms.openlocfilehash: 9131a2439facef00cae818bffef38e536a40a2fd
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93421167"
 ---
 # <a name="two-class-neural-network-module"></a>Two-Class sinir ağ modülü
@@ -38,17 +38,17 @@ Belirli bir girdi için ağın çıkışını hesaplamak üzere, Gizli katmanlar
   
 ## <a name="how-to-configure"></a>Yapılandırma
 
-1.  **Iki sınıf sinir ağ** modülünü işlem hattınıza ekleyin. Bu modülü, **Sınıflandırma** kategorisinde **Machine Learning** , **Initialize** altında bulabilirsiniz.  
+1.  **Iki sınıf sinir ağ** modülünü işlem hattınıza ekleyin. Bu modülü, **Sınıflandırma** kategorisinde **Machine Learning**, **Initialize** altında bulabilirsiniz.  
   
 2.  Model **oluşturma modunu** ayarlayarak modelin eğitilme şeklini belirleyin.  
   
-    -   **Tek parametre** : modeli nasıl yapılandırmak istediğinizi zaten biliyorsanız bu seçeneği belirleyin.
+    -   **Tek parametre**: modeli nasıl yapılandırmak istediğinizi zaten biliyorsanız bu seçeneği belirleyin.
 
-    -   **Parametre aralığı** : en iyi parametrelerden emin değilseniz, [model hiper parametrelerini ayarla](tune-model-hyperparameters.md) modülünü kullanarak en iyi parametreleri bulabilirsiniz. Birkaç değer aralığı sağlarsınız ve en iyi sonucu üreten değerlerin birleşimini öğrenmek için eğitmen ayarların birden fazla birleşimine yinelenir.  
+    -   **Parametre aralığı**: en iyi parametrelerden emin değilseniz, [model hiper parametrelerini ayarla](tune-model-hyperparameters.md) modülünü kullanarak en iyi parametreleri bulabilirsiniz. Birkaç değer aralığı sağlarsınız ve en iyi sonucu üreten değerlerin birleşimini öğrenmek için eğitmen ayarların birden fazla birleşimine yinelenir.  
 
 3.  **Gizli katman belirtimi** için, oluşturulacak ağ mimarisi türünü seçin.  
   
-    -   **Tam bağlantılı durum** : iki sınıf sinir ağları için tanımlanan varsayılan sinir ağ mimarisini aşağıdaki gibi kullanır:
+    -   **Tam bağlantılı durum**: iki sınıf sinir ağları için tanımlanan varsayılan sinir ağ mimarisini aşağıdaki gibi kullanır:
   
         -   , Bir gizli katmana sahiptir.
   

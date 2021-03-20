@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 09/02/2020
 ms.author: cherylmc
 ms.openlocfilehash: e6d811e19bb19c8c8bf96764cfcca2b1294f4a85
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91440069"
 ---
 # <a name="create-and-install-vpn-client-configuration-files-for-p2s-radius-authentication"></a>P2S RADIUS kimlik doğrulaması için VPN istemcisi yapılandırma dosyalarını oluşturma ve yüklemeyi
@@ -27,7 +27,7 @@ RADIUS kimlik doğrulamasını kullanırken, birden çok kimlik doğrulama seçe
 P2S RADIUS kimlik doğrulaması için yapılandırma iş akışı aşağıdaki gibidir:
 
 1. [P2S bağlantısı Için Azure VPN ağ geçidini ayarlayın](point-to-site-how-to-radius-ps.md).
-2. [RADIUS sunucunuzu kimlik doğrulaması Için ayarlayın](point-to-site-how-to-radius-ps.md#radius). 
+2. [RADIUS sunucunuzu kimlik doğrulaması Için ayarlayın](point-to-site-how-to-radius-ps.md#radius). 
 3. **Tercih ettiğiniz kimlik doğrulama seçeneği IÇIN VPN istemcisi yapılandırmasını alın ve VPN istemcisini** (Bu makale) ayarlamak için kullanın.
 4. [P2S yapılandırmanızı tamamlayıp bağlanın](point-to-site-how-to-radius-ps.md).
 
@@ -49,7 +49,7 @@ Kullanıcı adı/parola kimlik doğrulamasını yapılandırırken yalnızca EAP
 
 Azure portal kullanarak veya Azure PowerShell kullanarak VPN istemci yapılandırma dosyalarını oluşturabilirsiniz.
 
-#### <a name="azure-portal"></a>Azure portal
+#### <a name="azure-portal"></a>Azure portalı
 
 1. Sanal ağ geçidine gidin.
 2. **Noktadan siteye yapılandırma**' ya tıklayın.
@@ -66,13 +66,13 @@ Kullanıcı adı/parola kimlik doğrulamasıyla kullanılmak üzere VPN istemci 
 New-AzVpnClientConfiguration -ResourceGroupName "TestRG" -Name "VNet1GW" -AuthenticationMethod "EapMSChapv2"
 ```
  
-Komut çalıştırıldığında bir bağlantı döndürülür. **VpnClientConfiguration.zip**indirmek için bağlantıyı kopyalayıp bir Web tarayıcısına yapıştırın. Aşağıdaki klasörleri görüntülemek için dosyayı sıkıştırmayı açın: 
+Komut çalıştırıldığında bir bağlantı döndürülür. **VpnClientConfiguration.zip** indirmek için bağlantıyı kopyalayıp bir Web tarayıcısına yapıştırın. Aşağıdaki klasörleri görüntülemek için dosyayı sıkıştırmayı açın: 
  
-* **WindowsAmd64** ve **WindowsX86**: bu klasörler sırasıyla Windows 64-bit ve 32-bit yükleyici paketlerini içerir. 
+* **WindowsAmd64** ve **WindowsX86**: bu klasörler sırasıyla Windows 64-bit ve 32-bit yükleyici paketlerini içerir. 
 * **Genel**: Bu klasör kendi VPN istemci yapılandırmanızı oluşturmak için kullandığınız genel bilgileri içerir. Kullanıcı adı/parola kimlik doğrulama yapılandırması için bu klasöre ihtiyacınız yoktur.
 * **Mac**: sanal ağ geçidini oluştururken Ikev2 yapılandırdıysanız, **mobileconfig** dosyası içeren **Mac** adlı bir klasör görürsünüz. Mac istemcilerini yapılandırmak için bu dosyayı kullanın.
 
-İstemci yapılandırma dosyalarını zaten oluşturduysanız, cmdlet 'ini kullanarak bunları alabilirsiniz `Get-AzVpnClientConfiguration` . Ancak P2S VPN yapılandırmanızda, VPN protokol türü veya kimlik doğrulama türü gibi herhangi bir değişiklik yaparsanız yapılandırma otomatik olarak güncellenmez.  `New-AzVpnClientConfiguration`Yeni bir yapılandırma indirmesi oluşturmak için cmdlet 'ini çalıştırmanız gerekir.
+İstemci yapılandırma dosyalarını zaten oluşturduysanız, cmdlet 'ini kullanarak bunları alabilirsiniz `Get-AzVpnClientConfiguration` . Ancak P2S VPN yapılandırmanızda, VPN protokol türü veya kimlik doğrulama türü gibi herhangi bir değişiklik yaparsanız yapılandırma otomatik olarak güncellenmez. `New-AzVpnClientConfiguration`Yeni bir yapılandırma indirmesi oluşturmak için cmdlet 'ini çalıştırmanız gerekir.
 
 Önceden oluşturulan istemci yapılandırma dosyalarını almak için aşağıdaki komutu kullanın:
 
@@ -96,7 +96,7 @@ Sertifika kimlik doğrulaması için yerel Windows VPN istemcisini yapılandırm
 
 1. Windows bilgisayarın mimarisine karşılık gelen VPN istemcisi yapılandırma dosyalarını seçin. 64 bitlik bir işlemci mimarisi için **VpnClientSetupAmd64** yükleyici paketini seçin. 32 bitlik bir işlemci mimarisi için **VpnClientSetupX86** yükleyici paketini seçin. 
 2. Paketi yüklemek için çift tıklayın. Bir SmartScreen açılır penceresi görürseniz **daha fazla bilgi**  >  **Çalıştır**' ı seçin.
-3. İstemci bilgisayarda, **ağ ayarları** ' na gidin ve **VPN**' yi seçin. VPN bağlantısı, bağlandığı sanal ağın adını gösterir. 
+3. İstemci bilgisayarda, **ağ ayarları** ' na gidin ve **VPN**' yi seçin. VPN bağlantısı, bağlandığı sanal ağın adını gösterir. 
 
 #### <a name="mac-os-x-vpn-client-setup"></a><a name="admaccli"></a>Mac (OS X) VPN istemcisi kurulumu
 
@@ -127,19 +127,19 @@ Sertifika kimlik doğrulaması için yerel Windows VPN istemcisini yapılandırm
 5. Profil göndericisine güvenmek için **devam** ' ı seçin ve yüklemeye devam edin.
 
    ![Onay iletisi](./media/point-to-site-vpn-client-configuration-radius/adcontinue.png)
-6. Profil yüklemesi sırasında VPN kimlik doğrulaması için Kullanıcı adını ve parolayı belirtme seçeneğiniz vardır. Bu bilgilerin girilmesi zorunlu değildir. Bunu yaparsanız, bilgiler kaydedilir ve bir bağlantı başlattığınızda otomatik olarak kullanılır.Devam etmek için **yüklemeyi** seçin.
+6. Profil yüklemesi sırasında VPN kimlik doğrulaması için Kullanıcı adını ve parolayı belirtme seçeneğiniz vardır. Bu bilgilerin girilmesi zorunlu değildir. Bunu yaparsanız, bilgiler kaydedilir ve bir bağlantı başlattığınızda otomatik olarak kullanılır. Devam etmek için **yüklemeyi** seçin.
 
    ![VPN için Kullanıcı adı ve parola kutuları](./media/point-to-site-vpn-client-configuration-radius/adsettings.png)
 7. Profili bilgisayarınıza yüklemek için gerekli olan ayrıcalıklar için bir Kullanıcı adı ve parola girin. **Tamam**’ı seçin.
 
    ![Profil yüklemesi için Kullanıcı adı ve parola kutuları](./media/point-to-site-vpn-client-configuration-radius/adusername.png)
-8. Profil yüklendikten sonra, **profiller** iletişim kutusunda görünür. Bu iletişim kutusunu, daha sonra **Sistem Tercihlerinden**de açabilirsiniz.
+8. Profil yüklendikten sonra, **profiller** iletişim kutusunda görünür. Bu iletişim kutusunu, daha sonra **Sistem Tercihlerinden** de açabilirsiniz.
 
    !["Profiller" iletişim kutusu](./media/point-to-site-vpn-client-configuration-radius/adsystempref.png)
 9. VPN bağlantısına erişmek için, **Sistem Tercihleri**' nden **ağ** iletişim kutusunu açın.
 
    ![Sistem tercihlerindeki simgeler](./media/point-to-site-vpn-client-configuration-radius/adnetwork.png)
-10. VPN bağlantısı **ıKEV2 VPN**olarak görünür. **Mobileconfig** dosyasını güncelleştirerek adı değiştirebilirsiniz.
+10. VPN bağlantısı **ıKEV2 VPN** olarak görünür. **Mobileconfig** dosyasını güncelleştirerek adı değiştirebilirsiniz.
 
     ![VPN bağlantısının ayrıntıları](./media/point-to-site-vpn-client-configuration-radius/adconnection.png)
 11. **Kimlik doğrulama ayarları**' nı seçin. Listeden **Kullanıcı adı** ' nı seçin ve kimlik bilgilerinizi girin. Daha önce kimlik bilgilerini girdiyseniz, **Kullanıcı adı** otomatik olarak listede seçilir ve Kullanıcı adı ve parola önceden doldurulur. Ayarları kaydetmek için **Tamam ' ı** seçin.
@@ -169,10 +169,10 @@ Ubuntu 17.0.4 üzerinde Strongswa 5.5.1 aracılığıyla aşağıdaki yönergele
 
    ![VpnSettings.xml dosyasının içeriği](./media/point-to-site-vpn-client-configuration-radius/VpnSettings.png)
 6. Bu adı, **ağ geçidi** bölümünde yer alan yeni VPN bağlantınızın **Adres** alanına yapıştırın. Sonra, **sertifika** alanının sonundaki klasör simgesini seçin, **genel** klasöre gidin ve **vpnserverroot** dosyasını seçin.
-7. Bağlantının **istemci** bölümünde, **kimlik doğrulama**için **EAP** ' yi seçin ve Kullanıcı adınızı ve parolanızı girin. Bu bilgileri kaydetmek için sağ taraftaki kilit simgesini seçmeniz gerekebilir. Sonra **Kaydet**' i seçin.
+7. Bağlantının **istemci** bölümünde, **kimlik doğrulama** için **EAP** ' yi seçin ve Kullanıcı adınızı ve parolanızı girin. Bu bilgileri kaydetmek için sağ taraftaki kilit simgesini seçmeniz gerekebilir. Sonra **Kaydet**' i seçin.
 
    ![Bağlantı ayarlarını Düzenle](./media/point-to-site-vpn-client-configuration-radius/editconnectionsettings.png)
-8. **Ağ Yöneticisi** simgesini (yukarı ok/aşağı ok) seçin ve **VPN bağlantıları**üzerine gelin. Oluşturduğunuz VPN bağlantısını görürsünüz. Bağlantıyı başlatmak için seçin.
+8. **Ağ Yöneticisi** simgesini (yukarı ok/aşağı ok) seçin ve **VPN bağlantıları** üzerine gelin. Oluşturduğunuz VPN bağlantısını görürsünüz. Bağlantıyı başlatmak için seçin.
 
    ![Ağ yöneticisinde "VPN Radius" bağlantısı](./media/point-to-site-vpn-client-configuration-radius/ConnectRADIUS.png)
 
@@ -200,10 +200,10 @@ New-AzVpnClientConfiguration -ResourceGroupName "TestRG" -Name "VNet1GW" -Authen
 
 Komut çalıştırıldığında bir bağlantı döndürülür. VpnClientConfiguration.zip indirmek için bağlantıyı kopyalayıp bir Web tarayıcısına yapıştırın. Aşağıdaki klasörleri görüntülemek için dosyayı sıkıştırmayı açın:
 
-* **WindowsAmd64** ve **WindowsX86**: bu klasörler sırasıyla Windows 64-bit ve 32-bit yükleyici paketlerini içerir. 
+* **WindowsAmd64** ve **WindowsX86**: bu klasörler sırasıyla Windows 64-bit ve 32-bit yükleyici paketlerini içerir. 
 * **Genericdevice**: Bu klasör kendi VPN istemci yapılandırmanızı oluşturmak için kullanılan genel bilgileri içerir.
 
-İstemci yapılandırma dosyalarını zaten oluşturduysanız, cmdlet 'ini kullanarak bunları alabilirsiniz `Get-AzVpnClientConfiguration` . Ancak P2S VPN yapılandırmanızda, VPN protokol türü veya kimlik doğrulama türü gibi herhangi bir değişiklik yaparsanız yapılandırma otomatik olarak güncellenmez.  `New-AzVpnClientConfiguration`Yeni bir yapılandırma indirmesi oluşturmak için cmdlet 'ini çalıştırmanız gerekir.
+İstemci yapılandırma dosyalarını zaten oluşturduysanız, cmdlet 'ini kullanarak bunları alabilirsiniz `Get-AzVpnClientConfiguration` . Ancak P2S VPN yapılandırmanızda, VPN protokol türü veya kimlik doğrulama türü gibi herhangi bir değişiklik yaparsanız yapılandırma otomatik olarak güncellenmez. `New-AzVpnClientConfiguration`Yeni bir yapılandırma indirmesi oluşturmak için cmdlet 'ini çalıştırmanız gerekir.
 
 Önceden oluşturulan istemci yapılandırma dosyalarını almak için aşağıdaki komutu kullanın:
 
@@ -241,7 +241,7 @@ Sertifika kimlik doğrulaması için bir Mac üzerinde yerel VPN istemcisini yap
 
    ![RadiusServerRoot sertifikası ekleme](./media/point-to-site-vpn-client-configuration-radius/radiusrootcert.png)
 2. Her istemci kimlik doğrulaması için bir istemci sertifikası gerektirir. İstemci sertifikasını istemci cihazına yükler.
-3. **Ağ tercihleri**altında **ağ** iletişim kutusunu açın. **+** Azure sanal AĞıNA P2S bağlantısı için yeni BIR VPN istemci bağlantı profili oluşturmayı seçin.
+3. **Ağ tercihleri** altında **ağ** iletişim kutusunu açın. **+** Azure sanal AĞıNA P2S bağlantısı için yeni BIR VPN istemci bağlantı profili oluşturmayı seçin.
 
    **Arabirim** değeri **VPN**'dir ve **VPN türü** değeri **Ikev2**' dir. **Hizmet adı** kutusunda profil için bir ad belirtin ve ardından **Oluştur** ' u seçerek VPN istemci bağlantı profilini oluşturun.
 
@@ -249,7 +249,7 @@ Sertifika kimlik doğrulaması için bir Mac üzerinde yerel VPN istemcisini yap
 4. **Genel** klasörde, **VpnSettings.xml** dosyasından, **VPNServer** etiket değerini kopyalayın. Bu değeri, profilin **sunucu adresine** ve **uzak kimlik** kutularına yapıştırın. **Yerel kimlik** kutusunu boş bırakın.
 
    ![Sunucu bilgileri](./media/point-to-site-vpn-client-configuration-radius/servertag.png)
-5. **Kimlik doğrulama ayarları**' nı seçin ve **sertifika**' yı seçin. 
+5. **Kimlik doğrulama ayarları**' nı seçin ve **sertifika**' yı seçin. 
 
    ![Kimlik doğrulaması ayarları](./media/point-to-site-vpn-client-configuration-radius/certoption.png)
 6. Kimlik doğrulaması için kullanmak istediğiniz sertifikayı seçmek için **Seç** ' e tıklayın.
@@ -271,13 +271,13 @@ Farklı bir kimlik doğrulama türünü (örneğin, OTP) veya farklı bir kimlik
 
 2. VpnClientConfiguration.zip dosyasını sıkıştırmayı açın ve **Genericdevice** klasörünü arayın. 64-bit ve 32-bit mimarilerinin Windows yükleyicilerini içeren klasörleri yoksayın.
  
-3. **Genericdevice** klasörü, **vpnsettings**adlı bir XML dosyası içerir. Bu dosya, gerekli tüm bilgileri içerir:
+3. **Genericdevice** klasörü, **vpnsettings** adlı bir XML dosyası içerir. Bu dosya, gerekli tüm bilgileri içerir:
 
    * **VPNServer**: Azure VPN ağ geçidinin FQDN 'si. Bu, istemcinin bağlandığı adrestir.
    * **Vpntype**: bağlanmak için kullandığınız tünel türü.
    * **Rotalar**: profilinizde yapılandırmanız gereken yollar, böylece yalnızca Azure sanal ağına bağlanan trafik P2S tüneli üzerinden gönderilir.
    
-   **Genericdevice** klasörü, **vpnserverroot**adlı bir. cer dosyası da içerir. Bu dosya, P2S bağlantı kurulumu sırasında Azure VPN Gateway 'i doğrulamak için gereken kök sertifikayı içerir. Sertifikayı Azure sanal ağına bağlanacak tüm cihazlara yükler.
+   **Genericdevice** klasörü, **vpnserverroot** adlı bir. cer dosyası da içerir. Bu dosya, P2S bağlantı kurulumu sırasında Azure VPN Gateway 'i doğrulamak için gereken kök sertifikayı içerir. Sertifikayı Azure sanal ağına bağlanacak tüm cihazlara yükler.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

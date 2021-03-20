@@ -8,10 +8,10 @@ ms.date: 10/17/2016
 ms.author: ccompy
 ms.custom: seodec18
 ms.openlocfilehash: 0e665ec27da0a898e754817f946b965ac7360fda
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86220567"
 ---
 # <a name="scaling-apps-in-an-app-service-environment-v1"></a>App Service Ortamı v1 'de Uygulamaları ölçeklendirme
@@ -39,11 +39,11 @@ Farklı çalışan havuzlarından işlem kaynaklarını kullanarak birden çok A
 ### <a name="scaling-the-number-of-instances"></a>Örnek sayısını ölçeklendirme
 Web uygulamanızı bir App Service Ortamı ilk kez oluşturduğunuzda 1 örnek ile başlar.  Daha sonra, uygulamanız için ek işlem kaynakları sağlamak üzere ek örneklere ölçeklendirebilirsiniz.   
 
-AŞIRIN yeterli kapasitesi varsa, bu oldukça basittir.  Ölçeği genişletmek istediğiniz siteleri tutan App Service planına gidin ve ölçek ' i seçin.  Bu, ASP için ölçeği el ile ayarlayabileceğiniz veya ASP 'niz için otomatik ölçeklendirme kurallarını yapılandırabileceğiniz Kullanıcı arabirimini açar.  Uygulamanızı el ile ölçeklendirmek için ölçeği ***, el ile girdiğim bir örnek sayısına*** ***göre*** ayarlamanız yeterlidir.  Buradan kaydırıcıyı istediğiniz miktara sürükleyin ya da kaydırıcının yanındaki kutuya girin.  
+AŞIRIN yeterli kapasitesi varsa, bu oldukça basittir.  Ölçeği genişletmek istediğiniz siteleri tutan App Service planına gidin ve ölçek ' i seçin.  Bu, ASP için ölçeği el ile ayarlayabileceğiniz veya ASP 'niz için otomatik ölçeklendirme kurallarını yapılandırabileceğiniz Kullanıcı arabirimini açar.  Uygulamanızı el ile ölçeklendirmek için * ***ölçeğini** _ ile _ * arasında _el ile * * girdiğim bir örnek sayısı_ ayarlamanız yeterlidir.  Buradan kaydırıcıyı istediğiniz miktara sürükleyin ya da kaydırıcının yanındaki kutuya girin.  
 
 ![ASP 'nizin ölçeğini ayarlayabileceğiniz veya ASP 'niz için otomatik ölçeklendirme kurallarını yapılandırabileceğiniz yeri gösteren ekran görüntüsü.][2] 
 
-Ao 'da bir ASP için otomatik ölçeklendirme kuralları, normal şekilde çalıştıkları gibi çalışır.  ***Ölçek ölçütü*** altında ***CPU yüzdesi*** ' ni seçebilir ve CPU yüzdesine göre ASP 'niz için otomatik ölçeklendirme kuralları oluşturabilirsiniz veya ***zamanlama ve performans kurallarını***kullanarak daha karmaşık kurallar oluşturabilirsiniz.  Otomatik ölçeklendirmeyi yapılandırma hakkında daha ayrıntılı bilgileri görmek için, burada [Azure App Service bir uygulamayı ölçeklendirin][AppScale]. 
+Ao 'da bir ASP için otomatik ölçeklendirme kuralları, normal şekilde çalıştıkları gibi çalışır.  _*_Ölçek ölçütü_*_ altında ***CPU yüzdesi** _ ' i seçebilir ve CPU yüzdesine göre ASP 'niz için otomatik ölçeklendirme kuralları oluşturabilir veya _ *_zamanlama ve performans kuralları_* * kullanarak daha karmaşık kurallar oluşturabilirsiniz.  Otomatik ölçeklendirmeyi yapılandırma hakkında daha ayrıntılı bilgileri görmek için, burada [Azure App Service bir uygulamayı ölçeklendirin][AppScale]. 
 
 ### <a name="worker-pool-selection"></a>Çalışan havuzu seçimi
 Daha önce belirtildiği gibi, çalışan havuzu seçimine ASP kullanıcı arabiriminden erişilir.  Ölçeklendirmek istediğiniz ASP için dikey pencereyi açın ve çalışan havuzu ' nu seçin.  App Service Ortamı yapılandırdığınız tüm çalışan havuzları görüntülenir.  Yalnızca bir çalışan havuzunuz varsa, yalnızca bir havuzu listelenmiş olarak görürsünüz.  ASP 'nizin hangi çalışan havuzunu değiştirmek için, App Service planınızın taşınmasını istediğiniz çalışan havuzunu seçmeniz yeterlidir.  

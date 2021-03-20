@@ -4,10 +4,10 @@ description: Azure Storage 'da uygulama verilerinizi şifrelemeyi ve paket dosya
 ms.topic: article
 ms.date: 03/06/2020
 ms.openlocfilehash: 5524b749b1e15342dd0133920d7190e33ced18ad
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92146048"
 ---
 # <a name="encryption-at-rest-using-customer-managed-keys"></a>Müşteri tarafından yönetilen anahtarları kullanarak bekleyen şifreleme
@@ -71,7 +71,7 @@ Bu uygulama ayarının güncelleştirilmesi Web uygulamanızın yeniden başlat�
 
 Depolama hesabınızın SAS anahtarını düzenli aralıklarla döndürmek en iyi uygulamadır. Web uygulamasının yanlışlıkla erişimi istemediğinden emin olmak için Key Vault SAS URL 'sini de güncelleştirmeniz gerekir.
 
-1. Azure portal depolama hesabınıza giderek SAS anahtarını döndürün. **Ayarlar**  >  **erişim tuşları**altında, SAS anahtarını döndürmek için simgeye tıklayın.
+1. Azure portal depolama hesabınıza giderek SAS anahtarını döndürün. **Ayarlar**  >  **erişim tuşları** altında, SAS anahtarını döndürmek için simgeye tıklayın.
 
 1. Yeni SAS URL 'sini kopyalayın ve Anahtar Kasanızda güncelleştirilmiş SAS URL 'sini ayarlamak için aşağıdaki komutu kullanın:
 

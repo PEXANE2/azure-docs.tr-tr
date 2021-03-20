@@ -1,6 +1,6 @@
 ---
-title: dosya dahil etme
-description: dosya dahil etme
+title: include dosyası
+description: include dosyası
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
@@ -9,10 +9,10 @@ ms.date: 03/17/2020
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 55fa01d100c60c6411774373428ff4bbd9a56822
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "80986609"
 ---
 ## <a name="windows-clients"></a><a name="windows"></a>Windows istemcileri
@@ -25,7 +25,7 @@ ms.locfileid: "80986609"
    * [VPN Gateway](../articles/vpn-gateway/vpn-gateway-certificates-point-to-site.md#clientexport) yönergeler
    
    * [Sanal WAN](../articles/virtual-wan/certificates-point-to-site.md#clientexport) yönergeleri
-5. Özel anahtarı ve Base64 parmak izini *. pfx*dosyasından ayıklayın. Bunu yapmanın birden çok yolu vardır. Makinenizde OpenSSL kullanmak tek bir yoldur. *profileinfo.txt* dosyası, CA ve istemci sertifikası için özel anahtarı ve parmak izini içerir. İstemci sertifikasının parmak izini kullandığınızdan emin olun.
+5. Özel anahtarı ve Base64 parmak izini *. pfx* dosyasından ayıklayın. Bunu yapmanın birden çok yolu vardır. Makinenizde OpenSSL kullanmak tek bir yoldur. *profileinfo.txt* dosyası, CA ve istemci sertifikası için özel anahtarı ve parmak izini içerir. İstemci sertifikasının parmak izini kullandığınızdan emin olun.
 
    ```
    openssl pkcs12 -in "filename.pfx" -nodes -out "profileinfo.txt"
@@ -165,7 +165,7 @@ ms.locfileid: "80986609"
     ```
 12. GUI 'yi kullanarak bağlanmak için sistem ayarları ' na gidin.
 13. **+** Yeni BIR VPN bağlantısı eklemek için tıklayın.
-14. **VPN Ekle**altında **Dosyadan içeri aktar ' ı seçin...**
+14. **VPN Ekle** altında **Dosyadan içeri aktar ' ı seçin...**
 15. Profil dosyasına gidin ve çift tıklayın veya **Aç**' ı seçin.
 16. **VPN Ekle** penceresinde **Ekle** ' ye tıklayın.
   

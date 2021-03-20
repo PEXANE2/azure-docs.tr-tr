@@ -5,10 +5,10 @@ ms.topic: tutorial
 ms.date: 07/22/2019
 ms.custom: mvc
 ms.openlocfilehash: 23b3aabf8e991e512ef9a5c07d725c3084ea7f83
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86244744"
 ---
 # <a name="tutorial-upgrade-the-runtime-of-a-service-fabric-cluster-in-azure"></a>Öğretici: Azure'da bir Service Fabric kümesinin çalışma zamanını yükseltme
@@ -37,14 +37,14 @@ Bu öğretici dizisinde şunların nasıl yapıldığını öğrenirsiniz:
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticiye başlamadan önce:
 
 * Azure aboneliğiniz yoksa [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun
 * [Azure PowerShell](/powershell/azure/install-az-ps) veya [Azure CLI](/cli/azure/install-azure-cli)'yi yükler.
 * Azure 'da güvenli bir [Windows kümesi](service-fabric-tutorial-create-vnet-and-windows-cluster.md) oluşturma
-* Bir Windows geliştirme ortamı ayarlayın. [Visual Studio 2019](https://www.visualstudio.com) ve **Azure geliştirme**, **ASP.net ve Web geliştirme**ve **.NET Core platformlar arası geliştirme** iş yüklerini yükler.  Ardından bir [.NET dağıtım ortamı](service-fabric-get-started.md) ayarlayın.
+* Bir Windows geliştirme ortamı ayarlayın. [Visual Studio 2019](https://www.visualstudio.com) ve **Azure geliştirme**, **ASP.net ve Web geliştirme** ve **.NET Core platformlar arası geliştirme** iş yüklerini yükler.  Ardından bir [.NET dağıtım ortamı](service-fabric-get-started.md) ayarlayın.
 
 ### <a name="sign-in-to-azure"></a>Azure'da oturum açma
 

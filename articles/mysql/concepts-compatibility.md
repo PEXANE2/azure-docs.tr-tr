@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 3/18/2020
 ms.openlocfilehash: c2faf8e8b6a814989fa9e1693fddeedb525df13a
-ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/09/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100006862"
 ---
 # <a name="mysql-drivers-and-management-tools-compatible-with-azure-database-for-mysql"></a>MySQL için Azure veritabanı ile uyumlu MySQL sürücüleri ve yönetim araçları
@@ -50,7 +50,7 @@ Uyumluluk avantajı veritabanı yönetim araçlarına da genişletilir. Veritaba
 | **SQL sorgu otomatik tamamlama** | X | X |  | X |
 | **Verileri içeri ve dışarı aktarma** | X | X | X | X |
 | **Birden çok biçime aktar** | X | X | X | X |
-| **Yedekleme ve Geri Yükleme** |  | X |  | X |
+| **Yedekleme ve geri yükleme** |  | X |  | X |
 | **Sunucu parametrelerini görüntüle** | X | X | X | X |
 | **Istemci bağlantılarını görüntüle** | X | X | X | X |
 

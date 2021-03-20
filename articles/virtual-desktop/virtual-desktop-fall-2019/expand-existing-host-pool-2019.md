@@ -7,10 +7,10 @@ ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: 61cf28b0f1ebee6a0312ec3f23f22b01c6c4919e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88009180"
 ---
 # <a name="expand-an-existing-host-pool-with-new-session-hosts-in-windows-virtual-desktop-classic"></a>Windows sanal masaüstündeki yeni oturum Konakları ile mevcut bir konak havuzunu genişletme (klasik)
@@ -48,26 +48,26 @@ Sonraki üç bölüm, ana bilgisayar havuzunu genişletmek için kullanabileceğ
 Bir konak havuzunu genişletmek için Azure Resource Manager şablonunu yeniden dağıtma:
 
 1. [Azure portalında](https://portal.azure.com/) oturum açın.
-2. Azure portal en üstündeki arama çubuğundan **kaynak grupları** ' nı arayın ve **Hizmetler**altında öğeyi seçin.
+2. Azure portal en üstündeki arama çubuğundan **kaynak grupları** ' nı arayın ve **Hizmetler** altında öğeyi seçin.
 3. Konak havuzunu oluştururken oluşturduğunuz kaynak grubunu bulun ve seçin.
 4. Tarayıcının sol tarafındaki panelde **dağıtımlar**' ı seçin.
 5. Konak havuzu oluşturma işleminiz için uygun dağıtımı seçin:
-     - Özgün ana bilgisayar havuzunu Azure Marketi teklifiyle oluşturduysanız, **RDS. WVD-provision-Host-Pool**ile başlayan dağıtımı seçin.
-     - GitHub Azure Resource Manager şablonuyla orijinal ana bilgisayar havuzunu oluşturduysanız, **Microsoft. Template**adlı dağıtımı seçin.
+     - Özgün ana bilgisayar havuzunu Azure Marketi teklifiyle oluşturduysanız, **RDS. WVD-provision-Host-Pool** ile başlayan dağıtımı seçin.
+     - GitHub Azure Resource Manager şablonuyla orijinal ana bilgisayar havuzunu oluşturduysanız, **Microsoft. Template** adlı dağıtımı seçin.
 6. Yeniden **Dağıt**' ı seçin.
 
      >[!NOTE]
-     >Yeniden **Dağıt**seçeneğini belirlediğinizde şablon otomatik olarak yeniden **dağıtmazsa**, tarayıcınızın sol tarafındaki panelde **şablon** ' u seçin ve ardından Dağıt ' ı seçin.
+     >Yeniden **Dağıt** seçeneğini belirlediğinizde şablon otomatik olarak yeniden **dağıtmazsa**, tarayıcınızın sol tarafındaki panelde **şablon** ' u seçin ve ardından Dağıt ' ı seçin.
 
 7. Mevcut konak havuzundaki geçerli oturum ana bilgisayar sanal makinelerini içeren kaynak grubunu seçin.
 
      >[!NOTE]
      >Girdiğiniz bir kaynak grubunu seçmenizi bildiren bir hata görürseniz, başka bir kaynak grubu seçin ve ardından orijinal kaynak grubunu seçin.
 
-8. *_ArtifactsLocation*için aşağıdaki URL 'yi girin:`https://raw.githubusercontent.com/Azure/RDS-Templates/master/wvd-templates/`
-9. Toplam oturum ana bilgisayar sayısını ( *RDSH örnek sayısı*) istediğiniz yeni girin. Örneğin, ana bilgisayar havuzunuzu beş oturum ana bilgisayardan sekiz ' a genişleyorsanız **8**girin.
+8. *_ArtifactsLocation* için aşağıdaki URL 'yi girin:`https://raw.githubusercontent.com/Azure/RDS-Templates/master/wvd-templates/`
+9. Toplam oturum ana bilgisayar sayısını ( *RDSH örnek sayısı*) istediğiniz yeni girin. Örneğin, ana bilgisayar havuzunuzu beş oturum ana bilgisayardan sekiz ' a genişleyorsanız **8** girin.
 10. Mevcut etki alanı UPN 'si için kullandığınız etki alanı parolasının aynısını girin. Şablonu çalıştırdığınızda bir hataya neden olacağı için Kullanıcı adını değiştirmeyin.
-11. *Kiracı Yöneticisi UPN 'Si veya uygulama kimliği*için girdiğiniz kullanıcı veya uygulama kimliği için kullandığınız kiracı yönetici parolasını girin. Bir kez daha, Kullanıcı adını değiştirmeyin.
+11. *Kiracı Yöneticisi UPN 'Si veya uygulama kimliği* için girdiğiniz kullanıcı veya uygulama kimliği için kullandığınız kiracı yönetici parolasını girin. Bir kez daha, Kullanıcı adını değiştirmeyin.
 12. Ana bilgisayar havuzunuzu genişletmek için gönderimi doldurun.
 
 ## <a name="run-the-azure-marketplace-offering"></a>Azure Marketi teklifini çalıştırma
@@ -76,18 +76,18 @@ Bir konak havuzunu genişletmek için Azure Resource Manager şablonunu yeniden 
 
 ### <a name="basics"></a>Temel Bilgiler
 
-Bu bölümdeki tüm değerler, *varsayılan masaüstü kullanıcıları*dışında, ana bilgisayar havuzunu ve oturum ana bilgisayar VM 'lerini ilk oluşturduğunuzda sağladıklarınızla eşleşmelidir:
+Bu bölümdeki tüm değerler, *varsayılan masaüstü kullanıcıları* dışında, ana bilgisayar havuzunu ve oturum ana bilgisayar VM 'lerini ilk oluşturduğunuzda sağladıklarınızla eşleşmelidir:
 
-1.    *Abonelik*için, ilk olarak konak havuzunu oluşturduğunuz aboneliği seçin.
-2.    *Kaynak grubu*için, mevcut konak havuzu oturum ana bilgisayar VM 'lerinin bulunduğu kaynak grubunu seçin.
-3.    *Bölge*için, mevcut konak havuzu oturum ana bilgisayar VM 'lerinin bulunduğu bölgeyi seçin.
-4.    *Hostpool adı*için, mevcut konak havuzunun adını girin.
-5.    *Masaüstü türü*için, mevcut konak havuzuyla eşleşen masaüstü türünü seçin.
-6.    *Varsayılan masaüstü kullanıcıları*Için, Windows sanal masaüstü istemcilerinde oturum açmak istediğiniz ek kullanıcıların virgülle ayrılmış bir listesini girin ve Azure Marketi teklifi bittikten sonra bir masaüstüne erişin. Örneğin, atamak user3@contoso.com ve erişmek istiyorsanız, user4@contoso.com girin user3@contoso.com user4@contoso.com .
+1.    *Abonelik* için, ilk olarak konak havuzunu oluşturduğunuz aboneliği seçin.
+2.    *Kaynak grubu* için, mevcut konak havuzu oturum ana bilgisayar VM 'lerinin bulunduğu kaynak grubunu seçin.
+3.    *Bölge* için, mevcut konak havuzu oturum ana bilgisayar VM 'lerinin bulunduğu bölgeyi seçin.
+4.    *Hostpool adı* için, mevcut konak havuzunun adını girin.
+5.    *Masaüstü türü* için, mevcut konak havuzuyla eşleşen masaüstü türünü seçin.
+6.    *Varsayılan masaüstü kullanıcıları* Için, Windows sanal masaüstü istemcilerinde oturum açmak istediğiniz ek kullanıcıların virgülle ayrılmış bir listesini girin ve Azure Marketi teklifi bittikten sonra bir masaüstüne erişin. Örneğin, atamak user3@contoso.com ve erişmek istiyorsanız, user4@contoso.com girin user3@contoso.com user4@contoso.com .
 7.    **İleri ' yi seçin: sanal makineyi yapılandırın**.
 
 >[!NOTE]
->*Varsayılan masaüstü kullanıcıları*hariç, tüm alanların mevcut konak havuzunda tam olarak yapılandırıldığı şekilde eşleşmesi gerekir. Bir uyumsuzluk varsa, bu, yeni bir konak havuzu ile sonuçlanır.
+>*Varsayılan masaüstü kullanıcıları* hariç, tüm alanların mevcut konak havuzunda tam olarak yapılandırıldığı şekilde eşleşmesi gerekir. Bir uyumsuzluk varsa, bu, yeni bir konak havuzu ile sonuçlanır.
 
 ### <a name="configure-virtual-machines"></a>Sanal makineleri yapılandırma
 
@@ -98,7 +98,7 @@ Toplam VM sayısı dışında, bu bölümdeki tüm parametre değerleri, ana bil
     >[!NOTE]
     >Aradığınız belirli VM boyutu VM boyut Seçicisi 'nde görünmezse, bu, henüz Azure Market aracına eklendi. VM boyutu istemek için [Windows sanal masaüstü UserVoice forumundaki](https://windowsvirtualdesktop.uservoice.com/forums/921118-general)bir istek oluşturun veya var olan bir isteği oylayın.
 
-2. Konak havuzunuzdaki olmasını istediğiniz oturum ana bilgisayarlarının toplam sayısını seçmek için *kullanım profilini*, *Toplam kullanıcıları*ve *sanal makine sayısı* parametrelerini özelleştirin. Örneğin, ana bilgisayar havuzunuzu beş oturum ana bilgisayardan sekiz ' a genişleyorsanız, 8 sanal makineye ulaşmak için bu seçenekleri yapılandırın.
+2. Konak havuzunuzdaki olmasını istediğiniz oturum ana bilgisayarlarının toplam sayısını seçmek için *kullanım profilini*, *Toplam kullanıcıları* ve *sanal makine sayısı* parametrelerini özelleştirin. Örneğin, ana bilgisayar havuzunuzu beş oturum ana bilgisayardan sekiz ' a genişleyorsanız, 8 sanal makineye ulaşmak için bu seçenekleri yapılandırın.
 3. Sanal makinelerin adları için bir ön ek girin. Örneğin, "önek" adını girerseniz, sanal makineler "ön ek-0", "ön ek-1" olarak adlandırılır ve bu şekilde devam eder.
 4. **İleri ' yi seçin: sanal makine ayarları**.
 
@@ -106,7 +106,7 @@ Toplam VM sayısı dışında, bu bölümdeki tüm parametre değerleri, ana bil
 
 Bu bölümdeki tüm parametre değerleri, ana bilgisayar havuzunu ve oturum ana bilgisayar VM 'lerini ilk oluşturduğunuzda sağladıklarınız ile eşleşmelidir:
 
-1. *Görüntü kaynağı* ve *görüntü işletim sistemi sürümü*için, ana bilgisayar havuzunu ilk oluşturduğunuzda sağladınız aynı bilgileri girin.
+1. *Görüntü kaynağı* ve *görüntü işletim sistemi sürümü* için, ana bilgisayar havuzunu ilk oluşturduğunuzda sağladınız aynı bilgileri girin.
 2. *Ad etki alanına KATıLMASı UPN* ve ilişkili parolalar Için, vm 'leri Active Directory etki alanına katmak üzere konak havuzunu ilk oluşturduğunuzda verdiğiniz aynı bilgileri girin. Bu kimlik bilgileri, sanal makinelerinizde yerel bir hesap oluşturmak için kullanılacaktır. Bu yerel hesapları, kimlik bilgilerini daha sonra değiştirmek üzere sıfırlayabilirsiniz.
 3. Sanal ağ bilgileri için, mevcut konak havuzu oturum ana bilgisayar sanal makinelerinizin bulunduğu sanal ağı ve alt ağı seçin.
 4. **İleri ' yi seçin: Windows sanal masaüstü bilgilerini yapılandırın**.
@@ -115,14 +115,14 @@ Bu bölümdeki tüm parametre değerleri, ana bilgisayar havuzunu ve oturum ana 
 
 Bu bölümdeki tüm parametre değerleri, ana bilgisayar havuzunu ve oturum ana bilgisayar VM 'lerini ilk oluşturduğunuzda sağladıklarınız ile eşleşmelidir:
 
-1. *Windows sanal masaüstü kiracı grubu adı*için kiracınızı içeren kiracı grubunun adını girin. Belirli bir kiracı grubu adı sağlanmadığınız sürece varsayılan olarak bırakın.
-2. *Windows sanal masaüstü kiracı adı*için, bu konak havuzunu oluşturacağınız kiracının adını girin.
+1. *Windows sanal masaüstü kiracı grubu adı* için kiracınızı içeren kiracı grubunun adını girin. Belirli bir kiracı grubu adı sağlanmadığınız sürece varsayılan olarak bırakın.
+2. *Windows sanal masaüstü kiracı adı* için, bu konak havuzunu oluşturacağınız kiracının adını girin.
 3. Ana bilgisayar havuzunu ve oturum ana bilgisayar VM 'lerini ilk oluşturduğunuzda kullandığınız kimlik bilgilerini belirtin. Hizmet sorumlusu kullanıyorsanız, hizmet sorumlunun bulunduğu Azure Active Directory örneğinin KIMLIĞINI girin.
 4. **İleri ' yi seçin: gözden geçir + oluştur**.
 
 ## <a name="run-the-github-azure-resource-manager-template"></a>GitHub Azure Resource Manager şablonunu çalıştırma
 
-[Yeni bir konak havuzu sağlamak](create-host-pools-arm-template.md#run-the-azure-resource-manager-template-for-provisioning-a-new-host-pool) ve *RDSH örnek sayısı*hariç tüm aynı parametre değerlerini sağlamak için Azure Resource Manager şablonunu çalıştırma bölümündeki yönergeleri izleyin. Şablonu çalıştırdıktan sonra konak havuzunda istediğiniz oturum ana bilgisayar VM 'lerinin sayısını girin. Örneğin, ana bilgisayar havuzunuzu beş oturum ana bilgisayardan sekiz ' a genişleyorsanız **8**girin.
+[Yeni bir konak havuzu sağlamak](create-host-pools-arm-template.md#run-the-azure-resource-manager-template-for-provisioning-a-new-host-pool) ve *RDSH örnek sayısı* hariç tüm aynı parametre değerlerini sağlamak için Azure Resource Manager şablonunu çalıştırma bölümündeki yönergeleri izleyin. Şablonu çalıştırdıktan sonra konak havuzunda istediğiniz oturum ana bilgisayar VM 'lerinin sayısını girin. Örneğin, ana bilgisayar havuzunuzu beş oturum ana bilgisayardan sekiz ' a genişleyorsanız **8** girin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

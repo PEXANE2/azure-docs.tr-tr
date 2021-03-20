@@ -14,10 +14,10 @@ ms.date: 11/15/2017
 ms.author: apimpm
 ms.custom: mvc
 ms.openlocfilehash: 85fa79cdfc7036be5b0ab20e49986a1d075152c5
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86254665"
 ---
 # <a name="about-api-management"></a>API Management hakkında
@@ -76,12 +76,12 @@ API'ler bir API Management hizmet örneğinin temelini oluşturur. Her API geli�
 
 Daha fazla bilgi için bkz. [API oluşturma][How to create APIs] ve [API’ye işlem ekleme][How to add operations to an API].
 
-## <a name="products"></a><a name="products"> </a> Ürünler
+## <a name="products"></a><a name="products"></a> Ürünler
 Ürünler API'lerin geliştiricilerin kullanımına nasıl sunulduğudur. API Management ürünleri bir ya da daha fazla API’ye sahiptir. Başlık, açıklama ve kullanım koşulları ile yapılandırılırlar. Ürünler **Açık** veya **Korumalı** olabilir. Korumalı ürünleri kullanabilmek için bunlara abone olmak gerekir, açık ürünler abonelik olmadan kullanılabilir. Bir ürün, geliştiriciler tarafından kullanılmaya hazır olduğunda yayımlanabilir. Yayımlandıktan sonra, geliştiriciler tarafından görüntülenebilir (ve abone olunan korumalı ürünler söz konusu olduğunda). Abonelik onayı ürün düzeyinde yapılandırılır ve yönetici onayı gerektirebilir ya da otomatik olarak onaylanır.
 
 Gruplar, ürünlerin geliştiricilere görünürlüğünü yönetmek için kullanılır. Ürünler gruplara görünürlük sağlar ve geliştiriciler ait oldukları gruplar tarafından görünür olan ürünleri görüntüleyip bunlara abone olabilir. 
 
-## <a name="groups"></a><a name="groups"> </a> Gruplar
+## <a name="groups"></a><a name="groups"></a> Gruplar
 Gruplar, ürünlerin geliştiricilere görünürlüğünü yönetmek için kullanılır. API Management şu sabit sistem gruplarına sahiptir:
 
 * **Yöneticiler**: Azure aboneliği yöneticileri bu grubun üyesidir. Yöneticiler, geliştiriciler tarafından kullanılan API’leri, işlemleri ve ürünleri oluşturarak API Management hizmet örneklerini yönetir.
@@ -92,14 +92,14 @@ Bu sistem gruplarına ek olarak, yöneticiler özel gruplar oluşturabilir veya 
 
 Daha fazla bilgi için bkz. [Grupları oluşturma ve kullanma][How to create and use groups].
 
-## <a name="developers"></a><a name="developers"> </a> Geliştiriciler
+## <a name="developers"></a><a name="developers"></a> Geliştiriciler
 Geliştiriciler API Management hizmet örneğindeki kullanıcı hesaplarını temsil eder. Geliştiriciler yöneticiler tarafından oluşturulabilir ve davet edilebilir ya da [Geliştirici portalı][Developer portal] üzerinden kaydolabilir. Her geliştirici bir veya daha fazla grubun üyesidir ve bu gruplara görünürlük sağlayan ürünlere abone olabilir.
 
 Bir ürüne abone olan geliştiricilere ürün için birincil ve ikincil anahtar verilir. Bu anahtar ürün API’lerine çağrılar yapılırken kullanılır.
 
 Daha fazla bilgi için bkz. [Geliştirici oluşturma ve davet etme][How to create or invite developers] ve [Grupları geliştiricilerle ilişkilendirme][How to associate groups with developers].
 
-## <a name="policies"></a><a name="policies"> </a> İlkeler
+## <a name="policies"></a><a name="policies"></a> İlkeler
 İlkeler, Azure portalın API’nin davranışını yapılandırma yoluyla değiştirmesini sağlayan güçlü API Management özellikleridir. İlkeler, bir API isteği veya yanıtı üzerinde sırayla yürütülen deyimlerin bir koleksiyonudur. Sık kullanılan deyimler, XML’den JSON’a biçim dönüştürmeyi ve bir geliştiriciden gelen çağrıların sayısını sınırlamak üzere çağrı hızını sınırlamayı ve çeşitli ilkeleri içerir.
 
 İlke ifadeleri herhangi bir API Management ilkesinde, ilke aksini belirtmedikçe, öznitelik değerleri ya da metin değerleri olarak kullanılabilir. [Akışı denetle](./api-management-advanced-policies.md#choose) ve [Değişken ayarla](./api-management-advanced-policies.md#set-variable) gibi bazı ilkeler ilke ifadelerini temel alır. Daha fazla bilgi için bkz. [Gelişmiş ilkeler](./api-management-advanced-policies.md#AdvancedPolicies) ve [İlke ifadeleri](./api-management-policy-expressions.md).
@@ -108,7 +108,7 @@ Daha fazla bilgi için bkz. [Geliştirici oluşturma ve davet etme][How to creat
 API Management ilkelerinin tam listesi için bkz. [İlke başvurusu][Policy reference]. İlkeleri yapılandırma ve kullanma hakkında daha fazla bilgi için bkz. [API Management ilkeleri][API Management policies]. Hız sınırı ve kota ilkeleri içeren bir ürün oluşturmaya ilişkin öğretici için bkz. [Gelişmiş ürün ayarları oluşturma ve yapılandırma][How create and configure advanced product settings].
 
 
-## <a name="developer-portal"></a><a name="developer-portal"> </a> Geliştirici portalı
+## <a name="developer-portal"></a><a name="developer-portal"></a> Geliştirici portalı
 Geliştirici portalı, geliştiricilerin API’leriniz hakkında bilgi alabileceği, işlemleri görüntüleyebileceği ve çağırabileceği ve ürünlere abone olabileceği yerdir. Müşteri adayları, geliştirici portalını ziyaret edebilir, API’lerle işlemleri görüntüleyebilir ve portala kaydolabilir. Geliştirici portalınızın URL’si, API Management hizmet örneğinizin Azure portalındaki panoda yer alır.
 
 Özel içerik ekleyerek, stilleri özelleştirerek ve marka bilgilerinizi ekleyerek, geliştirici portalınızın genel görünümünü özelleştirebilirsiniz.

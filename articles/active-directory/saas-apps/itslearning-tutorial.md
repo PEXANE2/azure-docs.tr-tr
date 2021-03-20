@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/19/2019
 ms.author: jeedes
 ms.openlocfilehash: 04d7e39b3566e777920bacde2f0063e61d6733c8
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92459669"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-itslearning"></a>Öğretici: ıtslearning ile tümleştirme Azure Active Directory
@@ -61,13 +61,13 @@ Itslearning 'in tümleştirmesini Azure AD 'ye göre yapılandırmak için Galer
 
     ![Yeni uygulama düğmesi](common/add-new-app.png)
 
-4. Arama kutusuna **itslearning**yazın, sonuç panelinden **itslearning** ' i seçin, sonra uygulamayı eklemek için **Ekle** düğmesine tıklayın.
+4. Arama kutusuna **itslearning** yazın, sonuç panelinden **itslearning** ' i seçin, sonra uygulamayı eklemek için **Ekle** düğmesine tıklayın.
 
      ![sonuçlar listesinde itslearning](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-Bu bölümde, Azure AD çoklu oturum açma 'yı, **Britta Simon**adlı bir test kullanıcısına dayanarak ıtslearning ile yapılandırıp test edersiniz.
+Bu bölümde, Azure AD çoklu oturum açma 'yı, **Britta Simon** adlı bir test kullanıcısına dayanarak ıtslearning ile yapılandırıp test edersiniz.
 Çoklu oturum açma için, bir Azure AD kullanıcısı ve ıtslearning içindeki ilgili Kullanıcı arasındaki bağlantı ilişkisinin kurulması gerekir.
 
 Azure AD çoklu oturum açmayı yapılandırmak ve test etmek için ıtslearning ile aşağıdaki yapı taşlarını gerçekleştirmeniz gerekir:
@@ -144,7 +144,7 @@ Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı ol
 
     ![Kullanıcı iletişim kutusu](common/user-properties.png)
 
-    a. **Ad** alanına **Brittasıon**girin.
+    a. **Ad** alanına **Brittasıon** girin.
   
     b. **Kullanıcı adı** alanına yazın `brittasimon@yourcompanydomain.extension` . Örneğin, BrittaSimon@contoso.com.
 

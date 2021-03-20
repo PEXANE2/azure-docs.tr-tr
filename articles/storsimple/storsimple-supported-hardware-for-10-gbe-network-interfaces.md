@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 09/21/2016
 ms.author: alkohli
 ms.openlocfilehash: fd30c7ec15eadd3d7945349a8aae4ac824bfdc7f
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94954095"
 ---
 # <a name="supported-hardware-for-the-10-gbe-network-interfaces-on-your-storsimple-device"></a>StorSimple cihazınızda 10 GbE ağ arabirimleri için desteklenen donanım
@@ -32,12 +32,12 @@ Bu makale, Microsoft Azure StorSimple cihazlarınızla birlikte çalışarak tam
 Microsoft, cihazlarla en iyi şekilde çalışmasını sağlamak için aşağıdaki küçük form faktörlü takılabilir (SFP) alıcı vericiler, kabloları ve anahtarları test etti. (Yeni donanım test edildiğinde aşağıdaki tablolar güncelleştirilecektir.)
 
 ### <a name="sfp-transceivers"></a>SFP + alıcı vericiler
-| Marka | Model |
+| Marka | Modelleme |
 | --- | --- |
 | Cisco |SFP-10G-SR |
 
 ### <a name="cables"></a>Kablolar
-| S. Hayır. | Marka | Model |
+| S. Hayır. | Marka | Modelleme |
 | --- | --- | --- |
 | 1. |Cisco |SFP-H10GB-CU1M |
 | 2. |Cisco |SFP-H10GB-CU2M |
@@ -45,7 +45,7 @@ Microsoft, cihazlarla en iyi şekilde çalışmasını sağlamak için aşağıd
 | 4. |Tripp-Lite |N820-05D (OM3) |
 
 ### <a name="switches"></a>Anahtarlar
-| S. Hayır. | Marka | Model |
+| S. Hayır. | Marka | Modelleme |
 | --- | --- | --- |
 | 1. |Cisco |N3K-C3172PQ-10GE |
 | 2. |Cisco |N3K-C3048-ZM-F |
@@ -73,7 +73,7 @@ Mellanox, StorSimple cihazınızda 10 GbE ağ arabirimleri gibi Mellanox ağı a
 ### <a name="cables-and-modules-supported-by-mellanox"></a>Mellanox tarafından desteklenen kablolar ve modüller
 Aşağıdaki tabloda, Mellanox tarafından desteklenen kablolar ve modüller listelenmiştir. Bunlar Microsoft tarafından sınanmamıştır, ancak büyük olasılıkla StorSimple cihazınıza göre çalışmalardır.
 
-| S. Hayır. | Hız | Model | Description | Marka |
+| S. Hayır. | Hız | Modelleme | Description | Marka |
 | --- | --- | --- | --- | --- |
 | 1. |10 GbE |CAB-SFP-SFP-1M |Pasif bakır kablo SFP + 10 GB/s 1m |Arista |
 | 2. |10 GbE |CAB-SFP-SFP-2M |Pasif bakır kablo SFP + 10 GB/s 2m |Arista |
@@ -114,7 +114,7 @@ Aşağıdaki tabloda, Mellanox tarafından desteklenen kablolar ve modüller lis
 ### <a name="switches-supported-by-mellanox"></a>Mellanox tarafından desteklenen anahtarlar
 Aşağıdaki tabloda, Mellanox tarafından desteklenen anahtarlar listelenmektedir. Bunlar Microsoft tarafından sınanmamıştır, ancak büyük olasılıkla StorSimple cihazınıza göre çalışmalardır.
 
-| S. Hayır. | Hız | Model | Description | Marka |
+| S. Hayır. | Hız | Modelleme | Description | Marka |
 | --- | --- | --- | --- | --- |
 | 1. |Noktalı |516733-B21 |HP ProCurve 6120XG 10GbE Ethernet dikey pencere anahtarı |HP |
 | 2. |Noktalı |538113-B21 |HP 10GbE Pass-Through modülü (PTM) |HP |

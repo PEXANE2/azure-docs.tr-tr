@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: scottwhi
 ms.openlocfilehash: 531da145e699eecb76366cd73a151b7170a6ed2f
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96353434"
 ---
 # <a name="autosuggest-api-upgrade-guide"></a>Otomatik öneri API Yükseltme Kılavuzu
@@ -42,7 +42,7 @@ Bu yükseltme Kılavuzu, sürüm 5 ve Bing Otomatik Öneri API'si sürüm 7 aras
 
 - V5 hata kodları aşağıdaki olası `code` ve `subCode` değerlerle değiştirilmiştir.
 
-|Kod|Alt|Açıklama
+|Kod|Alt|Description
 |-|-|-
 |ServerError|UnexpectedError<br/>ResourceError<br/>NotImplemented|Bing, alt kod koşullarından herhangi biri gerçekleştiğinde ServerError döndürür. HTTP durum kodu 500 ise yanıt bu hataları içerir.
 |Invalidrequest|ParameterMissing<br/>Parameterınvalidvalue<br/>HttpNotAllowed<br/>Engellendi|İsteğin herhangi bir bölümü geçerli değilse Bing, ınvalidrequest döndürüyor. Örneğin, gerekli bir parametre eksik veya bir parametre değeri geçerli değil.<br/><br/>Hata ParameterMissing veya Parameterınvalidvalue ise, HTTP durum kodu 400 ' dir.<br/><br/>Hataya HttpNotAllowed varsa HTTP durum kodu 410 ' dir.

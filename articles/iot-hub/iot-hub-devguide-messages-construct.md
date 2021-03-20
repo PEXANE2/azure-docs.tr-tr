@@ -12,10 +12,10 @@ ms.custom:
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
 ms.openlocfilehash: 6d6b7122963b51619f26b8d02a8be4ad39261afb
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92147703"
 ---
 # <a name="create-and-read-iot-hub-messages"></a>IoT Hub iletilerini oluşturma ve okuma
@@ -30,7 +30,7 @@ IoT Hub bir ileti aşağıdakilerden oluşur:
 
 * Aşağıda listelenen *sistem özelliklerinin* önceden belirlenmiş bir kümesi.
 
-* *Uygulama özellikleri*kümesi. İleti gövdesinin serisini kaldırmak gerekmeden uygulamanın tanımlayabilmesine ve erişebileceği dize özelliklerinin bir sözlüğü. IoT Hub bu özellikleri hiçbir şekilde değiştirmez.
+* *Uygulama özellikleri* kümesi. İleti gövdesinin serisini kaldırmak gerekmeden uygulamanın tanımlayabilmesine ve erişebileceği dize özelliklerinin bir sözlüğü. IoT Hub bu özellikleri hiçbir şekilde değiştirmez.
 
 * Donuk ikili gövde.
 
@@ -61,8 +61,8 @@ Farklı protokoller kullanılarak gönderilen iletilerin kodlanması ve kodunun 
 | ıothub-Connection-Module-ID |Cihazdan buluta iletilerde IoT Hub tarafından ayarlanan bir KIMLIK. İletiyi gönderen cihazın **ModuleID** 'sini içerir. | No | Connectionmoduleıd |
 | ıothub-bağlantı-auth-Generation-ID |Cihazdan buluta iletilerde IoT Hub tarafından ayarlanan bir KIMLIK. İletiyi gönderen cihazın **Connectiondevicegenerationıd** 'Sini ( [cihaz kimliği başına kimlik özellikleri](iot-hub-devguide-identity-registry.md#device-identity-properties)) içerir. | No |Connectiondevicegenerationıd |
 | ıothub-Connection-auth-yöntemi |Cihazdan buluta iletilerde IoT Hub tarafından ayarlanan bir kimlik doğrulama yöntemi. Bu özellik, iletiyi gönderen cihazın kimliğini doğrulamak için kullanılan kimlik doğrulama yöntemi hakkındaki bilgileri içerir.| No | connectionAuthMethod |
-| DT-DataSchema | Bu değer, cihazdan buluta iletilerde IoT Hub tarafından ayarlanır. Cihaz bağlantısında ayarlanan cihaz modeli KIMLIĞINI içerir. | No | YOK |
-| DT-konu | Cihazdan buluta iletileri gönderen bileşenin adı. | Yes | YOK |
+| DT-DataSchema | Bu değer, cihazdan buluta iletilerde IoT Hub tarafından ayarlanır. Cihaz bağlantısında ayarlanan cihaz modeli KIMLIĞINI içerir. | No | Yok |
+| DT-konu | Cihazdan buluta iletileri gönderen bileşenin adı. | Yes | Yok |
 
 ## <a name="system-properties-of-c2d-iot-hub-messages"></a>**C2D** IoT Hub Iletilerinin sistem özellikleri
 
@@ -70,11 +70,11 @@ Farklı protokoller kullanılarak gönderilen iletilerin kodlanması ve kodunun 
 | --- | --- | --- |
 | ileti kimliği |İstek-yanıt desenleri için kullanılan ileti için Kullanıcı tarafından ayarlanabilir bir tanımlayıcı. Biçim: büyük/küçük harfe duyarlı bir dize (en fazla 128 karakter uzunluğunda) ASCII 7 bit alfasayısal karakter + `{'-', ':', '.', '+', '%', '_', '#', '*', '?', '!', '(', ')', ',', '=', '@', ';', '$', '''}` .  |Yes|
 | sıra numarası |Her buluttan cihaza ileti için IoT Hub tarafından atanan bir sayı (cihaz kuyruğu başına benzersiz). |No|
-| şöyle değiştirin: |[Buluttan cihaza](iot-hub-devguide-c2d-guidance.md) iletilerde belirtilen hedef. |No|
+| kullanıcısı |[Buluttan cihaza](iot-hub-devguide-c2d-guidance.md) iletilerde belirtilen hedef. |No|
 | mutlak-süre sonu |İleti süresinin dolma tarihi ve saati. |No|   |
 | correlation-id |İstek-yanıt desenlerinde, genellikle isteğin MessageID ' i içeren bir yanıt iletisindeki dize özelliği. |Yes|
 | user-id |İletilerin kaynağını belirtmek için kullanılan bir KIMLIK. İletiler IoT Hub tarafından oluşturulduğunda, olarak ayarlanır `{iot hub name}` . |Yes|
-| ıothub-ACK |Geri bildirim iletisi Oluşturucu. Bu özellik, cihaz tarafından ileti tüketimine yol açacak şekilde geri bildirim iletileri oluşturmak için IoT Hub istemek üzere buluttan cihaza iletimekte kullanılır. Olası değerler: **hiçbiri** (varsayılan): hiçbir geri bildirim iletisi oluşturulmaz, **pozitif**: ileti tamamlandığında bir geri bildirim iletisi alın (veya en fazla teslim sayısına ulaşıldığında), ya da **tam** **olarak pozitif**ve negatif olur. |Yes|
+| ıothub-ACK |Geri bildirim iletisi Oluşturucu. Bu özellik, cihaz tarafından ileti tüketimine yol açacak şekilde geri bildirim iletileri oluşturmak için IoT Hub istemek üzere buluttan cihaza iletimekte kullanılır. Olası değerler: **hiçbiri** (varsayılan): hiçbir geri bildirim iletisi oluşturulmaz, **pozitif**: ileti tamamlandığında bir geri bildirim iletisi alın (veya en fazla teslim sayısına ulaşıldığında), ya da **tam** **olarak pozitif** ve negatif olur. |Yes|
 
 ### <a name="system-property-names"></a>Sistem özelliği adları
 
@@ -90,7 +90,7 @@ Sistem özelliği adları, iletilerin yönlendirildiği uç noktaya göre farkl�
 |Bağlantı kimlik doğrulama yöntemi|ıothub-Connection-auth-yöntemi|connectionAuthMethod|ıothub-Connection-auth-yöntemi|ıothub-Connection-auth-yöntemi|
 |contentType|içerik türü|contentType|ContentType|ıothub-Content-Type|
 |Contentenkodlamaya|İçerik kodlama|Contentenkodlamaya|Contentenkodlamaya|ıothub-Content-Encoding|
-|ıothub-enqueuedtime|ıothub-enqueuedtime|enqueuedTime| YOK |ıothub-enqueuedtime|
+|ıothub-enqueuedtime|ıothub-enqueuedtime|enqueuedTime| Yok |ıothub-enqueuedtime|
 |CorrelationId|correlation-id|correlationId|CorrelationId|correlation-id|
 |DT-DataSchema|DT-DataSchema|DT-DataSchema|DT-DataSchema|DT-DataSchema|
 |DT-konu|DT-konu|DT-konu|DT-konu|DT-konu|

@@ -4,10 +4,10 @@ description: Microsoft ekipleri dahilinde Azure Lab Services kullanımına iliş
 ms.topic: conceptual
 ms.date: 10/07/2020
 ms.openlocfilehash: f39613427ed174dfca80d4a48be9473ab7025e79
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96433914"
 ---
 # <a name="azure-lab-services-within-microsoft-teams"></a>Microsoft ekipleri dahilinde Azure Lab Services
@@ -19,7 +19,7 @@ Bu makalede, takımlar dahilinde Azure Lab Services kullanmanın avantajları ö
 > [!NOTE]
 >**Azure Lab Services** Takımlar uygulaması yalnızca bir takıma eklenebilir, bireysel sohbetlere veya grup sohbetlerine eklenemez.
 
-## <a name="benefits"></a>Yararları
+## <a name="benefits"></a>Avantajlar
 
 Microsoft ekipleriyle Azure Lab Services Tümleştirme, eğitimciler bir sınıf ortamı ayarlamaya ve Team (class) içinde sanal Laboratuvar ortamları sağlamanıza yardımcı olur: 
 

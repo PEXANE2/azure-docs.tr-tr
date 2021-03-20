@@ -15,13 +15,13 @@ ms.workload: na
 ms.date: 06/29/2017
 ms.author: alkohli
 ms.openlocfilehash: 56170ffbbfe14248bcfd1f94549a3565873f8646
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96005903"
 ---
-# <a name="use-the-storsimple-device-manager-service-to-manage-storsimple-bandwidth-templates"></a>StorSimple bant genişliği şablonlarını yönetmek için StorSimple Aygıt Yöneticisi hizmetini kullanın
+# <a name="use-the-storsimple-device-manager-service-to-manage-storsimple-bandwidth-templates"></a>StorSimple bant genişliği şablonlarını yönetmek için StorSimple Device Manager hizmetini kullanın
 
 ## <a name="overview"></a>Genel Bakış
 
@@ -55,7 +55,7 @@ Yeni bir bant genişliği şablonu oluşturmak için aşağıdaki adımları ger
 
 #### <a name="to-add-a-bandwidth-template"></a>Bir bant genişliği şablonu eklemek için
 
-1. StorSimple Aygıt Yöneticisi hizmetinize gidin, **bant genişliği şablonları** ' na tıklayın ve **+ bant genişliği şablonu Ekle**' ye tıklayın.
+1. StorSimple Device Manager hizmetinize gidin, **bant genişliği şablonları** ' na tıklayın ve **+ bant genişliği şablonu Ekle**' ye tıklayın.
 
     ![+ Bant genişliği şablonu Ekle ' ye tıklayın](./media/storsimple-8000-manage-bandwidth-templates/addbwtemp1.png)
 
@@ -88,7 +88,7 @@ Bir bant genişliği şablonunu düzenlemek için aşağıdaki adımları gerçe
 
 ### <a name="to-edit-a-bandwidth-template"></a>Bir bant genişliği şablonunu düzenlemek için
 
-1. StorSimple Aygıt Yöneticisi hizmetinize gidin ve **bant genişliği şablonları**' na tıklayın.
+1. StorSimple Device Manager hizmetinize gidin ve **bant genişliği şablonları**' na tıklayın.
 2. Bant genişliği şablonları listesinde, silmek istediğiniz şablonu seçin. Sağ tıklayıp bağlam menüsünden **Sil**' i seçin.
 3. Onay istendiğinde **Tamam**' a tıklayın. Bu, bant genişliği şablonunu silmelidir. 
 4. Bant genişliği şablonlarının listesi, silme işlemini yansıtacak şekilde güncelleştirilir.
@@ -102,7 +102,7 @@ Bir bant genişliği şablonunu silmek için aşağıdaki adımları gerçekleş
 
 #### <a name="to-delete-a-bandwidth-template"></a>Bir bant genişliği şablonunu silmek için
 
-1. StorSimple Aygıt Yöneticisi hizmetinize gidin ve **bant genişliği şablonları**' na tıklayın.
+1. StorSimple Device Manager hizmetinize gidin ve **bant genişliği şablonları**' na tıklayın.
 2. Bant genişliği şablonları listesinde, silmek istediğiniz şablonu seçin. Sağ tıklayıp bağlam menüsünden Sil ' i seçin.
 3. Onay istendiğinde **Tamam**' a tıklayın. Bu, bant genişliği şablonunu silmelidir.
 4. Bant genişliği şablonlarının listesi, silme işlemini yansıtacak şekilde güncelleştirilir.
@@ -171,5 +171,5 @@ StorSimple cihazınız için en iyi uygulamaları izleyin:
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-StorSimple [cihazınızı yönetmek Için storsimple Aygıt Yöneticisi hizmetini kullanma](storsimple-8000-manager-service-administration.md)hakkında daha fazla bilgi edinin.
+StorSimple [cihazınızı yönetmek Için storsimple Device Manager hizmetini kullanma](storsimple-8000-manager-service-administration.md)hakkında daha fazla bilgi edinin.
 

@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 3/13/2020
 ms.author: raynew
 ms.openlocfilehash: 64d1084fd7025c74676977f065062e5e94dabf1d
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97652254"
 ---
 # <a name="azure-to-azure-disaster-recovery-architecture"></a>Azure'dan Azure'a olağanüstü durum kurtarma mimarisi
@@ -62,7 +62,7 @@ Hedef kaynakları aşağıdaki şekilde yönetebilirsiniz:
 
 Azure VM çoğaltmasını etkinleştirdiğinizde, varsayılan olarak Site Recovery tabloda özetlenen varsayılan ayarlarla yeni bir çoğaltma ilkesi oluşturur.
 
-**İlke ayarı** | **Ayrıntılar** | **Varsayılan**
+**İlke ayarı** | **Ayrıntılar** | **Varsayılanını**
 --- | --- | ---
 **Kurtarma noktası bekletme** | Site Recovery kurtarma noktalarını ne kadar süreyle tutacağını belirtir | 24 saat
 **Uygulamayla tutarlı anlık görüntü sıklığı** | Site Recovery ne sıklıkta uygulamayla tutarlı bir anlık görüntü alır. | Her dört saatte bir

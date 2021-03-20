@@ -4,10 +4,10 @@ description: Microsoft Azure Backup sunucusu, VM 'Leri, dosyaları ve klasörler
 ms.topic: conceptual
 ms.date: 05/24/2020
 ms.openlocfilehash: 39050d0f658e29b82f270f1fe53026e2fb80bfa1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91332772"
 ---
 # <a name="whats-new-in-microsoft-azure-backup-server-mabs"></a>Microsoft Azure Backup Server 'daki yenilikler (MABS)
@@ -128,6 +128,6 @@ MABS v3 tam bir sürümdür ve doğrudan Windows Server 2016, Windows Server 201
 Sunucunuzu nasıl hazırlayacağınızı veya bir iş yükünü korumaya nasıl başlayacağınızı öğrenin:
 
 * [Yedekleme sunucusu iş yüklerini hazırlama](backup-azure-microsoft-azure-backup.md)
-* [Bir VMware sunucusunu yedeklemek için yedekleme sunucusu kullanma](backup-azure-backup-server-vmware.md)
-* [Yedekleme sunucusunu kullanarak yedekleme SQL Server](backup-azure-sql-mabs.md)
+* [VMware sunucusunu yedeklemek için Yedekleme Sunucusu kullanma](backup-azure-backup-server-vmware.md)
+* [SQL Server'ı yedeklemek için Yedekleme Sunucusu kullanma](backup-azure-sql-mabs.md)
 * [Yedekleme sunucusu ile Modern Yedekleme Alanı kullanma](backup-mabs-add-storage.md)

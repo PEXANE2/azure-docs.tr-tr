@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 04/21/2020
 ms.author: jeedes
 ms.openlocfilehash: b76c41787d7a35fb3024fa18c0122bc966243bbc
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96008404"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-trend-micro-web-security-tmws"></a>Öğretici: Trend mikro Web Güvenliği (TMWS) ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
@@ -144,7 +144,7 @@ Bu bölümde, TMWS 'ye erişim vererek Azure çoklu oturum açma özelliğini ku
 
 1. **Yönet**' in altında **uygulama kayıtları**' yi seçin ve ardından **tüm uygulamalar**' ın altında yeni kurumsal uygulamanızı seçin.
 
-1. **Yönet** altında **Sertifikalar & gizlilikler**' ı seçin.
+1. **Yönet**’in altında **Sertifikalar ve gizli diziler**’i seçin.
 
 1. **İstemci gizli** dizileri alanında **yeni istemci parolası**' nı seçin.
 
@@ -206,7 +206,7 @@ Uygulama tarafında TMWS SSO 'yu yapılandırmak için bu adımları izleyin.
 
     e. Azure AD hizmeti 'nin başarıyla bağlanıp bağlanamayacağını denetlemek için **Bağlantıyı Sına** ' yı seçin.
     
-    f. **Kaydet**'i seçin.
+    f. **Kaydet**’i seçin.
  
  > [!NOTE]
  > TMWS 'yi Azure AD ile yapılandırma hakkında daha fazla bilgi için bkz. [tmws 'de Azure AD ayarlarını yapılandırma](https://docs.trendmicro.com/en-us/enterprise/trend-micro-web-security-online-help/administration_001/directory-services/azure-active-directo/configuring-azure-ad.aspx).
@@ -216,7 +216,7 @@ Uygulama tarafında TMWS SSO 'yu yapılandırmak için bu adımları izleyin.
 Azure AD hizmetini yapılandırdıktan ve Kullanıcı kimlik doğrulama yöntemi olarak Azure AD 'yi belirttikten sonra, kurulumunuzu doğrulamak için TMWS ara sunucusunda oturum açabilirsiniz. Azure AD oturum açma Hesabınızı doğruladıktan sonra, internet 'i ziyaret edebilirsiniz.
 
 > [!NOTE]
-> Tmws, Azure AD portalındaki çoklu oturum açmayı test etmeyi desteklemez, **genel bakış**  >  **Çoklu oturum açma** altında  >  Yeni kurumsal uygulamanızın **SAML testinde çoklu oturum açma ayarı** yapın  >  **Test** .
+> Tmws, Azure AD portalındaki çoklu oturum açmayı test etmeyi desteklemez, **genel bakış**  >  **Çoklu oturum açma** altında  >  Yeni kurumsal uygulamanızın **SAML testinde çoklu oturum açma ayarı** yapın  >   .
 
 1. Tüm tanımlama bilgilerinin tarayıcısını temizleyin ve ardından tarayıcıyı yeniden başlatın. 
 

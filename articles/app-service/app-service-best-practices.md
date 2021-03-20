@@ -8,10 +8,10 @@ ms.date: 07/01/2016
 ms.author: dariac
 ms.custom: seodec18
 ms.openlocfilehash: 91fd974c730037907258cb4a670f6fa836bfda6c
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92144866"
 ---
 # <a name="best-practices-for-azure-app-service"></a>Azure Uygulama Hizmeti için En İyi Uygulamalar
@@ -37,7 +37,7 @@ Bir uygulamanın beklenenden daha fazla CPU tükettiğini veya izleme ya da hizm
 Giden TCP bağlantılarının tüketilmesinin yaygın bir nedeni, TCP bağlantılarını yeniden kullanmak için uygulanmayan veya HTTP-Keep-Alive gibi daha üst düzey bir protokol kullanılmayan istemci kitaplıklarının kullanılmasının yaygın bir nedenidir. Dışarı giden bağlantıların verimli bir şekilde yeniden kullanılması için kodunuzda yapılandırılmış veya erişilebilir olduklarından emin olmak için App Service planınızdaki uygulamalar tarafından başvurulan her bir kitaplıkların belgelerini gözden geçirin. Ayrıca, bağlantı sızıntısına engel olmak için uygun oluşturma ve yayınlama ya da temizleme için kitaplık belge kılavuzunu izleyin. Bu tür istemci kitaplıkları araştırmalar devam ederken, etki çok örneğe ölçeklendirerek etki azaltılabilir.
 
 ### <a name="nodejs-and-outgoing-http-requests"></a>Node.js ve giden http istekleri
-Node.js ve çok sayıda giden http isteği ile çalışırken HTTP-Keep-Alive ile ilgilenirken önemli olur. [agentkeepalive](https://www.npmjs.com/package/agentkeepalive) `npm` Kodunuzu daha kolay hale getirmek için agentkeepalive paketini kullanabilirsiniz.
+Node.js ve çok sayıda giden http isteği ile çalışırken HTTP-Keep-Alive ile ilgilenirken önemli olur. [](https://www.npmjs.com/package/agentkeepalive) `npm` Kodunuzu daha kolay hale getirmek için agentkeepalive paketini kullanabilirsiniz.
 
 `http`İşleyicide hiçbir şey yapsanız bile her zaman yanıtı işleyin. Yanıtı doğru bir şekilde işlemezseniz, daha fazla yuva kullanılamadığından uygulamanız sonunda takılmalıdır.
 

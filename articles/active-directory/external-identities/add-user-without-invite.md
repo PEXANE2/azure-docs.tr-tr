@@ -13,23 +13,23 @@ manager: celestedg
 ms.reviewer: elisol
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b18279e44bc5a3fd668d2ec4af6be29229af1b6b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87910341"
 ---
 # <a name="add-b2b-collaboration-guest-users-without-an-invitation-link-or-email"></a>Bir davet bağlantısı veya e-posta olmadan B2B işbirliği Konuk kullanıcıları ekleme
 
 Artık, paylaşılan bir uygulamaya [doğrudan bağlantı](redemption-experience.md#redemption-through-a-direct-link) göndererek Konuk kullanıcıları davet edebilirsiniz. Bu yöntemde, bazı özel durumlar dışında, konuk kullanıcıların artık davet e-postasını kullanması gerekmez. Konuk Kullanıcı uygulama bağlantısını tıklatır, gizlilik koşullarını gözden geçirir ve kabul eder ve ardından uygulamaya sorunsuz bir şekilde erişir. Daha fazla bilgi için bkz. [B2B işbirliği daveti satın](redemption-experience.md)alma.
 
-Bu yeni yöntem kullanılabilir olmadan önce, davet e-postası gerekmeden Konuk kullanıcıları davet e-postası gerektirmeden davet edebilir (kuruluştan veya bir iş ortağı kuruluştan) **konuk davet** eden dizin rolüne davet edebilir ve ardından davet eden kullanıcıyı, Kullanıcı arabirimi veya PowerShell aracılığıyla dizine, gruplara veya uygulamalara Konuk kullanıcı eklemesini sağlayabilirsiniz. (PowerShell kullanıyorsanız, davet e-postasını tamamen gizleyebilirsiniz). Örneğin:
+Bu yeni yöntem kullanılabilir olmadan önce, davet e-postası gerekmeden Konuk kullanıcıları davet e-postası gerektirmeden davet edebilir (kuruluştan veya bir iş ortağı kuruluştan) **konuk davet** eden dizin rolüne davet edebilir ve ardından davet eden kullanıcıyı, Kullanıcı arabirimi veya PowerShell aracılığıyla dizine, gruplara veya uygulamalara Konuk kullanıcı eklemesini sağlayabilirsiniz. (PowerShell kullanıyorsanız, davet e-postasını tamamen gizleyebilirsiniz). Örnek:
 
 1. Konak kuruluştaki bir Kullanıcı (örneğin, WoodGrove) bir kullanıcıyı iş ortağı kuruluştan (örneğin, Sam@litware.com ) Konuk olarak davet eder.
 2. Konak kuruluştaki yönetici, Sam 'ın iş ortağı kuruluştan diğer kullanıcıları tanımlamasına ve eklemesine izin veren [ilkeleri ayarlar](delegate-invitations.md) (Litwlar). (Sam, **konuk davet** eden rolüne eklenmelidir.)
 3. Artık, Sam, diğer kullanıcıları, davetlerin kullanılması gerekmeden WoodGrove dizinine, gruplara veya uygulamalarına daha fazla kullanıcı ekleyebilir. Sam, Litwde uygun numaralandırma ayrıcalıklarına sahipse, bu otomatik olarak gerçekleşir.
  
-Bu özgün yöntem hala işe yarar. Ancak, davranışta küçük bir farklılık vardır. PowerShell kullanıyorsanız, davet edilen bir Konuk hesabının hemen **kabul edilmesi**yerine bir **pendingkabulünü** durumu olduğunu fark edeceksiniz. Durum beklemede olsa da Konuk Kullanıcı, e-posta davet bağlantısına tıklamadan uygulamaya oturum açabilir ve uygulamaya erişebilir. Bekleyen durum, kullanıcının, davet eden kuruluşun gizlilik koşullarını kabul ettiği [onay deneyiminden](redemption-experience.md#consent-experience-for-the-guest)gitmediği anlamına gelir. Konuk Kullanıcı ilk kez oturum açtıklarında bu onay ekranını görür. 
+Bu özgün yöntem hala işe yarar. Ancak, davranışta küçük bir farklılık vardır. PowerShell kullanıyorsanız, davet edilen bir Konuk hesabının hemen **kabul edilmesi** yerine bir **pendingkabulünü** durumu olduğunu fark edeceksiniz. Durum beklemede olsa da Konuk Kullanıcı, e-posta davet bağlantısına tıklamadan uygulamaya oturum açabilir ve uygulamaya erişebilir. Bekleyen durum, kullanıcının, davet eden kuruluşun gizlilik koşullarını kabul ettiği [onay deneyiminden](redemption-experience.md#consent-experience-for-the-guest)gitmediği anlamına gelir. Konuk Kullanıcı ilk kez oturum açtıklarında bu onay ekranını görür. 
 
 Bir kullanıcıyı dizine davet ederseniz, Konuk kullanıcının, gizlilik koşullarını görüntülemek ve kabul etmek için doğrudan kaynak kiracıya özgü Azure portal URL 'sine ( https://portal.azure.com/ *resourcetenant*. onmicrosoft.com gibi) erişmesi gerekir.
 

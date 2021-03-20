@@ -4,10 +4,10 @@ description: Azure Container Registry 'niz için içerik güvenini etkinleştirm
 ms.topic: article
 ms.date: 09/18/2020
 ms.openlocfilehash: f44cea09521dc235ad0d555264b165c9a3842a14
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92148574"
 ---
 # <a name="content-trust-in-azure-container-registry"></a>Azure Container Registry'de içerik güveni
@@ -38,7 +38,7 @@ Güvenlik ön planda tutularak tasarlanmış olan tüm dağıtılmış sistemler
 
 Öncelikle kayıt defteri düzeyinde içerik güvenini etkinleştirmeniz gerekir. İçerik güvenini etkinleştirdikten sonra istemciler (kullanıcılar veya hizmetler) imzalı görüntüleri kayıt defterine gönderebilir. Kayıt defterinizde içerik güvenini etkinleştirmeniz, kayıt defterinin kullanımını yalnızca içerik güvenini etkinleştirmiş olan tüketicilerle sınırlamaz. İçerik güvenini etkinleştirmemiş tüketiciler de kayıt defterinizi normal bir şekilde kullanmaya devam edebilir. Ancak istemcilerinde içerik güvenini etkinleştirmiş olan tüketiciler kayıt defterinizde *yalnızca* imzalı görüntüleri görebilir.
 
-Kayıt defterinizde içerik güvenini etkinleştirmek için öncelikle Azure portaldan kayıt defterine gidin. **İlkeler**altında **içerik güveni**  >  **etkin**  >  **Kaydet**' i seçin. Azure CLı 'de [az ACR config Content-Trust Update][az-acr-config-content-trust-update] komutunu da kullanabilirsiniz.
+Kayıt defterinizde içerik güvenini etkinleştirmek için öncelikle Azure portaldan kayıt defterine gidin. **İlkeler** altında **içerik güveni**  >  **etkin**  >  **Kaydet**' i seçin. Azure CLı 'de [az ACR config Content-Trust Update][az-acr-config-content-trust-update] komutunu da kullanabilirsiniz.
 
 ![Ekran görüntüsünde Azure portal bir kayıt defteri için içerik güveninin etkinleştirilmesi gösterilmektedir.][content-trust-01-portal]
 
@@ -78,9 +78,9 @@ Yalnızca izin verdiğiniz kullanıcılar veya sistemler kayıt defterinize güv
 
 Azure portalda ve Azure CLI ile `AcrImageSigner` rolünün atanmasıyla ilgili ayrıntılı bilgiler aşağıda verilmiştir.
 
-### <a name="azure-portal"></a>Azure portal
+### <a name="azure-portal"></a>Azure portalı
 
-Azure Portal Kayıt defterinize gidin ve ardından **erişim denetimi (IAM)**  >  **rol ataması Ekle**' yi seçin. **Rol ataması Ekle**altında, `AcrImageSigner` **rol**altında öğesini seçin, ardından bir veya daha fazla Kullanıcı veya hizmet sorumlusu **seçin** , sonra **kaydedin**.
+Azure Portal Kayıt defterinize gidin ve ardından **erişim denetimi (IAM)**  >  **rol ataması Ekle**' yi seçin. **Rol ataması Ekle** altında, `AcrImageSigner` **rol** altında öğesini seçin, ardından bir veya daha fazla Kullanıcı veya hizmet sorumlusu **seçin** , sonra **kaydedin**.
 
 Bu örnekte, `AcrImageSigner` rol: "hizmet sorumlusu" adlı bir hizmet sorumlusu ve "Azure user" adlı bir Kullanıcı, bu örnekte atanır.
 
@@ -195,7 +195,7 @@ Kök anahtarınıza erişimi kaybederseniz etiketleri bu anahtarla imzalanmış 
 > [!WARNING]
 > Kayıt defterinizde içerik güvenini devre dışı bırakıp yeniden etkinleştirdiğinizde **kayıt defterinizdeki tüm depolarda bulunan imzalı etiketlerin tüm güven verileri silinir**. Bu eylem geri alınamaz. Azure Container Registry, silinen güven verilerini kurtaramaz. İçerik güvenini devre dışı bıraktığınızda görüntüler silinmez.
 
-Kayıt defterinizde içerik güvenini devre dışı bırakmak için Azure portaldan kayıt defterine gidin. **İlkeler**altında, **içerik güveni**  >  **devre dışı**  >  **Kaydet**' i seçin. Kayıt defterinizdeki tüm imzaların silineceğini belirten bir uyarı görüntülenir. Kayıt defterinizdeki tüm imzaları kalıcı olarak silmek için **Tamam**'ı seçin.
+Kayıt defterinizde içerik güvenini devre dışı bırakmak için Azure portaldan kayıt defterine gidin. **İlkeler** altında, **içerik güveni**  >  **devre dışı**  >  **Kaydet**' i seçin. Kayıt defterinizdeki tüm imzaların silineceğini belirten bir uyarı görüntülenir. Kayıt defterinizdeki tüm imzaları kalıcı olarak silmek için **Tamam**'ı seçin.
 
 ![Azure portalda kayıt defteri için içerik güvenini devre dışı bırakma][content-trust-03-portal]
 

@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 11/14/2019
 ms.author: raynew
 ms.openlocfilehash: eebaa70cee99380ac67b8f6516a5b08ff2832c86
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86134739"
 ---
 # <a name="monitor-the-process-server"></a>İşlem sunucusunu izleme
@@ -76,7 +76,7 @@ Bu sorunların tümü, VM 'lerin kurtarma noktası hedefini (RPO) etkileyebilir.
 
 İşlem sunucularınızın sistem durumunu aşağıdaki şekilde izleyebilirsiniz: 
 
-1. Çoğaltılan bir makinenin ve işlem sunucusunun çoğaltma durumunu ve durumunu izlemek için, > **çoğaltılan öğeler**kasa bölümünde izlemek istediğiniz makineye tıklayın.
+1. Çoğaltılan bir makinenin ve işlem sunucusunun çoğaltma durumunu ve durumunu izlemek için, > **çoğaltılan öğeler** kasa bölümünde izlemek istediğiniz makineye tıklayın.
 2. **Çoğaltma durumu**' nda VM sistem durumunu izleyebilirsiniz. Hata ayrıntılarına gitmek için duruma tıklayın.
 
     ![VM panosundaki işlem sunucusu durumu](./media/vmware-physical-azure-monitor-process-server/vm-ps-health.png)
@@ -90,7 +90,7 @@ Bu sorunların tümü, VM 'lerin kurtarma noktası hedefini (RPO) etkileyebilir.
     - İşlem sunucusu yapılandırma sunucusundaki varsayılan dağıtımda çalışıyorsa, yapılandırma sunucusu uygun şekilde vurgulanacaktır.
     - Ayrıntıya gitmek için yapılandırma sunucusuna veya işlem sunucusuna tıklayın. Tüm sorunları ve düzeltme önerilerini aklınızda edin.
 
-Ayrıca, **Site Recovery altyapı**altında kasadaki işlem sunucularını da izleyebilirsiniz. **Site Recovery altyapınızı yönetme**bölümünde **yapılandırma sunucuları**' na tıklayın. İşlem sunucusuyla ilişkili yapılandırma sunucusunu seçin ve işlem sunucusu ayrıntıları ' na gidin.
+Ayrıca, **Site Recovery altyapı** altında kasadaki işlem sunucularını da izleyebilirsiniz. **Site Recovery altyapınızı yönetme** bölümünde **yapılandırma sunucuları**' na tıklayın. İşlem sunucusuyla ilişkili yapılandırma sunucusunu seçin ve işlem sunucusu ayrıntıları ' na gidin.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

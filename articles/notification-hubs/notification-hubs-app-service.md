@@ -15,10 +15,10 @@ ms.author: sethm
 ms.reviewer: thsomasu
 ms.lastreviewed: 01/04/2019
 ms.openlocfilehash: e7042be7e407e8e0827e142ba6878dfff812e1f6
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88004066"
 ---
 # <a name="integration-with-app-service-mobile-apps"></a>App Service Mobile Apps ile Tümleştirme
@@ -42,4 +42,4 @@ Bu tümleştirmenin sağladığı avantajlar şunlardır:
   - *Cihaza gönder*: SDK 'lar, Notification Hubs kaydettirmek Için MOBILE Apps yükleme kimliğini otomatik olarak bir GUID olarak kullanır, bu nedenle birden çok hizmet GUID 'sini sürdürmenize gerek yoktur.
 - **Yükleme modeli**: Mobile Apps, anında iletme bildirim hizmetleri ile hizalanan ve kullanımı kolay bir JSON yüklemesinde bir cihazla ilişkili tüm gönderme özelliklerini göstermek için Notification Hubs en son gönderim modeliyle birlikte çalışıyor.
 - **Esneklik**: Geliştiriciler, yerinde tümleştirme söz konusu olduğunda bile her zaman için Notification Hubs ile doğrudan çalışmayı tercih edebilir.
-- ** [Azure Portal](https://portal.azure.com)tümleşik deneyim**: bir özellik olarak gönderim, Mobile Apps görsel olarak temsil edilir ve geliştiriciler Mobile Apps üzerinden ilişkili Bildirim Hub 'ı ile kolayca çalışabilir.
+- **[Azure Portal](https://portal.azure.com)tümleşik deneyim**: bir özellik olarak gönderim, Mobile Apps görsel olarak temsil edilir ve geliştiriciler Mobile Apps üzerinden ilişkili Bildirim Hub 'ı ile kolayca çalışabilir.

@@ -6,10 +6,10 @@ manager: rochakm
 ms.topic: how-to
 ms.date: 11/27/2018
 ms.openlocfilehash: dfa3c108d00aeba9c7d42e96e7a40736a087a508
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86133827"
 ---
 # <a name="set-up-disaster-recovery-for-a-multitier-dynamics-ax-application"></a>Çok katmanlı Dynamics AX uygulaması için olağanüstü durum kurtarmayı ayarlama   
@@ -43,9 +43,9 @@ Bu makaleyi oluşturmak amacıyla, Windows Server 2012 R2 Enterprise üzerinde D
 
 **Senaryo** | **İkincil siteye** | **Azure 'a**
 --- | --- | ---
-**Hyper-V** | Evet | Evet
-**VMware** | Evet | Evet
-**Fiziksel sunucu** | Evet | Evet
+**Hyper-V** | Yes | Yes
+**VMware** | Yes | Yes
+**Fiziksel sunucu** | Yes | Yes
 
 ## <a name="enable-disaster-recovery-of-the-dynamics-ax-application-by-using-site-recovery"></a>Site Recovery kullanarak Dynamics AX uygulamasının olağanüstü durum kurtarma özelliğini etkinleştirme
 ### <a name="protect-your-dynamics-ax-application"></a>Dynamics AX uygulamanızı koruyun
@@ -101,7 +101,7 @@ Yük devretme işlemini otomatikleştirmek için Site Recovery ' de bir kurtarma
 
 2. **+ Kurtarma planı**' nı seçin ve bir ad belirtin.
 
-3. **Kaynağı** ve **hedefi**seçin. Hedef Azure veya ikincil bir site olabilir. Azure ' u seçerseniz, dağıtım modelini belirtmeniz gerekir.
+3. **Kaynağı** ve **hedefi** seçin. Hedef Azure veya ikincil bir site olabilir. Azure ' u seçerseniz, dağıtım modelini belirtmeniz gerekir.
 
     ![Kurtarma planı oluşturma](./media/site-recovery-dynamics-ax/recoveryplancreation1.png)
 
@@ -153,7 +153,7 @@ Yük devretme testi gerçekleştirme hakkında daha fazla bilgi için bkz. [Azur
 
 2. Dynamics AX için oluşturulan kurtarma planını seçin.
 
-3. **Yük devretmeyi**seçin ve **Yük devretme**' yı seçin.
+3. **Yük devretmeyi** seçin ve **Yük devretme**' yı seçin.
 
 4. Hedef ağı seçin ve yük devretme işlemini başlatmak için **✓** ' ı seçin.
 
@@ -167,7 +167,7 @@ Yeniden çalışma sırasında SQL Server özgü konular için bkz. [uygulamalar
 
 2. Dynamics AX için oluşturulan kurtarma planını seçin.
 
-3. **Yük devretmeyi**seçin ve **Yük devretme**' yı seçin.
+3. **Yük devretmeyi** seçin ve **Yük devretme**' yı seçin.
 
 4. **Yönü Değiştir**' i seçin.
 

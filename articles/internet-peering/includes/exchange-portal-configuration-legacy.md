@@ -1,7 +1,7 @@
 ---
-title: dosya dahil etme
+title: include dosyası
 titleSuffix: Azure
-description: dosya dahil etme
+description: include dosyası
 services: internet-peering
 author: prmitiki
 ms.service: internet-peering
@@ -9,10 +9,10 @@ ms.topic: include
 ms.date: 11/27/2019
 ms.author: prmitiki
 ms.openlocfilehash: b8869e93a7156b24d61ac555c95b9ca7f850ae34
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "81678532"
 ---
 1. **Eşleme oluştur** sayfasında, **yapılandırma** sekmesinde, kutulara aşağıda gösterildiği gibi kutuyu girin.
@@ -20,8 +20,8 @@ ms.locfileid: "81678532"
     > [!div class="mx-imgBorder"]
     > ![Eşleme sayfası değişim eşleme türü oluştur](../media/setup-exchange-conf-tab.png)
 
-    * **Eşleme türü**için **Exchange**' i seçin.
-    * **SKU 'Yu** **temel ücretsiz**olarak seçin.
+    * **Eşleme türü** için **Exchange**' i seçin.
+    * **SKU 'Yu** **temel ücretsiz** olarak seçin.
     * Eşlemeyi bir Azure kaynağına dönüştürmek istediğiniz **Metro** konumunu seçin. Azure kaynağına dönüştürülmemiş seçili **Metro** konumunda Microsoft ile eşleme bağlantılarınız varsa, bu bağlantılar gösterilen şekilde **eşleme bağlantıları** bölümünde listelenecektir. Artık bu eşleme bağlantılarını bir Azure kaynağına dönüştürebilirsiniz.
 
         > [!div class="mx-imgBorder"]
@@ -36,7 +36,7 @@ ms.locfileid: "81678532"
     > [!div class="mx-imgBorder"]
     > ![Eşleme doğrulama sekmesi](../media/setup-direct-review-tab-validation.png)
 
-1. *Doğrulama başarılı*olduktan sonra, bilgilerinizi doğrulayın. **Oluştur**seçeneğini belirleyerek isteği gönderebilirsiniz. İsteğinizi değiştirmeniz gerekiyorsa, **önceki** seçeneğini belirleyip adımları yineleyin.
+1. *Doğrulama başarılı* olduktan sonra, bilgilerinizi doğrulayın. **Oluştur** seçeneğini belirleyerek isteği gönderebilirsiniz. İsteğinizi değiştirmeniz gerekiyorsa, **önceki** seçeneğini belirleyip adımları yineleyin.
 
     > [!div class="mx-imgBorder"]
     > ![Eşleme gönderimi](../media/setup-exchange-review-tab-submit.png)

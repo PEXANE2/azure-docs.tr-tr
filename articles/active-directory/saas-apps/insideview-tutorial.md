@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/20/2019
 ms.author: jeedes
 ms.openlocfilehash: b8f12b6d55cb11c0cfeda5331072127ea4a696bc
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92460113"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-insideview"></a>Öğretici: InsideView ile tümleştirme Azure Active Directory
@@ -31,7 +31,7 @@ Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure AD tümleştirmesini InsideView ile yapılandırmak için şunları yapmanız gerekir:
 
@@ -60,7 +60,7 @@ InsideView 'ın Azure AD 'ye tümleştirmesini ayarlamak için Galeriden yöneti
 
     ![Yeni uygulama seçin](common/add-new-app.png)
 
-4. Arama kutusuna **InsideView**yazın. Arama sonuçlarında **InsideView** ' ı seçin ve ardından **Ekle**' yi seçin.
+4. Arama kutusuna **InsideView** yazın. Arama sonuçlarında **InsideView** ' ı seçin ve ardından **Ekle**' yi seçin.
 
     ![Arama sonuçları](common/search-new-app.png)
 
@@ -165,9 +165,9 @@ Bu bölümde, Azure portal Britta Simon adlı bir test kullanıcısı oluşturac
 
     ![Kullanıcı iletişim kutusu](common/user-properties.png)
 
-    1. **Ad** kutusuna **Brittasıon**yazın.
+    1. **Ad** kutusuna **Brittasıon** yazın.
   
-    1. **Kullanıcı adı** kutusuna **BrittaSimon@ girin \<yourcompanydomain> . \<extension> ** (Örneğin, BrittaSimon@contoso.com .)
+    1. **Kullanıcı adı** kutusuna **BrittaSimon@ girin \<yourcompanydomain> . \<extension>** (Örneğin, BrittaSimon@contoso.com .)
 
     1. **Parolayı göster**' i seçin ve ardından **parola** kutusunda değer ' i yazın.
 

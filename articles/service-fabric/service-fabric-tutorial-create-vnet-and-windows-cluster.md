@@ -5,10 +5,10 @@ ms.topic: tutorial
 ms.date: 07/22/2019
 ms.custom: mvc
 ms.openlocfilehash: a7390858e55a456ec5fb2f851be1a7443be97082
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86245067"
 ---
 # <a name="tutorial-deploy-a-service-fabric-cluster-running-windows-into-an-azure-virtual-network"></a>Öğretici: Windows çalıştıran bir Service Fabric kümesini Azure sanal ağına dağıtma
@@ -42,7 +42,7 @@ Bu öğretici dizisinde şunların nasıl yapıldığını öğrenirsiniz:
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticiye başlamadan önce:
 
@@ -183,7 +183,7 @@ $Configobj = .\SetupApplications.ps1 -TenantId '<MyTenantID>' -ClusterName 'mysf
 > [!NOTE]
 > Ulusal bulutlar için (örneğin, Azure Kamu, Azure Çin, Azure Almanya), parametresini belirtin `-Location` .
 
-[Azure Portal](https://portal.azure.com) *tenantıd*veya dizin kimliğinizi bulabilirsiniz. **Azure Active Directory**  >  **Özellikler** ' i seçin ve **dizin kimliği** değerini kopyalayın.
+[Azure Portal](https://portal.azure.com) *tenantıd* veya dizin kimliğinizi bulabilirsiniz. **Azure Active Directory**  >  **Özellikler** ' i seçin ve **dizin kimliği** değerini kopyalayın.
 
 *Clustername* , komut dosyası tarafından oluşturulan Azure AD uygulamalarının ön ekini almak için kullanılır. Gerçek küme adıyla tam olarak eşleşmesi gerekmez. Yalnızca Azure AD yapıtları kullanımda olan Service Fabric kümesine eşlemeyi kolaylaştırır.
 

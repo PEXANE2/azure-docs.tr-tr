@@ -10,15 +10,15 @@ ms.date: 08/29/2017
 ms.author: robinsh
 ms.custom: amqp
 ms.openlocfilehash: f33521dd9110d7ba6ee84650345b38c8c6a4950b
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92149144"
 ---
 # <a name="azure-iot-device-sdk-for-c--more-about-iothubclient"></a>C için Azure IoT cihaz SDK 'Sı – IoTHubClient hakkında daha fazla bilgi
 
-[C Için Azure IoT cihaz SDK 'sı](iot-hub-device-sdk-c-intro.md) , bu serinin **c için Azure IoT cihaz SDK 'sını**tanıtan ilk makaledir. Bu makalede, SDK 'da iki mimari katman olduğunu anlatılmıştı. Tabanında, IoT Hub iletişimi doğrudan yöneten **Iothubclient** kitaplığı vardır. Ayrıca, serileştirme hizmetleri sağlamak için üzerine yapı veren **serileştirici** kitaplığı vardır. Bu makalede, **ıothubclient** kitaplığı üzerinde ek ayrıntı sağlayacağız.
+[C Için Azure IoT cihaz SDK 'sı](iot-hub-device-sdk-c-intro.md) , bu serinin **c için Azure IoT cihaz SDK 'sını** tanıtan ilk makaledir. Bu makalede, SDK 'da iki mimari katman olduğunu anlatılmıştı. Tabanında, IoT Hub iletişimi doğrudan yöneten **Iothubclient** kitaplığı vardır. Ayrıca, serileştirme hizmetleri sağlamak için üzerine yapı veren **serileştirici** kitaplığı vardır. Bu makalede, **ıothubclient** kitaplığı üzerinde ek ayrıntı sağlayacağız.
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-partial.md)]
 
@@ -67,13 +67,13 @@ Bu API 'lerin her biri için ek işlevler vardır:
 
 Bu işlevlerin tümü API adında **ll** içerir. Adın diğer **bölümünde,** bu işlevlerin her bırının parametreleri ll olmayan karşılıklarıyla aynıdır. Ancak, bu işlevlerin davranışı önemli bir şekilde farklıdır.
 
-**Iothubclient \_ createfromconnectionstring**öğesini çağırdığınızda, temeldeki kitaplıklar arka planda çalışan yeni bir iş parçacığı oluşturur. Bu iş parçacığı olayları öğesine gönderir ve IoT Hub iletileri alır. **Ll** API 'leriyle çalışırken böyle bir iş parçacığı oluşturulmaz. Arka plan iş parçacığının oluşturulması, geliştiriciye kolaylık sağlar. Olayları açıkça gönderme ve IoT Hub iletileri alma konusunda endişelenmeniz gerekmez; arka planda otomatik olarak gerçekleşir. Buna karşılık, **ll** API 'leri, ihtiyacınız varsa IoT Hub iletişim üzerinde açık bir denetim sağlar.
+**Iothubclient \_ createfromconnectionstring** öğesini çağırdığınızda, temeldeki kitaplıklar arka planda çalışan yeni bir iş parçacığı oluşturur. Bu iş parçacığı olayları öğesine gönderir ve IoT Hub iletileri alır. **Ll** API 'leriyle çalışırken böyle bir iş parçacığı oluşturulmaz. Arka plan iş parçacığının oluşturulması, geliştiriciye kolaylık sağlar. Olayları açıkça gönderme ve IoT Hub iletileri alma konusunda endişelenmeniz gerekmez; arka planda otomatik olarak gerçekleşir. Buna karşılık, **ll** API 'leri, ihtiyacınız varsa IoT Hub iletişim üzerinde açık bir denetim sağlar.
 
 Bu kavramı daha iyi anlamak için bir örneğe göz atalım:
 
 **Iothubclient \_ SendEventAsync**'ı çağırdığınızda, aslında yaptığınız işlem, olayı bir arabelleğe koyuyor. **Iothubclient \_ createfromconnectionstring** ' i çağırdığınızda oluşturulan arka plan iş parçacığı sürekli olarak bu arabelleği izler ve IoT Hub için içerdiği tüm verileri gönderir. Bu, ana iş parçacığının diğer işleri gerçekleştirirken aynı zamanda arka planda gerçekleşir.
 
-Benzer şekilde, **Iothubclient \_ setmessagecallback**kullanarak iletiler için bir geri çağırma işlevi kaydettiğinizde, ana iş parçacığından bağımsız olarak bir ileti alındığında arka plan iş parçacığının geri çağırma işlevini ÇAĞıRMASıNı sağlamak için SDK 'yı öğreneceksiniz.
+Benzer şekilde, **Iothubclient \_ setmessagecallback** kullanarak iletiler için bir geri çağırma işlevi kaydettiğinizde, ana iş parçacığından bağımsız olarak bir ileti alındığında arka plan iş parçacığının geri çağırma işlevini ÇAĞıRMASıNı sağlamak için SDK 'yı öğreneceksiniz.
 
 **Ll** API 'leri arka plan iş parçacığı oluşturmaz. Bunun yerine, IoT Hub verileri açıkça göndermek ve almak için yeni bir API çağrılmalıdır. Bu, aşağıdaki örnekte gösterilmiştir.
 
@@ -87,7 +87,7 @@ message.messageHandle = IoTHubMessage_CreateFromByteArray((const unsigned char*)
 IoTHubClient_LL_SendEventAsync(iotHubClientHandle, message.messageHandle, SendConfirmationCallback, &message)
 ```
 
-İlk üç satır iletiyi oluşturur ve son satır olayı gönderir. Ancak, daha önce belirtildiği gibi olayın gönderilmesi, verilerin yalnızca bir arabelleğe yerleştirilmesi anlamına gelir. **Iothubclient \_ ll \_ SendEventAsync**' i çağırdığınızda ağ üzerinde hiçbir şey aktarılmaz. Verileri gerçekten IoT Hub almak için, bu örnekte olduğu gibi **Iothubclient \_ ll \_ DoWork**öğesini çağırmanız gerekir:
+İlk üç satır iletiyi oluşturur ve son satır olayı gönderir. Ancak, daha önce belirtildiği gibi olayın gönderilmesi, verilerin yalnızca bir arabelleğe yerleştirilmesi anlamına gelir. **Iothubclient \_ ll \_ SendEventAsync**' i çağırdığınızda ağ üzerinde hiçbir şey aktarılmaz. Verileri gerçekten IoT Hub almak için, bu örnekte olduğu gibi **Iothubclient \_ ll \_ DoWork** öğesini çağırmanız gerekir:
 
 ```C
 while (1)
@@ -97,7 +97,7 @@ while (1)
 }
 ```
 
-Bu kod ( **ıothub \_ istemci \_ örneği \_ http** uygulamasından), **ıothubclient \_ ll \_ DoWork**öğesini tekrar tekrar çağırır. Her **ıothubclient \_ ll \_ dowork** çağrıldığında, IoT Hub için arabellekteki bazı olayları gönderir ve cihaza gönderilen sıraya alınmış bir ileti alır. İkinci durum, iletiler için bir geri çağırma işlevi kaydettiğimiz anlamına gelir, ardından geri çağırma çağrılır (herhangi bir ileti sıraya alındığı varsayılarak). Bu tür bir geri çağırma işlevini aşağıdaki gibi kodla kaydediyoruz:
+Bu kod ( **ıothub \_ istemci \_ örneği \_ http** uygulamasından), **ıothubclient \_ ll \_ DoWork** öğesini tekrar tekrar çağırır. Her **ıothubclient \_ ll \_ dowork** çağrıldığında, IoT Hub için arabellekteki bazı olayları gönderir ve cihaza gönderilen sıraya alınmış bir ileti alır. İkinci durum, iletiler için bir geri çağırma işlevi kaydettiğimiz anlamına gelir, ardından geri çağırma çağrılır (herhangi bir ileti sıraya alındığı varsayılarak). Bu tür bir geri çağırma işlevini aşağıdaki gibi kodla kaydediyoruz:
 
 ```C
 IoTHubClient_LL_SetMessageCallback(iotHubClientHandle, ReceiveMessageCallback, &receiveContext)
@@ -125,14 +125,14 @@ IoTHubClient_LL_Destroy(iotHubClientHandle);
 
 Temel olarak, bir arka plan iş parçacığı ve arka plan iş parçacığı olmadan aynı şeyi yapan başka bir API kümesi ile veri göndermek ve almak için yalnızca bir API kümesi vardır. Çok sayıda geliştirici, LL olmayan API 'Leri tercih edebilir, ancak geliştirici ağ aktarımları üzerinde açık denetim istediğinde alt düzey API 'Ler kullanışlıdır. Örneğin, bazı cihazlar zaman içinde veri toplar ve yalnızca belirtilen aralıklarda olayları (örneğin, bir saat veya bir kez günde bir kez) toplar. Alt düzey API 'Ler, IoT Hub veri gönderdiğinizde ve alırken size açıkça denetim olanağı verir. Diğerleri, alt düzey API 'Lerin sağladığı basitliği tercih eder. Arka planda oluşan bazı işler yerine ana iş parçacığında her şey gerçekleşir.
 
-Hangi modele seçeceğiniz, kullandığınız API 'Ler için tutarlı olduğundan emin olun. Başlatırsanız, **ıothubclient \_ ll \_ createfromconnectionstring**öğesini çağırarak, her bir izleme çalışması için yalnızca Ilgili alt düzey API 'leri kullandığınızdan emin olun:
+Hangi modele seçeceğiniz, kullandığınız API 'Ler için tutarlı olduğundan emin olun. Başlatırsanız, **ıothubclient \_ ll \_ createfromconnectionstring** öğesini çağırarak, her bir izleme çalışması için yalnızca Ilgili alt düzey API 'leri kullandığınızdan emin olun:
 
 * IoTHubClient \_ ll \_ SendEventAsync
 * IoTHubClient \_ ll \_ setmessagecallback
 * IoTHubClient \_ ll \_ yok etme
 * IoTHubClient \_ ll \_ DoWork
 
-Tersi de geçerlidir. **Iothubclient \_ createfromconnectionstring**ile başlatırsanız, ek işlemler Için ll olmayan API 'leri kullanın.
+Tersi de geçerlidir. **Iothubclient \_ createfromconnectionstring** ile başlatırsanız, ek işlemler Için ll olmayan API 'leri kullanın.
 
 C için Azure IoT cihaz SDK 'sında, alt düzey API 'lerin tam bir örneği için **ıothub \_ istemci \_ örnek \_ http** uygulamasına bakın. **Iothub \_ istemci \_ örneği \_ AMQP** uygulamasına, ll olmayan API 'lerin tam bir örneği için başvurulabilir.
 
@@ -155,9 +155,9 @@ sprintf_s(propText, sizeof(propText), "%d", i);
 Map_AddOrUpdate(propMap, "SequenceNumber", propText);
 ```
 
-**Iothubmessage \_ özelliklerini** çağırarak ve İletimizin tanıtıcısını geçirerek başladık. Geri aldığımız özellikler ekleme işlemi başlatmamızı sağlayan bir **harita \_ tanıtıcı** başvurusu. İkincisi, harita tanıtıcısı, özellik adı ve özellik değeri için bir başvuru alan **Map \_ AddOrUpdate**çağırarak gerçekleştirilir \_ . Bu API ile, beğendiğimiz kadar çok özellik ekleyebiliriz.
+**Iothubmessage \_ özelliklerini** çağırarak ve İletimizin tanıtıcısını geçirerek başladık. Geri aldığımız özellikler ekleme işlemi başlatmamızı sağlayan bir **harita \_ tanıtıcı** başvurusu. İkincisi, harita tanıtıcısı, özellik adı ve özellik değeri için bir başvuru alan **Map \_ AddOrUpdate** çağırarak gerçekleştirilir \_ . Bu API ile, beğendiğimiz kadar çok özellik ekleyebiliriz.
 
-Olay **Event Hubs**okunabilirse alıcı, özellikleri numaralandıralıp bunlara karşılık gelen değerleri alabilir. Örneğin, .NET ' te [EventData nesnesindeki özellikler koleksiyonuna](/dotnet/api/microsoft.servicebus.messaging.eventdata)erişerek bu durum gerçekleştirilir.
+Olay **Event Hubs** okunabilirse alıcı, özellikleri numaralandıralıp bunlara karşılık gelen değerleri alabilir. Örneğin, .NET ' te [EventData nesnesindeki özellikler koleksiyonuna](/dotnet/api/microsoft.servicebus.messaging.eventdata)erişerek bu durum gerçekleştirilir.
 
 Önceki örnekte, IoT Hub gönderdiğimiz bir olaya özellikler ekledik. Özellikler, IoT Hub alınan iletilere de eklenebilir. Bir iletiden Özellikler almak istiyoruz, ileti geri arama işlevimizde aşağıdakiler gibi bir kod kullanabiliriz:
 
@@ -191,7 +191,7 @@ static IOTHUBMESSAGE_DISPOSITION_RESULT ReceiveMessageCallback(IOTHUB_MESSAGE_HA
 }
 ```
 
-**Iothubmessage \_ özelliklerine** yapılan çağrı, **harita \_ tanıtıcı** başvurusunu döndürür. Daha sonra bu başvuruyu, ad/değer çiftleri dizisine (Ayrıca özelliklerin sayımına) başvuru almak için ** \_ Getınterals eşlemesi** için geçiyoruz. Bu noktada, istediğiniz değerlere ulaşmak için özellikleri Numaralandırırken basit bir önemi vardır.
+**Iothubmessage \_ özelliklerine** yapılan çağrı, **harita \_ tanıtıcı** başvurusunu döndürür. Daha sonra bu başvuruyu, ad/değer çiftleri dizisine (Ayrıca özelliklerin sayımına) başvuru almak için **\_ Getınterals eşlemesi** için geçiyoruz. Bu noktada, istediğiniz değerlere ulaşmak için özellikleri Numaralandırırken basit bir önemi vardır.
 
 Uygulamanızdaki özellikleri kullanmak zorunda değilsiniz. Ancak, bunları olaylarda ayarlamanız veya iletilerden almanız gerekiyorsa, **ıothubclient** kitaplığı bu şekilde kolaylaşır.
 
@@ -207,7 +207,7 @@ static IOTHUBMESSAGE_DISPOSITION_RESULT ReceiveMessageCallback(IOTHUB_MESSAGE_HA
 }
 ```
 
-Dönüş türünün **iothubmessage \_ değerlendirme \_ sonucu** olduğunu ve bu özel durumda **iothubmessage \_ kabul edildiğini**unutmayın. Bu işlevden geri dönebilmemiz için, **ıothubclient** kitaplığının ileti geri çağırması için nasıl yeniden davrandığını değiştiren başka değerler de vardır. Seçenekler şunlardır.
+Dönüş türünün **iothubmessage \_ değerlendirme \_ sonucu** olduğunu ve bu özel durumda **iothubmessage \_ kabul edildiğini** unutmayın. Bu işlevden geri dönebilmemiz için, **ıothubclient** kitaplığının ileti geri çağırması için nasıl yeniden davrandığını değiştiren başka değerler de vardır. Seçenekler şunlardır.
 
 * **Iothubmessage \_ KABUL EDILDI** – ileti başarıyla işlendi. **Iothubclient** kitaplığı, geri çağırma işlevini aynı iletiyle yeniden çağıramaz.
 
@@ -250,7 +250,7 @@ iotHubClientConfig.protocol = HTTP_Protocol;
 IOTHUB_CLIENT_HANDLE iotHubClientHandle = IoTHubClient_LL_Create(&iotHubClientConfig);
 ```
 
-Bu, **Iothubclient \_ createfromconnectionstring**ile aynı şeyi gerçekleştirir.
+Bu, **Iothubclient \_ createfromconnectionstring** ile aynı şeyi gerçekleştirir.
 
 Bu daha ayrıntılı başlatma yöntemi yerine **Iothubclient \_ createfromconnectionstring** kullanmak isteyebileceğiniz açık görünebilir. Ancak, IoT Hub bir cihazı kaydettiğinizde, ne zaman bir cihaz KIMLIĞI ve cihaz anahtarı (bağlantı dizesi değil) olduğunu aklınızda bulundurun. [Önceki makalede](iot-hub-device-sdk-c-intro.md) tanıtılan *cihaz Gezgini* SDK aracı, cihaz kimliği, cihaz anahtarı ve IoT Hub ana bilgisayar adından cihaz bağlantı dizesi oluşturmak için **Azure IoT hizmeti SDK 'sının** kitaplıklarını kullanır. Bu nedenle, bir bağlantı dizesi oluşturma adımını kaydettiği için **Iothubclient \_ ll \_ Create** çağrısı tercih edilebilir. Hangi yöntemin uygun olduğunu kullanın.
 
@@ -265,15 +265,15 @@ IoTHubClient_LL_SetOption(iotHubClientHandle, "timeout", &timeout);
 
 Yaygın olarak kullanılan birkaç seçenek vardır:
 
-* **Settoplu işleme** (bool) – **true**ise, IoT Hub gönderilen veriler toplu olarak gönderilir. **Yanlışsa**, iletiler ayrı ayrı gönderilir. Varsayılan değer **false**'dur. AMQP/AMQP-WS üzerinden toplu işleme ve D2C iletilerinde sistem özellikleri ekleme desteklenir.
+* **Settoplu işleme** (bool) – **true** ise, IoT Hub gönderilen veriler toplu olarak gönderilir. **Yanlışsa**, iletiler ayrı ayrı gönderilir. Varsayılan değer **false**'dur. AMQP/AMQP-WS üzerinden toplu işleme ve D2C iletilerinde sistem özellikleri ekleme desteklenir.
 
 * **Zaman aşımı** (işaretsiz int) – Bu değer milisaniye cinsinden temsil edilir. HTTPS isteği gönderiyorsanız veya yanıt alma bu süreden uzun sürerse bağlantı zaman aşımına uğrar.
 
-Toplu işlem seçeneği önemlidir. Varsayılan olarak, kitaplık olayları ayrı ayrı (tek bir olay, **Iothubclient \_ ll \_ SendEventAsync**'e geçirdiğiniz her şey) olarak yeniden algılar. Toplu işlem seçeneği **true**ise, kitaplık, arabelleğin (IoT Hub kabul edeceği en fazla ileti boyutuna kadar) olduğu kadar çok sayıda olay toplar.  Olay toplu işi tek bir HTTPS çağrısında IoT Hub gönderilir (tek olaylar bir JSON dizisine paketlenmiştir). Toplu işleme özelliğinin etkinleştirilmesi, genellikle ağ gidiş dönüşlerinin azaltılmasından bu yana büyük performans kazancı elde ediyor. Tek tek her olay için bir üst bilgi kümesi yerine bir olay toplu işi ile bir adet HTTPS üst bilgisi kümesi gönderdiğiniz için bant genişliğini önemli ölçüde azaltır. Bunun için özel bir nedeniniz yoksa, genellikle toplu işlemeyi etkinleştirmek isteyeceksiniz.
+Toplu işlem seçeneği önemlidir. Varsayılan olarak, kitaplık olayları ayrı ayrı (tek bir olay, **Iothubclient \_ ll \_ SendEventAsync**'e geçirdiğiniz her şey) olarak yeniden algılar. Toplu işlem seçeneği **true** ise, kitaplık, arabelleğin (IoT Hub kabul edeceği en fazla ileti boyutuna kadar) olduğu kadar çok sayıda olay toplar.  Olay toplu işi tek bir HTTPS çağrısında IoT Hub gönderilir (tek olaylar bir JSON dizisine paketlenmiştir). Toplu işleme özelliğinin etkinleştirilmesi, genellikle ağ gidiş dönüşlerinin azaltılmasından bu yana büyük performans kazancı elde ediyor. Tek tek her olay için bir üst bilgi kümesi yerine bir olay toplu işi ile bir adet HTTPS üst bilgisi kümesi gönderdiğiniz için bant genişliğini önemli ölçüde azaltır. Bunun için özel bir nedeniniz yoksa, genellikle toplu işlemeyi etkinleştirmek isteyeceksiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu makalede, **C Için Azure IoT cihaz SDK 'sında**bulunan **Iothubclient** kitaplığının davranışını ayrıntılı olarak açıklanmaktadır. Bu bilgilerle, **Iothubclient** kitaplığının yeteneklerini iyi kavramalısınız. Bu serideki ikinci makale, **seri hale getirici** kitaplığı üzerinde benzer ayrıntılar sağlayan [C-seri hale getirici için Azure IoT cihaz SDK 'sına](iot-hub-device-sdk-c-serializer.md)sahiptir.
+Bu makalede, **C Için Azure IoT cihaz SDK 'sında** bulunan **Iothubclient** kitaplığının davranışını ayrıntılı olarak açıklanmaktadır. Bu bilgilerle, **Iothubclient** kitaplığının yeteneklerini iyi kavramalısınız. Bu serideki ikinci makale, **seri hale getirici** kitaplığı üzerinde benzer ayrıntılar sağlayan [C-seri hale getirici için Azure IoT cihaz SDK 'sına](iot-hub-device-sdk-c-serializer.md)sahiptir.
 
 IoT Hub için geliştirme hakkında daha fazla bilgi için bkz. [Azure IoT SDK 'ları](iot-hub-devguide-sdks.md).
 
