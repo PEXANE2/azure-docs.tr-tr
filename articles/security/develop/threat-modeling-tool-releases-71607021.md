@@ -9,10 +9,10 @@ ms.subservice: security-develop
 ms.topic: article
 ms.date: 07/02/2019
 ms.openlocfilehash: 0e62f6950f90d7f15aa231783e292ec8eee0b4c4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87539127"
 ---
 # <a name="threat-modeling-tool-update-release-71607021---722019"></a>Threat Modeling Tool güncelleştirme sürümü 7.1.60702.1-7/2/2019
@@ -31,7 +31,7 @@ Tıbbi cihazları modelleyen bir kalıp kümesi, açık kaynaklı topluluk taraf
 
 ![Model doğrulama seçeneği](./media/threat-modeling-tool-releases-71607021/tmt-template-selection.png)
 
-## <a name="system-requirements"></a>Sistem gereksinimleri
+## <a name="system-requirements"></a>Sistem Gereksinimleri
 
 - Desteklenen İşletim Sistemleri
   - [Microsoft Windows 10 yıldönümü güncelleştirmesi](https://blogs.windows.com/windowsexperience/2016/08/02/how-to-get-the-windows-10-anniversary-update/#HTkoK5Zdv0g2F2Zq.97) veya üzeri

@@ -17,10 +17,10 @@ ms.topic: article
 ms.date: 03/22/2019
 ms.author: jegeib
 ms.openlocfilehash: e6f8ba54218f9b5b730ce3454c087d6072930edf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87825880"
 ---
 # <a name="threat-modeling-tool-releases"></a>Threat Modeling Tool yayınları
@@ -36,7 +36,7 @@ Microsoft Threat Modeling Tool Şu anda Windows için ücretsiz bir [tıklama-in
 - Ek Gereksinimler
   - Araç ve şablonlara güncelleştirmeleri almak için Internet bağlantısı gerekir.
 
-## <a name="release-notes"></a>Sürüm Notları
+## <a name="release-notes"></a>Release Notes (Sürüm Notları)
 
 - [MICROSOFT Threat MODELING Tool GA sürüm sürümü 7.3.00729.1](threat-modeling-tool-releases-73007291.md) -Temmuz 29 2020
 - [MICROSOFT Threat MODELING Tool GA sürüm sürümü 7.3.00714.2](threat-modeling-tool-releases-73007142.md) -Temmuz 14 2020

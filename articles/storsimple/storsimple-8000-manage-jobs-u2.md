@@ -1,6 +1,6 @@
 ---
 title: StorSimple 8000 serisi için işleri görüntüleme ve yönetme | Microsoft Docs
-description: StorSimple Aygıt Yöneticisi hizmet Işleri dikey penceresini ve en son, geçerli ve zamanlanmış yedekleme işlerini izlemek için nasıl kullanılacağını açıklar.
+description: StorSimple Device Manager hizmet Işleri dikey penceresini ve en son, geçerli ve zamanlanmış yedekleme işlerini izlemek için nasıl kullanılacağını açıklar.
 services: storsimple
 documentationcenter: NA
 author: alkohli
@@ -15,16 +15,16 @@ ms.workload: TBD
 ms.date: 06/29/2017
 ms.author: alkohli
 ms.openlocfilehash: dc630021cbf93074119d4feedcb3a09fae1453e3
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/12/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91949437"
 ---
-# <a name="use-the-storsimple-device-manager-service-to-view-and-manage-jobs-update-3-and-later"></a>İşleri görüntülemek ve yönetmek için StorSimple Aygıt Yöneticisi hizmetini kullanın (güncelleştirme 3 ve üstü)
+# <a name="use-the-storsimple-device-manager-service-to-view-and-manage-jobs-update-3-and-later"></a>İşleri görüntülemek ve yönetmek için StorSimple Device Manager hizmetini kullanın (güncelleştirme 3 ve üstü)
 
 ## <a name="overview"></a>Genel Bakış
-**İşler** dikey penceresi, storsimple Aygıt Yöneticisi hizmetinize bağlı cihazlarda başlatılan işleri görüntülemek ve yönetmek için tek bir merkezi Portal sağlar. Birden çok cihaz için zamanlanmış, çalışan, tamamlanmış, iptal edilmiş ve başarısız işleri görüntüleyebilirsiniz. Sonuçlar tablolu biçimde görüntülenir.
+**İşler** dikey penceresi, storsimple Device Manager hizmetinize bağlı cihazlarda başlatılan işleri görüntülemek ve yönetmek için tek bir merkezi Portal sağlar. Birden çok cihaz için zamanlanmış, çalışan, tamamlanmış, iptal edilmiş ve başarısız işleri görüntüleyebilirsiniz. Sonuçlar tablolu biçimde görüntülenir.
 
 ![İşler dikey penceresi](./media/storsimple-8000-manage-jobs-u2/jobs1.png)
 
@@ -55,7 +55,7 @@ Bu sayfada işle ilgili aşağıdaki işlemleri gerçekleştirebilirsiniz:
 Herhangi bir işin ayrıntılarını görüntülemek için aşağıdaki adımları gerçekleştirin.
 
 #### <a name="to-view-job-details"></a>İş ayrıntılarını görüntülemek için
-1. StorSimple Aygıt Yöneticisi hizmetinize gidin ve ardından **işler**' e tıklayın.
+1. StorSimple Device Manager hizmetinize gidin ve ardından **işler**' e tıklayın.
 
 2. **İşler** dikey penceresinde ilgilendiğiniz iş (ler) i uygun filtrelerle bir sorgu çalıştırarak görüntüleyin. Tamamlanmış, çalışan veya iptal edilmiş işleri arayabilirsiniz.
 
@@ -87,5 +87,5 @@ Herhangi bir işin ayrıntılarını görüntülemek için aşağıdaki adımlar
 
 ## <a name="next-steps"></a>Sonraki adımlar
 * [StorSimple yedekleme ilkelerinizi yönetmeyi](storsimple-8000-manage-backup-policies-u2.md)öğrenin.
-* StorSimple [cihazınızı yönetmek Için storsimple Aygıt Yöneticisi hizmetini nasıl kullanacağınızı](storsimple-8000-manager-service-administration.md)öğrenin.
+* StorSimple [cihazınızı yönetmek Için storsimple Device Manager hizmetini nasıl kullanacağınızı](storsimple-8000-manager-service-administration.md)öğrenin.
 

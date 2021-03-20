@@ -9,10 +9,10 @@ ms.custom: subject-armqs
 ms.author: jrasnick
 ms.date: 08/07/2020
 ms.openlocfilehash: 2b05220081dde4db6f07f21fb9978d9e466235ca
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92740372"
 ---
 # <a name="quickstart-create-an-azure-synapse-workspace-using-an-arm-template"></a>Hızlı başlangıç: ARM şablonu kullanarak Azure SYNAPSE çalışma alanı oluşturma
@@ -31,7 +31,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 ## <a name="review-the-template"></a>Şablonu gözden geçirme
 
-**Görselleştir** bağlantısını seçerek şablonu gözden geçirebilirsiniz. Sonra **Şablonu Düzenle** ' yi seçin.
+**Görselleştir** bağlantısını seçerek şablonu gözden geçirebilirsiniz. Sonra **Şablonu Düzenle**' yi seçin.
 
 [![Görselleştirme](../media/template-deployments/template-visualize-button.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2FSynapse%2Fmaster%2FManage%2FDeployWorkspace%2Fazuredeploy.json)
 
@@ -48,15 +48,15 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 1. Aşağıdaki değerleri girin veya güncelleştirin:
 
-   - **Abonelik** : bir Azure aboneliği seçin.
-   - **Kaynak grubu** : **Yeni oluştur** ' u seçin ve kaynak grubu için benzersiz bir ad girin ve **Tamam** ' ı seçin. Yeni bir kaynak grubu, kaynak temizlemeyi kolaylaştırır.
-   - **Bölge** : bir bölge seçin.  Örneğin **Orta ABD** .
-   - **Ad** : çalışma alanınız için bir ad girin.
-   - **SQL Yöneticisi oturum açma** : SQL Server için yönetici kullanıcı adını girin.
-   - **SQL yönetici parolası** : SQL Server için yönetici parolasını girin.
-   - **Etiket değerleri** : varsayılanı kabul edin.
-   - **Gözden geçirin ve oluşturun** : seçin.
-   - **Oluştur** : seç.
+   - **Abonelik**: bir Azure aboneliği seçin.
+   - **Kaynak grubu**: **Yeni oluştur** ' u seçin ve kaynak grubu için benzersiz bir ad girin ve **Tamam**' ı seçin. Yeni bir kaynak grubu, kaynak temizlemeyi kolaylaştırır.
+   - **Bölge**: bir bölge seçin.  Örneğin **Orta ABD**.
+   - **Ad**: çalışma alanınız için bir ad girin.
+   - **SQL Yöneticisi oturum açma**: SQL Server için yönetici kullanıcı adını girin.
+   - **SQL yönetici parolası**: SQL Server için yönetici parolasını girin.
+   - **Etiket değerleri**: varsayılanı kabul edin.
+   - **Gözden geçirin ve oluşturun**: seçin.
+   - **Oluştur**: seç.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

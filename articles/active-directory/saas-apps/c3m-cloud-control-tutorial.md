@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 07/17/2020
 ms.author: jeedes
 ms.openlocfilehash: 08069cef50428d09e85fffe5b6e0e51f593436a3
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92456592"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-c3m-cloud-control"></a>Öğretici: C3M Cloud Control ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
@@ -28,7 +28,7 @@ Bu öğreticide, C3M bulut denetimini Azure Active Directory (Azure AD) ile tüm
 
 Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](../manage-apps/what-is-single-sign-on.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -57,7 +57,7 @@ C3M Cloud Control 'un tümleştirmesini Azure AD ile yapılandırmak için galer
 
 ## <a name="configure-and-test-azure-ad-sso-for-c3m-cloud-control"></a>C3M Cloud Control için Azure AD SSO 'yu yapılandırma ve test etme
 
-**B. Simon**adlı bir test kullanıcısı kullanarak Azure AD SSO 'Yu C3M bulut denetimiyle yapılandırın ve test edin. SSO 'nun çalışması için, C3M bulut denetimindeki bir Azure AD kullanıcısı ve ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
+**B. Simon** adlı bir test kullanıcısı kullanarak Azure AD SSO 'Yu C3M bulut denetimiyle yapılandırın ve test edin. SSO 'nun çalışması için, C3M bulut denetimindeki bir Azure AD kullanıcısı ve ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
 
 Azure AD SSO 'yu C3M Cloud Control ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
 

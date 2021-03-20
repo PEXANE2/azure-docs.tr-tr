@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 09/24/2020
 ms.author: jeedes
 ms.openlocfilehash: eccc10cc50bac2eb2dde0bf9f77ab1ba656d5eb8
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92458377"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-loop-flow-crm"></a>Öğretici: döngü akışı CRM ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
@@ -26,7 +26,7 @@ Bu öğreticide, döngü akışı CRM 'yi Azure Active Directory (Azure AD) ile 
 * Kullanıcılarınızın Flow CRM 'yi Azure AD hesaplarıyla döngüye almak için otomatik olarak oturum açmaya olanak sağlayın.
 * Hesaplarınızı tek bir merkezi konumda yönetin-Azure portal.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -53,7 +53,7 @@ Döngü akışı CRM 'nin Azure AD ile tümleştirilmesini yapılandırmak için
 
 ## <a name="configure-and-test-azure-ad-sso-for-loop-flow-crm"></a>For döngüsü Flow CRM için Azure AD SSO 'yu yapılandırma ve test etme
 
-**B. Simon**adlı bir test kullanıcısı kullanarak Azure AD SSO 'Yu döngü Flow CRM ile yapılandırın ve test edin. SSO 'nun çalışması için, döngü akışı CRM 'de bir Azure AD kullanıcısı ve ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
+**B. Simon** adlı bir test kullanıcısı kullanarak Azure AD SSO 'Yu döngü Flow CRM ile yapılandırın ve test edin. SSO 'nun çalışması için, döngü akışı CRM 'de bir Azure AD kullanıcısı ve ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
 
 Azure AD SSO 'yu döngü Flow CRM ile yapılandırmak ve test etmek için aşağıdaki adımları gerçekleştirin:
 

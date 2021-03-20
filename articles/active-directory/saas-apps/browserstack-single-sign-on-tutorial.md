@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 06/18/2020
 ms.author: jeedes
 ms.openlocfilehash: 49a66c265e5732c7a900a149af9f69b37efd5a5d
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92456654"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-browserstack-single-sign-on"></a>Öğretici: BrowserStack çoklu oturum açma ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
@@ -28,7 +28,7 @@ Bu öğreticide, Azure Active Directory (Azure AD) ile BrowserStack çoklu oturu
 
 Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](../manage-apps/what-is-single-sign-on.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -57,7 +57,7 @@ BrowserStack çoklu oturum açma 'nın Azure AD 'de tümleştirilmesini yapılan
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-browserstack-single-sign-on"></a>BrowserStack çoklu oturum açma için Azure AD çoklu oturum açma yapılandırma ve test etme
 
-Azure AD SSO 'yu, **B. Simon**adlı bir test kullanıcısı kullanarak BrowserStack çoklu oturum açma özelliğiyle yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ve BrowserStack çoklu oturum açma bölümünde ilgili Kullanıcı arasında bir bağlantı ilişkisi kurmanız gerekir.
+Azure AD SSO 'yu, **B. Simon** adlı bir test kullanıcısı kullanarak BrowserStack çoklu oturum açma özelliğiyle yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ve BrowserStack çoklu oturum açma bölümünde ilgili Kullanıcı arasında bir bağlantı ilişkisi kurmanız gerekir.
 
 Azure AD SSO 'yu BrowserStack çoklu oturum açma özelliğiyle yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
 

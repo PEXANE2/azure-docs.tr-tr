@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 09/17/2019
 ms.author: jeedes
 ms.openlocfilehash: 1260612b82aed4fba7965ff581572592328706ec
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92457140"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-bis"></a>Öğretici: BWINDOWS ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
@@ -28,7 +28,7 @@ Bu öğreticide, bBu Azure Active Directory (Azure AD) ile nasıl tümleştirile
 
 Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](../manage-apps/what-is-single-sign-on.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -59,7 +59,7 @@ BWINDOWS 'un tümleştirmesini Azure AD 'ye göre yapılandırmak için, Gallery
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-bis"></a>BWINDOWS AD çoklu oturum açmayı yapılandırma ve test etme
 
-**B. Simon**adlı bir test kullanıcısı kullanarak Azure AD SSO 'yu bni ile yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ve "de ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
+**B. Simon** adlı bir test kullanıcısı kullanarak Azure AD SSO 'yu bni ile yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ve "de ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
 
 Azure AD SSO 'yu bni ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
 
@@ -124,7 +124,7 @@ Bu bölümde, B. Simon 'u, BWINDOWS 'a erişim vererek çoklu oturum açma özel
 
 ## <a name="configure-bis-sso"></a>BWINDOWS SSO 'yu yapılandırma
 
-Bside 'da çoklu oturum açmayı yapılandırmak **BIS** için, Indirilen **Federasyon meta veri XML** 'Sini ve uygun kopyalanmış URL 'leri Azure Portal, [bsupport ekibine](mailto:help@bistrainer.com)göndermeniz gerekir. Bu ayar, SAML SSO bağlantısının her iki tarafında da düzgün bir şekilde ayarlanmasını sağlamak üzere ayarlanmıştır.
+Bside 'da çoklu oturum açmayı yapılandırmak  için, Indirilen **Federasyon meta veri XML** 'Sini ve uygun kopyalanmış URL 'leri Azure Portal, [bsupport ekibine](mailto:help@bistrainer.com)göndermeniz gerekir. Bu ayar, SAML SSO bağlantısının her iki tarafında da düzgün bir şekilde ayarlanmasını sağlamak üzere ayarlanmıştır.
 
 ### <a name="create-bis-test-user"></a>\ Test kullanıcısı oluştur
 

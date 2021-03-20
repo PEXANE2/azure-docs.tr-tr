@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 04/29/2020
 ms.author: pafarley
 ms.openlocfilehash: 58ced0c45d66223ac3e40112126e92a4539db32d
-ms.sourcegitcommit: 9706bee6962f673f14c2dc9366fde59012549649
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94616085"
 ---
 # <a name="use-an-onnx-model-from-custom-vision-with-windows-ml-preview"></a>Windows ML ile Özel Görüntü İşleme bir ONNX modeli kullanma (Önizleme)
@@ -23,7 +23,7 @@ Windows ML (önizleme) ile Özel Görüntü İşleme hizmetinden dışarı aktar
 
 Bu kılavuzda, Windows ML ile Özel Görüntü İşleme Hizmeti aktarılmış bir ONNX dosyasını nasıl kullanacağınızı öğreneceksiniz. Örnek UWP uygulamasını, eğitilen görüntü sınıflandırıcınızla kullanacaksınız.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Windows 10 sürüm 1809 veya üzeri
 * 17763 veya üzeri derleme Windows SDK
@@ -49,13 +49,13 @@ Kendi resim sınıflandırıcı modelinizi kullanmak için şu adımları izleyi
 
 1. Özel Görüntü İşleme Hizmeti ile bir sınıflandırıcı oluşturun ve eğitin. Bunun nasıl yapılacağı hakkında yönergeler için bkz. [sınıflandırıcı oluşturma ve eğitme](./getting-started-build-a-classifier.md). **Genel (Compact)** gibi **Compact** etki alanlarından birini kullanın. 
    * Farklı bir etki alanı kullanan mevcut bir sınıflandırıcınızı varsa, proje ayarlarında onu **düzenlemeye** dönüştürebilirsiniz. Ardından, devam etmeden önce projenizi yeniden eğitme.
-1. Modelinizi dışarı aktarın. Performans sekmesine geçin ve bir **Compact** etki alanı ile eğitilen bir yineleme seçin. Görüntülenen **dışarı aktar** düğmesini seçin. Sonra **Onnx** ' i ve ardından **dışarı aktar** ' ı seçin. Dosya hazır duruma geldikten sonra **İndir** düğmesini seçin. Dışarı aktarma seçenekleri hakkında daha fazla bilgi için bkz. [modelinizi dışarı aktarma](./export-your-model.md).
+1. Modelinizi dışarı aktarın. Performans sekmesine geçin ve bir **Compact** etki alanı ile eğitilen bir yineleme seçin. Görüntülenen **dışarı aktar** düğmesini seçin. Sonra **Onnx**' i ve ardından **dışarı aktar**' ı seçin. Dosya hazır duruma geldikten sonra **İndir** düğmesini seçin. Dışarı aktarma seçenekleri hakkında daha fazla bilgi için bkz. [modelinizi dışarı aktarma](./export-your-model.md).
 1. İndirilen *. zip* dosyasını açın ve *modelden model. onnx* dosyasını ayıklayın. Bu dosya, sınıflandırıcı modelinizi içerir.
-1. Visual Studio 'daki Çözüm Gezgini **varlıklar** klasörüne sağ tıklayın ve __Varolan öğe Ekle__ ' yi seçin. ONNX dosyanızı seçin.
-1. Çözüm Gezgini, ONNX dosyasına sağ tıklayın ve **Özellikler** ' i seçin. Dosya için aşağıdaki özellikleri değiştirin:
+1. Visual Studio 'daki Çözüm Gezgini **varlıklar** klasörüne sağ tıklayın ve __Varolan öğe Ekle__' yi seçin. ONNX dosyanızı seçin.
+1. Çözüm Gezgini, ONNX dosyasına sağ tıklayın ve **Özellikler**' i seçin. Dosya için aşağıdaki özellikleri değiştirin:
    * __Derleme eylemi__  ->  __İçerik__
    * __Çıkış Dizinine Kopyala__  ->  __Daha yeniyse kopyala__
-1. Sonra _MainPage.xaml.cs_ ' i açın ve değerini `_ourOnnxFileName` onnx dosyanızın adıyla değiştirin.
+1. Ardından _MainPage. xaml. cs_ dosyasını açın ve değerini `_ourOnnxFileName` onnx dosyanızın adıyla değiştirin.
 1. `F5`Projeyi derlemek ve çalıştırmak için öğesini kullanın.
 1. Değerlendirilecek görüntüyü seçmek için düğmeye tıklayın.
 

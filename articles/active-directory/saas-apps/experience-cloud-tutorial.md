@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 02/10/2020
 ms.author: jeedes
 ms.openlocfilehash: 88f2ca6b07c95b4058216dffb8f5f6710cc2a37b
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92453731"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-experience-cloud"></a>Öğretici: deneyim bulutu ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
@@ -28,7 +28,7 @@ Bu öğreticide, deneyim bulutunu Azure Active Directory (Azure AD) ile tümleş
 
 Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](../manage-apps/what-is-single-sign-on.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -57,7 +57,7 @@ Deneyim bulutunun Azure AD ile tümleştirilmesini yapılandırmak için, Galeri
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-experience-cloud"></a>Deneyim bulutu için Azure AD çoklu oturum açma yapılandırma ve test etme
 
-**B. Simon**adlı bir test kullanıcısı kullanarak Azure AD SSO 'Yu deneyim bulutuyla yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ile deneyim bulutu 'ndaki ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
+**B. Simon** adlı bir test kullanıcısı kullanarak Azure AD SSO 'Yu deneyim bulutuyla yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ile deneyim bulutu 'ndaki ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
 
 Azure AD SSO 'yu deneyim bulutu 'yla yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
 

@@ -6,10 +6,10 @@ ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 05/08/2020
 ms.openlocfilehash: 667226770d25ef1687420b1c13bc71863f987e33
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91324697"
 ---
 # <a name="migrate-to-v3-authoring-entity"></a>V3 yazma varlığına geçiş
@@ -45,14 +45,14 @@ V3 ile, ilişki uygulama yazarları tarafından açık ve tasarlanmıştır. Bu,
 * Geçerli tahmini başarı ölçümlerini yakala
 * Geçerli Pano bilgilerini uygulama durumunun bir anlık görüntüsü olarak yakala
 * Mevcut hedefleri, varlıkları, tümcecik listelerini, desenleri ve toplu testleri gözden geçirin
-* Aşağıdaki öğeler **değişiklik yapılmadan**geçirilebilir:
+* Aşağıdaki öğeler **değişiklik yapılmadan** geçirilebilir:
     * Hedefler
     * Varlıklar
         * Normal ifade varlığı
         * Liste varlığı
     * Özellikler
         * Tümcecik listesi
-* Aşağıdaki öğelerin **değişikliklerle**geçirilmesi gerekir:
+* Aşağıdaki öğelerin **değişikliklerle** geçirilmesi gerekir:
     * Varlıklar
         * Hiyerarşik varlık
         * Bileşik varlık
@@ -155,7 +155,7 @@ Tüm mevcut kısıtlama özellikleri otomatik olarak gerekli özellik bayrağın
 
 #### <a name="luis-portal-changes"></a>LUSıS portalı değişiklikleri
 
-LUSıS önizleme portalı bu işlevselliğe bir **kısıtlama**olarak başvurdu. Geçerli Lua portalı, bu işlevselliği **gerekli bir özellik**olarak belirler.
+LUSıS önizleme portalı bu işlevselliğe bir **kısıtlama** olarak başvurdu. Geçerli Lua portalı, bu işlevselliği **gerekli bir özellik** olarak belirler.
 
 #### <a name="previous-authoring-api"></a>Önceki yazma API 'SI
 

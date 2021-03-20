@@ -9,10 +9,10 @@ ms.date: 10/11/2020
 ms.author: anfeldma
 ms.custom: devx-track-js, devx-track-azurecli, devx-track-csharp
 ms.openlocfilehash: 2ddba95f9ccc25d536638dbc68c41027d26e71c7
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93341017"
 ---
 # <a name="configure-time-to-live-in-azure-cosmos-db"></a>Azure Cosmos DB yaşam süresi yapılandırma
@@ -35,9 +35,9 @@ Zaman aşımı olmadan bir kapsayıcıda canlı kalma süresini etkinleştirmek 
 4. Var olan bir kapsayıcıyı seçin, genişletin ve aşağıdaki değerleri değiştirin:
 
    * **Ölçek & ayarları** penceresini açın.
-   * Bulma **ayarı** altında, **yaşam süresi** ' nin altında.
+   * Bulma **ayarı** altında, **yaşam süresi**' nin altında.
    * **Açık (varsayılan)** **seçeneğini belirleyin veya SEÇIN ve bir** TTL değeri ayarlayın
-   * Değişiklikleri kaydetmek için **Kaydet** ’e tıklayın.
+   * Değişiklikleri kaydetmek için **Kaydet**’e tıklayın.
 
    :::image type="content" source="./media/how-to-time-to-live/how-to-time-to-live-portal.png" alt-text="Azure portal yaşam süresi yapılandırma":::
 
@@ -219,11 +219,11 @@ Bir öğe üzerinde yaşam süresini etkinleştirmek için aşağıdaki adımlar
 4. Var olan bir kapsayıcıyı seçin, genişletin ve aşağıdaki değerleri değiştirin:
 
    * **Ölçek & ayarları** penceresini açın.
-   * Bulma **ayarı** altında, **yaşam süresi** ' nin altında.
+   * Bulma **ayarı** altında, **yaşam süresi**' nin altında.
    * **Açık (varsayılan)** seçeneğini belirleyin veya Select seçeneğini **BELIRLEYIN ve bir** TTL değeri ayarlayın. 
-   * Değişiklikleri kaydetmek için **Kaydet** ’e tıklayın.
+   * Değişiklikleri kaydetmek için **Kaydet**’e tıklayın.
 
-5. Daha sonra, yaşam süresi ayarlamak istediğiniz öğeye gidin, `ttl` özelliği ekleyin ve **Güncelleştir** ' i seçin. 
+5. Daha sonra, yaşam süresi ayarlamak istediğiniz öğeye gidin, `ttl` özelliği ekleyin ve **Güncelleştir**' i seçin. 
 
    ```json
    {

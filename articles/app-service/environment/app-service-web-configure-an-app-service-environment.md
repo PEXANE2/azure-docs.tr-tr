@@ -8,10 +8,10 @@ ms.date: 07/11/2017
 ms.author: ccompy
 ms.custom: seodec18
 ms.openlocfilehash: 598e43d07c213cfeb25f0ecbc7bd02b6ec54b7ed
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88962596"
 ---
 # <a name="configuring-an-app-service-environment-v1"></a>App Service Ortamı v1 yapılandırma
@@ -125,7 +125,7 @@ Bir Ao 'da, tüm App Service planları adanmış App Service planlardır. Diğer
 ### <a name="settings"></a>Ayarlar
 ATıCı dikey penceresinde, birkaç önemli özelliği içeren bir **Ayarlar** bölümü vardır:
 
-**Ayarlar**  >  **Özellikler**: Ao dikey penceresini getirdiğinizde **Ayarlar** dikey penceresi otomatik olarak açılır. Üst kısımdaki **Özellikler**. Burada, **temel**Özellikler 'de gördüklerinizle yedekli olan, ancak **sanal IP adresinin**yanı sıra **giden IP adreslerinden**çok yararlı olan birçok öğe vardır.
+**Ayarlar**  >  **Özellikler**: Ao dikey penceresini getirdiğinizde **Ayarlar** dikey penceresi otomatik olarak açılır. Üst kısımdaki **Özellikler**. Burada, **temel** Özellikler 'de gördüklerinizle yedekli olan, ancak **sanal IP adresinin** yanı sıra **giden IP adreslerinden** çok yararlı olan birçok öğe vardır.
 
 ![Ayarlar dikey penceresi ve özellikleri][4]
 
@@ -147,14 +147,14 @@ Her kaynak havuzu için temel dikey pencere, bu kaynak havuzu için ölçümleri
 Portalda, kaynak Havuzlarınızda kaç tane sunucu olduğunu denetlemek için üç yol vardır:
 
 * Üstteki ana Ao dikey penceresinden bir ölçeklendirme işlemi. Ön uç ve çalışan havuzlarında birden çok ölçek yapılandırma değişikliği yapabilirsiniz. Hepsi tek bir işlem olarak uygulanır.
-* **Ayarlar**altında olan ayrı kaynak havuzu **Ölçek** dikey penceresinden el ile ölçeklendirme işlemi.
+* **Ayarlar** altında olan ayrı kaynak havuzu **Ölçek** dikey penceresinden el ile ölçeklendirme işlemi.
 * Ayrı kaynak havuzu **Ölçek** dikey penceresinden ayarladığınız otomatik ölçeklendirme.
 
 AI dikey penceresinde ölçek işlemini kullanmak için kaydırıcıyı istediğiniz miktara sürükleyin ve kaydedin. Bu Kullanıcı arabirimi, boyutun değiştirilmesini de destekler.  
 
 ![Ölçek Kullanıcı arabirimi][6]
 
-Belirli bir kaynak havuzundaki el ile veya otomatik ölçeklendirme yeteneklerini kullanmak için, **Ayarlar**  >  **ön uç havuzu**  /  **çalışan havuzlarıyla** uygun şekilde gidin. Sonra değiştirmek istediğiniz havuzu açın. **Ayarlar**  >  **ölçeği** genişletme veya **ayarların**  >  **ölçeğini genişletme**bölümüne gidin. **Ölçek Genişletme** dikey penceresi, örnek miktarını denetlemenize olanak sağlar. **Ölçeği artırma** , kaynak boyutunu denetlemenizi sağlar.  
+Belirli bir kaynak havuzundaki el ile veya otomatik ölçeklendirme yeteneklerini kullanmak için, **Ayarlar**  >  **ön uç havuzu**  /  **çalışan havuzlarıyla** uygun şekilde gidin. Sonra değiştirmek istediğiniz havuzu açın. **Ayarlar**  >  **ölçeği** genişletme veya **ayarların**  >  **ölçeğini genişletme** bölümüne gidin. **Ölçek Genişletme** dikey penceresi, örnek miktarını denetlemenize olanak sağlar. **Ölçeği artırma** , kaynak boyutunu denetlemenizi sağlar.  
 
 ![Ölçek ayarları kullanıcı arabirimi][7]
 

@@ -17,10 +17,10 @@ ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e81389ec953829115062a31a019caf040850cbea
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87798656"
 ---
 # <a name="delegate-access-governance-to-access-package-managers-in-azure-ad-entitlement-management"></a>Azure AD Yetkilendirme Yönetimi 'nde paket yöneticilerine erişim yönetimine temsilci seçme
@@ -42,7 +42,7 @@ Erişim paketi Yöneticisi rolüne bir kullanıcı atamak için aşağıdaki ad�
 
 **Önkoşul rolü:** Genel yönetici, Kullanıcı Yöneticisi veya katalog sahibi
 
-1. Azure portal, **Azure Active Directory** ' a ve ardından **kimlik**Yönetimi ' ne tıklayın.
+1. Azure portal, **Azure Active Directory** ' a ve ardından **kimlik** Yönetimi ' ne tıklayın.
 
 1. Sol taraftaki menüden **kataloglar** ' a tıklayın ve ardından Yöneticiler eklemek istediğiniz kataloğu açın.
 
@@ -60,7 +60,7 @@ Bir kullanıcıyı erişim paketi Yöneticisi rolünden kaldırmak için aşağ�
 
 **Önkoşul rolü:** Genel yönetici, Kullanıcı Yöneticisi veya katalog sahibi
 
-1. Azure portal, **Azure Active Directory** ' a ve ardından **kimlik**Yönetimi ' ne tıklayın.
+1. Azure portal, **Azure Active Directory** ' a ve ardından **kimlik** Yönetimi ' ne tıklayın.
 
 1. Sol taraftaki menüden **kataloglar** ' a tıklayın ve ardından Yöneticiler eklemek istediğiniz kataloğu açın.
 

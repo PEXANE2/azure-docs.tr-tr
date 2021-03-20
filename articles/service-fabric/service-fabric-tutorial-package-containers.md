@@ -5,10 +5,10 @@ ms.topic: tutorial
 ms.date: 07/22/2019
 ms.custom: mvc, devx-track-azurecli
 ms.openlocfilehash: 995291a783d14a6d2db8ed8319c720f55c009d91
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92738848"
 ---
 # <a name="tutorial-package-and-deploy-containers-as-a-service-fabric-application-using-yeoman"></a>Öğretici: Yeoman'ı kullanarak kapsayıcıları Service Fabric uygulaması olarak paketleme ve dağıtma
@@ -23,7 +23,7 @@ Bu öğretici, bir dizinin ikinci bölümüdür. Bu öğreticide, bir şablon ol
 > * Uygulamayı dağıtma ve çalıştırma
 > * Uygulamayı temizleme
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Bu öğretici serisinin [1. Bölümünde](service-fabric-tutorial-create-container-images.md) oluşturulup Azure Container Registry’ye gönderilen kapsayıcı görüntüleri kullanılır.
 * Linux geliştirme ortamı [ayarlanmıştır](service-fabric-tutorial-create-container-images.md).
@@ -99,7 +99,7 @@ Kullanılan hizmeti eklemeye yönelik girişlerin tümü aşağıda gösterilmek
    create TestContainer/azurevotebackPkg/code/Dummy.txt
 ```
 
-Bu öğreticinin geri kalanında **TestContainer** dizininde çalışacağız. Örneğin, *./TestContainer/TestContainer* . Bu dizinde aşağıdakiler bulunmalıdır.
+Bu öğreticinin geri kalanında **TestContainer** dizininde çalışacağız. Örneğin, *./TestContainer/TestContainer*. Bu dizinde aşağıdakiler bulunmalıdır.
 
 ```bash
 $ ls

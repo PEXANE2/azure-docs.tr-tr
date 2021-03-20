@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 08/04/2020
 ms.author: allensu
 ms.openlocfilehash: 051737a9f5e0d4092cda26a3f7ce3df1d7f535ef
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87760133"
 ---
 # <a name="actions-in-the-standard-rules-engine-for-azure-cdn"></a>Azure CDN için standart kurallar altyapısındaki eylemler
@@ -30,7 +30,7 @@ Kuralların eşleştiği talepler için uç noktanın yaşam süresi (TTL) değe
 
 #### <a name="required-fields"></a>Gerekli alanlar
 
-Önbellek davranışı |  Açıklama              
+Önbellek davranışı |  Description              
 ---------------|----------------
 Atlama önbelleği | Bu seçenek belirlendiğinde ve kural eşleştiğinde, içerik önbelleğe alınmaz.
 Geçersiz kıl | Bu seçenek belirlendiğinde ve kural eşleştiğinde, kaynaktan döndürülen TTL değeri, eylemde belirtilen değerle üzerine yazılır. Bu davranış yalnızca yanıtın önbelleklenebilir olması durumunda uygulanır. "No-Cache", "Private", "No-Store" değerlerine sahip Cache-Control yanıt üst bilgisi için, eylem geçerli olmayacaktır.
@@ -48,7 +48,7 @@ Sorgu dizelerine göre önbellek anahtarını değiştirmek için bu eylemi kull
 
 #### <a name="required-fields"></a>Gerekli alanlar
 
-Davranış | Açıklama
+Davranış | Description
 ---------|------------
 Şunları Dahil Et: | Bu seçenek belirlendiğinde ve kural eşleştiğinde, parametrelerde belirtilen sorgu dizeleri önbellek anahtarı oluşturulduğunda dahil edilir. 
 Her benzersiz URL'yi önbelleğe al | Bu seçenek belirlendiğinde ve kural eşleştiğinde, her benzersiz URL 'nin kendi önbellek anahtarı vardır. 
@@ -63,7 +63,7 @@ Bu eylemi, kaynağına gönderilen isteklerde bulunan üst bilgileri değiştirm
 
 Eylem | HTTP üst bilgi adı | Değer
 -------|------------------|------
-Ekleme | Bu seçenek belirlendiğinde ve kural eşleştiğinde, **üstbilgi adı** bölümünde belirtilen üstbilgi belirtilen değere sahip isteğe eklenir. Üst bilgi zaten mevcutsa, değer mevcut değere eklenir. | Dize
+Ekle | Bu seçenek belirlendiğinde ve kural eşleştiğinde, **üstbilgi adı** bölümünde belirtilen üstbilgi belirtilen değere sahip isteğe eklenir. Üst bilgi zaten mevcutsa, değer mevcut değere eklenir. | Dize
 Üzerine yaz | Bu seçenek belirlendiğinde ve kural eşleştiğinde, **üstbilgi adı** bölümünde belirtilen üstbilgi belirtilen değere sahip isteğe eklenir. Üst bilgi zaten mevcutsa, belirtilen değer varolan değerin üzerine yazar. | Dize
 Sil | Bu seçenek belirlendiğinde, kural eşleşir ve kuralda belirtilen üst bilgi bulunur, üst bilgi istekten silinir. | Dize
 
@@ -75,8 +75,8 @@ Sil | Bu seçenek belirlendiğinde, kural eşleşir ve kuralda belirtilen üst b
 
 Eylem | HTTP üst bilgi adı | Değer
 -------|------------------|------
-Ekleme | Bu seçenek belirlendiğinde ve kural eşleştiğinde, **üst bilgi adı** 'nda belirtilen üst bilgi yanıta belirtilen **değer**kullanılarak eklenir. Üst bilgi zaten mevcutsa, **değer** var olan değere eklenir. | Dize
-Üzerine yaz | Bu seçenek belirlendiğinde ve kural eşleştiğinde, **üst bilgi adı** 'nda belirtilen üst bilgi yanıta belirtilen **değer**kullanılarak eklenir. Üst bilgi zaten mevcutsa, **değer** varolan değerin üzerine yazar. | Dize
+Ekle | Bu seçenek belirlendiğinde ve kural eşleştiğinde, **üst bilgi adı** 'nda belirtilen üst bilgi yanıta belirtilen **değer** kullanılarak eklenir. Üst bilgi zaten mevcutsa, **değer** var olan değere eklenir. | Dize
+Üzerine yaz | Bu seçenek belirlendiğinde ve kural eşleştiğinde, **üst bilgi adı** 'nda belirtilen üst bilgi yanıta belirtilen **değer** kullanılarak eklenir. Üst bilgi zaten mevcutsa, **değer** varolan değerin üzerine yazar. | Dize
 Sil | Bu seçenek belirlendiğinde, kural eşleşir ve kuralda belirtilen üst bilgi bulunur, üst bilgi yanıttan silinir. | Dize
 
 ### <a name="url-redirect"></a>URL yeniden yönlendirme
@@ -106,7 +106,7 @@ Alan | Açıklama
 ------|------------
 Kaynak stili | Değiştirilecek URL yolundaki kaynak modelini tanımlayın. Şu anda, kaynak stili önek tabanlı eşleşme kullanıyor. Tüm URL yollarını eşleştirmek için, **/** kaynak model değeri olarak bir eğik çizgi () kullanın.
 Hedef | Yeniden yazma sırasında kullanılacak hedef yolu tanımlayın. Hedef yol, kaynak deseninin üzerine yazar.
-Eşleşmeyen yolu koru | **Evet**olarak ayarlanırsa, kaynak örüntüden sonraki kalan yol yeni hedef yoluna eklenir. 
+Eşleşmeyen yolu koru | **Evet** olarak ayarlanırsa, kaynak örüntüden sonraki kalan yol yeni hedef yoluna eklenir. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

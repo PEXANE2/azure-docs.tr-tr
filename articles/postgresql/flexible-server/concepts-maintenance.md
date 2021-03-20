@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.openlocfilehash: ffee15776a48b6495f78b6becf81c620e1dc4d69
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91336318"
 ---
 # <a name="scheduled-maintenance-in-azure-database-for-postgresql--flexible-server"></a>MySQL için Azure Veritabanı - Esnek Sunucuda zamanlanmış bakım
@@ -29,8 +29,8 @@ Yaklaşan zamanlanmış bakım bildirimleri şu olabilir:
 * Belirli bir adrese e-postayla
 * Azure Resource Manager rolüne e-postayla
 * Mobil cihazlara kısa mesajda (SMS) gönderilir
-* Bir Azure uygulamasına bildirim olarak gönderildi
-* Sesli ileti olarak teslim edildi
+* Azure uygulamasına bildirim olarak gönderilerek
+* Sesli mesaj olarak teslim edilerek
  
 Bakım zamanlamasıyla ilgili tercihleri belirtirken haftanın gününü ve zaman aralığını belirleyebilirsiniz. Herhangi bir değer belirtmezseniz sistem, sunucunuzun bulunduğu bölgenin saatine göre akşam 11 ile sabah 7 arasında bir zaman seçer. Azure aboneliğinizdeki her esnek sunucu için farklı zamanlamalar tanımlayabilirsiniz. 
  

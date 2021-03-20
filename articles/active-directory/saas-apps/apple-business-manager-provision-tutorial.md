@@ -16,10 +16,10 @@ ms.topic: tutorial
 ms.date: 09/08/2020
 ms.author: Zhchia
 ms.openlocfilehash: b4f24c9beffcd67fb84940c2e159da615496d9aa
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96180379"
 ---
 # <a name="tutorial-configure-apple-business-manager-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlaması için Apple Business Manager 'ı yapılandırma
@@ -34,7 +34,7 @@ Bu öğretici, otomatik Kullanıcı sağlamayı yapılandırmak için hem Apple 
 > * Apple Business Manager 'daki kullanıcıları artık erişim gerektirdiklerinde kaldırın
 > * Kullanıcı özniteliklerinin Azure AD ile Apple Business Manager arasında eşitlenmiş olmasını sağlama
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticide özetlenen senaryo, aşağıdaki önkoşulların zaten olduğunu varsayar:
 

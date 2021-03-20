@@ -4,10 +4,10 @@ description: Genel Veri Koruma Yönetmeliği (GDPR) kapsamında yükümlülükle
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 2c44b2f3aa6f2dfad18ed53804842a5dad8bd94a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85483525"
 ---
 # <a name="export-or-delete-personal-data-from-azure-devtest-labs"></a>Azure DevTest Labs kişisel verileri dışarı aktarma veya silme
@@ -51,7 +51,7 @@ Azure portal veya PowerShell 'i kullanarak kişisel ve laboratuvar kullanım ver
 - **disks.csv** -farklı VM 'ler tarafından kullanılan disklerle ilgili bilgiler içerir
 - **virtualmachines.csv** -laboratuvardaki VM 'ler hakkında bilgi içerir.
 
-### <a name="azure-portal"></a>Azure portal
+### <a name="azure-portal"></a>Azure portalı
 Laboratuvar kullanıcısı olarak, DevTest Labs hizmetinin depoladığı kişisel veriler üzerinde bir dışarı aktarma isteğinde bulunabilir. Bir dışarı aktarma istemek için laboratuvarınızın **genel bakış** sayfasında **kişisel veriler** seçeneğine gidin. Bir **dışarı aktarma isteği** seçin düğmesini laboratuvar yöneticinizin depolama hesabınızda indirilebilir bir Excel dosyası oluşturmayı devre dışı bırakın. Daha sonra bu verileri görüntülemek için laboratuvar yöneticinize başvurabilirsiniz.
 
 1. Sol taraftaki menüden **kişisel veriler** ' i seçin. 
@@ -151,9 +151,9 @@ Yukarıdaki örnekteki anahtar bileşenleri şunlardır:
 
 **virtualmachines.csv** aşağıdaki veri sütunlarını içerir:
 
-| Sütun adı | Açıklama |
+| Sütun adı | Description |
 | ----------- | ----------- | 
-| kaynak grubundaki | Laboratuvarın bulunduğu abonelik tanımlayıcısı. |
+| SubscriptionId | Laboratuvarın bulunduğu abonelik tanımlayıcısı. |
 | Labuıd | Laboratuvar için benzersiz GUID tanımlayıcısı. |
 | LabName | Laboratuvarın adı. |
 | Labresourceıd | Tam nitelikli laboratuvar kaynak KIMLIĞI. |
@@ -179,9 +179,9 @@ Yukarıdaki örnekteki anahtar bileşenleri şunlardır:
 
 **disks.csv** yer alan veri sütunları aşağıda listelenmiştir:
 
-| Sütun adı | Açıklama | 
+| Sütun adı | Description | 
 | ----------- | ----------- | 
-| kaynak grubundaki | Laboratuvarı içeren aboneliğin KIMLIĞI |
+| SubscriptionId | Laboratuvarı içeren aboneliğin KIMLIĞI |
 | Labuıd | Laboratuvar için GUID |
 | LabName | Laboratuvarın adı | 
 | Labresourceıd | Laboratuvar için tam kaynak KIMLIĞI | 
@@ -199,7 +199,7 @@ Yukarıdaki örnekteki anahtar bileşenleri şunlardır:
 
 
 > [!NOTE]
-> Birden çok laboratuvarda çalışıyorsanız ve genel bilgi almak istiyorsanız, iki anahtar sütunu, abonelikler genelinde benzersiz kimlikler olan **Labuıd** ve **resourceuid**olur.
+> Birden çok laboratuvarda çalışıyorsanız ve genel bilgi almak istiyorsanız, iki anahtar sütunu, abonelikler genelinde benzersiz kimlikler olan **Labuıd** ve **resourceuid** olur.
 
 İçe aktarılmış veriler, SQL Server, Power BI vb. gibi araçlar kullanılarak işlenebilir ve görselleştirilebilir. Bu özellik özellikle, laboratuvarınızın kullanımını, yaptığınız şekilde aynı Azure aboneliğini kullanmayan Yönetim ekibinize raporlamak istediğinizde yararlıdır.
 

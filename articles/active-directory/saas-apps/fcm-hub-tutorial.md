@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/25/2020
 ms.author: jeedes
 ms.openlocfilehash: cedd0f5f96d31c9a3c7e587f1478a3c7dfc122cd
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92453612"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-fcm-hub"></a>Öğretici: FCM HUB ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
@@ -28,7 +28,7 @@ Bu öğreticide, FCM HUB 'ını Azure Active Directory (Azure AD) ile tümleşti
 
 Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](../manage-apps/what-is-single-sign-on.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -58,7 +58,7 @@ FCM HUB 'ının Azure AD ile tümleştirilmesini yapılandırmak için, galerisi
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-fcm-hub"></a>FCM HUB 'ı için Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-**B. Simon**adlı bir test kullanıcısı kullanarak, FCM hub Ile Azure AD SSO 'yu yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ve FCM HUB 'ında ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
+**B. Simon** adlı bir test kullanıcısı kullanarak, FCM hub Ile Azure AD SSO 'yu yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ve FCM HUB 'ında ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
 
 Azure AD SSO 'yu FCM HUB 'ı ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
 

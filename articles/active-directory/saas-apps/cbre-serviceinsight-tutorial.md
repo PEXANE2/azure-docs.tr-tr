@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 08/29/2019
 ms.author: jeedes
 ms.openlocfilehash: 899132a823cfbbde600de790166ce8923f435725
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92456424"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-cbre-serviceinsight"></a>Öğretici: CBRE Serviceınsight ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
@@ -28,7 +28,7 @@ Bu öğreticide, CBRE Serviceınsight 'ı Azure Active Directory (Azure AD) ile 
 
 Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](../manage-apps/what-is-single-sign-on.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -55,7 +55,7 @@ CBRE Serviceınsight tümleştirmesini Azure AD ile yapılandırmak için, Galer
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-cbre-serviceinsight"></a>CBRE Serviceınsight için Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-**B. Simon**adlı bir test kullanıcısı kullanarak Azure AD SSO 'Yu CBRE serviceınsight ile yapılandırın ve test edin. SSO 'nun çalışması için, CBRE Serviceınsight içindeki bir Azure AD kullanıcısı ve ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
+**B. Simon** adlı bir test kullanıcısı kullanarak Azure AD SSO 'Yu CBRE serviceınsight ile yapılandırın ve test edin. SSO 'nun çalışması için, CBRE Serviceınsight içindeki bir Azure AD kullanıcısı ve ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
 
 Azure AD SSO 'yu CBRE Serviceınsight ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
 
@@ -104,7 +104,7 @@ Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaks�
 Bu bölümde, CBRE Serviceınsight 'a erişim vererek Azure çoklu oturum açma özelliğini kullanmak için B. Simon 'u etkinleştireceksiniz.
 
 1. Azure portal **Kurumsal uygulamalar**' ı seçin ve ardından **tüm uygulamalar**' ı seçin.
-1. Uygulamalar listesinde **CBRE Serviceınsight**öğesini seçin.
+1. Uygulamalar listesinde **CBRE Serviceınsight** öğesini seçin.
 1. Uygulamanın genel bakış sayfasında **Yönet** bölümünü bulun ve **Kullanıcılar ve gruplar**' ı seçin.
 
    !["Kullanıcılar ve gruplar" bağlantısı](common/users-groups-blade.png)

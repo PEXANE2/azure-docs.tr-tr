@@ -10,10 +10,10 @@ ms.date: 03/24/2020
 author: mlearned
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 3277fefb5615fd492b2859b741ef8e6f991eaf23
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91355483"
 ---
 # <a name="deploy-to-azure-functions-with-devops-starter"></a>DevOps Starter ile Azure Işlevlerine dağıtma
@@ -49,11 +49,11 @@ DevOps Starter Azure Pipelines ' de bir CI/CD işlem hattı oluşturur. Yeni bir
 
 1. [Azure portalda](https://portal.azure.com) oturum açma
 
-1. Arama kutusuna **DevOps Starter**yazın ve ardından öğesini seçin. Yeni bir tane oluşturmak için **Ekle** ' ye tıklayın.
+1. Arama kutusuna **DevOps Starter** yazın ve ardından öğesini seçin. Yeni bir tane oluşturmak için **Ekle** ' ye tıklayın.
 
     ![DevOps başlangıç panosu](_img/azure-devops-starter-aks/search-devops-starter.png)
 
-1. **.Net**' i seçin ve ardından **İleri**' yi seçin. **Uygulama çerçevesi seçin**altında **ASP.net** ' ı seçin ve **İleri**' ye tıklayın.
+1. **.Net**' i seçin ve ardından **İleri**' yi seçin. **Uygulama çerçevesi seçin** altında **ASP.net** ' ı seçin ve **İleri**' ye tıklayın.
 
 1. **İşlev uygulaması** seçip **İleri**' yi seçin.
 
@@ -93,11 +93,11 @@ DevOps Starter, Azure DevOps kuruluşunuzda bir CI/CD işlem hattını otomatik 
 
 1. DevOps başlangıç panosuna gidin.
 
-1. **Build**altındaki köprüye tıklayın. Bir tarayıcı sekmesi, yeni projeniz için derleme işlem hattını görüntüler.
+1. **Build** altındaki köprüye tıklayın. Bir tarayıcı sekmesi, yeni projeniz için derleme işlem hattını görüntüler.
 
     ![Ekran görüntüsünde, C ı/C D işlem hattındaki Build altındaki bir bağlantıya işaret eden bir ok ile Azure portal DevOps başlangıç panosu gösterilmektedir.](_img/azure-devops-project-functions/build.png)
 
-1. **Düzenle**’yi seçin. Bu bölmede, derleme işlem hattınızla ilgili çeşitli görevleri inceleyebilirsiniz. Derleme, git deposundan kaynak kodu getirme, uygulamayı oluşturma, birim testlerini çalıştırma ve dağıtımlar için kullanılan yayınlama çıkışları gibi çeşitli görevleri gerçekleştirir.
+1. **Düzenle**'yi seçin. Bu bölmede, derleme işlem hattınızla ilgili çeşitli görevleri inceleyebilirsiniz. Derleme, git deposundan kaynak kodu getirme, uygulamayı oluşturma, birim testlerini çalıştırma ve dağıtımlar için kullanılan yayınlama çıkışları gibi çeşitli görevleri gerçekleştirir.
 
 1. **Tetikleyiciler**’i seçin. DevOps Starter otomatik olarak bir CI tetikleyicisi oluşturur ve depoya yapılan her bir işleme yeni bir derleme başlatır. İsteğe bağlı olarak, CI işlemindeki dalları dahil etmek veya hariç tutmak seçebilirsiniz.
 
@@ -123,7 +123,7 @@ DevOps Starter, Azure DevOps kuruluşunuzdan Azure aboneliğinize dağıtım yap
 
 1. Sağ tarafta, sürümlerin geçmişini görüntülemek için **yayınları görüntüle** ' yi seçin.
 
-1. İşlem hattını görüntüleyen sürüme tıklayın. Sürüm **özetini, Işlemeleri**, Ilişkili **iş öğelerini**denetlemek için herhangi bir ortama tıklayın.
+1. İşlem hattını görüntüleyen sürüme tıklayın. Sürüm **özetini, Işlemeleri**, Ilişkili **iş öğelerini** denetlemek için herhangi bir ortama tıklayın.
 
 1. **İşlemeler**'i seçin. Bu görünüm, bu dağıtımla ilişkili kod işlemelerini gösterir. Dağıtımlar arasındaki işleme farklılıklarını görmek için yayınları karşılaştırın.
 
@@ -136,7 +136,7 @@ DevOps Starter, Azure DevOps kuruluşunuzdan Azure aboneliğinize dağıtım yap
 
 Artık en son çalışmalarınızı Azure Işlevinizle otomatik olarak dağıtan bir CI/CD işlemi kullanarak uygulamanızdaki bir takımla işbirliği yapmaya hazırsınız. Git deposunda yapılan her değişiklik Azure DevOps 'da bir derleme başlatır ve bir CD işlem hattı Azure 'a bir dağıtım yürütür. Bu bölümdeki yordamı izleyin veya değişiklikleri deponuzda uygulamak için başka bir teknik kullanın. Örneğin, git deposunu en sevdiğiniz araçta veya IDE 'de kopyalayabilir ve sonra değişiklikleri bu depoya gönderebilirsiniz.
 
-1. Azure DevOps menüsünde, Repos ' u seçin. ** **Ve sonra depoya gidin.
+1. Azure DevOps menüsünde, Repos ' u seçin. **** Ve sonra depoya gidin.
 
 1. Depo zaten, oluşturma işleminde seçtiğiniz uygulama diline bağlı olarak **Samplefunctionapp** adlı bir kod içeriyor. **Application/SampleFunctionApp/işlev1. cs** dosyasını açın.
 

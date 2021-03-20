@@ -15,24 +15,24 @@ ms.workload: na
 ms.date: 03/27/2017
 ms.author: alkohli
 ms.openlocfilehash: 7b4b697b3d27b57212fc59396e1f8111e297d6cf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85514947"
 ---
 # <a name="use-the-service-summary-blade-for-storsimple-8000-series-device"></a>StorSimple 8000 serisi cihaz için hizmet Özeti dikey penceresini kullanın
 
 ## <a name="overview"></a>Genel Bakış
 
-StorSimple Aygıt Yöneticisi hizmeti Özeti dikey penceresi, StorSimple Aygıt Yöneticisi hizmetine bağlı tüm cihazların bir Özet görünümünü sağlar ve bu da bir sistem yöneticisinin dikkatini çekmesi gereken cihazları vurgular. Bu öğretici, hizmet Özeti dikey penceresini tanıtır, Pano içeriğini ve işlevini açıklar ve bu sayfadan gerçekleştirebileceğiniz görevleri açıklar.
+StorSimple Device Manager hizmeti Özeti dikey penceresi, StorSimple Device Manager hizmetine bağlı tüm cihazların bir Özet görünümünü sağlar ve bu da bir sistem yöneticisinin dikkatini çekmesi gereken cihazları vurgular. Bu öğretici, hizmet Özeti dikey penceresini tanıtır, Pano içeriğini ve işlevini açıklar ve bu sayfadan gerçekleştirebileceğiniz görevleri açıklar.
 
 ![Hizmet Özeti](./media/storsimple-8000-service-dashboard/service-summary1.png)
 
 
 ## <a name="management-commands"></a>Yönetim komutları
 
-StorSimple hizmeti Özeti dikey penceresinde, StorSimple Aygıt Yöneticisi hizmetinizi ve bu hizmete kayıtlı StorSimple 8000 serisi cihazlarını yönetme seçeneklerini görürsünüz. Yönetim komutlarını dikey pencerenin üst kısmında ve sol tarafta görürsünüz.
+StorSimple hizmeti Özeti dikey penceresinde, StorSimple Device Manager hizmetinizi ve bu hizmete kayıtlı StorSimple 8000 serisi cihazlarını yönetme seçeneklerini görürsünüz. Yönetim komutlarını dikey pencerenin üst kısmında ve sol tarafta görürsünüz.
 
 ![Komut çubuğu](./media/storsimple-8000-service-dashboard/service-summary2.png)
 
@@ -41,11 +41,11 @@ Paylaşım veya birim ekleme gibi çeşitli işlemleri gerçekleştirmek veya St
 
 ## <a name="essentials"></a>Temel Bileşenler
 
-Essentials alanı, StorSimple Aygıt Yöneticisi oluşturulduğu kaynak grubu, konum ve abonelik gibi bazı önemli özelliklerden bazılarını yakalar.
+Essentials alanı, StorSimple Device Manager oluşturulduğu kaynak grubu, konum ve abonelik gibi bazı önemli özelliklerden bazılarını yakalar.
 
 ![Temel Bileşenler](./media/storsimple-8000-service-dashboard/service-summary3.png)
 
-## <a name="storsimple-device-manager-service-summary"></a>StorSimple Aygıt Yöneticisi hizmeti Özeti
+## <a name="storsimple-device-manager-service-summary"></a>StorSimple Device Manager hizmeti Özeti
 
 * **Uyarılar** kutucuğu, uyarı önem derecesine göre gruplandırılan tüm cihazlarda etkin uyarıların tümünün anlık görüntüsünü sağlar.
 
@@ -72,7 +72,7 @@ Essentials alanı, StorSimple Aygıt Yöneticisi oluşturulduğu kaynak grubu, k
 
      ![Grafik verilerini dışarı aktar](./media/storsimple-8000-service-dashboard/service-summary11.png)
 
-* **Cihazlar** kutucuğu, storsimple Aygıt Yöneticisi cihaz durumuna göre gruplanan storsimple 8000 serisi cihazların bir özetini sağlar. 
+* **Cihazlar** kutucuğu, storsimple Device Manager cihaz durumuna göre gruplanan storsimple 8000 serisi cihazların bir özetini sağlar. 
 
     ![Cihazlar kutucuğu](./media/storsimple-8000-service-dashboard/service-summary5.png)
 
@@ -82,10 +82,10 @@ Essentials alanı, StorSimple Aygıt Yöneticisi oluşturulduğu kaynak grubu, k
 
 ## <a name="view-the-activity-logs"></a>Etkinlik günlüklerini görüntüleme
 
-StorSimple Aygıt Yöneticisi içinde yürütülen çeşitli işlemleri görüntülemek için, StorSimple hizmet Özeti dikey pencerenizin sol tarafındaki **etkinlik günlükleri** bağlantısına tıklayın. Bu, sizi gerçekleştirilen son işlemlerin özetini görebileceğiniz **etkinlik günlükleri** dikey penceresine götürür.
+StorSimple Device Manager içinde yürütülen çeşitli işlemleri görüntülemek için, StorSimple hizmet Özeti dikey pencerenizin sol tarafındaki **etkinlik günlükleri** bağlantısına tıklayın. Bu, sizi gerçekleştirilen son işlemlerin özetini görebileceğiniz **etkinlik günlükleri** dikey penceresine götürür.
 
 ![Etkinlik Günlükleri](./media/storsimple-8000-service-dashboard/activity-logs1.png)
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* StorSimple [cihazınızı yönetmek Için storsimple Aygıt Yöneticisi hizmetini kullanma](storsimple-8000-manager-service-administration.md)hakkında daha fazla bilgi edinin.
+* StorSimple [cihazınızı yönetmek Için storsimple Device Manager hizmetini kullanma](storsimple-8000-manager-service-administration.md)hakkında daha fazla bilgi edinin.
 

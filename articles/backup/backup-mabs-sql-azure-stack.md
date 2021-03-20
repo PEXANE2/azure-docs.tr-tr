@@ -4,10 +4,10 @@ description: Bu makalede, Azure Stack SQL Server veritabanlarını korumak için
 ms.topic: conceptual
 ms.date: 06/08/2018
 ms.openlocfilehash: 80de7913b010fca69c3703e423109f2ede653590
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91332823"
 ---
 # <a name="back-up-sql-server-on-azure-stack"></a>Azure Stack SQL Server yedekleme
@@ -60,7 +60,7 @@ Azure 'da SQL Server veritabanı yedeklemenin yönetimi ve Azure 'da kurtarma i�
 
     ![Koruma grubu oluştur](./media/backup-azure-backup-sql/protection-group.png)
 
-    Azure Backup Sunucusu, koruma grubu Sihirbazı 'nı başlatır, bu da **koruma grubu**oluşturma konusunda size yol gösterir. **İleri**’yi seçin.
+    Azure Backup Sunucusu, koruma grubu Sihirbazı 'nı başlatır, bu da **koruma grubu** oluşturma konusunda size yol gösterir. **İleri**’yi seçin.
 
 3. **Koruma grubu türünü seçin** ekranında **sunucular**' ı seçin.
 
@@ -78,18 +78,18 @@ Azure 'da SQL Server veritabanı yedeklemenin yönetimi ve Azure 'da kurtarma i�
 
 6. **Short-Term hedeflerini belirtin** ekranında, diske yedekleme noktaları oluşturmak için gerekli girişleri ekleyin ve **İleri**' yi seçin.
 
-    Bu örnekte, **bekletme aralığı** **5 gündür** **ve yedekleme** sıklığı, her **15 dakikada**bir yapılır. **Hızlı tam yedekleme** **8:00 P. M**olarak ayarlanır.
+    Bu örnekte, **bekletme aralığı** **5 gündür** **ve yedekleme** sıklığı, her **15 dakikada** bir yapılır. **Hızlı tam yedekleme** **8:00 P. M** olarak ayarlanır.
 
     ![Kısa vadeli hedefler](./media/backup-azure-backup-sql/pg-shortterm.png)
 
    > [!NOTE]
-   > Gösterilen örnekte, değiştirilen verilerin önceki günün 8:00 PM Yedekleme noktasından aktarılması için her gün 8:00 PM 'de bir yedekleme noktası oluşturulur. Bu işlem **Hızlı tam yedekleme**olarak adlandırılır. İşlem günlükleri her 15 dakikada bir eşitlenir. Veritabanını 9:00 PM 'de kurtarmanız gerekirse, nokta son hızlı tam yedekleme noktasından (Bu örnekte 8PM) günlüklerden oluşturulur.
+   > Gösterilen örnekte, değiştirilen verilerin önceki günün 8:00 PM Yedekleme noktasından aktarılması için her gün 8:00 PM 'de bir yedekleme noktası oluşturulur. Bu işlem **Hızlı tam yedekleme** olarak adlandırılır. İşlem günlükleri her 15 dakikada bir eşitlenir. Veritabanını 9:00 PM 'de kurtarmanız gerekirse, nokta son hızlı tam yedekleme noktasından (Bu örnekte 8PM) günlüklerden oluşturulur.
    >
    >
 
 7. **Disk ayırmayı İncele** ekranında, kullanılabilir genel depolama alanını ve olası disk alanını doğrulayın. **İleri**’yi seçin.
 
-8. **Çoğaltma oluşturma yöntemini seçin**kısmında ilk kurtarma noktanızı oluşturmayı seçin. Bant genişliği yığmasını veya ağ üzerinden bir kez daha kaçınmak için ilk yedeklemeyi el ile (ağ dışı) aktarabilirsiniz. İlk yedeklemenin aktarılmasını beklemek isterseniz, ilk aktarım için saati belirtebilirsiniz. **İleri**’yi seçin.
+8. **Çoğaltma oluşturma yöntemini seçin** kısmında ilk kurtarma noktanızı oluşturmayı seçin. Bant genişliği yığmasını veya ağ üzerinden bir kez daha kaçınmak için ilk yedeklemeyi el ile (ağ dışı) aktarabilirsiniz. İlk yedeklemenin aktarılmasını beklemek isterseniz, ilk aktarım için saati belirtebilirsiniz. **İleri**’yi seçin.
 
     ![İlk çoğaltma yöntemi](./media/backup-azure-backup-sql/pg-manual.png)
 
@@ -97,7 +97,7 @@ Azure 'da SQL Server veritabanı yedeklemenin yönetimi ve Azure 'da kurtarma i�
 
     İlk yedekleme tamamlandıktan sonra, yedeklemelerin geri kalanı ilk yedekleme kopyasında artımlı yedeklemelerdir. Artımlı yedeklemeler küçük olma eğilimindedir ve ağ üzerinden kolayca aktarılır.
 
-9. Tutarlılık denetiminin ne zaman çalıştırılmasını istediğinizi seçin ve **İleri ' yi**seçin.
+9. Tutarlılık denetiminin ne zaman çalıştırılmasını istediğinizi seçin ve **İleri ' yi** seçin.
 
     ![Tutarlılık denetimi](./media/backup-azure-backup-sql/pg-consistent.png)
 
@@ -163,7 +163,7 @@ Korunan bir varlığı (SQL Server veritabanı) Azure 'dan kurtarmak için aşa�
 2. Veritabanı adına sağ tıklayın ve **kurtar**' ı seçin.
 
     ![Azure 'dan kurtarma](./media/backup-azure-backup-sql/sqlbackup-recover.png)
-3. MABS, kurtarma noktasının ayrıntılarını gösterir. **İleri**’yi seçin. Veritabanının üzerine yazmak için, **SQL Server özgün örneğine kurtar**kurtarma türünü seçin. **İleri**’yi seçin.
+3. MABS, kurtarma noktasının ayrıntılarını gösterir. **İleri**’yi seçin. Veritabanının üzerine yazmak için, **SQL Server özgün örneğine kurtar** kurtarma türünü seçin. **İleri**’yi seçin.
 
     ![Özgün konuma kurtar](./media/backup-azure-backup-sql/sqlbackup-recoveroriginal.png)
 

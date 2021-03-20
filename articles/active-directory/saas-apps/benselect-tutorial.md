@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 10/21/2019
 ms.author: jeedes
 ms.openlocfilehash: 714e293220317e46113c4ffdda2e207da62be6c1
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92457257"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-benselect"></a>Öğretici: BenSelect ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
@@ -28,7 +28,7 @@ Bu öğreticide, BenSelect 'i Azure Active Directory (Azure AD) ile tümleştirm
 
 Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](../manage-apps/what-is-single-sign-on.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -59,7 +59,7 @@ BenSelect 'ın Azure AD 'de tümleştirilmesini yapılandırmak için Galeriden 
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-benselect"></a>BenSelect için Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-**B. Simon**adlı bir test kullanıcısı kullanarak Azure AD SSO 'Yu, benselect ile yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ve BenSelect içinde ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
+**B. Simon** adlı bir test kullanıcısı kullanarak Azure AD SSO 'Yu, benselect ile yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ve BenSelect içinde ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
 
 Azure AD SSO 'yu bir BenSelect ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
 
@@ -91,7 +91,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
     ![Ekran görüntüsü, Kullanıcı özniteliklerini, "Kullanıcı. em ve emaadresi Kullanıcı. Mail gibi varsayılan özniteliklere gösterir](common/edit-attribute.png)
 
-1. **Ad tanımlayıcı değerini**düzenlemek için **Düzenle** simgesine tıklayın.
+1. **Ad tanımlayıcı değerini** düzenlemek için **Düzenle** simgesine tıklayın.
 
     ![Ekran görüntüsünde, düzenleme simgesiyle birlikte adlandırılan Kullanıcı özniteliklerinin & talepler bölmesini gösterir.](media/benselect-tutorial/mail-prefix1.png)
 
@@ -99,7 +99,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
     ![Ekran görüntüsünde, bu adımda açıklanan değerleri girebileceğiniz Kullanıcı taleplerini yönetme gösterilir.](media/benselect-tutorial/mail-prefix2.png)
 
-    a. **Kaynak**olarak **dönüşüm** ' i seçin.
+    a. **Kaynak** olarak **dönüşüm** ' i seçin.
 
     b. **Dönüştürme** açılan listesinde **Extractmailprefix ()** öğesini seçin.
 

@@ -11,10 +11,10 @@ ms.date: 12/13/2017
 ms.author: cynthn
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: a96c0f7c6fb767b96be273a615149143043e8bc1
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91975136"
 ---
 # <a name="open-ports-and-endpoints-to-a-vm-with-the-azure-cli"></a>Azure CLı ile bir VM 'ye bağlantı noktalarını ve uç noktaları açma
@@ -24,11 +24,11 @@ Bir alt ağ veya VM ağı arabiriminde ağ filtresi oluşturarak Azure 'da bir b
 
 Bir ağ güvenlik grubu ve kuralları oluşturmak için, en son [Azure CLI](/cli/azure/install-az-cli2) 'nın yüklü ve [az oturum açma](/cli/azure/reference-index)kullanarak bir Azure hesabında oturum açmış olmanız gerekir.
 
-Aşağıdaki örneklerde, örnek parametre adlarını kendi değerlerinizle değiştirin. Örnek parametre adları *Myresourcegroup*, *mynetworksecuritygroup*ve *myvnet*' i içerir.
+Aşağıdaki örneklerde, örnek parametre adlarını kendi değerlerinizle değiştirin. Örnek parametre adları *Myresourcegroup*, *mynetworksecuritygroup* ve *myvnet*' i içerir.
 
 
 ## <a name="quickly-open-a-port-for-a-vm"></a>Bir VM için hızlı bir şekilde bağlantı noktası açma
-Bir geliştirme/test senaryosunda bir sanal makinenin bağlantı noktasını hızlıca açmanız gerekiyorsa, [az VM Open-Port](/cli/azure/vm) komutunu kullanabilirsiniz. Bu komut bir ağ güvenlik grubu oluşturur, bir kural ekler ve bir VM veya alt ağa uygular. Aşağıdaki örnek, *Myresourcegroup*adlı kaynak grubunda *MYVM* adlı VM 'de *80* numaralı bağlantı noktasını açar.
+Bir geliştirme/test senaryosunda bir sanal makinenin bağlantı noktasını hızlıca açmanız gerekiyorsa, [az VM Open-Port](/cli/azure/vm) komutunu kullanabilirsiniz. Bu komut bir ağ güvenlik grubu oluşturur, bir kural ekler ve bir VM veya alt ağa uygular. Aşağıdaki örnek, *Myresourcegroup* adlı kaynak grubunda *MYVM* adlı VM 'de *80* numaralı bağlantı noktasını açar.
 
 ```azurecli
 az vm open-port --resource-group myResourceGroup --name myVM --port 80
@@ -61,7 +61,7 @@ az network nsg rule create \
 
 
 ## <a name="apply-network-security-group-to-vm"></a>VM 'ye ağ güvenlik grubu uygulama
-Ağ güvenlik grubunu, [az Network NIC Update](/cli/azure/network/nic)ile sanal makinenizin ağ ARABIRIMI (NIC) ile ilişkilendirin. Aşağıdaki örnek, *MYNIC* adlı mevcut bir NIC 'Yi *Mynetworksecuritygroup*adlı ağ güvenlik grubuyla ilişkilendirir:
+Ağ güvenlik grubunu, [az Network NIC Update](/cli/azure/network/nic)ile sanal makinenizin ağ ARABIRIMI (NIC) ile ilişkilendirin. Aşağıdaki örnek, *MYNIC* adlı mevcut bir NIC 'Yi *Mynetworksecuritygroup* adlı ağ güvenlik grubuyla ilişkilendirir:
 
 ```azurecli
 az network nic update \
@@ -70,7 +70,7 @@ az network nic update \
     --network-security-group myNetworkSecurityGroup
 ```
 
-Alternatif olarak, ağ güvenlik grubunuzu yalnızca tek bir VM 'deki ağ arabirimine değil [az Network VNET subnet Update](/cli/azure/network/vnet/subnet) ile bir sanal ağ alt ağı ile ilişkilendirebilirsiniz. Aşağıdaki örnek, *Myvnet* sanal ağındaki *mysubnet* adlı mevcut bir alt ağı *Mynetworksecuritygroup*adlı ağ güvenlik grubuyla ilişkilendirir:
+Alternatif olarak, ağ güvenlik grubunuzu yalnızca tek bir VM 'deki ağ arabirimine değil [az Network VNET subnet Update](/cli/azure/network/vnet/subnet) ile bir sanal ağ alt ağı ile ilişkilendirebilirsiniz. Aşağıdaki örnek, *Myvnet* sanal ağındaki *mysubnet* adlı mevcut bir alt ağı *Mynetworksecuritygroup* adlı ağ güvenlik grubuyla ilişkilendirir:
 
 ```azurecli
 az network vnet subnet update \

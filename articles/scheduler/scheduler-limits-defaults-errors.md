@@ -9,10 +9,10 @@ ms.reviewer: klam, estfan
 ms.topic: article
 ms.date: 08/18/2016
 ms.openlocfilehash: 610232dab776648bb3dcc7c301ec292e9acad9fc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "78898520"
 ---
 # <a name="limits-quotas-and-throttle-thresholds-in-azure-scheduler"></a>Azure Scheduler 'da sınırlamalar, Kotalar ve kısıtlama eşikleri
@@ -28,7 +28,7 @@ ms.locfileid: "78898520"
 
 ## <a name="x-ms-request-id-header"></a>x-MS-istek kimliği üst bilgisi
 
-Zamanlayıcı hizmetine yapılan her istek, **x-MS-Request-ID**adlı bir yanıt üst bilgisi döndürür. Bu üstbilgi, isteği benzersiz bir şekilde tanımlayan donuk bir değer içerir. Bu nedenle, bir istek sürekli olarak başarısız olursa ve isteğin düzgün şekilde biçimlendirildiğini onayladıysanız, **x-MS-Request-id** yanıt üst bilgisi değerini sağlayarak ve bu ayrıntıları dahil ederek hatayı Microsoft 'a bildirebilirsiniz: 
+Zamanlayıcı hizmetine yapılan her istek, **x-MS-Request-ID** adlı bir yanıt üst bilgisi döndürür. Bu üstbilgi, isteği benzersiz bir şekilde tanımlayan donuk bir değer içerir. Bu nedenle, bir istek sürekli olarak başarısız olursa ve isteğin düzgün şekilde biçimlendirildiğini onayladıysanız, **x-MS-Request-id** yanıt üst bilgisi değerini sağlayarak ve bu ayrıntıları dahil ederek hatayı Microsoft 'a bildirebilirsiniz: 
 
 * **X-MS-Request-ID** değeri
 * İsteğin yapıldığı yaklaşık süre 

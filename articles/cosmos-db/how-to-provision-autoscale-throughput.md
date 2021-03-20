@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 10/15/2020
 ms.custom: devx-track-csharp, devx-track-azurecli
 ms.openlocfilehash: 52904296df77d9097a6180345388e8e702e2bca0
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/12/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97357644"
 ---
 # <a name="provision-autoscale-throughput-on-database-or-container-in-azure-cosmos-db---sql-api"></a>Azure Cosmos DB-SQL API 'sindeki veritabanı veya kapsayıcıda otomatik ölçeklendirme performansı sağlama
@@ -22,7 +22,7 @@ Bu makalede, Azure Cosmos DB SQL API 'sindeki bir veritabanı veya kapsayıcıda
 
 Farklı bir API kullanıyorsanız, üretilen işi sağlamak için [MongoDB Için API](how-to-provision-throughput-mongodb.md), [Cassandra API](how-to-provision-throughput-cassandra.md)ve [Gremlin API](how-to-provision-throughput-gremlin.md) makalelerini inceleyin.
 
-## <a name="azure-portal"></a>Azure portal
+## <a name="azure-portal"></a>Azure portalı
 
 ### <a name="create-new-database-or-container-with-autoscale"></a>Otomatik ölçeklendirme ile yeni veritabanı veya kapsayıcı oluşturma
 
@@ -251,7 +251,7 @@ container.replaceThroughput(ThroughputProperties.createAutoscaledThroughput(newA
 
 Azure Resource Manager şablonlar, tüm Azure Cosmos DB API 'Leri için veritabanında veya kapsayıcı düzeyindeki kaynaklarda otomatik ölçeklendirme üretilen işi sağlamak için kullanılabilir. Örnekler için [Azure Cosmos DB için bkz. Azure Resource Manager şablonları](./templates-samples-sql.md) .
 
-## <a name="azure-cli"></a>Azure CLI
+## <a name="azure-cli"></a>Azure CLI’si
 
 Azure CLı, tüm Azure Cosmos DB API 'Leri için bir veritabanı veya kapsayıcı düzeyinde bir kaynak üzerinde otomatik ölçeklendirme üretilen işi sağlamak üzere kullanılabilir. Örnekler için bkz. [Azure CLI örnekleri Azure Cosmos DB](cli-samples.md).
 

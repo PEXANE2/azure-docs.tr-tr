@@ -1,6 +1,6 @@
 ---
 title: StorSimple Sanal dizisi işlerini görüntüleyin ve yönetin | Microsoft Docs
-description: StorSimple Aygıt Yöneticisi hizmet Işleri sayfasını ve StorSimple Sanal dizisi için en son ve geçerli işleri izlemek üzere nasıl kullanılacağını açıklar.
+description: StorSimple Device Manager hizmet Işleri sayfasını ve StorSimple Sanal dizisi için en son ve geçerli işleri izlemek üzere nasıl kullanılacağını açıklar.
 services: storsimple
 documentationcenter: NA
 author: alkohli
@@ -15,15 +15,15 @@ ms.workload: na
 ms.date: 11/11/2016
 ms.author: alkohli
 ms.openlocfilehash: d806d8a04dc1bd8547808d20c77bfec310f7dd06
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95992988"
 ---
-# <a name="use-the-storsimple-device-manager-service-to-view-jobs-for-the-storsimple-virtual-array"></a>StorSimple Sanal dizisine yönelik işleri görüntülemek için StorSimple Aygıt Yöneticisi hizmetini kullanın
+# <a name="use-the-storsimple-device-manager-service-to-view-jobs-for-the-storsimple-virtual-array"></a>StorSimple Sanal dizisine yönelik işleri görüntülemek için StorSimple Device Manager hizmetini kullanın
 ## <a name="overview"></a>Genel Bakış
-**İşler** dikey penceresi, storsimple Aygıt Yöneticisi hizmetinize bağlı sanal dizilerde başlatılan işleri görüntülemek ve yönetmek için tek bir merkezi Portal sağlar. Birden çok sanal cihaz için çalışan, tamamlanan ve başarısız işleri görüntüleyebilirsiniz. Sonuçlar tablolu biçimde görüntülenir.
+**İşler** dikey penceresi, storsimple Device Manager hizmetinize bağlı sanal dizilerde başlatılan işleri görüntülemek ve yönetmek için tek bir merkezi Portal sağlar. Birden çok sanal cihaz için çalışan, tamamlanan ve başarısız işleri görüntüleyebilirsiniz. Sonuçlar tablolu biçimde görüntülenir.
 
 ![İşler dikey penceresi](./media/storsimple-virtual-array-manage-jobs/ova-jobs-blade.png)
 

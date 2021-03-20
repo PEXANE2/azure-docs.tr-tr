@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 06/28/2018
 ms.author: tomfitz
 ms.openlocfilehash: 711f5293b205c1f500c6d9e08154342285ef959b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87033231"
 ---
 # <a name="microsoftnetworkvirtualnetworkcombo-ui-element"></a>Microsoft. Network. VirtualNetworkCombo UI öğesi
@@ -112,7 +112,7 @@ Kullanıcı var olan bir sanal ağı seçtiğinde, dağıtım şablonu için ger
 - Yeni bir sanal ağ oluştururken, her alt ağın adres öneki, sanal ağın adres ön eki ve ilgili olarak otomatik olarak hesaplanır `addressPrefixSize` .
 - Var olan bir sanal ağ kullanılırken, karşılık gelen alt ağlar `constraints.minAddressPrefixSize` seçim için kullanılamaz. Ayrıca, belirtilmişse, en az kullanılabilir adreslere sahip olmayan alt ağlar `minAddressCount` seçim için kullanılamaz. Varsayılan değer **0**' dır. Kullanılabilir adreslerin bitişik olduğundan emin olmak için, için **true değerini** belirtin `requireContiguousAddresses` . Varsayılan değer **true**'dur.
 - Mevcut bir sanal ağda alt ağların oluşturulması desteklenmez.
-- `options.hideExisting` **Doğru**ise, Kullanıcı var olan bir sanal ağı seçemiyorum. Varsayılan değer **false** şeklindedir.
+- `options.hideExisting` **Doğru** ise, Kullanıcı var olan bir sanal ağı seçemiyorum. Varsayılan değer **false** şeklindedir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

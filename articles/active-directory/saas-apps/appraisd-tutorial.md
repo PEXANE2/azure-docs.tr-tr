@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 05/27/2019
 ms.author: jeedes
 ms.openlocfilehash: 79db0a7bb769d6138bfeeb4e765621a1cffb4d14
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92457869"
 ---
 # <a name="tutorial-integrate-appraisd-with-azure-active-directory"></a>Öğretici: Appraisd ile tümleştirin Azure Active Directory
@@ -28,7 +28,7 @@ Bu öğreticide, Appraisd 'i Azure Active Directory (Azure AD) ile tümleştirme
 
 Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](../manage-apps/what-is-single-sign-on.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -52,7 +52,7 @@ Appraisd tümleştirmesini Azure AD 'ye göre yapılandırmak için, Galeriden A
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-**B. Simon**adlı bir test kullanıcısı kullanarak Azure AD SSO 'yu Appraisd ile yapılandırın ve test edin. SSO 'nun çalışması için, Appraisd içinde bir Azure AD kullanıcısı ve ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
+**B. Simon** adlı bir test kullanıcısı kullanarak Azure AD SSO 'yu Appraisd ile yapılandırın ve test edin. SSO 'nun çalışması için, Appraisd içinde bir Azure AD kullanıcısı ve ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
 
 Azure AD SSO 'yu Appraisd ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
 
@@ -84,7 +84,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
     > [!NOTE]
     > Appraisd SSO yapılandırma sayfasında, Öğreticinin ilerleyen kısımlarında açıklanan gerçek oturum açma URL 'SI ve geçiş durumu değerini alırsınız.
 
-1. Appraisd uygulaması, SAML belirteci öznitelikleri yapılandırmanıza özel öznitelik eşlemeleri eklemenizi gerektiren belirli bir biçimde SAML onayları bekler. Aşağıdaki ekran görüntüsünde, **NameIdentifier** 'ın **User. UserPrincipalName**ile eşlendiği varsayılan özniteliklerin listesi gösterilmektedir. Appraisd uygulaması, **NameIdentifier** 'ın **User. Mail**ile eşlenmesini bekliyor, bu nedenle, **Düzenle** simgesine tıklayarak ve öznitelik eşlemesini değiştirerek öznitelik eşlemesini düzenlemeniz gerekir.
+1. Appraisd uygulaması, SAML belirteci öznitelikleri yapılandırmanıza özel öznitelik eşlemeleri eklemenizi gerektiren belirli bir biçimde SAML onayları bekler. Aşağıdaki ekran görüntüsünde, **NameIdentifier** 'ın **User. UserPrincipalName** ile eşlendiği varsayılan özniteliklerin listesi gösterilmektedir. Appraisd uygulaması, **NameIdentifier** 'ın **User. Mail** ile eşlenmesini bekliyor, bu nedenle, **Düzenle** simgesine tıklayarak ve öznitelik eşlemesini değiştirerek öznitelik eşlemesini düzenlemeniz gerekir.
 
     ![Ekran görüntüsü, düzenleme simgesi vurgulanmış şekilde Kullanıcı öznitelikleri bölmesini gösterir.](common/edit-attribute.png)
 
@@ -98,7 +98,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
 ### <a name="configure-appraisd"></a>Appraisd yapılandırma
 
-1. Yapılandırmayı Appraisd içinde otomatik hale getirmek için, **uzantıyı yüklemek**üzere **uygulamalar güvenli oturum açma tarayıcı uzantısı** ' nı yüklemeniz gerekir.
+1. Yapılandırmayı Appraisd içinde otomatik hale getirmek için, **uzantıyı yüklemek** üzere **uygulamalar güvenli oturum açma tarayıcı uzantısı** ' nı yüklemeniz gerekir.
 
     ![Uygulamalarım uzantısı](common/install-myappssecure-extension.png)
 
@@ -124,7 +124,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
     b. Hizmet tarafından **başlatılan oturum açma URL 'si** değerini kopyalayın ve Azure Portal ÜZERINDEKI **temel SAML yapılandırmasındaki** **oturum açma URL 'si** metin kutusuna yapıştırın.
 
-7. **Kullanıcıları tanımlama**bölümündeki aynı sayfada aşağı doğru kaydırın, aşağıdaki adımları uygulayın:
+7. **Kullanıcıları tanımlama** bölümündeki aynı sayfada aşağı doğru kaydırın, aşağıdaki adımları uygulayın:
 
     ![Ekran görüntüsü, bu adımdan değer girebileceğiniz kullanıcıları tanımlamayı gösterir.](./media/appraisd-tutorial/tutorial_appraisd_identifying.png)
 
@@ -184,9 +184,9 @@ Azure AD kullanıcılarının Appraisd 'de oturum açmasını sağlamak için, A
 
     ![Ekran görüntüsü Yeni Kullanıcı Ekle sayfasını gösterir.](./media/appraisd-tutorial/tutorial_appraisd_newuser.png)
 
-    a. **Ad** metin kutusuna, ilk Kullanıcı adını **Britta**gibi girin.
+    a. **Ad** metin kutusuna, ilk Kullanıcı adını **Britta** gibi girin.
 
-    b. **Soyadı** metin kutusuna, **Simon**gibi kullanıcı adının soyadını girin.
+    b. **Soyadı** metin kutusuna, **Simon** gibi kullanıcı adının soyadını girin.
 
     c. **E-posta** metin kutusuna kullanıcının e-postasını girin `B. Simon@contoso.com` .
 

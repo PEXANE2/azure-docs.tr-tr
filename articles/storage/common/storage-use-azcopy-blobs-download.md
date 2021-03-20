@@ -9,10 +9,10 @@ ms.author: normesta
 ms.subservice: common
 ms.reviewer: dineshm
 ms.openlocfilehash: 20da05399eed4cb9c5a4b69a82b0b1e799997751
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98880127"
 ---
 # <a name="download-blobs-from-azure-blob-storage-by-using-azcopy-v10"></a>AzCopy ile v10 arasındaki kullanarak blob 'ları Azure Blob depolamadan indirin
@@ -131,7 +131,7 @@ Ayrıntılı başvuru için bkz. [AzCopy kopyası](storage-ref-azcopy-copy.md) b
 
 [BLOB sürüm oluşturmayı](../blobs/versioning-enable.md)etkinleştirdiyseniz, bir Blobun bir veya daha fazla önceki sürümünü indirebilirsiniz. 
 
-İlk olarak, [Sürüm kimliklerinin](../blobs/versioning-overview.md)bir listesini içeren bir metin dosyası oluşturun. Her sürüm KIMLIĞI ayrı bir satırda görünmelidir. Örneğin: 
+İlk olarak, [Sürüm kimliklerinin](../blobs/versioning-overview.md)bir listesini içeren bir metin dosyası oluşturun. Her sürüm KIMLIĞI ayrı bir satırda görünmelidir. Örnek: 
 
 ```
 2020-08-17T05:50:34.2199403Z

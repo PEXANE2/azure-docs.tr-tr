@@ -4,10 +4,10 @@ description: Kaynakları veya tanımları değerlendirmesinden muaf tutmak için
 ms.date: 09/22/2020
 ms.topic: conceptual
 ms.openlocfilehash: e6ced56c1dc65ca68998c5c58d3e985b63873e0b
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/12/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91950185"
 ---
 # <a name="azure-policy-exemption-structure"></a>Azure Ilke muafiyet yapısı
@@ -15,7 +15,7 @@ ms.locfileid: "91950185"
 Azure Ilke muafiyetleri (Önizleme) özelliği, bir kaynak hiyerarşisini veya tek bir kaynağı, girişim veya tanım değerlendirmesinden _muaf tutmak_ için kullanılır. _Muaf tutulan_ kaynaklar genel uyumluluğa doğru sayılır, ancak değerlendirilemiyor veya geçici bir feragat aldığınız sahip olamaz. Daha fazla bilgi için bkz. [Azure ilkesinde kapsamı anlama](./scope.md). Azure Ilkesi muafiyetleri yalnızca [Kaynak Yöneticisi modlarıyla](./definition-structure.md#resource-manager-modes) çalışır ve [kaynak sağlayıcısı modlarıyla](./definition-structure.md#resource-provider-modes)çalışmaz.
 
 > [!IMPORTANT]
-> Bu özellik **Önizleme**süresince ücretsizdir. Fiyatlandırma ayrıntıları için bkz. [Azure ilkesi fiyatlandırması](https://azure.microsoft.com/pricing/details/azure-policy/). Önizlemeler hakkında daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Bu özellik **Önizleme** süresince ücretsizdir. Fiyatlandırma ayrıntıları için bkz. [Azure ilkesi fiyatlandırması](https://azure.microsoft.com/pricing/details/azure-policy/). Önizlemeler hakkında daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Bir ilke muafiyeti oluşturmak için JSON kullanırsınız. İlke muafiyeti için öğeleri içerir:
 
@@ -30,7 +30,7 @@ Bir ilke muafiyeti oluşturmak için JSON kullanırsınız. İlke muafiyeti içi
 > [!NOTE]
 > Bir ilke muafiyeti, kaynak hiyerarşisinde bir alt nesne veya muafiyeti verilen tek kaynak olarak oluşturulur, bu nedenle hedef muafiyet tanımına dahil değildir.
 
-Örneğin, aşağıdaki JSON bir kaynağın **feragat aldığınız** kategorisinde adlı bir girişim atamasında bir ilke muafiyeti gösterir `resourceShouldBeCompliantInit` . Kaynak, girişim _exempt_ içindeki ilke tanımlarının yalnızca iki birinden, `customOrgPolicy` özel ilke tanımına (başvuruya `requiredTags` ) ve ' izin verilen konumların ' YERLEŞIK ilke tanımına (kimlik: `e56962a6-4747-49cd-b67b-bf8b01975c4c` , başvuru) muaf tutulur `allowedLocations` :
+Örneğin, aşağıdaki JSON bir kaynağın **feragat aldığınız** kategorisinde adlı bir girişim atamasında bir ilke muafiyeti gösterir `resourceShouldBeCompliantInit` . Kaynak, girişim  içindeki ilke tanımlarının yalnızca iki birinden, `customOrgPolicy` özel ilke tanımına (başvuruya `requiredTags` ) ve ' izin verilen konumların ' YERLEŞIK ilke tanımına (kimlik: `e56962a6-4747-49cd-b67b-bf8b01975c4c` , başvuru) muaf tutulur `allowedLocations` :
 
 ```json
 {
@@ -88,7 +88,7 @@ Bir ilke muafiyeti oluşturmak için JSON kullanırsınız. İlke muafiyeti içi
 
 ## <a name="metadata"></a>Meta veri
 
-**Metadata** özelliği, ilgili bilgileri depolamak için gereken herhangi bir alt özelliği oluşturmaya izin verir. Yukarıdaki örnekte, **RequestedBy**, **approma by**, **approvedOn**ve **bilet başvurusu** özellikleri, istisnayı kimin ne zaman ve ne zaman onayladığı ve istek için bir iç izleme bileti sağlamak için müşteri değerleri içerir. Bu **meta veri** özellikleri örneklerdir, ancak gerekli değildir ve **meta veriler** bu alt özelliklerle sınırlı değildir.
+**Metadata** özelliği, ilgili bilgileri depolamak için gereken herhangi bir alt özelliği oluşturmaya izin verir. Yukarıdaki örnekte, **RequestedBy**, **approma by**, **approvedOn** ve **bilet başvurusu** özellikleri, istisnayı kimin ne zaman ve ne zaman onayladığı ve istek için bir iç izleme bileti sağlamak için müşteri değerleri içerir. Bu **meta veri** özellikleri örneklerdir, ancak gerekli değildir ve **meta veriler** bu alt özelliklerle sınırlı değildir.
 
 ## <a name="policy-assignment-id"></a>İlke atama KIMLIĞI
 

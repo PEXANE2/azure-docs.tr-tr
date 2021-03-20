@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 10/24/2019
 ms.author: jeedes
 ms.openlocfilehash: 7c5e8210bc8b805d72149fd2ef3335c1d637a58f
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92445282"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-help-scout"></a>Öğretici: yardım Scout ile Azure Active Directory tümleştirme
@@ -30,7 +30,7 @@ Yardım scout with Azure AD ile tümleştirmek aşağıdaki avantajları sağlar
 Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](../manage-apps/what-is-single-sign-on.md).
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure AD tümleştirmesini yardım Scout ile yapılandırmak için aşağıdaki öğelere ihtiyacınız vardır:
 
@@ -57,7 +57,7 @@ Yardım scout 'ın Azure AD 'ye tümleştirilmesini yapılandırmak için Galeri
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-Bu bölümde, **B. Simon**adlı bir test kullanıcısına dayalı yardım Scout Ile Azure AD çoklu oturum açmayı yapılandırıp test edersiniz.
+Bu bölümde, **B. Simon** adlı bir test kullanıcısına dayalı yardım Scout Ile Azure AD çoklu oturum açmayı yapılandırıp test edersiniz.
 Çoklu oturum açma için, bir Azure AD kullanıcısı ve yardım Scout içindeki ilgili Kullanıcı arasındaki bağlantı ilişkisinin oluşturulması gerekir.
 
 Azure AD çoklu oturum açmayı, yardım Scout ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını gerçekleştirmeniz gerekir:
@@ -134,7 +134,7 @@ Bu bölümün amacı, B. Simon adlı Azure portal bir test kullanıcısı oluşt
 
     ![Kullanıcı iletişim kutusu](common/user-properties.png)
 
-    a. **Ad** alanına **B. Simon**girin.
+    a. **Ad** alanına **B. Simon** girin.
   
     b. **Kullanıcı adı** alanına **B. Simon \@ yourcompanydomain. Extension** yazın  
     Örneğin, B.Simon@contoso.com
@@ -201,11 +201,11 @@ Bu bölümde, yardım Scout 'a erişim vererek Azure çoklu oturum açma özelli
 
     ![Ekran görüntüsü, SAML 'yi etkinleştirdiğiniz ve diğer bilgileri ekleyebileceğiniz tek Sign-On sekmesini gösterir.](./media/helpscout-tutorial/settings4.png)
 
-    a. **Tek Sign-On URL** metin kutusunda, Azure Portal kopyaladığınız **oturum açma URL 'si**değerini yapıştırın.
+    a. **Tek Sign-On URL** metin kutusunda, Azure Portal kopyaladığınız **oturum açma URL 'si** değerini yapıştırın.
 
     b. Azure portal 'ten indirilen **sertifikayı (base64)** karşıya yüklemek Için **sertifikayı karşıya yükle** ' ye tıklayın.
 
-    c. E-posta etki alanları metin kutusunda, kuruluşunuzun e-posta etki alanlarını (s) e.x. girin `contoso.com` . **Email Domains** Birden çok etki alanını virgülle ayırarak ayırabilirsiniz. [Yardım scout oturum açma sayfasında](https://secure.helpscout.net/members/login/) belirli bir etki alanını giren bir yardım Scout kullanıcısı veya Yöneticisi, kimlik bilgileriyle kimlik doğrulaması yapmak Için kimlik sağlayıcısına yönlendirilir.
+    c. E-posta etki alanları metin kutusunda, kuruluşunuzun e-posta etki alanlarını (s) e.x. girin `contoso.com` .  Birden çok etki alanını virgülle ayırarak ayırabilirsiniz. [Yardım scout oturum açma sayfasında](https://secure.helpscout.net/members/login/) belirli bir etki alanını giren bir yardım Scout kullanıcısı veya Yöneticisi, kimlik bilgileriyle kimlik doğrulaması yapmak Için kimlik sağlayıcısına yönlendirilir.
 
     d. Son olarak, kullanıcıların bu yöntemden yalnızca bir yardım almak için oturum açmasını istiyorsanız **SAML oturum açmayı zorla** ' ya geçiş yapabilirsiniz. Hala, yardım Scout kimlik bilgileriyle oturum açmak için bu seçeneği bırakmak istiyorsanız, devre dışı bırakabilirsiniz. Bu etkin olsa bile, hesap sahibi, hesap parolasıyla Scout 'a yardımcı olmak için her zaman oturum açabilir.
 

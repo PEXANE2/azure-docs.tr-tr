@@ -9,10 +9,10 @@ ms.date: 04/24/2020
 ms.author: maquaran
 ms.custom: devx-track-dotnet
 ms.openlocfilehash: 24d6b475964e4bf7745495e9c41d0e89bb76f7e9
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93341306"
 ---
 # <a name="migrate-from-the-bulk-executor-library-to-the-bulk-support-in-azure-cosmos-db-net-v3-sdk"></a>Toplu yürütücü kitaplığından Azure Cosmos DB .NET v3 SDK 'daki toplu desteğe geçiş yapın
@@ -36,15 +36,15 @@ SDK 'da belge veya işlem listenizi giriş parametresi olarak alacak tek bir yö
 
    :::code language="csharp" source="~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/BulkExecutorMigration/Program.cs" ID="Model":::
 
-Toplu içeri aktarma yapmak istiyorsanız (Bulkyürütücü. Bulkımportasync kullanmaya benzer), için eşzamanlı olarak çağrılarına sahip olmanız gerekir `CreateItemAsync` . Örneğin:
+Toplu içeri aktarma yapmak istiyorsanız (Bulkyürütücü. Bulkımportasync kullanmaya benzer), için eşzamanlı olarak çağrılarına sahip olmanız gerekir `CreateItemAsync` . Örnek:
 
    :::code language="csharp" source="~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/BulkExecutorMigration/Program.cs" ID="BulkImport":::
 
-Toplu *güncelleştirme* yapmak Istiyorsanız ( [Bulkyürütücü. bulkupdateasync](/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor.bulkexecutor.bulkupdateasync)kullanmaya benzer), `ReplaceItemAsync` öğe değerini güncelleştirdikten sonra metoda eşzamanlı olarak çağrı yapmanız gerekir. Örneğin:
+Toplu *güncelleştirme* yapmak Istiyorsanız ( [Bulkyürütücü. bulkupdateasync](/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor.bulkexecutor.bulkupdateasync)kullanmaya benzer), `ReplaceItemAsync` öğe değerini güncelleştirdikten sonra metoda eşzamanlı olarak çağrı yapmanız gerekir. Örnek:
 
    :::code language="csharp" source="~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/BulkExecutorMigration/Program.cs" ID="BulkUpdate":::
 
-Toplu *silme* yapmak Istiyorsanız ( [Bulkyürütücü. BulkDeleteAsync](/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor.bulkexecutor.bulkdeleteasync)ile benzer), `DeleteItemAsync` `id` her bir öğenin ve bölüm anahtarıyla, için eşzamanlı olarak çağrılarına sahip olmanız gerekir. Örneğin:
+Toplu *silme* yapmak Istiyorsanız ( [Bulkyürütücü. BulkDeleteAsync](/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor.bulkexecutor.bulkdeleteasync)ile benzer), `DeleteItemAsync` `id` her bir öğenin ve bölüm anahtarıyla, için eşzamanlı olarak çağrılarına sahip olmanız gerekir. Örnek:
 
    :::code language="csharp" source="~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/BulkExecutorMigration/Program.cs" ID="BulkDelete":::
 
@@ -83,14 +83,14 @@ Tüm görev listesinin kapsamını izlemek için bu yardımcı sınıfı kullan�
 
 ## <a name="retry-configuration"></a>Yapılandırmayı yeniden dene
 
-Toplu yürütücü kitaplığı, [guidance](bulk-executor-dot-net.md#bulk-import-data-to-an-azure-cosmos-account) `MaxRetryWaitTimeInSeconds` `MaxRetryAttemptsOnThrottledRequests` denetimin kitaplığa atamasını sağlamak için ve [RetryOptions](/dotnet/api/microsoft.azure.documents.client.connectionpolicy.retryoptions) olarak ayarlanması için bahsedilen kılavuza sahipti `0` .
+Toplu yürütücü kitaplığı, [](bulk-executor-dot-net.md#bulk-import-data-to-an-azure-cosmos-account) `MaxRetryWaitTimeInSeconds` `MaxRetryAttemptsOnThrottledRequests` denetimin kitaplığa atamasını sağlamak için ve [RetryOptions](/dotnet/api/microsoft.azure.documents.client.connectionpolicy.retryoptions) olarak ayarlanması için bahsedilen kılavuza sahipti `0` .
 
 .NET SDK 'da toplu destek için gizli bir davranış yoktur. Yeniden deneme seçeneklerini [Cosmosclientoptions. MaxRetryAttemptsOnRateLimitedRequests](/dotnet/api/microsoft.azure.cosmos.cosmosclientoptions.maxretryattemptsonratelimitedrequests) ve [Cosmosclientoptions. MaxRetryWaitTimeOnRateLimitedRequests](/dotnet/api/microsoft.azure.cosmos.cosmosclientoptions.maxretrywaittimeonratelimitedrequests)aracılığıyla doğrudan yapılandırabilirsiniz.
 
 > [!NOTE]
 > Sağlanan istek birimlerinin, veri miktarına göre beklenenden çok daha düşük olduğu durumlarda, bunları yüksek değerlere ayarlamayı düşünmek isteyebilirsiniz. Toplu işlem daha uzun sürer, ancak daha yüksek yeniden denemeler nedeniyle tamamen başarılı olma şansı daha yüksektir.
 
-## <a name="performance-improvements"></a>Performans iyileştirmeleri
+## <a name="performance-improvements"></a>Performans geliştirmeleri
 
 .NET SDK ile diğer işlemlerde olduğu gibi, Stream API 'Leri kullanılması daha iyi performansa neden olur ve gereksiz Serileştirmeyi önler. 
 
