@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/29/2019
 ms.author: jeedes
 ms.openlocfilehash: 68e961336d7e86f9983fea49044137894ab0f985
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92895180"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-yodeck"></a>Öğretici: Yodestesi tümleştirme Azure Active Directory
@@ -85,7 +85,7 @@ Bu bölümde, Azure portal Azure AD çoklu oturum açma özelliğini etkinleşti
 
 Yodestesi Azure AD çoklu oturum açma 'yı yapılandırmak için aşağıdaki adımları uygulayın:
 
-1. [Azure Portal](https://portal.azure.com/), **yodestesi** uygulama tümleştirmesi sayfasında, **Çoklu oturum açma** ' yı seçin.
+1. [Azure Portal](https://portal.azure.com/), **yodestesi** uygulama tümleştirmesi sayfasında, **Çoklu oturum açma**' yı seçin.
 
     ![Çoklu oturum açma bağlantısını yapılandırma](common/select-sso.png)
 
@@ -127,7 +127,7 @@ Yodestesi Azure AD çoklu oturum açma 'yı yapılandırmak için aşağıdaki a
 
 1. Farklı bir Web tarayıcısı penceresinde, Yodestesi şirket sitenizde yönetici olarak oturum açın.
 
-1. **Kullanıcı ayarları** seçeneğine tıklayın ve sayfanın sağ üst köşesini, **Hesap ayarları** ' nı seçin.
+1. **Kullanıcı ayarları** seçeneğine tıklayın ve sayfanın sağ üst köşesini, **Hesap ayarları**' nı seçin.
 
     ![Ekran görüntüsünde Kullanıcı için hesap ayarları seçili görüntülenir.](./media/yodeck-tutorial/configure1.png)
 
@@ -135,19 +135,19 @@ Yodestesi Azure AD çoklu oturum açma 'yı yapılandırmak için aşağıdaki a
 
     ![Ekran görüntüsü, bu adımları gerçekleştirebileceğiniz SAML sekmesini gösterir.](./media/yodeck-tutorial/configure2.png)
 
-    a. **URL 'Den Içeri aktar** ' ı seçin.
+    a. **URL 'Den Içeri aktar**' ı seçin.
 
-    b. **URL** metin kutusunda, Azure Portal kopyaladığınız **uygulama Federasyon meta veri URL 'si** değerini yapıştırın ve **içeri aktar** ' a tıklayın.
+    b. **URL** metin kutusunda, Azure Portal kopyaladığınız **uygulama Federasyon meta veri URL 'si** değerini yapıştırın ve **içeri aktar**' a tıklayın.
     
     c. **Uygulama Federasyon meta verileri URL 'sini** içeri aktardıktan sonra, kalan alanlar otomatik olarak doldurulur.
 
-    d. **Kaydet** ’e tıklayın.
+    d. **Kaydet**’e tıklayın.
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD test kullanıcısı oluşturma 
 
 Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı oluşturmaktır.
 
-1. Azure portal, sol bölmedeki **Azure Active Directory** ' i seçin, **Kullanıcılar** ' ı seçin ve ardından **tüm kullanıcılar** ' ı seçin.
+1. Azure portal, sol bölmedeki **Azure Active Directory**' i seçin, **Kullanıcılar**' ı seçin ve ardından **tüm kullanıcılar**' ı seçin.
 
     !["Kullanıcılar ve gruplar" ve "tüm kullanıcılar" bağlantıları](common/users.png)
 
@@ -165,21 +165,21 @@ Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı ol
 
     c. **Parolayı göster** onay kutusunu seçin ve ardından parola kutusunda görüntülenen değeri yazın.
 
-    d. **Oluştur** 'a tıklayın.
+    d. **Oluştur**’a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
 Bu bölümde, Yoya erişim izni vererek Azure çoklu oturum açma özelliğini kullanmak için Britta Simon 'u etkinleştirin.
 
-1. Azure portal **Kurumsal uygulamalar** ' ı seçin, **tüm uygulamalar** ' ı seçin ve ardından **yodestesi** ' ı seçin.
+1. Azure portal **Kurumsal uygulamalar**' ı seçin, **tüm uygulamalar**' ı seçin ve ardından **yodestesi**' ı seçin.
 
     ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
-2. Uygulamalar listesinde **Yodestesi** ' ı seçin.
+2. Uygulamalar listesinde **Yodestesi**' ı seçin.
 
     ![Uygulamalar listesindeki Yodestesi bağlantısı](common/all-applications.png)
 
-3. Soldaki menüde **Kullanıcılar ve gruplar** ' ı seçin.
+3. Soldaki menüde **Kullanıcılar ve gruplar**' ı seçin.
 
     !["Kullanıcılar ve gruplar" bağlantısı](common/users-groups-blade.png)
 
@@ -201,7 +201,7 @@ Azure AD kullanıcılarının Yodestesi oturum açmasını sağlamak için, bu k
 
 1. Yodestesi şirket sitenizde yönetici olarak oturum açın.
 
-2. **Kullanıcı ayarları** seçeneği ' ne tıklayın ve sayfanın sağ üst köşesini form ve **Kullanıcılar** ' ı seçin.
+2. **Kullanıcı ayarları** seçeneği ' ne tıklayın ve sayfanın sağ üst köşesini form ve **Kullanıcılar**' ı seçin.
 
     ![Ekran görüntüsü Kullanıcı için seçilen kullanıcıları gösterir.](./media/yodeck-tutorial/user1.png)
 
@@ -221,7 +221,7 @@ Azure AD kullanıcılarının Yodestesi oturum açmasını sağlamak için, bu k
 
     d. Kuruluş gereksiniminize göre uygun **Hesap izinleri** seçeneğini belirleyin.
     
-    e. **Kaydet** ’e tıklayın.
+    e. **Kaydet**’e tıklayın.
 
 ### <a name="test-single-sign-on"></a>Çoklu oturum açma testi 
 

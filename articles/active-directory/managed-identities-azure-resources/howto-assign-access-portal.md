@@ -16,10 +16,10 @@ ms.date: 11/03/2020
 ms.author: barclayn
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6584754edf3ff7ae31c3b9ace72baf16459dbc44
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93360003"
 ---
 # <a name="assign-a-managed-identity-access-to-a-resource-by-using-the-azure-portal"></a>Azure portal kullanarak bir kaynağa yönetilen kimlik erişimi atama
@@ -41,7 +41,7 @@ Azure [VM](qs-configure-portal-windows-vm.md) veya [Azure sanal makine ölçek k
 
 2. Erişim denetimini değiştirmek istediğiniz istenen kaynağa gidin. Bu örnekte, bir depolama hesabına Azure sanal makine erişimi veriyoruz, bu nedenle depolama hesabına gittik.
 
-3. Kaynağın **erişim denetimi (IAM)** sayfasını seçin ve **+ rol ataması Ekle** ' yi seçin. Ardından, **rolü** belirtin, **erişimi atayın** ve ilgili **aboneliği** belirtin. Arama ölçütleri alanında, kaynağı görmeniz gerekir. Kaynağı seçin ve **Kaydet** ' i seçin. 
+3. Kaynağın **erişim denetimi (IAM)** sayfasını seçin ve **+ rol ataması Ekle**' yi seçin. Ardından, **rolü** belirtin, **erişimi atayın** ve ilgili **aboneliği** belirtin. Arama ölçütleri alanında, kaynağı görmeniz gerekir. Kaynağı seçin ve **Kaydet**' i seçin. 
 
    ![Erişim denetimi (ıAM) ekran görüntüsü](./media/msi-howto-assign-access-portal/assign-access-control-iam-blade-before.png)  
      

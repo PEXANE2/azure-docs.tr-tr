@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 04/14/2019
 ms.author: jeedes
 ms.openlocfilehash: 81949736603d22cac779d08d14bd6db65065d730
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92459096"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-lockpath-keylight"></a>Öğretici: LockPath Keylight ile tümleştirme Azure Active Directory
@@ -30,7 +30,7 @@ LockPath Keylight 'i Azure AD ile tümleştirmek aşağıdaki avantajları sağl
 Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](../manage-apps/what-is-single-sign-on.md).
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure AD tümleştirmesini LockPath Keylight ile yapılandırmak için aşağıdaki öğeler gereklidir:
 
@@ -62,13 +62,13 @@ LockPath Keylight 'in Azure AD 'ye tümleştirilmesini yapılandırmak için, Ga
 
     ![Yeni uygulama düğmesi](common/add-new-app.png)
 
-4. Arama kutusunda, **LockPath Keylight**yazın, sonuç panelinden **LockPath Keylight** öğesini seçin ve ardından **Ekle** düğmesine tıklayarak uygulamayı ekleyin.
+4. Arama kutusunda, **LockPath Keylight** yazın, sonuç panelinden **LockPath Keylight** öğesini seçin ve ardından **Ekle** düğmesine tıklayarak uygulamayı ekleyin.
 
     ![Sonuçlar listesinde LockPath Keylight](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-Bu bölümde, Azure AD çoklu oturum açmayı, **Britta Simon**adlı bir test kullanıcısına göre LockPath Keylight ile yapılandırıp test edersiniz.
+Bu bölümde, Azure AD çoklu oturum açmayı, **Britta Simon** adlı bir test kullanıcısına göre LockPath Keylight ile yapılandırıp test edersiniz.
 Çoklu oturum açma için, bir Azure AD kullanıcısı ve LockPath Keylight içindeki ilgili Kullanıcı arasındaki bağlantı ilişkisinin kurulması gerekir.
 
 Azure AD çoklu oturum açma 'yı LockPath Keylight ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını gerçekleştirmeniz gerekir:
@@ -147,7 +147,7 @@ Azure AD çoklu oturum açmayı LockPath Keylight ile yapılandırmak için aşa
 
     ![Tek Sign-On yapılandırma](./media/keylight-tutorial/405.png)
 
-    a. **SAML kimlik doğrulamasını** **etkin**olarak ayarlayın.
+    a. **SAML kimlik doğrulamasını** **etkin** olarak ayarlayın.
 
     b. **Kimlik sağlayıcısı oturum açma URL 'si** metin kutusunda, Azure Portal kopyaladığınız **oturum açma URL 'si** değerini yapıştırın.
 
@@ -155,17 +155,17 @@ Azure AD çoklu oturum açmayı LockPath Keylight ile yapılandırmak için aşa
 
     d. İndirilen LockPath Keylight sertifikanızı seçmek için **Dosya Seç** ' e tıklayın ve ardından sertifikayı karşıya yüklemek için **Aç** ' a tıklayın.
 
-    e. **SAML Kullanıcı kimliği konumunu** **Konu bildiriminin NameIdentifier öğesine**ayarlayın.
+    e. **SAML Kullanıcı kimliği konumunu** **Konu bildiriminin NameIdentifier öğesine** ayarlayın.
 
     f. Aşağıdaki kalıbı kullanarak **Keylight hizmet sağlayıcısını** sağlayın: `https://<CompanyName>.keylightgrc.com` .
 
-    örneğin: **Kullanıcıları otomatik sağlamayı** **etkin**olarak ayarlayın.
+    örneğin: **Kullanıcıları otomatik sağlamayı** **etkin** olarak ayarlayın.
 
-    h. **Otomatik sağlama hesap türünü** **tam Kullanıcı**olarak ayarlayın.
+    h. **Otomatik sağlama hesap türünü** **tam Kullanıcı** olarak ayarlayın.
 
-    i. **Otomatik sağlama güvenlik rolünü**AYARLAYıN, **SAML ile standart Kullanıcı**' yı seçin.
+    i. **Otomatik sağlama güvenlik rolünü** AYARLAYıN, **SAML ile standart Kullanıcı**' yı seçin.
 
-    j. **Otomatik sağlama güvenlik**yapılandırmasını ayarlayın, **Standart Kullanıcı Yapılandırması**' nı seçin.
+    j. **Otomatik sağlama güvenlik** yapılandırmasını ayarlayın, **Standart Kullanıcı Yapılandırması**' nı seçin.
 
     k. **E-posta özniteliği** metin kutusuna yazın `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress` .
 
@@ -191,7 +191,7 @@ Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı ol
 
     ![Kullanıcı iletişim kutusu](common/user-properties.png)
 
-    a. **Ad** alanına **Brittasıon**girin.
+    a. **Ad** alanına **Brittasıon** girin.
   
     b. **Kullanıcı adı** alanına yazın `brittasimon@yourcompanydomain.extension` . Örneğin, BrittaSimon@contoso.com
 
@@ -207,7 +207,7 @@ Bu bölümde, LockPath Keylight 'e erişim vererek Azure çoklu oturum açma öz
 
     ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
-2. Uygulamalar listesinde, **LockPath Keylight**öğesini seçin.
+2. Uygulamalar listesinde, **LockPath Keylight** öğesini seçin.
 
     ![Uygulamalar listesindeki LockPath Keylight bağlantısı](common/all-applications.png)
 

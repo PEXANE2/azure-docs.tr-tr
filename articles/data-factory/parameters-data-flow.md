@@ -8,10 +8,10 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.date: 05/01/2020
 ms.openlocfilehash: 564c7cf6e9627db08d543b964ce476e71bfb473d
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93040752"
 ---
 # <a name="parameterizing-mapping-data-flows"></a>Eşleme veri akışlarını parametreleştirme
@@ -52,7 +52,7 @@ Parametre değerlerini atarken, Spark türlerine göre işlem [hattı ifade dili
 
 ### <a name="pipeline-expression-parameters"></a>Ardışık düzen ifade parametreleri
 
-İşlem hattı ifade parametreleri, sistem değişkenlerine, işlevlere, işlem hattı parametrelerine ve diğer işlem hattı etkinliklerine benzer değişkenlere başvurmasına olanak tanır. **Ardışık düzen ifadesi** ' ne tıkladığınızda, ifade oluşturucuyu kullanarak bir ifade girmenize izin veren bir yan gezinti açılır.
+İşlem hattı ifade parametreleri, sistem değişkenlerine, işlevlere, işlem hattı parametrelerine ve diğer işlem hattı etkinliklerine benzer değişkenlere başvurmasına olanak tanır. **Ardışık düzen ifadesi**' ne tıkladığınızda, ifade oluşturucuyu kullanarak bir ifade girmenize izin veren bir yan gezinti açılır.
 
 ![Ekran görüntüsü ifade Oluşturucu bölmesini gösterir.](media/data-flow/parameter-pipeline.png "Veri akışı parametresini ayarlama")
 

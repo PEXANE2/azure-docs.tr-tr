@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 05/09/2018
 ms.author: allensu
 ms.openlocfilehash: a2d9fc98ba6f514afbd88e543a859a69e0fc6c6b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88192671"
 ---
 # <a name="http-variables-for-azure-cdn-rules-engine"></a>Azure CDN Rules altyapısı için HTTP değişkenleri
@@ -34,7 +34,7 @@ HTTP değişkenleri, HTTP isteği ve yanıt meta verilerini almak için kullanab
 Aşağıdaki tabloda desteklenen HTTP değişkenleri açıklanmaktadır. COĞRAFI meta veriler (örneğin, posta kodu) belirli bir istek için kullanılamadığında boş bir değer döndürülür.
 
 
-| Adı | Değişken | Açıklama | Örnek değer |
+| Name | Değişken | Açıklama | Örnek değer |
 | ---- | -------- | ----------- | ------------ |
 | ASN (Istek sahibi) | % {geo_asnum} | İstek sahibinin numarasını belirtir. <br /><br />**Kullanım dışı:** % {virt_dst_asnum}. <br />Bu değişken,% {geo_asnum} için kullanım dışı bırakıldı. Kullanım dışı bırakılan bu değişkeni kullanan bir kural çalışmaya devam edebilse de, yeni değişkenini kullanmak için güncelleştirmeniz gerekir. | AS15133 |
 | Şehir (Istek sahibi) | % {geo_city} | İsteyanın şehrini gösterir. | Los Angeles |
@@ -69,7 +69,7 @@ Aşağıdaki tabloda desteklenen HTTP değişkenleri açıklanmaktadır. COĞRAF
 Aşağıdaki tabloda, bir HTTP değişkeni belirtmek için uygun sözdizimi açıklanmaktadır.
 
 
-| Sözdizimi | Örnek | Açıklama |
+| Syntax | Örnek | Description |
 | ------ | -------- | ---------- |
 | % { &lt; Httpvariable &gt; } | % {Konak} | Belirtilen httpvariable öğesine karşılık gelen değerin tamamını almak için bu sözdizimini kullanın &lt; &gt; . |
 | % { &lt; Httpvariabledelimiter &gt; } | % {Ana bilgisayar,} | Belirtilen httpvariablesınırlayıcısına karşılık gelen değerin tamamı için büyük/küçük harf ayarlamak için bu sözdizimini kullanın  &lt; &gt; . |
@@ -92,7 +92,7 @@ Bir sınırlayıcı, aşağıdaki etkilerden herhangi birine ulaşmak için bir 
 
 Sınırlayıcılar aşağıdaki tabloda açıklanmıştır.
 
-| Sınırlayıcı | Açıklama |
+| Sınırlayıcı | Description |
 | --------- | ----------- |
 | := | Değişkene varsayılan bir değer atandığını belirtir: <br />-Eksik <br />-NULL olarak ayarlayın. |
 | :+ | Kendisine bir değer atandığında değişkene varsayılan bir değer atanacağını belirtir. |
@@ -107,7 +107,7 @@ Sınırlayıcılar aşağıdaki tabloda açıklanmıştır.
 | ,, | HTTP değişkeniyle ilişkili değer içindeki belirtilen karakterin tüm örneklerini küçük harfe Dönüştür. |
 | ^^ | HTTP değişkeniyle ilişkili değer içindeki belirtilen karakterin tüm örneklerini büyük harfe Dönüştür. |
 
-## <a name="exceptions"></a>Özel Durumlar
+## <a name="exceptions"></a>Özel durumlar
 Aşağıdaki tabloda, belirtilen metnin bir HTTP değişkeni olarak değerlendirilmeyeceği koşullar açıklanmaktadır.
 
 | Koşul | Açıklama | Örnek |
@@ -125,7 +125,7 @@ Aşağıdaki koşullardan herhangi birini karşıladığında, bir üst bilgiye 
 
 Aşağıdaki tabloda, varsayılan bir değerin nasıl tanımlanacağı açıklanmaktadır.
 
-| Koşul | Sözdizimi | Örnek | Açıklama |
+| Koşul | Syntax | Örnek | Description |
 | --------- | ------ | --------| ----------- |
 | Aşağıdaki koşullardan herhangi birini karşıladığında bir üst bilgiyi varsayılan değere ayarlayın: <br /><br />-Eksik üst bilgi <br /><br />-Header değeri NULL olarak ayarlandı.| % {Variable: = değer} | % {http_referrer: = belirtilmemiş} | Başvuran üst bilgisi yalnızca eksik ya da NULL olarak ayarlandığında *belirtilmemiş* olarak ayarlanır. Ayarlandıysa hiçbir eylem gerçekleşmeyecektir. |
 | Bir üst bilgiyi, eksik olduğunda varsayılan değere ayarlayın. | % {Variable = değer} | % {http_referrer = belirtilmemiş} | Başvuran üst bilgisi yalnızca eksik olduğunda *belirtilmemiş* olarak ayarlanır. Ayarlandıysa hiçbir eylem gerçekleşmeyecektir. |
@@ -174,7 +174,7 @@ https: \/ /www.mydomain.com/mobile/marketing/proposal.htm
 ### <a name="pattern-removal"></a>Model kaldırma
 Belirli bir düzenle eşleşen metin, bir değişkenin değerinin başından veya sonundan kaldırılabilir.
 
-| Sözdizimi | Eylem |
+| Syntax | Eylem |
 | ------ | ------ |
 | % {Değişken # model} | Bir değişkenin değerinin başlangıcında belirtilen model bulunduğunda metni kaldır. |
 | % {Değişken% model} | Bir değişkenin değerinin sonunda belirtilen model bulunduğunda metni kaldır. |
@@ -187,7 +187,7 @@ Bu örnek senaryoda *request_uri* değişkeni şu şekilde ayarlanır:
 
 Aşağıdaki tabloda bu sözdiziminin nasıl çalıştığı gösterilmektedir.
 
-| Örnek sözdizimi | Sonuçlar | Açıklama |
+| Örnek sözdizimi | Sonuçlar | Description |
 | ------------- | ------- | --- |
 | % {request_uri #/800001}/customerorigin | /customerorigin/myorigin/Pazar/product.html? Language = en-US | Değişken, düzeniyle başladığı için değiştirildi. |
 | % {request_uri% html} htm | /800001/myorigin/Pazar/product.html? dil = en-US | Değişken, Düzenle bitmediği için değişiklik yoktu.|
@@ -195,7 +195,7 @@ Aşağıdaki tabloda bu sözdiziminin nasıl çalıştığı gösterilmektedir.
 ### <a name="find-and-replace"></a>Bulma ve değiştirme
 Bul ve Değiştir sözdizimi aşağıdaki tabloda açıklanmıştır.
 
-| Sözdizimi | Eylem |
+| Syntax | Eylem |
 | ------ | ------ |
 | % {Değişken/Bul/Değiştir} | Belirtilen düzenin ilk oluşumunu bul ve Değiştir. |
 | % {Değişken//Bul/Değiştir} | Belirtilen düzenin tüm oluşumlarını bul ve Değiştir. |
@@ -207,7 +207,7 @@ Bul ve Değiştir sözdizimi aşağıdaki tabloda açıklanmıştır.
 ### <a name="find-and-rewrite"></a>Bul ve yeniden yaz
 Bul ve Değiştir 'teki bir varyasyon için, yeniden yazarken belirtilen Düzenle eşleşen metni kullanın. Bul ve yeniden yaz sözdizimi aşağıdaki tabloda açıklanmıştır.
 
-| Sözdizimi | Eylem |
+| Syntax | Eylem |
 | ------ | ------ |
 | % {Variable/= bul/yeniden yaz} | Belirtilen düzenin tüm oluşumlarını bulun, kopyalayın ve yeniden yazın. |
 | % {Variable/^ bul/yeniden yaz} | Değişkenin başlangıcında gerçekleştiği sırada belirtilen kalıbı bulun, kopyalayın ve yeniden yazın. |
@@ -229,13 +229,13 @@ Anahtar bilgileri:
 - Bir model yer tutucusunun durumu (örneğin, $1) aşağıdaki bayraklar aracılığıyla değiştirilebilir:
      - U: büyük harf genişletilmiş değeri.
 
-         Örnek sözdizimi:
+         Örnek söz dizimi:
 
          `%{host/=^www\.([^\.]+)\.([^\.:]+)/cdn.$U2.$3:80}`
 
      - L: küçük harf genişletilmiş değeri.
 
-         Örnek sözdizimi:
+         Örnek söz dizimi:
 
          `%{host/=^www\.([^\.]+)\.([^\.:]+)/cdn.$L2.$3:80}`
 

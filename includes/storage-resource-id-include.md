@@ -1,6 +1,6 @@
 ---
-title: dosya dahil etme
-description: dosya dahil etme
+title: include dosyası
+description: include dosyası
 services: storage
 author: tamram
 ms.service: storage
@@ -9,15 +9,15 @@ ms.date: 07/15/2019
 ms.author: tamram
 ms.custom: include file
 ms.openlocfilehash: 39b61c78cbd0333183c80234256d6041a109d846
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "68249936"
 ---
 Bir Azure AD kaynak KIMLIĞI, bir Azure kaynağına erişim sağlamak için verilen belirtecin kullanılabileceği hedef kitlelerinin olduğunu gösterir. Azure depolama söz konusu olduğunda, kaynak KIMLIĞI tek bir depolama hesabına özgü olabilir veya herhangi bir depolama hesabı için de uygulanabilir. Aşağıdaki tabloda kaynak KIMLIĞI için sağlayabileceğinizi belirten değerler açıklanmaktadır:
 
-|Kaynak kimliği  |Açıklama  |
+|Kaynak kimliği  |Description  |
 |---------|---------|
 |`https://<account>.blob.core.windows.net` <br /><br /> `https://<account>.queue.core.windows.net`    | Belirli bir depolama hesabı için hizmet uç noktası. İstekleri yalnızca ilgili Azure depolama hesabına ve hizmete yetkilendirmek için bir belirteç almak üzere bu değeri kullanın. Köşeli ayraçlar içindeki değeri depolama hesabınızın adıyla değiştirin.      |
 |`https://storage.azure.com/`     | İstekleri herhangi bir Azure depolama hesabına yetkilendirmek için bir belirteç almak üzere kullanın.        |

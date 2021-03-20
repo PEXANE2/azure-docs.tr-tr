@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 04/03/2019
 ms.author: jeedes
 ms.openlocfilehash: 803f5c25429b33e6d1af130196d38e125b410eb4
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92891117"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zscaler-private-access-administrator"></a>Öğretici: Zscaler özel erişim yöneticisiyle Azure Active Directory tümleştirme
@@ -88,7 +88,7 @@ Bu bölümde, Azure portal Azure AD çoklu oturum açma özelliğini etkinleşti
 
 Azure AD çoklu oturum açma 'yı Zscaler özel erişim yöneticisiyle yapılandırmak için aşağıdaki adımları uygulayın:
 
-1. [Azure Portal](https://portal.azure.com/), **Zscaler özel erişim Yöneticisi** uygulama tümleştirmesi sayfasında, **Çoklu oturum açma** ' yı seçin.
+1. [Azure Portal](https://portal.azure.com/), **Zscaler özel erişim Yöneticisi** uygulama tümleştirmesi sayfasında, **Çoklu oturum açma**' yı seçin.
 
     ![Çoklu oturum açma bağlantısını yapılandırma](common/select-sso.png)
 
@@ -108,7 +108,7 @@ Azure AD çoklu oturum açma 'yı Zscaler özel erişim yöneticisiyle yapıland
 
     b. **Yanıt URL 'si** metin kutusuna aşağıdaki kalıbı kullanarak bir URL yazın:`https://<subdomain>.private.zscaler.com/auth/sso`
 
-    c. **Ek URL 'Ler ayarla** ' ya tıklayın.
+    c. **Ek URL 'Ler ayarla**' ya tıklayın.
 
     d. **Geçiş durumu** metin kutusuna bir URL yazın:`idpadminsso`
 
@@ -139,11 +139,11 @@ Azure AD çoklu oturum açma 'yı Zscaler özel erişim yöneticisiyle yapıland
 
 1. Farklı bir Web tarayıcısı penceresinde, bir yönetici olarak Zscaler özel erişim Yöneticisi ' ne oturum açın.
 
-2. Üstte, **Yönetim** ' e tıklayın ve **kimlik doğrulama** bölümüne gidin **IDP yapılandırması** ' na tıklayın.
+2. Üstte, **Yönetim** ' e tıklayın ve **kimlik doğrulama** bölümüne gidin **IDP yapılandırması**' na tıklayın.
 
     ![Zscaler özel erişim yönetici Yöneticisi](./media/zscalerprivateaccessadministrator-tutorial/tutorial_zscalerprivateaccessadministrator_admin.png)
 
-3. Sağ üst köşede **IDP Yapılandırması Ekle** ' ye tıklayın. 
+3. Sağ üst köşede **IDP Yapılandırması Ekle**' ye tıklayın. 
 
     ![Zscaler özel erişim Yöneticisi ek DP](./media/zscalerprivateaccessadministrator-tutorial/tutorial_zscalerprivateaccessadministrator_addpidp.png)
 
@@ -161,13 +161,13 @@ Azure AD çoklu oturum açma 'yı Zscaler özel erişim yöneticisiyle yapıland
 
     d. Etki **alanları** alanından etki alanınızı seçin.
     
-    e. **Kaydet** ’e tıklayın.
+    e. **Kaydet**’e tıklayın.
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD test kullanıcısı oluşturma 
 
 Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı oluşturmaktır.
 
-1. Azure portal, sol bölmedeki **Azure Active Directory** ' i seçin, **Kullanıcılar** ' ı seçin ve ardından **tüm kullanıcılar** ' ı seçin.
+1. Azure portal, sol bölmedeki **Azure Active Directory**' i seçin, **Kullanıcılar**' ı seçin ve ardından **tüm kullanıcılar**' ı seçin.
 
     !["Kullanıcılar ve gruplar" ve "tüm kullanıcılar" bağlantıları](common/users.png)
 
@@ -185,21 +185,21 @@ Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı ol
 
     c. **Parolayı göster** onay kutusunu seçin ve ardından parola kutusunda görüntülenen değeri yazın.
 
-    d. **Oluştur** 'a tıklayın.
+    d. **Oluştur**’a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
 Bu bölümde, Zscaler özel erişim yöneticisine erişim vererek Azure çoklu oturum açma özelliğini kullanmak için Britta Simon 'u etkinleştirin.
 
-1. Azure portal **Kurumsal uygulamalar** ' ı seçin, **tüm uygulamalar** ' ı seçin ve ardından **Zscaler özel erişim Yöneticisi** ' ni seçin.
+1. Azure portal **Kurumsal uygulamalar**' ı seçin, **tüm uygulamalar**' ı seçin ve ardından **Zscaler özel erişim Yöneticisi**' ni seçin.
 
     ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
-2. Uygulamalar listesinde, **Zscaler özel erişim Yöneticisi** ' ni seçin.
+2. Uygulamalar listesinde, **Zscaler özel erişim Yöneticisi**' ni seçin.
 
     ![Uygulamalar listesinde Zscaler özel erişim Yöneticisi bağlantısı](common/all-applications.png)
 
-3. Soldaki menüde **Kullanıcılar ve gruplar** ' ı seçin.
+3. Soldaki menüde **Kullanıcılar ve gruplar**' ı seçin.
 
     !["Kullanıcılar ve gruplar" bağlantısı](common/users-groups-blade.png)
 
@@ -221,7 +221,7 @@ Azure AD kullanıcılarının Zscaler özel erişim Yöneticisi 'nde oturum açm
 
 1. Zscaler özel erişim Yöneticisi şirket sitenizde yönetici olarak oturum açın.
 
-2. Üstte, **Yönetim** ' e tıklayın ve **kimlik doğrulama** bölümüne gidin **IDP yapılandırması** ' na tıklayın.
+2. Üstte, **Yönetim** ' e tıklayın ve **kimlik doğrulama** bölümüne gidin **IDP yapılandırması**' na tıklayın.
 
     ![Zscaler özel erişim yönetici Yöneticisi](./media/zscalerprivateaccessadministrator-tutorial/tutorial_zscalerprivateaccessadministrator_admin.png)
 
@@ -229,7 +229,7 @@ Azure AD kullanıcılarının Zscaler özel erişim Yöneticisi 'nde oturum açm
 
     ![Zscaler özel erişim yönetici Yöneticisi](./media/zscalerprivateaccessadministrator-tutorial/tutorial_zscalerprivateaccessadministrator_adminstrator.png)
 
-4. Sağ üst köşede **yönetici Ekle** ' ye tıklayın:
+4. Sağ üst köşede **yönetici Ekle**' ye tıklayın:
 
     ![Zscaler özel erişim Yöneticisi Yönetici Ekle](./media/zscalerprivateaccessadministrator-tutorial/tutorial_zscalerprivateaccessadministrator_addadmin.png)
 
@@ -251,7 +251,7 @@ Azure AD kullanıcılarının Zscaler özel erişim Yöneticisi 'nde oturum açm
 
     örneğin: **Saat dilimi** metin kutusunda, saat dilimini seçin.
 
-    h. **Kaydet** ’e tıklayın.
+    h. **Kaydet**’e tıklayın.
 
 ### <a name="test-single-sign-on"></a>Çoklu oturum açma testi 
 

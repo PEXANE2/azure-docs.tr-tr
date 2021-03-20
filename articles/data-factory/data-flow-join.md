@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 05/15/2020
 ms.openlocfilehash: ac84ce17f53145ffd85ffa31b6633d8b4b184962
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93042651"
 ---
 # <a name="join-transformation-in-mapping-data-flow"></a>Eşleme veri akışında dönüştürmeyi Birleştir
@@ -59,9 +59,9 @@ Açıkça tam bir Kartezyen ürün oluşturmak isterseniz, eşleştirilecek yapa
 
 1. **Sağ Akış** açılan menüsünde hangi veri akışını katdığınızı seçin.
 1. **JOIN türünü** seçin
-1. JOIN Koşulunuz için hangi anahtar sütunlarını eşlemek istediğinizi seçin. Varsayılan olarak, veri akışı her akıştaki bir sütun arasında eşitlik arar. Hesaplanan bir değer ile karşılaştırmak için, sütun açılan listesinin üzerine gelin ve **hesaplanan sütun** ' u seçin.
+1. JOIN Koşulunuz için hangi anahtar sütunlarını eşlemek istediğinizi seçin. Varsayılan olarak, veri akışı her akıştaki bir sütun arasında eşitlik arar. Hesaplanan bir değer ile karşılaştırmak için, sütun açılan listesinin üzerine gelin ve **hesaplanan sütun**' u seçin.
 
-![Dönüşümü Birleştir](media/data-flow/join.png "Birleştir")
+![Dönüşümü Birleştir](media/data-flow/join.png "Katılın")
 
 ### <a name="non-equi-joins"></a>Eşit olmayan birleşimler
 
@@ -75,13 +75,13 @@ SSIS gibi araçlarla birleştirme birleştirmesinin aksine, JOIN dönüşümü z
 
 ![Dönüştürme iyileştirmelerine Birleştir](media/data-flow/joinoptimize.png "Birleştirmeyi En Iyi duruma getirme")
 
-Birleşimler, aramalar ve mevcut dönüşümde, bir veya her iki veri akışı çalışan düğümü belleğine sığması halinde **yayını** etkinleştirerek performansı iyileştirebilirsiniz. Spark altyapısı, varsayılan olarak bir kenar yayınlanıp yayınlanmayacağını otomatik olarak karar verir. Hangi tarafın yayınlanmak üzere el ile seçmek için, **sabit** ' i seçin.
+Birleşimler, aramalar ve mevcut dönüşümde, bir veya her iki veri akışı çalışan düğümü belleğine sığması halinde **yayını** etkinleştirerek performansı iyileştirebilirsiniz. Spark altyapısı, varsayılan olarak bir kenar yayınlanıp yayınlanmayacağını otomatik olarak karar verir. Hangi tarafın yayınlanmak üzere el ile seçmek için, **sabit**' i seçin.
 
 Birleşimlerinizin zaman aşımı hatalarıyla çalışmadığı **durumlar dışında yayınlamayı** devre dışı bırakmanız önerilmez.
 
 ## <a name="self-join"></a>Self-Join
 
-Bir veri akışını kendisiyle birleştirmek için, bir seçme dönüşümü olan mevcut bir akışa diğer ad ekleyin. Bir dönüşümün yanındaki artı simgesine tıklayıp **yeni dal** ' ı seçerek yeni bir dal oluşturun. Özgün akışa diğer ad için bir seçme dönüşümü ekleyin. Bir JOIN dönüşümü ekleyin ve **sol** akış olarak orijinal akışı ve seçme dönüşümünü **doğru akış** olarak seçin.
+Bir veri akışını kendisiyle birleştirmek için, bir seçme dönüşümü olan mevcut bir akışa diğer ad ekleyin. Bir dönüşümün yanındaki artı simgesine tıklayıp **yeni dal**' ı seçerek yeni bir dal oluşturun. Özgün akışa diğer ad için bir seçme dönüşümü ekleyin. Bir JOIN dönüşümü ekleyin ve **sol** akış olarak orijinal akışı ve seçme dönüşümünü **doğru akış** olarak seçin.
 
 ![Kendi kendine Birleştir](media/data-flow/selfjoin.png "Kendi kendine Birleştir")
 

@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 07/25/2019
 ms.author: jeedes
 ms.openlocfilehash: 26109d4b8875dd0b442521513dbd219dc0de06e0
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92455978"
 ---
 # <a name="tutorial-integrate-civic-platform-with-azure-active-directory"></a>Öğretici: Cıvic platformunu Azure Active Directory ile tümleştirme
@@ -28,7 +28,7 @@ Bu öğreticide, Cıvic platformunu Azure Active Directory (Azure AD) ile tümle
 
 Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](../manage-apps/what-is-single-sign-on.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -59,7 +59,7 @@ Cıvic platformunun tümleştirmesini Azure AD 'ye göre yapılandırmak için, 
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-**B. Simon**adlı bir test kullanıcısı kullanarak, Cıvic platformuyla Azure AD SSO 'yu yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ve Cıvic platformunda ilgili Kullanıcı arasında bir bağlantı ilişkisi kurmanız gerekir.
+**B. Simon** adlı bir test kullanıcısı kullanarak, Cıvic platformuyla Azure AD SSO 'yu yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ve Cıvic platformunda ilgili Kullanıcı arasında bir bağlantı ilişkisi kurmanız gerekir.
 
 Azure AD SSO 'yu Cıvic platformuyla yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
 
@@ -93,7 +93,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
     ![Ekran görüntüsü, l olduğunuz uygulama Federasyon meta verilerini kopyalayabileceğiniz SAML Imzalama sertifikası sayfasını gösterir.](common/copy-metadataurl.png)
 
-1. **Azure Active Directory**  >  Azure AD 'de Azure Active Directory**uygulama kayıtları** gidin, uygulamanızı seçin.
+1.   >  Azure AD 'de Azure Active Directory **uygulama kayıtları** gidin, uygulamanızı seçin.
 
 1. **Dizin (kiracı) kimliğini** kopyalayın ve Not defteri 'nde depolayın.
 
@@ -103,7 +103,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
    ![Uygulama (istemci) KIMLIĞINI Kopyala](media/civic-platform-tutorial/applicationid.png)
 
-1. **Azure Active Directory**  >  Azure AD 'de Azure Active Directory**uygulama kayıtları** gidin, uygulamanızı seçin. **Sertifikalar & parolaları**' nı seçin.
+1.   >  Azure AD 'de Azure Active Directory **uygulama kayıtları** gidin, uygulamanızı seçin. **Sertifikalar & parolaları**' nı seçin.
 
 1. Istemci gizli dizileri **-> yeni istemci parolası**' nı seçin.
 
@@ -118,11 +118,11 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
 1. Yeni bir Web tarayıcı penceresi açın ve Atlasme bulut şirket sitenizde yönetici olarak oturum açın.
 
-1. **Standart seçeneklere**tıklayın.
+1. **Standart seçeneklere** tıklayın.
 
     ![Ekran görüntüsü Atlasme bulut sitesini, yönetici araçları altında kullanıma hazır standart seçeneklere sahip olarak gösterir.](media/civic-platform-tutorial/standard-choices.png)
 
-1. Standart bir seçim **ssoconfig**oluşturun.
+1. Standart bir seçim **ssoconfig** oluşturun.
 
 1. **Ssoconfig** ve Gönder için arama yapın.
 

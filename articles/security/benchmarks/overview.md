@@ -9,10 +9,10 @@ ms.date: 09/11/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
 ms.openlocfilehash: 3bc97a932e622838315f717cc7b036a559787805
-ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/13/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97369166"
 ---
 # <a name="overview-of-the-azure-security-benchmark-v2"></a>Azure Güvenlik kıyaslamaya genel bakış (v2)
@@ -28,7 +28,7 @@ Bu kıyaslama, ayrıca şunları da içeren bir bütünsel Güvenlik Kılavuzu k
  Azure Güvenlik kıyaslaması, bulut merkezli denetim bölümlerine odaklanır. Bu denetimler, Internet güvenliği için Merkez (CIS), sürüm 7,1 ve ulusal standartlar ve Teknoloji Enstitüsü (NıST) SP 800-53 tarafından açıklananlar gibi iyi bilinen güvenlik kıyaslamalarıyla tutarlıdır.
 Aşağıdaki denetimler Azure Güvenlik kıyaslaması 'nda bulunur:
 
-| ASB denetim etki alanları | Açıklama 
+| ASB denetim etki alanları | Description 
 |--|--|
 | [Ağ &nbsp; Güvenliği &nbsp; (NS)](security-controls-v2-network-security.md) | Ağ güvenliği, sanal ağların güvenliğini sağlama, özel bağlantılar oluşturma, dış saldırıları koruma ve azaltma ve DNS güvenliğini sağlama gibi Azure ağlarını güvenli hale getirmeye ve korumaya yönelik denetimleri ele alır. |
 | [Kimlik &nbsp; Yönetimi &nbsp; (IM)](security-controls-v2-identity-management.md) | Kimlik yönetimi, uygulamalar, koşullu erişim ve hesap bozukluklarını izlemek için çoklu oturum açma, güçlü kimlik doğrulamaları, Yönetilen kimlikler (ve hizmet ilkeleri) kullanımı dahil olmak üzere Azure Active Directory kullanarak güvenli bir kimlik ve erişim denetimlerine yönelik denetimleri ele alır. |

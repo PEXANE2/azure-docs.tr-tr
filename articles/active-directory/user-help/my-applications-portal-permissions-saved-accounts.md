@@ -13,15 +13,15 @@ ms.date: 02/03/2020
 ms.author: curtand
 ms.custom: user-help
 ms.openlocfilehash: cb162231c8cf2bf733c992de0c4aa56bf1fd1be2
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92791095"
 ---
 # <a name="edit-or-revoke-application-permissions-in-the-my-apps-portal"></a>Uygulamalarım portalındaki uygulama izinlerini düzenleme veya iptal etme
 
-Uygulamalarım portalındaki kurumsal uygulamaları kullandığınızda, **My Apps** genellikle izinler verirsiniz ve hesap bilgilerini kaydedersiniz. Verilerinizin güvenliğini sağlamak için izinleri gözden geçirmek ve iptal etmek ya da kayıtlı hesap kimlik bilgilerini temizlemek isteyebilirsiniz. İzinlerin veya hesapların kaldırılması bazı uygulama işlevlerini bozabilir. İzinleri veya hesapları kaldırdıktan sonra sorunlarla karşılaşırsanız, ek yardım için kuruluşunuzun yardım masasına başvurun.
+Uygulamalarım portalındaki kurumsal uygulamaları kullandığınızda,  genellikle izinler verirsiniz ve hesap bilgilerini kaydedersiniz. Verilerinizin güvenliğini sağlamak için izinleri gözden geçirmek ve iptal etmek ya da kayıtlı hesap kimlik bilgilerini temizlemek isteyebilirsiniz. İzinlerin veya hesapların kaldırılması bazı uygulama işlevlerini bozabilir. İzinleri veya hesapları kaldırdıktan sonra sorunlarla karşılaşırsanız, ek yardım için kuruluşunuzun yardım masasına başvurun.
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-end-user-my-apps-and-workspaces.md)]
 
@@ -30,13 +30,13 @@ Uygulamalarım portalındaki kurumsal uygulamaları kullandığınızda, **My Ap
 
 ## <a name="manage-app-accounts"></a>Uygulama hesaplarını yönetme
 
-Siz veya yöneticiniz tarafından yapılan uygulamaları görüntülemek için, **uygulamalarım** portalındaki bir uygulamanın üzerine geldiğinizde **.** .. seçeneğini belirleyin ve ardından **uygulamanızı Yönet** ' i seçin:
+Siz veya yöneticiniz tarafından yapılan uygulamaları görüntülemek için, **uygulamalarım** portalındaki bir uygulamanın üzerine geldiğinizde **.** .. seçeneğini belirleyin ve ardından **uygulamanızı Yönet**' i seçin:
 
 ![Uygulamalarım portalındaki bir uygulamayı yönetme](media/my-applications-portal-permissions-saved-accounts/my-apps-home-woodgrove.png)
 
 İzinler penceresinin en üst bölümü, kişisel olarak ne kadar duyduhangilerinin olduğunu gösterir. Uygulama izinlerinin örnekleri, takviminize, kişilerinize veya kameranıza erişme olanağını içerir.
 
-**Izinleri Iptal et** ' i seçerek tüm izinleri iptal edebilirsiniz, ancak izin kaldırıldığında bazı uygulama işlevleri bozulabilir. İzinleri veya hesapları kaldırdıktan sonra sorunlarla karşılaşırsanız, ek yardım için kuruluşunuzun yardım masasına başvurun.
+**Izinleri Iptal et**' i seçerek tüm izinleri iptal edebilirsiniz, ancak izin kaldırıldığında bazı uygulama işlevleri bozulabilir. İzinleri veya hesapları kaldırdıktan sonra sorunlarla karşılaşırsanız, ek yardım için kuruluşunuzun yardım masasına başvurun.
 
 ![Uygulamalarım portalındaki bir uygulama için izinleri iptal etme](media/my-applications-portal-permissions-saved-accounts/revoke-permissions.png)
 

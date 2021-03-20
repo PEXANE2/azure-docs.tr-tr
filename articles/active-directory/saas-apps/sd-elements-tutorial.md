@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 10/17/2019
 ms.author: jeedes
 ms.openlocfilehash: a9bcda4affa19cf8793cd078fdc5b96d842eb42b
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92893677"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-sd-elements"></a>Öğretici: SD öğeleriyle çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
@@ -47,8 +47,8 @@ SD öğelerinin Azure AD ile tümleştirilmesini yapılandırmak için, Galeri '
 
 1. [Azure Portal](https://portal.azure.com) iş veya okul hesabı ya da kişisel Microsoft hesabı kullanarak oturum açın.
 1. Sol gezinti bölmesinde **Azure Active Directory** hizmeti ' ni seçin.
-1. **Kurumsal uygulamalar** ' a gidin ve **tüm uygulamalar** ' ı seçin.
-1. Yeni uygulama eklemek için **Yeni uygulama** ' yı seçin.
+1. **Kurumsal uygulamalar** ' a gidin ve **tüm uygulamalar**' ı seçin.
+1. Yeni uygulama eklemek için **Yeni uygulama**' yı seçin.
 1. **Galeriden Ekle** bölümünde, arama kutusuna **SD öğeleri** yazın.
 1. Sonuçlar panelinden **SD öğeleri** ' ni seçin ve ardından uygulamayı ekleyin. Uygulama kiracınıza eklenirken birkaç saniye bekleyin.
 
@@ -70,8 +70,8 @@ Azure AD SSO 'yu SD öğeleriyle yapılandırmak ve test etmek için aşağıdak
 
 Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
-1. [Azure Portal](https://portal.azure.com/), **SD öğeleri** uygulama tümleştirmesi sayfasında, **Yönet** bölümünü bulun ve **Çoklu oturum açma** ' yı seçin.
-1. **Çoklu oturum açma yöntemi seçin** sayfasında **SAML** ' yi seçin.
+1. [Azure Portal](https://portal.azure.com/), **SD öğeleri** uygulama tümleştirmesi sayfasında, **Yönet** bölümünü bulun ve **Çoklu oturum açma**' yı seçin.
+1. **Çoklu oturum açma yöntemi seçin** sayfasında **SAML**' yi seçin.
 1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, ayarları düzenlemek IÇIN **temel SAML yapılandırması** için Düzenle/kalem simgesine tıklayın.
 
    ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
@@ -91,7 +91,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
 1. SD öğeleri uygulaması, yukarıdakine ek olarak aşağıda gösterilen SAML yanıtına daha fazla öznitelik geçirilmesini bekler. Bu öznitelikler de önceden doldurulur, ancak gereksinimlerinize göre bunları gözden geçirebilirsiniz.
 
-    | Ad |  Kaynak özniteliği|
+    | Name |  Kaynak özniteliği|
     | --- | --- |
     | e-posta |Kullanıcı. Mail |
     | FirstName |Kullanıcı. |
@@ -109,25 +109,25 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
 Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaksınız.
 
-1. Azure portal sol bölmeden **Azure Active Directory** ' i seçin, **Kullanıcılar** ' ı seçin ve ardından **tüm kullanıcılar** ' ı seçin.
+1. Azure portal sol bölmeden **Azure Active Directory**' i seçin, **Kullanıcılar**' ı seçin ve ardından **tüm kullanıcılar**' ı seçin.
 1. Ekranın üst kısmındaki **Yeni Kullanıcı** ' yı seçin.
 1. **Kullanıcı** özellikleri ' nde şu adımları izleyin:
    1. **Ad** alanına `B.Simon` girin.  
    1. **Kullanıcı adı** alanına, girin username@companydomain.extension . Örneğin, `B.Simon@contoso.com`.
    1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
-   1. **Oluştur** 'a tıklayın.
+   1. **Oluştur**’a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
 Bu bölümde, SD öğelerine erişim vererek Azure çoklu oturum açma özelliğini kullanmak için B. Simon 'u etkinleştireceksiniz.
 
-1. Azure portal **Kurumsal uygulamalar** ' ı seçin ve ardından **tüm uygulamalar** ' ı seçin.
-1. Uygulamalar listesinde **SD öğeleri** ' ni seçin.
-1. Uygulamanın genel bakış sayfasında **Yönet** bölümünü bulun ve **Kullanıcılar ve gruplar** ' ı seçin.
+1. Azure portal **Kurumsal uygulamalar**' ı seçin ve ardından **tüm uygulamalar**' ı seçin.
+1. Uygulamalar listesinde **SD öğeleri**' ni seçin.
+1. Uygulamanın genel bakış sayfasında **Yönet** bölümünü bulun ve **Kullanıcılar ve gruplar**' ı seçin.
 
    !["Kullanıcılar ve gruplar" bağlantısı](common/users-groups-blade.png)
 
-1. **Kullanıcı Ekle** ' yi seçin, sonra **atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar** ' ı seçin.
+1. **Kullanıcı Ekle**' yi seçin, sonra **atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar** ' ı seçin.
 
     ![Kullanıcı Ekle bağlantısı](common/add-assign-user.png)
 
@@ -141,7 +141,7 @@ Bu bölümde, SD öğelerine erişim vererek Azure çoklu oturum açma özelliğ
 
 1. Farklı bir tarayıcı penceresinde, SD öğeleri kiracınızda yönetici olarak oturum açın.
 
-1. Üstteki menüde, **sistem** ' e ve ardından **Çoklu oturum açma** ' ya tıklayın.
+1. Üstteki menüde, **sistem**' e ve ardından **Çoklu oturum açma**' ya tıklayın.
 
     ![Açılır listeden "sistem" seçili ve "çoklu oturum açma" gösteren ekran görüntüsü.](./media/sd-elements-tutorial/tutorial_sd-elements_09.png)
 
@@ -149,13 +149,13 @@ Bu bölümde, SD öğelerine erişim vererek Azure çoklu oturum açma özelliğ
 
     ![Tek Sign-On yapılandırma](./media/sd-elements-tutorial/tutorial_sd-elements_10.png)
 
-    a. **SSO türü** olarak **SAML** ' yi seçin.
+    a. **SSO türü** olarak **SAML**' yi seçin.
 
     b. **Kimlik sağlayıcısı VARLıK kimliği** metin kutusunda, Azure Portal KOPYALADıĞıNıZ **Azure AD tanımlayıcısının** değerini yapıştırın.
 
     c. **Kimlik sağlayıcısı tek Sign-On hizmeti** metin kutusunda, Azure Portal kopyaladığınız **oturum açma URL 'si** değerini yapıştırın.
 
-    d. **Kaydet** ’e tıklayın.
+    d. **Kaydet**’e tıklayın.
 
 ### <a name="create-sd-elements-test-user"></a>SD öğeleri test kullanıcısı oluştur
 
@@ -165,11 +165,11 @@ Bu bölümün amacı SD öğelerinde B. Simon adlı bir Kullanıcı oluşturmakt
 
 1. Bir Web tarayıcısı penceresinde, SD öğeleri şirket sitenizde yönetici olarak oturum açın.
 
-1. Üstteki menüden **Kullanıcı yönetimi** ' ne ve ardından **Kullanıcılar** ' a tıklayın.
+1. Üstteki menüden **Kullanıcı yönetimi**' ne ve ardından **Kullanıcılar**' a tıklayın.
 
     !["Kullanıcı Yönetimi" açılır listesinden "kullanıcılar" ın seçili olduğunu gösteren ekran görüntüsü.](./media/sd-elements-tutorial/tutorial_sd-elements_11.png) 
 
-1. **Yeni Kullanıcı Ekle** ' ye tıklayın.
+1. **Yeni Kullanıcı Ekle**' ye tıklayın.
 
     !["Yeni Kullanıcı Ekle" düğmesinin seçili olduğunu gösteren ekran görüntüsü.](./media/sd-elements-tutorial/tutorial_sd-elements_12.png)
 
@@ -183,9 +183,9 @@ Bu bölümün amacı SD öğelerinde B. Simon adlı bir Kullanıcı oluşturmakt
 
     c. **Soyadı** metin kutusunda, **Simon** gibi kullanıcı adının soyadını girin.
 
-    d. **Rol** olarak **Kullanıcı** ' yı seçin.
+    d. **Rol** olarak **Kullanıcı**' yı seçin.
 
-    e. **Kullanıcı oluştur** ' a tıklayın.
+    e. **Kullanıcı oluştur**' a tıklayın.
 
 ## <a name="test-sso"></a>Test SSO 'SU 
 

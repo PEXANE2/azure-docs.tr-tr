@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 03/12/2019
 ms.author: apimpm
 ms.openlocfilehash: 18cc42c3447de733447c27db52a9a6d664539464
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89400373"
 ---
 # <a name="how-to-save-and-configure-your-api-management-service-configuration-using-git"></a>API Management hizmeti yapılandırmanızı Git kullanarak kaydetme ve yapılandırma
@@ -60,7 +60,7 @@ REST API kullanarak git erişimini etkinleştirme veya devre dışı bırakma ha
 
 ## <a name="to-save-the-service-configuration-to-the-git-repository"></a>Hizmet yapılandırmasını git deposuna kaydetmek için
 
-Depoyu kopyalamaya başlamadan önce ilk adım, hizmet yapılandırmasının geçerli durumunu depoya kaydetmesidir. **Depoya Kaydet ' e**tıklayın.
+Depoyu kopyalamaya başlamadan önce ilk adım, hizmet yapılandırmasının geçerli durumunu depoya kaydetmesidir. **Depoya Kaydet ' e** tıklayın.
 
 Onay ekranında istediğiniz değişiklikleri yapın ve kaydetmek için **Kaydet** ' e tıklayın.
 
@@ -96,7 +96,7 @@ Herhangi bir hata alırsanız, `git clone` Aşağıdaki örnekte gösterildiği 
 git clone https://username:password@{name}.scm.azure-api.net/
 ```
 
-Bu bir hata sağlıyorsa, komutun parola bölümünü kodlayarak URL 'YI deneyin. Bunu yapmanın hızlı bir yolu, Visual Studio 'yu açmak ve komut **penceresinde**aşağıdaki komutu vermektir. **Hemen penceresini**açmak Için, Visual Studio 'da herhangi bir çözümü veya projeyi açın (veya yeni bir boş konsol uygulaması oluşturun) ve **Hata Ayıkla** menüsünden **Windows** **' u** seçin.
+Bu bir hata sağlıyorsa, komutun parola bölümünü kodlayarak URL 'YI deneyin. Bunu yapmanın hızlı bir yolu, Visual Studio 'yu açmak ve komut **penceresinde** aşağıdaki komutu vermektir. **Hemen penceresini** açmak Için, Visual Studio 'da herhangi bir çözümü veya projeyi açın (veya yeni bir boş konsol uygulaması oluşturun) ve **Hata Ayıkla** menüsünden **Windows** **' u** seçin.
 
 ```
 ?System.Net.WebUtility.UrlEncode("password from the Azure portal")

@@ -10,10 +10,10 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.openlocfilehash: 57e847116febcea66e1e3ac4ba131617463b6c94
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92895775"
 ---
 # <a name="manage-authentication-in-azure-maps"></a>Azure haritalar 'da kimlik doğrulamasını yönetme
@@ -24,7 +24,7 @@ Azure haritalar hesabı oluşturduktan sonra, Azure Active Directory (Azure AD) 
 
 Azure haritalar hesabı oluşturduktan sonra, birincil ve ikincil anahtarlar oluşturulur. [Azure haritalar 'ı çağırmak Için paylaşılan anahtar kimlik doğrulaması](./azure-maps-authentication.md#shared-key-authentication)kullandığınızda bir birincil anahtarı abonelik anahtarı olarak kullanmanızı öneririz. İkincil bir anahtarı, kayan anahtar değişiklikleri gibi senaryolarda kullanabilirsiniz. Daha fazla bilgi için bkz. [Azure haritalar 'Da kimlik doğrulaması](./azure-maps-authentication.md).
 
-Kimlik doğrulama ayrıntılarınızı Azure portal görüntüleyebilirsiniz. Burada, hesabınızda, **Ayarlar** menüsünde **kimlik doğrulaması** ' nı seçin.
+Kimlik doğrulama ayrıntılarınızı Azure portal görüntüleyebilirsiniz. Burada, hesabınızda, **Ayarlar** menüsünde **kimlik doğrulaması**' nı seçin.
 
 > [!div class="mx-imgBorder"]
 > ![Kimlik doğrulaması ayrıntıları](./media/how-to-manage-authentication/how-to-view-auth.png)
@@ -56,14 +56,14 @@ Tablodaki bağlantılar sizi her senaryo için ayrıntılı yapılandırma bilgi
 
 ## <a name="view-role-definitions"></a>Rol tanımlarını görüntüle
 
-Azure haritalar için kullanılabilen Azure rollerini görüntülemek için **erişim denetimi (IAM)** sayfasına gidin. **Roller** ' i seçin ve ardından *Azure Maps* ile başlayan roller için arama yapın. Bu Azure Maps rolleri, erişim sağlayabilmeniz için kullanabileceğiniz rollerdir.
+Azure haritalar için kullanılabilen Azure rollerini görüntülemek için **erişim denetimi (IAM)** sayfasına gidin. **Roller**' i seçin ve ardından *Azure Maps* ile başlayan roller için arama yapın. Bu Azure Maps rolleri, erişim sağlayabilmeniz için kullanabileceğiniz rollerdir.
 
 > [!div class="mx-imgBorder"]
 > ![Kullanılabilir rolleri görüntüle](./media/how-to-manage-authentication/how-to-view-avail-roles.png)
 
 ## <a name="view-role-assignments"></a>Rol atamalarını görüntüle
 
-Azure haritalar için erişim izni verilen kullanıcıları ve uygulamaları görüntülemek için **Access Control (IAM)** sayfasına gidin. Burada **rol atamaları** ' nı seçin ve ardından **Azure Maps** 'a göre filtreleyin.
+Azure haritalar için erişim izni verilen kullanıcıları ve uygulamaları görüntülemek için **Access Control (IAM)** sayfasına gidin. Burada **rol atamaları**' nı seçin ve ardından **Azure Maps**'a göre filtreleyin.
 
 > [!div class="mx-imgBorder"]
 > ![Erişim izni verilen kullanıcıları ve uygulamaları görüntüleme](./media/how-to-manage-authentication/how-to-view-amrbac.png)

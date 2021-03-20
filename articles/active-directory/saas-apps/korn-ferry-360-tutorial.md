@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 02/21/2020
 ms.author: jeedes
 ms.openlocfilehash: 6f1f1e6416c2d47f626e68c6effe51047a7a35be
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92458889"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-korn-ferry-360"></a>Öğretici: Korn Fraz 360 ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
@@ -28,7 +28,7 @@ Bu öğreticide, Korn Fraz 360 Azure Active Directory (Azure AD) ile nasıl tüm
 
 Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](../manage-apps/what-is-single-sign-on.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -55,7 +55,7 @@ Korn Fraz 360 tümleştirmesini Azure AD 'ye göre yapılandırmak için galerid
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-korn-ferry-360"></a>Korn Fraz 360 için Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-**B. Simon**adlı bir test kullanıcısı kullanarak Azure AD SSO 'Yu Korn fraz 360 ile yapılandırın ve test edin. SSO 'nun çalışması için, Korn Fraz 360 ' deki bir Azure AD kullanıcısı ve ilgili Kullanıcı arasında bağlantı ilişkisi oluşturmanız gerekir.
+**B. Simon** adlı bir test kullanıcısı kullanarak Azure AD SSO 'Yu Korn fraz 360 ile yapılandırın ve test edin. SSO 'nun çalışması için, Korn Fraz 360 ' deki bir Azure AD kullanıcısı ve ilgili Kullanıcı arasında bağlantı ilişkisi oluşturmanız gerekir.
 
 Azure AD SSO 'yu Korn Fraz 360 ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
 

@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 02/12/2019
 ms.author: jeedes
 ms.openlocfilehash: 0aa0dab7b512c85fbbdf374c962e6ee8e1c7d616
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92456303"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-cezanne-hr-software"></a>Öğretici: Cezanne HR yazılımıyla tümleştirme Azure Active Directory
@@ -30,7 +30,7 @@ Cezanne HR yazılımını Azure AD ile tümleştirmek aşağıdaki avantajları 
 Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](../manage-apps/what-is-single-sign-on.md).
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure AD tümleştirmesini Cezanne HR yazılımıyla yapılandırmak için aşağıdaki öğeler gereklidir:
 
@@ -61,13 +61,13 @@ Cezanne HR yazılımının tümleştirmesini Azure AD ile yapılandırmak için,
 
     ![Yeni uygulama düğmesi](common/add-new-app.png)
 
-4. Arama kutusuna **CEZANNE HR Software**yazın, sonuç PANELINDEN **Cezanne HR Software** ' i seçin, sonra da uygulamayı eklemek için düğme **Ekle** ' ye tıklayın.
+4. Arama kutusuna **CEZANNE HR Software** yazın, sonuç PANELINDEN **Cezanne HR Software** ' i seçin, sonra da uygulamayı eklemek için düğme **Ekle** ' ye tıklayın.
 
     ![Cezanne ık Software for the results List](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-Bu bölümde, **Britta Simon**adlı bir test kullanıcısına bağlı olarak Azure AD çoklu oturum açma 'Yı Cezanne HR yazılımıyla yapılandırıp test edersiniz.
+Bu bölümde, **Britta Simon** adlı bir test kullanıcısına bağlı olarak Azure AD çoklu oturum açma 'Yı Cezanne HR yazılımıyla yapılandırıp test edersiniz.
 Çoklu oturum açma için, bir Azure AD kullanıcısı ve Cezanne HR Software ile ilgili Kullanıcı arasındaki bağlantı ilişkisinin kurulması gerekir.
 
 Azure AD çoklu oturum açma 'yı Cezanne HR yazılımıyla yapılandırmak ve test etmek için aşağıdaki yapı taşlarını gerçekleştirmeniz gerekir:
@@ -128,7 +128,7 @@ Azure AD çoklu oturum açmayı Cezanne HR yazılımıyla yapılandırmak için 
 
 1. Farklı bir Web tarayıcısı penceresinde, Cezanne ık yazılım kiracınızda yönetici olarak oturum açın.
 
-2. Sol gezinti bölmesinde **sistem kurulumu**' na tıklayın. **Güvenlik ayarları**' na gidin. Sonra **tek Sign-On yapılandırmaya**gidin.
+2. Sol gezinti bölmesinde **sistem kurulumu**' na tıklayın. **Güvenlik ayarları**' na gidin. Sonra **tek Sign-On yapılandırmaya** gidin.
 
     ![Ekran görüntüsünde, güvenlik ayarları ve tek Sign-On yapılandırması seçili olan Cezanne H R yazılım kiracısı gösterilmektedir.](./media/cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_000.png)
 
@@ -144,7 +144,7 @@ Azure AD çoklu oturum açmayı Cezanne HR yazılımıyla yapılandırmak için 
 
     ![Ekran görüntüsü, bu adımda açıklanan değerleri girebileceğiniz bir bölme gösterir.](./media/cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_003.png)
 
-    a. **Görünen ad**olarak kimlik sağlayıcınızın adını girin.
+    a. **Görünen ad** olarak kimlik sağlayıcınızın adını girin.
 
     b. **Varlık tanımlayıcı** metin kutusunda, Azure Portal kopyaladığınız **Azure AD tanımlayıcısının** değerini yapıştırın.
 
@@ -178,9 +178,9 @@ Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı ol
 
     ![Kullanıcı iletişim kutusu](common/user-properties.png)
 
-    a. **Ad** alanına **Brittasıon**girin.
+    a. **Ad** alanına **Brittasıon** girin.
   
-    b. **Kullanıcı adı** alanına ** \@ bricompansıon yourcompanydomain. Extension** yazın  
+    b. **Kullanıcı adı** alanına **\@ bricompansıon yourcompanydomain. Extension** yazın  
     Örneğin, BrittaSimon@contoso.com
 
     c. **Parolayı göster** onay kutusunu seçin ve ardından parola kutusunda görüntülenen değeri yazın.
@@ -231,9 +231,9 @@ Azure AD kullanıcılarının Cezanne HR yazılımında oturum açmasını sağl
 
     a. **Iç KULLANıCıYı** kapalı olarak ayarlayın.
 
-    b. **Ad** metin kutusuna, Ilk Kullanıcı adını **Britta**gibi yazın.  
+    b. **Ad** metin kutusuna, Ilk Kullanıcı adını **Britta** gibi yazın.  
 
-    c. **Soyadı** metin kutusunda, **Simon**gibi kullanıcı adının soyadını yazın.
+    c. **Soyadı** metin kutusunda, **Simon** gibi kullanıcı adının soyadını yazın.
 
     d. **E-posta** metin kutusuna, gibi kullanıcının e-posta adresini yazın Brittasimon@contoso.com .
 
@@ -245,15 +245,15 @@ Azure AD kullanıcılarının Cezanne HR yazılımında oturum açmasını sağl
 
     b. **Parola** metin kutusuna kullanıcının parolasını yazın.
 
-    c. **Güvenlik rolü**olarak **İK Professional** ' ı seçin.
+    c. **Güvenlik rolü** olarak **İK Professional** ' ı seçin.
 
-    d. **Tamam**’a tıklayın.
+    d. **Tamam**'a tıklayın.
 
 5. **Çoklu oturum açma** sekmesine gidin ve **SAML 2,0 tanımlayıcıları** alanında **Yeni Ekle** ' yi seçin.
 
     ![Ekran görüntüsü, yeni Ekle ' yi seçebileceğiniz tek Sign-On sekmesini gösterir.](./media/cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_008.png "Kullanıcı")
 
-6. **Kimlik sağlayıcısı** Için kimlik sağlayıcınızı seçin ve **Kullanıcı tanımlayıcısı**metin kutusunda Britta Simon hesabının e-posta adresini girin.
+6. **Kimlik sağlayıcısı** Için kimlik sağlayıcınızı seçin ve **Kullanıcı tanımlayıcısı** metin kutusunda Britta Simon hesabının e-posta adresini girin.
 
     ![Ekran görüntüsü, kimlik sağlayıcınızı ve Kullanıcı tanımlayıcıyı seçebileceğiniz SAML 2,0 tanımlayıcılarını gösterir.](./media/cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_009.png "Kullanıcı")
 

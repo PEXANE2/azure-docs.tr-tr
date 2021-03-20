@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 10/02/2019
 ms.openlocfilehash: 0b5e255d7d108eb063ece4e5489a8762261a0bed
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88207256"
 ---
 # <a name="use-azure-functions-to-connect-to-an-azure-sql-database"></a>Azure Işlevleri 'ni kullanarak bir Azure SQL veritabanına bağlanma
@@ -18,7 +18,7 @@ Bu makalede, Azure Işlevleri 'ni kullanarak bir Azure SQL veritabanına veya Az
 
 C# işlevleriyle çalışırken ilk deneyiminize sahipseniz, [Azure Işlevleri C# Geliştirici başvurusunu](functions-dotnet-class-library.md)okumalısınız.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 + Sürüm 2. x veya çalışma zamanının sonraki bir sürümünü hedefleyen bir yerel işlev uygulaması oluşturmak için [Visual Studio kullanarak ilk işlevinizi oluşturma](functions-create-your-first-function-visual-studio.md) makalesindeki adımları izleyin. Ayrıca, projenizi Azure 'da bir işlev uygulamasına yayımlamalısınız.
 
@@ -44,7 +44,7 @@ Azure'da işlevlerinizin yürütülmesini bir işlev uygulaması barındırır. 
 
 Uygulamanızı daha önce Azure 'da yayımladınız. Daha önce yapmadıysanız, [işlev uygulamanızı Azure 'Da yayımlayın](functions-develop-vs.md#publish-to-azure).
 
-1. Çözüm Gezgini, işlev uygulaması projesine sağ tıklayın ve **Publish**  >  **düzenleme Azure App Service ayarları**Yayımla ' yı seçin. **Ayar ekle**' yi seçin, **Yeni uygulama ayarı adı**yazın `sqldb_connection` ve **Tamam**' ı seçin.
+1. Çözüm Gezgini, işlev uygulaması projesine sağ tıklayın ve   >  **düzenleme Azure App Service ayarları** Yayımla ' yı seçin. **Ayar ekle**' yi seçin, **Yeni uygulama ayarı adı** yazın `sqldb_connection` ve **Tamam**' ı seçin.
 
     ![İşlev uygulaması için uygulama ayarları.](./media/functions-scenario-database-table-cleanup/functions-app-service-add-setting.png)
 
@@ -74,7 +74,7 @@ SqlClient kitaplığını içeren NuGet paketini eklemeniz gerekir. Bu veri eri�
 
 ## <a name="add-a-timer-triggered-function"></a>Zamanlayıcı ile tetiklenen işlev ekleme
 
-1. Çözüm Gezgini, işlev uygulaması projesine sağ tıklayın ve **Add**  >  **yeni Azure işlevi**Ekle ' yi seçin.
+1. Çözüm Gezgini, işlev uygulaması projesine sağ tıklayın ve   >  **yeni Azure işlevi** Ekle ' yi seçin.
 
 1. **Azure işlevleri** şablonu seçiliyken, yeni öğeyi bir şekilde adlandırın `DatabaseCleanup.cs` ve **Ekle**' yi seçin.
 

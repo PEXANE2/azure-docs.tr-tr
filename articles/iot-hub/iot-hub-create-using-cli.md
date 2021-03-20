@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 08/23/2018
 ms.author: robinsh
 ms.openlocfilehash: e9757b94330f889869080a0e961ab2728cee86f6
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94659939"
 ---
 # <a name="create-an-iot-hub-using-the-azure-cli"></a>Azure CLı kullanarak IoT Hub 'ı oluşturma
@@ -26,7 +26,7 @@ Bu makalede, Azure CLı kullanarak IoT Hub 'ı oluşturma konusu gösterilmekted
 
 ## <a name="create-an-iot-hub"></a>IoT Hub'ı oluşturma
 
-Azure CLı kullanarak bir kaynak grubu oluşturun ve ardından bir IoT Hub 'ı ekleyin.
+Azure CLI'yi kullanarak bir kaynak grubu oluşturun ve ardından bir IoT hub'ı ekleyin.
 
 1. Bir IoT Hub 'ı oluşturduğunuzda bir kaynak grubunda oluşturmanız gerekir. Mevcut bir kaynak grubunu kullanın veya [kaynak grubu oluşturmak için aşağıdaki komutu](/cli/azure/resource) çalıştırabilirsiniz:
     
@@ -42,7 +42,7 @@ Azure CLı kullanarak bir kaynak grubu oluşturun ve ardından bir IoT Hub 'ı e
    > ```
    >
 
-2. IoT Hub 'ınız için genel olarak benzersiz bir ad kullanarak kaynak grubunuzda [bir IoT Hub 'ı oluşturmak için aşağıdaki komutu](/cli/azure/iot/hub#az-iot-hub-create) çalıştırın:
+2. Aşağıdaki komutu çalıştırarak kaynak grubunuzda [bir IoT hub'ı oluşturun](/cli/azure/iot/hub#az-iot-hub-create) ve IoT hub'ınız için genel olarak benzersiz bir ad kullanın:
     
    ```azurecli-interactive
    az iot hub create --name {your iot hub name} \

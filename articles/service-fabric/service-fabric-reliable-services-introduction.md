@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 3/9/2018
 ms.author: masnider
 ms.openlocfilehash: 50b8cae11cef5ee8670e2e0270fd8506b1dad4d4
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96576545"
 ---
 # <a name="reliable-services-overview"></a>Reliable Services özelliğine genel bakış
@@ -73,7 +73,7 @@ Bu durumda, hizmetin `RunAsync()` `runAsync()` yapması gereken arka plan görev
 
 Herhangi bir iç durumu depolamamadan Bu örnek Hesaplayıcı basit hale gelir. Ancak hizmetlerin çoğu gerçekten durum bilgisiz değildir. Bunun yerine, diğer mağazalarına durumlarını externalize. (Örneğin, oturum durumunu bir yedekleme deposunda veya önbellekte tutmaya bağlı olan herhangi bir Web uygulaması durum bilgisiz değildir.)
 
-Bir Web uygulaması için genel kullanıma yönelik API 'YI kullanıma sunan bir ön uç olarak, durum bilgisi olmayan hizmetlerin Service Fabric nasıl kullanıldığına ilişkin yaygın bir örnek. Ön uç hizmeti, bir Kullanıcı isteğini tamamlamaya yönelik bir durum bilgisi olan hizmetlerden daha fazla konuşuyor. Bu durumda, istemcilerden gelen çağrılar, durum bilgisi olmayan hizmetin dinlediği 80 gibi bilinen bir bağlantı noktasına yönlendirilir. Bu durum bilgisiz hizmeti, çağrıyı alır ve çağrının güvenilen bir taraftan mı yoksa hedeflenen hizmetten mi olduğunu belirler.  Ardından, durum bilgisi olmayan hizmet çağrıyı durum bilgisiz hizmetin doğru bölümüne iletir ve bir yanıt bekler. Durum bilgisi olmayan hizmet bir yanıt aldığında, özgün istemciye yanıt verir. Bu tür bir hizmete örnek olarak,[C#](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)söz *Service Fabric Getting Started*  /  konusu depodaki diğer Service Fabric örnekleri arasında Service Fabric Başlarken örneği (C#[Java](https://github.com/Azure-Samples/service-fabric-java-getting-started)) bulunur.
+Bir Web uygulaması için genel kullanıma yönelik API 'YI kullanıma sunan bir ön uç olarak, durum bilgisi olmayan hizmetlerin Service Fabric nasıl kullanıldığına ilişkin yaygın bir örnek. Ön uç hizmeti, bir Kullanıcı isteğini tamamlamaya yönelik bir durum bilgisi olan hizmetlerden daha fazla konuşuyor. Bu durumda, istemcilerden gelen çağrılar, durum bilgisi olmayan hizmetin dinlediği 80 gibi bilinen bir bağlantı noktasına yönlendirilir. Bu durum bilgisiz hizmeti, çağrıyı alır ve çağrının güvenilen bir taraftan mı yoksa hedeflenen hizmetten mi olduğunu belirler.  Ardından, durum bilgisi olmayan hizmet çağrıyı durum bilgisiz hizmetin doğru bölümüne iletir ve bir yanıt bekler. Durum bilgisi olmayan hizmet bir yanıt aldığında, özgün istemciye yanıt verir. Bu tür bir hizmete örnek olarak,[](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)söz   /  konusu depodaki diğer Service Fabric örnekleri arasında Service Fabric Başlarken örneği (C#[Java](https://github.com/Azure-Samples/service-fabric-java-getting-started)) bulunur.
 
 ### <a name="stateful-reliable-services"></a>Durum bilgisi olan Reliable Services
 

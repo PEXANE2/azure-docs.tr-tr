@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/04/2018
 ms.openlocfilehash: d660e62ea293bd3cc377b95612cfaf41a9f1cd6a
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92793373"
 ---
 # <a name="using-the-elastic-database-client-library-with-dapper"></a>Kaber ile elastik veritabanı istemci kitaplığını kullanma
@@ -23,7 +23,7 @@ ms.locfileid: "92793373"
 
 Bu belge, uygulamalar oluşturmak için daber 'yi kullanan geliştiricilere yöneliktir, ancak aynı zamanda veri katmanını ölçeklendirmek için parçalara ayırma uygulayan uygulamalar oluşturmak üzere [elastik veritabanı](elastic-scale-introduction.md) araçlarını benimseyin.  Bu belge, elastik veritabanı araçlarıyla tümleştirme için gerekli olan paber tabanlı uygulamalardaki değişiklikleri gösterir. Odaklanmamız, elastik veritabanı oluşturma yönetimini ve veri odaklı yönlendirmeyi kaber ile oluşturmaya yönelik. 
 
-**Örnek kod** : [Azure SQL veritabanı için elastik veritabanı araçları-paber tümleştirmesi](https://code.msdn.microsoft.com/Elastic-Scale-with-Azure-e19fc77f).
+**Örnek kod**: [Azure SQL veritabanı için elastik veritabanı araçları-paber tümleştirmesi](https://code.msdn.microsoft.com/Elastic-Scale-with-Azure-e19fc77f).
 
 Azure SQL veritabanı için elastik veritabanı istemci kitaplığı ile **daber** ve **dapperextensions** 'ın tümleştirilmesi kolaydır. Uygulamalarınız, yeni [SqlConnection](/dotnet/api/system.data.sqlclient.sqlconnection) nesnelerinin oluşturulmasını ve açılmasını, [Istemci kitaplığından](/previous-versions/azure/dn765902(v=azure.100)) [openconnectionforkey](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.rangeshardmap-1) çağrısını kullanacak şekilde değiştirerek veriye bağlı yönlendirmeyi kullanabilir. Bu, uygulamanızdaki değişiklikleri yalnızca yeni bağlantıların oluşturulduğu ve açıldığı yerde sınırlandırır. 
 
@@ -32,7 +32,7 @@ Azure SQL veritabanı için elastik veritabanı istemci kitaplığı ile **daber
 
 Paber 'deki Eşleyici işlevselliği, yürütme veya veritabanını sorgulama için T-SQL deyimlerinin gönderilmesini kolaylaştıran Veritabanı bağlantılarında uzantı yöntemleri sağlar. Örneğin, Korber, **yürütme** çağrıları için .net nesneleriniz ile SQL deyimlerinin parametreleri arasında eşlemeyi kolaylaştırır veya katin **sorgu** çağrılarını kullanarak SQL sorgularınızın sonuçlarını .net Objects 'e tüketebilir. 
 
-DapperExtensions kullanırken, artık SQL deyimlerini sağlamanız gerekmez. {1 & gt; veritabanı & **Insert** lt; 1} **bağlantı gibi uzantılar** Yöntemler arka planda SQL deyimlerini oluşturur.
+DapperExtensions kullanırken, artık SQL deyimlerini sağlamanız gerekmez. {1 & gt; veritabanı &  lt; 1} **bağlantı gibi uzantılar** Yöntemler arka planda SQL deyimlerini oluşturur.
 
 Daber ve ayrıca Daperextensions 'ın başka bir avantajı da uygulamanın veritabanı bağlantısı oluşturulmasını denetliyorsa. Bu, veritabanı bağlantılarını, veritabanlarının veritabanlarına yönelik olarak eşleşmesini temel alan elastik veritabanı istemci kitaplığıyla etkileşime geçmesini sağlar.
 
@@ -50,9 +50,9 @@ Kaber için bağlantı oluşturmanın geleneksel yolunu kullanmak yerine, [Openc
 ### <a name="requirements-for-dapper-integration"></a>Kaber tümleştirmesi için gereksinimler
 Hem elastik veritabanı istemci kitaplığı hem de kaber API 'Leri ile çalışırken, aşağıdaki özellikleri sürdürmek istersiniz:
 
-* **Ölçeği genişletme** : uygulamanın kapasite taleplerini için gereken şekilde, parçalı uygulamanın veri katmanında veritabanı eklemek veya kaldırmak istiyoruz. 
-* **Tutarlılık** : uygulama parçalama kullanılarak azaltıldığından, verilere bağımlı yönlendirme yapmanız gerekir. Bunu yapmak için kitaplığın veriye bağımlı yönlendirme özelliklerini kullanmak istiyoruz. Özellikle, bozulmaları veya yanlış sorgu sonuçlarının olmaması için parça eşleme Yöneticisi aracılığıyla aracılı bağlantılar tarafından sunulan doğrulama ve tutarlılık garantilerini sürdürmek istiyorsunuz. Bu, (örneğin), parça/birleştirme API 'Leri kullanılarak parçalanan farklı bir parçaya taşınabilmesi durumunda belirli bir parçalanmaya yönelik bağlantıların reddedildiğini veya durdurulmasını sağlar.
-* **Nesne eşleme** : uygulamadaki sınıflar ve temel alınan veritabanı yapıları arasında çeviri yapmak Için daber tarafından sunulan eşlemelerin rahatlığını sürdürmek istiyoruz. 
+* **Ölçeği genişletme**: uygulamanın kapasite taleplerini için gereken şekilde, parçalı uygulamanın veri katmanında veritabanı eklemek veya kaldırmak istiyoruz. 
+* **Tutarlılık**: uygulama parçalama kullanılarak azaltıldığından, verilere bağımlı yönlendirme yapmanız gerekir. Bunu yapmak için kitaplığın veriye bağımlı yönlendirme özelliklerini kullanmak istiyoruz. Özellikle, bozulmaları veya yanlış sorgu sonuçlarının olmaması için parça eşleme Yöneticisi aracılığıyla aracılı bağlantılar tarafından sunulan doğrulama ve tutarlılık garantilerini sürdürmek istiyorsunuz. Bu, (örneğin), parça/birleştirme API 'Leri kullanılarak parçalanan farklı bir parçaya taşınabilmesi durumunda belirli bir parçalanmaya yönelik bağlantıların reddedildiğini veya durdurulmasını sağlar.
+* **Nesne eşleme**: uygulamadaki sınıflar ve temel alınan veritabanı yapıları arasında çeviri yapmak Için daber tarafından sunulan eşlemelerin rahatlığını sürdürmek istiyoruz. 
 
 Aşağıdaki bölümde, **daber** ve **dapperextensions** tabanlı uygulamalar için bu gereksinimlere yönelik yönergeler sağlanmaktadır.
 

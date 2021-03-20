@@ -14,10 +14,10 @@ ms.date: 02/27/2020
 ms.author: kumud
 ms.reviewer: kumud
 ms.openlocfilehash: 4d8ffe8451b2b2a08ab30761eaf3a928b5e117b3
-ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/04/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99537637"
 ---
 # <a name="application-security-groups"></a>Uygulama güvenliği grupları
@@ -42,7 +42,7 @@ Bu kural, internetten Web sunucularına gelen trafiğe izin vermek için kullan�
 
 |Öncelik|Kaynak|Kaynak bağlantı noktaları| Hedef | Hedef bağlantı noktaları | Protokol | Access |
 |---|---|---|---|---|---|---|
-| 120 | * | * | AsgDb | 1433 | Herhangi bir | Reddet |
+| 120 | * | * | AsgDb | 1433 | Herhangi biri | Reddet |
 
 ## <a name="allow-database-businesslogic"></a>Allow-Database-BusinessLogic
 

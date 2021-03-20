@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 01/22/2018
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 1b7f5d1ad671b6d97bd6597386c714b026c02232
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100376862"
 ---
 # <a name="create-monitor-and-manage-azure-data-factories-using-azure-data-factory-net-sdk"></a>Azure Data Factory .NET SDK kullanarak Azure veri fabrikaları oluşturun, izleyin ve yönetin
@@ -135,7 +135,7 @@ Kopyalama Etkinliği, Azure Data Factory’de veri hareketini gerçekleştirir. 
     </configuration>
     ```
 5. App.Config dosyasında, **&lt; &gt; uygulama kimliği**, **&lt; parola &gt;**, **&lt; Abonelik &gt; kimliği** ve **&lt; Kiracı kimliği &gt;** değerlerini kendi değerlerinizle güncelleştirin.
-6. Aşağıdaki **using** deyimlerini projedeki **program.cs** dosyasına ekleyin.
+6. Aşağıdaki **using** deyimlerini projedeki **program. cs** dosyasına ekleyin.
 
     ```csharp
     using System.Configuration;
