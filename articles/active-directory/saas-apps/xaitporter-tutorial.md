@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 05/03/2019
 ms.author: jeedes
 ms.openlocfilehash: f729828627fdb0be18f220d34227aac756ed4e13
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92894925"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-xaitporter"></a>Öğretici: XaitPorter ile tümleştirme Azure Active Directory
@@ -85,7 +85,7 @@ Bu bölümde, Azure portal Azure AD çoklu oturum açma özelliğini etkinleşti
 
 Azure AD çoklu oturum açmayı, Xaıporter ile yapılandırmak için aşağıdaki adımları uygulayın:
 
-1. [Azure Portal](https://portal.azure.com/), **Xaitporter** uygulama tümleştirmesi sayfasında, **Çoklu oturum açma** ' yı seçin.
+1. [Azure Portal](https://portal.azure.com/), **Xaitporter** uygulama tümleştirmesi sayfasında, **Çoklu oturum açma**' yı seçin.
 
     ![Çoklu oturum açma bağlantısını yapılandırma](common/select-sso.png)
 
@@ -126,7 +126,7 @@ Azure AD çoklu oturum açmayı, Xaıporter ile yapılandırmak için aşağıda
 
 3. XaitPorter 'ı el ile ayarlamak isterseniz, yeni bir Web tarayıcısı penceresi açın ve bir yönetici olarak, XaitPorter şirket sitenizde oturum açın ve aşağıdaki adımları gerçekleştirin:
 
-4. **Yönetici** ' ye tıklayın.
+4. **Yönetici**' ye tıklayın.
 
     ![Ekran görüntüsü, XaitPorter sitesinde yöneticinin seçili olduğunu gösterir.](./media/xaitporter-tutorial/user1.png)
 
@@ -138,19 +138,19 @@ Azure AD çoklu oturum açmayı, Xaıporter ile yapılandırmak için aşağıda
 
     ![Ekran görüntüsü, bu adımları gerçekleştirebileceğiniz çoklu oturum açmayı yönetme bölümünü gösterir.](./media/xaitporter-tutorial/user3.png)
 
-    a. **Tek Sign-On kimlik doğrulamasını etkinleştir** ' i seçin.
+    a. **Tek Sign-On kimlik doğrulamasını etkinleştir**' i seçin.
 
-    b. **Kimlik sağlayıcısı ayarları** metin kutusunda, Azure Portal kopyaladığınız **uygulama Federasyon meta verileri URL 'Sini** yapıştırın ve **getir** ' e tıklayın.
+    b. **Kimlik sağlayıcısı ayarları** metin kutusunda, Azure Portal kopyaladığınız **uygulama Federasyon meta verileri URL 'Sini** yapıştırın ve **getir**' e tıklayın.
 
-    c. **Kullanıcıları oto oluşturmayı etkinleştir** ' i seçin.
+    c. **Kullanıcıları oto oluşturmayı etkinleştir**' i seçin.
 
-    d. **Tamam** ’a tıklayın.
+    d. **Tamam**'a tıklayın.
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD test kullanıcısı oluşturma 
 
 Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı oluşturmaktır.
 
-1. Azure portal, sol bölmedeki **Azure Active Directory** ' i seçin, **Kullanıcılar** ' ı seçin ve ardından **tüm kullanıcılar** ' ı seçin.
+1. Azure portal, sol bölmedeki **Azure Active Directory**' i seçin, **Kullanıcılar**' ı seçin ve ardından **tüm kullanıcılar**' ı seçin.
 
     !["Kullanıcılar ve gruplar" ve "tüm kullanıcılar" bağlantıları](common/users.png)
 
@@ -168,21 +168,21 @@ Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı ol
 
     c. **Parolayı göster** onay kutusunu seçin ve ardından parola kutusunda görüntülenen değeri yazın.
 
-    d. **Oluştur** 'a tıklayın.
+    d. **Oluştur**’a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
 Bu bölümde, XaitPorter 'a erişim vererek Britta Simon 'u Azure çoklu oturum açma özelliğini kullanacak şekilde etkinleştirirsiniz.
 
-1. Azure portal **Kurumsal uygulamalar** ' ı seçin, **tüm uygulamalar** ' ı seçin ve ardından **xaitporter** ' ı seçin.
+1. Azure portal **Kurumsal uygulamalar**' ı seçin, **tüm uygulamalar**' ı seçin ve ardından **xaitporter**' ı seçin.
 
     ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
-2. Uygulamalar listesinde, **Xaitporter** ' ı seçin.
+2. Uygulamalar listesinde, **Xaitporter**' ı seçin.
 
     ![Uygulamalar listesindeki Xaıporter bağlantısı](common/all-applications.png)
 
-3. Soldaki menüde **Kullanıcılar ve gruplar** ' ı seçin.
+3. Soldaki menüde **Kullanıcılar ve gruplar**' ı seçin.
 
     !["Kullanıcılar ve gruplar" bağlantısı](common/users-groups-blade.png)
 

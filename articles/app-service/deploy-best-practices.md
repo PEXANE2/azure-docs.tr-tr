@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 07/31/2019
 ms.author: jafreebe
 ms.openlocfilehash: 3b49177eb592906e3bf84d359699b354f8c87c6e
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98185674"
 ---
 # <a name="deployment-best-practices"></a>Dağıtım En Iyi uygulamaları
@@ -127,7 +127,7 @@ Betiğinizdeki ile oturum açın `az login --service-principal` , ana bilgisayar
 
 ### <a name="java"></a>Java
 
-JAR uygulamalarını dağıtmak için kudu [zipdeploy/](deploy-zip.md) API ve War uygulamaları için [wardeploy/](deploy-zip.md#deploy-war-file) API kullanın. Jenkins kullanıyorsanız, bu API 'Leri doğrudan dağıtım aşamasınca kullanabilirsiniz. Daha fazla bilgi için [Bu makaleye](/azure/developer/jenkins/deploy-to-azure-app-service-using-azure-cli)bakın.
+JAR uygulamalarını dağıtmak için kudu [zipdeploy/](deploy-zip.md) API ve War uygulamaları için [wardeploy/](deploy-zip.md#deploy-war-file) API kullanın. Jenkins kullanıyorsanız, bu API 'Leri doğrudan dağıtım aşamasınca kullanabilirsiniz. Daha fazla bilgi için [bu makaleye](/azure/developer/jenkins/deploy-to-azure-app-service-using-azure-cli) bakın.
 
 ### <a name="node"></a>Düğüm
 

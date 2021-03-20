@@ -7,10 +7,10 @@ ms.date: 12/14/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: 5e45c51735e0b7ab4b263d3f3047b5848c82439d
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98185776"
 ---
 # <a name="create-powershell-scripts-for-msix-app-attach-preview"></a>MSIX uygulama iliştirme (Önizleme) için PowerShell betikleri oluşturma
@@ -87,7 +87,7 @@ PowerShell betiklerini güncelleştirmeden önce, VHD 'deki birimin birim GUID '
     Possible values for VolumeName along with current mount points are:
 
     \\?\Volume{a12b3456-0000-0000-0000-10000000000}\
-    **_ NO MOUNT POINTS _*_
+    *** NO MOUNT POINTS ***
 
     \\?\Volume{c78d9012-0000-0000-0000-20000000000}\
         E:\
@@ -98,7 +98,7 @@ PowerShell betiklerini güncelleştirmeden önce, VHD 'deki birimin birim GUID '
     ```
 
 
-6.  _ *$VolumeGuid** değişkenini, yeni kopyaladığınız birim GUID 'si ile güncelleştirin.
+6.  **$VolumeGuid** değişkenini yeni kopyaladığınız birim GUID 'si ile güncelleştirin.
 
 7. Bir yönetici PowerShell istemi açın ve aşağıdaki PowerShell betiğini ortamınıza uygulanan değişkenlerle güncelleştirin.
 

@@ -8,10 +8,10 @@ ms.author: viviali
 ms.date: 10/4/2019
 ms.topic: conceptual
 ms.openlocfilehash: 191b57b08ba04844824dd5cf26875c21e494c5ef
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92123346"
 ---
 # <a name="visualize-and-analyze-your-azure-iot-central-data-in-a-power-bi-dashboard"></a>Azure IoT Central verilerinizi Power BI panosunda görselleştirin ve çözümleyin
@@ -55,13 +55,13 @@ PBIX dosyasını açtığınızda, sayfayı okuyun ve kapak sayfasındaki yöner
 
 PBIX dosyasında **cihazlar ve telemetri** raporu bulunur ve cihazlar tarafından gönderilen telemetrinin geçmiş bir görünümünü gösterir. Farklı telemetri türlerinin bir dökümünü sağlar ve ayrıca cihazlar tarafından gönderilen en son Telemetriyi gösterir.
 
-:::image type="content" source="media/howto-connect-powerbi/report.png" alt-text="Power BI çözümü işlem hattı":::
+:::image type="content" source="media/howto-connect-powerbi/report.png" alt-text="Power BI cihazlar ve telemetri raporu":::
 
 ## <a name="pipeline-resources"></a>İşlem hattı kaynakları
 
 Azure portal işlem hattını oluşturan tüm Azure kaynaklarına erişebilirsiniz. Tüm kaynaklar, işlem hattını ayarlarken oluşturduğunuz kaynak grubunda bulunur.
 
-:::image type="content" source="media/howto-connect-powerbi/azure-deployment.png" alt-text="Power BI çözümü işlem hattı":::
+:::image type="content" source="media/howto-connect-powerbi/azure-deployment.png" alt-text="Kaynak grubunun Azure portal görünümü":::
 
 Aşağıdaki listede, ardışık düzendeki her bir kaynağın rolü açıklanmaktadır:
 
@@ -73,7 +73,7 @@ Azure Işlevi uygulaması, BLOB depolama alanına yeni bir dosya yazdığında I
 
 Azure Data Factory, SQL veritabanı 'na bağlı hizmet olarak bağlanır. Verileri işlemek ve analiz tablolarında depolamak için saklı yordamları çalıştırır.
 
-Azure Data Factory, en son veri toplu iş kümesini SQL tablolarına (örneğin, atlayan **pencere tetikleyicisi**için en az sayı) yüklenecek şekilde dönüştürmek üzere 15 dakikada bir çalışır.
+Azure Data Factory, en son veri toplu iş kümesini SQL tablolarına (örneğin, atlayan **pencere tetikleyicisi** için en az sayı) yüklenecek şekilde dönüştürmek üzere 15 dakikada bir çalışır.
 
 ### <a name="azure-sql-database"></a>Azure SQL Veritabanı
 

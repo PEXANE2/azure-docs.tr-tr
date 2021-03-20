@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 4/9/2019
 ms.author: harshacs
 ms.openlocfilehash: 4dad7f76edf34782131c7c844978763cda53acc7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90068124"
 ---
 # <a name="manage-vm-network-interfaces-for-on-premises-disaster-recovery-to-azure"></a>Azure'a şirket içinden olağanüstü durum kurtarma için sanal makine ağ arabirimlerini yönetme
@@ -32,7 +32,7 @@ VMware ve fiziksel makineler için ve Hyper-V (System Center Virtual Machine Man
 
 2. Çoğaltılan öğenin ağ ayarlarına erişmek için **işlem ve ağ** sekmesini seçin.
 
-3. **Ağ özellikleri**altında, kullanılabilir ağ arabirimleri listesinden bir sanal ağ seçin.
+3. **Ağ özellikleri** altında, kullanılabilir ağ arabirimleri listesinden bir sanal ağ seçin.
 
     ![Ağ ayarları](./media/site-recovery-manage-network-interfaces-on-premises-to-azure/compute-and-network.png)
 
@@ -48,7 +48,7 @@ Virtual Machine Manager bulutları için Ağ eşlemesini değiştirme tüm sanal
 - Varsa, diğer tüm seçili ağ arabirimleri **İkincil** ağ arabirimlerdir.
 - Yük devretmede bir ağ arabirimini oluşturmadan dışlamak için **kullanmayın** ' ı seçin.
 
-Varsayılan olarak, çoğaltmayı etkinleştirirken Site Recovery, şirket içi sunucuda algılanan tüm ağ arabirimlerini seçer. Bunlardan birini **birincil** olarak, diğerlerinin tümünü **İkincil**olarak işaretler. Şirket içi sunucuya eklenen sonraki tüm arabirimler varsayılan olarak **kullanılmaz** . Daha fazla ağ arabirimi eklerken, gereken tüm ağ arabirimlerine uyum sağlamak için doğru Azure sanal makine hedef boyutunun seçildiğinden emin olun.
+Varsayılan olarak, çoğaltmayı etkinleştirirken Site Recovery, şirket içi sunucuda algılanan tüm ağ arabirimlerini seçer. Bunlardan birini **birincil** olarak, diğerlerinin tümünü **İkincil** olarak işaretler. Şirket içi sunucuya eklenen sonraki tüm arabirimler varsayılan olarak **kullanılmaz** . Daha fazla ağ arabirimi eklerken, gereken tüm ağ arabirimlerine uyum sağlamak için doğru Azure sanal makine hedef boyutunun seçildiğinden emin olun.
 
 ## <a name="modify-network-interface-settings"></a>Ağ arabirimi ayarlarını değiştir
 

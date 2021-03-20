@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 10/27/2020
 ms.author: cherylmc
 ms.openlocfilehash: 92d39b0d39511571701fd092f641cb8ca3ae42c7
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/14/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92890177"
 ---
 # <a name="add-additional-s2s-connections-to-a-vnet-azure-portal"></a>VNet 'e ek S2S bağlantısı ekleme: Azure portal
@@ -26,7 +26,7 @@ Bu makale, var olan bağlantısı olan bir VPN ağ geçidine siteden siteye (S2S
 
 Bu makale, RouteBased VPN ağ geçidi olan Kaynak Yöneticisi sanal ağlar için geçerlidir. Bu adımlar, yeni ExpressRoute/siteden siteye birlikte var olan bağlantı yapılandırmalarına yönelik olarak geçerli değildir. Ancak, zaten var olan bir birlikte bulunan yapılandırmaya yalnızca yeni bir VPN bağlantısı ekliyorsanız, bu adımları kullanabilirsiniz. Birlikte var olan bağlantılar hakkında bilgi için bkz. [ExpressRoute/S2S birlikte var bağlantıları](../expressroute/expressroute-howto-coexist-resource-manager.md) .
 
-## <a name="prerequisites"></a><a name="before"></a>Ön koşullar
+## <a name="prerequisites"></a><a name="before"></a>Önkoşullar
 
 Aşağıdaki öğeleri doğrulayın:
 
@@ -41,10 +41,10 @@ Aşağıdaki öğeleri doğrulayın:
 
 1. Tarayıcıdan [Azure portalına](https://portal.azure.com) gidin ve gerekiyorsa Azure hesabınızda oturum açın.
 1. **Tüm kaynaklar** ' ı seçin ve kaynak listesinden **sanal ağ geçidinizi** bulun ve seçin.
-1. **Sanal ağ geçidi** sayfasında **Bağlantılar** ' ı seçin.
+1. **Sanal ağ geçidi** sayfasında **Bağlantılar**' ı seçin.
 
    :::image type="content" source="./media/vpn-gateway-howto-multi-site-to-site-resource-manager-portal/connections.png" alt-text="VPN Gateway bağlantıları":::
-1. **Bağlantılar** sayfasında **+ Ekle** ' yi seçin.
+1. **Bağlantılar** sayfasında **+ Ekle**' yi seçin.
 1. Bu, **bağlantı ekle** sayfasını açar.
 
    :::image type="content" source="./media/vpn-gateway-howto-multi-site-to-site-resource-manager-portal/add-connection.png" alt-text="Bağlantı sayfası ekle":::

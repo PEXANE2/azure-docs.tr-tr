@@ -12,10 +12,10 @@ ms.date: 04/10/2018
 ms.author: mathoma
 ms.reviewer: jroth
 ms.openlocfilehash: c394fe2aa7639d32e5d79bcb22a01151f7666f5b
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96324627"
 ---
 # <a name="overview-of-sql-server-on-azure-virtual-machines-linux"></a>Azure Sanal Makinelerinde SQL Server'a Genel Bakış (Linux)
@@ -55,7 +55,7 @@ Kullanmaya başlamak için, gerekli olan sürüm ve işletim sisteminizle birlik
 
 Linux üzerinde SQL Server yapılandırdığınızda, veritabanı motoru paketini ve sonra gereksinimlerinize bağlı olarak birkaç isteğe bağlı paketi yüklersiniz. SQL Server için Linux sanal makine görüntüleri birçok paketi otomatik olarak sizin için yükler. Aşağıdaki tabloda her dağıtımda yüklenen paketler gösterilmektedir.
 
-| Dağıtım | [Veritabanı altyapısı](/sql/linux/sql-server-linux-setup) | [Araçlar](/sql/linux/sql-server-linux-setup-tools) | [SQL Server Aracısı](/sql/linux/sql-server-linux-setup-sql-agent) | [Tam metin arama](/sql/linux/sql-server-linux-setup-full-text-search) | [SSIS](/sql/linux/sql-server-linux-setup-ssis) | [HA eklentisi](/sql/linux/sql-server-linux-business-continuity-dr) |
+| Dağıtım | [Veritabanı altyapısı](/sql/linux/sql-server-linux-setup) | [Araçlar](/sql/linux/sql-server-linux-setup-tools) | [SQL Server Aracısı](/sql/linux/sql-server-linux-setup-sql-agent) | [Tam metin araması](/sql/linux/sql-server-linux-setup-full-text-search) | [SSIS](/sql/linux/sql-server-linux-setup-ssis) | [HA eklentisi](/sql/linux/sql-server-linux-business-continuity-dr) |
 |---|---|---|---|---|---|---|
 | RHEL | ![RHEL ve veritabanı altyapısı](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) | ![RHEL ve araçlar](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) | ![RHEL ve SQL Server Aracısı](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) | ![RHEL ve tam metin araması](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) | ![RHEL ve SSIS](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) | ![RHEL ve HA eklentisi](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) |
 | SLES | ![SLES ve veritabanı altyapısı](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) | ![SLES ve araçlar](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) | ![SLES ve SQL Server Aracısı](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) | ![SLES ve tam metin araması](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) | ![SLES ve SSIS](./media/sql-server-on-linux-vm-what-is-iaas-overview/no.png) | ![SLES ve HA eklentisi](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png)|

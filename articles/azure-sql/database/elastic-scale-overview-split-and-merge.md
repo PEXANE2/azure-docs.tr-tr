@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/12/2019
 ms.openlocfilehash: 5a646ffe1d306d7ea13da002715d5bd9b907107b
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92793475"
 ---
 # <a name="moving-data-between-scaled-out-cloud-databases"></a>Ölçeği genişletilen bulut veritabanları arasında veri taşıma
@@ -177,7 +177,7 @@ Bölünmüş birleştirme hizmetinin geçerli uygulanması aşağıdaki gereksin
 - İstek işleme sürecinde, bazı kıardı verileri hem kaynak hem de hedef parça üzerinde bulunabilir. Bu, kıarde hareketi sırasında hatalara karşı korunmak için gereklidir. Bölünmüş birleştirme ile parça eşleme tümleştirmesi, parça eşlemesindeki **Openconnectionforkey** yöntemi kullanılarak veriye bağımlı yönlendirme API 'leri üzerinden bağlantıların tutarsız bir ara durum görmemesini sağlar. Ancak, **Openconnectionforkey** metodunu kullanmadan kaynak veya hedef parçalara bağlanırken, ayırma/birleştirme/taşıma istekleri devam edildiğinde tutarsız ara durumlar görünebilir. Bu bağlantılar, bağlantının temelindeki zamanlamaya veya parçaya göre kısmi veya yinelenen sonuçları gösterebilir. Bu kısıtlama Şu anda elastik ölçekli çok parçalı-sorgular tarafından yapılan bağlantıları içerir.
 - Bölünmüş birleştirme hizmeti için meta veri veritabanı farklı roller arasında paylaşılmamalıdır. Örneğin, hazırlama aşamasında çalışan bölünmüş birleştirme hizmetinin bir rolü, üretim rolünden farklı bir meta veri veritabanına işaret ediyor olmalıdır.
 
-## <a name="billing"></a>Faturalama
+## <a name="billing"></a>Faturalandırma
 
 Bölünmüş birleştirme hizmeti Microsoft Azure aboneliğinizde bir bulut hizmeti olarak çalışır. Bu nedenle, bulut hizmetleri için ücretler hizmet örneğiniz için geçerlidir. Bölünmüş/birleştirme/taşıma işlemleri sıklıkla gerçekleştirmediğiniz takdirde, bölünmüş birleştirme bulut hizmetinizi silmeniz önerilir. Bu, çalışan veya dağıtılan bulut hizmeti örneklerinin maliyetlerini kaydeder. Her bölme veya birleştirme işlemini gerçekleştirmeniz gerektiğinde, kolayca çalıştırılabilir yapılandırmayı yeniden dağıtabilir ve başlatabilirsiniz.
 
@@ -187,7 +187,7 @@ Bölünmüş birleştirme hizmeti Microsoft Azure aboneliğinizde bir bulut hizm
 
 Bölünmüş birleştirme hizmeti, tamamlanan ve devam eden isteklerin izlenmesi için meta veri deposu veritabanında **RequestStatus** tablosu sağlar. Tablo, bölünmüş birleştirme hizmetinin bu örneğine gönderilen her bölünmüş birleştirme isteği için bir satır listeler. Her istek için aşağıdaki bilgileri verir:
 
-- **Zaman damgası**
+- **İlişkin**
 
   İsteğin başlatıldığı saat ve tarih.
 

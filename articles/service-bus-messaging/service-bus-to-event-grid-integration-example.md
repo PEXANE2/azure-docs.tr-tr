@@ -8,10 +8,10 @@ ms.date: 10/16/2020
 ms.author: spelluru
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 93375f6047fbe4eda2132e024dab0e067e83ccf1
-ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95999066"
 ---
 # <a name="tutorial-respond-to-azure-service-bus-events-received-via-azure-event-grid-by-using-azure-logic-apps"></a>Öğretici: Azure Logic Apps kullanarak Azure Event Grid aracılığıyla alınan Azure Service Bus olaylarına yanıt verme
@@ -28,7 +28,7 @@ Bu adımda, Azure Event Grid aracılığıyla Service Bus olaylarını alan bir 
     3. Azure **aboneliğinizi** seçin. 
     4. **Kaynak grubu** için **var olanı kullan** ' ı seçin ve daha önce oluşturduğunuz diğer kaynaklar (Azure işlevi, Service Bus ad alanı gibi) için kullandığınız kaynak grubunu seçin. 
     5. Mantıksal uygulamanın **konumunu** seçin. 
-    6. **Gözden geçir + oluştur**' u seçin. 
+    6. **Gözden geçir + Oluştur**’u seçin. 
     1. Mantıksal uygulamayı oluşturmak için **gözden geçir + oluştur** sayfasında **Oluştur** ' u seçin. 
 1. **Logic Apps tasarımcı** sayfasında, **Şablonlar** altında **boş mantıksal uygulama** ' yı seçin. 
 1. Tasarımcıda aşağıdaki adımları uygulayın:

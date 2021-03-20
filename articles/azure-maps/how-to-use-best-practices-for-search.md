@@ -9,10 +9,10 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.openlocfilehash: 11c1938c3c1ccba533f52336fad81ebeaae53b24
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92895486"
 ---
 # <a name="best-practices-for-azure-maps-search-service"></a>Azure haritalar için en iyi uygulamalar Arama Hizmeti
@@ -63,16 +63,16 @@ Bir arama sorgusuna yönelik Kullanıcı girdlerinizi bilmiyorsanız, Azure hari
 
 * `minFuzzyLevel`Ve `maxFuzzyLevel` parametreleri, sorgu parametreleri kullanıcının istediği bilgilerle tam olarak eşleşmediği zaman bile ilgili eşleşmeleri döndürmeye yardımcı olur. Performansı en üst düzeye çıkarmak ve olağandışı sonuçları azaltmak için arama sorgularını, ve varsayılan değerleri olarak ayarlayın `minFuzzyLevel=1` `maxFuzzyLevel=2` . 
 
-    Örneğin, `maxFuzzyLevel` parametresi 2 olarak ayarlandığında, arama terimi *restrant* ile eşleştirilir. *restaurant* Gerektiğinde varsayılan benzer düzeyleri geçersiz kılabilirsiniz. 
+    Örneğin, `maxFuzzyLevel` parametresi 2 olarak ayarlandığında, arama terimi *restrant* ile eşleştirilir.  Gerektiğinde varsayılan benzer düzeyleri geçersiz kılabilirsiniz. 
 
 * `idxSet`Sonuç türlerinin tam kümesini önceliklendirmek için parametresini kullanın. Sonuçların tam bir kümesini önceliklendirmek için, virgülle ayrılmış dizinlerin bir listesini gönderebilirsiniz. Listenizde, öğe sırası önemi yoktur. Azure haritalar aşağıdaki dizinleri destekler:
 
-* `Addr` - **Adres aralıkları** : cadde başı ve sonundan alınan adres noktaları. Bu noktaların adres aralıkları olarak temsil edilir.
+* `Addr` - **Adres aralıkları**: cadde başı ve sonundan alınan adres noktaları. Bu noktaların adres aralıkları olarak temsil edilir.
 * `Geo` - **Coğrafi** bölmeler: kara yönetim bölümleri. Coğrafya, örneğin bir ülke/bölge, eyalet veya şehir olabilir.
-* `PAD` - **Nokta adresleri** : sokak adı ve sayı içeren adresler. Nokta adreslerini bir dizinde bulabilirsiniz. Bir örnek, *Soquel Dr 2501* ' dir. Bir nokta adresi adresler için kullanılabilen en yüksek doğruluk düzeyini sağlar.  
-* `POI` - **İlgi çekici noktaları** : bir haritanın, dikkat edilmesi veya ilginç olması düşünülen bir haritada işaret eder. [Arama adresi API 'Si](/rest/api/maps/search/getsearchaddress) POI döndürmez.  
-* `Str` - **Streets** : eşlemedeki Streets.
-* `XStr` - **Çapraz Streets veya kesişimler** : iki Streets 'in kesişimleri veya yerleri.
+* `PAD` - **Nokta adresleri**: sokak adı ve sayı içeren adresler. Nokta adreslerini bir dizinde bulabilirsiniz. Bir örnek, *Soquel Dr 2501*' dir. Bir nokta adresi adresler için kullanılabilen en yüksek doğruluk düzeyini sağlar.  
+* `POI` - **İlgi çekici noktaları**: bir haritanın, dikkat edilmesi veya ilginç olması düşünülen bir haritada işaret eder. [Arama adresi API 'Si](/rest/api/maps/search/getsearchaddress) POI döndürmez.  
+* `Str` - **Streets**: eşlemedeki Streets.
+* `XStr` - **Çapraz Streets veya kesişimler**: iki Streets 'in kesişimleri veya yerleri.
 
 
 #### <a name="usage-examples"></a>Kullanım örnekleri
@@ -405,7 +405,7 @@ https://atlas.microsoft.com/search/address/json?subscription-key={subscription-k
 
 ### <a name="encode-a-uri-to-handle-special-characters"></a>Özel karakterleri işlemek için bir URI kodla 
 
-Çapraz cadde adreslerini bulmak için, adresin özel karakterlerini işlemek üzere URI 'yi kodlamanız gerekir. Bu adresi göz önünde bulundurun: *1. aven& UNION Street, Seattle* . Burada, isteği göndermeden önce ampersan karakterini ( `&` ) kodlayın. 
+Çapraz cadde adreslerini bulmak için, adresin özel karakterlerini işlemek üzere URI 'yi kodlamanız gerekir. Bu adresi göz önünde bulundurun: *1. aven& UNION Street, Seattle*. Burada, isteği göndermeden önce ampersan karakterini ( `&` ) kodlayın. 
 
 Karakter verilerini bir URI içinde kodlamanızı öneririz. Bir URI 'de, bir yüzde işareti ( `%` ) ve karakter ' UTF-8 koduna karşılık gelen iki karakterlik bir onaltılık değer kullanarak tüm karakterleri kodlayabilirsiniz.
 
@@ -763,17 +763,17 @@ https://atlas.microsoft.com/search/address/json?subscription-key={subscription-k
 
 ### <a name="supported-types-of-results"></a>Desteklenen sonuç türleri
 
-* **Nokta adresi** : bir haritada cadde adı ve sayı olan belirli bir adrese sahip olan bir haritaya işaret eder. Nokta adresi adresler için en yüksek doğruluk düzeyini sağlar. 
+* **Nokta adresi**: bir haritada cadde adı ve sayı olan belirli bir adrese sahip olan bir haritaya işaret eder. Nokta adresi adresler için en yüksek doğruluk düzeyini sağlar. 
 
-* **Adres aralığı** : cadde başı ve sonundan alınan adres noktalarının aralığıdır.  
+* **Adres aralığı**: cadde başı ve sonundan alınan adres noktalarının aralığıdır.  
 
-* **Coğrafya** : bir örneğin, ülke/bölge, eyalet veya şehir gibi yönetim bölümlerini temsil eden bir harita üzerindeki bölgeler. 
+* **Coğrafya**: bir örneğin, ülke/bölge, eyalet veya şehir gibi yönetim bölümlerini temsil eden bir harita üzerindeki bölgeler. 
 
-* **POI** : bir haritaya dikkat çekici ve ilginç olabilecek bir haritada işaret ediyor.
+* **POI**: bir haritaya dikkat çekici ve ilginç olabilecek bir haritada işaret ediyor.
 
-* **Cadde** : haritadaki Streets. Adresler, adresi içeren sokak 'nin Enlem ve boylam koordinatları olarak çözümlenir. Ev numarası işlenmeyebilir. 
+* **Cadde**: haritadaki Streets. Adresler, adresi içeren sokak 'nin Enlem ve boylam koordinatları olarak çözümlenir. Ev numarası işlenmeyebilir. 
 
-* **Çapraz cadde** : kesişmeler. Çapraz Streets, iki cadde kesişikinin kesişimlerini temsil eder.
+* **Çapraz cadde**: kesişmeler. Çapraz Streets, iki cadde kesişikinin kesişimlerini temsil eder.
 
 ### <a name="response"></a>Yanıt
 

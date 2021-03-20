@@ -10,10 +10,10 @@ services: azure-maps
 manager: cpendle
 ms.custom: ''
 ms.openlocfilehash: ff0d2c8e90995222af79d5be63ca3e9da24b3c45
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92896234"
 ---
 # <a name="add-a-bubble-layer"></a>Baloncuk katmanı ekleme
@@ -90,7 +90,7 @@ Haritaya daha fazla bağlam ekleyin:
 Görseli özelleştirin:
 
 > [!div class="nextstepaction"]
-> [Power BI'da renk biçimlendirmesiyle ilgili ipuçları ve püf noktaları](/power-bi/visuals/service-tips-and-tricks-for-color-formatting)
+> [Power BI'da renk biçimlendirmeye ilişkin ipuçları ve püf noktaları](/power-bi/visuals/service-tips-and-tricks-for-color-formatting)
 
 > [!div class="nextstepaction"]
 > [Görselleştirme başlıklarını, arka planlarını ve göstergelerini özelleştirme](/power-bi/visuals/power-bi-visualization-customize-title-background-and-legend)

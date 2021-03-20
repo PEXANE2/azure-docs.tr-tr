@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: jeedes
 ms.openlocfilehash: 4d6274f3e1356a8ff8a997e830f0ebee43f50cff
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92893165"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-policystat"></a>Öğretici: PolicyStat ile tümleştirme Azure Active Directory
@@ -89,7 +89,7 @@ Bu bölümde, Azure portal Azure AD çoklu oturum açma özelliğini etkinleşti
 
 PolicyStat ile Azure AD çoklu oturum açmayı yapılandırmak için aşağıdaki adımları uygulayın:
 
-1. [Azure Portal](https://portal.azure.com/), **PolicyStat** uygulama tümleştirmesi sayfasında, **Çoklu oturum açma** ' yı seçin.
+1. [Azure Portal](https://portal.azure.com/), **PolicyStat** uygulama tümleştirmesi sayfasında, **Çoklu oturum açma**' yı seçin.
 
     ![Çoklu oturum açma bağlantısını yapılandırma](common/select-sso.png)
 
@@ -122,7 +122,7 @@ PolicyStat ile Azure AD çoklu oturum açmayı yapılandırmak için aşağıdak
 
 6. PolicyStat uygulaması, yukarıdakine ek olarak, SAML yanıtına daha fazla özniteliğin geri geçirilmesini bekler. **Kullanıcı öznitelikleri** Iletişim kutusundaki **Kullanıcı talepleri** bölümünde AŞAĞıDAKI tabloda gösterildiği gibi SAML belirteci özniteliği eklemek için aşağıdaki adımları gerçekleştirin:
 
-    | Ad | Kaynak özniteliği |
+    | Name | Kaynak özniteliği |
     |------------------- | -------------------- |
     | 'sini | Extractmailprefıx ([mail]) |
 
@@ -142,7 +142,7 @@ PolicyStat ile Azure AD çoklu oturum açmayı yapılandırmak için aşağıdak
     
     f. **Parameter 1** listesinde, bu satır için gösterilen öznitelik değerini yazın.
 
-    örneğin: **Kaydet** ’e tıklayın.
+    örneğin: **Kaydet**’e tıklayın.
 
 7. **PolicyStat ayarlama** bölümünde uygun URL 'leri gereksiniminize göre kopyalayın.
 
@@ -168,9 +168,9 @@ PolicyStat ile Azure AD çoklu oturum açmayı yapılandırmak için aşağıdak
    
     a. İndirilen meta veri dosyanızı açın, içeriği kopyalayın ve ardından **kimlik sağlayıcısı meta verileri** metin kutusuna yapıştırın.
 
-    b. **Değişiklikleri Kaydet** ’e tıklayın.
+    b. **Değişiklikleri Kaydet**’e tıklayın.
 
-4. **Öznitelikleri Yapılandır** ' a tıklayın ve ardından **öznitelikleri Yapılandır** bölümünde aşağıdaki adımları gerçekleştirin:
+4. **Öznitelikleri Yapılandır**' a tıklayın ve ardından **öznitelikleri Yapılandır** bölümünde aşağıdaki adımları gerçekleştirin:
    
     a. **Kullanıcı adı özniteliği** metin kutusuna **uid** yazın.
 
@@ -180,9 +180,9 @@ PolicyStat ile Azure AD çoklu oturum açmayı yapılandırmak için aşağıdak
 
     d. **E-posta özniteliği** metin kutusunda, Azure 'Dan e-posta öznitelik talep adınızı yazın **`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`** .
 
-    e. **Değişiklikleri Kaydet** ’e tıklayın.
+    e. **Değişiklikleri Kaydet**’e tıklayın.
 
-5. **Kurulum** bölümünde **Çoklu oturum açma tümleştirmesini etkinleştir** ' i seçin.
+5. **Kurulum** bölümünde **Çoklu oturum açma tümleştirmesini etkinleştir**' i seçin.
    
     ![Tek Sign-On yapılandırması](./media/policystat-tutorial/ic808634.png "Tek Sign-On yapılandırması")
 
@@ -191,15 +191,15 @@ PolicyStat ile Azure AD çoklu oturum açmayı yapılandırmak için aşağıdak
 
 Bu bölümde, PolicyStat 'a erişim vererek kendi hesabınızı Azure çoklu oturum açma özelliğini kullanacak şekilde etkinleştirirsiniz.
 
-1. Azure portal **Kurumsal uygulamalar** ' ı seçin, **tüm uygulamalar** ' ı seçin ve ardından **PolicyStat** ' yi seçin.
+1. Azure portal **Kurumsal uygulamalar**' ı seçin, **tüm uygulamalar**' ı seçin ve ardından **PolicyStat**' yi seçin.
 
     ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
-2. Uygulamalar listesinde **PolicyStat** ' yi seçin.
+2. Uygulamalar listesinde **PolicyStat**' yi seçin.
 
     ![Uygulamalar listesindeki PolicyStat bağlantısı](common/all-applications.png)
 
-3. Soldaki menüde **Kullanıcılar ve gruplar** ' ı seçin.
+3. Soldaki menüde **Kullanıcılar ve gruplar**' ı seçin.
 
     !["Kullanıcılar ve gruplar" bağlantısı](common/users-groups-blade.png)
 

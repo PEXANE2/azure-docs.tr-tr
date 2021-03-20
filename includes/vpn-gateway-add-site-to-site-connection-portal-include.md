@@ -9,14 +9,14 @@ ms.date: 10/22/2020
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 48f33514510618abadf329a11a9ab71a020be0bd
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/14/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92479585"
 ---
-1. Sanal ağ geçidinizin sayfasını açın. Ağ geçidine, **sanal ağınızın adına gidip > genel bakış ' ı > bağlı cihazlar-> adı** ' na giderek çok daha fazla farklı yol olsa da gidebilirsiniz.
-1. Ağ geçidinin sayfasında **Bağlantılar** ' ı seçin. Bağlantılar sayfasının en üstünde **+ Ekle** ' yi seçerek **bağlantı ekle** sayfasını açın.
+1. Sanal ağ geçidinizin sayfasını açın. Ağ geçidine, **sanal ağınızın adına gidip > genel bakış ' ı > bağlı cihazlar-> adı**' na giderek çok daha fazla farklı yol olsa da gidebilirsiniz.
+1. Ağ geçidinin sayfasında **Bağlantılar**' ı seçin. Bağlantılar sayfasının en üstünde **+ Ekle** ' yi seçerek **bağlantı ekle** sayfasını açın.
 
    :::image type="content" source="./media/vpn-gateway-add-site-to-site-connection-portal-include/connection.png" alt-text="Siteden siteye bağlantı":::
 1. **Bağlantı ekle** sayfasında, bağlantınız için değerleri yapılandırın.
@@ -29,7 +29,7 @@ ms.locfileid: "92479585"
    * **Azure özel IP adresini kullan** ' ın işaretini kaldırın.
    * **BGP etkinleştirme** işaretini kaldırın.
    * **Ikev2** öğesini seçin.
-   * **Abonelik** , **Kaynak Grubu** ve **Konum** için kalan değerler sabittir.
+   * **Abonelik**, **Kaynak Grubu** ve **Konum** için kalan değerler sabittir.
 
 1. Bağlantınızı oluşturmak için **Tamam ' ı** seçin. Ekranda yanıp sönen *Bağlantısı Oluşturuluyor* yazısını göreceksiniz.
 1. Bağlantıyı sanal ağ geçidinin **Bağlantılar** sayfasında görüntüleyebilirsiniz. *Bilinmiyor* Durumu *Bağlanıyor* olarak ve ardından *Başarılı* olarak değişir.

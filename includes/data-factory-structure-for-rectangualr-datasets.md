@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: jingwang
 ms.openlocfilehash: 1ab404b838af65dcb75395dfeee1ca0553e497a1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "67189041"
 ---
 ## <a name="specifying-structure-definition-for-rectangular-datasets"></a>Dikdörtgen veri kümeleri için yapı tanımı belirtme
@@ -18,10 +18,10 @@ Her sütun aşağıdaki özellikleri içerir:
 
 | Özellik | Açıklama | Gerekli |
 | --- | --- | --- |
-| name |Sütunun adı. |Evet |
-| tür |Sütunun veri türü. Tür bilgilerini belirtmeniz gerektiğinde ilgili daha fazla ayrıntı için aşağıdaki tür dönüştürmeleri bölümüne bakın |Hayır |
-| kültür |Tür belirtildiğinde ve .NET türü DateTime veya DateTimeOffset olduğunda kullanılacak .NET tabanlı kültür. Varsayılan değer "en-US" dir. |Hayır |
-| biçim |Tür belirtildiğinde kullanılacak dize ve .NET türü DateTime veya DateTimeOffset olduğunda kullanılacak biçim dizesi. |Hayır |
+| name |Sütunun adı. |Yes |
+| tür |Sütunun veri türü. Tür bilgilerini belirtmeniz gerektiğinde ilgili daha fazla ayrıntı için aşağıdaki tür dönüştürmeleri bölümüne bakın |No |
+| kültür |Tür belirtildiğinde ve .NET türü DateTime veya DateTimeOffset olduğunda kullanılacak .NET tabanlı kültür. Varsayılan değer "en-US" dir. |No |
+| biçim |Tür belirtildiğinde kullanılacak dize ve .NET türü DateTime veya DateTimeOffset olduğunda kullanılacak biçim dizesi. |No |
 
 Aşağıdaki örnek, UserID, Name ve LastLoginDate adlı üç sütunlu bir tablo için yapı bölümü JSON ' ı gösterir.
 

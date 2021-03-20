@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 12/05/2019
 ms.author: jeedes
 ms.openlocfilehash: be63ea7ebf905b825ffe73dfc2b37dcdc3bb88fd
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92507627"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-moxtra"></a>Öğretici: Moxtra ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
@@ -58,7 +58,7 @@ Moxtra 'ın Azure AD ile tümleştirilmesini yapılandırmak için Galeri 'den y
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-moxtra"></a>Moxtra için Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-**B. Simon**adlı bir test kullanıcısı kullanarak Moxtra Ile Azure AD SSO 'yu yapılandırın ve test edin. SSO 'nun çalışması için, Moxtra içindeki bir Azure AD kullanıcısı ve ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
+**B. Simon** adlı bir test kullanıcısı kullanarak Moxtra Ile Azure AD SSO 'yu yapılandırın ve test edin. SSO 'nun çalışması için, Moxtra içindeki bir Azure AD kullanıcısı ve ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
 
 Azure AD SSO 'yu Moxtra ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
 
@@ -89,7 +89,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
 1. Moxtra uygulaması, yukarıdakine ek olarak, SAML yanıtına daha fazla özniteliğin geri geçirilmesini bekler. Kullanıcı öznitelikleri iletişim kutusundaki Kullanıcı talepleri bölümünde aşağıdaki tabloda gösterildiği gibi SAML belirteci özniteliği eklemek için aşağıdaki adımları gerçekleştirin:
 
-    | Adı | Kaynak özniteliği|
+    | Name | Kaynak özniteliği|
     | ------------------- | -------------------- |    
     | FirstName | Kullanıcı. |
     | Soyadı | User. soyadı |
@@ -104,7 +104,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
     1. **Ad alanını** boş bırakın.
 
-    1. **Öznitelik**olarak kaynak seçin.
+    1. **Öznitelik** olarak kaynak seçin.
 
     1. **Kaynak özniteliği** listesinde, bu satır için gösterilen öznitelik değerini yazın.
 
@@ -168,16 +168,16 @@ Bu bölümde, Moxtra 'a erişim vererek Azure çoklu oturum açma özelliğini k
  
     c. **Oturum açma URL 'si** metin kutusunda, Azure Portal kopyaladığınız **oturum açma URL 'si** değerini yapıştırın. 
  
-    d. **Authncontextclassref** metin kutusunda **urn: oasu: adlar: TC: SAML: 2.0: AC: sınıflar: Password**yazın. 
+    d. **Authncontextclassref** metin kutusunda **urn: oasu: adlar: TC: SAML: 2.0: AC: sınıflar: Password** yazın. 
  
-    e. **NameID biçimi** metin kutusuna **urn: oassıs: names: TC: SAML: 1.1: NameID-Format: emapostaadı**yazın. 
+    e. **NameID biçimi** metin kutusuna **urn: oassıs: names: TC: SAML: 1.1: NameID-Format: emapostaadı** yazın. 
  
     f. Not defteri 'nde Azure portal indirdiğiniz sertifikayı açın, içeriği kopyalayın ve sonra **sertifika** metin kutusuna yapıştırın.    
  
     örneğin: SAML e-posta etki alanı metin kutusuna SAML e-posta etki alanınızı yazın.    
   
     >[!NOTE]
-    >Etki alanını doğrulama adımlarını görmek için**aşağıdaki "i" düğmesine**tıklayın.
+    >Etki alanını doğrulama adımlarını görmek için **aşağıdaki "i" düğmesine** tıklayın.
 
     h. **Güncelleştir**’e tıklayın.
 
@@ -195,13 +195,13 @@ Bu bölümün amacı, Moxtra içinde B. Simon adlı bir Kullanıcı oluşturmakt
 
 1. **Kullanıcı Ekle** iletişim kutusunda aşağıdaki adımları gerçekleştirin:
   
-    a. **Ad** metin kutusuna **B**yazın.
+    a. **Ad** metin kutusuna **B** yazın.
   
-    b. **Soyadı** metin kutusuna **Simon**yazın.
+    b. **Soyadı** metin kutusuna **Simon** yazın.
   
     c. **E-posta** metin kutusuna, Azure Portal ile aynı e-posta adresini yazın.
   
-    d. **Bölüm** metin kutusuna **dev**yazın.
+    d. **Bölüm** metin kutusuna **dev** yazın.
   
     e. **Bölüm** metin **kutusuna yazın.**
   

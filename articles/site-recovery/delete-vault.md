@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 11/05/2019
 ms.author: sideeksh
 ms.openlocfilehash: a33e04a24013d5450c98b91048fa418958d16886
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89426393"
 ---
 # <a name="delete-a-site-recovery-services-vault"></a>Site Recovery Hizmetleri kasasını silme
@@ -43,14 +43,14 @@ Bir kasayı silebilmeniz için önce kayıtlı sunucuları ve kasadaki öğeleri
 ## <a name="delete-a-vault-hyper-v-vm-with-vmm-to-azure"></a>Bir kasayı (VMM ile) Azure 'a silme
 
 1. System Center VMM tarafından yönetilen Hyper-V VM 'lerini silmek için [aşağıdaki adımları](site-recovery-manage-registration-and-protection.md#disable-protection-for-a-hyper-v-virtual-machine-replicating-to-azure-using-the-system-center-vmm-to-azure-scenario) izleyin.
-2. Tüm çoğaltma ilkelerinin ilişkisini kaldırın ve silin. Bunu, **Site Recovery Infrastructure**  >  **System Center VMM**  >  **çoğaltma ilkeleri**için > Site Recovery altyapınızda yapın.
+2. Tüm çoğaltma ilkelerinin ilişkisini kaldırın ve silin. Bunu,   >  **System Center VMM**  >  **çoğaltma ilkeleri** için > Site Recovery altyapınızda yapın.
 3. Bağlı bir VMM sunucusunun kaydını silmek için [Bu adımları](site-recovery-manage-registration-and-protection.md#unregister-a-vmm-server) izleyin.
 4. Ardından kasayı silin.
 
 ## <a name="delete-a-vault-hyper-v-vm-to-azure"></a>Azure 'a bir kasa-Hyper-V VM 'si silme
 
 1. Tüm korumalı sanal makineleri silmek için [Bu adımları](site-recovery-manage-registration-and-protection.md#disable-protection-for-a-hyper-v-virtual-machine-hyper-v-to-azure) izleyin.
-2. Tüm çoğaltma ilkelerinin ilişkisini kaldırın ve silin. Bunu, **Site Recovery Infrastructure**  >  **Hyper-V siteleri**  >  **çoğaltma ilkeleri**için > Site Recovery altyapınızda yapın.
+2. Tüm çoğaltma ilkelerinin ilişkisini kaldırın ve silin. Bunu,   >  **Hyper-V siteleri**  >  **çoğaltma ilkeleri** için > Site Recovery altyapınızda yapın.
 3. Hyper-V konağının kaydını silmek için [Bu yönergeleri](site-recovery-manage-registration-and-protection.md#unregister-a-hyper-v-host-in-a-hyper-v-site) izleyin.
 4. Hyper-V sitesini silin.
 5. Ardından kasayı silin.

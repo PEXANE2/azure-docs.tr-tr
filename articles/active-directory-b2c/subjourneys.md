@@ -11,15 +11,15 @@ ms.date: 12/11/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 8f037d4283b4b05081ef47e7223495f6e19d460e
-ms.sourcegitcommit: ea17e3a6219f0f01330cf7610e54f033a394b459
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/14/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97386876"
 ---
 # <a name="sub-journeys"></a>Alt, neys
 
-Alt işlemler, Kullanıcı yolculuğu içindeki düzenleme adımlarının akışını düzenlemek ve basitleştirmek için kullanılabilir. [Kullanıcı yolculukları](userjourneys.md) , bir ilkenin bir kullanıcı için istenen talepleri elde etmesine izin veren bir ilke aracılığıyla açık yollar belirtmektir. Kullanıcı, bağlı olan tarafa sunulacak talepleri almak için bu yollar üzerinden alınır. Diğer bir deyişle, Kullanıcı yolculukları, Azure AD B2C kimlik deneyimi çerçevesi, isteği işleyen bir son kullanıcının iş mantığını tanımlar. Kullanıcı yolculuğu, başarılı bir işlem için izlenmesi gereken bir düzenleme sırası olarak temsil edilir. Bir düzenleme adımının [Claimsexchange](userjourneys.md#claimsexchanges) öğesi, çalıştıran tek bir [Teknik profile](technicalprofiles.md) bağlıdır.
+Alt işlemler, Kullanıcı yolculuğu içindeki düzenleme adımlarının akışını düzenlemek ve basitleştirmek için kullanılabilir. [Kullanıcı yolculukları](userjourneys.md), bağlı olan taraf uygulamasının kullanıcı için istenen talepleri elde etmesine izin veren bir ilkenin kullandığı belirgin yolları belirtir. Kullanıcı, bağlı olan tarafa sunulacak talepleri almak için bu yolları izler. Diğer bir deyişle, Kullanıcı yolculukları, Azure AD B2C kimlik deneyimi çerçevesi, isteği işleyen bir son kullanıcının iş mantığını tanımlar. Kullanıcı yolculuğu, başarılı bir işlem için izlenmesi gereken bir düzenleme sırası olarak temsil edilir. Bir düzenleme adımının [Claimsexchange](userjourneys.md#claimsexchanges) öğesi, çalıştıran tek bir [Teknik profile](technicalprofiles.md) bağlıdır.
 
 Bir alt yolculukta, Kullanıcı yolculuğu içinde herhangi bir noktada çağrılabilecek bir düzenleme adımları gruplandırmadır. Yeniden kullanılabilir adım dizileri oluşturmak veya iş mantığını daha iyi temsil etmek için dallanmayı uygulamak üzere Sub. neys kullanabilirsiniz.
 
@@ -116,7 +116,7 @@ Aşağıda, `SubJourney` `Transfer` bağlı olan taraf uygulamasına bir belirte
 
 **Subıneys** öğesi aşağıdaki öğeyi içerir:
 
-| Öğe | Öğeleri | Açıklama |
+| Öğe | Öğeleri | Description |
 | ------- | ----------- | ----------- |
 | Alt yolculuğa | 1: n | Tüm Kullanıcı akışı için gereken tüm yapıları tanımlayan bir alt yolculuğun. |
 
@@ -129,7 +129,7 @@ Aşağıda, `SubJourney` `Transfer` bağlı olan taraf uygulamasına bir belirte
 
 **Subyolculuney** öğesi aşağıdaki öğeyi içerir:
 
-| Öğe | Öğeleri | Açıklama |
+| Öğe | Öğeleri | Description |
 | ------- | ----------- | ----------- |
 | OrchestrationSteps | 1: n | Başarılı bir işlem için izlenmesi gereken bir düzenleme sırası. Her Kullanıcı yolculuğu, sırayla yürütülen bir düzenleme adımları sıralı listesinden oluşur. Herhangi bir adım başarısız olursa, işlem başarısız olur. |
 

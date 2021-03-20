@@ -11,10 +11,10 @@ ms.topic: quickstart
 ms.date: 11/20/2020
 ms.custom: devx-track-csharp
 ms.openlocfilehash: f0d912d5b14932c43d109f8f955d5f16381cf773
-ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/13/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98180107"
 ---
 # <a name="quickstart-create-a-search-index-using-the-azuresearchdocuments-client-library"></a>Hızlı başlangıç: Azure.Search.Documstalar istemci kitaplığını kullanarak arama dizini oluşturma
@@ -26,7 +26,7 @@ Tamamlanmış bir projeden başlamak için [kaynak kodu indirebilir](https://git
 > [!NOTE]
 > Daha önceki bir sürüm mi arıyorsunuz? Bunun yerine [Microsoft. Azure. Search ile v10 arasındaki kullanarak arama dizini oluşturma](search-get-started-dotnet-v10.md) konusuna bakın.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamadan önce, aşağıdaki araçlara ve hizmetlere sahip olursunuz:
 
@@ -74,7 +74,7 @@ Proje oluşturulduktan sonra, istemci kitaplığını ekleyin. [Azure.Search.Doc
 
 ### <a name="create-a-search-client"></a>Arama İstemcisi Oluşturma
 
-1. **Program.cs** içinde, ad alanını olarak değiştirin `AzureSearch.SDK.Quickstart.v11` ve ardından aşağıdaki yönergeleri ekleyin `using` .
+1. **Program. cs**' de, ad alanını olarak değiştirin `AzureSearch.SDK.Quickstart.v11` ve ardından aşağıdaki `using` yönergeleri ekleyin.
 
    ```csharp
    using Azure;
@@ -108,9 +108,9 @@ Bu hızlı başlangıç, otel verileriyle birlikte yükleyeceksiniz ve sorgular�
 
 Bu örnekte, Azure.Search.Documstalar kitaplığının zaman uyumlu yöntemleri kolaylık ve okunabilirlik için kullanılır. Ancak, üretim senaryolarında uygulamanızın ölçeklenebilir ve yanıt vermesini sağlamak için zaman uyumsuz yöntemler kullanmanız gerekir. Örneğin, [CreateIndex](/dotnet/api/azure.search.documents.indexes.searchindexclient.createindex)yerine [Createındexasync](/dotnet/api/azure.search.documents.indexes.searchindexclient.createindexasync) ' i kullanacaksınız.
 
-1. Projenize boş bir sınıf tanımı ekleyin: **Hotel.cs**
+1. Projenize boş bir sınıf tanımı ekleyin: **otel. cs**
 
-1. Bir otel belgesinin yapısını tanımlamak için aşağıdaki kodu **Hotel.cs** 'e kopyalayın. Alanındaki öznitelikler bir uygulamada nasıl kullanıldığını belirleme. Örneğin, `IsFilterable` özniteliği bir filtre ifadesini destekleyen her alana atanmalıdır.
+1. Bir otel belgesinin yapısını tanımlamak için aşağıdaki kodu **otel. cs** dosyasına kopyalayın. Alanındaki öznitelikler bir uygulamada nasıl kullanıldığını belirleme. Örneğin, `IsFilterable` özniteliği bir filtre ifadesini destekleyen her alana atanmalıdır.
 
     ```csharp
     using System;
@@ -158,13 +158,13 @@ Bu örnekte, Azure.Search.Documstalar kitaplığının zaman uyumlu yöntemleri 
 
    Azure.Search.Documstalar istemci kitaplığında, alan tanımlarını kolaylaştırmak için [Searchablefield](/dotnet/api/azure.search.documents.indexes.models.searchablefield) ve [simplefield](/dotnet/api/azure.search.documents.indexes.models.simplefield) kullanabilirsiniz. Her ikisi de bir [Searchfield](/dotnet/api/azure.search.documents.indexes.models.searchfield) 'ın türevleri ve kodunuzu basitleştirecek olabilir:
 
-   + `SimpleField` herhangi bir veri türü olabilir, her zaman aranabilir değildir (tam metin arama sorguları için yok sayılır) ve alınabilir (gizli değildir). Diğer öznitelikler varsayılan olarak kapalıdır, ancak etkinleştirilebilir. `SimpleField`Yalnızca filtrelerde, modellerde veya Puanlama profillerinde kullanılan belge kimlikleri veya alanları için kullanabilirsiniz. Bu durumda, bir belge KIMLIĞI gibi senaryo için gerekli olan tüm öznitelikleri uyguladığınızdan emin olun `IsKey = true` . Daha fazla bilgi için bkz. [SimpleFieldAttribute.cs](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/search/Azure.Search.Documents/src/Indexes/SimpleFieldAttribute.cs) in Source Code.
+   + `SimpleField` herhangi bir veri türü olabilir, her zaman aranabilir değildir (tam metin arama sorguları için yok sayılır) ve alınabilir (gizli değildir). Diğer öznitelikler varsayılan olarak kapalıdır, ancak etkinleştirilebilir. `SimpleField`Yalnızca filtrelerde, modellerde veya Puanlama profillerinde kullanılan belge kimlikleri veya alanları için kullanabilirsiniz. Bu durumda, bir belge KIMLIĞI gibi senaryo için gerekli olan tüm öznitelikleri uyguladığınızdan emin olun `IsKey = true` . Daha fazla bilgi için kaynak kodundaki [Simplefieldattribute. cs](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/search/Azure.Search.Documents/src/Indexes/SimpleFieldAttribute.cs) bölümüne bakın.
 
-   + `SearchableField` bir dize olmalı ve her zaman aranabilir ve alınabilir olmalıdır. Diğer öznitelikler varsayılan olarak kapalıdır, ancak etkinleştirilebilir. Bu alan türü aranabilir olduğundan, eş anlamlıları ve çözümleyici özelliklerinin tam olarak tamamlayıcısını destekler. Daha fazla bilgi için bkz. [SearchableFieldAttribute.cs](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/search/Azure.Search.Documents/src/Indexes/SearchableFieldAttribute.cs) in Source Code.
+   + `SearchableField` bir dize olmalı ve her zaman aranabilir ve alınabilir olmalıdır. Diğer öznitelikler varsayılan olarak kapalıdır, ancak etkinleştirilebilir. Bu alan türü aranabilir olduğundan, eş anlamlıları ve çözümleyici özelliklerinin tam olarak tamamlayıcısını destekler. Daha fazla bilgi için bkz. kaynak kodundaki [Searchablefieldattribute. cs](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/search/Azure.Search.Documents/src/Indexes/SearchableFieldAttribute.cs) .
 
    Temel `SearchField` API 'yi veya yardımcı modellerden birini kullanmanıza bakılmaksızın, filtre, model ve sıralama özniteliklerini açıkça etkinleştirmeniz gerekir. Örneğin, yukarıdaki örnekte gösterildiği gibi [ısfilterable](/dotnet/api/azure.search.documents.indexes.models.searchfield.isfilterable), [ıssıralanabilir](/dotnet/api/azure.search.documents.indexes.models.searchfield.issortable)ve [ıbıı tablosu](/dotnet/api/azure.search.documents.indexes.models.searchfield.isfacetable) açıkça adlandırılmalıdır. 
 
-1. Projenize ikinci boş bir sınıf tanımı ekleyin: **Address.cs**.  Aşağıdaki kodu sınıfına kopyalayın.
+1. Projenize ikinci boş bir sınıf tanımı ekleyin: **Address. cs**.  Aşağıdaki kodu sınıfına kopyalayın.
 
    ```csharp
    using Azure.Search.Documents.Indexes;
@@ -191,9 +191,9 @@ Bu örnekte, Azure.Search.Documstalar kitaplığının zaman uyumlu yöntemleri 
     }
    ```
 
-1. İki sınıf daha oluşturun: ToString () için **Hotel.Methods.cs** ve **Address.Methods.cs** geçersiz kılmaları. Bu sınıflar, konsol çıkışında arama sonuçlarını işlemek için kullanılır.  Bu sınıfların içeriği bu makalede sağlanmaz, ancak kodu [GitHub 'daki dosyalardan](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/quickstart/v11/AzureSearchQuickstart-v11)kopyalayabilirsiniz.
+1. İki sınıf daha oluşturun: **otel. Methods. cs** ve **Address. Methods. cs** ToString () için geçersiz kılar. Bu sınıflar, konsol çıkışında arama sonuçlarını işlemek için kullanılır.  Bu sınıfların içeriği bu makalede sağlanmaz, ancak kodu [GitHub 'daki dosyalardan](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/quickstart/v11/AzureSearchQuickstart-v11)kopyalayabilirsiniz.
 
-1. **Program.cs** içinde, bir [searchındex](/dotnet/api/azure.search.documents.indexes.models.searchindex) nesnesi oluşturun ve ardından, arama hizmetinizde dizini Ifade etmek için [CreateIndex](/dotnet/api/azure.search.documents.indexes.searchindexclient.createindex) yöntemini çağırın. Dizin, belirtilen alanlarda otomatik tamamlamayı etkinleştirmek için de bir [SearchSuggester](/dotnet/api/azure.search.documents.indexes.models.searchsuggester) içerir.
+1. **Program. cs**' de, bir [searchındex](/dotnet/api/azure.search.documents.indexes.models.searchindex) nesnesi oluşturun ve sonra arama hizmetinizde dizini Ifade etmek için [CreateIndex](/dotnet/api/azure.search.documents.indexes.searchindexclient.createindex) yöntemini çağırın. Dizin, belirtilen alanlarda otomatik tamamlamayı etkinleştirmek için de bir [SearchSuggester](/dotnet/api/azure.search.documents.indexes.models.searchsuggester) içerir.
 
    ```csharp
     // Create hotels-quickstart index
@@ -221,7 +221,7 @@ Azure Bilişsel Arama 'de, arama belgeleri, sorguların dizin oluşturma ve çı
 
 Belgeler karşıya yüklenirken [ındexdocumentsbatch](/dotnet/api/azure.search.documents.models.indexdocumentsbatch-1) nesnesini kullanmanız gerekir. Bir `IndexDocumentsBatch` nesne, her biri bir belge ve Azure 'a ([karşıya yükleme, birleştirme, silme ve mergeorupload](search-what-is-data-import.md#indexing-actions)) bilişsel arama bir özellik içeren bir [eylem](/dotnet/api/azure.search.documents.models.indexdocumentsbatch-1.actions)koleksiyonu içerir.
 
-1. **Program.cs** içinde bir dizi belge ve Dizin eylemi oluşturun ve sonra diziyi öğesine geçirin `IndexDocumentsBatch` . Aşağıdaki belgeler, Otel Sınıfı tarafından tanımlanan oteller-hızlı başlangıç dizinine uygundur.
+1. **Program. cs**' de, bir dizi belge ve Dizin eylemi oluşturun ve sonra diziyi öğesine geçirin `IndexDocumentsBatch` . Aşağıdaki belgeler, Otel Sınıfı tarafından tanımlanan oteller-hızlı başlangıç dizinine uygundur.
 
     ```csharp
     // Upload documents in a single Upload request.
@@ -357,7 +357,7 @@ Bu bölüm iki işlev parçasını ekler: Sorgu mantığı ve sonuçları. Sorgu
 
 [SearchResults](/dotnet/api/azure.search.documents.models.searchresults-1) sınıfı sonuçları temsil eder.
 
-1. **Program.cs** içinde, arama sonuçlarını konsola yazdıran bir **writedocuments** yöntemi oluşturun.
+1. **Program. cs**' de, arama sonuçlarını konsola yazdıran bir **writedocuments** yöntemi oluşturun.
 
     ```csharp
     // Write search results to console

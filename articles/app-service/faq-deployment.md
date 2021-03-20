@@ -10,10 +10,10 @@ ms.date: 11/01/2018
 ms.author: genli
 ms.custom: seodec18
 ms.openlocfilehash: 163a6940e50d1f8beacc23855fd1e6f9daad0085
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88080482"
 ---
 # <a name="deployment-faqs-for-web-apps-in-azure"></a>Azure'da Web Uygulaması Dağıtımı Hakkında SSS
@@ -73,7 +73,7 @@ FTP sorunlarını gidermek için:
 
 ## <a name="how-do-i-publish-my-code-to-app-service"></a>Kodumu App Service Nasıl yaparım? yayımlayın mi?
 
-Azure hızlı başlangıç, uygulamanızı dağıtım yığınını ve tercih ettiğiniz yöntemi kullanarak dağıtmanıza yardımcı olmak için tasarlanmıştır. Hızlı başlangıç 'yi kullanmak için, Azure portal uygulama hizmetinize gidin, **dağıtım**altında **hızlı başlangıç**' ı seçin.
+Azure hızlı başlangıç, uygulamanızı dağıtım yığınını ve tercih ettiğiniz yöntemi kullanarak dağıtmanıza yardımcı olmak için tasarlanmıştır. Hızlı başlangıç 'yi kullanmak için, Azure portal uygulama hizmetinize gidin, **dağıtım** altında **hızlı başlangıç**' ı seçin.
 
 ## <a name="why-does-my-app-sometimes-restart-after-deployment-to-app-service"></a>Uygulamam neden App Service dağıtım sonrasında bazen yeniden başlatılır?
 

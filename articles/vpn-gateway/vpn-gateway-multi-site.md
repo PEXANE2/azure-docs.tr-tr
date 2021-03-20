@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 09/03/2020
 ms.author: yushwang
 ms.openlocfilehash: 168bb9e06c73ec27ec1304813023889c9549b8e6
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94660704"
 ---
 # <a name="add-a-site-to-site-connection-to-a-vnet-with-an-existing-vpn-gateway-connection-classic"></a>Mevcut bir VPN Ağ Geçidi bağlantısı ile bir VNet 'e siteden siteye bağlantı ekleme (klasik)
@@ -174,7 +174,7 @@ Ağ yapılandırma dosyasını içeri aktarın. Bu dosyayı değişikliklerle i�
 ## <a name="6-download-keys"></a>6. indirme anahtarları
 Yeni tünellerinizi eklendikten sonra, her tünel için IPSec/ıKE önceden paylaşılan anahtarlarını almak üzere ' Get-AzureVNetGatewayKey ' PowerShell cmdlet 'ini kullanın.
 
-Örneğin:
+Örnek:
 
 ```powershell
 Get-AzureVNetGatewayKey –VNetName "VNet1" –LocalNetworkSiteName "Site1"

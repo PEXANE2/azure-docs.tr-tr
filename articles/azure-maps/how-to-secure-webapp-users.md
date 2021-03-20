@@ -11,10 +11,10 @@ services: azure-maps
 manager: timlt
 ms.custom: devx-track-js
 ms.openlocfilehash: ebdc4b219e0840c18e6bef8ebfe9b8eefa8faf3b
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92895578"
 ---
 # <a name="secure-a-web-application-with-user-sign-in"></a>Kullanıcı oturumu açma ile bir Web uygulamasını güvenli hale getirme
@@ -27,7 +27,7 @@ Aşağıdaki kılavuz, Web sunucularında barındırılan bir uygulamayla ilgili
 
 Kullanıcıların oturum açması için Azure AD 'de Web uygulaması oluşturmanız gerekir. Bu Web uygulaması daha sonra Azure Maps REST API 'Lerine Kullanıcı erişimi devredebilir.
 
-1. Azure Portal Azure hizmetleri listesinde, **Azure Active Directory**  >  **App registrations**  >  **Yeni kayıt** uygulama kayıtları Azure Active Directory ' ni seçin.  
+1. Azure Portal Azure hizmetleri listesinde,   >    >  **Yeni kayıt** uygulama kayıtları Azure Active Directory ' ni seçin.  
 
     > [!div class="mx-imgBorder"]
     > ![Uygulama kaydı](./media/how-to-manage-authentication/app-registration.png)
@@ -36,12 +36,12 @@ Kullanıcıların oturum açması için Azure AD 'de Web uygulaması oluşturman
 
 3. Uygulama kaydı tamamlandıktan sonra, uygulama oturum açma 'nın kullanıcılar için çalıştığından emin olun. Oturum açma işe başladıktan sonra uygulamaya Azure Maps REST API 'Lerine atanmış erişim verilebilir.
     
-4.  Azure haritalar 'a temsil edilen API izinleri atamak için uygulamaya gidin. Ardından **API izinleri**  >  **bir izin Ekle** ' yi seçin. **Kuruluşumun kullandığı API 'ler** altında **Azure haritaları** ' nı arayıp seçin.
+4.  Azure haritalar 'a temsil edilen API izinleri atamak için uygulamaya gidin. Ardından **API izinleri**  >  **bir izin Ekle**' yi seçin. **Kuruluşumun kullandığı API 'ler** altında **Azure haritaları**' nı arayıp seçin.
 
     > [!div class="mx-imgBorder"]
     > ![Uygulama API 'SI izinleri ekleme](./media/how-to-manage-authentication/app-permissions.png)
 
-5. **Azure haritalar** ' ın yanındaki onay kutusunu işaretleyin ve ardından **izin Ekle** ' yi seçin.
+5. **Azure haritalar**' ın yanındaki onay kutusunu işaretleyin ve ardından **izin Ekle**' yi seçin.
 
     > [!div class="mx-imgBorder"]
     > ![Uygulama API 'SI izinlerini seçin](./media/how-to-manage-authentication/select-app-permissions.png)

@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 10/14/2020
 ms.openlocfilehash: bcb6e91bba367363385214806077146b1a24fe7b
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92503496"
 ---
 # <a name="indexer-access-to-content-protected-by-azure-network-security-features-azure-cognitive-search"></a>Azure ağ güvenlik özellikleriyle korunan içeriğe Dizin Oluşturucu erişimi (Azure Bilişsel Arama)
@@ -85,7 +85,7 @@ Bu işlevsellik yalnızca faturalandırılabilir Arama hizmetlerinde, oluşturul
 
 ### <a name="step-1-create-a-private-endpoint-to-the-secure-resource"></a>1. Adım: güvenli kaynak için özel bir uç nokta oluşturma
 
-Müşteriler, güvenli kaynaklarına (örneğin, bir depolama hesabı) özel bir uç nokta bağlantısı oluşturmak için, **paylaşılan bir özel bağlantı kaynağı**üzerinde arama yönetimi Işlemini, [CREATEORUPDATE API](/rest/api/searchmanagement/sharedprivatelinkresources/createorupdate) 'yi çağırmalıdır. Bu (giden) özel uç nokta bağlantısının üzerinden geçen trafik yalnızca arama hizmeti 'ne özgü "özel" Dizin Oluşturucu yürütme ortamındaki sanal ağdan kaynaklanacaktır.
+Müşteriler, güvenli kaynaklarına (örneğin, bir depolama hesabı) özel bir uç nokta bağlantısı oluşturmak için, **paylaşılan bir özel bağlantı kaynağı** üzerinde arama yönetimi Işlemini, [CREATEORUPDATE API](/rest/api/searchmanagement/sharedprivatelinkresources/createorupdate) 'yi çağırmalıdır. Bu (giden) özel uç nokta bağlantısının üzerinden geçen trafik yalnızca arama hizmeti 'ne özgü "özel" Dizin Oluşturucu yürütme ortamındaki sanal ağdan kaynaklanacaktır.
 
 Azure Bilişsel Arama, bu API 'nin çağıranlarının güvenli kaynağa özel uç nokta bağlantı isteklerini onaylamak için Azure RBAC izinlerine sahip olduğunu doğrular. Örneğin, salt okuma izinlerine sahip bir depolama hesabına özel bir uç nokta bağlantısı istemeniz durumunda bu çağrı reddedilir.
 
@@ -123,7 +123,7 @@ Bir kaynağa onaylanan özel uç nokta aldıktan sonra, Özel uç nokta bağlant
 
 Arama hizmetinin en iyi performans ve kararlılığı sağlamak için, aşağıdaki boyutlarda kısıtlamalar uygulanır (arama hizmeti katmanına göre):
 
-- *Özel*olarak ayarlanabilir Dizin oluşturucular türleri.
+- *Özel* olarak ayarlanabilir Dizin oluşturucular türleri.
 - Oluşturulabilen paylaşılan özel bağlantı kaynaklarının sayısı.
 - Paylaşılan özel bağlantı kaynaklarının oluşturulabileceği farklı kaynak türleri sayısı.
 

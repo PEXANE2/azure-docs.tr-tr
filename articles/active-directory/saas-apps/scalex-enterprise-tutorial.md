@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 10/16/2019
 ms.author: jeedes
 ms.openlocfilehash: a2065286581b6e7de61e4d1a29382b98563cdbb8
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92895070"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-scalex-enterprise"></a>Öğretici: ScaleX Kurumsal ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
@@ -47,8 +47,8 @@ ScaleX Enterprise 'ın Azure AD ile tümleştirilmesini yapılandırmak için, g
 
 1. [Azure Portal](https://portal.azure.com) iş veya okul hesabı ya da kişisel Microsoft hesabı kullanarak oturum açın.
 1. Sol gezinti bölmesinde **Azure Active Directory** hizmeti ' ni seçin.
-1. **Kurumsal uygulamalar** ' a gidin ve **tüm uygulamalar** ' ı seçin.
-1. Yeni uygulama eklemek için **Yeni uygulama** ' yı seçin.
+1. **Kurumsal uygulamalar** ' a gidin ve **tüm uygulamalar**' ı seçin.
+1. Yeni uygulama eklemek için **Yeni uygulama**' yı seçin.
 1. **Galeriden Ekle** bölümünde, arama kutusuna **scaleX Enterprise** yazın.
 1. Sonuçlar panelinden **scaleX Enterprise** ' ı seçin ve ardından uygulamayı ekleyin. Uygulama kiracınıza eklenirken birkaç saniye bekleyin.
 
@@ -70,8 +70,8 @@ Azure AD SSO 'yu ScaleX Kurumsal ile yapılandırmak ve test etmek için aşağ�
 
 Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
-1. [Azure Portal](https://portal.azure.com/), **scaleX kurumsal** uygulama tümleştirmesi sayfasında **Yönet** bölümünü bulun ve **Çoklu oturum açma** ' yı seçin.
-1. **Çoklu oturum açma yöntemi seçin** sayfasında **SAML** ' yi seçin.
+1. [Azure Portal](https://portal.azure.com/), **scaleX kurumsal** uygulama tümleştirmesi sayfasında **Yönet** bölümünü bulun ve **Çoklu oturum açma**' yı seçin.
+1. **Çoklu oturum açma yöntemi seçin** sayfasında **SAML**' yi seçin.
 1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, ayarları düzenlemek IÇIN **temel SAML yapılandırması** için Düzenle/kalem simgesine tıklayın.
 
    ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
@@ -105,25 +105,25 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
 Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaksınız.
 
-1. Azure portal sol bölmeden **Azure Active Directory** ' i seçin, **Kullanıcılar** ' ı seçin ve ardından **tüm kullanıcılar** ' ı seçin.
+1. Azure portal sol bölmeden **Azure Active Directory**' i seçin, **Kullanıcılar**' ı seçin ve ardından **tüm kullanıcılar**' ı seçin.
 1. Ekranın üst kısmındaki **Yeni Kullanıcı** ' yı seçin.
 1. **Kullanıcı** özellikleri ' nde şu adımları izleyin:
    1. **Ad** alanına `B.Simon` girin.  
    1. **Kullanıcı adı** alanına, girin username@companydomain.extension . Örneğin, `B.Simon@contoso.com`.
    1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
-   1. **Oluştur** 'a tıklayın.
+   1. **Oluştur**’a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
 Bu bölümde, ScaleX kurumsal erişimine izin vererek Azure çoklu oturum açma özelliğini kullanmak için B. Simon 'u etkinleştireceksiniz.
 
-1. Azure portal **Kurumsal uygulamalar** ' ı seçin ve ardından **tüm uygulamalar** ' ı seçin.
-1. Uygulamalar listesinde, **scaleX kurumsal** ' i seçin.
-1. Uygulamanın genel bakış sayfasında **Yönet** bölümünü bulun ve **Kullanıcılar ve gruplar** ' ı seçin.
+1. Azure portal **Kurumsal uygulamalar**' ı seçin ve ardından **tüm uygulamalar**' ı seçin.
+1. Uygulamalar listesinde, **scaleX kurumsal**' i seçin.
+1. Uygulamanın genel bakış sayfasında **Yönet** bölümünü bulun ve **Kullanıcılar ve gruplar**' ı seçin.
 
    !["Kullanıcılar ve gruplar" bağlantısı](common/users-groups-blade.png)
 
-1. **Kullanıcı Ekle** ' yi seçin, sonra **atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar** ' ı seçin.
+1. **Kullanıcı Ekle**' yi seçin, sonra **atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar** ' ı seçin.
 
     ![Kullanıcı Ekle bağlantısı](common/add-assign-user.png)
 
@@ -143,14 +143,14 @@ Bu bölümde, ScaleX kurumsal erişimine izin vererek Azure çoklu oturum açma 
 
 1. ScaleX Enterprise 'ı el ile ayarlamak istiyorsanız yeni bir Web tarayıcı penceresi açın ve ScaleX Kurumsal Şirket sitenizde yönetici olarak oturum açın ve aşağıdaki adımları gerçekleştirin:
 
-1. Sağ üstteki menüye tıklayın ve **contoso yönetimi** ' ni seçin.
+1. Sağ üstteki menüye tıklayın ve **contoso yönetimi**' ni seçin.
 
     > [!NOTE]
     > Contoso yalnızca bir örnektir. Bunun gerçek şirket adı olması gerekir.
 
     ![Sağ üst taraftaki menüden seçilen örnek şirket adını gösteren ekran görüntüsü.](./media/scalex-enterprise-tutorial/Test_Admin.png)
 
-1. Üstteki menüden **tümleştirmeler** ' i seçin ve **Çoklu oturum açma** ' yı seçin.
+1. Üstteki menüden **tümleştirmeler** ' i seçin ve **Çoklu oturum açma**' yı seçin.
 
     ![Açılan menüden "tümleştirmeler" seçili ve "çoklu oturum açma" gösteren ekran görüntüsü.](./media/scalex-enterprise-tutorial/admin_sso.png) 
 
@@ -160,9 +160,9 @@ Bu bölümde, ScaleX kurumsal erişimine izin vererek Azure çoklu oturum açma 
 
     a. **SSO ile kimlik doğrulayabilecek herhangi bir kullanıcı oluştur** ' u seçin
 
-    b. **Hizmet sağlayıcısı SAML** : Şu değeri yapıştırın: * *_urn: oassıs: adlar: TC: SAML: 2.0: NameID-Format: persistent_* _
+    b. **Hizmet sağlayıcısı SAML**: **_urn: oassıs: names: TC: SAML: 2.0: NameID-Format: persistent_ değerini yapıştırın**
 
-    c. _ * ACS yanıtı * * içindeki kimlik sağlayıcısı e-posta alanının adı: değeri yapıştırın `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`
+    c. **ACS yanıtında kimlik sağlayıcı e-posta alanının adı**: değeri yapıştırın `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`
 
     d. **Kimlik sağlayıcısı EntityDescriptor VARLıK kimliği:** Azure portal kopyalanmış **Azure AD tanımlayıcı** değerini yapıştırın.
 

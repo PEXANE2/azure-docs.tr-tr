@@ -5,10 +5,10 @@ ms.topic: article
 ms.date: 06/23/2020
 ms.custom: seo-java-july2019, seo-java-august2019, seo-java-september2019, devx-track-java
 ms.openlocfilehash: 97031abaedaa3e5595e290fa0292646feb744d47
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90086700"
 ---
 # <a name="use-the-java-message-service-with-azure-service-bus-and-amqp-10"></a>Azure Service Bus ve AMQP 1,0 ile Java Ileti hizmetini kullanma
@@ -50,7 +50,7 @@ Service Bus ile JMS uygulamaları oluşturup çalıştırdığınızda, Apache Q
 
 ### <a name="java-naming-and-directory-interface"></a>Java adlandırma ve Dizin arabirimi
 
-JMS, mantıksal adlar ve fiziksel adlar arasında bir ayrım oluşturmak için Java adlandırma ve Dizin arabirimini (JNDı) kullanır. İki tür JMS nesnesi, JNDı: **Connectionfactory** ve **Destination**kullanılarak çözümlenir. JNDı, ad çözümlemesi görevlerini işlemek üzere farklı Dizin Hizmetleri ekleyebileceğiniz bir sağlayıcı modeli kullanır. Apache Qpid JMS AMQP 1,0 kitaplığı, aşağıdaki biçimdeki bir özellikler dosyası kullanılarak yapılandırılmış basit özellik dosya tabanlı JNDı sağlayıcısı ile birlikte gelir:
+JMS, mantıksal adlar ve fiziksel adlar arasında bir ayrım oluşturmak için Java adlandırma ve Dizin arabirimini (JNDı) kullanır. İki tür JMS nesnesi, JNDı: **Connectionfactory** ve **Destination** kullanılarak çözümlenir. JNDı, ad çözümlemesi görevlerini işlemek üzere farklı Dizin Hizmetleri ekleyebileceğiniz bir sağlayıcı modeli kullanır. Apache Qpid JMS AMQP 1,0 kitaplığı, aşağıdaki biçimdeki bir özellikler dosyası kullanılarak yapılandırılmış basit özellik dosya tabanlı JNDı sağlayıcısı ile birlikte gelir:
 
 ```TEXT
 # servicebus.properties - sample JNDI configuration
@@ -67,7 +67,7 @@ queue.QUEUE = queue1
 
 #### <a name="set-up-jndi-context-and-configure-the-connectionfactory-object"></a>JNDı bağlamını ayarlama ve ConnectionFactory nesnesini yapılandırma
 
-Başvurulan bağlantı dizesi, **birincil bağlantı dizesi**altındaki [Azure Portal](https://portal.azure.com) paylaşılan erişim ilkelerinde kullanılabilir bir dizedir.
+Başvurulan bağlantı dizesi, **birincil bağlantı dizesi** altındaki [Azure Portal](https://portal.azure.com) paylaşılan erişim ilkelerinde kullanılabilir bir dizedir.
 
 ```java
 // The connection string builder is the only part of the azure-servicebus SDK library
@@ -126,7 +126,7 @@ JMS 'yi Service Bus kullandığınızda özel API 'Ler veya seçenekler gerekli 
 
 #### <a name="configure-the-jndi-initialcontext-object"></a>JNDı InitialContext nesnesini yapılandırma
 
-JNDı ortamı, yapılandırma bilgilerinin karma tablosu javax.naming.InitialContext sınıfının oluşturucusuna geçirilerek yapılandırılır. Karma tablodaki iki gerekli öğe, Ilk bağlam fabrikasının sınıf adı ve sağlayıcı URL 'sidir. Aşağıdaki kod, JNDı ortamının, **ServiceBus. Properties**adlı bir özellikler dosyası Ile qpid özellikleri dosya tabanlı JNDI sağlayıcısını kullanmak için nasıl yapılandırılacağını gösterir.
+JNDı ortamı, yapılandırma bilgilerinin karma tablosu javax.naming.InitialContext sınıfının oluşturucusuna geçirilerek yapılandırılır. Karma tablodaki iki gerekli öğe, Ilk bağlam fabrikasının sınıf adı ve sağlayıcı URL 'sidir. Aşağıdaki kod, JNDı ortamının, **ServiceBus. Properties** adlı bir özellikler dosyası Ile qpid özellikleri dosya tabanlı JNDI sağlayıcısını kullanmak için nasıl yapılandırılacağını gösterir.
 
 ```java
 // Set up JNDI context

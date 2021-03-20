@@ -6,10 +6,10 @@ ms.tgt_pltfrm: dotnet
 ms.date: 09/01/2020
 ms.custom: devx-track-csharp
 ms.openlocfilehash: e8e70884838d56003694e2da09668527ce5b6c7b
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/18/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100652998"
 ---
 # <a name="get-started-with-service-bus-queues"></a>Service Bus kuyrukları ile çalışmaya başlama
@@ -48,7 +48,7 @@ Visual Studio 'Yu başlatın ve C# için yeni bir **konsol uygulaması (.NET Cor
 
 ### <a name="write-code-to-send-messages-to-the-queue"></a>Kuyruğa ileti göndermek için kod yazma
 
-1. *Program.cs*' de, `using` Sınıf bildiriminden önce, ad alanı tanımının en üstüne aşağıdaki deyimleri ekleyin:
+1. *Program. cs*' de, `using` Sınıf bildiriminden önce, ad alanı tanımının en üstüne aşağıdaki deyimleri ekleyin:
 
     ```csharp
     using System.Text;
@@ -114,7 +114,7 @@ Visual Studio 'Yu başlatın ve C# için yeni bir **konsol uygulaması (.NET Cor
     }
     ```
 
-*Program.cs* dosyanız şöyle görünmelidir.
+*Program. cs* dosyanızı şöyle görünmelidir.
 
 ```csharp
 namespace CoreSenderApp
@@ -194,7 +194,7 @@ Gönderdiğiniz iletileri almak için başka bir **konsol uygulaması (.NET Core
 
 ### <a name="write-code-to-receive-messages-from-the-queue"></a>Kuyruktan ileti almak için kod yazma
 
-1. *Program.cs*' de, `using` Sınıf bildiriminden önce, ad alanı tanımının en üstüne aşağıdaki deyimleri ekleyin:
+1. *Program. cs*' de, `using` Sınıf bildiriminden önce, ad alanı tanımının en üstüne aşağıdaki deyimleri ekleyin:
 
     ```csharp
     using System;
@@ -295,7 +295,7 @@ Gönderdiğiniz iletileri almak için başka bir **konsol uygulaması (.NET Core
     }
     ```
 
-*Program.cs* dosyanız şu şekilde görünmelidir:
+*Program. cs* dosyanızın şöyle görünmesi gerekir:
 
 ```csharp
 namespace CoreReceiverApp

@@ -12,10 +12,10 @@ ms.workload: infrastructure-services
 ms.date: 12/28/2020
 ms.author: yitoh
 ms.openlocfilehash: 0be184921ff0bd6b98dd2975acb4e0d5c8b26ba0
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101716202"
 ---
 # <a name="view-and-configure-ddos-protection-telemetry"></a>DDoS konuma telemetrisini görüntüleme ve yapılandırma
@@ -37,14 +37,14 @@ Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 Azure DDoS koruma standardı için aşağıdaki [ölçümler](../azure-monitor/essentials/metrics-supported.md#microsoftnetworkpublicipaddresses) kullanılabilir. Bu ölçümler Ayrıca Tanılama ayarları aracılığıyla dışarı aktarılabilir (bkz. [DDoS tanılama günlüğünü görüntüleme ve yapılandırma](diagnostic-logging.md)).
 
 
-| Metric | Ölçüm görünen adı | Birim | Toplama Türü | Açıklama |
+| Metric | Ölçüm görünen adı | Birim | Toplama Türü | Description |
 | --- | --- | --- | --- | --- |
 | BytesDroppedDDoS | Gelen bayt bırakıldı DDoS | BytesPerSecond | Maksimum | Gelen bayt bırakıldı DDoS| 
 | BytesForwardedDDoS | İletilen gelen bayt sayısı | BytesPerSecond | Maksimum | İletilen gelen bayt sayısı |
 | BytesInDDoS | Gelen bayt sayısı DDoS | BytesPerSecond | Maksimum | Gelen bayt sayısı DDoS |
-| Ddobir Ggersynpackets | DDoS azaltma tetiklenmesi için gelen SYN paketleri | Sayaçpersaniye | Maksimum | DDoS azaltma tetiklenmesi için gelen SYN paketleri |
-| DDO, Ggertcppackets | DDoS azaltma tetiklemeye yönelik gelen TCP paketleri | Sayaçpersaniye | Maksimum | DDoS azaltma tetiklemeye yönelik gelen TCP paketleri |
-| DDO, Ggerudppaketleri | DDoS risk azaltma tetiklenecek gelen UDP paketleri | Sayaçpersaniye | Maksimum | DDoS risk azaltma tetiklenecek gelen UDP paketleri |
+| Ddobir Ggersynpackets | DDoS azaltmayı tetiklemek için gelen SYN paketleri | Sayaçpersaniye | Maksimum | DDoS azaltmayı tetiklemek için gelen SYN paketleri |
+| DDO, Ggertcppackets | DDoS azaltmayı tetiklemek için gelen TCP paketleri | Sayaçpersaniye | Maksimum | DDoS azaltmayı tetiklemek için gelen TCP paketleri |
+| DDO, Ggerudppaketleri | DDoS azaltmayı tetiklemek için gelen UDP paketleri | Sayaçpersaniye | Maksimum | DDoS azaltmayı tetiklemek için gelen UDP paketleri |
 | Iunderddosattack | DDoS saldırısı altında | Count | Maksimum | DDoS saldırısı altında |
 | PacketsDroppedDDoS | DDoS bırakılan gelen paketler | Sayaçpersaniye | Maksimum | DDoS bırakılan gelen paketler |
 | PacketsForwardedDDoS | DDoS iletilen gelen paketler | Sayaçpersaniye | Maksimum | DDoS iletilen gelen paketler |

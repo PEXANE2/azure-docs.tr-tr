@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 03/25/2019
 ms.author: ramamill
 ms.openlocfilehash: 78fddb5b4512883f8e78d6ed53f6e3dbbeba0e4f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90525006"
 ---
 # <a name="prepare-source-machine-for-push-installation-of-mobility-agent"></a>Mobility aracısının gönderim yüklemesi için kaynak makineyi hazırlama
@@ -24,7 +24,7 @@ Korumak istediğiniz her bir Windows makinesinde şunları yapın:
 1. Makine ve işlem sunucusu arasında ağ bağlantısı olduğundan emin olun. Ayrı bir işlem sunucusu ayarlamadıysanız, varsayılan olarak yapılandırma sunucusunda çalışır.
 1. İşlem sunucusunun bilgisayara erişmek için kullanabileceği bir hesap oluşturun. Hesabın yerel veya etki alanı yönetici haklarına sahip olması gerekir. Bu hesabı yalnızca anında yükleme ve aracı güncelleştirmeleri için kullanın.
 2. Bir etki alanı hesabı kullanmıyorsanız, yerel bilgisayarda Uzak Kullanıcı erişim denetimini şu şekilde devre dışı bırakın:
-    - HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System kayıt defteri anahtarı altında yeni bir DWORD: **LocalAccountTokenFilterPolicy**ekleyin. Değeri **1**olarak ayarlayın.
+    - HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System kayıt defteri anahtarı altında yeni bir DWORD: **LocalAccountTokenFilterPolicy** ekleyin. Değeri **1** olarak ayarlayın.
     -  Bunu bir komut isteminde yapmak için aşağıdaki komutu çalıştırın:
     
        ```
@@ -50,10 +50,10 @@ Korumak istediğiniz her Linux makinesinde şunları yapın:
 3. Kaynak Linux sunucusundaki /etc/hosts dosyasında, yerel ana bilgisayar adını tüm ağ bağdaştırıcıları ile ilişkili IP adreslerine eşleyen girişler olduğunu denetleyin.
 4. Çoğaltmak istediğiniz bilgisayara en son openssh, openssh-server, openssl paketlerini yükleyin.
 5. Secure Shell’in (SSH) etkin olduğundan ve bağlantı noktası 22’de çalıştırıldığından emin olun.
-4. Sshd_config dosyasında SFTP alt sistemi ve parola kimlik doğrulamasını etkinleştirin. Bunu yapmak için **kök**olarak oturum açın.
-5. **/Etc/ssh/sshd_config** dosyasında, **passwordaduthentication**ile başlayan satırı bulun.
-6. Satırın açıklamasını kaldırın ve değeri **Evet**olarak değiştirin.
-7. **Alt sistem**ile başlayan satırı bulun ve satırın açıklamasını kaldırın.
+4. Sshd_config dosyasında SFTP alt sistemi ve parola kimlik doğrulamasını etkinleştirin. Bunu yapmak için **kök** olarak oturum açın.
+5. **/Etc/ssh/sshd_config** dosyasında, **passwordaduthentication** ile başlayan satırı bulun.
+6. Satırın açıklamasını kaldırın ve değeri **Evet** olarak değiştirin.
+7. **Alt sistem** ile başlayan satırı bulun ve satırın açıklamasını kaldırın.
 
       ![Linux](./media/vmware-azure-install-mobility-service/mobility2.png)
 

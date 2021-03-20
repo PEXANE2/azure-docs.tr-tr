@@ -9,10 +9,10 @@ ms.devlang: php
 ms.topic: sample
 ms.date: 07/23/2020
 ms.openlocfilehash: 9d059c899e4a64d4d2c1b880b2a1d0f89258f33b
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93079640"
 ---
 # <a name="how-to-use-azure-storage-table-service-or-the-azure-cosmos-db-table-api-from-php"></a>PHP’den Azure Depolama Tablo hizmeti veya Azure Cosmos DB Tablo API'sini kullanma
@@ -21,7 +21,7 @@ ms.locfileid: "93079640"
 [!INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
 [!INCLUDE [storage-table-applies-to-storagetable-and-cosmos](../../includes/storage-table-applies-to-storagetable-and-cosmos.md)]
 
-Bu makalede, tablolar oluşturma, verilerinizi depolama ve veri üzerinde CRUD işlemleri gerçekleştirme işlemleri gösterilir. Azure Tablo hizmeti 'ni veya Azure Cosmos DB Tablo API'si seçin. örnekler PHP’de yazılmıştır ve [Azure Depolama Tablo PHP İstemci Kitaplığını][download] kullanır. Kapsamdaki senaryolara **tablo oluşturma ve silme** , **tablodaki varlıkları ekleme, silme ve sorgulama** dahildir. Azure Tablo hizmeti hakkında daha fazla bilgi için bkz: [Sonraki adımlar](#next-steps) bölümü.
+Bu makalede, tablolar oluşturma, verilerinizi depolama ve veri üzerinde CRUD işlemleri gerçekleştirme işlemleri gösterilir. Azure Tablo hizmeti 'ni veya Azure Cosmos DB Tablo API'si seçin. örnekler PHP’de yazılmıştır ve [Azure Depolama Tablo PHP İstemci Kitaplığını][download] kullanır. Kapsamdaki senaryolara **tablo oluşturma ve silme**, **tablodaki varlıkları ekleme, silme ve sorgulama** dahildir. Azure Tablo hizmeti hakkında daha fazla bilgi için bkz: [Sonraki adımlar](#next-steps) bölümü.
 
 ## <a name="create-an-azure-service-account"></a>Azure hizmet hesabı oluşturma
 
@@ -102,7 +102,7 @@ Bir Azure Cosmos DB Tablo istemcisi oluşturmak için öncelikle geçerli bir ba
 $connectionString = "DefaultEndpointsProtocol=[https];AccountName=[myaccount];AccountKey=[myaccountkey];TableEndpoint=[https://myendpoint/]";
 ```
 
-Bir Azure Tablo Depolama istemcisi veya Azure Cosmos DB istemcisi oluşturmak için **TableRestProxy** sınıfını kullanmanız gerekir. Şunları yapabilirsiniz:
+Bir Azure Tablo Depolama istemcisi veya Azure Cosmos DB istemcisi oluşturmak için **TableRestProxy** sınıfını kullanmanız gerekir. Seçenekleriniz şunlardır:
 
 * Bağlantı dizesini doğrudan geçirebilirsiniz veya
 * Bağlantı dizesi için birden fazla harici kaynağı denetlemek için **CloudConfigurationManager (CCM)** kullanabilirsiniz:
@@ -149,7 +149,7 @@ Tablo adlarındaki kısıtlamalar hakkında daha fazla bilgi için bkz. [Tablo H
 
 ## <a name="add-an-entity-to-a-table"></a>Tabloya bir varlık ekleme
 
-Bir tabloya varlık eklemek için yeni bir **Varlık** nesnesi oluşturun ve bunu **TableRestProxy -> insertEntity** ’ye geçirin. Bir varlık oluşturduğunuzda bir `PartitionKey` ve `RowKey` belirtmeniz gerektiğini unutmayın. Bunlar bir varlık için benzersiz tanımlayıcılardır ve diğer varlık özelliklerinden çok daha hızlı sorgulanabilir değerlerdir. Sistem tablonun varlıklarını birden çok depolama düğümlerine otomatik olarak dağıtmak için `PartitionKey` kullanır. Aynı `PartitionKey` değerine sahip varlıklar aynı düğümde depolanır. (Aynı düğümde depolanan birden çok varlık üzerindeki işlemler, farklı düğümlerde depolanan varlıklardan daha iyi gerçekleştirilir.) , `RowKey` Bir bölüm içindeki bir varlığın BENZERSIZ kimliğidir.
+Bir tabloya varlık eklemek için yeni bir **Varlık** nesnesi oluşturun ve bunu **TableRestProxy -> insertEntity**’ye geçirin. Bir varlık oluşturduğunuzda bir `PartitionKey` ve `RowKey` belirtmeniz gerektiğini unutmayın. Bunlar bir varlık için benzersiz tanımlayıcılardır ve diğer varlık özelliklerinden çok daha hızlı sorgulanabilir değerlerdir. Sistem tablonun varlıklarını birden çok depolama düğümlerine otomatik olarak dağıtmak için `PartitionKey` kullanır. Aynı `PartitionKey` değerine sahip varlıklar aynı düğümde depolanır. (Aynı düğümde depolanan birden çok varlık üzerindeki işlemler, farklı düğümlerde depolanan varlıklardan daha iyi gerçekleştirilir.) , `RowKey` Bir bölüm içindeki bir varlığın BENZERSIZ kimliğidir.
 
 ```php
 require_once 'vendor/autoload.php';
@@ -185,7 +185,7 @@ catch(ServiceException $e){
 
 Tablo özellikleri ve türleri hakkında bilgi için bkz. [Tablo Hizmeti Veri Modelini anlama][table-data-model].
 
-**TableRestProxy** sınıfı, varlık eklemek için iki alternatif yöntem sunar: **insertOrMergeEntity** ve **insertOrReplaceEntity** . Bu yöntemleri kullanmak için yeni bir **varlık** oluşturun ve her iki yöntem için parametre olarak geçirin. Bu yöntemler, varlık yoksa varlığı ekler. Varlık zaten varsa **insertOrMergeEntity** , özellikler zaten varsa özellik değerlerini güncelleştirir ve yoksa yeni özellikleri ekler. **insertOrReplaceEntity** ise var olan bir varlığı tamamen değiştirir. Aşağıdaki örnekte **insertOrMergeEntity** ’nin nasıl kullanılacağı gösterilmiştir. `PartitionKey` "tasksSeattle" ve `RowKey` "1" içeren varlık zaten yoksa eklenir. Ancak daha önce eklendiyse (yukarıdaki örnekte gösterildiği gibi), `DueDate` özelliği güncelleştirilir ve `Status` özelliği eklenir. `Description` ve `Location` özellikleri de güncelleştirilir, ancak yerlerine geçen değerler onları gerçek anlamda değiştirmez. Bu son iki özellik örnekte gösterildiği gibi eklenmediyse ancak hedef varlık üzerinde varsa mevcut değerleri değişmeden kalır.
+**TableRestProxy** sınıfı, varlık eklemek için iki alternatif yöntem sunar: **insertOrMergeEntity** ve **insertOrReplaceEntity**. Bu yöntemleri kullanmak için yeni bir **varlık** oluşturun ve her iki yöntem için parametre olarak geçirin. Bu yöntemler, varlık yoksa varlığı ekler. Varlık zaten varsa **insertOrMergeEntity**, özellikler zaten varsa özellik değerlerini güncelleştirir ve yoksa yeni özellikleri ekler. **insertOrReplaceEntity** ise var olan bir varlığı tamamen değiştirir. Aşağıdaki örnekte **insertOrMergeEntity**’nin nasıl kullanılacağı gösterilmiştir. `PartitionKey` "tasksSeattle" ve `RowKey` "1" içeren varlık zaten yoksa eklenir. Ancak daha önce eklendiyse (yukarıdaki örnekte gösterildiği gibi), `DueDate` özelliği güncelleştirilir ve `Status` özelliği eklenir. `Description` ve `Location` özellikleri de güncelleştirilir, ancak yerlerine geçen değerler onları gerçek anlamda değiştirmez. Bu son iki özellik örnekte gösterildiği gibi eklenmediyse ancak hedef varlık üzerinde varsa mevcut değerleri değişmeden kalır.
 
 ```php
 require_once 'vendor/autoload.php';
@@ -259,7 +259,7 @@ echo $entity->getPartitionKey().":".$entity->getRowKey();
 
 ## <a name="retrieve-all-entities-in-a-partition"></a>Tüm varlıkları bir bölüme alma
 
-Varlık sorguları filtreler kullanılarak oluşturulur (daha fazla bilgi için bkz: [sorgulama tabloları ve varlıkları][filters]). Bölümdeki tüm varlıkları almak için "PartitionKey eq *bölüm_adı* " filtresini kullanın. Aşağıdaki örnekte, **queryEntities** yöntemine bir filtre geçirerek `tasksSeattle` bölümündeki tüm varlıkları alma işlemi gösterilmiştir.
+Varlık sorguları filtreler kullanılarak oluşturulur (daha fazla bilgi için bkz: [sorgulama tabloları ve varlıkları][filters]). Bölümdeki tüm varlıkları almak için "PartitionKey eq *bölüm_adı*" filtresini kullanın. Aşağıdaki örnekte, **queryEntities** yöntemine bir filtre geçirerek `tasksSeattle` bölümündeki tüm varlıkları alma işlemi gösterilmiştir.
 
 ```php
 require_once 'vendor/autoload.php';
@@ -327,7 +327,7 @@ foreach($entities as $entity){
 
 ## <a name="retrieve-a-subset-of-entity-properties"></a>Varlık özellikleri alt kümesi alma
 
-Bir sorgu, varlık özelliklerinin bir alt kümesini alabilir. *Projeksiyon* olarak adlandırılan bu teknik, bant genişliğini azaltır ve özellikle büyük varlıklar için sorgu performansını iyileştirebilir. Alınacak bir özelliği belirtmek için özelliğin adını **Query > addSelectField** yöntemine geçirin. Daha fazla özellik eklemek için bu yöntemi birden çok kez çağırabilirsiniz. **TableRestProxy -> queryEntities** ’i yürüttükten sonra, döndürülen varlıklar yalnızca seçilen özelliklere sahip olur. (Tablo varlıklarının bir alt kümesini döndürmek istiyorsanız yukarıda gösterildiği gibi bir filtre sorgusu kullanın.)
+Bir sorgu, varlık özelliklerinin bir alt kümesini alabilir. *Projeksiyon* olarak adlandırılan bu teknik, bant genişliğini azaltır ve özellikle büyük varlıklar için sorgu performansını iyileştirebilir. Alınacak bir özelliği belirtmek için özelliğin adını **Query > addSelectField** yöntemine geçirin. Daha fazla özellik eklemek için bu yöntemi birden çok kez çağırabilirsiniz. **TableRestProxy -> queryEntities**’i yürüttükten sonra, döndürülen varlıklar yalnızca seçilen özelliklere sahip olur. (Tablo varlıklarının bir alt kümesini döndürmek istiyorsanız yukarıda gösterildiği gibi bir filtre sorgusu kullanın.)
 
 ```php
 require_once 'vendor/autoload.php';
@@ -367,7 +367,7 @@ foreach($entities as $entity){
 
 ## <a name="update-an-entity"></a>Varlığı güncelleştirme
 
-**Entity->setProperty** ve **Entity->addProperty** yöntemlerini kullanarak ve ardından **TableRestProxy->updateEntity** .yöntemini çağırarak var olan bir varlığı güncelleştirebilirsiniz. Aşağıdaki örnekte bir varlık getirilir, bir özellik değiştirilir, bir başka özellik kaldırılır ve yeni bir özellik eklenir. Bir özelliği, değerini **null** olarak ayarlayarak kaldırabileceğini unutmayın.
+**Entity->setProperty** ve **Entity->addProperty** yöntemlerini kullanarak ve ardından **TableRestProxy->updateEntity**.yöntemini çağırarak var olan bir varlığı güncelleştirebilirsiniz. Aşağıdaki örnekte bir varlık getirilir, bir özellik değiştirilir, bir başka özellik kaldırılır ve yeni bir özellik eklenir. Bir özelliği, değerini **null** olarak ayarlayarak kaldırabileceğini unutmayın.
 
 ```php
 require_once 'vendor/autoload.php';
@@ -427,7 +427,7 @@ catch(ServiceException $e){
 }
 ```
 
-Eşzamanlılık denetimleri için **DeleteEntityOptions -> setEtag** yöntemini kullanıp dördüncü bir parametre olarak **DeleteEntityOptions** nesnesini **deleteEntity** ’ye geçirerek varlığın Etag değerini silinmeye ayarlayabilirsiniz.
+Eşzamanlılık denetimleri için **DeleteEntityOptions -> setEtag** yöntemini kullanıp dördüncü bir parametre olarak **DeleteEntityOptions** nesnesini **deleteEntity**’ye geçirerek varlığın Etag değerini silinmeye ayarlayabilirsiniz.
 
 ## <a name="batch-table-operations"></a>Toplu tablo işlemleri
 

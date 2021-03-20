@@ -14,13 +14,13 @@ ms.date: 09/04/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: a8d4781ad9ca2a30e8523d0e2446dc3903a7cb8a
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "101668857"
 ---
-# <a name="certification"></a>Sertifikasyon
+# <a name="certification"></a>Sertifika
 
 NetWeaver sertifikalarının yanı sıra SAP, Azure IaaS gibi belirli altyapılarda SAP HANA desteklemek için SAP HANA özel bir sertifika gerektirir.
 

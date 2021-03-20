@@ -14,17 +14,17 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 895355b5acebffe6ad24b15b0c709d21e8f20be4
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90016657"
 ---
 # <a name="what-is-hybrid-identity-with-azure-active-directory"></a>Azure Active Directory ile karma kimlik nedir?
 
 Bugün, işletmeler ve şirketler, şirket içi ve bulut uygulamalarının daha fazla ve daha fazlasını haline geliyor.  Kullanıcıların hem şirket içinde hem de bulutta bu uygulamalara erişmesi gerekir. Kullanıcıları hem şirket içinde hem de bulutta yönetmek, zorlu senaryolar doğurur. 
 
-Microsoft 'un kimlik çözümleri, şirket içi ve bulut tabanlı olanakları kapsar.  Bu çözümler, konumdan bağımsız olarak tüm kaynaklarda kimlik doğrulaması ve yetkilendirme için ortak bir kullanıcı kimliği oluşturur. Bu **karma kimliği**çağırıyoruz.
+Microsoft 'un kimlik çözümleri, şirket içi ve bulut tabanlı olanakları kapsar.  Bu çözümler, konumdan bağımsız olarak tüm kaynaklarda kimlik doğrulaması ve yetkilendirme için ortak bir kullanıcı kimliği oluşturur. Bu **karma kimliği** çağırıyoruz.
 
 Azure AD ve karma kimlik yönetimine yönelik karma kimlik ile bu senaryolar mümkün olur.
 

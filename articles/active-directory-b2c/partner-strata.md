@@ -12,10 +12,10 @@ ms.date: 10/25/2020
 ms.author: gasinh
 ms.subservice: B2C
 ms.openlocfilehash: 69355b58e36f435b5b5dbe94af72d55d9806b156
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100557171"
 ---
 # <a name="tutorial-for-extending-azure-ad-b2c-to-protect-on-premises-applications-using-strata"></a>Strata kullanarak şirket içi uygulamaları korumak için Azure AD B2C genişletme öğreticisi
@@ -57,7 +57,7 @@ Aşağıdaki mimari diyagram uygulamayı gösterir.
 
 ![Görüntü, karma uygulamalara erişimi etkinleştirmek için Strata Maverics ile Azure AD B2C tümleştirme mimarisini gösterir](./media/partner-strata/strata-architecture-diagram.png)
 
-| Adımlar | Açıklama |
+| Adımlar | Description |
 |:-------|:---------------|
 | 1. | Kullanıcı, şirket içi barındırılan uygulamaya erişmek için bir istek yapar. Maverics kimlik Orchestrator, Kullanıcı tarafından uygulamaya yapılan isteği bir proxy 'ye sağlar.|
 | 2. | Orchestrator kullanıcının kimlik doğrulama durumunu denetler. Oturum belirteci almazsa veya sağlanan oturum belirteci geçersizse, kimlik doğrulaması için kullanıcıyı Azure AD B2C gönderir.|

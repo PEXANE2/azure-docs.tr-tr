@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/04/2019
 ms.openlocfilehash: 48d43cb2d3c51194d0708a2b9b739a0ee87843d0
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92793407"
 ---
 # <a name="elastic-database-client-library-with-entity-framework"></a>Entity Framework ile elastik veritabanı istemci kitaplığı
@@ -39,16 +39,16 @@ Bu makaleye ait kodu indirmek için:
 * Parça 1 veritabanı
 * Parça 2 veritabanı
 
-Bu veritabanlarını oluşturduktan sonra, veritabanlarına bağlanmak için sunucu adınızla, veritabanı adlarından ve kimlik bilgilerinizle **program.cs** içindeki yer tutucuları girin. Visual Studio 'da çözümü oluşturun. Visual Studio, yapı sürecinin bir parçası olarak elastik veritabanı istemci kitaplığı, Entity Framework ve geçici hata işleme için gerekli NuGet paketlerini indirir. Çözümünüz için NuGet paketlerinin geri yüklenmesi etkinleştirildiğinden emin olun. Visual Studio Çözüm Gezgini çözüm dosyasına sağ tıklayarak bu ayarı etkinleştirebilirsiniz.
+Bu veritabanlarını oluşturduktan sonra, veritabanlarına bağlanmak için sunucu adı, veritabanı adları ve kimlik bilgilerinizle birlikte **program. cs** içindeki yer tutucuları girin. Visual Studio 'da çözümü oluşturun. Visual Studio, yapı sürecinin bir parçası olarak elastik veritabanı istemci kitaplığı, Entity Framework ve geçici hata işleme için gerekli NuGet paketlerini indirir. Çözümünüz için NuGet paketlerinin geri yüklenmesi etkinleştirildiğinden emin olun. Visual Studio Çözüm Gezgini çözüm dosyasına sağ tıklayarak bu ayarı etkinleştirebilirsiniz.
 
 ## <a name="entity-framework-workflows"></a>Entity Framework iş akışları
 
 Entity Framework geliştiriciler, uygulamalar oluşturmak ve uygulama nesneleri için kalıcılık sağlamak üzere aşağıdaki dört iş akışının birini kullanır:
 
-* **Code First (yeni veritabanı)** : EF geliştiricisi, modeli uygulama kodunda oluşturur ve sonra veritabanını bundan oluşturur.
-* **Code First (mevcut veritabanı)** : geliştirici, var olan bir veritabanından model için uygulama kodu oluşturmasına izin verir.
-* **Model First** : geliştirici, modeli EF tasarımcısında oluşturur ve EF veritabanını modelden oluşturur.
-* **Database First** : geliştirici, modeli mevcut bir veritabanından ÇıKARMASı için EF araçları 'nı kullanır.
+* **Code First (yeni veritabanı)**: EF geliştiricisi, modeli uygulama kodunda oluşturur ve sonra veritabanını bundan oluşturur.
+* **Code First (mevcut veritabanı)**: geliştirici, var olan bir veritabanından model için uygulama kodu oluşturmasına izin verir.
+* **Model First**: geliştirici, modeli EF tasarımcısında oluşturur ve EF veritabanını modelden oluşturur.
+* **Database First**: geliştirici, modeli mevcut bir veritabanından ÇıKARMASı için EF araçları 'nı kullanır.
 
 Bu yaklaşımların hepsi, veritabanı bağlantılarını ve bir uygulamanın veritabanı şemasını saydam bir şekilde yönetmek için DbContext sınıfına bağımlıdır. DbContext temel sınıfındaki farklı oluşturucular bağlantı oluşturma, veritabanı önyükleme ve şema oluşturma üzerinde farklı denetim düzeylerine izin verir. Sorunlar öncelikle, EF tarafından belirtilen veritabanı bağlantı yönetiminin, elastik veritabanı istemci kitaplığı tarafından sunulan veri bağımlı yönlendirme arabirimlerinin bağlantı yönetimi özellikleri ile kesişmesinden kaynaklanır.
 
@@ -64,16 +64,16 @@ Parça eşleme Yöneticisi, eş zamanlı kıardın yönetim işlemleri (örneği
 
 Hem elastik veritabanı istemci kitaplığıyla hem de Entity Framework API 'Leriyle çalışırken, aşağıdaki özellikleri sürdürmek istersiniz:
 
-* **Genişleme** : uygulamanın kapasite taleplerini için gereken şekilde, parçalı uygulamanın veri katmanından veritabanı eklemek veya kaldırmak için. Bu, veritabanlarının oluşturulması ve silinmesinin yanı sıra veritabanlarını yönetmek için elastik veritabanı parça eşleme Yöneticisi API 'Leri ve parçaların eşlemelerinde denetim sağlar.
-* **Tutarlılık** : uygulama parçalama kullanır ve istemci kitaplığının veri bağımlı yönlendirme özelliklerini kullanır. Bozulmaları veya yanlış sorgu sonuçlarının olmaması için bağlantılar parça eşleme Yöneticisi aracılığıyla aracılı olur. Bu, doğrulamayı ve tutarlılığı da korur.
-* **Code First** : EF 'in kod ilk paradigmasını sağlamak için. Code First, uygulamadaki sınıflar, temel alınan veritabanı yapılarına saydam olarak eşlenir. Uygulama kodu, temel alınan veritabanı işleminde yer alan birçok yönü maskelemekte olan DbSets ile etkileşime girer.
-* **Şema** : Entity Framework, ilk veritabanı şeması oluşturmayı ve sonraki şema gelişiminde geçişleri işler. Bu özellikleri koruyarak, veriler geliştikçe uygulamanızı uyarlanabilir kadar kolay.
+* **Genişleme**: uygulamanın kapasite taleplerini için gereken şekilde, parçalı uygulamanın veri katmanından veritabanı eklemek veya kaldırmak için. Bu, veritabanlarının oluşturulması ve silinmesinin yanı sıra veritabanlarını yönetmek için elastik veritabanı parça eşleme Yöneticisi API 'Leri ve parçaların eşlemelerinde denetim sağlar.
+* **Tutarlılık**: uygulama parçalama kullanır ve istemci kitaplığının veri bağımlı yönlendirme özelliklerini kullanır. Bozulmaları veya yanlış sorgu sonuçlarının olmaması için bağlantılar parça eşleme Yöneticisi aracılığıyla aracılı olur. Bu, doğrulamayı ve tutarlılığı da korur.
+* **Code First**: EF 'in kod ilk paradigmasını sağlamak için. Code First, uygulamadaki sınıflar, temel alınan veritabanı yapılarına saydam olarak eşlenir. Uygulama kodu, temel alınan veritabanı işleminde yer alan birçok yönü maskelemekte olan DbSets ile etkileşime girer.
+* **Şema**: Entity Framework, ilk veritabanı şeması oluşturmayı ve sonraki şema gelişiminde geçişleri işler. Bu özellikleri koruyarak, veriler geliştikçe uygulamanızı uyarlanabilir kadar kolay.
 
 Aşağıdaki kılavuz, elastik veritabanı araçlarını kullanarak Code First uygulamalar için bu gereksinimlerin nasıl karşılamasını söyler.
 
 ## <a name="data-dependent-routing-using-ef-dbcontext"></a>EF DbContext kullanarak verilere bağımlı yönlendirme
 
-Entity Framework ile veritabanı bağlantıları genellikle **DbContext** 'in alt sınıfları aracılığıyla yönetilir. **DbContext** 'ten türeterek bu alt sınıfları oluşturun. Bu, uygulamanız için veritabanı tarafından desteklenen CLR nesnelerinin koleksiyonlarını uygulayan **Dbsets** 'leri tanımlayacaksınız. Verilere bağımlı yönlendirme bağlamında, diğer EF Code ilk uygulama senaryolarında tutmayan birçok yararlı özelliği tanımlayabilirsiniz:
+Entity Framework ile veritabanı bağlantıları genellikle **DbContext**'in alt sınıfları aracılığıyla yönetilir. **DbContext**'ten türeterek bu alt sınıfları oluşturun. Bu, uygulamanız için veritabanı tarafından desteklenen CLR nesnelerinin koleksiyonlarını uygulayan **Dbsets** 'leri tanımlayacaksınız. Verilere bağımlı yönlendirme bağlamında, diğer EF Code ilk uygulama senaryolarında tutmayan birçok yararlı özelliği tanımlayabilirsiniz:
 
 * Veritabanı zaten var ve elastik veritabanı parça eşlemesinde kayıtlı.
 * Uygulamanın şeması zaten veritabanına dağıtıldı (aşağıda açıklanmıştır).

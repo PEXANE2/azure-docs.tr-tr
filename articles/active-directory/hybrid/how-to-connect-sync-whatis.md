@@ -17,18 +17,18 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: cea26cb119f64679807bc6c5eaadb41b341e5d5a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89662386"
 ---
 # <a name="azure-ad-connect-sync-understand-and-customize-synchronization"></a>Azure AD Connect eşitleme: eşitlemeyi anlama ve özelleştirme
 Azure Active Directory Connect Eşitleme Hizmetleri (Azure AD Connect eşitleme) Azure AD Connect ana bileşenidir. Şirket içi ortamınız ile Azure AD arasında kimlik verilerini eşitlemeye ilişkin tüm işlemlerin ilgilendiğinden emin olur. Azure AD Connect eşitleme, Azure Active Directory Bağlayıcısı yapılandırılmış DirSync, Azure AD Eşitleme ve Forefront Identity Manager 'ın ardıllarıdır.
 
-Bu konu, **Azure AD Connect Sync** ( **eşitleme altyapısı**da denir) için giriş ve onunla ilgili diğer tüm konuların bağlantılarını listeler. Azure AD Connect bağlantıları için bkz. Şirket [içi kimliklerinizi Azure Active Directory Ile tümleştirme](whatis-hybrid-identity.md).
+Bu konu, **Azure AD Connect Sync** ( **eşitleme altyapısı** da denir) için giriş ve onunla ilgili diğer tüm konuların bağlantılarını listeler. Azure AD Connect bağlantıları için bkz. Şirket [içi kimliklerinizi Azure Active Directory Ile tümleştirme](whatis-hybrid-identity.md).
 
-Eşitleme hizmeti iki bileşenden oluşur, şirket içi **Azure AD Connect eşitleme** bileşeni ve Azure AD 'deki hizmet tarafı **Azure AD Connect eşitleme hizmeti**olarak adlandırılır.
+Eşitleme hizmeti iki bileşenden oluşur, şirket içi **Azure AD Connect eşitleme** bileşeni ve Azure AD 'deki hizmet tarafı **Azure AD Connect eşitleme hizmeti** olarak adlandırılır.
 
 ## <a name="azure-ad-connect-sync-topics"></a>Azure AD Connect eşitleme konuları
 | Konu | Ne kapsıyorsa ve ne zaman okunacaktır |
