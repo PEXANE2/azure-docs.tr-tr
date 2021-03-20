@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 06/05/2020
 ms.author: jeedes
 ms.openlocfilehash: 7931bc58b1035a425b30b01b802345b7aa7b8d14
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92456509"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-clarity"></a>Öğretici: açıklık ile Azure Active Directory tümleştirme
@@ -28,7 +28,7 @@ Bu öğreticide, netliği Azure Active Directory (Azure AD) ile tümleştirmeyi 
 
 Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](../manage-apps/what-is-single-sign-on.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -55,7 +55,7 @@ Açıklık tümleştirmesini Azure AD 'ye göre yapılandırmak için, Galeriden
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-clarity"></a>Azure AD çoklu oturum açmayı bir açıklık için yapılandırın ve test edin
 
-**B. Simon**adlı bir test kullanıcısı kullanarak Azure AD SSO 'yu netle yapılandırın ve test edin. SSO 'nun çalışması için bir Azure AD kullanıcısı ile ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
+**B. Simon** adlı bir test kullanıcısı kullanarak Azure AD SSO 'yu netle yapılandırın ve test edin. SSO 'nun çalışması için bir Azure AD kullanıcısı ile ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
 
 Azure AD SSO 'yu netle yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
 

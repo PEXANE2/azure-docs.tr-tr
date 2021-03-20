@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 06/16/2020
 ms.author: jeedes
 ms.openlocfilehash: d1d427301b1ac3e652e07b7c796c07c07653f424
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92458243"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-mailgates"></a>Öğretici: MailGates ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
@@ -28,7 +28,7 @@ Bu öğreticide, MailGates 'i Azure Active Directory (Azure AD) ile tümleştirm
 
 Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](../manage-apps/what-is-single-sign-on.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -57,7 +57,7 @@ MailGates tümleştirmesini Azure AD 'ye göre yapılandırmak için, Galeriden 
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-mailgates"></a>MailGates için Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-**B. Simon**adlı bir test kullanıcısı kullanarak Azure AD SSO 'yu MailGates ile yapılandırın ve test edin. SSO 'nun çalışması için, MailGates içinde bir Azure AD kullanıcısı ve ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
+**B. Simon** adlı bir test kullanıcısı kullanarak Azure AD SSO 'yu MailGates ile yapılandırın ve test edin. SSO 'nun çalışması için, MailGates içinde bir Azure AD kullanıcısı ve ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
 
 Azure AD SSO 'yu MailGates ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
 

@@ -7,20 +7,20 @@ ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
 ms.openlocfilehash: bcc561cd5eea4372d798fff4580362ba0879c3a4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91574203"
 ---
 # <a name="analyze-data-in-azure-data-lake-storage-gen1-by-using-power-bi"></a>Azure Data Lake Storage 1. Power BI kullanarak verileri çözümleme
 Bu makalede, Azure Data Lake Storage 1. depolanan verileri analiz etmek ve görselleştirmek için Power BI Desktop kullanmayı öğreneceksiniz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 Bu öğreticiye başlamadan önce aşağıdakilere sahip olmanız gerekir:
 
 * **Bir Azure aboneliği**. Bkz. [Azure ücretsiz deneme sürümü edinme](https://azure.microsoft.com/pricing/free-trial/).
-* **Data Lake Storage 1. hesabı**. [Azure Portal kullanarak Azure Data Lake Storage 1. kullanmaya başlama](data-lake-store-get-started-portal.md)yönergelerini izleyin. Bu makalede, **myadlsg1**adlı bir Data Lake Storage 1. hesabı oluşturmuş olduğunuz ve buna örnek bir veri dosyası (**Drivers.txt**) yüklediğiniz varsayılır. Bu örnek dosya [Azure Data Lake git deposundan](https://github.com/Azure/usql/tree/master/Examples/Samples/Data/AmbulanceData/Drivers.txt)indirilebilir.
+* **Data Lake Storage 1. hesabı**. [Azure Portal kullanarak Azure Data Lake Storage 1. kullanmaya başlama](data-lake-store-get-started-portal.md)yönergelerini izleyin. Bu makalede, **myadlsg1** adlı bir Data Lake Storage 1. hesabı oluşturmuş olduğunuz ve buna örnek bir veri dosyası (**Drivers.txt**) yüklediğiniz varsayılır. Bu örnek dosya [Azure Data Lake git deposundan](https://github.com/Azure/usql/tree/master/Examples/Samples/Data/AmbulanceData/Drivers.txt)indirilebilir.
 * **Power BI Desktop**. Bunu [Microsoft Indirme merkezi](https://www.microsoft.com/en-us/download/details.aspx?id=45331)' nden indirebilirsiniz. 
 
 ## <a name="create-a-report-in-power-bi-desktop"></a>Power BI Desktop’ta rapor oluşturma
@@ -78,8 +78,8 @@ Bu öğreticiye başlamadan önce aşağıdakilere sahip olmanız gerekir:
         ![Görselleştirmeler oluştur](./media/data-lake-store-power-bi/create-visualizations.png "Görselleştirmeler oluştur")
     3. Pasta grafiğinin şimdi aşağıda gösterildiği gibi bir benzemesi gerekir.
        
-        ![Pasta grafiği](./media/data-lake-store-power-bi/pie-chart.png "Görselleştirmeler oluştur")
-16. Sayfa düzeyi filtrelerinden belirli bir ülke/bölge seçerek, seçili ülkenin/bölgenin her bir şehrindeki sürücü sayısını görebilirsiniz. Örneğin, **görsel öğeler** sekmesinin altında, **sayfa düzeyi filtreleri**altında **Brezilya**' yi seçin.
+        ![Pasta grafik](./media/data-lake-store-power-bi/pie-chart.png "Görselleştirmeler oluştur")
+16. Sayfa düzeyi filtrelerinden belirli bir ülke/bölge seçerek, seçili ülkenin/bölgenin her bir şehrindeki sürücü sayısını görebilirsiniz. Örneğin, **görsel öğeler** sekmesinin altında, **sayfa düzeyi filtreleri** altında **Brezilya**' yi seçin.
     
     ![Ülke/bölge seçin](./media/data-lake-store-power-bi/select-country.png "Ülke/bölge seçin")
 17. Pasta grafiği, Brezilya şehirlerde bulunan sürücüleri görüntüleyecek şekilde otomatik olarak güncelleştirilir.

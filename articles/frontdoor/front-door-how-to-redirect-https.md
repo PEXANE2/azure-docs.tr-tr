@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 09/30/2020
 ms.author: duau
 ms.openlocfilehash: 19908b3cba63bc76a205097ef8d16e612d58503b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91626651"
 ---
 # <a name="create-a-front-door-with-http-to-https-redirection-using-the-azure-portal"></a>Azure portal kullanarak HTTP ile HTTPS yönlendirmesi arasında ön kapı oluşturma
@@ -35,21 +35,21 @@ TLS sonlandırma sertifikasıyla bir [ön kapı oluşturmak](quickstart-create-f
 
 1. Ön kapıya yönelik yapılandırma üç adımda gerçekleşir. varsayılan ön uç konak ekleyerek, arka uç havuzunda arka uçlar ekleyerek ve ardından ön uç ana bilgisayar için yönlendirme davranışını eşlemek üzere yönlendirme kuralları oluşturma. Ön uç **+** konağı oluşturmak Için _ön uç konaklarındaki_ ' ' simgesini seçin.
 
-    :::image type="content" source="./media/front-door-url-redirect/front-door-designer.png" alt-text="Yeni ön kapıya yönelik temelleri yapılandırın":::
+    :::image type="content" source="./media/front-door-url-redirect/front-door-designer.png" alt-text="Ön kapı yapılandırma Tasarımcısı":::
 
 1. Ön kapılarınız için varsayılan ön uç ana bilgisayarınız için genel olarak benzersiz bir ad girin. Sonraki adıma devam etmek için **Ekle** ' yi seçin.
 
-    :::image type="content" source="./media/front-door-url-redirect/front-door-create-frontend-host.png" alt-text="Yeni ön kapıya yönelik temelleri yapılandırın":::
+    :::image type="content" source="./media/front-door-url-redirect/front-door-create-frontend-host.png" alt-text="Ön uç konağı ekleme":::
 
 ### <a name="create-backend-pool"></a>Arka uç Havuzu Oluştur
 
 1. Arka uç **+** havuzu oluşturmak Için _arka uç havuzlarındaki_ ' ' simgesini seçin. Arka uç havuzu için bir ad girin ve ardından **arka uç Ekle**' yi seçin.
 
-    :::image type="content" source="./media/front-door-url-redirect/front-door-designer-backend-pool.png" alt-text="Yeni ön kapıya yönelik temelleri yapılandırın":::
+    :::image type="content" source="./media/front-door-url-redirect/front-door-designer-backend-pool.png" alt-text="Ön kapı yapılandırma Tasarımcısı arka uç havuzu":::
 
-1. Arka uç konak türünü _App Service_olarak seçin. Web uygulamanızın barındırıldığı aboneliği seçin ve ardından **arka uç ana bilgisayar adı**açılır listesinden belirli bir Web uygulamasını seçin.
+1. Arka uç konak türünü _App Service_ olarak seçin. Web uygulamanızın barındırıldığı aboneliği seçin ve ardından **arka uç ana bilgisayar adı** açılır listesinden belirli bir Web uygulamasını seçin.
 
-    :::image type="content" source="./media/front-door-url-redirect/front-door-create-backend-pool.png" alt-text="Yeni ön kapıya yönelik temelleri yapılandırın":::
+    :::image type="content" source="./media/front-door-url-redirect/front-door-create-backend-pool.png" alt-text="Arka uç havuzunda arka uç ekleme":::
 
 1. Arka ucu kaydetmek için **Ekle** ' yi seçin ve arka uç havuzu yapılandırmasını kaydetmek Için yeniden **Ekle** ' yi seçin. 
 
@@ -57,21 +57,21 @@ TLS sonlandırma sertifikasıyla bir [ön kapı oluşturmak](quickstart-create-f
 
 1. **+** *Yönlendirme kuralları* ' ' simgesini seçerek bir yol oluşturun. Yol için bir ad sağlayın (örneğin, ' HttpToHttpsRedirect ') ve ardından *kabul edilen protokol* alanını **' http Only '** olarak ayarlayın. Uygun *ön uç/etki alanlarının* seçildiğinden emin olun.  
 
-    :::image type="content" source="./media/front-door-url-redirect/front-door-designer-routing-rule.png" alt-text="Yeni ön kapıya yönelik temelleri yapılandırın":::
+    :::image type="content" source="./media/front-door-url-redirect/front-door-designer-routing-rule.png" alt-text="Ön kapı yapılandırma Tasarımcısı yönlendirme kuralı":::
 
-1. *Rota ayrıntıları* bölümü altında *rota türünü* **yeniden yönlendir**olarak ayarlayın. *Yeniden yönlendirme türü* al **(302)** ve *yeniden yönlendirme protokolü* almanın **yalnızca https**olarak ayarlandığını doğrulayın. 
+1. *Rota ayrıntıları* bölümü altında *rota türünü* **yeniden yönlendir** olarak ayarlayın. *Yeniden yönlendirme türü* al **(302)** ve *yeniden yönlendirme protokolü* almanın **yalnızca https** olarak ayarlandığını doğrulayın. 
 
-    :::image type="content" source="./media/front-door-url-redirect/front-door-redirect-config-example.png" alt-text="Yeni ön kapıya yönelik temelleri yapılandırın":::
+    :::image type="content" source="./media/front-door-url-redirect/front-door-redirect-config-example.png" alt-text="Bir HTTP-HTTPS yeniden yönlendirme yolu ekleyin":::
 
 1. HTTP ve HTTPS yönlendirmesi için yönlendirme kuralını kaydetmek üzere **Ekle** ' yi seçin.
 
 ## <a name="create-forwarding-rule"></a>İletme kuralı oluştur
 
-1. HTTPS trafiğini işlemek için başka bir yönlendirme kuralı ekleyin. **+** *Yönlendirme kurallarında* ' ' işaretini seçin ve rota için bir ad sağlayın, örneğin ' DefaultForwardingRoute '. Ardından *kabul edilen protokoller* alanını **yalnızca https**olarak ayarlayın. Uygun *ön uç/etki alanlarının* seçildiğinden emin olun.
+1. HTTPS trafiğini işlemek için başka bir yönlendirme kuralı ekleyin. **+** *Yönlendirme kurallarında* ' ' işaretini seçin ve rota için bir ad sağlayın, örneğin ' DefaultForwardingRoute '. Ardından *kabul edilen protokoller* alanını **yalnızca https** olarak ayarlayın. Uygun *ön uç/etki alanlarının* seçildiğinden emin olun.
 
-1. Rota ayrıntıları bölümünde *rota türünü* **ilet**olarak ayarlayın. Sağ arka uç havuzunun seçili olduğundan ve *Iletme protokolünün* **yalnızca https**olarak ayarlandığından emin olun. 
+1. Rota ayrıntıları bölümünde *rota türünü* **ilet** olarak ayarlayın. Sağ arka uç havuzunun seçili olduğundan ve *Iletme protokolünün* **yalnızca https** olarak ayarlandığından emin olun. 
 
-    :::image type="content" source="./media/front-door-url-redirect/front-door-forward-route-example.png" alt-text="Yeni ön kapıya yönelik temelleri yapılandırın" border="false":::
+    :::image type="content" source="./media/front-door-url-redirect/front-door-forward-route-example.png" alt-text="HTTPS trafiği için bir iletme yolu ekleyin" border="false":::
 
 1. İstek iletimi için yönlendirme kuralını kaydetmek üzere **Ekle** ' yi seçin.
 

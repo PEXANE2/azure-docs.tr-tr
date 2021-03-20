@@ -7,10 +7,10 @@ ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 01/05/2019
 ms.openlocfilehash: aa4be5852b4f8af00346a3ea9a86b13a85f99824
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93358466"
 ---
 # <a name="create-loops-that-repeat-workflow-actions-or-process-arrays-in-azure-logic-apps"></a>Azure Logic Apps’te iş akışı eylemlerini veya işlem dizilerini tekrarlayacak döngüler oluşturma
@@ -52,11 +52,11 @@ Bu örnek mantıksal uygulama, Web sitesi RSS akışı için günlük bir Özet 
 2. RSS tetikleyicisi ve e-posta gönder eylemi arasında bir "foreach" döngüsü ekleyin. 
 
    1. Adımlar arasında bir döngü eklemek için, işaretçinizi Bu adımlar arasındaki oka taşıyın. 
-   Görüntülenen **artı işaretini** () seçin ve **+** ardından **Eylem Ekle** ' yi seçin.
+   Görüntülenen **artı işaretini** () seçin ve **+** ardından **Eylem Ekle**' yi seçin.
 
       !["Eylem Ekle" yi seçin](media/logic-apps-control-flow-loops/add-for-each-loop.png)
 
-   1. Arama kutusunda **Tümü** ' ni seçin. Arama kutusuna filtreniz olarak "for each" yazın. Eylemler listesinden şu eylemi seçin: **her denetim için**
+   1. Arama kutusunda **Tümü**' ni seçin. Arama kutusuna filtreniz olarak "for each" yazın. Eylemler listesinden şu eylemi seçin: **her denetim için**
 
       !["For each" döngüsünü Ekle](media/logic-apps-control-flow-loops/select-for-each.png)
 
@@ -77,7 +77,7 @@ Bu örnek mantıksal uygulama, Web sitesi RSS akışı için günlük bir Özet 
 
    !["Foreach" döngüsüne adımlar ekleyin](media/logic-apps-control-flow-loops/for-each-loop-with-step.png)
 
-5. Mantıksal uygulamanızı kaydedin. Mantıksal uygulamanızı el ile test etmek için tasarımcı araç çubuğunda **Çalıştır** ' ı seçin.
+5. Mantıksal uygulamanızı kaydedin. Mantıksal uygulamanızı el ile test etmek için tasarımcı araç çubuğunda **Çalıştır**' ı seçin.
 
 <a name="for-each-json"></a>
 
@@ -124,11 +124,11 @@ Mantıksal uygulamanız için kod görünümünde çalışıyorsanız, `Foreach`
 
 Varsayılan olarak, "foreach" döngüsündeki döngüler paralel olarak çalışır. Her döngüyü sırayla çalıştırmak için döngünün **sıralı** seçeneğini ayarlayın. "Foreach" döngüleri, tahmin edilebilir sonuçları bekleyen döngüler içinde iç içe döngüler veya değişkenler olduğunda ardışık olarak çalışmalıdır. 
 
-1. Döngünün sağ üst köşesindeki **üç nokta** ( **...** ) > **ayarları** ' nı seçin.
+1. Döngünün sağ üst köşesindeki **üç nokta** (**...**) > **ayarları**' nı seçin.
 
    !["Foreach" döngüsünde "..." > "Ayarlar" ı seçin](media/logic-apps-control-flow-loops/for-each-loop-settings.png)
 
-1. **Eşzamanlılık denetimi** altında **eşzamanlılık denetimi** ayarını **Açık** olarak açın. **Paralellik** sürgüsünün derecesini **1** ' e taşıyın ve **bitti** ' yi seçin.
+1. **Eşzamanlılık denetimi** altında **eşzamanlılık denetimi** ayarını **Açık** olarak açın. **Paralellik** sürgüsünün derecesini **1**' e taşıyın ve **bitti**' yi seçin.
 
    ![Eşzamanlılık denetimini Aç](media/logic-apps-control-flow-loops/for-each-loop-sequential-setting.png)
 
@@ -166,12 +166,12 @@ Her gün 8:00 ' den itibaren bu örnek mantıksal uygulama, değişkenin değeri
 > Bu adımlar Office 365 Outlook kullanır, ancak Logic Apps desteklediği herhangi bir e-posta sağlayıcısını kullanabilirsiniz. 
 > [Burada bağlayıcılar listesini kontrol edin](/connectors/). Başka bir e-posta hesabı kullanırsanız, genel adımlar aynı kalır, ancak kullanıcı arabirimi biraz farklı görünebilir. 
 
-1. Boş bir mantıksal uygulama oluşturma. Mantıksal uygulama Tasarımcısı ' nda, arama kutusunda **Tümü** ' ni seçin. "Yinelenme" araması yapın. 
+1. Boş bir mantıksal uygulama oluşturma. Mantıksal uygulama Tasarımcısı ' nda, arama kutusunda **Tümü**' ni seçin. "Yinelenme" araması yapın. 
    Tetikleyiciler listesinden şu tetikleyiciyi seçin: **yineleme-zamanlama**
 
    !["Yinelenme-zamanlama" tetikleyicisi Ekle](./media/logic-apps-control-flow-loops/do-until-loop-add-trigger.png)
 
-1. Günün Aralık, sıklık ve saatini ayarlayarak tetikleyicinin ne zaman harekete geçtiğini belirtin. Saati ayarlamak için **Gelişmiş seçenekleri göster** ' i seçin.
+1. Günün Aralık, sıklık ve saatini ayarlayarak tetikleyicinin ne zaman harekete geçtiğini belirtin. Saati ayarlamak için **Gelişmiş seçenekleri göster**' i seçin.
 
    ![Yinelenme zamanlamasını ayarlama](./media/logic-apps-control-flow-loops/do-until-loop-set-trigger-properties.png)
 
@@ -182,7 +182,7 @@ Her gün 8:00 ' den itibaren bu örnek mantıksal uygulama, değişkenin değeri
    | **Şu saatlerde** | 8 |
    ||| 
 
-1. Tetikleyici altında **yeni adım** ' ı seçin. 
+1. Tetikleyici altında **yeni adım**' ı seçin. 
    "Değişkenler" araması yapın ve şu eylemi seçin: **değişken değişkenlerini Başlat**
 
    !["Değişken başlatma-değişkenlerini" eylemi Ekle](./media/logic-apps-control-flow-loops/do-until-loop-add-variable.png)
@@ -198,9 +198,9 @@ Her gün 8:00 ' den itibaren bu örnek mantıksal uygulama, değişkenin değeri
    | **Değer** | 0 | Değişkeninizin başlangıç değeri | 
    |||| 
 
-1. **Değişken başlatma** eyleminin altında **yeni adım** ' ı seçin. 
+1. **Değişken başlatma** eyleminin altında **yeni adım**' ı seçin. 
 
-1. Arama kutusunda **Tümü** ' ni seçin. "Until" araması yapın ve şu eylemi seçin: **until-Control**
+1. Arama kutusunda **Tümü**' ni seçin. "Until" araması yapın ve şu eylemi seçin: **until-Control**
 
    !["Until" döngüsünü Ekle](./media/logic-apps-control-flow-loops/do-until-loop-add-until-loop.png)
 
@@ -209,9 +209,9 @@ Her gün 8:00 ' den itibaren bu örnek mantıksal uygulama, değişkenin değeri
 
    ![Durdurma döngüsü için derleme çıkış koşulu](./media/logic-apps-control-flow-loops/do-until-loop-settings.png)
 
-1. Döngü içinde **Eylem Ekle** ' yi seçin. 
+1. Döngü içinde **Eylem Ekle**' yi seçin. 
 
-1. Arama kutusunda **Tümü** ' ni seçin. "Değişkenler" araması yapın ve şu eylemi seçin: **artırma değişkeni-değişkenler**
+1. Arama kutusunda **Tümü**' ni seçin. "Değişkenler" araması yapın ve şu eylemi seçin: **artırma değişkeni-değişkenler**
 
    ![Değişken artırma için eylem ekleme](./media/logic-apps-control-flow-loops/do-until-loop-increment-variable.png)
 
@@ -219,9 +219,9 @@ Her gün 8:00 ' den itibaren bu örnek mantıksal uygulama, değişkenin değeri
 
      ![1 ile "sınırı" Artır](./media/logic-apps-control-flow-loops/do-until-loop-increment-variable-settings.png)
 
-1. Döngünün dışında ve altında **yeni adım** ' ı seçin. 
+1. Döngünün dışında ve altında **yeni adım**' ı seçin. 
 
-1. Arama kutusunda **Tümü** ' ni seçin. 
+1. Arama kutusunda **Tümü**' ni seçin. 
      E-posta gönderen bir eylem bulun ve ekleyin, örneğin: 
 
      ![E-posta gönderen eylem ekleme](media/logic-apps-control-flow-loops/do-until-loop-send-email.png)
@@ -234,12 +234,12 @@ Her gün 8:00 ' den itibaren bu örnek mantıksal uygulama, değişkenin değeri
 
       | Özellik | Değer | Açıklama |
       | -------- | ----- | ----------- | 
-      | **Hedef** | *\<email-address\@domain>* | Alıcının e-posta adresi. Test etmek için kendi e-posta adresinizi kullanın. | 
+      | **Kime** | *\<email-address\@domain>* | Alıcının e-posta adresi. Test etmek için kendi e-posta adresinizi kullanın. | 
       | **Konu** | "Limit" için geçerli değer **limit** | E-posta konusunu belirtin. Bu örnekte, **sınır** değişkenini eklediğinizden emin olun. | 
       | **Gövde** | <*e-posta-içerik*> | Göndermek istediğiniz e-posta iletisi içeriğini belirtin. Bu örnek için dilediğiniz metni girin. | 
       |||| 
 
-1. Mantıksal uygulamanızı kaydedin. Mantıksal uygulamanızı el ile test etmek için tasarımcı araç çubuğunda **Çalıştır** ' ı seçin.
+1. Mantıksal uygulamanızı kaydedin. Mantıksal uygulamanızı el ile test etmek için tasarımcı araç çubuğunda **Çalıştır**' ı seçin.
 
       Mantığınızı çalıştırmaya başladıktan sonra belirttiğiniz içeriğe sahip bir e-posta alırsınız:
 
@@ -251,13 +251,13 @@ Her gün 8:00 ' den itibaren bu örnek mantıksal uygulama, değişkenin değeri
 
 "Until" döngüsü, bu özelliklere göre yürütmeyi durdurduğundan, değerlerini uygun şekilde ayarladığınızdan emin olun:
 
-* **Sayı** : Bu değer, döngüden geçmeden önce çalıştırılan en yüksek döngü sayısıdır. Mantıksal uygulama çalıştırabileceğine yönelik "Until" döngülerinin sahip olduğu varsayılan ve en yüksek sınırlar için bkz. [eşzamanlılık, döngü ve toplu işleme sınırları](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits).
+* **Sayı**: Bu değer, döngüden geçmeden önce çalıştırılan en yüksek döngü sayısıdır. Mantıksal uygulama çalıştırabileceğine yönelik "Until" döngülerinin sahip olduğu varsayılan ve en yüksek sınırlar için bkz. [eşzamanlılık, döngü ve toplu işleme sınırları](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits).
 
-* **Zaman aşımı** : Bu değer, çıkmadan önce döngünün çalıştığı ve [ISO 8601 biçiminde](https://en.wikipedia.org/wiki/ISO_8601)belirtilen en büyük süredir. **Zaman aşımı** değeri için varsayılan ve en büyük sınırlar için bkz. [eşzamanlılık, döngü ve toplu işleme sınırları](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits).
+* **Zaman aşımı**: Bu değer, çıkmadan önce döngünün çalıştığı ve [ISO 8601 biçiminde](https://en.wikipedia.org/wiki/ISO_8601)belirtilen en büyük süredir. **Zaman aşımı** değeri için varsayılan ve en büyük sınırlar için bkz. [eşzamanlılık, döngü ve toplu işleme sınırları](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits).
 
   Zaman aşımı değeri her döngü döngüsü için değerlendirilir. Döngüdeki herhangi bir eylem zaman aşımı sınırından daha uzun sürerse, geçerli döngü durdurulmaz. Ancak, bir sonraki döngüde, sınır koşulu karşılanmadığı için başlamaz.
 
-Bu sınırları değiştirmek için, döngü eyleminde **sınırları Değiştir** ' i seçin.
+Bu sınırları değiştirmek için, döngü eyleminde **sınırları Değiştir**' i seçin.
 
 <a name="until-json"></a>
 
@@ -337,7 +337,7 @@ Bu örnek "Until" döngüsü bir kaynak oluşturan bir HTTP uç noktası çağı
 }
 ```
 
-## <a name="get-support"></a>Destek alma
+## <a name="get-support"></a>Destek alın
 
 * Sorular için, [Azure Logic Apps Için Microsoft Q&soru sayfasını](/answers/topics/azure-logic-apps.html)ziyaret edin.
 * Özellikleri ve önerileri göndermek veya Oylamak için [Kullanıcı geri bildirim sitesini Azure Logic Apps](https://aka.ms/logicapps-wish).

@@ -12,10 +12,10 @@ ms.reviewer: artek
 ms.subservice: common
 ms.custom: devx-track-azurepowershell
 ms.openlocfilehash: 242700c05053aa9d07e3a561a21986c8451a46c7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91612453"
 ---
 # <a name="check-the-last-sync-time-property-for-a-storage-account"></a>Bir depolama hesabı için son eşitleme zamanı özelliğini denetleyin
@@ -48,7 +48,7 @@ $lastSyncTime = $(Get-AzStorageAccount -ResourceGroupName <resource-group> `
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Azure CLı ile depolama hesabının son eşitleme zamanını almak için depolama hesabının **Georeplicationstats. lastSyncTime** özelliğini denetleyin. `--expand` **Georeplicationstats**altında iç içe yerleştirilmiş özelliklerin değerlerini döndürmek için parametresini kullanın. Yer tutucu değerlerini kendi değerlerinizle değiştirmeyi unutmayın:
+Azure CLı ile depolama hesabının son eşitleme zamanını almak için depolama hesabının **Georeplicationstats. lastSyncTime** özelliğini denetleyin. `--expand` **Georeplicationstats** altında iç içe yerleştirilmiş özelliklerin değerlerini döndürmek için parametresini kullanın. Yer tutucu değerlerini kendi değerlerinizle değiştirmeyi unutmayın:
 
 ```azurecli-interactive
 $lastSyncTime=$(az storage account show \
@@ -63,6 +63,6 @@ $lastSyncTime=$(az storage account show \
 
 ## <a name="see-also"></a>Ayrıca bkz.
 
-- [Azure depolama artıklığı](storage-redundancy.md)
+- [Azure Depolama yedekliliği](storage-redundancy.md)
 - [Depolama hesabı için artıklık seçeneğini değiştirme](redundancy-migration.md)
 - [Yüksek oranda kullanılabilir uygulamalar tasarlamak için coğrafi artıklığı kullanın](geo-redundant-design.md)

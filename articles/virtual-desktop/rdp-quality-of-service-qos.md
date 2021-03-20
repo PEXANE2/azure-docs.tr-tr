@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 11/16/2020
 ms.author: denisgun
 ms.openlocfilehash: b61faf74d96e2571e91f7bf9d10eac88cdbf8345
-ms.sourcegitcommit: 18046170f21fa1e569a3be75267e791ca9eb67d0
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/16/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94639426"
 ---
 # <a name="implement-quality-of-service-qos-for-windows-virtual-desktop-preview"></a>Windows sanal masaüstü için hizmet kalitesi (QoS) uygulama (Önizleme)
@@ -89,27 +89,27 @@ Etki alanına katılmış oturum konakları için bir QoS ilkesi oluşturmak üz
 
 1. Grup ilkesi Yönetimi ' nde, yeni ilkenin oluşturulması gereken kapsayıcıyı bulun. Örneğin, tüm oturumunuz **"oturum Konakları"** ADLı bir OU 'da bulunuyorsa, oturum ana bilgisayarları OU 'sunda yeni ilke oluşturulmalıdır.
 
-2. Uygun kapsayıcıya sağ tıklayın ve sonra **Bu etki alanında GPO oluştur ve buraya bağla** ' yı seçin.
+2. Uygun kapsayıcıya sağ tıklayın ve sonra **Bu etki alanında GPO oluştur ve buraya bağla**' yı seçin.
 
-3. **Yenı GPO** iletişim kutusunda, **ad** kutusuna yeni Grup İlkesi nesnesi için bir ad yazın ve ardından **Tamam** ' ı seçin.
+3. **Yenı GPO** iletişim kutusunda, **ad** kutusuna yeni Grup İlkesi nesnesi için bir ad yazın ve ardından **Tamam**' ı seçin.
 
-4. Yeni oluşturulan ilkeye sağ tıkladıktan sonra **Düzenle** ' yi seçin.
+4. Yeni oluşturulan ilkeye sağ tıkladıktan sonra **Düzenle**' yi seçin.
 
-5. Grup İlkesi Yönetimi Düzenleyicisi, **bilgisayar yapılandırması** ' nı genişletin, **Windows ayarları** ' nı genişletin, **ilke tabanlı QoS** ' ye sağ tıklayın ve ardından **Yeni ilke oluştur** ' u seçin.
+5. Grup İlkesi Yönetimi Düzenleyicisi, **bilgisayar yapılandırması**' nı genişletin, **Windows ayarları**' nı genişletin, **ilke tabanlı QoS**' ye sağ tıklayın ve ardından **Yeni ilke oluştur**' u seçin.
 
-6. **İlke tabanlı QoS** iletişim kutusunda, açma sayfasında, **ad** kutusuna yeni ilke için bir ad yazın. **DSCP değerini belirt** ' i seçin ve değeri **46** olarak ayarlayın. **Giden kısıtlama oranının** seçimini işaretsiz bırakın ve sonra **İleri** ' yi seçin.
+6. **İlke tabanlı QoS** iletişim kutusunda, açma sayfasında, **ad** kutusuna yeni ilke için bir ad yazın. **DSCP değerini belirt** ' i seçin ve değeri **46** olarak ayarlayın. **Giden kısıtlama oranının** seçimini işaretsiz bırakın ve sonra **İleri**' yi seçin.
 
-7. Sonraki sayfada, **yalnızca bu yürütülebilir dosya adına sahip olan uygulamalar** ' ı seçin ve **svchost.exe** adı girin ve ardından **İleri** ' yi seçin. Bu ayar, ilkeye yalnızca Uzak Masaüstü hizmetindeki eşleşen trafiğe öncelik verir.
+7. Sonraki sayfada, **yalnızca bu yürütülebilir dosya adına sahip olan uygulamalar** ' ı seçin ve **svchost.exe** adı girin ve ardından **İleri**' yi seçin. Bu ayar, ilkeye yalnızca Uzak Masaüstü hizmetindeki eşleşen trafiğe öncelik verir.
 
-8. Üçüncü sayfada, her iki **kaynak IP adresinin** ve **HERHANGI bir hedef IP adresinin** seçildiğinden emin olun ve ardından **İleri** ' yi seçin. Bu iki ayar, paketlerin hangi bilgisayar (IP adresi) tarafından gönderildiğini ve hangi bilgisayarın (IP adresi) paketleri alacağını her ne olursa olsun yönetileceğini de garanti eder.
+8. Üçüncü sayfada, her iki **kaynak IP adresinin** ve **HERHANGI bir hedef IP adresinin** seçildiğinden emin olun ve ardından **İleri**' yi seçin. Bu iki ayar, paketlerin hangi bilgisayar (IP adresi) tarafından gönderildiğini ve hangi bilgisayarın (IP adresi) paketleri alacağını her ne olursa olsun yönetileceğini de garanti eder.
 
 9. 4. sayfada, **Bu QoS ilkesi için geçerli olan protokolü seçin iletişim** listesinde **UDP** ' yi seçin.
 
-10. **Kaynak bağlantı noktası numarasını belirtin** başlığı altında **Bu kaynak bağlantı noktasından veya aralıktan** seçim yapın. Eşlik eden metin kutusunda **3390** yazın. **Son** ’u seçin.
+10. **Kaynak bağlantı noktası numarasını belirtin** başlığı altında **Bu kaynak bağlantı noktasından veya aralıktan** seçim yapın. Eşlik eden metin kutusunda **3390** yazın. **Son**'u seçin.
 
 Oluşturduğunuz yeni ilkeler, grup ilkesi oturum ana bilgisayar bilgisayarlarınızda yenilenene kadar etkili olmayacaktır. Grup ilkesi düzenli olarak kendi kendine yenilese de, aşağıdaki adımları izleyerek anında yenilemeyi zorlayabilirsiniz:
 
-1. Grup ilkesi yenilemek istediğiniz her oturum konağında, yönetici olarak bir komut Istemi açın ( *yönetici olarak çalıştır* ).
+1. Grup ilkesi yenilemek istediğiniz her oturum konağında, yönetici olarak bir komut Istemi açın (*yönetici olarak çalıştır*).
 
 1. Komut istemine şunu girin:
 

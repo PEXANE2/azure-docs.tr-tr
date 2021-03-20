@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 12/02/2019
 ms.author: chrande
 ms.openlocfilehash: d99e2e2ffd63b050e7373c98084fed3fb14727bf
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93357054"
 ---
 # <a name="graph-data-modeling-for-azure-cosmos-db-gremlin-api"></a>Azure Cosmos DB Gremlin API 'SI için grafik veri modelleme
@@ -36,7 +36,7 @@ Bir veri etki alanındaki varlıklar ve ilişkilerin aşağıdaki özelliklerden
 * Varlıklar arasında **çok-çok ilişkisi** vardır.
 * **Hem varlıklarda hem de ilişkilerde yazma ve okuma gereksinimleri** vardır. 
 
-Yukarıdaki kriterler karşılandıysanız, bir grafik veritabanı yaklaşımının **sorgu karmaşıklığı** , **veri modeli ölçeklenebilirliği** ve **sorgu performansı** için avantaj sağlaması olasıdır.
+Yukarıdaki kriterler karşılandıysanız, bir grafik veritabanı yaklaşımının **sorgu karmaşıklığı**, **veri modeli ölçeklenebilirliği** ve **sorgu performansı** için avantaj sağlaması olasıdır.
 
 Bir sonraki adım, grafiğin analitik veya işlemsel amaçlar için kullanılacağını belirlemektir. Grafik ağır hesaplama ve veri işleme iş yükleri için kullanılmak üzere tasarlanıyorsa, [Cosmos DB Spark bağlayıcısını](./spark-connector.md) ve [GraphX kitaplığının](https://spark.apache.org/graphx/)kullanımını keşfetmeye değer de vardır. 
 
@@ -72,7 +72,7 @@ Grafik veri modeli için ilk adım, tanımlanan her varlığı bir **köşe nesn
 
 Bir ortak giriş, tek bir varlığın özelliklerini ayrı köşeler olarak eşmaktır. Aşağıdaki örneği, aynı varlığın iki farklı şekilde temsil edildiği yerde göz önünde bulundurun:
 
-* **Köşe tabanlı özellikler** : Bu yaklaşımda varlık, özelliklerini anlatmak için üç ayrı köşe ve iki kenar kullanır. Bu yaklaşım artıklığı azaltada, model karmaşıklığını artırır. Model karmaşıklığının artışı, eklenen gecikme süresi, sorgu karmaşıklığı ve hesaplama maliyetine neden olabilir. Bu model, Bölümlemede zorluk de sunabilir.
+* **Köşe tabanlı özellikler**: Bu yaklaşımda varlık, özelliklerini anlatmak için üç ayrı köşe ve iki kenar kullanır. Bu yaklaşım artıklığı azaltada, model karmaşıklığını artırır. Model karmaşıklığının artışı, eklenen gecikme süresi, sorgu karmaşıklığı ve hesaplama maliyetine neden olabilir. Bu model, Bölümlemede zorluk de sunabilir.
 
 :::image type="content" source="./media/graph-modeling/graph-modeling-1.png" alt-text="Özellikler için köşeleri olan varlık modeli." border="false":::
 

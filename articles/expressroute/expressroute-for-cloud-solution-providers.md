@@ -9,10 +9,10 @@ ms.date: 10/10/2016
 ms.author: duau
 ms.custom: seodec18
 ms.openlocfilehash: 09fee610ccc15874481ecfd4693e4b89379caa7a
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92330045"
 ---
 # <a name="expressroute-for-cloud-solution-providers-csp"></a>Bulut Çözüm Sağlayıcıları (CSP) için ExpressRoute
@@ -31,7 +31,7 @@ Microsoft Azure tarafından sağlanan ve müşterilerinize sunabileceğiniz hizm
 Microsoft, kendi hizmet yönetimi sistemlerinizle programlı tümleştirme sağlayarak Azure müşteri aboneliklerini yönetmek için CSP 'Leri API 'Ler sağlar. Desteklenen yönetim özelliklerini [burada](/previous-versions/windows/mt844538(v=win.10)) bulabilirsiniz.
 
 ## <a name="microsoft-azure-resource-management"></a>Microsoft Azure kaynak yönetimi
-Müşterinizle aranızdaki sözleşmeye bağlı olarak aboneliğin nasıl yönetileceği belirlenir. CSP, kaynakların oluşturulmasını ve bakımını doğrudan yönetebilir veya müşteri, Microsoft Azure aboneliğinin kontrolünü sağlayarak Azure kaynaklarını gereksinim duydukları gibi oluşturabilir. Müşteriniz Microsoft Azure aboneliklerinde kaynak oluşturmayı yönetirse şu iki modelden birini kullanır: "doğrudan*bağlantı*" modeli veya "*doğrudan*" modeli. Bu modeller aşağıdaki bölümlerde ayrıntılı olarak açıklanmıştır.  
+Müşterinizle aranızdaki sözleşmeye bağlı olarak aboneliğin nasıl yönetileceği belirlenir. CSP, kaynakların oluşturulmasını ve bakımını doğrudan yönetebilir veya müşteri, Microsoft Azure aboneliğinin kontrolünü sağlayarak Azure kaynaklarını gereksinim duydukları gibi oluşturabilir. Müşteriniz Microsoft Azure aboneliklerinde kaynak oluşturmayı yönetirse şu iki modelden birini kullanır: "doğrudan *bağlantı*" modeli veya "*doğrudan*" modeli. Bu modeller aşağıdaki bölümlerde ayrıntılı olarak açıklanmıştır.  
 
 ### <a name="connect-through-model"></a>Aracılı bağlantı modeli
 !["Bağlantı-geçiş" modelini gösteren diyagram.](./media/expressroute-for-cloud-solution-providers/connect-through.png)  

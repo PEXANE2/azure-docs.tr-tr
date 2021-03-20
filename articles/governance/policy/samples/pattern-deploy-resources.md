@@ -4,10 +4,10 @@ description: Bu Azure Ilke modelinde, bir deployIfNotExists ilke tanımıyla kay
 ms.date: 08/17/2020
 ms.topic: sample
 ms.openlocfilehash: 0a9eec54954b8963f38b3f19a0d0cabffe1092e5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89649982"
 ---
 # <a name="azure-policy-pattern-deploy-resources"></a>Azure Ilke deseninin: kaynakları dağıtma
@@ -16,7 +16,7 @@ ms.locfileid: "89649982"
 
 ## <a name="sample-policy-definition"></a>Örnek ilke tanımı
 
-Bu ilke tanımı, **field** `type` oluşturulan veya güncellenen kaynak sayısını değerlendirmek için alan işlecini kullanır. Bu kaynak bir _Microsoft. Network/virtualNetworks_olduğunda, ilke yeni veya güncelleştirilmiş kaynağın konumunda bir ağ izleyicisi arar. Eşleşen bir ağ izleyicisi bulunamıyorsa, eksik kaynağı oluşturmak için ARM şablonu dağıtılır.
+Bu ilke tanımı,  `type` oluşturulan veya güncellenen kaynak sayısını değerlendirmek için alan işlecini kullanır. Bu kaynak bir _Microsoft. Network/virtualNetworks_ olduğunda, ilke yeni veya güncelleştirilmiş kaynağın konumunda bir ağ izleyicisi arar. Eşleşen bir ağ izleyicisi bulunamıyorsa, eksik kaynağı oluşturmak için ARM şablonu dağıtılır.
 
 :::code language="json" source="~/policy-templates/patterns/pattern-deploy-resources.json":::
 
@@ -26,7 +26,7 @@ Bu ilke tanımı, **field** `type` oluşturulan veya güncellenen kaynak sayıs�
 
 :::code language="json" source="~/policy-templates/patterns/pattern-deploy-resources.json" range="18-23":::
 
-**Properties. policyRule. then. Details** bloğu, Azure ilkesine **Özellikler. policyrule. If** bloğunda oluşturulan veya güncellenen kaynakla ilgili arama yapılacağını söyler. Bu örnekte, **networkWatcherRG** kaynak grubundaki bir ağ izleyicisi, **field** `location` Yeni veya güncelleştirilmiş kaynağın konumuna eşit alana sahip olmalıdır. İşlevinin kullanılması, `field()` **existenceCondition** 'in yeni veya güncelleştirilmiş kaynaktaki özelliklere, özellikle de özelliğine erişmesini sağlar `location` .
+**Properties. policyRule. then. Details** bloğu, Azure ilkesine **Özellikler. policyrule. If** bloğunda oluşturulan veya güncellenen kaynakla ilgili arama yapılacağını söyler. Bu örnekte, **networkWatcherRG** kaynak grubundaki bir ağ izleyicisi,  `location` Yeni veya güncelleştirilmiş kaynağın konumuna eşit alana sahip olmalıdır. İşlevinin kullanılması, `field()` **existenceCondition** 'in yeni veya güncelleştirilmiş kaynaktaki özelliklere, özellikle de özelliğine erişmesini sağlar `location` .
 
 #### <a name="roledefinitionids"></a>Roledefinitionıds
 
@@ -44,7 +44,7 @@ Bu ilke tanımı, **field** `type` oluşturulan veya güncellenen kaynak sayıs�
 
   :::code language="json" source="~/policy-templates/patterns/pattern-deploy-resources.json" range="30-44":::
   
-- **Parametreler** -bu özellik, **şablona**sunulan parametreleri tanımlar. Parametre adlarının **şablonda**tanımlananla eşleşmesi gerekir. Bu örnekte, parametresi eşleştirilecek **konum** olarak adlandırılır. **Konum** değeri, `field()` **policyrule. If** bloğunda sanal ağı olan değerlendirilen kaynağın değerini almak için işlevini yeniden kullanır.
+- **Parametreler** -bu özellik, **şablona** sunulan parametreleri tanımlar. Parametre adlarının **şablonda** tanımlananla eşleşmesi gerekir. Bu örnekte, parametresi eşleştirilecek **konum** olarak adlandırılır. **Konum** değeri, `field()` **policyrule. If** bloğunda sanal ağı olan değerlendirilen kaynağın değerini almak için işlevini yeniden kullanır.
 
   :::code language="json" source="~/policy-templates/patterns/pattern-deploy-resources.json" range="45-49":::
 

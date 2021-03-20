@@ -13,10 +13,10 @@ ms.custom: seo-lt-2019
 ms.topic: quickstart
 ms.date: 03/13/2020
 ms.openlocfilehash: 39f893e9375970ff4bb6e3cfa2c93ceea48ec896
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92331813"
 ---
 # <a name="quickstart-create-a-hybrid-mode-instance-with-azure-portal--azure-database-migration-service"></a>Hızlı başlangıç: Azure portal & Azure veritabanı geçiş hizmeti ile karma mod örneği oluşturma
@@ -71,11 +71,11 @@ Azure veritabanı geçiş hizmeti 'nin ilk örneğinizi oluşturmadan önce Micr
     - Örneği oluşturmak istediğiniz Azure **Aboneliğini** seçin.
     - Var olan bir **kaynak grubunu** seçin veya yeni bir tane oluşturun.
     - Kaynak veya hedef sunucunuza en yakın **Konum**’u seçin.
-    - **Hizmet modu**için **karma (Önizleme)** öğesini seçin.
+    - **Hizmet modu** için **karma (Önizleme)** öğesini seçin.
 
          ![Geçiş hizmeti oluşturma-temel bilgiler](media/quickstart-create-data-migration-service-hybrid-portal/dms-create-service-basics.png)
 
-4. **Gözden geçir + oluştur**’u seçin.
+4. **Gözden geçir ve oluştur**’u seçin.
 
 5. **Gözden geçir + oluştur** sekmesinde, koşulları gözden geçirin, belirtilen diğer bilgileri doğrulayın ve ardından **Oluştur**' u seçin.
 
@@ -94,13 +94,13 @@ Azure veritabanı geçiş hizmeti 'nin ilk örneğinizi oluşturmadan önce Micr
 Şirket içi hibrit çalışanının, Bulutta Azure veritabanı geçiş hizmeti ile iletişim kurmak için kullanabileceği bir Azure uygulama kayıt KIMLIĞI oluşturmanız gerekir.
 
 1. Azure portal **Azure Active Directory**' i seçin, **uygulama kayıtları**' yı seçin ve sonra **Yeni kayıt**' yi seçin.
-2. Uygulama için bir ad belirtin ve ardından **Desteklenen hesap türleri**altında, uygulamayı kullanabilecek kişileri belirtmek Için desteklenecek hesap türünü seçin.
+2. Uygulama için bir ad belirtin ve ardından **Desteklenen hesap türleri** altında, uygulamayı kullanabilecek kişileri belirtmek Için desteklenecek hesap türünü seçin.
 
     ![Azure veritabanı geçiş hizmeti karma mod kayıt uygulaması](media/quickstart-create-data-migration-service-hybrid-portal/dms-register-application.png)
 
 3. **Yeniden yönlendirme URI 'si (isteğe bağlı)** alanları için varsayılan değerleri kullanın ve ardından **Kaydet**' i seçin.
 
-4. Uygulama KIMLIĞI kaydı tamamlandıktan sonra, karma çalışanı yüklerken kullanacağınız **uygulama (istemci) kimliğini**bir yere getirin.
+4. Uygulama KIMLIĞI kaydı tamamlandıktan sonra, karma çalışanı yüklerken kullanacağınız **uygulama (istemci) kimliğini** bir yere getirin.
 
 5. Azure portal Azure veritabanı geçiş hizmeti ' ne gidin, **erişim denetimi (IAM)** seçeneğini belirleyin ve ardından uygulama kimliğine katkıda bulunan erişimi atamak için **rol ataması Ekle** ' yi seçin.
 
@@ -116,7 +116,7 @@ Azure veritabanı geçiş hizmeti 'nin ilk örneğinizi oluşturmadan önce Micr
 
 1. Azure portal Azure veritabanı geçiş hizmeti örneğinize gidin.
 
-2. **Ayarlar**altında **karma**' i seçin ve ardından karma çalışanı indirmek için **yükleyici indir** ' i seçin.
+2. **Ayarlar** altında **karma**' i seçin ve ardından karma çalışanı indirmek için **yükleyici indir** ' i seçin.
 
     ![Azure veritabanı geçiş hizmeti karma çalışanı indirmesi](media/quickstart-create-data-migration-service-hybrid-portal/dms-installer-download.png)
 
@@ -139,7 +139,7 @@ Azure veritabanı geçiş hizmeti 'nin ilk örneğinizi oluşturmadan önce Micr
 
     ![Azure veritabanı geçiş hizmeti karma çalışanı sertifikası](media/quickstart-create-data-migration-service-hybrid-portal/dms-certificate.png)
 
-6. Azure portal, uygulama KIMLIĞI ' ne gidin, **Yönet**altında sertifika **& gizli**dizileri ' ni seçin ve sonra oluşturduğunuz ortak sertifikayı seçmek için **sertifikayı karşıya yükle** ' yi seçin.
+6. Azure portal, uygulama KIMLIĞI ' ne gidin, **Yönet** altında sertifika **& gizli** dizileri ' ni seçin ve sonra oluşturduğunuz ortak sertifikayı seçmek için **sertifikayı karşıya yükle** ' yi seçin.
 
     ![Azure veritabanı geçiş hizmeti karma çalışanı sertifikası karşıya yükleme](media/quickstart-create-data-migration-service-hybrid-portal/dms-app-upload-certificate.png)
 

@@ -1,6 +1,6 @@
 ---
-title: dosya dahil etme
-description: dosya dahil etme
+title: include dosyası
+description: include dosyası
 services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
@@ -9,10 +9,10 @@ ms.date: 03/19/2020
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: e978a5e7e76c8ddc9b7e6b80ec7170c45baa2cae
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "82784121"
 ---
 ### <a name="azure-regions-within-a-geopolitical-region"></a>Geopolitik bölge içindeki Azure bölgeleri
@@ -29,7 +29,7 @@ Sanal WAN aşağıdaki bölgeler için kullanılabilir:
 | Japonya  | Batı Japonya, Doğu Japonya |
 | Okyanusya | Güneydoğu Avustralya, Doğu Avustralya |
 | Güney Afrika | Güney Afrika Kuzey, Güney Afrika Batı |
-| Güney Amerika |Brezilya Güney |
+| Güney Amerika |Güney Brezilya |
 | Güney Kore | Güney Kore - Orta, Güney Kore - Güney |
 | BAE | BAE Kuzey, BAE Orta |
 

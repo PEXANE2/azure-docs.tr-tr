@@ -17,10 +17,10 @@ ms.topic: article
 ms.date: 01/23/2018
 ms.author: apimpm
 ms.openlocfilehash: abb9cbb73f8957cec2cb3240bbf186623b9b2ef9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88205514"
 ---
 # <a name="monitor-your-apis-with-azure-api-management-event-hubs-and-moesif"></a>Azure API Management, Event Hubs ve Moesif ile API 'lerinizi izleme
@@ -295,7 +295,7 @@ public class MoesifHttpMessageProcessor : IHttpMessageProcessor
 }
 ```
 
-, `MoesifHttpMessageProcessor` Http olay verilerini hizmetine göndermeyi kolaylaştıran bir [Moesif Için C# API kitaplığı](https://www.moesif.com/docs/api?csharp#events) avantajlarından yararlanır. Moesif Toplayıcı API 'sine HTTP verileri göndermek için bir hesap ve uygulama kimliği gereklidir. [Moesif 'in Web sitesinde](https://www.moesif.com) bir hesap oluşturup _sağ üst menü_  ->  _uygulama kurulumuna_giderek bir moesif uygulama kimliği alırsınız.
+, `MoesifHttpMessageProcessor` Http olay verilerini hizmetine göndermeyi kolaylaştıran bir [Moesif Için C# API kitaplığı](https://www.moesif.com/docs/api?csharp#events) avantajlarından yararlanır. Moesif Toplayıcı API 'sine HTTP verileri göndermek için bir hesap ve uygulama kimliği gereklidir. [Moesif 'in Web sitesinde](https://www.moesif.com) bir hesap oluşturup _sağ üst menü_  ->  _uygulama kurulumuna_ giderek bir moesif uygulama kimliği alırsınız.
 
 ## <a name="complete-sample"></a>Tüm örnek
 Örnek için [kaynak kodu](https://github.com/dgilling/ApimEventProcessor) ve testler GitHub ' da bulunur. Örneği kendiniz çalıştırmak için bir [API Management hizmeti](get-started-create-service-instance.md), [bağlı bir olay hub](api-management-howto-log-event-hubs.md)'ı ve bir [depolama hesabı](../storage/common/storage-account-create.md) gerekir.   

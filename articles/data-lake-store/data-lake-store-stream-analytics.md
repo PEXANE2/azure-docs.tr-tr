@@ -7,23 +7,23 @@ ms.topic: how-to
 ms.date: 05/30/2018
 ms.author: twooley
 ms.openlocfilehash: 4c289ecb1d8471a7b99f1d4c85a0163de4d0c593
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91576226"
 ---
 # <a name="stream-data-from-azure-storage-blob-into-azure-data-lake-storage-gen1-using-azure-stream-analytics"></a>Azure Stream Analytics kullanarak Azure Data Lake Storage 1. Azure Depolama Blobu veri akışı
 Bu makalede, Azure Data Lake Storage 1. bir Azure Stream Analytics iş için çıktı olarak nasıl kullanacağınızı öğreneceksiniz. Bu makalede, verileri bir Azure depolama blobundan (giriş) okuyan ve verileri Data Lake Storage 1. (çıktı) yazan basit bir senaryo gösterilmektedir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 Bu öğreticiye başlamadan önce aşağıdakilere sahip olmanız gerekir:
 
 * **Bir Azure aboneliği**. Bkz. [Azure ücretsiz deneme sürümü edinme](https://azure.microsoft.com/pricing/free-trial/).
 
-* **Azure depolama hesabı**. Bu hesaptan bir blob kapsayıcısını, bir Stream Analytics işi için veri girmek üzere kullanacaksınız. Bu öğreticide, **storageforasa** adlı bir depolama hesabınız ve **storageforasacontainer**adlı hesap içinde bir kapsayıcı olduğunu varsayalım. Kapsayıcıyı oluşturduktan sonra bir örnek veri dosyası yükleyin. 
+* **Azure depolama hesabı**. Bu hesaptan bir blob kapsayıcısını, bir Stream Analytics işi için veri girmek üzere kullanacaksınız. Bu öğreticide, **storageforasa** adlı bir depolama hesabınız ve **storageforasacontainer** adlı hesap içinde bir kapsayıcı olduğunu varsayalım. Kapsayıcıyı oluşturduktan sonra bir örnek veri dosyası yükleyin. 
   
-* **Data Lake Storage 1. hesabı**. [Azure Portal kullanarak Azure Data Lake Storage 1. kullanmaya başlama](data-lake-store-get-started-portal.md)yönergelerini izleyin. **Myadlsg1**adlı bir Data Lake Storage 1. hesabınız olduğunu varsayalım. 
+* **Data Lake Storage 1. hesabı**. [Azure Portal kullanarak Azure Data Lake Storage 1. kullanmaya başlama](data-lake-store-get-started-portal.md)yönergelerini izleyin. **Myadlsg1** adlı bir Data Lake Storage 1. hesabınız olduğunu varsayalım. 
 
 ## <a name="create-a-stream-analytics-job"></a>Stream Analytics İşi oluşturma
 Giriş kaynağı ve çıkış hedefi içeren bir Stream Analytics işi oluşturarak başlayın. Bu öğretici için kaynak bir Azure Blob kapsayıcısıdır ve hedef Data Lake Storage 1..
@@ -48,15 +48,15 @@ Giriş kaynağı ve çıkış hedefi içeren bir Stream Analytics işi oluştura
 
     ![BLOB depolama-yeni giriş dikey penceresinin ekran görüntüsü.](./media/data-lake-store-stream-analytics/create.input.2.png "İşinize bir giriş ekleyin")
 
-   * **Giriş diğer adı**için, iş girişi için benzersiz bir ad girin.
-   * **Kaynak türü**için **veri akışı**' nı seçin.
-   * **Kaynak**için **BLOB depolama**' yı seçin.
-   * **Abonelik**için **geçerli abonelikten blob depolamayı kullan**' ı seçin.
-   * **Depolama hesabı**için, önkoşulların bir parçası olarak oluşturduğunuz depolama hesabını seçin. 
-   * **Kapsayıcı**için, seçilen depolama hesabında oluşturduğunuz kapsayıcıyı seçin.
-   * **Olay serileştirme biçimi**için **CSV**' yi seçin.
-   * **Sınırlayıcı**için **sekme**' i seçin.
-   * **Kodlama**için **UTF-8**' i seçin.
+   * **Giriş diğer adı** için, iş girişi için benzersiz bir ad girin.
+   * **Kaynak türü** için **veri akışı**' nı seçin.
+   * **Kaynak** için **BLOB depolama**' yı seçin.
+   * **Abonelik** için **geçerli abonelikten blob depolamayı kullan**' ı seçin.
+   * **Depolama hesabı** için, önkoşulların bir parçası olarak oluşturduğunuz depolama hesabını seçin. 
+   * **Kapsayıcı** için, seçilen depolama hesabında oluşturduğunuz kapsayıcıyı seçin.
+   * **Olay serileştirme biçimi** için **CSV**' yi seçin.
+   * **Sınırlayıcı** için **sekme**' i seçin.
+   * **Kodlama** için **UTF-8**' i seçin.
 
      **Oluştur**’a tıklayın. Portal şimdi girişi ekler ve ona bağlantıyı sınar.
 
@@ -71,20 +71,20 @@ Giriş kaynağı ve çıkış hedefi içeren bir Stream Analytics işi oluştura
 
     ![Yetkilendirme seçeneği olarak adlandırılan Data Lake Storage Gen 1-yeni çıkış dikey penceresinin ekran görüntüsü.](./media/data-lake-store-stream-analytics/create.output.2.png "İşinize bir çıktı ekleyin")
 
-    * **Çıktı diğer adı**için iş çıktısı için benzersiz bir ad girin. Bu, sorgu çıkışını bu Data Lake Storage 1. hesabına yönlendirmek için sorgularda kullanılan kolay bir addır.
+    * **Çıktı diğer adı** için iş çıktısı için benzersiz bir ad girin. Bu, sorgu çıkışını bu Data Lake Storage 1. hesabına yönlendirmek için sorgularda kullanılan kolay bir addır.
     * Data Lake Storage 1. hesabına erişimi yetkilendirmeniz istenir. **Yetkilendir**'e tıklayın.
 
 3. **Yeni çıkış** dikey penceresinde aşağıdaki değerleri sağlamaya devam edin.
 
     ![Data Lake Storage Gen 1-yeni çıkış dikey penceresinin ekran görüntüsü.](./media/data-lake-store-stream-analytics/create.output.3.png "İşinize bir çıktı ekleyin")
 
-   * **Hesap adı**için, iş çıktısının gönderilmesini istediğiniz yerde zaten oluşturduğunuz Data Lake Storage 1. hesabı seçin.
-   * **Yol ön eki**için, belirtilen Data Lake Storage 1. hesabı içinde dosyalarınızı yazmak için kullanılan bir dosya yolu girin.
-   * **Tarih biçimi**için, önek yolunda bir tarih belirteci kullandıysanız dosyalarınızın düzenlendiği tarih biçimini seçebilirsiniz.
-   * **Saat biçimi**için, ön ek yolunda bir zaman belirteci kullandıysanız dosyalarınızın düzenlendiği zaman biçimini belirtin.
-   * **Olay serileştirme biçimi**için **CSV**' yi seçin.
-   * **Sınırlayıcı**için **sekme**' i seçin.
-   * **Kodlama**için **UTF-8**' i seçin.
+   * **Hesap adı** için, iş çıktısının gönderilmesini istediğiniz yerde zaten oluşturduğunuz Data Lake Storage 1. hesabı seçin.
+   * **Yol ön eki** için, belirtilen Data Lake Storage 1. hesabı içinde dosyalarınızı yazmak için kullanılan bir dosya yolu girin.
+   * **Tarih biçimi** için, önek yolunda bir tarih belirteci kullandıysanız dosyalarınızın düzenlendiği tarih biçimini seçebilirsiniz.
+   * **Saat biçimi** için, ön ek yolunda bir zaman belirteci kullandıysanız dosyalarınızın düzenlendiği zaman biçimini belirtin.
+   * **Olay serileştirme biçimi** için **CSV**' yi seçin.
+   * **Sınırlayıcı** için **sekme**' i seçin.
+   * **Kodlama** için **UTF-8**' i seçin.
     
      **Oluştur**’a tıklayın. Portal şimdi çıktıyı ekler ve ona bağlantıyı sınar.
     
@@ -92,7 +92,7 @@ Giriş kaynağı ve çıkış hedefi içeren bir Stream Analytics işi oluştura
 
 1. Bir Stream Analytics işini çalıştırmak için, **sorgu** sekmesinden bir sorgu çalıştırmanız gerekir. Bu öğreticide, aşağıdaki ekran görüntüsünde gösterildiği gibi yer tutucuları iş ve çıkış diğer adlarıyla değiştirerek örnek sorguyu çalıştırabilirsiniz.
 
-    ![Sorgu çalıştırma](./media/data-lake-store-stream-analytics/run.query.png "Sorgu çalıştırma")
+    ![Sorguyu Çalıştır](./media/data-lake-store-stream-analytics/run.query.png "Sorgu çalıştırma")
 
 2. Ekranın üstündeki **Kaydet** ' e tıklayın ve ardından **genel bakış** sekmesinden **Başlat**' a tıklayın. İletişim kutusunda **özel saat**' i seçin ve geçerli tarih ve saati ayarlayın.
 
@@ -100,9 +100,9 @@ Giriş kaynağı ve çıkış hedefi içeren bir Stream Analytics işi oluştura
 
     İşi başlatmak için **Başlat** ' a tıklayın. İşin başlatılması birkaç dakika sürebilir.
 
-3. İşi Blobun verileri seçmek üzere tetiklemek için, blob kapsayıcısına bir örnek veri dosyası kopyalayın. [Azure Data Lake git deposundan](https://github.com/Azure/usql/tree/master/Examples/Samples/Data/AmbulanceData/Drivers.txt)örnek bir veri dosyası alabilirsiniz. Bu öğreticide, **vehicle1_09142014.csv**dosyayı kopyalayalim. Blob kapsayıcısına veri yüklemek için [Azure Depolama Gezgini](https://storageexplorer.com/)gibi çeşitli istemcileri kullanabilirsiniz.
+3. İşi Blobun verileri seçmek üzere tetiklemek için, blob kapsayıcısına bir örnek veri dosyası kopyalayın. [Azure Data Lake git deposundan](https://github.com/Azure/usql/tree/master/Examples/Samples/Data/AmbulanceData/Drivers.txt)örnek bir veri dosyası alabilirsiniz. Bu öğreticide, **vehicle1_09142014.csv** dosyayı kopyalayalim. Blob kapsayıcısına veri yüklemek için [Azure Depolama Gezgini](https://storageexplorer.com/)gibi çeşitli istemcileri kullanabilirsiniz.
 
-4. **Genel bakış** sekmesinde, **izleme**altında, verilerin nasıl işlendiği konusuna bakın.
+4. **Genel bakış** sekmesinde, **izleme** altında, verilerin nasıl işlendiği konusuna bakın.
 
     ![İşi izleme](./media/data-lake-store-stream-analytics/run.query.3.png "İşi izleme")
 

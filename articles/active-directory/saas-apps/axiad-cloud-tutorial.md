@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 05/15/2020
 ms.author: jeedes
 ms.openlocfilehash: b9aebe7dc3d21e5ee1ab5686b3253bee3e75094d
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92457427"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-axiad-cloud"></a>Öğretici: Axiad bulutu ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
@@ -28,7 +28,7 @@ Bu öğreticide, Axiad bulutunu Azure Active Directory (Azure AD) ile tümleşti
 
 Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](../manage-apps/what-is-single-sign-on.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -55,7 +55,7 @@ Axiad bulutu 'nın Azure AD 'ye tümleştirilmesini yapılandırmak için, Galer
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-axiad-cloud"></a>Axiad bulutu için Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-**B. Simon**adlı bir test kullanıcısı kullanarak Azure AD SSO 'Yu Axiad bulutu ile yapılandırın ve test edin. SSO 'nun çalışması için, Axiad bulutu 'ndaki bir Azure AD kullanıcısı ve ilgili Kullanıcı arasında bağlantı ilişkisi oluşturmanız gerekir.
+**B. Simon** adlı bir test kullanıcısı kullanarak Azure AD SSO 'Yu Axiad bulutu ile yapılandırın ve test edin. SSO 'nun çalışması için, Axiad bulutu 'ndaki bir Azure AD kullanıcısı ve ilgili Kullanıcı arasında bağlantı ilişkisi oluşturmanız gerekir.
 
 Azure AD SSO 'yu Axiad bulutu ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
 

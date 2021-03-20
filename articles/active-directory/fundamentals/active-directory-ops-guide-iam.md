@@ -12,10 +12,10 @@ ms.subservice: fundamentals
 ms.date: 10/31/2019
 ms.author: martinco
 ms.openlocfilehash: 66bce573be5a31641bdff809b8e9a79b617a703a
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92371010"
 ---
 # <a name="azure-active-directory-identity-and-access-management-operations-reference-guide"></a>Azure Active Directory kimlik ve erişim yönetimi işlemleri başvuru kılavuzu
@@ -107,7 +107,7 @@ Azure AD Connect sürümünüz altı aydan daha geride olursa en son sürüme y�
 
 [Kaynak Bağlayıcısı](../hybrid/plan-connect-design-concepts.md) olarak **MS-DS-ımlarnımlarguıd** kullanmak, ad etki alanı birleştirme/Temizleme, birleşmeler, alımlar ve divestitures içinde ortak olan ormanlar ve etki alanları arasında nesnelerin daha kolay bir şekilde geçirilmesini sağlar.
 
-Şu anda kaynak Bağlayıcısı olarak **Objectguıd** kullanıyorsanız, **MS-DS-ımlıo GUID**kullanarak geçiş yapmanızı öneririz.
+Şu anda kaynak Bağlayıcısı olarak **Objectguıd** kullanıyorsanız, **MS-DS-ımlıo GUID** kullanarak geçiş yapmanızı öneririz.
 
 #### <a name="custom-rules"></a>Özel kurallar
 
@@ -167,10 +167,10 @@ Kullanıcılara hizmet planlarını tanımlamak için aşağıdaki yönergeleri 
 
 ### <a name="assignment-of-apps-with-all-users-group"></a>"Tüm kullanıcılar" grubu ile uygulamaların atanması
 
-Kaynak sahipleri, **tüm kullanıcılar** grubunun yalnızca **Kurumsal çalışanları** ve **konukları**gerçekten içerdiğinde **Kurumsal çalışanları** içerdiğini düşünmeyebilir. Sonuç olarak, uygulama ataması için **tüm kullanıcılar** grubunu kullanırken ve SharePoint içeriği veya uygulamalar gibi kaynaklara erişim verirken özel bir dikkatli olmanız gerekir.
+Kaynak sahipleri, **tüm kullanıcılar** grubunun yalnızca **Kurumsal çalışanları** ve **konukları** gerçekten içerdiğinde **Kurumsal çalışanları** içerdiğini düşünmeyebilir. Sonuç olarak, uygulama ataması için **tüm kullanıcılar** grubunu kullanırken ve SharePoint içeriği veya uygulamalar gibi kaynaklara erişim verirken özel bir dikkatli olmanız gerekir.
 
 > [!IMPORTANT]
-> **Tüm kullanıcılar** grubu etkinleştirilir ve koşullu erişim ilkeleri, uygulama veya kaynak ataması için kullanılırsa, Konuk kullanıcıları dahil etmek istemiyorsanız [grubun güvenli hale](../external-identities/use-dynamic-groups.md) geldiğinden emin olun. Ayrıca, yalnızca **Kurumsal çalışanları** içeren grupları oluşturup atayarak lisanslama atamalarınızı düzeltmelisiniz. Öte yandan, **tüm kullanıcılar** grubunun etkin olduğunu ancak kaynaklara erişim izni vermek için kullanılmadığını fark ederseniz, kuruluşunuzun işletimsel kılavuzunun bu grubu kasıtlı olarak ( **Kurumsal çalışanları** ve **konukları**dahil) kullanmak için olduğundan emin olun.
+> **Tüm kullanıcılar** grubu etkinleştirilir ve koşullu erişim ilkeleri, uygulama veya kaynak ataması için kullanılırsa, Konuk kullanıcıları dahil etmek istemiyorsanız [grubun güvenli hale](../external-identities/use-dynamic-groups.md) geldiğinden emin olun. Ayrıca, yalnızca **Kurumsal çalışanları** içeren grupları oluşturup atayarak lisanslama atamalarınızı düzeltmelisiniz. Öte yandan, **tüm kullanıcılar** grubunun etkin olduğunu ancak kaynaklara erişim izni vermek için kullanılmadığını fark ederseniz, kuruluşunuzun işletimsel kılavuzunun bu grubu kasıtlı olarak ( **Kurumsal çalışanları** ve **konukları** dahil) kullanmak için olduğundan emin olun.
 
 ### <a name="automated-user-provisioning-to-apps"></a>Uygulamalara otomatik Kullanıcı hazırlama
 

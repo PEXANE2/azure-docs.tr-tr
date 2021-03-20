@@ -14,10 +14,10 @@ ms.topic: conceptual
 ms.date: 11/13/2020
 ms.author: apimpm
 ms.openlocfilehash: 732abed830afdb759ed52fd933673edd8e5cade6
-ms.sourcegitcommit: 18046170f21fa1e569a3be75267e791ca9eb67d0
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/16/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94638742"
 ---
 # <a name="add-caching-to-improve-performance-in-azure-api-management"></a>Azure API Management performansını artırmak için önbelleğe alma ekleme
@@ -57,7 +57,7 @@ Bu örnekte önbelleğe alma ilkeleri kullanılarak, **GetSpeakers** işlemine y
 2. APIM örneğinize göz atın.
 3. **API** sekmesini seçin.
 4. API listenizden **Tanıtım Konferansı API’sine** tıklayın.
-5. **GetSpeakers** ’ı seçin.
+5. **GetSpeakers**’ı seçin.
 6. Ekranın üst kısmında **Tasarım** sekmesini seçin.
 7. **Gelen işleme** bölümünde **</>** simgesine tıklayın.
 
@@ -92,7 +92,7 @@ Bu örnekte önbelleğe alma ilkeleri kullanılarak, **GetSpeakers** işlemine y
 3. Önbelleğe alma ilkelerini eklediğiniz API’leri seçin.
 4. **GetSpeakers** işlemini seçin.
 5. Sağ üst menüdeki **Test** sekmesine tıklayın.
-6. **Gönder** ’e basın.
+6. **Gönder**’e basın.
 
 ## <a name="next-steps"></a><a name="next-steps"> </a>Sonraki adımlar
 * Önbelleğe alma ilkeleri hakkında daha fazla bilgi için bkz. [API Management ilke başvurusu][API Management policy reference]’nda [Önbelleğe alma ilkeleri][Caching policies].

@@ -7,10 +7,10 @@ ms.author: cweining
 ms.date: 08/06/2018
 ms.reviewer: mbullwin
 ms.openlocfilehash: 0d3074d58560df5cb5bd6bdc2c0437a4be828918
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86499401"
 ---
 # <a name="profile-production-applications-in-azure-with-application-insights"></a>Application Insights ile Azure 'da üretim uygulamaları profilini yapın
@@ -55,11 +55,11 @@ Zaman çizelgesi görünümünde görüntülenen çağrı yığını örnekleme 
 
 ### <a name="object-allocation-clrjit_new-or-clrjit_newarr1"></a><a id="jitnewobj"></a>Nesne ayırma (clr! JıT \_ Yeni veya clr! JıT \_ Newarr1)
 
-**clr! JıT \_ Yeni** ve **clr! JıT \_ Newarr1** , yönetilen bir yığından bellek ayıran .NET Framework yardımcı işlevlerdir. **clr! Bir nesne ayrıldığında JıT \_ New** çağrılır. **clr! Bir \_ ** nesne DIZISI ayrıldığında JIT Newarr1 çağrılır. Bu iki işlev genellikle hızlıdır ve görece az miktarda zaman alır. Eğer **clr! JıT \_ Yeni** veya **clr! JıT \_ Newarr1** zaman çizelgenizde çok zaman alır, kod birçok nesne ayırarak ve önemli miktarda bellek tüketiyor olabilir.
+**clr! JıT \_ Yeni** ve **clr! JıT \_ Newarr1** , yönetilen bir yığından bellek ayıran .NET Framework yardımcı işlevlerdir. **clr! Bir nesne ayrıldığında JıT \_ New** çağrılır. **clr! Bir \_** nesne DIZISI ayrıldığında JIT Newarr1 çağrılır. Bu iki işlev genellikle hızlıdır ve görece az miktarda zaman alır. Eğer **clr! JıT \_ Yeni** veya **clr! JıT \_ Newarr1** zaman çizelgenizde çok zaman alır, kod birçok nesne ayırarak ve önemli miktarda bellek tüketiyor olabilir.
 
 ### <a name="loading-code-clrtheprestub"></a><a id="theprestub"></a>Kod yükleniyor (clr! ThePreStub)
 
-**clr! ThePreStub** , kodu ilk kez yürütmek üzere hazırlayan .NET Framework bir yardımcı işlevdir. Bu yürütme genellikle tam zamanında (JıT) derlemeyi içerir ancak bunlarla sınırlı değildir. Her C# yöntemi için **clr! ** Bir işlem sırasında, ön saplama en fazla bir kez çağrılmalıdır.
+**clr! ThePreStub** , kodu ilk kez yürütmek üzere hazırlayan .NET Framework bir yardımcı işlevdir. Bu yürütme genellikle tam zamanında (JıT) derlemeyi içerir ancak bunlarla sınırlı değildir. Her C# yöntemi için **clr!** Bir işlem sırasında, ön saplama en fazla bir kez çağrılmalıdır.
 
 Eğer **clr! Ön saplama** bir istek için uzun bir süre sürer, istek bu yöntemi yürütmek için birinci bir yöntemdir. .NET Framework çalışma zamanının ilk yöntemi yüklemesi için zaman önemlidir. Kullanıcılarınızın ona erişmeden önce kodun bu kısmını yürüten bir ısınma işlemi kullanmayı düşünebilirsiniz veya derlemelerinize yerel görüntü Oluşturucu (ngen.exe) çalıştırmayı göz önünde bulundurun.
 
@@ -83,7 +83,7 @@ Kod yükleme bir istek için önemli miktarda zaman alıyorsa istek, metodun en 
 
 ### <a name="waiting-await_time"></a><a id="await"></a>Bekleniyor (AWAIT \_ TIME)
 
-**AWAIT \_ SÜRE** , kodun başka bir görevin bitmesini beklediğini gösterir. Bu gecikme genellikle C# **AWAIT** ifadesiyle oluşur. Kod bir C# **AWAIT**olduğunda, iş parçacığı geri almıyor ve denetim iş parçacığı havuzuna geri döndürüyor ve **AWAIT** 'in bitmesi beklenirken engellenen iş parçacığı yok. Ancak mantıksal olarak, **AWAIT** olan iş parçacığı "engelleniyor" olur ve işlemin tamamlanmasını bekler. **AWAIT \_ Time** deyimleri, görevin bitmesi için bekleyen engellenme süresini gösterir.
+**AWAIT \_ SÜRE** , kodun başka bir görevin bitmesini beklediğini gösterir. Bu gecikme genellikle C# **AWAIT** ifadesiyle oluşur. Kod bir C# **AWAIT** olduğunda, iş parçacığı geri almıyor ve denetim iş parçacığı havuzuna geri döndürüyor ve **AWAIT** 'in bitmesi beklenirken engellenen iş parçacığı yok. Ancak mantıksal olarak, **AWAIT** olan iş parçacığı "engelleniyor" olur ve işlemin tamamlanmasını bekler. **AWAIT \_ Time** deyimleri, görevin bitmesi için bekleyen engellenme süresini gösterir.
 
 ### <a name="blocked-time"></a><a id="block"></a>Engellenme süresi
 
@@ -107,7 +107,7 @@ Uygulama ağ işlemleri gerçekleştiriyor.
 
 ### <a name="when-column"></a><a id="when"></a>Ne zaman sütunu
 
-**Ne zaman** sütunu, düğüm için toplanan örnekleri zaman içinde farklılık gösterir. İsteğin toplam aralığı 32 zaman demetlerine bölünür. Bu düğüm için kapsamlı örnekler bu 32 demetlerine göre biriktirilir. Her demet bir çubuk olarak temsil edilir. Çubuğun yüksekliği ölçeklendirilmiş bir değeri temsil eder. **CPU_TIME** veya **BLOCKED_TIME**işaretlenmiş düğümler veya bir kaynağı (örneğin, bir CPU, disk veya iş parçacığı) tüketmek için belirgin bir ilişki olduğu durumlarda, çubuk demet sırasında kaynaklardan birinin tüketimini temsil eder. Bu ölçümler için, birden fazla kaynak tüketerek yüzde 100 ' den büyük bir değer almak mümkündür. Örneğin, bir Aralık sırasında ortalama ve iki CPU kullanırsanız, yüzde 200 ' ı alırsınız.
+**Ne zaman** sütunu, düğüm için toplanan örnekleri zaman içinde farklılık gösterir. İsteğin toplam aralığı 32 zaman demetlerine bölünür. Bu düğüm için kapsamlı örnekler bu 32 demetlerine göre biriktirilir. Her demet bir çubuk olarak temsil edilir. Çubuğun yüksekliği ölçeklendirilmiş bir değeri temsil eder. **CPU_TIME** veya **BLOCKED_TIME** işaretlenmiş düğümler veya bir kaynağı (örneğin, bir CPU, disk veya iş parçacığı) tüketmek için belirgin bir ilişki olduğu durumlarda, çubuk demet sırasında kaynaklardan birinin tüketimini temsil eder. Bu ölçümler için, birden fazla kaynak tüketerek yüzde 100 ' den büyük bir değer almak mümkündür. Örneğin, bir Aralık sırasında ortalama ve iki CPU kullanırsanız, yüzde 200 ' ı alırsınız.
 
 ## <a name="limitations"></a>Sınırlamalar
 

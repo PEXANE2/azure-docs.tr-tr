@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 04/26/2020
 ms.author: apimpm
 ms.openlocfilehash: 6288a10e111e42629abf5e09b84a6a7791dcfe95
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96018231"
 ---
 # <a name="use-an-external-redis-compatible-cache-in-azure-api-management"></a>Azure API Management dış Redsıs uyumlu bir önbellek kullanın
@@ -46,13 +46,13 @@ Bu öğreticiyi tamamlamak için aşağıdakileri yapmanız gerekir:
 + [Azure API Management örneği oluşturma](get-started-create-service-instance.md)
 + [Azure API Management önbelleğe almayı](api-management-howto-cache.md) anlama
 
-## <a name="create-azure-cache-for-redis"></a><a name="create-cache"> </a> Redsıs Için Azure önbelleği oluşturma
+## <a name="create-azure-cache-for-redis"></a><a name="create-cache"></a> Redsıs Için Azure önbelleği oluşturma
 
 Bu bölümde, Azure 'da redin için Azure önbelleğinin nasıl oluşturulacağı açıklanmaktadır. Zaten Azure 'un içinde veya dışında bir Azure önbelleğiniz varsa, sonraki bölüme <a href="#add-external-cache">atlayabilirsiniz</a> .
 
 [!INCLUDE [redis-cache-create](../../includes/redis-cache-create.md)]
 
-## <a name="deploy-redis-cache-to-kubernetes"></a><a name="create-cache"> </a> Redsıs önbelleğini Kubernetes 'e dağıtma
+## <a name="deploy-redis-cache-to-kubernetes"></a><a name="create-cache"></a> Redsıs önbelleğini Kubernetes 'e dağıtma
 
 Önbelleğe alma için, şirket içinde barındırılan ağ geçitleri özel olarak dış önbelleklere güvenir. Ön belleğe alma işleminin etkili bir şekilde barındırılması için ve bağımlı oldukları önbelleğin, arama ve depolama gecikmeleri en aza indirmek için birbirlerine yakın olması gerekir. Redsıs önbelleğinin aynı Kubernetes kümesine veya yakında ayrı bir kümeye dağıtılmasının en iyi seçenek vardır. Redsıs önbelleğinin bir Kubernetes kümesine nasıl dağıtılacağını öğrenmek için bu [bağlantıyı](https://github.com/kubernetes/examples/tree/master/guestbook) izleyin.
 

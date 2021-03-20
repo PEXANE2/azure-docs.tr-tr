@@ -14,10 +14,10 @@ ms.date: 08/25/2020
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, jeedes, luleon
 ms.openlocfilehash: 2d65889a841655fe27994d3855f30f7a7e20e1ed
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94647605"
 ---
 # <a name="how-to-customize-claims-emitted-in-tokens-for-a-specific-app-in-a-tenant-preview"></a>Nasıl yapılır: bir Kiracıdaki belirli bir uygulama için belirteçlerde yayılan talepleri özelleştirme (Önizleme)
@@ -44,7 +44,7 @@ Talep eşleme ilkesi, belirli uygulamalar için verilen belirteçlerde yayılan 
 
 Belirteçlerde nasıl ve ne zaman kullanıldığını tanımlayan belirli talepler kümesi vardır.
 
-| Talep kümesi | Açıklama |
+| Talep kümesi | Description |
 |---|---|
 | Çekirdek talep kümesi | , İlkeden bağımsız olarak her belirteçte bulunur. Bu talepler de kısıtlı olarak değerlendirilir ve değiştirilemez. |
 | Temel talep kümesi | Belirteçleri için varsayılan olarak yayılan talepleri içerir (çekirdek talep kümesine ek olarak). Talepler eşleme ilkelerini kullanarak temel talepleri atlayabilir veya değiştirebilirsiniz. |
@@ -287,7 +287,7 @@ ID öğesi, kaynak üzerinde hangi özelliğin talep için değer sağladığın
 
 #### <a name="table-3-valid-id-values-per-source"></a>Tablo 3: kaynak başına geçerli KIMLIK değerleri
 
-| Kaynak | ID | Açıklama |
+| Kaynak | ID | Description |
 |-----|-----|-----|
 | Kullanıcı | surname | Aile adı |
 | Kullanıcı | givenname | Verilen Ad |
@@ -331,7 +331,7 @@ ID öğesi, kaynak üzerinde hangi özelliğin talep için değer sağladığın
 | Kullanıcı | atanan | kullanıcıya atanan uygulama rollerinin listesi|
 | uygulama, kaynak, hedef kitle | DisplayName | Görünen Ad |
 | uygulama, kaynak, hedef kitle | uzantının | ObjectID |
-| uygulama, kaynak, hedef kitle | tags | Hizmet sorumlusu etiketi |
+| uygulama, kaynak, hedef kitle | etiketler | Hizmet sorumlusu etiketi |
 | Şirket | tenantcountry | Kiracının ülkesi/bölgesi |
 
 **Dönüştürme kimliği:** Dönüşümtionıd öğesi yalnızca kaynak öğe "dönüşüm" olarak ayarlandıysa sağlanmalıdır.
@@ -364,9 +364,9 @@ Seçilen yönteme bağlı olarak bir dizi giriş ve çıkış beklenmektedir. Gi
 
 #### <a name="table-4-transformation-methods-and-expected-inputs-and-outputs"></a>Tablo 4: dönüştürme yöntemleri ve beklenen girişler ve çıktılar
 
-|Dönüştürme Tionmethod|Beklenen giriş|Beklenen çıkış|Açıklama|
+|Dönüştürme Tionmethod|Beklenen giriş|Beklenen çıkış|Description|
 |-----|-----|-----|-----|
-|Birleştir|dize1, dize2, ayırıcı|outputClaim|Arasında bir ayırıcı kullanarak girdi dizelerini birleştirir. Örneğin: Dize1: " foo@bar.com ", dize2: "Sandbox", ayırıcı: "." outputClaim 'de sonuçlar: " foo@bar.com.sandbox "|
+|Katılın|dize1, dize2, ayırıcı|outputClaim|Arasında bir ayırıcı kullanarak girdi dizelerini birleştirir. Örneğin: Dize1: " foo@bar.com ", dize2: "Sandbox", ayırıcı: "." outputClaim 'de sonuçlar: " foo@bar.com.sandbox "|
 |ExtractMailPrefix|E-posta veya UPN|ayıklanan dize|ExtensionAttributes 1-15 veya Kullanıcı için bir UPN ya da e-posta adresi değeri depolayan diğer şema uzantıları gibi johndoe@contoso.com . Bir e-posta adresinin yerel bölümünü ayıklar. Örneğin: posta: " foo@bar.com " outputClaim sonucu: "foo". Hiçbir \@ işaret yoksa, özgün giriş dizesi olduğu gibi döndürülür.|
 
 **Inputclaim:** Bir talep şeması girdisinden bir dönüşüme veri geçirmek için ınputclaim öğesi kullanın. İki özniteliğe sahiptir: **ClaimTypeReferenceId** ve **dönüştürülebilir tionclaimtype**.
@@ -390,7 +390,7 @@ Seçilen yönteme bağlı olarak bir dizi giriş ve çıkış beklenmektedir. Gi
 
 #### <a name="table-5-attributes-allowed-as-a-data-source-for-saml-nameid"></a>Tablo 5: SAML NameID için veri kaynağı olarak izin verilen öznitelikler
 
-|Kaynak|ID|Açıklama|
+|Kaynak|ID|Description|
 |-----|-----|-----|
 | Kullanıcı | posta|E-posta Adresi|
 | Kullanıcı | userPrincipalName|Kullanıcı Asıl Adı|
@@ -417,7 +417,7 @@ Seçilen yönteme bağlı olarak bir dizi giriş ve çıkış beklenmektedir. Gi
 | Dönüştürme Tionmethod | Kısıtlamalar |
 | ----- | ----- |
 | ExtractMailPrefix | Yok |
-| Birleştir | Katılmakta olan sonekin, kaynak kiracının doğrulanmış bir etki alanı olması gerekir. |
+| Katılın | Katılmakta olan sonekin, kaynak kiracının doğrulanmış bir etki alanı olması gerekir. |
 
 ### <a name="custom-signing-key"></a>Özel imzalama anahtarı
 

@@ -6,10 +6,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 11/28/2019
 ms.openlocfilehash: 2d0d38dee15817e56c2784981365ea331b6a8459
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98943145"
 ---
 # <a name="use-apache-sqoop-to-import-and-export-data-between-apache-hadoop-on-hdinsight-and-azure-sql-database"></a>HDInsight ve Azure SQL veritabanı Apache Hadoop arasında veri içeri ve dışarı aktarmak için Apache Sqoop kullanın
@@ -116,7 +116,7 @@ SQL 'den Azure depolama 'ya.
 
 1. Tablonun Hive içinde oluşturulduğunu doğrulamak için [Beeline](./apache-hadoop-use-hive-beeline.md) ' yı kullanın.
 
-    1. Bağlan
+    1. Bağlanma
 
         ```bash
         beeline -u 'jdbc:hive2://headnodehost:10001/;transportMode=http'

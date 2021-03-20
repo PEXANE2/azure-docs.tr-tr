@@ -9,10 +9,10 @@ ms.date: 10/15/2020
 ms.author: mjbrown
 ms.custom: devx-track-azurecli, devx-track-csharp
 ms.openlocfilehash: 4ecbee2260da735cd6ba74d3b9ffb55b4a652e9e
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93342011"
 ---
 # <a name="provision-standard-manual-throughput-on-a-database-in-azure-cosmos-db---sql-api"></a>Azure Cosmos DB-SQL API 'sinde bir veritabanında standart (el ile) aktarım hızı sağlama
@@ -28,12 +28,12 @@ Farklı bir API kullanıyorsanız, üretilen işi sağlamak için [MongoDB Için
 
 1. [Yeni bir Azure Cosmos hesabı oluşturun](create-sql-api-dotnet.md#create-account)veya mevcut bir Azure Cosmos hesabı seçin.
 
-1. **Veri Gezgini** bölmesini açın ve **Yeni veritabanı** ' nı seçin. Aşağıdaki ayrıntıları sağlayın:
+1. **Veri Gezgini** bölmesini açın ve **Yeni veritabanı**' nı seçin. Aşağıdaki ayrıntıları sağlayın:
 
    * Bir veritabanı KIMLIĞI girin.
    * **Veritabanı Işleme sağlama** seçeneğini belirleyin.
    * Bir üretilen iş girin (örneğin, 1000 ru).
-   * **Tamam** ’ı seçin.
+   * **Tamam**’ı seçin.
 
     :::image type="content" source="./media/how-to-provision-database-throughput/provision-database-throughput-portal-sql-api.png" alt-text="Yeni veritabanı iletişim kutusunun ekran görüntüsü":::
 

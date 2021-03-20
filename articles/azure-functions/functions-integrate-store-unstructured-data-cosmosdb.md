@@ -5,10 +5,10 @@ ms.topic: quickstart
 ms.date: 10/01/2020
 ms.custom: devx-track-csharp, mvc
 ms.openlocfilehash: 5bc3895cb219338acde492b871dce806db70622b
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91661168"
 ---
 # <a name="store-unstructured-data-using-azure-functions-and-azure-cosmos-db"></a>Azure İşlevleri ve Azure Cosmos DB’yi kullanarak yapılandırılmamış verileri depolama
@@ -42,11 +42,11 @@ Bu öğreticiyi tamamlamak için:
 
 1. **Tümleştirme** ' i ve **Çıkış Ekle**' yi seçin.
 
-     :::image type="content" source="./media/functions-integrate-store-unstructured-data-cosmosdb/functions-add-output-binding.png" alt-text="Azure portal http işlevinizi seçin." border="true":::
+     :::image type="content" source="./media/functions-integrate-store-unstructured-data-cosmosdb/functions-add-output-binding.png" alt-text="Azure Cosmos DB çıkış bağlaması ekleyin." border="true":::
 
 1. Tabloda belirtilen **çıkış oluştur** ayarlarını kullanın:
 
-     :::image type="content" source="./media/functions-integrate-store-unstructured-data-cosmosdb/functions-configure-cosmosdb-binding.png" alt-text="Azure portal http işlevinizi seçin." border="true":::
+     :::image type="content" source="./media/functions-integrate-store-unstructured-data-cosmosdb/functions-configure-cosmosdb-binding.png" alt-text="Azure Cosmos DB çıkış bağlamayı yapılandırın." border="true":::
 
     | Ayar      | Önerilen değer  | Açıklama                                |
     | ------------ | ---------------- | ------------------------------------------ |
@@ -132,29 +132,29 @@ Bu kod örneği, HTTP İsteği sorgu dizelerini okur ve `taskDocument` nesnesind
 
 ## <a name="test-the-function-and-database"></a>İşlevi ve veritabanını test etme
 
-1. **Test/Çalıştır**öğesini seçin. **Sorgu**altında **+ parametre Ekle** ' yi seçin ve sorgu dizesine aşağıdaki parametreleri ekleyin:
+1. **Test/Çalıştır**’ı seçin. **Sorgu** altında **+ parametre Ekle** ' yi seçin ve sorgu dizesine aşağıdaki parametreleri ekleyin:
 
     + `name`
     + `task`
     + `duedate`
 
-    :::image type="content" source="./media/functions-integrate-store-unstructured-data-cosmosdb/functions-test-function.png" alt-text="Azure portal http işlevinizi seçin." border="true":::
+    :::image type="content" source="./media/functions-integrate-store-unstructured-data-cosmosdb/functions-test-function.png" alt-text="İşlevi test edin." border="true":::
 
 
 1. **Çalıştır** ' ı seçin ve 200 durumunun döndürüldüğünü doğrulayın.
 
-    :::image type="content" source="./media/functions-integrate-store-unstructured-data-cosmosdb/functions-test-function-output.png" alt-text="Azure portal http işlevinizi seçin." border="true":::
+    :::image type="content" source="./media/functions-integrate-store-unstructured-data-cosmosdb/functions-test-function-output.png" alt-text="Ekran görüntüsü, Çalıştır seçildikten sonra 200 durumunun vurgulandığı HTTP yanıt kodunu gösterir." border="true":::
 
 
-1. Azure portal, araması yapın ve **Azure Cosmos DB**seçin.
+1. Azure portal, araması yapın ve **Azure Cosmos DB** seçin.
 
-    :::image type="content" source="./media/functions-integrate-store-unstructured-data-cosmosdb/functions-search-cosmos-db.png" alt-text="Azure portal http işlevinizi seçin." border="true":::
+    :::image type="content" source="./media/functions-integrate-store-unstructured-data-cosmosdb/functions-search-cosmos-db.png" alt-text="Cosmos DB hizmeti için arama yapın." border="true":::
 
 1. Azure Cosmos DB hesabınızı seçin ve  **Veri Gezgini**' ı seçin.
 
 1. **TaskCollection** düğümlerini genişletin, yeni belge ' yi seçin ve belgenin sorgu dizesi değerlerinizi içerdiğinden, bazı ek meta verilerle birlikte emin olun.
 
-    :::image type="content" source="./media/functions-integrate-store-unstructured-data-cosmosdb/functions-data-explorer-check-document.png" alt-text="Azure portal http işlevinizi seçin." border="true":::
+    :::image type="content" source="./media/functions-integrate-store-unstructured-data-cosmosdb/functions-data-explorer-check-document.png" alt-text="Belgenizdeki dize değerlerini doğrulayın." border="true":::
 
 Yapılandırılmamış verileri bir Azure Cosmos DB’de depolayan HTTP tetikleyicinize başarıyla bir bağlama eklediniz.
 

@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
 ms.openlocfilehash: b7cb9d5c5c2ca850678d3f3194a9af8de526ada4
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92103399"
 ---
 # <a name="use-azure-powershell-to-create-an-hdinsight-cluster-with-azure-data-lake-storage-gen1-as-additional-storage"></a>Azure Data Lake Storage 1. ile bir HDInsight kümesi oluşturmak için Azure PowerShell kullanma (ek depolama olarak)
@@ -23,7 +23,7 @@ ms.locfileid: "92103399"
 >
 >
 
-**Ek depolama alanı olarak**Azure Data Lake Storage 1. Ile bir HDInsight kümesini yapılandırmak için Azure PowerShell nasıl kullanacağınızı öğrenin. Varsayılan depolama alanı olarak Data Lake Storage 1. HDInsight kümesi oluşturma hakkında yönergeler için, bkz. [varsayılan depolama alanı olarak Data Lake Storage 1. Ile HDInsight kümesi oluşturma](data-lake-store-hdinsight-hadoop-use-powershell-for-default-storage.md).
+**Ek depolama alanı olarak** Azure Data Lake Storage 1. Ile bir HDInsight kümesini yapılandırmak için Azure PowerShell nasıl kullanacağınızı öğrenin. Varsayılan depolama alanı olarak Data Lake Storage 1. HDInsight kümesi oluşturma hakkında yönergeler için, bkz. [varsayılan depolama alanı olarak Data Lake Storage 1. Ile HDInsight kümesi oluşturma](data-lake-store-hdinsight-hadoop-use-powershell-for-default-storage.md).
 
 > [!NOTE]
 > HDInsight kümesi için ek depolama alanı olarak Data Lake Storage 1. kullanacaksanız, bu makalede açıklandığı gibi kümeyi oluştururken bunu yapmanızı önemle öneririz. Mevcut bir HDInsight kümesine ek depolama alanı olarak Data Lake Storage 1. eklemek karmaşık bir işlemdir ve hatalara açıktır.
@@ -44,7 +44,7 @@ HDInsight 'ı PowerShell kullanarak Data Lake Storage 1. çalışacak şekilde y
 * Data Lake Storage 1. kimlik doğrulamasıyla HDInsight kümesi oluşturma
 * Kümede bir test işi çalıştırma
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -55,7 +55,7 @@ Bu öğreticiye başlamadan önce aşağıdakilere sahip olmanız gerekir:
 * **Windows SDK**. [Buradan](https://dev.windows.com/en-us/downloads) yükleyebilirsiniz. Bunu bir güvenlik sertifikası oluşturmak için kullanırsınız.
 * **Hizmet sorumlusu Azure Active Directory**. Bu öğreticideki adımlarda, Azure AD 'de hizmet sorumlusu oluşturma hakkında yönergeler sağlanmaktadır. Ancak, bir hizmet sorumlusu oluşturabilmeniz için bir Azure AD yöneticisi olmanız gerekir. Bir Azure AD yöneticisiyseniz, bu önkoşulu atlayıp öğreticiye devam edebilirsiniz.
 
-    **Bir Azure AD yöneticisi**değilseniz, hizmet sorumlusu oluşturmak için gereken adımları gerçekleştiremezsiniz. Böyle bir durumda, Data Lake Storage 1. bir HDInsight kümesi oluşturabilmeniz için önce Azure AD yöneticinizin bir hizmet sorumlusu oluşturması gerekir. Ayrıca hizmet sorumlusu, [sertifikayla hizmet sorumlusu oluşturma](../active-directory/develop/howto-authenticate-service-principal-powershell.md#create-service-principal-with-certificate-from-certificate-authority)bölümünde açıklandığı gibi bir sertifika kullanılarak oluşturulmalıdır.
+    **Bir Azure AD yöneticisi** değilseniz, hizmet sorumlusu oluşturmak için gereken adımları gerçekleştiremezsiniz. Böyle bir durumda, Data Lake Storage 1. bir HDInsight kümesi oluşturabilmeniz için önce Azure AD yöneticinizin bir hizmet sorumlusu oluşturması gerekir. Ayrıca hizmet sorumlusu, [sertifikayla hizmet sorumlusu oluşturma](../active-directory/develop/howto-authenticate-service-principal-powershell.md#create-service-principal-with-certificate-from-certificate-authority)bölümünde açıklandığı gibi bir sertifika kullanılarak oluşturulmalıdır.
 
 ## <a name="create-a-data-lake-storage-gen1-account"></a>Data Lake Storage 1. Nesil hesabı oluşturma 
 Data Lake Storage 1. hesabı oluşturmak için bu adımları izleyin.
@@ -87,7 +87,7 @@ Data Lake Storage 1. hesabı oluşturmak için bu adımları izleyin.
     New-AzResourceGroup -Name $resourceGroupName -Location "East US 2"
     ```
 
-    Şunun gibi bir çıkış görmeniz gerekir:
+    Şunun gibi bir çıktı görmeniz gerekir:
 
     ```output
     ResourceGroupName : hdiadlgrp
@@ -141,7 +141,7 @@ Data Lake Storage 1. için Active Directory kimlik doğrulaması ayarlamak için
 
 ### <a name="create-a-self-signed-certificate"></a>Otomatik olarak imzalanan sertifika oluşturma
 
-Bu bölümdeki adımlarla devam etmeden önce [Windows SDK](https://dev.windows.com/en-us/downloads) yüklü olduğundan emin olun. Ayrıca, sertifikanın oluşturulacağı **C:\mycertdir**gibi bir dizin de oluşturmuş olmanız gerekir.
+Bu bölümdeki adımlarla devam etmeden önce [Windows SDK](https://dev.windows.com/en-us/downloads) yüklü olduğundan emin olun. Ayrıca, sertifikanın oluşturulacağı **C:\mycertdir** gibi bir dizin de oluşturmuş olmanız gerekir.
 
 1. PowerShell penceresinden Windows SDK yüklediğiniz konuma gidin (genellikle `C:\Program Files (x86)\Windows Kits\10\bin\x86` ve [MakeCert][makecert] yardımcı programını kullanarak otomatik olarak imzalanan bir sertifika ve özel anahtar oluşturun. Aşağıdaki komutları kullanın.
 

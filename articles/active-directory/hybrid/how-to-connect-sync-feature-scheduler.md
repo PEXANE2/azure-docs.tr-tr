@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ad7b0039602add7f4cd3cdd300bd829c4f148a79
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90084745"
 ---
 # <a name="azure-ad-connect-sync-scheduler"></a>Azure AD Connect eşitleme: Scheduler
@@ -169,7 +169,7 @@ Bir eşitleme çevrimi çalışırken, yapılandırma değişiklikleri yapamazs�
 
    ![Ekran görüntüsünde, bağlayıcılar seçiliyken ve çalıştırılan bir bağlayıcının, durdur eylemiyle işaretlenmiş Synchronization Service Manager gösterir.](./media/how-to-connect-sync-feature-scheduler/stopaconnector.png)
 
-   * Başlangıç menüsünden **eşitleme hizmetini** başlatın. **Bağlayıcılar**' a gidin, bağlayıcıyı **çalışır**durumda vurgulayın ve eylemlerden **Durdur** ' u seçin.
+   * Başlangıç menüsünden **eşitleme hizmetini** başlatın. **Bağlayıcılar**' a gidin, bağlayıcıyı **çalışır** durumda vurgulayın ve eylemlerden **Durdur** ' u seçin.
 
 Zamanlayıcı hala etkin ve sonraki fırsatta yeniden başlatılıyor.
 

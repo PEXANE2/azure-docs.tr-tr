@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 02/25/2019
 ms.author: jeedes
 ms.openlocfilehash: 4fbc79723dd484148ddf2f8836848aa9bc333341
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92522600"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mindflash"></a>Öğretici: Mindflash ile tümleştirme Azure Active Directory
@@ -61,13 +61,13 @@ Mindflash 'ın tümleştirmesini Azure AD 'ye göre yapılandırmak için, Galer
 
     ![Yeni uygulama düğmesi](common/add-new-app.png)
 
-4. Arama kutusuna **Mindflash**yazın, sonuç panelinden **Mindflash** ' ı seçin ve ardından **Ekle** düğmesine tıklayarak uygulamayı ekleyin.
+4. Arama kutusuna **Mindflash** yazın, sonuç panelinden **Mindflash** ' ı seçin ve ardından **Ekle** düğmesine tıklayarak uygulamayı ekleyin.
 
      ![Sonuçlar listesinde Mindflash](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-Bu bölümde, **Britta Simon**adlı bir test kullanıcısına göre Mindflash Ile Azure AD çoklu oturum açmayı yapılandırıp test edersiniz.
+Bu bölümde, **Britta Simon** adlı bir test kullanıcısına göre Mindflash Ile Azure AD çoklu oturum açmayı yapılandırıp test edersiniz.
 Çoklu oturum açma için, bir Azure AD kullanıcısı ve Mindflash 'daki ilgili Kullanıcı arasındaki bağlantı ilişkisinin oluşturulması gerekir.
 
 Azure AD çoklu oturum açma 'yı Mindflash ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını gerçekleştirmeniz gerekir:
@@ -142,9 +142,9 @@ Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı ol
 
     ![Kullanıcı iletişim kutusu](common/user-properties.png)
 
-    a. **Ad** alanına **Brittasıon**girin.
+    a. **Ad** alanına **Brittasıon** girin.
   
-    b. **Kullanıcı adı** alanına ** \@ bricompansıon yourcompanydomain. Extension** yazın  
+    b. **Kullanıcı adı** alanına **\@ bricompansıon yourcompanydomain. Extension** yazın  
     Örneğin, BrittaSimon@contoso.com
 
     c. **Parolayı göster** onay kutusunu seçin ve ardından parola kutusunda görüntülenen değeri yazın.
@@ -187,7 +187,7 @@ Azure AD kullanıcılarının mini oturum açmasını sağlamak için, Mindflash
 
 1. **Kullanıcıları Yönet**' e gidin.
    
-    ![Kullanıcıları Yönet](./media/mindflash-tutorial/ic787140.png "Kullanıcıları Yönet")
+    ![Kullanıcıları yönetme](./media/mindflash-tutorial/ic787140.png "Kullanıcıları Yönet")
 
 1. **Kullanıcı Ekle**' ye ve ardından **Yeni**' ye tıklayın.
 
@@ -195,11 +195,11 @@ Azure AD kullanıcılarının mini oturum açmasını sağlamak için, Mindflash
    
     ![Yeni Kullanıcı Ekle](./media/mindflash-tutorial/ic787141.png "Yeni Kullanıcı Ekle")
    
-    a. **İlk ad** metin kutusuna kullanıcının **adını** **Britta**olarak yazın.
+    a. **İlk ad** metin kutusuna kullanıcının **adını** **Britta** olarak yazın.
 
-    b. **Soyadı** metin kutusunda, kullanıcının **en son adını** **Simon**olarak yazın.
+    b. **Soyadı** metin kutusunda, kullanıcının **en son adını** **Simon** olarak yazın.
     
-    c. **E-posta** metin kutusunda, kullanıcının **e-posta adresini** **brittasıon \@ contoso.com**olarak yazın.
+    c. **E-posta** metin kutusunda, kullanıcının **e-posta adresini** **brittasıon \@ contoso.com** olarak yazın.
 
     b. **Ekle**'ye tıklayın.
 

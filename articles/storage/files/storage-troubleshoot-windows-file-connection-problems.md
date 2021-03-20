@@ -8,10 +8,10 @@ ms.date: 09/13/2019
 ms.author: jeffpatt
 ms.subservice: files
 ms.openlocfilehash: 242c0819e916f3ea7912d4d57b7d3e338152e4d9
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98878519"
 ---
 # <a name="troubleshoot-azure-files-problems-in-windows-smb"></a>Windows 'da Azure dosyaları sorunlarını giderme (SMB)
@@ -210,7 +210,7 @@ Bir dosya tanıtıcısının kapatılmasını zorlamak için, [Close-AzStorageFi
 > Get-AzStorageFileHandle ve Close-AzStorageFileHandle cmdlet 'leri az PowerShell Module 2,4 veya sonraki bir sürüme dahildir. En son az PowerShell modülünü yüklemek için bkz. [Azure PowerShell modülünü yüklemek](/powershell/azure/install-az-ps).
 
 ### <a name="cause-2"></a>2\. Neden
-Dosya kirası, bir dosyanın değiştirilmesini veya silinmesini engeller. Aşağıdaki PowerShell ile bir dosyanın bir dosya kirası olup olmadığını kontrol edebilirsiniz,,, `<resource-group>` `<storage-account>` `<file-share>` ve `<path-to-file>` ile ortamınız için uygun değerler ile değiştirin:
+Dosya kirası, dosyanın değiştirilmesini veya silinmesini önler. Aşağıdaki PowerShell ile bir dosyanın bir dosya kirası olup olmadığını kontrol edebilirsiniz,,, `<resource-group>` `<storage-account>` `<file-share>` ve `<path-to-file>` ile ortamınız için uygun değerler ile değiştirin:
 
 ```PowerShell
 # Set variables 
@@ -236,7 +236,7 @@ $fileClient = $file.ShareFileClient
 $fileClient.GetProperties().Value
 ```
 
-Bir dosya kira içeriyorsa, döndürülen nesne aşağıdaki özellikleri içermelidir:
+Dosyanın kirası varsa, döndürülen nesne aşağıdaki özellikleri içermelidir:
 
 ```Output
 LeaseDuration         : Infinite
@@ -245,7 +245,7 @@ LeaseStatus           : Locked
 ```
 
 ### <a name="solution-2"></a>Çözüm 2
-Bir dosyadan kira kaldırmak için kirayı serbest bırakabilir veya kirayı kesebilirsiniz. Kirayı serbest bırakmak için kirayı oluştururken ayarladığınız kiralamanın leaseID 'Si gerekir. Kiralamanın kesilmesini için leaseID gerekli değildir.
+Dosyadan kirayı kaldırmak için kirayı serbest bırakabilir veya kesebilirsiniz. Kirayı serbest bırakmak için, kirayı oluştururken ayarladığınız kiranın LeaseId değerine ihtiyacınız vardır. Kirayı kesmek için LeaseId gerekmez.
 
 Aşağıdaki örnek, neden 2 ' de gösterilen dosyanın kira süresinin nasıl kesilmesini gösterir (Bu örnek, neden 2 ' den PowerShell değişkenlerine devam eder):
 

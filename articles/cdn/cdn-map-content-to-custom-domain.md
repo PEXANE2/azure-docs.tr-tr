@@ -11,10 +11,10 @@ ms.date: 02/04/2020
 ms.author: allensu
 ms.custom: mvc
 ms.openlocfilehash: b0e8f2b14d506eb408660b939a7c925a33215cca
-ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/04/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99537754"
 ---
 # <a name="tutorial-add-a-custom-domain-to-your-endpoint"></a>Öğretici: uç noktanıza özel etki alanı ekleme
@@ -184,7 +184,7 @@ Bu bölümde kalıcı özel etki alanını CDN uç noktasıyla eşlersiniz.
 
     :::image type="content" source="media/cdn-map-content-to-custom-domain/cdn-add-custom-domain.png" alt-text="Özel etki alanı Ekle" border="true":::
 
-6. **Ekle**’yi seçin.
+6. **Add (Ekle)** seçeneğini belirleyin.
 
    Azure, girdiğiniz özel etki alanı adı için CNAME kaydının bulunduğunu doğrular. CNAME doğruysa, özel etki alanınız doğrulanır. 
 

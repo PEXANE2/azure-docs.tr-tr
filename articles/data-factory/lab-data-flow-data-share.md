@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.custom: seo-lt-2019
 ms.date: 12/09/2020
 ms.openlocfilehash: fa424f7e1f5e1f885dd433b8abc8aae1dc1bc206
-ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97006206"
 ---
 # <a name="data-integration-using-azure-data-factory-and-azure-data-share"></a>Azure Data Factory ve Azure veri paylaşma kullanarak veri tümleştirme
@@ -176,7 +176,7 @@ Bu adımda oluşturulan veri akışı, önceki bölümde oluşturulan ' "Üçlü
 1. İşlem hattı tuvalinin Etkinlikler bölmesinde **taşıma ve dönüştürme** Accordion ' ı açın ve **veri akışı** etkinliğini tuvale sürükleyin.
 
     ![Portal veri akışı 1](media/lab-data-flow-data-share/dataflow1.png)
-1. Açılan yan bölmede **Yeni veri akışı oluştur** ' u seçin ve **veri akışını eşleme**' yi seçin. **Tamam** düğmesine tıklayın.
+1. Açılan yan bölmede **Yeni veri akışı oluştur** ' u seçin ve **veri akışını eşleme**' yi seçin. **Tamam**'a tıklayın.
 
     ![Portal veri akışı 2](media/lab-data-flow-data-share/dataflow2.png)
 1. Dönüştürme mantığınızı oluşturacağınız veri akışı tuvaline yönlendirilirsiniz. Genel sekmesinde, veri akışınızı ' Joinandadggregatedata ' olarak adlandırın.

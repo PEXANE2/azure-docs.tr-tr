@@ -16,10 +16,10 @@ ms.date: 02/27/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 99c7f4ab92e4cce3937a933fec97008c281a0eae
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96018299"
 ---
 # <a name="back-up-shares-or-volumes-on-your-storsimple-virtual-array"></a>StorSimple Sanal dizinizdeki paylaşımları veya birimleri yedekleyin
@@ -46,7 +46,7 @@ StorSimple Sanal diziniz, belirtilen gün (22:30) ile başlayan bir varsayılan 
 
 #### <a name="to-change-the-start-time-for-the-default-backup-policy"></a>Varsayılan yedekleme ilkesinin başlangıç saatini değiştirmek için
 
-1. **Cihazlara** gidin. StorSimple Aygıt Yöneticisi hizmetinize kayıtlı cihazların listesi görüntülenir. 
+1. **Cihazlara** gidin. StorSimple Device Manager hizmetinize kayıtlı cihazların listesi görüntülenir. 
    
     ![cihazlara git](./media/storsimple-virtual-array-backup/changebuschedule1.png)
 
@@ -102,7 +102,7 @@ Mevcut yedekleri görüntülemek için Azure portal aşağıdaki adımları ger�
    
    - **Zaman aralığı** – **1 saat**, son **24 saat**, son **7 gün**, son **30 gün**, **geçmiş yıl** ve **özel tarih** olabilir.
     
-   - **Cihazlar** : storsimple Aygıt Yöneticisi hizmetinize kayıtlı dosya sunucuları veya iSCSI sunucuları listesinden seçim yapın.
+   - **Cihazlar** : storsimple Device Manager hizmetinize kayıtlı dosya sunucuları veya iSCSI sunucuları listesinden seçim yapın.
    
    - **Başlatıldı** – otomatik olarak **zamanlanabilir** (bir yedekleme Ilkesiyle) veya **el ile** başlatılabilir (sizin tarafınızdan).
    

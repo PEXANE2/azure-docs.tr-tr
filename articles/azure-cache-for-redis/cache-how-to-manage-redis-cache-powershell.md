@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 07/13/2017
 ms.author: yegu
 ms.openlocfilehash: 88e433dbfa87d8ea483789b1fd838c62a6a481c0
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/26/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92536768"
 ---
 # <a name="manage-azure-cache-for-redis-with-azure-powershell"></a>Redsıs için Azure önbelleğini Azure PowerShell ile yönetme
@@ -148,7 +148,7 @@ Aşağıdaki tabloda, Azure PowerShell kullanarak Redsıs örnekleri için Azure
 | ShardCount |Kümelendirmeyi etkin bir Premium önbellek oluştururken oluşturulacak parça sayısı. Geçerli değerler şunlardır: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 | |
 | SKU |Önbelleğin SKU 'sunu belirtir. Geçerli değerler şunlardır: temel, standart, Premium |Standart |
 | RedisConfiguration |Redsıs yapılandırma ayarlarını belirtir. Her bir ayar hakkında ayrıntılar için aşağıdaki [Redisconfiguration Özellikler](#redisconfiguration-properties) tablosuna bakın. | |
-| EnableNonSslPort |SSL olmayan bağlantı noktasının etkinleştirilip etkinleştirilmeyeceğini belirtir. |False |
+| EnableNonSslPort |SSL olmayan bağlantı noktasının etkinleştirilip etkinleştirilmeyeceğini belirtir. |Yanlış |
 | MaxMemoryPolicy |Bu parametre kullanım dışı bırakıldı. bunun yerine RedisConfiguration kullanın. | |
 | Staticıp |Önbelleğinizi VNET 'te barındırırken, önbelleğin alt ağında benzersiz bir IP adresi belirtir. Sağlanmazsa, alt ağdan bir tane seçilir. | |
 | Alt ağ |Önbelleğinizi VNET 'te barındırırken, önbelleğin dağıtılacağı alt ağın adını belirtir. | |
