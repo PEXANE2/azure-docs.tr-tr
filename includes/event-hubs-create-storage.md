@@ -1,6 +1,6 @@
 ---
-title: dosya dahil etme
-description: dosya dahil etme
+title: include dosyası
+description: include dosyası
 services: event-hubs
 author: spelluru
 ms.service: event-hubs
@@ -9,10 +9,10 @@ ms.date: 10/16/2018
 ms.author: spelluru
 ms.custom: include file
 ms.openlocfilehash: bf107da82fb3f772a341e70ce472f08ea674a450
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "75692581"
 ---
 ### <a name="create-a-storage-account-for-event-processor-host"></a>Olay İşleyicisi Ana Bilgisayarı için bir depolama hesabı oluşturma
@@ -28,7 +28,7 @@ Olay İşleyicisi Ana Bilgisayarı, olay hub’larına ait kalıcı denetim nokt
 
 3. **Depolama hesabı oluştur** sayfasında aşağıdaki adımları gerçekleştirin: 
 
-   1. **Depolama hesabı adını**girin.
+   1. **Depolama hesabı adını** girin.
    2. Olay Hub 'ını içeren bir Azure **aboneliği** seçin.
    3. Olay Hub 'ına sahip **kaynak grubunu** seçin veya oluşturun.
    4. Kaynağın oluşturulacağı bir **konum** seçin. 
@@ -42,13 +42,13 @@ Olay İşleyicisi Ana Bilgisayarı, olay hub’larına ait kalıcı denetim nokt
 5. Bildirimlerinde **dağıtımlar başarılı** iletisini gördüğünüzde, depolama hesabı sayfasını açmak Için **Kaynağa Git** ' i seçin. Alternatif olarak, **dağıtım ayrıntılarını** genişletebilir ve ardından kaynak listesinden yeni kaynağı seçebilirsiniz.  
 
     ![Kaynak, depolama hesabı dağıtımı ' na gidin Microsoft Azure portal](./media/event-hubs-create-storage/go-to-resource.png) 
-6. **Kapsayıcıları**seçin.
+6. **Kapsayıcıları** seçin.
 
     ![Bloblar kapsayıcı hizmetini, depolama hesaplarını Microsoft Azure portal seçin](./media/event-hubs-create-storage/select-blob-container-service.png)
 7. Üstteki **+ kapsayıcı** ' yı seçin, kapsayıcı Için bir **ad** girin ve **Tamam**' ı seçin. 
 
     ![Yeni bir blob kapsayıcısı, depolama hesapları, Microsoft Azure portal oluşturun](./media/event-hubs-create-storage/create-new-blob-container.png)
-8. **Depolama hesabı** sayfası menüsünden **erişim tuşları** ' nı seçin ve **KEY1**değerini kopyalayın.
+8. **Depolama hesabı** sayfası menüsünden **erişim tuşları** ' nı seçin ve **KEY1** değerini kopyalayın.
 
     Aşağıdaki değerleri not defteri 'ne veya başka bir geçici konuma kaydedin.
     - Depolama hesabının adı

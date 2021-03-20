@@ -6,10 +6,10 @@ ms.topic: reference
 ms.date: 1/16/2020
 ms.author: jejarry
 ms.openlocfilehash: 635bddef1a98d6ed2b112662d8c9c44fe65e9e32
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "76906097"
 ---
 # <a name="sfctl-events"></a>sfctl etkinlikleri
@@ -40,7 +40,7 @@ Yanıt, ApplicationEvent nesnelerinin listesidir.
 
 ### <a name="arguments"></a>Bağımsız değişkenler
 
-|Bağımsız Değişken|Açıklama|
+|Bağımsız Değişken|Description|
 | --- | --- |
 | --bitiş-saat-UTC [gerekli] | ISO UTC yyyy-MM-ddTHH \: mm SSZ içindeki bir arama sorgusunun bitiş saati \: . |
 | --başlangıç-saat-UTC [gerekli] | ISO UTC yyyy-MM-ddTHH \: mm SSZ içindeki bir arama sorgusunun başlangıç saati \: . |
@@ -51,7 +51,7 @@ Yanıt, ApplicationEvent nesnelerinin listesidir.
 
 ### <a name="global-arguments"></a>Genel bağımsız değişkenler
 
-|Bağımsız Değişken|Açıklama|
+|Bağımsız Değişken|Description|
 | --- | --- |
 | --Hata Ayıkla | Tüm hata ayıklama günlüklerini göstermek için günlük ayrıntı düzeyini artırın. |
 | --Yardım-h | Bu yardım iletisini gösterin ve çıkın. |
@@ -66,7 +66,7 @@ Yanıt, NodeEvent nesnelerinin listesidir.
 
 ### <a name="arguments"></a>Bağımsız değişkenler
 
-|Bağımsız Değişken|Açıklama|
+|Bağımsız Değişken|Description|
 | --- | --- |
 | --bitiş-saat-UTC [gerekli] | ISO UTC yyyy-MM-ddTHH \: mm SSZ içindeki bir arama sorgusunun bitiş saati \: . |
 | --başlangıç-saat-UTC [gerekli] | ISO UTC yyyy-MM-ddTHH \: mm SSZ içindeki bir arama sorgusunun başlangıç saati \: . |
@@ -77,7 +77,7 @@ Yanıt, NodeEvent nesnelerinin listesidir.
 
 ### <a name="global-arguments"></a>Genel bağımsız değişkenler
 
-|Bağımsız Değişken|Açıklama|
+|Bağımsız Değişken|Description|
 | --- | --- |
 | --Hata Ayıkla | Tüm hata ayıklama günlüklerini göstermek için günlük ayrıntı düzeyini artırın. |
 | --Yardım-h | Bu yardım iletisini gösterin ve çıkın. |
@@ -92,7 +92,7 @@ Yanıt, PartitionEvent nesnelerinin listesidir.
 
 ### <a name="arguments"></a>Bağımsız değişkenler
 
-|Bağımsız Değişken|Açıklama|
+|Bağımsız Değişken|Description|
 | --- | --- |
 | --bitiş-saat-UTC [gerekli] | ISO UTC yyyy-MM-ddTHH \: mm SSZ içindeki bir arama sorgusunun bitiş saati \: . |
 | --başlangıç-saat-UTC [gerekli] | ISO UTC yyyy-MM-ddTHH \: mm SSZ içindeki bir arama sorgusunun başlangıç saati \: . |
@@ -103,7 +103,7 @@ Yanıt, PartitionEvent nesnelerinin listesidir.
 
 ### <a name="global-arguments"></a>Genel bağımsız değişkenler
 
-|Bağımsız Değişken|Açıklama|
+|Bağımsız Değişken|Description|
 | --- | --- |
 | --Hata Ayıkla | Tüm hata ayıklama günlüklerini göstermek için günlük ayrıntı düzeyini artırın. |
 | --Yardım-h | Bu yardım iletisini gösterin ve çıkın. |
@@ -118,7 +118,7 @@ Yanıt, ServiceEvent nesnelerinin listesidir.
 
 ### <a name="arguments"></a>Bağımsız değişkenler
 
-|Bağımsız Değişken|Açıklama|
+|Bağımsız Değişken|Description|
 | --- | --- |
 | --bitiş-saat-UTC [gerekli] | ISO UTC yyyy-MM-ddTHH \: mm SSZ içindeki bir arama sorgusunun bitiş saati \: . |
 | --başlangıç-saat-UTC [gerekli] | ISO UTC yyyy-MM-ddTHH \: mm SSZ içindeki bir arama sorgusunun başlangıç saati \: . |
@@ -129,7 +129,7 @@ Yanıt, ServiceEvent nesnelerinin listesidir.
 
 ### <a name="global-arguments"></a>Genel bağımsız değişkenler
 
-|Bağımsız Değişken|Açıklama|
+|Bağımsız Değişken|Description|
 | --- | --- |
 | --Hata Ayıkla | Tüm hata ayıklama günlüklerini göstermek için günlük ayrıntı düzeyini artırın. |
 | --Yardım-h | Bu yardım iletisini gösterin ve çıkın. |
@@ -144,7 +144,7 @@ Yanıt, ApplicationEvent nesnelerinin listesidir.
 
 ### <a name="arguments"></a>Bağımsız değişkenler
 
-|Bağımsız Değişken|Açıklama|
+|Bağımsız Değişken|Description|
 | --- | --- |
 | --Uygulama kimliği [gerekli] | Uygulamanın kimliği. Bu genellikle uygulamanın ' Fabric \: ' URI şeması olmadan tam adıdır. Sürüm 6,0 ' den başlayarak, hiyerarşik adlar " \~ " karakteriyle sınırlandırılmıştır. Örneğin, uygulama adı "Fabric \: /MyApp/APP1" ise, uygulama kimliği \~ önceki sürümlerde "MyApp APP1" ve 6.0 + "MyApp/APP1" şeklinde olur. |
 | --bitiş-saat-UTC [gerekli] | ISO UTC yyyy-MM-ddTHH \: mm SSZ içindeki bir arama sorgusunun bitiş saati \: . |
@@ -156,7 +156,7 @@ Yanıt, ApplicationEvent nesnelerinin listesidir.
 
 ### <a name="global-arguments"></a>Genel bağımsız değişkenler
 
-|Bağımsız Değişken|Açıklama|
+|Bağımsız Değişken|Description|
 | --- | --- |
 | --Hata Ayıkla | Tüm hata ayıklama günlüklerini göstermek için günlük ayrıntı düzeyini artırın. |
 | --Yardım-h | Bu yardım iletisini gösterin ve çıkın. |
@@ -171,7 +171,7 @@ Yanıt, ClusterEvent nesnelerinin listesidir.
 
 ### <a name="arguments"></a>Bağımsız değişkenler
 
-|Bağımsız Değişken|Açıklama|
+|Bağımsız Değişken|Description|
 | --- | --- |
 | --bitiş-saat-UTC [gerekli] | ISO UTC yyyy-MM-ddTHH \: mm SSZ içindeki bir arama sorgusunun bitiş saati \: . |
 | --başlangıç-saat-UTC [gerekli] | ISO UTC yyyy-MM-ddTHH \: mm SSZ içindeki bir arama sorgusunun başlangıç saati \: . |
@@ -182,7 +182,7 @@ Yanıt, ClusterEvent nesnelerinin listesidir.
 
 ### <a name="global-arguments"></a>Genel bağımsız değişkenler
 
-|Bağımsız Değişken|Açıklama|
+|Bağımsız Değişken|Description|
 | --- | --- |
 | --Hata Ayıkla | Tüm hata ayıklama günlüklerini göstermek için günlük ayrıntı düzeyini artırın. |
 | --Yardım-h | Bu yardım iletisini gösterin ve çıkın. |
@@ -197,7 +197,7 @@ Yanıt, NodeEvent nesnelerinin listesidir.
 
 ### <a name="arguments"></a>Bağımsız değişkenler
 
-|Bağımsız Değişken|Açıklama|
+|Bağımsız Değişken|Description|
 | --- | --- |
 | --bitiş-saat-UTC [gerekli] | ISO UTC yyyy-MM-ddTHH \: mm SSZ içindeki bir arama sorgusunun bitiş saati \: . |
 | --Node-Name [gerekli] | Düğümün adı. |
@@ -209,7 +209,7 @@ Yanıt, NodeEvent nesnelerinin listesidir.
 
 ### <a name="global-arguments"></a>Genel bağımsız değişkenler
 
-|Bağımsız Değişken|Açıklama|
+|Bağımsız Değişken|Description|
 | --- | --- |
 | --Hata Ayıkla | Tüm hata ayıklama günlüklerini göstermek için günlük ayrıntı düzeyini artırın. |
 | --Yardım-h | Bu yardım iletisini gösterin ve çıkın. |
@@ -224,7 +224,7 @@ Yanıt, ReplicaEvent nesnelerinin listesidir.
 
 ### <a name="arguments"></a>Bağımsız değişkenler
 
-|Bağımsız Değişken|Açıklama|
+|Bağımsız Değişken|Description|
 | --- | --- |
 | --bitiş-saat-UTC [gerekli] | ISO UTC yyyy-MM-ddTHH \: mm SSZ içindeki bir arama sorgusunun bitiş saati \: . |
 | --Partition-id [gerekli] | Bölümün kimliği. |
@@ -236,7 +236,7 @@ Yanıt, ReplicaEvent nesnelerinin listesidir.
 
 ### <a name="global-arguments"></a>Genel bağımsız değişkenler
 
-|Bağımsız Değişken|Açıklama|
+|Bağımsız Değişken|Description|
 | --- | --- |
 | --Hata Ayıkla | Tüm hata ayıklama günlüklerini göstermek için günlük ayrıntı düzeyini artırın. |
 | --Yardım-h | Bu yardım iletisini gösterin ve çıkın. |
@@ -251,7 +251,7 @@ Yanıt, PartitionEvent nesnelerinin listesidir.
 
 ### <a name="arguments"></a>Bağımsız değişkenler
 
-|Bağımsız Değişken|Açıklama|
+|Bağımsız Değişken|Description|
 | --- | --- |
 | --bitiş-saat-UTC [gerekli] | ISO UTC yyyy-MM-ddTHH \: mm SSZ içindeki bir arama sorgusunun bitiş saati \: . |
 | --Partition-id [gerekli] | Bölümün kimliği. |
@@ -263,7 +263,7 @@ Yanıt, PartitionEvent nesnelerinin listesidir.
 
 ### <a name="global-arguments"></a>Genel bağımsız değişkenler
 
-|Bağımsız Değişken|Açıklama|
+|Bağımsız Değişken|Description|
 | --- | --- |
 | --Hata Ayıkla | Tüm hata ayıklama günlüklerini göstermek için günlük ayrıntı düzeyini artırın. |
 | --Yardım-h | Bu yardım iletisini gösterin ve çıkın. |
@@ -278,7 +278,7 @@ Yanıt, ReplicaEvent nesnelerinin listesidir.
 
 ### <a name="arguments"></a>Bağımsız değişkenler
 
-|Bağımsız Değişken|Açıklama|
+|Bağımsız Değişken|Description|
 | --- | --- |
 | --bitiş-saat-UTC [gerekli] | ISO UTC yyyy-MM-ddTHH \: mm SSZ içindeki bir arama sorgusunun bitiş saati \: . |
 | --Partition-id [gerekli] | Bölümün kimliği. |
@@ -291,7 +291,7 @@ Yanıt, ReplicaEvent nesnelerinin listesidir.
 
 ### <a name="global-arguments"></a>Genel bağımsız değişkenler
 
-|Bağımsız Değişken|Açıklama|
+|Bağımsız Değişken|Description|
 | --- | --- |
 | --Hata Ayıkla | Tüm hata ayıklama günlüklerini göstermek için günlük ayrıntı düzeyini artırın. |
 | --Yardım-h | Bu yardım iletisini gösterin ve çıkın. |
@@ -306,7 +306,7 @@ Yanıt, ServiceEvent nesnelerinin listesidir.
 
 ### <a name="arguments"></a>Bağımsız değişkenler
 
-|Bağımsız Değişken|Açıklama|
+|Bağımsız Değişken|Description|
 | --- | --- |
 | --bitiş-saat-UTC [gerekli] | ISO UTC yyyy-MM-ddTHH \: mm SSZ içindeki bir arama sorgusunun bitiş saati \: . |
 | --hizmet kimliği [gerekli] | Hizmetin kimliği. Bu KIMLIK genellikle hizmetin ' Fabric \: ' URI düzeni olmadan tam adıdır. Sürüm 6,0 ' den başlayarak, hiyerarşik adlar " \~ " karakteriyle sınırlandırılmıştır. Örneğin, hizmet adı "Fabric \: /MyApp/APP1/svc1" ise, hizmet kimliği, \~ \~ önceki sürümlerde 6.0 + ve "MyApp/APP1/svc1" içinde "MyApp APP1 svc1" olacaktır. |
@@ -318,7 +318,7 @@ Yanıt, ServiceEvent nesnelerinin listesidir.
 
 ### <a name="global-arguments"></a>Genel bağımsız değişkenler
 
-|Bağımsız Değişken|Açıklama|
+|Bağımsız Değişken|Description|
 | --- | --- |
 | --Hata Ayıkla | Tüm hata ayıklama günlüklerini göstermek için günlük ayrıntı düzeyini artırın. |
 | --Yardım-h | Bu yardım iletisini gösterin ve çıkın. |

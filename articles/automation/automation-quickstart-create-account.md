@@ -7,10 +7,10 @@ ms.topic: quickstart
 ms.subservice: process-automation
 ms.custom: mvc
 ms.openlocfilehash: a07c6ac524aa213519ace1ae204ac2d76db802aa
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "83836711"
 ---
 # <a name="create-an-azure-automation-account"></a>Azure Otomasyonu hesabı oluşturma
@@ -21,7 +21,7 @@ Bu hızlı başlangıç, bir Otomasyon hesabı oluşturma ve hesapta runbook ça
 
 ## <a name="sign-in-to-azure"></a>Azure'da oturum açma
 
-[Azure 'Da oturum açın](https://portal.azure.com).
+[Azure’da oturum açın](https://portal.azure.com).
 
 ## <a name="create-automation-account"></a>Otomasyon hesabı oluşturma
 
@@ -51,7 +51,7 @@ Bu hızlı başlangıç, bir Otomasyon hesabı oluşturma ve hesapta runbook ça
 
 Öğretici runbook'larından birini çalıştırın.
 
-1. **Işlem Otomasyonu**altında **runbook 'lar** ' a tıklayın. Runbook'ların listesi görüntülenir. Varsayılan olarak, hesapta çeşitli öğretici runbook 'lar etkindir.
+1. **Işlem Otomasyonu** altında **runbook 'lar** ' a tıklayın. Runbook'ların listesi görüntülenir. Varsayılan olarak, hesapta çeşitli öğretici runbook 'lar etkindir.
 
     ![Otomasyon hesabı runbook'larının listesi](./media/automation-quickstart-create-account/automation-runbooks-overview.png)
 

@@ -9,10 +9,10 @@ ms.date: 07/22/2019
 ms.author: sngun
 ms.reviewer: sngun
 ms.openlocfilehash: 136853182e353ad5cd71981db5935fc3babe162e
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93339618"
 ---
 # <a name="migrate-data-to-azure-cosmos-db-sql-api-account-using-striim"></a>Anlık ileti kullanarak Azure Cosmos DB SQL API hesabına veri geçirme
@@ -22,7 +22,7 @@ Azure Marketi 'ndeki çarpıcı anlık ileti resmi, veri ambarlarından ve verit
 
 Bu makalede, verileri bir **Oracle veritabanından** **Azure Cosmos DB bir SQL API hesabına** geçirmek için nasıl çaba ım kullanılacağı gösterilmektedir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * [Azure aboneliğiniz](../guides/developer/azure-developer-guide.md#understanding-accounts-subscriptions-and-billing) yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) oluşturun.
 
@@ -30,13 +30,13 @@ Bu makalede, verileri bir **Oracle veritabanından** **Azure Cosmos DB bir SQL A
 
 ## <a name="deploy-the-striim-marketplace-solution"></a>Çarpıcı anlık ileti marketi çözümünü dağıtma
 
-1. [Azure portalında](https://portal.azure.com/) oturum açın.
+1. [Azure portal](https://portal.azure.com/) oturum açın.
 
 1. **Kaynak oluştur** ' u seçin ve Azure Marketi 'nde **anlık ileti** araması yapın. İlk seçeneği seçin ve **oluşturun**.
 
    :::image type="content" source="./media/cosmosdb-sql-api-migrate-data-striim/striim-azure-marketplace.png" alt-text="Çarpıcı anlık ileti marketi öğesi bulun":::
 
-1. Sonra, çaba anlık ileti örneğinin yapılandırma özelliklerini girin. Çalışır durumda anlık ileti ortamı bir sanal makinede dağıtılır. **Temel bilgiler** bölmesinden VM **Kullanıcı adı** ' nı, **VM PAROLASıNı** gırın (Bu parola VM 'ye SSH için kullanılır). E-mesajlaşma dağıtmak istediğiniz **abonelik** , **kaynak grubu** ve **konum ayrıntılarınızı** seçin. Tamamlandıktan sonra **Tamam** ' ı seçin.
+1. Sonra, çaba anlık ileti örneğinin yapılandırma özelliklerini girin. Çalışır durumda anlık ileti ortamı bir sanal makinede dağıtılır. **Temel bilgiler** bölmesinden VM **Kullanıcı adı**' nı, **VM PAROLASıNı** gırın (Bu parola VM 'ye SSH için kullanılır). E-mesajlaşma dağıtmak istediğiniz **abonelik**, **kaynak grubu** ve **konum ayrıntılarınızı** seçin. Tamamlandıktan sonra **Tamam**' ı seçin.
 
    :::image type="content" source="./media/cosmosdb-sql-api-migrate-data-striim/striim-configure-basic-settings.png" alt-text="Çarpıcı anlık ileti için temel ayarları yapılandırma":::
 
@@ -50,11 +50,11 @@ Bu makalede, verileri bir **Oracle veritabanından** **Azure Cosmos DB bir SQL A
 
    Formu doldurduktan sonra devam etmek için **Tamam** ' ı seçin.
 
-1. **Anlık ileti erişimi ayarları** bölmesinde, **genel IP adresini** (varsayılan değerleri seçin), her şeye **yönelik etki alanı adını** , çarpıcı ım Kullanıcı arabiriminde oturum açmak için kullanmak istediğiniz **yönetici parolasını** yapılandırın. VNET ve alt ağ yapılandırın (varsayılan değerleri seçin). Ayrıntıları doldurduktan sonra devam etmek için **Tamam** ' ı seçin.
+1. **Anlık ileti erişimi ayarları** bölmesinde, **genel IP adresini** (varsayılan değerleri seçin), her şeye **yönelik etki alanı adını**, çarpıcı ım Kullanıcı arabiriminde oturum açmak için kullanmak istediğiniz **yönetici parolasını** yapılandırın. VNET ve alt ağ yapılandırın (varsayılan değerleri seçin). Ayrıntıları doldurduktan sonra devam etmek için **Tamam** ' ı seçin.
 
    :::image type="content" source="./media/cosmosdb-sql-api-migrate-data-striim/striim-access-settings.png" alt-text="Anlık ileti erişim ayarları":::
 
-1. Azure dağıtımı doğrular ve her şeyin iyi göründüğünden emin olur; doğrulamanın tamamlanmasının birkaç dakika sürer. Doğrulama tamamlandıktan sonra **Tamam** ' ı seçin.
+1. Azure dağıtımı doğrular ve her şeyin iyi göründüğünden emin olur; doğrulamanın tamamlanmasının birkaç dakika sürer. Doğrulama tamamlandıktan sonra **Tamam**' ı seçin.
   
 1. Son olarak kullanım koşullarını gözden geçirin ve **Oluştur** ' u seçerek çarpıcı anlık ileti örneğinizi oluşturun. 
 
@@ -130,7 +130,7 @@ Bu bölümde, Azure Cosmos DB SQL API hesabını veri taşıma hedefi olarak yap
 
    :::image type="content" source="./media/cosmosdb-sql-api-migrate-data-striim/striim-login-ui.png" alt-text="Anlık ileti almak için oturum açın":::
 
-1. Şimdi bir ım ana sayfasına ulaşacağız. **Panolar** , **uygulamalar** ve **sourcepreview** olmak üzere üç farklı bölme vardır. Panolar bölmesi, verileri gerçek zamanlı olarak taşımanızı ve görselleştirmenizi sağlar. Uygulamalar bölmesi, akış verileri işlem hatlarınızı veya veri akışlarını içerir. Sayfanın sağ tarafında, verilerinizi taşımadan önce önizlemeniz için SourcePreview bulunur.
+1. Şimdi bir ım ana sayfasına ulaşacağız. **Panolar**, **uygulamalar** ve **sourcepreview** olmak üzere üç farklı bölme vardır. Panolar bölmesi, verileri gerçek zamanlı olarak taşımanızı ve görselleştirmenizi sağlar. Uygulamalar bölmesi, akış verileri işlem hatlarınızı veya veri akışlarını içerir. Sayfanın sağ tarafında, verilerinizi taşımadan önce önizlemeniz için SourcePreview bulunur.
 
 1. **Uygulamalar** bölmesini seçin, şimdilik bu bölmeye odaklanacağız. Anlık ileti alma hakkında bilgi edinmek için kullanabileceğiniz çeşitli örnek uygulamalar vardır, ancak bu makalede kendinizuzu oluşturacaksınız. Sağ üst köşedeki **Uygulama Ekle** düğmesini seçin.
 
@@ -144,17 +144,17 @@ Bu bölümde, Azure Cosmos DB SQL API hesabını veri taşıma hedefi olarak yap
 
    :::image type="content" source="./media/cosmosdb-sql-api-migrate-data-striim/oracle-cdc-cosmosdb.png" alt-text="Cosmos DB Oracle CDC 'yi seçin":::
 
-1. Sonraki sayfada, uygulamanızı adlandırın. **Oratocosmosdb** gibi bir ad sağlayabilir ve ardından **Kaydet** ' i seçebilirsiniz.
+1. Sonraki sayfada, uygulamanızı adlandırın. **Oratocosmosdb** gibi bir ad sağlayabilir ve ardından **Kaydet**' i seçebilirsiniz.
 
-1. Ardından, kaynak Oracle örneğinizin kaynak yapılandırmasını girin. **Kaynak adı** için bir değer girin. Kaynak adı, gitim uygulaması için yalnızca bir adlandırma kuralıdır, **src_onPremOracle** gibi bir ad kullanabilirsiniz. Geri kalan kaynak parametreleri **URL 'si** , **Kullanıcı adı** , **parola** değerlerini girin, Oracle 'Dan verileri okumak için okuyucu olarak **LogMiner** ' ı seçin. Devam etmek için **İleri** seçeneğini belirleyin.
+1. Ardından, kaynak Oracle örneğinizin kaynak yapılandırmasını girin. **Kaynak adı** için bir değer girin. Kaynak adı, gitim uygulaması için yalnızca bir adlandırma kuralıdır, **src_onPremOracle** gibi bir ad kullanabilirsiniz. Geri kalan kaynak parametreleri **URL 'si**, **Kullanıcı adı**, **parola** değerlerini girin, Oracle 'Dan verileri okumak için okuyucu olarak **LogMiner** ' ı seçin. Devam etmek için **İleri** seçeneğini belirleyin.
 
    :::image type="content" source="./media/cosmosdb-sql-api-migrate-data-striim/configure-source-parameters.png" alt-text="Kaynak parametrelerini Yapılandır":::
 
-1. Anlık ileti, ortamınızı denetlecektir ve kaynak Oracle örneğinizle bağlantı kurmak için doğru ayrıcalıklara sahip olduğundan ve CDC 'nin doğru şekilde yapılandırıldığından emin olmanızı sağlar. Tüm değerler doğrulandıktan sonra **İleri** ' yi seçin.
+1. Anlık ileti, ortamınızı denetlecektir ve kaynak Oracle örneğinizle bağlantı kurmak için doğru ayrıcalıklara sahip olduğundan ve CDC 'nin doğru şekilde yapılandırıldığından emin olmanızı sağlar. Tüm değerler doğrulandıktan sonra **İleri**' yi seçin.
 
    :::image type="content" source="./media/cosmosdb-sql-api-migrate-data-striim/validate-source-parameters.png" alt-text="Kaynak parametrelerini doğrula":::
 
-1. Geçirmek istediğiniz Oracle veritabanından tabloları seçin. Örneğin, Orders tablosunu seçip **İleri** ' yi seçelim. 
+1. Geçirmek istediğiniz Oracle veritabanından tabloları seçin. Örneğin, Orders tablosunu seçip **İleri**' yi seçelim. 
 
    :::image type="content" source="./media/cosmosdb-sql-api-migrate-data-striim/select-source-tables.png" alt-text="Kaynak tabloları Seç":::
 
@@ -164,7 +164,7 @@ Bu bölümde, Azure Cosmos DB SQL API hesabını veri taşıma hedefi olarak yap
 
    * **Hedef adı** -hedef için bir kolay ad sağlayın. 
    * **Giriş kaynağı** -açılan listeden, kaynak Oracle yapılandırmasında oluşturduğunuz bir giriş akışını seçin. 
-   * **Koleksiyonlar** -hedef Azure Cosmos DB yapılandırma özelliklerini girin. Koleksiyonlar sözdizimi, **sourceschema. SourceTable, TargetDatabase. TargetContainer '** dir. Bu örnekte, değer "SISTEM" olur. SIPARIŞLER, Ilginç tanıtım. Orders ". 
+   * **Koleksiyonlar**-hedef Azure Cosmos DB yapılandırma özelliklerini girin. Koleksiyonlar sözdizimi, **sourceschema. SourceTable, TargetDatabase. TargetContainer '** dir. Bu örnekte, değer "SISTEM" olur. SIPARIŞLER, Ilginç tanıtım. Orders ". 
    * **AccessKey** -Azure Cosmos hesabınızın PrimaryKey 'i.
    * **ServiceEndpoint** – Azure Cosmos hesabınızın URI 'si, Azure Portal **anahtarlar** bölümü altında bulunabilir. 
 
@@ -181,7 +181,7 @@ Bu bölümde, Azure Cosmos DB SQL API hesabını veri taşıma hedefi olarak yap
 
    :::image type="content" source="./media/cosmosdb-sql-api-migrate-data-striim/deploy-using-default-option.png" alt-text="Varsayılan seçeneği kullanın":::
 
-1. Dağıttıktan sonra, veri akışını görmek için akışın önizlemesini görüntüleyebilirsiniz. Yanındaki **dalga** simgesini ve eyebol simgesini seçin. Üstteki menü çubuğunda **dağıtılan** düğmesini seçin ve **Uygulamayı Başlat** ' ı seçin.
+1. Dağıttıktan sonra, veri akışını görmek için akışın önizlemesini görüntüleyebilirsiniz. Yanındaki **dalga** simgesini ve eyebol simgesini seçin. Üstteki menü çubuğunda **dağıtılan** düğmesini seçin ve **Uygulamayı Başlat**' ı seçin.
 
    :::image type="content" source="./media/cosmosdb-sql-api-migrate-data-striim/start-app.png" alt-text="Uygulamayı başlatma":::
 

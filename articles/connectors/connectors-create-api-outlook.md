@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 08/18/2016
 tags: connectors
 ms.openlocfilehash: 8d3b180b6f1e9dc4ec4b09dd81786cc81e8588da
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "75707195"
 ---
 # <a name="manage-email-calendars-and-contacts-in-outlookcom-by-using-azure-logic-apps"></a>Azure Logic Apps kullanarak e-posta, takvim ve kişileri Outlook.com içinde yönetin
@@ -41,13 +41,13 @@ ms.locfileid: "75707195"
 
 1. [Azure Portal](https://portal.azure.com), mantıksal uygulama tasarımcısında boş mantıksal uygulamanızı açın.
 
-1. Arama kutusuna filtreniz olarak "outlook.com" yazın. Bu örnek için **Yeni bir e-posta geldiğinde**öğesini seçin.
+1. Arama kutusuna filtreniz olarak "outlook.com" yazın. Bu örnek için **Yeni bir e-posta geldiğinde** öğesini seçin.
 
 1. Oturum açmanız istenirse, mantıksal uygulamanızın hesabınıza bağlanabilmesi için Outlook.com kimlik bilgilerinizi sağlayın. Aksi takdirde, bağlantınız zaten varsa tetikleyici özellikleri için bilgileri sağlayın:
 
 1. Tetikleyicide **Sıklık** ve **Aralık** değerlerini ayarlayın.
 
-   Örneğin, tetikleyicinin 15 dakikada bir yoklamasını istiyorsanız, **sıklığı** **dakika**olarak ayarlayın ve **aralığı** **15**olarak ayarlayın.
+   Örneğin, tetikleyicinin 15 dakikada bir yoklamasını istiyorsanız, **sıklığı** **dakika** olarak ayarlayın ve **aralığı** **15** olarak ayarlayın.
 
 1. Tasarımcı araç çubuğunda, mantıksal uygulamanızı kaydeden **Kaydet**' i seçin.
 

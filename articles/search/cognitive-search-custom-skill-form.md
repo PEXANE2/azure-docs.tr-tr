@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/21/2020
 ms.openlocfilehash: a3b073cdb90e0c427bfbca15c1440b9122672610
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98880144"
 ---
 # <a name="example-create-a-form-recognizer-custom-skill"></a>Örnek: form tanıyıcı özel yeteneği oluşturma
@@ -43,7 +43,7 @@ Bu öğreticide, [Azure Search Power beceriler](https://github.com/Azure-Samples
 * `FORMS_RECOGNIZER_RETRY_DELAY` değerini 1000 olarak ayarlayın. Bu değer, programın sorguyu yeniden denemeden önce bekleyeceği süre (milisaniye olarak).
 * `FORMS_RECOGNIZER_MAX_ATTEMPTS` değerini 100 olarak ayarlayın. Bu değer, başarılı bir yanıt almaya çalışırken programın hizmeti sorgulama işleminin sayısıdır.
 
-Sonra, _AnalyzeForm.cs_ açın ve `fieldMappings` dosyadaki *field-mappings.js* başvuran değişkeni bulun. Bu dosya (ve buna başvuran değişken), formlarınızda ayıklamak istediğiniz anahtarların listesini ve her anahtar için özel bir etiketi tanımlar. Örneğin, bir değeri, `{ "Address:", "address" }, { "Invoice For:", "recipient" }` betiğin yalnızca algılanan ve alanların değerlerini kaydedebileceği anlamına gelir `Address:` `Invoice For:` ve sırasıyla bu değerleri ve ile etiketlemesini sağlayacaktır `"address"` `"recipient"` .
+Ardından, _analiz Zeform. cs_ dosyasını açın ve `fieldMappings` dosyadaki *field-mappings.js* başvuran değişkeni bulun. Bu dosya (ve buna başvuran değişken), formlarınızda ayıklamak istediğiniz anahtarların listesini ve her anahtar için özel bir etiketi tanımlar. Örneğin, bir değeri, `{ "Address:", "address" }, { "Invoice For:", "recipient" }` betiğin yalnızca algılanan ve alanların değerlerini kaydedebileceği anlamına gelir `Address:` `Invoice For:` ve sırasıyla bu değerleri ve ile etiketlemesini sağlayacaktır `"address"` `"recipient"` .
 
 Son olarak, değişkenine göz önünde `contentType` . Bu betik, URL tarafından başvurulan uzak belgelerde verilen form tanıyıcı modelini çalıştırır, bu nedenle içerik türü olur `application/json` . Yerel dosyaları, bayt akışlarını HTTP isteklerine dahil ederek çözümlemek istiyorsanız, öğesini `contentType` dosyanız için uygun [MIME türüyle](https://developer.mozilla.org/docs/Web/HTTP/Basics_of_HTTP/MIME_types/Complete_list_of_MIME_types) değiştirmeniz gerekir.
 

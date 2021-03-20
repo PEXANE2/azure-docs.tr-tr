@@ -6,10 +6,10 @@ ms.custom: devx-track-csharp, devx-track-azurecli
 ms.topic: article
 ms.date: 06/02/2020
 ms.openlocfilehash: 8ed6835583cc4881b19eee14ed392b193324535e
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92744156"
 ---
 # <a name="configure-an-aspnet-app-for-azure-app-service"></a>Azure App Service için bir ASP.NET uygulaması yapılandırma
@@ -83,7 +83,7 @@ az webapp config appsettings set --resource-group <resource-group-name> --name <
 
 ## <a name="get-detailed-exceptions-page"></a>Ayrıntılı özel durumlar sayfası al
 
-ASP.NET uygulamanız Visual Studio hata ayıklayıcısında bir özel durum oluşturduğunda, tarayıcıda ayrıntılı bir özel durum sayfası görüntülenir, ancak bu sayfa App Service bir genel hata iletisiyle değiştirilmiştir. Ayrıntılı özel durum sayfasını App Service göstermek için *Web.config* dosyasını açın ve öğesini `<customErrors mode="Off"/>` öğesinin altına ekleyin `<system.web>` . Örneğin:
+ASP.NET uygulamanız Visual Studio hata ayıklayıcısında bir özel durum oluşturduğunda, tarayıcıda ayrıntılı bir özel durum sayfası görüntülenir, ancak bu sayfa App Service bir genel hata iletisiyle değiştirilmiştir. Ayrıntılı özel durum sayfasını App Service göstermek için *Web.config* dosyasını açın ve öğesini `<customErrors mode="Off"/>` öğesinin altına ekleyin `<system.web>` . Örnek:
 
 ```xml
 <system.web>
@@ -95,7 +95,7 @@ Güncelleştirilmiş *Web.config* uygulamanızı yeniden dağıtın. Artık ayn�
 
 ## <a name="access-diagnostic-logs"></a>Tanılama günlüklerine erişim
 
-[System. Diagnostics. Trace](/dotnet/api/system.diagnostics.trace)kullanarak uygulama kodunuzda tanılama iletileri ekleyebilirsiniz. Örneğin: 
+[System. Diagnostics. Trace](/dotnet/api/system.diagnostics.trace)kullanarak uygulama kodunuzda tanılama iletileri ekleyebilirsiniz. Örnek: 
 
 ```csharp
 Trace.TraceError("Record not found!"); // Error trace

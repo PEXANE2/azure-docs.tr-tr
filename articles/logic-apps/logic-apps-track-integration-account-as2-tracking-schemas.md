@@ -9,10 +9,10 @@ ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 01/01/2020
 ms.openlocfilehash: bccf69362279afd9e8148b20b61ff3ea9b472a03
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "76906965"
 ---
 # <a name="create-schemas-for-tracking-as2-messages-in-azure-logic-apps"></a>Azure Logic Apps 'de izleme AS2 iletileri için şemalar oluşturma
@@ -52,7 +52,7 @@ ms.locfileid: "76906965"
 }
 ```
 
-| Özellik | Gerekli | Tür | Açıklama |
+| Özellik | Gerekli | Tür | Description |
 |----------|----------|------|-------------|
 | senderPartnerName | Hayır | Dize | AS2 ileti göndericisinin iş ortağı adı |
 | receiverPartnerName | Hayır | Dize | AS2 ileti alıcısının iş ortağı adı |
@@ -63,16 +63,16 @@ ms.locfileid: "76906965"
 | Ileti | Hayır | Dize | AS2 iletisinin üst bilgilerinden AS2 ileti KIMLIĞI |
 | dispositionType | Hayır | Dize | İleti değerlendirmesi bildirimi (MDN) değerlendirme türü değeri |
 | fileName | Hayır | Dize | AS2 iletisinin üstbilgisindeki dosya adı |
-| ımessagefailed | Evet | Boole | AS2 iletisinin başarısız olup olmadığı |
-| ısmessagesigned | Evet | Boole | AS2 iletisinin imzalı olup olmadığı |
-| ımessageşifrelendi | Evet | Boole | AS2 iletisinin şifreli olup olmadığı |
-| ımessagecompressed | Evet | Boole | AS2 iletisinin sıkıştırılmış olup olmadığı |
+| ımessagefailed | Yes | Boole | AS2 iletisinin başarısız olup olmadığı |
+| ısmessagesigned | Yes | Boole | AS2 iletisinin imzalı olup olmadığı |
+| ımessageşifrelendi | Yes | Boole | AS2 iletisinin şifreli olup olmadığı |
+| ımessagecompressed | Yes | Boole | AS2 iletisinin sıkıştırılmış olup olmadığı |
 | Correlationmessageıd | Hayır | Dize | AS2 ileti KIMLIĞI, iletileri MDNs ile ilişkilendirmek için |
-| ıncomingheaders | Hayır | JToken sözlüğü | Gelen AS2 ileti üst bilgisi ayrıntıları |
-| outgoingHeaders | Hayır | JToken sözlüğü | Giden AS2 ileti üst bilgisi ayrıntıları |
-| isNrrEnabled | Evet | Boole | Değer bilinmiyorsa varsayılan değerin kullanılıp kullanılmayacağını belirtir |
-| ımdnexted | Evet | Boole | Değer bilinmiyorsa varsayılan değerin kullanılıp kullanılmayacağını belirtir |
-| mdnType | Evet | Sabit listesi | İzin verilen değerler: `NotConfigured` , `Sync` , ve `Async` |
+| ıncomingheaders | No | JToken sözlüğü | Gelen AS2 ileti üst bilgisi ayrıntıları |
+| outgoingHeaders | No | JToken sözlüğü | Giden AS2 ileti üst bilgisi ayrıntıları |
+| isNrrEnabled | Yes | Boole | Değer bilinmiyorsa varsayılan değerin kullanılıp kullanılmayacağını belirtir |
+| ımdnexted | Yes | Boole | Değer bilinmiyorsa varsayılan değerin kullanılıp kullanılmayacağını belirtir |
+| mdnType | Yes | Sabit listesi | İzin verilen değerler: `NotConfigured` , `Sync` , ve `Async` |
 |||||
 
 ## <a name="as2-mdn-tracking-schema"></a>AS2 MDN izleme şeması
@@ -105,7 +105,7 @@ ms.locfileid: "76906965"
 }
 ```
 
-| Özellik | Gerekli | Tür | Açıklama |
+| Özellik | Gerekli | Tür | Description |
 |----------|----------|------|-------------|
 | senderPartnerName | Hayır | Dize | AS2 ileti göndericisinin iş ortağı adı |
 | receiverPartnerName | Hayır | Dize | AS2 ileti alıcısının iş ortağı adı |
@@ -116,14 +116,14 @@ ms.locfileid: "76906965"
 | Ileti | Hayır | Dize | AS2 ileti KIMLIĞI |
 | Originalmessageıd | Hayır | Dize | AS2 özgün ileti KIMLIĞI |
 | dispositionType | Hayır | Dize | MDN değerlendirme türü değeri |
-| ımessagefailed | Evet | Boole | AS2 iletisinin başarısız olup olmadığı |
-| ısmessagesigned | Evet | Boole | AS2 iletisinin imzalı olup olmadığı |
-| isNrrEnabled | Evet | Boole | Değer bilinmiyorsa varsayılan değerin kullanılıp kullanılmayacağını belirtir |
-| statusCode | Evet | Sabit listesi | İzin verilen değerler: `Accepted` , `Rejected` , ve `AcceptedWithErrors` |
-| Micdoğrulamaları Icationstatus | Evet | Sabit listesi | İzin verilen değerler: `NotApplicable` , `Succeeded` , ve `Failed` |
+| ımessagefailed | Yes | Boole | AS2 iletisinin başarısız olup olmadığı |
+| ısmessagesigned | Yes | Boole | AS2 iletisinin imzalı olup olmadığı |
+| isNrrEnabled | Yes | Boole | Değer bilinmiyorsa varsayılan değerin kullanılıp kullanılmayacağını belirtir |
+| statusCode | Yes | Sabit listesi | İzin verilen değerler: `Accepted` , `Rejected` , ve `AcceptedWithErrors` |
+| Micdoğrulamaları Icationstatus | Yes | Sabit listesi | İzin verilen değerler: `NotApplicable` , `Succeeded` , ve `Failed` |
 | Correlationmessageıd | Hayır | Dize | MDN yapılandırılmış özgün iletinin KIMLIĞI olan bağıntı KIMLIĞI |
-| ıncomingheaders | Hayır | JToken sözlüğü | Gelen ileti üst bilgisi ayrıntıları |
-| outgoingHeaders | Hayır | JToken sözlüğü | Giden ileti üst bilgisi ayrıntıları |
+| ıncomingheaders | No | JToken sözlüğü | Gelen ileti üst bilgisi ayrıntıları |
+| outgoingHeaders | No | JToken sözlüğü | Giden ileti üst bilgisi ayrıntıları |
 |||||
 
 ## <a name="b2b-protocol-tracking-schemas"></a>B2B protokol izleme şemaları

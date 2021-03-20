@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 05/26/2020
 ms.author: allensu
 ms.openlocfilehash: efd6e6a93cd4ca79e6c4b6de69f8514e2d71b252
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "84323323"
 ---
 # <a name="azure-cdn-from-verizon-premium-rules-engine-match-conditions"></a>Verizon Premium kural altyapısından eşleşme koşullarına Azure CDN
@@ -65,7 +65,7 @@ Bu eşleşme koşulları, istemcinin kullanıcı aracısına göre istekleri tan
 | Pazarlama adı | Cihazın pazarlama adının bir ile eşleşip eşleşmediğini tanımlar: <br> **-** Belirli değer ([Pazarlama adı sabit](https://docs.vdms.com/cdn/Content/HRE/M/D-Marketing-Name-Literal.htm)değeri) <br> **-** Normal ifade ([Pazarlama adı Regex](https://docs.vdms.com/cdn/Content/HRE/M/D-Marketing-Name-Regex.htm)) <br> **-** Belirli bir model ([Pazarlama adı joker karakter](https://docs.vdms.com/cdn/Content/HRE/M/D-Marketing-Name-Wildcard.htm)) |
 | Mobil tarayıcı | Cihaz tarayıcısının bir ile eşleşip eşleşmediğini karşılaştırarak istekleri tanımlar: <br> **-** Belirli değer ([mobil tarayıcı sabit değeri](https://docs.vdms.com/cdn/Content/HRE/M/D-Mobile-Browser-Literal.htm)) <br> **-** Normal ifade ([mobil tarayıcı Regex](https://docs.vdms.com/cdn/Content/HRE/M/D-Mobile-Browser-Regex.htm)) <br> **-** Belirli bir model ([mobil tarayıcı joker karakteri](https://docs.vdms.com/cdn/Content/HRE/M/D-Mobile-Browser-Wildcard.htm)) |
 | Mobil tarayıcı sürümü | Cihazın tarayıcı sürümünün bir ile eşleşip eşleşmediğini belirten istekleri tanımlar: <br> **-** Belirli değer ([mobil tarayıcı sürümü sabit](https://docs.vdms.com/cdn/Content/HRE/M/D-Mobile-Browser-Version-Literal.htm)değeri) <br> **-** Normal ifade ([mobil tarayıcı sürümü Regex](https://docs.vdms.com/cdn/Content/HRE/M/D-Mobile-Browser-Version-Regex.htm)) <br> **-** Belirli bir model ([mobil tarayıcı sürümü joker karakteri](https://docs.vdms.com/cdn/Content/HRE/M/D-Mobile-Browser-Version-Wildcard.htm)) |
-| Model adı | , Cihazın model adının bir ile eşleşip eşleşmediğini tanımlar: <br> **-** Belirli değer ([model adı sabit](https://docs.vdms.com/cdn/Content/HRE/M/D-Model-Name-Literal.htm)değeri) <br> **-** Normal ifade ([model adı](https://docs.vdms.com/cdn/Content/HRE/M/D-Model-Name-Regex.htm)normal ifadesi) <br> **-** Belirli bir[model (model adı joker karakter](https://docs.vdms.com/cdn/Content/HRE/M/D-Model-Name-Wildcard.htm)) |
+| Model adı | , Cihazın model adının bir ile eşleşip eşleşmediğini tanımlar: <br> **-** Belirli değer ([model adı sabit](https://docs.vdms.com/cdn/Content/HRE/M/D-Model-Name-Literal.htm)değeri) <br> **-** Normal ifade ([model adı](https://docs.vdms.com/cdn/Content/HRE/M/D-Model-Name-Regex.htm)normal ifadesi) <br> **-** Belirli bir [model (model adı joker karakter](https://docs.vdms.com/cdn/Content/HRE/M/D-Model-Name-Wildcard.htm)) |
 | [Aşamalı Indirme?](https://docs.vdms.com/cdn/Content/HRE/M/D-Progressive-Download.htm) | Cihazın aşamalı indirmeyi destekleyip desteklemediğini belirtir. |
 | Yayın Tarihi | , Cihazın yayın tarihinin bir ile eşleşip eşleşmediğini belirtir: <br> **-** Belirli değer ([Yayın tarihi değişmez](https://docs.vdms.com/cdn/Content/HRE/M/D-Release-Date-Literal.htm)değeri) <br> **-** Normal ifade ([Yayın tarihi normal](https://docs.vdms.com/cdn/Content/HRE/M/D-Release-Date-Regex.htm)ifadesi) <br> **-** Belirli bir model ([Yayın tarihi joker karakteri](https://docs.vdms.com/cdn/Content/HRE/M/D-Release-Date-Wildcard.htm)) |
 | [Çözünürlük yüksekliği](https://docs.vdms.com/cdn/Content/HRE/M/D-Resolution-Height.htm) | İstekleri cihazın yüksekliğine göre tanımlar. |
@@ -73,7 +73,7 @@ Bu eşleşme koşulları, istemcinin kullanıcı aracısına göre istekleri tan
 
 **[Başa dön](#top)**
 
-### <a name="location"></a><a name="location"></a>Konumuna
+### <a name="location"></a><a name="location"></a>Konum
 
 Bu eşleşme koşulları, istek sahibinin konumuna göre istekleri tanımlamak üzere tasarlanmıştır.
 
@@ -87,7 +87,7 @@ Bu eşleşme koşulları, istek sahibinin konumuna göre istekleri tanımlamak �
 | [En](https://docs.vdms.com/cdn/Content/HRE/M/Latitude.htm) | Belirtilen latimsdes 'ten kaynaklanan istekleri tanımlar. |
 | [MIN](https://docs.vdms.com/cdn/Content/HRE/M/Longitude.htm) | Belirtilen Longitudes kaynaklı istekleri tanımlar. |
 | [Metro kodu](https://docs.vdms.com/cdn/Content/HRE/M/Metro-Code.htm) | Belirtilen Metros (belirtilen Pazar alanlarından) kaynaklı istekleri tanımlar. |
-| [Posta kodu](https://docs.vdms.com/cdn/Content/HRE/M/Postal-Code.htm) | Belirtilen posta kodlarından kaynaklanan istekleri tanımlar. |
+| [Posta Kodu](https://docs.vdms.com/cdn/Content/HRE/M/Postal-Code.htm) | Belirtilen posta kodlarından kaynaklanan istekleri tanımlar. |
 | [Bölge kodu](https://docs.vdms.com/cdn/Content/HRE/M/Region-Code.htm) | Belirtilen bölgelerden kaynaklanan istekleri tanımlar. |
 
 > [!NOTE]

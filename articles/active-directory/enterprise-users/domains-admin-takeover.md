@@ -14,10 +14,10 @@ ms.reviewer: sumitp
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 0af74967e2de47afeb357e2ac31b1a0ee849ef36
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96547109"
 ---
 # <a name="take-over-an-unmanaged-directory-as-administrator-in-azure-active-directory"></a>Azure Active Directory’de yönetilmeyen bir dizini yönetici olarak devralma
@@ -45,7 +45,7 @@ Microsoft 365 gibi SharePoint ve OneDrive içeren bazı ürünler dışarıdan d
   
    ![Yönetici olacak ilk ekran görüntüsü](./media/domains-admin-takeover/become-admin-first.png)
   
-5. Etki alanı adı kayıt şirketinizde **mathcoffee. xyz** etki alanı adına sahip olduğunuzu KANıTLAMAK için TXT kaydını ekleyin. Bu örnekte, GoDaddy.com ' dir.
+5. Etki alanı adı kayıt şirketinizde **fourthcoffee.xyz** etki alanı adını sahip olduğunuzu KANıTLAMAK için TXT kaydını ekleyin. Bu örnekte, GoDaddy.com ' dir.
   
    ![Etki alanı adı için bir TXT kaydı ekleyin](./media/domains-admin-takeover/become-admin-txt-record.png)
 
@@ -71,7 +71,7 @@ Yukarıdaki adımları tamamladığınızda, artık Microsoft 365 dördüncü ka
    ![Azure AD 'ye eklenen etki alanı doğrulandı](./media/domains-admin-takeover/add-domain-to-azure-ad.png)
   
 > [!NOTE]
-> Microsoft 365 kuruluşta atanmış lisanslarına sahip tüm Power BI veya Azure Rights Management hizmet kullanıcıları, etki alanı adı kaldırılırsa panoları kaydetmelidir. Kullanıcı *\@ fourthcoffeexyz.onmicrosoft.com* gibi Kullanıcı adı ile oturum açması gerekir, yani Kullanıcı, *\@ mathcoffee. xyz*.
+> Microsoft 365 kuruluşta atanmış lisanslarına sahip tüm Power BI veya Azure Rights Management hizmet kullanıcıları, etki alanı adı kaldırılırsa panoları kaydetmelidir. Kullanıcı *\@ fourthcoffee.xyz* yerine user *\@ fourthcoffeexyz.onmicrosoft.com* gibi bir Kullanıcı adı ile oturum açması gerekir.
 
 ## <a name="external-admin-takeover"></a>Dış yönetici devralması
 

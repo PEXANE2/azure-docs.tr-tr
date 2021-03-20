@@ -15,13 +15,13 @@ ms.author: kenwith
 ms.custom: aaddev
 ms.reviewer: paulgarn
 ms.openlocfilehash: 40bf202e0f14f18d817e4e918f8372ba3c0a4ad8
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/12/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91950678"
 ---
-# <a name="single-sign-on-saml-protocol"></a>Tek Sign-On SAML Protokolü
+# <a name="single-sign-on-saml-protocol"></a>Çoklu Oturum Açma SAML protokolü
 
 Bu makalede, Azure Active Directory (Azure AD) tarafından tek Sign-On (SSO) için desteklenen SAML 2,0 kimlik doğrulama istekleri ve yanıtları ele alınmaktadır.
 
@@ -46,10 +46,10 @@ xmlns:samlp="urn:oasis:names:tc:SAML:2.0:protocol">
 </samlp:AuthnRequest>
 ```
 
-| Parametre | Tür | Açıklama |
+| Parametre | Tür | Description |
 | --- | --- | --- |
 | ID | Gerekli | Azure AD döndürülen yanıtın özniteliğini doldurmak için bu özniteliği kullanır `InResponseTo` . KIMLIK bir sayıyla başlamamalıdır, bu nedenle ortak bir strateji, bir GUID 'nin dize gösterimine "ID" gibi bir dizeyi eklemek için kullanılır. Örneğin, `id6c1c178c166d486687be4aaf5e482730` geçerli BIR kimliğidir. |
-| Sürüm | Gerekli | Bu parametre **2,0**olarak ayarlanmalıdır. |
+| Sürüm | Gerekli | Bu parametre **2,0** olarak ayarlanmalıdır. |
 | IssueInstant | Gerekli | Bu, UTC değeri ve [gidiş dönüş biçimine ("o")](/dotnet/standard/base-types/standard-date-and-time-format-strings)sahip bir tarih saat dizesidir. Azure AD bu türde bir DateTime değeri bekler, ancak bu değeri değerlendirmez veya kullanmaz. |
 | AssertionConsumerServiceURL | İsteğe Bağlı | Sağlanmışsa, bu parametrenin `RedirectUri` Azure AD 'deki bulut hizmeti ile eşleşmesi gerekir. |
 | ForceAuthn | İsteğe Bağlı | Bu bir Boole değeridir. Doğru ise, kullanıcının Azure AD ile geçerli bir oturumu olsa bile yeniden kimlik doğrulaması yapması zorunlu olacaktır. |

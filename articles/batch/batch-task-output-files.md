@@ -5,10 +5,10 @@ ms.topic: how-to
 ms.date: 07/30/2020
 ms.custom: seodec18, devx-track-csharp
 ms.openlocfilehash: 720c064c6b382bc62565c0828422181c761df8e8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88936937"
 ---
 # <a name="persist-task-data-to-azure-storage-with-the-batch-service-api"></a>Batch hizmeti API 'SI ile Azure depolama 'ya görev verilerini kalıcı hale getirme
@@ -111,7 +111,7 @@ Tek bir dosyayı karşıya yüklemek için joker karakter içermeyen bir dosya k
 
 [Outputfileupler. UploadCondition](/dotnet/api/microsoft.azure.batch.outputfileuploadoptions.uploadcondition#Microsoft_Azure_Batch_OutputFileUploadOptions_UploadCondition) özelliği, çıkış dosyalarının koşullu karşıya yüklenmesine izin verir. Yaygın bir senaryo, görev başarılı olursa bir dosya kümesini karşıya yüklemek ve başarısız olursa farklı bir dosya kümesi yüklemedir. Örneğin, ayrıntılı günlük dosyalarını yalnızca görev başarısız olduğunda ve sıfır dışında bir çıkış koduyla çıkarken karşıya yüklemek isteyebilirsiniz. Benzer şekilde, görev başarısız olursa, sonuç dosyalarını yalnızca görev başarılı olursa karşıya yüklemek isteyebilirsiniz.
 
-Yukarıdaki kod örneği, **Uploadcondition** özelliğini **taskcompletion**olarak ayarlar. Bu ayar, çıkış kodunun değerinden bağımsız olarak, görevler tamamlandıktan sonra dosyanın karşıya yükleneceğini belirtir.
+Yukarıdaki kod örneği, **Uploadcondition** özelliğini **taskcompletion** olarak ayarlar. Bu ayar, çıkış kodunun değerinden bağımsız olarak, görevler tamamlandıktan sonra dosyanın karşıya yükleneceğini belirtir.
 
 `uploadCondition: OutputFileUploadCondition.TaskCompletion`
 
@@ -180,7 +180,7 @@ C# dışında bir dilde geliştiriyorsanız, dosya kuralları standardını kend
 1. Projeyi **Visual Studio 2019**' de açın.
 2. Batch ve Storage **hesabı kimlik bilgilerinizi** Microsoft.Azure.Batch. Samples. Common projesindeki **accountsettings. Settings** ' e ekleyin.
 3. Çözümü **oluşturun** (ancak çalıştırmayın). İstenirse tüm NuGet paketlerini geri yükleyin.
-4. **PersistOutputsTask**için bir [uygulama paketini](batch-application-packages.md) karşıya yüklemek üzere Azure Portal kullanın. `PersistOutputsTask.exe`. Zip paketine ve bağımlı derlemelerini ekleyin, uygulama kimliğini "PersistOutputsTask" olarak ve uygulama paketi sürümünü "1,0" olarak ayarlayın.
+4. **PersistOutputsTask** için bir [uygulama paketini](batch-application-packages.md) karşıya yüklemek üzere Azure Portal kullanın. `PersistOutputsTask.exe`. Zip paketine ve bağımlı derlemelerini ekleyin, uygulama kimliğini "PersistOutputsTask" olarak ve uygulama paketi sürümünü "1,0" olarak ayarlayın.
 5. **Persistoutkoyar** projesini **başlatın** (çalıştırın).
 6. Örneği çalıştırmak için kullanılacak Kalıcılık teknolojisini seçmeniz istendiğinde, örnek için Batch hizmeti API 'sini kullanarak görev çıkışını kalıcı hale getirmek için **2** girin.
 7. İsterseniz, örneği Batch hizmeti API 'SI ile kalıcı hale getirmek için **3** girerek ve ayrıca dosya kuralları standardına göre hedef kapsayıcısını ve BLOB yolunu adlandırmak için örneği yeniden çalıştırın.

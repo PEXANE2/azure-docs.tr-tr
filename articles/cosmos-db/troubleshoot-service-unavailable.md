@@ -9,10 +9,10 @@ ms.author: jawilley
 ms.topic: troubleshooting
 ms.reviewer: sngun
 ms.openlocfilehash: d19d30c03412ba7212211b30646acb50c3f55ece
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93340042"
 ---
 # <a name="diagnose-and-troubleshoot-azure-cosmos-db-service-unavailable-exceptions"></a>Hizmet kullanılamayan özel durumları tanılama ve sorun giderme Azure Cosmos DB
@@ -27,7 +27,7 @@ Aşağıdaki liste, hizmet kullanılamaz özel durumları için bilinen nedenler
 Tüm [gerekli bağlantı noktalarının](sql-sdk-connection-modes.md#service-port-ranges) etkinleştirildiğini doğrulayın.
 
 ### <a name="client-side-transient-connectivity-issues"></a>İstemci tarafı geçici bağlantı sorunları
-Hizmet kullanılamıyor özel durumlar, zaman aşımına neden olan geçici bağlantı sorunları olduğunda yüzeysel olabilir. Genellikle, bu senaryoya ilişkin yığın izlemesi bir `TransportException` hata içerir. Örneğin:
+Hizmet kullanılamıyor özel durumlar, zaman aşımına neden olan geçici bağlantı sorunları olduğunda yüzeysel olabilir. Genellikle, bu senaryoya ilişkin yığın izlemesi bir `TransportException` hata içerir. Örnek:
 
 ```C#
 TransportException: A client transport error occurred: The request timed out while waiting for a server response. 

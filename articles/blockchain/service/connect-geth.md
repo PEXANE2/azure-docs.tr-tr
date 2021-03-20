@@ -5,10 +5,10 @@ ms.date: 05/26/2020
 ms.topic: quickstart
 ms.reviewer: maheshna
 ms.openlocfilehash: 2c5b6a56d96ac132949052e9879c8f61d41ffb06
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "83994798"
 ---
 # <a name="quickstart-use-geth-to-attach-to-an-azure-blockchain-service-transaction-node"></a>Hızlı başlangıç: Azure blok zinciri hizmeti işlem düğümüne eklemek için geth kullanma
@@ -31,7 +31,7 @@ Azure portal bir Azure blok zinciri hizmeti işlem düğümü için geth bağlan
 
     ![Varsayılan işlem düğümünü seçin](./media/connect-geth/transaction-nodes.png)
 
-1. **Bağlantı dizelerini**seçin.
+1. **Bağlantı dizelerini** seçin.
 1. Bağlantı dizesini **https 'den (erişim anahtarı 1)** kopyalayın. Sonraki bölüm için dizeye ihtiyacınız vardır.
 
     ![Bağlantı dizesi](./media/connect-geth/connection-string.png)

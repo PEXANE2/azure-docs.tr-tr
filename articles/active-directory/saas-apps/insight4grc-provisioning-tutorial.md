@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 02/04/2020
 ms.author: Zhchia
 ms.openlocfilehash: 7d5904461d642f47e691d0a1aaa1f1faf439df1f
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96178186"
 ---
 # <a name="tutorial-configure-insight4grc-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı hazırlama için Insight4GRC yapılandırma
@@ -31,7 +31,7 @@ Bu öğretici, otomatik Kullanıcı sağlamayı yapılandırmak için hem Insigh
 > * Insight4GRC 'de grupları ve grup üyeliklerini sağlama
 > * Insight4GRC ['de çoklu oturum açma](./insight4grc-tutorial.md) (önerilir)
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticide özetlenen senaryo, aşağıdaki önkoşulların zaten olduğunu varsayar:
 

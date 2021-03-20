@@ -9,10 +9,10 @@ ms.topic: tutorial
 ms.date: 9/25/2018
 ms.author: rohink
 ms.openlocfilehash: 4bdfc950cc1277809811dc2c548a57cc2138a8e4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "77149958"
 ---
 # <a name="tutorial-configure-an-alias-record-to-support-apex-domain-names-with-traffic-manager"></a>Öğretici: Traffic Manager ile tepe etki alanı adlarını desteklemek için diğer ad kaydı yapılandırma 
@@ -31,7 +31,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 Birlikte test edilecek Azure DNS içinde barındırabileceğiniz bir etki alanı adınızın olması gerekir. Bu etki alanı üzerinde tam denetime sahip olmanız gerekir. Tam denetim, etki alanı için ad sunucusu (NS) kayıtlarını ayarlama olanağını kapsar.
 
 Azure DNS’te etki alanınızı barındırma yönergeleri için bkz. [Öğretici: Azure DNS’te etki alanınızı barındırma](dns-delegate-domain-azure-dns.md).
@@ -83,7 +83,7 @@ Bu işlemleri tekrarlayarak **Web-02** üzerine de IIS yükleyin.
 ## <a name="create-a-traffic-manager-profile"></a>Traffic Manager profili oluşturma
 
 1. **RG-DNS-Alias-TM** kaynak grubunu açın ve **Web-01-ip** Genel IP adresini seçin. Daha sonra kullanmak için IP adresini not edin. Bu adımı **Web-02-ip** genel IP adresi için tekrarlayın.
-1. **Kaynak**  >  **ağ**  >  **Traffic Manager profili**oluştur ' u seçin.
+1. **Kaynak**  >  **ağ**  >  **Traffic Manager profili** oluştur ' u seçin.
 2. Ad olarak **TM-alias-test** girin. Bunu **RG-DNS-Alias-TM** kaynak grubunun içine yerleştirin.
 3. **Oluştur**’u seçin.
 4. Dağıtım tamamlandıktan sonra **Kaynağa git**'i seçin.

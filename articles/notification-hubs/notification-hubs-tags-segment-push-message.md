@@ -18,10 +18,10 @@ ms.reviewer: jowargo
 ms.lastreviewed: 12/04/2019
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 4ff8225522e79e2be40682fb5e4823777dde2aa0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88998313"
 ---
 # <a name="routing-and-tag-expressions"></a>Yönlendirme ve etiket ifadeleri
@@ -44,7 +44,7 @@ Etiket, en fazla 120 karakter uzunluğunda olabilir ve alfasayısal karakterler 
 
 ![Etiketlere genel bakış](./media/notification-hubs-tags-segment-push-message/notification-hubs-tags.png)
 
-Şekilde, **Beatles** ile etiketlenmiş Ileti yalnızca **Beatles**etiketiyle kayıtlı olan tabletle ulaşır.
+Şekilde, **Beatles** ile etiketlenmiş Ileti yalnızca **Beatles** etiketiyle kayıtlı olan tabletle ulaşır.
 
 Etiketlere yönelik kayıtlar oluşturma hakkında daha fazla bilgi için bkz. [kayıt yönetimi](notification-hubs-push-notification-registration-management.md).
 

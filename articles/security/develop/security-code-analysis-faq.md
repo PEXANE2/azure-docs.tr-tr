@@ -13,10 +13,10 @@ ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.openlocfilehash: b851e52141cf93aba4aab9b2768658f0aac4660f
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98879924"
 ---
 # <a name="frequently-asked-questions"></a>Sık sorulan sorular
@@ -192,11 +192,11 @@ Bir içerik arayici aşağıdaki gibi tanımlanır:
 
 #### <a name="what-are-common-errors-when-using-the-roslyn-analyzers-task"></a>Roslyn çözümleyiciler görevi kullanılırken sık karşılaşılan hatalar nelerdir?
 
-##### <a name="the-project-was-restored-using-a-wrong-microsoftnetcoreapp-version"></a>Proje yanlış bir Microsoft. NETCore. app sürümü kullanılarak geri yüklendi
+##### <a name="the-project-was-restored-using-a-wrong-microsoftnetcoreapp-version"></a>Proje yanlış bir Microsoft.NETCore.App sürümü kullanılarak geri yüklendi
 
 Tam hata iletisi:
 
-"Hata: proje Microsoft. NETCore. app Version *x. x*. x kullanılarak geri yüklendi, ancak geçerli ayarlarla birlikte sürüm *y. y. y* kullanılacak. Bu sorunu çözmek için, geri yükleme ve derleme ya da yayımlama gibi sonraki işlemler için aynı ayarların kullanıldığından emin olun. Genellikle bu sorun, Runtimeıdentifier özelliği Build veya Publish sırasında ayarlandıysa, geri yükleme sırasında olmasa da oluşabilir. "
+"Hata: proje, *x. x. x* Microsoft.NETCore.app sürümü kullanılarak geri yüklendi, ancak geçerli ayarlarla birlikte sürüm *y. y. y* kullanılacak. Bu sorunu çözmek için, geri yükleme ve derleme ya da yayımlama gibi sonraki işlemler için aynı ayarların kullanıldığından emin olun. Genellikle bu sorun, Runtimeıdentifier özelliği Build veya Publish sırasında ayarlandıysa, geri yükleme sırasında olmasa da oluşabilir. "
 
 Roslyn, görevleri derlemenin bir parçası olarak çalıştırır, derleme makinesindeki kaynak ağacının oluşturulabilir bir durumda olması gerekir.
 

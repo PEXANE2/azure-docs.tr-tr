@@ -7,10 +7,10 @@ ms.manager: abhemraj
 ms.topic: conceptual
 ms.date: 07/23/2020
 ms.openlocfilehash: 0e1cb33ca0a5fb9a1c7ddb2c4625dfef4acd3a1e
-ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/06/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99627408"
 ---
 # <a name="azure-migrate-support-matrix"></a>Azure geçişi destek matrisi
@@ -23,7 +23,7 @@ Tablo, desteklenen bulma, değerlendirme ve geçiş senaryolarını özetler.
 
 **Dağıtım** | **Ayrıntılar** 
 --- | --- 
-**Keşfini** | Makine meta verilerini ve dinamik performans verilerini bulabilirsiniz.
+**Bulma** | Makine meta verilerini ve dinamik performans verilerini bulabilirsiniz.
 **Uygulama bulma** | VMware VM 'lerinde çalışan uygulamaları, rolleri ve özellikleri bulabilirsiniz. Şu anda bu özellik yalnızca bulma ile sınırlıdır. Değerlendirme Şu anda makine düzeyindedir. Henüz uygulama, rol veya özellik tabanlı değerlendirmeler sunmuyoruz. 
 **Değerlendirme** | Şirket içi iş yüklerini ve VMware VM 'leri, Hyper-V VM 'Leri ve fiziksel sunucularda çalışan verileri değerlendirin. Azure geçişi kullanmayı değerlendirin: Sunucu değerlendirmesi, Microsoft Data Migration Yardımcısı (DMA) ve diğer araçlar ve ISV teklifleri.
 **Geçiş** | Fiziksel sunucular, VMware VM 'leri, Hyper-V VM 'Leri, fiziksel sunucular ve bulut tabanlı VM 'lerde çalışan iş yüklerini ve verileri Azure 'a geçirin. Azure geçişi 'ni kullanarak geçirin: Sunucu değerlendirmesi ve Azure veritabanı geçiş hizmeti (DMS) ve diğer araçlar ve ISV teklifleri.

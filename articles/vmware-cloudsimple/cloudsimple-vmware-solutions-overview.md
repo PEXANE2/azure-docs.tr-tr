@@ -9,10 +9,10 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 7b5017cdeade14e53778b58154456412507c5ce8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "77024883"
 ---
 # <a name="what-is-azure-vmware-solution-by-cloudsimple"></a>CloudSimple tarafından Azure VMware çözümü nedir?
@@ -34,11 +34,11 @@ ms.locfileid: "77024883"
 * Bu etkinlik yönetimi, kullanım, faturalandırma/ölçüm ve Kullanıcı yönetimi gibi yönetim özellikleri.
 * 7/24 müşteri desteği.
 
-## <a name="benefits"></a>Yararları
+## <a name="benefits"></a>Avantajlar
 
 * **Işlemsel süreklilik**. CloudSimple, VMware platformlarına yerel erişim sağlar. CloudSimple mimarisi, var olan kişilerle uyumludur:
     * Uygulamalar
-    * İşlemler
+    * Operations
     * Güvenlik
     * Backup
     * Olağanüstü durum kurtarma

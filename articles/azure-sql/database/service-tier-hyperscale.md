@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 1/13/2021
 ms.openlocfilehash: 4b5020b6cf7ac2f7aec586d7e6499285c1447b68
-ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98209772"
 ---
 # <a name="hyperscale-service-tier"></a>Hiper ölçekli hizmet katmanı
@@ -182,7 +182,7 @@ Etkin bölgeler:
 - Doğu Avustralya
 - Güneydoğu Avustralya
 - Orta Avustralya
-- Brezilya Güney
+- Güney Brezilya
 - Orta Kanada
 - Central US
 - Çin Doğu 2

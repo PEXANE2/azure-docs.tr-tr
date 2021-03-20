@@ -8,10 +8,10 @@ author: mingshen
 ms.author: mingshen
 ms.date: 09/02/2020
 ms.openlocfilehash: e97171e61814b832e78f7bd815d8d6f341a90840
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91858181"
 ---
 # <a name="plans-and-pricing-for-commercial-marketplace-offers"></a>Ticari Market teklifleri için planlar ve fiyatlandırma
@@ -115,12 +115,12 @@ Bir plan yayımlandıktan sonra nelerin değiştirebilecekleri hakkında bazı k
 Birleşik Devletler dolar (USD) cinsinden ayarlanan fiyatlar, kaydedildiği sırada geçerli döviz kurları kullanılarak seçilen tüm piyasaların yerel para birimine dönüştürülür. Fiyatlandırma elektronik tablosunu dışa aktararak ve seçtiğiniz her bir pazardaki fiyatı inceleyerek yayımlamadan önce bu fiyatları doğrulayın.
 
 1. Fiyatlandırma verilerinin dışarı aktarılmasını sağlamak için öncelikle fiyatlandırma değişikliklerinizi kaydetmeniz gerekir. **Fiyatlandırma ve kullanılabilirlik** sekmesinin altındaki **Taslağı kaydet**' i seçin.
-1. **Fiyatlandırma**bölümünde **fiyatlandırma verilerini dışarı aktar** bağlantısını seçin.
+1. **Fiyatlandırma** bölümünde **fiyatlandırma verilerini dışarı aktar** bağlantısını seçin.
 1. exportedPrice.xlsx dosyasını Microsoft Excel 'de açın.
 1. Elektronik tabloda, istediğiniz güncelleştirmeleri Fiyatlandırma bilgileriniz yapın ve ardından öğesini kaydedin. CSV dosyası.
     > [!NOTE]
     > Dosyayı güncelleştirebilmeniz için önce Excel 'de düzenlemesini etkinleştirmeniz gerekebilir.
-1. Fiyatlandırma **ve kullanılabilirlik** sekmesindeki **fiyatlandırma**bölümünde **fiyatlandırma verilerini içeri aktar** bağlantısını seçin.
+1. Fiyatlandırma **ve kullanılabilirlik** sekmesindeki **fiyatlandırma** bölümünde **fiyatlandırma verilerini içeri aktar** bağlantısını seçin.
 1. Görüntülenen iletişim kutusunda **Evet**' i seçin.
 1. Güncelleştirdiğiniz exportedPrice.xlsx dosyasını seçin ve sonra **Aç**' ı seçin.
 

@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: na
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c22baf0a08718883f0c0c9844cc395f607b5b20d
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "77194288"
 ---
 # <a name="what-is-enterprise-state-roaming"></a>Enterprise State Roaming nedir?
@@ -28,7 +28,7 @@ Windows 10 ' da, [Azure Active Directory (Azure AD)](../fundamentals/active-dire
 
 Enterprise State Roaming birden çok Azure bölgesinde kullanılabilir. Kullanılabilir bölgelerin güncelleştirilmiş listesini, Azure Active Directory altındaki [bölgelere göre Azure hizmetleri](https://azure.microsoft.com/regions/#services) sayfasında bulabilirsiniz.
 
-| Makale | Açıklama |
+| Makale | Description |
 | --- | --- |
 | [Azure Active Directory'de Kurumsal Durumda Dolaşımı etkinleştirme](enterprise-state-roaming-enable.md) |Enterprise State Roaming, Premium Azure Active Directory (Azure AD) aboneliği olan her kuruluş için kullanılabilir. Azure AD aboneliği alma hakkında daha fazla bilgi için bkz. [Azure AD ürün](https://azure.microsoft.com/services/active-directory) sayfası. |
 | [Ayarlar ve veri dolaşımı hakkında SSS](enterprise-state-roaming-faqs.md) |Bu makalede, yöneticilerin ayarlar ve uygulama verilerinin eşitlenmesi hakkında sahip olabileceği bazı sorular yanıtlanmaktadır. |

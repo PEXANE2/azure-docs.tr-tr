@@ -9,10 +9,10 @@ ms.date: 05/19/2020
 ms.author: dech
 ms.custom: devx-track-python, devx-track-csharp
 ms.openlocfilehash: 67fe71d8e2d6ab239989cb30e9bf5a1b4d731037
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93340490"
 ---
 # <a name="use-built-in-notebook-commands-and-features-in-azure-cosmos-db-c-notebooks-preview"></a>Azure Cosmos DB C# not defterlerinde yerleşik Not defteri komutlarını ve özelliklerini kullanma (Önizleme)
@@ -41,7 +41,7 @@ Aynı hücrede birden çok NuGet paketi yükleyebilirsiniz. Paketler, Azure Cosm
 
 ``CosmosClient``Herhangi BIR SDK işlemini çalıştırmak için örneğini oluşturun. 
 
-Örneğin:
+Örnek:
 
 ```csharp
 // Include usings
@@ -98,7 +98,7 @@ var endpoint = Cosmos.Endpoint;
 ## <a name="print-console-output-in-c-code"></a>Konsol çıktısını C# kodunda Yazdır
 C# kodunuzda, hücreyi çalıştırdığınızda görünecek konsol çıktısına yönelik [dize ilişkilendirme](/dotnet/csharp/language-reference/tokens/interpolated) ile Display. asmarku () sözdizimini kullanabilirsiniz. 
 
-Örneğin: 
+Örnek: 
 
 ```csharp
 // Print text in the output
@@ -136,7 +136,7 @@ Bir değişkeni görüntülemek için yerleşik sözlük görüntüleyicisini ku
 - ``{database_id}``Ve ' i ``{container_id}`` Azure Cosmos hesabınızdaki veritabanı ve kapsayıcının adıyla değiştirin. 
 - ``{url_location_of_file}``JSON dosyanızın konumuyla değiştirin. Dosya geçerli bir JSON nesneleri dizisi olmalıdır ve bu, genel Internet üzerinden erişilebilir olmalıdır.
 
-Örneğin:
+Örnek:
 
 ```csharp
 %%upload --database databaseName --container containerName --url 

@@ -6,10 +6,10 @@ ms.author: jobreen
 author: jjbfour
 ms.date: 06/20/2019
 ms.openlocfilehash: b6c5f5b8e437ad2dc2e8a3be3f3f2ed03a613b44
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "75650532"
 ---
 # <a name="adding-custom-resources-to-azure-rest-api"></a>Azure REST API özel kaynakları ekleme
@@ -56,7 +56,7 @@ Tüm kaynakları al ( `GET` ):
 /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomProviders/resourceProviders/{resourceProviderName}/myCustomResource
 ```
 
-Özel kaynaklar için özel kaynak sağlayıcıları iki tür **routingtypes**sunar: " `Proxy` " ve " `Proxy, Cache` ".
+Özel kaynaklar için özel kaynak sağlayıcıları iki tür **routingtypes** sunar: " `Proxy` " ve " `Proxy, Cache` ".
 
 ### <a name="proxy-routing-type"></a>Proxy yönlendirme türü
 
@@ -80,10 +80,10 @@ Yalnızca " `Proxy, Cache` " **routingtype** proxy 'leri `PUT` ve `DELETE` özel
 
 Özel kaynak sağlayıcısından özel bir kaynak oluşturmanın iki ana yolu vardır:
 
-- Azure CLI
+- Azure CLI’si
 - Azure Resource Manager Şablonları
 
-### <a name="azure-cli"></a>Azure CLI
+### <a name="azure-cli"></a>Azure CLI’si
 
 Özel bir kaynak oluşturun:
 
@@ -106,7 +106,7 @@ Parametre | Gerekli | Açıklama
 ---|---|---
 -Full-Object | *Yes* | Özellikler nesnesinin location, tags, SKU ve/veya plan gibi diğer seçenekleri içerdiğini belirtir.
 kimlik | *Yes* | Özel kaynağın kaynak KIMLIĞI. Bu, **ResourceProvider** 'ın kapalı olması gerekir
-properties | *Yes* | **Uç noktaya**gönderilecek istek gövdesi.
+properties | *Yes* | **Uç noktaya** gönderilecek istek gövdesi.
 
 Azure özel kaynağını silme:
 
@@ -131,7 +131,7 @@ kimlik | *Yes* | Özel kaynağın kaynak KIMLIĞI. Bu, **ResourceProvider** 'ın
 ### <a name="azure-resource-manager-template"></a>Azure Resource Manager Şablonu
 
 > [!NOTE]
-> Kaynaklar, yanıtın uygun `id` , `name` ve `type` **uç noktadan**içermesini gerektirir.
+> Kaynaklar, yanıtın uygun `id` , `name` ve `type` **uç noktadan** içermesini gerektirir.
 
 Azure Resource Manager şablonlar,, `id` ve ' ın `name` `type` aşağı akış uç noktasından doğru şekilde döndürülmesini gerektirir. Döndürülen bir kaynak yanıtı şu biçimde olmalıdır:
 

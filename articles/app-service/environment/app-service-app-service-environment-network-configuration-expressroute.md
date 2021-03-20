@@ -8,10 +8,10 @@ ms.date: 10/14/2016
 ms.author: stefsch
 ms.custom: seodec18
 ms.openlocfilehash: 3fa2677f7c71b118ec3f7da717e29d5879ee982b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88961831"
 ---
 # <a name="network-configuration-details-for-app-service-environment-for-powerapps-with-azure-expressroute"></a>Azure ExpressRoute ile PowerApps için App Service Ortamı ağ yapılandırması ayrıntıları
@@ -85,9 +85,9 @@ Kullanıcı tanımlı yollar oluşturma ve yapılandırma hakkında bilgi edinme
 
 Bu bölümde App Service Ortamı için bir örnek UDR yapılandırması gösterilmektedir.
 
-### <a name="prerequisites"></a>Ön koşullar
+### <a name="prerequisites"></a>Önkoşullar
 
-* [Azure İndirmeleri sayfasından][AzureDownloads]Azure PowerShell ' i yükler. Haziran 2015 veya üzeri bir tarih içeren bir indirme seçin. **Command-line tools**  >  En son PowerShell cmdlet 'lerini yüklemek için komut satırı araçları**Windows PowerShell**altında, **yüklemek** ' ı seçin.
+* [Azure İndirmeleri sayfasından][AzureDownloads]Azure PowerShell ' i yükler. Haziran 2015 veya üzeri bir tarih içeren bir indirme seçin.   >  En son PowerShell cmdlet 'lerini yüklemek için komut satırı araçları **Windows PowerShell** altında, **yüklemek** ' ı seçin.
 
 * App Service Ortamı tarafından özel kullanım için benzersiz bir alt ağ oluşturun. Benzersiz alt ağ, alt ağa uygulanan UDRs 'nin yalnızca App Service Ortamı için giden trafiği açmasını sağlar.
 

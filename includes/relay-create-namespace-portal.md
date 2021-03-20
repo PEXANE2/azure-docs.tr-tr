@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: clemensv
 ms.openlocfilehash: 500db9f6d299ea81b1f1b1be864df5d91ba1eae7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "76020867"
 ---
 1. [Azure Portal][Azure portal]’ında oturum açın.
@@ -27,7 +27,7 @@ ms.locfileid: "76020867"
 1. **Tüm kaynaklar**' ı seçin ve ardından yeni oluşturulan ad alanı adını seçin.
 1. **Paylaşılan erişim ilkeleri**' ni seçin.  
 1. **Paylaşılan erişim ilkeleri** bölümünde **RootManageSharedAccessKey** öğesini seçin.
-1. **SAS ilkesi: RootManageSharedAccessKey**altında, **birincil bağlantı dizesi**' nin yanındaki **Kopyala** düğmesini seçin. Bu eylem, bağlantı dizesini daha sonra kullanmak üzere panonuza kopyalar. Bu değeri Not Defteri veya başka bir geçici konuma yapıştırın.
+1. **SAS ilkesi: RootManageSharedAccessKey** altında, **birincil bağlantı dizesi**' nin yanındaki **Kopyala** düğmesini seçin. Bu eylem, bağlantı dizesini daha sonra kullanmak üzere panonuza kopyalar. Bu değeri Not Defteri veya başka bir geçici konuma yapıştırın.
 1. **Birincil anahtar** değerini daha sonra kullanmak üzere kopyalayıp geçici bir konuma yapıştırarak önceki adımı tekrarlayın.  
 
     ![bağlantı dizesi][connection-string]

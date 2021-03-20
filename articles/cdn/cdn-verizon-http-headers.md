@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 04/16/2018
 ms.author: allensu
 ms.openlocfilehash: e20f6ce9540d357b61ae2cfdf0e8f96d127dc6c0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "84343226"
 ---
 # <a name="verizon-specific-http-headers-for-azure-cdn-rules-engine"></a>Azure CDN Rules altyapısı için Verizon 'e özgü HTTP üstbilgileri
@@ -42,7 +42,7 @@ X-ana bilgisayar | İsteğin ana bilgisayar adını gösterir. | cdn.mydomain.co
 X-Midgress | İsteğin ek bir CDN sunucusu aracılığıyla proxy kullanıp kullanmadığını belirtir. Örneğin, bir başlangıç sunucusundan kaynağa kalkan sunucusu veya bir AÇıLAN sunucudan ADN ağ geçidi sunucusu. <br />Bu üst bilgi yalnızca orta boyutlu trafik gerçekleştiğinde isteğe eklenir. Bu durumda, isteğin ek bir CDN sunucusu aracılığıyla proxy olduğunu göstermek için üst bilgi 1 olarak ayarlanır.| 1
 [Konak](#host-request-header) | İstenen içeriğin bulunabileceği Konağı ve bağlantı noktasını tanımlar. | marketing.mydomain.com:80
 [X-Gateway-List](#x-gateway-list-request-header) | ADN: bir müşteri kaynağına atanan ADN Ağ Geçidi sunucularının yük devretme listesini tanımlar. <br />Kaynak Kalkanı: bir müşteri kaynağına atanan kaynak kalkan sunucularının kümesini gösterir. | `icn1,hhp1,hnd1`
-X-EC-_ &lt; adı &gt; _ | *X-EC* (örneğin, x-EC-Tag, [x-EC-Debug](cdn-http-debug-headers.md)) Ile başlayan istek üstbilgileri CDN tarafından kullanılmak üzere ayrılmıştır.| WAF-üretim
+X-EC-_&lt; adı &gt;_ | *X-EC* (örneğin, x-EC-Tag, [x-EC-Debug](cdn-http-debug-headers.md)) Ile başlayan istek üstbilgileri CDN tarafından kullanılmak üzere ayrılmıştır.| WAF-üretim
 
 ## <a name="via-request-header"></a>İstek üst bilgisi aracılığıyla
 `Via`İstek üstbilgisinin BIR pop sunucusunu tanımladığı biçim aşağıdaki sözdizimi tarafından belirtilir:

@@ -8,10 +8,10 @@ ms.date: 06/26/2019
 ms.topic: article
 keywords: Kinect, Windows, v2, Azure Kinect, karşılaştırma, SDK, farklar, donanım, yazılım
 ms.openlocfilehash: 0a8d399370f354524858bdd658ffd65c0494dd4d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87031584"
 ---
 # <a name="azure-kinect-and-kinect-windows-v2-comparison"></a>Azure Kinect ve Kinect Windows V2 karşılaştırması
@@ -48,7 +48,7 @@ Aşağıdaki tabloda alt düzey cihaz algılayıcısı erişim yeteneği karşı
 |---------|---------|------------|---------|
 | **Derinliğini** | ✔️ | ✔️ |    |   |
 | **IR** | ✔️ | ✔️ |  |
-| **Color** | ✔️ | ✔️ | Renk biçimi farkları destekler, Azure Kinect DK şu kamera denetimlerini destekler: pozlama, beyaz dengesi, parlaklık, karşıtlık, doygunluk, netlik ve kazanç denetimi |
+| **Renk** | ✔️ | ✔️ | Renk biçimi farkları destekler, Azure Kinect DK şu kamera denetimlerini destekler: pozlama, beyaz dengesi, parlaklık, karşıtlık, doygunluk, netlik ve kazanç denetimi |
 | **Ses** | ✔️ | ✔️ | Azure Kinect DK miklerine konuşma SDK 'Sı veya Windows Native API aracılığıyla erişilir |
 | **IMU** | ✔️ |  | Azure Kinect DK tam 6 eksenli ıMU ve Windows için Kinect yalnızca 1 eksen sağlar |
 | **Ayarlama verileri** | ✔️ | ✔️ | OpenCV uyumlu kamera modeli ayarlaması |

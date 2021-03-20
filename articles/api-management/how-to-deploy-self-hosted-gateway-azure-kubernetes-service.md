@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 04/26/2020
 ms.author: apimpm
 ms.openlocfilehash: 02962e9c5be2c4b73d121a53a7b595c573ad6cd0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87015230"
 ---
 # <a name="deploy-to-azure-kubernetes-service"></a>Azure Kubernetes Service’e dağıtma
@@ -29,14 +29,14 @@ Bu makalede, Azure [Kubernetes hizmetine](https://azure.microsoft.com/services/k
 
 ## <a name="deploy-the-self-hosted-gateway-to-aks"></a>Şirket içinde barındırılan ağ geçidini AKS 'e dağıtma
 
-1. **Dağıtım ve altyapı**altında **ağ geçitleri** ' ni seçin.
+1. **Dağıtım ve altyapı** altında **ağ geçitleri** ' ni seçin.
 2. Dağıtmayı düşündüğünüz şirket içinde barındırılan ağ geçidi kaynağını seçin.
 3. **Dağıtım**' ı seçin.
 4. Varsayılan **süre sonu** ve **gizli anahtar** değerlerini kullanarak, **belirteç** metin kutusundaki yeni bir belirtecin sizin için otomatik olarak oluşturulduğunu unutmayın. İsterseniz veya her ikisini de ayarlayın ve yeni bir belirteç oluşturmak için **Oluştur** ' u seçin.
-5. **Dağıtım betikleri**altında **Kubernetes** 'in seçildiğinden emin olun.
+5. **Dağıtım betikleri** altında **Kubernetes** 'in seçildiğinden emin olun.
 6. Dosyayı indirmek için **dağıtım** ' nın yanındaki **<ağ geçidi-adı>. yıml** dosya bağlantısı ' nı seçin.
 7. Bağlantı noktası eşlemelerini ve kapsayıcı adını, gereken şekilde değiştirin.
-8. Senaryonuza bağlı olarak, [hizmet türünü](../aks/concepts-network.md#services)değiştirmeniz gerekebilir. Varsayılan değer: `NodePort`.
+8. Senaryonuza bağlı olarak, [hizmet türünü](../aks/concepts-network.md#services)değiştirmeniz gerekebilir. `NodePort` varsayılan değerdir.
 9. Komutu panoya kaydetmek için **Dağıt** metin kutusunun sağ ucunda bulunan **Kopyala** simgesini seçin `kubectl` .
 10. Komutu Terminal (veya komut) penceresine yapıştırın. Komutun indirilen ortam dosyasının geçerli dizinde mevcut olmasını beklediğini unutmayın.
 ```console

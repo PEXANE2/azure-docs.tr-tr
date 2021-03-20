@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 2db8cfe652c0fca4b68b00d846e345c1b60cd05d
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98880245"
 ---
 # <a name="azure-active-directory-identity-protection-and-the-microsoft-graph-powershell-sdk"></a>Azure Active Directory Kimlik Koruması ve Microsoft Graph PowerShell SDK 'Sı
@@ -70,7 +70,7 @@ Bu örnekte, bu örneğe katılımsız olarak kullanılmasına izin veren uygula
 1. Oluşturduğunuz **uygulamadan** **Sertifikalar & parolaları**' nı seçin.
 1. **Sertifikalar** altında **sertifikayı karşıya yükle**' yi seçin.
    1. Açılan pencereden daha önce aktarılmış sertifikayı seçin.
-   1. **Ekle**’yi seçin.
+   1. **Add (Ekle)** seçeneğini belirleyin.
 1. Bir sonraki adımda bu bilgiye ihtiyacınız olacağı için sertifikanın **parmak izini** göz önünde bulabilirsiniz.
 
 ## <a name="list-risky-users-using-powershell"></a>PowerShell kullanarak riskli kullanıcıları listeleme

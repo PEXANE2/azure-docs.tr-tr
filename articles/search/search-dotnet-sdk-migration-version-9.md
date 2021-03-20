@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 11/04/2019
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 7726877efcb72caf5bb4c92e2e1c65e5df68f270
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89002718"
 ---
 # <a name="upgrade-to-azure-search-net-sdk-version-9"></a>Azure Search .NET SDK sürümü 9 ' a yükselt
@@ -152,7 +152,7 @@ Bu türlerin isteğe bağlı değerlerini barındıran özellikler artık isteğ
 
 ### <a name="removed-facetresults-and-hithighlights"></a>FacetResults ve Hithighışıkları kaldırıldı
 
-`FacetResults`Ve `HitHighlights` sınıfları kaldırılmıştır. Model sonuçları artık olarak yazılır `IDictionary<string, IList<FacetResult>>` ve vurgulanana kadar vurgular `IDictionary<string, IList<string>>` . Bu değişiklik tarafından tanıtılan derleme hatalarını çözmek için hızlı bir yol, `using` kaldırılan türleri kullanan her bir dosyanın üst kısmına diğer adlar eklemektir. Örneğin:
+`FacetResults`Ve `HitHighlights` sınıfları kaldırılmıştır. Model sonuçları artık olarak yazılır `IDictionary<string, IList<FacetResult>>` ve vurgulanana kadar vurgular `IDictionary<string, IList<string>>` . Bu değişiklik tarafından tanıtılan derleme hatalarını çözmek için hızlı bir yol, `using` kaldırılan türleri kullanan her bir dosyanın üst kısmına diğer adlar eklemektir. Örnek:
 
 ```csharp
 using FacetResults = System.Collections.Generic.IDictionary<string, System.Collections.Generic.IList<Models.FacetResult>>;
