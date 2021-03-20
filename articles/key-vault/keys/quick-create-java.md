@@ -9,10 +9,10 @@ ms.service: key-vault
 ms.subservice: keys
 ms.topic: quickstart
 ms.openlocfilehash: cb5abf59c446ef0835375bac45d1e852144a6f28
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/06/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97935283"
 ---
 # <a name="quickstart-azure-key-vault-key-client-library-for-java"></a>Hızlı başlangıç: Java için Azure Key Vault anahtar istemci kitaplığı
@@ -20,12 +20,12 @@ Java için Azure Key Vault anahtar istemci kitaplığı ile çalışmaya başlay
 
 Ek kaynaklar:
 
-* [Kaynak kod](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/keyvault/azure-security-keyvault-keys)
+* [Kaynak kodu](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/keyvault/azure-security-keyvault-keys)
 * [API başvuru belgeleri](https://azure.github.io/azure-sdk-for-java/keyvault.html)
 * [Ürün belgeleri](index.yml)
 * [Örnekler](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/keyvault/azure-security-keyvault-keys/src/samples/java/com/azure/security/keyvault/keys)
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 - Bir Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - [Java Development Kit (JDK)](/java/azure/jdk/) sürüm 8 veya üstü
 - [Apache Maven](https://maven.apache.org)

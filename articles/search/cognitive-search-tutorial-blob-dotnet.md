@@ -10,10 +10,10 @@ ms.topic: tutorial
 ms.date: 01/23/2021
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 4bda56f3037469477ddfe059dd20c14cd34586d8
-ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/24/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98745725"
 ---
 # <a name="tutorial-ai-generated-searchable-content-from-azure-blobs-using-the-net-sdk"></a>Öğretici: .NET SDK kullanarak Azure Bloblarından AI tarafından oluşturulan aranabilir içerik
@@ -38,7 +38,7 @@ Dizin Oluşturucu, veri kaynağı nesnesinde belirtilen bir blob kapsayıcısın
 
 Beceri, dizin oluşturucuya eklenir. Bilgileri bulmak ve ayıklamak için Microsoft 'un yerleşik yeteneklerini kullanır. İşlem hattındaki adımlarda, resimlerde optik karakter tanıma (OCR), metinde dil algılama, anahtar ifade ayıklama ve varlık tanıma (kuruluşlar) bulunur. İşlem hattı tarafından oluşturulan yeni bilgiler, bir dizindeki yeni alanlara depolanır. Dizin doldurulduktan sonra sorgular, modeller ve filtrelerdeki alanları kullanabilirsiniz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * [Visual Studio](https://visualstudio.microsoft.com/downloads/)
 * [Azure.Search.Doc10. x NuGet paketi](https://www.nuget.org/packages/Azure.Search.Documents) 

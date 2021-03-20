@@ -9,12 +9,12 @@ ms.subservice: translator-text
 ms.date: 12/09/2019
 ms.author: lajanuar
 ms.topic: overview
-ms.openlocfilehash: 37d31d753812924607c4d31df6d4f4d5e7b32d69
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: 89ab25f45cd35a86d2ff4416ceb851ae6cd5e115
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98890722"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104657170"
 ---
 # <a name="what-is-custom-translator"></a>Özel Çevirmen nedir?
 
@@ -24,13 +24,20 @@ ms.locfileid: "98890722"
 
 Özel çevirmen üç düzine dili destekler ve doğrudan NMT için kullanılabilen dillerle eşlenir. Tüm liste için bkz.  [Microsoft Translator dilleri](../language-support.md#customization).
 
+Bu belge aşağıdaki makale türlerini içerir:
+
+* [**Hızlı**](quickstart-build-deploy-custom-model.md) başlangıçlarda, hizmette istek yapma konusunda size kılavuzluk eden başlangıç yönergeleri bulunur.  
+* [**Nasıl yapılır kılavuzlarında**](how-to-create-project.md) , özelliği daha belirgin veya özelleştirilmiş yollarla kullanmaya yönelik yönergeler bulunur.  
+* [**Kavramlar**](workspace-and-project.md) , özellik işlevlerinin ayrıntılı açıklamalarını sağlar.  
+
+
 ## <a name="features"></a>Özellikler
 
-Özel çevirmen özel çeviri sistemi oluşturup daha sonra ona erişmek için farklı özellikler sağlar.
+Özel çevirmen, özel çeviri sistemi oluşturmak ve daha sonra ona erişmek için farklı özellikler sağlar.
 
 |Özellik  |Açıklama  |
 |---------|---------|
-|[Sinir makine çevirisi teknolojisinden yararlanın](https://www.microsoft.com/translator/blog/2016/11/15/microsoft-translator-launching-neural-network-based-translations-for-all-its-speech-languages/)     |  Özel çevirici tarafından sunulan sinir makine çevirisi (NMT) özelliğinden yararlanarak çevirinizi geliştirebilirsiniz.       |
+|[Sinir makine çevirisi teknolojisini Uygula](https://www.microsoft.com/translator/blog/2016/11/15/microsoft-translator-launching-neural-network-based-translations-for-all-its-speech-languages/)     |  Özel çevirici tarafından sunulan sinir makine çevirisi (NMT) uygulayarak çevirinizi geliştirebilirsiniz.       |
 |[İş terminolojinizi bilen yapı sistemleri](what-are-parallel-documents.md)     |  Kendi işinizde ve sektöründe kullanılan terimlerin anlayan paralel belgeler kullanarak çeviri sistemlerini özelleştirin ve oluşturun.       |
 |[Modellerinizi derlemek için sözlük kullanma](what-is-dictionary.md)     |   Eğitim verileri ayarlanmamışsa, bir modeli yalnızca sözlük verileriyle eğitebilirsiniz.       |
 |[Diğer kişilerle birlikte çalışma](how-to-manage-settings.md#share-your-workspace)     |   İşinizi farklı kişilerle paylaşarak ekibinizle işbirliği yapın.     |
@@ -52,7 +59,7 @@ Uygun tür ve eğitim verisi miktarı belirtilmişse, özel çevirici kullanarak
 
 Güvenli [özel çevirmen](https://portal.customtranslator.azure.ai) portalını kullanarak kullanıcılar eğitim verilerini karşıya yükleyebilir, sistemleri eğitebilir ve bunları bir üretim ortamına, sezgisel bir kullanıcı arabirimi aracılığıyla dağıtabilir. Daha sonra sistem birkaç saat içinde uygun ölçekte kullanılabilir olacaktır (gerçek zamanlı eğitim veri boyutuna bağlıdır).
 
-[Özel çevirmende](https://portal.customtranslator.azure.ai) programlı bir şekilde [adanmış bir API](https://custom-api.cognitive.microsofttranslator.com/swagger/) aracılığıyla erişilebilir (Şu anda önizleme aşamasındadır). API, kullanıcıların kendi uygulamaları veya Web hizmeti aracılığıyla düzenli olarak eğitim oluşturmayı veya güncelleştirmeyi yönetmesini sağlar.
+[Özel çevirmende](https://portal.customtranslator.azure.ai) programlı bir şekilde [adanmış bir API](https://custom-api.cognitive.microsofttranslator.com/swagger/) aracılığıyla erişilebilir (Şu anda önizleme aşamasındadır). API, kullanıcıların kendi uygulamaları veya Web hizmeti aracılığıyla eğitim oluşturma veya güncelleştirme yönetimini yönetmesine olanak tanır.
 
 İçeriği çevirmek için özel bir model kullanmanın maliyeti kullanıcının Translator Metin Çevirisi API'si fiyatlandırma katmanını temel alır. Fiyatlandırma Katmanı ayrıntıları için bilişsel Hizmetler [Translator metin çevirisi API'si fiyatlandırma web sayfasına](https://azure.microsoft.com/pricing/details/cognitive-services/translator-text-api/) bakın.
 

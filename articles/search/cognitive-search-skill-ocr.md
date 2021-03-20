@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/17/2020
 ms.openlocfilehash: 8b6a7c3e05b26cbda80ebf1a3fc0d4fed8255e6b
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/12/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91950814"
 ---
 # <a name="ocr-cognitive-skill"></a>OCR Bilişsel Beceri
@@ -51,13 +51,13 @@ Daha önce, yeteneğin "yazdırılmış" veya "el ile" metin ayıklanıp ayıkla
 
 ## <a name="skill-inputs"></a>Beceri girişleri
 
-| Giriş adı      | Açıklama                                          |
+| Giriş adı      | Description                                          |
 |---------------|------------------------------------------------------|
 | `image`         | Karmaşık tür. Şu anda yalnızca, ' ```imageAction``` den farklı bir değere ayarlandığında Azure Blob Indexer tarafından oluşturulan "/Document/normalized_images" alanı ile birlikte çalışıyor ```none``` . Daha fazla bilgi için [örneğe](#sample-output) bakın.|
 
 
 ## <a name="skill-outputs"></a>Yetenek çıkışları
-| Çıkış adı     | Açıklama                   |
+| Çıkış adı     | Description                   |
 |---------------|-------------------------------|
 | `text`            | Görüntüden ayıklanan düz metin.   |
 | `layoutText`    | Ayıklanan metni ve metnin bulunduğu konumu açıklayan karmaşık tür.|

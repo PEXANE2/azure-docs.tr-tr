@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 08/27/2020
 ms.author: jeedes
 ms.openlocfilehash: 3d102b492326971ef186ba50a557ad8d1df5b6ec
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92454210"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-egnyte"></a>Öğretici: Egnyut ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
@@ -28,7 +28,7 @@ Bu öğreticide, Azure Active Directory (Azure AD) ile nasıl tümleştirileceğ
 
 Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](../manage-apps/what-is-single-sign-on.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -58,7 +58,7 @@ Egnyleyler 'in Azure AD ile tümleştirilmesini yapılandırmak için, Galeriden
 
 ## <a name="configure-and-test-azure-ad-sso"></a>Azure AD SSO 'yu yapılandırma ve test etme
 
-Bu bölümde, Azure AD çoklu oturum açma 'yı, **Britta Simon**adlı bir test kullanıcısına bağlı olarak, egnylele yapılandırıp test edersiniz.
+Bu bölümde, Azure AD çoklu oturum açma 'yı, **Britta Simon** adlı bir test kullanıcısına bağlı olarak, egnylele yapılandırıp test edersiniz.
 Çoklu oturum açma 'nın çalışması için, bir Azure AD kullanıcısı ile ilgili Kullanıcı arasındaki bağlantı ilişkisinin kurulması gerekir.
 
 Azure AD çoklu oturum açma 'yı Egnler ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını gerçekleştirmeniz gerekir:
@@ -157,9 +157,9 @@ Bu bölümde, Cgnlarca erişimi vererek Azure çoklu oturum açma özelliğini k
 
     ![Çoklu oturum açma kimlik doğrulaması](./media/egnyte-tutorial/ic787822.png "Çoklu oturum açma kimlik doğrulaması")   
     
-    a. **Çoklu oturum açma kimlik doğrulaması**olarak **SAML 2,0**' i seçin.
+    a. **Çoklu oturum açma kimlik doğrulaması** olarak **SAML 2,0**' i seçin.
    
-    b. **Kimlik sağlayıcısı**olarak **azuread**' i seçin.
+    b. **Kimlik sağlayıcısı** olarak **azuread**' i seçin.
    
     c. Azure portal 'den kopyalanmış **oturum açma URL** 'sini **kimlik sağlayıcısı oturum açma URL 'si** metin kutusuna kopyalayın.
    
@@ -167,9 +167,9 @@ Bu bölümde, Cgnlarca erişimi vererek Azure çoklu oturum açma özelliğini k
       
     e. Azure portal 'den indirilen Not defteri 'nde Base-64 kodlu sertifikanızı açın, içeriğini panonuza kopyalayın ve ardından **kimlik sağlayıcısı sertifikası** metin kutusuna yapıştırın.
    
-    f. **Varsayılan kullanıcı eşlemesi**olarak **e-posta adresi**' ni seçin.
+    f. **Varsayılan kullanıcı eşlemesi** olarak **e-posta adresi**' ni seçin.
    
-    örneğin: **Etki alanına özgü veren değerini kullanmak**için **devre dışı**' yı seçin.
+    örneğin: **Etki alanına özgü veren değerini kullanmak** için **devre dışı**' yı seçin.
    
     h. **Kaydet**’e tıklayın.
 
@@ -191,11 +191,11 @@ Azure AD kullanıcılarının, Egnler 'de oturum açmasını sağlamak için, bu
     
     ![Yeni standart Kullanıcı](./media/egnyte-tutorial/ic787825.png "Yeni standart Kullanıcı")   
 
-    a. **E-posta** metin kutusuna, **Brittasıon \@ contoso.com**gibi kullanıcının e-postasını girin.
+    a. **E-posta** metin kutusuna, **Brittasıon \@ contoso.com** gibi kullanıcının e-postasını girin.
 
-    b. Kullanıcı **adı** metin kutusuna, **Brittasıon**gibi kullanıcının Kullanıcı adını girin.
+    b. Kullanıcı **adı** metin kutusuna, **Brittasıon** gibi kullanıcının Kullanıcı adını girin.
 
-    c. **Kimlik doğrulama türü**olarak **Çoklu oturum açma** seçeneğini belirleyin.
+    c. **Kimlik doğrulama türü** olarak **Çoklu oturum açma** seçeneğini belirleyin.
    
     d. **Kaydet**’e tıklayın.
     

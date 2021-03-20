@@ -4,17 +4,17 @@ titleSuffix: Azure Kubernetes Service
 description: Azure Kubernetes Service (AKS) kümesinde çıkış trafiği için statik bir genel IP adresi oluşturma ve kullanma hakkında bilgi edinin
 services: container-service
 ms.topic: article
-ms.date: 03/04/2019
-ms.openlocfilehash: 2eefeecfa550683dafcf66d936837e2a891c4c84
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.date: 03/16/2021
+ms.openlocfilehash: e1f81bf4c4d35108557449a8bebd126bdf744191
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101726555"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104592379"
 ---
 # <a name="use-a-static-public-ip-address-for-egress-traffic-with-a-basic-sku-load-balancer-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) içindeki *temel* SKU yük dengeleyiciye çıkış trafiği için statik BIR genel IP adresi kullanın
 
-Varsayılan olarak, bir Azure Kubernetes Service (AKS) kümesinden çıkış IP adresi rastgele atanır. Örneğin, dış hizmetlere erişim için bir IP adresi belirlemeniz gerektiğinde bu yapılandırma ideal değildir. Bunun yerine, hizmet erişimi için bir izin verilenler listesine eklenmek üzere statik bir IP adresi atamanız gerekebilir.
+Varsayılan olarak, bir Azure Kubernetes Service (AKS) kümesinden çıkış IP adresi rastgele atanır. Örneğin, dış hizmetlere erişim için bir IP adresi belirlemeniz gerektiğinde bu yapılandırma ideal değildir. Bunun yerine, hizmet erişimi için bir izin öğesine eklenmek üzere statik bir IP adresi atamanız gerekebilir.
 
 Bu makalede, bir AKS kümesinde çıkış trafiği ile kullanmak üzere statik bir genel IP adresi oluşturma ve kullanma işlemlerinin nasıl yapılacağı gösterilir.
 
@@ -107,7 +107,7 @@ Statik ortak IP adresinin kullanıldığını doğrulamak için, gibi DNS arama 
 Başlangıç ve temel bir *deni* Pod 'a iliştirme:
 
 ```console
-kubectl run -it --rm aks-ip --image=debian
+kubectl run -it --rm aks-ip --image=mcr.microsoft.com/aks/fundamental/base-ubuntu:v0.0.11
 ```
 
 Kapsayıcının içinden bir Web sitesine erişmek için, `apt-get` kapsayıcıya yüklemek için kullanın `curl` .

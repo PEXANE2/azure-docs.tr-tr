@@ -17,10 +17,10 @@ ms.author: billmath
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e0b76d2f943f254eb06208e2c190bae4d4088030
-ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/24/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98746079"
 ---
 # <a name="risky-ip-report-public-preview"></a>Riskli IP raporu (Genel Önizleme)
@@ -41,7 +41,7 @@ Ayrıca, tek bir IP adresinin birden fazla kullanıcıya karşı birden çok otu
 ## <a name="what-is-in-the-report"></a>Raporda ne var?
 Başarısız oturum açma etkinliği istemci IP adresleri, Web uygulaması ara sunucuları aracılığıyla toplanır. Riskli IP raporundaki her bir öğe, belirlenmiş eşiği aşan başarısız AD FS oturum açma etkinlikleri hakkında toplu bilgiler gösterir. Aşağıdaki bilgileri sağlar: ![ sütun başlıkları vurgulanmış riskli BIR IP raporu gösteren ekran görüntüsü.](./media/how-to-connect-health-adfs/report4a.png)
 
-| Rapor Öğesi | Açıklama |
+| Rapor Öğesi | Description |
 | ------- | ----------- |
 | Zaman Damgası | Algılama zaman penceresi başladığında Azure portalı yerel saatini temel alan zaman damgasını gösterir.<br /> Tüm günlük olaylar UTC saat diliminde gece yarısı oluşturulur. <br />Saatlik olayların zaman damgası saat başına yuvarlanır. Birinci etkinlik başlangıç saatini dışarı aktarılan dosyadaki "firstAuditTimestamp" içinde bulabilirsiniz. |
 | Tetikleyici Türü | Algılama zaman penceresinin türünü gösterir. Toplama tetikleyici türleri saat veya gün başınadır. Bu türler, yüksek sıklıktaki bir deneme yanılma saldırısı ile deneme sayısının gün geneline dağıtıldığı yavaş bir saldırı arasında karşılaştırmalı algılamaya yardımcı olur. |
@@ -68,7 +68,7 @@ Yük dengeleyici, başarısız oturum açma etkinliklerini topladı ve uyarı e�
 ## <a name="download-risky-ip-report"></a>Riskli IP raporu indir 
 **İndirme** işlevi kullanılarak, son 30 gün içindeki tüm riskli IP adresi listesi Connect Health Portalından dışarı aktarılabilir. Dışarı aktarma sonucu, her bir algılama zaman penceresindeki tüm başarısız AD FS oturum açma girişimlerini içerir, böylece dışarı aktarma sonrasında filtrelemeyi özelleştirebilirsiniz. Dışarı aktarma sonucunda, portalda vurgulanan toplamaların yanı sıra her bir IP adresi için başarısız oturum açma etkinliklerine ilişkin daha fazla ayrıntı gösterilmektedir:
 
-|  Rapor Öğesi  |  Açıklama  | 
+|  Rapor Öğesi  |  Description  | 
 | ------- | ----------- | 
 | firstAuditTimestamp | Algılama zaman penceresi sırasında başarısız etkinlikler başlatıldığında ilk zaman damgasını gösterir.  | 
 | lastAuditTimestamp | Algılama zaman penceresi sırasında başarısız etkinlikler sonlandırıldığında son zaman damgasını gösterir.  | 
@@ -83,7 +83,7 @@ Uyarı eşiği, Eşik Ayarları üzerinden güncelleştirilebilir. Başlangıç 
 
 ![Azure AD Connect Health Portalı](./media/how-to-connect-health-adfs/report4d.png)
 
-| Eşik Öğesi | Açıklama |
+| Eşik Öğesi | Description |
 | --- | --- |
 | (Hatalı U/P + Extranet Kilitleme) / Gün  | Hatalı Parola sayısı ile Extranet Kilitleme sayısının **gün** başına toplamı daha fazla olduğunda etkinliği bildirme ve uyarı bildirimini tetikleme eşiği ayarı. Varsayılan değer 100 ' dir.|
 | (Hatalı U/P + Extranet Kilitleme) / Saat | Hatalı Parola sayısı ile Extranet Kilitleme sayısının **saat** başına toplamı daha fazla olduğunda etkinliği bildirme ve uyarı bildirimini tetikleme eşiği ayarı. Varsayılan değer 50 ' dir.|

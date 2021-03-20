@@ -14,10 +14,10 @@ ms.author: nacanuma
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.openlocfilehash: 8080d4cf4c3f0091f7837b3fccead5474c42db55
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "84690787"
 ---
 # <a name="single-sign-on-with-msaljs"></a>MSAL.js ile çoklu oturum açma
@@ -87,7 +87,7 @@ Uygulama bildiriminizde isteğe bağlı talepler yapılandırma adımlarını [b
 
 **Oturum açma Ipucu kullanma**
 
-SID talebi yapılandırılmamışsa veya etkileşimli kimlik doğrulama çağrılarında hesap seçimi istemi 'ni atlamanıza gerek yoksa, `login_hint` istek parametrelerinde bir ve isteğe bağlı `domain_hint` olarak `extraQueryParameters` MSAL.js etkileşimli metotlarda ( `loginPopup` , `loginRedirect` , `acquireTokenPopup` ve `acquireTokenRedirect` ) bir olarak belirterek bunu yapabilirsiniz. Örneğin:
+SID talebi yapılandırılmamışsa veya etkileşimli kimlik doğrulama çağrılarında hesap seçimi istemi 'ni atlamanıza gerek yoksa, `login_hint` istek parametrelerinde bir ve isteğe bağlı `domain_hint` olarak `extraQueryParameters` MSAL.js etkileşimli metotlarda ( `loginPopup` , `loginRedirect` , `acquireTokenPopup` ve `acquireTokenRedirect` ) bir olarak belirterek bunu yapabilirsiniz. Örnek:
 
 ```javascript
 var request = {

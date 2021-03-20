@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 04/01/2019
 ms.author: jeedes
 ms.openlocfilehash: 2230958fb41d8e42967beeca57cf10ea048d1ef9
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92453476"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-firmplay---employee-advocacy-for-recruiting"></a>Öğretici: Firmaslay için çalışanların tümleştirilmesine Azure Active Directory tümleştirme
@@ -30,7 +30,7 @@ Azure AD ile sorumlu olarak FirmPlay ve çalışan savunmasına tümleştirme, a
 Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](../manage-apps/what-is-single-sign-on.md).
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure AD tümleştirmesini muhasebe personeli için çalışanlar ile birlikte yapılandırmak için aşağıdaki öğeler gereklidir:
 
@@ -61,13 +61,13 @@ Azure AD 'ye bir Işe alma için FirmPlay-çalışan Danışmanı tümleştirmes
 
     ![Yeni uygulama düğmesi](common/add-new-app.png)
 
-4. Ara kutusuna **sorumlu Için Firmplay-çalışan**Danışmanı yazın, sonuç panelinden **sorumlu Için firmplay** ' ı seçin, sonra da uygulamayı eklemek için **Ekle** düğmesine tıklayın.
+4. Ara kutusuna **sorumlu Için Firmplay-çalışan** Danışmanı yazın, sonuç panelinden **sorumlu Için firmplay** ' ı seçin, sonra da uygulamayı eklemek için **Ekle** düğmesine tıklayın.
 
      ![FirmPlay-sonuç listesinde Işe alma için çalışan Danışmanı](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-Bu bölümde, Azure AD çoklu oturum açma 'yı, **Britta Simon**adlı bir test kullanıcısına dayalı olarak işe alma için çalışanlar Için, FirmPlay ile yapılandırıp test edersiniz.
+Bu bölümde, Azure AD çoklu oturum açma 'yı, **Britta Simon** adlı bir test kullanıcısına dayalı olarak işe alma için çalışanlar Için, FirmPlay ile yapılandırıp test edersiniz.
 Çoklu oturum açma için, bir Azure AD kullanıcısı ile ilgili Kullanıcı arasındaki bir bağlantı ilişkisinin, sorumlu iş personeli için çalışanlar ve çalışanların kurulması gerekir.
 
 Azure AD çoklu oturum açmayı yapılandırmak ve test etmek için Firmaori 'nin Işe yaramasına izin vermek için aşağıdaki yapı taşlarını gerçekleştirmeniz gerekir:
@@ -140,7 +140,7 @@ Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı ol
 
     ![Kullanıcı iletişim kutusu](common/user-properties.png)
 
-    a. **Ad** alanına **Brittasıon**girin.
+    a. **Ad** alanına **Brittasıon** girin.
   
     b. **Kullanıcı adı** alanına yazın brittasimon@yourcompanydomain.extension . Örneğin, BrittaSimon@contoso.com
 
@@ -152,11 +152,11 @@ Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı ol
 
 Bu bölümde, Azure çoklu oturum açma özelliğini kullanarak, firmanın Işe alma için çalışanlar için erişim izni vererek Britta Simon 'u etkinleştirin.
 
-1. Azure portal **Kurumsal uygulamalar**' ı seçin, **tüm uygulamalar**' ı seçin, ardından **Işe alma Için firmplay-çalışan**Danışmanı ' nı seçin.
+1. Azure portal **Kurumsal uygulamalar**' ı seçin, **tüm uygulamalar**' ı seçin, ardından **Işe alma Için firmplay-çalışan** Danışmanı ' nı seçin.
 
     ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
-2. Uygulamalar listesinde, **sorumlu Için Firmplay-personel**Danışmanı ' nı seçin.
+2. Uygulamalar listesinde, **sorumlu Için Firmplay-personel** Danışmanı ' nı seçin.
 
     ![Uygulamalar listesinde FirmPlay-Işe alma için çalışanlar arası bağlantı](common/all-applications.png)
 

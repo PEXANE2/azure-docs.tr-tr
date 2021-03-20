@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 02/12/2020
 ms.author: jeedes
 ms.openlocfilehash: dcf64e6538140905e00e0fcd9d0383f15e8ad95a
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92453680"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-ezofficeinventory"></a>Öğretici: Ezofficeenvanteriyle çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
@@ -28,7 +28,7 @@ Bu öğreticide, Ezofficeenvanterinin Azure Active Directory (Azure AD) ile nas�
 
 Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](../manage-apps/what-is-single-sign-on.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -59,7 +59,7 @@ Ezofficeenvanterinin Azure AD ile tümleştirilmesini yapılandırmak için, Gal
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-ezofficeinventory"></a>Ezofficeenvanterinde Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-**B. Simon**adlı bir test kullanıcısı kullanarak, Azure AD SSO 'Yu Ezofficeenvanteriyle yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ve Ezofficeenvanterinde ilgili Kullanıcı arasında bağlantı ilişkisi oluşturmanız gerekir.
+**B. Simon** adlı bir test kullanıcısı kullanarak, Azure AD SSO 'Yu Ezofficeenvanteriyle yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ve Ezofficeenvanterinde ilgili Kullanıcı arasında bağlantı ilişkisi oluşturmanız gerekir.
 
 Azure AD SSO 'yu Ezofficeınventory ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
 
@@ -139,7 +139,7 @@ Bu bölümde, Ezofficeenvanterine erişim vererek Azure çoklu oturum açma öze
 
 ## <a name="configure-ezofficeinventory-sso"></a>Ezofficeınventory SSO 'yu yapılandırma
 
-1. Ezofficeınventory içindeki yapılandırmayı otomatik hale getirmek için, **uzantıyı yüklemek**üzere **uygulamalar güvenli oturum açma tarayıcı uzantısı** ' nı yüklemeniz gerekir.
+1. Ezofficeınventory içindeki yapılandırmayı otomatik hale getirmek için, **uzantıyı yüklemek** üzere **uygulamalar güvenli oturum açma tarayıcı uzantısı** ' nı yüklemeniz gerekir.
 
     ![Uygulamalarım uzantısı](common/install-myappssecure-extension.png)
 
@@ -165,11 +165,11 @@ Bu bölümde, Ezofficeenvanterine erişim vererek Azure çoklu oturum açma öze
 
     d. **Oturum aç düğmesi metin** metin kutusunda, oturum açma düğmesi metnini girin.
 
-    e. **Ad** metin kutusuna **First_name**girin.
+    e. **Ad** metin kutusuna **First_name** girin.
 
-    f. **Son ad** metin kutusuna **last_name**girin.
+    f. **Son ad** metin kutusuna **last_name** girin.
 
-    örneğin: **E-posta** metin kutusuna **e-posta**girin.
+    örneğin: **E-posta** metin kutusuna **e-posta** girin.
 
     h. Varsayılan seçenek olarak, **Ezofficeenvanter rolü** ' nden gereksiniminize göre rolünüzü seçin.
 

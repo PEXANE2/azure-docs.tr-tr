@@ -9,10 +9,10 @@ ms.subservice: keys
 ms.topic: quickstart
 ms.custom: devx-track-csharp
 ms.openlocfilehash: cecf8330b7060a4cbc4691f64571a3c7865c575c
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/06/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97935266"
 ---
 # <a name="quickstart-azure-key-vault-key-client-library-for-net-sdk-v4"></a>Hızlı başlangıç: .NET için Azure Key Vault anahtar istemci kitaplığı (SDK v4)
@@ -27,7 +27,7 @@ Key Vault ve anahtarları hakkında daha fazla bilgi için bkz.:
 - [Key Vault genel bakış](../general/overview.md)
 - [Anahtarlara genel bakış](about-keys.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/dotnet)
 * [.NET Core 3,1 SDK veya üzeri](https://dotnet.microsoft.com/download/dotnet-core)
@@ -124,7 +124,7 @@ export KEY_VAULT_NAME=<your-key-vault-name>
 
 ### <a name="add-directives"></a>Yönergeler ekleme
 
-Aşağıdaki yönergeleri *program.cs*' nin en üstüne ekleyin:
+Aşağıdaki yönergeleri *program. cs*' nin en üstüne ekleyin:
 
 ```csharp
 using System;
@@ -182,7 +182,7 @@ await client.PurgeDeletedKeyAsync("myKey");
 
 Aşağıdaki adımları tamamlayarak, .NET Core konsol uygulamasını Key Vault etkileşimde bulunmak üzere değiştirin:
 
-- *Program.cs* içindeki kodu aşağıdaki kodla değiştirin:
+- *Program. cs* dosyasındaki kodu aşağıdaki kodla değiştirin:
 
     ```csharp
     using System;

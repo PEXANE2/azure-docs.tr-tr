@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 09/10/2020
 ms.author: mbullwin
 ms.openlocfilehash: 7923dad3d47122c0ceb04d1240736e2b66a0dd64
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/14/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92048262"
 ---
 # <a name="how-to-configure-metrics-and-fine-tune-detecting-configuration"></a>Nasıl yapılır: ölçümleri yapılandırma ve yapılandırmayı algılama ince ayar
@@ -43,9 +43,9 @@ Bir ölçüm, bir veya daha fazla algılama yapılandırması uygulayabilir. Her
 
 Bu yapılandırma, ayrı bir yapılandırmaya sahip olanlar hariç, bu ölçümdeki tüm seriye uygulanır. Ölçüm düzeyi yapılandırması, veriler eklendi olduğunda varsayılan olarak uygulanır ve sol bölmede gösterilir. Kullanıcılar ölçüm düzeyi yapılandırmasını ölçüm sayfasında doğrudan düzenleyebilir. 
 
-**Yön**ve yapılandırmayı daha fazla ayarlamak Için kullanılabilecek **geçerli anomali** gibi ek parametreler vardır. Farklı algılama yöntemlerini de birleştirebilirsiniz. 
+**Yön** ve yapılandırmayı daha fazla ayarlamak Için kullanılabilecek **geçerli anomali** gibi ek parametreler vardır. Farklı algılama yöntemlerini de birleştirebilirsiniz. 
 
-:::image type="content" source="../media/configuration-combination.png" alt-text="Ölçüm seçin" lightbox="../media/configuration-combination.png":::
+:::image type="content" source="../media/configuration-combination.png" alt-text="Yapılandırma birleşimi" lightbox="../media/configuration-combination.png":::
 
 ### <a name="tune-the-configuration-for-a-specific-series-or-group"></a>Belirli bir serinin veya grubun yapılandırmasını ayarlama
 
@@ -53,7 +53,7 @@ Grup düzeyi yapılandırmasını görmek için ölçüm düzeyi yapılandırma 
 
 Bu yapılandırma, ölçüm düzeyi yapılandırması yerine serinin veya belirli bir serinin grubuna uygulanır. Bu grubun koşullarını ayarladıktan sonra kaydedin.
 
-:::image type="content" source="../media/advanced-configuration.png" alt-text="Ölçüm seçin" lightbox="../media/advanced-configuration.png":::
+:::image type="content" source="../media/advanced-configuration.png" alt-text="Gelişmiş yapılandırma" lightbox="../media/advanced-configuration.png":::
 
 ### <a name="anomaly-detection-methods"></a>Anomali algılama yöntemleri
 
@@ -68,15 +68,15 @@ Akıllı algılama modunda, anomali algılama sonucunu ayarlamak için duyarlıl
 
 Duyarlılık, her bir noktanın beklenen değer aralığının genişliğini etkileyebilir. Artış arttıkça, beklenen değer aralığı daha sıkı olacaktır ve daha fazla bilgi bildirilir:
 
-:::image type="content" source="../media/metrics/smart-detection-high-sensitivity.png" alt-text="Ölçüm seçin":::
+:::image type="content" source="../media/metrics/smart-detection-high-sensitivity.png" alt-text="Yüksek duyarlılığa sahip akıllı algılama":::
 
 Duyarlılık kapatıldığında, beklenen değer aralığı daha geniş olur ve daha az anomali bildirilir:
 
-:::image type="content" source="../media/metrics/smart-detection-low-sensitivity.png" alt-text="Ölçüm seçin":::
+:::image type="content" source="../media/metrics/smart-detection-low-sensitivity.png" alt-text="Düşük duyarlılık ile akıllı algılama":::
 
 **Değişiklik eşiği** 
 
-Ölçüm verileri genellikle belirli bir Aralık etrafında kaldığında değişiklik eşiği genellikle kullanılır. Eşik, **değişim yüzdesine**göre ayarlanır. **Değişiklik eşiği** modu, senaryolardaki anormallikleri tespit edebilir:
+Ölçüm verileri genellikle belirli bir Aralık etrafında kaldığında değişiklik eşiği genellikle kullanılır. Eşik, **değişim yüzdesine** göre ayarlanır. **Değişiklik eşiği** modu, senaryolardaki anormallikleri tespit edebilir:
 
 * Verileriniz normalde kararlı ve sorunsuz olur. Dalgalanmalar olduğunda size bildirilmesini isteyebilirsiniz.
 * Verileriniz normalde oldukça kararsız ve çok fazla dalgalanmaktadır. Çok kararlı veya düz hale geldiğinde size bildirilmesini isteyebilirsiniz.
@@ -85,16 +85,16 @@ Bu modu kullanmak için aşağıdaki adımları kullanın:
 
 1. Ölçümleriniz veya zaman seriniz için anomali algılama yapılandırmasını ayarladığınızda, anomali algılama yönteminiz için **eşiği Değiştir** ' i seçin.
     
-    :::image type="content" source="../media/metrics/change-threshold.png" alt-text="Ölçüm seçin":::
+    :::image type="content" source="../media/metrics/change-threshold.png" alt-text="değişiklik eşiği":::
 
 2. Senaryonuza bağlı olarak **aralığın dışına** veya **Aralık** parametresini seçin.
 
     Dalgalanmaları saptamak istiyorsanız **aralığın dışında**' yı seçin. Örneğin, aşağıdaki ayarlarla, önceki bir ile karşılaştırıldığında %10 ' dan fazla değişiklik yapan tüm veri noktaları, bir aykırı değer olarak algılanır.
-    :::image type="content" source="../media/metrics/out-of-the-range.png" alt-text="Ölçüm seçin":::
+    :::image type="content" source="../media/metrics/out-of-the-range.png" alt-text="Aralık dışı parametre":::
 
-    Verilerinizde düz çizgileri algılamak isterseniz, **Aralık içinde**öğesini seçin. Örneğin, aşağıdaki ayarlarla, Öncekiyle karşılaştırıldığında% 0,01 ' de değişen herhangi bir veri noktası, bir aykırı değer olarak algılanır. Eşik bu kadar küçük (% 0,01%) olduğundan, verilerde düz çizgileri mantıksal olarak algılar.
+    Verilerinizde düz çizgileri algılamak isterseniz, **Aralık içinde** öğesini seçin. Örneğin, aşağıdaki ayarlarla, Öncekiyle karşılaştırıldığında% 0,01 ' de değişen herhangi bir veri noktası, bir aykırı değer olarak algılanır. Eşik bu kadar küçük (% 0,01%) olduğundan, verilerde düz çizgileri mantıksal olarak algılar.
 
-    :::image type="content" source="../media/metrics/in-the-range.png" alt-text="Ölçüm seçin":::
+    :::image type="content" source="../media/metrics/in-the-range.png" alt-text="Aralık parametresinde":::
 
 3. Bir anomali olarak sayılacak değişiklik yüzdesini ayarlayın ve daha önce yakalanan veri noktalarının karşılaştırma için kullanılacağı süreyi belirleyin. Bu karşılaştırma her zaman geçerli veri noktası arasında ve öncesinde tek bir veri noktası N puntodur.
     
@@ -117,7 +117,7 @@ Bazen beklenen olaylar ve oluşum (tatiller gibi) anormal veri üretebilir. Önc
 
 Her ölçüm ayrıntıları sayfasındaki ölçümler açılan listesinin yanındaki **önceden ayarlanmış olayı Yapılandır** düğmesine tıklayın.
  
-:::image type="content" source="../media/metrics/preset-event-button.png" alt-text="Ölçüm seçin":::
+:::image type="content" source="../media/metrics/preset-event-button.png" alt-text="önceden ayarlanmış olay düğmesi":::
 
 Görüntülenen pencerede, seçenekleri kullanımınıza göre yapılandırın. Yapılandırmayı kullanmak için **tatil olayını etkinleştir** ' in seçildiğinden emin olun. 
 
@@ -146,7 +146,7 @@ Her ayrıntı düzeyi için tüm seçenekler seçilebilir değildir. Ayrıntı d
 | Ayrıntı düzeyi | YoY | An | WoW | DoD |
 |:-|:-|:-|:-|:-|
 | Yıllık | X | X | X | X |
-| Aylık olarak | X | X | X | X |
+| Aylık | X | X | X | X |
 | Haftalık | ✔ | X | X | X |
 | Günlük | ✔ | ✔ | ✔ | X |
 | Saatlik | ✔ | ✔ | ✔ | ✔ |
@@ -161,7 +161,7 @@ X-kullanılamıyor.
 
 Cycle olayı, döngüsel bir düzende takip ettikleri anormallikleri azaltmak için kullanılır, ancak birden fazla veri noktası bu kalıbı izlerse anomali bildirir. **Katı mod** , tek bir veri noktası, modele izmese bile anomali Raporlamayı etkinleştirmek için kullanılır. 
 
-:::image type="content" source="../media/metrics/preset-events.png" alt-text="Ölçüm seçin":::
+:::image type="content" source="../media/metrics/preset-events.png" alt-text="önceden ayarlanmış olay yapılandırması":::
 
 ## <a name="view-recent-incidents"></a>Son olayları görüntüle
 

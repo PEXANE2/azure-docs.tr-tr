@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.custom: how-to,automl,contperf-fy21q2
 ms.date: 12/18/2020
 ms.openlocfilehash: c90ef9fe49a87c18c7f4f55175bafaebfd31d722
-ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/20/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98610310"
 ---
 # <a name="data-featurization-in-automated-machine-learning"></a>Otomatik makine öğreniminde veri korleştirme
@@ -65,11 +65,11 @@ Aşağıdaki tabloda verilerinize otomatik olarak uygulanan teknikler özetlenme
 
 |Korturlama &nbsp; adımları| Description |
 | ------------- | ------------- |
-|**Yüksek kardinalite bırakma veya varyans özellikleri yok** _ |Bu özellikleri eğitim ve doğrulama kümelerinden bırakın. Tüm satırlarda veya yüksek kardinalite (örneğin, karmaları, kimlikler veya GUID 'Ler) ile aynı değere sahip tüm değerleri eksik olan özellikler için geçerlidir.|
-|_*Impute eksik değerler**_ |Sayısal özellikler için, sütundaki değerlerin ortalaması ile ımpute.<br/><br/>Kategorik özellikler için en sık kullanılan değer ile ımpute.|
-|_*Daha fazla özellik Oluştur**_ |Tarih saat özellikleri için: yıl, ay, gün, haftanın günü, yılın günü, üç aylık dönem, yılın haftası, saat, dakika, saniye.<br><br> Görevleri tahmin _For, * bu ek tarih saat özellikleri oluşturulur: ISO yılı, yarı yarı yıl, gün olarak Takvim, hafta, hafta günü, haftanın günü, haftanın günü, yıl günü, yıl/saat (0), saat, günün saati (12-SA tabanlı)<br/><br/>Metin özellikleri için: tek tek gram, bigram ve trigram temelinde Dönem sıklığı. [BERT ile bunun nasıl yapılacağı](#bert-integration) hakkında daha fazla bilgi edinin.|
-|**Dönüştür ve kodla** _|Çok sayıda benzersiz değere sahip sayısal özellikleri kategorik Özellikler halinde dönüştürün.<br/><br/>Tek yönlü kodlama, düşük önemlilik kategorik özellikleri için kullanılır. Yüksek kardinalite kategorik özellikler için tek bir Hot-Hash kodlaması kullanılır.|
-|_ *Sözcük katıştırlamaları**|Bir metin kullanımı, metin belirteçlerinin vektörlerini, önceden eğitilen bir model kullanarak tümce vektörlerine dönüştürür. Belgedeki her bir sözcüğün katıştırma vektörü, bir belge özelliği vektörü oluşturmak için geri kalan ile toplanır.|
+|**Yüksek önem düzeyi bırakma veya fark özelliği yok*** |Bu özellikleri eğitim ve doğrulama kümelerinden bırakın. Tüm satırlarda veya yüksek kardinalite (örneğin, karmaları, kimlikler veya GUID 'Ler) ile aynı değere sahip tüm değerleri eksik olan özellikler için geçerlidir.|
+|**Impute eksik değerler*** |Sayısal özellikler için, sütundaki değerlerin ortalaması ile ımpute.<br/><br/>Kategorik özellikler için en sık kullanılan değer ile ımpute.|
+|**Daha fazla özellik oluştur** _ |Tarih saat özellikleri için: yıl, ay, gün, haftanın günü, yılın günü, üç aylık dönem, yılın haftası, saat, dakika, saniye.<br><br> Görevleri tahmin _For, * bu ek tarih saat özellikleri oluşturulur: ISO yılı, yarı yarı yıl, gün olarak Takvim, hafta, hafta günü, haftanın günü, haftanın günü, yıl günü, yıl/saat (0), saat, günün saati (12-SA tabanlı)<br/><br/>Metin özellikleri için: tek tek gram, bigram ve trigram temelinde Dönem sıklığı. [BERT ile bunun nasıl yapılacağı](#bert-integration) hakkında daha fazla bilgi edinin.|
+|**Dönüştür ve kodla***|Çok sayıda benzersiz değere sahip sayısal özellikleri kategorik Özellikler halinde dönüştürün.<br/><br/>Tek yönlü kodlama, düşük önemlilik kategorik özellikleri için kullanılır. Yüksek kardinalite kategorik özellikler için tek bir Hot-Hash kodlaması kullanılır.|
+|**Sözcük katıştırlamaları**|Bir metin kullanımı, metin belirteçlerinin vektörlerini, önceden eğitilen bir model kullanarak tümce vektörlerine dönüştürür. Belgedeki her bir sözcüğün katıştırma vektörü, bir belge özelliği vektörü oluşturmak için geri kalan ile toplanır.|
 |**Küme uzaklığı**|K. a, tüm sayısal sütunlarda kümeleme modeli anlamına gelir. Her bir örneğin her bir kümenin centroıd değerine her birinin uzaklığını içeren *k* yeni özellikler (küme başına yeni bir sayısal özellik) üretir.|
 
 ## <a name="data-guardrails"></a>Veri, guardrayları

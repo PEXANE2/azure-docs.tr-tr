@@ -4,10 +4,10 @@ description: Bu makalede, bir temel (özel görüntü, Market görüntüsü veya
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: f012a8c59a8e938334c3e1abc4c7b3ccd0e48d3e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91308903"
 ---
 # <a name="manage-azure-devtest-labs-formulas"></a>Azure DevTest Labs formülleri yönetme
@@ -39,7 +39,7 @@ Aşağıdaki adımlar özel görüntüden, Market görüntüsünden veya başka 
     ![Formül Ekle](./media/devtest-lab-create-formulas/add-formula.png)
 6. **Temel seçin** sayfasında, formülü oluşturmak istediğiniz temel (özel görüntü, Market görüntüsü veya paylaşılan görüntü Galerisi görüntüsünü) seçin.
 
-    :::image type="content" source="./media/devtest-lab-create-formulas/select-base.png" alt-text="Temel görüntüyü seçin&quot;:::
+    :::image type="content" source="./media/devtest-lab-create-formulas/select-base.png" alt-text="Temel görüntüyü seçin":::
 1. **Formül oluştur** sayfasının **temel ayarlar** sekmesinde, aşağıdaki değerleri belirtin:
    
     * **Formül adı** -formülünüz için bir ad girin. Bu değer, bir VM oluşturduğunuzda temel görüntüler listesinde görüntülenir. Ad siz yazarken onaylanır ve geçerli değilse, bir ileti geçerli bir ad için gereksinimleri gösterir.
@@ -58,9 +58,9 @@ Aşağıdaki adımlar özel görüntüden, Market görüntüsünden veya başka 
     - **Alt ağ** -alt ağı değiştirmek Için **alt ağı Değiştir**' i seçin. 
     - **IP adresi yapılandırması** -genel, özel veya paylaşılan IP adreslerini istediğinizi belirtin. Paylaşılan IP adresleri hakkında daha fazla bilgi için bkz. [Azure DevTest Labs PAYLAŞıLAN IP adreslerini anlama](./devtest-lab-shared-ip.md).
     - **Sona erme tarihi ve saati** -bu alanı düzenleyemezsiniz. 
-    - **Bu makineyi çakışmadan oluşturun** -makinenin &quot;çakışmaz&quot; olması, oluşturma sırasında sahiplik atanmayacağı anlamına gelir. Bunun yerine, laboratuar kullanıcıları laboratuvar sayfasında makineye sahiplik (&quot;talep&quot;) alabilir.  
+    - **Bu makineyi çakışmadan oluşturun** -makinenin "çakışmaz" olması, oluşturma sırasında sahiplik atanmayacağı anlamına gelir. Bunun yerine, laboratuar kullanıcıları laboratuvar sayfasında makineye sahiplik ("talep") alabilir.  
 
-        ![&quot;Formül oluştur (yeniden kullanılabilir temel)" sayfasının Gelişmiş ayarlarını gösteren ekran görüntüsü.](./media/devtest-lab-create-formulas/advanced-settings.png)
+        !["Formül oluştur (yeniden kullanılabilir temel)" sayfasının Gelişmiş ayarlarını gösteren ekran görüntüsü.](./media/devtest-lab-create-formulas/advanced-settings.png)
     - Temel olarak paylaşılan bir görüntü Galerisi görüntüsü seçtiyseniz, temel olarak kullanmak istediğiniz galerideki görüntünün sürümünü seçmenizi sağlayan **görüntü sürümü** alanını da görürsünüz. 
 
         ![Gelişmiş ayarlar sayfası](./media/devtest-lab-create-formulas/advanced-settings-shared-image-gallery.png)

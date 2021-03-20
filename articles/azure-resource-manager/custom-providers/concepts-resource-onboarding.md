@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 09/06/2019
 ms.author: jobreen
 ms.openlocfilehash: 1846b036f12fe7e691021ec0248782cad946d9b7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "75650415"
 ---
 # <a name="azure-custom-providers-resource-onboarding-overview"></a>Azure özel sağlayıcılar kaynak eklemeye genel bakış
@@ -23,7 +23,7 @@ Azure özel sağlayıcılar kaynak ekleme, Azure Kaynak türleri için bir geni�
 > [!IMPORTANT]
 > Özel sağlayıcılar Şu anda genel önizlemededir.
 > Bu önizleme sürümü bir hizmet düzeyi sözleşmesi olmadan sağlanır ve bunu üretim iş yükleri için önermiyoruz. Bazı özellikler desteklenmeyebilir veya kısıtlı özelliklere sahip olabilir.
-> Daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="what-can-resource-onboarding-do"></a>Kaynak ekleme ne yapabilir?
 
@@ -54,16 +54,16 @@ Microsoft. CustomProviders/resourceProviders ve Microsoft. CustomProviders/Assoc
 }
 ```
 
-Özellik | Gerekli mi? | Açıklama
+Özellik | Gerekli mi? | Description
 ---|---|---
-name | Evet | Uç nokta tanımının adı. Kaynak ekleme için, adın "ilişkilendirmeler" olması gerekir.
-routingType | Evet | Uç nokta ile sözleşmenin türünü belirler. Kaynak ekleme için geçerli **Routingtypes** "proxy, önbellek, uzantı" ve "Web kancası, önbellek, uzantı" dır.
-endpoint | Evet | İsteklerin yönlendirileceği uç nokta. Bu işlem, isteğin tüm yan etkilerini ve yanıtını işler.
+name | Yes | Uç nokta tanımının adı. Kaynak ekleme için, adın "ilişkilendirmeler" olması gerekir.
+routingType | Yes | Uç nokta ile sözleşmenin türünü belirler. Kaynak ekleme için geçerli **Routingtypes** "proxy, önbellek, uzantı" ve "Web kancası, önbellek, uzantı" dır.
+endpoint | Yes | İsteklerin yönlendirileceği uç nokta. Bu işlem, isteğin tüm yan etkilerini ve yanıtını işler.
 
-İlişki kaynak türü ile özel sağlayıcıyı oluşturduktan sonra, Microsoft. CustomProviders/ilişkilendirmelerini kullanarak hedefleyebilirsiniz. Microsoft. CustomProviders/Association, diğer herhangi bir Azure kaynağını genişletebilen bir uzantı kaynağıdır. Microsoft. CustomProviders/Association 'ın bir örneği oluşturulduğunda, geçerli bir Microsoft. CustomProviders/resourceProviders veya Microsoft. Solutions/Applications kaynak KIMLIĞI olması gereken bir **Targetresourceıd**özelliği alır. Bu durumlarda, istek oluşturduğunuz Microsoft. CustomProviders/resourceProviders örneğinde ilişkilendirmeler kaynak türüne iletilir.
+İlişki kaynak türü ile özel sağlayıcıyı oluşturduktan sonra, Microsoft. CustomProviders/ilişkilendirmelerini kullanarak hedefleyebilirsiniz. Microsoft. CustomProviders/Association, diğer herhangi bir Azure kaynağını genişletebilen bir uzantı kaynağıdır. Microsoft. CustomProviders/Association 'ın bir örneği oluşturulduğunda, geçerli bir Microsoft. CustomProviders/resourceProviders veya Microsoft. Solutions/Applications kaynak KIMLIĞI olması gereken bir **Targetresourceıd** özelliği alır. Bu durumlarda, istek oluşturduğunuz Microsoft. CustomProviders/resourceProviders örneğinde ilişkilendirmeler kaynak türüne iletilir.
 
 > [!NOTE]
-> **Targetresourceıd**olarak bir Microsoft. Solutions/APPLICATIONS kaynak kimliği sağlanmışsa, yönetilen kaynak grubunda "public" adıyla dağıtılan bir Microsoft. Customproviders/resourceproviders olmalıdır.
+> **Targetresourceıd** olarak bir Microsoft. Solutions/APPLICATIONS kaynak kimliği sağlanmışsa, yönetilen kaynak grubunda "public" adıyla dağıtılan bir Microsoft. Customproviders/resourceproviders olmalıdır.
 
 Örnek Azure özel sağlayıcıları ilişkilendirmesi:
 
@@ -76,9 +76,9 @@ endpoint | Evet | İsteklerin yönlendirileceği uç nokta. Bu işlem, isteğin 
 }
 ```
 
-Özellik | Gerekli mi? | Açıklama
+Özellik | Gerekli mi? | Description
 ---|---|---
-Targetresourceıd | Evet | Microsoft. CustomProviders/resourceProviders veya Microsoft. Solutions/Applications kaynak KIMLIĞI.
+Targetresourceıd | Yes | Microsoft. CustomProviders/resourceProviders veya Microsoft. Solutions/Applications kaynak KIMLIĞI.
 
 ## <a name="how-to-use-resource-onboarding"></a>Kaynak ekleme 'yi kullanma
 

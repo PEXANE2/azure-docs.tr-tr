@@ -8,12 +8,12 @@ author: bobbytreed
 ms.author: robreed
 ms.date: 05/02/2018
 ms.topic: how-to
-ms.openlocfilehash: 9531b5b3d5f178e204d408c677e8908be86e3367
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.openlocfilehash: 633f4fa6254b2db7a802bb29bffc83b271216d49
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102552873"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104601763"
 ---
 # <a name="run-scripts-in-your-linux-vm"></a>Linux sanal makinenizde betikleri çalıştırma
 
@@ -57,7 +57,7 @@ Görevleri otomatikleştirmek veya sorunları gidermek için, bir VM 'de komutla
 
 ## <a name="serial-console"></a>Seri konsol
 
-[Seri konsol](../troubleshooting/serial-console-linux.md) , VM 'ye bağlı bir klavye olmasına benzer şekilde, bir VM 'ye doğrudan erişim sağlar.
+[Seri konsol](/troubleshoot/azure/virtual-machines/serial-console-linux) , VM 'ye bağlı bir klavye olmasına benzer şekilde, bir VM 'ye doğrudan erişim sağlar.
 
 * Azure sanal makinelerinde komutları çalıştırın.
 * Azure portal makineye metin tabanlı bir konsol kullanılarak çalıştırılabilir.
@@ -71,4 +71,4 @@ Sanal makinelerinizdeki betikleri ve komutları çalıştırmak için kullanıla
 * [Özel Betik Uzantısı](../extensions/custom-script-linux.md)
 * [Çalıştır Komutu](run-command.md)
 * [Karma Runbook Çalışanı](../../automation/automation-hybrid-runbook-worker.md)
-* [Seri konsol](../troubleshooting/serial-console-linux.md)
+* [Seri konsol](/troubleshoot/azure/virtual-machines/serial-console-linux)

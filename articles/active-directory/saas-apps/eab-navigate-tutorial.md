@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 01/29/2020
 ms.author: jeedes
 ms.openlocfilehash: 3d25fefbf75cb75f33ed260dc3fe1e7bb1632238
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92454448"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-eab-navigate"></a>Öğretici: EAB gezinmek ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
@@ -57,7 +57,7 @@ EAB 'nin Azure AD 'ye yönelik tümleştirmesini yapılandırmak için, Galeride
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-eab-navigate"></a>EAB gezinmek için Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-**B. Simon**adlı bir test kullanıcısı kullanarak EAB Ile Azure AD SSO 'yu yapılandırın ve test edin. SSO 'nun çalışması için, EAB 'de bir Azure AD kullanıcısı ve ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
+**B. Simon** adlı bir test kullanıcısı kullanarak EAB Ile Azure AD SSO 'yu yapılandırın ve test edin. SSO 'nun çalışması için, EAB 'de bir Azure AD kullanıcısı ve ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
 
 Azure AD SSO 'yu yapılandırmak ve test etmek için EAB 'de gezinmek için aşağıdaki yapı taşlarını doldurun:
 

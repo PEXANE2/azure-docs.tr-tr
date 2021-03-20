@@ -6,10 +6,10 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 08/06/2020
 ms.openlocfilehash: 398d18642052726af4d4920443bad515ec0b5bef
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91316571"
 ---
 # <a name="extract-data-with-entities"></a>Varlıkları olan verileri ayıklama
@@ -47,7 +47,7 @@ Uygulamanız geliştirdiğinden ve veriler için yeni bir gereksinim belirlendi�
 
 ## <a name="entity-represents-data-extraction"></a>Varlık, veri ayıklamayı temsil eder
 
-Varlık _, söylenişi içindeki_bir veri kavramını temsil eder. Amaç, _Tüm söyliği_sınıflandırır.
+Varlık _, söylenişi içindeki_ bir veri kavramını temsil eder. Amaç, _Tüm söyliği_ sınıflandırır.
 
 Aşağıdaki dört kuralı göz önünde bulundurun:
 
@@ -102,10 +102,10 @@ Verilerin ayıklanabilmesi ve ayıklandıktan sonra nasıl temsil edilebilmesi g
 |Varlık türü|Amaç|
 |--|--|
 |[**Makine tarafından öğrenilen**](tutorial-machine-learned-entity.md)|Etiketlenmiş örneklerden öğrenilen iç içe geçmiş karmaşık verileri ayıklayın. |
-|[**Listele**](reference-entity-list.md)|Öğelerin listesi ve **tam metin eşleşmesi**ile ayıklanan eş anlamlılar.|
+|[**Liste**](reference-entity-list.md)|Öğelerin listesi ve **tam metin eşleşmesi** ile ayıklanan eş anlamlılar.|
 |[**Model. any**](#patternany-entity)|Varlık sonunu bulmanın zor olduğu varlık, varlığın serbest biçimli olduğundan belirlenir. Yalnızca [desenlerle](luis-concept-patterns.md)kullanılabilir.|
 |[**Önceden oluşturulmuş**](luis-reference-prebuilt-entities.md)|URL veya e-posta gibi belirli tür verileri ayıklamak zaten eğitildi. Bu önceden oluşturulmuş varlıkların bazıları açık kaynaklı [Tanıyıcılar-metin](https://github.com/Microsoft/Recognizers-Text) projesinde tanımlanmıştır. Belirli bir kültür veya varlığınız Şu anda desteklenmiyorsa, projeye katkıda bulunun.|
-|[**Normal ifade**](reference-entity-regular-expression.md)|**Tam metin eşleşmesi**için normal ifade kullanır.|
+|[**Normal ifade**](reference-entity-regular-expression.md)|**Tam metin eşleşmesi** için normal ifade kullanır.|
 
 
 ## <a name="extraction-versus-resolution"></a>Ayıklama ve çözünürlükten karşılaştırması

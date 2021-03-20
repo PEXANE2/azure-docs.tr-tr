@@ -4,27 +4,27 @@ description: Service Fabric uygulamasının sistem ve yerel güvenlik hesapları
 ms.topic: conceptual
 ms.date: 03/29/2018
 ms.openlocfilehash: 53212f8636602705899834b6db1d3f0d80b5fe4f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "75610139"
 ---
 # <a name="run-a-service-as-a-local-user-account-or-local-system-account"></a>Bir hizmeti yerel kullanıcı hesabı veya yerel sistem hesabı olarak çalıştırma
-Azure Service Fabric kullanarak kümede çalışan uygulamaların farklı Kullanıcı hesapları altında güvenli hale getirebilirsiniz. Varsayılan olarak, Service Fabric uygulamalar Fabric.exe işleminin altında çalıştığı hesap altında çalışır. Service Fabric Ayrıca, bir yerel kullanıcı veya sistem hesabı altında uygulama çalıştırma yeteneği sağlar. Desteklenen yerel sistem hesabı türleri, **LocalUser**, **NetworkService**, **LocalService**ve **LocalSystem**.  Windows bağımsız kümesinde Service Fabric çalıştırıyorsanız, [Active Directory etki alanı hesapları](service-fabric-run-service-as-ad-user-or-group.md) veya [Grup yönetilen hizmet hesapları](service-fabric-run-service-as-gmsa.md)altında bir hizmet çalıştırabilirsiniz.
+Azure Service Fabric kullanarak kümede çalışan uygulamaların farklı Kullanıcı hesapları altında güvenli hale getirebilirsiniz. Varsayılan olarak, Service Fabric uygulamalar Fabric.exe işleminin altında çalıştığı hesap altında çalışır. Service Fabric Ayrıca, bir yerel kullanıcı veya sistem hesabı altında uygulama çalıştırma yeteneği sağlar. Desteklenen yerel sistem hesabı türleri, **LocalUser**, **NetworkService**, **LocalService** ve **LocalSystem**.  Windows bağımsız kümesinde Service Fabric çalıştırıyorsanız, [Active Directory etki alanı hesapları](service-fabric-run-service-as-ad-user-or-group.md) veya [Grup yönetilen hizmet hesapları](service-fabric-run-service-as-gmsa.md)altında bir hizmet çalıştırabilirsiniz.
 
 Uygulama bildiriminde, **sorumlular** bölümünde hizmetleri çalıştırmak veya kaynakları güvenli hale getirmek için gereken kullanıcı hesaplarını tanımlarsınız. Ayrıca, bir veya daha fazla kullanıcının birlikte yönetilmesi için Kullanıcı grupları tanımlayabilir ve oluşturabilirsiniz. Bu, farklı hizmet giriş noktaları için birden fazla kullanıcı olduğunda ve grup düzeyinde kullanılabilen ortak ayrıcalıklara ihtiyaç duyduklarında yararlı olur.  Daha sonra kullanıcılardan, belirli bir hizmete veya uygulamadaki tüm hizmetlere uygulanan bir RunAs ilkesinde başvurulur. 
 
 Varsayılan olarak, RunAs ilkesi ana giriş noktasına uygulanır.  Ayrıca, [bir sistem hesabı altında belirli yüksek ayrıcalıklı kurulum işlemlerini](service-fabric-run-script-at-service-startup.md)veya hem ana hem de kurulum giriş noktalarını çalıştırmanız gerekiyorsa, kurulum giriş noktasına bir runas ilkesi de uygulayabilirsiniz.  
 
 > [!NOTE] 
-> Bir hizmete RunAs ilkesi uygularsanız ve hizmet bildirimi uç nokta kaynaklarını HTTP protokolüyle bildirirse, bir **Securityaccesspolicy**belirtmeniz gerekir.  Daha fazla bilgi için bkz. [http ve HTTPS uç noktaları için güvenlik erişimi Ilkesi atama](service-fabric-assign-policy-to-endpoint.md). 
+> Bir hizmete RunAs ilkesi uygularsanız ve hizmet bildirimi uç nokta kaynaklarını HTTP protokolüyle bildirirse, bir **Securityaccesspolicy** belirtmeniz gerekir.  Daha fazla bilgi için bkz. [http ve HTTPS uç noktaları için güvenlik erişimi Ilkesi atama](service-fabric-assign-policy-to-endpoint.md). 
 >
 
 ## <a name="run-a-service-as-a-local-user"></a>Yerel Kullanıcı olarak bir hizmet çalıştırma
 Uygulamanın içindeki bir hizmetin güvenliğini sağlamaya yardımcı olmak için kullanılabilecek bir yerel kullanıcı oluşturabilirsiniz. Uygulama bildiriminin sorumlular bölümünde bir **LocalUser** hesap türü belirtildiğinde Service Fabric, uygulamanın dağıtıldığı makinelerde yerel kullanıcı hesapları oluşturur. Varsayılan olarak, bu hesaplar uygulama bildiriminde belirtilen adlara sahip değildir (örneğin, *Customer3* , aşağıdaki uygulama bildirimi örneğinde). Bunun yerine, dinamik olarak oluşturulur ve rastgele parolalara sahiptir.
 
-Bir **servicemanifestımport**Için **runaspolicy** bölümünde, hizmet kodu paketini çalıştırmak için **sorumlular** bölümünden Kullanıcı hesabını belirtin.  Aşağıdaki örnek, bir yerel kullanıcı oluşturmayı ve ana giriş noktasına bir RunAs ilkesi uygulamayı gösterir:
+Bir **servicemanifestımport** Için **runaspolicy** bölümünde, hizmet kodu paketini çalıştırmak için **sorumlular** bölümünden Kullanıcı hesabını belirtin.  Aşağıdaki örnek, bir yerel kullanıcı oluşturmayı ve ana giriş noktasına bir RunAs ilkesi uygulamayı gösterir:
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -55,7 +55,7 @@ Bir **servicemanifestımport**Için **runaspolicy** bölümünde, hizmet kodu pa
 ```
 
 ## <a name="create-a-local-user-group"></a>Yerel Kullanıcı grubu oluştur
-Kullanıcı grupları oluşturabilir ve gruba bir veya daha fazla kullanıcı ekleyebilirsiniz. Bu, farklı hizmet giriş noktaları için birden fazla kullanıcı varsa ve grup düzeyinde kullanılabilen belirli ortak ayrıcalıklara sahip olmaları gerekiyorsa yararlıdır. Aşağıdaki uygulama bildirimi örneği, yönetici ayrıcalıklarına sahip *Localadmingroup* adlı yerel bir grubu gösterir. İki Kullanıcı, *Customer1* ve *Customer2*, bu yerel grubun üyesi yaptı. **Servicemanifestımport** bölümünde, *Stateful1Pkg* kod paketini *Customer2*olarak çalıştırmak için bir runas ilkesi uygulanır.  *Web1Pkg* kod paketini *Customer1*olarak çalıştırmak için başka bir runas ilkesi uygulanır.
+Kullanıcı grupları oluşturabilir ve gruba bir veya daha fazla kullanıcı ekleyebilirsiniz. Bu, farklı hizmet giriş noktaları için birden fazla kullanıcı varsa ve grup düzeyinde kullanılabilen belirli ortak ayrıcalıklara sahip olmaları gerekiyorsa yararlıdır. Aşağıdaki uygulama bildirimi örneği, yönetici ayrıcalıklarına sahip *Localadmingroup* adlı yerel bir grubu gösterir. İki Kullanıcı, *Customer1* ve *Customer2*, bu yerel grubun üyesi yaptı. **Servicemanifestımport** bölümünde, *Stateful1Pkg* kod paketini *Customer2* olarak çalıştırmak için bir runas ilkesi uygulanır.  *Web1Pkg* kod paketini *Customer1* olarak çalıştırmak için başka bir runas ilkesi uygulanır.
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>

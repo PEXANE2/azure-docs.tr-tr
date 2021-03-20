@@ -6,17 +6,17 @@ ms.author: jobreen
 author: jjbfour
 ms.date: 09/17/2019
 ms.openlocfilehash: 22d1dcd997a4ddb94aba184c5dace4c00509054d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "75649942"
 ---
 # <a name="tutorial-resource-onboarding-with-azure-custom-providers"></a>Öğretici: Azure özel sağlayıcılarıyla kaynak ekleme
 
 Bu öğreticide, Microsoft. CustomProviders/Association kaynak türü ile Azure Resource Manager API 'yi genişleten özel bir kaynak sağlayıcısı Azure 'a dağıtırsınız. Öğreticide, özel sağlayıcı örneğinin bulunduğu kaynak grubunun dışındaki mevcut kaynakların nasıl genişletileceği gösterilmektedir. Bu öğreticide, özel kaynak sağlayıcısı bir Azure Logic App tarafından desteklenir, ancak herhangi bir genel API uç noktasını kullanabilirsiniz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticiyi tamamlayabilmeniz için şunları bilmeniz gerekir:
 
@@ -209,7 +209,7 @@ Bu öğreticide, dağıtılması gereken iki parça vardır: özel sağlayıcı 
 
 Özel sağlayıcı altyapısını dağıtalım. Önceki şablonu kopyalayın, kaydedin ve dağıtın ya da Azure portal kullanarak altyapıyı uygulayın ve dağıtın.
 
-1. [Azure portalına](https://portal.azure.com) gidin.
+1. [Azure Portal](https://portal.azure.com) gidin.
 
 2. **Tüm hizmetlerde** **Şablonlar** arayın veya ana arama kutusunu kullanarak:
 
@@ -217,9 +217,9 @@ Bu öğreticide, dağıtılması gereken iki parça vardır: özel sağlayıcı 
 
 3. **Şablonlar** bölmesinde **Ekle** ' yi seçin:
 
-   ![Ekle 'yi seçin](media/tutorial-resource-onboarding/templatesadd.png)
+   ![Ekle’yi seçin](media/tutorial-resource-onboarding/templatesadd.png)
 
-4. **Genel**altında, yeni şablon Için bir **ad** ve **Açıklama** girin:
+4. **Genel** altında, yeni şablon Için bir **ad** ve **Açıklama** girin:
 
    ![Şablon adı ve açıklaması](media/tutorial-resource-onboarding/templatesdescription.png)
 
@@ -235,13 +235,13 @@ Bu öğreticide, dağıtılması gereken iki parça vardır: özel sağlayıcı 
 
 8. Gerekli alanların ayarlarını girin ve ardından abonelik ve kaynak grubunu seçin. **Özel kaynak sağlayıcısı kimliği** kutusunu boş bırakabilirsiniz.
 
-   | Ayar adı | Gerekli mi? | Açıklama |
+   | Ayar adı | Gerekli mi? | Description |
    | ------------ | -------- | ----------- |
    | Konum | Evet | Şablondaki kaynakların konumu. |
-   | Mantıksal uygulama adı | Hayır | Mantıksal uygulamanın adı. |
-   | Özel kaynak sağlayıcısı adı | Hayır | Özel kaynak sağlayıcısı adı. |
-   | Özel kaynak sağlayıcısı kimliği | Hayır | İlişki kaynağını destekleyen mevcut bir özel kaynak sağlayıcısı. Burada bir değer belirtirseniz, mantıksal uygulama ve özel sağlayıcı dağıtımı atlanır. |
-   | İlişkilendirme adı | Hayır | İlişkilendirme kaynağının adı. |
+   | Mantıksal uygulama adı | No | Mantıksal uygulamanın adı. |
+   | Özel kaynak sağlayıcısı adı | No | Özel kaynak sağlayıcısı adı. |
+   | Özel kaynak sağlayıcısı kimliği | No | İlişki kaynağını destekleyen mevcut bir özel kaynak sağlayıcısı. Burada bir değer belirtirseniz, mantıksal uygulama ve özel sağlayıcı dağıtımı atlanır. |
+   | İlişkilendirme adı | No | İlişkilendirme kaynağının adı. |
 
    Örnek parametreler:
 

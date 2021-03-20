@@ -12,10 +12,10 @@ ms.date: 12/11/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 441a77823c77305e567e9e1436715bc51ca48c11
-ms.sourcegitcommit: ea17e3a6219f0f01330cf7610e54f033a394b459
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/14/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97387063"
 ---
 # <a name="display-controls"></a>Görüntüleme denetimleri
@@ -28,7 +28,7 @@ Aşağıdaki görüntüde, birincil ve ikincil e-posta adresini doğrulayan iki 
 
 ![Örnek işlenmiş görüntüleme denetimi](media/display-controls/display-control-email.png)
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
  [Otomatik olarak onaylanan bir teknik profilin](self-asserted-technical-profile.md) [meta veri](self-asserted-technical-profile.md#metadata) bölümünde, başvurulan [ContentDefinition](contentdefinitions.md) 'ın `DataUri` sayfa sözleşmesi sürüm 2.0.0 veya üzeri olarak ayarlanması gerekir. Örnek:
 
@@ -51,7 +51,7 @@ Aşağıdaki görüntüde, birincil ve ikincil e-posta adresini doğrulayan iki 
 
 **DisplayControl** öğesi aşağıdaki öğeleri içerir:
 
-| Öğe | Öğeleri | Açıklama |
+| Öğe | Öğeleri | Description |
 | ------- | ----------- | ----------- |
 | Inputclaims | 0:1 | **Inputclaim** , kullanıcıdan toplanacak taleplerin değerini önceden doldurmak için kullanılır. Daha fazla bilgi için bkz. [ınputclaim](technicalprofiles.md#input-claims) öğesi. |
 | DisplayClaim | 0:1 | **DisplayClaim** , kullanıcıdan toplanacak talepleri temsil etmek için kullanılır. Daha fazla bilgi için bkz. [DisplayClaim](technicalprofiles.md#displayclaim) öğesi.|
@@ -114,7 +114,7 @@ Bir eylem, **doğrulama teknik profillerinin** bir listesini tanımlar. Bunlar, 
 
 **Action** öğesi aşağıdaki öğeyi içerir:
 
-| Öğe | Öğeleri | Açıklama |
+| Öğe | Öğeleri | Description |
 | ------- | ----------- | ----------- |
 | ValidationClaimsExchange | 1:1 | Referans veren teknik profilin bazı veya tüm görüntüleme taleplerini doğrulamak için kullanılan teknik profillerin tanımlayıcıları. Başvurulan teknik profilin tüm giriş talepleri, başvuran teknik profilin görüntüleme talepleri ' nde görünmelidir. |
 
@@ -122,7 +122,7 @@ Bir eylem, **doğrulama teknik profillerinin** bir listesini tanımlar. Bunlar, 
 
 **Validationclaimsexchange** öğesi aşağıdaki öğeyi içerir:
 
-| Öğe | Öğeleri | Açıklama |
+| Öğe | Öğeleri | Description |
 | ------- | ----------- | ----------- |
 | Validationteknisyen Alprofıle | 1: n | Başvuru yapan teknik profilin bazı veya tüm görüntüleme taleplerini doğrulamak için kullanılacak teknik bir profil. |
 
@@ -131,12 +131,12 @@ Bir eylem, **doğrulama teknik profillerinin** bir listesini tanımlar. Bunlar, 
 | Öznitelik | Gerekli | Açıklama |
 | --------- | -------- | ----------- |
 | ReferenceId | Yes | İlkede veya üst ilkede önceden tanımlanmış bir teknik profil tanıtıcısı. |
-|ContinueOnError|Hayır| Bu doğrulama teknik profili bir hata harekete geçirirse, sonraki doğrulama teknik profillerinin doğrulanmasının devam etmesi gerekip gerekmediğini gösterir. Olası değerler: `true` veya `false` (varsayılan, diğer doğrulama profillerinin işlenmesi durdurulur ve bir hata döndürülür). |
-|Devam onSuccess | Hayır | Bu doğrulama teknik profili başarılı olursa sonraki doğrulama profillerinin doğrulanmasının devam etmesi gerekip gerekmediğini gösterir. Olası değerler: `true` veya `false` . Varsayılan olarak, `true` diğer doğrulama profillerinin işlenmesi devam edecektir. |
+|ContinueOnError|No| Bu doğrulama teknik profili bir hata harekete geçirirse, sonraki doğrulama teknik profillerinin doğrulanmasının devam etmesi gerekip gerekmediğini gösterir. Olası değerler: `true` veya `false` (varsayılan, diğer doğrulama profillerinin işlenmesi durdurulur ve bir hata döndürülür). |
+|Devam onSuccess | No | Bu doğrulama teknik profili başarılı olursa sonraki doğrulama profillerinin doğrulanmasının devam etmesi gerekip gerekmediğini gösterir. Olası değerler: `true` veya `false` . Varsayılan olarak, `true` diğer doğrulama profillerinin işlenmesi devam edecektir. |
 
 **Validation, Alprofile** öğesi aşağıdaki öğeyi içerir:
 
-| Öğe | Öğeleri | Açıklama |
+| Öğe | Öğeleri | Description |
 | ------- | ----------- | ----------- |
 | Üstbilgisinde | 0:1 | Doğrulama teknik profilinin yürütülmesi için karşılanması gereken önkoşulların bir listesi. |
 
@@ -149,7 +149,7 @@ Bir eylem, **doğrulama teknik profillerinin** bir listesini tanımlar. Bunlar, 
 
 **Önkoşul** öğesi aşağıdaki öğeleri içerir:
 
-| Öğe | Öğeleri | Açıklama |
+| Öğe | Öğeleri | Description |
 | ------- | ----------- | ----------- |
 | Değer | 1: n | Denetim tarafından kullanılan veriler. Bu denetim türü ise `ClaimsExist` , bu alan, sorgulanacak bir ClaimTypeReferenceId belirtir. Denetim türü ise `ClaimEquals` , bu alan sorgu için bir ClaimTypeReferenceId belirtir. Başka bir değer öğesinde denetlenecek değeri belirtin.|
 | Eylem | 1:1 | Bir düzenleme adımı içindeki önkoşul denetimi doğru ise, alınması gereken eylem. **Eylemin** değeri `SkipThisValidationTechnicalProfile` , ilişkili doğrulama teknik profilinin yürütülmemelidir. olarak ayarlanır. |

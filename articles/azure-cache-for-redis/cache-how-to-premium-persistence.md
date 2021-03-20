@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 02/08/2021
-ms.openlocfilehash: 58148e3a20ba41ae9707543be290f2d632cb1185
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 9d11d17f90dcd6335fcaf6bd48a44037777a087e
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100375298"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104601394"
 ---
 # <a name="configure-data-persistence-for-a-premium-azure-cache-for-redis-instance"></a>Redsıs örneği için Premium bir Azure önbelleği için veri kalıcılığını yapılandırma
 
@@ -19,7 +19,7 @@ ms.locfileid: "100375298"
 
 Redsıs için Azure önbelleği, aşağıdaki modelleri kullanarak Redsıs kalıcılığı sağlar:
 
-* **RDB kalıcılığı** -RDB (redsıs veritabanı) kalıcılığı yapılandırıldığında, Redsıs Için Azure önbelleği, yapılandırılabilir bir yedekleme sıklığına bağlı olarak redsıs binary biçimindeki redin Için Azure önbelleğinin bir anlık görüntüsünü diske devam ettirir. Hem birincil hem de çoğaltma önbelleğini devre dışı bırakan çok zararlı bir olay oluşursa, önbellek en son anlık görüntü kullanılarak yeniden oluşturulur. RDB kalıcılığı 'nin [avantajları](https://redis.io/topics/persistence#rdb-advantages) ve [dezavantajları](https://redis.io/topics/persistence#rdb-disadvantages) hakkında daha fazla bilgi edinin.
+* **RDB kalıcılığı** -RDB (redsıs veritabanı) kalıcılığı yapılandırıldığında, Redsıs Için Azure önbelleği, yapılandırılabilir bir yedekleme sıklığına bağlı olarak, redsıs ikili biçimindeki bir redin ikili biçiminde diske (bir Azure depolama hesabında) Redsıs Için Azure önbelleğinin bir anlık görüntüsünü devam ettirir. Hem birincil hem de çoğaltma önbelleğini devre dışı bırakan çok zararlı bir olay oluşursa, önbellek en son anlık görüntü kullanılarak yeniden oluşturulur. RDB kalıcılığı 'nin [avantajları](https://redis.io/topics/persistence#rdb-advantages) ve [dezavantajları](https://redis.io/topics/persistence#rdb-disadvantages) hakkında daha fazla bilgi edinin.
 * **AOF kalıcılığı** -AOF (yalnızca ekleme dosyası) kalıcılığı yapılandırıldığında, reddir Için Azure önbelleği, her yazma işlemini saniyede en az bir kez bir Azure depolama hesabına kaydeder. Hem birincil hem de çoğaltma önbelleğini devre dışı bırakan çok zararlı bir olay oluşursa, önbellek, depolanan yazma işlemleri kullanılarak yeniden oluşturulur. AOF kalıcılığın [avantajları](https://redis.io/topics/persistence#aof-advantages) ve [dezavantajları](https://redis.io/topics/persistence#aof-disadvantages) hakkında daha fazla bilgi edinin.
 
 Kalıcılık, Redsıs verilerini sahip olduğunuz ve yönettiğiniz bir Azure depolama hesabına yazar. Önbellek oluşturma sırasında ve mevcut Premium önbellekler için **kaynak menüsünde** **yeni Azure önbelleğinden** yapılandırma yapabilirsiniz.

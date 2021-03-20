@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 02/21/2020
 tags: connectors
 ms.openlocfilehash: cd23ff0f5ad9912440d38903a344011b069aaf16
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92677724"
 ---
 # <a name="create-and-manage-blobs-in-azure-blob-storage-by-using-azure-logic-apps"></a>Azure Logic Apps kullanarak Azure Blob depolamada Bloblar oluşturma ve yönetme
@@ -73,7 +73,7 @@ Bu örnek, depolama kapsayıcıınızda bir blob 'un özellikleri eklendiğinde 
 
    3. Tetikleyicinin klasör değişikliklerini ne sıklıkta denetlemesini istediğinizi belirlemek için aralığı ve sıklığı seçin.
 
-4. İşiniz bittiğinde, Tasarımcı araç çubuğunda **Kaydet** ' i seçin.
+4. İşiniz bittiğinde, Tasarımcı araç çubuğunda **Kaydet**' i seçin.
 
 5. Şimdi, tetikleyici sonuçlarıyla gerçekleştirmek istediğiniz görevler için mantıksal uygulamanıza bir veya daha fazla eylem eklemeye devam edin.
 
@@ -85,11 +85,11 @@ Azure Logic Apps bir [eylem](../logic-apps/logic-apps-overview.md#logic-app-conc
 
 1. [Azure Portal](https://portal.azure.com) veya Visual Studio 'Da mantıksal uygulama tasarımcısında mantıksal uygulamanızı açın. Bu örnek Azure portal kullanır.
 
-2. Mantıksal uygulama Tasarımcısı ' nda, tetikleyici veya eylem altında **yeni adım** ' ı seçin.
+2. Mantıksal uygulama Tasarımcısı ' nda, tetikleyici veya eylem altında **yeni adım**' ı seçin.
 
    ![Logic App iş akışına yeni adım Ekle](./media/connectors-create-api-azureblobstorage/add-new-step-logic-app-workflow.png) 
 
-   Varolan adımlar arasında bir eylem eklemek için farenizi bağlantı oku üzerine taşıyın. Görüntülenen artı işaretini ( **+** ) seçin ve **Eylem Ekle** ' yi seçin.
+   Varolan adımlar arasında bir eylem eklemek için farenizi bağlantı oku üzerine taşıyın. Görüntülenen artı işaretini ( **+** ) seçin ve **Eylem Ekle**' yi seçin.
 
 3. Arama kutusuna filtreniz olarak "Azure Blob" yazın. Eylemler listesinden istediğiniz eylemi seçin.
 
@@ -108,7 +108,7 @@ Ya da bağlantınız zaten varsa, eylem için gerekli bilgileri sağlayın.
 
    2. Blob 'un **kimlik** numarasına göre istediğiniz dosyayı bulun ve seçin. Bu **kimlik** numarasını, daha önce açıklanan BLOB depolama tetikleyicisi tarafından döndürülen Blobun meta verilerinde bulabilirsiniz.
 
-5. İşiniz bittiğinde, Tasarımcı araç çubuğunda **Kaydet** ' i seçin.
+5. İşiniz bittiğinde, Tasarımcı araç çubuğunda **Kaydet**' i seçin.
 Mantıksal uygulamanızı test etmek için, seçili klasörde bir blob bulunduğundan emin olun.
 
 Bu örnek yalnızca bir Blobun içeriğini alır. İçeriği görüntülemek için başka bir bağlayıcı kullanarak blob ile dosya oluşturan başka bir eylem ekleyin. Örneğin, blob içeriklerine dayalı bir dosya oluşturan OneDrive eylemi ekleyin.
@@ -123,11 +123,11 @@ Bu örnek yalnızca bir Blobun içeriğini alır. İçeriği görüntülemek iç
 
    | Özellik | Gerekli | Değer | Açıklama |
    |----------|----------|-------|-------------|
-   | **Bağlantı adı** | Evet | <*bağlantı adı*> | Bağlantınız için oluşturulacak ad |
-   | **Depolama hesabı** | Evet | <*depolama hesabı*> | Listeden depolama hesabınızı seçin. |
+   | **Bağlantı adı** | Yes | <*bağlantı adı*> | Bağlantınız için oluşturulacak ad |
+   | **Depolama Hesabı** | Yes | <*depolama hesabı*> | Listeden depolama hesabınızı seçin. |
    ||||
 
-   Örneğin:
+   Örnek:
 
    ![Azure Blob depolama hesabı bağlantısı oluşturma](./media/connectors-create-api-azureblobstorage/create-storage-account-connection.png) 
 
@@ -183,9 +183,9 @@ Microsoft 'a güvenilen hizmetlere bir güvenlik duvarı aracılığıyla bir de
 
 Özel durum ve yönetilen kimlik desteğini ayarlamak için aşağıdaki genel adımları izleyin:
 
-1. Depolama hesabınızda, **Ayarlar** altında **güvenlik duvarları ve sanal ağlar** ' ı seçin. **Erişime Izin ver** ' in altında, ilgili ayarların görünmesi için **Seçili ağlar** seçeneğini belirleyin.
+1. Depolama hesabınızda, **Ayarlar** altında **güvenlik duvarları ve sanal ağlar**' ı seçin. **Erişime Izin ver**' in altında, ilgili ayarların görünmesi için **Seçili ağlar** seçeneğini belirleyin.
 
-1. **Özel durumlar** altında, **Güvenilen Microsoft hizmetlerinin bu depolama hesabına erişmesine izin ver** ' i seçin ve ardından **Kaydet** ' i seçin.
+1. **Özel durumlar** altında, **Güvenilen Microsoft hizmetlerinin bu depolama hesabına erişmesine izin ver**' i seçin ve ardından **Kaydet**' i seçin.
 
    ![Microsoft güvenilen hizmetlerine izin veren özel durum seçin](./media/connectors-create-api-azureblobstorage/allow-trusted-services-firewall.png)
 

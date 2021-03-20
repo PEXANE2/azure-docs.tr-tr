@@ -10,10 +10,10 @@ ms.date: 02/26/2020
 ms.reviewer: jushiman
 ms.custom: avverma, devx-track-azurecli
 ms.openlocfilehash: c4d6de1b3406e6d82bdac5ff9b5c72a2286da988
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92747741"
 ---
 # <a name="terminate-notification-for-azure-virtual-machine-scale-set-instances"></a>Azure sanal makine ölçek kümesi örnekleri için bildirimi sonlandırma
@@ -24,7 +24,7 @@ ms.locfileid: "92747741"
 ## <a name="enable-terminate-notifications"></a>Sonlandırma bildirimlerini etkinleştir
 Aşağıdaki örneklerde açıklandığı şekilde ölçek kümesi örneklerinize sonlandırma bildirimleri etkinleştirmenin birden çok yolu vardır.
 
-### <a name="azure-portal"></a>Azure portal
+### <a name="azure-portal"></a>Azure portalı
 
 Aşağıdaki adımlar yeni bir ölçek kümesi oluştururken sonlandırma bildirimini etkinleştirir. 
 
@@ -32,7 +32,7 @@ Aşağıdaki adımlar yeni bir ölçek kümesi oluştururken sonlandırma bildir
 1. Yeni bir ölçek kümesi oluşturmak için **+ Ekle** ' yi seçin.
 1. **Yönetim** sekmesine gidin. 
 1. **Örnek sonlandırma** bölümünü bulun.
-1. **Örnek sonlandırma bildirimi** için **Açık** ' ı seçin.
+1. **Örnek sonlandırma bildirimi** için **Açık**' ı seçin.
 1. **Sonlandırma gecikmesi (dakika)** için, istenen varsayılan zaman aşımını ayarlayın.
 1. Yeni ölçek kümesini oluşturmayı tamamladığınızda, **gözden geçir + oluştur** düğmesini seçin. 
 

@@ -12,10 +12,10 @@ ms.reviewer: ozgun
 ms.subservice: common
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: 612ba18ba71a22ad6c346b26008e688195c1d1e4
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92746575"
 ---
 # <a name="create-a-storage-account-with-infrastructure-encryption-enabled-for-double-encryption-of-data"></a>Verilerin çift şifrelenmesi için altyapı şifrelemesi etkinleştirilmiş bir depolama hesabı oluşturma
@@ -30,7 +30,7 @@ Verilerinizi daha da şifrelemek için, önce altyapı şifrelemesi için yapıl
 
 Altyapı Şifrelemesi etkin olan bir depolama hesabı oluşturmak için, önce PowerShell veya Azure CLı kullanarak bu özelliği Azure ile kullanmak üzere kaydolmanız gerekir.
 
-# <a name="azure-portal"></a>[Azure Portal](#tab/portal)
+# <a name="azure-portal"></a>[Azure portalı](#tab/portal)
 
 Yok
 
@@ -90,13 +90,13 @@ Bir depolama hesabını, hesabı oluşturduğunuz sırada altyapı şifrelemesin
 
 Hesap oluşturulduktan sonra altyapı şifrelemesi etkinleştirilemez veya devre dışı bırakılamaz.
 
-# <a name="azure-portal"></a>[Azure Portal](#tab/portal)
+# <a name="azure-portal"></a>[Azure portalı](#tab/portal)
 
 PowerShell kullanarak altyapı Şifrelemesi etkin bir depolama hesabı oluşturmak için aşağıdaki adımları izleyin:
 
 1. Azure portal **depolama hesapları** sayfasına gidin.
 1. Yeni bir genel amaçlı v2 depolama hesabı eklemek için **Ekle** düğmesini seçin.
-1. **Gelişmiş** sekmesinde **altyapı** şifrelemesini bulun ve **etkin** ' i seçin.
+1. **Gelişmiş** sekmesinde **altyapı** şifrelemesini bulun ve **etkin**' i seçin.
 1. Depolama hesabı oluşturma işleminin bitmesini istiyorsanız **gözden geçir + oluştur** ' u seçin.
 
     :::image type="content" source="media/infrastructure-encryption-enable/create-account-infrastructure-encryption-portal.png" alt-text="Hesap oluştururken altyapı şifrelemesini etkinleştirmeyi gösteren ekran görüntüsü":::
@@ -174,14 +174,14 @@ Aşağıdaki JSON örneği, Okuma Erişimli Coğrafi olarak yedekli depolama (RA
 
 ## <a name="verify-that-infrastructure-encryption-is-enabled"></a>Altyapı şifrelemesinin etkinleştirildiğini doğrulama
 
-# <a name="azure-portal"></a>[Azure Portal](#tab/portal)
+# <a name="azure-portal"></a>[Azure portalı](#tab/portal)
 
 Altyapı şifrelemesinin Azure portal bir depolama hesabı için etkinleştirildiğini doğrulamak için şu adımları izleyin:
 
 1. Azure portalda depolama hesabınıza gidin.
-1. **Ayarlar** altında **şifreleme** ' yi seçin.
+1. **Ayarlar** altında **şifreleme**' yi seçin.
 
-    :::image type="content" source="media/infrastructure-encryption-enable/verify-infrastructure-encryption-portal.png" alt-text="Hesap oluştururken altyapı şifrelemesini etkinleştirmeyi gösteren ekran görüntüsü":::
+    :::image type="content" source="media/infrastructure-encryption-enable/verify-infrastructure-encryption-portal.png" alt-text="Hesap için altyapı şifrelemesinin etkin olduğunu nasıl doğrulayabildiğinizi gösteren ekran görüntüsü":::
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 

@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 02/15/2019
 ms.author: jeedes
 ms.openlocfilehash: fae21c98c7340614a96b6e85aa79bdea7889a807
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92453289"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-flatter-files"></a>Öğretici: Flaur dosyalarla tümleştirme Azure Active Directory
@@ -30,7 +30,7 @@ Flap dosyalarını Azure AD ile tümleştirmek aşağıdaki avantajları sağlar
 Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](../manage-apps/what-is-single-sign-on.md).
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure AD tümleştirmesini Düzle dosyalarla birlikte yapılandırmak için aşağıdaki öğeler gereklidir:
 
@@ -61,13 +61,13 @@ Dosyaları Azure AD 'ye tümleştirmeyi yapılandırmak için, galerinizden yön
 
     ![Yeni uygulama düğmesi](common/add-new-app.png)
 
-4. Arama kutusuna **dosyaları düzden**yazın, sonuç panelinden **dosyaları düzden** seçin ' i seçin, sonra da uygulamayı eklemek için düğme **Ekle** ' ye tıklayın.
+4. Arama kutusuna **dosyaları düzden** yazın, sonuç panelinden **dosyaları düzden** seçin ' i seçin, sonra da uygulamayı eklemek için düğme **Ekle** ' ye tıklayın.
 
      ![Sonuçlar listesindeki dosyaları düzden](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-Bu bölümde, Azure AD çoklu oturum açmayı, **Britta Simon**adlı bir test kullanıcısına göre flamlar ile yapılandırıp test edersiniz.
+Bu bölümde, Azure AD çoklu oturum açmayı, **Britta Simon** adlı bir test kullanıcısına göre flamlar ile yapılandırıp test edersiniz.
 Çoklu oturum açma 'nın çalışması için, bir Azure AD kullanıcısı ile ilgili Kullanıcı arasındaki bir bağlantı ilişkisine sahip olan bir ilişki kurulması gerekir.
 
 Azure AD çoklu oturum açmayı yapılandırmak ve bu dosyalarla test etmek için aşağıdaki yapı taşlarını gerçekleştirmeniz gerekir:
@@ -129,7 +129,7 @@ Azure AD çoklu oturum açmayı, dosyaları Flala birlikte yapılandırmak için
     
     a. **Kimlik doğrulaması IÇIN SAML 2,0 Kullan**' ı seçin.
     
-    b. **SAML Yapılandır**öğesine tıklayın.
+    b. **SAML Yapılandır** öğesine tıklayın.
 
 4. **SAML yapılandırması** iletişim kutusunda, aşağıdaki adımları uygulayın: 
    
@@ -162,9 +162,9 @@ Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı ol
 
     ![Kullanıcı iletişim kutusu](common/user-properties.png)
 
-    a. **Ad** alanına **Brittasıon**girin.
+    a. **Ad** alanına **Brittasıon** girin.
   
-    b. **Kullanıcı adı** alanına ** \@ bricompansıon yourcompanydomain. Extension** yazın  
+    b. **Kullanıcı adı** alanına **\@ bricompansıon yourcompanydomain. Extension** yazın  
     Örneğin, BrittaSimon@contoso.com
 
     c. **Parolayı göster** onay kutusunu seçin ve ardından parola kutusunda görüntülenen değeri yazın.
@@ -175,11 +175,11 @@ Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı ol
 
 Bu bölümde, alev dosyalarına erişim izni vererek Azure çoklu oturum açma özelliğini kullanmak için Britta Simon 'u etkinleştirin.
 
-1. Azure portal **Kurumsal uygulamalar**' ı seçin, **tüm uygulamalar**' ı seçin ve ardından **dosyaları düzden**seçin.
+1. Azure portal **Kurumsal uygulamalar**' ı seçin, **tüm uygulamalar**' ı seçin ve ardından **dosyaları düzden** seçin.
 
     ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
-2. Uygulamalar listesinde, **dosyaları düzden**Seç ' i seçin.
+2. Uygulamalar listesinde, **dosyaları düzden** Seç ' i seçin.
 
     ![Uygulamalar listesinde düzme dosyaları bağlantısı](common/all-applications.png)
 
@@ -215,9 +215,9 @@ Bu bölümün amacı, dosyaları alev içinde Britta Simon adlı bir Kullanıcı
    
     ![Bir alev dosyası kullanıcısı oluşturma](./media/flatter-files-tutorial/tutorial_flatter_files_10.png)
 
-    a. **Ilk ad** metin kutusuna **Britta**yazın.
+    a. **Ilk ad** metin kutusuna **Britta** yazın.
    
-    b. **Soyadı** metin kutusuna **Simon**yazın. 
+    b. **Soyadı** metin kutusuna **Simon** yazın. 
    
     c. **E-posta adresi** metin kutusuna, Azure Portal Britta e-posta adresini yazın.
    

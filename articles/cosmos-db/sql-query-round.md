@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 41b1372cd5165b3548a4e574e7eb037111188bac
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: 7dc4d78f7af1086f9a4de9aa7392acb388df966e
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93341561"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104590679"
 ---
 # <a name="round-azure-cosmos-db"></a>YUVARLAK (Azure Cosmos DB)
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -37,24 +37,24 @@ ROUND(<numeric_expr>)
   
 ## <a name="remarks"></a>Açıklamalar
   
-  Yuvarlama işlemi, sıfırdan uzağa yuvarlanan orta nokta yuvarlama işlemini gerçekleştirdi. Giriş iki tamsayı arasında tam olarak denk gelen sayısal bir ifadesiyse sonuç, sıfırdan bir en yakın tamsayı değeri olacaktır. Bu sistem işlevi, bir [Aralık dizininden](index-policy.md#includeexclude-strategy)faydalanır.
+Yuvarlama işlemi, sıfırdan uzağa yuvarlanan orta nokta yuvarlama işlemini gerçekleştirdi. Giriş iki tamsayı arasında tam olarak denk gelen sayısal bir ifadesiyse sonuç, sıfırdan bir en yakın tamsayı değeri olacaktır. Bu sistem işlevi, bir [Aralık dizininden](index-policy.md#includeexclude-strategy)faydalanır.
   
-  |<numeric_expr>|Yuvarlanır|
-  |-|-|
-  |-6,5000|-7|
-  |-0,5|-1|
-  |0,5|1|
-  |6,5000|7||
+|<numeric_expr>|Yuvarlanır|
+|-|-|
+|-6,5000|-7|
+|-0,5|-1|
+|0,5|1|
+|6,5000|7|
   
 ## <a name="examples"></a>Örnekler
   
-  Aşağıdaki örnek, aşağıdaki pozitif ve negatif sayıları en yakın tamsayıya yuvarlar.  
+Aşağıdaki örnek, aşağıdaki pozitif ve negatif sayıları en yakın tamsayıya yuvarlar.  
   
 ```sql
 SELECT ROUND(2.4) AS r1, ROUND(2.6) AS r2, ROUND(2.5) AS r3, ROUND(-2.4) AS r4, ROUND(-2.6) AS r5  
 ```  
   
-  Sonuç kümesini burada bulabilirsiniz.  
+Sonuç kümesini burada bulabilirsiniz.  
   
 ```json
 [{r1: 2, r2: 3, r3: 3, r4: -2, r5: -3}]  

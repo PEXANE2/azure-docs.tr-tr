@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 09/22/2020
 ms.custom: mvc
 ms.openlocfilehash: 1ac418d855696138341115412dc7e2601d4cf3a1
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91961417"
 ---
 # <a name="manage-an-azure-database-for-postgresql---flexible-server-using-the-azure-portal"></a>Azure portal kullanarak bir PostgreSQL için Azure veritabanı 'nı yönetme-esnek sunucu
@@ -27,7 +27,7 @@ Bu makalede, PostgreSQL için Azure veritabanınızı yönetme (esnek sunucu) a�
 
 ## <a name="scale-compute-and-storage"></a>İşlem ve depolamayı ölçeklendirme
 
-Sunucu oluşturulduktan sonra gereksinimlerinize göre çeşitli [fiyatlandırma katmanları](https://azure.microsoft.com/pricing/details/postgresql/) arasında ölçeklendirebilirsiniz. Ayrıca, sanal çekirdekleri artırarak veya azaltarak işlem ve belleğinizin ölçeğini değiştirebilir veya azaltabilirsiniz.
+Sunucu oluşturulduktan sonra gereksinimlerinize göre çeşitli [fiyatlandırma katmanları](https://azure.microsoft.com/pricing/details/postgresql/) arasında ölçeklendirebilirsiniz. Ayrıca sanal çekirdek sayısını artırıp azaltarak işlem ve bellek kapasitesinin ölçeğini artırabilir veya azaltabilirsiniz.
 
 > [!NOTE]
 > Depolama alanı, daha düşük değere ölçeklendirilmez.
@@ -52,7 +52,7 @@ Azure portal kullanarak yönetici rolü parolasını değiştirebilirsiniz.
 2. Yeni bir parola girin ve parolayı onaylayın. Metin kutusu sizden parola karmaşıklığı gereksinimlerini ister.
 
 > [!div class="mx-imgBorder"]
-> :::image type="content" source="./media/howto-manage-server-portal/reset-password.png" alt-text="depolama esnek sunucusunu ölçeklendirme":::
+> :::image type="content" source="./media/howto-manage-server-portal/reset-password.png" alt-text="esnek sunucu için parolanızı sıfırlayın":::
 
 3. Yeni parolayı kaydetmek için **Kaydet** ' i seçin.
 
@@ -63,7 +63,7 @@ Artık gerekmiyorsa, sunucunuzu silebilirsiniz.
 1. Azure portal sunucunuzu seçin. **Genel bakış** penceresinde **Sil**' i seçin.
 2. Sunucuyu silmek istediğinizi onaylamak için giriş kutusuna sunucunun adını yazın.
 
-   :::image type="content" source="./media/howto-manage-server-portal/delete-server.png" alt-text="depolama esnek sunucusunu ölçeklendirme":::
+   :::image type="content" source="./media/howto-manage-server-portal/delete-server.png" alt-text="esnek sunucuyu silme":::
 
    > [!IMPORTANT]
    > Sunucu silindiğinde geri alınamaz.

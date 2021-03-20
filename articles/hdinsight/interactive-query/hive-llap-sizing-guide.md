@@ -8,10 +8,10 @@ ms.author: aadnaik
 ms.reviewer: HDI HiveLLAP Team
 ms.date: 05/05/2020
 ms.openlocfilehash: 7df75077785c66215008e045ef0b1e451ba29f57
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98931099"
 ---
 # <a name="azure-hdinsight-interactive-query-cluster-hive-llap-sizing-guide"></a>Azure HDInsight etkileşimli sorgu kümesi (Hive LLAP) boyutlandırma Kılavuzu
@@ -26,9 +26,9 @@ Bu belge, makul bir performansa ulaşmak için tipik bir iş yükü için HDInsi
 | Indan   | **D14 v2**        | **16 vCPU, 112 GB RAM, 800 GB SSD**       |
 | ZooKeeper   | A4 v2        | 4 vCPU, 8 GB RAM, 40 GB SSD       |
 
-**_Note: tüm önerilen yapılandırma değerleri D14 v2 türü çalışan düğümü _ ' i temel alır._*  
+***Note: tüm önerilen yapılandırma değerleri D14 v2 türü çalışan düğümüne dayalıdır***  
 
-### <a name="_configuration"></a>_ *Yapılandırması:**    
+### <a name="configuration"></a>**Yapılandırmada**    
 | Yapılandırma Anahtarı      | Önerilen değer  | Description |
 | :---        |    :----:   | :---     |
 | Yarn. NodeManager. Resource. Memory-MB | 102400 (MB) | Bir düğümdeki tüm YARN kapsayıcıları için, MB olarak verilen toplam bellek | 
@@ -52,59 +52,59 @@ Bu belge, makul bir performansa ulaşmak için tipik bir iş yükü için HDInsi
 ### <a name="llap-daemon-size-estimations"></a>**LLAP Daemon boyut tahminleri:** 
 
 #### <a name="1-determining-total-yarn-memory-allocation-for-all-containers-on-a-node"></a>**1. bir düğümdeki tüm kapsayıcılar için toplam YARN bellek ayırmayı belirleme**    
-Yapılandırma: **_yarn. NodeManager. Resource. Memory-MB_* _  
+Yapılandırma: ***yarn. NodeManager. Resource. Memory-MB***  
 
 Bu değer, her düğümdeki YARN kapsayıcıları tarafından kullanılabilen, MB cinsinden maksimum bellek toplamını gösterir. Belirtilen değer, bu düğümdeki toplam fiziksel bellek miktarından daha az olmalıdır.   
 Düğüm üzerindeki tüm YARN kapsayıcıları için toplam bellek = (Toplam fiziksel bellek – işletim sistemi + diğer hizmetler için bellek)  
 Bu değeri kullanılabilir RAM boyutunun yaklaşık %90 ' i olarak ayarlayın.  
-D14 v2 için önerilen değer _ * 102400 MB * * ' dir. 
+D14 v2 için önerilen değer **102400 MB**'dir. 
 
 #### <a name="2-determining-maximum-amount-of-memory-per-yarn-container-request"></a>**2. YARN kapsayıcı isteği başına en fazla bellek miktarını belirleme**  
-Yapılandırma: **_yarn. Scheduler. maksimum ayırma-MB_* _
+Yapılandırma: ***yarn. Scheduler. maksimum ayırma-MB***
 
-Bu değer, Kaynak Yöneticisi her kapsayıcı isteği için MB cinsinden maksimum ayırmayı gösterir. Belirtilen değerden daha yüksek bellek istekleri etkili olmayacak. Kaynak Yöneticisi, _yarn. Scheduler. minimum-Allocation-MB * artışlarına göre bellek sağlayabilir ve *yarn. Scheduler. maksimum ayırma-MB* tarafından belirtilen boyutu aşamaz. Belirtilen değer, *yarn. NodeManager. Resource. Memory-MB* tarafından belirtilen düğümdeki tüm kapsayıcılar için verilen toplam bellekten daha fazla olmamalıdır.    
+Bu değer, Kaynak Yöneticisi her kapsayıcı isteği için MB cinsinden maksimum ayırmayı gösterir. Belirtilen değerden daha yüksek bellek istekleri etkili olmayacak. Kaynak Yöneticisi, *yarn. Scheduler. minimum-Allocation-MB* artışlarına göre bellek sağlayabilir ve *yarn. Scheduler. maksimum ayırma-MB* tarafından belirtilen boyutu aşamaz. Belirtilen değer, *yarn. NodeManager. Resource. Memory-MB* tarafından belirtilen düğümdeki tüm kapsayıcılar için verilen toplam bellekten daha fazla olmamalıdır.    
 D14 v2 çalışan düğümleri için önerilen değer **102400 MB** 'dir
 
 #### <a name="3-determining-maximum-amount-of-vcores-per-yarn-container-request"></a>**3. YARN kapsayıcı isteği başına maksimum sanal çekirdek miktarı belirleniyor**  
-Yapılandırma: **_yarn. Scheduler. maksimum ayırma-sanal çekirdek_* _  
+Yapılandırma: ***yarn. Scheduler. maksimum ayırma-sanal çekirdek***  
 
 Bu değer, Kaynak Yöneticisi her kapsayıcı isteği için en fazla sanal CPU çekirdeği sayısını belirtir. Bu değerden daha yüksek sayıda sanal çekirdek istemek etkili olmayacaktır. YARN Scheduler 'ın genel bir özelliğidir. LLAP Daemon kapsayıcısı için, bu değer toplam kullanılabilir sanal çekirdekten %75 ' e ayarlanabilir. Kalan %25 ' i NodeManager, Davtanode ve çalışan düğümlerinde çalışan diğer hizmetler için ayrılmalıdır.  
 D14 v2 VM 'lerinde 16 sanal çekirdek vardır ve toplam 16 sanal çekirdek %75, LLAP Daemon kapsayıcısı tarafından kullanılabilir.  
-D14 v2 için önerilen değer _ * 12 * * ' dir.  
+D14 v2 için önerilen değer **12**' dir.  
 
 #### <a name="4-number-of-concurrent-queries"></a>**4. eşzamanlı sorguların sayısı**  
-Yapılandırma: **_Hive. Sunucu2. tez. Sessions. per. default. Queue_* _
+Yapılandırma: ***Hive. Sunucu2. tez. Sessions. per. default. Queue***
 
 Bu yapılandırma değeri, paralel olarak başlatılabilen tez oturumlarının sayısını belirler. Bu tez oturumları, "Hive. Sunucu2. tez. default. Queues" tarafından belirtilen sıraların her biri için başlatılır. Tez AMs (sorgu koordinatörleri) sayısına karşılık gelir. Çalışan düğümlerinin sayısıyla aynı olması önerilir. Tez AMs sayısı LLAP Daemon düğümlerinin sayısından daha yüksek olabilir. Tez 'nin birincil sorumluluğu, sorgu yürütmeyi koordine etmek ve sorgu planı parçalarını yürütme için karşılık gelen LLAP Daemon 'ları atamaya yöneliktir. Daha yüksek performans elde etmek için bu değeri bir dizi LLAP Daemon düğümünün katı olarak tutun.  
 
-Varsayılan HDInsight kümesinde dört çalışan düğümünde çalışan dört LLAP Daemon 'ları bulunur, bu nedenle önerilen değer _ * 4 * * olur.  
+Varsayılan HDInsight kümesinde dört çalışan düğümünde çalışan dört LLAP Daemon 'ları bulunur, bu nedenle önerilen değer **4**' tür.  
 
 **Hive yapılandırma değişkeni için ambarı UI kaydırıcısı `hive.server2.tez.sessions.per.default.queue` :**
 
 ![' LLAP maksimum eşzamanlı sorgu '](./media/hive-llap-sizing-guide/LLAP_sizing_guide_max_concurrent_queries.png "LLAP maksimum eşzamanlı sorgu sayısı")
 
 #### <a name="5-tez-container-and-tez-application-master-size"></a>**5. tez kapsayıcısı ve tez uygulama ana boyutu**    
-Yapılandırma: **_tez. har. Resource. Memory. MB, Hive. tez. Container. size_* _  
+Yapılandırma: ***tez. har. Resource. Memory. MB, Hive. tez. Container. size***  
 
-_tez. har. Resource. Memory. MB *-tez uygulama ana boyutunu tanımlar.  
+*tez. har. Resource. Memory. MB* -tez uygulama ana boyutunu tanımlar.  
 Önerilen değer **4096 MB**'dir.
    
 *Hive. tez. Container. size* -tez kapsayıcısı için verilen bellek miktarını tanımlar. Bu değer, YARN en az kapsayıcı boyutu (*yarn. Scheduler. minimum ayırma-MB*) ve Yarn maksimum kapsayıcı boyutu (*yarn. Scheduler. maksimum ayırma-MB*) arasında ayarlanmalıdır. LLAP Daemon yürüticileri, yürütücü başına bellek kullanımını sınırlamak için bu değeri kullanır.  
 Önerilen değer **4096 MB**'dir.  
 
 #### <a name="6-llap-queue-capacity-allocation"></a>**6. LLAP kuyruk kapasitesi ayırma**   
-Yapılandırma: **_yarn. Scheduler. Capacity. root. LLAP. Capacity_* _  
+Yapılandırma: ***yarn. Scheduler. Capacity. root. LLAP. Capacity***  
 
 Bu değer, LLAP kuyruğuna verilen kapasitenin yüzdesini gösterir. YARN sıralarının nasıl yapılandırıldığına bağlı olarak, kapasite ayırmaları farklı iş yükleri için farklı değerlere sahip olabilir. İş yükünüz salt okunurdur, daha sonra kapasitenin %90 ' i kadar yüksek olarak ayarlanması gerekir. Ancak, iş yükünüz yönetilen tabloları kullanarak güncelleştirme/silme/birleştirme işlemlerinin karışımı ise, LLAP kuyruğu için kapasitenin %85 ' i sağlamanız önerilir. Kalan %15 kapasite, varsayılan sıradan kapsayıcı ayırmak için sıkıştırma vb. gibi diğer görevler tarafından kullanılabilir. Bu şekilde, varsayılan kuyruktaki görevler YARN kaynaklarının içeriğini kaldırır.    
 
-D14v2 Worker düğümleri için, LLAP kuyruğu için önerilen değer _ * 85 * * olur.     
+D14v2 Worker düğümleri için, LLAP kuyruğu için önerilen değer **85**' dir.     
 (Salt okunur iş yükleri için, uygun şekilde 90 'e varan bir artış olabilir.)  
 
 #### <a name="7-llap-daemon-container-size"></a>**7. LLAP Daemon kapsayıcı boyutu**    
-Yapılandırma: **_Hive. LLAP. Daemon. yarn. Container. MB_* _  
+Yapılandırma: ***Hive. LLAP. Daemon. yarn. Container. MB***  
    
 LLAP Daemon, her çalışan düğümünde bir YARN kapsayıcısı olarak çalıştırılır. LLAP Daemon kapsayıcısı için toplam bellek boyutu aşağıdaki faktörlere bağlıdır,    
-_ YARN kapsayıcısı boyutunun _ yapılandırması (yarn. Scheduler. minimum ayırma-MB, yarn. Scheduler. maksimum ayırma-MB, yarn. NodeManager. Resource. Memory-MB)
+*  YARN kapsayıcı boyutu (yarn. Scheduler. minimum ayırma-MB, yarn. Scheduler. maksimum ayırma-MB, yarn. NodeManager. Resource. Memory-MB) konfigürasyonları
 *  Bir düğümdeki tez AMs sayısı
 *  Bir düğümdeki tüm kapsayıcılar ve LLAP kuyruğu kapasitesi için yapılandırılan toplam bellek  
 
@@ -112,11 +112,11 @@ Tez uygulama yöneticileri (Tez) için gereken bellek aşağıdaki gibi hesaplan
 Tez, bir sorgu Düzenleyicisi görevi görür ve sunulacak bir dizi eşzamanlı sorguya göre tez AMs sayısı yapılandırılmalıdır. Teorik olarak, çalışan düğümü başına bir tez har göz abiliriz. Bununla birlikte, bir çalışan düğümünde birden fazla tez ile karşılaşabilirsiniz. Hesaplama amacıyla, tüm LLAP Daemon düğümleri/çalışan düğümleri genelinde tez AMs 'nin tek başına dağıtımını varsaytık.
 Her tez için 4 GB bellek olması önerilir.  
 
-Hive config ***Hive. Sunucu2. tez. Sessions. per. default. Queue** _ tarafından belirtilen tez AMS = değer sayısı.  
-Ambarı Kullanıcı arabirimindeki _*_num_llap_nodes_for_llap_daemons_*_ LLAP Daemon düğümlerinin sayısı = env değişkeni tarafından belirtilir.  
-Tez NZ kapsayıcı boyutu = tez config _*_tez._*_ m.  
+Hive config ***Hive. Sunucu2. tez. Sessions. per. default. Queue*** tarafından belirtilen tez AMS = değer sayısı.  
+Ambarı Kullanıcı arabirimindeki ***num_llap_nodes_for_llap_daemons*** LLAP Daemon düğümlerinin sayısı = env değişkeni tarafından belirtilir.  
+Tez NZ kapsayıcı boyutu = tez config ***tez.*** m.  
 
-Tez düğüm başına bellek = _ *(** CEIL **(** **/** LLAP Daemon düğümü sayısı **)** **x** tez, kapsayıcı boyutu **)**  
+Düğüm başına tez belleği = **(** CEIL **(** **/** LLAP Daemon düğümü sayısı **)** **x** tez, kapsayıcı boyutu **)**  
 D14 v2 için varsayılan yapılandırmanın dört adet tez AMs ve dört LLAP Daemon düğümü vardır.  
 Düğüm başına tez belleği = (CEIL (4/4) x 4 GB) = 4 GB
 
@@ -133,22 +133,25 @@ D14 v2 çalışan düğümü için, HDI 4,0-önerilen değer (85 GB-4 GB-1 GB)) 
 (HDI 3,6 için önerilen değer **79 GB** 'tır çünkü kaydırıcı için ek ~ 2 GB) ayırmanız gerekir.)  
 
 #### <a name="8-determining-number-of-executors-per-llap-daemon"></a>**8. LLAP Daemon başına yürütme sayısını belirleme**  
-Yapılandırma: **_hive.llap.daemon.num.executors_* _, _*_Hive. LLAP. IO. ThreadPool. size_*_
+Yapılandırma: ***hive.llap.daemon.num.executors** _, _ *_Hive. LLAP. IO. ThreadPool. size_**
 
-_*_hive.llap.daemon.num.execucılar_*_:   
+***hive.llap.daemon.num.execucılar***:   
 Bu yapılandırma, görevleri her LLAP arka plan programı başına paralel olarak yürütebilmesi gereken yürütme sayısını denetler. Bu değer, sanal çekirdek sayısına, yürütücü başına kullanılan bellek miktarına ve LLAP Daemon kapsayıcısı için kullanılabilir toplam bellek miktarına bağlıdır.    Yürüticilerinin sayısı, çalışan düğümü başına kullanılabilir sanal çekirdekler %120 ' e abone olabilir. Ancak, her yürütücü için gereken belleğe ve LLAP Daemon kapsayıcı boyutuna bağlı olarak bellek gereksinimlerini karşılamıyorsa, bu, ayarlanmalıdır.
 
 Her yürütücü bir tez kapsayıcısına eşdeğerdir ve belleğin 4GB'A (Tez kapsayıcı boyutu) tüketebilir. LLAP Daemon 'daki tüm yürüticileri aynı yığın belleğini paylaşır. Tüm yürüticilere aynı anda bellek yoğun işlemler çalıştırılmadığından varsayımıyla, her yürütücü için tez kapsayıcı boyutunun (4 GB) %75 ' ını göz önüne alabilirsiniz. Bu şekilde, daha fazla paralellik için her bir yürütücü daha az bellek (örneğin 3 GB) vererek yürüticilerinin sayısını artırabilirsiniz. Ancak, bu ayarı hedef iş yükünüz için ayarlamanız önerilir.
 
 D14 v2 VM 'lerinde 16 sanal çekirdek vardır.
-D14 v2 için, yürütme sayısı için önerilen değer (16 sanal çekirdek x 120%) ~ = _ *19** her çalışan düğümünde, yürütücü başına 3GB 'yi ele alır.
+D14 v2 için, yürütme sayısı için önerilen değer (16 sanal çekirdek x 120%) ~ = **19** ' u her çalışan düğümünde, yürütücü başına 3GB bir şekilde ele alır.
 
-**_Hive. LLAP. IO. ThreadPool. size_*_: Bu değer, yürüticileri için iş parçacığı havuzu boyutunu belirtir. Yürüticileri belirtilen şekilde sabitlendiği için, LLAP Daemon başına yürüticilerinin sayısıyla aynı olacaktır. D14 v2 için önerilen değer _ 19 ' dir***.
+***Hive. LLAP. IO. ThreadPool. size***:   
+Bu değer, yürüticileri için iş parçacığı havuzu boyutunu belirtir. Yürüticileri belirtilen şekilde sabitlendiği için, LLAP Daemon başına yürüticilerinin sayısıyla aynı olacaktır.    
+D14 v2 için önerilen değer **19**' dir.
 
 #### <a name="9-determining-llap-daemon-cache-size"></a>**9. LLAP Daemon önbellek boyutunu belirleme**  
-Yapılandırma: **_Hive. LLAP. IO. Memory. size_* _
+Yapılandırma: ***Hive. LLAP. IO. Memory. size***
 
-LLAP Daemon kapsayıcı belleği aşağıdaki bileşenlerden oluşur; _ Baş oda
+LLAP Daemon kapsayıcı belleği aşağıdaki bileşenlerden oluşur;
+*  Baş oda
 *  Yürüticileri (XMX) tarafından kullanılan yığın belleği
 *  Daemon önbelleği etkinken, Daemon başına bellek içi önbellek (yığın dışı bellek boyutu, kullanılamaz)
 *  Bellek içi önbellek meta veri boyutu (yalnızca SSD önbelleği etkinleştirildiğinde geçerlidir)
@@ -181,18 +184,18 @@ D14 v2 ve HDI 4,0 için önerilen SSD önbellek boyutu = 19 GB/0,08 ~ = **237 GB
 D14 v2 ve HDI 3,6 için önerilen SSD önbellek boyutu = 18 GB/0,08 ~ = **225 GB**
 
 #### <a name="10-adjusting-map-join-memory"></a>**10. eşleme bellek birleştirmesini ayarlama**   
-Yapılandırma: **_Hive. Auto. Convert. JOIN. noconditionaltask. size_* _
+Yapılandırma: ***Hive. Auto. Convert. JOIN. noconditionaltask. size***
 
-Bu parametrenin etkin olabilmesi için _hive. Auto. Convert. JOIN. noconditionaltask * özelliğinin etkin olduğundan emin olun.
+Bu parametre için *Hive. Auto. Convert. JOIN. noconditionaltask* özelliğinin etkin olduğundan emin olun.
 Bu yapılandırma, diğer yürütmelerin daha fazla eşleme birleştirmesini sağlamak üzere bellek içi karma tablolar için daha fazla yere sahip olması için diğer yürütmelere göre daha fazla yer açmak üzere Hive iyileştiricilerine göre Mapjoın 'in eşiğini belirlenir. Yürütücü başına 3GB göz önünde bulundurarak, bu boyut 3GB 'e abone olabilir, ancak bazı yığın belleği sıralama arabellekleri, karışık arabellekler vb. diğer işlemler için de kullanılabilir.   
 Bu nedenle, D14 v2 için, yürütücü başına 3 GB bellek ile bu değerin **2048 MB** olarak ayarlanması önerilir.  
 
 (Unutmayın: Bu değer, iş yükünüz için uygun olan ayarlamalara gereksinim duyuyor olabilir. Bu değeri çok düşük olarak ayarlamak, oto Dönüştür özelliği kullanamaz. Ve bunu çok yüksek olarak ayarlamak, olumsuz performansla sonuçlanamayacak bellek özel durumları veya GC duraklamaları oluşmasına neden olabilir.)  
 
 #### <a name="11-number-of-llap-daemons"></a>**11. LLAP Daemon 'ları sayısı**
-Ambarı ortam değişkenleri: **_num_llap_nodes, num_llap_nodes_for_llap_daemons_* _  
+Ambarı ortam değişkenleri: ***num_llap_nodes, num_llap_nodes_for_llap_daemons***  
 
-_ *num_llap_nodes**-HIVE LLAP hizmeti tarafından kullanılan düğüm sayısını belirtir. Bu, LLAP Daemon, LLAP hizmet yöneticisi ve tez uygulama ana (Tez) çalıştıran düğümleri içerir.  
+**num_llap_nodes** -HIVE LLAP hizmeti tarafından kullanılan düğüm sayısını belirtir. Bu, LLAP Daemon, LLAP hizmet yöneticisi ve tez uygulama ana (Tez) çalıştıran düğümleri içerir.  
 
 ![' LLAP hizmeti için düğüm sayısı '](./media/hive-llap-sizing-guide/LLAP_sizing_guide_num_llap_nodes.png "LLAP hizmeti için düğüm sayısı")  
 

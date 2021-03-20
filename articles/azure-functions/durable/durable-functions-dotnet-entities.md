@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 10/06/2019
 ms.author: azfuncdf
 ms.openlocfilehash: 88d2a23104b67dae8fd480406eb9171e9f3d5652
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92740009"
 ---
 # <a name="developers-guide-to-durable-entities-in-net"></a>.NET 'teki dayanıklı varlıklara Geliştirici Kılavuzu
@@ -203,7 +203,7 @@ Tür denetimi sağlamanın yanı sıra, arabirimler uygulamanın içindeki kayg�
 
 ### <a name="example-client-signals-entity-through-interface"></a>Örnek: istemci, varlığa arabirim aracılığıyla işaret eder
 
-İstemci kodu, `SignalEntityAsync<TEntityInterface>` uygulayan varlıklara sinyal göndermek için kullanabilir `TEntityInterface` . Örneğin:
+İstemci kodu, `SignalEntityAsync<TEntityInterface>` uygulayan varlıklara sinyal göndermek için kullanabilir `TEntityInterface` . Örnek:
 
 ```csharp
 [FunctionName("DeleteCounter")]

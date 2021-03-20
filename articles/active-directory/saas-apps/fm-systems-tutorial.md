@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 04/05/2019
 ms.author: jeedes
 ms.openlocfilehash: a43c1092cd916877b24fc145ed05c92f50127cca
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92452796"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-fmsystems"></a>Öğretici: FM: sistemlerle Azure Active Directory tümleştirme
@@ -30,7 +30,7 @@ FM: sistemleri Azure AD ile tümleştirmek aşağıdaki avantajları sağlar:
 Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](../manage-apps/what-is-single-sign-on.md).
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure AD tümleştirmesini FM: sistemlerle yapılandırmak için aşağıdaki öğeler gereklidir:
 
@@ -61,13 +61,13 @@ FM: Systems 'ın Azure AD ile tümleştirilmesini yapılandırmak için, Galerid
 
     ![Yeni uygulama düğmesi](common/add-new-app.png)
 
-4. Arama kutusuna, **FM: sistemler**yazın, **FM: sistem** sonuç panelinden bir dosya seçin ve ardından **Ekle** düğmesine tıklayarak uygulamayı ekleyin.
+4. Arama kutusuna, **FM: sistemler** yazın, **FM: sistem** sonuç panelinden bir dosya seçin ve ardından **Ekle** düğmesine tıklayarak uygulamayı ekleyin.
 
      ![FM: Sonuçlar listesindeki sistemler](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-Bu bölümde, Azure AD çoklu oturum açmayı, **Britta Simon**adlı bir test KULLANıCıSıNA göre FM: sistemlerle yapılandırıp test edersiniz.
+Bu bölümde, Azure AD çoklu oturum açmayı, **Britta Simon** adlı bir test KULLANıCıSıNA göre FM: sistemlerle yapılandırıp test edersiniz.
 Çoklu oturum açma için, bir Azure AD kullanıcısı ve FM 'deki ilgili Kullanıcı arasındaki bağlantı ilişkisi: sistemlerin kurulması gerekir.
 
 Azure AD çoklu oturum açma 'yı FM: sistemlerle yapılandırmak ve test etmek için aşağıdaki yapı taşlarını gerçekleştirmeniz gerekir:
@@ -140,7 +140,7 @@ Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı ol
 
     ![Kullanıcı iletişim kutusu](common/user-properties.png)
 
-    a. **Ad** alanına **Brittasıon**girin.
+    a. **Ad** alanına **Brittasıon** girin.
   
     b. **Kullanıcı adı** alanına yazın `brittasimon@yourcompanydomain.extension` . Örneğin, BrittaSimon@contoso.com
 
@@ -188,7 +188,7 @@ Bu bölümde, FM: sistemlerine erişim vererek Azure çoklu oturum açma özelli
 
 4. **Kullanıcı oluştur** bölümünde aşağıdaki adımları uygulayın:
    
-    ![Kullanıcı Oluştur](./media/fm-systems-tutorial/ic795907.png "Kullanıcı Oluştur")
+    ![Create User](./media/fm-systems-tutorial/ic795907.png "Kullanıcı Oluştur")
    
     a. İlgili metin kutularına sağlamak istediğiniz geçerli bir Azure Active Directory hesabının **Kullanıcı adı**, **parola**, parolayı **onaylayın**, **e-posta** ve **çalışan kimliğini** yazın.
    

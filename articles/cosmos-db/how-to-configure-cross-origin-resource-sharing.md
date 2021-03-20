@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 10/11/2019
 ms.author: dech
 ms.openlocfilehash: eba49ff45ba9ab1f5cfaa1d75973d656ac32ca6a
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93339912"
 ---
 # <a name="configure-cross-origin-resource-sharing-cors"></a>Çıkış noktaları arası kaynak paylaşımını (CORS) yapılandırma
@@ -30,7 +30,7 @@ Azure portal kullanarak, çıkış noktaları arası kaynak paylaşımını etki
 
 1. Azure Cosmos DB hesabınıza gidin. **CORS** dikey penceresini açın.
 
-2. Azure Cosmos DB hesabınıza çapraz kaynak çağrıları yapaabilecek çıkış noktaları için virgülle ayrılmış bir liste belirtin. Örneğin,, `https://www.mydomain.com` , `https://mydomain.com` `https://api.mydomain.com` . \*Tüm kaynaklarına izin vermek ve **Gönder** ' i seçmek için "" joker karakteri de kullanabilirsiniz. 
+2. Azure Cosmos DB hesabınıza çapraz kaynak çağrıları yapaabilecek çıkış noktaları için virgülle ayrılmış bir liste belirtin. Örneğin,, `https://www.mydomain.com` , `https://mydomain.com` `https://api.mydomain.com` . \*Tüm kaynaklarına izin vermek ve **Gönder**' i seçmek için "" joker karakteri de kullanabilirsiniz. 
 
    > [!NOTE]
    > Şu anda, etki alanı adının bir parçası olarak joker karakter kullanamazsınız. Örneğin `https://*.mydomain.net` biçimi henüz desteklenmiyor. 

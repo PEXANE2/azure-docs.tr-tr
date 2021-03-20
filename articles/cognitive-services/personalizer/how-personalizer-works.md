@@ -6,15 +6,15 @@ ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 02/18/2020
 ms.openlocfilehash: cfbe5cf8c19bfafb38f6149391e09350785ebf9c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91303616"
 ---
 # <a name="how-personalizer-works"></a>Kişiselleştirme nasıl çalışır?
 
-_Öğrenme döngünüz_olan kişiselleştirici kaynağı, içeriğiniz için en iyi eylemi tahmin eden modeli oluşturmak için makine öğrenimi 'ni kullanır. Model, bu verilere yalnızca **Derecelendirme** ve **ödül** çağrılarında gönderdiğiniz verilerinize göre eğitilir. Her döngü birbirleriyle tamamen bağımsızdır.
+_Öğrenme döngünüz_ olan kişiselleştirici kaynağı, içeriğiniz için en iyi eylemi tahmin eden modeli oluşturmak için makine öğrenimi 'ni kullanır. Model, bu verilere yalnızca **Derecelendirme** ve **ödül** çağrılarında gönderdiğiniz verilerinize göre eğitilir. Her döngü birbirleriyle tamamen bağımsızdır.
 
 ## <a name="rank-and-reward-apis-impact-the-model"></a>Derecelendirme ve Reward API 'Leri modeli etkiler
 
@@ -26,7 +26,7 @@ _Öğrenme döngünüz_olan kişiselleştirici kaynağı, içeriğiniz için en 
 Ödül Puanını belirlersiniz ve bu puanı ödül API 'sine gönderirsiniz. **Reward** API 'si:
 
 * Her bir derece çağrısının özelliklerini ve yeniden puanlarını kaydederek modeli eğitmek için veri toplar.
-* , _Öğrenme ilkesinde_belirtilen yapılandırmaya göre modeli güncelleştirmek için bu verileri kullanır.
+* , _Öğrenme ilkesinde_ belirtilen yapılandırmaya göre modeli güncelleştirmek için bu verileri kullanır.
 
 ## <a name="your-system-calling-personalizer"></a>Kişiselleştirici çağıran sistem
 
@@ -38,7 +38,7 @@ Aşağıdaki görüntüde, derece ve geri aramaları çağırmanın mimari akı�
 
     * Kişiselleştirici, geçerli modelden mi yararlanacağına yoksa model için yeni seçimler keşfetmesine karar verir.
     * Derecelendirme sonucu EventHub öğesine gönderilir.
-1. En üst sıra, sisteminize geri dönüş _eylem kimliği_olarak döndürülür.
+1. En üst sıra, sisteminize geri dönüş _eylem kimliği_ olarak döndürülür.
     Sisteminiz bu içeriği gösterir ve kendi iş kurallarınızı temel alarak bir ödül puanı belirler.
 1. Sisteminiz öğrenme döngüsüne geri dönüş puanı döndürür.
     * Kişiselleştirmede bir ödül alındığında, bu, EventHub öğesine gönderilir.

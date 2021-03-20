@@ -4,13 +4,13 @@ description: Dağıtım sırasında başka bir kaynağa bağlı olarak bir Azure
 ms.topic: conceptual
 ms.date: 12/21/2020
 ms.openlocfilehash: f6b63b066da06a17c3a2e51ab0f3ab9bf521a144
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/06/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97934756"
 ---
-# <a name="define-the-order-for-deploying-resources-in-arm-templates"></a>ARM şablonlarında kaynak dağıtma sırasını tanımlayın
+# <a name="define-the-order-for-deploying-resources-in-arm-templates"></a>ARM şablonlarında kaynak dağıtım sırasını belirleme
 
 Kaynakları dağıttığınızda, bazı kaynakların diğer kaynaklardan önce mevcut olduğundan emin olmanız gerekebilir. Örneğin, bir veritabanını dağıtmaya başlamadan önce mantıksal bir SQL Server gerekir. Bu ilişkiyi, bir kaynağı diğer kaynağa bağımlı olarak işaretleyerek kurarsınız. `dependsOn`Açık bir bağımlılık tanımlamak için öğesini kullanın. Örtük bir bağımlılık tanımlamak için **başvuru** veya **liste** işlevlerini kullanın.
 

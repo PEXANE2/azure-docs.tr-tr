@@ -4,10 +4,10 @@ description: Microsoft Azure Depolama Gezgini kullanarak VHD dosyasını laborat
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: d4e421932ebba5d4f389000c12bcf44ac2f37599
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91282536"
 ---
 # <a name="upload-vhd-file-to-labs-storage-account-using-microsoft-azure-storage-explorer"></a>Microsoft Azure Depolama Gezgini kullanarak VHD dosyasını laboratuvar depolama hesabına yükleyin
@@ -78,7 +78,7 @@ Aşağıdaki adımlar, [Microsoft Azure Depolama Gezgini](../vs-azure-tools-stor
     
     1. Aboneliğin düğümü altında, **depolama hesapları**' nı genişletin.
 
-    1. **BLOB kapsayıcıları**, **dosya paylaşımları**, **Kuyruklar**ve **Tablolar**için düğümleri göstermek üzere laboratuvarın depolama hesabı düğümünü genişletin.
+    1. **BLOB kapsayıcıları**, **dosya paylaşımları**, **Kuyruklar** ve **Tablolar** için düğümleri göstermek üzere laboratuvarın depolama hesabı düğümünü genişletin.
     
     1. **BLOB kapsayıcıları** düğümünü genişletin.
     
@@ -100,7 +100,7 @@ Aşağıdaki adımlar, [Microsoft Azure Depolama Gezgini](../vs-azure-tools-stor
 
     1. **Karşıya yüklenecek dosyaları seçin** iletişim kutusunda, istenen VHD dosyasına gidin, seçin ve sonra **Aç**' ı seçin.
     
-    1. **Dosyaları karşıya yükle** iletişim kutusuna döndürülen **BLOB türünü** **Sayfa Blobu**olarak değiştirin.
+    1. **Dosyaları karşıya yükle** iletişim kutusuna döndürülen **BLOB türünü** **Sayfa Blobu** olarak değiştirin.
     
     1. **Karşıya Yükle**’yi seçin.
 

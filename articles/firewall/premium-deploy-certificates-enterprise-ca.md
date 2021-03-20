@@ -5,14 +5,14 @@ author: vhorne
 ms.service: firewall
 services: firewall
 ms.topic: how-to
-ms.date: 03/09/2021
+ms.date: 03/18/2021
 ms.author: victorh
-ms.openlocfilehash: fba95214a6bbb0482166eab8f77f30911986fbb7
-ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
+ms.openlocfilehash: 38d83186c06eac0fc3a49834172c2a4b8542caff
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102525503"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104590475"
 ---
 # <a name="deploy-and-configure-enterprise-ca-certificates-for-azure-firewall-preview"></a>Azure Güvenlik Duvarı önizlemesi için kuruluş CA sertifikaları dağıtma ve yapılandırma
 
@@ -42,7 +42,7 @@ Azure Güvenlik Duvarı Premium önizleme ile kullanmak üzere bir sertifika olu
 1. Kök CA 'daki Web kayıt sitesine erişin, genellikle `https://<servername>/certsrv` **sertifika iste**' yi seçin.
 1. **Gelişmiş Sertifika isteği**' ni seçin.
 1. **Oluştur ve bu CA için bir Istek Gönder '** i seçin.
-1. Aşağıda gösterildiği gibi, alt sertifika yetkilisi şablonunu kullanarak formu doldurun:
+1. Alt sertifika yetkilisi şablonunu kullanarak formu doldurun.
 1. İsteği gönder ve sertifikayı yükler.
 1. Bu isteğin Internet Explorer 'ı kullanarak bir Windows Server 'dan yapıldığı varsayılarak, **Internet seçenekleri**' ni açın.
 1. **İçerik** sekmesine gidin ve **Sertifikalar**' ı seçin.

@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 02/06/2019
 ms.author: jeedes
 ms.openlocfilehash: 6ccf755a73cafa4b855f602aa18246d710e5e1ff
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92454020"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-envi-mmis"></a>Öğretici: ENVI MMSıS ile tümleştirme Azure Active Directory
@@ -61,13 +61,13 @@ Envi MMSıS 'in tümleştirmesini Azure AD 'ye göre yapılandırmak için, Gale
 
     ![Yeni uygulama düğmesi](common/add-new-app.png)
 
-4. Arama kutusuna **ENVı mmsıs**yazın, sonuç panelinden **ENVı mmsıs** ' i seçin ve sonra uygulamayı eklemek için **Ekle** düğmesine tıklayın.
+4. Arama kutusuna **ENVı mmsıs** yazın, sonuç panelinden **ENVı mmsıs** ' i seçin ve sonra uygulamayı eklemek için **Ekle** düğmesine tıklayın.
 
      ![ENVI MMSıS sonuçlar listesinde](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-Bu bölümde, Azure AD çoklu oturum açmayı, Envi **Simon**adlı bir test kullanıcısına göre yapılandırma ve test edersiniz.
+Bu bölümde, Azure AD çoklu oturum açmayı, Envi **Simon** adlı bir test kullanıcısına göre yapılandırma ve test edersiniz.
 Çoklu oturum açma 'nın çalışması için, bir Azure AD kullanıcısı ile ilgili Kullanıcı arasındaki bir bağlantı ilişkisinin oluşturulması gerekir.
 
 Azure AD çoklu oturum açma 'yı Envi MMWITH ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını gerçekleştirmeniz gerekir:
@@ -154,11 +154,11 @@ Azure AD çoklu oturum açmayı ENVI MMWITH ile yapılandırmak için aşağıda
 
     a. Açılan **listeden** **Dosya** seçeneğini belirleyin.
 
-    b. **Dosya Seç simgesini**seçerek Azure Portal indirilen meta veri dosyasını karşıya yükleyin.
+    b. **Dosya Seç simgesini** seçerek Azure Portal indirilen meta veri dosyasını karşıya yükleyin.
 
     c. **Tamam**’a tıklayın.
 
-7. İndirilen meta veri dosyasını karşıya yükledikten sonra, alanlar otomatik olarak doldurulur. **Güncelleştir** 'e tıklayın
+7. İndirilen meta veri dosyasını karşıya yükledikten sonra, alanlar otomatik olarak doldurulur. **Güncelleştir**’e tıklayın
 
     ![Tek Sign-On Kaydet düğmesini yapılandırma](./media/envimmis-tutorial/configure6.png)
 
@@ -178,7 +178,7 @@ Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı ol
 
     ![Kullanıcı iletişim kutusu](common/user-properties.png)
 
-    a. **Ad** alanına **Brittasıon**yazın.
+    a. **Ad** alanına **Brittasıon** yazın.
   
     b. **Kullanıcı adı** alanına **brittasıon \@ yourcompanydomain. Extension** yazın  
     Örneğin, BrittaSimon@contoso.com
@@ -233,17 +233,17 @@ Azure AD kullanıcılarının, ENVI MMO 'da oturum açmasını sağlamak için, 
 
     ![Çalışan Ekle](./media/envimmis-tutorial/user3.png)
 
-    a. **Kullanıcı adı** metin kutusuna **brittasıon \@ contoso.com**gibi Britta Simon hesabının kullanıcı adını yazın.
+    a. **Kullanıcı adı** metin kutusuna **brittasıon \@ contoso.com** gibi Britta Simon hesabının kullanıcı adını yazın.
     
-    b. **Ilk ad** metin kutusuna, **Britta**gibi brittasıın adını yazın.
+    b. **Ilk ad** metin kutusuna, **Britta** gibi brittasıın adını yazın.
 
-    c. **Soyadı** metin kutusunda, **Simon**gibi brittasıon adının soyadını yazın.
+    c. **Soyadı** metin kutusunda, **Simon** gibi brittasıon adının soyadını yazın.
 
     d. Metin kutusunun **başlığında** kullanıcının başlığını girin.
     
-    e. **E-posta adresi** metin kutusuna **brittasıon \@ contoso.com**gibi Britta Simon hesabının e-posta adresini yazın.
+    e. **E-posta adresi** metin kutusuna **brittasıon \@ contoso.com** gibi Britta Simon hesabının e-posta adresini yazın.
 
-    f. **SSO Kullanıcı adı** metin kutusuna **brittasıon \@ contoso.com**gibi Britta Simon hesabının kullanıcı adını yazın.
+    f. **SSO Kullanıcı adı** metin kutusuna **brittasıon \@ contoso.com** gibi Britta Simon hesabının kullanıcı adını yazın.
 
     örneğin: **Kaydet**’e tıklayın.
 

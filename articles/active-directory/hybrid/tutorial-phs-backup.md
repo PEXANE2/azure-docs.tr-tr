@@ -13,10 +13,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 3d9f59906c566d80344891c0796a85b0a4972e68
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91313102"
 ---
 # <a name="tutorial--setting-up-phs-as-backup-for-ad-fs-in-azure-ad-connect"></a>Öğretici: Azure AD Connect AD FS için bir yedekleme olarak e-s ayarlama
@@ -50,7 +50,7 @@ Bu öğretici [öğreticiye dayanır: tek BIR ad ormanı ortamını buluta Feder
 ![Seç](media/tutorial-phs-backup/backup1.png)</br>
 8.  **Yapılandırmaya hazırlanma** ekranında **Yapılandır**' a tıklayın.
 9.  Yapılandırma tamamlandıktan sonra **Çıkış**' a tıklayın.
-10. Hepsi bu!  İşiniz bitti.  Parola karması eşitleme artık oluşur ve AD FS kullanılamaz hale gelirse yedekleme olarak kullanılabilir.
+10. İşte bu kadar!  İşiniz bitti.  Parola karması eşitleme artık oluşur ve AD FS kullanılamaz hale gelirse yedekleme olarak kullanılabilir.
 
 ## <a name="switch-to-password-hash-synchronization"></a>Parola karması eşitlemesine geç
 Bu aşamada, Parola karması eşitlemesine nasıl geçiş yapılacağını göstereceğiz. Başlamadan önce, anahtarı yapmanız gereken koşulları göz önünde bulundurun. Ağ kesintisi, küçük AD FS bir sorun veya kullanıcılarınızın bir alt kümesini etkileyen bir sorun gibi geçici nedenlerle anahtarı yapmayın. Sorunu düzeltmek çok uzun sürebileceğinden anahtarı yapmaya karar verirseniz şunları yapın:

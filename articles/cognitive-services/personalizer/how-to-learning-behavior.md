@@ -6,10 +6,10 @@ ms.subservice: personalizer
 ms.topic: how-to
 ms.date: 05/01/2020
 ms.openlocfilehash: 57a03b107678f83200b11f408784f6455cbceffd
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94579300"
 ---
 # <a name="configure-the-personalizer-learning-behavior"></a>Kişiselleştirici öğrenme davranışını yapılandırma
@@ -22,7 +22,7 @@ ms.locfileid: "94579300"
 
 1. Kişiselleştirici kaynağınız için [Azure Portal](https://portal.azure.com)oturum açın.
 
-1. **Yapılandırma** sayfasında, **öğrenme davranışı** sekmesinde, ana **hat eylemi Döndür ' ü seçin, bir apprenlet olarak öğrenin ve** ardından **Kaydet** ' i seçin.
+1. **Yapılandırma** sayfasında, **öğrenme davranışı** sekmesinde, ana **hat eylemi Döndür ' ü seçin, bir apprenlet olarak öğrenin ve** ardından **Kaydet**' i seçin.
 
 > [!div class="mx-imgBorder"]
 > ![Azure portal 'de apprence modu öğrenme davranışını yapılandırma ekran görüntüsü](media/settings/configure-learning-behavior-azure-portal.png)
@@ -53,15 +53,15 @@ Azure portal, kişiselleştirici kaynağınız için **değerlendirmeler** sayfa
 > ![Azure portal 'de apprence modu öğrenme davranışının değerlendirilmesine yönelik ekran görüntüsü](media/settings/evaluate-apprentice-mode.png)
 
 Apprenlet modu aşağıdaki **değerlendirme ölçümlerini** sağlar:
-* **Taban çizgisi – ortalama ödül** : uygulamanın varsayılan (taban çizgisi) ortalama yeniden sürümleri.
-* **Kişiselleştirici – ortalama ödül** : Toplam Rede kişiselleştiriciye ait ortalama, potansiyel olarak gelmiş olabilir.
-* **En son 1000 olay sayısı için başarı oranı** : en son 1000 olay üzerinden normalleştirilmeli ve kişiselleştirici bir şekilde değerlendiriliyor.
+* **Taban çizgisi – ortalama ödül**: uygulamanın varsayılan (taban çizgisi) ortalama yeniden sürümleri.
+* **Kişiselleştirici – ortalama ödül**: Toplam Rede kişiselleştiriciye ait ortalama, potansiyel olarak gelmiş olabilir.
+* **En son 1000 olay sayısı için başarı oranı**: en son 1000 olay üzerinden normalleştirilmeli ve kişiselleştirici bir şekilde değerlendiriliyor.
 
 ## <a name="switch-behavior-to-online-mode"></a>Davranışı çevrimiçi moda geçir
 
 Kişiselleştirmeye yönelik bir ortalama% 75-85 yuvarlanan ortalama ile eğitilen, model çevrimiçi moda geçmeye hazırlanıyor.
 
-Kişiselleştirici kaynağınız için Azure portal, **yapılandırma** sayfasında, **öğrenme davranışı** sekmesinde **en iyi eylemi Döndür** ' ü seçin ve ardından **Kaydet** ' i seçin.
+Kişiselleştirici kaynağınız için Azure portal, **yapılandırma** sayfasında, **öğrenme davranışı** sekmesinde **en iyi eylemi Döndür** ' ü seçin ve ardından **Kaydet**' i seçin.
 
 Derecelendirme ve yeniden iletme API çağrılarında herhangi bir değişiklik yapmanız gerekmez.
 

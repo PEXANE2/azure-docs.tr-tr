@@ -5,10 +5,10 @@ tags: top-support-issue
 ms.topic: conceptual
 ms.date: 09/23/2020
 ms.openlocfilehash: 00e0c51244d5c191d4c9f05f689b90ece81ec5a4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91284628"
 ---
 # <a name="view-deployment-history-with-azure-resource-manager"></a>Azure Resource Manager ile dağıtım geçmişini görüntüle
@@ -27,7 +27,7 @@ Azure portal, PowerShell, Azure CLı veya REST API bir dağıtım hakkındaki ay
 
 1. İncelemek istediğiniz kaynak grubunu seçin.
 
-1. **Dağıtımlar**altındaki bağlantıyı seçin.
+1. **Dağıtımlar** altındaki bağlantıyı seçin.
 
    ![Dağıtım geçmişini seçin](./media/deployment-history/select-deployment-history.png)
 
