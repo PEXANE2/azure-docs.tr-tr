@@ -4,10 +4,10 @@ description: MARS aracısından bir kurtarma hizmetleri kasasına çevrimdışı
 ms.topic: conceptual
 ms.date: 1/27/2020
 ms.openlocfilehash: e789b6c9f4ff2e8cd168e6b5c138d423911d4743
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/07/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96752592"
 ---
 # <a name="azure-backup-offline-backup-by-using-azure-data-box"></a>Azure Data Box kullanarak çevrimdışı yedekleme Azure Backup
@@ -284,7 +284,7 @@ Data Box işi oluşturulan abonelikte yönetici erişimine sahip farklı bir hes
 Başka hiçbir sunucuda, çevrimdışı dengeli dağıtım yapılandırılmamışsa ve uygulamaya bağımlı başka bir sunucu yoksa `AzureOfflineBackup_<Azure User Id>` , bu uygulamayı silin. **Azure Portal**  >  **Azure Active Directory**  >  **uygulama kayıtları**' yı seçin.
 
 >[!NOTE]
-> `AzureOfflineBackup_<Azure User Id>`Uygulamanın başka bir çevrimdışı dengeli dağıtım olup olmadığını ve bu uygulamaya bağlı başka bir sunucu yoksa da denetleyin. **Settings**  >  **Ortak anahtarlar** bölümü altında ayarlar **anahtarlar** ' a gidin. Başka hiçbir ortak anahtar eklenmelidir. Başvuru için aşağıdaki ekran görüntüsüne bakın.
+> `AzureOfflineBackup_<Azure User Id>`Uygulamanın başka bir çevrimdışı dengeli dağıtım olup olmadığını ve bu uygulamaya bağlı başka bir sunucu yoksa da denetleyin.   >  **Ortak anahtarlar** bölümü altında ayarlar **anahtarlar** ' a gidin. Başka hiçbir ortak anahtar eklenmelidir. Başvuru için aşağıdaki ekran görüntüsüne bakın.
 >
 >![Ortak anahtarlar](./media/offline-backup-azure-data-box/public-keys.png)
 

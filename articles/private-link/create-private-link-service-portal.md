@@ -9,17 +9,17 @@ ms.topic: quickstart
 ms.date: 01/18/2021
 ms.author: allensu
 ms.openlocfilehash: d394a475c5121607f70c03437382e104a5d0cbee
-ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/24/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98746416"
 ---
 # <a name="quickstart-create-a-private-link-service-by-using-the-azure-portal"></a>Hızlı başlangıç: Azure portal kullanarak özel bir bağlantı hizmeti oluşturma
 
 Hizmetinize başvuran bir özel bağlantı hizmeti oluşturmaya başlayın.  Azure Standart Load Balancer arkasında dağıtılan hizmetinize veya kaynağa özel bağlantı erişimi verin.  Hizmetinizin kullanıcılarının sanal ağından özel erişimi vardır.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
@@ -46,7 +46,7 @@ Bu bölümde, özel bağlantı hizmetinize erişen yük dengeleyiciyi barındır
     | Kaynak Grubu   | **Createprılinkservice-RG** seçin |
     | **Örnek ayrıntıları** |                                                                 |
     | Name             | **Myvnet** girin                                    |
-    | Bölge           | **Doğu ABD 2** seçin |
+    | Region           | **Doğu ABD 2** seçin |
 
 3. **IP adresleri** sekmesini seçin veya sayfanın altındaki **Sonraki: IP adresleri** düğmesini seçin.
 
@@ -84,7 +84,7 @@ Standart bir iç yük dengeleyici oluşturmak için portalını kullanın.
     | Abonelik               | Aboneliğinizi seçin.    |    
     | Kaynak grubu         | Önceki adımda **Createprılinkservice-RG** oluşturma seçeneğini belirleyin.|
     | Name                   | **Myloadbalancer** girin                                   |
-    | Bölge         | **Doğu ABD 2**’yi seçin.                                        |
+    | Region         | **Doğu ABD 2**’yi seçin.                                        |
     | Tür          | **Dahili**' ı seçin.                                        |
     | SKU           | **Standart** seçin |
     | Sanal ağ | Önceki adımda oluşturulan **Myvnet** öğesini seçin. |
@@ -192,7 +192,7 @@ Bu bölümde, standart bir yük dengeleyicinin arkasında bir özel bağlantı h
     | Kaynak Grubu | **Createprılinkservice-RG** öğesini seçin. |
     | **Örnek ayrıntıları** |  |
     | Name | **Myprivatelinkservice** yazın. |
-    | Bölge | **Doğu ABD 2**’yi seçin. |
+    | Region | **Doğu ABD 2**’yi seçin. |
 
 6. **Giden ayarları** sekmesini seçin veya sonraki: sayfanın en altındaki **giden ayarlar** ' ı seçin.
 
@@ -237,7 +237,7 @@ Bu bölümde özel bağlantı hizmetini özel bir uç nokta ile eşlersiniz. Bir
     | Kaynak Grubu   | **Createprılinkservice-RG** seçin |
     | **Örnek ayrıntıları** |                                                                 |
     | Name             | **Myvnetpe** girin                                    |
-    | Bölge           | **Doğu ABD 2** seçin |
+    | Region           | **Doğu ABD 2** seçin |
 
 3. **IP adresleri** sekmesini seçin veya sayfanın altındaki **Sonraki: IP adresleri** düğmesini seçin.
 
@@ -281,7 +281,7 @@ Bu bölümde özel bağlantı hizmetini özel bir uç nokta ile eşlersiniz. Bir
     | Kaynak grubu | **Createprılinkservice-RG** öğesini seçin. Bu kaynak grubunu önceki bölümde oluşturdunuz.|
     | **Örnek ayrıntıları** |  |
     | Name  | **myPrivateEndpoint** değerini girin. |
-    | Bölge | **Doğu ABD 2**’yi seçin. |
+    | Region | **Doğu ABD 2**’yi seçin. |
 
 6. Sayfanın alt kısmındaki **kaynak** sekmesini veya **Sonraki: kaynak** düğmesini seçin.
     

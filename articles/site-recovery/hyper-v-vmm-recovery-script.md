@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: sharrai
 ms.openlocfilehash: 3217c30737a133c1c1092fc4a8a8caaa0338e980
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89425883"
 ---
 # <a name="add-a-vmm-script-to-a-recovery-plan"></a>Kurtarma planına VMM betiği ekleme
@@ -20,7 +20,7 @@ Bu makalede, bir System Center Virtual Machine Manager (VMM) komut dosyasının 
 
 Bu makalenin alt kısmında veya [Azure kurtarma hizmetleri Için Microsoft Q&soru sayfasında](/answers/topics/azure-site-recovery.html)herhangi bir yorum veya soru gönderin.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Kurtarma planlarınızda PowerShell betikleri kullanabilirsiniz. Kurtarma planından erişilebilmesi için betiği yazıp VMM kitaplığına yerleştirmeniz gerekir. Betiği yazarken aşağıdaki noktaları göz önünde bulundurun:
 
@@ -43,15 +43,15 @@ Kurtarma planlarınızda PowerShell betikleri kullanabilirsiniz. Kurtarma planı
 
   Kitaplık paylaşım yolunuz uzak ise (veya yerel ise ve MSCVMMLibrary ile paylaşılmışsa), \\ libserver2. contoso. com\share\ kullanarak bir örnek olarak, aşağıdaki gibi bir paylaşım yapılandırın:
   
-  1. Kayıt defteri düzenleyicisini açın ve ardından **HKEY_LOCAL_MACHINE\SOFTWARE\MICROSOFT\Azure Site Recovery\Registration**gidin.
+  1. Kayıt defteri düzenleyicisini açın ve ardından **HKEY_LOCAL_MACHINE\SOFTWARE\MICROSOFT\Azure Site Recovery\Registration** gidin.
 
-  1. **Scriptlibrarypath** için değeri ** \\ \libserver2.contoso.com\share \\ **olarak değiştirin. Tam FQDN 'yi belirtin. Paylaşma konumuna izin verin. Bu, paylaşımın kök düğümüdür. Kök düğümü denetlemek için, VMM 'de, kitaplıktaki kök düğüme gidin. Açılan yol yolun köküdür. Bu, değişkeninde kullanmanız gereken yoldur.
+  1. **Scriptlibrarypath** için değeri **\\ \libserver2.contoso.com\share \\** olarak değiştirin. Tam FQDN 'yi belirtin. Paylaşma konumuna izin verin. Bu, paylaşımın kök düğümüdür. Kök düğümü denetlemek için, VMM 'de, kitaplıktaki kök düğüme gidin. Açılan yol yolun köküdür. Bu, değişkeninde kullanmanız gereken yoldur.
 
   1. VMM hizmet hesabıyla aynı düzeyde kullanıcı haklarına sahip bir kullanıcı hesabı kullanarak betiği test edin. Bu kullanıcı haklarının kullanılması, tek başına çalıştırılan ve sınanan betiklerin kurtarma planlarında çalıştıkları şekilde çalıştığını doğrular. VMM sunucusunda, yürütme ilkesini aşağıdaki gibi geçiş olarak ayarlayın:
 
      a. Yönetici olarak **64-bit Windows PowerShell** konsolunu açın.
      
-     b. **Set-executionpolicy bypass**girin. Daha fazla bilgi için [Set-ExecutionPolicy cmdlet 'Ini kullanma](/previous-versions/windows/it-pro/windows-powershell-1.0/ee176961(v=technet.10))konusuna bakın.
+     b. **Set-executionpolicy bypass** girin. Daha fazla bilgi için [Set-ExecutionPolicy cmdlet 'Ini kullanma](/previous-versions/windows/it-pro/windows-powershell-1.0/ee176961(v=technet.10))konusuna bakın.
 
      > [!IMPORTANT]
      > **Set-executionpolicy bypass** yalnızca 64-bit PowerShell konsolunda ayarlanır. Bunu 32-bit PowerShell konsolu için ayarlarsanız betikler çalıştırılmaz.
@@ -71,7 +71,7 @@ Bir kurtarma planına VM 'Ler veya çoğaltma grupları ekledikten ve planı olu
 1. Kurtarma planını açın.
 1. **Adım** listesinde bir öğe seçin. Ardından, **komut dosyası** veya **el ile eylem**' i seçin.
 1. Seçili öğeden önce veya sonra betik ya da eylemin eklenip eklenmeyeceğini belirtin. Betiğin konumunu yukarı veya aşağı taşımak için **Yukarı taşı** ve **aşağı taşı** düğmelerini seçin.
-1. Bir VMM betiği eklerseniz, **VMM betiğine yük devretme**' yı seçin. **Betik yolu**' nda, paylaşımın göreli yolunu girin. Örneğin **\RPScripts\RPScript.PS1**girin.
+1. Bir VMM betiği eklerseniz, **VMM betiğine yük devretme**' yı seçin. **Betik yolu**' nda, paylaşımın göreli yolunu girin. Örneğin **\RPScripts\RPScript.PS1** girin.
 1. Bir Azure Otomasyonu runbook 'u eklerseniz, runbook 'un bulunduğu Otomasyon hesabını belirtin. Ardından, kullanmak istediğiniz Azure runbook betiğini seçin.
 1. Betiğin beklendiği gibi çalıştığından emin olmak için kurtarma planının yük devretmesini test edin.
 

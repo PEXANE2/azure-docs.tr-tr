@@ -16,10 +16,10 @@ ms.date: 06/05/2017
 ms.author: alkohli
 ms.custom: ''
 ms.openlocfilehash: 35fa0fc134045585eebd21324352f9b4ff272e87
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94954248"
 ---
 # <a name="use-storsimple-snapshot-manager-user-interface-to-manage-backup-jobs-and-backup-catalog"></a>Yedekleme işlerini ve yedekleme kataloğunu yönetmek için StorSimple Snapshot Manager Kullanıcı arabirimini kullanma
@@ -118,7 +118,7 @@ Aşağıdaki tablo, StorSimple Snapshot Manager eylemlerinin alfabetik bir liste
 | Ayrıntılar |**Cihazlar** düğümüne tıklayın ve ardından **sonuçlar** bölmesinde bir cihaza sağ tıklayın. |Bir cihazın yapılandırma ayrıntılarını görmek için **Ayrıntılar** ' a tıklayın. |
 | Düzenle |**Yedekleme ilkeleri**' ne tıklayın ve ardından **sonuçlar** bölmesinde bir ilkeye sağ tıklayın. |Birim grubu için Yedekleme zamanlamasını değiştirmek üzere **Düzenle** ' ye tıklayın. |
 | Listeyi dışarı aktar |Herhangi bir düğüme veya sonuca tıklayın (Bu öğe tüm **eylem** menülerinde ve **Eylemler** bölmelerinde görüntülenir.) |Listeyi bir virgülle ayrılmış değer (CSV) dosyasına kaydetmek için **Listeyi dışarı aktar** ' a tıklayın. Daha sonra bu dosyayı analiz için bir elektronik tablo uygulamasına aktarabilirsiniz. |
-| Yardım |Herhangi bir düğüme veya sonuca tıklayın. (Bu öğe tüm **eylem** menüleri ve **Eylemler** bölmeleri üzerinde görünür.) |Çevrimiçi yardım 'ı ayrı bir tarayıcı penceresinde açmak için **Yardım 'a** tıklayın. |
+| Help |Herhangi bir düğüme veya sonuca tıklayın. (Bu öğe tüm **eylem** menüleri ve **Eylemler** bölmeleri üzerinde görünür.) |Çevrimiçi yardım 'ı ayrı bir tarayıcı penceresinde açmak için **Yardım 'a** tıklayın. |
 | Buradan Yeni Pencere |Herhangi bir düğüme veya sonuca tıklayın (Bu öğe tüm **eylem** menülerinde ve **Eylemler** bölmelerinde görüntülenir.) |Yeni bir StorSimple Snapshot Manager penceresi açmak için **buradan yeni pencere** ' ye tıklayın. |
 | Yenile |Herhangi bir düğüme veya sonuca tıklayın (Bu öğe tüm **eylem** menülerinde ve **Eylemler** bölmelerinde görüntülenir.) |Şu anda görüntülenen StorSimple Snapshot Manager penceresini güncelleştirmek için **Yenile** ' ye tıklayın. |
 | Cihazı Yenile |**Cihazlar** düğümüne tıklayın ve **sonuçlar** bölmesinde bir cihaza sağ tıklayın. |Belirli bir bağlı cihazı StorSimple Snapshot Manager ile eşleştirmek için **cihazı Yenile** ' ye tıklayın. |
@@ -126,7 +126,7 @@ Aşağıdaki tablo, StorSimple Snapshot Manager eylemlerinin alfabetik bir liste
 | Birimleri yeniden Tara |**Birimler** düğümüne sağ tıklayın. |**Sonuçlar** bölmesinde görüntülenen birimlerin listesini güncelleştirmek için **birimleri yeniden Tara** ' ya tıklayın. |
 | Geri Yükleme |**Yedekleme kataloğu**' nu genişletin, bir birim grubunu genişletin, **Yerel anlık görüntüler** veya **bulut anlık görüntüleri**' ni genişletin ve ardından bir yedeklemeye sağ tıklayın. |Geçerli birim grubu verilerini seçilen Yedeklemedeki verilerle değiştirmek için **geri yükle** ' ye tıklayın. |
 | Yedek al |Aşağıdakilerden birini yapın:<ul><li>**Birim grupları**' nı genişletin ve ardından bir birim grubuna sağ tıklayın.</li><li>**Yedekleme kataloğu**' nu genişletin ve ardından bir birim grubuna sağ tıklayın.</li></ul> |Yedekleme işini hemen başlatmak için **yedeklemeyi al** ' ı tıklatın. |
-| Içeri aktarmalar görüntüsünü değiştirme |**Kapsam** bölmesinde üst düğüme sağ tıklayın (örneklerdeki **StorSimple Snapshot Manager** düğümü). |StorSimple Aygıt Yöneticisi hizmet panosundan içeri aktarılan birim gruplarını ve ilişkili yedekleri göstermek veya gizlemek için **Içeri aktarmalar görüntüsünü değiştirme** ' ye tıklayın. |
+| Içeri aktarmalar görüntüsünü değiştirme |**Kapsam** bölmesinde üst düğüme sağ tıklayın (örneklerdeki **StorSimple Snapshot Manager** düğümü). |StorSimple Device Manager hizmet panosundan içeri aktarılan birim gruplarını ve ilişkili yedekleri göstermek veya gizlemek için **Içeri aktarmalar görüntüsünü değiştirme** ' ye tıklayın. |
 
 ### <a name="view-menu"></a>Görünüm menüsü
 **Sonuçlar** bölmesi içeriğinin özel bir görünümünü oluşturmak için **Görünüm** menüsünü kullanın. **Görünüm** menüsünde **sütun Ekle/Kaldır** ve **Özelleştirme** seçenekleri bulunur.

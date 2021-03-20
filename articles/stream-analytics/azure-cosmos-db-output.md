@@ -7,10 +7,10 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 08/25/2020
 ms.openlocfilehash: 9382ac8dc71d1ccb3a85dc0a7a027c8e99296cc6
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/08/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98016586"
 ---
 # <a name="azure-cosmos-db-output-from-azure-stream-analytics"></a>Azure Stream Analytics çıkışı Azure Cosmos DB
@@ -25,7 +25,7 @@ Stream Analytics çıkış Azure Cosmos DB Şu anda Azure Çin 21Vianet ve Azure
 
 Aşağıdaki tabloda Azure Cosmos DB çıktısı oluşturma özellikleri açıklanmaktadır.
 
-| Özellik adı | Açıklama |
+| Özellik adı | Description |
 | --- | --- |
 | Çıktı diğer adı | Stream Analytics sorgunuzda bu çıktıyı ifade eden bir diğer ad. |
 | Havuz | Azure Cosmos DB. |

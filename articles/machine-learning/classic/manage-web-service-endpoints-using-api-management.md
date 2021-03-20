@@ -10,10 +10,10 @@ ms.author: keli19
 ms.custom: seodec18
 ms.date: 11/03/2017
 ms.openlocfilehash: 293643ab5354c51142baaf281b1845cfc9fa6f23
-ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100518037"
 ---
 # <a name="manage-azure-machine-learning-studio-classic-web-services-using-api-management"></a>API Management kullanarak Azure Machine Learning Studio (klasik) Web hizmetlerini yönetme
@@ -169,7 +169,7 @@ Bir işlem çağrıldıktan sonra, geliştirici portalı, **Istenen URL** 'yi ar
 
 ## <a name="appendix-a---creating-and-testing-a-simple-azureml-web-service"></a>Ek A-basit bir AzureML Web hizmeti oluşturma ve test etme
 ### <a name="creating-the-experiment"></a>Deneme oluşturma
-Aşağıda basit bir AzureML denemesi oluşturma ve bir Web hizmeti olarak dağıtma adımları verilmiştir. Web hizmeti, rastgele bir metnin sütununu alır ve tamsayılar olarak temsil edilen bir özellikler kümesi döndürür. Örneğin:
+Aşağıda basit bir AzureML denemesi oluşturma ve bir Web hizmeti olarak dağıtma adımları verilmiştir. Web hizmeti, rastgele bir metnin sütununu alır ve tamsayılar olarak temsil edilen bir özellikler kümesi döndürür. Örnek:
 
 | Metin | Karma metin |
 | --- | --- |

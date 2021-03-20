@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: librown, aakapo
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: db1b559bb4f6a1f8866116c287df5b814500210b
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "101647481"
 ---
 # <a name="enable-passwordless-security-key-sign-in-to-on-premises-resources-with-azure-active-directory"></a>Azure Active Directory ile şirket içi kaynaklarda passwordless güvenlik anahtarı oturum açma özelliğini etkinleştirin 
@@ -106,7 +106,7 @@ Get-AzureADKerberosServer -Domain $domain -CloudCredential $cloudCred -DomainCre
 
 Bu komut, Azure AD Kerberos sunucusunun özelliklerini verir. Her şeyin iyi sırada olduğunu doğrulamak için özellikleri gözden geçirebilirsiniz.
 
-| Özellik | Açıklama |
+| Özellik | Description |
 | --- | --- |
 | ID | AD DS DC nesnesinin benzersiz KIMLIĞI. Bu KIMLIK bazen "yuva" veya "dal KIMLIĞI" olarak adlandırılır. |
 | DomainDnsName | Active Directory Etki Alanı DNS etki alanı adı. |

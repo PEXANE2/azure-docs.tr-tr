@@ -11,10 +11,10 @@ ms.custom: sqldbrb=1
 ms.date: 12/18/2018
 ms.topic: conceptual
 ms.openlocfilehash: 8cceeef7e41e8fc5c48b4e67cdb1adf3aa4f02a1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89483873"
 ---
 # <a name="video-indexed-and-annotated-for-multi-tenant-saas-app-using-azure-sql-database"></a>Azure SQL veritabanı kullanılarak çok kiracılı SaaS uygulaması için dizinli ve açıklama eklenmiş video
@@ -36,7 +36,7 @@ Yazılı belgelerimizi düzenli olarak güncelleştirdik. Video düzenlenmez vey
 
 Bu bölüm, 81 dakikalık videonun tamamında 38 tartışmasında saat konumunu dizinliyor. Her dizin, videodan bir ekran görüntüsü ile ve bazen ek bilgilerle açıklanmalıdır.
 
-Her seferinde Dizin *s:DD: ss*biçimindedir. Örneğin, **oturum hedefleri**etiketli ikinci dizinli saat konumu **0:03:11**' nin yaklaşık saat konumunda başlar.
+Her seferinde Dizin *s:DD: ss* biçimindedir. Örneğin, **oturum hedefleri** etiketli ikinci dizinli saat konumu **0:03:11**' nin yaklaşık saat konumunda başlar.
 
 
 ### <a name="compact-links-to-video-indexed-time-locations"></a>Video dizinli zaman konumlarına yönelik Compact bağlantıları

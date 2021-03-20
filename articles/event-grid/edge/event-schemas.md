@@ -8,10 +8,10 @@ ms.reviewer: spelluru
 ms.date: 07/08/2020
 ms.topic: article
 ms.openlocfilehash: ea36c40f2038d016afb0c45944a98d4d90df6240
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86171576"
 ---
 # <a name="event-schemas"></a>Olay şemaları
@@ -22,7 +22,7 @@ Event Grid modülü olayları JSON biçiminde kabul eder ve sunar. Şu anda Even
 * **CustomSchema**
 * **CloudEventSchema**
 
-Bir yayımcının konu oluşturma sırasında uyması gereken şemayı yapılandırabilirsiniz. Belirtilmemişse, varsayılan olarak **Eventgridschema**kullanılır. Beklenen şemayla uyumlu olmayan olaylar reddedilir.
+Bir yayımcının konu oluşturma sırasında uyması gereken şemayı yapılandırabilirsiniz. Belirtilmemişse, varsayılan olarak **Eventgridschema** kullanılır. Beklenen şemayla uyumlu olmayan olaylar reddedilir.
 
 Aboneler, olayların teslim edilmesini istedikleri şemayı de yapılandırabilir. Belirtilmemişse, varsayılan konunun şemadır.
 Şu anda abone teslim şeması, konusunun giriş şemasıyla eşleşmelidir. 
@@ -55,12 +55,12 @@ Tüm olaylar aşağıdaki en üst düzey verilere sahiptir:
 | Özellik | Tür | Gerekli | Açıklama |
 | -------- | ---- | ----------- |-----------
 | konu başlığı | dize | No | Yayımlandığı konuyla eşleşmelidir. Event Grid,, belirtilmemişse yayımlandığı konunun adı ile doldurulur. |
-| Konu | string | Evet | Olay konusunun yayımcı tarafından tanımlanan yolu. |
-| eventType | string | Evet | Bu olay kaynağı için olay türü, örneğin BlobCreated. |
-| eventTime | string | Evet | Etkinliğin UTC saatine göre oluşturulduğu zaman. |
+| subject | string | Yes | Olay konusunun yayımcı tarafından tanımlanan yolu. |
+| eventType | string | Yes | Bu olay kaynağı için olay türü, örneğin BlobCreated. |
+| eventTime | string | Yes | Etkinliğin UTC saatine göre oluşturulduğu zaman. |
 | ID | dize | No | Etkinliğin benzersiz tanımlayıcısı. |
-| veriler | object | Hayır | Yayımlama varlığına özgü olay verilerini yakalamak için kullanılır. |
-| dataVersion | string | Evet | Veri nesnesinin şema sürümü. Şema sürümünü yayımcı tanımlar. |
+| veriler | object | No | Yayımlama varlığına özgü olay verilerini yakalamak için kullanılır. |
+| dataVersion | string | Yes | Veri nesnesinin şema sürümü. Şema sürümünü yayımcı tanımlar. |
 | metadataVersion | dize | No | Olay meta verilerinin şema sürümü. Event Grid en üst düzey özelliklerin şemasını tanımlar. Event Grid bu değeri sağlar. |
 
 ### <a name="example--eventgrid-schema-event"></a>Örnek — EventGrid şema olayı

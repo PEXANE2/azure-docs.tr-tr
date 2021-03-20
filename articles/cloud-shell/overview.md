@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 07/20/2020
 ms.author: damaerte
 ms.openlocfilehash: f824bddf833a1e2c01a3b779abc2c5252d8e0547
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89468666"
 ---
 # <a name="overview-of-azure-cloud-shell"></a>Azure Cloud Shell'e Genel Bakış
@@ -45,7 +45,7 @@ Cloud Shell üç yolla erişebilirsiniz:
 
     **Deneyin** düğmesine Bash (Azure CLI kod parçacıkları için) veya PowerShell (Azure PowerShell parçacıkları için) ile birlikte Cloud Shell doğrudan açılır.
 
-    Komutu çalıştırmak için kod parçacığında **kopyayı** kullanın, **Ctrl** + **Shift** + komutu yapıştırmak için CTRL SHIFT**v** (Windows/Linux) veya **cmd** + **SHIFT** + **v** (MacOS) kullanın ve ardından **ENTER**tuşuna basın.
+    Komutu çalıştırmak için kod parçacığında **kopyayı** kullanın,  +  + komutu yapıştırmak için CTRL SHIFT **v** (Windows/Linux) veya **cmd** + **SHIFT** + **v** (MacOS) kullanın ve ardından **ENTER** tuşuna basın.
 
 ## <a name="features"></a>Özellikler
 
@@ -57,7 +57,7 @@ Cloud Shell, Azure yönetim görevleriyle birlikte oluşturulan tarayıcı taban
 
 Kullanıcılar bash veya PowerShell arasında seçim yapabilir.
 
-1. **Cloud Shell**seçin.
+1. **Cloud Shell** seçin.
 
     ![Cloud Shell simgesi](media/overview/overview-cloudshell-icon.png)
 

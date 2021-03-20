@@ -1,6 +1,6 @@
 ---
 title: StorSimple 8000 serisine bir birimi yedekten geri yükleme | Microsoft Docs
-description: Bir StorSimple birimini bir yedekleme kümesinden geri yüklemek için StorSimple Aygıt Yöneticisi hizmeti yedekleme kataloğunun nasıl kullanılacağını açıklar.
+description: Bir StorSimple birimini bir yedekleme kümesinden geri yüklemek için StorSimple Device Manager hizmeti yedekleme kataloğunun nasıl kullanılacağını açıklar.
 services: storsimple
 documentationcenter: NA
 author: alkohli
@@ -11,10 +11,10 @@ ms.topic: how-to
 ms.date: 07/15/2020
 ms.author: alkohli
 ms.openlocfilehash: ff70df225b5ed27960c96889d409d7005f0fbcc4
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94950746"
 ---
 # <a name="restore-a-storsimple-volume-from-a-backup-set"></a>Yedekleme kümesinden StorSimple birimini geri yükleme
@@ -39,7 +39,7 @@ Bir geri yükleme işlemine başlamadan önce, aşağıdaki uyarıları gözden 
 
 * **Bir birimi geri yüklenirken genişletemezsiniz** ; birimi genişletmeyi denemeden önce geri yükleme işlemi tamamlanana kadar bekleyin. Bir birimi genişletme hakkında daha fazla bilgi için [bir birimi değiştirme](storsimple-8000-manage-volumes-u2.md#modify-a-volume)bölümüne gidin.
 
-* **Yerel bir birimi geri yüklerken yedekleme gerçekleştirebilirsiniz** : yordamlar için [, yedekleme Ilkelerini yönetmek üzere StorSimple Aygıt Yöneticisi hizmetini kullanma](storsimple-8000-manage-backup-policies-u2.md)bölümüne gidin.
+* **Yerel bir birimi geri yüklerken yedekleme gerçekleştirebilirsiniz** : yordamlar için [, yedekleme Ilkelerini yönetmek üzere StorSimple Device Manager hizmetini kullanma](storsimple-8000-manage-backup-policies-u2.md)bölümüne gidin.
 
 * **Geri yükleme işlemini iptal edebilirsiniz** . geri yükleme işini iptal ederseniz, geri yükleme işlemini başlatmadan önce birim bulunduğu duruma geri döndürülür. Yordamlar için [bir Işi Iptal etme](storsimple-8000-manage-jobs-u2.md#cancel-a-job)bölümüne gidin.
 
@@ -95,7 +95,7 @@ StorSimple biriminizi belirli bir yedekten geri yüklemek için **Yedekleme kata
 
 
 ### <a name="to-restore-your-volume"></a>Biriminiz geri yüklemek için
-1. StorSimple Aygıt Yöneticisi hizmetinize gidin ve ardından **Yedekleme kataloğu**' na tıklayın.
+1. StorSimple Device Manager hizmetinize gidin ve ardından **Yedekleme kataloğu**' na tıklayın.
 
 2. Aşağıdaki şekilde bir yedekleme kümesi seçin:
    
@@ -136,4 +136,4 @@ Geri yükleme işlemini gerçekleştirmek için, birimi konakta çevrimdışına
 
 ## <a name="next-steps"></a>Sonraki adımlar
 * [StorSimple birimlerini yönetmeyi](storsimple-8000-manage-volumes-u2.md)öğrenin.
-* StorSimple [cihazınızı yönetmek Için storsimple Aygıt Yöneticisi hizmetini nasıl kullanacağınızı](storsimple-8000-manager-service-administration.md)öğrenin.
+* StorSimple [cihazınızı yönetmek Için storsimple Device Manager hizmetini nasıl kullanacağınızı](storsimple-8000-manager-service-administration.md)öğrenin.

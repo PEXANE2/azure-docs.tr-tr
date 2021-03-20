@@ -8,15 +8,15 @@ ms.topic: conceptual
 ms.date: 09/25/2020
 ms.author: victorh
 ms.openlocfilehash: ba9f42bc932a37e1052f17db2ae00413e0769d59
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91355746"
 ---
 # <a name="azure-application-gateway-features"></a>Azure Application Gateway özellikleri
 
-[Azure Application Gateway](overview.md), web uygulamalarınıza trafiği yönetmenizi sağlayan bir web trafiği yük dengeleyicisidir.
+[Azure Application Gateway](overview.md) , Web uygulamalarınıza yönelik trafiği yönetmenizi sağlayan bir Web trafiği yük dengeleyicidir.
 
 ![Application Gateway kavramsal](media/overview/figure1-720.png)
 
@@ -149,7 +149,7 @@ Daha fazla bilgi için bkz. [http üst bilgilerini ve URL 'Yi yeniden yazma](rew
 
 Application Gateway Standard_v2, otomatik ölçeklendirme veya sabit boyutlu dağıtımlar için yapılandırılabilir. V2 SKU 'SU farklı örnek boyutları sunmaz. V2 performansı ve fiyatlandırması hakkında daha fazla bilgi için bkz. [Otomatik ölçeklendirme v2](application-gateway-autoscaling-zone-redundant.md) ve [fiyatlandırmayı anlama](understanding-pricing.md).
 
-Application Gateway Standard (v1) üç boyutta sunulur: **küçük**, **Orta**ve **büyük**. Küçük örnek boyutları, geliştirme ve test senaryolarına yöneliktir.
+Application Gateway Standard (v1) üç boyutta sunulur: **küçük**, **Orta** ve **büyük**. Küçük örnek boyutları, geliştirme ve test senaryolarına yöneliktir.
 
 Application Gateway limitlerinin tam listesi için bkz. [Application Gateway hizmet limitleri](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fapplication-gateway%2ftoc.json#application-gateway-limits).
 

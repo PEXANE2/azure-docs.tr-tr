@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 7/13/2019
 ms.author: rohink
 ms.openlocfilehash: 4d8af5815e544698ab833001e5ce6d0f4a30a264
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92487407"
 ---
 # <a name="use-azure-dns-to-provide-custom-domain-settings-for-an-azure-service"></a>Azure hizmeti için özel etki alanı ayarları sağlamak üzere Azure DNS kullanma
@@ -162,7 +162,7 @@ DNS bölgenize gidin ve **+ kayıt kümesi**' ne tıklayın. **Kayıt kümesi Ek
 |TTL birimi     | Saat        | Saatler zaman ölçümü olarak kullanılır         |
 |Diğer ad     | cdnverify.adatumcdnendpoint.azureedge.net        | Diğer adı oluşturmakta olduğunuz DNS adı, bu örnekte varsayılan olarak depolama hesabına sağlanmış olan cdnverify.adatumcdnendpoint.azureedge.net DNS adıdır.        |
 
-**Ağ**CDN profilleri ' ne tıklayarak CDN uç noktanıza geri gidin  >  **CDN Profiles**ve CDN profilinizi seçin. **+ Özel etki alanı** ' na tıklayın ve cdnverify ÖNEKI olmadan CNAME kaydı diğer adınızı girip **Ekle**' ye tıklayın.
+**Ağ** CDN profilleri ' ne tıklayarak CDN uç noktanıza geri gidin  >  ve CDN profilinizi seçin. **+ Özel etki alanı** ' na tıklayın ve cdnverify ÖNEKI olmadan CNAME kaydı diğer adınızı girip **Ekle**' ye tıklayın.
 
 Bu adım tamamlandıktan sonra DNS bölgenize dönün ve cdnverify öneki olmadan bir CNAME kaydı oluşturun.  Bu noktadan sonra, CNAME kaydını cdnverify önekiyle silmeniz güvenlidir. CDN hakkında daha fazla bilgi ve ara kayıt adımı olmadan özel bir etki alanını yapılandırma hakkında daha fazla bilgi için [harita Azure CDN içeriğini özel bir etki alanına](../cdn/cdn-map-content-to-custom-domain.md?toc=%dns%2ftoc.json)ziyaret edin.
 

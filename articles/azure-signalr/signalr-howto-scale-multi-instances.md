@@ -8,10 +8,10 @@ ms.custom: devx-track-csharp
 ms.date: 03/27/2019
 ms.author: zhshang
 ms.openlocfilehash: fd6ac8c4d4fc4c3fec4f549f8ef4f955e2b1c637
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89439223"
 ---
 # <a name="how-to-scale-signalr-service-with-multiple-instances"></a>SignalR hizmetini birden çok örnek ile ölçeklendirme
@@ -220,13 +220,13 @@ app.MapAzureSignalR(GetType().FullName, hub, options => {
 
 `primary` uç noktalar, istemci trafiği almak için tercih edilen uç noktalardır ve daha güvenilir ağ bağlantılarına sahip olduğu kabul edilir; `secondary` uç noktalar, daha az güvenilir ağ bağlantılarına sahip olduğu kabul edilir ve yalnızca, istemci trafiği için sunucu trafiği almak için değil, bir yayın iletileri almak için kullanılır.
 
-Bölgeler arası durumlarda ağ kararsız olabilir. *Doğu ABD*bulunan bir uygulama sunucusu için, aynı *Doğu ABD* bölgesinde yer alan SignalR hizmeti uç noktası, `primary` olarak işaretlenen diğer bölgelerde ve uç noktalar olarak yapılandırılabilir `secondary` . Bu yapılandırmada, diğer bölgelerdeki hizmet uç noktaları bu *Doğu ABD* App Server 'dan iletiler **alabilir** , ancak bu uygulama sunucusuna hiçbir **çapraz bölge** istemcisi yönlendirilmeyecektir. Mimari aşağıdaki diyagramda gösterilmiştir:
+Bölgeler arası durumlarda ağ kararsız olabilir. *Doğu ABD* bulunan bir uygulama sunucusu için, aynı *Doğu ABD* bölgesinde yer alan SignalR hizmeti uç noktası, `primary` olarak işaretlenen diğer bölgelerde ve uç noktalar olarak yapılandırılabilir `secondary` . Bu yapılandırmada, diğer bölgelerdeki hizmet uç noktaları bu *Doğu ABD* App Server 'dan iletiler **alabilir** , ancak bu uygulama sunucusuna hiçbir **çapraz bölge** istemcisi yönlendirilmeyecektir. Mimari aşağıdaki diyagramda gösterilmiştir:
 
 ![Çapraz coğrafi bölgeler](./media/signalr-howto-scale-multi-instances/cross_geo_infra.png)
 
 Bir istemci, `/negotiate` varsayılan yönlendirici ile App Server ile çalıştığında, SDK, kullanılabilir uç noktalar kümesinden bir uç noktayı **rastgele seçer** `primary` . Birincil uç nokta kullanılabilir olmadığında, SDK, tüm kullanılabilir uç noktalardan **rastgele seçer** `secondary` . Uç nokta, sunucu ve hizmet uç noktası arasındaki bağlantı etkin olduğunda **kullanılabilir** olarak işaretlenir.
 
-Bölgeler arası senaryoda, bir istemci `/negotiate` *Doğu ABD*içinde barındırılan uygulama sunucusunu denediğinde, varsayılan olarak her zaman `primary` aynı bölgede bulunan uç noktayı döndürür. Tüm *Doğu ABD* uç noktaları kullanılabilir olmadığında, istemci diğer bölgelerdeki uç noktalara yönlendirilir. Aşağıdaki yük devretme bölümünde senaryo ayrıntılı olarak açıklanmaktadır.
+Bölgeler arası senaryoda, bir istemci `/negotiate` *Doğu ABD* içinde barındırılan uygulama sunucusunu denediğinde, varsayılan olarak her zaman `primary` aynı bölgede bulunan uç noktayı döndürür. Tüm *Doğu ABD* uç noktaları kullanılabilir olmadığında, istemci diğer bölgelerdeki uç noktalara yönlendirilir. Aşağıdaki yük devretme bölümünde senaryo ayrıntılı olarak açıklanmaktadır.
 
 ![Normal anlaşma](./media/signalr-howto-scale-multi-instances/normal_negotiate.png)
 

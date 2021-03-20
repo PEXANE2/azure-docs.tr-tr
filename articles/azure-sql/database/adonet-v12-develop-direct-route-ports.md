@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: genemi
 ms.date: 06/11/2020
 ms.openlocfilehash: 0d009522ea0d0986233983f8725549b618ffb537
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91444869"
 ---
 # <a name="ports-beyond-1433-for-adonet-45"></a>ADO.NET 4.5 için 1433’ten sonraki bağlantı noktaları
@@ -52,7 +52,7 @@ Azure istemci makinenizde 11000-11999 numaralı bağlantı noktası aralıkları
 * Özellikle, aralıktaki bağlantı noktaları diğer giden engelleyicilerin dışında olmalıdır.
 * Azure VM 'niz üzerinde, **Gelişmiş Güvenlik Özellikli Windows Güvenlik Duvarı** bağlantı noktası ayarlarını denetler.
   
-  * [Güvenlik duvarının Kullanıcı arabirimini](/sql/sql-server/install/configure-the-windows-firewall-to-allow-sql-server-access) , **11000-11999**gibi bir bağlantı noktası aralığıyla birlikte **TCP** protokolünü belirlediğiniz bir kural eklemek için kullanabilirsiniz.
+  * [Güvenlik duvarının Kullanıcı arabirimini](/sql/sql-server/install/configure-the-windows-firewall-to-allow-sql-server-access) , **11000-11999** gibi bir bağlantı noktası aralığıyla birlikte **TCP** protokolünü belirlediğiniz bir kural eklemek için kullanabilirsiniz.
 
 ## <a name="version-clarifications"></a>Sürüm hakkında açıklamalar
 

@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/01/2020
 ms.author: glenga
 ms.openlocfilehash: 2ccff72be66a88b9bf0a5e9eb9c29ade8397804b
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96356202"
 ---
 Bir Azure Işlevlerinde oluşan hatalar aşağıdaki kaynaklardan herhangi birinden gelebilir:
@@ -293,7 +293,7 @@ public static async Task Run([EventHubTrigger("myHub", Connection = "EventHubCon
 ```
 ---
 
-|function.jsözelliği  |Öznitelik özelliği | Açıklama |
+|function.jsözelliği  |Öznitelik özelliği | Description |
 |---------|---------|---------| 
 |inize|yok|Gereklidir. Kullanılacak yeniden deneme stratejisi. Geçerli değerler veya ' dir `fixedDelay` `exponentialBackoff` .|
 |maxRetryCount|yok|Gereklidir. İşlev yürütmesi başına izin verilen en fazla yeniden deneme sayısı. `-1` süresiz olarak yeniden deneneceği anlamına gelir.|
@@ -321,7 +321,7 @@ public static async Task Run([EventHubTrigger("myHub", Connection = "EventHubCon
 Aşağıdaki Tetikleyiciler tetikleyici kaynağında yeniden denemeleri destekler:
 
 * [Azure Blob Depolama](../articles/azure-functions/functions-bindings-storage-blob.md)
-* [Azure kuyruk depolama](../articles/azure-functions/functions-bindings-storage-queue.md)
+* [Azure Kuyruk Depolama](../articles/azure-functions/functions-bindings-storage-queue.md)
 * [Azure Service Bus (kuyruk/konu)](../articles/azure-functions/functions-bindings-service-bus.md)
 
 Varsayılan olarak, çoğu zaman istekleri en fazla beş kez yeniden dener. Beşinci yeniden denemeden sonra, her iki Azure kuyruk depolaması da bir [Poison kuyruğuna](../articles/azure-functions/functions-bindings-storage-queue-trigger.md#poison-messages)ileti yazar.  Varsayılan Service Bus kuyruğu ve konu ilkesi, 10 denemeden sonra [atılacak ileti kuyruğuna](../articles/service-bus-messaging/service-bus-dead-letter-queues.md) bir ileti yazar.

@@ -8,10 +8,10 @@ ms.reviewer: spelluru
 ms.date: 07/08/2020
 ms.topic: article
 ms.openlocfilehash: 92333c2528303a6fa53fa30f47def33c33235d39
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86171491"
 ---
 # <a name="persist-state-in-linux"></a>Linux 'ta durumu kalıcı yap
@@ -40,7 +40,7 @@ Bu makalede, Event Grid modülünü Linux dağıtımlarında kalıcı hale getir
 ```
 
 >[!IMPORTANT]
->Bağlama değerinin ikinci kısmını değiştirmeyin. Modül içindeki belirli bir konuma işaret eder. Linux üzerinde Event Grid modülü için, **/App/metadatadb**olmalıdır.
+>Bağlama değerinin ikinci kısmını değiştirmeyin. Modül içindeki belirli bir konuma işaret eder. Linux üzerinde Event Grid modülü için, **/App/metadatadb** olmalıdır.
 
 Örneğin, aşağıdaki yapılandırma, meta verilerin kalıcı olacağı, **Yumurmetadatadbvol** birimi oluşturulmasına neden olur.
 
@@ -92,7 +92,7 @@ Bir Docker birimi yerine, bir ana bilgisayar klasörü bağlama seçeneğiniz de
    md <your-directory-name-here>
    ```
 
-    Örneğin, aşağıdaki komutu çalıştırmak **myhostdir**adlı bir dizin oluşturur.
+    Örneğin, aşağıdaki komutu çalıştırmak **myhostdir** adlı bir dizin oluşturur.
 
     ```sh
     md /myhostdir

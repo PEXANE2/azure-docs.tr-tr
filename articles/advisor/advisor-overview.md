@@ -4,10 +4,10 @@ description: Azure dağıtımlarınızı iyileştirmek için Azure Advisor 'ı k
 ms.topic: article
 ms.date: 09/27/2020
 ms.openlocfilehash: 12e56bf44a29a32b2149bca14f7c99f319c9c4ea
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91405216"
 ---
 # <a name="introduction-to-azure-advisor"></a>Azure Danışmanı’na Giriş
@@ -51,7 +51,7 @@ Danışman önerilerini sanal makine kaynak arabirimi aracılığıyla da görü
 
 ### <a name="what-permissions-do-i-need-to-access-advisor"></a>Advisor 'a erişmek için hangi izinlere ihtiyacım var?
  
-Danışman önerilerine bir abonelik, kaynak grubu veya kaynak *sahibi*, *katkıda bulunan*veya *okuyucu* olarak erişebilirsiniz.
+Danışman önerilerine bir abonelik, kaynak grubu veya kaynak *sahibi*, *katkıda bulunan* veya *okuyucu* olarak erişebilirsiniz.
 
 ### <a name="what-resources-does-advisor-provide-recommendations-for"></a>Danışman hangi kaynakları öneri sağlar?
 

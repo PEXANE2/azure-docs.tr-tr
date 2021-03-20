@@ -7,10 +7,10 @@ ms.date: 04/30/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: a6f24dea00a174aa0276a9b30add0854c3694056
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88008653"
 ---
 # <a name="manage-app-groups-using-powershell"></a>PowerShell kullanarak uygulama gruplarını yönetme
@@ -26,7 +26,7 @@ Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
 > * RemoteApp grubu oluşturun.
 > * RemoteApp programlarına erişim izni verin.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu makalede PowerShell modülünü ayarlamak ve Azure hesabınızda oturum açmak için [PowerShell modülünü ayarlama](powershell-module.md) bölümündeki yönergeleri izlediğiniz varsayılmaktadır.
 
@@ -46,7 +46,7 @@ PowerShell ile bir RemoteApp grubu oluşturmak için:
    Get-AzWvdApplicationGroup -Name <appgroupname> -ResourceGroupName <resourcegroupname>
    ```
 
-3. Konak havuzunun sanal makine görüntüsündeki **Başlat** menüsü uygulamalarının listesini almak için aşağıdaki cmdlet 'i çalıştırın. Dosya **FilePath**, **IPath**, **IIndex**ve yayımlamak istediğiniz uygulama için diğer önemli bilgilerin değerlerini yazın.
+3. Konak havuzunun sanal makine görüntüsündeki **Başlat** menüsü uygulamalarının listesini almak için aşağıdaki cmdlet 'i çalıştırın. Dosya **FilePath**, **IPath**, **IIndex** ve yayımlamak istediğiniz uygulama için diğer önemli bilgilerin değerlerini yazın.
 
    ```powershell
    Get-AzWvdStartMenuItem -ApplicationGroupName <appgroupname> -ResourceGroupName <resourcegroupname> | Format-List | more

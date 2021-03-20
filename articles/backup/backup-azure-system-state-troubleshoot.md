@@ -5,10 +5,10 @@ ms.reviewer: srinathv
 ms.topic: troubleshooting
 ms.date: 07/22/2019
 ms.openlocfilehash: 7c8e68da1c5da7b25d1385a82bf7dcc2f876306d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89376290"
 ---
 # <a name="troubleshoot-system-state-backup"></a>Sistem durumu yedeklemesi sorunlarını giderme
@@ -22,7 +22,7 @@ Sistem durumu yedeklemesine sorun gidermeye başlamadan önce aşağıdaki doğr
 - [Microsoft Azure Kurtarma Hizmetleri (MARS) aracısının güncel olduğundan emin olun](https://go.microsoft.com/fwlink/?linkid=229525&clcid=0x409)
 - [MARS Aracısı ve Azure arasında ağ bağlantısı olduğundan emin olun](./backup-azure-mars-troubleshoot.md#the-microsoft-azure-recovery-service-agent-was-unable-to-connect-to-microsoft-azure-backup)
 - Microsoft Azure Kurtarma Hizmetleri'nin çalıştığından emin olun (Hizmet konsolunda). Gerekirse yeniden başlatın ve işlemi yeniden deneyin
-- [Boş klasör konumunda %5-10 oranında kullanılabilir alan olduğundan emin olun](./backup-azure-file-folder-backup-faq.md#whats-the-minimum-size-requirement-for-the-cache-folder)
+- [% 5-10 boş birim alanının karalama klasörü konumunda kullanılabilir olduğundan emin olun](./backup-azure-file-folder-backup-faq.md#whats-the-minimum-size-requirement-for-the-cache-folder)
 - [Azure Backup ile çakışan başka bir işlem veya virüsten koruma yazılımı olup olmadığını kontrol edin](./backup-azure-troubleshoot-slow-backup-performance-issue.md#cause-another-process-or-antivirus-software-interfering-with-azure-backup)
 - [Zamanlanmış yedekleme başarısız oluyor ancak el ile yedekleme çalışıyor](./backup-azure-mars-troubleshoot.md#backups-dont-run-according-to-schedule)
 - İşletim sisteminizde en son güncelleştirmelerin yüklü olduğundan emin olun
@@ -40,7 +40,7 @@ Sistem durumu yedeklemesine sorun gidermeye başlamadan önce aşağıdaki doğr
 - Sistem durumu kurtarması kullanılarak farklı donanıma kurtarma, Microsoft tarafından önerilmez
 - Sistem durumu yedeklemesi Şu anda "Şirket içi" Windows sunucularını desteklemektedir. Bu işlev, Azure VM 'Leri için kullanılamaz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure Backup sistem durumu yedeklemesine sorun gidermeye başlamadan önce, aşağıdaki önkoşul denetimini gerçekleştirin.  
 
@@ -52,7 +52,7 @@ Windows Server Yedekleme sunucuda yüklü ve etkin olduğundan emin olun. Yükle
 Get-WindowsFeature Windows-Server-Backup
  ```
 
-Çıkış, **yükleme durumunu** **kullanılabilir**olarak görüntülüyorsa, Windows Server yedekleme özelliğinin yükleme için kullanılabilir ancak sunucuda yüklü olmadığı anlamına gelir. Ancak, Windows Server Yedekleme yüklenmemişse, yüklemek için aşağıdaki yöntemlerden birini kullanın.
+Çıkış, **yükleme durumunu** **kullanılabilir** olarak görüntülüyorsa, Windows Server yedekleme özelliğinin yükleme için kullanılabilir ancak sunucuda yüklü olmadığı anlamına gelir. Ancak, Windows Server Yedekleme yüklenmemişse, yüklemek için aşağıdaki yöntemlerden birini kullanın.
 
 #### <a name="method-1-install-windows-server-backup-using-powershell"></a>Yöntem 1: PowerShell kullanarak Windows Server Yedekleme yüklemesi
 
@@ -70,12 +70,12 @@ Sunucu Yöneticisi kullanarak Windows Server Yedekleme yüklemek için aşağıd
 
     ![Pano](./media/backup-azure-system-state-troubleshoot/server_management.jpg)
 
-2. **Yükleme türünü** seçin ve **İleri ' yi**seçin.
+2. **Yükleme türünü** seçin ve **İleri ' yi** seçin.
 
     ![Yükleme Türü](./media/backup-azure-system-state-troubleshoot/install_type.jpg)
 
-3. Sunucu havuzundan bir sunucu seçin ve **İleri ' yi**seçin. Sunucu rolünde, varsayılan seçimi bırakın ve **İleri**' yi seçin.
-4. **Özellikler** sekmesinde **Windows Server yedekleme** ' ı seçin ve **İleri ' yi**seçin.
+3. Sunucu havuzundan bir sunucu seçin ve **İleri ' yi** seçin. Sunucu rolünde, varsayılan seçimi bırakın ve **İleri**' yi seçin.
+4. **Özellikler** sekmesinde **Windows Server yedekleme** ' ı seçin ve **İleri ' yi** seçin.
 
     ![Özellikler penceresini seçin](./media/backup-azure-system-state-troubleshoot/features.png)
 
@@ -92,7 +92,7 @@ Yerel SISTEMIN Windows 'un yüklü olduğu birimde bulunan **sistem birimi bilgi
 
 Aşağıdaki hizmetlerin çalışır durumda olduğundan emin olun:
 
-**Hizmet Adı** | **Başlangıç türü**
+**Hizmet adı** | **Başlangıç türü**
 --- | ---
 Uzak yordam çağrısı (RPC) | Automatic
 COM+ olay sistemi (EventSystem) | Automatic

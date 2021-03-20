@@ -9,10 +9,10 @@ author: tanmaygore
 ms.reviewer: mimckitt
 ms.custom: ''
 ms.openlocfilehash: ad95cefbdf839c28b0979b051e217a1dfec76eea
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98743245"
 ---
 # <a name="enable-remote-desktop-connection-for-a-role-in-azure-cloud-services-classic-using-visual-studio"></a>Visual Studio 'Yu kullanarak Azure Cloud Services (klasik) bir rol için Uzak Masaüstü Bağlantısı etkinleştirme
@@ -85,7 +85,7 @@ Derleme aracısında Visual Studio 2017 sürüm 15,5 veya sonraki bir sürümün
 
 Azure DevOps Services ' den RDP uzantısını kullanmak için, yapı ardışık düzenine aşağıdaki ayrıntıları ekleyin:
 
-1. `/p:ForceRDPExtensionOverPlugin=true`Dağıtımın RDP eklentisi yerıne RDP uzantısıyla çalıştığından emin olmak Için MSBuild bağımsız değişkenlerine dahil edin. Örneğin:
+1. `/p:ForceRDPExtensionOverPlugin=true`Dağıtımın RDP eklentisi yerıne RDP uzantısıyla çalıştığından emin olmak Için MSBuild bağımsız değişkenlerine dahil edin. Örnek:
 
     ```
     msbuild AzureCloudService5.ccproj /t:Publish /p:TargetProfile=Cloud /p:DebugType=None

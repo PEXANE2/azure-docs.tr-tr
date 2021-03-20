@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 06/08/2020
 ms.custom: devx-track-azurepowershell
 ms.openlocfilehash: 63fffb5998b0b6a245db3f1c8fcf16f2d576936e
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92489770"
 ---
 # <a name="how-to-back-up-and-restore-an-azure-database-for-postgresql-server-using-powershell"></a>PowerShell kullanarak bir PostgreSQL için Azure veritabanı sunucusunu yedekleme ve geri yükleme
@@ -41,7 +41,7 @@ Sunucu oluşturma sırasında, sunucunuzu yerel olarak yedekli veya coğrafi ola
 > [!NOTE]
 > Bir sunucu oluşturulduktan sonra, coğrafi olarak yedekli ve yerel olarak yedekli olan artıklık türü değiştirilemez.
 
-Komutu aracılığıyla bir sunucu oluştururken `New-AzPostgreSqlServer` , **GeoRedundantBackup** parametresi yedekleme yedekliliğe karar verir. **Etkinleştirilirse**, coğrafi olarak yedekli yedeklemeler alınır. Ya da **devre dışı**bırakılmışsa yerel olarak yedekli yedeklemeler alınır.
+Komutu aracılığıyla bir sunucu oluştururken `New-AzPostgreSqlServer` , **GeoRedundantBackup** parametresi yedekleme yedekliliğe karar verir. **Etkinleştirilirse**, coğrafi olarak yedekli yedeklemeler alınır. Ya da **devre dışı** bırakılmışsa yerel olarak yedekli yedeklemeler alınır.
 
 Yedekleme saklama süresi **BackupRetentionDay** parametresine göre ayarlanır.
 
@@ -78,8 +78,8 @@ Cmdlet 'in **Pointintimeresıtransaction** parametre kümesi `Restore-AzPostgreS
 | Ayar | Önerilen değer | Açıklama  |
 | --- | --- | --- |
 | ResourceGroupName |  myresourcegroup |  Kaynak sunucunun varolduğu kaynak grubu.  |
-| Adı | mydemoserver-restored | Geri yükleme komutu tarafından oluşturulan yeni sunucunun adı. |
-| Restorepoinıntime | 2020-03-13T13:59:00Z | Geri yüklenecek bir zaman noktası seçin. Bu tarih ve saat, kaynak sunucunun yedekleme saklama dönemi içinde olmalıdır. ISO8601 tarih ve saat biçimini kullanın. Örneğin, **2020-03-13T05:59:00-08:00**gibi kendi yerel saat diliminizi kullanabilirsiniz. UTC Zulu dili biçimini de kullanabilirsiniz; Örneğin, **2018-03-13T13:59:00Z**. |
+| Name | mydemoserver-restored | Geri yükleme komutu tarafından oluşturulan yeni sunucunun adı. |
+| Restorepoinıntime | 2020-03-13T13:59:00Z | Geri yüklenecek bir zaman noktası seçin. Bu tarih ve saat, kaynak sunucunun yedekleme saklama dönemi içinde olmalıdır. ISO8601 tarih ve saat biçimini kullanın. Örneğin, **2020-03-13T05:59:00-08:00** gibi kendi yerel saat diliminizi kullanabilirsiniz. UTC Zulu dili biçimini de kullanabilirsiniz; Örneğin, **2018-03-13T13:59:00Z**. |
 | Usepointintimerestınic | `<SwitchParameter>` | Geri yüklemek için zaman noktası modunu kullanın. |
 
 Bir sunucuyu önceki bir zaman noktasına geri yüklediğinizde yeni bir sunucu oluşturulur. Özgün sunucu ve veritabanları belirtilen zaman noktasından yeni sunucuya kopyalanır.
@@ -106,7 +106,7 @@ Get-AzPostgreSqlServer -Name mydemoserver -ResourceGroupName myresourcegroup |
   Restore-AzPostgreSqlServer -Name mydemoserver-georestored -ResourceGroupName myresourcegroup -Location eastus -Sku GP_Gen5_8 -UseGeoRestore
 ```
 
-Bu örnek, **myresourcegroup**öğesine ait Doğu ABD bölgesinde **mydemoserver-geogeri yüklenen** adlı yeni bir sunucu oluşturur. 8 sanal çekirdeğe sahip bir Genel Amaçlı, Gen 5 sunucusudur. Sunucu, **myresourcegroup**kaynak grubundaki **demosunucum**'ın coğrafi olarak yedekli yedeğinden oluşturulur.
+Bu örnek, **myresourcegroup** öğesine ait Doğu ABD bölgesinde **mydemoserver-geogeri yüklenen** adlı yeni bir sunucu oluşturur. 8 sanal çekirdeğe sahip bir Genel Amaçlı, Gen 5 sunucusudur. Sunucu, **myresourcegroup** kaynak grubundaki **demosunucum**'ın coğrafi olarak yedekli yedeğinden oluşturulur.
 
 Yeni sunucuyu mevcut sunucudan farklı bir kaynak grubunda oluşturmak için, aşağıdaki örnekte gösterildiği gibi **Resourcegroupname** parametresini kullanarak yeni kaynak grubu adını belirtin:
 
@@ -120,7 +120,7 @@ Cmdlet 'in **Georestore** parametre kümesi `Restore-AzPostgreSqlServer` aşağ�
 | Ayar | Önerilen değer | Açıklama  |
 | --- | --- | --- |
 |ResourceGroupName | myresourcegroup | Yeni sunucunun ait olduğu kaynak grubunun adı.|
-|Adı | mydemoserver-geogeri yüklendi | Yeni sunucunun adı. |
+|Name | mydemoserver-geogeri yüklendi | Yeni sunucunun adı. |
 |Konum | eastus | Yeni sunucunun konumu. |
 |UseGeoRestore | `<SwitchParameter>` | Geri yüklemek için coğrafi mod kullanın. |
 

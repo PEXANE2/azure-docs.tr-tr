@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 12/17/2019
 ms.author: mayg
 ms.openlocfilehash: 6a11e3d0cb41383b44b76975ecbd1c2ae2825015
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89441502"
 ---
 # <a name="reprotect-from-azure-to-on-premises"></a>Azure’dan şirket içi ortama yeniden koruma
@@ -28,7 +28,7 @@ ms.locfileid: "89441502"
 6. Yeniden çalışma öncesinde vCenter Server bağlı olduğundan emin olun. Aksi takdirde, disklerin bağlantısının kesilmesi ve sanal makineye geri eklenmesi başarısız olur.
 7. Bir vCenter sunucusu, geri dönecek VM 'Leri yönetirse, gerekli izinlere sahip olduğunuzdan emin olun. Salt okuma Kullanıcı vCenter bulmayı ve sanal makineleri koruyorsa, koruma başarılı olur ve yük devretme işlemi gerçekleştirilir. Bununla birlikte, yeniden koruma sırasında, veri depoları keşfedilmeden ve yeniden koruma sırasında listelenmediği için yük devretme başarısız olur. Bu sorunu çözmek için vCenter kimlik bilgilerini [uygun bir hesap/izinlerle](vmware-azure-tutorial-prepare-on-premises.md#prepare-an-account-for-automatic-discovery)güncelleştirebilir ve ardından işi yeniden deneyebilirsiniz. 
 8. Sanal makinelerinizi oluşturmak için bir şablon kullandıysanız, her VM 'nin diskler için kendi UUID 'sine sahip olduğundan emin olun. Aynı şablondan oluşturulduğundan, şirket içi VM UUID 'SI ana hedef sunucunun UUID 'SI ile çakışıyor, yeniden koruma başarısız olur. Farklı bir şablondan dağıtın.
-9. Alternatif bir vCenter Server geri yüklüyorsanız, yeni vCenter Server ve ana hedef sunucunun bulunduğundan emin olun. Genellikle veri depoları erişilemez veya **yeniden koruma**bölümünde görünmez.
+9. Alternatif bir vCenter Server geri yüklüyorsanız, yeni vCenter Server ve ana hedef sunucunun bulunduğundan emin olun. Genellikle veri depoları erişilemez veya **yeniden koruma** bölümünde görünmez.
 10. Geri gerçekleştiremeyecek aşağıdaki senaryoları doğrulayın:
     - ESXi 5,5 Free Edition ya da vSphere 6 hiper yönetici ücretsiz sürümü kullanıyorsanız. Farklı bir sürüme yükseltin.
     - Windows Server 2008 R2 SP1 fiziksel sunucunuz varsa.
@@ -58,10 +58,10 @@ ms.locfileid: "89441502"
 
 Yeniden korumayı aşağıdaki şekilde etkinleştirin:
 
-1. **Kasa**  >  **çoğaltılan öğeleri**seçin. Yük devredilen sanal makineye sağ tıklayın ve ardından **yeniden koru**' yı seçin. Ya da, komut düğmelerinden makineyi seçip **yeniden koru**' yı seçin.
+1. **Kasa**  >  **çoğaltılan öğeleri** seçin. Yük devredilen sanal makineye sağ tıklayın ve ardından **yeniden koru**' yı seçin. Ya da, komut düğmelerinden makineyi seçip **yeniden koru**' yı seçin.
 2. **Azure 'dan şirket içi** koruma yönünün seçildiğini doğrulayın.
 3. **Ana hedef sunucusu** ve **işlem sunucusu**' nda, şirket içi ana hedef sunucusunu ve işlem sunucusunu seçin.  
-4. **Veri deposu**için, şirket içi diskleri kurtarmak istediğiniz veri deposunu seçin. Bu seçenek, şirket içi sanal makine silindiğinde ve yeni diskler oluşturmanız gerektiğinde kullanılır. Diskler zaten mevcutsa bu seçenek yoksayılır. Yine de bir değer belirtmeniz gerekir.
+4. **Veri deposu** için, şirket içi diskleri kurtarmak istediğiniz veri deposunu seçin. Bu seçenek, şirket içi sanal makine silindiğinde ve yeni diskler oluşturmanız gerektiğinde kullanılır. Diskler zaten mevcutsa bu seçenek yoksayılır. Yine de bir değer belirtmeniz gerekir.
 5. Bekletme sürücüsünü seçin.
 6. Yeniden çalışma ilkesi otomatik olarak seçilir.
 7. Yeniden korumaya başlamak için **Tamam ' ı** seçin.

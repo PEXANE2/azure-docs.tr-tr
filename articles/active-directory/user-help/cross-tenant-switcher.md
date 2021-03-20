@@ -13,10 +13,10 @@ ms.author: curtand
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
 ms.openlocfilehash: 1af7f2918af7071320244dd35882a8de9717654f
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/29/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92913254"
 ---
 # <a name="switching-organizations-in-a-portal"></a>Portalda kuruluş değiştirme
@@ -39,7 +39,7 @@ Başka bir kuruluşa geçiş yapmak için aşağıdaki adımları uygulayın. Bu
 1. İş veya okul hesabınızda oturum açın ve sonra [Hesabım](https://myaccount.microsoft.com) sayfasını açın.
 1. Kuruluş değiştiricisinde, hesap fotoğrafınızın yanındaki sayfanın üst kısmındaki :::image type="content" source="media/cross-tenant-switcher/switcher-icon.png" alt-text="kuruluş geçiş"::: aracında bulunan simgeyi seçin.
 
-    :::image type="content" source="media/cross-tenant-switcher/switcher-location.png" alt-text="kuruluş geçiş":::
+    :::image type="content" source="media/cross-tenant-switcher/switcher-location.png" alt-text="Geçiş yapmak için kullanabileceğiniz kuruluşların menüsü":::
 
 1. Değiştirmek istediğiniz organizasyonu seçin. Otomatik olarak seçtiğiniz kuruluşa geçiş yapabilirsiniz.
 

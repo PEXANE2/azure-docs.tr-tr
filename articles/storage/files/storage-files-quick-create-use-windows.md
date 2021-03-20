@@ -8,10 +8,10 @@ ms.date: 02/01/2019
 ms.author: rogarana
 ms.subservice: files
 ms.openlocfilehash: 4c5629f80c37c9f79dc9a39c4d8304acbee9679d
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92489583"
 ---
 # <a name="quickstart-create-and-manage-azure-files-share-with-windows-virtual-machines"></a>Hızlı başlangıç: Windows sanal makineler ile Azure dosyaları paylaşma oluşturma ve yönetme
@@ -70,7 +70,7 @@ Sonra, bir dosya paylaşımı oluşturacaksınız.
 
 1. **Örnek ayrıntıları**' nın altında, VM *qsvm*'yi adlandırın.
 1. **Bölge**, **Kullanılabilirlik seçenekleri**, **Görüntü** ve **Boyut** için varsayılan ayarları değiştirmeden bırakın.
-1. **Yönetici hesabı**altında *Vmadmin* **Kullanıcı adı** olarak ekleyin ve VM için bir **parola** girin.
+1. **Yönetici hesabı** altında *Vmadmin* **Kullanıcı adı** olarak ekleyin ve VM için bir **parola** girin.
 1. **Gelen bağlantı noktası kuralları** altında **Seçilen bağlantı noktalarına izin ver**'i, sonra aşağı açılan listeden **RDP (3389)** ve **HTTP** değerlerini seçin.
 1. **Gözden geçir ve oluştur**’u seçin.
 1. **Oluştur**’u seçin. Yeni bir sanal makinenin oluşturulması birkaç dakika sürebilir.
@@ -87,7 +87,7 @@ Bu noktada yeni bir sanal makine oluşturdunuz ve bir veri diskini kullanıma a�
 
 1. **Sanal makineye bağlan** sayfasında, **ıp adresine** göre *3389* **numaralı bağlantı noktası** üzerinden bağlanmak için varsayılan seçenekleri tutun ve **RDP dosyasını indir**' i seçin.
 1. İndirilen RDP dosyasını açın ve istendiğinde **Bağlan** ' ı seçin.
-1. **Windows Güvenliği** penceresinde **Diğer seçenekler**'i ve ardından **Başka bir hesap kullanın**'ı seçin. Kullanıcı adını, *localhost\username* &lt; &gt; sanal makine için oluşturduğunuz VM Yönetici Kullanıcı adı olan localhost\username olarak yazın. Sanal makine için oluşturduğunuz parolayı girin ve ardından **Tamam**' ı seçin.
+1. **Windows Güvenliği** penceresinde **Diğer seçenekler**'i ve ardından **Başka bir hesap kullanın**'ı seçin. Kullanıcı adını,  &lt; &gt; sanal makine için oluşturduğunuz VM Yönetici Kullanıcı adı olan localhost\username olarak yazın. Sanal makine için oluşturduğunuz parolayı girin ve ardından **Tamam**' ı seçin.
 
    ![Diğer seçenekler](./media/storage-files-quick-create-use-windows/local-host2.png)
 
@@ -101,16 +101,16 @@ Bu noktada yeni bir sanal makine oluşturdunuz ve bir veri diskini kullanıma a�
    ![Not defteri 'nde kopyalamanız ve yapıştırmanız gereken saniye kutusunun içeriğini gösteren ekran görüntüsü.](./media/storage-files-quick-create-use-windows/portal_netuse_connect2.png)
 
 1. VM 'de **Dosya Gezgini** 'ni açın ve pencerede **Bu bilgisayarı** seçin. Bu seçim Şeritteki kullanılabilir menüleri değiştirecek. **Bilgisayar** menüsünde, **Ağ Sürücüsüne Bağlan**' ı seçin.
-1. Sürücü harfini seçin ve UNC adını girin. Bu hızlı başlangıçta adlandırma önerilerini izlediyseniz, **Not defteri**'nden * \\ qsstorageacct. File. Core. Windows. net\qsfileshare* ' yi kopyalayın.
+1. Sürücü harfini seçin ve UNC adını girin. Bu hızlı başlangıçta adlandırma önerilerini izlediyseniz, **Not defteri**'nden *\\ qsstorageacct. File. Core. Windows. net\qsfileshare* ' yi kopyalayın.
 
    Her iki onay kutusu işaretli olduğundan emin olun.
 
    ![“Ağ Sürücüsüne Bağlan” iletişim kutusunun ekran görüntüsü](./media/storage-files-quick-create-use-windows/mountonwindows10.png)
 
-1. **Son**’u seçin.
+1. **Son**'u seçin.
 1. **Windows güvenliği** iletişim kutusunda:
 
-   - Not defteri ' nden, depolama hesabı adı ' nı AZURE \ ' a kopyalayın ve Kullanıcı adı olarak **Windows güvenliği** iletişim kutusuna yapıştırın. Bu hızlı başlangıçta adlandırma önerilerini izlediyseniz, *AZURE\qsstorageacct*kopyalayın.
+   - Not defteri ' nden, depolama hesabı adı ' nı AZURE \ ' a kopyalayın ve Kullanıcı adı olarak **Windows güvenliği** iletişim kutusuna yapıştırın. Bu hızlı başlangıçta adlandırma önerilerini izlediyseniz, *AZURE\qsstorageacct* kopyalayın.
    - Not defteri 'nde, depolama hesabı anahtarını kopyalayın ve parola olarak **Windows güvenliği** iletişim kutusuna yapıştırın.
 
       ![Azure Dosyaları Bağlan bölmesinden UNC adı](./media/storage-files-quick-create-use-windows/portal_netuse_connect3.png)
@@ -137,8 +137,8 @@ Sürücüyü eşleştirdikten sonra bir anlık görüntü oluşturabilirsiniz.
 
 ## <a name="restore-from-a-snapshot"></a>Anlık görüntüden geri yükleme
 
-1. Dosya paylaşma anlık görüntüsü dikey penceresinde *Qstestfile*öğesine sağ tıklayın ve **geri yükle** düğmesini seçin.
-1. **Özgün dosyanın üzerine yaz**seçeneğini belirleyin.
+1. Dosya paylaşma anlık görüntüsü dikey penceresinde *Qstestfile* öğesine sağ tıklayın ve **geri yükle** düğmesini seçin.
+1. **Özgün dosyanın üzerine yaz** seçeneğini belirleyin.
 
    ![Düğmeleri indir ve geri yükle](./media/storage-files-quick-create-use-windows/snapshot-download-restore-portal.png)
 

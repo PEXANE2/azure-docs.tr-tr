@@ -14,10 +14,10 @@ ms.author: marsma
 ms.reviewer: ''
 ms.custom: aaddev
 ms.openlocfilehash: 25389348476552298ddb947ccb59acb8b3d5bc57
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "80881257"
 ---
 # <a name="how-to-configure-sso-on-macos-and-ios"></a>Nasıl yapılır: macOS ve iOS 'ta SSO 'yu yapılandırma
@@ -65,7 +65,7 @@ Uygulamalarınızda SSO 'yu etkinleştirmek için aşağıda daha ayrıntılı o
 
 Hangi uygulamaların belirteçleri paylaşabileceği hakkında bilgi sahibi olmak için Microsoft Identity platformu için, bu uygulamaların aynı Istemci KIMLIĞINI veya uygulama KIMLIĞINI paylaşması gerekir. Bu, portalda ilk uygulamanızı kaydettiğinizde size sağlanmış olan benzersiz tanıtıcıdır.
 
-Microsoft Identity platform 'un aynı uygulama KIMLIĞINI kullanan uygulamalara **yeniden yönlendirme URI 'leri**tarafından nasıl olduğunu söyleme şekli. Her uygulamanın, ekleme portalında kayıtlı birden çok yeniden yönlendirme URI 'si olabilir. Paketinizdeki her uygulamanın farklı bir yeniden yönlendirme URI 'SI olacaktır. Örneğin:
+Microsoft Identity platform 'un aynı uygulama KIMLIĞINI kullanan uygulamalara **yeniden yönlendirme URI 'leri** tarafından nasıl olduğunu söyleme şekli. Her uygulamanın, ekleme portalında kayıtlı birden çok yeniden yönlendirme URI 'si olabilir. Paketinizdeki her uygulamanın farklı bir yeniden yönlendirme URI 'SI olacaktır. Örnek:
 
 APP1 yeniden yönlendirme URI 'SI: `msauth.com.contoso.mytestapp1://auth`  
 App2 yeniden yönlendirme URI 'SI: `msauth.com.contoso.mytestapp2://auth`  
@@ -96,7 +96,7 @@ Yetkilendirmeler doğru şekilde ayarlandığında, `entitlements.plist` Proje d
 
 #### <a name="add-a-new-keychain-group"></a>Yeni bir anahtarlık grubu Ekle
 
-Proje **olanaklarınız**için yeni bir anahtarlık grubu ekleyin. Anahtarlık grubu şu olmalıdır:
+Proje **olanaklarınız** için yeni bir anahtarlık grubu ekleyin. Anahtarlık grubu şu olmalıdır:
 * `com.microsoft.adalcache` iOS 'ta 
 * `com.microsoft.identity.universalstorage` macOS 'ta.
 
@@ -137,7 +137,7 @@ do {
 > Arka plan çalışması yapmak için belirteçleri kullanan uygulamalarınız varsa, bu özellikle etkili bir şekilde belirlenir.
 > Anahtarlık paylaşımı, uygulamanız Microsoft Identity SDK kaldırma işlemlerini kullandığında çok dikkatli olmanız gerektiği anlamına gelir.
 
-Hepsi bu! Microsoft Identity SDK artık tüm uygulamalarınızda kimlik bilgilerini paylaşacaktır. Hesap listesi, uygulama örnekleri arasında da paylaşılır.
+İşte bu kadar! Microsoft Identity SDK artık tüm uygulamalarınızda kimlik bilgilerini paylaşacaktır. Hesap listesi, uygulama örnekleri arasında da paylaşılır.
 
 ## <a name="sso-through-authentication-broker-on-ios"></a>İOS üzerinde kimlik doğrulama Aracısı aracılığıyla SSO
 
@@ -145,7 +145,7 @@ MSAL, Microsoft Authenticator ile aracılı kimlik doğrulama desteği sağlar. 
 
 Aşağıdaki adımlar, uygulamanız için bir kimlik doğrulama Aracısı kullanarak SSO 'yu nasıl etkinleştirirsiniz:
 
-1. Uygulamanın Info. plist dosyasında uygulama için bir aracı uyumlu yeniden yönlendirme URI 'SI biçimi kaydedin. Aracı uyumlu yeniden yönlendirme URI 'SI biçimi `msauth.<app.bundle.id>://auth` . '<app.bundle.id>' ' değerini uygulamanızın paket KIMLIĞIYLE değiştirin. Örneğin:
+1. Uygulamanın Info. plist dosyasında uygulama için bir aracı uyumlu yeniden yönlendirme URI 'SI biçimi kaydedin. Aracı uyumlu yeniden yönlendirme URI 'SI biçimi `msauth.<app.bundle.id>://auth` . '<app.bundle.id>' ' değerini uygulamanızın paket KIMLIĞIYLE değiştirin. Örnek:
 
     ```xml
     <key>CFBundleURLSchemes</key>
@@ -183,7 +183,7 @@ Aşağıdaki adımlar, uygulamanız için bir kimlik doğrulama Aracısı kullan
     }
     ```
     
-**Xcode 11**kullanıyorsanız, bunun yerine msal geri çağırma işlemini dosyaya yerleştirmeniz gerekir `SceneDelegate` .
+**Xcode 11** kullanıyorsanız, bunun yerine msal geri çağırma işlemini dosyaya yerleştirmeniz gerekir `SceneDelegate` .
 Daha eski iOS ile uyumluluk için hem UISceneDelegate hem de Uıapplicationdelegate 'i destekediyorsanız, MSAL geri çağrısının her iki dosyaya da yerleştirilmesi gerekir.
 
 Amaç-C:

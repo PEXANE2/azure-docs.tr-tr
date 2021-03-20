@@ -7,10 +7,10 @@ ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: 04184a658ae1efd03afd3e920818eb5317bc7553
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88008602"
 ---
 # <a name="tutorial-create-a-host-pool-in-windows-virtual-desktop-classic"></a>Öğretici: Windows sanal masaüstü 'nde bir konak havuzu oluşturma (klasik)
@@ -31,7 +31,7 @@ Bu öğreticideki görevler şunları içerir:
 > * VM 'Leri Active Directory etki alanına katın.
 > * VM 'Leri Windows sanal masaüstü ile kaydedin.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Sanal masaüstündeki kiracı. Önceki [öğreticide](tenant-setup-azure-active-directory.md) kiracı oluşturulur.
 * [Windows sanal masaüstü PowerShell modülü](/powershell/windows-virtual-desktop/overview/).
@@ -50,9 +50,9 @@ Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
 
 Yeni bir konak havuzu sağlamak için Azure Marketi teklifini çalıştırmak için:
 
-1. Azure portalı menüsünde veya **Giriş** sayfasında **Kaynak oluştur**’u seçin.
+1. Azure portal menüsünde veya **Giriş** sayfasında, **Kaynak oluştur**’u seçin.
 1. Market arama penceresinde **Windows sanal masaüstü** ' nu girin.
-1. **Windows Sanal Masaüstü ' nü seçin-bir konak havuzu sağlayın**ve **Oluştur**' u seçin.
+1. **Windows Sanal Masaüstü ' nü seçin-bir konak havuzu sağlayın** ve **Oluştur**' u seçin.
 
 Bundan sonra, uygun sekmelerin bilgilerini girmek için sonraki bölümde yer alan yönergeleri izleyin.
 
@@ -60,13 +60,13 @@ Bundan sonra, uygun sekmelerin bilgilerini girmek için sonraki bölümde yer al
 
 **Temel kavramlar** sekmesi için şunları yapın:
 
-1. Bir **abonelik**seçin.
-1. **Kaynak grubu**Için **Yeni oluştur** ' u seçin ve yeni kaynak grubu için bir ad sağlayın.
-1. Bir **bölge**seçin.
+1. Bir **abonelik** seçin.
+1. **Kaynak grubu** Için **Yeni oluştur** ' u seçin ve yeni kaynak grubu için bir ad sağlayın.
+1. Bir **bölge** seçin.
 1. Windows sanal masaüstü kiracısı içinde benzersiz olan konak havuzu için bir ad girin.
-1. **Masaüstü türünü**seçin. **Kişisel**' i seçerseniz, bu konak havuzuna bağlanan her bir Kullanıcı, bir sanal makineye kalıcı olarak atanır.
+1. **Masaüstü türünü** seçin. **Kişisel**' i seçerseniz, bu konak havuzuna bağlanan her bir Kullanıcı, bir sanal makineye kalıcı olarak atanır.
 1. Windows sanal masaüstü istemcilerinde oturum açabilen ve bir masaüstüne erişebilen kullanıcıları girin. Virgülle ayrılmış bir liste kullanın. Örneğin, atamak `user1@contoso.com` ve `user2@contoso.com` erişmek istiyorsanız, şunu girin *`user1@contoso.com,user2@contoso.com`*
-1. **Hizmet meta verileri konumu**için, Active Directory sunucusuyla bağlantısı olan sanal ağla aynı konumu seçin.
+1. **Hizmet meta verileri konumu** için, Active Directory sunucusuyla bağlantısı olan sanal ağla aynı konumu seçin.
 
    >[!IMPORTANT]
    >Saf Azure Active Directory Domain Services (Azure AD DS) ve Azure Active Directory (Azure AD) çözümü kullanıyorsanız, etki alanına ekleme ve kimlik bilgisi hatalarından kaçınmak için konak havuzunuzu Azure AD DS ile aynı bölgede dağıttığınızdan emin olun.
@@ -82,14 +82,14 @@ Bundan sonra, uygun sekmelerin bilgilerini girmek için sonraki bölümde yer al
     >[!NOTE]
     >Aradığınız belirli bir sanal makine boyutu, boyut seçicisinde görünmüyorsa, bunun nedeni, henüz Azure Market aracına eklendi. Bir boyut istemek için [Windows sanal masaüstü UserVoice forumundaki](https://windowsvirtualdesktop.uservoice.com/forums/921118-general)bir istek oluşturun veya var olan bir isteği oylayın.
 
-1. Sanal makinelerin adları için bir ön ek girin. Örneğin, *ön ek*girerseniz, sanal makineler **önek-0**, **ön ek-1**vb. olarak adlandırılır.
+1. Sanal makinelerin adları için bir ön ek girin. Örneğin, *ön ek* girerseniz, sanal makineler **önek-0**, **ön ek-1** vb. olarak adlandırılır.
 1. **İleri ' yi seçin: sanal makine ayarları**.
 
 ### <a name="virtual-machine-settings"></a>Sanal makine ayarları
 
 **Sanal makine ayarları** sekmesi için:
 
-1. **Görüntü kaynağı**için kaynağı seçin ve nasıl bulacağınızı ve nasıl depolanacağını öğrenmek için uygun bilgileri girin. Seçenekleriniz BLOB depolama, yönetilen görüntü ve Galeri için farklılık gösterir.
+1. **Görüntü kaynağı** için kaynağı seçin ve nasıl bulacağınızı ve nasıl depolanacağını öğrenmek için uygun bilgileri girin. Seçenekleriniz BLOB depolama, yönetilen görüntü ve Galeri için farklılık gösterir.
 
    Yönetilen diskler kullanmayı tercih ederseniz, *. vhd* dosyasını içeren depolama hesabını seçin.
 1. Kullanıcı asıl adını ve parolasını girin. Bu hesap, sanal makinelere Active Directory etki alanına katılacak etki alanı hesabı olmalıdır. Bu aynı Kullanıcı adı ve parola, sanal makinelerde yerel bir hesap olarak oluşturulacaktır. Bu yerel hesapları daha sonra sıfırlayabilirsiniz.
@@ -106,18 +106,18 @@ Bundan sonra, uygun sekmelerin bilgilerini girmek için sonraki bölümde yer al
 
 **Windows sanal masaüstü kiracı bilgileri** sekmesi için:
 
-1. **Windows sanal masaüstü kiracı grubu adı**için kiracınızı içeren kiracı grubunun adını girin. Belirli bir kiracı grubu adı sağlanmadığınız sürece varsayılan olarak bırakın.
-1. **Windows sanal masaüstü kiracı adı**için, bu konak havuzunu oluşturacağınız kiracının adını girin.
+1. **Windows sanal masaüstü kiracı grubu adı** için kiracınızı içeren kiracı grubunun adını girin. Belirli bir kiracı grubu adı sağlanmadığınız sürece varsayılan olarak bırakın.
+1. **Windows sanal masaüstü kiracı adı** için, bu konak havuzunu oluşturacağınız kiracının adını girin.
 1. Windows sanal masaüstü kiracı RDS sahibi olarak kimlik doğrulaması yapmak için kullanmak istediğiniz kimlik bilgileri türünü belirtin. UPN veya hizmet sorumlusu ve bir parola girin.
 
    [PowerShell öğreticisi ile hizmet sorumluları ve rol atamaları oluştur](create-service-principal-role-powershell.md)' u tamamladıysanız **hizmet sorumlusu**' nı seçin.
 
-1. **Hizmet sorumlusu**Için, **Azure AD Kiracı kimliği**Için HIZMET sorumlusunu içeren Azure AD örneği için kiracı yönetici hesabını girin. Yalnızca parola kimlik bilgilerine sahip hizmet sorumluları desteklenir.
+1. **Hizmet sorumlusu** Için, **Azure AD Kiracı kimliği** Için HIZMET sorumlusunu içeren Azure AD örneği için kiracı yönetici hesabını girin. Yalnızca parola kimlik bilgilerine sahip hizmet sorumluları desteklenir.
 1. **Sonraki: Gözden geçirme ve oluşturma**’yı seçin.
 
 ## <a name="complete-setup-and-create-the-virtual-machine"></a>Kurulumu tamamladıktan sonra sanal makineyi oluşturun
 
-**İnceleme ve oluşturma**bölümünde kurulum bilgilerini gözden geçirin. Bir değişiklik yapmanız gerekiyorsa, geri dönüp değişiklik yapın. Hazırsanız, konak havuzunuzu dağıtmak için **Oluştur** ' u seçin.
+**İnceleme ve oluşturma** bölümünde kurulum bilgilerini gözden geçirin. Bir değişiklik yapmanız gerekiyorsa, geri dönüp değişiklik yapın. Hazırsanız, konak havuzunuzu dağıtmak için **Oluştur** ' u seçin.
 
 Bu işlem, kaç sanal makineye sahip olduğunuza bağlı olarak tamamlanması 30 dakika veya daha fazla sürebilir.
 

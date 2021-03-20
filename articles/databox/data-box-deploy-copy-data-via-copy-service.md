@@ -10,10 +10,10 @@ ms.topic: tutorial
 ms.date: 06/18/2019
 ms.author: alkohli
 ms.openlocfilehash: e664055893bbdef0f7090811b8a160a1b8a4a1fd
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92124057"
 ---
 # <a name="tutorial-use-the-data-copy-service-to-copy-data-into-azure-data-box-preview"></a>Öğretici: verileri Azure Data Box kopyalamak için veri kopyalama hizmetini kullanma (Önizleme)
@@ -25,7 +25,7 @@ Veri kopyalama hizmetini kullanın:
 - Ara ana bilgisayarların kullanılabilir olabileceği NAS ortamlarında.
 - Veri alma ve karşıya yükleme için hafta alan küçük dosyalarla birlikte. Veri kopyası hizmeti, küçük dosyalar için alma ve karşıya yükleme süresini önemli ölçüde geliştirir.
 
-Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
+Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
 >
@@ -55,7 +55,7 @@ NAS cihazına bağlandıktan sonra, bir sonraki adım verilerinizi kopyalayacağ
 
 Veri kopyalama hizmetini kullanarak veri kopyalamak için bir iş oluşturmanız gerekir:
 
-1. Data Box cihazınızın yerel Web Kullanıcı arabiriminde, **Manage**  >  **kopyalama verilerini**Yönet ' e gidin.
+1. Data Box cihazınızın yerel Web Kullanıcı arabiriminde,   >  **kopyalama verilerini** Yönet ' e gidin.
 2. **Verileri Kopyala** sayfasında **Oluştur**' u seçin.
 
     !["Verileri Kopyala" sayfasında oluştur ' u seçin.](media/data-box-deploy-copy-data-via-copy-service/click-create.png)
@@ -69,7 +69,7 @@ Veri kopyalama hizmetini kullanarak veri kopyalamak için bir iş oluşturmanız
     |**Kullanıcı adı**                       |`\\<DomainName><UserName>`Veri kaynağına erişmek için biçimdeki Kullanıcı adı. Bir yerel yönetici bağlanıyorsa, açık güvenlik izinleri gerekecektir. Klasöre sağ tıklayın, **Özellikler** ' i seçin ve ardından **güvenlik**' i seçin. Bu, **güvenlik** sekmesine yerel yönetici eklemesi gerekir.       |
     |**Parola**                       |Veri kaynağına erişmek için parola.           |
     |**Hedef depolama hesabı**    |Verileri listeden karşıya yüklemek için hedef depolama hesabını seçin.         |
-    |**Hedef türü**       |Listeden hedef depolama türünü seçin: **Blok Blobu**, **Sayfa Blobu**veya **Azure dosyaları**.        |
+    |**Hedef türü**       |Listeden hedef depolama türünü seçin: **Blok Blobu**, **Sayfa Blobu** veya **Azure dosyaları**.        |
     |**Hedef kapsayıcı/paylaşma**    |Hedef depolama hesabınızda veri yüklemek istediğiniz kapsayıcının veya paylaşımın adını girin. Ad bir paylaşma adı veya kapsayıcı adı olabilir. Örneğin `myshare` veya `mycontainer` kullanın. Adı veya biçiminde de girebilirsiniz `sharename\directory_name` `containername\virtual_directory_name` .        |
     |**Dosya düzeniyle eşleşen dosya Kopyala**    | Dosya adı eşleştirme modelini aşağıdaki iki şekilde girebilirsiniz:<ul><li>**Joker karakter Ifadesi kullanın:** Yalnızca `*` ve `?` Joker ifadelerinde desteklenir. Örneğin, ifadesi `*.vhd` uzantısına sahip olan tüm dosyalarla eşleşir `.vhd` . Benzer şekilde, `*.dl?` uzantısı olan `.dl` veya ile başlayan tüm dosyalarla eşleşir `.dl` `.dll` . Benzer şekilde, `*foo` adları ile biten tüm dosyalarla eşleşir `foo` .<br>Joker karakter ifadesini alana doğrudan girebilirsiniz. Varsayılan olarak, alana girdiğiniz değer joker karakter ifadesi olarak değerlendirilir.</li><li>**Normal Ifadeleri kullan:** POSIX tabanlı normal ifadeler desteklenir. Örneğin, normal ifade `.*\.vhd` uzantısına sahip olan tüm dosyalarla eşleşir `.vhd` . Normal ifadeler için `<pattern>` doğrudan olarak ' ı belirtin `regex(<pattern>)` . Normal ifadeler hakkında daha fazla bilgi için bkz. [normal ifade dili-hızlı başvuru](/dotnet/standard/base-types/regular-expression-language-quick-reference).</li><ul>|
     |**Dosya iyileştirme**              |Bu özellik etkinleştirildiğinde 1 MB 'den küçük dosyalar alma sırasında paketlenmiştir. Bu paketleme, küçük dosyalar için veri kopyasının hızlanmasını hızlandırır. Ayrıca dosya sayısının dizin sayısını aştığında önemli miktarda zaman kazandırır.        |
@@ -105,7 +105,7 @@ Veri kopyalama hizmetini kullanarak veri kopyalamak için bir iş oluşturmanız
         >[!NOTE]
         > Bir işi iptal edebilir veya duraklatabilirsiniz, büyük dosyalar yalnızca kısmen kopyalanabilir. Bu kısmen kopyalanan dosyalar Azure 'a aynı duruma yüklenir. Bir işi iptal ettiğinizde veya duraklattığınızda, dosyalarınızın düzgün şekilde kopyalandığından emin olun. Dosyaları doğrulamak için, SMB paylaşımlarına bakın veya ürün reçetesi dosyasını indirin.
 
-    - Ağ hatası gibi geçici bir hata nedeniyle başarısız olduysa bir işi yeniden başlatabilirsiniz. Ancak, **başarılı** veya **hatalarla tamamlanan**bir Terminal durumuna ulaştıysa bir işi yeniden başlatmazsanız. Dosya adlandırma veya dosya boyutu sorunlarından dolayı iş hataları olabilir. Bu hatalar günlüğe kaydedilir, ancak işlem tamamlandıktan sonra yeniden başlatılamaz.
+    - Ağ hatası gibi geçici bir hata nedeniyle başarısız olduysa bir işi yeniden başlatabilirsiniz. Ancak, **başarılı** veya **hatalarla tamamlanan** bir Terminal durumuna ulaştıysa bir işi yeniden başlatmazsanız. Dosya adlandırma veya dosya boyutu sorunlarından dolayı iş hataları olabilir. Bu hatalar günlüğe kaydedilir, ancak işlem tamamlandıktan sonra yeniden başlatılamaz.
 
         ![Başarısız işi yeniden Başlat](media/data-box-deploy-copy-data-via-copy-service/restart-failed-job.png)
 

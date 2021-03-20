@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 09/18/2019
 ms.author: ramamill
 ms.openlocfilehash: a141280338632fdad7053cbbe76c8bdf2797443d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89424880"
 ---
 # <a name="add-azure-automation-runbooks-to-recovery-plans"></a>Kurtarma planlarına Azure Otomasyonu runbook’ları ekleme
@@ -51,7 +51,7 @@ Bir betik çalıştırıldığında, runbook 'a bir kurtarma planı bağlamını
 | ID |Plan çalışırken kurtarma planındaki grup numarasını tanımlar. |
 | VmMap |Gruptaki tüm VM 'lerin bir dizisi. |
 | VMMap anahtarı |Her VM için benzersiz bir anahtar (GUID). |
-| kaynak grubundaki |VM 'nin oluşturulduğu Azure abonelik KIMLIĞI. |
+| SubscriptionId |VM 'nin oluşturulduğu Azure abonelik KIMLIĞI. |
 | ResourceGroupName | VM 'nin bulunduğu kaynak grubunun adı.
 | CloudServiceName |VM 'nin altında oluşturulduğu Azure bulut hizmeti adı. |
 | RoleName |Azure VM 'nin adı. |
@@ -120,7 +120,7 @@ Aman parçalara ayırma [bulutlarının](http://harvestingclouds.com) üzerinde 
 
     ![Özelleştir düğmesine tıklayın](media/site-recovery-runbook-automation-new/custom-rp.png)
 
-2. **Grup 1**' in yanındaki üç nokta (...) işaretine tıklayın:  >  **Post Ekle eylemi**Başlat.
+2. **Grup 1**' in yanındaki üç nokta (...) işaretine tıklayın:  >  **Post Ekle eylemi** Başlat.
 3. **Ekle eyleminde** **betiğin** seçili olduğunu doğrulayın ve betik için bir ad belirtin (**Merhaba Dünya**).
 4. Bir Otomasyon hesabı belirtin ve bir runbook seçin. Betiği kaydetmek için **Tamam**' a tıklayın. Komut dosyası **1. Grup: son adımlar**' a eklenir.
 
@@ -228,7 +228,7 @@ Bunu, Azure PowerShell kullanarak birden çok değer belirterek yapacağız.
     $VMDetailsObj = (Get-AutomationVariable -Name $RecoveryPlanContext.RecoveryPlanName).ToObject([hashtable])
     ```
 
-4. Runbook 'ınızdan kurtarma planı bağlamının VM 'Leri üzerinden ilerleyin. VM 'nin **$VMDetailsObj**olup olmadığını denetleyin. Varsa, NSG 'yi uygulamak için değişkenin özelliklerine erişin:
+4. Runbook 'ınızdan kurtarma planı bağlamının VM 'Leri üzerinden ilerleyin. VM 'nin **$VMDetailsObj** olup olmadığını denetleyin. Varsa, NSG 'yi uygulamak için değişkenin özelliklerine erişin:
 
     ```
         $VMinfo = $RecoveryPlanContext.VmMap | Get-Member | Where-Object MemberType -EQ NoteProperty | select -ExpandProperty Name

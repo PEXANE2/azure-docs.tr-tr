@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 09/19/2019
 ms.author: jeedes
 ms.openlocfilehash: 0f6a8ee7606f8efc49b1ba7da352c5719e13bf4f
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92460468"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-idc"></a>Öğretici: IDC ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
@@ -28,7 +28,7 @@ Bu öğreticide, IDC 'i Azure Active Directory (Azure AD) ile tümleştirmeyi ö
 
 Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](../manage-apps/what-is-single-sign-on.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -54,7 +54,7 @@ IDC 'in Azure AD 'ye tümleştirilmesini yapılandırmak için, Galeriden, yöne
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-idc"></a>IDC için Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-**B. Simon**adlı bir test kullanıcısı kullanarak, IDC Ile Azure AD SSO 'yu yapılandırın ve test edin. SSO 'nun çalışması için, IDC 'de bir Azure AD kullanıcısı ve ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
+**B. Simon** adlı bir test kullanıcısı kullanarak, IDC Ile Azure AD SSO 'yu yapılandırın ve test edin. SSO 'nun çalışması için, IDC 'de bir Azure AD kullanıcısı ve ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
 
 Azure AD SSO 'yu IDC ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
 

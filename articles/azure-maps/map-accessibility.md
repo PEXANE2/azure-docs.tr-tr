@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.service: azure-maps
 manager: cpendleton
 ms.openlocfilehash: ec88437a0fad3a6bd94a67a5ef5c75b3e506f9e8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88006222"
 ---
 # <a name="building-an-accessible-application"></a>Erişilebilir bir uygulama oluşturma
@@ -127,7 +127,7 @@ Aşağıdaki örnek, bir sembol katmanını kullanarak haritada ilgi çekici nok
 
 <br/>
 
-<iframe height='500' scrolling='no' title='Erişilebilir bir uygulama oluşturma' src='//codepen.io/azuremaps/embed/ZoVyZQ/?height=504&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Bkz. Azure <a href='https://codepen.io/azuremaps/pen/ZoVyZQ/'>Make an accessible application</a> Maps ( <a href='https://codepen.io/azuremaps'>@azuremaps</a> ) Ile <a href='https://codepen.io'>codepen</a>'da erişilebilir bir uygulama oluşturma. </iframe>
+<iframe height='500' scrolling='no' title='Erişilebilir bir uygulama oluşturma' src='//codepen.io/azuremaps/embed/ZoVyZQ/?height=504&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Bkz. Azure <a href='https://codepen.io/azuremaps/pen/ZoVyZQ/'></a> Maps ( <a href='https://codepen.io/azuremaps'>@azuremaps</a> ) Ile <a href='https://codepen.io'>codepen</a>'da erişilebilir bir uygulama oluşturma. </iframe>
 
 <br/>
 

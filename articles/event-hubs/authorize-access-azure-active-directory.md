@@ -4,10 +4,10 @@ description: Bu makalede Azure Active Directory kullanarak Event Hubs kaynaklar�
 ms.topic: conceptual
 ms.date: 06/23/2020
 ms.openlocfilehash: d794b03fdbb5429983788c74cbb05a7c13bf2d76
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/29/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92910806"
 ---
 # <a name="authorize-access-to-event-hubs-resources-using-azure-active-directory"></a>Azure Active Directory kullanarak Event Hubs kaynaklarına erişim yetkisi verme
@@ -46,11 +46,11 @@ Güvenlik sorumlusuna bir Azure rolü atamadan önce, güvenlik sorumlusunun sah
 
 Aşağıdaki listede, en dar kapsamdan başlayarak Event Hubs kaynaklarına erişimi kapsamındaki düzeyler açıklanmaktadır:
 
-- **Tüketici grubu** : Bu kapsamda, rol ataması yalnızca bu varlık için geçerlidir. Şu anda Azure portal, bu düzeyde bir güvenlik sorumlusuna Azure rolü atanmasını desteklemez. 
-- **Olay Hub 'ı** : rol ataması, Olay Hub 'ı varlığı ve altındaki Tüketici grubu için geçerlidir.
-- **Ad alanı** : rol ataması, ad alanı altındaki tüm Event Hubs topolojisine ve onunla ilişkili tüketici grubuna yayılır.
-- **Kaynak grubu** : rol atama, kaynak grubu altındaki tüm Event Hubs kaynaklarına uygulanır.
-- **Abonelik** : rol ataması, abonelikteki tüm kaynak gruplarındaki tüm Event Hubs kaynaklara uygulanır.
+- **Tüketici grubu**: Bu kapsamda, rol ataması yalnızca bu varlık için geçerlidir. Şu anda Azure portal, bu düzeyde bir güvenlik sorumlusuna Azure rolü atanmasını desteklemez. 
+- **Olay Hub 'ı**: rol ataması, Olay Hub 'ı varlığı ve altındaki Tüketici grubu için geçerlidir.
+- **Ad alanı**: rol ataması, ad alanı altındaki tüm Event Hubs topolojisine ve onunla ilişkili tüketici grubuna yayılır.
+- **Kaynak grubu**: rol atama, kaynak grubu altındaki tüm Event Hubs kaynaklarına uygulanır.
+- **Abonelik**: rol ataması, abonelikteki tüm kaynak gruplarındaki tüm Event Hubs kaynaklara uygulanır.
 
 > [!NOTE]
 > - Azure rol atamalarının yaymanın beş dakika sürebileceğini aklınızda bulundurun. 

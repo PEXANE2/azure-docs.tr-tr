@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 10/21/2019
 ms.author: ramamill
 ms.openlocfilehash: 16214fa07b14c8db2f32fa2c69739b7fa3dc1907
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96008506"
 ---
 # <a name="set-up-a-process-server-in-azure-for-failback"></a>Azure’da yeniden çalışma için işlem sunucusu ayarlama
@@ -28,7 +28,7 @@ ms.locfileid: "96008506"
 
 ## <a name="deploy-a-process-server-in-azure"></a>Azure 'da bir işlem sunucusu dağıtma
 
-1. Kasa > **Site Recovery altyapı** >  **Manage**  >  **yapılandırma sunucularını** yönetme bölümünde yapılandırma sunucusunu seçin.
+1. Kasa > **Site Recovery altyapı** >    >  **yapılandırma sunucularını** yönetme bölümünde yapılandırma sunucusunu seçin.
 2. Sunucu sayfasında **+ işlem sunucusu** ' na tıklayın.
 3. **İşlem sunucusu Ekle** sayfasında, Işlem sunucusunu Azure 'da dağıtmayı seçin.
 4. Yük devretme için kullanılan abonelik, bir kaynak grubu, yük devretme için kullanılan Azure bölgesi ve Azure VM 'lerinin bulunduğu sanal ağ dahil olmak üzere Azure ayarlarını belirtin. Birden çok Azure ağı kullandıysanız, her birinde bir işlem sunucusuna ihtiyacınız vardır.

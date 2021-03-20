@@ -7,10 +7,10 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: sutalasi
 ms.openlocfilehash: a4140a0b22f7ca8164d50cf60fe57c861f826eb4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86132513"
 ---
 # <a name="set-up-disaster-recovery-to-azure-for-hyper-v-vms-using-powershell-and-azure-resource-manager"></a>PowerShell ve Azure Resource Manager kullanarak Hyper-V VM'leri için Azure'a olağanüstü durum kurtarmayı ayarlama
@@ -59,7 +59,7 @@ Ayrıca, bu makalede açıklanan belirli örnek aşağıdaki önkoşullara sahip
    Get-AzResourceProvider -ProviderNamespace  Microsoft.RecoveryServices
    ```
 
-1. Komut çıkışında, **Registrationstate** ' in **kayıtlı**olarak ayarlandığını doğrulayın. Adım 2 ' ye geçebilirsiniz. Aksi takdirde, aşağıdaki komutları çalıştırarak, eksik sağlayıcıyı aboneliğinize kaydetmeniz gerekir:
+1. Komut çıkışında, **Registrationstate** ' in **kayıtlı** olarak ayarlandığını doğrulayın. Adım 2 ' ye geçebilirsiniz. Aksi takdirde, aşağıdaki komutları çalıştırarak, eksik sağlayıcıyı aboneliğinize kaydetmeniz gerekir:
 
    ```azurepowershell
    Register-AzResourceProvider -ProviderNamespace Microsoft.RecoveryServices
@@ -142,7 +142,7 @@ Hyper-V çekirdek sunucusu çalıştırıyorsanız, kurulum dosyasını indirin 
    .\setupdr.exe /i
    ```
 
-   Sonuçlar _%ProgramData%\asrlogs\drasetupwizard.log_dosyasına kaydedilir.
+   Sonuçlar _%ProgramData%\asrlogs\drasetupwizard.log_ dosyasına kaydedilir.
 
 1. Şu komutu çalıştırarak sunucuyu kaydedin:
 

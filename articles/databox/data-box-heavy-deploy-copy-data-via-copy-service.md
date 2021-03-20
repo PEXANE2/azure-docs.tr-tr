@@ -9,10 +9,10 @@ ms.topic: tutorial
 ms.date: 07/03/2019
 ms.author: alkohli
 ms.openlocfilehash: 601e5cf15c47b16c53ff9ca81a56cb613bcfc3f5
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96006568"
 ---
 # <a name="tutorial-use-the-data-copy-service-to-copy-data-into-azure-data-box-heavy-preview"></a>Öğretici: verileri Azure Data Box Heavy kopyalamak için veri kopyalama hizmetini kullanma (Önizleme)
@@ -24,7 +24,7 @@ Veri kopyalama hizmetini kullanın:
 - Ara ana bilgisayarların kullanılabilir olabileceği NAS ortamlarında.
 - Veri alma ve karşıya yükleme için hafta alan küçük dosyalarla birlikte. Veri kopyası hizmeti, küçük dosyalar için alma ve karşıya yükleme süresini önemli ölçüde geliştirir.
 
-Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
+Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * Data Box Heavy’ye veri kopyalama
@@ -48,7 +48,7 @@ NAS cihazına bağlandıktan sonra, bir sonraki adım verilerinizi kopyalayacağ
 
 Veri kopyalama hizmetini kullanarak veri kopyalamak için bir iş oluşturmanız gerekir:
 
-1. Data Box Heavy cihazınızın yerel Web Kullanıcı arabiriminde, **Manage**  >  **kopyalama verilerini** Yönet ' e gidin.
+1. Data Box Heavy cihazınızın yerel Web Kullanıcı arabiriminde,   >  **kopyalama verilerini** Yönet ' e gidin.
 2. **Verileri Kopyala** sayfasında **Oluştur**' u seçin.
 
     !["Verileri Kopyala" sayfasında oluştur ' u seçin.](media/data-box-deploy-copy-data-via-copy-service/click-create.png)
@@ -112,7 +112,7 @@ Veri kopyalama hizmetini kullanarak veri kopyalamak için bir iş oluşturmanız
 6. İş devam ederken, **verileri Kopyala** sayfasında:
 
     - **Durum** sütununda kopyalama işinin durumunu görüntüleyebilirsiniz. Durum şu olabilir:
-        - **Çalışıyor**
+        - **Çalışma**
         - **Başarısız**
         - **Başarılı**
         - **Duraklatılıyor**

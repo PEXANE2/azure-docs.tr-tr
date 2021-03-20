@@ -13,10 +13,10 @@ ms.reviewer: mal
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 1b3d7c47ff0a2c533bf12a67958a913b22915f75
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87910197"
 ---
 # <a name="example-direct-federation-with-active-directory-federation-services-ad-fs-preview"></a>Örnek: Active Directory Federasyon Hizmetleri (AD FS) ile doğrudan Federasyon (AD FS) (Önizleme)
@@ -64,8 +64,8 @@ Bu yordama başlamadan önce bir AD FS sunucusu ayarlanmalıdır ve çalışır 
 
    - **Görünen ad**: kalıcı tanımlayıcı
    - **Talep tanımlayıcısı**: `urn:oasis:names:tc:SAML:2.0:nameid-format:persistent` 
-   - Bu **talep açıklamasını bu Federasyon hizmetinin kabul edebileceği bir talep türü olarak Federasyon meta verilerinde Yayımla**onay kutusunu seçin.
-   - Bu **talep açıklamasını bu Federasyon Hizmeti 'nin gönderebilecek bir talep türü olarak Federasyon meta verilerinde Yayımla**onay kutusunu seçin.
+   - Bu **talep açıklamasını bu Federasyon hizmetinin kabul edebileceği bir talep türü olarak Federasyon meta verilerinde Yayımla** onay kutusunu seçin.
+   - Bu **talep açıklamasını bu Federasyon Hizmeti 'nin gönderebilecek bir talep türü olarak Federasyon meta verilerinde Yayımla** onay kutusunu seçin.
 
 5. **Tamam**’a tıklayın.
 
@@ -73,10 +73,10 @@ Bu yordama başlamadan önce bir AD FS sunucusu ayarlanmalıdır ve çalışır 
 
 1. AD FS sunucusunda **Araçlar**  >  **AD FS Yönetim**' e gidin.
 2. Gezinti bölmesinde **güven ilişkileri**  >  **bağlı olan taraf güvenleri**' ni seçin.
-3. **Eylemler**altında **bağlı olan taraf güveni Ekle**' yi seçin. 
-4. **Veri kaynağı seç**için bağlı olan taraf güveni Ekleme Sihirbazı ' nda, **çevrimiçi veya yerel bir ağ üzerinde yayınlanan bağlı olan taraf hakkında verileri içeri aktarma**seçeneğini kullanın. Bu Federasyon meta veri URL 'sini belirtin- https://nexus.microsoftonline-p.com/federationmetadata/saml20/federationmetadata.xml . Diğer varsayılan seçimleri bırakın. **Kapat**’ı seçin.
+3. **Eylemler** altında **bağlı olan taraf güveni Ekle**' yi seçin. 
+4. **Veri kaynağı seç** için bağlı olan taraf güveni Ekleme Sihirbazı ' nda, **çevrimiçi veya yerel bir ağ üzerinde yayınlanan bağlı olan taraf hakkında verileri içeri aktarma** seçeneğini kullanın. Bu Federasyon meta veri URL 'sini belirtin- https://nexus.microsoftonline-p.com/federationmetadata/saml20/federationmetadata.xml . Diğer varsayılan seçimleri bırakın. **Kapat**’ı seçin.
 5. **Talep kurallarını Düzenle** Sihirbazı açılır.
-6. **Talep kurallarını Düzenle** sihirbazında **Kural Ekle**' yi seçin. **Kural türünü seçin**bölümünde **LDAP özniteliklerini talep olarak gönder**' i seçin. **İleri**’yi seçin.
+6. **Talep kurallarını Düzenle** sihirbazında **Kural Ekle**' yi seçin. **Kural türünü seçin** bölümünde **LDAP özniteliklerini talep olarak gönder**' i seçin. **İleri**’yi seçin.
 7. **Talep Yapılandır kuralını**, aşağıdaki değerleri belirtin: 
 
    - **Talep kuralı adı**: e-posta talebi kuralı 
@@ -84,7 +84,7 @@ Bu yordama başlamadan önce bir AD FS sunucusu ayarlanmalıdır ve çalışır 
    - **LDAP özniteliği**: E-posta adresleri 
    - **Giden talep türü**: e-posta adresi
 
-8. **Son**’u seçin.
+8. **Son**'u seçin.
 9. **Talep kurallarını Düzenle** penceresinde yeni kural görüntülenir. **Uygula**’ya tıklayın. 
 10. **Tamam**’a tıklayın.  
 
@@ -129,8 +129,8 @@ Bu yordama başlamadan önce bir AD FS sunucusu ayarlanmalıdır ve çalışır 
 ### <a name="add-the-relying-party-trust-and-claim-rules"></a>Bağlı olan taraf güvenini ve talep kurallarını ekleyin 
 1. AD FS sunucusunda **Araçlar**  >  **AD FS Yönetim**' e gidin. 
 1. Gezinti bölmesinde **güven ilişkileri**  >  **bağlı olan taraf güvenleri**' ni seçin. 
-1. **Eylemler**altında **bağlı olan taraf güveni Ekle**' yi seçin.  
-1. Bağlı olan taraf güveni Ekleme Sihirbazı ' nda, **veri kaynağı seç**için, **çevrimiçi veya yerel bir ağ üzerinde yayınlanan bağlı olan taraf hakkında verileri içeri aktarma**seçeneğini kullanın. Bu Federasyon meta veri URL 'sini belirtin: `https://nexus.microsoftonline-p.com/federationmetadata/2007-06/federationmetadata.xml` .  Diğer varsayılan seçimleri bırakın. **Kapat**’ı seçin.
+1. **Eylemler** altında **bağlı olan taraf güveni Ekle**' yi seçin.  
+1. Bağlı olan taraf güveni Ekleme Sihirbazı ' nda, **veri kaynağı seç** için, **çevrimiçi veya yerel bir ağ üzerinde yayınlanan bağlı olan taraf hakkında verileri içeri aktarma** seçeneğini kullanın. Bu Federasyon meta veri URL 'sini belirtin: `https://nexus.microsoftonline-p.com/federationmetadata/2007-06/federationmetadata.xml` .  Diğer varsayılan seçimleri bırakın. **Kapat**’ı seçin.
 1. **Talep kurallarını Düzenle** Sihirbazı açılır. 
 1. **Talep kurallarını Düzenle** sihirbazında **Kural Ekle**' yi seçin. **Kural türü seç**' te, **talepleri özel bir kural kullanarak gönder**' i seçin. *İleri*’yi seçin. 
 1. **Talep Yapılandır kuralını**, aşağıdaki değerleri belirtin:
@@ -138,7 +138,7 @@ Bu yordama başlamadan önce bir AD FS sunucusu ayarlanmalıdır ve çalışır 
    - **Talep kuralı adı**: sorun sabit kimliği  
    - **Özel kural**: `c:[Type == "http://schemas.microsoft.com/ws/2008/06/identity/claims/windowsaccountname"] => issue(store = "Active Directory", types = ("http://schemas.microsoft.com/LiveID/Federation/2008/05/ImmutableID"), query = "samAccountName={0};objectGUID;{1}", param = regexreplace(c.Value, "(?<domain>[^\\]+)\\(?<user>.+)", "${user}"), param = c.Value);`
 
-1. **Son**’u seçin. 
+1. **Son**'u seçin. 
 1. **Talep kurallarını Düzenle** penceresinde yeni kural görüntülenir. **Uygula**’ya tıklayın.  
 1. Aynı **talep kurallarını düzenleme** sihirbazında **Kural Ekle**' yi seçin. **Cohortum kural türü**' nde **LDAP özniteliklerini talep olarak gönder**' i seçin. **İleri**’yi seçin.
 1. **Talep Yapılandır kuralını**, aşağıdaki değerleri belirtin: 
@@ -148,7 +148,7 @@ Bu yordama başlamadan önce bir AD FS sunucusu ayarlanmalıdır ve çalışır 
    - **LDAP özniteliği**: E-posta adresleri  
    - **Giden talep türü**: e-posta adresi 
 
-1.  **Son**’u seçin. 
+1.  **Son**'u seçin. 
 1.  **Talep kurallarını Düzenle** penceresinde yeni kural görüntülenir. **Uygula**’ya tıklayın.  
 1.  **Tamam**'a tıklayın. AD FS sunucusu artık WS-Beskullanan doğrudan Federasyon için yapılandırılmıştır.
 

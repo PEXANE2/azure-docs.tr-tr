@@ -10,10 +10,10 @@ ms.author: keli19
 ms.custom: seodec18, devx-track-csharp
 ms.date: 02/14/2019
 ms.openlocfilehash: a4fe9e54e5e03a8dbf2a727b22f784c36d6c65f9
-ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100517595"
 ---
 # <a name="retrain-and-deploy-a-machine-learning-model"></a>Makine öğrenimi modelini yeniden eğitme ve dağıtma
@@ -66,7 +66,7 @@ Yeniden eğitim API 'Lerini çağırmak için aşağıdaki adımları kullanın:
 1. Üzerinde çalıştığınız Web hizmetine tıklayın.
 1. **Tüketme**' ye tıklayın.
 1. Kullanım **sayfasının en** altında, **örnek kod** bölümünde **toplu işlem**' e tıklayın.
-1. Toplu yürütme için örnek C# kodunu kopyalayın ve Program.cs dosyasına yapıştırın. Ad alanının bozulmadan kaldığından emin olun.
+1. Toplu yürütme için örnek C# kodunu kopyalayın ve program. cs dosyasına yapıştırın. Ad alanının bozulmadan kaldığından emin olun.
 
 Açıklamalarda belirtilen Microsoft. AspNet. WebApi. Client NuGet paketini ekleyin. Microsoft.WindowsAzure.Storage.dll başvurusunu eklemek için, [Azure depolama hizmetleri için istemci kitaplığı](https://www.nuget.org/packages/WindowsAzure.Storage)'nı yüklemeniz gerekebilir.
 

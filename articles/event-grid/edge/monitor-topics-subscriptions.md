@@ -4,10 +4,10 @@ description: Konuları ve olay aboneliklerini izleme
 ms.date: 07/08/2020
 ms.topic: article
 ms.openlocfilehash: d230be4f74abd61ad7b7f0fdb3facb32ee63da73
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86171542"
 ---
 # <a name="monitor-topics-and-event-subscriptions"></a>Konuları ve olay aboneliklerini izleme
@@ -43,7 +43,7 @@ Hem konular hem de olay abonelikleri, olay teslimi ve modül performansı hakkı
 
 ### <a name="topic-metrics"></a>Konu ölçümleri
 
-| Ölçüm | Açıklama |
+| Metric | Açıklama |
 | ------ | ----------- |
 | Alınan olayları | Konuya yayınlanan olay sayısı
 | UnmatchedEvents | Konuya yayımlanan ve olay aboneliğiyle eşleşmeyen ve bırakılan olay sayısı
@@ -55,7 +55,7 @@ Hem konular hem de olay abonelikleri, olay teslimi ve modül performansı hakkı
 
 ### <a name="event-subscription-metrics"></a>Olay aboneliği ölçümleri
 
-| Ölçüm | Açıklama |
+| Metric | Açıklama |
 | ------ | ----------- |
 | Deliverybaşarılı sayısı | Yapılandırılmış uç noktaya başarıyla teslim edilen olay sayısı
 | DeliveryFailureCounts | Yapılandırılmış uç noktaya teslim edilemedi olay sayısı

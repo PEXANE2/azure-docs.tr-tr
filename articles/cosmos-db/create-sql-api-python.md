@@ -14,10 +14,10 @@ ms.custom:
 - seo-python-october2019
 - devx-track-python
 ms.openlocfilehash: c74da5e612609ce6a0525b24e5868059f06da179
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93078807"
 ---
 # <a name="quickstart-build-a-python-application-using-an-azure-cosmos-db-sql-api-account"></a>Hızlı başlangıç: Azure Cosmos DB SQL API hesabı kullanarak bir Python uygulaması oluşturma
@@ -75,7 +75,7 @@ Artık bir veritabanı ve kapsayıcı oluşturmak için Azure portal Veri Gezgin
     
     Önceki ayarlara ek olarak, kapsayıcı için isteğe bağlı olarak **benzersiz anahtarlar** ekleyebilirsiniz. Bu örnekte bu alanı boş bırakalım. Benzersiz anahtarlar sayesinde geliştiriciler veritabanına bir veri bütünlüğü katmanı ekleyebilir. Bir kapsayıcı oluştururken benzersiz bir anahtar ilkesi oluşturarak, bölüm anahtarı başına bir veya daha fazla değerin benzersizliği olduğundan emin olursunuz. Daha fazla bilgi edinmek için [Azure Cosmos DB'de benzersiz anahtarlar](unique-keys.md) makalesine bakın.
     
-    **Tamam** ’ı seçin. Veri Gezgini, yeni veritabanını ve kapsayıcıyı görüntüler.
+    **Tamam**’ı seçin. Veri Gezgini, yeni veritabanını ve kapsayıcıyı görüntüler.
 
 ## <a name="add-sample-data"></a>Örnek verileri ekleme
 
@@ -118,7 +118,7 @@ Bu adımda Azure portalına dönerek bağlantı dizesi bilgilerinizi kopyalayıp
 
 1. [Azure portal](https://portal.azure.com/)Azure Cosmos DB hesabınızda, sol gezinti bölmesinde **anahtarlar** ' ı seçin. Bir sonraki adımda *cosmos_get_started.* Kopyala dosyasına **URI** ve **birincil anahtar** kopyalamak için ekranın sağ tarafındaki kopyalama düğmelerini kullanın.
 
-    :::image type="content" source="./media/create-sql-api-dotnet/access-key-and-uri-in-keys-settings-in-the-azure-portal.png" alt-text="Azure portalındaki Veri Gezgini, Kapsayıcı Ekle bölmesi":::
+    :::image type="content" source="./media/create-sql-api-dotnet/access-key-and-uri-in-keys-settings-in-the-azure-portal.png" alt-text="Azure portal anahtarlar ayarlarından bir erişim anahtarı ve URI alın":::
 
 2. Visual Studio Code içinde *cosmos_get_started. Kopyala* dosyasını *\git-samples\azure-Cosmos-DB-Python-Getting-Started* içinde açın.
 
@@ -164,13 +164,13 @@ Aşağıdaki kod parçacıklarının hepsi *cosmos_get_started. Kopyala* dosyas�
    
 ## <a name="run-the-app"></a>Uygulamayı çalıştırma
 
-1. Visual Studio Code, **görüntüleme**  >  **komut paleti** ' ni seçin. 
+1. Visual Studio Code, **görüntüleme**  >  **komut paleti**' ni seçin. 
 
 2. Komut isteminde, **Python: Yorumlayıcı Seçin** girip kullanılacak Python sürümün seçin.
 
     Visual Studio Code’daki alt bilgi, seçilen yorumlayıcıyı belirtmek için güncelleştirilir. 
 
-3. Tümleşik **View**  >  **terminalyi** görüntüle ' yi seçerek Visual Studio Code tümleşik Terminal ' i açın.
+3. Tümleşik   >  **terminalyi** görüntüle ' yi seçerek Visual Studio Code tümleşik Terminal ' i açın.
 
 4. Tümleşik Terminal penceresinde, *Azure-Cosmos-DB-Python-alma-başlatma* klasöründe olduğunuzdan emin olun. Değilseniz, örnek klasörü değiştirmek için aşağıdaki komutu çalıştırın. 
 

@@ -18,10 +18,10 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 0443dcb2bf3bd58f2474c507c9f9594fb6d8a7f0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89469193"
 ---
 # <a name="tutorial-stream-azure-active-directory-logs-to-an-azure-event-hub"></a>Öğretici: Azure Olay Hub 'ına akış Azure Active Directory günlükleri
@@ -39,9 +39,9 @@ Bu özelliği kullanmak için şunlara ihtiyacınız vardır:
 
 ## <a name="stream-logs-to-an-event-hub"></a>Günlükleri bir olay hub 'ına akış
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın. 
+1. [Azure portalında](https://portal.azure.com) oturum açın. 
 
-2. **Azure Active Directory**  >  **Monitoring**  >  **Denetim günlüklerini**Azure Active Directory izleme ' yi seçin. 
+2.   >    >  **Denetim günlüklerini** Azure Active Directory izleme ' yi seçin. 
 
 3. **Dışarı Aktarma Ayarları**'nı seçin.  
     

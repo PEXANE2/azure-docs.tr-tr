@@ -7,10 +7,10 @@ ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 12/22/2020
 ms.openlocfilehash: 1813fb222bca74f355fec52252ce3d77fef06e5d
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/08/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98013932"
 ---
 # <a name="create-custom-net-deserializers-for-azure-stream-analytics-in-visual-studio-code"></a>Visual Studio Code Azure Stream Analytics için özel .NET seri hale Getiricileri oluşturma
@@ -69,7 +69,7 @@ Visual Studio Code kullanarak Azure Stream Analytics bir bulut işi için özel 
 
    |Ayar|Önerilen Değer|
    |-------|---------------|
-   |Ad|Girdi|
+   |Name|Giriş|
    |Abonelik|Aboneliğinizi < >|
    |Depolama Hesabı|Depolama hesabınızı < >|
    |Kapsayıcı|Depolama kapsayıcınızı < >|

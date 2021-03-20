@@ -7,10 +7,10 @@ ms.date: 09/24/2019
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: c8a4b22966c3d4db268e212bb3f2d1bbb78fee74
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89400645"
 ---
 # <a name="connect-to-windows-virtual-desktop-with-the-web-client"></a>Web istemcisiyle Windows sanal masaüstüne bağlanma
@@ -27,11 +27,11 @@ Web istemcisi, Windows sanal masaüstü kaynaklarınıza, uzun yükleme işlemi 
 
 HTML5 özellikli herhangi bir tarayıcı çalışması gerektiği sürece, aşağıdaki işletim sistemlerini ve tarayıcıları resmi olarak destekliyoruz.
 
-| Tarayıcı           | Desteklenen işletim sistemi                     | Notlar               |
+| Tarayıcı           | Desteklenen İşletim Sistemi                     | Notlar               |
 |-------------------|----------------------------------|---------------------|
 | Microsoft Edge    | Windows                          |                     |
 | Internet Explorer | Windows                          | Sürüm 11 veya üzeri |
-| Apple Safari      | macOS                            |                     |
+| Apple Safari      | Mac OS                            |                     |
 | Mozilla Firefox   | Windows, macOS, Linux            | Sürüm 55 veya üzeri |
 | Google Chrome     | Windows, macOS, Linux, Chrome OS |                     |
 
@@ -51,13 +51,13 @@ Oturum açtıktan sonra, artık kaynakların bir listesini görmeniz gerekir. Ka
 
 ## <a name="using-an-input-method-editor"></a>Giriş Yöntemi Düzenleyicisi kullanma
 
-Web istemcisi, **1.0.21.16 veya üzeri**sürümlerde uzak oturumunda bir Giriş Yöntemi Düzenleyicisi 'NI (IME) kullanmayı destekler. Uzak oturumda kullanmak istediğiniz klavyeye ait dil paketinin konak sanal makinesine yüklenmesi gerekir. Uzak oturumda dil paketleri ayarlama hakkında daha fazla bilgi edinmek için [Windows 10 çoklu oturum görüntüsüne dil paketleri ekleme ' ye](language-packs.md)göz atın.
+Web istemcisi, **1.0.21.16 veya üzeri** sürümlerde uzak oturumunda bir Giriş Yöntemi Düzenleyicisi 'NI (IME) kullanmayı destekler. Uzak oturumda kullanmak istediğiniz klavyeye ait dil paketinin konak sanal makinesine yüklenmesi gerekir. Uzak oturumda dil paketleri ayarlama hakkında daha fazla bilgi edinmek için [Windows 10 çoklu oturum görüntüsüne dil paketleri ekleme ' ye](language-packs.md)göz atın.
 
 Web istemcisini kullanarak IME girişini etkinleştirmek için:
 
 1. Uzak oturuma bağlanmadan önce Web istemcisi **ayarları** paneline gidin.
 
-2. **Giriş yöntemi düzenleyicisini etkinleştir** ayarını **Açık**olarak değiştirin.
+2. **Giriş yöntemi düzenleyicisini etkinleştir** ayarını **Açık** olarak değiştirin.
 
 3. Açılan menüde, uzak oturumda kullanacağınız klavyeyi seçin.
 

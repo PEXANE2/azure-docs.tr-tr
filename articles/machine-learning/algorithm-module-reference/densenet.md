@@ -10,10 +10,10 @@ author: likebupt
 ms.author: keli19
 ms.date: 09/26/2020
 ms.openlocfilehash: d21c7443f6b30d0b7d6e8295c0c9b060a80d9a62
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93421337"
 ---
 # <a name="densenet"></a>DenseNet
@@ -39,7 +39,7 @@ DenseNet hakkında daha fazla bilgi için bkz. Araştırma sayfası, daha [seyre
 
 3.  **Önceden eğitilen** Için, ImageNet üzerinde önceden eğitilen bir model kullanıp kullanmayacağınızı belirtin. Seçilirse, model seçilen önceden eğitilen modele göre ince ayar yapabilirsiniz; seçimi kaldırılırsa, sıfırdan eğitebilirsiniz.
 
-4.  **Bellek açısından verimli** , çok daha fazla bellek ve daha yavaş olan checkişaret kullanıp kullanmayacağınızı belirtin. Daha fazla bilgi için bkz. Araştırma sayfası, [yoğun bellek](https://arxiv.org/pdf/1707.06990.pdf)kullanımı.
+4.  **Bellek açısından verimli**, çok daha fazla bellek ve daha yavaş olan checkişaret kullanıp kullanmayacağınızı belirtin. Daha fazla bilgi için bkz. Araştırma sayfası, [yoğun bellek](https://arxiv.org/pdf/1707.06990.pdf)kullanımı.
 
 5.  **Densenet** modülü, eğitim ve doğrulama görüntüsü veri kümesi modülünün çıkışını [Pytorch modeline](train-pytorch-model.md)bağlayın. 
 
@@ -54,15 +54,15 @@ DenseNet hakkında daha fazla bilgi için bkz. Araştırma sayfası, daha [seyre
 
 ###  <a name="module-parameters"></a>Modül parametreleri  
 
-| Ad             | Aralık | Tür    | Varsayılan     | Açıklama                              |
+| Name             | Aralık | Tür    | Varsayılan     | Description                              |
 | ---------------- | ----- | ------- | ----------- | ---------------------------------------- |
-| Model adı       | Herhangi bir   | Mod    | densenet201 | Belirli bir DenseNet yapısının adı     |
-| Önceden eğitilen       | Herhangi bir   | Boole | Doğru        | Imagenet üzerinde önceden eğitilen bir modelin kullanılıp kullanılmayacağını belirtir |
-| Bellek etkin | Herhangi bir   | Boole | Yanlış       | Çok daha fazla bellek ve daha yavaş olan checkişaret kullanılıp kullanılmayacağını belirtir |
+| Model adı       | Herhangi biri   | Mod    | densenet201 | Belirli bir DenseNet yapısının adı     |
+| Önceden eğitilen       | Herhangi biri   | Boole | Doğru        | Imagenet üzerinde önceden eğitilen bir modelin kullanılıp kullanılmayacağını belirtir |
+| Bellek etkin | Herhangi biri   | Boole | Yanlış       | Çok daha fazla bellek ve daha yavaş olan checkişaret kullanılıp kullanılmayacağını belirtir |
 
-###  <a name="output"></a>Çıkış  
+###  <a name="output"></a>Çıktı  
 
-| Ad            | Tür                    | Açıklama                              |
+| Ad            | Tür                    | Description                              |
 | --------------- | ----------------------- | ---------------------------------------- |
 | Eğitilen model | Untraınedmodeldirectory | Pytorch modelini eğitebilmeniz için bağlanmayan eğitilen bir model. |
 

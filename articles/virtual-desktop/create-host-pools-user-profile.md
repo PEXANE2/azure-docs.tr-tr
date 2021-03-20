@@ -7,10 +7,10 @@ ms.date: 08/20/2019
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: 35b692033cc16f276b48bc6d973b27d994c1082a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88002594"
 ---
 # <a name="create-a-profile-container-for-a-host-pool-using-a-file-share"></a>Dosya paylaşımı kullanarak ana bilgisayar havuzu için profil kapsayıcısı oluşturma
@@ -47,7 +47,7 @@ Aşağıda, bir sanal makinenin Kullanıcı profilleri için dosya paylaşma iş
 3. Dosya paylaşma sanal makinesinde, **C sürücüsünde** profil paylaşma olarak kullanılacak bir klasör oluşturun.
 4. Yeni klasöre sağ tıklayın, **Özellikler**' i seçin, **Paylaşım**' ı seçin ve **Gelişmiş paylaşım...** öğesini seçin.
 5. **Bu klasörü paylaşma**, **izinler...** öğesini seçin ve ardından **Ekle...** seçeneğini belirleyin.
-6. Windows sanal masaüstü kullanıcılarını eklediğiniz güvenlik grubunu arayın, sonra grubun **tam denetime**sahip olduğundan emin olun.
+6. Windows sanal masaüstü kullanıcılarını eklediğiniz güvenlik grubunu arayın, sonra grubun **tam denetime** sahip olduğundan emin olun.
 7. Güvenlik grubu eklendikten sonra, klasöre sağ tıklayın, **Özellikler**' i seçin, **Paylaşım**' ı seçin ve ardından **ağ yolunu** daha sonra kullanmak üzere kopyalayın.
 
 İzinler hakkında daha fazla bilgi için bkz. [Fslogix belgeleri](/fslogix/fslogix-storage-config-ht/).
@@ -58,10 +58,10 @@ Sanal makineleri FSLogix yazılımıyla yapılandırmak için, konak havuzuna ka
 
 1. Sanal makineyi oluştururken girdiğiniz kimlik bilgileriyle [sanal makineye bağlanın](../virtual-machines/windows/quick-create-portal.md#connect-to-virtual-machine) .
 2. Bir internet tarayıcısı başlatın ve FSLogix aracısını indirmek için [Bu bağlantıya](https://go.microsoft.com/fwlink/?linkid=2084562) gidin.
-3. \\ \\ \\ . Zip dosyasında Win32 yayını veya \\ \\ x64 \\ sürümüne gidin ve Fslogixappssetup ' ı çalıştırarak fslogix aracısını kurun. **FSLogixAppsSetup**  FSLogix 'i yükleme hakkında daha fazla bilgi edinmek için bkz. [Fslogix indirme ve yükleme](/fslogix/install-ht/).
+3. \\ \\ \\ . Zip dosyasında Win32 yayını veya \\ \\ x64 \\ sürümüne gidin ve Fslogixappssetup ' ı çalıştırarak fslogix aracısını kurun.   FSLogix 'i yükleme hakkında daha fazla bilgi edinmek için bkz. [Fslogix indirme ve yükleme](/fslogix/install-ht/).
 4. Aracının yüklendiğini doğrulamak için **Program Files**  >  **fslogix**  >  **uygulamalarına** gidin.
-5. Başlat menüsünde, **Regedit** komutunu yönetici olarak çalıştırın. **Bilgisayar \\ HKEY_LOCAL_MACHINE \\ yazılım \\ fslogix**sayfasına gidin.
-6. **Profiller**adlı bir anahtar oluşturun.
+5. Başlat menüsünde, **Regedit** komutunu yönetici olarak çalıştırın. **Bilgisayar \\ HKEY_LOCAL_MACHINE \\ yazılım \\ fslogix** sayfasına gidin.
+6. **Profiller** adlı bir anahtar oluşturun.
 7. Profiller anahtarı için aşağıdaki değerleri oluşturun:
 
 | Ad                | Tür               | Veri/değer                        |

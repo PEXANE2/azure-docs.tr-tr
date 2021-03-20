@@ -1,6 +1,6 @@
 ---
-title: dosya dahil etme
-description: dosya dahil etme
+title: include dosyası
+description: include dosyası
 services: app-service
 author: ggailey777
 ms.service: app-service
@@ -9,17 +9,17 @@ ms.date: 06/26/2020
 ms.author: glenga
 ms.custom: include file
 ms.openlocfilehash: e208b52c67f173bd0d289715b63562df656b1ec9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88009821"
 ---
 1. **Çözüm Gezgini**'nde projeye sağ tıklayın ve **Yayımla**'yı seçin.
 
-1. **Yayımla** Iletişim kutusunda **hedef**için **Azure** ' u seçin ve ardından **İleri**' yi seçin. 
+1. **Yayımla** Iletişim kutusunda **hedef** için **Azure** ' u seçin ve ardından **İleri**' yi seçin. 
 
-1. **Belirli bir hedef**Için **Azure Web işleri** ' ni seçin ve ardından **İleri**' yi seçin.
+1. **Belirli bir hedef** Için **Azure Web işleri** ' ni seçin ve ardından **İleri**' yi seçin.
 
 1. **Yeni bir Azure WebJob oluştur**' u seçin.
 
