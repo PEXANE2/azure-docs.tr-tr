@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 08/28/2019
 ms.author: jeedes
 ms.openlocfilehash: 40ed33021a892e140dfff47417137046557c0aef
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92522369"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-onit"></a>Öğretici: OnIt ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
@@ -54,7 +54,7 @@ Onit 'in Azure AD 'ye tümleştirilmesini yapılandırmak için, Galeriden yöne
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-onit"></a>Azure AD çoklu oturum açmayı OnIt için yapılandırın ve test edin
 
-Azure AD SSO 'yu, **B. Simon**adlı bir test kullanıcısı kullanarak Onit ile yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ve OnIt içindeki ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
+Azure AD SSO 'yu, **B. Simon** adlı bir test kullanıcısı kullanarak Onit ile yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ve OnIt içindeki ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
 
 Azure AD SSO 'yu OnIt ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
 
@@ -146,11 +146,11 @@ Bu bölümde, Azure çoklu oturum açma özelliğini kullanarak OnIt 'e erişim 
 
     ![Çoklu oturum açma](./media/onit-tutorial/IC791177.png "Çoklu Oturum Açma")
 
-    a. **Kimlik doğrulama stratejisi**olarak **Çoklu oturum açma ve parola**' yı seçin.
+    a. **Kimlik doğrulama stratejisi** olarak **Çoklu oturum açma ve parola**' yı seçin.
     
-    b. **IDP hedef URL** metin kutusunda, Azure Portal kopyaladığınız **oturum açma URL 'si**değerini yapıştırın.
+    b. **IDP hedef URL** metin kutusunda, Azure Portal kopyaladığınız **oturum açma URL 'si** değerini yapıştırın.
 
-    c. **IDP oturum kapatma URL 'si** metin kutusunda, Azure Portal kopyaladığınız **Logout URL 'si**değerini yapıştırın.
+    c. **IDP oturum kapatma URL 'si** metin kutusunda, Azure Portal kopyaladığınız **Logout URL 'si** değerini yapıştırın.
 
     d. **IDP CERT parmak izi (SHA1)** metin kutusunda, Azure Portal kopyaladığınız sertifikanın **parmak izi** değerini yapıştırın.
 

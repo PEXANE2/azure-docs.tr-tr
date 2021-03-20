@@ -5,17 +5,17 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: df572b88cf8a67163b28ec87154dcea01646b9a2
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95555739"
 ---
 #### <a name="to-install-updates-via-the-azure-portal"></a>Azure portalı aracılığıyla güncelleştirmeleri yüklemek için
 
 1. StorSimple Cihaz Yöneticinize gidip **Cihazlar**’ı seçin. Hizmetinize bağlı cihazların listesinden güncelleştirmek istediğiniz cihazı seçip tıklayın. 
 
-    ![Son olarak, MySSDevManager Aygıt Yöneticisi vurgulanır ve seçilir, cihazlar vurgulanır ve seçilir ve cihaz MYSSIS1103 vurgulanır ve seçilir.](../includes/media/storsimple-virtual-array-install-update-via-portal/azupdate1m.png) 
+    ![Son olarak, MySSDevManager Device Manager vurgulanır ve seçilir, cihazlar vurgulanır ve seçilir ve cihaz MYSSIS1103 vurgulanır ve seçilir.](../includes/media/storsimple-virtual-array-install-update-via-portal/azupdate1m.png) 
 
 2. **Ayarlar** dikey penceresinde **Cihaz güncelleştirmeleri**'ne tıklayın. 
 
@@ -33,7 +33,7 @@ ms.locfileid: "95555739"
 
     ![Cihaz güncelleştirmeleri bölmesi "yeni güncelleştirmeler var" ve "son tarama/11/3/2016 2:12 PM/yazılım sürümü/10.0.10280.0" diyor. Sürüm vurgulanır.](../includes/media/storsimple-virtual-array-install-update-via-portal/azupdate6m.png)
 
-5. **Yeni güncelleştirmeler** dikey penceresinde güncelleştirmeler indirildikten sonra bilgileri gözden geçirin; yüklemeyi onaylamanız gerekir. **Tamam** düğmesine tıklayın.
+5. **Yeni güncelleştirmeler** dikey penceresinde güncelleştirmeler indirildikten sonra bilgileri gözden geçirin; yüklemeyi onaylamanız gerekir. **Tamam**'a tıklayın.
 
     ![Yeni güncelleştirmeler bölmesi "Güncelleştirmeler indirildikten sonra, yüklemeyi onaylamanız gerekecektir" ifadesini görürsünüz. Tamam düğmesi vurgulanır.](../includes/media/storsimple-virtual-array-install-update-via-portal/azupdate7m.png)
 

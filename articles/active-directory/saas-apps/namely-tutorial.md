@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/04/2019
 ms.author: jeedes
 ms.openlocfilehash: bafec2c1b857d3220089e2ca41190987de33edb6
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92519532"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-namely"></a>Öğretici: Bu şekilde Azure Active Directory tümleştirme
@@ -67,7 +67,7 @@ Bu özelliği Azure AD 'ye göre yapılandırmak için, Galeriden yönetilen Saa
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-Bu bölümde, Azure AD çoklu oturum açmayı, yani **Britta Simon**adlı bir test kullanıcısına göre yapılandırır ve test edersiniz.
+Bu bölümde, Azure AD çoklu oturum açmayı, yani **Britta Simon** adlı bir test kullanıcısına göre yapılandırır ve test edersiniz.
 Çoklu oturum açma için, bir Azure AD kullanıcısı ve içindeki ilgili Kullanıcı arasındaki bağlantı ilişkisinin oluşturulması gerekir.
 
 Azure AD çoklu oturum açmayı bu şekilde yapılandırmak ve test etmek için aşağıdaki yapı taşlarını gerçekleştirmeniz gerekir:
@@ -144,7 +144,7 @@ Azure AD çoklu oturum açmayı bu şekilde yapılandırmak için aşağıdaki a
  
     a. **SAML etkinleştir**' e tıklayın. 
 
-    b. **Kimlik sağlayıcısı SSO URL** metin kutusuna, Azure Portal kopyaladığınız **oturum açma URL 'si**değerini yapıştırın.
+    b. **Kimlik sağlayıcısı SSO URL** metin kutusuna, Azure Portal kopyaladığınız **oturum açma URL 'si** değerini yapıştırın.
     
     c. İndirilen sertifikanızı Not defteri 'nde açın, içeriği kopyalayın ve ardından **kimlik sağlayıcısı sertifikası** metin kutusuna yapıştırın.
      
@@ -166,9 +166,9 @@ Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı ol
 
     ![Kullanıcı iletişim kutusu](common/user-properties.png)
 
-    a. **Ad** alanına **Brittasıon**girin.
+    a. **Ad** alanına **Brittasıon** girin.
   
-    b. **Kullanıcı adı** alanına ** \@ bricompansıon yourcompanydomain. Extension** yazın  
+    b. **Kullanıcı adı** alanına **\@ bricompansıon yourcompanydomain. Extension** yazın  
     Örneğin, BrittaSimon@contoso.com
 
     c. **Parolayı göster** onay kutusunu seçin ve ardından parola kutusunda görüntülenen değeri yazın.
@@ -179,7 +179,7 @@ Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı ol
 
 Bu bölümde, buna erişim vererek Azure çoklu oturum açma özelliğini kullanmak için Britta Simon ' u etkinleştirin.
 
-1. Azure portal **Kurumsal uygulamalar**' ı seçin, **tüm uygulamalar**' **ı seçin ve**ardından şunu seçin.
+1. Azure portal **Kurumsal uygulamalar**' ı seçin, **tüm uygulamalar**' **ı seçin ve** ardından şunu seçin.
 
     ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
@@ -223,9 +223,9 @@ Bu bölümün amacı, ' de Britta Simon adlı bir Kullanıcı oluşturmaktır.
 
 5. **Yeni kişi ekle** iletişim kutusunda aşağıdaki adımları gerçekleştirin:
 
-    a. **İlk ad** metin kutusuna **Britta**yazın.
+    a. **İlk ad** metin kutusuna **Britta** yazın.
 
-    b. **Soyadı** metin kutusuna **Simon**yazın.
+    b. **Soyadı** metin kutusuna **Simon** yazın.
 
     c. **E-posta** metin kutusunda Brittasıon **e-posta adresini** yazın.
 

@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/14/2019
 ms.author: jeedes
 ms.openlocfilehash: fc6b90be8e951c0e30c99d0bb16f85e49cf991f2
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92522334"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-orgchart-now"></a>Öğretici: artık kuruluş şemasına tümleştirme Azure Active Directory
@@ -61,13 +61,13 @@ Kuruluş şemasının tümleştirmesini şimdi Azure AD ile yapılandırmak içi
 
     ![Yeni uygulama düğmesi](common/add-new-app.png)
 
-4. Arama kutusuna **Şimdi kuruluş şeması**yazın, sonuç panelinden **kuruluş şeması** ' nı seçin, sonra da uygulamayı eklemek için düğme **Ekle** ' ye tıklayın.
+4. Arama kutusuna **Şimdi kuruluş şeması** yazın, sonuç panelinden **kuruluş şeması** ' nı seçin, sonra da uygulamayı eklemek için düğme **Ekle** ' ye tıklayın.
 
      ![Artık sonuçlar listesinde kuruluş şeması](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-Bu bölümde, Azure AD çoklu oturum açma 'yı artık **Britta Simon**adlı bir test kullanıcısına bağlı olarak, kuruluş şemasına yapılandırıp test edersiniz.
+Bu bölümde, Azure AD çoklu oturum açma 'yı artık **Britta Simon** adlı bir test kullanıcısına bağlı olarak, kuruluş şemasına yapılandırıp test edersiniz.
 Çoklu oturum açma için, bir Azure AD kullanıcısı ile ilgili kullanıcının kuruluş şemasına ait bağlantı ilişkisinin artık kurulması gerekir.
 
 Azure AD çoklu oturum açma 'yı kuruluş şemasına göre yapılandırmak ve test etmek için şu yapı taşlarını gerçekleştirmeniz gerekir:
@@ -146,9 +146,9 @@ Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı ol
 
     ![Kullanıcı iletişim kutusu](common/user-properties.png)
 
-    a. **Ad** alanına **Brittasıon**girin.
+    a. **Ad** alanına **Brittasıon** girin.
   
-    b. **Kullanıcı adı** alan türü**brittasimon@yourcompanydomain.extension**  
+    b. **Kullanıcı adı** alan türü **brittasimon@yourcompanydomain.extension**  
     Örneğin, BrittaSimon@contoso.com
 
     c. **Parolayı göster** onay kutusunu seçin ve ardından parola kutusunda görüntülenen değeri yazın.
@@ -215,9 +215,9 @@ Azure AD kullanıcılarının şu anda kuruluş şemasına oturum açmasını sa
 
     ![Kuruluş şeması artık yönetme](./media/orgchartnow-tutorial/tutorial_orgchartnow_manageusers.png)
 
-    * **Kullanıcı kimliği** metin kutusunda, **brittasıon \@ contoso.com**gibi kullanıcı kimliğini girin.
+    * **Kullanıcı kimliği** metin kutusunda, **brittasıon \@ contoso.com** gibi kullanıcı kimliğini girin.
 
-    * **E-posta adresi** metin kutusuna, **brittasıon \@ contoso.com**gibi kullanıcının e-postasını girin.
+    * **E-posta adresi** metin kutusuna, **brittasıon \@ contoso.com** gibi kullanıcının e-postasını girin.
 
     * **Ekle**'ye tıklayın.
 

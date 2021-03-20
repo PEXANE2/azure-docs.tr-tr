@@ -4,10 +4,10 @@ description: Bu makalede, Azure Service Bus varlıklara (kuyruklar, konular vb.)
 ms.topic: conceptual
 ms.date: 06/23/2020
 ms.openlocfilehash: c4e19c0ab26d491ba0b95159e274383431aefaee
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92518237"
 ---
 # <a name="authenticate-and-authorize-an-application-with-azure-active-directory-to-access-azure-service-bus-entities"></a>Azure Service Bus varlıklara erişmek için Azure Active Directory ile bir uygulamanın kimliğini doğrulama ve yetkilendirme
@@ -43,7 +43,7 @@ Güvenlik sorumlusuna bir Azure rolü atamadan önce, güvenlik sorumlusunun sah
 
 Aşağıdaki listede, en dar kapsamdan başlayarak Service Bus kaynaklarına erişimi kapsamındaki düzeyler açıklanmaktadır:
 
-- **Kuyruk**, **Konu**veya **abonelik**: rol ataması, belirli Service Bus varlığı için geçerlidir. Şu anda Azure portal, Kullanıcı/Grup/yönetilen kimliklerin abonelik düzeyinde Service Bus Azure rollerine atanmasını desteklemez. 
+- **Kuyruk**, **Konu** veya **abonelik**: rol ataması, belirli Service Bus varlığı için geçerlidir. Şu anda Azure portal, Kullanıcı/Grup/yönetilen kimliklerin abonelik düzeyinde Service Bus Azure rollerine atanmasını desteklemez. 
 - **Service Bus ad alanı**: rol ataması, ad alanı altındaki tüm Service Bus topolojisini ve onunla ilişkili tüketici grubunu kapsar.
 - **Kaynak grubu**: rol atama, kaynak grubu altındaki tüm Service Bus kaynaklarına uygulanır.
 - **Abonelik**: rol ataması, abonelikteki tüm kaynak gruplarındaki tüm Service Bus kaynaklara uygulanır.
@@ -98,7 +98,7 @@ Aşağıdaki görüntüler, bir Web uygulamasını kaydetme adımlarını göste
 > [!Note]
 > Uygulamanızı yerel bir uygulama olarak kaydettiğinizde, yeniden yönlendirme URI 'SI için geçerli bir URI belirtebilirsiniz. Yerel uygulamalar için, bu değerin gerçek bir URL olması gerekmez. Web uygulamaları için, yeniden yönlendirme URI 'si, belirteçlerin sağlandığı URL 'YI belirttiğinden geçerli bir URI olmalıdır.
 
-Uygulamanızı kaydettikten sonra **Ayarlar**altında **uygulama (istemci) kimliğini** görürsünüz:
+Uygulamanızı kaydettikten sonra **Ayarlar** altında **uygulama (istemci) kimliğini** görürsünüz:
 
 ![Kayıtlı uygulamanın uygulama KIMLIĞI](./media/authenticate-application/application-id.png)
 
@@ -112,7 +112,7 @@ Uygulamanın bir belirteç istenirken kimliğini kanıtlamak için bir istemci p
 
 1. Zaten sayfada değilseniz Azure portal uygulama kaydınız ' ne gidin.
 1. Sol menüdeki **sertifikalar & gizli** dizileri ' ni seçin.
-1. **İstemci**gizli dizileri altında yeni bir gizli dizi oluşturmak için **yeni istemci parolası** ' nı seçin.
+1. **İstemci** gizli dizileri altında yeni bir gizli dizi oluşturmak için **yeni istemci parolası** ' nı seçin.
 
     ![Yeni istemci gizli anahtarı-düğme](./media/authenticate-application/new-client-secret-button.png)
 1. Gizli dizi için bir açıklama girin ve istenen süre sonu aralığını seçin ve ardından **Ekle**' yi seçin.

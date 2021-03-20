@@ -10,10 +10,10 @@ ms.date: 10/20/2020
 ms.author: rohink
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: 1929cd512d18d7fd234aff1f55814c423455e63b
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94561378"
 ---
 # <a name="quickstart-create-an-azure-dns-zone-and-record-using-azure-cli"></a>Hızlı başlangıç: Azure CLI kullanarak Azure DNS bölgesi ve kaydı oluşturma
@@ -42,7 +42,7 @@ az group create --name MyResourceGroup --location "East US"
 
 DNS bölgesi, `az network dns zone create` komutu kullanılarak oluşturulur. Bu komutla ilgili yardım içeriğini görmek için `az network dns zone create -h` yazın.
 
-Aşağıdaki örnek, *Myresourcegroup* kaynak grubunda *contoso. xyz* adlı bir DNS bölgesi oluşturur. Değerleri kendinizinkilerle değiştirerek DNS bölgesini oluşturmak için örneği kullanın.
+Aşağıdaki örnek, *Myresourcegroup* kaynak grubunda *contoso.xyz* adlı bir DNS bölgesi oluşturur. Değerleri kendinizinkilerle değiştirerek DNS bölgesini oluşturmak için örneği kullanın.
 
 ```azurecli
 az network dns zone create -g MyResourceGroup -n contoso.xyz
@@ -52,7 +52,7 @@ az network dns zone create -g MyResourceGroup -n contoso.xyz
 
 DNS kaydı oluşturmak için `az network dns record-set [record type] add-record` komutunu kullanın. A kayıtları hakkında yardım için bkz. `azure network dns record-set A add-record -h`.
 
-Aşağıdaki örnek, "MyResourceGroup" kaynak grubundaki "contoso. xyz" DNS bölgesinde "www" göreli adına sahip bir kayıt oluşturur. Kayıt kümesinin tam adı "www. contoso. xyz" dir. Kayıt türü "A", IP adresi "10.10.10.10" ve varsayılan TTL 3600 saniyedir (1 saat).
+Aşağıdaki örnek, "MyResourceGroup" kaynak grubunda "contoso.xyz" DNS bölgesinde "www" göreli adına sahip bir kayıt oluşturur. Kayıt kümesinin tam adı "www.contoso.xyz" dir. Kayıt türü "A", IP adresi "10.10.10.10" ve varsayılan TTL 3600 saniyedir (1 saat).
 
 ```azurecli
 az network dns record-set a add-record -g MyResourceGroup -z contoso.xyz -n www -a 10.10.10.10
@@ -96,7 +96,7 @@ Test ' A ' kaydıyla bir test DNS bölgesine sahip olduğunuza göre, ad çözü
 
    ![Ekran görüntüsü, bir n s arama komutu ve sunucu, adres, ad ve adres değerlerini içeren bir komut istemi penceresi gösterir.](media/dns-getstarted-portal/nslookup.PNG)
 
-**Www \. contoso. xyz** ana bilgisayar adı, yalnızca yapılandırdığınız gibi **10.10.10.10** olarak çözümlenir. Bu sonuç, ad çözümlemenin doğru çalıştığını doğrular.
+**Www \. contoso.xyz** ana bilgisayar adı, yalnızca yapılandırdığınız gibi **10.10.10.10** olarak çözümlenir. Bu sonuç, ad çözümlemenin doğru çalıştığını doğrular.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 

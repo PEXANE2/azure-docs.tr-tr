@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 12/10/2019
 ms.author: rohogue
 ms.openlocfilehash: 5cc4678b082aa5a4a3f90518ff8fac448f414f1a
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92342255"
 ---
 # <a name="disaster-recovery-guidance-for-avere-vfxt-for-azure"></a>Azure için avere vFXT için olağanüstü durum kurtarma Kılavuzu
@@ -108,7 +108,7 @@ Azure kümesi için bir avere vFXT 'den yedekleme kapsayıcısına erişmek içi
 
 1. Yinelenen blob kapsayıcısına işaret eden yeni bir bulut çekirdeği ekleyin.
 
-   Hedef kapsayıcının, çekirdek filme oluşturma sihirbazının **demet içeriği** ayarında verileri zaten içerdiğini belirttiğinizden emin olun. (Bu kümeyi yanlışlıkla **boş**bırakırsanız, sistem sizi uyarır.)  <!-- you can't add a populated volume at cluster creation time via template, only create a fresh one -->
+   Hedef kapsayıcının, çekirdek filme oluşturma sihirbazının **demet içeriği** ayarında verileri zaten içerdiğini belirttiğinizden emin olun. (Bu kümeyi yanlışlıkla **boş** bırakırsanız, sistem sizi uyarır.)  <!-- you can't add a populated volume at cluster creation time via template, only create a fresh one -->
 
 1. Gerekirse, istemcileri yeni kümeyi veya orijinal yerine yeni çekirdek fili taktikleri şekilde güncelleştirin. (Yeni kümeyi yeni bir IP adresine bağlamanız gerekmiyorsa, önceki çekirdek Filini özgün kapsayıcının aynı adı ve birleşim yoluyla eklerseniz, istemci süreçlerini güncelleştirmeniz gerekmez.)
 

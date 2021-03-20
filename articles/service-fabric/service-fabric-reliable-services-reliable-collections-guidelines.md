@@ -4,10 +4,10 @@ description: Azure Service Fabric uygulamasında güvenilir Service Fabric kolek
 ms.topic: conceptual
 ms.date: 03/10/2020
 ms.openlocfilehash: f12db76f324d07c178b49150d4e574476e7d9929
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/26/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98784334"
 ---
 # <a name="guidelines-and-recommendations-for-reliable-collections-in-azure-service-fabric"></a>Azure Service Fabric güvenilir koleksiyonlar için yönergeler ve öneriler
@@ -58,7 +58,7 @@ Geçici güvenilir koleksiyonları kullanmaya karar verirken aşağıdakileri g�
 * [Güvenilir Koleksiyonlar ile çalışma](service-fabric-work-with-reliable-collections.md)
 * [İşlemler ve kilitler](service-fabric-reliable-services-reliable-collections-transactions-locks.md)
 * Verileri yönetme
-  * [Yedekleme ve Geri Yükleme](service-fabric-reliable-services-backup-restore.md)
+  * [Yedekleme ve geri yükleme](service-fabric-reliable-services-backup-restore.md)
   * [Bildirimler](service-fabric-reliable-services-notifications.md)
   * [Serileştirme ve yükseltme](service-fabric-application-upgrade-data-serialization.md)
   * [Güvenilir durum Yöneticisi yapılandırması](service-fabric-reliable-services-configuration.md)

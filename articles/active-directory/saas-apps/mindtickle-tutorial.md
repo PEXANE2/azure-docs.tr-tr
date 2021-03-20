@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 01/23/2019
 ms.author: jeedes
 ms.openlocfilehash: db2cfc8ba0389f98d6f9407d7b4a31612e28b46a
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92519019"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mindtickle"></a>Öğretici: Mindtickiyle tümleştirme Azure Active Directory
@@ -63,13 +63,13 @@ Mindticbir Azure AD ile tümleştirmeyi yapılandırmak için, Galeriden, yönet
 
     ![Yeni uygulama düğmesi](common/add-new-app.png)
 
-4. Arama kutusuna **mindtickalıbı**yazın, sonuç panelinden **mindtickalıbı** ' ı seçin ve sonra uygulamayı eklemek için **Ekle** düğmesine tıklayın.
+4. Arama kutusuna **mindtickalıbı** yazın, sonuç panelinden **mindtickalıbı** ' ı seçin ve sonra uygulamayı eklemek için **Ekle** düğmesine tıklayın.
 
      ![Sonuçlar listesinde bir mini](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-Bu bölümde, Azure AD çoklu oturum açmayı, **Britta Simon**adlı bir test kullanıcısına göre Mindticle yapılandırıp test edersiniz.
+Bu bölümde, Azure AD çoklu oturum açmayı, **Britta Simon** adlı bir test kullanıcısına göre Mindticle yapılandırıp test edersiniz.
 Çoklu oturum açma 'nın çalışması için, bir Azure AD kullanıcısı ile ilgili Kullanıcı arasındaki bir bağlantı ilişkisinin oluşturulması gerekir.
 
 Azure AD çoklu oturum açma 'yı mini kullanarak yapılandırmak ve test etmek için aşağıdaki yapı taşlarını gerçekleştirmeniz gerekir:
@@ -99,7 +99,7 @@ Azure AD çoklu oturum açma 'yı mini kullanarak yapılandırmak için aşağı
 
     ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
 
-4. **Temel SAML yapılandırması** bölümünde, **hizmet sağlayıcısı meta verileri dosyanız**varsa, aşağıdaki adımları uygulayın:
+4. **Temel SAML yapılandırması** bölümünde, **hizmet sağlayıcısı meta verileri dosyanız** varsa, aşağıdaki adımları uygulayın:
 
     a. **Meta veri dosyasını karşıya yükle**' ye tıklayın.
 
@@ -152,9 +152,9 @@ Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı ol
 
     ![Kullanıcı iletişim kutusu](common/user-properties.png)
 
-    a. **Ad** alanına **Brittasıon**girin.
+    a. **Ad** alanına **Brittasıon** girin.
   
-    b. **Kullanıcı adı** alanına ** \@ bricompansıon yourcompanydomain. Extension** yazın  
+    b. **Kullanıcı adı** alanına **\@ bricompansıon yourcompanydomain. Extension** yazın  
     Örneğin, BrittaSimon@contoso.com
 
     c. **Parolayı göster** onay kutusunu seçin ve ardından parola kutusunda görüntülenen değeri yazın.
@@ -189,7 +189,7 @@ Bu bölümde, mini erişim izni vererek Azure çoklu oturum açma özelliğini k
 
 ### <a name="create-mindtickle-test-user"></a>Mini test kullanıcısı oluştur
 
-Bu bölümde, Britta Simon adlı bir Kullanıcı, Mindticte oluşturulur. Mindticu, varsayılan olarak etkinleştirilen **tam zamanında Kullanıcı sağlamayı**destekler. Bu bölümde sizin için herhangi bir eylem öğesi yok. Kullanıcı zaten Mindticde yoksa, kimlik doğrulamasından sonra yeni bir tane oluşturulur.
+Bu bölümde, Britta Simon adlı bir Kullanıcı, Mindticte oluşturulur. Mindticu, varsayılan olarak etkinleştirilen **tam zamanında Kullanıcı sağlamayı** destekler. Bu bölümde sizin için herhangi bir eylem öğesi yok. Kullanıcı zaten Mindticde yoksa, kimlik doğrulamasından sonra yeni bir tane oluşturulur.
 
 ### <a name="test-single-sign-on"></a>Çoklu oturum açma testi 
 

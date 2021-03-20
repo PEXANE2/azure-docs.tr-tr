@@ -7,23 +7,23 @@ ms.reviewer: klam, logicappspm
 ms.date: 10/03/2018
 ms.topic: article
 ms.openlocfilehash: 95b5cc191ac6857bf8e1b09e70b22d928473fe03
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92314853"
 ---
 # <a name="run-actions-based-on-group-status-by-using-scopes-in-azure-logic-apps"></a>Azure Logic Apps kapsamları kullanarak Grup durumuna göre eylemleri çalıştırma
 
-Eylemleri yalnızca başka bir eylem grubu başarılı veya başarısız olduktan sonra çalıştırmak için, bu eylemleri bir *kapsam*içinde gruplandırın. Bu yapı, eylemleri mantıksal grup olarak düzenlemek, grubun durumunu değerlendirmek ve kapsamın durumunu temel alan eylemler gerçekleştirmek istediğinizde yararlıdır. Bir kapsamdaki tüm eylemler çalışmayı bitirdikten sonra, kapsam de kendi durumunu alır. Örneğin, [özel durum ve hata işlemeyi](../logic-apps/logic-apps-exception-handling.md#scopes)uygulamak istediğinizde kapsamları kullanabilirsiniz. 
+Eylemleri yalnızca başka bir eylem grubu başarılı veya başarısız olduktan sonra çalıştırmak için, bu eylemleri bir *kapsam* içinde gruplandırın. Bu yapı, eylemleri mantıksal grup olarak düzenlemek, grubun durumunu değerlendirmek ve kapsamın durumunu temel alan eylemler gerçekleştirmek istediğinizde yararlıdır. Bir kapsamdaki tüm eylemler çalışmayı bitirdikten sonra, kapsam de kendi durumunu alır. Örneğin, [özel durum ve hata işlemeyi](../logic-apps/logic-apps-exception-handling.md#scopes)uygulamak istediğinizde kapsamları kullanabilirsiniz. 
 
-Bir kapsamın durumunu denetlemek için, bir Logic Apps 'in çalışma durumunu ( **başarılı**, **başarısız**, **iptal edildi**vb.) belirlemede kullandığınız ölçütü kullanabilirsiniz. Varsayılan olarak, tüm kapsamın eylemleri başarılı olduğunda, kapsamın durumu **başarılı**olarak işaretlenir. Ancak kapsamdaki herhangi bir eylem başarısız olduğunda veya iptal edildiğinde, kapsamın durumu **başarısız**olarak işaretlenir. Kapsamlar için sınırlar [ve yapılandırma](../logic-apps/logic-apps-limits-and-config.md)konusuna bakın. 
+Bir kapsamın durumunu denetlemek için, bir Logic Apps 'in çalışma durumunu ( **başarılı**, **başarısız**, **iptal edildi** vb.) belirlemede kullandığınız ölçütü kullanabilirsiniz. Varsayılan olarak, tüm kapsamın eylemleri başarılı olduğunda, kapsamın durumu **başarılı** olarak işaretlenir. Ancak kapsamdaki herhangi bir eylem başarısız olduğunda veya iptal edildiğinde, kapsamın durumu **başarısız** olarak işaretlenir. Kapsamlar için sınırlar [ve yapılandırma](../logic-apps/logic-apps-limits-and-config.md)konusuna bakın. 
 
 Örneğin, aşağıda belirli eylemleri çalıştırmak için bir kapsam ve kapsamın durumunu denetlemek için bir koşul kullanan üst düzey bir mantıksal uygulama verilmiştir. Kapsamdaki herhangi bir eylem başarısız olursa veya beklenmedik şekilde sona bırakılırsa, kapsam sırasıyla **başarısız** veya **iptal edildi** olarak işaretlenir ve mantıksal uygulama "kapsam başarısız oldu" iletisi gönderir. Tüm kapsamlı eylemler başarılı olursa, mantıksal uygulama "kapsam başarılı oldu" iletisi gönderir.
 
 ![Diyagram mantıksal uygulama kapsamı akışını "scope failed" ve "scope Succeeded" örnekleri ile gösterir.](./media/logic-apps-control-flow-run-steps-group-scopes/scope-high-level.png)
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu makaledeki örneği takip etmek için şu öğelere ihtiyacınız vardır:
 
@@ -78,7 +78,7 @@ Mantıksal uygulamanızı dilediğiniz zaman kaydedebilirsiniz, bu nedenle işin
       | **Güzergah noktası 1** | <*başından*> | Yol başlangıcının kaynağını girin. | 
       | **Güzergah noktası 2** | <*erer*> | Yolun hedefini girin. | 
       | **Önleme** | Yok | Yollarınızın önüne geçmek için, otoyollar, Tolls gibi öğeleri girin. Olası değerler için bkz. [Rota hesaplama](/bingmaps/rest-services/routes/calculate-a-route). | 
-      | **İyileştirme** | timeWithTraffic | Rotayı iyileştirmek için bir parametre seçin (uzaklık, geçerli trafik bilgileriyle zaman vb.). Bu örnek şu değeri kullanır: "timeWithTraffic" | 
+      | **Getirileceğini** | timeWithTraffic | Rotayı iyileştirmek için bir parametre seçin (uzaklık, geçerli trafik bilgileriyle zaman vb.). Bu örnek şu değeri kullanır: "timeWithTraffic" | 
       | **Mesafe birimi** | <*tercih edin*> | Rotayı hesaplamak için mesafe birimini girin. Bu örnek şu değeri kullanır: "mil" | 
       | **Seyahat modu** | Sürüş | Yönlendirmenize ait seyahat modunu girin. Bu örnekte bu değer "Itici" kullanılmaktadır | 
       | **Toplu Ulaşım Tarih-Saati** | Yok | Yalnızca aktarım modu için geçerlidir. | 
@@ -130,7 +130,7 @@ Mantıksal uygulamanızı dilediğiniz zaman kaydedebilirsiniz, bu nedenle işin
 
       !["Trafik süresi trafiği" ni seçin](./media/logic-apps-control-flow-run-steps-group-scopes/send-email-2.png)
 
-   1. Alan JSON biçimine çözümlendikten sonra, **comma** ```,``` ```60``` **trafik süresi trafiğinden** saniyeler arasında bir değer dönüştürmeniz için sayının ardından bir virgül () ekleyin. 
+   1. Alan JSON biçimine çözümlendikten sonra,  ```,``` ```60``` **trafik süresi trafiğinden** saniyeler arasında bir değer dönüştürmeniz için sayının ardından bir virgül () ekleyin. 
    
       ```
       div(body('Get_route')?['travelDurationTraffic'],60)
@@ -161,7 +161,7 @@ Ardından, belirli eylemleri gruplandırabilmeniz ve durumlarını değerlendire
 1. İş akışı konumuna istediğiniz kapsamı ekleyin. Örneğin, mantıksal uygulama iş akışındaki mevcut adımlar arasında bir kapsam eklemek için aşağıdaki adımları izleyin: 
 
    1. İşaretçinizi, kapsamı eklemek istediğiniz oka taşıyın. 
-   Eylem eklemek > **artı işaretini** ( **+** ) **Add an action**seçin.
+   Eylem eklemek > **artı işaretini** ( **+** ) seçin.
 
       ![Kapsam Ekle](./media/logic-apps-control-flow-run-steps-group-scopes/add-scope.png)
 
@@ -209,7 +209,7 @@ Ardından, belirli eylemleri gruplandırabilmeniz ve durumlarını değerlendire
 
       ![' RunAfter ' özelliğini yapılandır](./media/logic-apps-control-flow-run-steps-group-scopes/configure-run-after.png)
 
-   1. Tüm bu kapsam durumlarını seçin: **başarılı**, **başarısız oldu**, **atlandı**ve **zaman aşımına uğradı**
+   1. Tüm bu kapsam durumlarını seçin: **başarılı**, **başarısız oldu**, **atlandı** ve **zaman aşımına uğradı**
 
       ![Kapsam durumlarını seçin](./media/logic-apps-control-flow-run-steps-group-scopes/select-run-after-statuses.png)
 
@@ -386,7 +386,7 @@ Kod görünümünde çalışıyorsanız, bunun yerine mantıksal uygulamanızın
 },
 ```
 
-## <a name="get-support"></a>Destek alma
+## <a name="get-support"></a>Destek alın
 
 * Sorular için, [Azure Logic Apps Için Microsoft Q&soru sayfasını](/answers/topics/azure-logic-apps.html)ziyaret edin.
 * Özellikleri ve önerileri göndermek veya Oylamak için [Azure Logic Apps kullanıcı geri bildirim sitesini](https://aka.ms/logicapps-wish)ziyaret edin.

@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: jeedes
 ms.openlocfilehash: c522f5f194adae793f0676b24f95abc98dd89010
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92520165"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-workrite"></a>Öğretici: Iş ile Azure Active Directory tümleştirme
@@ -61,13 +61,13 @@ Iş için Azure AD 'ye tümleştirmeyi yapılandırmak için, galerinizden yöne
 
     ![Yeni uygulama düğmesi](common/add-new-app.png)
 
-4. Arama kutusuna **Workrite**yazın, sonuç panelinden **Workrite** ' ı seçin ve ardından **Ekle** düğmesine tıklayarak uygulamayı ekleyin.
+4. Arama kutusuna **Workrite** yazın, sonuç panelinden **Workrite** ' ı seçin ve ardından **Ekle** düğmesine tıklayarak uygulamayı ekleyin.
 
      ![Sonuç listesinde çalışma](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-Bu bölümde, Azure AD çoklu oturum açmayı, **Britta Simon**adlı bir test kullanıcısına göre iş ile yapılandırıp test edersiniz.
+Bu bölümde, Azure AD çoklu oturum açmayı, **Britta Simon** adlı bir test kullanıcısına göre iş ile yapılandırıp test edersiniz.
 Çoklu oturum açma için, bir Azure AD kullanıcısı ile ilgili Kullanıcı arasındaki bir bağlantı ilişkisinin oluşturulması gerekir.
 
 Azure AD çoklu oturum açmayı Iş için yapılandırmak ve test etmek için aşağıdaki yapı taşlarını gerçekleştirmeniz gerekir:
@@ -140,7 +140,7 @@ Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı ol
 
     ![Kullanıcı iletişim kutusu](common/user-properties.png)
 
-    a. **Ad** alanına **Brittasıon**girin.
+    a. **Ad** alanına **Brittasıon** girin.
   
     b. **Kullanıcı adı** alanına yazın brittasimon@yourcompanydomain.extension . Örneğin, BrittaSimon@contoso.com
 
@@ -152,7 +152,7 @@ Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı ol
 
 Bu bölümde, Azure çoklu oturum açma özelliğini kullanarak Iş için erişim izni vererek Britta Simon 'u etkinleştirin.
 
-1. Azure portal **Kurumsal uygulamalar**' ı seçin, **tüm uygulamalar**' ı seçin ve ardından **çalışma**alanı ' nı seçin.
+1. Azure portal **Kurumsal uygulamalar**' ı seçin, **tüm uygulamalar**' ı seçin ve ardından **çalışma** alanı ' nı seçin.
 
     ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
@@ -186,7 +186,7 @@ Bu bölümün amacı, çalışma alanında Britta Simon adlı bir Kullanıcı ol
    
     ![Yönetici denetimi][400]
 
-3. Hızlı bağlantılar ' a gidin ve ardından **Kullanıcı Oluştur ' a**tıklayın.
+3. Hızlı bağlantılar ' a gidin ve ardından **Kullanıcı Oluştur ' a** tıklayın.
    
     ![Kullanıcı oluştur bölümü][401]
 
@@ -200,7 +200,7 @@ Bu bölümün amacı, çalışma alanında Britta Simon adlı bir Kullanıcı ol
 
     c. **Soyadı** metin kutusunda, Simon gibi kullanıcının soyadı yazın.
     
-    d. **Rol Seç**olarak **İstemci Yöneticisi** ' ni seçin.
+    d. **Rol Seç** olarak **İstemci Yöneticisi** ' ni seçin.
     
     e. **Kaydet**’e tıklayın.
 

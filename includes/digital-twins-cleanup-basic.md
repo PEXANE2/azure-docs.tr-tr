@@ -6,10 +6,10 @@ ms.topic: include
 ms.date: 2/4/2021
 ms.author: baanders
 ms.openlocfilehash: 9a02c4f5c5699b4a6308bfaa519fa9eb776414d6
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102244740"
 ---
 * **Bu öğreticide oluşturduğunuz kaynakların hiçbirine ihtiyacınız** yoksa, [az Group Delete](/cli/azure/group#az-group-delete) komutuyla bu makaledeki Azure dijital TWINS örneğini ve diğer tüm kaynakları silebilirsiniz. Bu, kaynak grubunun yanı sıra kaynak grubundaki tüm Azure kaynaklarını da siler.

@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: jeedes
 ms.openlocfilehash: 6bf3eccec70619bf73397e315c6d851f753ec52f
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92521841"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-uberflip"></a>Öğretici: Uberflip ile tümleştirme Azure Active Directory
@@ -63,13 +63,13 @@ Uberflip 'ın Azure AD 'ye tümleştirmesini yapılandırmak için, Azure Market
 
    ![Yeni uygulama seçeneği](common/add-new-app.png)
 
-1. Arama kutusuna **Uberflip**yazın. Arama sonuçlarında **Uberflip**' ı seçin ve ardından uygulamayı eklemek için **Ekle** ' yi seçin.
+1. Arama kutusuna **Uberflip** yazın. Arama sonuçlarında **Uberflip**' ı seçin ve ardından uygulamayı eklemek için **Ekle** ' yi seçin.
 
    ![Sonuçlar listesinde uberflip](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-Bu bölümde, **B Simon**adlı bir test kullanıcısına göre Uberflip Ile Azure AD çoklu oturum açmayı yapılandırıp test edersiniz. Çoklu oturum açma için, Uberflip içinde bir Azure AD kullanıcısı ve ilgili Kullanıcı arasında bir bağlantı kurmanız gerekir.
+Bu bölümde, **B Simon** adlı bir test kullanıcısına göre Uberflip Ile Azure AD çoklu oturum açmayı yapılandırıp test edersiniz. Çoklu oturum açma için, Uberflip içinde bir Azure AD kullanıcısı ve ilgili Kullanıcı arasında bir bağlantı kurmanız gerekir.
 
 Uberflip ile Azure AD çoklu oturum açmayı yapılandırmak ve test etmek için aşağıdaki yapı taşlarını gerçekleştirmeniz gerekir:
 
@@ -147,9 +147,9 @@ Bu bölümde, Azure portal B. Simon adlı bir test kullanıcısı oluşturacaks�
 
     ![Kullanıcı bölmesi](common/user-properties.png)
 
-    1. **Ad** kutusuna **bsıon**yazın.
+    1. **Ad** kutusuna **bsıon** yazın.
   
-    1. **Kullanıcı adı** kutusuna **bsıon yazın \@ \<yourcompanydomain> . \<extension> ** Örneğin, **Bsıon \@ contoso.com**.
+    1. **Kullanıcı adı** kutusuna **bsıon yazın \@ \<yourcompanydomain> . \<extension>** Örneğin, **Bsıon \@ contoso.com**.
 
     1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
 
@@ -167,7 +167,7 @@ Bu bölümde, Uberflip erişimine izin vererek Azure çoklu oturum açma özelli
 
     ![Uygulamalar listesinde uberflip](common/all-applications.png)
 
-1. Sol bölmedeki **Yönet**altında **Kullanıcılar ve gruplar**' ı seçin.
+1. Sol bölmedeki **Yönet** altında **Kullanıcılar ve gruplar**' ı seçin.
 
     !["Kullanıcılar ve gruplar" seçeneği](common/users-groups-blade.png)
 

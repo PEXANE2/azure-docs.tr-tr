@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
 ms.openlocfilehash: 314c9d6629c74aa7b593d24d503d195b3401f4e7
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92522147"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-showpad"></a>Öğretici: Showpad ile Azure Active Directory tümleştirme
@@ -62,13 +62,13 @@ Showpad 'in tümleştirmesini Azure AD 'de yapılandırmak için Galeri 'den yö
 
     ![Yeni uygulama düğmesi](common/add-new-app.png)
 
-4. Arama kutusunda, **showpad**yazın, sonuç panelinden **showpad** ' i seçin ve ardından **Ekle** düğmesine tıklayarak uygulamayı ekleyin.
+4. Arama kutusunda, **showpad** yazın, sonuç panelinden **showpad** ' i seçin ve ardından **Ekle** düğmesine tıklayarak uygulamayı ekleyin.
 
     ![Sonuçlar listesinde showpad](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-Bu bölümde, Azure AD çoklu oturum açmayı, **Britta Simon**adlı bir test kullanıcısına göre showpad ile yapılandırıp test edersiniz.
+Bu bölümde, Azure AD çoklu oturum açmayı, **Britta Simon** adlı bir test kullanıcısına göre showpad ile yapılandırıp test edersiniz.
 Çoklu oturum açma için, bir Azure AD kullanıcısı ve Showpad 'teki ilgili Kullanıcı arasındaki bağlantı ilişkisinin oluşturulması gerekir.
 
 Azure AD çoklu oturum açma 'yı Showpanel ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını gerçekleştirmeniz gerekir:
@@ -141,7 +141,7 @@ Azure AD çoklu oturum açmayı Showpanel ile yapılandırmak için aşağıdaki
 
     a. **Ad** metin kutusuna, tanımlayıcı sağlayıcının adını yazın (örneğin, şirketinizin adı).
 
-    b. **Meta veri kaynağı**olarak **XML**' i seçin.
+    b. **Meta veri kaynağı** olarak **XML**' i seçin.
 
     c. Azure portal indirdiğiniz meta veri XML dosyasının içeriğini kopyalayın ve **meta VERI XML** metin kutusuna yapıştırın.
 
@@ -165,7 +165,7 @@ Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı ol
 
     ![Kullanıcı iletişim kutusu](common/user-properties.png)
 
-    a. **Ad** alanına **Brittasıon**girin.
+    a. **Ad** alanına **Brittasıon** girin.
   
     b. **Kullanıcı adı** alan türü`brittasimon@yourcompanydomain.extension`  
     Örneğin, BrittaSimon@contoso.com

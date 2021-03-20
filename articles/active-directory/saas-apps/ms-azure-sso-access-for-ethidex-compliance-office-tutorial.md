@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 09/06/2019
 ms.author: jeedes
 ms.openlocfilehash: 7ef219ca147fe96fc65f14bbf3ba6a565adc95ec
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92520923"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-ms-azure-sso-access-for-ethidex-compliance-office"></a>Öğretici: Ahıdex uyumluluk ofisi için MS Azure SSO erişimi ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory™
@@ -54,7 +54,7 @@ Azure AD 'ye, etmiş x uyumluluk Office™ yönelik MS Azure SSO erişimi tümle
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-ms-azure-sso-access-for-ethidex-compliance-office"></a>Azure AD çoklu oturum açmayı yapılandırma ve test etme, Ahıdex uyumluluk ofisi™ için MS Azure SSO erişimi
 
-**B. Simon**adlı bir test kullanıcısı kullanarak, Azure AD SSO 'Yu Etiidex uyumluluk ofisi™ Için MS Azure SSO erişimiyle yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ile ilgili Kullanıcı arasında, Etax uyumluluk Office™ için MS Azure SSO erişimi arasında bir bağlantı ilişkisi oluşturmanız gerekir.
+**B. Simon** adlı bir test kullanıcısı kullanarak, Azure AD SSO 'Yu Etiidex uyumluluk ofisi™ Için MS Azure SSO erişimiyle yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ile ilgili Kullanıcı arasında, Etax uyumluluk Office™ için MS Azure SSO erişimi arasında bir bağlantı ilişkisi oluşturmanız gerekir.
 
 Azure AD SSO 'yu, Ahıdex uyumluluk Office™ için MS Azure SSO erişimiyle yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
 
@@ -84,7 +84,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
     > [!NOTE]
     > Bu değerler gerçek değildir. Bu değerleri gerçek tanımlayıcı ve yanıt URL 'siyle güncelleştirin. Bu değerleri almak için, [Ahıdex uyumluluk ofisi™ destek ekibine MS Azure SSO erişimi](mailto:support@ethidex.com) ile iletişim kurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
 
-1. MS Azure SSO, etmex uyumluluk ofisi™ uygulama uygulaması, SAML belirteci öznitelikleri yapılandırmanıza özel öznitelik eşlemeleri eklemenizi gerektiren belirli bir biçimde SAML onayları bekliyor. Aşağıdaki ekran görüntüsünde, **NameIdentifier** 'ın **User. UserPrincipalName**ile eşlendiği varsayılan özniteliklerin listesi gösterilmektedir. MS Azure SSO uyumluluk Office™ için Azure SSO erişimi, **NameIdentifier** 'ın **User. Mail**ile eşlenmesini bekliyor, bu nedenle, **Düzenle** simgesine tıklayarak ve öznitelik eşlemesini değiştirerek öznitelik eşlemesini düzenlemeniz gerekir.
+1. MS Azure SSO, etmex uyumluluk ofisi™ uygulama uygulaması, SAML belirteci öznitelikleri yapılandırmanıza özel öznitelik eşlemeleri eklemenizi gerektiren belirli bir biçimde SAML onayları bekliyor. Aşağıdaki ekran görüntüsünde, **NameIdentifier** 'ın **User. UserPrincipalName** ile eşlendiği varsayılan özniteliklerin listesi gösterilmektedir. MS Azure SSO uyumluluk Office™ için Azure SSO erişimi, **NameIdentifier** 'ın **User. Mail** ile eşlenmesini bekliyor, bu nedenle, **Düzenle** simgesine tıklayarak ve öznitelik eşlemesini değiştirerek öznitelik eşlemesini düzenlemeniz gerekir.
 
     ![image](common/edit-attribute.png)
 

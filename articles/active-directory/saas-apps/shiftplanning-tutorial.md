@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 02/15/2019
 ms.author: jeedes
 ms.openlocfilehash: e1099f271291c6d86610237454e08e06b5fe48c7
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92522176"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-humanity"></a>Öğretici: ınsanlarla Azure Active Directory tümleştirme
@@ -61,13 +61,13 @@ Azure AD 'de insanın tümleştirmesini yapılandırmak için, Galeriden yöneti
 
     ![Yeni uygulama düğmesi](common/add-new-app.png)
 
-4. Arama kutusuna **insana**yazın, sonuç panelinden **insanlar** ' ı seçin ve sonra uygulamayı eklemek için **Ekle** düğmesine tıklayın.
+4. Arama kutusuna **insana** yazın, sonuç panelinden **insanlar** ' ı seçin ve sonra uygulamayı eklemek için **Ekle** düğmesine tıklayın.
 
      ![Sonuçlar listesindeki insanlar](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-Bu bölümde, Azure AD çoklu oturum açmayı, **Britta Simon**adlı bir test kullanıcısına göre insanla yapılandırıp test edersiniz.
+Bu bölümde, Azure AD çoklu oturum açmayı, **Britta Simon** adlı bir test kullanıcısına göre insanla yapılandırıp test edersiniz.
 Çoklu oturum açma için, bir Azure AD kullanıcısı ve Insandaki ilgili Kullanıcı arasındaki bağlantı ilişkisinin oluşturulması gerekir.
 
 Azure AD çoklu oturum açma 'yı ınsanla yapılandırmak ve test etmek için aşağıdaki yapı taşlarını gerçekleştirmeniz gerekir:
@@ -129,7 +129,7 @@ Azure AD çoklu oturum açma 'yı ınsanlarla yapılandırmak için aşağıdaki
 2. Üstteki menüden **yönetici**' ye tıklayın.
 
     ![Yönetici](./media/shiftplanning-tutorial/iC786619.png "Yönetici")
-3. **Tümleştirme**altında **Çoklu oturum açma**' ya tıklayın.
+3. **Tümleştirme** altında **Çoklu oturum açma**' ya tıklayın.
 
     ![Ekran görüntüsü, tümleştirme menüsünden Seçili tek Sign-On gösterir.](./media/shiftplanning-tutorial/iC786620.png "Çoklu Oturum Açma")
 
@@ -165,9 +165,9 @@ Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı ol
 
     ![Kullanıcı iletişim kutusu](common/user-properties.png)
 
-    a. **Ad** alanına **Brittasıon**girin.
+    a. **Ad** alanına **Brittasıon** girin.
   
-    b. **Kullanıcı adı** alanına ** \@ bricompansıon yourcompanydomain. Extension** yazın  
+    b. **Kullanıcı adı** alanına **\@ bricompansıon yourcompanydomain. Extension** yazın  
     Örneğin, BrittaSimon@contoso.com
 
     c. **Parolayı göster** onay kutusunu seçin ve ardından parola kutusunda görüntülenen değeri yazın.
@@ -216,7 +216,7 @@ Azure AD kullanıcılarının, ınsanda oturum açmasını sağlamak için, bunl
 
     ![Personeli](./media/shiftplanning-tutorial/ic786623.png "Personeli")
 
-4. **Eylemler**altında, **çalışan Ekle**' ye tıklayın.
+4. **Eylemler** altında, **çalışan Ekle**' ye tıklayın.
 
     ![Çalışan Ekle](./media/shiftplanning-tutorial/iC786624.png "Çalışan Ekle")
 
@@ -224,7 +224,7 @@ Azure AD kullanıcılarının, ınsanda oturum açmasını sağlamak için, bunl
 
     ![Çalışanları Kaydet](./media/shiftplanning-tutorial/iC786625.png "Çalışanları Kaydet")
 
-    a. İlgili metin kutularına sağlamak istediğiniz geçerli bir Azure AD hesabının **adını**, **soyadını**ve **e-postasını** yazın.
+    a. İlgili metin kutularına sağlamak istediğiniz geçerli bir Azure AD hesabının **adını**, **soyadını** ve **e-postasını** yazın.
 
     b. **Çalışanları kaydet**' e tıklayın.
 

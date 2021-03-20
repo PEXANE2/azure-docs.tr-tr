@@ -9,10 +9,10 @@ ms.date: 02/10/2020
 ms.author: sethm
 ms.custom: include file
 ms.openlocfilehash: 7b5034f2163e8478d7ddb7b9271402b094a809d7
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95558305"
 ---
 ## <a name="generate-the-certificate-signing-request-file"></a>Sertifika imzalama istek dosyasını oluşturma
@@ -227,7 +227,7 @@ Bu bölümde,. p12 Push Sertifikası veya belirteç tabanlı kimlik doğrulamas�
 
     ![Azure portal'da APNs sertifikasını yapılandırma](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-apple-config-cert.png)
 
-1. **Kaydet**'i seçin.
+1. **Kaydet**’i seçin.
 
 ### <a name="option-2-using-token-based-authentication"></a>Seçenek 2: belirteç tabanlı kimlik doğrulaması kullanma
 
@@ -240,6 +240,6 @@ Bu bölümde,. p12 Push Sertifikası veya belirteç tabanlı kimlik doğrulamas�
     - **Belirteç** 
 
 1. **Korumalı alan** seçin
-1. **Kaydet**'i seçin. 
+1. **Kaydet**’i seçin. 
 
 Artık Bildirim Hub 'ınızı APNs ile yapılandırdınız. Ayrıca, uygulamanızı kaydetmek ve anında iletme bildirimleri göndermek için bağlantı dizelerine sahip olursunuz.

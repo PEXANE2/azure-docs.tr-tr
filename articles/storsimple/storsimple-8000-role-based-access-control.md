@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 10/11/2017
 ms.author: alkohli
 ms.openlocfilehash: 49c38e23ddbbfe983ff82ad25363c744292d4d69
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92518985"
 ---
 # <a name="azure-role-based-access-control-for-storsimple"></a>StorSimple için Azure rol tabanlı erişim denetimi
@@ -37,7 +37,7 @@ Azure RBAC, rollere göre atanabilir. Roller, ortamdaki kullanılabilir kaynakla
 
 * **Özel roller** -yerleşik roller gereksinimlerinize uygun değilse, StorSimple için Azure özel rolleri oluşturabilirsiniz. Bir Azure özel rolü oluşturmak için, yerleşik bir rolle başlayın, düzenleyin ve sonra ortama geri alın. Rolü indirme ve karşıya yükleme Azure PowerShell ya da Azure CLı kullanılarak yönetilir. Daha fazla bilgi için bkz. [rol tabanlı Access Control için özel roller oluşturma](../role-based-access-control/custom-roles.md).
 
-Azure portal StorSimple cihaz kullanıcısı için kullanılabilen farklı rolleri görüntülemek için, StorSimple Aygıt Yöneticisi hizmetinize gidin ve ardından **erişim denetimi (IAM) > rollere** gidin.
+Azure portal StorSimple cihaz kullanıcısı için kullanılabilen farklı rolleri görüntülemek için, StorSimple Device Manager hizmetinize gidin ve ardından **erişim denetimi (IAM) > rollere** gidin.
 
 
 ## <a name="create-a-custom-role-for-storsimple-infrastructure-administrator"></a>StorSimple altyapı yöneticisi için özel bir rol oluşturma
@@ -58,7 +58,7 @@ Aşağıdaki örnekte, kullanıcıların tüm kaynak kapsamlarını görüntüle
     Get-AzRoleDefinition -Name "Reader" | ConvertTo-Json | Out-File C:\ssrbaccustom.json
     ```
 
-4. JSON dosyasını Visual Studio 'da açın. Tipik bir Azure rolünün üç ana bölümden, **eylemlerden** , **NotActions** ve **astifblescopes** oluştuğunu görürsünüz.
+4. JSON dosyasını Visual Studio 'da açın. Tipik bir Azure rolünün üç ana bölümden, **eylemlerden**, **NotActions** ve **astifblescopes** oluştuğunu görürsünüz.
 
     **Eylem** bölümünde, bu rol için izin verilen tüm işlemler listelenir. Her eylem bir kaynak sağlayıcısından atanır. StorSimple altyapı yöneticisi için `Microsoft.StorSimple` kaynak sağlayıcısını kullanın.
 
@@ -70,7 +70,7 @@ Aşağıdaki örnekte, kullanıcıların tüm kaynak kapsamlarını görüntüle
 
     **NotActions** bölümlerinde, belirli bir Azure rolü için tüm kısıtlı eylemler listelenir. Bu örnekte, hiçbir eylem kısıtlanamaz.
     
-    **Astifblescopes** , abonelik kimlikleri listelenir. Azure rolünün, kullanıldığı açık abonelik KIMLIĞINI içerdiğinden emin olun. Doğru abonelik KIMLIĞI belirtilmemişse, aboneliğinizdeki rolü içeri aktarmaya izin verilmez.
+    **Astifblescopes**, abonelik kimlikleri listelenir. Azure rolünün, kullanıldığı açık abonelik KIMLIĞINI içerdiğinden emin olun. Doğru abonelik KIMLIĞI belirtilmemişse, aboneliğinizdeki rolü içeri aktarmaya izin verilmez.
 
     Önceki hususları göz önünde bulundurarak dosyayı düzenleyin.
 
@@ -185,7 +185,7 @@ Bu rol oluşturulduktan sonra, Azure portal bu rolle ilişkili izinleri görünt
 
 1. Bu rolle ilişkili izinleri görüntülemek için, **StorSimple altyapı yöneticisi > rol > erişim denetimi (IAM)** seçeneğine gidin. Bu roldeki kullanıcıların listesi görüntülenir.
 
-2. Bir StorSimple altyapı yöneticisi kullanıcısı seçip **izinler** ' e tıklayın.
+2. Bir StorSimple altyapı yöneticisi kullanıcısı seçip **izinler**' e tıklayın.
 
     ![StorSimple Infra yönetici rolü için izinleri görüntüleme](./media/storsimple-8000-role-based-access-control/rbac-roles-view-permissions.png)
 

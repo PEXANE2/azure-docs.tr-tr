@@ -9,10 +9,10 @@ ms.date: 07/20/2018
 ms.author: normesta
 ms.reviewer: fryu
 ms.openlocfilehash: 6c1d9b813db15900521968865c1036d53ad53f41
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95544794"
 ---
 # <a name="monitor-and-troubleshoot-a-cloud-storage-application"></a>Bulut depolama uygulamasını izleme ve sorunlarını giderme
@@ -89,7 +89,7 @@ Bu senaryoda, Azure depolama hesabınızla etkileşim kurmak için [Microsoft Me
 
 [Microsoft Message Analyzer](/message-analyzer/installing-and-upgrading-message-analyzer)’ı indirip uygulamayı yükleyin.
 
-Uygulamayı başlatın ve **File**  >  **Open**  >  **diğer dosya kaynaklarından** Dosya Aç ' ı seçin.
+Uygulamayı başlatın ve   >    >  **diğer dosya kaynaklarından** Dosya Aç ' ı seçin.
 
 **Dosya Seçici** iletişim kutusunda **+ Azure Bağlantısı Ekle**’yi seçin. **Depolama hesabı adı** ve **hesap anahtarı** bilgilerinizi girin ve **Tamam**’a tıklayın.
 

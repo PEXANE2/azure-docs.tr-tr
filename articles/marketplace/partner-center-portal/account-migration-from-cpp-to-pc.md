@@ -8,10 +8,10 @@ author: parthpandyaMSFT
 ms.author: parthp
 ms.date: 09/23/2019
 ms.openlocfilehash: 9e9f3b7ea3d99de51b9398bda82b690d2c249a1d
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92520974"
 ---
 # <a name="how-to-migrate-your-account-from-cloud-partner-portal-to-partner-center"></a>Bulut İş Ortağı Portalı Hesabınızı Iş Ortağı Merkezi 'ne geçirme
@@ -76,7 +76,7 @@ Dynamics 365 müşteri katılımı, PowerApps ve Dynamics 365 Işlemler teklifle
 4. Iş Ortağı Merkezi 'nin [anlaşmalar sayfasında](https://partner.microsoft.com/dashboard/account/agreements), **Business Applications ISV eki**'ni gözden geçirdiğinizden ve kabul ettiğinizden emin olun.
 5. Iş Ortağı Merkezi 'nin [Hesap ayarları](https://partner.microsoft.com/dashboard/account/v3/accountsettings/billingprofile)' nda, faturalandırma bilgilerinizin tamamlanmış olduğundan emin olun.
 6. Tekliflerinizin daha önce sertifikalı olması durumunda bile, her yeni ve mevcut teklifi sertifika ve yayın için gönderebilirsiniz.
-    * Sertifika için uygulamanızı ve pazarlama bilgilerini sağlamak dahil bilgi ekranlarını doldurun. **15 ekim 2019 ' ye**kadar **Gönder** (ekranın sağ üst köşesi) seçeneğini belirleyin. Teklifin kullanılabilirliğini etkilememek için bu adımların tamamlanması gerekir.
+    * Sertifika için uygulamanızı ve pazarlama bilgilerini sağlamak dahil bilgi ekranlarını doldurun. **15 ekim 2019 ' ye** kadar **Gönder** (ekranın sağ üst köşesi) seçeneğini belirleyin. Teklifin kullanılabilirliğini etkilememek için bu adımların tamamlanması gerekir.
     * Uygun ise, bu işlem sırasında Premium katmana katılmayı isteyebilirsiniz.
     * Sertifika veya yeniden sertifika, uygulamanızın Business Applications platformumuz en son sürümünü desteklemesini gerektirir.
     * Uygulamanız onaylandığında bir e-posta alacaksınız ve teklifin Microsoft AppSource canlı olarak gitmesini sağlamak için "canlı çalış" seçeneğini belirleyin.

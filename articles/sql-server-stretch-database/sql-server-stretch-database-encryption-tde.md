@@ -15,10 +15,10 @@ ms.reviewer: jroth
 manager: jroth
 ms.custom: seo-lt-2019
 ms.openlocfilehash: b016987162cc8202b7ad28d4dd8e5ab2953469d1
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95024254"
 ---
 # <a name="enable-transparent-data-encryption-tde-for-stretch-database-on-azure"></a>Azure 'da Stretch Database için Saydam Veri Şifrelemesi (TDE) etkinleştir
@@ -38,7 +38,7 @@ Esnetme özellikli bir SQL Server veritabanından geçirilen verileri depolayan 
 1. Veritabanını [Azure Portal](https://portal.azure.com) açın
 2. Veritabanı dikey penceresinde **Ayarlar** düğmesine tıklayın.
 3. Ayarlar dikey penceresi görünür ile Azure portal **Saydam veri şifreleme** seçeneği ![ ekran görüntüsünü seçin. Genel bölümünde, saydam veri şifrelemesi vurgulanacaktır.][1]
-4. **Açık** ayarını seçin ve ardından **Save** 
+4. **Açık** ayarını seçin ve ardından  
     ![ Azure Portal ekran görüntüsünü Kaydet ' i seçerek saydam veri şifrelemesi dikey penceresi görünür. Veri şifreleme açıktır ve Kaydet düğmesi vurgulanır.][2]
 
 ## <a name="disabling-encryption"></a>Şifrelemeyi devre dışı bırakma

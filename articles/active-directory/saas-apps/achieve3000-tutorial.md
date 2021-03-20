@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 10/17/2019
 ms.author: jeedes
 ms.openlocfilehash: 9af00fef9c15ada44a5475bb419387b32b06d139
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92313372"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-achieve3000"></a>Öğretici: Achieve3000 ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
@@ -28,7 +28,7 @@ Bu öğreticide, Achieve3000 'i Azure Active Directory (Azure AD) ile tümleşti
 
 Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](../manage-apps/what-is-single-sign-on.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -57,7 +57,7 @@ Achieve3000 tümleştirmesini Azure AD 'ye göre yapılandırmak için, Galeride
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-achieve3000"></a>Achieve3000 için Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-**B. Simon**adlı bir test kullanıcısı kullanarak Azure AD SSO 'yu Achieve3000 ile yapılandırın ve test edin. SSO 'nun çalışması için, Achieve3000 içinde bir Azure AD kullanıcısı ve ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
+**B. Simon** adlı bir test kullanıcısı kullanarak Azure AD SSO 'yu Achieve3000 ile yapılandırın ve test edin. SSO 'nun çalışması için, Achieve3000 içinde bir Azure AD kullanıcısı ve ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
 
 Azure AD SSO 'yu Achieve3000 ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
 
@@ -93,7 +93,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
 6. Achieve3000 uygulaması, yukarıdakine ek olarak, aşağıda gösterilen SAML yanıtına daha fazla öznitelik geçirilmesini bekler. Bu öznitelikler de önceden doldurulur, ancak gereksiniminize göre bunları gözden geçirebilirsiniz. 
 
-    | Ad |  Kaynak özniteliği|
+    | Name |  Kaynak özniteliği|
     | ---------------| --------- |
     | Studentitıd     | Kullanıcı. Mail |
 
@@ -141,7 +141,7 @@ Bu bölümde, Achieve3000 'e erişim vererek Azure çoklu oturum açma özelliğ
 
 ### <a name="create-achieve3000-test-user"></a>Achieve3000 test kullanıcısı oluştur
 
-Bu bölümde, Achieve3000 içinde B. Simon adlı bir Kullanıcı oluşturacaksınız. Kullanıcıları Achieve3000 platformunda eklemek için [Achieve3000 destek ekibi](https://www.achieve3000.com/contact-us/) ile çalışın. Çoklu oturum açma kullanılmadan önce kullanıcıların oluşturulması ve etkinleştirilmesi gerekir.
+Bu bölümde, Achieve3000 içinde B. Simon adlı bir Kullanıcı oluşturacaksınız. Kullanıcıları Achieve3000 platformunda eklemek için [Achieve3000 destek ekibi](https://www.achieve3000.com/contact-us/) ile çalışın. Çoklu oturum açma kullanılmadan önce kullanıcıların oluşturulması ve etkinleştirilmesi gerekir.
 
 ## <a name="test-sso"></a>Test SSO 'SU 
 

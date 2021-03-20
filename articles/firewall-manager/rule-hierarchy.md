@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 08/26/2020
 ms.author: victorh
 ms.openlocfilehash: 1ba683e3d616f52854f1055dab9b9fe2d389116a
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92331745"
 ---
 # <a name="use-azure-firewall-policy-to-define-a-rule-hierarchy"></a>Bir kural hiyerarşisi tanımlamak için Azure Güvenlik Duvarı ilkesini kullanma
@@ -48,7 +48,7 @@ Uygulama takımlarının her biri için ilkeler oluşturun:
 - Bir veritabanı güvenlik duvarı ilkesi. Veritabanı güvenlik duvarı ilkesi temel güvenlik duvarı ilkesini devralır.
 - Mühendislik güvenlik duvarı ilkesi. Mühendislik güvenlik duvarı ilkesi de temel güvenlik duvarı ilkesini devralır.
 
-:::image type="content" source="media/rule-hierarchy/policy-hierarchy.png" alt-text="Takımlar ve gereksinimler" border="false":::
+:::image type="content" source="media/rule-hierarchy/policy-hierarchy.png" alt-text="İlke hiyerarşisi" border="false":::
 
 ### <a name="create-custom-roles-to-access-the-rule-collection-groups"></a>Kural koleksiyonu gruplarına erişmek için özel roller oluşturma 
 
@@ -97,7 +97,7 @@ Uygulama takımlarının her biri için ilkeler oluşturun:
 
    Açık abonelik kimliklerini girmeniz gerekir, aksi halde rolü aboneliğinize aktaramazsınız.
 7.  **ID**   özellik satırını silin ve **IsCustom**   özelliğini true olarak değiştirin.
-8.  **Ad**   ve **Açıklama**   özelliklerini *azfm kural koleksiyonu grubu yazarı* olarak değiştirme ve *Bu roldeki kullanıcılar güvenlik duvarı ilke kuralı koleksiyon gruplarını düzenleyebilir*
+8.  **Ad**   ve  **Açıklama**   özelliklerini *azfm kural koleksiyonu grubu yazarı* olarak değiştirme ve *Bu roldeki kullanıcılar güvenlik duvarı ilke kuralı koleksiyon gruplarını düzenleyebilir*
 
 JSON dosyanız aşağıdaki örneğe benzer şekilde görünmelidir:
 
@@ -134,9 +134,9 @@ Tüm özel rolleri listelemek için Get-AzRoleDefinition komutunu kullanabilirsi
 
 Ayrıca, Azure portal özel rolleri de görebilirsiniz. Aboneliğinize gidin, **erişim denetimi (IAM)**, **Roller**' i seçin.
 
-:::image type="content" source="media/rule-hierarchy/sales-app-policy.png" alt-text="Takımlar ve gereksinimler":::
+:::image type="content" source="media/rule-hierarchy/sales-app-policy.png" alt-text="SalesAppPolicy":::
 
-:::image type="content" source="media/rule-hierarchy/sales-app-policy-read.png" alt-text="Takımlar ve gereksinimler":::
+:::image type="content" source="media/rule-hierarchy/sales-app-policy-read.png" alt-text="SalesAppPolicy okuma izni":::
 
 Daha fazla bilgi için bkz. [öğretici: Azure PowerShell kullanarak Azure özel rolü oluşturma](../role-based-access-control/tutorial-custom-role-powershell.md).
 
@@ -145,7 +145,7 @@ Daha fazla bilgi için bkz. [öğretici: Azure PowerShell kullanarak Azure özel
 Portalda, AZFM kuralı koleksiyon grubu yazarları rolüne kullanıcı ekleyebilir ve güvenlik duvarı ilkelerine erişim sağlayabilirsiniz.
 
 1. Portalda, uygulama ekibi güvenlik duvarı ilkesini seçin (örneğin, SalesAppPolicy).
-2. **Access Control**seçin.
+2. **Access Control** seçin.
 3. **Rol ataması ekle**’yi seçin.
 4. Role Kullanıcı/Kullanıcı grupları (örneğin, satış ekibi) ekleyin.
 

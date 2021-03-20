@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 07/09/2020
 ms.author: sunasing
 ms.openlocfilehash: f0fbd93e2a5f4e92089e10e75dc17e304ff80bf6
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/01/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93147088"
 ---
 # <a name="weather-partner-integration-with-farmbeats"></a>Farmtempolar ile hava durumu ortağı tümleştirmesi
@@ -117,8 +117,8 @@ Docker programı iki bileşene ihtiyaç duyuyor: Bootstrap ve Job. Program birde
 
 Müşteri, Farmtts 'de Docker kaydını başlattığında önyükleme bileşeni çalıştırılmalıdır. Aşağıdaki bağımsız değişkenler ( `arg1` ve `arg2` ) programa geçirilir:
 
-- **Farmtts API uç noktası** : API Istekleri için farmtts API uç noktası. Bu uç nokta, Farmtts dağıtımına yönelik API çağrıları yapar.
-- **Azure işlevleri URL 'si** : kendi uç noktanız. Bu URL, Farmtts API 'Leri için erişim belirtecinizi sağlar. `GET`Erişim belirtecini getirmek için bu URL 'ye çağrı yapabilirsiniz.
+- **Farmtts API uç noktası**: API Istekleri için farmtts API uç noktası. Bu uç nokta, Farmtts dağıtımına yönelik API çağrıları yapar.
+- **Azure işlevleri URL 'si**: kendi uç noktanız. Bu URL, Farmtts API 'Leri için erişim belirtecinizi sağlar. `GET`Erişim belirtecini getirmek için bu URL 'ye çağrı yapabilirsiniz.
 
 Önyükleme, kullanıcıların Hava durumu verilerini almak için işlerinizi çalıştırması gereken meta verileri oluşturur. Daha fazla bilgi için [başvuru uygulamasına](https://github.com/azurefarmbeats/noaa_docker)bakın. 
 
@@ -127,8 +127,8 @@ Dosyadaki *bootstrap_manifest.js* özelleştirirseniz, başvuru önyükleme prog
  > [!NOTE]
  > [Başvuru uygulamasının](https://github.com/azurefarmbeats/noaa_docker) açıkladığı dosyadaki *bootstrap_manifest.js* güncelleştirirseniz, aşağıdaki meta verileri oluşturmanız gerekmez. Önyükleme programı, gerekli meta verileri oluşturmak için bildirim dosyanızı kullanacaktır.
 
-- /**Dalgalı veri modeli** : dalgalı veri modeli meta verileri hava durumu verilerini temsil eder. Kaynağın sağladığı veri kümelerine karşılık gelir. Örneğin, bir Dailyforebir Simplemodel günde bir kez ortalama sıcaklık, nem ve yağış bilgilerini sağlayabilir. Buna karşılık, bir DailyForecastAdvancedModel saatlik ayrıntı düzeyi konusunda çok daha fazla bilgi sağlayabilir. İstediğiniz sayıda hava durumu veri modeli oluşturabilirsiniz.
-- /**JobType** : farmtts, genişletilebilir bir iş yönetim sistemine sahiptir. Hava durumu veri sağlayıcısı olarak, çeşitli veri kümeleri ve API 'leriniz (örneğin, Getgünlüktahminleri) vardır. Bu veri kümelerini ve API 'Leri, JobType kullanarak Farmtempts ' de etkinleştirebilirsiniz. Bir iş türü oluşturulduktan sonra, müşteri, konumları veya onların ilgi alanları için hava durumu verilerini almak üzere bu türdeki işleri tetikleyebilir. Daha fazla bilgi için, bkz. [Farmtts Swagger](https://aka.ms/farmbeatsswagger)Içindeki JobType ve Job API 'leri.
+- /**Dalgalı veri modeli**: dalgalı veri modeli meta verileri hava durumu verilerini temsil eder. Kaynağın sağladığı veri kümelerine karşılık gelir. Örneğin, bir Dailyforebir Simplemodel günde bir kez ortalama sıcaklık, nem ve yağış bilgilerini sağlayabilir. Buna karşılık, bir DailyForecastAdvancedModel saatlik ayrıntı düzeyi konusunda çok daha fazla bilgi sağlayabilir. İstediğiniz sayıda hava durumu veri modeli oluşturabilirsiniz.
+- /**JobType**: farmtts, genişletilebilir bir iş yönetim sistemine sahiptir. Hava durumu veri sağlayıcısı olarak, çeşitli veri kümeleri ve API 'leriniz (örneğin, Getgünlüktahminleri) vardır. Bu veri kümelerini ve API 'Leri, JobType kullanarak Farmtempts ' de etkinleştirebilirsiniz. Bir iş türü oluşturulduktan sonra, müşteri, konumları veya onların ilgi alanları için hava durumu verilerini almak üzere bu türdeki işleri tetikleyebilir. Daha fazla bilgi için, bkz. [Farmtts Swagger](https://aka.ms/farmbeatsswagger)Içindeki JobType ve Job API 'leri.
 
 ### <a name="jobs"></a>İşler
 
@@ -143,7 +143,7 @@ Işler bileşeni, bir Farmher Kullanıcı, önyükleme işleminin bir parçası 
 Dalgalı veri modeli | Açıklama |
 --- | ---
 Ad  | Hava durumu veri modelinin adı. |
-Açıklama  | Modelin anlamlı bir açıklaması. |
+Description  | Modelin anlamlı bir açıklaması. |
 Özellikler  | Veri sağlayıcısı tarafından tanımlanan ek özellikler. |
 Hava ölçüleri > adı  | Hava durumu ölçüsünün adı. Örneğin, humidity_max. |
 Dalgalı ölçüler > veri türü  | Double veya Enum. Enum ise, measureEnumDefinition gereklidir. |
@@ -165,12 +165,12 @@ pipelineDetails > parametreler > açıklama | Parametrenin açıklaması. |
 Özellikler  | Üreticiden ek özellikler.
 > programRunCommand özellikleri | Docker Run komutu. Bu komut, müşteri Hava durumu işini çalıştırdığında çalışır. |
 
-Dalgalı bir Datalocation | Açıklama |
+Dalgalı bir Datalocation | Description |
 --- | ---
 Dalgalı veri ModelId  | Önyükleme işlemi sırasında oluşturulan karşılık gelen dalgalı veri modelinin KIMLIĞI.|
 location  | Enlem, boylam ve yükseltme. |
-Ad | Nesnenin adı. |
-Açıklama | Hava durumu veri konumunun açıklaması. |
+Name | Nesnenin adı. |
+Description | Hava durumu veri konumunun açıklaması. |
 farmId | Seçim Grubun KIMLIĞI. Müşteri, iş parametresinin bir parçası olarak bu KIMLIĞI sağlar. |
 Özellikler  | Üreticiden ek özellikler.
 

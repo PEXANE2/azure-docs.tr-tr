@@ -9,13 +9,13 @@ ms.devlang: azurepowershell
 ms.date: 11/16/2020
 ms.custom: devx-track-azurepowershell
 ms.openlocfilehash: 3cb320a37818084f2fbcad22a3cc992655b19c3d
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95550121"
 ---
-# <a name="deploy-azure-spring-cloud-with-azure-powershell"></a>Azure Spring Cloud 'ı Azure PowerShell ile dağıtma
+# <a name="deploy-azure-spring-cloud-with-azure-powershell"></a>Azure PowerShell ile Azure Spring Cloud dağıtma
 
 Bu makalede [az. SpringCloud](/powershell/module/Az.SpringCloud) PowerShell modülünü kullanarak Azure Spring Cloud 'ın bir örneğini nasıl oluşturabileceğiniz açıklanmaktadır.
 
@@ -26,7 +26,7 @@ Bu makalede [az. SpringCloud](/powershell/module/Az.SpringCloud) PowerShell mod�
 [!INCLUDE [azure-powershell-requirements-no-header.md](../../includes/azure-powershell-requirements-no-header.md)]
 
   > [!IMPORTANT]
-  > **Az. SpringCloud** PowerShell modülü önizlemedeyken, cmdlet 'ini kullanarak ayrı olarak yüklemelisiniz `Install-Module` . Bu PowerShell modülü genel kullanıma sunulduğunda, gelecekteki az PowerShell modülü sürümlerinin bir parçası olur ve Azure Cloud Shell içinden varsayılan olarak kullanılabilir.
+  > **Az. SpringCloud** PowerShell modülü önizlemedeyken, cmdlet 'ini kullanarak ayrı olarak yüklemelisiniz `Install-Module` . Bu PowerShell modülü genel kullanıma sunulduktan sonra, gelecekteki Az PowerShell modülü sürümlerinin bir parçası haline gelecek ve Azure Cloud Shell içinden varsayılan olarak sağlanacaktır.
 
   ```azurepowershell-interactive
   Install-Module -Name Az.SpringCloud

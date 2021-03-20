@@ -4,10 +4,10 @@ description: OpsGenie örneğiniz için hizmet sistem durumu olayları hakkında
 ms.topic: conceptual
 ms.date: 06/10/2019
 ms.openlocfilehash: d8867d442d0c7fe563f6429fc1ff4edb212737c5
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100594597"
 ---
 # <a name="send-azure-service-health-alerts-with-opsgenie-using-webhooks"></a>Web kancalarını kullanarak OpsGenie ile Azure hizmet durumu uyarıları gönderme

@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 01/03/2020
 ms.author: jeedes
 ms.openlocfilehash: 2dcc52688cabebaa6eb813e3240150ea8774e716
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92521907"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-sumologic"></a>Öğretici: SumoLogic ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
@@ -54,7 +54,7 @@ SumoLogic tümleştirmesini Azure AD 'ye göre yapılandırmak için, Galeriden 
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-sumologic"></a>SumoLogic için Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-**B. Simon**adlı bir test kullanıcısı kullanarak Azure AD SSO 'yu SumoLogic ile yapılandırın ve test edin. SSO 'nun çalışması için, SumoLogic içinde bir Azure AD kullanıcısı ve ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
+**B. Simon** adlı bir test kullanıcısı kullanarak Azure AD SSO 'yu SumoLogic ile yapılandırın ve test edin. SSO 'nun çalışması için, SumoLogic içinde bir Azure AD kullanıcısı ve ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
 
 Azure AD SSO 'yu SumoLogic ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
 
@@ -107,7 +107,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
 1. SumoLogic uygulaması, yukarıdakine ek olarak, aşağıda gösterilen SAML yanıtına daha fazla öznitelik geçirilmesini bekler. Bu öznitelikler de önceden doldurulur, ancak gereksinimlerinize göre bunları gözden geçirebilirsiniz.
 
-    |  Adı | Kaynak özniteliği |
+    |  Name | Kaynak özniteliği |
     | ---------------| --------------- |
     | FirstName | Kullanıcı. |
     | LastName | User. soyadı |
@@ -158,7 +158,7 @@ Bu bölümde, SumoLogic 'e erişim vererek Azure çoklu oturum açma özelliğin
 
 1. Farklı bir Web tarayıcısı penceresinde, SumoLogic şirket sitenizde yönetici olarak oturum açın.
 
-1. ** \> Güvenliği Yönet**' e gidin.
+1. **\> Güvenliği Yönet**' e gidin.
 
     ![Yönetme](./media/sumologic-tutorial/ic778556.png "Yönetme")
 
@@ -174,19 +174,19 @@ Bu bölümde, SumoLogic 'e erişim vererek Azure çoklu oturum açma özelliğin
 
     ![Ekran görüntüsünde, açıklanan değerleri girebileceğiniz SAML 2,0 yapılandırma iletişim kutusu gösterilir.](./media/sumologic-tutorial/ic778559.png "SAML 2,0 yapılandırma")
 
-    a. **Yapılandırma adı** metin kutusuna **Azure AD**yazın.
+    a. **Yapılandırma adı** metin kutusuna **Azure AD** yazın.
 
     b. **Hata ayıklama modu**' nu seçin.
 
-    c. **Veren** metin kutusunda, Azure Portal KOPYALADıĞıNıZ **Azure AD tanımlayıcısının**değerini yapıştırın.
+    c. **Veren** metin kutusunda, Azure Portal KOPYALADıĞıNıZ **Azure AD tanımlayıcısının** değerini yapıştırın.
 
-    d. **AuthN istek URL 'si** metin kutusunda, Azure Portal kopyaladığınız **oturum açma URL 'si**değerini yapıştırın.
+    d. **AuthN istek URL 'si** metin kutusunda, Azure Portal kopyaladığınız **oturum açma URL 'si** değerini yapıştırın.
 
     e. Base-64 kodlu sertifikanızı Not defteri 'nde açın, bu içeriği panonuza kopyalayın ve ardından tüm sertifikayı **X. 509.440 sertifikası** metin kutusuna yapıştırın.
 
-    f. **E-posta özniteliği**olarak, **SAML Subject kullan**' ı seçin.  
+    f. **E-posta özniteliği** olarak, **SAML Subject kullan**' ı seçin.  
 
-    örneğin: **SP tarafından başlatılan oturum açma yapılandırmasını**seçin.
+    örneğin: **SP tarafından başlatılan oturum açma yapılandırmasını** seçin.
 
     h. **Oturum açma yolu** metin kutusuna **Azure** yazın ve **Kaydet**' e tıklayın.
 
@@ -198,7 +198,7 @@ Azure AD kullanıcılarının SumoLogic 'de oturum açmasını sağlamak için, 
 
 1. **SumoLogic** kiracınızda oturum açın.
 
-1. ** \> Kullanıcıları Yönet**' e gidin.
+1. **\> Kullanıcıları Yönet**' e gidin.
 
     ![Ekran görüntüsü Yönet menüsünden seçilen kullanıcıları gösterir.](./media/sumologic-tutorial/ic778561.png "Kullanıcılar")
 
@@ -210,11 +210,11 @@ Azure AD kullanıcılarının SumoLogic 'de oturum açmasını sağlamak için, 
 
     ![Yeni Kullanıcı](./media/sumologic-tutorial/ic778563.png "Yeni Kullanıcı")
 
-    a. Sağlamak istediğiniz Azure AD hesabının **ad**, **Soyadı**ve **e-posta** kutularına bilgilerini yazın.
+    a. Sağlamak istediğiniz Azure AD hesabının **ad**, **Soyadı** ve **e-posta** kutularına bilgilerini yazın.
   
     b. Bir rol seçin.
   
-    c. **Durum**olarak **etkin**' i seçin.
+    c. **Durum** olarak **etkin**' i seçin.
   
     d. **Kaydet**’e tıklayın.
 

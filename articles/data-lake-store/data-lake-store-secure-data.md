@@ -13,10 +13,10 @@ ms.topic: how-to
 ms.date: 03/26/2018
 ms.author: twooley
 ms.openlocfilehash: ac7666f4c4e68d24499f9c097dc9bd021d270355
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92370704"
 ---
 # <a name="securing-data-stored-in-azure-data-lake-storage-gen1"></a>Azure Data Lake Storage 1. Nesil'de depolanan verilerin güvenliğini sağlama
@@ -29,7 +29,7 @@ Azure Data Lake Storage 1. içindeki verilerin güvenliğini sağlamak, üç ad�
 
 Bu makale, yukarıdaki görevleri gerçekleştirmek için Azure portal nasıl kullanılacağına ilişkin yönergeler sağlar. Data Lake Storage 1. hesap ve veri düzeyinde güvenliği nasıl uygulayan hakkında ayrıntılı bilgi için, bkz. [Azure Data Lake Storage 1. güvenlik](data-lake-store-security-overview.md). ACL 'Lerin Data Lake Storage 1. nasıl uygulandığı hakkında ayrıntılı bilgi için, bkz. [Data Lake Storage 1. Access Control genel bakış](data-lake-store-access-control.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 Bu öğreticiye başlamadan önce aşağıdakilere sahip olmanız gerekir:
 
 * **Bir Azure aboneliği**. Bkz. [Azure ücretsiz deneme sürümü edinme](https://azure.microsoft.com/pricing/free-trial/).
@@ -68,7 +68,7 @@ Data Lake Storage 1. hesaplara Kullanıcı veya güvenlik grupları atadığın�
     Veri işlemleri için, bireysel dosya sistemi izinleri kullanıcıların neler yapabileceğini tanımlar. Bu nedenle, okuyucu rolüne sahip bir Kullanıcı yalnızca hesapla ilişkili yönetim ayarlarını görüntüleyebilir, ancak bunlara atanan dosya sistemi izinlerine göre verileri okuyabilir ve yazabilir. Data Lake Storage 1. dosya sistemi izinleri [, güvenlik grubunu, Azure Data Lake Storage 1. dosya sistemine ACL 'ler olarak ata](#filepermissions)bölümünde açıklanmaktadır.
 
     > [!IMPORTANT]
-    > Dosya sistemi erişimini yalnızca **sahip** rolü otomatik olarak etkinleştirilir. **Katkıda**bulunan, **okuyucu**ve diğer tüm roller, klasörlere ve dosyalara erişim düzeyini etkinleştirmek için ACL 'ler gerektirir.  **Sahip** rolü, ACL 'ler aracılığıyla geçersiz kılınamayan Süper Kullanıcı dosya ve klasör izinleri sağlar. Azure RBAC ilkelerinin veri erişimiyle nasıl eşlenme hakkında daha fazla bilgi için bkz. [Hesap yönetimi Için Azure RBAC](data-lake-store-security-overview.md#azure-rbac-for-account-management).
+    > Dosya sistemi erişimini yalnızca **sahip** rolü otomatik olarak etkinleştirilir. **Katkıda** bulunan, **okuyucu** ve diğer tüm roller, klasörlere ve dosyalara erişim düzeyini etkinleştirmek için ACL 'ler gerektirir.  **Sahip** rolü, ACL 'ler aracılığıyla geçersiz kılınamayan Süper Kullanıcı dosya ve klasör izinleri sağlar. Azure RBAC ilkelerinin veri erişimiyle nasıl eşlenme hakkında daha fazla bilgi için bkz. [Hesap yönetimi Için Azure RBAC](data-lake-store-security-overview.md#azure-rbac-for-account-management).
 
 4. **Izin Ekle** dikey penceresinde listelenmeyen bir grup/kullanıcı eklemek istiyorsanız, bunları **Seç** metin kutusuna e-posta adresini yazarak ve ardından listeden seçerek davet edebilirsiniz.
    
@@ -112,7 +112,7 @@ Data Lake Storage 1. dosya sistemine Kullanıcı/güvenlik grupları atayarak, D
     ![Veri Mühendisliği seçeneği olarak adlandırılan erişim dikey penceresinin ekran görüntüsü.](./media/data-lake-store-secure-data/adl.acl.5.png "Gruba izin atama")
    
    > [!IMPORTANT]
-   > Geçerli sürümde, **atanan izinler**altında en fazla 28 giriş olabilir. 28 ' den fazla kullanıcı eklemek istiyorsanız güvenlik grupları oluşturmanız, güvenlik gruplarına kullanıcı eklemeniz ve Data Lake Storage 1. hesap için bu güvenlik gruplarına erişim sağlamanız gerekir.
+   > Geçerli sürümde, **atanan izinler** altında en fazla 28 giriş olabilir. 28 ' den fazla kullanıcı eklemek istiyorsanız güvenlik grupları oluşturmanız, güvenlik gruplarına kullanıcı eklemeniz ve Data Lake Storage 1. hesap için bu güvenlik gruplarına erişim sağlamanız gerekir.
    > 
    > 
 7. Gerekirse, Grup eklendikten sonra erişim izinlerini de değiştirebilirsiniz. Bu izni kaldırmak mı yoksa güvenlik grubuna atamak mı istediğinize bağlı olarak, her bir izin türünün onay kutusunu (okuma, yazma, yürütme) temizleyin veya seçin. Değişiklikleri kaydetmek için **Kaydet** ' e veya değişiklikleri geri almak için **at** ' a tıklayın.

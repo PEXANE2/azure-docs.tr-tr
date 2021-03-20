@@ -4,10 +4,10 @@ description: Bu makale, belirli ileti çoğaltma görevi desenlerini uygulamaya 
 ms.topic: article
 ms.date: 12/12/2020
 ms.openlocfilehash: d823ee7ccd4f53bfc3e10211a4f44908273a110d
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97657596"
 ---
 # <a name="message-replication-tasks-patterns"></a>İleti çoğaltma görevleri desenleri
@@ -107,16 +107,16 @@ Son senaryo, zaten çoğaltılan iletilerin dışlanmasını yeniden çoğaltıl
 
 Düzenleyici deseninin [çoğaltma](#replication) düzeninde derlemeleri oluşturulur, ancak iletiler iletilmeden önce değiştirilir. Bu değişikliklere yönelik örnekler şunlardır:
 
-- **_Kodlama_* _-ileti içeriği ("Body" veya "payload" olarak da bilinir) _Apache avro * biçimi veya bazı özel serileştirme biçimi kullanılarak kaynak kodlamadan alınırsa, ancak hedefin sahibi olan sistemin beklentisi, içeriğin *JSON* kodlamalı olması için, bir dönüştürme çoğaltma görevinin, ilk olarak *Apache avro* 'den bir bellek içi nesne grafiğine yük Serisi kaldırılır ve bu grafiği, iletilecek ileti için *JSON* biçimine serileştirirsiniz. Dönüştürme, **içerik sıkıştırma** ve açma görevlerini de içerir.
-- **_Dönüştürme_* _-yapılandırılmış veriler içeren iletiler, aşağı akış tüketicilerinin kullanımı için bu verilerin yeniden şekillendirmesini gerektirebilir. Bu, iç içe yapıları düzleştirme, fazlalık veri öğelerini ayıklama veya yükü belirli bir şemaya tam olarak sığacak şekilde yeniden şekillendirme gibi bir iş içerebilir.
-- Toplu _*_işleme_*_ -iletiler bir kaynaktan toplu işlerle (tek bir Aktarımdaki birden çok ileti) alınabilir, ancak listedir bir hedefe iletilebilmesi veya bunun tersini almış olması gerekir. Bu nedenle bir görev, birden fazla iletiyi tek bir giriş iletisi aktarımına göre iletebilir veya daha sonra birlikte aktarılan bir ileti kümesini toplayabilir. 
-- _*_Doğrulama_*_ -dış kaynaklardan gelen ileti verilerinin, iletilmeden önce bir kural kümesiyle uyumlu olup olmadığı denetlenir. Kurallar, şemalar veya kod kullanılarak ifade edilebilir. uyumlu olmayan bulunan iletiler, günlüklerde belirtilen sorun ile bırakılmış olabilir veya daha fazla işlem yapmak için özel bir hedef hedefe iletilebilir.   
-- _*_Zenginleştirme_*_ -bazı kaynaklardan gelen ileti verileri, hedef sistemlerde kullanılabilir olması için daha fazla bağlam ile zenginleştirme gerektirebilir. Bu, başvuru verilerini aramak ve bu verileri iletiyle birlikte eklemeye ya da çoğaltma göreviyle bilinen, ancak iletilerde bulunmayan kaynakla ilgili bilgiler eklemeye dahil olabilir. 
-- _*_Filtreleme_*_ -bir kaynaktan gelen bazı iletiler, bazı kurala göre hedeften kısılan edilmiş olabilir. Filtre, iletiyi bir kurala göre sınar ve ileti kuralla eşleşmezse iletiyi bırakır. Belirli ölçütleri gözlemleyerek ve sonraki iletileri aynı değerlerle bırakarak yinelenen iletilerin filtrelenmesi, filtreleme biçimidir.
-- _*_Yönlendirme ve bölümleme_*_ -bazı çoğaltma görevleri iki veya daha fazla alternatif hedefe izin verebilir ve iletinin meta verilerine veya içeriğine göre belirli bir ileti için hangi çoğaltma hedefinin seçili olduğunu belirten kurallar tanımlayabilir. Özel bir yönlendirme formu, görevin kurallara göre bir çoğaltma hedefinde açıkça bölüm atadığı bölümleniyor.
-- _*_Şifreleme_*_ -bir çoğaltma görevinin, kaynaktan gelen içeriğin şifresini çözmeniz ve/veya içeriği bir hedefe iletmesinin yanı sıra, veya bu tür bir imzaya göre içerik ve meta verilerin bütünlüğünü doğrulamak zorunda kalabilir. 
-- _*_Kanıtlama_*_ -bir çoğaltma görevi, büyük olasılıkla dijital imzayla korunan meta verileri, iletinin belirli bir kanaldan veya belirli bir zamanda alındığını test eden bir iletiye ekleyebilir.     
-- _ *_Zincirleme_**-bir çoğaltma görevi, iletilerin bütünlüğünden korunmasının ve eksik iletilerin algılanabilmesi gibi ileti dizisine imza uygulayabilir.
+- ***Kodlama kodlaması*** -ileti içeriği ("Body" veya "payload" olarak da bilinir) *Apache avro* biçimi veya bazı özel serileştirme biçimi kullanılarak kaynak kodlamadan alınırsa, ancak hedefin sahibi olan sistemin beklentisi, içeriğin *JSON* kodlamalı olması için, bir dönüştürme çoğaltma görevinin, ilk olarak *Apache avro* 'den bir bellek içi nesne grafiğine yük Serisi kaldırılır ve bu grafiği, iletilecek ileti için *JSON* biçimine serileştirirsiniz. Dönüştürme, **içerik sıkıştırma** ve açma görevlerini de içerir.
+- ***Dönüştürme*** -yapılandırılmış veriler içeren iletiler, aşağı akış tüketicilerine göre daha kolay tüketim için bu verilerin yeniden şekillendirmesini gerektirebilir. Bu, iç içe yapıları düzleştirme, fazlalık veri öğelerini ayıklama veya yükü belirli bir şemaya tam olarak sığacak şekilde yeniden şekillendirme gibi bir iş içerebilir.
+- Toplu ***işleme*** -iletiler bir kaynaktan toplu işlerle (tek bir Aktarımdaki birden çok ileti) alınabilir, ancak listedir bir hedefe iletilebilmesi veya bunun tersini almış olması gerekir. Bu nedenle bir görev, birden fazla iletiyi tek bir giriş iletisi aktarımına göre iletebilir veya daha sonra birlikte aktarılan bir ileti kümesini toplayabilir. 
+- ***Doğrulama*** -dış kaynaklardan gelen ileti verilerinin, iletilmeden önce bir kural kümesiyle uyumlu olup olmadığı denetlenir. Kurallar, şemalar veya kod kullanılarak ifade edilebilir. uyumlu olmayan bulunan iletiler, günlüklerde belirtilen sorun ile bırakılmış olabilir veya daha fazla işlem yapmak için özel bir hedef hedefe iletilebilir.   
+- ***Zenginleştirme*** -bazı kaynaklardan gelen ileti verileri, hedef sistemlerde kullanılabilir olması için daha fazla bağlam ile zenginleştirme gerektirebilir. Bu, başvuru verilerini aramak ve bu verileri iletiyle birlikte eklemeye ya da çoğaltma göreviyle bilinen, ancak iletilerde bulunmayan kaynakla ilgili bilgiler eklemeye dahil olabilir. 
+- ***Filtreleme*** -bir kaynaktan gelen bazı iletiler, bazı kurala göre hedeften kısılan edilmiş olabilir. Filtre, iletiyi bir kurala göre sınar ve ileti kuralla eşleşmezse iletiyi bırakır. Belirli ölçütleri gözlemleyerek ve sonraki iletileri aynı değerlerle bırakarak yinelenen iletilerin filtrelenmesi, filtreleme biçimidir.
+- ***Yönlendirme ve bölümleme*** -bazı çoğaltma görevleri iki veya daha fazla alternatif hedefe izin verebilir ve iletinin meta verilerine veya içeriğine göre belirli bir ileti için hangi çoğaltma hedefinin seçili olduğunu belirten kurallar tanımlayabilir. Özel bir yönlendirme formu, görevin kurallara göre bir çoğaltma hedefinde açıkça bölüm atadığı bölümleniyor.
+- ***Şifreleme*** -bir çoğaltma görevinin, kaynaktan gelen içeriğin şifresini çözmeniz ve/veya içeriği bir hedefe iletmesinin yanı sıra, veya bu tür bir imzaya göre içerik ve meta verilerin bütünlüğünü doğrulamak zorunda kalabilir. 
+- ***Kanıtlama*** -bir çoğaltma görevi, büyük olasılıkla dijital imzayla korunan meta verileri, iletinin belirli bir kanaldan veya belirli bir zamanda alındığını test eden bir iletiye ekleyebilir.     
+- ***Zincirleme*** -çoğaltma görevi, dizi bütünlüğünden korunmasının ve eksik iletilerin algılanabilmesi gibi İleti dizilerine imza uygulayabilir.
 
 Tüm bu desenler, iletileri almak için [Ileti hub 'ı tetikleyicisi](../azure-functions/functions-bindings-service-bus-trigger.md) ve bunları teslim etmek için [kuyruk veya konu çıkış bağlaması](../azure-functions/functions-bindings-service-bus-output.md) kullanılarak Azure işlevleri kullanılarak uygulanabilir. 
 

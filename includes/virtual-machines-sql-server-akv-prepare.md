@@ -14,10 +14,10 @@ ms.date: 04/30/2018
 ms.author: jroth
 ms.custom: include file
 ms.openlocfilehash: 3509185baa3a9d7be90c1fa4bd8000da4a8a6fe5
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95561397"
 ---
 ## <a name="prepare-for-akv-integration"></a>AKV tümleştirmesi için hazırlanma
@@ -25,7 +25,7 @@ SQL Server VM yapılandırmak üzere Azure Key Vault tümleştirmesini kullanmak
 
 1. [Azure PowerShell 'i yükler](#install)
 2. [Azure Active Directory oluşturma](#register)
-3. [Anahtar Kasası oluşturma](#createkeyvault)
+3. [Anahtar kasası oluşturma](#createkeyvault)
 
 Aşağıdaki bölümlerde, bu Önkoşullar ve daha sonra PowerShell cmdlet 'lerini çalıştırmak için toplamanız gereken bilgiler açıklanır.
 

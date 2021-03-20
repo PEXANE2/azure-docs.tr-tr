@@ -9,15 +9,15 @@ ms.date: 04/28/2020
 ms.author: robinsh
 ms.custom: include file
 ms.openlocfilehash: 7d6718fb25b3743a50c52f11c8e19d80839b485c
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95562929"
 ---
 <!-- operation names for the diag logs for IoT Hub -->
 
-|İşlem adı|Düzey|Description|
+|İşlem adı|Level|Description|
 |------------- |-----|-----------|
 |UndefinedRouteEvaluation|Bilgi|İleti, bir verme koşuluyla değerlendirilemiyor. Örneğin, iletide yol sorgusu koşulundaki bir özellik yoksa. [Yönlendirme sorgusu söz dizimi](../articles/iot-hub/iot-hub-devguide-routing-query-syntax.md)hakkında daha fazla bilgi edinin.|
 |RouteEvaluationError|Hata|İleti biçimindeki bir sorun nedeniyle ileti değerlendirilirken bir hata oluştu. Örneğin, içerik kodlaması belirtilmemişse veya Içerik türü iletide geçerli değilse, bu hata günlüğe kaydedilir. Bunların [Sistem özelliklerinde](../articles/iot-hub/iot-hub-devguide-routing-query-syntax.md#system-properties)ayarlanması gerekir.|
