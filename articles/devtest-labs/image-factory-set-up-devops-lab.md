@@ -4,10 +4,10 @@ description: Bu makalede, Azure DevOps 'tan (eski adıyla Visual Studio Team Ser
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: fa7050bae1ff8681e04b6ab38220be9eaf38a64a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85476147"
 ---
 # <a name="run-an-image-factory-from-azure-devops"></a>Azure DevOps’tan bir görüntü fabrikası çalıştırma
@@ -40,7 +40,7 @@ Başlamak için Azure DevOps 'da ücretsiz bir hesap oluşturun. https://www.vis
 ## <a name="check-in-the-image-factory-to-git"></a>Git 'e görüntü fabrikası iade etme
 Görüntü fabrikası için tüm PowerShell, şablonlar ve yapılandırmalar [ortak DevTest Labs GitHub](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/Scripts/ImageFactory)deposunda bulunur. Yeni takım projenize kodu almanın en hızlı yolu bir depoyu içeri aktarmanız. Bu, tüm DevTest Labs deposunu çeker (böylece ek belgeler ve örnekler alacaksınız).
 
-1. Önceki adımda oluşturduğunuz Azure DevOps projesini ziyaret edin (URL, **https: \/ / \<accountname> . VisualStudio.com/MyFirstProject**gibi görünür).
+1. Önceki adımda oluşturduğunuz Azure DevOps projesini ziyaret edin (URL, **https: \/ / \<accountname> . VisualStudio.com/MyFirstProject** gibi görünür).
 2. **Depoyu Içeri aktar**' ı seçin.
 3. DevTest Labs deposunun **kopya URL** 'sini girin: `https://github.com/Azure/azure-devtestlab` .
 4. **İçeri aktar**'ı seçin.
@@ -77,7 +77,7 @@ Komut satırı parametrelerini basitleştirmek için, görüntü fabrikasını o
 | MachinePassword | ******* | Sanal makineler için yerleşik yönetici hesabı parolası. Bu geçici bir hesaptır, bu yüzden güvenli olduğundan emin olun. Güvenli bir dize olduğundan emin olmak için sağdaki küçük kilit simgesini seçin. |
 | MachineUserName | Imagefactoryuser | Sanal makineler için yerleşik yönetici hesabı Kullanıcı adı. Bu geçici bir hesaptır. |
 | StandardTimeoutMinutes | 30 | Normal Azure işlemlerini beklememiz gereken zaman aşımı. |
-| kaynak grubundaki |  0000000000-0000-0000-0000-0000000000000 | Laboratuvarın bulunduğu ve hizmet uç noktasının erişimi olan aboneliğin KIMLIĞI. |
+| SubscriptionId |  0000000000-0000-0000-0000-0000000000000 | Laboratuvarın bulunduğu ve hizmet uç noktasının erişimi olan aboneliğin KIMLIĞI. |
 | VMSize | Standard_A3 | **Oluşturma** adımı için kullanılacak sanal makinenin boyutu. Oluşturulan VM 'Ler geçicidir. Boyut, [Laboratuvar için etkinleştirilmiş](devtest-lab-set-lab-policy.md)olan bir olmalıdır. Yeterli sayıda [abonelik çekirdeği kotası](../azure-resource-manager/management/azure-subscription-service-limits.md)olduğunu doğrulayın.
 
 ![Derleme değişkenleri](./media/set-up-devops-lab/configure-build-variables.png)
@@ -86,7 +86,7 @@ Komut satırı parametrelerini basitleştirmek için, görüntü fabrikasını o
 Sonraki adım, hizmet sorumlusunu ayarlamaya yönelik olur. Bu Azure Active Directory, DevOps derleme aracısının Kullanıcı adına Azure 'da çalışmasını sağlayan bir kimliktir. Bunu ayarlamak için, ilk Azure PowerShell oluşturma adımını ekleyerek başlayın.
 
 1. **Görev Ekle**' yi seçin.
-2. **Azure PowerShell**arayın.
+2. **Azure PowerShell** arayın.
 3. Bunu bulduktan sonra, görevi yapıya eklemek için **Ekle** ' yi seçin. Bunu yaptığınızda, görevin sol tarafta eklenmiş olarak göründüğünü görürsünüz.
 
 ![PowerShell adımını ayarlama](./media/set-up-devops-lab/set-up-powershell-step.png)
@@ -94,7 +94,7 @@ Sonraki adım, hizmet sorumlusunu ayarlamaya yönelik olur. Bu Azure Active Dire
 Hizmet sorumlusu oluşturmanın en hızlı yolu, Azure DevOps 'ın bunu bizim için gerçekleştirmesini sağlamasıdır.
 
 1. Yeni eklediğiniz **görevi** seçin.
-2. **Azure bağlantı türü**için **Azure Resource Manager**seçin.
+2. **Azure bağlantı türü** için **Azure Resource Manager** seçin.
 3. Hizmet sorumlusunu ayarlamak için **Yönet** bağlantısını seçin.
 
 Daha fazla bilgi için [bu blog gönderisine](https://devblogs.microsoft.com/devops/automating-azure-resource-group-deployment-using-a-service-principal-in-visual-studio-online-buildrelease-management/) bakın. **Yönet** bağlantısını seçtiğinizde, Azure bağlantısı kurmak Için DevOps (blog gönderisine ikinci ekran görüntüsü) içinde doğru yere gideceksiniz. Bunu ayarlarken **Azure Resource Manager hizmet uç noktası** ' nı seçtiğinizden emin olun.
@@ -104,8 +104,8 @@ Yapı görevini seçerseniz, sağ bölmedeki, doldurulması gereken tüm ayrınt
 
 1. İlk olarak, derleme görevini adlandırın: **sanal makine oluşturma**.
 2. **Azure Resource Manager** seçerek oluşturduğunuz **hizmet sorumlusunu** seçin
-3. **Hizmet uç noktasını**seçin.
-4. **Betik yolu**için... seçeneğini belirleyin **. (üç nokta)** sağ tarafta.
+3. **Hizmet uç noktasını** seçin.
+4. **Betik yolu** için... seçeneğini belirleyin **. (üç nokta)** sağ tarafta.
 5. **MakeGoldenImageVMs.ps1** betiğe gidin.
 6. Betik parametreleri şöyle görünmelidir: `-ConfigurationLocation $(System.DefaultWorkingDirectory)$(ConfigurationLocation) -DevTestLabName $(DevTestLabName) -vmSize $(VMSize) -machineUserName $(MachineUserName) -machinePassword (ConvertTo-SecureString -string '$(MachinePassword)' -AsPlainText -Force) -StandardTimeoutMinutes $(StandardTimeoutMinutes)`
 

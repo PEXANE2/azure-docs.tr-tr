@@ -17,17 +17,17 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 45b6b182d030c267dcec7ed57c0c0dd1901b0cb1
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/06/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97935096"
 ---
 # <a name="frequently-asked-questions-around-azure-active-directory-reports"></a>Azure Active Directory raporlarının etrafında sık sorulan sorular
 
 Bu makale Azure Active Directory (Azure AD) raporlama hakkında sık sorulan soruların yanıtlarını içerir. Daha fazla bilgi için bkz. [Azure Active Directory raporlaması](overview-reports.md). 
 
-## <a name="getting-started"></a>Başlarken 
+## <a name="getting-started"></a>Kullanmaya başlama 
 
 **S: Şu anda `https://graph.windows.net/<tenant-name>/reports/` Azure AD Audit ve tümleşik uygulama kullanım raporlarını raporlama sistemlerimize programlı bir şekilde çekmek için Endpoint API 'leri kullanıyorum. Ne geçiş yapmam gerekir?**
 

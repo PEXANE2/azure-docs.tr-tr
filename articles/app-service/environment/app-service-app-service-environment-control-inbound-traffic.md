@@ -8,10 +8,10 @@ ms.date: 01/11/2017
 ms.author: stefsch
 ms.custom: seodec18
 ms.openlocfilehash: fe9326ea9ebd5afe981b7ba6c34b1a5d51e084b0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88962069"
 ---
 # <a name="how-to-control-inbound-traffic-to-an-app-service-environment"></a>App Service Ortamı gelen trafiği denetleme
@@ -29,7 +29,7 @@ Bir alt ağa ağ güvenlik grubu atadıktan sonra, ağ güvenlik grubunda tanım
 ## <a name="inbound-network-ports-used-in-an-app-service-environment"></a>App Service Ortamı kullanılan gelen ağ bağlantı noktaları
 Ağ güvenlik grubuyla gelen ağ trafiğini kilitleyerek, bir App Service Ortamı tarafından kullanılan gerekli ve isteğe bağlı ağ bağlantı noktaları kümesini öğrenin.  Bazı bağlantı noktalarına gelen trafiği yanlışlıkla kapatmak bir App Service Ortamı işlev kaybına neden olabilir.
 
-Aşağıdaki liste, bir App Service Ortamı tarafından kullanılan bağlantı noktalarını içerir. Tersi belirtilmedikçe, tüm bağlantı noktaları **TCP**ile yapılır:
+Aşağıdaki liste, bir App Service Ortamı tarafından kullanılan bağlantı noktalarını içerir. Tersi belirtilmedikçe, tüm bağlantı noktaları **TCP** ile yapılır:
 
 * 454: Azure altyapısı tarafından TLS aracılığıyla App Service ortamları yönetmek ve sürdürmek için kullanılan  **bağlantı noktası** .  Bu bağlantı noktasına giden trafiği engellemez.  Bu bağlantı noktası her zaman bir ASE 'nin Genel VIP 'sine bağlanır.
 * 455: Azure altyapısı tarafından TLS aracılığıyla App Service ortamları yönetmek ve sürdürmek için kullanılan  **bağlantı noktası** .  Bu bağlantı noktasına giden trafiği engellemez.  Bu bağlantı noktası her zaman bir ASE 'nin Genel VIP 'sine bağlanır.

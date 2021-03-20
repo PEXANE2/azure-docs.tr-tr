@@ -4,10 +4,10 @@ description: Azure DevTest Labs ' de bir laboratuvara iç destek beyanı nakletm
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 1c9920e6fe7fbfe2a8d0aeacb896150b342981b0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85480482"
 ---
 # <a name="add-an-internal-support-statement-to-a-lab-in-azure-devtest-labs"></a>Azure DevTest Labs bir laboratuvara iç destek bildirisi ekleme
@@ -20,8 +20,8 @@ Artık geçerli olmadığında bir destek bildirisini kolayca devre dışı bır
 
 ## <a name="steps-to-add-a-support-statement-to-an-existing-lab"></a>Mevcut laboratuvara destek beyanı ekleme adımları
 
-1. [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040)’ında oturum açın.
-1. Gerekirse, **tüm hizmetler**' i seçin ve ardından listeden **DevTest Labs** ' i seçin. (Laboratuvarınız panoda zaten **tüm kaynaklar**altında gösteriliyor olabilir).
+1. [Azure portalında](https://go.microsoft.com/fwlink/p/?LinkID=525040) oturum açın.
+1. Gerekirse, **tüm hizmetler**' i seçin ve ardından listeden **DevTest Labs** ' i seçin. (Laboratuvarınız panoda zaten **tüm kaynaklar** altında gösteriliyor olabilir).
 1. Laboratuvarlar listesinden, bir destek ekstresi eklemek istediğiniz Laboratuvarı seçin.  
 1. Laboratuvarın **genel bakış** alanında **yapılandırma ve ilkeler**' i seçin.  
 
@@ -31,7 +31,7 @@ Artık geçerli olmadığında bir destek bildirisini kolayca devre dışı bır
 
     ![İç destek düğmesi](./media/devtest-lab-internal-support-message/devtestlab-internal-support.png)
 
-1. Bu laboratuvardaki kullanıcılar için bir iç destek iletisi oluşturmak için, etkin ' i **Evet**olarak ayarlayın.
+1. Bu laboratuvardaki kullanıcılar için bir iç destek iletisi oluşturmak için, etkin ' i **Evet** olarak ayarlayın.
 
 1. **Destek iletisi** alanına, laboratuvar kullanıcılarınıza sunmak istediğiniz iç destek bildirisini girin. Destek iletisi markın kabul eder. İleti metnini girerken, iletinin kullanıcılara nasıl göründüğünü görmek için ekranın altındaki **Önizleme** alanını görüntüleyebilirsiniz.
 
@@ -40,7 +40,7 @@ Artık geçerli olmadığında bir destek bildirisini kolayca devre dışı bır
 
 1. Destek deyiminiz gönderi için hazırsanız **Kaydet** ' i seçin.
 
-Artık bu destek iletisini laboratuvar kullanıcılarına göstermek istemediğinizde, **iç destek** sayfasına dönün ve **etkin** ' i **Hayır**olarak ayarlayın.
+Artık bu destek iletisini laboratuvar kullanıcılarına göstermek istemediğinizde, **iç destek** sayfasına dönün ve **etkin** ' i **Hayır** olarak ayarlayın.
 
 ## <a name="steps-for-users-to-view-the-support-message"></a>Destek iletisini görüntülemek için kullanıcılara yönelik adımlar
 

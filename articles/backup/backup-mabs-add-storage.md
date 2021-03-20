@@ -4,10 +4,10 @@ description: Azure Backup Sunucusu yeni özellikler hakkında bilgi edinin. Bu m
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.openlocfilehash: b077296e58e1193e454a686a392d802e905500a5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91292906"
 ---
 # <a name="add-storage-to-azure-backup-server"></a>Azure Backup Sunucusu’na depolama alanı ekleme
@@ -36,7 +36,7 @@ Backup Server v2 veya üzeri, depolama birimlerini kabul eder. Bir birim ekledi�
 
 Disk depolaması, yedekleme sunucusu v2 veya sonraki sürümleri birimler ile kullanmak, depolama üzerinde denetimi korumanıza yardımcı olabilir. Birim tek bir disk olabilir. Ancak, daha sonra depolamayı genişletmek istiyorsanız, depolama alanları kullanılarak oluşturulan bir diskten bir birim oluşturun. Bu, yedekleme depolaması için birimi genişletmek istediğinizde yardımcı olabilir. Bu bölümde, bu kurulumla bir birim oluşturmak için en iyi yöntemler sunulmaktadır.
 
-1. Sunucu Yöneticisi, **dosya ve depolama hizmetleri**  >  **birimleri**  >  **depolama havuzları**' nı seçin. **FIZIKSEL diskler**altında **Yeni depolama havuzu**' nu seçin.
+1. Sunucu Yöneticisi, **dosya ve depolama hizmetleri**  >  **birimleri**  >  **depolama havuzları**' nı seçin. **FIZIKSEL diskler** altında **Yeni depolama havuzu**' nu seçin.
 
     ![Yeni bir depolama havuzu oluştur](./media/backup-mabs-add-storage/mabs-add-storage-1.png)
 
@@ -132,5 +132,5 @@ Disk depolama eklemek için:
 Yedekleme sunucusunu yükledikten sonra, sunucunuzu nasıl hazırlayacağınızı veya bir iş yükünü korumaya nasıl başlayacağınızı öğrenin.
 
 - [Yedekleme sunucusu iş yüklerini hazırlama](backup-azure-microsoft-azure-backup.md)
-- [Bir VMware sunucusunu yedeklemek için yedekleme sunucusu kullanma](backup-azure-backup-server-vmware.md)
-- [Yedekleme sunucusunu kullanarak yedekleme SQL Server](backup-azure-sql-mabs.md)
+- [VMware sunucusunu yedeklemek için Yedekleme Sunucusu kullanma](backup-azure-backup-server-vmware.md)
+- [SQL Server'ı yedeklemek için Yedekleme Sunucusu kullanma](backup-azure-sql-mabs.md)

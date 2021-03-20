@@ -6,10 +6,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive, hdiseo17may2017, devx-track-csharp
 ms.date: 01/14/2020
 ms.openlocfilehash: a06326f5b4cf34a06475c10e368c6dcbb49ca9e4
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98928349"
 ---
 # <a name="run-apache-sqoop-jobs-by-using-net-sdk-for-apache-hadoop-in-hdinsight"></a>HDInsight 'ta Apache Hadoop için .NET SDK kullanarak Apache Sqoop işleri çalıştırma
@@ -44,7 +44,7 @@ HDInsight .NET SDK 'Sı .NET istemci kitaplıkları sağlar. bu sayede, .NET 'te
 
 Hive 'dan SQL Server.  Bu örnek, Hive `hivesampletable` TABLOSUNDAN `mobiledata` SQL veritabanındaki tabloya veri aktarır.
 
-1. Program.cs dosyasında aşağıdaki kodu kullanın. Ve değerlerini ayarlamak için kodu düzenleyin `ExistingClusterName` `ExistingClusterPassword` .
+1. Program. cs dosyasında aşağıdaki kodu kullanın. Ve değerlerini ayarlamak için kodu düzenleyin `ExistingClusterName` `ExistingClusterPassword` .
 
     ```csharp
     using Microsoft.Azure.Management.HDInsight.Job;

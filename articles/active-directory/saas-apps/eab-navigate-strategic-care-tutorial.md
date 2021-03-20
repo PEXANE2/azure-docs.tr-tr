@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 08/20/2019
 ms.author: jeedes
 ms.openlocfilehash: d443f1f85caf53a40d5cd80b4f9438427d18a4fa
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92454516"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-eab-navigate-strategic-care"></a>Öğretici Azure Active Directory: EAB 'ye gitmek için çoklu oturum açma (SSO) Tümleştirmesi stratejik bakım
@@ -28,7 +28,7 @@ Bu öğreticide, Azure Active Directory (Azure AD) ile EAB 'ye yönelik bir stra
 
 Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](../manage-apps/what-is-single-sign-on.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -55,7 +55,7 @@ EAB 'nin bir kısmını Azure AD 'ye ekleme hakkında daha fazla şekilde yapıl
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-eab-navigate-strategic-care"></a>Azure AD 'ye yönelik çoklu oturum açmayı yapılandırma ve test etme stratejik bakım
 
-Azure AD SSO 'yu yapılandırın ve test edin EAB, **B. Simon**adlı bir test kullanıcısı kullanarak stratejik bir sorun gider. SSO 'nun çalışması için, bir Azure AD kullanıcısı ve EAB 'deki ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
+Azure AD SSO 'yu yapılandırın ve test edin EAB, **B. Simon** adlı bir test kullanıcısı kullanarak stratejik bir sorun gider. SSO 'nun çalışması için, bir Azure AD kullanıcısı ve EAB 'deki ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
 
 Azure AD SSO 'yu yapılandırmak ve test etmek için EAB ile ilgili ayrıntılı gezinin aşağıdaki yapı taşlarını izleyin:
 

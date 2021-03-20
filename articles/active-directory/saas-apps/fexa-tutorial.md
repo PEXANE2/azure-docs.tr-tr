@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 08/25/2020
 ms.author: jeedes
 ms.openlocfilehash: 4d28b24b9e10110e660d75f754f602ffa3c77c5b
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92453578"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-fexa"></a>Öğretici: Fexa ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
@@ -28,7 +28,7 @@ Bu öğreticide, Fexa 'nın Azure Active Directory (Azure AD) ile nasıl tümle�
 
 Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](../manage-apps/what-is-single-sign-on.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -57,7 +57,7 @@ Fexa 'nın tümleştirmesini Azure AD ile yapılandırmak için, galerinizden y�
 
 ## <a name="configure-and-test-azure-ad-sso-for-fexa"></a>Fexa için Azure AD SSO 'yu yapılandırma ve test etme
 
-**B. Simon**adlı bir test kullanıcısı kullanarak Fexa Ile Azure AD SSO 'yu yapılandırın ve test edin. SSO 'nun çalışması için, Fexa içindeki bir Azure AD kullanıcısı ve ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
+**B. Simon** adlı bir test kullanıcısı kullanarak Fexa Ile Azure AD SSO 'yu yapılandırın ve test edin. SSO 'nun çalışması için, Fexa içindeki bir Azure AD kullanıcısı ve ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
 
 Azure AD SSO 'yu Fexa ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
 

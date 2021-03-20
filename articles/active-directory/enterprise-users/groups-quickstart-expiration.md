@@ -15,10 +15,10 @@ ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a6bc76214ca2bedfc66ad3165cafe904584d42db
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96546327"
 ---
 # <a name="quickstart-set-microsoft-365-groups-to-expire-in-azure-active-directory"></a>Hızlı başlangıç: Azure Active Directory Microsoft 365 grupları sona ermek üzere ayarla
@@ -55,7 +55,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](htt
 
 ## <a name="set-group-expiration"></a>Grup süre sonunu ayarlama
 
-1. [Azure Portal](https://portal.azure.com)oturum açın, süre sonu **Azure Active Directory**  >  **Groups**  >  ayarlarını açmak için Azure Active Directory grupları **süre sonu** ' nu seçin.
+1. [Azure Portal](https://portal.azure.com)oturum açın, süre sonu   >    >  ayarlarını açmak için Azure Active Directory grupları **süre sonu** ' nu seçin.
   
    ![Grup için süre sonu ayarları sayfası](./media/groups-quickstart-expiration/expiration-settings.png)
 
@@ -63,7 +63,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](htt
 
 3. Sahibi olmayan gruplar için sona erme bildirimlerinin gönderileceği e-posta adresini girin.
 
-4. Bu hızlı başlangıç için, **bu Microsoft 365 gruplarının tümünün kullanım süresini etkinleştir** olarak ayarlayın. **All**
+4. Bu hızlı başlangıç için, **bu Microsoft 365 gruplarının tümünün kullanım süresini etkinleştir** olarak ayarlayın. 
 
 5. İşiniz tamamlandığında süre sonu ayarlarını kaydetmek için **Kaydet**'i seçin.
 
@@ -80,7 +80,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](htt
 ### <a name="to-turn-off-user-creation-for-groups"></a>Kullanıcılar için grup oluşturma özelliğini kapatmak için
 
 1. **Azure Active Directory**  >  **grupları**  >  **genel**' i seçin. 
-2. **Kullanıcılar, Azure portalları 'Nda Hayır olarak Microsoft 365 grupları oluşturabilir** . **No**
+2. **Kullanıcılar, Azure portalları 'Nda Hayır olarak Microsoft 365 grupları oluşturabilir** . 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

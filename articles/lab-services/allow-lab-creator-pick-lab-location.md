@@ -4,10 +4,10 @@ description: Bu makalede laboratuvar hesabı yöneticisinin laboratuvar oluştur
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 3b6c2d83414b1abc763755fbf15402b122c2186b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85444208"
 ---
 # <a name="allow-lab-creator-to-pick-location-for-the-lab-in-azure-lab-services"></a>Laboratuvar oluşturucusunun Azure Lab Services laboratuvar için konum seçmesine izin ver
@@ -41,7 +41,7 @@ Bu senaryoda, **Laboratuvar oluşturucunun laboratuvar konumunu seçmesini Izin 
 
 ![Laboratuvar konumu yok](./media/allow-lab-creator-pick-lab-location/lab-no-location.png)
 
-Ardından, laboratuvar oluşturucuları (eğitimciler) laboratuvar için bir konum seçme seçeneği görmez. Bunlar için kullanılabilir her boyut seçeneği için saat başına fiyat görüntülenir. Laboratuvar oluşturduklarında, laboratuvar hesaplarının bulunduğu Azure bölgesi ile aynı konumdaki bir Azure bölgesinde oluşturulur. Örneğin, laboratuvar hesabı **Batı ABD**ise, laboratuvar **Orta Güney ABD** oluşturulmuş olabilir ancak **Kanada Doğu**oluşturulmaz. Konumda olduğu gibi seçtiğimiz bölge hakkında hiçbir şeyin garantisi vermeyiz. Bir boyut Şu anda kısıtlanmamışsa, laboratuvar Oluşturucu normalde desteklediğimiz ancak şu anda kullanılamayan boyutları görebilecekleri bir onay kutusu görür. 
+Ardından, laboratuvar oluşturucuları (eğitimciler) laboratuvar için bir konum seçme seçeneği görmez. Bunlar için kullanılabilir her boyut seçeneği için saat başına fiyat görüntülenir. Laboratuvar oluşturduklarında, laboratuvar hesaplarının bulunduğu Azure bölgesi ile aynı konumdaki bir Azure bölgesinde oluşturulur. Örneğin, laboratuvar hesabı **Batı ABD** ise, laboratuvar **Orta Güney ABD** oluşturulmuş olabilir ancak **Kanada Doğu** oluşturulmaz. Konumda olduğu gibi seçtiğimiz bölge hakkında hiçbir şeyin garantisi vermeyiz. Bir boyut Şu anda kısıtlanmamışsa, laboratuvar Oluşturucu normalde desteklediğimiz ancak şu anda kullanılamayan boyutları görebilecekleri bir onay kutusu görür. 
 
 ## <a name="in-virtual-network-and-location-selection-isnt-allowed"></a>Sanal ağ ve konum seçimine izin verilmiyor
 Bu senaryoda, laboratuvar hesabı için bir eş sanal ağı seçtiğiniz için laboratuvar **oluşturucusunun laboratuvar konumunu seçmesine Izin ver** seçeneği devre dışı bırakıldı. Daha sonra laboratuvar oluşturucuları, önceki seçenekle aynı ekranı görür. Tüm VM 'Lerin sanal ağla aynı Azure bölgesinde olması gerektiğinden, laboratuvar sanal ağın içinde bulunduğu aynı Azure bölgesinde oluşturulacaktır. Belirli bir bölge bir boyut için kısıtlanmamışsa boyut kullanılamaz olarak görünür. 
@@ -57,7 +57,7 @@ Bir konum kısıtlanmamışsa, varsayılan olarak listede gösterilmez. Açılan
 
 ![Kullanılamayan konumları göster](./media/allow-lab-creator-pick-lab-location/show-unavailable-locations.png)
 
-## <a name="cost"></a>Cost
+## <a name="cost"></a>Maliyet
 Daha önce, fiyatlandırma, laboratuvar için seçtiğiniz VM boyutunu temel alır. Artık Fiyat, Işletim sistemi (OS), boyut ve konum birleşimini temel alır. 
 
 ## <a name="next-steps"></a>Sonraki adımlar

@@ -4,10 +4,10 @@ description: Azure VM 'de SQL Server için geçici silmenin ve Azure VM iş yük
 ms.topic: conceptual
 ms.date: 04/27/2020
 ms.openlocfilehash: 2a442997d426ff0bf4c74b0b45f7657cc0593b82
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91254304"
 ---
 # <a name="soft-delete-for-sql-server-in-azure-vm-and-sap-hana-in-azure-vm-workloads"></a>Azure VM 'de SQL Server ve Azure VM iş yükleri SAP HANA için geçici silme
@@ -33,7 +33,7 @@ Azure Backup artık Azure VM 'de SQL Server için geçici silme ve Azure VM iş 
 
    ![Geçici silinen öğeler](./media/soft-delete-sql-saphana-in-azure-vm/soft-deleted-items.png)
 
-4. Geçici olarak silinen DB 'yi geri yüklemek için önce silinmesi gerekir. Silmeyi geri almak için, geçici olarak silinen DB 'yi seçin ve sonra **silmeyi geri al**seçeneğini belirleyin.
+4. Geçici olarak silinen DB 'yi geri yüklemek için önce silinmesi gerekir. Silmeyi geri almak için, geçici olarak silinen DB 'yi seçin ve sonra **silmeyi geri al** seçeneğini belirleyin.
 
    ![Veritabanını geri al](./media/soft-delete-sql-saphana-in-azure-vm/undelete-database.png)
 
@@ -64,7 +64,7 @@ Azure PowerShell kullanımı için adım sırası, yukarıda özetlenen Azure po
 Disable-AzRecoveryServicesBackupProtection -Item $myBkpItem -RemoveRecoveryPoints -VaultId $myVaultID -Force
 ```
 
-Yedekleme öğesinin **DeleteState** 'ı **Notdeleted** iken **tobedeleted**olarak değiştirilecek. Yedekleme verileri 14 gün boyunca tutulacaktır. Silme işlemini geri almak isterseniz geri alma-silme gerçekleştirilmelidir.
+Yedekleme öğesinin **DeleteState** 'ı **Notdeleted** iken **tobedeleted** olarak değiştirilecek. Yedekleme verileri 14 gün boyunca tutulacaktır. Silme işlemini geri almak isterseniz geri alma-silme gerçekleştirilmelidir.
 
 ### <a name="undoing-the-deletion-operation-using-azure-powershell"></a>Azure PowerShell kullanarak silme işlemini geri alma
 
@@ -82,7 +82,7 @@ Ardından, [Undo-Azrecoveryservicesbackupıtemsilinmeye](/powershell/module/az.r
 Undo-AzRecoveryServicesBackupItemDeletion -Item $myBKpItem -VaultId $myVaultID -Force
 ```
 
-Yedekleme öğesinin **DeleteState** öğesi **notdeleted**olarak döndürülür. Ancak koruma hala durdurulmuş. Korumayı yeniden etkinleştirmek için yedeklemeyi sürdürür.
+Yedekleme öğesinin **DeleteState** öğesi **notdeleted** olarak döndürülür. Ancak koruma hala durdurulmuş. Korumayı yeniden etkinleştirmek için yedeklemeyi sürdürür.
 
 ## <a name="how-to-disable-soft-delete"></a>Geçici silme devre dışı bırakma
 

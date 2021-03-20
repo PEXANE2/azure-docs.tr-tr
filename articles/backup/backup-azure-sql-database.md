@@ -4,10 +4,10 @@ description: Bu makalede SQL Server Azure 'a nasıl yedekleyeceğiniz açıklanm
 ms.topic: conceptual
 ms.date: 06/18/2019
 ms.openlocfilehash: 510d9637031928e31abaa5f82a5bf58c6ef44719
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91316859"
 ---
 # <a name="about-sql-server-backup-in-azure-vms"></a>Azure VM'lerindeki SQL Server Backup hakkında
@@ -66,7 +66,7 @@ Diğer tüm sürümler için aşağıdaki adımlarla izinleri onarın:
 
       ![Oturum aç-yeni iletişim kutusunda ara ' yı seçin.](./media/backup-azure-sql-database/new-login-search.png)
 
-  4. Windows sanal hizmet hesabı **NT SERVICE\AzureWLBackupPluginSvc** , sanal makine kaydı ve SQL bulma aşaması sırasında oluşturulmuştur. **Seçilecek nesne adını girin**bölümünde gösterildiği gibi hesap adını girin. Adı çözümlemek için **adları denetle** ' yi seçin. **Tamam**’ı seçin.
+  4. Windows sanal hizmet hesabı **NT SERVICE\AzureWLBackupPluginSvc** , sanal makine kaydı ve SQL bulma aşaması sırasında oluşturulmuştur. **Seçilecek nesne adını girin** bölümünde gösterildiği gibi hesap adını girin. Adı çözümlemek için **adları denetle** ' yi seçin. **Tamam**’ı seçin.
 
       ![Bilinmeyen hizmet adını çözümlemek için adları denetle ' yi seçin](./media/backup-azure-sql-database/check-name.png)
 
@@ -103,7 +103,7 @@ SQL Server örneğine **NT AUTHORITY\SYSTEM** ve **NT Service\AzureWLBackupPlugi
 
     ![SSMS 'de rol seçme](media/backup-azure-sql-database/sql-2k8-server-roles-ssms.png)
 
-6. *Duruma*git. Veritabanı altyapısına bağlanma ve oturum açma Iznini *etkin*olarak *verin* .
+6. *Duruma* git. Veritabanı altyapısına bağlanma ve oturum açma Iznini *etkin* olarak *verin* .
 
     ![SSMS 'de izin verme](media/backup-azure-sql-database/sql-2k8-grant-permission-ssms.png)
 

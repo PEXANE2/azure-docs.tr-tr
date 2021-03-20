@@ -12,10 +12,10 @@ ms.date: 02/10/2021
 ms.author: gasinh
 ms.subservice: B2C
 ms.openlocfilehash: cf441108c9fd0ae87f265604f6f0706d92516746
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "101646563"
 ---
 # <a name="tutorial-configure-microsoft-dynamics-365-fraud-protection-with-azure-active-directory-b2c"></a>Öğretici: Azure Active Directory B2C ile Microsoft Dynamics 365 sahtekarlık korumasını yapılandırma
@@ -56,7 +56,7 @@ Aşağıdaki mimari diyagram uygulamayı gösterir.
 
 ![Görüntüde Microsoft dynamics365 sahtekarlık koruma mimarisi diyagramı gösterilmektedir](./media/partner-dynamics365-fraud-protection/microsoft-dynamics-365-fraud-protection-diagram.png)
 
-|Adım | Açıklama |
+|Adım | Description |
 |:-----| :-----------|
 | 1. | Kullanıcı bir oturum açma sayfasına ulaşır. Kullanıcılar yeni bir hesap oluşturmak ve sayfaya bilgi girmek için kaydol ' u seçer. Azure AD B2C Kullanıcı özniteliklerini toplar.
 | 2. | Azure AD B2C orta katman API 'sini çağırır ve Kullanıcı özniteliklerine geçirir.

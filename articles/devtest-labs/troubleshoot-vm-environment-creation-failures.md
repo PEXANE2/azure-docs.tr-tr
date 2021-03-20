@@ -4,22 +4,22 @@ description: Azure DevTest Labs ' de sanal makine (VM) ve ortam oluşturma hatal
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: b7d3f3ad34d8a5bb48607816623c67121d21d78c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85476487"
 ---
 # <a name="troubleshoot-virtual-machine-vm-and-environment-creation-failures-in-azure-devtest-labs"></a>Azure DevTest Labs 'de sanal makine (VM) ve ortam oluşturma hatalarıyla ilgili sorunları giderme
 DevTest Labs, bir makine adı geçersizse veya bir laboratuvar ilkesini ihlal etmek üzere olduğunuzda size uyarı verir. Bazen, `X` Laboratuvar sanal makinenizin veya ortam durumunun bir yanındaki kırmızı olduğunu bildiren bir sorun olduğunu bildiren bir hata olduğunu görürsünüz.  Bu makalede, temeldeki sorunu bulmak ve ileride sorunu önlemek için kullanabileceğiniz birkaç el yer almaktadır.
 
 ## <a name="portal-notifications"></a>Portal bildirimleri
-Azure portal kullanıyorsanız, **bildirim paneli**' ne ilk baktığımız olur.  Ana komut çubuğunda bulunan bildirimler paneli, **Bell simgesine**tıklayarak, laboratuvar VM 'si veya ortam oluşturma işleminin başarılı olup olmadığını bildirir.  Bir hata oluşursa, oluşturma hatasıyla ilişkili hata iletisini görürsünüz. Ayrıntılar genellikle sorunu çözmenize yardımcı olacak daha fazla bilgi verir. Aşağıdaki örnekte, sanal makine oluşturma, çekirdekler tükentiğinden başarısız oldu. Ayrıntılı ileti, sorunu nasıl düzelteceğinizi ve çekirdek kota artışı isteyeceğini size bildirir.
+Azure portal kullanıyorsanız, **bildirim paneli**' ne ilk baktığımız olur.  Ana komut çubuğunda bulunan bildirimler paneli, **Bell simgesine** tıklayarak, laboratuvar VM 'si veya ortam oluşturma işleminin başarılı olup olmadığını bildirir.  Bir hata oluşursa, oluşturma hatasıyla ilişkili hata iletisini görürsünüz. Ayrıntılar genellikle sorunu çözmenize yardımcı olacak daha fazla bilgi verir. Aşağıdaki örnekte, sanal makine oluşturma, çekirdekler tükentiğinden başarısız oldu. Ayrıntılı ileti, sorunu nasıl düzelteceğinizi ve çekirdek kota artışı isteyeceğini size bildirir.
 
 ![Azure portal bildirimi](./media/troubleshoot-vm-environment-creation-failures/portal-notification.png)
 
 ### <a name="vm-in-corruption-state"></a>Bozulma durumunda VM
-Laboratuvardaki sanal makinenizin durumunu **bozuk**olarak görürseniz, temeldeki VM, kullanıcının **sanal makineler** sayfasından (DevTest Labs sayfasından değil) gidebileceği **sanal makine** sayfasından silinmiş olabilir. VM 'yi laboratuvardan silerek DevTest Labs 'de laboratuvarınızı temizleyin. Ardından, VM 'nizi laboratuvarda yeniden oluşturun. 
+Laboratuvardaki sanal makinenizin durumunu **bozuk** olarak görürseniz, temeldeki VM, kullanıcının **sanal makineler** sayfasından (DevTest Labs sayfasından değil) gidebileceği **sanal makine** sayfasından silinmiş olabilir. VM 'yi laboratuvardan silerek DevTest Labs 'de laboratuvarınızı temizleyin. Ardından, VM 'nizi laboratuvarda yeniden oluşturun. 
 
 ![VM bozuk durumda](./media/troubleshoot-vm-environment-creation-failures/vm-corrupted-state.png)
 

@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 09/14/2020
 ms.author: mbullwin
 ms.openlocfilehash: fe3b87c733f54d8bd52c4d973977e3c8cbfefe19
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/14/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92043230"
 ---
 # <a name="how-to-onboard-your-metric-data-to-metrics-advisor"></a>Nasıl yapılır: ölçüm verileri ölçüm Danışmanı 'na ekleme
@@ -52,7 +52,7 @@ Kısmi verilerin yüklenmesini önlemek için iki yaklaşım önerilir:
 Daha sonra, zaman serisi veri kaynağınızı bağlamak için bir parametre kümesi girirsiniz. 
 * **Kaynak türü**: zaman serisi verilerinizin depolandığı veri kaynağının türü.
 * **Ayrıntı düzeyi**: zaman serisi verilerinizde ardışık veri noktaları arasındaki Aralık. Şu anda ölçüm Danışmanı şunları destekler: yıllık, aylık, haftalık, günlük, saatlik ve özel. Özelleştirme seçeneğinin desteklediği en düşük Aralık 60 saniyedir.
-  * **Saniye**: *Granularityname* 'in *özelleştirmeye*ayarlandığı saniye sayısı.
+  * **Saniye**: *Granularityname* 'in *özelleştirmeye* ayarlandığı saniye sayısı.
 * Verilerin alınması **(UTC)**: veri alımı için temel başlangıç zamanı. *Startoffsetınseconds* genellikle veri tutarlılığı sağlamak üzere bir konum eklemek için kullanılır.
 
 Ardından, veri kaynağı için bağlantı bilgilerini ve verileri gerekli şemaya dönüştürmek için kullanılan özel sorguları belirtmeniz gerekir. Diğer alanlarla ilgili ayrıntılı bilgi edinmek ve farklı türlerdeki veri kaynaklarını bağlamak için bkz. [farklı veri kaynaklarından veri akışları ekleme](../data-feeds-from-different-sources.md).
@@ -75,14 +75,14 @@ Bir veri noktasının zaman damgası atlanırsa, ölçüm Danışmanı veri nokt
 |Seçim  |Açıklama  |Notlar  |
 |---------|---------|---------|
 | **Görünen ad** | Özgün sütun adı yerine çalışma alanınızda görüntülenecek ad. | |
-|**Zaman damgası**     | Bir veri noktasının zaman damgası. Atlanırsa, ölçüm Danışmanı veri noktasının yerine kullanıldığı zaman damgasını kullanır. Her veri akışı için zaman damgası olarak en fazla bir sütun belirtebilirsiniz.        | İsteğe bağlı. En fazla bir sütun ile belirtilmelidir. Bir **sütunu alırsanız zaman damgası hatası olarak belirtilemez** , yinelenen zaman damgaları için sorgunuzu veya veri kaynağınızı denetleyin.      |
+|**İlişkin**     | Bir veri noktasının zaman damgası. Atlanırsa, ölçüm Danışmanı veri noktasının yerine kullanıldığı zaman damgasını kullanır. Her veri akışı için zaman damgası olarak en fazla bir sütun belirtebilirsiniz.        | İsteğe bağlı. En fazla bir sütun ile belirtilmelidir. Bir **sütunu alırsanız zaman damgası hatası olarak belirtilemez** , yinelenen zaman damgaları için sorgunuzu veya veri kaynağınızı denetleyin.      |
 |**Measure**     |  Veri akışındaki sayısal değerler. Her veri akışı için birden çok ölçü belirtebilirsiniz, ancak en az bir sütun ölçü olarak seçilmelidir.        | En az bir sütunla belirtilmelidir.        |
 |**Boyut**     | Kategorik değerler. Farklı değerlerin bir birleşimi belirli bir tek boyutlu zaman serisini tanımlar, örneğin: ülke, dil, kiracı. Boyut olarak sıfır veya daha fazla sütun seçebilirsiniz. Note: dize olmayan bir sütunu boyut olarak seçerken dikkatli olun. | İsteğe bağlı.        |
 |**Yoksay**     | Seçili sütunu yoksayın.        | İsteğe bağlı. Aşağıdaki metni inceleyin.       |
 
-Sütunları yoksaymak istiyorsanız, sorgunuzu veya veri kaynağınızı bu sütunları hariç tutmak için güncelleştirmenizi öneririz. Sütunları **Yoksay** ' ı ve sonra da belirli sütunlarda **Yoksay** ' ı kullanarak sütunları yoksayabilirsiniz. Bir sütun bir boyut olmalıdır ve yanlışlıkla *yoksayıldı*olarak ayarlandıysa, ölçüm Danışmanı kısmi verileri geri alabilir. Örneğin, Sorgunuzdaki verilerin aşağıdaki gibi olduğunu varsayalım:
+Sütunları yoksaymak istiyorsanız, sorgunuzu veya veri kaynağınızı bu sütunları hariç tutmak için güncelleştirmenizi öneririz. Sütunları **Yoksay** ' ı ve sonra da belirli sütunlarda **Yoksay** ' ı kullanarak sütunları yoksayabilirsiniz. Bir sütun bir boyut olmalıdır ve yanlışlıkla *yoksayıldı* olarak ayarlandıysa, ölçüm Danışmanı kısmi verileri geri alabilir. Örneğin, Sorgunuzdaki verilerin aşağıdaki gibi olduğunu varsayalım:
 
-| Satır KIMLIĞI | Zaman damgası | Ülke | Dil | Gelir |
+| Satır KIMLIĞI | Timestamp | Ülke | Dil | Gelir |
 | --- | --- | --- | --- | --- |
 | 1 | 2019/11/10 | Çin | ZH-CN | 10000 |
 | 2 | 2019/11/10 | Çin | EN-US | 1000 |
@@ -90,7 +90,7 @@ Sütunları yoksaymak istiyorsanız, sorgunuzu veya veri kaynağınızı bu süt
 | 4 | 2019/11/11 | ABD | EN-US | 23000 |
 | ... | ...| ... | ... | ... |
 
-*Ülke* bir boyuttur ve *dil* *yoksayıldı*olarak ayarlandıysa, ilk ve ikinci satır aynı boyutlara sahip olur. Ölçüm Danışmanı, iki satırdaki bir değeri rastgele kullanacaktır. Ölçüm Danışmanı bu durumda satırları toplamayacak.
+*Ülke* bir boyuttur ve *dil* *yoksayıldı* olarak ayarlandıysa, ilk ve ikinci satır aynı boyutlara sahip olur. Ölçüm Danışmanı, iki satırdaki bir değeri rastgele kullanacaktır. Ölçüm Danışmanı bu durumda satırları toplamayacak.
 
 ### <a name="automatic-roll-up-settings"></a>Otomatik toplama ayarları
 
@@ -107,7 +107,7 @@ Aşağıdaki senaryoları göz önünde bulundurun:
 
 * *Verilerim zaten toplandı ve boyut değeri şu şekilde gösteriliyor: NULL veya boş (varsayılan), yalnızca boş, diğerleri.*
 
-    Bu seçenek, satırlar zaten toplandığından, ölçüm Danışmanı 'Nın verileri toplaması gerektiği anlamına gelir. Örneğin, *yalnızca null*' ı seçerseniz, aşağıdaki örnekteki ikinci veri satırı, tüm ülkelerin ve *en-US*dilinin bir toplamı olarak görülecektir. *ülke* için boş bir değer olan dördüncü veri satırı, tamamlanmamış verileri gösterebilen sıradan bir satır olarak görülecektir.
+    Bu seçenek, satırlar zaten toplandığından, ölçüm Danışmanı 'Nın verileri toplaması gerektiği anlamına gelir. Örneğin, *yalnızca null*' ı seçerseniz, aşağıdaki örnekteki ikinci veri satırı, tüm ülkelerin ve *en-US* dilinin bir toplamı olarak görülecektir. *ülke* için boş bir değer olan dördüncü veri satırı, tamamlanmamış verileri gösterebilen sıradan bir satır olarak görülecektir.
     
     | Ülke | Dil | Gelir |
     |---------|----------|--------|
@@ -118,21 +118,21 @@ Aşağıdaki senaryoları göz önünde bulundurun:
 
 * *Sum/max/min/AVG/Count değerini hesaplayarak, verileri toplamak için ölçüm Danışmanı gerekir <some string>*
 
-    Cosmos DB veya Azure Blob depolama gibi bazı veri kaynakları, *grupla* veya *küp*gibi belirli hesaplamaları desteklemez. Ölçüm Danışmanı, alma sırasında otomatik olarak bir veri küpü oluşturmak için toplama seçeneği sunar.
+    Cosmos DB veya Azure Blob depolama gibi bazı veri kaynakları, *grupla* veya *küp* gibi belirli hesaplamaları desteklemez. Ölçüm Danışmanı, alma sırasında otomatik olarak bir veri küpü oluşturmak için toplama seçeneği sunar.
     Bu seçenek, seçtiğiniz algoritmayı kullanarak toplaması hesaplamak için ölçüm Danışmanı gerekir ve ölçüm Danışmanı 'nda toplaması temsil etmek için belirtilen dizeyi kullanırsınız. Bu, veri kaynağınızdaki verilerin hiçbirini değiştirmez.
     Örneğin, boyut (ülke, bölge) ile satış ölçümlerini temsil eden bir zaman serisi kümesi olduğunu varsayalım. Belirli bir zaman damgası için aşağıdaki gibi görünebilir:
 
 
-    | Ülke       | Bölge           | Sales |
+    | Ülke       | Region           | Sales |
     |---------------|------------------|-------|
     | Kanada        | Alberta          | 100   |
     | Kanada        | British Columbia | 500   |
     | Birleşik Devletler | Montana          | 100   |
 
 
-    *Sum*Ile otomatik toplamayı etkinleştirdikten sonra, ölçüm Danışmanı boyut birleşimlerini hesaplar ve veri alımı sırasında ölçümleri toplayın. Sonuç şu olabilir:
+    *Sum* Ile otomatik toplamayı etkinleştirdikten sonra, ölçüm Danışmanı boyut birleşimlerini hesaplar ve veri alımı sırasında ölçümleri toplayın. Sonuç şu olabilir:
 
-    | Ülke       | Bölge           | Sales |
+    | Ülke       | Region           | Sales |
     | ------------ | --------------- | ---- |
     | Kanada        | Alberta          | 100   |
     | NULL          | Alberta          | 100   |
@@ -188,7 +188,7 @@ Alma hatası ayrıntılarını denetlemek için:
 2. **Durum** ' a tıkladıktan sonra **başarısız** veya **hata**' ı seçin.
 3. Başarısız bir alımı üzerine gelin ve görüntülenen Ayrıntılar iletisini görüntüleyin.
 
-:::image type="content" source="../media/datafeeds/check-failed-ingestion.png" alt-text="Alma ilerleme çubuğu":::
+:::image type="content" source="../media/datafeeds/check-failed-ingestion.png" alt-text="Başarısız alımı denetle":::
 
 *Hatalı* durum, bu veri kaynağı için alma işleminin daha sonra yeniden deneneceği anlamına gelir.
 Bir *hata* durumu, ölçüm Danışmanı 'nın veri kaynağı için yeniden denenmeyeceğini gösterir. Verileri yeniden yüklemek için el ile doldurma/yeniden yükleme tetiklemeniz gerekir.

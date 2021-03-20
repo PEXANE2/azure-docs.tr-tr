@@ -7,10 +7,10 @@ ms.date: 02/08/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: 87bb2cc53ce056552e8f44aac4ade96e603a8787
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89230050"
 ---
 # <a name="connect-to-windows-virtual-desktop-with-the-ios-client"></a>İOS istemcisiyle Windows sanal masaüstüne bağlanma
@@ -39,8 +39,8 @@ Bir akışa abone olmak için:
    - US Gov portalı üzerinden bağlanmak için kullanın <https://rdweb.wvd.azure.us/api/arm/feeddiscovery> .
 3. **İleri**' ye dokunun.
 4. İstendiğinde kimlik bilgilerinizi sağlayın.
-   - **Kullanıcı adı**için, Kullanıcı adına kaynaklara erişim izni verin.
-   - **Parola**için Kullanıcı adıyla ilişkili parolayı verin.
+   - **Kullanıcı adı** için, Kullanıcı adına kaynaklara erişim izni verin.
+   - **Parola** için Kullanıcı adıyla ilişkili parolayı verin.
    - Ayrıca, yöneticinizin kimlik doğrulamasını bu şekilde yapılandırdıysa ek etmenler sağlamanız istenebilir.
 5. **Kaydet**'e dokunun.
 

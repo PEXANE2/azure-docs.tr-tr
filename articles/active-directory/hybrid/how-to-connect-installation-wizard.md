@@ -18,10 +18,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 9d81836b47acb19f624075480aafef74c9c0934c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91306132"
 ---
 # <a name="azure-ad-connect-sync-running-the-installation-wizard-a-second-time"></a>Eşitleme Azure AD Connect: Yükleme Sihirbazı 'nı ikinci kez çalıştırma
@@ -30,7 +30,7 @@ Azure AD Connect Yükleme Sihirbazı 'nı ilk kez çalıştırdığınızda yük
 >[!IMPORTANT]
 >Bir eşitleme sürerken Yükleme Sihirbazı 'nı çalıştıracağınızı unutmayın.  Sihirbazı başlatmadan önce lütfen bir eşitlemenin çalışmadığını doğrulayın.
 
-Yükleme sihirbazını **Azure AD Connect**adlı başlangıç menüsünde bulabilirsiniz.
+Yükleme sihirbazını **Azure AD Connect** adlı başlangıç menüsünde bulabilirsiniz.
 
 ![Başlat menüsü](./media/how-to-connect-installation-wizard/startmenu.png)
 
@@ -85,7 +85,7 @@ Durumu değiştirmek için bu seçeneği belirleyin ve onay kutusunu seçin veya
 ![Hazırlama modunun geçerli durumunu da gösteren seçenek](./media/how-to-connect-installation-wizard/stagingmodeenable.png)
 
 ## <a name="change-user-sign-in"></a>Kullanıcı oturum açma değiştirme
-Bu seçenek, Parola karması eşitleme, geçişli kimlik doğrulama veya Federasyon için Kullanıcı oturum açma yöntemini değiştirmenize izin verir. **Yapılandırma yok**olarak değiştiremezsiniz.
+Bu seçenek, Parola karması eşitleme, geçişli kimlik doğrulama veya Federasyon için Kullanıcı oturum açma yöntemini değiştirmenize izin verir. **Yapılandırma yok** olarak değiştiremezsiniz.
 
 Bu seçenek hakkında daha fazla bilgi için bkz. [Kullanıcı oturumu açma](plan-connect-user-signin.md#changing-the-user-sign-in-method).
 

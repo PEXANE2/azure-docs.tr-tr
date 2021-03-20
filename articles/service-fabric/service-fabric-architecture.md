@@ -5,10 +5,10 @@ services: service-fabric
 ms.topic: conceptual
 ms.date: 01/09/2020
 ms.openlocfilehash: 972700dded1841994de9252b4aa4bbc8eaefeaf8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "76024698"
 ---
 # <a name="service-fabric-architecture"></a>Service Fabric mimarisi
@@ -36,7 +36,7 @@ Dağıtılmış bir sistemdeki bir düğüm kümesiyle ilgili nedenlerle, sistem
 
 ## <a name="reliability-subsystem"></a>Güvenilirlik alt sistemi
 
-Güvenilirlik alt sistemi, *Replicator*, *Yük Devretme Yöneticisi*ve *kaynak dengeleyici*kullanımı aracılığıyla bir Service Fabric hizmetinin durumunu yüksek oranda kullanılabilir hale getirme mekanizmasını sağlar.
+Güvenilirlik alt sistemi, *Replicator*, *Yük Devretme Yöneticisi* ve *kaynak dengeleyici* kullanımı aracılığıyla bir Service Fabric hizmetinin durumunu yüksek oranda kullanılabilir hale getirme mekanizmasını sağlar.
 
 * Çoğaltıcı, birincil hizmet çoğaltmasında durum değişikliklerinin otomatik olarak ikincil çoğaltmalara çoğaltılmasını sağlar ve bir hizmet çoğaltma kümesindeki birincil ve ikincil çoğaltmalar arasındaki tutarlılığı sağlar. Çoğaltıcı, çoğaltma kümesindeki çoğaltmalar arasında çekirdek yönetiminden sorumludur. Çoğaltılacak işlemlerin listesini almak için yük devretme birimiyle etkileşime girer ve yeniden yapılandırma Aracısı bunu çoğaltma kümesinin yapılandırması ile birlikte sağlar. Bu yapılandırma, işlemlerin hangi çoğaltmaları çoğaltılacağını gösterir. Service Fabric, hizmet durumunu yüksek oranda kullanılabilir ve güvenilir hale getirmek için programlama modeli API 'SI tarafından kullanılabilen yapı çoğaltıcı adlı varsayılan bir çoğaltıcı sağlar.
 * Yük Devretme Yöneticisi, kümeye düğümler eklendiğinde veya kümeden kaldırıldığında, yük otomatik olarak kullanılabilir düğümler arasında yeniden dağıtılır. Kümedeki bir düğüm başarısız olursa, küme, kullanılabilirliği sürdürmek için hizmet çoğaltmalarını otomatik olarak yeniden yapılandırır.

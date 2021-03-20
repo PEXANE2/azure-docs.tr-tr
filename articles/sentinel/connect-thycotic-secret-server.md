@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 12/13/2020
 ms.author: yelevin
 ms.openlocfilehash: a0056391dddec25511deb7033d37f59db3d835c8
-ms.sourcegitcommit: ca215fa220b924f19f56513fc810c8c728dff420
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/19/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98567987"
 ---
 # <a name="connect-your-thycotic-secret-server-to-azure-sentinel"></a>TH, Cotik gizli sunucunuzu Azure Sentinel 'e bağlama
@@ -31,7 +31,7 @@ Bu makalede, TH, Cotik gizli sunucu gerecinizi Azure Sentinel 'e nasıl bağlaya
 > [!NOTE]
 > Veriler, Azure Sentinel çalıştırdığınız çalışma alanının coğrafi konumunda depolanır.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Azure Sentinel çalışma alanınızda okuma ve yazma izinlerine sahip olmanız gerekir.
 

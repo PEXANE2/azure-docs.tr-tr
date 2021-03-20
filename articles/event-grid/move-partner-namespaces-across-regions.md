@@ -5,10 +5,10 @@ ms.topic: how-to
 ms.custom: subject-moving-resources
 ms.date: 08/20/2020
 ms.openlocfilehash: 6783db6b9bb1c7d48b308234a179925d6f30e281
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89087211"
 ---
 # <a name="move-azure-event-grid-partner-namespaces-to-another-region"></a>Azure Event Grid iş ortağı ad alanlarını başka bir bölgeye taşıyın
@@ -18,20 +18,20 @@ Bu makalede ele alınan üst düzey adımlar aşağıda verilmiştir:
 
 - **İş ortağı ad alanı** kaynağını bir Azure Resource Manager şablonuna dışarı aktarın. Şablondaki olay kanalı kaynakları için tanımları silin. Bir olay kanalının bir müşteriye ait olan iş ortağı konusunun Azure Resource Manager KIMLIĞINE bir başvurusu olabilir. Bu nedenle, hedef bölgedeki şablonu kullanılarak oluşturulamaz.  
 - **İş ortağı ad alanını hedef bölgeye dağıtmak için şablonu kullanın** . Ardından, hedef bölgedeki yeni iş ortağı ad alanında olay kanalları oluşturun. 
-- **Taşıma işleminin tamamlanabilmesi**için, kaynak bölgedeki iş ortağı ad alanını silin. 
+- **Taşıma işleminin tamamlanabilmesi** için, kaynak bölgedeki iş ortağı ad alanını silin. 
 
     > [!NOTE]
     > - Müşteriler doğrudan bir iş ortağı konusu oluşturamadığı için **iş ortağı konularının** Azure Resource Manager bir şablona aktarılması desteklenmez. 
     > - **Iş ortağı kayıtları** genel kaynaklardır (belirli bir bölgeye bağlı değildir), bu nedenle bunları bir bölgeden başka bir bölgeye taşımak geçerli değildir. 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 - Event Grid hizmetinin hedef bölgede kullanılabildiğinden emin olun. [Bölgeye göre kullanılabilen ürünleri](https://azure.microsoft.com/global-infrastructure/services/?products=event-grid&regions=all)görüntüleyin.
 
 ## <a name="prepare"></a>Hazırlama
 Başlamak için iş ortağı ad alanı için bir Kaynak Yöneticisi şablonu dışarı aktarın. 
 
 1. [Azure portalında](https://portal.azure.com) oturum açın.
-2. Üstteki arama çubuğunda **Event Grid iş ortakları**yazın ve sonuç listesinden **Event Grid Iş ortağı ad alanları** ' nı seçin. 
+2. Üstteki arama çubuğunda **Event Grid iş ortakları** yazın ve sonuç listesinden **Event Grid Iş ortağı ad alanları** ' nı seçin. 
 3. Kaynak Yöneticisi şablonuna aktarmak istediğiniz **iş ortağı ad alanını** seçin. 
 4. **Event Grid Iş ortağı ad alanı** sayfasında sol menüdeki **Ayarlar** ' ın altında **şablonu dışarı aktar** ' ı seçin ve ardından araç çubuğunda **İndir** ' i seçin. 
 
@@ -57,17 +57,17 @@ Başlamak için iş ortağı ad alanı için bir Kaynak Yöneticisi şablonu dı
 Hedef bölgede bir iş ortağı ad alanı oluşturmak için şablonu dağıtın. 
 
 1. Azure portal **kaynak oluştur**' u seçin.
-2. **Market 'Te ara**' te, **şablon dağıtımı**yazın ve ardından **ENTER**tuşuna basın.
-3. **Şablon dağıtımı**seçin.
+2. **Market 'Te ara**' te, **şablon dağıtımı** yazın ve ardından **ENTER** tuşuna basın.
+3. **Şablon dağıtımı** seçin.
 4. **Oluştur**’u seçin.
-5. **Düzenleyicide kendi şablonunuzu oluşturun öğesini**seçin.
+5. **Düzenleyicide kendi şablonunuzu oluşturun öğesini** seçin.
 6. **Dosya Yükle**' yi seçin ve ardından son bölümde indirdiğiniz dosyanın **template.js** yüklemek için yönergeleri izleyin.
 7. Şablonu kaydetmek için **Kaydet** ' i seçin. 
 8. **Özel dağıtım** sayfasında, aşağıdaki adımları izleyin: 
-    1. Bir Azure **aboneliği**seçin. 
+    1. Bir Azure **aboneliği** seçin. 
     1. Hedef bölgede var olan bir kaynak grubunu seçin veya bir **kaynak grubu** oluşturun. 
-    1. **Konum**için hedef bölgeyi seçin. Var olan bir kaynak grubunu seçtiyseniz, bu ayar salt okunurdur. 
-    1. **İş ortağı ad alanı adı**için, yeni iş ortağı ad alanı için bir ad girin. 
+    1. **Konum** için hedef bölgeyi seçin. Var olan bir kaynak grubunu seçtiyseniz, bu ayar salt okunurdur. 
+    1. **İş ortağı ad alanı adı** için, yeni iş ortağı ad alanı için bir ad girin. 
     1. İş ortağı kaydının dış KIMLIĞI için, iş ortağı kaydının kaynak KIMLIĞINI şu biçimde girin: `/subscriptions/<Azure subscription ID>/resourceGroups/<resource group name>/providers/Microsoft.EventGrid/partnerRegistrations/<Partner registration name>` .
     1. **Yukarıda belirtilen hüküm ve koşulları kabul ediyorum** onay kutusunu seçin.     
     1. Dağıtım işlemini başlatmak için **gözden geçir + oluştur** ' u seçin. 
@@ -80,7 +80,7 @@ Baştan başlamak istiyorsanız, hedef bölgedeki iş ortağı ad alanını sili
 
 Azure portal kullanarak bir iş ortağı ad alanını silmek için:
 
-1. Azure portal en üstündeki ara penceresinde, **Event Grid Iş ad alanları**yazın ve arama sonuçlarından **Event Grid Iş ortağı ad alanlarını** seçin. 
+1. Azure portal en üstündeki ara penceresinde, **Event Grid Iş ad alanları** yazın ve arama sonuçlarından **Event Grid Iş ortağı ad alanlarını** seçin. 
 2. Silinecek iş ortağı ad alanını seçin ve araç çubuğundan **Sil** ' i seçin. 
 3. İş ortağı ad alanını silmek için silme işlemini **onaylayın** . 
 

@@ -9,10 +9,10 @@ author: tanmaygore
 ms.reviewer: mimckitt
 ms.custom: ''
 ms.openlocfilehash: 33aa088efd7768153d4a17472d82e0826f4ffa6b
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98742650"
 ---
 # <a name="configuring-tls-for-an-application-in-azure"></a>Azure 'da bir uygulama için TLS Yapılandırma
@@ -79,7 +79,7 @@ Uygulamanızın sertifikayı kullanacak şekilde yapılandırılması ve bir HTT
 
    İzinler ( `permissionLevel` öznitelik) aşağıdaki değerlerden birine ayarlanabilir:
 
-   | İzin değeri | Açıklama |
+   | İzin değeri | Description |
    | --- | --- |
    | Limitedoretavated |**(Varsayılan)** Tüm rol işlemlerinde özel anahtara erişim sağlayabilirsiniz. |
    | kaynağa |Yalnızca yükseltilmiş süreçler özel anahtara erişebilir. |

@@ -4,14 +4,14 @@ description: Bir Azure Data Factory işlem hattındaki kopyalama etkinliğini ku
 author: linda33wj
 ms.service: data-factory
 ms.topic: conceptual
-ms.date: 12/18/2020
+ms.date: 03/17/2021
 ms.author: jingwang
-ms.openlocfilehash: 3ee1b1f48d91ba1245c0173d2e00a20778932d35
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 9c274bdfb5854529dbb82bd2d8b7cefdf07390b1
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100367093"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104588911"
 ---
 # <a name="copy-data-from-the-hdfs-server-by-using-azure-data-factory"></a>Azure Data Factory kullanarak, bu sunucudan verileri kopyalama
 
@@ -23,7 +23,7 @@ ms.locfileid: "100367093"
 
 Bu makalede, Hadoop Dağıtılmış Dosya Sistemi (,) sunucusundan verilerin nasıl kopyalanacağı özetlenmektedir. Azure Data Factory hakkında bilgi edinmek için [tanıtım makalesini](introduction.md)okuyun.
 
-## <a name="supported-capabilities"></a>Desteklenen yetenekler
+## <a name="supported-capabilities"></a>Desteklenen özellikler
 
 Aşağıdaki etkinlikler için,
 
@@ -172,7 +172,7 @@ Aşağıdaki özellikler, `storeSettings` Biçim tabanlı kopyalama kaynağında
 | modifiedDatetimeEnd      | Yukarıdakiyle aynıdır.  
 | enablePartitionDiscovery | Bölümlenmiş dosyalar için, dosya yolundan bölümlerin ayrıştırıp ayrıştırmayacağını belirtin ve bunları ek kaynak sütunları olarak ekleyin.<br/>İzin verilen değerler **false** (varsayılan) ve **true** şeklindedir. | No                                            |
 | Partitionrootyolu | Bölüm bulma etkin olduğunda, bölümlenmiş klasörleri veri sütunları olarak okumak için mutlak kök yolunu belirtin.<br/><br/>Belirtilmemişse, varsayılan olarak<br/>-Veri kümesinde dosya yolunu veya kaynaktaki dosya listesini kullandığınızda, bölüm kök yolu, veri kümesinde yapılandırılan yoldur.<br/>-Joker karakter klasörü filtresi kullandığınızda, bölüm kök yolu ilk joker karakterin öncesindeki alt yoldur.<br/><br/>Örneğin, veri kümesindeki yolu "root/Folder/Year = 2020/ay = 08/gün = 27" olarak yapılandırdığınız varsayılarak:<br/>-Bölüm kök yolunu "root/Folder/Year = 2020" olarak belirtirseniz, kopyalama etkinliği `month` `day` dosyaların içindeki sütunlara ek olarak, sırasıyla "08" ve "27" değeriyle birlikte iki sütun oluşturur.<br/>-Bölüm kök yolu belirtilmemişse, ek sütun oluşturulmaz. | No                                            |
-| maxConcurrentConnections | Depolama deposuna eşzamanlı olarak bağlanabilecek bağlantı sayısı. Yalnızca veri deposuyla eşzamanlı bağlantıyı sınırlandırmak istediğinizde bir değer belirtin. | No                                            |
+| maxConcurrentConnections | Etkinlik çalışması sırasında veri deposuna kurulan eşzamanlı bağlantıların üst sınırı. Yalnızca eş zamanlı bağlantıları sınırlandırmak istediğinizde bir değer belirtin.| No                                            |
 | ***DistCp ayarları*** |  | |
 | distcpSettings | ,,,, | No |
 | resourceManagerEndpoint | YARN (ancak başka bir kaynak Negotiator) uç noktası | Evet, DistCp kullanılıyorsa |
@@ -533,7 +533,7 @@ Etkinlik özelliklerini silme hakkında daha fazla bilgi için bkz. [Azure Data 
 | resourceManagerEndpoint | YARN Kaynak Yöneticisi uç noktası | Evet, DistCp kullanılıyorsa |
 | tempScriptPath | Temp DistCp komut betiğini depolamak için kullanılan bir klasör yolu. Betik dosyası Data Factory tarafından oluşturulur ve kopyalama işi tamamlandıktan sonra kaldırılır. | Evet, DistCp kullanılıyorsa |
 | distcpOptions | DistCp komutuna ek seçenekler sağlanır. | No |
-| maxConcurrentConnections | Depolama deposuna eşzamanlı olarak bağlanabilecek bağlantı sayısı. Yalnızca veri deposuyla eşzamanlı bağlantıyı sınırlandırmak istediğinizde bir değer belirtin. | No |
+| maxConcurrentConnections | Etkinlik çalışması sırasında veri deposuna kurulan eşzamanlı bağlantıların üst sınırı. Yalnızca eş zamanlı bağlantıları sınırlandırmak istediğinizde bir değer belirtin.| No |
 
 **Örnek: DistCp kullanarak kopyalama etkinliğinde bir kaynak**
 

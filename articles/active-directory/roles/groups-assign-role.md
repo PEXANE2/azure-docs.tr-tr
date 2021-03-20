@@ -14,10 +14,10 @@ ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 816009abb688525cd7663311c79300a6d12cf146
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98742956"
 ---
 # <a name="assign-a-role-to-a-cloud-group-in-azure-active-directory"></a>Azure Active Directory bir bulut grubuna rol atama
@@ -32,7 +32,7 @@ Bir Azure AD rolüne Grup atamak, yalnızca rol atanabilir olan grupların kulla
 
 1. **Azure Active Directory**  >  **Roller ve yöneticiler**' i seçin ve atamak istediğiniz rolü seçin.
 
-1. **_Rol adı_*_ sayfasında > _ atama Ekle ' yi seçin***.
+1. ***Rol adı** _ sayfasında > _ * atama Ekle * * ' yi seçin.
 
    ![Yeni rol atamasını ekleyin](./media/groups-assign-role/add-assignment.png)
 
@@ -40,7 +40,7 @@ Bir Azure AD rolüne Grup atamak, yalnızca rol atanabilir olan grupların kulla
 
     [![Yalnızca atanabilen gruplar yeni bir rol ataması için gösterilir.](./media/groups-assign-role/eligible-groups.png "Yalnızca atanabilen gruplar yeni bir rol ataması için gösterilir.")](./media/groups-assign-role/eligible-groups.png#lightbox)
 
-1. **Ekle**’yi seçin.
+1. **Add (Ekle)** seçeneğini belirleyin.
 
 Rol izinleri atama hakkında daha fazla bilgi için bkz. [kullanıcılara yönetici ve yönetici olmayan roller atama](../fundamentals/active-directory-users-assign-role-azure-portal.md).
 

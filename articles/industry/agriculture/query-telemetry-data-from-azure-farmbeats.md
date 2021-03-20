@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 03/11/2020
 ms.author: sunasing
 ms.openlocfilehash: b9067e2f78c8098d4a21263ac89caf03da631274
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92677485"
 ---
 # <a name="query-ingested-telemetry-data"></a>Sorgusu alınan telemetri verileri
@@ -24,7 +24,7 @@ Bu makaleye devam etmeden önce, IoT cihazlarınızdan farmınts ve giriş algı
 
 Algılayıcı telemetri verilerini almak için alma [Geçmiş telemetri verilerini](ingest-historical-telemetry-data-in-azure-farmbeats.md) ziyaret edin
 
-Devam etmeden önce, API 'Leri kullanarak alınan Telemetriyi sorgulamadığınızda, Farmcts REST API 'Lerini de öğrendiğinizden emin olmanız gerekir. Farmtts API 'Leri hakkında daha fazla bilgi için bkz. [FARMTEMPTS REST API 'leri](rest-api-in-azure-farmbeats.md). **Farmrets Datahub uç noktanıza API istekleri yapabildiğinizden emin olun** .
+Devam etmeden önce, API 'Leri kullanarak alınan Telemetriyi sorgulamadığınızda, Farmcts REST API 'Lerini de öğrendiğinizden emin olmanız gerekir. Farmtts API 'Leri hakkında daha fazla bilgi için bkz. [FARMTEMPTS REST API 'leri](rest-api-in-azure-farmbeats.md). **Farmrets Datahub uç noktanıza API istekleri yapabildiğinizden emin olun**.
 
 ## <a name="query-ingested-sensor-telemetry-data"></a>Sorgu alınan algılayıcı telemetri verileri
 
@@ -115,7 +115,7 @@ Telemetri verileri bir EventHub üzerinde alınır ve sonra işlenir ve Farmtts 
 
 TSI üzerinde verileri görselleştirmek için adımları izleyin:
 
-1. **Azure Portal**  >  **farmrets Datahub kaynak grubu** ' na gidin > **Time Series Insights** ortamı (TSİ-xxxx) > **veri erişim ilkeleri** ' ni seçin. Okuyucu veya katkıda bulunan erişimi olan kullanıcı ekleyin.
+1. **Azure Portal**  >  **farmrets Datahub kaynak grubu** ' na gidin > **Time Series Insights** ortamı (TSİ-xxxx) > **veri erişim ilkeleri**' ni seçin. Okuyucu veya katkıda bulunan erişimi olan kullanıcı ekleyin.
 2. **Time Series Insights** ortamının (TSİ-xxxx) **genel bakış** sayfasına gidin ve **Time Series Insights Explorer URL 'sini** seçin. Artık alınan telemetrisini görselleştirebileceksiniz.
 
 Telemetriyi depolamanın, sorgulayan ve görselleştirmenin yanı sıra, TSI Power BI panosu ile tümleştirmeyi de sağlar. Daha fazla bilgi için [buraya]( https://docs.microsoft.com/azure/time-series-insights/how-to-connect-power-bi) bakın

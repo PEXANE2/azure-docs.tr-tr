@@ -9,10 +9,10 @@ ms.date: 07/31/2019
 ms.author: sharrai
 ms.custom: MVC
 ms.openlocfilehash: a8cb5ec782b5932c13e321b2ba2d6513597fef52
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87422649"
 ---
 # <a name="move-a-recovery-services-vault-and-azure-site-recovery-configuration-to-another-azure-region"></a>Kurtarma Hizmetleri kasasını ve Azure Site Recovery yapılandırmasını başka bir Azure bölgesine taşıma
@@ -33,7 +33,7 @@ Bu belgede şunları yapmanız gerekir:
 > [!IMPORTANT]
 > Şu anda, kurtarma hizmetleri kasasını ve olağanüstü durum kurtarma yapılandırmasını farklı bir bölgeye taşımak için birinci sınıf bir yol yoktur. Bu makale, çoğaltmayı devre dışı bırakma ve yeni bölgede ayarlama sürecinde size rehberlik eder.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Azure VM 'lerini farklı bir bölgeye taşımayı denemeden önce olağanüstü durum kurtarma yapılandırmasını kaldırıp sildiğinizden emin olun. 
 
@@ -56,7 +56,7 @@ Bir sonraki adıma geçmeden önce bu adımı yapmanızı öneririz. VM 'Ler ço
 ## <a name="disable-the-existing-disaster-recovery-configuration"></a>Mevcut olağanüstü durum kurtarma yapılandırmasını devre dışı bırak
 
 1. Kurtarma Hizmetleri kasasına gidin.
-2. **Korunan öğeler**  >  **çoğaltılan öğeler**bölümünde makineye sağ tıklayın ve **çoğaltmayı devre dışı bırak**' ı seçin.
+2. **Korunan öğeler**  >  **çoğaltılan öğeler** bölümünde makineye sağ tıklayın ve **çoğaltmayı devre dışı bırak**' ı seçin.
 3. Taşımak istediğiniz tüm VM 'Ler için bu adımı tekrarlayın.
 
 > [!NOTE]

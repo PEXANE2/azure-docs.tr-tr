@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 01/29/2018
 ms.author: apimpm
 ms.openlocfilehash: 5066169951409fa86aa75a64e8fc6d4189947f27
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92072416"
 ---
 # <a name="how-to-log-events-to-azure-event-hubs-in-azure-api-management"></a>Azure Event Hubs olayları Azure 'da günlüğe kaydetme API Management
@@ -75,7 +75,7 @@ Güncelleştirilmiş ilke yapılandırmasını kaydetmek için **Kaydet** ' e t�
 [Azure Stream Analytics sorguları](../event-hubs/process-data-azure-stream-analytics.md)kullanarak Event Hubs oturum açma önizlemesini yapabilirsiniz. 
 
 1. Azure portal, günlükçü 'nin olayları gönderdiği Olay Hub 'ına gidin. 
-2. **Özellikler**altında **işlem verileri** sekmesini seçin.
+2. **Özellikler** altında **işlem verileri** sekmesini seçin.
 3. **Etkinliklerden gerçek zamanlı** Içgörüleri etkinleştir kartında **keşfet**' i seçin.
 4. **Giriş önizleme** sekmesinde günlüğün önizlemesini görüntüleyebilmelisiniz. Gösterilen veriler güncel değilse, en son olayları görmek için **Yenile** ' yi seçin.
 

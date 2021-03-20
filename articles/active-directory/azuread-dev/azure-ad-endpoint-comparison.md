@@ -14,10 +14,10 @@ ms.reviewer: saeeda, hirsin, jmprieur, sureshja, jesakowi, lenalepa, kkrishna, n
 ms.custom: aaddev
 ROBOTS: NOINDEX
 ms.openlocfilehash: 8f6170de65ae5e1ca8ecb5f7cc8a78f4f194ac41
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/14/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92055299"
 ---
 # <a name="why-update-to-microsoft-identity-platform-v20"></a>Neden Microsoft kimlik platformuna (v2.0) güncelleştirmelisiniz?
@@ -56,7 +56,7 @@ Bir kuruluş adına yapılan yönetici onayı, yine de uygulama için kayıtlı 
 
 ## <a name="scopes-not-resources"></a>Kapsam, kaynak değil
 
-V 1.0 uç noktasını kullanan uygulamalar için, bir uygulama **kaynak**veya belirteç alıcısı olarak davranabilir. Bir kaynak, anladığı sayıda **kapsam** veya **oAuth2Permissions** tanımlayabilir ve bu da istemci uygulamaların belirli bir kapsam kümesi için bu kaynaktan belirteç istemesine izin verir. Microsoft Graph API 'sini bir kaynak örneği olarak düşünün:
+V 1.0 uç noktasını kullanan uygulamalar için, bir uygulama **kaynak** veya belirteç alıcısı olarak davranabilir. Bir kaynak, anladığı sayıda **kapsam** veya **oAuth2Permissions** tanımlayabilir ve bu da istemci uygulamaların belirli bir kapsam kümesi için bu kaynaktan belirteç istemesine izin verir. Microsoft Graph API 'sini bir kaynak örneği olarak düşünün:
 
 * Kaynak tanımlayıcısı veya `AppID URI` : `https://graph.microsoft.com/`
 * Kapsamlar veya `oAuth2Permissions` : `Directory.Read` , vb `Directory.Write` .
@@ -89,7 +89,7 @@ Burada **kapsam** parametresi, uygulamanın hangi kaynak ve izinlerin yetkilendi
 
 ### <a name="offline-access"></a>Çevrimdışı erişim
 
-Microsoft Identity platform uç noktasını kullanan uygulamalar, uygulamalar için yeni bir iyi bilinen izin kullanımını gerektirebilir `offline_access` . Kullanıcı uygulamayı etkin bir şekilde kullanmıyor olsa bile, bir kullanıcı adına, kaynaklara erişmesi gerekiyorsa tüm uygulamaların bu izni istemesi gerekir. Kapsam, kullanıcının `offline_access` kabul etmesi gereken **her zaman verilerinize erişmek**için izin iletişim kutularında kullanıcıya görünür. İzin istemek `offline_access` Web uygulamanızın Microsoft Identity platform uç noktasından OAuth 2,0 refresh_tokens almasını olanaklı hale kullanacaktır. Belirteçleri yenileme, uzun süreli ve genişletilmiş erişim dönemlerinde yeni OAuth 2,0 erişim belirteçleri için değiş tokuş edilebilir.
+Microsoft Identity platform uç noktasını kullanan uygulamalar, uygulamalar için yeni bir iyi bilinen izin kullanımını gerektirebilir `offline_access` . Kullanıcı uygulamayı etkin bir şekilde kullanmıyor olsa bile, bir kullanıcı adına, kaynaklara erişmesi gerekiyorsa tüm uygulamaların bu izni istemesi gerekir. Kapsam, kullanıcının `offline_access` kabul etmesi gereken **her zaman verilerinize erişmek** için izin iletişim kutularında kullanıcıya görünür. İzin istemek `offline_access` Web uygulamanızın Microsoft Identity platform uç noktasından OAuth 2,0 refresh_tokens almasını olanaklı hale kullanacaktır. Belirteçleri yenileme, uzun süreli ve genişletilmiş erişim dönemlerinde yeni OAuth 2,0 erişim belirteçleri için değiş tokuş edilebilir.
 
 Uygulamanız kapsam isteğinde yoksa `offline_access` , yenileme belirteçleri almaz. Bu, OAuth 2,0 yetkilendirme kodu akışında bir yetkilendirme kodu kullandığınızda yalnızca uç noktadan bir erişim belirteci geri alacağınız anlamına gelir `/token` . Bu erişim belirteci kısa bir süre (genellikle bir saat) için geçerli kalır, ancak sonunda süresi dolacak. Bu noktada, uygulamanızın `/authorize` Yeni bir yetkilendirme kodu almak için kullanıcıyı uç noktaya yeniden yönlendirmeniz gerekir. Bu yeniden yönlendirme sırasında, Kullanıcı, uygulama türüne bağlı olarak kimlik bilgilerini yeniden veya reconsent izin vermek zorunda kalabilir.
 
@@ -97,7 +97,7 @@ OAuth 2,0, ve hakkında daha fazla bilgi edinmek için `refresh_tokens` `access_
 
 ### <a name="openid-profile-and-email"></a>OpenID, profile ve email
 
-Geçmişte, Microsoft Identity platform ile en temel OpenID Connect oturum açma akışı, sonuçta elde edilen *id_token*Kullanıcı hakkında çok fazla bilgi sağlayacaktır. Bir id_token talepler kullanıcının adını, tercih edilen Kullanıcı adını, e-posta adresini, nesne KIMLIĞINI ve daha fazlasını içerebilir.
+Geçmişte, Microsoft Identity platform ile en temel OpenID Connect oturum açma akışı, sonuçta elde edilen *id_token* Kullanıcı hakkında çok fazla bilgi sağlayacaktır. Bir id_token talepler kullanıcının adını, tercih edilen Kullanıcı adını, e-posta adresini, nesne KIMLIĞINI ve daha fazlasını içerebilir.
 
 `openid`Kapsamın uygulamanızın erişimi için kullandığı bilgiler artık kısıtlıdır. `openid`Kapsam yalnızca uygulamanızın kullanıcıya oturum açmasını ve Kullanıcı için uygulamaya özel bir tanımlayıcı almasını sağlar. Uygulamanızdaki Kullanıcı hakkında kişisel veriler almak istiyorsanız, uygulamanızın kullanıcıdan ek izinler istemesi gerekir. İki yeni kapsam `email` ve `profile` , ek izin isteme izni sağlayacaktır.
 

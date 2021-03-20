@@ -11,10 +11,10 @@ ms.author: junhan
 ms.custom:
 - 'Role: Cloud Development'
 ms.openlocfilehash: b9d8f0c2a573ba1749b414a389cd7181ddd5f95a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87321692"
 ---
 # <a name="use-azure-iot-tools-for-visual-studio-code-to-send-and-receive-messages-between-your-device-and-iot-hub"></a>Cihazınız ile IoT Hub arasında ileti göndermek ve almak için Azure IoT araçları 'nı kullanın Visual Studio Code
@@ -64,7 +64,7 @@ Cihazdan buluta iletileri izlemek ve buluttan cihaza iletiler göndermek için V
 
 Cihazınızdan IoT Hub 'ınıza gönderilen iletileri izlemek için şu adımları izleyin:
 
-1. Cihazınıza sağ tıklayıp **Izlemeyi Başlat yerleşik olay uç noktasını**seçin.
+1. Cihazınıza sağ tıklayıp **Izlemeyi Başlat yerleşik olay uç noktasını** seçin.
 
 2. İzlenen iletiler **Çıkış**  >  **Azure IoT Hub** görünümünde gösterilir.
 

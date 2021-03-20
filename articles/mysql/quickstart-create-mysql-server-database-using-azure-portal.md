@@ -8,17 +8,17 @@ ms.custom: mvc
 ms.topic: quickstart
 ms.date: 11/04/2020
 ms.openlocfilehash: b8f3a8e06bb27051417205c4dc3141948960bb00
-ms.sourcegitcommit: ca215fa220b924f19f56513fc810c8c728dff420
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/19/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98567798"
 ---
 # <a name="quickstart-create-an-azure-database-for-mysql-server-by-using-the-azure-portal"></a>Hızlı başlangıç: Azure portal kullanarak MySQL için Azure veritabanı sunucusu oluşturma
 
 MySQL için Azure veritabanı, bulutta yüksek oranda kullanılabilir MySQL veritabanlarını çalıştırmak, yönetmek ve ölçeklendirmek için kullandığınız yönetilen bir hizmettir. Bu hızlı başlangıçta, Azure portal kullanarak MySQL için Azure veritabanı tek sunucu oluşturma gösterilmektedir. Ayrıca sunucuya nasıl bağlanagösterdiğini gösterir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 Bir Azure aboneliği gereklidir. Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir Azure hesabı](https://azure.microsoft.com/free/) oluşturun.
 
 ## <a name="create-an-azure-database-for-mysql-single-server"></a>MySQL için Azure veritabanı tek sunucu oluşturma
@@ -27,7 +27,7 @@ Bir Azure aboneliği gereklidir. Azure aboneliğiniz yoksa başlamadan önce [ü
    >[!div class="mx-imgBorder"]
    > :::image type="content" source="./media/quickstart-create-mysql-server-database-using-azure-portal/find-azure-mysql-in-portal.png" alt-text="MySQL için Azure veritabanı 'nı bulun":::
 
-1. **Ekle**’yi seçin.
+1. **Add (Ekle)** seçeneğini belirleyin.
 
 2. **MySQL Için Azure veritabanı dağıtım seçeneğini seçin** sayfasında **tek sunucu**' yı seçin:
    >[!div class="mx-imgBorder"]

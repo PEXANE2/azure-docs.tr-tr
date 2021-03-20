@@ -4,10 +4,10 @@ description: Laboratuvardaki sanal makinelere (VM 'Ler) Kullanıcı tarafından 
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 0677f8bea35cb34735fdcf34e717eea349fad8bf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85480312"
 ---
 # <a name="specify-mandatory-artifacts-for-your-lab-in-azure-devtest-labs"></a>Azure DevTest Labs ' de laboratuvarınız için zorunlu yapıtlar belirtin
@@ -21,7 +21,7 @@ Yalnızca parametresi olmayan yapıtlar zorunlu olanları destekler. Laboratuvar
 Windows ve Linux makineleri için zorunlu yapıtları ayrı ayrı seçebilirsiniz. Ayrıca, bu yapıtları uygulanmasını istediğiniz sıraya göre de sıralayabilirsiniz. 
 
 1. Laboratuvarınızın giriş sayfasında, **Ayarlar**' ın altında **yapılandırma ve ilkeler** ' i seçin. 
-3. **Dış kaynaklar**altında **zorunlu yapıtlar** ' ı seçin. 
+3. **Dış kaynaklar** altında **zorunlu yapıtlar** ' ı seçin. 
 4. **Windows** bölümünde veya **Linux** bölümünde **Düzenle** ' yi seçin. Bu örnek, **Windows** seçeneğini kullanır. 
 
     ![Zorunlu yapıtlar sayfası-Düzenle düğmesi](media/devtest-lab-mandatory-artifacts/mandatory-artifacts-edit-button.png)
@@ -49,7 +49,7 @@ Windows ve Linux makineleri için zorunlu yapıtları ayrı ayrı seçebilirsini
 Bir laboratuvardan zorunlu bir yapıyı silmek için aşağıdaki işlemleri yapın: 
 
 1. **Ayarlar**' ın altında **yapılandırma ve ilkeler '** i seçin. 
-2. **Dış kaynaklar**altında **zorunlu yapıtlar** ' ı seçin. 
+2. **Dış kaynaklar** altında **zorunlu yapıtlar** ' ı seçin. 
 3. **Windows** bölümünde veya **Linux** bölümünde **Düzenle** ' yi seçin. Bu örnek, **Windows** seçeneğini kullanır. 
 4. En üstteki zorunlu yapıt sayısıyla birlikte iletiyi seçin. 
 
@@ -67,9 +67,9 @@ Artık bir laboratuvar kullanıcısı olarak laboratuvarda bir VM oluştururken 
 
 1. Laboratuvarınızın giriş sayfasında, menüden **genel bakış** ' ı seçin.
 2. Laboratuvara bir VM eklemek için **+ Ekle**' yi seçin. 
-3. Bir **temel görüntü**seçin. Bu örnekte **Windows Server, sürüm 1709**kullanılmaktadır.
+3. Bir **temel görüntü** seçin. Bu örnekte **Windows Server, sürüm 1709** kullanılmaktadır.
 4. **Yapılar** için, seçilen zorunlu yapıt sayısıyla ilgili bir ileti görtiğine dikkat edin. 
-5. **Yapıtları**seçin. 
+5. **Yapıtları** seçin. 
 6. Laboratuvarın yapılandırmasında ve ilkelerinde belirttiğiniz **zorunlu yapıtları** görtığınızdan emin olun. 
 
     ![VM oluşturma-zorunlu yapıtlar](media/devtest-lab-mandatory-artifacts/create-vm-artifacts.png)

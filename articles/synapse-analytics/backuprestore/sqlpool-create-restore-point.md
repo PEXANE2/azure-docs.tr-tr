@@ -12,10 +12,10 @@ ms.author: joanpo
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
 ms.openlocfilehash: 21fd20100095040fda9f72b00e17147ff560fbca
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94579547"
 ---
 # <a name="user-defined-restore-points"></a>Kullanıcı tanımlı geri yükleme noktaları
@@ -30,11 +30,11 @@ Kullanıcı tanımlı geri yükleme noktaları, Azure portal aracılığıyla da
 
 2. İçin geri yükleme noktası oluşturmak istediğiniz adanmış SQL havuzuna gidin.
 
-3. Sol bölmeden **genel bakış** ' ı seçin, **+ Yeni geri yükleme noktası** ' nı seçin. Yeni geri yükleme noktası düğmesi etkinleştirilmemişse, adanmış SQL havuzunun duraklatılmadığından emin olun.
+3. Sol bölmeden **genel bakış** ' ı seçin, **+ Yeni geri yükleme noktası**' nı seçin. Yeni geri yükleme noktası düğmesi etkinleştirilmemişse, adanmış SQL havuzunun duraklatılmadığından emin olun.
 
     ![Yeni geri yükleme noktası](../media/sql-pools/create-sqlpool-restore-point-01.png)
 
-4. Kullanıcı tanımlı geri yükleme noktanız için bir ad belirtin ve **Uygula** ' ya tıklayın. Kullanıcı tanımlı geri yükleme noktalarının varsayılan saklama süresi yedi gündür.
+4. Kullanıcı tanımlı geri yükleme noktanız için bir ad belirtin ve **Uygula**' ya tıklayın. Kullanıcı tanımlı geri yükleme noktalarının varsayılan saklama süresi yedi gündür.
 
     ![Geri yükleme noktasının adı](../media/sql-pools/create-sqlpool-restore-point-02.png)
 

@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.custom: subject-armqs
 ms.date: 08/18/2020
 ms.openlocfilehash: 8bd9a45ec7c43d9338dec184afd784d2b163c410
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92735964"
 ---
 # <a name="quickstart-create-an-azure-cache-for-redis-using-an-arm-template"></a>Hızlı başlangıç: ARM şablonunu kullanarak Redsıs için Azure önbelleği oluşturma
@@ -26,8 +26,8 @@ Ortamınız önkoşulları karşılıyorsa ve ARM şablonlarını kullanma hakk�
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-* **Azure aboneliği** : Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
-* **Bir depolama hesabı** : oluşturmak için bkz. [Azure depolama hesabı oluşturma](../storage/common/storage-account-create.md?tabs=azure-portal). Depolama hesabı, tanılama verileri için kullanılır.
+* **Azure aboneliği**: Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
+* **Bir depolama hesabı**: oluşturmak için bkz. [Azure depolama hesabı oluşturma](../storage/common/storage-account-create.md?tabs=azure-portal). Depolama hesabı, tanılama verileri için kullanılır.
 
 ## <a name="review-the-template"></a>Şablonu gözden geçirme
 
@@ -55,18 +55,18 @@ En son şablonları denetlemek için bkz. [Azure hızlı başlangıç şablonlar
     [![Azure’a dağıtın](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-redis-cache%2Fazuredeploy.json)
 1. Aşağıdaki değerleri seçin veya girin:
 
-    * **Abonelik** : veri paylaşımının ve diğer kaynakların oluşturulması için kullanılan bir Azure aboneliğini seçin.
-    * **Kaynak grubu** : yeni bir kaynak grubu oluşturmak Için **Yeni oluştur** ' u seçin veya var olan bir kaynak grubunu seçin.
-    * **Konum** : kaynak grubu için bir konum seçin. Depolama hesabı ve Redo önbelleğinin aynı bölgede olması gerekir. Varsayılan olarak Redsıs Cache, kaynak grubuyla aynı konumu kullanır. Bu nedenle, depolama hesabıyla aynı konumu belirtin.
-    * **Redis Cache adı** : redsıs önbelleği için bir ad girin.
-    * **Mevcut tanılama depolama hesabı** : bir depolama HESABıNıN kaynak kimliğini girin. Söz dizimi `/subscriptions/&lt;SUBSCRIPTION ID>/resourceGroups/&lt;RESOURCE GROUP NAME>/providers/Microsoft.Storage/storageAccounts/&lt;STORAGE ACCOUNT NAME>` şeklindedir.
+    * **Abonelik**: veri paylaşımının ve diğer kaynakların oluşturulması için kullanılan bir Azure aboneliğini seçin.
+    * **Kaynak grubu**: yeni bir kaynak grubu oluşturmak Için **Yeni oluştur** ' u seçin veya var olan bir kaynak grubunu seçin.
+    * **Konum**: kaynak grubu için bir konum seçin. Depolama hesabı ve Redo önbelleğinin aynı bölgede olması gerekir. Varsayılan olarak Redsıs Cache, kaynak grubuyla aynı konumu kullanır. Bu nedenle, depolama hesabıyla aynı konumu belirtin.
+    * **Redis Cache adı**: redsıs önbelleği için bir ad girin.
+    * **Mevcut tanılama depolama hesabı**: bir depolama HESABıNıN kaynak kimliğini girin. Söz dizimi `/subscriptions/&lt;SUBSCRIPTION ID>/resourceGroups/&lt;RESOURCE GROUP NAME>/providers/Microsoft.Storage/storageAccounts/&lt;STORAGE ACCOUNT NAME>` şeklindedir.
 
     Geri kalan ayarlar için varsayılan değeri kullanın.
 1. **yukarıda belirtilen hüküm ve koşulları** ve **satın alma** seçimini kabul ediyorum ' u seçin.
 
 ## <a name="review-deployed-resources"></a>Dağıtılan kaynakları gözden geçirme
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 1. Oluşturduğunuz redo önbelleğini açın.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme

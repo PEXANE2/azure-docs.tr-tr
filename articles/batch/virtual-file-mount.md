@@ -5,10 +5,10 @@ ms.topic: how-to
 ms.custom: devx-track-csharp
 ms.date: 08/13/2019
 ms.openlocfilehash: df03275fdeea88df1a2f2b6e2cda55021497cdf7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89145493"
 ---
 # <a name="mount-a-virtual-file-system-on-a-batch-pool"></a>Bir Batch havuzunda sanal dosya sistemi bağlama
@@ -78,7 +78,7 @@ new PoolAddParameter
 
 ### <a name="azure-blob-file-system"></a>Azure blob dosya sistemi
 
-Diğer bir seçenek de [blobsigortası](../storage/blobs/storage-how-to-mount-container-linux.md)aracılığıyla Azure Blob depolama kullanmaktır. BLOB dosya sistemi bağlamak `AccountKey` için bir veya `SasKey` depolama hesabınız olması gerekir. Bu anahtarları alma hakkında daha fazla bilgi için bkz. [depolama hesabı erişim anahtarlarını yönetme](../storage/common/storage-account-keys-manage.md)veya [paylaşılan ERIŞIM imzaları (SAS) kullanma](../storage/common/storage-sas-overview.md). Blobsigortası kullanma hakkında daha fazla bilgi için bkz. blobsigortası [sorun GIDERME SSS](https://github.com/Azure/azure-storage-fuse/wiki/3.-Troubleshoot-FAQ). Blobsigortası bağlı dizinine varsayılan erişim sağlamak için, görevi **yönetici**olarak çalıştırın. Blobsigortası, dizini Kullanıcı alanında takar ve havuz oluşturulduğunda kök olarak bağlanır. Linux 'ta tüm **yönetici** görevleri köküdür. SIGORTASı modülü için tüm seçenekler, [Sigorta başvurusu sayfasında](https://manpages.ubuntu.com/manpages/xenial/man8/mount.fuse.8.html)açıklanmaktadır.
+Diğer bir seçenek de [blobsigortası](../storage/blobs/storage-how-to-mount-container-linux.md)aracılığıyla Azure Blob depolama kullanmaktır. BLOB dosya sistemi bağlamak `AccountKey` için bir veya `SasKey` depolama hesabınız olması gerekir. Bu anahtarları alma hakkında daha fazla bilgi için bkz. [depolama hesabı erişim anahtarlarını yönetme](../storage/common/storage-account-keys-manage.md)veya [paylaşılan ERIŞIM imzaları (SAS) kullanma](../storage/common/storage-sas-overview.md). Blobsigortası kullanma hakkında daha fazla bilgi için bkz. blobsigortası [sorun GIDERME SSS](https://github.com/Azure/azure-storage-fuse/wiki/3.-Troubleshoot-FAQ). Blobsigortası bağlı dizinine varsayılan erişim sağlamak için, görevi **yönetici** olarak çalıştırın. Blobsigortası, dizini Kullanıcı alanında takar ve havuz oluşturulduğunda kök olarak bağlanır. Linux 'ta tüm **yönetici** görevleri köküdür. SIGORTASı modülü için tüm seçenekler, [Sigorta başvurusu sayfasında](https://manpages.ubuntu.com/manpages/xenial/man8/mount.fuse.8.html)açıklanmaktadır.
 
 Sorun giderme kılavuzuna ek olarak, blobsigortası deposundaki GitHub sorunları geçerli blobsigortası sorunlarını ve çözümlerini denetlemek için faydalı bir yoldur. Daha fazla bilgi için bkz. [blobsigortası sorunları](https://github.com/Azure/azure-storage-fuse/issues).
 
@@ -167,13 +167,13 @@ Hata ayıklama için günlük dosyalarını almak üzere, dosyaları karşıya y
 | Credavtiv | Debian | 8| :heavy_check_mark: | sayı | :heavy_check_mark: | :heavy_check_mark: |
 | Credavtiv | Debian | 9 | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | Microsoft-ads | Linux-Data-Science-VM | linuxdsvm | :heavy_check_mark: <br>Note: CentOS 7,4 ile uyumludur. </br> | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| Microsoft-Azure-Batch | CentOS-kapsayıcı | 7,6 | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| Microsoft-Azure-Batch | CentOS-kapsayıcı | 7.6 | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | Microsoft-Azure-Batch | CentOS-kapsayıcı-RDMA | 7.4 | :heavy_check_mark: <br>Note: A_8 veya 9 depolamayı destekler</br> | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | Microsoft-Azure-Batch | Ubuntu-Server-Container | 16.04-LTS | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | Microsoft-dsvm | Linux-Data-Science-VM-Ubuntu | linuxdsvmubuntu | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| OpenLogic | CentOS | 7,6 | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| OpenLogic | CentOS | 7.6 | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | OpenLogic | CentOS-HPC | 7,4, 7,3, 7,1 | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| Oracle | Oracle-Linux | 7,6 | sayı | sayı | sayı | sayı |
+| Oracle | Oracle-Linux | 7.6 | sayı | sayı | sayı | sayı |
 | Windows | WindowsServer | 2012, 2016, 2019 | :heavy_check_mark: | sayı | sayı | sayı |
 
 ## <a name="next-steps"></a>Sonraki adımlar

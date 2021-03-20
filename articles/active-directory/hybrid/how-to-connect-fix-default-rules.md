@@ -14,10 +14,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a0fc1bc3158e04c9b1f677af7ef2375ac3ed2ce7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91320056"
 ---
 # <a name="fix-modified-default-rules-in-azure-ad-connect"></a>Azure AD Connect değiştirilen varsayılan kuralları çözme
@@ -71,7 +71,7 @@ Uzantılar sizin için çalışmazsa, aşağıdaki bölümlerde açıklanan iki 
 
 
 #### <a name="add-an-inbound-sync-rule"></a>Gelen eşitleme kuralı ekleme
-Bir gelen eşitleme kuralı, özniteliğin kaynağının bir bağlayıcı alanı olduğu ve hedef metadize olduğu anlamına gelir. Örneğin, şirket içi Active Directory yeni bir öznitelik akışına Azure Active Directory için, yeni bir gelen eşitleme kuralı oluşturun. **Eşitleme kuralları düzenleyicisini**başlatın, yön olarak **gelen** ' ı seçin ve **Yeni kural ekle**' yi seçin. 
+Bir gelen eşitleme kuralı, özniteliğin kaynağının bir bağlayıcı alanı olduğu ve hedef metadize olduğu anlamına gelir. Örneğin, şirket içi Active Directory yeni bir öznitelik akışına Azure Active Directory için, yeni bir gelen eşitleme kuralı oluşturun. **Eşitleme kuralları düzenleyicisini** başlatın, yön olarak **gelen** ' ı seçin ve **Yeni kural ekle**' yi seçin. 
 
  !["Gelen" ve "yeni kural ekle" seçiliyken "eşitleme kuralları Düzenleyicisi" ni gösteren ekran görüntüsü.](media/how-to-connect-fix-default-rules/default3a.png)
 
@@ -81,9 +81,9 @@ Kuralı adlandırmak için kendi adlandırma kuralınızı izleyin. Burada, **ad
 
 Kuralın gelecekteki bakımının kolay olması için kuralın kendi açıklamasını sağlayın. Örneğin, açıklama kuralın amacının ne olduğunu ve neden gerekli olduğunu temel alabilir.
 
-**Bağlı sistem**, **bağlı sistem nesne türü**ve meta veri deposu **nesne türü** alanları için seçimlerinizi yapın.
+**Bağlı sistem**, **bağlı sistem nesne türü** ve meta veri deposu **nesne türü** alanları için seçimlerinizi yapın.
 
-0 ile 99 arasında bir öncelik değeri belirtin (sayı ne kadar düşükse, öncelik o kadar yüksektir). **Etiket**Için **parola eşitlemesini etkinleştirin**ve **devre dışı** alanları, varsayılan seçimleri kullanın.
+0 ile 99 arasında bir öncelik değeri belirtin (sayı ne kadar düşükse, öncelik o kadar yüksektir). **Etiket** Için **parola eşitlemesini etkinleştirin** ve **devre dışı** alanları, varsayılan seçimleri kullanın.
 
 **Kapsam filtresi** boş tut. Bu, kuralın Active Directory bağlı sistem ile meta veri deposu arasında katılmış tüm nesneler için geçerli olduğu anlamına gelir.
 
@@ -92,7 +92,7 @@ Kuralın gelecekteki bakımının kolay olması için kuralın kendi açıklamas
 Öznitelindeki uygun dönüştürmeleri ekleyin. Hedef özniteliyorsanız sabit bir değer akışı yapmak için bir sabit atayabilirsiniz. Kaynak veya hedef öznitelik arasında doğrudan eşlemeyi kullanabilirsiniz. Ya da özniteliği için bir ifade kullanabilirsiniz. Kullanabileceğiniz çeşitli [ifade işlevleri](./reference-connect-sync-functions-reference.md) aşağıda verilmiştir.
 
 #### <a name="add-an-outbound-sync-rule"></a>Giden eşitleme kuralı ekleme
-Özniteliği hedef dizine bağlamak için bir giden kuralı oluşturmanız gerekir. Bu, kaynağın metadize olduğu ve hedefin bağlı sistem olduğu anlamına gelir. Bir giden kuralı oluşturmak için, **eşitleme kuralları düzenleyicisini**başlatın, **yönü** **giden**olarak değiştirin ve **Yeni kural ekle**' yi seçin. 
+Özniteliği hedef dizine bağlamak için bir giden kuralı oluşturmanız gerekir. Bu, kaynağın metadize olduğu ve hedefin bağlı sistem olduğu anlamına gelir. Bir giden kuralı oluşturmak için, **eşitleme kuralları düzenleyicisini** başlatın, **yönü** **giden** olarak değiştirin ve **Yeni kural ekle**' yi seçin. 
 
 ![Eşitleme kuralları Düzenleyicisi](media/how-to-connect-fix-default-rules/default3c.png)
 
@@ -162,11 +162,11 @@ Yeni eklenen eşitleme kuralını, tam eşitleme döngüsünü çalıştırmadan
 
 ![Azure AD Connect, eşitleme hizmeti vurgulanmış olarak](media/how-to-connect-fix-default-rules/default10.png)
 
-**Metadize aramasını**seçin. Kapsam nesnesini **kişi**olarak seçin, **yan tümce Ekle**' yi seçin ve arama ölçütlerinizle bahsetin. Ardından **Ara**' yı seçin ve arama sonuçlarında nesneye çift tıklayın. Bu adımı çalıştırmadan önce, ormanda içeri aktar ve Eşitle ' yi çalıştırarak, bu nesne için Azure AD Connect verilerinizin güncel olduğundan emin olun.
+**Metadize aramasını** seçin. Kapsam nesnesini **kişi** olarak seçin, **yan tümce Ekle**' yi seçin ve arama ölçütlerinizle bahsetin. Ardından **Ara**' yı seçin ve arama sonuçlarında nesneye çift tıklayın. Bu adımı çalıştırmadan önce, ormanda içeri aktar ve Eşitle ' yi çalıştırarak, bu nesne için Azure AD Connect verilerinizin güncel olduğundan emin olun.
 
 ![Eşitleme Hizmeti Yöneticisi](media/how-to-connect-fix-default-rules/default11.png)
 
-Meta veri deposu **nesne özellikleri**üzerinde **Bağlayıcılar**' ı seçin, ilgili bağlayıcıdaki (orman) nesneyi seçin ve Özellikler ' i seçin. **..**
+Meta veri deposu **nesne özellikleri** üzerinde **Bağlayıcılar**' ı seçin, ilgili bağlayıcıdaki (orman) nesneyi seçin ve Özellikler ' i seçin. **..**
 
 ![Meta veri deposu nesne özellikleri](media/how-to-connect-fix-default-rules/default12.png)
 
@@ -184,7 +184,7 @@ Burada, yeni eklenen kuralın nesnede çalıştırıldığını ve `cloudFiltere
  
 Değiştirilen kuralı varsayılan kuralla karşılaştırmak için, her iki kuralı da metin dosyası olarak ayrı dışarı aktarın. Bu kurallar bir PowerShell betik dosyası olarak verilir. Değişiklikleri görmek için herhangi bir dosya karşılaştırma aracını (örneğin, Windiff) kullanarak bunları karşılaştırabilirsiniz. 
  
-Değiştirilen kuralda, `msExchMailboxGuid` özniteliği **doğrudan**değil **ifade** türü olarak değiştirildiğine dikkat edin. Ayrıca, değer **null** ve **executeonce** seçeneği olarak değişir. Tanımlanan ve öncelik farklılıklarını yoksayabilirsiniz. 
+Değiştirilen kuralda, `msExchMailboxGuid` özniteliği **doğrudan** değil **ifade** türü olarak değiştirildiğine dikkat edin. Ayrıca, değer **null** ve **executeonce** seçeneği olarak değişir. Tanımlanan ve öncelik farklılıklarını yoksayabilirsiniz. 
 
 ![Windiff aracı çıkışı](media/how-to-connect-fix-default-rules/default17.png)
  

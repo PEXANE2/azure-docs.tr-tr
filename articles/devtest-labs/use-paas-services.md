@@ -4,10 +4,10 @@ description: Azure DevTest Labs ' de hizmet olarak platform (pass) hizmetlerini 
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: eec37527386098174906dc2737d7b763241da3f2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85478748"
 ---
 # <a name="use-platform-as-a-service-paas-services-in-azure-devtest-labs"></a>Azure DevTest Labs 'de hizmet olarak platform (PaaS) hizmetlerini kullanın
@@ -41,7 +41,7 @@ Kaynak grubunun dışında olan ve şablonun erişebileceği ortamlara özel baz
 - Kaynak Yöneticisi şablon dosyalarının depolandığı depolama hesabı. 
  
 #### <a name="lab-virtual-network"></a>Laboratuvar sanal ağı
-[Laboratuvarın sanal ağına bağlanan ortamlar](connect-environment-lab-virtual-network.md) , Kaynak Yöneticisi şablonunuzun belirteci kullanmak için nasıl değiştirileceğini açıklar `$(LabSubnetId)` . Bir ortam oluşturulduğunda, `$(LabSubnetId)` belirteç, **sanal makine oluşturma seçeneğinde kullanım** seçeneğinin **true**olarak ayarlandığı ilk alt ağ işaretiyle değiştirilmiştir. Ortamımızın daha önce oluşturulan ağları kullanmasına izin verir. Testte, hazırlama ve üretim olarak aynı Kaynak Yöneticisi şablonlarını kullanmak istiyorsanız, `$(LabSubnetId)` bir Kaynak Yöneticisi Şablon parametresinde varsayılan değer olarak kullanın. 
+[Laboratuvarın sanal ağına bağlanan ortamlar](connect-environment-lab-virtual-network.md) , Kaynak Yöneticisi şablonunuzun belirteci kullanmak için nasıl değiştirileceğini açıklar `$(LabSubnetId)` . Bir ortam oluşturulduğunda, `$(LabSubnetId)` belirteç, **sanal makine oluşturma seçeneğinde kullanım** seçeneğinin **true** olarak ayarlandığı ilk alt ağ işaretiyle değiştirilmiştir. Ortamımızın daha önce oluşturulan ağları kullanmasına izin verir. Testte, hazırlama ve üretim olarak aynı Kaynak Yöneticisi şablonlarını kullanmak istiyorsanız, `$(LabSubnetId)` bir Kaynak Yöneticisi Şablon parametresinde varsayılan değer olarak kullanın. 
 
 #### <a name="environment-storage-account"></a>Ortam depolama hesabı
 DevTest Labs [iç içe Kaynak Yöneticisi şablonlarının](../azure-resource-manager/templates/linked-templates.md)kullanımını destekler. [[Ortamları test etmek için iç içe Azure Resource Manager şablonları dağıtma](deploy-nested-template-environments.md) makalesi,  `_artifactsLocation` `_artifactsLocationSasToken` ana şablonun iç içe yerleştirilmiş bir klasöründe veya aynı klasörde bulunan bir kaynak yöneticisi şablonuna URI oluşturmak için ve belirteçlerinin nasıl kullanılacağını açıklar. Bu iki belirteç hakkında daha fazla bilgi için [Azure Resource Manager – En Iyi Yöntemler kılavuzunun](https://github.com/Azure/azure-quickstart-templates/blob/master/1-CONTRIBUTION-GUIDE/best-practices.md) **dağıtım yapıtları** bölümüne bakın.

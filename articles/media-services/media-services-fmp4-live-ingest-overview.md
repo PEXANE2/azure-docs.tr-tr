@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: 7323ae611431e1d91fd1a8471914be388fcc4712
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/14/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92019520"
 ---
 # <a name="azure-media-services-fragmented-mp4-live-ingest-specification"></a>Azure Media Services parçalanmış MP4 canlı alma belirtimi 
@@ -44,7 +44,7 @@ Bu belgede ele alınan canlı akış için Tel biçimi [ISO-14496-12] tabanlıd�
 ### <a name="live-ingest-format-definitions"></a>Canlı alma biçimi tanımları
 Aşağıdaki listede, Azure Media Services içine canlı alma için uygulanan özel biçim tanımları açıklanmaktadır:
 
-1. **Ftyp**, **Live Server bildirim kutusu**ve **Moov** kutuları her istekle (http post) birlikte gönderilmelidir. Bu kutular akışın başlangıcında ve kodlayıcının akış alma işlemini devam ettirmeye her zaman gönderilmesi gerekir. Daha fazla bilgi için [1] içindeki bölüm 6 bölümüne bakın.
+1. **Ftyp**, **Live Server bildirim kutusu** ve **Moov** kutuları her istekle (http post) birlikte gönderilmelidir. Bu kutular akışın başlangıcında ve kodlayıcının akış alma işlemini devam ettirmeye her zaman gönderilmesi gerekir. Daha fazla bilgi için [1] içindeki bölüm 6 bölümüne bakın.
 1. [1] içindeki bölüm 3.3.2, canlı alma için **Streammanifestbox** adlı isteğe bağlı bir kutu tanımlar. Azure Yük dengeleyicinin yönlendirme mantığı nedeniyle, bu kutunun kullanılması kullanım dışıdır. Media Services, Box ' a geri geldiğinde bulunmamalıdır. Bu kutu varsa Media Services sessizce yoksayar.
 1. [1] içinde 3.2.3.2 içinde tanımlanan **TrackFragmentExtendedHeaderBox** kutusu her parça IÇIN mevcut olmalıdır.
 1. **TrackFragmentExtendedHeaderBox** kutusunun sürüm 2 ' nin birden fazla veri merkezinde özdeş URL 'leri olan medya kesimleri oluşturmak IÇIN kullanılması gerekir. Parça dizini alanı, Apple HLS ve dizin tabanlı MPEG-DASH gibi dizin tabanlı akış biçimlerinin çapraz Datacenter yük devretmesi için GEREKLIDIR. Platformlar arası yük devretmeyi etkinleştirmek için, parça dizininin birden çok kodlayıcıda eşitlenmesi ve arka arkaya gelen her medya parçası için Kodlayıcı yeniden başlatmaları veya hatalarda bile 1 ile artması gerekır.
@@ -54,7 +54,7 @@ Aşağıdaki listede, Azure Media Services içine canlı alma için uygulanan ö
 1. MP4 parça zaman damgaları ve dizinler (**TrackFragmentExtendedHeaderBox** `fragment_ absolute_ time` ve `fragment_index` ) artan sırada gelmiş olmalıdır. Yinelenen parçaların Media Services dayanıklı olmasına karşın, parçaları medya zaman çizelgesine göre yeniden sıralamak sınırlı olabilir.
 
 ## <a name="4-protocol-format--http"></a>4. protokol biçimi – HTTP
-Media Services için ISO parçalanmış MP4 tabanlı canlı alma, parçalanmış MP4 biçiminde paketlenmiş kodlanmış medya verilerini hizmetine iletmek için standart bir uzun süreli HTTP POST isteği kullanır. Her HTTP GÖNDERISI, üst bilgi kutularından (**ftyp**, **Live Server bildirim kutusu**ve **Moov** kutularından) başlayarak ve bir dizi parça (**Moof** ve **mdat** kutusu) ile devam ederek eksiksiz bir parçalanmış MP4 Bitstream ("Stream") gönderir. HTTP POST isteğinin URL sözdizimi için [1] içindeki 9,2 bölümüne bakın. GÖNDERI URL 'sine bir örnek: 
+Media Services için ISO parçalanmış MP4 tabanlı canlı alma, parçalanmış MP4 biçiminde paketlenmiş kodlanmış medya verilerini hizmetine iletmek için standart bir uzun süreli HTTP POST isteği kullanır. Her HTTP GÖNDERISI, üst bilgi kutularından (**ftyp**, **Live Server bildirim kutusu** ve **Moov** kutularından) başlayarak ve bir dizi parça (**Moof** ve **mdat** kutusu) ile devam ederek eksiksiz bir parçalanmış MP4 Bitstream ("Stream") gönderir. HTTP POST isteğinin URL sözdizimi için [1] içindeki 9,2 bölümüne bakın. GÖNDERI URL 'sine bir örnek: 
 
 `http://customer.channel.mediaservices.windows.net/ingest.isml/streams(720p)`
 
@@ -63,7 +63,7 @@ Ayrıntılı gereksinimler şunlardır:
 
 1. Kodlayıcı, aynı alma URL 'sini kullanarak boş bir "Body" (sıfır içerik uzunluğu) ile bir HTTP POST isteği göndererek yayını başlatmalıdır. Bu, kodlayıcının canlı alma uç noktasının geçerli olup olmadığını ve gerekli herhangi bir kimlik doğrulaması ya da başka koşullar varsa hızlı bir şekilde tespit etmenize yardımcı olabilir. HTTP protokolü başına, sunucu, POST gövdesi dahil olmak üzere tüm istek için bir HTTP yanıtı geri gönderemez. Canlı bir etkinliğin uzun süre çalışan doğası göz önüne alındığında, bu adım olmadan kodlayıcı tüm verileri göndermeyi bitirene kadar herhangi bir hata algılayamayabilir.
 1. Kodlayıcı (1) nedeniyle herhangi bir hata veya kimlik doğrulama sorunlarını ele ALMALıDıR. (1) bir 200 yanıtıyla başarılı olursa devam edin.
-1. Kodlayıcı parçalanmış MP4 akışı ile yeni bir HTTP POST isteği BAŞLATMALıDıR. Yük, üst bilgi kutuları ve ardından parçalar tarafından başlamalıdır. **Ftyp**, **Live Server bildirim kutusu**ve **Moov** kutularının (Bu sırada), önceki istek akışın sonundan önce sonlandırıldığı için her istekle birlikte gönderilmesi gerektiğini unutmayın. 
+1. Kodlayıcı parçalanmış MP4 akışı ile yeni bir HTTP POST isteği BAŞLATMALıDıR. Yük, üst bilgi kutuları ve ardından parçalar tarafından başlamalıdır. **Ftyp**, **Live Server bildirim kutusu** ve **Moov** kutularının (Bu sırada), önceki istek akışın sonundan önce sonlandırıldığı için her istekle birlikte gönderilmesi gerektiğini unutmayın. 
 1. Canlı etkinliğin tüm içerik uzunluğunu tahmin etmek imkansız olduğundan, kodlayıcı karşıya yükleme için öbekli aktarım kodlaması kullanmalıdır.
 1. Olay üzerindeyken, son parçayı gönderdikten sonra kodlayıcı, öbekli aktarım kodlama ileti sırasını düzgün bir şekilde sonlandırmalıdır (çoğu HTTP istemci yığınları otomatik olarak işler). Kodlayıcı hizmetin Son Yanıt kodunu döndürmesini bekleyip bağlantıyı sonlandıramalıdır. 
 1. Kodlayıcı Media Services ' de canlı alma `Events()` için, [1] içinde 9,2 bölümünde açıklandığı gibi bir ad kullanmamalıdır.
@@ -116,7 +116,7 @@ Bu bölümde, hizmet yük devretme senaryolarını tartıştık. Bu durumda, hat
 
     b. Yeni HTTP GÖNDERI URL 'SI, ilk GÖNDERI URL 'siyle aynı OLMALıDıR.
   
-    c. Yeni HTTP POST, ilk POSTADAKI akış üst bilgileriyle aynı olan akış üstbilgilerini (**ftyp**, **Live Server manifest Box**ve **Moov** kutularý) içermelidir.
+    c. Yeni HTTP POST, ilk POSTADAKI akış üst bilgileriyle aynı olan akış üstbilgilerini (**ftyp**, **Live Server manifest Box** ve **Moov** kutularý) içermelidir.
   
     d. Her bir parça için gönderilen son iki parça yeniden gönderilmesi ve akış, medya zaman çizelgesinde süreksizlik olmadan sürdürülmelidir. MP4 parça zaman damgaları, HTTP POST istekleri arasında bile sürekli olarak artmalıdır.
 1. Veriler MP4 parça süresiyle bir hızda gönderilmezse, kodlayıcının HTTP POST isteğini sonlandırılması gerekır.  Veri gönderebilen bir HTTP POST isteği, bir hizmet güncelleştirmesi olayında kodlayıcının kodlayıcıyla hızlı bir şekilde bağlantısını kesmesinin engellenmesine Media Services engel olabilir. Bu nedenle, seyrek parça (ad sinyali) için HTTP POST ' un kısa süreli olması gerekır ve bu, seyrek parça gönderilir bitmez sonlandırılıyor.
@@ -159,7 +159,7 @@ Aşağıdaki adımlar, seyrek parça izlemek için önerilen bir uygulama olarak
 
 1. Ses/video parçaları olmadan yalnızca seyrek izler içeren ayrı bir parçalanmış MP4 Bitstream oluşturun.
 1. **Live Server bildirim kutusunda** , [1] Içinde 6 bölümünde tanımlandığı gibi, üst izlemenin adını belirtmek Için *parenttrackname* parametresini kullanın. Daha fazla bilgi için bkz. [1] içinde Bölüm 4.2.1.2.1.2.
-1. **Canlı sunucu bildirim kutusunda**, **bildirimini estoutput** **true**olarak ayarlanmalıdır.
+1. **Canlı sunucu bildirim kutusunda**, **bildirimini estoutput** **true** olarak ayarlanmalıdır.
 1. Sinyal olayının seyrek doğası göz önüne alındığında, şunları öneririz:
    
     a. Canlı etkinliğin başlangıcında, kodlayıcı ilk başlık kutularını hizmete gönderir ve bu da hizmetin, istemci bildiriminde seyrek parçaya kaydolmasıyla sonuçlanır.
@@ -193,7 +193,7 @@ Gereksiz ses parçaları için aşağıdaki uygulama önerilir:
 ## <a name="media-services-learning-paths"></a>Media Services’i öğrenme yolları
 [!INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Geri bildirimde bulunma
+## <a name="provide-feedback"></a>Geribildirim gönderme
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
 [image1]: ./media/media-services-fmp4-live-ingest-overview/media-services-image1.png

@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: conceptual
-ms.date: 03/15/2021
+ms.date: 03/17/2021
 ms.author: inhenkel
-ms.openlocfilehash: 198abf70ae4350a3b410c11d8360e44a37555d8e
-ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
+ms.openlocfilehash: 002f900f03f7bd08753313cde0e6bd46b097a858
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103564380"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104581159"
 ---
 # <a name="analyze-video-and-audio-files-with-azure-media-services"></a>Video ve ses dosyalarını Azure Media Services Çözümleme
 
@@ -41,10 +41,10 @@ Media Services v3 ön ayarlarını kullanarak içeriğinizi analiz etmek için b
 
 Media Services Şu anda aşağıdaki yerleşik çözümleyici önayarlarını desteklemektedir:  
 
-|**Önceden ayarlanmış ad**|**Senaryo**|**Ayrıntılar**|
+|**Önceden ayarlanmış ad**|**Senaryo/mod**|**Ayrıntılar**|
 |---|---|---|
-|[Audioanaliz Zerönayar](/rest/api/media/transforms/createorupdate#audioanalyzerpreset)|Ses standardını çözümleme|Önayar, konuşma dökümü dahil olmak üzere, önceden tanımlanmış bir AI tabanlı analiz işlemleri kümesi uygular. Şu anda önayar, tek bir dilde konuşmayı içeren tek bir ses izlemeli içeriği işlemeyi destekler. Girişte ses yükünün dilini ' Language Tag-Region ' BCP-47 biçimini kullanarak belirtebilirsiniz. Desteklenen diller Ingilizce (' en-US ', ' en-GB ' ve ' en-AU '), Ispanyolca (' es-ES ' ve ' es-MX '), Fransızca (' fr-FR ' ve ' fr-CA '), Italyanca (' It-IT '), Japonca (' ja-JP '), Portekizce (' PT-BR '), Çince (' zh-CN '), Almanca (' de-DE '), Arapça ("ar-BH", ' ar-EG ', ' ar-IQ ', ' ar-JO ', ' ar-KW ', ' ar-LB ', ' ar-OM ', ' ar-QA ', ' ar-SA ' ve ' ar-SY '), Rusça (' ru-RU '), Hintçe (' Hi-ın '), Korece (' ko-KR '), Danca (' da-DK '), Norveççe (' NB-NO '), Isveççe (' ZF-ı '), Fince (' San-FI '), Tay dili (' th-TH ') ve Türkçe (' tr-TR ').<br/><br/> Dil belirtilmezse veya null olarak ayarlanırsa, otomatik dil algılama algılanan ilk dili seçer ve dosya süresince seçili dile devam eder. Otomatik dil algılama özelliği şu anda Ingilizce, Çince, Fransızca, Almanca, Italyanca, Japonca, Ispanyolca, Rusça ve Portekizce desteklemektedir. İlk dil algılandıktan sonra diller arasında dinamik geçiş yapmayı desteklemez. Otomatik dil algılama özelliği, açık bir konuşma sayesinde ses kayıtları ile en iyi şekilde işe yarar. Otomatik dil algılama dili bulamazsa, geri bulma işlemi Ingilizce 'ye döner.|
-|[Audioanaliz Zerönayar](/rest/api/media/transforms/createorupdate#audioanalyzerpreset)|Audio Basic çözümleniyor|Bu mod, bir VTT alt başlık/resim yazısı dosyası için konuşmayı metne dönüştürme ve oluşturma işlemi gerçekleştirir. Bu modun çıktısı yalnızca anahtar sözcükler, döküm ve zamanlama bilgileri dahil olmak üzere bir Öngörüler JSON dosyası içerir. Bu modda otomatik dil algılama ve konuşmacı seçme dahil değildir. Desteklenen dillerin listesi [burada](#built-in-presets) bulunabilir|
+|[Audioanaliz Zerönayar](/rest/api/media/transforms/createorupdate#audioanalyzerpreset)|Ses standart modunu çözümleme|Önayar, konuşma dökümü dahil olmak üzere, önceden tanımlanmış bir AI tabanlı analiz işlemleri kümesi uygular. Şu anda önayar, tek bir dilde konuşmayı içeren tek bir ses izlemeli içeriği işlemeyi destekler. Girişte ses yükünün dilini ' Language Tag-Region ' BCP-47 biçimini kullanarak belirtebilirsiniz. Desteklenen diller Ingilizce (' en-US ', ' en-GB ' ve ' en-AU '), Ispanyolca (' es-ES ' ve ' es-MX '), Fransızca (' fr-FR ' ve ' fr-CA '), Italyanca (' It-IT '), Japonca (' ja-JP '), Portekizce (' PT-BR '), Çince (' zh-CN '), Almanca (' de-DE '), Arapça ("ar-BH", ' ar-EG ', ' ar-IQ ', ' ar-JO ', ' ar-KW ', ' ar-LB ', ' ar-OM ', ' ar-QA ', ' ar-SA ' ve ' ar-SY '), Rusça (' ru-RU '), Hintçe (' Hi-ın '), Korece (' ko-KR '), Danca (' da-DK '), Norveççe (' NB-NO '), Isveççe (' ZF-ı '), Fince (' San-FI '), Tay dili (' th-TH ') ve Türkçe (' tr-TR ').<br/><br/> Dil belirtilmezse veya null olarak ayarlanırsa, otomatik dil algılama algılanan ilk dili seçer ve dosya süresince seçili dile devam eder. Otomatik dil algılama özelliği şu anda Ingilizce, Çince, Fransızca, Almanca, Italyanca, Japonca, Ispanyolca, Rusça ve Portekizce desteklemektedir. İlk dil algılandıktan sonra diller arasında dinamik geçiş yapmayı desteklemez. Otomatik dil algılama özelliği, açık bir konuşma sayesinde ses kayıtları ile en iyi şekilde işe yarar. Otomatik dil algılama dili bulamazsa, geri bulma işlemi Ingilizce 'ye döner.|
+|[Audioanaliz Zerönayar](/rest/api/media/transforms/createorupdate#audioanalyzerpreset)|Ses temel modunu çözümleme|Bu önceden ayarlama modu, bir VTT alt başlık/başlık dosyasının konuşma ve oluşturma işlemlerini metne dönüştürme ve oluşturma işlemi gerçekleştirir. Bu modun çıktısı yalnızca anahtar sözcükler, döküm ve zamanlama bilgileri dahil olmak üzere bir Öngörüler JSON dosyası içerir. Bu modda otomatik dil algılama ve konuşmacı seçme dahil değildir. Desteklenen dillerin listesi yukarıdaki standart modla aynıdır.|
 |[Videoanaliz Zerönayar](/rest/api/media/transforms/createorupdate#videoanalyzerpreset)|Ses ve video çözümleme|Hem ses hem de videodan Öngörüler (zengin meta veriler) ayıklar ve bir JSON biçim dosyası verir. Video dosyasını işlerken yalnızca ses öngörülerini ayıklamak isteyip istemediğinizi belirtebilirsiniz. Daha fazla bilgi için bkz. [video çözümleme](analyze-videos-tutorial-with-api.md).|
 |[Facedetectorönayar](/rest/api/media/transforms/createorupdate#facedetectorpreset)|Videoda bulunan yüzler algılanıyor|Bir video çözümlenirken, mevcut tüm yüzleri tespit etmek için kullanılacak ayarları açıklar.|
 

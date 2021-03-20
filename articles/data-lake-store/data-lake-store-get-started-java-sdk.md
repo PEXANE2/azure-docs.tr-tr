@@ -8,10 +8,10 @@ ms.date: 05/29/2018
 ms.custom: devx-track-java
 ms.author: twooley
 ms.openlocfilehash: a2c55a2d3277bbb6c3cf72f5ea703780d2a5e9bd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87318853"
 ---
 # <a name="filesystem-operations-on-azure-data-lake-storage-gen1-using-java-sdk"></a>Java SDK kullanarak Azure Data Lake Storage 1. dosya sistemi işlemleri
@@ -78,7 +78,7 @@ Data Lake Storage 1. için Java SDK API belgelerine, [Azure Data Lake Storage 1.
 * Uygulamanıza yönelik hizmetten hizmete kimlik doğrulaması için bkz. [Java kullanarak Data Lake Storage 1. ile hizmetten hizmete kimlik doğrulaması](data-lake-store-service-to-service-authenticate-java.md).
 
 ## <a name="create-a-data-lake-storage-gen1-client"></a>Data Lake Storage 1. istemcisi oluşturma
-[Adlstoreclient](https://azure.github.io/azure-data-lake-store-java/javadoc/) nesnesi oluşturmak, Data Lake Storage 1. Ile kimlik doğrulaması yaparken oluşturduğunuz Data Lake Storage 1. hesap adını ve belirteç sağlayıcısını belirtmenizi gerektirir (bkz. [kimlik doğrulama](#authentication) bölümü). Data Lake Storage 1. hesap adının tam etki alanı adı olması gerekir. Örneğin, **burada dolguyu** **mydatalakestoragegen1.azuredatalakestore.net**gibi bir şekilde değiştirin.
+[Adlstoreclient](https://azure.github.io/azure-data-lake-store-java/javadoc/) nesnesi oluşturmak, Data Lake Storage 1. Ile kimlik doğrulaması yaparken oluşturduğunuz Data Lake Storage 1. hesap adını ve belirteç sağlayıcısını belirtmenizi gerektirir (bkz. [kimlik doğrulama](#authentication) bölümü). Data Lake Storage 1. hesap adının tam etki alanı adı olması gerekir. Örneğin, **burada dolguyu** **mydatalakestoragegen1.azuredatalakestore.net** gibi bir şekilde değiştirin.
 
 ```java
 private static String accountFQDN = "FILL-IN-HERE";  // full account FQDN, not just the account name

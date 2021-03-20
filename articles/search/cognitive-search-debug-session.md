@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 10/05/2020
 ms.openlocfilehash: f666cc2f9d11b1e05d11ba266897e6fca3cd287e
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/14/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92057629"
 ---
 # <a name="debug-sessions-in-azure-cognitive-search"></a>Azure Bilişsel Arama 'de hata ayıklama oturumları
@@ -20,7 +20,7 @@ ms.locfileid: "92057629"
 Hata ayıklama oturumları, Azure portal var olan bir beceri ile birlikte çalışarak bir görsel düzenleyicidir. Bir hata ayıklama oturumunda hataları tanımlayabilir ve çözümleyebilir, değişiklikleri doğrulayabilir ve değişiklikleri AI zenginleştirme ardışık düzeninde bir üretim beceri gönderebilirsiniz.
 
 > [!Important]
-> Hata ayıklama oturumları, bir hizmet düzeyi sözleşmesi olmadan sunulan bir önizleme özelliğidir ve üretim iş yükleri için önerilmez. Daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Hata ayıklama oturumları, bir hizmet düzeyi sözleşmesi olmadan sunulan bir önizleme özelliğidir ve üretim iş yükleri için önerilmez. Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 >
 
 ## <a name="using-debug-sessions"></a>Hata ayıklama oturumlarını kullanma
@@ -51,13 +51,13 @@ Yetenekler, belgeyi temsil eden bir veya daha fazla zenginleştirme ağacı yür
 
 Grafikteki bir yeteneğin seçilmesi kendisine bağlı olan becerileri, girişlerini oluşturan düğümleri ve çıktılarını kabul eden düğümleri vurgulayacaktır. Her yetenek düğümü, türünü, hatalarını veya uyarılarını ve yürütme sayılarını görüntüler. **Beceri grafiği** , hangi beceriye hata ayıklama veya geliştirme olacağını seçtirecek yerdir. Bir yetenek seçtiğinizde, ayrıntılar, grafiğin sağındaki yetenek ayrıntıları bölmesinde görüntülenir.
 
-> :::image type="content" source="media/cognitive-search-debug/skills-graph.png" alt-text="Hata ayıklama oturumu oluşturma":::
+> :::image type="content" source="media/cognitive-search-debug/skills-graph.png" alt-text="Beceri grafiği":::
 
 ## <a name="skill-details"></a>Yetenek ayrıntıları
 
-Yetenek ayrıntıları bölmesi, yetenek **grafiğinde**bu yetenek vurgulandığında belirli bir yetenek ile çalışmaya yönelik bir alan kümesi görüntüler. Beceri ayarlarının ayrıntılarını gözden geçirebilir ve düzenleyebilirsiniz. Yeteneğin JSON tanımı sağlanır. Beceriye ait yürütmenin ve hataların ve uyarıların ayrıntıları da görüntülenir. Yetenek **ayarları** sekmesi & beceri **JSON Düzenleyicisi** , yeteneğin doğrudan düzenlenmesine izin verir. , [`</>`](#expression-evaluator) Yetenekler girişlerinin ve çıktıların ifadelerini görüntülemek ve düzenlemekte bir pencere açar.
+Yetenek ayrıntıları bölmesi, yetenek **grafiğinde** bu yetenek vurgulandığında belirli bir yetenek ile çalışmaya yönelik bir alan kümesi görüntüler. Beceri ayarlarının ayrıntılarını gözden geçirebilir ve düzenleyebilirsiniz. Yeteneğin JSON tanımı sağlanır. Beceriye ait yürütmenin ve hataların ve uyarıların ayrıntıları da görüntülenir. Yetenek **ayarları** sekmesi & beceri **JSON Düzenleyicisi** , yeteneğin doğrudan düzenlenmesine izin verir. , [`</>`](#expression-evaluator) Yetenekler girişlerinin ve çıktıların ifadelerini görüntülemek ve düzenlemekte bir pencere açar.
 
-Yetenek ayarları penceresindeki iç içe geçmiş giriş denetimleri, tahminler için karmaşık şekiller, karmaşık bir tür alanı için çıkış alanı eşlemeleri veya bir beceriye giriş oluşturmak için kullanılabilir. **İfade değerlendirici**ile kullanıldığında, iç içe geçmiş girişler kolay test ve doğrulama ifadesi oluşturucuyu sağlar.
+Yetenek ayarları penceresindeki iç içe geçmiş giriş denetimleri, tahminler için karmaşık şekiller, karmaşık bir tür alanı için çıkış alanı eşlemeleri veya bir beceriye giriş oluşturmak için kullanılabilir. **İfade değerlendirici** ile kullanıldığında, iç içe geçmiş girişler kolay test ve doğrulama ifadesi oluşturucuyu sağlar.
 
 ## <a name="skill-execution-history"></a>Beceri yürütme geçmişi
 
@@ -73,7 +73,7 @@ Olası bir sorun tanımlandığında, yürütme geçmişi belirli girdileri olu�
 
 **Zenginleştirilmiş veri yapısı** bölmesi, her bir zenginleştirme ve kaynak yeteneğin bağlamını ayrıntılandıran beceri aracılığıyla belgenin enzenginleştirmelerinin olduğunu gösterir. **İfade değerlendiricisi** , her bir zenginleştirme içeriğini görüntülemek için de kullanılabilir.
 
-> :::image type="content" source="media/cognitive-search-debug/enriched-data-structure-display.png" alt-text="Hata ayıklama oturumu oluşturma":::
+> :::image type="content" source="media/cognitive-search-debug/enriched-data-structure-display.png" alt-text="Zenginleştirilmiş veri yapısı":::
 
 ## <a name="expression-evaluator"></a>İfade değerlendirici
 

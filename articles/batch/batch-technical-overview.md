@@ -4,10 +4,10 @@ description: Büyük ölçekli paralel ve HPC iş yükleri için Azure Batch hiz
 ms.topic: overview
 ms.date: 07/30/2020
 ms.openlocfilehash: dbd27dc1a00966a2d71952335cfb47c7ca55bc24
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98743109"
 ---
 # <a name="what-is-azure-batch"></a>Azure Batch nedir?
@@ -62,7 +62,7 @@ Aşağıdaki diyagramda, istemci uygulamasının yanı sıra paralel iş yükün
 
 ![Batch çözümündeki adımların diyagramı.](./media/batch-technical-overview/tech_overview_03.png)
 
-|Adım  |Açıklama  |
+|Adım  |Description  |
 |---------|---------|
 |1. bu dosyaları Azure depolama hesabınıza işlemek için **giriş dosyalarını** ve **uygulamaları** karşıya yükleyin.     |Giriş dosyaları uygulamanızın işleyeceği herhangi bir veri olabilir; örneğin, finansal modelleme verileri veya dönüştürülecek video dosyaları. Uygulama dosyaları, medya kod dönüştürücüsü gibi veri işleyen betik ya da uygulamaları içerebilir.|
 |2. Batch hesabınızda işlem düğümleri için bir Batch **havuzu** , havuzda iş yükünü çalıştırmak için bir **iş** ve işteki **Görevler** oluşturun.     | [İşlem düğümleri](nodes-and-pools.md) , [görevlerinizi](jobs-and-tasks.md)yürütecek sanal makinelerlerdir. Havuzlarınızın sayısı ve boyutu, bir Windows veya Linux VM görüntüsü ve düğümler havuza katılırsanız yüklenecek bir uygulama gibi özellikleri belirtin. [Düşük öncelikli VM 'leri](batch-low-pri-vms.md) kullanarak veya iş yükü değiştikçe düğümlerin sayısını [otomatik olarak ölçeklendirerek](batch-automatic-scaling.md) , havuzun maliyetini ve boyutunu yönetin. <br/><br/>Bir işe görev eklediğinizde, Batch hizmeti havuzundaki işlem düğümlerinde yürütülmesi için görevleri otomatik olarak zamanlar. Her görev, girdi dosyalarını işlemek için yüklediğiniz uygulamayı kullanır. |

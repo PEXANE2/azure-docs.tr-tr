@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/12/2020
 ms.author: jeedes
 ms.openlocfilehash: 57598ea22874cfba772f6cf0e6b2ba779ef7c482
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92448461"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mind-tools-toolkit"></a>Öğretici: fikir araçları araç seti ile Azure Active Directory tümleştirme
@@ -30,7 +30,7 @@ Bu tümleştirmeyle şunları yapabilirsiniz:
 
 Azure AD ile hizmet olarak yazılım (SaaS) uygulama tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](../manage-apps/what-is-single-sign-on.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure AD tümleştirmesini, fikir araçları araç seti ile yapılandırmak için aşağıdaki öğeler gereklidir:
 
@@ -58,7 +58,7 @@ Fikir araçları araç takımını Azure AD 'ye tümleştirmeyi yapılandırmak 
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-Bu bölümde, **B. Simon**adlı bir test kullanıcısı kullanarak, fikir araçları araç seti Ile Azure AD çoklu oturum açma 'yı yapılandırıp test edersiniz. Çoklu oturum açma için, bir Azure AD kullanıcısı ile ilgili Kullanıcı ve göz önünde Araçlar araç seti arasında bağlı bir ilişki kurmanız gerekir.
+Bu bölümde, **B. Simon** adlı bir test kullanıcısı kullanarak, fikir araçları araç seti Ile Azure AD çoklu oturum açma 'yı yapılandırıp test edersiniz. Çoklu oturum açma için, bir Azure AD kullanıcısı ile ilgili Kullanıcı ve göz önünde Araçlar araç seti arasında bağlı bir ilişki kurmanız gerekir.
 
 Azure AD çoklu oturum açma 'yı fikir araçları araç seti ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
 
@@ -108,11 +108,11 @@ Bu bölümde, aşağıdaki adımları izleyerek Azure AD çoklu oturum açma 'y�
 
 Bu bölümde, Azure portal, B. Simon adlı bir test kullanıcısı oluşturacaksınız:
 
-1. Azure Portal en sol tarafında, kullanıcılar **Azure Active Directory**  >  **Users**  >  **tüm kullanıcılar**' ı seçin.
+1. Azure Portal en sol tarafında, kullanıcılar **Azure Active Directory**  >    >  **tüm kullanıcılar**' ı seçin.
 1. Ekranın üst kısmında **Yeni Kullanıcı**' yı seçin.
 1. **Kullanıcı** özellikleri ' nde şu adımları izleyin:
-   1. **Ad** alanına **B. Simon**girin.  
-   1. **Kullanıcı adı** alanına **B.Simon@**_şirketetkialanı_yazın **.** _uzantı_. Örneğin, B.Simon@contoso.com.
+   1. **Ad** alanına **B. Simon** girin.  
+   1. **Kullanıcı adı** alanına **B.Simon@**_şirketetkialanı_ yazın **.** _uzantı_. Örneğin, B.Simon@contoso.com.
    1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda gösterilen değeri yazın.
    1. **Oluştur**’u seçin.
 

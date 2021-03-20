@@ -5,10 +5,10 @@ ms.topic: how-to
 ms.custom: subject-moving-resources
 ms.date: 08/20/2020
 ms.openlocfilehash: fff8638a819511f84f15c52ad0695cdd5759f971
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89087214"
 ---
 # <a name="move-azure-event-grid-domains-to-another-region"></a>Azure Event Grid etki alanlarını başka bir bölgeye taşıyın
@@ -23,24 +23,24 @@ Bu makalede ele alınan üst düzey adımlar aşağıda verilmiştir:
 - **Etki alanını hedef bölgeye dağıtmak için şablonu kullanın** . 
 - Hedef bölgede **el ile etki alanı konuları için abonelikler oluşturun** . Etki alanını geçerli bölgedeki bir şablona aktardığınızda, etki alanı konularındaki abonelikler aktarılmaz. Bu nedenle, etki alanı ve etki alanı konuları hedef bölgede oluşturulduktan sonra bunları oluşturun. 
 - **Dağıtımı doğrulayın**. Etki alanındaki bir etki alanı konusuna olay gönderin ve abonelikle ilişkili olay işleyicisinin çağrılmakta olduğunu doğrulayın. 
-- **Taşıma işleminin tamamlanabilmesi**için kaynak bölgedeki etki alanını silin. 
+- **Taşıma işleminin tamamlanabilmesi** için kaynak bölgedeki etki alanını silin. 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 - Event Grid hizmetinin hedef bölgede kullanılabildiğinden emin olun. [Bölgeye göre kullanılabilen ürünleri](https://azure.microsoft.com/global-infrastructure/services/?products=event-grid&regions=all)görüntüleyin.
 
 ## <a name="prepare"></a>Hazırlama
 Başlamak için etki alanı için bir Kaynak Yöneticisi şablonu dışarı aktarın. 
 
 1. [Azure portalında](https://portal.azure.com) oturum açın.
-2. Arama çubuğuna **Event Grid etki alanları**yazın ve sonuçlar listesinden **Event Grid etki alanları** ' nı seçin. 
+2. Arama çubuğuna **Event Grid etki alanları** yazın ve sonuçlar listesinden **Event Grid etki alanları** ' nı seçin. 
 
     :::image type="content" source="./media/move-domains-across-regions/search-domains.png" alt-text="Event Grid etki alanlarını arayın ve seçin":::
 3. Kaynak Yöneticisi şablonuna aktarmak istediğiniz **etki alanını** seçin. 
 
-    :::image type="content" source="./media/move-domains-across-regions/select-domain.png" alt-text="Event Grid etki alanlarını arayın ve seçin":::   
+    :::image type="content" source="./media/move-domains-across-regions/select-domain.png" alt-text="Etki alanını seçin":::   
 4. **Event Grid etki alanı** sayfasında, Sol menüdeki **Ayarlar** ' ın altında **şablonu dışarı aktar** ' ı seçin ve ardından araç çubuğunda **İndir** ' i seçin. 
 
-    :::image type="content" source="./media/move-domains-across-regions/export-template-download.png" alt-text="Event Grid etki alanlarını arayın ve seçin" lightbox="./media/move-domains-across-regions/export-template-download.png":::   
+    :::image type="content" source="./media/move-domains-across-regions/export-template-download.png" alt-text="Şablonu dışarı aktar-> Indir" lightbox="./media/move-domains-across-regions/export-template-download.png":::   
 
     > [!IMPORTANT]
     > Etki alanı ve etki alanı konuları verilir. Etki alanı konuları için abonelikler aktarılmaz. Bu nedenle, etki alanı konularını taşıdıktan sonra etki alanı konuları için abonelikler oluşturmanız gerekir. 
@@ -60,20 +60,20 @@ Başlamak için etki alanı için bir Kaynak Yöneticisi şablonu dışarı akta
 Hedef bölgede etki alanı ve etki alanı konularını oluşturmak için şablonu dağıtın. 
 
 1. Azure portal **kaynak oluştur**' u seçin.
-2. **Market 'Te ara**' te, **şablon dağıtımı**yazın ve ardından **ENTER**tuşuna basın.
-3. **Şablon dağıtımı**seçin.
+2. **Market 'Te ara**' te, **şablon dağıtımı** yazın ve ardından **ENTER** tuşuna basın.
+3. **Şablon dağıtımı** seçin.
 4. **Oluştur**’u seçin.
-5. **Düzenleyicide kendi şablonunuzu oluşturun öğesini**seçin.
+5. **Düzenleyicide kendi şablonunuzu oluşturun öğesini** seçin.
 6. **Dosya Yükle**' yi seçin ve ardından son bölümde indirdiğiniz dosyanın **template.js** yüklemek için yönergeleri izleyin.
 7. Şablonu kaydetmek için **Kaydet** ' i seçin. 
 8. **Özel dağıtım** sayfasında, aşağıdaki adımları izleyin:
-    1. Bir Azure **aboneliği**seçin. 
+    1. Bir Azure **aboneliği** seçin. 
     1. Hedef bölgede var olan bir kaynak grubunu seçin veya bir **kaynak grubu** oluşturun. 
-    1. **Bölge**için hedef bölgeyi seçin. Var olan bir kaynak grubunu seçtiyseniz, bu ayar salt okunurdur. 
-    1. Etki alanı **adı**için etki alanı için yeni bir ad girin. 
+    1. **Bölge** için hedef bölgeyi seçin. Var olan bir kaynak grubunu seçtiyseniz, bu ayar salt okunurdur. 
+    1. Etki alanı **adı** için etki alanı için yeni bir ad girin. 
     1. **Gözden geçir ve oluştur**’u seçin. 
     
-        :::image type="content" source="./media/move-domains-across-regions/deploy-template.png" alt-text="Event Grid etki alanlarını arayın ve seçin":::        
+        :::image type="content" source="./media/move-domains-across-regions/deploy-template.png" alt-text="Şablon dağıtma":::        
     1. Şablonun doğrulanması başarılı olduktan sonra, kaynağı dağıtmak için sayfanın alt kısmındaki **Oluştur** ' u seçin. 
     1. Dağıtım başarılı olduktan sonra kaynak grubu sayfasına gitmek için **kaynak grubuna git** ' i seçin. Kaynak grubunda bir etki alanı olduğunu doğrulayın. Etki alanını seçin. Etki alanında etki alanı konuları olduğunu doğrulayın. 
 
@@ -84,13 +84,13 @@ Baştan başlamak istiyorsanız, hedef bölgedeki etki alanını silin ve bu mak
 
 Azure portal kullanarak bir etki alanını silmek için:
 
-1. Azure portal en üstündeki ara penceresinde, **Event Grid etki alanları**yazın ve arama sonuçlarından **Event Grid etki alanları** ' nı seçin. 
+1. Azure portal en üstündeki ara penceresinde, **Event Grid etki alanları** yazın ve arama sonuçlarından **Event Grid etki alanları** ' nı seçin. 
 2. Silinecek etki alanını seçin ve araç çubuğundan **Sil** ' i seçin. 
 3. Onay sayfasında, kaynak grubunun adını girin ve **Sil**' i seçin.  
 
 Azure portal kullanarak etki alanını içeren kaynak grubunu silmek için:
 
-1. Azure portal en üstündeki ara penceresinde, **kaynak grupları**yazın ve arama sonuçlarından **kaynak grupları** ' nı seçin. 
+1. Azure portal en üstündeki ara penceresinde, **kaynak grupları** yazın ve arama sonuçlarından **kaynak grupları** ' nı seçin. 
 2. Silinecek kaynak grubunu seçin ve araç çubuğundan **Sil** ' i seçin. 
 3. Onay sayfasında, kaynak grubunun adını girin ve **Sil**' i seçin.  
 

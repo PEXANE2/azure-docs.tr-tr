@@ -7,10 +7,10 @@ description: Azure Dev Spaces ile uygulama geliştirirken Kubernetes gizlilikler
 keywords: Docker, Kubernetes, Azure, AKS, Azure Container Service, kapsayıcılar
 ms.custom: devx-track-js
 ms.openlocfilehash: 8791480f420dfd76d5291ce82e8ebf7412a41326
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91972977"
 ---
 # <a name="how-to-manage-secrets-when-working-with-an-azure-dev-space"></a>Azure dev Space ile çalışırken gizli dizileri yönetme
@@ -143,7 +143,7 @@ configurations:
 Yukarıdaki örnekte, *mynugetsecret* var olan bir sır ve *pattoken* var olan bir anahtardır.
 
 >[!NOTE]
-> Gizli adlar ve anahtarlar `.` karakteri içerebilir. `\` `.` Gizli dizileri yapı bağımsız değişkenleri olarak geçirirken kaçış için kullanın. Örneğin, *belirteç*anahtarıyla *foo. Bar* adlı bir gizli anahtar geçirmek için: `MYTOKEN: ${secret.foo\.bar.token}` . Ayrıca, gizlilikler önek ve sonek metniyle değerlendirilebilir. Örneğin, `MYURL: eus-${secret.foo\.bar.token}-version1`. Ayrıca, üst ve alt üst alanlarda bulunan gizlilikler yapı bağımsız değişkenleri olarak geçirilebilir.
+> Gizli adlar ve anahtarlar `.` karakteri içerebilir. `\` `.` Gizli dizileri yapı bağımsız değişkenleri olarak geçirirken kaçış için kullanın. Örneğin, *foo.Bar* adlı bir gizli anahtarı *belirteç* anahtarıyla geçirmek için: `MYTOKEN: ${secret.foo\.bar.token}` . Ayrıca, gizlilikler önek ve sonek metniyle değerlendirilebilir. Örneğin, `MYURL: eus-${secret.foo\.bar.token}-version1`. Ayrıca, üst ve alt üst alanlarda bulunan gizlilikler yapı bağımsız değişkenleri olarak geçirilebilir.
 
 Dockerfile 'da, parolayı kullanmak için *arg* yönergesini kullanın, daha sonra dockerfile içinde bu değişkeni kullanın. Örnek:
 

@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 01/21/2020
 ms.author: jeedes
 ms.openlocfilehash: 6dbd39b5c56192ad2ca957c5500338b50e8c8963
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92453395"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-firmex-vdr"></a>Öğretici: Firmex VDR ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
@@ -28,7 +28,7 @@ Bu öğreticide, Firmex VDR 'yi Azure Active Directory (Azure AD) ile tümleşti
 
 Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](../manage-apps/what-is-single-sign-on.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -57,7 +57,7 @@ Firmex VDR 'yi Azure AD 'ye tümleştirmeyi yapılandırmak için, galerisindeki
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-firmex-vdr"></a>Firmex VDR için Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-**B. Simon**adlı bir test kullanıcısı kullanarak FIRMEX VDR Ile Azure AD SSO 'yu yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ve Firmex VDR içindeki ilgili Kullanıcı arasında bir bağlantı ilişkisi kurmanız gerekir.
+**B. Simon** adlı bir test kullanıcısı kullanarak FIRMEX VDR Ile Azure AD SSO 'yu yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ve Firmex VDR içindeki ilgili Kullanıcı arasında bir bağlantı ilişkisi kurmanız gerekir.
 
 Azure AD SSO 'yu Firmex VDR ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
 
@@ -121,7 +121,7 @@ Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaks�
 Bu bölümde, Firmex VDR 'ye erişim izni vererek Azure çoklu oturum açma özelliğini kullanmak için B. Simon 'u etkinleştireceksiniz.
 
 1. Azure portal **Kurumsal uygulamalar**' ı seçin ve ardından **tüm uygulamalar**' ı seçin.
-1. Uygulamalar listesinde **Firmex VDR**öğesini seçin.
+1. Uygulamalar listesinde **Firmex VDR** öğesini seçin.
 1. Uygulamanın genel bakış sayfasında **Yönet** bölümünü bulun ve **Kullanıcılar ve gruplar**' ı seçin.
 
    !["Kullanıcılar ve gruplar" bağlantısı](common/users-groups-blade.png)
@@ -153,14 +153,14 @@ SSO uygulama birkaç dakika sürer. Firmex desteği arasında, siteniz için SSO
 
 Şirketinizin kullanıcılarının oturum açtığı etki alanlarını belirler.
 
-Örneğin:
+Örnek:
 
 - @firmex.com
 - @firmex.ca
 
 ### <a name="step-2---contact-firmex-support-with-your-domains"></a>2. adım-etki alanlarınızda Firmex desteğiyle Iletişim kurun
 
-Firmex destek [ekibi](mailto:support@firmex.com) e-postası veya 1888 688 4042 x. 11 ' i arayarak firmex desteğiyle konuşun. Etki alanı bilgilerinizi geçirin. Firmex desteği, etki alanlarını, **istenen etki alanları**olarak VDR 'nize ekler. Yöneticinizin artık SSO 'yu yapılandırması gerekir.
+Firmex destek [ekibi](mailto:support@firmex.com) e-postası veya 1888 688 4042 x. 11 ' i arayarak firmex desteğiyle konuşun. Etki alanı bilgilerinizi geçirin. Firmex desteği, etki alanlarını, **istenen etki alanları** olarak VDR 'nize ekler. Yöneticinizin artık SSO 'yu yapılandırması gerekir.
 
 Uyarı: site yöneticiniz, istenen etki alanlarını yapılandırana kadar, şirketinizin kullanıcıları VDR 'de oturum açamaz. Şirket dışı kullanıcılar (yani, Konuk kullanıcılar) e-posta/parolalarını kullanarak oturum açabilirler. Yapılandırma birkaç dakika sürer.
 

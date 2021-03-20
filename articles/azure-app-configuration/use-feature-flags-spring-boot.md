@@ -15,10 +15,10 @@ ms.date: 09/26/2019
 ms.author: mametcal
 ms.custom: mvc, devx-track-java
 ms.openlocfilehash: 0dcf85add4e1c9f1d701c4ce4a122c8d6b31382a
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92077839"
 ---
 # <a name="tutorial-use-feature-flags-in-a-spring-boot-app"></a>Öğretici: bir Spring Boot uygulamasında Özellik bayraklarını kullanma
@@ -75,7 +75,7 @@ Spring Boot uygulamanızı uygulama yapılandırmasına bağlanmanın en kolay y
 
 Her özellik bayrağının iki bölümü vardır: bir özelliğin durumunun *Açık* olup olmadığını değerlendirmek için kullanılan bir veya daha fazla filtrenin adı ve listesi (yani, değeri olduğunda `True` ). Bir filtre, bir özelliğin açılması gerektiğinde kullanım durumunu tanımlar.
 
-Bir özellik bayrağının birden çok filtresi olduğunda, filtrenin etkin olması gerektiğini belirlerken filtre listesine bir düzen eklenir. Bu noktada, özellik bayrağı *Açık*ve kalan filtre sonuçları atlanır. Filtre yoksa, özelliğin etkinleştirilmesi gerektiğini gösteriyorsa, özellik bayrağı *kapalıdır*.
+Bir özellik bayrağının birden çok filtresi olduğunda, filtrenin etkin olması gerektiğini belirlerken filtre listesine bir düzen eklenir. Bu noktada, özellik bayrağı *Açık* ve kalan filtre sonuçları atlanır. Filtre yoksa, özelliğin etkinleştirilmesi gerektiğini gösteriyorsa, özellik bayrağı *kapalıdır*.
 
 Özellik Yöneticisi, *uygulama. yıml* 'yi özellik bayrakları için yapılandırma kaynağı olarak destekler. Aşağıdaki örnekte, bir YAML dosyasında özellik bayraklarının nasıl ayarlanacağı gösterilmektedir:
 
@@ -96,11 +96,11 @@ Kurala göre, `feature-management` Bu IML belgesinin bölümü Özellik bayrağ�
 
 * `feature-a`*Açık*.
 * `feature-b`*kapalıdır*.
-* `feature-c` özelliği olan adlı bir filtre belirtir `Percentage` `parameters` . `Percentage` , yapılandırılabilir bir filtredir. Bu örnekte, `Percentage` `feature-c` bayrağın *Açık*olması için yüzde 50 olasılık değerini belirtir.
+* `feature-c` özelliği olan adlı bir filtre belirtir `Percentage` `parameters` . `Percentage` , yapılandırılabilir bir filtredir. Bu örnekte, `Percentage` `feature-c` bayrağın *Açık* olması için yüzde 50 olasılık değerini belirtir.
 
 ## <a name="feature-flag-checks"></a>Özellik bayrağı denetimleri
 
-Özellik yönetiminin temel stili, ilk olarak bir özellik bayrağının *Açık*olarak ayarlanmış olup olmadığını denetme. Bu durumda, Özellik Yöneticisi özelliğin içerdiği eylemleri çalıştırır. Örnek:
+Özellik yönetiminin temel stili, ilk olarak bir özellik bayrağının *Açık* olarak ayarlanmış olup olmadığını denetme. Bu durumda, Özellik Yöneticisi özelliğin içerdiği eylemleri çalıştırır. Örnek:
 
 ```java
 private FeatureManager featureManager;
@@ -138,7 +138,7 @@ public String index(Model model) {
 }
 ```
 
-Denetim özelliği bayrağı *kapalı*olduğu IÇIN bir MVC denetleyicisi veya eylemi engellendiğinde, kayıtlı bir `IDisabledFeaturesHandler` arabirim çağırılır. Varsayılan `IDisabledFeaturesHandler` arabirim, yanıt gövdesi olmayan istemciye 404 durum kodu döndürür.
+Denetim özelliği bayrağı *kapalı* olduğu IÇIN bir MVC denetleyicisi veya eylemi engellendiğinde, kayıtlı bir `IDisabledFeaturesHandler` arabirim çağırılır. Varsayılan `IDisabledFeaturesHandler` arabirim, yanıt gövdesi olmayan istemciye 404 durum kodu döndürür.
 
 ## <a name="mvc-filters"></a>MVC filtreleri
 

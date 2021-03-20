@@ -5,10 +5,10 @@ ms.topic: article
 ms.date: 06/26/2020
 ms.reviewer: christianreddington,anthdela,juselph
 ms.openlocfilehash: 1e470da5cd317d49f0d0734caa11eed6630d3f32
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85480924"
 ---
 # <a name="governance-of-azure-devtest-labs-infrastructure---resources"></a>Azure DevTest Labs altyapı yönetimi-kaynaklar
@@ -67,7 +67,7 @@ Ayrıca, Azure DevOps Projeleri içindeki belirli bir proje için de laboratuvar
 Laboratuvardaki kaynakların silinmesini nasıl önleyebiliriz?
 
 ### <a name="answer"></a>Yanıt
-Yalnızca yetkili kullanıcıların kaynakları silmesi veya laboratuvar ilkelerini değiştirmesi için uygun izinleri laboratuvar düzeyinde ayarlamanızı öneririz. Geliştiricilerin **DevTest Labs Kullanıcı** grubu içine yerleştirilmesi gerekir. Lider geliştiricisi veya altyapı lideri, **DevTest Labs sahibi**olmalıdır. Yalnızca iki laboratuar sahibi olmasını öneririz. Bu ilke, bozulmayı önlemek için kod deposuna doğru genişletilir. Laboratuvar kullanımları kaynakları kullanma hakkına sahiptir ancak laboratuvar ilkelerini güncelleştiremez. Her bir yerleşik grubun bir laboratuvar dahilinde sahip olduğu rolleri ve hakları listeleyen aşağıdaki makaleye bakın: [Azure DevTest Labs sahip ve Kullanıcı ekleme](devtest-lab-add-devtest-user.md).
+Yalnızca yetkili kullanıcıların kaynakları silmesi veya laboratuvar ilkelerini değiştirmesi için uygun izinleri laboratuvar düzeyinde ayarlamanızı öneririz. Geliştiricilerin **DevTest Labs Kullanıcı** grubu içine yerleştirilmesi gerekir. Lider geliştiricisi veya altyapı lideri, **DevTest Labs sahibi** olmalıdır. Yalnızca iki laboratuar sahibi olmasını öneririz. Bu ilke, bozulmayı önlemek için kod deposuna doğru genişletilir. Laboratuvar kullanımları kaynakları kullanma hakkına sahiptir ancak laboratuvar ilkelerini güncelleştiremez. Her bir yerleşik grubun bir laboratuvar dahilinde sahip olduğu rolleri ve hakları listeleyen aşağıdaki makaleye bakın: [Azure DevTest Labs sahip ve Kullanıcı ekleme](devtest-lab-add-devtest-user.md).
 
 ## <a name="move-lab-to-another-resource-group"></a>Laboratuvarı başka bir kaynak grubuna taşıma 
 

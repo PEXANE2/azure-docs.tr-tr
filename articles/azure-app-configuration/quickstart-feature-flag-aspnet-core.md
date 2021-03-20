@@ -8,10 +8,10 @@ ms.topic: quickstart
 ms.date: 09/28/2020
 ms.author: alkemper
 ms.openlocfilehash: 8ca4a6e78ab3c6ccf492869bb68c5296ae91de21
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/07/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99806079"
 ---
 # <a name="quickstart-add-feature-flags-to-an-aspnet-core-app"></a>Hızlı başlangıç: ASP.NET Core uygulamasına özellik bayrakları ekleme
@@ -70,7 +70,7 @@ dotnet new mvc --no-https --output TestFeatureFlags
 
     .NET Core Yapılandırma API 'sini kullanarak bu gizli dizi ile erişin. İki nokta üst üste ( `:` ) yapılandırma adında desteklenen tüm platformlarda Yapılandırma API 'si ile birlikte kullanılır. Daha fazla bilgi için bkz. [yapılandırma anahtarları ve değerleri](/aspnet/core/fundamentals/configuration#configuration-keys-and-values).
 
-1. *Program.cs* içinde `CreateWebHostBuilder` yöntemini çağırarak uygulama yapılandırmasını kullanmak üzere yöntemi güncelleştirin `AddAzureAppConfiguration` .
+1. *Program. cs*' de `CreateWebHostBuilder` yöntemini çağırarak uygulama yapılandırmasını kullanmak üzere yöntemi güncelleştirin `AddAzureAppConfiguration` .
 
     > [!IMPORTANT]
     > `CreateHostBuilder``CreateWebHostBuilder`.NET Core 3. x içindeki yerini alır. Ortamınıza göre doğru söz dizimini seçin.
@@ -123,7 +123,7 @@ dotnet new mvc --no-https --output TestFeatureFlags
 
     Önceki değişiklikten sonra, [uygulama yapılandırması için yapılandırma sağlayıcısı](/dotnet/api/Microsoft.Extensions.Configuration.AzureAppConfiguration) .NET Core Yapılandırma API 'sine kaydedilir.
 
-1. *Startup.cs*' de .NET Core Özellik Yöneticisi 'ne bir başvuru ekleyin:
+1. *Başlangıç. cs*' de .NET Core Özellik Yöneticisi 'ne bir başvuru ekleyin:
 
     ```csharp
     using Microsoft.FeatureManagement;
@@ -163,7 +163,7 @@ dotnet new mvc --no-https --output TestFeatureFlags
 
     ---
 
-1. Kök proje dizinine aşağıdaki kodla bir *MyFeatureFlags.cs* dosyası ekleyin:
+1. Kök proje dizinine aşağıdaki kodla bir *Myfeatureflags. cs* dosyası ekleyin:
 
     ```csharp
     namespace TestFeatureFlags
@@ -175,7 +175,7 @@ dotnet new mvc --no-https --output TestFeatureFlags
     }
     ```
 
-1. *Controllers* dizinine aşağıdaki kodla bir *BetaController.cs* dosyası ekleyin:
+1. Aşağıdaki kodla, *Controllers* dizinine bir *betacontroller. cs* dosyası ekleyin:
 
     ```csharp
     using Microsoft.AspNetCore.Mvc;

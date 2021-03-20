@@ -9,10 +9,10 @@ ms.date: 10/13/2020
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: 5e84a679f0bc26b701dc1d51db3605c452675ea3
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96545290"
 ---
 # <a name="string-functions-azure-cosmos-db"></a>Dize işlevleri (Azure Cosmos DB)
@@ -35,7 +35,7 @@ Aşağıdaki skaler işlevler dize girişi değerinde bir işlem gerçekleştiri
 * [REGEXMATCH](sql-query-regexmatch.md)
 * [REPLACE](sql-query-replace.md)
 * [ÇOĞALTILAN](sql-query-replicate.md)
-* [REVERSE](sql-query-reverse.md)
+* [TERSINI](sql-query-reverse.md)
 * [RIGHT](sql-query-right.md)
 * [RTRIM](sql-query-rtrim.md)
 * [STARTSWITH](sql-query-startswith.md)
@@ -44,8 +44,8 @@ Aşağıdaki skaler işlevler dize girişi değerinde bir işlem gerçekleştiri
 * [StringToNull](sql-query-stringtonull.md)
 * [StringToNumber](sql-query-stringtonumber.md)
 * [StringToObject](sql-query-stringtoobject.md)
-* [SUBSTRING](sql-query-substring.md)
-* [ToString](sql-query-tostring.md)
+* [DIZEDEN](sql-query-substring.md)
+* [Yönte](sql-query-tostring.md)
 * [TRIM](sql-query-trim.md)
 * [UPPER](sql-query-upper.md)
 
