@@ -5,10 +5,10 @@ ms.topic: article
 ms.date: 06/26/2020
 ms.reviewer: christianreddington,anthdela,juselph
 ms.openlocfilehash: 29f739c2fb9dd1cc58bf6c400eeee1bebb6243c2
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92328853"
 ---
 # <a name="azure-devtest-labs-reference-architecture-for-enterprises"></a>Kuruluşlar için Azure DevTest Labs başvuru mimarisi
@@ -44,7 +44,7 @@ DevTest Labs yerleşik kotalar veya sınırlara sahip olmasa da, bir laboratuvar
 - **Kaynak grupları**: Varsayılan yapılandırmada, DevTest Labs her yeni sanal makine için bir kaynak grubu oluşturur veya Kullanıcı Hizmeti kullanarak bir ortam oluşturur. Abonelikler, [en fazla 980 kaynak grubu](../azure-resource-manager/management/azure-subscription-service-limits.md#subscription-limits)içerebilir. Bu nedenle, bir abonelikteki sanal makinelerin ve ortamların sınırı vardır. Dikkate almanız gereken iki farklı yapılandırma vardır:
     - **[Tüm sanal makineler aynı kaynak grubuna gider](resource-group-control.md)**: Bu kurulum, kaynak grubu sınırını karşılamanıza yardımcı olmakla birlikte kaynak-tür-kaynak grubu sınırını da etkiler.
     - **Paylaşılan genel IP 'Leri kullanma**: aynı boyut ve bölgeye ait tüm VM 'ler aynı kaynak grubuna gider. Bu yapılandırma, sanal makinelerin genel IP adreslerine sahip olmasına izin veriliyorsa kaynak grup kotaları ve kaynak-tür-kaynak grubu kotaları arasında "orta zemin" dır.
-- Kaynak türü başına kaynak **grubu**başına kaynak sayısı: kaynak [türü başına kaynak grubu başına kaynaklar](../azure-resource-manager/management/azure-subscription-service-limits.md#resource-group-limits)için varsayılan sınır 800 ' dir.  *Tüm VM 'leri kullandığınızda, aynı kaynak grubu yapılandırmasına git* , özellikle de VM 'lerde çok fazla disk varsa, kullanıcılar bu abonelik sınırına çok daha erken gider.
+- Kaynak türü başına kaynak **grubu** başına kaynak sayısı: kaynak [türü başına kaynak grubu başına kaynaklar](../azure-resource-manager/management/azure-subscription-service-limits.md#resource-group-limits)için varsayılan sınır 800 ' dir.  *Tüm VM 'leri kullandığınızda, aynı kaynak grubu yapılandırmasına git* , özellikle de VM 'lerde çok fazla disk varsa, kullanıcılar bu abonelik sınırına çok daha erken gider.
 - **Depolama hesapları**: DevTest Labs 'deki bir laboratuvar bir depolama hesabıyla birlikte gelir. [Abonelik başına bölge başına depolama hesabı sayısı](../azure-resource-manager/management/azure-subscription-service-limits.md#storage-limits)için Azure kotası 250 ' dir. Aynı bölgedeki en fazla DevTest Labs sayısı da 250 ' dir.
 - **Rol atamaları**: bir rol ataması, bir kaynağa (sahip, kaynak, izin düzeyi) bir kullanıcı veya sorumlu erişimi verme işlemi. Azure 'da, [abonelik başına 2.000 rol ataması sınırlaması](../azure-resource-manager/management/azure-subscription-service-limits.md#azure-role-based-access-control-limits)vardır. Varsayılan olarak, DevTest Labs hizmeti her VM için bir kaynak grubu oluşturur. Sahibe, kaynak grubuna DevTest Labs sanal makinesi ve *okuyucu* izni *için sahip izni verilir.* Bu şekilde, oluşturduğunuz her yeni VM, kullanıcıya laboratuvar izni verdiğinizde kullanılan atamalara ek olarak iki rol ataması kullanır.
 - **API okuma/yazma**: REST API 'Ler, PowerShell, Azure CLI ve Azure SDK dahil olmak üzere Azure ve DevTest Labs 'i otomatikleştirmek için çeşitli yollar vardır. Otomasyon sayesinde API istekleri için başka bir sınıra ulaşırsınız: her abonelik, [saat başına 12.000 okuma isteği ve 1.200 yazma isteği](../azure-resource-manager/management/request-limits-and-throttling.md)sağlar. DevTest Labs 'i otomatikleştirdiğiniz zaman bu sınırı unutmayın.
@@ -59,7 +59,7 @@ DevTest Labs, tek bir laboratuvarda çalışmak için harika bir yönetim kullan
 
 DevTest Labs 'in aynı şekilde yönetilen temel Azure kaynaklarını kullandığını unutmayın: ağ, diskler, işlem, vb. Örneğin, Azure Ilkesi laboratuarda oluşturulan sanal makinelere uygulanır. Azure Güvenlik Merkezi, VM uyumluluğunu rapor edebilir. Azure Backup hizmeti, laboratuvardaki VM 'Ler için düzenli yedeklemeler sağlayabilir.
 
-## <a name="security-considerations"></a>Güvenlikle ilgili dikkat edilmesi gerekenler
+## <a name="security-considerations"></a>Güvenlik konuları
 Azure DevTest Labs Azure 'da mevcut kaynakları (işlem, ağ vb.) kullanır. Bu nedenle, platformda yerleşik olarak bulunan güvenlik özelliklerinden otomatik olarak yararlanır. Örneğin, gelen Uzak Masaüstü bağlantılarının yalnızca kurumsal ağdan kaynaklanacak olması için, Uzak Masaüstü ağ geçidinde bulunan sanal ağa bir ağ güvenlik grubu eklemeniz yeterlidir. Tek ek güvenlik değerlendirmesi, laboratuvarları gündelik bir şekilde kullanan takım üyelerine verdiğiniz izinlerin düzeyidir. En yaygın izinler [ *sahip* ve *Kullanıcı*](devtest-lab-add-devtest-user.md). Bu roller hakkında daha fazla bilgi için, bkz. [Azure DevTest Labs sahip ve Kullanıcı ekleme](devtest-lab-add-devtest-user.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar

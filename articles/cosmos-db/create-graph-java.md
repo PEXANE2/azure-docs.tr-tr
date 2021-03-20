@@ -10,10 +10,10 @@ ms.date: 03/26/2019
 ms.author: chrande
 ms.custom: seo-java-july2019, seo-java-august2019, seo-java-september2019, devx-track-java
 ms.openlocfilehash: 5a793eb69b344e361679759e46db47c78885831e
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93360981"
 ---
 # <a name="quickstart-build-a-graph-database-with-the-java-sdk-and-the-azure-cosmos-db-gremlin-api"></a>Hızlı başlangıç: Java SDK ve Azure Cosmos DB Gremlin API 'SI ile bir grafik veritabanı oluşturma
@@ -101,7 +101,7 @@ Bu Java konsol uygulaması, OSS [Apache TinkerPop](https://tinkerpop.apache.org/
 
 Şimdi, Azure portalına dönerek bağlantı bilgilerinizi kopyalayıp uygulamaya ekleyin. Bu ayarlar, uygulamanızın barındırılan veritabanıyla iletişim kurmasına olanak tanır.
 
-1. [Azure portal](https://portal.azure.com/)Azure Cosmos DB hesabınızda **anahtarlar** ' ı seçin. 
+1. [Azure portal](https://portal.azure.com/)Azure Cosmos DB hesabınızda **anahtarlar**' ı seçin. 
 
     URI değerinin ilk parçasını kopyalayın.
 
@@ -129,7 +129,7 @@ Bu Java konsol uygulaması, OSS [Apache TinkerPop](https://tinkerpop.apache.org/
 
     `username: /dbs/$database$/colls/$collection$`
 
-    şöyle değiştirin: 
+    kullanıcısı 
 
     `username: /dbs/sample-database/colls/sample-graph`
 
@@ -168,11 +168,11 @@ Bu Java konsol uygulaması, OSS [Apache TinkerPop](https://tinkerpop.apache.org/
 
 Şimdi Veri Gezgini’ne dönüp grafiğe eklenen köşeleri görebilir ve ek veri noktaları ekleyebilirsiniz.
 
-1. Azure portal Azure Cosmos DB hesabınızda, **Veri Gezgini** , **örnek grafik** ' i ve **Graf** ' ı seçin ve ardından **Filtre Uygula** ' yı seçin. 
+1. Azure portal Azure Cosmos DB hesabınızda, **Veri Gezgini**, **örnek grafik**' i ve **Graf**' ı seçin ve ardından **Filtre Uygula**' yı seçin. 
 
    :::image type="content" source="./media/create-graph-java/azure-cosmosdb-data-explorer-expanded.png" alt-text="Ekran görüntüsü, filtre uygulama seçeneğiyle bir P I 'den seçilen grafiği gösterir.":::
 
-2. **Sonuç listesinde** , grafiğe yeni kullanıcıların eklendiğini görürsünüz. **Ben** ’i seçin ve kullanıcının robin’e bağlı olduğuna dikkat edin. Köşeleri sürükleyip bırakarak hareket ettirebilir, farenizin tekerleğini kaydırarak öğeleri yakınlaştırabilir ve uzaklaştırabilir, ayrıca çift okla grafiğin boyutunu genişletebilirsiniz. 
+2. **Sonuç listesinde**, grafiğe yeni kullanıcıların eklendiğini görürsünüz. **Ben**’i seçin ve kullanıcının robin’e bağlı olduğuna dikkat edin. Köşeleri sürükleyip bırakarak hareket ettirebilir, farenizin tekerleğini kaydırarak öğeleri yakınlaştırabilir ve uzaklaştırabilir, ayrıca çift okla grafiğin boyutunu genişletebilirsiniz. 
 
    :::image type="content" source="./media/create-graph-java/azure-cosmosdb-graph-explorer-new.png" alt-text="Azure portalında Veri Gezgini'ndeki grafikte yeni köşeler":::
 
@@ -193,7 +193,7 @@ Bu Java konsol uygulaması, OSS [Apache TinkerPop](https://tinkerpop.apache.org/
     > [!NOTE]
     > Bu hızlı başlangıçta bölümlenmemiş bir koleksiyon oluşturacaksınız. Ancak koleksiyon oluşturma sırasında bir bölüm anahtarı belirterek bölümlendirilmiş bir koleksiyon oluşturursanız, daha sonra bölüm anahtarını her yeni köşede anahtar olarak eklemeniz gerekir. 
 
-6. **Tamam** ’ı seçin. Ekranın en altındaki **Tamam** seçeneğini görmek için ekranınızı genişletmeniz gerekebilir.
+6. **Tamam**’ı seçin. Ekranın en altındaki **Tamam** seçeneğini görmek için ekranınızı genişletmeniz gerekebilir.
 
 7. **Yeni köşe** ' i yeniden seçin ve ek bir yeni kullanıcı ekleyin. 
 
@@ -207,7 +207,7 @@ Bu Java konsol uygulaması, OSS [Apache TinkerPop](https://tinkerpop.apache.org/
     cinsiyet|erkek| 
     okul|MIT| 
 
-10. **Tamam** ’ı seçin. 
+10. **Tamam**’ı seçin. 
 
 11. Grafikteki tüm değerleri göstermek için varsayılan filtreyle **Filtre Uygula** düğmesini seçin `g.V()` . Tüm kullanıcılar **Sonuç listesinde** gösterilir. 
 
@@ -221,7 +221,7 @@ Bu Java konsol uygulaması, OSS [Apache TinkerPop](https://tinkerpop.apache.org/
 
     :::image type="content" source="./media/create-graph-java/azure-cosmosdb-data-explorer-set-target.png" alt-text="Veri Gezgini bağlantı ekleme-Azure CosmosDB":::
 
-14. Sonuç listesinden **rakesh** ’i seçin, ashley ve rakesh’in bağlantılı olduğunu görürsünüz. 
+14. Sonuç listesinden **rakesh**’i seçin, ashley ve rakesh’in bağlantılı olduğunu görürsünüz. 
 
     :::image type="content" source="./media/create-graph-java/azure-cosmosdb-graph-explorer.png" alt-text="Veri Gezgini bağlı iki köşe-Azure CosmosDB":::
 

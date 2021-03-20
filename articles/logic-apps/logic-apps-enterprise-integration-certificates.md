@@ -9,10 +9,10 @@ ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 08/17/2018
 ms.openlocfilehash: 03fc17c0d071cef4c8de92c6b50d60d961d18aef
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91565268"
 ---
 # <a name="improve-security-for-b2b-messages-by-using-certificates"></a>Sertifika kullanarak B2B iletilerinin güvenliğini artırma
@@ -38,16 +38,16 @@ B2B özelliklerine sahip Logic Apps 'te *ortak bir sertifika* kullanmak için ö
 
    ![Tümleştirme hesabınızı bulun ve seçin](media/logic-apps-enterprise-integration-certificates/select-integration-account.png)  
 
-2. **Bileşenler**bölümünde **Sertifikalar** kutucuğunu seçin.
+2. **Bileşenler** bölümünde **Sertifikalar** kutucuğunu seçin.
 
    !["Sertifikalar" ı seçin](media/logic-apps-enterprise-integration-certificates/add-certificates.png)
 
-3. **Sertifikalar**altında **Ekle**' yi seçin. **Sertifika ekle**' nin altında, sertifikanız için bu ayrıntıları sağlayın. İşiniz bittiğinde **Tamam**’ı seçin.
+3. **Sertifikalar** altında **Ekle**' yi seçin. **Sertifika ekle**' nin altında, sertifikanız için bu ayrıntıları sağlayın. İşiniz bittiğinde **Tamam**’ı seçin.
 
    | Özellik | Değer | Açıklama | 
    |----------|-------|-------------|
    | **Ad** | <*Sertifika adı*> | Bu örnekte, sertifikanızın adı "publicCert" | 
-   | **Sertifika türü** | Ortak | Sertifikanızın türü |
+   | **Sertifika türü** | Genel | Sertifikanızın türü |
    | **Sertifika** | <*sertifika-dosya adı*> | Karşıya yüklemek istediğiniz sertifika dosyasını bulmak ve seçmek için, **sertifika** kutusunun yanındaki klasör simgesini seçin. |
    ||||
 
@@ -66,7 +66,7 @@ Oluşturduğunuz [anlaşmalarda](logic-apps-enterprise-integration-agreements.md
 > [!NOTE]
 > Özel sertifikalar için, [AS2 sözleşmesinin](logic-apps-enterprise-integration-as2.md) iletileri **imzalama ve şifreleme ayarlarında görünen** karşılık gelen bir ortak sertifika eklediğinizden emin olun.
 
-1. [Özel anahtarınızı Azure Key Vault ekleyin](../key-vault/certificates/certificate-scenarios.md#import-a-certificate) ve **anahtar adı**belirtin.
+1. [Özel anahtarınızı Azure Key Vault ekleyin](../key-vault/certificates/certificate-scenarios.md#import-a-certificate) ve **anahtar adı** belirtin.
    
 2. Azure Key Vault üzerinde işlem gerçekleştirmek için Azure Logic Apps Yetkilendir. Logic Apps Hizmet sorumlusuna erişim vermek için, [set-AzKeyVaultAccessPolicy](/powershell/module/az.keyvault/set-azkeyvaultaccesspolicy)PowerShell komutunu kullanın, örneğin:
 
@@ -77,11 +77,11 @@ Oluşturduğunuz [anlaşmalarda](logic-apps-enterprise-integration-agreements.md
 
    ![Tümleştirme hesabınızı bulun](media/logic-apps-enterprise-integration-certificates/select-integration-account.png) 
 
-4. **Bileşenler**bölümünde **Sertifikalar** kutucuğunu seçin.  
+4. **Bileşenler** bölümünde **Sertifikalar** kutucuğunu seçin.  
 
    ![Sertifikalar kutucuğunu seçin](media/logic-apps-enterprise-integration-certificates/add-certificates.png)
 
-5. **Sertifikalar**altında **Ekle**' yi seçin. **Sertifika ekle**' nin altında, sertifikanız için bu ayrıntıları sağlayın. İşiniz bittiğinde **Tamam**’ı seçin.
+5. **Sertifikalar** altında **Ekle**' yi seçin. **Sertifika ekle**' nin altında, sertifikanız için bu ayrıntıları sağlayın. İşiniz bittiğinde **Tamam**’ı seçin.
 
    | Özellik | Değer | Açıklama | 
    |----------|-------|-------------|

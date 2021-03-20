@@ -1,5 +1,5 @@
 ---
-title: StorSimple Aygıt Yöneticisi hizmetini Azure 'da dağıtma | Microsoft Docs
+title: StorSimple Device Manager hizmetini Azure 'da dağıtma | Microsoft Docs
 description: Oluşturma, silme, hizmetin geçirilmesi ve hizmet kayıt anahtarının yönetimi için gereken adımlar hakkında bilgi edinin.
 services: storsimple
 documentationcenter: ''
@@ -15,21 +15,21 @@ ms.workload: na
 ms.date: 05/09/2018
 ms.author: alkohli
 ms.openlocfilehash: 66244bd8e24ff62be41df72f7a39c0ce0ed13135
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93360708"
 ---
-# <a name="deploy-the-storsimple-device-manager-service-for-storsimple-8000-series-devices"></a>StorSimple 8000 serisi cihazlar için StorSimple Aygıt Yöneticisi hizmetini dağıtma
+# <a name="deploy-the-storsimple-device-manager-service-for-storsimple-8000-series-devices"></a>StorSimple 8000 serisi cihazlar için StorSimple Device Manager hizmetini dağıtma
 
 [!INCLUDE [storsimple-8000-eol-banner](../../includes/storsimple-8000-eol-banner.md)]
 
 ## <a name="overview"></a>Genel Bakış
 
-StorSimple Aygıt Yöneticisi hizmeti Microsoft Azure ' de çalışır ve birden çok StorSimple cihaza bağlanır. Hizmeti oluşturduktan sonra, tek bir merkezi konumdan StorSimple Aygıt Yöneticisi hizmetine bağlı tüm cihazları yönetmek için bunu kullanabilir, böylece yönetim yükünü en aza indirebilirsiniz.
+StorSimple Device Manager hizmeti Microsoft Azure ' de çalışır ve birden çok StorSimple cihaza bağlanır. Hizmeti oluşturduktan sonra, tek bir merkezi konumdan StorSimple Device Manager hizmetine bağlı tüm cihazları yönetmek için bunu kullanabilir, böylece yönetim yükünü en aza indirebilirsiniz.
 
-Bu öğreticide, hizmetin oluşturulması, silinmesi, geçirilmesi ve hizmet kayıt anahtarının yönetimi için gereken adımlar açıklanmaktadır. Bu makalede yer alan bilgiler yalnızca StorSimple 8000 serisi cihazlara uygulanabilir. StorSimple Sanal dizileri hakkında daha fazla bilgi için, [StorSimple Sanal diziniz için bir storsimple Aygıt Yöneticisi hizmeti dağıtma](storsimple-virtual-array-manage-service.md)konusuna gidin.
+Bu öğreticide, hizmetin oluşturulması, silinmesi, geçirilmesi ve hizmet kayıt anahtarının yönetimi için gereken adımlar açıklanmaktadır. Bu makalede yer alan bilgiler yalnızca StorSimple 8000 serisi cihazlara uygulanabilir. StorSimple Sanal dizileri hakkında daha fazla bilgi için, [StorSimple Sanal diziniz için bir storsimple Device Manager hizmeti dağıtma](storsimple-virtual-array-manage-service.md)konusuna gidin.
 
 > [!NOTE]
 > -  Azure portal güncelleştirme 5,0 veya üstünü çalıştıran cihazları destekler. Cihazınız güncel değilse, güncelleştirme 5 ' i hemen kurun. Daha fazla bilgi için [güncelleştirme 5](storsimple-8000-install-update-5.md)' e gidin. 
@@ -37,7 +37,7 @@ Bu öğreticide, hizmetin oluşturulması, silinmesi, geçirilmesi ve hizmet kay
 > - Güncelleştirme 4,0 veya önceki bir sürümü çalıştıran tüm cihazlar, daha az yönetim işlevselliğiyle karşılaşacaktır. 
 
 ## <a name="create-a-service"></a>Hizmet oluşturma
-StorSimple Aygıt Yöneticisi hizmeti oluşturmak için şunları yapmanız gerekir:
+StorSimple Device Manager hizmeti oluşturmak için şunları yapmanız gerekir:
 
 * Kurumsal Anlaşma bir abonelik
 * Etkin bir Microsoft Azure depolama hesabı
@@ -48,17 +48,17 @@ Yalnızca bir Kurumsal Anlaşma aboneliğe izin verilir. Hizmeti oluştururken v
 Tek bir hizmet birden çok cihazı yönetebilir. Ancak, bir cihaz birden fazla hizmete yayılamaz. Büyük bir kuruluşun farklı abonelikler, kuruluşlar veya hatta dağıtım konumları ile çalışması için birden çok hizmet örneği olabilir. 
 
 > [!NOTE]
-> StorSimple 8000 serisi cihazlarını ve StorSimple Sanal dizilerini yönetmek için StorSimple Aygıt Yöneticisi hizmetinin ayrı örneklerine ihtiyacınız vardır.
+> StorSimple 8000 serisi cihazlarını ve StorSimple Sanal dizilerini yönetmek için StorSimple Device Manager hizmetinin ayrı örneklerine ihtiyacınız vardır.
 
 Bir hizmet oluşturmak için aşağıdaki adımları gerçekleştirin.
 
 [!INCLUDE [storsimple-create-new-service](../../includes/storsimple-8000-create-new-service.md)]
 
 
-Her StorSimple Aygıt Yöneticisi hizmeti için aşağıdaki öznitelikler mevcuttur:
+Her StorSimple Device Manager hizmeti için aşağıdaki öznitelikler mevcuttur:
 
-* **Name** : storsimple Aygıt Yöneticisi hizmetinize atanan ad. **Hizmet adı, hizmet oluşturulduktan sonra değiştirilemez. Bu Ayrıca, Azure portal yeniden adlandırılamayan cihazlar, birimler, birim kapsayıcıları ve yedekleme ilkeleri gibi diğer varlıklar için de geçerlidir.**
-* **Durum** : **etkin** , **oluşturma** veya **çevrimiçi** olabilen hizmetin durumu.
+* **Name** : storsimple Device Manager hizmetinize atanan ad. **Hizmet adı, hizmet oluşturulduktan sonra değiştirilemez. Bu Ayrıca, Azure portal yeniden adlandırılamayan cihazlar, birimler, birim kapsayıcıları ve yedekleme ilkeleri gibi diğer varlıklar için de geçerlidir.**
+* **Durum** : **etkin**, **oluşturma** veya **çevrimiçi** olabilen hizmetin durumu.
 * **Location** : StorSimple cihazının dağıtılacağı coğrafi konum.
 * **Abonelik** – hizmetinizden ilişkilendirilen faturalandırma aboneliği.
 
@@ -77,7 +77,7 @@ Bir hizmeti silmek için aşağıdaki adımları gerçekleştirin.
 
     ![Silinecek arama hizmeti](./media/storsimple-8000-manage-service/deletessdevman1.png)
 
-2. Bu sizi StorSimple Aygıt Yöneticisi hizmeti dikey penceresine götürür. **Sil** 'e tıklayın.
+2. Bu sizi StorSimple Device Manager hizmeti dikey penceresine götürür. **Sil**'e tıklayın.
 
     ![Hizmeti Sil](./media/storsimple-8000-manage-service/deletessdevman2.png)
 
@@ -87,7 +87,7 @@ Bir hizmeti silmek için aşağıdaki adımları gerçekleştirin.
 
 ## <a name="get-the-service-registration-key"></a>Hizmet kayıt anahtarı alma
 
-Bir hizmeti başarıyla oluşturduktan sonra StorSimple cihazınızı hizmete kaydetmeniz gerekir. İlk StorSimple cihazınızı kaydetmek için hizmet kayıt anahtarına ihtiyacınız olacaktır. Mevcut bir StorSimple hizmetine ek cihazları kaydetmek için, kayıt anahtarı ve hizmet veri şifreleme anahtarı (kayıt sırasında ilk cihazda oluşturulur) gereklidir. Hizmet veri şifreleme anahtarı hakkında daha fazla bilgi için bkz. [StorSimple Security](storsimple-8000-security.md). StorSimple Aygıt Yöneticisi dikey penceresindeki **anahtarlara** erişerek kayıt anahtarını alabilirsiniz.
+Bir hizmeti başarıyla oluşturduktan sonra StorSimple cihazınızı hizmete kaydetmeniz gerekir. İlk StorSimple cihazınızı kaydetmek için hizmet kayıt anahtarına ihtiyacınız olacaktır. Mevcut bir StorSimple hizmetine ek cihazları kaydetmek için, kayıt anahtarı ve hizmet veri şifreleme anahtarı (kayıt sırasında ilk cihazda oluşturulur) gereklidir. Hizmet veri şifreleme anahtarı hakkında daha fazla bilgi için bkz. [StorSimple Security](storsimple-8000-security.md). StorSimple Device Manager dikey penceresindeki **anahtarlara** erişerek kayıt anahtarını alabilirsiniz.
 
 Hizmet kayıt anahtarını almak için aşağıdaki adımları gerçekleştirin.
 
@@ -103,11 +103,11 @@ Anahtar dönüşü yapmanız gerekiyorsa veya hizmet yöneticileri listesi deği
 Hizmet kayıt anahtarını yeniden oluşturmak için aşağıdaki adımları gerçekleştirin.
 
 ### <a name="to-regenerate-the-service-registration-key"></a>Hizmet kayıt anahtarını yeniden oluşturmak için
-1. **StorSimple aygıt yöneticisi** dikey penceresinde **&gt; Yönetim** **anahtarlar** ' a gidin.
+1. **StorSimple Device Manager** dikey penceresinde **&gt; Yönetim** **anahtarlar**' a gidin.
     
     ![Anahtarlar dikey penceresine git](./media/storsimple-8000-manage-service/regenregkey2.png)
 
-2. **Anahtarlar** dikey penceresinde yeniden **Oluştur** ' a tıklayın.
+2. **Anahtarlar** dikey penceresinde yeniden **Oluştur**' a tıklayın.
 
     ![Yeniden oluştur 'a tıklayın](./media/storsimple-8000-manage-service/regenregkey3.png)
 3. **Hizmet kayıt anahtarını yeniden oluştur** dikey penceresinde, anahtarlar yeniden üretildiğinde gereken eylemi gözden geçirin. Bu hizmete kayıtlı tüm sonraki cihazlar yeni kayıt anahtarını kullanır. Onaylamak için yeniden **Oluştur** ' a tıklayın. Yeniden oluşturma işlemi tamamlandıktan sonra bilgilendirilirsiniz.
@@ -191,27 +191,27 @@ Azure portal, yalnızca güncelleştirme 5,0 ve üstünü çalıştıran StorSim
 
 | İşlem                                                                                                                       | Desteklenir      |
 |---------------------------------------------------------------------------------------------------------------------------------|----------------|
-| Cihaz kaydetme                                                                                                               | Evet            |
-| Genel, ağ ve güvenlik gibi cihaz ayarlarını yapılandırma                                                                | Evet            |
-| Güncelleştirmeleri tarama, indirme ve yükleme                                                                                             | Evet            |
-| Cihazı devre dışı bırak                                                                                                               | Evet            |
-| Cihazı silme                                                                                                                   | Evet            |
+| Cihaz kaydetme                                                                                                               | Yes            |
+| Genel, ağ ve güvenlik gibi cihaz ayarlarını yapılandırma                                                                | Yes            |
+| Güncelleştirmeleri tarama, indirme ve yükleme                                                                                             | Yes            |
+| Cihazı devre dışı bırak                                                                                                               | Yes            |
+| Cihazı silme                                                                                                                   | Yes            |
 | Birim kapsayıcısı oluşturma, değiştirme ve silme                                                                                   | No             |
 | Birim oluşturma, değiştirme ve silme                                                                                             | No             |
 | Yedekleme ilkesi oluşturma, değiştirme ve silme                                                                                      | No             |
 | El ile yedekleme yapın                                                                                                            | No             |
 | Zamanlanmış bir yedekleme yapın                                                                                                         | Uygulanamaz |
 | Yedek kümesi 'ten geri yükleme                                                                                                        | No             |
-| Güncelleştirme 3,0 ve üstünü çalıştıran bir cihaza Kopyala <br> Kaynak cihaz güncelleştirme 3,0 ' den önceki sürümü çalıştırıyor.                                | Evet            |
+| Güncelleştirme 3,0 ve üstünü çalıştıran bir cihaza Kopyala <br> Kaynak cihaz güncelleştirme 3,0 ' den önceki sürümü çalıştırıyor.                                | Yes            |
 | Güncelleştirme 3,0 ' den önceki sürümleri çalıştıran bir cihaza Kopyala                                                                          | No             |
-| Kaynak cihaz olarak yük devretme <br> (güncelleştirme 3,0 ' den önceki sürümü çalıştıran bir cihazdan güncelleştirme 3,0 ve üzeri sürümlerini çalıştıran bir cihaza)                                                               | Evet            |
+| Kaynak cihaz olarak yük devretme <br> (güncelleştirme 3,0 ' den önceki sürümü çalıştıran bir cihazdan güncelleştirme 3,0 ve üzeri sürümlerini çalıştıran bir cihaza)                                                               | Yes            |
 | Hedef cihaz olarak yük devretme <br> (güncelleştirme 3,0 ' dan önce yazılım sürümü çalıştıran bir cihaza)                                                                                   | No             |
-| Bir uyarıyı Temizleme                                                                                                                  | Evet            |
-| Klasik portalda oluşturulan yedekleme ilkelerini, yedekleme kataloğunu, birimleri, birim kapsayıcılarını, izleme grafiklerini, işleri ve uyarıları görüntüleme | Evet            |
+| Bir uyarıyı Temizleme                                                                                                                  | Yes            |
+| Klasik portalda oluşturulan yedekleme ilkelerini, yedekleme kataloğunu, birimleri, birim kapsayıcılarını, izleme grafiklerini, işleri ve uyarıları görüntüleme | Yes            |
 | Cihaz denetleyicilerini aç ve Kapat                                                                                              | Evet            |
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 * [StorSimple dağıtım süreci](storsimple-8000-deployment-walkthrough-u2.md)hakkında daha fazla bilgi edinin.
 * [StorSimple depolama hesabınızı yönetme](storsimple-8000-manage-storage-accounts.md)hakkında daha fazla bilgi edinin.
-* StorSimple [cihazınızı yönetmek Için storsimple Aygıt Yöneticisi hizmetini kullanma](storsimple-8000-manager-service-administration.md)hakkında daha fazla bilgi edinin.
+* StorSimple [cihazınızı yönetmek Için storsimple Device Manager hizmetini kullanma](storsimple-8000-manager-service-administration.md)hakkında daha fazla bilgi edinin.

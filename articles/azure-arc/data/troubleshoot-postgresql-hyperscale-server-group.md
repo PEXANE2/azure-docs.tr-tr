@@ -10,10 +10,10 @@ ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
 ms.openlocfilehash: caaab07200a8631935a2b5d5368a0c16ea9a60c5
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92320224"
 ---
 # <a name="troubleshooting-postgresql-hyperscale-server-groups"></a>PostgreSQL hiper ölçek sunucu grupları sorunlarını giderme
@@ -31,7 +31,7 @@ veya
 azdata arc postgres server edit -n postgres01 --extension SomeExtensionName --debug
 ```
 
-Ayrıca, belirli bir komutun bazı yardım ve parametre listesini göstermek için herhangi bir azdata komutunda Help parametresini kullanabilirsiniz. Örneğin:
+Ayrıca, belirli bir komutun bazı yardım ve parametre listesini göstermek için herhangi bir azdata komutunda Help parametresini kullanabilirsiniz. Örnek:
 ```console
 azdata arc postgres server create --help
 ```
@@ -97,7 +97,7 @@ Azure Data Studio başlatın ve sorun giderme Not defterini açın.
 
 :::image type="content" source="media/postgres-hyperscale/ads-controller-postgres-troubleshooting-notebook.jpg" alt-text="Azure Data Studio-PostgreSQL sorun giderme Not defteri":::
 
-**TSG100-Azure Arc etkin PostgreSQL hiper ölçek sorun giderici Not defteri** açılır: :::image type="content" source="media/postgres-hyperscale/ads-controller-postgres-troubleshooting-notebook2.jpg" alt-text="Azure Data Studio-PostgreSQL sorun giderme Not defteri":::
+**TSG100-Azure Arc etkin PostgreSQL hiper ölçek sorun giderici Not defteri** açılır: :::image type="content" source="media/postgres-hyperscale/ads-controller-postgres-troubleshooting-notebook2.jpg" alt-text="Azure Data Studio-PostgreSQL sorun giderme Not defterini kullanma":::
 
 #### <a name="run-the-scripts"></a>Betikleri çalıştırma
 Not defterini tek seferde yürütmek için en üstteki ' Tümünü Çalıştır ' düğmesini seçin veya her bir kod hücresini birer birer seçerek yürütün.

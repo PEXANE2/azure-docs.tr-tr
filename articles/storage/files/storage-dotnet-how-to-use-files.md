@@ -10,10 +10,10 @@ ms.author: rogarana
 ms.subservice: files
 ms.custom: devx-track-csharp
 ms.openlocfilehash: e112060db4a44884d3094a939b03ff106ba72e65
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96492208"
 ---
 # <a name="develop-for-azure-files-with-net"></a>.NET ile Azure Dosyaları için geliştirme
@@ -54,7 +54,7 @@ Visual Studio'da yeni bir Windows konsol uygulaması oluşturun. Aşağıdaki ad
 1. **Yeni proje oluştur** bölümünde C# için **konsol uygulaması (.NET Framework)** öğesini seçin ve ardından **İleri**' yi seçin.
 1. **Yeni projenizi yapılandırın** bölümünde uygulama için bir ad girin ve **Oluştur**' u seçin.
 
-Bu makaledeki tüm kod örneklerini `Program` *program.cs* dosyasındaki sınıfına ekleyin.
+Bu makaledeki tüm kod örneklerini `Program` *program. cs* dosyasındaki sınıfına ekleyin.
 
 ## <a name="use-nuget-to-install-the-required-packages"></a>Gereken paketleri yüklemek için NuGet kullanma
 
@@ -135,7 +135,7 @@ Ardından, kimlik bilgilerinizi projenizin *App.config* dosyasına kaydedin. **�
 
 ## <a name="add-using-directives"></a>Using yönergeleri ekleme
 
-**Çözüm Gezgini**, *program.cs* dosyasını açın ve aşağıdaki using yönergelerini dosyanın en üstüne ekleyin.
+**Çözüm Gezgini**, *program. cs* dosyasını açın ve aşağıdaki using yönergelerini dosyanın en üstüne ekleyin.
 
 # <a name="net-v12"></a>[\.NET V12](#tab/dotnet)
 
@@ -156,7 +156,7 @@ using Microsoft.Azure.Storage.File; // Namespace for Azure Files
 
 ## <a name="access-the-file-share-programmatically"></a>Dosya paylaşımına programlamayla erişme
 
-*Program.cs* dosyasında, program aracılığıyla dosya paylaşımının erişebilmesi için aşağıdaki kodu ekleyin.
+*Program. cs* dosyasında dosya paylaşımında program aracılığıyla erişmek için aşağıdaki kodu ekleyin.
 
 # <a name="net-v12"></a>[\.NET V12](#tab/dotnet)
 
@@ -559,7 +559,7 @@ Aşağıdaki kod örneği, Azure dosyaları için ölçümleri etkinleştirmek �
 
 # <a name="net-v11"></a>[\.NET v11](#tab/dotnetv11)
 
-İlk olarak, aşağıdaki `using` yönergeleri, *program.cs* dosyanıza, yukarıdaki eklendikleriyle birlikte ekleyin:
+İlk olarak, aşağıdaki `using` yönergeleri, yukarıdaki eklendikleriyle birlikte *program. cs* dosyanıza ekleyin:
 
 ```csharp
 using Microsoft.Azure.Storage.File.Protocol;

@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 11/21/2018
 ms.author: srrengar
 ms.openlocfilehash: c2114f5392da788bb440589e69e704a148731e02
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86258615"
 ---
 # <a name="performance-monitoring-with-the-windows-azure-diagnostics-extension"></a>Windows Azure Tanılama uzantısıyla performans izleme
@@ -41,7 +41,7 @@ WAD aracılığıyla performans sayaçlarını toplamak için, kümenizin Kaynak
 
 3. Toplamak istediğiniz performans sayaçlarını, `PerformanceCounterConfiguration` önceki adımda bildirildiği öğesine ekleyin. Toplamak istediğiniz her sayaç,,, ve ile ilgili bir,,, ve ile tanımlanır `counterSpecifier` `sampleRate` `unit` `annotation` `sinks` .
 
-Aşağıda, Service Fabric özel performans sayaçlarından biri olan *Toplam Işlemci zamanı* (CPU 'nun işlem işlemleri için kullanılmakta olduğu süre) ve *saniyedeki aktör yöntemi etkinleştirmeleri Service Fabric*olan bir yapılandırmaya bir örnek verilmiştir. Service Fabric özel performans sayaçlarının tam listesi için [güvenilir aktör performans sayaçlarına](service-fabric-reliable-actors-diagnostics.md#list-of-events-and-performance-counters) ve [güvenilir hizmet performans sayaçlarına](service-fabric-reliable-serviceremoting-diagnostics.md#list-of-performance-counters) bakın.
+Aşağıda, Service Fabric özel performans sayaçlarından biri olan *Toplam Işlemci zamanı* (CPU 'nun işlem işlemleri için kullanılmakta olduğu süre) ve *saniyedeki aktör yöntemi etkinleştirmeleri Service Fabric* olan bir yapılandırmaya bir örnek verilmiştir. Service Fabric özel performans sayaçlarının tam listesi için [güvenilir aktör performans sayaçlarına](service-fabric-reliable-actors-diagnostics.md#list-of-events-and-performance-counters) ve [güvenilir hizmet performans sayaçlarına](service-fabric-reliable-serviceremoting-diagnostics.md#list-of-performance-counters) bakın.
 
  ```json
  "WadCfg": {

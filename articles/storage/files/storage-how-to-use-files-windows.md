@@ -9,10 +9,10 @@ ms.author: rogarana
 ms.subservice: files
 ms.custom: devx-track-azurepowershell
 ms.openlocfilehash: e64b7efdd430287a7a3a969c5bf62b0c0e2aec9c
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/14/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94626903"
 ---
 # <a name="use-an-azure-file-share-with-windows"></a>Azure dosya paylaşımını Windows'da kullanma
@@ -24,15 +24,15 @@ Azure VM üzerinde veya şirket içinde çalışan bir Windows yüklemesinde Azu
 
 | Windows sürümü        | SMB sürümü | Azure VM'de Bağlanabilir | Şirket içinde takılamaz |
 |------------------------|-------------|-----------------------|-----------------------|
-| Windows Server 2019 | SMB 3.0 | Evet | Evet |
-| Windows 10<sup>1</sup> | SMB 3.0 | Evet | Evet |
-| Windows Server yarı yıllık kanal<sup>2</sup> | SMB 3.0 | Evet | Evet |
-| Windows Server 2016 | SMB 3.0 | Evet | Evet |
-| Windows 8.1 | SMB 3.0 | Evet | Evet |
-| Windows Server 2012 R2 | SMB 3.0 | Evet | Evet |
-| Windows Server 2012 | SMB 3.0 | Evet | Evet |
-| Windows 7<sup>3</sup> | SMB 2.1 | Evet | Hayır |
-| Windows Server 2008 R2<sup>3</sup> | SMB 2.1 | Evet | Hayır |
+| Windows Server 2019 | SMB 3.0 | Yes | Yes |
+| Windows 10<sup>1</sup> | SMB 3.0 | Yes | Yes |
+| Windows Server yarı yıllık kanal<sup>2</sup> | SMB 3.0 | Yes | Yes |
+| Windows Server 2016 | SMB 3.0 | Yes | Yes |
+| Windows 8.1 | SMB 3.0 | Yes | Yes |
+| Windows Server 2012 R2 | SMB 3.0 | Yes | Yes |
+| Windows Server 2012 | SMB 3.0 | Yes | Yes |
+| Windows 7<sup>3</sup> | SMB 2.1 | Yes | Hayır |
+| Windows Server 2008 R2<sup>3</sup> | SMB 2.1 | Yes | Hayır |
 
 <sup>1</sup> Windows 10, sürüm 1507, 1607, 1803, 1809, 1903, 1909 ve 2004.  
 <sup>2</sup> Windows Server, sürüm 1809, 1903, 1909, 2004.  
@@ -41,7 +41,7 @@ Azure VM üzerinde veya şirket içinde çalışan bir Windows yüklemesinde Azu
 > [!Note]  
 > Her zaman Windows sürümünüz için en yeni KB’yi almanızı öneririz.
 
-## <a name="prerequisites"></a>Ön koşullar 
+## <a name="prerequisites"></a>Önkoşullar 
 
 445 numaralı bağlantı noktasının açık olduğundan emin olun: SMB protokolü için 445 numaralı TCP bağlantı noktasının açık olması gerekir. 445 numaralı bağlantı noktasının açık olmaması halinde bağlantı gerçekleştirilemez. Güvenlik duvarınızın, cmdlet ile 445 bağlantı noktasını engelleyip engellemediğini kontrol edebilirsiniz `Test-NetConnection` . Engellenen 445 bağlantı noktasına geçici çözüm yolları hakkında bilgi edinmek için, Windows sorun giderme kılavuzumuzdan [1: bağlantı noktası 445 engellendi](storage-troubleshoot-windows-file-connection-problems.md#cause-1-port-445-is-blocked) bölümüne bakın.
 
@@ -60,12 +60,12 @@ Bu betiği almak için:
 
 1. [Azure portalında](https://portal.azure.com/) oturum açın.
 1. Bağlamak istediğiniz dosya paylaşımının bulunduğu depolama hesabına gidin.
-1. **Dosya paylaşımları** ’nı seçin.
+1. **Dosya paylaşımları**’nı seçin.
 1. Bağlamak istediğiniz dosya payını seçin.
 
     :::image type="content" source="media/storage-how-to-use-files-windows/select-file-shares.png" alt-text="örneğinde":::
 
-1. **Bağlan** ’ı seçin.
+1. **Bağlan**’ı seçin.
 
     :::image type="content" source="media/storage-how-to-use-files-windows/file-share-connect-icon.png" alt-text="Dosya paylaşımınız için Bağlan simgesinin ekran görüntüsü.":::
 
@@ -84,7 +84,7 @@ Azure dosya paylaşımınızı artık taktıysanız.
 
 1. Dosya Gezgini'ni açın. Başlat Menüsünden veya Win+E kısayoluna basarak açılabilir.
 
-1. Pencerenin sol tarafındaki **Bu bilgisayara** gidin. Bu, şeritteki kullanılabilir menüleri değiştirir. Bilgisayar menüsünde, **Ağ Sürücüsüne Bağlan** ' ı seçin.
+1. Pencerenin sol tarafındaki **Bu bilgisayara** gidin. Bu, şeritteki kullanılabilir menüleri değiştirir. Bilgisayar menüsünde, **Ağ Sürücüsüne Bağlan**' ı seçin.
     
     ![“Ağ sürücüsüne bağlan” açılan menüsünün ekran görüntüsü](./media/storage-how-to-use-files-windows/1_MountOnWindows10.png)
 
@@ -100,26 +100,26 @@ Azure dosya paylaşımınızı artık taktıysanız.
     
     ![Azure dosya paylaşımı artık bağlanmıştır](./media/storage-how-to-use-files-windows/4_MountOnWindows10.png)
 
-1. Azure Dosya paylaşımını çıkarmaya hazır olduğunuzda, Dosya Gezgini’ndeki **Ağ konumları** 'nın altında bulunan girdiye sağ tıklayıp **Bağlantıyı kes** 'i seçerek bunu yapabilirsiniz.
+1. Azure Dosya paylaşımını çıkarmaya hazır olduğunuzda, Dosya Gezgini’ndeki **Ağ konumları**'nın altında bulunan girdiye sağ tıklayıp **Bağlantıyı kes**'i seçerek bunu yapabilirsiniz.
 
 ### <a name="accessing-share-snapshots-from-windows"></a>Windows'dan paylaşım anlık görüntülerine erişme
 El ile veya betik ya da Azure Backup gibi bir hizmet aracılığıyla otomatik olarak paylaşım anlık görüntüsü aldıysanız Windows'da dosya paylaşımından bir paylaşımın, dizinin veya belirli bir dosyanın önceki sürümlerini görüntüleyebilirsiniz. [Azure PowerShell](storage-how-to-use-files-powershell.md), [Azure CLI](storage-how-to-use-files-cli.md)veya [Azure Portal](storage-how-to-use-files-portal.md)kullanarak bir paylaşma anlık görüntüsü alabilirsiniz.
 
 #### <a name="list-previous-versions"></a>Önceki sürümleri listeleme
-Geri yüklemek istediğiniz öğeye veya üst öğeye gidin. Çift tıklayarak istenen dizine gidin. Sağ tıklayın ve açılan menüden **Özellikler** 'i seçin.
+Geri yüklemek istediğiniz öğeye veya üst öğeye gidin. Çift tıklayarak istenen dizine gidin. Sağ tıklayın ve açılan menüden **Özellikler**'i seçin.
 
 ![Seçilen dizin için sağ tıklama menüsü](./media/storage-how-to-use-files-windows/snapshot-windows-previous-versions.png)
 
-Bu dizine ait paylaşım anlık görüntülerinin listesini görmek için **Önceki Sürümler** 'i seçin. Ağ hızına ve dizindeki paylaşım anlık görüntüsü sayısına bağlı olarak listenin yüklenmesi birkaç saniye sürebilir.
+Bu dizine ait paylaşım anlık görüntülerinin listesini görmek için **Önceki Sürümler**'i seçin. Ağ hızına ve dizindeki paylaşım anlık görüntüsü sayısına bağlı olarak listenin yüklenmesi birkaç saniye sürebilir.
 
 ![Önceki Sürümler sekmesi](./media/storage-how-to-use-files-windows/snapshot-windows-list.png)
 
-Belirli bir anlık görüntüyü açmak için **Aç** 'ı seçebilirsiniz. 
+Belirli bir anlık görüntüyü açmak için **Aç**'ı seçebilirsiniz. 
 
 ![Açılan anlık görüntü](./media/storage-how-to-use-files-windows/snapshot-browse-windows.png)
 
 #### <a name="restore-from-a-previous-version"></a>Önceki sürümü geri yükleme
-Anlık görüntü oluşturma zamanındaki dizin içeriğinin tamamını özgün konuma yinelemeli bir şekilde kopyalamak için **Geri yükle** 'yi seçin.
+Anlık görüntü oluşturma zamanındaki dizin içeriğinin tamamını özgün konuma yinelemeli bir şekilde kopyalamak için **Geri yükle**'yi seçin.
 
  ![Uyarı iletisindeki geri yükleme düğmesi](./media/storage-how-to-use-files-windows/snapshot-windows-restore.png) 
 

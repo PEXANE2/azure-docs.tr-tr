@@ -10,10 +10,10 @@ ms.date: 09/16/2020
 ms.author: victorh
 ms.custom: subject-armqs
 ms.openlocfilehash: 4c5d5c4cafee9402e2afd7ddc047fd3b68e84540
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92091330"
 ---
 # <a name="quickstart-create-an-azure-waf-v2-on-application-gateway-using-an-arm-template"></a>Hızlı başlangıç: ARM şablonunu kullanarak Application Gateway Azure WAF v2 oluşturma
@@ -71,7 +71,7 @@ Uygulama ağ geçidini test etmek için IIS kullanın:
 1. Uygulama ağ geçidinin genel IP adresini **genel bakış** sayfasında bulabilirsiniz. ![ Uygulama Ağ Geçidi genel IP adresini kaydedin ](../../application-gateway/media/application-gateway-create-gateway-portal/application-gateway-record-ag-address.png) veya **tüm kaynaklar**' ı seçip Arama kutusuna *Myagpublicıpaddress* girebilir ve arama sonuçlarında bunu seçebilirsiniz. Azure **genel bakış** SAYFASıNDA genel IP adresini görüntüler.
 2. Genel IP adresini kopyalayın ve ardından bu IP adresine gözatabilmek için tarayıcınızın adres çubuğuna yapıştırın.
 3. Yanıtı denetleyin. **403 yasaklanmış** bir yanıt, WAF 'nin başarıyla oluşturulduğunu doğrular ve arka uç havuzuna yapılan bağlantıları engeller.
-4. Özel kuralı **trafiğe Izin verecek**şekilde değiştirin.
+4. Özel kuralı **trafiğe Izin verecek** şekilde değiştirin.
   Kaynak grubu adınızı değiştirerek aşağıdaki Azure PowerShell betiği çalıştırın:
    ```azurepowershell
    $rg = "<your resource group name>"

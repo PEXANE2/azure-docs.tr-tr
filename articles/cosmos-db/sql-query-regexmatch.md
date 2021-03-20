@@ -9,10 +9,10 @@ ms.date: 10/13/2020
 ms.author: tisande
 ms.custom: query-reference
 ms.openlocfilehash: 7f5b2831f45e902b312636e4133557a16ee7ec95
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93341646"
 ---
 # <a name="regexmatch-azure-cosmos-db"></a>REGEXMATCH (Azure Cosmos DB)
@@ -41,7 +41,7 @@ RegexMatch(<str_expr1>, <str_expr2>, [, <str_expr3>])
 
 Azure Cosmos DB aşağıdaki dört değiştiricilerini destekler:
 
-| Değiştirici | Açıklama |
+| Değiştirici | Description |
 | ------ | ----------- |
 | `m` | Dize ifadesini birden çok satır olarak aranmak üzere değerlendirin. Bu seçenek olmadan, "^" ve "$" dizenin başlangıcında veya sonunda, her satırda değil, her zaman eşleşmeyecektir. |
 | `s` | Yeni satır karakteri de dahil olmak üzere herhangi bir karakterle eşleştirmek için "." izin verin. | 

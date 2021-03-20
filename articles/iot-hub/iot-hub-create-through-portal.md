@@ -10,10 +10,10 @@ ms.author: robinsh
 ms.custom:
 - 'Role: Cloud Development'
 ms.openlocfilehash: 0a54d0c85902915d2ee62acd8a1d38b8db8b221c
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/26/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92536054"
 ---
 # <a name="create-an-iot-hub-using-the-azure-portal"></a>Azure portal kullanarak IoT Hub 'ı oluşturma
@@ -36,13 +36,13 @@ Mevcut bir IoT Hub 'ın ayarlarını, IoT Hub bölmesinden oluşturulduktan sonr
 
 IoT Hub 'ı için ayarlayabileceğiniz özelliklerden bazıları şunlardır:
 
-**Fiyatlandırma ve ölçek** : Bu özelliği, farklı bir katmana geçirmek veya IoT Hub birimi sayısını ayarlamak için kullanabilirsiniz. 
+**Fiyatlandırma ve ölçek**: Bu özelliği, farklı bir katmana geçirmek veya IoT Hub birimi sayısını ayarlamak için kullanabilirsiniz. 
 
-**İşlem izleme** : cihazdan buluta iletilerle veya buluttan cihaza iletilerle ilgili olaylar için günlüğe kaydetme gibi farklı izleme kategorilerini açın veya kapatın.
+**İşlem izleme**: cihazdan buluta iletilerle veya buluttan cihaza iletilerle ilgili olaylar için günlüğe kaydetme gibi farklı izleme kategorilerini açın veya kapatın.
 
-**IP filtresi** : IoT Hub tarafından kabul edilecek veya REDDEDILECEK bir IP adresi aralığı belirtin.
+**IP filtresi**: IoT Hub tarafından kabul edilecek veya REDDEDILECEK bir IP adresi aralığı belirtin.
 
-**Özellikler** : kaynak kimliği, kaynak grubu, konum vb. gibi, başka bir yere kopyalayabilmeniz ve kullanabileceğiniz özelliklerin listesini sağlar.
+**Özellikler**: kaynak kimliği, kaynak grubu, konum vb. gibi, başka bir yere kopyalayabilmeniz ve kullanabileceğiniz özelliklerin listesini sağlar.
 
 ### <a name="shared-access-policies"></a>Paylaşılan erişim ilkeleri
 
@@ -74,13 +74,13 @@ Merkez için yollar ve özel uç noktalar tanımladığınız Ileti yönlendirme
 
 ### <a name="routes"></a>Yollar
 
-Yollar Ileti yönlendirme bölmesindeki ilk sekmedir. Yeni bir yol eklemek için + **Ekle** ' ye tıklayın. Aşağıdaki ekranı görürsünüz. 
+Yollar Ileti yönlendirme bölmesindeki ilk sekmedir. Yeni bir yol eklemek için +**Ekle**' ye tıklayın. Aşağıdaki ekranı görürsünüz. 
 
 ![Yeni yol eklemeyi gösteren ekran görüntüsü](./media/iot-hub-create-through-portal/iot-hub-add-route-storage-endpoint.png)
 
 Rotayı adlandırın. Yol adı, bu hub için yol listesi içinde benzersiz olmalıdır. 
 
-**Uç nokta** için, açılan listeden bir seçim yapabilir veya yeni bir tane ekleyebilirsiniz. Bu örnekte, bir depolama hesabı ve kapsayıcısı zaten var. Bunları bir uç nokta olarak eklemek için uç nokta açılan menüsünde + **Ekle** ' ye tıklayın ve **BLOB depolama** ' yı seçin. Aşağıdaki ekranda, depolama hesabının ve kapsayıcının belirtildiği yer gösterilmektedir.
+**Uç nokta** için, açılan listeden bir seçim yapabilir veya yeni bir tane ekleyebilirsiniz. Bu örnekte, bir depolama hesabı ve kapsayıcısı zaten var. Bunları bir uç nokta olarak eklemek için uç nokta açılan menüsünde +**Ekle** ' ye tıklayın ve **BLOB depolama**' yı seçin. Aşağıdaki ekranda, depolama hesabının ve kapsayıcının belirtildiği yer gösterilmektedir.
 
 ![Yönlendirme kuralı için depolama uç noktası eklemeyi gösteren ekran görüntüsü](./media/iot-hub-create-through-portal/iot-hub-routing-add-storage-endpoint.png)
 
@@ -112,9 +112,9 @@ Bir IoT Hub 'ı için en fazla 10 özel uç nokta tanımlayabilirsiniz.
 
 Aboneliğinizde belirli bir IoT Hub 'ı bulmanın iki yolu vardır:
 
-1. IoT Hub 'ının ait olduğu kaynak grubunu biliyorsanız, **kaynak grupları** ' na tıklayın ve ardından listeden kaynak grubunu seçin. Kaynak grubu ekranında, IoT Hub 'ları dahil olmak üzere bu gruptaki tüm kaynaklar gösterilir. Aradığınız hub 'a tıklayın.
+1. IoT Hub 'ının ait olduğu kaynak grubunu biliyorsanız, **kaynak grupları**' na tıklayın ve ardından listeden kaynak grubunu seçin. Kaynak grubu ekranında, IoT Hub 'ları dahil olmak üzere bu gruptaki tüm kaynaklar gösterilir. Aradığınız hub 'a tıklayın.
 
-2. **Tüm kaynaklar** 'a tıklayın. **Tüm kaynaklar** bölmesinde, varsayılan olarak kullanılacak bir açılan liste vardır `All types` . Açılan listeye tıklayın, işaretini kaldırın `Select all` . Bulun `IoT Hub` ve denetleyin. Açılır liste kutusuna tıklayarak bu kutuyu kapatın ve yalnızca IoT Hub 'larınızı gösteren girişler filtrelenecektir.
+2. **Tüm kaynaklar**'a tıklayın. **Tüm kaynaklar** bölmesinde, varsayılan olarak kullanılacak bir açılan liste vardır `All types` . Açılan listeye tıklayın, işaretini kaldırın `Select all` . Bulun `IoT Hub` ve denetleyin. Açılır liste kutusuna tıklayarak bu kutuyu kapatın ve yalnızca IoT Hub 'larınızı gösteren girişler filtrelenecektir.
 
 ## <a name="delete-the-iot-hub"></a>IoT Hub 'ı silme
 

@@ -10,10 +10,10 @@ ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
 ms.openlocfilehash: 7dcc0f916a15598060e034dcf62536ee13e2672e
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92320228"
 ---
 # <a name="use-azure-data-studio-to-manage-your-azure-arc-enabled-postgresql-hyperscale-server-group"></a>Azure Arc etkin PostgreSQL hiper ölçek sunucu grubunu yönetmek için Azure Data Studio kullanın
@@ -25,7 +25,7 @@ Bu makalede nasıl yapılacağı açıklanır:
 
 [!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - [Azdata, Azure Data Studio ve Azure CLı 'yı yükler](install-client-tools.md)
 - **[!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)]** Ve **Azure Arc** ve **PostgreSQL** uzantılarında Azure Data Studio yükleme
@@ -68,7 +68,7 @@ Bu, bölmenin sol tarafında listelenen çeşitli panoları sunar:
 
 ## <a name="work-with-your-data-and-schema"></a>Verileriniz ve şemanıza göre çalışma
 
-Azure Data Studio penceresinin sol tarafında, düğüm **sunucularını**genişletin:
+Azure Data Studio penceresinin sol tarafında, düğüm **sunucularını** genişletin:
 
 Ve [bağlantı ekle] öğesini seçin ve bağlantı ayrıntılarını PostgreSQL örneğinize girin:
 - **Bağlantı türü:** PostgreSQL

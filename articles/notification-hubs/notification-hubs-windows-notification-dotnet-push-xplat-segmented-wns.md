@@ -18,17 +18,17 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 03/22/2019
 ms.openlocfilehash: 2c77eba69fd914e8ecc7d08a1b16f61ceefe101b
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92320584"
 ---
 # <a name="tutorial-send-notifications-to-specific-devices-running-universal-windows-platform-applications"></a>Öğretici: Evrensel Windows Platformu uygulamaları çalıştıran belirli cihazlara bildirimler gönderme
 
 [!INCLUDE [notification-hubs-selector-breaking-news](../../includes/notification-hubs-selector-breaking-news.md)]
 
-## <a name="overview"></a>Genel bakış
+## <a name="overview"></a>Genel Bakış
 
 Bu öğreticide, son haberler bildirimleri yayınlamak için Azure Notification Hubs nasıl kullanılacağı gösterilmektedir. Bu öğretici, Windows Mağazası veya Windows Phone 8,1 (Silverlight olmayan) uygulamalarını içerir. Windows Phone 8,1 Silverlight 'ı hedefliyorsanız, bkz. [Azure Notification Hubs kullanarak belirli Windows Phone cihazlara anında iletme bildirimleri gönderme](notification-hubs-windows-phone-push-xplat-segmented-mpns-notification.md).
 
@@ -47,7 +47,7 @@ Bu öğreticide, aşağıdaki görevleri gerçekleştirebilirsiniz:
 > * Etiketli bildirimler gönderme
 > * Uygulamayı çalıştırma ve bildirimler oluşturma
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticiye başlamadan önce [Öğretici: Azure Notification Hubs kullanarak Evrensel Windows Platformu uygulamalarına bildirimler gönderme][get-started] öğreticisini tamamlayın.  
 
@@ -81,7 +81,7 @@ Bu öğreticiye başlamadan önce [Öğretici: Azure Notification Hubs kullanara
     </Grid>
     ```
 
-1. **Çözüm Gezgini**, projeye sağ tıklayın, sınıf **Ekle**' yi seçin  >  **Class**. **Yeni öğe Ekle**' de, sınıf *bildirimlerini*adlandırın ve **Ekle**' yi seçin. Gerekirse, `public` değiştiricisini sınıf tanımına ekleyin.
+1. **Çözüm Gezgini**, projeye sağ tıklayın, sınıf **Ekle**' yi seçin  >  . **Yeni öğe Ekle**' de, sınıf *bildirimlerini* adlandırın ve **Ekle**' yi seçin. Gerekirse, `public` değiştiricisini sınıf tanımına ekleyin.
 
 1. Aşağıdaki `using` deyimlerini yeni dosyaya ekleyin:
 
@@ -143,7 +143,7 @@ Bu öğreticiye başlamadan önce [Öğretici: Azure Notification Hubs kullanara
 
     Daha fazla bilgi için bkz. [Şablonlar](notification-hubs-templates-cross-platform-push-messages.md).
 
-1. *App.xaml.cs* proje dosyasında, sınıfına aşağıdaki özelliği ekleyin `App` :
+1. *App. xaml. cs* proje dosyasında, sınıfına aşağıdaki özelliği ekleyin `App` :
 
     ```csharp
     public Notifications notifications = new Notifications("<hub name>", "<connection string with listen access>");
@@ -156,13 +156,13 @@ Bu öğreticiye başlamadan önce [Öğretici: Azure Notification Hubs kullanara
    > [!NOTE]
    > Bir istemci uygulaması ile dağıtılmış kimlik bilgileri genellikle güvenli olmadığından yalnızca istemci uygulamanızla *dinleme* erişimi için anahtarı dağıtın. Dinleme erişimi ile uygulamanızın bildirimlere kaydolmasını sağlar, ancak mevcut kayıtlar değiştirilemez ve bildirimler gönderilemez. Tam erişim anahtarı, güvenli bir arka uç hizmetinde bildirimler göndermek ve mevcut kayıtları değiştirmek için kullanılır.
 
-1. *MainPage.xaml.cs* dosyasında, aşağıdaki satırı ekleyin:
+1. *MainPage. xaml. cs* dosyasında aşağıdaki satırı ekleyin:
 
     ```csharp
     using Windows.UI.Popups;
     ```
 
-1. *MainPage.xaml.cs* dosyasında aşağıdaki yöntemi ekleyin:
+1. *MainPage. xaml. cs* dosyasında aşağıdaki yöntemi ekleyin:
 
     ```csharp
     private async void SubscribeButton_Click(object sender, RoutedEventArgs e)
@@ -194,7 +194,7 @@ Bu bölümde, yerel depolama alanında depoladığınız kategorileri kullanarak
 > [!NOTE]
 > Windows Bildirim Hizmeti (WNS) tarafından atanan kanal URI’si her zaman değişebileceğinden, bildirim hatalarını önlemek için sık sık bildirimlere kaydolmanız gerekir. Bu örnek, uygulama her başlatıldığında bildirimlere kaydolur. Sıklıkla çalıştırdığınız uygulamalar için günde bir kereden fazla, bir günden daha az bir kez geçtiğinde bant genişliğini korumak için kayıt işlemini atlayabilirsiniz.
 
-1. `notifications`Kategoriye göre abone olmak için sınıfını kullanmak üzere, *app.xaml.cs* dosyasını açın ve sonra `InitNotificationsAsync` yöntemi güncelleştirin.
+1. `notifications`Kategoriye göre abone olmak için sınıfını kullanmak üzere *app. xaml. cs* dosyasını açın ve sonra `InitNotificationsAsync` yöntemi güncelleştirin.
 
     ```csharp
     // *** Remove or comment out these lines ***
@@ -206,7 +206,7 @@ Bu bölümde, yerel depolama alanında depoladığınız kategorileri kullanarak
     ```
 
     Bu işlem, uygulama başlatıldığında yerel depolama alanından kategorileri alan bir zaman sağlar. Daha sonra bu kategorilerin kaydını ister. `InitNotificationsAsync`Yöntemi [Azure Notification Hubs öğreticisi kullanarak Evrensel Windows platformu uygulamalara gönderilen bildirimlerin][get-started] bir parçası olarak oluşturdunuz.
-2. *MainPage.xaml.cs* proje dosyasında yöntemine aşağıdaki kodu ekleyin `OnNavigatedTo` :
+2. *MainPage. xaml. cs* proje dosyasında yöntemine aşağıdaki kodu ekleyin `OnNavigatedTo` :
 
     ```csharp
     protected override void OnNavigatedTo(NavigationEventArgs e)

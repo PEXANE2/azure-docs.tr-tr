@@ -7,10 +7,10 @@ ms.date: 09/14/2019
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: e47486f29537cb948aaae7cf17e97bae14b60700
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90084303"
 ---
 # <a name="customize-the-feed-for-windows-virtual-desktop-users"></a>Windows sanal masaüstü kullanıcıları için akışı özelleştirme
@@ -20,7 +20,7 @@ ms.locfileid: "90084303"
 
 RemoteApp ve uzak masaüstü kaynaklarının kullanıcılarınız için tanınabilir bir şekilde görünmesi için akışı özelleştirebilirsiniz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu makalede, Windows sanal masaüstü PowerShell modülünü zaten indirdiğiniz ve yüklediğiniz varsayılmaktadır. Yapmadıysanız, [PowerShell modülünü ayarlama](powershell-module.md)bölümündeki yönergeleri izleyin.
 
@@ -103,15 +103,15 @@ Azure portal kullanarak, bir kolay ad ayarlayarak yayımlanmış bir uzak masaü
 
 1. <https://portal.azure.com> adresinden Azure portalında oturum açın.
 
-2. **Windows sanal masaüstü**araması yapın.
+2. **Windows sanal masaüstü** araması yapın.
 
 3. Hizmetler altında **Windows sanal masaüstü**' nü seçin.
 
-4. Windows sanal masaüstü sayfasında, ekranın sol tarafındaki **uygulama grupları** ' nı seçin ve ardından düzenlemek istediğiniz uygulama grubunun adını seçin. (Örneğin, Masaüstü uygulama grubunun görünen adını düzenlemek istiyorsanız, **Masaüstü**adlı uygulama grubunu seçin.)
+4. Windows sanal masaüstü sayfasında, ekranın sol tarafındaki **uygulama grupları** ' nı seçin ve ardından düzenlemek istediğiniz uygulama grubunun adını seçin. (Örneğin, Masaüstü uygulama grubunun görünen adını düzenlemek istiyorsanız, **Masaüstü** adlı uygulama grubunu seçin.)
 
 5. Ekranın sol tarafındaki menüden **uygulamalar** ' ı seçin.
 
-6. Güncelleştirmek istediğiniz uygulamayı seçin ve ardından yeni bir **görünen ad**girin.
+6. Güncelleştirmek istediğiniz uygulamayı seçin ve ardından yeni bir **görünen ad** girin.
 
 7. **Kaydet**’i seçin. Düzenlediğiniz uygulama artık güncelleştirilmiş adı görüntülemelidir.
 

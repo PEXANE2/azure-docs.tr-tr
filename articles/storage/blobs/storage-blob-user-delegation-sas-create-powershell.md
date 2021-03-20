@@ -12,10 +12,10 @@ ms.reviewer: dineshm
 ms.subservice: blobs
 ms.custom: devx-track-azurepowershell
 ms.openlocfilehash: 875b2a9f35562dd8f0d5df3c631e5ade1e3fbf75
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91714523"
 ---
 # <a name="create-a-user-delegation-sas-for-a-container-or-blob-with-powershell"></a>PowerShell ile bir kapsayıcı veya blob için Kullanıcı temsili SAS oluşturma
@@ -26,13 +26,13 @@ Bu makalede, Azure PowerShell sahip bir kapsayıcı veya blob için Kullanıcı 
 
 [!INCLUDE [storage-auth-user-delegation-include](../../../includes/storage-auth-user-delegation-include.md)]
 
-## <a name="install-the-powershell-module"></a>PowerShell modülünü yükler
+## <a name="install-the-powershell-module"></a>PowerShell modülünü yükleme
 
 PowerShell ile bir Kullanıcı temsili SAS oluşturmak için az. Storage modülünün Version 1.10.0 veya üzeri sürümünü yüklemelisiniz. Modülün en son sürümünü yüklemek için aşağıdaki adımları izleyin:
 
 1. Azure PowerShell önceki tüm yüklemelerini kaldırın:
 
-    - **Ayarlar**altındaki **uygulamalar & Özellikler** ayarını kullanarak Windows 'un önceki Azure PowerShell yüklemelerini kaldırın.
+    - **Ayarlar** altındaki **uygulamalar & Özellikler** ayarını kullanarak Windows 'un önceki Azure PowerShell yüklemelerini kaldırın.
     - Tüm **Azure** modüllerini ' den kaldırın `%Program Files%\WindowsPowerShell\Modules` .
 
 1. PowerShellGet 'in en son sürümüne sahip olduğunuzdan emin olun. Bir Windows PowerShell penceresi açın ve en son sürümü yüklemek için aşağıdaki komutu çalıştırın:
@@ -77,7 +77,7 @@ PowerShell ile oturum açma hakkında daha fazla bilgi için bkz. [Azure PowerSh
 
 ## <a name="assign-permissions-with-azure-rbac"></a>Azure RBAC ile izin atama
 
-Azure PowerShell bir Kullanıcı temsili SAS oluşturmak için, PowerShell 'de oturum açmak üzere kullanılan Azure AD hesabına **Microsoft. Storage/storageAccounts/blobServices/generateUserDelegationKey** eylemini içeren bir rol atanmalıdır. Bu izin, Azure AD hesabının *Kullanıcı temsili anahtarını*istemesine olanak sağlar. Kullanıcı temsili anahtarı, Kullanıcı temsili SAS imzalamak için kullanılır. Depolama hesabı, kaynak grubu veya abonelik düzeyinde **Microsoft. Storage/storageAccounts/blobServices/generateUserDelegationKey** eylemini sağlayan rolün atanması gerekir. Kullanıcı temsilciliğini oluşturmaya yönelik Azure RBAC izinleri hakkında daha fazla bilgi için, [Kullanıcı temsili oluşturma SAS oluşturma](/rest/api/storageservices/create-user-delegation-sas)konusunun **Azure RBAC ile izin atama** bölümüne bakın.
+Azure PowerShell bir Kullanıcı temsili SAS oluşturmak için, PowerShell 'de oturum açmak üzere kullanılan Azure AD hesabına **Microsoft. Storage/storageAccounts/blobServices/generateUserDelegationKey** eylemini içeren bir rol atanmalıdır. Bu izin, Azure AD hesabının *Kullanıcı temsili anahtarını* istemesine olanak sağlar. Kullanıcı temsili anahtarı, Kullanıcı temsili SAS imzalamak için kullanılır. Depolama hesabı, kaynak grubu veya abonelik düzeyinde **Microsoft. Storage/storageAccounts/blobServices/generateUserDelegationKey** eylemini sağlayan rolün atanması gerekir. Kullanıcı temsilciliğini oluşturmaya yönelik Azure RBAC izinleri hakkında daha fazla bilgi için, [Kullanıcı temsili oluşturma SAS oluşturma](/rest/api/storageservices/create-user-delegation-sas)konusunun **Azure RBAC ile izin atama** bölümüne bakın.
 
 Azure AD güvenlik sorumlusuna Azure rolleri atamak için yeterli izniniz yoksa, hesap sahibine veya yöneticiden gerekli izinleri atamasını isteyebilirsiniz.
 

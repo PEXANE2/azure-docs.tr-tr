@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 08/08/2017
 ms.author: robinsh
 ms.openlocfilehash: 4dbda13ffe04e0a4214b24ccaca2b8103a39b9f2
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/26/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92536071"
 ---
 # <a name="configure-iot-hub-file-uploads-using-azure-cli"></a>Azure CLı kullanarak IoT Hub dosya yüklemelerini yapılandırma
@@ -89,15 +89,15 @@ Artık IoT Hub 'ınızı, depolama hesabı ayrıntılarınızı kullanarak [IoT 
 
 Yapılandırma için aşağıdaki değerler gereklidir:
 
-* **Depolama kapsayıcısı** : IoT Hub 'ınız ile Ilişkilendirilecek geçerli Azure aboneliğinizdeki bir Azure depolama hesabındaki blob kapsayıcısı. Önceki bölümde gerekli depolama hesabı bilgilerini almıştır. IoT Hub, dosyaları karşıya yüklerken kullanılacak cihazlar için bu blob kapsayıcısına yazma izinleri olan SAS URI 'Leri otomatik olarak oluşturur.
+* **Depolama kapsayıcısı**: IoT Hub 'ınız ile Ilişkilendirilecek geçerli Azure aboneliğinizdeki bir Azure depolama hesabındaki blob kapsayıcısı. Önceki bölümde gerekli depolama hesabı bilgilerini almıştır. IoT Hub, dosyaları karşıya yüklerken kullanılacak cihazlar için bu blob kapsayıcısına yazma izinleri olan SAS URI 'Leri otomatik olarak oluşturur.
 
-* **Karşıya yüklenen dosyalar için bildirim al** : dosya yükleme bildirimlerini etkinleştirin veya devre dışı bırakın.
+* **Karşıya yüklenen dosyalar için bildirim al**: dosya yükleme bildirimlerini etkinleştirin veya devre dışı bırakın.
 
-* **SAS TTL** : Bu ayar, cihaza IoT Hub tarafından döndürülen sas URI 'lerinin yaşam süresi olarak belirlenir. Varsayılan olarak bir saat olarak ayarlanır.
+* **SAS TTL**: Bu ayar, cihaza IoT Hub tarafından döndürülen sas URI 'lerinin yaşam süresi olarak belirlenir. Varsayılan olarak bir saat olarak ayarlanır.
 
-* **Dosya bildirim ayarları varsayılan TTL** : süresi dolmadan önce karşıya dosya yükleme bildiriminin yaşam süresi. Varsayılan olarak bir güne ayarlanır.
+* **Dosya bildirim ayarları varsayılan TTL**: süresi dolmadan önce karşıya dosya yükleme bildiriminin yaşam süresi. Varsayılan olarak bir güne ayarlanır.
 
-* **Dosya bildirimi en fazla teslimat sayısı** : IoT Hub dosya yükleme bildirimi sunmaya kaç kez girişimde bulunulmasını sağlar. Varsayılan olarak 10 olarak ayarlanır.
+* **Dosya bildirimi en fazla teslimat sayısı**: IoT Hub dosya yükleme bildirimi sunmaya kaç kez girişimde bulunulmasını sağlar. Varsayılan olarak 10 olarak ayarlanır.
 
 IoT Hub 'ınızdaki karşıya dosya yükleme ayarlarını yapılandırmak için aşağıdaki Azure CLı komutlarını kullanın:
 

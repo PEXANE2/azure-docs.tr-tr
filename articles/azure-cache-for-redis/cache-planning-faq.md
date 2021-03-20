@@ -7,17 +7,17 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 08/06/2020
 ms.openlocfilehash: 398b567e173691068e6dd932e075d6598dcfe601
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/26/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92537414"
 ---
 # <a name="azure-cache-for-redis-planning-faqs"></a>Red, planlama için Azure önbelleği SSS
 
 Bu makalede, redin için Azure önbelleğinin nasıl planlanacağı hakkında yaygın soruların yanıtları sağlanmaktadır.
 
-## <a name="common-questions-and-answers"></a>Sık sorulan sorular ve yanıtları
+## <a name="common-questions-and-answers"></a>Yaygın sorular ve yanıtları
 Bu bölümde aşağıdaki SSS ele alınmaktadır:
 
 * [Redsıs performansı için Azure önbelleği](#azure-cache-for-redis-performance)

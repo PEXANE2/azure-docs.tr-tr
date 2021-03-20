@@ -15,15 +15,15 @@ ms.topic: how-to
 ms.date: 06/11/2018
 ms.author: allensu
 ms.openlocfilehash: a799309b6e5d00db3b6c206187eec7097c9dc11a
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96018605"
 ---
 # <a name="control-azure-cdn-caching-behavior-with-query-strings---premium-tier"></a>Sorgu dizeleri ile denetim Azure CDN önbelleğe alma davranışı-Premium katman
 > [!div class="op_single_selector"]
-> * [Standart katman](cdn-query-string.md)
+> * [Standart katmanı](cdn-query-string.md)
 > * [Premium katmanı](cdn-query-string-premium.md)
 > 
 

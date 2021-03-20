@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 12/01/2020
 ms.author: chlound
 ms.openlocfilehash: 7c801511b6f24cf5ef04d55bb195e3a4c62d7b6d
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96491256"
 ---
 # <a name="refresh-with-azure-automation"></a>Azure Otomasyonu ile yenileme
@@ -104,7 +104,7 @@ Bu, aşağıdaki gibi yapılandırılabilir:
 
     ![Zamanlamayı Yapılandır](./media/analysis-services-refresh-azure-automation/15.png)
 
-3. **Oluştur**'a tıklayın.
+3. **Oluştur**’a tıklayın.
 
 4. Zamanlamanın parametrelerini girin. Bunlar runbook 'un her tetiklenilişinde kullanılacaktır. **Web kancası verileri** parametresi, bir zamanlama aracılığıyla çalışırken boş bırakılmalıdır.
 
@@ -174,7 +174,7 @@ Statik bir genel IP adresine sahip bir Azure sanal makinesi, Azure Otomasyon Kar
 >
 >Azure Otomasyonu karma çalışanları yapılandırma hakkında daha fazla bilgi için bkz. [karma Runbook Worker yüklemesi](../automation/automation-hybrid-runbook-worker.md#hybrid-runbook-worker-installation).
 
-Karma çalışan yapılandırıldıktan sonra [Data Factory](#consume-with-data-factory)kullanma bölümünde açıklandığı gibi bir Web kancası oluşturun.  Buradaki tek fark, **Run on**  >  Web kancasını yapılandırırken **karma çalışanı Çalıştır seçeneğini seçmedir** .
+Karma çalışan yapılandırıldıktan sonra [Data Factory](#consume-with-data-factory)kullanma bölümünde açıklandığı gibi bir Web kancası oluşturun.  Buradaki tek fark,   >  Web kancasını yapılandırırken **karma çalışanı Çalıştır seçeneğini seçmedir** .
 
 Karma çalışanı kullanan örnek Web kancası:
 

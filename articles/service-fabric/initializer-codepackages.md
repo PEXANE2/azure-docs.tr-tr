@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 03/10/2020
 ms.author: shsha
 ms.openlocfilehash: 3be079b97c2660437344f88203fdda06cc6d6740
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86258975"
 ---
 # <a name="initializer-codepackages"></a>Başlatıcı Kod Paketleri
@@ -23,12 +23,12 @@ Bu makaleye devam etmeden önce [Service Fabric uygulama modeli][application-mod
  
 ## <a name="semantics"></a>Semantik
 
-Bir başlatıcı CodePackage 'in başarıyla tamamlanması için çalıştırılması bekleniyor **(çıkış kodu 0)**. Başarısız bir başlatıcı CodePackage, başarıyla tamamlanana kadar yeniden başlatılır. Birden fazla Başlatıcı CodePackage 'e izin verilir ve bu, hizmet paketindeki diğer kod paketleri yürütülmeye başlamadan önce, **sırasıyla** **belirtilen sırada başarılı bir** şekilde **tamamlanmasıyla**yürütülür.
+Bir başlatıcı CodePackage 'in başarıyla tamamlanması için çalıştırılması bekleniyor **(çıkış kodu 0)**. Başarısız bir başlatıcı CodePackage, başarıyla tamamlanana kadar yeniden başlatılır. Birden fazla Başlatıcı CodePackage 'e izin verilir ve bu, hizmet paketindeki diğer kod paketleri yürütülmeye başlamadan önce, **sırasıyla** **belirtilen sırada başarılı bir** şekilde **tamamlanmasıyla** yürütülür.
 
 ## <a name="specifying-initializer-codepackages"></a>Başlatıcı kod paketleri belirtme
 ServiceManifest içinde **Başlatıcı** özniteliğini **true** olarak ayarlayarak bir CodePackage 'i başlatıcı olarak işaretleyebilirsiniz. Birden çok Başlatıcı kod paketi olduğunda, yürütme sırası **execorder** özniteliği aracılığıyla belirtilebilir. **Execorder** negatif olmayan bir tamsayı olmalıdır ve yalnızca başlatıcı kod paketleri için geçerlidir. **Execorder** 'ın daha düşük değerleriyle Başlatıcı kod paketleri önce yürütülür. Başlatıcı CodePackage için **Execorder** belirtilmemişse, varsayılan değer olan 0 varsayılır. Aynı **execorder** değeri Ile birlikte Başlatıcı kod paketlerinin göreli yürütme sırası belirtilmemiş.
 
-Aşağıdaki ServiceManifest kod parçacığı, iki adet bir başlatıcı olarak işaretlenen üç kod paketini açıklar. Bu ServicePackage etkinleştirildiğinde *InitCodePackage0* , en düşük **execorder**değerine sahip olduğundan önce yürütülür. *InitCodePackage0*(çıkış kodu 0) başarıyla tamamlandığında, *InitCodePackage1* yürütülür. Son olarak, *InitCodePackage1*başarıyla tamamlandığında *workloadcodepackage* yürütülür.
+Aşağıdaki ServiceManifest kod parçacığı, iki adet bir başlatıcı olarak işaretlenen üç kod paketini açıklar. Bu ServicePackage etkinleştirildiğinde *InitCodePackage0* , en düşük **execorder** değerine sahip olduğundan önce yürütülür. *InitCodePackage0*(çıkış kodu 0) başarıyla tamamlandığında, *InitCodePackage1* yürütülür. Son olarak, *InitCodePackage1* başarıyla tamamlandığında *workloadcodepackage* yürütülür.
 
 ```xml
 <CodePackage Name="InitCodePackage0" Version="1.0" Initializer="true" ExecOrder="0">

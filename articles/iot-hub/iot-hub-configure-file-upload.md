@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 07/03/2017
 ms.author: robinsh
 ms.openlocfilehash: da28bfa31c74ff33a200967267500033dd6a9b1b
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/26/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92535884"
 ---
 # <a name="configure-iot-hub-file-uploads-using-the-azure-portal"></a>Azure portalını kullanarak IoT Hub dosya karşıya yükleme işlemlerini yapılandırma
@@ -25,17 +25,17 @@ ms.locfileid: "92535884"
 
 ![Portalda karşıya dosya yükleme ayarlarını görüntüleme IoT Hub](./media/iot-hub-configure-file-upload/file-upload-settings.png)
 
-* **Depolama kapsayıcısı** : IoT Hub ilişkilendirmek üzere geçerli Azure aboneliğinizde bir Azure depolama hesabındaki blob kapsayıcısını seçmek için Azure Portal kullanın. Gerekirse, **kapsayıcılar** dikey penceresinde **depolama hesapları** dikey penceresinde ve BLOB kapsayıcısında bir Azure depolama hesabı oluşturabilirsiniz. IoT Hub, dosyaları karşıya yüklerken kullanılacak cihazlar için bu blob kapsayıcısına yazma izinleri olan SAS URI 'Leri otomatik olarak oluşturur.
+* **Depolama kapsayıcısı**: IoT Hub ilişkilendirmek üzere geçerli Azure aboneliğinizde bir Azure depolama hesabındaki blob kapsayıcısını seçmek için Azure Portal kullanın. Gerekirse, **kapsayıcılar** dikey penceresinde **depolama hesapları** dikey penceresinde ve BLOB kapsayıcısında bir Azure depolama hesabı oluşturabilirsiniz. IoT Hub, dosyaları karşıya yüklerken kullanılacak cihazlar için bu blob kapsayıcısına yazma izinleri olan SAS URI 'Leri otomatik olarak oluşturur.
 
    ![Portalda karşıya dosya yükleme için depolama kapsayıcılarını görüntüleme](./media/iot-hub-configure-file-upload/file-upload-container-selection.png)
 
-* **Karşıya yüklenen dosyalar için bildirim al** : geçiş yoluyla karşıya dosya yükleme bildirimlerini etkinleştirin veya devre dışı bırakın.
+* **Karşıya yüklenen dosyalar için bildirim al**: geçiş yoluyla karşıya dosya yükleme bildirimlerini etkinleştirin veya devre dışı bırakın.
 
-* **SAS TTL** : Bu ayar, cihaza IoT Hub tarafından döndürülen sas URI 'lerinin yaşam süresi olarak belirlenir. Varsayılan olarak bir saate ayarlanır ancak kaydırıcı kullanılarak diğer değerlere özelleştirilebilir.
+* **SAS TTL**: Bu ayar, cihaza IoT Hub tarafından döndürülen sas URI 'lerinin yaşam süresi olarak belirlenir. Varsayılan olarak bir saate ayarlanır ancak kaydırıcı kullanılarak diğer değerlere özelleştirilebilir.
 
-* **Dosya bildirim ayarları varsayılan TTL** : süresi dolmadan önce karşıya dosya yükleme bildiriminin yaşam süresi. Varsayılan olarak bir güne ayarlanır ancak kaydırıcı kullanılarak diğer değerlere özelleştirilebilir.
+* **Dosya bildirim ayarları varsayılan TTL**: süresi dolmadan önce karşıya dosya yükleme bildiriminin yaşam süresi. Varsayılan olarak bir güne ayarlanır ancak kaydırıcı kullanılarak diğer değerlere özelleştirilebilir.
 
-* **Dosya bildirimi en fazla teslimat sayısı** : IoT Hub dosya yükleme bildirimi sunmaya kaç kez girişimde bulunulmasını sağlar. Varsayılan olarak 10 olarak ayarlanır ancak kaydırıcı kullanılarak diğer değerlere özelleştirilebilir.
+* **Dosya bildirimi en fazla teslimat sayısı**: IoT Hub dosya yükleme bildirimi sunmaya kaç kez girişimde bulunulmasını sağlar. Varsayılan olarak 10 olarak ayarlanır ancak kaydırıcı kullanılarak diğer değerlere özelleştirilebilir.
 
    ![Portalda IoT Hub dosya yüklemeyi yapılandırma](./media/iot-hub-configure-file-upload/file-upload-selected-container.png)
 

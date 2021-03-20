@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 10/15/2020
 ms.author: apimpm
 ms.openlocfilehash: f5105c685de4b3ccdffe69eec8ee8eeb32976c1f
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92326087"
 ---
 # <a name="migrate-to-the-new-developer-portal"></a>Yeni geliştirici portalına geçirme
@@ -67,7 +67,7 @@ Kullanımdan kaldırılan portaldan geçiş yaptığınızda aşağıdaki deği�
 
     - Uygulamanızdaki dönüş URL 'sini yeni geliştirici portalı etki alanına işaret etmek üzere değiştirin.
     - Uygulamanızdaki dönüş URL 'sinin sonekini ' dan ' a değiştirin `/signin-aad` `/signin` .
-    - *Verilen adı*, *Soyadı*ve *kullanıcının nesne kimliğini* uygulama taleplerine ekleyin.
+    - *Verilen adı*, *Soyadı* ve *kullanıcının nesne kimliğini* uygulama taleplerine ekleyin.
 
 - Etkileşimli test konsolunda OAuth 2,0 kullanıyorsanız, uygulamanızdaki dönüş URL 'sini yeni geliştirici portalı etki alanına işaret etmek ve soneki değiştirmek için değiştirin:
 

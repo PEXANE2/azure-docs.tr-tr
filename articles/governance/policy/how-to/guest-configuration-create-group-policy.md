@@ -4,10 +4,10 @@ description: Windows Server 2019 güvenlik taban çizgisinden grup ilkesi bir il
 ms.date: 08/17/2020
 ms.topic: how-to
 ms.openlocfilehash: 7f7e2af70efa6771d94d7ceaa14d1408175b1d12
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93348653"
 ---
 # <a name="how-to-create-guest-configuration-policy-definitions-from-group-policy-baseline-for-windows"></a>Windows için grup ilkesi taban çizgisinden Konuk yapılandırma ilkesi tanımları oluşturma
@@ -29,7 +29,7 @@ Bu kılavuzda, bir grup ilkesi nesnesinden (GPO) Azure Ilke Konuk yapılandırma
 
 ## <a name="download-windows-server-2019-security-baseline-and-install-related-powershell-modules"></a>Windows Server 2019 güvenlik temelini indirin ve ilgili PowerShell modüllerini yükleyin
 
-**DSC** , **guestconfiguration** , **taban çizgisi yönetimi** ve ilgili Azure modüllerini PowerShell 'e yüklemek için:
+**DSC**, **guestconfiguration**, **taban çizgisi yönetimi** ve ilgili Azure modüllerini PowerShell 'e yüklemek için:
 
 1. Bir PowerShell isteminden aşağıdaki komutu çalıştırın:
 
@@ -106,7 +106,7 @@ Ardından, indirilen sunucu 2019 taban çizgisini Konuk yapılandırma ve temel 
    New-GuestConfigurationPolicy @NewGuestConfigurationPolicySplat
    ```
     
-1. Cmdlet 'ini kullanarak ilke tanımlarını yayımlayın `Publish-GuestConfigurationPolicy` . Cmdlet 'i yalnızca tarafından oluşturulan JSON dosyalarının konumuna işaret eden **Path** parametresine sahiptir `New-GuestConfigurationPolicy` . Yayımla komutunu çalıştırmak için Azure 'da ilke tanımları oluşturma erişiminizin olması gerekir. Belirli yetkilendirme gereksinimleri, [Azure Ilkesine genel bakış](../overview.md#getting-started) sayfasında belgelenmiştir. En iyi yerleşik rol, **kaynak Ilkesi katılımcısı** ' dir.
+1. Cmdlet 'ini kullanarak ilke tanımlarını yayımlayın `Publish-GuestConfigurationPolicy` . Cmdlet 'i yalnızca tarafından oluşturulan JSON dosyalarının konumuna işaret eden **Path** parametresine sahiptir `New-GuestConfigurationPolicy` . Yayımla komutunu çalıştırmak için Azure 'da ilke tanımları oluşturma erişiminizin olması gerekir. Belirli yetkilendirme gereksinimleri, [Azure Ilkesine genel bakış](../overview.md#getting-started) sayfasında belgelenmiştir. En iyi yerleşik rol, **kaynak Ilkesi katılımcısı**' dir.
 
    ```azurepowershell-interactive
    Publish-GuestConfigurationPolicy -Path C:\git\policyfiles\policy\ -Verbose
@@ -119,7 +119,7 @@ Azure 'da oluşturulan ilkeyle, son adım girişimi atayacaktır. Bkz. girişim,
 > [!IMPORTANT]
 > Konuk yapılandırma ilkesi tanımlarının **her zaman** _auditınotexists_ ve _deployifnotexists_ ilkelerini birleştiren girişim kullanılarak atanması gerekir. Yalnızca _Auditınotexists_ ilkesi atanırsa, Önkoşullar dağıtılır ve ilke her zaman ' 0 ' sunucularının uyumlu olduğunu gösterir.
 
-Bir ilke tanımını _Deployifnotexists_ efektiyle atamak ek bir erişim düzeyi gerektirir. En az ayrıcalığa izin vermek için, **kaynak Ilkesi katılımcısı** 'nı genişleten özel bir rol tanımı oluşturabilirsiniz. Aşağıdaki örnek, _Microsoft. Authorization/Roleatamalar/Write_ ek Izniyle **kaynak ilkesi katılımcısı DINE** adlı bir rol oluşturur.
+Bir ilke tanımını _Deployifnotexists_ efektiyle atamak ek bir erişim düzeyi gerektirir. En az ayrıcalığa izin vermek için, **kaynak Ilkesi katılımcısı**'nı genişleten özel bir rol tanımı oluşturabilirsiniz. Aşağıdaki örnek, _Microsoft. Authorization/Roleatamalar/Write_ ek Izniyle **kaynak ilkesi katılımcısı DINE** adlı bir rol oluşturur.
 
    ```azurepowershell-interactive
    $subscriptionid = '00000000-0000-0000-0000-000000000000'

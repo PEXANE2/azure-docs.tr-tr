@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 11/30/2020
 ms.author: cherylmc
 ms.openlocfilehash: 73a7d76de34d29b2d51c54569b234cd8221b08f8
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98872188"
 ---
 # <a name="configure-vpn-gateway-transit-for-virtual-network-peering"></a>Sanal ağ eşlemesi için VPN ağ geçidi aktarımını yapılandırma
@@ -44,8 +44,8 @@ Başlamadan önce, aşağıdaki sanal ağlara ve izinlere sahip olduğunuzu doğ
 |Sanal Ağ|Dağıtım modeli| Sanal ağ geçidi|
 |---|---|---|---|
 | Merkez-RM| [Resource Manager](./tutorial-site-to-site-portal.md)| [Evet](tutorial-create-gateway-portal.md)|
-| Bağlı bileşen-RM | [Resource Manager](./tutorial-site-to-site-portal.md)| Hayır |
-| Uç-Klasik | [Klasik](vpn-gateway-howto-site-to-site-classic-portal.md#CreatVNet) | Hayır |
+| Bağlı bileşen-RM | [Resource Manager](./tutorial-site-to-site-portal.md)| No |
+| Uç-Klasik | [Klasik](vpn-gateway-howto-site-to-site-classic-portal.md#CreatVNet) | No |
 
 ### <a name="permissions"></a><a name="permissions"></a>İzinler
 

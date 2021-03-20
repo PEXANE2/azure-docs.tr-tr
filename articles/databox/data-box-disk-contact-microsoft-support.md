@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 05/24/2019
 ms.author: alkohli
 ms.openlocfilehash: d0c45626016049424c8028eea7ffbd7f281e9012
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91744160"
 ---
 # <a name="open-a-support-ticket-for-azure-data-box"></a>Azure Data Box için bir destek bileti açın
@@ -30,33 +30,33 @@ Bir destek isteği oluşturmak için aşağıdaki adımları gerçekleştirin:
 
     ![Yeni destek isteği](./media/data-box-disk-contact-microsoft-support/data-box-disk-support-request.png)
 
-2. **Yeni destek isteği**' nde **temel bilgiler**' i seçin. **Temel bilgiler**bölümünde aşağıdaki adımları uygulayın:
+2. **Yeni destek isteği**' nde **temel bilgiler**' i seçin. **Temel bilgiler** bölümünde aşağıdaki adımları uygulayın:
 
     1. **Sorun türü** açılan listesinden **Teknik**' i seçin.
-    2. **Aboneliğinizi**seçin.
-    3. **Hizmet**altında **tüm hizmetler**' i işaretleyin. Açılan listeden **Data Box**' yi seçin. 
-    4. **Destek planınızı**belirtin.
+    2. **Aboneliğinizi** seçin.
+    3. **Hizmet** altında **tüm hizmetler**' i işaretleyin. Açılan listeden **Data Box**' yi seçin. 
+    4. **Destek planınızı** belirtin.
     5. **İleri**’ye tıklayın.
 
         ![Temel Bilgiler](./media/data-box-disk-contact-microsoft-support/data-box-disk-support1.png)
 
 3. **Yeni destek isteği**' nde **Adım 2 sorunu**' nı seçin. **Sorun**' da, aşağıdaki adımları uygulayın:
 
-    1. **Önem derecesi** ' ni **En düşük etkiler**olarak seçin. Gerekirse destek bu güncelleştirmeyi güncelleştirecektir.
+    1. **Önem derecesi** ' ni **En düşük etkiler** olarak seçin. Gerekirse destek bu güncelleştirmeyi güncelleştirecektir.
     2. Açılan listeden **sorun türünü** seçin.
-    3. Seçtiğiniz sorun türüne göre, karşılık gelen bir **Kategori**seçin.
-    4. Sorun için bir **başlık** ve daha fazla **ayrıntı**sağlayın.
+    3. Seçtiğiniz sorun türüne göre, karşılık gelen bir **Kategori** seçin.
+    4. Sorun için bir **başlık** ve daha fazla **ayrıntı** sağlayın.
     5. Sorunun başlangıç tarihini ve saatini belirtin.
-    6. Karşıya yüklemek istediğiniz diğer dosyalara gözatabilmeniz için **karşıya dosya yükleme**sırasında klasör simgesine tıklayın.
-    7. **Paylaşma tanılama bilgilerini**denetleyin.
+    6. Karşıya yüklemek istediğiniz diğer dosyalara gözatabilmeniz için **karşıya dosya yükleme** sırasında klasör simgesine tıklayın.
+    7. **Paylaşma tanılama bilgilerini** denetleyin.
     8. **İleri**’ye tıklayın.
 
        ![Sorun](./media/data-box-disk-contact-microsoft-support/data-box-disk-support2.png)
 
-4. **Yeni destek isteği**' nde **3. adım iletişim bilgileri**' ne tıklayın. **İletişim bilgileri**bölümünde aşağıdaki adımları uygulayın:
+4. **Yeni destek isteği**' nde **3. adım iletişim bilgileri**' ne tıklayın. **İletişim bilgileri** bölümünde aşağıdaki adımları uygulayın:
 
-   1. **İletişim seçeneklerinde**tercih ettiğiniz iletişim yönteminizi (telefon veya e-posta) ve dili girin. Yanıt süresi, abonelik planınıza göre otomatik olarak seçilir.
-   2. **İletişim bilgilerinde**adınızı, e-postanızı, isteğe bağlı iletişim, ülke/bölge ' yi belirtin. **Gelecekteki destek istekleri için kişi değişikliklerini kaydet**' i seçin.
+   1. **İletişim seçeneklerinde** tercih ettiğiniz iletişim yönteminizi (telefon veya e-posta) ve dili girin. Yanıt süresi, abonelik planınıza göre otomatik olarak seçilir.
+   2. **İletişim bilgilerinde** adınızı, e-postanızı, isteğe bağlı iletişim, ülke/bölge ' yi belirtin. **Gelecekteki destek istekleri için kişi değişikliklerini kaydet**' i seçin.
    3. **Oluştur**’a tıklayın.
 
        ![İletişim bilgileri](./media/data-box-disk-contact-microsoft-support/data-box-disk-support3.png)   
@@ -74,7 +74,7 @@ Bir destek bileti oluşturduktan sonra portal üzerinden bu biletin yaşam döng
 
     ![Destek isteklerini yönetme](./media/data-box-disk-contact-microsoft-support/data-box-disk-manage-support-ticket1.png)
 
-2. **Son destek isteklerinin** tablolu bir listesi **Yardım + Destek**bölümünde görüntülenir.
+2. **Son destek isteklerinin** tablolu bir listesi **Yardım + Destek** bölümünde görüntülenir.
 
     ![Destek isteklerini yönet 2](./media/data-box-disk-contact-microsoft-support/data-box-disk-manage-support-ticket2.png)
 

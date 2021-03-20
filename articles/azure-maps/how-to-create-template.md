@@ -7,10 +7,10 @@ ms.date: 10/20/2020
 ms.topic: how-to
 ms.service: azure-maps
 ms.openlocfilehash: c715c0639e962f76f669515c1d2c826c8cf6cc9e
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92525189"
 ---
 # <a name="create-your-azure-maps-account-using-an-arm-template"></a>ARM şablonu kullanarak Azure Maps hesabınızı oluşturma
@@ -57,7 +57,7 @@ Azure haritalar hesap kaynağı bu şablonda tanımlanmıştır:
     * **Hesap adı**: Azure Maps hesabınız için genel olarak benzersiz olması gereken bir ad girin.
     * **Fiyatlandırma katmanı**: uygun fiyatlandırma katmanını seçin, şablon için varsayılan değer S0 ' dir.
 
-3. **Gözden geçir + oluştur**’u seçin. 
+3. **Gözden geçir ve oluştur**’u seçin. 
 4. İnceleme sayfasında ayarlarınızı onaylayın ve **Oluştur**' a tıklayın. Azure haritalar başarıyla dağıtıldıktan sonra bir bildirim alırsınız:
 
     ![ARM şablonu dağıtım portalı bildirimi](./media/how-to-create-template/resource-manager-template-portal-deployment-notification.png)

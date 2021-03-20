@@ -10,10 +10,10 @@ services: iot-industrialiot
 manager: philmea
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 405fa04a3b6af7f0c87888aa48aba9bdffeaf282
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92366964"
 ---
 # <a name="configure-opc-publisher"></a>OPC Yayımcısını Yapılandırma
@@ -120,7 +120,7 @@ Bu bölümde OPC yayımcısını yapılandırmak için kullanabileceğiniz Yönt
 
 ### <a name="configure-using-opc-ua-method-calls"></a>OPC UA Yöntem çağrılarını kullanarak yapılandırma
 
-OPC yayımcısı, 62222 numaralı bağlantı noktasından erişilebilen bir OPC UA sunucusu içerir. Ana bilgisayar adı **Yayımcı**ise, uç nokta URI 'si: `opc.tcp://publisher:62222/UA/Publisher` .
+OPC yayımcısı, 62222 numaralı bağlantı noktasından erişilebilen bir OPC UA sunucusu içerir. Ana bilgisayar adı **Yayımcı** ise, uç nokta URI 'si: `opc.tcp://publisher:62222/UA/Publisher` .
 
 Bu uç nokta aşağıdaki dört yöntemi kullanıma sunar:
 
