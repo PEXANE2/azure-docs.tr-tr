@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 06/05/2017
 ms.author: alkohli
 ms.openlocfilehash: 01064c3668b673baea7aedd9a65c92b03c48dc10
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90056012"
 ---
 # <a name="use-the-mmc-menu-actions-in-storsimple-snapshot-manager"></a>StorSimple Snapshot Manager MMC menü eylemlerini kullanma
@@ -26,7 +26,7 @@ ms.locfileid: "90056012"
 ## <a name="overview"></a>Genel Bakış
 StorSimple Snapshot Manager, tüm eylem menülerinde ve **Eylemler** bölmesinin tüm çeşitlerinde listelenen aşağıdaki eylemleri görürsünüz.
 
-* Görüntüle
+* Görünüm
 * Buradan Yeni Pencere 
 * Yenile 
 * Listeyi dışarı aktar 
@@ -34,7 +34,7 @@ StorSimple Snapshot Manager, tüm eylem menülerinde ve **Eylemler** bölmesinin
 
 Bu eylemler Microsoft Yönetim Konsolu 'nun (MMC) bir parçasıdır ve StorSimple Snapshot Manager özgü değildir. Bu öğreticide, bu eylemler açıklanmakta ve bunların her birinin StorSimple Snapshot Manager nasıl kullanılacağı açıklanmaktadır.
 
-## <a name="view"></a>Görüntüle
+## <a name="view"></a>Görünüm
 **Görünüm** seçeneğini, **sonuçlar** bölmesi görünümünü değiştirmek ve konsol penceresi görünümünü değiştirmek için kullanabilirsiniz. 
 
 #### <a name="to-change-the-results-pane-view"></a>Sonuçlar Bölmesi görünümünü değiştirmek için

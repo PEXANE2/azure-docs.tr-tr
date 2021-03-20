@@ -12,10 +12,10 @@ ms.author: ryanwi
 ms.reviewer: stsoneff
 ms.custom: azureday1
 ms.openlocfilehash: 72b1d4fe864c23c0ac065e47d96ab0c78866defa
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96435850"
 ---
 # <a name="tutorial-access-azure-storage-from-a-web-app"></a>Öğretici: bir Web uygulamasından Azure depolama erişimi
@@ -64,7 +64,7 @@ Azure depolama 'daki Bloblar kapsayıcılar halinde düzenlenir. Bu öğreticide
 
 Azure portal genel amaçlı v2 depolama hesabı oluşturmak için aşağıdaki adımları izleyin.
 
-1. Azure portalı menüsünde **Tüm hizmetler**'i seçin. Kaynak listesinde **depolama hesapları**' nı girin. Yazmaya başladığınızda liste, girişinize göre filtrelenir. **Depolama hesapları**' nı seçin.
+1. Azure portalı menüsünde **Tüm hizmetler**’i seçin. Kaynak listesinde **depolama hesapları**' nı girin. Yazmaya başladığınızda liste, girişinize göre filtrelenir. **Depolama hesapları**' nı seçin.
 
 1. Görüntülenen **depolama hesapları** penceresinde **Ekle**' yi seçin.
 
@@ -172,7 +172,7 @@ Blobları oluşturabilmeniz, okumanız veya silebilmeniz için önce, Web uygula
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
-[Azure Portal](https://portal.azure.com), Web uygulamanıza erişim sağlamak için depolama hesabınıza gidin. Sol bölmede **erişim denetimi (IAM)** öğesini seçin ve ardından **rol atamaları**' nı seçin. Depolama hesabına kimlerin erişebileceğini içeren bir liste görürsünüz. Şimdi, depolama hesabına erişmesi gereken bir robot, uygulama hizmeti olan bir rol ataması eklemek istiyorsunuz. **Add**  >  **Rol Ekle ataması** Ekle ' yi seçin.
+[Azure Portal](https://portal.azure.com), Web uygulamanıza erişim sağlamak için depolama hesabınıza gidin. Sol bölmede **erişim denetimi (IAM)** öğesini seçin ve ardından **rol atamaları**' nı seçin. Depolama hesabına kimlerin erişebileceğini içeren bir liste görürsünüz. Şimdi, depolama hesabına erişmesi gereken bir robot, uygulama hizmeti olan bir rol ataması eklemek istiyorsunuz.   >  **Rol Ekle ataması** Ekle ' yi seçin.
 
 **Rol**' de, Web uygulamanıza depolama Blobları okuma erişimi sağlamak Için **Depolama Blobu veri katılımcısı** ' nı seçin. **Erişim ata**' da **App Service**' yi seçin. **Abonelikte** aboneliğinizi seçin. Daha sonra erişim sağlamak istediğiniz App Service 'i seçin. **Kaydet**’i seçin.
 

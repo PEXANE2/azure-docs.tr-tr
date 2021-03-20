@@ -15,10 +15,10 @@ ms.topic: conceptual
 ms.date: 01/29/2021
 ms.author: b-juche
 ms.openlocfilehash: c82e834c0af3737c1e5ef19c7aa789b94d87f6d8
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/30/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99095400"
 ---
 # <a name="resource-limits-for-azure-netapp-files"></a>Azure NetApp Files için kaynak sınırları
@@ -35,18 +35,18 @@ Aşağıdaki tabloda Azure NetApp Files için kaynak sınırları açıklanmakta
 |  NetApp hesabı başına kapasite havuzlarının sayısı   |    25     |   Yes   |
 |  Abonelik başına birim sayısı   |    500     |   Yes   |
 |  Kapasite havuzu başına birim sayısı     |    500   |    Yes     |
-|  Birim başına anlık görüntü sayısı       |    255     |    Hayır        |
-|  Azure sanal ağı başına Azure NetApp Files (Microsoft. NetApp/birimler) için temsilci seçilen alt ağ sayısı    |   1   |    Hayır    |
-|  Bir VNet 'te kullanılan IP sayısı (anında eşlenen sanal ağlar dahil) Azure NetApp Files   |    1000   |    Hayır   |
-|  Tek bir kapasite havuzunun en küçük boyutu   |  4 TiB     |    Hayır  |
-|  Tek bir kapasite havuzunun en büyük boyutu    |  500 TiB   |   Hayır   |
-|  Tek bir birimin en küçük boyutu    |    100 GiB    |    Hayır    |
-|  Tek bir birimin en büyük boyutu     |    100 TiB    |    Hayır    |
-|  Tek bir dosyanın en büyük boyutu     |    16 TiB    |    Hayır    |    
-|  Tek bir dizindeki dizin meta verilerinin en büyük boyutu      |    320 MB    |    Hayır    |    
+|  Birim başına anlık görüntü sayısı       |    255     |    No        |
+|  Azure sanal ağı başına Azure NetApp Files (Microsoft. NetApp/birimler) için temsilci seçilen alt ağ sayısı    |   1   |    No    |
+|  Bir VNet 'te kullanılan IP sayısı (anında eşlenen sanal ağlar dahil) Azure NetApp Files   |    1000   |    No   |
+|  Tek bir kapasite havuzunun en küçük boyutu   |  4 TiB     |    No  |
+|  Tek bir kapasite havuzunun en büyük boyutu    |  500 TiB   |   No   |
+|  Tek bir birimin en küçük boyutu    |    100 GiB    |    No    |
+|  Tek bir birimin en büyük boyutu     |    100 TiB    |    No    |
+|  Tek bir dosyanın en büyük boyutu     |    16 TiB    |    No    |    
+|  Tek bir dizindeki dizin meta verilerinin en büyük boyutu      |    320 MB    |    No    |    
 |  Birim başına en fazla dosya sayısı ([maxfiles](#maxfiles))     |    100.000.000    |    Yes    |    
-|  El ile QoS birimi için atanan en düşük aktarım hızı     |    1 MIB/sn   |    Hayır    |    
-|  El ile QoS birimi için atanan en yüksek aktarım hızı     |    4.500 MIB/sn    |    Hayır    |    
+|  El ile QoS birimi için atanan en düşük aktarım hızı     |    1 MIB/sn   |    No    |    
+|  El ile QoS birimi için atanan en yüksek aktarım hızı     |    4.500 MIB/sn    |    No    |    
 |  Çapraz bölge çoğaltma verileri koruma birimlerinin sayısı (hedef birimler)     |    5    |    Yes    |     
 
 Dizin meta verileri (320 MB) için en büyük boyut sınırına yaklaşıp yaklaşmadığını görmek için, [bir dizinin sınır boyutuna yaklaşıp yaklaşmadığını belirleme nasıl yaparım?](azure-netapp-files-faqs.md#how-do-i-determine-if-a-directory-is-approaching-the-limit-size)bakın.   

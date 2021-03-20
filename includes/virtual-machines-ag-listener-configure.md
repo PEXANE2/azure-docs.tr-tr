@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
 ms.openlocfilehash: fd635d4c0563c35979f8d85c33dfbde35f05f9e6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91401110"
 ---
 Kullanılabilirlik grubu dinleyicisi, SQL Server kullanılabilirlik grubunun dinlediği bir IP adresi ve ağ adıdır. Kullanılabilirlik grubu dinleyicisini oluşturmak için aşağıdakileri yapın:
@@ -28,7 +28,7 @@ Kullanılabilirlik grubu dinleyicisi, SQL Server kullanılabilirlik grubunun din
 
     a. Küme adını genişletin ve ardından **Roller**' e tıklayın.
 
-    b. **Roller** bölmesinde, kullanılabilirlik grubu adına sağ tıklayın ve ardından **kaynak**  >  **istemci erişim noktası**Ekle ' yi seçin.
+    b. **Roller** bölmesinde, kullanılabilirlik grubu adına sağ tıklayın ve ardından **kaynak**  >  **istemci erişim noktası** Ekle ' yi seçin.
 
    ![Istemci erişim noktası menü seçeneğini gösteren ekran görüntüsü.](./media/virtual-machines-ag-listener-configure/92-addclientaccesspoint.png)
 
@@ -37,7 +37,7 @@ Kullanılabilirlik grubu dinleyicisi, SQL Server kullanılabilirlik grubunun din
 
     d. Dinleyiciyi oluşturmayı tamamlaması için iki kez **İleri** ' ye ve ardından **son**' a tıklayın. Bu noktada dinleyiciyi veya kaynağı çevrimiçi duruma getirmeyin.
 
-1. Kullanılabilirlik grubu kümesi rolünü çevrimdışına alın. **Roller**altında **Yük devretme kümesi Yöneticisi** , role sağ tıklayın ve **rolü durdur**' u seçin.
+1. Kullanılabilirlik grubu kümesi rolünü çevrimdışına alın. **Roller** altında **Yük devretme kümesi Yöneticisi** , role sağ tıklayın ve **rolü durdur**' u seçin.
 
 1. <a name="congroup"></a>Kullanılabilirlik grubu için IP kaynağını yapılandırın.
 
@@ -48,7 +48,7 @@ Kullanılabilirlik grubu dinleyicisi, SQL Server kullanılabilirlik grubunun din
 
     b. IP kaynağına sağ tıklayın ve ardından Özellikler ' e tıklayın. IP adresinin adını ve `$IPResourceName` PowerShell betiğindeki değişkende kullanın.
 
-    c. **IP adresi**altında **statik IP adresi**' ne tıklayın. IP adresini, Azure portal yük dengeleyici adresini ayarladığınızda kullandığınız adresle aynı olacak şekilde ayarlayın.
+    c. **IP adresi** altında **statik IP adresi**' ne tıklayın. IP adresini, Azure portal yük dengeleyici adresini ayarladığınızda kullandığınız adresle aynı olacak şekilde ayarlayın.
 
    ![IP adresini ayarladığınız yeri gösteren ekran görüntüsü.](./media/virtual-machines-ag-listener-configure/96-ipresource.png) 
 
@@ -60,7 +60,7 @@ Kullanılabilirlik grubu dinleyicisi, SQL Server kullanılabilirlik grubunun din
 
     a. Yük Devretme Kümesi Yöneticisi ' de **Roller**' e ve ardından kullanılabilirlik grubunuza tıklayın.
 
-    b. **Kaynaklar** sekmesinde, **diğer kaynaklar**altında, kullanılabilirlik kaynak grubu ' na sağ tıklayın ve ardından **Özellikler**' e tıklayın. 
+    b. **Kaynaklar** sekmesinde, **diğer kaynaklar** altında, kullanılabilirlik kaynak grubu ' na sağ tıklayın ve ardından **Özellikler**' e tıklayın. 
 
     c. Bağımlılıklar sekmesinde, istemci erişim noktası (dinleyici) kaynağının adını ekleyin.
 
@@ -72,7 +72,7 @@ Kullanılabilirlik grubu dinleyicisi, SQL Server kullanılabilirlik grubunun din
 
     a. Yük Devretme Kümesi Yöneticisi ' de **Roller**' e ve ardından kullanılabilirlik grubunuza tıklayın. 
 
-    b. **Kaynaklar** sekmesinde, **sunucu adı**altında istemci erişim noktası kaynağına sağ tıklayın ve ardından **Özellikler**' e tıklayın. 
+    b. **Kaynaklar** sekmesinde, **sunucu adı** altında istemci erişim noktası kaynağına sağ tıklayın ve ardından **Özellikler**' e tıklayın. 
 
    ![Sunucu adının Özellikler menü seçeneğini gösteren ekran görüntüsü.](./media/virtual-machines-ag-listener-configure/98-dependencies.png) 
 
@@ -108,11 +108,11 @@ Kullanılabilirlik grubu dinleyicisi, SQL Server kullanılabilirlik grubunun din
    > [!NOTE]
    > SQL Server örneklerinizin ayrı bölgelerde olması durumunda PowerShell betiğini iki kez çalıştırmanız gerekir. İlk kez, `$ListenerILBIP` ilk bölgeden ve kullanın `$ListenerProbePort` . İkinci kez, `$ListenerILBIP` ikinci bölgeden ve ' ı kullanın `$ListenerProbePort` . Küme ağ adı ve küme IP kaynak adı her bölge için de farklıdır.
 
-1. Kullanılabilirlik grubu kümesi rolünü çevrimiçi duruma getirin. **Roller**altında **Yük devretme kümesi Yöneticisi** , role sağ tıklayın ve **rolü Başlat**' ı seçin.
+1. Kullanılabilirlik grubu kümesi rolünü çevrimiçi duruma getirin. **Roller** altında **Yük devretme kümesi Yöneticisi** , role sağ tıklayın ve **rolü Başlat**' ı seçin.
 
 Gerekirse, WSFC kümesi IP adresinin küme parametrelerini ayarlamak için yukarıdaki adımları tekrarlayın.
 
-1. WSFC kümesi IP adresinin IP adresi adını alın. **Küme çekirdeği kaynakları**altında **Yük devretme kümesi Yöneticisi** **sunucu adı**' nı bulun.
+1. WSFC kümesi IP adresinin IP adresi adını alın. **Küme çekirdeği kaynakları** altında **Yük devretme kümesi Yöneticisi** **sunucu adı**' nı bulun.
 
 1. **IP adresi**' ne sağ tıklayın ve **Özellikler**' i seçin.
 

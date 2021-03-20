@@ -16,10 +16,10 @@ ms.reviewer: thsomasu
 ms.lastreviewed: 01/04/2019
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 33626b7aee615d07ef88dd9fbca46e6512e2cafc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90090372"
 ---
 # <a name="azure-notification-hubs-rich-push"></a>Azure Notification Hubs zengin gönderim
@@ -45,8 +45,8 @@ Yüksek düzeyde:
 
 1. Visual Studio 'da, [kullanıcıları bilgilendir](notification-hubs-aspnet-backend-ios-apple-apns-notification.md) öğreticisinde oluşturduğunuz **apparka uç** projesini açın.
 2. Kullanıcılara bildirmek istediğiniz görüntüyü alın ve proje dizininizde bir **img** klasörüne yerleştirin.
-3. Çözüm Gezgini **tüm dosyaları göster** ' e tıklayın ve **projeye dahil**etmek için klasöre sağ tıklayın.
-4. Görüntü seçiliyken, **Özellikler** penceresindeki **yapı eylemini** **gömülü kaynak**olarak değiştirin.
+3. Çözüm Gezgini **tüm dosyaları göster** ' e tıklayın ve **projeye dahil** etmek için klasöre sağ tıklayın.
+4. Görüntü seçiliyken, **Özellikler** penceresindeki **yapı eylemini** **gömülü kaynak** olarak değiştirin.
 
     ![Çözüm Gezgini ekran görüntüsü. Görüntü dosyası seçilidir ve Özellikler bölmesinde, gömülü kaynak derleme eylemi olarak listelenir.][IOS2]
 5. İçinde `Notifications.cs` , aşağıdaki ifadeyi ekleyin `using` :
@@ -142,18 +142,18 @@ Yüksek düzeyde:
 Yalnızca bir bildirimin *kimliğini* göndermek için uygulamanızın arka ucunu değiştirdiğimize göre, iOS UYGULAMANıZı bu kimliği işleyecek şekilde değiştirin ve arka ucunuzdaki zengin iletiyi alın:
 
 1. İOS projenizi açın ve **hedefler** bölümünde ana uygulama hedeflerinize giderek uzak bildirimleri etkinleştirin.
-2. **Özellikleri**seçin, **arka plan modlarını**etkinleştirin ve **uzak bildirimler** onay kutusunu işaretleyin.
+2. **Özellikleri** seçin, **arka plan modlarını** etkinleştirin ve **uzak bildirimler** onay kutusunu işaretleyin.
 
     ![Yetenek ekranını gösteren iOS projesinin ekran görüntüsü. Arka plan modları açıktır ve uzaktan bildirimler onay kutusu seçilidir.][IOS3]
 3. `Main.storyboard`' İ açın ve Kullanıcı öğreticisini [bildir](notification-hubs-aspnet-backend-ios-apple-apns-notification.md) öğreticiden bir görünüm denetleyicinizin (Bu öğreticide giriş görünümü denetleyicisi olarak adlandırılır) bulunduğundan emin olun.
 4. Görsel taslağınızı bir **Gezinti denetleyicisi** ekleyin ve giriş görünümü denetleyicisi ' ni denetimin **kök görünümü** haline getirmek için sürükleyin. **Ilk görünüm denetleyicisinin** öznitelikler denetçisinde yalnızca gezinti denetleyicisi için seçildiğinden emin olun.
-5. Görsel taslağa bir **Görünüm denetleyicisi** ekleyin ve bir **görüntü görünümü**ekleyin. Bu, bildirim üzerine tıklayarak kullanıcıların daha fazla bilgi edinmeleri için göreceği sayfasıdır. Görsel taslağınızı aşağıdaki gibi görünmelidir:
+5. Görsel taslağa bir **Görünüm denetleyicisi** ekleyin ve bir **görüntü görünümü** ekleyin. Bu, bildirim üzerine tıklayarak kullanıcıların daha fazla bilgi edinmeleri için göreceği sayfasıdır. Görsel taslağınızı aşağıdaki gibi görünmelidir:
 
     ![Görsel taslağın ekran görüntüsü. Üç uygulama ekranı görünür: bir gezinti görünümü, bir giriş görünümü ve bir görüntü görünümü.][IOS4]
 6. Görsel taslakta bulunan **Giriş görünümü denetleyicisine** tıklayın ve kimlik denetçisi altında **özel sınıfı** ve **film şeridi kimliği** olarak **homeviewcontroller** olduğundan emin olun.
-7. Görüntü görüntüleme denetleyicisi için **ımageviewcontroller**olarak aynısını yapın.
+7. Görüntü görüntüleme denetleyicisi için **ımageviewcontroller** olarak aynısını yapın.
 8. Ardından, az önce oluşturduğunuz Kullanıcı arabirimini işlemek için **ımageviewcontroller** adlı yeni bir görünüm denetleyicisi sınıfı oluşturun.
-9. **Imageviewcontroller. h**içinde, denetleyicinin arabirim bildirimlerine aşağıdaki kodu ekleyin. İki tane bağlamak için görsel taslak görüntü görünümünden bu özelliklere denetimin sürükleyip sürüklediğinizden emin olun:
+9. **Imageviewcontroller. h** içinde, denetleyicinin arabirim bildirimlerine aşağıdaki kodu ekleyin. İki tane bağlamak için görsel taslak görüntü görünümünden bu özelliklere denetimin sürükleyip sürüklediğinizden emin olun:
 
     ```objc
     @property (weak, nonatomic) IBOutlet UIImageView *myImage;

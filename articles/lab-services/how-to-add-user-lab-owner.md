@@ -4,10 +4,10 @@ description: Bu makalede, bir yöneticinin Azure Lab Services bir laboratuvara s
 ms.topic: article
 ms.date: 09/04/2020
 ms.openlocfilehash: 4b46dd08a3b9527cdfc7bdf766ee4976e67656d0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89482678"
 ---
 # <a name="how-to-add-additional-owners-to-an-existing-lab-in-azure-lab-services"></a>Azure Lab Services ' de var olan laboratuvara ek sahipler ekleme
@@ -17,14 +17,14 @@ Bu makalede, yönetici olarak, var olan laboratuvara nasıl ek sahipler ekleyebi
 Bir kullanıcıyı mevcut bir laboratuvara ek bir sahip olarak eklemek için, önce laboratuvar hesabında kullanıcıya **okuma** izinleri vermeniz gerekir.
 
 1. [Azure portalında](https://portal.azure.com) oturum açın.
-2. Sol taraftaki menüden **tüm hizmetler** ' i seçin. **Laboratuvar Hizmetleri**araması yapın ve ardından seçin.
+2. Sol taraftaki menüden **tüm hizmetler** ' i seçin. **Laboratuvar Hizmetleri** araması yapın ve ardından seçin.
 3. Listeden **Laboratuvar hesabınızı** seçin. 
-2. **Laboratuvar hesabı sayfasında**sol menüdeki **Access Control (IAM)** öğesini seçin. 
-2. **Erişim denetimi (IAM)** sayfasında, araç çubuğunda **Ekle** ' yi ve **Rol Ekle atamasını**seçin.
+2. **Laboratuvar hesabı sayfasında** sol menüdeki **Access Control (IAM)** öğesini seçin. 
+2. **Erişim denetimi (IAM)** sayfasında, araç çubuğunda **Ekle** ' yi ve **Rol Ekle atamasını** seçin.
 
     ![Laboratuvar hesabı için rol ataması ](./media/how-to-add-user-lab-owner/lab-account-access-control-page.png)
 3. **Rol ataması Ekle** sayfasında, aşağıdaki adımları uygulayın: 
-    1. **Rol**için **okuyucu** ' yı seçin. 
+    1. **Rol** için **okuyucu** ' yı seçin. 
     2. Kullanıcıyı seçin. 
     3. **Kaydet**’i seçin. 
 
@@ -40,9 +40,9 @@ Bir kullanıcıyı mevcut bir laboratuvara ek bir sahip olarak eklemek için, ö
     
     ![Laboratuvarı seçme ](./media/how-to-add-user-lab-owner/select-lab.png)    
 3. **Laboratuvar** sayfasında sol menüdeki **ERIŞIM denetimi (IAM)** seçeneğini belirleyin.
-4. **Erişim denetimi (IAM)** sayfasında, araç çubuğunda **Ekle** ' yi ve **Rol Ekle atamasını**seçin.
+4. **Erişim denetimi (IAM)** sayfasında, araç çubuğunda **Ekle** ' yi ve **Rol Ekle atamasını** seçin.
 5. **Rol ataması Ekle** sayfasında, aşağıdaki adımları uygulayın: 
-    1. Rolün **sahibini** seçin. **role** 
+    1. Rolün **sahibini** seçin.  
     2. Kullanıcıyı seçin. 
     3. **Kaydet**’i seçin. 
 

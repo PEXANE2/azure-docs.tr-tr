@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
 ms.openlocfilehash: 2f74314f28e4f2f7c8c084169356c8fa7992519d
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92515245"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-quickhelp"></a>Öğretici: QuickHelp ile tümleştirme Azure Active Directory
@@ -63,13 +63,13 @@ QuickHelp 'in Azure AD ile tümleştirilmesini yapılandırmak için, Galeri 'de
 
     ![Yeni uygulama düğmesi](common/add-new-app.png)
 
-4. Arama kutusuna **QuickHelp**yazın, sonuç panelinden **QuickHelp** ' i seçin ve ardından **Ekle** düğmesine tıklayarak uygulamayı ekleyin.
+4. Arama kutusuna **QuickHelp** yazın, sonuç panelinden **QuickHelp** ' i seçin ve ardından **Ekle** düğmesine tıklayarak uygulamayı ekleyin.
 
      ![Sonuçlar listesinde QuickHelp](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-Bu bölümde, Azure AD çoklu oturum açmayı, **Britta Simon**adlı bir test kullanıcısına göre hızlı yardım ile yapılandırıp test edersiniz.
+Bu bölümde, Azure AD çoklu oturum açmayı, **Britta Simon** adlı bir test kullanıcısına göre hızlı yardım ile yapılandırıp test edersiniz.
 Çoklu oturum açma için, bir Azure AD kullanıcısı ve hızlı yardım 'daki ilgili Kullanıcı arasındaki bağlantı ilişkisinin kurulması gerekir.
 
 Hızlı yardım ile Azure AD çoklu oturum açmayı yapılandırmak ve test etmek için aşağıdaki yapı taşlarını gerçekleştirmeniz gerekir:
@@ -142,7 +142,7 @@ Azure AD çoklu oturum açmayı hızlı yardım ile yapılandırmak için aşağ
    
     ![Ekran görüntüsü, açıklanan değerleri girebileceğiniz kimlik doğrulama ayarları sayfasını gösterir.][23]
    
-    a. **SSO türü**olarak **WSFederation**' i seçin.
+    a. **SSO türü** olarak **WSFederation**' i seçin.
    
     b. İndirilen Azure meta veri dosyanızı karşıya yüklemek için, **Araştır**' a tıklayın, dosyaya gidin ve sonra **meta verileri karşıya yükle**' ye tıklayın.
    
@@ -170,7 +170,7 @@ Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı ol
 
     ![Kullanıcı iletişim kutusu](common/user-properties.png)
 
-    a. **Ad** alanına **Brittasıon**girin.
+    a. **Ad** alanına **Brittasıon** girin.
   
     b. **Kullanıcı adı** alanına yazın brittasimon@yourcompanydomain.extension . Örneğin, BrittaSimon@contoso.com
 

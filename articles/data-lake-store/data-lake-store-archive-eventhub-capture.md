@@ -7,17 +7,17 @@ ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
 ms.openlocfilehash: 8be242369ecae2c809a38428284c9ddcad440e3f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91578249"
 ---
 # <a name="use-azure-data-lake-storage-gen1-to-capture-data-from-event-hubs"></a>Event Hubs verileri yakalamak için Azure Data Lake Storage 1. kullanma
 
 Azure Event Hubs tarafından alınan verileri yakalamak için Azure Data Lake Storage 1. nasıl kullanacağınızı öğrenin.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * **Bir Azure aboneliği**. Bkz. [Azure ücretsiz deneme sürümü edinme](https://azure.microsoft.com/pricing/free-trial/).
 
@@ -44,16 +44,16 @@ Bu bölümde, Event Hubs verileri yakalamak istediğiniz hesapta bir klasör olu
 
     ![Hesap köküne sahip veri Gezgini 'nin ekran görüntüsü ve olarak adlandırılan erişim seçeneği.](./media/data-lake-store-archive-eventhub-capture/data-lake-store-assign-permissions-to-root.png "Data Lake Storage 1. kök için izin atama")
 
-    b. **Erişim**altında, **Ekle**' ye tıklayın, **Kullanıcı veya Grup Seç**' e tıklayın ve ardından arama yapın `Microsoft.EventHubs` . 
+    b. **Erişim** altında, **Ekle**' ye tıklayın, **Kullanıcı veya Grup Seç**' e tıklayın ve ardından arama yapın `Microsoft.EventHubs` . 
 
     ![Erişim sayfasının Ekle seçeneği ile ekran görüntüsü, Kullanıcı veya Grup seçeneğini belirleyin ve Microsoft Eventhubs seçeneği çağırılır.](./media/data-lake-store-archive-eventhub-capture/data-lake-store-assign-eventhub-sp.png "Data Lake Storage 1. kök için izin atama")
     
     **Seç**’e tıklayın.
 
-    c. **Izinleri ata**altında, **izinleri seç**' e tıklayın. Yürütülecek **izinleri** ayarlayın **Execute**. **Bu klasöre ve tüm alt öğelere** **Ekle** ' ye ayarlayın. **Bir erişim izni girişi ve varsayılan izin girdisi** **olarak ekle** ' ye ayarlayın.
+    c. **Izinleri ata** altında, **izinleri seç**' e tıklayın. Yürütülecek **izinleri** ayarlayın . **Bu klasöre ve tüm alt öğelere** **Ekle** ' ye ayarlayın. **Bir erişim izni girişi ve varsayılan izin girdisi** **olarak ekle** ' ye ayarlayın.
 
     > [!IMPORTANT]
-    > Azure Event Hubs tarafından alınan verileri yakalamaya yönelik yeni bir klasör hiyerarşisi oluştururken, bu hedef klasöre erişim sağlamanın kolay bir yoludur.  Ancak, üst düzey bir klasörün tüm alt öğelerine çok sayıda alt dosya ve klasör içeren izinler eklemek uzun sürebilir.  Kök klasörünüz çok sayıda dosya ve klasör içeriyorsa, **Execute** `Microsoft.EventHubs` son hedef klasörünüzün yolundaki her bir klasöre ayrı ayrı yürütme izinleri eklemek daha hızlı olabilir. 
+    > Azure Event Hubs tarafından alınan verileri yakalamaya yönelik yeni bir klasör hiyerarşisi oluştururken, bu hedef klasöre erişim sağlamanın kolay bir yoludur.  Ancak, üst düzey bir klasörün tüm alt öğelerine çok sayıda alt dosya ve klasör içeren izinler eklemek uzun sürebilir.  Kök klasörünüz çok sayıda dosya ve klasör içeriyorsa,  `Microsoft.EventHubs` son hedef klasörünüzün yolundaki her bir klasöre ayrı ayrı yürütme izinleri eklemek daha hızlı olabilir. 
 
     ![İzinleri Seç seçeneği olarak adlandırılan Izinleri ata bölümünün ekran görüntüsü. Izinleri Seç bölümü, Çalıştır seçeneği, seçenek Ekle ve olarak adlandırılan seçenek olarak ekle seçeneğinin yanında bulunur.](./media/data-lake-store-archive-eventhub-capture/data-lake-store-assign-eventhub-sp1.png "Data Lake Storage 1. kök için izin atama")
 
@@ -65,13 +65,13 @@ Bu bölümde, Event Hubs verileri yakalamak istediğiniz hesapta bir klasör olu
 
     ![Hesapta bir klasör ve erişim seçeneği olarak adlandırılan veri Gezgini ekran görüntüsü.](./media/data-lake-store-archive-eventhub-capture/data-lake-store-assign-permissions-to-folder.png "Data Lake Storage 1. klasörü için izin atama")
 
-    b. **Erişim**altında, **Ekle**' ye tıklayın, **Kullanıcı veya Grup Seç**' e tıklayın ve ardından arama yapın `Microsoft.EventHubs` . 
+    b. **Erişim** altında, **Ekle**' ye tıklayın, **Kullanıcı veya Grup Seç**' e tıklayın ve ardından arama yapın `Microsoft.EventHubs` . 
 
     ![Veri Gezgini erişim sayfasının Ekle seçeneği ile ekran görüntüsü, Kullanıcı veya Grup seçeneğini belirleyin ve Microsoft Eventhubs seçeneği çağırılır.](./media/data-lake-store-archive-eventhub-capture/data-lake-store-assign-eventhub-sp.png "Data Lake Storage 1. klasörü için izin atama")
     
     **Seç**’e tıklayın.
 
-    c. **Izinleri ata**altında, **izinleri seç**' e tıklayın. **Okuma, yazma** ve **yürütme** **izinlerini** ayarlayın. **Bu klasöre ve tüm alt öğelere** **Ekle** ' ye ayarlayın. Son olarak, **bir erişim izni girişi ve varsayılan izin girişi** **olarak ekle** seçeneğini belirleyin.
+    c. **Izinleri ata** altında, **izinleri seç**' e tıklayın. **Okuma, yazma** ve **yürütme** **izinlerini** ayarlayın. **Bu klasöre ve tüm alt öğelere** **Ekle** ' ye ayarlayın. Son olarak, **bir erişim izni girişi ve varsayılan izin girişi** **olarak ekle** seçeneğini belirleyin.
 
     ![İzinleri Seç seçeneği olarak adlandırılan Izinleri ata bölümünün ekran görüntüsü. Izinleri Seç bölümü, okuma, yazma ve yürütme seçenekleri, Ekle seçeneği ve olarak adlandırılan Ekle seçeneği ile birlikte kullanılır.](./media/data-lake-store-archive-eventhub-capture/data-lake-store-assign-eventhub-sp-folder.png "Data Lake Storage 1. klasörü için izin atama")
     
@@ -93,9 +93,9 @@ Bu bölümde, bir Event Hubs ad alanı içinde bir olay hub 'ı oluşturacaksın
     
     b. Bu öğreticide, **bölüm sayısı** ve **ileti bekletme** değerlerini varsayılan değerlere ayarlayın.
     
-    c. **Yakalamayı** **Açık**olarak ayarlayın. **Zaman penceresini** (yakalama sıklığı) ve **Boyut penceresini** (yakalanacak veri boyutu) ayarlayın. 
+    c. **Yakalamayı** **Açık** olarak ayarlayın. **Zaman penceresini** (yakalama sıklığı) ve **Boyut penceresini** (yakalanacak veri boyutu) ayarlayın. 
     
-    d. **Yakalama sağlayıcısı**için **Azure Data Lake Store** ' yi seçin ve ardından daha önce oluşturduğunuz Data Lake Storage 1. hesabı seçin. **Data Lake yolu**için Data Lake Storage 1. hesapta oluşturduğunuz klasörün adını girin. Yalnızca klasöre göreli yolu sağlamanız gerekir.
+    d. **Yakalama sağlayıcısı** için **Azure Data Lake Store** ' yi seçin ve ardından daha önce oluşturduğunuz Data Lake Storage 1. hesabı seçin. **Data Lake yolu** için Data Lake Storage 1. hesapta oluşturduğunuz klasörün adını girin. Yalnızca klasöre göreli yolu sağlamanız gerekir.
 
     e. **Örnek yakalama dosya adı biçimlerini** varsayılan değere bırakın. Bu seçenek, yakalama klasörü altında oluşturulan klasör yapısını yönetir.
 

@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 10/17/2019
 ms.author: jeedes
 ms.openlocfilehash: 4307838df56fb2dc1cdf6ee4044b8ce8de164227
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92518611"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-nuclino"></a>Öğretici: Nuclino ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
@@ -55,7 +55,7 @@ Nuclino 'un tümleştirmesini Azure AD 'ye göre yapılandırmak için galeridek
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-nuclino"></a>Nuclino için Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-**B. Simon**adlı bir test kullanıcısı kullanarak Nuclino Ile Azure AD SSO 'yu yapılandırın ve test edin. SSO 'nun çalışması için, Nuclino 'da bir Azure AD kullanıcısı ve ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
+**B. Simon** adlı bir test kullanıcısı kullanarak Nuclino Ile Azure AD SSO 'yu yapılandırın ve test edin. SSO 'nun çalışması için, Nuclino 'da bir Azure AD kullanıcısı ve ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
 
 Azure AD SSO 'yu Nuclino ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
 
@@ -98,7 +98,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
 7. Yukarıdakine ek olarak, Nuclino uygulaması aşağıda gösterilen SAML yanıtına daha fazla öznitelik geçirilmesini bekler. Bu öznitelikler de önceden doldurulur, ancak gereksinimlerinize göre bunları gözden geçirebilirsiniz.
 
-    | Adı |  Kaynak özniteliği|
+    | Name |  Kaynak özniteliği|
     | ---------------| --------- |
     | first_name | Kullanıcı. |
     | last_name | User. soyadı |
@@ -143,7 +143,7 @@ Bu bölümde, Nuclino 'a erişim vererek, B. Simon 'u Azure çoklu oturum açma 
 
 ## <a name="configure-nuclino-sso"></a>Nuclino SSO 'yu yapılandırma
 
-1. Nuclino 'da yapılandırmayı otomatik hale getirmek için, **uzantıyı yüklemek**üzere **uygulamalar güvenli oturum açma tarayıcı uzantısı** ' nı yüklemeniz gerekir.
+1. Nuclino 'da yapılandırmayı otomatik hale getirmek için, **uzantıyı yüklemek** üzere **uygulamalar güvenli oturum açma tarayıcı uzantısı** ' nı yüklemeniz gerekir.
 
     ![Uygulamalarım uzantısı](common/install-myappssecure-extension.png)
 
@@ -153,7 +153,7 @@ Bu bölümde, Nuclino 'a erişim vererek, B. Simon 'u Azure çoklu oturum açma 
 
 3. Nuclino 'u el ile ayarlamak istiyorsanız yeni bir Web tarayıcı penceresi açın ve Nuclino şirket sitenizde yönetici olarak oturum açın ve aşağıdaki adımları gerçekleştirin:
 
-4. **Simgeye**tıklayın.
+4. **Simgeye** tıklayın.
 
     !["Azure A D S S O" seçeneğinin yanında "menü" simgesinin seçili olduğunu gösteren ekran görüntüsü.](./media/nuclino-tutorial/configure1.png)
 

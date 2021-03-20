@@ -7,10 +7,10 @@ ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 07/20/2018
 ms.openlocfilehash: 04642e69adba82cf33b933829d72c51109ad2ee1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91578214"
 ---
 # <a name="handle-content-types-in-azure-logic-apps"></a>Azure Logic Apps içerik türlerini işleme
@@ -59,7 +59,7 @@ Logic Apps, bu özellikleri mantıksal uygulamanızın iş akışında daha kola
   
   1. Istek tetikleyicisinde, **şema oluşturmak için örnek yük kullan**' ı seçin.  
   
-  2. **Örnek BIR JSON yükü girin veya yapıştırın**, örnek bir yük sağlayın ve **bitti**' yi seçin. Örneğin: 
+  2. **Örnek BIR JSON yükü girin veya yapıştırın**, örnek bir yük sağlayın ve **bitti**' yi seçin. Örnek: 
 
      ![Örnek bir JSON yüküne sahip "HTTP isteği alındığında" eylemini gösteren ekran görüntüsü.](./media/logic-apps-content-type/request-trigger.png)
 

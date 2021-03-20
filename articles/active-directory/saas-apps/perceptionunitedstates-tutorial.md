@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
 ms.openlocfilehash: 3fc16a869c176074467a0b21880937d7753602b2
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92515534"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-perception-united-states-non-ultipro"></a>Öğretici: Perception Birleşik Devletler Azure Active Directory tümleştirme (UltiPro olmayan)
@@ -67,7 +67,7 @@ Perception Birleşik Devletler (UltiPro olmayan) tümleştirmesini Azure AD 'ye 
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-Bu bölümde, Azure AD çoklu oturum açmayı, **Britta Simon**adlı bir test kullanıcısına bağlı olarak perception Birleşik Devletler (UltiPro olmayan) ile yapılandırıp test edersiniz.
+Bu bölümde, Azure AD çoklu oturum açmayı, **Britta Simon** adlı bir test kullanıcısına bağlı olarak perception Birleşik Devletler (UltiPro olmayan) ile yapılandırıp test edersiniz.
 Çoklu oturum açma için, bir Azure AD kullanıcısı ve Perception Birleşik Devletler (UltiPro olmayan) ile ilgili Kullanıcı arasındaki bağlantı ilişkisinin kurulması gerekir.
 
 Azure AD çoklu oturum açmayı, Perception Birleşik Devletler (non-UltiPro) ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını gerçekleştirmeniz gerekir:
@@ -139,25 +139,25 @@ Azure AD çoklu oturum açmayı, Perception Birleşik Devletler (UltiPro) ile bi
 
     ![Perception Birleşik Devletler (UltiPro olmayan) Kullanıcı](./media/perceptionunitedstates-tutorial/tutorial_perceptionunitedstates_account.png)
 
-    a. **Şirket adı** metin kutusuna **şirketin**adını yazın.
+    a. **Şirket adı** metin kutusuna **şirketin** adını yazın.
     
-    b. **Hesap adı** metin kutusuna **hesabın**adını yazın.
+    b. **Hesap adı** metin kutusuna **hesabın** adını yazın.
 
-    c. **Varsayılan Reply-To e-posta** metin kutusuna geçerli **e-postayı**yazın.
+    c. **Varsayılan Reply-To e-posta** metin kutusuna geçerli **e-postayı** yazın.
 
-    d. **SAML 2,0**olarak **SSO kimlik sağlayıcısını** seçin.
+    d. **SAML 2,0** olarak **SSO kimlik sağlayıcısını** seçin.
 
 4. **SSO yapılandırma** sayfasında, aşağıdaki adımları uygulayın:
 
     ![Perception Birleşik Devletler (UltiPro olmayan) SSOConfig](./media/perceptionunitedstates-tutorial/tutorial_perceptionunitedstates_ssoconfig.png)
 
-    a. **SAML NameID türünü** **e-posta**olarak seçin.
+    a. **SAML NameID türünü** **e-posta** olarak seçin.
 
-    b. **SSO yapılandırma adı** metin kutusuna **yapılandırmanızın**adını yazın.
+    b. **SSO yapılandırma adı** metin kutusuna **yapılandırmanızın** adını yazın.
     
-    c. **Kimlik sağlayıcısı adı** metin kutusunda, Azure Portal KOPYALADıĞıNıZ **Azure AD tanımlayıcısının**değerini yapıştırın. 
+    c. **Kimlik sağlayıcısı adı** metin kutusunda, Azure Portal KOPYALADıĞıNıZ **Azure AD tanımlayıcısının** değerini yapıştırın. 
 
-    d. **SAML etki alanı metin**kutusunda, gibi etki alanını girin @contoso.com .
+    d. **SAML etki alanı metin** kutusunda, gibi etki alanını girin @contoso.com .
 
     e. **Meta VERI XML** dosyasını karşıya yüklemek Için **yeniden yükle** 'ye tıklayın.
 
@@ -179,7 +179,7 @@ Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı ol
 
     ![Kullanıcı iletişim kutusu](common/user-properties.png)
 
-    a. **Ad** alanına **Brittasıon**girin.
+    a. **Ad** alanına **Brittasıon** girin.
   
     b. **Kullanıcı adı** alanına yazın brittasimon@yourcompanydomain.extension . Örneğin, BrittaSimon@contoso.com
 

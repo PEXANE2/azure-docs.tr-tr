@@ -6,24 +6,24 @@ ms.topic: reference
 ms.date: 1/16/2020
 ms.author: jejarry
 ms.openlocfilehash: 4682eee93b5ff9f01e65611e8d5e0920930776a5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86257242"
 ---
 # <a name="sfctl-mesh"></a>sfctl mesh
 Service Fabric kafes uygulamalarını silin ve yönetin.
 
 ## <a name="subgroups"></a>Alt
-|Atama|Açıklama|
+|Atama|Description|
 | --- | --- |
 | [uygulamanızda](service-fabric-sfctl-mesh-app.md) | Uygulama kaynaklarını alın ve silin. |
 | [kod-paket-günlük](service-fabric-sfctl-mesh-code-package-log.md) | Verilen hizmet çoğaltması için belirtilen kod paketinin kapsayıcısına ait günlükleri al. |
 | [dağıtmak](service-fabric-sfctl-mesh-deployment.md) | Service Fabric kafes kaynakları oluşturun. |
 | [geçidinde](service-fabric-sfctl-mesh-gateway.md) | Ağ Geçidi kaynaklarını alın ve silin. |
-| [Network](service-fabric-sfctl-mesh-network.md) | Kafes ağ kaynaklarını alın ve silin. |
-| [gizlilikle](service-fabric-sfctl-mesh-secret.md) | Ağ gizli anahtarı kaynaklarını alın ve silin. |
+| [network](service-fabric-sfctl-mesh-network.md) | Kafes ağ kaynaklarını alın ve silin. |
+| [gizli dizi](service-fabric-sfctl-mesh-secret.md) | Ağ gizli anahtarı kaynaklarını alın ve silin. |
 | [secretvalue](service-fabric-sfctl-mesh-secretvalue.md) | Ağ secretvalue kaynaklarını alın ve silin. |
 | [hizmetle](service-fabric-sfctl-mesh-service.md) | Hizmet Ayrıntıları ve uygulama kaynağının listeleme hizmetleri alın. |
 | [hizmet-çoğaltma](service-fabric-sfctl-mesh-service-replica.md) | Bir uygulama kaynağında belirli bir hizmetin çoğaltma ayrıntılarını ve liste çoğaltmalarını alma. |

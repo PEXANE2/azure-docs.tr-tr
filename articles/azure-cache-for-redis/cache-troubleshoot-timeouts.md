@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 10/18/2019
 ms.openlocfilehash: bf8b20dadd2fcd78657aa6877e796b645332dd94
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88213462"
 ---
 # <a name="troubleshoot-azure-cache-for-redis-timeouts"></a>Redis için Azure Cache zaman aşımı sorunlarını giderme
@@ -109,7 +109,7 @@ Olası temel nedenleri araştırmak için aşağıdaki adımları kullanabilirsi
       retryTimeoutInMilliseconds="3000" />
     ```
 
-1. ' İ izleyerek redo Server için Azure önbelleğindeki bellek kullanımını denetleyin [monitoring](cache-how-to-monitor.md#available-metrics-and-reporting-intervals) `Used Memory RSS` `Used Memory` . Çıkarma ilkesi mevcutsa redin, önbellek boyutuna ulaştığında anahtarları çıkarma işlemi başlatır `Used_Memory` . İdeal olarak, `Used Memory RSS` şundan yalnızca biraz daha yüksek olmalıdır `Used memory` . Büyük bir fark, bellek parçalanması (iç veya dış) anlamına gelir. `Used Memory RSS`Öğesinden daha az olduğunda `Used Memory` , önbellek belleğinin bir kısmının işletim sistemi tarafından değiştirilmiş olması anlamına gelir. Bu değiştirme gerçekleşirse bazı önemli gecikme süreleri bekleyebilir. Redin 'in, ayırmaların bellek sayfalarına eşlenme üzerinde denetimi olmadığından, yüksek `Used Memory RSS` genellikle bellek kullanımında ani bir artış elde edilir. Redsıs sunucusu belleği serbest bıraktığı zaman ayırıcı belleği alır, ancak bu bellek sisteme geri dönüş gösterebilir veya olmayabilir. `Used Memory`İşletim sistemi tarafından bildirilen değer ve bellek tüketimi arasında bir tutarsızlık olabilir. Bellek, Redsıs tarafından kullanılmış, ancak sisteme geri verilmeyebilir. Bellek sorunlarını azaltmaya yardımcı olmak için aşağıdaki adımları gerçekleştirebilirsiniz:
+1. ' İ izleyerek redo Server için Azure önbelleğindeki bellek kullanımını denetleyin [](cache-how-to-monitor.md#available-metrics-and-reporting-intervals) `Used Memory RSS` `Used Memory` . Çıkarma ilkesi mevcutsa redin, önbellek boyutuna ulaştığında anahtarları çıkarma işlemi başlatır `Used_Memory` . İdeal olarak, `Used Memory RSS` şundan yalnızca biraz daha yüksek olmalıdır `Used memory` . Büyük bir fark, bellek parçalanması (iç veya dış) anlamına gelir. `Used Memory RSS`Öğesinden daha az olduğunda `Used Memory` , önbellek belleğinin bir kısmının işletim sistemi tarafından değiştirilmiş olması anlamına gelir. Bu değiştirme gerçekleşirse bazı önemli gecikme süreleri bekleyebilir. Redin 'in, ayırmaların bellek sayfalarına eşlenme üzerinde denetimi olmadığından, yüksek `Used Memory RSS` genellikle bellek kullanımında ani bir artış elde edilir. Redsıs sunucusu belleği serbest bıraktığı zaman ayırıcı belleği alır, ancak bu bellek sisteme geri dönüş gösterebilir veya olmayabilir. `Used Memory`İşletim sistemi tarafından bildirilen değer ve bellek tüketimi arasında bir tutarsızlık olabilir. Bellek, Redsıs tarafından kullanılmış, ancak sisteme geri verilmeyebilir. Bellek sorunlarını azaltmaya yardımcı olmak için aşağıdaki adımları gerçekleştirebilirsiniz:
 
    - Sistemdeki bellek sınırlamalarıyla çalışmaya devam edebilmeniz için önbelleği daha büyük bir boyuta yükseltin.
    - Eski değerlerin önceden çıkarılabilmesi için anahtarların süre sonu zamanlarını ayarlayın.

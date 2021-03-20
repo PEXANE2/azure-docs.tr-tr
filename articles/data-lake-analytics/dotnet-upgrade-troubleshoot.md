@@ -6,10 +6,10 @@ ms.service: data-lake-analytics
 ms.topic: troubleshooting
 ms.date: 10/11/2019
 ms.openlocfilehash: ab03ea8a88187289f5dce55f8a396a9d51346a3f
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92217686"
 ---
 # <a name="azure-data-lake-analytics-is-upgrading-to-the-net-framework-v472"></a>Azure Data Lake Analytics .NET Framework v 4.7.2 sürümüne yükseltiyor
@@ -61,7 +61,7 @@ Denetleyicinin tanımlanmasının olası en yaygın geri uyumsuzluklarını (Bu 
   - Önerilen eylem: TaskFactory. FromAsync ' nin doğru doğru döndürdüğünden emin olun
 
 - DataObject. GetData artık verileri UTF-8 olarak alıyor
-  - .NET Framework 4 ' ü hedefleyen veya .NET Framework 4.5.1 veya önceki sürümlerde çalışan uygulamalar için DataObject. GetData HTML biçimli verileri bir ASCII dizesi olarak alır. Sonuç olarak, ASCII olmayan karakterler (ASCII kodları 0x7F 'den büyük olan karakterler) iki rastgele karakterle temsil edilir. #N # #N # .NET Framework 4,5 veya üstünü hedefleyen ve .NET Framework 4.5.2 üzerinde çalışan uygulamalar Için, `DataObject.GetData` HTML biçimli verileri, 0x7F 'den büyük karakterleri temsil eden UTF-8 olarak alır.
+  - .NET Framework 4 ' ü hedefleyen veya .NET Framework 4.5.1 veya önceki sürümlerde çalışan uygulamalar için DataObject. GetData HTML biçimli verileri bir ASCII dizesi olarak alır. Sonuç olarak, ASCII olmayan karakterler (ASCII kodları 0x7F 'den büyük olan karakterler) iki rastgele karakterle temsil edilir. .NET Framework 4,5 veya üstünü hedefleyen ve .NET Framework 4.5.2 üzerinde çalışan #N # #N#For uygulamalar, bir `DataObject.GetData` 0x7F değerinden büyük karakterleri temsil eden UTF-8 olarak HTML biçimli verileri alır.
   - Etkilenen kitaplıklar: GLO
   - Önerilen eylem: alınan verilerin istediğiniz biçimde olduğundan emin olun
 

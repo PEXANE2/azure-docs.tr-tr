@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 04/03/2019
 ms.author: jeedes
 ms.openlocfilehash: 13f8f1067ce7c9fe55160400d20ec0b20788c17b
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92515296"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-procore-sso"></a>Öğretici: Procore SSO ile tümleştirme Azure Active Directory
@@ -61,13 +61,13 @@ Procore SSO 'nun Azure AD 'ye tümleştirilmesini yapılandırmak için, Galerid
 
     ![Yeni uygulama düğmesi](common/add-new-app.png)
 
-4. Arama kutusuna **Procore SSO**yazın, sonuç panelinden **Procore SSO** ' yı seçin ve ardından **Ekle** düğmesine tıklayarak uygulamayı ekleyin.
+4. Arama kutusuna **Procore SSO** yazın, sonuç panelinden **Procore SSO** ' yı seçin ve ardından **Ekle** düğmesine tıklayarak uygulamayı ekleyin.
 
     ![Sonuç listesinde Procore SSO 'SU](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-Bu bölümde, Azure AD çoklu oturum açmayı, **Britta Simon**adlı bir test kullanıcısına dayanarak PROCORE SSO 'su ile yapılandırıp test edersiniz.
+Bu bölümde, Azure AD çoklu oturum açmayı, **Britta Simon** adlı bir test kullanıcısına dayanarak PROCORE SSO 'su ile yapılandırıp test edersiniz.
 Çoklu oturum açma için, bir Azure AD kullanıcısı ve Procore SSO 'daki ilgili Kullanıcı arasındaki bağlantı ilişkisinin oluşturulması gerekir.
 
 Azure AD çoklu oturum açmayı Procore SSO 'SU ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını gerçekleştirmeniz gerekir:
@@ -131,7 +131,7 @@ Azure AD çoklu oturum açmayı Procore SSO ile yapılandırmak için aşağıda
 
     b. **Hedef URL 'de SAML oturum açma URL 'si** kutusunda, Azure Portal kopyaladığınız **oturum açma URL 'si** değerini yapıştırın.
 
-    c. Bundan sonra yukarıdaki Azure portal indirilen **Federasyon meta VERI XML** 'sini açın ve bu sertifikayı **X509Certificate**adlı etikete kopyalayın. Kopyalanmış değeri **Çoklu oturum açma x509 sertifikası** kutusuna yapıştırın.
+    c. Bundan sonra yukarıdaki Azure portal indirilen **Federasyon meta VERI XML** 'sini açın ve bu sertifikayı **X509Certificate** adlı etikete kopyalayın. Kopyalanmış değeri **Çoklu oturum açma x509 sertifikası** kutusuna yapıştırın.
 
 4. **Değişiklikleri Kaydet**’e tıklayın.
 
@@ -153,7 +153,7 @@ Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı ol
 
     ![Kullanıcı iletişim kutusu](common/user-properties.png)
 
-    a. **Ad** alanına **Brittasıon**girin.
+    a. **Ad** alanına **Brittasıon** girin.
   
     b. **Kullanıcı adı** alanına yazın `brittasimon@yourcompanydomain.extension` . Örneğin, BrittaSimon@contoso.com
 
@@ -201,9 +201,9 @@ Procore SSO tarafında bir Procore test kullanıcısı oluşturmak için lütfen
 
     ![Ekran görüntüsü, Kullanıcı bilgilerini girebileceğiniz Boylan oluşturmaya bir kişi ekleme hakkında bilgi gösterir.](./media/procoresso-tutorial/Procore_user_add.png)
 
-    a. **Ilk ad** metin kutusuna kullanıcının Ilk adını **Britta**yazın.
+    a. **Ilk ad** metin kutusuna kullanıcının Ilk adını **Britta** yazın.
 
-    b. **Soyadı** metin kutusuna kullanıcının soyadı **Simon**gibi yazın.
+    b. **Soyadı** metin kutusuna kullanıcının soyadı **Simon** gibi yazın.
 
     c. **E-posta adresi** metin kutusuna, gibi kullanıcının e-posta adresini yazın BrittaSimon@contoso.com .
 

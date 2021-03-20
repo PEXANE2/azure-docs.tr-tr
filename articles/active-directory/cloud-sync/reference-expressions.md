@@ -12,10 +12,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 869d60d4ccb3bae58924fe4221f83b1b0125ae04
-ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/20/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98614025"
 ---
 # <a name="writing-expressions-for-attribute-mappings-in-azure-active-directory"></a>Azure Active Directory öznitelik eşlemeleri için ifadeler yazma
@@ -383,7 +383,7 @@ Birincil e-posta adresini döndürür.
 CStr () ifadesinin ayrıştırmak için başarılı olup olmadığını belirlemekte kullanılır.
 
 ---
-### <a name="join"></a>Birleştir
+### <a name="join"></a>Katılın
 **Çalışmayacaktır**<br> JOIN (separator, source1, SOURCE2,...)
 
 **Açıklama:**<br> JOIN (), birden çok **kaynak** dize değerini tek bir dizeye birleştirebildiğinden ve her bir değer bir **ayırıcı** dizeyle ayrılabilmesi dışında Append () ile benzerdir.

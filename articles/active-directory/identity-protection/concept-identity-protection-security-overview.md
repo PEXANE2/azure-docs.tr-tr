@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 95c589289d77597be2550673944c8fa21902e0fb
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93098476"
 ---
 # <a name="azure-active-directory-identity-protection---security-overview"></a>Azure Active Directory Kimlik Koruması - Güvenliğe genel bakış
@@ -45,7 +45,7 @@ Bu grafik, seçilen dönemde algılanan riskli oturum açma işlemlerinin sayıs
 
 ' Yüksek riskli kullanıcılar ' kutucuğunda, kimlik güvenliğinin en son olasılığı yüksek olan kullanıcı sayısı gösterilir. Bunlar, araştırma için bir üst öncelik olmalıdır. ' Yüksek riskli kullanıcılar ' kutucuğuna tıkladığınızda ' riskli kullanıcılar ' raporunun yalnızca risk düzeyine sahip kullanıcıları gösteren filtrelenmiş bir görünümüne yeniden yönlendirilir. Bu raporu kullanarak daha fazla bilgi alabilir ve parolayı sıfırlama ile bu kullanıcıları düzeltebilirsiniz.
 
-:::image type="content" source="./media/concept-identity-protection-security-overview/02.png" alt-text="Azure portal güvenliğine genel bakış ekran görüntüsü. Çubuk grafikler zaman içinde risk sayısını gösterir. Kutucuklar, kullanıcılar ve oturum açmalar hakkındaki bilgileri özetler." border="false":::
+:::image type="content" source="./media/concept-identity-protection-security-overview/02.png" alt-text="Yüksek riskli ve orta riskli kullanıcılara ve diğer risk faktörlerine yönelik kutucuklar ile Azure portal güvenliğe genel bakış 'ın ekran görüntüsü." border="false":::
 
 ### <a name="medium-risk-users"></a>Orta riskli kullanıcılar
 ' Orta riskli kullanıcılar ' kutucuğu, en son kullanıcı sayısını orta düzeyde kimlik güvenliğinin aşılmasına neden gösterir. ' Orta riskli kullanıcılar ' kutucuğuna tıklama, yalnızca risk düzeyine sahip kullanıcıları gösteren ' riskli kullanıcılar ' raporunun filtrelenmiş görünümüne yönlendirilir. Bu raporu kullanarak bu kullanıcıları daha fazla araştırıp düzeltebilirsiniz.

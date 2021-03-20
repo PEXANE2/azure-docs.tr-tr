@@ -4,17 +4,17 @@ description: Temel, standart ve Premium hizmet katmanlarında (SKU 'Lar) Azure C
 ms.topic: article
 ms.date: 05/18/2020
 ms.openlocfilehash: b55fc16dcd6dcb544ed4597ce4bdc6ba17b52646
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/08/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98015677"
 ---
 # <a name="azure-container-registry-service-tiers"></a>Azure Container Registry hizmet katmanları
 
 Azure Container Registry birden çok hizmet katmanında (STB olarak da bilinir) kullanılabilir. Bu katmanlar, Azure 'daki özel Docker kayıt defterinizin kapasitesini ve kullanım düzenlerini hizalamak için öngörülebilir fiyatlandırma ve çeşitli seçenekler sağlar.
 
-| Katman | Açıklama |
+| Katman | Description |
 | --- | ----------- |
 | **Temel** | Azure Container Registry hakkında bilgi edinen geliştiriciler için düşük maliyetli bir giriş noktası. Temel kayıt defterleri standart ve Premium ile aynı programlı yeteneklere sahiptir (Azure Active Directory [kimlik doğrulaması tümleştirmesi](container-registry-authentication.md#individual-login-with-azure-ad), [görüntü silme][container-registry-delete]ve [Web kancaları][container-registry-webhook]gibi). Ancak, dahil edilen depolama ve görüntü üretimi en düşük kullanım senaryoları için uygundur. |
 | **Standart** | Standart kayıt defterleri, artırılmış dahil edilen depolama ve görüntü işleme özelliklerine sahip temel ile aynı özellikleri sunar. Standart kayıt defterleri, çoğu üretim senaryosu gereksinimlerini karşılayabilir. |
@@ -34,7 +34,7 @@ Bir kayıt defterinin hizmet katmanını Azure CLı ile veya Azure portal deği�
 
 Hizmet katmanları arasında hareket ettiğinizde kayıt defteri işlemlerinde bir kayıt defteri kapalı kalma süresi veya etkisi yoktur.
 
-### <a name="azure-cli"></a>Azure CLI
+### <a name="azure-cli"></a>Azure CLI’si
 
 Azure CLı 'deki hizmet katmanları arasında gezinmek için [az ACR Update][az-acr-update] komutunu kullanın. Örneğin, Premium 'a geçmek için:
 
@@ -42,7 +42,7 @@ Azure CLı 'deki hizmet katmanları arasında gezinmek için [az ACR Update][az-
 az acr update --name myregistry --sku Premium
 ```
 
-### <a name="azure-portal"></a>Azure portal
+### <a name="azure-portal"></a>Azure portalı
 
 Azure portal kapsayıcı kayıt defterine **genel bakış** ' da **Güncelleştir**' i seçin ve ardından SKU açılır listesinden yeni bir **SKU** seçin.
 

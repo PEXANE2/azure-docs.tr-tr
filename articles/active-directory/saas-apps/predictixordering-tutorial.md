@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/26/2019
 ms.author: jeedes
 ms.openlocfilehash: f48f7cf9507afae31e3c36aef517aab7b7d77ccf
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92515381"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-predictix-ordering"></a>Öğretici: Predictıx sıralaması ile tümleştirme Azure Active Directory
@@ -60,7 +60,7 @@ Tahmine TIX sıralamasına yönelik Azure AD ile tümleştirmeyi ayarlamak için
 
     ![Yeni uygulama seçin](common/add-new-app.png)
 
-4. Arama kutusuna **Predictıx sıralaması**girin. Arama sonuçlarında **Predictıx sıralamasını** seçin ve ardından **Ekle**' yi seçin.
+4. Arama kutusuna **Predictıx sıralaması** girin. Arama sonuçlarında **Predictıx sıralamasını** seçin ve ardından **Ekle**' yi seçin.
 
      ![Arama sonuçları](common/search-new-app.png)
 
@@ -148,9 +148,9 @@ Bu bölümde, Azure portal Britta Simon adlı bir test kullanıcısı oluşturac
 
     ![Kullanıcı iletişim kutusu](common/user-properties.png)
 
-    1. **Ad** kutusuna **Brittasıon**yazın.
+    1. **Ad** kutusuna **Brittasıon** yazın.
   
-    1. **Kullanıcı adı** kutusuna **BrittaSimon@ girin \<yourcompanydomain> . \<extension> ** (Örneğin, BrittaSimon@contoso.com .)
+    1. **Kullanıcı adı** kutusuna **BrittaSimon@ girin \<yourcompanydomain> . \<extension>** (Örneğin, BrittaSimon@contoso.com .)
 
     1. **Parolayı göster**' i seçin ve ardından **parola** kutusunda değer ' i yazın.
 

@@ -11,10 +11,10 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.date: 03/12/2020
 ms.openlocfilehash: 67b398194d9094cd99fccaa85ed0df3be362ce2b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91618038"
 ---
 # <a name="enabling-service-aided-subnet-configuration-for-azure-sql-managed-instance"></a>Azure SQL yönetilen örneği için hizmet destekli alt ağ yapılandırması etkinleştiriliyor
@@ -22,7 +22,7 @@ ms.locfileid: "91618038"
 
 Hizmet destekli alt ağ yapılandırması, yönetilen örnekleri barındıran alt ağlar için otomatik ağ yapılandırma yönetimi sağlar. Hizmet destekli alt ağ yapılandırması kullanıcısı, yönetilen örnek, SLA 'yı karşılamak için yönetim trafiğinin kesintisiz akışını güvence altına almak için bir sorumluluk sunarken, veri erişiminin (TDS trafik akışları) tam denetiminde kalır.
 
-Otomatik olarak yapılandırılan ağ güvenlik grupları ve yol tablosu kuralları müşteri tarafından görülebilir ve _Microsoft. SQL-managedInstances_UseOnly__ önekiyle birlikte açıklanmalıdır.
+Otomatik olarak yapılandırılan ağ güvenlik grupları ve yol tablosu kuralları müşteri tarafından görülebilir ve _Microsoft. SQL-managedInstances_UseOnly_ _ önekiyle birlikte açıklanmalıdır.
 
 Kaynak sağlayıcısı için [alt ağ temsilcisini](../../virtual-network/subnet-delegation-overview.md) etkinleştirdikten sonra hizmet destekli yapılandırma otomatik olarak etkinleştirilir `Microsoft.Sql/managedInstances` .
 

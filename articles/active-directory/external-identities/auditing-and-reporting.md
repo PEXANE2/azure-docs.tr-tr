@@ -13,21 +13,21 @@ ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a805f643e5f93270fe4721f527073baa9a1e4c8d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87910275"
 ---
 # <a name="auditing-and-reporting-a-b2b-collaboration-user"></a>B2B işbirliği kullanıcısını denetleme ve raporlama
 Konuk kullanıcılar ile, üye kullanıcılarla aynı denetim özelliklerine sahip olursunuz. 
 
 ## <a name="access-reviews"></a>Erişim gözden geçirmeleri
-Erişim gözden geçirmeleri kullanarak, konuk kullanıcıların kaynaklarınıza erişmeye devam edilip edilmeyeceğini düzenli aralıklarla doğrulayabilirsiniz. **Erişim gözden geçirmeleri** özelliği, **dış kimlikler** **Azure Active Directory**  >  **erişim gözden geçirmeleri**altında Azure Active Directory kullanılabilir. Ayrıca, Azure portal **tüm hizmetlerden** "erişim gözden geçirmeleri" için arama yapabilirsiniz. Erişim incelemelerini nasıl kullanacağınızı öğrenmek için bkz. [Azure AD erişim gözden geçirmeleri ile konuk erişimini yönetme](../governance/manage-guest-access-with-access-reviews.md).
+Erişim gözden geçirmeleri kullanarak, konuk kullanıcıların kaynaklarınıza erişmeye devam edilip edilmeyeceğini düzenli aralıklarla doğrulayabilirsiniz. **Erişim gözden geçirmeleri** özelliği, **dış kimlikler**   >  **erişim gözden geçirmeleri** altında Azure Active Directory kullanılabilir. Ayrıca, Azure portal **tüm hizmetlerden** "erişim gözden geçirmeleri" için arama yapabilirsiniz. Erişim incelemelerini nasıl kullanacağınızı öğrenmek için bkz. [Azure AD erişim gözden geçirmeleri ile konuk erişimini yönetme](../governance/manage-guest-access-with-access-reviews.md).
 
 ## <a name="audit-logs"></a>Denetim günlükleri
 
-Azure AD denetim günlükleri, Konuk kullanıcılar tarafından başlatılan etkinlikler dahil olmak üzere sistem ve Kullanıcı etkinliklerinin kayıtlarını sağlar. Denetim günlüklerine erişmek için, **Azure Active Directory**' de, **Izleme**altında, **Denetim günlükleri**' ni seçin. Davetli Sam oogle daveti ve kullanım geçmişine bir örnek aşağıda verilmiştir:
+Azure AD denetim günlükleri, Konuk kullanıcılar tarafından başlatılan etkinlikler dahil olmak üzere sistem ve Kullanıcı etkinliklerinin kayıtlarını sağlar. Denetim günlüklerine erişmek için, **Azure Active Directory**' de, **Izleme** altında, **Denetim günlükleri**' ni seçin. Davetli Sam oogle daveti ve kullanım geçmişine bir örnek aşağıda verilmiştir:
 
 ![Denetim günlüğü çıkışını gösteren ve örnek ekran görüntüsü](./media/auditing-and-reporting/audit-log.png)
 

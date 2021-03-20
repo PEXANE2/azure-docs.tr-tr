@@ -10,10 +10,10 @@ ms.topic: quickstart
 ms.date: 10/01/2020
 ms.custom: devx-track-dotnet
 ms.openlocfilehash: f228386d8cf0e708080b7f6c5f6cef7258b2eafb
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93099989"
 ---
 # <a name="quickstart-build-a-cassandra-app-with-net-core-and-azure-cosmos-db"></a>Hızlı başlangıç: .NET Core ve Azure Cosmos DB Cassandra uygulaması derleme
@@ -133,13 +133,13 @@ Bu adım isteğe bağlıdır. Kodun veritabanı kaynaklarını nasıl oluşturdu
 
 Bu adımda Azure portalına dönerek bağlantı dizesi bilgilerinizi kopyalayıp uygulamaya ekleyin. Bağlantı dizesi bilgileri, uygulamanızın barındırılan veritabanıyla iletişim kurmasına olanak tanır.
 
-1. [Azure portalında](https://portal.azure.com/)**Bağlantı Dizesi** ’ni seçin.
+1. [Azure portalında](https://portal.azure.com/)**Bağlantı Dizesi**’ni seçin.
 
 1. :::image type="icon" source="./media/create-cassandra-dotnet/copy.png":::Kullanıcı adı değerini kopyalamak için ekranın sağ tarafındaki düğmeyi kullanın.
 
    :::image type="content" source="./media/create-cassandra-dotnet/keys.png" alt-text="Azure portalı, Bağlantı Dizesi sayfasından erişim anahtarını görüntüleme ve kopyalama":::
 
-1. Visual Studio 'da Program.cs dosyasını açın. 
+1. Visual Studio 'da program. cs dosyasını açın. 
 
 1. Portaldan USERNAME değerini 13. satırdaki `<PROVIDE>` üzerine yapıştırın.
 
@@ -159,7 +159,7 @@ Bu adımda Azure portalına dönerek bağlantı dizesi bilgilerinizi kopyalayıp
 
 1. Portala geri dönün ve CONTACT POINT değerini kopyalayın. Portaldan ILETIŞIM noktası değerini `<PROVIDE>` 16. satırdaki üzerine yapıştırın.
 
-    Program.cs satırı 16 ' da şuna benzer görünmelidir 
+    Program 16. cs, şimdi şuna benzer görünmelidir 
 
     `private const string CASSANDRACONTACTPOINT = "quickstart-cassandra-api.cassandra.cosmos.azure.com";`
 
@@ -167,7 +167,7 @@ Bu adımda Azure portalına dönerek bağlantı dizesi bilgilerinizi kopyalayıp
     
 ## <a name="run-the-net-core-app"></a>.NET Core uygulamasını çalıştırma
 
-1. Visual Studio 'da **Araçlar**  >  **NuGet Paket Yöneticisi**  >  **Paket Yöneticisi konsolu** ' nu seçin.
+1. Visual Studio 'da **Araçlar**  >  **NuGet Paket Yöneticisi**  >  **Paket Yöneticisi konsolu**' nu seçin.
 
 2. Komut isteminde .NET Sürücüsü NuGet paketini yüklemek için aşağıdaki komutu kullanın. 
 
@@ -176,13 +176,13 @@ Bu adımda Azure portalına dönerek bağlantı dizesi bilgilerinizi kopyalayıp
     ```
 3. Uygulamayı çalıştırmak için CTRL+F5 tuşlarına basın. Uygulamanız konsol pencerenizde görüntülenir. 
 
-    :::image type="content" source="./media/create-cassandra-dotnet/output.png" alt-text="Azure portalı, Bağlantı Dizesi sayfasından erişim anahtarını görüntüleme ve kopyalama":::
+    :::image type="content" source="./media/create-cassandra-dotnet/output.png" alt-text="Çıktıyı görüntüleme ve doğrulama":::
 
     Programın yürütülmesini durdurup konsol penceresini kapatmak için CTRL + C tuşlarına basın. 
     
-4. Azure portalında bu yeni verileri sorgulamak, değiştirmek ve birlikte çalışmak için **Veri Gezgini** 'ni açın.
+4. Azure portalında bu yeni verileri sorgulamak, değiştirmek ve birlikte çalışmak için **Veri Gezgini**'ni açın.
 
-    :::image type="content" source="./media/create-cassandra-dotnet/data-explorer.png" alt-text="Azure portalı, Bağlantı Dizesi sayfasından erişim anahtarını görüntüleme ve kopyalama":::
+    :::image type="content" source="./media/create-cassandra-dotnet/data-explorer.png" alt-text="Veri Gezgini’nde verileri görüntüleme":::
 
 ## <a name="review-slas-in-the-azure-portal"></a>Azure portalında SLA'ları gözden geçirme
 

@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/12/2020
 ms.author: jeedes
 ms.openlocfilehash: 89911f7b442e301ad192f3778debb74e488c5e40
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92515500"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-planview-enterprise-one"></a>Öğretici: Planview Enterprise One ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
@@ -57,7 +57,7 @@ Planview Enterprise One tümleştirmesini Azure AD ile yapılandırmak için, Ga
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-planview-enterprise-one"></a>Planview Enterprise One için Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-**B. Simon**adlı bir test kullanıcısı kullanarak Azure AD SSO 'yu Planview Enterprise One ile yapılandırın ve test edin. SSO 'nun çalışması için, Planview Enterprise One bir Azure AD kullanıcısı ve ilgili Kullanıcı arasında bağlantı ilişkisi kurmanız gerekir.
+**B. Simon** adlı bir test kullanıcısı kullanarak Azure AD SSO 'yu Planview Enterprise One ile yapılandırın ve test edin. SSO 'nun çalışması için, Planview Enterprise One bir Azure AD kullanıcısı ve ilgili Kullanıcı arasında bağlantı ilişkisi kurmanız gerekir.
 
 Azure AD SSO 'yu Planview Enterprise One ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
 

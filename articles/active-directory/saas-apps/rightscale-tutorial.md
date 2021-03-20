@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/26/2019
 ms.author: jeedes
 ms.openlocfilehash: 013eadedc00dee23a09eff89147406cc14f017ab
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92516598"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-rightscale"></a>Öğretici: RightScale ile tümleştirme Azure Active Directory
@@ -61,13 +61,13 @@ RightScale 'in Azure AD 'ye tümleştirilmesini yapılandırmak için, Galeriden
 
     ![Yeni uygulama düğmesi](common/add-new-app.png)
 
-4. Arama kutusuna **RightScale**yazın, sonuç panelinden **RightScale** ' i seçin ve ardından **Ekle** düğmesine tıklayarak uygulamayı ekleyin.
+4. Arama kutusuna **RightScale** yazın, sonuç panelinden **RightScale** ' i seçin ve ardından **Ekle** düğmesine tıklayarak uygulamayı ekleyin.
 
      ![Sonuçlar listesinde RightScale](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-Bu bölümde, Azure AD çoklu oturum açmayı, **Britta Simon**adlı bir test kullanıcısına göre RightScale ile yapılandırıp test edersiniz.
+Bu bölümde, Azure AD çoklu oturum açmayı, **Britta Simon** adlı bir test kullanıcısına göre RightScale ile yapılandırıp test edersiniz.
 Çoklu oturum açma için, bir Azure AD kullanıcısı ile ilgili Kullanıcı arasındaki bir bağlantı ilişkisinin sağ ölçeğinde oluşturulması gerekir.
 
 Azure AD çoklu oturum açmayı, RightScale ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını gerçekleştirmeniz gerekir:
@@ -129,11 +129,11 @@ Azure AD çoklu oturum açmayı RightScale ile yapılandırmak için aşağıdak
 
     ![Ekran görüntüsü, ayarlardan tek Sign-On seçili olduğunu gösterir.](./media/rightscale-tutorial/tutorial_rightscale_001.png)
 
-3. **SAML kimlik sağlayıcılarınızı**eklemek için **Yeni** düğmesine tıklayın.
+3. **SAML kimlik sağlayıcılarınızı** eklemek için **Yeni** düğmesine tıklayın.
 
     ![Ekran görüntüsü, bir SAML kimlik sağlayıcısı eklemek için seçilen yeni düğmeleri gösterir.](./media/rightscale-tutorial/tutorial_rightscale_002.png)
 
-4. **Görünen ad**metin kutusuna şirketinizin adını girin.
+4. **Görünen ad** metin kutusuna şirketinizin adını girin.
 
     ![Ekran görüntüsünde bir görünen ad girin.](./media/rightscale-tutorial/tutorial_rightscale_003.png)
 
@@ -171,7 +171,7 @@ Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı ol
 
     ![Kullanıcı iletişim kutusu](common/user-properties.png)
 
-    a. **Ad** alanına **Brittasıon**girin.
+    a. **Ad** alanına **Brittasıon** girin.
   
     b. **Kullanıcı adı** alan türü`brittasimon@yourcompanydomain.extension`  
     Örneğin, BrittaSimon@contoso.com

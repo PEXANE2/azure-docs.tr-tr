@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 06/30/2020
 ms.author: victorh
 ms.openlocfilehash: 9184bf7baa85420e067edb4c0aafccb7e6711225
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86512189"
 ---
 # <a name="azure-firewall-rule-processing-logic"></a>Azure Güvenlik Duvarı kural işleme mantığı
@@ -30,7 +30,7 @@ Gelen bağlantı [, öğretici: Azure Güvenlik Duvarı ile gelen trafiği Azure
 
 Bir üst ilkeden devralınan ağ kuralı koleksiyonları, yeni ilkenizin kapsamında tanımlanan ağ kuralı koleksiyonlarının üzerine her zaman öncelik atanır. Aynı mantık, uygulama kuralı koleksiyonları için de geçerlidir. Bununla birlikte, devralma ne olursa olsun, ağ kuralı koleksiyonları her zaman uygulama kuralı koleksiyonlarından önce işlenir.
 
-Varsayılan olarak, ilkeniz ana ilke tehdit zekası modunu devralır. Tehdit bilgileri modinizi ilke ayarları sayfasında farklı bir değere ayarlayarak bunu geçersiz kılabilirsiniz. Yalnızca daha sıkı bir değerle geçersiz kılmak mümkündür. Örneğin, üst ilke *yalnızca uyarı*olarak ayarlandıysa, bu yerel ilkeyi *uyarı ve reddetme*için yapılandırabilirsiniz, ancak kapatamaz.
+Varsayılan olarak, ilkeniz ana ilke tehdit zekası modunu devralır. Tehdit bilgileri modinizi ilke ayarları sayfasında farklı bir değere ayarlayarak bunu geçersiz kılabilirsiniz. Yalnızca daha sıkı bir değerle geçersiz kılmak mümkündür. Örneğin, üst ilke *yalnızca uyarı* olarak ayarlandıysa, bu yerel ilkeyi *uyarı ve reddetme* için yapılandırabilirsiniz, ancak kapatamaz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

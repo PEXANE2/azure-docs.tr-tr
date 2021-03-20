@@ -13,10 +13,10 @@ ms.date: 03/05/2020
 ms.author: hahamil
 ms.custom: aaddev, identityplatformtop40, devx-track-js
 ms.openlocfilehash: 105353598a2af60c407bacf02b4527b2de84e450
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/25/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98756149"
 ---
 # <a name="tutorial-sign-in-users-and-call-the-microsoft-graph-api-from-an-angular-single-page-application"></a>Öğretici: Kullanıcı oturum açma ve angular tek sayfalı uygulamadan Microsoft Graph API 'sini çağırma
@@ -32,7 +32,7 @@ Bu öğreticide:
 > * Microsoft Graph API 'sini çağırmak için kod ekleme
 > * Uygulamayı test etme
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Yerel bir Web sunucusu çalıştırmak için [Node.js](https://nodejs.org/en/download/) .
 * Proje dosyalarını değiştirmek için [Visual Studio Code](https://code.visualstudio.com/download) veya başka bir düzenleyici.
@@ -49,7 +49,7 @@ Bu senaryoda, bir Kullanıcı oturum açtıktan sonra, yetkilendirme üst bilgis
 
 Bu öğretici aşağıdaki kitaplığı kullanır:
 
-|Kitaplık|Açıklama|
+|Kitaplık|Description|
 |---|---|
 |[msal.js](https://github.com/AzureAD/microsoft-authentication-library-for-js)|JavaScript angular sarmalayıcı için Microsoft kimlik doğrulama kitaplığı|
 
@@ -264,14 +264,14 @@ this.authService.acquireTokenSilent(requestObj).then(function (tokenResponse) {
 
 Bu kodda, `scopes` API için erişim belirtecinde döndürülmek istenen kapsamları içerir.
 
-Örneğin:
+Örnek:
 
 * `["user.read"]` Microsoft Graph için
 * `["<Application ID URL>/scope"]` Özel Web API 'Leri için (yani, `api://<Application ID>/access_as_user` )
 
 #### <a name="get-a-user-token-interactively"></a>Etkileşimli olarak kullanıcı belirteci alma
 
-Bazen kullanıcının Microsoft Identity platformu ile etkileşim kurması gerekir. Örneğin:
+Bazen kullanıcının Microsoft Identity platformu ile etkileşim kurması gerekir. Örnek:
 
 * Parolasının süresi sona erdiği için kullanıcıların kimlik bilgilerini yeniden girmesi gerekebilir.
 * Uygulamanız, kullanıcının onaylaması gereken ek kaynak kapsamlarına erişim istiyor.

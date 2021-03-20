@@ -7,10 +7,10 @@ ms.reviewer: jasonh
 ms.topic: how-to
 ms.date: 03/01/2017
 ms.openlocfilehash: 8fb60e62a63bfc4562f19d483dc84c99c37676b0
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92215544"
 ---
 # <a name="run-and-test-u-sql-with-azure-data-lake-u-sql-sdk"></a>Azure Data Lake U-SQL SDK ile U-SQL çalıştırma ve test etme
@@ -132,15 +132,15 @@ U-SQL yerel çalışmasının, yerel depolama hesabı olarak belirtilen bir veri
 
 #### <a name="compile-and-run"></a>Derle ve Çalıştır
 
-**Çalıştır** komutu betiği derlemek ve sonra derlenen sonuçları yürütmek için kullanılır. Komut satırı bağımsız değişkenleri, **derleme** ve **yürütme**özelliklerinden bir birleşimidir.
+**Çalıştır** komutu betiği derlemek ve sonra derlenen sonuçları yürütmek için kullanılır. Komut satırı bağımsız değişkenleri, **derleme** ve **yürütme** özelliklerinden bir birleşimidir.
 
 ```console
 LocalRunHelper run -Script path_to_usql_script.usql [optional_arguments]
 ```
 
-**Çalıştırma**için isteğe bağlı bağımsız değişkenler aşağıda verilmiştir:
+**Çalıştırma** için isteğe bağlı bağımsız değişkenler aşağıda verilmiştir:
 
-|Bağımsız Değişken|Varsayılan değer|Açıklama|
+|Bağımsız Değişken|Varsayılan değer|Description|
 |--------|-------------|-----------|
 |-CodeBehind|Yanlış|Betiğin arkasında. cs kodu bulunur|
 |-CppSDK| |CppSDK dizini|
@@ -156,11 +156,11 @@ LocalRunHelper run -Script path_to_usql_script.usql [optional_arguments]
 |-ScopeCEPTempPath|temp|Akış verileri için kullanılacak geçici yol|
 |-OptFlags| |İyileştirici bayraklarının virgülle ayrılmış listesi|
 
-İşte bir örnek:
+Aşağıda bir örnek verilmiştir:
 
 `LocalRunHelper run -Script d:\test\test1.usql -WorkDir d:\test\bin -CodeBehind -References "d:\asm\ref1.dll;d:\asm\ref2.dll" -UseDatabase testDB –Parallel 5 -Verbose`
 
-**Derleme** ve **yürütmeyi**birleştirmenin yanı sıra, derlenmiş yürütülebilir dosyaları ayrı olarak derleyip çalıştırabilirsiniz.
+**Derleme** ve **yürütmeyi** birleştirmenin yanı sıra, derlenmiş yürütülebilir dosyaları ayrı olarak derleyip çalıştırabilirsiniz.
 
 #### <a name="compile-a-u-sql-script"></a>U-SQL betiği derleme
 
@@ -170,9 +170,9 @@ LocalRunHelper run -Script path_to_usql_script.usql [optional_arguments]
 LocalRunHelper compile -Script path_to_usql_script.usql [optional_arguments]
 ```
 
-**Derleme**için isteğe bağlı bağımsız değişkenler aşağıda verilmiştir:
+**Derleme** için isteğe bağlı bağımsız değişkenler aşağıda verilmiştir:
 
-|Bağımsız Değişken|Açıklama|
+|Bağımsız Değişken|Description|
 |--------|-----------|
 | -CodeBehind [varsayılan değer ' false ']|Betiğin arkasında. cs kodu bulunur|
 | -CppSDK [varsayılan değer ' ']|CppSDK dizini|
@@ -215,9 +215,9 @@ LocalRunHelper compile -Script d:\test\test1.usql -WorkDir d:\test\bin -Referenc
 LocalRunHelper execute -Algebra path_to_compiled_algebra_file [optional_arguments]
 ```
 
-**Yürütme**için isteğe bağlı bağımsız değişkenler aşağıda verilmiştir:
+**Yürütme** için isteğe bağlı bağımsız değişkenler aşağıda verilmiştir:
 
-|Bağımsız Değişken|Varsayılan değer|Açıklama|
+|Bağımsız Değişken|Varsayılan değer|Description|
 |--------|-------------|-----------|
 |-DataRoot | '' |Meta veri yürütme için veri kökü. **LOCALRUN_DATAROOT** ortam değişkenini varsayılan olarak alır.|
 |-MessageOut | '' |Konsolundaki iletileri bir dosyaya döker.|
@@ -330,13 +330,13 @@ LocalRunHelper.exe U-SQL yerel derleme, çalıştırma vb. için programlama ara
 
 Public LocalRunHelper ([System. ıO. TextWriter messageOutput = NULL])
 
-|Parametre|Tür|Açıklama|
+|Parametre|Tür|Description|
 |---------|----|-----------|
 |messageOutput|System. ıO. TextWriter|çıkış iletileri için, konsolu kullanmak üzere null olarak ayarlayın|
 
 ### <a name="properties"></a>Özellikler
 
-|Özellik|Tür|Açıklama|
+|Özellik|Tür|Description|
 |--------|----|-----------|
 |AlgebraPath|string|Algedeniz dosyasının yolu (algeköşeli dosyası, derleme sonuçlarından biridir)|
 |CodeBehindReferences|string|Betik başvuruların arkasında ek kod içeriyorsa, '; ' ile ayrılmış yolları belirtin|
@@ -374,7 +374,7 @@ Public LocalRunHelper ([System. ıO. TextWriter messageOutput = NULL])
 
 E_CSC_SYSTEM_INTERNAL: Iç hata! ' ScopeEngineManaged.dll ' dosyası veya bütünleştirilmiş kodu veya bağımlılıklarından biri yüklenemedi. Belirtilen modül bulunamadı.
 
-Lütfen aşağıdakileri denetleyin:
+Şu noktaları denetleyin:
 
 - X64 ortamınıza sahip olduğunuzdan emin olun. Yapı hedef platformu ve test ortamı x64 olmalıdır, yukarıdaki **1. Adım: C# birim testi projesi ve yapılandırma oluşturma** bölümüne bakın.
 - NugetPackage\build\runtime\ altındaki tüm bağımlılık dosyalarını proje çalışma dizinine kopyaladığınızdan emin olun.

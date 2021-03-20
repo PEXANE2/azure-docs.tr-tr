@@ -8,15 +8,15 @@ ms.date: 09/03/2020
 ms.author: cherylmc
 ms.topic: how-to
 ms.openlocfilehash: 48e0998719ea19c0b360b50d8c9171d2b448ad19
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89440771"
 ---
 # <a name="delete-a-virtual-network-gateway-using-powershell"></a>PowerShell kullanarak bir sanal ağ geçidini silme
 > [!div class="op_single_selector"]
-> * [Azure portalındaki](vpn-gateway-delete-vnet-gateway-portal.md)
+> * [Azure portalı](vpn-gateway-delete-vnet-gateway-portal.md)
 > * [PowerShell](vpn-gateway-delete-vnet-gateway-powershell.md)
 > * [PowerShell (klasik)](vpn-gateway-delete-vnet-gateway-classic-powershell.md)
 >

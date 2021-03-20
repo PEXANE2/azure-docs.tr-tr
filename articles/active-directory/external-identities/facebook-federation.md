@@ -13,10 +13,10 @@ ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d68f83bd042af6612b91807f2adeed54d24bfe01
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "101648630"
 ---
 # <a name="add-facebook-as-an-identity-provider-for-external-identities"></a>Facebook 'ı dış kimlikler için kimlik sağlayıcısı olarak ekleyin
@@ -96,7 +96,7 @@ Facebook Federasyonu kurulumunu silebilirsiniz. Bunu yaparsanız, Facebook hesap
 
 ### <a name="to-delete-facebook-federation-by-using-powershell"></a>PowerShell kullanarak Facebook Federasyonu silmek için: 
 1. Graph modülü için Azure AD PowerShell 'in en son sürümünü ([Azureadpreview](https://www.powershellgallery.com/packages/AzureADPreview)) yükler.
-2. Şu komutu çalıştırın: `Connect-AzureAD`.  
+2. `Connect-AzureAD` öğesini çalıştırın.  
 4. Oturum açma isteminde, yönetilen genel yönetici hesabıyla oturum açın.  
 5. Aşağıdaki komutu girin:
 

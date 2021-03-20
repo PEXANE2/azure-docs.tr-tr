@@ -5,10 +5,10 @@ services: container-service
 ms.topic: conceptual
 ms.date: 08/24/2020
 ms.openlocfilehash: 781a1ffebb40b0cce9f18699d308db90633e8626
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89490114"
 ---
 # <a name="azure-kubernetes-service-aks-node-auto-repair"></a>Azure Kubernetes hizmeti (AKS) düğümü otomatik onarma
@@ -31,7 +31,7 @@ kubectl get nodes
 ## <a name="how-automatic-repair-works"></a>Otomatik onarımın nasıl çalıştığı
 
 > [!Note]
-> AKS, Kullanıcı hesabı **aks-düzeltici**ile onarım işlemlerini başlatır.
+> AKS, Kullanıcı hesabı **aks-düzeltici** ile onarım işlemlerini başlatır.
 
 Bir düğüm yukarıdaki kurallara göre uygun değilse ve 10 ardışık dakika boyunca sağlıksız kalırsa, aşağıdaki eylemler alınır.
 

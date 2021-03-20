@@ -8,10 +8,10 @@ ms.topic: troubleshooting
 ms.date: 07/15/2020
 ms.author: chrande
 ms.openlocfilehash: de39aee73a6f4b422af4524d3302f8858f8b060b
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101692248"
 ---
 # <a name="troubleshoot-common-issues-in-azure-cosmos-dbs-api-for-mongodb"></a>MongoDB için Azure Cosmos DB API 'sindeki yaygın sorunları giderme
@@ -27,14 +27,14 @@ Aşağıdaki makalede, MongoDB için Azure Cosmos DB API kullanılarak gerçekle
 | Kod       | Hata                | Açıklama  | Çözüm  |
 |------------|----------------------|--------------|-----------|
 | 2 | BadValue | Bunun yaygın bir nedeni, belirtilen öğeye göre sipariş değerine karşılık gelen dizin yolu dışlanması veya sıralama ölçütü sorgusunun hizmet verebilecek ilgili bileşik dizini olmamasıdır. Sorgu dizine alınmamış bir alana göre sıralama istiyor. | Denenen sıralama sorgusu için eşleşen bir dizin (veya bileşik dizin) oluşturun. |
-| 2 | İşlem etkin değil | Çok belgeli işlem, sabit 5 saniyelik süre sınırını geçti. | Çok belgeli işlemi yeniden deneyin veya çok belgeli işlem içindeki işlemlerin kapsamını 5 saniyelik bir süre içinde tamamlanmasını sağlamak için sınırlayın. |
+| 2 | İşlem etkin değil | Çok belgeli işlem 5 saniyelik sabit süre sınırını aştı. | Çok belgeli işlemi yeniden deneyin veya çok belgeli işlemin içinde yer alan işlemlerin kapsamını sınırlayarak 5 saniyelik zaman sınırında tamamlanmasını sağlayın. |
 | 13 | Yetkisiz | İsteğin tamamlanması için gerekli izinler yok. | Doğru anahtarları kullandığınızdan emin olun.  |
 | 26 | NamespaceNotFound | Sorguda başvurulan veritabanı veya koleksiyon bulunamadı. | Veritabanı/Koleksiyon adınızın sorgunuzdakiyle bire bir eşleştiğinden emin olun.|
 | 50 | ExceededTimeLimit | İstek 60 saniyelik yürütme zaman aşımı süresini aştı. |  Bu hatanın birçok nedeni olabilir. Nedenlerinden biri geçerli ayrılmış istek birimi kapasitesinin isteği tamamlamak için yeterli olmamasıdır. Bu durum söz konusu koleksiyonun veya veritabanının istek birimlerini artırarak çözülebilir. Diğer durumlarda, büyük bir istek daha küçük isteklere bölünerek bu hatadan kaçınılabilir. Bu hatayı alan yazma işlemini yeniden denemek, yinelenen yazma işlemine neden olabilir. <br><br>RU’ları etkilemeden büyük miktarda veri silmeye çalışıyorsanız: <br>- TTL'yi kullanmayı düşünün (Zaman Damgası temelinde): [MongoDB için Azure Cosmos DB API'siyle verilerde süre sonu](mongodb-time-to-live.md) <br>- Silme işlemini gerçekleştirmek için İmleç/Toplu İş boyutunu kullanın. Tek seferde tek bir belge getirip bir döngü aracılığıyla bunu silebilirsiniz. Bu, üretim uygulamanızı etkilemeden verileri yavaş bir şekilde silmenize yardımcı olur.|
 | 61 | ShardKeyNotFound | İsteğinizdeki belge, koleksiyonun parça anahtarını (Azure Cosmos DB bölüm anahtarı) içermiyor. | Koleksiyonun parça anahtarının istekte kullanıldığından emin olun.|
 | 66 | ImmutableField | İstek, sabit bir alanı değiştirmeye çalışıyor | "_id" alanları sabittir. İsteğinizin bu alanı veya parça anahtarı alanını güncelleştirmeye çalışmadığından emin olun. |
 | 67 | CannotCreateIndex | Dizin oluşturma isteği tamamlanamıyor. | Bir kapsayıcıda en fazla 500 tek alan dizini oluşturulabilir. Bileşik dizinde en fazla sekiz alan bulunabilir (bileşik dizinler 3.6+ sürümünde desteklenir). |
-| 112 | WriteConflict | Çoklu belge işlemi çakışan çok belgeli bir işlem nedeniyle başarısız oldu | Çoklu belge işlemini başarılı olana kadar yeniden deneyin. |
+| 112 | WriteConflict | Çok belgeli işlem çakışan başka bir çok belgeli işlem nedeniyle başarısız oldu | Çok belgeli işlemi başarılı olana kadar yeniden deneyin. |
 | 115 | CommandNotSupported | Denenen istek desteklenmiyor. | Hatada ek ayrıntılar sağlanıyor olmalıdır. Bu işlevsellik dağıtımlarınız için önemliyse, [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) bir destek bileti oluşturun ve Azure Cosmos DB ekibi size geri dönecek. |
 | 11000 | DuplicateKey | Eklediğiniz belgenin parça anahtarı (Azure Cosmos DB bölüm anahtarı) koleksiyonda zaten var veya bir benzersiz dizin alanı kısıtlaması ihlal edildi. | Mevcut belgeyi güncelleştirmek için update() işlevini kullanın. Benzersiz dizin alanı kısıtlaması ihlal edildiyse, parçada/bölümde var olmayan bir alan değeri ekleyin veya belgeyi bu değerle güncelleştirin. Bir diğer seçenek de kimlik ve parça anahtarı alanlarının bileşimini içeren bir alan kullanmaktır. |
 | 16500 | TooManyRequests  | Kullanılan toplam istek birimi sayısı, koleksiyon için sağlanan istek birimi hızından fazla ve kısıtlanmış. | Azure portaldan bir kapsayıcıya veya kapsayıcı kümesine atanan aktarım hızını ölçeklendirmeyi göz önünde bulundurabilir veya işlemi yeniden deneyebilirsiniz. SSR’yi (sunucu tarafı yeniden denemesi) etkinleştirirseniz Azure Cosmos DB otomatik olarak bu hata nedeniyle başarısız olan istekleri yeniden dener. |

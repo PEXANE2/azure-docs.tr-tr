@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 04/16/2019
 ms.author: jeedes
 ms.openlocfilehash: 89d086ce136885e203e300f04bdbf3ade0affeb3
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92516061"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-silkroad-life-suite"></a>Öğretici: SilkRoad yaşam paketiyle Azure Active Directory tümleştirme
@@ -61,13 +61,13 @@ SilkRoad Life Suite 'in Azure AD ile tümleştirilmesini yapılandırmak için, 
 
     ![Yeni uygulama düğmesi](common/add-new-app.png)
 
-4. Arama kutusuna **silkroad Life Suite**yazın, sonuç panelinden **silkroad yaşam paketi** ' ni seçin ve ardından **Ekle** düğmesine tıklayarak uygulamayı ekleyin.
+4. Arama kutusuna **silkroad Life Suite** yazın, sonuç panelinden **silkroad yaşam paketi** ' ni seçin ve ardından **Ekle** düğmesine tıklayarak uygulamayı ekleyin.
 
     ![Sonuç listesindeki SilkRoad yaşam döngüsü](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-Bu bölümde, **Britta Simon**adlı bir test kullanıcısına bağlı olarak SilkRoad yaşam PAKETIYLE Azure AD çoklu oturum açmayı yapılandırıp test edersiniz.
+Bu bölümde, **Britta Simon** adlı bir test kullanıcısına bağlı olarak SilkRoad yaşam PAKETIYLE Azure AD çoklu oturum açmayı yapılandırıp test edersiniz.
 Çoklu oturum açma için, bir Azure AD kullanıcısı ve SilkRoad yaşam döngüsü paketindeki ilgili Kullanıcı arasındaki bağlantı ilişkisinin kurulması gerekir.
 
 Azure AD çoklu oturum açma 'yı SilkRoad yaşam paketiyle yapılandırmak ve test etmek için aşağıdaki yapı taşlarını gerçekleştirmeniz gerekir:
@@ -97,7 +97,7 @@ Azure AD çoklu oturum açmayı SilkRoad yaşam paketi ile yapılandırmak için
 
     ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
 
-4. **Temel SAML yapılandırması** bölümünde, **hizmet sağlayıcısı meta verileri dosyanız**varsa, aşağıdaki adımları uygulayın:
+4. **Temel SAML yapılandırması** bölümünde, **hizmet sağlayıcısı meta verileri dosyanız** varsa, aşağıdaki adımları uygulayın:
 
     > [!NOTE]
     > Bu öğreticide daha sonra açıklanacak **hizmet sağlayıcısı meta veri dosyasını** alacaksınız.
@@ -119,7 +119,7 @@ Azure AD çoklu oturum açmayı SilkRoad yaşam paketi ile yapılandırmak için
 
     d. **Oturum açma URL 'si** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:`https://<subdomain>.silkroad-eng.com/Authentication/`
 
-5. **Temel SAML yapılandırması** bölümünde, **hizmet sağlayıcısı meta verileri dosyanız**yoksa, aşağıdaki adımları uygulayın:
+5. **Temel SAML yapılandırması** bölümünde, **hizmet sağlayıcısı meta verileri dosyanız** yoksa, aşağıdaki adımları uygulayın:
 
     ![SilkRoad Life Suite etki alanı ve URL 'Ler çoklu oturum açma bilgileri](common/sp-identifier-reply.png)
 
@@ -159,7 +159,7 @@ Azure AD çoklu oturum açmayı SilkRoad yaşam paketi ile yapılandırmak için
     > [!NOTE]
     > Microsoft Azure AD ile Federasyonu yapılandırmak için SilkRoad Life Suite kimlik doğrulama uygulamasına erişim sağlamak için lütfen SilkRoad support veya SilkRoad Services temsilcinizle iletişime geçin.
 
-1. **Hizmet sağlayıcısına**gidin ve ardından **Federasyon ayrıntıları**' na tıklayın.
+1. **Hizmet sağlayıcısına** gidin ve ardından **Federasyon ayrıntıları**' na tıklayın.
 
     ![Ekran görüntüsü, hizmet sağlayıcısından seçilen Federasyon ayrıntılarını gösterir.](./media/silkroad-life-suite-tutorial/tutorial_silkroad_06.png)
 
@@ -179,7 +179,7 @@ Azure AD çoklu oturum açmayı SilkRoad yaşam paketi ile yapılandırmak için
 
     ![Ekran görüntüsünde, dosya verilerini kullanarak kimlik sağlayıcısı oluştur düğmesi seçili olarak kimlik doğrulama kaynağı ekleme gösterilmektedir.](./media/silkroad-life-suite-tutorial/tutorial_silkroad_10.png)
   
-    a. **Seçenek 2-meta veri dosyası**altında, Azure Portal indirilen meta veri dosyasını karşıya yüklemek Için, **Araştır** ' a tıklayın.
+    a. **Seçenek 2-meta veri dosyası** altında, Azure Portal indirilen meta veri dosyasını karşıya yüklemek Için, **Araştır** ' a tıklayın.
   
     b. **Dosya verilerini kullanarak kimlik sağlayıcısı oluştur**' a tıklayın.
 
@@ -191,7 +191,7 @@ Azure AD çoklu oturum açmayı SilkRoad yaşam paketi ile yapılandırmak için
 
     ![Ekran görüntüsü, açıklanan değerleri girebileceğiniz kimlik doğrulama kaynağını Düzenle iletişim kutusunu gösterir.](./media/silkroad-life-suite-tutorial/tutorial_silkroad_12.png)
 
-    a. **Etkin**olarak **Evet**' i seçin.
+    a. **Etkin** olarak **Evet**' i seçin.
 
     b. **EntityId** metin kutusunda, Azure Portal KOPYALADıĞıNıZ **Azure AD tanımlayıcısının** değerini yapıştırın.
 
@@ -227,7 +227,7 @@ Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı ol
 
     ![Kullanıcı iletişim kutusu](common/user-properties.png)
 
-    a. **Ad** alanına **Brittasıon**girin.
+    a. **Ad** alanına **Brittasıon** girin.
   
     b. **Kullanıcı adı** alan türü`brittasimon@yourcompanydomain.extension`  
     Örneğin, BrittaSimon@contoso.com

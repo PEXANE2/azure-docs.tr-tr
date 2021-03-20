@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 10/15/2019
 ms.author: jeedes
 ms.openlocfilehash: 7ad7676981173400c4c5f13ec276d0c376ac704f
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92518951"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-mindwireless"></a>Öğretici: mindWireless ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
@@ -54,7 +54,7 @@ MindWireless 'in tümleştirmesini Azure AD 'ye göre yapılandırmak için Gale
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-mindwireless"></a>MindWireless için Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-**B. Simon**adlı bir test kullanıcısı kullanarak mindWireless Ile Azure AD SSO 'yu yapılandırın ve test edin. SSO 'nun çalışması için, mindWireless içindeki bir Azure AD kullanıcısı ve ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
+**B. Simon** adlı bir test kullanıcısı kullanarak mindWireless Ile Azure AD SSO 'yu yapılandırın ve test edin. SSO 'nun çalışması için, mindWireless içindeki bir Azure AD kullanıcısı ve ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
 
 Azure AD SSO 'yu mindWireless ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
 
@@ -95,7 +95,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
     | Çalışan Numarası | `http://schemas.xmlsoap.org/ws/2005/05/identity/claims`| User. EmployeeID |
 
     > [!NOTE]
-    > Talep adı her zaman **çalışan kimliği** ve kullanıcının EmployeeID 'sini içeren **User. EmployeeID**ile eşlendiğimiz değer olmalıdır. Burada Azure AD 'den mindWireless 'e yönelik kullanıcı eşlemesi, EmployeeID üzerinde yapılır, ancak uygulama ayarlarınıza göre aynı zamanda farklı bir değerle eşleyebilirsiniz. İlk olarak, bir kullanıcının doğru tanımlayıcısını kullanmak ve bu değeri **çalışan kimliği** talebi ile eşlemek Için [mindwireless destek](mailto:sdulloor@mindwireless.com) ekibiyle birlikte çalışabilirsiniz.
+    > Talep adı her zaman **çalışan kimliği** ve kullanıcının EmployeeID 'sini içeren **User. EmployeeID** ile eşlendiğimiz değer olmalıdır. Burada Azure AD 'den mindWireless 'e yönelik kullanıcı eşlemesi, EmployeeID üzerinde yapılır, ancak uygulama ayarlarınıza göre aynı zamanda farklı bir değerle eşleyebilirsiniz. İlk olarak, bir kullanıcının doğru tanımlayıcısını kullanmak ve bu değeri **çalışan kimliği** talebi ile eşlemek Için [mindwireless destek](mailto:sdulloor@mindwireless.com) ekibiyle birlikte çalışabilirsiniz.
 
 1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, **SAML Imzalama sertifikası** bölümünde **sertifika bulun (base64)** ve sertifikayı indirip bilgisayarınıza kaydetmek için **İndir** ' i seçin.
 

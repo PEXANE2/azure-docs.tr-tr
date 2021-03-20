@@ -12,10 +12,10 @@ ms.topic: end-user-help
 ms.date: 01/15/2020
 ms.author: curtand
 ms.openlocfilehash: 7f4c09a32794e13b0e0041ee916401b714d8509e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90055240"
 ---
 # <a name="what-is-the-microsoft-authenticator-app"></a>Microsoft Authenticator uygulaması nedir?
@@ -49,7 +49,7 @@ Microsoft Authenticator uygulamasını, aşağıdakiler dahil olmak üzere birde
 
 İki öğeli doğrulama Microsoft Authenticator uygulamayla aşağıdaki yollarla çalışmaktadır:
 
-- **Uyarıyı.** İş veya okul hesabınız ya da kişisel Microsoft hesabı için oturum açmak istediğiniz cihaza Kullanıcı adınızı ve parolanızı yazın ve ardından Microsoft Authenticator uygulama, **oturum açmayı onaylamanızı**isteyen bir bildirim gönderir. Oturum açma girişimini tanıdıysanız **Onayla** ' yı seçin. Aksi takdirde **Reddet**' i seçin. **Reddet**' i seçerseniz, isteği sahte olarak da işaretleyebilirsiniz.
+- **Uyarıyı.** İş veya okul hesabınız ya da kişisel Microsoft hesabı için oturum açmak istediğiniz cihaza Kullanıcı adınızı ve parolanızı yazın ve ardından Microsoft Authenticator uygulama, **oturum açmayı onaylamanızı** isteyen bir bildirim gönderir. Oturum açma girişimini tanıdıysanız **Onayla** ' yı seçin. Aksi takdirde **Reddet**' i seçin. **Reddet**' i seçerseniz, isteği sahte olarak da işaretleyebilirsiniz.
 
 - **Doğrulama kodu.** İş veya okul hesabınız ya da kişisel Microsoft hesabı için oturum açmak istediğiniz cihaza Kullanıcı adınızı ve parolanızı yazın ve ardından Microsoft Authenticator uygulamasının **hesaplar** ekranından ilişkili doğrulama kodunu kopyalayın. Doğrulama kodu, tek seferlik geçiş kodu (OTP) kimlik doğrulaması olarak da bilinir.
 
@@ -71,7 +71,7 @@ Kuruluşunuz, hesap türüne bağlı olarak iki öğeli doğrulama kullanmanız 
 
 ## <a name="in-this-section"></a>Bu bölümde
 
-| Makale | Açıklama |
+| Makale | Description |
 | ------ | ------------ |
 | [Uygulamayı indirme ve yükleme](user-help-auth-app-download-install.md) | Android ve iOS çalıştıran cihazlar için Microsoft Authenticator uygulamasının nereden ve nasıl alınacağını ve yükleneceğini açıklar. |
 | [İş veya okul hesaplarınızı ekleyin](user-help-auth-app-add-work-school-account.md) | Çeşitli iş veya okul ve kişisel hesaplarınızın Microsoft Authenticator uygulamasına nasıl ekleneceğini açıklar. |

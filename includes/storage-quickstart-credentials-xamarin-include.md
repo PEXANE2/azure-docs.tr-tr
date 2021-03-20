@@ -1,6 +1,6 @@
 ---
-title: dosya dahil etme
-description: dosya dahil etme
+title: include dosyası
+description: include dosyası
 services: storage
 author: codemillmatt
 ms.service: storage
@@ -9,10 +9,10 @@ ms.date: 11/23/2019
 ms.author: masoucou
 ms.custom: include file
 ms.openlocfilehash: 02586d38903c60ba8982753ca0bd3e15192d5deb
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "83006240"
 ---
 ### <a name="copy-your-credentials-from-the-azure-portal"></a>Azure portalından kimlik bilgilerinizi kopyalama
@@ -28,7 +28,7 @@ ms.locfileid: "83006240"
 
 ### <a name="configure-your-storage-connection-string"></a>Depolama bağlantı dizelerinizi yapılandırma
 
-Bağlantı dizenizi kopyaladıktan sonra, *MainPage.xaml.cs* dosyanızda bir sınıf düzeyi değişkenine ayarlayın. *MainPaage.xaml.cs* açın ve `storageConnectionString` değişkenini bulun. `<yourconnectionstring>`Gerçek bağlantı dizeniz ile değiştirin.
+Bağlantı dizenizi kopyaladıktan sonra, *MainPage. xaml. cs* dosyanızda bir sınıf düzeyi değişkenine ayarlayın. *Mainpaage. xaml. cs* dosyasını açın ve değişkenini bulun `storageConnectionString` . `<yourconnectionstring>`Gerçek bağlantı dizeniz ile değiştirin.
 
 Kod şu şekildedir:
 
