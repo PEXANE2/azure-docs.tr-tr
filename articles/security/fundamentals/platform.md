@@ -9,10 +9,10 @@ ms.author: terrylan
 manager: rkarlin
 ms.date: 11/10/2020
 ms.openlocfilehash: 4755bc19a645d196487f0b8e0f4d1ef2120723ca
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94558051"
 ---
 # <a name="platform-integrity-and-security-overview"></a>Platform bütünlüğü ve güvenliğine genel bakış
@@ -21,10 +21,10 @@ Azure filo, binlerce sunucudan (ana bilgisayar), her gün daha fazla eklenmiş b
 ## <a name="securing-azure-hardware-and-firmware"></a>Azure donanımının ve üretici yazılımının güvenliğini sağlama
 Bu makale serisi, Microsoft 'un, üretim yaşam döngüsünün gün sonuna kadar olan çeşitli aşamalar aracılığıyla ana bilgisayarların bütünlüğünü ve güvenliğini nasıl sağlar. Makale adresi:
  
-- [Bellenim güvenliği](firmware.md)
+- [Üretici yazılımı güvenliği](firmware.md)
 - [UEFı güvenli önyükleme](secure-boot.md)
 - [Ölçülen önyükleme ve konak kanıtlama](measured-boot-host-attestation.md)
-- [Proje Cerberus](project-cerberus.md)
+- [Project Cerberus](project-cerberus.md)
 - [Bekleme sırasında şifreleme](encryption-atrest.md)
 - [Hiper yönetici güvenliği](hypervisor.md)
  

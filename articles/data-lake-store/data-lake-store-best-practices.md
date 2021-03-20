@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 06/27/2018
 ms.author: sachins
 ms.openlocfilehash: 9a5c5f9a4033b70a664071d6077a69f38c905093
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96452224"
 ---
 # <a name="best-practices-for-using-azure-data-lake-storage-gen1"></a>Azure Data Lake Storage 1. kullanmak için en iyi uygulamalar
@@ -23,7 +23,7 @@ ms.locfileid: "96452224"
 
 Bu makalede, Azure Data Lake Storage 1. ile çalışmaya yönelik en iyi yöntemler ve konular hakkında bilgi edineceksiniz. Bu makalede, Data Lake Storage 1. için güvenlik, performans, dayanıklılık ve izleme hakkında bilgi verilmektedir. Data Lake Storage 1. önce, Azure HDInsight gibi hizmetlerde gerçekten büyük verilerle çalışma karmaşıktır. Birden çok BLOB depolama hesabında verileri parçalara çıkaran ve bu ölçekte en iyi performansı elde etmek zorunda kaldık. Data Lake Storage 1., boyut ve performansa ilişkin sabit limitlerin çoğu kaldırılır. Ancak, Data Lake Storage 1. ile en iyi performansı elde edebilmeniz için bu makalenin kapsamakta olduğu bazı noktalar vardır.
 
-## <a name="security-considerations"></a>Güvenlikle ilgili dikkat edilmesi gerekenler
+## <a name="security-considerations"></a>Güvenlik konuları
 
 Azure Data Lake Storage 1., Azure Active Directory (Azure AD) kullanıcıları, grupları ve hizmet sorumluları için POSIX erişim denetimleri ve ayrıntılı denetim sağlar. Bu erişim denetimleri, varolan dosya ve klasörlere ayarlanabilir. Erişim denetimleri, yeni dosyalara veya klasörlere uygulanabilen varsayılanlar oluşturmak için de kullanılabilir. İzinler varolan klasörlere ve alt nesnelere ayarlandığında, izinlerin her bir nesne üzerinde yinelemeli olarak yayılması gerekir. Çok sayıda dosya varsa, bu izinleri yayan uzun sürebilir. Geçen süre, saniye başına işlenen 30-50 nesne arasında değişebilir. Bu nedenle, klasör yapısını ve Kullanıcı gruplarını uygun şekilde planlayın. Aksi takdirde, verilerle çalışırken beklenmeyen gecikmeler ve sorunlara neden olabilir.
 
@@ -45,7 +45,7 @@ Azure Active Directory hizmet sorumluları, genellikle Azure HDInsight gibi hizm
 
 ### <a name="enable-the-data-lake-storage-gen1-firewall-with-azure-service-access"></a>Azure hizmet erişimi ile Data Lake Storage 1. güvenlik duvarını etkinleştirme
 
-Data Lake Storage 1., bir güvenlik duvarını açma ve yalnızca Azure hizmetlerine erişimi sınırlandırma seçeneğini destekler, bu da dış yetkisiz erişimlere karşı daha küçük bir saldırı vektörü için önerilir. Güvenlik Duvarı, **Firewall**  >  Azure hizmetleri seçeneklerine erişime izin veren güvenlik duvarı 'nı **Etkinleştir (açık)** güvenlik duvarı aracılığıyla Azure Portal Data Lake Storage 1. hesabında etkinleştirilebilir  >  **Allow access to Azure services** .
+Data Lake Storage 1., bir güvenlik duvarını açma ve yalnızca Azure hizmetlerine erişimi sınırlandırma seçeneğini destekler, bu da dış yetkisiz erişimlere karşı daha küçük bir saldırı vektörü için önerilir. Güvenlik Duvarı,   >  Azure hizmetleri seçeneklerine erişime izin veren güvenlik duvarı 'nı **Etkinleştir (açık)** güvenlik duvarı aracılığıyla Azure Portal Data Lake Storage 1. hesabında etkinleştirilebilir  >   .
 
 ![Data Lake Storage 1. güvenlik duvarı ayarları](./media/data-lake-store-best-practices/data-lake-store-firewall-setting.png "Data Lake Storage 1. güvenlik duvarı ayarları")
 
@@ -101,8 +101,8 @@ Aşağıda Data Lake Storage 1. hesapları arasında çoğaltmayı düzenlemek i
 |  |Distcp  |Azure Data Factory  |AdlCopy  |
 |---------|---------|---------|---------|
 |**Ölçek sınırları**     | Çalışan düğümlerine göre sınırlanmış        | Maksimum bulut veri taşıma birimi ile sınırlıdır        | Analiz birimlerine göre bağlıydı        |
-|**Değişimleri kopyalamayı destekler**     |   Evet      | Hayır         | Hayır         |
-|**Yerleşik düzenleme**     |  Hayır (Oozie Airflow veya cron işleri kullanın)       | Evet        | Hayır (Azure Otomasyonu veya Windows Görev Zamanlayıcı kullanın)         |
+|**Değişimleri kopyalamayı destekler**     |   Yes      | Hayır         | Hayır         |
+|**Yerleşik düzenleme**     |  Hayır (Oozie Airflow veya cron işleri kullanın)       | Yes        | Hayır (Azure Otomasyonu veya Windows Görev Zamanlayıcı kullanın)         |
 |**Desteklenen dosya sistemleri**     | ADL,,, CSıB, S3, GS, CFS        |Çok sayıda, bkz. [Bağlayıcılar](../data-factory/connector-azure-blob-storage.md).         | Adl 'den adl 'ye, ADL 'ye (yalnızca aynı bölge)        |
 |**İşletim sistemi desteği**     |Hadoop çalıştıran herhangi bir işletim sistemi         | Yok          | Windows 10         |
 

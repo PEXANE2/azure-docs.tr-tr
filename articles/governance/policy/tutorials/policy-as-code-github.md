@@ -4,10 +4,10 @@ description: Bu öğreticide, dışarı aktarma, GitHub eylemleri ve GitHub iş 
 ms.date: 10/20/2020
 ms.topic: tutorial
 ms.openlocfilehash: 76a46adc3fc8efab4f7a2d6e656e83c2537dd037
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92326173"
 ---
 # <a name="tutorial-implement-azure-policy-as-code-with-github"></a>Öğretici: Azure Ilkesini GitHub ile kod olarak uygulama
@@ -58,7 +58,7 @@ Azure portal bir ilke tanımını dışarı aktarmak için şu adımları izleyi
 
 1. Seçilen kaynakların artık kaynak denetiminize aktarıldığına bakmak için GitHub deponuzu, dalınızı ve _kök düzeyi klasörünüzü_ denetleyin.
 
-Azure Ilke kaynakları, seçilen GitHub deposu ve _kök düzeyi klasörü_içinde aşağıdaki yapıya aktarılabilir:
+Azure Ilke kaynakları, seçilen GitHub deposu ve _kök düzeyi klasörü_ içinde aşağıdaki yapıya aktarılabilir:
 
 ```text
 |
@@ -88,11 +88,11 @@ Azure Ilke kaynakları, seçilen GitHub deposu ve _kök düzeyi klasörü_içind
 
 1. İş akışı, İlke nesnelerinde yapılan değişiklikleri Azure ile eşitler ve günlüklerde durum verir.
 
-   :::image type="content" source="../media/policy-as-code-github/workflow-logging.png" alt-text="GitHub Web arabirimindeki eylem sekmesi, iş akışı ve iş akışı düğmelerinin ekran görüntüsü.":::
+   :::image type="content" source="../media/policy-as-code-github/workflow-logging.png" alt-text="İşlem aşamasında iş akışının ve günlüğe kaydedilen ayrıntıların ekran görüntüsü.":::
 
 1. İş akışı Ayrıca izleme için Azure Ilke nesnelerine ayrıntılar ekler `properties.metadata` .
 
-   :::image type="content" source="../media/policy-as-code-github/updated-definition-metadata.png" alt-text="GitHub Web arabirimindeki eylem sekmesi, iş akışı ve iş akışı düğmelerinin ekran görüntüsü.":::
+   :::image type="content" source="../media/policy-as-code-github/updated-definition-metadata.png" alt-text="Azure portal 'daki Azure Ilke tanımının ekran görüntüsü, GitHub eylemine özgü meta verilerle güncelleştirildi.":::
 
 ### <a name="trigger-compliance-scans-using-github-action"></a>GitHub eylemini kullanarak uyumluluk taramalarını tetikleme
 

@@ -16,10 +16,10 @@ search.appverid:
 - MET150
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 47d7d541ed7d9805641ffdfde381d482c8700006
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/08/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96858748"
 ---
 # <a name="implement-password-hash-synchronization-with-azure-ad-connect-sync"></a>Azure AD Connect eşitlemesi ile parola karması eşitlemeyi uygulama
@@ -63,7 +63,7 @@ Aşağıdaki bölümde, parola karma eşitlemesinin Active Directory ile Azure A
 > [!NOTE]
 > Özgün MD4 karması Azure AD 'ye aktarılmaz. Bunun yerine, özgün MD4 karmasının SHA256 karması iletilir. Sonuç olarak, Azure AD 'de depolanan karma değer elde edilmişse, şirket içi bir karma geçişi saldırısında kullanılamaz.
 
-### <a name="security-considerations"></a>Güvenlikle ilgili dikkat edilmesi gerekenler
+### <a name="security-considerations"></a>Güvenlik konuları
 
 Parolaları eşitlerken, parolanızın düz metin sürümü Parola karması eşitleme özelliğine, Azure AD 'ye veya ilişkili hizmetlerden herhangi birine gösterilmez.
 

@@ -8,10 +8,10 @@ ms.date: 05/26/2020
 author: mingshen-ms
 ms.author: mingshen
 ms.openlocfilehash: b75964f8cfc41efc35858284dbffded3aa406eb6
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96436071"
 ---
 # <a name="marketplace-metered-billing-apis"></a>Market ölçülen faturalandırma API 'Leri
@@ -271,7 +271,7 @@ Inı. Yetkilendirme belirteci belirtilmemiş, geçersiz veya zaman aşımına u�
 
 Ayrıca, sınırlı hedef kitlelerine test sırasında bu plana erişimi sınırlandırmak için, mevcut bir canlı teklif için özel planı da kullanabilirsiniz.
 
-## <a name="get-support"></a>Destek alma
+## <a name="get-support"></a>Destek alın
 
 Yayımcı desteği seçeneklerini anlamak ve Microsoft ile destek bileti açmak için [Iş Ortağı Merkezi ' nde ticari Market programına yönelik destek](../support.md) bölümündeki yönergeleri izleyin.
 

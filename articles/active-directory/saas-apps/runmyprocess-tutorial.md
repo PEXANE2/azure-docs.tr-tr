@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 08/07/2019
 ms.author: jeedes
 ms.openlocfilehash: 011bbbda07806f1493ae27fbeef8509f0d12c44b
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92518463"
 ---
 # <a name="tutorial-integrate-runmyprocess-with-azure-active-directory"></a>Öğretici: RunMyProcess 'i Azure Active Directory tümleştirin
@@ -54,7 +54,7 @@ RunMyProcess 'in Azure AD ile tümleştirilmesini yapılandırmak için, Galeri 
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-**B. Simon**adlı bir test kullanıcısı kullanarak Azure AD SSO 'Yu RunMyProcess ile yapılandırın ve test edin. SSO 'nun çalışması için, RunMyProcess içindeki bir Azure AD kullanıcısı ve ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
+**B. Simon** adlı bir test kullanıcısı kullanarak Azure AD SSO 'Yu RunMyProcess ile yapılandırın ve test edin. SSO 'nun çalışması için, RunMyProcess içindeki bir Azure AD kullanıcısı ve ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
 
 Azure AD SSO 'yu RunMyProcess ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
 
@@ -102,13 +102,13 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
     ![Ekran görüntüsü, açıklanan değerleri girebileceğiniz kimlik doğrulama yöntemi sekmesini gösterir.](./media/runmyprocess-tutorial/tutorial_runmyprocess_002.png)
 
-    a. As **yöntemi**olarak **Samlv2 ile SSO**'yu seçin.
+    a. As **yöntemi** olarak **Samlv2 ile SSO**'yu seçin.
 
-    b. **SSO yeniden yönlendirme** metin kutusunda, Azure Portal kopyaladığınız **oturum açma URL 'si**değerini yapıştırın.
+    b. **SSO yeniden yönlendirme** metin kutusunda, Azure Portal kopyaladığınız **oturum açma URL 'si** değerini yapıştırın.
 
-    c. **Logout Redirect** metin kutusunda, Azure Portal kopyaladığınız **Logout URL 'si**değerini yapıştırın.
+    c. **Logout Redirect** metin kutusunda, Azure Portal kopyaladığınız **Logout URL 'si** değerini yapıştırın.
 
-    d. **Ad kimliği biçimi** metin kutusunda, **ad tanımlayıcı biçimindeki** değeri **urn: oassıs: names: TC: SAML: 1.1: NameID-Format: emapostaadı**olarak yazın.
+    d. **Ad kimliği biçimi** metin kutusunda, **ad tanımlayıcı biçimindeki** değeri **urn: oassıs: names: TC: SAML: 1.1: NameID-Format: emapostaadı** olarak yazın.
 
     e. İndirilen sertifika dosyasını Not defteri 'nde Azure portal açın, sertifika dosyasının içeriğini kopyalayın ve ardından **sertifikayı sertifika** metin kutusuna yapıştırın.
 
@@ -131,7 +131,7 @@ Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaks�
 Bu bölümde, RunMyProcess 'e erişim vererek Azure çoklu oturum açma özelliğini kullanmak için B. Simon 'u etkinleştireceksiniz.
 
 1. Azure portal **Kurumsal uygulamalar**' ı seçin ve ardından **tüm uygulamalar**' ı seçin.
-1. Uygulamalar listesinde **RunMyProcess**öğesini seçin.
+1. Uygulamalar listesinde **RunMyProcess** öğesini seçin.
 1. Uygulamanın genel bakış sayfasında **Yönet** bölümünü bulun ve **Kullanıcılar ve gruplar**' ı seçin.
 
    !["Kullanıcılar ve gruplar" bağlantısı](common/users-groups-blade.png)
@@ -162,7 +162,7 @@ Azure AD kullanıcılarının RunMyProcess 'de oturum açmasını sağlamak içi
   
     a. İlgili metin kutularına sağlamak istediğiniz geçerli bir Azure AD hesabının **adını** ve **e-postasını** yazın.
 
-    b. Bir **IDE dili**, **dili**ve **profili**seçin.
+    b. Bir **IDE dili**, **dili** ve **profili** seçin.
 
     c. **Hesap oluşturma e-postasını bana gönder**' i seçin.
 

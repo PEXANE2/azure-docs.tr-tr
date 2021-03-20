@@ -16,10 +16,10 @@ ms.topic: how-to
 ms.date: 02/15/2018
 ms.author: allensu
 ms.openlocfilehash: d8eb450d2010bf2a525a26f1c5ff48f59732ce43
-ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/03/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93240979"
 ---
 # <a name="manage-expiration-of-web-content-in-azure-cdn"></a>Azure CDN'de web içeriğinin süre sonunu yönetme
@@ -44,11 +44,11 @@ Bir Web sunucusunun üst bilgisini ayarlamak için tercih edilen yöntem `Cache-
 > [!NOTE] 
 > Önbelleğe alma kuralları yalnızca Verizon **Azure CDN ve Akamai** profillerindeki standart **Azure CDN Standart** için kullanılabilir. **Verizon profillerden Azure CDN Premium** Için, **Manage** Portal içindeki [Azure CDN Rules altyapısını](./cdn-verizon-premium-rules-engine.md) benzer işlevler için kullanmanız gerekir.
 
-**CDN önbelleğe alma kuralları sayfasına gitmek için** :
+**CDN önbelleğe alma kuralları sayfasına gitmek için**:
 
 1. Azure portal, bir CDN profili seçin ve ardından Web sunucusu için uç noktayı seçin.
 
-1. Ayarların altındaki sol bölmede **Önbelleğe alma kuralları** ’nı seçin.
+1. Ayarların altındaki sol bölmede **Önbelleğe alma kuralları**’nı seçin.
 
    ![CDN önbelleğe alma kuralları düğmesi](./media/cdn-manage-expiration-of-cloud-service-content/cdn-caching-rules-btn.png)
 
@@ -59,7 +59,7 @@ Bir Web sunucusunun üst bilgisini ayarlamak için tercih edilen yöntem `Cache-
 
 **Genel önbelleğe alma kurallarını kullanarak bir Web sunucusunun Cache-Control üst bilgilerini ayarlamak için:**
 
-1. **Genel önbelleğe alma kuralları** ' nın altında sorgu **dizelerini yok say** ve **önbelleğe alma davranışını** **geçersiz kılmak** için **sorgu dizesi önbelleğe alma davranışını** ayarlayın.
+1. **Genel önbelleğe alma kuralları**' nın altında sorgu **dizelerini yok say** ve **önbelleğe alma davranışını** **geçersiz kılmak** için **sorgu dizesi önbelleğe alma davranışını** ayarlayın.
       
 1. **Önbellek sona erme süresi** Için, **saniye** kutusuna 3600 veya **saat** kutusuna 1 yazın. 
 
@@ -67,7 +67,7 @@ Bir Web sunucusunun üst bilgisini ayarlamak için tercih edilen yöntem `Cache-
 
    Bu genel önbelleğe alma kuralı bir saatin önbellek süresini ayarlar ve uç noktaya yapılan tüm istekleri etkiler. `Cache-Control` `Expires` Uç nokta tarafından belirtilen kaynak sunucu tarafından gönderilen tüm veya HTTP üstbilgilerini geçersiz kılar.   
 
-1. **Kaydet** ’i seçin.
+1. **Kaydet**’i seçin.
 
 **Özel önbelleğe alma kurallarını kullanarak bir Web sunucusu dosyasının Cache-Control üst bilgilerini ayarlamak için:**
 
@@ -81,7 +81,7 @@ Bir Web sunucusunun üst bilgisini ayarlamak için tercih edilen yöntem `Cache-
 
     İlk özel önbelleğe alma kuralı, `/webfolder1` uç noktanız tarafından belirtilen kaynak sunucu üzerindeki klasörde bulunan tüm dosyalar için dört saatlik bir önbellek süresi ayarlar. İkinci kural yalnızca dosyanın ilk kuralını geçersiz kılar `file1.txt` ve kendisi için iki saatlik bir önbellek süresi ayarlar.
 
-1. **Kaydet** ’i seçin.
+1. **Kaydet**’i seçin.
 
 
 ## <a name="setting-cache-control-headers-by-using-configuration-files"></a>Yapılandırma dosyalarını kullanarak Cache-Control üst bilgileri ayarlama
@@ -129,7 +129,7 @@ Response.Cache.SetLastModified(DateTime.Now);
 ```
 
 ## <a name="testing-the-cache-control-header"></a>Cache-Control üst bilgisini test etme
-Web içeriğinizin TTL ayarlarını kolayca doğrulayabilirsiniz. Tarayıcınızın [Geliştirici araçlarıyla](https://developer.microsoft.com/microsoft-edge/platform/documentation/f12-devtools-guide/), Web içeriğinizin `Cache-Control` yanıt üst bilgisini içerdiğini test edin. Yanıt üst bilgilerini incelemek için **wget** , [Postman](https://www.getpostman.com/)veya [Fiddler](https://www.telerik.com/fiddler) gibi bir araç da kullanabilirsiniz.
+Web içeriğinizin TTL ayarlarını kolayca doğrulayabilirsiniz. Tarayıcınızın [Geliştirici araçlarıyla](https://developer.microsoft.com/microsoft-edge/platform/documentation/f12-devtools-guide/), Web içeriğinizin `Cache-Control` yanıt üst bilgisini içerdiğini test edin. Yanıt üst bilgilerini incelemek için **wget**, [Postman](https://www.getpostman.com/)veya [Fiddler](https://www.telerik.com/fiddler) gibi bir araç da kullanabilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki Adımlar
 * [**Clientcache** öğesiyle ilgili ayrıntıları okuyun](https://www.iis.net/ConfigReference/system.webServer/staticContent/clientCache)

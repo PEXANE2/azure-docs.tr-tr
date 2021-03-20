@@ -7,10 +7,10 @@ ms.service: fxt-edge-filer
 ms.topic: tutorial
 ms.date: 07/01/2019
 ms.openlocfilehash: d019f5df4bba6d223076c8ce35151510afedf2e9
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92220814"
 ---
 # <a name="tutorial-create-the-azure-fxt-edge-filer-cluster"></a>Öğretici: Azure FXT Edge Filer kümesi oluşturma
@@ -152,7 +152,7 @@ Diğer seçenekler nadiren kullanılır:
 
 Sonraki ekranda, yeni küme için seçenekleri yapılandırmanız istenir.
 
-Sayfa, **temel yapılandırma** ve **ağ yapılandırması**olmak üzere iki ana bölüme ayrılmıştır. Ağ yapılandırma bölümünün alt bölümleri de vardır: bir tane **Yönetim** ağı ve diğeri **küme** ağı için.
+Sayfa, **temel yapılandırma** ve **ağ yapılandırması** olmak üzere iki ana bölüme ayrılmıştır. Ağ yapılandırma bölümünün alt bölümleri de vardır: bir tane **Yönetim** ağı ve diğeri **küme** ağı için.
 
 ### <a name="basic-configuration"></a>Temel yapılandırma
 
@@ -177,7 +177,7 @@ Sayfa, **temel yapılandırma** ve **ağ yapılandırması**olmak üzere iki ana
   
   Kümeyi yöneten her kişi için bireysel kullanıcı hesapları ayarlamanız gerekir, ancak kullanıcıyı kaldıramazsınız `admin` . `admin`Ek kullanıcı oluşturmanız gerekiyorsa oturum açın.
 
-  İçin parolasını, `admin` **Administration**  >  küme Denetim Masası 'ndaki Yönetim**kullanıcıları** ayarları sayfasında değiştirebilirsiniz. Ayrıntılar için, [küme yapılandırma kılavuzundaki](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_users.html) **Kullanıcılar** belgelerini okuyun.
+  İçin parolasını, `admin`   >  küme Denetim Masası 'ndaki Yönetim **kullanıcıları** ayarları sayfasında değiştirebilirsiniz. Ayrıntılar için, [küme yapılandırma kılavuzundaki](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_users.html) **Kullanıcılar** belgelerini okuyun.
 
 <!-- to do: update "legacy" URLs when docs are ported to Microsoft site -->
 
@@ -273,7 +273,7 @@ Sistem, kümeyi oluştururken bir ileti görüntüler.
 
 ![tarayıcıda küme yapılandırması durum iletisi: "FXT düğümü artık kümeyi oluşturuyor. Bu işlem birkaç dakika sürer. Küme oluşturulduğunda, yapılandırmayı gerçekleştirmek için bu bağlantıyı ziyaret edin. " "Bu bağlantıyı ziyaret et" adresindeki köprü](media/fxt-cluster-create/creating-message.png)
 
-Birkaç dakika sonra, küme Denetim Masası 'na gitmek için iletideki bağlantıya tıklayabilirsiniz. (Bu bağlantı sizi **Yönetim IP 'si**IÇINDE belirttiğiniz IP adresine yönlendirir.) Oluştur düğmesine tıkladıktan sonra bağlantı etkin hale gelmesi için 15 saniye boyunca bir dakika sürer. Web arabirimi yüklenmezse birkaç saniye bekleyip bağlantıyı yeniden tıklatın.
+Birkaç dakika sonra, küme Denetim Masası 'na gitmek için iletideki bağlantıya tıklayabilirsiniz. (Bu bağlantı sizi **Yönetim IP 'si** IÇINDE belirttiğiniz IP adresine yönlendirir.) Oluştur düğmesine tıkladıktan sonra bağlantı etkin hale gelmesi için 15 saniye boyunca bir dakika sürer. Web arabirimi yüklenmezse birkaç saniye bekleyip bağlantıyı yeniden tıklatın.
 
 Küme oluşturma bir dakika veya daha fazla zaman alır, ancak işlem devam ederken Denetim Masası 'nda oturum açabilirsiniz. Denetim Masası Pano sayfasının, küme oluşturma işlemi bitene kadar uyarıları göstermesi normaldir.
 
@@ -378,13 +378,13 @@ Destek karşıya yüklemelerini ayarlamak için bu adımları izleyin.
 1. Bölümü genişletmek için **Müşteri bilgisinin** solundaki üçgeni tıklatın.
 1. **Karşıya yükleme bilgilerini yeniden doğrula** düğmesine tıklayın.
 1. **Benzersiz küme adında** kümenin destek adını ayarlayın-personeli desteklemek için kümenizi benzersiz şekilde tanımladığından emin olun.
-1. **Istatistik izleme**, **genel bilgiler karşıya yükleme**ve **kilitlenme bilgileri karşıya yükleme**kutularını işaretleyin.
+1. **Istatistik izleme**, **genel bilgiler karşıya yükleme** ve **kilitlenme bilgileri karşıya yükleme** kutularını işaretleyin.
 1. **Gönder**' e tıklayın.  
 
    ![Destek ayarları sayfasının tamamlanan müşteri bilgisi bölümünün bulunduğu ekran görüntüsü](media/fxt-cluster-create/fxt-support-info.png)
 
 1. Bölümü genişletmek için **güvenli proaktif destek (SPS)** sol tarafındaki üçgeni tıklatın.
-1. **SPS 'Yi etkinleştir bağlantısının**kutusunu işaretleyin.
+1. **SPS 'Yi etkinleştir bağlantısının** kutusunu işaretleyin.
 1. **Gönder**' e tıklayın.
 
    ![Destek ayarları sayfasında tamamlanmış güvenli proaktif destek bölümünün bulunduğu ekran görüntüsü](media/fxt-cluster-create/fxt-support-sps.png)

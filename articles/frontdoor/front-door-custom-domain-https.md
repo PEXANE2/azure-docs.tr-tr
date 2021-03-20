@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 10/21/2020
 ms.author: duau
-ms.openlocfilehash: 17677ea89b04659de66b9bda35975b96ff33473a
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 6c6d33a36c4a0b71932e8c19c8f6dd105c33817c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101740792"
 ---
 # <a name="tutorial-configure-https-on-a-front-door-custom-domain"></a>Öğretici: Front Door özel etki alanı üzerinde HTTPS'yi yapılandırma
@@ -133,7 +133,12 @@ Azure Key Vault hesabınızdaki sertifikalara erişmek için Azure ön kapısın
     Azure ön kapısı aşağıdaki bilgileri listeler: 
     - Abonelik kimliğiniz için anahtar kasası hesapları. 
     - Seçilen anahtar kasası altındaki sertifikalar (gizli diziler). 
-    - Kullanılabilir sertifika sürümleri.
+    - Kullanılabilir sertifika sürümleri. 
+
+> [!NOTE]
+> Sertifika sürümünün boş bırakılması şu şekilde olur:
+> - Sertifikanın en son sürümü seçili.
+> - Key Vault sertifikanın daha yeni bir sürümü kullanılabilir olduğunda, sertifikaların otomatik olarak en son sürüme dönmesi.
  
 5. Kendi sertifikanızı kullanıyorsanız etki alanı doğrulaması gerekmez. [Yayılma için bekleme](#wait-for-propagation) adımına geçin.
 
@@ -275,7 +280,7 @@ Bu öğreticide, şunların nasıl yapıldığını öğrendiniz:
 * Bir etki alanını doğrulayın.
 * Özel etki alanınız için HTTPS 'yi etkinleştirin.
 
-Ön kapılarınız için coğrafi filtreleme ilkesi ayarlamayı öğrenmek için bir sonraki öğreticiye geçin.
+Ön kapıya yönelik coğrafi filtreleme ilkesi ayarlamayı öğrenmek için bir sonraki öğreticiye geçin.
 
 > [!div class="nextstepaction"]
 > [Coğrafi filtreleme ilkesi ayarlama](front-door-geo-filtering.md)

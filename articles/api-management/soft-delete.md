@@ -7,10 +7,10 @@ author: vladvino
 ms.author: apimpm
 ms.date: 11/27/2020
 ms.openlocfilehash: e2842f3e428abb4f0eb628dbb8e446f2714d5d89
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101652394"
 ---
 # <a name="api-management-soft-delete-preview"></a>API Management geçici silme (Önizleme)
@@ -27,7 +27,7 @@ Geçici silme özelliği [REST API](/rest/api/apimanagement/2020-06-01-preview/a
 > [!TIP]
 > Azure REST API 'Leri çağırmaya yönelik ipuçları ve araçlar için [azure REST API başvurusu](/rest/api/azure/) ' na bakın.
 
-| İşlem | Açıklama | API Management ad alanı | En düşük API sürümü |
+| İşlem | Description | API Management ad alanı | En düşük API sürümü |
 |--|--|--|--|
 | [Oluştur veya güncelleştir](/rest/api/apimanagement/2020-06-01-preview/apimanagementservice/createorupdate) | Bir API Management hizmeti oluşturur veya güncelleştirir.  | API Management hizmeti | Herhangi biri |
 | [](/rest/api/apimanagement/2020-06-01-preview/apimanagementservice/createorupdate) `restore` Özelliği **true** olarak ayarlanmış şekilde oluştur veya güncelleştir | Daha önce geçici olarak siliniyorsa API Management hizmeti siler. `restore`Belirtilmişse ve `true` diğer tüm özelliklere ayarlanırsa, yok sayılır.  | API Management hizmeti |  2020-06-01-Önizleme |

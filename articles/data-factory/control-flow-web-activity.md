@@ -7,10 +7,10 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.date: 12/19/2018
 ms.openlocfilehash: e4578b41e5cbb62c8a1bfa0c48d4fd60d042a506
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100361528"
 ---
 # <a name="web-activity-in-azure-data-factory"></a>Azure Data Factory Web etkinliği
@@ -260,7 +260,7 @@ public HttpResponseMessage Execute(JObject payload)
 ## <a name="next-steps"></a>Sonraki adımlar
 Data Factory tarafından desteklenen diğer denetim akışı etkinliklerini görün:
 
-- [İşlem Hattı Çalıştırma Etkinliği](control-flow-execute-pipeline-activity.md)
+- [İşlem hattı yürütme etkinliği](control-flow-execute-pipeline-activity.md)
 - [Her Bir Etkinlik için](control-flow-for-each-activity.md)
 - [Meta Veri Alma Etkinliği](control-flow-get-metadata-activity.md)
 - [Arama Etkinliği](control-flow-lookup-activity.md)

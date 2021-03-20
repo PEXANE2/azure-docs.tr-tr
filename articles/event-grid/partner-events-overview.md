@@ -4,10 +4,10 @@ description: Üçüncü taraf Event Grid SaaS ve PaaS iş ortaklarından olaylar
 ms.topic: conceptual
 ms.date: 11/10/2020
 ms.openlocfilehash: 31a5fe611871eb4734b6a68e3818592028ebc75c
-ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/11/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94506155"
 ---
 # <a name="partner-events-in-azure-event-grid-preview"></a>Azure Event Grid iş ortağı olayları (Önizleme)
@@ -86,7 +86,7 @@ Aşağıdaki görüntüde denetim düzlemi işlemlerinin akışı gösterilmekte
 1. Daha sonra iş ortağı konu 1 olan **iş** ortağı konusu, abonenin Azure aboneliğinde oluşturulur. Abonenin iş ortağı konusunu etkinleştirmesi gerekir. 
 1. Abone 1 Iş ortağı konu 1 ' e bir **Azure Logic Apps aboneliği** oluşturur.
 1. Abone 1 Iş ortağı konu 1 ' e bir **Azure Blob depolama aboneliği** oluşturur. 
-1. Abone 2 bir iş ortağı konusu oluşturmayı denediğinde, önce yayımcının Azure aboneliğinde başka bir **olay kanalı** , olay kanalı 2 oluşturulur. 
+1. Abone 2 bir iş ortağı konusu oluşturmayı denediğinde, önce yayımcının Azure aboneliğinde başka bir **olay kanalı**, olay kanalı 2 oluşturulur. 
 1. Daha sonra iş **ortağı konu** 2, Ikinci abonenin Azure aboneliğinde oluşturulur. Abonenin iş ortağı konusunu etkinleştirmesi gerekir. 
 1. Abone 2 Iş ortağı konu 2 ' ye bir **Azure işlevleri aboneliği** oluşturur. 
 

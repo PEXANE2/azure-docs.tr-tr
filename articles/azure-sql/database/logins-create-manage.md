@@ -14,10 +14,10 @@ ms.author: vanto
 ms.reviewer: sstein
 ms.date: 03/23/2020
 ms.openlocfilehash: d03bce1566d4f56a576c980723571f587296236f
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96452420"
 ---
 # <a name="authorize-database-access-to-sql-database-sql-managed-instance-and-azure-synapse-analytics"></a>SQL Veritabanı’na, SQL Yönetilen Örneği’ne ve Azure Synapse Analytics’e veritabanı erişimini yetkilendirme
@@ -59,7 +59,7 @@ Azure SQL 'i ilk kez dağıttığınızda, bu oturum açma için yönetici oturu
 
 - Yönetim ayrıcalıklarına sahip bir SQL oturumu açma, belirttiğiniz oturum açma adı kullanılarak oluşturulur. [Oturum açma](/sql/relational-databases/security/authentication-access/principals-database-engine#sa-login) , SQL VERITABANı, SQL yönetilen örneği ve Azure SYNAPSE 'da oturum açmak için bireysel bir kullanıcı hesabıdır.
 - Bu oturum açma, tüm veritabanlarında [sunucu düzeyi sorumlusu](/sql/relational-databases/security/authentication-access/principals-database-engine)olarak tam yönetim izinleri verilmesini ister. Oturum açma tüm kullanılabilir izinlere sahiptir ve bunlarla sınırlı olamaz. SQL yönetilen örneğinde, bu oturum açma [sysadmin sabit sunucu rolüne](/sql/relational-databases/security/authentication-access/server-level-roles) eklenir (Bu rol Azure SQL veritabanında bulunmaz).
-- [user account](/sql/relational-databases/security/authentication-access/getting-started-with-database-engine-permissions#database-users) `dbo` Bu oturum için her kullanıcı veritabanında çağrılan bir kullanıcı hesabı oluşturulur. [Dbo](/sql/relational-databases/security/authentication-access/principals-database-engine) kullanıcısı veritabanında tüm veritabanı izinlerine sahiptir ve `db_owner` sabit veritabanı rolüne eşlenir. Ek sabit veritabanı rolleri bu makalenin ilerleyen kısımlarında ele alınmıştır.
+- [](/sql/relational-databases/security/authentication-access/getting-started-with-database-engine-permissions#database-users) `dbo` Bu oturum için her kullanıcı veritabanında çağrılan bir kullanıcı hesabı oluşturulur. [Dbo](/sql/relational-databases/security/authentication-access/principals-database-engine) kullanıcısı veritabanında tüm veritabanı izinlerine sahiptir ve `db_owner` sabit veritabanı rolüne eşlenir. Ek sabit veritabanı rolleri bu makalenin ilerleyen kısımlarında ele alınmıştır.
 
 Bir veritabanının yönetici hesaplarını belirlemek için, Azure portal açın ve sunucunuzun veya yönetilen örneğinizin **Özellikler** sekmesine gidin.
 
@@ -91,7 +91,7 @@ Bu noktada, sunucunuz veya yönetilen örneğiniz yalnızca tek bir SQL oturum a
 
   - Ana veritabanında ek bir SQL oturum açma oluşturun.
   - Ana veritabanında bu yeni oturum açmayla ilişkili bir kullanıcı hesabı oluşturun.
-  - `dbmanager` `loginmanager` Alter role deyimini kullanarak veritabanında, role veya her ikisine de Kullanıcı hesabını ekleyin `master` (Azure SYNAPSE [ALTER ROLE](/sql/t-sql/statements/alter-role-transact-sql) için [sp_addrolemember](/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql) deyimini kullanın).
+  - `dbmanager` `loginmanager` Alter role deyimini kullanarak veritabanında, role veya her ikisine de Kullanıcı hesabını ekleyin `master` (Azure SYNAPSE [](/sql/t-sql/statements/alter-role-transact-sql) için [sp_addrolemember](/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql) deyimini kullanın).
 
   > [!NOTE]
   > `dbmanager` ve `loginmanager` rolleri, SQL yönetilen örnek dağıtımlarıyla ilgili **değildir** .
@@ -125,7 +125,7 @@ Oturum açma ve Kullanıcı oluşturma işlemlerini gösteren örnekler için bk
 - [Azure SQL veritabanı için oturum açma oluştur](/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-current#examples-1)
 - [Azure SQL yönetilen örneği için oturum açma oluştur](/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current#examples-2)
 - [Azure SYNAPSE için oturum açma oluşturma](/sql/t-sql/statements/create-login-transact-sql?view=azure-sqldw-latest#examples-3)
-- [Kullanıcı oluştur](/sql/t-sql/statements/create-user-transact-sql#examples)
+- [Kullanıcı Oluştur](/sql/t-sql/statements/create-user-transact-sql#examples)
 - [Azure AD kapsanan kullanıcılar oluşturuluyor](authentication-aad-configure.md#create-contained-users-mapped-to-azure-ad-identities)
 
 > [!TIP]

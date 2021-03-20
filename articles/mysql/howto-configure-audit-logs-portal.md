@@ -7,17 +7,17 @@ ms.service: mysql
 ms.topic: how-to
 ms.date: 9/29/2020
 ms.openlocfilehash: a73a3c77310c0e19792758c0586975e14cfaebf8
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94541666"
 ---
 # <a name="configure-and-access-audit-logs-for-azure-database-for-mysql-in-the-azure-portal"></a>Azure portal MySQL için Azure veritabanı için Denetim günlüklerini yapılandırma ve erişme
 
 [MySQL Için Azure veritabanı denetim günlükleri](concepts-audit-logs.md) ve tanılama ayarları Azure portal yapılandırabilirsiniz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu nasıl yapılır kılavuzunda ilerlemek için şunlar gerekir:
 
@@ -34,7 +34,7 @@ Denetim günlüğünü etkinleştirin ve yapılandırın.
 
 1. MySQL için Azure veritabanı sunucunuzu seçin.
 
-1. Kenar çubuğu 'ndaki **Ayarlar** bölümünde **sunucu parametreleri** ' ni seçin.
+1. Kenar çubuğu 'ndaki **Ayarlar** bölümünde **sunucu parametreleri**' ni seçin.
     :::image type="content" source="./media/howto-configure-audit-logs-portal/server-parameters.png" alt-text="Sunucu parametreleri":::
 
 1. **Audit_log_enabled** parametresini açık olarak güncelleştirin.
@@ -46,12 +46,12 @@ Denetim günlüğünü etkinleştirin ve yapılandırın.
 1. **Audit_log_exclude_users** ve **audit_log_include_users** parametrelerini güncelleştirerek günlük kaydıyla dahil edilecek veya hariç tutulacak MySQL kullanıcılarını ekleyin. Kullanıcıları MySQL Kullanıcı adlarını girerek belirtin.
     :::image type="content" source="./media/howto-configure-audit-logs-portal/audit-log-exclude-users.png" alt-text="Denetim günlüğü kullanıcıları hariç tut":::
 
-1. Parametreleri değiştirildikten sonra **Kaydet** ' e tıklayabilirsiniz. Ya da değişikliklerinizi **atabilirsiniz** .
+1. Parametreleri değiştirildikten sonra **Kaydet**' e tıklayabilirsiniz. Ya da değişikliklerinizi **atabilirsiniz** .
     :::image type="content" source="./media/howto-configure-audit-logs-portal/save-parameters.png" alt-text="Kaydet":::
 
 ## <a name="set-up-diagnostic-logs"></a>Tanılama günlükleri ayarlama
 
-1. Kenar çubuğu 'ndaki **izleme** bölümünde **Tanılama ayarları** ' nı seçin.
+1. Kenar çubuğu 'ndaki **izleme** bölümünde **Tanılama ayarları**' nı seçin.
 
 1. "+ Tanılama ayarı Ekle" :::image type="content" source="./media/howto-configure-audit-logs-portal/add-diagnostic-setting.png" alt-text="Tanılama ayarı Ekle"::: ' ye tıklayın.
 
@@ -62,7 +62,7 @@ Denetim günlüğünü etkinleştirin ve yapılandırın.
 1. Günlük türü olarak "MySqlAuditLogs" öğesini seçin.
 :::image type="content" source="./media/howto-configure-audit-logs-portal/configure-diagnostic-setting.png" alt-text="Tanılama ayarını Yapılandır":::
 
-1. Denetim günlüklerini için veri havuzlarını yapılandırdıktan sonra **Kaydet** ' e tıklayabilirsiniz.
+1. Denetim günlüklerini için veri havuzlarını yapılandırdıktan sonra **Kaydet**' e tıklayabilirsiniz.
 :::image type="content" source="./media/howto-configure-audit-logs-portal/save-diagnostic-setting.png" alt-text="Tanılama ayarını kaydet":::
 
 1. Bunları yapılandırdığınız veri havuzları içinde inceleyerek denetim günlüklerine erişin. Günlüklerin görünmesi 10 dakikaya kadar sürebilir.

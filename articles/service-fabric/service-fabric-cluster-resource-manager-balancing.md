@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 08/18/2017
 ms.author: masnider
 ms.openlocfilehash: 192aca589c3b1e660667dbe8377afe7802b56f17
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/01/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93146203"
 ---
 # <a name="balancing-your-service-fabric-cluster"></a>Service Fabric kümenizi Dengeleme
@@ -76,10 +76,10 @@ Küme Kaynak Yöneticisi, her zaman sırayla bu eylemlerden birini gerçekleşti
 
 Örneğin, düğümler başarısız olduğunda, her seferinde hata etki alanlarının tamamını yapabilir. Bu hataların hepsi, *Plbrefreshgap* sonrasında bir sonraki durum güncelleştirmesi sırasında yakalanır. Düzeltmeler, aşağıdaki yerleştirme, kısıtlama denetimi ve dengeleme çalıştırmaları sırasında belirlenir. Varsayılan olarak, Küme Kaynak Yöneticisi kümedeki değişikliklere göre tarama değildir ve tüm değişiklikleri tek seferde ele almaya çalışıyor. Bunun yapılması, karmaşıklığın dalgalanmasına neden olur.
 
-Küme Kaynak Yöneticisi, kümenin dengeskümi olup olmadığını tespit etmek için bazı ek bilgiler de gerektirir. Bunun için iki farklı yapılandırma parçası vardır: *BalancingThresholds* ve *activityeşikleri* .
+Küme Kaynak Yöneticisi, kümenin dengeskümi olup olmadığını tespit etmek için bazı ek bilgiler de gerektirir. Bunun için iki farklı yapılandırma parçası vardır: *BalancingThresholds* ve *activityeşikleri*.
 
 ## <a name="balancing-thresholds"></a>Dengeleme eşikleri
-Dengeleme eşiği, yeniden dengelemeyi tetiklemenin ana denetimidir. Bir ölçümün Dengeleme eşiği bir _orandır_ . En az yüklenen düğümdeki yük miktarına göre ayrılmış olan bir ölçüm için yük, bu ölçüm 'in *BalancingThreshold* değerini aşarsa, küme imlenebilir olur. Bir sonuç dengeleme olarak küme Kaynak Yöneticisi bir sonraki denetim sırasında tetiklenir. *MinLoadBalancingInterval* Zamanlayıcı, yeniden dengelemenin gerekli olup olmadığını Kaynak Yöneticisi kümenin ne sıklıkla denetlemesi gerektiğini tanımlar. Denetim, her şeyin meydana geldiğini ifade etmez. 
+Dengeleme eşiği, yeniden dengelemeyi tetiklemenin ana denetimidir. Bir ölçümün Dengeleme eşiği bir _orandır_. En az yüklenen düğümdeki yük miktarına göre ayrılmış olan bir ölçüm için yük, bu ölçüm 'in *BalancingThreshold* değerini aşarsa, küme imlenebilir olur. Bir sonuç dengeleme olarak küme Kaynak Yöneticisi bir sonraki denetim sırasında tetiklenir. *MinLoadBalancingInterval* Zamanlayıcı, yeniden dengelemenin gerekli olup olmadığını Kaynak Yöneticisi kümenin ne sıklıkla denetlemesi gerektiğini tanımlar. Denetim, her şeyin meydana geldiğini ifade etmez. 
 
 Dengeleme eşikleri, küme tanımının bir parçası olarak her ölçüm temelinde tanımlanır. Ölçümler hakkında daha fazla bilgi için [Bu makaleye](service-fabric-cluster-resource-manager-metrics.md)göz atın.
 

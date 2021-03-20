@@ -9,13 +9,13 @@ ms.author: terrylan
 manager: rkarlin
 ms.date: 11/10/2020
 ms.openlocfilehash: f085858a9d550623704efd4f051ed525e55a37e0
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94558012"
 ---
-# <a name="project-cerberus"></a>Proje Cerberus
+# <a name="project-cerberus"></a>Project Cerberus
 
 Cerberus, klonlanamadığı bir kimlikle bir NıST 800-193 uyumlu donanım köküdür. Cerberus, bellenim bütünlüğü için güçlü bir güven bağlantısı sağlayarak Azure altyapısının güvenlik duruşunu daha fazla yükseltmek üzere tasarlanmıştır.
 
@@ -44,7 +44,7 @@ Konak kanıtlama hizmeti ile birlikte, Cerberus ' özellikleri, yüksek güvenli
 ## <a name="next-steps"></a>Sonraki adımlar
 Platform bütünlüğünü ve güvenliğini sağlamak için yaptığımız hakkında daha fazla bilgi edinmek için bkz.:
 
-- [Bellenim güvenliği](firmware.md)
+- [Üretici yazılımı güvenliği](firmware.md)
 - [Güvenli önyükleme](secure-boot.md)
 - [Ölçülen önyükleme ve konak kanıtlama](measured-boot-host-attestation.md)
 - [Bekleme sırasında şifreleme](encryption-atrest.md)

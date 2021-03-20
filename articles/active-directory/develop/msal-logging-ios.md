@@ -14,10 +14,10 @@ ms.author: marsma
 ms.reviewer: saeeda, jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: ee3837b75d586238e7ca6ac85434cc56f592929d
-ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/25/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98763576"
 ---
 # <a name="logging-in-msal-for-iosmacos"></a>iOS/macOS için MSAL’de oturum açma
@@ -45,7 +45,7 @@ MSAL günlüğünü yakalamak ve kendi uygulamanızın günlüğüne eklemek iç
 typedef void (^MSALLogCallback)(MSALLogLevel level, NSString *message, BOOL containsPII);
 ```
 
-Örneğin:
+Örnek:
 
 ```objc
 [MSALGlobalConfig.loggerConfig setLogCallback:^(MSALLogLevel level, NSString *message, BOOL containsPII)
@@ -78,7 +78,7 @@ MSALGlobalConfig.loggerConfig.piiEnabled = NO;
 
 İOS ve macOS için MSAL kullanarak günlüğe kaydetme düzeyini ayarlamak için aşağıdaki değerlerden birini kullanın:
 
-|Level  |Açıklama |
+|Level  |Description |
 |---------|---------|
 | `MSALLogLevelNothing`| Tüm günlüğe kaydetmeyi devre dışı bırak |
 | `MSALLogLevelError` | Varsayılan düzey, yalnızca hata oluştuğunda bilgileri yazdırır |
@@ -86,7 +86,7 @@ MSALGlobalConfig.loggerConfig.piiEnabled = NO;
 | `MSALLogLevelInfo` |  Kitaplık giriş noktaları, parametreler ve çeşitli Anahtarlık işlemleri |
 |`MSALLogLevelVerbose`     |  API izleme |
 
-Örneğin:
+Örnek:
 
 ```objc
 MSALGlobalConfig.loggerConfig.logLevel = MSALLogLevelVerbose;
@@ -96,7 +96,7 @@ MSALGlobalConfig.loggerConfig.logLevel = MSALLogLevelVerbose;
 
 MSAL günlük iletilerinin ileti kısmı şu biçimdedir `TID = <thread_id> MSAL <sdk_ver> <OS> <OS_ver> [timestamp - correlation_id] message`
 
-Örneğin:
+Örnek:
 
 `TID = 551563 MSAL 0.2.0 iOS Sim 12.0 [2018-09-24 00:36:38 - 36764181-EF53-4E4E-B3E5-16FE362CFC44] acquireToken returning with error: (MSALErrorDomain, -42400) User cancelled the authorization session.`
 
@@ -123,7 +123,7 @@ MSAL günlüğünü yakalamak ve kendi uygulamanızın günlüğüne eklemek iç
 typedef void (^MSALLogCallback)(MSALLogLevel level, NSString *message, BOOL containsPII);
 ```
 
-Örneğin:
+Örnek:
 
 ```swift
 MSALGlobalConfig.loggerConfig.setLogCallback { (level, message, containsPII) in
@@ -155,7 +155,7 @@ MSALGlobalConfig.loggerConfig.piiEnabled = false
 
 İOS ve macOS için MSAL kullanarak günlüğe kaydetme düzeyini ayarlamak için aşağıdaki değerlerden birini kullanın:
 
-|Level  |Açıklama |
+|Level  |Description |
 |---------|---------|
 | `MSALLogLevelNothing`| Tüm günlüğe kaydetmeyi devre dışı bırak |
 | `MSALLogLevelError` | Varsayılan düzey, yalnızca hata oluştuğunda bilgileri yazdırır |
@@ -163,7 +163,7 @@ MSALGlobalConfig.loggerConfig.piiEnabled = false
 | `MSALLogLevelInfo` |  Kitaplık giriş noktaları, parametreler ve çeşitli Anahtarlık işlemleri |
 |`MSALLogLevelVerbose`     |  API izleme |
 
-Örneğin:
+Örnek:
 
 ```swift
 MSALGlobalConfig.loggerConfig.logLevel = .verbose
@@ -173,7 +173,7 @@ MSALGlobalConfig.loggerConfig.logLevel = .verbose
 
 MSAL günlük iletilerinin ileti kısmı şu biçimdedir `TID = <thread_id> MSAL <sdk_ver> <OS> <OS_ver> [timestamp - correlation_id] message`
 
-Örneğin:
+Örnek:
 
 `TID = 551563 MSAL 0.2.0 iOS Sim 12.0 [2018-09-24 00:36:38 - 36764181-EF53-4E4E-B3E5-16FE362CFC44] acquireToken returning with error: (MSALErrorDomain, -42400) User cancelled the authorization session.`
 

@@ -7,10 +7,10 @@ ms.service: fxt-edge-filer
 ms.topic: tutorial
 ms.date: 06/20/2019
 ms.openlocfilehash: 4ce7ffc66e0b6164b2e4ca9725b3f26403292a4a
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92220780"
 ---
 # <a name="tutorial-configure-the-clusters-network-settings"></a>Öğretici: kümenin Ağ ayarlarını yapılandırma
@@ -46,7 +46,7 @@ Küme için ağ ayarları hakkında daha fazla bilgi edinmek için, küme yapıl
 
 * Active Directory ve Kullanıcı adı/grup adı İndirmeleri yapılandırma (gerekirse)
 
-  Ağınız Active Directory veya başka bir tür dış dizin hizmeti kullanıyorsa, kümenin Kullanıcı adı ve grup bilgilerini nasıl indirdiği ayarlamak için kümenin Dizin Hizmetleri yapılandırmasını değiştirmeniz gerekir. **Cluster**  >  Ayrıntılar için küme yapılandırma kılavuzundaki küme**Dizin Hizmetleri** ' ni okuyun.
+  Ağınız Active Directory veya başka bir tür dış dizin hizmeti kullanıyorsa, kümenin Kullanıcı adı ve grup bilgilerini nasıl indirdiği ayarlamak için kümenin Dizin Hizmetleri yapılandırmasını değiştirmeniz gerekir.   >  Ayrıntılar için küme yapılandırma kılavuzundaki küme **Dizin Hizmetleri** ' ni okuyun.
 
   SMB desteğini istiyorsanız bir AD sunucusu gereklidir. SMB 'yi ayarlamaya başlamadan önce AD 'yi yapılandırın.
 
@@ -77,7 +77,7 @@ FXT Edge Filer kümesi, bu işlevler için X. 509.440 sertifikalarını kullanı
 
 Sertifikaları kümeye yüklemeniz gerekiyorsa, **küme**  >  **sertifikaları** ayarları sayfasını kullanın. Ayrıntılar, küme yapılandırma kılavuzunun [küme > sertifikaları](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_certificates.html) sayfasında bulunur.
 
-Küme yönetimi iletişimini şifrelemek için, **Cluster**  >  Yönetim TLS için kullanılacak sertifikayı seçmek üzere küme**genel kurulum** ayarları sayfasını kullanın.
+Küme yönetimi iletişimini şifrelemek için,   >  Yönetim TLS için kullanılacak sertifikayı seçmek üzere küme **genel kurulum** ayarları sayfasını kullanın.
 
 > [!Note]
 > Bulut hizmeti erişim anahtarları, **bulut kimlik bilgileri** yapılandırma sayfası kullanılarak depolanır. Yukarıdaki [çekirdek dosyalayıcı ekleme](fxt-add-storage.md#add-a-core-filer) bölümü bir örnek gösterir; Ayrıntılar için küme yapılandırma kılavuzu [bulut kimlik bilgileri](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_cloud_credentials.html) bölümünü okuyun.

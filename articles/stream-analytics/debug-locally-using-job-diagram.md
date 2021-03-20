@@ -7,10 +7,10 @@ ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 01/23/2020
 ms.openlocfilehash: d0e94fda1fb21be1a01516f4cecf657426ae867e
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/08/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98019457"
 ---
 # <a name="debug-azure-stream-analytics-queries-locally-using-job-diagram-in-visual-studio"></a>Visual Studio 'da iş diyagramını kullanarak Azure Stream Analytics sorguları yerel olarak ayıklayın
@@ -51,11 +51,11 @@ Bu bölümde, diyagramın her bir bölümü için kullanılabilen ölçümleri k
 
 ![İş diyagramı canlı giriş kaynakları](./media/debug-locally-using-job-diagram/live-input.png)
 
-|Ölçüm|Açıklama|
+|Metric|Açıklama|
 |-|-|
 |**Taxırıde**| Girişin adı.|
 |**Olay Hub’ı** | Giriş kaynağı türü.|
-|**Olaylar**|Okunan olay sayısı.|
+|**Ekinlikler**|Okunan olay sayısı.|
 |**Biriktirme listesindeki olay kaynakları**|Event Hubs ve IoT Hub girişleri için kaç tane daha fazla ileti okunması gerekiyor.|
 |**Bayt cinsinden olaylar**|Okunan bayt sayısı.|
 | **Düşürülmüş olaylar**|Seri durumdan çıkarma dışında bir sorunu olan olay sayısı.|
@@ -67,7 +67,7 @@ Bu bölümde, diyagramın her bir bölümü için kullanılabilen ölçümleri k
 
 ![İş diyagramı yerel giriş kaynakları](./media/debug-locally-using-job-diagram/local-input.png)
 
-|Ölçüm|Açıklama|
+|Metric|Açıklama|
 |-|-|
 |**Taxırıde**| Girişin adı.|
 |**Satır Sayısı**| Adımdan oluşturulan satır sayısı.|
@@ -78,7 +78,7 @@ Bu bölümde, diyagramın her bir bölümü için kullanılabilen ölçümleri k
 
 ![İş diyagramı sorgu adımı](./media/debug-locally-using-job-diagram/query-step.png)
 
-|Ölçüm|Açıklama|
+|Metric|Açıklama|
 |-|-|
 |**TripData**|Geçici sonuç kümesinin adı.|
 |**Satır Sayısı**| Adımdan oluşturulan satır sayısı.|
@@ -88,16 +88,16 @@ Bu bölümde, diyagramın her bir bölümü için kullanılabilen ölçümleri k
 
 ![Yerel çıkış havuzlarını gösteren iş diyagramı.](./media/debug-locally-using-job-diagram/live-output.png)
 
-|Ölçüm|Açıklama|
+|Metric|Açıklama|
 |-|-|
 |**regionaggEH**|Çıkışın adı.|
-|**Olaylar**|Havuza çıkış yapılacak olay sayısı.|
+|**Ekinlikler**|Havuza çıkış yapılacak olay sayısı.|
 
 #### <a name="output-sinks-local-output"></a>Çıkış havuzları (yerel çıkış)
 
 ![İş diyagramı yerel çıkış havuzları](./media/debug-locally-using-job-diagram/local-output.png)
 
-|Ölçüm|Açıklama|
+|Metric|Açıklama|
 |-|-|
 |**regionaggEH**|Çıkışın adı.|
 |**Yerel çıkış**| Yerel bir dosyaya giden sonuç çıktısı.|

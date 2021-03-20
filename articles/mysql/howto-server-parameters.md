@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: how-to
 ms.date: 10/1/2020
 ms.openlocfilehash: 363be8b34f230b812bc24276e1f3925faf0cdc1c
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94540850"
 ---
 # <a name="configure-server-parameters-in-azure-database-for-mysql-using-the-azure-portal"></a>Azure portal kullanarak MySQL için Azure veritabanı 'nda sunucu parametrelerini yapılandırma
@@ -29,7 +29,7 @@ MySQL için Azure veritabanı bazı sunucu parametrelerinin yapılandırılması
 :::image type="content" source="./media/howto-server-parameters/3-toggle_parameter.png" alt-text="Açılan listesini numaralandır":::
 4. Değişikliklerinizi kaydetmek için  **Kaydet** ' e tıklayın.
 :::image type="content" source="./media/howto-server-parameters/4-save_parameters.png" alt-text="Değişiklikleri kaydetme veya atma":::
-5. Parametreler için yeni değerler kaydettiyseniz, **Tümünü Sıfırla** ' yı seçerek her şeyi varsayılan değerlere geri döndürebilirsiniz.
+5. Parametreler için yeni değerler kaydettiyseniz, **Tümünü Sıfırla**' yı seçerek her şeyi varsayılan değerlere geri döndürebilirsiniz.
 :::image type="content" source="./media/howto-server-parameters/5-reset_parameters.png" alt-text="Tümünü Varsayılana sıfırla":::
 
 ## <a name="setting-parameters-not-listed"></a>Ayar parametreleri listelenmedi
@@ -41,7 +41,7 @@ Güncelleştirmek istediğiniz sunucu parametresi Azure portal listelenmemişse,
 3. Sunucu parametrelerini şu biçimde ekleyin: değer `SET parameter_name=YOUR_DESIRED_VALUE` sütununda değer sütunu.
 
     Örneğin, için ayarını yaparak sunucunuzun karakter kümesini değiştirebilirsiniz. `init_connect``SET character_set_client=utf8;SET character_set_database=utf8mb4;SET character_set_connection=latin1;SET character_set_results=latin1;`
-4. **Kaydet** ’a tıklayarak değişikliklerinizi kaydedin.
+4. **Kaydet**’a tıklayarak değişikliklerinizi kaydedin.
 
 >[!Note]
 > `init_connect`, SÜPER ayrıcalıklar gerektirmeyen parametreleri oturum düzeyinde değiştirmek için kullanılabilir. Parametreyi `init_connect` kullanarak ayarlayıp ayarlayamayacağınızı doğrulamak için `set session parameter_name=YOUR_DESIRED_VALUE;` komutunu yürütün. **Erişim reddedildi; SÜPER ayrıcalıklar gerekiyor** hatası alırsanız ilgili parametreyi "init_connect" kullanarak ayarlayamazsınız.

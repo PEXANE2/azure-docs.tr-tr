@@ -12,10 +12,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 7c9f8949fb61f2c152c0fbae09c0da84228908bc
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93135390"
 ---
 # <a name="what-is-app-provisioning"></a>Uygulama sağlama nedir?
@@ -28,4 +28,4 @@ ms.locfileid: "93135390"
 - [Kimlik yaşam döngüsü yönetimi nedir?](what-is-identity-lifecycle-management.md)
 - [Sağlama nedir?](what-is-provisioning.md)
 - [HR odaklı sağlama nedir?](what-is-hr-driven-provisioning.md)
-- [Dizin içi sağlama nedir?](what-is-inter-directory-provisioning.md)
+- [Dizinler arası sağlama nedir?](what-is-inter-directory-provisioning.md)

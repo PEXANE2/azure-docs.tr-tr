@@ -11,10 +11,10 @@ ms.date: 08/12/2019
 ms.author: mbaldwin
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: cb7e047d998342125a52af5ea3ae1e88fe88d313
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/03/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93289897"
 ---
 # <a name="manage-key-vault-using-the-azure-cli"></a>Azure CLı kullanarak Key Vault yönetme 
@@ -60,7 +60,7 @@ az account set -h
 
 Azure platformlar arası Command-Line arabirimindeki Azure Resource Manager hakkında bilgi edinmek için aşağıdaki makaleleri de okuyabilirsiniz:
 
-* [Azure CLı 'yı yükler](/cli/azure/install-azure-cli)
+* [Azure CLI'yı yükleme](/cli/azure/install-azure-cli)
 * [Azure CLI'yi kullanmaya başlama](/cli/azure/get-started-with-azure-cli)
 
 ## <a name="how-to-create-a-hardened-container-a-vault-in-azure"></a>Azure 'da sağlamlaştırılmış bir kapsayıcı (kasa) oluşturma
@@ -128,8 +128,8 @@ az keyvault create --name "ContosoKeyVault" --resource-group "ContosoResourceGro
 
 Bu komutun çıktısı, oluşturduğunuz anahtar kasasının özelliklerini gösterir. En önemli iki özellik şunlardır:
 
-* **ad** : örnekte, Contosokeykasası adı. Bu adı diğer Key Vault komutları için kullanacaksınız.
-* **Vaulturi** : örnekte URI kullanılır https://contosokeyvault.vault.azure.net . REST API'si aracılığıyla kasanızı kullanan uygulamaların bu URI'yi kullanması gerekir.
+* **ad**: örnekte, Contosokeykasası adı. Bu adı diğer Key Vault komutları için kullanacaksınız.
+* **Vaulturi**: örnekte URI kullanılır https://contosokeyvault.vault.azure.net . REST API'si aracılığıyla kasanızı kullanan uygulamaların bu URI'yi kullanması gerekir.
 
 Azure hesabınız artık bu anahtar kasasında herhangi bir işlemi gerçekleştirmeye yetkilidir. Henüz hiç olmadığı için, başka hiç kimse yetkili değil.
 

@@ -7,10 +7,10 @@ ms.service: security
 ms.topic: article
 ms.date: 07/14/2020
 ms.openlocfilehash: 60ab9290dd204b9e65fcc612d1b590785450ebed
-ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/11/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94516876"
 ---
 # <a name="threat-modeling-tool-update-release-73007142---07142020"></a>Threat Modeling Tool güncelleştirme sürümü 7.3.00714.2-07/14/2020
@@ -19,7 +19,7 @@ Microsoft Threat Modeling Tool (TMT) sürümü 7.3.00714.2, Temmuz 14 2020 ' de 
 
 - Erişilebilirlik geliştirmeleri
 
-## <a name="system-requirements"></a>Sistem gereksinimleri
+## <a name="system-requirements"></a>Sistem Gereksinimleri
 
 - Desteklenen İşletim Sistemleri
   - [Microsoft Windows 10 yıldönümü güncelleştirmesi](https://blogs.windows.com/windowsexperience/2016/08/02/how-to-get-the-windows-10-anniversary-update/#HTkoK5Zdv0g2F2Zq.97) veya üzeri

@@ -7,10 +7,10 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 08/06/2020
 ms.openlocfilehash: 0c122a21fc7149e9943825cafbed77069b7919f3
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100593587"
 ---
 # <a name="native-react-plugin-for-application-insights-javascript-sdk"></a>JavaScript SDK Application Insights için yerel yanıt verme eklentisi
@@ -25,7 +25,7 @@ Application Insights JavaScript SDK 'Sı için yerel yanıt verme eklentisi ciha
 
 Bir sürüm >= 2.0.0 kullanmanız gerekir `@microsoft/applicationinsights-web` . Bu eklenti yalnızca, yanıt verme yerel uygulamalarında çalışır. Bu [, Fuar çerçevesini kullanan uygulamalarla](https://docs.expo.io/)çalışmaz, bu nedenle Işlem, yerel uygulama oluştur ile çalışmaz.
 
-## <a name="getting-started"></a>Başlarken
+## <a name="getting-started"></a>Kullanmaya başlama
 
 Yanıt verme [-yerel-cihaz-bilgi](https://www.npmjs.com/package/react-native-device-info) paketini yükleyip bağlayın. `react-native-device-info`Uygulamanızı kullanarak en son cihaz adlarını toplamak için paketi güncel tutun.
 

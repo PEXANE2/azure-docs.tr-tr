@@ -17,10 +17,10 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
 ms.openlocfilehash: a78d3a76e2b13a120e9e744e181c95bfcb330f27
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92313904"
 ---
 # <a name="tutorial-send-localized-push-notifications-to-ios-using-azure-notification-hubs"></a>Öğretici: Azure Notification Hubs kullanarak iOS 'a yerelleştirilmiş anında iletme bildirimleri gönderme
@@ -44,7 +44,7 @@ Bu öğreticide, aşağıdaki adımları gerçekleştireceksiniz:
 > * .NET konsol uygulamasından yerelleştirilmiş şablon bildirimleri gönder
 > * Cihazdan yerelleştirilmiş şablon bildirimleri gönder
 
-## <a name="overview"></a>Genel bakış
+## <a name="overview"></a>Genel Bakış
 
 [Son haberleri göndermek için Notification Hubs kullanır], farklı haber kategorilerine yönelik bildirimlere abone olmak için **Etiketler** kullanan bir uygulama derlediniz. Ancak birçok uygulama, birden çok pazarda hedef ve yerelleştirme gerektirir. Bu, bildirimlerin içeriklerinin kendileri için yerelleştirilmiş olması ve doğru cihaz kümesine teslim edilmesi anlamına gelir. Bu öğreticide, yerelleştirilmiş son haberler bildirimlerini kolayca sunmak için Notification Hubs **şablon** özelliğinin nasıl kullanılacağı gösterilmektedir.
 
@@ -73,7 +73,7 @@ Ardından cihazların doğru özelliğe başvuran bir şablonla kaydolmanızı s
 
 Şablonlar hakkında daha fazla bilgi için bkz. [Şablonlar](notification-hubs-templates-cross-platform-push-messages.md) makalesi.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * [Belirli iOS cihazlarına anında iletme bildirimlerini](notification-hubs-ios-xplat-segmented-apns-push-notification.md) doldurun ve bu öğretici doğrudan bu kodla oluşturulduğundan kodun kullanılabilir olmasını sağlayabilirsiniz.
 * Visual Studio 2019 isteğe bağlıdır.

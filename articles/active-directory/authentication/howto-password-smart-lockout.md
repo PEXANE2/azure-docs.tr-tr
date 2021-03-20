@@ -12,15 +12,15 @@ manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a5f501c19da3c2ddc06ad89fe5649789477af7ec
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/02/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99255382"
 ---
-# <a name="protect-user-accounts-from-attacks-with-azure-active-directory-smart-lockout"></a>Kullanıcı hesaplarını Azure Active Directory akıllı kilitleme saldırılarına karşı koruma
+# <a name="protect-user-accounts-from-attacks-with-azure-active-directory-smart-lockout"></a>Azure Active Directory akıllı kilitleme özelliğiyle kullanıcı hesaplarını saldırılardan koruma
 
-Akıllı kilitleme, kullanıcılarınızın parolalarını tahmin etmeye ya da almak için deneme yanılma yöntemlerini kullanmaya zorlayan kötü aktörlerin kilitlenmesini önlemeye yardımcı olur. Akıllı kilitleme, geçerli kullanıcılardan gelen oturum açma işlemlerini algılayabilir ve bunları saldırganlar ve diğer bilinmeyen kaynaklardan farklı olarak kabul edebilir. Saldırganlar kilitlenir, ancak kullanıcılarınız hesaplarına erişmeye devam eder ve üretken olabilirler.
+Akıllı kilitleme kullanıcılarınızın parolalarını tahmin etmeye çalışan veya bunun için deneme yanılma yöntemlerini kullanan kötü aktörleri engellemeye yardımcı olur. Akıllı kilitleme geçerli kullanıcılardan gelen oturum açma işlemlerini tanıyabilir ve bunlara, saldırganlara ve diğer bilinmeyen kaynaklara davrandığından farklı davranır. Saldırganlar engellenirken kullanıcılarınız hesaplarına erişmeye ve üretken olmaya devam eder.
 
 ## <a name="how-smart-lockout-works"></a>Akıllı kilitleme nasıl çalışacaktır?
 

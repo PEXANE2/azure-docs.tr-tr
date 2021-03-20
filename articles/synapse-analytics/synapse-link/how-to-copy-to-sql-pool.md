@@ -10,10 +10,10 @@ ms.date: 08/10/2020
 ms.author: acomet
 ms.reviewer: jrasnick
 ms.openlocfilehash: 13891f9614e658be39adbb69fed1503a0c66d5e4
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93309219"
 ---
 # <a name="copy-data-from-azure-cosmos-db-into-a-dedicated-sql-pool-using-apache-spark"></a>Apache Spark kullanarak Azure Cosmos DB verileri adanmış bir SQL havuzuna kopyalama
@@ -50,7 +50,7 @@ Bu örnekte, **RetailSales** ADLı BIR htap kapsayıcısı kullanıyoruz. Bu, ba
 * weekStarting: Long (Nullable = true)
 * _etag: dize (Nullable = true)
 
-Rapor amaçları doğrultusunda, *productCode* ve *weekby* Sales ( *Miktar* , *gelir* (fiyat x miktarı) toplanacak satışları toplayacağız. Son olarak, bu verileri **dbo. ProductSales** adlı özel bir SQL havuzu tablosuna aktaracağız.
+Rapor amaçları doğrultusunda, *productCode* ve *weekby* Sales (*Miktar*, *gelir* (fiyat x miktarı) toplanacak satışları toplayacağız. Son olarak, bu verileri **dbo. ProductSales** adlı özel bir SQL havuzu tablosuna aktaracağız.
 
 ## <a name="configure-a-spark-notebook"></a>Spark Not defteri yapılandırma
 Ana dil olarak Scala as Spark (Scala) ile bir Spark Not defteri oluşturun. Oturum için Not defterinin varsayılan ayarını kullanıyoruz.

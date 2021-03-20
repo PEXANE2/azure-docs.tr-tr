@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 06/14/2019
 ms.author: jeedes
 ms.openlocfilehash: 30dd7068a8ba2d0e30a2a4308e124886c4439641
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92515486"
 ---
 # <a name="tutorial-integrate-perceptyx-with-azure-active-directory"></a>Öğretici: Perceptyx ile tümleştirin Azure Active Directory
@@ -52,7 +52,7 @@ Perceptyx tümleştirmesini Azure AD 'ye göre yapılandırmak için, Galeriden 
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-**B. Simon**adlı bir test kullanıcısı kullanarak Azure AD SSO 'yu Perceptyx ile yapılandırın ve test edin. SSO 'nun çalışması için, Perceptyx içinde bir Azure AD kullanıcısı ve ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
+**B. Simon** adlı bir test kullanıcısı kullanarak Azure AD SSO 'yu Perceptyx ile yapılandırın ve test edin. SSO 'nun çalışması için, Perceptyx içinde bir Azure AD kullanıcısı ve ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
 
 Azure AD SSO 'yu Perceptyx ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
 

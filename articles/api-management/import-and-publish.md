@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.date: 09/30/2020
 ms.author: apimpm
 ms.openlocfilehash: 9ff64f57e61002101b4e2c560bdcd91863cc461e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91626984"
 ---
 # <a name="tutorial-import-and-publish-your-first-api"></a>Öğretici: ilk API 'nizi Içeri aktarma ve yayımlama
@@ -48,7 +48,7 @@ Bu bölümde, bir Openapı belirtim arka uç API 'sini içeri ve nasıl yayımla
 
    **Ayarlar** sekmesine giderek, oluşturma sırasında veya daha sonra API değerlerini ayarlayabilirsiniz.
 
-   :::image type="content" source="media/import-and-publish/create-api.png" alt-text="API Management yeni API":::
+   :::image type="content" source="media/import-and-publish/create-api.png" alt-text="Bir API oluşturma":::
 
 
    |Ayar|Değer|Açıklama|
@@ -59,7 +59,7 @@ Bu bölümde, bir Openapı belirtim arka uç API 'sini içeri ve nasıl yayımla
    |**Açıklama**|Önceki hizmet URL 'sini girdikten sonra, API Management bu alanı JSON 'a göre doldurur.|API 'nin isteğe bağlı bir açıklaması.|
    |**URL düzeni**|**HTTPS**|API 'ye erişebilen protokoller.|
    |**API URL’si soneki**|*conference*|API Management hizmeti için temel URL 'ye eklenen sonek. API Management, API 'Lerini kendi sonekine göre ayırır. bu nedenle, belirli bir yayımcının her API 'SI için sonekin benzersiz olması gerekir.|
-   |**Lerimi**| |Arama, gruplama veya filtreleme için API 'Leri düzenlemek için Etiketler.|
+   |**Etiketler**| |Arama, gruplama veya filtreleme için API 'Leri düzenlemek için Etiketler.|
    |**Ürünler**|**Sınırsız**|Bir veya daha fazla API 'nin ilişkilendirmesi. Her bir API Management örneği iki örnek ürünle gelir: **Başlangıç** ve **sınırsız**. API 'yi bir ürünle ilişkilendirerek, bu örnekte **sınırsız** bir API yayımlayın.<br/><br/> Bir ürüne çeşitli API 'Ler dahil edebilir ve bunları geliştirici portalı aracılığıyla geliştiricilere sunabilirsiniz. Bu API 'yi başka bir ürüne eklemek için ürün adını yazın veya seçin. API 'yi birden çok ürüne eklemek için bu adımı tekrarlayın. Ayrıca, daha sonra **Ayarlar** sayfasından, ürünlere API 'ler ekleyebilirsiniz.<br/><br/>  Ürünler hakkında daha fazla bilgi için bkz. [ürün oluşturma ve yayımlama](api-management-howto-add-products.md).|
    |**Ağ geçitleri**|**Yönetilen**|API 'YI kullanıma sunan API Gateway 'leri. Bu alan yalnızca **Geliştirici** ve **Premium** katman hizmetlerinde kullanılabilir.<br/><br/>**Yönetilen** , API Management hizmetine yerleştirilmiş ve Azure 'da Microsoft tarafından barındırılan ağ geçidini gösterir. [Şirket içinde barındırılan ağ geçitleri](self-hosted-gateway-overview.md) yalnızca Premium ve geliştirici hizmet katmanlarında kullanılabilir. Bunları şirket içinde veya diğer bulutlarda dağıtabilirsiniz.<br/><br/> Ağ Geçidi seçilmezse, API kullanılamaz ve API istekleriniz başarılı olmayacaktır.|
    |**Bu API'nin sürümü oluşturulsun mu?**|Seç veya seçimi kaldır|Daha fazla bilgi için bkz. [API 'nizin birden fazla sürümünü yayımlama](api-management-get-started-publish-versions.md).|
@@ -76,10 +76,10 @@ Bir API tanımını içeri aktarma sorunları yaşıyorsanız, [bilinen sorunlar
 İşlemleri görüntülemek ve test etmek için kullanışlı bir yol sağlayan, API işlemlerini doğrudan Azure portal çağırabilirsiniz.
 
 1. API Management örneğinizin sol gezinti bölmesinde, **API**  >  **demo Konferansı API 'si**' ni seçin.
-1. **Test** sekmesini seçin ve ardından **gethoparlörler**' i seçin. Sayfa, varsa **sorgu parametrelerini** ve **üst bilgileri**gösterir. **OCP-apim-Subscription-Key** , bu API ile ilişkili abonelik anahtarı için otomatik olarak doldurulur.
+1. **Test** sekmesini seçin ve ardından **gethoparlörler**' i seçin. Sayfa, varsa **sorgu parametrelerini** ve **üst bilgileri** gösterir. **OCP-apim-Subscription-Key** , bu API ile ilişkili abonelik anahtarı için otomatik olarak doldurulur.
 1. **Gönder**’i seçin.
 
-   :::image type="content" source="media/import-and-publish/01-import-first-api-01.png" alt-text="API Management yeni API":::
+   :::image type="content" source="media/import-and-publish/01-import-first-api-01.png" alt-text="Azure portal 'da API 'YI test etme":::
 
    Arka uç **200 Tamam** ve bazı veriler ile yanıt verir.
 

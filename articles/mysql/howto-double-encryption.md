@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: how-to
 ms.date: 06/30/2020
 ms.openlocfilehash: 3f9c22a690859b459b6bb748c3b1001c4aa7660d
-ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/03/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93241761"
 ---
 # <a name="infrastructure-double-encryption-for-azure-database-for-mysql"></a>MySQL için Azure veritabanı için altyapı çift şifrelemesi
@@ -27,7 +27,7 @@ Azure portal altyapı çift şifrelemesi ile bir MySQL için Azure veritabanı s
 
 1. Portalın sol üst köşesinde bulunan **kaynak oluştur** (+) seçeneğini belirleyin.
 
-2. **Veritabanları**  >  **MySQL için Azure veritabanı** ' nı seçin. Ayrıca, arama kutusuna **MySQL** girerek hizmeti bulabilirsiniz.
+2. **Veritabanları**  >  **MySQL için Azure veritabanı**' nı seçin. Ayrıca, arama kutusuna **MySQL** girerek hizmeti bulabilirsiniz.
 
    :::image type="content" source="./media/quickstart-create-mysql-server-database-using-azure-portal/2_navigate-to-mysql.png" alt-text="MySQL için Azure Veritabanı seçeneği":::
 

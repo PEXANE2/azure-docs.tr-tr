@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 3/18/2020
 ms.openlocfilehash: 7a1aa061bb8c8be3a676e0e5bb690b2a9749b6c8
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94536141"
 ---
 # <a name="azure-database-for-mysql-management-stored-procedures"></a>MySQL için Azure veritabanı yönetimi saklı yordamları
@@ -25,7 +25,7 @@ Aşağıdaki saklı yordamlar bir kaynak ve çoğaltma arasında Gelen Verileri 
 
 |**Saklı yordam adı**|**Giriş parametreleri**|**Çıkış parametreleri**|**Kullanım notunun**|
 |-----|-----|-----|-----|
-|*mysql.az_replication_change_master*|master_host<br/>master_user<br/>master_password<br/>master_port<br/>master_log_file<br/>master_log_pos<br/>master_ssl_ca|YOK|SSL moduyla veri aktarmak için CA sertifikasının bağlamını master_ssl_ca parametresine geçirin. </br><br>SSL olmadan veri aktarmak için master_ssl_ca parametresine boş bir dize geçirin.|
+|*mysql.az_replication_change_master*|master_host<br/>master_user<br/>master_password<br/>master_port<br/>master_log_file<br/>master_log_pos<br/>master_ssl_ca|Yok|SSL moduyla veri aktarmak için CA sertifikasının bağlamını master_ssl_ca parametresine geçirin. </br><br>SSL olmadan veri aktarmak için master_ssl_ca parametresine boş bir dize geçirin.|
 |*mysql.az_replication _start*|Yok|Yok|Çoğaltmayı başlatır.|
 |*mysql.az_replication _stop*|Yok|Yok|Çoğaltmayı durduruyor.|
 |*mysql.az_replication _remove_master*|Yok|Yok|Kaynak ve çoğaltma arasındaki çoğaltma ilişkisini kaldırır.|
@@ -39,8 +39,8 @@ Aşağıdaki saklı yordamlar, MySQL için Azure veritabanı 'nda sunucunuzu yö
 
 |**Saklı yordam adı**|**Giriş parametreleri**|**Çıkış parametreleri**|**Kullanım notunun**|
 |-----|-----|-----|-----|
-|*mysql.az_kill*|processlist_id|YOK|Komuta eşdeğerdir [`KILL CONNECTION`](https://dev.mysql.com/doc/refman/8.0/en/kill.html) . , Bağlantının yürütüldüğü tüm deyimleri sonlandırdıktan sonra, belirtilen processlist_id ilişkili bağlantıyı sonlandırır.|
-|*mysql.az_kill_query*|processlist_id|YOK|Komuta eşdeğerdir [`KILL QUERY`](https://dev.mysql.com/doc/refman/8.0/en/kill.html) . Bağlantı şu anda yürütülmekte olan ifadeyi sonlandırır. Bağlantıyı canlı bırakır.|
+|*mysql.az_kill*|processlist_id|Yok|Komuta eşdeğerdir [`KILL CONNECTION`](https://dev.mysql.com/doc/refman/8.0/en/kill.html) . , Bağlantının yürütüldüğü tüm deyimleri sonlandırdıktan sonra, belirtilen processlist_id ilişkili bağlantıyı sonlandırır.|
+|*mysql.az_kill_query*|processlist_id|Yok|Komuta eşdeğerdir [`KILL QUERY`](https://dev.mysql.com/doc/refman/8.0/en/kill.html) . Bağlantı şu anda yürütülmekte olan ifadeyi sonlandırır. Bağlantıyı canlı bırakır.|
 |*mysql.az_load_timezone*|Yok|Yok|`time_zone`Parametrenin adlandırılmış değerlere (örn.) ayarlanbilmesini sağlamak için saat dilimi tablolarını yükler. "ABD/Pasifik").|
 
 ## <a name="next-steps"></a>Sonraki adımlar

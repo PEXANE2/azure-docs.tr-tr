@@ -12,14 +12,14 @@ ms.topic: troubleshooting
 ms.date: 01/05/2021
 ms.reviewer: arvinh
 ms.openlocfilehash: 9eba671f6c824c8c88388f2b9d61512dfb1d122f
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/02/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99256652"
 ---
 # <a name="known-issues-application-provisioning"></a>Bilinen sorunlar: uygulama sağlama
-Uygulama sağlama ile çalışırken farkında olmak üzere bilinen sorunlar. UserVoice üzerinde uygulama sağlama hizmeti hakkında geri bildirimde bulunmak için bkz. [Azure AD uygulama sağlama UserVoice](https://aka.ms/appprovisioningfeaturerequest). Hizmeti iyileştirebilmemiz için UserVoice 'ı yakından izliyoruz. 
+Uygulama sağlama üzerinde çalışırken dikkat etmeniz gereken bilinen sorunlar. UserVoice üzerinde uygulama sağlama hizmeti hakkında geri bildirimde bulunmak için bkz. [Azure AD uygulama sağlama UserVoice](https://aka.ms/appprovisioningfeaturerequest). Hizmeti iyileştirebilmemiz için UserVoice 'ı yakından izliyoruz. 
 
 > [!NOTE]
 > Bu, bilinen sorunların kapsamlı bir listesi değildir. Listelenmeyen bir sorunu biliyorsanız, sayfanın en altında geri bildirim sağlayın.
