@@ -16,10 +16,10 @@ ms.author: sethm
 ms.reviewer: thsomasu
 ms.lastreviewed: 01/04/2019
 ms.openlocfilehash: c0c0018ac3007f77da820b9b0cecbb69c68bef31
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92308310"
 ---
 # <a name="tutorial-send-push-notifications-to-specific-android-devices-using-google-cloud-messaging-deprecated"></a>Öğretici: Google Cloud Messaging kullanarak belirli Android cihazlarına anında iletme bildirimleri gönderin (kullanım dışı)
@@ -29,7 +29,7 @@ ms.locfileid: "92308310"
 
 [!INCLUDE [notification-hubs-selector-breaking-news](../../includes/notification-hubs-selector-breaking-news.md)]
 
-## <a name="overview"></a>Genel bakış
+## <a name="overview"></a>Genel Bakış
 
 Bu öğreticide, bir Android uygulamasında son dakika haber bildirimleri yayınlamak için Azure Notification Hubs'ın nasıl kullanılacağı gösterilir. Bu öğreticiyi tamamladığınızda, ilginizi çeken son dakika haberi kategorilerine kaydolabilecek ve yalnızca bu kategoriler için anında iletme bildirimleri alabileceksiniz. Bu senaryo, daha önce ilgisini belirtmiş kullanıcı gruplarına bildirim gönderilmesi gereken RSS okuyucu, müzik hayranlarına yönelik uygulamalar vb. birçok uygulama için ortak düzendir.
 
@@ -43,7 +43,7 @@ Bu öğreticide, aşağıdaki eylemleri gerçekleştireceksiniz:
 > * Etiketli bildirimler gönderme.
 > * Uygulamayı test etme
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğretici, [Öğretici: Azure Notification Hubs ve Google Cloud Messaging kullanarak Android cihazlara anında iletme bildirimleri gönderme][get-started] öğreticisinde oluşturduğunuz uygulamayı temel alır. Bu öğreticiye başlamadan önce [Öğretici: Azure Notification Hubs ve Google Cloud Messaging kullanarak Android cihazlara anında iletme bildirimleri gönderme][get-started] öğreticisini tamamlayın.
 

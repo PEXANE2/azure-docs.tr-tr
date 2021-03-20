@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 02/24/2020
 ms.author: jeedes
 ms.openlocfilehash: 1fbc42864761360d252ed62cea1aef6f2937b599
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92516078"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-signalfx"></a>Öğretici: SignalFx ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
@@ -62,14 +62,14 @@ SignalFx SSO için yapılandırma işlemine başlamak üzere bu yönergeleri kul
 
 1. Yeni açılan sekmesinde, SignalFx Kullanıcı arabirimine erişin ve oturum açın. 
 1. Üstteki menüden **tümleştirmeler**' e tıklayın. 
-1. Arama alanına **Azure Active Directory**girin ve öğesini seçin.
+1. Arama alanına **Azure Active Directory** girin ve öğesini seçin.
 1. **Yeni tümleştirme oluştur**' a tıklayın.
-1. **Ad**alanına kullanıcılarınızın anlayabilmesi için kolayca tanınabilir bir ad girin.
+1. **Ad** alanına kullanıcılarınızın anlayabilmesi için kolayca tanınabilir bir ad girin.
 1. **Oturum açma sayfasında göster '** i işaretleyin.
     * Bu özellik, oturum açma sayfasında kullanıcılarınızın tıkladiği özelleştirilmiş bir düğme görüntüler. 
     * **Adında** girdiğiniz bilgiler, düğmesinde görüntülenir. Sonuç olarak, kullanıcılarınızın tanıyacağı bir **ad** girin. 
-    * Bu seçenek yalnızca, **YourCompanyName.signalfx.com**gibi signalfx uygulaması için özel bir alt etki alanı kullanıyorsanız çalışır. Özel bir alt etki alanı almak için, SignalFx desteğiyle iletişim kurun. 
-1. **TÜMLEŞTIRME kimliğini**kopyalayın. Daha sonraki bir adımda bu bilgilere ihtiyacınız olacaktır. 
+    * Bu seçenek yalnızca, **YourCompanyName.signalfx.com** gibi signalfx uygulaması için özel bir alt etki alanı kullanıyorsanız çalışır. Özel bir alt etki alanı almak için, SignalFx desteğiyle iletişim kurun. 
+1. **TÜMLEŞTIRME kimliğini** kopyalayın. Daha sonraki bir adımda bu bilgilere ihtiyacınız olacaktır. 
 1. SignalFx Kullanıcı arabirimini açık bırakın. 
 
 ## <a name="step-3-configure-azure-ad-sso"></a>3. Adım: Azure AD SSO 'yu yapılandırma
@@ -84,7 +84,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu yönergeleri kullanın.
 
 1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, aşağıdaki alanları doldurun: 
 
-    a. **Tanımlayıcı**alanına aşağıdaki URL 'yi girin `https://api.<realm>.signalfx.com/v1/saml/metadata` ve `<realm>` signalfx Realm ile değiştirin. 
+    a. **Tanımlayıcı** alanına aşağıdaki URL 'yi girin `https://api.<realm>.signalfx.com/v1/saml/metadata` ve `<realm>` signalfx Realm ile değiştirin. 
 
     b. **Yanıt URL 'si**' nde aşağıdaki URL 'yi girin `https://api.<realm>.signalfx.com/v1/saml/acs/<integration ID>` ve `<realm>` signalfx Realm ile değiştirin ve `<integration ID>` daha önce Signalfx kullanıcı arabiriminden kopyaladığınız **tümleştirme kimliği** ile değiştirin.
 
@@ -92,10 +92,10 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu yönergeleri kullanın.
     
 1. Aşağıdaki taleplerin Active Directory doldurulmuş kaynak özniteliklerle eşlendiğini gözden geçirin ve doğrulayın. 
 
-    | Adı |  Kaynak özniteliği|
+    | Name |  Kaynak özniteliği|
     | ------------------- | -------------------- |
     | Kullanıcı. FirstName  | Kullanıcı. |
-    | Kullanıcı. e-posta  | Kullanıcı. Mail |
+    | User.email  | Kullanıcı. Mail |
     | Personimmutableıd       | User. UserPrincipalName    |
     | User. LastName       | User. soyadı    |
 
@@ -110,14 +110,14 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu yönergeleri kullanın.
 
 ## <a name="step-4-create-an-azure-ad-test-user"></a>4. Adım: Azure AD test kullanıcısı oluşturma
 
-**B. Simon**adlı Azure Portal bir test kullanıcısı oluşturmak için bu yönergeleri kullanın.
+**B. Simon** adlı Azure Portal bir test kullanıcısı oluşturmak için bu yönergeleri kullanın.
 
 1. Azure portal, sol taraftaki Gezinti penceresinde **Azure Active Directory**' i seçin, ardından **Kullanıcılar**' ı seçin ve ardından **tüm kullanıcılar**' ı seçin.
 1. Sayfanın üst kısmında **Yeni Kullanıcı**' yı seçin.
 1. **Kullanıcı** özelliklerinde:
-   1. **Kullanıcı adı**alanına, gibi girin `username@companydomain.extension` `b.simon@contoso.com` .
-   1. **Ad**alanına girin `B.Simon` .
-   1. **Parolayı göster**' i işaretleyin ve ardından görünen değeri **parolada**kopyalayın. Bu tümleştirmeyi test etmek için sonraki adımda bu bilgilere ihtiyacınız olacaktır. 
+   1. **Kullanıcı adı** alanına, gibi girin `username@companydomain.extension` `b.simon@contoso.com` .
+   1. **Ad** alanına girin `B.Simon` .
+   1. **Parolayı göster**' i işaretleyin ve ardından görünen değeri **parolada** kopyalayın. Bu tümleştirmeyi test etmek için sonraki adımda bu bilgilere ihtiyacınız olacaktır. 
    1. **Oluştur**’a tıklayın.
 
 ## <a name="step-5-assign-the-azure-ad-test-user"></a>5. Adım: Azure AD test kullanıcısını atama
@@ -143,7 +143,7 @@ Test kullanıcısına SignalFx için Azure çoklu oturum açma özelliğini kull
 1. Önceki sekmeyi açın ve geçerli Azure Active Directory tümleştirme sayfasını görüntülemek için SignalFx Kullanıcı arabirimine dönün. 
 1. **Sertifika (base64)** seçeneğinin yanındaki **dosyayı karşıya yükle**' ye tıklayın ve ardından Azure Portal daha önce indirdiğiniz **Base64 kodlamalı sertifika** dosyasını bulun.
 1. **Azure AD tanımlayıcısı**' nın yanında, daha önce KOPYALADıĞıNıZ **Azure ad tanımlayıcı** değerini Azure Portal yapıştırın. 
-1. **Federasyon meta verileri URL 'sinin**yanında, daha önce Azure Portal kopyaladığınız **uygulama Federasyon meta veri URL 'si** değerini yapıştırın. 
+1. **Federasyon meta verileri URL 'sinin** yanında, daha önce Azure Portal kopyaladığınız **uygulama Federasyon meta veri URL 'si** değerini yapıştırın. 
 1. **Kaydet**’e tıklayın.
 
 ## <a name="step-7-test-sso"></a>7. Adım: test SSO 'SU
@@ -159,7 +159,7 @@ SSO 'yu test etme ile ilgili olarak aşağıdaki bilgileri ve SignalFx ' de ilk 
         * Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](../user-help/my-apps-portal-end-user-access.md).
 
 * SignalFx uygulamasına erişim panelinden veya kuruluşa atanmış özel bir oturum açma sayfası aracılığıyla erişilebilir. Test kullanıcısı bu konumdan başlayarak tümleştirmeyi test etmelidir.
-    * Test kullanıcısı **b. Simon \@ contoso.com**için bu işlemde daha önce oluşturulan kimlik bilgilerini kullanabilir.
+    * Test kullanıcısı **b. Simon \@ contoso.com** için bu işlemde daha önce oluşturulan kimlik bilgilerini kullanabilir.
 
 ### <a name="first-time-logins"></a>İlk kez oturum açma işlemleri
 

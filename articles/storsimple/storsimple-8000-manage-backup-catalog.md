@@ -1,6 +1,6 @@
 ---
 title: StorSimple yedekleme kataloğunuzu yönetme | Microsoft Docs
-description: Yedek kümelerini listelemek, seçmek ve silmek için StorSimple Aygıt Yöneticisi hizmet yedekleme kataloğu sayfasının nasıl kullanılacağını açıklar.
+description: Yedek kümelerini listelemek, seçmek ve silmek için StorSimple Device Manager hizmet yedekleme kataloğu sayfasının nasıl kullanılacağını açıklar.
 services: storsimple
 documentationcenter: NA
 author: alkohli
@@ -15,15 +15,15 @@ ms.workload: TBD
 ms.date: 06/29/2017
 ms.author: alkohli
 ms.openlocfilehash: 6ab4694159c6269f2f72d3d591147d43aef34a0a
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96017381"
 ---
-# <a name="use-the-storsimple-device-manager-service-to-manage-your-backup-catalog"></a>StorSimple Aygıt Yöneticisi hizmetini kullanarak yedekleme kataloğunuzu yönetin
+# <a name="use-the-storsimple-device-manager-service-to-manage-your-backup-catalog"></a>StorSimple Device Manager hizmetini kullanarak yedekleme kataloğunuzu yönetin
 ## <a name="overview"></a>Genel Bakış
-StorSimple Aygıt Yöneticisi hizmeti **Yedekleme kataloğu** dikey penceresi, el ile veya zamanlanmış yedeklemeler çekilirken oluşturulan tüm yedekleme kümelerini görüntüler. Bu sayfayı bir yedekleme ilkesi veya birimi için tüm yedeklemeleri listelemek, yedeklemeleri seçmek veya silmek ya da bir birimi geri yüklemek ya da kopyalamak için bir yedekleme kullanmak için kullanabilirsiniz.
+StorSimple Device Manager hizmeti **Yedekleme kataloğu** dikey penceresi, el ile veya zamanlanmış yedeklemeler çekilirken oluşturulan tüm yedekleme kümelerini görüntüler. Bu sayfayı bir yedekleme ilkesi veya birimi için tüm yedeklemeleri listelemek, yedeklemeleri seçmek veya silmek ya da bir birimi geri yüklemek ya da kopyalamak için bir yedekleme kullanmak için kullanabilirsiniz.
 
 Bu öğreticide, bir yedekleme kümesini listeleme, seçme ve silme işlemlerinin nasıl yapılacağı açıklanmaktadır. Cihazınızı yedekten geri yükleme hakkında bilgi edinmek için, [cihazınızı bir yedekleme kümesinden geri yükleme](storsimple-8000-restore-from-backup-set-u2.md)bölümüne gidin. Bir birimi nasıl klonleyeceğinizi öğrenmek için, [StorSimple birimini kopyalama](storsimple-8000-clone-volume-u2.md)bölümüne gidin.
 
@@ -47,7 +47,7 @@ Filtrelenmiş yedekleme kümeleri aşağıdaki özniteliklere göre tablo olarak
 Bir yedekleme ilkesi için tüm yedeklemeleri listelemek üzere aşağıdaki adımları izleyin.
 
 #### <a name="to-list-backup-sets"></a>Yedekleme kümelerini listelemek için
-1. StorSimple Aygıt Yöneticisi hizmetinize gidin ve **Yedekleme kataloğu**' na tıklayın.
+1. StorSimple Device Manager hizmetinize gidin ve **Yedekleme kataloğu**' na tıklayın.
 
 2. Seçimleri aşağıdaki şekilde filtreleyin:
    
@@ -65,7 +65,7 @@ Bir yedekleme ilkesi için tüm yedeklemeleri listelemek üzere aşağıdaki ad�
 Bir birim veya yedekleme ilkesi için bir yedekleme kümesi seçmek üzere aşağıdaki adımları izleyin.
 
 #### <a name="to-select-a-backup-set"></a>Bir yedekleme kümesi seçmek için
-1. StorSimple Aygıt Yöneticisi hizmetinize gidin ve **Yedekleme kataloğu**' na tıklayın.
+1. StorSimple Device Manager hizmetinize gidin ve **Yedekleme kataloğu**' na tıklayın.
 2. Seçimleri aşağıdaki şekilde filtreleyin:
    
    1. Zaman aralığını belirtin. 
@@ -85,7 +85,7 @@ Bir birim veya yedekleme ilkesi için bir yedekleme kümesi seçmek üzere aşa�
 Artık onunla ilişkili verileri sürdürmek istemediğiniz zaman bir yedeği silin. Bir yedekleme kümesini silmek için aşağıdaki adımları gerçekleştirin.
 
 #### <a name="to-delete-a-backup-set"></a>Bir yedekleme kümesini silmek için
- StorSimple Aygıt Yöneticisi hizmetinize gidin ve **Yedekleme kataloğu**' na tıklayın.
+ StorSimple Device Manager hizmetinize gidin ve **Yedekleme kataloğu**' na tıklayın.
 1. Seçimleri aşağıdaki şekilde filtreleyin:
    
    1. Zaman aralığını belirtin. 
@@ -111,5 +111,5 @@ Artık onunla ilişkili verileri sürdürmek istemediğiniz zaman bir yedeği si
 
 ## <a name="next-steps"></a>Sonraki adımlar
 * Yedekleme [kataloğunu kullanarak cihazınızı bir yedekleme kümesinden geri yükleme](storsimple-8000-restore-from-backup-set-u2.md)hakkında bilgi edinin.
-* StorSimple [cihazınızı yönetmek Için storsimple Aygıt Yöneticisi hizmetini nasıl kullanacağınızı](storsimple-8000-manager-service-administration.md)öğrenin.
+* StorSimple [cihazınızı yönetmek Için storsimple Device Manager hizmetini nasıl kullanacağınızı](storsimple-8000-manager-service-administration.md)öğrenin.
 

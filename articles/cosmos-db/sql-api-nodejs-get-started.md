@@ -10,10 +10,10 @@ ms.date: 04/20/2020
 ms.author: dech
 ms.custom: devx-track-js
 ms.openlocfilehash: 1115d7bb0d6857aa39f246743df54a6cf3fd3676
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93098672"
 ---
 # <a name="tutorial-build-a-nodejs-console-app-with-the-javascript-sdk-to-manage-azure-cosmos-db-sql-api-data"></a>Öğretici: Azure Cosmos DB SQL API verilerini yönetmek için JavaScript SDK’sını kullanarak bir Node.js konsol uygulaması oluşturma
@@ -86,7 +86,7 @@ Artık uygulamanız mevcut olduğuna göre, Azure Cosmos DB konuştuğunu unutma
 
 1. *config.js* dosyasını en sevdiğiniz metin düzenleyicisinde açın.
 
-1. Aşağıdaki kod parçacığını kopyalayıp *config.js* dosyasına yapıştırın ve özellikleri `endpoint` ve `key` Azure Cosmos DB uç nokta URI 'si ve birincil anahtarınızı ayarlayın. Veritabanı, kapsayıcı adları **Görevler** ve **öğeler** olarak ayarlanır. Bu uygulama için kullanacağınız bölüm anahtarı **/category** ' dir.
+1. Aşağıdaki kod parçacığını kopyalayıp *config.js* dosyasına yapıştırın ve özellikleri `endpoint` ve `key` Azure Cosmos DB uç nokta URI 'si ve birincil anahtarınızı ayarlayın. Veritabanı, kapsayıcı adları **Görevler** ve **öğeler** olarak ayarlanır. Bu uygulama için kullanacağınız bölüm anahtarı **/category**' dir.
 
    :::code language="javascript" source="~/cosmosdb-nodejs-get-started/config.js":::
 
@@ -217,7 +217,7 @@ node app.js
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Bu kaynaklara artık ihtiyaç duyulmadığında, kaynak grubunu, Azure Cosmos DB hesabı ve tüm ilgili kaynakları silebilirsiniz. Bunu yapmak için Azure Cosmos DB hesabı için kullandığınız kaynak grubunu seçin, **Sil** ' i seçin ve ardından silinecek kaynak grubunun adını onaylayın.
+Bu kaynaklara artık ihtiyaç duyulmadığında, kaynak grubunu, Azure Cosmos DB hesabı ve tüm ilgili kaynakları silebilirsiniz. Bunu yapmak için Azure Cosmos DB hesabı için kullandığınız kaynak grubunu seçin, **Sil**' i seçin ve ardından silinecek kaynak grubunun adını onaylayın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

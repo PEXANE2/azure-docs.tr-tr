@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: mayg
 ms.openlocfilehash: 64e40341ec56a2e1c561b2bcbb5e584830c14015
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/01/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93145591"
 ---
 # <a name="overview-of-multi-tenant-support-for-vmware-disaster-recovery-to-azure-with-csp"></a>CSP ile Azure 'da VMware olağanüstü durum kurtarma için çok kiracılı desteğe genel bakış
@@ -24,11 +24,11 @@ Bu makalede, çok kiracılı VMware 'yi Azure çoğaltmaya uygulama ve yönetmey
 
 Üç büyük çok kiracılı model vardır:
 
-* **Paylaşılan barındırma hizmetleri sağlayıcısı (HSP)** : ortak fiziksel altyapıyı kullanır ve aynı altyapıda birden çok Kiracı VM barındırmak için paylaşılan kaynaklar (vCenter, datacenters, fiziksel depolama vb.) kullanır. Ortak, yönetilen bir hizmet olarak olağanüstü durum kurtarma yönetimi sağlayabilir veya kiracı bir self servis çözümü olarak olağanüstü durum kurtarma yapabilir.
+* **Paylaşılan barındırma hizmetleri sağlayıcısı (HSP)**: ortak fiziksel altyapıyı kullanır ve aynı altyapıda birden çok Kiracı VM barındırmak için paylaşılan kaynaklar (vCenter, datacenters, fiziksel depolama vb.) kullanır. Ortak, yönetilen bir hizmet olarak olağanüstü durum kurtarma yönetimi sağlayabilir veya kiracı bir self servis çözümü olarak olağanüstü durum kurtarma yapabilir.
 
-* **Adanmış barındırma hizmetleri sağlayıcısı** : iş ortağı fiziksel altyapıyı kullanır, ancak her kiracının sanal makinelerini ayrı bir altyapıda barındırmak için adanmış kaynakları (birden çok sanal ortalar, fiziksel veri depoları vb.) kullanır. Ortak, yönetilen bir hizmet olarak olağanüstü durum kurtarma yönetimi sağlayabilir veya kiracı bunu self servis çözümü olarak kullanabilir.
+* **Adanmış barındırma hizmetleri sağlayıcısı**: iş ortağı fiziksel altyapıyı kullanır, ancak her kiracının sanal makinelerini ayrı bir altyapıda barındırmak için adanmış kaynakları (birden çok sanal ortalar, fiziksel veri depoları vb.) kullanır. Ortak, yönetilen bir hizmet olarak olağanüstü durum kurtarma yönetimi sağlayabilir veya kiracı bunu self servis çözümü olarak kullanabilir.
 
-* **Yönetilen hizmetler sağlayıcısı (MSP)** : müşteri, VM 'leri barındıran fiziksel altyapının sahibidir ve iş ortağı olağanüstü durum kurtarma etkinleştirme ve yönetimi sağlar.
+* **Yönetilen hizmetler sağlayıcısı (MSP)**: müşteri, VM 'leri barındıran fiziksel altyapının sahibidir ve iş ortağı olağanüstü durum kurtarma etkinleştirme ve yönetimi sağlar.
 
 ## <a name="shared-hosting-services-provider-hsp"></a>Paylaşılan barındırma hizmetleri sağlayıcısı (HSP)
 
@@ -56,9 +56,9 @@ Ayrı bir genişleme işlem sunucusu ayrıca iş ortağının denetimi altındad
 
 Çoklu kiracı senaryosunda bulunan her yapılandırma sunucusu iki hesap kullanır:
 
-- **vCenter erişim hesabı** : Bu hesap, Kiracı VM 'lerini saptamak için kullanılır. Kendisine atanmış vCenter erişim izinleri vardır. Erişim sızıntılarını önlemeye yardımcı olmak için iş ortaklarının bu kimlik bilgilerini yapılandırma aracında girmesini öneririz.
+- **vCenter erişim hesabı**: Bu hesap, Kiracı VM 'lerini saptamak için kullanılır. Kendisine atanmış vCenter erişim izinleri vardır. Erişim sızıntılarını önlemeye yardımcı olmak için iş ortaklarının bu kimlik bilgilerini yapılandırma aracında girmesini öneririz.
 
-- **Sanal makine erişim hesabı** : Bu hesap, bir otomatik gönderim ile, Kiracı VM 'lerine Mobility hizmet Aracısı 'nı yüklemek için kullanılır. Genellikle bir kiracının iş ortağı tarafından sağlayabilecek bir etki alanı hesabı veya ortağın doğrudan yönetebileceği bir hesaptır. Bir kiracı, ayrıntıları iş ortağıyla doğrudan paylaşmak istemiyor, yapılandırma sunucusuna sınırlı süreli erişim yoluyla kimlik bilgilerini girebilirler. Ya da iş ortağının yardımı ile Mobility hizmeti aracısını el ile yükleyebilir.
+- **Sanal makine erişim hesabı**: Bu hesap, bir otomatik gönderim ile, Kiracı VM 'lerine Mobility hizmet Aracısı 'nı yüklemek için kullanılır. Genellikle bir kiracının iş ortağı tarafından sağlayabilecek bir etki alanı hesabı veya ortağın doğrudan yönetebileceği bir hesaptır. Bir kiracı, ayrıntıları iş ortağıyla doğrudan paylaşmak istemiyor, yapılandırma sunucusuna sınırlı süreli erişim yoluyla kimlik bilgilerini girebilirler. Ya da iş ortağının yardımı ile Mobility hizmeti aracısını el ile yükleyebilir.
 
 ## <a name="vcenter-account-requirements"></a>vCenter hesabı gereksinimleri
 
@@ -75,11 +75,11 @@ Yapılandırma sunucusunu, kendisine atanmış özel bir role sahip bir hesapla 
 1. Önceden tanımlanmış *salt okunurdur* rolünü kopyalayarak yeni bir rol oluşturun ve ardından buna uygun bir ad verin (örneğin, bu örnekte gösterildiği gibi Azure_Site_Recovery).
 2. Bu role aşağıdaki izinleri atayın:
 
-   * **Veri deposu** : alan ayır, veri deposuna gözatmaya, alt düzey dosya işlemlerine, dosya kaldırma, sanal makine dosyalarını güncelleştirme
-   * **Ağ** : ağ atama
-   * **Kaynak** : VM 'yi kaynak havuzuna ata, sanal makineyi kapalı GEÇIR, VM 'ye geçiş yap
-   * **Görevler** : görev oluştur, görevi Güncelleştir
-   * **VM-yapılandırma** : tümü
+   * **Veri deposu**: alan ayır, veri deposuna gözatmaya, alt düzey dosya işlemlerine, dosya kaldırma, sanal makine dosyalarını güncelleştirme
+   * **Ağ**: ağ atama
+   * **Kaynak**: VM 'yi kaynak havuzuna ata, sanal makineyi kapalı GEÇIR, VM 'ye geçiş yap
+   * **Görevler**: görev oluştur, görevi Güncelleştir
+   * **VM-yapılandırma**: tümü
    * **VM-etkileşim** > yanıt sorusu, cihaz BAĞLANTıSı, CD medyasını yapılandırma, disket medyasını yapılandırma, kapatma, açma, VMware araçları yüklemesi
    * **VM-envanter** > mevcut, yeni oluştur, Kaydet, kayıt Sil
    * **VM-sağlama** > sanal makine Indirmesine izin ver, sanal makine dosyalarının karşıya yüklenmesine izin ver
@@ -120,7 +120,7 @@ Olağanüstü durum kurtarma işlemlerini yalnızca yük devretme yapılıncaya 
 
 1. Daha önce oluşturduğunuz kasadaki Azure portal, vCenter sunucusunu, oluşturduğunuz vCenter hesabını kullanarak yapılandırma sunucusuna kaydedin.
 2. Her zamanki işleme göre Site Recovery için "altyapıyı hazırla" işlemini sona erdirin.
-3. VM 'Ler artık çoğaltılmaya hazırdır. **Çoğaltma** için yalnızca kiracının VM 'lerinin görüntülendiğini doğrulayın  >  **Select sanal makineler** .
+3. VM 'Ler artık çoğaltılmaya hazırdır. **Çoğaltma** için yalnızca kiracının VM 'lerinin görüntülendiğini doğrulayın  >  **Select sanal makineler**.
 
 ## <a name="dedicated-hosting-solution"></a>Adanmış barındırma çözümü
 

@@ -9,10 +9,10 @@ ms.date: 10/16/2020
 ms.author: mjbrown
 ms.custom: devx-track-azurecli, devx-track-csharp
 ms.openlocfilehash: 01030a563c15eee7786058c2eae30d23803dfe42
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93101655"
 ---
 # <a name="create-a-container-in-azure-cosmos-db-cassandra-api"></a>Azure Cosmos DB Cassandra API bir kapsayıcı oluşturma
@@ -31,13 +31,13 @@ Bu makalede, Azure Cosmos DB Cassandra API bir kapsayıcı oluşturmanın farkl�
 
 1. [Yeni bir Azure Cosmos hesabı oluşturun](create-cassandra-dotnet.md#create-a-database-account)veya var olan bir hesabı seçin.
 
-1. **Veri Gezgini** bölmesini açın ve **Yeni tablo** ' yı seçin. Ardından, aşağıdaki ayrıntıları sağlayın:
+1. **Veri Gezgini** bölmesini açın ve **Yeni tablo**' yı seçin. Ardından, aşağıdaki ayrıntıları sağlayın:
 
    * Yeni bir keyspace mi, yoksa var olanı mi kullandığınızı belirtin.
    * Tablo adı girin.
    * Özellikleri girin ve bir birincil anahtar belirtin.
    * Sağlanacak bir üretilen iş (örneğin, 1000 ru) girin.
-   * **Tamam** ’ı seçin.
+   * **Tamam**’ı seçin.
 
     :::image type="content" source="./media/how-to-create-container/partitioned-collection-create-cassandra.png" alt-text="Cassandra API, tablo Ekle iletişim kutusunun ekran görüntüsü":::
 

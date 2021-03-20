@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 2/7/2019
 ms.author: rohink
 ms.openlocfilehash: add7674771fd19f6029a94c46624006f0cf30f1a
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96011549"
 ---
 # <a name="delegate-an-azure-dns-subdomain"></a>Azure DNS bir alt etki alanı verme
@@ -36,7 +36,7 @@ Azure DNS bir alt etki alanı atamak için, önce genel etki alanınızı Azure 
 3. **Oluştur**’u seçin.
 4. **DNS bölgesi oluştur** bölmesinde **ad** metin kutusuna **Engineering.contoso.com** yazın.
 5. Bölgeniz için kaynak grubunu seçin. Benzer kaynakları birlikte tutmak için üst bölgeyle aynı kaynak grubunu kullanmak isteyebilirsiniz.
-6. **Oluştur**'a tıklayın.
+6. **Oluştur**’a tıklayın.
 7. Dağıtım başarılı olduktan sonra yeni bölgeye gidin.
 
 ## <a name="note-the-name-servers"></a>Ad sunucularına göz önünde
@@ -58,7 +58,7 @@ Ardından, **mühendislik** bölgesi için bir ad sunucusu (NS) kaydı oluşturu
 3. **Kayıt kümesi Ekle** bölmesinde, **ad** metin kutusuna **mühendislik** yazın.
 4. **Tür** için **NS**' yi seçin.
 5. **Ad sunucusu**' nun altında, daha önce **mühendislik** bölgesinden kaydettiğiniz dört ad sunucusunu girin.
-6. **Tamam** düğmesine tıklayın.
+6. **Tamam**'a tıklayın.
 
 ## <a name="test-the-delegation"></a>Temsilciyi test etme
 

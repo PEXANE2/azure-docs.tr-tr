@@ -13,10 +13,10 @@ ms.topic: tutorial
 ms.date: 09/24/2020
 ms.author: duau
 ms.openlocfilehash: e153edd807dcb119c34f60dc34e33fed510916bb
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96011532"
 ---
 # <a name="tutorial-add-a-custom-domain-to-your-front-door"></a>Öğretici: Front Door örneğinize özel etki alanı ekleme
@@ -24,7 +24,7 @@ Bu öğreticide Front Door'a özel etki alanı ekleme adımları gösterilmekted
 
 Ön kapı oluşturduktan sonra, varsayılan ön uç Konağı `azurefd.net` Varsayılan olarak arka ucunuzdaki ön kapı içeriğini teslim etmek için URL 'ye eklenir (örneğin, https: \/ /contoso-frontend.azurefd.net/activeusers.htm). Size kolaylık olması için Azure Front Door, varsayılan ana bilgisayar adı özel etki alanı ile ilişkilendirme seçeneği sunar. Bu seçeneği kullanarak URL’nizde Front Door'a ait olan etki alanı adı yerine özel etki alanı ile içerik sunabilirsiniz (örneğin, https:\//www.contoso.com/photo.png). 
 
-Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
+Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > [!div class="checklist"]
 > - CNAME DNS kaydı oluşturun.
 > - Özel etki alanını Front Door'unuzla ilişkilendirin.
@@ -97,7 +97,7 @@ afdverify alt etki alanı ile bir CNAME kaydı oluşturmak için:
 
     - TTL: *bir saat* seçili olarak bırakın.
 
-6. **Kaydet**'i seçin.
+6. **Kaydet**’i seçin.
  
     CNAME girişi DNS kayıtları tablosuna eklenir.
 
@@ -116,7 +116,7 @@ afdverify alt etki alanı ile bir CNAME kaydı oluşturmak için:
 
 5. **Özel ana bilgisayar adı** için, CNAME kaydınızın kaynak etki alanı olarak kullanılacak alt etki alanı dahil özel etki alanınızı girin. Örneğin, www \. contoso.com veya CDN.contoso.com. afdverify alt etki alanı adını kullanmayın.
 
-6. **Ekle**’yi seçin.
+6. **Add (Ekle)** seçeneğini belirleyin.
 
    Azure, girdiğiniz özel etki alanı adı için CNAME kaydının bulunduğunu doğrular. CNAME doğruysa, özel etki alanınız doğrulanır.
 
@@ -178,7 +178,7 @@ afdverify alt etki alanının Front Door'unuza başarıyla eşlendiğini doğrul
 
     - TTL: *bir saat* seçili olarak bırakın.
 
-6. **Kaydet**'i seçin.
+6. **Kaydet**’i seçin.
  
     CNAME girişi DNS kayıtları tablosuna eklenir.
 

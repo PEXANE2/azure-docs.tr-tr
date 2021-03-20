@@ -8,10 +8,10 @@ ms.custom: mvc
 ms.topic: overview
 ms.date: 8/20/2020
 ms.openlocfilehash: ca75416a66bcf2c90028c7f1dc11fbe23a9a9bd9
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/21/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98631376"
 ---
 # <a name="common-errors"></a>Sık karşılaşılan hatalar
@@ -25,9 +25,9 @@ Yukarıdaki hata, başarılı oturum açma işleminden sonra, ancak oturum oluş
 
 Oturum düzeyinde desteklenmeyen require_secure_transport gibi bazı sunucu parametreleri vardır ve bu nedenle init_connect kullanarak bu parametrelerin değerlerini değiştirmeye çalışmak, aşağıda gösterildiği gibi MySQL sunucusuna bağlanılırken 1184 hatasına neden olabilir
 
-MySQL> veritabanlarını göster; HATA 2006 (HY000): MySQL sunucusunun bağlantısı yok. Yeniden bağlanmaya çalışılıyor... Bağlantı kimliği: 64897 geçerli veritabanı: * * * yok * * _ hata 1184 (08S01): bağlantı 22-veritabanı: ' DB-adı ' kullanıcısı: ' Kullanıcı ' Konağı: ' hostIP ' (init_connect komutu başarısız oldu)
+MySQL> veritabanlarını göster; HATA 2006 (HY000): MySQL sunucusunun bağlantısı yok. Yeniden bağlanmaya çalışılıyor... Bağlantı kimliği: 64897 geçerli veritabanı: * * * yok * * * hata 1184 (08S01): bağlantı 22-veritabanı: ' DB-adı ' kullanıcısı: ' Kullanıcı ' Konağı: ' hostIP ' (init_connect komutu başarısız oldu)
 
-_ *Resolution**: Azure Portal sunucu parametreleri sekmesindeki init_connect değeri sıfırlamanız ve yalnızca init_connect parametresini kullanarak desteklenen sunucu parametreleri ayarlamanız gerekir. 
+**Çözüm** : Azure Portal içindeki sunucu parametreleri sekmesinde init_connect değeri sıfırlamanız ve yalnızca init_connect parametresini kullanarak desteklenen sunucu parametreleri ayarlamanız gerekir. 
 
 
 ## <a name="errors-due-to-lack-of-super-privilege-and-dba-role"></a>Süper ayrıcalık olmaması ve DBA rolü nedeniyle hatalar oluştu

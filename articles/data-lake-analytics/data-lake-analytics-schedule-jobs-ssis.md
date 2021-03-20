@@ -6,10 +6,10 @@ ms.service: data-lake-analytics
 ms.topic: how-to
 ms.date: 07/17/2018
 ms.openlocfilehash: b080b433f5af49e970faba02003fb68e21a08365
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92221460"
 ---
 # <a name="schedule-u-sql-jobs-using-sql-server-integration-services-ssis"></a>SQL Server Integration Services kullanarak U-SQL işlerini zamanlama (SSIS)
@@ -35,7 +35,7 @@ U-SQL betiğini farklı yerlerden, SSIS yerleşik işlevleri ve görevleri kulla
 
 ## <a name="scenario-1-use-inline-script-call-tvfs-and-stored-procs"></a>Senaryo 1-iç satır betiği kullan TVFs ve depolanan procs
 
-Azure Data Lake Analytics görev Düzenleyicisi ' nde, **SourceType** öğesini **DirectInput**olarak yapılandırın ve U-SQL deyimlerini **ustointo**içine koyun.
+Azure Data Lake Analytics görev Düzenleyicisi ' nde, **SourceType** öğesini **DirectInput** olarak yapılandırın ve U-SQL deyimlerini **ustointo** içine koyun.
 
 Kolay bakım ve kod yönetimi için, yalnızca kısa U-SQL betiğini satır içi betikler olarak Yerleştir (örneğin, var olan tablo değerli işlevleri ve saklı yordamları U-SQL veritabanlarınızda çağırabilirsiniz). 
 
@@ -57,9 +57,9 @@ SSIS paket tasarımı görünümünde, Foreach döngüsü kapsayıcısına bir *
 
 ### <a name="configure-azure-data-lake-store-file-system-task"></a>Azure Data Lake Store dosya sistemi görevini yapılandırma
 
-1. **Işlemi** **Copyfromadls**olarak ayarlayın.
-2. **AzureDataLakeConnection**kurma [Azure Data Lake Store bağlantı Yöneticisi](/sql/integration-services/connection-manager/azure-data-lake-store-connection-manager)hakkında daha fazla bilgi edinin.
-3. **AzureDataLakeDirectory**ayarlayın. U-SQL komut dosyalarınızı depolayan klasöre işaret edin. Azure Data Lake Store hesabı kök klasörüyle ilişkili göreli yolu kullanın.
+1. **Işlemi** **Copyfromadls** olarak ayarlayın.
+2. **AzureDataLakeConnection** kurma [Azure Data Lake Store bağlantı Yöneticisi](/sql/integration-services/connection-manager/azure-data-lake-store-connection-manager)hakkında daha fazla bilgi edinin.
+3. **AzureDataLakeDirectory** ayarlayın. U-SQL komut dosyalarınızı depolayan klasöre işaret edin. Azure Data Lake Store hesabı kök klasörüyle ilişkili göreli yolu kullanın.
 4. **Hedefi** , indirilen U-SQL betiklerini önbelleğe alan bir klasöre ayarlayın. Bu klasör yolu, U-SQL işi gönderimi için Foreach döngü kapsayıcısında kullanılacaktır. 
 
 ![Azure Data Lake Store dosya sistemi görevini yapılandırma](./media/data-lake-analytics-schedule-jobs-ssis/configure-azure-data-lake-store-file-system-task.png)
@@ -68,7 +68,7 @@ SSIS paket tasarımı görünümünde, Foreach döngüsü kapsayıcısına bir *
 
 ### <a name="configure-foreach-loop-container"></a>Foreach döngüsü kapsayıcısını Yapılandır
 
-1. **Koleksiyon** sayfasında, **Numaralandırıcı** öğesini **Foreach dosya numaralandırıcısı**olarak ayarlayın.
+1. **Koleksiyon** sayfasında, **Numaralandırıcı** öğesini **Foreach dosya numaralandırıcısı** olarak ayarlayın.
 
 2. **Numaralandırıcı yapılandırma** grubu altındaki **klasörü** , indirilen U-SQL betiklerini içeren geçici klasöre ayarlayın.
 
@@ -82,14 +82,14 @@ SSIS paket tasarımı görünümünde, Foreach döngüsü kapsayıcısına bir *
 
 ### <a name="configure-azure-data-lake-analytics-task"></a>Azure Data Lake Analytics görevi yapılandırma 
 
-1. **SourceType** öğesini **FileConnection**olarak ayarlayın.
+1. **SourceType** öğesini **FileConnection** olarak ayarlayın.
 
 2. Dosya bağlantısına işaret eden, Foreach döngüsü kapsayıcısından döndürülen dosya nesnelerine işaret eden dosya bağlantısıyla **Fıleconnection** değerini ayarlayın.
     
     Bu dosya bağlantısını oluşturmak için:
 
    1. **\<New Connection...>** FileConnection ayarında öğesini seçin.
-   2. **Kullanım türünü** **mevcut dosya**olarak ayarlayın ve **dosyayı** varolan herhangi bir dosyanın dosya yoluna ayarlayın.
+   2. **Kullanım türünü** **mevcut dosya** olarak ayarlayın ve **dosyayı** varolan herhangi bir dosyanın dosya yoluna ayarlayın.
 
        !["Kullanım türü" için "var olan dosya" seçiliyken dosya Bağlantı Yöneticisi düzenleyicisini gösteren ekran görüntüsü.](./media/data-lake-analytics-schedule-jobs-ssis/configure-file-connection-for-foreach-loop-container.png)
 
@@ -105,7 +105,7 @@ SSIS paket tasarımı görünümünde, Foreach döngüsü kapsayıcısına bir *
 
 5. U-SQL iş adını dinamik olarak ayarlamak için **ifadeler** kullanın:
 
-    1. **İfadeler** sayfasında, **JobName**için yeni bir anahtar-değer çifti ekleyin.
+    1. **İfadeler** sayfasında, **JobName** için yeni bir anahtar-değer çifti ekleyin.
     2. JobName değerini Foreach döngü kapsayıcısında tanımlanan değişkene ayarlayın, örneğin, `@[User::FileName]` .
     
         ![U-SQL iş adı için SSIS Ifadesini yapılandırma](./media/data-lake-analytics-schedule-jobs-ssis/configure-expression-for-u-sql-job-name.png)
@@ -128,12 +128,12 @@ Bulutta depolanan U-SQL dosyalarını kullanmanın yanı sıra, yerel makinenizd
 
 2. **Dosya** türünü seçin ve **Ekle...** öğesine tıklayın.
 
-3. **Kullanım türünü** **mevcut dosya**olarak ayarlayın ve **dosyayı** yerel makinedeki dosyaya ayarlayın.
+3. **Kullanım türünü** **mevcut dosya** olarak ayarlayın ve **dosyayı** yerel makinedeki dosyaya ayarlayın.
 
     ![Yerel dosyaya dosya bağlantısı ekle](./media/data-lake-analytics-schedule-jobs-ssis/configure-file-connection-for-foreach-loop-container.png)
 
 4. **Azure Data Lake Analytics** görev ekleme ve:
-    1. **SourceType** öğesini **FileConnection**olarak ayarlayın.
+    1. **SourceType** öğesini **FileConnection** olarak ayarlayın.
     2. Şimdi oluşturulan dosya bağlantısına **FileConnection** ayarlayın.
 
 5. Azure Data Lake Analytics görev için diğer konfigürasyonları sona erdirin.

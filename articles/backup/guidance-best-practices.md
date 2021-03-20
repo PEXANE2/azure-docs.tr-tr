@@ -4,10 +4,10 @@ description: Buluta ve şirket içi iş yükünü buluta yedeklemeye yönelik en
 ms.topic: conceptual
 ms.date: 07/22/2020
 ms.openlocfilehash: 0b3f70061be4d158ae717a97779d6ab0445f5858
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100593343"
 ---
 # <a name="backup-cloud-and-on-premises-workloads-to-cloud"></a>Buluta ve şirket içi iş yüklerini buluta yedekleyin

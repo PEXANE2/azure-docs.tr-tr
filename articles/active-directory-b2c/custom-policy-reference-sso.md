@@ -12,10 +12,10 @@ ms.date: 12/07/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: f690f4a416e86b02de0d35fc673849c1293df577
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102095774"
 ---
 # <a name="single-sign-on-session-management-in-azure-active-directory-b2c"></a>Azure Active Directory B2C 'da çoklu oturum açma oturumu yönetimi
@@ -120,7 +120,7 @@ Bu sağlayıcı, "kimlik sağlayıcısı Seç" ekranını bastırmak ve bir Fede
 
 | Öznitelik | Gerekli | Açıklama|
 | --- | --- | --- |
-| AlwaysFetchClaimsFromProvider | Hayır | Şu anda kullanılmıyor olabilir. |
+| AlwaysFetchClaimsFromProvider | No | Şu anda kullanılmıyor olabilir. |
 
 ### <a name="oauthssosessionprovider"></a>OAuthSSOSessionProvider
 
@@ -162,8 +162,8 @@ Aşağıdaki `SM-Saml-issuer` Teknik profil, [SAML verenin teknik profili](saml-
 
 | Öznitelik | Gerekli | Açıklama|
 | --- | --- | --- |
-| Includesessionındex | Hayır | Şu anda kullanılmıyor olabilir.|
-| RegisterServiceProviders | Hayır | Sağlayıcının onay verilen tüm SAML hizmeti sağlayıcılarını kaydetmesi gerektiğini gösterir. Olası değerler: `true` (varsayılan) veya `false` .|
+| Includesessionındex | No | Şu anda kullanılmıyor olabilir.|
+| RegisterServiceProviders | No | Sağlayıcının onay verilen tüm SAML hizmeti sağlayıcılarını kaydetmesi gerektiğini gösterir. Olası değerler: `true` (varsayılan) veya `false` .|
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

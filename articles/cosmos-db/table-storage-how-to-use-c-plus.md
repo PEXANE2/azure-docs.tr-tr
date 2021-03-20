@@ -9,10 +9,10 @@ ms.date: 10/07/2019
 author: sakash279
 ms.author: akshanka
 ms.openlocfilehash: 79b58b76954cf15289e85dbf763b7a399897635d
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/11/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94489888"
 ---
 # <a name="how-to-use-azure-table-storage-and-azure-cosmos-db-table-api-with-c"></a>Azure Tablo Depolama ve Azure Cosmos DB Tablo API’sini C++ ile kullanma
@@ -502,9 +502,9 @@ else
 
 Visual Studio Community Edition için, projeniz *storage_account. h* ve *Table. h* gibi içerme dosyaları nedeniyle derleme hataları alıyorsa, **/Permissive-** derleyici anahtarını kaldırın:
 
-1. **Çözüm Gezgini** ’nde projenize sağ tıklayın ve **Özellikler** ’i seçin.
-1. **Özellik Sayfaları** iletişim kutusunda **Yapılandırma Özellikleri** ’ni, **C/C++** ’yi genişletin ve **Dil** ’i seçin.
-1. **Uyumluluk modu** ’nu **Hayır** olarak ayarlayın.
+1. **Çözüm Gezgini**’nde projenize sağ tıklayın ve **Özellikler**’i seçin.
+1. **Özellik Sayfaları** iletişim kutusunda **Yapılandırma Özellikleri**’ni, **C/C++**’yi genişletin ve **Dil**’i seçin.
+1. **Uyumluluk modu**’nu **Hayır** olarak ayarlayın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

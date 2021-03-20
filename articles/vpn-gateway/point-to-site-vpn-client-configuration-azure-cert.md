@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 11/11/2020
 ms.author: cherylmc
 ms.openlocfilehash: c7b186aa1a6f63b1bc3e9dbefa5001faac967762
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94556217"
 ---
 # <a name="create-and-install-vpn-client-configuration-files-for-native-azure-certificate-authentication-p2s-configurations"></a>Yerel Azure sertifikası kimlik doğrulaması P2S yapılandırmaları için VPN istemcisi yapılandırma dosyalarını oluşturma ve yükleme
@@ -35,15 +35,15 @@ Başlamadan önce, tüm bağlanan kullanıcıların, kullanıcının cihazında 
 PowerShell kullanarak veya Azure portal kullanarak istemci yapılandırma dosyaları oluşturabilirsiniz. Her iki yöntem de aynı ZIP dosyasını döndürür. Aşağıdaki klasörleri görüntülemek için dosyayı sıkıştırmayı açın:
 
 * Sırasıyla Windows 32-bit ve 64-bit yükleyici paketlerini içeren **WindowsAmd64** ve **WindowsX86**. **WindowsAmd64** Installer paketi yalnızca AMD değil, desteklenen tüm 64-bit Windows istemcilerine yöneliktir.
-* **Genel** , kendi VPN istemci yapılandırmanızı oluşturmak için kullanılan genel bilgileri içerir. Ağ geçidinde Ikev2 veya SSTP + Ikev2 yapılandırılmışsa genel klasör sağlanır. Yalnızca SSTP yapılandırılmışsa, genel klasör mevcut değildir.
+* **Genel**, kendi VPN istemci yapılandırmanızı oluşturmak için kullanılan genel bilgileri içerir. Ağ geçidinde Ikev2 veya SSTP + Ikev2 yapılandırılmışsa genel klasör sağlanır. Yalnızca SSTP yapılandırılmışsa, genel klasör mevcut değildir.
 
 ### <a name="generate-files-using-the-azure-portal"></a><a name="zipportal"></a>Azure portal kullanarak dosya oluşturma
 
 1. Azure portal, bağlanmak istediğiniz sanal ağ için sanal ağ geçidine gidin.
-1. Sanal ağ geçidi sayfasında, **Noktadan siteye yapılandırma** ' yı seçin.
+1. Sanal ağ geçidi sayfasında, **Noktadan siteye yapılandırma**' yı seçin.
 
    :::image type="content" source="./media/point-to-site-vpn-client-configuration-azure-cert/download-client.png" alt-text="VPN istemcisini indirin":::
-1. Noktadan siteye yapılandırma sayfasının en üstünde **VPN Istemcisini indir** ' i seçin. İstemci yapılandırma paketinin oluşturması birkaç dakika sürer.
+1. Noktadan siteye yapılandırma sayfasının en üstünde **VPN Istemcisini indir**' i seçin. İstemci yapılandırma paketinin oluşturması birkaç dakika sürer.
 1. Tarayıcınız, bir istemci yapılandırması ZIP dosyasının kullanılabilir olduğunu gösterir. Bu, ağ geçidiniz ile aynı adı taşır. Klasörleri görüntülemek için dosyayı sıkıştırmayı açın.
 
 ### <a name="generate-files-using-powershell"></a><a name="zipps"></a>PowerShell kullanarak dosyalar oluşturma
@@ -88,18 +88,18 @@ Mac 'te sertifika kimlik doğrulaması için yerel VPN istemcisini yapılandırm
 1. **Genel** klasörde, **VpnSettings.xml** dosyasından, **VPNServer** etiket değerini kopyalayın. Bu değeri, profilin **sunucu adresine** ve **uzak kimlik** alanlarına yapıştırın.
 
    :::image type="content" source="./media/point-to-site-vpn-client-configuration-azure-cert/server.png" alt-text="Ekran görüntüsü sunucu bilgilerini gösterir.":::
-1. **Kimlik doğrulama ayarlarını** seçin ve **sertifika** ' yı seçin. **Catalina** için **hiçbiri** ' ni ve ardından **sertifika** ' ı seçin.
+1. **Kimlik doğrulama ayarlarını** seçin ve **sertifika**' yı seçin. **Catalina** için **hiçbiri**' ni ve ardından **sertifika**' ı seçin.
 
    :::image type="content" source="./media/point-to-site-vpn-client-configuration-azure-cert/authentication-settings.png" alt-text="Ekran görüntüsü, kimlik doğrulama ayarlarını gösterir.":::
 
-   Catalina için **hiçbiri** ' ni ve ardından **sertifika** ' ı seçin. Doğru sertifikayı **seçin** :
+   Catalina için **hiçbiri** ' ni ve ardından **sertifika**' ı seçin. Doğru sertifikayı **seçin** :
    
    :::image type="content" source="./media/point-to-site-vpn-client-configuration-azure-cert/catalina.png" alt-text="Ekran görüntüsü, kimlik doğrulama ayarları ve sertifika seçili için seçili olmayan ağ penceresini gösterir.":::
 
 1. **Seç...** öğesine tıklayın kimlik doğrulaması için kullanmak istediğiniz istemci sertifikasını seçmek için. Bu, adım 2 ' de yüklediğiniz sertifikadır.
 
    :::image type="content" source="./media/point-to-site-vpn-client-configuration-azure-cert/certificate.png" alt-text="Ekran görüntüsü, bir sertifika seçebileceğiniz kimlik doğrulama ayarlarına sahip ağ penceresini gösterir.":::
-1. **Bir kimlik seçin seçim** yapabileceğiniz sertifikaların listesini görüntüler. Doğru sertifikayı seçip **devam** ' ı seçin.
+1. **Bir kimlik seçin seçim** yapabileceğiniz sertifikaların listesini görüntüler. Doğru sertifikayı seçip **devam**' ı seçin.
 
    :::image type="content" source="./media/point-to-site-vpn-client-configuration-azure-cert/identity.png" alt-text="Ekran görüntüsü, uygun sertifikayı seçebileceğiniz bir kimlik seçin iletişim kutusu gösterir.":::
 
@@ -129,7 +129,7 @@ Ubuntu 18.0.4 üzerinde aşağıdaki yönergeler oluşturulmuştur. Ubuntu 16.0.
    ```
    sudo apt install network-manager-strongswan
    ```
-1. **Ayarlar** ' ı ve ardından **ağ** ' ı seçin. **+** Yeni bir bağlantı oluşturmak için düğmeyi seçin.
+1. **Ayarlar**' ı ve ardından **ağ**' ı seçin. **+** Yeni bir bağlantı oluşturmak için düğmeyi seçin.
 
    :::image type="content" source="./media/point-to-site-vpn-client-configuration-azure-cert/edit-connections.png" alt-text="Ekran görüntüsü, ağ bağlantıları sayfasını gösterir.":::
 
@@ -144,7 +144,7 @@ Ubuntu 18.0.4 üzerinde aşağıdaki yönergeler oluşturulmuştur. Ubuntu 16.0.
 
    :::image type="content" source="./media/point-to-site-vpn-client-configuration-azure-cert/vpn-server.png" alt-text="Ekran görüntüsü verileri Kopyala ' yı gösterir.":::
 1. Adı **ağ geçidi** bölümüne yeni VPN bağlantınızın **Adres** alanına yapıştırın. Sonra, **sertifika** alanının sonundaki klasör simgesini seçin, **genel** klasöre gidin ve **vpnserverroot** dosyasını seçin.
-1. Bağlantının **istemci** bölümünde, **kimlik doğrulaması** için **sertifika/özel anahtar** ' ı seçin. **Sertifika** ve **özel anahtar** için, daha önce oluşturulmuş sertifikayı ve özel anahtarı seçin. **Seçenekler** ' de, **Iç IP adresi iste** ' yi seçin. Ardından **Ekle** ' yi seçin.
+1. Bağlantının **istemci** bölümünde, **kimlik doğrulaması** için **sertifika/özel anahtar**' ı seçin. **Sertifika** ve **özel anahtar** için, daha önce oluşturulmuş sertifikayı ve özel anahtarı seçin. **Seçenekler**' de, **Iç IP adresi iste**' yi seçin. Ardından **Ekle**' yi seçin.
 
    :::image type="content" source="./media/point-to-site-vpn-client-configuration-azure-cert/ip-request.png" alt-text="Ekran görüntüsünde bir iç IP adresi Isteği gösterilir.":::
 

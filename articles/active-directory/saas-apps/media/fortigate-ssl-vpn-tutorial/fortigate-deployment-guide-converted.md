@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 10/30/2020
 ms.author: jeedes
 ms.openlocfilehash: cdaa6a9601452100ab90ef8b0f2191002f256b74
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95025524"
 ---
 # <a name="fortigate-azure-virtual-machine-deployment-guide"></a>FortiGate Azure sanal makine dağıtım kılavuzu
@@ -33,7 +33,7 @@ KLG sanal makine dağıtımı seçeneği ile, Fortinet 'ten bir FortiGate lisans
 Yazma sırasında, Fortinet FortiGate Azure VM 'si SAML kimlik doğrulaması için gerekli olan bellenim sürümü ile birlikte gelmez. En son sürüm, Fortinet 'ten alınmalıdır.
 
 1. ' Da oturum açın https://support.fortinet.com/ .
-2. **Download**  >  **Bellenim görüntülerini** indirme bölümüne gidin.
+2.   >  **Bellenim görüntülerini** indirme bölümüne gidin.
 3. **Sürüm notlarının** sağında **İndir**' i seçin.
 4. **V 6.00**  >  **6,4**  >  **6.4.2** öğesini seçin.
 5. Aynı satırdaki **https** bağlantısını seçerek **FGT_VM64_AZURE-v6-build1723-FORTINET. out** öğesini indirin.
@@ -43,7 +43,7 @@ Yazma sırasında, Fortinet FortiGate Azure VM 'si SAML kimlik doğrulaması iç
 
 1. Azure portal gidin ve FortiGate sanal makinesini dağıtacağınız abonelikte oturum açın.
 2. Yeni bir kaynak grubu oluşturun veya FortiGate sanal makinesini dağıtacaksınız kaynak grubunu açın.
-3. **Ekle**’yi seçin.
+3. **Add (Ekle)** seçeneğini belirleyin.
 4. **Markette ara** bölümünde *FORTI* girin. **Fortinet FortiGate yeni nesil güvenlik duvarı**' nı seçin.
 5. Yazılım planını seçin (lisansınız varsa, kendi lisansını getir veya yoksa Kullandıkça öde). **Oluştur**’u seçin.
 6. VM yapılandırmasını doldurun.
@@ -77,7 +77,7 @@ FortiGate VM 'nin dağıtıldığı ortam için genel olarak yönlendirilebilir 
 
     ![Gelen güvenlik kuralı Ekle ekran görüntüsü.](port-rule.png)
 
-5. **Ekle**’yi seçin.
+5. **Add (Ekle)** seçeneğini belirleyin.
 
 ## <a name="create-a-second-virtual-nic-for-the-vm"></a>VM için Ikinci bir sanal NIC oluşturma
 
@@ -149,7 +149,7 @@ Aşağıdaki bölümler, FortiGate sanal makinesini ayarlama konusunda size rehb
 2. Herhangi bir sertifika hatasını izlemeye devam edin.
 3. FortiGate VM dağıtımı sırasında belirtilen yönetici kimlik bilgilerini kullanarak oturum açın.
 4. Sol menüde **sistem**  >  **sertifikaları**' nı seçin.
-5. Uzak **sertifikayı içeri aktar**' ı seçin  >  **Remote Certificate**.
+5. Uzak **sertifikayı içeri aktar**' ı seçin  >  .
 6. Azure kiracısındaki FortiGate özel uygulama dağıtımından indirilen sertifikaya gidin. Seçin ve **Tamam**' ı seçin.
 
 ### <a name="upload-and-configure-a-custom-ssl-certificate"></a>Özel bir SSL sertifikası yükleme ve yapılandırma
@@ -161,12 +161,12 @@ FortiGate sanal makinesini, kullanmakta olduğunuz FQDN 'yi destekleyen kendi SS
 2. Herhangi bir sertifika hatasını izlemeye devam edin.
 3. FortiGate VM dağıtımı sırasında belirtilen yönetici kimlik bilgilerini kullanarak oturum açın.
 4. Sol menüde **sistem**  >  **sertifikaları**' nı seçin.
-5. Yerel **sertifikayı içeri aktar**  >  **Local Certificate**  >  **PKCS #12 sertifikası**' nı seçin.
+5. Yerel **sertifikayı içeri aktar**  >    >  **PKCS #12 sertifikası**' nı seçin.
 6. Öğesine gidin. SSL sertifikasını ve özel anahtarı içeren PFX dosyası.
 7. Sağlayın. PFX parolası ve sertifika için anlamlı bir ad. Ardından **Tamam**’ı seçin.
 8. Sol menüde **sistem**  >  **ayarları**' nı seçin.
 9. **Yönetim ayarları** altında, **https sunucu sertifikası**' nın yanındaki listeyi genişletin ve daha önce içeri aktarılan SSL sertifikasını seçin.
-10. **Apply** (Uygula) seçeneğini belirleyin.
+10. **Uygula**’yı seçin.
 11. Tarayıcı penceresini kapatın ve adresine gidin `https://<address>:8443` .
 12. FortiGate yönetici kimlik bilgileriyle oturum açın. Artık kullanımda olan doğru SSL sertifikasını görmeniz gerekir.
 

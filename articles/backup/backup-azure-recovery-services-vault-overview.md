@@ -4,10 +4,10 @@ description: Kurtarma Hizmetleri kasalarına genel bakış.
 ms.topic: conceptual
 ms.date: 08/17/2020
 ms.openlocfilehash: 0ed37446e1ccf0780f924143c8f063964adf0004
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/25/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98755117"
 ---
 # <a name="recovery-services-vaults-overview"></a>Kurtarma Hizmetleri kasalarına genel bakış
@@ -40,19 +40,19 @@ Bu bölümde, kurtarma hizmetleri kasasında depolanan yedekleme verilerinizi ş
 
 Varsayılan olarak, tüm verileriniz platform tarafından yönetilen anahtarlar kullanılarak şifrelenir. Bu şifrelemeyi etkinleştirmek için uçtan herhangi bir açık işlem yapmanız gerekmez. Bu, kurtarma hizmetleri kasanıza yedeklenen tüm iş yükleri için geçerlidir.
 
-### <a name="encryption-of-backup-data-using-customer-managed-keys"></a>Müşteri tarafından yönetilen anahtarları kullanarak yedekleme verilerinin şifrelenmesi
+### <a name="encryption-of-backup-data-using-customer-managed-keys"></a>Müşteri tarafından yönetilen anahtarları kullanarak yedekleme verilerini şifreleme
 
 Verilerinizi sahip olduğunuz ve yönetilen şifreleme anahtarlarını kullanarak şifrelemeyi seçebilirsiniz. Azure Backup, yedeklemelerinizi şifrelemek için Azure Key Vault depolanan RSA anahtarlarınızı kullanmanıza olanak sağlar. Yedeklemeleri şifrelemek için kullanılan şifreleme anahtarı, kaynak için kullanılan birinden farklı olabilir. Veriler, sırasıyla anahtarlarınız kullanılarak korunan bir AES 256 tabanlı veri şifreleme anahtarı (DEK) kullanılarak korunur. Bu sayede veriler ve anahtarlar üzerinde tam denetim elde edersiniz. Şifrelemeye izin vermek için, kurtarma hizmetleri kasasının Azure Key Vault şifreleme anahtarına erişim izni verilmelidir. Her gerektiğinde anahtarı devre dışı bırakabilir veya erişimi iptal edebilirsiniz. Ancak, kasadaki herhangi bir öğeyi korumayı denemeden önce anahtarlarınızı kullanarak şifrelemeyi etkinleştirmeniz gerekir.
 
 [Müşteri tarafından yönetilen anahtarları kullanarak](encryption-at-rest-with-cmk.md)yedekleme verilerinizi şifrelemek hakkında daha fazla bilgi edinin.
 
-## <a name="azure-advisor"></a>Azure Advisor
+## <a name="azure-advisor"></a>Azure Danışmanı
 
 [Azure Danışmanı](../advisor/index.yml) , Azure 'un kullanımını iyileştirmenize yardımcı olan kişiselleştirilmiş bir bulut danışmanıdır. Azure kullanımınızı analiz eder ve dağıtımlarınızı iyileştirmek ve güvence altına almak için zamanında öneriler sağlar. Dört kategoride öneriler sağlar: yüksek kullanılabilirlik, güvenlik, performans ve maliyet.
 
 Azure Danışmanı, yedeklenmeyen VM 'Ler için saatlik [öneriler](../advisor/advisor-high-availability-recommendations.md#protect-your-virtual-machine-data-from-accidental-deletion) sağlar, bu nedenle önemli VM 'leri yedeklemeyi hiç kaçırmayın. Ayrıca, önerileri erteleniyor göre de denetleyebilirsiniz.  Kasayı (yedeklemelerin depolanacağı yer) ve yedekleme ilkesini (yedek kopyaların yedeklerini ve bekletilmesini) belirterek, öneriyi seçebilir ve sanal makinelerde yedeklemeyi etkinleştirebilirsiniz.
 
-![Azure Advisor](./media/backup-azure-recovery-services-vault-overview/azure-advisor.png)
+![Azure Danışmanı](./media/backup-azure-recovery-services-vault-overview/azure-advisor.png)
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 

@@ -7,10 +7,10 @@ ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 12/03/2020
 ms.openlocfilehash: 102b03ad4fe247ae0abc4e2312d7027c6170333f
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/08/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98019474"
 ---
 # <a name="data-protection-in-azure-stream-analytics"></a>Azure Stream Analytics veri koruma 
@@ -56,7 +56,7 @@ Tüm düzenlenmiş sektörlerde veya ortamlarda uyumluluk yükümlülüklerinizi
 
 Depolama hesabınızı özel veri varlıkları için yapılandırmak üzere aşağıdaki adımları kullanın. Bu yapılandırma, depolama hesabınızdan değil, Stream Analytics işinden yapılır.
 
-1. [Azure Portal](https://portal.azure.com/) oturum açın.
+1. [Azure portalında](https://portal.azure.com/) oturum açın.
 
 1. Azure portalının sol üst köşesinde bulunan **Kaynak oluştur** öğesini seçin. 
 

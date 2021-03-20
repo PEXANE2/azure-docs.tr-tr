@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
 ms.openlocfilehash: 30e94c9737241ff49c29898adcc5e50c6b73a9b1
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92516049"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-skydesk-email"></a>Öğretici: ufuk Masası e-postasıyla Azure Active Directory tümleştirme
@@ -61,13 +61,13 @@ Ufuk Masası e-postası tümleştirmesini Azure AD 'ye göre yapılandırmak iç
 
     ![Yeni uygulama düğmesi](common/add-new-app.png)
 
-4. Arama kutusuna, **ufuk Masası e-postası**yazın, sonuç panelinden **ufuk Masası e-postası** ' nı seçin, sonra da uygulamayı eklemek için **Ekle** düğmesine tıklayın.
+4. Arama kutusuna, **ufuk Masası e-postası** yazın, sonuç panelinden **ufuk Masası e-postası** ' nı seçin, sonra da uygulamayı eklemek için **Ekle** düğmesine tıklayın.
 
      ![Sonuçlar listesinde ufuk Masası e-postası](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-Bu bölümde, Azure AD çoklu oturum açmayı, **Britta Simon**adlı bir test kullanıcısına göre ufuk Masası e-postası ile yapılandırıp test edersiniz.
+Bu bölümde, Azure AD çoklu oturum açmayı, **Britta Simon** adlı bir test kullanıcısına göre ufuk Masası e-postası ile yapılandırıp test edersiniz.
 Çoklu oturum açma için, bir Azure AD kullanıcısı ve bu, ufuk Masası e-postasında ilgili Kullanıcı arasındaki bağlantı ilişkisinin kurulması gerekir.
 
 Azure AD çoklu oturum açmayı, ufuk Masası e-postası ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını gerçekleştirmeniz gerekir:
@@ -153,15 +153,15 @@ Azure AD çoklu oturum açmayı, ufuk Masası e-postası ile yapılandırmak iç
 
     ![Ekran görüntüsü, adı girdiğiniz b R L 'yi gösterir.](./media/skydeskemail-tutorial/tutorial_skydeskemail_57.png)
 
-    a. **Oturum açma URL 'si** metin kutusunda, Azure Portal kopyaladığınız **oturum açma URL 'si**değerini yapıştırın.
+    a. **Oturum açma URL 'si** metin kutusunda, Azure Portal kopyaladığınız **oturum açma URL 'si** değerini yapıştırın.
 
-    b. **Logout** URL metin kutusuna, Azure Portal kopyaladığınız **Logout URL 'si**değerini yapıştırın.
+    b. **Logout** URL metin kutusuna, Azure Portal kopyaladığınız **Logout URL 'si** değerini yapıştırın.
 
     c. **Parola değiştirme URL 'si** isteğe bağlıdır, bu nedenle boş bırakın.
 
     d. Azure portal 'ten indirilen sertifikayı seçmek için **anahtardan anahtar al** ' a tıklayın ve ardından sertifikayı karşıya yüklemek için **Aç** ' a tıklayın.
 
-    e. **Algoritma**olarak **RSA**' yı seçin.
+    e. **Algoritma** olarak **RSA**' yı seçin.
 
     f. Değişiklikleri kaydetmek için **Tamam** ' ı tıklatın.
 
@@ -181,9 +181,9 @@ Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı ol
 
     ![Kullanıcı iletişim kutusu](common/user-properties.png)
 
-    a. **Ad** alanına **Brittasıon**girin.
+    a. **Ad** alanına **Brittasıon** girin.
   
-    b. **Kullanıcı adı** alan türü**brittasimon@yourcompanydomain.extension**  
+    b. **Kullanıcı adı** alan türü **brittasimon@yourcompanydomain.extension**  
     Örneğin, BrittaSimon@contoso.com
 
     c. **Parolayı göster** onay kutusunu seçin ve ardından parola kutusunda görüntülenen değeri yazın.

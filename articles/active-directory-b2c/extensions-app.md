@@ -11,15 +11,15 @@ ms.date: 09/06/2017
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: dc536fa4292d794e8d89a2564ad10a3c10dd0a3d
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94560869"
 ---
 # <a name="azure-ad-b2c-extensions-app"></a>Azure AD B2C: uzantılar uygulaması
 
-Azure AD B2C bir dizin oluşturulduğunda, adlı bir uygulama `b2c-extensions-app. Do not modify. Used by AADB2C for storing user data.` Yeni dizin içinde otomatik olarak oluşturulur. **B2C-Extensions-App** olarak anılan bu uygulama *uygulama kayıtları* görünür. Kullanıcılar ve özel öznitelikler hakkında bilgi depolamak için Azure AD B2C hizmeti tarafından kullanılır. Uygulama silinirse, Azure AD B2C düzgün çalışmayacaktır ve üretim ortamınız etkilenecektir.
+Azure AD B2C bir dizin oluşturulduğunda, adlı bir uygulama `b2c-extensions-app. Do not modify. Used by AADB2C for storing user data.` Yeni dizin içinde otomatik olarak oluşturulur. **B2C-Extensions-App** olarak anılan bu uygulama *uygulama kayıtları* görünür. Kullanıcılar ve özel öznitelikler hakkında bilgi depolamak için Azure AD B2C hizmeti tarafından kullanılır. Uygulamanın silinmesi halinde Azure AD B2C düzgün çalışmaz ve üretim ortamınız bu durumdan etkilenir.
 
 > [!IMPORTANT]
 > Kiracınızı hemen silmeyi planlamadığınız müddetçe B2C-Extensions-App ' i silmeyin. Uygulama 30 günden uzun bir süre sonra silinirse, Kullanıcı bilgileri kalıcı olarak kaybedilir.

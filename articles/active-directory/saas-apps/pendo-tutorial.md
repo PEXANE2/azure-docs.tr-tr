@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 04/09/2020
 ms.author: jeedes
 ms.openlocfilehash: de411e857c2d6e22b79c5e63a6d2adda71e054e0
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92515585"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-pendo"></a>Öğretici: Pendo ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
@@ -55,7 +55,7 @@ Pendo 'ın Azure AD ile tümleştirilmesini yapılandırmak için, galerisindeki
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-pendo"></a>Azure AD 'yi Pendo için çoklu oturum açmayı yapılandırma ve test etme
 
-**B. Simon**adlı bir test kullanıcısı kullanarak Azure AD SSO 'Yu pendo ile yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ve Pendo içindeki ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
+**B. Simon** adlı bir test kullanıcısı kullanarak Azure AD SSO 'Yu pendo ile yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ve Pendo içindeki ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
 
 Azure AD SSO 'yu Pendo ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
 
@@ -85,7 +85,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
     > [!NOTE]
     > Bu değerler gerçek değildir. Bu değerleri gerçek tanımlayıcı ve geçiş durumuyla güncelleştirin. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
 
-1. Pendo uygulaması, SAML belirteci öznitelikleri yapılandırmanıza özel öznitelik eşlemeleri eklemenizi gerektiren belirli bir biçimde SAML onayları bekliyor. Aşağıdaki ekran görüntüsünde, **adın** **User. UserPrincipalName**ile eşlendiği varsayılan özniteliklerin listesi gösterilmektedir. Pendo uygulaması **adının** **User. Mail**ile eşlenmesini bekliyor, bu nedenle, **Düzenle** simgesine tıklayarak ve öznitelik eşlemesini değiştirerek öznitelik eşlemesini düzenlemeniz gerekir.
+1. Pendo uygulaması, SAML belirteci öznitelikleri yapılandırmanıza özel öznitelik eşlemeleri eklemenizi gerektiren belirli bir biçimde SAML onayları bekliyor. Aşağıdaki ekran görüntüsünde, **adın** **User. UserPrincipalName** ile eşlendiği varsayılan özniteliklerin listesi gösterilmektedir. Pendo uygulaması **adının** **User. Mail** ile eşlenmesini bekliyor, bu nedenle, **Düzenle** simgesine tıklayarak ve öznitelik eşlemesini değiştirerek öznitelik eşlemesini düzenlemeniz gerekir.
 
     ![image](common/edit-attribute.png)
 

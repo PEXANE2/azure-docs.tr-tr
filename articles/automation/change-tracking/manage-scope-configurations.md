@@ -6,10 +6,10 @@ ms.subservice: change-inventory-management
 ms.date: 10/14/2020
 ms.topic: conceptual
 ms.openlocfilehash: 6eb9a20920f0a340491459f0875fc85b90dfa193
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/19/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92210410"
 ---
 # <a name="limit-change-tracking-and-inventory-deployment-scope"></a>Değişiklik İzleme ve envanter dağıtım kapsamını sınırlandırma
@@ -30,11 +30,11 @@ Değişiklik İzleme ve envanter dağıtımınızın kapsamını sınırlandırm
 
 3. Otomasyon hesapları listenizde, Değişiklik İzleme ve envanteri etkinleştirildiğinde seçtiğiniz hesabı seçin.
 
-4. Otomasyon hesabınızda **ilgili kaynaklar**altında **bağlantılı çalışma alanı** ' nı seçin.
+4. Otomasyon hesabınızda **ilgili kaynaklar** altında **bağlantılı çalışma alanı** ' nı seçin.
 
-5. **Çalışma alanına git ' e**tıklayın.
+5. **Çalışma alanına git ' e** tıklayın.
 
-6. **Çalışma alanı veri kaynakları**altında **kapsam yapılandırma (Önizleme)** öğesini seçin.
+6. **Çalışma alanı veri kaynakları** altında **kapsam yapılandırma (Önizleme)** öğesini seçin.
 
 7. Kapsam yapılandırmasının sağ tarafındaki üç noktayı seçin  `MicrosoftDefaultScopeConfig-ChangeTracking` ve **Düzenle**' ye tıklayın.
 

@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 04/10/2020
 ms.author: jeedes
 ms.openlocfilehash: 527c0ce1278c920f53a2f63b7708bce09da789e1
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92516364"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-timetabling-solutions"></a>Öğretici: timetabling çözümleriyle çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
@@ -58,7 +58,7 @@ Timetabling çözümlerin Azure AD 'ye tümleştirilmesini yapılandırmak için
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-timetabling-solutions"></a>Timetabling çözümleri için Azure AD çoklu oturum açma yapılandırma ve test etme
 
-**B. Simon**adlı bir test kullanıcısı kullanarak, timetabling ÇÖZÜMLERIYLE Azure AD SSO 'yu yapılandırın ve test edin. SSO 'nun çalışması için, timetabling çözümlerinde bir Azure AD kullanıcısı ve ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
+**B. Simon** adlı bir test kullanıcısı kullanarak, timetabling ÇÖZÜMLERIYLE Azure AD SSO 'yu yapılandırın ve test edin. SSO 'nun çalışması için, timetabling çözümlerinde bir Azure AD kullanıcısı ve ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
 
 Zaman çizelgesi çözümleri ile Azure AD SSO 'yu yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
 

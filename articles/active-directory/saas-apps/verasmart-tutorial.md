@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 08/07/2020
 ms.author: jeedes
 ms.openlocfilehash: 9412cdcb820f451df444dc2f30a4f538bc287b01
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92517710"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-verasmart"></a>Öğretici: VeraSMART ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
@@ -57,7 +57,7 @@ VeraSMART 'ın Azure AD 'ye tümleştirilmesini yapılandırmak için, Galeriden
 
 ## <a name="configure-and-test-azure-ad-sso-for-verasmart"></a>VeraSMART için Azure AD SSO 'yu yapılandırma ve test etme
 
-**B. Simon**adlı bir test kullanıcısı kullanarak Azure AD SSO 'Yu VeraSMART ile yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ile ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
+**B. Simon** adlı bir test kullanıcısı kullanarak Azure AD SSO 'Yu VeraSMART ile yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ile ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
 
 Azure AD SSO 'yu VeraSMART ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
 

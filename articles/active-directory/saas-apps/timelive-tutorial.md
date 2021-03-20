@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
 ms.openlocfilehash: 49dff636e7ffb9889219abfae80a4bd8b1c0da1f
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92516418"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-timelive"></a>Öğretici: TimeLive ile tümleştirme Azure Active Directory
@@ -63,13 +63,13 @@ Azure AD 'de TimeLive tümleştirmesini yapılandırmak için, galerinizden yön
 
     ![Yeni uygulama düğmesi](common/add-new-app.png)
 
-4. Arama kutusuna **timelive**yazın, sonuç panelinden **timelive** ' ı seçin ve ardından **Ekle** düğmesine tıklayarak uygulamayı ekleyin.
+4. Arama kutusuna **timelive** yazın, sonuç panelinden **timelive** ' ı seçin ve ardından **Ekle** düğmesine tıklayarak uygulamayı ekleyin.
 
      ![Sonuçlar listesinde TimeLive](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-Bu bölümde, **Britta Simon**adlı bir test kullanıcısına göre Timelive Ile Azure AD çoklu oturum açmayı yapılandırıp test edersiniz.
+Bu bölümde, **Britta Simon** adlı bir test kullanıcısına göre Timelive Ile Azure AD çoklu oturum açmayı yapılandırıp test edersiniz.
 Çoklu oturum açma için, bir Azure AD kullanıcısı ve zaman içindeki ilgili Kullanıcı arasındaki bağlantı ilişkisinin oluşturulması gerekir.
 
 Azure AD çoklu oturum açmayı zaman uyumlu olarak yapılandırmak ve test etmek için aşağıdaki yapı taşlarını gerçekleştirmeniz gerekir:
@@ -128,7 +128,7 @@ Azure AD çoklu oturum açmayı TimeLive ile yapılandırmak için aşağıdaki 
 
 1. Farklı bir Web tarayıcısı penceresinde, TimeLive şirket sitenizde yönetici olarak oturum açın.
 
-2. **Yönetici seçenekleri**altında **Tercihler** ' i seçin.
+2. **Yönetici seçenekleri** altında **Tercihler** ' i seçin.
 
     ![Ekran görüntüsü tercihleri seçili Yönetici seçeneklerini gösterir.](./media/timelive-tutorial/configure1.png)
 
@@ -142,9 +142,9 @@ Azure AD çoklu oturum açmayı TimeLive ile yapılandırmak için aşağıdaki 
 
     c. Açılan menüden **SAML** ' yi seçin ve **tek Sign-On (SSO) Ile birlikte başlık oturum açın**.
 
-    d. **SAML SSO URL 'si**içinde, Azure Portal formunu kopyaladığınız **oturum açma URL 'si** değerini yapıştırın.
+    d. **SAML SSO URL 'si** içinde, Azure Portal formunu kopyaladığınız **oturum açma URL 'si** değerini yapıştırın.
 
-    e. **Uzaktan oturum kapatma URL 'si**içinde, Azure Portal formunu kopyaladığınız **Logout URL 'si** değerini yapıştırın.
+    e. **Uzaktan oturum kapatma URL 'si** içinde, Azure Portal formunu kopyaladığınız **Logout URL 'si** değerini yapıştırın.
 
     f. İndirilen **temel 64 kodlu sertifikayı** Not defteri 'ndeki Azure Portal açın, içeriği kopyalayın ve **X. 509.952 Certificate** metin kutusuna yapıştırın.
 
@@ -166,7 +166,7 @@ Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı ol
 
     ![Kullanıcı iletişim kutusu](common/user-properties.png)
 
-    a. **Ad** alanına **Brittasıon**girin.
+    a. **Ad** alanına **Brittasıon** girin.
   
     b. **Kullanıcı adı** alanına yazın brittasimon@yourcompanydomain.extension . Örneğin, BrittaSimon@contoso.com
 

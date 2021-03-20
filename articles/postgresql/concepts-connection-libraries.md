@@ -7,26 +7,26 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 5/6/2019
 ms.openlocfilehash: 45081c6ba161686498398f2c4ccae8b4cff4c0d1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91704319"
 ---
 # <a name="connection-libraries-for-azure-database-for-postgresql---single-server"></a>PostgreSQL için Azure veritabanı bağlantı kitaplıkları-tek sunucu
 Bu makalede, geliştiricilerin PostgreSQL için Azure veritabanı 'na bağlanmak ve veritabanını sorgulamak üzere uygulama geliştirmek için kullanabilecekleri kitaplıklar ve sürücüler listelenmiştir.
 
 ## <a name="client-interfaces"></a>İstemci arabirimleri
-PostgreSQL sunucusuna bağlanmak için kullanılan çoğu dil istemci kitaplığı, dış projelerdir ve bağımsız olarak dağıtılır. Listelenen kitaplıklar, PostgreSQL için Azure veritabanı 'na bağlanmak üzere Windows, Linux ve Mac platformlarında desteklenir. Birkaç hızlı başlangıç örneği, sonraki adımlar bölümünde listelenmiştir.
+PostgreSQL'e bağlanmak için kullanılan çoğu dildeki istemci kitaplığı dış kaynaklar tarafından geliştirilir ve bağımsız bir şekilde dağıtılır. Listelenen kitaplıklar, PostgreSQL için Azure veritabanı 'na bağlanmak üzere Windows, Linux ve Mac platformlarında desteklenir. Birkaç hızlı başlangıç örneği, sonraki adımlar bölümünde listelenmiştir.
 
 | **Dil** | **İstemci arabirimi** | **Ek bilgi** | **İndir** |
 |--------------|----------------------------------------------------------------|-------------------------------------|--------------------------------------------------------------------|
 | Python | [psycopg](http://initd.org/psycopg/) | DB API 2,0 uyumlu | [İndir](http://initd.org/psycopg/download/) |
 | PHP | [php-pgsql](https://secure.php.net/manual/en/book.pgsql.php) | Veritabanı uzantısı | [Yükleme](https://secure.php.net/manual/en/pgsql.installation.php) |
 | Node.js | [Sayfalık NPM paketi](https://www.npmjs.com/package/pg) | Saf JavaScript engelleyici olmayan istemci | [Yükleme](https://www.npmjs.com/package/pg) |
-| Java | [JDBC](https://jdbc.postgresql.org/) | Tür 4 JDBC sürücüsü | [İndirme](https://jdbc.postgresql.org/download.html)  |
+| Java | [JDBC](https://jdbc.postgresql.org/) | Tür 4 JDBC sürücüsü | [İndir](https://jdbc.postgresql.org/download.html)  |
 | Ruby | [Sayfalık GED](https://deveiate.org/code/pg/) | Ruby arabirimi | [İndir](https://rubygems.org/downloads/pg-0.20.0.gem) |
-| Başlayın | [Paket PQ](https://godoc.org/github.com/lib/pq) | Saf go Postgres sürücüsü | [Yükleme](https://github.com/lib/pq/blob/master/README.md) |
+| Go | [Paket PQ](https://godoc.org/github.com/lib/pq) | Saf go Postgres sürücüsü | [Yükleme](https://github.com/lib/pq/blob/master/README.md) |
 | C \# /.net | [Npgsql](https://www.npgsql.org/) | ADO.NET Veri Sağlayıcısı | [İndir](https://www.microsoft.com/net/) |
 | ODBC | [psqlODBC](https://odbc.postgresql.org/) | ODBC Sürücüsü | [İndir](https://www.postgresql.org/ftp/odbc/versions/) |
 | C | [libpq](https://www.postgresql.org/docs/9.6/static/libpq.html) | Birincil C dil arabirimi | Dahil |

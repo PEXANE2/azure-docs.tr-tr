@@ -9,10 +9,10 @@ ms.date: 12/06/2019
 ms.author: duau
 ms.custom: devx-track-azurepowershell
 ms.openlocfilehash: 0e8a1d48934d73f1035c6f2c4c76e56d9a0e4052
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/19/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92206979"
 ---
 # <a name="connect-a-virtual-network-to-an-expressroute-circuit-using-powershell-classic"></a>PowerShell kullanarak bir ExpressRoute devresine sanal ağ bağlama (klasik)
@@ -77,7 +77,7 @@ Büyük buluttaki küçük bulutların her biri, bir kuruluştaki farklı depart
 ![Çapraz abonelik bağlantısı](./media/expressroute-howto-linkvnet-classic/cross-subscription.png)
 
 ### <a name="administration"></a>Yönetim
-*Devre sahibi* , ExpressRoute bağlantı hattının oluşturulduğu aboneliğin yönetici/ortak yöneticisidir. Devre sahibi, *devre kullanıcıları*olarak adlandırılan diğer aboneliklerdeki yöneticileri/ortak yöneticileri, sahip oldukları özel devreyi kullanmak üzere yetkilendirebilirler. Kuruluşun ExpressRoute bağlantı hattını kullanma yetkisine sahip olan devre kullanıcıları, aboneliğindeki sanal ağı, yetkilendirdikten sonra ExpressRoute devresine bağlayabilir.
+*Devre sahibi* , ExpressRoute bağlantı hattının oluşturulduğu aboneliğin yönetici/ortak yöneticisidir. Devre sahibi, *devre kullanıcıları* olarak adlandırılan diğer aboneliklerdeki yöneticileri/ortak yöneticileri, sahip oldukları özel devreyi kullanmak üzere yetkilendirebilirler. Kuruluşun ExpressRoute bağlantı hattını kullanma yetkisine sahip olan devre kullanıcıları, aboneliğindeki sanal ağı, yetkilendirdikten sonra ExpressRoute devresine bağlayabilir.
 
 Devre sahibinin, her zaman yetkilendirmeleri değiştirme ve iptal etme gücü vardır. Bir Yetkilendirmeyi iptal etmek, erişimi iptal edilen aboneliğden tüm bağlantıların silinmesine neden olur.
 

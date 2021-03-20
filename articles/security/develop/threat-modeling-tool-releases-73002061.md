@@ -7,10 +7,10 @@ ms.service: security
 ms.topic: article
 ms.date: 02/25/2020
 ms.openlocfilehash: 9f9b162460cd2e7a624c1ad3f992011487d1b795
-ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/11/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94516943"
 ---
 # <a name="threat-modeling-tool-update-release-73002061---02112020"></a>Threat Modeling Tool güncelleştirme sürümü 7.3.00206.1-02/11/2020
@@ -33,7 +33,7 @@ System.ArgumentOutOfRangeException: Accepted values are 'High', 'Medium', and 'L
 
 Bu sorun bu sürümde çözüldü.
 
-## <a name="system-requirements"></a>Sistem gereksinimleri
+## <a name="system-requirements"></a>Sistem Gereksinimleri
 
 - Desteklenen İşletim Sistemleri
   - [Microsoft Windows 10 yıldönümü güncelleştirmesi](https://blogs.windows.com/windowsexperience/2016/08/02/how-to-get-the-windows-10-anniversary-update/#HTkoK5Zdv0g2F2Zq.97) veya üzeri

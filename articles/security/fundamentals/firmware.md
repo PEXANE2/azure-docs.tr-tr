@@ -9,13 +9,13 @@ ms.author: terrylan
 manager: rkarlin
 ms.date: 11/10/2020
 ms.openlocfilehash: 8233cc714d977083f4d55716d35c0b7094a069ea
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94558043"
 ---
-# <a name="firmware-security"></a>Bellenim güvenliği
+# <a name="firmware-security"></a>Üretici yazılımı güvenliği
 Bu makalede, Microsoft 'un bulut donanımı ekosistemi ve tedarik zincirlerinin nasıl güvenlik altına aldığı açıklanır.
 
 ## <a name="securing-the-cloud-hardware-ecosystem"></a>Bulut donanım ekosisteminin güvenliğini sağlama
@@ -52,6 +52,6 @@ Platform bütünlüğünü ve güvenliğini sağlamak için yaptığımız hakk�
 
 - [Güvenli önyükleme](secure-boot.md)
 - [Ölçülen önyükleme ve konak kanıtlama](measured-boot-host-attestation.md)
-- [Proje Cerberus](project-cerberus.md)
+- [Project Cerberus](project-cerberus.md)
 - [Bekleme sırasında şifreleme](encryption-atrest.md)
 - [Hiper yönetici güvenliği](hypervisor.md)

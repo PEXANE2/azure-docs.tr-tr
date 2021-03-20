@@ -7,10 +7,10 @@ ms.service: data-share
 ms.topic: tutorial
 ms.date: 11/12/2020
 ms.openlocfilehash: a225989f0670e9b62b00a35bac719c9357c8a130
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96017058"
 ---
 # <a name="tutorial-accept-and-receive-data-using-azure-data-share"></a>Öğretici: Azure Veri Paylaşımı’nı kullanarak veri kabul etme ve alma  
@@ -116,7 +116,7 @@ Azure SQL veritabanı 'na veri almayı seçerseniz Azure SYNAPSE Analytics, önk
 
 Azure CLı ortamınızı hazırlayın ve ardından davetlerinizi görüntüleyin.
 
-Ortamınızı Azure CLı için hazırlarken başlayın:
+Başlangıç olarak ortamınızı Azure CLI için hazırlayın:
 
 [!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
 

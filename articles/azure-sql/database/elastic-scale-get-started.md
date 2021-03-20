@@ -12,10 +12,10 @@ ms.author: anjangsh
 ms.reviewer: sstein
 ms.date: 01/25/2019
 ms.openlocfilehash: 74343b2f05bb4a59e475449c87524ff66cdd605d
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98919553"
 ---
 # <a name="get-started-with-elastic-database-tools"></a>Elastik veritabanı araçlarını kullanmaya başlama
@@ -104,13 +104,13 @@ Tebrikler! SQL veritabanı 'nda elastik veritabanı araçlarını kullanarak ilk
 
 ## <a name="key-pieces-of-the-code-sample"></a>Kod örneğinin temel parçaları
 
-* **Parçaları ve parça haritalarını yönetme**: kod, *ShardManagementUtils.cs* dosyasındaki parçalar, aralıklar ve eşlemelerle çalışmayı gösterir. Daha fazla bilgi için bkz. parça [eşleme yöneticisiyle veritabanlarını genişletme](https://go.microsoft.com/?linkid=9862595).  
+* Parçaları **ve parça haritalarını yönetme**: kod, *Shardmanagementutils. cs* dosyasındaki parçalar, aralıklar ve eşlemelerle çalışmayı gösterir. Daha fazla bilgi için bkz. parça [eşleme yöneticisiyle veritabanlarını genişletme](https://go.microsoft.com/?linkid=9862595).  
 
-* **Verilere bağımlı yönlendirme**: işlemlerin sağ parçaya yönlendirilmesi *DataDependentRoutingSample.cs* dosyasında gösterilmiştir. Daha fazla bilgi için bkz. [verilere bağımlı yönlendirme](https://go.microsoft.com/?linkid=9862596).
+* **Verilere bağımlı yönlendirme**: işlemlerin sağ parçaya yönlendirilmesi *DataDependentRoutingSample. cs* dosyasında gösterilmiştir. Daha fazla bilgi için bkz. [verilere bağımlı yönlendirme](https://go.microsoft.com/?linkid=9862596).
 
-* **Birden çok parça üzerinde sorgulama**: parçalar arasında sorgulama *MultiShardQuerySample.cs* dosyasında gösterilmiştir. Daha fazla bilgi için bkz. [çok parçalı sorgulama](https://go.microsoft.com/?linkid=9862597).
+* **Birden çok parça üzerinde sorgulama**: parçalar arasında sorgulama, *Multishardquerysample. cs* dosyasında gösterilmektedir. Daha fazla bilgi için bkz. [çok parçalı sorgulama](https://go.microsoft.com/?linkid=9862597).
 
-* **Boş parçalar ekleniyor**: yeni boş parçaların eklenmesi, *CreateShardSample.cs* dosyasındaki kod tarafından gerçekleştirilir. Daha fazla bilgi için bkz. parça [eşleme yöneticisiyle veritabanlarını genişletme](https://go.microsoft.com/?linkid=9862595).
+* **Boş parçalar ekleme**: yeni boş parça ekleme Işlemi, *Createshardsample. cs* dosyasındaki kod tarafından gerçekleştirilir. Daha fazla bilgi için bkz. parça [eşleme yöneticisiyle veritabanlarını genişletme](https://go.microsoft.com/?linkid=9862595).
 
 ## <a name="other-elastic-scale-operations"></a>Diğer elastik ölçeklendirme işlemleri
 

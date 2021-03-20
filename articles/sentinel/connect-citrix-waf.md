@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 10/25/2020
 ms.author: yelevin
 ms.openlocfilehash: 475e04ad3dd8c7cc51d6345b4b51dd68cff5b597
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93103129"
 ---
 # <a name="connect-your-citrix-waf-to-azure-sentinel"></a>Citrix WAF 'nizi Azure Sentinel 'e bağlama
@@ -44,7 +44,7 @@ Citrix WAF, günlükleri Azure Sentinel çalışma alanınıza ileten Log Analyt
 
 ## <a name="find-your-data"></a>Verilerinizi bulun
 
-Başarılı bir bağlantı kurulduktan sonra, veriler **günlüklerde** , **Azure Sentinel** bölümünde, *commonsecuritylog* tablosunda görünür.
+Başarılı bir bağlantı kurulduktan sonra, veriler **günlüklerde**, **Azure Sentinel** bölümünde, *commonsecuritylog* tablosunda görünür.
 
 Citrix WAF günlüklerini Log Analytics sorgulamak için, `CommonSecurityLog` sorgu penceresinin üst kısmına girin.
 
