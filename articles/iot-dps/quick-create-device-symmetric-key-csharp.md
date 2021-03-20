@@ -10,10 +10,10 @@ services: iot-dps
 manager: eliotgra
 ms.custom: mvc
 ms.openlocfilehash: f97840a05115bf5659a6f7579b72786e890051a2
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92429396"
 ---
 # <a name="quickstart-provision-a-symmetric-key-device-using-c"></a>Hızlı başlangıç: C kullanarak bir simetrik anahtar cihazı sağlama #
@@ -32,7 +32,7 @@ Bu makale Windows tabanlı bir iş istasyonuna yöneliktir. Ancak yordamları Li
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Windows tabanlı makinenizde [.NET Core 2,1 SDK](https://www.microsoft.com/net/download/windows) veya sonraki bir sürümünün yüklü olduğundan emin olun.
 
@@ -61,7 +61,7 @@ Bu makale Windows tabanlı bir iş istasyonuna yöneliktir. Ancak yordamları Li
 
 4. Kaydınız kaydedildikten sonra, **birincil anahtar** ve **İkincil anahtar** oluşturulur ve kayıt girişine eklenir. Simetrik anahtar cihaz kaydınız, *bireysel* kayıtlar SEKMESINDEKI *kayıt kimliği* sütununun altında **SYMM-Key-CSharp-Device-01** olarak görünür. 
 
-5. Kaydı açın ve üretilen **birincil anahtar** ve **İkincil anahtarınızın**değerini kopyalayın. Bu anahtar değerini ve **kayıt kimliğini** daha sonra, cihaz sağlama örnek kodu ile kullanmak üzere ortam değişkenleri eklediğinizde kullanacaksınız.
+5. Kaydı açın ve üretilen **birincil anahtar** ve **İkincil anahtarınızın** değerini kopyalayın. Bu anahtar değerini ve **kayıt kimliğini** daha sonra, cihaz sağlama örnek kodu ile kullanmak üzere ortam değişkenleri eklediğinizde kullanacaksınız.
 
 
 
@@ -88,7 +88,7 @@ Bu bölümde, simetrik anahtar cihazınızı sağlamak üzere cihaz sağlama ör
 
 Sağlama kodu, cihazınızın kimliğini doğrulamak için bu değişkenlere göre DPS örneğiyle iletişim kuracaktır. Daha sonra cihaz, bireysel kayıt yapılandırmasına göre zaten DPS örneğine bağlanmış olan bir IoT Hub 'ına atanır. Sağlandıktan sonra örnek kod, IoT Hub 'ına bazı test telemetrisi gönderir.
 
-1. [Azure Portal](https://portal.azure.com), cihaz sağlama hizmeti menünüzde **genel bakış** ' ı seçin ve _hizmet uç_ noktanızı ve _kimlik kapsamınızı_kopyalayın. `PROVISIONING_HOST`Ve ortam değişkenleri için bu değerleri kullanacaksınız `DPS_IDSCOPE` .
+1. [Azure Portal](https://portal.azure.com), cihaz sağlama hizmeti menünüzde **genel bakış** ' ı seçin ve _hizmet uç_ noktanızı ve _kimlik kapsamınızı_ kopyalayın. `PROVISIONING_HOST`Ve ortam değişkenleri için bu değerleri kullanacaksınız `DPS_IDSCOPE` .
 
     ![Hizmet bilgileri](./media/quick-create-device-symmetric-key-csharp/extract-dps-endpoints.png)
 
@@ -98,7 +98,7 @@ Sağlama kodu, cihazınızın kimliğini doğrulamak için bu değişkenlere gö
     cd provisioning\Samples\device\SymmetricKeySample
     ```
 
-3. *Symmetrickeysample* klasöründe, bir metin düzenleyicisinde *program.cs* açın ve ve dizelerini belirten kod satırlarını bulun `individualEnrollmentPrimaryKey` `individualEnrollmentSecondaryKey` . Anahtar kodlanması yerine ortam değişkenlerinin kullanılması için bu kod satırlarını aşağıdaki gibi güncelleştirin.
+3. *Symmetrickeysample* klasöründe, *program. cs* ' yi bir metin düzenleyicisinde açın ve ve dizelerini belirten kod satırlarını bulun `individualEnrollmentPrimaryKey` `individualEnrollmentSecondaryKey` . Anahtar kodlanması yerine ortam değişkenlerinin kullanılması için bu kod satırlarını aşağıdaki gibi güncelleştirin.
  
     ```csharp
         //These are the two keys that belong to your individual enrollment. 
@@ -119,7 +119,7 @@ Sağlama kodu, cihazınızın kimliğini doğrulamak için bu değişkenlere gö
         private static string registrationId = Environment.GetEnvironmentVariable("PROVISIONING_REGISTRATION_ID");;
     ```
 
-    Değişiklikleri *program.cs*'ye kaydedin.
+    *Program. cs*' ye değişiklikleri kaydedin.
 
 3. Komut istemindeki KIMLIK kapsamı, kayıt KIMLIĞI, birincil ve ikincil simetrik anahtarlar için, önceki bölümde tek bir kayıttan kopyaladığınız ortam değişkenlerini ekleyin.  
 
@@ -162,7 +162,7 @@ Sağlama kodu, cihazınızın kimliğini doğrulamak için bu değişkenlere gö
     Enter any key to exit
     ```
     
-6. Azure portal, sağlama hizmetinize bağlı olan IoT Hub 'ına gidin ve **IoT cihazları** dikey penceresini açın. Simetrik anahtar cihazı hub 'a başarıyla sağlamaktan sonra cihaz KIMLIĞI, **etkin**olarak *durumuyla* gösterilir. Cihaz örnek kodunu çalıştırmadan önce dikey pencereyi zaten açtıysanız, en üstteki **Yenile** düğmesine basmanız gerekebilir. 
+6. Azure portal, sağlama hizmetinize bağlı olan IoT Hub 'ına gidin ve **IoT cihazları** dikey penceresini açın. Simetrik anahtar cihazı hub 'a başarıyla sağlamaktan sonra cihaz KIMLIĞI, **etkin** olarak *durumuyla* gösterilir. Cihaz örnek kodunu çalıştırmadan önce dikey pencereyi zaten açtıysanız, en üstteki **Yenile** düğmesine basmanız gerekebilir. 
 
     ![Cihaz IOT hub'da kayıtlı](./media/quick-create-device-symmetric-key-csharp/hub-registration-csharp.png) 
 

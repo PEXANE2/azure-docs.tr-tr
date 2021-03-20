@@ -1,5 +1,5 @@
 ---
-title: Ufuk API 'SI
+title: Horizon API’si
 description: Bu kılavuzda, yaygın olarak kullanılan ufuk yöntemleri açıklanmaktadır.
 author: shhazam-ms
 manager: rkarlin
@@ -8,13 +8,13 @@ ms.date: 1/5/2021
 ms.topic: article
 ms.service: azure
 ms.openlocfilehash: 39770fe7aa7b11cae03304fda8901e81e0f1877a
-ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98208425"
 ---
-# <a name="horizon-api"></a>Ufuk API 'SI 
+# <a name="horizon-api"></a>Horizon API’si 
 
 Bu kılavuzda, yaygın olarak kullanılan ufuk yöntemleri açıklanmaktadır.
 

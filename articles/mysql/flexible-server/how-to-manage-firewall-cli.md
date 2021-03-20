@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 9/21/2020
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: 84fdd3045d5a1d44ff611134d88fc9793ee203de
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/26/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92545081"
 ---
 # <a name="create-and-manage-azure-database-for-mysql---flexible-server-firewall-rules-using-the-azure-cli"></a>Azure CLı kullanarak MySQL için Azure veritabanı-esnek sunucu güvenlik duvarı kuralları oluşturma ve yönetme
@@ -31,7 +31,7 @@ Bu makalede, Azure CLı kullanarak **genel erişime (izin VERILEN IP adresleri)*
 
 [Azure Cloud Shell](../../cloud-shell/overview.md) , bu makaledeki adımları çalıştırmak için kullanabileceğiniz ücretsiz bir etkileşimli kabuktur. Yaygın Azure araçları, kabuğa önceden yüklenmiştir ve kabuk, hesabınızla birlikte kullanılacak şekilde yapılandırılmıştır.
 
-Cloud Shell'i açmak için kod bloğunun sağ üst köşesinden **Deneyin** 'i seçmeniz yeterlidir. Ayrıca, ' a giderek ayrı bir tarayıcı sekmesinde Cloud Shell de açabilirsiniz [https://shell.azure.com/bash](https://shell.azure.com/bash) . Kod bloklarını kopyalamak için **Kopyala** ' yı seçin, Cloud Shell yapıştırın ve çalıştırmak için **ENTER** ' u seçin.
+Cloud Shell'i açmak için kod bloğunun sağ üst köşesinden **Deneyin**'i seçmeniz yeterlidir. Ayrıca, ' a giderek ayrı bir tarayıcı sekmesinde Cloud Shell de açabilirsiniz [https://shell.azure.com/bash](https://shell.azure.com/bash) . Kod bloklarını kopyalamak için **Kopyala** ' yı seçin, Cloud Shell yapıştırın ve çalıştırmak için **ENTER** ' u seçin.
 
 CLı 'yi yerel olarak yükleyip kullanmayı tercih ederseniz bu hızlı başlangıç, Azure CLı sürüm 2,0 veya üzerini gerektirir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse, bkz. [Azure CLI yükleme](/cli/azure/install-azure-cli).
 
@@ -89,11 +89,11 @@ Yapılandırılabilir CLı parametrelerinin tüm listesi için Azure CLı [başv
 **Az MySQL esnek-sunucu güvenlik duvarı-kuralı** komutu, Azure CLI 'dan güvenlik duvarı kuralları oluşturmak, silmek, listelemek, göstermek ve güncelleştirmek için kullanılır.
 
 Komut
-- **Oluştur** : esnek sunucu güvenlik duvarı kuralı oluşturma.
-- **liste** : esnek sunucu güvenlik duvarı kurallarını listeleyin.
-- **güncelleştirme** : esnek sunucu güvenlik duvarı kuralını güncelleştirin.
-- **göster** : esnek sunucu güvenlik duvarı kuralının ayrıntılarını göster.
-- **Sil** : esnek sunucu güvenlik duvarı kuralını silin.
+- **Oluştur**: esnek sunucu güvenlik duvarı kuralı oluşturma.
+- **liste**: esnek sunucu güvenlik duvarı kurallarını listeleyin.
+- **güncelleştirme**: esnek sunucu güvenlik duvarı kuralını güncelleştirin.
+- **göster**: esnek sunucu güvenlik duvarı kuralının ayrıntılarını göster.
+- **Sil**: esnek sunucu güvenlik duvarı kuralını silin.
 
 Yapılandırılabilir CLı parametrelerinin tüm listesi için Azure CLı [başvuru belgelerine](/cli/azure/mysql/flexible-server) bakın. Örneğin, aşağıdaki komutlarda kaynak grubunu isteğe bağlı olarak belirtebilirsiniz.
 

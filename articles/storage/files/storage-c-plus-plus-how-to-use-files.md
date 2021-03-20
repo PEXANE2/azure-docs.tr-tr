@@ -8,10 +8,10 @@ ms.date: 09/19/2017
 ms.author: rogarana
 ms.subservice: files
 ms.openlocfilehash: bb74ab16e51fbb3a157757353d5743e889f993dd
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/14/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94629708"
 ---
 # <a name="develop-for-azure-files-with-c"></a>C++ ile Azure dosyaları için geliştirme
@@ -41,7 +41,7 @@ Bu öğreticide, Azure dosyalarında temel işlemleri gerçekleştirmeyi öğren
 C++ için Azure Storage Client 2.4.0 'ı yüklemek için aşağıdaki yöntemlerden birini kullanabilirsiniz:
 
 * **Linux:** [C++ Için Azure depolama Istemci kitaplığı Benioku dosyası](https://github.com/Azure/azure-storage-cpp/blob/master/README.md) sayfasında verilen yönergeleri izleyin.
-* **Windows:** Visual Studio 'da **Araçlar &gt; NuGet Paket Yöneticisi &gt; Paket Yöneticisi konsolu** ' na tıklayın. [NuGet Paket Yöneticisi konsoluna](https://docs.nuget.org/docs/start-here/using-the-package-manager-console) aşağıdaki komutu yazın ve **ENTER** tuşuna basın.
+* **Windows:** Visual Studio 'da **Araçlar &gt; NuGet Paket Yöneticisi &gt; Paket Yöneticisi konsolu**' na tıklayın. [NuGet Paket Yöneticisi konsoluna](https://docs.nuget.org/docs/start-here/using-the-package-manager-console) aşağıdaki komutu yazın ve **ENTER** tuşuna basın.
   
 
 ```powershell

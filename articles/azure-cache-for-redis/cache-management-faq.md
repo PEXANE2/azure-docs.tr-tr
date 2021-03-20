@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 08/06/2020
 ms.openlocfilehash: 15c7ed4ca9d04e4bb314eea8b92bef749d2369b1
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/26/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92537669"
 ---
 # <a name="azure-cache-for-redis-management-faqs"></a>Redsıs yönetimi hakkında Azure önbelleği SSS
 Bu makalede, redin için Azure önbelleğini yönetme hakkında sık sorulan soruların yanıtları sağlanır.
 
-## <a name="common-questions-and-answers"></a>Sık sorulan sorular ve yanıtları
+## <a name="common-questions-and-answers"></a>Yaygın sorular ve yanıtları
 Bu bölümde aşağıdaki SSS ele alınmaktadır:
 
 * [Redsıs 'e bağlanmak için TLS olmayan/SSL bağlantı noktasını ne zaman etkinleştirmem gerekir?](#when-should-i-enable-the-non-tlsssl-port-for-connecting-to-redis)
@@ -127,7 +127,7 @@ Bu bilgiler verildiğinde, müşterilerin IOCP ve çalışan iş parçacıkları
 
 Bu ayar nasıl yapılandırılır:
 
-* İçindeki [ThreadPool. SetMinThreads (...)](/dotnet/api/system.threading.threadpool.setminthreads#System_Threading_ThreadPool_SetMinThreads_System_Int32_System_Int32_) metodunu kullanarak bu ayarı programlı bir şekilde değiştirmenizi öneririz `global.asax.cs` . Örneğin:
+* İçindeki [ThreadPool. SetMinThreads (...)](/dotnet/api/system.threading.threadpool.setminthreads#System_Threading_ThreadPool_SetMinThreads_System_Int32_System_Int32_) metodunu kullanarak bu ayarı programlı bir şekilde değiştirmenizi öneririz `global.asax.cs` . Örnek:
 
     ```csharp
     private readonly int minThreads = 200;

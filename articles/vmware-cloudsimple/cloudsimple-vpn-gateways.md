@@ -9,10 +9,10 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 6e013bb96990a8f3a0ef7d3a58529b200919e276
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88140641"
 ---
 # <a name="vpn-gateways-overview"></a>VPN ağ geçitlerine genel bakış
@@ -52,7 +52,7 @@ Siteden siteye VPN bağlantısı, güvenli bir bağlantı kurmak için aşağıd
 | Karma algoritması| SHA 256 | SHA 256 | SHA 1 |
 | Diffie Hellman grubu (DH grubu) | 2 | 2 | 2 |
 | Yaşam süresi | 28.800 saniye | 28.800 saniye | 28.800 saniye |
-| Veri boyutu | 4 GB | 4 GB | 4 GB |
+| Veri Boyutu | 4 GB | 4 GB | 4 GB |
 
 #### <a name="phase-2-proposals"></a>2. aşama teklifleri
 
@@ -62,7 +62,7 @@ Siteden siteye VPN bağlantısı, güvenli bir bağlantı kurmak için aşağıd
 | Karma algoritması| SHA 256 | SHA 256 | SHA 1 |
 | Kusursuz Iletme gizliliği grubu (PFS Grubu) | Yok | Yok | Yok |
 | Yaşam süresi | 1.800 saniye | 1.800 saniye | 1.800 saniye |
-| Veri boyutu | 4 GB | 4 GB | 4 GB |
+| Veri Boyutu | 4 GB | 4 GB | 4 GB |
 
 
 > [!IMPORTANT]

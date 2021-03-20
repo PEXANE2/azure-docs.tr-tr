@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 09/13/2019
 ms.author: allensu
 ms.openlocfilehash: aa2f00a732a3978524fc017481285859c9535387
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96018690"
 ---
 # <a name="understanding-azure-cdn-billing"></a>Azure CDN faturalamasını anlama
@@ -90,7 +90,7 @@ Bir CDN POP 'un önbelleğini doldurması gereken her seferinde, önbelleğe al�
 ## <a name="which-origin-services-are-eligible-for-free-data-transfer-with-azure-cdn-from-microsoft"></a>Microsoft 'tan gelen Azure CDN ücretsiz veri aktarımı için hangi kaynak hizmetleri uygun? 
 CDN başlangıç noktası olarak aşağıdaki Azure hizmetlerinden birini kullanırsanız, kaynaktan CDN pop 'Lara veri aktarımından ücretlendirilmeyecektir. 
 
-- Azure Storage
+- Azure Depolama
 - Azure Media Services
 - Azure Sanal Makineler
 - Sanal Ağ
@@ -116,7 +116,7 @@ CDN başlangıç noktası olarak aşağıdaki Azure hizmetlerinden birini kullan
 - Azure Machine Learning 
 - Azure SQL Veritabanı
 - Azure SQL Yönetilen Örnek
-- Redis için Azure Önbelleği
+- Redis için Azure Cache
 
 ## <a name="how-do-i-manage-my-costs-most-effectively"></a>Nasıl yaparım? maliyetlerimi en etkili şekilde yönetin mi?
 İçeriğiniz için mümkün olan en uzun TTL 'yi ayarlayın.

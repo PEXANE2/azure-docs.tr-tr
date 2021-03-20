@@ -6,10 +6,10 @@ manager: rochakm
 ms.topic: how-to
 ms.date: 01/29/2019
 ms.openlocfilehash: f438fadb73f7e3bd25cd7ab9aef0bc46285e30e2
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92424835"
 ---
 # <a name="replicate-azure-vms-running-storage-spaces-direct-to-another-region"></a>Depolama Alanları Doğrudan çalıştıran Azure VM 'lerini başka bir bölgeye çoğaltma
@@ -80,7 +80,7 @@ Site Recovery [kurtarma planı](./site-recovery-create-recovery-plans.md) kullan
 3.  **Yük Devretme Testi**'ni seçin.
 4.  Yük devretme testi işlemini başlatmak için kurtarma noktasını ve Azure sanal ağını seçin.
 5.  İkincil ortam çalışır duruma geldiğinde doğrulama gerçekleştirin.
-6.  Doğrulamalar tamamlandığında, yük devretme ortamını temizlemek için **Test yük devretmesini**Temizle ' yi seçin.
+6.  Doğrulamalar tamamlandığında, yük devretme ortamını temizlemek için **Test yük devretmesini** Temizle ' yi seçin.
 
 Daha fazla bilgi için bkz. [Azure 'a yük devretmeyi test etme Site Recovery](site-recovery-test-failover-to-azure.md).
 

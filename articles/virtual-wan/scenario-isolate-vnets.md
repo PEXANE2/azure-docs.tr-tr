@@ -10,10 +10,10 @@ ms.date: 09/22/2020
 ms.author: cherylmc
 ms.custom: fasttrack-edit
 ms.openlocfilehash: e5e2ce17be6d8a1fa82d8a92b9b788f0bd2a37b8
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92424736"
 ---
 # <a name="scenario-isolating-vnets"></a>Senaryo: VNET 'leri yalıtma
@@ -31,7 +31,7 @@ Bu senaryoda, belirli bir sanal ağ içindeki iş yükü yalıtılmış kalır v
 
 Önceki tablodaki hücrelerden her biri, bir sanal WAN bağlantısının (akışın "Kimden" tarafı, satır başlıkları) bir hedef önekiyle (akışın "to" tarafı, italik olan sütun başlıkları) iletişim kuracağını açıklar. Bu senaryoda, güvenlik duvarı veya ağ sanal gereçleri yoktur, bu nedenle iletişimler doğrudan sanal WAN üzerinden akar (Bu nedenle tablodaki "doğrudan" sözcüğü).
 
-Bu bağlantı matrisi, iki yol tablosuna çeviren iki farklı satır deseni sunar. Sanal WAN zaten varsayılan bir yol tablosuna sahiptir, bu nedenle başka bir yol tablosu gerekecektir. Bu örnekte, yol tablosu **RT_VNET**olarak adı vereceğiz.
+Bu bağlantı matrisi, iki yol tablosuna çeviren iki farklı satır deseni sunar. Sanal WAN zaten varsayılan bir yol tablosuna sahiptir, bu nedenle başka bir yol tablosu gerekecektir. Bu örnekte, yol tablosu **RT_VNET** olarak adı vereceğiz.
 
 VNET 'ler, bu **RT_VNET** yol tablosuyla ilişkilendirilir. Dallara bağlanmaları gerektiğinden, dalların **RT_VNET** yayılması gerekir (Aksi halde sanal ağlar dal öneklerini öğrenmez). Dallar her zaman varsayılan yol tablosuyla ilişkilendirildiğinden, sanal ağların varsayılan yol tablosuna yayılması gerekir. Sonuç olarak, bu son tasarımdır:
 

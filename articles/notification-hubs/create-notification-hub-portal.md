@@ -12,10 +12,10 @@ ms.author: sethm
 ms.reviewer: thsomasu
 ms.lastreviewed: 02/14/2019
 ms.openlocfilehash: 141812e83653b458a2562bf73b70117c39bf7be0
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92426564"
 ---
 # <a name="quickstart-create-an-azure-notification-hub-in-the-azure-portal"></a>Hızlı başlangıç: Azure portal bir Azure Notification Hub 'ı oluşturma
@@ -35,7 +35,7 @@ Bu bölümde ad alanında bir ad alanı ve bir hub oluşturursunuz.
 Bu bölümde, mevcut bir ad alanında bir Bildirim Hub 'ı oluşturursunuz.
 
 1. [Azure portalında](https://portal.azure.com) oturum açın.
-2. Sol menüdeki **tüm hizmetler** ' i seçin, **Bildirim Hub**'ı ara ' yı seçin, Bildirim Hub 'ı ad alanları ' nın yanındaki **yıldız** () ' i seçerek `*` Sol menüdeki **Sık Kullanılanlar** bölümüne ekleyin. **Notification Hub Namespaces** **Bildirim Hub 'ı ad alanları**' nı seçin.
+2. Sol menüdeki **tüm hizmetler** ' i seçin, **Bildirim Hub**'ı ara ' yı seçin, Bildirim Hub 'ı ad alanları ' nın yanındaki **yıldız** () ' i seçerek `*` Sol menüdeki **Sık Kullanılanlar** bölümüne ekleyin.  **Bildirim Hub 'ı ad alanları**' nı seçin.
 
       ![Azure portal-Bildirim Hub 'ı ad alanlarını seçin](./media/create-notification-hub-portal/select-notification-hub-namespaces-all-services.png)
 3. **Bildirim Hub 'ı ad alanları** sayfasında, listeden ad alanınızı seçin.

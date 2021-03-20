@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 48584fa4042cf53fa1084e519dca0e64f530ca59
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90090134"
 ---
 # <a name="azure-ad-connect-staging-server-and-disaster-recovery"></a>Azure AD Connect: hazırlama sunucusu ve olağanüstü durum kurtarma
@@ -33,7 +33,7 @@ Hazırlama modu aşağıdakiler dahil olmak üzere çeşitli senaryolar için ku
 * Yeni yapılandırma değişikliklerini test edin ve dağıtın.
 * Yeni bir sunucu tanıtın ve eskileri yetkisini alın.
 
-Yükleme sırasında, **hazırlama modunda**olacak sunucuyu seçebilirsiniz. Bu eylem, sunucuyu içeri aktarma ve eşitleme için etkin hale getirir, ancak herhangi bir dışarı aktarma işlemi çalıştırmaz. Hazırlama modundaki bir sunucu, yükleme sırasında bu özellikleri seçmiş olsanız bile parola eşitleme veya parola geri yazma 'yı çalıştırmıyor. Hazırlama modunu devre dışı bıraktığınızda sunucu dışarı aktarmayı başlatır, parola eşitlemesini etkinleştirilir ve parola geri yazma özelliğini sunar.
+Yükleme sırasında, **hazırlama modunda** olacak sunucuyu seçebilirsiniz. Bu eylem, sunucuyu içeri aktarma ve eşitleme için etkin hale getirir, ancak herhangi bir dışarı aktarma işlemi çalıştırmaz. Hazırlama modundaki bir sunucu, yükleme sırasında bu özellikleri seçmiş olsanız bile parola eşitleme veya parola geri yazma 'yı çalıştırmıyor. Hazırlama modunu devre dışı bıraktığınızda sunucu dışarı aktarmayı başlatır, parola eşitlemesini etkinleştirilir ve parola geri yazma özelliğini sunar.
 
 > [!NOTE]
 > Parola karması eşitleme özelliğinin etkin olduğu bir Azure AD Connect olduğunu varsayalım. Hazırlama modunu etkinleştirdiğinizde sunucu, şirket içi AD 'den parola değişikliklerini eşitlemeyi sonlandırır. Hazırlama modunu devre dışı bıraktığınızda sunucu, son kaldığınız yerden parola değişikliklerini eşitlemeyi sürdürür. Sunucu, uzun bir süre için hazırlama modunda bırakılırsa, sunucunun zaman diliminde oluşan tüm parola değişikliklerini eşitlemesi biraz zaman alabilir.
@@ -64,10 +64,10 @@ Bu yöntemi uygulamak için aşağıdaki adımları izleyin:
 Birincil sunucuda özel değişiklikler yaptıysanız ve yapılandırmayı hazırlama sunucusuyla karşılaştırmak istiyorsanız, [Azure AD Connect Configuration belgegir](https://github.com/Microsoft/AADConnectConfigDocumenter)' i kullanın.
 
 #### <a name="import-and-synchronize"></a>İçeri ve dışarı aktarma
-1. **Bağlayıcılar**' ı seçin ve **Active Directory Domain Services**türüne sahip ilk bağlayıcıyı seçin. **Çalıştır**' a tıklayın, **tam içeri aktar**' ı seçin ve **Tamam**. Bu adımları bu türden tüm bağlayıcılar için yapın.
+1. **Bağlayıcılar**' ı seçin ve **Active Directory Domain Services** türüne sahip ilk bağlayıcıyı seçin. **Çalıştır**' a tıklayın, **tam içeri aktar**' ı seçin ve **Tamam**. Bu adımları bu türden tüm bağlayıcılar için yapın.
 2. **Azure Active Directory türü (Microsoft)** olan bağlayıcıyı seçin. **Çalıştır**' a tıklayın, **tam içeri aktar**' ı seçin ve **Tamam**.
-3. Sekme bağlayıcılarının hala seçili olduğundan emin olun. Tür **Active Directory Domain Services**olan her bağlayıcı için **Çalıştır**' a tıklayın, **Delta eşitleme**' yi seçin ve **Tamam**' ı tıklatın
-4. **Azure Active Directory türü (Microsoft)** olan bağlayıcıyı seçin. **Çalıştır**' a tıklayın, **Delta eşitlemesi**ve **Tamam**' ı seçin.
+3. Sekme bağlayıcılarının hala seçili olduğundan emin olun. Tür **Active Directory Domain Services** olan her bağlayıcı için **Çalıştır**' a tıklayın, **Delta eşitleme**' yi seçin ve **Tamam**' ı tıklatın
+4. **Azure Active Directory türü (Microsoft)** olan bağlayıcıyı seçin. **Çalıştır**' a tıklayın, **Delta eşitlemesi** ve **Tamam**' ı seçin.
 
 Artık Azure AD 'ye ve şirket içi AD 'ye dışarı aktarma değişiklikleri hazırladınız (Exchange karma dağıtımı kullanıyorsanız). Sonraki adımlar, dizinlere dışa aktarma işlemine başlamadan önce nelerin değişmekte olduğunu incelemenizi sağlar.
 
@@ -89,7 +89,7 @@ Artık Azure AD 'ye ve şirket içi AD 'ye dışarı aktarma değişiklikleri ha
 
 #### <a name="switch-active-server"></a>Etkin sunucuyu Değiştir
 1. Şu anda etkin olan sunucuda, sunucuyu devre dışı bırakın (DirSync/FIM/Azure AD Eşitleme), Azure AD 'ye aktarılmaması veya hazırlama modunda (Azure AD Connect) ayarlanmaması gerekir.
-2. Yükleme sihirbazını sunucusunda **hazırlama modunda** çalıştırın ve **hazırlama modunu**devre dışı bırakın.
+2. Yükleme sihirbazını sunucusunda **hazırlama modunda** çalıştırın ve **hazırlama modunu** devre dışı bırakın.
    ![ReadyToConfigure](./media/how-to-connect-sync-staging-server/additionaltasks.png)
 
 ## <a name="disaster-recovery"></a>Olağanüstü durum kurtarma
@@ -102,7 +102,7 @@ Uygulama tasarımının bir parçası, eşitleme sunucusunu kaybedeceğinizi bir
 Bu soruların ve kuruluşunuzun ilkesinin yanıtlarına bağlı olarak, aşağıdaki stratejilerden biri uygulanabilir:
 
 * Gerektiğinde yeniden derleyin.
-* **Hazırlama modu**olarak bilinen, yedek bir bekleme sunucusuna sahip olmak.
+* **Hazırlama modu** olarak bilinen, yedek bir bekleme sunucusuna sahip olmak.
 * Sanal makineleri kullanın.
 
 Yerleşik SQL Express veritabanını kullanmıyorsanız, [SQL yüksek kullanılabilirlik](#sql-high-availability) bölümünü de gözden geçirmeniz gerekir.
@@ -113,7 +113,7 @@ Uygun bir strateji gerektiğinde sunucu yeniden oluşturmayı planlıyor. Genell
 Eşitleme altyapısı sunucusu nesneler hakkında herhangi bir durum depolamaz, böylece veritabanı Active Directory ve Azure AD 'deki verilerden yeniden oluşturulabilir. **Sourcetutturucu** özniteliği, şirket içi ve buluttan nesneleri birleştirmek için kullanılır. Sunucuyu şirket içinde ve bulutta var olan nesnelerle yeniden yapılandırırsanız, eşitleme altyapısı yeniden yükleme sırasında bu nesnelerle birlikte eşleşir. Belge ve kaydetmeniz gereken işlemler, sunucuda yapılan, filtreleme ve eşitleme kuralları gibi yapılandırma değişiklerdir. Eşitlemeye başlamadan önce bu özel yapılandırmaların yeniden oluşturulması gerekir.
 
 ### <a name="have-a-spare-standby-server---staging-mode"></a>Yedek bekleme sunucu hazırlama moduna sahip
-Daha karmaşık bir ortamınız varsa, bir veya daha fazla bekleme sunucusuna sahip olmanız önerilir. Yükleme sırasında, bir sunucunun **hazırlama modunda**olmasını sağlayabilirsiniz.
+Daha karmaşık bir ortamınız varsa, bir veya daha fazla bekleme sunucusuna sahip olmanız önerilir. Yükleme sırasında, bir sunucunun **hazırlama modunda** olmasını sağlayabilirsiniz.
 
 Daha fazla bilgi için bkz. [hazırlama modu](#staging-mode).
 
@@ -151,9 +151,9 @@ write-host "Importing XML" -ForegroundColor Yellow
 $resolvedXMLtoimport=Resolve-Path -Path ([Environment]::ExpandEnvironmentVariables($xmltoimport))
 
 #use an XmlReader to deal with even large files
-$result=$reader = [System.Xml.XmlReader]::Create($resolvedXMLtoimport) 
+$result=$reader = [System.Xml.XmlReader]::Create($resolvedXMLtoimport) 
 $result=$reader.ReadToDescendant('cs-object')
-do 
+do 
 {
     #create the object placeholder
     #adding them up here means we can enforce consistency

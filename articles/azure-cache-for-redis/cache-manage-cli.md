@@ -8,10 +8,10 @@ ms.date: 01/23/2017
 ms.author: yegu
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: 7643f882d5ac330046c169e0a3f2fa4920331d4e
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/26/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92537703"
 ---
 # <a name="how-to-create-and-manage-azure-cache-for-redis-using-the-azure-classic-cli"></a>Azure klasik CLı kullanılarak Redsıs için Azure önbelleği oluşturma ve yönetme
@@ -37,7 +37,7 @@ Azure klasik CLı kullanarak Redsıs örnekleri için Azure önbelleği oluştur
 ## <a name="azure-cache-for-redis-properties"></a>Redsıs özellikleri için Azure önbelleği
 Aşağıdaki özellikler, Redsıs örnekleri için Azure önbelleği oluşturma ve güncelleştirme sırasında kullanılır.
 
-| Özellik | Anahtar | Açıklama |
+| Özellik | Anahtar | Description |
 | --- | --- | --- |
 | name |-n,--ad |Redsıs için Azure önbelleğinin adı. |
 | kaynak grubu |-g,--Resource-Group |Kaynak grubunun adı. |

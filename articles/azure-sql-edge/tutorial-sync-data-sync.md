@@ -10,10 +10,10 @@ ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2020
 ms.openlocfilehash: 5659ce5fa6f99463f58a33662563d768248fd8cb
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93394909"
 ---
 # <a name="tutorial-sync-data-from-sql-edge-to-azure-sql-database-by-using-sql-data-sync"></a>Öğretici: SQL Data Sync kullanarak SQL Edge 'den Azure SQL veritabanı 'na veri eşitleme
@@ -22,7 +22,7 @@ Bu öğreticide, Azure SQL Edge 'ten Azure SQL veritabanı 'na artımlı olarak 
 
 SQL Edge, [SQL Server veritabanı altyapısının](/sql/sql-server/sql-server-technical-documentation/)en son sürümlerinde oluşturulduğundan, bir SQL Server örneği için geçerli olan herhangi bir veri eşitleme mekanizması, bir kenar cihazında çalışan bir SQL Edge örneğinden veya buradan veri eşitlemek için de kullanılabilir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğretici, [Azure SQL Data Sync Için veri eşitleme aracısıyla](../azure-sql/database/sql-data-sync-agent-overview.md)yapılandırılmış bir Windows bilgisayarı gerektirir.
 
@@ -57,7 +57,7 @@ SQL Data Sync hakkında daha fazla bilgi için şu makalelere bakın:
 
 * [Azure Izleyici günlükleriyle SQL Data Sync izleme](../azure-sql/database/monitor-tune-overview.md)
 
-* [Transact-SQL veya PowerShell ile eşitleme şemasını güncelleştirme](../azure-sql/database/sql-data-sync-update-sync-schema.md) [PowerShell](../azure-sql/database/scripts/update-sync-schema-in-sync-group.md)
+* [Transact-SQL veya PowerShell ile eşitleme şemasını güncelleştirme](../azure-sql/database/sql-data-sync-update-sync-schema.md) [](../azure-sql/database/scripts/update-sync-schema-in-sync-group.md)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

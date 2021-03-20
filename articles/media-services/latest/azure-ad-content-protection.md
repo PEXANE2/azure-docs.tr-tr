@@ -14,10 +14,10 @@ ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: devx-track-js
 ms.openlocfilehash: 9415d66c49992bc31f773dec908a861f1126e714
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92427211"
 ---
 # <a name="tutorial-end-to-end-content-protection-using-azure-ad"></a>Öğretici: Azure AD kullanarak uçtan uca içerik koruma
@@ -42,7 +42,7 @@ Azure Media Services aboneliğiniz yoksa, bir Azure [ücretsiz deneme hesabı](h
 ### <a name="duration"></a>Süre
 Önkoşul teknolojisini denemeye hazırladıktan sonra öğreticinin tamamlanması iki saat sürer.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Aşağıdaki en son teknoloji sürümleri ve kavramları kullanılır. Bu öğreticiye başlamadan önce bunları tanımanız önerilir.
 
@@ -155,7 +155,7 @@ Uçtan uca örneğimiz için kullanılacak bir Azure AD kiracısı seçin. İki 
 1. Menüden **uygulama kayıtları** seçin.
 1. **+ Yeni kayıt**' ye tıklayın.
 1. Uygulamayı *LicenseDeliveryResource2* olarak adlandırın (burada 2 AAD v2 uç noktasını gösterir).
-1. **Yalnızca bu kuruluş dizinindeki hesapları seçin ([yalnızca*kiracı adınız*]-tek kiracı)**. Birden çok kiracıya erişimi etkinleştirmek istiyorsanız, diğer çok kiracılı seçeneklerden birini seçin.
+1. **Yalnızca bu kuruluş dizinindeki hesapları seçin ([yalnızca *kiracı adınız*]-tek kiracı)**. Birden çok kiracıya erişimi etkinleştirmek istiyorsanız, diğer çok kiracılı seçeneklerden birini seçin.
 1. **Yeniden yönlendirme URI 'si** isteğe bağlıdır ve daha sonra değiştirilebilir.
 1. **Kaydet**’e tıklayın. Uygulama kayıtları görünümü görüntülenir.
 1. Menüden **bildirim** ' ı seçin. Bildirim görünümü görüntülenir.
@@ -182,7 +182,7 @@ Uçtan uca örneğimiz için kullanılacak bir Azure AD kiracısı seçin. İki 
 1. Menüden **uygulama kayıtları** seçin.
 1. **+ Yeni kayıt**' ye tıklayın.
 1. İstemci uygulamaya bir ad verin (örneğin, *AMS AAD Content Protection*).
-1. **Yalnızca bu kuruluş dizinindeki hesapları seçin ([yalnızca*kiracı adınız*]-tek kiracı)**. Birden çok kiracıya erişimi etkinleştirmek istiyorsanız, diğer çok kiracılı seçeneklerden birini seçin.
+1. **Yalnızca bu kuruluş dizinindeki hesapları seçin ([yalnızca *kiracı adınız*]-tek kiracı)**. Birden çok kiracıya erişimi etkinleştirmek istiyorsanız, diğer çok kiracılı seçeneklerden birini seçin.
 1. **Yeniden yönlendirme URI 'si** isteğe bağlıdır ve daha sonra değiştirilebilir.
 1. **Kaydet**’e tıklayın.
 1. Menüden **API izinleri** ' ni seçin.
@@ -249,7 +249,7 @@ return objContentKeyPolicyRestriction;
 
 1. Daha önce kullandığınız AAD kiracısını seçin, menüdeki **uygulama kayıtları** ' a ve ardından **uç noktalar** bağlantısına tıklayın.
 1. **Openıdconnect meta verileri belge** alanının değerini seçip kopyalayın ve değer olarak koda yapıştırın `ida_AADOpenIdDiscoveryDocument` .
-1. `ida_audience`Değer, kayıtlı uygulamanın *LicenseDeliveryResource2*uygulama (istemci) kimliğidir.
+1. `ida_audience`Değer, kayıtlı uygulamanın *LicenseDeliveryResource2* uygulama (istemci) kimliğidir.
 1. `ida_issuer`Değer URL 'sidir `https://login.microsoftonline.com/[tenant_id]/v2.0` . [*Tenant_id*] DEĞERINI kiracı Kimliğinizle değiştirin.
 
 ## <a name="set-up-the-sample-player-app"></a>Örnek oynatıcı uygulamasını ayarlama
@@ -265,11 +265,11 @@ Oynatıcı uygulamasını ayarlamak için iki seçeneğiniz vardır:
 
 1. Visual Studio Code’u başlatın.
 1. Projeyi açmak için dosya > klasörü aç ' a tıklayın > klasöre gidin ve *package.jsdosya üzerinde* üst klasörü seçin.
-1. *Public/JavaScript/constants.js*JavaScript dosyasını açın.
+1. *Public/JavaScript/constants.js* JavaScript dosyasını açın.
 1. `OAUTH2_CONST.CLIENT_ID` `client_id` AAD kiracısındaki kayıtlı istemci uygulamanızın ile değiştirin.  `client_id`Azure Portal ' de kayıtlı uygulamanın genel bakış bölümünü bulabilirsiniz. Not: nesne KIMLIĞI değil, istemci KIMLIĞIDIR.
 1. `OAUTH2_CONST.TENANT_ID` `tenant_id` Azure AD kiracınızın yerine koyun. `tenant_id`Azure Active Directory menüsüne tıklayarak hesabınızı bulabilirsiniz. Tenant_id genel bakış bölümünde görüntülenir.
 1. `OAUTH2_CONST.SCOPE`Kayıtlı istemci uygulamanıza eklediğiniz kapsama göre değiştirin. Kapsamı, **uygulama kayıtları** menüsünden kayıtlı istemci uygulamasına giderek ve ardından istemci uygulamanızı seçerek bulabilirsiniz:
-    1. İstemci uygulamanızı seçin, **API izinleri** menüsüne tıklayın ve ardından DRM kapsamını seçin *. * API Permission *LicenseDeliveryResource2*altında lisans. Delivery. İzin api://df4ed433-dbf0-4da6-b328-e1fe05786db5/DRM gibi biçimde olmalıdır *. Lisans. Delivery*. **Önemli**: alanı `offline_access` ' de önünde tutun `OAUTH2_CONST.SCOPE` .
+    1. İstemci uygulamanızı seçin, **API izinleri** menüsüne tıklayın ve ardından DRM kapsamını seçin *.* API Permission *LicenseDeliveryResource2* altında lisans. Delivery. İzin api://df4ed433-dbf0-4da6-b328-e1fe05786db5/DRM gibi biçimde olmalıdır *. Lisans. Delivery*. **Önemli**: alanı `offline_access` ' de önünde tutun `OAUTH2_CONST.SCOPE` .
 1. Aşağıdaki iki sabit dizeyi `AMS_CONST` aşağıda gösterildiği gibi değiştirin. Biri, FairPlay test çalışmasını eklemek istiyorsanız, test varlığınızın korumalı akış URL 'si ve diğeri ise FPS uygulama sertifikası URL 'sidir. Aksi takdirde, için olduğu gibi bırakabilirsiniz `AMS_CONST.APP_CERT_URL` . Ardından **Kaydet**' e tıklayın.
 
 ```javascript
@@ -321,14 +321,14 @@ Diğer bir deyişle, kimliği doğrulanmış kullanıcıların bir alt kümesini
 
 #### <a name="set-up-the-azure-ad-tenant"></a>Azure AD kiracısını ayarlama
 
-1. Kiracınızda iki hesap ayarlayın. *Premium_user* ve *basic_user*adlandırılabilir.
-1. Bir Kullanıcı grubu oluşturun ve *PremiumGroup*çağırın.
+1. Kiracınızda iki hesap ayarlayın. *Premium_user* ve *basic_user* adlandırılabilir.
+1. Bir Kullanıcı grubu oluşturun ve *PremiumGroup* çağırın.
 1. *Premium_user* bir üye olarak *PremiumGroup* ekleyin, ancak *basic_user* gruba eklemeyin.
 1. *PremiumGroup* **nesne kimliğini** bir yere göz atın.
 
 #### <a name="set-up-the-media-services-account"></a>Media Services hesabı ayarlama
 
-`ContentKeyPolicyRestriction`(Media Service hesabındaki kurulum 'da gösterilen bölümde gösterildiği gibi), *gruplar*adlı bir talep ekleyerek ve `ida_EntitledGroupObjectId` DEĞERI olarak *PremiumGroup* nesne kimliğine sahip olan bir talep ekleyerek değiştirin:
+`ContentKeyPolicyRestriction`(Media Service hesabındaki kurulum 'da gösterilen bölümde gösterildiği gibi), *gruplar* adlı bir talep ekleyerek ve `ida_EntitledGroupObjectId` DEĞERI olarak *PremiumGroup* nesne kimliğine sahip olan bir talep ekleyerek değiştirin:
 
 ```dotnetcli
 
@@ -344,7 +344,7 @@ if (tokenClaims != null && tokenClaims.Length > 0)
 
 *Gruplar* talebi, Azure AD 'de kısıtlı bir [talep kümesinin](../../active-directory/develop/active-directory-claims-mapping.md#claim-sets) üyesidir.
 
-#### <a name="test"></a>Test etme
+#### <a name="test"></a>Test
 
 1. *Premium_user* hesabıyla oturum açın. Korunan içeriği oynatabilmelisiniz.
 1. *Basic_user* hesabıyla oturum açın. Videonun şifrelendiğini belirten bir hata almalısınız, ancak şifresini çözmek için bir anahtar yok. Player tanılama alt sürümünün altındaki açılan menüde olayları, hataları ve İndirmeleri görüntülediğinizde, hata iletisi, Azure AD belirteç uç noktası tarafından verilen JWT içindeki gruplar talebi için eksik talep değeri nedeniyle lisans alma başarısızlığını göstermelidir.

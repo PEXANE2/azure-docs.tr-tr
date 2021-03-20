@@ -10,10 +10,10 @@ services: iot-dps
 manager: eliotgra
 ms.custom: mvc
 ms.openlocfilehash: 78005ba46952bcf05b19c7627feecb1ec30ac651
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92429378"
 ---
 # <a name="quickstart-provision-a-symmetric-key-device-using-nodejs"></a>Hızlı başlangıç: Node.js kullanarak bir simetrik anahtar cihazı sağlama
@@ -32,7 +32,7 @@ Bu makale Windows tabanlı bir iş istasyonuna yöneliktir. Ancak yordamları Li
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - [Sağlama](about-iot-dps.md#provisioning-process) kavramları hakkında bilgi edinin.
 - [Azure Portal Ile cihaz sağlama hizmeti IoT Hub ayarlama](./quick-setup-auto-provision.md)işlemi tamamlandı.
@@ -87,7 +87,7 @@ Bu bölümde, simetrik anahtar cihazınızı sağlamak üzere cihaz sağlama ör
 
 Sağlama kodu, cihazınızın kimliğini doğrulamak için bu değişkenlere göre DPS örneğiyle iletişim kuracaktır. Daha sonra cihaz, bireysel kayıt yapılandırmasına göre zaten DPS örneğine bağlanmış olan bir IoT Hub 'ına atanır. Sağlandıktan sonra örnek kod, IoT Hub 'ına bazı test telemetrisi gönderir.
 
-1. [Azure Portal](https://portal.azure.com), cihaz sağlama hizmeti menünüzde **genel bakış** ' ı seçin ve _hizmet uç_ noktanızı ve _kimlik kapsamınızı_kopyalayın. `PROVISIONING_HOST`Ve ortam değişkenleri için bu değerleri kullanacaksınız `PROVISIONING_IDSCOPE` .
+1. [Azure Portal](https://portal.azure.com), cihaz sağlama hizmeti menünüzde **genel bakış** ' ı seçin ve _hizmet uç_ noktanızı ve _kimlik kapsamınızı_ kopyalayın. `PROVISIONING_HOST`Ve ortam değişkenleri için bu değerleri kullanacaksınız `PROVISIONING_IDSCOPE` .
 
     ![Hizmet bilgileri](./media/quick-create-device-symmetric-key-node/extract-dps-endpoints.png)
 
@@ -154,7 +154,7 @@ Sağlama kodu, cihazınızın kimliğini doğrulamak için bu değişkenlere gö
     send status: MessageEnqueued    
     ```
     
-6. Azure portal, sağlama hizmetinize bağlı olan IoT Hub 'ına gidin ve **IoT cihazları** dikey penceresini açın. Simetrik anahtar cihazı hub 'a başarıyla sağlamaktan sonra cihaz KIMLIĞI, **etkin**olarak *durumuyla* gösterilir. Cihaz örnek kodunu çalıştırmadan önce dikey pencereyi zaten açtıysanız, en üstteki **Yenile** düğmesine basmanız gerekebilir. 
+6. Azure portal, sağlama hizmetinize bağlı olan IoT Hub 'ına gidin ve **IoT cihazları** dikey penceresini açın. Simetrik anahtar cihazı hub 'a başarıyla sağlamaktan sonra cihaz KIMLIĞI, **etkin** olarak *durumuyla* gösterilir. Cihaz örnek kodunu çalıştırmadan önce dikey pencereyi zaten açtıysanız, en üstteki **Yenile** düğmesine basmanız gerekebilir. 
 
     ![Cihaz IOT hub'da kayıtlı](./media/quick-create-device-symmetric-key-node/hub-registration-node.png) 
 

@@ -9,10 +9,10 @@ ms.date: 11/24/2020
 ms.author: clemensv
 ms.custom: include file
 ms.openlocfilehash: ca483d0b71bde945a7e46da785dd6a76b3a8f177
-ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98693415"
 ---
 AMQP-Over-WebSockets Protocol seçeneği, HTTP/REST API gibi bağlantı noktası TCP 443 üzerinden çalışır, ancak Aksi halde düz AMQP ile aynı şekilde çalışır. Bu seçenek, ek el sıkışma ve HTTPS bağlantı noktasını paylaşmak için zorunluluğunu getirir kadar çok daha fazla ek yük nedeniyle ilk bağlantı gecikmesini daha yüksektir. Bu mod seçilirse, TCP bağlantı noktası 443 iletişim için yeterlidir. Aşağıdaki seçenekler, düz AMQP veya AMQP WebSockets modunun seçilmesine izin verir:

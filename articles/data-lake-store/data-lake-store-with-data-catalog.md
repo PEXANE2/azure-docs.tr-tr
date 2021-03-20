@@ -7,21 +7,21 @@ ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
 ms.openlocfilehash: 02544489816f5711ca6e599c2bce03737c747934
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92106629"
 ---
 # <a name="register-data-from-azure-data-lake-storage-gen1-in-azure-data-catalog"></a>Azure Veri Kataloğu 'nda Azure Data Lake Storage 1. verileri kaydetme
 Bu makalede, verileri veri kataloğu ile tümleştirerek bir kuruluşta bulunabilir hale getirmek için Azure Data Lake Storage 1. Azure Veri Kataloğu ile tümleştirmeyi öğreneceksiniz. Verileri kataloglandırma hakkında daha fazla bilgi için bkz. [Azure Veri Kataloğu](../data-catalog/overview.md). Veri kataloğunu kullanabileceğiniz senaryoları anlamak için bkz. [Azure Veri Kataloğu genel senaryoları](../data-catalog/data-catalog-common-scenarios.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 Bu öğreticiye başlamadan önce aşağıdakilere sahip olmanız gerekir:
 
 * **Bir Azure aboneliği**. Bkz. [Azure ücretsiz deneme sürümü edinme](https://azure.microsoft.com/pricing/free-trial/).
 * Data Lake Storage 1. için **Azure aboneliğinizi etkinleştirin** . [Yönergelere](data-lake-store-get-started-portal.md)bakın.
-* **Data Lake Storage 1. hesabı**. [Azure Portal kullanarak Azure Data Lake Storage 1. kullanmaya başlama](data-lake-store-get-started-portal.md)yönergelerini izleyin. Bu öğretici için **datacatalogstore**adlı bir Data Lake Storage 1. hesabı oluşturun.
+* **Data Lake Storage 1. hesabı**. [Azure Portal kullanarak Azure Data Lake Storage 1. kullanmaya başlama](data-lake-store-get-started-portal.md)yönergelerini izleyin. Bu öğretici için **datacatalogstore** adlı bir Data Lake Storage 1. hesabı oluşturun.
 
     Hesabı oluşturduktan sonra, ona bir örnek veri kümesi yükleyin. Bu öğreticide, [Azure Data Lake git deposundaki](https://github.com/Azure/usql/tree/master/Examples/Samples/Data/AmbulanceData/) **AmbulanceData** klasörünün altındaki tüm. csv dosyalarını karşıya yüklememize izin verin. Blob kapsayıcısına veri yüklemek için [Azure Depolama Gezgini](https://storageexplorer.com/)gibi çeşitli istemcileri kullanabilirsiniz.
 * **Azure Veri Kataloğu**. Kuruluşunuz için kuruluşunuz için oluşturulmuş bir Azure Veri Kataloğu zaten olmalıdır. Her kuruluş için yalnızca bir kataloğa izin verilir.
@@ -30,7 +30,7 @@ Bu öğreticiye başlamadan önce aşağıdakilere sahip olmanız gerekir:
 
 > [!VIDEO https://channel9.msdn.com/Series/AzureDataLake/ADCwithADL/player]
 
-1. Adresine gidin `https://azure.microsoft.com/services/data-catalog` ve **kullanmaya**başlayın ' a tıklayın.
+1. Adresine gidin `https://azure.microsoft.com/services/data-catalog` ve **kullanmaya** başlayın ' a tıklayın.
 1. Azure Veri Kataloğu portalında oturum açın ve **Verileri yayımla**'ya tıklayın.
 
     ![Veri kaynağını kaydetme](./media/data-lake-store-with-data-catalog/register-data-source.png "Veri kaynağını kaydetme")

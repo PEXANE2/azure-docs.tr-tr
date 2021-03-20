@@ -9,10 +9,10 @@ ms.date: 10/15/2020
 ms.author: duau
 ms.custom: seodec18
 ms.openlocfilehash: d142028d197f9e279b5f1e05757946dc40d2c153
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92109145"
 ---
 # <a name="tutorial-configure-route-filters-for-microsoft-peering-using-the-azure-portal"></a>Öğretici: Azure portal kullanarak Microsoft eşlemesi için yol filtrelerini yapılandırma
@@ -33,7 +33,7 @@ Tüm Azure ve Microsoft 365 hizmetlerine yönelik bağlantı, BGP aracılığıy
 
 * Rota filtrelerini tanımlayın ve bunları ExpressRoute devrenizi ile uygulayın. Yol filtresi, Microsoft eşlemesi aracılığıyla tüketmek üzere planladığınız hizmetlerin listesini seçmenize olanak sağlayan yeni bir kaynaktır. ExpressRoute yönlendiricileri yalnızca yol filtresinde tanımlanan hizmetlere ait olan ön eklerin listesini gönderir.
 
-Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
+Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > [!div class="checklist"]
 > - BGP topluluk değerlerini al.
 > - Rota filtresi ve filtre kuralı oluşturma.
@@ -51,7 +51,7 @@ Yönlendirme filtrelerini Microsoft 365 hizmetleriyle birlikte eklemek için, Ex
 > 1 Ağustos 2017 ' den önce yapılandırılmış ExpressRoute bağlantı hattı Microsoft eşlemesi, yol filtreleri tanımlanmasa bile Microsoft eşlemesi aracılığıyla tanıtılan tüm hizmet öneklerini alacak. 1 Ağustos 2017 ' de veya sonrasında yapılandırılan ExpressRoute devrelerinin Microsoft eşlemesi, bir yol filtresi devresine iliştirilene kadar tanıtılan öneklere sahip olmayacaktır.
 > 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Yapılandırmaya başlamadan önce [önkoşulları](expressroute-prerequisites.md) ve [iş akışlarını](expressroute-workflows.md) gözden geçirin.
 
@@ -79,27 +79,27 @@ Yol filtresi yalnızca bir kurala sahip olabilir ve kuralın ' Allow ' türünde
 
 1. Yol filtresini bir kaynak grubuna yerleştirin. Konumun ExpressRoute devresiyle aynı olduğundan emin olun. **Gözden geçir + oluştur** ve sonra **Oluştur**' u seçin.
 
-    :::image type="content" source="./media/how-to-routefilter-portal/create-route-filter-basic.png" alt-text="Yol filtresi sayfasını gösteren ekran görüntüsü":::
+    :::image type="content" source="./media/how-to-routefilter-portal/create-route-filter-basic.png" alt-text="Örnek değerler girilen rota Filtresi Oluştur sayfasını gösteren ekran görüntüsü":::
 
 ### <a name="create-a-filter-rule"></a>Filtre kuralı oluşturma
 
 1. Kuralları eklemek ve güncelleştirmek için rota filtreniz için kuralı Yönet sekmesini seçin.
 
-    :::image type="content" source="./media/how-to-routefilter-portal/manage-route-filter.png" alt-text="Yol filtresi sayfasını gösteren ekran görüntüsü":::
+    :::image type="content" source="./media/how-to-routefilter-portal/manage-route-filter.png" alt-text="Kuralı Yönet eyleminin vurgulandığı genel bakış sayfasını gösteren ekran görüntüsü":::
 
 1. Açılan listeden bağlanmak istediğiniz hizmetleri seçin ve tamamlandığında kuralı kaydedin.
 
-    :::image type="content" source="./media/how-to-routefilter-portal/add-route-filter-rule.png" alt-text="Yol filtresi sayfasını gösteren ekran görüntüsü":::
+    :::image type="content" source="./media/how-to-routefilter-portal/add-route-filter-rule.png" alt-text="Izin verilen hizmet toplulukları açılan listesinde seçilen hizmetlerle kural yönetme penceresini gösteren ekran görüntüsü":::
 
 ## <a name="attach-the-route-filter-to-an-expressroute-circuit"></a><a name="attach"></a>Yol filtresini bir ExpressRoute devresine iliştirme
 
 **+ Devre Ekle** düğmesini seçerek ve açılan listeden ExpressRoute bağlantı hattını seçerek yol filtresini bir devreye ekleyin.
 
-:::image type="content" source="./media/how-to-routefilter-portal/add-circuit-to-route-filter.png" alt-text="Yol filtresi sayfasını gösteren ekran görüntüsü":::
+:::image type="content" source="./media/how-to-routefilter-portal/add-circuit-to-route-filter.png" alt-text="Devre Ekle eylemi seçiliyken genel bakış sayfasını gösteren ekran görüntüsü":::
 
 Bağlantı sağlayıcısı ExpressRoute devreniz için eşlemeyi yapılandırıyorsa, **+ devre Ekle** düğmesini seçmeden önce ExpressRoute bağlantı hattı sayfasından devreyi yenileyin.
 
-:::image type="content" source="./media/how-to-routefilter-portal/refresh-express-route-circuit.png" alt-text="Yol filtresi sayfasını gösteren ekran görüntüsü":::
+:::image type="content" source="./media/how-to-routefilter-portal/refresh-express-route-circuit.png" alt-text="Yenileme eylemi seçili olan genel bakış sayfasını gösteren ekran görüntüsü.":::
 
 ## <a name="common-tasks"></a><a name="tasks"></a>Genel görevler
 
@@ -107,30 +107,30 @@ Bağlantı sağlayıcısı ExpressRoute devreniz için eşlemeyi yapılandırıy
 
 Kaynağı portalda açtığınızda yol filtresinin özelliklerini görüntüleyebilirsiniz.
 
-:::image type="content" source="./media/how-to-routefilter-portal/view-route-filter.png" alt-text="Yol filtresi sayfasını gösteren ekran görüntüsü":::
+:::image type="content" source="./media/how-to-routefilter-portal/view-route-filter.png" alt-text="Genel bakış sayfasını gösteren ekran görüntüsü":::
 
 ### <a name="to-update-the-properties-of-a-route-filter"></a><a name="updateproperties"></a>Bir yol filtresinin özelliklerini güncelleştirmek için
 
 1. Bir devreye eklenen BGP topluluk değerlerinin listesini, **kuralı Yönet** düğmesini seçerek güncelleştirebilirsiniz.
 
-    :::image type="content" source="./media/how-to-routefilter-portal/update-route-filter.png" alt-text="Yol filtresi sayfasını gösteren ekran görüntüsü":::
+    :::image type="content" source="./media/how-to-routefilter-portal/update-route-filter.png" alt-text="Kural yönetme eylemiyle rota filtrelerini güncelleştirme":::
 
 1. İstediğiniz hizmet topluluklarını seçin ve ardından **Kaydet**' i seçin.
 
-    :::image type="content" source="./media/how-to-routefilter-portal/add-route-filter-rule.png" alt-text="Yol filtresi sayfasını gösteren ekran görüntüsü":::
+    :::image type="content" source="./media/how-to-routefilter-portal/add-route-filter-rule.png" alt-text="Hizmetler seçiliyken kuralı Yönet penceresini gösteren ekran görüntüsü":::
 
 ### <a name="to-detach-a-route-filter-from-an-expressroute-circuit"></a><a name="detach"></a>Bir ExpressRoute bağlantı hattından yol filtresini ayırmak için
 
 Bir devreyi yol filtresinden ayırmak için, devreye sağ tıklayıp **Ilişkiyi kaldır**' ı seçin.
 
-:::image type="content" source="./media/how-to-routefilter-portal/detach-route-filter.png" alt-text="Yol filtresi sayfasını gösteren ekran görüntüsü":::
+:::image type="content" source="./media/how-to-routefilter-portal/detach-route-filter.png" alt-text="Özet eylemi vurgulanmış şekilde genel bakış sayfasını gösteren ekran görüntüsü":::
 
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
 Bir rota filtresini **Sil düğmesini seçerek silebilirsiniz.** Yol filtresinin, bunu yapmadan önce herhangi bir devreden ilişkilendirilmediğinden emin olun.
 
-:::image type="content" source="./media/how-to-routefilter-portal/delete-route-filter.png" alt-text="Yol filtresi sayfasını gösteren ekran görüntüsü":::
+:::image type="content" source="./media/how-to-routefilter-portal/delete-route-filter.png" alt-text="Yol filtresini silme":::
 
 ## <a name="next-steps"></a>Sonraki Adımlar
 

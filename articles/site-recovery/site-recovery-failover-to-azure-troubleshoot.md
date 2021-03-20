@@ -10,10 +10,10 @@ ms.workload: storage-backup-recovery
 ms.date: 01/08/2020
 ms.author: mayg
 ms.openlocfilehash: d2a0444483c382da7c54accf7dca49d097671771
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92371996"
 ---
 # <a name="troubleshoot-errors-when-failing-over-vmware-vm-or-physical-machine-to-azure"></a>VMware sanal makinesi veya fiziksel makineden Azure'a yük devretme hatalarını giderme
@@ -46,7 +46,7 @@ Site Recovery, Azure 'da yük devredilen sanal makine oluşturamadı. Şirket i�
 
 Azure 'da herhangi bir makineyi getirmek için, Azure ortamı bazı sürücülerin önyükleme başlatma durumunda olmasını ve DHCP gibi hizmetlerin otomatik başlatma durumunda olmasını gerektirir. Bu nedenle, yük devretme sırasında hidrasyon etkinliği, **ATAPI, intelide, storflt, VMBus ve storvsc sürücülerinin** başlangıç türünü önyükleme başlatması ' ne dönüştürür. Ayrıca, DHCP gibi birkaç hizmetin başlangıç türünü autostart 'a dönüştürür. Bu etkinlik, ortama özgü sorunlar nedeniyle başarısız olabilir. 
 
-**Windows Konuk işletim sistemi**için sürücülerin başlangıç türünü el ile değiştirmek için aşağıdaki adımları izleyin:
+**Windows Konuk işletim sistemi** için sürücülerin başlangıç türünü el ile değiştirmek için aşağıdaki adımları izleyin:
 
 1. Komut dosyası içermeyen bir betiği [indirin](https://download.microsoft.com/download/5/D/6/5D60E67C-2B4F-4C51-B291-A97732F92369/Script-no-hydration.ps1) ve aşağıdaki gibi çalıştırın. Bu betik, sanal makinenin hidrasyon gerektirip gerektirmediğini denetler.
 
@@ -88,7 +88,7 @@ Azure 'daki yük devredilen VM 'deki **Bağlan** düğmesi gri Ise ve Azure 'A b
 2. **IP yapılandırmaları**' na gidin ve gerekli IP yapılandırmasının ad alanına tıklayın. ![Ekran görüntüsü, ağ arabirimi için ı p yapılandırma adı seçili olan I P yapılandırmaları sayfasını gösterir.](media/site-recovery-failover-to-azure-troubleshoot/IpConfigurations.png)
 3. Genel IP adresini etkinleştirmek için **Etkinleştir**' e tıklayın. ![IP 'yi etkinleştir](media/site-recovery-failover-to-azure-troubleshoot/Enable-Public-IP.png)
 4. **Gerekli ayarları Yapılandır**  >  **Yeni oluştur**' a tıklayın. ![Yeni oluştur](media/site-recovery-failover-to-azure-troubleshoot/Create-New-Public-IP.png)
-5. Ortak adres adını girin, **SKU** ve **atama**için varsayılan seçenekleri belirleyin ve ardından **Tamam**' a tıklayın.
+5. Ortak adres adını girin, **SKU** ve **atama** için varsayılan seçenekleri belirleyin ve ardından **Tamam**' a tıklayın.
 6. Şimdi yaptığınız değişiklikleri kaydetmek için **Kaydet**' e tıklayın.
 7. Panelleri kapatın ve sanal makinenin bağlanmak/RDP 'ye **genel bakış** bölümüne gidin.
 

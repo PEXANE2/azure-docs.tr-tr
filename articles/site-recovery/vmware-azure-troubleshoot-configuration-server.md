@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 02/13/2019
 ms.author: ramamill
 ms.openlocfilehash: b5fd014732fd4cdfaa52f971b5e4d2c74db580d2
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92371962"
 ---
 # <a name="troubleshoot-configuration-server-issues"></a>Yapılandırma sunucusu sorunlarını giderme
@@ -24,14 +24,14 @@ Mobility aracısını yüklediğinizde kaynak makine, yapılandırma sunucusuna 
 
 1. C:\ProgramData\ASR\home\svsystems\var\ configurator_register_host_static_info. log dosyasını açın. (ProgramData klasörü gizli bir klasör olabilir. ProgramData klasörünü görmüyorsanız, dosya Gezgini 'nde, **Görünüm** sekmesindeki **Göster/Gizle** bölümünde **gizli öğeler** onay kutusunu seçin.) Hatalara birden çok sorun neden olmuş olabilir.
 
-2. **Geçerli BIR IP adresi bulunamadı**dizesini arayın. Dize bulunursa:
+2. **Geçerli BIR IP adresi bulunamadı** dizesini arayın. Dize bulunursa:
    1. İstenen konak KIMLIĞININ, kaynak makinenin ana bilgisayar KIMLIĞIYLE aynı olduğunu doğrulayın.
    2. Kaynak makinenin fiziksel NIC 'ye atanmış en az bir IP adresi olduğunu doğrulayın. Yapılandırma sunucusunun başarılı olması için aracı kaydı için, kaynak makinenin fiziksel NIC 'ye atanmış en az bir geçerli IP v4 adresi olması gerekir.
    3. Kaynak makinenin tüm IP adreslerini almak için kaynak makinede aşağıdaki komutlardan birini çalıştırın:
       - Windows için: `> ipconfig /all`
       - Linux için: `# ifconfig -a`
 
-3. Dize geçerli bir **IP adresi bulunamadıysa** , string **=>null**dizesini arayın. Bu hata, kaynak makine yapılandırma sunucusuna kaydolmak için boş bir konak kullanıyorsa oluşur. Dize bulunursa:
+3. Dize geçerli bir **IP adresi bulunamadıysa** , string **=>null** dizesini arayın. Bu hata, kaynak makine yapılandırma sunucusuna kaydolmak için boş bir konak kullanıyorsa oluşur. Dize bulunursa:
     - Sorunları çözdükten sonra, kaydı el ile yeniden denemek için [kaynak makineyi yapılandırma sunucusuna kaydetme](vmware-azure-troubleshoot-configuration-server.md#register-source-machine-with-configuration-server) bölümündeki yönergeleri izleyin.
 
 4. Dize **nedeni =>null** bulunamazsa, kaynak makinede C:\programdata\asrsetuplogs\uploadedlogs\asrunifiedagentınstaller.log dosyasını açın. (ProgramData klasörü gizli bir klasör olabilir. ProgramData klasörünü görmüyorsanız, dosya Gezgini 'nde, **Görünüm** sekmesindeki **Göster/Gizle** bölümünde **gizli öğeler** onay kutusunu seçin.) Hatalara birden çok sorun neden olmuş olabilir. 
@@ -42,13 +42,13 @@ Mobility aracısını yüklediğinizde kaynak makine, yapılandırma sunucusuna 
     3. [Virüsten koruma programlarından Site Recovery klasör dışlamaları](vmware-azure-set-up-source.md#azure-site-recovery-folder-exclusions-from-antivirus-program) ' nda listelenen klasörlerin virüsten koruma yazılımından çıkarıldığından emin olun.
     4. Ağ sorunları çözümlendiğinde, [kaynak makineyi yapılandırma sunucusuna kaydetme](vmware-azure-troubleshoot-configuration-server.md#register-source-machine-with-configuration-server)konusundaki yönergeleri izleyerek kaydı yeniden deneyin.
 
-6. Dize **POST isteği: (7)-sunucuya bağlanamadıysa** , aynı günlük dosyasında, dize **isteğini arayın: (60)-belirtilen CA sertifikalarıyla eş sertifika kimliği**doğrulanamıyor. Bu hata, yapılandırma sunucusu sertifikasının süresi dolduğunda veya kaynak makine TLS 1,0 veya üzeri protokollerini desteklemediğinden meydana gelebilir. Ayrıca, bir güvenlik duvarı, kaynak makine ile yapılandırma sunucusu arasında TLS iletişimini engelliyorsa de oluşabilir. Dize bulunursa: 
+6. Dize **POST isteği: (7)-sunucuya bağlanamadıysa** , aynı günlük dosyasında, dize **isteğini arayın: (60)-belirtilen CA sertifikalarıyla eş sertifika kimliği** doğrulanamıyor. Bu hata, yapılandırma sunucusu sertifikasının süresi dolduğunda veya kaynak makine TLS 1,0 veya üzeri protokollerini desteklemediğinden meydana gelebilir. Ayrıca, bir güvenlik duvarı, kaynak makine ile yapılandırma sunucusu arasında TLS iletişimini engelliyorsa de oluşabilir. Dize bulunursa: 
     1. Çözümlemek için, kaynak makinede bir Web tarayıcısı kullanarak yapılandırma sunucusu IP adresine bağlanın. URI https: \/ \/<yapılandırma sunucusu IP adresini kullan \> : 443/. Kaynak makinenin, 443 bağlantı noktası üzerinden yapılandırma sunucusuna erişebildiğinden emin olun.
     2. Kaynak makinenin yapılandırma sunucusuyla iletişim kurmasını sağlamak için kaynak makinede herhangi bir güvenlik duvarı kuralı eklenmesi veya kaldırılması gerekip gerekmediğini denetleyin. Kullanımda olabilecek çeşitli güvenlik duvarı yazılımları nedeniyle, tüm gerekli güvenlik duvarı yapılandırmalarının listesini listeleyemiyorum. Bağlantı sorunlarının engelini kaldırmak için ağ yöneticilerle çalışın.
     3. [Virüsten koruma programlarından Site Recovery klasör dışlamaları](vmware-azure-set-up-source.md#azure-site-recovery-folder-exclusions-from-antivirus-program) ' nda listelenen klasörlerin virüsten koruma yazılımından çıkarıldığından emin olun.  
     4. Sorunları çözdükten sonra, [kaynak makineyi yapılandırma sunucusuna kaydetme](vmware-azure-troubleshoot-configuration-server.md#register-source-machine-with-configuration-server)bölümündeki yönergeleri izleyerek kaydı yeniden deneyin.
 
-7. Linux 'ta INSTALLATION_DIR <' deki platformun değeri \> /etc/drscout.exe bozuksa, kayıt başarısız olur. Bu sorunu belirlemek için/var/log/ua_install. log dosyasını açın. **VM_PLATFORM değeri null olduğu veya VMware/Azure olmadığından, yapılandırmayı iptal**eden dizeyi arayın. Platform **VMware** ya da **Azure**olarak ayarlanmalıdır. Drscout. conf dosyası bozuksa, [Mobility aracısını kaldırmanızı](vmware-physical-manage-mobility-service.md#uninstall-mobility-service) ve ardından Mobility aracısını yeniden yüklemenizi öneririz. Kaldırma başarısız olursa, aşağıdaki adımları izleyin: a. Installation_Directory/Uninstall.exe dosyasını açın ve **StopServices** işlevine olan çağrıyı not edin.
+7. Linux 'ta INSTALLATION_DIR <' deki platformun değeri \> /etc/drscout.exe bozuksa, kayıt başarısız olur. Bu sorunu belirlemek için/var/log/ua_install. log dosyasını açın. **VM_PLATFORM değeri null olduğu veya VMware/Azure olmadığından, yapılandırmayı iptal** eden dizeyi arayın. Platform **VMware** ya da **Azure** olarak ayarlanmalıdır. Drscout. conf dosyası bozuksa, [Mobility aracısını kaldırmanızı](vmware-physical-manage-mobility-service.md#uninstall-mobility-service) ve ardından Mobility aracısını yeniden yüklemenizi öneririz. Kaldırma başarısız olursa, aşağıdaki adımları izleyin: a. Installation_Directory/Uninstall.exe dosyasını açın ve **StopServices** işlevine olan çağrıyı not edin.
     b. Installation_Directory/VX/bin/Uninstall.sh dosyasını açın ve **stop_services** işlevi çağrısını not edin.
     c. Installation_Directory/FX/Uninstall.exe dosyasını açın ve FX hizmetini durdurmaya çalışan tüm bölümün açıklamasını inceleyin.
     d. Mobility aracısını [kaldırın](vmware-physical-manage-mobility-service.md#uninstall-mobility-service) . Başarıyla kaldırıldıktan sonra sistemi yeniden başlatın ve ardından Mobility aracısını yeniden yüklemeyi deneyin.

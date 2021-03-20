@@ -17,10 +17,10 @@ ms.author: sethm
 ms.reviewer: thsomasu
 ms.lastreviewed: 09/11/2019
 ms.openlocfilehash: c5485dacc4d9e3210ad69819caf4e36f96c626da
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92428382"
 ---
 # <a name="tutorial-send-push-notifications-to-android-devices-using-firebase-sdk-version-06"></a>Öğretici: Firebase SDK sürüm 0,6 kullanarak Android cihazlarına anında iletme bildirimleri gönderme
@@ -40,7 +40,7 @@ Bu öğreticide, aşağıdaki adımları gerçekleştireceksiniz:
 > * Uygulamanızı hub 'a bağlayın.
 > * Uygulamayı test etme.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticiyi tamamlamak için etkin bir Azure hesabınızın olması gerekir. Bir hesabınız yoksa, yalnızca birkaç dakika içinde ücretsiz bir deneme hesabı oluşturabilirsiniz. Ayrıntılı bilgi için bkz. [Azure Ücretsiz Deneme Sürümü](https://azure.microsoft.com/free/). 
 
@@ -56,12 +56,12 @@ Bu öğreticiyi tamamlamak, Android uygulamalarına yönelik diğer tüm Notific
 ## <a name="create-an-android-studio-project"></a>Android Studio Projesi oluşturma
 
 1. Android Studio başlatın.
-2. **Dosya**' yı seçin, **Yeni**üzerine gelin ve ardından **Yeni proje**' yi seçin. 
+2. **Dosya**' yı seçin, **Yeni** üzerine gelin ve ardından **Yeni proje**' yi seçin. 
 2. **Projenizi seçin** sayfasında **boş etkinlik**' i seçin ve ardından **İleri**' yi seçin. 
 3. **Projenizi yapılandırın** sayfasında, aşağıdaki adımları uygulayın: 
     1. Uygulama için bir ad girin.
     2. Proje dosyalarının kaydedileceği bir konum belirtin. 
-    3. **Son**’u seçin. 
+    3. **Son**'u seçin. 
 
         ![Projenizi yapılandırma)](./media/notification-hubs-android-push-notification-google-fcm-get-started/configure-project.png)
 
@@ -92,7 +92,7 @@ Hub 'ınız şimdi Firebase Cloud Messaging ile çalışacak şekilde yapıland�
 2. Projenizde kullanılan Android SDK hedef sürümünü seçin. Ardından **Paket ayrıntılarını göster**' i seçin. 
 
     ![Android SDK Yöneticisi-hedef sürümü seçin](./media/notification-hubs-android-studio-add-google-play-services/notification-hubs-android-studio-sdk-manager.png)
-3. Zaten yüklenmemişse **Google API 'leri**seçin.
+3. Zaten yüklenmemişse **Google API 'leri** seçin.
 
     ![Android SDK Manager-Google API 'Leri seçildi](./media/notification-hubs-android-studio-add-google-play-services/googole-apis-selected.png)
 4. **SDK Tools** sekmesine geçin. Google Play Hizmetleri zaten yüklemediyseniz, aşağıdaki görüntüde gösterildiği gibi **Google Play hizmetleri** seçin. Ardından, yüklemek için **Uygula** ' yı seçin. SDK yolunun sonraki bir adım için olduğunu unutmayın.
@@ -171,7 +171,7 @@ Hub 'ınız şimdi Firebase Cloud Messaging ile çalışacak şekilde yapıland�
 
 ### <a name="add-code"></a>Kod Ekle
 
-1. Proje görünümünde, **uygulama**  >  **src**  >  **Main**  >  **Java**' yı genişletin. **Java**altındaki paket klasörünüze sağ tıklayın, **Yeni**' yi seçin ve ardından **Java sınıfı**' nı seçin. Ad için **Notificationsettings** yazın ve ardından **Tamam**' ı seçin.
+1. Proje görünümünde, **uygulama**  >  **src**  >  **Main**  >  **Java**' yı genişletin. **Java** altındaki paket klasörünüze sağ tıklayın, **Yeni**' yi seçin ve ardından **Java sınıfı**' nı seçin. Ad için **Notificationsettings** yazın ve ardından **Tamam**' ı seçin.
 
     Aşağıdaki kodda `NotificationSettings` sınıfı için bu üç yer tutucuyu güncelleştirdiğinizden emin olun:
 
@@ -520,7 +520,7 @@ Hub 'ınız şimdi Firebase Cloud Messaging ile çalışacak şekilde yapıland�
     }
     ```
 
-13. Android Studio **Build**  >  kodunuzda herhangi bir hata olmadığından emin olmak için, menü çubuğunda, Oluştur**projeyi** derle ' yi seçin. Simge hakkında bir hata alırsanız `ic_launcher` , aşağıdaki ifadeyi AndroidManifest.xml dosyasından kaldırın: 
+13. Android Studio   >  kodunuzda herhangi bir hata olmadığından emin olmak için, menü çubuğunda, Oluştur **projeyi** derle ' yi seçin. Simge hakkında bir hata alırsanız `ic_launcher` , aşağıdaki ifadeyi AndroidManifest.xml dosyasından kaldırın: 
 
     ```
         android:icon="@mipmap/ic_launcher"
@@ -557,7 +557,7 @@ Aşağıdaki adımları uygulayarak [Azure Portal] anında iletme bildirimleri g
 
 Bir öykünücü içinde anında iletme bildirimlerini test etmeden önce, öykünücü görüntünüzün uygulamanız için seçtiğiniz Google API düzeyini desteklediğinden emin olun. Görüntünüz yerel Google API 'Lerini desteklemiyorsa **hizmet \_ \_ kullanılamıyor** özel durumunu alabilirsiniz.
 
-Ayrıca, Google hesabınızı, **Ayarlar**hesaplar bölümünde çalışan öykünücüsünüzün içine eklediğinizden emin olun  >  **Accounts**. Aksi halde, FCM ile kaydolma girişimleri, **kimlik doğrulama \_ başarısız** özel durumuyla sonuçlanabilir.
+Ayrıca, Google hesabınızı, **Ayarlar** hesaplar bölümünde çalışan öykünücüsünüzün içine eklediğinizden emin olun  >  . Aksi halde, FCM ile kaydolma girişimleri, **kimlik doğrulama \_ başarısız** özel durumuyla sonuçlanabilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

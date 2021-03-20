@@ -15,10 +15,10 @@ ms.author: curtand
 ms.custom: pim ; azuread-video-2020
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c3c7003ce3e8c65f6fdb7f3d847947114aee251f
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92370194"
 ---
 # <a name="what-is-azure-ad-privileged-identity-management"></a>Azure AD Privileged Identity Management nedir?
@@ -47,7 +47,7 @@ Privileged Identity Management, önem verdiğiniz kaynaklarda aşırı, gereksiz
 
 ## <a name="what-can-i-do-with-it"></a>Bununla ne yapabilirim?
 
-Privileged Identity Management ayarladıktan sonra sol gezinti menüsünde **Görevler**, **Yönet**ve **etkinlik** seçeneklerini görürsünüz. Yönetici olarak, **Azure AD rollerini**yönetme, **Azure Kaynak** rollerini yönetme veya ayrıcalıklı erişim grupları gibi seçenekler arasından seçim yapabilirsiniz. Yönetmek istediklerinizi seçtiğinizde, bu seçenek için uygun seçenek kümesini görürsünüz.
+Privileged Identity Management ayarladıktan sonra sol gezinti menüsünde **Görevler**, **Yönet** ve **etkinlik** seçeneklerini görürsünüz. Yönetici olarak, **Azure AD rollerini** yönetme, **Azure Kaynak** rollerini yönetme veya ayrıcalıklı erişim grupları gibi seçenekler arasından seçim yapabilirsiniz. Yönetmek istediklerinizi seçtiğinizde, bu seçenek için uygun seçenek kümesini görürsünüz.
 
 ![Azure portal Privileged Identity Management ekran görüntüsü](./media/pim-configure/pim-quickstart.png)
 

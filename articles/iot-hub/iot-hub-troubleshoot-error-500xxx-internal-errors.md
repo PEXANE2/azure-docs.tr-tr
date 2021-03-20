@@ -9,10 +9,10 @@ ms.topic: troubleshooting
 ms.date: 01/30/2020
 ms.author: jlian
 ms.openlocfilehash: 1333a135f3e123757e268513f73e8329537e630b
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/26/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92538213"
 ---
 # <a name="500xxx-internal-errors"></a>500xxx Internal errors
@@ -23,13 +23,13 @@ Bu makalede, **500 xxx iç hatalara** yönelik nedenler ve çözümler açıklan
 
 IoT Hub isteğiniz, 500 ve/veya bazı "sunucu hatası" sıralaması ile başlayan bir hata ile başarısız olur. Bazı olanaklar şunlardır:
 
-* **500001 Sunucuhatası** : IoT Hub sunucu tarafında bir sorun oluştu.
+* **500001 Sunucuhatası**: IoT Hub sunucu tarafında bir sorun oluştu.
 
-* **500008 GenericTimeout** : IoT Hub zaman aşımından önce bağlantı isteğini tamamlayamadı.
+* **500008 GenericTimeout**: IoT Hub zaman aşımından önce bağlantı isteğini tamamlayamadı.
 
-* **Serviceunavailable (hata kodu yok)** : IoT Hub bir iç hatayla karşılaştı.
+* **Serviceunavailable (hata kodu yok)**: IoT Hub bir iç hatayla karşılaştı.
 
-* **Internalservererror (hata kodu yok)** : IoT Hub bir iç hatayla karşılaştı.
+* **Internalservererror (hata kodu yok)**: IoT Hub bir iç hatayla karşılaştı.
 
 ## <a name="cause"></a>Nedeni
 

@@ -14,10 +14,10 @@ ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: fe0c7eec5c023fcba3152ad6329d318210a0c2ab
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92370942"
 ---
 # <a name="assign-administrator-and-non-administrator-roles-to-users-with-azure-active-directory"></a>Azure Active Directory sahip kullanıcılara yönetici ve yönetici olmayan roller atama
@@ -26,7 +26,7 @@ Azure Active Directory (Azure AD) ' de, kullanıcılarınızın Azure AD kaynakl
 
 Kullanılabilir Azure AD rolleri hakkında daha fazla bilgi için, bkz. [Azure Active Directory yönetici rolleri atama](../roles/permissions-reference.md). Kullanıcıları eklemek için bkz. [Azure Active Directory yeni kullanıcı ekleme](add-users-azure-active-directory.md).
 
-## <a name="assign-roles"></a>Rol atama
+## <a name="assign-roles"></a>Rolleri atama
 
 Bir kullanıcıya Azure AD rolleri atamak için ortak bir yol, bir kullanıcı için **atanan roller** sayfasıdır. Ayrıca, Kullanıcı uygunluğunu Privileged Identity Management (PıM) kullanarak bir role tam zamanında Yükseltilmek üzere de yapılandırabilirsiniz. PıM kullanma hakkında daha fazla bilgi için bkz. [Privileged Identity Management](../privileged-identity-management/index.yml).
 

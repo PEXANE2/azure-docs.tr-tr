@@ -10,10 +10,10 @@ ms.reviewer: klam, estfan
 ms.topic: article
 ms.date: 02/29/2020
 ms.openlocfilehash: 0e9ca2c7b5d15fcc6be451bbe215c8b85d5309eb
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92368273"
 ---
 # <a name="migrate-azure-scheduler-jobs-to-azure-logic-apps"></a>Azure Scheduler işlerini Azure Logic Apps’e geçirme
@@ -114,7 +114,7 @@ Tek seferlik bir işi el ile çalıştırmak veya tetiklemek için, mantıksal u
 
 Örneğin, Postman uygulamasını kullanarak bu örneğe benzer ayarlarla bir POST isteği oluşturabilir ve sonra isteği yapmak için **Gönder** ' i seçebilirsiniz.
 
-| İstek yöntemi | URL | Gövde | Üst bilgiler |
+| İstek yöntemi | URL | Gövde | Üst Bilgiler |
 |----------------|-----|------|---------|
 | **Yayınla** | <*uç nokta-URL*> | **Madde** <p>**JSON (uygulama/JSON)** <p>**Ham** kutusuna, istekte göndermek istediğiniz yükü girin. <p>**Note**: Bu ayar, **üst bilgiler** değerlerini otomatik olarak yapılandırır. | **Anahtar**: içerik türü <br>**Değer**: uygulama/JSON |
 |||||
@@ -193,7 +193,7 @@ Azure Scheduler 'da, varsayılan eylem çalışamazsa, hata koşulunu ele alan b
 
    ![Sonra Çalıştır Yapılandırma](./media/migrate-from-scheduler-to-logic-apps/configure-run-after.png)
 
-1. **Başarılı** özelliğinin kutusunun işaretini kaldırın. Şu özellikleri seçin: **başarısız oldu**, **atlandı**ve **zaman aşımına uğradı**
+1. **Başarılı** özelliğinin kutusunun işaretini kaldırın. Şu özellikleri seçin: **başarısız oldu**, **atlandı** ve **zaman aşımına uğradı**
 
    !["Sonra Çalıştır" özelliklerini ayarla](./media/migrate-from-scheduler-to-logic-apps/select-run-after-properties.png)
 
@@ -206,21 +206,21 @@ Azure Scheduler 'da, varsayılan eylem çalışamazsa, hata koşulunu ele alan b
 <a name="retire-date"></a>
 
 **S**: Azure Scheduler ne zaman devre dışı bırakılıyor? <br>
-Y **: Azure**Scheduler, 31 Aralık 2019 tarihinde tamamen devre dışı bırakılacak şekilde zamanlandı. Bu tarihten ve ayrıntılı bir zaman çizelgesinden önce gerçekleştirilecek önemli adımlar için, bkz. [Scheduler için kullanımdan kaldırma tarihini 31 aralık 2019 ' e genişletme](https://azure.microsoft.com/updates/extending-retirement-date-of-scheduler/). Genel güncelleştirmeler için bkz. [Azure Updates-Scheduler](https://azure.microsoft.com/updates/?product=scheduler).
+Y **: Azure** Scheduler, 31 Aralık 2019 tarihinde tamamen devre dışı bırakılacak şekilde zamanlandı. Bu tarihten ve ayrıntılı bir zaman çizelgesinden önce gerçekleştirilecek önemli adımlar için, bkz. [Scheduler için kullanımdan kaldırma tarihini 31 aralık 2019 ' e genişletme](https://azure.microsoft.com/updates/extending-retirement-date-of-scheduler/). Genel güncelleştirmeler için bkz. [Azure Updates-Scheduler](https://azure.microsoft.com/updates/?product=scheduler).
 
 **S**: hizmet yeniden kurulduktan sonra iş koleksiyonlarıma ve işlerime ne olur? <br>
-Y **: tüm**zamanlayıcı iş koleksiyonları ve işleri çalışmayı durdurur ve sistemden silinir.
+Y **: tüm** zamanlayıcı iş koleksiyonları ve işleri çalışmayı durdurur ve sistemden silinir.
 
 **S**: zamanlayıcı işlerim Logic Apps geçirmeden önce diğer görevleri yedeklemem veya gerçekleştirmem gerekir mi? <br>
-Y **: en**iyi uygulama olarak, her zaman işinizi yedekleyin. Zamanlayıcı İşlerinizi silmeden veya devre dışı bırakmadan önce oluşturduğunuz mantıksal uygulamaların beklendiği gibi çalıştığını denetleyin.
+Y **: en** iyi uygulama olarak, her zaman işinizi yedekleyin. Zamanlayıcı İşlerinizi silmeden veya devre dışı bırakmadan önce oluşturduğunuz mantıksal uygulamaların beklendiği gibi çalıştığını denetleyin.
 
 **S**: uygulamalarımı Scheduler 'dan Logic Apps geçişe geçirmeye yardımcı olabilecek bir araç var mı? <br>
-Y **: her**Scheduler işi benzersizdir, bu nedenle tek boyutlu bir-All aracı yok. Bununla birlikte, gereksinimlerinize bağlı olarak, [bu betiği düzenleyerek Azure Scheduler işlerinin Azure Logic Apps 'e geçişini](https://github.com/Azure/logicapps/tree/master/scripts/scheduler-migration)sağlayabilirsiniz.
+Y **: her** Scheduler işi benzersizdir, bu nedenle tek boyutlu bir-All aracı yok. Bununla birlikte, gereksinimlerinize bağlı olarak, [bu betiği düzenleyerek Azure Scheduler işlerinin Azure Logic Apps 'e geçişini](https://github.com/Azure/logicapps/tree/master/scripts/scheduler-migration)sağlayabilirsiniz.
 
 **S**: Zamanlayıcı işlerinizin geçirilmesi için nereden destek alabilirim? <br>
 Y: destek almanın bazı yolları aşağıda **verilmiştir:**
 
-**Azure Portal**
+**Azure portalı**
 
 Azure aboneliğinizin ücretli bir destek planı varsa Azure portal bir teknik destek isteği oluşturabilirsiniz. Aksi takdirde, farklı bir destek seçeneği belirleyebilirsiniz.
 
@@ -232,7 +232,7 @@ Azure aboneliğinizin ücretli bir destek planı varsa Azure portal bir teknik d
    |---------|-------|
    | **Sorun türü** | **Teknik** |
    | **Abonelik** | <*Azure aboneliğiniz*> |
-   | **Hizmet** | **& yönetimi izleme**altında **Zamanlayıcı**' yı seçin. **Zamanlayıcı 'yı**bulamıyorsanız, önce **tüm hizmetler** ' i seçin. |
+   | **Hizmet** | **& yönetimi izleme** altında **Zamanlayıcı**' yı seçin. **Zamanlayıcı 'yı** bulamıyorsanız, önce **tüm hizmetler** ' i seçin. |
    ||| 
 
 1. İstediğiniz destek seçeneğini belirleyin. Ücretli bir destek planınız varsa **İleri**' yi seçin.

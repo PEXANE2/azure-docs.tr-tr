@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
 ms.openlocfilehash: 6fc09f9145b7a1652b621ed38a8bf9af7c4c82a8
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92106578"
 ---
 # <a name="authentication-with-azure-data-lake-storage-gen1-using-azure-active-directory"></a>Azure Active Directory kullanarak Azure Data Lake Storage 1. kimlik doğrulaması
@@ -21,7 +21,7 @@ Azure Data Lake Storage 1., kimlik doğrulaması için Azure Active Directory ku
 
 * **Son Kullanıcı kimlik doğrulaması** -son kullanıcının Azure kimlik bilgileri Data Lake Storage 1. kimlik doğrulaması için kullanılır. Data Lake Storage 1. ile çalışmak için oluşturduğunuz uygulama bu kullanıcı kimlik bilgilerini ister. Sonuç olarak, bu kimlik doğrulama mekanizması *etkileşimlidir* ve uygulama oturum açmış kullanıcının bağlamında çalışır. Daha fazla bilgi ve yönergeler için bkz. [Data Lake Storage 1. Için Son Kullanıcı kimlik doğrulaması](data-lake-store-end-user-authenticate-using-active-directory.md).
 
-* **Hizmetten hizmete kimlik doğrulaması** -bir uygulamanın Data Lake Storage 1. ile kendi kimliğini doğrulamasını istiyorsanız bu seçeneği kullanın. Böyle durumlarda, bir Azure Active Directory (AD) uygulaması oluşturur ve Data Lake Storage 1. kimlik doğrulaması yapmak için Azure AD uygulamasından anahtarı kullanırsınız. Sonuç olarak, bu kimlik doğrulama mekanizması *etkileşimli*değil. Daha fazla bilgi ve yönergeler için bkz. [Data Lake Storage 1. Için hizmetten hizmete kimlik doğrulaması](data-lake-store-service-to-service-authenticate-using-active-directory.md).
+* **Hizmetten hizmete kimlik doğrulaması** -bir uygulamanın Data Lake Storage 1. ile kendi kimliğini doğrulamasını istiyorsanız bu seçeneği kullanın. Böyle durumlarda, bir Azure Active Directory (AD) uygulaması oluşturur ve Data Lake Storage 1. kimlik doğrulaması yapmak için Azure AD uygulamasından anahtarı kullanırsınız. Sonuç olarak, bu kimlik doğrulama mekanizması *etkileşimli* değil. Daha fazla bilgi ve yönergeler için bkz. [Data Lake Storage 1. Için hizmetten hizmete kimlik doğrulaması](data-lake-store-service-to-service-authenticate-using-active-directory.md).
 
 Aşağıdaki tabloda, son kullanıcı ve hizmetten hizmete kimlik doğrulama mekanizmalarının Data Lake Storage 1. için nasıl desteklendiği gösterilmektedir. Tabloyu nasıl okuyaöğreneceksiniz.
 

@@ -12,17 +12,17 @@ ms.author: sethm
 ms.reviewer: thsomasu
 ms.lastreviewed: 03/25/2019
 ms.openlocfilehash: 6784331dccd779390ace7dc632d54fe54aedc458
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87761000"
 ---
 # <a name="configure-microsoft-push-notification-service-mpns-settings-in-the-azure-portal"></a>Azure portal Microsoft anında Iletme bildirimi hizmeti (MPNS) ayarlarını yapılandırma
 
 Bu makalede, Azure portal kullanarak bir Azure Notification Hub 'ı için Microsoft anında Iletme bildirimi hizmeti (MPNS) ayarlarının nasıl yapılandırılacağı gösterilmektedir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Henüz bir Bildirim Hub 'ı oluşturmadıysanız, şimdi bir tane oluşturun. Daha fazla bilgi için [Azure Portal Azure Notification Hub 'ı oluşturma](create-notification-hub-portal.md)konusuna bakın.
 
@@ -33,7 +33,7 @@ Aşağıdaki yordamda, bir Bildirim Hub 'ı için Microsoft anında Iletme bildi
 1. Azure portal, **Bildirim Hub** 'ı sayfasında sol menüdeki **Windows Phone (MPNS)** öğesini seçin.
 2. Kimliği doğrulanmamış veya kimliği doğrulanmış anında iletme bildirimlerini etkinleştir:
 
-   a. Kimliği doğrulanmamış anında iletme bildirimlerini etkinleştirmek için, **kimliği doğrulanmamış gönderimi etkinleştir**' i seçin  >  **Save**.
+   a. Kimliği doğrulanmamış anında iletme bildirimlerini etkinleştirmek için, **kimliği doğrulanmamış gönderimi etkinleştir**' i seçin  >  .
 
       ![Kimliği doğrulanmamış anında iletme bildirimlerinin nasıl etkinleştirileceğini gösteren ekran görüntüsü](./media/notification-hubs-windows-phone-get-started/azure-portal-unauth.png)
 

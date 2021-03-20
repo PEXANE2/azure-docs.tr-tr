@@ -7,17 +7,17 @@ ms.date: 02/14/2020
 ms.author: cshoe
 ms.custom: fasttrack-edit
 ms.openlocfilehash: 115ff1b59ecbe3f4fdb089c2bd61da955fba3984
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92104555"
 ---
 # <a name="azure-event-grid-bindings-for-azure-functions"></a>Azure Işlevleri için Azure Event Grid bağlamaları
 
 Bu başvuru, Azure Işlevlerinde [Event Grid](../event-grid/overview.md) olaylarının nasıl işleneceğini açıklar. HTTP uç noktasındaki Event Grid iletilerinin nasıl işleneceği hakkında ayrıntılı bilgi için bkz. [http uç noktasına olay alma](../event-grid/receive-events.md).
 
-Event Grid, *yayımcılardan*oluşan olayları BILDIRMEK üzere http istekleri gönderen bir Azure hizmetidir. Yayımcı, olayı oluşturan hizmet veya kaynaktır. Örneğin, bir Azure Blob depolama hesabı bir yayımcı, [BLOB karşıya yükleme veya silme bir olaydır](../storage/blobs/storage-blob-event-overview.md). Bazı [Azure hizmetlerinde Event Grid olay yayımlamaya yönelik yerleşik destek vardır](../event-grid/overview.md#event-sources).
+Event Grid, *yayımcılardan* oluşan olayları BILDIRMEK üzere http istekleri gönderen bir Azure hizmetidir. Yayımcı, olayı oluşturan hizmet veya kaynaktır. Örneğin, bir Azure Blob depolama hesabı bir yayımcı, [BLOB karşıya yükleme veya silme bir olaydır](../storage/blobs/storage-blob-event-overview.md). Bazı [Azure hizmetlerinde Event Grid olay yayımlamaya yönelik yerleşik destek vardır](../event-grid/overview.md#event-sources).
 
 Olay *işleyicileri* olayları alır ve işler. Azure Işlevleri, [Event Grid olaylarını işlemek için yerleşik desteğe sahip çeşitli Azure hizmetlerinden](../event-grid/overview.md#event-handlers)biridir. Bu başvuruda, Event Grid bir olay alındığında bir işlevi çağırmak ve bir [Event Grid özel konusuna](../event-grid/post-to-custom-topic.md)olay göndermek için çıkış bağlamayı kullanmak üzere bir Event Grid tetikleyicisi kullanmayı öğreneceksiniz.
 

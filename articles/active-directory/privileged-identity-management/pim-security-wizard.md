@@ -15,10 +15,10 @@ ms.author: curtand
 ms.custom: pim ; H1Hack27Feb2017
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4662e9fb537a93cb87c554e319256e2eca40d2e7
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92372438"
 ---
 # <a name="discovery-and-insights-preview-for-azure-ad-roles-formerly-security-wizard"></a>Azure AD rolleri için bulma ve Öngörüler (Önizleme) (eski adıyla Güvenlik Sihirbazı)
@@ -37,7 +37,7 @@ Ayrıca, bir Kullanıcı bir Microsoft hesabı (başka bir deyişle, Skype veya 
 
 1. [Azure portalında](https://portal.azure.com/) oturum açın.
 
-1. **Azure AD Privileged Identity Management**açın.
+1. **Azure AD Privileged Identity Management** açın.
 
 1. **Azure AD rolleri** ' ni seçin ve ardından **bulma ve Öngörüler ' i (Önizleme)** seçin. Sayfayı açmak ilgili rol atamalarını bulmak için bulma işlemini başlatır.
 

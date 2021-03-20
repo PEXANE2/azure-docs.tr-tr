@@ -11,10 +11,10 @@ ms.custom:
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
 ms.openlocfilehash: 0e017f4df413d6db528bb99756646859d9a74aea
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/26/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92545404"
 ---
 # <a name="automatic-iot-device-and-module-management-using-the-azure-portal"></a>Azure portalını kullanarak otomatik IoT cihazı ve modül yönetimi
@@ -31,7 +31,7 @@ Otomatik cihaz yönetimi, istenen özelliklerle bir dizi cihaz WINS veya modül 
 
 * **Hedef içerik** , hedeflenen cihaz TWINS veya modül TWINS 'de eklenecek veya güncelleştirilebilen istenen özellikleri tanımlar. İçerik, istenen özelliklerin değiştirilmesi için bir yol içerir.
 
-* **Ölçümler** , **başarı** , **devam** ediyor ve **hata** gibi çeşitli yapılandırma durumlarının Özet sayılarını tanımlar. Özel ölçümler, ikizi tarafından bildirilen özelliklerde sorgu olarak belirtilir.  Sistem ölçümleri, hedeflenen TWINS sayısı ve başarıyla güncelleştirilmiş TWINS sayısı gibi ikizi güncelleştirme durumunu ölçen varsayılan ölçülerdir.
+* **Ölçümler** , **başarı**, **devam** ediyor ve **hata** gibi çeşitli yapılandırma durumlarının Özet sayılarını tanımlar. Özel ölçümler, ikizi tarafından bildirilen özelliklerde sorgu olarak belirtilir.  Sistem ölçümleri, hedeflenen TWINS sayısı ve başarıyla güncelleştirilmiş TWINS sayısı gibi ikizi güncelleştirme durumunu ölçen varsayılan ölçülerdir.
 
 Yapılandırma oluşturulduktan ve sonra beş dakikalık aralıklarla otomatik yapılandırmalar ilk kez çalışır. Ölçüm sorguları otomatik yapılandırmanın her çalıştırılışında çalışır.
 
@@ -58,9 +58,9 @@ Bir yapılandırma oluşturmadan önce, hangi cihazları veya modülleri etkilen
 
 1. [Azure Portal](https://portal.azure.com), IoT Hub 'ınıza gidin. 
 
-2. **IoT cihaz yapılandırması** ' nı seçin.
+2. **IoT cihaz yapılandırması**' nı seçin.
 
-3. **Cihaz Yapılandırması Ekle** veya **Modül Yapılandırması Ekle** ' yi seçin.
+3. **Cihaz Yapılandırması Ekle** veya **Modül Yapılandırması Ekle**' yi seçin.
 
    ![Cihaz yapılandırması veya modül Yapılandırması Ekle](./media/iot-hub-automatic-device-management/create-automatic-configuration.png)
 
@@ -108,7 +108,7 @@ Her yapılandırmanın en fazla beş özel ölçümü olabilir.
 
 2. **Ölçüm ölçütü** için bir sorgu girin.  Sorgu, Device ikizi tarafından bildirilen özellikleri temel alır.  Ölçüm, sorgu tarafından döndürülen satır sayısını temsil eder.
 
-Örneğin:
+Örnek:
 
 ```sql
 SELECT deviceId FROM devices 
@@ -123,7 +123,7 @@ SELECT deviceId FROM devices
   WHERE configurations.[[yourconfigname]].status='Applied'
 ```
 
-Yapılandırılmış modüller üzerinde raporlamak için bir ölçüm oluşturuyorsanız, ' ı seçin `moduleId` `devices.modules` . Örneğin:
+Yapılandırılmış modüller üzerinde raporlamak için bir ölçüm oluşturuyorsanız, ' ı seçin `moduleId` `devices.modules` . Örnek:
 
 ```sql
 SELECT deviceId, moduleId FROM devices.modules
@@ -150,7 +150,7 @@ Birden çok yapılandırma aynı cihazı veya modülü hedefleyebilir, çünkü 
 
 ### <a name="review-configuration"></a>Yapılandırmayı gözden geçir
 
-Yapılandırma bilgilerinizi gözden geçirin ve ardından **Gönder** ' i seçin.
+Yapılandırma bilgilerinizi gözden geçirin ve ardından **Gönder**' i seçin.
 
 ## <a name="monitor-a-configuration"></a>Bir yapılandırmayı izleme
 
@@ -158,7 +158,7 @@ Bir yapılandırmanın ayrıntılarını görüntülemek ve çalıştıran cihaz
 
 1. [Azure Portal](https://portal.azure.com), IoT Hub 'ınıza gidin. 
 
-2. **IoT cihaz yapılandırması** ' nı seçin.
+2. **IoT cihaz yapılandırması**' nı seçin.
 
 3. Yapılandırma listesini inceleyin. Her yapılandırma için aşağıdaki ayrıntıları görebilirsiniz:
 
@@ -180,7 +180,7 @@ Bir yapılandırmanın ayrıntılarını görüntülemek ve çalıştıran cihaz
 
    * **Hedef koşul** -hedef koşulla eşleşen cihazlar veya modüller. 
 
-   * **Ölçümler** -sistem ölçümlerinin ve özel ölçümlerin bir listesi.  Açılan listede ölçümü seçerek ve ardından **cihazları görüntüle** veya **modülleri görüntüle** ' yi seçerek her bir ölçüm için sayılan cihazların veya modüllerin listesini görüntüleyebilirsiniz.
+   * **Ölçümler** -sistem ölçümlerinin ve özel ölçümlerin bir listesi.  Açılan listede ölçümü seçerek ve ardından **cihazları görüntüle** veya **modülleri görüntüle**' yi seçerek her bir ölçüm için sayılan cihazların veya modüllerin listesini görüntüleyebilirsiniz.
 
    * **Device Ikizi Settings** veya **module ikizi Settings** -yapılandırma tarafından ayarlanan ikizi ayarları. 
 
@@ -202,7 +202,7 @@ Bir yapılandırmayı değiştirmek için aşağıdaki adımları kullanın:
 
 1. [Azure Portal](https://portal.azure.com), IoT Hub 'ınıza gidin. 
 
-2. **IoT cihaz yapılandırması** ' nı seçin. 
+2. **IoT cihaz yapılandırması**' nı seçin. 
 
 3. Değiştirmek istediğiniz yapılandırmayı seçin. 
 
@@ -213,7 +213,7 @@ Bir yapılandırmayı değiştirmek için aşağıdaki adımları kullanın:
    * Öncelik 
    * Ölçümler
 
-4. **Kaydet** ’i seçin.
+4. **Kaydet**’i seçin.
 
 5. Değişiklikleri izlemek için [Yapılandırmayı İzleme](#monitor-a-configuration) bölümündeki adımları izleyin. 
 
@@ -223,11 +223,11 @@ Bir yapılandırmayı sildiğinizde, her türlü cihaz WINS 'in bir sonraki en y
 
 1. [Azure Portal](https://portal.azure.com), IoT Hub 'ınıza gidin. 
 
-2. **IoT cihaz yapılandırması** ' nı seçin. 
+2. **IoT cihaz yapılandırması**' nı seçin. 
 
 3. Silmek istediğiniz yapılandırmayı seçmek için onay kutusunu kullanın. 
 
-4. **Sil** ’i seçin.
+4. **Sil**’i seçin.
 
 5. Bir istem, doğrulamanızı ister.
 

@@ -9,10 +9,10 @@ author: sandeeppujar
 ms.date: 04/30/2020
 ms.custom: device-developer
 ms.openlocfilehash: 770f6e56a669ab2d9b425a7a2879eeef5d37377b
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92123432"
 ---
 # <a name="connect-an-azure-sphere-device-to-your-azure-iot-central-application"></a>Azure Sphere cihazını Azure IoT Central uygulamanıza bağlama
@@ -47,13 +47,13 @@ Bu makaledeki adımları tamamlamak için aşağıdaki kaynaklar gereklidir:
 
 IoT Central Azure Sphere bir cihaz oluşturmak için:
 
-1. Azure IoT Central uygulamanızda **cihaz şablonları** sekmesini seçin ve **+ Yeni**' yi seçin. **Öne çıkan bir cihaz şablonu kullan**bölümünde **Azure Sphere örnek cihaz**' ı seçin.
+1. Azure IoT Central uygulamanızda **cihaz şablonları** sekmesini seçin ve **+ Yeni**' yi seçin. **Öne çıkan bir cihaz şablonu kullan** bölümünde **Azure Sphere örnek cihaz**' ı seçin.
 
     :::image type="content" source="media/howto-connect-sphere/sphere-create-template.png" alt-text="Azure Sphere DevKit için cihaz şablonu":::
 
 1. Cihaz şablonunda, **sıcaklık** ve **düğme basma**' ı göstermek için **genel bakış** adlı görünümü düzenleyin.
 
-1. Okuma/yazma özelliği **durumunu**gösteren başka bir görünüm eklemek için **cihazı ve bulut verilerini** görüntüleme türünü seçin. **Durum LED** özelliğini formun sağ tarafındaki boş, noktalı dikdörtgene sürükleyin. **Kaydet**’i seçin.
+1. Okuma/yazma özelliği **durumunu** gösteren başka bir görünüm eklemek için **cihazı ve bulut verilerini** görüntüleme türünü seçin. **Durum LED** özelliğini formun sağ tarafındaki boş, noktalı dikdörtgene sürükleyin. **Kaydet**’i seçin.
 
 ## <a name="prepare-the-device"></a>Cihazı hazırlama
 
@@ -67,7 +67,7 @@ Azure Sphere DevKit cihazını IoT Central 'e bağlayabilmeniz için önce [Ciha
 
 Cihaz IoT Central bağlandığında, panoda telemetri görebilirsiniz.
 
-:::image type="content" source="media/howto-connect-sphere/sphere-view.png" alt-text="Azure Sphere DevKit için cihaz şablonu":::
+:::image type="content" source="media/howto-connect-sphere/sphere-view.png" alt-text="Azure Sphere DevKit panosu":::
 
 ## <a name="create-a-simulated-device"></a>Sanal cihaz oluşturma
 
@@ -77,7 +77,7 @@ Sanal cihaz oluşturmak için:
 
 - **Azure IoT Sphere > cihazları** seçme
 - **+ Yeni** seçeneğini belirleyin.
-- Benzersiz bir **CIHAZ kimliği** ve kolay bir **Cihaz adı**girin.
+- Benzersiz bir **CIHAZ kimliği** ve kolay bir **Cihaz adı** girin.
 - **Benzetimli** ayarı etkinleştirin.
 - **Oluştur**’u seçin.
 

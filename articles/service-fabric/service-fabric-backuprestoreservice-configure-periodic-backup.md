@@ -4,10 +4,10 @@ description: Güvenilir durum bilgisi olan hizmetlerin veya Reliable Actors düz
 ms.topic: article
 ms.date: 2/01/2019
 ms.openlocfilehash: 2607502af44b178131820d78f23bcdf4e32454a0
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96018894"
 ---
 # <a name="understanding-periodic-backup-configuration-in-azure-service-fabric"></a>Azure Service Fabric düzenli aralıklarla yedekleme yapılandırmasını anlama
@@ -183,7 +183,7 @@ Aşağıdaki diyagramda açık olarak etkinleştirilen yedekleme ilkeleri ve yay
 
 ![Service Fabric uygulama hiyerarşisi][0]
 
-## <a name="disable-backup"></a>Yedeklemeyi devre dışı bırak
+## <a name="disable-backup"></a>Yedeklemeyi devre dışı bırakma
 Yedekleme ilkeleri, verileri yedeklemeye gerek kalmadığında devre dışı bırakılabilir. Bir _uygulamada_ etkinleştirilen yedekleme Ilkesi yalnızca [uygulama yedekleme API 'Sini devre dışı bırak](/rest/api/servicefabric/sfclient-api-disableapplicationbackup) kullanılarak aynı _uygulamada_ devre dışı bırakılabilir, bir _hizmette_ etkinleştirilen yedekleme ilkesi, [Service Backup](/rest/api/servicefabric/sfclient-api-disableservicebackup) API 'sini devre dışı bırakma kullanılarak aynı _hizmette_ devre dışı bırakılabilir ve bir _bölümde_ etkinleştirilen yedekleme ilkesi, [bölüm yedeklemesini devre dışı bırakma](/rest/api/servicefabric/sfclient-api-disablepartitionbackup) API 'si kullanılarak aynı _bölümde_ devre dışı bırakılabilir.
 
 * Bir _uygulama_ için yedekleme ilkesini devre dışı bırakmak, yedekleme Ilkesinin güvenilir durum bilgisi olan hizmet bölümlerine veya güvenilir aktör bölümlerine yayılmasının sonucu olarak oluşan tüm düzenli veri yedeklemelerini durduruyor.

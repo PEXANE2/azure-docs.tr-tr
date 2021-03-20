@@ -10,10 +10,10 @@ services: iot-dps
 manager: eliotgra
 ms.custom: mvc
 ms.openlocfilehash: 8b87d9d487257504a438cf13a5b94e3ca4f9233d
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92426374"
 ---
 # <a name="quickstart-provision-a-python-device-with-symmetric-keys"></a>Hızlı başlangıç: simetrik anahtarlarla bir Python cihazı sağlama
@@ -32,7 +32,7 @@ Bu makale Windows tabanlı bir iş istasyonuna yöneliktir. Ancak yordamları Li
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Windows tabanlı makinenizde [Python 3,7](https://www.python.org/downloads/) veya sonraki bir sürümünün yüklü olduğundan emin olun. ' İ çalıştırarak Python sürümünüzü kontrol edebilirsiniz `python --version` .
 
@@ -49,7 +49,7 @@ Bu makale Windows tabanlı bir iş istasyonuna yöneliktir. Ancak yordamları Li
     ```console
     git clone https://github.com/Azure/azure-iot-sdk-python.git --recursive
     ```
-3. `azure-iot-sdk-python\azure-iot-device\samples\async-hub-scenarios` _Provision_symmetric_key. Kopyala_örnek dosyasının bulunduğu dizine gidin.
+3. `azure-iot-sdk-python\azure-iot-device\samples\async-hub-scenarios` _Provision_symmetric_key. Kopyala_ örnek dosyasının bulunduğu dizine gidin.
    
    ```console
    cd azure-iot-sdk-python\azure-iot-device\samples\async-hub-scenarios
@@ -98,7 +98,7 @@ Bu bölümde, simetrik anahtar cihazınız için cihaz sağlama örnek kodu içi
 
 Sağlama kodu, cihazınızın kimliğini doğrulamak için bu değişkenlere göre DPS örneğiyle iletişim kuracaktır. Daha sonra cihaz, bireysel kayıt yapılandırmasına göre zaten DPS örneğine bağlanmış olan bir IoT Hub 'ına atanır. Sağlandıktan sonra örnek kod, IoT Hub 'ına bazı test telemetrisi gönderir.
 
-1. [Azure Portal](https://portal.azure.com), cihaz sağlama hizmeti menünüzde **genel bakış** ' ı seçin ve _hizmet uç_ noktanızı ve _kimlik kapsamınızı_kopyalayın. `PROVISIONING_HOST`Ve ortam değişkenleri için bu değerleri kullanacaksınız `PROVISIONING_IDSCOPE` .
+1. [Azure Portal](https://portal.azure.com), cihaz sağlama hizmeti menünüzde **genel bakış** ' ı seçin ve _hizmet uç_ noktanızı ve _kimlik kapsamınızı_ kopyalayın. `PROVISIONING_HOST`Ve ortam değişkenleri için bu değerleri kullanacaksınız `PROVISIONING_IDSCOPE` .
 
     ![Hizmet bilgileri](./media/quick-create-device-symm-key-python/extract-dps-endpoints.png)
 
@@ -126,7 +126,7 @@ Sağlama kodu, cihazınızın kimliğini doğrulamak için bu değişkenlere gö
     set PROVISIONING_SYMMETRIC_KEY=sbDDeEzRuEuGKag+kQKV+T1QGakRtHpsERLP0yPjwR93TrpEgEh/Y07CXstfha6dhIPWvdD1nRxK5T0KGKA+nQ==
     ```
 
-4. _Provision_symmetric_key. Kopyala_içinde Python örnek kodunu çalıştırın.
+4. _Provision_symmetric_key. Kopyala_ içinde Python örnek kodunu çalıştırın.
 
     ```console
     D:\azure-iot-sdk-python\azure-iot-device\samples\async-hub-scenarios>python provision_symmetric_key.py
@@ -165,7 +165,7 @@ Sağlama kodu, cihazınızın kimliğini doğrulamak için bu değişkenlere gö
     done sending message #5
     ```
     
-6. Azure portal, sağlama hizmetinize bağlı olan IoT Hub 'ına gidin ve **IoT cihazları** dikey penceresini açın. Simetrik anahtar cihazı hub 'a başarıyla sağlamaktan sonra cihaz KIMLIĞI, **etkin**olarak *durumuyla* gösterilir. Cihaz örnek kodunu çalıştırmadan önce dikey pencereyi zaten açtıysanız, en üstteki **Yenile** düğmesine basmanız gerekebilir. 
+6. Azure portal, sağlama hizmetinize bağlı olan IoT Hub 'ına gidin ve **IoT cihazları** dikey penceresini açın. Simetrik anahtar cihazı hub 'a başarıyla sağlamaktan sonra cihaz KIMLIĞI, **etkin** olarak *durumuyla* gösterilir. Cihaz örnek kodunu çalıştırmadan önce dikey pencereyi zaten açtıysanız, en üstteki **Yenile** düğmesine basmanız gerekebilir. 
 
     ![Cihaz IOT hub'da kayıtlı](./media/quick-create-device-symm-key-python/hub-registration-python.png) 
 

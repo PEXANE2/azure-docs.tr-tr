@@ -9,10 +9,10 @@ ms.topic: troubleshooting
 ms.date: 03/26/2020
 ms.author: genli
 ms.openlocfilehash: c316aaf02979008b9d2ebc691d54c0fb95a5a52d
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95994868"
 ---
 # <a name="troubleshooting-azure-point-to-site-connection-problems"></a>Sorun giderme: Azure Noktadan siteye bağlantı sorunları
@@ -335,7 +335,7 @@ NIC sürücüsü güncel değil.
 
 NIC sürücüsünü güncelleştirin:
 
-1. **Başlat**' a tıklayın, **Aygıt Yöneticisi** yazın ve sonuç listesinden seçin. Yönetici parolası veya onay istenirse parolayı yazın ya da onay sağlayın.
+1. **Başlat**' a tıklayın, **Device Manager** yazın ve sonuç listesinden seçin. Yönetici parolası veya onay istenirse parolayı yazın ya da onay sağlayın.
 2. **Ağ bağdaştırıcıları** kategorilerinde, GÜNCELLEŞTIRMEK istediğiniz NIC 'i bulun.  
 3. Cihaz adına çift tıklayın, **Sürücüyü Güncelleştir**' i seçin, **güncelleştirilmiş sürücü yazılımı Için otomatik olarak ara**' yı seçin.
 4.  Windows yeni bir sürücü bulmazsa, cihaz üreticisinin Web sitesinde bir sürücü arayıp yükleme yönergelerini izleyebilirsiniz.

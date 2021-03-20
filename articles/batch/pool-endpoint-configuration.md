@@ -4,10 +4,10 @@ description: Azure Batch havuzundaki işlem düğümlerinde SSH veya RDP bağlan
 ms.topic: how-to
 ms.date: 02/13/2018
 ms.openlocfilehash: 4e7df7da539be75ef1befdff4b4e1fe5244c1702
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92109315"
 ---
 # <a name="configure-or-disable-remote-access-to-compute-nodes-in-an-azure-batch-pool"></a>Azure Batch havuzundaki işlem düğümlerine uzaktan erişimi yapılandırma veya devre dışı bırakma
@@ -28,7 +28,7 @@ Her NAT havuzu yapılandırması bir veya daha fazla [ağ güvenlik grubu (NSG) 
 
 ## <a name="example-deny-all-rdp-traffic"></a>Örnek: tüm RDP trafiğini Reddet
 
-Aşağıdaki C# kod parçacığı, bir Windows havuzundaki işlem düğümlerinde RDP uç noktasının tüm ağ trafiğini reddedecek şekilde nasıl yapılandırılacağını gösterir. Uç noktası *60000-60099*aralığında bağlantı noktalarının ön uç havuzunu kullanır. 
+Aşağıdaki C# kod parçacığı, bir Windows havuzundaki işlem düğümlerinde RDP uç noktasının tüm ağ trafiğini reddedecek şekilde nasıl yapılandırılacağını gösterir. Uç noktası *60000-60099* aralığında bağlantı noktalarının ön uç havuzunu kullanır. 
 
 ```csharp
 pool.NetworkConfiguration = new NetworkConfiguration
@@ -45,7 +45,7 @@ pool.NetworkConfiguration = new NetworkConfiguration
 
 ## <a name="example-deny-all-ssh-traffic-from-the-internet"></a>Örnek: internet 'ten gelen tüm SSH trafiğini reddetme
 
-Aşağıdaki Python kod parçacığında, tüm internet trafiğini reddetmek için bir Linux havuzundaki işlem düğümlerinde SSH uç noktasının nasıl yapılandırılacağı gösterilmektedir. Uç noktası *4000-4100*aralığında bağlantı noktalarının ön uç havuzunu kullanır. 
+Aşağıdaki Python kod parçacığında, tüm internet trafiğini reddetmek için bir Linux havuzundaki işlem düğümlerinde SSH uç noktasının nasıl yapılandırılacağı gösterilmektedir. Uç noktası *4000-4100* aralığında bağlantı noktalarının ön uç havuzunu kullanır. 
 
 ```python
 pool.network_configuration = batchmodels.NetworkConfiguration(
@@ -71,7 +71,7 @@ pool.network_configuration = batchmodels.NetworkConfiguration(
 
 ## <a name="example-allow-rdp-traffic-from-a-specific-ip-address"></a>Örnek: belirli bir IP adresinden gelen RDP trafiğine Izin ver
 
-Aşağıdaki C# kod parçacığı, bir Windows havuzundaki işlem düğümlerinde RDP uç noktasının yalnızca *198.51.100.7*IP adresinden RDP erişimine izin vermek üzere nasıl yapılandırılacağını gösterir. İkinci NSG kuralı, IP adresiyle eşleşmeyen trafiği reddeder.
+Aşağıdaki C# kod parçacığı, bir Windows havuzundaki işlem düğümlerinde RDP uç noktasının yalnızca *198.51.100.7* IP adresinden RDP erişimine izin vermek üzere nasıl yapılandırılacağını gösterir. İkinci NSG kuralı, IP adresiyle eşleşmeyen trafiği reddeder.
 
 ```csharp
 pool.NetworkConfiguration = new NetworkConfiguration
@@ -89,7 +89,7 @@ pool.NetworkConfiguration = new NetworkConfiguration
 
 ## <a name="example-allow-ssh-traffic-from-a-specific-subnet"></a>Örnek: belirli bir alt ağdan gelen SSH trafiğine Izin ver
 
-Aşağıdaki Python kod parçacığı, bir Linux havuzundaki işlem düğümlerinde SSH uç noktasının yalnızca *192.168.1.0/24*alt ağından erişime izin verecek şekilde nasıl yapılandırılacağını gösterir. İkinci NSG kuralı, alt ağla eşleşmeyen trafiği reddeder.
+Aşağıdaki Python kod parçacığı, bir Linux havuzundaki işlem düğümlerinde SSH uç noktasının yalnızca *192.168.1.0/24* alt ağından erişime izin verecek şekilde nasıl yapılandırılacağını gösterir. İkinci NSG kuralı, alt ağla eşleşmeyen trafiği reddeder.
 
 ```python
 pool.network_configuration = batchmodels.NetworkConfiguration(

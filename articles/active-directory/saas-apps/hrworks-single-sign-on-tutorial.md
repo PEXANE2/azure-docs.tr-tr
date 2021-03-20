@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 01/02/2020
 ms.author: jeedes
 ms.openlocfilehash: d6b23213d9d986c62a227b3e182a22896d128222
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92442550"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-hrworks-single-sign-on"></a>Öğretici: hr, tek Sign-On ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
@@ -28,7 +28,7 @@ Bu öğreticide, Hrçalışmaları tek Sign-On Azure Active Directory (Azure AD)
 
 Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](../manage-apps/what-is-single-sign-on.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -54,7 +54,7 @@ HR, tek Sign-On 'ın Azure AD 'ye tümleştirilmesini yapılandırmak için, gal
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-hrworks-single-sign-on"></a>Azure AD çoklu oturum açmayı, hr, tek Sign-On için yapılandırma ve test etme
 
-**B. Simon**adlı bir test kullanıcısı kullanarak Hrçalışmatek Sign-On Azure AD SSO 'yu yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ve Hrwork çoklu oturum açma içindeki ilgili Kullanıcı arasında bir bağlantı ilişkisi kurmanız gerekir.
+**B. Simon** adlı bir test kullanıcısı kullanarak Hrçalışmatek Sign-On Azure AD SSO 'yu yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ve Hrwork çoklu oturum açma içindeki ilgili Kullanıcı arasında bir bağlantı ilişkisi kurmanız gerekir.
 
 Azure AD SSO 'yu Hrçalışmalar çoklu oturum açma özelliğiyle yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
 
@@ -132,13 +132,13 @@ Bu bölümde, Hruse çoklu oturum açma 'ya erişim vererek Azure çoklu oturum 
 
 1. Hrçalışmatek Sign-On el ile kurmak isterseniz, yeni bir Web tarayıcısı penceresi açın ve HR, tek Sign-On şirket sitenizde yönetici olarak oturum açın ve aşağıdaki adımları gerçekleştirin:
 
-1. **Administrator**  >  **Basics**  >  **Security**  >  Menü çubuğunun sol tarafındaki yönetici temelleri güvenliğine**Çoklu oturum açma** ' ya tıklayın ve aşağıdaki adımları uygulayın:
+1.   >    >    >  Menü çubuğunun sol tarafındaki yönetici temelleri güvenliğine **Çoklu oturum açma** ' ya tıklayın ve aşağıdaki adımları uygulayın:
 
     ![Çoklu oturum açmayı yapılandırma](./media/hrworks-single-sign-on-tutorial/configure01.png)
 
     a. **Çoklu oturum açma kullan** kutusunu işaretleyin.
 
-    b. **Meta veri giriş yöntemi**olarak **XML meta** verilerini seçin.
+    b. **Meta veri giriş yöntemi** olarak **XML meta** verilerini seçin.
 
     c. **NameID Için** **bağımsız bir NameID tanımlayıcı** değeri seçin.
 
@@ -154,7 +154,7 @@ Azure AD kullanıcılarını etkinleştirmek için, hr, çoklu oturum açma 'da 
 
 1. HR, tek Sign-On yönetici olarak oturum açın.
 
-1. **Yönetici**  >  **kişileri**  >  **Persons**  >  menü çubuğunun sol tarafından**Yeni kişiyi** kişiler ' e tıklayın.
+1. **Yönetici**  >  **kişileri**  >    >  menü çubuğunun sol tarafından **Yeni kişiyi** kişiler ' e tıklayın.
 
      ![Ekran görüntüsü, kişiler ve yeni kişi seçiliyken H R çalışma sayfasını gösterir.](./media/hrworks-single-sign-on-tutorial/configure02.png)
 

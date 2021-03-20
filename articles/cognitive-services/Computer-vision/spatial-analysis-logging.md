@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 01/12/2021
 ms.author: aahi
 ms.openlocfilehash: dda3ece27fd2c687647e0aa289bd1596a87b274f
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98186031"
 ---
 # <a name="telemetry-and-troubleshooting"></a>Telemetri ve sorun giderme
@@ -216,9 +216,9 @@ Günlükler, modüldeki IoT Edge yöntemi ile isteğe bağlı olarak karşıya y
 
 
 1. IoT Hub Portal sayfanıza gidin, **Edge cihazları**' nı seçin, sonra cihazınızı ve tanılama modülünüzü seçin. 
-2. Modülün ayrıntılar sayfasına gidin ve **_doğrudan yöntem_* _ sekmesine tıklayın.
+2. Modülün ayrıntılar sayfasına gidin ve ***doğrudan yöntem*** sekmesine tıklayın.
 3. `getRTCVLogs`Yöntem adı üzerine tür ve yük içindeki bir JSON biçim dizesi. `{}`Boş bir yük olan yazabilirsiniz. 
-4. Bağlantı ve yöntem zaman aşımlarını ayarlayın ve _ * Invoke yöntemi * * ' ye tıklayın.
+4. Bağlantı ve yöntem zaman aşımlarını ayarlayın ve **yöntemi çağır**' a tıklayın.
 5. Hedef kapsayıcınızı seçin ve **günlük sözdizimi** bölümünde açıklanan parametreleri kullanarak bir yük JSON dizesi oluşturun. İsteği gerçekleştirmek için **Invoke yöntemi** ' ne tıklayın.
 
 >[!NOTE]
@@ -245,7 +245,7 @@ Aşağıdaki tabloda sorgu yanıtında öznitelikler listelenmiştir.
 
 | Sözcükle | Description|
 |--|--|
-|DoPost| *True* ya da *false*. Günlüklerin karşıya yüklenip yüklenmediğini belirtir. Günlükleri karşıya yüklememe seçeneğini belirlediğinizde, API bilgileri "**zaman uyumlu** _" döndürür. Günlükleri karşıya yüklemeyi seçtiğinizde, API, istek geçerliyse 200 döndürür ve günlükleri _*_zaman uyumsuz_*_ olarak karşıya yüklemeye başlar.|
+|DoPost| *True* ya da *false*. Günlüklerin karşıya yüklenip yüklenmediğini belirtir. Günlükleri karşıya yüklememe seçeneğini belirlediğinizde, API bilgileri "**zaman uyumlu** _" döndürür. Günlükleri karşıya yüklemeyi seçtiğinizde, API, istek geçerliyse 200 döndürür ve günlükleri karşıya yüklemeye başlar _ *_zaman uyumsuz_* *.|
 |TimeFilter| Günlüklere uygulanan zaman filtresi.|
 |ValueFilters| Günlüklere uygulanan anahtar sözcük filtreleri. |
 |Ilişkin| Yöntem yürütme başlangıç zamanı. |
@@ -298,7 +298,7 @@ Aşağıdaki tabloda sorgu yanıtında öznitelikler listelenmiştir.
 }
 ```
 
-Bu ayarların daha iyi görünmesi ve günlükleri aynı filtreye sahip günlüklere itmesi için, bu ayarların ' ı ' ye doğru görünmesi durumunda getirme günlüğü satırları, zamanları ve boyutları ' nı işaretleyin _**_ `true` . 
+Bu ayarların daha iyi görünmesi ve günlükleri aynı filtreye sahip günlüklere itmesi için, bu ayarların ' ı ' ye doğru görünmesi durumunda getirme günlüğü satırları, zamanları ve boyutları ' nı işaretleyin  `true` . 
 
 Sorunları giderirken Azure Blob depolamadan günlükleri dışarı aktarabilirsiniz. 
 
@@ -316,7 +316,7 @@ Azure Stack Edge cihazınızın durumunu hata ayıklama ve doğrulamaya yönelik
 
 ### <a name="access-the-kubernetes-api-endpoint"></a>Kubernetes API uç noktasına erişin. 
 
-1. Cihazınızın yerel kullanıcı arabiriminde _ *cihazlar** sayfasına gidin. 
+1. Cihazınızın yerel kullanıcı arabiriminde, **cihazlar** sayfasına gidin. 
 2. **Cihaz uç noktaları** altında Kubernetes API hizmet uç noktasını kopyalayın. Bu uç nokta aşağıdaki biçimde bir dizedir: `https://compute..[device-IP-address]` .
 3. Uç nokta dizesini kaydedin. Bunu daha sonra `kubectl` Kubernetes kümesine erişmek üzere yapılandırırken kullanacaksınız.
 

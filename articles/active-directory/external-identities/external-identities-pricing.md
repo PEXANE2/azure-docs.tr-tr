@@ -12,10 +12,10 @@ manager: celestedg
 ms.workload: identity
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 983a803245467145a0b1161a4495e8045759e7ab
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92442074"
 ---
 # <a name="billing-model-for-azure-ad-external-identities"></a>Azure AD dış kimlikleri için faturalandırma modeli
@@ -51,7 +51,7 @@ Uygun faturalandırma ve özelliklere erişim için Azure AD kiracısı bir Azur
 
     ![Dizin + abonelik simgesini seçin](media/external-identities-pricing/portal-mau-pick-directory.png)
 
-3. **Azure hizmetleri**altında **Azure Active Directory**' yi seçin.
+3. **Azure hizmetleri** altında **Azure Active Directory**' yi seçin.
 
 4. Sol taraftaki menüden **dış kimlikler**' i seçin.
 
@@ -61,10 +61,10 @@ Uygun faturalandırma ve özelliklere erişim için Azure AD kiracısı bir Azur
 
     ![Kiracıyı seçin ve bir aboneliği bağlayın](media/external-identities-pricing/linked-subscriptions.png)
 
-7. Abonelik bağlantısı bölmesinde bir **abonelik** ve bir **kaynak grubu**seçin. Sonra **Uygula**'yı seçin.
+7. Abonelik bağlantısı bölmesinde bir **abonelik** ve bir **kaynak grubu** seçin. Sonra **Uygula**'yı seçin.
 
    > [!NOTE]
-   > Listelenen [bir abonelik yoksa, bir aboneliği kiracınızla ilişkilendirebilirsiniz](../fundamentals/active-directory-how-subscriptions-associated-directory.md). Ya da, **henüz bir aboneliğiniz yoksa**bağlantıyı seçerek yeni bir abonelik ekleyebilirsiniz.
+   > Listelenen [bir abonelik yoksa, bir aboneliği kiracınızla ilişkilendirebilirsiniz](../fundamentals/active-directory-how-subscriptions-associated-directory.md). Ya da, **henüz bir aboneliğiniz yoksa** bağlantıyı seçerek yeni bir abonelik ekleyebilirsiniz.
 
     ![Bir abonelik ve kaynak grubu seçin](media/external-identities-pricing/link-subscription-resource.png)
 

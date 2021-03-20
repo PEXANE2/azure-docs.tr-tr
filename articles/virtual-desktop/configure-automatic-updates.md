@@ -8,17 +8,17 @@ ms.author: helohr
 ms.reviewer: v-cawood; clemr
 manager: lizross
 ms.openlocfilehash: bfc797e0c11a1804d27c6c97fea8cb2ba62dca7a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88010132"
 ---
 # <a name="configure-microsoft-endpoint-configuration-manager"></a>Microsoft uç noktası Configuration Manager yapılandırma
 
 Bu makalede, Windows 10 Enterprise çoklu oturum çalıştıran bir Windows sanal masaüstü konağına güncelleştirmeleri otomatik olarak uygulamak için Microsoft uç nokta Configuration Manager nasıl yapılandırılacağı açıklanır.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu ayarı yapılandırmak için aşağıdaki işlemleri yapmanız gerekir:
 
@@ -35,9 +35,9 @@ Güncelleştirmeleri almak için:
 2. **Site bileşenlerini Yapılandır**' ı seçin.
 3. Açılır menüden **yazılım güncelleştirme noktası ' nı** seçin.
 4. **Ürünler** sekmesini seçin.
-5. **Windows Server, sürüm 1903 ve üstünü**belirten onay kutusunu seçin.
-6. **Yazılım kitaplığı**'na  >  **genel bakış**  >  **yazılım**güncelleştirmeleri  >  **tüm yazılım güncelleştirmelerini** güncelleştirir ve **yazılım güncelleştirmelerini eşitlemeyi**seçin.
-7. **Program Files**  >  **Microsoft Configuration Manager**  >  Değişikliklerinizin kaydedildiğinden emin olmak için Program Files Microsoft Configuration Manager**logs** içindeki wsyncmgr. log dosyasını kontrol edin. Güncelleştirmelerin eşitlenmesi birkaç dakika sürebilir.
+5. **Windows Server, sürüm 1903 ve üstünü** belirten onay kutusunu seçin.
+6. **Yazılım kitaplığı**'na  >  **genel bakış**  >  **yazılım** güncelleştirmeleri  >  **tüm yazılım güncelleştirmelerini** güncelleştirir ve **yazılım güncelleştirmelerini eşitlemeyi** seçin.
+7.   >    >  Değişikliklerinizin kaydedildiğinden emin olmak için Program Files Microsoft Configuration Manager **logs** içindeki wsyncmgr. log dosyasını kontrol edin. Güncelleştirmelerin eşitlenmesi birkaç dakika sürebilir.
 
 ## <a name="create-a-query-based-collection"></a>Sorgu tabanlı koleksiyon oluşturma
 
@@ -45,7 +45,7 @@ Windows 10 Enterprise çoklu oturum sanal makinelerinin bir koleksiyonunu oluşt
 
 Bir koleksiyon oluşturmak için:
 
-1. **Varlıkları ve uyumluluğu**seçin.
+1. **Varlıkları ve uyumluluğu** seçin.
 2. **Genel bakış**  >  **Cihaz Koleksiyonları** ' na gidin ve **Cihaz Koleksiyonları** ' na sağ tıklayın ve açılan menüden **cihaz koleksiyonu oluştur** ' u seçin.
 3. Açılan menünün **genel** sekmesinde, **ad** alanına koleksiyonunuzu açıklayan bir ad girin. **Açıklama** alanında, koleksiyonun ne olduğunu açıklayan ek bilgiler verebilirsiniz. **Koleksiyonu sınırlandırma**' de, koleksiyon sorgusuna hangi makineleri dahil olduğunuzu tanımlayın.
 4. **Üyelik kuralları** sekmesinde, **Kural Ekle**' yi seçip **sorgu kuralı**' nı seçerek sorgunuz için bir kural ekleyin.

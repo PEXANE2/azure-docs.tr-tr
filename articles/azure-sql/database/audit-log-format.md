@@ -11,10 +11,10 @@ ms.reviewer: vanto
 ms.custom: sqldbrb=1
 ms.date: 06/03/2020
 ms.openlocfilehash: f5c176db4f679c79bb42c6ceb46b3588e9440874
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100572221"
 ---
 # <a name="sql-database-audit-log-format"></a>SQL veritabanı denetim günlüğü biçimi
@@ -38,11 +38,11 @@ Azure Blob depolamada depolanan denetim günlükleri `sqldbauditlogs` , Azure de
 
 ### <a name="event-hub"></a>Olay Hub'ı
 
-Denetim olayları, denetim yapılandırması sırasında tanımlanan ad alanı ve Olay Hub 'ına yazılır ve [Apache avro](https://avro.apache.org/) olaylarının gövdesinde YAKALANıR ve UTF-8 KODLAMASı ile JSON biçimlendirme kullanılarak depolanır. Denetim günlüklerini okumak için, bu biçimi işleyen [avro araçları](../../event-hubs/event-hubs-capture-overview.md#use-avro-tools) veya benzer araçları kullanabilirsiniz.
+Denetim olayları denetim yapılandırması sırasında tanımlanan ad alanına ve olay hub'ına yazılır; [Apache Avro](https://avro.apache.org/) olaylarının gövdesinde yakalanır ve UTF-8 kodlamasıyla JSON biçimlendirmesi kullanılarak depolanır. Denetim günlüklerini okumak için [Avro Araçları](../../event-hubs/event-hubs-capture-overview.md#use-avro-tools)'nı veya bu biçimi işleyebilen benzer araçları kullanabilirsiniz.
 
 ### <a name="log-analytics"></a>Log Analytics
 
-Denetim olayları, denetim yapılandırması sırasında tanımlanan Log Analytics çalışma alanına, `AzureDiagnostics` kategoriye sahip tabloya yazılır `SQLSecurityAuditEvents` . Log Analytics arama dili ve komutları hakkında daha fazla yararlı bilgi için bkz. [Log Analytics arama başvurusu](../../azure-monitor/logs/log-query-overview.md).
+Denetim olayları denetim yapılandırması sırasında tanımlanan Log Analytics çalışma alanında `AzureDiagnostics` tablosuna `SQLSecurityAuditEvents` kategorisiyle yazılır. Log Analytics arama dili ve komutları hakkında diğer yararlı bilgiler için bkz. [Log Analytics arama başvurusu](../../azure-monitor/logs/log-query-overview.md).
 
 ## <a name="audit-log-fields"></a><a id="subheading-1"></a>Denetim günlüğü alanları
 

@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 05/06/2020
 ms.author: dayshen
 ms.openlocfilehash: 24e56736e0d033420f9aaf976b0fb7d9727c1a5b
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92143226"
 ---
 # <a name="configure-network-access-control"></a>Ağ erişim denetimini yapılandırma
@@ -37,24 +37,24 @@ Bu senaryoda, genel ağ kuralını yalnızca ortak ağdan gelen [Istemci bağlan
 
 Azure SignalR hizmeti için ağ erişim denetimini Azure portal aracılığıyla yönetebilirsiniz.
 
-### <a name="azure-portal"></a>Azure portal
+### <a name="azure-portal"></a>Azure portalı
 
 1. Güvenli hale getirmek istediğiniz Azure SignalR hizmetine gidin.
 
-1. **Ağ erişim denetimi**adlı ayarlar menüsüne tıklayın.
+1. **Ağ erişim denetimi** adlı ayarlar menüsüne tıklayın.
 
     ![Portalda ağ ACL 'SI](media/howto-network-access-control/portal.png)
 
 1. Varsayılan eylemi düzenlemek için **Izin ver/Reddet** düğmesine geçin.
 
     > [!TIP]
-    > Varsayılan eylem, hiçbir ACL kuralı eşleşmesi olmadığında gerçekleştirilecek eylemdir. Örneğin **, varsayılan eylem reddedilirse, aşağıdaki**açıkça onaylanmamış istek türleri reddedilir.
+    > Varsayılan eylem, hiçbir ACL kuralı eşleşmesi olmadığında gerçekleştirilecek eylemdir. Örneğin **, varsayılan eylem reddedilirse, aşağıdaki** açıkça onaylanmamış istek türleri reddedilir.
 
-1. Ortak ağ kuralını düzenlemek için **ortak ağ**altında izin verilen istek türleri ' ni seçin.
+1. Ortak ağ kuralını düzenlemek için **ortak ağ** altında izin verilen istek türleri ' ni seçin.
 
     ![Portalda ortak ağ ACL 'sini düzenleme ](media/howto-network-access-control/portal-public-network.png)
 
-1. Özel uç nokta ağ kurallarını düzenlemek için, **Özel uç nokta bağlantıları**altındaki her satırda izin verilen istek türlerini seçin.
+1. Özel uç nokta ağ kurallarını düzenlemek için, **Özel uç nokta bağlantıları** altındaki her satırda izin verilen istek türlerini seçin.
 
     ![Portalda özel uç nokta ACL 'sini düzenleme ](media/howto-network-access-control/portal-private-endpoint.png)
 
